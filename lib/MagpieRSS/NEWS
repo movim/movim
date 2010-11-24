@@ -1,0 +1,53 @@
+MagpieRSS News
+
+MAGPIERSS 0.51 RELEASED
+	* important bugfix!
+	* fix "silent failure" when PHP doesn't have zlib
+
+FEED ON FEEDS USES MAGPIE
+	* web-based RSS aggregator built with Magpie
+	* easy to install, easy to use.
+	http://minutillo.com/steve/feedonfeeds/
+	
+MAGPIERSS 0.5 RELEASED
+	* supports transparent HTTP gzip content negotiation for reduced bandwidth usage
+    * quashed some undefined index notices
+
+MAGPIERSS 0.46 RELEASED
+    * minor release, more error handling clean up
+    * documentation fixes, simpler example
+    * new trouble shooting guide for installation and usage problems 
+      http://magpierss.sourceforge.net/TROUBLESHOOTING
+
+MAGPIE NEWS AS RSS
+    * releases, bug fixes, releated stories in RSS
+    
+MAGPIERSS COOKBOOK: SIMPLE PHP RSS HOW TOS
+    * answers some of the most frequently asked Magpie questions
+    * feedback, suggestions, requests, recipes welcome
+      http://magpierss.sourceforge.net/cookbook.html
+
+MAGPIERSS 0.4 RELEASED!
+    * improved error handling, more flexibility for script authors, backwards compatible
+    * new and better examples! including using MagpieRSS and Smarty
+    * new Smarty plugin for RSS date parsing
+      http://smarty.php.net
+
+INFINITE PENGUIN NOW SUPPORTS MAGPIE 0.3
+    * simple, sophisticated RSS viewer
+    * includes auto-generated javascript ticker from RSS feed
+      http://www.infinitepenguins.net/rss/
+
+TRAUMWIND RELEASES REX BACKEND FOR MAGPIERSS
+    * drop in support using regex based XML parser
+    * parses improperly formed XML that chokes expat
+      http://traumwind.de/blog/magpie/magpie_alike.php
+
+MAGPIERSS 0.3 RELEASED!
+    * Support added for HTTP Conditional GETs.
+      http://fishbowl.pastiche.org/archives/001132.html
+
+MAGPIERSS 0.2!
+    * Major clean up of the code. Easier to use.
+    * Simpler install on shared hosts.
+    * Better documentation and comments.

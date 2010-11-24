@@ -1,0 +1,405 @@
+2005-10-28 14:11  kellan
+
+	* extlib/Snoopy.class.inc: a better solution
+
+2005-10-28 11:51  kellan
+
+	* extlib/Snoopy.class.inc: fix arbtriary code execution
+	  vulnerability when using curl+ssl
+
+	  http://www.sec-consult.com/216.html
+
+2005-03-08 10:46  kellan
+
+	* rss_parse.inc: fix bug w/ atom and date normalization
+
+2005-02-09 14:59  kellan
+
+	* rss_fetch.inc: fix stale cache bug
+
+2005-01-28 02:27  kellan
+
+	* rss_parse.inc: support php w/o array_change_case
+
+2005-01-23 20:02  kellan
+
+	* rss_fetch.inc: fix cache bug introduced by charset encoding
+
+2005-01-12 09:14  kellan
+
+	* rss_cache.inc, rss_fetch.inc: more sanity checks for when things
+	  go wrong
+
+2004-12-12 13:44  kellan
+
+	* INSTALL, rss_cache.inc, rss_utils.inc: detab
+
+2004-11-23 20:15  kellan
+
+	* rss_parse.inc: fix calling iconv instead of mb_convert_encoding
+
+2004-11-22 02:11  kellan
+
+	* CHANGES, ChangeLog, rss_parse.inc, scripts/magpie_debug.php: last
+	  bit of tidying
+
+2004-11-22 01:45  kellan
+
+	* rss_fetch.inc: detab, bump version
+
+2004-11-22 01:43  kellan
+
+	* rss_parse.inc: was filtering too much
+
+2004-11-22 00:03  kellan
+
+	* rss_fetch.inc, rss_parse.inc: cache on $url . $output_encoding
+	  otherwise we can get munged output
+
+2004-11-21 23:52  kellan
+
+	* rss_parse.inc: add WARNING
+
+2004-11-21 23:45  kellan
+
+	* rss_parse.inc: don't set ERROR on notice or warning (rss_fetch
+	  dies on parse errors)
+
+2004-11-21 23:44  kellan
+
+	* rss_fetch.inc: add encoding defines (fix timeout error reporting)
+
+2004-11-21 20:21  kellan
+
+	* rss_parse.inc: incorporate steve's patch
+
+2004-11-21 19:26  kellan
+
+	* rss_parse.inc: remove old debugging functions, totally
+	  arbitrarily.	might break stuff.  can't really explain why i'm
+	  doing this.
+
+2004-10-28 15:52  kellan
+
+	* rss_parse.inc: fixed '=' instead of '=='
+
+2004-10-26 00:48  kellan
+
+	* rss_parse.inc: chance epoch to timestamp to conform w/ php naming
+	  conventions
+
+2004-06-15 12:00  kellan
+
+	* rss_parse.inc: [no log message]
+
+2004-04-26 14:16  kellan
+
+	* rss_fetch.inc: bump version
+
+2004-04-26 12:36  kellan
+
+	* rss_parse.inc: fix field doubling
+
+2004-04-24 17:47  kellan
+
+	* CHANGES, ChangeLog: updated
+
+2004-04-24 17:35  kellan
+
+	* rss_fetch.inc: bumped version
+
+2004-04-24 16:52  kellan
+
+	* rss_parse.inc: support arbitrary atom content constructs
+
+	  some refactoring
+
+2004-04-24 16:15  kellan
+
+	* rss_parse.inc: support summary content contstruct.  add normalize
+	  function
+
+2004-03-27 16:29  kellan
+
+	* extlib/Snoopy.class.inc: accept self-signed certs
+
+2004-03-27 12:53  kellan
+
+	* extlib/Snoopy.class.inc: fixed SSL support   * set status   * set
+	  error on bad curl
+
+	  (also ripped out big chunks of dead weight (submit_form) which
+	  were getting in my way
+
+2004-01-25 02:25  kellan
+
+	* rss_parse.inc: make RSS 1.0's rdf:about available
+
+2004-01-25 02:07  kellan
+
+	* rss_parse.inc: clean up text, and line formats.  add support item
+	  rdf:about
+
+2004-01-24 23:40  kellan
+
+	* CHANGES, ChangeLog: update changes
+
+2004-01-24 23:37  kellan
+
+	* rss_fetch.inc: updated version
+
+2004-01-24 23:35  kellan
+
+	* rss_parse.inc: whitespace
+
+2004-01-24 23:23  kellan
+
+	* extlib/Snoopy.class.inc: support badly formatted http headers
+
+2004-01-24 23:20  kellan
+
+	* rss_parse.inc: added alpha atom parsing support
+
+2003-06-25 22:34  kellan
+
+	* extlib/Snoopy.class.inc: fixed fread 4.3.2 compatibility problems
+
+2003-06-13 11:31  kellan
+
+	* rss_fetch.inc: reset cache on 304
+
+2003-06-12 21:37  kellan
+
+	* rss_cache.inc, rss_fetch.inc, rss_parse.inc, rss_utils.inc:
+	  bumped up version numbers
+
+2003-06-12 21:32  kellan
+
+	* htdocs/index.html: updated news
+
+2003-06-12 21:27  kellan
+
+	* NEWS: a manual blog :)
+
+2003-06-12 21:22  kellan
+
+	* htdocs/index.html: fully qualified img
+
+2003-06-12 21:20  kellan
+
+	* htdocs/index.html: clean up.	added badge.
+
+2003-06-12 21:04  kellan
+
+	* rss_utils.inc: clean up regex
+
+2003-06-12 21:02  kellan
+
+	* rss_cache.inc: suppress some warnings
+
+2003-05-30 20:44  kellan
+
+	* extlib/Snoopy.class.inc: more comments, cleaned up notice
+
+2003-05-30 15:14  kellan
+
+	* extlib/Snoopy.class.inc: don't advertise gzip support if the user
+	  hasn't built php with gzinflate support
+
+2003-05-12 22:32  kellan
+
+	* ChangeLog: changes
+
+2003-05-12 22:11  kellan
+
+	* htdocs/index.html: announce 0.5
+
+2003-05-12 21:42  kellan
+
+	* htdocs/index.html: change
+
+2003-05-12 21:39  kellan
+
+	* rss_fetch.inc: use gzip
+
+2003-05-12 21:37  kellan
+
+	* extlib/Snoopy.class.inc: added support gzip encoded content
+	  negoiation
+
+2003-05-12 21:32  kellan
+
+	* rss_cache.inc, rss_fetch.inc, rss_parse.inc, rss_utils.inc: fixed
+	  typoes
+
+2003-04-26 21:44  kellan
+
+	* rss_parse.inc: fix minor typo
+
+2003-04-18 08:19  kellan
+
+	* htdocs/cookbook.html: updated cookbook to show more code for
+	  limiting items
+
+2003-03-03 16:02  kellan
+
+	* rss_parse.inc, scripts/magpie_slashbox.php: committed (or
+	  adpated) patch from Nicola (www.technick.com) to quell 'Undefined
+	  Indexes' notices
+
+2003-03-03 15:59  kellan
+
+	* rss_fetch.inc: commited patch from nicola (www.technick.com) to
+	  quell 'undefined indexes' notices.
+
+	  * Magpie now automatically includes its version in the
+	  user-agent, & whether cacheing is turned on.
+
+2003-02-12 01:22  kellan
+
+	* CHANGES, ChangeLog: ChangeLog now auto-generated by cvs2cl
+
+2003-02-12 00:21  kellan
+
+	* rss_fetch.inc: better errors, hopefully stomped on pesky notices
+
+2003-02-12 00:19  kellan
+
+	* rss_parse.inc: check to see is xml is supported, if not die
+
+	  also throw better xml errors
+
+2003-02-12 00:18  kellan
+
+	* rss_cache.inc: hopefully cleared up some notices that were being
+	  thrown into the log
+
+	  fixed a debug statement that was being called as an error
+
+2003-02-12 00:15  kellan
+
+	* scripts/: magpie_simple.php, magpie_slashbox.php: moved
+	  magpie_simple to magpie_slashbox, and replaced it with a simpler
+	  demo.
+
+2003-02-12 00:02  kellan
+
+	* INSTALL, README, TROUBLESHOOTING: Improved documentation.  Better
+	  install instructions.
+
+	  TROUBLESHOOTING cover common installation and usage problems
+
+2003-01-22 14:40  kellan
+
+	* htdocs/cookbook.html: added cookbook.html
+
+2003-01-21 23:47  kellan
+
+	* cookbook: a magpie cookbook
+
+2003-01-20 10:09  kellan
+
+	* ChangeLog: updated
+
+2003-01-20 09:23  kellan
+
+	* scripts/simple_smarty.php: minor clean up
+
+2003-01-20 09:15  kellan
+
+	* scripts/README: added smarty url
+
+2003-01-20 09:14  kellan
+
+	* magpie_simple.php, htdocs/index.html, scripts/README,
+	  scripts/magpie_debug.php, scripts/magpie_simple.php,
+	  scripts/simple_smarty.php,
+	  scripts/smarty_plugin/modifier.rss_date_parse.php,
+	  scripts/templates/simple.smarty: Added scripts directory for
+	  examples on how to use MagpieRSS
+
+	  magpie_simple - is a simple example magpie_debug - spew all the
+	  information from a parsed RSS feed simple_smary - example of
+	  using magpie with Smarty template system
+	  smarty_plugin/modifier.rss_date_parse.php - support file for the
+	  smarty demo templates/simple.smary - template for the smarty demo
+
+2003-01-20 09:11  kellan
+
+	* rss_fetch.inc, rss_parse.inc: changes to error handling to give
+	  script authors more access to magpie's errors.
+
+	  added method magpie_error() to retrieve global MAGPIE_ERROR
+	  variable for when fetch_rss() returns false
+
+2002-10-26 19:02  kellan
+
+	* htdocs/index.html: putting the website under source control
+
+2002-10-26 18:43  kellan
+
+	* AUTHORS, ChangeLog, INSTALL, README: some documentation to make
+	  it all look official :)
+
+2002-10-25 23:04  kellan
+
+	* magpie_simple.php: quxx
+
+2002-10-25 23:04  kellan
+
+	* rss_parse.inc: added support for textinput and image
+
+2002-10-25 19:23  kellan
+
+	* magpie_simple.php, rss_cache.inc, rss_fetch.inc, rss_parse.inc,
+	  rss_utils.inc: switched to using Snoopy for fetching remote RSS
+	  files.
+
+	  added support for conditional gets
+
+2002-10-25 19:22  kellan
+
+	* rss_cache.inc, rss_fetch.inc, rss_parse.inc, rss_utils.inc:
+	  Change comment style to slavishly imitate the phpinsider style
+	  found in Smarty and Snoopy :)
+
+2002-10-25 19:18  kellan
+
+	* extlib/Snoopy.class.inc: added Snoopy in order to support
+	  conditional gets
+
+2002-10-23 23:19  kellan
+
+	* magpie_simple.php, rss_cache.inc, rss_fetch.inc, rss_parse.inc:
+	  MAJOR CLEANUP!
+
+	  * rss_fetch got rid of the options array, replaced it with a more
+	  PHP-like solution of using defines.  constants are setup, with
+	  defaults, in the function init()
+
+	  got rid of the idiom of passing back an array, its was awkward to
+	  deal with in PHP, and unusual (and consquently confusing to
+	  people).  now i return true/false values, and try to setup error
+	  string where appropiate (rss_cache has the most complete example
+	  of this)
+
+	  change the logic for interacting with the cache
+
+	  * rss_cache major re-working of how error are handled.  tried to
+	  make the code more resillient.  the cache is now much more aware
+	  of MAX_AGE, where before this was being driven out of rss_fetch
+	  (which was silly)
+
+	  * rss_parse properly handles xml parse errors.  used to sail
+	  along blithely unaware.
+
+2002-09-11 11:11  kellan
+
+	* rss_cache.inc, rss_parse.inc, magpie_simple.php, rss_fetch.inc,
+	  rss_utils.inc: Initial revision
+
+2002-09-11 11:11  kellan
+
+	* rss_cache.inc, rss_parse.inc, magpie_simple.php, rss_fetch.inc,
+	  rss_utils.inc: initial import
+

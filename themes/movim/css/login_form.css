@@ -1,0 +1,30 @@
+#connect_form
+{
+	width: auto;
+	margin: 0 auto;
+	margin-top: 13%;
+	padding: 0.5em;
+	margin-bottom: 15%;
+}
+
+#connect_form form
+{
+	margin: 0 auto;
+	width: 300px;
+	margin-top: 20px;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	background-color: #EFEFEF;
+	border: 1px solid #DCDCDC;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	-moz-box-shadow: 0px 2px 7px #CACACA;
+	-webkit-box-shadow: 0px 2px 7px #CACACA;
+}
+
+#connect_form input
+{
+	font-size: 18px;
+	padding : 6px;
+}

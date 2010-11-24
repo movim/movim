@@ -1,0 +1,143 @@
+REQUIREMENTS
+
+    MapieRSS requires a recent PHP 4+ (developed with 4.2.0)
+    with xml (expat) support.
+    
+    Optionally:
+      * PHP5 with libxml2 support.
+      * cURL for SSL support
+      * iconv (preferred) or mb_string for expanded character set support
+    
+QUICK START
+
+    Magpie consists of 4 files (rss_fetch.inc, rss_parser.inc, rss_cache.inc, 
+    and rss_utils.inc), and the directory extlib (which contains a modified 
+    version of the Snoopy HTTP client)
+    
+    Copy these 5 resources to a directory named 'magpierss' in the same 
+    directory as your PHP script.
+    
+    At the top of your script add the following line:
+    
+        require_once('magpierss/rss_fetch.inc');
+    
+    Now you can use the fetch_rss() method:
+      
+        $rss = fetch_rss($url);
+        
+    Done.  That's it.   See README for more details on using MagpieRSS.
+
+NEXT STEPS
+
+    Important:  you'll probably want to get the cache directory working in 
+    order to speed up your application, and not abuse the webserver you're 
+    downloading the RSS from.
+    
+    Optionally you can install MagpieRSS in your PHP include path in order to 
+    make it available server wide.
+    
+    Lastly you might want to look through the constants in rss_fetch.inc see if 
+    there is anything you want to override (the defaults are pretty good)
+
+    For more info, or if you have trouble, see TROUBLESHOOTING
+
+SETTING UP CACHING
+
+    Magpie has built-in transparent caching.  With caching Magpie will only 
+    fetch and parse RSS feeds when there is new content.  Without this feature 
+    your pages will be slow, and the sites serving the RSS feed will be annoyed 
+    with you.
+    
+** Simple and Automatic **
+    
+    By default Magpie will try to create a cache directory named 'cache' in the
+    same directory as your PHP script.
+    
+** Creating a Local Cache Directory **
+    
+    Often this will fail, because your webserver doesn't have sufficient 
+    permissions to create the directory. 
+    
+    Exact instructions for how to do this will vary from install to install and 
+    platform to platform.  The steps are:
+    
+    1.  Make a directory named 'cache'
+    2.  Give the web server write access to that directory.
+    
+    An example of how to do this on Debian would be:
+    
+    1.  mkdir /path/to/script/cache
+    2.  chgrp www-data /path/to/script/cache
+    3.  chmod 775 /path/to/script/cache
+    
+    On other Unixes you'll need to change 'www-data' to what ever user Apache 
+    runs as. (on MacOS X the user would be 'www')
+    
+** Cache in /tmp **
+    
+    Sometimes you won't be able to create a local cache directory.  Some reasons 
+    might be:
+    
+    1.  No shell account
+    2.  Insufficient permissions to change ownership of a directory
+    3.  Webserver runs as 'nobody'
+    
+    In these situations using a cache directory in /tmp can often be a good 
+    option.
+    
+    The drawback is /tmp is public, so anyone on the box can read the cache 
+    files.  Usually RSS feeds are public information, so you'll have to decide 
+    how much of an issue that is.
+
+    To use /tmp as your cache directory you need to add the following line to 
+    your script:
+        
+        define('MAGPIE_CACHE_DIR', '/tmp/magpie_cache');
+        
+** Global Cache **
+
+    If you have several applications using Magpie, you can create a single 
+    shared cache directory, either using the /tmp cache, or somewhere else on 
+    the system.
+    
+    The upside is that you'll distribute fetching and parsing feeds across 
+    several applications.
+    
+INSTALLING MAGPIE SERVER WIDE
+
+    Rather then following the Quickstart instructions which requires you to have 
+    a copy of Magpie per application, alternately you can place it in some 
+    shared location.
+    
+** Adding Magpie to Your Include Path **
+
+    Copy the 5 resources (rss_fetch.inc, rss_parser.inc, rss_cache.inc,         
+    rss_utils.inc, and extlib) to a directory named 'magpierss' in your include 
+    path.  Now any PHP file on your system can use Magpie with:
+    
+        require_once('magpierss/rss_fetch.inc');
+
+    Different installs have different include paths, and you'll have to figure 
+    out what your include_path is.
+    
+    From shell you can try: 
+        
+        php -i | grep 'include_path'
+
+    Alternatley you can create a phpinfo.php file with contains:
+    
+        <?php phpinfo(); ?>
+    
+    Debian's default is:  
+        
+        /usr/share/php 
+        
+    (though more idealogically pure location would be /usr/local/share/php)
+    
+    Apple's default include path is:
+    
+        /usr/lib/php
+        
+    While the Entropy PHP build seems to use:
+    
+        /usr/local/php/lib/php

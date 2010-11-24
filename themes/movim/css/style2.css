@@ -1,0 +1,212 @@
+body {
+	font-family:  verdana, arial, 'lucida grande',   sans-serif;
+	margin: 0 auto;
+	font-size: 12px;
+	overflow: auto;
+}
+
+a:link, a:visited {
+	color: #2B2B2B ;
+	text-decoration: none ;
+}
+
+#content {
+	width: 1024px;
+	margin: 0 auto;
+	color: #383838;
+}
+
+h1 {
+	font-family: arial ;
+	color: #505050;
+	width: 100%;
+	border-bottom: 1px solid gray;
+	padding-bottom: 0.3em;
+	margin-top: 0.4em;
+	padding-left: 0.3em;
+}
+
+#left
+{
+	display: block;
+	margin-top: 0.5em;
+	-moz-box-shadow: 0px 5px 7px #CACACA;
+	-webkit-box-shadow: 0px 5px 7px #CACACA;
+	border: 1px solid #DCDCDC;
+	width: 180px;
+	float: left;
+	z-index: 1;
+	background-color: #EFEFEF;
+	padding: 0.5em;
+}
+
+#center
+{
+	overflow: hidden;
+	padding-left: 1em;
+}
+
+#right
+{
+	display: block;
+	float: right;
+	background-color: #F3F3F3;
+	overflow: auto;
+	width: 200px;
+	background: url(img/block_back.png) repeat-y;
+}
+
+#footer {
+	border-top: 1px solid #DCDCDC;
+	padding: 0.5em;
+	text-align: right;
+	color: #6B6B6B;
+}
+
+/* Formulaires */
+
+input
+{
+	-moz-border-radius:4px 4px 4px 4px;
+	-webkit-border-radius:4px 4px 4px 4px;
+	-moz-box-shadow: inset 0 3px 10px #D0D0D0;
+	-webkit-box-shadow: inset 0 3px 10px #D0D0D0;
+	border:1px solid #AAAAAA;
+	margin: 10px;
+}
+
+input[type=text], input[type=password] {
+	font-family:'Helvetica Neue',HelveticaNeue,Helvetica,Arial,sans-serif;
+	color:#585858;
+	font-weight:normal;
+}
+
+input[type=submit], input[type=reset], input[type=button] {
+	padding: 0.3em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+input:focus {
+	border: 1px solid #E8A343;
+	-moz-box-shadow: inset 0 3px 10px #EDD9BC;
+	-webkit-box-shadow: inset 0 3px 10px #EDD9BC;
+}
+
+input.submit:focus, input.submit:hover {
+	border: 1px solid #67B045;
+}
+
+fieldset {
+	border: 0px;
+	border-top: 1px solid #B9B9B9;
+}
+
+legend {
+	padding: 1em;
+	color: #4E4E4E;
+	background-color: none;
+}
+
+label {
+	float:left;
+	width:25%;
+	margin-right:0.5em;
+	padding-top:0.7em;
+	text-align:right;
+}
+
+/********************************/
+
+.roll
+{
+	font-size: 0.9em;
+	padding: 0.5em;
+	padding-left: 1.5em;
+	border-bottom: 1px dotted #B5B5B5;
+}
+
+.roll_title
+{
+	font-weight: bold;
+}
+
+/* The #navigation bar */
+
+#nav
+{
+	width: 100%;
+	background-color: #444444;
+	font-size: 12px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	z-index: 3;
+}
+
+#nav .menu
+{
+	list-style-type: none;
+	padding: 0px;
+	display: block;
+	width: 1024px;
+	margin: 0 auto;
+}
+
+#nav .menu li
+{
+	display: inline;
+	padding: 3px;
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+#nav .menu li a
+{
+	color: #E4E4E4;
+}
+
+#nav .menu img
+{
+	margin-bottom: -2px;
+	margin-right: 5px;
+}
+
+#nav .menu li:hover
+{
+	background-color: #292929;
+	cursor: pointer;
+	border-bottom: 1px solid white;
+	padding-bottom: -1px;
+}
+
+/* WALL STYLE */
+.message {
+	border-bottom: 1px solid #ECECEC;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.message .comment {
+	margin-bottom: 0.3em;
+	background-color: #F3F3F3;
+	padding: 0.4em;
+	margin-left: 80px;
+	margin-right: 5px;
+}
+
+.message .avatar {
+	width: 70px;
+	height: 70px;
+	margin: 5px;
+	margin-left: 0px;
+	display: block;
+	float: left;
+	background-color: #9BBBC6;
+}
+
+.message .content {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+	margin-left: 80px;
+	margin-right: 5px;
+}
