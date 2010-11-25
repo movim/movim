@@ -40,7 +40,7 @@ class Friends extends Widget
 	
 	function build()
 	{
-		$this->xmpp->getRosterList($this->processList);
+
 		/*
 		  foreach($this->friendslist) {
 		      Show friend.
@@ -55,9 +55,23 @@ class Friends extends Widget
                 	$xmpp = XMPPConnect::getInstance(User::getLogin()); // We get the instance of the connexion
                 	$xmpp->getVCard(); // We send the vCard request
                 	$vcard = $xmpp->getPayload(); // We return the result of the request
-                	//print_r($vcard);
-                	echo '<img src="data:image/png;base64,'.$vcard['vCardPhotoBinVal'].'" ><br />'.
-                		 $vcard['vCardFN'].'<br />'.$vcard['vCardNickname'];
+                	echo "<img src='data:image/png;base64,".$vcard['vCardPhotoBinVal']."' ><br />\n".
+                		 $vcard['vCardFN'].'<br />'.$vcard['vCardNickname']."\n";
+                		 
+                	// We're displaying the roster
+                	$xmpp->getRosterList();
+                	$list = $xmpp->getPayload();
+                	
+                	echo "<br /><br /><h3>"._('Contacts')."</h3>".
+                		 "<div id='tinylist'><ul>\n";
+                	for($i=0;$i< sizeof($list["queryItemName"]); $i++) {
+                		echo "<li><a href='".
+                			 $list["queryItemJid"][$i].
+                			 "'>".
+                			 $list["queryItemName"][$i].
+                			 " (".$list["queryItemGrp"][$i].")</a></li>";
+                	}
+                	echo "</ul></div>";
                 ?>
                   <div class="friend">
                     tagada

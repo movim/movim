@@ -26,6 +26,17 @@ h1 {
 	padding-left: 0.3em;
 }
 
+h3 {
+	font-family: arial ;
+	color: #8C8C8C;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	font-size: 0.9em;
+}
+
 #left
 {
 	display: block;
@@ -209,4 +220,22 @@ label {
 	padding-bottom: 0.4em;
 	margin-left: 80px;
 	margin-right: 5px;
+}
+
+/* Tinylist */
+
+#tinylist ul {
+	list-style-type: none;
+	background-color: #F5F5F5;
+	margin-left: -0.5em;
+	margin-right: -0.5em;
+	padding-left: 0.3em;
+	margin-top: 0px;
+	border-top: 1px dotted #E2E2E2;
+	font-size: 0.8em;
+}
+
+#tinylist ul li {
+	padding: 0.3em;
+	border-bottom: 1px dotted #E2E2E2;
 }

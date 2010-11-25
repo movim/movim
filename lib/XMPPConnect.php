@@ -77,6 +77,7 @@ class XMPPConnect
 
 		// Loading required XEPS
 		$this->jaxl->requires(array(
+						 'JAXL0030', // Service Discovery
 						 'JAXL0054', // VCard
 						 'JAXL0115', // Entity Capabilities
 						 'JAXL0133', // Service Administration
@@ -134,7 +135,6 @@ class XMPPConnect
 	public function getPayload()
 	{
 		return $this->payload;
-		$this->jaxl->JAXL0206('endStream');
 	}
 
 	public function getInstance($jid = false)
@@ -182,9 +182,9 @@ class XMPPConnect
 	 * @param callback is a function that is called when the roster is returned
 	 *   by the server.
 	 */
-	public function getRosterList($callback)
+	public function getRosterList()
 	{
-		$this->jaxl->getRosterList($callback);
+		$this->jaxl->getRosterList(array(&$this, 'handlePayload'));
 	}
 
 	/**
