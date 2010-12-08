@@ -5,9 +5,16 @@ class GetConf
 	function __construct() {	
 	}
 	
+	/* Return the general configuration */
+	
+	static function getConf() {
+		$conf_file = BASE_PATH . "/config/conf.xml";
+		return self::readConfFile($conf_file);
+	}
+	
 	/* Return the element of the general configuration */
 	
-	static function getConf($element) {
+	static function getConfElement($element) {
 		$data = @simplexml_load_file(BASE_PATH."/config/conf.xml");
 		return $data->$element;
 	}

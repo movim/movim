@@ -15,28 +15,6 @@
  * 
  * See COPYING for licensing information.
  */
-  // Connecting user credentials
-define('JAXL_USER_NAME', 'user');
-define('JAXL_USER_PASS', 'pass');
-    
-// Connecting jabber server details
-define('JAXL_HOST_NAME', 'movim.eu');
-define('JAXL_HOST_PORT', 5222);
-define('JAXL_HOST_DOMAIN', 'movim.eu');
-    
-// Bosh connection manager details
-define('JAXL_BOSH_HOST', 'natsu.upyum.com');
-define('JAXL_BOSH_PORT', 80);
-define('JAXL_BOSH_SUFFIX', 'http-bind');
-    
-// Bosh specific browser cookie settings
-define('JAXL_BOSH_COOKIE_PATH', '/');
-// cookie domain should be "false" (without quotes) if bosh application domain is like localhost, xmpp, jaxl etc (single word)
-// otherwise of type ".localhost.localdomain" (with quotes) if bosh application domain is like localhost.localdomain, jaxl.im 
-define('JAXL_BOSH_COOKIE_DOMAIN', false);
-define('JAXL_BOSH_COOKIE_TTL', 3600);
-define('JAXL_BOSH_COOKIE_HTTPS', false);
-define('JAXL_BOSH_COOKIE_HTTP_ONLY', true);
     
 // Jabber external component setting
 define('JAXL_COMPONENT_HOST', 'component.'.JAXL_HOST_DOMAIN);
@@ -45,7 +23,6 @@ define('JAXL_COMPONENT_PORT', 5559);
 
 define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
 define('JAXL_LOG_EVENT', true);
-define('JAXL_LOG_LEVEL', 5);
 define('JAXL_LOG_ROTATE', false);
  
 define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/'); 
@@ -63,18 +40,27 @@ class XMPPConnect
 	 */
 	private function __construct($jid)
 	{
-		$host = GetConf::getHostConf($jid);
-		//print_r($host);
+		$userConf = GetConf::getHostConf($jid);
+		$serverConf = GetConf::getConf();
+		//print_r($userConf);
 		unset($_SESSION['jid']);
 		$this->jaxl = new JAXL(array(
-								   'host' => $host['host'],
-								   'domain' => $host['host'],
-								   'boshHost' => $host['boshHost'],
-								   'boshSuffix' => $host['boshSuffix'],
-								   'logLevel' => 5,
+								   // User Configuration
+								   'host' => $userConf['host'],
+								   'domain' => isset($userConf['domain']) ? $userConf['domain'] : $userConf['host'],
+								   'boshHost' => $userConf['boshHost'],
+								   'boshSuffix' => $userConf['boshSuffix'],
+								   'boshPort' => $userConf['boshPort'],
+						   
+								   // Server configuration
+								   'boshCookieTTL' => $serverConf['boshCookieTTL'],
+								   'boshCookiePath' => $serverConf['boshCookiePath'],
+								   'boshCookieDomain' => $serverConf['boshCookieDomain'],
+								   'boshCookieHTTPS' => $serverConf['boshCookieHTTPS'],
+								   'boshCookieHTTPOnly' => $serverConf['boshCookieHTTPOnly'],
+								   'logLevel' => $serverConf['logLevel'],
 								   'boshOut'=>false,
 								   ));
-
 		// Loading required XEPS
 		$this->jaxl->requires(array(
 						 'JAXL0030', // Service Discovery
@@ -159,7 +145,7 @@ class XMPPConnect
 		} else {
 			$id = explode('@',$jid);
 			$user = $id[0];
-			$host = $id[1];
+			$userConf = $id[1];
 			$domain = $id[1];
 
 			$this->jaxl->user = $user;

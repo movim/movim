@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <data>
-	<host>natsu.upyum.com</host>
-	<boshSuffix>http-bind</boshSuffix>
-	<submit>Valider</submit>
+	<host>movim.eu</host>
+	<domain>movim.eu</domain>
+	<port>5222</port>
+	
+	<boshHost>natsu.upyum.com</boshHost>
+	<boshSuffix>http-bind</boshSuffix>	
+	<boshPort>80</boshPort>
 </data>

@@ -34,7 +34,7 @@ class PageBuilder
 	{
 		$this->user = $user;
 		$conf = new GetConf();
-		$this->theme = $conf->GetConf('theme');
+		$this->theme = $conf->GetConfElement('theme');
 
 		if(!is_array(self::$scripts)) {
 			self::$scripts = array();
