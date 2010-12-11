@@ -72,10 +72,10 @@ class Widget
 			($this->external? 'widgets/' . $file : $file);
 	}
 
-	protected function callAjax($funcname)
+	protected function callAjax($funcname, $mode, $modeopt)
 	{
-		echo get_class($this) . '_' . $funcname . '(' .
-			implode(', ', array_slice(func_get_args(), 1)) . ');';
+		echo get_class($this) . '_' . $funcname . '(' . $mode . ', ' . $modeopt . ', ' .
+			implode(', ', array_slice(func_get_args(), 3)) . ');';
 	}
 
 	/**

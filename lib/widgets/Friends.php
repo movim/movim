@@ -35,7 +35,7 @@ class Friends extends Widget
 
 	function ajaxStuff($whatever)
 	{
-		echo "This is produced by ajaxStuff.";
+		echo date('Y-m-d H:i:s') . '<br />';
 	}
 	
 	function build()
@@ -75,7 +75,7 @@ class Friends extends Widget
                 ?>
                   <div class="friend">
                     tagada
-					 <input type="button" onclick="<?php $this->callAjax('ajaxStuff', '3', testreturn);?>" value="Click me" />
+					 <input type="button" onclick="<?php $this->callAjax('ajaxStuff', 'APPEND', "'testzone'", '3');?>" value="Click me" />
 					 <div id="testzone">
 					 </div>
                   </div>

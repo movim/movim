@@ -1,5 +1,10 @@
 var movimAjax;
 
+var CALLBACK = 1;
+var APPEND = 2;
+var FILL = 3;
+var PREPEND = 4;
+
 function makeXMLHttpRequest()
 {
 	if (window.XMLHttpRequest) {// code for real browsers
@@ -40,7 +45,7 @@ function movimPack(data)
 	return outBuffer;
 }
 
-function movim_ajaxSend(widget, func, parameters, callback)
+function movim_ajaxSend(widget, func, mode, modeopt, parameters)
 {
 	// Regenerating the client everytime (necessary for IE)
 	movimAjax = makeXMLHttpRequest();
@@ -50,7 +55,36 @@ function movim_ajaxSend(widget, func, parameters, callback)
 		+ parameters + '</funcall>' + "\n";
 
 	movimAjax.open('POST', 'jajax.php', true);
-	movimAjax.onreadystatechange = callback;
+
+	if(mode == CALLBACK) {
+		movimAjax.onreadystatechange = modeopt;
+	}
+	else if(mode == APPEND) {
+		movimAjax.onreadystatechange = function()
+		{
+			if(movimAjax.readyState == 4 && movimAjax.status == 200) {
+				document.getElementById(modeopt).innerHTML += movimAjax.responseText;
+			}
+		};
+	}
+	else if(mode == FILL) {
+		movimAjax.onreadystatechange = function()
+		{
+			if(movimAjax.readyState == 4 && movimAjax.status == 200) {
+				document.getElementById(modeopt).innerHTML = movimAjax.responseText;
+			}
+		};
+	}
+	else if(mode == PREPEND) {
+		movimAjax.onreadystatechange = function()
+		{
+			if(movimAjax.readyState == 4 && movimAjax.status == 200) {
+				var elt = document.getElementById(modeopt);
+				elt.innerHTML = movimAjax.responseText + elt.innerHTML;
+			}
+		};
+	}
+
 	movimAjax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 //	movimAjax.send(request);
 	movimAjax.send("<?xml version='1.0' encoding='UTF-8'?>" + request);
