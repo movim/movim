@@ -1,5 +1,6 @@
 var movimAjax;
 
+// Ajax modes.
 var CALLBACK = 1;
 var APPEND = 2;
 var FILL = 3;
@@ -45,6 +46,14 @@ function movimPack(data)
 	return outBuffer;
 }
 
+/**
+ * Sends data to the movim server through ajax.
+ *
+ * The provided mode determines what will become of the returned data. It
+ * can either be processed by a callback function provided as modeopt or
+ * it can append, prepend or fill the contents of the element which ID is
+ * modeopt.
+ */
 function movim_ajaxSend(widget, func, mode, modeopt, parameters)
 {
 	// Regenerating the client everytime (necessary for IE)
@@ -56,7 +65,7 @@ function movim_ajaxSend(widget, func, mode, modeopt, parameters)
 
 	movimAjax.open('POST', 'jajax.php', true);
 
-	if(mode == CALLBACK) {
+	if(mode == CALLBACK) { // considers the given modeopt as a callback function.
 		movimAjax.onreadystatechange = modeopt;
 	}
 	else if(mode == APPEND) {
@@ -86,6 +95,5 @@ function movim_ajaxSend(widget, func, mode, modeopt, parameters)
 	}
 
 	movimAjax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//	movimAjax.send(request);
 	movimAjax.send("<?xml version='1.0' encoding='UTF-8'?>" + request);
 }
