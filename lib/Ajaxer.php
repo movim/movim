@@ -79,26 +79,36 @@ class Ajaxer extends Controller
 	 */
 	public function handle()
 	{
-		$request = simplexml_load_string(file_get_contents('php://input'));
-
-		// Loading the widget.
-		$widget_name = (string)$request['widget'];
-		$widget_path = LIB_PATH . 'widgets/' . $widget_name . '.php';
-
-		if(file_exists($widget_path)) {
-			require($widget_path);
-			// Preparing the parameters and calling the function.
-			$params = array();
-			foreach($request->children() as $child) {
-				if($child->getName() == 'param') {
-					$params[] = (string)$child['value'];
-				}
+		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
+			if(rand(0,1) == 0) {
+				// We let it time out.
+				sleep(30);
+			} else {
+				sleep(2);
+				echo "tagada!!!!";
 			}
+		} else {
+			$request = simplexml_load_string(file_get_contents('php://input'));
 
-			$user = new User();
-			$widget = new $widget_name(false, $user);
+			// Loading the widget.
+			$widget_name = (string)$request['widget'];
+			$widget_path = LIB_PATH . 'widgets/' . $widget_name . '.php';
+
+			if(file_exists($widget_path)) {
+				require($widget_path);
+				// Preparing the parameters and calling the function.
+				$params = array();
+				foreach($request->children() as $child) {
+					if($child->getName() == 'param') {
+						$params[] = (string)$child['value'];
+					}
+				}
+
+				$user = new User();
+				$widget = new $widget_name(false, $user);
 			
-			call_user_func(array($widget, (string)$request['name']), $params);
+				call_user_func(array($widget, (string)$request['name']), $params);
+			}
 		}
 	}
 }
