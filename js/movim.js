@@ -6,6 +6,8 @@ var APPEND = 2;
 var FILL = 3;
 var PREPEND = 4;
 
+var movimPollHandlers = new Array();
+
 function makeXMLHttpRequest()
 {
 	if (window.XMLHttpRequest) {// code for real browsers
@@ -44,6 +46,43 @@ function movimPack(data)
 	}
 	
 	return outBuffer;
+}
+
+/**
+ * Attach a callback function to an event.
+ */
+function movimRegisterPollHandler(type, func)
+{
+	if(!(type in movimPollHandlers)) {
+		movimPollHandlers[type] = new Array();
+	}
+	movimPollHandlers[type].push(func);
+}
+
+/**
+ * Polls the server.
+ */
+function movim_poll()
+{
+	poller = makeXMLHttpRequest();
+	poller.open('GET', 'jajax.php?do=poll', true);
+
+	poller.onreadystatechange = function()
+	{
+		if(poller.readyState == 4)
+		{
+			if(poller.status == 200) {
+				// Handling poll return.
+				document.getElementById('testzone').innerHTML
+					= "<p>Poll succeeded: " + poller.responseText + "</p>"
+					+ document.getElementById('testzone').innerHTML;
+			}
+			// Restarting polling.
+			movim_poll();
+		}
+	};
+
+	poller.send();
 }
 
 /**
