@@ -80,12 +80,15 @@ class Ajaxer extends Controller
 	public function handle()
 	{
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
-			if(rand(0,1) == 0) {
-				// We let it time out.
-				sleep(30);
-			} else {
-				sleep(2);
-				echo "tagada!!!!";
+			$page = new PageBuilder();
+			$user = new User();
+			$content = new PageBuilder($user);
+			$page->setContent($content->build('main.tpl'));
+			$page->build('page.tpl');
+
+			foreach($page->loadedWidgets() as $widget) {
+				echo $widget . '<br />';
+				// TODO: Process events here.
 			}
 		} else {
 			$request = simplexml_load_string(file_get_contents('php://input'));

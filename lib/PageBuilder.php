@@ -25,6 +25,7 @@ class PageBuilder
 	private static $css;
 	private $content = '';
 	private $user;
+	private static $loaded_widgets;
 	
 	/**
 	 * Constructor. Determines whether to show the login page to the user or the
@@ -41,6 +42,9 @@ class PageBuilder
 		}
 		if(!is_array(self::$css)) {
 			self::$css = array();
+		}
+		if(!is_array(self::$loaded_widgets)) {
+			self::$loaded_widgets = array();
 		}
 	}
 	
@@ -224,6 +228,14 @@ class PageBuilder
 	 */
 	function widget($name)
 	{
+		if(!is_array(self::$loaded_widgets)) {
+			self::$loaded_widgets = array();
+			self::$loaded_widgets[] = $name;
+		}
+		else if(!in_array($name, self::$loaded_widgets)) {
+				self::$loaded_widgets[] = $name;
+		}
+		
 		$widget_path = LIB_PATH . 'widgets/' . $name . '.php';
 		if(file_exists($widget_path)) {
 			require($widget_path);
@@ -237,6 +249,14 @@ class PageBuilder
 			throw new MovimException(
 				sprintf(_("Error: Requested widget '%s' doesn't exist."), $name));
 		}
+	}
+
+	/**
+	 * Gets all the widgets that were loaded while building the page.
+	 */
+	function loadedWidgets()
+	{
+		return self::$loaded_widgets;
 	}
 }
 
