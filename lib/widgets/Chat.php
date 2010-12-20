@@ -18,13 +18,16 @@
 
 class Chat extends Widget
 {
-	private $user;
-	
-	function __construct(&$user)
+	function WidgetLoad()
 	{
-		$this->user = $user;
+		$this->registerEvent('incomechat', 'onIncomingChat');
 	}
-	
+
+	function onIncomingChat($event)
+	{
+		echo "onIncomingChat was called.";
+	}
+
 	function build()
 	{
 		?>
