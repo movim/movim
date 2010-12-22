@@ -9,6 +9,8 @@ define('LIB_PATH',BASE_PATH.'lib/');
 define('PROPERTIES_PATH',BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 
+require_once('BASE_PATH' . 'i18n.php');
+
 {
 	$index_pos = strpos($_SERVER['PHP_SELF'], 'index.php');
 	$path = "";
