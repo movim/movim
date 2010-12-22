@@ -62,7 +62,7 @@ class Friends extends Widget
                 	$xmpp->getRosterList();
                 	$list = $xmpp->getPayload();
                 	
-                	echo "<br /><br /><h3>"._('Contacts')."</h3>".
+                	echo "<br /><br /><h3>".t('Contacts')."</h3>".
                 		 "<div id='tinylist'><ul>\n";
                 	for($i=0;$i< sizeof($list["queryItemName"]); $i++) {
                 		echo "<li><a href='".

@@ -39,7 +39,7 @@ class GetConf
 	
 	static function readConfFile($file_path) {
 		if(!file_exists($file_path)) {
-			throw new MovimException(sprintf(_("Error: Cannot load file `%s'"), $file_path));
+			throw new MovimException(sprintf(t("Error: Cannot load file `%s'"), $file_path));
 		}
 
 		$file = simplexml_load_file($file_path);

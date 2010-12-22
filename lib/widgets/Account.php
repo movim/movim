@@ -29,10 +29,10 @@ class Account extends Widget
 	{
 			$form = new Form();
 			$form->startForm(basename($_SERVER['PHP_SELF']));
-				$form->startFieldset(_('Jabber Account'));
+				$form->startFieldset(t('Jabber Account'));
 				$form->newline = true;
-					$form->textInput('account',_('Jabber Account'),false,'block required');
-					$form->textInput('password',_('Password'),false,'block required');
+					$form->textInput('account',t('Jabber Account'),false,'block required');
+					$form->textInput('password',t('Password'),false,'block required');
 				$form->newline = true;
 				$form->closeFieldset();
 				$form->insertBR();

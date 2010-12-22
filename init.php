@@ -9,6 +9,12 @@ define('LIB_PATH',BASE_PATH.'lib/');
 define('PROPERTIES_PATH',BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 
+require_once(LIB_PATH . 'i18n.php');
+
+//load_language('fr_fr');
+
+define('APP_TITLE', t("MOVIM - Test Client"));
+
 {
 	$index_pos = strpos($_SERVER['PHP_SELF'], 'index.php');
 	$path = "";
@@ -63,7 +69,7 @@ function __autoload($className) {
 	if(file_exists($file)) {
 		require_once($file);
 	} else {
-		throw new MovimException(_("Erreur Autoload : le fichier {$file} n'existe pas"));
+		throw new MovimException(t("Erreur Autoload : le fichier {$file} n'existe pas"));
 	}
 }
 

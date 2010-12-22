@@ -60,7 +60,7 @@ class User {
 				$this->username = $login;
 				$this->password = $pass;
 			} else {
-				throw new MovimException(_("Mauvais mot de passe"));
+				throw new MovimException(t("Wrong password"));
 			}
 		}
 		catch(MovimException $e){

@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-22 17:27+0000\n"
+"PO-Revision-Date: 2010-12-22 17:31+0000\n"
+"Last-Translator: Etenil <etenil@etenilsrealm.nl>\n"
+"Language-Team: French <etenil@etenilsrealm.nl>\n"
+"Language: French French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: ../init.php:16
+#, fuzzy
+msgid "MOVIM - Test Client"
+msgstr "MOVIM - Client de test"
+
+#: ../lib/Dispatcher.php:42
+#, fuzzy, php-format
+msgid "%s - Welcome to Movim"
+msgstr "%s - Bienvenue sur Movim"
+
+#: ../lib/Dispatcher.php:43 ../lib/Dispatcher.php:61 ../lib/Dispatcher.php:76
+msgid "Home"
+msgstr "Accueil"
+
+#: ../lib/Dispatcher.php:44 ../lib/Dispatcher.php:62
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../lib/Dispatcher.php:45 ../lib/Dispatcher.php:63
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: ../lib/Dispatcher.php:60
+#, fuzzy, php-format
+msgid "%s - Configuration"
+msgstr "%s - Configuration"
+
+#: ../lib/Dispatcher.php:75
+#, fuzzy, php-format
+msgid "%s - Account Creation"
+msgstr "%s - Création de compte"
+
+#: ../lib/Dispatcher.php:92
+#, fuzzy, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - Connexion à Movim"
+
+#: ../lib/Dispatcher.php:95
+msgid "Account Creation"
+msgstr "Création de compte"
+
+#: ../lib/Dispatcher.php:99
+msgid "My address"
+msgstr "Mon adresse"
+
+#: ../lib/Dispatcher.php:100 ../lib/widgets/Account.php:35
+msgid "Password"
+msgstr "Mot de passe"
+
+#: ../lib/Dispatcher.php:101
+msgid "Come in!"
+msgstr "Entrez!"
+
+#: ../lib/GetConf.php:42
+#, php-format
+msgid "Error: Cannot load file `%s'"
+msgstr "Erreur: Fichier << %s >> introuvable"
+
+#: ../lib/PageBuilder.php:251
+#, php-format
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr "Erreur: Le widget << %s >> n'existe pas."
+
+#: ../lib/User.php:64
+#, fuzzy
+msgid "Wrong password"
+msgstr "Mot de passe incorrect"
+
+#: ../lib/Widget.php:69
+msgid "This is a sample widget."
+msgstr "Ceci est un widget de test"
+
+#: ../lib/XMPPConnect.php:154
+#, php-format
+msgid "Error: jid `%s' is incorrect"
+msgstr "L'addresse Jabber << %s >> est incorrecte"
+
+#: ../lib/widgets/Account.php:32 ../lib/widgets/Account.php:34
+msgid "Jabber Account"
+msgstr "Compte Jabber"
+
+#: ../lib/widgets/Chat.php:40
+msgid "Send"
+msgstr "Envoyer"
+
+#: ../lib/widgets/Config.php:32
+msgid "Full Name"
+msgstr "Nom complet"
+
+#: ../lib/widgets/Config.php:33
+msgid "Gender"
+msgstr "Sexe"
+
+#: ../lib/widgets/Config.php:35
+msgid "Male"
+msgstr "Homme"
+
+#: ../lib/widgets/Config.php:36
+msgid "Female"
+msgstr "Femme"
+
+#: ../lib/widgets/Config.php:39
+msgid "Interests"
+msgstr "Centres d'intérêt"
+
+#: ../lib/widgets/Config.php:40
+msgid "Movies"
+msgstr "Films"
+
+#: ../lib/widgets/Config.php:41
+msgid "Reading"
+msgstr "Lecture"
+
+#: ../lib/widgets/Config.php:42
+msgid "Sports"
+msgstr "Sports"
+
+#: ../lib/widgets/Config.php:44
+msgid "Upload Your Picture"
+msgstr "Envoyez votre photo"
+
+#: ../lib/widgets/Config.php:45
+msgid "About You"
+msgstr "À propos de vous"
+
+#: ../lib/widgets/Config.php:46
+msgid "Your Age"
+msgstr "Votre age"
+
+#: ../lib/widgets/Config.php:47
+msgid "baby"
+msgstr "bébé"
+
+#: ../lib/widgets/Config.php:48
+msgid "toddler"
+msgstr "nourrisson"
+
+#: ../lib/widgets/Config.php:49
+msgid "child"
+msgstr "enfant"
+
+#: ../lib/widgets/Config.php:50
+msgid "teen"
+msgstr "adolescent"
+
+#: ../lib/widgets/Config.php:51
+msgid "adult"
+msgstr "adulte"
+
+#: ../lib/widgets/Config.php:52
+msgid "middleage"
+msgstr "mature"
+
+#: ../lib/widgets/Config.php:53
+msgid "retiree"
+msgstr "retraité"
+
+#: ../lib/widgets/Config.php:54
+msgid "old"
+msgstr "vieux"
+
+#: ../lib/widgets/Config.php:55
+msgid "stillalive"
+msgstr "survivant"
+
+#: ../lib/widgets/Config.php:65
+msgid "error: "
+msgstr "Erreur: "
+
+#: ../lib/widgets/Friends.php:65
+msgid "Contacts"
+msgstr "Contacts"
+
+#~ msgid "MOVIM - Test Client - Account Creation"
+#~ msgstr "MOVIM - Client de test - Création de compte"

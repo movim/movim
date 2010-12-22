@@ -1,0 +1,189 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-22 17:27+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../init.php:16
+msgid "MOVIM - Test Client"
+msgstr ""
+
+#: ../lib/Dispatcher.php:42
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr ""
+
+#: ../lib/Dispatcher.php:43 ../lib/Dispatcher.php:61 ../lib/Dispatcher.php:76
+msgid "Home"
+msgstr ""
+
+#: ../lib/Dispatcher.php:44 ../lib/Dispatcher.php:62
+msgid "Configuration"
+msgstr ""
+
+#: ../lib/Dispatcher.php:45 ../lib/Dispatcher.php:63
+msgid "Logout"
+msgstr ""
+
+#: ../lib/Dispatcher.php:60
+#, php-format
+msgid "%s - Configuration"
+msgstr ""
+
+#: ../lib/Dispatcher.php:75
+#, php-format
+msgid "%s - Account Creation"
+msgstr ""
+
+#: ../lib/Dispatcher.php:92
+#, php-format
+msgid "%s - Login to Movim"
+msgstr ""
+
+#: ../lib/Dispatcher.php:95
+msgid "Account Creation"
+msgstr ""
+
+#: ../lib/Dispatcher.php:99
+msgid "My address"
+msgstr ""
+
+#: ../lib/Dispatcher.php:100 ../lib/widgets/Account.php:35
+msgid "Password"
+msgstr ""
+
+#: ../lib/Dispatcher.php:101
+msgid "Come in!"
+msgstr ""
+
+#: ../lib/GetConf.php:42
+#, php-format
+msgid "Error: Cannot load file `%s'"
+msgstr ""
+
+#: ../lib/PageBuilder.php:251
+#, php-format
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr ""
+
+#: ../lib/User.php:64
+msgid "Wrong password"
+msgstr ""
+
+#: ../lib/Widget.php:69
+msgid "This is a sample widget."
+msgstr ""
+
+#: ../lib/XMPPConnect.php:154
+#, php-format
+msgid "Error: jid `%s' is incorrect"
+msgstr ""
+
+#: ../lib/widgets/Account.php:32 ../lib/widgets/Account.php:34
+msgid "Jabber Account"
+msgstr ""
+
+#: ../lib/widgets/Chat.php:40
+msgid "Send"
+msgstr ""
+
+#: ../lib/widgets/Config.php:32
+msgid "Full Name"
+msgstr ""
+
+#: ../lib/widgets/Config.php:33
+msgid "Gender"
+msgstr ""
+
+#: ../lib/widgets/Config.php:35
+msgid "Male"
+msgstr ""
+
+#: ../lib/widgets/Config.php:36
+msgid "Female"
+msgstr ""
+
+#: ../lib/widgets/Config.php:39
+msgid "Interests"
+msgstr ""
+
+#: ../lib/widgets/Config.php:40
+msgid "Movies"
+msgstr ""
+
+#: ../lib/widgets/Config.php:41
+msgid "Reading"
+msgstr ""
+
+#: ../lib/widgets/Config.php:42
+msgid "Sports"
+msgstr ""
+
+#: ../lib/widgets/Config.php:44
+msgid "Upload Your Picture"
+msgstr ""
+
+#: ../lib/widgets/Config.php:45
+msgid "About You"
+msgstr ""
+
+#: ../lib/widgets/Config.php:46
+msgid "Your Age"
+msgstr ""
+
+#: ../lib/widgets/Config.php:47
+msgid "baby"
+msgstr ""
+
+#: ../lib/widgets/Config.php:48
+msgid "toddler"
+msgstr ""
+
+#: ../lib/widgets/Config.php:49
+msgid "child"
+msgstr ""
+
+#: ../lib/widgets/Config.php:50
+msgid "teen"
+msgstr ""
+
+#: ../lib/widgets/Config.php:51
+msgid "adult"
+msgstr ""
+
+#: ../lib/widgets/Config.php:52
+msgid "middleage"
+msgstr ""
+
+#: ../lib/widgets/Config.php:53
+msgid "retiree"
+msgstr ""
+
+#: ../lib/widgets/Config.php:54
+msgid "old"
+msgstr ""
+
+#: ../lib/widgets/Config.php:55
+msgid "stillalive"
+msgstr ""
+
+#: ../lib/widgets/Config.php:65
+msgid "error: "
+msgstr ""
+
+#: ../lib/widgets/Friends.php:65
+msgid "Contacts"
+msgstr ""
