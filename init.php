@@ -13,6 +13,8 @@ require_once(LIB_PATH . 'i18n.php');
 
 load_language('fr_fr');
 
+define('APP_TITLE', t("MOVIM - Test Client"));
+
 {
 	$index_pos = strpos($_SERVER['PHP_SELF'], 'index.php');
 	$path = "";

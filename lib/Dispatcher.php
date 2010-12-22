@@ -39,7 +39,7 @@ class Dispatcher extends Controller
 		if(!$user->isLogged()) {
 			$this->login();
 		} else {
-			$this->page->setTitle(t('MOVIM - Test Client - Welcome to Movim'));
+			$this->page->setTitle(sprintf(t('%s - Welcome to Movim'), APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
 			$this->page->menuAddLink(t('Logout'), '?q=disconnect');
@@ -57,7 +57,7 @@ class Dispatcher extends Controller
 		if(!$user->isLogged()) {
 			$this->login();
 		} else {
-			$this->page->setTitle(t('MOVIM - Test Client - Configuration'));
+			$this->page->setTitle(sprintf(t('%s - Configuration'), APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
 			$this->page->menuAddLink(t('Logout'), '?q=disconnect');
@@ -72,7 +72,7 @@ class Dispatcher extends Controller
 	function account()
 	{
 		if(GetConf::getConfElement("accountCreation") == 1) {
-			$this->page->setTitle(t('MOVIM - Test Client - Account Creation'));
+			$this->page->setTitle(sprintf(t('%s - Account Creation'), APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 			$content = new PageBuilder($user);
 
@@ -89,7 +89,7 @@ class Dispatcher extends Controller
 	 */
 	function login()
 	{
-		$this->page->setTitle(t('MOVIM - Test Client - Login to Movim'));
+		$this->page->setTitle(sprintf(t('%s - Login to Movim'), APP_TITLE));
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
 		if(GetConf::getConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
