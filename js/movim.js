@@ -74,10 +74,11 @@ function movim_poll()
 			if(poller.status == 200) {
 				// Handling poll return.
 				document.getElementById('testzone').innerHTML
-					= "<p>Poll succeeded: " + poller.responseText + "</p>"
-					+ document.getElementById('testzone').innerHTML;
+					= "<p>Poll succeeded: " + poller.responseText + "</p>";
+					//+ document.getElementById('testzone').innerHTML;
 			}
 			// Restarting polling.
+			//setTimeout("movim_poll()", 2000);
 			movim_poll();
 		}
 	};

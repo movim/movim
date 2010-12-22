@@ -25,7 +25,7 @@ class User {
 			$this->password = $_SESSION['pass'];
 
 			$this->xmppSession = XMPPConnect::getInstance($this->username);
-			//$this->xmppSession->pingServer();
+			$this->xmppSession->pingServer();
 		}
 		else if(isset($_POST['login'])
 				&& isset($_POST['pass'])
@@ -54,9 +54,10 @@ class User {
 			$data = GetConf::getUserConf($login);
 
 			// Careful guys, md5 is _not_ secure. SHA1 recommended here.
-			if(sha1($pass) == $data->pass) {
+			if(sha1($pass) == $data['pass']) {
 				$_SESSION['login'] = $login;
 				$_SESSION['pass'] = $pass;
+
 				$this->username = $login;
 				$this->password = $pass;
 			} else {

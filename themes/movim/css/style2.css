@@ -41,7 +41,7 @@ h3 {
 {
 	display: block;
 	margin-top: 0.5em;
-	-moz-box-shadow: 0px 5px 7px #CACACA;
+	box-shadow: 0px 5px 7px #CACACA;
 	-webkit-box-shadow: 0px 5px 7px #CACACA;
 	border: 1px solid #DCDCDC;
 	width: 180px;
@@ -78,9 +78,8 @@ h3 {
 
 input
 {
-	-moz-border-radius:4px 4px 4px 4px;
-	-webkit-border-radius:4px 4px 4px 4px;
-	-moz-box-shadow: inset 0 3px 10px #D0D0D0;
+	border-radius:4px 4px 4px 4px;
+	box-shadow: inset 0 3px 10px #D0D0D0;
 	-webkit-box-shadow: inset 0 3px 10px #D0D0D0;
 	border:1px solid #AAAAAA;
 	margin: 10px;
@@ -90,17 +89,29 @@ input[type=text], input[type=password] {
 	font-family:'Helvetica Neue',HelveticaNeue,Helvetica,Arial,sans-serif;
 	color:#585858;
 	font-weight:normal;
+	padding: 0.3em;
 }
 
 input[type=submit], input[type=reset], input[type=button] {
 	padding: 0.3em;
 	padding-left: 1em;
 	padding-right: 1em;
+	box-shadow: inset 0 -3px 10px #D0D0D0;
+	-webkit-box-shadow: inset 0 -3px 10px #D0D0D0;
+	background-color: white;
+}
+
+input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover {
+	border: 1px solid gray;
+}
+
+input[type=submit], input[type=reset] {
+	float: right;
 }
 
 input:focus {
 	border: 1px solid #E8A343;
-	-moz-box-shadow: inset 0 3px 10px #EDD9BC;
+	box-shadow: inset 0 3px 10px #EDD9BC;
 	-webkit-box-shadow: inset 0 3px 10px #EDD9BC;
 }
 
@@ -123,7 +134,7 @@ label {
 	float:left;
 	width:25%;
 	margin-right:0.5em;
-	padding-top:0.7em;
+	padding-top:1.1em;
 	text-align:right;
 }
 

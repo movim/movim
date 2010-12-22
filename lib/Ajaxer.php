@@ -79,14 +79,20 @@ class Ajaxer extends Controller
 	 */
 	public function handle()
 	{
+        session_commit();
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
-			if(rand(0,1) == 0) {
-				// We let it time out.
-				sleep(30);
-			} else {
-				sleep(2);
-				echo "tagada!!!!";
-			}
+				// We wait a little…
+                //$user = new User();
+                //var_dump($_SESSION);
+                //echo $user->getLogin();
+                //$xmpp = new XMPPConnect();
+
+				//$xmpp = XMPPConnect::getInstance($_SESSION['login']); // We get the instance of the connexion
+				//$xmpp->pingServer();
+				//session_commit();
+           		//session_write_close();
+           		echo date('H:i:s');
+				sleep(3);
 		} else {
 			$request = simplexml_load_string(file_get_contents('php://input'));
 
@@ -108,6 +114,7 @@ class Ajaxer extends Controller
 				$widget = new $widget_name(false, $user);
 			
 				call_user_func(array($widget, (string)$request['name']), $params);
+				
 			}
 		}
 	}

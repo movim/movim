@@ -69,7 +69,7 @@ class Form {
       else { $action = ' action="' . $action . '"'; }
 
       // select form action: post or get
-      if (!ereg("^(get|post)$",strtolower($method))) {
+      if (!preg_match("#^(get|post)$#",strtolower($method))) {
          $this->error = "method should be post or get";
          return false;
          }
@@ -648,7 +648,7 @@ class Form {
       if(trim($ClassID) == '' || !$ClassID) { return ''; }
 
       // determine if it is a class or id, ids should begin with #
-      if(ereg("^#",$ClassID)) { return ' id="' . substr($ClassID,1) . '"'; }
+      if(preg_match("#^#",$ClassID)) { return ' id="' . substr($ClassID,1) . '"'; }
       else { return ' class="' . $ClassID . '"'; }
       }
 

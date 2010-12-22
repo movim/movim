@@ -34,5 +34,4 @@ require_once('init.php');
 // Run
 $rqst = new Dispatcher();
 $rqst->handle();
-
 ?>

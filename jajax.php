@@ -20,5 +20,4 @@ require("init.php");
 
 $ajax = new Ajaxer();
 $ajax->handle();
-
 ?>

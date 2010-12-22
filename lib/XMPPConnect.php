@@ -33,7 +33,6 @@ class XMPPConnect
 	private static $instance;
 	private $jaxl;
 	private $payload;
-	
     
 	/**
 	 * Firing up basic parts of jaxl and setting variables.
@@ -42,8 +41,9 @@ class XMPPConnect
 	{
 		$userConf = GetConf::getHostConf($jid);
 		$serverConf = GetConf::getConf();
-		//print_r($userConf);
+
 		unset($_SESSION['jid']);
+		
 		$this->jaxl = new JAXL(array(
 								   // User Configuration
 								   'host' => $userConf['host'],
@@ -60,6 +60,7 @@ class XMPPConnect
 								   'boshCookieHTTPOnly' => $serverConf['boshCookieHTTPOnly'],
 								   'logLevel' => $serverConf['logLevel'],
 								   'boshOut'=>false,
+								   
 								   ));
 		// Loading required XEPS
 		$this->jaxl->requires(array(
@@ -98,6 +99,15 @@ class XMPPConnect
 	public function getVCard()
 	{
 		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'handlePayload'));
+	}
+	
+	/**
+	 * Pings the server. This must be done regularly in order to keep the
+	 * session running.
+	 */
+	public function pingServer()
+	{
+		$this->jaxl->JAXL0206('ping');
 	}
 	
 	/**
@@ -214,14 +224,6 @@ class XMPPConnect
 		}
 	}
 
-	/**
-	 * Pings the server. This must be done regularly in order to keep the
-	 * session running.
-	 */
-	public function pingServer()
-	{
-		$this->jaxl->JAXL0206('ping');
-	}
 }
 
 ?>

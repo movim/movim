@@ -68,6 +68,21 @@ class Dispatcher extends Controller
 			echo $this->page->build('page.tpl');
 		}
 	}
+	
+	function account()
+	{
+		if(GetConf::getConfElement("accountCreation") == 1) {
+			$this->page->setTitle(_('MOVIM - Test Client - Account Creation'));
+			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon')._('Home'), '?q=mainPage');
+			$content = new PageBuilder($user);
+
+			$this->page->setContent($content->build('account.tpl'));
+			echo $this->page->build('page.tpl');
+		
+		} else {
+			$this->login();
+		}
+	}
 
 	/**
 	 * Show login interface (hard-coded).
@@ -76,12 +91,14 @@ class Dispatcher extends Controller
 	{
 		$this->page->setTitle(_('MOVIM - Test Client - Login to Movim'));
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
+		if(GetConf::getConfElement("accountCreation") == 1)
+			$this->page->menuAddLink(_('Account Creation'), '?q=account');
 		$this->page->setContent(
 			'<div id="connect_form">'.
 			'<form id="authForm" action="index.php" method="post">'.
 			'<input type="text" name="login" id="login" value="'._("My address").'" class="write"/>'.
 			'<input type="password" name="pass" id="pass" value="'._("Password").'" class="write"/><br />'.
-			'<input class="submit" type="submit" name="submit" value="'._("Come in!").'"/>'.
+			'<input class="submit" style="float: none;"type="submit" name="submit" value="'._("Come in!").'"/>'.
 			'</form>'.
 			'</div>');
 		echo $this->page->build('page.tpl');
