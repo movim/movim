@@ -36,7 +36,6 @@ class Friends extends Widget
 	function ajaxStuff($whatever)
 	{
 		echo date('Y-m-d H:i:s') . '<br />';
-				session_commit();
 	}
 	
 	function build()

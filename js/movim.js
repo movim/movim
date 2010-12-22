@@ -77,9 +77,12 @@ function movim_poll()
 					= "<p>Poll succeeded: " + poller.responseText + "</p>";
 					//+ document.getElementById('testzone').innerHTML;
 			}
-			// Restarting polling.
-			//setTimeout("movim_poll()", 2000);
-			movim_poll();
+
+			if(poller.status > 0) {
+				// Restarting polling.
+				movim_poll();
+			}
+
 		}
 	};
 

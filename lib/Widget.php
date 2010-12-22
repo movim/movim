@@ -24,6 +24,7 @@ class Widget
 	protected $ajax;	 /*< Contains ajax client code. */
 	protected $xmpp; /*< XMPPConnect instance. */
 	protected $name;
+	protected $events;
 
 	/**
 	 * Initialises Widget stuff.
@@ -51,6 +52,13 @@ class Widget
 				$this->ajax->defun(get_class($this), $method->name, $params);
 			}
 		}
+
+		$this->WidgetLoad();
+	}
+
+	function WidgetLoad()
+	{
+		// Initialize stuff here.
 	}
 
 	/**
@@ -100,6 +108,30 @@ class Widget
 	protected function addcss($filename)
 	{
 		$this->css[] = $this->respath($filename);
+	}
+
+	/**
+	 * Registers an event handler.
+	 */
+	protected function registerEvent($type, $function)
+	{
+		if(!array_key_exists($type, $this->events)) {
+			$this->events[$type] = array($function);
+		} else {
+			$this->events[$type][] = $function;
+		}
+	}
+
+	/**
+	 * Runs all events of a given type.
+	 */
+	public function runEvents($type, $event)
+	{
+		if(array_key_exists($type, $this->events)) {
+			foreach($this->events[$type] as $handler) {
+				call_user_func(array($this, $handler), $event);
+			}
+		}
 	}
 
 	/**
