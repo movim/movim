@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-22 16:20+0000\n"
+"PO-Revision-Date: 2010-12-22 16:21+0000\n"
+"Last-Translator: Etenil <etenil@etenilsrealm.nl>\n"
+"Language-Team: French <etenil@etenilsrealm.nl>\n"
+"Language: French French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: ../lib/Dispatcher.php:42
+msgid "MOVIM - Test Client - Welcome to Movim"
+msgstr "MOVIM - Client de test - Bienvenue sur Movim"
+
+#: ../lib/Dispatcher.php:43 ../lib/Dispatcher.php:61 ../lib/Dispatcher.php:76
+msgid "Home"
+msgstr "Accueil"
+
+#: ../lib/Dispatcher.php:44 ../lib/Dispatcher.php:62
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../lib/Dispatcher.php:45 ../lib/Dispatcher.php:63
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: ../lib/Dispatcher.php:60
+msgid "MOVIM - Test Client - Configuration"
+msgstr "MOVIM - Client de test - Configuration"
+
+#: ../lib/Dispatcher.php:75
+msgid "MOVIM - Test Client - Account Creation"
+msgstr "MOVIM - Client de test - Création de compte"
+
+#: ../lib/Dispatcher.php:92
+msgid "MOVIM - Test Client - Login to Movim"
+msgstr "MOVIM - Client de test - Connexion à Movim"
+
+#: ../lib/Dispatcher.php:95
+msgid "Account Creation"
+msgstr "Création de compte"
+
+#: ../lib/Dispatcher.php:99
+msgid "My address"
+msgstr "Mon adresse"
+
+#: ../lib/Dispatcher.php:100 ../lib/widgets/Account.php:35
+msgid "Password"
+msgstr "Mot de passe"
+
+#: ../lib/Dispatcher.php:101
+msgid "Come in!"
+msgstr "Entrez!"
+
+#: ../lib/GetConf.php:42
+#, php-format
+msgid "Error: Cannot load file `%s'"
+msgstr "Erreur: Fichier << %s >> introuvable"
+
+#: ../lib/PageBuilder.php:250
+#, php-format
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr "Erreur: Le widget << %s >> n'existe pas."
+
+#: ../lib/User.php:64
+#, fuzzy
+msgid "Wrong password"
+msgstr "Mot de passe incorrect"
+
+#: ../lib/Widget.php:69
+msgid "This is a sample widget."
+msgstr "Ceci est un widget de test"
+
+#: ../lib/XMPPConnect.php:154
+#, php-format
+msgid "Error: jid `%s' is incorrect"
+msgstr "L'addresse Jabber << %s >> est incorrecte"
+
+#: ../lib/widgets/Account.php:32 ../lib/widgets/Account.php:34
+msgid "Jabber Account"
+msgstr "Compte Jabber"
+
+#: ../lib/widgets/Chat.php:40
+msgid "Send"
+msgstr "Envoyer"
+
+#: ../lib/widgets/Friends.php:65
+msgid "Contacts"
+msgstr "Contacts"

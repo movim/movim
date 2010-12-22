@@ -247,7 +247,7 @@ class PageBuilder
 			self::$scripts = array_merge(self::$scripts, $widget->loadjs());
 		} else {
 			throw new MovimException(
-				sprintf(_("Error: Requested widget '%s' doesn't exist."), $name));
+				sprintf(t("Error: Requested widget '%s' doesn't exist."), $name));
 		}
 	}
 

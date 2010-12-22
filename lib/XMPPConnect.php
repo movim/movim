@@ -151,7 +151,7 @@ class XMPPConnect
 	public function login($jid, $pass)
 	{
 		if(!$this->checkJid($jid)) {
-		 	throw new MovimException(sprintf(_("Error: jid `%s' is incorrect"), $jid));
+		 	throw new MovimException(sprintf(t("Error: jid `%s' is incorrect"), $jid));
 		} else {
 			$id = explode('@',$jid);
 			$user = $id[0];

@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-22 16:20+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../lib/Dispatcher.php:42
+msgid "MOVIM - Test Client - Welcome to Movim"
+msgstr ""
+
+#: ../lib/Dispatcher.php:43 ../lib/Dispatcher.php:61 ../lib/Dispatcher.php:76
+msgid "Home"
+msgstr ""
+
+#: ../lib/Dispatcher.php:44 ../lib/Dispatcher.php:62
+msgid "Configuration"
+msgstr ""
+
+#: ../lib/Dispatcher.php:45 ../lib/Dispatcher.php:63
+msgid "Logout"
+msgstr ""
+
+#: ../lib/Dispatcher.php:60
+msgid "MOVIM - Test Client - Configuration"
+msgstr ""
+
+#: ../lib/Dispatcher.php:75
+msgid "MOVIM - Test Client - Account Creation"
+msgstr ""
+
+#: ../lib/Dispatcher.php:92
+msgid "MOVIM - Test Client - Login to Movim"
+msgstr ""
+
+#: ../lib/Dispatcher.php:95
+msgid "Account Creation"
+msgstr ""
+
+#: ../lib/Dispatcher.php:99
+msgid "My address"
+msgstr ""
+
+#: ../lib/Dispatcher.php:100 ../lib/widgets/Account.php:35
+msgid "Password"
+msgstr ""
+
+#: ../lib/Dispatcher.php:101
+msgid "Come in!"
+msgstr ""
+
+#: ../lib/GetConf.php:42
+#, php-format
+msgid "Error: Cannot load file `%s'"
+msgstr ""
+
+#: ../lib/PageBuilder.php:250
+#, php-format
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr ""
+
+#: ../lib/User.php:64
+msgid "Wrong password"
+msgstr ""
+
+#: ../lib/Widget.php:69
+msgid "This is a sample widget."
+msgstr ""
+
+#: ../lib/XMPPConnect.php:154
+#, php-format
+msgid "Error: jid `%s' is incorrect"
+msgstr ""
+
+#: ../lib/widgets/Account.php:32 ../lib/widgets/Account.php:34
+msgid "Jabber Account"
+msgstr ""
+
+#: ../lib/widgets/Chat.php:40
+msgid "Send"
+msgstr ""
+
+#: ../lib/widgets/Friends.php:65
+msgid "Contacts"
+msgstr ""

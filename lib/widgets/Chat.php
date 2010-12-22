@@ -37,7 +37,7 @@ class Chat extends Widget
 		    <p>Pouet: Gna gna gna!</p>
                   </div>
                   <input type="text" id="chatInput" />
-                  <input type="button" id="chatSend" value="<?php echo _('Send');?>"/>
+                  <input type="button" id="chatSend" value="<?php echo t('Send');?>"/>
 		</div>
 		<?php
 	}

@@ -66,7 +66,7 @@ class Widget
 	 */
 	function build()
 	{
-		echo _("This is a sample widget.");
+		echo t("This is a sample widget.");
 	}
 
 	/**

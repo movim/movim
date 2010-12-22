@@ -39,10 +39,10 @@ class Dispatcher extends Controller
 		if(!$user->isLogged()) {
 			$this->login();
 		} else {
-			$this->page->setTitle(_('MOVIM - Test Client - Welcome to Movim'));
-			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon')._('Home'), '?q=mainPage');
-			$this->page->menuAddLink(_('Configuration'), '?q=config');
-			$this->page->menuAddLink(_('Logout'), '?q=disconnect');
+			$this->page->setTitle(t('MOVIM - Test Client - Welcome to Movim'));
+			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
+			$this->page->menuAddLink(t('Configuration'), '?q=config');
+			$this->page->menuAddLink(t('Logout'), '?q=disconnect');
 			$content = new PageBuilder($user);
 
 			$this->page->setContent($content->build('main.tpl'));
@@ -57,10 +57,10 @@ class Dispatcher extends Controller
 		if(!$user->isLogged()) {
 			$this->login();
 		} else {
-			$this->page->setTitle(_('MOVIM - Test Client - Configuration'));
-			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon')._('Home'), '?q=mainPage');
-			$this->page->menuAddLink(_('Configuration'), '?q=config');
-			$this->page->menuAddLink(_('Logout'), '?q=disconnect');
+			$this->page->setTitle(t('MOVIM - Test Client - Configuration'));
+			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
+			$this->page->menuAddLink(t('Configuration'), '?q=config');
+			$this->page->menuAddLink(t('Logout'), '?q=disconnect');
 
 			$content = new PageBuilder($user);
 
@@ -72,8 +72,8 @@ class Dispatcher extends Controller
 	function account()
 	{
 		if(GetConf::getConfElement("accountCreation") == 1) {
-			$this->page->setTitle(_('MOVIM - Test Client - Account Creation'));
-			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon')._('Home'), '?q=mainPage');
+			$this->page->setTitle(t('MOVIM - Test Client - Account Creation'));
+			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 			$content = new PageBuilder($user);
 
 			$this->page->setContent($content->build('account.tpl'));
@@ -89,16 +89,16 @@ class Dispatcher extends Controller
 	 */
 	function login()
 	{
-		$this->page->setTitle(_('MOVIM - Test Client - Login to Movim'));
+		$this->page->setTitle(t('MOVIM - Test Client - Login to Movim'));
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
 		if(GetConf::getConfElement("accountCreation") == 1)
-			$this->page->menuAddLink(_('Account Creation'), '?q=account');
+			$this->page->menuAddLink(t('Account Creation'), '?q=account');
 		$this->page->setContent(
 			'<div id="connect_form">'.
 			'<form id="authForm" action="index.php" method="post">'.
-			'<input type="text" name="login" id="login" value="'._("My address").'" class="write"/>'.
-			'<input type="password" name="pass" id="pass" value="'._("Password").'" class="write"/><br />'.
-			'<input class="submit" style="float: none;"type="submit" name="submit" value="'._("Come in!").'"/>'.
+			'<input type="text" name="login" id="login" value="'.t("My address").'" class="write"/>'.
+			'<input type="password" name="pass" id="pass" value="'.t("Password").'" class="write"/><br />'.
+			'<input class="submit" style="float: none;"type="submit" name="submit" value="'.t("Come in!").'"/>'.
 			'</form>'.
 			'</div>');
 		echo $this->page->build('page.tpl');

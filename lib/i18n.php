@@ -38,8 +38,8 @@ function t($string)
 	global $language;
 	global $translations;
 
-	if(isset($custom_strings[$string])) {
-		return $custom_strings[$string];
+	if(isset($translations[$string])) {
+		return $translations[$string];
 	}
 
 	return $string;
