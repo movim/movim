@@ -115,7 +115,8 @@ class Widget
 	 */
 	protected function registerEvent($type, $function)
 	{
-		if(!array_key_exists($type, $this->events)) {
+		if(!is_array($this->events)
+		   || !array_key_exists($type, $this->events)) {
 			$this->events[$type] = array($function);
 		} else {
 			$this->events[$type][] = $function;

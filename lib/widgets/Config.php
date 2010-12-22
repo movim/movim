@@ -34,7 +34,7 @@ class Config extends Widget
 			 * are in their native form. This should not be changed.*/
 			   $form->startSelect('language',t('Language'),false,'block');
 			      $form->addOption('en_gb', 'English(UK)');
-			      $form->addOption('en_gb', 'Français(France)');
+			      $form->addOption('fr_fr', 'Français(France)');
 			   $form->closeSelect();
 			   $form->insertBR();
 
