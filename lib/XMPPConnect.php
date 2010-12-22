@@ -89,6 +89,10 @@ class XMPPConnect
         print_r($payload);
         $this->jaxl->JAXL0206('endStream');
     }*/
+    
+    private function jaxl_post_auth() {
+    
+    }
 
 	public function jaxl_get_auth_mech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}		//'ANONYMOUS');}
 

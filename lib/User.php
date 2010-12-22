@@ -25,7 +25,6 @@ class User {
 			$this->password = $_SESSION['pass'];
 
 			$this->xmppSession = XMPPConnect::getInstance($this->username);
-			$this->xmppSession->pingServer();
 		}
 		else if(isset($_POST['login'])
 				&& isset($_POST['pass'])

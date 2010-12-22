@@ -98,7 +98,7 @@ class Dispatcher extends Controller
 			'<form id="authForm" action="index.php" method="post">'.
 			'<input type="text" name="login" id="login" value="'._("My address").'" class="write"/>'.
 			'<input type="password" name="pass" id="pass" value="'._("Password").'" class="write"/><br />'.
-			'<input class="submit" style="float: none;"type="submit" name="submit" value="'._("Come in!").'"/>'.
+			'<input class="submit" style="float: none;" type="submit" name="submit" value="'._("Come in!").'"/>'.
 			'</form>'.
 			'</div>');
 		echo $this->page->build('page.tpl');

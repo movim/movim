@@ -83,6 +83,7 @@ class Ajaxer extends Controller
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
 			$page = new PageBuilder();
 			$user = new User();
+			
 			$content = new PageBuilder($user);
 			$page->setContent($content->build('main.tpl'));
 			$page->build('page.tpl');
