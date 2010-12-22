@@ -56,23 +56,16 @@ function get_quoted_string($string)
 /**
  * Parses a .po file.
  */
-function load_language($lang)
+function parse_lang_file($pofile)
 {
-	global $translations;
-	global $language;
-
-	if($lang == $language) {
-		return true;
-	}
-
-	$pofile = BASE_PATH . '/i18n/' . $lang . '.po';
-
 	if(!file_exists($pofile)) {
 		return false;
 	}
 
 	// Parsing the file.
 	$handle = fopen($pofile, 'r');
+
+	$trans_string = array();
 
 	$msgid = "";
 	$msgstr = "";
@@ -86,7 +79,7 @@ function load_language($lang)
 		
 		if(preg_match('#^msgid#', $line)) {
 			if($last_token == "msgstr") {
-				$translations[$msgid] = $msgstr;
+				$trans_string[$msgid] = $msgstr;
 			}
 			$last_token = "msgid";
 			$msgid = get_quoted_string($line);
@@ -100,10 +93,62 @@ function load_language($lang)
 		}
 	}
 	if($last_token == "msgstr") {
-		$translations[$msgid] = $msgstr;
+		$trans_string[$msgid] = $msgstr;
 	}
 	
 	fclose($handle);
+
+	return $trans_string;
+}
+
+/**
+ * Loads the given language.
+ */
+function load_language($lang)
+{
+	global $translations;
+	global $language;
+
+	if($lang == $language) {
+		return true;
+	}
+
+	$translations = parse_lang_file(BASE_PATH . '/i18n/' . $lang . '.po');
+
+	$language = $lang;
+
+	return true;
+}
+
+/**
+ * Loads a .po file and adds the translations to the existing ones.
+ * Conflicting translation strings will be rejected.
+ */
+function load_extra_lang($directory)
+{
+	global $translations;
+	global $language;
+	
+	// Converting to unix path (simpler and portable.)
+	$directory = str_replace('\\', '/', $directory);
+
+	if($directory[-1] != '/') {
+		$directory .= '/';
+	}
+
+	$trans = parse_lang_file($directory . $language . '.po');
+
+	if(!$trans) {
+		return false;
+	}
+
+	// Merging the arrays. The existing translations have priority.
+	foreach($trans as $msgid => $msgstr) {
+		if(array_key_exists($msgid, $translations)) {
+			continue;
+		}
+		$translations[$msgid] = $msgstr;
+	}
 
 	return true;
 }

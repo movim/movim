@@ -236,19 +236,28 @@ class PageBuilder
 				self::$loaded_widgets[] = $name;
 		}
 		
-		$widget_path = LIB_PATH . 'widgets/' . $name . '.php';
-		if(file_exists($widget_path)) {
-			require($widget_path);
-			$extern = false;
-			$widget = new $name($extern, $this->user);
-			$widget->build();
-			
-			self::$css = array_merge(self::$css, $widget->loadcss());
-			self::$scripts = array_merge(self::$scripts, $widget->loadjs());
-		} else {
+		// Attempting to load the user's widgets in priority
+		$widget_path = "";
+		if(file_exists(BASE_PATH . 'widgets/' . $name . '/' . $name . '.php')) {
+			$widget_path = BASE_PATH . 'widgets/' . $name . '/' . $name . '.php';
+			// Custom widgets have their own translations.
+			load_extra_lang(BASE_PATH . 'widgets/' . $name . '/i18n');
+		}
+		else if(file_exists(LIB_PATH . 'widgets/' . $name . '.php')) {
+			$widget_path = LIB_PATH . 'widgets/' . $name . '.php';
+		}
+		else {
 			throw new MovimException(
 				sprintf(t("Error: Requested widget '%s' doesn't exist."), $name));
 		}
+
+		require($widget_path);
+		$extern = false;
+		$widget = new $name($extern, $this->user);
+		$widget->build();
+			
+		self::$css = array_merge(self::$css, $widget->loadcss());
+		self::$scripts = array_merge(self::$scripts, $widget->loadjs());
 	}
 
 	/**
