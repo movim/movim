@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 17:27+0000\n"
+"POT-Creation-Date: 2010-12-24 00:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,17 +69,22 @@ msgstr ""
 msgid "Come in!"
 msgstr ""
 
-#: ../lib/GetConf.php:42
+#: ../lib/GetConf.php:21 ../lib/GetConf.php:41
 #, php-format
-msgid "Error: Cannot load file `%s'"
+msgid "Error: Cannot load element value'%s'"
 msgstr ""
 
-#: ../lib/PageBuilder.php:251
+#: ../lib/GetConf.php:59
+#, php-format
+msgid "Error: Cannot load file '%s'"
+msgstr ""
+
+#: ../lib/PageBuilder.php:283
 #, php-format
 msgid "Error: Requested widget '%s' doesn't exist."
 msgstr ""
 
-#: ../lib/User.php:64
+#: ../lib/User.php:63
 msgid "Wrong password"
 msgstr ""
 
@@ -87,7 +92,7 @@ msgstr ""
 msgid "This is a sample widget."
 msgstr ""
 
-#: ../lib/XMPPConnect.php:154
+#: ../lib/XMPPConnect.php:147
 #, php-format
 msgid "Error: jid `%s' is incorrect"
 msgstr ""
@@ -100,87 +105,37 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: ../lib/widgets/Config.php:32
-msgid "Full Name"
-msgstr ""
-
-#: ../lib/widgets/Config.php:33
-msgid "Gender"
-msgstr ""
-
-#: ../lib/widgets/Config.php:35
-msgid "Male"
-msgstr ""
-
-#: ../lib/widgets/Config.php:36
-msgid "Female"
-msgstr ""
-
 #: ../lib/widgets/Config.php:39
-msgid "Interests"
-msgstr ""
-
-#: ../lib/widgets/Config.php:40
-msgid "Movies"
-msgstr ""
-
-#: ../lib/widgets/Config.php:41
-msgid "Reading"
-msgstr ""
-
-#: ../lib/widgets/Config.php:42
-msgid "Sports"
-msgstr ""
-
-#: ../lib/widgets/Config.php:44
-msgid "Upload Your Picture"
+msgid "Language"
 msgstr ""
 
 #: ../lib/widgets/Config.php:45
-msgid "About You"
-msgstr ""
-
-#: ../lib/widgets/Config.php:46
-msgid "Your Age"
+msgid "Full Name"
 msgstr ""
 
 #: ../lib/widgets/Config.php:47
-msgid "baby"
-msgstr ""
-
-#: ../lib/widgets/Config.php:48
-msgid "toddler"
+msgid "BOSH Connection Prefrences"
 msgstr ""
 
 #: ../lib/widgets/Config.php:49
-msgid "child"
-msgstr ""
-
-#: ../lib/widgets/Config.php:50
-msgid "teen"
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the XMPP server"
 msgstr ""
 
 #: ../lib/widgets/Config.php:51
-msgid "adult"
-msgstr ""
-
-#: ../lib/widgets/Config.php:52
-msgid "middleage"
+msgid "Bosh Host"
 msgstr ""
 
 #: ../lib/widgets/Config.php:53
-msgid "retiree"
-msgstr ""
-
-#: ../lib/widgets/Config.php:54
-msgid "old"
+msgid "Bosh Suffix"
 msgstr ""
 
 #: ../lib/widgets/Config.php:55
-msgid "stillalive"
+msgid "Bosh Port"
 msgstr ""
 
-#: ../lib/widgets/Config.php:65
+#: ../lib/widgets/Config.php:90
 msgid "error: "
 msgstr ""
 

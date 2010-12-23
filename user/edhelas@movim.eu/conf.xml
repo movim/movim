@@ -7,4 +7,6 @@
 	<boshHost>natsu.upyum.com</boshHost>
 	<boshSuffix>http-bind</boshSuffix>	
 	<boshPort>5280</boshPort>
+	
+	<language>fr_fr</language>
 </data>

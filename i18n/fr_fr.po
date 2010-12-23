@@ -1,55 +1,47 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# French translations for Movim package.
+# This file is distributed under the same license as the Movim package.
+# This file was translated from CodingTeam at <http://dev.movim.eu/>.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 17:27+0000\n"
-"PO-Revision-Date: 2010-12-22 17:31+0000\n"
-"Last-Translator: Etenil <etenil@etenilsrealm.nl>\n"
-"Language-Team: French <etenil@etenilsrealm.nl>\n"
-"Language: French French\n"
+"Project-Id-Version: Movim\n"
+"PO-Revision-Date: 2010-12-23 23:18:41\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../init.php:16
-#, fuzzy
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - Client de test"
 
 #: ../lib/Dispatcher.php:42
-#, fuzzy, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Bienvenue sur Movim"
 
-#: ../lib/Dispatcher.php:43 ../lib/Dispatcher.php:61 ../lib/Dispatcher.php:76
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:6
+#: ../lib/Dispatcher.php:76
 msgid "Home"
 msgstr "Accueil"
 
-#: ../lib/Dispatcher.php:44 ../lib/Dispatcher.php:62
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:62
 msgid "Configuration"
 msgstr "Configuration"
 
-#: ../lib/Dispatcher.php:45 ../lib/Dispatcher.php:63
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:63
 msgid "Logout"
 msgstr "Se déconnecter"
 
 #: ../lib/Dispatcher.php:60
-#, fuzzy, php-format
 msgid "%s - Configuration"
 msgstr "%s - Configuration"
 
 #: ../lib/Dispatcher.php:75
-#, fuzzy, php-format
 msgid "%s - Account Creation"
 msgstr "%s - Création de compte"
 
 #: ../lib/Dispatcher.php:92
-#, fuzzy, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - Connexion à Movim"
 
@@ -61,7 +53,8 @@ msgstr "Création de compte"
 msgid "My address"
 msgstr "Mon adresse"
 
-#: ../lib/Dispatcher.php:100 ../lib/widgets/Account.php:35
+#: ../lib/Dispatcher.php:10
+#: ../lib/widgets/Account.php:35
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -70,17 +63,14 @@ msgid "Come in!"
 msgstr "Entrez!"
 
 #: ../lib/GetConf.php:42
-#, php-format
-msgid "Error: Cannot load file `%s'"
-msgstr "Erreur: Fichier << %s >> introuvable"
+#| msgid "Error: Cannot load file `%s'"
+#| msgstr "Erreur: Fichier << %s >> introuvable"
 
-#: ../lib/PageBuilder.php:251
-#, php-format
+#: ../lib/PageBuilder.php:283
 msgid "Error: Requested widget '%s' doesn't exist."
 msgstr "Erreur: Le widget << %s >> n'existe pas."
 
-#: ../lib/User.php:64
-#, fuzzy
+#: ../lib/User.php:63
 msgid "Wrong password"
 msgstr "Mot de passe incorrect"
 
@@ -88,12 +78,12 @@ msgstr "Mot de passe incorrect"
 msgid "This is a sample widget."
 msgstr "Ceci est un widget de test"
 
-#: ../lib/XMPPConnect.php:154
-#, php-format
+#: ../lib/XMPPConnect.php:147
 msgid "Error: jid `%s' is incorrect"
 msgstr "L'addresse Jabber << %s >> est incorrecte"
 
-#: ../lib/widgets/Account.php:32 ../lib/widgets/Account.php:34
+#: ../lib/widgets/Account.php:3
+#: ../lib/widgets/Account.php:34
 msgid "Jabber Account"
 msgstr "Compte Jabber"
 
@@ -101,87 +91,87 @@ msgstr "Compte Jabber"
 msgid "Send"
 msgstr "Envoyer"
 
-#: ../lib/widgets/Config.php:32
+#: ../lib/widgets/Config.php:45
 msgid "Full Name"
 msgstr "Nom complet"
 
 #: ../lib/widgets/Config.php:33
-msgid "Gender"
-msgstr "Sexe"
+#| msgid "Gender"
+#| msgstr "Sexe"
 
 #: ../lib/widgets/Config.php:35
-msgid "Male"
-msgstr "Homme"
+#| msgid "Male"
+#| msgstr "Homme"
 
 #: ../lib/widgets/Config.php:36
-msgid "Female"
-msgstr "Femme"
+#| msgid "Female"
+#| msgstr "Femme"
 
 #: ../lib/widgets/Config.php:39
-msgid "Interests"
-msgstr "Centres d'intérêt"
+#| msgid "Interests"
+#| msgstr "Centres d'intérêt"
 
 #: ../lib/widgets/Config.php:40
-msgid "Movies"
-msgstr "Films"
+#| msgid "Movies"
+#| msgstr "Films"
 
 #: ../lib/widgets/Config.php:41
-msgid "Reading"
-msgstr "Lecture"
+#| msgid "Reading"
+#| msgstr "Lecture"
 
 #: ../lib/widgets/Config.php:42
-msgid "Sports"
-msgstr "Sports"
+#| msgid "Sports"
+#| msgstr "Sports"
 
 #: ../lib/widgets/Config.php:44
-msgid "Upload Your Picture"
-msgstr "Envoyez votre photo"
+#| msgid "Upload Your Picture"
+#| msgstr "Envoyez votre photo"
 
 #: ../lib/widgets/Config.php:45
-msgid "About You"
-msgstr "À propos de vous"
+#| msgid "About You"
+#| msgstr "À propos de vous"
 
 #: ../lib/widgets/Config.php:46
-msgid "Your Age"
-msgstr "Votre age"
+#| msgid "Your Age"
+#| msgstr "Votre âge"
 
 #: ../lib/widgets/Config.php:47
-msgid "baby"
-msgstr "bébé"
+#| msgid "baby"
+#| msgstr "bébé"
 
 #: ../lib/widgets/Config.php:48
-msgid "toddler"
-msgstr "nourrisson"
+#| msgid "toddler"
+#| msgstr "nourrisson"
 
 #: ../lib/widgets/Config.php:49
-msgid "child"
-msgstr "enfant"
+#| msgid "child"
+#| msgstr "enfant"
 
 #: ../lib/widgets/Config.php:50
-msgid "teen"
-msgstr "adolescent"
+#| msgid "teen"
+#| msgstr "adolescent"
 
 #: ../lib/widgets/Config.php:51
-msgid "adult"
-msgstr "adulte"
+#| msgid "adult"
+#| msgstr "adulte"
 
 #: ../lib/widgets/Config.php:52
-msgid "middleage"
-msgstr "mature"
+#| msgid "middleage"
+#| msgstr "mature"
 
 #: ../lib/widgets/Config.php:53
-msgid "retiree"
-msgstr "retraité"
+#| msgid "retiree"
+#| msgstr "retraité"
 
 #: ../lib/widgets/Config.php:54
-msgid "old"
-msgstr "vieux"
+#| msgid "old"
+#| msgstr "vieux"
 
 #: ../lib/widgets/Config.php:55
-msgid "stillalive"
-msgstr "survivant"
+#| msgid "stillalive"
+#| msgstr "survivant"
 
-#: ../lib/widgets/Config.php:65
+#: ../lib/widgets/Config.php:90
 msgid "error: "
 msgstr "Erreur: "
 
@@ -189,5 +179,36 @@ msgstr "Erreur: "
 msgid "Contacts"
 msgstr "Contacts"
 
-#~ msgid "MOVIM - Test Client - Account Creation"
-#~ msgstr "MOVIM - Client de test - Création de compte"
+#: ../lib/GetConf.php:2
+#: ../lib/GetConf.php:41
+msgid "Error: Cannot load element value'%s'"
+msgstr "Erreur: Ne peut charger l'élément de valeur '%s'"
+
+#: ../lib/GetConf.php:59
+msgid "Error: Cannot load file '%s'"
+msgstr "Erreur: Ne peut charger le fichier '%s'"
+
+#: ../lib/widgets/Config.php:39
+msgid "Language"
+msgstr "Langue"
+
+#: ../lib/widgets/Config.php:47
+msgid "BOSH Connection Prefrences"
+msgstr "Paramètres relatifs à BOSH"
+
+#: ../lib/widgets/Config.php:49
+msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
+msgstr "La modification de ces paramètres peut compromettre la connexion au serveur XMPP"
+
+#: ../lib/widgets/Config.php:51
+msgid "Bosh Host"
+msgstr "Hôte BOSH"
+
+#: ../lib/widgets/Config.php:53
+msgid "Bosh Suffix"
+msgstr "Suffixe BOSH"
+
+#: ../lib/widgets/Config.php:55
+msgid "Bosh Port"
+msgstr "Port BOSH"
+

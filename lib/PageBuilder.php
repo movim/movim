@@ -35,7 +35,7 @@ class PageBuilder
 	{
 		$this->user = $user;
 		$conf = new GetConf();
-		$this->theme = $conf->GetConfElement('theme');
+		$this->theme = $conf->getServerConfElement('theme');
 
 		if(!is_array(self::$scripts)) {
 			self::$scripts = array();
@@ -46,6 +46,34 @@ class PageBuilder
 		if(!is_array(self::$loaded_widgets)) {
 			self::$loaded_widgets = array();
 		}
+		
+		self::load_language();
+	}
+	
+	function load_language() {
+		if(User::isLogged()) {
+			$usr = new User();
+			$lang = GetConf::getUserConfElement($usr->getLogin(), 'language');
+			load_language($lang);
+		}
+		
+		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+			$nav_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+			$langNotFound = true;
+			$i = 0;
+			while($langNotFound && $i < sizeof($nav_langs)) {
+		    	$check = str_replace ( '-', '_', strtolower($nav_langs[$i]));
+		    	if(file_exists(BASE_PATH . '/i18n/' . $check . '.po')) {
+		    		$langNotFound = false;
+		    		load_language($check);
+		    	}
+		    	else
+		    		$i++;
+		    }
+		}
+		
+		else
+			load_language('en_en');
 	}
 	
 	function theme_path($file)
@@ -130,12 +158,13 @@ class PageBuilder
 	/**
 	 * Adds a link to the menu with the displayed label.
 	 */
-	function menuAddLink($label, $href)
+	function menuAddLink($label, $href, $active = false)
 	{
 		$this->menu[] = array(
 			'type' => 'link',
 			'label' => $label,
 			'href' => $href,
+			'active' => $active
 			);
 	}
 
@@ -153,8 +182,11 @@ class PageBuilder
 		echo '<ul class="menu">' . "\n";
 		foreach($this->menu as $link) {
 			if($link['type'] == 'link') {
-				echo "\t\t".'<li><a href="' . $link['href'] . '">'
-					. $link['label'] . "</a></li>\n";
+				echo "\t\t".'<li><a href="' . $link['href'].'"' ;
+				if($link['active'] == true) {
+					echo " class='active' ";
+				}
+				echo ">".$link['label'] . "</a></li>\n";
 			} else {
 				echo $link['html'];
 			}

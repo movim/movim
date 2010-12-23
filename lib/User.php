@@ -50,7 +50,7 @@ class User {
 			$this->xmppSession = XMPPConnect::getInstance($login);
 			$this->xmppSession->login($login, $pass);
 
-			$data = GetConf::getUserConf($login);
+			$data = GetConf::getUserData($login);
 
 			// Careful guys, md5 is _not_ secure. SHA1 recommended here.
 			if(sha1($pass) == $data['pass']) {
@@ -72,6 +72,9 @@ class User {
 	function desauth()
 	{
 		unset($_SESSION['login']);
+		if(isset($this->xmppSession)) {
+			$this->xmppSession->logout();
+		}
 	}
 	
 	function getLogin()

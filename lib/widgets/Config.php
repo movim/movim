@@ -27,6 +27,10 @@ class Config extends Widget
 	
 	function build()
 	{
+			/* We load the user configuration */
+			$usr = new User();
+			$conf = GetConf::getUserConf($usr->getLogin());
+			
 			$form = new Form();
 			$form->startForm(basename($_SERVER['PHP_SELF']));
 
@@ -39,7 +43,19 @@ class Config extends Widget
 			   $form->insertBR();
 
 			   $form->textInput('name',t('Full Name'),false,'block required');
-			   $form->startFieldset(t('Gender'));
+			   
+			   $form->startFieldset(t('BOSH Connection Prefrences'));
+			   $form->insertHTML('<div class="warning">'.
+						   		t('Changing these data can be dangerous and may compromise the connection to the XMPP server')
+						   		.'</div>');
+			   $form->textInput('boshHost',t('Bosh Host'),false,'block required', false, false, false, false, $conf['boshHost']);
+			   $form->insertBR();
+			   $form->textInput('boshSuffix',t('Bosh Suffix'),false,'block required', false, false, false, false, $conf['boshSuffix']);
+			   $form->insertBR();
+			   $form->textInput('boshPort',t('Bosh Port'),false,'block required', false, false, 4, false, $conf['boshPort']);
+			   $form->closeFieldset();
+			// Uncomment this part as soon as the VCard will be supported
+			/*   $form->startFieldset(t('Gender'));
 				  $form->newline = true;
 				  $form->checkboxInput('radio','gender','male',t('Male'));
 				  $form->checkboxInput('radio','gender','female',t('Female'));
@@ -62,7 +78,7 @@ class Config extends Widget
 				  $form->addOption('65-75', t('retiree'));
 				  $form->addOption('75-95', t('old'));
 				  $form->addOption('100+', t('stillalive'));
-			   $form->closeSelect();
+			   $form->closeSelect();*/
 			   $form->insertBR();
 			   $form->newline = false;
 			   $form->submitButton();
