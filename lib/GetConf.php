@@ -7,31 +7,48 @@ class GetConf
 	
 	/* Return the general configuration */
 	
-	static function getConf() {
+	static function getServerConf() {
 		$conf_file = BASE_PATH . "/config/conf.xml";
 		return self::readConfFile($conf_file);
 	}
 	
 	/* Return the element of the general configuration */
 	
-	static function getConfElement($element) {
-		$data = @simplexml_load_file(BASE_PATH."/config/conf.xml");
-		return $data->$element;
+	static function getServerConfElement($element) {
+		$conf_file = BASE_PATH . "/config/conf.xml";
+		$conf = self::readConfFile($conf_file);
+		if(!isset($conf[$element])) {
+			throw new MovimException(sprintf(t("Error: Cannot load element value'%s'"), $element));
+		}
+		else {
+			return $conf[$element];
+		}
 	}
 	
 	/* Return an array of the host configuration */
 	
-	static function getHostConf($jid) {
+	static function getUserConf($jid) {
 		$conf_file = BASE_PATH . "/user/$jid/conf.xml";
-		
 		return self::readConfFile($conf_file);
+	}
+	
+	/* Return an element of the host configuration */
+	
+	static function getUserConfElement($jid, $element) {
+		$conf_file = BASE_PATH . "/user/$jid/conf.xml";
+		$conf =  self::readConfFile($conf_file);
+		if(!isset($conf[$element])) {
+			throw new MovimException(sprintf(t("Error: Cannot load element value'%s'"), $element));
+		}
+		else {
+			return $conf[$element];
+		}
 	}
 	
 	/* Return an array of the user configuration */
 	
-	static function getUserConf($jid) {
+	static function getUserData($jid) {
 		$conf_file = BASE_PATH . "/user/$jid/data.xml";
-		
 		return self::readConfFile($conf_file);
 	}
 	
@@ -39,7 +56,7 @@ class GetConf
 	
 	static function readConfFile($file_path) {
 		if(!file_exists($file_path)) {
-			throw new MovimException(sprintf(t("Error: Cannot load file `%s'"), $file_path));
+			throw new MovimException(sprintf(t("Error: Cannot load file '%s'"), $file_path));
 		}
 
 		$file = simplexml_load_file($file_path);

@@ -39,8 +39,8 @@ class XMPPConnect
 	 */
 	private function __construct($jid)
 	{
-		$userConf = GetConf::getHostConf($jid);
-		$serverConf = GetConf::getConf();
+		$userConf = GetConf::getUserConf($jid);
+		$serverConf = GetConf::getServerConf();
 
 		unset($_SESSION['jid']);
 		
@@ -80,25 +80,14 @@ class XMPPConnect
         JAXLPlugin::add('jaxl_post_auth', array(&$this, 'jaxl_post_auth'));
 
 	}
-	
-	/**
-	 * Defining Callback functions
-	 */
-	/*function handleVCard($payload) {
-        echo "<b>Successfully fetched VCard</b><br/>";
-        print_r($payload);
-        $this->jaxl->JAXL0206('endStream');
-    }*/
+
     
-    private function jaxl_post_auth() {
+    public function jaxl_post_auth($test) {
     
     }
 
 	public function jaxl_get_auth_mech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}		//'ANONYMOUS');}
 
-	/*public function jaxl_post_auth() {
-		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'handleVCard'));
-	}*/
 	
 	public function getVCard()
 	{
@@ -166,6 +155,8 @@ class XMPPConnect
 			$this->jaxl->pass = $pass;
 			$this->jaxl->startCore('bosh');
 		}
+		
+		self::setStatus(false, false);
 	}
 
 	/**

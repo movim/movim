@@ -1,8 +1,10 @@
 body {
 	font-family:  verdana, arial, 'lucida grande',   sans-serif;
 	margin: 0 auto;
+	background: -moz-linear-gradient(top, #C1C1C1, white 40px);
+	background: -webkit-gradient(linear, 0% 0%, 0% 40, from(#C1C1C1), to(white));
 	font-size: 12px;
-	overflow: auto;
+	background-repeat: no-repeat;
 }
 
 a:link, a:visited {
@@ -76,13 +78,13 @@ h3 {
 
 /* Formulaires */
 
-input
+input, select, textarea
 {
 	border-radius:4px 4px 4px 4px;
 	box-shadow: inset 0 3px 10px #D0D0D0;
 	-webkit-box-shadow: inset 0 3px 10px #D0D0D0;
 	border:1px solid #AAAAAA;
-	margin: 10px;
+	margin: 5px;
 }
 
 input[type=text], input[type=password] {
@@ -90,6 +92,7 @@ input[type=text], input[type=password] {
 	color:#585858;
 	font-weight:normal;
 	padding: 0.3em;
+	margin: 0.5em;
 }
 
 input[type=submit], input[type=reset], input[type=button] {
@@ -109,7 +112,7 @@ input[type=submit], input[type=reset] {
 	float: right;
 }
 
-input:focus {
+input:focus, select:focus, textarea:focus {
 	border: 1px solid #E8A343;
 	box-shadow: inset 0 3px 10px #EDD9BC;
 	-webkit-box-shadow: inset 0 3px 10px #EDD9BC;
@@ -124,18 +127,13 @@ fieldset {
 	border-top: 1px solid #B9B9B9;
 }
 
-legend {
-	padding: 1em;
-	color: #4E4E4E;
-	background-color: none;
-}
-
 label {
 	float:left;
-	width:25%;
-	margin-right:0.5em;
-	padding-top:1.1em;
 	text-align:right;
+	width: 25%;
+	padding-top: 2px;
+	padding-right: 1em;
+	margin-top: 5px;
 }
 
 /********************************/
@@ -163,6 +161,7 @@ label {
 	padding-top: 3px;
 	padding-bottom: 3px;
 	z-index: 3;
+	font-family:  arial, 'lucida grande', sans-serif;
 }
 
 #nav .menu
@@ -177,28 +176,40 @@ label {
 #nav .menu li
 {
 	display: inline;
-	padding: 3px;
-	padding-left: 7px;
-	padding-right: 7px;
+	-moz-transition: background-color 0.5s ease;
+	-webkit-transition: background-color 0.5s ease;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
 #nav .menu li a
 {
 	color: #E4E4E4;
+	padding: 3px;
+	padding-left: 18px;
+	padding-right: 18px;
 }
 
 #nav .menu img
 {
 	margin-bottom: -2px;
-	margin-right: 5px;
+	margin-right: 10px;
 }
 
 #nav .menu li:hover
 {
 	background-color: #292929;
 	cursor: pointer;
-	border-bottom: 1px solid white;
 	padding-bottom: -1px;
+}
+
+#nav .menu li a.active {
+	background-color: #292929;
+	padding-bottom: -1px;
+	text-decoration: none ;
 }
 
 /* WALL STYLE */
@@ -249,4 +260,15 @@ label {
 #tinylist ul li {
 	padding: 0.3em;
 	border-bottom: 1px dotted #E2E2E2;
+}
+
+/* Warning */
+
+.warning {
+	background-color: #FFAFAF;
+	border: 2px solid #FF8787;
+	padding: 1em;
+	color: #872626;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
