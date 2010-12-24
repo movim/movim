@@ -37,9 +37,9 @@ class Account extends Widget
 				$form->closeFieldset();
 				$form->insertBR();
 				$form->newline = false;
-				$form->submitButton();
-				$form->newline = true;
-				$form->resetButton();
+			    $form->submitButton(false, t('Submit'));
+			    $form->newline = true;
+			    $form->resetButton(false, t('Reset'));
 			$form->closeForm();
 
 			if(!$output = $form->getForm()) { die("error: " . $form->error); }

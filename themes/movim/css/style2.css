@@ -57,6 +57,7 @@ h3 {
 {
 	overflow: hidden;
 	padding-left: 1em;
+	min-height: 500px;
 }
 
 #right
@@ -66,7 +67,6 @@ h3 {
 	background-color: #F3F3F3;
 	overflow: auto;
 	width: 200px;
-	background: url(img/block_back.png) repeat-y;
 }
 
 #footer {
@@ -203,12 +203,10 @@ label {
 {
 	background-color: #292929;
 	cursor: pointer;
-	padding-bottom: -1px;
 }
 
 #nav .menu li a.active {
 	background-color: #292929;
-	padding-bottom: -1px;
 	text-decoration: none ;
 }
 

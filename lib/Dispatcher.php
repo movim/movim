@@ -26,10 +26,6 @@ class Dispatcher extends Controller
 		
 		$this->page = new PageBuilder();
 		$this->page->addScript('movim.js');
-		$this->page->addScript('jquery.js');
-		$this->page->addScript('jquery.form.js');
-		$this->page->addScript('jaxl.func.js');
-		$this->page->addScript('jquery-ui-1.8.5.custom.min.js');
 	}
 
 	function mainPage()
@@ -96,8 +92,8 @@ class Dispatcher extends Controller
 		$this->page->setContent(
 			'<div id="connect_form">'.
 			'<form id="authForm" action="index.php" method="post">'.
-			'<input type="text" name="login" id="login" value="'.t("My address").'" class="write"/>'.
-			'<input type="password" name="pass" id="pass" value="'.t("Password").'" class="write"/><br />'.
+			'<input type="text" name="login" id="login" value="'.t("My address").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/>'.
+			'<input type="password" name="pass" id="pass" value="'.t("Password").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
 			'<input class="submit" style="float: none;" type="submit" name="submit" value="'.t("Come in!").'"/>'.
 			'</form>'.
 			'</div>');

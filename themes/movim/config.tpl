@@ -1,6 +1,7 @@
 <?php /* -*- mode: html -*- */
 ?>
 <div id="left">
+  <?php $this->widget('Friends');?>
   <?php $this->widget('Chat');?>
 </div>
 <div id="center">

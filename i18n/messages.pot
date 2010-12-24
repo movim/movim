@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-24 00:12+0100\n"
+"POT-Creation-Date: 2010-12-24 15:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,51 +21,51 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr ""
 
-#: ../lib/Dispatcher.php:42
+#: ../lib/Dispatcher.php:38
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr ""
 
-#: ../lib/Dispatcher.php:43 ../lib/Dispatcher.php:61 ../lib/Dispatcher.php:76
+#: ../lib/Dispatcher.php:39 ../lib/Dispatcher.php:57 ../lib/Dispatcher.php:72
 msgid "Home"
 msgstr ""
 
-#: ../lib/Dispatcher.php:44 ../lib/Dispatcher.php:62
+#: ../lib/Dispatcher.php:40 ../lib/Dispatcher.php:58
 msgid "Configuration"
 msgstr ""
 
-#: ../lib/Dispatcher.php:45 ../lib/Dispatcher.php:63
+#: ../lib/Dispatcher.php:41 ../lib/Dispatcher.php:59
 msgid "Logout"
 msgstr ""
 
-#: ../lib/Dispatcher.php:60
+#: ../lib/Dispatcher.php:56
 #, php-format
 msgid "%s - Configuration"
 msgstr ""
 
-#: ../lib/Dispatcher.php:75
+#: ../lib/Dispatcher.php:71
 #, php-format
 msgid "%s - Account Creation"
 msgstr ""
 
-#: ../lib/Dispatcher.php:92
+#: ../lib/Dispatcher.php:88
 #, php-format
 msgid "%s - Login to Movim"
 msgstr ""
 
-#: ../lib/Dispatcher.php:95
+#: ../lib/Dispatcher.php:91
 msgid "Account Creation"
 msgstr ""
 
-#: ../lib/Dispatcher.php:99
+#: ../lib/Dispatcher.php:95
 msgid "My address"
 msgstr ""
 
-#: ../lib/Dispatcher.php:100 ../lib/widgets/Account.php:35
+#: ../lib/Dispatcher.php:96 ../lib/widgets/Account.php:35
 msgid "Password"
 msgstr ""
 
-#: ../lib/Dispatcher.php:101
+#: ../lib/Dispatcher.php:97
 msgid "Come in!"
 msgstr ""
 
@@ -99,6 +99,14 @@ msgstr ""
 
 #: ../lib/widgets/Account.php:32 ../lib/widgets/Account.php:34
 msgid "Jabber Account"
+msgstr ""
+
+#: ../lib/widgets/Account.php:40 ../lib/widgets/Config.php:84
+msgid "Submit"
+msgstr ""
+
+#: ../lib/widgets/Account.php:42 ../lib/widgets/Config.php:86
+msgid "Reset"
 msgstr ""
 
 #: ../lib/widgets/Chat.php:40

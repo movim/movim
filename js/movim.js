@@ -140,3 +140,14 @@ function movim_ajaxSend(widget, func, mode, modeopt, parameters)
 	movimAjax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	movimAjax.send("<?xml version='1.0' encoding='UTF-8'?>" + request);
 }
+
+function myFocus(element) {
+ if (element.value == element.defaultValue) {
+   element.value = '';
+ }
+}
+function myBlur(element) {
+ if (element.value == '') {
+   element.value = element.defaultValue;
+ }
+}

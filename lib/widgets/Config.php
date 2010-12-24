@@ -54,7 +54,7 @@ class Config extends Widget
 			   $form->insertBR();
 			   $form->textInput('boshPort',t('Bosh Port'),false,'block required', false, false, 4, false, $conf['boshPort']);
 			   $form->closeFieldset();
-			// Uncomment this part as soon as the VCard will be supported
+			// Uncomment this part as soon as the vCard will be supported
 			/*   $form->startFieldset(t('Gender'));
 				  $form->newline = true;
 				  $form->checkboxInput('radio','gender','male',t('Male'));
@@ -81,9 +81,9 @@ class Config extends Widget
 			   $form->closeSelect();*/
 			   $form->insertBR();
 			   $form->newline = false;
-			   $form->submitButton();
+			   $form->submitButton(false, t('Submit'));
 			   $form->newline = true;
-			   $form->resetButton();
+			   $form->resetButton(false, t('Reset'));
 			$form->closeForm();
 
 			if(!$output = $form->getForm()) {
