@@ -96,7 +96,7 @@ class Ajaxer extends Controller
 				echo $widget . '<br />';
 				// TODO: Process events here.
 			}*/
-			echo '' . date('Y-m-d H:i:s') . '<br />';
+			echo '<br />' .date('Y-m-d H:i:s') . ' : ';
 
 		} else {
 			$request = simplexml_load_string(file_get_contents('php://input'));

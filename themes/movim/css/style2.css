@@ -64,7 +64,6 @@ h3 {
 {
 	display: block;
 	float: right;
-	background-color: #F3F3F3;
 	overflow: auto;
 	width: 200px;
 }
@@ -269,4 +268,31 @@ label {
 	color: #872626;
 	margin-top: 1em;
 	margin-bottom: 1em;
+}
+
+/* Logs style */
+
+#log {
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	width: 500px;
+	height: 150px;
+	font-size: 0.7em;
+	padding: 1em;
+}
+
+#log span.message {
+	color: green;
+	border-bottom: none;
+}
+
+#log span.presence {
+	color: blue;
+}
+
+#log span.state {
+	color: orange;
 }

@@ -76,14 +76,30 @@ class XMPPConnect
 						 ));
 
 		// Defining call-backs
-		JAXLPlugin::add('jaxl_get_auth_mech', array(&$this, 'jaxl_get_auth_mech'));
-        JAXLPlugin::add('jaxl_post_auth', array(&$this, 'jaxl_post_auth'));
-
+		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'jaxl_get_auth_mech'));
+        $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'jaxl_post_auth'));
+        $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'jaxl_post_auth_failure'));
+        $this->jaxl->addPlugin('jaxl_get_message', array(&$this, 'getMessage'));
+        //$this->jaxl->addPlugin('jaxl_get_empty_body', array(&$this, 'postEmptyBody'));
+        $this->jaxl->addPlugin('jaxl_get_presence', array(&$this, 'getPresence'));
 	}
 
     
-    public function jaxl_post_auth($test) {
+    public function jaxl_post_auth($test, $test2) {
+
+    }
     
+    
+    public function jaxl_post_auth_failure($test, $test2) {
+    	$f = fopen(BASE_PATH."log/movim.log","w");
+    	fwrite($f, "gna");
+    	fclose($f);
+    	/*var_dump($test);
+    	var_dump($test2);
+    	$this->jaxl->shutdown();
+    	throw new MovimException("Login error.");
+    	$user = new User();
+    	$user->desauth();*/
     }
 
 	public function jaxl_get_auth_mech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}		//'ANONYMOUS');}
@@ -101,6 +117,39 @@ class XMPPConnect
 	public function pingServer()
 	{
 		$this->jaxl->JAXL0206('ping');
+	}
+	
+	function getMessage($payloads = 'test') {
+        $html = '';
+        foreach($payloads as $payload) {
+            // reject offline message
+            if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') {
+                if(strlen($payload['body']) > 0) {
+                    $html .= '<span class="message"> '.$payload['from'].' : '.$payload['body']."</span><br />\n";
+                }
+                else if(isset($payload['chatState']) && in_array($payload['chatState'], JAXL0085::$chatStates)) {
+                    $html .= '<span class="state"> '.$payload['from'].' chat state '.$payload['chatState']."</span><br />\n";
+                }
+            }
+        }
+        
+        if($html != '') {
+			echo $html;
+        }
+	}
+	
+	function getPresence($payloads) {
+        $html = '';
+        foreach($payloads as $payload) {
+            if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
+                $html .= '<span class="presence">'.$payload['from'];
+                if($payload['type'] == 'unavailable') $html .= ' is now offline</span><br />';
+                else $html .= ' is now online</span><br />';
+            }
+        }
+        if($html != '') {
+			echo $html;
+        }
 	}
 	
 	/**
@@ -144,7 +193,7 @@ class XMPPConnect
 	public function login($jid, $pass)
 	{
 		if(!$this->checkJid($jid)) {
-		 	throw new MovimException(sprintf(t("Error: jid `%s' is incorrect"), $jid));
+		 	throw new MovimException(sprintf(t("Error: jid '%s' is incorrect"), $jid));
 		} else {
 			$id = explode('@',$jid);
 			$user = $id[0];

@@ -73,9 +73,9 @@ function movim_poll()
 		{
 			if(poller.status == 200) {
 				// Handling poll return.
-				document.getElementById('testzone').innerHTML
-					= "<p>Poll succeeded: " + poller.responseText + "</p>";
-					//+ document.getElementById('testzone').innerHTML;
+				document.getElementById('log').innerHTML
+					= "$ " + poller.responseText + " "
+					+ document.getElementById('log').innerHTML;
 			}
 
 			if(poller.status > 0) {

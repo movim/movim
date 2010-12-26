@@ -6,7 +6,7 @@
 	<boshCookieDomain>false</boshCookieDomain>
 	<boshCookieHTTPS>false</boshCookieHTTPS>
 	<boshCookieHTTPOnly>true</boshCookieHTTPOnly>
-	<logLevel>3</logLevel>
+	<logLevel>4</logLevel>
 
-	<accountCreation>1</accountCreation>
+	<accountCreation>0</accountCreation>
 </config>

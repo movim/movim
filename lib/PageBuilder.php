@@ -130,6 +130,7 @@ class PageBuilder
 	 */
 	function build($template)
 	{
+		ob_clean();
 		ob_start();
 		require($this->theme_path($template));
 		$outp = ob_get_clean();
