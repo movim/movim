@@ -40,47 +40,46 @@
  * @copyright Abhinav Singh
  * @link http://code.google.com/p/jaxl
  */
+	
+	/**
+	 * XEP 0191 - Simple Communication Blocking
+	*/
+	class JAXL0191 {
 
-    /**
-     * XEP-0114: Jabber Component Protocol
-    */
-    class JAXL0114 {
-        
+        public static $ns = 'urn:xmpp:blocking';
+
         public static function init($jaxl) {
-            // initialize working parameter for this jaxl instance
-            $jaxl->comp = array(
-                'host'  =>  false,
-                'pass'  =>  false
-            );
-
-            // parse user options
-            $jaxl->comp['host'] = $jaxl->getConfigByPriority(@$jaxl->config['compHost'], "JAXL_COMPONENT_HOST", $jaxl->comp['host']);
-            $jaxl->pass['pass'] = $jaxl->getConfigByPriority(@$jaxl->config['compPass'], "JAXL_COMPONENT_PASS", $jaxl->comp['pass']);
-           
-            // register required callbacks
-            $jaxl->addPlugin('jaxl_post_start', array('JAXL0114', 'handshake'));
-            $jaxl->addPlugin('jaxl_pre_handler', array('JAXL0114', 'preHandler'));
-        }
-        
-        public static function startStream($jaxl, $payload) {
-            $xml = '<stream:stream xmlns="jabber:component:accept" xmlns:stream="http://etherx.jabber.org/streams" to="'.$jaxl->comp['host'].'">';
-            $jaxl->sendXML($xml);
-        }
-        
-        public static function handshake($id, $jaxl) {
-            $hash = strtolower(sha1($id.$jaxl->comp['pass']));
-            $xml = '<handshake>'.$hash.'</handshake>';
-            $jaxl->sendXML($xml);
+            $jaxl->features[] = self::$ns;
         }
 
-        public static function preHandler($xml, $jaxl) {
-            if($xml == '<handshake/>') {
-                $xml = '';
-                JAXLPlugin::execute('jaxl_post_handshake', false, $jaxl);
-            }
-            return $xml;
+        public static function getBlockList($jaxl, $callback) {
+            $payload = '<blocklist xmlns="'.self::$ns.'"/>';
+            return XMPPSend::iq($jaxl, 'get', $payload, false, false, $callback);
         }
-        
-    }
 
+        public static function blockContact($jaxl, $jid, $callback) {
+            $payload = '<block xmlns="'.self::$ns.'">';
+            if(!is_array($jid)) $jid = array($jid);
+            foreach($jid as $item)
+                $payload .= '<item jid="'.$item.'"/>';
+            $payload .= '</block>';
+            return XMPPSend::iq($jaxl, 'set', $payload, false, false, $callback);
+        }
+
+        public static function unblockContact($jaxl, $jid, $callback) {
+            $payload = '<unblock xmlns="'.self::$ns.'">';
+            if(!is_array($jid)) $jid = array($jid);
+            foreach($jid as $item)
+                $payload .= '<item jid="'.$item.'"/>';
+            $payload .= '</unblock>';
+            return XMPPSend::iq($jaxl, 'set', $payload, false, false, $callback);
+        }
+
+        public static function unblockAll($jaxl, $callback) {
+            $payload = '<unblock xmlns="'.self::$ns.'"/>';
+            return XMPPSend::iq($jaxl, 'set', $payload, false, false, $callback);
+        }
+
+	}
+	
 ?>

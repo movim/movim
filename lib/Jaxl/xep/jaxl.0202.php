@@ -55,7 +55,7 @@
             JAXLXml::addTag('iq', 'timeTZO', '//iq/time/tzo');
             JAXLXml::addTag('iq', 'timeUTC', '//iq/time/utc');
 
-            JAXLPlugin::add('jaxl_get_iq_get', array('JAXL0202', 'handleIq'));
+            $jaxl->addPlugin('jaxl_get_iq_get', array('JAXL0202', 'handleIq'));
         }
         
         public static function getEntityTime($jaxl, $to, $from, $callback) {
@@ -71,6 +71,7 @@
                 $entityTime .= '</time>';
                 return XMPPSend::iq($jaxl, 'result', $entityTime, $payload['from'], $payload['to'], false, $payload['id']);
             }
+            return $payload;
         }
         
     }

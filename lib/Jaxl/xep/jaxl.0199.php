@@ -51,20 +51,35 @@
         public static function init($jaxl) {
             $jaxl->features[] = self::$ns;
             
+            $jaxl->pingInterval = 0;
+            $jaxl->pingInterval = $jaxl->getConfigByPriority($jaxl->config['pingInterval'], "JAXL_PING_INTERVAL", $jaxl->pingInterval);
+            if($jaxl->pingInterval > 0) 
+                JAXLCron::add(array('JAXL0199', 'ping'), $jaxl->pingInterval, $jaxl->domain, $jaxl->jid, array('JAXL0199', 'pinged'));
+
             JAXLXml::addTag('iq', 'ping', '//iq/ping/@xmlns');
-            JAXLPlugin::add('jaxl_get_iq_get', array('JAXL0199', 'handleIq'));
+            $jaxl->addPlugin('jaxl_get_iq_get', array('JAXL0199', 'handleIq'));
         }
         
         public static function handleIq($payload, $jaxl) {
-            if(isset($payload['ping'])) 
+            if($payload['ping'] == self::$ns) 
                 return XMPPSend::iq($jaxl, 'result', false, $payload['from'], $payload['to'], false, $payload['id']);
-            else
-                return $payload;
+            return $payload;
         }
         
         public static function ping($jaxl, $to, $from, $callback) {
-            $payload = "<ping xmlns='urn:xmpp:ping'/>";
-            return XMPPSend::iq($jaxl, 'get', $payload, $to, $from, $callback);
+            if($jaxl->auth) {
+                $payload = "<ping xmlns='urn:xmpp:ping'/>";
+                return XMPPSend::iq($jaxl, 'get', $payload, $to, $from, $callback);
+            }
+        }
+
+        public static function pinged($payload, $jaxl) {
+            if($payload['type'] == 'error' && $payload['errorCode'] == 501 && $payload['errorCondition'] == 'feature-not-implemented') {
+                $jaxl->log("[[JAXL0199]] Server doesn't support ping feature, disabling cron tab for periodic ping...");
+                JAXLCron::delete(array('JAXL0199', 'ping'), $jaxl->pingInterval);
+                return $payload;
+            }
+            $jaxl->log("[[JAXL0199]] Rcvd ping response from the server...");
         }
     }
 

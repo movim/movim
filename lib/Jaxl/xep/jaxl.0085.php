@@ -59,7 +59,7 @@
             JAXLXml::addTag('message', 'inactive', '//message/inactive/@xmlns');
             JAXLXml::addTag('message', 'paused', '//message/paused/@xmlns');
             JAXLXml::addTag('message', 'gone', '//message/gone/@xmlns');
-            JAXLPlugin::add('jaxl_get_message', array('JAXL0085', 'getMessage'));
+            $jaxl->addPlugin('jaxl_get_message', array('JAXL0085', 'getMessage'));
         }
         
         public static function getMessage($payloads, $jaxl) {

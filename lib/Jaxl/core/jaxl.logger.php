@@ -46,31 +46,19 @@
     */
     class JAXLog {
         
-        private static function writeLog($logPath, $log) {
-            $fh = fopen($logPath, "a");
-            fwrite($fh, $log."\n\n");
-            fclose($fh);
-        }
-
         public static function log($log, $level=1, $jaxl=false) {
-            $log = '['.$jaxl->pid.'] '.date('Y-m-d H:i:s')." - ".$log;
-            
-            if($level == 0) {
-                if($jaxl->mode == "cli")
-                    print $log."\n";
-            }
-            else {
-                if($level <= $jaxl->logLevel)
-                    self::writeLog($jaxl->logPath, $log);
-            }
+            $log = '['.$jaxl->pid.':'.$jaxl->uid.'] '.date('Y-m-d H:i:s')." - ".$log;
 
+            if($level <= $jaxl->logLevel
+            ||($level == 0 && $jaxl->mode == "cli"))
+                error_log($log."\n\n", 3, $jaxl->logPath); 
             return true;
         }
 
         public static function logRotate($jaxl) {
             if(copy($jaxl->logPath, $jaxl->logPath.'.'.date('Y-m-d-H-i-s')))
                 if($jaxl->mode == 'cli')
-                    print '['.$jaxl->pid.'] '.date('Y-m-d H:i:s')." - Successfully rotated log file...\n";
+                    print '['.$jaxl->pid.':'.$jaxl->uid.'] '.date('Y-m-d H:i:s')." - Successfully rotated log file...\n";
             
             $fh = fopen($jaxl->logPath, "r+");
             ftruncate($fh, 1);

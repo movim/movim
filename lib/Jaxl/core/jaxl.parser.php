@@ -121,6 +121,7 @@
                 'queryItemAsk'  =>  '//iq/query/item/@ask',
                 'queryItemGrp'  =>  '//iq/query/item/group',
                 'errorType' =>  '//iq/error/@type',
+                'errorCode' =>  '//iq/error/@code',
                 'errorCondition'=>  '//iq/error/*[1]/name()',
                 'errorXmlns'=>  '//iq/error/*[1]/@xmlns'
             )
@@ -165,21 +166,28 @@
 
                 // loop through all the extracted parent nodes 
                 foreach($parents[$parentXPath] as $key=>$obj) {
+                    //echo PHP_EOL."starting loop for tag: ".$tag.", xpath: ".$xpath.", parentXPath: ".$parentXPath.", tagXPath: ".$tagXPath." ======>".PHP_EOL;
+                    //print_r($obj);
+
                     if($tagXPath == 'name()') {
                         $values = $obj->getName();
                     }
                     else if($tagXPath == 'text()') {
-                        $values = $obj[0];
+                        $values = array('0'=>(string)$obj);
+                    }
+                    else if($tagXPath == 'xml()') {
+                        $values = $obj->asXML();
                     }
                     else if(substr($tagXPath, 0, 1) == '@') {
                         $txpath = str_replace('@', '', $tagXPath);
-                        $values = $obj->attributes()->{$txpath};
+                        $values = $obj->attributes();
+                        $values = (array)$values[$txpath];
                         unset($txpath);
                     }
                     else {
                         $values = $obj->{$tagXPath};
                     }
-                    
+
                     if(is_array($values) && sizeof($values) > 1) {
                         $temp = array();
                         foreach($values as $value) $temp[] = (string)$value[0];
@@ -189,17 +197,18 @@
                     else if($tagXPath == 'name()') {
                         $payload[$node][$tag] = $values;
                     }
+                    else if($tagXPath == 'xml()') {
+                        $payload[$node][$tag] = $values;
+                    }
                     else {
-                        if(sizeof($parents[$parentXPath]) == 1) $payload[$node][$tag] = (string)$values[0];
-                        else $payload[$node][$tag][] = (string)$values[0];
+                        if(sizeof($parents[$parentXPath]) == 1) $payload[$node][$tag] = isset($values[0]) ? (string)$values[0] : null;
+                        else $payload[$node][$tag][] = isset($values[0]) ? (string)$values[0] : null;
                     }
                 }
             }
             
-            if($sxe)
-                $payload['xml'] = $xml;
+            if($sxe) $payload['xml'] = $xml;
             unset($xml);
-
             return $payload;
         }
        
@@ -283,4 +292,5 @@
         }
         
     }
+
 ?>

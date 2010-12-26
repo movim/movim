@@ -42,45 +42,27 @@
  */
 
     /**
-     * XEP-0114: Jabber Component Protocol
+     * XEP-0153: vCard-Based Avatars
     */
-    class JAXL0114 {
-        
+    class JAXL0153 {
+
+        public static $ns = 'vcard-temp:x:update';
+
         public static function init($jaxl) {
-            // initialize working parameter for this jaxl instance
-            $jaxl->comp = array(
-                'host'  =>  false,
-                'pass'  =>  false
-            );
 
-            // parse user options
-            $jaxl->comp['host'] = $jaxl->getConfigByPriority(@$jaxl->config['compHost'], "JAXL_COMPONENT_HOST", $jaxl->comp['host']);
-            $jaxl->pass['pass'] = $jaxl->getConfigByPriority(@$jaxl->config['compPass'], "JAXL_COMPONENT_PASS", $jaxl->comp['pass']);
-           
-            // register required callbacks
-            $jaxl->addPlugin('jaxl_post_start', array('JAXL0114', 'handshake'));
-            $jaxl->addPlugin('jaxl_pre_handler', array('JAXL0114', 'preHandler'));
-        }
-        
-        public static function startStream($jaxl, $payload) {
-            $xml = '<stream:stream xmlns="jabber:component:accept" xmlns:stream="http://etherx.jabber.org/streams" to="'.$jaxl->comp['host'].'">';
-            $jaxl->sendXML($xml);
-        }
-        
-        public static function handshake($id, $jaxl) {
-            $hash = strtolower(sha1($id.$jaxl->comp['pass']));
-            $xml = '<handshake>'.$hash.'</handshake>';
-            $jaxl->sendXML($xml);
         }
 
-        public static function preHandler($xml, $jaxl) {
-            if($xml == '<handshake/>') {
-                $xml = '';
-                JAXLPlugin::execute('jaxl_post_handshake', false, $jaxl);
+        public static function getUpdateData($jaxl, $hash=false) {
+            $xml = '<x xmlns="'.self::$ns.'">';
+            if($hash) {
+                $xml .= '<photo>';
+                if($hash !== true) $xml .= $hash;
+                $xml .= '</photo>';
             }
+            $xml .= '</x>';
             return $xml;
         }
-        
+
     }
 
 ?>

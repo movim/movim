@@ -47,11 +47,9 @@
     class JAXL0115 {
         
         public static $ns = 'http://jabber.org/protocol/caps';
-        private static $S = false;
 
         public static function init($jaxl) {
             $jaxl->features[] = self::$ns;
-            self::$S = $jaxl->category.'/'.$jaxl->type.'/'.$jaxl->lang.'/'.$jaxl->getName().'<';
 
             JAXLXml::addTag('presence', 'cXmlns', '//presence/c/@xmlns');
             JAXLXml::addTag('presence', 'cHash', '//presence/c/@hash');
@@ -62,8 +60,7 @@
         }
         
         public static function getCaps($jaxl, $features=false) {
-            $payload = '';
-            $payload .= '<c';
+            $payload = '<c';
             $payload .= ' xmlns="'.self::$ns.'"';
             $payload .= ' hash="sha1"';
             $payload .= ' node="http://code.google.com/p/jaxl"';
@@ -74,7 +71,7 @@
         
         public static function getVerificationString($jaxl, $features) {
             asort($features);
-            $S = self::$S;
+            $S = $jaxl->category.'/'.$jaxl->type.'/'.$jaxl->lang.'/'.$jaxl->getName().'<';
             foreach($features as $feature) $S .= $feature.'<';
             $ver = base64_encode(sha1($S, true));
             return $ver;

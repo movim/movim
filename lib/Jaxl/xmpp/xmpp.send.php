@@ -93,7 +93,7 @@
             }
             $xml .= '</auth>';
             
-            $jaxl->log("Performing Auth type: ".$type, 1);
+            $jaxl->log("[[XMPPSend]] Performing Auth type: ".$type);
             return $jaxl->sendXML($xml);
         }
         
@@ -130,7 +130,7 @@
             if($from) $xml .= ' from="'.$from.'"';
             $xml .= ' to="'.htmlspecialchars($to).'"';
             if($type) $xml .= ' type="'.$type.'"';
-            if($id) $xml .= ' id="'.$jaxl->getId().'"';
+            if($id) $xml .= ' id="'.$id.'"';
             $xml .= '>';
             
             if($child) {
@@ -164,7 +164,7 @@
             if($type) $xml .= ' type="'.$type.'"';
             if($from) $xml .= ' from="'.$from.'"';
             if($to) $xml .= ' to="'.htmlspecialchars($to).'"';
-            if($id) $xml .= ' id="'.$jaxl->getId().'"';
+            if($id) $xml .= ' id="'.$id.'"';
             $xml .= '>';
             
             if($child) {
@@ -181,7 +181,7 @@
         public static function iq($jaxl, $type, $payload=false, $to=false, $from=false, $callback=false, $id=false, $ns='jabber:client') {
             if($type == 'get' || $type == 'set') {
                 $id = $jaxl->getId();
-                if($callback) JAXLPlugin::add('jaxl_get_iq_'.$id, $callback);
+                if($callback) $jaxl->addPlugin('jaxl_get_iq_'.$id, $callback);
             }
             
             $types = array('get','set','result','error');

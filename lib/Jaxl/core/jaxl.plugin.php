@@ -56,16 +56,20 @@
          *
          * @param string $hook
          * @param string|array $callback A valid callback inside your application code
-         * @param integer $priority When more than one callbacks is attached on hook, they are called in priority order or which ever was registered first
+         * @param integer $priority (>0) When more than one callbacks is attached on hook, they are called in priority order or which ever was registered first
+         * @param integer $uid random id $jaxl->uid of connected Jaxl instance, $uid=0 means callback registered for all connected instances
         */
-        public static function add($hook, $callback, $priority=10) {
-            if(!isset(self::$registry[$hook]))
-                self::$registry[$hook] = array();
+        public static function add($hook, $callback, $priority=10, $uid=0) {
+            if(!isset(self::$registry[$uid])) 
+                self::$registry[$uid] = array();
+
+            if(!isset(self::$registry[$uid][$hook]))
+                self::$registry[$uid][$hook] = array();
             
-            if(!isset(self::$registry[$hook][$priority])) 
-                self::$registry[$hook][$priority] = array();
+            if(!isset(self::$registry[$uid][$hook][$priority])) 
+                self::$registry[$uid][$hook][$priority] = array();
             
-            array_push(self::$registry[$hook][$priority], $callback);
+            array_push(self::$registry[$uid][$hook][$priority], $callback);
         }
        
         /**
@@ -74,16 +78,17 @@
          * @param string $hook
          * @param string|array $callback
          * @param integer $priority
+         * @param integer $uid random id $jaxl->uid of connected Jaxl instance, $uid=0 means callback registered for all connected instances
         */
-        public static function remove($hook, $callback, $priority=10) {
-            if(($key = array_search($callback, self::$registry[$hook][$priority])) !== FALSE)
-                unset(self::$registry[$hook][$priority][$key]);
+        public static function remove($hook, $callback, $priority=10, $uid=0) {
+            if(($key = array_search($callback, self::$registry[$uid][$hook][$priority])) !== FALSE)
+                unset(self::$registry[$uid][$hook][$priority][$key]);
 
-            if(count(self::$registry[$hook][$priority]) == 0)
-                unset(self::$registry[$hook][$priority]);
+            if(count(self::$registry[$uid][$hook][$priority]) == 0)
+                unset(self::$registry[$uid][$hook][$priority]);
             
-            if(count(self::$registry[$hook]) == 0)
-                unset(self::$registry[$hook]);
+            if(count(self::$registry[$uid][$hook]) == 0)
+                unset(self::$registry[$uid][$hook]);
         }
         
         /*
@@ -95,11 +100,15 @@
          * @param array $filter
         */
         public static function execute($hook, $payload=null, $jaxl=false, $filter=false) {
-            if(isset(self::$registry[$hook]) && count(self::$registry[$hook]) > 0) {
-                foreach(self::$registry[$hook] as $priority) {
-                    foreach($priority as $callback) {
-                        if($filter === false || (is_array($filter) && in_array($callback[0], $filter))) {
-                            $payload = call_user_func($callback, $payload, $jaxl);
+            $uids = array($jaxl->uid, 0);
+            foreach($uids as $uid) {
+                if(isset(self::$registry[$uid][$hook]) && count(self::$registry[$uid][$hook]) > 0) {
+                    foreach(self::$registry[$uid][$hook] as $priority) {
+                        foreach($priority as $callback) {
+                            if($filter === false || (is_array($filter) && in_array($callback[0], $filter))) {
+                                //$jaxl->log("[[JAXLPlugin]] Executing hook $hook for uid $uid", 5);
+                                $payload = call_user_func($callback, $payload, $jaxl);
+                            }
                         }
                     }
                 }

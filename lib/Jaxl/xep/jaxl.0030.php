@@ -54,8 +54,14 @@
             $jaxl->features[] = self::$ns['info'];
             $jaxl->features[] = self::$ns['items'];
 
+            JAXLXml::addTag('iq', 'identityCategory', '//iq/query/identity/@category');
+            JAXLXml::addTag('iq', 'identityText', '//iq/query/identity/@text');
+            JAXLXml::addTag('iq', 'identityName', '//iq/query/identity/@name');
+            JAXLXml::addTag('iq', 'identityLang', '//iq/query/identity/@xml:lang');
+            JAXLXml::addTag('iq', 'featureVar', '//iq/query/feature/@var');
+
             // register callbacks
-            JAXLPlugin::add('jaxl_get_iq_get', array('JAXL0030', 'handleIq'));
+            $jaxl->addPlugin('jaxl_get_iq_get', array('JAXL0030', 'handleIq'));
         }
 
         public static function discoInfo($jaxl, $to, $from, $callback, $node=false) {
@@ -75,9 +81,8 @@
         }
 
         public static function handleIq($payload, $jaxl) {
-            $xmlns = $payload['queryXmlns'];
-            if($xmlns == self::$ns['info']) {
-                $xml = '<query xmlns="'.$xmlns.'"';
+            if($payload['queryXmlns'] == self::$ns['info']) {
+                $xml = '<query xmlns="'.$payload['queryXmlns'].'"';
                 if(isset($payload['queryNode'])) $xml .= ' node="'.$payload['queryNode'].'"';
                 $xml .= '>';
                 
@@ -92,7 +97,7 @@
                 
                 XMPPSend::iq($jaxl, 'result', $xml, $payload['from'], $payload['to'], false, $payload['id']);
             }
-            else if($xmlns == self::$ns['items']) {
+            else if($payload['queryXmlns'] == self::$ns['items']) {
                 
             }
             

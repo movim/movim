@@ -1,5 +1,77 @@
 version 2.1.2
 -------------
+- Entire Jaxl core including xmpp/, xep/ and core/ class files now make use of JAXL::addPlugin instead of JAXLPlugin to register per instance callbacks
+- JAXLPlugin can now register a callback for a dedicated jaxl instance in a multi-instance jaxl application
+  Class functionality remains backward compatible.
+- JAXLog class now also dump connect instance uid per log line
+- XMPP instance iq id now defaults to a random value between 1 and 9
+  Also added jaxl_get_id event hook for apps to customize iq id for the connected Jaxl instance
+  Also as compared to default numeric iq id, Jaxl core now uses hex iq id's
+- Every jaxl instance per php process id now generate it's own unique id JAXL::$uid
+- Jaxl core doesn't go for a session if it's optional as indicated by the xmpp server
+- Fixed boshChat postBind issues as reported by issue#26 (http://code.google.com/p/jaxl/issues/detail?id=26)
+- Fixed jaxl constructor config read warning and XEP 0114 now make use of JAXL::getConfigByPriority method
+- Removed warning while reading user config inside Jaxl constructor
+  Upgraded Jaxl Parser class which was malfunctioning on CentOS PHP 5.1.6 (cli)
+- Added bosh error response handling and appropriate logging inside XMPP over Bosh core files
+- Code cleanup inside jaxl logger class. 
+  Fixed getConfigByPriority method which was malfunctioning in specific cases
+- JAXLog class now using inbuild php function (error_log)
+- Checking in first version of XEP-0016 (Privacy Lists), XEP-0055 (Jabber Search), XEP-0077 (In-Band Registration), XEP-0144 (Roster Item Exchange), XEP-0153 (vCard-Based Avatars), XEP-0237 (Roster Versioning)
+- On auth faliure core doesn't throw exception since XMPP over Bosh apps are not held inside a try catch block (a better fix may be possible in future)
+- XMPP over BOSH xep wasn't passing back Jaxl instance obj for jaxl_post_disconnect hook, fixed that for clean disconnect
+- Jaxl core attempts to create log and pid files if doesn't already exists
+  Also instead of die() core throws relevant exception message wherever required
+  XMPP base classes throws relevant exception with message wherever required
+- First commit of JAXLException class. JAXL core now uses JAXLException
+- Jaxl constructor dies if logPath, pidPath and tmpPath doesn't exists on the system
+- Core updates JAXL::resource after successful binding to match resource assigned by the connecting server
+- Updated echobot sample example to make use of autoSubscribe core feature
+  Also registers callback for jaxl_post_subscription_request and jaxl_post_subscription_accept hooks
+- Updated echobot and boshchat application to use in memory roster cache maintained by Jaxl core.
+  App files should register callback on hook jaxl_post_roster_update to get notified everytime local roster cache is updated
+- Added provision for local roster cache management inside Jaxl core.
+  Retrived roster lists are cached in memory (see updated echobot.php sample example).
+  Also added provision for presence tracking (JAXL::trackPresence).
+  If enabled Jaxl core keep a track of jid availability and update local roster cache accordingly.
+  Also added provision for auto-accept subscription (JAXL::autoSubscribe).
+- Removed XMPP::isConnected variable which used to tell status of connected socket stream.
+  This is equivalent to checking XMPP:stream variable for true/false
+- Added a (kind of) buggy support for '/xml()' inside parser xpath
+- If Jaxl instance has being configured for auto periodic ping (XEP-0199), pings are holded till auth completion.
+  Also if server responds 'feature-not-implemented' for first ping XEP-0199 automatically deleted periodic ping cron tab
+- Corrected handling of error type iq stanza's (removed jaxl_get_iq_error hook)
+- Added iq error code xpath inside JAXLXml class
+- Completed missing JAXLCron::delete method for removing a previously registered cron tab
+- Checking in first version of XEP-0049 (Private XML Storage) (not yet tested)
+- Checking in first version of XEP-0191 (Simple Communication Blocking) (not yet tested)
+- Added JAXL_PING_INTERVAL configuration option inside jaxl.ini
+- XEP-0199 (XMPP Ping) can now automatically ping the connected server periodically for keeping connection alive on long running bots
+  (see echobot.php sample app for usage)
+- Updated JAXLCron::add method to accept a number of arguments while adding bckgrnd jobs
+  These list of arguments is passed back to the application method
+- Updated IQ handling inside XEP-0202 which wasn't returning iq stanza back resulting in no ping/pong
+- Updated echobot to show usage of JAXL::discoItems and JAXL::discoInfo inside application code
+- Added tagMap xpath for service identity and feature nodes in service discovery resultset
+- JAXL core now auto includes XEP-0128 along with XEP-0030 on startup.
+  Also added two methods JAXL::discoItems and JAXL::discoInfo for service discovery
+- Checking in first version of XEP-0128 (Service Discovery Extension)
+- Fixed bug where message and presence stanza builder were not using passed id value as attribute
+- Removed jaxl_pre_curl event hook which was only used internally by XEP-0124
+- Jaxl now shutdown gracefully is encryption is required and openssl PHP module is not loaded in the environment
+- For every registered callback on XMPP hooks, callback'd method will receive two params.
+  A payload and reference of Jaxl instance for whom XMPP event has occured.
+  Updated sample application code to use passed back Jaxl instance reference instead of global jaxl variable.
+- As a library convention XEP's exposing user space configuration parameters via JAXL constructor SHOULD utilize JAXL::getConfigByPriority method
+  Added JAXL_TMP_PATH option inside jaxl.ini
+- Jaxl::tmp is now Jaxl::tmpPath. Also added Jaxl config param to specify custom tmp path location
+  Jaxl client also self detect the IP of the host it is running upon (to be used by STUN/TURN utilities in Jingle negotitation)
+- Removed JAXLUtil::includePath and JAXLUtil::getAppFilePath methods which are now redundant after removing jaxl.ini and jaxl.conf from lib core
+- Removed global defines JAXL_BASE_PATH, JAXL_APP_BASE_PATH, JAXL_BOSH_APP_ABS_PATH from inside jaxl.ini (No more required by apps to specify these values)
+- Removing env/jaxl.php and env/jaxl.conf (were required if you run your apps using `jaxl` command line utility)
+  Updated env/jaxl.ini so that projects can now directly include their app setting via jaxl.ini (before including core/jaxl.class.php)
+- Added JAXL::bareJid public variable for usage inside applications.
+  XMPP base class now return bool on socket connect completion (used by PHPUnit test cases)
 - Removing build.sh file from library for next release
   Users should simply download, extract, include and write their app code without caring about the build script from 2.1.2 release
 - As a library convention to include XEP's use JAXL::requires() method, while to include any core/ or xmpp/ base class use jaxl_require() method.

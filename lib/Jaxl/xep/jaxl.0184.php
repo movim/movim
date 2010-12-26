@@ -55,7 +55,7 @@
 			JAXLXml::addTag('message', 'received', '//message/received/@xmlns');
 			JAXLXml::addTag('message', 'receivedId', '//message/received/@id');
 
-			JAXLPlugin::add('jaxl_get_message', array('JAXL0184', 'handleMessage'));
+			$jaxl->addPlugin('jaxl_get_message', array('JAXL0184', 'handleMessage'));
 		}
 		
 		public static function requestReceipt() {

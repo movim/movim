@@ -55,11 +55,11 @@
             JAXLXml::addTag('iq', 'softwareVersion', '//iq/query[@xmlns="'.self::$ns.'"]/version');
             JAXLXml::addTag('iq', 'softwareOS', '//iq/query[@xmlns="'.self::$ns.'"]/os');
             
-            JAXLPlugin::add('jaxl_get_iq_get', array('JAXL0092', 'getIq'));
+            $jaxl->addPlugin('jaxl_get_iq_get', array('JAXL0092', 'getIq'));
         }
         
         public static function getIq($arr, $jaxl) {
-            if(isset($arr['queryXmlns']) && $arr['queryXmlns'] == self::$ns) {
+            if($arr['queryXmlns'] == self::$ns) {
                 $payload = '<query xmlns="'.self::$ns.'">';
                 $payload .= '<name>'.$jaxl->getName().'</name>';
                 $payload .= '<version>'.$jaxl->getVersion().'</version>';
@@ -68,9 +68,7 @@
                 
                 return XMPPSend::iq($jaxl, 'result', $payload, $arr['from'], $arr['to'], false, $arr['id']);
             }
-            else {
-                return $arr;
-            }
+            return $arr;
         }
         
         public static function getVersion($jaxl, $fromJid, $toJid, $callback) {

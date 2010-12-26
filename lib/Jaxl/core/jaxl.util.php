@@ -75,38 +75,6 @@
             return $rs;
         }
         
-        public static function includePath($path) {
-            $include_path = ini_get('include_path');
-            $include_path .= ':'.$path;
-            ini_set('include_path', $include_path);
-        }
-        
-        public static function getAppFilePath() {
-            if(php_sapi_name() == 'cli') {
-                global $argv;
-                if(sizeof($argv) == 2) {
-                    $value = array_pop($argv);
-                    $botPath = JAXL_APP_BASE_PATH.'/'.$value;
-                }
-                else {
-                    die("invalid number of parameters passed ...");
-                }
-            }
-            else {
-                if(isset($_REQUEST['jaxl'])) {
-                    $botPath = JAXL_BOSH_APP_ABS_PATH;
-                }
-                else {
-                    header("HTTP/1.1 400 Bad Request");
-                    die("missing action ...");
-                }
-            }
-            
-            self::includePath(dirname($botPath));
-            if($botPath && file_exists($botPath)) return $botPath;
-            else return false;
-        }
-        
         public static function isWin() {
             return strtoupper(substr(PHP_OS,0,3)) == "WIN" ? true : false;
         }
@@ -136,18 +104,17 @@
             $pairs = array();
             $key = false;
             
-                foreach($data as $pair) {
-                    $dd = strpos($pair, '=');
-
-                    if($dd) {
-                        $key = trim(substr($pair, 0, $dd));
-                        $pairs[$key] = trim(trim(substr($pair, $dd + 1)), '"');
-                    }
-                else if(strpos(strrev(trim($pair)), '"') === 0 && $key) {
-                        $pairs[$key] .= ',' . trim(trim($pair), '"');
-                        continue;
-                    }
+            foreach($data as $pair) {
+                $dd = strpos($pair, '=');
+                if($dd) {
+                    $key = trim(substr($pair, 0, $dd));
+                    $pairs[$key] = trim(trim(substr($pair, $dd + 1)), '"');
                 }
+                else if(strpos(strrev(trim($pair)), '"') === 0 && $key) {
+                    $pairs[$key] .= ',' . trim(trim($pair), '"');
+                    continue;
+                }
+            }
             
             return $pairs;
         }
@@ -161,8 +128,9 @@
         
         public static function generateNonce() {
             $str = '';
-                mt_srand((double) microtime()*10000000);
-            for($i=0; $i<32; $i++) $str .= chr(mt_rand(0, 255));
+            mt_srand((double) microtime()*10000000);
+            for($i=0; $i<32; $i++)
+                $str .= chr(mt_rand(0, 255));
             return $str;
         }
         
@@ -173,13 +141,11 @@
             
             $pack = md5($user.':'.$data['realm'].':'.$pass);
             
-            if(isset($data['authzid'])) {
-                    $a1 = pack('H32',$pack).sprintf(':%s:%s:%s',$data['nonce'],$data['cnonce'],$data['authzid']);
-                }
-                else {
-                    $a1 = pack('H32',$pack).sprintf(':%s:%s',$data['nonce'],$data['cnonce']);
-                }
-                $a2 = 'AUTHENTICATE:'.$data['digest-uri'];
+            if(isset($data['authzid'])) 
+                $a1 = pack('H32',$pack).sprintf(':%s:%s:%s',$data['nonce'],$data['cnonce'],$data['authzid']);
+            else 
+                $a1 = pack('H32',$pack).sprintf(':%s:%s',$data['nonce'],$data['cnonce']);
+            $a2 = 'AUTHENTICATE:'.$data['digest-uri'];
             
             return md5(sprintf('%s:%s:%s:%s:%s:%s', md5($a1), $data['nonce'], $data['nc'], $data['cnonce'], $data['qop'], md5($a2)));
         }
@@ -201,9 +167,8 @@
             $t = null;
             for($i=1; $i<=$l; $i++) {
                 $f = $u = hash_hmac($algo, $s.pack('N', $i), $p, true);
-                for($j=1; $j<$c; $j++) {
+                for($j=1; $j<$c; $j++)
                     $f ^= ($u = hash_hmac($algo, $u, $p, true));
-                }
                 $t .= $f;
             }
             return substr($t, 0, $dk_len);

@@ -62,13 +62,6 @@
         var $auth = false;
 
         /**
-         * Connected socket stream status
-         *
-         * @var bool
-        */
-        var $isConnected = false;
-
-        /**
          * Connected XMPP stream session requirement status
          *
          * @var bool
@@ -212,6 +205,7 @@
             $this->clocked = time();
             
             /* Parse configuration parameter */
+            $this->lastid = rand(1, 9);
             $this->streamTimeout = isset($config['streamTimeout']) ? $config['streamTimeout'] : 20;
             $this->rateLimit = isset($config['rateLimit']) ? $config['rateLimit'] : true;
             $this->getPkts = isset($config['getPkts']) ? $config['getPkts'] : 1600;
@@ -226,21 +220,22 @@
         function connect() {
             if(!$this->stream) {
                 if($this->stream = @fsockopen($this->host, $this->port, $this->streamENum, $this->streamEStr, $this->streamTimeout)) {
-                    $this->log("Socket opened to the jabber host ".$this->host.":".$this->port." ...", 1);
+                    $this->log("[[XMPP]] Socket opened to the jabber host ".$this->host.":".$this->port." ...");
                     stream_set_blocking($this->stream, $this->streamBlocking);
                     stream_set_timeout($this->stream, $this->streamTimeout);
                 }
                 else {
-                    $this->log("Unable to open socket to the jabber host ".$this->host.":".$this->port." ...", 1);
+                    $this->log("[[XMPP]] Unable to open socket to the jabber host ".$this->host.":".$this->port." ...");
+                    throw new JAXLException("[[XMPP]] Unable to open socket to the jabber host");
                 }
             }
             else {
-                $this->log("Socket already opened to the jabber host ".$this->host.":".$this->port." ...", 1);
+                $this->log("[[XMPP]] Socket already opened to the jabber host ".$this->host.":".$this->port." ...");
             }
-            
-            JAXLPlugin::execute('jaxl_post_connect', false, $this);
-            if($this->stream) return true;
-            else return false;
+
+            $ret = $this->stream ? true : false;
+            JAXLPlugin::execute('jaxl_post_connect', $ret, $this);
+            return $ret;
         }
         
         /**
@@ -277,7 +272,9 @@
          * @return integer $id
         */
         function getId() {
-            return ++$this->lastid;
+            $id = JAXLPlugin::execute('jaxl_get_id', ++$this->lastid, $this);
+            if($id === $this->lastid) return dechex($this->uid + $this->lastid);
+            else return $id;
         }
         
         /**
@@ -356,12 +353,18 @@
         protected function _sendXML($xml) {
             if($this->stream) {
                 $this->lastSendTime = JAXLUtil::getTime();
-                if(($ret = fwrite($this->stream, $xml)) !== false) $this->log("[[XMPPSend]] $ret\n".$xml, 4);
-                else $this->log("[[XMPPSend]] Failed\n".$xml, 1);  
+                if(($ret = fwrite($this->stream, $xml)) !== false) {
+                    $this->log("[[XMPPSend]] $ret\n".$xml, 4);
+                }
+                else {
+                    $this->log("[[XMPPSend]] Failed\n".$xml);
+                    throw new JAXLException("[[XMPPSend]] Failed");
+                }
                 return $ret;
             }
             else {
-                $this->log("Jaxl stream not connected to jabber host, unable to send xmpp payload...", 1);
+                $this->log("[[XMPPSend]] Jaxl stream not connected to jabber host, unable to send xmpp payload...");
+                throw new JAXLException("[[XMPPSend]] Jaxl stream not connected to jabber host, unable to send xmpp payload...");
                 return false;
             }
         }
@@ -423,7 +426,8 @@
                         XMPPGet::iq($arr['iq'], $this);
                         break;
                     default:
-                        $jaxl->log("Unrecognized payload received from jabber server...", 1);
+                        $jaxl->log("[[XMPPGet]] Unrecognized payload received from jabber server...");
+                        throw new JAXLException("[[XMPPGet]] Unrecognized payload received from jabber server...");
                         break;
                 }
             }

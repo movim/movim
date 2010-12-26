@@ -42,45 +42,28 @@
  */
 
     /**
-     * XEP-0114: Jabber Component Protocol
+     * XEP-0055 : Jabber Search
     */
-    class JAXL0114 {
-        
+    class JAXL0055 {
+
+        public static $ns = 'jabber:iq:search';
+
         public static function init($jaxl) {
-            // initialize working parameter for this jaxl instance
-            $jaxl->comp = array(
-                'host'  =>  false,
-                'pass'  =>  false
-            );
-
-            // parse user options
-            $jaxl->comp['host'] = $jaxl->getConfigByPriority(@$jaxl->config['compHost'], "JAXL_COMPONENT_HOST", $jaxl->comp['host']);
-            $jaxl->pass['pass'] = $jaxl->getConfigByPriority(@$jaxl->config['compPass'], "JAXL_COMPONENT_PASS", $jaxl->comp['pass']);
-           
-            // register required callbacks
-            $jaxl->addPlugin('jaxl_post_start', array('JAXL0114', 'handshake'));
-            $jaxl->addPlugin('jaxl_pre_handler', array('JAXL0114', 'preHandler'));
-        }
-        
-        public static function startStream($jaxl, $payload) {
-            $xml = '<stream:stream xmlns="jabber:component:accept" xmlns:stream="http://etherx.jabber.org/streams" to="'.$jaxl->comp['host'].'">';
-            $jaxl->sendXML($xml);
-        }
-        
-        public static function handshake($id, $jaxl) {
-            $hash = strtolower(sha1($id.$jaxl->comp['pass']));
-            $xml = '<handshake>'.$hash.'</handshake>';
-            $jaxl->sendXML($xml);
+            $jaxl->features[] = self::$ns;
         }
 
-        public static function preHandler($xml, $jaxl) {
-            if($xml == '<handshake/>') {
-                $xml = '';
-                JAXLPlugin::execute('jaxl_post_handshake', false, $jaxl);
-            }
-            return $xml;
+        public static function getSearchField($jaxl, $callback) {
+            $payload = '<query xmlns="'.self::$ns.'"/>';
+            return XMPPSend::iq($jaxl, 'get', false, false, $callback);
         }
-        
+
+        public static function submitSearchRequest($jaxl, $field, $callback) {
+            $payload = '<query xmlns="'.self::$ns.'">';
+            $payload .= $field;
+            $payload .= '</query>';
+            return XMPPSend::iq($jaxl, 'set', false, false, $callback);
+        }
+
     }
 
 ?>

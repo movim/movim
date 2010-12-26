@@ -8,7 +8,7 @@ version of Jaxl 1.x series which was hosted at google code.
 * Event mechanism for registering callbacks for various xmpp events
 * Integrated support for Real Time Web (XMPP over Bosh) application development
 * Support for DIGEST-MD5, PLAIN, ANONYMOUS, X-FACEBOOK-PLATFORM authentication mechanisms
-* 23 implemented XMPP extensions [(XEP's)](http://xmpp.org/extensions/) including MUC, PubSub and PEP
+* 32 implemented XMPP extensions [(XEP's)](http://xmpp.org/extensions/) including MUC, PubSub and PEP
 * Setup dynamic number of parallel XMPP sessions on the fly
 * Options for monitoring, usage stat collection, rate limiting, etc.
 
@@ -41,14 +41,14 @@ Here is how a simple send chat message app looks like using Jaxl library:
     ));
 
     // Send message after successful authentication
-    function postAuth() {
-        global $jaxl, $argv;
+    function postAuth($payload, $jaxl) {
+        global $argv;
         $jaxl->sendMessage($argv[1], $argv[2]);
         $jaxl->shutdown();
     }
 
-    // Register callback on required hook
-    JAXLPlugin::add('jaxl_post_auth', 'postAuth');
+    // Register callback on required hook (callback'd method will always receive 2 params)
+    $jaxl->addPlugin('jaxl_post_auth', 'postAuth');
 
     // Start Jaxl core
     $jaxl->startCore('stream');

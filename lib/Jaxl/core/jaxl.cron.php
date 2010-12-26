@@ -50,8 +50,8 @@
 	
 		private static $cron = array();
         
-		public static function init() {
-            JAXLPlugin::add('jaxl_get_xml', array('JAXLCron', 'ticker'));
+		public static function init($jaxl) {
+            $jaxl->addPlugin('jaxl_get_xml', array('JAXLCron', 'ticker'));
         }
         
         public static function ticker($payload, $jaxl) {
@@ -61,18 +61,32 @@
                     || $jaxl->clocked - $job['lastCall'] > $interval // if cron interval has already passed
                     ) {
                         self::$cron[$interval][$key]['lastCall'] = $jaxl->clocked;
-                        call_user_func($job['callback'], $jaxl);
+                        $arg = $job['arg'];
+                        array_unshift($arg, $jaxl);
+                        call_user_func_array($job['callback'], $arg);
                     }
                 }
             }
             return $payload;
         }
 		
-		public static function add($callback, $interval) {
-            self::$cron[$interval][] = array('callback'=>$callback, 'lastCall'=>time());
+		public static function add(/* $callback, $interval, $param1, $param2, .. */) {
+            $arg = func_get_args();
+            $callback = array_shift($arg);
+            $interval = array_shift($arg);
+
+            self::$cron[$interval][self::generateCbSignature($callback)] = array('callback'=>$callback, 'arg'=>$arg, 'lastCall'=>time());
         }
 		
-		public static function delete($callback, $interval) {}
+		public static function delete($callback, $interval) {    
+            $sig = self::generateCbSignature($callback);
+            if(isset(self::$cron[$interval][$sig]))
+                unset(self::$cron[$interval][$sig]);
+        }
+
+        protected static function generateCbSignature($callback) {
+            return is_array($callback) ? md5(json_encode($callback)) : md5($callback);
+        }
 		
 	}
 
