@@ -134,7 +134,8 @@ class XMPPConnect
         }
         
         if($html != '') {
-			echo $html;
+			$evt = new Event_handler();
+			$evt->runEvent('incomechat', $html);
         }
 	}
 	
