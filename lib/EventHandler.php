@@ -1,6 +1,6 @@
 <?php
 
-class Event_handler
+class EventHandler
 {
 	private $widgets = NULL;
 	private $conf;
