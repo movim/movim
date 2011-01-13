@@ -239,7 +239,7 @@ class PageBuilder
 
 	function setContent($data)
 	{
-		$this->content = $data;
+		$this->content .= $data;
 	}
 
 	function addContent($data, $append = true)

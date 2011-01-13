@@ -89,6 +89,12 @@ class Dispatcher extends Controller
 		$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').'Movim | Human Network', 'http://www.movim.eu/', true);
 		if(GetConf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
+		if($_GET['err'] == 'auth') {
+			$this->page->setContent(
+				'<div class="warning">'.
+				t('Changing these data can be dangerous and may compromise the connection to the XMPP server')
+				.'</div>');
+		}
 		$this->page->setContent(
 			'<div id="connect_form">'.
 			'<form id="authForm" action="index.php" method="post">'.

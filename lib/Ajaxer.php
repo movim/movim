@@ -79,7 +79,7 @@ class Ajaxer extends Controller
 	 */
 	public function handle()
 	{
-		session_commit();
+		//session_commit();
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
 			$page = new PageBuilder();
 			$user = new User();
