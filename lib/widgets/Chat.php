@@ -43,4 +43,4 @@ class Chat extends Widget
 	}
 }
 
-p?>
+?>
