@@ -81,21 +81,12 @@ class Ajaxer extends Controller
 	{
 		//session_commit();
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
-			$page = new PageBuilder();
 			$user = new User();
 			$xmppSession = XMPPConnect::getInstance($user->getLogin());
 			session_commit();
 			$xmppSession->pingServer();
 			session_commit();
-			// Comment this part of the code, it create huge traffic from the XMPP Server
-			/*$content = new PageBuilder($user);
-			$page->setContent($content->build('main.tpl'));
-			$page->build('page.tpl');
 
-			foreach($page->loadedWidgets() as $widget) {
-				echo $widget . '<br />';
-				// TODO: Process events here.
-			}*/
 			echo '<br />' .date('Y-m-d H:i:s') . ' : ';
 
 		} else {

@@ -25,7 +25,7 @@ class Chat extends Widget
 
 	function onIncomingChat($event)
 	{
-		echo "onIncomingChat was called.";
+		echo "onIncomingChat was called. Message: $event";
 	}
 
 	function build()

@@ -128,7 +128,7 @@ class Widget
 	 */
 	public function runEvents($type, $event)
 	{
-		if(array_key_exists($type, $this->events)) {
+		if(is_array($this->events) && array_key_exists($type, $this->events)) {
 			foreach($this->events[$type] as $handler) {
 				call_user_func(array($this, $handler), $event);
 			}
