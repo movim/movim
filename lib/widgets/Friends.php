@@ -73,15 +73,6 @@ class Friends extends Widget
                 	}
                 	echo "</ul></div>";
                 ?>
-                  <div class="friend">
-                    tagada
-					 <input type="button" onclick="<?php $this->callAjax('ajaxStuff', 'APPEND', "'testzone'", '3');?>" value="Click me" />
-					 <div id="testzone">
-					 </div>
-                  </div>
-                  <div class="friend">
-                    pouet
-                  </div>
                 </div>
                 <?php
                 
