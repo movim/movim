@@ -46,7 +46,7 @@
     // Set JAXL_BASE_PATH if not already defined by application code
     if(!@constant('JAXL_BASE_PATH'))
         define('JAXL_BASE_PATH', dirname(dirname(__FILE__)));
-
+    
     /**
      * Autoload method for Jaxl library and it's applications
      *
@@ -94,6 +94,10 @@
         return;
     }
 
+    // cnt of connected instances
+    global $jaxl_instance_cnt;
+    $jaxl_instance_cnt = 0;
+
     // Include core classes and xmpp base
     jaxl_require(array(
         'JAXLog',
@@ -104,7 +108,7 @@
         'XML',
         'XMPP',
     ));
-
+    
     /**
      * Jaxl class extending base XMPP class
      *
@@ -306,6 +310,8 @@
         */
         var $openSSL = false;
 
+        var $instances = false;
+
         /**
          * @return string $name Returns name of this Jaxl client
         */
@@ -344,7 +350,7 @@
         */
         function shutdown($signal=false) {
             $this->log("[[JAXL]] Shutting down ...");
-            JAXLPlugin::execute('jaxl_pre_shutdown', $signal, $this);
+            $this->executePlugin('jaxl_pre_shutdown', $signal);
             if($this->stream) $this->endStream();
             $this->stream = false;
         }
@@ -567,6 +573,22 @@
         }
 
         /**
+         * Use this method instead of JAXLPlugin::remove to remove a callback for connected instance only
+        */
+        function executePlugin($hook, $payload) {
+            return JAXLPlugin::execute($hook, $payload, $this);
+        }
+
+        /**
+         * Add another jaxl instance in a running core
+        */
+        function addCore($jaxl) {
+            $jaxl->addPlugin('jaxl_post_connect', array($jaxl, 'startStream'));
+            $jaxl->connect();
+            $this->instances['xmpp'][] = $jaxl;
+        }
+
+        /**
          * Starts Jaxl Core
          *
          * This method should be called after Jaxl initialization and hook registration inside your application code
@@ -579,7 +601,10 @@
          *                            b) startComponent
          *                            c) startBosh
         */
-        function startCore($mode=false) {
+        function startCore(/* $mode, $param1, $param2, ... */) {
+            $argv = func_get_args();
+            $mode = $argv[0];
+
             if($mode) {
                 switch($mode) {
                     case 'stream':
@@ -619,9 +644,6 @@
          * startHTTPd converts Jaxl instance into a Jaxl socket server (may or may not be a HTTP server)
          * Same Jaxl socket server instance <b>SHOULD NOT</b> be used for XMPP communications.
          * Instead separate "new Jaxl();" instances should be created for such XMPP communications.
-         *
-         * @param integer $port Port at which to start the socket server
-         * @param integer $maxq JAXLHTTPd socket server max queue
         */
         function startHTTPd($port, $maxq) {
             JAXLHTTPd::start(array(
@@ -656,11 +678,13 @@
          * @todo Use DNS SRV lookup to set $jaxl->host from provided domain info
         */
         function __construct($config=array()) {
+            global $jaxl_instance_cnt;
+            parent::__construct($config);
+            
+            $this->uid = ++$jaxl_instance_cnt;
             $this->ip = gethostbyname(php_uname('n'));
-            $this->mode = (PHP_SAPI == "cli") ? PHP_SAPI : "cgi";
             $this->config = $config;
             $this->pid = getmypid();
-            $this->uid = rand(10, 99999);
 
             /* Mandatory params to be supplied either by jaxl.ini constants or constructor $config array */
             $this->user = $this->getConfigByPriority(@$config['user'], "JAXL_USER_NAME", $this->user);
@@ -671,12 +695,13 @@
             /* Optional params if not configured using jaxl.ini or $config take default values */
             $this->host = $this->getConfigByPriority(@$config['host'], "JAXL_HOST_NAME", $this->domain);
             $this->port = $this->getConfigByPriority(@$config['port'], "JAXL_HOST_PORT", $this->port);
-            $this->resource = $this->getConfigByPriority(@$config['resource'], "JAXL_USER_RESC", "jaxl.".time());
+            $this->resource = $this->getConfigByPriority(@$config['resource'], "JAXL_USER_RESC", "jaxl.".$this->uid.".".$this->clocked);
             $this->logLevel = $this->getConfigByPriority(@$config['logLevel'], "JAXL_LOG_LEVEL", $this->logLevel);
             $this->logRotate = $this->getConfigByPriority(@$config['logRotate'], "JAXL_LOG_ROTATE", $this->logRotate);
             $this->logPath = $this->getConfigByPriority(@$config['logPath'], "JAXL_LOG_PATH", $this->logPath);
             if(!file_exists($this->logPath) && !touch($this->logPath)) throw new JAXLException("Log file ".$this->logPath." doesn't exists");
             $this->pidPath = $this->getConfigByPriority(@$config['pidPath'], "JAXL_PID_PATH", $this->pidPath);
+            $this->mode = $this->getConfigByPriority(@$config['mode'], "JAXL_MODE", (PHP_SAPI == "cli") ? PHP_SAPI : "cgi");
             if($this->mode == "cli" && !file_exists($this->pidPath) && !touch($this->pidPath)) throw new JAXLException("Pid file ".$this->pidPath." doesn't exists");
 
             /* Resolve temporary folder path */
@@ -697,21 +722,26 @@
             $this->sigh = isset($config['sigh']) ? $config['sigh'] : true;
             $this->dumpStat = isset($config['dumpStat']) ? $config['dumpStat'] : 300;
 
-            /* Configure instance for platforms and call parent construct */
+            /* Configure instance for platforms */
             $this->configure($config);
-            parent::__construct($config);
+
+            /* Initialize xml to array class (will deprecate in future) */
             $this->xml = new XML();
             
-            /* Initialize JAXLCron and register instance cron jobs */
+            /* Initialize JAXLCron and register core jobs */
             JAXLCron::init($this);
             if($this->dumpStat) JAXLCron::add(array($this, 'dumpStat'), $this->dumpStat);
             if($this->logRotate) JAXLCron::add(array('JAXLog', 'logRotate'), $this->logRotate);
 
-            // include service discovery XEP-0030 and it's extensions, recommended for every XMPP entity
+            /* include recommended XEP's for every XMPP entity */
             $this->requires(array(
-                'JAXL0030',
-                'JAXL0128'
+                'JAXL0030', // service discovery
+                'JAXL0128'  // entity capabilities
             ));
+
+            /* initialize multi-core instance holder */
+            if($jaxl_instance_cnt == 1) $this->instances = array('xmpp'=>array(),'http'=>array());
+            $this->instances['xmpp'][] = $this;
         }
 
         /**
@@ -732,18 +762,18 @@
             if(!JAXLUtil::isWin() && JAXLUtil::pcntlEnabled() && $this->sigh) {
                 pcntl_signal(SIGTERM, array($this, "shutdown"));
                 pcntl_signal(SIGINT, array($this, "shutdown"));
-                $this->log("[[JAXL]] Registering callbacks for CTRL+C and kill.");
+                $this->log("[[JAXL]] Registering callbacks for CTRL+C and kill.", 4);
             }
             else {
-                $this->log("[[JAXL]] No callbacks registered for CTRL+C and kill.");
+                $this->log("[[JAXL]] No callbacks registered for CTRL+C and kill.", 4);
             }
            
             // check Jaxl dependency on PHP extension in cli mode
             if($this->mode == "cli") {
                 if(($this->openSSL = JAXLUtil::sslEnabled())) 
-                    $this->log("[[JAXL]] OpenSSL extension is loaded.");
+                    $this->log("[[JAXL]] OpenSSL extension is loaded.", 4);
                 else
-                    $this->log("[[JAXL]] OpenSSL extension not loaded.");
+                    $this->log("[[JAXL]] OpenSSL extension not loaded.", 4);
                
                 if(!function_exists('fsockopen'))
                     throw new JAXLException("[[JAXL]] Requires fsockopen method");
@@ -768,10 +798,13 @@
          * Jaxl instance periodically calls this methods every JAXL::$dumpStat seconds.
         */
         function dumpStat() {
-            $stat = "[[JAXL]] Memory usage: ".round(memory_get_usage()/pow(1024,2), 2)." Mb";
-            if(function_exists('memory_get_peak_usage'))
-                $stat .= ", Peak usage: ".round(memory_get_peak_usage()/pow(1024,2), 2)." Mb";
-            $this->log($stat, 0);
+            $stat = "[[JAXL]] Memory:".round(memory_get_usage()/pow(1024,2), 2)."Mb";
+            if(function_exists('memory_get_peak_usage')) $stat .= ", PeakMemory:".round(memory_get_peak_usage()/pow(1024,2), 2)."Mb";
+            $stat .= ", obuffer: ".strlen($this->obuffer);
+            $stat .= ", buffer: ".strlen($this->buffer);
+            $stat .= ", RcvdRate: ".$this->totalRcvdSize/$this->clock."Kb";
+            $stat .= ", SentRate: ".$this->totalSentSize/$this->clock."Kb";
+            $this->log($stat, 1);
         }
         
         /**
@@ -792,8 +825,14 @@
                 $xep = substr($xep, 4, 4);
                 if(is_numeric($xep)
                 && class_exists('JAXL'.$xep)
-                ) { return call_user_func_array(array('JAXL'.$xep, $method), $param); }
+                ) {
+                    $this->log("[[JAXL]] Calling JAXL$xep method ".$method, 5);
+                    return call_user_func_array(array('JAXL'.$xep, $method), $param);
+                }
                 else { $this->log("[[JAXL]] JAXL$xep Doesn't exists in the environment"); }
+            }
+            else {
+                $this->log("[[JAXL]] Call to an unidentified XEP");
             }
         } 
         
@@ -823,23 +862,23 @@
          * Core method that accepts retrieved roster list and manage local cache
         */
         function _handleRosterList($payload, $jaxl) {
-            if(is_array($payload['queryItemJid'])) {
+            if(@is_array($payload['queryItemJid'])) {
                 foreach($payload['queryItemJid'] as $key=>$jid) {
                     $this->_addRosterNode($jid);
-                    $this->roster[$jid]['groups'] = $payload['queryItemGrp'][$key];
-                    $this->roster[$jid]['name'] = $payload['queryItemName'][$key];
-                    $this->roster[$jid]['subscription'] = $payload['queryItemSub'][$key];
+                    $this->roster[$jid]['groups'] = @$payload['queryItemGrp'][$key];
+                    $this->roster[$jid]['name'] = @$payload['queryItemName'][$key];
+                    $this->roster[$jid]['subscription'] = @$payload['queryItemSub'][$key];
                 }
             }
             else {
-                $jid = $payload['queryItemJid'];
+                $jid = @$payload['queryItemJid'];
                 $this->_addRosterNode($jid);
-                $this->roster[$jid]['groups'] = $payload['queryItemGrp'];
-                $this->roster[$jid]['name'] = $payload['queryItemName'];
-                $this->roster[$jid]['subscription'] = $payload['queryItemSub'];
+                $this->roster[$jid]['groups'] = @$payload['queryItemGrp'];
+                $this->roster[$jid]['name'] = @$payload['queryItemName'];
+                $this->roster[$jid]['subscription'] = @$payload['queryItemSub'];
             }
 
-            JAXLPlugin::execute('jaxl_post_roster_update', $payload, $this);
+            $this->executePlugin('jaxl_post_roster_update', $payload);
             return $payload;
         }
 
@@ -864,10 +903,10 @@
                 ) {
                     $this->subscribed($payload['from']);
                     $this->subscribe($payload['from']);
-                    JAXLPlugin::execute('jaxl_post_subscription_request', $payload, $this);
+                    $this->executePlugin('jaxl_post_subscription_request', $payload);
                 }
                 else if($payload['type'] == 'subscribed') {
-                    JAXLPlugin::execute('jaxl_post_subscription_accept', $payload, $this);
+                    $this->executePlugin('jaxl_post_subscription_accept', $payload);
                 }
             }
             return $payloads;

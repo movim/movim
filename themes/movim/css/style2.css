@@ -179,7 +179,7 @@ label {
 	display: inline;
 	-moz-transition: background-color 0.5s ease;
 	-webkit-transition: background-color 0.5s ease;
-	margin-left: 0px;
+	margin-left: -4px;
 	margin-right: 0px;
 	padding: 0px;
 	padding-top: 3px;
@@ -293,7 +293,7 @@ label {
 }
 
 #log span.presence {
-	color: blue;
+	color: #9BBBC6;
 }
 
 #log span.state {

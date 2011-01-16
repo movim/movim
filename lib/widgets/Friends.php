@@ -52,7 +52,8 @@ class Friends extends Widget
                 	/*
                 		A little example to get the vCard from the xmpp connector
                 	*/
-                	$xmpp = XMPPConnect::getInstance(User::getLogin()); // We get the instance of the connexion
+                	/*$user = new User();
+                	$xmpp = XMPPConnect::getInstance($user->getLogin()); // We get the instance of the connexion
                 	$xmpp->getVCard(); // We send the vCard request
                 	$vcard = $xmpp->getPayload(); // We return the result of the request
                 	echo "<img src='data:image/png;base64,".$vcard['vCardPhotoBinVal']."' ><br />\n".
@@ -71,7 +72,7 @@ class Friends extends Widget
                 			 $list["queryItemName"][$i].
                 			 " (".$list["queryItemGrp"][$i].")</a></li>";
                 	}
-                	echo "</ul></div>";
+                	echo "</ul></div>";*/
                 ?>
                   <div class="friend">
                     tagada

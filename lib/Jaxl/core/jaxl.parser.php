@@ -145,7 +145,8 @@
             $payload = array();
             
             $xml = str_replace('xmlns=', 'ns=', $xml);
-            $xml = new SimpleXMLElement($xml);
+            try { $xml = @new SimpleXMLElement($xml); }
+            catch(Exception $e) { return false; }
             $node = $xml->getName();
             $parents = array();
 

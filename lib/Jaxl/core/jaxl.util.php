@@ -88,8 +88,8 @@
         }
         
         public static function getTime() {
-            list($usec, $sec) = explode(" ",microtime());
-                return (float) $sec + (float) $usec;
+            list($usec, $sec) = explode(" ", microtime());
+            return (float) $sec + (float) $usec;
         }
         
         public static function splitXML($xml) {

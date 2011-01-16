@@ -40,7 +40,7 @@
  * @copyright Abhinav Singh
  * @link http://code.google.com/p/jaxl
  */
-    
+
     /**
      * XEP-0206: XMPP over BOSH
      * 
@@ -49,9 +49,10 @@
     class JAXL0206 {
         
         public static function init($jaxl) {
-            // Requires Bosh Session Manager
-            $jaxl->requires('JAXL0124');    
             $jaxl->log("[[JaxlAction]] ".$_REQUEST['jaxl']."\n".json_encode($_REQUEST), 5);
+            
+            // Requires Bosh Session Manager
+            $jaxl->requires('JAXL0124');
         }
         
         public static function jaxl($jaxl, $xml) { 
@@ -59,7 +60,7 @@
         }
 
         public static function startStream($jaxl) {
-            $_SESSION['auth'] = 'connect';
+            $_SESSION['jaxl_auth'] = 'connect';
 
             $xml = "";
             $xml .= "<body";
@@ -80,7 +81,7 @@
         }
         
         public static function endStream($jaxl) {
-            $_SESSION['auth'] = 'disconnect';
+            $_SESSION['jaxl_auth'] = 'disconnect';
 
             $xml = "";
             $xml .= "<body";
@@ -105,7 +106,7 @@
             $xml .= " xmpp:restart='true'";
             $xml .= " xmlns:xmpp='".$jaxl->bosh['xmlnsxmpp']."'/>";
             
-            $_SESSION['auth'] = false;
+            $_SESSION['jaxl_auth'] = false;
             $jaxl->sendXML($xml);
         }
         
@@ -115,7 +116,7 @@
             $xml .= ' sid="'.$jaxl->bosh['sid'].'"';
             $xml .= ' xmlns="http://jabber.org/protocol/httpbind"/>';
             
-            $_SESSION['auth'] = true;
+            $_SESSION['jaxl_auth'] = true;
             $jaxl->sendXML($xml);
         }
 

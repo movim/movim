@@ -55,7 +55,7 @@
 
             // parse user options
             $jaxl->comp['host'] = $jaxl->getConfigByPriority(@$jaxl->config['compHost'], "JAXL_COMPONENT_HOST", $jaxl->comp['host']);
-            $jaxl->pass['pass'] = $jaxl->getConfigByPriority(@$jaxl->config['compPass'], "JAXL_COMPONENT_PASS", $jaxl->comp['pass']);
+            $jaxl->comp['pass'] = $jaxl->getConfigByPriority(@$jaxl->config['compPass'], "JAXL_COMPONENT_PASS", $jaxl->comp['pass']);
            
             // register required callbacks
             $jaxl->addPlugin('jaxl_post_start', array('JAXL0114', 'handshake'));
@@ -76,7 +76,7 @@
         public static function preHandler($xml, $jaxl) {
             if($xml == '<handshake/>') {
                 $xml = '';
-                JAXLPlugin::execute('jaxl_post_handshake', false, $jaxl);
+                $jaxl->executePlugin('jaxl_post_handshake', false);
             }
             return $xml;
         }

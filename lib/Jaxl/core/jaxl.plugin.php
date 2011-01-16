@@ -106,7 +106,7 @@
                     foreach(self::$registry[$uid][$hook] as $priority) {
                         foreach($priority as $callback) {
                             if($filter === false || (is_array($filter) && in_array($callback[0], $filter))) {
-                                //$jaxl->log("[[JAXLPlugin]] Executing hook $hook for uid $uid", 5);
+                                $jaxl->log("[[JAXLPlugin]] Executing hook $hook for uid $uid", 7);
                                 $payload = call_user_func($callback, $payload, $jaxl);
                             }
                         }

@@ -65,7 +65,8 @@
             return JAXL0050::executeCommand($jaxl, $to, $from, self::$node."#".$type, $callback);
         }
         
-        public static function handleForm($payload) {
+        public static function handleForm($payload, $jaxl) {
+            print_r($payload);
             $id = $payload['iq']['@']['id'];
             $domain = $payload['iq']['@']['from'];
             $node = $payload['iq']['#']['command'][0]['@']['node'];
@@ -121,84 +122,72 @@
         public static function addUser($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'add-user');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
         
         public static function deleteUser($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'delete-user');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function disableUser($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'disable-user');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function reEnableUser($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'reenable-user');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function endUserSession($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'end-user-session');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
         
         public static function getUserPassword($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'get-user-password');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
         
         public static function changeUserPassword($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'change-user-password');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function getUserRoster($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'get-user-roster');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function getUserLastLoginTime($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'get-user-lastlogin');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function getUserStatistics($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'user-stats');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function editBlacklist($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'edit-blacklist');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function editWhitelist($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'edit-whitelist');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
@@ -226,7 +215,6 @@
             
             $id = self::requestForm($jaxl, $domain, false, $type);
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
@@ -253,28 +241,24 @@
             
             $id = self::requestForm($jaxl, $domain, false, $type);
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
         
         public static function sendAnnouncementToActiveUsers($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'announce');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function setMOTD($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'set-motd');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function editMOTD($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'edit-motd');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
@@ -282,14 +266,12 @@
         public static function deleteMOTD($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'delete-motd');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function setWelcomeMessage($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'set-welcome');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
@@ -297,28 +279,24 @@
         public static function deleteWelcomeMessage($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'delete-welcome');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function editAdminList($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'edit-admin');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function restartService($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'restart');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 
         public static function shutdownService($jaxl, $user, $domain, $callback) {
             $id = self::requestForm($jaxl, $domain, false, 'shutdown');
             self::$buffer[$id] = array('user'=>$user, 'callback'=>$callback);
-            unset($user); unset($domain); unset($callback);
             return true;
         }
 

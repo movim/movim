@@ -17,8 +17,8 @@
  */
     
 // Jabber external component setting
-define('JAXL_COMPONENT_HOST', 'component.'.JAXL_HOST_DOMAIN);
-define('JAXL_COMPONENT_PASS', 'pass');
+//define('JAXL_COMPONENT_HOST', 'component.'.JAXL_HOST_DOMAIN);
+//define('JAXL_COMPONENT_PASS', 'pass');
 define('JAXL_COMPONENT_PORT', 5559);
 
 define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
@@ -76,38 +76,44 @@ class XMPPConnect
 						 ));
 
 		// Defining call-backs
-		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'jaxl_get_auth_mech'));
-        $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'jaxl_post_auth'));
-        $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'jaxl_post_auth_failure'));
+        $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'postAuth'));
+        $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
+        //$this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
+        
+		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
         $this->jaxl->addPlugin('jaxl_get_message', array(&$this, 'getMessage'));
-        //$this->jaxl->addPlugin('jaxl_get_empty_body', array(&$this, 'postEmptyBody'));
         $this->jaxl->addPlugin('jaxl_get_presence', array(&$this, 'getPresence'));
+        $this->jaxl->addPlugin('jaxl_get_bosh_curl_error', array(&$this, 'boshCurlError'));
 	}
 
     
-    public function jaxl_post_auth($test, $test2) {
+    public function postAuth($test, $test2) {
     	$f = fopen(BASE_PATH."log/movim.log","w");
     	fwrite($f, "gna");
     	fclose($f);
     }
     
     
-    public function jaxl_post_auth_failure() {
+    public function postAuthFailure() {
     	$this->jaxl->shutdown();
     	throw new MovimException("Login error.");
     	$user = new User();
     	$user->desauth();
-    	header("?q=login&err=auth");
+    }
+    
+    public function postDisconnect() {
+    	
+    }
+    
+    public function boshCurlError() {
+    	$this->jaxl->shutdown();
+    	throw new MovimException("Bosh connection error.");
+    	$user = new User();
+    	$user->desauth();    
     }
 
-	public function jaxl_get_auth_mech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}		//'ANONYMOUS');}
+	public function postAuthMech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}		//'ANONYMOUS');}
 
-	
-	public function getVCard()
-	{
-		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'handlePayload'));
-	}
-	
 	/**
 	 * Pings the server. This must be done regularly in order to keep the
 	 * session running.
@@ -117,7 +123,12 @@ class XMPPConnect
 		$this->jaxl->JAXL0206('ping');
 	}
 	
-	function getMessage($payloads = 'test') {
+	public function getVCard()
+	{
+		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'handlePayload'));
+	}
+	
+	public function getMessage($payloads = 'test') {
         $html = '';
         foreach($payloads as $payload) {
             // reject offline message
@@ -137,7 +148,7 @@ class XMPPConnect
         }
 	}
 	
-	function getPresence($payloads) {
+	public function getPresence($payloads) {
         $html = '';
         foreach($payloads as $payload) {
             if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
@@ -147,7 +158,8 @@ class XMPPConnect
             }
         }
         if($html != '') {
-			echo $html;
+			$evt = new EventHandler();
+			$evt->runEvent('incomepresence', $html);
         }
 	}
 	

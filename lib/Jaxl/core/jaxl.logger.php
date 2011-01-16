@@ -47,11 +47,11 @@
     class JAXLog {
         
         public static function log($log, $level=1, $jaxl=false) {
-            $log = '['.$jaxl->pid.':'.$jaxl->uid.'] '.date('Y-m-d H:i:s')." - ".$log;
-
             if($level <= $jaxl->logLevel
-            ||($level == 0 && $jaxl->mode == "cli"))
-                error_log($log."\n\n", 3, $jaxl->logPath); 
+            ||($level == 0 && $jaxl->mode == "cli")) {
+                $log = '['.$jaxl->uid.':'.$jaxl->pid.':'.$jaxl->clock.'] '.date('Y-m-d H:i:s')." - ".$log;
+                error_log($log."\n\n", 3, $jaxl->logPath);
+            }
             return true;
         }
 

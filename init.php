@@ -1,6 +1,6 @@
 <?php
-session_commit();
-//ini_set('error_reporting', E_ALL & ~E_NOTICE);
+//session_commit();
+ini_set('error_reporting', E_ALL & ~E_NOTICE ^ E_DEPRECATED);
 
 session_start();
 
@@ -37,12 +37,8 @@ define('APP_TITLE', t("MOVIM - Test Client"));
  * with this.
  */
 function __autoload($className) {
-	/* If the class is a Controller, we apply the correct path */
-	if(preg_match('/Properties$/',$className)) {
-	 	$file = PROPERTIES_PATH . $className;
-	}
 	
-	else if(preg_match('/^JAXL/', $className)) {
+	if(preg_match('/^JAXL/', $className)) {
 		return;
 	}
 
