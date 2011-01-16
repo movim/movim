@@ -291,6 +291,9 @@ class PageBuilder
 			
 		self::$css = array_merge(self::$css, $widget->loadcss());
 		self::$scripts = array_merge(self::$scripts, $widget->loadjs());
+		
+		// We save the loaded widgets in the session for futur Ajax calls
+		EventHandler::setLoadedWidgets(self::$loaded_widgets);
 	}
 
 	/**

@@ -61,7 +61,7 @@
         }
         
         public static function handleIq($payload, $jaxl) {
-            if($payload['ping'] == self::$ns) 
+            if(@$payload['ping'] == self::$ns) 
                 return XMPPSend::iq($jaxl, 'result', false, $payload['from'], $payload['to'], false, $payload['id']);
             return $payload;
         }

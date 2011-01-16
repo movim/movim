@@ -1,5 +1,20 @@
 version 2.1.2
 -------------
+- Added option to pass getSXE option to Jaxl constructor (Whether Jaxl core should return a SimpleXMLElement object of parsed string with callback payloads)
+- Better handling for multi-instance jaxl applications (Use JAXL::addCore to add new instance)
+  Simple method of issuing unique id to each connected jaxl instance
+  Improved dumpStat cron to include send/rcv rate, buffer sizes in stats
+  Core logged class prefix log data with instance uid, pid and current clock
+  Parse class return false if unable to parse as xml for recv'd xmpp packet
+  Lots of core improvement in XMPP base class related to performance and multi-instance app handling
+- Updated core class files to make use of JAXL::executePlugin method instead of JAXLPlugin::execute method
+- XMPP base class now make use of socket_select() to poll opened stream efficiently (getting rid of annoying sleep)
+  Updated JAXLCron method to adjust to new core changes
+- Added hook for jaxl_get_bosh_curl_error which is called when bosh end point returns a non-zero errno
+  Updated Jaxl core session variable names to avoid clash with existing session vars
+  Updated boshchat.php to make use of jaxl_get_bosh_curl_error to disconnect intelligently
+- PHP CMS looking to integrate Jaxl in their core can now force disable auto start of php session by Jaxl core
+  Simple pass 'boshSession' as false with jaxl constructor config array
 - Entire Jaxl core including xmpp/, xep/ and core/ class files now make use of JAXL::addPlugin instead of JAXLPlugin to register per instance callbacks
 - JAXLPlugin can now register a callback for a dedicated jaxl instance in a multi-instance jaxl application
   Class functionality remains backward compatible.

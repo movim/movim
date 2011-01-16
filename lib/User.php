@@ -71,10 +71,12 @@ class User {
 	
 	function desauth()
 	{
-		unset($_SESSION['login']);
+		//unset($_SESSION['login']);
 		if(isset($this->xmppSession)) {
 			$this->xmppSession->logout();
 		}
+		
+		session_destroy();
 	}
 	
 	function getLogin()

@@ -47,7 +47,7 @@
      * Add periodic cron in your xmpp applications
 	*/
 	class JAXLCron {
-	
+
 		private static $cron = array();
         
 		public static function init($jaxl) {
@@ -57,12 +57,14 @@
         public static function ticker($payload, $jaxl) {
             foreach(self::$cron as $interval => $jobs) {
                 foreach($jobs as $key => $job) {
-                    if($jaxl->clock % $interval == 0 // if cron interval matches
-                    || $jaxl->clocked - $job['lastCall'] > $interval // if cron interval has already passed
+                    if($jaxl->clock != 0
+                    && $jaxl->clocked - $job['lastCall'] > $interval // if cron interval has already passed
                     ) {
                         self::$cron[$interval][$key]['lastCall'] = $jaxl->clocked;
                         $arg = $job['arg'];
                         array_unshift($arg, $jaxl);
+
+                        $jaxl->log("[[JAXLCron]] Executing cron job\nInterval:$interval, Callback:".$job['callback'], 5);
                         call_user_func_array($job['callback'], $arg);
                     }
                 }
@@ -74,11 +76,10 @@
             $arg = func_get_args();
             $callback = array_shift($arg);
             $interval = array_shift($arg);
-
             self::$cron[$interval][self::generateCbSignature($callback)] = array('callback'=>$callback, 'arg'=>$arg, 'lastCall'=>time());
         }
 		
-		public static function delete($callback, $interval) {    
+		public static function delete($callback, $interval) {
             $sig = self::generateCbSignature($callback);
             if(isset(self::$cron[$interval][$sig]))
                 unset(self::$cron[$interval][$sig]);

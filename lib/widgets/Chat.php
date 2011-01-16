@@ -21,11 +21,17 @@ class Chat extends Widget
 	function WidgetLoad()
 	{
 		$this->registerEvent('incomechat', 'onIncomingChat');
+		$this->registerEvent('incomepresence', 'onIncomingPresence');
 	}
 
 	function onIncomingChat($event)
 	{
 		echo "onIncomingChat was called. Message: $event";
+	}
+
+	function onIncomingPresence($event)
+	{
+		echo "onIncomingPresence was called. Message: $event";
 	}
 
 	function build()

@@ -121,7 +121,7 @@
                 $xml .= self::prepareMessage($jaxl, $to, $from, $child, $type, $id, $ns);
             }
         
-            JAXLPlugin::execute('jaxl_send_message', $xml, $jaxl); 
+            $jaxl->executePlugin('jaxl_send_message', $xml); 
             return $jaxl->sendXML($xml);
         }
         
@@ -155,7 +155,7 @@
                 $xml .= self::preparePresence($jaxl, $to, $from, $child, $type, $id, $ns);
             }
                 
-            JAXLPlugin::execute('jaxl_send_presence', $xml, $jaxl);
+            $jaxl->executePlugin('jaxl_send_presence', $xml);
             return $jaxl->sendXML($xml);
         }
     

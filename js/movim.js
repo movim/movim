@@ -89,6 +89,11 @@ function movim_poll()
 	poller.send();
 }
 
+function halt_poll() 
+{
+	poller.abort();
+}
+
 /**
  * Sends data to the movim server through ajax.
  *

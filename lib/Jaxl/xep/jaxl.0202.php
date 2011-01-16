@@ -64,7 +64,7 @@
         }
         
         public static function handleIq($payload, $jaxl) {
-            if($payload['time'] == self::$ns) {
+            if(@$payload['time'] == self::$ns) {
                 $entityTime = '<time xmlns="'.self::$ns.'">';
                 $entityTime .= '<tzo>'.date('P').'</tzo>';
                 $entityTime .= '<utc>'.date('Y-m-d').'T'.date('H:i:s').'Z</utc>';

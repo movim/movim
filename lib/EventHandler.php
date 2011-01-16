@@ -9,19 +9,17 @@ class EventHandler
 	{
 		$this->conf = new GetConf();
 		
-		$this->parse_tpl('main.tpl');
-		//array_merge($widgets, $this->parse_tpl('page.tpl'));
+		$this->getLoadedWidgets();
 	}
-
-	private function parse_tpl($template)
-	{
-		$wids = array();
 	
-		preg_match_all('#\$this->widget\([\'"](.+?)[\'"]\);#',
-					   file_get_contents(THEMES_PATH . $this->conf->getServerConfElement('theme') . '/' . $template),
-					   $wids);
-
-		$this->widgets = $wids[1];
+	public function setLoadedWidgets($loaded_widgets) 
+	{
+		$_SESSION['loaded_widgets'] = $loaded_widgets;
+	}
+	
+	public function getLoadedWidgets() 
+	{
+		$this->widgets = $_SESSION['loaded_widgets'];
 	}
 
 	function runEvent($type, $event)

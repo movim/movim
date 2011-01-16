@@ -61,16 +61,14 @@
             $payload .= '<x xmlns="'.self::$ns.'" type="'.$type.'">';
             if($title) $payload .= '<title>'.$title.'</title>';
             if($inst) $payload .= '<instruction>'.$inst.'</instruction>';
-                        foreach($fields as $field) {
-                                $payload .= '<field var="'.$field['var'].'">';
-                                $payload .= '<value>'.$field['value'].'</value>';
-                                $payload .= '</field>';
-                        }
-                        $payload .= '</x>';
+            foreach($fields as $field) {
+                $payload .= '<field var="'.$field['var'].'">';
+                $payload .= '<value>'.$field['value'].'</value>';
+                $payload .= '</field>';
+            }
+            $payload .= '</x>';
             
-            unset($fields); unset($title); unset($inst); unset($type);
             return $payload;
-            unset($payload);
         }
         
         /*
@@ -78,30 +76,27 @@
         */
         public static function getFormField($fields) {
             $result = array();
-                        foreach($fields as $field) {
-                                $f = array();
+            foreach($fields as $field) {
+                $f = array();
+            
+                $f['type'] = $field['@']['type'];
+                $f['label'] = $field['@']['label'];
+                $f['var'] = $field['@']['var'];
                 
-                                $f['type'] = $field['@']['type'];
-                                $f['label'] = $field['@']['label'];
-                                $f['var'] = $field['@']['var'];
-                
-                                $f['desc'] = $field['#']['desc'][0]['#'];
-                                $f['required'] = $field['#']['required'][0]['#'];
-                                $f['value'] = $field['#']['value'][0]['#'];
+                $f['desc'] = $field['#']['desc'][0]['#'];
+                $f['required'] = $field['#']['required'][0]['#'];
+                $f['value'] = $field['#']['value'][0]['#'];
                                 
                 if(is_array($field['#']['option'])) { 
                     $f['option'] = array();
-                                    foreach($field['#']['option'] as $option) {
-                                            $f['option'][] = array('label'=>$option['@']['label'], 'value'=>$option['#']['value'][0]['#']);
-                                    }
+                    foreach($field['#']['option'] as $option) {
+                        $f['option'][] = array('label'=>$option['@']['label'], 'value'=>$option['#']['value'][0]['#']);
+                    }
                 }
                 
-                                $result[] = $f;
-                        }
-            
-            unset($f); unset($field); unset($fields);
+                $result[] = $f;
+            }
             return $result;
-            unset($result);
         }
 
     }
