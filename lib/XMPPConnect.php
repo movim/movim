@@ -86,20 +86,18 @@ class XMPPConnect
 
     
     public function jaxl_post_auth($test, $test2) {
-
-    }
-    
-    
-    public function jaxl_post_auth_failure($test, $test2) {
     	$f = fopen(BASE_PATH."log/movim.log","w");
     	fwrite($f, "gna");
     	fclose($f);
-    	/*var_dump($test);
-    	var_dump($test2);
+    }
+    
+    
+    public function jaxl_post_auth_failure() {
     	$this->jaxl->shutdown();
     	throw new MovimException("Login error.");
     	$user = new User();
-    	$user->desauth();*/
+    	$user->desauth();
+    	header("?q=login&err=auth");
     }
 
 	public function jaxl_get_auth_mech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}		//'ANONYMOUS');}

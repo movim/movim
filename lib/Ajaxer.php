@@ -79,7 +79,7 @@ class Ajaxer extends Controller
 	 */
 	public function handle()
 	{
-		session_commit();
+		//session_commit();
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
 			$user = new User();
 			$xmppSession = XMPPConnect::getInstance($user->getLogin());
