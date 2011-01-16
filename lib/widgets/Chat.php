@@ -33,6 +33,22 @@ class Chat extends Widget
 	{
 		echo "onIncomingPresence was called. Message: $event";
 	}
+	
+	function ajaxStuff($whatever)
+	{
+		//echo date('Y-m-d H:i:s') . '<br />';
+		
+		$user = new User();
+        $xmpp = XMPPConnect::getInstance($user->getLogin());
+		//$xmpp->sendMessage('edhelas@movim.eu', 'gna');
+
+                	$xmpp->getVCard(); // We send the vCard request
+                	$vcard = $xmpp->getPayload(); // We return the result of the request
+
+                	echo "<img src='data:image/png;base64,".$vcard['vCardPhotoBinVal']."' ><br />\n".
+                		 $vcard['vCardFN'].'<br />'.$vcard['vCardNickname']."\n";
+		
+	}
 
 	function build()
 	{
@@ -44,8 +60,11 @@ class Chat extends Widget
                   </div>
                   <input type="text" id="chatInput" />
                   <input type="button" id="chatSend" value="<?php echo t('Send');?>"/>
+                  
+                  <input type="button" onclick="<?php $this->callAjax('ajaxStuff', 'APPEND', "'testzone'", '3');?>" value="Message" />
 		</div>
 		<?php
+
 	}
 }
 
