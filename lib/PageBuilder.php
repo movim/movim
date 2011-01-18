@@ -284,9 +284,9 @@ class PageBuilder
 				sprintf(t("Error: Requested widget '%s' doesn't exist."), $name));
 		}
 
-		require($widget_path);
+		require_once($widget_path);
 		$extern = false;
-		$widget = new $name($extern, $this->user);
+		$widget = new $name($extern);
 		$widget->build();
 			
 		self::$css = array_merge(self::$css, $widget->loadcss());

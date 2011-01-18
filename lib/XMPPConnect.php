@@ -125,9 +125,17 @@ class XMPPConnect
 	
 	public function getVCard()
 	{
-		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'handlePayload'));
+		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'vcardReturn'));
 	}
 	
+	public function vcardReturn($payload)
+	{
+		echo "I received payload: ";
+		var_dump($payload);
+		$evt = new EventHandler();
+		$evt->runEvent('vcardreceived', $payload);
+	}
+
 	public function getMessage($payloads = 'test') {
         $html = '';
         foreach($payloads as $payload) {
@@ -163,29 +171,6 @@ class XMPPConnect
         }
 	}
 	
-	/**
-	 * handlePayload
-	 * Save the payload
-	 * 
-	 * @param unknown $handler
-	 * @return void
-	 */
-	function handlePayload($handler)
-	{
-		$this->payload = $handler;
-	}
-	
-	/**
-	 * getPayload
-	 * Return the payload
-	 * 
-	 * @return void
-	 */
-	public function getPayload()
-	{
-		return $this->payload;
-	}
-
 	public function getInstance($jid = false)
 	{
 		if(!is_object(self::$instance)) {

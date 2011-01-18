@@ -18,66 +18,58 @@
 
 class Friends extends Widget
 {
-	private $user;
-	private $friendslist;
-	
-	function __construct($external, &$user)
-	{
-		parent::__construct($external);
-		$this->user = $user;
-		$this->addjs("test.js");
-	}
+    private $friendslist;
+    
+    function WidgetLoad()
+    {
+        $this->addjs("test.js");
 
-	function processList($message)
-	{
-		$this->friendslist = $message;
-	}
+		// Registering event handlers.
+		$this->registerEvent('vcardreceived', 'onVcardReceived');
+    }
 
-	function ajaxStuff($whatever)
+    function processList($message)
+    {
+        $this->friendslist = $message;
+    }
+
+	function ajaxRefreshVcard()
 	{
 		echo date('Y-m-d H:i:s') . '<br />';
-	}
 	
-	function build()
-	{
+		echo "TOTO!!!!";
 
-		/*
-		  foreach($this->friendslist) {
-		      Show friend.
-		  }
-		*/
-                ?>
-                <div id="friends">
-                <?php
-                	/*
-                		A little example to get the vCard from the xmpp connector
-                	*/
-                	/*$user = new User();
-                	$xmpp = XMPPConnect::getInstance($user->getLogin()); // We get the instance of the connexion
-                	$xmpp->getVCard(); // We send the vCard request
-                	$vcard = $xmpp->getPayload(); // We return the result of the request
-                	echo "<img src='data:image/png;base64,".$vcard['vCardPhotoBinVal']."' ><br />\n".
-                		 $vcard['vCardFN'].'<br />'.$vcard['vCardNickname']."\n";
-                		 
-                	// We're displaying the roster
-                	$xmpp->getRosterList();
-                	$list = $xmpp->getPayload();
-                	
-                	echo "<br /><br /><h3>".t('Contacts')."</h3>".
-                		 "<div id='tinylist'><ul>\n";
-                	for($i=0;$i< sizeof($list["queryItemName"]); $i++) {
-                		echo "<li><a href='".
-                			 $list["queryItemJid"][$i].
-                			 "'>".
-                			 $list["queryItemName"][$i].
-                			 " (".$list["queryItemGrp"][$i].")</a></li>";
-                	}
-                	echo "</ul></div>";*/
-                ?>
-                </div>
-                <?php
-                
-	}
+		$user = new User();
+		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp->getVCard(); // We send the vCard request
+	}    
+    function build()
+    {
+        ?>
+        <div id="friends">
+          <img src="" alt="<?php echo t('Your avatar');?>">
+          <br /><br /><br />
+          <h3><?php echo t('Contacts');?></h3>
+          <input type="button"
+                 onclick="<?php $this->callAjax('ajaxRefreshVcard', 'FILL', "'testzone'");?>"
+                 value="Refresh vcard" />
+          <div id='tinylist'>
+			 <ul>
+            </ul>
+          </div>
+		  <div id="testzone"></div>
+        </div>
+        <?php
+        // We send a request to fetch the vcard straight away.
+        $user = new User();
+        $xmpp = XMPPConnect::getInstance($user->getLogin()); // We get the instance of the connexion
+        $xmpp->getVCard(); // We send the vCard request
+    }
+
+    function onVcardReceived($vcard)
+    {
+		echo "vcard received: " .substr(var_export($vcard, true), 0, 20);
+    }
 }
 
 ?>
