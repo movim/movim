@@ -12,7 +12,7 @@ class MovimException extends Exception
 	 * Forces to add a message.
 	 */
 	public function __construct($message, $code = 0, Exception $previous = NULL) {
-		parent::__construct($message, $code, $previous);
+		parent::__construct($message, $code/*, $previous*/);
 	}
 
 	/**

@@ -82,8 +82,13 @@ class Widget
 
 	protected function callAjax($funcname, $mode, $modeopt)
 	{
-		echo get_class($this) . '_' . $funcname . '(' . $mode . ', ' . $modeopt . ', ' .
-			implode(', ', array_slice(func_get_args(), 3)) . ');';
+		$args = implode(', ', array_slice(func_get_args(), 3));
+		if($args != "") {
+			$args = ', ' . $args;
+		}
+
+		echo get_class($this) . '_' . $funcname . "($mode, $modeopt" . $args . ");";
+
 	}
 
 	/**

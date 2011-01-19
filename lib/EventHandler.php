@@ -38,10 +38,14 @@ class EventHandler
 				throw new MovimException(
 					sprintf(t("Error: Requested widget '%s' doesn't exist."), $widget));
 			}
+
+			if($type == 'vcardreceived') {
+				echo "vcard received. Runnung $widget hooks.<br />\n";
+			}
 			
 			$extern = false;
 			$user = new User();
-			require($widget_path);
+			require_once($widget_path);
 			$wid = new $widget($extern, $user);
 			$wid->runEvents($type, $event);
 		}
