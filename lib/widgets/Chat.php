@@ -27,7 +27,7 @@ class Chat extends Widget
 	function onIncomingChat($data)
 	{
         $this->sendto('chatMessages', 'APPEND',
-                      '<p>' . $data['from'] . ': ' . $data['body'] . '</p>');
+                      '<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>');
 	}
 
 	function onIncomingPresence($data)

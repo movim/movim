@@ -11,7 +11,7 @@ class EventHandler
 		
 		$this->getLoadedWidgets();
 	}
-	
+
 	public function setLoadedWidgets($loaded_widgets) 
 	{
 		$_SESSION['loaded_widgets'] = $loaded_widgets;
@@ -29,6 +29,7 @@ class EventHandler
             return;
         }
         if(is_array($this->widgets) && count($this->widgets) > 0) {
+            ob_clean();
             foreach($this->widgets as $widget) {
                 $widget_path = "";
                 if(file_exists(BASE_PATH . 'widgets/' . $widget . '/' . $widget . '.php')) {
@@ -52,9 +53,18 @@ class EventHandler
                 $user = new User();
                 require_once($widget_path);
                 $wid = new $widget($extern, $user);
-                $wid->runEvents($type, $event);
                 // Running catch-all events.
                 $wid->runEvents('allEvents', $event);
+                $wid->runEvents($type, $event);
+            }
+
+            $payload = ob_get_clean();
+            if(trim(rtrim($payload)) != "") {
+                header('Content-Type: text/xml');
+                echo '<?xml version="1.0" encoding="UTF-8" ?>';
+                echo '<movimcontainer>';
+                echo $payload;
+                echo '</movimcontainer>';
             }
         }
 	}
