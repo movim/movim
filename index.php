@@ -31,6 +31,8 @@
 
 require_once('init.php');
 
+$polling = false;
+
 // Run
 $rqst = new Dispatcher();
 $rqst->handle();

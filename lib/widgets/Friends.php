@@ -22,9 +22,6 @@ class Friends extends Widget
     
     function WidgetLoad()
     {
-        $this->addjs("test.js");
-
-		// Registering event handlers.
 		$this->registerEvent('vcardreceived', 'onVcardReceived');
     }
 
@@ -43,6 +40,7 @@ class Friends extends Widget
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
 		$xmpp->getVCard(); // We send the vCard request
 	}    
+
     function build()
     {
         ?>
@@ -68,7 +66,7 @@ class Friends extends Widget
 
     function onVcardReceived($vcard)
     {
-		echo "vcard received: " .substr(var_export($vcard, true), 0, 20);
+        $this->sendto('testzone', 'FILL', var_export($vcard, true));
     }
 }
 

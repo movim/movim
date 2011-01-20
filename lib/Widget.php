@@ -147,6 +147,25 @@ class Widget
 	{
 		return $this->css;
 	}
+
+    /**
+     * Prints out a widget content in XML to be handled by javascript for
+     * ajax return.
+     */
+    protected function sendto($id, $method, $payload)
+    {
+        ob_clean();
+        header('Content-Type: text/xml');
+        echo '<?xml version="1.0" encoding="UTF-8" ?>';
+        echo '<movim>';
+        echo '<target method="' . $method . '">';
+        echo $id;
+        echo '</target>';
+        echo '<payload>';
+        echo '<![CDATA[' . $payload . "]]>";
+        echo "</payload>";
+        echo "</movim>";
+    }
 }
 
 ?>

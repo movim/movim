@@ -24,26 +24,25 @@ class Chat extends Widget
 		$this->registerEvent('incomepresence', 'onIncomingPresence');
 	}
 
-	function onIncomingChat($event)
+	function onIncomingChat($data)
 	{
-		echo "onIncomingChat was called. Message: $event";
+        $this->sendto('chatMessages', 'APPEND',
+                      '<p>' . $data['from'] . ': ' . $data['body'] . '</p>');
 	}
 
-	function onIncomingPresence($event)
+	function onIncomingPresence($data)
 	{
-		echo "onIncomingPresence was called. Message: $event";
+		echo "onIncomingPresence was called. Message: $data";
 	}
 
 	function build()
 	{
 		?>
 		<div id="chat">
-                  <div id="chatMessages">
-		    <p>Tagada: blah blah blah</p>
-		    <p>Pouet: Gna gna gna!</p>
-                  </div>
-                  <input type="text" id="chatInput" />
-                  <input type="button" id="chatSend" value="<?php echo t('Send');?>"/>
+            <div id="chatMessages">
+            </div>
+            <input type="text" id="chatInput" />
+            <input type="button" id="chatSend" value="<?php echo t('Send');?>"/>
 		</div>
 		<?php
 

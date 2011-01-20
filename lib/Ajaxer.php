@@ -87,9 +87,6 @@ class Ajaxer extends Controller
 			session_commit();
 			$xmppSession->pingServer();
 			session_commit();
-
-			echo '<br />' .date('Y-m-d H:i:s') . ' : ';
-
 		} else {
 			$request = simplexml_load_string(file_get_contents('php://input'));
 

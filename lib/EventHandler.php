@@ -24,31 +24,39 @@ class EventHandler
 
 	function runEvent($type, $event)
 	{
-		foreach($this->widgets as $widget) {
-			$widget_path = "";
-			if(file_exists(BASE_PATH . 'widgets/' . $widget . '/' . $widget . '.php')) {
-				$widget_path = BASE_PATH . 'widgets/' . $widget . '/' . $widget . '.php';
-				// Custom widgets have their own translations.
-				load_extra_lang(BASE_PATH . 'widgets/' . $widget . '/i18n');
-			}
-			else if(file_exists(LIB_PATH . 'widgets/' . $widget . '.php')) {
-				$widget_path = LIB_PATH . 'widgets/' . $widget . '.php';
-			}
-			else {
-				throw new MovimException(
-					sprintf(t("Error: Requested widget '%s' doesn't exist."), $widget));
-			}
+        global $polling;
+        if(!$polling) { // avoids issues while loading pages.
+            return;
+        }
+        if(is_array($this->widgets) && count($this->widgets) > 0) {
+            foreach($this->widgets as $widget) {
+                $widget_path = "";
+                if(file_exists(BASE_PATH . 'widgets/' . $widget . '/' . $widget . '.php')) {
+                    $widget_path = BASE_PATH . 'widgets/' . $widget . '/' . $widget . '.php';
+                    // Custom widgets have their own translations.
+                    load_extra_lang(BASE_PATH . 'widgets/' . $widget . '/i18n');
+                }
+                else if(file_exists(LIB_PATH . 'widgets/' . $widget . '.php')) {
+                    $widget_path = LIB_PATH . 'widgets/' . $widget . '.php';
+                }
+                else {
+                    throw new MovimException(
+                        sprintf(t("Error: Requested widget '%s' doesn't exist."), $widget));
+                }
 
-			if($type == 'vcardreceived') {
-				echo "vcard received. Runnung $widget hooks.<br />\n";
-			}
+                if($type == 'vcardreceived') {
+                    echo "vcard received. Runnung $widget hooks.<br />\n";
+                }
 			
-			$extern = false;
-			$user = new User();
-			require_once($widget_path);
-			$wid = new $widget($extern, $user);
-			$wid->runEvents($type, $event);
-		}
+                $extern = false;
+                $user = new User();
+                require_once($widget_path);
+                $wid = new $widget($extern, $user);
+                $wid->runEvents($type, $event);
+                // Running catch-all events.
+                $wid->runEvents('allEvents', $event);
+            }
+        }
 	}
 }
 

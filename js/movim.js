@@ -73,10 +73,30 @@ function movim_poll()
 		{
 			if(poller.status == 200) {
 				// Handling poll return.
+                var movimreturn = poller.responseXML;
+                if(movimreturn != null) {
+                    var target = movimreturn.getElementsByTagName("target")[0].childNodes[0].nodeValue;
+                    var method = movimreturn.getElementsByTagName("target")[0].attributes.getNamedItem("method").nodeValue;
+                    var payload = movimreturn.getElementsByTagName("payload")[0].childNodes[0].nodeValue;
+                    if(method == 'APPEND') {
+				        document.getElementById(target).innerHTML += payload;
+	                }
+	                else if(method == 'PREPEND') {
+				        var elt = document.getElementById(target);
+				        elt.innerHTML = payload + elt.innerHTML;
+			        }
+                    else { // Default is FILL.
+				        document.getElementById(target).innerHTML = payload;
+	                }
+                }
+                var response = poller.responseText;
+                response = response.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 				document.getElementById('log').innerHTML
-					= "$ " + poller.responseText + " "
+					= "$ " + response + "<br /> "
 					+ document.getElementById('log').innerHTML;
-			}
+
+                
+            }
 
 			if(poller.status > 0) {
 				// Restarting polling.
