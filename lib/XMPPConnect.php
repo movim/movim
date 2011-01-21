@@ -130,8 +130,6 @@ class XMPPConnect
 	
 	public function vcardReturn($payload)
 	{
-		echo "I received payload: ";
-		var_dump($payload);
 		$evt = new EventHandler();
 		$evt->runEvent('vcardreceived', $payload);
 	}
@@ -141,18 +139,9 @@ class XMPPConnect
         foreach($payloads as $payload) {
             // reject offline message
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') {
-                if(strlen($payload['body']) > 0) {
-                    $html .= '<span class="message"> '.$payload['from'].' : '.$payload['body']."</span><br />\n";
-                }
-                else if(isset($payload['chatState']) && in_array($payload['chatState'], JAXL0085::$chatStates)) {
-                    $html .= '<span class="state"> '.$payload['from'].' chat state '.$payload['chatState']."</span><br />\n";
-                }
+                $evt = new EventHandler();
+                $evt->runEvent('incomechat', $payload);
             }
-        }
-        
-        if($html != '') {
-			$evt = new EventHandler();
-			$evt->runEvent('incomechat', $html);
         }
 	}
 	
@@ -175,7 +164,14 @@ class XMPPConnect
 	{
 		if(!is_object(self::$instance)) {
 			if(!$jid) {
-				throw new MovimException("Error: JID not provided.");
+                $user = new User();
+                if(!$user->isLogged()) {
+                    throw new MovimException(t("Error: User not logged in."));
+                } else {
+                    $jid = $user->getLogin();
+                    if($jid = "")
+                        throw new MovimException(t("Error: JID not provided."));
+                }
 			} else {
 				self::$instance = new XMPPConnect($jid);
 			}

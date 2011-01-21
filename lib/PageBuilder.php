@@ -21,11 +21,10 @@ class PageBuilder
 	private $theme = 'movim';
 	private $title = '';
 	private $menu = array();
-	private static $scripts;
-	private static $css;
 	private $content = '';
 	private $user;
-	private static $loaded_widgets;
+    private $css = array();
+    private $scripts = array();
 	
 	/**
 	 * Constructor. Determines whether to show the login page to the user or the
@@ -37,16 +36,6 @@ class PageBuilder
 		$conf = new GetConf();
 		$this->theme = $conf->getServerConfElement('theme');
 
-		if(!is_array(self::$scripts)) {
-			self::$scripts = array();
-		}
-		if(!is_array(self::$css)) {
-			self::$css = array();
-		}
-		if(!is_array(self::$loaded_widgets)) {
-			self::$loaded_widgets = array();
-		}
-		
 		self::load_language();
 	}
 	
@@ -197,7 +186,7 @@ class PageBuilder
 
 	function addScript($script)
 	{
-		self::$scripts[] = BASE_URI . 'js/' . $script;
+		$this->scripts[] = BASE_URI . 'js/' . $script;
 	}
 
 	/**
@@ -205,7 +194,7 @@ class PageBuilder
 	 */
 	function addCss($file)
 	{
-		self::$css[] = $this->link_file($file, true);
+		$this->css[] = $this->link_file($file, true);
 	}
 
 	function scripts()
@@ -215,7 +204,9 @@ class PageBuilder
 
 	function printScripts() {
 		$out = '';
-		foreach(self::$scripts as $script) {
+        $widgets = WidgetWrapper::getInstance();
+        $scripts = array_merge($this->scripts, $widgets->loadjs());
+		foreach($scripts as $script) {
 			 $out .= '<script type="text/javascript" src="'
 				 . $script .
 				 '"></script>'."\n";
@@ -229,7 +220,9 @@ class PageBuilder
 
 	function printCss() {
 		$out = '';
-		foreach(self::$css as $css_path) {
+        $widgets = WidgetWrapper::getInstance();
+        $csss = array_merge($this->css, $widgets->loadcss()); // Note the 3rd s, there are many.
+		foreach($csss as $css_path) {
 			$out .= '<link rel="stylesheet" href="'
 				. $css_path .
 				"\" type=\"text/css\" />\n";
@@ -261,39 +254,8 @@ class PageBuilder
 	 */
 	function widget($name)
 	{
-		if(!is_array(self::$loaded_widgets)) {
-			self::$loaded_widgets = array();
-			self::$loaded_widgets[] = $name;
-		}
-		else if(!in_array($name, self::$loaded_widgets)) {
-				self::$loaded_widgets[] = $name;
-		}
-		
-		// Attempting to load the user's widgets in priority
-		$widget_path = "";
-		if(file_exists(BASE_PATH . 'widgets/' . $name . '/' . $name . '.php')) {
-			$widget_path = BASE_PATH . 'widgets/' . $name . '/' . $name . '.php';
-			// Custom widgets have their own translations.
-			load_extra_lang(BASE_PATH . 'widgets/' . $name . '/i18n');
-		}
-		else if(file_exists(LIB_PATH . 'widgets/' . $name . '.php')) {
-			$widget_path = LIB_PATH . 'widgets/' . $name . '.php';
-		}
-		else {
-			throw new MovimException(
-				sprintf(t("Error: Requested widget '%s' doesn't exist."), $name));
-		}
-
-		require_once($widget_path);
-		$extern = false;
-		$widget = new $name($extern);
-		$widget->build();
-			
-		self::$css = array_merge(self::$css, $widget->loadcss());
-		self::$scripts = array_merge(self::$scripts, $widget->loadjs());
-		
-		// We save the loaded widgets in the session for futur Ajax calls
-		EventHandler::setLoadedWidgets(self::$loaded_widgets);
+        $widgets = WidgetWrapper::getInstance();
+        $widgets->run_widget($name, 'build', array());
 	}
 
 	/**

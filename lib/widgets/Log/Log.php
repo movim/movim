@@ -18,6 +18,11 @@
 
 class Log extends Widget
 {
+    function widgetLoad()
+    {
+        $this->registerEvent('allEvents', 'onEvent');
+    }
+
 	function build()
 	{
 		?>
@@ -25,6 +30,11 @@ class Log extends Widget
        	</div>
 		<?php
 	}
+
+    function onEvent($data)
+    {
+        $this->sendto('log', 'PREPEND', date('H:i:s> ') . "data: " . var_export($data, true) ."<br />");
+    }
 }
 
 ?>

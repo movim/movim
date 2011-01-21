@@ -131,11 +131,11 @@ class Widget
 	/**
 	 * Runs all events of a given type.
 	 */
-	public function runEvents($type, $event)
+	public function runEvents($proto)
 	{
-		if(is_array($this->events) && array_key_exists($type, $this->events)) {
-			foreach($this->events[$type] as $handler) {
-				call_user_func(array($this, $handler), $event);
+		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
+			foreach($this->events[$proto['type']] as $handler) {
+				call_user_func(array($this, $handler), $proto['data']);
 			}
 		}
 	}
@@ -147,6 +147,22 @@ class Widget
 	{
 		return $this->css;
 	}
+
+    /**
+     * Prints out a widget content in XML to be handled by javascript for
+     * ajax return.
+     */
+    protected function sendto($id, $method, $payload)
+    {
+        echo '<movim>';
+        echo '<target method="' . $method . '">';
+        echo $id;
+        echo '</target>';
+        echo '<payload>';
+        echo '<![CDATA[' . $payload . "]]>";
+        echo "</payload>";
+        echo "</movim>";
+    }
 }
 
 ?>

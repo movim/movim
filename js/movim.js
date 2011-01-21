@@ -39,7 +39,7 @@ function movimPack(data)
 	if(data.length % 2 != 0) {
 		return "";
 	}
-		
+	
 	for(var i = 0; i < data.length; i += 2) {
 		outBuffer += '<param name="' + data[i]
 			+ '" value="' + data[i + 1] + '" />' + "\n";
@@ -73,10 +73,33 @@ function movim_poll()
 		{
 			if(poller.status == 200) {
 				// Handling poll return.
-				document.getElementById('log').innerHTML
-					= "$ " + poller.responseText + " "
-					+ document.getElementById('log').innerHTML;
-			}
+                var movimreturn = poller.responseXML;
+                try {
+                    if(movimreturn != null) {
+                        var movimtags = movimreturn.getElementsByTagName("movim");
+                        for(h = 0; h < movimtags.length; h++) {
+                            var widgetreturn = movimtags[h];
+                            var target = widgetreturn.getElementsByTagName("target")[0].childNodes[0].textContent;
+                            var method = widgetreturn.getElementsByTagName("target")[0].attributes.getNamedItem("method").nodeValue;
+                            var payload = widgetreturn.getElementsByTagName("payload")[0].childNodes[0].nodeValue;
+
+                            if(method == 'APPEND') {
+				                document.getElementById(target).innerHTML += payload;
+	                        }
+	                        else if(method == 'PREPEND') {
+				                var elt = document.getElementById(target);
+				                elt.innerHTML = payload + elt.innerHTML;
+			                }
+                            else { // Default is FILL.
+				                document.getElementById(target).innerHTML = payload;
+	                        }
+                        }
+                    }
+                }
+                catch(err) {
+                    log("Error caught: " + err.toString());
+                }
+            }
 
 			if(poller.status > 0) {
 				// Restarting polling.
@@ -87,6 +110,17 @@ function movim_poll()
 	};
 
 	poller.send();
+}
+
+function log(text)
+{
+    if(typeof text !== 'undefined') {
+        text = text.toString();
+        text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	    document.getElementById('log').innerHTML
+		    = "$ " + text + "<br /> "
+		    + document.getElementById('log').innerHTML;
+    }
 }
 
 function halt_poll() 

@@ -87,32 +87,22 @@ class Ajaxer extends Controller
 			session_commit();
 			$xmppSession->pingServer();
 			session_commit();
-
-			echo '<br />' .date('Y-m-d H:i:s') . ' : ';
-
 		} else {
 			$request = simplexml_load_string(file_get_contents('php://input'));
 
 			// Loading the widget.
 			$widget_name = (string)$request['widget'];
-			$widget_path = LIB_PATH . 'widgets/' . $widget_name . '.php';
 
-			if(file_exists($widget_path)) {
-				require($widget_path);
-				// Preparing the parameters and calling the function.
-				$params = array();
-				foreach($request->children() as $child) {
-					if($child->getName() == 'param') {
-						$params[] = (string)$child['value'];
-					}
-				}
-
-				$user = new User();
-				$widget = new $widget_name(false, $user);
-			
-				call_user_func(array($widget, (string)$request['name']), $params);
-				
-			}
+            // Preparing the parameters and calling the function.
+            $params = array();
+            foreach($request->children() as $child) {
+                if($child->getName() == 'param') {
+                    $params[] = (string)$child['value'];
+                }
+            }
+            
+            $widgets = WidgetWrapper::getInstance(false);
+            $widgets->run_widget($widget_name, (string)$request['name'], $params);
 		}
 	}
 }

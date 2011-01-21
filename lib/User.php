@@ -6,8 +6,6 @@
  *
  */
 class User {
-	private static $instance;
-
 	private $xmppSession;
 
 	private $username = '';

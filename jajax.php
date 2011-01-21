@@ -18,6 +18,8 @@
 
 require("init.php");
 
+$polling = true;
+
 $ajax = new Ajaxer();
 $ajax->handle();
 ?>
