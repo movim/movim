@@ -164,7 +164,14 @@ class XMPPConnect
 	{
 		if(!is_object(self::$instance)) {
 			if(!$jid) {
-				throw new MovimException("Error: JID not provided.");
+                $user = new User();
+                if(!$user->isLogged()) {
+                    throw new MovimException(t("Error: User not logged in."));
+                } else {
+                    $jid = $user->getLogin();
+                    if($jid = "")
+                        throw new MovimException(t("Error: JID not provided."));
+                }
 			} else {
 				self::$instance = new XMPPConnect($jid);
 			}

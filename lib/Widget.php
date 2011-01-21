@@ -131,11 +131,11 @@ class Widget
 	/**
 	 * Runs all events of a given type.
 	 */
-	public function runEvents($type, $event)
+	public function runEvents($proto)
 	{
-		if(is_array($this->events) && array_key_exists($type, $this->events)) {
-			foreach($this->events[$type] as $handler) {
-				call_user_func(array($this, $handler), $event);
+		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
+			foreach($this->events[$proto['type']] as $handler) {
+				call_user_func(array($this, $handler), $proto['data']);
 			}
 		}
 	}

@@ -35,6 +35,11 @@ class Chat extends Widget
 		echo "onIncomingPresence was called. Message: $data";
 	}
 
+    function ajaxTest()
+    {
+        echo "Cleared!";
+    }
+
 	function build()
 	{
 		?>
@@ -42,7 +47,7 @@ class Chat extends Widget
             <div id="chatMessages">
             </div>
             <input type="text" id="chatInput" />
-            <input type="button" id="chatSend" value="<?php echo t('Send');?>"/>
+            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxTest', 'FILL', "'chatMessages'");?>" value="<?php echo t('Send');?>"/>
 		</div>
 		<?php
 
