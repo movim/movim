@@ -1,5 +1,6 @@
 <?php /* -*- mode: html -*- */
 ?>
+<?php $this->widget('Poller');?>
 <?php $this->widget('Log');?>
 <div id="left">
   <?php $this->widget('Friends');?>
