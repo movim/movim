@@ -66,7 +66,6 @@ class Widget
 	 */
 	function build()
 	{
-		echo t("This is a sample widget.");
 	}
 
 	/**
@@ -76,8 +75,19 @@ class Widget
 	 */
 	protected function respath($file, $fspath = false)
 	{
-		return ($fspath? BASE_PATH : BASE_URI) .
-			($this->external? 'widgets/' . $file : $file);
+        $path = "";
+        if(!$this->external) {
+            $path = 'lib/';
+        }
+        $path .= 'widgets/' . get_class($this) . '/' . $file;
+
+        if($fspath) {
+            $path = BASE_PATH . $path;
+        } else {
+            $path = BASE_URI . $path;
+        }
+
+        return $path;
 	}
 
 	protected function callAjax($funcname, $mode, $modeopt)
