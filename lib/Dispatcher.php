@@ -85,6 +85,7 @@ class Dispatcher extends Controller
 	 */
 	function login()
 	{
+		$this->page-> disablePolling();
 		$this->page->setTitle(sprintf(t('%s - Login to Movim'), APP_TITLE));
 		$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').'Movim | Human Network', 'http://www.movim.eu/', true);
 		if(GetConf::getServerConfElement("accountCreation") == 1)

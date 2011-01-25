@@ -25,6 +25,7 @@ class PageBuilder
 	private $user;
     private $css = array();
     private $scripts = array();
+    private $polling = true;
 	
 	/**
 	 * Constructor. Determines whether to show the login page to the user or the
@@ -143,6 +144,15 @@ class PageBuilder
 	function title()
 	{
 		echo $this->title;
+	}
+	
+	function disablePolling() {
+		$this->polling = false;
+	}
+	
+	function polling() {
+		if($this->polling == true)
+			echo ' onload="movim_poll()"';
 	}
 	
 	/**

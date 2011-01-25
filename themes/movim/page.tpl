@@ -9,7 +9,7 @@
     <?php $this->addCss('css/login_form.css');?>
     <?php $this->scripts();?>
   </head>
-<body onload="movim_poll()">
+<body<?php $this->polling(); ?>>
 	<div id="nav">
 	  <?php $this->menu();?>	
 	</div>
