@@ -52,7 +52,9 @@ class PageBuilder
 			$langNotFound = true;
 			$i = 0;
 			while($langNotFound && $i < sizeof($nav_langs)) {
-		    	$check = str_replace ( '-', '_', strtolower($nav_langs[$i]));
+		    	//$check = str_replace ( '-', '_', strtolower($nav_langs[$i]));
+				$expl_arr = explode("-", $nav_langs[$i]);
+				$check = $expl_arr[0];
 		    	if(file_exists(BASE_PATH . '/i18n/' . $check . '.po')) {
 		    		$langNotFound = false;
 		    		load_language($check);
