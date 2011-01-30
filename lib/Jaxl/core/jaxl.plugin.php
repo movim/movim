@@ -100,13 +100,14 @@
          * @param array $filter
         */
         public static function execute($hook, $payload=null, $jaxl=false, $filter=false) {
-            $uids = array($jaxl->uid, 0);
+            if($jaxl) $uids = array($jaxl->uid, 0);
+            else $uids = array(0);
             foreach($uids as $uid) {
                 if(isset(self::$registry[$uid][$hook]) && count(self::$registry[$uid][$hook]) > 0) {
                     foreach(self::$registry[$uid][$hook] as $priority) {
                         foreach($priority as $callback) {
                             if($filter === false || (is_array($filter) && in_array($callback[0], $filter))) {
-                                $jaxl->log("[[JAXLPlugin]] Executing hook $hook for uid $uid", 7);
+                                if($jaxl) $jaxl->log("[[JAXLPlugin]] Executing hook $hook for uid $uid", 7);
                                 $payload = call_user_func($callback, $payload, $jaxl);
                             }
                         }

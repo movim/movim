@@ -186,7 +186,7 @@
         /**
          * Read select timeouts
         */
-        var $getSelectSecs = 5;
+        var $getSelectSecs = 1;
         var $getSelectUsecs = 0;
 
         /**
@@ -215,7 +215,7 @@
             $this->rateLimit = isset($config['rateLimit']) ? $config['rateLimit'] : true;
             $this->getPktSize = isset($config['getPktSize']) ? $config['getPktSize'] : 4096;
             $this->sendRate = isset($config['sendRate']) ? $config['sendRate'] : .4;
-            $this->getSelectSecs = isset($config['getSelectSecs']) ? $config['getSelectSecs'] : 5;
+            $this->getSelectSecs = isset($config['getSelectSecs']) ? $config['getSelectSecs'] : 1;
             $this->getSXE = isset($config['getSXE']) ? $config['getSXE'] : false;
         }
         
@@ -298,10 +298,9 @@
             // get num changed streams
             $read = $streams; $write = null; $except = null; $secs = $this->getSelectSecs; $usecs = $this->getSelectUsecs;
             if(false === ($changed = @stream_select(&$read, &$write, &$except, $secs, $usecs))) {
-                $this->log("[[XMPPGet]] \nError while reading packet from stream", 5);
+                $this->log("[[XMPPGet]] \nError while reading packet from stream", 1);
             }
             else {
-                $this->log("[[XMPPGet]] $changed streams ready for read out of total ".sizeof($streams)." streams", 7);
                 if($changed == 0) $now = $this->clocked+$secs;
                 else $now = time();
 
@@ -318,14 +317,15 @@
                         $jaxl->clocked = $now;
                     }
 
-                    // reload pending buffer
+                    // reload broken buffer
                     $payload = $jaxl->buffer;
                     $jaxl->buffer = '';
 
                     // read stream
                     $ret = @fread($jaxl->stream, $jaxl->getPktSize);
-                    if(trim($ret) != '') $jaxl->log("[[XMPPGet]] \n".$ret, 4);
-                    $jaxl->totalRcvdSize = strlen($ret);
+                    $bytes = strlen($ret);
+                    $jaxl->totalRcvdSize += $bytes;
+                    if(trim($ret) != '') $jaxl->log("[[XMPPGet]] ".$jaxl->getPktSize."\n".$ret, 4);
                     $ret = $jaxl->executePlugin('jaxl_get_xml', $ret);
                     $payload .= $ret;
 
@@ -376,7 +376,8 @@
 
                 $xml = $this->obuffer;
                 $this->obuffer = '';
-                return ($xml == '') ? 0 : $this->_sendXML($xml);
+                $ret = ($xml == '') ? 0 : $this->_sendXML($xml);
+                return $ret;
             }
         }
 
@@ -386,7 +387,7 @@
         protected function _sendXML($xml) {
             if($this->stream && $xml != '') {
                 $read = array(); $write = array($this->stream); $except = array();
-                $secs = null; $usecs = null;
+                $secs = 0; $usecs = 200000;
 
                 if(false === ($changed = @stream_select(&$read, &$write, &$except, $secs, $usecs))) {
                     $this->log("[[XMPPSend]] \nError while trying to send packet", 5);
@@ -395,6 +396,8 @@
                 }
                 else if($changed > 0) {
                     $this->lastSendTime = JAXLUtil::getTime();
+
+                    // this can be resource consuming for large payloads rcvd
                     $xmls = JAXLUtil::splitXML($xml);
                     $pktCnt = count($xmls);
                     $this->totalSentPkt += $pktCnt;
@@ -405,8 +408,8 @@
                     return $ret;
                 }
                 else {
-                    $this->log("[[XMPPSend]] Failed\n".$xml);
-                    throw new JAXLException("[[XMPPSend]] \nFailed");
+                    $this->obuffer .= $xml;
+                    $this->log("[[XMPPSend]] Not ready for write, obuffer size:".strlen($this->obuffer), 1);
                     return 0;
                 }
             }

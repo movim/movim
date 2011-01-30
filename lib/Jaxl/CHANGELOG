@@ -1,5 +1,6 @@
 version 2.1.2
 -------------
+- Improved httpd class and related changed in core jaxl class. Also fixed a few typos inside core classes 
 - Added option to pass getSXE option to Jaxl constructor (Whether Jaxl core should return a SimpleXMLElement object of parsed string with callback payloads)
 - Better handling for multi-instance jaxl applications (Use JAXL::addCore to add new instance)
   Simple method of issuing unique id to each connected jaxl instance

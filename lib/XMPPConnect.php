@@ -125,7 +125,7 @@ class XMPPConnect
 	
 	public function getVCard()
 	{
-		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'vcardReturn'));
+		//$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'vcardReturn'));
 	}
 	
 	public function vcardReturn($payload)

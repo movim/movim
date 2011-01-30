@@ -50,7 +50,7 @@
             $jaxl->requires('JAXL0060');
         }
         
-        public static publishItem($jaxl, $from, $node, $item) {
+        public static function publishItem($jaxl, $from, $node, $item) {
             return JAXL0060::publishItem($jaxl, false, $from, $node, $item);
         }
         

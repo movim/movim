@@ -58,7 +58,7 @@
     class JAXLHTTPd { 
                
         // HTTP request/response code list
-        public static $headers = array(
+        var $headers = array(
             100 => "100 Continue",
             200 => "200 OK",
             201 => "201 Created",
@@ -90,33 +90,19 @@
         );
         
         // server instance
-        private static $httpd = null;
+        var $httpd = null;
         
         // server settings
-        private static $settings = null;
+        var $settings = null;
         
         // connected socket id
-        private static $id = null;
+        var $id = null;
         
         // list of connected clients
-        private static $clients = null;
+        var $clients = null;
        
-        public static function shutdown() {
-            JAXLPlugin::execute('jaxl_httpd_pre_shutdown');
-            exit;
-        }
-
-        private static function reset($options) {
-            self::$settings = array(
-                'port'  =>  isset($options['port']) ? $options['port'] : 5290,
-                'maxq'  =>  isset($options['maxq']) ? $options['maxq'] : 20,
-                'pid'   =>  getmypid(),
-                'since' =>  time()
-            );
-        }
-       
-        public static function start($options) {
-            self::reset($options);
+        function __construct($options) {
+            $this->reset($options);
 
             pcntl_signal(SIGTERM, array("JAXLHTTPd", "shutdown"));
             pcntl_signal(SIGINT, array("JAXLHTTPd", "shutdown"));
@@ -125,35 +111,37 @@
             foreach($options as $opt=>$val) {
                 switch($opt) {
                     case 'p':
-                        self::$settings['port'] = $val;
+                        $this->settings['port'] = $val;
                         break;
                     case 'b':
-                        self::$settings['maxq'] = $val;
+                        $this->settings['maxq'] = $val;
                     default:
                         break;
                 }
             }
             
-            self::$httpd = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-            socket_set_option(self::$httpd, SOL_SOCKET, SO_REUSEADDR, 1);
-            socket_bind(self::$httpd, 0, self::$settings['port']);
-            socket_listen(self::$httpd, self::$settings['maxq']);
+            $this->httpd = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+            socket_set_option($this->httpd, SOL_SOCKET, SO_REUSEADDR, 1);
+            socket_bind($this->httpd, 0, $this->settings['port']);
+            socket_listen($this->httpd, $this->settings['maxq']);
 
-            self::$id = self::getResourceID(self::$httpd);
-            self::$clients = array("0#".self::$settings['port']=>self::$httpd);
-            echo "JAXLHTTPd listening on port ".self::$settings['port'].PHP_EOL;
-            
+            $this->id = $this->getResourceID($this->httpd);
+            $this->clients = array("0#".$this->settings['port']=>$this->httpd);
+            echo "JAXLHTTPd listening on port ".$this->settings['port'].PHP_EOL;
+        }
+
+        function read() {
             while(true) {
-                $read = self::$clients;
+                $read = $this->clients;
                 $ns = @socket_select($read, $write=null, $except=null, JAXL_HTTPd_SELECT_TIMEOUT);
                 
                 if($ns) foreach($read as $read_socket) {
-                    $accept_id = self::getResourceID($read_socket);
+                    $accept_id = $this->getResourceID($read_socket);
                     
-                    if(self::$id == $accept_id) {
+                    if($this->id == $accept_id) {
                         $sock = socket_accept($read_socket);
                         socket_getpeername($sock, $ip, $port);
-                        self::$clients[$ip."#".$port] = $sock;
+                        $this->clients[$ip."#".$port] = $sock;
                         //echo "Accepted new connection from ".$ip."#".$port.PHP_EOL;
                         continue;
                     }
@@ -162,11 +150,11 @@
                         $data = trim(socket_read($read_socket, 1024));
                     
                         if($data == "") {
-                            self::close($ip, $port);
+                            $this->close($ip, $port);
                         }
                         else {
                             //echo "Recv data from ".$ip."#".$port.PHP_EOL;
-                            $request = self::parseRequest($data, array(
+                            $request = $this->parseRequest($data, array(
                                 'ip'    =>  $ip,
                                 'port'  =>  $port
                             ));
@@ -185,18 +173,18 @@
             }
         }
         
-        public static function send($response) {
-            $raw = self::prepareResponse($response['meta'], $response['header']);
-            @socket_write(self::$clients[$response['client']['ip']."#".$response['client']['port']], $raw);
+        function send($response) {
+            $raw = $this->prepareResponse($response['meta'], $response['header']);
+            @socket_write($this->clients[$response['client']['ip']."#".$response['client']['port']], $raw);
         }
         
-        public static function close($ip, $port) {
-            @socket_close(self::$clients[$ip."#".$port]);
-            unset(self::$clients[$ip."#".$port]);
+        function close($ip, $port) {
+            @socket_close($this->clients[$ip."#".$port]);
+            unset($this->clients[$ip."#".$port]);
         }
         
-        private static function parseRequest($raw, $client) {
-            list($meta, $headers) = self::parseHeader($raw);
+        function parseRequest($raw, $client) {
+            list($meta, $headers) = $this->parseHeader($raw);
             $request = array(
                 'meta'  =>  $meta,
                 'header'=>  $headers,
@@ -205,7 +193,7 @@
             return $request;
         }
         
-        private static function parseHeader($raw) {
+        function parseHeader($raw) {
             $raw = explode("\r\n", $raw);
             list($method, $path, $protocol) = explode(" ", array_shift($raw));
             list($protocol, $version) = explode("/", $protocol); 
@@ -233,9 +221,9 @@
             return array($meta, $headers);
         }
 
-        private static function prepareResponse($meta, $headers) {
+        function prepareResponse($meta, $headers) {
             $raw = '';
-            $raw .= $meta['protocol']."/".$meta['version']." ".self::$headers[$meta['code']]."\r\n";
+            $raw .= $meta['protocol']."/".$meta['version']." ".$this->headers[$meta['code']]."\r\n";
             $raw .= "Server: ".JAXL_HTTPd_SERVER_NAME."/".JAXL_HTTPd_SERVER_VERSION."\r\n";
             $raw .= "Date: ".gmdate("D, d M Y H:i:s T")."\r\n";
             foreach($headers as $key => $val) $raw .= $key.": ".$val."\r\n";
@@ -244,8 +232,22 @@
             return $raw;
         }
         
-        private static function getResourceID($socket) {
+        function getResourceID($socket) {
             return (int)preg_replace("/Resource id #(\d+)/i", "$1", (string)$socket);
+        }
+        
+        function shutdown() {
+            JAXLPlugin::execute('jaxl_httpd_pre_shutdown');
+            exit;
+        }
+
+        function reset($options) {
+            $this->settings = array(
+                'port'  =>  isset($options['port']) ? $options['port'] : 5290,
+                'maxq'  =>  isset($options['maxq']) ? $options['maxq'] : 20,
+                'pid'   =>  getmypid(),
+                'since' =>  time()
+            );
         }
 
     }

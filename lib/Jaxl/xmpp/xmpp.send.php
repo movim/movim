@@ -125,7 +125,7 @@
             return $jaxl->sendXML($xml);
         }
         
-        private static function prepareMessage($jaxl, $to, $from, $child, $type, $id, $ns) {
+        public static function prepareMessage($jaxl, $to, $from, $child, $type, $id, $ns) {
             $xml = '<message';
             if($from) $xml .= ' from="'.$from.'"';
             $xml .= ' to="'.htmlspecialchars($to).'"';
@@ -159,7 +159,7 @@
             return $jaxl->sendXML($xml);
         }
     
-        private static function preparePresence($jaxl, $to, $from, $child, $type, $id, $ns) {
+        public static function preparePresence($jaxl, $to, $from, $child, $type, $id, $ns) {
             $xml = '<presence';
             if($type) $xml .= ' type="'.$type.'"';
             if($from) $xml .= ' from="'.$from.'"';

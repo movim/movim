@@ -639,20 +639,6 @@
         }
 
         /**
-         * Starts a socket server at 127.0.0.1:port
-         *
-         * startHTTPd converts Jaxl instance into a Jaxl socket server (may or may not be a HTTP server)
-         * Same Jaxl socket server instance <b>SHOULD NOT</b> be used for XMPP communications.
-         * Instead separate "new Jaxl();" instances should be created for such XMPP communications.
-        */
-        function startHTTPd($port, $maxq) {
-            JAXLHTTPd::start(array(
-                'port'  =>  $port,
-                'maxq'  =>  $maxq
-            ));
-        }
-
-        /**
          * Start instance in bosh mode
         */
         function startBosh() {
@@ -740,7 +726,7 @@
             ));
 
             /* initialize multi-core instance holder */
-            if($jaxl_instance_cnt == 1) $this->instances = array('xmpp'=>array(),'http'=>array());
+            if($jaxl_instance_cnt == 1) $this->instances = array('xmpp'=>array());
             $this->instances['xmpp'][] = $this;
         }
 
