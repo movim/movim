@@ -90,31 +90,14 @@ class XMPPConnect
 	}
 	
 	public function handle($payload) {
-		//if($payload['vCard'] == $this->jaxl->JAXL0053->$ns) {
+		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
 			$evt = new EventHandler();
 			$evt->runEvent('vcardreceived', $payload);
-		//}
-		/*ob_start();
-		var_dump($payload);
-
-		$tab_debug=ob_get_contents();
-		ob_end_clean();
-
-		$fichier=fopen(BASE_PATH."log/movim.log",'w');
-		fwrite($fichier,$tab_debug);
-		fclose($fichier);
-		*/
-   		//$evt = new EventHandler();
-		//$evt->runEvent('all', $payload);
-		/*
-		
-		$filename = BASE_PATH."log/movim.log";
-    	$f = fopen($filename,"w");
-    	//if(filesize($filename)>=0)
-    	//$tmp = fread($f, filesize($filename));
-    	fwrite($f, $payload);
-    	fclose($f);*/
-	}
+		} else {
+            $evt = new EventHandler();
+            $evt->runEvent('none', var_export($payload, true));
+        }
+    }
 
    	public function postRosterUpdate($payload) {
    		//var_dump($payload);

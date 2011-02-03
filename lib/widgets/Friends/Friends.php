@@ -25,6 +25,13 @@ class Friends extends Widget
 		$this->registerEvent('vcardreceived', 'onVcardReceived');
     }
 
+    function onVcardReceived($vcard)
+    {
+        $img = '<img alt="' . t("Your avatar") . '" src="data:'.
+            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
+        $this->sendto('avatar', 'FILL', $img);
+    }
+
     function processList($message)
     {
         $this->friendslist = $message;
@@ -32,10 +39,6 @@ class Friends extends Widget
 
 	function ajaxRefreshVcard()
 	{
-		/*echo date('Y-m-d H:i:s') . '<br />';
-	
-		echo "TOTO!!!!";
-*/
 		$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
 		$xmpp->getVCard(); // We send the vCard request
@@ -45,7 +48,7 @@ class Friends extends Widget
     {
         ?>
         <div id="friends">
-          <img src="" alt="<?php echo t('Your avatar');?>">
+          <div id="avatar"></div>
           <br /><br /><br />
           <h3><?php echo t('Contacts');?></h3>
           <input type="button"
@@ -63,16 +66,6 @@ class Friends extends Widget
         //$xmpp = XMPPConnect::getInstance($user->getLogin()); // We get the instance of the connexion
         //$xmpp->getVCard(); // We send the vCard request
     }
-
-    function onVcardReceived($vcard)
-    {
-		//if(isset($vcard['vCardNickname'])) {
-		//	$result = "nickname :". $vcard['vCardNickname'];
-		//$result = "reçu";
-		//}
-        //$this->sendto('testzone', 'FILL', $vcard2);
-    }
-
 }
 
 ?>
