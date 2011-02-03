@@ -195,6 +195,7 @@
         }
         
         public static function iq($arr, $jaxl) {
+        	$jaxl->executePlugin('jaxl_get_iq', $arr);
             switch($arr['type']) {
                 case 'get':
                     $jaxl->executePlugin('jaxl_get_iq_get', $arr);

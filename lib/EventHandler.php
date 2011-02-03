@@ -30,10 +30,10 @@ class EventHandler
         $payload = ob_get_clean();
         if(trim(rtrim($payload)) != "") {
             header('Content-Type: text/xml');
-            echo '<?xml version="1.0" encoding="UTF-8" ?>';
-            echo '<movimcontainer>';
-            echo $payload;
-            echo '</movimcontainer>';
+            echo '<?xml version="1.0" encoding="UTF-8" ?>'
+            .'<movimcontainer>'
+            .$payload
+            .'</movimcontainer>';
         }
 	}
 }

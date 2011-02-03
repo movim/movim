@@ -14,7 +14,6 @@
 	  <?php $this->menu();?>	
 	</div>
 	<div id="content">
-		<input type="button" onclick="halt_poll()" value="Clear"/>
 	  <?php $this->content();?>
 	  	<div id="footer">
 			© <a href="http://www.movim.eu">Movim</a> - 2010 | Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>

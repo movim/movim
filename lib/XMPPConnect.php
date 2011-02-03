@@ -80,17 +80,52 @@ class XMPPConnect
         $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
         //$this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
         
+        
+        $this->jaxl->addPlugin('jaxl_get_iq', array(&$this, 'handle'));
+        //$this->jaxl->addPlugin('jaxl_post_roster_update', array(&$this, 'postRosterUpdate'));
 		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
         $this->jaxl->addPlugin('jaxl_get_message', array(&$this, 'getMessage'));
         $this->jaxl->addPlugin('jaxl_get_presence', array(&$this, 'getPresence'));
         $this->jaxl->addPlugin('jaxl_get_bosh_curl_error', array(&$this, 'boshCurlError'));
 	}
+	
+	public function handle($payload) {
+		//if($payload['vCard'] == $this->jaxl->JAXL0053->$ns) {
+			$evt = new EventHandler();
+			$evt->runEvent('vcardreceived', $payload);
+		//}
+		/*ob_start();
+		var_dump($payload);
 
+		$tab_debug=ob_get_contents();
+		ob_end_clean();
+
+		$fichier=fopen(BASE_PATH."log/movim.log",'w');
+		fwrite($fichier,$tab_debug);
+		fclose($fichier);
+		*/
+   		//$evt = new EventHandler();
+		//$evt->runEvent('all', $payload);
+		/*
+		
+		$filename = BASE_PATH."log/movim.log";
+    	$f = fopen($filename,"w");
+    	//if(filesize($filename)>=0)
+    	//$tmp = fread($f, filesize($filename));
+    	fwrite($f, $payload);
+    	fclose($f);*/
+	}
+
+   	public function postRosterUpdate($payload) {
+   		//var_dump($payload);
+   		$evt = new EventHandler();
+		$evt->runEvent('rosterreceived', $payload);
+   	}
     
     public function postAuth($test, $test2) {
-    	$f = fopen(BASE_PATH."log/movim.log","w");
+    	/*$f = fopen(BASE_PATH."log/movim.log","w");
     	fwrite($f, "gna");
-    	fclose($f);
+    	fclose($f);*/
     }
     
     
@@ -125,7 +160,7 @@ class XMPPConnect
 	
 	public function getVCard()
 	{
-		//$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, array(&$this, 'vcardReturn'));
+		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, false);
 	}
 	
 	public function vcardReturn($payload)
@@ -216,7 +251,7 @@ class XMPPConnect
 	 */
 	public function getRosterList()
 	{
-		$this->jaxl->getRosterList(array(&$this, 'handlePayload'));
+		$this->jaxl->getRosterList();
 	}
 
 	/**
