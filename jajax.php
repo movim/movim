@@ -16,6 +16,8 @@
  * See the file `COPYING' for licensing information.
  */
 
+set_time_limit(3);
+
 require("init.php");
 
 $polling = true;

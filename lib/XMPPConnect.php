@@ -90,11 +90,14 @@ class XMPPConnect
 	}
 	
 	public function handle($payload) {
+		movim_log($payload);
+	
+		$evt = new EventHandler();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
-			$evt = new EventHandler();
 			$evt->runEvent('vcardreceived', $payload);
+		} elseif($payload['queryXmlns'] == "jabber:iq:roster") {
+            $evt->runEvent('rosterreceived', $payload);
 		} else {
-            $evt = new EventHandler();
             $evt->runEvent('none', var_export($payload, true));
         }
     }
@@ -120,7 +123,7 @@ class XMPPConnect
     }
     
     public function postDisconnect() {
-    	
+    	echo "test";
     }
     
     public function boshCurlError() {

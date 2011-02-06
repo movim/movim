@@ -68,4 +68,13 @@ function __autoload($className) {
 	}
 }
 
+function movim_log($log) {
+	ob_start();
+	var_dump($log);
+	$dump = ob_get_clean();
+	$fh = fopen(BASE_PATH . 'log/movim.log', 'w');
+	fwrite($fh, $dump);
+	fclose($fh);
+}
+
 ?>

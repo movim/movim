@@ -21,14 +21,22 @@ class Chat extends Widget
 	function WidgetLoad()
 	{
         $this->addjs('chat.js');
+        $this->addcss('chat.css');
 		$this->registerEvent('incomechat', 'onIncomingChat');
 		$this->registerEvent('incomepresence', 'onIncomingPresence');
 	}
 
 	function onIncomingChat($data)
 	{
-        $this->sendto('chatMessages', 'APPEND',
-                      '<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>');
+		if($data['chatState'] == 'active' && $data['body'] == NULL) {
+	        $this->sendto('chatState', 'FILL', '<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). "'s chat is active</h3>");
+		} elseif($data['chatState'] == 'composing') {
+	        $this->sendto('chatState', 'FILL', '<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>");
+		}
+		else {
+		    $this->sendto('chatMessages', 'PREPEND',
+		                  '<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>');
+		}
 	}
 
 	function onIncomingPresence($data)
@@ -46,10 +54,13 @@ class Chat extends Widget
 	{
 		?>
 		<div id="chat">
+            <div id="chatState">
+            </div>
             <div id="chatMessages">
             </div>
-            <input type="text" id="chatInput" />
-            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', 'DROP', "''", "'etenil@etenil.thruhere.net'", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
+            <input type="text" id="chatInput" value="Message" onfocus="myFocus(this);" onblur="myBlur(this);"/>
+            <input type="text" id="chatTo" value="To" onfocus="myFocus(this);" onblur="myBlur(this);" />
+            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', 'DROP', "'test'", "'movim@movim.eu'", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
 		</div>
 		<?php
 

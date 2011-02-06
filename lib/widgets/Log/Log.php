@@ -20,20 +20,23 @@ class Log extends Widget
 {
     function widgetLoad()
     {
+        $this->addcss('log.css');
         $this->registerEvent('allEvents', 'onEvent');
     }
 
 	function build()
 	{
 		?>
+		<h3>Debug console </h3>
 		<div id="log">
+
        	</div>
 		<?php
 	}
 
     function onEvent($data)
     {
-        $this->sendto('log', 'PREPEND', date('H:i:s> ') . "data: " . var_export($data, true) ."<br />");
+        $this->sendto('log', 'PREPEND', "<span>" . date('H:i:s> ') . "data :</span> " . var_export($data, true) ."<br />");
     }
 }
 

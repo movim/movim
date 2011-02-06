@@ -1,0 +1,33 @@
+#chatMessages {
+    height: 200px;
+    display: block;
+    overflow: auto;
+    /*border-radius:4px 4px 4px 4px;
+	-moz-border-radius: 4px;
+	box-shadow: inset 0 3px 10px #D0D0D0;
+	-webkit-box-shadow: inset 0 3px 10px #D0D0D0;
+	-moz-box-shadow: inset 0 3px 10px #D0D0D0;*/
+	background-color: white;
+	border:1px solid #AAAAAA;
+}
+
+#chatMessages.message {
+
+}
+
+#chatInput, #chatTo{
+	height: 10px;
+}
+
+#chatSend {
+	margin: 0px;
+	margin-left: -5px;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	padding: 1px;
+	width: 20%;
+	float: right;
+}
