@@ -1,6 +1,7 @@
 var movimAjax;
 
 // Ajax modes.
+var DROP = 0;
 var CALLBACK = 1;
 var APPEND = 2;
 var FILL = 3;
@@ -125,6 +126,14 @@ function movim_ajaxSend(widget, func, mode, modeopt, parameters)
 			}
 		};
 	}
+    else { // DROP and unknown
+        movimAjax.onreadystatechange = function()
+		{
+			if(movimAjax.readyState == 4 && movimAjax.status == 200) {
+		        // Do nothing.
+			}
+		};
+    }
 
 	movimAjax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	movimAjax.send("<?xml version='1.0' encoding='UTF-8'?>" + request);

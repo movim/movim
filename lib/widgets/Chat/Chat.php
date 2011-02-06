@@ -20,6 +20,7 @@ class Chat extends Widget
 {
 	function WidgetLoad()
 	{
+        $this->addjs('chat.js');
 		$this->registerEvent('incomechat', 'onIncomingChat');
 		$this->registerEvent('incomepresence', 'onIncomingPresence');
 	}
@@ -35,9 +36,10 @@ class Chat extends Widget
 		echo "onIncomingPresence was called. Message: $data";
 	}
 
-    function ajaxTest()
+    function ajaxSendMessage($message, $to)
     {
-        echo "Cleared!";
+		$xmpp = XMPPConnect::getInstance();
+		$xmpp->sendMessage($to, $message);
     }
 
 	function build()
@@ -47,7 +49,7 @@ class Chat extends Widget
             <div id="chatMessages">
             </div>
             <input type="text" id="chatInput" />
-            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxTest', 'FILL', "'chatMessages'");?>" value="<?php echo t('Send');?>"/>
+            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', 'DROP', "''", "'etenil@etenil.thruhere.net'", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
 		</div>
 		<?php
 
