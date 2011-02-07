@@ -1,0 +1,22 @@
+#tinylist ul li {
+	background-repeat: no-repeat;
+	background-position: 2px 2px;
+	padding-left: 20px;
+	background-image: url(img/bullet_black.png);
+}
+
+#tinylist ul li.online {
+	background-image: url(img/bullet_green.png);
+}
+
+#tinylist ul li.offline {
+	background-image: url(img/bullet_white.png);
+}
+
+#tinylist ul li.away {
+	background-image: url(img/bullet_orange.png);
+}
+
+#tinylist ul li.busy {
+	background-image: url(img/bullet_red.png);
+}

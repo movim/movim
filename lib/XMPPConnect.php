@@ -161,17 +161,28 @@ class XMPPConnect
             // reject offline message
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') {
                 $evt = new EventHandler();
-                $evt->runEvent('incomechat', $payload);
+				if($payload['chatState'] == 'active' && $payload['body'] == NULL) {
+					$evt->runEvent('incomeactive', $payload);
+				} elseif($payload['chatState'] == 'composing') {
+                	$evt->runEvent('incomecomposing', $payload);
+				}
+				else {
+					$evt->runEvent('incomemessage', $payload);
+				}
             }
+
         }
 	}
 	
 	public function getPresence($payloads) {
+		movim_log($payloads);
         $html = '';
         foreach($payloads as $payload) {
             if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
                 $html .= '<span class="presence">'.$payload['from'];
-                if($payload['type'] == 'unavailable') $html .= ' is now offline</span><br />';
+                if($payload['show'] == 'unavailable') $html .= ' is now offline</span><br />';
+                elseif($payload['show'] == 'away') $html .= ' is now away</span><br />';
+                elseif($payload['show'] == 'dnd') $html .= ' is now in dnd</span><br />';
                 else $html .= ' is now online</span><br />';
             }
         }

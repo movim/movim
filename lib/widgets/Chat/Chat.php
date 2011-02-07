@@ -22,21 +22,25 @@ class Chat extends Widget
 	{
         $this->addjs('chat.js');
         $this->addcss('chat.css');
-		$this->registerEvent('incomechat', 'onIncomingChat');
+		$this->registerEvent('incomemessage', 'onIncomingMessage');
+		$this->registerEvent('incomeactive', 'onIncomingActive');
+		$this->registerEvent('incomecomposing', 'onIncomingComposing');
 		$this->registerEvent('incomepresence', 'onIncomingPresence');
 	}
 
-	function onIncomingChat($data)
+	function onIncomingMessage($data)
 	{
-		if($data['chatState'] == 'active' && $data['body'] == NULL) {
-	        $this->sendto('chatState', 'FILL', '<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). "'s chat is active</h3>");
-		} elseif($data['chatState'] == 'composing') {
-	        $this->sendto('chatState', 'FILL', '<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>");
-		}
-		else {
-		    $this->sendto('chatMessages', 'PREPEND',
+	    $this->sendto('chatMessages', 'PREPEND',
 		                  '<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>');
-		}
+	}
+	
+	function onIncomingActive($data)
+	{
+	    $this->sendto('chatState', 'FILL', '<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). "'s chat is active</h3>");
+	}
+	
+	function onIncomingComposing($data) {
+	    $this->sendto('chatState', 'FILL', '<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>");
 	}
 
 	function onIncomingPresence($data)

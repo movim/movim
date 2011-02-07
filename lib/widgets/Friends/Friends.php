@@ -22,6 +22,7 @@ class Friends extends Widget
     
     function WidgetLoad()
     {
+    	$this->addcss('friends.css');
 		$this->registerEvent('vcardreceived', 'onVcardReceived');
 		$this->registerEvent('rosterreceived', 'onRosterReceived');
     }
@@ -81,7 +82,7 @@ class Friends extends Widget
           <h3><?php echo t('Contacts');?></h3>
 
           <div id="tinylist">
-
+			<ul><li class="online">test</li><li class="offline">test</li><li class="away">test</li><li class="busy">test</li></ul>
           </div>
   		  <input type="button"
          onclick="<?php $this->callAjax('ajaxRefreshRoster', 'FILL', "'drop'");?>"
