@@ -30,22 +30,30 @@ class Chat extends Widget
 
 	function onIncomingMessage($data)
 	{
-	    $this->sendto('chatMessages', 'PREPEND',
-		                  '<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>');
+	    $this->sendto('movim_prepend', array(
+                          'chatMessages',
+		                  $this->cdata('<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>'),
+                          ));
 	}
 	
 	function onIncomingActive($data)
 	{
-	    $this->sendto('chatState', 'FILL', '<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). "'s chat is active</h3>");
+	    $this->sendto('movim_fill', array(
+                          'chatState',
+                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). "'s chat is active</h3>"),
+                          ));
 	}
 	
 	function onIncomingComposing($data) {
-	    $this->sendto('chatState', 'FILL', '<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>");
+	    $this->sendto('movim_fill', array(
+                          'chatState',
+                          $this->cdata($this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>")),
+                          ));
 	}
 
 	function onIncomingPresence($data)
 	{
-		echo "onIncomingPresence was called. Message: $data";
+//		echo "onIncomingPresence was called. Message: $data";
 	}
 
     function ajaxSendMessage($message, $to)
@@ -62,9 +70,9 @@ class Chat extends Widget
             </div>
             <div id="chatMessages">
             </div>
-            <input type="text" id="chatInput" value="Message" onfocus="myFocus(this);" onblur="myBlur(this);"/>
+            <input type="text" id="chatInput" value="Message" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSendMessage', 'movim_drop', "'test'", "getDest()", "getMessageText()");?>}"/>
             <input type="text" id="chatTo" value="To" onfocus="myFocus(this);" onblur="myBlur(this);" />
-            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', 'DROP', "'test'", "'movim@movim.eu'", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
+            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', 'movim_drop', "'test'", "getDest()", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
 		</div>
 		<?php
 

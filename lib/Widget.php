@@ -158,20 +158,22 @@ class Widget
 		return $this->css;
 	}
 
+    protected function cdata($text)
+    {
+        return '<![CDATA['.$text.']]>';
+    }
+
     /**
      * Prints out a widget content in XML to be handled by javascript for
      * ajax return.
      */
-    protected function sendto($id, $method, $payload)
+    protected function sendto($method, array $payload = null)
     {
-        echo '<movim>';
-        echo '<target method="' . $method . '">';
-        echo $id;
-        echo '</target>';
-        echo '<payload>';
-        echo '<![CDATA[' . $payload . "]]>";
-        echo "</payload>";
-        echo "</movim>";
+        echo '<funcall name="'.$method.'">' . "\n";
+        foreach($payload as $param_value) {
+          echo '  <param>'.$param_value."</param>\n";
+        }
+        echo "</funcall>";
     }
 }
 

@@ -36,7 +36,10 @@ class Log extends Widget
 
     function onEvent($data)
     {
-        $this->sendto('log', 'PREPEND', "<span>" . date('H:i:s> ') . "data :</span> " . var_export($data, true) ."<br />");
+        $this->sendto('movim_prepend', array(
+                          'log',
+                          $this->cdata("<span>" . date('H:i:s> ') . "data :</span> " . var_export($data, true) ."<br />"),
+                          ));
     }
 }
 
