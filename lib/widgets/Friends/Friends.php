@@ -27,11 +27,16 @@ class Friends extends Widget
 		$this->registerEvent('rosterreceived', 'onRosterReceived');
     }
 
+	/*    $this->sendto('movim_prepend', array(
+                          'chatMessages',
+		                  $this->cdata('<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>'),
+                          ));*/
+
     function onVcardReceived($vcard)
     {
         $img = '<img alt="' . t("Your avatar") . '" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
-        $this->sendto('avatar', 'FILL', $img);
+        $this->sendto('movim_fill', array('avatar', $this->cdata($img)));
     }
 
     function onRosterReceived($roster)
@@ -48,7 +53,7 @@ class Friends extends Widget
 			$i++;
 		}
 		$html .= "</ul>";
-        $this->sendto('tinylist', 'FILL', $html);
+        $this->sendto('movim_fill', array('tinylist', $this->cdata($html)));
     }
 
     function processList($message)
