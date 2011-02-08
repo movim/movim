@@ -47,7 +47,7 @@ class Chat extends Widget
 	function onIncomingComposing($data) {
 	    $this->sendto('movim_fill', array(
                           'chatState',
-                          $this->cdata($this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>")),
+                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>"),
                           ));
 	}
 
