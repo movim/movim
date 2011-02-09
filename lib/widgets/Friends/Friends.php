@@ -77,7 +77,7 @@ class Friends extends Widget
           <div id="drop" style="display: none;"></div>
           <div id="avatar"></div>
 		  <input type="button"
-                 onclick="<?php $this->callAjax('ajaxRefreshVcard', 'FILL', "'drop'");?>"
+                 onclick="<?php $this->callAjax('ajaxRefreshVcard', "'movim_drop'", "'drop'");?>"
                  value="Refresh vcard" />
           <h3><?php echo t('Contacts');?></h3>
 
@@ -85,7 +85,7 @@ class Friends extends Widget
 			<ul><li class="online">test</li><li class="offline">test</li><li class="away">test</li><li class="busy">test</li></ul>
           </div>
   		  <input type="button"
-         onclick="<?php $this->callAjax('ajaxRefreshRoster', 'FILL', "'drop'");?>"
+         onclick="<?php $this->callAjax('ajaxRefreshRoster', "'movim_drop'", "'drop'");?>"
          value="Refresh Roster" />
 		  <div id="testzone"></div>
         </div>

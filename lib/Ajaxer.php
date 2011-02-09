@@ -97,7 +97,7 @@ class Ajaxer extends Controller
             $params = array();
             foreach($request->children() as $child) {
                 if($child->getName() == 'param') {
-                    $params[] = (string)$child['value'];
+                    $params[] = (string)$child;
                 }
             }
             
