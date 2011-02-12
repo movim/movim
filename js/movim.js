@@ -107,14 +107,8 @@ function movimPack(data)
 {
 	var outBuffer = "";
 	
-	// The given array must be "associative".
-	if(data.length % 2 != 0) {
-		return "";
-	}
-	
-	for(var i = 0; i < data.length; i += 2) {
-		outBuffer += '<param name="' + data[i]
-			+ '" value="' + data[i + 1] + '" />' + "\n";
+	for(var i = 0; i < data.length; i++) {
+		outBuffer += '<param>"' + data[i] + "</param>\n";
 	}
 	
 	return outBuffer;
@@ -170,56 +164,33 @@ function movim_xmlrpc(xml)
  * it can append, prepend or fill the contents of the element which ID is
  * modeopt.
  */
-function movim_ajaxSend(widget, func, mode, modeopt, parameters)
+function movim_ajaxSend(widget, func, callback, target, parameters)
 {
 	// Regenerating the client everytime (necessary for IE)
 	movimAjax = makeXMLHttpRequest();
 	
-	var request = '<funcall widget="'+ widget
+	var request =  
+        '<?xml version="1.0" encoding="UTF-8" ?>'
+        + '<funcall widget="'+ widget
 		+ '" name="' + func + '">' + "\n"
 		+ parameters + '</funcall>' + "\n";
 
 	movimAjax.open('POST', 'jajax.php', true);
-
-	if(mode == CALLBACK) { // considers the given modeopt as a callback function.
-		movimAjax.onreadystatechange = modeopt;
-	}
-	else if(mode == APPEND) {
-		movimAjax.onreadystatechange = function()
-		{
-			if(movimAjax.readyState == 4 && movimAjax.status == 200) {
-				document.getElementById(modeopt).innerHTML += movimAjax.responseText;
-			}
-		};
-	}
-	else if(mode == FILL) {
-		movimAjax.onreadystatechange = function()
-		{
-			if(movimAjax.readyState == 4 && movimAjax.status == 200) {
-				document.getElementById(modeopt).innerHTML = movimAjax.responseText;
-			}
-		};
-	}
-	else if(mode == PREPEND) {
-		movimAjax.onreadystatechange = function()
-		{
-			if(movimAjax.readyState == 4 && movimAjax.status == 200) {
-				var elt = document.getElementById(modeopt);
-				elt.innerHTML = movimAjax.responseText + elt.innerHTML;
-			}
-		};
-	}
-    else { // DROP and unknown
-        movimAjax.onreadystatechange = function()
-		{
-			if(movimAjax.readyState == 4 && movimAjax.status == 200) {
-		        // Do nothing.
-			}
-		};
-    }
+    
+   	movimAjax.onreadystatechange = function()
+    {
+        if(movimAjax.readyState == 4 && movimAjax.status == 200) {
+            if(callback) {
+                callback(target, movimAjax.responseText);
+                log("Received data " + movimAjax.responseText);
+            } else {
+                log("Unknown callback function");
+            }
+        }
+    };
 
 	movimAjax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	movimAjax.send("<?xml version='1.0' encoding='UTF-8'?>" + request);
+	movimAjax.send(request);
 }
 
 function myFocus(element) {
