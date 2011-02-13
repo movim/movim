@@ -95,10 +95,6 @@ class Friends extends Widget
 		  <div id="testzone"></div>
         </div>
         <?php
-        // We send a request to fetch the vcard straight away.
-        //$user = new User();
-        //$xmpp = XMPPConnect::getInstance($user->getLogin()); // We get the instance of the connexion
-        //$xmpp->getVCard(); // We send the vCard request
     }
 }
 

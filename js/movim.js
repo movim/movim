@@ -169,6 +169,11 @@ function movim_ajaxSend(widget, func, callback, target, parameters)
 	// Regenerating the client everytime (necessary for IE)
 	movimAjax = makeXMLHttpRequest();
 	
+	/*if (!movimAjax) {
+	movimAjax = makeXMLHttpRequest();
+	} else if (movimAjax.readyState != 0) {
+	movimAjax.abort(); 
+	}*/
 	var request =  
         '<?xml version="1.0" encoding="UTF-8" ?>'
         + '<funcall widget="'+ widget
