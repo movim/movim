@@ -9,7 +9,7 @@
 	background-image: url(img/bullet_green.png);
 }
 
-#tinylist ul li.offline {
+#tinylist ul li.hidden {
 	background-image: url(img/bullet_white.png);
 }
 
@@ -17,6 +17,10 @@
 	background-image: url(img/bullet_orange.png);
 }
 
-#tinylist ul li.busy {
+#tinylist ul li.offline {
+	background-image: url(img/bullet_black.png);
+}
+
+#tinylist ul li.dnd {
 	background-image: url(img/bullet_red.png);
 }

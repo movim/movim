@@ -80,7 +80,7 @@ class XMPPConnect
         $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'postAuth'));
         $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
         //$this->jaxl->addPlugin('jaxl_post_roster_update', array(&$this, 'postRosterUpdate'));
-        
+        //$this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
         $this->jaxl->addPlugin('jaxl_get_iq', array(&$this, 'handle'));
 		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
         $this->jaxl->addPlugin('jaxl_get_message', array(&$this, 'getMessage'));
@@ -159,12 +159,9 @@ class XMPPConnect
 	 
 	public function logout()
 	{
+		define('CURL_ASYNC', true);
 		$this->jaxl->JAXL0206('endStream');
 	}
-	
-    public function postDisconnect() {
-
-    }
 	
 	/**
 	 * Pings the server. This must be done regularly in order to keep the
@@ -254,8 +251,8 @@ class XMPPConnect
             
                 $evt = new EventHandler();
                 
-            	if($payload['show'] == 'unavailable') {
-					$evt->runEvent('incomeunavaiable', $payload);
+            	if($payload['type'] == 'unavailable') {
+					$evt->runEvent('incomeoffline', $payload);
             	} 
             	elseif($payload['show'] == 'away') {
 					$evt->runEvent('incomeaway', $payload);
