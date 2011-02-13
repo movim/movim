@@ -180,7 +180,7 @@ function movim_ajaxSend(widget, func, callback, target, parameters)
    	movimAjax.onreadystatechange = function()
     {
         if(movimAjax.readyState == 4 && movimAjax.status == 200) {
-            if(callback) {
+            if(typeof callback === 'function') {
                 callback(target, movimAjax.responseText);
                 log("Received data " + movimAjax.responseText);
             } else {
