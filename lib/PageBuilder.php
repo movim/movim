@@ -148,15 +148,6 @@ class PageBuilder
 		echo $this->title;
 	}
 	
-	function disablePolling() {
-		$this->polling = false;
-	}
-	
-	function polling() {
-		if($this->polling == true)
-			echo ' onload="movim_poll()"';
-	}
-	
 	/**
 	 * Adds a link to the menu with the displayed label.
 	 */
