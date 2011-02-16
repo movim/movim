@@ -259,7 +259,6 @@ class XMPPConnect
                 $evt = new EventHandler();
                 
             	if($payload['type'] == 'unavailable') {
-            		//list($jid, $place) = explode("/",$payload['from']);
             		if($payload['from'] == $this->jaxl->jid)
 						$evt->runEvent('postdisconnected', $data);
             		else

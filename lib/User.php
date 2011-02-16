@@ -69,15 +69,8 @@ class User {
 	
 	function desauth()
 	{
-		//unset($_SESSION['login']);
-		/*if(isset($this->xmppSession)) {
-			$this->xmppSession->logout();
-		}*/
-
 		unset($_SESSION);
 		session_destroy();
-		//return true;
-		//		movim_log($_SESSION);
 	}
 
 	

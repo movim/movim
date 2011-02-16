@@ -1,0 +1,13 @@
+#logout {
+	position: absolute;
+	top: 0px;
+	right: 2px;
+	background-image: url(img/door_open.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 1em;
+	width: 1em;
+	padding: 3px;
+	margin-top: 2px;
+	cursor: pointer;
+}
