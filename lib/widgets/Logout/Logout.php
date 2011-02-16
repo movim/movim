@@ -43,7 +43,6 @@ class Logout extends Widget
 
     function build()
     {
-    	var_dump($_SESSION);
         ?>
         <div id="logout" onclick="<?php $this->callAjax('ajaxLogout', "'movim_drop'", "'drop'");?>"></div>
         <?php
