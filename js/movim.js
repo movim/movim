@@ -112,7 +112,7 @@ function movimPack(data)
 	var outBuffer = "";
 	
 	for(var i = 0; i < data.length; i++) {
-		outBuffer += '<param>"' + data[i] + "</param>\n";
+		outBuffer += '<param>' + data[i] + "</param>\n";
 	}
 	
 	return outBuffer;

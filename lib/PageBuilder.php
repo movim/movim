@@ -258,7 +258,7 @@ class PageBuilder
 	function widget($name)
 	{
         $widgets = WidgetWrapper::getInstance();
-        $widgets->run_widget($name, 'build', array());
+        $widgets->run_widget($name, 'build');
 	}
 
 	/**

@@ -19,13 +19,15 @@ class EventHandler
         $widgets = WidgetWrapper::getInstance(false);
         ob_clean();
         $widgets->iterate('runEvents', array(
-                              'type' => 'allEvents',
-                              'data' => $event
-                              ));
+                              array(
+                                  'type' => 'allEvents',
+                                  'data' => $event,
+                                  )));
         $widgets->iterate('runEvents', array(
-                              'type' => $type,
-                              'data' => $event
-                              ));
+                              array(
+                                  'type' => $type,
+                                  'data' => $event,
+                                  )));
 
         $payload = ob_get_clean();
         if(trim(rtrim($payload)) != "") {

@@ -59,12 +59,12 @@ class Chat extends Widget
                           ));
 	}
 
-    function ajaxSendMessage($data)
+    function ajaxSendMessage($to, $message)
     {
-    	movim_log($data);
+//    	movim_log($data);
     	$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
-		//$xmpp->sendMessage($data["to"], $data[]);
+        $xmpp->sendMessage($to, $message);
     }
 
 	function build()
@@ -77,8 +77,7 @@ class Chat extends Widget
             </div>
             <input type="text" id="chatInput" value="Message" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSendMessage', 'movim_drop', "'test'", "getDest()", "getMessageText()");?>}"/>
             <input type="text" id="chatTo" value="To" onfocus="myFocus(this);" onblur="myBlur(this);" />
-            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', "movim_drop", "getDest()", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
-            <!--<input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', "'movim_drop'", "'drop'", "'test'", "'edhelas@movim.eu'");?>" value="<?php echo t('Send');?>"/>-->
+            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', 'movim_drop', "'test'", "getDest()", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
 		</div>
 		<?php
 

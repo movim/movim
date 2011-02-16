@@ -165,7 +165,6 @@ class XMPPConnect
 	
 	public function postDisconnect($data)
 	{
-
 		$evt = new EventHandler();
 		$evt->runEvent('postdisconnected', $data);
 	}
