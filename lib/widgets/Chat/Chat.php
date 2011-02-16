@@ -25,7 +25,7 @@ class Chat extends Widget
 		$this->registerEvent('incomemessage', 'onIncomingMessage');
 		$this->registerEvent('incomeactive', 'onIncomingActive');
 		$this->registerEvent('incomecomposing', 'onIncomingComposing');
-		$this->registerEvent('incomepresence', 'onIncomingPresence');
+		$this->registerEvent('incomeonline', 'onIncomingOnline');
 	}
 
 	function onIncomingMessage($data)
@@ -47,13 +47,16 @@ class Chat extends Widget
 	function onIncomingComposing($data) {
 	    $this->sendto('movim_fill', array(
                           'chatState',
-                          $this->cdata($this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>")),
+                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>"),
                           ));
 	}
 
-	function onIncomingPresence($data)
+	function onIncomingOnline($data)
 	{
-//		echo "onIncomingPresence was called. Message: $data";
+	    $this->sendto('movim_fill', array(
+                          'chatState',
+                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is online</h3>"),
+                          ));
 	}
 
     function ajaxSendMessage($message, $to)

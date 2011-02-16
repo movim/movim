@@ -76,6 +76,7 @@ class User {
 		
 		session_destroy();
 	}
+
 	
 	function getLogin()
 	{
