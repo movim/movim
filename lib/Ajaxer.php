@@ -46,17 +46,10 @@ class Ajaxer extends Controller
 		$buffer = '<script type="text/javascript">';
 		foreach($this->funclist as $funcdef) {
 			$parlist = implode(', ', $funcdef['params']);
-			if($parlist != "") $parlist = ', ' . $parlist;
-			$pars = array();
-			foreach($funcdef['params'] as $param) {
-				$pars[] = "'$param', $param";
-			}
-			$pardict = implode(', ', $pars);
 			
 			$buffer .= "function " . $funcdef['object'] . '_'
-
 				. $funcdef['funcname'] . "(mode, modeopt${parlist}) {";
-			$buffer .= "var options = movimPack([$pardict]);";
+			$buffer .= "var options = movimPack([$parlist]);";
 			$buffer .= "movim_ajaxSend('".$funcdef['object']."', '".$funcdef['funcname']."', mode, modeopt, options);}\n";
 
 		}
