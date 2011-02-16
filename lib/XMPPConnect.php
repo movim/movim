@@ -80,7 +80,7 @@ class XMPPConnect
         $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'postAuth'));
         $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
         //$this->jaxl->addPlugin('jaxl_post_roster_update', array(&$this, 'postRosterUpdate'));
-        //$this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
+        $this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
         $this->jaxl->addPlugin('jaxl_get_iq', array(&$this, 'handle'));
 		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
         $this->jaxl->addPlugin('jaxl_get_message', array(&$this, 'getMessage'));
@@ -161,6 +161,13 @@ class XMPPConnect
 	{
 		define('CURL_ASYNC', true);
 		$this->jaxl->JAXL0206('endStream');
+	}
+	
+	public function postDisconnect($data)
+	{
+
+		$evt = new EventHandler();
+		$evt->runEvent('postdisconnected', $data);
 	}
 	
 	/**
@@ -252,7 +259,11 @@ class XMPPConnect
                 $evt = new EventHandler();
                 
             	if($payload['type'] == 'unavailable') {
-					$evt->runEvent('incomeoffline', $payload);
+            		//list($jid, $place) = explode("/",$payload['from']);
+            		if($payload['from'] == $this->jaxl->jid)
+						$evt->runEvent('postdisconnected', $data);
+            		else
+						$evt->runEvent('incomeoffline', $payload);
             	} 
             	elseif($payload['show'] == 'away') {
 					$evt->runEvent('incomeaway', $payload);
@@ -299,6 +310,7 @@ class XMPPConnect
 	 */
 	public function sendMessage($addressee, $body)
 	{
+		define('CURL_ASYNC', true);
 		// Checking on the jid.
 		if($this->checkJid($addressee)) {
 			$this->jaxl->sendMessage($addressee, $body, false, 'chat');

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @file Chat.php
+ * @file Friends.php
  * This file is part of MOVIM.
  * 
- * @brief A jabber chat widget.
+ * @brief The Friends widget
  *
  * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
  *
@@ -103,7 +103,7 @@ class Friends extends Widget
 		$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
 		$xmpp->getRosterList();
-	}  
+	}
 
     function build()
     {

@@ -75,9 +75,12 @@ function movim_add_onload(func)
  */
 function movim_onload()
 {
-    for(var f in onloaders) {
+    /*for(var f in onloaders) {
         if(typeof f === "function")
-            onloaders[i]();
+            onloaders[f()]();
+    }*/
+    for(var i = 0; i < onloaders.length; i++) {
+    	onloaders[i]();
     }
 }
 

@@ -38,7 +38,7 @@ class Dispatcher extends Controller
 			$this->page->setTitle(sprintf(t('%s - Welcome to Movim'), APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
-			$this->page->menuAddLink(t('Logout'), '?q=disconnect');
+			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
 			$content = new PageBuilder($user);
 
 			$this->page->setContent($content->build('main.tpl'));
@@ -56,7 +56,7 @@ class Dispatcher extends Controller
 			$this->page->setTitle(sprintf(t('%s - Configuration'), APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
-			$this->page->menuAddLink(t('Logout'), '?q=disconnect');
+			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
 
 			$content = new PageBuilder($user);
 
@@ -85,7 +85,6 @@ class Dispatcher extends Controller
 	 */
 	function login()
 	{
-//		$this->page-> disablePolling();
 		$this->page->setTitle(sprintf(t('%s - Login to Movim'), APP_TITLE));
 		$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').'Movim | Human Network', 'http://www.movim.eu/', true);
 		if(GetConf::getServerConfElement("accountCreation") == 1)

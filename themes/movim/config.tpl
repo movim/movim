@@ -1,7 +1,7 @@
 <?php /* -*- mode: html -*- */
 ?>
 <?php $this->widget('Poller');?>
-
+<?php $this->widget('Logout');?>
 <div id="left">
   <?php $this->widget('Friends');?>
   <?php $this->widget('Chat');?>
