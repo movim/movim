@@ -3,3 +3,4 @@
 cache.tmp
 log/*
 i18n/files.list
+*.pdf

@@ -53,9 +53,9 @@ class Ajaxer extends Controller
             }
 			
 			$buffer .= "function " . $funcdef['object'] . '_'
-				. $funcdef['funcname'] . "(mode, modeopt${pardef}) {";
+				. $funcdef['funcname'] . "(callback, target${pardef}) {";
 			$buffer .= "var options = movimPack([$parlist]);";
-			$buffer .= "movim_ajaxSend('".$funcdef['object']."', '".$funcdef['funcname']."', mode, modeopt, options);}\n";
+			$buffer .= "movim_ajaxSend('".$funcdef['object']."', '".$funcdef['funcname']."', callback, target, options);}\n";
 
 		}
 		return $buffer . "</script>\n";

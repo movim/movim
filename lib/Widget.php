@@ -56,17 +56,16 @@ class Widget
 		$this->WidgetLoad();
 	}
 
-	function WidgetLoad()
-	{
-		// Initialize stuff here.
-	}
+    function WidgetLoad()
+    {
+    }
 
 	/**
 	 * Generates the widget's HTML code.
 	 */
-	function build()
-	{
-	}
+    function build()
+    {
+    }
 
 	/**
 	 * Returns the path to the specified widget file.
@@ -90,14 +89,14 @@ class Widget
         return $path;
 	}
 
-	protected function callAjax($funcname, $mode, $modeopt)
+	protected function callAjax($funcname, $callback, $target)
 	{
 		$args = implode(', ', array_slice(func_get_args(), 3));
 		if($args != "") {
 			$args = ', ' . $args;
 		}
 
-		echo get_class($this) . '_' . $funcname . "($mode, $modeopt" . $args . ");";
+		echo get_class($this) . '_' . $funcname . "($callback, $target" . $args . ");";
 
 	}
 
