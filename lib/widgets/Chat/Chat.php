@@ -30,35 +30,41 @@ class Chat extends Widget
 		$this->addGlobalEvent('oncontextmenu','ajaxMenu', 'movim_drop', "'drop'");
 	}
 
+    function getNameFromJID($jid)
+    {
+        return substr($jid, 0, strpos($jid, '@'));
+    }
+    
 	function onIncomingMessage($data)
 	{
-	    $this->sendto('movim_prepend', array(
-                          'chatMessages',
-		                  $this->cdata('<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>'),
-                          ));
+        MovimRPC::call('movim_prepend',
+                       'chatMessages',
+                       MovimRPC::cdata('<p class="message">%s: %s</p>',
+                                       $this->getNameFromJID($data['from']),
+                                       $data['body']));
 	}
 	
 	function onIncomingActive($data)
 	{
-	    $this->sendto('movim_fill', array(
-                          'chatState',
-                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). "'s chat is active</h3>"),
-                          ));
+	    MovimRPC::call('movim_fill',
+                       'chatState',
+                       MovimRPC::cdata("<h3>%s's chat is active</h3>",
+                                       $this->getNameFromJID($data['from'])));
 	}
 	
 	function onIncomingComposing($data) {
-	    $this->sendto('movim_fill', array(
-                          'chatState',
-                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>"),
-                          ));
+	    MovimRPC::call('movim_fill',
+                       'chatState',
+                       MovimRPC::cdata('<h3>%s is composing</h3>',
+                                       $this->getNameFromJID($data['from'])));
 	}
 
 	function onIncomingOnline($data)
 	{
-	    $this->sendto('movim_fill', array(
-                          'chatState',
-                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is online</h3>"),
-                          ));
+	    MovimRPC::call('movim_fill',
+                       'chatState',
+                       MovimRPC::cdata('<h3>%s is online</h3>',
+                                       $this->getNameFromJID($data['from'])));
 	}
 
     function ajaxSendMessage($to, $message)

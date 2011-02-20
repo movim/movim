@@ -17,7 +17,7 @@ class EventHandler
         }
 
         $widgets = WidgetWrapper::getInstance(false);
-        ob_clean();
+
         $widgets->iterate('runEvents', array(
                               array(
                                   'type' => 'allEvents',
@@ -28,15 +28,9 @@ class EventHandler
                                   'type' => $type,
                                   'data' => $event,
                                   )));
-
-        $payload = ob_get_clean();
-        if(trim(rtrim($payload)) != "") {
-            header('Content-Type: text/xml');
-            echo '<?xml version="1.0" encoding="UTF-8" ?>'
-            .'<movimcontainer>'
-            .$payload
-            .'</movimcontainer>';
-        }
+        
+        // Outputting any RPC calls.
+        MovimRPC::commit();
 	}
 }
 

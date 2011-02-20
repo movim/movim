@@ -184,9 +184,10 @@ function movim_ajaxSend(widget, func, callback, target, parameters)
    	movimAjax.onreadystatechange = function()
     {
         if(movimAjax.readyState == 4 && movimAjax.status == 200) {
+            log("Received data " + movimAjax.responseText);            
+
             if(typeof callback === 'function') {
                 callback(target, movimAjax.responseText);
-                log("Received data " + movimAjax.responseText);
             } else {
                 log("Unknown callback function : " + callback);
             }

@@ -141,10 +141,10 @@ class XMPPConnect
     }
     
     public function boshCurlError() {
-    	$this->jaxl->shutdown();
-    	throw new MovimException("Bosh connection error.");
-    	$user = new User();
-    	$user->desauth();    
+//    	$this->jaxl->shutdown();
+//    	throw new MovimException("Bosh connection error.");
+//    	$user = new User();
+//    	$user->desauth();    
     }
 	
 	/*

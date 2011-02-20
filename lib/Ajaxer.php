@@ -80,13 +80,13 @@ class Ajaxer extends Controller
 	{
 		//session_commit();
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
+            var_dump($_SESSION);
 			$user = new User();
 			$xmppSession = XMPPConnect::getInstance($user->getLogin());
 			session_commit();
 			$xmppSession->pingServer();
 			session_commit();
 		} else {
-            file_put_contents('xml', file_get_contents('php://input'));
 			$request = simplexml_load_string(file_get_contents('php://input'));
 
 			// Loading the widget.
