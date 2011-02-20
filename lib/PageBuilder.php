@@ -258,7 +258,9 @@ class PageBuilder
 	function widget($name)
 	{
         $widgets = WidgetWrapper::getInstance();
-        $widgets->run_widget($name, 'build');
+        echo '<div id="'.strtolower($name).'">';
+        	$widgets->run_widget($name, 'build');
+        echo '</div>';
 	}
 
 	/**
