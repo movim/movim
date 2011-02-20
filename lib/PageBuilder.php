@@ -262,7 +262,10 @@ class PageBuilder
         
         $globalevents = $widgets->run_widget($name, 'loadglobalevents');
         foreach($globalevents as $globalevent) {
-        	echo $globalevent[0] . '="' . $globalevent[1] . '"';
+        	if($globalevent[0] == 'oncontextmenu')
+        		echo $globalevent[0] . '="' . $globalevent[1] . '; return false;"';
+        	else
+        	    echo $globalevent[0] . '="' . $globalevent[1] . '"';
         }
         
         echo '>';

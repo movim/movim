@@ -188,7 +188,7 @@ function movim_ajaxSend(widget, func, callback, target, parameters)
                 callback(target, movimAjax.responseText);
                 log("Received data " + movimAjax.responseText);
             } else {
-                log("Unknown callback function");
+                log("Unknown callback function : " + callback);
             }
         }
     };
@@ -231,3 +231,12 @@ function getMousePosition(event)
 /**
  * Menu functions
  */
+ 
+function showMenu(event) {
+	var menu = document.getElementById("menu");
+
+	menu.style.display = 'block';
+	var mousePosition = getMousePosition(event);
+	menu.style.left = mousePosition[0]+"px";
+	menu.style.top = mousePosition[1]+"px";
+}

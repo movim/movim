@@ -26,6 +26,8 @@ class Chat extends Widget
 		$this->registerEvent('incomeactive', 'onIncomingActive');
 		$this->registerEvent('incomecomposing', 'onIncomingComposing');
 		$this->registerEvent('incomeonline', 'onIncomingOnline');
+		
+		$this->addGlobalEvent('oncontextmenu','ajaxMenu', 'movim_drop', "'drop'");
 	}
 
 	function onIncomingMessage($data)
@@ -64,6 +66,21 @@ class Chat extends Widget
     	$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
         $xmpp->sendMessage($to, $message);
+    }
+    
+    function ajaxMenu() {
+    	$html = '
+    		<div id="mousemenu">
+				<ul>
+					<li>' . t('Configuration') . ' </li>
+					<li>Test</li>
+				</ul>
+			</div>';
+			
+	    $this->sendto('movim_fill', array(
+                          'chatState',
+                          $this->cdata($html),
+                          ));
     }
 
 	function build()
