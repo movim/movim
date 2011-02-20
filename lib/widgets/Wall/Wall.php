@@ -18,13 +18,6 @@
 
 class Wall extends Widget
 {
-	private $user;
-	
-	function __construct(&$user)
-	{
-		$this->user = $user;
-	}
-	
 	function build()
 	{
 		?>

@@ -24,6 +24,10 @@ class Poller extends Widget
         $this->addjs('poller.js');
         // And that's it!
 	}
+
+    function build()
+    {
+    }
 }
 
 ?>

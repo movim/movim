@@ -1,0 +1,346 @@
+\input texinfo @c -*-texinfo-*-
+@c %**start of header
+@documentencoding UTF-8
+@setfilename movim-core.info
+@settitle Movim-core
+@setchapternewpage on
+@c %**end of header
+
+@set VERSION 0.1
+@set UPDATED 19 February 2011
+
+@copying
+This manual documents Movim-Core (version @value{VERSION}, @value{UPDATED}).
+
+Copyright @copyright{} 2009-2011 Movim-Core project.
+@sp 1
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+Texts.  A copy of the license is included in the section entitled ``GNU
+Free Documentation License''.
+@end quotation
+@end copying
+
+@titlepage
+@title MOVIM-CORE
+@subtitle version @value{VERSION}, @value{UPDATED}
+@vskip 4cm
+@author Guillaume Pasquet, Timothée Jaussoin
+@c Copyright page
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+
+@contents
+
+@ifnottex
+@node Top
+@top MOVIM-CORE
+
+This is Movim-core @value{VERSION}'s manual.
+@end ifnottex
+
+@menu
+* foreword:: What this document is all about
+* introduction:: What is Movim-core and how to use this document
+* structure:: A description of Movim-core's internals
+* API:: Documentation of the widget's API
+@end menu
+
+@node foreword
+@chapter Foreword
+Movim-core is an XMPP communication platform. It is extensible and uses a
+widget-based system for the user interface. Please note that this is not
+designed to be used directly by an end-user.
+
+This document describes the principles on which Movim-core is built and the
+necessary knowledge to implement new widgets.
+
+@node introduction
+@chapter Introduction
+Movim-core is designed to ease the implementation of XMPP web-based clients,
+using massively asynchronous javascript and abstracting XMPP calls into an
+events-based API.
+
+The widgets API doesn't only provide the necessary abstraction and framework to
+communicate through XMPP, it also features a javascript abstration system that
+lets you write as little javascript as possible. Moreover, widgets can embed
+their own resources --- pictures, css, javascript.
+
+@section Requirements
+Movim-core is a web framework written in PHP. To run it, you need the following
+software:
+
+@itemize @bullet
+@item
+PHP5.3 or greater with the Curl library.
+@item
+A web server: apache, lighttpd etc. (Note that weird web servers like IIS
+haven't been tested.)
+@end itemize
+
+@section Getting Movim-core
+Movim-core may be downloaded from @url{http://www.movim.eu}.
+
+Note that if you like risks, you may also check out the latest development
+version at @url{http://gitorious.org/movim}.
+
+@section Installing Movim
+After downloading the Movim-core archive, simply extract it somewhere in your
+web server's root directory, and off you go.
+
+@section Helping out
+Movim-core is Free software under the AGPL license. You can check out the latest
+code at @url{http://gitorious.org/movim}. Feel free to send in merge requests if
+you want to lend a hand.
+
+You can also help by reporting new bugs or proposing new ideas.
+
+@node structure
+@chapter Internal structure
+Understanding Movim-core's internals isn't necessary to use it. However, it may
+help finding out problems and developing more efficiently.
+
+Movim-core is consists of a widgets system and an XMPP abstration that
+communicate together through an asynchronous event handler. This is all
+triggered by a controller, which is loaded depending on the page you visit.
+
+@section XMPP connection
+The XMPP connection is managed by the JAXL library. It abstracts the raw sending
+and reception of XML documents. Each message is handled and seen as events from
+the widgets point of view.
+
+Each loaded widget declares its event handlers for different types of
+events. These are triggered when the pertaining event comes through.
+
+@section Controller
+The controller's job is to bootstrap the other systems. It doesn't do much all
+by itself.
+
+@section Widgets
+Widgets are small pieces of software that plug into Movim-core to provide extra
+ability to the system. These are mostly graphical, and generate ajax code
+automatically.
+
+Movim-core comes with several widgets. These sit in the @file{lib/widgets}
+directory. User-defined widgets should be in the @file{widgets} directory. Note
+that user-defined widgets always shadow the system widgets.
+
+Widgets can declare ajax functions and XMPP event handlers in order to interact
+with their GUI part and the XMPP subsystem. @xref{widget-api} for more
+information.
+
+@node widget-api
+@chapter Widget API
+Widgets inherit from the @emph{Widget} base class. The base class automagically
+generates ajax calls and javascript functions for you.
+
+The basic template of a Movim widget is as follows:
+
+@cartouche
+@verbatim
+class Widget extends Widget
+{
+    function WidgetLoad()
+    {
+        $this->registerEvent('incomemessage', 'onIncomingMessage');
+    }
+
+    function onIncomingMessage($data)
+    {
+        $this->sendto('movim_prepend', array(
+                                       'chatMessages',
+                                       $data['message'],
+                                       ));
+    }
+
+    function build()
+    {
+        ?>
+        <div id="chatMessages">
+        </div>
+        <?
+    }
+}
+@end verbatim
+@end cartouche
+
+Note that the constructor is not reimplemented. Instead the parent class
+provides a @code{WidgetLoad()} function that is called right at the end of the
+standard constructor.
+
+Event handlers must be defined into @code{WidgetLoad()}.
+
+The @code{build()} function is called when the widget is being written onto the
+interface. That's typically where you should put your HTML code.
+
+
+@section Events
+XMPP triggers many different kinds of events that are run against all the loaded
+widgets. In order to process an event, you may register one or more handlers in
+your widget.
+
+@subsection Handling events
+A widget handler is a public method that only takes one parameter:
+@code{$data}, which usually is an array that contains the data returned by the
+XMPP server.
+
+Your handlers must be registered in @code{WidgetLoad()} using the method:
+
+@cartouche
+@verbatim
+Widget::registerEvent($eventType, $handler)
+@end verbatim
+@end cartouche
+
+@code{$handler} is a the name of the method as a string, and @code{$eventType}
+is the name of the event as a string.
+
+@subsection Event types
+The XMPP subsystem raises the following events:
+
+@table @code
+@item postdisconnect
+      Event that is triggered immediately after the account has been
+      disconnected on the user's request.
+@item incomingemptybody
+      A message that comes in without body. This is typically a presence ping.
+@item vcardreceived
+      The user's vcard was received. @code{$data} contains the vcard as a base64
+      encoded string.
+@item rosterreceived
+      The roster's list was received. @code{$data} is an array of groups and
+      users.
+@item incomeactive
+      The contact is currently looking at his message list.
+@item incomecomposing
+      The contact is writing a message.
+@item incomemessage
+      A new message was received (contained in @code{$data}).
+@item incomeoffline
+      A contact as gone offline.
+@item incomeaway
+      A contact is now marked as away.
+@item incomednd
+      A contact is now marked as @emph{do not disturb}.
+@item incomeonline
+      A contact is now online.
+@end table
+
+@node sendto
+@subsection Sending messages to JS
+Widgets are split in two parts. One is the GUI-javascript part, the other is the
+PHP script. Both communicate asynchronously. The GUI part can send data to the
+PHP part through AJAX calls (@xref{ajaxcalls}), and event handler can also send
+messages to their GUI counterpart through Movim-core's long polling.
+
+This is achieved by calling the method:
+
+@cartouche
+@verbatim
+Widget::sendto($callback, array $parameters);
+@end verbatim
+@end cartouche
+
+The principle is very simple, @code{sendto()} sends an XMLRPC call to the GUI
+part that runs the specified @code{$callback} function with the provided
+@code{$parameters} that are ordered as appropriated.
+
+Additionally, binary data should be base64 encoded and wrapped in a CDATA
+container. To simplify the matter, the method @code{Widget::cdata()} is
+provided.
+
+@node js-callbacks
+@subsection Standard javascript callbacks
+You may define your own javascript callback functions and use them as
+appropriate. Alternatively, Movim-core comes with a standard set of javascript
+callbacks that allow simple operations on HTML elements (picked up by ID).
+
+@table @code
+@item movim_append(target, string)
+      Appends @code{string} to the html element with ID @code{target}.
+@item movim_prepend(target, string)
+      Prepends @code{string} to the html element with ID @code{target}.
+@item movim_fill(target, string)
+      Fills @code{string} to the html element with ID @code{target}.
+@item movim_drop()
+      Doesn't do anything.
+@end table
+
+@node ajaxcalls
+@subsection Ajax calls
+Any method defined in your widget that starts with @code{ajax} will have a
+javascript ajax call automatically generated.
+
+This ajax call can be explicitely called upon with the method:
+
+@cartouche
+@verbatim
+Widget::callAjax($funcname, $callback, $target, ...)
+@end verbatim
+@end cartouche
+
+@code{$funcname} is the name of the ajax function. @code{$callback} is the name
+of the javascript callback to handle the return, @code{$target} is the ID of the
+element in which to apply the return.
+
+Note that you can pass an arbitrary number of arguments, the extra arguments are
+mapped to those of the ajax function. Here is an example:
+
+@cartouche
+@verbatim
+class MyWidget extends Widget
+{
+    function ajaxTest($param1, $param2)
+    {
+        ...
+    }
+
+    function build()
+    {
+       ?>
+       <div id="test"></div>
+       <input type="button"
+              onclick="<? $this->callAjax(
+                           'ajaxTest',
+                           'movim_fill',
+                           "'test'",
+                           '1',
+                           '2'
+                           );?>"/>
+       <?
+    }
+}
+@end verbatim
+@end cartouche
+
+Note that strings that needs to be passed to javascript must be double-quoted.
+
+@node widget-resource
+@subsection Widget resource
+Widgets can come along with their own resources, in particular their CSS and
+javascript.
+
+The @code{Widget} base class includes two methods to ease the integration of
+custom javascript and css:
+
+@cartouche
+@verbatim
+Widget::addjs($jsfile)
+Widget::addcss($cssfile)
+@end verbatim
+@end cartouche
+
+The file paths given to these functions are relative to the widget's directory.
+
+@node license
+@comment  node-name,  next,  previous,  up
+@chapter GNU Free Documentation License
+@include fdl-1.2.texi
+
+@bye
