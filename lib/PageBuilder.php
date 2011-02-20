@@ -258,7 +258,14 @@ class PageBuilder
 	function widget($name)
 	{
         $widgets = WidgetWrapper::getInstance();
-        echo '<div id="'.strtolower($name).'">';
+        echo '<div id="' . strtolower($name) . '" ';
+        
+        $globalevents = $widgets->run_widget($name, 'loadglobalevents');
+        foreach($globalevents as $globalevent) {
+        	echo $globalevent[0] . '="' . $globalevent[1] . '"';
+        }
+        
+        echo '>';
         	$widgets->run_widget($name, 'build');
         echo '</div>';
 	}
