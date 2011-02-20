@@ -28,9 +28,9 @@ class Chat extends Widget
 		$this->registerEvent('incomeonline', 'onIncomingOnline');
 	}
 
-    function getNameFromJID($text)
+    function getNameFromJID($jid)
     {
-        return substr($data['from'], 0, strpos($data['from'], '@'));
+        return substr($jid, 0, strpos($jid, '@'));
     }
     
 	function onIncomingMessage($data)
@@ -38,7 +38,7 @@ class Chat extends Widget
         MovimRPC::call('movim_prepend',
                        'chatMessages',
                        MovimRPC::cdata('<p class="message">%s: %s</p>',
-                                       $this->getNameFromJID($dat['from']),
+                                       $this->getNameFromJID($data['from']),
                                        $data['body']));
 	}
 	
