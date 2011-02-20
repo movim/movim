@@ -83,10 +83,11 @@ class Chat extends Widget
 				</ul>
 			</div>';
 			
-	    $this->sendto('movim_fill', array(
+	    MovimRPC::call('movim_fill',
                           'chatState',
-                          $this->cdata($html),
-                          ));
+                          MovimRPC::cdata($html)
+                          );
+        MovimRPC::commit();
     }
 
 	function build()
