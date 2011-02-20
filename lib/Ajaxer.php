@@ -86,7 +86,6 @@ class Ajaxer extends Controller
 			$xmppSession->pingServer();
 			session_commit();
 		} else {
-            file_put_contents('xml', file_get_contents('php://input'));
 			$request = simplexml_load_string(file_get_contents('php://input'));
 
 			// Loading the widget.

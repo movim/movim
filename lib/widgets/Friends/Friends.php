@@ -35,7 +35,7 @@ class Friends extends Widget
     {
         $img = '<img alt="' . t("Your avatar") . '" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
-        $this->sendto('movim_fill', array('avatar', $this->cdata($img)));
+        return $this->sendto('movim_fill', 'avatar', $this->cdata($img));
     }
 
     function onRosterReceived($roster)
@@ -52,43 +52,36 @@ class Friends extends Widget
 			$i++;
 		}
 		$html .= "</ul>";
-        $this->sendto('movim_fill', array('tinylist', $this->cdata($html)));
+        return $this->sendto('movim_fill', 'tinylist', $this->cdata($html));
     }
     
 	function onIncomingOnline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 		
-	    $this->sendto('incomingOnline', array(
-                          $this->cdata($jid)
-                          ));
+	    return $this->sendto('incomingOnline',
+                      $this->cdata($jid));
 	}
 		
 	function onIncomingOffline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 		
-	    $this->sendto('incomingOffline', array(
-                          $this->cdata($jid)
-                          ));
+	    return $this->sendto('incomingOffline', $this->cdata($jid));
 	}
 	
 	function onIncomingDND($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 		
-	    $this->sendto('incomingDND', array(
-                          $this->cdata($jid)
-                          ));
+	    return $this->sendto('incomingDND', $this->cdata($jid));
 	}
 	
 	function onIncomingAway($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 		
-	    $this->sendto('incomingAway', array(
-                          $this->cdata($jid)
-                          ));
+	    return $this->sendto('incomingAway', $this->cdata($jid));
 	}
 
 	function ajaxRefreshVcard()

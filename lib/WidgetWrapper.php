@@ -142,10 +142,13 @@ class WidgetWrapper
      */
     function iterate($method, array $params = NULL)
     {
+        $buff = array();
         $widgets = $this->get_loaded_widgets();
         foreach($widgets as $widget) {
-            $this->run_widget($widget, $method, $params);
+            $buff[] = $this->run_widget($widget, $method, $params);
         }
+
+        return $buff;
     }
 
     /**

@@ -29,9 +29,8 @@ class Logout extends Widget
     function onPostDisconnect($data)
     {
 		$uri = str_replace("jajax.php", "", BASE_URI);
-	    $this->sendto('pageLogout', array(
-                          $this->cdata($uri."index.php?q=disconnect")
-                          ));
+	    return $this->sendto('pageLogout',
+                             $this->cdata($uri."index.php?q=disconnect"));
     }
 
 	function ajaxLogout()

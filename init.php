@@ -10,6 +10,7 @@ define('PROPERTIES_PATH',BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 
 require_once(LIB_PATH . 'i18n.php');
+require_once(LIB_PATH . 'Utils.php');
 
 define('APP_TITLE', t("MOVIM - Test Client"));
 

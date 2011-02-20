@@ -143,9 +143,14 @@ class Widget
 	public function runEvents($proto)
 	{
 		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
+
+            $returns = array();
+            
 			foreach($this->events[$proto['type']] as $handler) {
-				call_user_func(array($this, $handler), $proto['data']);
+				$returns[] = call_user_func(array($this, $handler), $proto['data']);
 			}
+
+            return $returns;
 		}
 	}
 
@@ -159,20 +164,30 @@ class Widget
 
     protected function cdata($text)
     {
-        return '<![CDATA['.$text.']]>';
+        $args = func_get_args();
+        return '<![CDATA['.
+            call_user_func_array('sprintf', $args).
+            ']]>'.PHP_EOL;
     }
 
     /**
      * Prints out a widget content in XML to be handled by javascript for
      * ajax return.
      */
-    protected function sendto($method, array $payload = null)
+    protected function sendto($method)
     {
-        echo '<funcall name="'.$method.'">' . "\n";
-        foreach($payload as $param_value) {
-          echo '  <param>'.$param_value."</param>\n";
+        $params = array_shift(func_get_args());
+        
+        $funcall = new MovimRPC_Call();
+        $funcall->setFunc($method);
+        
+        if(is_array($params) && count($params) > 0) {
+            foreach($params as $param) {
+                $funcall->addParam($param);
+            }
         }
-        echo "</funcall>";
+
+        return $funcall;
     }
 }
 

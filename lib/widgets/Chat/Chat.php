@@ -28,35 +28,41 @@ class Chat extends Widget
 		$this->registerEvent('incomeonline', 'onIncomingOnline');
 	}
 
+    function getNameFromJID($text)
+    {
+        return substr($data['from'], 0, strpos($data['from'], '@'));
+    }
+    
 	function onIncomingMessage($data)
 	{
-	    $this->sendto('movim_prepend', array(
-                          'chatMessages',
-		                  $this->cdata('<p class="message">' . substr($data['from'], 0, strpos($data['from'], '@')) . ': ' . $data['body'] . '</p>'),
-                          ));
+        return $this->sendto('movim_prepend',
+                             'chatMessages',
+                             $this->cdata('<p class="message">%s: %s</p>',
+                                          $this->getNameFromJID($dat['from']),
+                                          $data['body']));
 	}
 	
 	function onIncomingActive($data)
 	{
-	    $this->sendto('movim_fill', array(
-                          'chatState',
-                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). "'s chat is active</h3>"),
-                          ));
+	    return $this->sendto('movim_fill',
+                      'chatState',
+                      $this->cdata("<h3>%s's chat is active</h3>",
+                                   $this->getNameFromJID($data['from'])));
 	}
 	
 	function onIncomingComposing($data) {
-	    $this->sendto('movim_fill', array(
-                          'chatState',
-                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is composing</h3>"),
-                          ));
+	    return $this->sendto('movim_fill',
+                      'chatState',
+                      $this->cdata('<h3>%s is composing</h3>',
+                                   $this->getNameFromJID($data['from'])));
 	}
 
 	function onIncomingOnline($data)
 	{
-	    $this->sendto('movim_fill', array(
-                          'chatState',
-                          $this->cdata('<h3>'.substr($data['from'], 0, strpos($data['from'], '@')). " is online</h3>"),
-                          ));
+	    return $this->sendto('movim_fill',
+                      'chatState',
+                      $this->cdata('<h3>%s is online</h3>',
+                                   $this->getNameFromJID($data['from'])));
 	}
 
     function ajaxSendMessage($to, $message)

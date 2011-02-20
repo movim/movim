@@ -11,32 +11,34 @@ class EventHandler
 
 	function runEvent($type, $event)
 	{
+        file_put_contents('event', "Running $type.\n");
+        
         global $polling;
         if(!$polling) { // avoids issues while loading pages.
             return;
         }
 
         $widgets = WidgetWrapper::getInstance(false);
-        ob_clean();
-        $widgets->iterate('runEvents', array(
-                              array(
-                                  'type' => 'allEvents',
-                                  'data' => $event,
-                                  )));
-        $widgets->iterate('runEvents', array(
-                              array(
-                                  'type' => $type,
-                                  'data' => $event,
-                                  )));
 
-        $payload = ob_get_clean();
-        if(trim(rtrim($payload)) != "") {
-            header('Content-Type: text/xml');
-            echo '<?xml version="1.0" encoding="UTF-8" ?>'
-            .'<movimcontainer>'
-            .$payload
-            .'</movimcontainer>';
-        }
+        $rpc = new MovimRPC_Exec();
+        
+        $all = $widgets->iterate('runEvents', array(
+                                             array(
+                                                 'type' => 'allEvents',
+                                                 'data' => $event,
+                                                 )));
+        $ev = $widgets->iterate('runEvents', array(
+                                             array(
+                                                 'type' => $type,
+                                                 'data' => $event,
+                                                 )));
+        $rpc->addCalls($all);
+        $rpc->addCalls($ev);
+        
+        $rpc->exec();
+
+        file_put_contents('all', var_export($all, true));
+        file_put_contents('ev', var_export($ev, true));
 	}
 }
 
