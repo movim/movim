@@ -35,34 +35,34 @@ class Chat extends Widget
     
 	function onIncomingMessage($data)
 	{
-        return $this->sendto('movim_prepend',
-                             'chatMessages',
-                             $this->cdata('<p class="message">%s: %s</p>',
-                                          $this->getNameFromJID($dat['from']),
-                                          $data['body']));
+        MovimRPC::call('movim_prepend',
+                       'chatMessages',
+                       MovimRPC::cdata('<p class="message">%s: %s</p>',
+                                       $this->getNameFromJID($dat['from']),
+                                       $data['body']));
 	}
 	
 	function onIncomingActive($data)
 	{
-	    return $this->sendto('movim_fill',
-                      'chatState',
-                      $this->cdata("<h3>%s's chat is active</h3>",
-                                   $this->getNameFromJID($data['from'])));
+	    MovimRPC::call('movim_fill',
+                       'chatState',
+                       MovimRPC::cdata("<h3>%s's chat is active</h3>",
+                                       $this->getNameFromJID($data['from'])));
 	}
 	
 	function onIncomingComposing($data) {
-	    return $this->sendto('movim_fill',
-                      'chatState',
-                      $this->cdata('<h3>%s is composing</h3>',
-                                   $this->getNameFromJID($data['from'])));
+	    MovimRPC::call('movim_fill',
+                       'chatState',
+                       MovimRPC::cdata('<h3>%s is composing</h3>',
+                                       $this->getNameFromJID($data['from'])));
 	}
 
 	function onIncomingOnline($data)
 	{
-	    return $this->sendto('movim_fill',
-                      'chatState',
-                      $this->cdata('<h3>%s is online</h3>',
-                                   $this->getNameFromJID($data['from'])));
+	    MovimRPC::call('movim_fill',
+                       'chatState',
+                       MovimRPC::cdata('<h3>%s is online</h3>',
+                                       $this->getNameFromJID($data['from'])));
 	}
 
     function ajaxSendMessage($to, $message)

@@ -36,11 +36,11 @@ class Log extends Widget
 
     function onEvent($data)
     {
-        return $this->sendto('movim_prepend',
+        MovimRPC::call('movim_prepend',
                              'log',
-                             $this->cdata("<span>%s&gt; data :</span>%s<br />",
-                                          date('H:i:s'),
-                                          var_export($data, true)));
+                             MovimRPC::cdata("<span>%s&gt; data :</span>%s<br />",
+                                             date('H:i:s'),
+                                             var_export($data, true)));
     }
 }
 

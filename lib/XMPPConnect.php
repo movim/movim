@@ -95,6 +95,7 @@ class XMPPConnect
 			if(!$jid) {
                 $user = new User();
                 if(!$user->isLogged()) {
+                    var_dump($_SESSION);
                     throw new MovimException(t("Error: User not logged in."));
                 } else {
                     $jid = $user->getLogin();

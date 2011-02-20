@@ -35,7 +35,7 @@ class Friends extends Widget
     {
         $img = '<img alt="' . t("Your avatar") . '" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
-        return $this->sendto('movim_fill', 'avatar', $this->cdata($img));
+        MovimRPC::call('movim_fill', 'avatar', MovimRPC::cdata($img));
     }
 
     function onRosterReceived($roster)
@@ -52,36 +52,36 @@ class Friends extends Widget
 			$i++;
 		}
 		$html .= "</ul>";
-        return $this->sendto('movim_fill', 'tinylist', $this->cdata($html));
+        MovimRPC::call('movim_fill', 'tinylist', MovimRPC::cdata($html));
     }
     
 	function onIncomingOnline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 		
-	    return $this->sendto('incomingOnline',
-                      $this->cdata($jid));
+	    MovimRPC::call('incomingOnline',
+                      MovimRPC::cdata($jid));
 	}
 		
 	function onIncomingOffline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 		
-	    return $this->sendto('incomingOffline', $this->cdata($jid));
+	    MovimRPC::call('incomingOffline', MovimRPC::cdata($jid));
 	}
 	
 	function onIncomingDND($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 		
-	    return $this->sendto('incomingDND', $this->cdata($jid));
+	    MovimRPC::call('incomingDND', MovimRPC::cdata($jid));
 	}
 	
 	function onIncomingAway($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 		
-	    return $this->sendto('incomingAway', $this->cdata($jid));
+	    MovimRPC::call('incomingAway', MovimRPC::cdata($jid));
 	}
 
 	function ajaxRefreshVcard()

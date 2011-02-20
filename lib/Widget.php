@@ -161,34 +161,6 @@ class Widget
 	{
 		return $this->css;
 	}
-
-    protected function cdata($text)
-    {
-        $args = func_get_args();
-        return '<![CDATA['.
-            call_user_func_array('sprintf', $args).
-            ']]>'.PHP_EOL;
-    }
-
-    /**
-     * Prints out a widget content in XML to be handled by javascript for
-     * ajax return.
-     */
-    protected function sendto($method)
-    {
-        $params = array_shift(func_get_args());
-        
-        $funcall = new MovimRPC_Call();
-        $funcall->setFunc($method);
-        
-        if(is_array($params) && count($params) > 0) {
-            foreach($params as $param) {
-                $funcall->addParam($param);
-            }
-        }
-
-        return $funcall;
-    }
 }
 
 ?>

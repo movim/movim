@@ -29,8 +29,8 @@ class Logout extends Widget
     function onPostDisconnect($data)
     {
 		$uri = str_replace("jajax.php", "", BASE_URI);
-	    return $this->sendto('pageLogout',
-                             $this->cdata($uri."index.php?q=disconnect"));
+	    MovimRPC::call('pageLogout',
+                       MovimRPC::cdata($uri."index.php?q=disconnect"));
     }
 
 	function ajaxLogout()
