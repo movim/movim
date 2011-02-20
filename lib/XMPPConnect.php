@@ -95,7 +95,6 @@ class XMPPConnect
 			if(!$jid) {
                 $user = new User();
                 if(!$user->isLogged()) {
-                    var_dump($_SESSION);
                     throw new MovimException(t("Error: User not logged in."));
                 } else {
                     $jid = $user->getLogin();
@@ -142,10 +141,10 @@ class XMPPConnect
     }
     
     public function boshCurlError() {
-    	$this->jaxl->shutdown();
+//    	$this->jaxl->shutdown();
 //    	throw new MovimException("Bosh connection error.");
-    	$user = new User();
-    	$user->desauth();    
+//    	$user = new User();
+//    	$user->desauth();    
     }
 	
 	/*
