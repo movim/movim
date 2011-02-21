@@ -27,6 +27,10 @@ class Log extends Widget
 	function build()
 	{
 		?>
+		<h3>Debug console </h3>
+		<div id="log">
+
+       	</div>
 		<?php
 	}
 

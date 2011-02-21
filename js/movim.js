@@ -189,7 +189,7 @@ function movim_ajaxSend(widget, func, callback, target, parameters)
             if(typeof callback === 'function') {
                 callback(target, movimAjax.responseText);
             } else {
-                log("Unknown callback function : " + callback);
+                log("Unknown callback function");
             }
         }
     };
@@ -198,46 +198,13 @@ function movim_ajaxSend(widget, func, callback, target, parameters)
 	movimAjax.send(request);
 }
 
-/**
- * Movim Javascript Usefull functions
- */
-
 function myFocus(element) {
-	if (element.value == element.defaultValue) {
-		element.value = '';
-	}
+ if (element.value == element.defaultValue) {
+   element.value = '';
+ }
 }
 function myBlur(element) {
-	if (element.value == '') {
-		element.value = element.defaultValue;
-	}
-}
-
-function getMousePosition(event)
-{
-	var e = event || window.event;
-	var scroll = new Array(
-			(document.documentElement && document.documentElement.scrollLeft) 
-			|| window.pageXOffset 
-			|| self.pageXOffset 
-			|| document.body.scrollLeft,(document.documentElement && document.documentElement.scrollTop) 
-			|| window.pageYOffset 
-			|| self.pageYOffset 
-			|| document.body.scrollTop
-		);
-	
-	return new Array(e.clientX + scroll[0] - document.body.clientLeft,e.clientY + scroll[1] - document.body.clientTop);
-}
-
-/**
- * Menu functions
- */
- 
-function showMenu(event) {
-	var menu = document.getElementById("menu");
-
-	menu.style.display = 'block';
-	var mousePosition = getMousePosition(event);
-	menu.style.left = mousePosition[0]+"px";
-	menu.style.top = mousePosition[1]+"px";
+ if (element.value == '') {
+   element.value = element.defaultValue;
+ }
 }

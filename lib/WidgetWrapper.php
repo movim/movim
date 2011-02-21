@@ -172,7 +172,6 @@ class WidgetWrapper
         else
             return $this->js;
     }
-    
 }
 
 ?>

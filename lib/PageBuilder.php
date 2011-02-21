@@ -258,20 +258,7 @@ class PageBuilder
 	function widget($name)
 	{
         $widgets = WidgetWrapper::getInstance();
-        echo '<div id="' . strtolower($name) . '" ';
-        
-        $globalevents = $widgets->run_widget($name, 'loadglobalevents');
-        foreach($globalevents as $globalevent) {
-        	if($globalevent[0] == 'oncontextmenu')
-        		echo $globalevent[0] . '="' . $globalevent[1] . '; return false;"';
-        	else
-        	    echo $globalevent[0] . '="' . $globalevent[1] . '"';
-        }
-        
-        echo '>';
-        //echo '<div id="' . strtolower($name) . '" >';
-        	$widgets->run_widget($name, 'build');
-        echo '</div>';
+        $widgets->run_widget($name, 'build');
 	}
 
 	/**

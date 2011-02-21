@@ -21,6 +21,7 @@ class Wall extends Widget
 	function build()
 	{
 		?>
+		<div id="wall">
 		    <div class="message">
 				<img class="avatar" width="70px" height="70px" alt="test">
 			
@@ -43,6 +44,7 @@ class Wall extends Widget
 		    	Commentaire 4
 		    	</div>
        		</div>
+       	</div>
 		<?php
 	}
 }

@@ -54,7 +54,31 @@ class Config extends Widget
 			   $form->insertBR();
 			   $form->textInput('boshPort',t('Bosh Port'),false,'block required', false, false, 4, false, $conf['boshPort']);
 			   $form->closeFieldset();
-
+			// Uncomment this part as soon as the vCard will be supported
+			/*   $form->startFieldset(t('Gender'));
+				  $form->newline = true;
+				  $form->checkboxInput('radio','gender','male',t('Male'));
+				  $form->checkboxInput('radio','gender','female',t('Female'));
+				  $form->newline = true;
+			   $form->closeFieldset();
+			   $form->startFieldset(t('Interests'));
+				  $form->checkboxInput('checkbox','lazy','lazy',t('Movies'));
+				  $form->checkboxInput('checkbox','intellectual','intellectual',t('Reading'));
+				  $form->checkboxInput('checkbox','jock','jock',t('Sports'));
+			   $form->closeFieldset();
+			   $form->fileInput('picture',t('Upload Your Picture'));
+			   $form->textareaInput('about',t('About You'),false,'block');
+			   $form->startSelect('age',t('Your Age'),false,'block');
+				  $form->addOption('0-3', t('baby'));
+				  $form->addOption('3-5', t('toddler'));
+				  $form->addOption('5-12', t('child'));
+				  $form->addOption('13-19', t('teen'));
+				  $form->addOption('20-45', t('adult'));
+				  $form->addOption('45-65', t('middleage'));
+				  $form->addOption('65-75', t('retiree'));
+				  $form->addOption('75-95', t('old'));
+				  $form->addOption('100+', t('stillalive'));
+			   $form->closeSelect();*/
 			   $form->insertBR();
 			   $form->newline = false;
 			   $form->submitButton(false, t('Submit'));

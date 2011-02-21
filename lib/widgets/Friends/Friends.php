@@ -101,6 +101,7 @@ class Friends extends Widget
     function build()
     {
         ?>
+        <div id="friends">
           <div id="drop" style="display: none;"></div>
           <div id="avatar"></div>
 		  <input type="button"
@@ -120,6 +121,7 @@ class Friends extends Widget
   		  <input type="button" onclick="<?php $this->callAjax('ajaxRefreshRoster', "'movim_drop'", "'drop'");?>"
          value="Refresh Roster" />
 		 <div id="testzone"></div>
+        </div>
         <?php
     }
 }

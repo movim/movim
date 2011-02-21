@@ -25,7 +25,6 @@ class Widget
 	protected $xmpp; /*< XMPPConnect instance. */
 	protected $name;
 	protected $events;
-	protected $globalevents = array();
 
 	/**
 	 * Initialises Widget stuff.
@@ -64,7 +63,6 @@ class Widget
 	/**
 	 * Generates the widget's HTML code.
 	 */
-
     function build()
     {
     }
@@ -91,34 +89,15 @@ class Widget
         return $path;
 	}
 
-	protected function callAjax($funcname, $callback, $target, $direct = false)
+	protected function callAjax($funcname, $callback, $target)
 	{
 		$args = implode(', ', array_slice(func_get_args(), 3));
 		if($args != "") {
 			$args = ', ' . $args;
 		}
 
-		if($direct == true)
-			return get_class($this) . '_' . $funcname . "($callback, $target" . $args . ");";
-		else
-			echo get_class($this) . '_' . $funcname . "($callback, $target" . $args . ");";
+		echo get_class($this) . '_' . $funcname . "($callback, $target" . $args . ");";
 
-	}
-	
-	protected function addGlobalEvent($type, $funcname, $callback, $target) {
-		if($type == 'onclick')
-			$this->globalevents[] = array($type, $this->callAjax($funcname, $callback, $target, true));
-		elseif($type == 'oncontextmenu')
-			$this->globalevents[] = array($type, $this->callAjax($funcname, $callback, $target, true));
-	}
-	
-	/**
-	 * Get the global event array
-	 */
-	
-	public function loadglobalevents() 
-	{
-		return $this->globalevents;
 	}
 
 	/**

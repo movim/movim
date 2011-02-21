@@ -26,12 +26,11 @@ class Chat extends Widget
 		$this->registerEvent('incomeactive', 'onIncomingActive');
 		$this->registerEvent('incomecomposing', 'onIncomingComposing');
 		$this->registerEvent('incomeonline', 'onIncomingOnline');
-		
-		$this->addGlobalEvent('oncontextmenu','ajaxMenu', 'movim_drop', "'drop'");
 	}
 
     function getNameFromJID($jid)
     {
+        //return substr($data['from'], 0, strpos($data['from'], '@'));
         return substr($jid, 0, strpos($jid, '@'));
     }
     
@@ -69,30 +68,16 @@ class Chat extends Widget
 
     function ajaxSendMessage($to, $message)
     {
+//    	movim_log($data);
     	$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
         $xmpp->sendMessage($to, $message);
-    }
-    
-    function ajaxMenu() {
-    	$html = '
-    		<div id="mousemenu">
-				<ul>
-					<li>' . t('Configuration') . ' </li>
-					<li>Test</li>
-				</ul>
-			</div>';
-			
-	    MovimRPC::call('movim_fill',
-                          'chatState',
-                          MovimRPC::cdata($html)
-                          );
-        MovimRPC::commit();
     }
 
 	function build()
 	{
 		?>
+		<div id="chat">
             <div id="chatState">
             </div>
             <div id="chatMessages">
@@ -100,6 +85,7 @@ class Chat extends Widget
             <input type="text" id="chatInput" value="Message" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSendMessage', 'movim_drop', "'test'", "getDest()", "getMessageText()");?>}"/>
             <input type="text" id="chatTo" value="To" onfocus="myFocus(this);" onblur="myBlur(this);" />
             <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', 'movim_drop', "'test'", "getDest()", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
+		</div>
 		<?php
 
 	}

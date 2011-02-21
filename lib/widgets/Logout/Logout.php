@@ -24,7 +24,6 @@ class Logout extends Widget
     	$this->addcss('logout.css');
     	$this->addjs('logout.js');
 		$this->registerEvent('postdisconnected', 'onPostDisconnect');
-		$this->addGlobalEvent('onclick','ajaxLogout', "'movim_drop'", "'drop'");
     }
 
     function onPostDisconnect($data)
@@ -44,6 +43,7 @@ class Logout extends Widget
     function build()
     {
         ?>
+        <div id="logout" onclick="<?php $this->callAjax('ajaxLogout', "'movim_drop'", "'drop'");?>"></div>
         <?php
     }
 }
