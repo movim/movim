@@ -379,7 +379,7 @@
         */
         function setStatus($status=false, $show=false, $priority=false, $caps=false, $vcard=false) {
             $child = array();
-            $child['status'] = ($status === false ? 'Online using Jaxl library http://code.google.com/p/jaxl' : $status);
+            $child['status'] = ($status === false ? 'Online using Movim http://movim.eu' : $status);
             $child['show'] = ($show === false ? 'chat' : $show);
             $child['priority'] = ($priority === false ? 1 : $priority);
             if($caps) $child['payload'] = $this->JAXL0115('getCaps', $this->features);
