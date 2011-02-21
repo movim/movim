@@ -30,7 +30,6 @@ class Chat extends Widget
 
     function getNameFromJID($jid)
     {
-        //return substr($data['from'], 0, strpos($data['from'], '@'));
         return substr($jid, 0, strpos($jid, '@'));
     }
     

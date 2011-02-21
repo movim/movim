@@ -58,7 +58,7 @@ class Friends extends Widget
 	function onIncomingOnline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-		
+		movim_log($data);
 	    MovimRPC::call('incomingOnline',
                       MovimRPC::cdata($jid));
 	}

@@ -43,7 +43,7 @@ class MovimRPC
         $args = func_get_args();
         return '<![CDATA['.
             call_user_func_array('sprintf', $args).
-            ']]>'.PHP_EOL;
+            ']]>';
     }
     
     public static function commit()
