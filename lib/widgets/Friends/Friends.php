@@ -58,7 +58,6 @@ class Friends extends Widget
 	function onIncomingOnline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-		movim_log($data);
 	    MovimRPC::call('incomingOnline',
                       MovimRPC::cdata($jid));
 	}
@@ -97,11 +96,20 @@ class Friends extends Widget
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
 		$xmpp->getRosterList();
 	}
+	
+	function ajaxConfig()
+	{
+		MovimRPC::call('movim_fill', 'friends' , MovimRPC::cdata('configuration'));
+		MovimRPC::commit();
+	}
 
     function build()
     {
         ?>
         <div id="friends">
+          <div class="config_button" onclick="<?php $this->callAjax('ajaxConfig', "'movim_drop'", "'drop'");?>">
+          
+          </div>
           <div id="drop" style="display: none;"></div>
           <div id="avatar"></div>
 		  <input type="button"

@@ -123,9 +123,9 @@ function log(text)
     if(typeof text !== 'undefined') {
         text = text.toString();
         text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-	    document.getElementById('log').innerHTML
+	    document.getElementById('log_content').innerHTML
 		    = "$ " + text + "<br /> "
-		    + document.getElementById('log').innerHTML;
+		    + document.getElementById('log_content').innerHTML;
     }
 }
 
@@ -185,12 +185,12 @@ function movim_ajaxSend(widget, func, callback, target, parameters)
     {
         if(movimAjax.readyState == 4 && movimAjax.status == 200) {
             log("Received data " + movimAjax.responseText);            
-
-            if(typeof callback === 'function') {
+			movim_xmlrpc(movimAjax.responseXML);
+            /*if(typeof callback === 'function') {
                 callback(target, movimAjax.responseText);
             } else {
-                log("Unknown callback function");
-            }
+                log("Unknown callback function : " + callback);
+            }*/
         }
     };
 

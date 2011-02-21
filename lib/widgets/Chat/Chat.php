@@ -77,7 +77,11 @@ class Chat extends Widget
 	{
 		?>
 		<div id="chat">
+		  <div class="config_button">
+          
+          </div>
             <div id="chatState">
+               <h3>Chat</h3>
             </div>
             <div id="chatMessages">
             </div>

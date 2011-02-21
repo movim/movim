@@ -27,9 +27,14 @@ class Log extends Widget
 	function build()
 	{
 		?>
-		<h3>Debug console </h3>
 		<div id="log">
+	      <div class="config_button">
+          
+          </div>
+		  <h3>Debug console </h3>
 
+          <div id="log_content">
+          </div>
        	</div>
 		<?php
 	}
@@ -37,8 +42,8 @@ class Log extends Widget
     function onEvent($data)
     {
         MovimRPC::call('movim_prepend',
-                             'log',
-                             MovimRPC::cdata("<span>%s&gt; data :</span>%s<br />",
+                             'log_content',
+                             MovimRPC::cdata("<span>%s&gt; data : </span>%s<br />",
                                              date('H:i:s'),
                                              var_export($data, true)));
     }

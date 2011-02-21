@@ -7,6 +7,13 @@
 	font-size: 0.7em;
 	padding: 1em;
 	overflow: hidden;
+	margin-top: 0.5em;
+}
+
+#log h3 {
+	font-size: 1.2em;
+	margin-top: -2px;
+	margin-bottom: 0.5em;
 }
 
 #log:hover {
@@ -16,6 +23,7 @@
 	width: 40%;
 	height: 100%;
 	border-left: 1px solid black;
+	margin-top: 0px;
 }
 
 #log span {

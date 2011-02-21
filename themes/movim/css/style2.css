@@ -274,3 +274,17 @@ label {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
+
+/* Config button */
+
+.config_button {
+	width: 10px;
+	height: 10px;
+	background-image: url(../img/config_off.png);
+	float: right;
+}
+
+.config_button:hover {
+	background-image: url(../img/config_on.png);
+	cursor: pointer;
+}
