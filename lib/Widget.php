@@ -96,7 +96,7 @@ class Widget
 			$args = ', ' . $args;
 		}
 
-		echo get_class($this) . '_' . $funcname . "($callback, $target" . $args . ");";
+		return get_class($this) . '_' . $funcname . "($callback, $target" . $args . ");";
 
 	}
 

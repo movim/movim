@@ -59,7 +59,7 @@ class Form {
    Note: you shouldn't use target in xhtml */
 
    // start the <form> element
-   function startForm($action=false,$class='',$target='',$method='post') {
+   function startForm($action=false,$class='',$target='',$method='post', $name='') {
 
       // verify action is set
       if(!$action) {
@@ -77,12 +77,16 @@ class Form {
 
       // target value for form
       if(trim($target != '')) { $target = ' target="' . $target . '"'; }
+      
+      if(isset($name) && $name != '') {
+      	$name = ' name="' . $name . '"';
+      }
 
       // determine class or ID
       $class = $this->ClassID($class);
 
       // generate form tag and attributes
-      $this->output .= '<form' . $class . $action . $method . $target . ' enctype="multipart/form-data">' . ((!$this->singleline)?("\n"):('')) . (($this->outputxhtml)?('<div>' . ((!$this->singleline)?("\n"):(''))):(''));
+      $this->output .= '<form' . $name .$class . $action . $method . $target . ' enctype="multipart/form-data">' . ((!$this->singleline)?("\n"):('')) . (($this->outputxhtml)?('<div>' . ((!$this->singleline)?("\n"):(''))):(''));
       $this->formopen = true;
 
       return true;

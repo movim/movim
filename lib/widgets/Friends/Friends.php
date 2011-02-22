@@ -107,13 +107,13 @@ class Friends extends Widget
     {
         ?>
         <div id="friends">
-          <div class="config_button" onclick="<?php $this->callAjax('ajaxConfig', "'movim_drop'", "'drop'");?>">
+          <div class="config_button" onclick="<?php echo $this->callAjax('ajaxConfig', "'movim_drop'", "'drop'");?>">
           
           </div>
           <div id="drop" style="display: none;"></div>
           <div id="avatar"></div>
 		  <input type="button"
-                 onclick="<?php $this->callAjax('ajaxRefreshVcard', "'movim_drop'", "'drop'");?>"
+                 onclick="<?php echo $this->callAjax('ajaxRefreshVcard', "'movim_drop'", "'drop'");?>"
                  value="Refresh vcard" />
           <h3><?php echo t('Contacts');?></h3>
 
@@ -126,7 +126,7 @@ class Friends extends Widget
 				<li class="dnd">Do Not Disturb</li>
 			</ul>
           </div>
-  		  <input type="button" onclick="<?php $this->callAjax('ajaxRefreshRoster', "'movim_drop'", "'drop'");?>"
+  		  <input type="button" onclick="<?php echo $this->callAjax('ajaxRefreshRoster', "'movim_drop'", "'drop'");?>"
          value="Refresh Roster" />
 		 <div id="testzone"></div>
         </div>

@@ -18,11 +18,13 @@
 
 class Config extends Widget
 {
-	private $user;
+    function WidgetLoad()
+    {
+    
+    }
 	
-	function __construct(&$user)
-	{
-		$this->user = $user;
+	function ajaxSubmit($data) {
+		movim_log($data);
 	}
 	
 	function build()
@@ -31,8 +33,10 @@ class Config extends Widget
 			$usr = new User();
 			$conf = GetConf::getUserConf($usr->getLogin());
 			
+			$submit = $this->callAjax('ajaxSubmit', "'movim_drop'", "'drop'", "movim_parse_form(document.forms['general'])");
+			
 			$form = new Form();
-			$form->startForm(basename($_SERVER['PHP_SELF']));
+			$form->startForm(basename($_SERVER['PHP_SELF']), false, false, 'post', 'general');
 
 			/* Note that the select fields aren't translated and the languages
 			 * are in their native form. This should not be changed.*/
@@ -57,7 +61,7 @@ class Config extends Widget
 
 			   $form->insertBR();
 			   $form->newline = false;
-			   $form->submitButton(false, t('Submit'));
+			   $form->genericButton($submit, t('Submit'));
 			   $form->newline = true;
 			   $form->resetButton(false, t('Reset'));
 			$form->closeForm();
@@ -68,6 +72,7 @@ class Config extends Widget
 				echo $output;
 			}
 	}
+	
 }
 
 ?>

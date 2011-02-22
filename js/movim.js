@@ -199,12 +199,21 @@ function movim_ajaxSend(widget, func, callback, target, parameters)
 }
 
 function myFocus(element) {
- if (element.value == element.defaultValue) {
-   element.value = '';
- }
+	if (element.value == element.defaultValue) {
+		element.value = '';
+	}
 }
 function myBlur(element) {
- if (element.value == '') {
-   element.value = element.defaultValue;
- }
+	if (element.value == '') {
+		element.value = element.defaultValue;
+	}
+}
+
+function movim_parse_form(form) {
+	var data = new Array();
+	//data.push(form.elements[0].name);
+	for (var i=0; i<form.elements.length;i++) {
+		data.push(form.elements[i].name +":"+ form.elements[i].value);
+	}
+	return data;
 }
