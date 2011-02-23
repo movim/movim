@@ -91,17 +91,20 @@ class Widget
 
 	protected function callAjax($funcname, $callback, $target)
 	{
-		echo $this->genCallAjax($funcname, $callback, $target);
+		echo $this->makeCallAjax(func_get_args());
 	}
 	
 	protected function genCallAjax($funcname, $callback, $target)
 	{
-		$args = implode(', ', array_slice(func_get_args(), 3));
-		if($args != "") {
-			$args = ', ' . $args;
-		}
-		
-		return get_class($this) . '_' . $funcname . "($callback, $target" . $args . ");";
+		return $this->makeCallAjax(func_get_args());
+	}
+	
+	protected function makeCallAjax($params)
+	{
+		$funcname = array_shift($params);
+		$args = implode(', ', $params);
+
+		return get_class($this) . '_' . $funcname . "(" . $args . ");";
 	}
 
 	/**
