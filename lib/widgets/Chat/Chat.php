@@ -85,9 +85,9 @@ class Chat extends Widget
             </div>
             <div id="chatMessages">
             </div>
-            <input type="text" id="chatInput" value="Message" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSendMessage', 'movim_drop', "'test'", "getDest()", "getMessageText()");?>}"/>
+            <input type="text" id="chatInput" value="Message" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSendMessage', "getDest()", "getMessageText()");?>}"/>
             <input type="text" id="chatTo" value="To" onfocus="myFocus(this);" onblur="myBlur(this);" />
-            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', 'movim_drop', "'test'", "getDest()", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
+            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', "getDest()", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
 		</div>
 		<?php
 

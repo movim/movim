@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <script type="text/javascript" src="hash.js"></script>
+    <script type="text/javascript">
+      function print(text)
+      {
+          document.getElementById("page").innerHTML += text;
+      }
+
+      function array_to_string(array)
+      {
+          for(i in array) {
+              print(array[i] + "<br />");
+          }
+      }
+
+      function runtests()
+      {
+          // Starting tests.
+          print("Creating the Hash.<br />");
+          var myhash = new Hash();
+
+          print("Adding associative elements.<br />");
+          myhash.set("toto", "tata");
+          myhash.set("prout", "tagada");
+          print("<br />");
+          
+          print("Dumping contents.<br />");
+          print(myhash.to_string());
+          print("<br /><br />");
+
+          print("Changing the value of 'prout' to 'tigidi'.<br />");
+          myhash.set('prout', 'tigidi');
+          print(myhash.to_string());
+          print("<br /><br />");
+
+          print("Popping last element: ");
+          var last = myhash.pop();
+          print(last + "<br />");
+          print(myhash.to_string());
+          print("<br /><br />");
+
+          print("Pushing unassociative element<br />");
+          myhash.push("tagada");
+          print(myhash.to_string());
+          print("<br /><br />");
+
+          if(myhash.haskey('toto')) {
+              print("The hash contains the key 'toto'.<br />");
+          } else {
+              print("Something's wrong. Hash says it doesn't contain 'toto'.<br />");
+          }
+          print("<br />");
+
+          if(myhash.hasval('tagada')) {
+              print("The hash contains the value 'tagada'.<br />");
+          } else {
+              print("Something's wrong. Hash says it doesn't contain 'tagada'.<br />");
+          }
+          print("<br />");
+
+          print("The value of 'toto' is '" + myhash.getval('toto') + "'<br />");
+          print("<br />");
+
+          print("Iterating through the array.<br />");
+          while(myhash.iterate()) {
+              print(myhash.key() +" => '"+ myhash.val() +"'<br />");
+          }
+          print("<br />");
+          
+          print("And again!<br />");
+          myhash.reset();
+          while(myhash.iterate()) {
+              print(myhash.key() +" => '"+ myhash.val() +"'<br />");
+          }
+          print("<br />");
+
+          print("Getting all the keys.<br />");
+          array_to_string(myhash.keys());
+          print("<br />");
+
+          print("Getting all the values.<br />");
+          array_to_string(myhash.values());
+          print("<br />");
+      }
+    </script>
+  </head>
+  <body onload="runtests()">
+    <div id="page">
+    </div>
+  </body>
+</html>

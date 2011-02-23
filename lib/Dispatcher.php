@@ -25,6 +25,8 @@ class Dispatcher extends Controller
 		parent::__construct();
 		
 		$this->page = new PageBuilder();
+        $this->page->addScript('hash.js');
+        $this->page->addScript('movimrpc.js');
 		$this->page->addScript('movim.js');
 	}
 

@@ -89,23 +89,23 @@ class Widget
         return $path;
 	}
 
-	protected function callAjax($funcname, $callback, $target)
+	protected function callAjax($funcname)
 	{
 		echo $this->makeCallAjax(func_get_args());
 	}
 	
-	protected function genCallAjax($funcname, $callback, $target)
+	protected function genCallAjax($funcname)
 	{
 		return $this->makeCallAjax(func_get_args());
 	}
-	
-	protected function makeCallAjax($params)
-	{
-		$funcname = array_shift($params);
-		$args = implode(', ', $params);
 
+    protected function makeCallAjax($params)
+    {
+        $funcname = array_shift($params);
+        $args = implode(', ', $params);
+		
 		return get_class($this) . '_' . $funcname . "(" . $args . ");";
-	}
+    }
 
 	/**
 	 * Adds a javascript file to this widget.
