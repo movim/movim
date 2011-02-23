@@ -33,7 +33,7 @@ class Config extends Widget
 			$usr = new User();
 			$conf = GetConf::getUserConf($usr->getLogin());
 			
-			$submit = $this->genCallAjax('ajaxSubmit', "'movim_drop'", "'drop'", "movim_parse_form(document.forms['general'])");
+			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form(document.forms['general'])");
 			
 			$form = new Form();
 			$form->startForm(basename($_SERVER['PHP_SELF']), false, false, 'post', 'general');

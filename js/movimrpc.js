@@ -50,6 +50,8 @@ function movim_drop(params)
     // log('movim_drop called.');
 }
 
+var movim_xmlhttp;
+
 /***********************************************************************
  * MOVIM RPC class.
  *
@@ -60,13 +62,7 @@ function movim_drop(params)
  */
 function MovimRPC()
 {
-    /* Properties */
-    this.widget = '';
-    this.func = '';
-    this.params = [];
-
     /* Methods */
-    this.xmlhttp = this.make_xmlhttp();
     this.make_xmlhttp = MovimRPC_make_xmlhttp;
     this.commit = MovimRPC_commit;
     
@@ -79,6 +75,11 @@ function MovimRPC()
     this.handle_rpc = MovimRPC_handle_rpc;
 
     this.generate_xml = MovimRPC_generate_xml;
+
+    /* Properties */
+    this.widget = '';
+    this.func = '';
+    this.params = [];
 }
 
 /**
@@ -90,7 +91,7 @@ function MovimRPC_set_call(widget, func, params)
     this.set_func(func);
     this.params = params;
 }
-n
+
 /**
  * What widget do we call?
  */
@@ -185,15 +186,20 @@ function MovimRPC_generate_xml()
                     + "</arrayelt>\n";
             }
         }
+        else {
+            params += this.params[i];
+        }
         
-        params +='</param>';
+        params +="</param>\n";
     }
 
     var request =  
         '<?xml version="1.0" encoding="UTF-8" ?>'
-        + '<funcall widget="'+ widget + '" name="' + func + '">' + "\n"
+        + '<funcall widget="'+ this.widget + '" name="' + this.func + '">' + "\n"
         + params + "\n"
         + '</funcall>' + "\n";
+
+    return request;
 }
 
 /**
@@ -206,18 +212,21 @@ function MovimRPC_generate_xml()
  */
 function MovimRPC_commit()
 {
-	movimAjax.open('POST', 'jajax.php', true);
+    movim_xmlhttp = this.make_xmlhttp();
     
-   	movimAjax.onreadystatechange = function()
+	movim_xmlhttp.open('POST', 'jajax.php', true);
+    
+   	movim_xmlhttp.onreadystatechange = function()
     {
-        if(movimAjax.readyState == 4 && movimAjax.status == 200) {
-            log("Received data " + movimAjax.responseText);            
-			this.handle_rpc(movimAjax.responseXML);
+        if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
+            log("Received data " + movim_xmlhttp.responseText);            
+		    MovimRPC_handle_rpc(movim_xmlhttp.responseXML);
         }
     };
 
-	movimAjax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	movimAjax.send(request);
+	movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    var data = this.generate_xml();
+	movim_xmlhttp.send(data);
 }
 
 /**
