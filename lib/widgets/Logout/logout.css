@@ -1,13 +1,21 @@
 #logout {
 	position: absolute;
 	top: 0px;
-	right: 2px;
-	background-image: url(img/door_open.png);
+	right: 0px;
+	/*background-image: url(img/door_open.png);
 	background-repeat: no-repeat;
-	background-position: 0px 0px;
+	background-position: absolute;*/
+	background: url(img/door_open.png) no-repeat top right;
+	
+	
 	height: 1em;
-	width: 1em;
+	font-size: 12px;
 	padding: 3px;
+	padding-top: 2px;
+	padding-right: 20px;
 	margin-top: 2px;
+	margin-right: 2px;
 	cursor: pointer;
+	color: white;
+	font-family:  arial, 'lucida grande', sans-serif;
 }
