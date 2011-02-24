@@ -16,7 +16,7 @@
 	<div id="content">
 	  <?php $this->content();?>
 	  	<div id="footer">
-			© <a href="http://www.movim.eu">Movim</a> - 2010 | Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
+			© <a href="http://www.movim.eu">Movim</a> - 2011 | Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
 		</div>
 	</div>
 
