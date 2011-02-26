@@ -66,38 +66,6 @@ class Ajaxer extends Controller
 			'params' => $params,
 			);
 	}
-
-	/**
-	 * Handles incoming ajax requests.
-	 */
-	public function handle()
-	{
-		//session_commit();
-		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
-            var_dump($_SESSION);
-			$user = new User();
-			$xmppSession = XMPPConnect::getInstance($user->getLogin());
-			session_commit();
-			$xmppSession->pingServer();
-			session_commit();
-		} else {
-			$request = simplexml_load_string(file_get_contents('php://input'));
-
-			// Loading the widget.
-			$widget_name = (string)$request['widget'];
-
-            // Preparing the parameters and calling the function.
-            $params = array();
-            foreach($request->children() as $child) {
-                if($child->getName() == 'param') {
-                    $params[] = (string)$child;
-                }
-            }
-            
-            $widgets = WidgetWrapper::getInstance(false);
-            $widgets->run_widget($widget_name, (string)$request['name'], $params);
-		}
-	}
 }
 
 ?>

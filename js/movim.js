@@ -42,11 +42,15 @@ function myBlur(element) {
 	}
 }
 
-function movim_parse_form(form) {
-	var data = new Array();
-	//data.push(form.elements[0].name);
-	for (var i=0; i<form.elements.length;i++) {
-		data.push(form.elements[i].name +":"+ form.elements[i].value);
+function movim_parse_form(formname) {
+    var form = document.forms[formname];
+    if(!form)
+        return false;
+    
+	var data = new Hash();
+	for(var i = 0; i < form.elements.length; i++) {
+        data.set(form.elements[i].name,
+                 form.elements[i].value);
 	}
 	return data;
 }
