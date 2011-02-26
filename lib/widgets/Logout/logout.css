@@ -2,20 +2,19 @@
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	/*background-image: url(img/door_open.png);
-	background-repeat: no-repeat;
-	background-position: absolute;*/
-	background: url(img/door_open.png) no-repeat top right;
-	
-	
+	background: url(img/door_open.png) no-repeat 5px 2px;
 	height: 1em;
 	font-size: 12px;
-	padding: 3px;
-	padding-top: 2px;
-	padding-right: 20px;
-	margin-top: 2px;
-	margin-right: 2px;
+	padding: 6px;
+	padding-top: 3px;
+	padding-left: 27px;
+	-moz-transition: background-color 0.5s ease;
+	-webkit-transition: background-color 0.5s ease;
 	cursor: pointer;
 	color: white;
 	font-family:  arial, 'lucida grande', sans-serif;
+}
+
+#logout:hover {
+	background-color: #292929;
 }

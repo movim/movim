@@ -29,6 +29,7 @@ class Config extends Widget
 	
 	function build()
 	{
+			$languages = load_lang_array();
 			/* We load the user configuration */
 			$usr = new User();
 			$conf = GetConf::getUserConf($usr->getLogin());
@@ -41,8 +42,10 @@ class Config extends Widget
 			/* Note that the select fields aren't translated and the languages
 			 * are in their native form. This should not be changed.*/
 			   $form->startSelect('language',t('Language'),false,'block');
-			      $form->addOption('en_gb', 'English(UK)');
-			      $form->addOption('fr_fr', 'Français(France)');
+			   	  $form->addOption('en', 'English (default)');
+			   	  foreach($languages as $key => $value ) {
+			     	 $form->addOption($key, $value);
+			      }
 			   $form->closeSelect();
 			   $form->insertBR();
 
@@ -61,7 +64,7 @@ class Config extends Widget
 
 			   $form->insertBR();
 			   $form->newline = false;
-			   $form->genericButton($submit, t('Submit'));
+			   $form->genericButton($submit, t('Submit'), '.right');
 			   $form->newline = true;
 			   $form->resetButton(false, t('Reset'));
 			$form->closeForm();
