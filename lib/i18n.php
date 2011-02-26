@@ -359,7 +359,6 @@ function load_lang_array() {
 		$explode = explode('.', $files);
 		if(end($explode) == 'po') {
 			$po[$explode[0]] = $lang_list[$explode[0]];
-			//array_push($po, $explode[0] => $lang_list[$explode[0]]);
 		}
 	}
 	
