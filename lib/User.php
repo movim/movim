@@ -45,10 +45,14 @@ class User {
 	function authenticate($login,$pass)
 	{
 		try{
+            $data = false;
+			if( !($data = GetConf::getUserData($login)) ) {
+                GetConf::createUserConf($login, $pass);
+                $data = GetConf::getUserData($login);
+            }
+        
 			$this->xmppSession = XMPPConnect::getInstance($login);
 			$this->xmppSession->login($login, $pass);
-
-			$data = GetConf::getUserData($login);
 
 			// Careful guys, md5 is _not_ secure. SHA1 recommended here.
 			if(sha1($pass) == $data['pass']) {
