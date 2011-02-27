@@ -24,7 +24,8 @@ class Config extends Widget
     }
 	
 	function ajaxSubmit($data) {
-		movim_log($data);
+		$usr = new User();
+		$conf = GetConf::setUserConf($usr->getLogin(), $data);
 	}
 	
 	function build()
@@ -44,12 +45,14 @@ class Config extends Widget
 			   $form->startSelect('language',t('Language'),false,'block');
 			   	  $form->addOption('en', 'English (default)');
 			   	  foreach($languages as $key => $value ) {
-			     	 $form->addOption($key, $value);
+			   	  	 if($key == $conf['language'])
+			     	 	$form->addOption($key, $value, true);
+			     	 else
+			     	 	$form->addOption($key, $value);
 			      }
 			   $form->closeSelect();
 			   $form->insertBR();
-
-			   $form->textInput('name',t('Full Name'),false,'block required');
+			   $form->insertBR();
 			   
 			   $form->startFieldset(t('BOSH Connection Prefrences'));
 			   $form->insertHTML('<div class="warning">'.
