@@ -108,20 +108,20 @@ class Friends extends Widget
           <div id="avatar"></div>
 		  <input type="button"
                  onclick="<?php $this->callAjax('ajaxRefreshVcard');?>"
-                 value="Refresh vcard" />
+                 value="<?php echo t('Refresh vCard'); ?>" />
           <h3><?php echo t('Contacts');?></h3>
 
           <div id="tinylist">
 			<ul>
-				<li class="online">Online</li>
-				<li class="offline">Offline</li>
-				<li class="hidden">Hidden</li>
-				<li class="away">Away</li>
-				<li class="dnd">Do Not Disturb</li>
+				<li class="online"><?php echo t('Online');?></li>
+				<li class="offline"><?php echo t('Offline');?></li>
+				<li class="hidden"><?php echo t('Hidden');?></li>
+				<li class="away"><?php echo t('Away');?></li>
+				<li class="dnd"><?php echo t('Do Not Disturb');?></li>
 			</ul>
           </div>
   		  <input type="button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"
-         value="Refresh Roster" />
+         value="<?php echo t('Refresh Roster'); ?>" />
 		 <div id="testzone"></div>
         </div>
         <?php
