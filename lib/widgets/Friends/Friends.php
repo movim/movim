@@ -122,7 +122,6 @@ class Friends extends Widget
           </div>
   		  <input type="button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"
          value="<?php echo t('Refresh Roster'); ?>" />
-		 <div id="testzone"></div>
         </div>
         <?php
     }
