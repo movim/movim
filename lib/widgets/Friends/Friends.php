@@ -23,22 +23,11 @@ class Friends extends Widget
     {
     	$this->addcss('friends.css');
     	$this->addjs('friends.js');
-		$this->registerEvent('vcardreceived', 'onVcardReceived');
 		$this->registerEvent('rosterreceived', 'onRosterReceived');
 		$this->registerEvent('incomeonline', 'onIncomingOnline');
 		$this->registerEvent('incomeoffline', 'onIncomingOffline');
 		$this->registerEvent('incomednd', 'onIncomingDND');
 		$this->registerEvent('incomeaway', 'onIncomingAway');
-    }
-
-    function onVcardReceived($vcard)
-    {
-        $html = '<img alt="' . t("Your avatar") . '" style="width: 60px;" src="data:'.
-            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
-            
-            .'<div id="infos">'.$vcard['vCardNickname'].'<br />'.$vcard['vCardFN'].'</div>';
-            
-        MovimRPC::call('movim_fill', 'avatar', MovimRPC::cdata($html));
     }
 
     function onRosterReceived($roster)
@@ -85,13 +74,6 @@ class Friends extends Widget
 		
 	    MovimRPC::call('incomingAway', MovimRPC::cdata($jid));
 	}
-
-	function ajaxRefreshVcard()
-	{
-		$user = new User();
-		$xmpp = XMPPConnect::getInstance($user->getLogin());
-		$xmpp->getVCard(); // We send the vCard request
-	}  
 	
 	function ajaxRefreshRoster()
 	{
@@ -104,11 +86,6 @@ class Friends extends Widget
     {
         ?>
         <div id="friends">
-          <div id="drop" style="display: none;"></div>
-          <div id="avatar"></div>
-		  <input type="button"
-                 onclick="<?php $this->callAjax('ajaxRefreshVcard');?>"
-                 value="<?php echo t('Refresh vCard'); ?>" />
           <h3><?php echo t('Contacts');?></h3>
 
           <div id="tinylist">

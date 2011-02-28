@@ -25,9 +25,3 @@
 #tinylist ul li.dnd {
 	background-image: url(img/bullet_red.png);
 }
-
-#infos {
-	font-size: 0.8em;
-	float: right;
-	width: 110px;
-}
