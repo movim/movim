@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @file Friends.php
+ * @file Profile.php
  * This file is part of MOVIM.
  * 
- * @brief The Profilewidget
+ * @brief The Profile widget
  *
  * @author Timothée	Jaussoin <edhelas_at_gmail_dot_com>
  *
@@ -22,6 +22,7 @@ class Profile extends Widget
     function WidgetLoad()
     {
     	$this->addcss('profile.css');
+    	$this->addjs('profile.js');
 		$this->registerEvent('vcardreceived', 'onVcardReceived');
     }
 
@@ -41,16 +42,31 @@ class Profile extends Widget
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
 		$xmpp->getVCard(); // We send the vCard request
 	}  
+	
+	function ajaxPresence($presence)
+	{
+		$user = new User();
+		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp->setStatus(false, $presence);
+	}
 
     function build()
     {
         ?>
-        <div id="profile">
-          <div id="avatar"></div>
-		  <input type="button"
-                 onclick="<?php $this->callAjax('ajaxRefreshVcard');?>"
-                 value="<?php echo t('Refresh vCard'); ?>" />
-        </div>
+		<div id="profile">
+			<div id="avatar">
+				<div style="width: 60px; height: 45px; background-color: #9BBBC6;"></div>
+				<div id="infos"><br /></div>
+            </div>
+            <!--<select name="presence" id="presence" onchange="<?php $this->callAjax('ajaxPresence', "this.value"); ?>">
+				<option value="chat"><?php echo t('Online');?></option>
+				<option value="away"><?php echo t('Away');?></option>
+				<option value="dnd"><?php echo t('Do Not Disturb');?></option>
+			</select>-->
+			<input type="button"
+			onclick="<?php $this->callAjax('ajaxRefreshVcard');?>"
+			value="<?php echo t('Refresh vCard'); ?>" />
+		</div>
         <?php
     }
 }

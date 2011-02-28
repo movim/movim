@@ -293,7 +293,8 @@ class XMPPConnect
 	 */
 	public function setStatus($status, $show)
 	{
-		$this->jaxl->setStatus($status, $show, 40, true);
+		define('CURL_ASYNC', true);
+		$this->jaxl->setStatus($status, $show, 41, true);
 	}
 
 	private function checkJid($jid)
