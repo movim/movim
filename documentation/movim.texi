@@ -1,8 +1,8 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
 @documentencoding UTF-8
-@setfilename movim-core.info
-@settitle Movim-core
+@setfilename movim-reference.info
+@settitle movim-reference
 @setchapternewpage on
 @c %**end of header
 
@@ -10,7 +10,7 @@
 @set UPDATED 19 February 2011
 
 @copying
-This manual documents Movim-Core (version @value{VERSION}, @value{UPDATED}).
+This manual documents Movim (version @value{VERSION}, @value{UPDATED}).
 
 Copyright @copyright{} 2009-2011 MOVIM project.
 @sp 1
@@ -25,7 +25,7 @@ Free Documentation License''.
 @end copying
 
 @titlepage
-@title MOVIM-CORE
+@title MOVIM Reference Manual
 @subtitle version @value{VERSION}, @value{UPDATED}
 @vskip 4cm
 @author Guillaume Pasquet, Timothée Jaussoin
@@ -40,30 +40,30 @@ Free Documentation License''.
 
 @ifnottex
 @node Top
-@top MOVIM-CORE
+@top MOVIM
 
-This is Movim-core @value{VERSION}'s manual.
+This is Movim @value{VERSION}'s manual.
 @end ifnottex
 
 @menu
 * foreword:: What this document is all about
-* introduction:: What is Movim-core and how to use this document
-* structure:: A description of Movim-core's internals
+* introduction:: What is Movim and how to use this document
+* structure:: A description of Movim's internals
 * API:: Documentation of the widget's API
 @end menu
 
 @node foreword
 @chapter Foreword
-Movim-core is an XMPP communication platform. It is extensible and uses a
-widget-based system for the user interface. Please note that this is not
-designed to be used directly by an end-user.
+Movim is an XMPP-based communication platform. It uses a widget-based UI
+system. A widget is a combination of server-side and client-side scripts that
+interact though a custom xmlrpc protocol.
 
-This document describes the principles on which Movim-core is built and the
-necessary knowledge to implement new widgets.
+This document describes the principles on which Movim is built, and the API to
+build new widgets.
 
 @node introduction
 @chapter Introduction
-Movim-core is designed to ease the implementation of XMPP web-based clients,
+Movim's core is designed to ease the implementation of XMPP web-based clients,
 using massively asynchronous javascript and abstracting XMPP calls into an
 events-based API.
 
@@ -73,25 +73,29 @@ lets you write as little javascript as possible. Moreover, widgets can embed
 their own resources --- pictures, css, javascript.
 
 @section Requirements
-Movim-core is a web framework written in PHP. To run it, you need the following
-software:
+Movim runs on any web server with PHP and Curl. The detailed requirements are:
 
 @itemize @bullet
 @item
 PHP5.3 or greater with the Curl library.
 @item
-A web server: apache, lighttpd etc. (Note that weird web servers like IIS
-haven't been tested.)
+A web server: apache, lighttpd (Note that other web servers should work, with
+the possible exception of IIS, which hasn't been tested.)
 @end itemize
 
-@section Getting Movim-core
-Movim-core may be downloaded from @url{http://www.movim.eu}.
+An XMPP web server with Bosh is also necessary, but you don't need to install
+one, you can use and existing server. We provide such a server at
+@url{movim.eu}.
 
-Note that if you like risks, you may also check out the latest development
-version at @url{http://gitorious.org/movim}.
+@section Getting Movim
+Movim may be downloaded from @url{http://www.movim.eu}.
+
+You can also get the latest development version on our git branch at
+@url{http://gitorious.org/movim}. Be advised that this version is not stable and
+in fact it isn't even guaranteed to work.
 
 @section Installing Movim
-After downloading the Movim-core archive, simply extract it somewhere in your
+After downloading the Movim archive, simply extract it somewhere in your
 web server's root directory. You will need to create the directories @file{log}
 and @file{user} in the root folder, and give read/write rights to the webserver
 on these folders.
@@ -99,48 +103,60 @@ on these folders.
 Then you should be able to log in on the website's interface with your XMPP
 credentials.
 
+Please note that not every XMPP server will work with Movim. Your server needs
+to have Bosh enabled for this. You can register an account on the server we
+provide @url{movim.eu} to try out Movim.
+
 @section Helping out
-Movim-core is Free software under the AGPL license. You can check out the latest
+Movim is Free software under the AGPL license. You can check out the latest
 code at @url{http://gitorious.org/movim}. Feel free to send in merge requests if
 you want to lend a hand.
 
-You can also help by reporting new bugs or proposing new ideas.
+All bug reports and feedback are welcome at
+@url{http://codingteam.net/project/movim}. You can  also help us translating
+Movim so more people may benefit from our Free social network (on the same
+website).
 
 @node structure
 @chapter Internal structure
-Understanding Movim-core's internals isn't necessary to use it. However, it may
+Understanding Movim's internals isn't necessary to use it. However, it may
 help finding out problems and developing more efficiently.
 
-Movim-core is consists of a widgets system and an XMPP abstration that
+Movim is consists of a widgets system and an XMPP abstration that
 communicate together through an asynchronous event handler. This is all
 triggered by a controller, which is loaded depending on the page you visit.
 
 @section XMPP connection
 The XMPP connection is managed by the JAXL library. It abstracts the raw sending
-and reception of XML documents. Each message is handled and seen as events from
-the widgets point of view.
-
-Each loaded widget declares its event handlers for different types of
-events. These are triggered when the pertaining event comes through.
-
-@section Controller
-The controller's job is to bootstrap the other systems. It doesn't do much all
-by itself.
+and receiving of XML messages. Each message is handled and pops up as an
+event.
 
 @section Widgets
-Widgets are small pieces of software that plug into Movim-core to provide extra
+Widgets are small pieces of software that plug into Movim to provide extra
 ability to the system. These are mostly graphical, and generate ajax code
 automatically.
 
-Movim-core comes with several widgets. These sit in the @file{lib/widgets}
+Movim comes with several widgets. These sit in the @file{lib/widgets}
 directory. User-defined widgets should be in the @file{widgets} directory. Note
 that user-defined widgets always shadow the system widgets.
 
 Widgets can declare ajax functions and XMPP event handlers in order to interact
-with their GUI part and the XMPP subsystem. @xref{widget-api} for more
+with their GUI part and the XMPP subsystem. @xref{Widget API} for more
 information.
 
-@node widget-api
+Note that almost everything in Movim is a widget. Even things like the menu and
+the configuration panel. One notable exception is the login page, which is
+mostly static.
+
+@section Events manager
+The XMPP connection is not aware of the widgets, nor is it able to access
+them. However, the event manager knows what widgets are loaded on the client's
+interface at any time. When the XMPP connection triggers an event in the event
+manager, it loops through all the loaded widgets and executes all handlers that
+are attached to this event.
+
+
+@node Widget API
 @chapter Widget API
 Widgets inherit from the @emph{Widget} base class. The base class automagically
 generates ajax calls and javascript functions for you.
@@ -149,7 +165,7 @@ The basic template of a Movim widget is as follows:
 
 @cartouche
 @verbatim
-class Widget extends Widget
+class MyWidget extends Widget
 {
     function WidgetLoad()
     {
@@ -174,9 +190,9 @@ class Widget extends Widget
 @end verbatim
 @end cartouche
 
-Note that the constructor is not reimplemented. Instead the parent class
+Note that the constructor must not be shadowed. Instead the parent class
 provides a @code{WidgetLoad()} function that is called right at the end of the
-standard constructor.
+parent constructor.
 
 Event handlers must be defined into @code{WidgetLoad()}.
 
@@ -190,7 +206,7 @@ widgets. In order to process an event, you may register one or more handlers in
 your widget.
 
 @subsection Handling events
-A widget handler is a public method that only takes one parameter:
+An event handler is a public method that only takes one parameter:
 @code{$data}, which usually is an array that contains the data returned by the
 XMPP server.
 
@@ -206,7 +222,7 @@ Widget::registerEvent($eventType, $handler)
 is the name of the event as a string.
 
 @subsection Event types
-The XMPP subsystem raises the following events:
+The XMPP subsystem currently raises the following events:
 
 @table @code
 @item postdisconnect
@@ -236,9 +252,15 @@ The XMPP subsystem raises the following events:
       A contact is now online.
 @end table
 
+One additional event type is availble: @code{allEvents}. This type of event is a
+catchall that is always executed before the other event handlers in the widget.
+
+The event handling process cannot be interrupted. All loaded widgets will be
+requested to run their eventhandlers, unless of course a fatal error occurs.
+
 @node MovimRPC
 @section MovimRPC
-MOVIM's javascript and PHP parts communicate through a custom xmlrpc
+Movim's javascript and PHP parts communicate through a custom xmlrpc
 protocol. It is implemented in the class @code{MovimRPC} on the PHP side.
 
 MovimRPC exposes two static functions to the widget:
@@ -252,12 +274,12 @@ MovimRPC exposes two static functions to the widget:
 @end table
 
 You can define your own javascript functions on a per-widget basis, or use one
-of the standard functions (@xref{js-callbacks}).
+of the standard functions (@xref{Standard javascript callbacks}).
 
-@node js-callbacks
+@node Standard javascript callbacks
 @subsection Standard javascript callbacks
 You may define your own javascript callback functions and use them as
-appropriate. Alternatively, Movim-core comes with a standard set of javascript
+appropriate. Alternatively, Movim comes with a standard set of javascript
 callbacks that allow simple operations on HTML elements (picked up by ID).
 
 @table @code
@@ -280,16 +302,26 @@ This ajax call can be explicitely called upon with the method:
 
 @cartouche
 @verbatim
-Widget::callAjax($funcname, $callback, $target, ...)
+Widget::callAjax($funcname, ...)
 @end verbatim
 @end cartouche
 
-@code{$funcname} is the name of the ajax function. @code{$callback} is the name
-of the javascript callback to handle the return, @code{$target} is the ID of the
-element in which to apply the return.
+@code{$funcname} is the name of the ajax function. The rest of paramters are
+passed to the ajax-called PHP function.
 
-Note that you can pass an arbitrary number of arguments, the extra arguments are
-mapped to those of the ajax function. Here is an example:
+It is important to understand how the ajax calls work in Movim. Movim uses a
+custom-designed xmlrpc protocol to callback PHP functions directly. Therefore,
+making an ajax call is very similar to making a straight callback in PHP.
+
+So for example if you have defined an ajax function
+
+@code{ajaxMyfunction($param)}
+
+you can call it with
+
+@code{$this->callAjax('ajaxMyfunction', "'myparam'")}.
+
+Here is a complete example of a widget that implements an ajax call:
 
 @cartouche
 @verbatim
@@ -308,18 +340,27 @@ class MyWidget extends Widget
        <input type="button"
               onclick="<? $this->callAjax(
                            'ajaxTest',
-                           'movim_fill',
-                           "'test'",
-                           '1',
-                           '2'
-                           );?>"/>
+                           '"param1"',
+                           '2');?>"/>
        <?
     }
 }
 @end verbatim
 @end cartouche
 
-Note that strings that needs to be passed to javascript must be double-quoted.
+Note that string parameters passed to the ajax method must be double-quoted. The
+reason for this is that javascript will remove the first set of quotes. Thus
+single-quoted parameters will be javascript objects.
+
+The drawback of @code{Widget::callAjax()} is that it prints the ajax call
+straight away. It is sometimes desirable to have it return the generated
+call. Another variant of the function exists that does this:
+
+@cartouche
+@verbatim
+Widget::genCallAjax($funcname, $callback, $target, ...)
+@end verbatim
+@end cartouche
 
 @node widget-resource
 @section Widget resource
@@ -337,6 +378,18 @@ Widget::addcss($cssfile)
 @end cartouche
 
 The file paths given to these functions are relative to the widget's directory.
+
+For resources, you can use the function:
+
+@cartouche
+@verbatim
+Widget::respath($file, $fspath = false)
+@end verbatim
+@end cartouche
+
+This returns the URL to the specified file. The optional parameter
+@code{$fspath} will make the function return the file-system path rather than
+the URL to the file.
 
 @node license
 @comment  node-name,  next,  previous,  up
