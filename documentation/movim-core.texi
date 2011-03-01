@@ -12,7 +12,7 @@
 @copying
 This manual documents Movim-Core (version @value{VERSION}, @value{UPDATED}).
 
-Copyright @copyright{} 2009-2011 Movim-Core project.
+Copyright @copyright{} 2009-2011 MOVIM project.
 @sp 1
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -92,7 +92,12 @@ version at @url{http://gitorious.org/movim}.
 
 @section Installing Movim
 After downloading the Movim-core archive, simply extract it somewhere in your
-web server's root directory, and off you go.
+web server's root directory. You will need to create the directories @file{log}
+and @file{user} in the root folder, and give read/write rights to the webserver
+on these folders.
+
+Then you should be able to log in on the website's interface with your XMPP
+credentials.
 
 @section Helping out
 Movim-core is Free software under the AGPL license. You can check out the latest
@@ -153,10 +158,9 @@ class Widget extends Widget
 
     function onIncomingMessage($data)
     {
-        $this->sendto('movim_prepend', array(
-                                       'chatMessages',
-                                       $data['message'],
-                                       ));
+        MovimRPC::call('movim_prepend',
+                       'chatMessages',
+                       MovimRPC::cdata($data['message']));
     }
 
     function build()
@@ -232,28 +236,23 @@ The XMPP subsystem raises the following events:
       A contact is now online.
 @end table
 
-@node sendto
-@subsection Sending messages to JS
-Widgets are split in two parts. One is the GUI-javascript part, the other is the
-PHP script. Both communicate asynchronously. The GUI part can send data to the
-PHP part through AJAX calls (@xref{ajaxcalls}), and event handler can also send
-messages to their GUI counterpart through Movim-core's long polling.
+@node MovimRPC
+@section MovimRPC
+MOVIM's javascript and PHP parts communicate through a custom xmlrpc
+protocol. It is implemented in the class @code{MovimRPC} on the PHP side.
 
-This is achieved by calling the method:
+MovimRPC exposes two static functions to the widget:
 
-@cartouche
-@verbatim
-Widget::sendto($callback, array $parameters);
-@end verbatim
-@end cartouche
+@table @code
+@item MovimRPC::call(funcname, ...)
+      Calls the javascript function @emph{funcname} with the rest of arguments.
+@item MovimRPC::cdata(text)
+      Packs text into a cdata container. This is useful when passing through
+      strings containing messy characters (like HTML).
+@end table
 
-The principle is very simple, @code{sendto()} sends an XMLRPC call to the GUI
-part that runs the specified @code{$callback} function with the provided
-@code{$parameters} that are ordered as appropriated.
-
-Additionally, binary data should be base64 encoded and wrapped in a CDATA
-container. To simplify the matter, the method @code{Widget::cdata()} is
-provided.
+You can define your own javascript functions on a per-widget basis, or use one
+of the standard functions (@xref{js-callbacks}).
 
 @node js-callbacks
 @subsection Standard javascript callbacks
@@ -273,7 +272,7 @@ callbacks that allow simple operations on HTML elements (picked up by ID).
 @end table
 
 @node ajaxcalls
-@subsection Ajax calls
+@section Ajax calls
 Any method defined in your widget that starts with @code{ajax} will have a
 javascript ajax call automatically generated.
 
@@ -298,7 +297,8 @@ class MyWidget extends Widget
 {
     function ajaxTest($param1, $param2)
     {
-        ...
+       MovimRPC::call('movim_append', 'test',
+                      MovimRPC::cdata('<p>Test</p>'));
     }
 
     function build()
@@ -322,7 +322,7 @@ class MyWidget extends Widget
 Note that strings that needs to be passed to javascript must be double-quoted.
 
 @node widget-resource
-@subsection Widget resource
+@section Widget resource
 Widgets can come along with their own resources, in particular their CSS and
 javascript.
 

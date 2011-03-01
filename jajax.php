@@ -25,6 +25,6 @@ require("init.php");
 
 $polling = true;
 
-$ajax = new Ajaxer();
-$ajax->handle();
+$rpc = new MovimRPC();
+$rpc->handle();
 ?>

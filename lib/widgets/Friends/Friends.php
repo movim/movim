@@ -33,9 +33,12 @@ class Friends extends Widget
 
     function onVcardReceived($vcard)
     {
-        $img = '<img alt="' . t("Your avatar") . '" src="data:'.
-            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
-        MovimRPC::call('movim_fill', 'avatar', MovimRPC::cdata($img));
+        $html = '<img alt="' . t("Your avatar") . '" style="width: 60px;" src="data:'.
+            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
+            
+            .'<div id="infos">'.$vcard['vCardNickname'].'<br />'.$vcard['vCardFN'].'</div>';
+            
+        MovimRPC::call('movim_fill', 'avatar', MovimRPC::cdata($html));
     }
 
     function onRosterReceived($roster)
@@ -45,9 +48,9 @@ class Friends extends Widget
 		foreach($roster["queryItemJid"] as $key => $value ) {
 			if($value != "undefined") {
 				if($roster["queryItemName"][$i] != NULL)
-					$html .= "<li id='".$value."'>".$roster["queryItemName"][$i]." : ".$value."</li>";
+					$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")'>".$roster["queryItemName"][$i]." : ".$value."</li>";
 				else
-					$html .= "<li id='".$value."'>".$value."</li>";
+					$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")'>".$value."</li>";
 			}
 			$i++;
 		}
@@ -96,20 +99,11 @@ class Friends extends Widget
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
 		$xmpp->getRosterList();
 	}
-	
-	function ajaxConfig()
-	{
-		MovimRPC::call('movim_fill', 'friends' , MovimRPC::cdata('configuration'));
-		MovimRPC::commit();
-	}
 
     function build()
     {
         ?>
         <div id="friends">
-          <div class="config_button" onclick="<?php $this->callAjax('ajaxConfig');?>">
-          
-          </div>
           <div id="drop" style="display: none;"></div>
           <div id="avatar"></div>
 		  <input type="button"

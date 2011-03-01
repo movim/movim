@@ -45,7 +45,10 @@ class MovimRPC
             call_user_func_array('sprintf', $args).
             ']]>';
     }
-    
+
+    /**
+	 * Sends outgoing requests.
+	 */
     public static function commit()
     {
 
@@ -73,6 +76,56 @@ class MovimRPC
 
         $xml = ob_get_flush();
         file_put_contents('debug', $xml . "\n" . var_export(self::$funcalls, true));
+    }
+
+    /**
+     * Handles incoming requests.
+     */
+    public function handle()
+    {
+        //session_commit();
+		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
+			$user = new User();
+			$xmppSession = XMPPConnect::getInstance($user->getLogin());
+			session_commit();
+			$xmppSession->pingServer();
+			session_commit();
+		} else {
+            $xml = file_get_contents('php://input');
+			$request = simplexml_load_string($xml);
+
+			// Loading the widget.
+			$widget_name = (string)$request['widget'];
+
+            // Preparing the parameters and calling the function.
+            $params = array();
+            foreach($request->children() as $child) {
+                if($child->getName() == 'param') {
+                    if($child->count() > 0) { // Probably contains an array.
+                        $arr = array();
+                        foreach($child->children() as $data) {
+                            if($data->getName() == 'array') {
+                                foreach($data->children() as $elt) {
+                                    if($elt->getName() == 'arrayelt') {
+                                        if(isset($elt['name'])) {
+                                            $arr[(string)$elt['name']] = (string)$elt;
+                                        } else {
+                                            $arr[] = (string)$elt;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        $params[] = $arr;
+                    } else {
+                        $params[] = (string)$child;
+                    }
+                }
+            }
+
+            $widgets = WidgetWrapper::getInstance(false);
+            $widgets->run_widget($widget_name, (string)$request['name'], $params);
+		}
     }
 }
 

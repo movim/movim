@@ -8,5 +8,5 @@
 	<boshSuffix>http-bind</boshSuffix>	
 	<boshPort>80</boshPort>
 	
-	<language>en_en</language>
+	<language>en</language>
 </data>

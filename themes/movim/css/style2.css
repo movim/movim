@@ -109,7 +109,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover {
 	border: 1px solid gray;
 }
 
-input[type=submit], input[type=reset] {
+input[type=submit], input[type=reset], input.right {
 	float: right;
 }
 

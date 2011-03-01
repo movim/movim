@@ -180,11 +180,13 @@ function MovimRPC_generate_xml()
         else if(this.params[i].constructor == Hash) {
             var hash = this.params[i];
             hash.reset();
+            params += "<array>\n";
             while(hash.iterate()) {
                 params += '<arrayelt name="' + hash.key() + '">'
                     + hash.val()
                     + "</arrayelt>\n";
             }
+            params += "</array>\n";
         }
         else {
             params += this.params[i];
@@ -219,7 +221,7 @@ function MovimRPC_commit()
    	movim_xmlhttp.onreadystatechange = function()
     {
         if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
-            log("Received data " + movim_xmlhttp.responseText);            
+//            log("Received data " + movim_xmlhttp.responseText);            
 		    MovimRPC_handle_rpc(movim_xmlhttp.responseXML);
         }
     };
