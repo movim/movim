@@ -1,0 +1,144 @@
+# Russian translations for Movim  package.
+# This file is distributed under the same license as the Movim  package.
+# This file was translated from CodingTeam at <http://codingteam.net/>.
+msgid ""
+msgstr ""
+"Project-Id-Version: Movim \n"
+"PO-Revision-Date: 2011-02-27 12:08:59\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../init.php:16
+msgid "MOVIM - Test Client"
+msgstr "MOVIM - тестовый клиент"
+
+#: ../lib/Dispatcher.php:38
+msgid "%s - Welcome to Movim"
+msgstr "%s - Добро пожаловать в MOVIM"
+
+#: ../lib/Dispatcher.php:3
+#: ../lib/Dispatcher.php:5
+#: ../lib/Dispatcher.php:72
+msgid "Home"
+msgstr "Домой"
+
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:58
+msgid "Configuration"
+msgstr "Настройки"
+
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:59
+msgid "Logout"
+msgstr "Выход"
+
+#: ../lib/Dispatcher.php:56
+msgid "%s - Configuration"
+msgstr "%s - настройки"
+
+#: ../lib/Dispatcher.php:71
+msgid "%s - Account Creation"
+msgstr "%s - создание учётной записи"
+
+#: ../lib/Dispatcher.php:88
+msgid "%s - Login to Movim"
+msgstr "%s - зайти в MOVIM"
+
+#: ../lib/Dispatcher.php:91
+msgid "Account Creation"
+msgstr "Создание учётной записи"
+
+#: ../lib/Dispatcher.php:95
+msgid "My address"
+msgstr "Мой адрес"
+
+#: ../lib/Dispatcher.php:9
+#: ../lib/widgets/Account.php:35
+msgid "Password"
+msgstr "Пароль"
+
+#: ../lib/Dispatcher.php:97
+msgid "Come in!"
+msgstr "Войти!"
+
+#: ../lib/GetConf.php:2
+#: ../lib/GetConf.php:41
+msgid "Error: Cannot load element value'%s'"
+msgstr "Ошибка: Невозможно загрузить значение элемента'%s'"
+
+#: ../lib/GetConf.php:59
+msgid "Error: Cannot load file '%s'"
+msgstr "Ошибка: Невозможно загрузить файл '%s'"
+
+#: ../lib/PageBuilder.php:283
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr "Ошибка: Запрашиваемое дополнение '%s' не существует."
+
+#: ../lib/User.php:63
+msgid "Wrong password"
+msgstr "Неверный пароль"
+
+#: ../lib/Widget.php:69
+msgid "This is a sample widget."
+msgstr "Это пример дополнения."
+
+#: ../lib/XMPPConnect.php:147
+msgid "Error: jid `%s' is incorrect"
+msgstr "Ошибка: jid '%s' неверен."
+
+#: ../lib/widgets/Account.php:3
+#: ../lib/widgets/Account.php:34
+msgid "Jabber Account"
+msgstr "Jabber аккаунт"
+
+#: ../lib/widgets/Account.php:4
+#: ../lib/widgets/Config.php:84
+msgid "Submit"
+msgstr "Отправить"
+
+#: ../lib/widgets/Account.php:4
+#: ../lib/widgets/Config.php:86
+msgid "Reset"
+msgstr "Сброс"
+
+#: ../lib/widgets/Chat.php:40
+msgid "Send"
+msgstr "Откравка"
+
+#: ../lib/widgets/Config.php:39
+msgid "Language"
+msgstr "Язык"
+
+#: ../lib/widgets/Config.php:45
+msgid "Full Name"
+msgstr "Полное имя"
+
+#: ../lib/widgets/Config.php:47
+msgid "BOSH Connection Prefrences"
+msgstr "Настройки соединения BOSH"
+
+#: ../lib/widgets/Config.php:49
+msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
+msgstr "Изменение этих данных могут быть опасны и скомпрометировать соединение с XMPP сервером"
+
+#: ../lib/widgets/Config.php:51
+msgid "Bosh Host"
+msgstr "Bosh сервер"
+
+#: ../lib/widgets/Config.php:53
+msgid "Bosh Suffix"
+msgstr "Bosh Suffix"
+
+#: ../lib/widgets/Config.php:55
+msgid "Bosh Port"
+msgstr "Bosh порт"
+
+#: ../lib/widgets/Config.php:90
+msgid "error: "
+msgstr "ошибка:"
+
+#: ../lib/widgets/Friends.php:65
+msgid "Contacts"
+msgstr "Контакты"
+

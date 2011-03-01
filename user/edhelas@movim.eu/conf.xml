@@ -1,12 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <data>
 	<host>movim.eu</host>
 	<domain>movim.eu</domain>
 	<port>5222</port>
-	
 	<boshHost>natsu.upyum.com</boshHost>
-	<boshSuffix>http-bind</boshSuffix>	
+	<boshSuffix>http-bind</boshSuffix>
 	<boshPort>5280</boshPort>
-	
 	<language>fr</language>
 </data>

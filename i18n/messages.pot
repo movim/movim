@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-24 15:46+0100\n"
+"POT-Creation-Date: 2011-02-27 15:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,136 +17,193 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../init.php:16
+#: ../init.php:15
 msgid "MOVIM - Test Client"
 msgstr ""
 
-#: ../lib/Dispatcher.php:38
+#: ../lib/Dispatcher.php:40
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr ""
 
-#: ../lib/Dispatcher.php:39 ../lib/Dispatcher.php:57 ../lib/Dispatcher.php:72
+#: ../lib/Dispatcher.php:41 ../lib/Dispatcher.php:59 ../lib/Dispatcher.php:74
 msgid "Home"
 msgstr ""
 
-#: ../lib/Dispatcher.php:40 ../lib/Dispatcher.php:58
+#: ../lib/Dispatcher.php:42 ../lib/Dispatcher.php:60
 msgid "Configuration"
 msgstr ""
 
-#: ../lib/Dispatcher.php:41 ../lib/Dispatcher.php:59
-msgid "Logout"
-msgstr ""
-
-#: ../lib/Dispatcher.php:56
+#: ../lib/Dispatcher.php:58
 #, php-format
 msgid "%s - Configuration"
 msgstr ""
 
-#: ../lib/Dispatcher.php:71
+#: ../lib/Dispatcher.php:73
 #, php-format
 msgid "%s - Account Creation"
 msgstr ""
 
-#: ../lib/Dispatcher.php:88
+#: ../lib/Dispatcher.php:90
 #, php-format
 msgid "%s - Login to Movim"
 msgstr ""
 
-#: ../lib/Dispatcher.php:91
+#: ../lib/Dispatcher.php:93
 msgid "Account Creation"
 msgstr ""
 
-#: ../lib/Dispatcher.php:95
-msgid "My address"
-msgstr ""
-
-#: ../lib/Dispatcher.php:96 ../lib/widgets/Account.php:35
-msgid "Password"
-msgstr ""
-
-#: ../lib/Dispatcher.php:97
-msgid "Come in!"
-msgstr ""
-
-#: ../lib/GetConf.php:21 ../lib/GetConf.php:41
-#, php-format
-msgid "Error: Cannot load element value'%s'"
-msgstr ""
-
-#: ../lib/GetConf.php:59
-#, php-format
-msgid "Error: Cannot load file '%s'"
-msgstr ""
-
-#: ../lib/PageBuilder.php:283
-#, php-format
-msgid "Error: Requested widget '%s' doesn't exist."
-msgstr ""
-
-#: ../lib/User.php:63
-msgid "Wrong password"
-msgstr ""
-
-#: ../lib/Widget.php:69
-msgid "This is a sample widget."
-msgstr ""
-
-#: ../lib/XMPPConnect.php:147
-#, php-format
-msgid "Error: jid `%s' is incorrect"
-msgstr ""
-
-#: ../lib/widgets/Account.php:32 ../lib/widgets/Account.php:34
-msgid "Jabber Account"
-msgstr ""
-
-#: ../lib/widgets/Account.php:40 ../lib/widgets/Config.php:84
-msgid "Submit"
-msgstr ""
-
-#: ../lib/widgets/Account.php:42 ../lib/widgets/Config.php:86
-msgid "Reset"
-msgstr ""
-
-#: ../lib/widgets/Chat.php:40
-msgid "Send"
-msgstr ""
-
-#: ../lib/widgets/Config.php:39
-msgid "Language"
-msgstr ""
-
-#: ../lib/widgets/Config.php:45
-msgid "Full Name"
-msgstr ""
-
-#: ../lib/widgets/Config.php:47
-msgid "BOSH Connection Prefrences"
-msgstr ""
-
-#: ../lib/widgets/Config.php:49
+#: ../lib/Dispatcher.php:97 ../lib/widgets/Config/Config.php:59
 msgid ""
 "Changing these data can be dangerous and may compromise the connection to "
 "the XMPP server"
 msgstr ""
 
-#: ../lib/widgets/Config.php:51
+#: ../lib/Dispatcher.php:103
+msgid "My address"
+msgstr ""
+
+#: ../lib/Dispatcher.php:104 ../lib/widgets/Account/Account.php:35
+msgid "Password"
+msgstr ""
+
+#: ../lib/Dispatcher.php:105
+msgid "Come in!"
+msgstr ""
+
+#: ../lib/GetConf.php:21 ../lib/GetConf.php:45
+#, php-format
+msgid "Error: Cannot load element value'%s'"
+msgstr ""
+
+#: ../lib/GetConf.php:83 ../lib/GetConf.php:127 ../lib/GetConf.php:129
+#, php-format
+msgid "Couldn't create file %s"
+msgstr ""
+
+#: ../lib/GetConf.php:131
+msgid "Couldn't create configuration files."
+msgstr ""
+
+#: ../lib/GetConf.php:139
+#, php-format
+msgid "Error: Cannot load file '%s'"
+msgstr ""
+
+#: ../lib/User.php:65
+msgid "Wrong password"
+msgstr ""
+
+#: ../lib/WidgetWrapper.php:98
+#, php-format
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr ""
+
+#: ../lib/XMPPConnect.php:98
+msgid "Error: User not logged in."
+msgstr ""
+
+#: ../lib/XMPPConnect.php:102
+msgid "Error: JID not provided."
+msgstr ""
+
+#: ../lib/XMPPConnect.php:117
+#, php-format
+msgid "Error: jid '%s' is incorrect"
+msgstr ""
+
+#: ../lib/widgets/Account/Account.php:32 ../lib/widgets/Account/Account.php:34
+msgid "Jabber Account"
+msgstr ""
+
+#: ../lib/widgets/Account/Account.php:40 ../lib/widgets/Config/Config.php:70
+msgid "Submit"
+msgstr ""
+
+#: ../lib/widgets/Account/Account.php:42 ../lib/widgets/Config/Config.php:72
+msgid "Reset"
+msgstr ""
+
+#: ../lib/widgets/Chat/Chat.php:84
+msgid "Chat"
+msgstr ""
+
+#: ../lib/widgets/Chat/Chat.php:88
+msgid "Message"
+msgstr ""
+
+#: ../lib/widgets/Chat/Chat.php:89
+msgid "To"
+msgstr ""
+
+#: ../lib/widgets/Chat/Chat.php:90
+msgid "Send"
+msgstr ""
+
+#: ../lib/widgets/Config/Config.php:45
+msgid "Language"
+msgstr ""
+
+#: ../lib/widgets/Config/Config.php:57
+msgid "BOSH Connection Prefrences"
+msgstr ""
+
+#: ../lib/widgets/Config/Config.php:61
 msgid "Bosh Host"
 msgstr ""
 
-#: ../lib/widgets/Config.php:53
+#: ../lib/widgets/Config/Config.php:63
 msgid "Bosh Suffix"
 msgstr ""
 
-#: ../lib/widgets/Config.php:55
+#: ../lib/widgets/Config/Config.php:65
 msgid "Bosh Port"
 msgstr ""
 
-#: ../lib/widgets/Config.php:90
+#: ../lib/widgets/Config/Config.php:76
 msgid "error: "
 msgstr ""
 
-#: ../lib/widgets/Friends.php:65
+#: ../lib/widgets/Friends/Friends.php:36
+msgid "Your avatar"
+msgstr ""
+
+#: ../lib/widgets/Friends/Friends.php:111
+msgid "Refresh vCard"
+msgstr ""
+
+#: ../lib/widgets/Friends/Friends.php:112
 msgid "Contacts"
+msgstr ""
+
+#: ../lib/widgets/Friends/Friends.php:116
+msgid "Online"
+msgstr ""
+
+#: ../lib/widgets/Friends/Friends.php:117
+msgid "Offline"
+msgstr ""
+
+#: ../lib/widgets/Friends/Friends.php:118
+msgid "Hidden"
+msgstr ""
+
+#: ../lib/widgets/Friends/Friends.php:119
+msgid "Away"
+msgstr ""
+
+#: ../lib/widgets/Friends/Friends.php:120
+msgid "Do Not Disturb"
+msgstr ""
+
+#: ../lib/widgets/Friends/Friends.php:124
+msgid "Refresh Roster"
+msgstr ""
+
+#: ../lib/widgets/Log/Log.php:34
+msgid "Debug console"
+msgstr ""
+
+#: ../lib/widgets/Logout/Logout.php:46
+msgid "Logout"
 msgstr ""

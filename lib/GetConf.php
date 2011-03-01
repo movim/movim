@@ -49,6 +49,40 @@ class GetConf
 		}
 	}
 	
+	/* Set de new user configuration */
+	
+	static function setUserConf($jid, $new) {
+
+		// We get the old configuration
+		$old = self::getUserConf($jid);
+		
+		$conf = array();
+		
+		// We update only the new elements in the configuration
+		foreach($old as $key => $value) {
+			if($new[$key] != $old[$key] && isset($new[$key]))
+				$conf[$key] = $new[$key];
+			else
+				$conf[$key] = $old[$key];
+		}
+
+		// And finally we wrote the new configuration
+		$dir_conf = BASE_PATH . "/user/$jid";
+
+		$conf_xml = 
+                '<?xml version="1.0" encoding="UTF-8"?>'."\n".
+                '<data>'."\n";
+                
+        foreach($conf as $key => $value) {
+        	$conf_xml .= "\t" . '<' . $key . '>' . $value . '</' . $key . '>' . "\n";
+        }
+        
+        $conf_xml .= '</data>';
+
+        if(!file_put_contents($dir_conf . "/conf.xml", $conf_xml))
+            throw new MovimException(sprintf(t("Couldn't create file %s"), 'conf.xml'));
+	}
+	
 	/* Return an array of the user configuration */
 	
 	static function getUserData($jid) {
@@ -79,7 +113,7 @@ class GetConf
                 '  <boshHost>natsu.upyum.com</boshHost>'."\n".
                 '  <boshSuffix>http-bind</boshSuffix>'."\n".
                 '  <boshPort>80</boshPort>'."\n".
-                '  <language>en_en</language>'."\n".
+                '  <language>en</language>'."\n".
                 '</data>';
 
             $data_xml =
