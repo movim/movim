@@ -1,0 +1,214 @@
+# Esperanto translations for Movim  package.
+# This file is distributed under the same license as the Movim  package.
+# This file was translated from CodingTeam at <http://codingteam.net/>.
+msgid ""
+msgstr ""
+"Project-Id-Version: Movim \n"
+"PO-Revision-Date: 2011-03-02 23:33:19\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../init.php:15
+msgid "MOVIM - Test Client"
+msgstr "MOVIM - Testkliento"
+
+#: ../lib/Dispatcher.php:40
+msgid "%s - Welcome to Movim"
+msgstr "%s - Bonvenon al Movim"
+
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:5
+#: ../lib/Dispatcher.php:74
+msgid "Home"
+msgstr "Ĉefpaĝo"
+
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:60
+msgid "Configuration"
+msgstr "Agordaĵoj"
+
+#: ../lib/widgets/Logout/Logout.php:46
+msgid "Logout"
+msgstr "Elsaluti"
+
+#: ../lib/Dispatcher.php:58
+msgid "%s - Configuration"
+msgstr "%s - Agordaĵoj"
+
+#: ../lib/Dispatcher.php:73
+msgid "%s - Account Creation"
+msgstr "%s - Kreado de konto"
+
+#: ../lib/Dispatcher.php:90
+msgid "%s - Login to Movim"
+msgstr "%s - Ensaluti al Movim"
+
+#: ../lib/Dispatcher.php:93
+msgid "Account Creation"
+msgstr "Kreado de konto"
+
+#: ../lib/Dispatcher.php:103
+msgid "My address"
+msgstr "Mia adreso"
+
+#: ../lib/Dispatcher.php:10
+#: ../lib/widgets/Account/Account.php:35
+msgid "Password"
+msgstr "Pasvorto"
+
+#: ../lib/Dispatcher.php:105
+msgid "Come in!"
+msgstr "Venu en!"
+
+#: ../lib/GetConf.php:2
+#: ../lib/GetConf.php:45
+msgid "Error: Cannot load element value'%s'"
+msgstr "Eraro: Ne povas ĉarĝi la elementon de valuo '%s'"
+
+#: ../lib/GetConf.php:139
+msgid "Error: Cannot load file '%s'"
+msgstr "Eraro: Ne povas ĉarĝi dosieron '%s'"
+
+#: ../lib/WidgetWrapper.php:98
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr "Eraro: Demandata fenestrero '%s' ne ekzistas."
+
+#: ../lib/User.php:65
+msgid "Wrong password"
+msgstr "Malkorekta pasvorto"
+
+#: ../lib/Widget.php:69
+#~ msgid "This is a sample widget."
+#~ msgstr ""
+
+#: ../lib/XMPPConnect.php:147
+#~ msgid "Error: jid `%s' is incorrect"
+#~ msgstr ""
+
+#: ../lib/widgets/Account/Account.php:3
+#: ../lib/widgets/Account/Account.php:34
+msgid "Jabber Account"
+msgstr "Jabbera konto"
+
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:70
+msgid "Submit"
+msgstr "Sendi"
+
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:72
+msgid "Reset"
+msgstr "Nuligi"
+
+#: ../lib/widgets/Chat/Chat.php:90
+msgid "Send"
+msgstr "Sendi"
+
+#: ../lib/widgets/Config/Config.php:45
+msgid "Language"
+msgstr "Lingvo"
+
+#: ../lib/widgets/Config.php:45
+#~ msgid "Full Name"
+#~ msgstr ""
+
+#: ../lib/widgets/Config/Config.php:57
+msgid "BOSH Connection Prefrences"
+msgstr "BOSHa konekta agordoj"
+
+#: ../lib/Dispatcher.php:9
+#: ../lib/widgets/Config/Config.php:59
+msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
+msgstr "Ĉanĝi tiuj datumoj povus esti danĝera aŭ kompromiti konekton al la XMPPa servilon"
+
+#: ../lib/widgets/Config/Config.php:61
+msgid "Bosh Host"
+msgstr "BOSHa gastigo"
+
+#: ../lib/widgets/Config/Config.php:63
+msgid "Bosh Suffix"
+msgstr "BOSHa sufikso"
+
+#: ../lib/widgets/Config/Config.php:65
+msgid "Bosh Port"
+msgstr "BOSHa pordo"
+
+#: ../lib/widgets/Config/Config.php:76
+msgid "error: "
+msgstr "eraro:"
+
+#: ../lib/widgets/Friends/Friends.php:112
+msgid "Contacts"
+msgstr "Kontaktoj"
+
+#: ../lib/GetConf.php:8
+#: ../lib/GetConf.php:12
+#: ../lib/GetConf.php:129
+msgid "Couldn't create file %s"
+msgstr "Ne eblas krei dosieron %s."
+
+#: ../lib/GetConf.php:131
+msgid "Couldn't create configuration files."
+msgstr "Ne eblas krei agordajn dosierojn."
+
+#: ../lib/XMPPConnect.php:98
+msgid "Error: User not logged in."
+msgstr "Eraro: Uzanto ne ensalutita."
+
+#: ../lib/XMPPConnect.php:102
+msgid "Error: JID not provided."
+msgstr "Eraro: JID ne sciigita."
+
+#: ../lib/XMPPConnect.php:117
+msgid "Error: jid '%s' is incorrect"
+msgstr "Eraro: Ne korekta JID '%s'"
+
+#: ../lib/widgets/Chat/Chat.php:84
+msgid "Chat"
+msgstr "Tujmesaĝilo"
+
+#: ../lib/widgets/Chat/Chat.php:88
+msgid "Message"
+msgstr "Mesaĝo"
+
+#: ../lib/widgets/Chat/Chat.php:89
+msgid "To"
+msgstr "Al"
+
+#: ../lib/widgets/Friends/Friends.php:36
+msgid "Your avatar"
+msgstr "Via avataro"
+
+#: ../lib/widgets/Friends/Friends.php:111
+msgid "Refresh vCard"
+msgstr "Aktualigi vCard"
+
+#: ../lib/widgets/Friends/Friends.php:116
+msgid "Online"
+msgstr "Konektita"
+
+#: ../lib/widgets/Friends/Friends.php:117
+msgid "Offline"
+msgstr "Nekonektita"
+
+#: ../lib/widgets/Friends/Friends.php:118
+msgid "Hidden"
+msgstr "Malmontrita"
+
+#: ../lib/widgets/Friends/Friends.php:119
+msgid "Away"
+msgstr "For"
+
+#: ../lib/widgets/Friends/Friends.php:120
+msgid "Do Not Disturb"
+msgstr "Okupita"
+
+#: ../lib/widgets/Friends/Friends.php:124
+msgid "Refresh Roster"
+msgstr "Aktualigi Rosteron"
+
+#: ../lib/widgets/Log/Log.php:34
+msgid "Debug console"
+msgstr "Sencimiga konzolo"
+

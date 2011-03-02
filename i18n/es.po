@@ -1,0 +1,214 @@
+# Spanish translations for Movim  package.
+# This file is distributed under the same license as the Movim  package.
+# This file was translated from CodingTeam at <http://codingteam.net/>.
+msgid ""
+msgstr ""
+"Project-Id-Version: Movim \n"
+"PO-Revision-Date: 2011-03-02 23:32:43\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../init.php:15
+msgid "MOVIM - Test Client"
+msgstr "MOVIM - Cliente de prueba"
+
+#: ../lib/Dispatcher.php:40
+msgid "%s - Welcome to Movim"
+msgstr "%s - Bienvenido a Movim"
+
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:5
+#: ../lib/Dispatcher.php:74
+msgid "Home"
+msgstr "Inicio"
+
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:60
+msgid "Configuration"
+msgstr "Configuración"
+
+#: ../lib/widgets/Logout/Logout.php:46
+msgid "Logout"
+msgstr "Salir"
+
+#: ../lib/Dispatcher.php:58
+msgid "%s - Configuration"
+msgstr "%s - Configuración"
+
+#: ../lib/Dispatcher.php:73
+msgid "%s - Account Creation"
+msgstr "%s - Crear cuenta"
+
+#: ../lib/Dispatcher.php:90
+msgid "%s - Login to Movim"
+msgstr "%s - Connectarse a Movim"
+
+#: ../lib/Dispatcher.php:93
+msgid "Account Creation"
+msgstr "Crear cuenta"
+
+#: ../lib/Dispatcher.php:103
+msgid "My address"
+msgstr "Mi dirección"
+
+#: ../lib/Dispatcher.php:10
+#: ../lib/widgets/Account/Account.php:35
+msgid "Password"
+msgstr "Contraseña"
+
+#: ../lib/Dispatcher.php:105
+msgid "Come in!"
+msgstr "Apuntate!"
+
+#: ../lib/GetConf.php:2
+#: ../lib/GetConf.php:45
+msgid "Error: Cannot load element value'%s'"
+msgstr "Error: No se puede cargar el elemento '%s'"
+
+#: ../lib/GetConf.php:139
+msgid "Error: Cannot load file '%s'"
+msgstr "Error: No se puede cargar el archivo '%s'"
+
+#: ../lib/WidgetWrapper.php:98
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr "Error: El widget requirido '%s' no existe."
+
+#: ../lib/User.php:65
+msgid "Wrong password"
+msgstr "Contraseña errónea"
+
+#: ../lib/Widget.php:69
+#~ msgid "This is a sample widget."
+#~ msgstr ""
+
+#: ../lib/XMPPConnect.php:147
+#~ msgid "Error: jid `%s' is incorrect"
+#~ msgstr ""
+
+#: ../lib/widgets/Account/Account.php:3
+#: ../lib/widgets/Account/Account.php:34
+msgid "Jabber Account"
+msgstr "Cuenta Jabber"
+
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:70
+msgid "Submit"
+msgstr "Presentar"
+
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:72
+msgid "Reset"
+msgstr "Reinicializar"
+
+#: ../lib/widgets/Chat/Chat.php:90
+msgid "Send"
+msgstr "Enviar"
+
+#: ../lib/widgets/Config/Config.php:45
+msgid "Language"
+msgstr "Idioma"
+
+#: ../lib/widgets/Config.php:45
+#~ msgid "Full Name"
+#~ msgstr ""
+
+#: ../lib/widgets/Config/Config.php:57
+msgid "BOSH Connection Prefrences"
+msgstr "Preferencias de conexión BOSH"
+
+#: ../lib/Dispatcher.php:9
+#: ../lib/widgets/Config/Config.php:59
+msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
+msgstr "Cambiar estos datos puede ser peligroso y puede impedir la conexion al servidor XMPP."
+
+#: ../lib/widgets/Config/Config.php:61
+msgid "Bosh Host"
+msgstr "Servidor Bosh"
+
+#: ../lib/widgets/Config/Config.php:63
+msgid "Bosh Suffix"
+msgstr "Sufijo Bosh"
+
+#: ../lib/widgets/Config/Config.php:65
+msgid "Bosh Port"
+msgstr "Puerto Bosh"
+
+#: ../lib/widgets/Config/Config.php:76
+msgid "error: "
+msgstr "error:"
+
+#: ../lib/widgets/Friends/Friends.php:112
+msgid "Contacts"
+msgstr "Contactos"
+
+#: ../lib/GetConf.php:8
+#: ../lib/GetConf.php:12
+#: ../lib/GetConf.php:129
+msgid "Couldn't create file %s"
+msgstr "No se puede crear el archivo %s"
+
+#: ../lib/GetConf.php:131
+msgid "Couldn't create configuration files."
+msgstr "No se pudo crear los archivos de configuración."
+
+#: ../lib/XMPPConnect.php:98
+msgid "Error: User not logged in."
+msgstr "Error: El usuario no esta conectado."
+
+#: ../lib/XMPPConnect.php:102
+msgid "Error: JID not provided."
+msgstr "Error: JID no proporcionado."
+
+#: ../lib/XMPPConnect.php:117
+msgid "Error: jid '%s' is incorrect"
+msgstr "Error: JID '%s' incorrecto"
+
+#: ../lib/widgets/Chat/Chat.php:84
+msgid "Chat"
+msgstr "Chat"
+
+#: ../lib/widgets/Chat/Chat.php:88
+msgid "Message"
+msgstr "Mensaje"
+
+#: ../lib/widgets/Chat/Chat.php:89
+msgid "To"
+msgstr "Para"
+
+#: ../lib/widgets/Friends/Friends.php:36
+msgid "Your avatar"
+msgstr "Tu avatar"
+
+#: ../lib/widgets/Friends/Friends.php:111
+msgid "Refresh vCard"
+msgstr "Refrescar vCard"
+
+#: ../lib/widgets/Friends/Friends.php:116
+msgid "Online"
+msgstr "Conectado"
+
+#: ../lib/widgets/Friends/Friends.php:117
+msgid "Offline"
+msgstr "Desconectado"
+
+#: ../lib/widgets/Friends/Friends.php:118
+msgid "Hidden"
+msgstr "Invisible"
+
+#: ../lib/widgets/Friends/Friends.php:119
+msgid "Away"
+msgstr "Ausente"
+
+#: ../lib/widgets/Friends/Friends.php:120
+msgid "Do Not Disturb"
+msgstr "No molestar"
+
+#: ../lib/widgets/Friends/Friends.php:124
+msgid "Refresh Roster"
+msgstr "Refrescar lista de contactos"
+
+#: ../lib/widgets/Log/Log.php:34
+msgid "Debug console"
+msgstr "Consola de depuración"
+
