@@ -50,6 +50,7 @@ This is Movim @value{VERSION}'s manual.
 * introduction:: What is Movim and how to use this document
 * structure:: A description of Movim's internals
 * API:: Documentation of the widget's API
+* MovimRPC:: The specification of Movim's remote procedure call
 @end menu
 
 @node foreword
@@ -390,6 +391,88 @@ Widget::respath($file, $fspath = false)
 This returns the URL to the specified file. The optional parameter
 @code{$fspath} will make the function return the file-system path rather than
 the URL to the file.
+
+@node MovimRPC spec
+@chapter MovimRPC specification
+Movim's interface is highly dynamic and composed of two parts, the server-side
+written in PHP that provides the XMPP connection and the Javascript-side that
+provides the GUI.
+
+Both systems communicate through Ajax. The javascript interface keeps polling
+the server for new calls on the url:
+
+@url{http://mymovim.tld/jajax.php?do=poll}
+
+Whenever an event occurs, a MovimRPC call is sent though this interface. The GUI
+also communicates directly with the server through the same protocol.
+
+@section Function calls
+MovimRPC consists in sending XML-formatted strings that describe a function
+call. Both communicating systems need to be aware of each other's functions set
+as no return is available on a function call.
+
+Instead of returning data after a function call, the called system triggers a
+movimRPC call to the calling system, feeding it the appropriate data as
+paramaters.
+
+Messy strings parameters (e.g. those containing HTML code) need to be enclosed
+in CDATA markups.
+
+One MovimRPC document can contain more than one function call. All function
+calls need to be enclosed in @code{<movimcontainer>} tags. Function calls are
+defined with the @code{<funcall>}. Each function parameter is enclosed in
+@code{<param>} tags.
+
+Function calls must have a @code{NAME} parameter, and accept a @code{WIDGET}
+parameter.
+
+Here is an example of a call to the function @code{myfunc} of the widget
+@code{MyWidget} with the relevant parameters.
+
+@cartouche
+@verbatim
+<?xml version="1.0" encoding="UTF-8" ?>
+<movimcontainer>
+  <funcall name="myfunc" widget="MyWidget">
+    <param>foo</param>
+    <param>bar</param>
+  </funcall>
+</movimcontainer>
+@end verbatim
+@end cartouche
+
+@section Parameters
+The parameters passed to a function aren't typed. The required type needs to be
+known by the caller.
+
+Arrays can be passed within parameters. Arrays may be associative or mixed or
+not. They are declared within @code{<array>} tags. Each element in the array is
+enclosed by @code{<arrayelt>} tags. Elements can be associated to a key with the
+@code{NAME} parameter.
+
+An example of two function calls with an associative array.
+
+@cartouche
+@verbatim
+<?xml version="1.0" encoding="UTF-8" ?>
+<movimcontainer>
+  <funcall name="myfunc" widget="MyWidget">
+    <param>foo</param>
+    <param>bar</param>
+  </funcall>
+  <funcall name="toto">
+    <param>foo</param>
+    <param>
+      <array>
+        <arrayelt name="elt1">1</arrayelt>
+        <arrayelt name="2">associative</arrayelt>
+        <arrayelt>sequential</arrayelt>
+      </array>
+    </param>
+  </funcall>
+</movimcontainer>
+@end verbatim
+@end cartouche
 
 @node license
 @comment  node-name,  next,  previous,  up
