@@ -1,0 +1,214 @@
+# Chinese translations for Movim  package.
+# This file is distributed under the same license as the Movim  package.
+# This file was translated from CodingTeam at <http://codingteam.net/>.
+msgid ""
+msgstr ""
+"Project-Id-Version: Movim \n"
+"PO-Revision-Date: 2011-03-03 15:26:37\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../init.php:15
+msgid "MOVIM - Test Client"
+msgstr "MOVIM - 测试平台"
+
+#: ../lib/Dispatcher.php:40
+msgid "%s - Welcome to Movim"
+msgstr "%s - 欢迎来到 MOVIM"
+
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:5
+#: ../lib/Dispatcher.php:74
+msgid "Home"
+msgstr "主页"
+
+#: ../lib/Dispatcher.php:4
+#: ../lib/Dispatcher.php:60
+msgid "Configuration"
+msgstr "配置"
+
+#: ../lib/widgets/Logout/Logout.php:46
+msgid "Logout"
+msgstr "注销"
+
+#: ../lib/Dispatcher.php:58
+msgid "%s - Configuration"
+msgstr "%s - 配置"
+
+#: ../lib/Dispatcher.php:73
+msgid "%s - Account Creation"
+msgstr "%s - 建立帐号"
+
+#: ../lib/Dispatcher.php:90
+msgid "%s - Login to Movim"
+msgstr "%s - 登录 MOVIM"
+
+#: ../lib/Dispatcher.php:93
+msgid "Account Creation"
+msgstr "建立帐号"
+
+#: ../lib/Dispatcher.php:103
+msgid "My address"
+msgstr "我的识别符"
+
+#: ../lib/Dispatcher.php:10
+#: ../lib/widgets/Account/Account.php:35
+msgid "Password"
+msgstr "密码"
+
+#: ../lib/Dispatcher.php:105
+msgid "Come in!"
+msgstr "登录"
+
+#: ../lib/GetConf.php:2
+#: ../lib/GetConf.php:45
+msgid "Error: Cannot load element value'%s'"
+msgstr "错误：不能加载元素 ‘%s'"
+
+#: ../lib/GetConf.php:139
+msgid "Error: Cannot load file '%s'"
+msgstr "错误：不能加载文件 ‘%s'"
+
+#: ../lib/WidgetWrapper.php:98
+msgid "Error: Requested widget '%s' doesn't exist."
+msgstr "错误：请求微件 ‘%s' 不存在"
+
+#: ../lib/User.php:65
+msgid "Wrong password"
+msgstr "错误密码"
+
+#: ../lib/Widget.php:69
+#~ msgid "This is a sample widget."
+#~ msgstr ""
+
+#: ../lib/XMPPConnect.php:147
+#~ msgid "Error: jid `%s' is incorrect"
+#~ msgstr ""
+
+#: ../lib/widgets/Account/Account.php:3
+#: ../lib/widgets/Account/Account.php:34
+msgid "Jabber Account"
+msgstr "Jabber 帐号"
+
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:70
+msgid "Submit"
+msgstr "提交 "
+
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:72
+msgid "Reset"
+msgstr "重置"
+
+#: ../lib/widgets/Chat/Chat.php:90
+msgid "Send"
+msgstr "发送"
+
+#: ../lib/widgets/Config/Config.php:45
+msgid "Language"
+msgstr "语言"
+
+#: ../lib/widgets/Config.php:45
+#~ msgid "Full Name"
+#~ msgstr ""
+
+#: ../lib/widgets/Config/Config.php:57
+msgid "BOSH Connection Prefrences"
+msgstr "BOSH 链接设置"
+
+#: ../lib/Dispatcher.php:9
+#: ../lib/widgets/Config/Config.php:59
+msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
+msgstr "改变这些设置会影响到你的 XMPP 服务器连接"
+
+#: ../lib/widgets/Config/Config.php:61
+msgid "Bosh Host"
+msgstr "Bosh 主机名"
+
+#: ../lib/widgets/Config/Config.php:63
+msgid "Bosh Suffix"
+msgstr "Bosh 结尾辞"
+
+#: ../lib/widgets/Config/Config.php:65
+msgid "Bosh Port"
+msgstr "Bosh 端口"
+
+#: ../lib/widgets/Config/Config.php:76
+msgid "error: "
+msgstr "错误"
+
+#: ../lib/widgets/Friends/Friends.php:112
+msgid "Contacts"
+msgstr "通讯录"
+
+#: ../lib/GetConf.php:8
+#: ../lib/GetConf.php:12
+#: ../lib/GetConf.php:129
+msgid "Couldn't create file %s"
+msgstr "不能建立文件 %s"
+
+#: ../lib/GetConf.php:131
+msgid "Couldn't create configuration files."
+msgstr "不能建立设置文件。"
+
+#: ../lib/XMPPConnect.php:98
+msgid "Error: User not logged in."
+msgstr "错误：用户没有登录。"
+
+#: ../lib/XMPPConnect.php:102
+msgid "Error: JID not provided."
+msgstr "错误：没有提供 JID"
+
+#: ../lib/XMPPConnect.php:117
+msgid "Error: jid '%s' is incorrect"
+msgstr "错误：错误 JID ‘%s’"
+
+#: ../lib/widgets/Chat/Chat.php:84
+msgid "Chat"
+msgstr "聊天"
+
+#: ../lib/widgets/Chat/Chat.php:88
+msgid "Message"
+msgstr "信息"
+
+#: ../lib/widgets/Chat/Chat.php:89
+msgid "To"
+msgstr "到"
+
+#: ../lib/widgets/Friends/Friends.php:36
+msgid "Your avatar"
+msgstr "你的头像"
+
+#: ../lib/widgets/Friends/Friends.php:111
+msgid "Refresh vCard"
+msgstr "更新 vCard"
+
+#: ../lib/widgets/Friends/Friends.php:116
+msgid "Online"
+msgstr "在线"
+
+#: ../lib/widgets/Friends/Friends.php:117
+msgid "Offline"
+msgstr "离线"
+
+#: ../lib/widgets/Friends/Friends.php:118
+msgid "Hidden"
+msgstr "隐身"
+
+#: ../lib/widgets/Friends/Friends.php:119
+msgid "Away"
+msgstr "离开"
+
+#: ../lib/widgets/Friends/Friends.php:120
+msgid "Do Not Disturb"
+msgstr "不要打扰"
+
+#: ../lib/widgets/Friends/Friends.php:124
+msgid "Refresh Roster"
+msgstr "更新通讯录"
+
+#: ../lib/widgets/Log/Log.php:34
+msgid "Debug console"
+msgstr "检查更正主控台"
+
