@@ -9,4 +9,5 @@
 	<logLevel>4</logLevel>
 
 	<accountCreation>0</accountCreation>
+	<install>1</install>
 </config>

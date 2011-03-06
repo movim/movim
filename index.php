@@ -37,7 +37,12 @@ require_once('init.php');
 
 $polling = false;
 
-// Run
-$rqst = new Dispatcher();
-$rqst->handle();
+$conf = new GetConf();
+if($conf->getServerConfElement('install') == 1) {
+	require_once('install.php');
+} else {
+	// Run
+	$rqst = new Dispatcher();
+	$rqst->handle();
+}
 ?>
