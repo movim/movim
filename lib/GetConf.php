@@ -102,6 +102,8 @@ class GetConf
         if(!file_exists($dir_conf)) {
             // Splitting jid.
             list($user, $host) = explode('@', $jid);
+
+            $serv = self::getServerConf();
             
             mkdir($dir_conf);
             $conf_xml =
@@ -110,10 +112,10 @@ class GetConf
                 '  <host>'.$host.'</host>'."\n".
                 '  <domain>'.$host.'</domain>'."\n".
                 '  <port>5222</port>'."\n".
-                '  <boshHost>natsu.upyum.com</boshHost>'."\n".
-                '  <boshSuffix>http-bind</boshSuffix>'."\n".
-                '  <boshPort>80</boshPort>'."\n".
-                '  <language>en</language>'."\n".
+                '  <boshHost>'.$serv['defBoshHost'].'</boshHost>'."\n".
+                '  <boshSuffix>'.$serv['defBoshSuffix'].'</boshSuffix>'."\n".
+                '  <boshPort>'.$serv['defBoshPort'].'</boshPort>'."\n".
+                '  <language>'.$serv['defLang'].'</language>'."\n".
                 '</data>';
 
             $data_xml =

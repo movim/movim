@@ -35,9 +35,8 @@ class PageBuilder
 	{
 		$this->user = $user;
 		$conf = new GetConf();
-		$this->theme = $conf->getServerConfElement('theme');
-
 		self::load_language();
+		$this->theme = $conf->getServerConfElement('theme');
 	}
 	
 	function load_language() {
@@ -46,8 +45,7 @@ class PageBuilder
 			$lang = GetConf::getUserConfElement($usr->getLogin(), 'language');
 			load_language($lang);
 		}
-		
-		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+		/*else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 			$nav_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 			$langNotFound = true;
 			$i = 0;
@@ -59,13 +57,14 @@ class PageBuilder
 		    		$langNotFound = false;
 		    		load_language($check);
 		    	}
-		    	else
+		    	else {
 		    		$i++;
+                }
 		    }
-		}
-		
-		else
-			load_language('en_en');
+		}*/
+		else {
+            load_language(GetConf::getServerConfElement('defLang'));
+        }
 	}
 	
 	function theme_path($file)

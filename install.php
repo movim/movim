@@ -1,5 +1,7 @@
 <?php
 
+require('lib/languages.php');
+
 function test_dir($dir)
 {
   return (file_exists($dir) && is_dir($dir) && is_writable($dir));
@@ -94,6 +96,24 @@ function list_themes()
   return $themes;
 }
 
+function list_lang()
+{
+  $dir = opendir('i18n');
+  $langs = array('en' => 'English');
+  $languages = get_lang_list();
+
+  while($lang = readdir($dir)) {
+    if(!preg_match('/\.po$/', $lang)) {
+      continue;
+    }
+    
+    $lang = substr($lang, 0, strlen($lang) - 3);
+    $langs[$lang] = $languages[$lang];
+  }
+
+  return $langs;
+}
+
 function show_install_form()
 {
   ?>
@@ -102,6 +122,7 @@ function show_install_form()
     <input type="hidden" name="install" value="true" />
     <?php 
     make_select('theme', t("Theme"), list_themes());
+    make_select('language', t("Default language"), list_lang());
     make_textbox('boshCookieTTL', t("Bosh cookie's expiration (s)"), 3600);
     make_textbox('boshCookiePath', t("Bosh cookie's path"), '/');
     make_checkbox('boshCookieDomain', t("Bosh cookie's domain"), false);
@@ -109,6 +130,11 @@ function show_install_form()
     make_checkbox('boshCookieHTTPOnly', t("Use only HTTP for Bosh"), true);
     make_select('verbosity', t("Log verbosity"), array('empty', 'terse', 'normal', 'talkative', 'ultimate'), 4);
     make_checkbox('accountCreation', t("Allow account creation"), false);
+    echo '<hr />';
+    echo '<h2>Default Bosh server settings</h2>'.PHP_EOL;
+    make_textbox('defBoshHost', t("Bosh server"), 'natsu.upyum.com');
+    make_textbox('defBoshSuffix', t("Bosh suffix"), 'http-bind');
+    make_textbox('defBoshPort', t("Bosh Port"), '80');
     make_button('send', 'Install');
     ?>
   </form>
@@ -172,6 +198,7 @@ function perform_install()
   $conf = array(
     'config' => array(
       'theme' => $_POST['theme'],
+      'defLang' => $_POST['language'],
       'boshCookieTTL' => $_POST['boshCookieTTL'],
       'boshCookiePath' => $_POST['boshCookiePath'],
       'boshCookieDomain' => get_checkbox('boshCookieDomain'),
@@ -179,6 +206,9 @@ function perform_install()
       'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
       'logLevel' => $_POST['verbosity'],
       'accountCreation' => get_checkbox('accountCreation', 1, 0),
+      'defBoshHost' => $_POST['defBoshHost'],
+      'defBoshSuffix' => $_POST['defBoshSuffix'],
+      'defBoshPort' => $_POST['defBoshPort'],
       ),
     );
   if(!@file_put_contents('config/conf.xml', make_xml($conf))) {
