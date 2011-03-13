@@ -163,6 +163,10 @@ function perform_install()
     printf(t("Couldn't create directory '%s'."), 'log');
     return false;
   }
+  if(!test_dir('config') && !@mkdir('config')) {
+    printf(t("Couldn't create directory '%s'."), 'config');
+    return false;
+  }
   
   // Creating the configuration file.
   $conf = array(
