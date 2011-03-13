@@ -1,25 +1,191 @@
 <?php
 
-function testInstall($test, $description = '', $advice = '') {
-	$html = '<tr><td>';
-		$conf = new GetConf();
-		$theme = $conf->getServerConfElement('theme');
-		if($test) {
-			$html.= '<img src="themes/'.$theme.'/img/accept.png"></td>
-					<td>'.$description.'</td>';
-		} else {
-			$html .= '<img src="themes/'.$theme.'/img/delete.png"></td>
-					<td>'.$description.'</td>';
-			$html .= '<td>'.$advice.'</td>';
-			define('INSTALL_VALIDATED', false);
-		}
-	$html .= '</tr>';
-	echo $html;
-	
+function test_dir($dir)
+{
+  return (file_exists($dir) && is_dir($dir) && is_writable($dir));
 }
-?>
 
-<!DOCTYPE html>
+function test_requirements()
+{
+  $errors = array();
+
+  $v = explode('.', phpversion());
+  if($v[0] < 5 || ($v[0] == 5 && $v[1] < 3)) {
+    $errors[] = t("PHP version mismatch. Movim requires PHP 5.3 minimum.");
+  }
+  if(!extension_loaded('curl')) {
+    $errors[] = sprintf(t("Movim requires the %s extension."), 'PHP Curl');
+  }
+  if(!extension_loaded('SimpleXML')) {
+    $errors[] = sprintf(t("Movim requires the %s extension."), 'SimpleXML');
+  }
+  if(!test_dir('./')) {
+    $errors[] = t("Movim's folder must be writable.");
+  }
+  /*if(!test_dir('user')) {
+    $errors[] = sprintf(t("The <em>%s</em> folder must exist and be writable."), 'user');
+  }
+  if(!test_dir('log')) {
+    $errors[] = sprintf(t("The <em>%s</em> folder must exist and be writable."), 'log');
+  }*/
+
+  return (count($errors) > 0)? $errors : false;
+}
+
+function make_field($name, $label, $input)
+{
+  ?>
+  <div class="field">
+    <label for="<?php echo $name;?>"><?php echo $label;?></label>
+    <div class="field-input">
+      <?php echo $input;?>
+    </div>
+  </div>
+  <?php
+}
+
+function make_select($name, $title, array $options, $default = null) {
+  $opts = "<select name=\"$name\">";
+  foreach($options as $name => $val) {
+    $selected = '';
+    if($default !== null && $default == $name) {
+      $selected = 'selected="selected" ';
+    }
+    $opts.= '<option '.$selected.'value="'.$name.'">'.$val."</option>\n";
+  }
+  $opts.= "</select>\n";
+
+  make_field($name, $title, $opts);
+}
+
+function make_checkbox($name, $title, $value)
+{
+  $checked = "";
+  if($value) {
+    $checked = 'checked="checked" ';
+  }
+  make_field($name, $title, '<input type="checkbox" '.$checked.'name="'.$name.'" />');
+}
+
+function make_textbox($name, $title, $value)
+{
+  make_field($name, $title, '<input type="text" name="'.$name.'" value="'.$value.'"/>');
+}
+
+function make_button($name, $label)
+{
+  make_field($name, '&nbsp;', '<input type="submit" name="'.$name.'" value="'.$label.'" />');
+}
+
+function list_themes()
+{
+  $dir = opendir('themes');
+  $themes = array();
+
+  while($theme = readdir($dir)) {
+    if(preg_match('/^\.+$/', $theme)
+       || !is_dir('themes/'.$theme)) {
+      continue;
+    }
+
+    $themes[$theme] = $theme;
+  }
+
+  return $themes;
+}
+
+function show_install_form()
+{
+  ?>
+  <h1><?php echo t('Movim Installer'); ?></h1>
+  <form method="post">
+    <input type="hidden" name="install" value="true" />
+    <?php 
+    make_select('theme', t("Theme"), list_themes());
+    make_textbox('boshCookieTTL', t("Bosh cookie's expiration (s)"), 3600);
+    make_textbox('boshCookiePath', t("Bosh cookie's path"), '/');
+    make_checkbox('boshCookieDomain', t("Bosh cookie's domain"), false);
+    make_checkbox('boshCookieHTTPS', t("Use HTTPS for Bosh"), false);
+    make_checkbox('boshCookieHTTPOnly', t("Use only HTTP for Bosh"), true);
+    make_select('verbosity', t("Log verbosity"), array('empty', 'terse', 'normal', 'talkative', 'ultimate'), 4);
+    make_checkbox('accountCreation', t("Allow account creation"), false);
+    make_button('send', 'Install');
+    ?>
+  </form>
+  <?php
+}
+
+function make_xml($stuff)
+{
+  static $level = 0;
+  $buffer = "";
+
+  // Putting the XML declaration
+  if($level == 0) {
+    $buffer = '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL;
+  }
+
+  // Indentation
+  $indent = "";
+  for($i = 0; $i < $level; $i++) {
+    $indent.= "  ";
+  }
+
+  // Doing the job
+  foreach($stuff as $tag => $value) {
+    if(is_array($value)) {
+      $buffer.= $indent.'<'.$tag.'>'.PHP_EOL;
+      $level++;
+      $buffer.= make_xml($value);
+      $buffer.= $indent.'</'.$tag.'>'.PHP_EOL;
+    } else {
+      $buffer.= "$indent<$tag>$value</$tag>".PHP_EOL;
+    }
+  }
+
+  $level--;
+  return $buffer;
+}
+
+function get_checkbox($name, $if = 'true', $else = 'false')
+{
+  return (isset($_POST[$name])? $if : $else);
+}
+
+function perform_install()
+{
+  // Creating the folders.
+  if(!test_dir('user') && !@mkdir('user')) {
+    printf(t("Couldn't create directory '%s'."), 'user');
+    return false;
+  }
+  if(!test_dir('log') && !@mkdir('log')) {
+    printf(t("Couldn't create directory '%s'."), 'log');
+    return false;
+  }
+  
+  // Creating the configuration file.
+  $conf = array(
+    'config' => array(
+      'theme' => $_POST['theme'],
+      'boshCookieTTL' => $_POST['boshCookieTTL'],
+      'boshCookiePath' => $_POST['boshCookiePath'],
+      'boshCookieDomain' => get_checkbox('boshCookieDomain'),
+      'boshCookieHTTPS' => get_checkbox('boshCookieHTTPS'),
+      'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
+      'logLevel' => $_POST['verbosity'],
+      'accountCreation' => get_checkbox('accountCreation', 1, 0),
+      ),
+    );
+  if(!@file_put_contents('config/conf.xml', make_xml($conf))) {
+    printf(t("Couldn't create configuration file '%s'."), 'config/conf.xml');
+    return false;
+  }
+
+  return true;
+}
+
+?><!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -29,47 +195,41 @@ function testInstall($test, $description = '', $advice = '') {
 	</head>
 	<body>
 		<div id="content">
-			<h1><?php echo t('Compatibility Test'); ?></h1>
-			<center><p><?php echo t('Until these items will not be validated, MOVIM will not run properly on your server'); ?></p></center>
-			<table style="margin: 0 auto;">
-				<tr>
-					<th style="width: 20px;"></th>
-					<th style="width: 400px;"></th>
-					<th></th>
-				</tr>
-				<?php
-					
-					$v = explode( '.', phpversion());
+      <?php
 
-					testInstall($v['0'] >= 5 && $v['1'] >= 3, 
-								t('PHP version > 5.3'), 
-								t('Activate PHP5 on your server or update it to >5.3'));
+      $errors = test_requirements();
+      if($errors) {
+        // Ah ah, there are some errors.
+        ?>
+			  <h1><?php echo t('Compatibility Test'); ?></h1>
+        <p class="center"><?php echo t('The following requirements were not met. Please make sure they are all satisfied in order to install Movim.'); ?></p>
+        <?php
+        foreach($errors as $error) {
+          ?>
+          <p class="error"><?php echo $error;?></p>
+          <?php
+        }
+      } else {
+        // Doing the job
+        if(isset($_POST['install'])) {
+          // Installing.
+          if(perform_install()) {
+            ?>
+            <h1><?php echo t('Movim is installed!');?></h1>
+            <p><?php printf(t('You can now access your shiny %sMovim instance%s'),
+                            '<a href="index.php">',
+                            '</a>');?></p>
+            <?php
+          } else {
+            show_install_form();
+          }
+        } else {
+          // Install form.
+          show_install_form();
+        }
+      }
 
-					testInstall(extension_loaded('curl'), 
-								t('CURL extension present'), 
-								t('Install php5-libcurl package or turn on Curl extension on your host server'));
-
-					testInstall(extension_loaded('SimpleXML'),
-								t('SimpleXML extension present'),
-								t('Install php5 package'));
-							
-					testInstall(is_writable('user/'), 
-								t('User folder is writable'),
-								'Change folder rights');
-
-					testInstall(is_writable('log/'), 
-								t('Log folder is writable'), 
-								'Change folder rights');
-
-					if(!defined('INSTALL_VALIDATED') && INSTALL_VALIDATED != false) {
-						echo '<tr><td></td>
-								<td><div class="valid">'. t('You have validated all the tests, now you can switch the "install" variable to 0 in config/conf.xml') .'</div></td>
-							</tr>
-						
-							';
-					}
-				?>
-			</table>
+      ?>
 		</div>
 	</body>
 

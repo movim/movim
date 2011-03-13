@@ -37,8 +37,8 @@ require_once('init.php');
 
 $polling = false;
 
-$conf = new GetConf();
-if($conf->getServerConfElement('install') == 1) {
+// If the configuration doesn't exist, run the installer.
+if(!file_exists("config/conf.xml")) {
 	require_once('install.php');
 } else {
 	// Run

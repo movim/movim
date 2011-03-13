@@ -24,6 +24,7 @@ class Logout extends Widget
     	$this->addcss('logout.css');
     	$this->addjs('logout.js');
 		$this->registerEvent('postdisconnected', 'onPostDisconnect');
+        $this->registerEvent('serverdisconnect', 'onPostDisconnect'); // When you're kicked out
     }
 
     function onPostDisconnect($data)

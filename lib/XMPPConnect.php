@@ -176,12 +176,17 @@ class XMPPConnect
 	public function pingServer()
 	{
 		define('CURL_ASYNC', false);
-		$this->jaxl->JAXL0206('ping');
+        $this->jaxl->JAXL0206('ping');
 	}
 	
 	public function getEmptyBody($payload) {
-   		$evt = new EventHandler();
-		$evt->runEvent('incomingemptybody', 'ping');
+        $evt = new EventHandler();
+        // Oooooh, am I disconnected??
+        if(preg_match('/condition=[\'"]item-not-found[\'"]/', $payload)) {
+            $evt->runEvent('serverdisconnect', null);
+        } else {
+            $evt->runEvent('incomingemptybody', 'ping');
+        }
 	}
 	
 	/**
