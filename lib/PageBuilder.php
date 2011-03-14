@@ -45,7 +45,7 @@ class PageBuilder
 			$lang = GetConf::getUserConfElement($usr->getLogin(), 'language');
 			load_language($lang);
 		}
-		/*else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 			$nav_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 			$langNotFound = true;
 			$i = 0;
@@ -61,7 +61,7 @@ class PageBuilder
 		    		$i++;
                 }
 		    }
-		}*/
+		}
 		else {
             load_language(GetConf::getServerConfElement('defLang'));
         }
