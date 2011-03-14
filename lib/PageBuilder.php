@@ -42,8 +42,14 @@ class PageBuilder
 	function load_language() {
 		if(User::isLogged()) {
 			$usr = new User();
-			$lang = GetConf::getUserConfElement($usr->getLogin(), 'language');
-			load_language($lang);
+            try{
+                $lang = GetConf::getUserConfElement($usr->getLogin(), 'language');
+                load_language($lang);
+            }
+            catch(MovimException $e) {
+                // Load default language.
+                load_language(GetConf::getServerConfElement('defLang'));
+            }
 		}
 		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 			$nav_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
