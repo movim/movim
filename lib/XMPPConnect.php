@@ -197,7 +197,6 @@ class XMPPConnect
 	public function handle($payload) {
 		$evt = new EventHandler();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
-			movim_log($payload);
 		   	movim_cache("vcard".$payload["from"], $payload);
 			$evt->runEvent('vcardreceived', $payload);
 		} elseif($payload['queryXmlns'] == "jabber:iq:roster") {

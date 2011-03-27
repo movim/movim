@@ -42,7 +42,6 @@ class Profile extends Widget
 
 	function ajaxRefreshVcard($jid = false)
 	{
-		movim_log($jid);
 		$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
 		$xmpp->getVCard($jid); // We send the vCard request
