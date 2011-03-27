@@ -4,6 +4,7 @@
 	padding-left: 20px;
 	background-image: url(img/bullet_black.png);
 	cursor: pointer;
+	overflow: hidden;
 }
 
 #tinylist ul li.online {
@@ -24,4 +25,11 @@
 
 #tinylist ul li.dnd {
 	background-image: url(img/bullet_red.png);
+}
+
+#tinylist ul li a.user_page {
+	float: right;
+	width: 16px;
+	height: 16px;
+	background-image: url(img/vcard.png);
 }

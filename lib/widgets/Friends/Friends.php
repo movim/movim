@@ -32,19 +32,26 @@ class Friends extends Widget
 
     function onRosterReceived($roster)
     {
-    	$html = "<ul>";
+		$html = $this->prepareRoster($roster);
+        MovimRPC::call('movim_fill', 'tinylist', MovimRPC::cdata($html));
+    }
+    
+    function prepareRoster($roster) {
+        $html = "<ul>";
     	$i = 0;
 		foreach($roster["queryItemJid"] as $key => $value ) {
 			if($value != "undefined") {
-				if($roster["queryItemName"][$i] != NULL)
-					$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")'>".$roster["queryItemName"][$i]." : ".$value."</li>";
-				else
+				if($roster["queryItemName"][$i] != NULL) {
+					$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")'>";
+					$html .= "<a class='user_page' href='?q=friend&f=".$value."'></a>";
+					$html .= $roster["queryItemName"][$i]." : ".$value."</li>";
+				} else
 					$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")'>".$value."</li>";
 			}
 			$i++;
 		}
 		$html .= "</ul>";
-        MovimRPC::call('movim_fill', 'tinylist', MovimRPC::cdata($html));
+		return $html;
     }
     
 	function onIncomingOnline($data)
@@ -86,19 +93,12 @@ class Friends extends Widget
     {
         ?>
         <div id="friends">
+          <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
           <h3><?php echo t('Contacts');?></h3>
 
           <div id="tinylist">
-			<ul>
-				<li class="online"><?php echo t('Online');?></li>
-				<li class="offline"><?php echo t('Offline');?></li>
-				<li class="hidden"><?php echo t('Hidden');?></li>
-				<li class="away"><?php echo t('Away');?></li>
-				<li class="dnd"><?php echo t('Do Not Disturb');?></li>
-			</ul>
+          	<?php echo $this->prepareRoster(movim_cache('roster')); ?>
           </div>
-  		  <input type="button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"
-         value="<?php echo t('Refresh Roster'); ?>" />
         </div>
         <?php
     }

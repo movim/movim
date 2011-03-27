@@ -1,5 +1,7 @@
 version 2.1.2
 -------------
+- Merged Movim 0.1 patched Jaxl lib into 'master' 
+- Merge branch 'master' of https://github.com/oldschoolindustries/JAXL into oldschoolindustries-master 
 - Improved httpd class and related changed in core jaxl class. Also fixed a few typos inside core classes 
 - Added option to pass getSXE option to Jaxl constructor (Whether Jaxl core should return a SimpleXMLElement object of parsed string with callback payloads)
 - Better handling for multi-instance jaxl applications (Use JAXL::addCore to add new instance)

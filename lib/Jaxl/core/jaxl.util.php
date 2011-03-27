@@ -49,9 +49,8 @@
         public static function curl($url, $type='GET', $headers=false, $data=false, $user=false, $pass=false) {
             $ch = curl_init($url);
             
-            if(defined('CURL_ASYNC') && CURL_ASYNC) {
-				curl_setopt($ch, CURLOPT_TIMEOUT, 1); //1s
-			}
+            // added by Movim Project
+            if(defined('JAXL_CURL_ASYNC') && JAXL_CURL_ASYNC) curl_setopt($ch, CURLOPT_TIMEOUT, 1);
             
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_HEADER, false);
@@ -74,9 +73,8 @@
             $rs['errno'] = curl_errno($ch);
             $rs['errmsg'] = curl_error($ch);
             $rs['header'] = curl_getinfo($ch);
-            
-            curl_close($ch);
 
+            curl_close($ch);
             return $rs;
         }
         

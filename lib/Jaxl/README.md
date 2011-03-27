@@ -9,7 +9,7 @@ version of Jaxl 1.x series which was hosted at google code.
 * Support for DIGEST-MD5, PLAIN, ANONYMOUS, X-FACEBOOK-PLATFORM authentication mechanisms
 * 32 implemented XMPP extensions [(XEP's)](http://xmpp.org/extensions/) including MUC, PubSub and PEP
 * Setup dynamic number of parallel XMPP instance on the fly
-* Monitoring, Usage stat collection, rate limiting and other goodies
+* Monitoring, usage stat collection, rate limiting and production ready goodies
 
 ## Download
 

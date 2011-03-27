@@ -130,7 +130,8 @@ class XMPPConnect
 	}
 	
     public function postAuth() {
-		$this->jaxl->getRosterList();
+		//$this->jaxl->getRosterList();
+		//$this->jaxl->getVCard();
     }
     
     public function postAuthFailure() {
@@ -159,7 +160,7 @@ class XMPPConnect
 	 
 	public function logout()
 	{
-		define('CURL_ASYNC', true);
+		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->JAXL0206('endStream');
 	}
 	
@@ -175,7 +176,7 @@ class XMPPConnect
 	 */
 	public function pingServer()
 	{
-		define('CURL_ASYNC', false);
+		define('JAXL_CURL_ASYNC', false);
         $this->jaxl->JAXL0206('ping');
 	}
 	
@@ -194,37 +195,32 @@ class XMPPConnect
 	 */
 	
 	public function handle($payload) {
-		//movim_log($payload);
-	
 		$evt = new EventHandler();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
+			movim_log($payload);
+		   	movim_cache("vcard".$payload["from"], $payload);
 			$evt->runEvent('vcardreceived', $payload);
 		} elseif($payload['queryXmlns'] == "jabber:iq:roster") {
+			movim_cache("roster", $payload);
             $evt->runEvent('rosterreceived', $payload);
 		} else {
             $evt->runEvent('none', var_export($payload, true));
         }
     }
 
-   	public function postRosterUpdate($payload) {
+   	/*public function postRosterUpdate($payload) {
    		$evt = new EventHandler();
 		$evt->runEvent('rosterreceived', $payload);
-   	}
+   	}*/
 
 	/* vCard methods
 	 * Ask for a vCard and handle it
 	 */
 	
-	public function getVCard()
+	public function getVCard($jid = false)
 	{
-		define('CURL_ASYNC', true);
-		$this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, false);
-	}
-	
-	public function vcardReturn($payload)
-	{
-		$evt = new EventHandler();
-		$evt->runEvent('vcardreceived', $payload);
+		define('JAXL_CURL_ASYNC', true);
+		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
 	}
 
 	/* 
@@ -289,7 +285,7 @@ class XMPPConnect
 	 */
 	public function getRosterList()
 	{
-		define('CURL_ASYNC', true);
+		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->getRosterList();
 	}
 
@@ -298,7 +294,7 @@ class XMPPConnect
 	 */
 	public function setStatus($status, $show)
 	{
-		define('CURL_ASYNC', true);
+		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->setStatus($status, $show, 41, true);
 	}
 
@@ -314,7 +310,7 @@ class XMPPConnect
 	 */
 	public function sendMessage($addressee, $body)
 	{
-		define('CURL_ASYNC', true);
+		define('JAXL_CURL_ASYNC', true);
 		// Checking on the jid.
 		if($this->checkJid($addressee)) {
 			$this->jaxl->sendMessage($addressee, $body, false, 'chat');

@@ -67,7 +67,6 @@ class Chat extends Widget
 
     function ajaxSendMessage($to, $message)
     {
-//    	movim_log($data);
     	$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
         $xmpp->sendMessage($to, $message);

@@ -28,19 +28,24 @@ class Profile extends Widget
 
     function onVcardReceived($vcard)
     {
+		$html = $this->prepareVcard($vcard);
+        MovimRPC::call('movim_fill', 'avatar', MovimRPC::cdata($html));
+    }
+    
+    function prepareVcard($vcard) {
         $html = '<img alt="' . t("Your avatar") . '" style="width: 60px;" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
             
             .'<div id="infos">'.$vcard['vCardNickname'].'<br />'.$vcard['vCardFN'].'</div>';
-            
-        MovimRPC::call('movim_fill', 'avatar', MovimRPC::cdata($html));
+        return $html;
     }
 
-	function ajaxRefreshVcard()
+	function ajaxRefreshVcard($jid = false)
 	{
+		movim_log($jid);
 		$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
-		$xmpp->getVCard(); // We send the vCard request
+		$xmpp->getVCard($jid); // We send the vCard request
 	}  
 	
 	function ajaxPresence($presence)
@@ -54,18 +59,17 @@ class Profile extends Widget
     {
         ?>
 		<div id="profile">
+			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>"></div>
 			<div id="avatar">
-				<div style="width: 60px; height: 45px; background-color: #9BBBC6;"></div>
-				<div id="infos"><br /></div>
-            </div>
-            <!--<select name="presence" id="presence" onchange="<?php $this->callAjax('ajaxPresence', "this.value"); ?>">
-				<option value="chat"><?php echo t('Online');?></option>
-				<option value="away"><?php echo t('Away');?></option>
-				<option value="dnd"><?php echo t('Do Not Disturb');?></option>
-			</select>-->
-			<input type="button"
-			onclick="<?php $this->callAjax('ajaxRefreshVcard');?>"
-			value="<?php echo t('Refresh vCard'); ?>" />
+				<?php 
+					if(isset($_GET['f']))
+						echo $this->prepareVcard(movim_cache('vcard'.$_GET['f']));
+					else {
+						$user = new User();
+						echo $this->prepareVcard(movim_cache('vcard'));
+					}
+				?>
+			</div>
 		</div>
         <?php
     }

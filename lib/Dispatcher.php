@@ -48,6 +48,27 @@ class Dispatcher extends Controller
 		}
 	}
 	
+	function friend()
+	{
+		$user = new User();
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			if(isset($_GET['f']) && $_GET['f'] != "" ) {
+				$this->page->setTitle(sprintf(t('%s - Welcome to Movim'), APP_TITLE));
+				$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
+				$this->page->menuAddLink($_GET['f'], false, true);
+				$this->page->menuAddLink(t('Configuration'), '?q=config');
+				$content = new PageBuilder($user);
+
+				$this->page->setContent($content->build('friend.tpl'));
+				echo $this->page->build('page.tpl');
+			}
+			else
+				$this->mainPage();
+		}
+	}
+	
 	function config()
 	{
 		$user = new User();

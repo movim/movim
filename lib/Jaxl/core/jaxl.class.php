@@ -57,14 +57,12 @@
         static $included = array();
         $tagMap = array(
             // core classes
-            'JAXLBosh' => '/core/jaxl.bosh.php',
             'JAXLCron' => '/core/jaxl.cron.php',
             'JAXLHTTPd' => '/core/jaxl.httpd.php',
             'JAXLog' => '/core/jaxl.logger.php',
             'JAXLXml' => '/core/jaxl.parser.php',
             'JAXLPlugin' => '/core/jaxl.plugin.php',
             'JAXLUtil' => '/core/jaxl.util.php',
-            'JAXLS5B' => '/core/jaxl.s5b.php',
             'JAXLException' => '/core/jaxl.exception.php',
             'XML' => '/core/jaxl.xml.php',  
             // xmpp classes
@@ -93,7 +91,7 @@
         }
         return;
     }
-
+	
     // cnt of connected instances
     global $jaxl_instance_cnt;
     $jaxl_instance_cnt = 0;
@@ -116,8 +114,8 @@
      * Include Jaxl core in you application and start connecting and managing multiple XMPP accounts
      * Packaged library is custom configured for running <b>single instance</b> Jaxl applications
      * 
-     * For connecting <b>multiple instance</b> XMPP accounts inside your application rewrite Jaxl controller
-     * using combination of env/jaxl.php, env/jaxl.ini and env/jaxl.conf
+     * For connecting <b>multiple instance</b> XMPP accounts inside your application see documentation for
+     * <b>addCore()</b> method
     */
     class JAXL extends XMPP {
 
@@ -200,6 +198,11 @@
         var $roster = array();
         
         /**
+         * Default status of connected Jaxl instance
+         */
+        var $status = 'Online using Jaxl library http://code.google.com/p/jaxl';
+        
+        /**
          * Jaxl will track presence stanza's and update local $roster cache
         */
         var $trackPresence = true;
@@ -226,12 +229,12 @@
         /**
          * Absolute path of log file for this Jaxl instance
         */
-        var $logPath = '/var/log/jaxl.log';
+        var $logPath = '/var/www/jaxl/jaxl.log';
 
         /**
          * Absolute path of pid file for this Jaxl instance
         */
-        var $pidPath = '/var/run/jaxl.pid';
+        var $pidPath = '/var/www/jaxl/jaxl.pid';
 
         /**
          * Enable/Disable shutdown callback on SIGH terms
@@ -379,7 +382,7 @@
         */
         function setStatus($status=false, $show=false, $priority=false, $caps=false, $vcard=false) {
             $child = array();
-            $child['status'] = ($status === false ? 'Online using Movim http://movim.eu' : $status);
+            $child['status'] = ($status === false ? $this->status : $status);
             $child['show'] = ($show === false ? 'chat' : $show);
             $child['priority'] = ($priority === false ? 1 : $priority);
             if($caps) $child['payload'] = $this->JAXL0115('getCaps', $this->features);
@@ -677,11 +680,12 @@
             $this->pass = $this->getConfigByPriority(@$config['pass'], "JAXL_USER_PASS", $this->pass); 
             $this->domain = $this->getConfigByPriority(@$config['domain'], "JAXL_HOST_DOMAIN", $this->domain);
             $this->bareJid = $this->user."@".$this->domain;
-
+			
             /* Optional params if not configured using jaxl.ini or $config take default values */
             $this->host = $this->getConfigByPriority(@$config['host'], "JAXL_HOST_NAME", $this->domain);
             $this->port = $this->getConfigByPriority(@$config['port'], "JAXL_HOST_PORT", $this->port);
             $this->resource = $this->getConfigByPriority(@$config['resource'], "JAXL_USER_RESC", "jaxl.".$this->uid.".".$this->clocked);
+            $this->status = $this->getConfigByPriority(@$config['status'], "JAXL_USER_STATUS", $this->status);
             $this->logLevel = $this->getConfigByPriority(@$config['logLevel'], "JAXL_LOG_LEVEL", $this->logLevel);
             $this->logRotate = $this->getConfigByPriority(@$config['logRotate'], "JAXL_LOG_ROTATE", $this->logRotate);
             $this->logPath = $this->getConfigByPriority(@$config['logPath'], "JAXL_LOG_PATH", $this->logPath);
@@ -748,18 +752,18 @@
             if(!JAXLUtil::isWin() && JAXLUtil::pcntlEnabled() && $this->sigh) {
                 pcntl_signal(SIGTERM, array($this, "shutdown"));
                 pcntl_signal(SIGINT, array($this, "shutdown"));
-                $this->log("[[JAXL]] Registering callbacks for CTRL+C and kill.", 4);
+                $this->log("[[JAXL]] Registering shutdown callbacks", 5);
             }
             else {
-                $this->log("[[JAXL]] No callbacks registered for CTRL+C and kill.", 4);
+                $this->log("[[JAXL]] No callbacks for shutdown", 5);
             }
            
             // check Jaxl dependency on PHP extension in cli mode
             if($this->mode == "cli") {
                 if(($this->openSSL = JAXLUtil::sslEnabled())) 
-                    $this->log("[[JAXL]] OpenSSL extension is loaded.", 4);
+                    $this->log("[[JAXL]] OpenSSL extension is loaded.", 5);
                 else
-                    $this->log("[[JAXL]] OpenSSL extension not loaded.", 4);
+                    $this->log("[[JAXL]] OpenSSL extension not loaded.", 5);
                
                 if(!function_exists('fsockopen'))
                     throw new JAXLException("[[JAXL]] Requires fsockopen method");

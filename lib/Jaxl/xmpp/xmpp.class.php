@@ -287,7 +287,7 @@
          * $option = null (read until data is available)
          * $option = integer (read for so many seconds)
         */
-        function getXML() { 
+        function getXML() {
             // prepare select streams
             $streams = array(); $jaxls = $this->instances['xmpp'];
             foreach($jaxls as $cnt=>$jaxl) {
@@ -407,9 +407,14 @@
                     $this->log("[[XMPPSend]] $ret\n".$xml, 4);
                     return $ret;
                 }
-                else {
+                else if($changed === 0) {
                     $this->obuffer .= $xml;
                     $this->log("[[XMPPSend]] Not ready for write, obuffer size:".strlen($this->obuffer), 1);
+                    return 0;
+                }
+                else {
+                    $this->obuffer .= $xml;
+                    $this->log("[[XMPPSend]] Something horibly wrong here", 1);
                     return 0;
                 }
             }
