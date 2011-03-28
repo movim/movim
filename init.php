@@ -49,6 +49,18 @@ function __autoload($className) {
 	 * the corresponding path is determined from the underscores in the
 	 * classname. Thus, My_Nice_Class will be loaded from 'My/Nice/Class.php'.
 	 */
+    else if(preg_match('/^[A-Z][a-z0-9_]+[A-Z][a-z0-9_]+$/', $className)) { // Camelcase
+        $tclass = preg_replace('/^([A-Z][a-z0-9_]+[A-Z][a-z0-9_]+$/',
+                               '$1', $className);
+
+        $lib = LIB_PATH.$tclass
+        
+        if(file_exists($lib) && is_dir($lib)) {
+            $file = $lib.'/'.$className;
+        } else {
+            return;
+        }
+    }
 	else {
 		$tclass = explode('_', $className);
 
