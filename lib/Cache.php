@@ -10,7 +10,7 @@ function movim_cache($key)
 	$login = $user->getLogin();
 	
 	if(!is_dir(BASE_PATH."/user/".$login."/cache"))
-		mkdir(BASE_PATH."/user/".$login."/cache", 0766);
+		mkdir(BASE_PATH."/user/".$login."/cache", 0755);
 	
 	if(func_num_args() == 1) {
 		if(file_exists(BASE_PATH."/user/".$login."/cache/".$key)) {
