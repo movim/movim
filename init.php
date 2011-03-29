@@ -55,15 +55,21 @@ function __autoload($className) {
      * the file in Foo/Bar/FooBarBaz.php.
      */
     else if(preg_match('/^[A-Z][a-z0-9_]+[A-Z][a-z0-9_]+$/', $className)) { // Camelcase
-        $tclass = preg_replace('/^([A-Z][a-z0-9_]+[A-Z][a-z0-9_]+$/',
+        $tclass = preg_replace('/^([A-Z][a-z0-9_]+)[A-Z][a-z0-9_]+$/',
                                '$1', $className);
 
-        $lib = LIB_PATH.$tclass
+        $lib = LIB_PATH.$tclass;
 
         if(file_exists($lib) && is_dir($lib)) {
             $file = $lib.'/'.$className;
         } else {
-            return;
+            $tclass = explode('_', $className);
+
+            $file = LIB_PATH.$tclass[0];
+
+            for($i = 1; $i < sizeof($tclass); $i++) {
+                $file .= "/{$tclass[$i]}";
+            }
         }
     }
     /* Else we load the default lib path.
