@@ -14,7 +14,7 @@ function movim_append(params)
     if(params.length < 2) {
         return;
     }
-    
+
     target = document.getElementById(params[0]);
     if(target) {
         target.innerHTML += params[1];
@@ -26,7 +26,7 @@ function movim_prepend(params)
     if(params.length < 2) {
         return;
     }
-    
+
     target = document.getElementById(params[0]);
     if(target) {
         target.innerHTML = params[1] + target.innerHTML;
@@ -38,7 +38,7 @@ function movim_fill(params)
     if(params.length < 2) {
         return;
     }
-    
+
     target = document.getElementById(params[0]);
     if(target) {
         target.innerHTML = params[1];
@@ -65,7 +65,7 @@ function MovimRPC()
     /* Methods */
     this.make_xmlhttp = MovimRPC_make_xmlhttp;
     this.commit = MovimRPC_commit;
-    
+
     this.set_widget = MovimRPC_set_widget;
     this.set_func = MovimRPC_set_func;
     this.add_param = MovimRPC_add_param;
@@ -142,7 +142,7 @@ function MovimRPC_handle_rpc(xml)
             var params = func.childNodes;
 
             var aparams = new Array();
-            
+
             for(p = 0; p < params.length; p++) {
                 if(params[p].nodeName != "param")
                     continue;
@@ -178,12 +178,12 @@ function MovimRPC_generate_xml()
             params += "</array>\n";
         }
         else if(this.params[i].constructor == Hash) {
-            var hash = this.params[i];
-            hash.reset();
+            var iter = this.params[i].iterate();
+            iter.start();
             params += "<array>\n";
-            while(hash.iterate()) {
-                params += '<arrayelt name="' + hash.key() + '">'
-                    + hash.val()
+            while(iter.next()) {
+                params += '<arrayelt name="' + iter.key() + '">'
+                    + iter.val()
                     + "</arrayelt>\n";
             }
             params += "</array>\n";
@@ -191,11 +191,11 @@ function MovimRPC_generate_xml()
         else {
             params += this.params[i];
         }
-        
+
         params +="</param>\n";
     }
 
-    var request =  
+    var request =
         '<?xml version="1.0" encoding="UTF-8" ?>'
         + '<funcall widget="'+ this.widget + '" name="' + this.func + '">' + "\n"
         + params + "\n"
@@ -215,13 +215,13 @@ function MovimRPC_generate_xml()
 function MovimRPC_commit()
 {
     movim_xmlhttp = this.make_xmlhttp();
-    
+
 	movim_xmlhttp.open('POST', 'jajax.php', true);
-    
+
    	movim_xmlhttp.onreadystatechange = function()
     {
         if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
-//            log("Received data " + movim_xmlhttp.responseText);            
+//            log("Received data " + movim_xmlhttp.responseText);
 		    MovimRPC_handle_rpc(movim_xmlhttp.responseXML);
         }
     };

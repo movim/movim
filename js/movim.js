@@ -46,8 +46,8 @@ function movim_parse_form(formname) {
     var form = document.forms[formname];
     if(!form)
         return false;
-    
-	var data = new Hash();
+
+	var data = H();
 	for(var i = 0; i < form.elements.length; i++) {
         data.set(form.elements[i].name,
                  form.elements[i].value);
