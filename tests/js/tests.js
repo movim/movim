@@ -50,6 +50,7 @@ function runtests()
                     catch(err)
                     {
                         printtest(false);
+                        print('<br />' + err + '<br />');
                     }
                     print('<br />');
                 }
