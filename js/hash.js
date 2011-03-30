@@ -7,6 +7,16 @@ function H(object)
     return new Hash(object);
 }
 
+function isHash(object)
+{
+    var type = "";
+    if(object != null) {
+        type = object.type;
+    }
+
+    return type == "Hash";
+}
+
 /**
  * Allows iterating over a hash.
  */
@@ -16,6 +26,7 @@ function HashIterator(data, keys)
     this.keys = keys;
     this.cursor = 0;
     this.iterated = false;
+    this.type = "HashIterator";
 
     /**
      * Moves one item further.
@@ -92,7 +103,8 @@ function HashIterator(data, keys)
 
 function Hash(object)
 {
-    this.container    = null;
+    this.container = null;
+    this.type      = "Hash";
 
     /**
      * Adds an element to the Hash.
@@ -117,6 +129,11 @@ function Hash(object)
         var value = this.container[key];
         delete this.container[key];
         return value;
+    }
+
+    this.haskey = function(key)
+    {
+        return key in this.container;
     }
 
     /**
