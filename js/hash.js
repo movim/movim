@@ -2,147 +2,129 @@
  * Implements hashes.
  */
 
-function Hash()
+function H(object)
 {
-    this.container    = new Array();
-    this.numerical_id = 0;
-    this.length       = 0;
-    this.cursor       = 0;
-    this.iterated     = false;
+    return new Hash(object);
+}
+
+/**
+ * Allows iterating over a hash.
+ */
+function HashIterator(data, keys)
+{
+    this.hash = data;
+    this.keys = keys;
+    this.cursor = 0;
+    this.iterated = false;
 
     /**
-     * Removes the last element of the Hash and returns its value.
+     * Moves one item further.
      */
-    this.pop = function()
+    this.next = function()
     {
-        var lastval = this.container.pop();
-        // Removing the key
-        var lastkey = this.container.pop();
-        
-        this.length--;
-        if(lastkey == this.numerical_id)
-            this.numerical_id--;
-        
-        return lastval;
+        if(this.iterated && this.cursor < this.keys.length - 1) {
+            this.cursor++;
+            return true;
+        }
+        else if(!this.iterated) {
+            this.iterated = true;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
+
+    /**
+     * Moves back one item.
+     */
+    this.prev = function()
+    {
+        if(this.iterated && this.cursor > 0) {
+            this.cursor--;
+            return true;
+        }
+        else if(!this.iterated) {
+            this.iterated = true;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * returns the key at the current position.
+     */
+    this.key = function()
+    {
+        return this.keys[this.cursor];
+    }
+
+    /**
+     * Sets the cursor on the first key.
+     */
+    this.start = function()
+    {
+        this.cursor = 0;
+        this.iterated = false;
+        return this.cursor;
+    }
+
+    /**
+     * Sets the cursor on the last key.
+     */
+    this.end = function()
+    {
+        this.cursor = this.keys.length - 1;
+        this.iterated = false;
+        return this.cursor;
+    }
+
+    /**
+     * returns the value at the current position.
+     */
+    this.val = function()
+    {
+        return this.hash[this.keys[this.cursor]];
+    }
+}
+
+function Hash(object)
+{
+    this.container    = null;
 
     /**
      * Adds an element to the Hash.
      */
     this.set = function(key, val)
     {
-        // Attempting to set the value on an existing key
-        for(var eln = 0; eln < this.container.length; eln += 2)
-        {
-            if(this.container[eln] == key) {
-                this.container[eln + 1] = val;
-                return val;
-            }
-        }
+        var ret = this.container[key] = val;
 
-        // Didn't work. Pushing instead.
-        this.container.push(key);
-        this.container.push(val);
-
-        this.length++;
+        return ret;
     }
 
     /**
-     * Adds an unassociative element to the Hash.
+     * gets the value for a key.
      */
-    this.push = function(val)
+    this.get = function(key)
     {
-        this.container.push(this.numerical_id);
-        this.container.push(val);
-        this.numerical_id++;
-        this.length++;
+        return this.container[key];
     }
 
-    /**
-     * Gets the value at key.
-     */
-    this.haskey = function(key)
+    this.del = function(key)
     {
-        for(var eln = 0; eln < this.container.length; eln += 2)
-        {
-            if(this.container[eln] == key) {
-                return this.container[eln + 1];
-            }
-        }
-
-        return false;
+        var value = this.container[key];
+        delete this.container[key];
+        return value;
     }
 
-    /**
-     * Checks if Hash contains key.
-     */
-    this.hasval = function(key)
-    {
-        for(var eln = 0; eln < this.container.length; eln += 2)
-        {
-            if(this.container[eln] == key) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks if Hash contains val.
-     */
-    this.getval = function(val)
-    {
-        for(var eln = 1; eln < this.container.length; eln += 2)
-        {
-            if(this.container[eln] == val) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /* Iteration */
     /**
      * Iterates through the hash.
      */
     this.iterate = function()
     {
-        if(this.cursor == 0 && !this.iterated) {
-            this.iterated = true;
-            return true;
-        }
-
-        if(this.cursor + 1 == this.length) {
-            return false;
-        } else {
-            this.cursor++;
-            return true;
-        }
-    }
-
-    /**
-     * Resets the cursor's position.
-     */
-    this.reset = function()
-    {
-        this.cursor = 0;
-        this.iterated = false;
-    }
-
-    /**
-     * Gets the key at the current cursor position.
-     */
-    this.key = function()
-    {
-        return this.container[this.cursor * 2];
-    }
-
-    /**
-     * Gets the value at the current cursor position.
-     */
-    this.val = function()
-    {
-        return this.container[this.cursor * 2 + 1];
+        return new HashIterator(this.container, this.keys());
     }
 
     /* Conversions */
@@ -152,9 +134,8 @@ function Hash()
     this.keys = function()
     {
         var keys = new Array();
-        for(var eln = 0; eln < this.container.length; eln += 2)
-        {
-            keys.push(this.container[eln]);
+        for(var key in this.container) {
+            keys.push(key);
         }
 
         return keys;
@@ -165,13 +146,12 @@ function Hash()
      */
     this.values = function()
     {
-        var vals = new Array();
-        for(var eln = 1; eln < this.container.length; eln += 2)
-        {
-            vals.push(this.container[eln]);
+        var values = new Array();
+        for(var key in this.container) {
+            values.push(this.container[key]);
         }
 
-        return vals;
+        return values;
     }
 
     /**
@@ -183,20 +163,24 @@ function Hash()
             want_keys = true;
         }
 
-        var buffer = "";
-        var sep = "";
-        if(want_keys) {
-            for(var eln = 0; eln < this.container.length; eln += 2) {
-                if(eln > 0) sep = ",";
-                buffer+= sep + this.container[eln] + ":" + this.container[eln + 1];
+        var buffer = ""; var i = 0;
+        for(var key in this.container) {
+            if(i > 0) buffer += ", ";
+            if(want_keys) {
+                buffer += key + ": ";
             }
-        } else {
-            for(var eln = 1; eln < this.container.length; eln += 2) {
-                if(eln > 1) sep = ",";
-                buffer+= sep + this.container[eln];
-            }
+            buffer += this.container[key];
+            i++;
         }
 
         return buffer;
+    }
+
+
+    // Contructor
+    if(arguments.length > 0 && object != null) {
+        this.container = object;
+    } else {
+        this.container = {};
     }
 }
