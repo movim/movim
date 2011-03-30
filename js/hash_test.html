@@ -26,7 +26,7 @@
           myhash.set("toto", "tata");
           myhash.set("prout", "tagada");
           print("<br />");
-          
+
           print("Dumping contents.<br />");
           print(myhash.to_string());
           print("<br /><br />");
@@ -36,44 +36,28 @@
           print(myhash.to_string());
           print("<br /><br />");
 
-          print("Popping last element: ");
-          var last = myhash.pop();
-          print(last + "<br />");
+          print("The value of 'toto' is '" + myhash.get('toto') + "'<br />");
+          print("<br />");
+
+          print("Re-creating hash with constructor.<br />");
+          myhash = H({toto: 'tata', couac: 'prout', pouet: 'tagada'});
           print(myhash.to_string());
           print("<br /><br />");
-
-          print("Pushing unassociative element<br />");
-          myhash.push("tagada");
-          print(myhash.to_string());
-          print("<br /><br />");
-
-          if(myhash.haskey('toto')) {
-              print("The hash contains the key 'toto'.<br />");
-          } else {
-              print("Something's wrong. Hash says it doesn't contain 'toto'.<br />");
-          }
-          print("<br />");
-
-          if(myhash.hasval('tagada')) {
-              print("The hash contains the value 'tagada'.<br />");
-          } else {
-              print("Something's wrong. Hash says it doesn't contain 'tagada'.<br />");
-          }
-          print("<br />");
-
-          print("The value of 'toto' is '" + myhash.getval('toto') + "'<br />");
-          print("<br />");
 
           print("Iterating through the array.<br />");
-          while(myhash.iterate()) {
-              print(myhash.key() +" => '"+ myhash.val() +"'<br />");
+
+          var iter = myhash.iterate();
+          while(iter.next()) {
+              print(iter.key() +" => '"+ iter.val() +"'<br />");
           }
           print("<br />");
-          
-          print("And again!<br />");
-          myhash.reset();
-          while(myhash.iterate()) {
-              print(myhash.key() +" => '"+ myhash.val() +"'<br />");
+
+          print("And reversed!<br />");
+
+          var iter = myhash.iterate();
+          iter.end();
+          while(iter.prev()) {
+              print(iter.key() +" => '"+ iter.val() +"'<br />");
           }
           print("<br />");
 
