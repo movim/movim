@@ -3,7 +3,7 @@
 /**
  * @file Friends.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief The Friends widget
  *
  * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
@@ -12,13 +12,13 @@
  * @date 20 October 2010
  *
  * Copyright (C)2010 MOVIM project
- * 
+ *
  * See COPYING for licensing information.
  */
 
 class Friends extends Widget
 {
-    
+
     function WidgetLoad()
     {
     	$this->addcss('friends.css');
@@ -35,10 +35,17 @@ class Friends extends Widget
 		$html = $this->prepareRoster($roster);
         MovimRPC::call('movim_fill', 'tinylist', MovimRPC::cdata($html));
     }
-    
+
     function prepareRoster($roster) {
         $html = "<ul>";
     	$i = 0;
+
+        // Is there anything in the roster?
+        if(!is_array($roster) || count($roster) < 1) {
+            $html .= "</ul>";
+            return $html;
+        }
+
 		foreach($roster["queryItemJid"] as $key => $value ) {
 			if($value != "undefined") {
 				if($roster["queryItemName"][$i] != NULL) {
@@ -53,35 +60,35 @@ class Friends extends Widget
 		$html .= "</ul>";
 		return $html;
     }
-    
+
 	function onIncomingOnline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 	    MovimRPC::call('incomingOnline',
                       MovimRPC::cdata($jid));
 	}
-		
+
 	function onIncomingOffline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-		
+
 	    MovimRPC::call('incomingOffline', MovimRPC::cdata($jid));
 	}
-	
+
 	function onIncomingDND($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-		
+
 	    MovimRPC::call('incomingDND', MovimRPC::cdata($jid));
 	}
-	
+
 	function onIncomingAway($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-		
+
 	    MovimRPC::call('incomingAway', MovimRPC::cdata($jid));
 	}
-	
+
 	function ajaxRefreshRoster()
 	{
 		$user = new User();
