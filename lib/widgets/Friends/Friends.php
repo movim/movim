@@ -104,7 +104,7 @@ class Friends extends Widget
           <h3><?php echo t('Contacts');?></h3>
 
           <div id="tinylist">
-          	<?php echo $this->prepareRoster(movim_cache('roster')); ?>
+          	<?php echo $this->prepareRoster(Cache::handle('roster')); ?>
           </div>
         </div>
         <?php

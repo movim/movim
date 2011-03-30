@@ -62,10 +62,10 @@ class Profile extends Widget
 			<div id="avatar">
 				<?php 
 					if(isset($_GET['f']))
-						echo $this->prepareVcard(movim_cache('vcard'.$_GET['f']));
+						echo $this->prepareVcard(Cache::handle('vcard'.$_GET['f']));
 					else {
 						$user = new User();
-						echo $this->prepareVcard(movim_cache('vcard'));
+						echo $this->prepareVcard(Cache::handle('vcard'));
 					}
 				?>
 			</div>
