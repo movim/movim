@@ -29,7 +29,7 @@ define('APP_TITLE', t("MOVIM - Test Client"));
 	} else {
 		$uri = 'http://' . $_SERVER['HTTP_HOST'] . $path;
 	}
-	
+
 	define('BASE_URI', $uri);
 }
 
@@ -39,41 +39,52 @@ define('APP_TITLE', t("MOVIM - Test Client"));
  * with this.
  */
 function __autoload($className) {
-	
+
 	if(preg_match('/^JAXL/', $className)) {
 		return;
 	}
-
-	/* Else we load the default lib path.
-	 *
-	 * Note that the classes can be stored into subdirectories, in which case,
-	 * the corresponding path is determined from the underscores in the
-	 * classname. Thus, My_Nice_Class will be loaded from 'My/Nice/Class.php'.
-	 */
+    /* This is a new lib packaging process. The point here is that the library
+     * sits at only one directory depth, which allows seemless integration and
+     * proper class naming.
+     *
+     * For example, loading the class FooBar will make the autoloader look for a
+     * `Foo' folder. If found, it then loads the file Foo/FooBar.php, which
+     * contains the class FooBar.
+     *
+     * Note that this is limited to level 1. Thus loading class FooBarBaz will
+     * search folder `Foo' for file FooBarBaz.php and load it. It will not load
+     * the file in Foo/Bar/FooBarBaz.php.
+     */
     else if(preg_match('/^[A-Z][a-z0-9_]+[A-Z][a-z0-9_]+$/', $className)) { // Camelcase
         $tclass = preg_replace('/^([A-Z][a-z0-9_]+[A-Z][a-z0-9_]+$/',
                                '$1', $className);
 
         $lib = LIB_PATH.$tclass
-        
+
         if(file_exists($lib) && is_dir($lib)) {
             $file = $lib.'/'.$className;
         } else {
             return;
         }
     }
+    /* Else we load the default lib path.
+	 *
+	 * Note that the classes can be stored into subdirectories, in which case,
+	 * the corresponding path is determined from the underscores in the
+	 * classname. Thus, My_Nice_Class will be loaded from 'My/Nice/Class.php'.
+	 */
 	else {
 		$tclass = explode('_', $className);
 
 	  	$file = LIB_PATH.$tclass[0];
-		
+
 	  	for($i = 1; $i < sizeof($tclass); $i++) {
 			$file .= "/{$tclass[$i]}";
 		}
 	}
-	  
+
 	$file .= ".php";
-  
+
 	if(file_exists($file)) {
 		require_once($file);
 	} else {
