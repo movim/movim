@@ -16,10 +16,10 @@
  * See COPYING for licensing information.
  */
 
-class Logout extends GuiWidget
+class Logout extends Widget
 {
     
-    function GuiWidgetLoad()
+    function WidgetLoad()
     {
     	$this->addcss('logout.css');
     	$this->addjs('logout.js');

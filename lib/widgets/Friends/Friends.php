@@ -16,10 +16,10 @@
  * See COPYING for licensing information.
  */
 
-class Friends extends GuiWidget
+class Friends extends Widget
 {
 
-    function GuiWidgetLoad()
+    function WidgetLoad()
     {
     	$this->addcss('friends.css');
     	$this->addjs('friends.js');

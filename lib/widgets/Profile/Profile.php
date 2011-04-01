@@ -16,10 +16,10 @@
  * See COPYING for licensing information.
  */
 
-class Profile extends GuiWidget
+class Profile extends Widget
 {
     
-    function GuiWidgetLoad()
+    function WidgetLoad()
     {
     	$this->addcss('profile.css');
     	$this->addjs('profile.js');

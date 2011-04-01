@@ -156,15 +156,15 @@ class GetConf
     * @param $arr Target array where the values will be stored
     * @return NULL
     */
-    public static function convertXmlObjToArr($obj, array &$arr = null)
+    private function convertXmlObjToArr( $obj, &$arr = null)
     {
         $children = $obj->children();
         $executed = false;
         foreach ($children as $elementName => $node)
         {
-            if(is_array($arr) && array_key_exists($elementName , $arr))
+            if( array_key_exists( $elementName , $arr ) )
             {
-                if(array_key_exists(0 ,$arr[$elementName]))
+                if(array_key_exists( 0 ,$arr[$elementName] ) )
                 {
                     $i = count($arr[$elementName]);
                     self::convertXmlObjToArr ($node, $arr[$elementName][$i]);

@@ -16,9 +16,9 @@
  * See COPYING for licensing information.
  */
 
-class Poller extends GuiWidget
+class Poller extends Widget
 {
-	function GuiWidgetLoad()
+	function WidgetLoad()
 	{
         // We add the javascript that does the job.
         $this->addjs('poller.js');

@@ -16,9 +16,9 @@
  * See COPYING for licensing information.
  */
 
-class Chat extends GuiWidget
+class Chat extends Widget
 {
-	function GuiWidgetLoad()
+	function WidgetLoad()
 	{
         $this->addjs('chat.js');
         $this->addcss('chat.css');

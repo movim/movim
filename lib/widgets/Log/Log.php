@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Log extends GuiWidget
+class Log extends Widget
 {
     function widgetLoad()
     {

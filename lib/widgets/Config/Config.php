@@ -16,9 +16,9 @@
  * See COPYING for licensing information.
  */
 
-class Config extends GuiWidget
+class Config extends Widget
 {
-    function GuiWidgetLoad()
+    function WidgetLoad()
     {
     
     }
