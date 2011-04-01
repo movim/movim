@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Wall extends Widget
+class Wall extends GuiWidget
 {
 	function build()
 	{

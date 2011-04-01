@@ -36,7 +36,7 @@ class TplPageBuilder
 		$this->user = $user;
 		$conf = new GetConf();
 		self::load_language();
-		$this->theme = $conf->getServerConfElement('theme');
+		$this->theme = new TplTheme($conf->getServerConfElement('theme'));
 	}
 
 	function load_language() {
@@ -71,11 +71,6 @@ class TplPageBuilder
 		else {
             load_language(GetConf::getServerConfElement('defLang'));
         }
-	}
-
-	function theme_path($file)
-	{
-		return THEMES_PATH . $this->theme . '/' . $file;
 	}
 
 	/**
@@ -125,14 +120,12 @@ class TplPageBuilder
 	/**
 	 * Actually generates the page from templates.
 	 */
-	function build($template)
+	function build($page)
 	{
-		ob_clean();
-		ob_start();
-		require($this->theme_path($template));
-		$outp = ob_get_clean();
+        $outp = $this->theme->build($page, $this->title);
+
 		$outp = str_replace('<%scripts%>',
-							$this->printCss() . $this->printScripts(),
+							$this->theme->Css() . $this->theme->Scripts(),
 							$outp);
 		return $outp;
 	}

@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Account extends Widget
+class Account extends GuiWidget
 {
 	private $user;
 	

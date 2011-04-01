@@ -20,7 +20,7 @@
  * A container that abstracts the communication between
  * widgets and the core of Movim.
  */
-class WidgetWrapper
+class GuiClass
 {
     private $register_widgets;
     private $loaded_widgets = array();
@@ -34,23 +34,16 @@ class WidgetWrapper
     /**
      * Constructor. The parameter instructs the wrapper about whether
      * it should save $_SESSION or not.
-     * @param $register set to false not to save the widgets in SESSION.
+     * @param $discard set to true to discard the widgets after execution.
      */
-    private function __construct($register)
+    function __construct($discard = false)
     {
-        $this->register_widgets = $register;
+        $this->register_widgets = !$discard;
+
         if(isset($_SESSION['loaded_widgets'])
            && is_array($_SESSION['loaded_widgets'])) {
             $this->loaded_widgets_old = $_SESSION['loaded_widgets'];
         }
-    }
-
-    static function getInstance($register = true)
-    {
-        if(!is_object(self::$instance)) {
-            self::$instance = new WidgetWrapper($register);
-        }
-        return self::$instance;
     }
 
     /**
