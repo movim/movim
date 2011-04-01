@@ -3,7 +3,7 @@
 /**
  * @file WidgetWrapper.php
  * This file is part of PROJECT.
- * 
+ *
  * @brief Description
  *
  * @author Guillaume Pasquet <gpasquet@lewisday.co.uk>
@@ -12,7 +12,7 @@
  * @date 20 January 2011
  *
  * Copyright (C)2011 Lewis Day Transport Plc.
- * 
+ *
  * All rights reserved.
  */
 
@@ -27,10 +27,10 @@ class WidgetWrapper
     private $loaded_widgets_old;
 
     private static $instance;
-    
+
     private $css = array(); // All the css loaded by the widgets so far.
     private $js = array(); // All the js loaded by the widgets so far.
-    
+
     /**
      * Constructor. The parameter instructs the wrapper about whether
      * it should save $_SESSION or not.
@@ -95,7 +95,7 @@ class WidgetWrapper
 		}
 		else {
 			throw new MovimException(
-				sprintf(t("Error: Requested widget '%s' doesn't exist."), $widget_name));
+				t("Error: Requested widget '%s' doesn't exist.", $widget_name));
 		}
 
         require_once($widget_path);

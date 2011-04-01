@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<movimtheme>
+  <info>
+    <name>MOVIM</name>
+    <author>Timothée Jaussoin</author>
+    <desc>The default theme provided with MOVIM</desc>
+    <license>AGPL3</license>
+  </info>
+  <regions>
+    <region>
+      <name>left-sidebar</name>
+      <desc>Left Sidebar</desc>
+    </region>
+    <region>
+      <name>top-bar</name>
+      <desc>Top bar</desc>
+    </region>
+    <region>
+      <name>right-sidebar</name>
+      <desc>Right Sidebar</desc>
+    </region>
+    <region>
+      <name>content</name>
+      <desc>Main content</desc>
+    </region>
+  </regions>
+</movimtheme>

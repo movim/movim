@@ -3,7 +3,7 @@
 /**
  * @file i18n.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief A collection of functions to translate strings.
  *
  * @author Etenil <etenil@etenilsrealm.nl>
@@ -12,7 +12,7 @@
  * @date 22 December 2010
  *
  * Copyright (C)2010 MOVIM team.
- * 
+ *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -34,17 +34,31 @@ $translations = array();
 
 /**
  * Translates strings into the given langage.
+ *
+ * This has a sprintf() like behaviour so as to ease translation. Use as:
+ *   echo t("my %s string of %d chars", "beautiful", 20);
+ *
+ * Prototype:
+ *   t(string $string, ...)
  */
 function t($string)
 {
 	global $language;
 	global $translations;
 
+    $lstring = $string;
+
 	if(isset($translations[$string])) {
-		return $translations[$string];
+        $lstring = $translations[$string];
 	}
 
-	return $string;
+    if(func_num_args() > 1) {
+        $args = func_get_args();
+        $args[0] = $lstring; // Replacing with the translated string.
+        $lstring = call_user_func("sprintf", $args);
+    }
+
+	return $lstring;
 }
 
 function get_quoted_string($string)
@@ -78,7 +92,7 @@ function parse_lang_file($pofile)
 		if($line[0] == "#" || trim(rtrim($line)) == "") {
 			continue;
 		}
-		
+
 		if(preg_match('#^msgid#', $line)) {
 			if($last_token == "msgstr") {
 				$trans_string[$msgid] = $msgstr;
@@ -97,7 +111,7 @@ function parse_lang_file($pofile)
 	if($last_token == "msgstr") {
 		$trans_string[$msgid] = $msgstr;
 	}
-	
+
 	fclose($handle);
 
 	return $trans_string;
@@ -130,7 +144,7 @@ function load_extra_lang($directory)
 {
 	global $translations;
 	global $language;
-	
+
 	// Converting to unix path (simpler and portable.)
 	$directory = str_replace('\\', '/', $directory);
 
@@ -157,7 +171,7 @@ function load_extra_lang($directory)
 
 /**
  * Return an array containing all the presents languages in i18n/
- * 
+ *
  */
 
 function load_lang_array() {
@@ -170,7 +184,7 @@ function load_lang_array() {
 			$po[$explode[0]] = $lang_list[$explode[0]];
 		}
 	}
-	
+
 	return $po;
 }
 

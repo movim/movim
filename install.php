@@ -16,19 +16,19 @@ function test_requirements()
     $errors[] = t("PHP version mismatch. Movim requires PHP 5.3 minimum.");
   }
   if(!extension_loaded('curl')) {
-    $errors[] = sprintf(t("Movim requires the %s extension."), 'PHP Curl');
+    $errors[] = t("Movim requires the %s extension.", 'PHP Curl');
   }
   if(!extension_loaded('SimpleXML')) {
-    $errors[] = sprintf(t("Movim requires the %s extension."), 'SimpleXML');
+    $errors[] = t("Movim requires the %s extension.", 'SimpleXML');
   }
   if(!test_dir('./')) {
     $errors[] = t("Movim's folder must be writable.");
   }
   /*if(!test_dir('user')) {
-    $errors[] = sprintf(t("The <em>%s</em> folder must exist and be writable."), 'user');
+    $errors[] = t("The <em>%s</em> folder must exist and be writable.", 'user');
   }
   if(!test_dir('log')) {
-    $errors[] = sprintf(t("The <em>%s</em> folder must exist and be writable."), 'log');
+    $errors[] = t("The <em>%s</em> folder must exist and be writable.", 'log');
   }*/
 
   return (count($errors) > 0)? $errors : false;
@@ -106,7 +106,7 @@ function list_lang()
     if(!preg_match('/\.po$/', $lang)) {
       continue;
     }
-    
+
     $lang = substr($lang, 0, strlen($lang) - 3);
     $langs[$lang] = $languages[$lang];
   }
@@ -120,7 +120,7 @@ function show_install_form()
   <h1><?php echo t('Movim Installer'); ?></h1>
   <form method="post">
     <input type="hidden" name="install" value="true" />
-    <?php 
+    <?php
     make_select('theme', t("Theme"), list_themes());
     make_select('language', t("Default language"), list_lang());
     make_textbox('boshCookieTTL', t("Bosh cookie's expiration (s)"), 3600);
@@ -182,18 +182,18 @@ function perform_install()
 {
   // Creating the folders.
   if(!test_dir('user') && !@mkdir('user')) {
-    printf(t("Couldn't create directory '%s'."), 'user');
+    echo t("Couldn't create directory '%s'.", 'user');
     return false;
   }
   if(!test_dir('log') && !@mkdir('log')) {
-    printf(t("Couldn't create directory '%s'."), 'log');
+    echo t("Couldn't create directory '%s'.", 'log');
     return false;
   }
   if(!test_dir('config') && !@mkdir('config')) {
-    printf(t("Couldn't create directory '%s'."), 'config');
+    echo t("Couldn't create directory '%s'.", 'config');
     return false;
   }
-  
+
   // Creating the configuration file.
   $conf = array(
     'config' => array(
@@ -212,7 +212,7 @@ function perform_install()
       ),
     );
   if(!@file_put_contents('config/conf.xml', make_xml($conf))) {
-    printf(t("Couldn't create configuration file '%s'."), 'config/conf.xml');
+    echo t("Couldn't create configuration file '%s'.", 'config/conf.xml');
     return false;
   }
 
@@ -250,7 +250,7 @@ function perform_install()
           if(perform_install()) {
             ?>
             <h1><?php echo t('Movim is installed!');?></h1>
-            <p><?php printf(t('You can now access your shiny %sMovim instance%s'),
+            <p><?php echo t('You can now access your shiny %sMovim instance%s',
                             '<a href="index.php">',
                             '</a>');?></p>
             <?php

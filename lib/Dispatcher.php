@@ -2,7 +2,7 @@
 /**
  * @file Dispatcher.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief Handles incoming static pages requests.
  *
  * @author Etenil <etenil@etenilsrealm.nl>
@@ -11,7 +11,7 @@
  * @date 21 October 2010
  *
  * Copyright (C)2010 MOVIM Project
- * 
+ *
  * See COPYING for licensing deatils.
  */
 
@@ -19,12 +19,12 @@ class Dispatcher extends Controller
 {
 	protected $default_handler = 'mainPage';
 	private $page;
-	
+
 	function __construct()
 	{
 		parent::__construct();
-		
-		$this->page = new PageBuilder();
+
+		$this->page = new TplPageBuilder();
         $this->page->addScript('hash.js');
         $this->page->addScript('movimrpc.js');
 		$this->page->addScript('movim.js');
@@ -37,17 +37,17 @@ class Dispatcher extends Controller
 		if(!$user->isLogged()) {
 			$this->login();
 		} else {
-			$this->page->setTitle(sprintf(t('%s - Welcome to Movim'), APP_TITLE));
+			$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
 			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
-			$content = new PageBuilder($user);
+			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('main.tpl'));
 			echo $this->page->build('page.tpl');
 		}
 	}
-	
+
 	function friend()
 	{
 		$user = new User();
@@ -55,11 +55,11 @@ class Dispatcher extends Controller
 			$this->login();
 		} else {
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
-				$this->page->setTitle(sprintf(t('%s - Welcome to Movim'), APP_TITLE));
+				$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
 				$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 				$this->page->menuAddLink($_GET['f'], false, true);
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
-				$content = new PageBuilder($user);
+				$content = new TplPageBuilder($user);
 
 				$this->page->setContent($content->build('friend.tpl'));
 				echo $this->page->build('page.tpl');
@@ -68,7 +68,7 @@ class Dispatcher extends Controller
 				$this->mainPage();
 		}
 	}
-	
+
 	function config()
 	{
 		$user = new User();
@@ -76,28 +76,28 @@ class Dispatcher extends Controller
 		if(!$user->isLogged()) {
 			$this->login();
 		} else {
-			$this->page->setTitle(sprintf(t('%s - Configuration'), APP_TITLE));
+			$this->page->setTitle(t('%s - Configuration', APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
 			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
 
-			$content = new PageBuilder($user);
+			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('config.tpl'));
 			echo $this->page->build('page.tpl');
 		}
 	}
-	
+
 	function account()
 	{
 		if(GetConf::getServerConfElement("accountCreation") == 1) {
-			$this->page->setTitle(sprintf(t('%s - Account Creation'), APP_TITLE));
+			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
-			$content = new PageBuilder($user);
+			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('account.tpl'));
 			echo $this->page->build('page.tpl');
-		
+
 		} else {
 			$this->login();
 		}
@@ -108,7 +108,7 @@ class Dispatcher extends Controller
 	 */
 	function login()
 	{
-		$this->page->setTitle(sprintf(t('%s - Login to Movim'), APP_TITLE));
+		$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
 		$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').'Movim | Human Network', 'http://www.movim.eu/', true);
 		if(GetConf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');

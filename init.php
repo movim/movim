@@ -40,61 +40,75 @@ define('APP_TITLE', t("MOVIM - Test Client"));
  */
 function __autoload($className) {
 
-	if(preg_match('/^JAXL/', $className)) {
+    /* Exceptions */
+    $manual_load = '(^JAXL)'; // Put ORs as "(^foo|^bar|^baz)"
+
+	if(preg_match('/'.$manual_load.'/', $className)) {
 		return;
+	}
+
+
+    $file = "";
+
+    /* This loads zend-like paths for libraries e.g.
+     *
+     *   Lib_Class_FooBar => ./Lib/Class/FooBar.php
+	 *
+	 * Note that the classes can be stored into subdirectories, in which case,
+	 * the corresponding path is determined from the underscores in the
+	 * classname. Thus, My_Nice_Class will be loaded from 'My/Nice/Class.php'.
+	 */
+    if(strpos($className, '_') !== false) {
+		$tclass = explode('_', $className);
+
+	  	$file = LIB_PATH.$tclass[0];
+
+	  	for($i = 1; $i < sizeof($tclass); $i++) {
+			$file .= "/".$tclass[$i];
+		}
 	}
     /* This is a new lib packaging process. The point here is that the library
      * sits at only one directory depth, which allows seemless integration and
-     * proper class naming.
+     * proper class naming e.g.
      *
-     * For example, loading the class FooBar will make the autoloader look for a
-     * `Foo' folder. If found, it then loads the file Foo/FooBar.php, which
-     * contains the class FooBar.
+     *   LibFooBar => ./Lib/LibFooBar.php
+     *
+     * In which case, the class has the same name as the containing file.
      *
      * Note that this is limited to level 1. Thus loading class FooBarBaz will
      * search folder `Foo' for file FooBarBaz.php and load it. It will not load
      * the file in Foo/Bar/FooBarBaz.php.
      */
-    else if(preg_match('/^[A-Z][a-z0-9_]+[A-Z][a-z0-9_]+$/', $className)) { // Camelcase
-        $tclass = preg_replace('/^([A-Z][a-z0-9_]+)[A-Z][a-z0-9_]+$/',
+    else if(preg_match('/^[A-Z][a-z0-9_]+[A-Z][a-z0-9_]+/', $className)) { // Camelcase
+        $tclass = preg_replace('/^([A-Z][a-z0-9_]+)[A-Z].+$/',
                                '$1', $className);
 
         $lib = LIB_PATH.$tclass;
 
         if(file_exists($lib) && is_dir($lib)) {
             $file = $lib.'/'.$className;
+            echo "tclass: $tclass<br />";
         } else {
             $tclass = explode('_', $className);
 
             $file = LIB_PATH.$tclass[0];
 
             for($i = 1; $i < sizeof($tclass); $i++) {
-                $file .= "/{$tclass[$i]}";
+                $file .= "/". $tclass[$i];
             }
         }
     }
-    /* Else we load the default lib path.
-	 *
-	 * Note that the classes can be stored into subdirectories, in which case,
-	 * the corresponding path is determined from the underscores in the
-	 * classname. Thus, My_Nice_Class will be loaded from 'My/Nice/Class.php'.
-	 */
-	else {
-		$tclass = explode('_', $className);
-
-	  	$file = LIB_PATH.$tclass[0];
-
-	  	for($i = 1; $i < sizeof($tclass); $i++) {
-			$file .= "/{$tclass[$i]}";
-		}
-	}
+    else { /* Simple classes that sit straight in lib/ */
+        $file = LIB_PATH.$className;
+    }
 
 	$file .= ".php";
 
 	if(file_exists($file)) {
 		require_once($file);
 	} else {
-		throw new MovimException(t("Erreur Autoload : le fichier {$file} n'existe pas"));
+        echo "File for class $className: $file<br />";
+		throw new MovimException(t("Erreur Autoload : le fichier %s n'existe pas", $file));
 	}
 }
 

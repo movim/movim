@@ -81,7 +81,7 @@ class Cache
         // OK, writing with its md5 buddy.
         if(!file_put_contents(self::cache_dir($key), $s_object)
            || !file_put_contents(self::cache_dir($key.'.md5'), $md5)) {
-            throw new MovimException(sprintf(t("Couldn't set cache file %s"), $key));
+            throw new MovimException(t("Couldn't set cache file %s", $key));
         }
 
         return true; // Just in case.

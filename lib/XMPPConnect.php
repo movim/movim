@@ -3,7 +3,7 @@
 /**
  * @file XMPPConnect.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief Wrapper around Jaxl to handle mid-level functionalities
  *
  * @author Etenil <etenil@etenilsrealm.nl>
@@ -12,10 +12,10 @@
  * @date 13 October 2010
  *
  * Copyright (C)2010 Movim Project
- * 
+ *
  * See COPYING for licensing information.
  */
-    
+
 // Jabber external component setting
 //define('JAXL_COMPONENT_HOST', 'component.'.JAXL_HOST_DOMAIN);
 //define('JAXL_COMPONENT_PASS', 'pass');
@@ -25,8 +25,8 @@ define('JAXL_COMPONENT_PORT', 5559);
 define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
 define('JAXL_LOG_EVENT', true);
 define('JAXL_LOG_ROTATE', false);
- 
-define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/'); 
+
+define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
 include(LIB_PATH . 'Jaxl/core/jaxl.class.php');
 
 class XMPPConnect
@@ -34,7 +34,7 @@ class XMPPConnect
 	private static $instance;
 	private $jaxl;
 	private $payload;
-    
+
 	/**
 	 * Firing up basic parts of jaxl and setting variables.
 	 */
@@ -44,7 +44,7 @@ class XMPPConnect
 		$serverConf = GetConf::getServerConf();
 
 		unset($_SESSION['jid']);
-		
+
 		$this->jaxl = new JAXL(array(
 								   // User Configuration
 								   'host' => $userConf['host'],
@@ -52,7 +52,7 @@ class XMPPConnect
 								   'boshHost' => $userConf['boshHost'],
 								   'boshSuffix' => $userConf['boshSuffix'],
 								   'boshPort' => $userConf['boshPort'],
-						   
+
 								   // Server configuration
 								   'boshCookieTTL' => $serverConf['boshCookieTTL'],
 								   'boshCookiePath' => $serverConf['boshCookiePath'],
@@ -61,7 +61,7 @@ class XMPPConnect
 								   'boshCookieHTTPOnly' => $serverConf['boshCookieHTTPOnly'],
 								   'logLevel' => $serverConf['logLevel'],
 								   'boshOut'=>false,
-								   
+
 								   ));
 		// Loading required XEPS
 		$this->jaxl->requires(array(
@@ -114,7 +114,7 @@ class XMPPConnect
 	public function login($jid, $pass)
 	{
 		if(!$this->checkJid($jid)) {
-		 	throw new MovimException(sprintf(t("Error: jid '%s' is incorrect"), $jid));
+		 	throw new MovimException(t("Error: jid '%s' is incorrect", $jid));
 		} else {
 			$id = explode('@',$jid);
 			$user = $id[0];
@@ -125,51 +125,51 @@ class XMPPConnect
 			$this->jaxl->pass = $pass;
 			$this->jaxl->startCore('bosh');
 		}
-		
+
 		self::setStatus(false, false);
 	}
-	
+
     public function postAuth() {
 		//$this->jaxl->getRosterList();
 		//$this->jaxl->getVCard();
     }
-    
+
     public function postAuthFailure() {
     	$this->jaxl->shutdown();
     	throw new MovimException("Login error.");
     	$user = new User();
     	$user->desauth();
     }
-    
+
     public function boshCurlError() {
 //    	$this->jaxl->shutdown();
 //    	throw new MovimException("Bosh connection error.");
 //    	$user = new User();
-//    	$user->desauth();    
+//    	$user->desauth();
     }
-	
+
 	/*
 	 * Auth mechanism (default : MD5)
 	 */
-	
+
 	public function postAuthMech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}
 
 	/**
 	 * Logs out
 	 */
-	 
+
 	public function logout()
 	{
 		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->JAXL0206('endStream');
 	}
-	
+
 	public function postDisconnect($data)
 	{
 		$evt = new EventHandler();
 		$evt->runEvent('postdisconnected', $data);
 	}
-	
+
 	/**
 	 * Pings the server. This must be done regularly in order to keep the
 	 * session running.
@@ -179,7 +179,7 @@ class XMPPConnect
 		define('JAXL_CURL_ASYNC', false);
         $this->jaxl->JAXL0206('ping');
 	}
-	
+
 	public function getEmptyBody($payload) {
         $evt = new EventHandler();
         // Oooooh, am I disconnected??
@@ -189,11 +189,11 @@ class XMPPConnect
             $evt->runEvent('incomingemptybody', 'ping');
         }
 	}
-	
+
 	/**
 	 * Envents handlers methods
 	 */
-	
+
 	public function handle($payload) {
 		$evt = new EventHandler();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
@@ -215,14 +215,14 @@ class XMPPConnect
 	/* vCard methods
 	 * Ask for a vCard and handle it
 	 */
-	
+
 	public function getVCard($jid = false)
 	{
 		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
 	}
 
-	/* 
+	/*
 	 * Incoming messages
 	 */
 
@@ -230,12 +230,12 @@ class XMPPConnect
         foreach($payloads as $payload) {
             // reject offline message
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') {
-            
+
                 $evt = new EventHandler();
-                
+
 				if($payload['chatState'] == 'active' && $payload['body'] == NULL) {
 					$evt->runEvent('incomeactive', $payload);
-				} 
+				}
 				elseif($payload['chatState'] == 'composing') {
                 	$evt->runEvent('incomecomposing', $payload);
 				}
@@ -246,29 +246,29 @@ class XMPPConnect
 
         }
 	}
-	
-	/* 
+
+	/*
 	 * Incoming presences
 	 */
-	
+
 	public function getPresence($payloads) {
         foreach($payloads as $payload) {
             if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
-            
+
                 $evt = new EventHandler();
-                
+
             	if($payload['type'] == 'unavailable') {
             		if($payload['from'] == $this->jaxl->jid)
 						$evt->runEvent('postdisconnected', $data);
             		else
 						$evt->runEvent('incomeoffline', $payload);
-            	} 
+            	}
             	elseif($payload['show'] == 'away') {
 					$evt->runEvent('incomeaway', $payload);
-				} 
+				}
 				elseif($payload['show'] == 'dnd') {
 					$evt->runEvent('incomednd', $payload);
-				} 
+				}
 				else {
 					$evt->runEvent('incomeonline', $payload);
 				}

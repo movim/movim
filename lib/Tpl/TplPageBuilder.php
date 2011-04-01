@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 //doc
 //	classname:	PageBuilder
@@ -8,14 +8,14 @@
 
 /**
  * \class PageBuilder
-n * \brief Templating engine for Movim
+ * \brief Templating engine for Movim
  *
  * This class is the templating engine for movim. It determines what page to
  * load based on the context and fills in placeholder values ('%' delimited).
  *
  * It also handles themes.
  */
-class PageBuilder 
+class TplPageBuilder
 {
 	//	internal variables
 	private $theme = 'movim';
@@ -26,7 +26,7 @@ class PageBuilder
     private $css = array();
     private $scripts = array();
     private $polling = true;
-	
+
 	/**
 	 * Constructor. Determines whether to show the login page to the user or the
 	 * Movim interface.
@@ -38,7 +38,7 @@ class PageBuilder
 		self::load_language();
 		$this->theme = $conf->getServerConfElement('theme');
 	}
-	
+
 	function load_language() {
 		if(User::isLogged()) {
 			$usr = new User();
@@ -72,7 +72,7 @@ class PageBuilder
             load_language(GetConf::getServerConfElement('defLang'));
         }
 	}
-	
+
 	function theme_path($file)
 	{
 		return THEMES_PATH . $this->theme . '/' . $file;
@@ -86,7 +86,7 @@ class PageBuilder
 	function link_file($file, $return = false)
 	{
 		$path = BASE_URI . 'themes/' . $this->theme . '/' . $file;
-		
+
 		if($return) {
 			return $path;
 		} else {
@@ -103,7 +103,7 @@ class PageBuilder
 			. $this->link_file($file, true) .
 			"\" type=\"text/css\" />\n";
 	}
-	
+
 	/**
 	 * Inserts the link tag for a theme picture
 	 */
@@ -113,12 +113,12 @@ class PageBuilder
 		$outp = '<img src="'
 			. $this->link_file($src, true) . '" '
 			. $size["3"];
-		
+
 		if(!empty($alt)) {
 			$outp .=' alt="'.$alt.'"';
 		}
 		$outp .='>';
-		
+
 		return $outp;
 	}
 
@@ -152,7 +152,7 @@ class PageBuilder
 	{
 		echo $this->title;
 	}
-	
+
 	/**
 	 * Adds a link to the menu with the displayed label.
 	 */
@@ -222,7 +222,7 @@ class PageBuilder
 
 		$ajaxer = Ajaxer::getInstance();
 		$out .= $ajaxer->genJs();
-		
+
 		return $out;
 	}
 
