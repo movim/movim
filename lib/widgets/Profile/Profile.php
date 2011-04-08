@@ -36,7 +36,9 @@ class Profile extends Widget
         $html = '<img alt="' . t("Your avatar") . '" style="width: 60px;" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
             
-            .'<div id="infos">'.$vcard['vCardNickname'].'<br />'.$vcard['vCardFN'].'</div>';
+            .'<div id="infos">'.$vcard['vCardNickname'].'<br />'.$vcard['vCardFN'].'</div>'
+            .'<div id="persmess">'.$vcard['vCardDesc'].'</div>'
+            ;
         return $html;
     }
 
@@ -61,12 +63,7 @@ class Profile extends Widget
 			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>"></div>
 			<div id="avatar">
 				<?php 
-					if(isset($_GET['f']))
-						echo $this->prepareVcard(Cache::handle('vcard'.$_GET['f']));
-					else {
-						$user = new User();
-						echo $this->prepareVcard(Cache::handle('vcard'));
-					}
+					echo $this->prepareVcard(Cache::handle('vcard'));
 				?>
 			</div>
 		</div>

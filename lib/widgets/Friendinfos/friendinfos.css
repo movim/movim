@@ -1,0 +1,40 @@
+#friendinfos {
+	margin-top: 1em;
+	margin-right: 1em;
+	display: block;
+	min-height: 7em;
+	overflow: auto;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #ECECEC;
+}
+
+#friendinfos img {
+	float: right;
+	max-height: 7em;
+}
+
+#friendinfos .config_button {
+}
+
+#friendinfos #infosbox {
+	list-style-type: none;
+	margin: 0px;
+	padding-left: 1em;
+}
+
+#friendinfos #infosbox li {
+	display: block;
+	clear: left;
+}
+
+#friendinfos #infosbox span {
+	padding-right: 1.5em;
+	color: gray;
+	float: left;
+	clear: left;
+	width: 10em;
+}
+
+#friendinfos #description {
+	margin: 1em;
+}
