@@ -23,10 +23,10 @@ class Profile extends Widget
     {
     	$this->addcss('profile.css');
     	$this->addjs('profile.js');
-		$this->registerEvent('vcardreceived', 'onVcardReceived');
+		$this->registerEvent('myvcardreceived', 'onMyVcardReceived');
     }
 
-    function onVcardReceived($vcard)
+    function onMyVcardReceived($vcard)
     {
 		$html = $this->prepareVcard($vcard);
         MovimRPC::call('movim_fill', 'avatar', MovimRPC::cdata($html));
@@ -36,13 +36,13 @@ class Profile extends Widget
         $html = '<img alt="' . t("Your avatar") . '" style="width: 60px;" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
             
-            .'<div id="infos">'.$vcard['vCardNickname'].'<br />'.$vcard['vCardFN'].'</div>'
-            .'<div id="persmess">'.$vcard['vCardDesc'].'</div>'
+            .'<div id="myinfos">'.$vcard['vCardFN'].'<br />'.$vcard['vCardFamily'].'</div>'
+            .'<div id="desc">'.$vcard['vCardDesc'].'</div>'
             ;
         return $html;
     }
 
-	function ajaxRefreshVcard($jid = false)
+	function ajaxRefreshMyVcard()
 	{
 		$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
@@ -55,17 +55,33 @@ class Profile extends Widget
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
 		$xmpp->setStatus(false, $presence);
 	}
+	
+	function ajaxSetStatus($status)
+	{
+		$user = new User();
+		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp->setStatus($status, false);
+	}
 
     function build()
     {
         ?>
 		<div id="profile">
-			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>"></div>
+			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshMyVcard');?>"></div>
+			
 			<div id="avatar">
 				<?php 
-					echo $this->prepareVcard(Cache::handle('vcard'));
+					echo $this->prepareVcard(Cache::handle('myvcard'));
 				?>
 			</div>
+			<input 
+				type="text" 
+				id="statusText" 
+				value="<?php echo t('Status'); ?>" 
+				onfocus="myFocus(this);" 
+				onblur="myBlur(this);" 
+				onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSetStatus', "getStatusText()");?>}"
+			/>
 		</div>
         <?php
     }

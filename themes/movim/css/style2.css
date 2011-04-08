@@ -34,7 +34,7 @@ h3 {
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
-	margin-top: 0.3em;
+	/*margin-top: 0.3em;*/
 	margin-bottom: 0.3em;
 	font-size: 0.9em;
 }
@@ -72,6 +72,7 @@ h3 {
 	border-top: 1px solid #DCDCDC;
 	padding: 0.5em;
 	text-align: right;
+	clear: both;
 	color: #6B6B6B;
 }
 

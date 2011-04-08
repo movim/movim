@@ -1,5 +1,25 @@
-#infos {
+#profile {
+	margin-bottom: 1em;
+}
+
+#profile #myinfos {
 	font-size: 0.8em;
 	float: right;
 	width: 105px;
+}
+
+#profile #desc {
+	font-size: 0.8em;
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+}
+
+#profile input#statusText {
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0px;
+	font-size: 0.8em;
+	width: 95%;
 }

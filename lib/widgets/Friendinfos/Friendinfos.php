@@ -41,13 +41,13 @@ class Friendinfos extends Widget
 		        .'<li><span>'.t('Nickname') . '</span>' .$vcard['vCardNickname'].'</li>'
 		        .'<li><span>'.t('Name given') . '</span>' .$vcard['vCardNGiven'].'</li>'
 		        .'<li><span>'.t('Website') . '</span><a href="'.$vcard['vCardUrl'].'">' .str_replace($cleanurl, "", $vcard['vCardUrl']).'</a></li>'
-		    .'</ul><br />'
+		    .'</ul><br /><br />'
 		    .'<h3>'.t('About me').'</h3>'
 		    .'<div id="description">'.$vcard['vCardDesc'].'</div><br />';
         return $html;
     }
     
-	function ajaxRefreshVcard($jid = false)
+	function ajaxRefreshVcard($jid)
 	{
 		$user = new User();
 		$xmpp = XMPPConnect::getInstance($user->getLogin());
@@ -64,10 +64,7 @@ class Friendinfos extends Widget
 				<?php 
 					if(isset($_GET['f']))
 						echo $this->prepareInfos(Cache::handle('vcard'.$_GET['f']));
-					else {
-						$user = new User();
-						echo $this->prepareInfos(Cache::handle('vcard'));
-					}
+					
 				?>
 			</div>
 		</div>

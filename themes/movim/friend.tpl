@@ -3,6 +3,7 @@
 <?php $this->widget('Poller');?>
 <?php $this->widget('Logout');?>
 <div id="left">
+  <?php $this->widget('Profile');?>
   <?php $this->widget('Friends');?>
   <?php $this->widget('Chat');?>
 </div>
