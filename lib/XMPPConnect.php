@@ -197,7 +197,6 @@ class XMPPConnect
 	public function handle($payload) {
 		$evt = new EventHandler();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
-						movim_log($payload['from']);
 			if(!is_null($payload['from'])) {
 			   	Cache::handle("vcard".$payload["from"], $payload);
 				$evt->runEvent('vcardreceived', $payload);
