@@ -40,8 +40,8 @@ class XMPPConnect
 	 */
 	private function __construct($jid)
 	{
-		$userConf = GetConf::getUserConf($jid);
-		$serverConf = GetConf::getServerConf();
+		$userConf = Conf::getUserConf($jid);
+		$serverConf = Conf::getServerConf();
 
 		unset($_SESSION['jid']);
 		

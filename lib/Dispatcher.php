@@ -98,7 +98,7 @@ class Dispatcher extends Controller
 	
 	function account()
 	{
-		if(GetConf::getServerConfElement("accountCreation") == 1) {
+		if(Conf::getServerConfElement("accountCreation") == 1) {
 			$this->page->setTitle(sprintf(t('%s - Account Creation'), APP_TITLE));
 			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 			$content = new PageBuilder($user);
@@ -118,7 +118,7 @@ class Dispatcher extends Controller
 	{
 		$this->page->setTitle(sprintf(t('%s - Login to Movim'), APP_TITLE));
 		$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').'Movim | Human Network', 'http://www.movim.eu/', true);
-		if(GetConf::getServerConfElement("accountCreation") == 1)
+		if(Conf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
 		if($_GET['err'] == 'auth') {
 			$this->page->setContent(

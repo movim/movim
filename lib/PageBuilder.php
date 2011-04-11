@@ -34,7 +34,7 @@ class PageBuilder
 	function __construct(&$user = NULL)
 	{
 		$this->user = $user;
-		$conf = new GetConf();
+		$conf = new Conf();
 		self::load_language();
 		$this->theme = $conf->getServerConfElement('theme');
 	}
@@ -43,12 +43,12 @@ class PageBuilder
 		if(User::isLogged()) {
 			$usr = new User();
             try{
-                $lang = GetConf::getUserConfElement($usr->getLogin(), 'language');
+                $lang = Conf::getUserConfElement($usr->getLogin(), 'language');
                 load_language($lang);
             }
             catch(MovimException $e) {
                 // Load default language.
-                load_language(GetConf::getServerConfElement('defLang'));
+                load_language(Conf::getServerConfElement('defLang'));
             }
 		}
 		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
@@ -69,7 +69,7 @@ class PageBuilder
 		    }
 		}
 		else {
-            load_language(GetConf::getServerConfElement('defLang'));
+            load_language(Conf::getServerConfElement('defLang'));
         }
 	}
 	
