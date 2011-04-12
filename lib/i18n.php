@@ -55,7 +55,7 @@ function t($string)
     if(func_num_args() > 1) {
         $args = func_get_args();
         $args[0] = $lstring; // Replacing with the translated string.
-        $lstring = call_user_func("sprintf", $args);
+        $lstring = call_user_func_array("sprintf", $args);
     }
 
 	return $lstring;
