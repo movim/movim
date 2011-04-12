@@ -46,14 +46,29 @@ class Friends extends Widget
             return $html;
         }
 
-		foreach($roster["queryItemJid"] as $key => $value ) {
+		foreach($roster["queryItemJid"] as $key => $value ) { // We see each contact
 			if($value != "undefined") {
-				if($roster["queryItemName"][$i] != NULL) {
-					$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")'>";
-					$html .= "<a class='user_page' href='?q=friend&f=".$value."'></a>";
-					$html .= $roster["queryItemName"][$i]." : ".$value."</li>";
+				$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")' title='".$value."'>";
+				
+				if($roster["queryItemName"][$i] != NULL) { // If we can get the name
+					$cachevcard = Cache::handle('vcard'.$value); // We try to load the Vcard
+					$html .= "<img class='avatar' src='data:".	$cachevcard['vCardPhotoType'] . ";base64," . $cachevcard['vCardPhotoBinVal'] . "' />"
+							."<span class='status'></span>"
+							."<a class='user_page' href='?q=friend&f=".$value."'></a>"; // Draw the avatar
+								
+					// We try to display an understadable name
+					if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily']))
+						$html .= $cachevcard['vCardFN'] ." ".$cachevcard['vCardFamily'];
+					elseif(isset($cachevcard['vCardNickname']))
+						$html .= $cachevcard['vCardNickname'];
+					else 
+						$html .= $roster["queryItemName"][$i];
+						
+					$html .= "</li>";
 				} else
-					$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")'>".$value."</li>";
+					$html .= $value;
+					
+				$html .= "</li>";
 			}
 			$i++;
 		}

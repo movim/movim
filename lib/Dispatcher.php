@@ -57,7 +57,15 @@ class Dispatcher extends Controller
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
 				$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
-				$this->page->menuAddLink($_GET['f'], false, true);
+				
+				$cachevcard = Cache::handle('vcard'.$_GET['f']);
+				if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily'])) 
+					$this->page->menuAddLink($cachevcard['vCardFN'] ." ".$cachevcard['vCardFamily'], false, true);
+				elseif(isset($cachevcard['vCardNickname']))
+					$this->page->menuAddLink($cachevcard['vCardNickname'], false, true);
+				else
+					$this->page->menuAddLink($_GET['f'], false, true);
+					
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
 				$content = new TplPageBuilder($user);
 
@@ -110,7 +118,7 @@ class Dispatcher extends Controller
 	{
 		$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
 		$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').'Movim | Human Network', 'http://www.movim.eu/', true);
-		if(GetConf::getServerConfElement("accountCreation") == 1)
+		if(Conf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
 		if($_GET['err'] == 'auth') {
 			$this->page->setContent(

@@ -11,5 +11,6 @@
 <?php $this->widget('Log');?>
 </div>
 <div id="center">
+  <?php $this->widget('Friendinfos');?>
   <?php $this->widget('Wall');?>
 </div>

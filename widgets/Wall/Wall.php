@@ -18,12 +18,11 @@
 
 class Wall extends Widget
 {
-	private $user;
 	
-	function __construct(&$user)
-	{
-		$this->user = $user;
-	}
+    function WidgetLoad()
+    {
+    	$this->addcss('wall.css');
+    }
 	
 	function build()
 	{

@@ -1,6 +1,6 @@
 <?php
 
-class GetConf
+class Conf
 {
 	function __construct() {
 	}

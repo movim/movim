@@ -34,7 +34,7 @@ h3 {
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
-	margin-top: 0.3em;
+	/*margin-top: 0.3em;*/
 	margin-bottom: 0.3em;
 	font-size: 0.9em;
 }
@@ -72,6 +72,7 @@ h3 {
 	border-top: 1px solid #DCDCDC;
 	padding: 0.5em;
 	text-align: right;
+	clear: both;
 	color: #6B6B6B;
 }
 
@@ -210,40 +211,6 @@ label {
 #nav .menu li a.active {
 	background-color: #292929;
 	text-decoration: none ;
-}
-
-/* WALL STYLE */
-.message {
-	border-bottom: 1px solid #ECECEC;
-    width: 100%;
-    font-size: 9px;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-}
-
-.message .comment {
-	margin-bottom: 0.3em;
-	background-color: #F3F3F3;
-	padding: 0.4em;
-	margin-left: 80px;
-	margin-right: 5px;
-}
-
-.message .avatar {
-	width: 70px;
-	height: 70px;
-	margin: 5px;
-	margin-left: 0px;
-	display: block;
-	float: left;
-	background-color: #9BBBC6;
-}
-
-.message .content {
-	padding-top: 0.4em;
-	padding-bottom: 0.4em;
-	margin-left: 80px;
-	margin-right: 5px;
 }
 
 /* Tinylist */

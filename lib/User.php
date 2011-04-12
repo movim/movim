@@ -46,9 +46,9 @@ class User {
 	{
 		try{
             $data = false;
-			if( !($data = GetConf::getUserData($login)) ) {
-                GetConf::createUserConf($login, $pass);
-                $data = GetConf::getUserData($login);
+			if( !($data = Conf::getUserData($login)) ) {
+                Conf::createUserConf($login, $pass);
+                $data = Conf::getUserData($login);
             }
         
 			$this->xmppSession = XMPPConnect::getInstance($login);

@@ -28,9 +28,6 @@ class Log extends Widget
 	{
 		?>
 		<div id="log">
-	      <div class="config_button">
-          
-          </div>
 		  <h3><?php echo t('Debug console'); ?></h3>
 
           <div id="log_content">

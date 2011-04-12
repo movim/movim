@@ -6,7 +6,7 @@ class EventHandler
 
 	function __construct()
 	{
-		$this->conf = new GetConf();
+		$this->conf = new Conf();
 	}
 
 	function runEvent($type, $event)
