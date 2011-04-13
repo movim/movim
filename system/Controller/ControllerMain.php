@@ -123,7 +123,7 @@ class ControllerMain extends ControllerBase
 		if($_GET['err'] == 'auth') {
 			$this->page->setContent(
 				'<div class="warning">'.
-				t('Changing these data can be dangerous and may compromise the connection to the XMPP server')
+				t('Changing these data can be dangerous and may compromise the connection to the Jabber server')
 				.'</div>');
 		}
 		$this->page->setContent(

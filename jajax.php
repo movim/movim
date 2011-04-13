@@ -25,6 +25,6 @@ require("init.php");
 
 $polling = true;
 
-$rpc = new MovimRPC();
+$rpc = new RPC();
 $rpc->handle();
 ?>

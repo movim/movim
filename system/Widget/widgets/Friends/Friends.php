@@ -33,7 +33,7 @@ class Friends extends WidgetBase
     function onRosterReceived($roster)
     {
 		$html = $this->prepareRoster($roster);
-        MovimRPC::call('movim_fill', 'tinylist', MovimRPC::cdata($html));
+        RPC::call('movim_fill', 'tinylist', MovimRPC::cdata($html));
     }
 
     function prepareRoster($roster) {
@@ -79,35 +79,35 @@ class Friends extends WidgetBase
 	function onIncomingOnline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-	    MovimRPC::call('incomingOnline',
-                      MovimRPC::cdata($jid));
+	    RPC::call('incomingOnline',
+                      RPC::cdata($jid));
 	}
 
 	function onIncomingOffline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 
-	    MovimRPC::call('incomingOffline', MovimRPC::cdata($jid));
+	    RPC::call('incomingOffline', MovimRPC::cdata($jid));
 	}
 
 	function onIncomingDND($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 
-	    MovimRPC::call('incomingDND', MovimRPC::cdata($jid));
+	    RPC::call('incomingDND', MovimRPC::cdata($jid));
 	}
 
 	function onIncomingAway($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 
-	    MovimRPC::call('incomingAway', MovimRPC::cdata($jid));
+	    RPC::call('incomingAway', MovimRPC::cdata($jid));
 	}
 
 	function ajaxRefreshRoster()
 	{
 		$user = new User();
-		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->getRosterList();
 	}
 

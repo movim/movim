@@ -30,14 +30,14 @@ class Logout extends WidgetBase
     function onPostDisconnect($data)
     {
 		$uri = str_replace("jajax.php", "", BASE_URI);
-	    MovimRPC::call('pageLogout',
-                       MovimRPC::cdata($uri."index.php?q=disconnect"));
+	    RPC::call('pageLogout',
+                       RPC::cdata($uri."index.php?q=disconnect"));
     }
 
 	function ajaxLogout()
 	{
 		$user = new User();
-		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->logout();
 	}
 

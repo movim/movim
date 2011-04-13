@@ -27,7 +27,7 @@ class Friendinfos extends WidgetBase
     function onVcardReceived($vcard)
     {
 		$html = $this->prepareInfos($vcard);
-        MovimRPC::call('movim_fill', 'infos', MovimRPC::cdata($html));
+        RPC::call('movim_fill', 'infos', MovimRPC::cdata($html));
     }
     
     function prepareInfos($vcard) {
@@ -50,7 +50,7 @@ class Friendinfos extends WidgetBase
 	function ajaxRefreshVcard($jid)
 	{
 		$user = new User();
-		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->getVCard($jid); // We send the vCard request
 	} 
     

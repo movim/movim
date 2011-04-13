@@ -22,7 +22,7 @@ class WidgetBase
 	protected $css = array(); /*< Contains CSS files. */
 	protected $external; /*< Boolean: TRUE if not a system widget. */
 	protected $ajax;	 /*< Contains ajax client code. */
-	protected $xmpp; /*< XMPPConnect instance. */
+	protected $xmpp; /*< Jabber instance. */
 	protected $name;
 	protected $events;
 
@@ -34,7 +34,7 @@ class WidgetBase
 	{
 		// Put default widget init here.
 		$this->external = $external;
-		$this->xmpp = XMPPConnect::getInstance();
+		$this->xmpp = Jabber::getInstance();
 		$this->ajax = ControllerAjax::getInstance();
 
 		// Generating ajax calls.

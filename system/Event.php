@@ -1,6 +1,6 @@
 <?php
 
-class EventHandler
+class Event
 {
 	private $conf;
 
@@ -30,7 +30,7 @@ class EventHandler
                                   )));
         
         // Outputting any RPC calls.
-        MovimRPC::commit();
+        RPC::commit();
 	}
 }
 

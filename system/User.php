@@ -22,7 +22,7 @@ class User {
 			$this->username = $_SESSION['login'];
 			$this->password = $_SESSION['pass'];
 
-			$this->xmppSession = XMPPConnect::getInstance($this->username);
+			$this->xmppSession = Jabber::getInstance($this->username);
 		}
 		else if(isset($_POST['login'])
 				&& isset($_POST['pass'])
@@ -51,7 +51,7 @@ class User {
                 $data = Conf::getUserData($login);
             }
         
-			$this->xmppSession = XMPPConnect::getInstance($login);
+			$this->xmppSession = Jabber::getInstance($login);
 			$this->xmppSession->login($login, $pass);
 
 			// Careful guys, md5 is _not_ secure. SHA1 recommended here.

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file MovimRPC.php
+ * @file RPC.php
  * This file is part of PROJECT.
  * 
  * @brief Description
@@ -16,7 +16,7 @@
  * All rights reserved.
  */
 
-class MovimRPC
+class RPC
 {
     protected static $instance;
     protected static $funcalls;
@@ -86,7 +86,7 @@ class MovimRPC
         //session_commit();
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
 			$user = new User();
-			$xmppSession = XMPPConnect::getInstance($user->getLogin());
+			$xmppSession = Jabber::getInstance($user->getLogin());
 			session_commit();
 			$xmppSession->pingServer();
 			session_commit();

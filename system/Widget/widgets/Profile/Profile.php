@@ -29,7 +29,7 @@ class Profile extends WidgetBase
     function onMyVcardReceived($vcard)
     {
 		$html = $this->prepareVcard($vcard);
-        MovimRPC::call('movim_fill', 'avatar', MovimRPC::cdata($html));
+        RPC::call('movim_fill', 'avatar', MovimRPC::cdata($html));
     }
     
     function prepareVcard($vcard) {
@@ -45,21 +45,21 @@ class Profile extends WidgetBase
 	function ajaxRefreshMyVcard()
 	{
 		$user = new User();
-		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->getVCard($jid); // We send the vCard request
 	}  
 	
 	function ajaxPresence($presence)
 	{
 		$user = new User();
-		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->setStatus(false, $presence);
 	}
 	
 	function ajaxSetStatus($status)
 	{
 		$user = new User();
-		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->setStatus($status, false);
 	}
 

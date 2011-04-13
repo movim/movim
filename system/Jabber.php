@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file XMPPConnect.php
+ * @file Jabber.php
  * This file is part of MOVIM.
  *
  * @brief Wrapper around Jaxl to handle mid-level functionalities
@@ -29,7 +29,7 @@ define('JAXL_LOG_ROTATE', false);
 define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
 include(LIB_PATH . 'Jaxl/core/jaxl.class.php');
 
-class XMPPConnect
+class Jabber
 {
 	private static $instance;
 	private $jaxl;
@@ -73,7 +73,7 @@ class XMPPConnect
 						 'JAXL0092', // Software Version
 						 'JAXL0203', // Delayed Delivery
 						 'JAXL0202', // Entity Time
-						 'JAXL0206'  // XMPP over Bosh
+						 'JAXL0206'  // Jabber over Bosh
 						 ));
 
 		// Defining call-backs
@@ -102,7 +102,7 @@ class XMPPConnect
                         throw new MovimException(t("Error: JID not provided."));
                 }
 			} else {
-				self::$instance = new XMPPConnect($jid);
+				self::$instance = new Jabber($jid);
 			}
 		}
 		return self::$instance;
@@ -166,7 +166,7 @@ class XMPPConnect
 
 	public function postDisconnect($data)
 	{
-		$evt = new EventHandler();
+		$evt = new Event();
 		$evt->runEvent('postdisconnected', $data);
 	}
 
@@ -181,7 +181,7 @@ class XMPPConnect
 	}
 
 	public function getEmptyBody($payload) {
-        $evt = new EventHandler();
+        $evt = new Event();
         // Oooooh, am I disconnected??
         if(preg_match('/condition=[\'"]item-not-found[\'"]/', $payload)) {
             $evt->runEvent('serverdisconnect', null);
@@ -195,7 +195,7 @@ class XMPPConnect
 	 */
 
 	public function handle($payload) {
-		$evt = new EventHandler();
+		$evt = new Event();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
 			if(!is_null($payload['from'])) {
 			   	Cache::c("vcard".$payload["from"], $payload);
@@ -213,7 +213,7 @@ class XMPPConnect
     }
 
    	/*public function postRosterUpdate($payload) {
-   		$evt = new EventHandler();
+   		$evt = new Event();
 		$evt->runEvent('rosterreceived', $payload);
    	}*/
 
@@ -236,7 +236,7 @@ class XMPPConnect
             // reject offline message
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') {
 
-                $evt = new EventHandler();
+                $evt = new Event();
 
 				if($payload['chatState'] == 'active' && $payload['body'] == NULL) {
 					$evt->runEvent('incomeactive', $payload);
@@ -259,7 +259,7 @@ class XMPPConnect
 	public function getPresence($payloads) {
         foreach($payloads as $payload) {
             if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
-                $evt = new EventHandler();
+                $evt = new Event();
 
                 //Cache::c('presence' . $payload['type'], $payload);
 

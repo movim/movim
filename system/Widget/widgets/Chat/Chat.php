@@ -35,40 +35,40 @@ class Chat extends WidgetBase
     
 	function onIncomingMessage($data)
 	{
-        MovimRPC::call('movim_prepend',
+        RPC::call('movim_prepend',
                        'chatMessages',
-                       MovimRPC::cdata('<p class="message">%s: %s</p>',
+                       RPC::cdata('<p class="message">%s: %s</p>',
                                        $this->getNameFromJID($data['from']),
                                        $data['body']));
 	}
 	
 	function onIncomingActive($data)
 	{
-	    MovimRPC::call('movim_fill',
+	    RPC::call('movim_fill',
                        'chatState',
-                       MovimRPC::cdata("<h3>%s's chat is active</h3>",
+                       RPC::cdata("<h3>%s's chat is active</h3>",
                                        $this->getNameFromJID($data['from'])));
 	}
 	
 	function onIncomingComposing($data) {
-	    MovimRPC::call('movim_fill',
+	    RPC::call('movim_fill',
                        'chatState',
-                       MovimRPC::cdata('<h3>%s is composing</h3>',
+                       RPC::cdata('<h3>%s is composing</h3>',
                                        $this->getNameFromJID($data['from'])));
 	}
 
 	function onIncomingOnline($data)
 	{
-	    MovimRPC::call('movim_fill',
+	    RPC::call('movim_fill',
                        'chatState',
-                       MovimRPC::cdata('<h3>%s is online</h3>',
+                       RPC::cdata('<h3>%s is online</h3>',
                                        $this->getNameFromJID($data['from'])));
 	}
 
     function ajaxSendMessage($to, $message)
     {
     	$user = new User();
-		$xmpp = XMPPConnect::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance($user->getLogin());
         $xmpp->sendMessage($to, $message);
     }
 

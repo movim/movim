@@ -56,7 +56,7 @@ class Config extends WidgetBase
 			   
 			   $form->startFieldset(t('BOSH Connection Prefrences'));
 			   $form->insertHTML('<div class="warning">'.
-						   		t('Changing these data can be dangerous and may compromise the connection to the XMPP server')
+						   		t('Changing these data can be dangerous and may compromise the connection to the Jabber server')
 						   		.'</div>');
 			   $form->textInput('boshHost',t('Bosh Host'),false,'block required', false, false, false, false, $conf['boshHost']);
 			   $form->insertBR();

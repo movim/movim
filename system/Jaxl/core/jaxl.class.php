@@ -1,6 +1,6 @@
 <?php
 /** 
- * Jaxl (Jabber XMPP Library)
+ * Jaxl (XMPP XMPP Library)
  *
  * Copyright (c) 2009-2010, Abhinav Singh <me@abhinavsingh.com>.
  * All rights reserved.
@@ -127,7 +127,7 @@
         /**
          * Client name of the connected Jaxl instance
         */
-        const name = 'Jaxl :: Jabber XMPP Client Library';
+        const name = 'Jaxl :: XMPP XMPP Client Library';
 
         /**
          * Custom config passed to Jaxl constructor
@@ -258,7 +258,7 @@
         var $mode = false;
 
         /**
-         * Jabber auth mechanism performed by this Jaxl instance
+         * XMPP auth mechanism performed by this Jaxl instance
          *
          * @var false|string
         */
