@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Friendinfos extends Widget
+class Friendinfos extends WidgetBase
 {
     function WidgetLoad()
     {

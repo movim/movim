@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Chat extends Widget
+class Chat extends WidgetBase
 {
 	function WidgetLoad()
 	{

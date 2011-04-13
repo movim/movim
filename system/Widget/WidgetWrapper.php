@@ -83,14 +83,14 @@ class WidgetWrapper
         // Attempting to load the user's widgets in priority
 		$widget_path = "";
         $extern = null;
-		if(file_exists(BASE_PATH . "widgets/$widget_name/$widget_name.php")) {
-			$widget_path = BASE_PATH . "widgets/$widget_name/$widget_name.php";
+		if(file_exists(BASE_PATH . "Widget/widgets/$widget_name/$widget_name.php")) {
+			$widget_path = BASE_PATH . "Widget/widgets/$widget_name/$widget_name.php";
 			// Custom widgets have their own translations.
-			load_extra_lang(BASE_PATH . 'widgets/$widget_name/i18n');
+			load_extra_lang(BASE_PATH . 'Widget/widgets/$widget_name/i18n');
             $extern = true;
 		}
-		else if(file_exists(LIB_PATH . "widgets/$widget_name/$widget_name.php")) {
-			$widget_path = LIB_PATH . "widgets/$widget_name/$widget_name.php";
+		else if(file_exists(LIB_PATH . "Widget/widgets/$widget_name/$widget_name.php")) {
+			$widget_path = LIB_PATH . "Widget/widgets/$widget_name/$widget_name.php";
             $extern = false;
 		}
 		else {

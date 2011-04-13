@@ -3,7 +3,7 @@
 /**
  * @file Widget.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief A widget interface.
  *
  * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
@@ -12,11 +12,11 @@
  * @date 20 October 2010
  *
  * Copyright (C)2010 MOVIM Project
- * 
+ *
  * See COPYING for licensing information.
  */
 
-class Widget
+class WidgetBase
 {
 	protected $js = array(); /*< Contains javascripts. */
 	protected $css = array(); /*< Contains CSS files. */
@@ -35,7 +35,7 @@ class Widget
 		// Put default widget init here.
 		$this->external = $external;
 		$this->xmpp = XMPPConnect::getInstance();
-		$this->ajax = Ajaxer::getInstance();
+		$this->ajax = ControllerAjax::getInstance();
 
 		// Generating ajax calls.
 		$refl = new ReflectionClass(get_class($this));
@@ -76,9 +76,9 @@ class Widget
 	{
         $path = "";
         if(!$this->external) {
-            $path = 'lib/';
+            $path = 'system/';
         }
-        $path .= 'widgets/' . get_class($this) . '/' . $file;
+        $path .= 'Widget/widgets/' . get_class($this) . '/' . $file;
 
         if($fspath) {
             $path = BASE_PATH . $path;
@@ -93,7 +93,7 @@ class Widget
 	{
 		echo $this->makeCallAjax(func_get_args());
 	}
-	
+
 	protected function genCallAjax($funcname)
 	{
 		return $this->makeCallAjax(func_get_args());
@@ -103,7 +103,7 @@ class Widget
     {
         $funcname = array_shift($params);
         $args = implode(', ', $params);
-		
+
 		return get_class($this) . '_' . $funcname . "(" . $args . ");";
     }
 
@@ -152,7 +152,7 @@ class Widget
 		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
 
             $returns = array();
-            
+
 			foreach($this->events[$proto['type']] as $handler) {
 				$returns[] = call_user_func(array($this, $handler), $proto['data']);
 			}

@@ -259,10 +259,9 @@ class XMPPConnect
 	public function getPresence($payloads) {
         foreach($payloads as $payload) {
             if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
-
-//                Cache::c('presence' . $payload['from'], $payload);
-
                 $evt = new EventHandler();
+
+                //Cache::c('presence' . $payload['type'], $payload);
 
                 if($payload['type'] == 'unavailable') {
                     if($payload['from'] == $this->jaxl->jid)

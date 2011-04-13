@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Config extends Widget
+class Config extends WidgetBase
 {
     function WidgetLoad()
     {

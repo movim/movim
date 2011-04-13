@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file Ajaxer.php
+ * @file ControllerAjax.php
  * This file is part of PROJECT.
  * 
  * @brief Description
@@ -16,7 +16,7 @@
  * OTHER T&C IF ANY
  */
 
-class Ajaxer extends Controller
+class ControllerAjax extends ControllerBase
 {
 	protected $funclist = array();
 	protected static $instance;
@@ -29,7 +29,7 @@ class Ajaxer extends Controller
 	public static function getInstance()
 	{
 		if(!is_object(self::$instance)) {
-			self::$instance = new Ajaxer();
+			self::$instance = new ControllerAjax();
 		}
 		return self::$instance;
 	}

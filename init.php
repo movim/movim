@@ -6,11 +6,11 @@ session_commit();
 session_start();
 
 define('BASE_PATH', dirname(__FILE__) . '/');
-define('LIB_PATH',BASE_PATH.'lib/');
+define('LIB_PATH',BASE_PATH.'system/');
 define('PROPERTIES_PATH',BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 
-require_once(LIB_PATH . 'i18n.php');
+require_once(LIB_PATH . 'Lang/i18n.php');
 require_once(LIB_PATH . 'Utils.php');
 require_once(LIB_PATH . 'Cache.php');
 
@@ -88,7 +88,6 @@ function __autoload($className) {
 
         if(file_exists($lib) && is_dir($lib)) {
             $file = $lib.'/'.$className;
-            echo "tclass: $tclass<br />";
         } else {
             $tclass = explode('_', $className);
 
@@ -99,7 +98,7 @@ function __autoload($className) {
             }
         }
     }
-    else { /* Simple classes that sit straight in lib/ */
+    else { /* Simple classes that sit straight in system/ */
         $file = LIB_PATH.$className;
     }
 

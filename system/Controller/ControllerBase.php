@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @file RequestHdlr.php
+ * @file Controller.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief Implements a request handler that ensures application worklfow.
  *
  * @author Movim Project <movim@movim.eu>
@@ -12,7 +12,7 @@
  * @date 13 October 2010
  *
  * Copyright (C)2010 Movim Project
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,7 @@
  *
  */
 
-class Controller
+class ControllerBase
 {
 	protected $default_handler = 'index';
 	protected $token;

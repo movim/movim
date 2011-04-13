@@ -194,7 +194,7 @@ class TplPageBuilder
 
 	function addScript($script)
 	{
-		$this->scripts[] = BASE_URI . 'js/' . $script;
+		$this->scripts[] = BASE_URI . 'system/js/' . $script;
 	}
 
 	/**
@@ -220,7 +220,7 @@ class TplPageBuilder
 				 '"></script>'."\n";
 		}
 
-		$ajaxer = Ajaxer::getInstance();
+		$ajaxer = ControllerAjax::getInstance();
 		$out .= $ajaxer->genJs();
 
 		return $out;

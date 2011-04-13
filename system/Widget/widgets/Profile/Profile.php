@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Profile extends Widget
+class Profile extends WidgetBase
 {
     
     function WidgetLoad()

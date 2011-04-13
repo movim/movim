@@ -42,7 +42,7 @@ if(!file_exists("config/conf.xml")) {
 	require_once('install.php');
 } else {
 	// Run
-	$rqst = new Dispatcher();
+	$rqst = new ControllerMain();
 	$rqst->handle();
 }
 ?>

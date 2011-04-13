@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Logout extends Widget
+class Logout extends WidgetBase
 {
     
     function WidgetLoad()

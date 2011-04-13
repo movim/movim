@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class Poller extends Widget
+class Poller extends WidgetBase
 {
 	function WidgetLoad()
 	{

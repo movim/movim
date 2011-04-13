@@ -1,6 +1,6 @@
 <?php
 /**
- * @file Dispatcher.php
+ * @file ControllerMain.php
  * This file is part of MOVIM.
  *
  * @brief Handles incoming static pages requests.
@@ -15,7 +15,7 @@
  * See COPYING for licensing deatils.
  */
 
-class Dispatcher extends Controller
+class ControllerMain extends ControllerBase
 {
 	protected $default_handler = 'mainPage';
 	private $page;
