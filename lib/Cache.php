@@ -48,21 +48,25 @@ class Cache
         if(func_num_args() == 2) {
             return self::write_cache($key, $arglist[1]);
         }
-        else if(func_num_args() > 2) {
+        else {
             // Cutting a piece of the args.
             $content = array_slice($argslist, 1);
             return self::write_cache($key, $content);
         }
     }
 
-    private static function cache_dir($file = "")
+    private static function log($text)
     {
-        $cache_dir = BASE_PATH."/user/" . self::$login . "/cache";
-        if($file != "") {
-            return $cache_dir . '/' . $file;
-        } else {
-            return $cache_dir;
-        }
+        $f = fopen(self::cache_file("queries.log"), "a");
+        fwrite($f, time() . ": " . $text . "\n");
+        fclose($f);
+
+        return $text;
+    }
+
+    private static function cache_file($file = "cache.sqlite")
+    {
+        return BASE_PATH."/user/" . self::$login . "/" . $file;
     }
 
     /**
@@ -70,21 +74,43 @@ class Cache
      */
     private static function write_cache($key, $object)
     {
-        $s_object = base64_encode(serialize($object));
-        $md5 = md5($s_object);
+        $cache_key = self::$login.':'.$key;
+        $data = str_replace("'", "\\'", base64_encode(gzcompress(serialize($object))));
+        $md5 = md5($data);
+        $time = time();
 
-        // Let's see if the cache's dir exists.
-        if(!is_dir(self::cache_dir())) {
-            mkdir(self::cache_dir(), 0755);
+        $db_file = self::cache_file();
+        $db = null;
+
+        // Does the database exist?
+        if(!file_exists($db_file)) {
+            // Creating schema.
+            $db = sqlite_open($db_file);
+
+            sqlite_query($db, self::log("CREATE TABLE cache(key VARCHAR(100) UNIQUE, ".
+                                        "data TEXT, md5 VARCHAR(32), timestamp TIMESTAMP);"));
+        } else {
+            $db = sqlite_open($db_file);
         }
 
-        // OK, writing with its md5 buddy.
-        if(!file_put_contents(self::cache_dir($key), $s_object)
-           || !file_put_contents(self::cache_dir($key.'.md5'), $md5)) {
-            throw new MovimException(t("Couldn't set cache file %s", $key));
-        }
+        if($db != null) {
 
-        return true; // Just in case.
+            // Does the cache already exist?
+            $table = sqlite_array_query($db, self::log("SELECT * FROM cache WHERE key='$cache_key'"));
+            if(count($table) > 0) {
+                // Need to update.
+                sqlite_query($db, self::log("UPDATE cache SET data='$data', md5='$md5', ".
+                                            "timestamp='$time' WHERE key='$cache_key'"));
+            } else {
+                sqlite_query($db, self::log("INSERT INTO cache(key, data, md5, timestamp)".
+                                            "VALUES('$cache_key', '$data', '$md5', '$time')"));
+            }
+
+            sqlite_close($db);
+
+        } else {
+            throw new MovimException(t("Couldn't open cache. Please contact the administrator."));
+        }
     }
 
     /**
@@ -92,22 +118,28 @@ class Cache
      */
     private static function read_cache($key)
     {
-        if(!file_exists(self::cache_dir($key)) || !file_exists(self::cache_dir($key.'.md5'))) {
+        $cache_key = self::$login.':'.$key;
+        $db_file = self::cache_file();
+
+        if(file_exists($db_file)) {
+            $db = sqlite_open($db_file);
+
+            // Getting data.
+            $table = sqlite_array_query($db, self::log("SELECT * FROM cache WHERE key='$cache_key'"));
+            if(count($table) < 1) {
+                return false;
+            }
+
+            // Checking integrity.
+            if(md5($table[0]['data']) == $table[0]['md5']) {
+                return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $table[0]['data']))));
+            } else {
+                return false;
+            }
+
+        } else {
             return false;
         }
-
-        $s_object = file_get_contents(self::cache_dir($key));
-        $md5 = file_get_contents(self::cache_dir($key.'.md5'));
-
-        if(md5($s_object) != $md5) {
-            // No good. We summarily clean these files.
-            @unlink(self::cache_dir($key));
-            @unlink(self::cache_dir($key.'.md5'));
-            return false;
-        }
-
-        // All good now, unserializing and sending through.
-        return unserialize(base64_decode($s_object));
     }
 }
 

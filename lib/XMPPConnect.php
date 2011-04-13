@@ -262,21 +262,23 @@ class XMPPConnect
 
                 $evt = new EventHandler();
 
-            	if($payload['type'] == 'unavailable') {
-            		if($payload['from'] == $this->jaxl->jid)
-						$evt->runEvent('postdisconnected', $data);
-            		else
-						$evt->runEvent('incomeoffline', $payload);
-            	}
-            	elseif($payload['show'] == 'away') {
-					$evt->runEvent('incomeaway', $payload);
-				}
-				elseif($payload['show'] == 'dnd') {
-					$evt->runEvent('incomednd', $payload);
-				}
-				else {
-					$evt->runEvent('incomeonline', $payload);
-				}
+                //Cache::handle('presence' . $payload['from'], $payload);
+
+                if($payload['type'] == 'unavailable') {
+                    if($payload['from'] == $this->jaxl->jid)
+                        $evt->runEvent('postdisconnected', $data);
+                    else
+                        $evt->runEvent('incomeoffline', $payload);
+                }
+                elseif($payload['show'] == 'away') {
+                    $evt->runEvent('incomeaway', $payload);
+                }
+                elseif($payload['show'] == 'dnd') {
+                    $evt->runEvent('incomednd', $payload);
+                }
+                else {
+                    $evt->runEvent('incomeonline', $payload);
+                }
             }
         }
 	}
