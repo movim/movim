@@ -51,7 +51,7 @@ class Friends extends Widget
 				$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")' title='".$value."'>";
 				
 				if($roster["queryItemName"][$i] != NULL) { // If we can get the name
-					$cachevcard = Cache::handle('vcard'.$value); // We try to load the Vcard
+					$cachevcard = Cache::c('vcard'.$value); // We try to load the Vcard
 					$html .= "<img class='avatar' src='data:".	$cachevcard['vCardPhotoType'] . ";base64," . $cachevcard['vCardPhotoBinVal'] . "' />"
 							."<span class='status'></span>"
 							."<a class='user_page' href='?q=friend&f=".$value."'></a>"; // Draw the avatar
@@ -119,7 +119,7 @@ class Friends extends Widget
           <h3><?php echo t('Contacts');?></h3>
 
           <div id="tinylist">
-          	<?php echo $this->prepareRoster(Cache::handle('roster')); ?>
+          	<?php echo $this->prepareRoster(Cache::c('roster')); ?>
           </div>
         </div>
         <?php

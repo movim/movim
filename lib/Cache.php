@@ -1,42 +1,96 @@
 <?php
 
+
 /**
  * A fully-static class that deals with caching.
  */
 class Cache
 {
-    private static $login;
-    private static $ttl; // TODO
+    private static $instance;
+
+    private $db;
+    private $log = true;
+    private $login;
+    private $ttl; // TODO
+
+    // Yes, another singleton...
+    private function __construct()
+    {
+        // Saving the user's login.
+        $user = new User();
+        $this->login = $user->getLogin();
+
+        $new = false;
+        $db_file = $this->cache_file();
+
+        if(!file_exists($db_file)) {
+            $new = true;
+        }
+
+        $this->db = sqlite_open($db_file);
+
+        // Creating schema.
+        if($new) {
+            $this->query("CREATE TABLE cache(key VARCHAR(100) UNIQUE, ".
+                         "data TEXT, md5 VARCHAR(32), timestamp TIMESTAMP);");
+        }
+    }
+
+    function __destruct()
+    {
+        sqlite_close($this->db);
+    }
+
+    private function query($statement, $return = false)
+    {
+        $this->log($statement);
+
+        if($return) {
+            return sqlite_array_query($this->db, $statement);
+        } else {
+            return sqlite_query($this->db, $statement);
+        }
+    }
+
+    public static function create()
+	{
+		if(!is_object(self::$instance)) {
+            self::$instance = new Cache();
+		}
+		return self::$instance;
+	}
+
+    // Helper function to access cache.
+    public static function c()
+    {
+        $cache = Cache::create();
+
+        return call_user_func_array(array($cache, 'handle'), func_get_args());
+    }
 
     /**
      * Fetches or commits an object to cache with the provided key.
      *
-     * Prototype: Cache::handle(string $key, ...)
+     * Prototype: handle(string $key, ...)
      *
      * The following fetches an object from cache.
-     *   Cache::handle('key')
+     *   handle('key')
      *
      * This commits an object to cache.
-     *   Cache::handle('key', $object);
+     *   handle('key', $object);
      *
      * Several objects can be commited to cache in this manner:
-     *   Cache::handle('key', $object1, $object2, $object3);
+     *   handle('key', $object1, $object2, $object3);
      * And retrieved as follows:
-     *   list($object1, $object2, $object3) = Cache::handle('key');
+     *   list($object1, $object2, $object3) = handle('key');
      */
-    public static function handle($key)
+    public function handle($key)
     {
         $arglist = func_get_args();
         $key = $arglist[0];
 
-        // Saving the user's login.
-        if(self::$login == "") {
-            $user = new User();
-            self::$login = $user->getLogin();
-        }
-
         if(func_num_args() == 1) {
-            $content = self::read_cache($key);
+            $content = $this->read_cache($key);
 
             if(isset($content) && $content != "") {
                 return $content;
@@ -46,67 +100,54 @@ class Cache
         }
 
         if(func_num_args() == 2) {
-            return self::write_cache($key, $arglist[1]);
+            return $this->write_cache($key, $arglist[1]);
         }
         else {
             // Cutting a piece of the args.
             $content = array_slice($argslist, 1);
-            return self::write_cache($key, $content);
+            return $this->write_cache($key, $content);
         }
     }
 
-    private static function log($text)
+    private function log($text)
     {
-        $f = fopen(self::cache_file("queries.log"), "a");
-        fwrite($f, time() . ": " . $text . "\n");
-        fclose($f);
+        if($this->log) {
+            $f = fopen($this->cache_file("queries.log"), "a");
+            fwrite($f, time() . ": " . $text . "\n");
+            fclose($f);
+        }
 
         return $text;
     }
 
-    private static function cache_file($file = "cache.sqlite")
+    private function cache_file($file = "cache.sqlite")
     {
-        return BASE_PATH."/user/" . self::$login . "/" . $file;
+        return BASE_PATH."/user/" . $this->login . "/" . $file;
     }
 
     /**
      * Serializes data in a proper fashion.
      */
-    private static function write_cache($key, $object)
+    private function write_cache($key, $object)
     {
-        $cache_key = self::$login.':'.$key;
+        $cache_key = $this->login.':'.$key;
         $data = str_replace("'", "\\'", base64_encode(gzcompress(serialize($object))));
         $md5 = md5($data);
         $time = time();
 
-        $db_file = self::cache_file();
-        $db = null;
 
-        // Does the database exist?
-        if(!file_exists($db_file)) {
-            // Creating schema.
-            $db = sqlite_open($db_file);
-
-            sqlite_query($db, self::log("CREATE TABLE cache(key VARCHAR(100) UNIQUE, ".
-                                        "data TEXT, md5 VARCHAR(32), timestamp TIMESTAMP);"));
-        } else {
-            $db = sqlite_open($db_file);
-        }
-
-        if($db != null) {
+        if($this->db) {
 
             // Does the cache already exist?
-            $table = sqlite_array_query($db, self::log("SELECT * FROM cache WHERE key='$cache_key'"));
+            $table = $this->query("SELECT * FROM cache WHERE key='$cache_key'", true);
             if(count($table) > 0) {
                 // Need to update.
-                sqlite_query($db, self::log("UPDATE cache SET data='$data', md5='$md5', ".
-                                            "timestamp='$time' WHERE key='$cache_key'"));
+                $this->query("UPDATE cache SET data='$data', md5='$md5', ".
+                             "timestamp='$time' WHERE key='$cache_key'");
             } else {
-                sqlite_query($db, self::log("INSERT INTO cache(key, data, md5, timestamp)".
-                                            "VALUES('$cache_key', '$data', '$md5', '$time')"));
+                $this->query("INSERT INTO cache(key, data, md5, timestamp)".
+                             "VALUES('$cache_key', '$data', '$md5', '$time')");
             }
-
-            sqlite_close($db);
 
         } else {
             throw new MovimException(t("Couldn't open cache. Please contact the administrator."));
@@ -116,16 +157,14 @@ class Cache
     /**
      * Unserializes data.
      */
-    private static function read_cache($key)
+    private function read_cache($key)
     {
-        $cache_key = self::$login.':'.$key;
-        $db_file = self::cache_file();
+        $cache_key = $this->login.':'.$key;
+        $db_file = $this->cache_file();
 
         if(file_exists($db_file)) {
-            $db = sqlite_open($db_file);
-
             // Getting data.
-            $table = sqlite_array_query($db, self::log("SELECT * FROM cache WHERE key='$cache_key'"));
+            $table = $this->query("SELECT * FROM cache WHERE key='$cache_key'", true);
             if(count($table) < 1) {
                 return false;
             }

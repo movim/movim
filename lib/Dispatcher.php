@@ -58,7 +58,7 @@ class Dispatcher extends Controller
 				$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
 				$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
 				
-				$cachevcard = Cache::handle('vcard'.$_GET['f']);
+				$cachevcard = Cache::c('vcard'.$_GET['f']);
 				if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily'])) 
 					$this->page->menuAddLink($cachevcard['vCardFN'] ." ".$cachevcard['vCardFamily'], false, true);
 				elseif(isset($cachevcard['vCardNickname']))

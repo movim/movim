@@ -198,14 +198,14 @@ class XMPPConnect
 		$evt = new EventHandler();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
 			if(!is_null($payload['from'])) {
-			   	Cache::handle("vcard".$payload["from"], $payload);
+			   	Cache::c("vcard".$payload["from"], $payload);
 				$evt->runEvent('vcardreceived', $payload);
 			} else {
-				Cache::handle("myvcard", $payload);
+				Cache::c("myvcard", $payload);
 				$evt->runEvent('myvcardreceived', $payload);
 			}
 		} elseif($payload['queryXmlns'] == "jabber:iq:roster") {
-			Cache::handle("roster", $payload);
+			Cache::c("roster", $payload);
             $evt->runEvent('rosterreceived', $payload);
 		} else {
             $evt->runEvent('none', var_export($payload, true));
@@ -260,9 +260,9 @@ class XMPPConnect
         foreach($payloads as $payload) {
             if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
 
-                $evt = new EventHandler();
+//                Cache::c('presence' . $payload['from'], $payload);
 
-                //Cache::handle('presence' . $payload['from'], $payload);
+                $evt = new EventHandler();
 
                 if($payload['type'] == 'unavailable') {
                     if($payload['from'] == $this->jaxl->jid)

@@ -63,7 +63,7 @@ class Friendinfos extends Widget
 			<div id="infos">
 				<?php 
 					if(isset($_GET['f']))
-						echo $this->prepareInfos(Cache::handle('vcard'.$_GET['f']));
+						echo $this->prepareInfos(Cache::c('vcard'.$_GET['f']));
 					
 				?>
 			</div>

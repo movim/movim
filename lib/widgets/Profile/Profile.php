@@ -71,7 +71,7 @@ class Profile extends Widget
 			
 			<div id="avatar">
 				<?php 
-					echo $this->prepareVcard(Cache::handle('myvcard'));
+					echo $this->prepareVcard(Cache::c('myvcard'));
 				?>
 			</div>
 			<input 
