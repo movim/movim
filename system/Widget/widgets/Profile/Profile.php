@@ -29,7 +29,7 @@ class Profile extends WidgetBase
     function onMyVcardReceived($vcard)
     {
 		$html = $this->prepareVcard($vcard);
-        RPC::call('movim_fill', 'avatar', MovimRPC::cdata($html));
+        RPC::call('movim_fill', 'avatar', RPC::cdata($html));
     }
     
     function prepareVcard($vcard) {

@@ -27,7 +27,7 @@ class Friendinfos extends WidgetBase
     function onVcardReceived($vcard)
     {
 		$html = $this->prepareInfos($vcard);
-        RPC::call('movim_fill', 'infos', MovimRPC::cdata($html));
+        RPC::call('movim_fill', 'infos', RPC::cdata($html));
     }
     
     function prepareInfos($vcard) {

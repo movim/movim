@@ -33,7 +33,7 @@ class Friends extends WidgetBase
     function onRosterReceived($roster)
     {
 		$html = $this->prepareRoster($roster);
-        RPC::call('movim_fill', 'tinylist', MovimRPC::cdata($html));
+        RPC::call('movim_fill', 'tinylist', RPC::cdata($html));
     }
 
     function prepareRoster($roster) {
@@ -87,21 +87,21 @@ class Friends extends WidgetBase
 	{
 		list($jid, $place) = explode("/",$data['from']);
 
-	    RPC::call('incomingOffline', MovimRPC::cdata($jid));
+	    RPC::call('incomingOffline', RPC::cdata($jid));
 	}
 
 	function onIncomingDND($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 
-	    RPC::call('incomingDND', MovimRPC::cdata($jid));
+	    RPC::call('incomingDND', RPC::cdata($jid));
 	}
 
 	function onIncomingAway($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
 
-	    RPC::call('incomingAway', MovimRPC::cdata($jid));
+	    RPC::call('incomingAway', RPC::cdata($jid));
 	}
 
 	function ajaxRefreshRoster()
