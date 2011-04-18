@@ -18,7 +18,7 @@ class Conf
 		$conf = self::getServerConf();
 
 		if(!isset($conf[$element])) {
-			throw new MovimException(t("Error: Cannot load element value'%s'", $element));
+			throw new MovimException(t("Cannot load element value'%s'", $element));
 		}
 		else {
 			return $conf[$element];
@@ -42,7 +42,7 @@ class Conf
         $conf = self::getUserConf($jid);
 
 		if(!isset($conf[$element])) {
-			throw new MovimException(t("Error: Cannot load element value'%s'", $element));
+			throw new MovimException(t("Cannot load element value'%s'", $element));
 		}
 		else {
 			return $conf[$element];
@@ -138,7 +138,7 @@ class Conf
 
 	static function readConfFile($file_path) {
 		if(!file_exists($file_path)) {
-			throw new MovimException(t("Error: Cannot load file '%s'", $file_path));
+			throw new MovimException(t("Cannot load file '%s'", $file_path));
 		}
 
 		$file = simplexml_load_file($file_path);
