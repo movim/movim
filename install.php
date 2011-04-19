@@ -1,6 +1,6 @@
 <?php
 
-require_once('system/languages.php');
+require_once('system/Lang/languages.php');
 
 function test_dir($dir)
 {
