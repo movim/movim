@@ -27,7 +27,7 @@ class Cache
             $new = true;
         }
 
-        $this->db = sqlite_open($db_file);
+        $this->db = new SQLite3($db_file);
 
         // Creating schema.
         if($new) {
@@ -38,7 +38,7 @@ class Cache
 
     function __destruct()
     {
-        sqlite_close($this->db);
+        $this->db->close();
     }
 
     private function query($statement, $return = false)
@@ -46,9 +46,13 @@ class Cache
         $this->log($statement);
 
         if($return) {
-            return sqlite_array_query($this->db, $statement);
+            $res = $this->db->query($statement);
+
+            $table = array();
+            while($row[] = $res->fetchArray()) {}
+            return $table;
         } else {
-            return sqlite_query($this->db, $statement);
+            return $this->db->exec($statement);
         }
     }
 
