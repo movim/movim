@@ -31,6 +31,7 @@ require(LIB_PATH . "Storage/StorageDriver.php");
 require(LIB_PATH . "Storage/StorageBase.php");
 require(LIB_PATH . "Storage/StorageEngineBase.php");
 require(LIB_PATH . "Storage/StorageException.php");
+require(LIB_PATH . "Storage/StorageTypeBase.php");
 require(LIB_PATH . "Storage/StorageType.php");
 
 ?>

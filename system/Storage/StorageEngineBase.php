@@ -30,6 +30,10 @@ class StorageEngineBase implements StorageDriver
     {
     }
 
+    public function select($object, array $cond, $outp = false)
+    {
+    }
+
     /**
      * executes the given action on all props derived from StorageTypeBase in
      * $object -- if object itself extends StorageBase.
@@ -57,20 +61,40 @@ class StorageEngineBase implements StorageDriver
 
         foreach($props as $prop) {
             if($prop->isPublic()) {
-                $prefl = new ReflectionClass($prop->getValue($object));
                 // Must be a storable property.
-                $par = $prefl->getParentClass();
-                if($par->getName() == "StorageTypeBase") {
+                if($this->does_extend($prop->getValue($object), "StorageTypeBase")) {
                     $stmt[] = array(
                         'name' => $prop->getName(),
                         'val' => call_user_func_array(
-                            array($prop->getValue($object), "create_stmt"),
+                            array($prop->getValue($object), $action),
                             $args));
                 }
             }
         }
 
         return $stmt;
+    }
+
+    /**
+     * Determines if the given object extends StorageTypeBase.
+     */
+    public static function does_extend($object, $par_name)
+    {
+        $refl = null;
+        try {
+            $refl = new ReflectionClass($object);
+        }
+        catch(ReflectionException $e) {
+            return false;
+        }
+        
+        while($refl = $refl->getParentClass()) {
+            if($refl->getName() == $par_name) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

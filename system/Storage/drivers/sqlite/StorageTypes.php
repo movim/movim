@@ -19,7 +19,7 @@
 /**
  * Basic storage class that is extended by all others.
  */
-class StorageTypeBase
+class StorageTypeSQLite extends StorageTypeBase
 {
     protected $params;
     protected $def = "BASE";
@@ -43,57 +43,57 @@ class StorageTypeBase
     }
 }
 
-class StorageTypeBigInt extends StorageTypeBase
+class StorageTypeBigInt extends StorageTypeSQLite
 {
     protected $def = "BIGINT";
 }
 
-class StorageTypeBool extends StorageTypeBase
+class StorageTypeBool extends StorageTypeSQLite
 {
     protected $def = "BOOLEAN";
 }
 
-class StorageTypeVarChar extends StorageTypeBase
+class StorageTypeVarChar extends StorageTypeSQLite
 {
     protected $def = "VARCHAR";
 }
 
-class StorageTypeDate extends StorageTypeBase
+class StorageTypeDate extends StorageTypeSQLite
 {
     protected $def = "DATE";
 }
 
-class StorageTypeDateTime extends StorageTypeBase
+class StorageTypeDateTime extends StorageTypeSQLite
 {
     protected $def = "DATETIME";
 }
 
-class StorageTypeDecimal extends StorageTypeBase
+class StorageTypeDecimal extends StorageTypeSQLite
 {
     protected $def = "DECIMAL";
 }
 
-class StorageTypeFloat extends StorageTypeBase
+class StorageTypeFloat extends StorageTypeSQLite
 {
     protected $def = "FLOAT";
 }
 
-class StorageTypeInt extends StorageTypeBase
+class StorageTypeInt extends StorageTypeSQLite
 {
     protected $def = "INTEGER";
 }
 
-class StorageTypeText extends StorageTypeBase
+class StorageTypeText extends StorageTypeSQLite
 {
     protected $def = "TEXT";
 }
 
-class StorageTypeBlob extends StorageTypeBase
+class StorageTypeBlob extends StorageTypeSQLite
 {
     protected $def = "BLOB";
 }
 
-class StorageTypeForeignKey extends StorageTypeBase
+class StorageTypeForeignKey extends StorageTypeSQLite
 {
     // TODO protected $def = "";
 }

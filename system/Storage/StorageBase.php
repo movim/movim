@@ -20,6 +20,7 @@
 class StorageBase
 {
     protected $db;
+    public $id;
     
     /**
      * Constructor.
@@ -58,6 +59,7 @@ class StorageBase
      */
     public function save($simulate = false)
     {
+        return $this->db->save($this, $simulate);
     }
 
     /**
@@ -65,6 +67,57 @@ class StorageBase
      */
     public function delete($simulate = false)
     {
+    }
+
+    /**
+     * Determines if the given object extends StorageTypeBase.
+     */
+    protected function is_typed($object)
+    {
+        return StorageEngineBase::does_extend($object, "StorageTypeBase");
+    }
+
+    /**
+     * Loads up the object.
+     */
+    public function load(array $cond, $simulate = false)
+    {
+        $data = $this->db->select($this, $cond, $simulate);
+
+        if($simulate) {
+            return $data;
+        }
+
+        // OK now let's populate our properties.
+        if(is_array($data[0]) && count($data[0]) > 0) {
+            foreach($data[0] as $name => $value) {
+                if($name != "id" && !isset($this->$name)) {
+                    continue;
+                }
+                else if($name == "id") {
+                    $this->id = $value;
+                }
+                else {
+                    $this->$name->setval($value);
+                }
+            }
+        }
+    }
+
+    /**
+     * Handy function, in particular for debugging. Overloading it is a good idea.
+     */
+    public function tostring()
+    {
+        $buffer = "(id: " . (is_numeric($this->id)? $this->id : 'New') . ") {\n";
+        foreach($this as $propname => $propval) {
+            if($this->is_typed($propval)) {
+                $buffer.= 
+                    "    [" . $propname . ": '" . $propval->getval() . "'] \n";
+            }
+        }
+
+        return $buffer . "}\n";
     }
 }
 

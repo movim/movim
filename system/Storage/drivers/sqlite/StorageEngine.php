@@ -70,7 +70,7 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
             $res = $this->db->query($statement);
 
             $table = array();
-            while($row[] = $res->fetchArray()) {}
+            while($table[] = $res->fetchArray(SQLITE3_ASSOC)) {}
             return $table;
         } else {
             return $this->db->exec($statement);
@@ -80,8 +80,6 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
     public function create_storage($object, $outp = false)
     {
         $props = $this->walkprops($object, "create_stmt");
-
-        var_dump($props);
 
         $stmt = 'CREATE TABLE "'.$this->getObjName($object).'" ('.
             '"id" serial NOT NULL PRIMARY KEY, ';
@@ -101,10 +99,68 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
 
     public function save($object, $outp = false)
     {
+        $stmt = "";
+        
+        $props = $this->walkprops($object, "getval");
+        
+        var_dump($props);
+
+        if(!isset($object->id) || !is_numeric($object->id)) {
+            $stmt = "INSERT INTO " . $this->getObjName($object);
+
+            $cols = "";
+            $vals = "";
+            foreach($props as $prop) {
+                $cols.= $prop['name'] . ', ';
+                $vals.= '"' . $prop['val'] . '", ';
+            }
+
+            $stmt.= '(' . substr($cols, 0, -2) . ')';
+            $stmt.= ' VALUES(' . substr($vals, 0, -2) . ');';
+        } else {
+            $stmt = "UPDATE " . $this->getObjName($object) . " SET ";
+
+            foreach($props as $prop) {
+                $stmt.= $prop['name'] . '="' . $prop['val'] . '", ';
+            }
+
+            $stmt = substr($stmt, 0, -2) . ' WHERE id="' . $object->id . '";';
+        }
+
+        if($outp) {
+            return $stmt;
+        } else {
+            return $this->query($stmt);
+        }
     }
     
     public function delete($object, $outp = false)
     {
+    }
+
+    /**
+     * Returns data relative to an object as an array.
+     */
+    public function select($object, array $cond, $outp = false)
+    {
+        if(count($cond) < 1) {
+            return false;
+        }
+
+        $stmt = "SELECT * FROM " . $this->getObjName($object) . " WHERE ";
+        
+        foreach($cond as $col => $val) {
+            $stmt.= "$col=\"$val\" AND ";
+        }
+
+        // Stripping the extra " AND "
+        $stmt = substr($stmt, 0, -5) . ';';
+
+        if($outp) {
+            return $stmt;
+        } else {
+            return $this->query($stmt);
+        }
     }
 }
 

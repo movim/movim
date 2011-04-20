@@ -21,6 +21,7 @@ interface StorageDriver
     public function create_storage($object, $outp = false);
     public function save($object, $outp = false);
     public function delete($object, $outp = false);
+    public function select($object, array $cond, $outp = false);
 }
 
 ?>
