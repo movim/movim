@@ -41,7 +41,8 @@ class StorageEngineBase implements StorageDriver
     protected function walkprops($object, $action)
     {
         $refl = new ReflectionClass($object);
-        if($refl->getParentClass() != "StorageBase") {
+        $parent = $refl->getParentClass();
+        if($parent->getName() != "StorageBase") {
             throw new StorageException(t("Provided object is not storable."));
         }
 
@@ -55,17 +56,21 @@ class StorageEngineBase implements StorageDriver
         }
 
         foreach($props as $prop) {
-            $prefl = new ReflectionClass($prop->getValue($object));
-            // Must be a storable property.
-            if($prefl->getParentClass() != "StorageTypeBase") {
-                continue;
+            if($prop->isPublic()) {
+                $prefl = new ReflectionClass($prop->getValue($object));
+                // Must be a storable property.
+                $par = $prefl->getParentClass();
+                if($par->getName() == "StorageTypeBase") {
+                    $stmt[] = array(
+                        'name' => $prop->getName(),
+                        'val' => call_user_func_array(
+                            array($prop->getValue($object), "create_stmt"),
+                            $args));
+                }
             }
-            $stmt[] = array(
-                'name' => $prop->getName(),
-                'val' => call_user_func_array(
-                    array($prop->getValue($object), "create_stmt"),
-                    $args));
         }
+
+        return $stmt;
     }
 
     /**
@@ -74,7 +79,7 @@ class StorageEngineBase implements StorageDriver
     protected function getObjName($object)
     {
         $refl = new ReflectionClass($object);
-        return $object->getName();
+        return $refl->getName();
     }
 }
 

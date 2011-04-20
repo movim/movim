@@ -1,6 +1,6 @@
 <?php
 /**
- * Jaxl (XMPP XMPP Library)
+ * Jaxl (Jabber XMPP Library)
  *
  * Copyright (c) 2009-2010, Abhinav Singh <me@abhinavsingh.com>.
  * All rights reserved.
@@ -45,13 +45,30 @@
      * XEP-0077 : In-Band Registration
     */
     class JAXL0077 {
-
+		
         public static $ns = 'jabber:iq:register';
-
+		
         public static function init($jaxl) {
+        	JAXLXml::addTag('iq', 'registerInstruction', '//iq/query/instructions');
+        	JAXLXml::addTag('iq', 'registerUsername', '//iq/query/username');
+        	JAXLXml::addTag('iq', 'registerPassword', '//iq/query/password');
             $jaxl->features[] = self::$ns;
         }
-
+		
+        public static function getRegistrationForm($jaxl, $from, $to, $callback) {
+        	$payload = '<query xmlns="'.self::$ns.'"/>';
+            return XMPPSend::iq($jaxl, 'get', $payload, $to, $from, $callback);
+        }
+        
+        public static function register($jaxl, $from, $to, $callback, $fields) {
+        	$payload = '<query xmlns="'.self::$ns.'">';
+        	foreach($fields as $field=>$value) { 
+        		$payload .= '<'.$field.'>'.$value.'</'.$field.'>';
+        	}
+        	$payload .= '</query>';
+        	
+            return XMPPSend::iq($jaxl, 'set', $payload, $to, $from, $callback);
+        }
     }
 
 ?>

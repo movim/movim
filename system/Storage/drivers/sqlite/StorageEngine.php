@@ -23,8 +23,9 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
     // Loading config and attempting to connect.
     public function __construct()
     {
-        $conf = new Conf();
-        $db_file = $conf->getServerConfElement("SqliteFile");
+        //$conf = new Conf();
+        //$db_file = $conf->getServerConfElement("SqliteFile");
+        $db_file = BASE_PATH . "test.sqlite";
 
         // Checking the file can be accessed.
         if($db_file == "") {
@@ -32,8 +33,15 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
         }
 
         // OK, trying to open the file.
-        $this->db = sqlite_open($db_file);
+        $this->db = new SQLite3($db_file);
 
+    }
+
+    public function __destruct()
+    {
+        if($this->db) {
+            $this->db->close();
+        }
     }
 
     /**
@@ -42,11 +50,11 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
      */
     protected function errors()
     {
-        $error = sqlite_last_error($this->db);
+        $error = $this->db->lastErrorCode();
         if($error != 0) {
             throw new StorageException(
-                t("Couldn't open file `%s'", $db_file),
-                sqlite_error_string($error),
+                t(" `%s'", $db_file),
+                $this->db->lastErrorMsg(),
                 $error);
         }
     }
@@ -59,33 +67,35 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
         $ret = null;
         
         if(strtoupper(substr(trim($statement), 0, 6)) == "SELECT") {
-            $ret = sqlite_array_query($this->db, $statement);
+            $res = $this->db->query($statement);
+
+            $table = array();
+            while($row[] = $res->fetchArray()) {}
+            return $table;
         } else {
-            $ret = sqlite_query($this->db, $statement);
+            return $this->db->exec($statement);
         }
-
-        $this->errors();
-
-        return $ret;
     }
     
     public function create_storage($object, $outp = false)
     {
         $props = $this->walkprops($object, "create_stmt");
 
+        var_dump($props);
+
         $stmt = 'CREATE TABLE "'.$this->getObjName($object).'" ('.
             '"id" serial NOT NULL PRIMARY KEY, ';
         foreach($props as $prop) {
-            $stmt = '"' . $prop['name'] . '" ' . $prop['val'] . ', ';
+            $stmt .= '"' . $prop['name'] . '" ' . $prop['val'] . ', ';
         }
 
         // Stripping the extra ', ' and closing the statement.
-        $stmt = substr($stmt, 0, strlen($stmt - 2)) . ');';
+        $stmt = substr($stmt, 0, -2) . ');';
 
         if($outp) {
             return $stmt;
         } else {
-            $this->query($stmt);
+            return $this->query($stmt);
         }
     }
 

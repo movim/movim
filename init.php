@@ -5,11 +5,6 @@ session_commit();
 
 session_start();
 
-define('BASE_PATH', dirname(__FILE__) . '/');
-define('LIB_PATH',BASE_PATH.'system/');
-define('PROPERTIES_PATH',BASE_PATH.'page/properties/');
-define('THEMES_PATH', BASE_PATH . 'themes/');
-
 require('loader.php');
 
 define('APP_TITLE', t("MOVIM - Test Client"));

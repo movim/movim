@@ -1,6 +1,6 @@
 <?php
 /**
- * Jaxl (XMPP XMPP Library)
+ * Jaxl (Jabber XMPP Library)
  *
  * Copyright (c) 2009-2010, Abhinav Singh <me@abhinavsingh.com>.
  * All rights reserved.
@@ -73,7 +73,7 @@
             $rs['errno'] = curl_errno($ch);
             $rs['errmsg'] = curl_error($ch);
             $rs['header'] = curl_getinfo($ch);
-
+            
             curl_close($ch);
             return $rs;
         }

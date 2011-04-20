@@ -1,6 +1,6 @@
 <?php
 /**
- * Jaxl (XMPP XMPP Library)
+ * Jaxl (Jabber XMPP Library)
  *
  * Copyright (c) 2009-2010, Abhinav Singh <me@abhinavsingh.com>.
  * All rights reserved.
@@ -42,7 +42,7 @@
  */
 
     /**
-     * XEP-0114: XMPP Component Protocol
+     * XEP-0114: Jabber Component Protocol
     */
     class JAXL0114 {
         

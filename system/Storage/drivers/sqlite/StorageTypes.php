@@ -39,7 +39,7 @@ class StorageTypeBase
             $opt = "(".implode(', ', $this->params).")";
         }
 
-        return $def . $opt;
+        return $this->def . $opt;
     }
 }
 

@@ -1,6 +1,6 @@
 <?php
 /** 
- * Jaxl (XMPP XMPP Library)
+ * Jaxl (Jabber XMPP Library)
  *
  * Copyright (c) 2009-2010, Abhinav Singh <me@abhinavsingh.com>.
  * All rights reserved.
@@ -127,7 +127,7 @@
         /**
          * Client name of the connected Jaxl instance
         */
-        const name = 'Jaxl :: XMPP XMPP Client Library';
+        const name = 'Jaxl :: Jabber XMPP Client Library';
 
         /**
          * Custom config passed to Jaxl constructor
@@ -229,12 +229,12 @@
         /**
          * Absolute path of log file for this Jaxl instance
         */
-        var $logPath = '/var/www/jaxl/jaxl.log';
+        var $logPath = '/var/log/jaxl.log';
 
         /**
          * Absolute path of pid file for this Jaxl instance
         */
-        var $pidPath = '/var/www/jaxl/jaxl.pid';
+        var $pidPath = '/var/run/jaxl.pid';
 
         /**
          * Enable/Disable shutdown callback on SIGH terms
@@ -258,7 +258,7 @@
         var $mode = false;
 
         /**
-         * XMPP auth mechanism performed by this Jaxl instance
+         * Jabber auth mechanism performed by this Jaxl instance
          *
          * @var false|string
         */

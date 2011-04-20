@@ -17,8 +17,6 @@
  * All rights reserved, see included COPYING file for licensing information.
  */
 
-require_once("Driver/StorageDriver.php");
-
 class StorageBase
 {
     protected $db;
@@ -29,10 +27,20 @@ class StorageBase
     public function __construct()
     {
         // Loading driver.
-        $conf = new Conf();
-        $driver = $conf->getServerConfElement("storageDriver");
+        //$conf = new Conf();
+        // $driver = $conf->getServerConfElement("storageDriver");
+        $driver = "sqlite";
         require_once("drivers/${driver}/init.php");
         $this->db = new StorageEngine();
+
+        $this->type_init();
+    }
+
+    /**
+     * Initialize types in here.
+     */
+    protected function type_init()
+    {
     }
 
     /**
@@ -42,14 +50,7 @@ class StorageBase
      */
     public function create($simulate = false)
     {
-        foreach($this as $propname => $propval) {
-            $refl = new ReflectionClass($propval);
-
-            // Is this property a storage?
-            if($refl->getParentClass() == "StorageTypeBase") {
-                
-            }
-		}
+        return $this->db->create_storage($this, $simulate);
     }
 
     /**
