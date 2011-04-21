@@ -23,9 +23,9 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
     // Loading config and attempting to connect.
     public function __construct()
     {
-        //$conf = new Conf();
-        //$db_file = $conf->getServerConfElement("SqliteFile");
-        $db_file = BASE_PATH . "test.sqlite";
+        $conf = new Conf();
+        $db_file = BASE_PATH . $conf->getServerConfElement("database");
+        //$db_file = BASE_PATH . "test.sqlite";
 
         // Checking the file can be accessed.
         if($db_file == "") {

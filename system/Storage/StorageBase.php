@@ -28,9 +28,8 @@ class StorageBase
     public function __construct()
     {
         // Loading driver.
-        //$conf = new Conf();
-        // $driver = $conf->getServerConfElement("storageDriver");
-        $driver = "sqlite";
+        $conf = new Conf();
+        $driver = $conf->getServerConfElement("storageDriver");
         require_once("drivers/${driver}/init.php");
         $this->db = new StorageEngine();
 
