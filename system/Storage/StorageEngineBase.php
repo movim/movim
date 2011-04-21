@@ -3,7 +3,7 @@
 /**
  * @file StorageEngineBase.php
  * This file is part of PROJECT.
- * 
+ *
  * @brief Basic implementation and utilities to create storage drivers.
  *
  * @author Etenil <etenil@etenilsrealm.nl>
@@ -12,67 +12,63 @@
  * @date 18 April 2011
  *
  * Copyright (C)2011 Movim
- * 
+ *
  * All rights reserved.
  */
 
 class StorageEngineBase implements StorageDriver
 {
+    /**
+     * Creates the storage object (table) associated to the object.
+     */
     public function create_storage($object, $outp = false)
     {
     }
 
+    /**
+     * Saves the object into its storage.
+     */
     public function save($object, $outp = false)
     {
     }
 
+    /**
+     * Deletes the object from its storage.
+     */
     public function delete($object, $outp = false)
     {
     }
 
+    /**
+     * Loads up the data corresponding to the object in the storage.
+     */
     public function select($object, array $cond, $outp = false)
     {
     }
 
     /**
-     * executes the given action on all props derived from StorageTypeBase in
-     * $object -- if object itself extends StorageBase.
-     *
-     * Extra parameters are passed on to the called method.
-     *
-     *   walkprops($object, $action, ...)
+     * Deletes the storage associated to the object.
      */
-    protected function walkprops($object, $action)
+    public function drop($outp, $outp = false)
     {
-        $refl = new ReflectionClass($object);
-        $parent = $refl->getParentClass();
-        if($parent->getName() != "StorageBase") {
+    }
+
+    /**
+     * Checks that object is a storable object.
+     */
+    protected function is_storage($object)
+    {
+        return StorageEngineBase::does_extend($object, "StorageBase");
+    }
+
+    /**
+     * Checks that object is storable or throw an exception.
+     */
+    protected function require_storage($object)
+    {
+        if(!StorageEngineBase::does_extend($object, "StorageBase")) {
             throw new StorageException(t("Provided object is not storable."));
         }
-
-        $props = $refl->getProperties();
-        $stmt = array();
-
-        // Are there extra args?
-        $args = array();
-        if(count(func_get_args()) > 2) {
-            $args = array_slice(func_get_args(), 2);
-        }
-
-        foreach($props as $prop) {
-            if($prop->isPublic()) {
-                // Must be a storable property.
-                if($this->does_extend($prop->getValue($object), "StorageTypeBase")) {
-                    $stmt[] = array(
-                        'name' => $prop->getName(),
-                        'val' => call_user_func_array(
-                            array($prop->getValue($object), $action),
-                            $args));
-                }
-            }
-        }
-
-        return $stmt;
     }
 
     /**
@@ -87,7 +83,7 @@ class StorageEngineBase implements StorageDriver
         catch(ReflectionException $e) {
             return false;
         }
-        
+
         while($refl = $refl->getParentClass()) {
             if($refl->getName() == $par_name) {
                 return true;

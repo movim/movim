@@ -5,13 +5,14 @@ require("../../../loader.php");
 class TestStorage extends StorageBase
 {
     // Storable fields.
-    public $toto;
-    public $prout;
+    protected $toto;
+    protected $prout;
 
     protected function type_init()
     {
         $this->toto = StorageType::int();
         $this->prout = StorageType::varchar(10);
+        $this->id = 2;
     }
 
 /*    public function tostring()
@@ -23,10 +24,21 @@ class TestStorage extends StorageBase
 $test = new TestStorage();
 echo $test->create(true) . "\n";
 
-$test->load(array('id' => 1));
-
-echo $test->tostring();
+$test->toto = 10;
+$test->prout = 'tagada';
 
 echo $test->save(true);
+
+$test2 = new TestStorage();
+
+$test2->load(array('id' => 1));
+
+echo "\n" . $test2->tostring();
+
+unset($test2);
+
+echo $test->delete(true) . "\n";
+
+echo $test->drop(true) . "\n";
 
 ?></pre>

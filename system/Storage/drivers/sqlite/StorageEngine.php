@@ -3,7 +3,7 @@
 /**
  * @file StorageEngine.php
  * This file is part of Movim.
- * 
+ *
  * @brief Implements a storage driver for sqlite.
  *
  * @author Etenil <etenil@etenilsrealm.nl>
@@ -12,14 +12,14 @@
  * @date 17 April 2011
  *
  * Copyright (C)2011 Movim
- * 
+ *
  * All rights reserved.
  */
 
 class StorageEngine extends StorageEngineBase implements StorageDriver
 {
     protected $db;
-    
+
     // Loading config and attempting to connect.
     public function __construct()
     {
@@ -58,14 +58,14 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
                 $error);
         }
     }
-    
+
     /**
      * SQLite-specific routine with error check included.
      */
     protected function query($statement)
     {
         $ret = null;
-        
+
         if(strtoupper(substr(trim($statement), 0, 6)) == "SELECT") {
             $res = $this->db->query($statement);
 
@@ -76,13 +76,20 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
             return $this->db->exec($statement);
         }
     }
-    
+
+    protected function lastId()
+    {
+        return $this->db->lastInsertRowId();
+    }
+
     public function create_storage($object, $outp = false)
     {
-        $props = $this->walkprops($object, "create_stmt");
+        $this->require_storage($object);
 
-        $stmt = 'CREATE TABLE "'.$this->getObjName($object).'" ('.
-            '"id" serial NOT NULL PRIMARY KEY, ';
+        $props = $object->walkprops("create_stmt");
+
+        $stmt = 'CREATE TABLE IF NOT EXISTS "'.$this->getObjName($object).'" ('.
+            '"id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ';
         foreach($props as $prop) {
             $stmt .= '"' . $prop['name'] . '" ' . $prop['val'] . ', ';
         }
@@ -99,13 +106,15 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
 
     public function save($object, $outp = false)
     {
+        $this->require_storage($object);
+
         $stmt = "";
-        
-        $props = $this->walkprops($object, "getval");
-        
+
+        $props = $object->walkprops("getval");
+
         var_dump($props);
 
-        if(!isset($object->id) || !is_numeric($object->id)) {
+        if(!$object->id) {
             $stmt = "INSERT INTO " . $this->getObjName($object);
 
             $cols = "";
@@ -117,6 +126,13 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
 
             $stmt.= '(' . substr($cols, 0, -2) . ')';
             $stmt.= ' VALUES(' . substr($vals, 0, -2) . ');';
+
+            if($outp) {
+                return $stmt;
+            } else {
+                $this->query($stmt);
+                return $this->lastId();
+            }
         } else {
             $stmt = "UPDATE " . $this->getObjName($object) . " SET ";
 
@@ -125,17 +141,42 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
             }
 
             $stmt = substr($stmt, 0, -2) . ' WHERE id="' . $object->id . '";';
+
+            if($outp) {
+                return $stmt;
+            } else {
+                return $this->query($stmt);
+            }
         }
+    }
+
+    public function delete($object, $outp = false)
+    {
+        $this->require_storage($object);
+
+        // Does the object exist in the storage?
+        if($object->id) {
+            $stmt = "DELETE FROM " . $this->getObjName($object) . " WHERE id=\"" . $object->id . "\";";
+
+            if($outp) {
+                return $stmt;
+            } else {
+                return $this->query($stmt);
+            }
+        }
+    }
+
+    public function drop($object, $outp = false)
+    {
+        $this->require_storage($object);
+
+        $stmt = 'DROP TABLE IF EXISTS '.$this->getObjName($object).';';
 
         if($outp) {
             return $stmt;
         } else {
             return $this->query($stmt);
         }
-    }
-    
-    public function delete($object, $outp = false)
-    {
     }
 
     /**
@@ -148,7 +189,7 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
         }
 
         $stmt = "SELECT * FROM " . $this->getObjName($object) . " WHERE ";
-        
+
         foreach($cond as $col => $val) {
             $stmt.= "$col=\"$val\" AND ";
         }

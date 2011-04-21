@@ -3,7 +3,7 @@
 /**
  * @file StorageDriver.php
  * This file is part of Movim.
- * 
+ *
  * @brief The necessary template of a storage driver for Movim.
  *
  * @author Etenil <etenil@etenilsrealm.nl>
@@ -12,7 +12,7 @@
  * @date 17 April 2011
  *
  * Copyright (C)2011 Movim
- * 
+ *
  * All rights reserved.
  */
 
@@ -22,6 +22,7 @@ interface StorageDriver
     public function save($object, $outp = false);
     public function delete($object, $outp = false);
     public function select($object, array $cond, $outp = false);
+    public function drop($object, $outp = false);
 }
 
 ?>

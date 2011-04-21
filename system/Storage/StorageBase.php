@@ -20,8 +20,8 @@
 class StorageBase
 {
     protected $db;
-    public $id;
-    
+    protected $id = false;
+
     /**
      * Constructor.
      */
@@ -35,6 +35,28 @@ class StorageBase
         $this->db = new StorageEngine();
 
         $this->type_init();
+    }
+
+    public function __get($name)
+    {
+        if(isset($this->$name) && $this->is_typed($this->$name)) {
+            return $this->$name->getval();
+        }
+        else if($name == 'id') {
+            return $this->id;
+        }
+        else {
+            throw new StorageException(t("Attempting to access a private member."));
+        }
+    }
+
+    public function __set($name, $value)
+    {
+        if(isset($this->$name) && $this->is_typed($this->$name)) {
+            return $this->$name->setval($value);
+        } else {
+            throw new StorageException(t("Attempting to access a private member."));
+        }
     }
 
     /**
@@ -59,7 +81,13 @@ class StorageBase
      */
     public function save($simulate = false)
     {
-        return $this->db->save($this, $simulate);
+        $ret = $this->db->save($this, $simulate);
+
+        if(!$this->id) {
+            $this->id = $ret;
+        }
+
+        return $ret;
     }
 
     /**
@@ -67,6 +95,20 @@ class StorageBase
      */
     public function delete($simulate = false)
     {
+        $ret = $this->db->delete($this, $simulate);
+
+        // Resetting id.
+        $this->id = false;
+
+        return $ret;
+    }
+
+    /**
+     * Deletes associated storage.
+     */
+    public function drop($simulate = false)
+    {
+        return $this->db->drop($this, $simulate);
     }
 
     /**
@@ -109,15 +151,46 @@ class StorageBase
      */
     public function tostring()
     {
-        $buffer = "(id: " . (is_numeric($this->id)? $this->id : 'New') . ") {\n";
+        $buffer = "(id: " . (($this->id != false)? $this->id : 'New') . ") {\n";
         foreach($this as $propname => $propval) {
             if($this->is_typed($propval)) {
-                $buffer.= 
+                $buffer.=
                     "    [" . $propname . ": '" . $propval->getval() . "'] \n";
             }
         }
 
         return $buffer . "}\n";
+    }
+
+    /**
+     * executes the given action on all props derived from StorageTypeBase.
+     *
+     * Extra parameters are passed on to the called method.
+     *
+     *   walkprops($action, ...)
+     */
+    public function walkprops($action)
+    {
+        $stmt = array();
+
+        // Are there extra args?
+        $args = array();
+        if(count(func_get_args()) > 2) {
+            $args = array_slice(func_get_args(), 2);
+        }
+
+        foreach($this as $propname => $propval) {
+            // Must be a storable property.
+            if($this->is_typed($propval)) {
+                $stmt[] = array(
+                    'name' => $propname,
+                    'val' => call_user_func_array(
+                        array($propval, $action),
+                        $args));
+            }
+        }
+
+        return $stmt;
     }
 }
 
