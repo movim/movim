@@ -95,7 +95,20 @@ class StorageTypeBlob extends StorageTypeSQLite
 
 class StorageTypeForeignKey extends StorageTypeSQLite
 {
-    // TODO protected $def = "";
+    protected $def = "INTEGER";
+    protected $model;
+    protected $field;
+
+    public __construct($model, $field = 'id')
+    {
+        $this->model = $model;
+        $this->field = $field;
+    }
+
+    public function create_stmt()
+    {
+        return 'INTEGER NOT NULL REFERENCES "'. $this->model .'" ("'. $this->field .'")';
+    }
 }
 
 ?>

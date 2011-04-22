@@ -70,7 +70,7 @@ class StorageType
         return new StorageTypeBlob();
     }
 
-    public static function foreignkey($model, $field)
+    public static function foreignkey($model, $field = 'id')
     {
         return new StorageTypeForeignKey($model, $field);
     }

@@ -7,6 +7,7 @@ class TestStorage extends StorageBase
     // Storable fields.
     protected $toto;
     protected $prout;
+    protected $foreign;
 
     protected function type_init()
     {
