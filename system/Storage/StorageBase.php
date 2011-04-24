@@ -194,8 +194,7 @@ class StorageBase
                     $obj->$name->setval($value);
                 }
             }
-
-            $objects[] = $obj;
+            $objects[$obj->id] = $obj;
         }
 
         return $objects;
