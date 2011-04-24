@@ -112,8 +112,6 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
 
         $props = $object->walkprops("getval");
 
-        var_dump($props);
-
         if(!$object->id) {
             $stmt = "INSERT INTO " . $this->getObjName($object);
 

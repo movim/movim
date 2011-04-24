@@ -28,6 +28,8 @@ require(LIB_PATH . "Widget/WidgetBase.php");
 require(LIB_PATH . "Widget/WidgetWrapper.php");
 
 require(LIB_PATH . "Storage/StorageDriver.php");
+require(LIB_PATH . "Storage/StorageCollection.php");
+require(LIB_PATH . "Storage/StorageSchema.php");
 require(LIB_PATH . "Storage/StorageBase.php");
 require(LIB_PATH . "Storage/StorageEngineBase.php");
 require(LIB_PATH . "Storage/StorageException.php");

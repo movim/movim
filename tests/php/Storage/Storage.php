@@ -36,21 +36,34 @@ class Owner extends StorageBase
 }
 
 $test = new Account();
-echo $test->create(true) . "\n";
+$test->create();
 
 $test->balance = 1000;
 $test->interest = 0.02;
 
-echo $test->save(true);
+$test->save();
 
 $test2 = new Account(1); // Loads account id 1
 
-echo "\n" . $test2->tostring();
+echo $test2->tostring() . "\n";
 
 unset($test2);
 
-echo $test->delete(true) . "\n";
+// Adding owner.
+$o = $test->children->add(new Owner());
+$o->create();
 
-echo $test->drop(true) . "\n";
+$o->name = "Foo Bar";
+$o->dob = "1990-10-01";
+
+//var_dump($test);
+
+$test->save();
+
+echo $o->tostring() . "\n";
+
+$test->delete();
+
+//echo $test->drop(true) . "\n";
 
 ?></pre>

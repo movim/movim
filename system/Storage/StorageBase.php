@@ -21,8 +21,7 @@ class StorageBase
 {
     protected $db;
     protected $id = false;
-    protected static $children_classes = array();
-    protected $children = array();
+    public $children;
 
     /**
      * Constructor.
@@ -37,6 +36,8 @@ class StorageBase
 
         $this->type_init();
 
+        $this->children = new StorageCollection($this);
+        
         if($id > 0) {
             $this->load(array('id' => $id));
         }
@@ -51,7 +52,8 @@ class StorageBase
             return $this->id;
         }
         else {
-            throw new StorageException(t("Attempting to access a private member."));
+            debug_print_backtrace();
+            throw new StorageException(t("Attempting to access private member `%s' of class `%s'.", $name, get_class($this)));
         }
     }
 
@@ -60,7 +62,8 @@ class StorageBase
         if(isset($this->$name) && $this->is_typed($this->$name)) {
             return $this->$name->setval($value);
         } else {
-            throw new StorageException(t("Attempting to access private member `%s' of class `%s'.", $name, __CLASS__));
+            debug_print_backtrace();
+            throw new StorageException(t("Attempting to access private member `%s' of class `%s'.", $name, get_class($this)));
         }
     }
 
@@ -88,6 +91,8 @@ class StorageBase
     {
         $ret = $this->db->save($this, $simulate);
 
+        $ret .= $this->children->save($simulate);
+        
         if(!$this->id) {
             $this->id = $ret;
         }
@@ -102,6 +107,9 @@ class StorageBase
     {
         $ret = $this->db->delete($this, $simulate);
 
+        // Deleting in cascade.
+        $ret .= $this->children->delete($simulate);
+        
         // Resetting id.
         $this->id = false;
 
@@ -113,7 +121,13 @@ class StorageBase
      */
     public function drop($simulate = false)
     {
-        return $this->db->drop($this, $simulate);
+        $ret = $this->db->drop($this, $simulate);
+
+        $ret .= $this->children->drop($simulate);
+
+        $this->id = false;
+        
+        return $ret;
     }
 
     /**
@@ -151,13 +165,7 @@ class StorageBase
         }
 
         // Loading the children.
-        $this->children = array();
-        if(is_array($this->children_classes)) {
-            foreach($this->children_classes as $child_class) {
-                $this->children[$child_class['class']] =
-                    $child_class['class']::objects($child_class['var']);
-            }
-        }
+        $this->children->load($this->id);
 
         return true;
     }
@@ -200,21 +208,6 @@ class StorageBase
         return $objects;
     }
 
-    public static function add_child($classname, $var = "")
-    {
-        if($var == "") {
-            $var = __CLASS__ . '_id';
-        }
-        
-        if(!is_array(self::$children_classes)) {
-            self::$children_classes = array();
-        }
-        self::$children_classes[] = array(
-            'class' => $classname,
-            'var' => $var,
-            );
-    }
-
     /**
      * Handy function, in particular for debugging. Overloading it is a good idea.
      */
@@ -236,7 +229,7 @@ class StorageBase
      */
     protected function foreignkey($var, $class)
     {
-        $this->$var = StorageType::foreignkey(__CLASS__, $var, $model);
+        $this->$var = StorageType::foreignkey(get_class($this), $var, $class);
     }
 
     /**
