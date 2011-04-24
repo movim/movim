@@ -99,7 +99,7 @@ class StorageTypeForeignKey extends StorageTypeSQLite
     protected $model;
     protected $field;
 
-    public __construct($model, $field = 'id')
+    public function __construct($model, $field = 'id')
     {
         $this->model = $model;
         $this->field = $field;

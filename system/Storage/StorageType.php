@@ -70,9 +70,11 @@ class StorageType
         return new StorageTypeBlob();
     }
 
-    public static function foreignkey($model, $field = 'id')
+    public static function foreignkey($child, $var, $model)
     {
-        return new StorageTypeForeignKey($model, $field);
+        // Attaching to model.
+        $model::add_child($child, $var);
+        return new StorageTypeForeignKey($model);
     }
 }
 

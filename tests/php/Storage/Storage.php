@@ -2,18 +2,17 @@
 
 require("../../../loader.php");
 
-class TestStorage extends StorageBase
+class Account extends StorageBase
 {
     // Storable fields.
-    protected $toto;
-    protected $prout;
-    protected $foreign;
+    protected $balance;
+    protected $interest;
+    protected $owners;
 
     protected function type_init()
     {
-        $this->toto = StorageType::int();
-        $this->prout = StorageType::varchar(10);
-        $this->id = 2;
+        $this->balance = StorageType::float();
+        $this->interest = StorageType::float();
     }
 
 /*    public function tostring()
@@ -22,17 +21,29 @@ class TestStorage extends StorageBase
         }*/
 }
 
-$test = new TestStorage();
+class Owner extends StorageBase
+{
+    protected $name;
+    protected $dob;
+    protected $account;
+    
+    protected function type_init()
+    {
+        $this->name = StorageType::varchar(256);
+        $this->dob = StorageType::date();
+        $this->foreignkey('account', 'Account');
+    }
+}
+
+$test = new Account();
 echo $test->create(true) . "\n";
 
-$test->toto = 10;
-$test->prout = 'tagada';
+$test->balance = 1000;
+$test->interest = 0.02;
 
 echo $test->save(true);
 
-$test2 = new TestStorage();
-
-$test2->load(array('id' => 1));
+$test2 = new Account(1); // Loads account id 1
 
 echo "\n" . $test2->tostring();
 

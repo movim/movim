@@ -76,6 +76,10 @@ class StorageEngineBase implements StorageDriver
      */
     public static function does_extend($object, $par_name)
     {
+        if(!is_object($object)) {
+            return false;
+        }
+        
         $refl = null;
         try {
             $refl = new ReflectionClass($object);

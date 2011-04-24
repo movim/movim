@@ -184,18 +184,18 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
      */
     public function select($object, array $cond, $outp = false)
     {
-        if(count($cond) < 1) {
-            return false;
+        $stmt = "SELECT * FROM " . $this->getObjName($object);
+
+        if(count($cond) > 1) {
+            $where . " WHERE ";
+            
+            foreach($cond as $col => $val) {
+                $stmt.= "$col=\"$val\" AND ";
+            }
+
+            // Stripping the extra " AND "
+            $stmt = substr($stmt, 0, -5) . ';';
         }
-
-        $stmt = "SELECT * FROM " . $this->getObjName($object) . " WHERE ";
-
-        foreach($cond as $col => $val) {
-            $stmt.= "$col=\"$val\" AND ";
-        }
-
-        // Stripping the extra " AND "
-        $stmt = substr($stmt, 0, -5) . ';';
 
         if($outp) {
             return $stmt;
