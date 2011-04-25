@@ -49,7 +49,11 @@ class StorageEngineBase implements StorageDriver
     /**
      * Deletes the storage associated to the object.
      */
+<<<<<<< HEAD
+    public function drop($object)
+=======
     public function drop($outp)
+>>>>>>> storage
     {
     }
 
