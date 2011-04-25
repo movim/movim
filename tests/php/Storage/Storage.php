@@ -2,6 +2,8 @@
 
 require("../../../loader.php");
 
+define('DB_DEBUG', 'On');
+
 class Account extends StorageBase
 {
     // Storable fields.
@@ -64,6 +66,6 @@ echo $o->tostring() . "\n";
 
 $test->delete();
 
-//echo $test->drop(true) . "\n";
+$test->drop();
 
 ?></pre>

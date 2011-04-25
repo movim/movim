@@ -76,17 +76,17 @@ class StorageCollection
         return $outp;
     }
     
-    public function save($simulate)
+    public function save()
     {
         return $this->walk_objects('save', func_get_args());
     }
 
-    public function delete($simulate)
+    public function delete()
     {
         return $this->walk_objects('delete', func_get_args());
     }
 
-    public function drop($simulate)
+    public function drop()
     {
         return $this->walk_objects('drop', func_get_args());
     }

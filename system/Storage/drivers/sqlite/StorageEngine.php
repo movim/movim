@@ -66,6 +66,8 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
     {
         $ret = null;
 
+        $this->log($statement);
+        
         if(strtoupper(substr(trim($statement), 0, 6)) == "SELECT") {
             $res = $this->db->query($statement);
 
@@ -82,7 +84,7 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
         return $this->db->lastInsertRowId();
     }
 
-    public function create_storage($object, $outp = false)
+    public function create_storage($object)
     {
         $this->require_storage($object);
 
@@ -97,14 +99,10 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
         // Stripping the extra ', ' and closing the statement.
         $stmt = substr($stmt, 0, -2) . ');';
 
-        if($outp) {
-            return $stmt;
-        } else {
-            return $this->query($stmt);
-        }
+        return $this->query($stmt);
     }
 
-    public function save($object, $outp = false)
+    public function save($object)
     {
         $this->require_storage($object);
 
@@ -125,12 +123,8 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
             $stmt.= '(' . substr($cols, 0, -2) . ')';
             $stmt.= ' VALUES(' . substr($vals, 0, -2) . ');';
 
-            if($outp) {
-                return $stmt;
-            } else {
-                $this->query($stmt);
-                return $this->lastId();
-            }
+            $this->query($stmt);
+            return $this->lastId();
         } else {
             $stmt = "UPDATE " . $this->getObjName($object) . " SET ";
 
@@ -140,15 +134,11 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
 
             $stmt = substr($stmt, 0, -2) . ' WHERE id="' . $object->id . '";';
 
-            if($outp) {
-                return $stmt;
-            } else {
-                return $this->query($stmt);
-            }
+            return $this->query($stmt);
         }
     }
 
-    public function delete($object, $outp = false)
+    public function delete($object)
     {
         $this->require_storage($object);
 
@@ -156,31 +146,23 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
         if($object->id) {
             $stmt = "DELETE FROM " . $this->getObjName($object) . " WHERE id=\"" . $object->id . "\";";
 
-            if($outp) {
-                return $stmt;
-            } else {
-                return $this->query($stmt);
-            }
+            return $this->query($stmt);
         }
     }
 
-    public function drop($object, $outp = false)
+    public function drop($object)
     {
         $this->require_storage($object);
 
         $stmt = 'DROP TABLE IF EXISTS '.$this->getObjName($object).';';
 
-        if($outp) {
-            return $stmt;
-        } else {
-            return $this->query($stmt);
-        }
+        return $this->query($stmt);
     }
 
     /**
      * Returns data relative to an object as an array.
      */
-    public function select($object, array $cond, $outp = false)
+    public function select($object, array $cond)
     {
         $stmt = "SELECT * FROM " . $this->getObjName($object);
 
@@ -195,11 +177,9 @@ class StorageEngine extends StorageEngineBase implements StorageDriver
             $stmt = substr($stmt, 0, -5) . ';';
         }
 
-        if($outp) {
-            return $stmt;
-        } else {
-            return $this->query($stmt);
-        }
+        $this->log($stmt);
+        
+        return $this->query($stmt);
     }
 }
 

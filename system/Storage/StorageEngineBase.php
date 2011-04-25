@@ -21,38 +21,57 @@ class StorageEngineBase implements StorageDriver
     /**
      * Creates the storage object (table) associated to the object.
      */
-    public function create_storage($object, $outp = false)
+    public function create_storage($object)
     {
     }
 
     /**
      * Saves the object into its storage.
      */
-    public function save($object, $outp = false)
+    public function save($object)
     {
     }
 
     /**
      * Deletes the object from its storage.
      */
-    public function delete($object, $outp = false)
+    public function delete($object)
     {
     }
 
     /**
      * Loads up the data corresponding to the object in the storage.
      */
-    public function select($object, array $cond, $outp = false)
+    public function select($object, array $cond)
     {
     }
 
     /**
      * Deletes the storage associated to the object.
      */
-    public function drop($outp, $outp = false)
+    public function drop($outp)
     {
     }
 
+    /**
+     * Logs or prints the query depending on the status of the constant
+     * DB_DEBUG.
+     */
+    protected function log($query)
+    {
+        if(defined('DB_DEBUG')) {
+            $logstr = date("Y-m-d H:i:s :: ") . $query . "\n";
+            if(strtolower(DB_DEBUG) == 'on') {
+                echo $logstr;
+            }
+            else if(defined('DB_LOGFILE')) {
+                $fh = fopen(DB_LOGFILE, 'a');
+                fwrite($fh, $logstr);
+                fclose($fh);
+            }
+        }
+    }
+    
     /**
      * Checks that object is a storable object.
      */

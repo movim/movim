@@ -52,7 +52,6 @@ class StorageBase
             return $this->id;
         }
         else {
-            debug_print_backtrace();
             throw new StorageException(t("Attempting to access private member `%s' of class `%s'.", $name, get_class($this)));
         }
     }
@@ -76,22 +75,20 @@ class StorageBase
 
     /**
      * Creates the storage associated with the object e.g. a SQL table.
-     * @param simulate will make the method return the queries instead of
-     * running them. Useful for testing.
      */
-    public function create($simulate = false)
+    public function create()
     {
-        return $this->db->create_storage($this, $simulate);
+        return $this->db->create_storage($this);
     }
 
     /**
      * Saves the class into the chosen container driver.
      */
-    public function save($simulate = false)
+    public function save()
     {
-        $ret = $this->db->save($this, $simulate);
+        $ret = $this->db->save($this);
 
-        $ret .= $this->children->save($simulate);
+        $ret .= $this->children->save();
         
         if(!$this->id) {
             $this->id = $ret;
@@ -103,12 +100,12 @@ class StorageBase
     /**
      * Deletes this object from the storage.
      */
-    public function delete($simulate = false)
+    public function delete()
     {
-        $ret = $this->db->delete($this, $simulate);
+        $ret = $this->db->delete($this);
 
         // Deleting in cascade.
-        $ret .= $this->children->delete($simulate);
+        $ret .= $this->children->delete();
         
         // Resetting id.
         $this->id = false;
@@ -119,11 +116,11 @@ class StorageBase
     /**
      * Deletes associated storage.
      */
-    public function drop($simulate = false)
+    public function drop()
     {
-        $ret = $this->db->drop($this, $simulate);
+        $ret = $this->db->drop($this);
 
-        $ret .= $this->children->drop($simulate);
+        $ret .= $this->children->drop();
 
         $this->id = false;
         
@@ -141,13 +138,10 @@ class StorageBase
     /**
      * Loads up the object.
      */
-    public function load(array $cond, $simulate = false)
+    public function load(array $cond)
     {
-        $data = $this->db->select($this, $cond, $simulate);
+        $data = $this->db->select($this, $cond);
  
-        if($simulate) {
-            return $data;
-        }
  
         // OK now let's populate our properties.
         if(is_array($data[0]) && count($data[0]) > 0) {
@@ -173,18 +167,14 @@ class StorageBase
     /**
      * Fetches all objects of this type.
      */
-    public static function objects(array $cond = array(), $simulate = false)
+    public static function objects(array $cond = array())
     {
         $classname = __CLASS__;
         $data = null;
         if(is_object($this)) {
-            $data = $this->db->select($this, $cond, $simulate);
+            $data = $this->db->select($this, $cond);
         } else {
-            $data = $this->db->select(new $classname(), $cond, $simulate);
-        }
-
-        if($simulate) {
-            return $data;
+            $data = $this->db->select(new $classname(), $cond);
         }
 
         // We instanciate an object per row.
@@ -213,7 +203,7 @@ class StorageBase
      */
     public function tostring()
     {
-        $buffer = "(id: " . (($this->id != false)? $this->id : 'New') . ") {\n";
+        $buffer = "(".get_class($this)." id: " . (($this->id != false)? $this->id : 'New') . ") {\n";
         foreach($this as $propname => $propval) {
             if($this->is_typed($propval)) {
                 $buffer.=

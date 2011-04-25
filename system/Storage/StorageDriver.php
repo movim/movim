@@ -18,11 +18,11 @@
 
 interface StorageDriver
 {
-    public function create_storage($object, $outp = false);
-    public function save($object, $outp = false);
-    public function delete($object, $outp = false);
-    public function select($object, array $cond, $outp = false);
-    public function drop($object, $outp = false);
+    public function create_storage($object);
+    public function save($object);
+    public function delete($object);
+    public function select($object, array $cond);
+    public function drop($object);
 }
 
 ?>
