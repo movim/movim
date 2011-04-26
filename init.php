@@ -1,10 +1,8 @@
 <?php
 
 ob_start();
-session_commit();
 
-session_start();
-
+define('APP_NAME', 'movim');
 define('BASE_PATH', dirname(__FILE__) . '/');
 define('LIB_PATH',BASE_PATH.'system/');
 define('PROPERTIES_PATH',BASE_PATH.'page/properties/');

@@ -43,7 +43,9 @@ class Jabber
 		$userConf = Conf::getUserConf($jid);
 		$serverConf = Conf::getServerConf();
 
-		unset($_SESSION['jid']);
+        $sess = Session::start(APP_NAME);
+
+		$sess->remove('jid'); // ???
 
 		$this->jaxl = new JAXL(array(
 								   // User Configuration
