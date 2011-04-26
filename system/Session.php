@@ -110,7 +110,7 @@ class Session
     public function dispose()
     {
         $this->nosave = true;
-        self::destroy($this->s_name());
+        self::destroy($this->s_name);
     }
 
     /**
