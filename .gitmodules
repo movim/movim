@@ -3,4 +3,4 @@
 	url = git://gitorious.org/titine/titine.git
 [submodule "system/Jaxl"]
 	path = system/Jaxl
-	url = https://github.com/abhinavsingh/JAXL.git
+	url = git://gitorious.org/titine/jaxl-titine.git
