@@ -1,8 +1,6 @@
 <?php
 
 ob_start();
-session_commit();
-
 session_start();
 
 require('loader.php');

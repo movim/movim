@@ -3,7 +3,7 @@
 /**
  * @file RPC.php
  * This file is part of PROJECT.
- * 
+ *
  * @brief Description
  *
  * @author Etenil <etenil@etenilsrealm.nl>
@@ -12,7 +12,7 @@
  * @date 20 February 2011
  *
  * Copyright (C)2011 Etenil
- * 
+ *
  * All rights reserved.
  */
 
@@ -29,7 +29,7 @@ class RPC
 
         $args = func_get_args();
         array_shift($args);
-        
+
         $funcall = array(
             'func' => $funcname,
             'params' => $args,
@@ -61,15 +61,20 @@ class RPC
         println('<?xml version="1.0" encoding="UTF-8" ?>');
         println('<movimcontainer>');
 
+        // Just in case (warning)
+        if(!is_array(self::$funcalls)) {
+            self::$funcalls = array();
+        }
+
         foreach(self::$funcalls as $funcall) {
             println('<funcall name="%s">', $funcall['func']);
-            
+
             if(is_array($funcall['params'])) {
                 foreach($funcall['params'] as $param) {
                     println('<param>%s</param>', $param);
                 }
             }
-            
+
             println('</funcall>');
         }
         println('</movimcontainer>');
@@ -83,13 +88,10 @@ class RPC
      */
     public function handle()
     {
-        //session_commit();
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
 			$user = new User();
 			$xmppSession = Jabber::getInstance($user->getLogin());
-			session_commit();
 			$xmppSession->pingServer();
-			session_commit();
 		} else {
             $xml = file_get_contents('php://input');
 			$request = simplexml_load_string($xml);

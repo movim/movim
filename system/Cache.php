@@ -49,7 +49,9 @@ class Cache
             $res = $this->db->query($statement);
 
             $table = array();
-            while($row[] = $res->fetchArray()) {}
+            while($row = $res->fetchArray()) {
+                $table[] = $row;
+            }
             return $table;
         } else {
             return $this->db->exec($statement);
@@ -143,7 +145,8 @@ class Cache
         if($this->db) {
 
             // Does the cache already exist?
-            $table = $this->query("SELECT * FROM cache WHERE key='$cache_key'", true);
+            $table = $this->query("SELECT count(key) FROM cache WHERE key='$cache_key'", true);
+            $this->log(var_export($table, true));
             if(count($table) > 0) {
                 // Need to update.
                 $this->query("UPDATE cache SET data='$data', md5='$md5', ".
