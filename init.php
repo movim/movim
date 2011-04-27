@@ -40,7 +40,7 @@ define('APP_TITLE', t("MOVIM - Test Client"));
 function __autoload($className) {
 
     /* Exceptions */
-    $manual_load = '(^JAXL)'; // Put ORs as "(^foo|^bar|^baz)"
+    $manual_load = '(^TITINE)'; // Put ORs as "(^foo|^bar|^baz)"
 
 	if(preg_match('/'.$manual_load.'/', $className)) {
 		return;

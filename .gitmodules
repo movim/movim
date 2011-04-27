@@ -1,0 +1,3 @@
+[submodule "system/Titine"]
+	path = system/Titine
+	url = git://gitorious.org/titine/titine.git
