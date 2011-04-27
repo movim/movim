@@ -61,6 +61,11 @@ class RPC
         println('<?xml version="1.0" encoding="UTF-8" ?>');
         println('<movimcontainer>');
 
+        // Just in case (warning)
+        if(!is_array(self::$funcalls)) {
+            self::$funcalls = array();
+        }
+
         foreach(self::$funcalls as $funcall) {
             println('<funcall name="%s">', $funcall['func']);
 
