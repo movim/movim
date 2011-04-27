@@ -2,13 +2,15 @@
 
 class Conf
 {
+    public static $conf_path = "/config";
+
 	function __construct() {
 	}
 
 	/* Return the general configuration */
 
 	static function getServerConf() {
-		$conf_file = BASE_PATH . "/config/conf.xml";
+		$conf_file = BASE_PATH . self::$conf_path . "/conf.xml";
 		return self::readConfFile($conf_file);
 	}
 
