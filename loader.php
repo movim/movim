@@ -8,6 +8,7 @@ define('THEMES_PATH', BASE_PATH . 'themes/');
 
 // Loads up all system libraries.
 require(LIB_PATH . "Lang/i18n.php");
+require(LIB_PATH . "Session.php");
 require(LIB_PATH . "Utils.php");
 require(LIB_PATH . "Cache.php");
 require(LIB_PATH . "Conf.php");
