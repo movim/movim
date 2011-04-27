@@ -1,6 +1,7 @@
 <?php
 
 ob_start();
+session_start();
 
 define('APP_NAME', 'movim');
 define('BASE_PATH', dirname(__FILE__) . '/');

@@ -64,10 +64,10 @@ class Session
      */
     protected function load()
     {
-        session_start();
+//        session_start();
         $this->sid = session_id();
         $this->session = unserialize(base64_decode($_SESSION[$this->s_name]));
-        session_commit();
+//        session_commit();
     }
 
     /**
@@ -118,9 +118,9 @@ class Session
      */
     public static function destroy($name)
     {
-        session_start();
+//        session_start();
         session_unset($name);
-        session_commit();
+//        session_commit();
 
         unset(self::$instances[$name]);
     }
@@ -131,9 +131,9 @@ class Session
      */
     public function commit()
     {
-        session_start();
+//        session_start();
         $_SESSION[$this->s_name] = base64_encode(serialize($this->session));
-        session_commit();
+//        session_commit();
     }
 
     /**
