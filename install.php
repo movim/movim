@@ -137,8 +137,8 @@ function show_install_form()
     make_textbox('defBoshPort', t("Bosh Port"), '80');
     echo '<hr />';
     echo t('<h2>Storage</h2>') . PHP_EOL;
-    make_select('storage', t("Storage driver"), array('sqlite'));
-    make_textbox('database', t("Database"), 'movim.sqlite');
+/*    make_select('storage', t("Storage driver"), array('sqlite'));
+      make_textbox('database', t("Database"), 'movim.sqlite');*/
     make_button('send', 'Install');
     ?>
   </form>
@@ -213,8 +213,8 @@ function perform_install()
       'defBoshHost' => $_POST['defBoshHost'],
       'defBoshSuffix' => $_POST['defBoshSuffix'],
       'defBoshPort' => $_POST['defBoshPort'],
-      'storageDriver' => $_POST['storage'],
-      'database' => $_POST['database'],
+/*      'storageDriver' => $_POST['storage'],
+        'database' => $_POST['database'],*/
       ),
     );
   if(!@file_put_contents('config/conf.xml', make_xml($conf))) {
