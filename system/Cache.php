@@ -27,7 +27,14 @@ class Cache
             $new = true;
         }
 
-        $this->db = new SQLite3($db_file);
+        try {
+            $this->db = new SQLite3($db_file);
+        }
+        catch(Exception $e) {
+            var_dump($this->login);
+            echo $e->message;
+            exit;
+        }
 
         // Creating schema.
         if($new) {

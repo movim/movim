@@ -79,7 +79,7 @@ class User {
 		$sess->remove('login');
         $sess->remove('pass');
         $sess->remove('jid');
-        $sess->dispose();
+        $sess->dispose(APP_NAME);
 	}
 
 

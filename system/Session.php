@@ -25,7 +25,7 @@ class Session
 {
     protected $db;
     protected static $instances = array();
-    protected $sid;
+    protected static $sid = null;
     protected $container;
     protected $container_id;
     protected $max_age = 3600;
@@ -47,7 +47,7 @@ class Session
         }
 
         // Do we create the schema?
-        $create = false;
+        $create = true;
         if(!file_exists($db_file)) {
             $create = true;
         }
@@ -60,44 +60,54 @@ class Session
             $this->db->exec(
                 'CREATE TABLE IF NOT EXISTS session_containers('.
                 'id INTEGER PRIMARY KEY AUTOINCREMENT, '.
-                'hash VARCHAR(64) REFERENCES sessions(hash) ON DELETE CASCADE '.
+                'hash VARCHAR(64) REFERENCES sessions(hash) ON DELETE CASCADE, '.
                 'name VARCHAR(128))'
                 );
             $this->db->exec(
                 'CREATE TABLE IF NOT EXISTS session_vars('.
-                'container INTEGER REFERENCES session_containers(id) ON DELETE CASCADE '.
+                'container INTEGER REFERENCES session_containers(id) ON DELETE CASCADE, '.
                 'name VARCHAR(128), '.
-                'value TEXT'
+                'value TEXT)'
                 );
         }
 
-        if(isset($_COOKIE['PHPFASTSESSID'])) {
+        if(self::$sid == null && isset($_COOKIE['PHPFASTSESSID'])) {
             $sessid = $this->db->escapeString($_COOKIE['PHPFASTSESSID']);
-            $session = $this->db->querySingle('SELECT * FROM sessions WHERE hash="'.$sessid.'"', true) or die("SQL error");
+            $session = $this->db->querySingle('SELECT * FROM sessions WHERE hash="'.$sessid.'"', true);
+
             if(count($session) == 0) {
                 $this->regenerate();
             }
-            else if($session['timestamp'] + $this->max_age > time()) {
-                $this->db->exec('DELETE FROM sessions WHERE hash="'.$sessid.'"');
+            else if($session['timestamp'] + $this->max_age < time()) {
+                echo 'expired! ' . ($session['timestamp'] + $this->max_age) . ' < ' . time();
+                $sql = 'DELETE FROM sessions WHERE hash="'.$sessid.'"';
+                echo $sql;
+                $this->db->exec($sql);
                 $this->regenerate();
             }
             else {
-                $this->sid = $sessid;
+                self::$sid = $sessid;
             }
-        } else {
+        }
+        else if(self::$sid == null) {
             $this->regenerate();
         }
 
         // Does the container exist?
-        $num_container = $this->db->querySingle('SELECT id FROM session_containers WHERE hash="'.$this->sid.'" AND name="'.$this->container.'"') or die("SQLite Error.");
-        if($num_container == NULL) {
-            $this->db->exec('INSERT INTO session_containers(hash, name) VALUES("'.$this->sid.'", "'.$this->container.'")');
+        $num_container = $this->db->querySingle('SELECT id FROM session_containers WHERE hash="'.self::$sid.'" AND name="'.$this->container.'"');
+        if(!$num_container) {
+            $this->db->exec('INSERT INTO session_containers(hash, name) VALUES("'.self::$sid.'", "'.$this->container.'")');
             $this->container_id = $this->db->lastInsertRowID();
+
+            // fallback...
+            if(!$this->container_id) {
+                $this->container_id = $this->db->querySingle('SELECT id FROM session_containers WHERE hash="'.self::$sid.'" AND name="'.$this->container.'"');
+            }
         } else {
             $this->container_id = $this->db->escapeString($num_container);
         }
     }
-
+    
     protected function regenerate()
     {
         // Generating the session cookie's hash.
@@ -105,21 +115,25 @@ class Session
         $hash = "";
 
         $exists = true;
-        while($exists = true) {
+        $sessions_tbl = $this->db->query('SELECT hash FROM sessions');
+        $sessions = array();
+        while($row = $sessions_tbl->fetchArray()) {
+            $sessions[] = $row['hash'];
+        }
+
+        while($exists) {
             for($i = 0; $i < 64; $i++) {
                 $r = rand(0, strlen($hash_chars) - 1);
                 $hash.= $hash_chars[$r];
             }
 
-            $num = $this->db->querySingle('SELECT count(hash) FROM sessions WHERE hash="'.$this->db->escapeString($hash).'"');
-            if($num == 0) {
-                $exists = false;
-            }
+            $exists = in_array($hash, $sessions);
         }
 
-        $this->sid = $this->db->escapeString($hash);
-        $this->db->exec('INSERT INTO sessions(hash, timestamp) VALUES("'.$this->sid.'", "'.time().'")') or die("SQLITE error!");
-        setcookie('PHPFASTSESSID', $this->sid);
+        self::$sid = $this->db->escapeString($hash);
+        $sql = 'INSERT INTO sessions(hash, timestamp) VALUES("'.self::$sid.'", "'.time().'")';
+        $this->db->exec($sql);
+        setcookie('PHPFASTSESSID', self::$sid, time() + $this->max_age);
     }
 
     /**
@@ -137,10 +151,10 @@ class Session
     /**
      * Commits the session upon destruction.
      */
-    public function __destruct()
+/*    public function __destruct()
     {
         $this->db->close();
-    }
+        }*/
 
     /**
      * Gets a session variable. Returns false if doesn't exist.
@@ -148,10 +162,10 @@ class Session
     public function get($varname)
     {
         $data = $this->db->querySingle(
-            'SELECT * FROM session_vars WHERE container="'.$this->container_id.'"',
+            'SELECT * FROM session_vars WHERE container="'.$this->container_id.'" AND name="'.$this->db->escapeString($varname).'"',
             true);
         if(count($data) > 0) {
-            return $data['value'];
+            return unserialize(base64_decode($data['value']));
         } else {
             return false;
         }
@@ -162,21 +176,24 @@ class Session
      */
     public function set($varname, $value)
     {
+        $value = base64_encode(serialize($value));
+        
         // Does the variable exist?
-        $num_vars = $this->db->querySingle(
-            'SELECT COUNT(name) FROM session_vars '.
-            'WHERE container="'.$this->container_id.'" AND name="'.$varname.'"');
+        $sql = 'SELECT COUNT(name) FROM session_vars '.
+            'WHERE container="'.$this->container_id.'" AND name="'.$varname.'"';
+        $num_vars = $this->db->querySingle($sql);
+        
         if($num_vars > 0) {
-            $this->db->exec(
-                'UPDATE session_vars '.
+            $sql = 'UPDATE session_vars '.
                 'SET value="'.$this->db->escapeString($value).'" '.
-                'WHERE container="'.$this->container_id.'" AND name="'.$varname.'"');
+                'WHERE container="'.$this->container_id.'" AND name="'.$varname.'"';
         } else {
-            $this->db->exec(
-                'INSERT INTO session_vars(name, value) '.
-                'VALUES("'.$this->db->escapeString($varname).'", "'.
-                $this->db->escapeString($value).'")');
+            $sql = 'INSERT INTO session_vars(container, name, value) '.
+                'VALUES("'.$this->container_id.'", "'.$this->db->escapeString($varname).'", "'.
+                $this->db->escapeString($value).'")';
         }
+        
+        $this->db->exec($sql);
 
         return $value;
     }
@@ -200,7 +217,7 @@ class Session
     /**
      * Deletes all this session container (not the session!)
      */
-    public static function destroy($name)
+    public static function dispose($name)
     {
         if(isset(self::$instances[$name])) {
             self::$instances[$name]->delete_container();

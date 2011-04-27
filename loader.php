@@ -2,8 +2,9 @@
 
 // A few constants...
 define('BASE_PATH', dirname(__FILE__) . '/');
-define('LIB_PATH',BASE_PATH.'system/');
-define('PROPERTIES_PATH',BASE_PATH.'page/properties/');
+define('APP_NAME', 'movim');
+define('LIB_PATH', BASE_PATH.'system/');
+define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 
 // Loads up all system libraries.
@@ -36,5 +37,8 @@ require(LIB_PATH . "Storage/StorageEngineBase.php");
 require(LIB_PATH . "Storage/StorageException.php");
 require(LIB_PATH . "Storage/StorageTypeBase.php");
 require(LIB_PATH . "Storage/StorageType.php");
+
+// Starting session.
+Session::start(APP_NAME);
 
 ?>
