@@ -57,15 +57,15 @@ class ControllerMain extends ControllerBase
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
 				$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
-				
+
 				$cachevcard = Cache::c('vcard'.$_GET['f']);
-				if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily'])) 
+				if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily']))
 					$this->page->menuAddLink($cachevcard['vCardFN'] ." ".$cachevcard['vCardFamily'], false, true);
 				elseif(isset($cachevcard['vCardNickname']))
 					$this->page->menuAddLink($cachevcard['vCardNickname'], false, true);
 				else
 					$this->page->menuAddLink($_GET['f'], false, true);
-					
+
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
 				$content = new TplPageBuilder($user);
 
@@ -135,7 +135,6 @@ class ControllerMain extends ControllerBase
 			'</form>'.
 			'</div>');
 		echo $this->page->build('page.tpl');
-		session_commit();
 	}
 
 	function disconnect()

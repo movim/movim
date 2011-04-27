@@ -1,0 +1,6 @@
+[submodule "system/Titine"]
+	path = system/Titine
+	url = git://gitorious.org/titine/titine.git
+[submodule "system/Jaxl"]
+	path = system/Jaxl
+	url = git://gitorious.org/titine/jaxl-titine.git

@@ -27,7 +27,14 @@ class Cache
             $new = true;
         }
 
-        $this->db = sqlite_open($db_file);
+        try {
+            $this->db = new SQLite3($db_file);
+        }
+        catch(Exception $e) {
+            var_dump($this->login);
+            echo $e->message;
+            exit;
+        }
 
         // Creating schema.
         if($new) {
@@ -38,7 +45,7 @@ class Cache
 
     function __destruct()
     {
-        sqlite_close($this->db);
+        $this->db->close();
     }
 
     private function query($statement, $return = false)
@@ -46,9 +53,15 @@ class Cache
         $this->log($statement);
 
         if($return) {
-            return sqlite_array_query($this->db, $statement);
+            $res = $this->db->query($statement);
+
+            $table = array();
+            while($row = $res->fetchArray()) {
+                $table[] = $row;
+            }
+            return $table;
         } else {
-            return sqlite_query($this->db, $statement);
+            return $this->db->exec($statement);
         }
     }
 
@@ -139,7 +152,8 @@ class Cache
         if($this->db) {
 
             // Does the cache already exist?
-            $table = $this->query("SELECT * FROM cache WHERE key='$cache_key'", true);
+            $table = $this->query("SELECT count(key) FROM cache WHERE key='$cache_key'", true);
+            $this->log(var_export($table, true));
             if(count($table) > 0) {
                 // Need to update.
                 $this->query("UPDATE cache SET data='$data', md5='$md5', ".

@@ -39,9 +39,10 @@ class WidgetWrapper
     private function __construct($register)
     {
         $this->register_widgets = $register;
-        if(isset($_SESSION['loaded_widgets'])
-           && is_array($_SESSION['loaded_widgets'])) {
-            $this->loaded_widgets_old = $_SESSION['loaded_widgets'];
+        $sess = Session::start(APP_NAME);
+        $widgets = $sess->get('loaded_widgets');
+        if(is_array($widgets)) {
+            $this->loaded_widgets_old = $widgets;
         }
     }
 
@@ -59,7 +60,8 @@ class WidgetWrapper
     function __destruct()
     {
         if($this->register_widgets) {
-            $_SESSION['loaded_widgets'] = $this->loaded_widgets;
+            $sess = Session::start(APP_NAME);
+            $sess->set('loaded_widgets', $this->loaded_widgets);
         }
     }
 
@@ -95,7 +97,7 @@ class WidgetWrapper
 		}
 		else {
 			throw new MovimException(
-				t("Error: Requested widget '%s' doesn't exist.", $widget_name));
+				t("Requested widget '%s' doesn't exist.", $widget_name));
 		}
 
         require_once($widget_path);

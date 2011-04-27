@@ -43,7 +43,9 @@ class Jabber
 		$userConf = Conf::getUserConf($jid);
 		$serverConf = Conf::getServerConf();
 
-		unset($_SESSION['jid']);
+        $sess = Session::start(APP_NAME);
+
+		$sess->remove('jid'); // ???
 
 		$this->jaxl = new JAXL(array(
 								   // User Configuration
@@ -95,11 +97,11 @@ class Jabber
 			if(!$jid) {
                 $user = new User();
                 if(!$user->isLogged()) {
-                    throw new MovimException(t("Error: User not logged in."));
+                    throw new MovimException(t("User not logged in."));
                 } else {
                     $jid = $user->getLogin();
                     if($jid = "")
-                        throw new MovimException(t("Error: JID not provided."));
+                        throw new MovimException(t("JID not provided."));
                 }
 			} else {
 				self::$instance = new Jabber($jid);
@@ -114,7 +116,7 @@ class Jabber
 	public function login($jid, $pass)
 	{
 		if(!$this->checkJid($jid)) {
-		 	throw new MovimException(t("Error: jid '%s' is incorrect", $jid));
+		 	throw new MovimException(t("jid '%s' is incorrect", $jid));
 		} else {
 			$id = explode('@',$jid);
 			$user = $id[0];
@@ -320,7 +322,7 @@ class Jabber
 		if($this->checkJid($addressee)) {
 			$this->jaxl->sendMessage($addressee, $body, false, 'chat');
 		} else {
-			throw new MovimException("Error: Incorrect JID `$addressee'");
+			throw new MovimException("Incorrect JID `$addressee'");
 		}
 	}
 
@@ -333,7 +335,7 @@ class Jabber
 			$this->jaxl->subscribe($jid);
 			$this->jaxl->addRoster($jid, $contact, $alias);
 		} else {
-			throw new MovimException("Error: Incorrect JID `$jid'");
+			throw new MovimException("Incorrect JID `$jid'");
 		}
 	}
 
