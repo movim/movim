@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <theme>movim</theme>
+  <defLang>en</defLang>
+  <boshCookieTTL>3600</boshCookieTTL>
+  <boshCookiePath>/</boshCookiePath>
+  <boshCookieDomain>false</boshCookieDomain>
+  <boshCookieHTTPS>false</boshCookieHTTPS>
+  <boshCookieHTTPOnly>true</boshCookieHTTPOnly>
+  <logLevel>4</logLevel>
+  <accountCreation>0</accountCreation>
+  <defBoshHost>natsu.upyum.com</defBoshHost>
+  <defBoshSuffix>http-bind</defBoshSuffix>
+  <defBoshPort>80</defBoshPort>
+  <storageDriver>sqlite</storageDriver>
+  <database>tests/php/Storage/tests.db</database>
+</config>

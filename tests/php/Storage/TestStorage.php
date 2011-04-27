@@ -15,6 +15,9 @@
  *
  * All rights reserved.
  */
+define('DB_DEBUG', true);
+define('DB_LOGFILE', 'queries.log');
+
 class Account extends StorageBase
 {
     // Storable fields.
@@ -59,6 +62,7 @@ class TestStorage
         $db = new SQLite3('tests.db');
         $numtables = $db->querySingle(
             'SELECT count(name) as count FROM sqlite_master WHERE type="table" AND name="Account"');
+        var_dump($numtables);
         ut_assert($numtables['count'], 1);
     }
 }
