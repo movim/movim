@@ -4,7 +4,7 @@
  * @file Jabber.php
  * This file is part of MOVIM.
  *
- * @brief Wrapper around Titine to handle mid-level functionalities
+ * @brief Wrapper around Jaxl to handle mid-level functionalities
  *
  * @author Etenil <etenil@etenilsrealm.nl>
  *
@@ -17,26 +17,26 @@
  */
 
 // Jabber external component setting
-//define('TITINE_COMPONENT_HOST', 'component.'.TITINE_HOST_DOMAIN);
-//define('TITINE_COMPONENT_PASS', 'pass');
+//define('JAXL_COMPONENT_HOST', 'component.'.JAXL_HOST_DOMAIN);
+//define('JAXL_COMPONENT_PASS', 'pass');
 
-define('TITINE_COMPONENT_PORT', 5559);
+define('JAXL_COMPONENT_PORT', 5559);
 
-define('TITINE_LOG_PATH', BASE_PATH . 'log/titine.log');
-define('TITINE_LOG_EVENT', true);
-define('TITINE_LOG_ROTATE', false);
+define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
+define('JAXL_LOG_EVENT', true);
+define('JAXL_LOG_ROTATE', false);
 
-define('TITINE_BASE_PATH', LIB_PATH . 'Titine/');
-include(LIB_PATH . 'Titine/core/titine.class.php');
+define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
+include(LIB_PATH . 'Jaxl/core/jaxl.class.php');
 
 class Jabber
 {
 	private static $instance;
-	private $titine;
+	private $jaxl;
 	private $payload;
 
 	/**
-	 * Firing up basic parts of titine and setting variables.
+	 * Firing up basic parts of jaxl and setting variables.
 	 */
 	private function __construct($jid)
 	{
@@ -47,7 +47,7 @@ class Jabber
 
 		$sess->remove('jid'); // ???
 
-		$this->titine = new TITINE(array(
+		$this->jaxl = new JAXL(array(
 								   // User Configuration
 								   'host' => $userConf['host'],
 								   'domain' => isset($userConf['domain']) ? $userConf['domain'] : $userConf['host'],
@@ -66,29 +66,29 @@ class Jabber
 
 								   ));
 		// Loading required XEPS
-		$this->titine->requires(array(
-						 'TITINE0030', // Service Discovery
-						 'TITINE0054', // VCard
-						 'TITINE0115', // Entity Capabilities
-						 'TITINE0133', // Service Administration
-						 'TITINE0085', // Chat State Notification
-						 'TITINE0092', // Software Version
-						 'TITINE0203', // Delayed Delivery
-						 'TITINE0202', // Entity Time
-						 'TITINE0206'  // Jabber over Bosh
+		$this->jaxl->requires(array(
+						 'JAXL0030', // Service Discovery
+						 'JAXL0054', // VCard
+						 'JAXL0115', // Entity Capabilities
+						 'JAXL0133', // Service Administration
+						 'JAXL0085', // Chat State Notification
+						 'JAXL0092', // Software Version
+						 'JAXL0203', // Delayed Delivery
+						 'JAXL0202', // Entity Time
+						 'JAXL0206'  // Jabber over Bosh
 						 ));
 
 		// Defining call-backs
-        $this->titine->addPlugin('titine_post_auth', array(&$this, 'postAuth'));
-        $this->titine->addPlugin('titine_post_auth_failure', array(&$this, 'postAuthFailure'));
-        //$this->titine->addPlugin('titine_post_roster_update', array(&$this, 'postRosterUpdate'));
-        $this->titine->addPlugin('titine_post_disconnect', array(&$this, 'postDisconnect'));
-        $this->titine->addPlugin('titine_get_iq', array(&$this, 'handle'));
-		$this->titine->addPlugin('titine_get_auth_mech', array(&$this, 'postAuthMech'));
-        $this->titine->addPlugin('titine_get_message', array(&$this, 'getMessage'));
-        $this->titine->addPlugin('titine_get_presence', array(&$this, 'getPresence'));
-        $this->titine->addPlugin('titine_get_bosh_curl_error', array(&$this, 'boshCurlError'));
-        $this->titine->addplugin('titine_get_empty_body', array(&$this, 'getEmptyBody'));
+        $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'postAuth'));
+        $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
+        //$this->jaxl->addPlugin('jaxl_post_roster_update', array(&$this, 'postRosterUpdate'));
+        $this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
+        $this->jaxl->addPlugin('jaxl_get_iq', array(&$this, 'handle'));
+		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
+        $this->jaxl->addPlugin('jaxl_get_message', array(&$this, 'getMessage'));
+        $this->jaxl->addPlugin('jaxl_get_presence', array(&$this, 'getPresence'));
+        $this->jaxl->addPlugin('jaxl_get_bosh_curl_error', array(&$this, 'boshCurlError'));
+        $this->jaxl->addplugin('jaxl_get_empty_body', array(&$this, 'getEmptyBody'));
 	}
 
 	public function getInstance($jid = false)
@@ -123,28 +123,28 @@ class Jabber
 			$userConf = $id[1];
 			$domain = $id[1];
 
-			$this->titine->user = $user;
-			$this->titine->pass = $pass;
-			$this->titine->startCore('bosh');
+			$this->jaxl->user = $user;
+			$this->jaxl->pass = $pass;
+			$this->jaxl->startCore('bosh');
 		}
 
 		self::setStatus(false, false);
 	}
 
     public function postAuth() {
-		//$this->titine->getRosterList();
-		//$this->titine->getVCard();
+		//$this->jaxl->getRosterList();
+		//$this->jaxl->getVCard();
     }
 
     public function postAuthFailure() {
-    	$this->titine->shutdown();
+    	$this->jaxl->shutdown();
     	throw new MovimException("Login error.");
     	$user = new User();
     	$user->desauth();
     }
 
     public function boshCurlError() {
-//    	$this->titine->shutdown();
+//    	$this->jaxl->shutdown();
 //    	throw new MovimException("Bosh connection error.");
 //    	$user = new User();
 //    	$user->desauth();
@@ -154,7 +154,7 @@ class Jabber
 	 * Auth mechanism (default : MD5)
 	 */
 
-	public function postAuthMech($mechanism) {$this->titine->auth('DIGEST-MD5');}
+	public function postAuthMech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}
 
 	/**
 	 * Logs out
@@ -162,8 +162,8 @@ class Jabber
 
 	public function logout()
 	{
-		define('TITINE_CURL_ASYNC', true);
-		$this->titine->TITINE0206('endStream');
+		define('JAXL_CURL_ASYNC', true);
+		$this->jaxl->JAXL0206('endStream');
 	}
 
 	public function postDisconnect($data)
@@ -178,8 +178,8 @@ class Jabber
 	 */
 	public function pingServer()
 	{
-		define('TITINE_CURL_ASYNC', false);
-        $this->titine->TITINE0206('ping');
+		define('JAXL_CURL_ASYNC', false);
+        $this->jaxl->JAXL0206('ping');
 	}
 
 	public function getEmptyBody($payload) {
@@ -225,8 +225,8 @@ class Jabber
 
 	public function getVCard($jid = false)
 	{
-		define('TITINE_CURL_ASYNC', true);
-		$this->titine->TITINE0054('getVCard', $jid, $this->titine->jid, false);
+		define('JAXL_CURL_ASYNC', true);
+		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
 	}
 
 	/*
@@ -236,7 +236,7 @@ class Jabber
 	public function getMessage($payloads) {
         foreach($payloads as $payload) {
             // reject offline message
-            if($payload['offline'] != TITINE0203::$ns && $payload['type'] == 'chat') {
+            if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') {
 
                 $evt = new Event();
 
@@ -266,7 +266,7 @@ class Jabber
                 //Cache::c('presence' . $payload['type'], $payload);
 
                 if($payload['type'] == 'unavailable') {
-                    if($payload['from'] == $this->titine->jid)
+                    if($payload['from'] == $this->jaxl->jid)
                         $evt->runEvent('postdisconnected', $data);
                     else
                         $evt->runEvent('incomeoffline', $payload);
@@ -292,8 +292,8 @@ class Jabber
 	 */
 	public function getRosterList()
 	{
-		define('TITINE_CURL_ASYNC', true);
-		$this->titine->getRosterList();
+		define('JAXL_CURL_ASYNC', true);
+		$this->jaxl->getRosterList();
 	}
 
 	/**
@@ -301,8 +301,8 @@ class Jabber
 	 */
 	public function setStatus($status, $show)
 	{
-		define('TITINE_CURL_ASYNC', true);
-		$this->titine->setStatus($status, $show, 41, true);
+		define('JAXL_CURL_ASYNC', true);
+		$this->jaxl->setStatus($status, $show, 41, true);
 	}
 
 	private function checkJid($jid)
@@ -317,10 +317,10 @@ class Jabber
 	 */
 	public function sendMessage($addressee, $body)
 	{
-		define('TITINE_CURL_ASYNC', true);
+		define('JAXL_CURL_ASYNC', true);
 		// Checking on the jid.
 		if($this->checkJid($addressee)) {
-			$this->titine->sendMessage($addressee, $body, false, 'chat');
+			$this->jaxl->sendMessage($addressee, $body, false, 'chat');
 		} else {
 			throw new MovimException("Error: Incorrect JID `$addressee'");
 		}
@@ -332,8 +332,8 @@ class Jabber
 	public function addContact($jid, $contact, $alias)
 	{
 		if($this->checkJid($jid)) {
-			$this->titine->subscribe($jid);
-			$this->titine->addRoster($jid, $contact, $alias);
+			$this->jaxl->subscribe($jid);
+			$this->jaxl->addRoster($jid, $contact, $alias);
 		} else {
 			throw new MovimException("Error: Incorrect JID `$jid'");
 		}
