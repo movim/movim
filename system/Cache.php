@@ -29,6 +29,7 @@ class Cache
 
         try {
             $this->db = new SQLite3($db_file);
+            $this->db->busyTimeout(500);
         }
         catch(Exception $e) {
             var_dump($this->login);
@@ -152,9 +153,9 @@ class Cache
         if($this->db) {
 
             // Does the cache already exist?
-            $table = $this->query("SELECT count(key) FROM cache WHERE key='$cache_key'", true);
+            $table = $this->query("SELECT count(key) as count FROM cache WHERE key='$cache_key'", true);
             $this->log(var_export($table, true));
-            if(count($table) > 0) {
+            if(count($table) > 0 && $table[0]['count'] > 0) {
                 // Need to update.
                 $this->query("UPDATE cache SET data='$data', md5='$md5', ".
                              "timestamp='$time' WHERE key='$cache_key'");

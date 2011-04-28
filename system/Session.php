@@ -52,6 +52,7 @@ class Session
             $create = true;
         }
         $this->db = new SQLite3($db_file);
+        $this->db->busyTimeout(500);
 
         $this->container = $this->db->escapeString($name);
 
@@ -107,7 +108,7 @@ class Session
             $this->container_id = $this->db->escapeString($num_container);
         }
     }
-    
+
     protected function regenerate()
     {
         // Generating the session cookie's hash.
@@ -177,12 +178,12 @@ class Session
     public function set($varname, $value)
     {
         $value = base64_encode(serialize($value));
-        
+
         // Does the variable exist?
         $sql = 'SELECT COUNT(name) FROM session_vars '.
             'WHERE container="'.$this->container_id.'" AND name="'.$varname.'"';
         $num_vars = $this->db->querySingle($sql);
-        
+
         if($num_vars > 0) {
             $sql = 'UPDATE session_vars '.
                 'SET value="'.$this->db->escapeString($value).'" '.
@@ -192,7 +193,7 @@ class Session
                 'VALUES("'.$this->container_id.'", "'.$this->db->escapeString($varname).'", "'.
                 $this->db->escapeString($value).'")';
         }
-        
+
         $this->db->exec($sql);
 
         return $value;
