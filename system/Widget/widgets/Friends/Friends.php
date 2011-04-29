@@ -28,6 +28,8 @@ class Friends extends WidgetBase
 		$this->registerEvent('incomeoffline', 'onIncomingOffline');
 		$this->registerEvent('incomednd', 'onIncomingDND');
 		$this->registerEvent('incomeaway', 'onIncomingAway');
+		
+		$this->registerEvent('incomepresence', 'onIncomingPresence');
     }
 
     function onRosterReceived($roster)
@@ -50,10 +52,9 @@ class Friends extends WidgetBase
 			if($value != "undefined") {
 				$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")' title='".$value."'>";
 				
-				if($roster["queryItemName"][$i] != NULL) { // If we can get the name
+				//if($roster["queryItemName"][$i] != NULL) { // If we can get the name
 					$cachevcard = Cache::c('vcard'.$value); // We try to load the Vcard
 					$html .= "<img class='avatar' src='data:".	$cachevcard['vCardPhotoType'] . ";base64," . $cachevcard['vCardPhotoBinVal'] . "' />"
-							."<span class='status'></span>"
 							."<a class='user_page' href='?q=friend&f=".$value."'></a>"; // Draw the avatar
 								
 					// We try to display an understadable name
@@ -64,16 +65,26 @@ class Friends extends WidgetBase
 					else 
 						$html .= $roster["queryItemName"][$i];
 						
-					$html .= "</li>";
-				} else
-					$html .= $value;
+					$html .= "
+								<span class='status' id='status_".$value."'></span></li>";
+				//} else
+				//	$html .= $value;
 					
-				$html .= "</li>";
+				$html .= "
+				</li>";
 			}
 			$i++;
 		}
 		$html .= "</ul>";
 		return $html;
+    }
+    
+    function onIncomingPresence($data)
+    {
+		list($jid, $place) = explode("/",$data['from']);
+		//movim_log(RPC::cdata($jid, $data['status'], "test"));
+	    RPC::call('incomingPresence',
+                      RPC::cdata($jid), RPC::cdata($data['status']));
     }
 
 	function onIncomingOnline($data)

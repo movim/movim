@@ -1,10 +1,12 @@
 #tinylist ul li {
 	background-repeat: no-repeat;
-	background-position: 90% 1px;
+	background-position: 1px 2px;
 	background-image: url(img/bullet_black.png);
 	cursor: pointer;
 	overflow: hidden;
+	text-indent: 0.3em;
 	z-index: 2;
+	max-height: 3.2em;
 }
 
 #tinylist ul li:hover {
@@ -32,21 +34,19 @@
 }
 
 #tinylist ul li a.user_page {
-	float: right;
+	float: left;
 	width: 16px;
-	height: 16px;
-	background-image: url(img/vcard.png);
-	background-position: 0px -2px;
+	height: 14px;
 }
 
 #tinylist ul li img.avatar {
-	float: left; 
+	float: right; 
 	width: 30px; 
 	height: 30px;
-	margin-left: -3px;
-	margin-right: 3px;
 }
 
 #tinylist ul li span.status {
-	color: gray;
+	color: #7D7D7D;
+	line-height: 1.6em;
+	overflow: hidden;
 }

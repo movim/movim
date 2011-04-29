@@ -30,3 +30,10 @@ function setChatUser(user) {
     var target = document.getElementById('chatTo');
     	target.value = user;
 }
+
+function incomingPresence(params) {
+	var target = document.getElementById('status_'+params[0])
+	if(target) {
+		target.innerHTML = params[1];
+	}
+}
