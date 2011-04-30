@@ -162,7 +162,6 @@ class Jabber
 
 	public function logout()
 	{
-		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->JAXL0206('endStream');
 	}
 
@@ -178,7 +177,6 @@ class Jabber
 	 */
 	public function pingServer()
 	{
-		define('JAXL_CURL_ASYNC', false);
         $this->jaxl->JAXL0206('ping');
 	}
 
@@ -225,7 +223,6 @@ class Jabber
 
 	public function getVCard($jid = false)
 	{
-		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
 	}
 
@@ -296,7 +293,6 @@ class Jabber
 	 */
 	public function getRosterList()
 	{
-		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->getRosterList();
 	}
 
@@ -305,7 +301,6 @@ class Jabber
 	 */
 	public function setStatus($status, $show)
 	{
-		define('JAXL_CURL_ASYNC', true);
 		$this->jaxl->setStatus($status, $show, 41, true);
 	}
 
@@ -321,7 +316,6 @@ class Jabber
 	 */
 	public function sendMessage($addressee, $body)
 	{
-		define('JAXL_CURL_ASYNC', true);
 		// Checking on the jid.
 		if($this->checkJid($addressee)) {
 			$this->jaxl->sendMessage($addressee, $body, false, 'chat');
