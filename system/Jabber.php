@@ -257,14 +257,18 @@ class Jabber
 
 	public function getPresence($payloads) {
         foreach($payloads as $payload) {
-			//   	Cache::c("vcard".$payload["from"], $payload);
-                            movim_log($payload);
+
             if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
                 $evt = new Event();
 
-                //Cache::c('presence' . $payload['type'], $payload);
 				$evt->runEvent('incomepresence', $payload);
-				//Cache::c('presence'.reset(explode('/',$payload['from'])), $payload);
+
+				/* WORKING PATCH USING SESSIONS */
+				session_start();
+				$key = 'presence'.reset(explode('/',$payload['from']));
+				$_SESSION[$key] = $payload;
+				session_commit();
+				/********************************/
 				
                 if($payload['type'] == 'unavailable') {
                     if($payload['from'] == $this->jaxl->jid)

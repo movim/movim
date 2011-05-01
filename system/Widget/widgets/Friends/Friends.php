@@ -50,7 +50,27 @@ class Friends extends WidgetBase
 
 		foreach($roster["queryItemJid"] as $key => $value ) { // We see each contact
 			if($value != "undefined") {
-				$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")' title='".$value."'>";
+			
+				/* WORKING PATCH USING SESSIONS */
+			
+				session_start();
+				$cachepresence = $_SESSION['presence'.$value];
+				session_commit();
+				
+				if($cachepresence['show'] == "away")
+					$presence = "away";
+				elseif($cachepresence['show'] == "dnd")
+					$presence = "dnd";
+				elseif($cachepresence['type'] == "unavailable")
+					$presence = "offline";
+				elseif($cachepresence['show'] == NULL && $cachepresence['show'] == NULL && isset($cachepresence['status']))
+					$presence = "online";
+					
+				$status = $cachepresence['status'];
+				
+				/*********************************/
+			
+				$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")' title='".$value."' class='".$presence."'>";
 				
 				//if($roster["queryItemName"][$i] != NULL) { // If we can get the name
 					$cachevcard = Cache::c('vcard'.$value); // We try to load the Vcard
@@ -66,7 +86,7 @@ class Friends extends WidgetBase
 						$html .= $roster["queryItemName"][$i];
 						
 					$html .= "
-								<span class='status' id='status_".$value."'></span></li>";
+								<span class='status' id='status_".$value."'>".$status."</span></li>";
 				//} else
 				//	$html .= $value;
 					
