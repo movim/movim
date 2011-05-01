@@ -197,7 +197,7 @@ class Jabber
 	public function handle($payload) {
 		$evt = new Event();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
-			if(!is_null($payload['from'])) {
+			if($payload['from'] != reset(explode("/", $payload['to']))) {
 			   	Cache::c("vcard".$payload["from"], $payload);
 				$evt->runEvent('vcardreceived', $payload);
 			} else {
