@@ -57,15 +57,16 @@ class Friends extends WidgetBase
 				$cachepresence = $_SESSION['presence'.$value];
 				session_commit();
 				
+				if(isset($cachepresence))
+					$presence = "online";
+				elseif(!isset($cachepresence))
+					$presence = "offline";
+				
 				if($cachepresence['show'] == "away")
 					$presence = "away";
 				elseif($cachepresence['show'] == "dnd")
 					$presence = "dnd";
 				elseif($cachepresence['type'] == "unavailable")
-					$presence = "offline";
-				elseif($cachepresence['show'] == NULL && $cachepresence['show'] == NULL && isset($cachepresence['status']))
-					$presence = "online";
-				else
 					$presence = "offline";
 					
 				$status = $cachepresence['status'];

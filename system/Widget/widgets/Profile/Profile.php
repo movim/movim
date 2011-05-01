@@ -62,13 +62,20 @@ class Profile extends WidgetBase
 		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->setStatus($status, false);
 	}
+	
+	function ajaxDiscovery()
+	{
+		$user = new User();
+		$xmpp = Jabber::getInstance($user->getLogin());
+		$xmpp->discover();
+	}
 
     function build()
     {
         ?>
 		<div id="profile">
 			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshMyVcard');?>"></div>
-			
+			<!--<input type="button" value="disco" onclick="<?php $this->callAjax('ajaxDiscovery');?>"/>-->
 			<div id="avatar">
 				<?php 
 					echo $this->prepareVcard(Cache::c('myvcard'));
