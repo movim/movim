@@ -225,6 +225,14 @@ class Jabber
 	{
 		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
 	}
+	
+	/* Service discovery
+	*/
+
+	public function discover($jid = false)
+	{
+		$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
+	}
 
 	/*
 	 * Incoming messages

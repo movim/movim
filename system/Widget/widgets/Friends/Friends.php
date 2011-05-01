@@ -65,6 +65,8 @@ class Friends extends WidgetBase
 					$presence = "offline";
 				elseif($cachepresence['show'] == NULL && $cachepresence['show'] == NULL && isset($cachepresence['status']))
 					$presence = "online";
+				else
+					$presence = "offline";
 					
 				$status = $cachepresence['status'];
 				
@@ -85,8 +87,8 @@ class Friends extends WidgetBase
 					else 
 						$html .= $roster["queryItemName"][$i];
 						
-					$html .= "
-								<span class='status' id='status_".$value."'>".$status."</span></li>";
+					$html .= '
+								<span class="status" id="status_'.$value.'" title="'.$status.'">'.$status.'</span></li>';
 				//} else
 				//	$html .= $value;
 					

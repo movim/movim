@@ -27,6 +27,7 @@
 
 #tinylist ul li.offline {
 	background-image: url(img/bullet_black.png);
+	display: none;
 }
 
 #tinylist ul li.dnd {
