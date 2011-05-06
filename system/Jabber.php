@@ -231,7 +231,9 @@ class Jabber
 
 	public function discover($jid = false)
 	{
-		$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
+		//$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
+		//$this->jaxl->JAXL0030('discoItems', $jid, $this->jaxl->jid, false, false);mov
+		$this->jaxl->JAXL0030('discoItems', 'pubsub.jabber.fr', $this->jaxl->jid, false, false);
 	}
 
 	/*
