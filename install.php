@@ -1,5 +1,6 @@
 <?php
 
+require_once('system/Lang/i18n.php');
 require_once('system/Lang/languages.php');
 
 function test_dir($dir)
