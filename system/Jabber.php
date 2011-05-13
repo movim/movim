@@ -197,12 +197,12 @@ class Jabber
 	public function handle($payload) {
 		$evt = new Event();
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
-			if($payload['from'] != reset(explode("/", $payload['to']))) {
-			   	Cache::c("vcard".$payload["from"], $payload);
-				$evt->runEvent('vcardreceived', $payload);
-			} else {
+			if($payload['from'] == reset(explode("/", $payload['to'])) || $payload['from'] == NULL) {
 				Cache::c("myvcard", $payload);
 				$evt->runEvent('myvcardreceived', $payload);
+			} else {
+			   	Cache::c("vcard".$payload["from"], $payload);
+				$evt->runEvent('vcardreceived', $payload);
 			}
 		} elseif($payload['queryXmlns'] == "jabber:iq:roster") {
 			Cache::c("roster", $payload);
