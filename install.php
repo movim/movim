@@ -127,8 +127,11 @@ function show_install_form()
     make_textbox('boshCookieTTL', t("Bosh cookie's expiration (s)"), 3600);
     make_textbox('boshCookiePath', t("Bosh cookie's path"), '/');
     make_checkbox('boshCookieDomain', t("Bosh cookie's domain"), false);
+    echo "<br />";
     make_checkbox('boshCookieHTTPS', t("Use HTTPS for Bosh"), false);
+    echo "<br />";
     make_checkbox('boshCookieHTTPOnly', t("Use only HTTP for Bosh"), true);
+    echo "<br />";
     make_select('verbosity', t("Log verbosity"), array('empty', 'terse', 'normal', 'talkative', 'ultimate'), 4);
     make_checkbox('accountCreation', t("Allow account creation"), false);
     echo '<hr />';

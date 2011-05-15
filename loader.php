@@ -17,7 +17,6 @@ require(LIB_PATH . "Utils.php");
 require(LIB_PATH . "Cache.php");
 require(LIB_PATH . "Conf.php");
 require(LIB_PATH . "Event.php");
-require(LIB_PATH . "Form.php");
 require(LIB_PATH . "Jabber.php");
 require(LIB_PATH . "MovimException.php");
 require(LIB_PATH . "RPC.php");
