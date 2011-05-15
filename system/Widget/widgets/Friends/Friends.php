@@ -52,7 +52,7 @@ class Friends extends WidgetBase
 			if($value != "undefined") {
 			
 				/* WORKING PATCH USING SESSIONS */
-                $session = Session::start('movim');
+                $session = Session::start(APP_NAME);
 				$cachepresence = $session->get('presence'.$value);
 								
 				if($cachepresence)

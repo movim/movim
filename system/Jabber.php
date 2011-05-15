@@ -274,7 +274,7 @@ class Jabber
 				$evt->runEvent('incomepresence', $payload);
 
 				/* WORKING PATCH USING SESSIONS */
-                $session = Session::start('movim');
+                $session = Session::start(APP_NAME);
 				//session_start();
 				$key = 'presence'.reset(explode('/',$payload['from']));
                 $session->set($key, $payload);
