@@ -52,14 +52,12 @@ class Friends extends WidgetBase
 			if($value != "undefined") {
 			
 				/* WORKING PATCH USING SESSIONS */
-			
-				session_start();
-				$cachepresence = $_SESSION['presence'.$value];
-				session_commit();
-				
-				if(isset($cachepresence))
+                $session = Session::start('movim');
+				$cachepresence = $session->get('presence'.$value);
+								
+				if($cachepresence)
 					$presence = "online";
-				elseif(!isset($cachepresence))
+				else
 					$presence = "offline";
 				
 				if($cachepresence['show'] == "away")
@@ -89,7 +87,7 @@ class Friends extends WidgetBase
 						$html .= $roster["queryItemName"][$i];
 						
 					$html .= '
-								<span class="status" id="status_'.$value.'" title="'.$status.'">'.$status.'</span></li>';
+								<span class="status" id="status_'.$value.'" title="'.$status.'">'.$value.'</span></li>';
 				//} else
 				//	$html .= $value;
 					
