@@ -29,6 +29,8 @@ function incomingAway(jid) {
 function setChatUser(user) {
     var target = document.getElementById('chatTo');
     	target.value = user;
+    // Giving focus to input field.
+    document.getElementById("chatInput").focus();
 }
 
 function incomingPresence(params) {
