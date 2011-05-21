@@ -35,7 +35,7 @@ class Config extends WidgetBase
 			$usr = new User();
 			$conf = Conf::getUserConf($usr->getLogin());
 			
-			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')");
+			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')") . 'window.location="'. basename($_SERVER['PHP_SELF']) .'";';
 			
 			$form = new Form();
 			$form->startForm(basename($_SERVER['PHP_SELF']), false, false, 'post', 'general');
