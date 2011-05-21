@@ -29,23 +29,7 @@ class Account extends WidgetBase
 	
 	function build()
 	{
-			$form = new Form();
-			$form->startForm(basename($_SERVER['PHP_SELF']));
-				$form->startFieldset(t('Jabber Account'));
-				$form->newline = true;
-					$form->textInput('account',t('Jabber Account'),false,'block required');
-					$form->textInput('password',t('Password'),false,'block required');
-				$form->newline = true;
-				$form->closeFieldset();
-				$form->insertBR();
-				$form->newline = false;
-			    $form->submitButton(false, t('Submit'));
-			    $form->newline = true;
-			    $form->resetButton(false, t('Reset'));
-			$form->closeForm();
 
-			if(!$output = $form->getForm()) { die("error: " . $form->error); }
-			else { echo $output; }
 	}
 }
 

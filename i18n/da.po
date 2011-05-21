@@ -1,214 +1,214 @@
-# Portuguese translations for Movim  package.
+# Danish translations for Movim  package.
 # This file is distributed under the same license as the Movim  package.
 # This file was translated from CodingTeam at <http://codingteam.net/>.
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
-"PO-Revision-Date: 2011-05-21 19:10:51\n"
+"PO-Revision-Date: 2011-05-21 19:10:06\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../init.php:15
 msgid "MOVIM - Test Client"
-msgstr "MOVIM - Cliente de Teste"
+msgstr "MOVIM - Kundeanmeldelser"
 
 #: ../lib/Dispatcher.php:40
 msgid "%s - Welcome to Movim"
-msgstr "%s - Bem vindo ao Movim"
+msgstr "%s - Velkommen MOVIM"
 
 #: ../lib/Dispatcher.php:4
 #: ../lib/Dispatcher.php:5
 #: ../lib/Dispatcher.php:74
 msgid "Home"
-msgstr "Início"
+msgstr "Home"
 
 #: ../lib/Dispatcher.php:4
 #: ../lib/Dispatcher.php:60
 msgid "Configuration"
-msgstr "Configuraçāo"
+msgstr "Konfiguration"
 
 #: ../lib/widgets/Logout/Logout.php:46
 msgid "Logout"
-msgstr "Sair"
+msgstr "Logout"
 
 #: ../lib/Dispatcher.php:58
 msgid "%s - Configuration"
-msgstr "%s - Configuraçāo"
+msgstr "%s - Konfiguration"
 
 #: ../lib/Dispatcher.php:73
 msgid "%s - Account Creation"
-msgstr "%s - Criação da conta"
+msgstr "%s - Tilmeld Dig"
 
 #: ../lib/Dispatcher.php:90
 msgid "%s - Login to Movim"
-msgstr "%s - Entrar no Movim"
+msgstr "%s - Log Ind to Movim"
 
 #: ../lib/Dispatcher.php:93
 msgid "Account Creation"
-msgstr "Criar uma comta"
+msgstr "Tilmeld Dig"
 
 #: ../lib/Dispatcher.php:103
 msgid "My address"
-msgstr "Meu endereço"
+msgstr "Min adresse"
 
 #: ../lib/Dispatcher.php:10
 #: ../lib/widgets/Account/Account.php:35
 msgid "Password"
-msgstr "Palavra Chave"
+msgstr "Adgangskode"
 
 #: ../lib/Dispatcher.php:105
 msgid "Come in!"
-msgstr "Faça Parte!"
+msgstr "Kom Ind !"
 
 #: ../lib/GetConf.php:2
 #: ../lib/GetConf.php:45
 msgid "Error: Cannot load element value'%s'"
-msgstr "Erro: Valor do Elemento '%s' não pode ser carregado"
+msgstr "Fejl: Kan ikke indlæse element værdi '%s'"
 
 #: ../lib/GetConf.php:139
 msgid "Error: Cannot load file '%s'"
-msgstr "Erro: Arquivo '%s' não pode ser carregado"
+msgstr "Fejl: Kan ikke indlæse fil '%s'"
 
 #: ../lib/WidgetWrapper.php:98
 msgid "Error: Requested widget '%s' doesn't exist."
-msgstr "Erro: O widget %s não existe."
+msgstr "Fejl: Efterspurgte widget '% s' eksisterer ikke."
 
 #: ../lib/User.php:65
 msgid "Wrong password"
-msgstr "Senha incorreta"
+msgstr "Forkert Adgangskode"
 
 #: ../lib/Widget.php:69
 #~ msgid "This is a sample widget."
-#~ msgstr "Isto e o widget exemplo"
+#~ msgstr ""
 
 #: ../lib/XMPPConnect.php:147
 #~ msgid "Error: jid `%s' is incorrect"
-#~ msgstr "Erro: O jid %s nāo esta correcto."
+#~ msgstr ""
 
 #: ../lib/widgets/Account/Account.php:3
 #: ../lib/widgets/Account/Account.php:34
 msgid "Jabber Account"
-msgstr "Conta Jabber"
+msgstr "Jabber Konto"
 
 #: ../lib/widgets/Account/Account.php:4
 #: ../lib/widgets/Config/Config.php:70
 msgid "Submit"
-msgstr "Enviar"
+msgstr "Indsend"
 
 #: ../lib/widgets/Account/Account.php:4
 #: ../lib/widgets/Config/Config.php:72
 msgid "Reset"
-msgstr "Limpar"
+msgstr "Reset"
 
 #: ../lib/widgets/Chat/Chat.php:90
 msgid "Send"
-msgstr "Enviar"
+msgstr "Send"
 
 #: ../lib/widgets/Config/Config.php:45
 msgid "Language"
-msgstr "Idioma"
+msgstr "Sprog"
 
 #: ../lib/widgets/Config.php:45
 #~ msgid "Full Name"
-#~ msgstr "Nome completo"
+#~ msgstr ""
 
 #: ../lib/widgets/Config/Config.php:57
 msgid "BOSH Connection Prefrences"
-msgstr "Preferência da conexão BOSH"
+msgstr "BOSH Tilslutning Indstillinger"
 
 #: ../lib/Dispatcher.php:9
 #: ../lib/widgets/Config/Config.php:59
 msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
-msgstr "A alteração dessas informações podem ser perigosas e comprometer a conexão ao servidor XMPP "
+msgstr "Ændring af disse data kan være farligt og kan bringe forbindelsen til XMPP-server"
 
 #: ../lib/widgets/Config/Config.php:61
 msgid "Bosh Host"
-msgstr "Host BOSH"
+msgstr "Bosh Host"
 
 #: ../lib/widgets/Config/Config.php:63
 msgid "Bosh Suffix"
-msgstr "Sufixo BOSH"
+msgstr "Bosh Suffiks"
 
 #: ../lib/widgets/Config/Config.php:65
 msgid "Bosh Port"
-msgstr "Porta do BOSH"
+msgstr "Bosh Havn"
 
 #: ../lib/widgets/Config/Config.php:76
 msgid "error: "
-msgstr "erro:"
+msgstr "Fejl:"
 
 #: ../lib/widgets/Friends/Friends.php:112
 msgid "Contacts"
-msgstr "Contato"
+msgstr "Kontakter"
 
 #: ../lib/GetConf.php:8
 #: ../lib/GetConf.php:12
 #: ../lib/GetConf.php:129
 msgid "Couldn't create file %s"
-msgstr "Arquivo %s não pode ser criado"
+msgstr "Kunne ikke oprette filen '%s'"
 
 #: ../lib/GetConf.php:131
 msgid "Couldn't create configuration files."
-msgstr "Não foi possível criar arquivos de configuração"
+msgstr "Kunne ikke oprette konfigurationsfiler."
 
 #: ../lib/XMPPConnect.php:98
 msgid "Error: User not logged in."
-msgstr "Usuário não logado"
+msgstr "Fejl: Bruger ikke logget ind"
 
 #: ../lib/XMPPConnect.php:102
 msgid "Error: JID not provided."
-msgstr "JID não informado"
+msgstr "Fejl: JID ikke oplyst."
 
 #: ../lib/XMPPConnect.php:117
 msgid "Error: jid '%s' is incorrect"
-msgstr "JID '%s' incorreto"
+msgstr "Fejl: JID er forkert"
 
 #: ../lib/widgets/Chat/Chat.php:84
 msgid "Chat"
-msgstr "Chat"
+msgstr "Diskuter"
 
 #: ../lib/widgets/Chat/Chat.php:88
 msgid "Message"
-msgstr "Mensagem"
+msgstr "Besked"
 
 #: ../lib/widgets/Chat/Chat.php:89
 msgid "To"
-msgstr "Para"
+msgstr "Til"
 
 #: ../lib/widgets/Friends/Friends.php:36
 msgid "Your avatar"
-msgstr "Seu avatar"
+msgstr "Dit profilbillede"
 
 #: ../lib/widgets/Friends/Friends.php:111
 msgid "Refresh vCard"
-msgstr "Atualizar vCard"
+msgstr "Genopfriske"
 
 #: ../lib/widgets/Friends/Friends.php:116
 msgid "Online"
-msgstr "Ligado"
+msgstr "Online"
 
 #: ../lib/widgets/Friends/Friends.php:117
 msgid "Offline"
-msgstr "Desligado"
+msgstr "Offline"
 
 #: ../lib/widgets/Friends/Friends.php:118
 msgid "Hidden"
-msgstr "Invisível"
+msgstr "Skjult"
 
 #: ../lib/widgets/Friends/Friends.php:119
 msgid "Away"
-msgstr "Ausente"
+msgstr "Vaek"
 
 #: ../lib/widgets/Friends/Friends.php:120
 msgid "Do Not Disturb"
-msgstr "Não incomodar"
+msgstr "Forstyr ikke"
 
 #: ../lib/widgets/Friends/Friends.php:124
 msgid "Refresh Roster"
-msgstr "Atualizar Roster"
+msgstr "Genopfriske Roster"
 
 #: ../lib/widgets/Log/Log.php:34
 msgid "Debug console"
-msgstr "Console de debug"
+msgstr "Debug Konsol"
 

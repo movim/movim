@@ -38,47 +38,42 @@ class Config extends WidgetBase
 			$conf = Conf::getUserConf($usr->getLogin());
 			
 			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')") . 'window.location="'. basename($_SERVER['PHP_SELF']) .'";';
-			
-			$form = new Form();
-			$form->startForm(basename($_SERVER['PHP_SELF']), false, false, 'post', 'general');
+?>
 
-			/* Note that the select fields aren't translated and the languages
-			 * are in their native form. This should not be changed.*/
-			   $form->startSelect('language',t('Language'),false,'block');
-			   	  $form->addOption('en', 'English (default)');
+			<form enctype="multipart/form-data" method="post" action="index.php" name="general">
+
+				<label id="lock" for="language"><?php echo t('Language'); ?></label>
+				<select name="language" id="language">
+					<option value="en">English (default)</option>
+<?php
 			   	  foreach($languages as $key => $value ) {
-			   	  	 if($key == $conf['language'])
-			     	 	$form->addOption($key, $value, true);
-			     	 else
-			     	 	$form->addOption($key, $value);
-			      }
-			   $form->closeSelect();
-			   $form->insertBR();
-			   $form->insertBR();
-			   
-			   $form->startFieldset(t('BOSH Connection Prefrences'));
-			   $form->insertHTML('<div class="warning">'.
-						   		t('Changing these data can be dangerous and may compromise the connection to the Jabber server')
-						   		.'</div>');
-			   $form->textInput('boshHost',t('Bosh Host'),false,'block required', false, false, false, false, $conf['boshHost']);
-			   $form->insertBR();
-			   $form->textInput('boshSuffix',t('Bosh Suffix'),false,'block required', false, false, false, false, $conf['boshSuffix']);
-			   $form->insertBR();
-			   $form->textInput('boshPort',t('Bosh Port'),false,'block required', false, false, 4, false, $conf['boshPort']);
-			   $form->closeFieldset();
+			   	  	 if($key == $conf['language']) { ?>
+			   	  	 	<option value="<?php echo $key; ?>" selected="selected"><?php echo $value; ?></option>
+<?php		     	 } else {?>
+			   	  	 	<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+<?php			     }
+				  } ?>
+				</select>
+				<br>
+				<br>
+				<fieldset>
+				<legend><?php echo t('BOSH Connection Prefrences'); ?></legend>
+				<div class="warning"><?php echo t('Changing these data can be dangerous and may compromise the connection to the Jabber server'); ?></div>
+				<label id="lock required" for="boshHost"><?php echo t('Bosh Host'); ?></label>
+				<input name="boshHost" id="boshHost" value="<?php echo $conf['boshHost']; ?>" type="text">
+				<br>
+				<label id="lock required" for="boshSuffix"><?php echo t('Bosh Suffix'); ?></label>
+				<input name="boshSuffix" id="boshSuffix" value="<?php echo $conf['boshSuffix']; ?>" type="text">
+				<br>
+				<label id="lock required" for="boshPort"><?php echo t('Bosh Port'); ?></label>
+				<input name="boshPort" id="boshPort" size="4" value="<?php echo $conf['boshPort']; ?>" type="text">
+				</fieldset>
+				<br>
+				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" id="right" type="button">
+				<input type="reset" value="<?php echo t('Reset'); ?>">
+			</form>
 
-			   $form->insertBR();
-			   $form->newline = false;
-			   $form->genericButton($submit, t('Submit'), '.right');
-			   $form->newline = true;
-			   $form->resetButton(false, t('Reset'));
-			$form->closeForm();
-
-			if(!$output = $form->getForm()) {
-				throw new MovimException(t("error: ") . $form->error);
-			} else {
-				echo $output;
-			}
+<?php
 	}
 	
 }

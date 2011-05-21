@@ -1,214 +1,214 @@
-# Portuguese translations for Movim  package.
+# Byelorussian translations for Movim  package.
 # This file is distributed under the same license as the Movim  package.
 # This file was translated from CodingTeam at <http://codingteam.net/>.
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
-"PO-Revision-Date: 2011-05-21 19:10:51\n"
+"PO-Revision-Date: 2011-05-21 19:09:33\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../init.php:15
 msgid "MOVIM - Test Client"
-msgstr "MOVIM - Cliente de Teste"
+msgstr "MOVIM - тэставы кліент"
 
 #: ../lib/Dispatcher.php:40
 msgid "%s - Welcome to Movim"
-msgstr "%s - Bem vindo ao Movim"
+msgstr "%s - Сардэчна запрашаем у Movim"
 
 #: ../lib/Dispatcher.php:4
 #: ../lib/Dispatcher.php:5
 #: ../lib/Dispatcher.php:74
 msgid "Home"
-msgstr "Início"
+msgstr "Галоўная"
 
 #: ../lib/Dispatcher.php:4
 #: ../lib/Dispatcher.php:60
 msgid "Configuration"
-msgstr "Configuraçāo"
+msgstr "Канфігурацыя"
 
 #: ../lib/widgets/Logout/Logout.php:46
 msgid "Logout"
-msgstr "Sair"
+msgstr "Выйсці"
 
 #: ../lib/Dispatcher.php:58
 msgid "%s - Configuration"
-msgstr "%s - Configuraçāo"
+msgstr "%s - Канфігурацыя"
 
 #: ../lib/Dispatcher.php:73
 msgid "%s - Account Creation"
-msgstr "%s - Criação da conta"
+msgstr "%s - Стварэнне логiна"
 
 #: ../lib/Dispatcher.php:90
 msgid "%s - Login to Movim"
-msgstr "%s - Entrar no Movim"
+msgstr "%s - Увайсці ў Movim"
 
 #: ../lib/Dispatcher.php:93
 msgid "Account Creation"
-msgstr "Criar uma comta"
+msgstr "Стварэнне логiна"
 
 #: ../lib/Dispatcher.php:103
 msgid "My address"
-msgstr "Meu endereço"
+msgstr "Мой адрас"
 
 #: ../lib/Dispatcher.php:10
 #: ../lib/widgets/Account/Account.php:35
 msgid "Password"
-msgstr "Palavra Chave"
+msgstr "Пароль"
 
 #: ../lib/Dispatcher.php:105
 msgid "Come in!"
-msgstr "Faça Parte!"
+msgstr "Заходзьце!"
 
 #: ../lib/GetConf.php:2
 #: ../lib/GetConf.php:45
 msgid "Error: Cannot load element value'%s'"
-msgstr "Erro: Valor do Elemento '%s' não pode ser carregado"
+msgstr "Памылка: не ўдаецца загрузіць значэнне элемента '%s'"
 
 #: ../lib/GetConf.php:139
 msgid "Error: Cannot load file '%s'"
-msgstr "Erro: Arquivo '%s' não pode ser carregado"
+msgstr "Памылка: Не ўдаецца загрузіць файл '%s'"
 
 #: ../lib/WidgetWrapper.php:98
 msgid "Error: Requested widget '%s' doesn't exist."
-msgstr "Erro: O widget %s não existe."
+msgstr "Памылка: '%s' Запытаны Вамі віджэт не існуе."
 
 #: ../lib/User.php:65
 msgid "Wrong password"
-msgstr "Senha incorreta"
+msgstr "Няправільны пароль"
 
 #: ../lib/Widget.php:69
 #~ msgid "This is a sample widget."
-#~ msgstr "Isto e o widget exemplo"
+#~ msgstr ""
 
 #: ../lib/XMPPConnect.php:147
 #~ msgid "Error: jid `%s' is incorrect"
-#~ msgstr "Erro: O jid %s nāo esta correcto."
+#~ msgstr ""
 
 #: ../lib/widgets/Account/Account.php:3
 #: ../lib/widgets/Account/Account.php:34
 msgid "Jabber Account"
-msgstr "Conta Jabber"
+msgstr "Jabber логiн"
 
 #: ../lib/widgets/Account/Account.php:4
 #: ../lib/widgets/Config/Config.php:70
 msgid "Submit"
-msgstr "Enviar"
+msgstr "Даслаць"
 
 #: ../lib/widgets/Account/Account.php:4
 #: ../lib/widgets/Config/Config.php:72
 msgid "Reset"
-msgstr "Limpar"
+msgstr "Скід"
 
 #: ../lib/widgets/Chat/Chat.php:90
 msgid "Send"
-msgstr "Enviar"
+msgstr "Адправіць"
 
 #: ../lib/widgets/Config/Config.php:45
 msgid "Language"
-msgstr "Idioma"
+msgstr "Мова"
 
 #: ../lib/widgets/Config.php:45
 #~ msgid "Full Name"
-#~ msgstr "Nome completo"
+#~ msgstr ""
 
 #: ../lib/widgets/Config/Config.php:57
 msgid "BOSH Connection Prefrences"
-msgstr "Preferência da conexão BOSH"
+msgstr "Налады падлучэння BOSH"
 
 #: ../lib/Dispatcher.php:9
 #: ../lib/widgets/Config/Config.php:59
 msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
-msgstr "A alteração dessas informações podem ser perigosas e comprometer a conexão ao servidor XMPP "
+msgstr "Змена даных можа быць небяспечнай і можа паставіць пад пагрозу злучэнне з серверам XMPP"
 
 #: ../lib/widgets/Config/Config.php:61
 msgid "Bosh Host"
-msgstr "Host BOSH"
+msgstr "Bosh Хост"
 
 #: ../lib/widgets/Config/Config.php:63
 msgid "Bosh Suffix"
-msgstr "Sufixo BOSH"
+msgstr "Bosh суфікс"
 
 #: ../lib/widgets/Config/Config.php:65
 msgid "Bosh Port"
-msgstr "Porta do BOSH"
+msgstr "Bosh порт"
 
 #: ../lib/widgets/Config/Config.php:76
 msgid "error: "
-msgstr "erro:"
+msgstr "Памылка:"
 
 #: ../lib/widgets/Friends/Friends.php:112
 msgid "Contacts"
-msgstr "Contato"
+msgstr "Кантакты"
 
 #: ../lib/GetConf.php:8
 #: ../lib/GetConf.php:12
 #: ../lib/GetConf.php:129
 msgid "Couldn't create file %s"
-msgstr "Arquivo %s não pode ser criado"
+msgstr "Не атрымалася стварыць файл %s"
 
 #: ../lib/GetConf.php:131
 msgid "Couldn't create configuration files."
-msgstr "Não foi possível criar arquivos de configuração"
+msgstr "Не атрымалася стварыць файлы канфігурацыі."
 
 #: ../lib/XMPPConnect.php:98
 msgid "Error: User not logged in."
-msgstr "Usuário não logado"
+msgstr "Памылка: Карыстальнік не прайшоў ідэнтыфікацыю"
 
 #: ../lib/XMPPConnect.php:102
 msgid "Error: JID not provided."
-msgstr "JID não informado"
+msgstr "Памылка: JID не прадугледжаны."
 
 #: ../lib/XMPPConnect.php:117
 msgid "Error: jid '%s' is incorrect"
-msgstr "JID '%s' incorreto"
+msgstr "Памылка: JID '%s' няправільны"
 
 #: ../lib/widgets/Chat/Chat.php:84
 msgid "Chat"
-msgstr "Chat"
+msgstr "Чат"
 
 #: ../lib/widgets/Chat/Chat.php:88
 msgid "Message"
-msgstr "Mensagem"
+msgstr "Паведамленне"
 
 #: ../lib/widgets/Chat/Chat.php:89
 msgid "To"
-msgstr "Para"
+msgstr "Для"
 
 #: ../lib/widgets/Friends/Friends.php:36
 msgid "Your avatar"
-msgstr "Seu avatar"
+msgstr "Ваш аватар"
 
 #: ../lib/widgets/Friends/Friends.php:111
 msgid "Refresh vCard"
-msgstr "Atualizar vCard"
+msgstr "Абнавіць vCard"
 
 #: ../lib/widgets/Friends/Friends.php:116
 msgid "Online"
-msgstr "Ligado"
+msgstr "Онлайн"
 
 #: ../lib/widgets/Friends/Friends.php:117
 msgid "Offline"
-msgstr "Desligado"
+msgstr "Офлайн"
 
 #: ../lib/widgets/Friends/Friends.php:118
 msgid "Hidden"
-msgstr "Invisível"
+msgstr "Скрыты"
 
 #: ../lib/widgets/Friends/Friends.php:119
 msgid "Away"
-msgstr "Ausente"
+msgstr "Далёка"
 
 #: ../lib/widgets/Friends/Friends.php:120
 msgid "Do Not Disturb"
-msgstr "Não incomodar"
+msgstr "Не турбаваць"
 
 #: ../lib/widgets/Friends/Friends.php:124
 msgid "Refresh Roster"
-msgstr "Atualizar Roster"
+msgstr "Абнавіць ростэр"
 
 #: ../lib/widgets/Log/Log.php:34
 msgid "Debug console"
-msgstr "Console de debug"
+msgstr "Debug console"
 

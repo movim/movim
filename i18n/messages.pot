@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-27 15:08+0100\n"
+"POT-Creation-Date: 2011-05-21 19:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,193 +17,240 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../init.php:15
+#: ../init.php:7
 msgid "MOVIM - Test Client"
 msgstr ""
 
-#: ../lib/Dispatcher.php:40
+#: ../install.php:17
+msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+msgstr ""
+
+#: ../install.php:20 ../install.php:23
 #, php-format
-msgid "%s - Welcome to Movim"
+msgid "Movim requires the %s extension."
 msgstr ""
 
-#: ../lib/Dispatcher.php:41 ../lib/Dispatcher.php:59 ../lib/Dispatcher.php:74
-msgid "Home"
+#: ../install.php:26
+msgid "Movim's folder must be writable."
 msgstr ""
 
-#: ../lib/Dispatcher.php:42 ../lib/Dispatcher.php:60
-msgid "Configuration"
+#: ../install.php:121
+msgid "Movim Installer"
 msgstr ""
 
-#: ../lib/Dispatcher.php:58
+#: ../install.php:125
+msgid "Theme"
+msgstr ""
+
+#: ../install.php:126
+msgid "Default language"
+msgstr ""
+
+#: ../install.php:127
+msgid "Bosh cookie's expiration (s)"
+msgstr ""
+
+#: ../install.php:128
+msgid "Bosh cookie's path"
+msgstr ""
+
+#: ../install.php:129
+msgid "Bosh cookie's domain"
+msgstr ""
+
+#: ../install.php:131
+msgid "Use HTTPS for Bosh"
+msgstr ""
+
+#: ../install.php:133
+msgid "Use only HTTP for Bosh"
+msgstr ""
+
+#: ../install.php:135
+msgid "Log verbosity"
+msgstr ""
+
+#: ../install.php:136
+msgid "Allow account creation"
+msgstr ""
+
+#: ../install.php:139 ../system/Widget/widgets/Config/Config.php:60
+msgid "Bosh Host"
+msgstr ""
+
+#: ../install.php:140 ../system/Widget/widgets/Config/Config.php:63
+msgid "Bosh Suffix"
+msgstr ""
+
+#: ../install.php:141 ../system/Widget/widgets/Config/Config.php:66
+msgid "Bosh Port"
+msgstr ""
+
+#: ../install.php:143
+msgid "<h2>Storage</h2>"
+msgstr ""
+
+#: ../install.php:193 ../install.php:197 ../install.php:201
 #, php-format
-msgid "%s - Configuration"
+msgid "Couldn't create directory '%s'."
 msgstr ""
 
-#: ../lib/Dispatcher.php:73
+#: ../install.php:225
 #, php-format
-msgid "%s - Account Creation"
+msgid "Couldn't create configuration file '%s'."
 msgstr ""
 
-#: ../lib/Dispatcher.php:90
-#, php-format
-msgid "%s - Login to Movim"
+#: ../install.php:248
+msgid "Compatibility Test"
 msgstr ""
 
-#: ../lib/Dispatcher.php:93
-msgid "Account Creation"
-msgstr ""
-
-#: ../lib/Dispatcher.php:97 ../lib/widgets/Config/Config.php:59
+#: ../install.php:249
 msgid ""
-"Changing these data can be dangerous and may compromise the connection to "
-"the XMPP server"
+"The following requirements were not met. Please make sure they are all "
+"satisfied in order to install Movim."
 msgstr ""
 
-#: ../lib/Dispatcher.php:103
-msgid "My address"
+#: ../install.php:262
+msgid "Movim is installed!"
 msgstr ""
 
-#: ../lib/Dispatcher.php:104 ../lib/widgets/Account/Account.php:35
-msgid "Password"
-msgstr ""
-
-#: ../lib/Dispatcher.php:105
-msgid "Come in!"
-msgstr ""
-
-#: ../lib/GetConf.php:21 ../lib/GetConf.php:45
+#: ../install.php:263
 #, php-format
-msgid "Error: Cannot load element value'%s'"
+msgid "You can now access your shiny %sMovim instance%s"
 msgstr ""
 
-#: ../lib/GetConf.php:83 ../lib/GetConf.php:127 ../lib/GetConf.php:129
+#: ../system/Cache.php:168
+msgid "Couldn't open cache. Please contact the administrator."
+msgstr ""
+
+#: ../system/Conf.php:23 ../system/Conf.php:47
+#, php-format
+msgid "Cannot load element value'%s'"
+msgstr ""
+
+#: ../system/Conf.php:85 ../system/Conf.php:131 ../system/Conf.php:133
 #, php-format
 msgid "Couldn't create file %s"
 msgstr ""
 
-#: ../lib/GetConf.php:131
+#: ../system/Conf.php:135
 msgid "Couldn't create configuration files."
 msgstr ""
 
-#: ../lib/GetConf.php:139
+#: ../system/Conf.php:143
 #, php-format
-msgid "Error: Cannot load file '%s'"
+msgid "Cannot load file '%s'"
 msgstr ""
 
-#: ../lib/User.php:65
+#: ../system/Jabber.php:100
+msgid "User not logged in."
+msgstr ""
+
+#: ../system/Jabber.php:104
+msgid "JID not provided."
+msgstr ""
+
+#: ../system/Jabber.php:119
+#, php-format
+msgid "jid '%s' is incorrect"
+msgstr ""
+
+#: ../system/MovimException.php:15
+#, php-format
+msgid "Error: %s"
+msgstr ""
+
+#: ../system/User.php:67
 msgid "Wrong password"
 msgstr ""
 
-#: ../lib/WidgetWrapper.php:98
-#, php-format
-msgid "Error: Requested widget '%s' doesn't exist."
-msgstr ""
-
-#: ../lib/XMPPConnect.php:98
-msgid "Error: User not logged in."
-msgstr ""
-
-#: ../lib/XMPPConnect.php:102
-msgid "Error: JID not provided."
-msgstr ""
-
-#: ../lib/XMPPConnect.php:117
-#, php-format
-msgid "Error: jid '%s' is incorrect"
-msgstr ""
-
-#: ../lib/widgets/Account/Account.php:32 ../lib/widgets/Account/Account.php:34
-msgid "Jabber Account"
-msgstr ""
-
-#: ../lib/widgets/Account/Account.php:40 ../lib/widgets/Config/Config.php:70
-msgid "Submit"
-msgstr ""
-
-#: ../lib/widgets/Account/Account.php:42 ../lib/widgets/Config/Config.php:72
-msgid "Reset"
-msgstr ""
-
-#: ../lib/widgets/Chat/Chat.php:84
+#: ../system/Widget/widgets/Chat/Chat.php:80
 msgid "Chat"
 msgstr ""
 
-#: ../lib/widgets/Chat/Chat.php:88
+#: ../system/Widget/widgets/Chat/Chat.php:84
 msgid "Message"
 msgstr ""
 
-#: ../lib/widgets/Chat/Chat.php:89
+#: ../system/Widget/widgets/Chat/Chat.php:85
 msgid "To"
 msgstr ""
 
-#: ../lib/widgets/Chat/Chat.php:90
+#: ../system/Widget/widgets/Chat/Chat.php:86
 msgid "Send"
 msgstr ""
 
-#: ../lib/widgets/Config/Config.php:45
+#: ../system/Widget/widgets/Config/Config.php:43
 msgid "Language"
 msgstr ""
 
-#: ../lib/widgets/Config/Config.php:57
+#: ../system/Widget/widgets/Config/Config.php:58
 msgid "BOSH Connection Prefrences"
 msgstr ""
 
-#: ../lib/widgets/Config/Config.php:61
-msgid "Bosh Host"
+#: ../system/Widget/widgets/Config/Config.php:59
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
 msgstr ""
 
-#: ../lib/widgets/Config/Config.php:63
-msgid "Bosh Suffix"
+#: ../system/Widget/widgets/Config/Config.php:70
+msgid "Submit"
 msgstr ""
 
-#: ../lib/widgets/Config/Config.php:65
-msgid "Bosh Port"
+#: ../system/Widget/widgets/Config/Config.php:71
+msgid "Reset"
 msgstr ""
 
-#: ../lib/widgets/Config/Config.php:76
-msgid "error: "
-msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:36
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:36
+#: ../system/Widget/widgets/Profile/Profile.php:36
 msgid "Your avatar"
 msgstr ""
 
-#: ../lib/widgets/Friends/Friends.php:111
-msgid "Refresh vCard"
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:39
+msgid "Firstname"
 msgstr ""
 
-#: ../lib/widgets/Friends/Friends.php:112
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:40
+msgid "Family name"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:41
+msgid "Nickname"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:42
+msgid "Name given"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:43
+msgid "Website"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:45
+msgid "About me"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:62
+msgid "Contact informations"
+msgstr ""
+
+#: ../system/Widget/widgets/Friends/Friends.php:151
 msgid "Contacts"
 msgstr ""
 
-#: ../lib/widgets/Friends/Friends.php:116
-msgid "Online"
-msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:117
-msgid "Offline"
-msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:118
-msgid "Hidden"
-msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:119
-msgid "Away"
-msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:120
-msgid "Do Not Disturb"
-msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:124
-msgid "Refresh Roster"
-msgstr ""
-
-#: ../lib/widgets/Log/Log.php:34
+#: ../system/Widget/widgets/Log/Log.php:31
 msgid "Debug console"
 msgstr ""
 
-#: ../lib/widgets/Logout/Logout.php:46
+#: ../system/Widget/widgets/Logout/Logout.php:47
 msgid "Logout"
+msgstr ""
+
+#: ../system/Widget/widgets/Profile/Profile.php:87
+msgid "Status"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:35
+msgid "This is my custom Wall widget."
 msgstr ""
