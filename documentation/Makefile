@@ -7,13 +7,14 @@ SRC=movim.texi
 HTML_OUTP=bookhtml/
 HTML_OPT=--no-menu --init-file texi2htmlrc --css-include=texi.css
 HTML_OPT_DIR=--split=chapter --output=$(HTML_OUTP)
+DOXYGEN=doxygen
 
-.PHONY: all htmlmulti htmlmono dvi pdf
+.PHONY: all htmlmulti htmlmono dvi pdf reference
 
-all: dvi pdf htmlmono htmlmulti info
+all: dvi pdf htmlmono htmlmulti reference info
 
 clean:
-	rm -rf bookhtml movim.dvi movim.pdf movim.info movim.html
+	rm -rf bookhtml reference movim.dvi movim.pdf movim.info movim.html
 
 htmlmulti: bookhtml/movim.html
 
@@ -24,6 +25,8 @@ dvi: movim.dvi
 pdf: movim.pdf
 
 info: movim.info
+
+reference: reference/html/index.html
 
 movim.html: movim.texi fdl.texi
 	$(HTMLER) $(HTML_OPT) $(SRC)
@@ -39,3 +42,6 @@ movim.pdf: movim.texi fdl.texi
 
 movim.info: movim.texi fdl.texi
 	$(INFO) $(SRC)
+
+reference/html/index.html: Doxyfile
+	$(DOXYGEN) Doxyfile
