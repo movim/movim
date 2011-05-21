@@ -28,6 +28,7 @@ Free Documentation License''.
 @title MOVIM Reference Manual
 @subtitle version @value{VERSION}, @value{UPDATED}
 @vskip 4cm
+@center{@image{movim, 15cm}}
 @author Guillaume Pasquet, Timothée Jaussoin
 @c Copyright page
 @page
@@ -477,6 +478,6 @@ An example of two function calls with an associative array.
 @node license
 @comment  node-name,  next,  previous,  up
 @chapter GNU Free Documentation License
-@include fdl-1.2.texi
+@include fdl.texi
 
 @bye
