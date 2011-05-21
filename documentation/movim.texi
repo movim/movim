@@ -6,8 +6,8 @@
 @setchapternewpage on
 @c %**end of header
 
-@set VERSION 0.1
-@set UPDATED 19 February 2011
+@set VERSION 0.2
+@set UPDATED 28 May 2011
 
 @copying
 This manual documents Movim (version @value{VERSION}, @value{UPDATED}).
@@ -50,7 +50,7 @@ This is Movim @value{VERSION}'s manual.
 * foreword:: What this document is all about
 * introduction:: What is Movim and how to use this document
 * structure:: A description of Movim's internals
-* API:: Documentation of the widget's API
+* Widgets API:: Documentation of the widget's API
 * MovimRPC:: The specification of Movim's remote procedure call
 @end menu
 
@@ -98,9 +98,11 @@ in fact it isn't even guaranteed to work.
 
 @section Installing Movim
 After downloading the Movim archive, simply extract it somewhere in your
-web server's root directory. You will need to create the directories @file{log}
-and @file{user} in the root folder, and give read/write rights to the webserver
-on these folders.
+web server's root directory. You will need to give read/write rights to the
+webserver on the folder where Movim is installed.
+
+You should see the installer when you visit your Movim folder from your web
+browser. Follow the steps.
 
 Then you should be able to log in on the website's interface with your XMPP
 credentials.
@@ -160,14 +162,14 @@ are attached to this event.
 
 @node Widget API
 @chapter Widget API
-Widgets inherit from the @emph{Widget} base class. The base class automagically
+Widgets inherit from the @emph{WidgetBase} base class. The base class automagically
 generates ajax calls and javascript functions for you.
 
 The basic template of a Movim widget is as follows:
 
 @cartouche
 @verbatim
-class MyWidget extends Widget
+class MyWidget extends WidgetBase
 {
     function WidgetLoad()
     {
@@ -176,9 +178,9 @@ class MyWidget extends Widget
 
     function onIncomingMessage($data)
     {
-        MovimRPC::call('movim_prepend',
+        RPC::call('movim_prepend',
                        'chatMessages',
-                       MovimRPC::cdata($data['message']));
+                       RPC::cdata($data['message']));
     }
 
     function build()
@@ -268,9 +270,9 @@ protocol. It is implemented in the class @code{MovimRPC} on the PHP side.
 MovimRPC exposes two static functions to the widget:
 
 @table @code
-@item MovimRPC::call(funcname, ...)
+@item RPC::call(funcname, ...)
       Calls the javascript function @emph{funcname} with the rest of arguments.
-@item MovimRPC::cdata(text)
+@item RPC::cdata(text)
       Packs text into a cdata container. This is useful when passing through
       strings containing messy characters (like HTML).
 @end table
@@ -327,12 +329,12 @@ Here is a complete example of a widget that implements an ajax call:
 
 @cartouche
 @verbatim
-class MyWidget extends Widget
+class MyWidget extends WidgetBase
 {
     function ajaxTest($param1, $param2)
     {
-       MovimRPC::call('movim_append', 'test',
-                      MovimRPC::cdata('<p>Test</p>'));
+       RPC::call('movim_append', 'test',
+                 RPC::cdata('<p>Test</p>'));
     }
 
     function build()
@@ -393,6 +395,111 @@ This returns the URL to the specified file. The optional parameter
 @code{$fspath} will make the function return the file-system path rather than
 the URL to the file.
 
+@node IWC
+@section Inter-Widget Communication
+Widgets can communicate at two different levels. They can communicate through
+the server using MovimRPC, but this is an awkward route for messages need to get
+down to the server, then up to the other widget. Another manner is to use the
+IWC.
+
+The IWC is basically a javascript-level event manager. In order to use it, your
+widget can either add event handlers so that others can communicate with it, or
+it can send events to other widgets.
+
+This means that you will not be able to use IWC from PHP. You'll need to add a
+javascript resource file along with your widget and define the handlers in it.
+
+Handlers are defined with the function @code{movim_add_event_handler(event_type,
+func)}. An example of it could be:
+
+@cartouche
+@verbatim
+function bar() {
+  // Do things
+}
+// Adding handler
+movim_add_event_handler('foo', bar);
+@end verbatim
+@end cartouche
+
+You may however trigger events from anywhere, including the widget's body with
+the function @code{movim_events_emit(event_type)}.
+
+@cartouche
+@verbatim
+<input type="button" onclick="movim_events_emit('foo')" />
+@end verbatim
+@end cartouche
+
+@node session
+@section Session
+Movim has moved away from using PHP's sessions, which couldn't provide an
+efficient locking and handling of Movim's multi-threaded behaviour.
+
+If you need to store data in session, use Movim's Session class rather than
+PHP's session. The class provides you the following methods.
+
+@table @code
+@item static Session::start($name)
+      Starts a session container named $name. Returns the session handle.
+@item Session::get($varname)
+      Retrieves the value of $varname.
+@item Session::set($varname, $value)
+      Sets the value of $varname to $value.
+@item Session::remove($varname)
+      Deletes $varname from the session.
+@item Session::delete_container()
+      Deletes the physical storage of the container.
+@item static Session::dispose($name)
+      Deletes the container $name along with its physical storage.
+@end table
+
+@node cache
+@section Cache
+Movim uses caching heavily in order to minimise load-time. Depending on how your
+widget works, it might be convenient for you to cache parts of it, or even the
+whole of its html output, rather than regenerate it every time.
+
+Movim's cache is user-specific. So you don't have to worry about your cached
+data being accessible to others.
+
+Movim's Cache provides the following methods:
+
+@table @code
+@item static Cache::create()
+      Gets a cache handle.
+@item Cache::handle($key, ...)
+      Retrieves or stores one or more objects depending on the way it's
+      called. If only $key is provided, handle() will return the corresponding
+      cached object. If one or more extra objects are provided, they are cached
+      under $key.
+@item static Cache::c($key, ...)
+      Shorthand for the two previous functions.
+@end table
+
+Here is an example of how to use Cache in its two different forms:
+
+@cartouche
+@verbatim
+$cache = Cache::create();
+
+// Storing some object.
+$cache->handle('foo', 'bar', 'baz');
+
+// Retrieving data
+list($bar, $baz) = $cache->handle('foo');
+
+// Using the shorthand
+Cache::c('foo', $bar);
+
+// Usual cache routine
+if(!$bar = Cache::c('foo')) {
+    Cache::c('foo', $bar);
+}
+@end verbatim
+@end cartouche
+
+      
 @node MovimRPC spec
 @chapter MovimRPC specification
 Movim's interface is highly dynamic and composed of two parts, the server-side
