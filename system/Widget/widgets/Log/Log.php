@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @package Widgets
+ *
  * @file Log.php
  * This file is part of MOVIM.
  * 

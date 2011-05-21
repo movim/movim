@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @package Widgets
+ *
  * @file Chat.php
  * This file is part of MOVIM.
  * 

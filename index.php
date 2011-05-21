@@ -26,7 +26,18 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * @mainpage
  *
+ * Movim is an XMPP-based communication platform. It uses a widget-based UI
+ * system. A widget is a combination of server-side and client-side scripts that
+ * interact though a custom xmlrpc protocol.
+ *
+ * Movim's core is designed to ease the implementation of XMPP web-based clients,
+ * using massively asynchronous javascript and abstracting XMPP calls into an
+ * events-based API.
  */
 
 ini_set('log_errors', 0);

@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @package Widgets
+ *
  * @file Friends.php
  * This file is part of MOVIM.
  *

@@ -229,11 +229,13 @@ is the name of the event as a string.
 The XMPP subsystem currently raises the following events:
 
 @table @code
-@item postdisconnect
+@item postdisconnected
       Event that is triggered immediately after the account has been
       disconnected on the user's request.
 @item incomingemptybody
       A message that comes in without body. This is typically a presence ping.
+@item myvcardreceived
+      Your vcard was received.
 @item vcardreceived
       The user's vcard was received. @code{$data} contains the vcard as a base64
       encoded string.
@@ -254,6 +256,8 @@ The XMPP subsystem currently raises the following events:
       A contact is now marked as @emph{do not disturb}.
 @item incomeonline
       A contact is now online.
+@item serverdisconnect
+      The server has gone offline.
 @end table
 
 One additional event type is availble: @code{allEvents}. This type of event is a

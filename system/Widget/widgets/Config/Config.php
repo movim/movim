@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @package Widgets
+ *
  * @file Wall.php
  * This file is part of MOVIM.
  * 
