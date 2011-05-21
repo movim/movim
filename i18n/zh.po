@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
-"PO-Revision-Date: 2011-03-03 15:26:37\n"
+"PO-Revision-Date: 2011-05-21 19:09:50\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

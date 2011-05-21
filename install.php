@@ -136,8 +136,8 @@ function show_install_form()
     make_checkbox('accountCreation', t("Allow account creation"), false);
     echo '<hr />';
     echo '<h2>Default Bosh server settings</h2>'.PHP_EOL;
-    make_textbox('defBoshHost', t("Bosh server"), 'natsu.upyum.com');
-    make_textbox('defBoshSuffix', t("Bosh suffix"), 'http-bind');
+    make_textbox('defBoshHost', t("Bosh Host"), 'natsu.upyum.com');
+    make_textbox('defBoshSuffix', t("Bosh Suffix"), 'http-bind');
     make_textbox('defBoshPort', t("Bosh Port"), '80');
     echo '<hr />';
     echo t('<h2>Storage</h2>') . PHP_EOL;

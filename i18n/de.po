@@ -4,141 +4,211 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
-"PO-Revision-Date: 2011-01-27 12:17:48\n"
+"PO-Revision-Date: 2011-05-21 19:10:33\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../init.php:16
+#: ../init.php:15
 msgid "MOVIM - Test Client"
 msgstr "MOVIM – Test-Instanz"
 
-#: ../lib/Dispatcher.php:38
+#: ../lib/Dispatcher.php:40
 msgid "%s - Welcome to Movim"
 msgstr "%s – Willkommen bei Movim"
 
-#: ../lib/Dispatcher.php:3
+#: ../lib/Dispatcher.php:4
 #: ../lib/Dispatcher.php:5
-#: ../lib/Dispatcher.php:72
+#: ../lib/Dispatcher.php:74
 msgid "Home"
 msgstr "Start"
 
 #: ../lib/Dispatcher.php:4
-#: ../lib/Dispatcher.php:58
+#: ../lib/Dispatcher.php:60
 msgid "Configuration"
 msgstr "Einstellungen"
 
-#: ../lib/Dispatcher.php:4
-#: ../lib/Dispatcher.php:59
+#: ../lib/widgets/Logout/Logout.php:46
 msgid "Logout"
 msgstr "Abmelden"
 
-#: ../lib/Dispatcher.php:56
+#: ../lib/Dispatcher.php:58
 msgid "%s - Configuration"
 msgstr "%s – Einstellungen"
 
-#: ../lib/Dispatcher.php:71
+#: ../lib/Dispatcher.php:73
 msgid "%s - Account Creation"
 msgstr "%s – Registrieren"
 
-#: ../lib/Dispatcher.php:88
+#: ../lib/Dispatcher.php:90
 msgid "%s - Login to Movim"
 msgstr "%s – Anmelden"
 
-#: ../lib/Dispatcher.php:91
+#: ../lib/Dispatcher.php:93
 msgid "Account Creation"
 msgstr "Registrieren"
 
-#: ../lib/Dispatcher.php:95
+#: ../lib/Dispatcher.php:103
 msgid "My address"
 msgstr "Adresse"
 
-#: ../lib/Dispatcher.php:9
-#: ../lib/widgets/Account.php:35
+#: ../lib/Dispatcher.php:10
+#: ../lib/widgets/Account/Account.php:35
 msgid "Password"
 msgstr "Passwort"
 
-#: ../lib/Dispatcher.php:97
+#: ../lib/Dispatcher.php:105
 msgid "Come in!"
 msgstr "Komm‘ herein!"
 
 #: ../lib/GetConf.php:2
-#: ../lib/GetConf.php:41
+#: ../lib/GetConf.php:45
 msgid "Error: Cannot load element value'%s'"
 msgstr "Fehler: Elementwert »%s« konnte nicht geladen werden"
 
-#: ../lib/GetConf.php:59
+#: ../lib/GetConf.php:139
 msgid "Error: Cannot load file '%s'"
 msgstr "Fehler: Datei »%s« konnte nicht geladen werden"
 
-#: ../lib/PageBuilder.php:283
+#: ../lib/WidgetWrapper.php:98
 msgid "Error: Requested widget '%s' doesn't exist."
 msgstr "Fehler: Angefordertes Widget »%s« ist nicht vorhanden."
 
-#: ../lib/User.php:63
+#: ../lib/User.php:65
 msgid "Wrong password"
 msgstr "Passwort falsch"
 
 #: ../lib/Widget.php:69
-msgid "This is a sample widget."
-msgstr "Dies ist ein Beispiel-Widget"
+#~ msgid "This is a sample widget."
+#~ msgstr "Dies ist ein Beispiel-Widget"
 
 #: ../lib/XMPPConnect.php:147
-msgid "Error: jid `%s' is incorrect"
-msgstr "Fehler: Falsche jid »%s«"
+#~ msgid "Error: jid `%s' is incorrect"
+#~ msgstr "Fehler: Falsche jid »%s«"
 
-#: ../lib/widgets/Account.php:3
-#: ../lib/widgets/Account.php:34
+#: ../lib/widgets/Account/Account.php:3
+#: ../lib/widgets/Account/Account.php:34
 msgid "Jabber Account"
 msgstr "Jabber-Konto"
 
-#: ../lib/widgets/Account.php:4
-#: ../lib/widgets/Config.php:84
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:70
 msgid "Submit"
 msgstr "Übernehmen"
 
-#: ../lib/widgets/Account.php:4
-#: ../lib/widgets/Config.php:86
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:72
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: ../lib/widgets/Chat.php:40
+#: ../lib/widgets/Chat/Chat.php:90
 msgid "Send"
 msgstr "Absenden"
 
-#: ../lib/widgets/Config.php:39
+#: ../lib/widgets/Config/Config.php:45
 msgid "Language"
 msgstr "Sprache"
 
 #: ../lib/widgets/Config.php:45
-msgid "Full Name"
-msgstr "Name"
+#~ msgid "Full Name"
+#~ msgstr "Name"
 
-#: ../lib/widgets/Config.php:47
+#: ../lib/widgets/Config/Config.php:57
 msgid "BOSH Connection Prefrences"
 msgstr "Verbindungseinstellungen"
 
-#: ../lib/widgets/Config.php:49
+#: ../lib/Dispatcher.php:9
+#: ../lib/widgets/Config/Config.php:59
 msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
 msgstr "Eine Änderung dieser Daten kann gefährlich sein und die Verbindung zum XMPP-Server behindern."
 
-#: ../lib/widgets/Config.php:51
+#: ../lib/widgets/Config/Config.php:61
 msgid "Bosh Host"
 msgstr "Server"
 
-#: ../lib/widgets/Config.php:53
+#: ../lib/widgets/Config/Config.php:63
 msgid "Bosh Suffix"
 msgstr "Suffix"
 
-#: ../lib/widgets/Config.php:55
+#: ../lib/widgets/Config/Config.php:65
 msgid "Bosh Port"
 msgstr "Port"
 
-#: ../lib/widgets/Config.php:90
+#: ../lib/widgets/Config/Config.php:76
 msgid "error: "
 msgstr "Fehler:"
 
-#: ../lib/widgets/Friends.php:65
+#: ../lib/widgets/Friends/Friends.php:112
 msgid "Contacts"
 msgstr "Freunde"
+
+#: ../lib/GetConf.php:8
+#: ../lib/GetConf.php:12
+#: ../lib/GetConf.php:129
+msgid "Couldn't create file %s"
+msgstr "Die folgende Datei konnte nicht erstellt werden: %s"
+
+#: ../lib/GetConf.php:131
+msgid "Couldn't create configuration files."
+msgstr "Die Konfigurationsdateien konnten nicht erstellt werden."
+
+#: ../lib/XMPPConnect.php:98
+msgid "Error: User not logged in."
+msgstr "Fehler: Der Benutzer ist nicht angemeldet."
+
+#: ../lib/XMPPConnect.php:102
+msgid "Error: JID not provided."
+msgstr "Fehler: Die JID ist nicht bekannt."
+
+#: ../lib/XMPPConnect.php:117
+msgid "Error: jid '%s' is incorrect"
+msgstr "Fehler: Die JID "%s" ist nicht korrekt."
+
+#: ../lib/widgets/Chat/Chat.php:84
+msgid "Chat"
+msgstr "Tchat"
+
+#: ../lib/widgets/Chat/Chat.php:88
+msgid "Message"
+msgstr "Nachricht"
+
+#: ../lib/widgets/Chat/Chat.php:89
+msgid "To"
+msgstr "An"
+
+#: ../lib/widgets/Friends/Friends.php:36
+msgid "Your avatar"
+msgstr "Dein Profilbild"
+
+#: ../lib/widgets/Friends/Friends.php:111
+msgid "Refresh vCard"
+msgstr "Die vCard aktualisieren"
+
+#: ../lib/widgets/Friends/Friends.php:116
+msgid "Online"
+msgstr "Online"
+
+#: ../lib/widgets/Friends/Friends.php:117
+msgid "Offline"
+msgstr "Offline"
+
+#: ../lib/widgets/Friends/Friends.php:118
+msgid "Hidden"
+msgstr "Versteckt"
+
+#: ../lib/widgets/Friends/Friends.php:119
+msgid "Away"
+msgstr "Abwesend"
+
+#: ../lib/widgets/Friends/Friends.php:120
+msgid "Do Not Disturb"
+msgstr "Nicht stören"
+
+#: ../lib/widgets/Friends/Friends.php:124
+msgid "Refresh Roster"
+msgstr "Roster aktualisieren"
+
+#: ../lib/widgets/Log/Log.php:34
+msgid "Debug console"
+msgstr "Debug Konsole"
 

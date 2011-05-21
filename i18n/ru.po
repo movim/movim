@@ -4,141 +4,211 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
-"PO-Revision-Date: 2011-02-27 12:08:59\n"
+"PO-Revision-Date: 2011-05-21 19:11:08\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../init.php:16
+#: ../init.php:15
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - тестовый клиент"
 
-#: ../lib/Dispatcher.php:38
+#: ../lib/Dispatcher.php:40
 msgid "%s - Welcome to Movim"
 msgstr "%s - Добро пожаловать в MOVIM"
 
-#: ../lib/Dispatcher.php:3
+#: ../lib/Dispatcher.php:4
 #: ../lib/Dispatcher.php:5
-#: ../lib/Dispatcher.php:72
+#: ../lib/Dispatcher.php:74
 msgid "Home"
 msgstr "Домой"
 
 #: ../lib/Dispatcher.php:4
-#: ../lib/Dispatcher.php:58
+#: ../lib/Dispatcher.php:60
 msgid "Configuration"
 msgstr "Настройки"
 
-#: ../lib/Dispatcher.php:4
-#: ../lib/Dispatcher.php:59
+#: ../lib/widgets/Logout/Logout.php:46
 msgid "Logout"
 msgstr "Выход"
 
-#: ../lib/Dispatcher.php:56
+#: ../lib/Dispatcher.php:58
 msgid "%s - Configuration"
 msgstr "%s - настройки"
 
-#: ../lib/Dispatcher.php:71
+#: ../lib/Dispatcher.php:73
 msgid "%s - Account Creation"
 msgstr "%s - создание учётной записи"
 
-#: ../lib/Dispatcher.php:88
+#: ../lib/Dispatcher.php:90
 msgid "%s - Login to Movim"
 msgstr "%s - зайти в MOVIM"
 
-#: ../lib/Dispatcher.php:91
+#: ../lib/Dispatcher.php:93
 msgid "Account Creation"
 msgstr "Создание учётной записи"
 
-#: ../lib/Dispatcher.php:95
+#: ../lib/Dispatcher.php:103
 msgid "My address"
 msgstr "Мой адрес"
 
-#: ../lib/Dispatcher.php:9
-#: ../lib/widgets/Account.php:35
+#: ../lib/Dispatcher.php:10
+#: ../lib/widgets/Account/Account.php:35
 msgid "Password"
 msgstr "Пароль"
 
-#: ../lib/Dispatcher.php:97
+#: ../lib/Dispatcher.php:105
 msgid "Come in!"
 msgstr "Войти!"
 
 #: ../lib/GetConf.php:2
-#: ../lib/GetConf.php:41
+#: ../lib/GetConf.php:45
 msgid "Error: Cannot load element value'%s'"
 msgstr "Ошибка: Невозможно загрузить значение элемента'%s'"
 
-#: ../lib/GetConf.php:59
+#: ../lib/GetConf.php:139
 msgid "Error: Cannot load file '%s'"
 msgstr "Ошибка: Невозможно загрузить файл '%s'"
 
-#: ../lib/PageBuilder.php:283
+#: ../lib/WidgetWrapper.php:98
 msgid "Error: Requested widget '%s' doesn't exist."
 msgstr "Ошибка: Запрашиваемое дополнение '%s' не существует."
 
-#: ../lib/User.php:63
+#: ../lib/User.php:65
 msgid "Wrong password"
 msgstr "Неверный пароль"
 
 #: ../lib/Widget.php:69
-msgid "This is a sample widget."
-msgstr "Это пример дополнения."
+#~ msgid "This is a sample widget."
+#~ msgstr "Это пример дополнения."
 
 #: ../lib/XMPPConnect.php:147
-msgid "Error: jid `%s' is incorrect"
-msgstr "Ошибка: jid '%s' неверен."
+#~ msgid "Error: jid `%s' is incorrect"
+#~ msgstr "Ошибка: jid '%s' неверен."
 
-#: ../lib/widgets/Account.php:3
-#: ../lib/widgets/Account.php:34
+#: ../lib/widgets/Account/Account.php:3
+#: ../lib/widgets/Account/Account.php:34
 msgid "Jabber Account"
 msgstr "Jabber аккаунт"
 
-#: ../lib/widgets/Account.php:4
-#: ../lib/widgets/Config.php:84
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:70
 msgid "Submit"
 msgstr "Отправить"
 
-#: ../lib/widgets/Account.php:4
-#: ../lib/widgets/Config.php:86
+#: ../lib/widgets/Account/Account.php:4
+#: ../lib/widgets/Config/Config.php:72
 msgid "Reset"
 msgstr "Сброс"
 
-#: ../lib/widgets/Chat.php:40
+#: ../lib/widgets/Chat/Chat.php:90
 msgid "Send"
 msgstr "Откравка"
 
-#: ../lib/widgets/Config.php:39
+#: ../lib/widgets/Config/Config.php:45
 msgid "Language"
 msgstr "Язык"
 
 #: ../lib/widgets/Config.php:45
-msgid "Full Name"
-msgstr "Полное имя"
+#~ msgid "Full Name"
+#~ msgstr "Полное имя"
 
-#: ../lib/widgets/Config.php:47
+#: ../lib/widgets/Config/Config.php:57
 msgid "BOSH Connection Prefrences"
 msgstr "Настройки соединения BOSH"
 
-#: ../lib/widgets/Config.php:49
+#: ../lib/Dispatcher.php:9
+#: ../lib/widgets/Config/Config.php:59
 msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
 msgstr "Изменение этих данных могут быть опасны и скомпрометировать соединение с XMPP сервером"
 
-#: ../lib/widgets/Config.php:51
+#: ../lib/widgets/Config/Config.php:61
 msgid "Bosh Host"
 msgstr "Bosh сервер"
 
-#: ../lib/widgets/Config.php:53
+#: ../lib/widgets/Config/Config.php:63
 msgid "Bosh Suffix"
 msgstr "Bosh Suffix"
 
-#: ../lib/widgets/Config.php:55
+#: ../lib/widgets/Config/Config.php:65
 msgid "Bosh Port"
 msgstr "Bosh порт"
 
-#: ../lib/widgets/Config.php:90
+#: ../lib/widgets/Config/Config.php:76
 msgid "error: "
 msgstr "ошибка:"
 
-#: ../lib/widgets/Friends.php:65
+#: ../lib/widgets/Friends/Friends.php:112
 msgid "Contacts"
 msgstr "Контакты"
+
+#: ../lib/GetConf.php:8
+#: ../lib/GetConf.php:12
+#: ../lib/GetConf.php:129
+msgid "Couldn't create file %s"
+msgstr "Не удалось создать file %s"
+
+#: ../lib/GetConf.php:131
+msgid "Couldn't create configuration files."
+msgstr "Не удалось создать файлы конфигурации."
+
+#: ../lib/XMPPConnect.php:98
+msgid "Error: User not logged in."
+msgstr "Ошибка: Пользователь не идентифицирован."
+
+#: ../lib/XMPPConnect.php:102
+msgid "Error: JID not provided."
+msgstr "Ошибка: JID не предусмотрен."
+
+#: ../lib/XMPPConnect.php:117
+msgid "Error: jid '%s' is incorrect"
+msgstr "Ошибка: JID '%s' неверный"
+
+#: ../lib/widgets/Chat/Chat.php:84
+msgid "Chat"
+msgstr "Чат"
+
+#: ../lib/widgets/Chat/Chat.php:88
+msgid "Message"
+msgstr "Сообщение"
+
+#: ../lib/widgets/Chat/Chat.php:89
+msgid "To"
+msgstr "для"
+
+#: ../lib/widgets/Friends/Friends.php:36
+msgid "Your avatar"
+msgstr "Ваш аватар"
+
+#: ../lib/widgets/Friends/Friends.php:111
+msgid "Refresh vCard"
+msgstr "Обновить vCard"
+
+#: ../lib/widgets/Friends/Friends.php:116
+msgid "Online"
+msgstr "Online"
+
+#: ../lib/widgets/Friends/Friends.php:117
+msgid "Offline"
+msgstr "Offline"
+
+#: ../lib/widgets/Friends/Friends.php:118
+msgid "Hidden"
+msgstr "Скрыт"
+
+#: ../lib/widgets/Friends/Friends.php:119
+msgid "Away"
+msgstr "В отсутствии"
+
+#: ../lib/widgets/Friends/Friends.php:120
+msgid "Do Not Disturb"
+msgstr "Не беспокоить"
+
+#: ../lib/widgets/Friends/Friends.php:124
+msgid "Refresh Roster"
+msgstr "Обновить Ростер"
+
+#: ../lib/widgets/Log/Log.php:34
+msgid "Debug console"
+msgstr "консоль"
 
