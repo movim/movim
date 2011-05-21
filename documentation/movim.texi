@@ -79,7 +79,7 @@ Movim runs on any web server with PHP and Curl. The detailed requirements are:
 
 @itemize @bullet
 @item
-PHP5.3 or greater with the Curl library.
+PHP5.3 or greater with the Curl, JSON, SimpleXML and SQLite3 extensions.
 @item
 A web server: apache, lighttpd (Note that other web servers should work, with
 the possible exception of IIS, which hasn't been tested.)
@@ -218,7 +218,7 @@ Your handlers must be registered in @code{WidgetLoad()} using the method:
 
 @cartouche
 @verbatim
-Widget::registerEvent($eventType, $handler)
+WidgetBase::registerEvent($eventType, $handler)
 @end verbatim
 @end cartouche
 
@@ -306,7 +306,7 @@ This ajax call can be explicitely called upon with the method:
 
 @cartouche
 @verbatim
-Widget::callAjax($funcname, ...)
+WidgetBase::callAjax($funcname, ...)
 @end verbatim
 @end cartouche
 
@@ -356,13 +356,13 @@ Note that string parameters passed to the ajax method must be double-quoted. The
 reason for this is that javascript will remove the first set of quotes. Thus
 single-quoted parameters will be javascript objects.
 
-The drawback of @code{Widget::callAjax()} is that it prints the ajax call
+The drawback of @code{WidgetBase::callAjax()} is that it prints the ajax call
 straight away. It is sometimes desirable to have it return the generated
 call. Another variant of the function exists that does this:
 
 @cartouche
 @verbatim
-Widget::genCallAjax($funcname, $callback, $target, ...)
+WidgetBase::genCallAjax($funcname, $callback, $target, ...)
 @end verbatim
 @end cartouche
 
@@ -376,8 +376,8 @@ custom javascript and css:
 
 @cartouche
 @verbatim
-Widget::addjs($jsfile)
-Widget::addcss($cssfile)
+WidgetBase::addjs($jsfile)
+WidgetBase::addcss($cssfile)
 @end verbatim
 @end cartouche
 
@@ -387,7 +387,7 @@ For resources, you can use the function:
 
 @cartouche
 @verbatim
-Widget::respath($file, $fspath = false)
+WidgetBase::respath($file, $fspath = false)
 @end verbatim
 @end cartouche
 
