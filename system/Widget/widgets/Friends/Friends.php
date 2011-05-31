@@ -73,7 +73,8 @@ class Friends extends WidgetBase
 				
 				/*********************************/
 			
-				$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")' title='".$value."' class='".$presence."'>";
+				//$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")' title='".$value."' class='".$presence."'>";
+				$html .= '<li id="'.$value.'" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$value."'").'" title="'.$value.'" class="'.$presence.'">';
 				
 				//if($roster["queryItemName"][$i] != NULL) { // If we can get the name
 					$cachevcard = Cache::c('vcard'.$value); // We try to load the Vcard
