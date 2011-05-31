@@ -11,12 +11,14 @@ function showTalk(n) {
     }
 }
 
-function sendMessage(n)
+function sendMessage(n, jid)
 {
     var text = n.value;
     var date = new Date();
-    n.parentNode.innerHTML = '<p class="message me"><span class="date">'+date.getHours()+':'+date.getMinutes()+'</span>' + text + '</p>'+n.parentNode.innerHTML;
-    //n.value = "";
+    var box = document.getElementById(jid + 'Messages');
+    box.innerHTML = '<p class="message me"><span class="date">'+date.getHours()+':'+date.getMinutes()+'</span>' + text + '</p>'+n.parentNode.innerHTML;
+    n.value = "";
     n.focus();
     return text;
+
 }

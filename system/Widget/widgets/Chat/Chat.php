@@ -34,12 +34,14 @@ class Chat extends WidgetBase
 	
 	function ajaxOpenTalk($jid) {
 	    $talks = Cache::c('activechat');
-        RPC::call('movim_prepend',
-                       'talks',
-                       RPC::cdata($this->prepareTalk($jid, true)));
-        $talks[$jid] = true;
-        Cache::c('activechat', $talks);
-        RPC::commit();
+	    if(!array_key_exists($jid, $talks)) {
+            RPC::call('movim_prepend',
+                           'talks',
+                           RPC::cdata($this->prepareTalk($jid, true)));
+            $talks[$jid] = true;
+            Cache::c('activechat', $talks);
+            RPC::commit();
+        }
 	}
 	
 	function ajaxCloseTalk($jid) {
@@ -73,8 +75,8 @@ class Chat extends WidgetBase
                        RPC::cdata($jid));
 
         RPC::call('movim_prepend',
-                       $jid.'Box',
-                       RPC::cdata('<p class="message"><span class="date">'.date('G:i', time()).'</span>'.htmlentities($data['body']).'</p>'));
+                       $jid.'Messages',
+                       RPC::cdata('<p class="message"><span class="date">'.date('G:i', time()).'</span>'.htmlentities($data['body'], ENT_COMPAT, "UTF-8").'</p>'));
 	}
 	
 	function onComposing($data)
@@ -101,8 +103,9 @@ class Chat extends WidgetBase
 	        $style = '';
 	    return '
             <div class="talk">
-                <div  class="box" id="'.$jid.'Box" '.$style.'>
-                <input type="text" class="input" value="'.t('Message').'" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$jid."'", "sendMessage(this)").'}"/>
+                <div class="box" id="'.$jid.'Box" '.$style.'>
+                <div class="messages" id="'.$jid.'Messages"></div>
+                <input type="text" class="input" value="'.t('Message').'" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$jid."'", "sendMessage(this, '".$jid."')").'}"/>
                 </div>
                 
                 <span class="tab" id="'.$jid.'Tab" onclick="showTalk(this);">'.$jid.'</span>
