@@ -107,6 +107,22 @@ class WidgetBase
 		return get_class($this) . '_' . $funcname . "(" . $args . ");";
     }
 
+    /**
+     * Ajax call upon javascript-triggered event.
+     */
+    protected function makeJsHandler($event, $function)
+    {
+        $this->ajax->defHandler(get_class($this), $function);
+    }
+
+    /**
+     * Starts a javascript event.
+     */
+    protected function invokeJsEvent($eventname)
+    {
+        return "movim_events_emit('$eventname');";
+    }
+
 	/**
 	 * Adds a javascript file to this widget.
 	 */

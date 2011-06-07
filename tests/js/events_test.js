@@ -1,5 +1,5 @@
 var yesman_called = false;
-var yesman = function() {yesman_called = true;};
+function yesman() {yesman_called = true;};
 
 tests.set('events', H({
     add_handler: function()
