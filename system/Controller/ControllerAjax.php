@@ -74,9 +74,9 @@ class ControllerAjax extends ControllerBase
     /**
      * Defines and declares a javascript event handler.
      */
-    public function defHandler($widget, $funcname)
+    public function defHandler($event, $widget, $funcname)
     {
-        $this->defun($widget, $funcname, array());
+        //$this->defun($widget, $funcname, array());
 
         $this->handlerlist[] = array(
             'event' => $event,

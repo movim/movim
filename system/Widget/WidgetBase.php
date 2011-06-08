@@ -112,7 +112,7 @@ class WidgetBase
      */
     protected function makeJsHandler($event, $function)
     {
-        $this->ajax->defHandler(get_class($this), $function);
+        $this->ajax->defHandler($event, get_class($this), $function);
     }
 
     /**
@@ -120,7 +120,7 @@ class WidgetBase
      */
     protected function invokeJsEvent($eventname)
     {
-        return "movim_events_emit('$eventname');";
+        echo "movim_events_emit('$eventname');";
     }
 
 	/**
