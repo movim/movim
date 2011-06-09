@@ -120,7 +120,16 @@ class WidgetBase
      */
     protected function invokeJsEvent($eventname)
     {
-        echo "movim_events_emit('$eventname');";
+        $args = array_slice(func_get_args(), 1);
+        $args = implode(', ', $args);
+
+        echo "movim_events_emit('$eventname'";
+
+        if($args != "") {
+            echo ", ". $args .");";
+        } else {
+            echo ");";
+        }
     }
 
 	/**
