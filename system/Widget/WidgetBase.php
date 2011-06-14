@@ -118,18 +118,28 @@ class WidgetBase
     /**
      * Starts a javascript event.
      */
-    protected function invokeJsEvent($eventname)
+    protected function getInvokeJsEvent($eventname)
     {
         $args = array_slice(func_get_args(), 1);
         $args = implode(', ', $args);
 
-        echo "movim_events_emit('$eventname'";
+        $buf = "movim_events_emit('$eventname'";
 
         if($args != "") {
-            echo ", ". $args .");";
+            $buf .= ", ". $args .");";
         } else {
-            echo ");";
+            $buf .= ");";
         }
+
+        return $buf;
+    }
+
+    /**
+     * Echoes a javascript event trigger.
+     */
+    protected function invokeJsEvent($eventname)
+    {
+        echo getInvokeJsEvent($eventname);
     }
 
 	/**
