@@ -27,6 +27,7 @@ class ControllerMain extends ControllerBase
 		$this->page = new TplPageBuilder();
         $this->page->addScript('hash.js');
         $this->page->addScript('movimrpc.js');
+        $this->page->addScript('events.js');
 		$this->page->addScript('movim.js');
 	}
 

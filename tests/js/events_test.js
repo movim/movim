@@ -13,6 +13,8 @@ function set_foobar(value) {
     foobar = value;
 }
 
+rpc = new MovimRPC();
+
 tests.set('events', H({
     add_handler: function()
     {
