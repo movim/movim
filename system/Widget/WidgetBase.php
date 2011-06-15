@@ -139,7 +139,7 @@ class WidgetBase
      */
     protected function invokeJsEvent($eventname)
     {
-        echo getInvokeJsEvent($eventname);
+        echo $this->getInvokeJsEvent($eventname);
     }
 
 	/**
