@@ -154,7 +154,12 @@ class Jabber
 	 * Auth mechanism (default : MD5)
 	 */
 
-	public function postAuthMech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}
+	public function postAuthMech($mechanism) {
+        if(in_array("DIGEST-MD5", $mechanism))
+            $this->jaxl->auth('DIGEST-MD5');
+        elseif(in_array("PLAIN", $mechanism))
+            $this->jaxl->auth('PLAIN');
+	}
 
 	/**
 	 * Logs out
@@ -252,6 +257,9 @@ class Jabber
 				}
 				elseif($payload['chatState'] == 'composing') {
                 	$evt->runEvent('incomecomposing', $payload);
+				}
+				elseif($payload['chatState'] == 'paused') {
+                	$evt->runEvent('incomepaused', $payload);
 				}
 				else {
 					$evt->runEvent('incomemessage', $payload);
