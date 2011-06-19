@@ -182,6 +182,7 @@ class Jabber
 	 */
 	public function pingServer()
 	{
+        Logger::log(Logger::LOGLEVEL_FINER, "Pinging server");
         $this->jaxl->JAXL0206('ping');
 	}
 
@@ -353,7 +354,8 @@ class Jabber
 	 */
 	public function addContact($jid, $contact, $alias)
 	{
-		if($this->checkJid($jid)) {
+        Logger::log(Logger::LOGLEVEL_STANDARD, "Adding contact '$alias' ('$jid') to the roster");
+        if($this->checkJid($jid)) {
 			$this->jaxl->subscribe($jid);
 			$this->jaxl->addRoster($jid, $contact, $alias);
 		} else {

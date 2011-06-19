@@ -55,6 +55,7 @@ class Chat extends WidgetBase
     	$user = new User();
 		$xmpp = Jabber::getInstance($user->getLogin());
         $xmpp->sendMessage($to, $message);
+        Logger::log(Logger::LOGLEVEL_STANDARD, "Sent '$message' to $to");
     }
 
 	function onMessage($data)

@@ -199,7 +199,8 @@ class WidgetBase
 	 */
 	protected function registerEvent($type, $function)
 	{
-		if(!is_array($this->events)
+        Logger::log(Logger::LOGLEVEL_FINE, "Widget ".$this->name.": registering '$function' function to '$type' event");
+        if(!is_array($this->events)
 		   || !array_key_exists($type, $this->events)) {
 			$this->events[$type] = array($function);
 		} else {

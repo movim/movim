@@ -132,7 +132,7 @@ function show_install_form()
     echo "<br />";
     make_checkbox('boshCookieHTTPOnly', t("Use only HTTP for Bosh"), true);
     echo "<br />";
-    make_select('verbosity', t("Log verbosity"), array('empty', 'terse', 'normal', 'talkative', 'ultimate'), 4);
+    make_select('verbosity', t("Log verbosity"), array(0 => 'empty', 2 => 'terse', 4 => 'normal', 6 => 'talkative', 7 => 'ultimate'), 4);
     make_checkbox('accountCreation', t("Allow account creation"), false);
     echo '<hr />';
     echo '<h2>Default Bosh server settings</h2>'.PHP_EOL;
