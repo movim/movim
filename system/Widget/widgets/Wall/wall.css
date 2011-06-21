@@ -4,15 +4,14 @@
 
 }
 
-.message {
+#wall .message {
 	border-bottom: 1px solid #ECECEC;
     width: 100%;
-    font-size: 9px;
-	padding-top: 0.5em;
 	padding-bottom: 0.5em;
+    min-height: 75px;
 }
 
-.message .comment {
+#wall .message .comment {
 	margin-bottom: 0.3em;
 	background-color: #F3F3F3;
 	padding: 0.4em;
@@ -20,7 +19,7 @@
 	margin-right: 5px;
 }
 
-.message .avatar {
+#wall .message .avatar {
 	width: 70px;
 	height: 70px;
 	margin: 5px;
@@ -30,7 +29,7 @@
 	background-color: #9BBBC6;
 }
 
-.message .content {
+#wall .message .content {
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
 	margin-left: 80px;

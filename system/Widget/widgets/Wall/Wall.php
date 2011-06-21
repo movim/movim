@@ -26,10 +26,18 @@ class Wall extends WidgetBase
     	$this->addcss('wall.css');
     }
 
+	function ajaxDiscovery()
+	{
+		$user = new User();
+		$xmpp = Jabber::getInstance($user->getLogin());
+		$xmpp->discover();
+	}
+
 	function build()
 	{
 		?>
 		<div id="wall">
+            <div onclick="<?php $this->callAjax('ajaxDiscovery');?>">gna !</div>
 		    <div class="message">
 				<img class="avatar" width="70px" height="70px" alt="test">
 

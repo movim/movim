@@ -1,12 +1,23 @@
+#friends {
+    margin: 5px;
+    clear: both;
+}
+
+#tinylist ul {
+    margin: -5px;
+    width: 100%;
+}
+
 #tinylist ul li {
-	background-repeat: no-repeat;
-	background-position: 1px 2px;
-	background-image: url(img/bullet_black.png);
 	cursor: pointer;
 	overflow: hidden;
-	text-indent: 0.3em;
-	z-index: 2;
-	max-height: 3.2em;
+    padding: 5px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #DDD;
+    border-left: 2px solid gray;
+    width: 100%;
+    padding-right: 2px;
+    max-height: 30px;
 }
 
 #tinylist ul li:hover {
@@ -14,40 +25,40 @@
 }
 
 #tinylist ul li.online {
-	background-image: url(img/bullet_green.png);
+    border-left-color: #78BA1A;
 }
 
 #tinylist ul li.hidden {
-	background-image: url(img/bullet_white.png);
+    border-left-color: #E0E0E0;
 }
 
 #tinylist ul li.away {
-	background-image: url(img/bullet_orange.png);
+    border-left-color: #DFA117;
 }
 
 #tinylist ul li.offline {
-	background-image: url(img/bullet_black.png);
 	display: none;
 }
 
 #tinylist ul li.dnd {
-	background-image: url(img/bullet_red.png);
+    border-left-color: #C61C1C;
 }
 
 #tinylist ul li a.user_page {
-	float: left;
-	width: 16px;
-	height: 14px;
+	float: right;
 }
 
 #tinylist ul li img.avatar {
 	float: right; 
-	width: 30px; 
-	height: 30px;
+    margin: -5px;
+    margin-right: -2px;
+    height: 40px;
+    width: 40px;
+    background-color: white;
 }
 
 #tinylist ul li span.status {
 	color: #7D7D7D;
-	line-height: 1.6em;
+    font-size: 10px;
 	overflow: hidden;
 }

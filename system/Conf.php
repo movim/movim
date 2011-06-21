@@ -5,6 +5,7 @@ class Conf
     public static $conf_path = "/config";
 
 	function __construct() {
+	    movim_log("test".date("H:i"));
 	}
 
 	/* Return the general configuration */

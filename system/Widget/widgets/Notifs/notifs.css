@@ -1,0 +1,28 @@
+#notifs ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+#notifs ul li {
+    padding: 5px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #DDD;
+    font-size: 10px;
+}
+
+#notifs ul li a {
+    color: #688F9C;
+    margin-left: 1em;
+    margin-top: 2px;
+    float: right;
+}
+
+#notifs #notifsalias {
+    display: none;
+    width: 95%;
+    margin-top: 3px;
+}
+
+#notifs #notifsvalidate {
+    display: none;
+}

@@ -36,6 +36,7 @@ class Friends extends WidgetBase
 
     function onRosterReceived($roster)
     {
+        movim_log($roster);
 		$html = $this->prepareRoster($roster);
         RPC::call('movim_fill', 'tinylist', RPC::cdata($html));
     }
@@ -50,37 +51,54 @@ class Friends extends WidgetBase
             return $html;
         }
 
+        $session = Session::start(APP_NAME);
+        $presences = $session->get('presences');
+        
 		foreach($roster["queryItemJid"] as $key => $value ) { // We see each contact
 			if($value != "undefined") {
-			
-				/* WORKING PATCH USING SESSIONS */
-                $session = Session::start(APP_NAME);
-				$cachepresence = $session->get('presence'.$value);
-								
-				if($cachepresence)
-					$presence = "online";
-				else
-					$presence = "offline";
+			    
+			    $status = (isset($presences[$value]['status'])) 
+			        ? $presences[$value]['status'] 
+			        : $value;
+                
+                if(is_array($presences[$value])) {
+                    unset($presences[$value]['status']);
+                    $rank = min($presences[$value]);
+                    
+                    switch ($rank) {
+                        case 1:
+					        $presence = "online";
+					        break;
+                        case 2:
+				        	$presence = "dnd";
+				        	break;
+                        case 3:
+					        $presence = "away";
+					        break;
+                        case 4:
+					        $presence = "offline";
+					        break;
+                        case 5:
+					        $presence = "away";
+					        break;
+				        default:
+				        	$presence = "offline";
+                    }
+                } else {
+                    $presence = "offline";
+                }
+                             
+				$html .= '<li 
+				            id="'.$value.'" 
+				            title="'.$status.'" 
+				            class="'.$presence.
+				          '">';
 				
-				if($cachepresence['show'] == "away")
-					$presence = "away";
-				elseif($cachepresence['show'] == "dnd")
-					$presence = "dnd";
-				elseif($cachepresence['type'] == "unavailable")
-					$presence = "offline";
-					
-				$status = $cachepresence['status'];
-				
-				/*********************************/
-			
-				//$html .= "<li id='".$value."' onclick='setChatUser(\"".$value."\")' title='".$value."' class='".$presence."'>";
-				$html .= '<li id="'.$value.'" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$value."'").'" title="'.$value.'" class="'.$presence.'">';
-				
-				//if($roster["queryItemName"][$i] != NULL) { // If we can get the name
 					$cachevcard = Cache::c('vcard'.$value); // We try to load the Vcard
-					$html .= "<img class='avatar' src='data:".	$cachevcard['vCardPhotoType'] . ";base64," . $cachevcard['vCardPhotoBinVal'] . "' />"
-							."<a class='user_page' href='?q=friend&f=".$value."'></a>"; // Draw the avatar
-								
+					$html .= "<a class='user_page' href='?q=friend&f=".$value."'><img class='avatar' src='data:".	$cachevcard['vCardPhotoType'] . ";base64," . $cachevcard['vCardPhotoBinVal'] . "' />"
+							."</a>"; // Draw the avatar
+					
+                    $html .= '<span onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$value."'").'">';
 					// We try to display an understadable name
 					if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily']))
 						$html .= $cachevcard['vCardFN'] ." ".$cachevcard['vCardFamily'];
@@ -89,11 +107,9 @@ class Friends extends WidgetBase
 					else 
 						$html .= $roster["queryItemName"][$i];
 						
-					$html .= '
-								<span class="status" id="status_'.$value.'" title="'.$status.'">'.$value.'</span></li>';
-				//} else
-				//	$html .= $value;
-					
+					$html .= '</span>
+								<span class="status" id="status_'.$value.'" title="'.$status.'">'.$status.'</span></li>';
+				
 				$html .= "
 				</li>";
 			}
@@ -106,7 +122,6 @@ class Friends extends WidgetBase
     function onIncomingPresence($data)
     {
 		list($jid, $place) = explode("/",$data['from']);
-		//movim_log(RPC::cdata($jid, $data['status'], "test"));
 	    RPC::call('incomingPresence',
                       RPC::cdata($jid), RPC::cdata($data['status']));
     }
@@ -147,11 +162,11 @@ class Friends extends WidgetBase
 	}
 
     function build()
-    {
+    { 
         ?>
         <div id="friends">
           <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
-          <h3><?php echo t('Contacts');?></h3>
+          <!--<h3><?php echo t('Contacts');?></h3>-->
 
           <div id="tinylist">
           	<?php echo $this->prepareRoster(Cache::c('roster')); ?>

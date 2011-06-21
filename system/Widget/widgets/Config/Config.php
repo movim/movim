@@ -59,18 +59,21 @@ class Config extends WidgetBase
 				<fieldset>
 				<legend><?php echo t('BOSH Connection Prefrences'); ?></legend>
 				<div class="warning"><?php echo t('Changing these data can be dangerous and may compromise the connection to the Jabber server'); ?></div>
-				<label id="lock required" for="boshHost"><?php echo t('Bosh Host'); ?></label>
-				<input name="boshHost" id="boshHost" value="<?php echo $conf['boshHost']; ?>" type="text">
-				<br>
+                <p>
+				    <label id="lock required" for="boshHost"><?php echo t('Bosh Host'); ?></label>
+				    <input name="boshHost" id="boshHost" value="<?php echo $conf['boshHost']; ?>" type="text">
+				</p>
+                <p>
 				<label id="lock required" for="boshSuffix"><?php echo t('Bosh Suffix'); ?></label>
 				<input name="boshSuffix" id="boshSuffix" value="<?php echo $conf['boshSuffix']; ?>" type="text">
-				<br>
+				</p>
 				<label id="lock required" for="boshPort"><?php echo t('Bosh Port'); ?></label>
 				<input name="boshPort" id="boshPort" size="4" value="<?php echo $conf['boshPort']; ?>" type="text">
 				</fieldset>
-				<br>
+				<p>
 				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" id="right" type="button">
 				<input type="reset" value="<?php echo t('Reset'); ?>">
+                </p>
 			</form>
 
 <?php

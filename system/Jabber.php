@@ -69,6 +69,7 @@ class Jabber
 		$this->jaxl->requires(array(
 						 'JAXL0030', // Service Discovery
 						 'JAXL0054', // VCard
+                         'JAXL0060',
 						 'JAXL0115', // Entity Capabilities
 						 'JAXL0133', // Service Administration
 						 'JAXL0085', // Chat State Notification
@@ -109,6 +110,21 @@ class Jabber
 		}
 		return self::$instance;
 	}
+	
+	/*
+	 * Get current ressource  
+	 */
+	
+	public function getResource()
+	{
+	    $res = JAXLUtil::splitJid($this->jaxl->jid);
+	    return $res[2];
+	}
+	
+	public function getJid()
+	{
+	    return $this->jaxl->jid;
+	}
 
 	/**
 	 * Logs in
@@ -130,7 +146,7 @@ class Jabber
 
 		self::setStatus(false, false);
 	}
-
+	
     public function postAuth() {
 		//$this->jaxl->getRosterList();
 		//$this->jaxl->getVCard();
@@ -239,7 +255,8 @@ class Jabber
 	{
 		//$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
 		//$this->jaxl->JAXL0030('discoItems', $jid, $this->jaxl->jid, false, false);mov
-		$this->jaxl->JAXL0030('discoItems', 'pubsub.jabber.fr', $this->jaxl->jid, false, false);
+		$this->jaxl->JAXL0060('getNodeItems', 'psgxs.linkmauve.fr', $this->jaxl->jid, 'blog');
+        //psgxs.linkmauve.fr
 	}
 
 	/*
@@ -277,16 +294,39 @@ class Jabber
 	public function getPresence($payloads) {
         foreach($payloads as $payload) {
 
-            if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
+    		if($payload['type'] == 'subscribe') {
+        		$evt = new Event();
+        		$evt->runEvent('incomesubscribe', $payload);
+    		} elseif($payload['type'] == 'result') {
+    		
+    		} elseif($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
+
+            //if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
                 $evt = new Event();
 
 				$evt->runEvent('incomepresence', $payload);
+				
+				if($payload['from'] == $this->getJid())
+					$evt->runEvent('incomemypresence', $payload);
 
 				/* WORKING PATCH USING SESSIONS */
                 $session = Session::start(APP_NAME);
 				//session_start();
-				$key = 'presence'.reset(explode('/',$payload['from']));
-                $session->set($key, $payload);
+				
+				$presences = $session->get('presences');
+
+				//if($presences == false)
+				//    $presences = array();
+				
+				list($jid, $ressource) = explode('/',$payload['from']);
+				
+				if(!is_array($presences[$jid]))
+				    $presences[$jid] = array();
+				    
+				$presences[$jid]['status'] = $payload['status'];
+
+				//$key = 'presence'.reset(explode('/',$payload['from']));
+                //$session->set($key, $payload);
 				//$_SESSION[$key] = $payload;
 				//session_commit();
 				/********************************/
@@ -294,18 +334,30 @@ class Jabber
                 if($payload['type'] == 'unavailable') {
                     if($payload['from'] == $this->jaxl->jid)
                         $evt->runEvent('postdisconnected', $data);
-                    else
+                    else {
+                        $presences[$jid][$ressource] = 4;
                         $evt->runEvent('incomeoffline', $payload);
+                    }
+                }
+                elseif($payload['show'] == 'xa') {
+                    $presences[$jid][$ressource] = 5;
+                    $evt->runEvent('incomeaway', $payload);
+
                 }
                 elseif($payload['show'] == 'away') {
+                    $presences[$jid][$ressource] = 3;
                     $evt->runEvent('incomeaway', $payload);
+
                 }
                 elseif($payload['show'] == 'dnd') {
+                    $presences[$jid][$ressource] = 2;
                     $evt->runEvent('incomednd', $payload);
                 }
                 else {
+                    $presences[$jid][$ressource] = 1;
                     $evt->runEvent('incomeonline', $payload);
                 }
+				$session->set('presences', $presences);
             }
         }
 	}
@@ -352,15 +404,19 @@ class Jabber
 	/**
 	 * Adds a contact to the roster.
 	 */
-	public function addContact($jid, $contact, $alias)
+	public function addContact($jid, $group, $alias)
 	{
         Logger::log(Logger::LOGLEVEL_STANDARD, "Adding contact '$alias' ('$jid') to the roster");
         if($this->checkJid($jid)) {
 			$this->jaxl->subscribe($jid);
-			$this->jaxl->addRoster($jid, $contact, $alias);
+			$this->jaxl->addRoster($jid, $group, $alias);
 		} else {
 			throw new MovimException("Incorrect JID `$jid'");
 		}
+	}
+	
+	public function unsubscribed($jid) {
+		$this->jaxl->unsubscribed($jid);
 	}
 
 }

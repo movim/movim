@@ -47,7 +47,7 @@ class Session
         }
 
         // Do we create the schema?
-        $create = true;
+        $create = false;
         if(!file_exists($db_file)) {
             $create = true;
         }

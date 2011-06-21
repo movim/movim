@@ -1,40 +1,34 @@
 #friendinfos {
-	margin-top: 1em;
-	margin-right: 1em;
-	display: block;
-	min-height: 7em;
-	overflow: auto;
-	padding-bottom: 1em;
-	border-bottom: 1px solid #ECECEC;
-}
-
-#friendinfos img {
-	float: right;
-	max-height: 7em;
+    margin: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
 }
 
 #friendinfos .config_button {
+    float: right;
+    margin-right: 10px;
 }
 
-#friendinfos #infosbox {
-	list-style-type: none;
-	margin: 0px;
-	padding-left: 1em;
+#friendinfos img {
+    margin: 0 auto;
 }
 
-#friendinfos #infosbox li {
-	display: block;
-	clear: left;
+#friendinfos ul {
+    text-align: left;
+    list-style-type: none;
+    font-size: 10px;
 }
 
-#friendinfos #infosbox span {
-	padding-right: 1.5em;
-	color: gray;
-	float: left;
-	clear: left;
-	width: 10em;
+#friendinfos ul li span {
+    color: #7D7D7D;
+    padding-right: 5px;
 }
 
-#friendinfos #description {
-	margin: 1em;
+#friendinfos h2 {
+    font-size: 15px;
+    color: #444;
+    font-weight: bold;
+    padding-bottom: 5px;
 }
+

@@ -39,7 +39,8 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
-			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
+			//$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
+            $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
 			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
 			$content = new TplPageBuilder($user);
@@ -57,7 +58,8 @@ class ControllerMain extends ControllerBase
 		} else {
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
-				$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
+			    //$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
+                $this->page->menuAddLink(t('Home'), '?q=mainPage');
 
 				$cachevcard = Cache::c('vcard'.$_GET['f']);
 				if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily']))
@@ -86,7 +88,8 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			$this->page->setTitle(t('%s - Configuration', APP_TITLE));
-			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
+			//$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
 			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
 
@@ -101,7 +104,8 @@ class ControllerMain extends ControllerBase
 	{
 		if(GetConf::getServerConfElement("accountCreation") == 1) {
 			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
-			$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage');
+			//$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
+            $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
 			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('account.tpl'));
@@ -118,7 +122,7 @@ class ControllerMain extends ControllerBase
 	function login()
 	{
 		$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
-		$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').'Movim | Human Network', 'http://www.movim.eu/', true);
+		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
 		if(Conf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
 		if($_GET['err'] == 'auth') {
@@ -130,7 +134,7 @@ class ControllerMain extends ControllerBase
 		$this->page->setContent(
 			'<div id="connect_form">'.
 			'<form id="authForm" action="index.php" method="post">'.
-			'<input type="text" name="login" id="login" value="'.t("My address").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/>'.
+			'<input type="text" name="login" id="login" value="'.t("My address").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
 			'<input type="password" name="pass" id="pass" value="'.t("Password").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
 			'<input class="submit" style="float: none;" type="submit" name="submit" value="'.t("Come in!").'"/>'.
 			'</form>'.

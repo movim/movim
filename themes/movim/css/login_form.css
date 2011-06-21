@@ -2,52 +2,23 @@
 {
 	width: auto;
 	margin: 0 auto;
-	margin-top: 13%;
-	padding: 0.5em;
-	margin-bottom: 15%;
+	margin-top: -5px;
+	padding: 9em 0.5em;
+    font-size: 17px;
+    background-repeat: no-repeat;
+    background-image: url(../img/bee.png);
+    background-position: center center;
 }
 
 #connect_form form
 {
 	margin: 0 auto;
-	width: 300px;
-	margin-top: 20px;
 	text-align: center;
-	padding-top: 1em;
-	padding-bottom: 1em;
-	background-color: #F3F3F3;
-	border: 1px solid #DCDCDC;
-	border-bottom-color: white;
-	border-bottom: none;
-	border-radius: 2px;
-	-webkit-border-radius: 2px;
-	box-shadow: 0px 2px 4px #CACACA;
-	-webkit-box-shadow: 30px 50px 80px white,  -30px 50px 80px white, 0px 5px 20px #D2D2D2;
-	-moz-box-shadow:  30px 50px 80px white,  -30px 50px 80px white, 0px 5px 20px #D2D2D2;
-	background: -moz-linear-gradient(top, #F3F3F3 90%, white);
-	background: -webkit-gradient(linear, 0% 90%, 0% 100%, from(#F3F3F3), to(white));
+/*    background-color: rgba(255,255,255, 0.6);*/
+    padding: 0.5em;
 }
 
 #connect_form input
 {
-	font-size: 18px;
-	padding : 6px;
+    margin: 5px;
 }
-
-/*#connect_form input[type=submit] {
-	padding: 3em;
-	font-size: 1.4em;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	margin-top: 0.6em;
-	margin-bottom: 1em;
-}*/
-
-/*#connect_form input[type=text], #connect_form input[type=password] {
-	border-color: #D0D0D0;
-}
-
-#connect_form input[type=text]:focus, #connect_form input[type=password]:focus {
-	border: 1px solid #CACACA;
-	box-shadow: inset 0px 2px 4px #CACACA;
-}*/

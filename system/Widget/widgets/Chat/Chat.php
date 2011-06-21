@@ -52,8 +52,7 @@ class Chat extends WidgetBase
 
     function ajaxSendMessage($to, $message)
     {
-    	$user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance();
         $xmpp->sendMessage($to, $message);
         Logger::log(Logger::LOGLEVEL_STANDARD, "Sent '$message' to $to");
     }
