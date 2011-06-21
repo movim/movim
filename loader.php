@@ -32,6 +32,9 @@ require(LIB_PATH . "Tpl/TplPageBuilder.php");
 require(LIB_PATH . "Widget/WidgetBase.php");
 require(LIB_PATH . "Widget/WidgetWrapper.php");
 
+require(LIB_PATH . "Storage/loader.php");
+load_storage(array('sqlite'));
+
 // Starting session.
 Session::start(APP_NAME);
 
