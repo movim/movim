@@ -82,9 +82,9 @@ class StorageBase
      */
     public function save(StorageEngineBase &$storage)
     {
-        $ret = $storage->save($this);
+        $ret .= $this->walkchildren('save', $storage);
 
-        $ret .= $this->children->save($storage);
+        $ret = $storage->save($this);
 
         if(!$this->id) {
             $this->id = $ret;
@@ -129,6 +129,14 @@ class StorageBase
     protected function is_typed($object)
     {
         return StorageEngineBase::does_extend($object, "StorageTypeBase");
+    }
+
+    /**
+     * Is this a linked object?
+     */
+    protected function is_child($object)
+    {
+        return StorageEngineBase::does_extend($object, "StorageTypeForeignKey");
     }
 
     /**
@@ -216,6 +224,29 @@ class StorageBase
     protected function foreignkey($var, $class)
     {
         $this->$var = StorageType::foreignkey(get_class($this), $var, $class);
+    }
+
+    public function walkchildren($action)
+    {
+        $stmt = array();
+
+        // Are there extra args?
+        $args = array();
+        if(count(func_get_args()) > 2) {
+            $args = array_slice(func_get_args(), 2);
+        }
+
+        foreach($this as $propname => $propval) {
+            // Must be a storable property.
+            if($this->is_child($propval)) {
+                $stmt[] = array(
+                    'name' => $propname,
+                    'val' => $propval->apply($action, $args),
+                    );
+            }
+        }
+
+        return $stmt;
     }
 
     /**

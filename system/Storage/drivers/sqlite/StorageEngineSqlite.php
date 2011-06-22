@@ -161,7 +161,11 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
             $vals = "";
             foreach($props as $prop) {
                 $cols.= $prop['name'] . ', ';
-                $vals.= '"' . $prop['val'] . '", ';
+                if(StorageEngineBase::does_extend($prop['val'], "StorageBase")) {
+                    $vals.= '"' . $prop['val']->id . '", ';
+                } else {
+                    $vals.= '"' . $prop['val'] . '", ';
+                }
             }
 
             $stmt.= '(' . substr($cols, 0, -2) . ')';

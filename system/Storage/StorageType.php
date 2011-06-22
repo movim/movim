@@ -74,7 +74,7 @@ class StorageType
     {
         // Attaching to model.
         StorageSchema::register_child_class($mother, $child, $var);
-        return new StorageTypeForeignKey($mother, $var);
+        return new StorageTypeForeignKey($child);
     }
 }
 

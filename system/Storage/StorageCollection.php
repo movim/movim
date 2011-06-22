@@ -23,7 +23,7 @@ class StorageCollection
 {
     protected $objects = array();
     protected $mother;
-    
+
     public function __construct(&$mother)
     {
         $this->mother = $mother;
@@ -32,22 +32,22 @@ class StorageCollection
     public function load($id)
     {
         $children = StorageSchema::get_relations(get_class($this->mother));
-        
+
         foreach($children as $relation) {
             $this->objects[$rel['class']] =
                 $child_class::objects(array($rel['var'] => $id));
         }
     }
 
-    public function add($obj)
+    public function add(&$obj)
     {
         $children = StorageSchema::get_child_classes(get_class($this->mother));
 
         if(in_array(get_class($obj), $children)) {
-            $this->objects[get_class($obj)][] = $obj;
+            $this->objects[get_class($obj)][] = &$obj;
         }
 
-        $children = StorageSchema::get_relations(get_class($this->mother));
+        /*$children = StorageSchema::get_relations(get_class($this->mother));
 
         $var = "";
         foreach($children as $rel) {
@@ -59,23 +59,23 @@ class StorageCollection
 
         if($var != "") {
             $obj->$var = $this->mother->id;
-        }
+            }*/
 
         return $obj;
     }
 
     protected function walk_objects($func, array $args)
     {
-        $outp = "";
-        foreach($this->objects as $classname => $objects) {
+        $outp = array();
+        foreach($this->objects as $objects) {
             foreach($objects as $object) {
-                $outp .= call_user_func_array(array($object, $func), $args) . "\n";
+                $outp[] = call_user_func_array(array($object, $func), $args);
             }
         }
 
         return $outp;
     }
-    
+
     public function save()
     {
         return $this->walk_objects('save', func_get_args());

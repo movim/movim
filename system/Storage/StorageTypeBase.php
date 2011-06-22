@@ -35,7 +35,7 @@ class StorageTypeBase
     {
         $this->params = func_get_args();
     }
-    
+
     /**
      * Extend to check input types.
      */
@@ -68,6 +68,11 @@ class StorageTypeBase
     {
         return $this;
     }
+
+    public function apply($func, $args)
+    {
+        return call_user_func(array($this->val, $func), $args);
+    }
 }
 
 class StorageTypeBigInt extends StorageTypeBase
@@ -85,7 +90,7 @@ class StorageTypeBool extends StorageTypeBase
 class StorageTypeVarChar extends StorageTypeBase
 {
     public $length;
-    
+
     function __construct($length)
     {
         $this->length = $length;
@@ -104,7 +109,7 @@ class StorageTypeDecimal extends StorageTypeBase
 {
     public $length;
     public $decimal_places;
-    
+
     function __construct($length, $decimal_places)
     {
         $this->length = $length;
