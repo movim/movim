@@ -156,8 +156,7 @@ class Friends extends WidgetBase
 
 	function ajaxRefreshRoster()
 	{
-		$user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance();
 		$xmpp->getRosterList();
 	}
 
@@ -166,7 +165,7 @@ class Friends extends WidgetBase
         ?>
         <div id="friends">
           <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
-          <!--<h3><?php echo t('Contacts');?></h3>-->
+          <h3><?php echo t('Contacts');?></h3>
 
           <div id="tinylist">
           	<?php echo $this->prepareRoster(Cache::c('roster')); ?>

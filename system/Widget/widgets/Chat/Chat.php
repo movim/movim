@@ -5,7 +5,7 @@
  *
  * @file Chat.php
  * This file is part of MOVIM.
- *
+ * 
  * @brief A jabber chat widget.
  *
  * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
@@ -14,7 +14,7 @@
  * @date 20 October 2010
  *
  * Copyright (C)2010 MOVIM project
- *
+ * 
  * See COPYING for licensing information.
  */
 
@@ -27,11 +27,11 @@ class Chat extends WidgetBase
 		$this->registerEvent('incomemessage', 'onMessage');
 		$this->registerEvent('incomecomposing', 'onComposing');
 		$this->registerEvent('incomepaused', 'onPaused');
-
+		
 	    if(Cache::c('activechat') == false)
 	        Cache::c('activechat', array());
 	}
-
+	
 	function ajaxOpenTalk($jid) {
 	    $talks = Cache::c('activechat');
 	    if(!array_key_exists($jid, $talks)) {
@@ -43,20 +43,19 @@ class Chat extends WidgetBase
             RPC::commit();
         }
 	}
-
+	
 	function ajaxCloseTalk($jid) {
 	    $talks = Cache::c('activechat');
 	    unset($talks[$jid]);
 	    Cache::c('activechat', $talks);
 	}
-
+	
     function ajaxSendMessage($to, $message)
     {
 		$xmpp = Jabber::getInstance();
         $xmpp->sendMessage($to, $message);
-        Logger::log(Logger::LOGLEVEL_STANDARD, "Sent '$message' to $to");
     }
-
+	
 	function onMessage($data)
 	{
 	    $talks = Cache::c('activechat');
@@ -69,7 +68,7 @@ class Chat extends WidgetBase
 	        $talks[$jid] = true;
 	        Cache::c('activechat', $talks);
 	    }
-
+	    
         RPC::call('movim_fill',
                        $jid.'Tab',
                        RPC::cdata($jid));
@@ -78,7 +77,7 @@ class Chat extends WidgetBase
                        $jid.'Messages',
                        RPC::cdata('<p class="message"><span class="date">'.date('G:i', time()).'</span>'.htmlentities($data['body'], ENT_COMPAT, "UTF-8").'</p>'));
 	}
-
+	
 	function onComposing($data)
 	{
 		list($jid) = explode('/', $data['from']);
@@ -86,7 +85,7 @@ class Chat extends WidgetBase
                        $jid.'Tab',
                       t('Composing'));
 	}
-
+	
 	function onPaused($data)
 	{
 		list($jid) = explode('/', $data['from']);
@@ -94,9 +93,9 @@ class Chat extends WidgetBase
                        $jid.'Tab',
                        t('Paused'));
 	}
-
+	
 	public function prepareTalk($jid, $new = false) {
-
+	
 	    if($new)
 	        $style = ' style="display: block" ';
 	    else
@@ -107,7 +106,7 @@ class Chat extends WidgetBase
                 <div class="messages" id="'.$jid.'Messages"></div>
                 <input type="text" class="input" value="'.t('Message').'" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$jid."'", "sendMessage(this, '".$jid."')").'}"/>
                 </div>
-
+                
                 <span class="tab" id="'.$jid.'Tab" onclick="showTalk(this);">'.$jid.'</span>
                 <span class="cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$jid."'").' closeTalk(this)"></span>
             </div>
@@ -119,7 +118,7 @@ class Chat extends WidgetBase
 	    $talks = Cache::c('activechat');
 		?>
 		    <div id="talks">
-		        <?php foreach($talks as $key => $value){
+		        <?php foreach($talks as $key => $value){ 
 		            echo $this->prepareTalk($key);
 		        } ?>
 		    </div>

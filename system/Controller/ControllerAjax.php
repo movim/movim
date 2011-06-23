@@ -3,7 +3,7 @@
 /**
  * @file ControllerAjax.php
  * This file is part of PROJECT.
- *
+ * 
  * @brief Description
  *
  * @author Guillaume Pasquet <email@addre.ss>
@@ -12,14 +12,13 @@
  * @date  8 November 2010
  *
  * Copyright (C)2010 PROPRIETOR
- *
+ * 
  * OTHER T&C IF ANY
  */
 
 class ControllerAjax extends ControllerBase
 {
 	protected $funclist = array();
-    protected $handlerlist = array();
 	protected static $instance;
 
 	public function __construct()
@@ -43,7 +42,7 @@ class ControllerAjax extends ControllerBase
 		if(empty($this->funclist)) {
 			return '';
 		}
-
+		
 		$buffer = '<script type="text/javascript">';
 		foreach($this->funclist as $funcdef) {
 			$parlist = implode(', ', $funcdef['params']);
@@ -53,9 +52,6 @@ class ControllerAjax extends ControllerBase
 			$buffer .= "movim_ajaxSend('".$funcdef['object']."', '".$funcdef['funcname']."', [${parlist}]);}\n";
 
 		}
-        foreach($this->handlerlist as $handler) {
-            $buffer .= "movim_add_event_handler('".$handler['event']."', ".$handler['handler'].");\n";
-        }
 		return $buffer . "</script>\n";
 	}
 
@@ -70,19 +66,6 @@ class ControllerAjax extends ControllerBase
 			'params' => $params,
 			);
 	}
-
-    /**
-     * Defines and declares a javascript event handler.
-     */
-    public function defHandler($event, $widget, $funcname)
-    {
-        //$this->defun($widget, $funcname, array());
-
-        $this->handlerlist[] = array(
-            'event' => $event,
-            'handler' => $widget.'_'.$funcname,
-            );
-    }
 }
 
 ?>

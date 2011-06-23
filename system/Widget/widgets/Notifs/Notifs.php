@@ -38,16 +38,20 @@ class Notifs extends WidgetBase
             <li>
                 '.$payload['from'].' '.t('wants to talk with you'). ' <br />
    	            <input id="notifsalias" class="tiny" value="'.$payload['from'].'" onfocus="myFocus(this);" onblur="myBlur(this);"/>
-   	            <a href="#" onclick="showAlias(this);">'.t("Accept").'</a>
+   	            <a href="#" onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$payload['from']."'").' showAlias(this);">'.t("Accept").'</a>
    	            <a href="#" id="notifsvalidate" onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['from']."'", "getAlias()").' hideNotification(this);">'.t("Validate").'</a>
    	            <a href="#" onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['from']."'").' hideNotification(this);">'.t("Decline").'</a>
-   	            <div class="clear"></div>
    	        </li>';
    	    $notifs['sub'.$payload['from']] = $html;
    	    
         RPC::call('movim_prepend', 'notifslist', RPC::cdata($html));
         
 	    Cache::c('activenotifs', $notifs);
+    }
+    
+    function ajaxSubscribed($jid) {
+		$xmpp = Jabber::getInstance();
+        $xmpp->subscribedContact($jid);
     }
     
     function ajaxRefuse($jid) {
@@ -62,12 +66,17 @@ class Notifs extends WidgetBase
     
     function ajaxAccept($jid, $alias) {
 		$xmpp = Jabber::getInstance();
-        $xmpp->addContact($jid, false, $alias);
+        $xmpp->acceptContact($jid, false, $alias);
         
    	    $notifs = Cache::c('activenotifs');
    	    unset($notifs['sub'.$jid]);
    	    
 	    Cache::c('activenotifs', $notifs);
+    }
+    
+    function ajaxAddContact($jid, $alias) {
+		$xmpp = Jabber::getInstance();
+        $xmpp->addContact($jid, false, $alias);
     }
     
     function build() {  
@@ -81,6 +90,12 @@ class Notifs extends WidgetBase
                     echo $value;
             }
             ?>
+            <li>
+                <input id="addjid" class="tiny" value="user@server.tld" onfocus="myFocus(this);" onblur="myBlur(this);"/>
+                <input id="addalias" class="tiny" value="<?php echo t('Alias'); ?>" onfocus="myFocus(this);" onblur="myBlur(this);"/>
+                <a href="#" id="addvalidate" onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>"><?php echo t('Validate'); ?></a>
+                <a href="#" onclick="addJid(this);"><?php echo t('Add a contact'); ?></a>
+            </li>
         </ul>
     </div>
     <?php    

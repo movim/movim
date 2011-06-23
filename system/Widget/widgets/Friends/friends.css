@@ -4,6 +4,7 @@
 }
 
 #tinylist ul {
+    padding-top: 7px;
     margin: -5px;
     width: 100%;
 }

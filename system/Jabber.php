@@ -198,7 +198,6 @@ class Jabber
 	 */
 	public function pingServer()
 	{
-        Logger::log(Logger::LOGLEVEL_FINER, "Pinging server");
         $this->jaxl->JAXL0206('ping');
 	}
 
@@ -227,8 +226,12 @@ class Jabber
 				$evt->runEvent('vcardreceived', $payload);
 			}
 		} elseif($payload['queryXmlns'] == "jabber:iq:roster") {
-			Cache::c("roster", $payload);
-            $evt->runEvent('rosterreceived', $payload);
+		    if($payload['type'] == "result") {
+			    Cache::c("roster", $payload);
+                $evt->runEvent('rosterreceived', $payload);
+            } elseif($payload['type'] == "set") {
+                $this->getRosterList();
+            }
 		} else {
             $evt->runEvent('none', var_export($payload, true));
         }
@@ -400,14 +403,30 @@ class Jabber
 			throw new MovimException("Incorrect JID `$addressee'");
 		}
 	}
+	
+	public function subscribedContact($jid) {
+		if($this->checkJid($jid)) {
+			$this->jaxl->subscribed($jid);
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
+	}
 
 	/**
 	 * Adds a contact to the roster.
 	 */
-	public function addContact($jid, $group, $alias)
+	public function acceptContact($jid, $group, $alias)
 	{
-        Logger::log(Logger::LOGLEVEL_STANDARD, "Adding contact '$alias' ('$jid') to the roster");
-        if($this->checkJid($jid)) {
+		if($this->checkJid($jid)) {
+			$this->jaxl->addRoster($jid, $group, $alias);
+			$this->jaxl->subscribe($jid);
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
+	}
+	
+	public function addContact($jid, $group, $alias) {
+		if($this->checkJid($jid)) {
 			$this->jaxl->subscribe($jid);
 			$this->jaxl->addRoster($jid, $group, $alias);
 		} else {
