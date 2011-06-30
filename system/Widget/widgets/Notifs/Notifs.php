@@ -81,6 +81,8 @@ class Notifs extends WidgetBase
     
     function build() {  
     $notifs = Cache::c('activenotifs');
+    if($notifs == false)
+        $notifs = array();
     ?>
     <div id="notifs">
         <ul id="notifslist">

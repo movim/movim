@@ -264,3 +264,15 @@ label {
     background-image: url(../img/config_on.png);
     cursor: pointer;
 }
+
+/* Refresh button */
+
+.refresh {
+    background-image: url(../img/refresh.png);
+    background-repeat: no-repeat;
+    width: 90%;
+    background-position: center;
+    text-align: center;
+    padding: 3px;
+    cursor: pointer;
+}

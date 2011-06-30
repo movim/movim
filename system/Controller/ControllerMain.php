@@ -101,7 +101,7 @@ class ControllerMain extends ControllerBase
 
 	function account()
 	{
-		if(GetConf::getServerConfElement("accountCreation") == 1) {
+		if(Conf::getServerConfElement("accountCreation") == 1) {
 			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
 			//$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);

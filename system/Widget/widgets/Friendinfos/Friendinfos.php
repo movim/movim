@@ -36,8 +36,10 @@ class Friendinfos extends WidgetBase
         //var_dump($vcard);
 		$cleanurl = array("http://", "https://");
 
-        $html = '<img alt="' . t("Your avatar") . '" src="data:'.
-            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
+        if($vcard != false) {
+            $html = '<img alt="' . t("Your avatar") . '" src="data:'.
+                $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
+        }
             
         $name = $vcard['vCardFN'].' '.$vcard['vCardFamily'];
         if($name == " ")
@@ -53,9 +55,13 @@ class Friendinfos extends WidgetBase
         );
         
         $html .= '<ul id="infosbox">';
-        foreach($vcard as $key => $value) {
-            if(array_key_exists($key, $val) && $value != '')
-                $html .= '<li><span>'.$val[$key] . '</span>' .$value.'</li>';
+        if($vcard != false) {
+            foreach($vcard as $key => $value) {
+                if(array_key_exists($key, $val) && $value != '')
+                    $html .= '<li><span>'.$val[$key] . '</span>' .$value.'</li>';
+            }
+        } else {
+            $html .= '<div onclick="'.$this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'").'" class="refresh">'.t('Refresh the data').'</div>';
         }
         $html .= '</ul>';
         /*$html = '<img alt="' . t("Your avatar") . '" src="data:'.
