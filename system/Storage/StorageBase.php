@@ -67,63 +67,6 @@ class StorageBase
     }
 
     /**
-     * Creates the storage associated with the object e.g. a SQL table.
-     */
-    public function create(StorageEngineBase &$storage)
-    {
-        // Propagating the creation order to linked objects FIRST!!!
-        $children = StorageSchema::cascade_create($storage, get_class($this));
-
-        $storage->create_storage($this);
-    }
-
-    /**
-     * Saves the class into the chosen container driver.
-     */
-    public function save(StorageEngineBase &$storage)
-    {
-        $ret .= $this->walkchildren('save', $storage);
-
-        $ret = $storage->save($this);
-
-        if(!$this->id) {
-            $this->id = $ret;
-        }
-
-        return $ret;
-    }
-
-    /**
-     * Deletes this object from the storage.
-     */
-    public function delete(StorageEngineBase &$storage)
-    {
-        $ret = $storage->delete($this);
-
-        // Deleting in cascade.
-        $ret .= $this->children->delete();
-
-        // Resetting id.
-        $this->id = false;
-
-        return $ret;
-    }
-
-    /**
-     * Deletes associated storage.
-     */
-    public function drop(StorageEngineBase &$storage)
-    {
-        $ret = $storage->drop($this);
-
-        StorageSchema::cascade_drop($storage, get_class($this));
-
-        $this->id = false;
-
-        return $ret;
-    }
-
-    /**
      * Determines if the given object extends StorageTypeBase.
      */
     protected function is_typed($object)
@@ -137,69 +80,6 @@ class StorageBase
     protected function is_child($object)
     {
         return StorageEngineBase::does_extend($object, "StorageTypeForeignKey");
-    }
-
-    /**
-     * Loads up the object.
-     */
-    public function load(StorageEngineBase &$storage, array $cond)
-    {
-        $data = $storage->select($this, $cond);
-
-
-        // OK now let's populate our properties.
-        if(is_array($data[0]) && count($data[0]) > 0) {
-            foreach($data[0] as $name => $value) {
-                if($name != "id" && !isset($this->$name)) {
-                    continue;
-                }
-                else if($name == "id") {
-                    $this->id = $value;
-                }
-                else {
-                    $this->$name->setval($value);
-                }
-            }
-        }
-
-        // Loading the children.
-        $this->children->load($this->id);
-
-        return true;
-    }
-
-    /**
-     * Fetches all objects of this type.
-     */
-    public static function objects(StorageEngineBase &$storage, array $cond = array())
-    {
-        $classname = __CLASS__;
-        $data = null;
-        if(is_object($this)) {
-            $data = $storage->select($this, $cond);
-        } else {
-            $data = $storage->select(new $classname(), $cond);
-        }
-
-        // We instanciate an object per row.
-        $objects = array();
-        foreach($data as $obj_dat) {
-            $obj = new $classname();
-            foreach($data as $name => $value) {
-                if($name != "id" && !isset($this->$name)) {
-                    continue;
-                }
-                else if($name == "id") {
-                    $obj->id = $value;
-                }
-                else {
-                    $obj->$name->setval($value);
-                }
-            }
-            $objects[$obj->id] = $obj;
-        }
-
-        return $objects;
     }
 
     /**
@@ -226,7 +106,7 @@ class StorageBase
         $this->$var = StorageType::foreignkey(get_class($this), $var, $class);
     }
 
-    public function walkchildren($action)
+    public function cascade($action)
     {
         $stmt = array();
 
@@ -250,15 +130,11 @@ class StorageBase
     }
 
     /**
-     * executes the given action on all props derived from StorageTypeBase.
-     *
-     * Extra parameters are passed on to the called method.
-     *
-     *   walkprops($action, ...)
+     * Returns the object's prototype.
      */
-    public function walkprops($action)
+    public function prototype()
     {
-        $stmt = array();
+        $proto = array();
 
         // Are there extra args?
         $args = array();
@@ -266,18 +142,17 @@ class StorageBase
             $args = array_slice(func_get_args(), 2);
         }
 
-        foreach($this as $propname => $propval) {
+        foreach($this as $propname => $prop) {
             // Must be a storable property.
-            if($this->is_typed($propval)) {
-                $stmt[] = array(
+            if($this->is_typed($prop)) {
+                $proto[] = array(
                     'name' => $propname,
-                    'val' => call_user_func_array(
-                        array($propval, $action),
-                        $args));
+                    'val'  => $prop,
+                    );
             }
         }
 
-        return $stmt;
+        return $proto;
     }
 }
 

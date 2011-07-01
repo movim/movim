@@ -128,15 +128,15 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         return $def;
     }
 
-    public function create_storage($object)
+    public function create(&$object)
     {
         $this->require_storage($object);
 
-        $props = $object->walkprops("getme");
+        $proto = $object->prototype();
 
-        $stmt = 'CREATE TABLE IF NOT EXISTS "'.$this->getObjName($object).'" ('.
+        $stmt = 'CREATE TABLE IF NOT EXISTS "'.$this->obj_name($object).'" ('.
             '"id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ';
-        foreach($props as $prop) {
+        foreach($proto as $prop) {
             $stmt .= $this->create_stmt($prop) . ', ';
         }
 
@@ -146,16 +146,16 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         return $this->query($stmt);
     }
 
-    public function save($object)
+    public function save(&$object)
     {
         $this->require_storage($object);
 
         $stmt = "";
 
-        $props = $object->walkprops("getval");
+        $props = $object->prototype();
 
         if(!$object->id) {
-            $stmt = "INSERT INTO " . $this->getObjName($object);
+            $stmt = "INSERT INTO " . $this->obj_name($object);
 
             $cols = "";
             $vals = "";
@@ -164,7 +164,7 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
                 if(StorageEngineBase::does_extend($prop['val'], "StorageBase")) {
                     $vals.= '"' . $prop['val']->id . '", ';
                 } else {
-                    $vals.= '"' . $prop['val'] . '", ';
+                    $vals.= '"' . $prop['val']->getval() . '", ';
                 }
             }
 
@@ -174,7 +174,7 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
             $this->query($stmt);
             return $this->lastId();
         } else {
-            $stmt = "UPDATE " . $this->getObjName($object) . " SET ";
+            $stmt = "UPDATE " . $this->obj_name($object) . " SET ";
 
             foreach($props as $prop) {
                 $stmt.= $prop['name'] . '="' . $prop['val'] . '", ';
@@ -186,23 +186,23 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         }
     }
 
-    public function delete($object)
+    public function delete(&$object)
     {
         $this->require_storage($object);
 
         // Does the object exist in the storage?
         if($object->id) {
-            $stmt = "DELETE FROM " . $this->getObjName($object) . " WHERE id=\"" . $object->id . "\";";
+            $stmt = "DELETE FROM " . $this->obj_name($object) . " WHERE id=\"" . $object->id . "\";";
 
             return $this->query($stmt);
         }
     }
 
-    public function drop($object)
+    public function drop(&$object)
     {
         $this->require_storage($object);
 
-        $stmt = 'DROP TABLE IF EXISTS '.$this->getObjName($object).';';
+        $stmt = 'DROP TABLE IF EXISTS '.$this->obj_name($object).';';
 
         return $this->query($stmt);
     }
@@ -210,9 +210,9 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
     /**
      * Returns data relative to an object as an array.
      */
-    public function select($object, array $cond)
+    public function select(&$object, array $cond)
     {
-        $stmt = "SELECT * FROM " . $this->getObjName($object);
+        $stmt = "SELECT * FROM " . $this->obj_name($object);
 
         if(count($cond) > 1) {
             $where . " WHERE ";
@@ -227,7 +227,17 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
 
         $this->log($stmt);
 
-        return $this->query($stmt);
+        $data = $this->query($stmt);
+        $data = $data[0];
+
+        // Populating the object.
+        $props = $object->prototype();
+
+        foreach($props as $prop) {
+            if(isset($data[$prop['name']])) {
+                $object->__set($prop['name'], $data[$prop['name']]);
+            }
+        }
     }
 }
 

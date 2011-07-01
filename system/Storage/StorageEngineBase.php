@@ -21,35 +21,35 @@ class StorageEngineBase implements StorageDriver
     /**
      * Creates the storage object (table) associated to the object.
      */
-    public function create_storage($object)
+    public function create(&$object)
     {
     }
 
     /**
      * Saves the object into its storage.
      */
-    public function save($object)
+    public function save(&$object)
     {
     }
 
     /**
      * Deletes the object from its storage.
      */
-    public function delete($object)
+    public function delete(&$object)
     {
     }
 
     /**
      * Loads up the data corresponding to the object in the storage.
      */
-    public function select($object, array $cond)
+    public function select(&$object, array $cond)
     {
     }
 
     /**
      * Deletes the storage associated to the object.
      */
-    public function drop($object)
+    public function drop(&$object)
     {
     }
 
@@ -119,7 +119,7 @@ class StorageEngineBase implements StorageDriver
     /**
      * Convenience helper that wraps a reflection class call.
      */
-    protected function getObjName($object)
+    protected function obj_name($object)
     {
         $refl = new ReflectionClass($object);
         return $refl->getName();

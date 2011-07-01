@@ -2,18 +2,18 @@
 
 /**
  * @file TestStorage.php
- * This file is part of PROJECT.
+ * This file is part of Movim.
  *
- * @brief Description
+ * @brief Tests the Storage module.
  *
- * @author Guillaume Pasquet <gpasquet@lewisday.co.uk>
+ * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
  *
  * @version 1.0
  * @date 27 April 2011
  *
- * Copyright (C)2011 Lewis Day Transport Plc.
+ * Copyright (C)2011 Movim Project.
  *
- * All rights reserved.
+ * %license%
  */
 define('DB_DEBUG', true);
 define('DB_LOGFILE', 'queries.log');
@@ -71,7 +71,7 @@ class TestStorage
     function testCreate()
     {
         $test = new Account();
-        $test->create($this->sdb);
+        $this->sdb->create($test);
         unset($test);
 
         $numtables = $this->db->querySingle(
@@ -84,7 +84,7 @@ class TestStorage
         $account = new Account();
         $account->balance = 100;
         $account->interest = 0.025;
-        $account->save($this->sdb);
+        $this->sdb->save($account);
 
         $count = $this->db->querySingle(
             'SELECT count(*) as count FROM Account '.
@@ -95,16 +95,12 @@ class TestStorage
     function testLoad()
     {
         $account = new Account();
-        $account->load($this->sdb, array("id" => 1));
-        ut_equals($account->balance, 100);
-        ut_equals($account->interest, 0.025);
-
-        $account = new Account($this->sdb, 1);
+        $this->sdb->select($account, array('id' => 1));
         ut_equals($account->balance, 100);
         ut_equals($account->interest, 0.025);
     }
 
-    function testCreateLinked()
+    function _testCreateLinked()
     {
         $this->_wipe();
 
