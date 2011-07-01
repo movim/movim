@@ -154,6 +154,27 @@ class StorageBase
 
         return $proto;
     }
+
+    /**
+     * Sets the object's ID.
+     */
+    function setid($id)
+    {
+        if($this->id !== false) {
+            throw new StorageException(t("Attempting to set the id of an existing object."));
+        } else {
+            $this->id = $id;
+            return $this->id;
+        }
+    }
+
+    /**
+     * Unsets the object's ID.
+     */
+    function clearid()
+    {
+        $this->id = false;
+    }
 }
 
 ?>

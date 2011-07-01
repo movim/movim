@@ -100,6 +100,49 @@ class TestStorage
         ut_equals($account->interest, 0.025);
     }
 
+    function testDelete()
+    {
+        $account = new Account();
+        $account->balance = 200;
+        $account->interest = 0.020;
+        $this->sdb->save($account);
+
+        $count = $this->db->querySingle(
+            'SELECT count(*) as count FROM Account '.
+            'WHERE balance="200" AND interest="0.020"');
+        ut_equals($count, 1);
+
+        $this->sdb->delete($account);
+
+        $count = $this->db->querySingle(
+            'SELECT count(*) as count FROM Account '.
+            'WHERE balance="200" AND interest="0.020"');
+        ut_equals($count, 0);
+
+        ut_nassert($account->id);
+    }
+
+    function testDrop()
+    {
+        $numtables = $this->db->querySingle(
+            'SELECT count(name) as count FROM sqlite_master WHERE type="table" AND name="Account"');
+        ut_equals($numtables, 1);
+
+        $account = new Account();
+        $account->balance = 200;
+        $account->interest = 0.020;
+        $this->sdb->save($account);
+        ut_differs($account->id, false);
+        
+        $this->sdb->drop($account);
+
+        $numtables = $this->db->querySingle(
+            'SELECT count(name) as count FROM sqlite_master WHERE type="table" AND name="Account"');
+        ut_equals($numtables, 0);
+
+        ut_nassert($account->id);
+    }
+
     function _testCreateLinked()
     {
         $this->_wipe();

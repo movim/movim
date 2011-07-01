@@ -172,7 +172,7 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
             $stmt.= ' VALUES(' . substr($vals, 0, -2) . ');';
 
             $this->query($stmt);
-            return $this->lastId();
+            $object->setid($this->lastId());
         } else {
             $stmt = "UPDATE " . $this->obj_name($object) . " SET ";
 
@@ -194,7 +194,13 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         if($object->id) {
             $stmt = "DELETE FROM " . $this->obj_name($object) . " WHERE id=\"" . $object->id . "\";";
 
-            return $this->query($stmt);
+            $result = $this->query($stmt);
+            
+            if($result) {
+                $object->clearid();
+            }
+            
+            return $result;
         }
     }
 
@@ -204,7 +210,13 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
 
         $stmt = 'DROP TABLE IF EXISTS '.$this->obj_name($object).';';
 
-        return $this->query($stmt);
+        $result = $this->query($stmt);
+
+        if($result) {
+            $object->clearid();
+        }
+        
+        return $result;
     }
 
     /**
