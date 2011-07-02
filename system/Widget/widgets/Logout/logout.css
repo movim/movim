@@ -8,6 +8,7 @@
 	cursor: pointer;
     color: white;
     font-size: 11px;
+    z-index: 2;
 }
 
 #logout:hover {

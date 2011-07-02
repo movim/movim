@@ -1,50 +1,64 @@
-#profile {
-	margin: 5px;
-    padding-bottom: 35px;
+#profile #profileavatar {
+    width: 170px;
+    height: 100%;
+    padding: 0 20px;
+    float: left;
 }
 
-#profile img {
-    height: 40px;
+#profile #profiledescription {
+    margin-top: 5px;
+    font-style: italic;
+    max-width: 60%;
+    text-align: justify;
+    display: block;
+    min-height: 40px;
+    background-image: url(img/say.png);
+    background-repeat: no-repeat;
+    padding-left: 15px;
+    background-position: 0px 5px;
+    margin-left: 200px;
 }
 
-#profile #myinfos {
-	float: right;
-	width: 124px;
+#profile #profiledescription p {
+    background-color: white;
+    padding: 1em;
+    max-height: 4em;
 }
 
-#profile #desc {
-    font-size: 10px;
-    padding: 5px 0px;
+#profile #profileavatar img {
+    margin: 0 auto;
+    float: right;
+    height: 100px;
 }
 
-#profile input#statusText {
+#profile #profilestatustext {
 	width: 95%;
-    font-size: 10px;
-	border-radius: 0px;
-	-moz-border-radius: 0px;
+    border: 1px solid transparent;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	margin: 0px;
-	width: 150px;
-	float: left;
+	height: 2em;
+}
+
+#profile input#statusText:hover {
+    border: 1px solid #DDD;
 }
 
 #profile #presencebutton {
-    width: 11px;
-    height: 12px;
-    padding: 5px;
-    padding-top: 4px;
-    padding-bottom: 6px;
+    display: inline;
+    width: 180px;
+    padding: 3px;
     float: right;
+    border: 1px solid transparent;
 }
 
 #profile #presencebutton:hover {
     cursor: pointer;
+    border: 1px solid #DDD;
 }
 
 #profile #presencebutton img {
-    margin-left: 1px;
-    margin-top: -4px;
+    margin: 0px 4px;
     width: 10px;
     height: 10px;
 }
@@ -54,16 +68,18 @@
     color: white;
     list-style-type: none;
     padding: 0px;
-    width: 180px;
+    width: 186px;
     overflow: hidden;
-    position: absolute;
     margin: 0px;
-    margin-top: 22px;
+    float: right;
+    margin-top: 23px;
+    margin-right: -188px;
+    border: 1px solid #DDD;
+    border-top: none;
     display: none;
 }
 
 #profile #presencelist li {
-    font-size: 11px;
     padding: 3px;
     width: auto;
 }
@@ -79,4 +95,16 @@
     margin-left: 2px;
     width: 10px;
     height: 10px;
+}
+
+#profile h2 {
+    font-size: 20px;
+    color: #444;
+    font-weight: normal;
+    display: inline;
+}
+
+#profile .config_button {
+    float: left;
+    position: absolute;
 }

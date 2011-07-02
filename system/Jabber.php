@@ -434,6 +434,15 @@ class Jabber
 		}
 	}
 	
+	public function removeContact($jid) {
+		if($this->checkJid($jid)) {
+			$this->jaxl->deleteRoster($jid);
+			$this->jaxl->unsubscribe($jid);
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
+	}
+	
 	public function unsubscribed($jid) {
 		$this->jaxl->unsubscribed($jid);
 	}

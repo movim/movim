@@ -15,9 +15,11 @@ function showPresence(n) {
     if(list.style.display == "block") {
         list.style.display = "none";
         n.style.backgroundColor = "transparent";
+        n.style.color = "#4E4E4E";
     } else {
         list.style.display = "block";
         n.style.backgroundColor = "#444";
+        n.style.color = "white";
     }
 }
 

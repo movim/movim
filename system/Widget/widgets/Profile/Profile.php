@@ -36,11 +36,11 @@ class Profile extends WidgetBase
     }
     
     function prepareVcard($vcard) {
-        $html = '<img alt="' . t("Your avatar") . '" src="data:'.
-            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
+        $html = '<div id="profileavatar"><img alt="' . t("Your avatar") . '" src="data:'.
+            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" /></div>'
             
-            .'<div id="myinfos">'.$vcard['vCardFN'].'<br />'.$vcard['vCardFamily'].'</div>'
-            .'<div id="desc">'.$vcard['vCardDesc'].'</div>'
+            .'<h2>'.$vcard['vCardFN'].'<br />'.$vcard['vCardFamily'].'</h2>'
+#            .'<div id="desc">'.$vcard['vCardDesc'].'</div>'
             ;
         return $html;
     }
@@ -99,19 +99,8 @@ class Profile extends WidgetBase
             : $user->getLogin();
         ?>
 		<div id="profile">
-			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshMyVcard');?>"></div>
-			<div id="avatar">
-				<?php echo $this->prepareVcard(Cache::c('myvcard')); ?>
-			</div>
-			<input 
-				type="text" 
-				id="statusText" 
-				class="tiny"
-				value="<?php echo $status; ?>" 
-				onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSetStatus', "getStatusText()", "getStatusShow()");?>}"
-			/>
 			<div id="presencebutton" onclick="showPresence(this);">
-			    <img id="presenceimage" class="<?php echo $array[$mypresence][0]; ?>" src="<?php echo $this->respath('img/'.$array[$mypresence][0].'.png'); ?>">
+			    <img id="presenceimage" class="<?php echo $array[$mypresence][0]; ?>" src="<?php echo $this->respath('img/'.$array[$mypresence][0].'.png'); ?>"><?php echo $array[$mypresence][1]; ?>
 			</div>
 			
 			<ul id="presencelist">
@@ -122,6 +111,21 @@ class Profile extends WidgetBase
 			         </li>
 			    <?php } ?>
 			</ul>
+		
+			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshMyVcard');?>"></div>
+			<?php echo $this->prepareVcard(Cache::c('myvcard')); ?>
+				
+			
+			<div id="profiledescription">
+			    <p>
+			        <input 
+				        type="text" 
+				        id="profilestatustext" 
+				        value="<?php echo $status; ?>" 
+				        onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSetStatus', "getStatusText()", "getStatusShow()");?>}"
+			        />
+			    </p>
+			</div>
 		</div>
         <?php
     }

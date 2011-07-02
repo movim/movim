@@ -1,23 +1,29 @@
 #friends {
-    margin: 5px;
+/*    margin: 5px;*/
     clear: both;
+/*    padding-bottom: 5px;*/
+    padding-right: 5px;
 }
 
 #tinylist ul {
-    padding-top: 7px;
-    margin: -5px;
-    width: 100%;
+/*    padding: 10px 0px;*/
+/*    padding-bottom: 10px;*/
+/*    margin: -5px;*/
+/*    width: 95%;*/
 }
 
 #tinylist ul li {
 	cursor: pointer;
 	overflow: hidden;
-    padding: 5px;
-    border-top: 1px solid white;
-    border-bottom: 1px solid #DDD;
+/*    padding: 5px;*/
+/*    border-top: 1px solid white;*/
+/*    border-bottom: 1px solid #DDD;*/
+/*    margin: 4px 0px;*/
     border-left: 2px solid gray;
-    width: 100%;
-    padding-right: 2px;
+/*    width: 100%;*/
+/*    padding-right: 2px;*/
+    margin: 5px 0px;
+    padding: 5px;
     max-height: 30px;
 }
 

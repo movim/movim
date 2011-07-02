@@ -53,6 +53,7 @@
     border-bottom: 1px solid #EEE;
     padding: 3px;
     max-width: 100%;
+    min-height: 15px;
 }
 
 .talk .box .info {

@@ -33,26 +33,30 @@ class Friendinfos extends WidgetBase
     }
     
     function prepareInfos($vcard) {
-        //var_dump($vcard);
-		$cleanurl = array("http://", "https://");
-
-        if($vcard != false) {
-            $html = '<img alt="' . t("Your avatar") . '" src="data:'.
-                $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
-        }
+    		
+		$html = '<div id="friendavatar">';
+            if($vcard != false) {
+                $html .= '<img alt="' . t("Your avatar") . '" src="data:'.
+                    $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
+            }
+        $html .= '</div>';
+        
+        // coucou les gehs c'est kro bien comme truc!! isous doux a toi petit ahge
             
         $name = $vcard['vCardFN'].' '.$vcard['vCardFamily'];
         if($name == " ")
             $name = $vcard['vCardNickname'];
         if($name == "")
             $name = $vcard['vCardNGiven'];
+        if($name == "")
+            $name = $vcard['from'];
         $html .= '<h2 title="'.$vcard['from'].'">'.$name.'</h2>';
         
         $val = array(
             'vCardUrl' => t('Website'),
-            'vCardDesc' => t('About me'),
+            //'vCardDesc' => t('About me'),
             'vCardBDay' => t('Date of birth')
-        );
+        );    
         
         $html .= '<ul id="infosbox">';
         if($vcard != false) {
@@ -64,6 +68,18 @@ class Friendinfos extends WidgetBase
             $html .= '<div onclick="'.$this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'").'" class="refresh">'.t('Refresh the data').'</div>';
         }
         $html .= '</ul>';
+        
+        $session = Session::start(APP_NAME);
+        $presences = $session->get('presences');
+        
+	    $status = ($presences[$vcard['from']]['status'] != "") 
+	        ? $presences[$vcard['from']]['status'] 
+	        : t('Hye, I\'m on Movim !');
+        
+            $html .= '<div id="frienddescription"><p>'.$status.'</p></div>';
+        
+        
+
         /*$html = '<img alt="' . t("Your avatar") . '" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
             .'<ul id="infosbox">'
@@ -83,7 +99,12 @@ class Friendinfos extends WidgetBase
 		$user = new User();
 		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->getVCard($jid); // We send the vCard request
-	} 
+	}
+	
+    function ajaxRemoveContact($jid) {
+		$xmpp = Jabber::getInstance();
+        $xmpp->removeContact($jid);
+    } 
     
     function build()
     {
@@ -96,7 +117,9 @@ class Friendinfos extends WidgetBase
 						echo $this->prepareInfos(Cache::c('vcard'.$_GET['f']));
 					
 				?>
+                <a class="button tiny" href="#" id="friendremove" onclick="<?php $this->callAjax("ajaxRemoveContact", "'".$_GET['f']."'"); ?>"><?php echo t('Remove this contact'); ?></a>
 		</div>
+		<div style="clear: left; width: 0px; height: 0px;"></div>
         <?php
     }
 }

@@ -164,12 +164,13 @@ class Friends extends WidgetBase
     { 
         ?>
         <div id="friends">
-          <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
-          <h3><?php echo t('Contacts');?></h3>
+          <!--<h3><?php echo t('Contacts');?></h3>-->
 
           <div id="tinylist">
           	<?php echo $this->prepareRoster(Cache::c('roster')); ?>
           </div>
+          
+          <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
         </div>
         <?php
     }

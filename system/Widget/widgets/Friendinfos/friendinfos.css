@@ -1,8 +1,36 @@
 #friendinfos {
-    margin: 5px;
-    margin-bottom: 10px;
+/*    margin: 5px;*/
     width: 100%;
-    text-align: center;
+    overflow: hidden;
+    float: left;
+/*    text-align: center;*/
+}
+
+#friendinfos #friendavatar {
+    width: 170px;
+    height: 100%;
+    padding: 0 20px;
+    float: left;
+}
+
+#friendinfos #frienddescription {
+    margin-top: 5px;
+    font-style: italic;
+    text-indent: 10px;
+    max-width: 60%;
+    text-align: justify;
+/*    background-color: white;*/
+    background-image: url(img/say.png);
+    background-repeat: no-repeat;
+    padding-left: 15px;
+    background-position: 0px 5px;
+    margin-left: 200px;
+}
+
+#friendinfos #frienddescription p {
+    background-color: white;
+    padding: 1em;
+    max-height: 4em;
 }
 
 #friendinfos .config_button {
@@ -10,14 +38,22 @@
     margin-right: 10px;
 }
 
-#friendinfos img {
+#friendinfos #friendavatar img {
     margin: 0 auto;
+    float: right;
+    height: 100px;
 }
 
 #friendinfos ul {
     text-align: left;
     list-style-type: none;
     font-size: 10px;
+    display: inline;
+}
+
+#friendinfos ul li {
+    display: inline;
+    padding: 0px 5px;
 }
 
 #friendinfos ul li span {
@@ -26,9 +62,17 @@
 }
 
 #friendinfos h2 {
-    font-size: 15px;
+    font-size: 20px;
     color: #444;
-    font-weight: bold;
-    padding-bottom: 5px;
+    font-weight: normal;
+    display: inline;
 }
 
+#friendinfos .config_button {
+    float: left;
+    position: absolute;
+}
+
+#friendinfos #friendremove {
+    float: right;
+}

@@ -68,15 +68,32 @@ h3 {
     font-weight: bold;
 }
 
+#topgray {
+    background-color: #F5F5F5;
+    height: 140px;
+    width: 100%;  
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+#top {
+    z-index: 3;
+    height: 120px;
+}
+
 #left
 {
-    border: 1px solid #EEE;
+/*    border: 1px solid #EEE;*/
     width: 190px;
     float: left;
-    background-color: #F9F9F9;
-    -moz-box-shadow:  0px 60px 60px white, 0px 5px 7px #DDD;
-    box-shadow: 0px 60px 60px white, 0px 5px 7px #DDD;
-    -webkit-box-shadow: 0px 60px 60px white, 0px 5px 7px #DDD;
+    border-right: 1px solid #EEE;
+/*    background-color: #F9F9F9;*/
+/*    -moz-box-shadow:  0px 60px 60px white, 0px 5px 7px #DDD;*/
+/*    box-shadow: 0px 60px 60px white, 0px 5px 7px #DDD;*/
+/*    -webkit-box-shadow: 0px 60px 60px white, 0px 5px 7px #DDD;*/
 }
 
 #center
@@ -121,7 +138,7 @@ input, select, textarea {
     background-color: white;
 }
 
-input.tiny, select.tiny, textarea.tiny {
+input.tiny, select.tiny, textarea.tiny, .button.tiny {
     padding: 3px;
     font-size: 11px;
 }
@@ -130,13 +147,15 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid #888888;
 }
 
-input[type=submit], input[type=reset], input[type=button] {
+input[type=submit], input[type=reset], input[type=button], .button {
     cursor: pointer;
+    border: 1px solid black;
     border-color: #BBB #BBB #999;
     -moz-box-shadow: 0 1px 0 #F8F8F8;
     -wekbit-box-shadow: 0 1px 0 #F8F8F8;
     box-shadow: 0 1px 0 #F8F8F8;
     margin-left: 5px;
+    color: #555;
 
     background: -webkit-gradient(linear, 0% 39%, 0% 100%, from(#F6F6F6), to(#d0d0d0));
     background: -moz-linear-gradient(top, #F6F6F6, #d0d0d0);
@@ -146,6 +165,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover {
     background: -webkit-gradient(linear, 0% 39%, 0% 100%, from(#F6F6F6), to(#c0c0c0));
     background: -moz-linear-gradient(top, #F6F6F6, #c0c0c0);
     border-color: #999 #999 #888;
+    color: #333;
 }
 
 input[type=submit]:active, input[type=reset]:active, input[type=button]:active {
@@ -196,6 +216,7 @@ label {
     position: absolute;
     top: 0px;
     left: 0px;
+    z-index: 1;
 }
 #nav .menu {
     width: 1024px;

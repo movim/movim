@@ -38,9 +38,9 @@ class Notifs extends WidgetBase
             <li>
                 '.$payload['from'].' '.t('wants to talk with you'). ' <br />
    	            <input id="notifsalias" class="tiny" value="'.$payload['from'].'" onfocus="myFocus(this);" onblur="myBlur(this);"/>
-   	            <a href="#" onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$payload['from']."'").' showAlias(this);">'.t("Accept").'</a>
-   	            <a href="#" id="notifsvalidate" onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['from']."'", "getAlias()").' hideNotification(this);">'.t("Validate").'</a>
-   	            <a href="#" onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['from']."'").' hideNotification(this);">'.t("Decline").'</a>
+   	            <a class="button tiny" href="#" onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$payload['from']."'").' showAlias(this);">'.t("Accept").'</a>
+   	            <a class="button tiny" href="#" id="notifsvalidate" onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['from']."'", "getAlias()").' hideNotification(this);">'.t("Validate").'</a>
+   	            <a class="button tiny" href="#" onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['from']."'").' hideNotification(this);">'.t("Decline").'</a>
    	        </li>';
    	    $notifs['sub'.$payload['from']] = $html;
    	    
@@ -95,8 +95,8 @@ class Notifs extends WidgetBase
             <li>
                 <input id="addjid" class="tiny" value="user@server.tld" onfocus="myFocus(this);" onblur="myBlur(this);"/>
                 <input id="addalias" class="tiny" value="<?php echo t('Alias'); ?>" onfocus="myFocus(this);" onblur="myBlur(this);"/>
-                <a href="#" id="addvalidate" onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>"><?php echo t('Validate'); ?></a>
-                <a href="#" onclick="addJid(this);"><?php echo t('Add a contact'); ?></a>
+                <a class="button tiny" href="#" id="addvalidate" onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>"><?php echo t('Validate'); ?></a>
+                <a class="button tiny" href="#" onclick="addJid(this);"><?php echo t('Add a contact'); ?></a>
             </li>
         </ul>
     </div>

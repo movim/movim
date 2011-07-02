@@ -13,6 +13,7 @@
 	<div id="nav">
 	  <?php $this->menu();?>	
 	</div>
+
 	<div id="content">
 	  <?php $this->content();?>
 	  	<div id="footer">

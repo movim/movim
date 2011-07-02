@@ -1,10 +1,16 @@
 <?php /* -*- mode: html -*- */
 ?>
+<div id="topgray">
+
+</div>
+
 <?php $this->widget('Poller');?>
 <?php $this->widget('Logout');?>
+<div id="top">
+<?php $this->widget('Friendinfos');?>
+</div>
 <div id="left">
     <?php /*$this->widget('Profile');*/?>
-    <?php $this->widget('Friendinfos');?>
     <?php $this->widget('Friends');?>
     <?php $this->widget('Notifs');?>
     <?php $this->widget('Chat');?>
