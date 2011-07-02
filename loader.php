@@ -12,6 +12,10 @@ define('SESSION_MAX_AGE', 24 * 3600);
 
 // Loads up all system libraries.
 require(LIB_PATH . "Lang/i18n.php");
+
+require(LIB_PATH . "Storage/loader.php");
+load_storage(array('sqlite'));
+
 require(LIB_PATH . "Session.php");
 require(LIB_PATH . "Utils.php");
 require(LIB_PATH . "Cache.php");
@@ -32,8 +36,6 @@ require(LIB_PATH . "Tpl/TplPageBuilder.php");
 require(LIB_PATH . "Widget/WidgetBase.php");
 require(LIB_PATH . "Widget/WidgetWrapper.php");
 
-require(LIB_PATH . "Storage/loader.php");
-load_storage(array('sqlite'));
 
 // Starting session.
 Session::start(APP_NAME);

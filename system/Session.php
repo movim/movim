@@ -21,6 +21,20 @@
 
 if(!class_exists('Session')):
 
+class SessionVar extends StorageBase
+{
+    protected $name;
+    protected $value;
+    protected $session;
+
+    protected function type_init()
+    {
+        $this->name    = StorageType::varchar(128);
+        $this->value   = StorageType::text();
+        $this->session = StorageType::varchar(128);
+    }
+}
+    
 class Session
 {
     protected $db;
@@ -45,68 +59,21 @@ class Session
         if(defined('SESSION_MAX_AGE')) {
             $this->max_age = SESSION_MAX_AGE;
         }
-
+        
         // Do we create the schema?
         $create = false;
         if(!file_exists($db_file)) {
             $create = true;
         }
-        $this->db = new SQLite3($db_file);
-        $this->db->busyTimeout(500);
 
-        $this->container = $this->db->escapeString($name);
+        $this->db = new StorageEngineSqlite($db_file);
 
-        if($create) { // Creating the session schema.
-            $this->db->exec('CREATE TABLE IF NOT EXISTS sessions(hash VARCHAR(64) PRIMARY KEY, timestamp INTEGER)');
-            $this->db->exec(
-                'CREATE TABLE IF NOT EXISTS session_containers('.
-                'id INTEGER PRIMARY KEY AUTOINCREMENT, '.
-                'hash VARCHAR(64) REFERENCES sessions(hash) ON DELETE CASCADE, '.
-                'name VARCHAR(128))'
-                );
-            $this->db->exec(
-                'CREATE TABLE IF NOT EXISTS session_vars('.
-                'container INTEGER REFERENCES session_containers(id) ON DELETE CASCADE, '.
-                'name VARCHAR(128), '.
-                'value TEXT)'
-                );
+        if($create) {
+            $var = new SessionVar();
+            $this->db->create($var);
         }
 
-        if(self::$sid == null && isset($_COOKIE['PHPFASTSESSID'])) {
-            $sessid = $this->db->escapeString($_COOKIE['PHPFASTSESSID']);
-            $session = $this->db->querySingle('SELECT * FROM sessions WHERE hash="'.$sessid.'"', true);
-
-            if(count($session) == 0) {
-                $this->regenerate();
-            }
-            else if($session['timestamp'] + $this->max_age < time()) {
-                echo 'expired! ' . ($session['timestamp'] + $this->max_age) . ' < ' . time();
-                $sql = 'DELETE FROM sessions WHERE hash="'.$sessid.'"';
-                echo $sql;
-                $this->db->exec($sql);
-                $this->regenerate();
-            }
-            else {
-                self::$sid = $sessid;
-            }
-        }
-        else if(self::$sid == null) {
-            $this->regenerate();
-        }
-
-        // Does the container exist?
-        $num_container = $this->db->querySingle('SELECT id FROM session_containers WHERE hash="'.self::$sid.'" AND name="'.$this->container.'"');
-        if(!$num_container) {
-            $this->db->exec('INSERT INTO session_containers(hash, name) VALUES("'.self::$sid.'", "'.$this->container.'")');
-            $this->container_id = $this->db->lastInsertRowID();
-
-            // fallback...
-            if(!$this->container_id) {
-                $this->container_id = $this->db->querySingle('SELECT id FROM session_containers WHERE hash="'.self::$sid.'" AND name="'.$this->container.'"');
-            }
-        } else {
-            $this->container_id = $this->db->escapeString($num_container);
-        }
+        $this->regenerate();
     }
 
     protected function regenerate()
@@ -115,25 +82,12 @@ class Session
         $hash_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $hash = "";
 
-        $exists = true;
-        $sessions_tbl = $this->db->query('SELECT hash FROM sessions');
-        $sessions = array();
-        while($row = $sessions_tbl->fetchArray()) {
-            $sessions[] = $row['hash'];
+        for($i = 0; $i < 64; $i++) {
+            $r = mt_rand(0, strlen($hash_chars) - 1);
+            $hash.= $hash_chars[$r];
         }
 
-        while($exists) {
-            for($i = 0; $i < 64; $i++) {
-                $r = rand(0, strlen($hash_chars) - 1);
-                $hash.= $hash_chars[$r];
-            }
-
-            $exists = in_array($hash, $sessions);
-        }
-
-        self::$sid = $this->db->escapeString($hash);
-        $sql = 'INSERT INTO sessions(hash, timestamp) VALUES("'.self::$sid.'", "'.time().'")';
-        $this->db->exec($sql);
+        self::$sid = $hash;
         setcookie('PHPFASTSESSID', self::$sid, time() + $this->max_age);
     }
 
