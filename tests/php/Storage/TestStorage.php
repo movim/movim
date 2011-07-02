@@ -79,6 +79,20 @@ class TestStorage
         ut_equals($numtables, 1);
     }
 
+    function testPopulate()
+    {
+        $vals = array('balance' => 50, 'interest' => 0.01);
+        
+        $test = new Account();
+        $test->populate($vals);
+        ut_equals($test->balance, 50);
+        ut_equals($test->interest, 0.01);
+
+        $account = new Account($vals);
+        ut_equals($account->balance, 50);
+        ut_equals($account->interest, 0.01);
+    }
+
     function testSave()
     {
         $account = new Account();

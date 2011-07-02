@@ -25,14 +25,37 @@ class StorageBase
     /**
      * Constructor.
      */
-    public function __construct(&$storage = NULL, $id = NULL)
+    public function __construct(array $init = null)
     {
         $this->type_init();
 
         $this->children = new StorageCollection($this);
 
-        if($storage != NULL && $id != NULL) {
-            $this->load($storage, array("id" => $id));
+        if(is_array($init)) {
+            $this->populate($init);
+        }
+    }
+
+    /**
+     * Sets the object's value based on the given array. The array's keys are
+     * used as member variables's names and the associated values are set to
+     * these.
+     *
+     * This only works with Storable member variables. Attempting to set any
+     * other variable will result in a StorageException.
+     */
+    public function populate(array $vals)
+    {
+        foreach($vals as $varname => $varval) {
+            if(isset($this->$varname) && $this->is_typed($this->$varname)) {
+                $this->$varname->setval($varval);
+            }
+            else if(!isset($this->$varname)) {
+                throw new StorageException(t("Unknown property %s", $varname));
+            }
+            else {
+                throw new StorageException(t("Attempting to access private member `%s' of class `%s'.", $varname, get_class($this)));
+            }
         }
     }
 
