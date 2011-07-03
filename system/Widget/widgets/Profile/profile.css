@@ -40,7 +40,7 @@
 	height: 2em;
 }
 
-#profile input#statusText:hover {
+#profile #profilestatustext:hover {
     border: 1px solid #DDD;
 }
 

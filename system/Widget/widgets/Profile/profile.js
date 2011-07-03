@@ -1,6 +1,6 @@
 function getStatusText()
 {
-    var dest = document.getElementById('statusText');
+    var dest = document.getElementById('profilestatustext');
     var stuff = dest.value;
     return stuff;
 }

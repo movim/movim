@@ -20,6 +20,8 @@
 
 class Profile extends WidgetBase
 {
+
+    private static $status;
     
     function WidgetLoad()
     {
@@ -27,6 +29,13 @@ class Profile extends WidgetBase
     	$this->addjs('profile.js');
 		$this->registerEvent('myvcardreceived', 'onMyVcardReceived');
 		$this->registerEvent('incomemypresence', 'onMyPresence');
+		
+		$this->status = array(
+                        1 => array('chat', t('Chat')),
+                        2 => array('dnd', t('Do not disturb')),
+                        3 => array('away', t('Away')),
+                        5 => array('xa', t('Away for a long time')),
+                    );
     }
 
     function onMyVcardReceived($vcard)
@@ -47,27 +56,25 @@ class Profile extends WidgetBase
 
 	function ajaxRefreshMyVcard()
 	{
-		$user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance();
 		$xmpp->getVCard($jid); // We send the vCard request
 	}  
 	
 	function ajaxPresence($presence)
 	{
-		$user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance();
 		$xmpp->setStatus(false, $presence);
 	}
 	
 	function ajaxSetStatus($status, $show = false)
 	{
-		$user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance();
 		$xmpp->setStatus($status, $show);
 	}
 	
 	function onMyPresence($presence)
 	{
+	    movim_log($presence);
 	    $uri = $this->respath();
         RPC::call('movim_fill', 'presencebutton', RPC::cdata(
             '<img id="presenceimage" class="'.$presence['show'].'" src="'.str_replace('jajax.php', '',$uri).'img/'.$presence['show'].'.png">'
@@ -86,12 +93,7 @@ class Profile extends WidgetBase
 		$xmpp = Jabber::getInstance($user->getLogin());		
 		$mypresence = $presences[$user->getLogin()][$xmpp->getResource()];
         
-        $array = array(
-                    1 => array('chat', t('Chat')),
-                    2 => array('dnd', t('Do not disturb')),
-                    3 => array('away', t('Away')),
-                    5 => array('xa', t('Away for a long time')),
-                );
+
         
         // We set the status
         $status = (isset($presences[$user->getLogin()]['status'])) 
@@ -100,11 +102,16 @@ class Profile extends WidgetBase
         ?>
 		<div id="profile">
 			<div id="presencebutton" onclick="showPresence(this);">
-			    <img id="presenceimage" class="<?php echo $array[$mypresence][0]; ?>" src="<?php echo $this->respath('img/'.$array[$mypresence][0].'.png'); ?>"><?php echo $array[$mypresence][1]; ?>
+			    <img 
+			        id="presenceimage" 
+			        class="<?php echo $this->status[$mypresence][0]; ?>" 
+			        src="<?php echo $this->respath('img/'.$this->status[$mypresence][0].'.png'); ?>"
+			     >
+			     <?php echo $this->status[$mypresence][1]; ?>
 			</div>
 			
 			<ul id="presencelist">
-			    <?php foreach($array as $key) { ?>
+			    <?php foreach($this->status as $key) { ?>
 			        <li onclick="<?php $this->callAjax('ajaxSetStatus', "getStatusText()", "'$key[0]'");?> closePresence();">
 			            <img src="<?php echo $this->respath('img/'.$key[0].'.png'); ?>">
 			            <?php echo $key[1]; ?>

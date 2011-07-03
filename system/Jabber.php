@@ -76,7 +76,8 @@ class Jabber
 						 'JAXL0092', // Software Version
 						 'JAXL0203', // Delayed Delivery
 						 'JAXL0202', // Entity Time
-						 'JAXL0206'  // Jabber over Bosh
+						 'JAXL0206',  // Jabber over Bosh
+						 'JAXL0277'  // Microblogging
 						 ));
 
 		// Defining call-backs
@@ -223,6 +224,9 @@ class Jabber
 				$evt->runEvent('myvcardreceived', $payload);
 			} else {
 			   	Cache::c("vcard".$payload["from"], $payload);
+movim_log($payload["vCardPhotoType"]);
+			   	$res = JAXLUtil::splitJid($payload['to']);
+				Conf::savePicture($res[0].'@'.$res[1], $payload['from'], $payload['vCardPhotoBinVal'], $payload["vCardPhotoType"]);
 				$evt->runEvent('vcardreceived', $payload);
 			}
 		} elseif($payload['queryXmlns'] == "jabber:iq:roster") {
@@ -232,6 +236,9 @@ class Jabber
             } elseif($payload['type'] == "set") {
                 $this->getRosterList();
             }
+        } elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0") {
+            movim_log($payload);
+            $evt->runEvent('streamreceived', $payload);
 		} else {
             $evt->runEvent('none', var_export($payload, true));
         }
@@ -251,6 +258,14 @@ class Jabber
 		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
 	}
 	
+	public function getWall($jid = false) {
+		$this->jaxl->JAXL0277('getItems', $jid);
+	}
+	
+	public function getComments($jid, $id) {
+		$this->jaxl->JAXL0277('getComments', 'pubsub.jappix.com', $id);
+	}
+	
 	/* Service discovery
 	*/
 
@@ -258,7 +273,7 @@ class Jabber
 	{
 		//$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
 		//$this->jaxl->JAXL0030('discoItems', $jid, $this->jaxl->jid, false, false);mov
-		$this->jaxl->JAXL0060('getNodeItems', 'psgxs.linkmauve.fr', $this->jaxl->jid, 'blog');
+		$this->jaxl->JAXL0277('getItems', 'edhelas@jappix.com');
         //psgxs.linkmauve.fr
 	}
 
@@ -425,7 +440,7 @@ class Jabber
 		}
 	}
 	
-	public function addContact($jid, $group, $alias) {
+	public function addContact($jid, $grJaxloup, $alias) {
 		if($this->checkJid($jid)) {
 			$this->jaxl->subscribe($jid);
 			$this->jaxl->addRoster($jid, $group, $alias);
