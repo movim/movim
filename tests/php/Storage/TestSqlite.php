@@ -18,40 +18,44 @@
 define('DB_DEBUG', true);
 define('DB_LOGFILE', 'queries.log');
 
-class Account extends StorageBase
-{
-    // Storable fields.
-    protected $balance;
-    protected $interest;
-    protected $owners;
-
-    protected function type_init()
+if(!class_exists('Account')) {
+    class Account extends StorageBase
     {
-        $this->balance = StorageType::float();
-        $this->interest = StorageType::float();
+        // Storable fields.
+        protected $balance;
+        protected $interest;
+        protected $owners;
+
+        protected function type_init()
+        {
+            $this->balance = StorageType::float();
+            $this->interest = StorageType::float();
+        }
     }
 }
 
-class Owner extends StorageBase
-{
-    protected $name;
-    protected $dob;
-    protected $account;
-
-    protected function type_init()
+if(!class_exists('Owner')) {
+    class Owner extends StorageBase
     {
-        $this->name = StorageType::varchar(256);
-        $this->dob = StorageType::date();
-        $this->foreignkey('account', 'Account');
+        protected $name;
+        protected $dob;
+        protected $account;
+
+        protected function type_init()
+        {
+            $this->name = StorageType::varchar(256);
+            $this->dob = StorageType::date();
+            $this->foreignkey('account', 'Account');
+        }
     }
 }
 
-
-class TestStorage
+class TestSqlite
 {
     function __construct()
     {
         Conf::$conf_path = "tests/php/Storage";
+        storage_load_driver('sqlite');
         $this->db_file = ut_res('tests.db');
         $this->_wipe();
     }

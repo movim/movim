@@ -19,7 +19,7 @@
 // Function to easily load a Storage Engine.
 function storage_load_driver($drivername)
 {
-    require($base."drivers/StorageEngine".ucfirst(strtolower($drivername)).".php");
+    require_once($base."drivers/StorageEngine".ucfirst(strtolower($drivername)).".php");
 }
 
 function load_storage(array $drivers)
