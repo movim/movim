@@ -21,7 +21,15 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
     protected $db;
 
     // Loading config and attempting to connect.
-    public function __construct($db_file)
+    public function __construct()
+    {
+        $args = func_get_args();
+        if(count($args) > 0) {
+            call_user_func_array(array($this, 'init'), $args);
+        }
+    }
+
+    public function init($db_file)
     {
         // Checking the file can be accessed.
         if($db_file == "") {
@@ -236,8 +244,8 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
     {
         $stmt = "SELECT * FROM " . $this->obj_name($object);
 
-        if(count($cond) > 1) {
-            $where . " WHERE ";
+        if(count($cond) > 0) {
+            $stmt.= " WHERE ";
 
             foreach($cond as $col => $val) {
                 $stmt.= "$col=\"$val\" AND ";
@@ -250,6 +258,11 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         $this->log($stmt);
 
         $data = $this->query($stmt);
+
+        if(count($data) < 1) {
+            return false;
+        }
+
         $data = $data[0];
 
         // Populating the object.
@@ -260,6 +273,8 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
                 $object->__set($prop['name'], $data[$prop['name']]);
             }
         }
+
+        return true;
     }
 
     /**
@@ -269,8 +284,8 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
     {
         $stmt = "SELECT * FROM " . $objecttype;
 
-        if(count($cond) > 1) {
-            $where . " WHERE ";
+        if(count($cond) > 0) {
+            $stmt.= " WHERE ";
 
             foreach($cond as $col => $val) {
                 $stmt.= "$col=\"$val\" AND ";
@@ -283,6 +298,11 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         $this->log($stmt);
 
         $data = $this->query($stmt);
+
+        if(count($data) < 1) {
+            return false;
+        }
+
         $objs = array();
 
         foreach($data as $row) {

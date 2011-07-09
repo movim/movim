@@ -246,7 +246,7 @@ function main($argc, $argv)
   }
 
   if($argc == 2)
-    run_tests($argv[2]);
+    run_tests($argv[1]);
   else
     run_tests();
 }

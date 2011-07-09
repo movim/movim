@@ -20,9 +20,43 @@ define('DB_LOGFILE', 'queries.log');
 
 class TestSession
 {
-    function testCreate()
-    {
+    private $db_file;
+    private $db;
 
+    function __construct()
+    {
+        $this->db_file = ut_res('session.db');
+        define('TEST_DB_FILE', $this->db_file);
+        define('SESSION_FORCE_CREATE', true);
+        $this->_wipe();
+    }
+
+    private function _wipe()
+    {
+        if(isset($this->db))
+            unset($this->db);
+
+        unlink($this->db_file);
+        $this->db = new SQLite3($this->db_file);
+    }
+
+    function testSession()
+    {
+        $sess = Session::start('test');
+        // Checking the creation of the table.
+        $numtables = $this->db->querySingle('SELECT count(name) as count '.
+                                            'FROM sqlite_master WHERE type="table" '.
+                                            'AND name="SessionVar"');
+        ut_equals($numtables, 1);
+
+        // Inserting
+        $sess->set('test', 'stuff');
+        $record = $this->db->querySingle(
+            'SELECT value FROM SessionVar WHERE name="test"');
+        ut_equals(unserialize(base64_decode($record)), 'stuff');
+
+        $var = $sess->get('test');
+        ut_equals($var, 'stuff');
     }
 }
 

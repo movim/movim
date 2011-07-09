@@ -26,22 +26,25 @@ class SessionVar extends StorageBase
     protected $name;
     protected $value;
     protected $session;
+    protected $container;
+    protected $timestamp;
 
     protected function type_init()
     {
-        $this->name    = StorageType::varchar(128);
-        $this->value   = StorageType::text();
-        $this->session = StorageType::varchar(128);
+        $this->name      = StorageType::varchar(128);
+        $this->value     = StorageType::text();
+        $this->session   = StorageType::varchar(128);
+        $this->container = StorageType::varchar(128);
+        $this->timestamp = StorageType::int();
     }
 }
-    
+
 class Session
 {
     protected $db;
     protected static $instances = array();
     protected static $sid = null;
     protected $container;
-    protected $container_id;
     protected $max_age = 3600;
 
     /**
@@ -52,17 +55,20 @@ class Session
     {
         $db_file = (($_SERVER['DOCUMENT_ROOT'] == "")? dirname(__FILE__) : $_SERVER['DOCUMENT_ROOT']).'/session.db';
 
-        if(defined('SESSION_DB_FILE')) {
+        if(defined('TEST_DB_FILE')) {
+            $db_file = TEST_DB_FILE;
+        } else if(defined('SESSION_DB_FILE')) {
             $db_file = SESSION_DB_FILE;
         }
 
         if(defined('SESSION_MAX_AGE')) {
             $this->max_age = SESSION_MAX_AGE;
         }
-        
+
         // Do we create the schema?
         $create = false;
-        if(!file_exists($db_file)) {
+        if(defined('SESSION_FORCE_CREATE')
+           || !file_exists($db_file)) {
             $create = true;
         }
 
@@ -73,7 +79,15 @@ class Session
             $this->db->create($var);
         }
 
-        $this->regenerate();
+        if(self::$sid == null) {
+            if(isset($_COOKIE['PHPFASTSESSID'])) {
+                self::$sid = $_COOKIE['PHPFASTSESSID'];
+            } else {
+                $this->regenerate();
+            }
+        }
+
+        $this->container = $name;
     }
 
     protected function regenerate()
@@ -104,23 +118,16 @@ class Session
     }
 
     /**
-     * Commits the session upon destruction.
-     */
-/*    public function __destruct()
-    {
-        $this->db->close();
-        }*/
-
-    /**
      * Gets a session variable. Returns false if doesn't exist.
      */
     public function get($varname)
     {
-        $data = $this->db->querySingle(
-            'SELECT * FROM session_vars WHERE container="'.$this->container_id.'" AND name="'.$this->db->escapeString($varname).'"',
-            true);
-        if(count($data) > 0) {
-            return unserialize(base64_decode($data['value']));
+        $data = new SessionVar();
+        if($this->db->load($data, array(
+                               'session' => self::$sid,
+                               'container' => $this->container,
+                               'name' => $varname))) {
+            return unserialize(base64_decode($data->value));
         } else {
             return false;
         }
@@ -131,26 +138,21 @@ class Session
      */
     public function set($varname, $value)
     {
-        $value = base64_encode(serialize($value));
-
         // Does the variable exist?
-        $sql = 'SELECT COUNT(name) FROM session_vars '.
-            'WHERE container="'.$this->container_id.'" AND name="'.$varname.'"';
-        $num_vars = $this->db->querySingle($sql);
-
-        if($num_vars > 0) {
-            $sql = 'UPDATE session_vars '.
-                'SET value="'.$this->db->escapeString($value).'" '.
-                'WHERE container="'.$this->container_id.'" AND name="'.$varname.'"';
-        } else {
-            $sql = 'INSERT INTO session_vars(container, name, value) '.
-                'VALUES("'.$this->container_id.'", "'.$this->db->escapeString($varname).'", "'.
-                $this->db->escapeString($value).'")';
+        $var = new SessionVar();
+        if(!$this->db->load($var, array(
+                                'session' => self::$sid,
+                                'container' => $this->container,
+                                'name' => $varname))) {
+            $var->session = self::$sid;
+            $var->container = $this->container;
+            $var->name = $varname;
         }
 
-        $this->db->exec($sql);
+        $var->value = base64_encode(serialize($value));
+        $this->db->save($var);
 
-        return $value;
+        return $var->value;
     }
 
     /**
@@ -158,10 +160,13 @@ class Session
      */
     public function remove($varname)
     {
-        return $this->db->exec(
-            'DELETE FROM session_vars '.
-            'WHERE container="'.$this->container_id.'" '.
-            'AND name="'.$this->db->escapeString($varname).'"');
+        $var = new SessionVar();
+        $this->db->load($var, array(
+                            'session' => self::$sid,
+                            'container' => $this->container,
+                            'name' => $varname));
+
+        $this->db->delete($var);
     }
 
     public function delete_container()
