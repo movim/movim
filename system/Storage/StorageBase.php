@@ -21,6 +21,7 @@ class StorageBase
 {
     protected $id = false;
     public $children;
+    protected static $db = null;
 
     /**
      * Constructor.
@@ -34,6 +35,33 @@ class StorageBase
         if(is_array($init)) {
             $this->populate($init);
         }
+    }
+
+    /**
+     * Defines a common database connection for Storable objects.
+     */
+    public static function bind($db)
+    {
+        if(StorageEngineBase::does_extend($db, "StorageEngineBase")) {
+            self::$db = $db;
+        } else {
+            throw new StorageException(t("Cannot bind non-StorageEngine object."));
+        }
+    }
+
+    protected static function is_bound()
+    {
+        return (self::$db !== null);
+    }
+
+    protected static function require_bound()
+    {
+        if(!self::is_bound()) {
+            throw new StorageException(t("Object not bound to StorageEngine."));
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -181,7 +209,7 @@ class StorageBase
     /**
      * Sets the object's ID.
      */
-    function setid($id)
+    public function setid($id)
     {
         if($this->id !== false) {
             throw new StorageException(t("Attempting to set the id of an existing object."));
@@ -194,9 +222,46 @@ class StorageBase
     /**
      * Unsets the object's ID.
      */
-    function clearid()
+    public function clearid()
     {
         $this->id = false;
+    }
+
+    /* ******* Convenience wrapper **********/
+    public function create()
+    {
+        $this->require_bound();
+        return self::$db->create($this);
+    }
+
+    public function save()
+    {
+        $this->require_bound();
+        return self::$db->save($this);
+    }
+
+    public function delete()
+    {
+        $this->require_bound();
+        return self::$db->delete($this);
+    }
+
+    public function drop()
+    {
+        $this->require_bound();
+        return self::$db->drop($this);
+    }
+
+    public function load($cond)
+    {
+        $this->require_bound();
+        return self::$db->load($this, $cond);
+    }
+
+    public static function select($cond)
+    {
+        self::require_bound();
+        return self::$db->select(get_called_class(), $cond);
     }
 }
 

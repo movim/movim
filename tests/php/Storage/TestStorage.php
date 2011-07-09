@@ -66,14 +66,20 @@ class TestStorage
         unlink($this->db_file);
         $this->sdb = new StorageEngineSqlite($this->db_file);
         $this->db = new SQLite3($this->db_file);
+        StorageBase::bind($this->sdb);
     }
 
     function testCreate()
     {
         $test = new Account();
         $this->sdb->create($test);
-        unset($test);
 
+        $numtables = $this->db->querySingle(
+            'SELECT count(name) as count FROM sqlite_master WHERE type="table" AND name="Account"');
+        ut_equals($numtables, 1);
+
+        $this->_wipe();
+        $test->create();
         $numtables = $this->db->querySingle(
             'SELECT count(name) as count FROM sqlite_master WHERE type="table" AND name="Account"');
         ut_equals($numtables, 1);
@@ -82,7 +88,7 @@ class TestStorage
     function testPopulate()
     {
         $vals = array('balance' => 50, 'interest' => 0.01);
-        
+
         $test = new Account();
         $test->populate($vals);
         ut_equals($test->balance, 50);
@@ -104,14 +110,29 @@ class TestStorage
             'SELECT count(*) as count FROM Account '.
             'WHERE balance="100" AND interest="0.025"');
         ut_equals($count, 1);
+
+        $account->balance = 200;
+        $account->interest = 0.015;
+        $account->save();
+
+        $count = $this->db->querySingle(
+            'SELECT count(*) as count FROM Account '.
+            'WHERE balance="200" AND interest="0.015"');
+        ut_equals($count, 1);
     }
 
     function testLoad()
     {
         $account = new Account();
-        $this->sdb->select($account, array('id' => 1));
-        ut_equals($account->balance, 100);
-        ut_equals($account->interest, 0.025);
+        $this->sdb->load($account, array('id' => 1));
+        ut_equals($account->balance, 200);
+        ut_equals($account->interest, 0.015);
+
+        $account = null;
+        $account = new Account();
+        $account->load(array('id' => 1));
+        ut_equals($account->balance, 200);
+        ut_equals($account->interest, 0.015);
     }
 
     function testDelete()
@@ -134,6 +155,26 @@ class TestStorage
         ut_equals($count, 0);
 
         ut_nassert($account->id);
+
+        $account = null;
+        $account = new Account();
+        $account->balance = 200;
+        $account->interest = 0.020;
+        $account->save();
+
+        $count = $this->db->querySingle(
+            'SELECT count(*) as count FROM Account '.
+            'WHERE balance="200" AND interest="0.020"');
+        ut_equals($count, 1);
+
+        $account->delete();
+
+        $count = $this->db->querySingle(
+            'SELECT count(*) as count FROM Account '.
+            'WHERE balance="200" AND interest="0.020"');
+        ut_equals($count, 0);
+
+        ut_nassert($account->id);
     }
 
     function testDrop()
@@ -147,7 +188,7 @@ class TestStorage
         $account->interest = 0.020;
         $this->sdb->save($account);
         ut_differs($account->id, false);
-        
+
         $this->sdb->drop($account);
 
         $numtables = $this->db->querySingle(
@@ -157,16 +198,22 @@ class TestStorage
         ut_nassert($account->id);
     }
 
-    function _testCreateLinked()
+    function testSelect()
     {
+        // Wiping
         $this->_wipe();
 
-        $owner = new Owner();
-        $owner->create($this->sdb);
-        $numtables = $this->db->querySingle(
-            'SELECT count(name) as count FROM sqlite_master '.
-            'WHERE type="table" AND (name="Owner" OR name="Account")');
-        ut_equals($numtables, 2);
+        // Inserting two accounts.
+        $acc1 = new Account(array('balance' => 100, 'interest' => 0.015));
+        $acc2 = new Account(array('balance' => 200, 'interest' => 0.015));
+
+        $acc1->create();
+        $acc1->save();
+        $acc2->save();
+
+        $objs = Account::select(array('interest' => 0.015));
+
+        ut_equals(count($objs), 2);
     }
 
     function __destruct()

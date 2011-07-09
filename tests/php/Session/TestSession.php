@@ -20,7 +20,10 @@ define('DB_LOGFILE', 'queries.log');
 
 class TestSession
 {
+    function testCreate()
+    {
 
+    }
 }
 
 ?>

@@ -42,7 +42,14 @@ class StorageEngineBase implements StorageDriver
     /**
      * Loads up the data corresponding to the object in the storage.
      */
-    public function select(&$object, array $cond)
+    public function load(&$object, array $cond)
+    {
+    }
+
+    /**
+     * Loads objects from storage.
+     */
+    public function select($objecttype, array $cond)
     {
     }
 
@@ -71,7 +78,7 @@ class StorageEngineBase implements StorageDriver
             }
         }
     }
-    
+
     /**
      * Checks that object is a storable object.
      */
@@ -98,7 +105,7 @@ class StorageEngineBase implements StorageDriver
         if(!is_object($object)) {
             return false;
         }
-        
+
         $refl = null;
         try {
             $refl = new ReflectionClass($object);

@@ -68,7 +68,10 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
             $this->errors();
 
             $table = array();
-            while($table[] = $res->fetchArray(SQLITE3_ASSOC)) {}
+            while($row = $res->fetchArray(SQLITE3_ASSOC))
+            {
+                $table[] = $row;
+            }
             return $table;
         } else {
             $answer = $this->db->exec($statement);
@@ -176,11 +179,18 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         } else {
             $stmt = "UPDATE " . $this->obj_name($object) . " SET ";
 
+            $cols = "";
+            $vals = "";
             foreach($props as $prop) {
-                $stmt.= $prop['name'] . '="' . $prop['val'] . '", ';
+                $stmt.= $prop['name'] . '=';
+                if(StorageEngineBase::does_extend($prop['val'], "StorageBase")) {
+                    $stmt.= '"' . $prop['val']->id . '", ';
+                } else {
+                    $stmt.= '"' . $prop['val']->getval() . '", ';
+                }
             }
 
-            $stmt = substr($stmt, 0, -2) . ' WHERE id="' . $object->id . '";';
+            $stmt = substr($stmt, 0, -2) . ' WHERE id="' . $object->id . '"';
 
             return $this->query($stmt);
         }
@@ -195,11 +205,11 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
             $stmt = "DELETE FROM " . $this->obj_name($object) . " WHERE id=\"" . $object->id . "\";";
 
             $result = $this->query($stmt);
-            
+
             if($result) {
                 $object->clearid();
             }
-            
+
             return $result;
         }
     }
@@ -215,14 +225,14 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         if($result) {
             $object->clearid();
         }
-        
+
         return $result;
     }
 
     /**
      * Returns data relative to an object as an array.
      */
-    public function select(&$object, array $cond)
+    public function load(&$object, array $cond)
     {
         $stmt = "SELECT * FROM " . $this->obj_name($object);
 
@@ -250,6 +260,46 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
                 $object->__set($prop['name'], $data[$prop['name']]);
             }
         }
+    }
+
+    /**
+     * Loads a bunch of objects of a given type.
+     */
+    public function select($objecttype, array $cond)
+    {
+        $stmt = "SELECT * FROM " . $objecttype;
+
+        if(count($cond) > 1) {
+            $where . " WHERE ";
+
+            foreach($cond as $col => $val) {
+                $stmt.= "$col=\"$val\" AND ";
+            }
+
+            // Stripping the extra " AND "
+            $stmt = substr($stmt, 0, -5) . ';';
+        }
+
+        $this->log($stmt);
+
+        $data = $this->query($stmt);
+        $objs = array();
+
+        foreach($data as $row) {
+            $object = new $objecttype();
+            // Populating the object.
+            $props = $object->prototype();
+
+            foreach($props as $prop) {
+                if(isset($row[$prop['name']])) {
+                    $object->__set($prop['name'], $row[$prop['name']]);
+                }
+            }
+
+            $objs[] = $object;
+        }
+
+        return $objs;
     }
 }
 
