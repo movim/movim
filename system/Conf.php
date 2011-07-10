@@ -146,7 +146,16 @@ class Conf
         if($type == "image/jpeg") {
             if(!file_put_contents($dir_img.'/'.$contact.'.jpeg', base64_decode($data)))
                 throw new MovimException(t("Couldn't save img file %s", $contact.'.jpeg'));
-        }
+        } elseif($type == "image/png") {
+            $file = $dir_img.'/'.$contact;
+            if(!file_put_contents($file.'.png', base64_decode($data)))
+                throw new MovimException(t("Couldn't save img file %s", $contact.'.png'));
+                
+            $image = imagecreatefrompng($file.'.png');
+            imagejpeg($image, $file.'.jpeg', 95);
+            imagedestroy($image);
+            unlink($file.'.png');
+        } 
     }
     
 	/**

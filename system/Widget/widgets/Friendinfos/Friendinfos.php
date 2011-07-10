@@ -29,7 +29,7 @@ class Friendinfos extends WidgetBase
     function onVcardReceived($vcard)
     {
 		$html = $this->prepareInfos($vcard);
-        RPC::call('movim_fill', 'infos', RPC::cdata($html));
+        RPC::call('movim_fill', 'friendinfos', RPC::cdata($html));
     }
     
     function prepareInfos($vcard) {
@@ -110,6 +110,7 @@ class Friendinfos extends WidgetBase
     {
         ?>
 		<div id="friendinfos">
+		    <a class="button tiny" href="#" id="friendremove" onclick="<?php $this->callAjax("ajaxRemoveContact", "'".$_GET['f']."'"); ?>"><?php echo t('Remove this contact'); ?></a>
 					<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>"></div>
 			<!--<h3><?php echo t('Contact informations'); ?></h3>-->
 				<?php 
@@ -117,9 +118,9 @@ class Friendinfos extends WidgetBase
 						echo $this->prepareInfos(Cache::c('vcard'.$_GET['f']));
 					
 				?>
-                <a class="button tiny" href="#" id="friendremove" onclick="<?php $this->callAjax("ajaxRemoveContact", "'".$_GET['f']."'"); ?>"><?php echo t('Remove this contact'); ?></a>
+                
 		</div>
-		<div style="clear: left; width: 0px; height: 0px;"></div>
+		<!--<div style="clear: left; width: 0px; height: 0px;"></div>-->
         <?php
     }
 }

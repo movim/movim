@@ -48,7 +48,7 @@ class Wall extends WidgetBase
         }
         
         if($html == '') 
-            $html = t('The contact feed cannot be loaded, maybe the server cannot support it');
+            $html = t("Contact's feed cannot be loaded.");
         RPC::call('movim_fill', 'wall', RPC::cdata($html));
     }
 
@@ -66,12 +66,15 @@ class Wall extends WidgetBase
 	function build()
 	{
 		?>
-		<div id="wall">
+		<div class="tabelem" id="wall" title="<?php echo t('Feed');?>">
             <script type="text/javascript">
             <?php $this->callAjax('ajaxWall', "'".$_GET['f']."'");?>
             </script>
             <?php echo t('Loading the contact feed ...'); ?>
        	</div>
+    <div class="tabelem" title="<?php echo t('Profile'); ?>">
+        test
+    </div>
 		<?php
 	}
 }
