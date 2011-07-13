@@ -52,19 +52,26 @@ if(!class_exists('Owner')) {
 
 class TestMysql
 {
+    private $host = "localhost";
+    private $port = "3366";
+    private $username = "movim";
+    private $password = "movim";
+    private $schema = "movim";
+
     function __construct()
     {
         Conf::$conf_path = "tests/php/Storage";
         storage_load_driver('mysql');
-        $this->db_file = ut_res('tests.db');
         $this->_wipe();
     }
 
     private function _wipe()
     {
         if(!isset($this->db)) {
-            $this->db = mysql_connect("localhost", "movim", "movim");
-            mysql_select_db("movim", $this->db);
+            $this->db = mysql_connect($this->host.':'.$this->port,
+                                      $this->username,
+                                      $this->password);
+            mysql_select_db($this->schema, $this->db);
         }
 
         $result = mysql_query("show tables from movim");
@@ -73,7 +80,11 @@ class TestMysql
         }
 
         if(!isset($this->sdb)) {
-            $this->sdb = new StorageEngineMysql("localhost", "3366", "movim", "movim", "movim");
+            $this->sdb = new StorageEngineMysql($this->host,
+                                                $this->port,
+                                                $this->username,
+                                                $this->password,
+                                                $this->schema);
         }
     }
 
