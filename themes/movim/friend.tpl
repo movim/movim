@@ -16,9 +16,10 @@
     <?php $this->widget('Notifs');?>
 </div>
 <div id="right">
-<?php $this->widget('Log');?>
+    <?php $this->widget('Log');?>
 </div>
 <div id="center">
-<?php $this->widget('Tabs');?>
-  <?php $this->widget('Wall');?>
+    <?php $this->widget('Tabs');?>
+    <?php $this->widget('Wall');?>
+    <?php $this->widget('Friendvcard');?>
 </div>

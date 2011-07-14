@@ -91,8 +91,8 @@ class Friends extends WidgetBase
 				$html .= '<li 
 				            id="'.$value.'" 
 				            title="'.$status.'" 
-				            class="'.$presence.
-				          '">';
+				            class="'.$presence.'"
+				          >';
 				
 					$cachevcard = Cache::c('vcard'.$value); // We try to load the Vcard
 					$html .= "<a class='user_page' href='?q=friend&f=".$value."'><img class='avatar' src='data:".	$cachevcard['vCardPhotoType'] . ";base64," . $cachevcard['vCardPhotoBinVal'] . "' />"
@@ -129,28 +129,24 @@ class Friends extends WidgetBase
 	function onIncomingOnline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-	    RPC::call('incomingOnline',
-                      RPC::cdata($jid));
+	    RPC::call('incomingOnline', RPC::cdata($jid));
 	}
 
 	function onIncomingOffline($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-
 	    RPC::call('incomingOffline', RPC::cdata($jid));
 	}
 
 	function onIncomingDND($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-
 	    RPC::call('incomingDND', RPC::cdata($jid));
 	}
 
 	function onIncomingAway($data)
 	{
 		list($jid, $place) = explode("/",$data['from']);
-
 	    RPC::call('incomingAway', RPC::cdata($jid));
 	}
 
@@ -164,13 +160,11 @@ class Friends extends WidgetBase
     { 
         ?>
         <div id="friends">
-          <!--<h3><?php echo t('Contacts');?></h3>-->
+            <div id="tinylist">
+                <?php echo $this->prepareRoster(Cache::c('roster')); ?>
+            </div>
 
-          <div id="tinylist">
-          	<?php echo $this->prepareRoster(Cache::c('roster')); ?>
-          </div>
-          
-          <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
+            <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
         </div>
         <?php
     }

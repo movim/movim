@@ -72,9 +72,6 @@ class Wall extends WidgetBase
             </script>
             <?php echo t('Loading the contact feed ...'); ?>
        	</div>
-    <div class="tabelem" title="<?php echo t('Profile'); ?>">
-        test
-    </div>
 		<?php
 	}
 }

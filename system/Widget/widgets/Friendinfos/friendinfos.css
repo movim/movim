@@ -31,6 +31,7 @@
     background-color: white;
     padding: 1em;
     max-height: 4em;
+    overflow: auto;
 }
 
 #friendinfos .config_button {

@@ -6,7 +6,7 @@
  * @file Friendinfos.php
  * This file is part of MOVIM.
  * 
- * @brief A widget which display all the infos of a contact
+ * @brief A widget which brief infos of a contact
  *
  * @author Timothée	Jaussoin <edhelas_at_gmail_dot_com>
  *
@@ -26,12 +26,24 @@ class Friendinfos extends WidgetBase
     	$this->addcss('friendinfos.css');
     }
     
+    /**
+     * If we receive a vCard
+     *
+     * @param array $vcard
+     * @return void
+     */
     function onVcardReceived($vcard)
     {
 		$html = $this->prepareInfos($vcard);
         RPC::call('movim_fill', 'friendinfos', RPC::cdata($html));
     }
     
+    /**
+     * Prepare the informations
+     *
+     * @param unknown $vcard
+     * @return void
+     */
     function prepareInfos($vcard) {
     		
 		$html = '<div id="friendavatar">';
@@ -41,15 +53,15 @@ class Friendinfos extends WidgetBase
             }
         $html .= '</div>';
         
-        // coucou les gehs c'est kro bien comme truc!! isous doux a toi petit ahge
-            
         $name = $vcard['vCardFN'].' '.$vcard['vCardFamily'];
+        
         if($name == " ")
             $name = $vcard['vCardNickname'];
         if($name == "")
             $name = $vcard['vCardNGiven'];
         if($name == "")
             $name = $vcard['from'];
+            
         $html .= '<h2 title="'.$vcard['from'].'">'.$name.'</h2>';
         
         $val = array(
@@ -78,22 +90,15 @@ class Friendinfos extends WidgetBase
         
             $html .= '<div id="frienddescription"><p>'.$status.'</p></div>';
         
-        
-
-        /*$html = '<img alt="' . t("Your avatar") . '" src="data:'.
-            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
-            .'<ul id="infosbox">'
-		        .'<li><span>'.t('Firstname') . '</span>' .$vcard['vCardFN'].'</li>'
-		        .'<li><span>'.t('Family name') . '</span>' .$vcard['vCardFamily'].'</li>'
-		        .'<li><span>'.t('Nickname') . '</span>' .$vcard['vCardNickname'].'</li>'
-		        .'<li><span>'.t('Name given') . '</span>' .$vcard['vCardNGiven'].'</li>'
-		        .'<li><span>'.t('Website') . '</span><a href="'.$vcard['vCardUrl'].'">' .str_replace($cleanurl, "", $vcard['vCardUrl']).'</a></li>'
-		    .'</ul><br /><br />'
-		    .'<h3>'.t('About me').'</h3>'
-		    .'<div id="description">'.$vcard['vCardDesc'].'</div><br />';*/
         return $html;
     }
     
+    /**
+	 * Ask to refresh the vCard
+	 *
+	 * @param string $jid
+	 * @return void
+	 */
 	function ajaxRefreshVcard($jid)
 	{
 		$user = new User();
@@ -101,6 +106,12 @@ class Friendinfos extends WidgetBase
 		$xmpp->getVCard($jid); // We send the vCard request
 	}
 	
+	/**
+     * Ask to remove the contact
+     *
+     * @param unknown $jid
+     * @return void
+     */
     function ajaxRemoveContact($jid) {
 		$xmpp = Jabber::getInstance();
         $xmpp->removeContact($jid);
@@ -110,17 +121,25 @@ class Friendinfos extends WidgetBase
     {
         ?>
 		<div id="friendinfos">
-		    <a class="button tiny" href="#" id="friendremove" onclick="<?php $this->callAjax("ajaxRemoveContact", "'".$_GET['f']."'"); ?>"><?php echo t('Remove this contact'); ?></a>
-					<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>"></div>
-			<!--<h3><?php echo t('Contact informations'); ?></h3>-->
-				<?php 
-					if(isset($_GET['f']))
-						echo $this->prepareInfos(Cache::c('vcard'.$_GET['f']));
-					
-				?>
+		    <a 
+		        class="button tiny" 
+		        href="#" 
+		        id="friendremove" 
+		        onclick="<?php $this->callAjax("ajaxRemoveContact", "'".$_GET['f']."'"); ?>"
+		    >
+		        <?php echo t('Remove this contact'); ?>
+		    </a>
+			<div 
+			    class="config_button" 
+			    onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>"
+			></div>
+			<?php 
+				if(isset($_GET['f']))
+					echo $this->prepareInfos(Cache::c('vcard'.$_GET['f']));
+				
+			?>
                 
 		</div>
-		<!--<div style="clear: left; width: 0px; height: 0px;"></div>-->
         <?php
     }
 }
