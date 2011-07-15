@@ -147,7 +147,7 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid #888888;
 }
 
-input[type=submit], input[type=reset], input[type=button], .button {
+input[type=submit], input[type=reset], input[type=button], .button, .button:link, .button:visited {
     cursor: pointer;
     border: 1px solid black;
     border-color: #BBB #BBB #999;
@@ -161,7 +161,7 @@ input[type=submit], input[type=reset], input[type=button], .button {
     background: -moz-linear-gradient(top, #F6F6F6, #d0d0d0);
 }
 
-input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover {
+input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .button:hover {
     background: -webkit-gradient(linear, 0% 39%, 0% 100%, from(#F6F6F6), to(#c0c0c0));
     background: -moz-linear-gradient(top, #F6F6F6, #c0c0c0);
     border-color: #999 #999 #888;
@@ -274,15 +274,23 @@ label {
 /* Config button */
 
 .config_button {
-    width: 10px;
-    height: 10px;
-    background-image: url(../img/config_off.png);
+    width: 8px;
+    height: 8px;
+    /*background-image: url(../img/config_off.png);*/
+    border: 1px solid #ccc;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -moz-box-shadow: 0 1px 0 #F8F8F8;
+    -wekbit-box-shadow: 0 1px 0 #F8F8F8;
+    box-shadow: 0 1px 0 #F8F8F8;
+    background-color: white;
     float: right;
-    margin: 2px;
 }
 
 .config_button:hover {
     background-image: url(../img/config_on.png);
+    background-position: -1px -1px;
     cursor: pointer;
 }
 
