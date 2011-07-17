@@ -28,6 +28,7 @@ class Wall extends WidgetBase
     }
     
     function onStream($payload) {
+        movim_log($payload);
         $html = '';
         $i = 0;
         $user = new User();
@@ -38,7 +39,7 @@ class Wall extends WidgetBase
 				    <img class="avatar" alt="test" src="'.Conf::loadPicture($jid, $payload["from"].".jpeg").'">
 
 		        	<div class="content">
-     			        <span>'.$payload["pubsubItemsEntryAuthor"][$i].'</span> '.$value.'
+     			        <span>'.$payload["pubsubItemsEntryAuthor"][$i].'</span> <span class="date">'.date('j F - H:i',strtotime($payload["pubsubItemsEntryPublished"][$i])).'</span> '.$value.'
 		        	</div>
 		        	<div class="comment">
 		        	<a href="#" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$payload["pubsubItemsId"][$i]."'").'">'.t('Get the comments').'</a>

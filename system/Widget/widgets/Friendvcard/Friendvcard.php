@@ -47,7 +47,7 @@ class Friendvcard extends WidgetBase
         $html .= $this->displayIf($vcard["vCardFN"], t('Name'));
         $html .= $this->displayIf($vcard["vCardNickname"], t('Nickname'));
         $html .= $this->displayIf($vcard["from"], t('Adress'));
-        $html .= $this->displayIf($vcard["vCardBDay"], t('Date of Birth'));
+        $html .= $this->displayIf($vcard["vCardBDay"], t('Date of Birth'), date('j F Y',strtotime($vcard["vCardBDay"])));
         
         $html .= '<br />';
         
