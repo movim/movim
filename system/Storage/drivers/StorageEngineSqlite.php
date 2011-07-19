@@ -38,14 +38,18 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
 
         // OK, trying to open the file.
         $this->db = new SQLite3($db_file);
+
+        if(!$this->db) {
+            throw new StorageException(t("The database %s couldn't be opened.", $db_file));
+        }
     }
 
-    public function __destruct()
+/*    public function __destruct()
     {
         if($this->db) {
             $this->db->close();
         }
-    }
+        }*/
 
     /**
      * Checks SQLite errors. Throws a StorageException if there was an error

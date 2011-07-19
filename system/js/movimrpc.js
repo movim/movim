@@ -89,11 +89,13 @@ function MovimRPC()
 
 	    movim_xmlhttp.open('POST', 'jajax.php', true);
 
+        var handler = this.handle_rpc;
+
    	    movim_xmlhttp.onreadystatechange = function()
         {
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
                 //            log("Received data " + movim_xmlhttp.responseText);
-		        MovimRPC_handle_rpc(movim_xmlhttp.responseXML);
+		        handler(movim_xmlhttp.responseXML);
             }
         };
 

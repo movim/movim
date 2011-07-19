@@ -53,12 +53,10 @@ class Session
      */
     protected function __construct($name)
     {
-        $db_file = (($_SERVER['DOCUMENT_ROOT'] == "")? dirname(__FILE__) : $_SERVER['DOCUMENT_ROOT']).'/session.db';
+        $db_file = BASE_PATH . Conf::getServerConfElement('storageConnection');
 
         if(defined('TEST_DB_FILE')) {
             $db_file = TEST_DB_FILE;
-        } else if(defined('SESSION_DB_FILE')) {
-            $db_file = SESSION_DB_FILE;
         }
 
         if(defined('SESSION_MAX_AGE')) {

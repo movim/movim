@@ -38,7 +38,7 @@ require(LIB_PATH . "Widget/WidgetWrapper.php");
 
 
 // Starting session.
-storage_load_driver('sqlite');
+storage_load_driver(Conf::getServerConfElement('storageDriver'));
 Session::start(APP_NAME);
 
 ?>
