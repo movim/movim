@@ -269,6 +269,8 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
         // Populating the object.
         $props = $object->prototype();
 
+        $object->setid($data['id']);
+
         foreach($props as $prop) {
             if(isset($data[$prop['name']])) {
                 $object->__set($prop['name'], $data[$prop['name']]);
@@ -310,6 +312,8 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
             $object = new $objecttype();
             // Populating the object.
             $props = $object->prototype();
+
+            $object->setid($row['id']);
 
             foreach($props as $prop) {
                 if(isset($row[$prop['name']])) {

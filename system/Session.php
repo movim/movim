@@ -86,6 +86,7 @@ class Session
         }
 
         $this->container = $name;
+        Logger::log(1, "Session: Starting session ".self::$sid);
     }
 
     protected function regenerate()
@@ -138,16 +139,21 @@ class Session
     {
         // Does the variable exist?
         $var = new SessionVar();
-        if(!$this->db->load($var, array(
-                                'session' => self::$sid,
-                                'container' => $this->container,
-                                'name' => $varname))) {
+        $success = $this->db->load($var, array(
+                                       'session' => self::$sid,
+                                       'container' => $this->container,
+                                       'name' => $varname));
+
+        Logger::log(1, "Session: Setting variable $varname");
+
+        if(!$success) {
             $var->session = self::$sid;
             $var->container = $this->container;
             $var->name = $varname;
         }
 
         $var->value = base64_encode(serialize($value));
+        $var->timestamp = time();
         $this->db->save($var);
 
         return $var->value;
@@ -169,7 +175,12 @@ class Session
 
     public function delete_container()
     {
-        return $this->db->exec('DELETE FROM session_containers WHERE id="'.$this->container_id.'"');
+        $vars = $this->db->select('SessionVar', array('container' => $this->container));
+        foreach($vars as $var)
+        {
+            $this->db->delete($var);
+        }
+        //return $this->db->exec('DELETE FROM session_containers WHERE id="'.$this->container_id.'"');
     }
 
     /**

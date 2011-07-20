@@ -1,4 +1,4 @@
-<?php
+<?Php
 
 /**
  * \class User
@@ -76,9 +76,6 @@ class User {
 	function desauth()
 	{
         $sess = Session::start(APP_NAME);
-		$sess->remove('login');
-        $sess->remove('pass');
-        $sess->remove('jid');
         Session::dispose(APP_NAME);
 	}
 

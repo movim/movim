@@ -42,6 +42,8 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         if(!$this->db) {
             throw new StorageException(t("The database %s couldn't be opened.", $db_file));
         }
+
+        $this->db->busyTimeout(30000); // 30s lock timeout.
     }
 
 /*    public function __destruct()
@@ -272,6 +274,9 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         // Populating the object.
         $props = $object->prototype();
 
+        // Setting the id first.
+        $object->setid($data['id']);
+
         foreach($props as $prop) {
             if(isset($data[$prop['name']])) {
                 $object->__set($prop['name'], $data[$prop['name']]);
@@ -313,6 +318,8 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
             $object = new $objecttype();
             // Populating the object.
             $props = $object->prototype();
+
+            $object->setid($row['id']);
 
             foreach($props as $prop) {
                 if(isset($row[$prop['name']])) {
