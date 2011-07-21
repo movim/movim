@@ -145,7 +145,7 @@ function show_install_form()
                 array(
                     'sqlite' => 'SQLite',
                     'mysql' => 'MySQL',));
-    make_textbox('database', t("Database"), 'movim.db');
+    make_textbox('database', t("Database"), 'sqlite:///movim.db');
     make_button('send', 'Install');
     ?>
   </form>
