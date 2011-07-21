@@ -21,16 +21,19 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
     protected $db;
 
     // Loading config and attempting to connect.
-    public function __construct()
+    public function __construct($conn = "")
     {
         $args = func_get_args();
-        if(count($args) > 0) {
-            call_user_func_array(array($this, 'init'), $args);
+        if($conn != "") {
+            $this->init($conn);
         }
     }
 
-    public function init($db_file)
+    public function init($conn_string)
     {
+        $conn_details = $this->parse_conn_string($conn_string);
+        $db_file = $conn_details['database'];
+
         // Checking the file can be accessed.
         if($db_file == "") {
             throw new StorageException(t("The database file must be specified."));

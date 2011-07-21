@@ -9,11 +9,17 @@ class StorageEngineWrapper implements StorageDriver
     private $db;
     private static $driver = null;
 
-    function __construct()
+    function __construct($conn = "")
     {
-        $driver = $this->driver;
-        $this->db = new $driver();
-        call_user_func_array(array($this->db, 'init'), func_get_args());
+        if(!self::$driver) {
+            throw new StorageException(t("Unknown storage driver."));
+        } else {
+            $driver = self::$driver;
+            $this->db = new $driver();
+            if($conn != "") {
+                $this->db->init($conn);
+            }
+        }
     }
 
     public static function setdriver($name)
@@ -26,7 +32,7 @@ class StorageEngineWrapper implements StorageDriver
             if(!class_exists($drivername)) {
                 storage_load($name);
             }
-            $this->driver = $drivername;
+            self::$driver = $drivername;
         }
     }
 

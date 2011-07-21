@@ -21,32 +21,36 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
     protected $db;
 
     // Loading config and attempting to connect.
-    public function __construct()
+    public function __construct($conn = "")
     {
         $args = func_get_args();
-        if(count($args) > 0) {
-            call_user_func_array(array($this, 'init'), $args);
+        if($conn != "") {
+            $this->init($conn);
         }
     }
 
-    public function init($host, $port, $username, $password, $database)
+    public function init($conn_string)
     {
+        $conn = $this->parse_conn_string($conn_string);
         // OK, trying to open the file.
-        $this->db = mysql_connect($host.':'.$port, $username, $password);
+        $this->db = mysql_connect($conn['host'].':'.$conn['port'],
+                                  $conn['username'], $conn['password']);
         if(!$this->db) {
             throw new StorageException(t("Couldn't connect to database server."));
         }
 
-        if(!mysql_select_db($database, $this->db)) {
+        if(!mysql_select_db($conn['database'], $this->db)) {
             throw new StorageException(t("Couldn't open database %s.", $database));
         }
+
+        $this->errors();
     }
 
     public function __destruct()
     {
-        if($this->db) {
+/*        if($this->db) {
             mysql_close($this->db);
-        }
+            }*/
     }
 
     /**

@@ -53,29 +53,11 @@ class Session
      */
     protected function __construct($name)
     {
-        $db_file = BASE_PATH . Conf::getServerConfElement('storageConnection');
+        $this->db = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
 
-        if(defined('TEST_DB_FILE')) {
-            $db_file = TEST_DB_FILE;
-        }
-
-        if(defined('SESSION_MAX_AGE')) {
-            $this->max_age = SESSION_MAX_AGE;
-        }
-
-        // Do we create the schema?
-        $create = false;
-        if(defined('SESSION_FORCE_CREATE')
-           || !file_exists($db_file)) {
-            $create = true;
-        }
-
-        $this->db = new StorageEngineSqlite($db_file);
-
-        if($create) {
-            $var = new SessionVar();
-            $this->db->create($var);
-        }
+        // Does the database exist?
+        $var = new SessionVar();
+        $this->db->create($var);
 
         if(self::$sid == null) {
             if(isset($_COOKIE['PHPFASTSESSID'])) {

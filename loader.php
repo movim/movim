@@ -1,6 +1,6 @@
 <?php
 
-ini_set('html_errors', false);
+  //ini_set('html_errors', false);
 
 // A few constants...
 define('BASE_PATH', dirname(__FILE__) . '/');
@@ -41,6 +41,7 @@ require(LIB_PATH . "Widget/WidgetWrapper.php");
 
 // Starting session.
 storage_load_driver(Conf::getServerConfElement('storageDriver'));
+StorageEngineWrapper::setdriver(Conf::getServerConfElement('storageDriver'));
 Session::start(APP_NAME);
 
 ?>

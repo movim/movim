@@ -131,6 +131,20 @@ class StorageEngineBase implements StorageDriver
         $refl = new ReflectionClass($object);
         return $refl->getName();
     }
+
+    /**
+     * Parses a connection string
+     */
+    protected function parse_conn_string($string)
+    {
+        $matches = array();
+        preg_match('#^.+?://(?:(.+?)(?::(.+?))?@(.+?)(?::(.+?))?)?/(.+)$#', $string, $matches);
+        return array('username' => $matches[1],
+                     'password' => $matches[2],
+                     'host'     => $matches[3],
+                     'port'     => $matches[4],
+                     'database' => $matches[5]);
+    }
 }
 
 ?>
