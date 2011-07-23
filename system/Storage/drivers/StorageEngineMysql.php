@@ -104,7 +104,7 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
     protected function create_stmt(&$type)
     {
         $typename = $type['val']->gettype();
-        $def = $type['name'] . ' ';
+        $def = '`'.$type['name'] . '` ';
         switch($typename) {
         case 'StorageTypeBigInt':
             $def.= 'BIGINT';
@@ -150,8 +150,8 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
 
         $proto = $object->prototype();
 
-        $stmt = "CREATE TABLE IF NOT EXISTS ".$this->obj_name($object)."(".
-            "id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, ";
+        $stmt = "CREATE TABLE IF NOT EXISTS `".$this->obj_name($object)."`(".
+            "`id` INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, ";
         foreach($proto as $prop) {
             $stmt .= $this->create_stmt($prop) . ", ";
         }
@@ -171,12 +171,12 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
         $props = $object->prototype();
 
         if(!$object->id) {
-            $stmt = "INSERT INTO " . $this->obj_name($object);
+            $stmt = "INSERT INTO `" . $this->obj_name($object) . '`';
 
             $cols = "";
             $vals = "";
             foreach($props as $prop) {
-                $cols.= $prop['name'] . ', ';
+                $cols.= '`'.$prop['name'] . '`, ';
                 if(StorageEngineBase::does_extend($prop['val'], "StorageBase")) {
                     $vals.= "'" . $prop['val']->id . "', ";
                 } else {
@@ -190,12 +190,12 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
             $this->query($stmt);
             $object->setid($this->lastId());
         } else {
-            $stmt = "UPDATE " . $this->obj_name($object) . " SET ";
+            $stmt = "UPDATE `" . $this->obj_name($object) . "` SET ";
 
             $cols = "";
             $vals = "";
             foreach($props as $prop) {
-                $stmt.= $prop['name'] . '=';
+                $stmt.= '`'.$prop['name'] . '`=';
                 if(StorageEngineBase::does_extend($prop['val'], "StorageBase")) {
                     $stmt.= "'" . $prop['val']->id . "', ";
                 } else {
@@ -215,7 +215,7 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
 
         // Does the object exist in the storage?
         if($object->id) {
-            $stmt = "DELETE FROM " . $this->obj_name($object) . " WHERE id='" . $object->id . "';";
+            $stmt = "DELETE FROM `" . $this->obj_name($object) . "` WHERE `id`='" . $object->id . "';";
 
             $result = $this->query($stmt);
 
@@ -231,7 +231,7 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
     {
         $this->require_storage($object);
 
-        $stmt = 'DROP TABLE IF EXISTS '.$this->obj_name($object).';';
+        $stmt = 'DROP TABLE IF EXISTS `'.$this->obj_name($object).'`;';
 
         $result = $this->query($stmt);
 
@@ -247,13 +247,13 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
      */
     public function load(&$object, array $cond)
     {
-        $stmt = "SELECT * FROM " . $this->obj_name($object);
+        $stmt = "SELECT * FROM `" . $this->obj_name($object) . '`';
 
         if(count($cond) > 0) {
             $stmt.= " WHERE ";
 
             foreach($cond as $col => $val) {
-                $stmt.= "$col='$val' AND ";
+                $stmt.= "`$col`='$val' AND ";
             }
 
             // Stripping the extra " AND "
@@ -289,13 +289,13 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
      */
     public function select($objecttype, array $cond)
     {
-        $stmt = "SELECT * FROM " . $objecttype;
+        $stmt = "SELECT * FROM `" . $objecttype . '`';
 
         if(count($cond) > 0) {
             $stmt.= " WHERE ";
 
             foreach($cond as $col => $val) {
-                $stmt.= "$col='$val' AND ";
+                $stmt.= "`$col`='$val' AND ";
             }
 
             // Stripping the extra " AND "

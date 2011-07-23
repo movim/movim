@@ -1,5 +1,21 @@
 <?php
 
+class CacheVar extends StorageBase
+{
+    protected $key;
+    protected $data;
+    protected $checksum;
+    protected $timestamp;
+
+    protected function type_init()
+    {
+        $this->key       = StorageType::varchar(128);
+        $this->data      = StorageType::text();
+        $this->checksum  = StorageType::varchar(64);
+        $this->timestamp = StorageType::int();
+    }
+}
+
 
 /**
  * A fully-static class that deals with caching.
@@ -20,50 +36,14 @@ class Cache
         $user = new User();
         $this->login = $user->getLogin();
 
-        $new = false;
-        $db_file = $this->cache_file();
+        $this->db = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
 
-        if(!file_exists($db_file)) {
-            $new = true;
-        }
-
-        try {
-            $this->db = new SQLite3($db_file);
-            $this->db->busyTimeout(500);
-        }
-        catch(Exception $e) {
-            var_dump($this->login);
-            echo $e->message;
-            exit;
-        }
-
-        // Creating schema.
-        if($new) {
-            $this->query("CREATE TABLE cache(key VARCHAR(100) UNIQUE, ".
-                         "data TEXT, md5 VARCHAR(32), timestamp TIMESTAMP);");
-        }
+        $var = new CacheVar();
+        $this->db->create($var);
     }
 
     function __destruct()
     {
-        $this->db->close();
-    }
-
-    private function query($statement, $return = false)
-    {
-        $this->log($statement);
-
-        if($return) {
-            $res = $this->db->query($statement);
-
-            $table = array();
-            while($row = $res->fetchArray()) {
-                $table[] = $row;
-            }
-            return $table;
-        } else {
-            return $this->db->exec($statement);
-        }
     }
 
     public static function create()
@@ -123,22 +103,6 @@ class Cache
         }
     }
 
-    private function log($text)
-    {
-        if($this->log) {
-            $f = fopen($this->cache_file("queries.log"), "a");
-            fwrite($f, time() . ": " . $text . "\n");
-            fclose($f);
-        }
-
-        return $text;
-    }
-
-    private function cache_file($file = "cache.sqlite")
-    {
-        return BASE_PATH."/user/" . $this->login . "/" . $file;
-    }
-
     /**
      * Serializes data in a proper fashion.
      */
@@ -149,24 +113,15 @@ class Cache
         $md5 = md5($data);
         $time = time();
 
+        $var = new CacheVar();
+        $this->db->load($var, array('key' => $cache_key));
 
-        if($this->db) {
+        $var->key = $cache_key;
+        $var->data = $data;
+        $var->checksum = $md5;
+        $var->timestamp = $time;
 
-            // Does the cache already exist?
-            $table = $this->query("SELECT count(key) as count FROM cache WHERE key='$cache_key'", true);
-            $this->log(var_export($table, true));
-            if(count($table) > 0 && $table[0]['count'] > 0) {
-                // Need to update.
-                $this->query("UPDATE cache SET data='$data', md5='$md5', ".
-                             "timestamp='$time' WHERE key='$cache_key'");
-            } else {
-                $this->query("INSERT INTO cache(key, data, md5, timestamp)".
-                             "VALUES('$cache_key', '$data', '$md5', '$time')");
-            }
-
-        } else {
-            throw new MovimException(t("Couldn't open cache. Please contact the administrator."));
-        }
+        $this->db->save($var);
     }
 
     /**
@@ -175,22 +130,12 @@ class Cache
     private function read_cache($key)
     {
         $cache_key = $this->login.':'.$key;
-        $db_file = $this->cache_file();
 
-        if(file_exists($db_file)) {
-            // Getting data.
-            $table = $this->query("SELECT * FROM cache WHERE key='$cache_key'", true);
-            if(count($table) < 1) {
-                return false;
-            }
+        $var = new CacheVar();
+        $success = $this->db->load($var, array('key' => $cache_key));
 
-            // Checking integrity.
-            if(md5($table[0]['data']) == $table[0]['md5']) {
-                return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $table[0]['data']))));
-            } else {
-                return false;
-            }
-
+        if($success) {
+            return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
         } else {
             return false;
         }
