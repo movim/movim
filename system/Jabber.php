@@ -414,6 +414,17 @@ class Jabber
 	}
 	
 	/**
+	 * sendVcard
+	 *
+	 * @param array $vcard
+	 * @return void
+	 */
+	public function updateVcard($vcard)
+	{
+		$this->jaxl->JAXL0054('updateVCard', $vcard);
+	}
+	
+	/**
 	 * Ask for some items
 	 *
 	 * @param unknown $jid = false

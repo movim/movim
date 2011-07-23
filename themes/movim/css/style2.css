@@ -48,9 +48,9 @@ a:link, a:visited {
 
 hr {
     border: 0px;
-    background-color: black;
+    background-color: #DCDCDC;
     height: 1px;
-    background: -moz-linear-gradient( left center, rgba(60, 60, 60, 0), rgba(190, 190, 190, 0.8), rgba(60, 60, 60, 0) );
+    background: -moz-linear-gradient( left center, rgba(60, 60, 60, 0), rgba(220, 220, 220, 0.8), rgba(60, 60, 60, 0) );
     margin: 0.7em;
     padding: 0px;
 }
@@ -117,6 +117,7 @@ h3 {
     text-align: right;
     clear: both;
     color: gray;
+    margin-top: 10px;
 }
 
 /* Formulaires */
@@ -133,7 +134,6 @@ input, select, textarea {
     margin: 0;
     overflow: hidden;
     padding: 5px 9px 5px 9px;
-    text-shadow: 0 1px #F0F0F0;
     color: #333;
     background-color: white;
 }
@@ -155,6 +155,7 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     -wekbit-box-shadow: 0 1px 0 #F8F8F8;
     box-shadow: 0 1px 0 #F8F8F8;
     margin-left: 5px;
+    text-shadow: 0 1px #F0F0F0;
     color: #555;
 
     background: -webkit-gradient(linear, 0% 39%, 0% 100%, from(#F6F6F6), to(#d0d0d0));

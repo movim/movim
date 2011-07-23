@@ -1,0 +1,40 @@
+#vcard .element {
+    padding: 5px;
+    clear: both;
+    overflow: auto;
+    width: 100%;
+}
+
+#vcard img {
+    max-width: 200px;
+    padding: 5px;
+    border: 1px solid #CCC;
+}
+
+#vcard input[type=text] {
+    border: 1px solid transparent;
+    margin: -5px;
+}
+
+#vcard input[type=text]:hover {
+    border-color: #DDD;
+}
+
+#vcard input[type=text]:focus {
+    border-color: #CCC;
+}
+
+#vcard .element span {
+    font-weight: bold;
+    width: 170px;
+    display: block;
+    float: left;
+    padding-right: 2em;
+    text-align: right;
+}
+
+#vcard .content {
+    display: block;
+    float: left;
+    width: 500px;
+}

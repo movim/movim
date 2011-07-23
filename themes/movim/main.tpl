@@ -16,5 +16,7 @@
 <?php $this->widget('Log');?>
 </div>
 <div id="center">
-  <?php $this->widget('Wall');?>
+    <?php $this->widget('Tabs');?>
+    <?php /*$this->widget('Wall');*/?>
+    <?php $this->widget('Vcard');?>
 </div>
