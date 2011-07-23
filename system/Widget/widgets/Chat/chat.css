@@ -50,10 +50,10 @@
 }
 
 .talk .box .message {
-    margin: 0px;
-    font-size: 11px;
+    border-bottom: 1px solid #EEE;
     padding: 3px;
     max-width: 100%;
+    min-height: 15px;
 }
 
 .talk .box .info {
@@ -63,15 +63,11 @@
 .talk .box .message .date {
     color: #BDBDBD;
     float: right;
-    padding-right: 6px;
+    padding-right: 5px;
 }
 
 .talk .box .me {
     border-left: 2px solid #AEAEAE;
-}
-
-.talk .box .me .date {
-    padding-right: 8px;
 }
 
 .talk .box .input {

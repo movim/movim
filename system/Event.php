@@ -12,8 +12,6 @@ class Event
 	function runEvent($type, $event)
 	{
         global $polling;
-        Logger::log(Logger::LOGLEVEL_STANDARD, "Running '$type' event");
-        Logger::log(Logger::LOGLEVEL_FINEST, "'$type' event payload : ".var_export($event, true));
         if(!$polling) { // avoids issues while loading pages.
             return;
         }

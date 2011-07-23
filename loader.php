@@ -6,6 +6,7 @@ define('APP_NAME', 'movim');
 define('LIB_PATH', BASE_PATH.'system/');
 define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
+define('USERS_PATH', BASE_PATH . 'user/');
 
 define('SESSION_DB_FILE', BASE_PATH . 'session.db');
 define('SESSION_MAX_AGE', 24 * 3600);

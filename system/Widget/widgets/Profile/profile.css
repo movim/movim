@@ -1,25 +1,109 @@
-#profile {
-	margin-bottom: 1em;
+#profile #profileavatar {
+    width: 170px;
+    height: 100%;
+    padding: 0 20px;
+    float: left;
 }
 
-#profile #myinfos {
-	font-size: 0.8em;
-	float: right;
-	width: 105px;
+#profile #profiledescription {
+    margin-top: 5px;
+    font-style: italic;
+    max-width: 60%;
+    text-align: justify;
+    display: block;
+    min-height: 40px;
+    background-image: url(img/say.png);
+    background-repeat: no-repeat;
+    padding-left: 15px;
+    background-position: 0px 5px;
+    margin-left: 200px;
 }
 
-#profile #desc {
-	font-size: 0.8em;
-	padding-bottom: 0.5em;
-	padding-top: 0.5em;
+#profile #profiledescription p {
+    background-color: white;
+    padding: 1em;
+    max-height: 4em;
 }
 
-#profile input#statusText {
-	border-radius: 0px;
-	-moz-border-radius: 0px;
+#profile #profileavatar img {
+    margin: 0 auto;
+    float: right;
+    height: 100px;
+}
+
+#profile #profilestatustext {
+	width: 95%;
+    border: 1px solid transparent;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	margin: 0px;
-	font-size: 0.8em;
-	width: 95%;
+}
+
+#profile #profilestatustext:hover {
+    border: 1px solid #DDD;
+}
+
+#profile #presencebutton {
+    display: inline;
+    width: 180px;
+    padding: 3px;
+    float: right;
+    border: 1px solid transparent;
+}
+
+#profile #presencebutton:hover {
+    cursor: pointer;
+    border: 1px solid #DDD;
+}
+
+#profile #presencebutton img {
+    margin: 0px 4px;
+    width: 10px;
+    height: 10px;
+}
+
+#profile #presencelist {
+    background-color: #444444;
+    color: white;
+    list-style-type: none;
+    padding: 0px;
+    width: 186px;
+    overflow: hidden;
+    margin: 0px;
+    float: right;
+    margin-top: 23px;
+    margin-right: -188px;
+    border: 1px solid #DDD;
+    border-top: none;
+    display: none;
+}
+
+#profile #presencelist li {
+    padding: 3px;
+    width: auto;
+}
+
+#profile #presencelist li:hover {
+    background-color: #292929;
+    cursor: pointer;
+}
+
+#profile #presencelist img {
+    margin-bottom: -1px;
+    margin-right: 3px;
+    margin-left: 2px;
+    width: 10px;
+    height: 10px;
+}
+
+#profile h2 {
+    font-size: 20px;
+    color: #444;
+    font-weight: normal;
+    display: inline;
+}
+
+#profile .config_button {
+    float: left;
+    position: absolute;
 }

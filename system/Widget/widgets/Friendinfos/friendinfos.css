@@ -1,40 +1,79 @@
 #friendinfos {
-	margin-top: 1em;
-	margin-right: 1em;
-	display: block;
-	min-height: 7em;
-	overflow: auto;
-	padding-bottom: 1em;
-	border-bottom: 1px solid #ECECEC;
+/*    margin: 5px;*/
+    width: 100%;
+    overflow: hidden;
+    float: left;
+/*    text-align: center;*/
 }
 
-#friendinfos img {
-	float: right;
-	max-height: 7em;
+#friendinfos #friendavatar {
+    width: 170px;
+    height: 100%;
+    padding: 0 20px;
+    float: left;
+}
+
+#friendinfos #frienddescription {
+    margin-top: 5px;
+    font-style: italic;
+    text-indent: 10px;
+    max-width: 60%;
+    text-align: justify;
+/*    background-color: white;*/
+    background-image: url(img/say.png);
+    background-repeat: no-repeat;
+    padding-left: 15px;
+    background-position: 0px 5px;
+    margin-left: 200px;
+}
+
+#friendinfos #frienddescription p {
+    background-color: white;
+    padding: 1em;
+    max-height: 4em;
+    overflow: auto;
 }
 
 #friendinfos .config_button {
+    float: right;
+    margin-right: 10px;
 }
 
-#friendinfos #infosbox {
-	list-style-type: none;
-	margin: 0px;
-	padding-left: 1em;
+#friendinfos #friendavatar img {
+    margin: 0 auto;
+    float: right;
+    height: 100px;
 }
 
-#friendinfos #infosbox li {
-	display: block;
-	clear: left;
+#friendinfos ul {
+    text-align: left;
+    list-style-type: none;
+    font-size: 10px;
+    display: inline;
 }
 
-#friendinfos #infosbox span {
-	padding-right: 1.5em;
-	color: gray;
-	float: left;
-	clear: left;
-	width: 10em;
+#friendinfos ul li {
+    display: inline;
+    padding: 0px 5px;
 }
 
-#friendinfos #description {
-	margin: 1em;
+#friendinfos ul li span {
+    color: #7D7D7D;
+    padding-right: 5px;
+}
+
+#friendinfos h2 {
+    font-size: 20px;
+    color: #444;
+    font-weight: normal;
+    display: inline;
+}
+
+#friendinfos .config_button {
+    float: left;
+    position: absolute;
+}
+
+#friendinfos #friendremove {
+    float: right;
 }

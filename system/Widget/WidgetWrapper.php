@@ -83,7 +83,6 @@ class WidgetWrapper
     private function load_widget($widget_name)
     {
         // Attempting to load the user's widgets in priority
-        Logger::log(Logger::LOGLEVEL_STANDARD, "Loading widget '$widget_name'");
 		$widget_path = "";
         $extern = null;
 		if(file_exists(BASE_PATH . "Widget/widgets/$widget_name/$widget_name.php")) {
@@ -145,7 +144,6 @@ class WidgetWrapper
      */
     function iterate($method, array $params = NULL)
     {
-        Logger::log(Logger::LOGLEVEL_STANDARD, "Iterating '$method' method on loaded widgets");
         $buff = array();
         $widgets = $this->get_loaded_widgets();
         foreach($widgets as $widget) {
