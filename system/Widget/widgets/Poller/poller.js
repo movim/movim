@@ -15,7 +15,7 @@ function movimRegisterPollHandler(type, func)
  */
 function movim_poll()
 {
-	poller = MovimRPC_make_xmlhttp();
+	poller = rpc.make_xmlhttp();
 	poller.open('GET', 'jajax.php?do=poll', true);
 
 	poller.onreadystatechange = function()
@@ -24,7 +24,7 @@ function movim_poll()
 		{
 			if(poller.status == 200) {
 				// Handling poll return.
-                MovimRPC_handle_rpc(poller.responseXML);
+                rpc.handle_rpc(poller.responseXML);
             }
 
 			if(poller.status > 0) {
@@ -38,7 +38,7 @@ function movim_poll()
 	poller.send();
 }
 
-function halt_poll() 
+function halt_poll()
 {
 	poller.abort();
 }
