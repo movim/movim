@@ -135,41 +135,6 @@ class WidgetBase
 		return $widget . '_' . $funcname . "(" . $args . ");";
     }
 
-    /**
-     * Ajax call upon javascript-triggered event.
-     */
-    protected function makeJsHandler($event, $function)
-    {
-        $this->ajax->defHandler($event, get_class($this), $function);
-    }
-
-    /**
-     * Starts a javascript event.
-     */
-    protected function getInvokeJsEvent($eventname)
-    {
-        $args = array_slice(func_get_args(), 1);
-        $args = implode(', ', $args);
-
-        $buf = "movim_events_emit('$eventname'";
-
-        if($args != "") {
-            $buf .= ", ". $args .");";
-        } else {
-            $buf .= ");";
-        }
-
-        return $buf;
-    }
-
-    /**
-     * Echoes a javascript event trigger.
-     */
-    protected function invokeJsEvent($eventname)
-    {
-        echo $this->getInvokeJsEvent($eventname);
-    }
-
 	/**
 	 * Adds a javascript file to this widget.
 	 */
@@ -199,8 +164,7 @@ class WidgetBase
 	 */
 	protected function registerEvent($type, $function)
 	{
-        Logger::log(Logger::LOGLEVEL_FINE, "Widget ".$this->name.": registering '$function' function to '$type' event");
-        if(!is_array($this->events)
+		if(!is_array($this->events)
 		   || !array_key_exists($type, $this->events)) {
 			$this->events[$type] = array($function);
 		} else {

@@ -141,8 +141,11 @@ function show_install_form()
     make_textbox('defBoshPort', t("Bosh Port"), '80');
     echo '<hr />';
     echo t('<h2>Storage</h2>') . PHP_EOL;
-/*    make_select('storage', t("Storage driver"), array('sqlite'));
-      make_textbox('database', t("Database"), 'movim.sqlite');*/
+    make_select('storage', t("Storage driver"),
+                array(
+                    'sqlite' => 'SQLite',
+                    'mysql' => 'MySQL',));
+    make_textbox('database', t("Database"), 'sqlite:///movim.db');
     make_button('send', 'Install');
     ?>
   </form>
@@ -205,20 +208,20 @@ function perform_install()
   // Creating the configuration file.
   $conf = array(
     'config' => array(
-      'theme' => $_POST['theme'],
-      'defLang' => $_POST['language'],
-      'boshCookieTTL' => $_POST['boshCookieTTL'],
-      'boshCookiePath' => $_POST['boshCookiePath'],
-      'boshCookieDomain' => get_checkbox('boshCookieDomain'),
-      'boshCookieHTTPS' => get_checkbox('boshCookieHTTPS'),
+      'theme'              => $_POST['theme'],
+      'defLang'            => $_POST['language'],
+      'boshCookieTTL'      => $_POST['boshCookieTTL'],
+      'boshCookiePath'     => $_POST['boshCookiePath'],
+      'boshCookieDomain'   => get_checkbox('boshCookieDomain'),
+      'boshCookieHTTPS'    => get_checkbox('boshCookieHTTPS'),
       'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
-      'logLevel' => $_POST['verbosity'],
-      'accountCreation' => get_checkbox('accountCreation', 1, 0),
-      'defBoshHost' => $_POST['defBoshHost'],
-      'defBoshSuffix' => $_POST['defBoshSuffix'],
-      'defBoshPort' => $_POST['defBoshPort'],
-/*      'storageDriver' => $_POST['storage'],
-        'database' => $_POST['database'],*/
+      'logLevel'           => $_POST['verbosity'],
+      'accountCreation'    => get_checkbox('accountCreation', 1, 0),
+      'defBoshHost'        => $_POST['defBoshHost'],
+      'defBoshSuffix'      => $_POST['defBoshSuffix'],
+      'defBoshPort'        => $_POST['defBoshPort'],
+      'storageDriver'      => $_POST['storage'],
+      'storageConnection'  => $_POST['database'],
       ),
     );
   if(!@file_put_contents('config/conf.xml', make_xml($conf))) {

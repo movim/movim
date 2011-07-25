@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-21 19:24+0200\n"
+"POT-Creation-Date: 2011-07-14 23:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,15 +74,15 @@ msgstr ""
 msgid "Allow account creation"
 msgstr ""
 
-#: ../install.php:139 ../system/Widget/widgets/Config/Config.php:60
+#: ../install.php:139 ../system/Widget/widgets/Config/Config.php:63
 msgid "Bosh Host"
 msgstr ""
 
-#: ../install.php:140 ../system/Widget/widgets/Config/Config.php:63
+#: ../install.php:140 ../system/Widget/widgets/Config/Config.php:67
 msgid "Bosh Suffix"
 msgstr ""
 
-#: ../install.php:141 ../system/Widget/widgets/Config/Config.php:66
+#: ../install.php:141 ../system/Widget/widgets/Config/Config.php:70
 msgid "Bosh Port"
 msgstr ""
 
@@ -123,36 +123,48 @@ msgstr ""
 msgid "Couldn't open cache. Please contact the administrator."
 msgstr ""
 
-#: ../system/Conf.php:23 ../system/Conf.php:47
+#: ../system/Conf2.php:32 ../system/Conf2.php:56 ../system/Conf.php:24
+#: ../system/Conf.php:48
 #, php-format
 msgid "Cannot load element value'%s'"
 msgstr ""
 
-#: ../system/Conf.php:85 ../system/Conf.php:131 ../system/Conf.php:133
+#: ../system/Conf2.php:94 ../system/Conf2.php:140 ../system/Conf2.php:142
+#: ../system/Conf.php:86 ../system/Conf.php:133 ../system/Conf.php:135
 #, php-format
 msgid "Couldn't create file %s"
 msgstr ""
 
-#: ../system/Conf.php:135
+#: ../system/Conf2.php:144 ../system/Conf.php:137
 msgid "Couldn't create configuration files."
 msgstr ""
 
-#: ../system/Conf.php:143
+#: ../system/Conf2.php:152 ../system/Conf.php:174
 #, php-format
 msgid "Cannot load file '%s'"
 msgstr ""
 
-#: ../system/Jabber.php:100
+#: ../system/Conf.php:148 ../system/Conf.php:152
+#, php-format
+msgid "Couldn't save img file %s"
+msgstr ""
+
+#: ../system/Jabber.php:110
 msgid "User not logged in."
 msgstr ""
 
-#: ../system/Jabber.php:104
+#: ../system/Jabber.php:114
 msgid "JID not provided."
 msgstr ""
 
-#: ../system/Jabber.php:119
+#: ../system/Jabber.php:133
 #, php-format
 msgid "jid '%s' is incorrect"
+msgstr ""
+
+#: ../system/Logger.php:27
+#, php-format
+msgid "Cannot open log file '%s'"
 msgstr ""
 
 #: ../system/MovimException.php:15
@@ -164,93 +176,210 @@ msgstr ""
 msgid "Wrong password"
 msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:80
-msgid "Chat"
+#: ../system/Controller/ControllerMain.php:40
+#: ../system/Controller/ControllerMain.php:59
+#, php-format
+msgid "%s - Welcome to Movim"
 msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:84
-msgid "Message"
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:61
+#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:107
+msgid "Home"
 msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:85
-msgid "To"
+#: ../system/Controller/ControllerMain.php:43
+#: ../system/Controller/ControllerMain.php:71
+#: ../system/Controller/ControllerMain.php:92
+msgid "Configuration"
 msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:86
-msgid "Send"
+#: ../system/Controller/ControllerMain.php:89
+#, php-format
+msgid "%s - Configuration"
 msgstr ""
 
-#: ../system/Widget/widgets/Config/Config.php:43
-msgid "Language"
+#: ../system/Controller/ControllerMain.php:105
+#, php-format
+msgid "%s - Account Creation"
 msgstr ""
 
-#: ../system/Widget/widgets/Config/Config.php:58
-msgid "BOSH Connection Prefrences"
+#: ../system/Controller/ControllerMain.php:123
+#, php-format
+msgid "%s - Login to Movim"
 msgstr ""
 
-#: ../system/Widget/widgets/Config/Config.php:59
+#: ../system/Controller/ControllerMain.php:126
+msgid "Account Creation"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:130
+#: ../system/Widget/widgets/Config/Config.php:61
 msgid ""
 "Changing these data can be dangerous and may compromise the connection to "
 "the Jabber server"
 msgstr ""
 
-#: ../system/Widget/widgets/Config/Config.php:70
+#: ../system/Controller/ControllerMain.php:136
+msgid "My address"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:137
+msgid "Password"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:138
+msgid "Come in!"
+msgstr ""
+
+#: ../system/Widget/widgets/Chat/Chat.php:120
+msgid "Composing"
+msgstr ""
+
+#: ../system/Widget/widgets/Chat/Chat.php:134
+msgid "Paused"
+msgstr ""
+
+#: ../system/Widget/widgets/Chat/Chat.php:155
+msgid "Message"
+msgstr ""
+
+#: ../system/Widget/widgets/Config/Config.php:45
+msgid "Language"
+msgstr ""
+
+#: ../system/Widget/widgets/Config/Config.php:60
+msgid "BOSH Connection Prefrences"
+msgstr ""
+
+#: ../system/Widget/widgets/Config/Config.php:74
 msgid "Submit"
 msgstr ""
 
-#: ../system/Widget/widgets/Config/Config.php:71
+#: ../system/Widget/widgets/Config/Config.php:75
 msgid "Reset"
 msgstr ""
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:36
-#: ../system/Widget/widgets/Profile/Profile.php:36
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
+#: ../system/Widget/widgets/Profile/Profile.php:48
 msgid "Your avatar"
 msgstr ""
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:39
-msgid "Firstname"
-msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:40
-msgid "Family name"
-msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:41
-msgid "Nickname"
-msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:42
-msgid "Name given"
-msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:43
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
 msgid "Website"
 msgstr ""
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:45
-msgid "About me"
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
+msgid "Date of birth"
 msgstr ""
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:62
-msgid "Contact informations"
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:80
+msgid "Refresh the data"
 msgstr ""
 
-#: ../system/Widget/widgets/Friends/Friends.php:151
-msgid "Contacts"
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:89
+msgid "Hye, I'm on Movim !"
 msgstr ""
 
-#: ../system/Widget/widgets/Log/Log.php:31
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:130
+msgid "Remove this contact"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:45
+msgid "General Informations"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:47
+msgid "Name"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
+msgid "Nickname"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
+msgid "Adress"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:50
+msgid "Date of Birth"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:55
+msgid "Avatar"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:58
+msgid "About Me"
+msgstr ""
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
+msgid "Profile"
+msgstr ""
+
+#: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr ""
 
-#: ../system/Widget/widgets/Logout/Logout.php:47
+#: ../system/Widget/widgets/Logout/Logout.php:49
 msgid "Logout"
 msgstr ""
 
-#: ../system/Widget/widgets/Profile/Profile.php:87
-msgid "Status"
+#: ../system/Widget/widgets/Notifs/Notifs.php:39
+msgid "wants to talk with you"
 msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:35
-msgid "This is my custom Wall widget."
+#: ../system/Widget/widgets/Notifs/Notifs.php:41
+msgid "Accept"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:42
+#: ../system/Widget/widgets/Notifs/Notifs.php:98
+msgid "Validate"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:43
+msgid "Decline"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:97
+msgid "Alias"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:99
+msgid "Add a contact"
+msgstr ""
+
+#: ../system/Widget/widgets/Profile/Profile.php:34
+msgid "Chat"
+msgstr ""
+
+#: ../system/Widget/widgets/Profile/Profile.php:35
+msgid "Do not disturb"
+msgstr ""
+
+#: ../system/Widget/widgets/Profile/Profile.php:36
+msgid "Away"
+msgstr ""
+
+#: ../system/Widget/widgets/Profile/Profile.php:37
+msgid "Away for a long time"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:44
+msgid "Get the comments"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:51
+msgid "Contact's feed cannot be loaded."
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:69
+msgid "Feed"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:73
+msgid "Loading the contact feed ..."
 msgstr ""

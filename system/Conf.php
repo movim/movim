@@ -5,6 +5,7 @@ class Conf
     public static $conf_path = "/config";
 
 	function __construct() {
+
 	}
 
 	/* Return the general configuration */
@@ -108,6 +109,7 @@ class Conf
             $serv = self::getServerConf();
 
             mkdir($dir_conf);
+            mkdir($dir_conf.'/img');
             $conf_xml =
                 '<?xml version="1.0" encoding="UTF-8"?>'."\n".
                 '<data>'."\n".
@@ -134,6 +136,35 @@ class Conf
         } else {
             throw new MovimException(t("Couldn't create configuration files."));
         }
+    }
+    
+    /* Save a binary avatar to a file */
+    
+    static function savePicture($jid, $contact, $data, $type) {
+        $dir_img = BASE_PATH . "/user/$jid/img";
+        
+        if($type == "image/jpeg") {
+            if(!file_put_contents($dir_img.'/'.$contact.'.jpeg', base64_decode($data)))
+                throw new MovimException(t("Couldn't save img file %s", $contact.'.jpeg'));
+        } elseif($type == "image/png") {
+            $file = $dir_img.'/'.$contact;
+            if(!file_put_contents($file.'.png', base64_decode($data)))
+                throw new MovimException(t("Couldn't save img file %s", $contact.'.png'));
+                
+            $image = imagecreatefrompng($file.'.png');
+            imagejpeg($image, $file.'.jpeg', 95);
+            imagedestroy($image);
+            unlink($file.'.png');
+        } 
+    }
+    
+	/**
+	 * Return the url of an image sotred in the user account
+	 */
+    
+    static function loadPicture($jid, $name) {
+        $base_uri = str_replace('jajax.php', '', BASE_URI);
+        return $base_uri . "/user/".$jid."/img/".$name;
     }
 
 	/* Actually reads the XML file if it exists */

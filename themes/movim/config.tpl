@@ -2,10 +2,15 @@
 ?>
 <?php $this->widget('Poller');?>
 <?php $this->widget('Logout');?>
-<div id="left">
+<div id="topgray">
+</div>
+<div id="top">
   <?php $this->widget('Profile');?>
-  <?php $this->widget('Friends');?>
-  <?php $this->widget('Chat');?>
+</div>
+<div id="left">
+    <?php $this->widget('Friends');?>
+    <?php $this->widget('Notifs');?>
+    <?php $this->widget('Chat');?>
 </div>
 <div id="right">
 	<?php $this->widget('Log');?>

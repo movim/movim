@@ -1,20 +1,16 @@
 #logout {
 	position: absolute;
-	top: 0px;
+	top: 3px;
 	right: 0px;
-	background: url(img/door_open.png) no-repeat 5px 2px;
-	height: 1em;
-	font-size: 12px;
-	padding: 6px;
-	padding-top: 3px;
-	padding-left: 27px;
-	-moz-transition: background-color 0.5s ease;
-	-webkit-transition: background-color 0.5s ease;
+    overflow: hidden;
+    display: block;
+    padding: 4px 15px;
 	cursor: pointer;
-	color: white;
-	font-family:  arial, 'lucida grande', sans-serif;
+    color: white;
+    font-size: 11px;
+    z-index: 2;
 }
 
 #logout:hover {
-	background-color: #292929;
+    background-color: #6F6F6F;
 }

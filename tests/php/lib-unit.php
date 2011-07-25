@@ -42,7 +42,7 @@ function ut_equals($stuff, $expectedstuff)
   printtest($stuff == $expectedstuff);
 }
 
-function ut_different($stuff, $expectedstuff)
+function ut_differs($stuff, $expectedstuff)
 {
   if(is_array($stuff) && is_array($expectedstuff)) {
     $stuff = sort($stuff);
