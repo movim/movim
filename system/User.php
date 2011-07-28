@@ -29,7 +29,7 @@ class User {
 				&& isset($_POST['pass'])
 				&& $_POST['login'] != ''
 				&& $_POST['pass'] != '') {
-			$this->authenticate($_POST['login'], $_POST['pass']);
+			$this->authenticate($_POST['login'], $_POST['pass'], $_POST['host'], $_POST['suffix'], $_POST['port']);
 		}
 	}
 
@@ -43,12 +43,12 @@ class User {
 		return (($this->username != '' && $this->password != '') || $sess->get('login'));
 	}
 
-	function authenticate($login,$pass)
+	function authenticate($login,$pass, $boshhost, $boshsuffix, $boshport)
 	{
 		try{
             $data = false;
 			if( !($data = Conf::getUserData($login)) ) {
-                Conf::createUserConf($login, $pass);
+                Conf::createUserConf($login, $pass, $boshhost, $boshsuffix, $boshport);
                 $data = Conf::getUserData($login);
             }
 

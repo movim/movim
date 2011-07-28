@@ -77,7 +77,8 @@ class Friendinfos extends WidgetBase
                     $html .= '<li><span>'.$val[$key] . '</span>' .$value.'</li>';
             }
         } else {
-            $html .= '<div onclick="'.$this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'").'" class="refresh">'.t('Refresh the data').'</div>';
+            //$html .= '<div onclick="'.$this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'").'" class="refresh">'.t('Refresh the data').'</div>';
+            $html .= '<script type="text/javascript">'.$this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'").'</script>';
         }
         $html .= '</ul>';
         

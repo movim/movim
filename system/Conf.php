@@ -98,7 +98,7 @@ class Conf
         }
 	}
 
-    static function createUserConf($jid, $password)
+    static function createUserConf($jid, $password, $boshhost = false, $boshsuffix = false, $boshport =false)
     {
         $dir_conf = BASE_PATH . "/user/$jid";
 
@@ -107,6 +107,10 @@ class Conf
             list($user, $host) = explode('@', $jid);
 
             $serv = self::getServerConf();
+            
+            $boshhost = ($boshhost != false) ? $boshhost : $serv['defBoshHost'];
+            $boshsuffix = ($boshsuffix != false) ? $boshsuffix : $serv['defBoshSuffix'];
+            $boshport = ($boshport != false) ? $boshport : $serv['defBoshPort'];
 
             mkdir($dir_conf);
             mkdir($dir_conf.'/img');
@@ -116,9 +120,9 @@ class Conf
                 '  <host>'.$host.'</host>'."\n".
                 '  <domain>'.$host.'</domain>'."\n".
                 '  <port>5222</port>'."\n".
-                '  <boshHost>'.$serv['defBoshHost'].'</boshHost>'."\n".
-                '  <boshSuffix>'.$serv['defBoshSuffix'].'</boshSuffix>'."\n".
-                '  <boshPort>'.$serv['defBoshPort'].'</boshPort>'."\n".
+                '  <boshHost>'.$boshhost.'</boshHost>'."\n".
+                '  <boshSuffix>'.$boshsuffix.'</boshSuffix>'."\n".
+                '  <boshPort>'.$boshport.'</boshPort>'."\n".
                 '  <language>'.$serv['defLang'].'</language>'."\n".
                 '</data>';
 

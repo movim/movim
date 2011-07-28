@@ -11,16 +11,16 @@
     border: 1px solid #CCC;
 }
 
-#vcard input[type=text] {
+#vcard input[type=text], #vcard textarea {
     border: 1px solid transparent;
     margin: -5px;
 }
 
-#vcard input[type=text]:hover {
+#vcard input[type=text]:hover, #vcard textarea:hover {
     border-color: #DDD;
 }
 
-#vcard input[type=text]:focus {
+#vcard input[type=text]:focus, #vcard textarea:hover {
     border-color: #CCC;
 }
 

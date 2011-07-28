@@ -422,6 +422,7 @@ class Jabber
 	public function updateVcard($vcard)
 	{
 		$this->jaxl->JAXL0054('updateVCard', $vcard);
+        $this->getVCard();
 	}
 	
 	/**

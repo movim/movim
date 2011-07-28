@@ -138,7 +138,7 @@ input, select, textarea {
     background-color: white;
 }
 
-input.tiny, select.tiny, textarea.tiny, .button.tiny {
+input.tiny, select.tiny, textarea.tiny, .button.tiny, label.tiny {
     padding: 3px;
     font-size: 11px;
 }

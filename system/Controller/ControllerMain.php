@@ -130,13 +130,50 @@ class ControllerMain extends ControllerBase
 				t('Changing these data can be dangerous and may compromise the connection to the Jabber server')
 				.'</div>');
 		}
+		
+		$serverconf = Conf::getServerConf();
+		var_dump($serverconf);
+		
 		$this->page->setContent(
-			'<div id="connect_form">'.
-			'<form id="authForm" action="index.php" method="post">'.
-			'<input type="text" name="login" id="login" value="'.t("My address").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
-			'<input type="password" name="pass" id="pass" value="'.t("Password").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
-			'<input class="submit" style="float: none;" type="submit" name="submit" value="'.t("Come in!").'"/>'.
-			'</form>'.
+		    '<div id="loginpage">'.
+		        '<div id="quote">
+		            <blockquote>'.
+		                "I'm free! — I'm free,<br />
+                        And freedom tastes of reality,<br />
+                        I'm free — I'm free,<br />
+                        An' I'm waiting for you to follow me.<br />
+                    </blockquote>
+                <cite>
+                    <a href=\"http://wikipedia.org/wiki/Pete_Townshend\">Pete Townshend</a>, in 
+                    <a href=\"http://wikipedia.org/wiki/I'm_Free_(The_Who_song)\">\"I'm Free\"</a> on 
+                    <a href=\"http://wikipedia.org/wiki/Tommy_(album)\">Tommy</a> by 
+                    <a href=\"http://wikipedia.org/wiki/The_Who\">The Who</a>.
+                </cite>
+                ".
+		        '</div>'.
+			    '<form id="connectform" action="index.php" method="post">'.
+			        '<input type="text" name="login" id="login" 
+			            value="'.t("My address").'" onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
+			        '<input type="password" name="pass" id="pass" 
+			            value="'.t("Password").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
+			            
+			        '<a href="#" class="showoptions" onclick="getElementById(\'options\').style.display = \'block\';">'.t('Options').'</a>'.
+			        
+                    '<fieldset id="options" style="display: none;">'.
+			            '<label class="tiny">'.t('Bosh Host').'</label>
+			                <input type="text" class="tiny" name="host" id="host" 
+			                    value="'.$serverconf['defBoshHost'].'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
+			                    
+			            '<label class="tiny">'.t('Bosh Suffix').'</label>
+			                <input type="text" class="tiny" name="suffix" id="suffix" 
+			                    value="'.$serverconf['defBoshSuffix'].'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
+			                    
+			            '<label class="tiny">'.t('Bosh Port').'</label>
+			                <input type="text" class="tiny" name="port" id="port" 
+			                    value="'.$serverconf['defBoshPort'].'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
+			        '</fieldset>'.
+			        '<input class="submit" type="submit" name="submit" value="'.t("Come in!").'"/>'.
+			    '</form>'.
 			'</div>');
 		echo $this->page->build('page.tpl');
 	}
