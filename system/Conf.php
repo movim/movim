@@ -3,6 +3,7 @@
 class Conf
 {
     public static $conf_path = "/config";
+    public static $conf_files = array();
 
 	function __construct() {
 
@@ -12,8 +13,21 @@ class Conf
 
 	static function getServerConf() {
 		$conf_file = BASE_PATH . self::$conf_path . "/conf.xml";
-		return self::readConfFile($conf_file);
+        return self::getConf('server', $conf_file);
 	}
+
+    /* Gets a configuration. */
+    static function getConf($name, $path)
+    {
+        if(file_exists($path)) {
+            if(!array_key_exists($name, self::$conf_files)) {
+                self::$conf_files[$name] = self::readConfFile($path);
+            }
+            return self::$conf_files[$name];
+        } else {
+            return false;
+        }
+    }
 
 	/* Return the element of the general configuration */
 
@@ -32,11 +46,7 @@ class Conf
 
 	static function getUserConf($jid) {
 		$conf_file = BASE_PATH . "/user/$jid/conf.xml";
-        if(file_exists($conf_file)) {
-            return self::readConfFile($conf_file);
-        } else { // Creating default conf.
-            return false;
-        }
+        return self::getConf('user', $conf_file);
 	}
 
 	/* Return an element of the host configuration */
@@ -90,12 +100,7 @@ class Conf
 
 	static function getUserData($jid) {
 		$conf_file = BASE_PATH . "/user/$jid/data.xml";
-
-        if(file_exists($conf_file)) {
-            return self::readConfFile($conf_file);
-        } else { // Creating default conf.
-            return false;
-        }
+        return self::getConf('userdata', $conf_file);
 	}
 
     static function createUserConf($jid, $password, $boshhost = false, $boshsuffix = false, $boshport =false)
@@ -141,12 +146,12 @@ class Conf
             throw new MovimException(t("Couldn't create configuration files."));
         }
     }
-    
+
     /* Save a binary avatar to a file */
-    
+
     static function savePicture($jid, $contact, $data, $type) {
         $dir_img = BASE_PATH . "/user/$jid/img";
-        
+
         if($type == "image/jpeg") {
             if(!file_put_contents($dir_img.'/'.$contact.'.jpeg', base64_decode($data)))
                 throw new MovimException(t("Couldn't save img file %s", $contact.'.jpeg'));
@@ -154,18 +159,18 @@ class Conf
             $file = $dir_img.'/'.$contact;
             if(!file_put_contents($file.'.png', base64_decode($data)))
                 throw new MovimException(t("Couldn't save img file %s", $contact.'.png'));
-                
+
             $image = imagecreatefrompng($file.'.png');
             imagejpeg($image, $file.'.jpeg', 95);
             imagedestroy($image);
             unlink($file.'.png');
-        } 
+        }
     }
-    
+
 	/**
 	 * Return the url of an image sotred in the user account
 	 */
-    
+
     static function loadPicture($jid, $name) {
         $base_uri = str_replace('jajax.php', '', BASE_URI);
         return $base_uri . "/user/".$jid."/img/".$name;

@@ -147,7 +147,7 @@ class ControllerMain extends ControllerBase
                     <a href=\"http://wikipedia.org/wiki/Pete_Townshend\">Pete Townshend</a>, in 
                     <a href=\"http://wikipedia.org/wiki/I'm_Free_(The_Who_song)\">\"I'm Free\"</a> on 
                     <a href=\"http://wikipedia.org/wiki/Tommy_(album)\">Tommy</a> by 
-                    <a href=\"http://wikipedia.org/wiki/The_Who\">The Who</a>.
+                    <a href=\"http://wikipedia.org/wiki/The_Who\">The Who</a>
                 </cite>
                 ".
 		        '</div>'.
