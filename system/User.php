@@ -29,7 +29,7 @@ class User {
 				&& isset($_POST['pass'])
 				&& $_POST['login'] != ''
 				&& $_POST['pass'] != '') {
-			$this->authenticate($_POST['login'], $_POST['pass'], $_POST['host'], $_POST['suffix'], $_POST['port']);
+			$this->authenticate($_POST['login'], $_POST['pass'], $_POST['host'], $_POST['suffix'], $_POST['port'], $_POST['create']);
 		}
 	}
 
@@ -43,13 +43,21 @@ class User {
 		return (($this->username != '' && $this->password != '') || $sess->get('login'));
 	}
 
-	function authenticate($login,$pass, $boshhost, $boshsuffix, $boshport)
+	function authenticate($login,$pass, $boshhost, $boshsuffix, $boshport, $create)
 	{
 		try{
+		    if(filter_var($login, FILTER_VALIDATE_EMAIL) == false) {
+                header('Location:'.BASE_URI.'index.php?q=disconnect&err=invalidjid');
+                exit();
+            }
             $data = false;
-			if( !($data = Conf::getUserData($login)) ) {
-                Conf::createUserConf($login, $pass, $boshhost, $boshsuffix, $boshport);
-                $data = Conf::getUserData($login);
+			if( !($data = Conf::getUserData($login))) {
+			    if($create == "on") {
+                    Conf::createUserConf($login, $pass, $boshhost, $boshsuffix, $boshport);
+                    $data = Conf::getUserData($login);
+                } else {
+                    header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');   
+                }
             }
 
 			$this->xmppSession = Jabber::getInstance($login);

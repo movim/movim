@@ -30,11 +30,23 @@
 
 #connectform {
     font-size: 17px;
-    padding: 10px;
+    padding: 0px 10px;
     float: right;
     min-height: 200px;
     margin-top: 50px;
     border-left: 1px solid #ccc;
+}
+
+#connectform hr {
+    margin: 0px;
+    height: 0px;
+    display: block;
+    clear: both;
+}
+
+#connectform .warning {
+    font-size: 12px;
+    margin: 5px;
 }
 
 #connectform label {
@@ -58,52 +70,3 @@
     border: none;
 }
 
-/*#connect_form
-{
-	width: auto;
-	margin: 0 auto;
-	margin-top: -5px;
-	padding: 9em 0.5em;
-    font-size: 17px;
-    background-repeat: no-repeat;
-    background-image: url(../img/bee.png);
-    background-position: center center;
-}
-
-#connect_form form
-{
-	margin: 0 auto;
-	text-align: center;
-    background-color: rgba(255,255,255, 0.6);
-    padding: 0.5em;
-    width: 300px;
-}
-
-#connect_form form .showoption {
-    font-size: 12px;
-    float: left;
-}
-
-#connect_form form fieldset {
-    padding-top: 5px;
-    clear: both;
-    display: none;
-}
-
-#connect_form input
-{
-    margin: 5px;
-}
-
-#connect_form input.submit {
-    clear: both;
-    float: none;
-}
-
-#connect_form #port {
-    width: 2em;
-}
-
-#connect_form #suffix {
-    width: 5em;
-}*/

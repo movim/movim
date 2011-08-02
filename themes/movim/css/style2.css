@@ -147,6 +147,11 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid #888888;
 }
 
+input:invalid, input:focus:invalid {
+    border-color: #983A3A;
+    -moz-box-shadow: none;
+}
+
 input[type=submit], input[type=reset], input[type=button], .button, .button:link, .button:visited {
     cursor: pointer;
     border: 1px solid black;
@@ -269,6 +274,8 @@ label {
 .valid {
     background-color: #90DC89;
     border: 1px solid #4ABB3F;
+    padding: 10px;
+    margin: 10px 0px;    
     color: #1C4D17;
 }
 

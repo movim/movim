@@ -124,57 +124,96 @@ class ControllerMain extends ControllerBase
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
 		if(Conf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
-		if($_GET['err'] == 'auth') {
-			$this->page->setContent(
-				'<div class="warning">'.
-				t('Changing these data can be dangerous and may compromise the connection to the Jabber server')
-				.'</div>');
-		}
+		
+		switch ($_GET['err']) {
+            case 'noaccount':
+			    $warning = '
+			            <div class="warning">
+			                Wrong username
+			            </div> ';
+                break;
+            case 'invalidjid':
+			    $warning = '
+			            <div class="warning">
+			                Invalid JID
+			            </div> ';
+                break;
+            case 'failauth':
+			    $warning = '
+			            <div class="warning">
+			                The XMPP authentification failed
+			            </div> ';
+                break;
+        }
+        
+        if(!BROWSER_COMP)
+            $browser_comp = '
+			            <div class="warning">
+			                '.t('Your web browser is too old to use with Movim.').'
+			            </div> ';
 		
 		$serverconf = Conf::getServerConf();
-		var_dump($serverconf);
 		
-		$this->page->setContent(
-		    '<div id="loginpage">'.
-		        '<div id="quote">
-		            <blockquote>'.
+		ob_start();
+		?>
+		<noscript>
+            <style type="text/css">
+                #loginpage {display:none;}
+            </style>
+            <div class="warning">
+            <?php echo t("You don't have javascript enabled.  Good luck with that."); ?>
+            </div>
+        </noscript>
+		    <div id="loginpage">
+		        <?php echo $browser_comp; ?>
+		        
+		        <div id="quote">
+		            <blockquote>
 		                "I'm free! — I'm free,<br />
                         And freedom tastes of reality,<br />
                         I'm free — I'm free,<br />
                         An' I'm waiting for you to follow me.<br />
                     </blockquote>
                 <cite>
-                    <a href=\"http://wikipedia.org/wiki/Pete_Townshend\">Pete Townshend</a>, in 
-                    <a href=\"http://wikipedia.org/wiki/I'm_Free_(The_Who_song)\">\"I'm Free\"</a> on 
-                    <a href=\"http://wikipedia.org/wiki/Tommy_(album)\">Tommy</a> by 
-                    <a href=\"http://wikipedia.org/wiki/The_Who\">The Who</a>
+                    <a href="http://wikipedia.org/wiki/Pete_Townshend">Pete Townshend</a>, in 
+                    <a href="http://wikipedia.org/wiki/I'm_Free_(The_Who_song)">"I'm Free"</a> on 
+                    <a href="http://wikipedia.org/wiki/Tommy_(album)">Tommy</a> by 
+                    <a href="http://wikipedia.org/wiki/The_Who">The Who</a>
                 </cite>
-                ".
-		        '</div>'.
-			    '<form id="connectform" action="index.php" method="post">'.
-			        '<input type="text" name="login" id="login" 
-			            value="'.t("My address").'" onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
-			        '<input type="password" name="pass" id="pass" 
-			            value="'.t("Password").'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
+                
+		        </div>
+			    <form id="connectform" action="index.php" method="post">
+		            <?php echo $warning; ?> 
+			        <input type="email" name="login" id="login" autofocus
+			            value="<?php echo t("My address"); ?>" onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
+			        <input type="password" name="pass" id="pass" 
+			            value="<?php echo t("Password"); ?> "  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
 			            
-			        '<a href="#" class="showoptions" onclick="getElementById(\'options\').style.display = \'block\';">'.t('Options').'</a>'.
+			        <a href="#" class="showoptions" onclick="getElementById('options').style.display = 'block';"><?php echo t('Options'); ?></a>
 			        
-                    '<fieldset id="options" style="display: none;">'.
-			            '<label class="tiny">'.t('Bosh Host').'</label>
+                    <fieldset id="options" style="display: none;">
+			            <label class="tiny"><?php echo t('First Login'); ?></label>
+			                <input type="checkbox" class="tiny" name="create" id="create"><br />
+			                <hr />
+			                    
+			            <label class="tiny"><?php echo t('Bosh Host'); ?></label>
 			                <input type="text" class="tiny" name="host" id="host" 
-			                    value="'.$serverconf['defBoshHost'].'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
+			                    value="<?php echo $serverconf['defBoshHost']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
 			                    
-			            '<label class="tiny">'.t('Bosh Suffix').'</label>
+			            <label class="tiny"><?php echo t('Bosh Suffix'); ?></label>
 			                <input type="text" class="tiny" name="suffix" id="suffix" 
-			                    value="'.$serverconf['defBoshSuffix'].'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
+			                    value="<?php echo $serverconf['defBoshSuffix']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
 			                    
-			            '<label class="tiny">'.t('Bosh Port').'</label>
+			            <label class="tiny"><?php echo t('Bosh Port'); ?></label>
 			                <input type="text" class="tiny" name="port" id="port" 
-			                    value="'.$serverconf['defBoshPort'].'"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />'.
-			        '</fieldset>'.
-			        '<input class="submit" type="submit" name="submit" value="'.t("Come in!").'"/>'.
-			    '</form>'.
-			'</div>');
+			                    value="<?php echo $serverconf['defBoshPort']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
+			        </fieldset>
+			        <input class="submit" type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
+			    </form>
+			</div>
+	    <?php 
+		$this->page->setContent(ob_get_contents());
+        ob_end_clean();
 		echo $this->page->build('page.tpl');
 	}
 

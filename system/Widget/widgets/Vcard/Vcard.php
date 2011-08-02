@@ -58,12 +58,12 @@ class Vcard extends WidgetBase
                     <input type="text" name ="vCardNickname" class="content" value="'.$vcard["vCardNickname"].'">
                   </div>';
         $html .= '<div class="element"><span>'.t('Date of Birth').' YYYY-MM-DD</span>
-                    <input type="text" name ="vCardBDay" class="content" value="'.$vcard["vCardBDay"].'">
+                    <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$vcard["vCardBDay"].'">
                   </div>';
                   
         $html .= '<br />
                   <div class="element"><span>'.t('Website').'</span>
-                    <input type="text" name ="vCardUrl" class="content" value="'.$vcard["vCardUrl"].'">
+                    <input type="url" name ="vCardUrl" class="content" value="'.$vcard["vCardUrl"].'">
                   </div>';
                   
         $html .= '<br />
@@ -75,7 +75,7 @@ class Vcard extends WidgetBase
         $html .= '<br />
             <fieldset>
                 <legend>'.t('Geographic Position').'</legend>';
-		$html .= '<div class="warning">'.t('Renseigner votre position géographique peut fortement porter atteinte à votre vie privé, utilisez toujours cette option qu\'en cas de nécessité').'<a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
+		$html .= '<div class="warning">'.t('Renseigner votre position géographique peut fortement porter atteinte à votre vie privé, n\'utilisez toujours cette option qu\'en cas de nécessité').'<a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
 		$html .= '<div id="geolocation"></div>';
         $html .= '<div class="element"><span>'.t('Latitude').'</span>
                     <input type="text" name="vCardLat" class="content" value="Latitude" readonly>
@@ -97,7 +97,7 @@ class Vcard extends WidgetBase
         $html .= '<br />';
         $html .= $this->displayIf($vcard["vCardDesc"], t('About Me'));*/
         $html .= '<hr />';
-		$html .= ' <input value="'.t('Submit').'" onclick="'.$submit.'" id="right" type="button"> ';
+		$html .= ' <input value="'.t('Submit').'" type="submit" onclick="'.$submit.'" id="right" type="button"> ';
         $html .= '
             </fieldset>
         </form>';
