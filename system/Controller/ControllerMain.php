@@ -144,6 +144,12 @@ class ControllerMain extends ControllerBase
 			                The XMPP authentification failed
 			            </div> ';
                 break;
+            case 'bosherror':
+			    $warning = '
+			            <div class="warning">
+			                The current BOSH URL in invalid
+			            </div> ';
+                break;
         }
         
         if(!BROWSER_COMP)

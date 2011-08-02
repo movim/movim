@@ -151,8 +151,8 @@ class Jabber
      * @return void
      */
     public function postAuth() {
-		$this->jaxl->getRosterList();
-		$this->jaxl->getVCard();
+		//$this->jaxl->getRosterList();
+		//$this->jaxl->getVCard();
     }
 
     /**
