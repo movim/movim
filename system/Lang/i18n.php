@@ -118,6 +118,35 @@ function parse_lang_file($pofile)
 }
 
 /**
+ * Auto-detects and loads the language.
+ */
+function load_language_auto()
+{
+    $nav_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    $langNotFound = true;
+
+    foreach($nav_langs as $lang) {
+        // Normalising and getting the fallback language if necessary.
+        $lang = str_replace ( '-', '_', strtolower($nav_langs[$i]));
+        $generic_lang = false;
+
+        $separator = strpos($lang, '_');
+        if($separator !== false) {
+            $generic_lang = substr($lang, 0, $separator);
+        }
+
+        if(file_exists(BASE_PATH . '/i18n/' . $lang . '.po')) {
+            $langNotFound = false;
+            load_language($check);
+        }
+        else if(file_exists(BASE_PATH . '/i18n/' . $generic_lang . '.po')) {
+            $langNotFound = false;
+            load_language($check);
+        }
+    }
+}
+
+/**
  * Loads the given language.
  */
 function load_language($lang)
