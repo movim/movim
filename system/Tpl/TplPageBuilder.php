@@ -52,21 +52,7 @@ class TplPageBuilder
             }
 		}
 		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-			$nav_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-			$langNotFound = true;
-			$i = 0;
-			while($langNotFound && $i < sizeof($nav_langs)) {
-		    	//$check = str_replace ( '-', '_', strtolower($nav_langs[$i]));
-				$expl_arr = explode("-", $nav_langs[$i]);
-				$check = $expl_arr[0];
-		    	if(file_exists(BASE_PATH . '/i18n/' . $check . '.po')) {
-		    		$langNotFound = false;
-		    		load_language($check);
-		    	}
-		    	else {
-		    		$i++;
-                }
-		    }
+			load_language_auto();
 		}
 		else {
             load_language(Conf::getServerConfElement('defLang'));
