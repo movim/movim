@@ -17,6 +17,7 @@
 </div>
 <div id="center">
     <?php $this->widget('Tabs');?>
+    <?php /*$this->widget('Forums');*/?>
     <?php /*$this->widget('Wall');*/?>
     <?php $this->widget('Vcard');?>
 </div>

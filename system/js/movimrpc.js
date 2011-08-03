@@ -147,7 +147,7 @@ function MovimRPC()
             var funcalls = xml.getElementsByTagName("funcall");
             for(h = 0; h < funcalls.length; h++) {
                 var func = funcalls[h];
-                var funcname = func.attributes.getNamedItem("name").nodeValue;
+                var funcname = func.attributes.getNamedItem("name").value;
                 var f = window[funcname];
                 var params = func.childNodes;
 

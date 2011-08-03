@@ -48,9 +48,7 @@ class Profile extends WidgetBase
         $html = '<div id="profileavatar"><img alt="' . t("Your avatar") . '" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" /></div>'
             
-            .'<h2>'.$vcard['vCardFN'].'<br />'.$vcard['vCardFamily'].'</h2>'
-#            .'<div id="desc">'.$vcard['vCardDesc'].'</div>'
-            ;
+            .'<h2>'.$vcard['vCardFN'].'<br />'.$vcard['vCardFamily'].'</h2>';
         return $html;
     }
 

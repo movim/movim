@@ -265,7 +265,7 @@ class Jabber
 	 * @return void
 	 */
 	public function getIq($payload) {
-	
+	    movim_log($payload);
 		$evt = new Event();
 		
 		// vCard case
@@ -293,9 +293,16 @@ class Jabber
         
         // Pubsub node case
         elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0") {
-            movim_log($payload);
             $evt->runEvent('streamreceived', $payload);
-		} else {
+		}
+		
+		elseif(isset($payload["pubsubNode"])) {
+            $evt->runEvent('thread', $payload);
+		}
+        
+        elseif($payload["queryXmlns"] == "http://jabber.org/protocol/disco#items") {
+            $evt->runEvent('disconodes', $payload);
+        } else {
             $evt->runEvent('none', var_export($payload, true));
         }
     }
@@ -422,6 +429,7 @@ class Jabber
 	public function updateVcard($vcard)
 	{
 		$this->jaxl->JAXL0054('updateVCard', $vcard);
+        $this->getVCard();
 	}
 	
 	/**
@@ -457,6 +465,16 @@ class Jabber
 		//$this->jaxl->JAXL0030('discoItems', $jid, $this->jaxl->jid, false, false);mov
 		$this->jaxl->JAXL0277('getItems', 'edhelas@jappix.com');
         //psgxs.linkmauve.fr
+	}
+	
+	public function discoNodes($pod)
+	{
+		$this->jaxl->JAXL0060('discoNodes', $pod, $this->jaxl->jid);  
+	}
+	
+	public function discoItems($pod, $node)
+	{
+		$this->jaxl->JAXL0060('getNodeItems', $pod, $this->jaxl->jid, $node);  
 	}
 
     /**

@@ -1,24 +1,72 @@
-#connect_form
-{
-	width: auto;
-	margin: 0 auto;
-	margin-top: -5px;
-	padding: 9em 0.5em;
-    font-size: 17px;
+#loginpage {
+    min-height: 400px;
+    background-image: url(../img/cloud.png);
     background-repeat: no-repeat;
-    background-image: url(../img/bee.png);
-    background-position: center center;
+    margin-top: -7px;
+    background-position: 50px 0px;
 }
 
-#connect_form form
-{
-	margin: 0 auto;
-	text-align: center;
-/*    background-color: rgba(255,255,255, 0.6);*/
-    padding: 0.5em;
+#loginpage #quote {
+    float: left;
+    margin-top: 80px; 
+    height: 150px;
+    color: #aaa;
+    background-image: url(../img/quotestart.png);
+    background-repeat: no-repeat;
+    width: 50%;
+    margin-left: 5%;
 }
 
-#connect_form input
-{
+#loginpage #quote blockquote {
+    font-style:italic;
+    font-size: 19px;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    margin: 20px;
+}
+
+#loginpage #quote cite {
+    float: right;
+}
+
+#connectform {
+    font-size: 17px;
+    padding: 0px 10px;
+    float: right;
+    min-height: 200px;
+    margin-top: 50px;
+    border-left: 1px solid #ccc;
+}
+
+#connectform hr {
+    margin: 0px;
+    height: 0px;
+    display: block;
+    clear: both;
+}
+
+#connectform .warning {
+    font-size: 12px;
     margin: 5px;
 }
+
+#connectform label {
+    margin: 5px;
+    width: 80px;
+}
+
+#connectform input {
+    margin: 5px;
+}
+
+#connectform a.showoptions {
+    padding: 0px;
+    font-size: 12px;
+    display: block;
+    margin: 5px;
+}
+
+#connectform fieldset {
+    margin: 0px;
+    border: none;
+}
+

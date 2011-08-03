@@ -58,19 +58,24 @@ class Vcard extends WidgetBase
                     <input type="text" name ="vCardNickname" class="content" value="'.$vcard["vCardNickname"].'">
                   </div>';
         $html .= '<div class="element"><span>'.t('Date of Birth').' YYYY-MM-DD</span>
-                    <input type="text" name ="vCardBDay" class="content" value="'.$vcard["vCardBDay"].'">
+                    <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$vcard["vCardBDay"].'">
                   </div>';
                   
         $html .= '<br />
                   <div class="element"><span>'.t('Website').'</span>
-                    <input type="text" name ="vCardUrl" class="content" value="'.$vcard["vCardUrl"].'">
+                    <input type="url" name ="vCardUrl" class="content" value="'.$vcard["vCardUrl"].'">
+                  </div>';
+                  
+        $html .= '<br />
+                  <div class="element"><span>'.t('About Me').'</span>
+                    <textarea name ="vCardDesc" class="content" >'.$vcard["vCardDesc"].'</textarea>
                   </div>';
                   
         $html .= '</fieldset>';                  
         $html .= '<br />
             <fieldset>
                 <legend>'.t('Geographic Position').'</legend>';
-		$html .= '<div class="warning">'.t('Renseigner votre position géographique peut fortement porter atteinte à votre vie privé, utilisez toujours cette option qu\'en cas de nécessité').'<a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
+		$html .= '<div class="warning">'.t('Renseigner votre position géographique peut fortement porter atteinte à votre vie privé, n\'utilisez toujours cette option qu\'en cas de nécessité').'<a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
 		$html .= '<div id="geolocation"></div>';
         $html .= '<div class="element"><span>'.t('Latitude').'</span>
                     <input type="text" name="vCardLat" class="content" value="Latitude" readonly>
@@ -92,72 +97,11 @@ class Vcard extends WidgetBase
         $html .= '<br />';
         $html .= $this->displayIf($vcard["vCardDesc"], t('About Me'));*/
         $html .= '<hr />';
-		$html .= ' <input value="'.t('Submit').'" onclick="'.$submit.'" id="right" type="button"> ';
+		$html .= ' <input value="'.t('Submit').'" type="submit" onclick="'.$submit.'" id="right" type="button"> ';
         $html .= '
             </fieldset>
         </form>';
         
-        //var_dump($vcard);
-        //["vCardBDay"]
-        //var_dump($vcard);
-        //var_dump($vcard);
-		/*$html = '<div id="friendavatar">';
-            if($vcard != false) {
-                $html .= '<img alt="' . t("Your avatar") . '" src="data:'.
-                    $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
-            }
-        $html .= '</div>';
-        
-        // coucou les gehs c'est kro bien comme truc!! isous doux a toi petit ahge
-            
-        $name = $vcard['vCardFN'].' '.$vcard['vCardFamily'];
-        if($name == " ")
-            $name = $vcard['vCardNickname'];
-        if($name == "")
-            $name = $vcard['vCardNGiven'];
-        if($name == "")
-            $name = $vcard['from'];
-        $html .= '<h2 title="'.$vcard['from'].'">'.$name.'</h2>';
-        
-        $val = array(
-            'vCardUrl' => t('Website'),
-            //'vCardDesc' => t('About me'),
-            'vCardBDay' => t('Date of birth')
-        );    
-        
-        $html .= '<ul id="infosbox">';
-        if($vcard != false) {
-            foreach($vcard as $key => $value) {
-                if(array_key_exists($key, $val) && $value != '')
-                    $html .= '<li><span>'.$val[$key] . '</span>' .$value.'</li>';
-            }
-        } else {
-            $html .= '<div onclick="'.$this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'").'" class="refresh">'.t('Refresh the data').'</div>';
-        }
-        $html .= '</ul>';
-        
-        $session = Session::start(APP_NAME);
-        $presences = $session->get('presences');
-        
-	    $status = ($presences[$vcard['from']]['status'] != "") 
-	        ? $presences[$vcard['from']]['status'] 
-	        : t('Hye, I\'m on Movim !');
-        
-            $html .= '<div id="frienddescription"><p>'.$status.'</p></div>';*/
-        
-        
-
-        /*$html = '<img alt="' . t("Your avatar") . '" src="data:'.
-            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
-            .'<ul id="infosbox">'
-		        .'<li><span>'.t('Firstname') . '</span>' .$vcard['vCardFN'].'</li>'
-		        .'<li><span>'.t('Family name') . '</span>' .$vcard['vCardFamily'].'</li>'
-		        .'<li><span>'.t('Nickname') . '</span>' .$vcard['vCardNickname'].'</li>'
-		        .'<li><span>'.t('Name given') . '</span>' .$vcard['vCardNGiven'].'</li>'
-		        .'<li><span>'.t('Website') . '</span><a href="'.$vcard['vCardUrl'].'">' .str_replace($cleanurl, "", $vcard['vCardUrl']).'</a></li>'
-		    .'</ul><br /><br />'
-		    .'<h3>'.t('About me').'</h3>'
-		    .'<div id="description">'.$vcard['vCardDesc'].'</div><br />';*/
         return $html;
     }
 

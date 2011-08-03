@@ -173,6 +173,6 @@ class Chat extends WidgetBase
 		            echo $this->prepareTalk($key);
 		        } ?>
 		    </div>
-		<?
+		<?php
 	}
 }
