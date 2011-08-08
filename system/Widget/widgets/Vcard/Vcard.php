@@ -97,7 +97,7 @@ class Vcard extends WidgetBase
         $html .= '<br />';
         $html .= $this->displayIf($vcard["vCardDesc"], t('About Me'));*/
         $html .= '<hr />';
-		$html .= ' <input value="'.t('Submit').'" type="submit" onclick="'.$submit.'" id="right" type="button"> ';
+		$html .= ' <input value="'.t('Submit').'" onclick="'.$submit.'" id="right" type="button"> ';
         $html .= '
             </fieldset>
         </form>';

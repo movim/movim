@@ -61,12 +61,17 @@ class ControllerMain extends ControllerBase
                 $this->page->menuAddLink(t('Home'), '?q=mainPage');
 
 				$cachevcard = Cache::c('vcard'.$_GET['f']);
-				if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily']))
-					$this->page->menuAddLink($cachevcard['vCardFN'] ." ".$cachevcard['vCardFamily'], false, true);
-				elseif(isset($cachevcard['vCardNickname']))
-					$this->page->menuAddLink($cachevcard['vCardNickname'], false, true);
-				else
-					$this->page->menuAddLink($_GET['f'], false, true);
+				
+				$name = $cachevcard['vCardFN'].' '.$cachevcard['vCardFamily'];
+				
+                if($name == " ")
+                    $name = $cachevcard['vCardNickname'];
+                if($name == "")
+                    $name = $cachevcard['vCardNGiven'];
+                if($name == "")
+                    $name = $_GET['f'];
+
+				$this->page->menuAddLink($name, false, true);
 
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
 				$content = new TplPageBuilder($user);

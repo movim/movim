@@ -42,7 +42,9 @@ class Friends extends WidgetBase
     }
 
     function prepareRoster($roster) {
-        $html = "<ul>";
+        if(!$roster)
+            $html = '<script type="text/javascript">'.$this->genCallAjax('ajaxRefreshRoster').'</script>';
+        $html .= "<ul>";
     	$i = 0;
 
         // Is there anything in the roster?
@@ -100,12 +102,19 @@ class Friends extends WidgetBase
 					
                     $html .= '<span onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$value."'").'">';
 					// We try to display an understadable name
-					if(isset($cachevcard['vCardFN']) || isset($cachevcard['vCardFamily']))
-						$html .= $cachevcard['vCardFN'] ." ".$cachevcard['vCardFamily'];
-					elseif(isset($cachevcard['vCardNickname']))
-						$html .= $cachevcard['vCardNickname'];
-					else 
-						$html .= $roster["queryItemName"][$i];
+
+                    $name = $cachevcard['vCardFN'].' '.$cachevcard['vCardFamily'];
+                    
+                    if($name == " ")
+                        $name = $cachevcard['vCardNickname'];
+                    if($name == "")
+                        $name = $cachevcard['vCardNGiven'];
+                    if($name == "")
+                        $name = $roster["queryItemName"][$i];
+                    if($name == "")
+                        $name = $cachevcard['from'];
+                    
+                    $html .= $name;
 						
 					$html .= '</span>
 								<span class="status" id="status_'.$value.'" title="'.$status.'">'.$status.'</span></li>';

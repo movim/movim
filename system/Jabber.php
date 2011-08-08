@@ -279,7 +279,7 @@ class Jabber
 				Conf::savePicture($res[0].'@'.$res[1], $payload['from'], $payload['vCardPhotoBinVal'], $payload["vCardPhotoType"]);
 				$evt->runEvent('vcardreceived', $payload);
 			}
-		} 
+		}
 		
 		// Roster case
 		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
@@ -429,7 +429,7 @@ class Jabber
 	public function updateVcard($vcard)
 	{
 		$this->jaxl->JAXL0054('updateVCard', $vcard);
-        $this->getVCard();
+        $this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, false);
 	}
 	
 	/**
@@ -538,6 +538,7 @@ class Jabber
 	public function subscribedContact($jid) {
 		if($this->checkJid($jid)) {
 			$this->jaxl->subscribed($jid);
+			$this->jaxl->addRoster($jid);
 		} else {
 			throw new MovimException("Incorrect JID `$jid'");
 		}
