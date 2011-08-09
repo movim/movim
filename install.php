@@ -32,7 +32,27 @@ function test_requirements()
     $errors[] = t("The <em>%s</em> folder must exist and be writable.", 'log');
   }*/
 
+  // Must have sqlite or mysql (so far...)
+  if(!extension_loaded('mysql') && !class_exists('SQLite3')) {
+      $exts = array('MySQL', 'SQLite');
+      $exts_txt = implode(t("or"), $exts);
+      $errors[] = t("Movim requires the %s extension.", $exts_txt);
+  }
+
   return (count($errors) > 0)? $errors : false;
+}
+
+function make_extras($extras)
+{
+  $buffer = "";
+
+  if(is_array($extras)) {
+      foreach($extras as $tag => $val) {
+          $buffer.= " $tag=\"$val\"";
+      }
+  }
+
+  return $buffer;
 }
 
 function make_field($name, $label, $input)
@@ -47,8 +67,9 @@ function make_field($name, $label, $input)
   <?php
 }
 
-function make_select($name, $title, array $options, $default = null) {
-  $opts = "<select name=\"$name\">";
+function make_select($name, $title, array $options, $default = null, array $extra = null) {
+  $opts = "<select id=\"$name\" name=\"$name\"" . make_extras($extra) . ">";
+
   foreach($options as $name => $val) {
     $selected = '';
     if($default !== null && $default == $name) {
@@ -61,23 +82,23 @@ function make_select($name, $title, array $options, $default = null) {
   make_field($name, $title, $opts);
 }
 
-function make_checkbox($name, $title, $value)
+function make_checkbox($name, $title, $value, array $extra = null)
 {
   $checked = "";
   if($value) {
     $checked = 'checked="checked" ';
   }
-  make_field($name, $title, '<input type="checkbox" '.$checked.'name="'.$name.'" />');
+  make_field($name, $title, '<input type="checkbox" '.$checked.'name="'.$name.'" id="'.$name.'"'.make_extras($extra).' />');
 }
 
-function make_textbox($name, $title, $value)
+function make_textbox($name, $title, $value, array $extra = null)
 {
-  make_field($name, $title, '<input type="text" name="'.$name.'" value="'.$value.'"/>');
+  make_field($name, $title, '<input type="text" id="'.$name.'" name="'.$name.'" value="'.$value.'"'.make_extras($extra).'/>');
 }
 
-function make_button($name, $label)
+function make_button($name, $label, array $extra = null)
 {
-  make_field($name, '&nbsp;', '<input type="submit" name="'.$name.'" value="'.$label.'" />');
+  make_field($name, '&nbsp;', '<input type="submit" id="'.$name.'" name="'.$name.'" value="'.$label.'"'.make_extras($extra).' />');
 }
 
 function list_themes()
@@ -144,7 +165,9 @@ function show_install_form()
     make_select('storage', t("Storage driver"),
                 array(
                     'sqlite' => 'SQLite',
-                    'mysql' => 'MySQL',));
+                    'mysql' => 'MySQL',),
+                null,
+                array('onchange' => "changeDB(this.options[this.selectedIndex].value)"));
     make_textbox('database', t("Database"), 'sqlite:///movim.db');
     make_button('send', 'Install');
     ?>
@@ -239,6 +262,22 @@ function perform_install()
 		<title>MOVIM</title>
 		<link rel="shortcut icon" href="themes/movim/img/favicon.ico" />
 		<link rel="stylesheet" href="themes/movim/css/style2.css" type="text/css" />
+        <script type="text/javascript">
+          function changeDB(type)
+          {
+            var dbspec = document.getElementById("database");
+            switch(type) {
+            case "sqlite":
+              dbspec.value = "sqlite:///movim.db";
+              break;
+            case "mysql":
+              dbspec.value = "mysql://username:password@host:port/database";
+              break;
+            default:
+              dbspec.value = "db://username:password@host:port/database";
+            }
+          }
+        </script>
 	</head>
 	<body>
 		<div id="content">
