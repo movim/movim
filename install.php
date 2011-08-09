@@ -3,6 +3,8 @@
 require_once('system/Lang/i18n.php');
 require_once('system/Lang/languages.php');
 
+$databases = array();
+
 function test_dir($dir)
 {
   return (file_exists($dir) && is_dir($dir) && is_writable($dir));
@@ -38,6 +40,12 @@ function test_requirements()
       $exts_txt = implode(t("or"), $exts);
       $errors[] = t("Movim requires the %s extension.", $exts_txt);
   }
+
+  global $databases;
+  if(extension_loaded('mysql'))
+      $databases['mysql'] = 'MySQL';
+  if(class_exists('SQLite3'))
+      $databases['sqlite'] = 'SQLite';
 
   return (count($errors) > 0)? $errors : false;
 }
@@ -138,6 +146,12 @@ function list_lang()
 
 function show_install_form()
 {
+    global $databases;
+    $db_protos = array(
+        'sqlite' => 'sqlite:///movim.db',
+        'mysql' => 'mysql://username:password@host:port/database',
+        );
+    $detected_dbs = array_keys($databases);
   ?>
   <h1><?php echo t('Movim Installer'); ?></h1>
   <form method="post">
@@ -163,12 +177,10 @@ function show_install_form()
     echo '<hr />';
     echo t('<h2>Storage</h2>') . PHP_EOL;
     make_select('storage', t("Storage driver"),
-                array(
-                    'sqlite' => 'SQLite',
-                    'mysql' => 'MySQL',),
+                $databases,
                 null,
                 array('onchange' => "changeDB(this.options[this.selectedIndex].value)"));
-    make_textbox('database', t("Database"), 'sqlite:///movim.db');
+    make_textbox('database', t("Database"), $db_protos[$detected_dbs[0]]);
     make_button('send', 'Install');
     ?>
   </form>
