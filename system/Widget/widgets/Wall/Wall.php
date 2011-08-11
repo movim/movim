@@ -28,7 +28,6 @@ class Wall extends WidgetBase
     }
     
     function onStream($payload) {
-        movim_log($payload);
         $html = '';
         $i = 0;
         $user = new User();
@@ -59,7 +58,6 @@ class Wall extends WidgetBase
 	}
 	
 	function ajaxGetComments($jid, $id) {
-	    movim_log($id);
 		$xmpp = Jabber::getInstance();
 		$xmpp->getComments($jid, $id);
 	}

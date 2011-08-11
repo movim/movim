@@ -36,7 +36,6 @@ class Friends extends WidgetBase
 
     function onRosterReceived($roster)
     {
-        movim_log($roster);
 		$html = $this->prepareRoster($roster);
         RPC::call('movim_fill', 'tinylist', RPC::cdata($html));
     }

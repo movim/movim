@@ -202,7 +202,6 @@ class Jabber
 	 * @return void
 	 */
 	public function postAuthMech($mechanism) {
-	    movim_log($mechanism);
         if(in_array("DIGEST-MD5", $mechanism))
             $this->jaxl->auth('DIGEST-MD5');
         elseif(in_array("PLAIN", $mechanism))
@@ -265,7 +264,7 @@ class Jabber
 	 * @return void
 	 */
 	public function getIq($payload) {
-	    movim_log($payload);
+	    //movim_log($payload);
 		$evt = new Event();
 		
 		// vCard case
@@ -314,7 +313,6 @@ class Jabber
 	 * @return void
 	 */
 	public function getMessage($payloads) {
-	    movim_log($payloads);
         foreach($payloads as $payload) {
             
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') { // reject offline message
@@ -346,6 +344,8 @@ class Jabber
 	 */
 	public function getPresence($payloads) {
         foreach($payloads as $payload) {
+        
+            movim_log($payload);
 
     		if($payload['type'] == 'subscribe') {
         		$evt = new Event();

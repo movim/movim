@@ -72,7 +72,6 @@ class Profile extends WidgetBase
 	
 	function onMyPresence($presence)
 	{
-	    movim_log($presence);
 	    $uri = $this->respath();
         RPC::call('movim_fill', 'presencebutton', RPC::cdata(
             '<img id="presenceimage" class="'.$presence['show'].'" src="'.str_replace('jajax.php', '',$uri).'img/'.$presence['show'].'.png">'
