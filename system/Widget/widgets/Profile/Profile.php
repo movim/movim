@@ -5,7 +5,7 @@
  *
  * @file Profile.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief The Profile widget
  *
  * @author Timothée	Jaussoin <edhelas_at_gmail_dot_com>
@@ -14,7 +14,7 @@
  * @date 20 October 2010
  *
  * Copyright (C)2010 MOVIM project
- * 
+ *
  * See COPYING for licensing information.
  */
 
@@ -22,14 +22,14 @@ class Profile extends WidgetBase
 {
 
     private static $status;
-    
+
     function WidgetLoad()
     {
     	$this->addcss('profile.css');
     	$this->addjs('profile.js');
 		$this->registerEvent('myvcardreceived', 'onMyVcardReceived');
 		$this->registerEvent('incomemypresence', 'onMyPresence');
-		
+
 		$this->status = array(
                         1 => array('chat', t('Chat')),
                         2 => array('dnd', t('Do not disturb')),
@@ -43,11 +43,11 @@ class Profile extends WidgetBase
 		$html = $this->prepareVcard($vcard);
         RPC::call('movim_fill', 'avatar', RPC::cdata($html));
     }
-    
+
     function prepareVcard($vcard) {
         $html = '<div id="profileavatar"><img alt="' . t("Your avatar") . '" src="data:'.
             $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" /></div>'
-            
+
             .'<h2>'.$vcard['vCardFN'].'<br />'.$vcard['vCardFamily'].'</h2>';
         return $html;
     }
@@ -56,20 +56,20 @@ class Profile extends WidgetBase
 	{
 		$xmpp = Jabber::getInstance();
 		$xmpp->getVCard($jid); // We send the vCard request
-	}  
-	
+	}
+
 	function ajaxPresence($presence)
 	{
 		$xmpp = Jabber::getInstance();
-		$xmpp->setStatus(false, $presence);
+		$xmpp->setStatus($presence, false);
 	}
-	
-	function ajaxSetStatus($status, $show = false)
+
+	function ajaxSetStatus($statustext, $status)
 	{
 		$xmpp = Jabber::getInstance();
-		$xmpp->setStatus($status, $show);
+		$xmpp->setStatus($statustext, $status);
 	}
-	
+
 	function onMyPresence($presence)
 	{
 	    movim_log($presence);
@@ -81,33 +81,33 @@ class Profile extends WidgetBase
 
     function build()
     {
-    
+
         // We grab the presences
         $session = Session::start(APP_NAME);
         $presences = $session->get('presences');
-        
+
         // We grab my presence
         $user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());		
+		$xmpp = Jabber::getInstance($user->getLogin());
 		$mypresence = $presences[$user->getLogin()][$xmpp->getResource()];
-        
 
-        
+
+
         // We set the status
-        $status = (isset($presences[$user->getLogin()]['status'])) 
-            ? $presences[$user->getLogin()]['status'] 
+        $status = (isset($presences[$user->getLogin()]['status']))
+            ? $presences[$user->getLogin()]['status']
             : $user->getLogin();
         ?>
 		<div id="profile">
 			<div id="presencebutton" onclick="showPresence(this);">
-			    <img 
-			        id="presenceimage" 
-			        class="<?php echo $this->status[$mypresence][0]; ?>" 
+			    <img
+			        id="presenceimage"
+			        class="<?php echo $this->status[$mypresence][0]; ?>"
 			        src="<?php echo $this->respath('img/'.$this->status[$mypresence][0].'.png'); ?>"
 			     >
 			     <?php echo $this->status[$mypresence][1]; ?>
 			</div>
-			
+
 			<ul id="presencelist">
 			    <?php foreach($this->status as $key) { ?>
 			        <li onclick="<?php $this->callAjax('ajaxSetStatus', "getStatusText()", "'$key[0]'");?> closePresence();">
@@ -116,17 +116,17 @@ class Profile extends WidgetBase
 			         </li>
 			    <?php } ?>
 			</ul>
-		
+
 			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshMyVcard');?>"></div>
 			<?php echo $this->prepareVcard(Cache::c('myvcard')); ?>
-				
-			
+
+
 			<div id="profiledescription">
 			    <p>
-			        <input 
-				        type="text" 
-				        id="profilestatustext" 
-				        value="<?php echo $status; ?>" 
+			        <input
+				        type="text"
+				        id="profilestatustext"
+				        value="<?php echo $status; ?>"
 				        onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSetStatus', "getStatusText()", "getStatusShow()");?>}"
 			        />
 			    </p>
