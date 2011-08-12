@@ -66,6 +66,7 @@
 
 #tinylist ul li span.status {
 	color: #7D7D7D;
-    font-size: 10px;
+    font-size: 9px;
 	overflow: hidden;
+	text-overflow: ellipsis; 
 }

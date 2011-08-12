@@ -34,7 +34,7 @@ class Friendvcard extends WidgetBase
     
     private function displayIf($element, $title, $html = false) {
         if(!$html) $html = $element;
-        if(isset($element)) 
+        if(isset($element) && $element != '')
                 return '<div class="element"><span>'.$title.'</span><div class="content">'.$html.'</div></div>';
     }
     
@@ -60,66 +60,7 @@ class Friendvcard extends WidgetBase
         $html .= '
             </fieldset>
         </form>';
-        //["vCardBDay"]
-        //var_dump($vcard);
-        //var_dump($vcard);
-		/*$html = '<div id="friendavatar">';
-            if($vcard != false) {
-                $html .= '<img alt="' . t("Your avatar") . '" src="data:'.
-                    $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
-            }
-        $html .= '</div>';
-        
-        // coucou les gehs c'est kro bien comme truc!! isous doux a toi petit ahge
-            
-        $name = $vcard['vCardFN'].' '.$vcard['vCardFamily'];
-        if($name == " ")
-            $name = $vcard['vCardNickname'];
-        if($name == "")
-            $name = $vcard['vCardNGiven'];
-        if($name == "")
-            $name = $vcard['from'];
-        $html .= '<h2 title="'.$vcard['from'].'">'.$name.'</h2>';
-        
-        $val = array(
-            'vCardUrl' => t('Website'),
-            //'vCardDesc' => t('About me'),
-            'vCardBDay' => t('Date of birth')
-        );    
-        
-        $html .= '<ul id="infosbox">';
-        if($vcard != false) {
-            foreach($vcard as $key => $value) {
-                if(array_key_exists($key, $val) && $value != '')
-                    $html .= '<li><span>'.$val[$key] . '</span>' .$value.'</li>';
-            }
-        } else {
-            $html .= '<div onclick="'.$this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'").'" class="refresh">'.t('Refresh the data').'</div>';
-        }
-        $html .= '</ul>';
-        
-        $session = Session::start(APP_NAME);
-        $presences = $session->get('presences');
-        
-	    $status = ($presences[$vcard['from']]['status'] != "") 
-	        ? $presences[$vcard['from']]['status'] 
-	        : t('Hye, I\'m on Movim !');
-        
-            $html .= '<div id="frienddescription"><p>'.$status.'</p></div>';*/
-        
-        
 
-        /*$html = '<img alt="' . t("Your avatar") . '" src="data:'.
-            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />'
-            .'<ul id="infosbox">'
-		        .'<li><span>'.t('Firstname') . '</span>' .$vcard['vCardFN'].'</li>'
-		        .'<li><span>'.t('Family name') . '</span>' .$vcard['vCardFamily'].'</li>'
-		        .'<li><span>'.t('Nickname') . '</span>' .$vcard['vCardNickname'].'</li>'
-		        .'<li><span>'.t('Name given') . '</span>' .$vcard['vCardNGiven'].'</li>'
-		        .'<li><span>'.t('Website') . '</span><a href="'.$vcard['vCardUrl'].'">' .str_replace($cleanurl, "", $vcard['vCardUrl']).'</a></li>'
-		    .'</ul><br /><br />'
-		    .'<h3>'.t('About me').'</h3>'
-		    .'<div id="description">'.$vcard['vCardDesc'].'</div><br />';*/
         return $html;
     }
     
