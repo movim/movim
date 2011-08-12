@@ -129,7 +129,7 @@ class ControllerMain extends ControllerBase
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
 		if(Conf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
-		
+
 		switch ($_GET['err']) {
             case 'noaccount':
 			    $warning = '
@@ -156,15 +156,15 @@ class ControllerMain extends ControllerBase
 			            </div> ';
                 break;
         }
-        
+
         if(!BROWSER_COMP)
             $browser_comp = '
 			            <div class="warning">
 			                '.t('Your web browser is too old to use with Movim.').'
 			            </div> ';
-		
+
 		$serverconf = Conf::getServerConf();
-		
+
 		ob_start();
 		?>
 		<noscript>
@@ -177,7 +177,7 @@ class ControllerMain extends ControllerBase
         </noscript>
 		    <div id="loginpage">
 		        <?php echo $browser_comp; ?>
-		        
+
 		        <div id="quote">
 		            <blockquote>
 		                "I'm free! — I'm free,<br />
@@ -186,43 +186,43 @@ class ControllerMain extends ControllerBase
                         An' I'm waiting for you to follow me.<br />
                     </blockquote>
                 <cite>
-                    <a href="http://wikipedia.org/wiki/Pete_Townshend">Pete Townshend</a>, in 
-                    <a href="http://wikipedia.org/wiki/I'm_Free_(The_Who_song)">"I'm Free"</a> on 
-                    <a href="http://wikipedia.org/wiki/Tommy_(album)">Tommy</a> by 
+                    <a href="http://wikipedia.org/wiki/Pete_Townshend">Pete Townshend</a>, in
+                    <a href="http://wikipedia.org/wiki/I'm_Free_(The_Who_song)">"I'm Free"</a> on
+                    <a href="http://wikipedia.org/wiki/Tommy_(album)">Tommy</a> by
                     <a href="http://wikipedia.org/wiki/The_Who">The Who</a>
                 </cite>
-                
+
 		        </div>
 			    <form id="connectform" action="index.php" method="post">
-		            <?php echo $warning; ?> 
+		            <?php echo $warning; ?>
 			        <input type="email" name="login" id="login" autofocus
 			            value="<?php echo t("My address"); ?>" onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
-			        <input type="password" name="pass" id="pass" 
+			        <input type="password" name="pass" id="pass"
 			            value="<?php echo t("Password"); ?> "  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
-			            
+
 			        <a href="#" class="showoptions" onclick="getElementById('options').style.display = 'block';"><?php echo t('Options'); ?></a>
-			        
+
                     <fieldset id="options" style="display: none;">
 			            <label class="tiny"><?php echo t('First Login'); ?></label>
 			                <input type="checkbox" class="tiny" name="create" id="create"><br />
 			                <hr />
-			                    
+
 			            <label class="tiny"><?php echo t('Bosh Host'); ?></label>
-			                <input type="text" class="tiny" name="host" id="host" 
+			                <input type="text" class="tiny" name="host" id="host"
 			                    value="<?php echo $serverconf['defBoshHost']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
-			                    
+
 			            <label class="tiny"><?php echo t('Bosh Suffix'); ?></label>
-			                <input type="text" class="tiny" name="suffix" id="suffix" 
+			                <input type="text" class="tiny" name="suffix" id="suffix"
 			                    value="<?php echo $serverconf['defBoshSuffix']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
-			                    
+
 			            <label class="tiny"><?php echo t('Bosh Port'); ?></label>
-			                <input type="text" class="tiny" name="port" id="port" 
+			                <input type="text" class="tiny" name="port" id="port"
 			                    value="<?php echo $serverconf['defBoshPort']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
 			        </fieldset>
 			        <input class="submit" type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
 			    </form>
 			</div>
-	    <?php 
+	    <?php
 		$this->page->setContent(ob_get_contents());
         ob_end_clean();
 		echo $this->page->build('page.tpl');
