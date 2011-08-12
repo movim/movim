@@ -1,4 +1,4 @@
-<?php
+<?Php
 
 /**
  * \class User
@@ -29,7 +29,7 @@ class User {
 				&& isset($_POST['pass'])
 				&& $_POST['login'] != ''
 				&& $_POST['pass'] != '') {
-			$this->authenticate($_POST['login'], $_POST['pass']);
+			$this->authenticate($_POST['login'], $_POST['pass'], $_POST['host'], $_POST['suffix'], $_POST['port'], $_POST['create']);
 		}
 	}
 
@@ -43,13 +43,36 @@ class User {
 		return (($this->username != '' && $this->password != '') || $sess->get('login'));
 	}
 
-	function authenticate($login,$pass)
+	function authenticate($login,$pass, $boshhost, $boshsuffix, $boshport, $create)
 	{
 		try{
+		    // We check the JID
+		    if(filter_var($login, FILTER_VALIDATE_EMAIL) == false) {
+                header('Location:'.BASE_URI.'index.php?q=disconnect&err=invalidjid');
+                exit();
+            }
+            
             $data = false;
-			if( !($data = Conf::getUserData($login)) ) {
-                Conf::createUserConf($login, $pass);
-                $data = Conf::getUserData($login);
+			if( !($data = Conf::getUserData($login))) {
+			    // We check if we wants to create an account
+			    if($create == "on") {
+			        // We check the BOSH URL if we create a new account
+			        $ch = curl_init('http://'.$boshhost.':'.$boshport.'/'.$boshsuffix.'/');
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                    curl_exec($ch);
+                    $errno = curl_errno($ch);
+                    curl_close($ch);
+                    
+			        if($errno != 0) {
+			            header('Location:'.BASE_URI.'index.php?q=disconnect&err=bosherror');
+                        exit();
+			        } else {
+                        Conf::createUserConf($login, $pass, $boshhost, $boshsuffix, $boshport);
+                        $data = Conf::getUserData($login);
+                    }
+                } else {
+                    header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');   
+                }
             }
 
 			$this->xmppSession = Jabber::getInstance($login);
@@ -76,10 +99,7 @@ class User {
 	function desauth()
 	{
         $sess = Session::start(APP_NAME);
-		$sess->remove('login');
-        $sess->remove('pass');
-        $sess->remove('jid');
-        $sess->dispose(APP_NAME);
+        Session::dispose(APP_NAME);
 	}
 
 

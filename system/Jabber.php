@@ -16,10 +16,6 @@
  * See COPYING for licensing information.
  */
 
-// Jabber external component setting
-//define('JAXL_COMPONENT_HOST', 'component.'.JAXL_HOST_DOMAIN);
-//define('JAXL_COMPONENT_PASS', 'pass');
-
 define('JAXL_COMPONENT_PORT', 5559);
 
 define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
@@ -69,28 +65,42 @@ class Jabber
 		$this->jaxl->requires(array(
 						 'JAXL0030', // Service Discovery
 						 'JAXL0054', // VCard
+                         'JAXL0060', // Pubsub
 						 'JAXL0115', // Entity Capabilities
 						 'JAXL0133', // Service Administration
 						 'JAXL0085', // Chat State Notification
 						 'JAXL0092', // Software Version
 						 'JAXL0203', // Delayed Delivery
 						 'JAXL0202', // Entity Time
-						 'JAXL0206'  // Jabber over Bosh
+						 'JAXL0206',  // Jabber over Bosh
+						 'JAXL0277'  // Microblogging
 						 ));
 
 		// Defining call-backs
+
+		// Connect-Disconnect
         $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'postAuth'));
         $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
         //$this->jaxl->addPlugin('jaxl_post_roster_update', array(&$this, 'postRosterUpdate'));
         $this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
-        $this->jaxl->addPlugin('jaxl_get_iq', array(&$this, 'handle'));
 		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
+
+		// The handlers
+        $this->jaxl->addPlugin('jaxl_get_iq', array(&$this, 'getIq'));
         $this->jaxl->addPlugin('jaxl_get_message', array(&$this, 'getMessage'));
         $this->jaxl->addPlugin('jaxl_get_presence', array(&$this, 'getPresence'));
+
+        // Others hooks
         $this->jaxl->addPlugin('jaxl_get_bosh_curl_error', array(&$this, 'boshCurlError'));
         $this->jaxl->addplugin('jaxl_get_empty_body', array(&$this, 'getEmptyBody'));
 	}
 
+	/**
+	 * Get the current instance
+	 *
+	 * @param string $jid = false
+	 * @return instance
+	 */
 	public function getInstance($jid = false)
 	{
 		if(!is_object(self::$instance)) {
@@ -110,8 +120,12 @@ class Jabber
 		return self::$instance;
 	}
 
-	/**
-	 * Logs in
+    /**
+	 * Start the BOSH connection
+	 *
+	 * @param string $jid
+	 * @param string $pass
+	 * @return void
 	 */
 	public function login($jid, $pass)
 	{
@@ -131,17 +145,48 @@ class Jabber
 		self::setStatus(false, false);
 	}
 
+	/**
+     * postAuth
+     *
+     * @return void
+     */
     public function postAuth() {
 		//$this->jaxl->getRosterList();
 		//$this->jaxl->getVCard();
     }
 
+    /**
+     * postAuthFailure
+     *
+     * @return void
+     */
     public function postAuthFailure() {
     	$this->jaxl->shutdown();
     	throw new MovimException("Login error.");
     	$user = new User();
     	$user->desauth();
     }
+
+    /**
+	 * Return the current ressource
+	 *
+	 * @return string
+	 */
+	public function getResource()
+	{
+	    $res = JAXLUtil::splitJid($this->jaxl->jid);
+	    return $res[2];
+	}
+
+	/**
+	 * Return the current Jid
+	 *
+	 * @return string
+	 */
+	public function getJid() {
+	    return $this->jaxl->jid;
+	}
+
 
     public function boshCurlError() {
 //    	$this->jaxl->shutdown();
@@ -150,21 +195,35 @@ class Jabber
 //    	$user->desauth();
     }
 
-	/*
-	 * Auth mechanism (default : MD5)
+    /**
+	 * Auth mechanism
+	 *
+	 * @param array $mechanism
+	 * @return void
 	 */
+	public function postAuthMech($mechanism) {
+        if(in_array("DIGEST-MD5", $mechanism))
+            $this->jaxl->auth('DIGEST-MD5');
+        elseif(in_array("PLAIN", $mechanism))
+            $this->jaxl->auth('PLAIN');
+	}
 
-	public function postAuthMech($mechanism) {$this->jaxl->auth('DIGEST-MD5');}
-
-	/**
-	 * Logs out
+    /**
+	 * Close the BOSH connection
+	 *
+	 * @return void
 	 */
-
 	public function logout()
 	{
 		$this->jaxl->JAXL0206('endStream');
 	}
 
+    /**
+	 * postDisconnect
+	 *
+	 * @param array $data
+	 * @return void
+	 */
 	public function postDisconnect($data)
 	{
 		$evt = new Event();
@@ -173,13 +232,21 @@ class Jabber
 
 	/**
 	 * Pings the server. This must be done regularly in order to keep the
-	 * session running.
+	 * session running
+	 *
+	 * @return void
 	 */
 	public function pingServer()
 	{
         $this->jaxl->JAXL0206('ping');
 	}
 
+    /**
+	 * Get an empty body
+	 *
+	 * @param array $payload
+	 * @return void
+	 */
 	public function getEmptyBody($payload) {
         $evt = new Event();
         // Oooooh, am I disconnected??
@@ -190,60 +257,64 @@ class Jabber
         }
 	}
 
-	/**
-	 * Envents handlers methods
+    /**
+	 * Iq handler
+	 *
+	 * @param array $payload
+	 * @return void
 	 */
-
-	public function handle($payload) {
+	public function getIq($payload) {
+	    //movim_log($payload);
 		$evt = new Event();
+
+		// vCard case
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
 			if($payload['from'] == reset(explode("/", $payload['to'])) || $payload['from'] == NULL) {
 				Cache::c("myvcard", $payload);
 				$evt->runEvent('myvcardreceived', $payload);
 			} else {
 			   	Cache::c("vcard".$payload["from"], $payload);
+			   	$res = JAXLUtil::splitJid($payload['to']);
+				Conf::savePicture($res[0].'@'.$res[1], $payload['from'], $payload['vCardPhotoBinVal'], $payload["vCardPhotoType"]);
 				$evt->runEvent('vcardreceived', $payload);
 			}
-		} elseif($payload['queryXmlns'] == "jabber:iq:roster") {
-			Cache::c("roster", $payload);
-            $evt->runEvent('rosterreceived', $payload);
-		} else {
+		}
+		// Roster case
+		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
+		    if($payload['type'] == "result") {
+			    Cache::c("roster", $payload);
+                $evt->runEvent('rosterreceived', $payload);
+            } elseif($payload['type'] == "set") {
+                $this->getRosterList();
+            }
+        }
+
+        // Pubsub node case
+        elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0") {
+            $evt->runEvent('streamreceived', $payload);
+		}
+
+		elseif(isset($payload["pubsubNode"])) {
+            $evt->runEvent('thread', $payload);
+		}
+
+        elseif($payload["queryXmlns"] == "http://jabber.org/protocol/disco#items") {
+            $evt->runEvent('disconodes', $payload);
+        } else {
             $evt->runEvent('none', var_export($payload, true));
         }
     }
 
-   	/*public function postRosterUpdate($payload) {
-   		$evt = new Event();
-		$evt->runEvent('rosterreceived', $payload);
-   	}*/
-
-	/* vCard methods
-	 * Ask for a vCard and handle it
+    /**
+	 * Message handler
+	 *
+	 * @param array $payloads
+	 * @return void
 	 */
-
-	public function getVCard($jid = false)
-	{
-		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
-	}
-	
-	/* Service discovery
-	*/
-
-	public function discover($jid = false)
-	{
-		//$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
-		//$this->jaxl->JAXL0030('discoItems', $jid, $this->jaxl->jid, false, false);mov
-		$this->jaxl->JAXL0030('discoItems', 'pubsub.jabber.fr', $this->jaxl->jid, false, false);
-	}
-
-	/*
-	 * Incoming messages
-	 */
-
 	public function getMessage($payloads) {
         foreach($payloads as $payload) {
-            // reject offline message
-            if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') {
+
+            if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') { // reject offline message
 
                 $evt = new Event();
 
@@ -253,6 +324,9 @@ class Jabber
 				elseif($payload['chatState'] == 'composing') {
                 	$evt->runEvent('incomecomposing', $payload);
 				}
+				elseif($payload['chatState'] == 'paused') {
+                	$evt->runEvent('incomepaused', $payload);
+				}
 				else {
 					$evt->runEvent('incomemessage', $payload);
 				}
@@ -261,65 +335,175 @@ class Jabber
         }
 	}
 
-	/*
-	 * Incoming presences
+    /**
+	 * Presence handler
+	 *
+	 * @param array $payloads
+	 * @return void
 	 */
-
 	public function getPresence($payloads) {
         foreach($payloads as $payload) {
 
-            if($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
+            movim_log($payload);
+
+    		if($payload['type'] == 'subscribe') {
+        		$evt = new Event();
+        		$evt->runEvent('incomesubscribe', $payload);
+    		} elseif($payload['type'] == 'result') {
+
+    		} elseif($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
+
+                // We create the events
                 $evt = new Event();
 
 				$evt->runEvent('incomepresence', $payload);
 
-				/* WORKING PATCH USING SESSIONS */
+				if($payload['from'] == $this->getJid())
+					$evt->runEvent('incomemypresence', $payload);
+
+                // We update the presence array
                 $session = Session::start(APP_NAME);
-				//session_start();
-				$key = 'presence'.reset(explode('/',$payload['from']));
-                $session->set($key, $payload);
-				//$_SESSION[$key] = $payload;
-				//session_commit();
-				/********************************/
-				
+				$presences = $session->get('presences');
+
+				list($jid, $ressource) = explode('/',$payload['from']);
+
+				if(!is_array($presences[$jid]))
+				    $presences[$jid] = array();
+
+				$presences[$jid]['status'] = $payload['status'];
+
                 if($payload['type'] == 'unavailable') {
                     if($payload['from'] == $this->jaxl->jid)
                         $evt->runEvent('postdisconnected', $data);
-                    else
+                    else {
+                        $presences[$jid][$ressource] = 4;
                         $evt->runEvent('incomeoffline', $payload);
+                    }
+                }
+                elseif($payload['show'] == 'xa') {
+                    $presences[$jid][$ressource] = 5;
+                    $evt->runEvent('incomeaway', $payload);
+
                 }
                 elseif($payload['show'] == 'away') {
+                    $presences[$jid][$ressource] = 3;
                     $evt->runEvent('incomeaway', $payload);
+
                 }
                 elseif($payload['show'] == 'dnd') {
+                    $presences[$jid][$ressource] = 2;
                     $evt->runEvent('incomednd', $payload);
                 }
                 else {
+                    $presences[$jid][$ressource] = 1;
                     $evt->runEvent('incomeonline', $payload);
                 }
+				$session->set('presences', $presences);
             }
         }
 	}
 
+   	/*public function postRosterUpdate($payload) {
+   		$evt = new Event();
+		$evt->runEvent('rosterreceived', $payload);
+   	}*/
+
+    /**
+	 * Ask for a vCard
+	 *
+	 * @param string $jid = false
+	 * @return void
+	 */
+	public function getVCard($jid = false)
+	{
+		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
+	}
+
 	/**
-	 * Fetches the roster's list and calls the provided processing function on
-	 * roster's return.
-	 * @param callback is a function that is called when the roster is returned
-	 *   by the server.
+	 * sendVcard
+	 *
+	 * @param array $vcard
+	 * @return void
+	 */
+	public function updateVcard($vcard)
+	{
+		$this->jaxl->JAXL0054('updateVCard', $vcard);
+        $this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, false);
+	}
+
+	/**
+	 * Ask for some items
+	 *
+	 * @param unknown $jid = false
+	 * @return void
+	 */
+	public function getWall($jid = false) {
+		$this->jaxl->JAXL0277('getItems', $jid);
+	}
+
+	/**
+	 * Ask for some comments of an article
+	 *
+	 * @param string $jid
+	 * @param string $id
+	 * @return void
+	 */
+	public function getComments($jid, $id) {
+		$this->jaxl->JAXL0277('getComments', 'pubsub.jappix.com', $id);
+	}
+
+    /**
+	 * Service Discovery
+	 *
+	 * @param string $jid = false
+	 * @return void
+	 */
+	public function discover($jid = false)
+	{
+		//$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
+		//$this->jaxl->JAXL0030('discoItems', $jid, $this->jaxl->jid, false, false);mov
+		$this->jaxl->JAXL0277('getItems', 'edhelas@jappix.com');
+        //psgxs.linkmauve.fr
+	}
+
+	public function discoNodes($pod)
+	{
+		$this->jaxl->JAXL0060('discoNodes', $pod, $this->jaxl->jid);
+	}
+
+	public function discoItems($pod, $node)
+	{
+		$this->jaxl->JAXL0060('getNodeItems', $pod, $this->jaxl->jid, $node);
+	}
+
+    /**
+	 * Ask for the roster
+	 *
+	 * @return void
 	 */
 	public function getRosterList()
 	{
 		$this->jaxl->getRosterList();
 	}
 
-	/**
-	 * Sets the session's status.
+    /**
+	 * Set a new status
+	 *
+	 * @param string $status
+	 * @param string $show
+	 * @return void
 	 */
 	public function setStatus($status, $show)
 	{
-		$this->jaxl->setStatus($status, $show, 41, true);
+		$this->jaxl->setStatus($status, $show, 41, false);
 	}
 
+    /**
+	 * Check the current Jid
+	 *
+	 * @param string $jid
+	 * @return bool
+	 */
 	private function checkJid($jid)
 	{
 		return true; /*
@@ -328,7 +512,11 @@ class Jabber
 	}
 
 	/**
-	 * Sends a message.
+	 * Send a message
+	 *
+	 * @param string $addressee
+	 * @param steirng $body
+	 * @return void
 	 */
 	public function sendMessage($addressee, $body)
 	{
@@ -341,16 +529,78 @@ class Jabber
 	}
 
 	/**
-	 * Adds a contact to the roster.
+	 * Subscribe to a contact request
+	 *
+	 * @param unknown $jid
+	 * @return void
 	 */
-	public function addContact($jid, $contact, $alias)
-	{
+	public function subscribedContact($jid) {
 		if($this->checkJid($jid)) {
-			$this->jaxl->subscribe($jid);
-			$this->jaxl->addRoster($jid, $contact, $alias);
+			$this->jaxl->subscribed($jid);
+			$this->jaxl->addRoster($jid);
 		} else {
 			throw new MovimException("Incorrect JID `$jid'");
 		}
+	}
+
+	/**
+	 * Accecpt a new contact
+	 *
+	 * @param string $jid
+	 * @param string $group
+	 * @param string $alias
+	 * @return void
+	 */
+	public function acceptContact($jid, $group, $alias)
+	{
+		if($this->checkJid($jid)) {
+			$this->jaxl->addRoster($jid, $group, $alias);
+			$this->jaxl->subscribe($jid);
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
+	}
+
+	/**
+	 * Add a new contact
+	 *
+	 * @param string $jid
+	 * @param string $grJaxloup
+	 * @param string $alias
+	 * @return void
+	 */
+	public function addContact($jid, $group, $alias) {
+		if($this->checkJid($jid)) {
+			$this->jaxl->subscribe($jid);
+			$this->jaxl->addRoster($jid, $group, $alias);
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
+	}
+
+	/**
+	 * Remove a contact
+	 *
+	 * @param string $jid
+	 * @return void
+	 */
+	public function removeContact($jid) {
+		if($this->checkJid($jid)) {
+			$this->jaxl->deleteRoster($jid);
+			$this->jaxl->unsubscribe($jid);
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
+	}
+
+	/**
+	 * Unsubscribe to a contact
+	 *
+	 * @param unknown $jid
+	 * @return void
+	 */
+	public function unsubscribed($jid) {
+		$this->jaxl->unsubscribed($jid);
 	}
 
 }

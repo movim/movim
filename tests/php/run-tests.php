@@ -20,6 +20,7 @@
 
 ini_set('error_reporting', E_ALL ^E_NOTICE ^E_WARNING ^E_DEPRECATED);
 
+define('TESTSROOT', dirname(__FILE__) . '/');
 require('../../loader.php');
 require('lib-unit.php');
 
@@ -30,6 +31,16 @@ require('lib-unit.php');
 $failed_tests = array();
 $success_tests = array();
 
+/**
+ * Returns the full path to the test resources folder.
+ */
+function ut_res($path)
+{
+    if(!file_exists(TESTSROOT . 'res')) {
+        mkdir(TESTSROOT . 'res');
+    }
+    return TESTSROOT . 'res/' . $path;
+}
 
 /**
  * Saves a test failure details.
@@ -182,7 +193,8 @@ function run_tests($testname = NULL)
     $testdir = opendir(test_path());
     while($suite = readdir($testdir)) {
       if(!is_dir(test_path($suite))
-         || preg_match('#^\.+$#', $suite)) continue;
+         || preg_match('#^\.+$#', $suite)
+         || $suite == 'res') continue;
 
       run_testsuite($suite);
     }
@@ -234,7 +246,7 @@ function main($argc, $argv)
   }
 
   if($argc == 2)
-    run_tests($argv[2]);
+    run_tests($argv[1]);
   else
     run_tests();
 }

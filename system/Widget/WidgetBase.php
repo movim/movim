@@ -89,22 +89,50 @@ class WidgetBase
         return $path;
 	}
 
+    /**
+     * Generates and print an ajax call.
+     */
 	protected function callAjax($funcname)
 	{
 		echo $this->makeCallAjax(func_get_args());
 	}
 
+    /**
+     * Calls an the ajax function of another widget.
+     */
+    protected function callWidget($widgetname, $funcname)
+    {
+        $params = func_get_args();
+        echo $this->makeCallAjax(array_slice($params, 1), $widgetname);
+    }
+
+    /**
+     * Returns the javascript ajax call.
+     */
 	protected function genCallAjax($funcname)
 	{
 		return $this->makeCallAjax(func_get_args());
 	}
 
-    protected function makeCallAjax($params)
+    /**
+     * Returns the javascript call to another widget's ajax function.
+     */
+    protected function genCallWidget($widgetname, $funcname)
     {
+        $params = func_get_args();
+        return $this->makeCallAjax(array_slice($params, 1), $widgetname);
+    }
+
+    protected function makeCallAjax($params, $widget=false)
+    {
+        if(!$widget) {
+            $widget = get_class($this);
+        }
+
         $funcname = array_shift($params);
         $args = implode(', ', $params);
 
-		return get_class($this) . '_' . $funcname . "(" . $args . ");";
+		return $widget . '_' . $funcname . "(" . $args . ");";
     }
 
 	/**

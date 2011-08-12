@@ -3,17 +3,16 @@
 #log {
 	background-color: rgba(0, 0, 0, 0.8);
 	color: white;
-	height: 350px;
-	font-size: 0.7em;
-	padding: 1em;
+/*	height: 350px;*/
 	overflow: hidden;
-	margin-top: 0.5em;
-}
-
-#log h3 {
-	font-size: 1.2em;
-	margin-top: -2px;
-	margin-bottom: 0.5em;
+    font-size: 10px;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    z-index: 3;
+    height: 12px;
 }
 
 #log:hover {
@@ -23,17 +22,8 @@
 	width: 40%;
 	height: 100%;
 	border-left: 1px solid black;
-	margin-top: 0px;
 }
 
 #log span {
 	color: green;
-}
-
-#log span.presence {
-	color: #9BBBC6;
-}
-
-#log span.state {
-	color: orange;
 }

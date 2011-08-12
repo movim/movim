@@ -35,42 +35,7 @@ class TplPageBuilder
 	{
 		$this->user = $user;
 		$conf = new Conf();
-		self::load_language();
 		$this->theme = $conf->getServerConfElement('theme');
-	}
-
-	function load_language() {
-		if(User::isLogged()) {
-			$usr = new User();
-            try{
-                $lang = Conf::getUserConfElement($usr->getLogin(), 'language');
-                load_language($lang);
-            }
-            catch(MovimException $e) {
-                // Load default language.
-                load_language(Conf::getServerConfElement('defLang'));
-            }
-		}
-		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-			$nav_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-			$langNotFound = true;
-			$i = 0;
-			while($langNotFound && $i < sizeof($nav_langs)) {
-		    	//$check = str_replace ( '-', '_', strtolower($nav_langs[$i]));
-				$expl_arr = explode("-", $nav_langs[$i]);
-				$check = $expl_arr[0];
-		    	if(file_exists(BASE_PATH . '/i18n/' . $check . '.po')) {
-		    		$langNotFound = false;
-		    		load_language($check);
-		    	}
-		    	else {
-		    		$i++;
-                }
-		    }
-		}
-		else {
-            load_language(Conf::getServerConfElement('defLang'));
-        }
 	}
 
 	function theme_path($file)

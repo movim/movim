@@ -22,74 +22,157 @@ class Chat extends WidgetBase
 {
 	function WidgetLoad()
 	{
-        $this->addjs('chat.js');
-        $this->addcss('chat.css');
-		$this->registerEvent('incomemessage', 'onIncomingMessage');
-		$this->registerEvent('incomeactive', 'onIncomingActive');
-		$this->registerEvent('incomecomposing', 'onIncomingComposing');
-		$this->registerEvent('incomeonline', 'onIncomingOnline');
-	}
-
-    function getNameFromJID($jid)
-    {
-        return substr($jid, 0, strpos($jid, '@'));
-    }
-    
-	function onIncomingMessage($data)
-	{
-        RPC::call('movim_prepend',
-                       'chatMessages',
-                       RPC::cdata('<p class="message">%s: %s</p>',
-                                       $this->getNameFromJID($data['from']),
-                                       $data['body']));
+    	$this->addcss('chat.css');
+    	$this->addjs('chat.js');
+    	
+		$this->registerEvent('incomemessage', 'onMessage');
+		$this->registerEvent('incomecomposing', 'onComposing');
+		$this->registerEvent('incomepaused', 'onPaused');
+		
+	    if(Cache::c('activechat') == false)
+	        Cache::c('activechat', array());
 	}
 	
-	function onIncomingActive($data)
+	/**
+	 * Open a new talk
+	 *
+	 * @param string $jid
+	 * @return void
+	 */
+	function ajaxOpenTalk($jid) 
 	{
-	    RPC::call('movim_fill',
-                       'chatState',
-                       RPC::cdata("<h3>%s's chat is active</h3>",
-                                       $this->getNameFromJID($data['from'])));
+	    $talks = Cache::c('activechat');
+	    if(!array_key_exists($jid, $talks)) {
+            RPC::call('movim_prepend',
+                           'talks',
+                           RPC::cdata($this->prepareTalk($jid, true)));
+            $talks[$jid] = true;
+            Cache::c('activechat', $talks);
+            RPC::commit();
+        }
 	}
 	
-	function onIncomingComposing($data) {
-	    RPC::call('movim_fill',
-                       'chatState',
-                       RPC::cdata('<h3>%s is composing</h3>',
-                                       $this->getNameFromJID($data['from'])));
-	}
-
-	function onIncomingOnline($data)
+	/**
+	 * Close a talk
+	 *
+	 * @param string $jid
+	 * @return void
+	 */
+	function ajaxCloseTalk($jid) 
 	{
-	    RPC::call('movim_fill',
-                       'chatState',
-                       RPC::cdata('<h3>%s is online</h3>',
-                                       $this->getNameFromJID($data['from'])));
+	    $talks = Cache::c('activechat');
+	    unset($talks[$jid]);
+	    Cache::c('activechat', $talks);
 	}
-
+	
+	/**
+     * Send a message
+     *
+     * @param string $to
+     * @param string $message
+     * @return void
+     */
     function ajaxSendMessage($to, $message)
     {
-    	$user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());
+		$xmpp = Jabber::getInstance();
         $xmpp->sendMessage($to, $message);
     }
+	
+	/**
+	 * When we receive a message
+	 *
+	 * @param array $data
+	 * @return void
+	 */
+	function onMessage($data)
+	{
+	    $talks = Cache::c('activechat');
+	    list($jid) = explode('/', $data['from']);
+
+	    if(!array_key_exists($jid, $talks)) {
+            RPC::call('movim_prepend',
+                           'talks',
+                           RPC::cdata($this->prepareTalk($jid, true)));
+	        $talks[$jid] = true;
+	        Cache::c('activechat', $talks);
+	    }
+	    
+        RPC::call('movim_fill',
+                       $jid.'Tab',
+                       RPC::cdata($jid));
+
+        RPC::call('movim_prepend',
+                       $jid.'Messages',
+                       RPC::cdata('<p class="message"><span class="date">'.date('G:i', time()).'</span>'.htmlentities($data['body'], ENT_COMPAT, "UTF-8").'</p>'));
+	}
+	
+	/**
+	 * On composing
+	 *
+	 * @param array $data
+	 * @return void
+	 */
+	function onComposing($data)
+	{
+		list($jid) = explode('/', $data['from']);
+        RPC::call('movim_fill',
+                       $jid.'Tab',
+                      t('Composing'));
+	}
+	
+	/**
+	 * On paused
+	 *
+	 * @param array $data
+	 * @return void
+	 */
+	function onPaused($data)
+	{
+		list($jid) = explode('/', $data['from']);
+        RPC::call('movim_fill',
+                       $jid.'Tab',
+                       t('Paused'));
+	}
+	
+	/**
+	 * prepareTalk
+	 *
+	 * @param string $jid
+	 * @param bool $new = false
+	 * @return void
+	 */
+	public function prepareTalk($jid, $new = false) 
+	{
+	    $style = ($new) ? ' style="display: block" ' : '';
+	    
+	    return '
+            <div class="talk">
+                <div class="box" id="'.$jid.'Box" '.$style.'>
+                <div class="messages" id="'.$jid.'Messages"></div>
+                <input 
+                    type="text" 
+                    class="input" 
+                    value="'.t('Message').'" 
+                    onfocus="myFocus(this);" 
+                    onblur="myBlur(this);" 
+                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$jid."'", "sendMessage(this, '".$jid."')").'}"/>
+                </div>
+                
+                <span class="tab" id="'.$jid.'Tab" onclick="showTalk(this);">'.$jid.'</span>
+                <span class="cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$jid."'").' closeTalk(this)"></span>
+            </div>
+	    ';
+	}
 
 	function build()
 	{
+	    $talks = Cache::c('activechat');
 		?>
-		<div id="chat">
-            <div id="chatState">
-               <h3><?php echo t('Chat'); ?></h3>
-            </div>
-            <div id="chatMessages">
-            </div>
-            <input type="text" id="chatInput" value="<?php echo t('Message'); ?>" onfocus="myFocus(this);" onblur="myBlur(this);" onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSendMessage', "getDest()", "getMessageText()");?>}"/>
-            <input type="text" id="chatTo" value="<?php echo t('To'); ?>" onfocus="myFocus(this);" onblur="myBlur(this);" />
-            <input type="button" id="chatSend" onclick="<?php $this->callAjax('ajaxSendMessage', "getDest()", "getMessageText()");?>" value="<?php echo t('Send');?>"/>
-		</div>
+		    <div id="talks">
+		        <?php foreach($talks as $key => $value){ 
+		            echo $this->prepareTalk($key);
+		        } ?>
+		    </div>
 		<?php
-
 	}
 }
-
-?>
