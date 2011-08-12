@@ -4,9 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-14 23:41+0200\n"
-"PO-Revision-Date: 2011-05-21 19:10:15\n"
+"PO-Revision-Date: 2011-08-12 16:13:23\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,192 +13,85 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - Testkliento"
 
-#: ../install.php:17
-msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-msgstr ""
+#: ../system/Controller/ControllerMain.php:40
+#: ../system/Controller/ControllerMain.php:59
+msgid "%s - Welcome to Movim"
+msgstr "%s - Bonvenon al Movim"
 
-#: ../install.php:20 ../install.php:23
-#, php-format
-msgid "Movim requires the %s extension."
-msgstr ""
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:61
+#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:107
+msgid "Home"
+msgstr "Ĉefpaĝo"
 
-#: ../install.php:26
-msgid "Movim's folder must be writable."
-msgstr ""
+#: ../system/Controller/ControllerMain.php:43
+#: ../system/Controller/ControllerMain.php:71
+#: ../system/Controller/ControllerMain.php:92
+msgid "Configuration"
+msgstr "Agordaĵoj"
 
-#: ../install.php:121
-msgid "Movim Installer"
-msgstr ""
+#: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Logout"
+msgstr "Elsaluti"
 
-#: ../install.php:125
-msgid "Theme"
-msgstr ""
+#: ../system/Controller/ControllerMain.php:89
+msgid "%s - Configuration"
+msgstr "%s - Agordaĵoj"
 
-#: ../install.php:126
-msgid "Default language"
-msgstr ""
+#: ../system/Controller/ControllerMain.php:105
+msgid "%s - Account Creation"
+msgstr "%s - Kreado de konto"
 
-#: ../install.php:127
-msgid "Bosh cookie's expiration (s)"
-msgstr ""
+#: ../system/Controller/ControllerMain.php:123
+msgid "%s - Login to Movim"
+msgstr "%s - Ensaluti al Movim"
 
-#: ../install.php:128
-msgid "Bosh cookie's path"
-msgstr ""
-
-#: ../install.php:129
-msgid "Bosh cookie's domain"
-msgstr ""
-
-#: ../install.php:131
-msgid "Use HTTPS for Bosh"
-msgstr ""
-
-#: ../install.php:133
-msgid "Use only HTTP for Bosh"
-msgstr ""
-
-#: ../install.php:135
-msgid "Log verbosity"
-msgstr ""
-
-#: ../install.php:136
-#, fuzzy
-msgid "Allow account creation"
+#: ../system/Controller/ControllerMain.php:126
+msgid "Account Creation"
 msgstr "Kreado de konto"
 
-#: ../install.php:139 ../system/Widget/widgets/Config/Config.php:63
-msgid "Bosh Host"
-msgstr "BOSHa gastigo"
+#: ../system/Controller/ControllerMain.php:136
+msgid "My address"
+msgstr "Mia adreso"
 
-#: ../install.php:140 ../system/Widget/widgets/Config/Config.php:67
-msgid "Bosh Suffix"
-msgstr "BOSHa sufikso"
+#: ../system/Controller/ControllerMain.php:137
+msgid "Password"
+msgstr "Pasvorto"
 
-#: ../install.php:141 ../system/Widget/widgets/Config/Config.php:70
-msgid "Bosh Port"
-msgstr "BOSHa pordo"
+#: ../system/Controller/ControllerMain.php:138
+msgid "Come in!"
+msgstr "Venu en!"
 
-#: ../install.php:143
-msgid "<h2>Storage</h2>"
-msgstr ""
+#: ../lib/GetConf.php:2
+#: ../lib/GetConf.php:45
+#~ msgid "Error: Cannot load element value'%s'"
+#~ msgstr "Eraro: Ne povas ĉarĝi la elementon de valuo '%s'"
 
-#: ../install.php:193 ../install.php:197 ../install.php:201
-#, fuzzy, php-format
-msgid "Couldn't create directory '%s'."
-msgstr "Ne eblas krei dosieron %s."
+#: ../lib/GetConf.php:139
+#~ msgid "Error: Cannot load file '%s'"
+#~ msgstr "Eraro: Ne povas ĉarĝi dosieron '%s'"
 
-#: ../install.php:225
-#, fuzzy, php-format
-msgid "Couldn't create configuration file '%s'."
-msgstr "Ne eblas krei agordajn dosierojn."
-
-#: ../install.php:248
-msgid "Compatibility Test"
-msgstr ""
-
-#: ../install.php:249
-msgid ""
-"The following requirements were not met. Please make sure they are all "
-"satisfied in order to install Movim."
-msgstr ""
-
-#: ../install.php:262
-msgid "Movim is installed!"
-msgstr ""
-
-#: ../install.php:263
-#, php-format
-msgid "You can now access your shiny %sMovim instance%s"
-msgstr ""
-
-#: ../system/Cache.php:168
-msgid "Couldn't open cache. Please contact the administrator."
-msgstr ""
-
-#: ../system/Conf2.php:32 ../system/Conf2.php:56 ../system/Conf.php:24
-#: ../system/Conf.php:48
-#, fuzzy, php-format
-msgid "Cannot load element value'%s'"
-msgstr "Eraro: Ne povas ĉarĝi la elementon de valuo '%s'"
-
-#: ../system/Conf2.php:94 ../system/Conf2.php:140 ../system/Conf2.php:142
-#: ../system/Conf.php:86 ../system/Conf.php:133 ../system/Conf.php:135
-#, php-format
-msgid "Couldn't create file %s"
-msgstr "Ne eblas krei dosieron %s."
-
-#: ../system/Conf2.php:144 ../system/Conf.php:137
-msgid "Couldn't create configuration files."
-msgstr "Ne eblas krei agordajn dosierojn."
-
-#: ../system/Conf2.php:152 ../system/Conf.php:174
-#, fuzzy, php-format
-msgid "Cannot load file '%s'"
-msgstr "Eraro: Ne povas ĉarĝi dosieron '%s'"
-
-#: ../system/Conf.php:148 ../system/Conf.php:152
-#, fuzzy, php-format
-msgid "Couldn't save img file %s"
-msgstr "Ne eblas krei dosieron %s."
-
-#: ../system/Jabber.php:110
-#, fuzzy
-msgid "User not logged in."
-msgstr "Eraro: Uzanto ne ensalutita."
-
-#: ../system/Jabber.php:114
-#, fuzzy
-msgid "JID not provided."
-msgstr "Eraro: JID ne sciigita."
-
-#: ../system/Jabber.php:133
-#, fuzzy, php-format
-msgid "jid '%s' is incorrect"
-msgstr "Eraro: Ne korekta JID '%s'"
-
-#: ../system/Logger.php:27
-#, fuzzy, php-format
-msgid "Cannot open log file '%s'"
-msgstr "Eraro: Ne povas ĉarĝi dosieron '%s'"
-
-#: ../system/MovimException.php:15
-#, fuzzy, php-format
-msgid "Error: %s"
-msgstr "eraro:"
+#: ../lib/WidgetWrapper.php:98
+#~ msgid "Error: Requested widget '%s' doesn't exist."
+#~ msgstr "Eraro: Demandata fenestrero '%s' ne ekzistas."
 
 #: ../system/User.php:67
 msgid "Wrong password"
 msgstr "Malkorekta pasvorto"
 
-#: ../system/Widget/widgets/Chat/Chat.php:120
-msgid "Composing"
-msgstr ""
+#: ../lib/Widget.php:69
+#~ msgid "This is a sample widget."
+#~ msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:134
-msgid "Paused"
-msgstr ""
+#: ../lib/XMPPConnect.php:147
+#~ msgid "Error: jid `%s' is incorrect"
+#~ msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:155
-msgid "Message"
-msgstr "Mesaĝo"
-
-#: ../system/Widget/widgets/Config/Config.php:45
-msgid "Language"
-msgstr "Lingvo"
-
-#: ../system/Widget/widgets/Config/Config.php:60
-msgid "BOSH Connection Prefrences"
-msgstr "BOSHa konekta agordoj"
-
-#: ../system/Widget/widgets/Config/Config.php:61
-#, fuzzy
-msgid ""
-"Changing these data can be dangerous and may compromise the connection to "
-"the Jabber server"
-msgstr ""
-"Ĉanĝi tiuj datumoj povus esti danĝera aŭ kompromiti konekton al la XMPPa "
-"servilon"
+#: ../lib/widgets/Account/Account.php:3
+#: ../lib/widgets/Account/Account.php:34
+#~ msgid "Jabber Account"
+#~ msgstr "Jabbera konto"
 
 #: ../system/Widget/widgets/Config/Config.php:74
 msgid "Submit"
@@ -210,177 +101,397 @@ msgstr "Sendi"
 msgid "Reset"
 msgstr "Nuligi"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "Via avataro"
+#: ../system/Widget/widgets/Chat/Chat.php:86
+#~ msgid "Send"
+#~ msgstr "Sendi"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
-msgid "Website"
-msgstr ""
+#: ../system/Widget/widgets/Config/Config.php:45
+msgid "Language"
+msgstr "Lingvo"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
-msgid "Date of birth"
-msgstr ""
+#: ../lib/widgets/Config.php:45
+#~ msgid "Full Name"
+#~ msgstr ""
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:80
-#, fuzzy
-msgid "Refresh the data"
-msgstr "Aktualigi Rosteron"
+#: ../system/Widget/widgets/Config/Config.php:60
+msgid "BOSH Connection Prefrences"
+msgstr "BOSHa konekta agordoj"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:89
-msgid "Hye, I'm on Movim !"
-msgstr ""
+#: ../lib/Dispatcher.php:9
+#: ../lib/widgets/Config/Config.php:59
+#~ msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
+#~ msgstr "Ĉanĝi tiuj datumoj povus esti danĝera aŭ kompromiti konekton al la XMPPa servilon"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:130
-msgid "Remove this contact"
-msgstr ""
+#: ../install.php:13
+#: ../system/Widget/widgets/Config/Config.php:63
+msgid "Bosh Host"
+msgstr "BOSHa gastigo"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:45
-msgid "General Informations"
-msgstr ""
+#: ../install.php:14
+#: ../system/Widget/widgets/Config/Config.php:67
+msgid "Bosh Suffix"
+msgstr "BOSHa sufikso"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:47
-msgid "Name"
-msgstr ""
+#: ../install.php:14
+#: ../system/Widget/widgets/Config/Config.php:70
+msgid "Bosh Port"
+msgstr "BOSHa pordo"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
-msgid "Nickname"
-msgstr ""
+#: ../lib/widgets/Config/Config.php:76
+#~ msgid "error: "
+#~ msgstr "eraro:"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
-#, fuzzy
-msgid "Adress"
-msgstr "Mia adreso"
+#: ../system/Widget/widgets/Friends/Friends.php:151
+#~ msgid "Contacts"
+#~ msgstr "Kontaktoj"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:50
-msgid "Date of Birth"
-msgstr ""
+#: ../system/Conf2.php:9
+#: ../system/Conf2.php:14
+#: ../system/Conf2.php:142
+#: ../system/Conf.php:8
+#: ../system/Conf.php:13
+#: ../system/Conf.php:135
+msgid "Couldn't create file %s"
+msgstr "Ne eblas krei dosieron %s."
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:55
-msgid "Avatar"
-msgstr ""
+#: ../system/Conf2.php:14
+#: ../system/Conf.php:137
+msgid "Couldn't create configuration files."
+msgstr "Ne eblas krei agordajn dosierojn."
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:58
-msgid "About Me"
-msgstr ""
+#: ../lib/XMPPConnect.php:98
+#~ msgid "Error: User not logged in."
+#~ msgstr "Eraro: Uzanto ne ensalutita."
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
-msgid "Profile"
-msgstr ""
+#: ../lib/XMPPConnect.php:102
+#~ msgid "Error: JID not provided."
+#~ msgstr "Eraro: JID ne sciigita."
 
-#: ../system/Widget/widgets/Log/Log.php:33
-msgid "Debug console"
-msgstr "Sencimiga konzolo"
-
-#: ../system/Widget/widgets/Logout/Logout.php:49
-msgid "Logout"
-msgstr "Elsaluti"
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:39
-msgid "wants to talk with you"
-msgstr ""
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:41
-msgid "Accept"
-msgstr ""
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:42
-#: ../system/Widget/widgets/Notifs/Notifs.php:98
-msgid "Validate"
-msgstr ""
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:43
-#, fuzzy
-msgid "Decline"
-msgstr "Konektita"
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:97
-msgid "Alias"
-msgstr ""
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:99
-msgid "Add a contact"
-msgstr ""
+#: ../lib/XMPPConnect.php:117
+#~ msgid "Error: jid '%s' is incorrect"
+#~ msgstr "Eraro: Ne korekta JID '%s'"
 
 #: ../system/Widget/widgets/Profile/Profile.php:34
 msgid "Chat"
 msgstr "Tujmesaĝilo"
 
-#: ../system/Widget/widgets/Profile/Profile.php:35
-#, fuzzy
-msgid "Do not disturb"
-msgstr "Okupita"
+#: ../system/Widget/widgets/Chat/Chat.php:155
+msgid "Message"
+msgstr "Mesaĝo"
+
+#: ../system/Widget/widgets/Chat/Chat.php:85
+#~ msgid "To"
+#~ msgstr "Al"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
+#: ../system/Widget/widgets/Profile/Profile.php:48
+msgid "Your avatar"
+msgstr "Via avataro"
+
+#: ../lib/widgets/Friends/Friends.php:111
+#~ msgid "Refresh vCard"
+#~ msgstr "Aktualigi vCard"
+
+#: ../lib/widgets/Friends/Friends.php:116
+#~ msgid "Online"
+#~ msgstr "Konektita"
+
+#: ../lib/widgets/Friends/Friends.php:117
+#~ msgid "Offline"
+#~ msgstr "Nekonektita"
+
+#: ../lib/widgets/Friends/Friends.php:118
+#~ msgid "Hidden"
+#~ msgstr "Malmontrita"
 
 #: ../system/Widget/widgets/Profile/Profile.php:36
 msgid "Away"
 msgstr "For"
 
+#: ../lib/widgets/Friends/Friends.php:120
+#~ msgid "Do Not Disturb"
+#~ msgstr "Okupita"
+
+#: ../lib/widgets/Friends/Friends.php:124
+#~ msgid "Refresh Roster"
+#~ msgstr "Aktualigi Rosteron"
+
+#: ../system/Widget/widgets/Log/Log.php:33
+msgid "Debug console"
+msgstr "Sencimiga konzolo"
+
+#: ../install.php:17
+msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+msgstr "Malbona PHP version. Movim necesas PHP 5.3 minimume."
+
+#: ../install.php:2
+#: ../install.php:23
+msgid "Movim requires the %s extension."
+msgstr "Movim necesas la kromaĵo %s."
+
+#: ../install.php:26
+msgid "Movim's folder must be writable."
+msgstr "La Movima dosierujo devus esti skribebla."
+
+#: ../install.php:121
+msgid "Movim Installer"
+msgstr "Movima instalilo"
+
+#: ../install.php:125
+msgid "Theme"
+msgstr "Etoso"
+
+#: ../install.php:126
+msgid "Default language"
+msgstr "Apriora lingvo"
+
+#: ../install.php:127
+msgid "Bosh cookie's expiration (s)"
+msgstr "BOSH kuketeksvalidiĝo"
+
+#: ../install.php:128
+msgid "Bosh cookie's path"
+msgstr "BOSH kuketvojo"
+
+#: ../install.php:129
+msgid "Bosh cookie's domain"
+msgstr "BOSH kuketretregiono"
+
+#: ../install.php:131
+msgid "Use HTTPS for Bosh"
+msgstr "Uzi HTTPS por BOSH"
+
+#: ../install.php:133
+msgid "Use only HTTP for Bosh"
+msgstr "Nur uzi HTTP por BOSH"
+
+#: ../install.php:135
+msgid "Log verbosity"
+msgstr "Protokola babilemo"
+
+#: ../install.php:136
+msgid "Allow account creation"
+msgstr "Permesi kontokreado"
+
+#: ../install.php:139
+#~ msgid "Bosh server"
+#~ msgstr ""
+
+#: ../install.php:140
+#~ msgid "Bosh suffix"
+#~ msgstr ""
+
+#: ../install.php:143
+msgid "<h2>Storage</h2>"
+msgstr "<h2>Konservado</h2>"
+
+#: ../install.php:19
+#: ../install.php:19
+#: ../install.php:201
+msgid "Couldn't create directory '%s'."
+msgstr "Ne povas krei dosieron “%s”."
+
+#: ../install.php:225
+msgid "Couldn't create configuration file '%s'."
+msgstr "Ne povas krei agorddosiero “%s”."
+
+#: ../install.php:248
+msgid "Compatibility Test"
+msgstr "Kongrueca testo"
+
+#: ../install.php:249
+msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
+msgstr "La sekvaj elementoj ne estis trovita. Bonvolu kontroli ke ĉiuj estas disponeblaj por instali Movim-on."
+
+#: ../install.php:262
+msgid "Movim is installed!"
+msgstr "Movim estas instalita!"
+
+#: ../install.php:263
+msgid "You can now access your shiny %sMovim instance%s"
+msgstr "Vi nun povas atingi ĝis vian novegan %sMovima ekzemplo%s"
+
+#: ../system/Cache.php:168
+msgid "Couldn't open cache. Please contact the administrator."
+msgstr "Ne povas malfermi kaŝmemoro. Bonvolu kontakti la administranton."
+
+#: ../system/Conf2.php:3
+#: ../system/Conf2.php:5
+#: ../system/Conf.php:24
+#: ../system/Conf.php:48
+msgid "Cannot load element value'%s'"
+msgstr "Ne povas ŝargi valuon “%s” de la elemento."
+
+#: ../system/Conf2.php:15
+#: ../system/Conf.php:174
+msgid "Cannot load file '%s'"
+msgstr "Ne povas ŝargi dosieron “%s”."
+
+#: ../system/Jabber.php:110
+msgid "User not logged in."
+msgstr "Uzanto ne ensalutita."
+
+#: ../system/Jabber.php:114
+msgid "JID not provided."
+msgstr "JID maldisponebla"
+
+#: ../system/Jabber.php:133
+msgid "jid '%s' is incorrect"
+msgstr "JID “%s” malkorekta"
+
+#: ../system/MovimException.php:15
+msgid "Error: %s"
+msgstr "Eraro: %s"
+
+#: ../system/Controller/ControllerMain.php:130
+#: ../system/Widget/widgets/Config/Config.php:61
+msgid "Changing these data can be dangerous and may compromise the connection to the Jabber server"
+msgstr "Ĉanĝi tiujn datumojn povus esti danĝere kaj povus kompromesi konekton kun la Jabbera servilo."
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:39
+#~ msgid "Firstname"
+#~ msgstr "Persona nomo"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:40
+#~ msgid "Family name"
+#~ msgstr "Familia nomo"
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
+msgid "Nickname"
+msgstr "Kromnomo"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:42
+#~ msgid "Name given"
+#~ msgstr "Aldonita nomo"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
+msgid "Website"
+msgstr "Retpaĝaro"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:45
+#~ msgid "About me"
+#~ msgstr "Pri mi"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:62
+#~ msgid "Contact informations"
+#~ msgstr "Kontaktinformaroj"
+
+#: ../system/Widget/widgets/Profile/Profile.php:87
+#~ msgid "Status"
+#~ msgstr "Statuso"
+
+#: ../system/Widget/widgets/Wall/Wall.php:35
+#~ msgid "This is my custom Wall widget."
+#~ msgstr "Tio estas mia persona mura fenestraĵo."
+
+#: ../system/Conf.php:14
+#: ../system/Conf.php:152
+msgid "Couldn't save img file %s"
+msgstr "Ne povas konservi bilddosieron %s"
+
+#: ../system/Logger.php:27
+msgid "Cannot open log file '%s'"
+msgstr "Ne povas malfermi protokolan dosieron"
+
+#: ../system/Widget/widgets/Chat/Chat.php:120
+msgid "Composing"
+msgstr "skribante"
+
+#: ../system/Widget/widgets/Chat/Chat.php:134
+msgid "Paused"
+msgstr "pauzita"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
+msgid "Date of birth"
+msgstr "Naskiĝdato"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:80
+msgid "Refresh the data"
+msgstr "Aktualigi datumojn"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:89
+msgid "Hye, I'm on Movim !"
+msgstr "Saluton, mi estas ĉe Movim!"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:130
+msgid "Remove this contact"
+msgstr "Forigi tiun kontakton"
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:45
+msgid "General Informations"
+msgstr "Generalaj informoj"
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:47
+msgid "Name"
+msgstr "Nomo"
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
+msgid "Adress"
+msgstr "Adreso"
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:50
+msgid "Date of Birth"
+msgstr "Naskiĝdato"
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:55
+msgid "Avatar"
+msgstr "Avataro"
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:58
+msgid "About Me"
+msgstr "Pri mi"
+
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
+msgid "Profile"
+msgstr "Profilo"
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:39
+msgid "wants to talk with you"
+msgstr "volas paroli kun vi"
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:41
+msgid "Accept"
+msgstr "Akcepti"
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:42
+#: ../system/Widget/widgets/Notifs/Notifs.php:98
+msgid "Validate"
+msgstr "Validigi"
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:43
+msgid "Decline"
+msgstr "Malakcepti"
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:97
+msgid "Alias"
+msgstr "Kromnomo"
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:99
+msgid "Add a contact"
+msgstr "Aldoni kontakton"
+
+#: ../system/Widget/widgets/Profile/Profile.php:35
+msgid "Do not disturb"
+msgstr "Ne distri"
+
 #: ../system/Widget/widgets/Profile/Profile.php:37
 msgid "Away for a long time"
-msgstr ""
+msgstr "For ekde longe"
 
 #: ../system/Widget/widgets/Wall/Wall.php:44
 msgid "Get the comments"
-msgstr ""
+msgstr "Vidi komentojn"
 
 #: ../system/Widget/widgets/Wall/Wall.php:51
 msgid "Contact's feed cannot be loaded."
-msgstr ""
+msgstr "La kontakta fluo ne povas esti ŝarĝita."
 
 #: ../system/Widget/widgets/Wall/Wall.php:69
 msgid "Feed"
-msgstr ""
+msgstr "Fluo"
 
 #: ../system/Widget/widgets/Wall/Wall.php:73
 msgid "Loading the contact feed ..."
-msgstr ""
+msgstr "Ŝarĝante la kontakta fluo…"
 
-#~ msgid "%s - Welcome to Movim"
-#~ msgstr "%s - Bonvenon al Movim"
-
-#~ msgid "Home"
-#~ msgstr "Ĉefpaĝo"
-
-#~ msgid "Configuration"
-#~ msgstr "Agordaĵoj"
-
-#~ msgid "%s - Configuration"
-#~ msgstr "%s - Agordaĵoj"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Kreado de konto"
-
-#~ msgid "%s - Login to Movim"
-#~ msgstr "%s - Ensaluti al Movim"
-
-#~ msgid "Password"
-#~ msgstr "Pasvorto"
-
-#~ msgid "Come in!"
-#~ msgstr "Venu en!"
-
-#~ msgid "Error: Requested widget '%s' doesn't exist."
-#~ msgstr "Eraro: Demandata fenestrero '%s' ne ekzistas."
-
-#~ msgid "Jabber Account"
-#~ msgstr "Jabbera konto"
-
-#~ msgid "Send"
-#~ msgstr "Sendi"
-
-#~ msgid "Contacts"
-#~ msgstr "Kontaktoj"
-
-#~ msgid "To"
-#~ msgstr "Al"
-
-#~ msgid "Refresh vCard"
-#~ msgstr "Aktualigi vCard"
-
-#~ msgid "Offline"
-#~ msgstr "Nekonektita"
-
-#~ msgid "Hidden"
-#~ msgstr "Malmontrita"
