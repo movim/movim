@@ -77,24 +77,24 @@ class Jabber
 						 ));
 
 		// Defining call-backs
-		
+
 		// Connect-Disconnect
         $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'postAuth'));
         $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
         //$this->jaxl->addPlugin('jaxl_post_roster_update', array(&$this, 'postRosterUpdate'));
         $this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
 		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
-		
+
 		// The handlers
         $this->jaxl->addPlugin('jaxl_get_iq', array(&$this, 'getIq'));
         $this->jaxl->addPlugin('jaxl_get_message', array(&$this, 'getMessage'));
         $this->jaxl->addPlugin('jaxl_get_presence', array(&$this, 'getPresence'));
-        
+
         // Others hooks
         $this->jaxl->addPlugin('jaxl_get_bosh_curl_error', array(&$this, 'boshCurlError'));
         $this->jaxl->addplugin('jaxl_get_empty_body', array(&$this, 'getEmptyBody'));
 	}
-	
+
 	/**
 	 * Get the current instance
 	 *
@@ -119,7 +119,7 @@ class Jabber
 		}
 		return self::$instance;
 	}
-	
+
     /**
 	 * Start the BOSH connection
 	 *
@@ -144,7 +144,7 @@ class Jabber
 
 		self::setStatus(false, false);
 	}
-	
+
 	/**
      * postAuth
      *
@@ -166,18 +166,18 @@ class Jabber
     	$user = new User();
     	$user->desauth();
     }
-    
+
     /**
 	 * Return the current ressource
 	 *
 	 * @return string
-	 */	
+	 */
 	public function getResource()
 	{
 	    $res = JAXLUtil::splitJid($this->jaxl->jid);
 	    return $res[2];
 	}
-	
+
 	/**
 	 * Return the current Jid
 	 *
@@ -259,14 +259,14 @@ class Jabber
 
     /**
 	 * Iq handler
-	 * 
+	 *
 	 * @param array $payload
 	 * @return void
 	 */
 	public function getIq($payload) {
 	    //movim_log($payload);
 		$evt = new Event();
-		
+
 		// vCard case
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
 			if($payload['from'] == reset(explode("/", $payload['to'])) || $payload['from'] == NULL) {
@@ -279,7 +279,6 @@ class Jabber
 				$evt->runEvent('vcardreceived', $payload);
 			}
 		}
-		
 		// Roster case
 		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
 		    if($payload['type'] == "result") {
@@ -288,24 +287,24 @@ class Jabber
             } elseif($payload['type'] == "set") {
                 $this->getRosterList();
             }
-        } 
-        
+        }
+
         // Pubsub node case
         elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0") {
             $evt->runEvent('streamreceived', $payload);
 		}
-		
+
 		elseif(isset($payload["pubsubNode"])) {
             $evt->runEvent('thread', $payload);
 		}
-        
+
         elseif($payload["queryXmlns"] == "http://jabber.org/protocol/disco#items") {
             $evt->runEvent('disconodes', $payload);
         } else {
             $evt->runEvent('none', var_export($payload, true));
         }
     }
-    
+
     /**
 	 * Message handler
 	 *
@@ -314,7 +313,7 @@ class Jabber
 	 */
 	public function getMessage($payloads) {
         foreach($payloads as $payload) {
-            
+
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') { // reject offline message
 
                 $evt = new Event();
@@ -344,35 +343,35 @@ class Jabber
 	 */
 	public function getPresence($payloads) {
         foreach($payloads as $payload) {
-        
+
             movim_log($payload);
 
     		if($payload['type'] == 'subscribe') {
         		$evt = new Event();
         		$evt->runEvent('incomesubscribe', $payload);
     		} elseif($payload['type'] == 'result') {
-    		
+
     		} elseif($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
 
                 // We create the events
                 $evt = new Event();
 
 				$evt->runEvent('incomepresence', $payload);
-				
+
 				if($payload['from'] == $this->getJid())
 					$evt->runEvent('incomemypresence', $payload);
 
                 // We update the presence array
                 $session = Session::start(APP_NAME);
 				$presences = $session->get('presences');
-				
+
 				list($jid, $ressource) = explode('/',$payload['from']);
-				
+
 				if(!is_array($presences[$jid]))
 				    $presences[$jid] = array();
-				    
+
 				$presences[$jid]['status'] = $payload['status'];
-				
+
                 if($payload['type'] == 'unavailable') {
                     if($payload['from'] == $this->jaxl->jid)
                         $evt->runEvent('postdisconnected', $data);
@@ -419,7 +418,7 @@ class Jabber
 	{
 		$this->jaxl->JAXL0054('getVCard', $jid, $this->jaxl->jid, false);
 	}
-	
+
 	/**
 	 * sendVcard
 	 *
@@ -431,7 +430,7 @@ class Jabber
 		$this->jaxl->JAXL0054('updateVCard', $vcard);
         $this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, false);
 	}
-	
+
 	/**
 	 * Ask for some items
 	 *
@@ -441,7 +440,7 @@ class Jabber
 	public function getWall($jid = false) {
 		$this->jaxl->JAXL0277('getItems', $jid);
 	}
-	
+
 	/**
 	 * Ask for some comments of an article
 	 *
@@ -452,7 +451,7 @@ class Jabber
 	public function getComments($jid, $id) {
 		$this->jaxl->JAXL0277('getComments', 'pubsub.jappix.com', $id);
 	}
-	
+
     /**
 	 * Service Discovery
 	 *
@@ -466,15 +465,15 @@ class Jabber
 		$this->jaxl->JAXL0277('getItems', 'edhelas@jappix.com');
         //psgxs.linkmauve.fr
 	}
-	
+
 	public function discoNodes($pod)
 	{
-		$this->jaxl->JAXL0060('discoNodes', $pod, $this->jaxl->jid);  
+		$this->jaxl->JAXL0060('discoNodes', $pod, $this->jaxl->jid);
 	}
-	
+
 	public function discoItems($pod, $node)
 	{
-		$this->jaxl->JAXL0060('getNodeItems', $pod, $this->jaxl->jid, $node);  
+		$this->jaxl->JAXL0060('getNodeItems', $pod, $this->jaxl->jid, $node);
 	}
 
     /**
@@ -496,7 +495,7 @@ class Jabber
 	 */
 	public function setStatus($status, $show)
 	{
-		$this->jaxl->setStatus($status, $show, 41, true);
+		$this->jaxl->setStatus($status, $show, 41, false);
 	}
 
     /**
@@ -528,7 +527,7 @@ class Jabber
 			throw new MovimException("Incorrect JID `$addressee'");
 		}
 	}
-	
+
 	/**
 	 * Subscribe to a contact request
 	 *
@@ -561,7 +560,7 @@ class Jabber
 			throw new MovimException("Incorrect JID `$jid'");
 		}
 	}
-	
+
 	/**
 	 * Add a new contact
 	 *
@@ -578,7 +577,7 @@ class Jabber
 			throw new MovimException("Incorrect JID `$jid'");
 		}
 	}
-	
+
 	/**
 	 * Remove a contact
 	 *
@@ -593,7 +592,7 @@ class Jabber
 			throw new MovimException("Incorrect JID `$jid'");
 		}
 	}
-	
+
 	/**
 	 * Unsubscribe to a contact
 	 *

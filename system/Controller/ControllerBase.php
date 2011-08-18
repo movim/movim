@@ -35,6 +35,7 @@ class ControllerBase
 
 	public function __construct($token = 'q')
 	{
+        $this->load_language();
 		$this->token = $token;
 	}
 
@@ -47,6 +48,29 @@ class ControllerBase
 		} else {
 			$this->run_req($this->default_handler);
 		}
+	}
+
+    /**
+     * Loads up the language, either from the User or default.
+     */
+    function load_language() {
+		if(User::isLogged()) {
+			$usr = new User();
+            try{
+                $lang = Conf::getUserConfElement($usr->getLogin(), 'language');
+                load_language($lang);
+            }
+            catch(MovimException $e) {
+                // Load default language.
+                load_language(Conf::getServerConfElement('defLang'));
+            }
+		}
+		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+			load_language_auto();
+		}
+		else {
+            load_language(Conf::getServerConfElement('defLang'));
+        }
 	}
 
 	/**
