@@ -38,7 +38,6 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
-			//$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
 			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
@@ -57,18 +56,14 @@ class ControllerMain extends ControllerBase
 		} else {
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
-			    //$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
                 $this->page->menuAddLink(t('Home'), '?q=mainPage');
 
-				$cachevcard = Cache::c('vcard'.$_GET['f']);
-				
-				$name = $cachevcard['vCardFN'].' '.$cachevcard['vCardFamily'];
-				
-                if($name == " ")
-                    $name = $cachevcard['vCardNickname'];
-                if($name == "")
-                    $name = $cachevcard['vCardNGiven'];
-                if($name == "")
+                global $sdb;
+                $user = new User();
+                $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['f']));
+                if(isset($contact[0]))
+                    $name = $contact[0]->getTrueName();
+                else
                     $name = $_GET['f'];
 
 				$this->page->menuAddLink($name, false, true);
@@ -92,7 +87,6 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			$this->page->setTitle(t('%s - Configuration', APP_TITLE));
-			//$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
 			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
@@ -108,7 +102,6 @@ class ControllerMain extends ControllerBase
 	{
 		if(Conf::getServerConfElement("accountCreation") == 1) {
 			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
-			//$this->page->menuAddLink($this->page->theme_img('img/home_icon.png', 'home_icon').t('Home'), '?q=mainPage', true);
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
 			$content = new TplPageBuilder($user);
 
@@ -164,7 +157,10 @@ class ControllerMain extends ControllerBase
 			            </div> ';
 
 		$serverconf = Conf::getServerConf();
-
+		/*global $sdb;
+        $contact = new Contact();
+			    $sdb->create($contact);
+			    $contact->save();*/
 		ob_start();
 		?>
 		<noscript>
@@ -219,7 +215,7 @@ class ControllerMain extends ControllerBase
 			                <input type="text" class="tiny" name="port" id="port"
 			                    value="<?php echo $serverconf['defBoshPort']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
 			        </fieldset>
-			        <input class="submit" type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
+			        <input onclick="this.value = '<?php echo t('Connecting...');?>'" class="submit" type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
 			    </form>
 			</div>
 	    <?php

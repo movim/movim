@@ -24,7 +24,7 @@
 /*    padding-right: 2px;*/
     margin: 5px 0px;
     padding: 5px;
-    max-height: 30px;
+/*    max-height: 20px;*/
 }
 
 #tinylist ul li:hover {
@@ -44,7 +44,7 @@
 }
 
 #tinylist ul li.offline {
-	display: none;
+/*	display: none;*/
 }
 
 #tinylist ul li.dnd {
@@ -59,8 +59,8 @@
 	float: right; 
     margin: -5px;
     margin-right: -2px;
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
     background-color: white;
 }
 

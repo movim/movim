@@ -4,7 +4,7 @@
  * Wrapper for default storage engine (convenient for configurable mon-db
  * systems).
  */
-class StorageEngineWrapper implements StorageDriver
+class StorageEngineWrapper extends StorageEngineBase implements StorageDriver
 {
     private $db;
     private static $driver = null;

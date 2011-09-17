@@ -7,8 +7,12 @@
 #wall .message {
 	border-bottom: 1px solid #ECECEC;
     width: 100%;
-	padding-bottom: 0.5em;
-    min-height: 55px;
+	padding: 0.7em 0em;
+    min-height: 50px;
+}
+
+#wall .message:last-child {
+    border-bottom: 0px;
 }
 
 #wall .message span {
@@ -32,7 +36,7 @@
 #wall .message .avatar {
 	width: 50px;
 	height: 50px;
-	margin: 5px;
+	margin-right: 5px;
 	margin-left: 0px;
 	display: block;
 	float: left;
@@ -44,4 +48,8 @@
 	padding-bottom: 0.4em;
 	margin-left: 60px;
 	margin-right: 5px;
+}
+
+#wall #wallfollow {
+    background-image: url(img/follow_icon.png);
 }

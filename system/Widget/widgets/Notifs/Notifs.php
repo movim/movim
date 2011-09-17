@@ -24,11 +24,18 @@ class Notifs extends WidgetBase
     {
     	$this->addcss('notifs.css');
     	$this->addjs('notifs.js');
-   	    /*$notifs = Cache::c('activenotifs');
-   	    $notifs = array();
-	    Cache::c('activenotifs', $notifs);*/
-    	//$this->addjs('friends.js');
-		$this->registerEvent('incomesubscribe', 'onSubscribe');
+
+		$this->registerEvent('message', 'onMessage');
+		$this->registerEvent('subscribe', 'onSubscribe');
+    }
+    
+    function onMessage($payload) {
+        global $sdb;
+        $contact = new Contact();
+        $user = new User();
+        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
+        RPC::call('notification', $contact->getTrueName(), RPC::cdata($payload['movim']['body'], ENT_COMPAT, "UTF-8"));
+        RPC::commit();
     }
     
     function onSubscribe($payload) {
@@ -96,7 +103,7 @@ class Notifs extends WidgetBase
                 <input id="addjid" class="tiny" value="user@server.tld" onfocus="myFocus(this);" onblur="myBlur(this);"/>
                 <input id="addalias" class="tiny" value="<?php echo t('Alias'); ?>" onfocus="myFocus(this);" onblur="myBlur(this);"/>
                 <a class="button tiny" href="#" id="addvalidate" onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>"><?php echo t('Validate'); ?></a>
-                <a class="button tiny" href="#" onclick="addJid(this);"><?php echo t('Add a contact'); ?></a>
+                <a class="button tiny icon" id="addask" href="#" onclick="addJid(this);"><?php echo t('Add a contact'); ?></a>
             </li>
         </ul>
     </div>

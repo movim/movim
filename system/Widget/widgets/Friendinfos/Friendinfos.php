@@ -45,22 +45,26 @@ class Friendinfos extends WidgetBase
      * @return void
      */
     function prepareInfos($vcard) {
-    		
+        $c = new ContactHandler();
+        $contact = $c->get($_GET['f']);
+        
 		$html = '<div id="friendavatar">';
             if($vcard != false) {
-                $html .= '<img alt="' . t("Your avatar") . '" src="data:'.
-                    $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
+                //$html .= '<img alt="' . t("Your avatar") . '" src="data:'.
+                //    $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" />';
+                $html .= '<img alt="' . t("Your avatar") . '" src="'.$contact->getPhoto().'" />';
             }
         $html .= '</div>';
         
-        $name = $vcard['vCardFN'].' '.$vcard['vCardFamily'];
+        /*$name = $vcard['vCardFN'].' '.$vcard['vCardFamily'];
         
         if($name == " ")
             $name = $vcard['vCardNickname'];
         if($name == "")
             $name = $vcard['vCardNGiven'];
         if($name == "")
-            $name = $vcard['from'];
+            $name = $vcard['from'];*/
+        $name = $contact->getTrueName();
             
         $html .= '<h2 title="'.$vcard['from'].'">'.$name.'</h2>';
         
@@ -135,6 +139,10 @@ class Friendinfos extends WidgetBase
 			    onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>"
 			></div>
 			<?php 
+			    /*global $sdb;
+		    	$contact = new Contact();
+		    	$xmpp = Jabber::getInstance();
+	            $sdb->load($contact, array('key' => $xmpp->getCleanJid(), 'jid' => $_GET['f']));*/
 				if(isset($_GET['f']))
 					echo $this->prepareInfos(Cache::c('vcard'.$_GET['f']));
 				

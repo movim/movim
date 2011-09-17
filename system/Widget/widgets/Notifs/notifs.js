@@ -26,3 +26,28 @@ function getAddJid() {
 function getAddAlias() {
     return document.querySelector('#addalias').value;
 }
+
+function RequestPermission (callback)
+{
+    window.webkitNotifications.requestPermission(callback);
+}
+
+function notification(params)
+{      
+    if (window.webkitNotifications.checkPermission() > 0) {
+        RequestPermission(notification);
+    }
+
+//    if(!document.hasFocus()) {
+        var icon  = 'http://www.beakkon.com/sites/default/files/images/logo.png';
+        var title = params[0];
+        var body  = params[1];
+
+        
+        var popup = window.webkitNotifications.createNotification(icon, title, body);
+        popup.show();
+        setTimeout(function(){
+        popup.cancel();
+        }, '30');
+//    }
+}

@@ -2,13 +2,9 @@ function closeTalk(n) {
     n.parentNode.parentNode.removeChild(n.parentNode);
 }
 
-function showTalk(n) {
-    var box = n.parentNode.querySelector('.box');
-    if(box.style.display == "block") {
-        box.style.display = "none";
-    } else {
-        box.style.display = "block";
-    }
+function scrollTalk(params) {
+    var messages = document.getElementById(params);
+    messages.scrollTop = messages.scrollHeight;
 }
 
 function sendMessage(n, jid)
@@ -22,10 +18,14 @@ function sendMessage(n, jid)
     var m = date.getMinutes();
     if (m<10) {m = "0" + m}
     
-    var box = document.getElementById(jid + 'Messages');
-    box.innerHTML = '<p class="message me"><span class="date">' + h + ':' + m + '</span>' + text + '</p>' + n.parentNode.innerHTML;
+    var box = document.getElementById('messages' + jid);
+    box.innerHTML = box.innerHTML + '<div class="message me"><span class="date">' + h + ':' + m + '</span>' + text + '</div>';
+    
     n.value = "";
+    
     n.focus();
+    
+    scrollTalk('messages' + jid);
     return text;
 
 }

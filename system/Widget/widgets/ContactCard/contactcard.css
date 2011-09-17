@@ -1,0 +1,43 @@
+#contactcard .element {
+    padding: 5px;
+    clear: both;
+    overflow: auto;
+    width: 100%;
+}
+
+#contactcard img {
+    max-width: 200px;
+    padding: 3px;
+    border: 1px solid #CCC;
+}
+
+#contactcard .element span {
+    font-weight: bold;
+    width: 170px;
+    display: block;
+    float: left;
+    padding-right: 2em;
+    text-align: right;
+}
+
+#contactcard .content {
+    display: block;
+    float: left;
+    width: 500px;
+}
+
+#contactcard #friendremoveask {
+    background-image: url(img/rm_icon.png);
+}
+
+#contactcard #friendremoveyes {
+    background-image: url(img/yes_icon.png);
+}
+
+#contactcard #friendremoveno {
+    background-image: url(img/no_icon.png);
+}
+
+#contactcard #friendchat {
+    background-image: url(img/chat_icon.png);
+}

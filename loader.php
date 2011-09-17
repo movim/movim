@@ -10,6 +10,9 @@ define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 define('USERS_PATH', BASE_PATH . 'user/');
 
+define('DB_DEBUG', true);
+define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
+
 // Loads up all system libraries.
 require(LIB_PATH . "Lang/i18n.php");
 
@@ -26,6 +29,9 @@ require(LIB_PATH . "Logger.php");
 require(LIB_PATH . "MovimException.php");
 require(LIB_PATH . "RPC.php");
 require(LIB_PATH . "User.php");
+
+require(LIB_PATH . "Contact.php");
+require(LIB_PATH . "Presence.php");
 
 require(LIB_PATH . "Controller/ControllerBase.php");
 require(LIB_PATH . "Controller/ControllerMain.php");
@@ -87,5 +93,7 @@ define('BROWSER_COMP', $compatible);
 storage_load_driver(Conf::getServerConfElement('storageDriver'));
 StorageEngineWrapper::setdriver(Conf::getServerConfElement('storageDriver'));
 Session::start(APP_NAME);
+
+$sdb = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
 
 ?>

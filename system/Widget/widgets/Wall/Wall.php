@@ -29,13 +29,30 @@ class Wall extends WidgetBase
     
     function onStream($payload) {
         $html = '';
+        
+        movim_log($payload);
+        if($payload['movim']['error']['@attributes']['code'] != 501) {
+            $html .= '
+                <a 
+                    class="button tiny icon" 
+                    href="#"
+                    style="float: right;"
+                    id="wallfollow" 
+                    onclick="'.$this->genCallAjax('ajaxSubscribe', "'".$payload["movim"]["@attributes"]["from"]."'").'" 
+                >
+                    '.t('Follow').'
+                </a>
+                <br /><br />
+                ';
+        }
+            
         $i = 0;
-        $user = new User();
-        $jid = $user->getLogin();
+//        $user = new User();
+//        $jid = $user->getLogin();
         foreach($payload["pubsubItemsEntryContent"] as $key => $value) {
             $html .= '
                 <div class="message" id="'.$payload["pubsubItemsId"][$i].'">
-				    <img class="avatar" alt="test" src="'.Conf::loadPicture($jid, $payload["from"].".jpeg").'">
+				    <img class="avatar">
 
 		        	<div class="content">
      			        <span>'.$payload["pubsubItemsEntryAuthor"][$i].'</span> <span class="date">'.date('j F - H:i',strtotime($payload["pubsubItemsEntryPublished"][$i])).'</span> '.$value.'
@@ -57,6 +74,11 @@ class Wall extends WidgetBase
 		$xmpp->getWall($jid);
 	}
 	
+	function ajaxSubscribe($jid) {
+		$xmpp = Jabber::getInstance();
+		$xmpp->subscribeNode($jid);
+	}
+	
 	function ajaxGetComments($jid, $id) {
 		$xmpp = Jabber::getInstance();
 		$xmpp->getComments($jid, $id);
@@ -67,7 +89,8 @@ class Wall extends WidgetBase
 		?>
 		<div class="tabelem" id="wall" title="<?php echo t('Feed');?>">
             <script type="text/javascript">
-            <?php $this->callAjax('ajaxWall', "'".$_GET['f']."'");?>
+
+            <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
             </script>
             <?php echo t('Loading the contact feed ...'); ?>
        	</div>

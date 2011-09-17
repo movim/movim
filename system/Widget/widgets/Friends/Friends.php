@@ -94,15 +94,20 @@ class Friends extends WidgetBase
 				            title="'.$status.'" 
 				            class="'.$presence.'"
 				          >';
-				
+					
+					$c = new ContactHandler();
+	                $contact = $c->get($value);
+	                
 					$cachevcard = Cache::c('vcard'.$value); // We try to load the Vcard
-					$html .= "<a class='user_page' href='?q=friend&f=".$value."'><img class='avatar' src='data:".	$cachevcard['vCardPhotoType'] . ";base64," . $cachevcard['vCardPhotoBinVal'] . "' />"
-							."</a>"; // Draw the avatar
+					//$html .= "<a class='user_page' href='?q=friend&f=".$value."'><img class='avatar' src='data:".	$cachevcard['vCardPhotoType'] . ";base64," . $cachevcard['vCardPhotoBinVal'] . "' />"
+					//		."</a>"; // Draw the avatar
+					$html .= "<a class='user_page' href='?q=friend&f=".$value."'><img class='avatar' src='".$contact->getPhoto()."' />"
+							."</a>";
 					
                     $html .= '<span onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$value."'").'">';
 					// We try to display an understadable name
 
-                    $name = $cachevcard['vCardFN'].' '.$cachevcard['vCardFamily'];
+                    /*$name = $cachevcard['vCardFN'].' '.$cachevcard['vCardFamily'];
                     
                     if($name == " ")
                         $name = $cachevcard['vCardNickname'];
@@ -111,12 +116,12 @@ class Friends extends WidgetBase
                     if($name == "")
                         $name = $roster["queryItemName"][$i];
                     if($name == "")
-                        $name = $cachevcard['from'];
+                        $name = $cachevcard['from'];*/
                     
-                    $html .= $name;
-						
-					$html .= '</span>
-								<span class="status" id="status_'.$value.'" title="'.$status.'">'.$status.'</span></li>';
+                    $html .= $contact->getTrueName();
+					$html .= '</span>';	
+					//$html .= '</span>
+					//			<span class="status" id="status_'.$value.'" title="'.$status.'">'.$status.'</span></li>';
 				
 				$html .= "
 				</li>";

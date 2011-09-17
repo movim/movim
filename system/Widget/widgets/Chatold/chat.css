@@ -1,0 +1,83 @@
+#talks {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.talk {
+    float: right;
+    position: relative;
+    width: 200px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.talk span.cross {
+    width: 16px;
+    height: 16px;
+    float: right;
+    padding: 1px;
+    background-image: url(img/cross.png);
+    background-repeat: no-repeat;
+    background-position: 0px 3px;
+    position:absolute;
+    bottom:0;
+    right: 0;
+}
+
+.talk span.cross:hover,
+.talk span.tab:hover {
+    cursor: pointer;
+}
+
+.talk span.tab {
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    padding: 2px;
+    background-color: #EFEFEF;
+    border-top: 1px solid #DCDCDC;
+    border-left: 1px solid #DCDCDC;
+}
+
+.talk .box {
+    background-color: white;
+    height: 230px;
+    overflow: auto;
+
+    display: none;
+    border: 1px solid #DCDCDC;
+}
+
+.talk .box .message {
+    border-bottom: 1px solid #EEE;
+    padding: 3px;
+    max-width: 100%;
+    min-height: 15px;
+}
+
+.talk .box .info {
+    background-color: #D0CAC7;
+}
+
+.talk .box .message .date {
+    color: #BDBDBD;
+    float: right;
+    padding-right: 5px;
+}
+
+.talk .box .me {
+    border-left: 2px solid #AEAEAE;
+}
+
+.talk .box .input {
+    position:absolute;
+    bottom:20px;
+    margin: 0px;
+    width: 192px;
+    padding: 3px;
+    border-radius: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 1px solid #DCDCDC;
+}

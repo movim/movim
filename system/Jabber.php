@@ -177,16 +177,17 @@ class Jabber
 	    $res = JAXLUtil::splitJid($this->jaxl->jid);
 	    return $res[2];
 	}
-
+	
 	/**
-	 * Return the current Jid
+	 * Return the current Cleaned Jid
 	 *
 	 * @return string
 	 */
-	public function getJid() {
-	    return $this->jaxl->jid;
+	public function getCleanJid() {
+	    $jid = $this->jaxl->jid;
+	    $res = JAXLUtil::splitJid($jid);
+	    return $res[0].'@'.$res[1];
 	}
-
 
     public function boshCurlError() {
 //    	$this->jaxl->shutdown();
@@ -270,20 +271,56 @@ class Jabber
 		// vCard case
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
 			if($payload['from'] == reset(explode("/", $payload['to'])) || $payload['from'] == NULL) {
-				Cache::c("myvcard", $payload);
+				//Cache::c("myvcard", $payload);
 				$evt->runEvent('myvcardreceived', $payload);
 			} else {
-			   	Cache::c("vcard".$payload["from"], $payload);
-			   	$res = JAXLUtil::splitJid($payload['to']);
-				Conf::savePicture($res[0].'@'.$res[1], $payload['from'], $payload['vCardPhotoBinVal'], $payload["vCardPhotoType"]);
-				$evt->runEvent('vcardreceived', $payload);
+		        global $sdb;
+
+		        $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $payload['movim']['@attributes']['from']));
+		        if($contact == false) {
+			        $contact = new Contact();
+	                $contact->setContact($payload['movim']);			            
+			        $sdb->save($contact);
+		        } else {
+		        	$c = new ContactHandler();
+	                $contact = $c->get($payload['movim']['@attributes']['from']);
+	                $contact->setContact($payload['movim']);			            
+			        $sdb->save($contact); 
+		        }
+
+				$evt->runEvent('vcard', $contact);
 			}
 		}
 		// Roster case
 		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
+		    movim_log($payload);
 		    if($payload['type'] == "result") {
-			    Cache::c("roster", $payload);
-                $evt->runEvent('rosterreceived', $payload);
+		        global $sdb;
+		        
+		        foreach($payload['movim']['query']['item'] as $item) {
+		            if(isset($item['subscription']))
+		                $item = $payload['movim']['query']['item'];
+		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $item['@attributes']['jid']));
+		            if($contact == false) {
+			            $contact = new Contact();
+			            $contact->key = $this->getCleanJid();
+			            $contact->jid = $item['@attributes']['jid'];
+			            $contact->rostername = $item['@attributes']['name'];
+			            $contact->rosterask = $item['@attributes']['ask'];
+			            $contact->rostersubscription = $item['@attributes']['subscription'];
+			            $sdb->save($contact);
+		            } else {
+		                $contact = new Contact();
+		                $sdb->load($contact, array('key' => $this->getCleanJid(), 'jid' => $item['@attributes']['jid']));
+			            $contact->rostername = $item['@attributes']['name'];
+			            $contact->rosterask = $item['@attributes']['ask'];
+			            $contact->rostersubscription = $item['@attributes']['subscription'];
+			            $sdb->save($contact); 
+		            }
+		        }
+
+#			    Cache::c("roster", $payload);
+                $evt->runEvent('roster', $payload);
             } elseif($payload['type'] == "set") {
                 $this->getRosterList();
             }
@@ -322,13 +359,13 @@ class Jabber
 					$evt->runEvent('incomeactive', $payload);
 				}
 				elseif($payload['chatState'] == 'composing') {
-                	$evt->runEvent('incomecomposing', $payload);
+                	$evt->runEvent('composing', $payload);
 				}
 				elseif($payload['chatState'] == 'paused') {
-                	$evt->runEvent('incomepaused', $payload);
+                	$evt->runEvent('paused', $payload);
 				}
 				else {
-					$evt->runEvent('incomemessage', $payload);
+					$evt->runEvent('message', $payload);
 				}
             }
 
@@ -342,63 +379,38 @@ class Jabber
 	 * @return void
 	 */
 	public function getPresence($payloads) {
+		global $sdb;
+		
         foreach($payloads as $payload) {
-
+    		if($payload['movim']['@attributes']['type'] == 'subscribe') {
             movim_log($payload);
-
-    		if($payload['type'] == 'subscribe') {
         		$evt = new Event();
-        		$evt->runEvent('incomesubscribe', $payload);
-    		} elseif($payload['type'] == 'result') {
-
-    		} elseif($payload['type'] == '' || in_array($payload['type'], array('available', 'unavailable'))) {
-
-                // We create the events
+        		$evt->runEvent('subscribe', $payload);
+    		} elseif($payload['movim']['@attributes']['type'] == 'result') {
+    		
+    		} elseif($payload['movim']['@attributes']['type'] == '' || in_array($payload['movim']['@attributes']['type'], array('available', 'unavailable'))) {
+                list($jid, $ressource) = explode('/',$payload['movim']['@attributes']['from']);
+	            $presence = $sdb->select('Presence', array(
+	                                                    'key' => $this->getCleanJid(), 
+	                                                    'jid' => $jid,
+	                                                    'ressource' => $ressource
+	                                                    ));
+	            if($presence == false) {
+	                $presence = new Presence();
+	                $presence->setPresence($payload['movim']);
+	                $sdb->save($presence);
+	            } else {
+	                $presence = new Presence();
+	                $sdb->load($presence, array(
+                                            'key' => $this->getCleanJid(), 
+                                            'jid' => $jid,
+                                            'ressource' => $ressource
+                                            ));
+	                $presence->setPresence($payload['movim']);
+	                $sdb->save($presence);
+	            }
                 $evt = new Event();
-
-				$evt->runEvent('incomepresence', $payload);
-
-				if($payload['from'] == $this->getJid())
-					$evt->runEvent('incomemypresence', $payload);
-
-                // We update the presence array
-                $session = Session::start(APP_NAME);
-				$presences = $session->get('presences');
-
-				list($jid, $ressource) = explode('/',$payload['from']);
-
-				if(!is_array($presences[$jid]))
-				    $presences[$jid] = array();
-
-				$presences[$jid]['status'] = $payload['status'];
-
-                if($payload['type'] == 'unavailable') {
-                    if($payload['from'] == $this->jaxl->jid)
-                        $evt->runEvent('postdisconnected', $data);
-                    else {
-                        $presences[$jid][$ressource] = 4;
-                        $evt->runEvent('incomeoffline', $payload);
-                    }
-                }
-                elseif($payload['show'] == 'xa') {
-                    $presences[$jid][$ressource] = 5;
-                    $evt->runEvent('incomeaway', $payload);
-
-                }
-                elseif($payload['show'] == 'away') {
-                    $presences[$jid][$ressource] = 3;
-                    $evt->runEvent('incomeaway', $payload);
-
-                }
-                elseif($payload['show'] == 'dnd') {
-                    $presences[$jid][$ressource] = 2;
-                    $evt->runEvent('incomednd', $payload);
-                }
-                else {
-                    $presences[$jid][$ressource] = 1;
-                    $evt->runEvent('incomeonline', $payload);
-                }
-				$session->set('presences', $presences);
+		        $evt->runEvent('presence', $presence);
             }
         }
 	}
@@ -429,6 +441,29 @@ class Jabber
 	{
 		$this->jaxl->JAXL0054('updateVCard', $vcard);
         $this->jaxl->JAXL0054('getVCard', false, $this->jaxl->jid, false);
+	}
+	
+	/**
+	 * Create personnal microblog node
+	 *
+	 * @return void
+	 */
+	
+	public function createNode()
+	{
+	    $this->jaxl->JAXL0277('createNode', $this->getCleanJid());
+	}
+	
+	/**
+	 * Subscribe to a node
+	 *
+	 * @param unknown $jid = false
+	 * @return void
+	 */
+	
+	public function subscribeNode($jid)
+	{
+	    $this->jaxl->JAXL0277('subscribeNode', $this->getCleanJid(), $jid);
 	}
 
 	/**
@@ -474,6 +509,11 @@ class Jabber
 	public function discoItems($pod, $node)
 	{
 		$this->jaxl->JAXL0060('getNodeItems', $pod, $this->jaxl->jid, $node);
+	}
+	
+	public function publishItem($content)
+	{
+	    $this->jaxl->JAXL0277('publishItem', $this->getCleanJid() ,$content);
 	}
 
     /**
@@ -571,8 +611,8 @@ class Jabber
 	 */
 	public function addContact($jid, $group, $alias) {
 		if($this->checkJid($jid)) {
+			//$this->jaxl->addRoster($jid, $group, $alias);
 			$this->jaxl->subscribe($jid);
-			$this->jaxl->addRoster($jid, $group, $alias);
 		} else {
 			throw new MovimException("Incorrect JID `$jid'");
 		}

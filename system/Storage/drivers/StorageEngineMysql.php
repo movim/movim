@@ -180,7 +180,7 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
                 if(StorageEngineBase::does_extend($prop['val'], "StorageBase")) {
                     $vals.= "'" . $prop['val']->id . "', ";
                 } else {
-                    $vals.= "'" . $prop['val']->getval() . "', ";
+                    $vals.= "'" . mysql_real_escape_string ($prop['val']->getval()) . "', ";
                 }
             }
 
@@ -199,7 +199,7 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
                 if(StorageEngineBase::does_extend($prop['val'], "StorageBase")) {
                     $stmt.= "'" . $prop['val']->id . "', ";
                 } else {
-                    $stmt.= "'" . $prop['val']->getval() . "', ";
+                    $stmt.= "'" . mysql_real_escape_string ($prop['val']->getval()) . "', ";
                 }
             }
 

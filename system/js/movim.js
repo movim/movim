@@ -25,9 +25,9 @@ function log(text)
     if(typeof text !== 'undefined') {
         text = text.toString();
         text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-	    document.getElementById('log_content').innerHTML
+	    /*document.getElementById('log_content').innerHTML
 		    = "$ " + text + "<br /> "
-		    + document.getElementById('log_content').innerHTML;
+		    + document.getElementById('log_content').innerHTML;*/
     }
 }
 

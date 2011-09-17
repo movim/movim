@@ -98,6 +98,7 @@ class User {
 
 	function desauth()
 	{
+        PresenceHandler::clearPresence();
         $sess = Session::start(APP_NAME);
         Session::dispose(APP_NAME);
 	}

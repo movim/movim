@@ -82,6 +82,9 @@ class Friendvcard extends WidgetBase
 		<div class="tabelem" title="<?php echo t('Profile'); ?>" id="friendvcard">
 					<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>"></div>
 				<?php 
+				    //global $sdb;
+				    //$objs = $sdb->select('Contact', array('name' => 'etenil'));
+				    //print_r(Cache::c('vcard'.$_GET['f']));
 					if(isset($_GET['f']))
 						echo $this->prepareInfos(Cache::c('vcard'.$_GET['f']));
 					
