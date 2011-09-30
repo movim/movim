@@ -15,7 +15,7 @@ class Feed extends WidgetBase {
         $jid = $user->getLogin();
         foreach($payload["pubsubItemsEntryContent"] as $key => $value) {
             $html .= '
-                <div class="message" id="'.$payload["pubsubItemsId"][$i].'">
+                <div class="post" id="'.$payload["pubsubItemsId"][$i].'">
 				    <img class="avatar">
 
 		        	<div class="content">

@@ -46,7 +46,7 @@ class Logout extends WidgetBase
     function build()
     {
         ?>
-        <div id="logout" onclick="<?php $this->callAjax('ajaxLogout');?>"><?php echo t('Logout'); ?></div>
+        <div id="logout" onclick="<?php $this->callAjax('ajaxLogout');?> this.innerHTML = '<?php echo t('Disconnecting...'); ?>'"><?php echo t('Logout'); ?></div>
         <?php
     }
 }

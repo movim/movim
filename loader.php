@@ -32,6 +32,7 @@ require(LIB_PATH . "User.php");
 
 require(LIB_PATH . "Contact.php");
 require(LIB_PATH . "Presence.php");
+require(LIB_PATH . "Message.php");
 
 require(LIB_PATH . "Controller/ControllerBase.php");
 require(LIB_PATH . "Controller/ControllerMain.php");

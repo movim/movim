@@ -66,6 +66,8 @@ class Jabber
 						 'JAXL0030', // Service Discovery
 						 'JAXL0054', // VCard
                          'JAXL0060', // Pubsub
+                         'JAXL0107', // User Mood
+                         'JAXL0118', // User Tune
 						 'JAXL0115', // Entity Capabilities
 						 'JAXL0133', // Service Administration
 						 'JAXL0085', // Chat State Notification
@@ -142,7 +144,7 @@ class Jabber
 			$this->jaxl->startCore('bosh');
 		}
 
-		self::setStatus(false, false);
+		self::setStatus('Online Using Movim 0.4-dev', false, false, true);
 	}
 
 	/**
@@ -293,7 +295,7 @@ class Jabber
 		}
 		// Roster case
 		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
-		    movim_log($payload);
+
 		    if($payload['type'] == "result") {
 		        global $sdb;
 		        
@@ -367,6 +369,33 @@ class Jabber
 				else {
 					$evt->runEvent('message', $payload);
 				}
+            } elseif($payload['movim']['event']['items']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
+                $payload = $payload['movim'];
+                global $sdb;
+	            $message = $sdb->select('Message', array(
+	                                                'key' => $this->getCleanJid(), 
+	                                                'jid' => $payload['@attributes']['from'],
+	                                                'nodeid'=> $payload['event']['items']['item']['@attributes']['id']));
+
+	            if($message == false) {
+		            $message = new Message();
+		            $message->key = $this->getCleanJid();
+		            $message->jid = $payload['@attributes']['from'];
+		            $message->nodeid = $payload['event']['items']['item']['@attributes']['id'];
+		            $message->content = $payload['event']['items']['item']['entry']['content'];
+		            $message->published = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['published']));
+		            $message->updated = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['updated']));
+		            $sdb->save($message);
+	            } else {
+	                $message = new Message();
+	                $sdb->load($message, array('key' => $this->getCleanJid(), 
+	                                           'jid' => $payload['@attributes']['from'],
+	                                           'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+		            $message->content = $payload['event']['items']['item']['entry']['content'];
+		            $message->published = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['published']));
+		            $message->updated = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['updated']));
+		            $sdb->save($message); 
+	            }
             }
 
         }
@@ -383,13 +412,26 @@ class Jabber
 		
         foreach($payloads as $payload) {
     		if($payload['movim']['@attributes']['type'] == 'subscribe') {
-            movim_log($payload);
         		$evt = new Event();
         		$evt->runEvent('subscribe', $payload);
     		} elseif($payload['movim']['@attributes']['type'] == 'result') {
     		
     		} elseif($payload['movim']['@attributes']['type'] == '' || in_array($payload['movim']['@attributes']['type'], array('available', 'unavailable'))) {
+    		    
+    		    // We update the presences
                 list($jid, $ressource) = explode('/',$payload['movim']['@attributes']['from']);
+                
+    		    // We ask for the entity-capabilities
+    		    /*if(isset($payload['movim']['c'])) {
+		            $this->jaxl->JAXL0030(
+		                'discoInfo', 
+		                $payload['movim']['@attributes']['from'], 
+		                $this->jaxl->jid, 
+		                false, 
+		                $payload['movim']['c']['@attributes']['node'].'#'.$payload['movim']['c']['@attributes']['ver']
+		            );
+    		    }*/
+                
 	            $presence = $sdb->select('Presence', array(
 	                                                    'key' => $this->getCleanJid(), 
 	                                                    'jid' => $jid,
