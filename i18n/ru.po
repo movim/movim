@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-14 23:41+0200\n"
+"POT-Creation-Date: 2011-07-14 23:53+0200\n"
 "PO-Revision-Date: 2011-05-21 19:11:08\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -173,6 +173,68 @@ msgstr "ошибка:"
 msgid "Wrong password"
 msgstr "Неверный пароль"
 
+#: ../system/Controller/ControllerMain.php:40
+#: ../system/Controller/ControllerMain.php:59
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr "%s - Добро пожаловать в MOVIM"
+
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:61
+#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:107
+msgid "Home"
+msgstr "Домой"
+
+#: ../system/Controller/ControllerMain.php:43
+#: ../system/Controller/ControllerMain.php:71
+#: ../system/Controller/ControllerMain.php:92
+msgid "Configuration"
+msgstr "Настройки"
+
+#: ../system/Controller/ControllerMain.php:89
+#, php-format
+msgid "%s - Configuration"
+msgstr "%s - настройки"
+
+#: ../system/Controller/ControllerMain.php:105
+#, php-format
+msgid "%s - Account Creation"
+msgstr "%s - создание учётной записи"
+
+#: ../system/Controller/ControllerMain.php:123
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - зайти в MOVIM"
+
+#: ../system/Controller/ControllerMain.php:126
+#, fuzzy
+msgid "Account Creation"
+msgstr "%s - создание учётной записи"
+
+#: ../system/Controller/ControllerMain.php:130
+#: ../system/Widget/widgets/Config/Config.php:61
+#, fuzzy
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
+msgstr ""
+"Изменение этих данных могут быть опасны и скомпрометировать соединение с "
+"XMPP сервером"
+
+#: ../system/Controller/ControllerMain.php:136
+#, fuzzy
+msgid "My address"
+msgstr "Мой адрес"
+
+#: ../system/Controller/ControllerMain.php:137
+msgid "Password"
+msgstr "Пароль"
+
+#: ../system/Controller/ControllerMain.php:138
+msgid "Come in!"
+msgstr "Войти!"
+
 #: ../system/Widget/widgets/Chat/Chat.php:120
 msgid "Composing"
 msgstr ""
@@ -192,15 +254,6 @@ msgstr "Язык"
 #: ../system/Widget/widgets/Config/Config.php:60
 msgid "BOSH Connection Prefrences"
 msgstr "Настройки соединения BOSH"
-
-#: ../system/Widget/widgets/Config/Config.php:61
-#, fuzzy
-msgid ""
-"Changing these data can be dangerous and may compromise the connection to "
-"the Jabber server"
-msgstr ""
-"Изменение этих данных могут быть опасны и скомпрометировать соединение с "
-"XMPP сервером"
 
 #: ../system/Widget/widgets/Config/Config.php:74
 msgid "Submit"
@@ -337,30 +390,6 @@ msgstr ""
 #: ../system/Widget/widgets/Wall/Wall.php:73
 msgid "Loading the contact feed ..."
 msgstr ""
-
-#~ msgid "%s - Welcome to Movim"
-#~ msgstr "%s - Добро пожаловать в MOVIM"
-
-#~ msgid "Home"
-#~ msgstr "Домой"
-
-#~ msgid "Configuration"
-#~ msgstr "Настройки"
-
-#~ msgid "%s - Configuration"
-#~ msgstr "%s - настройки"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - создание учётной записи"
-
-#~ msgid "%s - Login to Movim"
-#~ msgstr "%s - зайти в MOVIM"
-
-#~ msgid "Password"
-#~ msgstr "Пароль"
-
-#~ msgid "Come in!"
-#~ msgstr "Войти!"
 
 #~ msgid "Error: Requested widget '%s' doesn't exist."
 #~ msgstr "Ошибка: Запрашиваемое дополнение '%s' не существует."

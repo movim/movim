@@ -9,8 +9,8 @@
  *
  * @author Movim Project <movim@movim.eu>
  *
- * @version 1.0
- * @date 13 October 2010
+ * @version 0.4
+ * @date 30 September 2010
  *
  * Copyright (C)2010 Movim Project
  * 

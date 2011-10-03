@@ -13,18 +13,38 @@ class Feed extends WidgetBase {
         $i = 0;
         $user = new User();
         $jid = $user->getLogin();
+        
+        if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
+            foreach($payload['pubsub']['items']['item'] as $post) {
+                $html .= '
+                <div class="post" id="'.$post['@attributes']['id'].'">
+			        <img class="avatar">
+
+     			        <span><a href="?q=friend&f='.$jid.'">'.t('Me').'</a></span>
+     			        <span class="date">'.prepareDate(strtotime($post['entry']['published'])).'</span>
+     			    <div class="content"> 
+     			    '.prepareString($post['entry']['content']).'
+	            	</div>
+	            	<div class="comments" id="'.$post['@attributes']['id'].'comments">
+	            	    <a onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$post['@attributes']['id']."'").'">'.t('Get the comments').'</a>
+	            	</div>
+           		</div>';
+            }
+        }
+
         foreach($payload["pubsubItemsEntryContent"] as $key => $value) {
-            $html .= '
+/*            $html .= '
                 <div class="post" id="'.$payload["pubsubItemsId"][$i].'">
 				    <img class="avatar">
 
-		        	<div class="content">
-     			        <span>'.t("Me").$payload["pubsubItemsEntryAuthor"][$i].'</span> <span class="date">'.date('j F - H:i',strtotime($payload["pubsubItemsEntryPublished"][$i])).'</span> '.$value.'
+     			        <span>'.t("Me").$payload["pubsubItemsEntryAuthor"][$i].'</span> <span class="date">'.date('j F - H:i',strtotime($payload["pubsubItemsEntryPublished"][$i])).'</span>
+     			    <div class="content">
+     			        '.$value.'
 		        	</div>
-		        	<div class="comment">
+		        	<div class="comments">
 		        	<a href="#" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$payload["pubsubItemsId"][$i]."'").'">'.t('Get the comments').'</a>
 		        	</div>
-           		</div>';
+           		</div>';*/
             $i++;
         }
         

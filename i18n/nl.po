@@ -4,6 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-14 23:53+0200\n"
 "PO-Revision-Date: 2011-08-12 16:14:06\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,219 +15,12 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - Test klant"
 
-#: ../system/Controller/ControllerMain.php:40
-#: ../system/Controller/ControllerMain.php:59
-msgid "%s - Welcome to Movim"
-msgstr "%s - Welkom bij Movim"
-
-#: ../system/Controller/ControllerMain.php:42
-#: ../system/Controller/ControllerMain.php:61
-#: ../system/Controller/ControllerMain.php:91
-#: ../system/Controller/ControllerMain.php:107
-msgid "Home"
-msgstr "Home"
-
-#: ../system/Controller/ControllerMain.php:43
-#: ../system/Controller/ControllerMain.php:71
-#: ../system/Controller/ControllerMain.php:92
-msgid "Configuration"
-msgstr "Configuratie"
-
-#: ../system/Widget/widgets/Logout/Logout.php:49
-msgid "Logout"
-msgstr "Logout"
-
-#: ../system/Controller/ControllerMain.php:89
-msgid "%s - Configuration"
-msgstr "Configuratie"
-
-#: ../system/Controller/ControllerMain.php:105
-msgid "%s - Account Creation"
-msgstr "%s - account aanmaken"
-
-#: ../system/Controller/ControllerMain.php:123
-msgid "%s - Login to Movim"
-msgstr "%s - Inlogging bij Movim"
-
-#: ../system/Controller/ControllerMain.php:126
-msgid "Account Creation"
-msgstr "Account aanmaken"
-
-#: ../system/Controller/ControllerMain.php:136
-msgid "My address"
-msgstr "Mijn adres"
-
-#: ../system/Controller/ControllerMain.php:137
-msgid "Password"
-msgstr "Wachtwoord"
-
-#: ../system/Controller/ControllerMain.php:138
-msgid "Come in!"
-msgstr "Kom in!"
-
-#: ../lib/GetConf.php:2
-#: ../lib/GetConf.php:45
-#~ msgid "Error: Cannot load element value'%s'"
-#~ msgstr ""
-
-#: ../lib/GetConf.php:139
-#~ msgid "Error: Cannot load file '%s'"
-#~ msgstr ""
-
-#: ../lib/WidgetWrapper.php:98
-#~ msgid "Error: Requested widget '%s' doesn't exist."
-#~ msgstr ""
-
-#: ../system/User.php:67
-msgid "Wrong password"
-msgstr "Foutief wachtwoord"
-
-#: ../lib/Widget.php:69
-#~ msgid "This is a sample widget."
-#~ msgstr ""
-
-#: ../lib/XMPPConnect.php:147
-#~ msgid "Error: jid `%s' is incorrect"
-#~ msgstr ""
-
-#: ../lib/widgets/Account/Account.php:3
-#: ../lib/widgets/Account/Account.php:34
-#~ msgid "Jabber Account"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Config/Config.php:74
-msgid "Submit"
-msgstr "Zenden"
-
-#: ../system/Widget/widgets/Config/Config.php:75
-msgid "Reset"
-msgstr "Reset"
-
-#: ../system/Widget/widgets/Chat/Chat.php:86
-#~ msgid "Send"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Config/Config.php:45
-msgid "Language"
-msgstr "Taal"
-
-#: ../lib/widgets/Config.php:45
-#~ msgid "Full Name"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Config/Config.php:60
-msgid "BOSH Connection Prefrences"
-msgstr "BOSH connectie voorwaarden"
-
-#: ../lib/Dispatcher.php:9
-#: ../lib/widgets/Config/Config.php:59
-#~ msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
-#~ msgstr ""
-
-#: ../install.php:13
-#: ../system/Widget/widgets/Config/Config.php:63
-msgid "Bosh Host"
-msgstr "Bosh host"
-
-#: ../install.php:14
-#: ../system/Widget/widgets/Config/Config.php:67
-msgid "Bosh Suffix"
-msgstr "Bosh achtervoegsel"
-
-#: ../install.php:14
-#: ../system/Widget/widgets/Config/Config.php:70
-msgid "Bosh Port"
-msgstr "Bosh Poort"
-
-#: ../lib/widgets/Config/Config.php:76
-#~ msgid "error: "
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friends/Friends.php:151
-#~ msgid "Contacts"
-#~ msgstr ""
-
-#: ../system/Conf2.php:9
-#: ../system/Conf2.php:14
-#: ../system/Conf2.php:142
-#: ../system/Conf.php:8
-#: ../system/Conf.php:13
-#: ../system/Conf.php:135
-msgid "Couldn't create file %s"
-msgstr "Bestand %s kan niet aangemaakt worden"
-
-#: ../system/Conf2.php:14
-#: ../system/Conf.php:137
-msgid "Couldn't create configuration files."
-msgstr "Configuratie file kan niet worden aangemaakt"
-
-#: ../lib/XMPPConnect.php:98
-#~ msgid "Error: User not logged in."
-#~ msgstr ""
-
-#: ../lib/XMPPConnect.php:102
-#~ msgid "Error: JID not provided."
-#~ msgstr ""
-
-#: ../lib/XMPPConnect.php:117
-#~ msgid "Error: jid '%s' is incorrect"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Profile/Profile.php:34
-msgid "Chat"
-msgstr "Chat"
-
-#: ../system/Widget/widgets/Chat/Chat.php:155
-msgid "Message"
-msgstr "Bericht"
-
-#: ../system/Widget/widgets/Chat/Chat.php:85
-#~ msgid "To"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "Uw avatar"
-
-#: ../lib/widgets/Friends/Friends.php:111
-#~ msgid "Refresh vCard"
-#~ msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:116
-#~ msgid "Online"
-#~ msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:117
-#~ msgid "Offline"
-#~ msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:118
-#~ msgid "Hidden"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Profile/Profile.php:36
-msgid "Away"
-msgstr "Weg"
-
-#: ../lib/widgets/Friends/Friends.php:120
-#~ msgid "Do Not Disturb"
-#~ msgstr ""
-
-#: ../lib/widgets/Friends/Friends.php:124
-#~ msgid "Refresh Roster"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Log/Log.php:33
-msgid "Debug console"
-msgstr "Debug console"
-
 #: ../install.php:17
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 msgstr "PHP versie komt niet overeen. Movim vereist minimaal PHP  5.3"
 
-#: ../install.php:2
-#: ../install.php:23
+#: ../install.php:20 ../install.php:23
+#, fuzzy, php-format
 msgid "Movim requires the %s extension."
 msgstr "Movim vereist de % extensie"
 
@@ -273,25 +68,29 @@ msgstr "Breedsprakige log"
 msgid "Allow account creation"
 msgstr "Laat account creëren toe"
 
-#: ../install.php:139
-#~ msgid "Bosh server"
-#~ msgstr ""
+#: ../install.php:139 ../system/Widget/widgets/Config/Config.php:63
+msgid "Bosh Host"
+msgstr "Bosh host"
 
-#: ../install.php:140
-#~ msgid "Bosh suffix"
-#~ msgstr ""
+#: ../install.php:140 ../system/Widget/widgets/Config/Config.php:67
+msgid "Bosh Suffix"
+msgstr "Bosh achtervoegsel"
+
+#: ../install.php:141 ../system/Widget/widgets/Config/Config.php:70
+msgid "Bosh Port"
+msgstr "Bosh Poort"
 
 #: ../install.php:143
 msgid "<h2>Storage</h2>"
 msgstr "<h2>Opslag</h2>"
 
-#: ../install.php:19
-#: ../install.php:19
-#: ../install.php:201
+#: ../install.php:193 ../install.php:197 ../install.php:201
+#, php-format
 msgid "Couldn't create directory '%s'."
 msgstr "De map %s kan niet worden aangemaakt"
 
 #: ../install.php:225
+#, fuzzy, php-format
 msgid "Couldn't create configuration file '%s'."
 msgstr "Kan configuratie file niet aanmaken"
 
@@ -300,14 +99,19 @@ msgid "Compatibility Test"
 msgstr "Compatibiliteit test"
 
 #: ../install.php:249
-msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-msgstr "De volgende eisen konden niet worden gerespecteerd. Wees zeker dat ze voldoen om Movim te instaleren"
+msgid ""
+"The following requirements were not met. Please make sure they are all "
+"satisfied in order to install Movim."
+msgstr ""
+"De volgende eisen konden niet worden gerespecteerd. Wees zeker dat ze "
+"voldoen om Movim te instaleren"
 
 #: ../install.php:262
 msgid "Movim is installed!"
 msgstr ""
 
 #: ../install.php:263
+#, fuzzy, php-format
 msgid "You can now access your shiny %sMovim instance%s"
 msgstr "U heeft nu toegang in %Movim instance%s"
 
@@ -315,17 +119,31 @@ msgstr "U heeft nu toegang in %Movim instance%s"
 msgid "Couldn't open cache. Please contact the administrator."
 msgstr "De cache kon niet geopend worden. Neem contact met de administrator"
 
-#: ../system/Conf2.php:3
-#: ../system/Conf2.php:5
-#: ../system/Conf.php:24
+#: ../system/Conf2.php:32 ../system/Conf2.php:56 ../system/Conf.php:24
 #: ../system/Conf.php:48
+#, fuzzy, php-format
 msgid "Cannot load element value'%s'"
 msgstr "De element waarde kon niet geladen worden"
 
-#: ../system/Conf2.php:15
-#: ../system/Conf.php:174
+#: ../system/Conf2.php:94 ../system/Conf2.php:140 ../system/Conf2.php:142
+#: ../system/Conf.php:86 ../system/Conf.php:133 ../system/Conf.php:135
+#, php-format
+msgid "Couldn't create file %s"
+msgstr "Bestand %s kan niet aangemaakt worden"
+
+#: ../system/Conf2.php:144 ../system/Conf.php:137
+msgid "Couldn't create configuration files."
+msgstr "Configuratie file kan niet worden aangemaakt"
+
+#: ../system/Conf2.php:152 ../system/Conf.php:174
+#, php-format
 msgid "Cannot load file '%s'"
 msgstr "Kan bestand %s niet laden"
+
+#: ../system/Conf.php:148 ../system/Conf.php:152
+#, fuzzy, php-format
+msgid "Couldn't save img file %s"
+msgstr "Kan img file niet opslaan"
 
 #: ../system/Jabber.php:110
 msgid "User not logged in."
@@ -336,63 +154,82 @@ msgid "JID not provided."
 msgstr "JID was niet gegeven"
 
 #: ../system/Jabber.php:133
+#, php-format
 msgid "jid '%s' is incorrect"
 msgstr "jid '%s' is niet correct"
 
+#: ../system/Logger.php:27
+#, php-format
+msgid "Cannot open log file '%s'"
+msgstr "De log file %s kon niet geopend worden"
+
 #: ../system/MovimException.php:15
+#, php-format
 msgid "Error: %s"
 msgstr "Error: %s"
 
+#: ../system/User.php:67
+msgid "Wrong password"
+msgstr "Foutief wachtwoord"
+
+#: ../system/Controller/ControllerMain.php:40
+#: ../system/Controller/ControllerMain.php:59
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr "%s - Welkom bij Movim"
+
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:61
+#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:107
+msgid "Home"
+msgstr "Home"
+
+#: ../system/Controller/ControllerMain.php:43
+#: ../system/Controller/ControllerMain.php:71
+#: ../system/Controller/ControllerMain.php:92
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: ../system/Controller/ControllerMain.php:89
+#, fuzzy, php-format
+msgid "%s - Configuration"
+msgstr "Configuratie"
+
+#: ../system/Controller/ControllerMain.php:105
+#, php-format
+msgid "%s - Account Creation"
+msgstr "%s - account aanmaken"
+
+#: ../system/Controller/ControllerMain.php:123
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - Inlogging bij Movim"
+
+#: ../system/Controller/ControllerMain.php:126
+msgid "Account Creation"
+msgstr "Account aanmaken"
+
 #: ../system/Controller/ControllerMain.php:130
 #: ../system/Widget/widgets/Config/Config.php:61
-msgid "Changing these data can be dangerous and may compromise the connection to the Jabber server"
-msgstr "De data veranderen kan gevaarlijk zijn en kan uw verbinding met de jabber server verbreken"
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
+msgstr ""
+"De data veranderen kan gevaarlijk zijn en kan uw verbinding met de jabber "
+"server verbreken"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:39
-#~ msgid "Firstname"
-#~ msgstr ""
+#: ../system/Controller/ControllerMain.php:136
+msgid "My address"
+msgstr "Mijn adres"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:40
-#~ msgid "Family name"
-#~ msgstr ""
+#: ../system/Controller/ControllerMain.php:137
+msgid "Password"
+msgstr "Wachtwoord"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
-msgid "Nickname"
-msgstr "bijnaam"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:42
-#~ msgid "Name given"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
-msgid "Website"
-msgstr "Website"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:45
-#~ msgid "About me"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:62
-#~ msgid "Contact informations"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Profile/Profile.php:87
-#~ msgid "Status"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Wall/Wall.php:35
-#~ msgid "This is my custom Wall widget."
-#~ msgstr ""
-
-#: ../system/Conf.php:14
-#: ../system/Conf.php:152
-msgid "Couldn't save img file %s"
-msgstr "Kan img file niet opslaan"
-
-#: ../system/Logger.php:27
-msgid "Cannot open log file '%s'"
-msgstr "De log file %s kon niet geopend worden"
+#: ../system/Controller/ControllerMain.php:138
+msgid "Come in!"
+msgstr "Kom in!"
 
 #: ../system/Widget/widgets/Chat/Chat.php:120
 msgid "Composing"
@@ -401,6 +238,36 @@ msgstr "Samenstellen"
 #: ../system/Widget/widgets/Chat/Chat.php:134
 msgid "Paused"
 msgstr "Gepauzeerd"
+
+#: ../system/Widget/widgets/Chat/Chat.php:155
+msgid "Message"
+msgstr "Bericht"
+
+#: ../system/Widget/widgets/Config/Config.php:45
+msgid "Language"
+msgstr "Taal"
+
+#: ../system/Widget/widgets/Config/Config.php:60
+msgid "BOSH Connection Prefrences"
+msgstr "BOSH connectie voorwaarden"
+
+#: ../system/Widget/widgets/Config/Config.php:74
+msgid "Submit"
+msgstr "Zenden"
+
+#: ../system/Widget/widgets/Config/Config.php:75
+msgid "Reset"
+msgstr "Reset"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
+#: ../system/Widget/widgets/Profile/Profile.php:48
+msgid "Your avatar"
+msgstr "Uw avatar"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
+msgid "Website"
+msgstr "Website"
 
 #: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
 msgid "Date of birth"
@@ -426,6 +293,10 @@ msgstr "Algemene informatie"
 msgid "Name"
 msgstr "Naam"
 
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
+msgid "Nickname"
+msgstr "bijnaam"
+
 #: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
 msgid "Adress"
 msgstr "Adres"
@@ -445,6 +316,14 @@ msgstr "Over mij"
 #: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
 msgid "Profile"
 msgstr "Profiel"
+
+#: ../system/Widget/widgets/Log/Log.php:33
+msgid "Debug console"
+msgstr "Debug console"
+
+#: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Logout"
+msgstr "Logout"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:39
 msgid "wants to talk with you"
@@ -471,9 +350,17 @@ msgstr "Alias"
 msgid "Add a contact"
 msgstr "Contact toevoegen"
 
+#: ../system/Widget/widgets/Profile/Profile.php:34
+msgid "Chat"
+msgstr "Chat"
+
 #: ../system/Widget/widgets/Profile/Profile.php:35
 msgid "Do not disturb"
 msgstr "Niet storen"
+
+#: ../system/Widget/widgets/Profile/Profile.php:36
+msgid "Away"
+msgstr "Weg"
 
 #: ../system/Widget/widgets/Profile/Profile.php:37
 msgid "Away for a long time"
@@ -494,4 +381,3 @@ msgstr "Feed"
 #: ../system/Widget/widgets/Wall/Wall.php:73
 msgid "Loading the contact feed ..."
 msgstr "Laad de gebruiker feed"
-

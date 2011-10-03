@@ -39,7 +39,7 @@ function notification(params)
     }
 
 //    if(!document.hasFocus()) {
-        var icon  = 'http://www.beakkon.com/sites/default/files/images/logo.png';
+        var icon  = '';
         var title = params[0];
         var body  = params[1];
 

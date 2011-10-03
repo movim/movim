@@ -1,7 +1,5 @@
 <?php
 
-  //ini_set('html_errors', false);
-
 // A few constants...
 define('BASE_PATH', dirname(__FILE__) . '/');
 define('APP_NAME', 'movim');

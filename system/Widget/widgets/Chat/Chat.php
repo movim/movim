@@ -45,7 +45,7 @@ class Chat extends WidgetBase
         
         RPC::call('movim_append',
                        'messages'.$contact->getData('jid'),
-                       RPC::cdata('<div class="message"><span class="date">'.date('G:i', time()).'</span>'.htmlentities($payload['movim']['body'], ENT_COMPAT, "UTF-8").'</div>'));
+                       RPC::cdata('<div class="message"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($payload['movim']['body'], ENT_COMPAT, "UTF-8")).'</div>'));
                        
         RPC::call('scrollTalk',
                        'messages'.$contact->getData('jid'));

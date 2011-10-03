@@ -4,6 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-14 23:53+0200\n"
 "PO-Revision-Date: 2011-08-12 16:13:10\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,219 +15,12 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - Test klient"
 
-#: ../system/Controller/ControllerMain.php:40
-#: ../system/Controller/ControllerMain.php:59
-msgid "%s - Welcome to Movim"
-msgstr "%s - Velkommen til Movim"
-
-#: ../system/Controller/ControllerMain.php:42
-#: ../system/Controller/ControllerMain.php:61
-#: ../system/Controller/ControllerMain.php:91
-#: ../system/Controller/ControllerMain.php:107
-msgid "Home"
-msgstr "Start"
-
-#: ../system/Controller/ControllerMain.php:43
-#: ../system/Controller/ControllerMain.php:71
-#: ../system/Controller/ControllerMain.php:92
-msgid "Configuration"
-msgstr "Konfiguration"
-
-#: ../system/Widget/widgets/Logout/Logout.php:49
-msgid "Logout"
-msgstr "Log ud"
-
-#: ../system/Controller/ControllerMain.php:89
-msgid "%s - Configuration"
-msgstr "%s - Konfiguration"
-
-#: ../system/Controller/ControllerMain.php:105
-msgid "%s - Account Creation"
-msgstr "%s - Konto oprettelse"
-
-#: ../system/Controller/ControllerMain.php:123
-msgid "%s - Login to Movim"
-msgstr "%s - Log Ind til Movim"
-
-#: ../system/Controller/ControllerMain.php:126
-msgid "Account Creation"
-msgstr "Konto oprettelse"
-
-#: ../system/Controller/ControllerMain.php:136
-msgid "My address"
-msgstr "Min adresse"
-
-#: ../system/Controller/ControllerMain.php:137
-msgid "Password"
-msgstr "Adgangskode"
-
-#: ../system/Controller/ControllerMain.php:138
-msgid "Come in!"
-msgstr "Kom Ind!"
-
-#: ../lib/GetConf.php:2
-#: ../lib/GetConf.php:45
-#~ msgid "Error: Cannot load element value'%s'"
-#~ msgstr "Fejl: Kan ikke indlæse element værdi '%s'"
-
-#: ../lib/GetConf.php:139
-#~ msgid "Error: Cannot load file '%s'"
-#~ msgstr "Fejl: Kan ikke indlæse fil '%s'"
-
-#: ../lib/WidgetWrapper.php:98
-#~ msgid "Error: Requested widget '%s' doesn't exist."
-#~ msgstr "Fejl: Efterspurgte widget '% s' eksisterer ikke."
-
-#: ../system/User.php:67
-msgid "Wrong password"
-msgstr "Forkert adgangskode"
-
-#: ../lib/Widget.php:69
-#~ msgid "This is a sample widget."
-#~ msgstr ""
-
-#: ../lib/XMPPConnect.php:147
-#~ msgid "Error: jid `%s' is incorrect"
-#~ msgstr ""
-
-#: ../lib/widgets/Account/Account.php:3
-#: ../lib/widgets/Account/Account.php:34
-#~ msgid "Jabber Account"
-#~ msgstr "Jabber Konto"
-
-#: ../system/Widget/widgets/Config/Config.php:74
-msgid "Submit"
-msgstr "Indsend"
-
-#: ../system/Widget/widgets/Config/Config.php:75
-msgid "Reset"
-msgstr "Nulstil"
-
-#: ../system/Widget/widgets/Chat/Chat.php:86
-#~ msgid "Send"
-#~ msgstr "Send"
-
-#: ../system/Widget/widgets/Config/Config.php:45
-msgid "Language"
-msgstr "Sprog"
-
-#: ../lib/widgets/Config.php:45
-#~ msgid "Full Name"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Config/Config.php:60
-msgid "BOSH Connection Prefrences"
-msgstr "BOSH tilslutning indstillinger"
-
-#: ../lib/Dispatcher.php:9
-#: ../lib/widgets/Config/Config.php:59
-#~ msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
-#~ msgstr "Ændring af disse data kan være farligt og kan bringe forbindelsen til XMPP-server"
-
-#: ../install.php:13
-#: ../system/Widget/widgets/Config/Config.php:63
-msgid "Bosh Host"
-msgstr "Bosh vært"
-
-#: ../install.php:14
-#: ../system/Widget/widgets/Config/Config.php:67
-msgid "Bosh Suffix"
-msgstr "Bosh endelse"
-
-#: ../install.php:14
-#: ../system/Widget/widgets/Config/Config.php:70
-msgid "Bosh Port"
-msgstr "Bosh port"
-
-#: ../lib/widgets/Config/Config.php:76
-#~ msgid "error: "
-#~ msgstr "Fejl:"
-
-#: ../system/Widget/widgets/Friends/Friends.php:151
-#~ msgid "Contacts"
-#~ msgstr "Kontakter"
-
-#: ../system/Conf2.php:9
-#: ../system/Conf2.php:14
-#: ../system/Conf2.php:142
-#: ../system/Conf.php:8
-#: ../system/Conf.php:13
-#: ../system/Conf.php:135
-msgid "Couldn't create file %s"
-msgstr "Kunne ikke oprette fil %s"
-
-#: ../system/Conf2.php:14
-#: ../system/Conf.php:137
-msgid "Couldn't create configuration files."
-msgstr "Kunne ikke oprette konfigurationsfiler."
-
-#: ../lib/XMPPConnect.php:98
-#~ msgid "Error: User not logged in."
-#~ msgstr "Fejl: Bruger ikke logget ind"
-
-#: ../lib/XMPPConnect.php:102
-#~ msgid "Error: JID not provided."
-#~ msgstr "Fejl: JID ikke oplyst."
-
-#: ../lib/XMPPConnect.php:117
-#~ msgid "Error: jid '%s' is incorrect"
-#~ msgstr "Fejl: JID er forkert"
-
-#: ../system/Widget/widgets/Profile/Profile.php:34
-msgid "Chat"
-msgstr "Samtale"
-
-#: ../system/Widget/widgets/Chat/Chat.php:155
-msgid "Message"
-msgstr "Besked"
-
-#: ../system/Widget/widgets/Chat/Chat.php:85
-#~ msgid "To"
-#~ msgstr "Til"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "Dit profilbillede"
-
-#: ../lib/widgets/Friends/Friends.php:111
-#~ msgid "Refresh vCard"
-#~ msgstr "Genopfriske"
-
-#: ../lib/widgets/Friends/Friends.php:116
-#~ msgid "Online"
-#~ msgstr "Online"
-
-#: ../lib/widgets/Friends/Friends.php:117
-#~ msgid "Offline"
-#~ msgstr "Offline"
-
-#: ../lib/widgets/Friends/Friends.php:118
-#~ msgid "Hidden"
-#~ msgstr "Skjult"
-
-#: ../system/Widget/widgets/Profile/Profile.php:36
-msgid "Away"
-msgstr "Ikke tilstede"
-
-#: ../lib/widgets/Friends/Friends.php:120
-#~ msgid "Do Not Disturb"
-#~ msgstr "Forstyr ikke"
-
-#: ../lib/widgets/Friends/Friends.php:124
-#~ msgid "Refresh Roster"
-#~ msgstr "Genopfriske Roster"
-
-#: ../system/Widget/widgets/Log/Log.php:33
-msgid "Debug console"
-msgstr "Fejlsøgningskonsol"
-
 #: ../install.php:17
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 msgstr "PHP version passer ikke. Movim kræver PHP 5.3 eller højere."
 
-#: ../install.php:2
-#: ../install.php:23
+#: ../install.php:20 ../install.php:23
+#, php-format
 msgid "Movim requires the %s extension."
 msgstr "Movim kræver %s udvidelsen."
 
@@ -273,25 +68,29 @@ msgstr "Logning informationsniveau"
 msgid "Allow account creation"
 msgstr "Tillad konto oprettelse"
 
-#: ../install.php:139
-#~ msgid "Bosh server"
-#~ msgstr ""
+#: ../install.php:139 ../system/Widget/widgets/Config/Config.php:63
+msgid "Bosh Host"
+msgstr "Bosh vært"
 
-#: ../install.php:140
-#~ msgid "Bosh suffix"
-#~ msgstr ""
+#: ../install.php:140 ../system/Widget/widgets/Config/Config.php:67
+msgid "Bosh Suffix"
+msgstr "Bosh endelse"
+
+#: ../install.php:141 ../system/Widget/widgets/Config/Config.php:70
+msgid "Bosh Port"
+msgstr "Bosh port"
 
 #: ../install.php:143
 msgid "<h2>Storage</h2>"
 msgstr "<h2>Lagring</h2>"
 
-#: ../install.php:19
-#: ../install.php:19
-#: ../install.php:201
+#: ../install.php:193 ../install.php:197 ../install.php:201
+#, php-format
 msgid "Couldn't create directory '%s'."
 msgstr "Kunne ikke oprette bibliotek '%s'."
 
 #: ../install.php:225
+#, php-format
 msgid "Couldn't create configuration file '%s'."
 msgstr "Kunne ikke oprette konfigurationfil '%s'."
 
@@ -300,14 +99,19 @@ msgid "Compatibility Test"
 msgstr "Kompabilitetstest"
 
 #: ../install.php:249
-msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-msgstr "De følgende krav blev ikke opfyldt. Sikre dig venligst de alle er dækket for at kunne installere Movim."
+msgid ""
+"The following requirements were not met. Please make sure they are all "
+"satisfied in order to install Movim."
+msgstr ""
+"De følgende krav blev ikke opfyldt. Sikre dig venligst de alle er dækket for "
+"at kunne installere Movim."
 
 #: ../install.php:262
 msgid "Movim is installed!"
 msgstr "Movim er installeret"
 
 #: ../install.php:263
+#, php-format
 msgid "You can now access your shiny %sMovim instance%s"
 msgstr "Du kan nu tilgå din skinnende %sMovim udgave%s"
 
@@ -315,17 +119,31 @@ msgstr "Du kan nu tilgå din skinnende %sMovim udgave%s"
 msgid "Couldn't open cache. Please contact the administrator."
 msgstr "Kunne ikke åbne mellemlageret. Kontakt venligs administratoren."
 
-#: ../system/Conf2.php:3
-#: ../system/Conf2.php:5
-#: ../system/Conf.php:24
+#: ../system/Conf2.php:32 ../system/Conf2.php:56 ../system/Conf.php:24
 #: ../system/Conf.php:48
+#, php-format
 msgid "Cannot load element value'%s'"
 msgstr "Kan ikke indlæse element værdi '%s'"
 
-#: ../system/Conf2.php:15
-#: ../system/Conf.php:174
+#: ../system/Conf2.php:94 ../system/Conf2.php:140 ../system/Conf2.php:142
+#: ../system/Conf.php:86 ../system/Conf.php:133 ../system/Conf.php:135
+#, php-format
+msgid "Couldn't create file %s"
+msgstr "Kunne ikke oprette fil %s"
+
+#: ../system/Conf2.php:144 ../system/Conf.php:137
+msgid "Couldn't create configuration files."
+msgstr "Kunne ikke oprette konfigurationsfiler."
+
+#: ../system/Conf2.php:152 ../system/Conf.php:174
+#, php-format
 msgid "Cannot load file '%s'"
 msgstr "Kan ikke indlæse fil '%s'"
+
+#: ../system/Conf.php:148 ../system/Conf.php:152
+#, php-format
+msgid "Couldn't save img file %s"
+msgstr "Kunne ikke gemme img fil '%s'"
 
 #: ../system/Jabber.php:110
 msgid "User not logged in."
@@ -336,63 +154,82 @@ msgid "JID not provided."
 msgstr "JID ikke givet."
 
 #: ../system/Jabber.php:133
+#, php-format
 msgid "jid '%s' is incorrect"
 msgstr "jid '%s' er ikke korrekt"
 
+#: ../system/Logger.php:27
+#, php-format
+msgid "Cannot open log file '%s'"
+msgstr "Kan ikke åbne log fil '%s'"
+
 #: ../system/MovimException.php:15
+#, php-format
 msgid "Error: %s"
 msgstr "Fejl: '%s'"
 
+#: ../system/User.php:67
+msgid "Wrong password"
+msgstr "Forkert adgangskode"
+
+#: ../system/Controller/ControllerMain.php:40
+#: ../system/Controller/ControllerMain.php:59
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr "%s - Velkommen til Movim"
+
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:61
+#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:107
+msgid "Home"
+msgstr "Start"
+
+#: ../system/Controller/ControllerMain.php:43
+#: ../system/Controller/ControllerMain.php:71
+#: ../system/Controller/ControllerMain.php:92
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: ../system/Controller/ControllerMain.php:89
+#, php-format
+msgid "%s - Configuration"
+msgstr "%s - Konfiguration"
+
+#: ../system/Controller/ControllerMain.php:105
+#, php-format
+msgid "%s - Account Creation"
+msgstr "%s - Konto oprettelse"
+
+#: ../system/Controller/ControllerMain.php:123
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - Log Ind til Movim"
+
+#: ../system/Controller/ControllerMain.php:126
+msgid "Account Creation"
+msgstr "Konto oprettelse"
+
 #: ../system/Controller/ControllerMain.php:130
 #: ../system/Widget/widgets/Config/Config.php:61
-msgid "Changing these data can be dangerous and may compromise the connection to the Jabber server"
-msgstr "Ændring af disse data kan være farlig og kan kompromittere forbindelsen til Jabber serveren"
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
+msgstr ""
+"Ændring af disse data kan være farlig og kan kompromittere forbindelsen til "
+"Jabber serveren"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:39
-#~ msgid "Firstname"
-#~ msgstr ""
+#: ../system/Controller/ControllerMain.php:136
+msgid "My address"
+msgstr "Min adresse"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:40
-#~ msgid "Family name"
-#~ msgstr ""
+#: ../system/Controller/ControllerMain.php:137
+msgid "Password"
+msgstr "Adgangskode"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
-msgid "Nickname"
-msgstr "Kaldenavn"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:42
-#~ msgid "Name given"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
-msgid "Website"
-msgstr "Internetside"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:45
-#~ msgid "About me"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:62
-#~ msgid "Contact informations"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Profile/Profile.php:87
-#~ msgid "Status"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Wall/Wall.php:35
-#~ msgid "This is my custom Wall widget."
-#~ msgstr ""
-
-#: ../system/Conf.php:14
-#: ../system/Conf.php:152
-msgid "Couldn't save img file %s"
-msgstr "Kunne ikke gemme img fil '%s'"
-
-#: ../system/Logger.php:27
-msgid "Cannot open log file '%s'"
-msgstr "Kan ikke åbne log fil '%s'"
+#: ../system/Controller/ControllerMain.php:138
+msgid "Come in!"
+msgstr "Kom Ind!"
 
 #: ../system/Widget/widgets/Chat/Chat.php:120
 msgid "Composing"
@@ -401,6 +238,36 @@ msgstr "Sammensætning"
 #: ../system/Widget/widgets/Chat/Chat.php:134
 msgid "Paused"
 msgstr "Pause"
+
+#: ../system/Widget/widgets/Chat/Chat.php:155
+msgid "Message"
+msgstr "Besked"
+
+#: ../system/Widget/widgets/Config/Config.php:45
+msgid "Language"
+msgstr "Sprog"
+
+#: ../system/Widget/widgets/Config/Config.php:60
+msgid "BOSH Connection Prefrences"
+msgstr "BOSH tilslutning indstillinger"
+
+#: ../system/Widget/widgets/Config/Config.php:74
+msgid "Submit"
+msgstr "Indsend"
+
+#: ../system/Widget/widgets/Config/Config.php:75
+msgid "Reset"
+msgstr "Nulstil"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
+#: ../system/Widget/widgets/Profile/Profile.php:48
+msgid "Your avatar"
+msgstr "Dit profilbillede"
+
+#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
+msgid "Website"
+msgstr "Internetside"
 
 #: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
 msgid "Date of birth"
@@ -426,6 +293,10 @@ msgstr "Generelle informationer"
 msgid "Name"
 msgstr "Navn"
 
+#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
+msgid "Nickname"
+msgstr "Kaldenavn"
+
 #: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
 msgid "Adress"
 msgstr "Adresse"
@@ -445,6 +316,14 @@ msgstr "Om mig"
 #: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
 msgid "Profile"
 msgstr "Profil"
+
+#: ../system/Widget/widgets/Log/Log.php:33
+msgid "Debug console"
+msgstr "Fejlsøgningskonsol"
+
+#: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Logout"
+msgstr "Log ud"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:39
 msgid "wants to talk with you"
@@ -471,9 +350,17 @@ msgstr "Alias"
 msgid "Add a contact"
 msgstr "Tilføj en kontakt"
 
+#: ../system/Widget/widgets/Profile/Profile.php:34
+msgid "Chat"
+msgstr "Samtale"
+
 #: ../system/Widget/widgets/Profile/Profile.php:35
 msgid "Do not disturb"
 msgstr "Vil ikke forstyrres"
+
+#: ../system/Widget/widgets/Profile/Profile.php:36
+msgid "Away"
+msgstr "Ikke tilstede"
 
 #: ../system/Widget/widgets/Profile/Profile.php:37
 msgid "Away for a long time"
@@ -495,3 +382,60 @@ msgstr "Kilde"
 msgid "Loading the contact feed ..."
 msgstr "Indlæse kontakt kilde..."
 
+#~ msgid "Error: Cannot load element value'%s'"
+#~ msgstr "Fejl: Kan ikke indlæse element værdi '%s'"
+
+#~ msgid "Error: Cannot load file '%s'"
+#~ msgstr "Fejl: Kan ikke indlæse fil '%s'"
+
+#~ msgid "Error: Requested widget '%s' doesn't exist."
+#~ msgstr "Fejl: Efterspurgte widget '% s' eksisterer ikke."
+
+#~ msgid "Jabber Account"
+#~ msgstr "Jabber Konto"
+
+#~ msgid "Send"
+#~ msgstr "Send"
+
+#~ msgid ""
+#~ "Changing these data can be dangerous and may compromise the connection to "
+#~ "the XMPP server"
+#~ msgstr ""
+#~ "Ændring af disse data kan være farligt og kan bringe forbindelsen til "
+#~ "XMPP-server"
+
+#~ msgid "error: "
+#~ msgstr "Fejl:"
+
+#~ msgid "Contacts"
+#~ msgstr "Kontakter"
+
+#~ msgid "Error: User not logged in."
+#~ msgstr "Fejl: Bruger ikke logget ind"
+
+#~ msgid "Error: JID not provided."
+#~ msgstr "Fejl: JID ikke oplyst."
+
+#~ msgid "Error: jid '%s' is incorrect"
+#~ msgstr "Fejl: JID er forkert"
+
+#~ msgid "To"
+#~ msgstr "Til"
+
+#~ msgid "Refresh vCard"
+#~ msgstr "Genopfriske"
+
+#~ msgid "Online"
+#~ msgstr "Online"
+
+#~ msgid "Offline"
+#~ msgstr "Offline"
+
+#~ msgid "Hidden"
+#~ msgstr "Skjult"
+
+#~ msgid "Do Not Disturb"
+#~ msgstr "Forstyr ikke"
+
+#~ msgid "Refresh Roster"
+#~ msgstr "Genopfriske Roster"

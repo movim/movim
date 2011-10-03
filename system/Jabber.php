@@ -267,13 +267,11 @@ class Jabber
 	 * @return void
 	 */
 	public function getIq($payload) {
-	    //movim_log($payload);
 		$evt = new Event();
 
 		// vCard case
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
 			if($payload['from'] == reset(explode("/", $payload['to'])) || $payload['from'] == NULL) {
-				//Cache::c("myvcard", $payload);
 				$evt->runEvent('myvcardreceived', $payload);
 			} else {
 		        global $sdb;
@@ -321,16 +319,18 @@ class Jabber
 		            }
 		        }
 
-#			    Cache::c("roster", $payload);
                 $evt->runEvent('roster', $payload);
             } elseif($payload['type'] == "set") {
                 $this->getRosterList();
             }
         }
-
+        elseif('urn:xmpp:microblog:0:comments' == reset(explode("/", $payload['movim']['pubsub']['items']['@attributes']['node']))) {
+            $evt->runEvent('comments', $payload);
+        }
+        
         // Pubsub node case
         elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0") {
-            $evt->runEvent('streamreceived', $payload);
+            $evt->runEvent('streamreceived', $payload['movim']);
 		}
 
 		elseif(isset($payload["pubsubNode"])) {
@@ -339,7 +339,9 @@ class Jabber
 
         elseif($payload["queryXmlns"] == "http://jabber.org/protocol/disco#items") {
             $evt->runEvent('disconodes', $payload);
-        } else {
+        } 
+        
+        else {
             $evt->runEvent('none', var_export($payload, true));
         }
     }
@@ -396,6 +398,9 @@ class Jabber
 		            $message->updated = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['updated']));
 		            $sdb->save($message); 
 	            }
+	            
+                $evt = new Event(); 
+				$evt->runEvent('post', $payload);
             }
 
         }
@@ -548,11 +553,24 @@ class Jabber
 		$this->jaxl->JAXL0060('discoNodes', $pod, $this->jaxl->jid);
 	}
 
+    /**
+	 * Get some items about a node
+	 *
+	 * @param string $pod
+	 * @param string $node
+	 * @return void
+	 */   
 	public function discoItems($pod, $node)
 	{
 		$this->jaxl->JAXL0060('getNodeItems', $pod, $this->jaxl->jid, $node);
 	}
 	
+	/**
+	 * Publish an item on microblog feed
+	 *
+	 * @param string $content
+	 * @return void
+	 */
 	public function publishItem($content)
 	{
 	    $this->jaxl->JAXL0277('publishItem', $this->getCleanJid() ,$content);

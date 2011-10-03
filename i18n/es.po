@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-14 23:41+0200\n"
+"POT-Creation-Date: 2011-07-14 23:53+0200\n"
 "PO-Revision-Date: 2011-05-21 19:11:14\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -173,6 +173,68 @@ msgstr "error:"
 msgid "Wrong password"
 msgstr "Contraseña errónea"
 
+#: ../system/Controller/ControllerMain.php:40
+#: ../system/Controller/ControllerMain.php:59
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr "%s - Bienvenido a Movim"
+
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:61
+#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:107
+msgid "Home"
+msgstr "Inicio"
+
+#: ../system/Controller/ControllerMain.php:43
+#: ../system/Controller/ControllerMain.php:71
+#: ../system/Controller/ControllerMain.php:92
+msgid "Configuration"
+msgstr "Configuración"
+
+#: ../system/Controller/ControllerMain.php:89
+#, php-format
+msgid "%s - Configuration"
+msgstr "%s - Configuración"
+
+#: ../system/Controller/ControllerMain.php:105
+#, php-format
+msgid "%s - Account Creation"
+msgstr "%s - Crear cuenta"
+
+#: ../system/Controller/ControllerMain.php:123
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - Connectarse a Movim"
+
+#: ../system/Controller/ControllerMain.php:126
+#, fuzzy
+msgid "Account Creation"
+msgstr "%s - Crear cuenta"
+
+#: ../system/Controller/ControllerMain.php:130
+#: ../system/Widget/widgets/Config/Config.php:61
+#, fuzzy
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
+msgstr ""
+"Cambiar estos datos puede ser peligroso y puede impedir la conexion al "
+"servidor XMPP."
+
+#: ../system/Controller/ControllerMain.php:136
+#, fuzzy
+msgid "My address"
+msgstr "Mi dirección"
+
+#: ../system/Controller/ControllerMain.php:137
+msgid "Password"
+msgstr "Contraseña"
+
+#: ../system/Controller/ControllerMain.php:138
+msgid "Come in!"
+msgstr "Apuntate!"
+
 #: ../system/Widget/widgets/Chat/Chat.php:120
 msgid "Composing"
 msgstr ""
@@ -192,15 +254,6 @@ msgstr "Idioma"
 #: ../system/Widget/widgets/Config/Config.php:60
 msgid "BOSH Connection Prefrences"
 msgstr "Preferencias de conexión BOSH"
-
-#: ../system/Widget/widgets/Config/Config.php:61
-#, fuzzy
-msgid ""
-"Changing these data can be dangerous and may compromise the connection to "
-"the Jabber server"
-msgstr ""
-"Cambiar estos datos puede ser peligroso y puede impedir la conexion al "
-"servidor XMPP."
 
 #: ../system/Widget/widgets/Config/Config.php:74
 msgid "Submit"
@@ -336,30 +389,6 @@ msgstr ""
 #: ../system/Widget/widgets/Wall/Wall.php:73
 msgid "Loading the contact feed ..."
 msgstr ""
-
-#~ msgid "%s - Welcome to Movim"
-#~ msgstr "%s - Bienvenido a Movim"
-
-#~ msgid "Home"
-#~ msgstr "Inicio"
-
-#~ msgid "Configuration"
-#~ msgstr "Configuración"
-
-#~ msgid "%s - Configuration"
-#~ msgstr "%s - Configuración"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Crear cuenta"
-
-#~ msgid "%s - Login to Movim"
-#~ msgstr "%s - Connectarse a Movim"
-
-#~ msgid "Password"
-#~ msgstr "Contraseña"
-
-#~ msgid "Come in!"
-#~ msgstr "Apuntate!"
 
 #~ msgid "Error: Requested widget '%s' doesn't exist."
 #~ msgstr "Error: El widget requirido '%s' no existe."
