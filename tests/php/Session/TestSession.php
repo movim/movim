@@ -26,8 +26,12 @@ class TestSession
     function __construct()
     {
         $this->db_file = ut_res('session.db');
-        define('TEST_DB_FILE', $this->db_file);
-        define('SESSION_FORCE_CREATE', true);
+        define('TEST_DB_DRIVER', 'sqlite');
+        define('TEST_DB_CONN', 'sqlite:///'.$this->db_file);
+
+        storage_load_driver(TEST_DB_DRIVER);
+        StorageEngineWrapper::setdriver(TEST_DB_DRIVER, TRUE);
+
         $this->_wipe();
     }
 
@@ -57,6 +61,8 @@ class TestSession
 
         $var = $sess->get('test');
         ut_equals($var, 'stuff');
+
+        $sess->delete_container();
     }
 }
 

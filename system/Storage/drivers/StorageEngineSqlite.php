@@ -49,12 +49,18 @@ class StorageEngineSqlite extends StorageEngineBase implements StorageDriver
         $this->db->busyTimeout(30000); // 30s lock timeout.
     }
 
-/*    public function __destruct()
+    public function __destruct()
+    {
+        //$this->close();
+    }
+
+    public function close()
     {
         if($this->db) {
             $this->db->close();
+            $this->db = NULL;
         }
-        }*/
+    }
 
     /**
      * Checks SQLite errors. Throws a StorageException if there was an error
