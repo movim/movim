@@ -161,14 +161,12 @@ class Session
 
     public function delete_container()
     {
-        $vars = $this->db->select('SessionVar', array('container' => $this->container));
+        $vars = $this->db->select('SessionVar', array('container' => $this->container,
+                                                      'session' => self::$sid));
         foreach($vars as $var)
         {
-            //var_dump($var);
-            echo "\nDeleting $var->name";
             $this->db->delete($var);
         }
-        //return $this->db->exec('DELETE FROM session_containers WHERE id="'.$this->container_id.'"');
     }
 
     /**
