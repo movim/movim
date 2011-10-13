@@ -44,11 +44,18 @@ ini_set('log_errors', 0);
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
-// Run
-require('init.php');
+// If the configuration doesn't exist, run the installer.
+if(!file_exists("config/conf.xml")) {
+    header('Location:install/part1.php'); exit;
+#    require_once('install/part1.php');
+} else {
+    // Run
+    require('init.php');
 
-$polling = false;
-$rqst = new ControllerMain();
-$rqst->handle();
+    $polling = false;
+    $rqst = new ControllerMain();
+    $rqst->handle();
+}
+
 
 ?>
