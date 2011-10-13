@@ -22,9 +22,18 @@ class StorageEngineWrapper extends StorageEngineBase implements StorageDriver
         }
     }
 
-    public static function setdriver($name)
+    /**
+     * Sets a default driver.
+     * @name is the driver's name.
+     * @replace sets the behaviour in case of an already loaded driver. If
+     *   $replace is true and a driver is already set, then this driver will be
+     *   dropped and the new one loaded in its place. Otherwise (and by
+     *   default), an exception will be thrown indicating a driver is already
+     *   loaded.
+     */
+    public static function setdriver($name, $replace = FALSE)
     {
-        if(self::$driver != null) {
+        if(self::$driver != NULL && !$replace) {
             throw new StorageException("A storage driver is already loaded.");
         } else {
             $drivername = "StorageEngine".ucfirst(strtolower($name));
@@ -32,6 +41,11 @@ class StorageEngineWrapper extends StorageEngineBase implements StorageDriver
             if(!class_exists($drivername)) {
                 storage_load($name);
             }
+
+            if(self::$driver != NULL) {
+
+            }
+
             self::$driver = $drivername;
         }
     }
@@ -70,6 +84,11 @@ class StorageEngineWrapper extends StorageEngineBase implements StorageDriver
     function select($objecttype, array $cond)
     {
         return $this->db->select($objecttype, $cond);
+    }
+
+    function close()
+    {
+        return $this->db->close();
     }
 }
 

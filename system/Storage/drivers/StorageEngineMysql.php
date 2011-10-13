@@ -48,9 +48,15 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
 
     public function __destruct()
     {
-/*        if($this->db) {
+        //$this->close();
+    }
+
+    public function close()
+    {
+        if($this->db) {
             mysql_close($this->db);
-            }*/
+            $this->db = NULL;
+        }
     }
 
     /**

@@ -53,7 +53,11 @@ class Session
      */
     protected function __construct($name)
     {
-        $this->db = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
+        if(defined('TEST_DB_CONN')) {
+            $this->db = new StorageEngineWrapper(TEST_DB_CONN);
+        } else {
+            $this->db = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
+        }
 
         // Does the database exist?
         $var = new SessionVar();
@@ -157,12 +161,12 @@ class Session
 
     public function delete_container()
     {
-        $vars = $this->db->select('SessionVar', array('container' => $this->container));
+        $vars = $this->db->select('SessionVar', array('container' => $this->container,
+                                                      'session' => self::$sid));
         foreach($vars as $var)
         {
             $this->db->delete($var);
         }
-        //return $this->db->exec('DELETE FROM session_containers WHERE id="'.$this->container_id.'"');
     }
 
     /**

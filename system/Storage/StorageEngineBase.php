@@ -61,6 +61,13 @@ class StorageEngineBase implements StorageDriver
     }
 
     /**
+     * Closes the connection.
+     */
+    public function close()
+    {
+    }
+
+    /**
      * Logs or prints the query depending on the status of the constant
      * DB_DEBUG.
      */
