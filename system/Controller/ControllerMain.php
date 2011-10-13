@@ -40,7 +40,7 @@ class ControllerMain extends ControllerBase
 			$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
-			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
+
 			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('main.tpl'));
@@ -89,7 +89,6 @@ class ControllerMain extends ControllerBase
 			$this->page->setTitle(t('%s - Configuration', APP_TITLE));
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
-			//$this->page->menuAddLink(t('Logout'), '?q=disconnect');
 
 			$content = new TplPageBuilder($user);
 
@@ -157,10 +156,6 @@ class ControllerMain extends ControllerBase
 			            </div> ';
 
 		$serverconf = Conf::getServerConf();
-		/*global $sdb;
-        $contact = new Contact();
-			    $sdb->create($contact);
-			    $contact->save();*/
 		ob_start();
 		?>
 		<noscript>
@@ -172,7 +167,14 @@ class ControllerMain extends ControllerBase
             </div>
         </noscript>
 		    <div id="loginpage">
-		        <?php echo $browser_comp; ?>
+		        <?php echo $browser_comp; 
+		        if(file_exists(BASE_PATH.'install/part1.php')) { ?>
+                    <div class="warning">
+                    <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
+                    </div>
+                <?php
+                }
+		        ?>
 
 		        <div id="quote">
 		            <blockquote>

@@ -19,6 +19,7 @@
 // Function to easily load a Storage Engine.
 function storage_load_driver($drivername)
 {
+    $base = dirname(__FILE__).'/';
     require_once($base."drivers/StorageEngine".ucfirst(strtolower($drivername)).".php");
 }
 

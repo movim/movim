@@ -178,6 +178,11 @@ class Session
             return false;
         }
     }
+    
+    public static function clear()
+    {
+    
+    }
 }
 
 endif;

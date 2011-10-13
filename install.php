@@ -14,8 +14,7 @@ function test_requirements()
 {
   $errors = array();
 
-  $v = explode('.', phpversion());
-  if($v[0] < 5 || ($v[0] == 5 && $v[1] < 3)) {
+  if(phpversion() > 5.3) {
     $errors[] = t("PHP version mismatch. Movim requires PHP 5.3 minimum.");
   }
   if(!extension_loaded('curl')) {
@@ -153,7 +152,11 @@ function show_install_form()
         );
     $detected_dbs = array_keys($databases);
   ?>
-  <h1><?php echo t('Movim Installer'); ?></h1>
+  <h1><?php echo t('Movim Installer'); ?> - 1/3</h1>
+  <div class="warning right">
+    <p><?php echo('Thank you for downloading Movim ! But before you have fun with it, a few adjustements are needed.'); ?></p>
+    <p><?php echo('Keep in mind that is still under development and it will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit.'); ?></p>
+  </div>
   <form method="post">
     <input type="hidden" name="install" value="true" />
     <?php
@@ -171,9 +174,9 @@ function show_install_form()
     make_checkbox('accountCreation', t("Allow account creation"), false);
     echo '<hr />';
     echo '<h2>Default Bosh server settings</h2>'.PHP_EOL;
-    make_textbox('defBoshHost', t("Bosh Host"), 'natsu.upyum.com');
+    make_textbox('defBoshHost', t("Bosh Host"), 'etenil.thruhere.net');
     make_textbox('defBoshSuffix', t("Bosh Suffix"), 'http-bind');
-    make_textbox('defBoshPort', t("Bosh Port"), '80');
+    make_textbox('defBoshPort', t("Bosh Port"), '5280');
     echo '<hr />';
     echo t('<h2>Storage</h2>') . PHP_EOL;
     make_select('storage', t("Storage driver"),
@@ -318,6 +321,7 @@ function perform_install()
                             '<a href="index.php">',
                             '</a>');?></p>
             <?php
+            
           } else {
             show_install_form();
           }

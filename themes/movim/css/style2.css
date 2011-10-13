@@ -282,12 +282,41 @@ label {
     color: #9F6000;
 }
 
+.warning.right {
+    float: right;
+    clear: right;
+    width: 300px;
+}
+
+.warning p {
+    margin: 5px 0px;
+    text-align: justify;
+}
+
+.error {
+    background-color: #FF7474;
+    border: 1px solid #983A3A;
+    padding: 10px;
+    margin: 10px 0px;    
+    color: #852424;
+}
+
 .valid {
     background-color: #90DC89;
     border: 1px solid #4ABB3F;
     padding: 10px;
     margin: 10px 0px;    
     color: #1C4D17;
+}
+
+.guidance {
+    background-color: #FAFAFA;
+    border-left: 1px solid #CACACA;
+    padding: 10px;
+    margin: 10px 0px;
+    color: #1F1F1F;
+    max-width: 600px;
+    margin-left: 2em;
 }
 
 /* Config button */

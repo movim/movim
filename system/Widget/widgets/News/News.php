@@ -3,7 +3,6 @@
 class News extends WidgetBase {
 	function WidgetLoad()
 	{
-    	$this->addcss('news.css');
 		$this->registerEvent('post', 'onPost');
     }
     

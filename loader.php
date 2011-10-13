@@ -12,34 +12,34 @@ define('DB_DEBUG', true);
 define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
 
 // Loads up all system libraries.
-require(LIB_PATH . "Lang/i18n.php");
+require_once(LIB_PATH . "Lang/i18n.php");
 
-require(LIB_PATH . "Storage/loader.php");
+require_once(LIB_PATH . "Storage/loader.php");
 load_storage(array('sqlite'));
 
-require(LIB_PATH . "Session.php");
-require(LIB_PATH . "Utils.php");
-require(LIB_PATH . "Cache.php");
-require(LIB_PATH . "Conf.php");
-require(LIB_PATH . "Event.php");
-require(LIB_PATH . "Jabber.php");
-require(LIB_PATH . "Logger.php");
-require(LIB_PATH . "MovimException.php");
-require(LIB_PATH . "RPC.php");
-require(LIB_PATH . "User.php");
+require_once(LIB_PATH . "Session.php");
+require_once(LIB_PATH . "Utils.php");
+require_once(LIB_PATH . "Cache.php");
+require_once(LIB_PATH . "Conf.php");
+require_once(LIB_PATH . "Event.php");
+require_once(LIB_PATH . "Jabber.php");
+require_once(LIB_PATH . "Logger.php");
+require_once(LIB_PATH . "MovimException.php");
+require_once(LIB_PATH . "RPC.php");
+require_once(LIB_PATH . "User.php");
 
-require(LIB_PATH . "Contact.php");
-require(LIB_PATH . "Presence.php");
-require(LIB_PATH . "Message.php");
+require_once(LIB_PATH . "Contact.php");
+require_once(LIB_PATH . "Presence.php");
+require_once(LIB_PATH . "Message.php");
 
-require(LIB_PATH . "Controller/ControllerBase.php");
-require(LIB_PATH . "Controller/ControllerMain.php");
-require(LIB_PATH . "Controller/ControllerAjax.php");
+require_once(LIB_PATH . "Controller/ControllerBase.php");
+require_once(LIB_PATH . "Controller/ControllerMain.php");
+require_once(LIB_PATH . "Controller/ControllerAjax.php");
 
-require(LIB_PATH . "Tpl/TplPageBuilder.php");
+require_once(LIB_PATH . "Tpl/TplPageBuilder.php");
 
-require(LIB_PATH . "Widget/WidgetBase.php");
-require(LIB_PATH . "Widget/WidgetWrapper.php");
+require_once(LIB_PATH . "Widget/WidgetBase.php");
+require_once(LIB_PATH . "Widget/WidgetWrapper.php");
 
 // User agent detection
 
