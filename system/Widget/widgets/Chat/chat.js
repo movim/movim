@@ -7,6 +7,20 @@ function scrollTalk(params) {
     messages.scrollTop = messages.scrollHeight;
 }
 
+function showComposing(jid) {
+    var box = document.getElementById('messages' + jid);
+    var composing = document.getElementById('composing' + jid);
+    
+    box.appendChild(composing);
+    
+    composing.style.display = 'block';
+}
+
+function hideComposing(jid) {
+    var composing = document.getElementById('composing' + jid);
+    composing.style.display = 'none';
+}
+
 function sendMessage(n, jid)
 {
     var text = n.value;

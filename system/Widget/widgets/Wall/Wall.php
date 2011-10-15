@@ -29,6 +29,7 @@ class Wall extends WidgetBase
     }
     
     function preparePost($post, $user) {
+        if($post['entry']['content'] != "") {
         global $sdb;
         
         $jid = substr_replace($post['entry']['source']['author']['uri'], "", 0, 5);
@@ -53,6 +54,8 @@ class Wall extends WidgetBase
 	        	</div>
        		</div>';
         return $html;
+        } else { 
+        return "";}
     }
     
     function onStream($payload) {
@@ -62,7 +65,7 @@ class Wall extends WidgetBase
             $html = t("Contact's feed cannot be loaded.");
         else {
             $html .= '
-                <a 
+                <!--<a 
                     class="button tiny icon" 
                     href="#"
                     style="float: right;"
@@ -71,7 +74,7 @@ class Wall extends WidgetBase
                 >
                     '.t('Follow').'
                 </a>
-                <br /><br />
+                <br /><br />-->
                 ';
             
             $user = new User();

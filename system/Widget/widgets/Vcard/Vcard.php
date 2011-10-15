@@ -44,7 +44,14 @@ class Vcard extends WidgetBase
 		$xmpp->updateVcard($vcard);
 	}
     
-    function prepareInfos($vcard) {
+    function prepareInfos($vcard = false) {
+        global $sdb;
+        $user = new User();
+        $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+
+        if(isset($me)) {
+        $me = $me[0];
+
 		$submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
         $html ='
         <form name="vcard"><br />
@@ -52,24 +59,29 @@ class Vcard extends WidgetBase
                 <legend>'.t('General Informations').'</legend>';
                 
         $html .= '<div class="element"><span>'.t('Name').'</span>
-                    <input type="text" name="vCardFN" class="content" value="'.$vcard["vCardFN"].'">
+                    <input type="text" name="vCardFN" class="content" value="'.$me->getData('fn').'">
                   </div>';
         $html .= '<div class="element"><span>'.t('Nickname').'</span>
-                    <input type="text" name ="vCardNickname" class="content" value="'.$vcard["vCardNickname"].'">
+                    <input type="text" name ="vCardNickname" class="content" value="'.$me->getData('name').'">
                   </div>';
         $html .= '<div class="element"><span>'.t('Date of Birth').' YYYY-MM-DD</span>
-                    <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$vcard["vCardBDay"].'">
+                    <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$me->getData('date').'">
                   </div>';
                   
         $html .= '<br />
                   <div class="element"><span>'.t('Website').'</span>
-                    <input type="url" name ="vCardUrl" class="content" value="'.$vcard["vCardUrl"].'">
+                    <input type="url" name ="vCardUrl" class="content" value="'.$me->getData('url').'">
                   </div>';
                   
         $html .= '<br />
+                  <div class="element"><span>'.t('Avatar').'</span>
+                    <img src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
+                  </div>';
+                  
+        /*$html .= '<br />
                   <div class="element"><span>'.t('About Me').'</span>
                     <textarea name ="vCardDesc" class="content" >'.$vcard["vCardDesc"].'</textarea>
-                  </div>';
+                  </div>';*/
                   
         $html .= '</fieldset>';                  
         $html .= '<br />
@@ -101,16 +113,24 @@ class Vcard extends WidgetBase
         $html .= '
             </fieldset>
         </form>';
-        
+        }
+
         return $html;
+    }
+    
+    function ajaxGetVcard()
+    {
+		$xmpp = Jabber::getInstance();
+		$xmpp->getVcard();
     }
 
     function build()
     {
         ?>
 		<div class="tabelem" title="<?php echo t('Profile'); ?>" id="vcard">
+            <div class="config_button" onclick="<?php $this->callAjax('ajaxGetVcard');?>"></div>
 				<?php 
-					echo $this->prepareInfos(Cache::c('myvcard'));
+					echo $this->prepareInfos();
 				?>
                 
 		</div>

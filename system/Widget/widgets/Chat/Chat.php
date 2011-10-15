@@ -26,7 +26,7 @@ class Chat extends WidgetBase
     	$this->addjs('chat.js');
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('composing', 'onComposing');
-		$this->registerEvent('paused', 'onPaused');
+//		$this->registerEvent('paused', 'onPaused');
     }
     
     function onMessage($payload)
@@ -45,11 +45,27 @@ class Chat extends WidgetBase
         
         RPC::call('movim_append',
                        'messages'.$contact->getData('jid'),
-                       RPC::cdata('<div class="message"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($payload['movim']['body'], ENT_COMPAT, "UTF-8")).'</div>'));
+                       RPC::cdata('<div class="message"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($payload['movim']['body'], ENT_COMPAT, "UTF-8")).'</div>'));   
+                       
+        RPC::call('hideComposing',
+                       $contact->getData('jid')); 
                        
         RPC::call('scrollTalk',
                        'messages'.$contact->getData('jid'));
             
+    }
+    
+    function onComposing($payload)
+    {
+        global $sdb;
+        $contact = new Contact();
+        $user = new User();
+        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
+        RPC::call('showComposing',
+                   $contact->getData('jid'));
+                       
+        RPC::call('scrollTalk',
+                  'messages'.$contact->getData('jid'));
     }
     
 	/**
@@ -109,7 +125,7 @@ class Chat extends WidgetBase
     {
         $html = '
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
-                '<div class="messages" id="messages'.$contact->getData('jid').'"></div>'.
+                '<div class="messages" id="messages'.$contact->getData('jid').'"><div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
                 '<textarea
                     onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").'}"
                 ></textarea>'.

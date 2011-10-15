@@ -20,6 +20,7 @@ define('JAXL_COMPONENT_PORT', 5559);
 
 define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
 define('JAXL_LOG_EVENT', true);
+define('JAXL_LOG_LEVEL', 7);
 define('JAXL_LOG_ROTATE', false);
 
 define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
@@ -272,7 +273,21 @@ class Jabber
 		// vCard case
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
 			if($payload['from'] == reset(explode("/", $payload['to'])) || $payload['from'] == NULL) {
-				$evt->runEvent('myvcardreceived', $payload);
+		        global $sdb;
+
+		        $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $this->getCleanJid()));
+		        if($contact == false) {
+			        $contact = new Contact();
+	                $contact->setContact($payload['movim']);			            
+			        $sdb->save($contact);
+		        } else {
+		        	$c = new ContactHandler();
+	                $contact = $c->get($this->getCleanJid());
+	                $contact->setContact($payload['movim']);			            
+			        $sdb->save($contact); 
+		        }
+			
+				$evt->runEvent('myvcard', $payload);
 			} else {
 		        global $sdb;
 
@@ -388,6 +403,9 @@ class Jabber
 		            $message->published = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['published']));
 		            $message->updated = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['updated']));
 		            $sdb->save($message);
+		            
+                    $evt = new Event(); 
+                    $evt->runEvent('post', $payload);
 	            } else {
 	                $message = new Message();
 	                $sdb->load($message, array('key' => $this->getCleanJid(), 
@@ -399,8 +417,6 @@ class Jabber
 		            $sdb->save($message); 
 	            }
 	            
-                $evt = new Event(); 
-				$evt->runEvent('post', $payload);
             }
 
         }
