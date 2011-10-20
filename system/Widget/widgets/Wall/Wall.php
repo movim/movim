@@ -26,41 +26,50 @@ class Wall extends WidgetBase
     	$this->addcss('wall.css');
 		$this->registerEvent('streamreceived', 'onStream');
 		$this->registerEvent('comments', 'onComments');
+		$this->registerEvent('currentpost', 'onNewPost');
     }
     
     function preparePost($post, $user) {
         if($post['entry']['content'] != "") {
-        global $sdb;
-        
-        $jid = substr_replace($post['entry']['source']['author']['uri'], "", 0, 5);
-        
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
-        if(isset($contact[0])) {
-            $photo = $contact[0]->getPhoto();
-            $name = $contact[0]->getTrueName();
-        }
-        
-        $html = '
-            <div class="post" id="'.$post['@attributes']['id'].'">
-			    <img class="avatar" src="'.$photo.'">
+            global $sdb;
+            
+            $jid = substr_replace($post['entry']['source']['author']['uri'], "", 0, 5);
+            
+            $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
+            if(isset($contact[0])) {
+                $photo = $contact[0]->getPhoto();
+                $name = $contact[0]->getTrueName();
+            }
+            
+            $html = '
+                <div class="post" id="'.$post['@attributes']['id'].'">
+			        <img class="avatar" src="'.$photo.'">
 
- 			        <span><a href="?q=friend&f='.$jid.'">'.$name.'</a></span>
- 			        <span class="date">'.prepareDate(strtotime($post['entry']['published'])).'</span>
- 			    <div class="content"> 
- 			    '.prepareString($post['entry']['content']).'
-	        	</div>
-	        	<div class="comments" id="'.$post['@attributes']['id'].'comments">
-	        	    <a onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$post['@attributes']['id']."'").'">'.t('Get the comments').'</a>
-	        	</div>
-       		</div>';
-        return $html;
+     			        <span><a href="?q=friend&f='.$jid.'">'.$name.'</a></span>
+     			        <span class="date">'.prepareDate(strtotime($post['entry']['published'])).'</span>
+     			    <div class="content"> 
+     			    '.prepareString($post['entry']['content']).'
+	            	</div>
+	            	<div class="comments" id="'.$post['@attributes']['id'].'comments">
+	            	    <a onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$post['@attributes']['id']."'").'">'.t('Get the comments').'</a>
+	            	</div>
+           		</div>';
+            return $html;
         } else { 
-        return "";}
+            return "";
+        }
+    }
+    
+    function onNewPost($payload) {
+         $user = new User(); 
+         $html = $this->preparePost($payload['event']['items']['item'], $user);
+         
+        RPC::call('movim_prepend', 'wall', RPC::cdata($html));
     }
     
     function onStream($payload) {
         $html = '';
-        movim_log($payload);
+
         if(isset($payload['error'])) 
             $html = t("Contact's feed cannot be loaded.");
         else {
@@ -114,7 +123,7 @@ class Wall extends WidgetBase
                     <span class="date">'.prepareDate(strtotime($payload['movim']['pubsub']['items']['item']['entry']['published'])).'</span><br />
                     <div class="content tiny">'.prepareString($payload['movim']['pubsub']['items']['item']['entry']['content']).'</div>
                 </div>';
-        } else {
+        } elseif(isset($payload['movim']['pubsub']['items']['item'])) {
             foreach($payload['movim']['pubsub']['items']['item'] as $comment) {
             
                 $jid = substr_replace($comment['entry']['source']['author']['uri'], "", 0, 5);
