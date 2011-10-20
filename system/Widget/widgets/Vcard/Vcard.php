@@ -49,7 +49,7 @@ class Vcard extends WidgetBase
         $user = new User();
         $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
 
-        if(isset($me)) {
+        if(isset($me[0])) {
         $me = $me[0];
 
 		$submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");

@@ -23,7 +23,6 @@ class News extends WidgetBase {
         $tmp = '';
         
         if(isset($contact[0])) {
-            movim_log($contact);
             $tmp = '
                 <div class="post" id="'.$message->getData('nodeid').'">
 		            <img class="avatar" src="'.$contact[0]->getPhoto().'">

@@ -61,11 +61,13 @@ class Chat extends WidgetBase
         $contact = new Contact();
         $user = new User();
         $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
-        RPC::call('showComposing',
-                   $contact->getData('jid'));
-                       
-        RPC::call('scrollTalk',
-                  'messages'.$contact->getData('jid'));
+        if($contact->getData('chaton') == 1) {
+            RPC::call('showComposing',
+                       $contact->getData('jid'));
+                           
+            RPC::call('scrollTalk',
+                      'messages'.$contact->getData('jid'));
+        }
     }
     
 	/**

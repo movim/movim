@@ -57,6 +57,9 @@ class ControllerMain extends ControllerBase
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
                 $this->page->menuAddLink(t('Home'), '?q=mainPage');
+                
+                $sess = Session::start(APP_NAME);
+                $sess->set('currentcontact', $_GET['f']);
 
                 global $sdb;
                 $user = new User();

@@ -16,14 +16,8 @@
  * See COPYING for licensing information.
  */
 
-define('JAXL_COMPONENT_PORT', 5559);
+//define('JAXL_COMPONENT_PORT', 5559);
 
-define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
-define('JAXL_LOG_EVENT', true);
-define('JAXL_LOG_LEVEL', 7);
-define('JAXL_LOG_ROTATE', false);
-
-define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
 include(LIB_PATH . 'Jaxl/core/jaxl.class.php');
 
 class Jabber
@@ -404,6 +398,12 @@ class Jabber
 		            $message->updated = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['updated']));
 		            $sdb->save($message);
 		            
+		            $sess = Session::start(APP_NAME);
+                    if($sess->get('currentcontact') == $payload['@attributes']['from']) {
+                        $evt = new Event(); 
+                        $evt->runEvent('currentpost', $payload);
+                    }
+                    
                     $evt = new Event(); 
                     $evt->runEvent('post', $payload);
 	            } else {

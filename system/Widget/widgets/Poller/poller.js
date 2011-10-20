@@ -1,3 +1,4 @@
+var empty_count = 0;
 
 /**
  * Attach a callback function to an event.
@@ -24,15 +25,15 @@ function movim_poll()
 		{
 			if(poller.status == 200) {
 				// Handling poll return.
-                rpc.handle_rpc(poller.responseXML);
+				if(poller.responseXML == null) {
+				    if(empty_count == 3)
+				        movim_disconnect();
+				    else
+				        empty_count++;
+				} else
+                    rpc.handle_rpc(poller.responseXML);
             } else if(poller.status == 500) {            
-                var url = window.location.href;
-                var urlparts = url.split('/');
-                var txt = urlparts[0]+'//';
-                for(i = 2; i < urlparts.length-1; i++) {
-                    txt = txt+urlparts[i]+'/'
-                }
-	            window.location.replace(txt+'index.php?q=disconnect');
+                    movim_disconnect();
             }
             
 			if(poller.status > 0) {
@@ -44,6 +45,17 @@ function movim_poll()
 	};
 
 	poller.send();
+}
+
+function movim_disconnect()
+{
+    var url = window.location.href;
+    var urlparts = url.split('/');
+    var txt = urlparts[0]+'//';
+    for(i = 2; i < urlparts.length-1; i++) {
+        txt = txt+urlparts[i]+'/'
+    }
+    window.location.replace(txt+'index.php?q=disconnect');
 }
 
 function halt_poll()
