@@ -40,6 +40,8 @@ function sendMessage(n, jid)
     n.focus();
     
     scrollTalk('messages' + jid);
-    return text;
+    
+    // We escape the text to prevent XML errors
+    return escape(text);
 
 }

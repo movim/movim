@@ -102,7 +102,8 @@ class Chat extends WidgetBase
     function ajaxSendMessage($to, $message)
     {
 		$xmpp = Jabber::getInstance();
-        $xmpp->sendMessage($to, $message);
+		// We decode URL codes to send the correct message to the XMPP server
+        $xmpp->sendMessage($to, urldecode($message));
     }
     
 	/**
@@ -129,7 +130,7 @@ class Chat extends WidgetBase
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
                 '<div class="messages" id="messages'.$contact->getData('jid').'"><div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
                 '<textarea
-                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").'}"
+                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
                 ></textarea>'.
                 '<span>'.$contact->getTrueName().'</span>'.
                 '<span class="cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->getData('jid')."'").' closeTalk(this)"></span>'.
