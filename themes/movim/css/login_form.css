@@ -8,12 +8,12 @@
 
 #loginpage #quote {
     float: left;
-    margin-top: 80px; 
+    margin-top: 55px; 
     height: 150px;
     color: #aaa;
     background-image: url(../img/quotestart.png);
     background-repeat: no-repeat;
-    width: 50%;
+    width: 60%;
     margin-left: 5%;
 }
 
@@ -44,7 +44,7 @@
     clear: both;
 }
 
-#connectform .warning {
+#connectform .warning, #connectform .error {
     font-size: 12px;
     margin: 5px;
 }

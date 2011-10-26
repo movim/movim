@@ -69,7 +69,7 @@ class Jabber
 						 'JAXL0092', // Software Version
 						 'JAXL0203', // Delayed Delivery
 						 'JAXL0202', // Entity Time
-						 'JAXL0206',  // Jabber over Bosh
+						 'JAXL0206', // Jabber over Bosh
 						 'JAXL0277'  // Microblogging
 						 ));
 
@@ -353,6 +353,7 @@ class Jabber
         else {
             $evt->runEvent('none', var_export($payload, true));
         }
+        $evt->runEvent('incomingemptybody', 'ping');
     }
 
     /**
@@ -362,11 +363,11 @@ class Jabber
 	 * @return void
 	 */
 	public function getMessage($payloads) {
+        $evt = new Event();
+        
         foreach($payloads as $payload) {
 
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') { // reject offline message
-
-                $evt = new Event();
 
 				if($payload['chatState'] == 'active' && $payload['body'] == NULL) {
 					$evt->runEvent('incomeactive', $payload);
@@ -400,11 +401,9 @@ class Jabber
 		            
 		            $sess = Session::start(APP_NAME);
                     if($sess->get('currentcontact') == $payload['@attributes']['from']) {
-                        $evt = new Event(); 
                         $evt->runEvent('currentpost', $payload);
                     }
                     
-                    $evt = new Event(); 
                     $evt->runEvent('post', $payload);
 	            } else {
 	                $message = new Message();
@@ -420,6 +419,8 @@ class Jabber
             }
 
         }
+        
+        $evt->runEvent('incomingemptybody', 'ping');
 	}
 
     /**
@@ -430,10 +431,10 @@ class Jabber
 	 */
 	public function getPresence($payloads) {
 		global $sdb;
+        $evt = new Event();
 		
         foreach($payloads as $payload) {
     		if($payload['movim']['@attributes']['type'] == 'subscribe') {
-        		$evt = new Event();
         		$evt->runEvent('subscribe', $payload);
     		} elseif($payload['movim']['@attributes']['type'] == 'result') {
     		
@@ -472,10 +473,11 @@ class Jabber
 	                $presence->setPresence($payload['movim']);
 	                $sdb->save($presence);
 	            }
-                $evt = new Event();
 		        $evt->runEvent('presence', $presence);
             }
         }
+
+        $evt->runEvent('incomingemptybody', 'ping');
 	}
 
    	/*public function postRosterUpdate($payload) {

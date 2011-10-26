@@ -51,7 +51,7 @@ class Wall extends WidgetBase
      			    '.prepareString($post['entry']['content']).'
 	            	</div>
 	            	<div class="comments" id="'.$post['@attributes']['id'].'comments">
-	            	    <a onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$post['@attributes']['id']."'").'">'.t('Get the comments').'</a>
+	            	    <a class="getcomments" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$post['@attributes']['id']."'").'">'.t('Get the comments').'</a>
 	            	</div>
            		</div>';
             return $html;

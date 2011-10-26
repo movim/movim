@@ -87,7 +87,7 @@ class Vcard extends WidgetBase
         $html .= '<br />
             <fieldset>
                 <legend>'.t('Geographic Position').'</legend>';
-		$html .= '<div class="warning">'.t('Renseigner votre position géographique peut fortement porter atteinte à votre vie privé, n\'utilisez toujours cette option qu\'en cas de nécessité').'<a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
+		$html .= '<div class="warning">'.t('Renseigner votre position géographique peut fortement porter atteinte à votre vie privée, utilisez toujours cette option qu\'en cas de nécessité').'<a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
 		$html .= '<div id="geolocation"></div>';
         $html .= '<div class="element"><span>'.t('Latitude').'</span>
                     <input type="text" name="vCardLat" class="content" value="Latitude" readonly>

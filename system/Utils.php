@@ -36,9 +36,7 @@ function sprintln($string)
  * @return string
  */
 function prepareString($string) {
-    preg_match('/(http:\/\/[^\s]+)/', $string, $text);
-    $hypertext = "<a target=\"_blank\" href=\"". $text[0] . "\">" . $text[0] . "</a>";
-    return preg_replace('/(http:\/\/[^\s]+)/', $hypertext, $string);
+    return preg_replace('@((https?://)?([-\w]+\.[-\w\.]+)+\w(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)*)@', '<a target="_blank" href="$1">$1</a>', $string);
 }
 
 function prepareDate($time) {

@@ -38,16 +38,15 @@ function notification(params)
         RequestPermission(notification);
     }
 
-//    if(!document.hasFocus()) {
+    if(document_focus == false) {
         var icon  = '';
         var title = params[0];
         var body  = params[1];
-
         
         var popup = window.webkitNotifications.createNotification(icon, title, body);
         popup.show();
         setTimeout(function(){
         popup.cancel();
         }, '30');
-//    }
+    }
 }

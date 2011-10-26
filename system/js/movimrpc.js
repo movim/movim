@@ -1,3 +1,4 @@
+
 /**
  * These are the default callback functions that users may (or may not) use.
  *
@@ -103,7 +104,7 @@ function MovimRPC()
                 for(i = 2; i < urlparts.length-1; i++) {
                     txt = txt+urlparts[i]+'/'
                 }
-	            window.location.replace(txt+'index.php?q=disconnect');
+	            window.location.replace(txt+'index.php?q=disconnect&err=internal');
             }
         };
 

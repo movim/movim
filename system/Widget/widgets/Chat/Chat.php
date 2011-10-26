@@ -52,6 +52,8 @@ class Chat extends WidgetBase
                        
         RPC::call('scrollTalk',
                        'messages'.$contact->getData('jid'));
+                       
+        RPC::call('newMessage');
             
     }
     
@@ -103,7 +105,7 @@ class Chat extends WidgetBase
     {
 		$xmpp = Jabber::getInstance();
 		// We decode URL codes to send the correct message to the XMPP server
-        $xmpp->sendMessage($to, urldecode($message));
+        $xmpp->sendMessage($to, rawurldecode($message));
     }
     
 	/**

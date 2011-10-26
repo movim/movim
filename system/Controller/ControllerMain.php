@@ -129,25 +129,37 @@ class ControllerMain extends ControllerBase
             case 'noaccount':
 			    $warning = '
 			            <div class="warning">
-			                Wrong username
+			                '.t('Wrong username').'
 			            </div> ';
                 break;
             case 'invalidjid':
 			    $warning = '
 			            <div class="warning">
-			                Invalid JID
+			                '.t('Invalid JID').'
 			            </div> ';
                 break;
             case 'failauth':
 			    $warning = '
 			            <div class="warning">
-			                The XMPP authentification failed
+			                '.t('The XMPP authentification failed').'
 			            </div> ';
                 break;
             case 'bosherror':
 			    $warning = '
 			            <div class="warning">
-			                The current BOSH URL in invalid
+			                '.t('The current BOSH URL in invalid').'
+			            </div> ';
+                break;
+            case 'internal':
+			    $warning = '
+			            <div class="error">
+			                '.t('Internal server error').'
+			            </div> ';
+                break;
+            case 'session':
+			    $warning = '
+			            <div class="error">
+			                '.t('Session error').'
 			            </div> ';
                 break;
         }
@@ -180,17 +192,29 @@ class ControllerMain extends ControllerBase
 		        ?>
 
 		        <div id="quote">
-		            <blockquote>
+		            <!--<blockquote>
 		                "I'm free! — I'm free,<br />
                         And freedom tastes of reality,<br />
                         I'm free — I'm free,<br />
                         An' I'm waiting for you to follow me.<br />
+                    </blockquote>-->
+                    <blockquote>
+                    He say I know you, you know me<br />
+                    One thing I can tell you is<br />
+                    You got to be free<br /><br />
+
+                    Come together, right now<br />
+                    Over me<br />
                     </blockquote>
                 <cite>
-                    <a href="http://wikipedia.org/wiki/Pete_Townshend">Pete Townshend</a>, in
+                    <!--<a href="http://wikipedia.org/wiki/Pete_Townshend">Pete Townshend</a>, in
                     <a href="http://wikipedia.org/wiki/I'm_Free_(The_Who_song)">"I'm Free"</a> on
                     <a href="http://wikipedia.org/wiki/Tommy_(album)">Tommy</a> by
-                    <a href="http://wikipedia.org/wiki/The_Who">The Who</a>
+                    <a href="http://wikipedia.org/wiki/The_Who">The Who</a>-->
+                    <a href="http://wikipedia.org/wiki/Lennon/McCartney">John Lennon & Paul McCartney</a>, in
+                    <a href="http://wikipedia.org/wiki/Come_Together">"Come Together"</a> on
+                    <a href="http://wikipedia.org/wiki/Abbey_Road_(album)">Abbey Road</a> by
+                    <a href="http://wikipedia.org/wiki/The_Beatles">The Beatles</a>
                 </cite>
 
 		        </div>

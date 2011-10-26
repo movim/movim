@@ -99,6 +99,10 @@ class User {
 	function desauth()
 	{
         PresenceHandler::clearPresence();
+        
+        $sess = Session::start('jaxl');
+        Session::dispose('jaxl');
+        
         $sess = Session::start(APP_NAME);
         Session::dispose(APP_NAME);
 	}

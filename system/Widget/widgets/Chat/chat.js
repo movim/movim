@@ -16,6 +16,12 @@ function showComposing(jid) {
     composing.style.display = 'block';
 }
 
+function newMessage() {
+    if(document_focus == false) {
+        movim_title_inc();
+    }
+}
+
 function hideComposing(jid) {
     var composing = document.getElementById('composing' + jid);
     composing.style.display = 'none';
@@ -33,7 +39,8 @@ function sendMessage(n, jid)
     if (m<10) {m = "0" + m}
     
     var box = document.getElementById('messages' + jid);
-    box.innerHTML = box.innerHTML + '<div class="message me"><span class="date">' + h + ':' + m + '</span>' + text + '</div>';
+    box.innerHTML = box.innerHTML + '<div class="message me"><span class="date">' + h + ':' + m + '</span>' + 
+    text + '</div>';
     
     n.value = "";
     
@@ -42,6 +49,6 @@ function sendMessage(n, jid)
     scrollTalk('messages' + jid);
     
     // We escape the text to prevent XML errors
-    return escape(text);
+    return encodeURIComponent(text);
 
 }

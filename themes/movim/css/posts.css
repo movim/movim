@@ -3,8 +3,12 @@
 .post {
 	border-bottom: 1px solid #ECECEC;
     width: 100%;
-	padding: 0.7em 0em;
+	padding: 1em 0em;
     min-height: 50px;
+}
+
+.post:first-child {
+    padding-top: 0.2em;
 }
 
 .post:last-child {

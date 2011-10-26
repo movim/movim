@@ -27,13 +27,15 @@ function movim_poll()
 				// Handling poll return.
 				if(poller.responseXML == null) {
 				    if(empty_count == 3)
-				        movim_disconnect();
+				        movim_disconnect('&err=session');
 				    else
 				        empty_count++;
-				} else
+				} else {
+				    empty_count = 0;
                     rpc.handle_rpc(poller.responseXML);
+                }
             } else if(poller.status == 500) {            
-                    movim_disconnect();
+                    movim_disconnect('&err=internal');
             }
             
 			if(poller.status > 0) {
@@ -47,7 +49,7 @@ function movim_poll()
 	poller.send();
 }
 
-function movim_disconnect()
+function movim_disconnect(error)
 {
     var url = window.location.href;
     var urlparts = url.split('/');
@@ -55,7 +57,7 @@ function movim_disconnect()
     for(i = 2; i < urlparts.length-1; i++) {
         txt = txt+urlparts[i]+'/'
     }
-    window.location.replace(txt+'index.php?q=disconnect');
+    window.location.replace(txt+'index.php?q=disconnect' + error);
 }
 
 function halt_poll()

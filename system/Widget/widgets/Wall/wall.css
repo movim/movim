@@ -4,6 +4,16 @@
 
 }
 
+#wall .getcomments {
+    background-image: url(img/comments_icon.png);
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    padding: 2px;
+    display: block;
+    
+    padding-left: 20px;
+}
+
 #wall #wallfollow {
     background-image: url(img/follow_icon.png);
 }
