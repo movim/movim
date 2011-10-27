@@ -66,8 +66,6 @@ var document_title = document.title;
 var messages_cpt = 1;
 document.onblur = function() { document_focus = false; }
 document.onfocus = function() { document_focus = true; document.title = document_title; messages_cpt = 1; }
-//document.onblur = window.onblur;
-//document.focus = window.focus;
  
 function movim_title_inc(){
 	document.title='[' + messages_cpt + '] ' + document_title ;

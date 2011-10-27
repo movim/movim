@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-14 23:53+0200\n"
+"POT-Creation-Date: 2011-10-26 23:46+0200\n"
 "PO-Revision-Date: 2011-08-12 16:14:11\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,90 +15,108 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - Client de test"
 
-#: ../install.php:17
+#: ../install.php:18 ../install/part1.php:59
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 msgstr "Avetz pas la bona version de PHP. Movim a mestier au mens de PHP 5.3."
 
-#: ../install.php:20 ../install.php:23
+#: ../install.php:21 ../install.php:24 ../install.php:40
+#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:85
 #, php-format
 msgid "Movim requires the %s extension."
 msgstr "Movim a mestier de l'extension %s."
 
-#: ../install.php:26
+#: ../install.php:27 ../install/part1.php:71
 msgid "Movim's folder must be writable."
 msgstr "Lo dorsier Movim deu èsser accessible en escritura"
 
-#: ../install.php:121
+#: ../install.php:39 ../install/part1.php:84
+msgid "or"
+msgstr ""
+
+#: ../install.php:155 ../install/part1.php:135 ../install/part1.php:145
+#: ../install/part2.php:176
 msgid "Movim Installer"
 msgstr "installador de Movim"
 
-#: ../install.php:125
+#: ../install.php:163
 msgid "Theme"
 msgstr "Tema"
 
-#: ../install.php:126
+#: ../install.php:164
 msgid "Default language"
 msgstr "Lenga per defaut"
 
-#: ../install.php:127
+#: ../install.php:165
 msgid "Bosh cookie's expiration (s)"
 msgstr "Temps d'expiracion daus coquins BOSH"
 
-#: ../install.php:128
+#: ../install.php:166
 msgid "Bosh cookie's path"
 msgstr "Chamin d'accès daus coquins Bosh"
 
-#: ../install.php:129
+#: ../install.php:167
 msgid "Bosh cookie's domain"
 msgstr "Domeni daus coquins Bosch"
 
-#: ../install.php:131
+#: ../install.php:169
 msgid "Use HTTPS for Bosh"
 msgstr "Utilizar HTTPS per Bosh"
 
-#: ../install.php:133
+#: ../install.php:171
 msgid "Use only HTTP for Bosh"
 msgstr "Utilizar nonmàs HTTP per Bosh"
 
-#: ../install.php:135
+#: ../install.php:173
 msgid "Log verbosity"
 msgstr "Niveu de verbositat daus jornaus"
 
-#: ../install.php:136
+#: ../install.php:174
 msgid "Allow account creation"
 msgstr "Autorizar la creacion de comptes"
 
-#: ../install.php:139 ../system/Widget/widgets/Config/Config.php:63
+#: ../install.php:177 ../system/Controller/ControllerMain.php:225
+#: ../system/Widget/widgets/Config/Config.php:63
 msgid "Bosh Host"
 msgstr "Òste Bosh"
 
-#: ../install.php:140 ../system/Widget/widgets/Config/Config.php:67
+#: ../install.php:178 ../system/Controller/ControllerMain.php:229
+#: ../system/Widget/widgets/Config/Config.php:67
 msgid "Bosh Suffix"
 msgstr "Sufix Bosh"
 
-#: ../install.php:141 ../system/Widget/widgets/Config/Config.php:70
+#: ../install.php:179 ../system/Controller/ControllerMain.php:233
+#: ../system/Widget/widgets/Config/Config.php:70
 msgid "Bosh Port"
 msgstr "Pòrt Bosh"
 
-#: ../install.php:143
+#: ../install.php:181
 msgid "<h2>Storage</h2>"
 msgstr "<h2>Emmagazinatge</h2>"
 
-#: ../install.php:193 ../install.php:197 ../install.php:201
+#: ../install.php:182
+msgid "Storage driver"
+msgstr ""
+
+#: ../install.php:186
+msgid "Database"
+msgstr ""
+
+#: ../install.php:234 ../install.php:238 ../install.php:242
+#: ../install/part2.php:97 ../install/part2.php:101 ../install/part2.php:105
 #, php-format
 msgid "Couldn't create directory '%s'."
 msgstr "La creacion dau compte '%s' es impossibla."
 
-#: ../install.php:225
+#: ../install.php:266 ../install/part2.php:129
 #, php-format
 msgid "Couldn't create configuration file '%s'."
 msgstr "La creacion dau fichier de configuracion '%s' es impossibla."
 
-#: ../install.php:248
+#: ../install.php:305 ../install/part1.php:135
 msgid "Compatibility Test"
 msgstr "Test de compatibilitat"
 
-#: ../install.php:249
+#: ../install.php:306 ../install/part1.php:136
 msgid ""
 "The following requirements were not met. Please make sure they are all "
 "satisfied in order to install Movim."
@@ -106,55 +124,105 @@ msgstr ""
 "Los elements seguents son pas disponibles. Siatz segur que sian corregits "
 "per poder installar Movim."
 
-#: ../install.php:262
+#: ../install.php:319
 msgid "Movim is installed!"
 msgstr "Movim es installat !"
 
-#: ../install.php:263
+#: ../install.php:320
 #, php-format
 msgid "You can now access your shiny %sMovim instance%s"
 msgstr "Aura podetz accedir a vòstra %sMovim instance%s tota nuòva !"
 
-#: ../system/Cache.php:168
-msgid "Couldn't open cache. Please contact the administrator."
+#: ../install/part1.php:59
+msgid "Actual version : "
 msgstr ""
-"L'escondedor es pas accessible. Si vos plai, contactaz l'administrador. "
 
-#: ../system/Conf2.php:32 ../system/Conf2.php:56 ../system/Conf.php:24
-#: ../system/Conf.php:48
+#: ../install/part1.php:60
+msgid "Update your PHP version or contact your server administrator"
+msgstr ""
+
+#: ../install/part1.php:64
+#, php-format
+msgid "Install %s and %s packages"
+msgstr ""
+
+#: ../install/part1.php:68
+#, php-format
+msgid "Install %s packages"
+msgstr ""
+
+#: ../install/part1.php:72
+msgid "Enable read and write rights on Movim's root folder"
+msgstr ""
+
+#: ../install/part1.php:228
+msgid "The Bosh configuration is invalid"
+msgstr ""
+
+#: ../install/part1.php:257
+msgid "The Database configuration is invalid"
+msgstr ""
+
+#: ../install/part2.php:176
+msgid "Success !"
+msgstr ""
+
+#: ../install/part2.php:179
+msgid "Valid Bosh"
+msgstr ""
+
+#: ../install/part2.php:180
+msgid "Database Detected"
+msgstr ""
+
+#: ../install/part2.php:181
+#, fuzzy
+msgid "Database Movim schema installed"
+msgstr "Movim es installat !"
+
+#: ../install/part2.php:184
+#, fuzzy, php-format
+msgid "You can now access your shiny Movim instance %sJump In !%s"
+msgstr "Aura podetz accedir a vòstra %sMovim instance%s tota nuòva !"
+
+#: ../install/part2.php:185 ../system/Controller/ControllerMain.php:188
+#, php-format
+msgid "Please remove the %s folder in order to complete the installation"
+msgstr ""
+
+#: ../system/Conf.php:38 ../system/Conf.php:58
 #, php-format
 msgid "Cannot load element value'%s'"
 msgstr "L'element '%s' es pas accessible"
 
-#: ../system/Conf2.php:94 ../system/Conf2.php:140 ../system/Conf2.php:142
-#: ../system/Conf.php:86 ../system/Conf.php:133 ../system/Conf.php:135
+#: ../system/Conf.php:96 ../system/Conf.php:142 ../system/Conf.php:144
 #, php-format
 msgid "Couldn't create file %s"
 msgstr "Se pòt pas crear lo fichièr %s"
 
-#: ../system/Conf2.php:144 ../system/Conf.php:137
+#: ../system/Conf.php:146
 msgid "Couldn't create configuration files."
 msgstr "Se pòt pas crear lo fichièr de configuracion."
 
-#: ../system/Conf2.php:152 ../system/Conf.php:174
-#, php-format
-msgid "Cannot load file '%s'"
-msgstr "Lo fichier '%s' es pas accessible"
-
-#: ../system/Conf.php:148 ../system/Conf.php:152
+#: ../system/Conf.php:157 ../system/Conf.php:161
 #, php-format
 msgid "Couldn't save img file %s"
 msgstr "Impossible de sauvar l'imatge %s"
 
-#: ../system/Jabber.php:110
+#: ../system/Conf.php:183
+#, php-format
+msgid "Cannot load file '%s'"
+msgstr "Lo fichier '%s' es pas accessible"
+
+#: ../system/Jabber.php:107
 msgid "User not logged in."
 msgstr "Setz pas autentifiat."
 
-#: ../system/Jabber.php:114
+#: ../system/Jabber.php:111
 msgid "JID not provided."
 msgstr "JID indisponible."
 
-#: ../system/Jabber.php:133
+#: ../system/Jabber.php:130
 #, php-format
 msgid "jid '%s' is incorrect"
 msgstr "lo jid '%s' es incorrecte"
@@ -169,35 +237,51 @@ msgstr "Impossible de dubrir lo jornau '%s'"
 msgid "Error: %s"
 msgstr "Error: %s"
 
-#: ../system/User.php:67
+#: ../system/User.php:90
 msgid "Wrong password"
 msgstr "Senhau incorrecte"
 
+#: ../system/Utils.php:48
+msgid "Today"
+msgstr ""
+
+#: ../system/Utils.php:50
+msgid "Tomorrow"
+msgstr ""
+
+#: ../system/Utils.php:52
+msgid "Yesterday"
+msgstr ""
+
+#: ../system/Utils.php:58 ../system/Utils.php:61
+msgid "day"
+msgstr ""
+
 #: ../system/Controller/ControllerMain.php:40
-#: ../system/Controller/ControllerMain.php:59
+#: ../system/Controller/ControllerMain.php:58
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Benvengut a MOVIM"
 
-#: ../system/Controller/ControllerMain.php:42
-#: ../system/Controller/ControllerMain.php:61
-#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:41
+#: ../system/Controller/ControllerMain.php:59
+#: ../system/Controller/ControllerMain.php:93
 #: ../system/Controller/ControllerMain.php:107
 msgid "Home"
 msgstr "Acuelh"
 
-#: ../system/Controller/ControllerMain.php:43
-#: ../system/Controller/ControllerMain.php:71
-#: ../system/Controller/ControllerMain.php:92
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:74
+#: ../system/Controller/ControllerMain.php:94
 msgid "Configuration"
 msgstr "Configuracion"
 
-#: ../system/Controller/ControllerMain.php:89
+#: ../system/Controller/ControllerMain.php:92
 #, php-format
 msgid "%s - Configuration"
 msgstr "%s - Configuracion"
 
-#: ../system/Controller/ControllerMain.php:105
+#: ../system/Controller/ControllerMain.php:106
 #, php-format
 msgid "%s - Account Creation"
 msgstr "%s - Creacion de compte"
@@ -211,36 +295,77 @@ msgstr "Dubrir una session MOVIM"
 msgid "Account Creation"
 msgstr "Creacion de compte"
 
-#: ../system/Controller/ControllerMain.php:130
-#: ../system/Widget/widgets/Config/Config.php:61
-msgid ""
-"Changing these data can be dangerous and may compromise the connection to "
-"the Jabber server"
+#: ../system/Controller/ControllerMain.php:132
+msgid "Wrong username"
 msgstr ""
-"Chamnhar quelas datas pòt èsser dangierós e pòt comprometre la connexion au "
-"servidor Jabber"
 
-#: ../system/Controller/ControllerMain.php:136
+#: ../system/Controller/ControllerMain.php:138
+msgid "Invalid JID"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:144
+msgid "The XMPP authentification failed"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:150
+msgid "The current BOSH URL in invalid"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:156
+msgid "Internal server error"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:162
+msgid "Session error"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:170
+msgid "Your web browser is too old to use with Movim."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:181
+msgid "You don't have javascript enabled.  Good luck with that."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:214
 msgid "My address"
 msgstr "Mon adreça"
 
-#: ../system/Controller/ControllerMain.php:137
+#: ../system/Controller/ControllerMain.php:216
 msgid "Password"
 msgstr "Senhau"
 
-#: ../system/Controller/ControllerMain.php:138
+#: ../system/Controller/ControllerMain.php:218
+msgid "Options"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:221
+#, fuzzy
+msgid "First Login"
+msgstr "Pitit nom"
+
+#: ../system/Controller/ControllerMain.php:237
+msgid "Connecting..."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:237
 msgid "Come in!"
 msgstr "'Chabatz d'entrar !"
 
-#: ../system/Widget/widgets/Chat/Chat.php:120
+#: ../system/Widget/widgets/Chat/Chat.php:133
+#, fuzzy
+msgid "Composing..."
+msgstr "A escriure"
+
+#: ../system/Widget/widgets/Chatold/Chat.php:120
 msgid "Composing"
 msgstr "A escriure"
 
-#: ../system/Widget/widgets/Chat/Chat.php:134
+#: ../system/Widget/widgets/Chatold/Chat.php:134
 msgid "Paused"
 msgstr "En pausa"
 
-#: ../system/Widget/widgets/Chat/Chat.php:155
+#: ../system/Widget/widgets/Chatold/Chat.php:155
 msgid "Message"
 msgstr "Messatge"
 
@@ -252,7 +377,17 @@ msgstr "Lenga"
 msgid "BOSH Connection Prefrences"
 msgstr "Preferéncias de connnexion BOSH"
 
+#: ../system/Widget/widgets/Config/Config.php:61
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
+msgstr ""
+"Chamnhar quelas datas pòt èsser dangierós e pòt comprometre la connexion au "
+"servidor Jabber"
+
 #: ../system/Widget/widgets/Config/Config.php:74
+#: ../system/Widget/widgets/Feed/Feed.php:71
+#: ../system/Widget/widgets/Vcard/Vcard.php:102
 msgid "Submit"
 msgstr "Sometre"
 
@@ -260,100 +395,130 @@ msgstr "Sometre"
 msgid "Reset"
 msgstr "Reinicializar"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "Vòstre avatar"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
-msgid "Website"
-msgstr "Sit web"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
-msgid "Date of birth"
-msgstr "Data de naissença"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:80
-msgid "Refresh the data"
-msgstr "Actualizar las donadas"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:89
-msgid "Hye, I'm on Movim !"
-msgstr "Adiu, sei sus Movim !"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:130
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:58
 msgid "Remove this contact"
 msgstr "Suprimir queu contacte"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:45
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:72
+msgid "No"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:82
+msgid "Yes"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:94
+#: ../system/Widget/widgets/Profile/Profile.php:34
+msgid "Chat"
+msgstr "Charrador"
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:102
+#: ../system/Widget/widgets/Vcard/Vcard.php:59
 msgid "General Informations"
 msgstr "Infomacions Generalas"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:47
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:104
+#: ../system/Widget/widgets/Vcard/Vcard.php:61
 msgid "Name"
 msgstr "Nom"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:105
+#: ../system/Widget/widgets/Vcard/Vcard.php:64
 msgid "Nickname"
 msgstr "Chafre"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:106
 msgid "Adress"
 msgstr "Adreça"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:50
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
+#: ../system/Widget/widgets/Vcard/Vcard.php:67
 msgid "Date of Birth"
 msgstr "Data de Naissença"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:55
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
+#: ../system/Widget/widgets/Vcard/Vcard.php:72
+msgid "Website"
+msgstr "Sit web"
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:113
+#: ../system/Widget/widgets/Vcard/Vcard.php:77
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:58
-msgid "About Me"
-msgstr "A perpaus de ieu"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:140
+#: ../system/Widget/widgets/Vcard/Vcard.php:120
 msgid "Profile"
 msgstr "Perfil"
+
+#: ../system/Widget/widgets/Feed/Feed.php:29
+msgid "Me"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:35
+#: ../system/Widget/widgets/Wall/Wall.php:54
+msgid "Get the comments"
+msgstr "Veire los comentaris"
+
+#: ../system/Widget/widgets/Feed/Feed.php:42
+#, fuzzy
+msgid "Your feed cannot be loaded."
+msgstr "Lo fiau de contacte se pòt pas charjar."
+
+#: ../system/Widget/widgets/Feed/Feed.php:67
+#: ../system/Widget/widgets/Wall/Wall.php:168
+msgid "Feed"
+msgstr "Fiau"
+
+#: ../system/Widget/widgets/Feed/Feed.php:68
+msgid "What's new ?"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:81
+#, fuzzy
+msgid "Loading your feed ..."
+msgstr "Charjament dau fiau de contacte..."
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr "Consòla de despesolhament  "
 
 #: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Disconnecting..."
+msgstr ""
+
+#: ../system/Widget/widgets/Logout/Logout.php:49
 msgid "Logout"
 msgstr "Barrar la session"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:39
+#: ../system/Widget/widgets/News/News.php:43
+msgid "News"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:46
 msgid "wants to talk with you"
 msgstr "vòu charra emb vosautres"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:41
+#: ../system/Widget/widgets/Notifs/Notifs.php:48
 msgid "Accept"
 msgstr "Acceptar"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:42
-#: ../system/Widget/widgets/Notifs/Notifs.php:98
+#: ../system/Widget/widgets/Notifs/Notifs.php:49
+#: ../system/Widget/widgets/Notifs/Notifs.php:105
 msgid "Validate"
 msgstr "Validar"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:43
+#: ../system/Widget/widgets/Notifs/Notifs.php:50
 msgid "Decline"
 msgstr "Refusar"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:97
+#: ../system/Widget/widgets/Notifs/Notifs.php:104
 msgid "Alias"
 msgstr "Chafre"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:99
+#: ../system/Widget/widgets/Notifs/Notifs.php:106
 msgid "Add a contact"
 msgstr "Apondre un contacte"
-
-#: ../system/Widget/widgets/Profile/Profile.php:34
-msgid "Chat"
-msgstr "Charrador"
 
 #: ../system/Widget/widgets/Profile/Profile.php:35
 msgid "Do not disturb"
@@ -367,21 +532,41 @@ msgstr "Absent"
 msgid "Away for a long time"
 msgstr "Pas disponible"
 
-#: ../system/Widget/widgets/Wall/Wall.php:44
-msgid "Get the comments"
-msgstr "Veire los comentaris"
+#: ../system/Widget/widgets/Profile/Profile.php:48
+msgid "Your avatar"
+msgstr "Vòstre avatar"
 
-#: ../system/Widget/widgets/Wall/Wall.php:51
+#: ../system/Widget/widgets/Roster/Roster.php:108
+msgid "Show All"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:74
 msgid "Contact's feed cannot be loaded."
 msgstr "Lo fiau de contacte se pòt pas charjar."
 
-#: ../system/Widget/widgets/Wall/Wall.php:69
-msgid "Feed"
-msgstr "Fiau"
+#: ../system/Widget/widgets/Wall/Wall.php:84
+msgid "Follow"
+msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:73
+#: ../system/Widget/widgets/Wall/Wall.php:173
 msgid "Loading the contact feed ..."
 msgstr "Charjament dau fiau de contacte..."
+
+#~ msgid "Couldn't open cache. Please contact the administrator."
+#~ msgstr ""
+#~ "L'escondedor es pas accessible. Si vos plai, contactaz l'administrador. "
+
+#~ msgid "Date of birth"
+#~ msgstr "Data de naissença"
+
+#~ msgid "Refresh the data"
+#~ msgstr "Actualizar las donadas"
+
+#~ msgid "Hye, I'm on Movim !"
+#~ msgstr "Adiu, sei sus Movim !"
+
+#~ msgid "About Me"
+#~ msgstr "A perpaus de ieu"
 
 #~ msgid "Error: Cannot load element value'%s'"
 #~ msgstr "Error : se pòt pas charjar l'element de valor '%s'"
@@ -440,9 +625,6 @@ msgstr "Charjament dau fiau de contacte..."
 
 #~ msgid "Refresh Roster"
 #~ msgstr "Actualizar la lista de contactes"
-
-#~ msgid "Firstname"
-#~ msgstr "Pitit nom"
 
 #~ msgid "Family name"
 #~ msgstr "Nom"

@@ -50,69 +50,59 @@ class Vcard extends WidgetBase
         $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
 
         if(isset($me[0])) {
-        $me = $me[0];
+            $me = $me[0];
 
-		$submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
-        $html ='
-        <form name="vcard"><br />
-            <fieldset>
-                <legend>'.t('General Informations').'</legend>';
-                
-        $html .= '<div class="element"><span>'.t('Name').'</span>
-                    <input type="text" name="vCardFN" class="content" value="'.$me->getData('fn').'">
-                  </div>';
-        $html .= '<div class="element"><span>'.t('Nickname').'</span>
-                    <input type="text" name ="vCardNickname" class="content" value="'.$me->getData('name').'">
-                  </div>';
-        $html .= '<div class="element"><span>'.t('Date of Birth').' YYYY-MM-DD</span>
-                    <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$me->getData('date').'">
-                  </div>';
-                  
-        $html .= '<br />
-                  <div class="element"><span>'.t('Website').'</span>
-                    <input type="url" name ="vCardUrl" class="content" value="'.$me->getData('url').'">
-                  </div>';
-                  
-        $html .= '<br />
-                  <div class="element"><span>'.t('Avatar').'</span>
-                    <img src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
-                  </div>';
-                  
-        /*$html .= '<br />
-                  <div class="element"><span>'.t('About Me').'</span>
-                    <textarea name ="vCardDesc" class="content" >'.$vcard["vCardDesc"].'</textarea>
-                  </div>';*/
-                  
-        $html .= '</fieldset>';                  
-        $html .= '<br />
-            <fieldset>
-                <legend>'.t('Geographic Position').'</legend>';
-		$html .= '<div class="warning">'.t('Renseigner votre position géographique peut fortement porter atteinte à votre vie privée, utilisez toujours cette option qu\'en cas de nécessité').'<a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
-		$html .= '<div id="geolocation"></div>';
-        $html .= '<div class="element"><span>'.t('Latitude').'</span>
-                    <input type="text" name="vCardLat" class="content" value="Latitude" readonly>
-                  </div>';
-        $html .= '<div class="element"><span>'.t('Longitude').'</span>
-                    <input type="text" name="vCardLong" class="content" value="Longitude" readonly>
-                  </div>';
-        /*
-        $html .= $this->displayIf($vcard["vCardFN"], t('Name'));
-        $html .= $this->displayIf($vcard["vCardNickname"], t('Nickname'));
-        $html .= $this->displayIf($vcard["from"], t('Adress'));
-        $html .= $this->displayIf($vcard["vCardBDay"], t('Date of Birth'), date('j F Y',strtotime($vcard["vCardBDay"])));
-        
-        $html .= '<br />';
-        
-        $html .= $this->displayIf($vcard["vCardUrl"], t('Website'), '<a href="'.$vcard["vCardUrl"].'">'.$vcard["vCardUrl"].'</a>');
-        $html .= $this->displayIf($vcard["vCardPhotoType"], t('Avatar'), '<img src="data:'.$vcard["vCardPhotoType"].';base64,'.$vcard["vCardPhotoBinVal"].'">');
-        
-        $html .= '<br />';
-        $html .= $this->displayIf($vcard["vCardDesc"], t('About Me'));*/
-        $html .= '<hr />';
-		$html .= ' <input value="'.t('Submit').'" onclick="'.$submit.'" id="right" type="button"> ';
-        $html .= '
-            </fieldset>
-        </form>';
+		    $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
+            $html ='
+            <form name="vcard"><br />
+                <fieldset>
+                    <legend>'.t('General Informations').'</legend>';
+                    
+            $html .= '<div class="element"><span>'.t('Name').'</span>
+                        <input type="text" name="vCardFN" class="content" value="'.$me->getData('fn').'">
+                      </div>';
+            $html .= '<div class="element"><span>'.t('Nickname').'</span>
+                        <input type="text" name ="vCardNickname" class="content" value="'.$me->getData('name').'">
+                      </div>';
+            $html .= '<div class="element"><span>'.t('Date of Birth').' YYYY-MM-DD</span>
+                        <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$me->getData('date').'">
+                      </div>';
+                      
+            $html .= '<br />
+                      <div class="element"><span>'.t('Website').'</span>
+                        <input type="url" name ="vCardUrl" class="content" value="'.$me->getData('url').'">
+                      </div>';
+                      
+            $html .= '<br />
+                      <div class="element"><span>'.t('Avatar').'</span>
+                        <img src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
+                        <input type="hidden" name="vCardPhotoType"  value="'.$me->getData('phototype').'">
+                        <input type="hidden" name="vCardPhotoBinVal"  value="'.$me->getData('photobin').'">
+                      </div>';
+                      
+            /*$html .= '<br />
+                      <div class="element"><span>'.t('About Me').'</span>
+                        <textarea name ="vCardDesc" class="content" >'.$vcard["vCardDesc"].'</textarea>
+                      </div>';*/
+                      
+            $html .= '</fieldset>';                  
+    /*        $html .= '<br />
+                <fieldset>
+                    <legend>'.t('Geographic Position').'</legend>';
+		    $html .= '<div class="warning"><a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
+		    $html .= '<div id="geolocation"></div>';
+            $html .= '<div class="element"><span>'.t('Latitude').'</span>
+                        <input type="text" name="vCardLat" class="content" value="Latitude" readonly>
+                      </div>';
+            $html .= '<div class="element"><span>'.t('Longitude').'</span>
+                        <input type="text" name="vCardLong" class="content" value="Longitude" readonly>
+                      </div>';*/
+
+            $html .= '<hr />';
+		    $html .= ' <input value="'.t('Submit').'" onclick="'.$submit.'" id="right" type="button"> ';
+            $html .= '
+                </fieldset>
+            </form>';
         }
 
         return $html;

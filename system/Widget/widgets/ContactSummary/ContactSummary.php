@@ -41,10 +41,14 @@ class ContactSummary extends WidgetBase
 	
 	function prepareContactSummary($contact)
 	{
+        $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
         $html ='<h1>'.$contact->getTrueName().'</h1><img src="'.$contact->getPhoto().'"/>';
         
         if($contact->getData('vcardreceived') != 1)
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 500);</script>';
+            
+        if($presence != NULL)
+            $html .= '<div id="status">'.$presence['status'].'</div>';
         return $html;
 	}
     

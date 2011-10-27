@@ -1,6 +1,7 @@
 #!/bin/sh
 
 ls ../*.php > files.list
+ls ../install/*.php >> files.list
 ls ../system/*.php >> files.list
 ls ../system/Controller/*.php >> files.list
 ls ../system/Widget/widgets/*/*.php >> files.list

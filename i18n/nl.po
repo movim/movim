@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-14 23:53+0200\n"
+"POT-Creation-Date: 2011-10-26 23:46+0200\n"
 "PO-Revision-Date: 2011-08-12 16:14:06\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,90 +15,108 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - Test klant"
 
-#: ../install.php:17
+#: ../install.php:18 ../install/part1.php:59
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 msgstr "PHP versie komt niet overeen. Movim vereist minimaal PHP  5.3"
 
-#: ../install.php:20 ../install.php:23
+#: ../install.php:21 ../install.php:24 ../install.php:40
+#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:85
 #, fuzzy, php-format
 msgid "Movim requires the %s extension."
 msgstr "Movim vereist de % extensie"
 
-#: ../install.php:26
+#: ../install.php:27 ../install/part1.php:71
 msgid "Movim's folder must be writable."
 msgstr "De Movim map moet schrijfbaar zijn."
 
-#: ../install.php:121
+#: ../install.php:39 ../install/part1.php:84
+msgid "or"
+msgstr ""
+
+#: ../install.php:155 ../install/part1.php:135 ../install/part1.php:145
+#: ../install/part2.php:176
 msgid "Movim Installer"
 msgstr "Movim Installer"
 
-#: ../install.php:125
+#: ../install.php:163
 msgid "Theme"
 msgstr "Thema"
 
-#: ../install.php:126
+#: ../install.php:164
 msgid "Default language"
 msgstr "Standaard taal"
 
-#: ../install.php:127
+#: ../install.php:165
 msgid "Bosh cookie's expiration (s)"
 msgstr "Bosh cookies vervallen"
 
-#: ../install.php:128
+#: ../install.php:166
 msgid "Bosh cookie's path"
 msgstr "Bosh cookie`s path"
 
-#: ../install.php:129
+#: ../install.php:167
 msgid "Bosh cookie's domain"
 msgstr "Bosh cookie`s domein"
 
-#: ../install.php:131
+#: ../install.php:169
 msgid "Use HTTPS for Bosh"
 msgstr "Gebruik HTTPS voor Bosh"
 
-#: ../install.php:133
+#: ../install.php:171
 msgid "Use only HTTP for Bosh"
 msgstr "Gebruik uitsluitend HTTP voor Bosh"
 
-#: ../install.php:135
+#: ../install.php:173
 msgid "Log verbosity"
 msgstr "Breedsprakige log"
 
-#: ../install.php:136
+#: ../install.php:174
 msgid "Allow account creation"
 msgstr "Laat account creëren toe"
 
-#: ../install.php:139 ../system/Widget/widgets/Config/Config.php:63
+#: ../install.php:177 ../system/Controller/ControllerMain.php:225
+#: ../system/Widget/widgets/Config/Config.php:63
 msgid "Bosh Host"
 msgstr "Bosh host"
 
-#: ../install.php:140 ../system/Widget/widgets/Config/Config.php:67
+#: ../install.php:178 ../system/Controller/ControllerMain.php:229
+#: ../system/Widget/widgets/Config/Config.php:67
 msgid "Bosh Suffix"
 msgstr "Bosh achtervoegsel"
 
-#: ../install.php:141 ../system/Widget/widgets/Config/Config.php:70
+#: ../install.php:179 ../system/Controller/ControllerMain.php:233
+#: ../system/Widget/widgets/Config/Config.php:70
 msgid "Bosh Port"
 msgstr "Bosh Poort"
 
-#: ../install.php:143
+#: ../install.php:181
 msgid "<h2>Storage</h2>"
 msgstr "<h2>Opslag</h2>"
 
-#: ../install.php:193 ../install.php:197 ../install.php:201
+#: ../install.php:182
+msgid "Storage driver"
+msgstr ""
+
+#: ../install.php:186
+msgid "Database"
+msgstr ""
+
+#: ../install.php:234 ../install.php:238 ../install.php:242
+#: ../install/part2.php:97 ../install/part2.php:101 ../install/part2.php:105
 #, php-format
 msgid "Couldn't create directory '%s'."
 msgstr "De map %s kan niet worden aangemaakt"
 
-#: ../install.php:225
+#: ../install.php:266 ../install/part2.php:129
 #, fuzzy, php-format
 msgid "Couldn't create configuration file '%s'."
 msgstr "Kan configuratie file niet aanmaken"
 
-#: ../install.php:248
+#: ../install.php:305 ../install/part1.php:135
 msgid "Compatibility Test"
 msgstr "Compatibiliteit test"
 
-#: ../install.php:249
+#: ../install.php:306 ../install/part1.php:136
 msgid ""
 "The following requirements were not met. Please make sure they are all "
 "satisfied in order to install Movim."
@@ -106,54 +124,104 @@ msgstr ""
 "De volgende eisen konden niet worden gerespecteerd. Wees zeker dat ze "
 "voldoen om Movim te instaleren"
 
-#: ../install.php:262
+#: ../install.php:319
 msgid "Movim is installed!"
 msgstr ""
 
-#: ../install.php:263
+#: ../install.php:320
 #, fuzzy, php-format
 msgid "You can now access your shiny %sMovim instance%s"
 msgstr "U heeft nu toegang in %Movim instance%s"
 
-#: ../system/Cache.php:168
-msgid "Couldn't open cache. Please contact the administrator."
-msgstr "De cache kon niet geopend worden. Neem contact met de administrator"
+#: ../install/part1.php:59
+msgid "Actual version : "
+msgstr ""
 
-#: ../system/Conf2.php:32 ../system/Conf2.php:56 ../system/Conf.php:24
-#: ../system/Conf.php:48
+#: ../install/part1.php:60
+msgid "Update your PHP version or contact your server administrator"
+msgstr ""
+
+#: ../install/part1.php:64
+#, php-format
+msgid "Install %s and %s packages"
+msgstr ""
+
+#: ../install/part1.php:68
+#, php-format
+msgid "Install %s packages"
+msgstr ""
+
+#: ../install/part1.php:72
+msgid "Enable read and write rights on Movim's root folder"
+msgstr ""
+
+#: ../install/part1.php:228
+msgid "The Bosh configuration is invalid"
+msgstr ""
+
+#: ../install/part1.php:257
+msgid "The Database configuration is invalid"
+msgstr ""
+
+#: ../install/part2.php:176
+msgid "Success !"
+msgstr ""
+
+#: ../install/part2.php:179
+msgid "Valid Bosh"
+msgstr ""
+
+#: ../install/part2.php:180
+msgid "Database Detected"
+msgstr ""
+
+#: ../install/part2.php:181
+msgid "Database Movim schema installed"
+msgstr ""
+
+#: ../install/part2.php:184
+#, fuzzy, php-format
+msgid "You can now access your shiny Movim instance %sJump In !%s"
+msgstr "U heeft nu toegang in %Movim instance%s"
+
+#: ../install/part2.php:185 ../system/Controller/ControllerMain.php:188
+#, php-format
+msgid "Please remove the %s folder in order to complete the installation"
+msgstr ""
+
+#: ../system/Conf.php:38 ../system/Conf.php:58
 #, fuzzy, php-format
 msgid "Cannot load element value'%s'"
 msgstr "De element waarde kon niet geladen worden"
 
-#: ../system/Conf2.php:94 ../system/Conf2.php:140 ../system/Conf2.php:142
-#: ../system/Conf.php:86 ../system/Conf.php:133 ../system/Conf.php:135
+#: ../system/Conf.php:96 ../system/Conf.php:142 ../system/Conf.php:144
 #, php-format
 msgid "Couldn't create file %s"
 msgstr "Bestand %s kan niet aangemaakt worden"
 
-#: ../system/Conf2.php:144 ../system/Conf.php:137
+#: ../system/Conf.php:146
 msgid "Couldn't create configuration files."
 msgstr "Configuratie file kan niet worden aangemaakt"
 
-#: ../system/Conf2.php:152 ../system/Conf.php:174
-#, php-format
-msgid "Cannot load file '%s'"
-msgstr "Kan bestand %s niet laden"
-
-#: ../system/Conf.php:148 ../system/Conf.php:152
+#: ../system/Conf.php:157 ../system/Conf.php:161
 #, fuzzy, php-format
 msgid "Couldn't save img file %s"
 msgstr "Kan img file niet opslaan"
 
-#: ../system/Jabber.php:110
+#: ../system/Conf.php:183
+#, php-format
+msgid "Cannot load file '%s'"
+msgstr "Kan bestand %s niet laden"
+
+#: ../system/Jabber.php:107
 msgid "User not logged in."
 msgstr "De gebruiker is niet ingelogd"
 
-#: ../system/Jabber.php:114
+#: ../system/Jabber.php:111
 msgid "JID not provided."
 msgstr "JID was niet gegeven"
 
-#: ../system/Jabber.php:133
+#: ../system/Jabber.php:130
 #, php-format
 msgid "jid '%s' is incorrect"
 msgstr "jid '%s' is niet correct"
@@ -168,35 +236,51 @@ msgstr "De log file %s kon niet geopend worden"
 msgid "Error: %s"
 msgstr "Error: %s"
 
-#: ../system/User.php:67
+#: ../system/User.php:90
 msgid "Wrong password"
 msgstr "Foutief wachtwoord"
 
+#: ../system/Utils.php:48
+msgid "Today"
+msgstr ""
+
+#: ../system/Utils.php:50
+msgid "Tomorrow"
+msgstr ""
+
+#: ../system/Utils.php:52
+msgid "Yesterday"
+msgstr ""
+
+#: ../system/Utils.php:58 ../system/Utils.php:61
+msgid "day"
+msgstr ""
+
 #: ../system/Controller/ControllerMain.php:40
-#: ../system/Controller/ControllerMain.php:59
+#: ../system/Controller/ControllerMain.php:58
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Welkom bij Movim"
 
-#: ../system/Controller/ControllerMain.php:42
-#: ../system/Controller/ControllerMain.php:61
-#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:41
+#: ../system/Controller/ControllerMain.php:59
+#: ../system/Controller/ControllerMain.php:93
 #: ../system/Controller/ControllerMain.php:107
 msgid "Home"
 msgstr "Home"
 
-#: ../system/Controller/ControllerMain.php:43
-#: ../system/Controller/ControllerMain.php:71
-#: ../system/Controller/ControllerMain.php:92
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:74
+#: ../system/Controller/ControllerMain.php:94
 msgid "Configuration"
 msgstr "Configuratie"
 
-#: ../system/Controller/ControllerMain.php:89
+#: ../system/Controller/ControllerMain.php:92
 #, fuzzy, php-format
 msgid "%s - Configuration"
 msgstr "Configuratie"
 
-#: ../system/Controller/ControllerMain.php:105
+#: ../system/Controller/ControllerMain.php:106
 #, php-format
 msgid "%s - Account Creation"
 msgstr "%s - account aanmaken"
@@ -210,36 +294,76 @@ msgstr "%s - Inlogging bij Movim"
 msgid "Account Creation"
 msgstr "Account aanmaken"
 
-#: ../system/Controller/ControllerMain.php:130
-#: ../system/Widget/widgets/Config/Config.php:61
-msgid ""
-"Changing these data can be dangerous and may compromise the connection to "
-"the Jabber server"
+#: ../system/Controller/ControllerMain.php:132
+msgid "Wrong username"
 msgstr ""
-"De data veranderen kan gevaarlijk zijn en kan uw verbinding met de jabber "
-"server verbreken"
 
-#: ../system/Controller/ControllerMain.php:136
+#: ../system/Controller/ControllerMain.php:138
+msgid "Invalid JID"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:144
+msgid "The XMPP authentification failed"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:150
+msgid "The current BOSH URL in invalid"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:156
+msgid "Internal server error"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:162
+msgid "Session error"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:170
+msgid "Your web browser is too old to use with Movim."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:181
+msgid "You don't have javascript enabled.  Good luck with that."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:214
 msgid "My address"
 msgstr "Mijn adres"
 
-#: ../system/Controller/ControllerMain.php:137
+#: ../system/Controller/ControllerMain.php:216
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: ../system/Controller/ControllerMain.php:138
+#: ../system/Controller/ControllerMain.php:218
+msgid "Options"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:221
+msgid "First Login"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:237
+msgid "Connecting..."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:237
 msgid "Come in!"
 msgstr "Kom in!"
 
-#: ../system/Widget/widgets/Chat/Chat.php:120
+#: ../system/Widget/widgets/Chat/Chat.php:133
+#, fuzzy
+msgid "Composing..."
+msgstr "Samenstellen"
+
+#: ../system/Widget/widgets/Chatold/Chat.php:120
 msgid "Composing"
 msgstr "Samenstellen"
 
-#: ../system/Widget/widgets/Chat/Chat.php:134
+#: ../system/Widget/widgets/Chatold/Chat.php:134
 msgid "Paused"
 msgstr "Gepauzeerd"
 
-#: ../system/Widget/widgets/Chat/Chat.php:155
+#: ../system/Widget/widgets/Chatold/Chat.php:155
 msgid "Message"
 msgstr "Bericht"
 
@@ -251,7 +375,17 @@ msgstr "Taal"
 msgid "BOSH Connection Prefrences"
 msgstr "BOSH connectie voorwaarden"
 
+#: ../system/Widget/widgets/Config/Config.php:61
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
+msgstr ""
+"De data veranderen kan gevaarlijk zijn en kan uw verbinding met de jabber "
+"server verbreken"
+
 #: ../system/Widget/widgets/Config/Config.php:74
+#: ../system/Widget/widgets/Feed/Feed.php:71
+#: ../system/Widget/widgets/Vcard/Vcard.php:102
 msgid "Submit"
 msgstr "Zenden"
 
@@ -259,100 +393,130 @@ msgstr "Zenden"
 msgid "Reset"
 msgstr "Reset"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "Uw avatar"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
-msgid "Website"
-msgstr "Website"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
-msgid "Date of birth"
-msgstr "Geboortedatum"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:80
-msgid "Refresh the data"
-msgstr "Herlaad de data"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:89
-msgid "Hye, I'm on Movim !"
-msgstr "Hallo, Ik ben op Movim"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:130
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:58
 msgid "Remove this contact"
 msgstr "Verwijder dit contact"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:45
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:72
+msgid "No"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:82
+msgid "Yes"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:94
+#: ../system/Widget/widgets/Profile/Profile.php:34
+msgid "Chat"
+msgstr "Chat"
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:102
+#: ../system/Widget/widgets/Vcard/Vcard.php:59
 msgid "General Informations"
 msgstr "Algemene informatie"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:47
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:104
+#: ../system/Widget/widgets/Vcard/Vcard.php:61
 msgid "Name"
 msgstr "Naam"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:105
+#: ../system/Widget/widgets/Vcard/Vcard.php:64
 msgid "Nickname"
 msgstr "bijnaam"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:106
 msgid "Adress"
 msgstr "Adres"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:50
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
+#: ../system/Widget/widgets/Vcard/Vcard.php:67
 msgid "Date of Birth"
 msgstr "Geboortedatum"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:55
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
+#: ../system/Widget/widgets/Vcard/Vcard.php:72
+msgid "Website"
+msgstr "Website"
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:113
+#: ../system/Widget/widgets/Vcard/Vcard.php:77
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:58
-msgid "About Me"
-msgstr "Over mij"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:140
+#: ../system/Widget/widgets/Vcard/Vcard.php:120
 msgid "Profile"
 msgstr "Profiel"
+
+#: ../system/Widget/widgets/Feed/Feed.php:29
+msgid "Me"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:35
+#: ../system/Widget/widgets/Wall/Wall.php:54
+msgid "Get the comments"
+msgstr "Geef de commentaren"
+
+#: ../system/Widget/widgets/Feed/Feed.php:42
+#, fuzzy
+msgid "Your feed cannot be loaded."
+msgstr "De feed van de gebruiken kan niet geladen worden."
+
+#: ../system/Widget/widgets/Feed/Feed.php:67
+#: ../system/Widget/widgets/Wall/Wall.php:168
+msgid "Feed"
+msgstr "Feed"
+
+#: ../system/Widget/widgets/Feed/Feed.php:68
+msgid "What's new ?"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:81
+#, fuzzy
+msgid "Loading your feed ..."
+msgstr "Laad de gebruiker feed"
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr "Debug console"
 
 #: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Disconnecting..."
+msgstr ""
+
+#: ../system/Widget/widgets/Logout/Logout.php:49
 msgid "Logout"
 msgstr "Logout"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:39
+#: ../system/Widget/widgets/News/News.php:43
+msgid "News"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:46
 msgid "wants to talk with you"
 msgstr "wil met u praten"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:41
+#: ../system/Widget/widgets/Notifs/Notifs.php:48
 msgid "Accept"
 msgstr "Accepteer"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:42
-#: ../system/Widget/widgets/Notifs/Notifs.php:98
+#: ../system/Widget/widgets/Notifs/Notifs.php:49
+#: ../system/Widget/widgets/Notifs/Notifs.php:105
 msgid "Validate"
 msgstr "Valideren"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:43
+#: ../system/Widget/widgets/Notifs/Notifs.php:50
 msgid "Decline"
 msgstr "Weigeren"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:97
+#: ../system/Widget/widgets/Notifs/Notifs.php:104
 msgid "Alias"
 msgstr "Alias"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:99
+#: ../system/Widget/widgets/Notifs/Notifs.php:106
 msgid "Add a contact"
 msgstr "Contact toevoegen"
-
-#: ../system/Widget/widgets/Profile/Profile.php:34
-msgid "Chat"
-msgstr "Chat"
 
 #: ../system/Widget/widgets/Profile/Profile.php:35
 msgid "Do not disturb"
@@ -366,18 +530,37 @@ msgstr "Weg"
 msgid "Away for a long time"
 msgstr "Weg voor een tijdje"
 
-#: ../system/Widget/widgets/Wall/Wall.php:44
-msgid "Get the comments"
-msgstr "Geef de commentaren"
+#: ../system/Widget/widgets/Profile/Profile.php:48
+msgid "Your avatar"
+msgstr "Uw avatar"
 
-#: ../system/Widget/widgets/Wall/Wall.php:51
+#: ../system/Widget/widgets/Roster/Roster.php:108
+msgid "Show All"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:74
 msgid "Contact's feed cannot be loaded."
 msgstr "De feed van de gebruiken kan niet geladen worden."
 
-#: ../system/Widget/widgets/Wall/Wall.php:69
-msgid "Feed"
-msgstr "Feed"
+#: ../system/Widget/widgets/Wall/Wall.php:84
+msgid "Follow"
+msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:73
+#: ../system/Widget/widgets/Wall/Wall.php:173
 msgid "Loading the contact feed ..."
 msgstr "Laad de gebruiker feed"
+
+#~ msgid "Couldn't open cache. Please contact the administrator."
+#~ msgstr "De cache kon niet geopend worden. Neem contact met de administrator"
+
+#~ msgid "Date of birth"
+#~ msgstr "Geboortedatum"
+
+#~ msgid "Refresh the data"
+#~ msgstr "Herlaad de data"
+
+#~ msgid "Hye, I'm on Movim !"
+#~ msgstr "Hallo, Ik ben op Movim"
+
+#~ msgid "About Me"
+#~ msgstr "Over mij"

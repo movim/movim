@@ -15,3 +15,10 @@
     border: 1px solid #ccc;
     padding: 3px;
 }
+
+#contactsummary #status {
+    color: #444;
+    padding: 3px;
+    font-size: 11px;
+    margin-right: 3px;
+}
