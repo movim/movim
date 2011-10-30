@@ -15,165 +15,188 @@
  *
  * %license%
  */
-define('DB_DEBUG', true);
-define('DB_LOGFILE', 'queries.log');
+if(function_exists("mysql_connect")) {
+    define('DB_DEBUG', true);
+    define('DB_LOGFILE', 'queries.log');
 
-if(!class_exists('Account')) {
-    class Account extends StorageBase
-    {
-        // Storable fields.
-        protected $balance;
-        protected $interest;
-        protected $owners;
-
-        protected function type_init()
+    if(!class_exists('Account')) {
+        class Account extends StorageBase
         {
-            $this->balance = StorageType::float();
-            $this->interest = StorageType::float();
+            // Storable fields.
+            protected $balance;
+            protected $interest;
+            protected $owners;
+
+            protected function type_init()
+            {
+                $this->balance = StorageType::float();
+                $this->interest = StorageType::float();
+            }
         }
     }
-}
 
-if(!class_exists('Owner')) {
-    class Owner extends StorageBase
-    {
-        protected $name;
-        protected $dob;
-        protected $account;
-
-        protected function type_init()
+    if(!class_exists('Owner')) {
+        class Owner extends StorageBase
         {
-            $this->name = StorageType::varchar(256);
-            $this->dob = StorageType::date();
-            $this->foreignkey('account', 'Account');
-        }
-    }
-}
+            protected $name;
+            protected $dob;
+            protected $account;
 
-class TestMysql
-{
-    private $host = "localhost";
-    private $port = "3366";
-    private $username = "movim";
-    private $password = "movim";
-    private $schema = "movim";
-
-    function __construct()
-    {
-        Conf::$conf_path = "tests/php/Storage";
-        storage_load_driver('mysql');
-        $this->_wipe();
-    }
-
-    private function _wipe()
-    {
-        if(!isset($this->db)) {
-            $this->db = mysql_connect($this->host.':'.$this->port,
-                                      $this->username,
-                                      $this->password);
-            mysql_select_db($this->schema, $this->db);
-        }
-
-        $result = mysql_query("show tables from movim");
-        while($row = mysql_fetch_row($result)) {
-            mysql_query("drop table ".$row[0], $this->db);
-        }
-
-        if(!isset($this->sdb)) {
-            $this->sdb = new StorageEngineMysql($this->host,
-                                                $this->port,
-                                                $this->username,
-                                                $this->password,
-                                                $this->schema);
+            protected function type_init()
+            {
+                $this->name = StorageType::varchar(256);
+                $this->dob = StorageType::date();
+                $this->foreignkey('account', 'Account');
+            }
         }
     }
 
-    private function _count($table, $where)
+    class TestMysql
     {
-        $query = "SELECT count(*) as count FROM $table WHERE $where";
-        $res = mysql_query($query, $this->db);
-        $row = mysql_fetch_assoc($res);
-        return $row['count'];
-    }
+        private $host = "localhost";
+        private $port = "3366";
+        private $username = "movim";
+        private $password = "movim";
+        private $schema = "movim";
 
-    function testCreate()
-    {
-        $test = new Account();
-        $this->sdb->create($test);
+        function __construct()
+        {
+            Conf::$conf_path = "tests/php/Storage";
+            storage_load_driver('mysql');
+            $this->_wipe();
+        }
 
-        $numtables = mysql_num_rows(mysql_query("SHOW TABLES LIKE 'Account'", $this->db));
-        ut_equals($numtables, 1);
-    }
+        private function _wipe()
+        {
+            if(!isset($this->db)) {
+                $this->db = mysql_connect($this->host.':'.$this->port,
+                                          $this->username,
+                                          $this->password);
+                mysql_select_db($this->schema, $this->db);
+            }
 
-    function testSave()
-    {
-        $account = new Account();
-        $account->balance = 100;
-        $account->interest = 0.025;
-        $this->sdb->save($account);
+            $result = mysql_query("show tables from movim");
+            while($row = mysql_fetch_row($result)) {
+                mysql_query("drop table ".$row[0], $this->db);
+            }
 
-        $count = $this->_count('Account', "balance='100'");
-        ut_equals($count, 1);
-    }
+            if(!isset($this->sdb)) {
+                $this->sdb = new StorageEngineMysql("mysql://".$this->username.":".$this->password."@".$this->host.":".$this->port."/".$this->schema);
+            }
+        }
 
-    function testLoad()
-    {
-        $account = new Account();
-        $this->sdb->load($account, array('id' => 1));
-        ut_equals($account->balance, 100);
-        ut_equals($account->interest, 0.025);
-    }
+        private function _count($table, $where)
+        {
+            $query = "SELECT count(*) as count FROM $table WHERE $where";
+            $res = mysql_query($query, $this->db);
+            $row = mysql_fetch_assoc($res);
+            return $row['count'];
+        }
 
-    function testDelete()
-    {
-        $account = new Account();
-        $account->balance = 200;
-        $account->interest = 0.020;
-        $this->sdb->save($account);
+        function testCreate()
+        {
+            $test = new Account();
+            $this->sdb->create($test);
 
-        $count = $this->_count('Account', "balance='200'");
-        ut_equals($count, 1);
+            $numtables = mysql_num_rows(mysql_query("SHOW TABLES LIKE 'Account'", $this->db));
+            ut_equals($numtables, 1);
+        }
 
-        $this->sdb->delete($account);
+        function testSave()
+        {
+            $account = new Account();
+            $account->balance = 100;
+            $account->interest = 0.025;
+            $this->sdb->save($account);
 
-        $count = $this->_count('Account', "balance='200'");
-        ut_nassert($account->id);
-    }
+            $count = $this->_count('Account', "balance='100'");
+            ut_equals($count, 1);
+        }
 
-    function testDrop()
-    {
-        $numtables = mysql_num_rows(mysql_query("SHOW TABLES LIKE 'Account'", $this->db));
-        ut_equals($numtables, 1);
+        function testLoad()
+        {
+            $account = new Account();
+            $this->sdb->load($account, array('id' => 1));
+            ut_equals($account->balance, 100);
+            ut_equals($account->interest, 0.025);
+        }
 
-        $account = new Account();
-        $account->balance = 200;
-        $account->interest = 0.020;
-        $this->sdb->save($account);
-        ut_differs($account->id, false);
+        function testDelete()
+        {
+            $account = new Account();
+            $account->balance = 200;
+            $account->interest = 0.020;
+            $this->sdb->save($account);
 
-        $this->sdb->drop($account);
+            $count = $this->_count('Account', "balance='200'");
+            ut_equals($count, 1);
 
-        $numtables = mysql_num_rows(mysql_query("SHOW TABLES LIKE 'Account'", $this->db));
-        ut_equals($numtables, 0);
-        ut_nassert($account->id);
-    }
+            $this->sdb->delete($account);
 
-    function testSelect()
-    {
-        // Wiping
-        $this->_wipe();
+            $count = $this->_count('Account', "balance='200'");
+            ut_nassert($account->id);
+        }
 
-        // Inserting two accounts.
-        $acc1 = new Account(array('balance' => 100, 'interest' => 0.015));
-        $acc2 = new Account(array('balance' => 100, 'interest' => 0.025));
+        function testDrop()
+        {
+            $numtables = mysql_num_rows(mysql_query("SHOW TABLES LIKE 'Account'", $this->db));
+            ut_equals($numtables, 1);
 
-        $this->sdb->create($acc1);
-        $this->sdb->save($acc1);
-        $this->sdb->save($acc2);
+            $account = new Account();
+            $account->balance = 200;
+            $account->interest = 0.020;
+            $this->sdb->save($account);
+            ut_differs($account->id, false);
 
-        $objs = $this->sdb->select('Account', array('balance' => 100));
+            $this->sdb->drop($account);
 
-        ut_equals(count($objs), 2);
+            $numtables = mysql_num_rows(mysql_query("SHOW TABLES LIKE 'Account'", $this->db));
+            ut_equals($numtables, 0);
+            ut_nassert($account->id);
+        }
+
+        function testSelect()
+        {
+            // Wiping
+            $this->_wipe();
+
+            // Inserting two accounts.
+            $acc1 = new Account(array('balance' => 100, 'interest' => 0.015));
+            $acc2 = new Account(array('balance' => 100, 'interest' => 0.025));
+
+            $this->sdb->create($acc1);
+            $this->sdb->save($acc1);
+            $this->sdb->save($acc2);
+
+            $objs = $this->sdb->select('Account', array('balance' => 100));
+
+            ut_equals(count($objs), 2);
+        }
+
+        function testOrder()
+        {
+            // Wiping
+            $this->_wipe();
+            
+            // Inserting two accounts.
+            $acc1 = new Account(array('balance' => 100, 'interest' => 0.015));
+            $acc2 = new Account(array('balance' => 200, 'interest' => 0.015));
+            $this->sdb->create($acc1);
+            $this->sdb->save($acc1);
+            $this->sdb->save($acc2);
+
+            $objs = $this->sdb->select("Account", array(), "balance");
+            ut_assert($objs[0]->balance < $objs[1]->balance);
+            
+            $objs = $this->sdb->select("Account", array(), "balance", true);
+            ut_assert($objs[0]->balance > $objs[1]->balance);
+
+            $objs = $this->sdb->select("Account", array('interest' => 0.015), "balance");
+            ut_assert($objs[0]->balance < $objs[1]->balance);
+            
+            $objs = $this->sdb->select("Account", array('interest' => 0.015), "balance", true);
+            ut_assert($objs[0]->balance > $objs[1]->balance);
+        }
     }
 }
 
