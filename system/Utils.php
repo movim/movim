@@ -58,7 +58,7 @@ function prepareDate($time) {
             return 'In ' . $reldays . ' '.t('day') . ($reldays != 1 ? 's' : '');
         } else {
             $reldays = abs(floor($reldays));
-            return $reldays . ' '.t('day') . ($reldays != 1 ? 's' : '') . ' ago';
+            return t(' %d days ago', $reldays); // . ' '.t('day') . ($reldays != 1 ? 's' : '') . ' ago';
         }
     }
     if (abs($reldays) < 182) {

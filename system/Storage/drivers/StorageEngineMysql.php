@@ -131,7 +131,7 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
             $def.= 'DECIMAL('.$type['val']->length.', '.$type['val']->decimal_places.')';
             break;
         case 'StorageTypeFloat':
-            $def.= 'FLOAT';
+            $def.= 'DOUBLE';
             break;
         case 'StorageTypeInt':
             $def.= 'INTEGER';
@@ -293,7 +293,7 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
     /**
      * Loads a bunch of objects of a given type.
      */
-    public function select($objecttype, array $cond)
+    public function select($objecttype, array $cond, $order = false, $desc = false)
     {
         $stmt = "SELECT * FROM `" . $objecttype . '`';
 
@@ -305,7 +305,14 @@ class StorageEngineMysql extends StorageEngineBase implements StorageDriver
             }
 
             // Stripping the extra " AND "
-            $stmt = substr($stmt, 0, -5) . ';';
+            $stmt = substr($stmt, 0, -5);
+        }
+
+        if($order) {
+            $stmt .= " ORDER BY `" . $order . "`";
+            if($desc) {
+                $stmt .= " DESC";
+            }
         }
 
         $this->log($stmt);

@@ -4,8 +4,40 @@ class Feed extends WidgetBase {
 	function WidgetLoad()
 	{
     	$this->addcss('feed.css');
-    	//$this->addjs('feed.js');
+		$this->registerEvent('post', 'onPost');
 		$this->registerEvent('streamreceived', 'onStream');
+    }
+    
+    function onPost($payload) {
+        global $sdb;
+        $user = new User();
+        $post = $sdb->select('Message', array('key' => $user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+
+        if($post != false) {  
+            $html = $this->preparePost($post[0], $user);
+            RPC::call('movim_prepend', 'feed_content', RPC::cdata($html));
+        }
+    }
+    
+    function preparePost($message, $user) {
+        global $sdb;
+        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
+        
+        $tmp = '';
+        
+        if(isset($contact[0])) {
+            $tmp = '
+                <div class="post" id="'.$message->getData('nodeid').'">
+		            <img class="avatar" src="'.$contact[0]->getPhoto().'">
+
+     			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span> 
+     			    <span class="date">'.prepareDate(strtotime($message->getData('updated'))).'</span>
+     			    <div class="content">
+     			        '.prepareString($message->getData('content')).'
+                	</div>
+           		</div>';
+        }
+       	return $tmp;
     }
     
     function onStream($payload) {
@@ -73,12 +105,28 @@ class Feed extends WidgetBase {
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
         <div id="feed_content">
-            <script type="text/javascript">
-
-            <?php 
-                echo 'setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);'; ?>
-            </script>
-            <?php echo t('Loading your feed ...'); ?>
+            <?php
+            
+            global $sdb;
+            $user = new User();
+            $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $user->getLogin()), 'updated', true);
+            
+            if($messages == false) {
+            ?>
+                <script type="text/javascript">
+                    <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);'; ?>
+                </script>
+            <?php
+                echo t('Loading your feed ...');
+            } else {
+                $html = '';
+                
+                foreach(array_slice($messages, 0, 20) as $message) {
+                    $html .= $this->preparePost($message, $user);
+                }
+                echo $html;
+            }
+            ?>
         </div>
     </div>
     <?php

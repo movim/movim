@@ -101,7 +101,7 @@ h3 {
 {
     overflow: hidden;
     padding: 0px 10px;
-    min-height: 500px;
+    min-height: 510px;
 }
 
 #right
@@ -109,7 +109,7 @@ h3 {
     display: block;
     float: right;
     overflow: auto;
-    width: 200px;
+    width: 190px;
 }
 
 #footer {

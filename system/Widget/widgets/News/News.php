@@ -11,9 +11,10 @@ class News extends WidgetBase {
         $user = new User();
         $post = $sdb->select('Message', array('key' => $user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
 
-        $html = $this->preparePost($post[0], $user);
-        
-        RPC::call('movim_prepend', 'news', RPC::cdata($html));
+        if($post != false) {  
+            $html = $this->preparePost($post[0], $user);
+            RPC::call('movim_prepend', 'news', RPC::cdata($html));
+        }
     }
     
     function preparePost($message, $user) {
@@ -44,23 +45,22 @@ class News extends WidgetBase {
     <?php
         global $sdb;
         $user = new User();
-        $messages = $sdb->select('Message', array('key' => $user->getLogin()));
+        $messages = $sdb->select('Message', array('key' => $user->getLogin()), 'updated', true);
         
-        $date = 1;
         $html = '';
-        
-        foreach($messages as $message) {
-            if($user->getLogin() != $message->getData('jid')) {
-                $tmp = $this->preparePost($message, $user);
-                if($message->getData('updated') > $date) {
-                    $html = $tmp . $html;
-                    $date = $message->getData('updated');
-                } else {
-                    $html .= $tmp;
-                }
-           }
+        if($messages != false) {  
+            
+            foreach(array_slice($messages, 0, 20) as $message) {
+                if($user->getLogin() != $message->getData('jid')) {
+                    $html .= $this->preparePost($message, $user);
+               }
+            }
+            echo $html;
         }
-        echo $html;
+        
+        if($messages == false || $html == '') {
+            echo t('You have no news yet...');
+        }
     ?>
     </div>
     <?php

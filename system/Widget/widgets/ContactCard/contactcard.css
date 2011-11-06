@@ -23,7 +23,7 @@
 #contactcard .content {
     display: block;
     float: left;
-    width: 500px;
+    width: auto;
 }
 
 #contactcard #friendremoveask {

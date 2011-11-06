@@ -18,10 +18,14 @@ function sortRoster() {
     for(i = 0; i < xa.length; i++) {
         roster.insertBefore(xa.item(i), contacts.item(contacts.length))
     }
-    
     offline = roster.querySelectorAll('.offline');
     for(i = 0; i < offline.length; i++) {
         roster.insertBefore(offline.item(i), contacts.item(contacts.length))
+    }
+    
+    server_error = roster.querySelectorAll('.server_error');
+    for(i = 0; i < server_error.length; i++) {
+        roster.insertBefore(server_error.item(i), contacts.item(contacts.length))
     }
     
     more = roster.querySelector('.more');

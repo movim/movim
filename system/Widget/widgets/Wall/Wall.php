@@ -29,7 +29,7 @@ class Wall extends WidgetBase
 		$this->registerEvent('currentpost', 'onNewPost');
     }
     
-    function preparePost($post, $user) {
+/*    function preparePost($post, $user) {
         if($post['entry']['content'] != "") {
             global $sdb;
             
@@ -58,18 +58,45 @@ class Wall extends WidgetBase
         } else { 
             return "";
         }
+    }*/
+    
+    function preparePost($message, $user) {
+        global $sdb;
+        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
+        
+        $tmp = '';
+        
+        if(isset($contact[0])) {
+            $tmp = '
+                <div class="post" id="'.$message->getData('nodeid').'">
+		            <img class="avatar" src="'.$contact[0]->getPhoto().'">
+
+     			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span> 
+     			    <span class="date">'.prepareDate(strtotime($message->getData('updated'))).'</span>
+     			    <div class="content">
+     			        '.prepareString($message->getData('content')).'
+                	</div>
+	            	<div class="comments" id="'.$message->getData('nodeid').'comments">
+	            	    <a class="getcomments" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.t('Get the comments').'</a>
+	            	</div>
+           		</div>';
+        }
+       	return $tmp;
     }
     
     function onNewPost($payload) {
-         $user = new User(); 
-         $html = $this->preparePost($payload['event']['items']['item'], $user);
-         
+        global $sdb;
+        $user = new User(); 
+        $message = $sdb->select('Message', array('nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+        $html = $this->preparePost($message[0], $user);
+        //movim_log($payload);
         RPC::call('movim_prepend', 'wall', RPC::cdata($html));
     }
     
     function onStream($payload) {
         $html = '';
 
+        movim_log($payload);
         if(isset($payload['error'])) 
             $html = t("Contact's feed cannot be loaded.");
         else {
@@ -79,20 +106,26 @@ class Wall extends WidgetBase
                     href="#"
                     style="float: right;"
                     id="wallfollow" 
-                    onclick="'.$this->genCallAjax('ajaxSubscribe', "'".$payload["movim"]["@attributes"]["from"]."'").'" 
+                    onclick="'.$this->genCallAjax('ajaxSubscribe', "'".$payload["@attributes"]["from"]."'").'" 
                 >
                     '.t('Follow').'
                 </a>
                 <br /><br />-->
                 ';
             
+            global $sdb;
             $user = new User();
+            $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
             
-            if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
-                foreach($payload['pubsub']['items']['item'] as $item)
-                    $html .= $this->preparePost($item, $user);
+            if($messages == false) {            
+                $html .= t("Contact's feed cannot be loaded."); 
             } else {
-                $html .= $this->preparePost($payload['pubsub']['items']['item'], $user);
+                $html = '';
+                
+                foreach(array_slice($messages, 0, 20) as $message) {
+                    $html .= $this->preparePost($message, $user);
+                }
+                echo $html;
             }
         }
 
@@ -166,11 +199,38 @@ class Wall extends WidgetBase
 	{
 		?>
 		<div class="tabelem" id="wall" title="<?php echo t('Feed');?>">
-            <script type="text/javascript">
+		        <!--<a 
+                    class="button tiny icon" 
+                    href="#"
+                    style="float: right;"
+                    id="wallfollow" 
+                    onclick="<?php echo $this->callAjax('ajaxSubscribe', "'".$_GET['f']."'"); ?>" 
+                >
+                    <?php echo t('Follow'); ?>
+                </a>
+                <br /><br />-->
+            <?php 
+            global $sdb;
+            $user = new User();
+            $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $_GET['f']), 'updated', true);
+            
+            if($messages == false) {
+            ?>
+                <script type="text/javascript">
+                <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
+                </script>
+            <?php
+                echo t('Loading the contact feed ...'); 
+            } else {
+                $html = '';
+                
+                foreach(array_slice($messages, 0, 20) as $message) {
+                    $html .= $this->preparePost($message, $user);
+                }
+                echo $html;
+            }
 
-            <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
-            </script>
-            <?php echo t('Loading the contact feed ...'); ?>
+            ?>
        	</div>
 		<?php
 	}

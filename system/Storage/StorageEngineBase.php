@@ -49,7 +49,7 @@ class StorageEngineBase implements StorageDriver
     /**
      * Loads objects from storage.
      */
-    public function select($objecttype, array $cond)
+    public function select($objecttype, array $cond, $order = false, $desc = false)
     {
     }
 

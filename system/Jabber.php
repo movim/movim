@@ -338,8 +338,20 @@ class Jabber
         }
         
         // Pubsub node case
-        elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0") {
-            $evt->runEvent('streamreceived', $payload['movim']);
+        elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
+            $payload = $payload['movim'];
+            global $sdb;
+            
+            $from = $payload['@attributes']['from'];
+            
+            if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
+                foreach($payload['pubsub']['items']['item'] as $item)
+                    MessageHandler::saveMessage($item, $this->getCleanJid(), $from);
+            } else {
+                MessageHandler::saveMessage($payload['pubsub']['items']['item'], $this->getCleanJid(), $from);
+            }
+       
+            $evt->runEvent('streamreceived', $payload);
 		}
 
 		elseif(isset($payload["pubsubNode"])) {
@@ -382,44 +394,19 @@ class Jabber
 					$evt->runEvent('message', $payload);
 				}
             } elseif($payload['movim']['event']['items']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
+                $new = MessageHandler::saveMessage($payload['movim']['event']['items']['item'], $this->getCleanJid(), $payload['movim']['@attributes']['from']);
                 $payload = $payload['movim'];
-                global $sdb;
-	            $message = $sdb->select('Message', array(
-	                                                'key' => $this->getCleanJid(), 
-	                                                'jid' => $payload['@attributes']['from'],
-	                                                'nodeid'=> $payload['event']['items']['item']['@attributes']['id']));
-
-	            if($message == false) {
-		            $message = new Message();
-		            $message->key = $this->getCleanJid();
-		            $message->jid = $payload['@attributes']['from'];
-		            $message->nodeid = $payload['event']['items']['item']['@attributes']['id'];
-		            $message->content = $payload['event']['items']['item']['entry']['content'];
-		            $message->published = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['published']));
-		            $message->updated = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['updated']));
-		            $sdb->save($message);
-		            
+                if($new == false) {
 		            $sess = Session::start(APP_NAME);
                     if($sess->get('currentcontact') == $payload['@attributes']['from']) {
                         $evt->runEvent('currentpost', $payload);
                     }
                     
                     $evt->runEvent('post', $payload);
-	            } else {
-	                $message = new Message();
-	                $sdb->load($message, array('key' => $this->getCleanJid(), 
-	                                           'jid' => $payload['@attributes']['from'],
-	                                           'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
-		            $message->content = $payload['event']['items']['item']['entry']['content'];
-		            $message->published = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['published']));
-		            $message->updated = date('Y-m-d H:i:s', strtotime($payload['event']['items']['item']['entry']['updated']));
-		            $sdb->save($message); 
-	            }
-	            
+                }	            
             }
-
         }
-        
+
         $evt->runEvent('incomingemptybody', 'ping');
 	}
 
@@ -434,11 +421,12 @@ class Jabber
         $evt = new Event();
 		
         foreach($payloads as $payload) {
+            movim_log($payload['movim']);
     		if($payload['movim']['@attributes']['type'] == 'subscribe') {
         		$evt->runEvent('subscribe', $payload);
     		} elseif($payload['movim']['@attributes']['type'] == 'result') {
     		
-    		} elseif($payload['movim']['@attributes']['type'] == '' || in_array($payload['movim']['@attributes']['type'], array('available', 'unavailable'))) {
+    		} elseif(in_array($payload['movim']['@attributes']['type'], array('available', 'unavailable', '', 'error'))) {
     		    
     		    // We update the presences
                 list($jid, $ressource) = explode('/',$payload['movim']['@attributes']['from']);

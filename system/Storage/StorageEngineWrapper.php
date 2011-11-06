@@ -81,9 +81,9 @@ class StorageEngineWrapper extends StorageEngineBase implements StorageDriver
         return $this->db->load(&$object, $cond);
     }
 
-    function select($objecttype, array $cond)
+    function select($objecttype, array $cond, $order = false, $desc = false)
     {
-        return $this->db->select($objecttype, $cond);
+        return $this->db->select($objecttype, $cond, $order, $desc);
     }
 
     function close()

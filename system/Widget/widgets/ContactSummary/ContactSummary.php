@@ -60,10 +60,11 @@ class ContactSummary extends WidgetBase
         ?>
         <div id="contactsummary">
         <?php
-        if(isset($contact[0]))
+        if(isset($contact[0])) {
             echo $this->prepareContactSummary($contact[0]);
         ?>
         <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$contact[0]->getData('jid')."'");?>"></div>
+        <?php } ?>
         </div>
         <?php
     }

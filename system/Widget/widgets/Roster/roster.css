@@ -50,6 +50,10 @@
     background-image: url(img/xa.png);
 }
 
+#roster ul li.server_error .chat {
+    background-image: url(img/server_error.png);
+}
+
 #roster ul li .chat:hover {
     background-color: #444;
 }

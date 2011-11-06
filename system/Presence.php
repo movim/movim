@@ -51,7 +51,8 @@ class Presence extends StorageBase {
                 2 => 'away',
                 3 => 'dnd',
                 4 => 'xa',
-                5 => 'offline'
+                5 => 'offline',
+                6 => 'server_error'
             );
     
         $arr = array();
