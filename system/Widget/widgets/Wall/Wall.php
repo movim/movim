@@ -77,7 +77,7 @@ class Wall extends WidgetBase
      			        '.prepareString($message->getData('content')).'
                 	</div>
 	            	<div class="comments" id="'.$message->getData('nodeid').'comments">
-	            	    <a class="getcomments" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.t('Get the comments').'</a>
+	            	    <a class="getcomments icon comments" style="margin-left: 0px;" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.t('Get the comments').'</a>
 	            	</div>
            		</div>';
         }
@@ -231,6 +231,8 @@ class Wall extends WidgetBase
             }
 
             ?>
+            <br />
+            <div class="config_button" onclick="<?php $this->callAjax('ajaxWall', "'".$_GET['f']."'");?>"></div>
        	</div>
 		<?php
 	}

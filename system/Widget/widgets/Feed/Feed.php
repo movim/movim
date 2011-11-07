@@ -100,7 +100,7 @@ class Feed extends WidgetBase {
         <textarea id="feedmessage" onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;"><?php echo t('What\'s new ?'); ?></textarea>
         <a 
             onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessage').value") ?>"
-            href="#" id="feedmessagesubmit" class="button tiny"><?php echo t("Submit"); ?></a><br />
+            href="#" id="feedmessagesubmit" class="button tiny icon submit"><?php echo t("Submit"); ?></a><br />
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->

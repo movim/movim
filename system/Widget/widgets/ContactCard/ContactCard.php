@@ -45,7 +45,7 @@ class ContactCard extends WidgetBase
 
         $html .='
         <a 
-	        class="button tiny icon" 
+	        class="button tiny icon rm" 
 	        href="#"
 	        style="float: right;"
 	        id="friendremoveask"  
@@ -59,7 +59,7 @@ class ContactCard extends WidgetBase
 	    </a>
 	    
         <a 
-	        class="button tiny icon" 
+	        class="button tiny icon no" 
 	        href="#"
 	        style="float: right; display: none;"
 	        id="friendremoveno" 
@@ -73,7 +73,7 @@ class ContactCard extends WidgetBase
 	    </a>
 	    
 	    <a 
-	        class="button tiny icon" 
+	        class="button tiny icon yes" 
 	        href="#" 
 	        id="friendremoveyes" 
 	        style="float: right; display: none;"
@@ -85,7 +85,7 @@ class ContactCard extends WidgetBase
         if(isset($presence['presence']) && $presence['presence'] != 5) {
             $html .= '
                 <a 
-	                class="button tiny icon" 
+	                class="button tiny icon chat" 
 	                href="#"
 	                style="float: right;"
 	                id="friendchat"  

@@ -1,5 +1,4 @@
 #notifs {
-/*    width: 95%;*/
     padding-right: 5px;
     clear: both;
 }
@@ -38,8 +37,4 @@
 
 #notifs #notifsvalidate, #notifs #addvalidate {
     display: none;
-}
-
-#notifs #addask {
-    background-image: url(img/add_icon.png);
 }

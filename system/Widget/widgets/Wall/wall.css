@@ -5,7 +5,7 @@
 }
 
 #wall .getcomments {
-    background-image: url(img/comments_icon.png);
+/*    background-image: url(img/comments_icon.png);*/
     background-repeat: no-repeat;
     background-position: 5px 5px;
     padding: 2px;
@@ -17,3 +17,5 @@
 #wall #wallfollow {
     background-image: url(img/follow_icon.png);
 }
+
+

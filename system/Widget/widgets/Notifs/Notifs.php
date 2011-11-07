@@ -102,8 +102,8 @@ class Notifs extends WidgetBase
             <li>
                 <input id="addjid" class="tiny" value="user@server.tld" onfocus="myFocus(this);" onblur="myBlur(this);"/>
                 <input id="addalias" class="tiny" value="<?php echo t('Alias'); ?>" onfocus="myFocus(this);" onblur="myBlur(this);"/>
-                <a class="button tiny" href="#" id="addvalidate" onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>"><?php echo t('Validate'); ?></a>
-                <a class="button tiny icon" id="addask" href="#" onclick="addJid(this);"><?php echo t('Add a contact'); ?></a>
+                <a class="button tiny icon yes" href="#" id="addvalidate" onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>"><?php echo t('Validate'); ?></a>
+                <a class="button tiny icon add" href="#" onclick="addJid(this);"><?php echo t('Add a contact'); ?></a>
             </li>
         </ul>
     </div>

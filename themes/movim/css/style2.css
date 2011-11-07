@@ -158,16 +158,12 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 3px;
     margin-left: 5px;
-/*    text-shadow: 0 1px #F0F0F0;*/
     color: #666;
     
     background-color: #F5F5F5;
     font-weight: bold;
     font-family: Arial,sans-serif;
     text-align: center;
-
-/*    background: -webkit-gradient(linear, 0% 39%, 0% 100%, from(#F6F6F6), to(#d0d0d0));
-    background: -moz-linear-gradient(top, #F6F6F6, #d0d0d0);*/
 }
 
 .button.tiny.icon {
@@ -176,9 +172,16 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     background-position: 6px 6px;
 }
 
+.icon.yes { background-image: url(../img/icons/yes_icon.png); }
+.icon.no { background-image: url(../img/icons/no_icon.png); }
+.icon.comments { background-image: url(../img/icons/comments_icon.png); }
+.icon.follow { background-image: url(../img/icons/follow_icon.png); }
+.icon.chat{ background-image: url(../img/icons/chat_icon.png); }
+.icon.add { background-image: url(../img/icons/add_icon.png); }
+.icon.rm { background-image: url(../img/icons/rm_icon.png); }
+.icon.submit { background-image: url(../img/icons/submit_icon.png); }
+
 input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .button:hover {
-/*    background: -webkit-gradient(linear, 0% 39%, 0% 100%, from(#F6F6F6), to(#c0c0c0));*/
-/*    background: -moz-linear-gradient(top, #F6F6F6, #c0c0c0);*/
     background-color: #F8F8F8;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     border-color: #C6C6C6;

@@ -6,14 +6,13 @@
 
 #feed #feedmessage {
     resize: none;
-    width: 80%;
+    width: 85%;
 	border: 1px solid #E5E5E5;
 	margin: 0.5em 0em;
 	padding: 5px;
 }
 
 #feed #feedmessagesubmit {
-    width: 15%;
     margin: 1.7em 0em; 
     float: right;
 }

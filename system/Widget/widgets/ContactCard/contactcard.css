@@ -25,19 +25,3 @@
     float: left;
     width: auto;
 }
-
-#contactcard #friendremoveask {
-    background-image: url(img/rm_icon.png);
-}
-
-#contactcard #friendremoveyes {
-    background-image: url(img/yes_icon.png);
-}
-
-#contactcard #friendremoveno {
-    background-image: url(img/no_icon.png);
-}
-
-#contactcard #friendchat {
-    background-image: url(img/chat_icon.png);
-}
