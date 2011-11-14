@@ -6,6 +6,7 @@
 <?php /*$this->widget('Log');*/?>
 
 <div id="left">
+    <?php $this->widget('Profile'); ?>
     <?php $this->widget('Roster');?>
     <?php $this->widget('Notifs');?>
 

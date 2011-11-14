@@ -41,7 +41,7 @@ class News extends WidgetBase {
     function build()
     {
     ?>
-    <div class="tabelem" title="<?php echo t('News'); ?>" id="news">
+    <div class="tabelem protect orange" style="padding-top: 15px;" title="<?php echo t('News'); ?>" id="news">
     <?php
         global $sdb;
         $user = new User();

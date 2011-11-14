@@ -98,7 +98,7 @@ class ContactCard extends WidgetBase
 	    
         $html .='
         <form><br />
-            <fieldset>
+            <fieldset class="protect red">
                 <legend>'.t('General Informations').'</legend>';
         
         $html .= $this->displayIf($contact->getData('fn'), t('Name'));

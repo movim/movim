@@ -198,7 +198,7 @@ class Wall extends WidgetBase
 	function build()
 	{
 		?>
-		<div class="tabelem" id="wall" title="<?php echo t('Feed');?>">
+		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
 		        <!--<a 
                     class="button tiny icon" 
                     href="#"

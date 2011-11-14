@@ -1,4 +1,41 @@
-#profile #profileavatar {
+#profile {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 5px;
+}
+
+#profile h1 {
+    border: none;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+#profile img {
+    border: 1px solid #CCCCCC;
+    margin: 0 auto;
+    max-width: 120px;
+    padding: 3px;
+}
+
+#profile #status {
+    color: #444444;
+    font-size: 11px;
+    padding: 3px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    text-align: center;
+}
+
+#profile #status:hover {
+    border-color: #DDD;
+}
+
+#profile .presence_button.online { background-image: url(img/online.png); }
+#profile .presence_button.away { background-image: url(img/away.png); }
+#profile .presence_button.dnd { background-image: url(img/dnd.png); }
+#profile .presence_button.xa { background-image: url(img/xa.png); }
+
+/*#profile #profileavatar {
     width: 170px;
     height: 100%;
     padding: 0 20px;
@@ -106,4 +143,4 @@
 #profile .config_button {
     float: left;
     position: absolute;
-}
+}*/

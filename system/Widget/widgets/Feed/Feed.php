@@ -96,7 +96,7 @@ class Feed extends WidgetBase {
     function build()
     {
     ?>
-    <div class="tabelem" title="<?php echo t('Feed'); ?>" id="feed">
+    <div class="tabelem protect orange" title="<?php echo t('Feed'); ?>" id="feed">
         <textarea id="feedmessage" onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;"><?php echo t('What\'s new ?'); ?></textarea>
         <a 
             onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessage').value") ?>"

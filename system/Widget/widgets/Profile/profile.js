@@ -1,4 +1,20 @@
+function showPresence(n)
+{
+    n.style.display = 'none';
+    buttons = document.querySelectorAll('.presence_button.merged');
+    for(i = 0; i < buttons.length; i++) {
+        buttons[i].style.display = 'inline';
+    }
+}
+
 function getStatusText()
+{
+    status = document.querySelectorAll('#profile #status');
+    console.log(status);
+    return status.value;
+}
+
+/*function getStatusText()
 {
     var dest = document.getElementById('profilestatustext');
     var stuff = dest.value;
@@ -26,4 +42,4 @@ function showPresence(n) {
 function closePresence() {
     document.querySelector('#presencelist').style.display = "none";
     document.querySelector('#presencebutton').style.backgroundColor = "transparent";
-}
+}*/

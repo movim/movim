@@ -421,7 +421,6 @@ class Jabber
         $evt = new Event();
 		
         foreach($payloads as $payload) {
-            movim_log($payload['movim']);
     		if($payload['movim']['@attributes']['type'] == 'subscribe') {
         		$evt->runEvent('subscribe', $payload);
     		} elseif($payload['movim']['@attributes']['type'] == 'result') {
@@ -461,6 +460,9 @@ class Jabber
 	                $presence->setPresence($payload['movim']);
 	                $sdb->save($presence);
 	            }
+	            
+	            if($payload['movim']['@attributes']['from'] == $payload['movim']['@attributes']['to']) 
+	                $evt->runEvent('mypresence', $presence);
 		        $evt->runEvent('presence', $presence);
             }
         }

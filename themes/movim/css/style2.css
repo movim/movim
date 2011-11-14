@@ -46,6 +46,16 @@ a:link, a:visited {
     margin: 0 auto;
 }
 
+.protect {
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.protect.green { background-image: url(../img/protect/green.svg); }
+.protect.orange { background-image: url(../img/protect/orange.svg); }
+.protect.red { background-image: url(../img/protect/red.svg); }
+
 hr {
     border: 0px;
     background-color: #DCDCDC;
@@ -86,15 +96,9 @@ h3 {
 
 #left
 {
-/*    border: 1px solid #EEE;*/
     width: 190px;
     float: left;
-    padding-right: 5px;
     border-right: 1px solid #EEE;
-/*    background-color: #F9F9F9;*/
-/*    -moz-box-shadow:  0px 60px 60px white, 0px 5px 7px #DDD;*/
-/*    box-shadow: 0px 60px 60px white, 0px 5px 7px #DDD;*/
-/*    -webkit-box-shadow: 0px 60px 60px white, 0px 5px 7px #DDD;*/
 }
 
 #center
@@ -167,9 +171,29 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
 }
 
 .button.tiny.icon {
-    padding-left: 24px;
+    padding-left: 18px;
+    text-indent: 7px;
     background-repeat: no-repeat;
     background-position: 6px 6px;
+}
+
+.button.tiny.icon.merged {
+    border-radius: 0px;
+    border-right-color: rgba(0, 0, 0, 0.05);
+    margin-left: 0px;
+}
+
+.button.tiny.icon.merged:hover {
+    border: 1px solid #C6C6C6;
+}
+
+.button.tiny.icon.merged.left {
+    border-radius: 3px 0px 0px 3px;
+}
+
+.button.tiny.icon.merged.right {
+    border-radius: 0px 3px 3px 0px;
+    border-right-color: rgba(0, 0, 0, 0.1);
 }
 
 .icon.yes { background-image: url(../img/icons/yes_icon.png); }

@@ -47,10 +47,10 @@ class User {
 	{
 		try{
 		    // We check the JID
-		    if(filter_var($login, FILTER_VALIDATE_EMAIL) == false) {
+		    /*if(filter_var($login, FILTER_VALIDATE_EMAIL) == false) {
                 header('Location:'.BASE_URI.'index.php?q=disconnect&err=invalidjid');
                 exit();
-            }
+            }*/
             
             $data = false;
 			if( !($data = Conf::getUserData($login))) {

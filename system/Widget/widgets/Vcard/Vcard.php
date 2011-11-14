@@ -22,7 +22,7 @@ class Vcard extends WidgetBase
 {
     function WidgetLoad()
     {
-		$this->registerEvent('myvcardreceived', 'onMyVcardReceived');
+		$this->registerEvent('myvcard', 'onMyVcardReceived');
     	$this->addcss('vcard.css');
     	$this->addjs('vcard.js');
     }
@@ -55,7 +55,7 @@ class Vcard extends WidgetBase
 		    $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
             $html ='
             <form name="vcard"><br />
-                <fieldset>
+                <fieldset class="protect red">
                     <legend>'.t('General Informations').'</legend>';
                     
             $html .= '<div class="element"><span>'.t('Name').'</span>
@@ -118,11 +118,11 @@ class Vcard extends WidgetBase
     {
         ?>
 		<div class="tabelem" title="<?php echo t('Profile'); ?>" id="vcard">
-            <div class="config_button" onclick="<?php $this->callAjax('ajaxGetVcard');?>"></div>
-				<?php 
-					echo $this->prepareInfos();
-				?>
-                
+		    <h1><?php echo t('Profile'); ?></h1>
+			<?php 
+				echo $this->prepareInfos();
+			?>
+            <div class="config_button" onclick="<?php $this->callAjax('ajaxGetVcard');?>"></div>   
 		</div>
         <?php
     }

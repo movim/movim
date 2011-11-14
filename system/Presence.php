@@ -72,10 +72,13 @@ class PresenceHandler {
 
     }
     
-    public function getPresence($jid, $one = false) {
+    public function getPresence($jid, $one = false, $ressource = false) {
 	    global $sdb;
     	$user = new User();
-	    $presences = $sdb->select('Presence', array('key' => $user->getLogin(), 'jid' => $jid)); 
+    	if($ressource == false)
+	        $presences = $sdb->select('Presence', array('key' => $user->getLogin(), 'jid' => $jid)); 
+	    else
+	        $presences = $sdb->select('Presence', array('key' => $user->getLogin(), 'jid' => $jid, 'ressource' => $ressource)); 
 	    
 	    if($presences != false) {
 	        $arr = array();
