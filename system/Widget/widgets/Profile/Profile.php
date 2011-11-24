@@ -62,7 +62,7 @@ class Profile extends WidgetBase
         if(isset($me[0])) {
             $me = $me[0];
             $html = '<h1>'.$me->getTrueName().'</h1>';
-            $html .= '<img src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">';
+            $html .= '<img src="'.$me->getPhoto().'">';
             $html .= '<input type="text" id="status" value="'.$presence['status'].'">';
             $html .= '
                 <a 

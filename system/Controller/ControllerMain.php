@@ -234,7 +234,7 @@ class ControllerMain extends ControllerBase
 			                <input type="text" class="tiny" name="port" id="port"
 			                    value="<?php echo $serverconf['defBoshPort']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
 			        </fieldset>
-			        <input onclick="this.value = '<?php echo t('Connecting...');?>'" class="submit" type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
+			        <input onclick="this.value = '<?php echo t('Connecting...');?>'; this.className='button icon loading'"  type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
 			    </form>
 			</div>
 	    <?php

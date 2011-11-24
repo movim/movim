@@ -69,7 +69,7 @@ class Wall extends WidgetBase
         if(isset($contact[0])) {
             $tmp = '
                 <div class="post" id="'.$message->getData('nodeid').'">
-		            <img class="avatar" src="'.$contact[0]->getPhoto().'">
+		            <img class="avatar" src="'.$contact[0]->getPhoto('m').'">
 
      			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span> 
      			    <span class="date">'.prepareDate(strtotime($message->getData('updated'))).'</span>
@@ -89,14 +89,13 @@ class Wall extends WidgetBase
         $user = new User(); 
         $message = $sdb->select('Message', array('nodeid' => $payload['event']['items']['item']['@attributes']['id']));
         $html = $this->preparePost($message[0], $user);
-        //movim_log($payload);
+
         RPC::call('movim_prepend', 'wall', RPC::cdata($html));
     }
     
     function onStream($payload) {
         $html = '';
 
-        movim_log($payload);
         if(isset($payload['error'])) 
             $html = t("Contact's feed cannot be loaded.");
         else {

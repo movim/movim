@@ -45,13 +45,19 @@
     height: 15px;
     background-repeat: no-repeat;
     padding: 0px;
-    margin-top: 3px;
-    margin-right: 2px;
+    margin-top: 4px;
+    margin-right: 3px;
     float: right;
 } 
 
 #chats .chat span.cross:hover {
     cursor: pointer;
+}
+
+#chats .chat .avatar {
+    float: left;
+    height: 20px;
+    border-left: 1px solid #444;
 }
 
 #chats .chat .messages .message.me span.date {

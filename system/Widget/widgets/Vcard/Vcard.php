@@ -53,7 +53,7 @@ class Vcard extends WidgetBase
             $me = $me[0];
 
 		    $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
-            $html ='
+            $html .= '
             <form name="vcard"><br />
                 <fieldset class="protect red">
                     <legend>'.t('General Informations').'</legend>';
@@ -99,11 +99,18 @@ class Vcard extends WidgetBase
                       </div>';*/
 
             $html .= '<hr />';
-		    $html .= ' <input value="'.t('Submit').'" onclick="'.$submit.'" id="right" type="button"> ';
+
+		    $html .= '<input value="'.t('Submit').'" onclick="'.$submit.' this.value = \''.t('Submitting').'\'; this.className=\'button icon loading merged right\'" class="button icon yes merged right" type="button" style="float: right;"> ';
+            $html .= '<input type="reset" value="'.t('Reset').'" class="button icon no merged left" style="float: right;">';
+
+
             $html .= '
                 </fieldset>
             </form>';
+        } else { 
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxGetVcard').'\', 500);</script>';
         }
+        $html .= '<div class="config_button" onclick="'.$this->genCallAjax('ajaxGetVcard').'"></div>';
 
         return $html;
     }
@@ -118,11 +125,9 @@ class Vcard extends WidgetBase
     {
         ?>
 		<div class="tabelem" title="<?php echo t('Profile'); ?>" id="vcard">
-		    <h1><?php echo t('Profile'); ?></h1>
 			<?php 
 				echo $this->prepareInfos();
 			?>
-            <div class="config_button" onclick="<?php $this->callAjax('ajaxGetVcard');?>"></div>   
 		</div>
         <?php
     }

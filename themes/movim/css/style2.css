@@ -67,10 +67,10 @@ hr {
 
 h1 {
     color: #1F3C48;
-    border-bottom: 1px solid #CCC;
+/*    border-bottom: 1px solid #CCC;*/
     font-size: 1.5em;
-    padding: 10px 0px; 
-    margin-bottom: 10px;
+    padding: 10px 0px 5px; 
+/*    margin-bottom: 10px;*/
 }
 
 h3 {
@@ -131,19 +131,85 @@ form p {
     margin-bottom: 5px;
 }
 
-input, select, textarea {
+input, select, textarea, .button {
     border-color: #999 #BBB  #BBB ;
     border-style: solid;
     border-width: 1px;
-    max-width: 100%;
     margin: 0;
     overflow: hidden;
-    padding: 5px 9px 5px 9px;
+    padding: 5px;
     color: #333;
     background-color: white;
 }
 
+input:focus, select:focus, textarea:focus {
+    border: 1px solid #888888;
+}
+
+input:invalid, input:focus:invalid {
+    border-color: #983A3A;
+    -moz-box-shadow: none;
+}
+
+input[type=submit], input[type=reset], input[type=button], .button, .button:link, .button:visited {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    color: #666;
+    background-color: #F5F5F5;
+    font-weight: bold;
+    font-family: Arial,sans-serif;
+    text-align: center;
+    
+    background-repeat: no-repeat;
+    background-position: 6px center;
+}
+
+input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .button:hover {
+    background-color: #F8F8F8;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-color: #C6C6C6;
+    color: #333;
+}
+
+.button.icon {
+    padding-left: 18px;
+    text-indent: 7px;
+    background-repeat: no-repeat;
+}
+
+.icon.yes { background-image: url(../img/icons/yes_icon.png); }
+.icon.no { background-image: url(../img/icons/no_icon.png); }
+.icon.comments { background-image: url(../img/icons/comments_icon.png); }
+.icon.follow { background-image: url(../img/icons/follow_icon.png); }
+.icon.chat{ background-image: url(../img/icons/chat_icon.png); }
+.icon.add { background-image: url(../img/icons/add_icon.png); }
+.icon.rm { background-image: url(../img/icons/rm_icon.png); }
+.icon.submit { background-image: url(../img/icons/submit_icon.png); }
+
+.icon.loading { background-image: url(../img/icons/loading.gif); }
+
+.tiny {
+    font-size: 11px;
+}
+
+.button.merged {
+    border-radius: 0px;
+    border-right-color: rgba(0, 0, 0, 0.05);
+    margin-left: 0px;
+}
+
+.button.merged.left { border-radius: 3px 0px 0px 3px; }
+.button.merged.right {
+    border-radius: 0px 3px 3px 0px;
+    border-right-color: rgba(0, 0, 0, 0.1);
+}
+
+.button.merged:hover { border: 1px solid #C6C6C6; }
+
+/*
 input.tiny, select.tiny, textarea.tiny, .button.tiny, label.tiny {
+    background-position: 6px 6px;
     padding: 5px;
     font-size: 11px;
 }
@@ -170,28 +236,28 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     text-align: center;
 }
 
-.button.tiny.icon {
+.button.icon {
     padding-left: 18px;
     text-indent: 7px;
     background-repeat: no-repeat;
-    background-position: 6px 6px;
+    background-position: 8px 8px;
 }
 
-.button.tiny.icon.merged {
+.button.merged {
     border-radius: 0px;
     border-right-color: rgba(0, 0, 0, 0.05);
     margin-left: 0px;
 }
 
-.button.tiny.icon.merged:hover {
+.button.merged:hover {
     border: 1px solid #C6C6C6;
 }
 
-.button.tiny.icon.merged.left {
+.button.merged.left {
     border-radius: 3px 0px 0px 3px;
 }
 
-.button.tiny.icon.merged.right {
+.button.merged.right {
     border-radius: 0px 3px 3px 0px;
     border-right-color: rgba(0, 0, 0, 0.1);
 }
@@ -221,7 +287,7 @@ input[type=submit]:active, input[type=reset]:active, input[type=button]:active {
 
 input[type=submit], input[type=reset], input.right {
     float: right;
-}
+}*/
 
 fieldset {
     border: none;

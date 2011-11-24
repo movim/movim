@@ -266,9 +266,9 @@ class Jabber
 
 		// vCard case
 		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
-			if($payload['from'] == reset(explode("/", $payload['to'])) || $payload['from'] == NULL) {
+			if($payload['movim']['@attributes']['from'] == reset(explode("/", $payload['movim']['@attributes']['to'])) || $payload['movim']['@attributes']['from'] == NULL) {
 		        global $sdb;
-
+		        
 		        $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $this->getCleanJid()));
 		        if($contact == false) {
 			        $contact = new Contact();
@@ -285,19 +285,21 @@ class Jabber
 			} else {
 		        global $sdb;
 
-		        $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $payload['movim']['@attributes']['from']));
-		        if($contact == false) {
-			        $contact = new Contact();
-	                $contact->setContact($payload['movim']);			            
-			        $sdb->save($contact);
-		        } else {
-		        	$c = new ContactHandler();
-	                $contact = $c->get($payload['movim']['@attributes']['from']);
-	                $contact->setContact($payload['movim']);			            
-			        $sdb->save($contact); 
-		        }
+                if(isset($payload['movim']['@attributes']['from'])) {
+		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $payload['movim']['@attributes']['from']));
+		            if($contact == false) {
+			            $contact = new Contact();
+	                    $contact->setContact($payload['movim']);			            
+			            $sdb->save($contact);
+		            } else {
+		            	$c = new ContactHandler();
+	                    $contact = $c->get($payload['movim']['@attributes']['from']);
+	                    $contact->setContact($payload['movim']);			            
+			            $sdb->save($contact); 
+		            }
 
-				$evt->runEvent('vcard', $contact);
+				    $evt->runEvent('vcard', $contact);
+				}
 			}
 		}
 		// Roster case

@@ -82,7 +82,7 @@ class Roster extends WidgetBase
                      'title="'.$contact->getTrueName().' ('.$contact->getData('jid').')" 
                      href="?q=friend&f='.$contact->getData('jid').'"
                  >
-                    <img class="avatar" src="'.$contact->getPhoto().'" />'.
+                    <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.
                     '<span>'.$contact->getTrueName().'</span>
                  </a>';
         $end = '</li>';

@@ -71,8 +71,8 @@ class Config extends WidgetBase
 				<input name="boshPort" id="boshPort" size="4" value="<?php echo $conf['boshPort']; ?>" type="text">
 				</fieldset>
 				<p>
-				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" id="right" type="button">
-				<input type="reset" value="<?php echo t('Reset'); ?>">
+				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;">
+				<input type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">
                 </p>
 			</form>
 

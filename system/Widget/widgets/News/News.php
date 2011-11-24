@@ -26,7 +26,7 @@ class News extends WidgetBase {
         if(isset($contact[0])) {
             $tmp = '
                 <div class="post" id="'.$message->getData('nodeid').'">
-		            <img class="avatar" src="'.$contact[0]->getPhoto().'">
+		            <img class="avatar" src="'.$contact[0]->getPhoto('s').'">
 
      			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span> 
      			    <span class="date">'.prepareDate(strtotime($message->getData('updated'))).'</span>
