@@ -152,6 +152,9 @@ if(isset($_POST['install'])) {
     global $sdb;
     $contact = new Contact();
     $sdb->create($contact); 
+    
+    $conf = new ConfVar();
+    $sdb->create($conf); 
 
     $message = new Message();
     $sdb->create($message);

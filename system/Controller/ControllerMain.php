@@ -104,7 +104,9 @@ class ControllerMain extends ControllerBase
 	{
 		if(Conf::getServerConfElement("accountCreation") == 1) {
 			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
+		    $this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+			$this->page->menuAddLink(t('Account Creation'), '?q=account', true);
 			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('account.tpl'));
@@ -122,6 +124,7 @@ class ControllerMain extends ControllerBase
 	{
 		$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
+            $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
 		if(Conf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
 
@@ -188,6 +191,9 @@ class ControllerMain extends ControllerBase
                     <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
                     </div>
                 <?php
+                    global $sdb;
+    $contact = new ConfVar();
+    $sdb->create($contact); 
                 }
 		        ?>
 

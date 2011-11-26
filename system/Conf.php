@@ -1,5 +1,89 @@
 <?php
 
+class ConfVar extends StorageBase {
+    protected $login;
+    protected $pass;
+    
+    protected $host;
+    protected $domain;
+    protected $port;
+    
+    protected $boshHost;
+    protected $boshSuffix;
+    protected $boshPort;
+    
+    protected $language;
+    
+    protected $first;
+    
+    protected function type_init() {
+        $this->login      = StorageType::varchar(128);
+        $this->pass       = StorageType::varchar(128);
+        
+        $this->host       = StorageType::varchar(128);
+        $this->domain     = StorageType::varchar(128);
+        $this->port       = StorageType::int();
+        
+        $this->boshHost   = StorageType::varchar(128);
+        $this->boshSuffix = StorageType::varchar(128);
+        $this->boshPort   = StorageType::int();
+        
+        $this->language   = StorageType::varchar(128);
+        
+        $this->first      = StorageType::int();
+    }
+    
+    public function setConf(
+                            $login = false, 
+                            $pass = false, 
+                            $boshhost = false, 
+                            $boshsuffix = false, 
+                            $boshport = false, 
+                            $first = false, 
+                            $language = false
+                           ) {
+    
+        list($user, $host) = explode('@', $login);
+    
+        $this->login->setval(($login != false) ? $login : $this->login->getval());
+        $this->pass->setval(($pass != false) ? sha1($pass) : $this->pass->getval());
+        
+        $this->host->setval(($host != false) ? $host : $this->host->getval());
+        $this->domain->setval(($host != false) ? $host : $this->domain->getval());
+        $this->port->setval(5222);
+        
+        $this->boshHost->setval(($boshhost != false) ? $boshhost : $this->boshHost->getval());
+        $this->boshSuffix->setval(($boshsuffix != false) ? $boshsuffix : $this->boshSuffix->getval());
+        $this->boshPort->setval(($boshport != false) ? $boshport : $this->boshPort->getval());
+
+        $this->language->setval(($language != false) ? $language : $this->language->getval());
+
+        if($first) $this->first->setval(1);
+        
+    }
+    
+    public function getConf() {
+        $array = array();
+        $array['login'] = $this->login->getval();
+        $array['pass'] = $this->pass->getval();
+        
+        $array['host'] = $this->host->getval();
+        $array['domain'] = $this->domain->getval();
+        $array['port'] = $this->port->getval();
+        
+        $array['boshHost'] = $this->boshHost->getval();
+        $array['boshSuffix'] = $this->boshSuffix->getval();
+        $array['boshPort'] = $this->boshPort->getval();
+        
+        $array['language'] = $this->language->getval();
+        
+        $array['first'] = $this->first->getval();
+        
+        return $array;
+    }
+
+}
+
 class Conf
 {
     public static $conf_path = "/config";
@@ -41,140 +125,6 @@ class Conf
 			return $conf[$element];
 		}
 	}
-
-	/* Return an array of the host configuration */
-
-	static function getUserConf($jid) {
-		$conf_file = BASE_PATH . "/user/$jid/conf.xml";
-        return self::getConf('user', $conf_file);
-	}
-
-	/* Return an element of the host configuration */
-
-	static function getUserConfElement($jid, $element) {
-        $conf = self::getUserConf($jid);
-
-		if(!isset($conf[$element])) {
-			throw new MovimException(t("Cannot load element value'%s'", $element));
-		}
-		else {
-			return $conf[$element];
-		}
-	}
-
-	/* Set de new user configuration */
-
-	static function setUserConf($jid, $new) {
-
-		// We get the old configuration
-		$old = self::getUserConf($jid);
-
-		$conf = array();
-
-		// We update only the new elements in the configuration
-		foreach($old as $key => $value) {
-			if($new[$key] != $old[$key] && isset($new[$key]))
-				$conf[$key] = $new[$key];
-			else
-				$conf[$key] = $old[$key];
-		}
-
-		// And finally we wrote the new configuration
-		$dir_conf = BASE_PATH . "/user/$jid";
-
-		$conf_xml =
-                '<?xml version="1.0" encoding="UTF-8"?>'."\n".
-                '<data>'."\n";
-
-        foreach($conf as $key => $value) {
-        	$conf_xml .= "\t" . '<' . $key . '>' . $value . '</' . $key . '>' . "\n";
-        }
-
-        $conf_xml .= '</data>';
-
-        if(!file_put_contents($dir_conf . "/conf.xml", $conf_xml))
-            throw new MovimException(t("Couldn't create file %s", 'conf.xml'));
-	}
-
-	/* Return an array of the user configuration */
-
-	static function getUserData($jid) {
-		$conf_file = BASE_PATH . "/user/$jid/data.xml";
-        return self::getConf('userdata', $conf_file);
-	}
-
-    static function createUserConf($jid, $password, $boshhost = false, $boshsuffix = false, $boshport =false)
-    {
-        $dir_conf = BASE_PATH . "/user/$jid";
-
-        if(!file_exists($dir_conf)) {
-            // Splitting jid.
-            list($user, $host) = explode('@', $jid);
-
-            $serv = self::getServerConf();
-            
-            $boshhost = ($boshhost != false) ? $boshhost : $serv['defBoshHost'];
-            $boshsuffix = ($boshsuffix != false) ? $boshsuffix : $serv['defBoshSuffix'];
-            $boshport = ($boshport != false) ? $boshport : $serv['defBoshPort'];
-
-            mkdir($dir_conf);
-            mkdir($dir_conf.'/img');
-            $conf_xml =
-                '<?xml version="1.0" encoding="UTF-8"?>'."\n".
-                '<data>'."\n".
-                '  <host>'.$host.'</host>'."\n".
-                '  <domain>'.$host.'</domain>'."\n".
-                '  <port>5222</port>'."\n".
-                '  <boshHost>'.$boshhost.'</boshHost>'."\n".
-                '  <boshSuffix>'.$boshsuffix.'</boshSuffix>'."\n".
-                '  <boshPort>'.$boshport.'</boshPort>'."\n".
-                '  <language>'.$serv['defLang'].'</language>'."\n".
-                '</data>';
-
-            $data_xml =
-                '<?xml version="1.0" encoding="UTF-8"?>'."\n".
-                '<data>'."\n".
-                '  <login>'.$jid.'</login>'."\n".
-                '  <pass>'.sha1($password).'</pass>'."\n".
-                '</data>';
-
-            if(!file_put_contents($dir_conf . "/conf.xml", $conf_xml))
-                throw new MovimException(t("Couldn't create file %s", 'conf.xml'));
-            if(!file_put_contents($dir_conf . "/data.xml", $data_xml))
-                throw new MovimException(t("Couldn't create file %s", 'data.xml'));
-        } else {
-            throw new MovimException(t("Couldn't create configuration files."));
-        }
-    }
-
-    /* Save a binary avatar to a file */
-
-    static function savePicture($jid, $contact, $data, $type) {
-        $dir_img = BASE_PATH . "/user/$jid/img";
-
-        if($type == "image/jpeg") {
-            if(!file_put_contents($dir_img.'/'.$contact.'.jpeg', base64_decode($data)))
-                throw new MovimException(t("Couldn't save img file %s", $contact.'.jpeg'));
-        } elseif($type == "image/png") {
-            $file = $dir_img.'/'.$contact;
-            if(!file_put_contents($file.'.png', base64_decode($data)))
-                throw new MovimException(t("Couldn't save img file %s", $contact.'.png'));
-
-            $image = imagecreatefrompng($file.'.png');
-            imagejpeg($image, $file.'.jpeg', 95);
-            imagedestroy($image);
-            unlink($file.'.png');
-        }
-    }
-
-	/**
-	 * Return the url of an image sotred in the user account
-	 */
-
-    static function loadPicture($jid, $name) {
-        $base_uri = str_replace('jajax.php', '', BASE_URI);
-        return $base_uri . "/user/".$jid."/img/".$name;
-    }
 
 	/* Actually reads the XML file if it exists */
 

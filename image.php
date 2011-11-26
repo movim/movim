@@ -25,6 +25,17 @@ require("init.php");
 
 global $sdb;
 
+function display_image($hash, $type) {
+    ob_clean();
+    ob_start();
+    header("ETag: \"{$hash}\"");
+    header("Accept-Ranges: bytes");
+    header("Content-type: ".$type);
+    header("Cache-Control: max-age=".rand(1, 5)*3600);
+    header('Date: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
+    header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT');
+}
+
 // We load the avatar from the database and we display it
 if(isset($_GET['c'])) {
     $hash = md5($_GET['c'].$_GET['size']);
@@ -41,13 +52,7 @@ if(isset($_GET['c'])) {
             ob_start();
             $content = file_get_contents('themes/movim/img/default.svg');
             
-
-            header("ETag: \"{$hash}\"");
-            header("Accept-Ranges: bytes");
-            header("Content-type: image/svg+xml");
-            header("Cache-Control: max-age=".rand(1, 5)*3600);
-            header('Date: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
-            header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT');
+                display_image($hash, "image/svg+xml");
             echo $content;
             exit;
 
@@ -72,28 +77,17 @@ if(isset($_GET['c'])) {
                 }
                 $thumb = imagecreatetruecolor($size, $size);
                 $source = imagecreatefromstring(base64_decode($contact[0]->photobin));
-                $width = imagesx($source);
-                $height = imagesy($source);
-                imagecopyresized($thumb, $source, 0, 0, 0, 0, $size, $size, $width, $height);
-                
-                header("ETag: \"{$hash}\"");
-                header("Cache-Control: max-age=".rand(1, 5)*3600);
-                header("Accept-Ranges: bytes");
-                header("Content-type: image/jpeg");
-                header('Date: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
-                header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT');
-                imagejpeg($thumb, NULL, 95);
+                if($source) {
+                    $width = imagesx($source);
+                    $height = imagesy($source);
+                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $size, $size, $width, $height);
+                    
+                    display_image($hash, "image/jpeg");
+                    imagejpeg($thumb, NULL, 95);
+                }
                 
             } elseif(isset($_GET['size']) && $_GET['size'] == 'normal') { // The original picture
-                ob_clean();
-                ob_start();
-                
-                header("ETag: \"{$hash}\"");
-                header("Cache-Control: max-age=".rand(1, 5)*3600);
-                header("Accept-Ranges: bytes");
-                header('Date: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
-                header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT');
-                header("Content-type:".$contact[0]->phototype);
+                display_image($hash, $contact[0]->phototype);
                 echo base64_decode($contact[0]->photobin);
             }
         }

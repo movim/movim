@@ -31,7 +31,8 @@ class Jabber
 	 */
 	private function __construct($jid)
 	{
-		$userConf = Conf::getUserConf($jid);
+        $userConf = User::getConf($jid);
+
 		$serverConf = Conf::getServerConf();
 
         $sess = Session::start(APP_NAME);
@@ -104,6 +105,7 @@ class Jabber
 			if(!$jid) {
                 $user = new User();
                 if(!$user->isLogged()) {
+                    return false;
                     throw new MovimException(t("User not logged in."));
                 } else {
                     $jid = $user->getLogin();

@@ -27,7 +27,7 @@ class Config extends WidgetBase
 	
 	function ajaxSubmit($data) {
 		$usr = new User();
-		$conf = Conf::setUserConf($usr->getLogin(), $data);
+		$usr->setConf($data);
 	}
 	
 	function build()
@@ -35,7 +35,7 @@ class Config extends WidgetBase
 			$languages = load_lang_array();
 			/* We load the user configuration */
 			$usr = new User();
-			$conf = Conf::getUserConf($usr->getLogin());
+			$conf = $usr->getConf();
 			
 			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')") . 'location.reload(true);';
 ?>

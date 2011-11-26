@@ -55,9 +55,10 @@ class ControllerBase
      */
     function load_language() {
 		if(User::isLogged()) {
-			$usr = new User();
+			$user = new User();
             try{
-                $lang = Conf::getUserConfElement($usr->getLogin(), 'language');
+                $lang = $user->getConf(false, 'language');
+                //$lang = Conf::getUserConfElement($usr->getLogin(), 'language');
                 load_language($lang);
             }
             catch(MovimException $e) {

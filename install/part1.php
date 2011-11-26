@@ -63,9 +63,13 @@ function test_requirements()
     $errors[] = t("Movim requires the %s extension.", 'PHP Curl') .
                 '<div class="guidance">'.t("Install %s and %s packages", 'php5-curl', 'curl').'</div>';
   }
+  if(!extension_loaded('gd')) {
+    $errors[] = t("Movim requires the %s extension.", 'PHP GD') .
+                '<div class="guidance">'.t("Install the %s package", 'php5-gd').'</div>';
+  }
   if(!extension_loaded('SimpleXML')) {
     $errors[] = t("Movim requires the %s extension.", 'SimpleXML') .
-                '<div class="guidance">'.t("Install %s packages", 'php5-cli').'</div>';
+                '<div class="guidance">'.t("Install the %s package", 'php5-cli').'</div>';
   }
   if(!test_dir('../')) {
     $errors[] = t("Movim's folder must be writable.") .
