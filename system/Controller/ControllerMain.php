@@ -191,9 +191,6 @@ class ControllerMain extends ControllerBase
                     <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
                     </div>
                 <?php
-                    global $sdb;
-    $contact = new ConfVar();
-    $sdb->create($contact); 
                 }
 		        ?>
 
