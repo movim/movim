@@ -10,6 +10,14 @@
     <?php $this->scripts();?>
   </head>
 <body onload="movim_onload()">
+	<noscript>
+        <style type="text/css">
+            #nav {display:none;} #content {display: none;}
+        </style>
+        <div class="warning" style="width: 500px; margin: 0 auto;">
+        <?php echo t("You don't have javascript enabled.  Good luck with that."); ?>
+        </div>
+    </noscript>
 	<div id="nav">
 	  <?php $this->menu();?>	
 	</div>

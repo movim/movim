@@ -127,7 +127,7 @@ function test_requirements()
 	<body>
 	
         <div class="warning right">
-            <p><?php echo('Thank you for downloading Movim ! But before you have fun with it, a few adjustements are needed.'); ?></p>
+            <p><?php echo('Thank you for downloading Movim ! But before you\'ll enjoy it, a few adjustements are required.'); ?></p>
             <p><?php echo('Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit.'); ?></p>
         </div>
 		<div id="content" style="width: 800px; margin: 0 auto;">

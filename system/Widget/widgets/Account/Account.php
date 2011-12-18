@@ -56,7 +56,7 @@ class Account extends WidgetBase {
 	}    
 	
 	function build()
-	{ 
+	{
         switch ($_GET['err']) {
             case 'datamissing':
 	            $warning = '
@@ -100,7 +100,7 @@ class Account extends WidgetBase {
 	        <h1>Create a new account</h1>
 	        <p style="margin-top: 20px;">
 	            <input 
-	                onfocus="accountAdvices('<p><?php echo t('Firstly fill this cell with a cool account ID, this adress will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');" 
+	                onfocus="accountAdvices('<p><?php echo t('Firstly fill in this blank with a brand new account ID, this adress will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');" 
 	                onblur="accountAdvices(); document.querySelector('#name').value = this.value;" 
 	                pattern="[a-zA-Z0-9]+" 
 	                autofocus 
@@ -115,7 +115,7 @@ class Account extends WidgetBase {
 	            <input 
 	                type="password"
 	                onfocus="
-	                    accountAdvices('<p><?php echo t('You have to respect some security rules for the password<ul><li>Alphanumeric numbers</li><li>A majuscule, a digit and a special characters are required</li><li>8 characters minimum</li></ul>'); ?></p><p><?php echo t('Example : m0vimP@ss'); ?></p>');" 
+	                    accountAdvices('<p><?php echo t('Make sure your password is safe :'); ?> <ul><li><?php echo t('A capital letter, a digit and a special character are required'); ?></li><li><?php echo t('8 characters minimum'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');" 
 	                onblur="accountAdvices();" 
 	                pattern="^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$" 
 	                placeholder="<?php echo t("Password"); ?>" 
@@ -147,12 +147,11 @@ class Account extends WidgetBase {
 	        </p>
 	        
 	        <p>
-	            <input type="button" class="big icon submit" style="float: right;" value="   Create" onclick="<?php echo $submit;?>">
+	            <input type="button" class="big icon submit" style="float: right;" value="   <?php echo t('Create'); ?>" onclick="<?php echo $submit;?>">
 	        </p>
 	        
-	    </form>    <div id="advices" class="warning" style="width: 200px; height: 160px; float: right; margin-top: 60px;">
-	    <p>Here you can create a brandy new account on Movim !</p>
-	    <p>But before let fill in some littles informations</p>
+	    </form>    
+	    <div id="advices" class="warning" style="width: 200px; height: 160px; float: right; margin-top: 60px;">
 	    </div>
 	</div>
 	<?php

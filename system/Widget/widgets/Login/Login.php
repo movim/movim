@@ -74,14 +74,6 @@ class Login extends WidgetBase {
 
 		$serverconf = Conf::getServerConf();
 		?>
-		<noscript>
-            <style type="text/css">
-                #loginpage {display:none;}
-            </style>
-            <div class="warning">
-            <?php echo t("You don't have javascript enabled.  Good luck with that."); ?>
-            </div>
-        </noscript>
 		    <div id="loginpage">
 		        <?php echo $browser_comp; 
 		        if(file_exists(BASE_PATH.'install/part1.php')) { ?>
@@ -116,7 +108,7 @@ class Login extends WidgetBase {
 			        <input type="password" name="pass" id="pass" required
 			            placeholder="<?php echo t("Password"); ?>"/><br />
 
-			        <a href="#" class="showoptions" onclick="getElementById('options').style.display = 'block';"><?php echo t('Options'); ?></a>
+			        <?php /*<a href="#" class="showoptions" onclick="getElementById('options').style.display = 'block';"><?php echo t('Options'); ?></a>
 
                     <fieldset id="options" style="display: none;">
 			            <label class="tiny"><?php echo t('First Login'); ?></label>
@@ -134,8 +126,17 @@ class Login extends WidgetBase {
 			            <label class="tiny"><?php echo t('Bosh Port'); ?></label>
 			                <input type="text" class="tiny" name="port" id="port"
 			                    value="<?php echo $serverconf['defBoshPort']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
-			        </fieldset>
+			        </fieldset>*/ ?>
 			        <input onclick="if(document.querySelector('#login').value != '' && document.querySelector('#pass').value != '') {this.value = '<?php echo t('Connecting...');?>'; this.className='button icon loading'}"  type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
+			        
+			        <div style="margin-top: 20px; width: 100%; text-align: center;">
+			        
+			        <?php 
+		                global $sdb;
+                        $contacts = $sdb->select('ConfVar', array());
+                        echo t('This server host %s accounts', count($contacts));
+			        ?>
+			        </div>
 			    </form>
 			</div>
 	    <?php

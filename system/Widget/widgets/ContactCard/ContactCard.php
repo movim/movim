@@ -119,7 +119,7 @@ class ContactCard extends WidgetBase
         $html .= $this->displayIf($contact->getPhoto(), t('Avatar'), '<img src="'.$contact->getPhoto().'">');
         
         $html .= '<br />';
-        //$html .= $this->displayIf($vcard["vCardDesc"], t('About Me'));
+        $html .= $this->displayIf($contact->getData('desc'), t('About Me'));
         
         $html .= '
             </fieldset>

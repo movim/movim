@@ -16,6 +16,8 @@ class Contact extends StorageBase {
     protected $phototype;
     protected $photobin;
     
+    protected $desc;
+    
     protected $vcardreceived;
     protected $chaton;
     
@@ -34,6 +36,8 @@ class Contact extends StorageBase {
         
         $this->phototype = StorageType::varchar(128);
         $this->photobin  = StorageType::text();
+        
+        $this->desc = StorageType::text();
         
         $this->vcardreceived  = StorageType::int();
         $this->chaton  = StorageType::int();
@@ -55,6 +59,8 @@ class Contact extends StorageBase {
         
         $this->phototype->setval($array['vCard']['PHOTO']['TYPE']);
         $this->photobin->setval($array['vCard']['PHOTO']['BINVAL']);
+        
+        $this->desc->setval($array['vCard']['DESC']);
         
         $this->vcardreceived->setval(1);
     }
@@ -79,10 +85,8 @@ class Contact extends StorageBase {
     
     public function getPhoto($size = 'normal') {
         if(isset($this->phototype) && isset($this->photobin) && $this->phototype->getval() != '' && $this->photobin->getval() != '') {
-            //$str = 'data:'.$this->phototype->getval().';base64,'.$this->photobin->getval();
             $str = 'image.php?c='.$this->jid->getval().'&size='.$size;
         } else {
-            //$str = str_replace('jajax.php','',BASE_URI).'themes/movim/img/default.svg';
             $str = 'image.php?c=default';
         }
         return $str;

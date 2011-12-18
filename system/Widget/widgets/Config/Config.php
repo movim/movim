@@ -54,7 +54,7 @@ class Config extends WidgetBase
 <?php			     }
 				  } ?>
 				</select>
-				<br>
+				<?php /*<br>
 				<br>
 				<fieldset>
 				<legend><?php echo t('BOSH Connection Prefrences'); ?></legend>
@@ -70,7 +70,8 @@ class Config extends WidgetBase
 				<label id="lock required" for="boshPort"><?php echo t('Bosh Port'); ?></label>
 				<input name="boshPort" id="boshPort" size="4" value="<?php echo $conf['boshPort']; ?>" type="text">
 				</fieldset>
-				<p>
+				<p>*/ ?>
+				<hr />
 				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;">
 				<input type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">
                 </p>

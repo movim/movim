@@ -80,10 +80,10 @@ class Vcard extends WidgetBase
                         <input type="hidden" name="vCardPhotoBinVal"  value="'.$me->getData('photobin').'">
                       </div>';
                       
-            /*$html .= '<br />
+            $html .= '<br />
                       <div class="element"><span>'.t('About Me').'</span>
-                        <textarea name ="vCardDesc" class="content" >'.$vcard["vCardDesc"].'</textarea>
-                      </div>';*/
+                        <textarea name ="vCardDesc" class="content" >'.$me->getData('desc').'</textarea>
+                      </div>';
                       
             $html .= '</fieldset>';                  
     /*        $html .= '<br />

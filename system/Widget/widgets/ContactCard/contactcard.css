@@ -28,4 +28,5 @@
     display: block;
     float: left;
     width: auto;
+    max-width: 400px;
 }
