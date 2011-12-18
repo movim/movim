@@ -52,7 +52,7 @@ if(isset($_GET['c'])) {
             ob_start();
             $content = file_get_contents('themes/movim/img/default.svg');
             
-                display_image($hash, "image/svg+xml");
+            display_image($hash, "image/svg+xml");
             echo $content;
             exit;
 

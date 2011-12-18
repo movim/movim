@@ -314,7 +314,7 @@ class Jabber
 		            if(isset($item['subscription']))
 		                $item = $payload['movim']['query']['item'];
 		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $item['@attributes']['jid']));
-		            if($contact == false) {
+		            if($contact == false && isset($item['@attributes']['jid'])) {
 			            $contact = new Contact();
 			            $contact->key = $this->getCleanJid();
 			            $contact->jid = $item['@attributes']['jid'];
@@ -435,7 +435,7 @@ class Jabber
                 list($jid, $ressource) = explode('/',$payload['movim']['@attributes']['from']);
                 
     		    // We ask for the entity-capabilities
-    		    /*if(isset($payload['movim']['c'])) {
+    		    if(isset($payload['movim']['c'])) {
 		            $this->jaxl->JAXL0030(
 		                'discoInfo', 
 		                $payload['movim']['@attributes']['from'], 
@@ -443,7 +443,7 @@ class Jabber
 		                false, 
 		                $payload['movim']['c']['@attributes']['node'].'#'.$payload['movim']['c']['@attributes']['ver']
 		            );
-    		    }*/
+    		    }
                 
 	            $presence = $sdb->select('Presence', array(
 	                                                    'key' => $this->getCleanJid(), 

@@ -7,7 +7,6 @@
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
     <?php $this->addCss('css/style2.css');?>
     <?php $this->addCss('css/posts.css');?>
-    <?php $this->addCss('css/login_form.css');?>
     <?php $this->scripts();?>
   </head>
 <body onload="movim_onload()">

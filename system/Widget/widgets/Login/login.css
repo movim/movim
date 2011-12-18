@@ -1,6 +1,6 @@
 #loginpage {
     min-height: 400px;
-    background-image: url(../img/cloud.png);
+    background-image: url(img/cloud.png);
     background-repeat: no-repeat;
     margin-top: -7px;
     background-position: 50px 0px;
@@ -11,7 +11,7 @@
     margin-top: 55px; 
     height: 150px;
     color: #aaa;
-    background-image: url(../img/quotestart.png);
+    background-image: url(img/quotestart.png);
     background-repeat: no-repeat;
     width: 60%;
     margin-left: 5%;

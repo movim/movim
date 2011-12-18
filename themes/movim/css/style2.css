@@ -67,10 +67,8 @@ hr {
 
 h1 {
     color: #1F3C48;
-/*    border-bottom: 1px solid #CCC;*/
     font-size: 1.5em;
     padding: 10px 0px 5px; 
-/*    margin-bottom: 10px;*/
 }
 
 h3 {
@@ -129,6 +127,13 @@ h3 {
 
 form p {
     margin-bottom: 5px;
+    display: block;
+    clear: both;
+}
+
+input.big, label.big {
+    margin: 5px;
+    font-size: 17px;
 }
 
 input, select, textarea, .button {
@@ -227,7 +232,7 @@ label {
     padding: 5px 9px 5px 9px;
 }
 
-/* The #navigation bar */
+/* The navigation bar */
 
 #nav, #nav .menu, #nav .menu li, #nav .menu li a {
     margin: 0px;
@@ -302,7 +307,11 @@ label {
 
 .warning p {
     margin: 5px 0px;
-    text-align: justify;
+}
+
+.warning ul {
+    list-style-type: square;
+    margin-left: 15px;
 }
 
 .error {

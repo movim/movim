@@ -125,11 +125,12 @@ function test_requirements()
         </script>
 	</head>
 	<body>
-		<div id="content">
-          <div class="warning right">
+	
+        <div class="warning right">
             <p><?php echo('Thank you for downloading Movim ! But before you have fun with it, a few adjustements are needed.'); ?></p>
             <p><?php echo('Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit.'); ?></p>
-          </div>
+        </div>
+		<div id="content" style="width: 800px; margin: 0 auto;">
           <?php
           $errors = test_requirements();
 
@@ -149,22 +150,21 @@ function test_requirements()
           <h1><?php echo t('Movim Installer'); ?></h1>
           <br />
             <form method="post" action="part2.php">
-                <input type="hidden" name="install" value="true" />
-                <div class="field">
-                    <label for="movim">Theme</label>
-                    <div class="field-input">
+                <fieldset>
+                    <legend>General</legend>
+                    <p>
+                        <input type="hidden" name="install" value="true" />
+                        <label for="movim">Theme</label>
                         <select id="theme" name="theme">
                             <?php
                                 foreach(list_themes() as $key=>$value)
                                     echo '<option value="'.$key.'">'.$value.'</option>';
                             ?>
                         </select>
-                    </div>
-                </div>
-                
-                <div class="field">
-                    <label for="da">Default language</label>
-                    <div class="field-input">
+                    </p>
+
+                    <p>
+                        <label for="da">Default language</label>
                         <select id="language" name="language">
                             <?php
                                 foreach(list_lang() as $key=>$value)
@@ -172,118 +172,116 @@ function test_requirements()
                             ?>
 
                         </select>
-                    </div>
-                </div>
-                
-                <div class="field">
-                    <label for="boshCookieTTL">Bosh cookie's expiration (s)</label>
-                    <div class="field-input">
-                    <input type="text" id="boshCookieTTL" name="boshCookieTTL" value="3600"/>    </div>
-                </div>
-                
-                <div class="field">
-                    <label for="boshCookiePath">Bosh cookie's path</label>
-                    <div class="field-input">
-                    <input type="text" id="boshCookiePath" name="boshCookiePath" value="/"/>    </div>
-                </div>
-                
-                <div class="field">
-                    <label for="boshCookieDomain">Bosh cookie's domain</label>
-                    <div class="field-input">
-                    <input type="checkbox" name="boshCookieDomain" id="boshCookieDomain" />    </div>
-                </div>
-                
-                <br /><div class="field">
-                    <label for="boshCookieHTTPS">Use HTTPS for Bosh</label>
-                    <div class="field-input">
-                    <input type="checkbox" name="boshCookieHTTPS" id="boshCookieHTTPS" />    </div>
-                </div>
-                
-                <br /><div class="field">
-                    <label for="boshCookieHTTPOnly">Use only HTTP for Bosh</label>
-                    <div class="field-input">
-                    <input type="checkbox" checked="checked" name="boshCookieHTTPOnly" id="boshCookieHTTPOnly" />    </div>
-                </div>
-                
-                <br /><div class="field">
-                <label for="7">Log verbosity</label>
-                    <div class="field-input">
+                    </p>
+                    
+                    <p>
+                        <label for="boshCookieTTL">Bosh cookie's expiration (s)</label>
+                        <input type="text" id="boshCookieTTL" name="boshCookieTTL" value="3600"/>
+                    </p>
+                    
+                    <p>
+                        <label for="boshCookiePath">Bosh cookie's path</label>
+                        <input type="text" id="boshCookiePath" name="boshCookiePath" value="/"/>
+                    </p>
+                    
+                   <p>
+                        <label for="boshCookieDomain">Bosh cookie's domain</label>
+                        <input type="checkbox" name="boshCookieDomain" id="boshCookieDomain" />
+                    </p>
+                    
+                    <p>
+                        <label for="boshCookieHTTPS">Use HTTPS for Bosh</label>
+                        <input type="checkbox" name="boshCookieHTTPS" id="boshCookieHTTPS" />
+                    </p>
+                    
+                    <p>
+                        <label for="boshCookieHTTPOnly">Use only HTTP for Bosh</label>
+                        <input type="checkbox" checked="checked" name="boshCookieHTTPOnly" id="boshCookieHTTPOnly" />
+                    </p>
+                    
+                    <p>
+                        <label for="7">Log verbosity</label>
                         <select id="verbosity" name="verbosity"><option value="0">empty</option>
                             <option value="2">terse</option>
                             <option selected="selected" value="4">normal</option>
                             <option value="6">talkative</option>
                             <option value="7">ultimate</option>
                         </select>
-                    </div>
-                </div>
-                
-                <div class="field">
-                <label for="accountCreation">Allow account creation</label>
-                    <div class="field-input">
-                        <input type="checkbox" name="accountCreation" id="accountCreation" />    </div>
-                    </div>
-                
-                <br />    
-                <hr /><h2>Default Bosh server settings</h2>
-
-                <?php if(isset($_GET['err']) && $_GET['err']=='bosh') { ?>
-                
-                <div class="error">
-                <?php echo t('The Bosh configuration is invalid'); ?>
-                </div>
-                
-                <?php } ?>
-
-                <div class="field">
-                <label for="defBoshHost">Bosh Host</label>
-                <div class="field-input">
-                <input type="text" id="defBoshHost" name="defBoshHost" value="etenil.thruhere.net"/>    </div>
-                </div>
-                <div class="field">
-                <label for="defBoshSuffix">Bosh Suffix</label>
-
-                <div class="field-input">
-                <input type="text" id="defBoshSuffix" name="defBoshSuffix" value="http-bind"/>    </div>
-                </div>
-                
-                <div class="field">
-                    <label for="defBoshPort">Bosh Port</label>
-                    <div class="field-input">
-                        <input type="text" id="defBoshPort" name="defBoshPort" value="5280"/>    </div>
-                </div>
-                <br />    
+                    </p>
                     
-                <hr /><h2>Storage</h2>
+                    <p>
+                        <label for="accountCreation">Allow account creation</label>
+                        <input type="checkbox" name="accountCreation" id="accountCreation" />
+                    </p>
+                </fieldset>
+  
+                </br>
+                <fieldset>
+                    <legend><?php echo t('XMPP Connection Preferences'); ?></legend>
+                    <p>
+                        <label for="domain">XMPP Domain</label>
+                        <input type="text" id="domain" name="domain" value="etenil.thruhere.net"/> 
+                    </p>
+                </fieldset>
                 
-                <?php if(isset($_GET['err']) && $_GET['err']=='bdd') { ?>
+                </br>
+                <fieldset>
+                    <legend><?php echo t('BOSH Connection Preferences'); ?></legend>
+
+                    <?php if(isset($_GET['err']) && $_GET['err']=='bosh') { ?>
+                        <div class="error">
+                        <?php echo t('The Bosh configuration is invalid'); ?>
+                        </div>
+                    <?php } ?>
+
+                    <p>
+                        <label for="defBoshHost">Bosh Host</label>
+                        <input type="text" id="defBoshHost" name="defBoshHost" value="etenil.thruhere.net"/> 
+                    </p>
+                    
+                    <p> 
+                        <label for="defBoshSuffix">Bosh Suffix</label>
+                        <input type="text" id="defBoshSuffix" name="defBoshSuffix" value="http-bind"/> 
+                    </p>
+                    
+                    <p>
+                        <label for="defBoshPort">Bosh Port</label>
+                        <input type="text" id="defBoshPort" name="defBoshPort" value="5280"/>
+                    </p>
+                </fieldset>
                 
-                <div class="error">
-                <?php echo t('The Database configuration is invalid'); ?>
-                </div>
+                <br />
+                <fieldset>
+                    <legend>Storage</legend>
                 
-                <?php } ?>
-                
-                <div class="field">
-                    <label for="sqlite">Storage driver</label>
-                    <div class="field-input">
+                    <?php if(isset($_GET['err']) && $_GET['err']=='bdd') { ?>
+                    
+                    <div class="error">
+                    <?php echo t('The Database configuration is invalid'); ?>
+                    </div>
+                    
+                    <?php } ?>
+                    
+                    <p>
+                        <label for="sqlite">Storage driver</label>
                         <select id="storage" name="storage" onchange="changeDB(this.options[this.selectedIndex].value)">
                             <option value="mysql">MySQL</option>
                             <!--<option value="sqlite">SQLite</option>-->
                         </select>
-                    </div>
-                </div>
+                    </p>
+                    
+                    <p>
+                        <label for="database">Database</label>
+                        <input style="width: 400px" type="text" id="database" name="database" value="mysql://username:password@host:<?php echo get_mysql_port(); ?>/database"/>
+                    </p>
                 
-                <div class="field">
-                    <label for="database">Database</label>
-                    <div class="field-input">
-                    <input style="width: 400px" type="text" id="database" name="database" value="mysql://username:password@host:<?php echo get_mysql_port(); ?>/database"/>    </div>
-                </div>
+                </fieldset>
 
-                <div class="field">
+                <p style="padding: 20px 0px;">
                     <label for="send">&nbsp;</label>
-                    <div class="field-input">
-                    <input type="submit" id="send" name="send" value="Install" />    </div>
-                </div>
+                    <input type="submit" style="float: right" class="button icon submit" id="send" name="send" value="Install" />
+                </p>
+                <br />
             </form>
           
           <?php }

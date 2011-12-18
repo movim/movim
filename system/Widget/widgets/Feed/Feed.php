@@ -102,7 +102,7 @@ class Feed extends WidgetBase {
             onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessage').value") ?>"
             href="#" id="feedmessagesubmit" class="button tiny icon submit"><?php echo t("Submit"); ?></a><br />
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
-        <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
+        <a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
         <div id="feed_content">
             <?php

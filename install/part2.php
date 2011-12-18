@@ -118,6 +118,7 @@ function perform_install()
       'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
       'logLevel'           => $_POST['verbosity'],
       'accountCreation'    => get_checkbox('accountCreation', 1, 0),
+      'domain'        => $_POST['domain'],
       'defBoshHost'        => $_POST['defBoshHost'],
       'defBoshSuffix'      => $_POST['defBoshSuffix'],
       'defBoshPort'        => $_POST['defBoshPort'],

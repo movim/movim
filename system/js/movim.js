@@ -55,8 +55,9 @@ function movim_parse_form(formname) {
 	return data;
 }
 
-
-
+function movim_reload(uri) {
+    window.location.replace(uri);
+}
 	
 /**
  * Set a global var for widgets to see if document is focused

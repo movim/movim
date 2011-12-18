@@ -21,7 +21,7 @@ define('APP_TITLE', t("MOVIM - Test Client"));
 		$uri = 'http://' . $_SERVER['HTTP_HOST'] . $path;
 	}
 
-	define('BASE_URI', $uri);
+	define('BASE_URI', str_replace('jajax.php', '', $uri));
 }
 
 ?>
