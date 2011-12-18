@@ -25,7 +25,113 @@ class Account extends WidgetBase {
         parent::__construct(true);
     }
     
-	function ajaxSubmit($data) {movim_log($data);
+    function xmppRegistration($data) {
+    	$conf = Conf::getServerConf();
+    	
+    	// We prevent hacks from the browser request
+        $valid_fields = array('username', 'nick', 'password', 'name', 'first',
+	        'last', 'email', 'address', 'city', 'state', 'zip', 'phone', 'url',
+	        'date', 'misc', 'text', 'key');
+
+        define(XMPP_HOST, $conf['domain']);
+        define(XMPP_CONN, $conf['domain']);
+        define(XMPP_PORT, 5222);
+
+        try {
+        
+            // We create the XML Stanza
+	        $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq id="register" type="set"><query xmlns="jabber:iq:register"/></iq></stream:stream>');
+
+	        $stream->addAttribute('to', XMPP_HOST);
+
+	        foreach($data as $key => $value)
+		        if(in_array($key, $valid_fields))
+			        $stream->iq->query->addChild($key, $value);
+
+            // We try to connect to the XMPP Server
+	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
+	        if(!$f) {
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
+                    RPC::commit();
+     	            exit;
+		    }
+	        
+	        fwrite($f, $stream->asXML()); 
+	        unset($stream);
+	        
+	        $response = stream_get_contents($f);
+	        
+	        if(!$response) {
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppcomm"));
+                    RPC::commit();
+     	            exit;
+		    }
+		    
+	        fclose($f); unset($f);
+	        
+	        $response = simplexml_load_string($response);
+	        
+	        if(!$response) throw new Exception('The XMPP server sent an invalid response', 500);
+	        
+	        if($stream_error = $response->xpath('/stream:stream/stream:error')) {
+		        list($stream_error) = $stream_error;
+		        list($cond) = $stream_error->children();
+
+		        throw new Exception($stream_error->text ? $stream_error->text : $cond->getName(), 500);
+	        }
+	        
+	        $iq = $response->iq;
+	        
+	        if($iq->error) {
+		        list($cond) = $iq->error->children();
+		        if($cond->getName() == 'conflict') {
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=userconflict"));
+                    RPC::commit();
+     	            exit;
+		        }
+		        throw new Exception($iq->error->text ? $iq->error->text : $cond->getName(), 400);
+	        }
+	        
+	        if($iq = $response->iq and $iq->attributes()->type == 'result') {
+	            $this->localRegistration($data, $conf);
+	        } else {
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=unknown"));
+                    RPC::commit();
+     	            exit;
+		    }	        
+        } catch(Exception $e) {
+	        header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
+	        header('Content-Type: text/plain; charset=utf-8');
+	        echo $e->getMessage(),"\n";
+        }
+    }
+    
+    function localRegistration($data) {
+       	$confvar = Conf::getServerConf();
+    movim_log($confvar);
+        global $sdb;
+        $conf = new ConfVar();
+        $conf->setConf(
+                        $data['username'].'@'.$data['server'], 
+                        $data['password'], 
+                        $confvar['domain'],
+                        $confvar['domain'],
+                        $confvar['port'],
+                        $confvar['defBoshHost'], 
+                        $confvar['defBoshSuffix'], 
+                        $confvar['defBoshPort'], 
+                        $confvar['defLang'],
+                        true
+                      );
+                                   
+        $sdb->save($conf);
+
+    	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=mainPage&err=acccreated"));
+        RPC::commit();
+        exit;
+    }
+    
+	function ajaxSubmit($data) {
 	    foreach($data as $value) {
 	        if($value == NULL || $value == '') {
 	            RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
@@ -35,7 +141,7 @@ class Account extends WidgetBase {
 	    }
 	        
 	    foreach($data as $value) {
-            if(!filter_var($data['pseudo'].'@'.$data['server'], FILTER_VALIDATE_EMAIL)) {
+            if(!filter_var($data['username'].'@'.$data['server'], FILTER_VALIDATE_EMAIL)) {
             	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=jiderror"));
                 RPC::commit();
                 exit;
@@ -47,12 +153,15 @@ class Account extends WidgetBase {
             	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=password"));
                 RPC::commit();
  	            exit;
-            } elseif(eregi('[^a-zA-Z0-9_]', $data['name'])) {
+            } elseif(eregi('[^a-zA-Z0-9_]', $data['nick'])) {
             	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=nameerr"));
                 RPC::commit();
  	            exit;
             }
 	    }
+	    
+	    unset($data['passwordconf']);
+	    $this->xmppRegistration($data);
 	}    
 	
 	function build()
@@ -88,8 +197,32 @@ class Account extends WidgetBase {
 	                        '.t('Invalid name').'
 	                    </div> ';
                 break; 
+            case 'userconflict':
+	            $warning = '
+	                    <div class="error">
+	                        '.t('Username already taken').'
+	                    </div> ';
+                break; 
+            case 'xmppconnect':
+	            $warning = '
+	                    <div class="error">
+	                        '.t('Could not connect to the XMPP server').'
+	                    </div> ';
+                break;
+            case 'xmppcomm':
+	            $warning = '
+	                    <div class="error">
+	                        '.t('Could not communicate with the XMPP server').'
+	                    </div> ';
+                break;
+            case 'unknown':
+	            $warning = '
+	                    <div class="error">
+	                        '.t('Unknown error').'
+	                    </div> ';
+                break;
         }
-	
+
 	$conf = Conf::getServerConf();
 	$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('account')");
 	?>	
@@ -101,13 +234,13 @@ class Account extends WidgetBase {
 	        <p style="margin-top: 20px;">
 	            <input 
 	                onfocus="accountAdvices('<p><?php echo t('Firstly fill in this blank with a brand new account ID, this adress will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');" 
-	                onblur="accountAdvices(); document.querySelector('#name').value = this.value;" 
+	                onblur="accountAdvices(); document.querySelector('#nick').value = this.value;" 
 	                pattern="[a-zA-Z0-9]+" 
 	                autofocus 
 	                placeholder="<?php echo t("My address"); ?>" 
 	                class="big" 
 	                style="text-align: right;" 
-	                name="pseudo"/>
+	                name="username"/>
 	                <span style="font-size: 17px;">@<?php echo $conf['domain']; ?></span>
 	        </p>
 	        
@@ -141,8 +274,8 @@ class Account extends WidgetBase {
 	                pattern="[a-zA-Z0-9]+"
 	                placeholder="<?php echo t("Pseudo"); ?>" 
 	                class="big" 
-	                name="name"
-	                id="name"
+	                name="nick"
+	                id="nick"
 	            />
 	        </p>
 	        

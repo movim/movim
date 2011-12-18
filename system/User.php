@@ -117,11 +117,14 @@ class User {
         $conf[0]->setConf(
                             $data['login'], 
                             $data['pass'], 
+                            $data['host'],
+                            $data['domain'],
+                            $data['port'],
                             $data['boshhost'], 
                             $data['boshsuffix'], 
                             $data['boshport'], 
-                            $data['first'], 
-                            $data['language']
+                            $data['language'],
+                            $data['first']
                          );
         $sdb->save($conf[0]); 
 	}

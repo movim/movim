@@ -64,6 +64,12 @@ class Login extends WidgetBase {
 	                        '.t('Session error').'
 	                    </div> ';
                 break;
+            case 'acccreated':
+	            $warning = '
+	                    <div class="error valid">
+	                        '.t('Account successfully created').'
+	                    </div> ';
+                break;
         }
 
         if(!BROWSER_COMP)
@@ -127,9 +133,9 @@ class Login extends WidgetBase {
 			                <input type="text" class="tiny" name="port" id="port"
 			                    value="<?php echo $serverconf['defBoshPort']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
 			        </fieldset>*/ ?>
-			        <input onclick="if(document.querySelector('#login').value != '' && document.querySelector('#pass').value != '') {this.value = '<?php echo t('Connecting...');?>'; this.className='button icon loading'}"  type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
+			        <input style="float: right;" onclick="if(document.querySelector('#login').value != '' && document.querySelector('#pass').value != '') {this.value = '<?php echo t('Connecting...');?>'; this.className='button icon loading'}"  type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
 			        
-			        <div style="margin-top: 20px; width: 100%; text-align: center;">
+			        <div style="padding-top: 20px; width: 100%; text-align: center; clear: both;">
 			        
 			        <?php 
 		                global $sdb;

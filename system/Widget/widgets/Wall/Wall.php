@@ -24,41 +24,11 @@ class Wall extends WidgetBase
     function WidgetLoad()
     {
     	$this->addcss('wall.css');
+    	$this->addjs('wall.js');
 		$this->registerEvent('streamreceived', 'onStream');
 		$this->registerEvent('comments', 'onComments');
 		$this->registerEvent('currentpost', 'onNewPost');
     }
-    
-/*    function preparePost($post, $user) {
-        if($post['entry']['content'] != "") {
-            global $sdb;
-            
-            $jid = substr_replace($post['entry']['source']['author']['uri'], "", 0, 5);
-            
-            $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
-            if(isset($contact[0])) {
-                $photo = $contact[0]->getPhoto();
-                $name = $contact[0]->getTrueName();
-            }
-            
-            $html = '
-                <div class="post" id="'.$post['@attributes']['id'].'">
-			        <img class="avatar" src="'.$photo.'">
-
-     			        <span><a href="?q=friend&f='.$jid.'">'.$name.'</a></span>
-     			        <span class="date">'.prepareDate(strtotime($post['entry']['published'])).'</span>
-     			    <div class="content"> 
-     			    '.prepareString($post['entry']['content']).'
-	            	</div>
-	            	<div class="comments" id="'.$post['@attributes']['id'].'comments">
-	            	    <a class="getcomments" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$post['@attributes']['id']."'").'">'.t('Get the comments').'</a>
-	            	</div>
-           		</div>';
-            return $html;
-        } else { 
-            return "";
-        }
-    }*/
     
     function preparePost($message, $user) {
         global $sdb;
@@ -96,8 +66,8 @@ class Wall extends WidgetBase
     function onStream($payload) {
         $html = '';
 
-        if(isset($payload['error'])) 
-            $html = t("Contact's feed cannot be loaded.");
+        if(isset($payload['error']))
+            RPC::call('hideWall'); 
         else {
             $html .= '
                 <!--<a 
@@ -117,7 +87,7 @@ class Wall extends WidgetBase
             $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
             
             if($messages == false) {            
-                $html .= t("Contact's feed cannot be loaded."); 
+                RPC::call('hideWall'); 
             } else {
                 $html = '';
                 

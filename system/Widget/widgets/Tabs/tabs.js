@@ -1,5 +1,4 @@
-movim_add_onload(function()
-{
+function createTabs() {
     // We search all the div with "tab" class
     var tabs = document.querySelectorAll('.tabelem');
     
@@ -15,6 +14,11 @@ movim_add_onload(function()
 
     // We insert the list
     document.querySelector('#navtabs').innerHTML = html;
+}
+
+movim_add_onload(function()
+{
+    createTabs();
 });
 
 function changeTab(a, n) {

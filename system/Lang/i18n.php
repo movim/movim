@@ -137,7 +137,6 @@ function load_language_auto()
         arsort($langs, SORT_NUMERIC);
     }
     
-    movim_log($langs);
     while((list($key, $value) = each($langs)) && $langNotFound == true) {
         if($key == 'en') {
             load_language(Conf::getServerConfElement('defLang'));

@@ -36,11 +36,14 @@ class ConfVar extends StorageBase {
     public function setConf(
                             $login = false, 
                             $pass = false, 
+                            $host = false,
+                            $domain = false,
+                            $port = false,
                             $boshhost = false, 
                             $boshsuffix = false, 
                             $boshport = false, 
-                            $first = false, 
-                            $language = false
+                            $language = false,
+                            $first = false
                            ) {
     
         list($user, $host) = explode('@', $login);
