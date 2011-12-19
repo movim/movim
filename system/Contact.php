@@ -57,6 +57,9 @@ class Contact extends StorageBase {
         $this->fn->setval($array['vCard']['FN']);
         $this->url->setval($array['vCard']['URL']);
         
+        if($this->rostersubscription->getval() == false)
+            $this->rostersubscription->setval('none');
+        
         $this->phototype->setval($array['vCard']['PHOTO']['TYPE']);
         $this->photobin->setval($array['vCard']['PHOTO']['BINVAL']);
         

@@ -121,7 +121,7 @@ class Wall extends WidgetBase
             $html .= '
                 <div class="comment">
                 	<img class="avatar tiny" src="'.$photo.'">
-                    <span>'.$payload['movim']['pubsub']['items']['item']['entry']['source']['author']['name'].'</span>
+                    <span><a href="?q=friend&f='.substr_replace($payload['movim']['pubsub']['items']['item']['entry']['source']['author']['uri'], "", 0, 5).'">'.$payload['movim']['pubsub']['items']['item']['entry']['source']['author']['name'].'</a></span>
                     <span class="date">'.prepareDate(strtotime($payload['movim']['pubsub']['items']['item']['entry']['published'])).'</span><br />
                     <div class="content tiny">'.prepareString($payload['movim']['pubsub']['items']['item']['entry']['content']).'</div>
                 </div>';
@@ -139,7 +139,7 @@ class Wall extends WidgetBase
                 $html = '
                     <div class="comment">
                     	<img class="avatar tiny" src="'.$photo.'">
-                        <span>'.$comment['entry']['source']['author']['name'].'</span>
+                        <span><a href="?q=friend&f='.substr_replace($comment['entry']['source']['author']['uri'], "", 0, 5).'">'.$comment['entry']['source']['author']['name'].'</a></span>
                         <span class="date">'.prepareDate(strtotime($comment['entry']['published'])).'</span><br />
                         <div class="content tiny">'.prepareString($comment['entry']['content']).'</div>
                     </div>' . $html;

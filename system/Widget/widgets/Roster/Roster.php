@@ -97,7 +97,7 @@ class Roster extends WidgetBase
 	{
         global $sdb;
         $user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin())); 
+        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'rostersubscription' => 'both')); 
         
         $html = '';
 

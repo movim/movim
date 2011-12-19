@@ -76,11 +76,13 @@ if(isset($_GET['c'])) {
                         break;
                 }
                 $thumb = imagecreatetruecolor($size, $size);
+                $white = imagecolorallocate($thumb, 255, 255, 255);
+                imagefill($thumb, 0, 0, $white);
                 $source = imagecreatefromstring(base64_decode($contact[0]->photobin));
                 if($source) {
                     $width = imagesx($source);
                     $height = imagesy($source);
-                    imagecopyresized($thumb, $source, 0, 0, 0, 0, $size, $size, $width, $height);
+                    imagecopyresampled($thumb, $source, 0, 0, 0, 0, $size, $size, $width, $height);
                     
                     display_image($hash, "image/jpeg");
                     imagejpeg($thumb, NULL, 95);

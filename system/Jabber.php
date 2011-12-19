@@ -265,12 +265,10 @@ class Jabber
 	 */
 	public function getIq($payload) {
 		$evt = new Event();
-
 		// vCard case
-		if(isset($payload['vCard'])) { // Holy mackerel, that's a vcard!
+		if(is_array($payload['movim']['vCard']) && $payload['movim']['@attributes']['type'] != 'error') { // Holy mackerel, that's a vcard!
 			if($payload['movim']['@attributes']['from'] == reset(explode("/", $payload['movim']['@attributes']['to'])) || $payload['movim']['@attributes']['from'] == NULL) {
 		        global $sdb;
-		        
 		        $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $this->getCleanJid()));
 		        if($contact == false) {
 			        $contact = new Contact();
