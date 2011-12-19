@@ -169,10 +169,9 @@ class Wall extends WidgetBase
 		?>
 		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
 		        <!--<a 
-                    class="button tiny icon" 
+                    class="button tiny icon follow" 
                     href="#"
                     style="float: right;"
-                    id="wallfollow" 
                     onclick="<?php echo $this->callAjax('ajaxSubscribe', "'".$_GET['f']."'"); ?>" 
                 >
                     <?php echo t('Follow'); ?>

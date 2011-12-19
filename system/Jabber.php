@@ -264,12 +264,20 @@ class Jabber
 	 * @return void
 	 */
 	public function getIq($payload) {
+	
 		$evt = new Event();
 		// vCard case
 		if(is_array($payload['movim']['vCard']) && $payload['movim']['@attributes']['type'] != 'error') { // Holy mackerel, that's a vcard!
-			if($payload['movim']['@attributes']['from'] == reset(explode("/", $payload['movim']['@attributes']['to'])) || $payload['movim']['@attributes']['from'] == NULL) {
+            // If the vcard is mine
+			if(
+			    $payload['movim']['@attributes']['from'] == reset(explode("/", $payload['movim']['@attributes']['to'])) || 
+			    $payload['movim']['@attributes']['from'] == NULL
+			  ) {
+			  
 		        global $sdb;
+		        
 		        $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $this->getCleanJid()));
+		        
 		        if($contact == false) {
 			        $contact = new Contact();
 	                $contact->setContact($payload['movim']);			            
@@ -282,6 +290,8 @@ class Jabber
 		        }
 			
 				$evt->runEvent('myvcard', $payload);
+	        
+	        // Yo it's your vcard dude !
 			} else {
 		        global $sdb;
 
@@ -302,6 +312,7 @@ class Jabber
 				}
 			}
 		}
+		
 		// Roster case
 		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
 
@@ -309,8 +320,10 @@ class Jabber
 		        global $sdb;
 		        
 		        foreach($payload['movim']['query']['item'] as $item) {
+		            // If we've got only one item in the roster we use it as the only one
 		            if(isset($item['subscription']))
 		                $item = $payload['movim']['query']['item'];
+		                
 		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $item['@attributes']['jid']));
 		            if($contact == false && isset($item['@attributes']['jid'])) {
 			            $contact = new Contact();
@@ -346,6 +359,7 @@ class Jabber
             
             $from = $payload['@attributes']['from'];
             
+            // We test if there is more than one item in the stream
             if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
                 foreach($payload['pubsub']['items']['item'] as $item)
                     MessageHandler::saveMessage($item, $this->getCleanJid(), $from);

@@ -48,6 +48,7 @@ class Roster extends WidgetBase
     {
 		$html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', RPC::cdata($html));
+        RPC::call('sortRoster');
     }
     
 	function ajaxRefreshRoster()
@@ -97,7 +98,7 @@ class Roster extends WidgetBase
 	{
         global $sdb;
         $user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'rostersubscription' => 'both')); 
+        $contact = $sdb->select('Contact', array('key' => $user->getLogin())); 
         
         $html = '';
 
@@ -107,7 +108,7 @@ class Roster extends WidgetBase
                 }
                 $html .= '<li class="more" onclick="showRoster(this);"><a href="#"><span>'.t('Show All').'</span></a></li>';
             } else {
-                $html .= '<script type="text/javascript">'.$this->genCallAjax('ajaxRefreshRoster').'</script>';
+                $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
             }
 
         return $html;
