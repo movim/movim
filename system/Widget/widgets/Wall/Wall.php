@@ -41,15 +41,33 @@ class Wall extends WidgetBase
                 <div class="post" id="'.$message->getData('nodeid').'">
 		            <img class="avatar" src="'.$contact[0]->getPhoto('m').'">
 
-     			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span> 
+     			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span>
      			    <span class="date">'.prepareDate(strtotime($message->getData('updated'))).'</span>
      			    <div class="content">
-     			        '.prepareString($message->getData('content')).'
-                	</div>
+     			        '.prepareString($message->getData('content')). '</div>';
+     			        
+            $attachments = AttachmentHandler::getAttachment($message->getData('nodeid'));
+            if($attachments) {
+                $tmp .= '<div class="attachment">';
+                foreach($attachments as $attachment)
+                    $tmp .= '<a target="_blank" href="'.$attachment->getData('link').'"><img src="'.$attachment->getData('thumb').'"></a>';
+                $tmp .= '</div>';
+            }
+            
+     	    if($message->getPlace() != false)
+     		    $tmp .= '<span class="place">
+     		                <a 
+     		                    target="_blank" 
+     		                    href="http://www.openstreetmap.org/?lat='.$message->getData('lat').'&lon='.$message->getData('lon').'&zoom=10"
+     		                >'.$message->getPlace().'</a>
+     		             </span>';
+              
+            $tmp .= '
 	            	<div class="comments" id="'.$message->getData('nodeid').'comments">
 	            	    <a class="getcomments icon comments" style="margin-left: 0px;" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.t('Get the comments').'</a>
 	            	</div>
            		</div>';
+
         }
        	return $tmp;
     }
@@ -114,7 +132,7 @@ class Wall extends WidgetBase
             $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
             
             if(isset($contact[0])) {
-                $photo = $contact[0]->getPhoto();
+                $photo = $contact[0]->getPhoto('s');
                 $name = $contact[0]->getTrueName();
             }
             
@@ -132,7 +150,7 @@ class Wall extends WidgetBase
                 $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
                 
                 if(isset($contact[0])) {
-                    $photo = $contact[0]->getPhoto();
+                    $photo = $contact[0]->getPhoto('s');
                     $name = $contact[0]->getTrueName();
                 }
             
@@ -168,7 +186,7 @@ class Wall extends WidgetBase
 	{
 		?>
 		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
-		        <!--<a 
+		        <a 
                     class="button tiny icon follow" 
                     href="#"
                     style="float: right;"
@@ -176,7 +194,7 @@ class Wall extends WidgetBase
                 >
                     <?php echo t('Follow'); ?>
                 </a>
-                <br /><br />-->
+                <br /><br />
             <?php 
             global $sdb;
             $user = new User();

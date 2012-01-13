@@ -31,6 +31,7 @@ require_once(LIB_PATH . "User.php");
 require_once(LIB_PATH . "Contact.php");
 require_once(LIB_PATH . "Presence.php");
 require_once(LIB_PATH . "Message.php");
+require_once(LIB_PATH . "Attachment.php");
 
 require_once(LIB_PATH . "Controller/ControllerBase.php");
 require_once(LIB_PATH . "Controller/ControllerMain.php");

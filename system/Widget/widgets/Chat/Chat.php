@@ -26,26 +26,46 @@ class Chat extends WidgetBase
     	$this->addjs('chat.js');
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('composing', 'onComposing');
-//		$this->registerEvent('paused', 'onPaused');
+    }
+    
+    function cacheMessage($jid, $html) {
+        if(Cache::c('log'.$jid) == false)
+            Cache::c('log'.$jid, array());
+        
+        $log = Cache::c('log'.$jid);
+        array_push($log, $html);
+        if(count($log)>20) {
+            array_shift($log);
+        }
+        Cache::c('log'.$jid, $log);
     }
     
     function onMessage($payload)
     {
+        $jid = reset(explode("/", $payload['from']));
+    
         global $sdb;
+        
         $contact = new Contact();
         $user = new User();
-        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
+        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => $jid));
+        
         if($contact->getData('chaton') != 1) {
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
+            RPC::call('scrollAllTalks');
             $contact->chaton = 1;
             $sdb->save($contact);
         }
         
+        $html = '<div class="message"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($payload['movim']['body'], ENT_COMPAT, "UTF-8")).'</div>';
+        
+        $this->cacheMessage($jid, $html);
+        
         RPC::call('movim_append',
                        'messages'.$contact->getData('jid'),
-                       RPC::cdata('<div class="message"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($payload['movim']['body'], ENT_COMPAT, "UTF-8")).'</div>'));   
+                       RPC::cdata($html));   
                        
         RPC::call('hideComposing',
                        $contact->getData('jid')); 
@@ -88,6 +108,7 @@ class Chat extends WidgetBase
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
+            RPC::call('scrollAllTalks');
             $contact->chaton = 1;
             $sdb->save($contact);
             RPC::commit();
@@ -103,6 +124,8 @@ class Chat extends WidgetBase
      */
     function ajaxSendMessage($to, $message)
     {
+        $this->cacheMessage($to, '<div class="message me"><span class="date">'.date('G:i', time()).'</span>'.rawurldecode($message).'</div>');
+    
 		$xmpp = Jabber::getInstance();
 		// We decode URL codes to send the correct message to the XMPP server
         $xmpp->sendMessage($to, rawurldecode($message));
@@ -128,9 +151,15 @@ class Chat extends WidgetBase
     
     function prepareChat($contact)
     {
+        $log = Cache::c('log'.$contact->getData('jid'));
+        if(is_array($log)) {
+            foreach($log as $key => $value)
+                $m .= $value;
+        }
+    
         $html = '
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
-                '<div class="messages" id="messages'.$contact->getData('jid').'"><div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
+                '<div class="messages" id="messages'.$contact->getData('jid').'">'.$m.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
                 '<textarea
                     onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
                 ></textarea>'.
@@ -142,6 +171,7 @@ class Chat extends WidgetBase
     
     function build()
     {
+
         global $sdb;
         $user = new User();
         $contacts = $sdb->select('Contact', array('key' => $user->getLogin(), 'chaton' => 1));

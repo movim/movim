@@ -25,11 +25,27 @@
     color: #777;
 }
 
+.post span.place {
+    display: inline-block;
+    background: url(../img/icons/place.png) 0px 2px no-repeat;
+    padding-left: 14px;
+    font-weight: normal;
+    margin-top: 5px;
+    float: right;
+    max-width: 350px;
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 0.7em;
+}
+
 .post .comments {
+    clear: both;
 	margin-bottom: 0.3em;
 	background-color: #F3F3F3;
 	margin-left: 60px;
 	margin-right: 5px;
+	margin-top: 10px;
 	width: 80%;
 }
 
@@ -65,7 +81,6 @@
 
 .post .content {
     text-align: justify;
-	padding-bottom: 0.7em;
 	margin-left: 60px;
 	margin-right: 5px;
     margin-top: 0.3em;
@@ -76,4 +91,24 @@
     padding: 0px;
     margin-left: 3em;
     margin-top: 0.3em;
+}
+
+.post .attachment {
+    display: block;
+    margin-left: 60px;
+    clear: both;
+}
+
+.post .attachment img {
+    max-width: 140px;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #CCC;
+}
+
+label {
+    float:left;
+    text-align:right;
+    width: auto;
+    padding: 5px 9px 5px 9px;
 }

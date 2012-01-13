@@ -5,8 +5,11 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title><?php $this->title();?></title>
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
-    <?php $this->addCss('css/style2.css');?>
-    <?php $this->addCss('css/posts.css');?>
+
+    <?php
+        $this->addCss('css/style2.css');
+        $this->addCss('css/posts.css');
+    ?>
     <?php $this->scripts();?>
   </head>
 <body onload="movim_onload()">
