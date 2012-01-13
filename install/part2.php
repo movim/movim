@@ -163,6 +163,8 @@ if(isset($_POST['install'])) {
     $presence = new Presence();
     $sdb->create($presence);      
     
+    $attachment = new Attachment();
+    $sdb->create($attachment);   
 }
 
 ?>
