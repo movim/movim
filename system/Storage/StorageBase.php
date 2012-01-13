@@ -258,10 +258,10 @@ class StorageBase
         return self::$db->load($this, $cond);
     }
 
-    public static function select($cond)
+    public static function select($cond, $order = false, $desc = false)
     {
         self::require_bound();
-        return self::$db->select(get_called_class(), $cond);
+        return self::$db->select(get_called_class(), $cond, $order, $desc);
     }
 }
 

@@ -1,0 +1,88 @@
+#roster ul {
+    list-style-type: none;
+    font-size: 13px;
+    margin-right: 3px;
+}
+
+#roster ul li {
+    margin-bottom: 2px;
+}
+
+#roster ul li .chat {
+    width: 22px;
+    height: 22px;
+    float: right;
+    padding-right: 3px;
+    background-image: url(img/offline.png);
+    background-repeat: no-repeat;
+    background-position: 3px 4px;
+}
+
+#roster ul li .chat.on:hover {
+    cursor: pointer;
+}
+
+#roster ul li.more {
+    text-align: center;
+}
+
+#roster ul li.more a {
+    width: auto;
+}
+
+#roster ul li.offline {
+    display: none;
+}
+
+#roster ul li.online .chat {
+    background-image: url(img/online.png);
+}
+
+#roster ul li.away .chat {
+    background-image: url(img/away.png);
+}
+
+#roster ul li.dnd .chat {
+    background-image: url(img/dnd.png);
+}
+
+#roster ul li.xa .chat {
+    background-image: url(img/xa.png);
+}
+
+#roster ul li.server_error .chat {
+    background-image: url(img/server_error.png);
+}
+
+#roster ul li .chat:hover {
+    background-color: #444;
+}
+
+#roster ul li a {
+    display: block;
+    white-space: nowrap;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#roster ul li a span {
+    padding-left: 5px;
+    line-height: 24px;
+}
+
+#roster ul li:hover, #roster ul li:hover a , #roster ul li.active, #roster ul li.active a {
+    background-color: #444;
+    color: white;
+}
+
+#roster ul li a:hover img, #roster ul li.active img {
+    background-color: white;
+}
+
+#roster ul li img {
+    height: 24px;
+    margin-bottom: -5px;
+    max-width: 24px;
+    float: left;
+}

@@ -1,3 +1,4 @@
+
 /**
  * These are the default callback functions that users may (or may not) use.
  *
@@ -94,8 +95,16 @@ function MovimRPC()
    	    movim_xmlhttp.onreadystatechange = function()
         {
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
-                //            log("Received data " + movim_xmlhttp.responseText);
 		        handler(movim_xmlhttp.responseXML);
+            }
+            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500) {
+                var url = window.location.href;
+                var urlparts = url.split('/');
+                var txt = urlparts[0]+'//';
+                for(i = 2; i < urlparts.length-1; i++) {
+                    txt = txt+urlparts[i]+'/'
+                }
+	            window.location.replace(txt+'index.php?q=disconnect&err=internal');
             }
         };
 

@@ -1,5 +1,5 @@
 #notifs {
-    width: 95%;
+    padding-right: 5px;
     clear: both;
 }
 
@@ -13,7 +13,7 @@
 }
 
 #notifs ul li {
-    padding: 5px 0px;
+    padding-bottom: 5px;
     border-top: 1px solid white;
     border-bottom: 1px solid #DDD;
     font-size: 10px;
@@ -25,17 +25,13 @@
 }
 
 #notifs ul li a {
-/*    color: #688F9C;*/
-/*    margin-left: 1em;*/
     float: right;
-/*    border-color: #355C20 #006500 #006500;*/
-/*    background: -webkit-gradient(linear, 0% 39%, 0% 100%, from(#F6F6F6), to(#d0d0d0));*/
-/*    background: -moz-linear-gradient(top, #73A245, #73A245);*/
+    margin-top: 5px;
 }
 
 #notifs #notifsalias, #notifs #addjid, #notifs #addalias {
     display: none;
-    width: 95%;
+    width: 92%;
     margin-top: 3px;
 }
 

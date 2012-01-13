@@ -25,9 +25,9 @@ function log(text)
     if(typeof text !== 'undefined') {
         text = text.toString();
         text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-	    document.getElementById('log_content').innerHTML
+	    /*document.getElementById('log_content').innerHTML
 		    = "$ " + text + "<br /> "
-		    + document.getElementById('log_content').innerHTML;
+		    + document.getElementById('log_content').innerHTML;*/
     }
 }
 
@@ -53,4 +53,22 @@ function movim_parse_form(formname) {
                  form.elements[i].value);
 	}
 	return data;
+}
+
+function movim_reload(uri) {
+    window.location.replace(uri);
+}
+	
+/**
+ * Set a global var for widgets to see if document is focused
+ */
+var document_focus = true;
+var document_title = document.title;
+var messages_cpt = 1;
+document.onblur = function() { document_focus = false; }
+document.onfocus = function() { document_focus = true; document.title = document_title; messages_cpt = 1; }
+ 
+function movim_title_inc(){
+	document.title='[' + messages_cpt + '] ' + document_title ;
+	messages_cpt++;
 }

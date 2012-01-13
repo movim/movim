@@ -21,16 +21,7 @@ define('APP_TITLE', t("MOVIM - Test Client"));
 		$uri = 'http://' . $_SERVER['HTTP_HOST'] . $path;
 	}
 
-	define('BASE_URI', $uri);
-}
-
-function movim_log($log) {
-	ob_start();
-	print_r($log);
-	$dump = ob_get_clean();
-	$fh = fopen(BASE_PATH . 'log/movim.log', 'w');
-	fwrite($fh, $dump);
-	fclose($fh);
+	define('BASE_URI', str_replace('jajax.php', '', $uri));
 }
 
 ?>

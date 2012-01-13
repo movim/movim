@@ -1,0 +1,27 @@
+#contactsummary {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#contactsummary h1 {
+    padding: 0px;
+    border: none;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#contactsummary img {
+    max-width: 120px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 3px;
+}
+
+#contactsummary #status {
+    color: #444;
+    padding: 3px;
+    font-size: 11px;
+    margin-right: 3px;
+}

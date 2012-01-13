@@ -210,6 +210,11 @@ function load_tests($dir, $testname)
   require($dir . $testname);
   $classname = ucfirst(substr($testname, 0, strlen($testname) - 4));
 
+  if(!class_exists($classname)) {
+      echo "Warning: class $classname doesn't exist.\n";
+      return;
+  }
+
   $refl = new ReflectionClass($classname);
   $meths = $refl->getMethods();
   $class = new $classname();

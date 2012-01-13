@@ -49,7 +49,7 @@ class StorageEngineBase implements StorageDriver
     /**
      * Loads objects from storage.
      */
-    public function select($objecttype, array $cond)
+    public function select($objecttype, array $cond, $order = false, $desc = false)
     {
     }
 
@@ -57,6 +57,13 @@ class StorageEngineBase implements StorageDriver
      * Deletes the storage associated to the object.
      */
     public function drop(&$object)
+    {
+    }
+
+    /**
+     * Closes the connection.
+     */
+    public function close()
     {
     }
 

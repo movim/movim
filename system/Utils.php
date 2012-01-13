@@ -29,4 +29,53 @@ function sprintln($string)
     return call_user_func_array('sprintf', $args) . PHP_EOL;
 }
 
+/**
+ * Prepare the string (add the a the the links)
+ *
+ * @param string $string
+ * @return string
+ */
+function prepareString($string) {
+    return preg_replace('@((https?://)?([-\w]+\.[-\w\.]+)+\w(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)*)@', '<a target="_blank" href="$1">$1</a>', $string);
+}
+
+function prepareDate($time) {
+
+    $today = strtotime(date('M j, Y'));
+    $reldays = ($time - $today)/86400;
+
+    if ($reldays >= 0 && $reldays < 1) {
+        return t('Today') .' - '. date('H:i', $time);
+    } else if ($reldays >= 1 && $reldays < 2) {
+        return t('Tomorrow') .' - '. date('H:i', $time);
+    } else if ($reldays >= -1 && $reldays < 0) {
+        return t('Yesterday') .' - '. date('H:i', $time);
+    }
+
+    if (abs($reldays) < 7) {
+        if ($reldays > 0) {
+            $reldays = floor($reldays);
+            return 'In ' . $reldays . ' '.t('day') . ($reldays != 1 ? 's' : '');
+        } else {
+            $reldays = abs(floor($reldays));
+            return t(' %d days ago', $reldays); // . ' '.t('day') . ($reldays != 1 ? 's' : '') . ' ago';
+        }
+    }
+    if (abs($reldays) < 182) {
+        return date('l, j F',$time ? $time : time());
+    } else {
+        return date('l, j F, Y',$time ? $time : time());
+    }
+}
+
+function movim_log($log) {
+	ob_start();
+//    var_dump($log);
+	print_r($log);
+	$dump = ob_get_clean();
+	$fh = fopen(BASE_PATH . 'log/movim.log', 'w');
+	fwrite($fh, $dump);
+	fclose($fh);
+}
+
 ?>

@@ -1,47 +1,20 @@
 /* WALL STYLE */
 
 #wall {
-
+    padding-top: 10px;
 }
 
-#wall .message {
-	border-bottom: 1px solid #ECECEC;
-    width: 100%;
-	padding-bottom: 0.5em;
-    min-height: 55px;
+#wall .getcomments {
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    padding: 2px;
+    display: block;
+    
+    padding-left: 20px;
 }
 
-#wall .message span {
-    font-weight: bold;
+#wall #wallfollow {
+    background-image: url(img/follow_icon.png);
 }
 
-#wall .message span.date {
-    float: right;
-    font-weight: normal;
-    color: #777;
-}
 
-#wall .message .comment {
-	margin-bottom: 0.3em;
-	background-color: #F3F3F3;
-	padding: 0.4em;
-	margin-left: 60px;
-	margin-right: 5px;
-}
-
-#wall .message .avatar {
-	width: 50px;
-	height: 50px;
-	margin: 5px;
-	margin-left: 0px;
-	display: block;
-	float: left;
-	background-color: #9BBBC6;
-}
-
-#wall .message .content {
-	padding-top: 0.4em;
-	padding-bottom: 0.4em;
-	margin-left: 60px;
-	margin-right: 5px;
-}

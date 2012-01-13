@@ -27,7 +27,7 @@ class Config extends WidgetBase
 	
 	function ajaxSubmit($data) {
 		$usr = new User();
-		$conf = Conf::setUserConf($usr->getLogin(), $data);
+		$usr->setConf($data);
 	}
 	
 	function build()
@@ -35,7 +35,7 @@ class Config extends WidgetBase
 			$languages = load_lang_array();
 			/* We load the user configuration */
 			$usr = new User();
-			$conf = Conf::getUserConf($usr->getLogin());
+			$conf = $usr->getConf();
 			
 			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')") . 'location.reload(true);';
 ?>
@@ -54,7 +54,7 @@ class Config extends WidgetBase
 <?php			     }
 				  } ?>
 				</select>
-				<br>
+				<?php /*<br>
 				<br>
 				<fieldset>
 				<legend><?php echo t('BOSH Connection Prefrences'); ?></legend>
@@ -70,9 +70,10 @@ class Config extends WidgetBase
 				<label id="lock required" for="boshPort"><?php echo t('Bosh Port'); ?></label>
 				<input name="boshPort" id="boshPort" size="4" value="<?php echo $conf['boshPort']; ?>" type="text">
 				</fieldset>
-				<p>
-				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" id="right" type="button">
-				<input type="reset" value="<?php echo t('Reset'); ?>">
+				<p>*/ ?>
+				<hr />
+				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;">
+				<input type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">
                 </p>
 			</form>
 

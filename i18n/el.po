@@ -4,6 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-26 23:46+0200\n"
 "PO-Revision-Date: 2011-08-12 16:13:50\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,37 +15,281 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - Test Client"
 
+#: ../install.php:18 ../install/part1.php:59
+msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+msgstr ""
+"Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση 5.3 "
+"της PHP."
+
+#: ../install.php:21 ../install.php:24 ../install.php:40
+#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:85
+#, php-format
+msgid "Movim requires the %s extension."
+msgstr "Το Movim απαιτεί την %s επέκταση."
+
+#: ../install.php:27 ../install/part1.php:71
+msgid "Movim's folder must be writable."
+msgstr "Ο φάκελλος του Movim πρέπε να διαθέτει δικαίωμα εγγραφής."
+
+#: ../install.php:39 ../install/part1.php:84
+msgid "or"
+msgstr ""
+
+#: ../install.php:155 ../install/part1.php:135 ../install/part1.php:145
+#: ../install/part2.php:176
+msgid "Movim Installer"
+msgstr "Πρόγραμμα εγκατάστασης του Movim"
+
+#: ../install.php:163
+msgid "Theme"
+msgstr "Θέμα"
+
+#: ../install.php:164
+msgid "Default language"
+msgstr "Γλώσσα προεπιλογής"
+
+#: ../install.php:165
+msgid "Bosh cookie's expiration (s)"
+msgstr "Προθεσμία Λήξης των cookies του Bosh"
+
+#: ../install.php:166
+msgid "Bosh cookie's path"
+msgstr "Διαδρομή για τα cookies του Bosh"
+
+#: ../install.php:167
+msgid "Bosh cookie's domain"
+msgstr ""
+
+#: ../install.php:169
+msgid "Use HTTPS for Bosh"
+msgstr "Χρήση HTTPS για το Bosh"
+
+#: ../install.php:171
+msgid "Use only HTTP for Bosh"
+msgstr "Χρήση μόνο του HTTP για το Bosh"
+
+#: ../install.php:173
+msgid "Log verbosity"
+msgstr "Log verbosity"
+
+#: ../install.php:174
+msgid "Allow account creation"
+msgstr "Επιτρέψτε δημιουργία Λογαρισμού"
+
+#: ../install.php:177 ../system/Controller/ControllerMain.php:225
+#: ../system/Widget/widgets/Config/Config.php:63
+msgid "Bosh Host"
+msgstr "Bosh Host"
+
+#: ../install.php:178 ../system/Controller/ControllerMain.php:229
+#: ../system/Widget/widgets/Config/Config.php:67
+msgid "Bosh Suffix"
+msgstr "Επίθεμα του Bosh"
+
+#: ../install.php:179 ../system/Controller/ControllerMain.php:233
+#: ../system/Widget/widgets/Config/Config.php:70
+msgid "Bosh Port"
+msgstr "Θύρα για το BOSH"
+
+#: ../install.php:181
+msgid "<h2>Storage</h2>"
+msgstr "<h2>Αποθήκευση</h2>"
+
+#: ../install.php:182
+msgid "Storage driver"
+msgstr ""
+
+#: ../install.php:186
+msgid "Database"
+msgstr ""
+
+#: ../install.php:234 ../install.php:238 ../install.php:242
+#: ../install/part2.php:97 ../install/part2.php:101 ../install/part2.php:105
+#, php-format
+msgid "Couldn't create directory '%s'."
+msgstr "Αδύνατη η δημιουργία του φακέλλου '%s'."
+
+#: ../install.php:266 ../install/part2.php:129
+#, php-format
+msgid "Couldn't create configuration file '%s'."
+msgstr "Αδύνατη η δημιουργία του αρχείου ρύθμισης '%s'."
+
+#: ../install.php:305 ../install/part1.php:135
+msgid "Compatibility Test"
+msgstr "Δοκιμασία συμβατότητας"
+
+#: ../install.php:306 ../install/part1.php:136
+msgid ""
+"The following requirements were not met. Please make sure they are all "
+"satisfied in order to install Movim."
+msgstr ""
+"Οι ακόλουθες προϋποθέσεις δεν καλύπτονταν. Παρακαλώ βεβαιωθείτε πως "
+"καλύπτονται όλες, για να μπορέσετε να προχωρήσετε στην εγκατάσταση του Movim."
+
+#: ../install.php:319
+msgid "Movim is installed!"
+msgstr "Το Movim εγκαταστάθηκε!"
+
+#: ../install.php:320
+#, php-format
+msgid "You can now access your shiny %sMovim instance%s"
+msgstr "Τώρα μπορείτε να έχετε πρόσβαση στην ολοκαίνουργια %sέκδοση Movim%s"
+
+#: ../install/part1.php:59
+msgid "Actual version : "
+msgstr ""
+
+#: ../install/part1.php:60
+msgid "Update your PHP version or contact your server administrator"
+msgstr ""
+
+#: ../install/part1.php:64
+#, php-format
+msgid "Install %s and %s packages"
+msgstr ""
+
+#: ../install/part1.php:68
+#, php-format
+msgid "Install %s packages"
+msgstr ""
+
+#: ../install/part1.php:72
+msgid "Enable read and write rights on Movim's root folder"
+msgstr ""
+
+#: ../install/part1.php:228
+msgid "The Bosh configuration is invalid"
+msgstr ""
+
+#: ../install/part1.php:257
+msgid "The Database configuration is invalid"
+msgstr ""
+
+#: ../install/part2.php:176
+msgid "Success !"
+msgstr ""
+
+#: ../install/part2.php:179
+msgid "Valid Bosh"
+msgstr ""
+
+#: ../install/part2.php:180
+msgid "Database Detected"
+msgstr ""
+
+#: ../install/part2.php:181
+#, fuzzy
+msgid "Database Movim schema installed"
+msgstr "Το Movim εγκαταστάθηκε!"
+
+#: ../install/part2.php:184
+#, fuzzy, php-format
+msgid "You can now access your shiny Movim instance %sJump In !%s"
+msgstr "Τώρα μπορείτε να έχετε πρόσβαση στην ολοκαίνουργια %sέκδοση Movim%s"
+
+#: ../install/part2.php:185 ../system/Controller/ControllerMain.php:188
+#, php-format
+msgid "Please remove the %s folder in order to complete the installation"
+msgstr ""
+
+#: ../system/Conf.php:38 ../system/Conf.php:58
+#, php-format
+msgid "Cannot load element value'%s'"
+msgstr "Αδύνατη η φόρτωση του element value'%s'"
+
+#: ../system/Conf.php:96 ../system/Conf.php:142 ../system/Conf.php:144
+#, php-format
+msgid "Couldn't create file %s"
+msgstr "Αδύνατη η δημιουργία αρχείου %s"
+
+#: ../system/Conf.php:146
+msgid "Couldn't create configuration files."
+msgstr "Αδύνατη η δημιουργία αρχείων ρύθμισης."
+
+#: ../system/Conf.php:157 ../system/Conf.php:161
+#, php-format
+msgid "Couldn't save img file %s"
+msgstr "Αδύνατη η αποθήκευση του αρχείου εικόνας %s"
+
+#: ../system/Conf.php:183
+#, php-format
+msgid "Cannot load file '%s'"
+msgstr "Αδύνατη η φόρτωση του αρχείου '%s'"
+
+#: ../system/Jabber.php:107
+msgid "User not logged in."
+msgstr "Χρήστης μη συνδεδεμένος."
+
+#: ../system/Jabber.php:111
+msgid "JID not provided."
+msgstr "Δεν παρέχονται JID (Jabber Identif. Codes)"
+
+#: ../system/Jabber.php:130
+#, php-format
+msgid "jid '%s' is incorrect"
+msgstr "Ο jid '%s' είναι λανθασμένος"
+
+#: ../system/Logger.php:27
+#, php-format
+msgid "Cannot open log file '%s'"
+msgstr "Αδύνατο να ανοίξει το αρχείο καταγραφής '%s'"
+
+#: ../system/MovimException.php:15
+#, php-format
+msgid "Error: %s"
+msgstr "Σφάλμα: %s"
+
+#: ../system/User.php:90
+msgid "Wrong password"
+msgstr "Λανθασμένος κωδικός "
+
+#: ../system/Utils.php:48
+msgid "Today"
+msgstr ""
+
+#: ../system/Utils.php:50
+msgid "Tomorrow"
+msgstr ""
+
+#: ../system/Utils.php:52
+msgid "Yesterday"
+msgstr ""
+
+#: ../system/Utils.php:58 ../system/Utils.php:61
+msgid "day"
+msgstr ""
+
 #: ../system/Controller/ControllerMain.php:40
-#: ../system/Controller/ControllerMain.php:59
+#: ../system/Controller/ControllerMain.php:58
+#, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Καλωσήλθατε στο Movim"
 
-#: ../system/Controller/ControllerMain.php:42
-#: ../system/Controller/ControllerMain.php:61
-#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:41
+#: ../system/Controller/ControllerMain.php:59
+#: ../system/Controller/ControllerMain.php:93
 #: ../system/Controller/ControllerMain.php:107
 msgid "Home"
 msgstr "Αρχική Σελίδα"
 
-#: ../system/Controller/ControllerMain.php:43
-#: ../system/Controller/ControllerMain.php:71
-#: ../system/Controller/ControllerMain.php:92
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:74
+#: ../system/Controller/ControllerMain.php:94
 msgid "Configuration"
 msgstr "Ρύθμιση"
 
-#: ../system/Widget/widgets/Logout/Logout.php:49
-msgid "Logout"
-msgstr "Αποσύνδεση "
-
-#: ../system/Controller/ControllerMain.php:89
+#: ../system/Controller/ControllerMain.php:92
+#, php-format
 msgid "%s - Configuration"
 msgstr "%s - Ρύθμιση"
 
-#: ../system/Controller/ControllerMain.php:105
+#: ../system/Controller/ControllerMain.php:106
+#, php-format
 msgid "%s - Account Creation"
 msgstr "%s - Δημιουργία Λογαριασμού"
 
 #: ../system/Controller/ControllerMain.php:123
+#, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - Είσοδος στο Movim"
 
@@ -51,49 +297,98 @@ msgstr "%s - Είσοδος στο Movim"
 msgid "Account Creation"
 msgstr "Δημιουργία Λογαριασμού"
 
-#: ../system/Controller/ControllerMain.php:136
+#: ../system/Controller/ControllerMain.php:132
+msgid "Wrong username"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:138
+msgid "Invalid JID"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:144
+msgid "The XMPP authentification failed"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:150
+msgid "The current BOSH URL in invalid"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:156
+msgid "Internal server error"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:162
+msgid "Session error"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:170
+msgid "Your web browser is too old to use with Movim."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:181
+msgid "You don't have javascript enabled.  Good luck with that."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:214
 msgid "My address"
 msgstr "Η διεύθυνσή μου "
 
-#: ../system/Controller/ControllerMain.php:137
+#: ../system/Controller/ControllerMain.php:216
 msgid "Password"
 msgstr "Κωδικός πρόσβασης "
 
-#: ../system/Controller/ControllerMain.php:138
+#: ../system/Controller/ControllerMain.php:218
+msgid "Options"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:221
+msgid "First Login"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:237
+msgid "Connecting..."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:237
 msgid "Come in!"
 msgstr "Έλα μέσα! "
 
-#: ../lib/GetConf.php:2
-#: ../lib/GetConf.php:45
-#~ msgid "Error: Cannot load element value'%s'"
-#~ msgstr ""
+#: ../system/Widget/widgets/Chat/Chat.php:133
+#, fuzzy
+msgid "Composing..."
+msgstr "Είναι σε εξέλιξη η σύνθεση"
 
-#: ../lib/GetConf.php:139
-#~ msgid "Error: Cannot load file '%s'"
-#~ msgstr "Σφάλμα: Δεν είναι δυνατή η φόρτωση αρχείου '%s' "
+#: ../system/Widget/widgets/Chatold/Chat.php:120
+msgid "Composing"
+msgstr "Είναι σε εξέλιξη η σύνθεση"
 
-#: ../lib/WidgetWrapper.php:98
-#~ msgid "Error: Requested widget '%s' doesn't exist."
-#~ msgstr ""
+#: ../system/Widget/widgets/Chatold/Chat.php:134
+msgid "Paused"
+msgstr "Μπήκε σε παύση"
 
-#: ../system/User.php:67
-msgid "Wrong password"
-msgstr "Λανθασμένος κωδικός "
+#: ../system/Widget/widgets/Chatold/Chat.php:155
+msgid "Message"
+msgstr "Μήνυμα"
 
-#: ../lib/Widget.php:69
-#~ msgid "This is a sample widget."
-#~ msgstr ""
+#: ../system/Widget/widgets/Config/Config.php:45
+msgid "Language"
+msgstr "Γλώσσα "
 
-#: ../lib/XMPPConnect.php:147
-#~ msgid "Error: jid `%s' is incorrect"
-#~ msgstr "Σφάλμα: To jid `%s 'είναι λανθασμένo"
+#: ../system/Widget/widgets/Config/Config.php:60
+msgid "BOSH Connection Prefrences"
+msgstr "Προτιμήσεις Σύνδεσης BOSH"
 
-#: ../lib/widgets/Account/Account.php:3
-#: ../lib/widgets/Account/Account.php:34
-#~ msgid "Jabber Account"
-#~ msgstr ""
+#: ../system/Widget/widgets/Config/Config.php:61
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
+msgstr ""
+"Η αλλαγή αυτών των δεδομένων μπορεί να είναι επικίνδυνη και ίσως ρίξει τη "
+"σύνδεση με τον διακομιστή Jabber"
 
 #: ../system/Widget/widgets/Config/Config.php:74
+#: ../system/Widget/widgets/Feed/Feed.php:71
+#: ../system/Widget/widgets/Vcard/Vcard.php:102
 msgid "Submit"
 msgstr "Υποβολή "
 
@@ -101,373 +396,128 @@ msgstr "Υποβολή "
 msgid "Reset"
 msgstr "Επαναφορά "
 
-#: ../system/Widget/widgets/Chat/Chat.php:86
-#~ msgid "Send"
-#~ msgstr "Αποστολή "
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:58
+msgid "Remove this contact"
+msgstr "Διαγραφή αυτής της επαφής"
 
-#: ../system/Widget/widgets/Config/Config.php:45
-msgid "Language"
-msgstr "Γλώσσα "
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:72
+msgid "No"
+msgstr ""
 
-#: ../lib/widgets/Config.php:45
-#~ msgid "Full Name"
-#~ msgstr ""
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:82
+msgid "Yes"
+msgstr ""
 
-#: ../system/Widget/widgets/Config/Config.php:60
-msgid "BOSH Connection Prefrences"
-msgstr "Προτιμήσεις Σύνδεσης BOSH"
-
-#: ../lib/Dispatcher.php:9
-#: ../lib/widgets/Config/Config.php:59
-#~ msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
-#~ msgstr ""
-
-#: ../install.php:13
-#: ../system/Widget/widgets/Config/Config.php:63
-msgid "Bosh Host"
-msgstr "Bosh Host"
-
-#: ../install.php:14
-#: ../system/Widget/widgets/Config/Config.php:67
-msgid "Bosh Suffix"
-msgstr "Επίθεμα του Bosh"
-
-#: ../install.php:14
-#: ../system/Widget/widgets/Config/Config.php:70
-msgid "Bosh Port"
-msgstr "Θύρα για το BOSH"
-
-#: ../lib/widgets/Config/Config.php:76
-#~ msgid "error: "
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friends/Friends.php:151
-#~ msgid "Contacts"
-#~ msgstr ""
-
-#: ../system/Conf2.php:9
-#: ../system/Conf2.php:14
-#: ../system/Conf2.php:142
-#: ../system/Conf.php:8
-#: ../system/Conf.php:13
-#: ../system/Conf.php:135
-msgid "Couldn't create file %s"
-msgstr "Αδύνατη η δημιουργία αρχείου %s"
-
-#: ../system/Conf2.php:14
-#: ../system/Conf.php:137
-msgid "Couldn't create configuration files."
-msgstr "Αδύνατη η δημιουργία αρχείων ρύθμισης."
-
-#: ../lib/XMPPConnect.php:98
-#~ msgid "Error: User not logged in."
-#~ msgstr ""
-
-#: ../lib/XMPPConnect.php:102
-#~ msgid "Error: JID not provided."
-#~ msgstr ""
-
-#: ../lib/XMPPConnect.php:117
-#~ msgid "Error: jid '%s' is incorrect"
-#~ msgstr ""
-
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:94
 #: ../system/Widget/widgets/Profile/Profile.php:34
 msgid "Chat"
 msgstr "Συνομιλία"
 
-#: ../system/Widget/widgets/Chat/Chat.php:155
-msgid "Message"
-msgstr "Μήνυμα"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:102
+#: ../system/Widget/widgets/Vcard/Vcard.php:59
+msgid "General Informations"
+msgstr "Γενικές πληροφορίες"
 
-#: ../system/Widget/widgets/Chat/Chat.php:85
-#~ msgid "To"
-#~ msgstr ""
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:104
+#: ../system/Widget/widgets/Vcard/Vcard.php:61
+msgid "Name"
+msgstr "Όνομα"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "Το δικό σας avatar"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:105
+#: ../system/Widget/widgets/Vcard/Vcard.php:64
+msgid "Nickname"
+msgstr "Ψευδώνυμο"
 
-#: ../lib/widgets/Friends/Friends.php:111
-#~ msgid "Refresh vCard"
-#~ msgstr ""
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:106
+msgid "Adress"
+msgstr "Διεύθυνση"
 
-#: ../lib/widgets/Friends/Friends.php:116
-#~ msgid "Online"
-#~ msgstr ""
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
+#: ../system/Widget/widgets/Vcard/Vcard.php:67
+msgid "Date of Birth"
+msgstr "Ημερομ. γεννήσεως"
 
-#: ../lib/widgets/Friends/Friends.php:117
-#~ msgid "Offline"
-#~ msgstr ""
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
+#: ../system/Widget/widgets/Vcard/Vcard.php:72
+msgid "Website"
+msgstr "Ιστότοπος"
 
-#: ../lib/widgets/Friends/Friends.php:118
-#~ msgid "Hidden"
-#~ msgstr ""
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:113
+#: ../system/Widget/widgets/Vcard/Vcard.php:77
+msgid "Avatar"
+msgstr "Avatar"
 
-#: ../system/Widget/widgets/Profile/Profile.php:36
-msgid "Away"
-msgstr "Μακριά"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:140
+#: ../system/Widget/widgets/Vcard/Vcard.php:120
+msgid "Profile"
+msgstr "Προφίλ"
 
-#: ../lib/widgets/Friends/Friends.php:120
-#~ msgid "Do Not Disturb"
-#~ msgstr ""
+#: ../system/Widget/widgets/Feed/Feed.php:29
+msgid "Me"
+msgstr ""
 
-#: ../lib/widgets/Friends/Friends.php:124
-#~ msgid "Refresh Roster"
-#~ msgstr ""
+#: ../system/Widget/widgets/Feed/Feed.php:35
+#: ../system/Widget/widgets/Wall/Wall.php:54
+msgid "Get the comments"
+msgstr "Συλλλέξτε τα σχόλια"
+
+#: ../system/Widget/widgets/Feed/Feed.php:42
+#, fuzzy
+msgid "Your feed cannot be loaded."
+msgstr "Δεν είναι δυνατή η φόρτωση του feed της επαφής."
+
+#: ../system/Widget/widgets/Feed/Feed.php:67
+#: ../system/Widget/widgets/Wall/Wall.php:168
+msgid "Feed"
+msgstr "Feed"
+
+#: ../system/Widget/widgets/Feed/Feed.php:68
+msgid "What's new ?"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:81
+#, fuzzy
+msgid "Loading your feed ..."
+msgstr "Φορτώνεται το contact feed ..."
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr "Κονσόλα αποσφαλμάτωσης"
 
-#: ../install.php:17
-msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-msgstr "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση 5.3 της PHP."
-
-#: ../install.php:2
-#: ../install.php:23
-msgid "Movim requires the %s extension."
-msgstr "Το Movim απαιτεί την %s επέκταση."
-
-#: ../install.php:26
-msgid "Movim's folder must be writable."
-msgstr "Ο φάκελλος του Movim πρέπε να διαθέτει δικαίωμα εγγραφής."
-
-#: ../install.php:121
-msgid "Movim Installer"
-msgstr "Πρόγραμμα εγκατάστασης του Movim"
-
-#: ../install.php:125
-msgid "Theme"
-msgstr "Θέμα"
-
-#: ../install.php:126
-msgid "Default language"
-msgstr "Γλώσσα προεπιλογής"
-
-#: ../install.php:127
-msgid "Bosh cookie's expiration (s)"
-msgstr "Προθεσμία Λήξης των cookies του Bosh"
-
-#: ../install.php:128
-msgid "Bosh cookie's path"
-msgstr "Διαδρομή για τα cookies του Bosh"
-
-#: ../install.php:129
-msgid "Bosh cookie's domain"
+#: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Disconnecting..."
 msgstr ""
 
-#: ../install.php:131
-msgid "Use HTTPS for Bosh"
-msgstr "Χρήση HTTPS για το Bosh"
+#: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Logout"
+msgstr "Αποσύνδεση "
 
-#: ../install.php:133
-msgid "Use only HTTP for Bosh"
-msgstr "Χρήση μόνο του HTTP για το Bosh"
+#: ../system/Widget/widgets/News/News.php:43
+msgid "News"
+msgstr ""
 
-#: ../install.php:135
-msgid "Log verbosity"
-msgstr "Log verbosity"
-
-#: ../install.php:136
-msgid "Allow account creation"
-msgstr "Επιτρέψτε δημιουργία Λογαρισμού"
-
-#: ../install.php:139
-#~ msgid "Bosh server"
-#~ msgstr ""
-
-#: ../install.php:140
-#~ msgid "Bosh suffix"
-#~ msgstr ""
-
-#: ../install.php:143
-msgid "<h2>Storage</h2>"
-msgstr "<h2>Αποθήκευση</h2>"
-
-#: ../install.php:19
-#: ../install.php:19
-#: ../install.php:201
-msgid "Couldn't create directory '%s'."
-msgstr "Αδύνατη η δημιουργία του φακέλλου '%s'."
-
-#: ../install.php:225
-msgid "Couldn't create configuration file '%s'."
-msgstr "Αδύνατη η δημιουργία του αρχείου ρύθμισης '%s'."
-
-#: ../install.php:248
-msgid "Compatibility Test"
-msgstr "Δοκιμασία συμβατότητας"
-
-#: ../install.php:249
-msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-msgstr "Οι ακόλουθες προϋποθέσεις δεν καλύπτονταν. Παρακαλώ βεβαιωθείτε πως καλύπτονται όλες, για να μπορέσετε να προχωρήσετε στην εγκατάσταση του Movim."
-
-#: ../install.php:262
-msgid "Movim is installed!"
-msgstr "Το Movim εγκαταστάθηκε!"
-
-#: ../install.php:263
-msgid "You can now access your shiny %sMovim instance%s"
-msgstr "Τώρα μπορείτε να έχετε πρόσβαση στην ολοκαίνουργια %sέκδοση Movim%s"
-
-#: ../system/Cache.php:168
-msgid "Couldn't open cache. Please contact the administrator."
-msgstr "Αδύνατη η πρόσβαση στην cache. Παρακαλώ επικοινωνείστε με τον Διαχειριστή."
-
-#: ../system/Conf2.php:3
-#: ../system/Conf2.php:5
-#: ../system/Conf.php:24
-#: ../system/Conf.php:48
-msgid "Cannot load element value'%s'"
-msgstr "Αδύνατη η φόρτωση του element value'%s'"
-
-#: ../system/Conf2.php:15
-#: ../system/Conf.php:174
-msgid "Cannot load file '%s'"
-msgstr "Αδύνατη η φόρτωση του αρχείου '%s'"
-
-#: ../system/Jabber.php:110
-msgid "User not logged in."
-msgstr "Χρήστης μη συνδεδεμένος."
-
-#: ../system/Jabber.php:114
-msgid "JID not provided."
-msgstr "Δεν παρέχονται JID (Jabber Identif. Codes)"
-
-#: ../system/Jabber.php:133
-msgid "jid '%s' is incorrect"
-msgstr "Ο jid '%s' είναι λανθασμένος"
-
-#: ../system/MovimException.php:15
-msgid "Error: %s"
-msgstr "Σφάλμα: %s"
-
-#: ../system/Controller/ControllerMain.php:130
-#: ../system/Widget/widgets/Config/Config.php:61
-msgid "Changing these data can be dangerous and may compromise the connection to the Jabber server"
-msgstr "Η αλλαγή αυτών των δεδομένων μπορεί να είναι επικίνδυνη και ίσως ρίξει τη σύνδεση με τον διακομιστή Jabber"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:39
-#~ msgid "Firstname"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:40
-#~ msgid "Family name"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
-msgid "Nickname"
-msgstr "Ψευδώνυμο"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:42
-#~ msgid "Name given"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
-msgid "Website"
-msgstr "Ιστότοπος"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:45
-#~ msgid "About me"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:62
-#~ msgid "Contact informations"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Profile/Profile.php:87
-#~ msgid "Status"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Wall/Wall.php:35
-#~ msgid "This is my custom Wall widget."
-#~ msgstr ""
-
-#: ../system/Conf.php:14
-#: ../system/Conf.php:152
-msgid "Couldn't save img file %s"
-msgstr "Αδύνατη η αποθήκευση του αρχείου εικόνας %s"
-
-#: ../system/Logger.php:27
-msgid "Cannot open log file '%s'"
-msgstr "Αδύνατο να ανοίξει το αρχείο καταγραφής '%s'"
-
-#: ../system/Widget/widgets/Chat/Chat.php:120
-msgid "Composing"
-msgstr "Είναι σε εξέλιξη η σύνθεση"
-
-#: ../system/Widget/widgets/Chat/Chat.php:134
-msgid "Paused"
-msgstr "Μπήκε σε παύση"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
-msgid "Date of birth"
-msgstr "Ημερομ. γεννήσεως"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:80
-msgid "Refresh the data"
-msgstr "Ανανέωση των δεδομένων"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:89
-msgid "Hye, I'm on Movim !"
-msgstr "Γεια χαρά, είμαι στο Movim !"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:130
-msgid "Remove this contact"
-msgstr "Διαγραφή αυτής της επαφής"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:45
-msgid "General Informations"
-msgstr "Γενικές πληροφορίες"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:47
-msgid "Name"
-msgstr "Όνομα"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
-msgid "Adress"
-msgstr "Διεύθυνση"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:50
-msgid "Date of Birth"
-msgstr "Ημερομ. γεννήσεως"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:55
-msgid "Avatar"
-msgstr "Avatar"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:58
-msgid "About Me"
-msgstr "Σχετικά με μένα"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
-msgid "Profile"
-msgstr "Προφίλ"
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:39
+#: ../system/Widget/widgets/Notifs/Notifs.php:46
 msgid "wants to talk with you"
 msgstr "θέλει να μιλήσει μαζί σου"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:41
+#: ../system/Widget/widgets/Notifs/Notifs.php:48
 msgid "Accept"
 msgstr "Αποδοχή"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:42
-#: ../system/Widget/widgets/Notifs/Notifs.php:98
+#: ../system/Widget/widgets/Notifs/Notifs.php:49
+#: ../system/Widget/widgets/Notifs/Notifs.php:105
 msgid "Validate"
 msgstr "Επικύρωση"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:43
+#: ../system/Widget/widgets/Notifs/Notifs.php:50
 msgid "Decline"
 msgstr "Απόρριψη"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:97
+#: ../system/Widget/widgets/Notifs/Notifs.php:104
 msgid "Alias"
 msgstr "Ψευδώνυμο"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:99
+#: ../system/Widget/widgets/Notifs/Notifs.php:106
 msgid "Add a contact"
 msgstr "Προσθήκη Επαφής"
 
@@ -475,23 +525,55 @@ msgstr "Προσθήκη Επαφής"
 msgid "Do not disturb"
 msgstr "Μην ενοχλείτε"
 
+#: ../system/Widget/widgets/Profile/Profile.php:36
+msgid "Away"
+msgstr "Μακριά"
+
 #: ../system/Widget/widgets/Profile/Profile.php:37
 msgid "Away for a long time"
 msgstr "Μακριά για πολλή ώρα"
 
-#: ../system/Widget/widgets/Wall/Wall.php:44
-msgid "Get the comments"
-msgstr "Συλλλέξτε τα σχόλια"
+#: ../system/Widget/widgets/Profile/Profile.php:48
+msgid "Your avatar"
+msgstr "Το δικό σας avatar"
 
-#: ../system/Widget/widgets/Wall/Wall.php:51
+#: ../system/Widget/widgets/Roster/Roster.php:108
+msgid "Show All"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:74
 msgid "Contact's feed cannot be loaded."
 msgstr "Δεν είναι δυνατή η φόρτωση του feed της επαφής."
 
-#: ../system/Widget/widgets/Wall/Wall.php:69
-msgid "Feed"
-msgstr "Feed"
+#: ../system/Widget/widgets/Wall/Wall.php:84
+msgid "Follow"
+msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:73
+#: ../system/Widget/widgets/Wall/Wall.php:173
 msgid "Loading the contact feed ..."
 msgstr "Φορτώνεται το contact feed ..."
 
+#~ msgid "Couldn't open cache. Please contact the administrator."
+#~ msgstr ""
+#~ "Αδύνατη η πρόσβαση στην cache. Παρακαλώ επικοινωνείστε με τον Διαχειριστή."
+
+#~ msgid "Date of birth"
+#~ msgstr "Ημερομ. γεννήσεως"
+
+#~ msgid "Refresh the data"
+#~ msgstr "Ανανέωση των δεδομένων"
+
+#~ msgid "Hye, I'm on Movim !"
+#~ msgstr "Γεια χαρά, είμαι στο Movim !"
+
+#~ msgid "About Me"
+#~ msgstr "Σχετικά με μένα"
+
+#~ msgid "Error: Cannot load file '%s'"
+#~ msgstr "Σφάλμα: Δεν είναι δυνατή η φόρτωση αρχείου '%s' "
+
+#~ msgid "Error: jid `%s' is incorrect"
+#~ msgstr "Σφάλμα: To jid `%s 'είναι λανθασμένo"
+
+#~ msgid "Send"
+#~ msgstr "Αποστολή "

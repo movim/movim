@@ -4,6 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-26 23:46+0200\n"
 "PO-Revision-Date: 2011-08-12 16:14:23\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,37 +15,279 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - Cliente de Teste"
 
+#: ../install.php:18 ../install/part1.php:59
+msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+msgstr "Versão errada do PHP. O Movim requer no mínimo PHP 5.3."
+
+#: ../install.php:21 ../install.php:24 ../install.php:40
+#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:85
+#, php-format
+msgid "Movim requires the %s extension."
+msgstr "Movim requer a extensão %s."
+
+#: ../install.php:27 ../install/part1.php:71
+msgid "Movim's folder must be writable."
+msgstr "A pasta Movim deve ter autorização de escrita"
+
+#: ../install.php:39 ../install/part1.php:84
+msgid "or"
+msgstr ""
+
+#: ../install.php:155 ../install/part1.php:135 ../install/part1.php:145
+#: ../install/part2.php:176
+msgid "Movim Installer"
+msgstr "Instalar Movim"
+
+#: ../install.php:163
+msgid "Theme"
+msgstr "Tema"
+
+#: ../install.php:164
+msgid "Default language"
+msgstr "Idioma padrão"
+
+#: ../install.php:165
+msgid "Bosh cookie's expiration (s)"
+msgstr "Expiração dos Cookies do BOSH"
+
+#: ../install.php:166
+msgid "Bosh cookie's path"
+msgstr "Caminho dos Cookies  BOSH"
+
+#: ../install.php:167
+msgid "Bosh cookie's domain"
+msgstr "Domínio dos Cookies BOSH"
+
+#: ../install.php:169
+msgid "Use HTTPS for Bosh"
+msgstr "Utilizar HTTPS com Bosh"
+
+#: ../install.php:171
+msgid "Use only HTTP for Bosh"
+msgstr "Utilizar HTTP com Bosh"
+
+#: ../install.php:173
+msgid "Log verbosity"
+msgstr "Mais detalhes nos Logs"
+
+#: ../install.php:174
+msgid "Allow account creation"
+msgstr "Permitir a criação de conta"
+
+#: ../install.php:177 ../system/Controller/ControllerMain.php:225
+#: ../system/Widget/widgets/Config/Config.php:63
+msgid "Bosh Host"
+msgstr "Host BOSH"
+
+#: ../install.php:178 ../system/Controller/ControllerMain.php:229
+#: ../system/Widget/widgets/Config/Config.php:67
+msgid "Bosh Suffix"
+msgstr "Sufixo BOSH"
+
+#: ../install.php:179 ../system/Controller/ControllerMain.php:233
+#: ../system/Widget/widgets/Config/Config.php:70
+msgid "Bosh Port"
+msgstr "Porta do BOSH"
+
+#: ../install.php:181
+msgid "<h2>Storage</h2>"
+msgstr "<h2>Armazenamento</h2>"
+
+#: ../install.php:182
+msgid "Storage driver"
+msgstr ""
+
+#: ../install.php:186
+msgid "Database"
+msgstr ""
+
+#: ../install.php:234 ../install.php:238 ../install.php:242
+#: ../install/part2.php:97 ../install/part2.php:101 ../install/part2.php:105
+#, php-format
+msgid "Couldn't create directory '%s'."
+msgstr "Não foi possível criar o diretório '%s'."
+
+#: ../install.php:266 ../install/part2.php:129
+#, php-format
+msgid "Couldn't create configuration file '%s'."
+msgstr "Não foi possível criar o arquivo de configuração '%s'."
+
+#: ../install.php:305 ../install/part1.php:135
+msgid "Compatibility Test"
+msgstr "Teste de compatibilidade"
+
+#: ../install.php:306 ../install/part1.php:136
+msgid ""
+"The following requirements were not met. Please make sure they are all "
+"satisfied in order to install Movim."
+msgstr ""
+"Os seguintes requisitos não foram encontrados. Por favor, tenha certeza de "
+"que todos estão satisfeitos para que a instalação prossiga."
+
+#: ../install.php:319
+msgid "Movim is installed!"
+msgstr "Movim está instalado!"
+
+#: ../install.php:320
+#, php-format
+msgid "You can now access your shiny %sMovim instance%s"
+msgstr "Você pode agora acessar sua instância%s de %sMovim"
+
+#: ../install/part1.php:59
+msgid "Actual version : "
+msgstr ""
+
+#: ../install/part1.php:60
+msgid "Update your PHP version or contact your server administrator"
+msgstr ""
+
+#: ../install/part1.php:64
+#, php-format
+msgid "Install %s and %s packages"
+msgstr ""
+
+#: ../install/part1.php:68
+#, php-format
+msgid "Install %s packages"
+msgstr ""
+
+#: ../install/part1.php:72
+msgid "Enable read and write rights on Movim's root folder"
+msgstr ""
+
+#: ../install/part1.php:228
+msgid "The Bosh configuration is invalid"
+msgstr ""
+
+#: ../install/part1.php:257
+msgid "The Database configuration is invalid"
+msgstr ""
+
+#: ../install/part2.php:176
+msgid "Success !"
+msgstr ""
+
+#: ../install/part2.php:179
+msgid "Valid Bosh"
+msgstr ""
+
+#: ../install/part2.php:180
+msgid "Database Detected"
+msgstr ""
+
+#: ../install/part2.php:181
+#, fuzzy
+msgid "Database Movim schema installed"
+msgstr "Movim está instalado!"
+
+#: ../install/part2.php:184
+#, fuzzy, php-format
+msgid "You can now access your shiny Movim instance %sJump In !%s"
+msgstr "Você pode agora acessar sua instância%s de %sMovim"
+
+#: ../install/part2.php:185 ../system/Controller/ControllerMain.php:188
+#, php-format
+msgid "Please remove the %s folder in order to complete the installation"
+msgstr ""
+
+#: ../system/Conf.php:38 ../system/Conf.php:58
+#, php-format
+msgid "Cannot load element value'%s'"
+msgstr "Não foi possível carregar o valor'%s' do elemento"
+
+#: ../system/Conf.php:96 ../system/Conf.php:142 ../system/Conf.php:144
+#, php-format
+msgid "Couldn't create file %s"
+msgstr "Arquivo %s não pode ser criado"
+
+#: ../system/Conf.php:146
+msgid "Couldn't create configuration files."
+msgstr "Não foi possível criar arquivos de configuração."
+
+#: ../system/Conf.php:157 ../system/Conf.php:161
+#, php-format
+msgid "Couldn't save img file %s"
+msgstr "Não foi possível salvar o arquivo de imagem '%s'."
+
+#: ../system/Conf.php:183
+#, php-format
+msgid "Cannot load file '%s'"
+msgstr "Não carregou arquivo '%s'"
+
+#: ../system/Jabber.php:107
+msgid "User not logged in."
+msgstr "Usuário não logado."
+
+#: ../system/Jabber.php:111
+msgid "JID not provided."
+msgstr "JID não disponível."
+
+#: ../system/Jabber.php:130
+#, php-format
+msgid "jid '%s' is incorrect"
+msgstr "O jid '%s' está incorreto"
+
+#: ../system/Logger.php:27
+#, php-format
+msgid "Cannot open log file '%s'"
+msgstr "Não foi possível abrir o arquivo de log '%s'."
+
+#: ../system/MovimException.php:15
+#, php-format
+msgid "Error: %s"
+msgstr "Erro: %s"
+
+#: ../system/User.php:90
+msgid "Wrong password"
+msgstr "Senha incorreta"
+
+#: ../system/Utils.php:48
+msgid "Today"
+msgstr ""
+
+#: ../system/Utils.php:50
+msgid "Tomorrow"
+msgstr ""
+
+#: ../system/Utils.php:52
+msgid "Yesterday"
+msgstr ""
+
+#: ../system/Utils.php:58 ../system/Utils.php:61
+msgid "day"
+msgstr ""
+
 #: ../system/Controller/ControllerMain.php:40
-#: ../system/Controller/ControllerMain.php:59
+#: ../system/Controller/ControllerMain.php:58
+#, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Bem vindo ao Movim"
 
-#: ../system/Controller/ControllerMain.php:42
-#: ../system/Controller/ControllerMain.php:61
-#: ../system/Controller/ControllerMain.php:91
+#: ../system/Controller/ControllerMain.php:41
+#: ../system/Controller/ControllerMain.php:59
+#: ../system/Controller/ControllerMain.php:93
 #: ../system/Controller/ControllerMain.php:107
 msgid "Home"
 msgstr "Início"
 
-#: ../system/Controller/ControllerMain.php:43
-#: ../system/Controller/ControllerMain.php:71
-#: ../system/Controller/ControllerMain.php:92
+#: ../system/Controller/ControllerMain.php:42
+#: ../system/Controller/ControllerMain.php:74
+#: ../system/Controller/ControllerMain.php:94
 msgid "Configuration"
 msgstr "Configuraçāo"
 
-#: ../system/Widget/widgets/Logout/Logout.php:49
-msgid "Logout"
-msgstr "Sair"
-
-#: ../system/Controller/ControllerMain.php:89
+#: ../system/Controller/ControllerMain.php:92
+#, php-format
 msgid "%s - Configuration"
 msgstr "%s - Configuraçāo"
 
-#: ../system/Controller/ControllerMain.php:105
+#: ../system/Controller/ControllerMain.php:106
+#, php-format
 msgid "%s - Account Creation"
 msgstr "%s - Criação da conta"
 
 #: ../system/Controller/ControllerMain.php:123
+#, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - Entrar no Movim"
 
@@ -51,49 +295,99 @@ msgstr "%s - Entrar no Movim"
 msgid "Account Creation"
 msgstr "Criar uma Conta"
 
-#: ../system/Controller/ControllerMain.php:136
+#: ../system/Controller/ControllerMain.php:132
+msgid "Wrong username"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:138
+msgid "Invalid JID"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:144
+msgid "The XMPP authentification failed"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:150
+msgid "The current BOSH URL in invalid"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:156
+msgid "Internal server error"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:162
+msgid "Session error"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:170
+msgid "Your web browser is too old to use with Movim."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:181
+msgid "You don't have javascript enabled.  Good luck with that."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:214
 msgid "My address"
 msgstr "Meu endereço"
 
-#: ../system/Controller/ControllerMain.php:137
+#: ../system/Controller/ControllerMain.php:216
 msgid "Password"
 msgstr "Senha"
 
-#: ../system/Controller/ControllerMain.php:138
+#: ../system/Controller/ControllerMain.php:218
+msgid "Options"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:221
+#, fuzzy
+msgid "First Login"
+msgstr "Nome"
+
+#: ../system/Controller/ControllerMain.php:237
+msgid "Connecting..."
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:237
 msgid "Come in!"
 msgstr "Faça Parte!"
 
-#: ../lib/GetConf.php:2
-#: ../lib/GetConf.php:45
-#~ msgid "Error: Cannot load element value'%s'"
-#~ msgstr "Erro: Valor do Elemento '%s' não pode ser carregado"
+#: ../system/Widget/widgets/Chat/Chat.php:133
+#, fuzzy
+msgid "Composing..."
+msgstr "Composição"
 
-#: ../lib/GetConf.php:139
-#~ msgid "Error: Cannot load file '%s'"
-#~ msgstr "Erro: Arquivo '%s' não pode ser carregado"
+#: ../system/Widget/widgets/Chatold/Chat.php:120
+msgid "Composing"
+msgstr "Composição"
 
-#: ../lib/WidgetWrapper.php:98
-#~ msgid "Error: Requested widget '%s' doesn't exist."
-#~ msgstr "Erro: O widget %s não existe."
+#: ../system/Widget/widgets/Chatold/Chat.php:134
+msgid "Paused"
+msgstr "Pausado"
 
-#: ../system/User.php:67
-msgid "Wrong password"
-msgstr "Senha incorreta"
+#: ../system/Widget/widgets/Chatold/Chat.php:155
+msgid "Message"
+msgstr "Mensagem"
 
-#: ../lib/Widget.php:69
-#~ msgid "This is a sample widget."
-#~ msgstr "Isto e o widget exemplo"
+#: ../system/Widget/widgets/Config/Config.php:45
+msgid "Language"
+msgstr "Idioma"
 
-#: ../lib/XMPPConnect.php:147
-#~ msgid "Error: jid `%s' is incorrect"
-#~ msgstr "Erro: O jid %s nāo esta correcto."
+#: ../system/Widget/widgets/Config/Config.php:60
+msgid "BOSH Connection Prefrences"
+msgstr "Preferência da conexão BOSH"
 
-#: ../lib/widgets/Account/Account.php:3
-#: ../lib/widgets/Account/Account.php:34
-#~ msgid "Jabber Account"
-#~ msgstr "Conta Jabber"
+#: ../system/Widget/widgets/Config/Config.php:61
+msgid ""
+"Changing these data can be dangerous and may compromise the connection to "
+"the Jabber server"
+msgstr ""
+"Alterar esses dados pode ser perigoso e pode comprometer a conexão com o "
+"servidor Jabber. "
 
 #: ../system/Widget/widgets/Config/Config.php:74
+#: ../system/Widget/widgets/Feed/Feed.php:71
+#: ../system/Widget/widgets/Vcard/Vcard.php:102
 msgid "Submit"
 msgstr "Enviar"
 
@@ -101,373 +395,128 @@ msgstr "Enviar"
 msgid "Reset"
 msgstr "Limpar"
 
-#: ../system/Widget/widgets/Chat/Chat.php:86
-#~ msgid "Send"
-#~ msgstr "Enviar"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:58
+msgid "Remove this contact"
+msgstr "Remover este contato"
 
-#: ../system/Widget/widgets/Config/Config.php:45
-msgid "Language"
-msgstr "Idioma"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:72
+msgid "No"
+msgstr ""
 
-#: ../lib/widgets/Config.php:45
-#~ msgid "Full Name"
-#~ msgstr "Nome completo"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:82
+msgid "Yes"
+msgstr ""
 
-#: ../system/Widget/widgets/Config/Config.php:60
-msgid "BOSH Connection Prefrences"
-msgstr "Preferência da conexão BOSH"
-
-#: ../lib/Dispatcher.php:9
-#: ../lib/widgets/Config/Config.php:59
-#~ msgid "Changing these data can be dangerous and may compromise the connection to the XMPP server"
-#~ msgstr "A alteração dessas informações podem ser perigosas e comprometer a conexão ao servidor XMPP "
-
-#: ../install.php:13
-#: ../system/Widget/widgets/Config/Config.php:63
-msgid "Bosh Host"
-msgstr "Host BOSH"
-
-#: ../install.php:14
-#: ../system/Widget/widgets/Config/Config.php:67
-msgid "Bosh Suffix"
-msgstr "Sufixo BOSH"
-
-#: ../install.php:14
-#: ../system/Widget/widgets/Config/Config.php:70
-msgid "Bosh Port"
-msgstr "Porta do BOSH"
-
-#: ../lib/widgets/Config/Config.php:76
-#~ msgid "error: "
-#~ msgstr "erro:"
-
-#: ../system/Widget/widgets/Friends/Friends.php:151
-#~ msgid "Contacts"
-#~ msgstr "Contato"
-
-#: ../system/Conf2.php:9
-#: ../system/Conf2.php:14
-#: ../system/Conf2.php:142
-#: ../system/Conf.php:8
-#: ../system/Conf.php:13
-#: ../system/Conf.php:135
-msgid "Couldn't create file %s"
-msgstr "Arquivo %s não pode ser criado"
-
-#: ../system/Conf2.php:14
-#: ../system/Conf.php:137
-msgid "Couldn't create configuration files."
-msgstr "Não foi possível criar arquivos de configuração."
-
-#: ../lib/XMPPConnect.php:98
-#~ msgid "Error: User not logged in."
-#~ msgstr "Usuário não logado"
-
-#: ../lib/XMPPConnect.php:102
-#~ msgid "Error: JID not provided."
-#~ msgstr "JID não informado"
-
-#: ../lib/XMPPConnect.php:117
-#~ msgid "Error: jid '%s' is incorrect"
-#~ msgstr "JID '%s' incorreto"
-
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:94
 #: ../system/Widget/widgets/Profile/Profile.php:34
 msgid "Chat"
 msgstr "Chat"
 
-#: ../system/Widget/widgets/Chat/Chat.php:155
-msgid "Message"
-msgstr "Mensagem"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:102
+#: ../system/Widget/widgets/Vcard/Vcard.php:59
+msgid "General Informations"
+msgstr "Informações gerais"
 
-#: ../system/Widget/widgets/Chat/Chat.php:85
-#~ msgid "To"
-#~ msgstr "Para"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:104
+#: ../system/Widget/widgets/Vcard/Vcard.php:61
+msgid "Name"
+msgstr "Nome"
 
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:51
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "Seu avatar"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:105
+#: ../system/Widget/widgets/Vcard/Vcard.php:64
+msgid "Nickname"
+msgstr "Apelido"
 
-#: ../lib/widgets/Friends/Friends.php:111
-#~ msgid "Refresh vCard"
-#~ msgstr "Atualizar vCard"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:106
+msgid "Adress"
+msgstr "Endereço"
 
-#: ../lib/widgets/Friends/Friends.php:116
-#~ msgid "Online"
-#~ msgstr "Ligado"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
+#: ../system/Widget/widgets/Vcard/Vcard.php:67
+msgid "Date of Birth"
+msgstr "Data de Nascimento"
 
-#: ../lib/widgets/Friends/Friends.php:117
-#~ msgid "Offline"
-#~ msgstr "Desligado"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
+#: ../system/Widget/widgets/Vcard/Vcard.php:72
+msgid "Website"
+msgstr "Página Web"
 
-#: ../lib/widgets/Friends/Friends.php:118
-#~ msgid "Hidden"
-#~ msgstr "Invisível"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:113
+#: ../system/Widget/widgets/Vcard/Vcard.php:77
+msgid "Avatar"
+msgstr "Avatar"
 
-#: ../system/Widget/widgets/Profile/Profile.php:36
-msgid "Away"
-msgstr "Ausente"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:140
+#: ../system/Widget/widgets/Vcard/Vcard.php:120
+msgid "Profile"
+msgstr "Perfil"
 
-#: ../lib/widgets/Friends/Friends.php:120
-#~ msgid "Do Not Disturb"
-#~ msgstr "Não incomodar"
+#: ../system/Widget/widgets/Feed/Feed.php:29
+msgid "Me"
+msgstr ""
 
-#: ../lib/widgets/Friends/Friends.php:124
-#~ msgid "Refresh Roster"
-#~ msgstr "Atualizar Roster"
+#: ../system/Widget/widgets/Feed/Feed.php:35
+#: ../system/Widget/widgets/Wall/Wall.php:54
+msgid "Get the comments"
+msgstr "Ver os comentários"
+
+#: ../system/Widget/widgets/Feed/Feed.php:42
+#, fuzzy
+msgid "Your feed cannot be loaded."
+msgstr "Contato não pode ser encontrado ou carregado "
+
+#: ../system/Widget/widgets/Feed/Feed.php:67
+#: ../system/Widget/widgets/Wall/Wall.php:168
+msgid "Feed"
+msgstr "Retorno do contato"
+
+#: ../system/Widget/widgets/Feed/Feed.php:68
+msgid "What's new ?"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:81
+#, fuzzy
+msgid "Loading your feed ..."
+msgstr "Carregando retorno do contacto"
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr "Console de debug"
 
-#: ../install.php:17
-msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-msgstr "Versão errada do PHP. O Movim requer no mínimo PHP 5.3."
+#: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Disconnecting..."
+msgstr ""
 
-#: ../install.php:2
-#: ../install.php:23
-msgid "Movim requires the %s extension."
-msgstr "Movim requer a extensão %s."
+#: ../system/Widget/widgets/Logout/Logout.php:49
+msgid "Logout"
+msgstr "Sair"
 
-#: ../install.php:26
-msgid "Movim's folder must be writable."
-msgstr "A pasta Movim deve ter autorização de escrita"
+#: ../system/Widget/widgets/News/News.php:43
+msgid "News"
+msgstr ""
 
-#: ../install.php:121
-msgid "Movim Installer"
-msgstr "Instalar Movim"
-
-#: ../install.php:125
-msgid "Theme"
-msgstr "Tema"
-
-#: ../install.php:126
-msgid "Default language"
-msgstr "Idioma padrão"
-
-#: ../install.php:127
-msgid "Bosh cookie's expiration (s)"
-msgstr "Expiração dos Cookies do BOSH"
-
-#: ../install.php:128
-msgid "Bosh cookie's path"
-msgstr "Caminho dos Cookies  BOSH"
-
-#: ../install.php:129
-msgid "Bosh cookie's domain"
-msgstr "Domínio dos Cookies BOSH"
-
-#: ../install.php:131
-msgid "Use HTTPS for Bosh"
-msgstr "Utilizar HTTPS com Bosh"
-
-#: ../install.php:133
-msgid "Use only HTTP for Bosh"
-msgstr "Utilizar HTTP com Bosh"
-
-#: ../install.php:135
-msgid "Log verbosity"
-msgstr "Mais detalhes nos Logs"
-
-#: ../install.php:136
-msgid "Allow account creation"
-msgstr "Permitir a criação de conta"
-
-#: ../install.php:139
-#~ msgid "Bosh server"
-#~ msgstr ""
-
-#: ../install.php:140
-#~ msgid "Bosh suffix"
-#~ msgstr ""
-
-#: ../install.php:143
-msgid "<h2>Storage</h2>"
-msgstr "<h2>Armazenamento</h2>"
-
-#: ../install.php:19
-#: ../install.php:19
-#: ../install.php:201
-msgid "Couldn't create directory '%s'."
-msgstr "Não foi possível criar o diretório '%s'."
-
-#: ../install.php:225
-msgid "Couldn't create configuration file '%s'."
-msgstr "Não foi possível criar o arquivo de configuração '%s'."
-
-#: ../install.php:248
-msgid "Compatibility Test"
-msgstr "Teste de compatibilidade"
-
-#: ../install.php:249
-msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-msgstr "Os seguintes requisitos não foram encontrados. Por favor, tenha certeza de que todos estão satisfeitos para que a instalação prossiga."
-
-#: ../install.php:262
-msgid "Movim is installed!"
-msgstr "Movim está instalado!"
-
-#: ../install.php:263
-msgid "You can now access your shiny %sMovim instance%s"
-msgstr "Você pode agora acessar sua instância%s de %sMovim"
-
-#: ../system/Cache.php:168
-msgid "Couldn't open cache. Please contact the administrator."
-msgstr "Não foi possível abrir o cache. Por favor, contacte o administrador."
-
-#: ../system/Conf2.php:3
-#: ../system/Conf2.php:5
-#: ../system/Conf.php:24
-#: ../system/Conf.php:48
-msgid "Cannot load element value'%s'"
-msgstr "Não foi possível carregar o valor'%s' do elemento"
-
-#: ../system/Conf2.php:15
-#: ../system/Conf.php:174
-msgid "Cannot load file '%s'"
-msgstr "Não carregou arquivo '%s'"
-
-#: ../system/Jabber.php:110
-msgid "User not logged in."
-msgstr "Usuário não logado."
-
-#: ../system/Jabber.php:114
-msgid "JID not provided."
-msgstr "JID não disponível."
-
-#: ../system/Jabber.php:133
-msgid "jid '%s' is incorrect"
-msgstr "O jid '%s' está incorreto"
-
-#: ../system/MovimException.php:15
-msgid "Error: %s"
-msgstr "Erro: %s"
-
-#: ../system/Controller/ControllerMain.php:130
-#: ../system/Widget/widgets/Config/Config.php:61
-msgid "Changing these data can be dangerous and may compromise the connection to the Jabber server"
-msgstr "Alterar esses dados pode ser perigoso e pode comprometer a conexão com o servidor Jabber. "
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:39
-#~ msgid "Firstname"
-#~ msgstr "Nome"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:40
-#~ msgid "Family name"
-#~ msgstr "Apelido"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:48
-msgid "Nickname"
-msgstr "Apelido"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:42
-#~ msgid "Name given"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:68
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:54
-msgid "Website"
-msgstr "Página Web"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:45
-#~ msgid "About me"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:62
-#~ msgid "Contact informations"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Profile/Profile.php:87
-#~ msgid "Status"
-#~ msgstr ""
-
-#: ../system/Widget/widgets/Wall/Wall.php:35
-#~ msgid "This is my custom Wall widget."
-#~ msgstr ""
-
-#: ../system/Conf.php:14
-#: ../system/Conf.php:152
-msgid "Couldn't save img file %s"
-msgstr "Não foi possível salvar o arquivo de imagem '%s'."
-
-#: ../system/Logger.php:27
-msgid "Cannot open log file '%s'"
-msgstr "Não foi possível abrir o arquivo de log '%s'."
-
-#: ../system/Widget/widgets/Chat/Chat.php:120
-msgid "Composing"
-msgstr "Composição"
-
-#: ../system/Widget/widgets/Chat/Chat.php:134
-msgid "Paused"
-msgstr "Pausado"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:70
-msgid "Date of birth"
-msgstr "Data de nascimento"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:80
-msgid "Refresh the data"
-msgstr "Recarregar dados"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:89
-msgid "Hye, I'm on Movim !"
-msgstr "Oi, Eu estou no Movim!"
-
-#: ../system/Widget/widgets/Friendinfos/Friendinfos.php:130
-msgid "Remove this contact"
-msgstr "Remover este contato"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:45
-msgid "General Informations"
-msgstr "Informações gerais"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:47
-msgid "Name"
-msgstr "Nome"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:49
-msgid "Adress"
-msgstr "Endereço"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:50
-msgid "Date of Birth"
-msgstr "Data de Nascimento"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:55
-msgid "Avatar"
-msgstr "Avatar"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:58
-msgid "About Me"
-msgstr "Sobre mim"
-
-#: ../system/Widget/widgets/Friendvcard/Friendvcard.php:141
-msgid "Profile"
-msgstr "Perfil"
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:39
+#: ../system/Widget/widgets/Notifs/Notifs.php:46
 msgid "wants to talk with you"
 msgstr "Quero falar com você"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:41
+#: ../system/Widget/widgets/Notifs/Notifs.php:48
 msgid "Accept"
 msgstr "Aceitar"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:42
-#: ../system/Widget/widgets/Notifs/Notifs.php:98
+#: ../system/Widget/widgets/Notifs/Notifs.php:49
+#: ../system/Widget/widgets/Notifs/Notifs.php:105
 msgid "Validate"
 msgstr "Validar"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:43
+#: ../system/Widget/widgets/Notifs/Notifs.php:50
 msgid "Decline"
 msgstr "Declinar"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:97
+#: ../system/Widget/widgets/Notifs/Notifs.php:104
 msgid "Alias"
 msgstr "Alias"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:99
+#: ../system/Widget/widgets/Notifs/Notifs.php:106
 msgid "Add a contact"
 msgstr "Adicionar um contato"
 
@@ -475,23 +524,116 @@ msgstr "Adicionar um contato"
 msgid "Do not disturb"
 msgstr "Não perturbe"
 
+#: ../system/Widget/widgets/Profile/Profile.php:36
+msgid "Away"
+msgstr "Ausente"
+
 #: ../system/Widget/widgets/Profile/Profile.php:37
 msgid "Away for a long time"
 msgstr "Ausente por um longo tempo"
 
-#: ../system/Widget/widgets/Wall/Wall.php:44
-msgid "Get the comments"
-msgstr "Ver os comentários"
+#: ../system/Widget/widgets/Profile/Profile.php:48
+msgid "Your avatar"
+msgstr "Seu avatar"
 
-#: ../system/Widget/widgets/Wall/Wall.php:51
+#: ../system/Widget/widgets/Roster/Roster.php:108
+msgid "Show All"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:74
 msgid "Contact's feed cannot be loaded."
 msgstr "Contato não pode ser encontrado ou carregado "
 
-#: ../system/Widget/widgets/Wall/Wall.php:69
-msgid "Feed"
-msgstr "Retorno do contato"
+#: ../system/Widget/widgets/Wall/Wall.php:84
+msgid "Follow"
+msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:73
+#: ../system/Widget/widgets/Wall/Wall.php:173
 msgid "Loading the contact feed ..."
 msgstr "Carregando retorno do contacto"
 
+#~ msgid "Couldn't open cache. Please contact the administrator."
+#~ msgstr ""
+#~ "Não foi possível abrir o cache. Por favor, contacte o administrador."
+
+#~ msgid "Date of birth"
+#~ msgstr "Data de nascimento"
+
+#~ msgid "Refresh the data"
+#~ msgstr "Recarregar dados"
+
+#~ msgid "Hye, I'm on Movim !"
+#~ msgstr "Oi, Eu estou no Movim!"
+
+#~ msgid "About Me"
+#~ msgstr "Sobre mim"
+
+#~ msgid "Error: Cannot load element value'%s'"
+#~ msgstr "Erro: Valor do Elemento '%s' não pode ser carregado"
+
+#~ msgid "Error: Cannot load file '%s'"
+#~ msgstr "Erro: Arquivo '%s' não pode ser carregado"
+
+#~ msgid "Error: Requested widget '%s' doesn't exist."
+#~ msgstr "Erro: O widget %s não existe."
+
+#~ msgid "This is a sample widget."
+#~ msgstr "Isto e o widget exemplo"
+
+#~ msgid "Error: jid `%s' is incorrect"
+#~ msgstr "Erro: O jid %s nāo esta correcto."
+
+#~ msgid "Jabber Account"
+#~ msgstr "Conta Jabber"
+
+#~ msgid "Send"
+#~ msgstr "Enviar"
+
+#~ msgid "Full Name"
+#~ msgstr "Nome completo"
+
+#~ msgid ""
+#~ "Changing these data can be dangerous and may compromise the connection to "
+#~ "the XMPP server"
+#~ msgstr ""
+#~ "A alteração dessas informações podem ser perigosas e comprometer a "
+#~ "conexão ao servidor XMPP "
+
+#~ msgid "error: "
+#~ msgstr "erro:"
+
+#~ msgid "Contacts"
+#~ msgstr "Contato"
+
+#~ msgid "Error: User not logged in."
+#~ msgstr "Usuário não logado"
+
+#~ msgid "Error: JID not provided."
+#~ msgstr "JID não informado"
+
+#~ msgid "Error: jid '%s' is incorrect"
+#~ msgstr "JID '%s' incorreto"
+
+#~ msgid "To"
+#~ msgstr "Para"
+
+#~ msgid "Refresh vCard"
+#~ msgstr "Atualizar vCard"
+
+#~ msgid "Online"
+#~ msgstr "Ligado"
+
+#~ msgid "Offline"
+#~ msgstr "Desligado"
+
+#~ msgid "Hidden"
+#~ msgstr "Invisível"
+
+#~ msgid "Do Not Disturb"
+#~ msgstr "Não incomodar"
+
+#~ msgid "Refresh Roster"
+#~ msgstr "Atualizar Roster"
+
+#~ msgid "Family name"
+#~ msgstr "Apelido"

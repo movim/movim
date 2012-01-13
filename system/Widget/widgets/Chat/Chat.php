@@ -24,15 +24,74 @@ class Chat extends WidgetBase
 	{
     	$this->addcss('chat.css');
     	$this->addjs('chat.js');
-    	
-		$this->registerEvent('incomemessage', 'onMessage');
-		$this->registerEvent('incomecomposing', 'onComposing');
-		$this->registerEvent('incomepaused', 'onPaused');
-		
-	    if(Cache::c('activechat') == false)
-	        Cache::c('activechat', array());
-	}
-	
+		$this->registerEvent('message', 'onMessage');
+		$this->registerEvent('composing', 'onComposing');
+    }
+    
+    function cacheMessage($jid, $html) {
+        if(Cache::c('log'.$jid) == false)
+            Cache::c('log'.$jid, array());
+        
+        $log = Cache::c('log'.$jid);
+        array_push($log, $html);
+        if(count($log)>20) {
+            array_shift($log);
+        }
+        Cache::c('log'.$jid, $log);
+    }
+    
+    function onMessage($payload)
+    {
+        $jid = reset(explode("/", $payload['from']));
+    
+        global $sdb;
+        
+        $contact = new Contact();
+        $user = new User();
+        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => $jid));
+        
+        if($contact->getData('chaton') != 1) {
+            RPC::call('movim_prepend',
+                           'chats',
+                           RPC::cdata($this->prepareChat($contact)));
+            RPC::call('scrollAllTalks');
+            $contact->chaton = 1;
+            $sdb->save($contact);
+        }
+        
+        $html = '<div class="message"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($payload['movim']['body'], ENT_COMPAT, "UTF-8")).'</div>';
+        
+        $this->cacheMessage($jid, $html);
+        
+        RPC::call('movim_append',
+                       'messages'.$contact->getData('jid'),
+                       RPC::cdata($html));   
+                       
+        RPC::call('hideComposing',
+                       $contact->getData('jid')); 
+                       
+        RPC::call('scrollTalk',
+                       'messages'.$contact->getData('jid'));
+                       
+        RPC::call('newMessage');
+            
+    }
+    
+    function onComposing($payload)
+    {
+        global $sdb;
+        $contact = new Contact();
+        $user = new User();
+        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
+        if($contact->getData('chaton') == 1) {
+            RPC::call('showComposing',
+                       $contact->getData('jid'));
+                           
+            RPC::call('scrollTalk',
+                      'messages'.$contact->getData('jid'));
+        }
+    }
+    
 	/**
 	 * Open a new talk
 	 *
@@ -41,30 +100,21 @@ class Chat extends WidgetBase
 	 */
 	function ajaxOpenTalk($jid) 
 	{
-	    $talks = Cache::c('activechat');
-	    if(!array_key_exists($jid, $talks)) {
+        global $sdb;
+        $contact = new Contact();
+        $user = new User();
+        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => $jid));
+        if($contact->getData('chaton') != 1) {
             RPC::call('movim_prepend',
-                           'talks',
-                           RPC::cdata($this->prepareTalk($jid, true)));
-            $talks[$jid] = true;
-            Cache::c('activechat', $talks);
+                           'chats',
+                           RPC::cdata($this->prepareChat($contact)));
+            RPC::call('scrollAllTalks');
+            $contact->chaton = 1;
+            $sdb->save($contact);
             RPC::commit();
         }
-	}
-	
-	/**
-	 * Close a talk
-	 *
-	 * @param string $jid
-	 * @return void
-	 */
-	function ajaxCloseTalk($jid) 
-	{
-	    $talks = Cache::c('activechat');
-	    unset($talks[$jid]);
-	    Cache::c('activechat', $talks);
-	}
-	
+    }
+    
 	/**
      * Send a message
      *
@@ -74,105 +124,63 @@ class Chat extends WidgetBase
      */
     function ajaxSendMessage($to, $message)
     {
+        $this->cacheMessage($to, '<div class="message me"><span class="date">'.date('G:i', time()).'</span>'.rawurldecode($message).'</div>');
+    
 		$xmpp = Jabber::getInstance();
-        $xmpp->sendMessage($to, $message);
+		// We decode URL codes to send the correct message to the XMPP server
+        $xmpp->sendMessage($to, rawurldecode($message));
     }
-	
+    
 	/**
-	 * When we receive a message
-	 *
-	 * @param array $data
-	 * @return void
-	 */
-	function onMessage($data)
-	{
-	    $talks = Cache::c('activechat');
-	    list($jid) = explode('/', $data['from']);
-
-	    if(!array_key_exists($jid, $talks)) {
-            RPC::call('movim_prepend',
-                           'talks',
-                           RPC::cdata($this->prepareTalk($jid, true)));
-	        $talks[$jid] = true;
-	        Cache::c('activechat', $talks);
-	    }
-	    
-        RPC::call('movim_fill',
-                       $jid.'Tab',
-                       RPC::cdata($jid));
-
-        RPC::call('movim_prepend',
-                       $jid.'Messages',
-                       RPC::cdata('<p class="message"><span class="date">'.date('G:i', time()).'</span>'.htmlentities($data['body'], ENT_COMPAT, "UTF-8").'</p>'));
-	}
-	
-	/**
-	 * On composing
-	 *
-	 * @param array $data
-	 * @return void
-	 */
-	function onComposing($data)
-	{
-		list($jid) = explode('/', $data['from']);
-        RPC::call('movim_fill',
-                       $jid.'Tab',
-                      t('Composing'));
-	}
-	
-	/**
-	 * On paused
-	 *
-	 * @param array $data
-	 * @return void
-	 */
-	function onPaused($data)
-	{
-		list($jid) = explode('/', $data['from']);
-        RPC::call('movim_fill',
-                       $jid.'Tab',
-                       t('Paused'));
-	}
-	
-	/**
-	 * prepareTalk
+	 * Close a talk
 	 *
 	 * @param string $jid
-	 * @param bool $new = false
 	 * @return void
 	 */
-	public function prepareTalk($jid, $new = false) 
+	function ajaxCloseTalk($jid) 
 	{
-	    $style = ($new) ? ' style="display: block" ' : '';
-	    
-	    return '
-            <div class="talk">
-                <div class="box" id="'.$jid.'Box" '.$style.'>
-                <div class="messages" id="'.$jid.'Messages"></div>
-                <input 
-                    type="text" 
-                    class="input" 
-                    value="'.t('Message').'" 
-                    onfocus="myFocus(this);" 
-                    onblur="myBlur(this);" 
-                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$jid."'", "sendMessage(this, '".$jid."')").'}"/>
-                </div>
-                
-                <span class="tab" id="'.$jid.'Tab" onclick="showTalk(this);">'.$jid.'</span>
-                <span class="cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$jid."'").' closeTalk(this)"></span>
-            </div>
-	    ';
+        global $sdb;
+        $contact = new Contact();
+        $user = new User();
+        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => $jid));
+        if($contact->getData('chaton') == 1) {
+            $contact->chaton = 0;
+            $sdb->save($contact);
+        }
 	}
+    
+    function prepareChat($contact)
+    {
+        $log = Cache::c('log'.$contact->getData('jid'));
+        if(is_array($log)) {
+            foreach($log as $key => $value)
+                $m .= $value;
+        }
+    
+        $html = '
+            <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
+                '<div class="messages" id="messages'.$contact->getData('jid').'">'.$m.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
+                '<textarea
+                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
+                ></textarea>'.
+                '<img class="avatar"  src="'.$contact->getPhoto('xs').'" /><span>'.$contact->getTrueName().'</span>'.
+                '<span class="cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->getData('jid')."'").' closeTalk(this)"></span>'.
+            '</div>';
+        return $html;
+    }
+    
+    function build()
+    {
 
-	function build()
-	{
-	    $talks = Cache::c('activechat');
-		?>
-		    <div id="talks">
-		        <?php foreach($talks as $key => $value){ 
-		            echo $this->prepareTalk($key);
-		        } ?>
-		    </div>
-		<?php
-	}
+        global $sdb;
+        $user = new User();
+        $contacts = $sdb->select('Contact', array('key' => $user->getLogin(), 'chaton' => 1));
+        echo '<div id="chats">';
+        if($contacts != false) {
+            foreach($contacts as $contact) {
+                echo $this->prepareChat($contact);
+            }
+        }
+        echo '</div>';
+    }
 }

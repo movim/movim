@@ -122,26 +122,28 @@ function parse_lang_file($pofile)
  */
 function load_language_auto()
 {
-    $nav_langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    $langs = array();
     $langNotFound = true;
+    
+    preg_match_all('/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $lang_parse);
 
-    foreach($nav_langs as $lang) {
-        // Normalising and getting the fallback language if necessary.
-        $lang = str_replace ( '-', '_', strtolower($nav_langs[$i]));
-        $generic_lang = false;
+    if (count($lang_parse[1])) {
+        $langs = array_combine($lang_parse[1], $lang_parse[4]);
 
-        $separator = strpos($lang, '_');
-        if($separator !== false) {
-            $generic_lang = substr($lang, 0, $separator);
+        foreach ($langs as $lang => $val) {
+            if ($val === '') $langs[$lang] = 1;
         }
 
-        if(file_exists(BASE_PATH . '/i18n/' . $lang . '.po')) {
+        arsort($langs, SORT_NUMERIC);
+    }
+    
+    while((list($key, $value) = each($langs)) && $langNotFound == true) {
+        if($key == 'en') {
+            load_language(Conf::getServerConfElement('defLang'));
             $langNotFound = false;
-            load_language($check);
-        }
-        else if(file_exists(BASE_PATH . '/i18n/' . $generic_lang . '.po')) {
+        } elseif(file_exists(BASE_PATH . '/i18n/' . $key . '.po')) {
+            load_language($key);
             $langNotFound = false;
-            load_language($check);
         }
     }
 }

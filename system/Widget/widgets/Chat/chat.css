@@ -1,83 +1,81 @@
-#talks {
+#chats {
     position: fixed;
     bottom: 0;
     right: 0;
 }
 
-.talk {
-    float: right;
+#chats .chat {
+    display: inline-block;
     position: relative;
+    bottom: 0;
+    background-color: #444;
+    color: white;
     width: 200px;
-    height: 250px;
-    overflow: hidden;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
 }
 
-.talk span.cross {
-    width: 16px;
-    height: 16px;
-    float: right;
-    padding: 1px;
+#chats .chat span {
+    padding: 5px;
+    line-height: 20px;
+    font-size: 11px;
+}
+
+#chats .chat .messages {
+    background-color: white;
+    color: gray;
+    max-height: 15em;
+    overflow: auto;
+    border: 1px solid black;
+    min-height: 3em;
+    border-color: #E5E5E5 #E5E5E5 white;
+}
+
+#chats .chat .messages .message {
+    padding: 5px;
+    word-wrap: break-word;
+}
+
+#chats .chat .messages .message.me {
+    background-color: #FFC;
+}
+
+#chats .chat span.cross {
     background-image: url(img/cross.png);
+    width: 15px;
+    height: 15px;
     background-repeat: no-repeat;
-    background-position: 0px 3px;
-    position:absolute;
-    bottom:0;
-    right: 0;
-}
+    padding: 0px;
+    margin-top: 4px;
+    margin-right: 3px;
+    float: right;
+} 
 
-.talk span.cross:hover,
-.talk span.tab:hover {
+#chats .chat span.cross:hover {
     cursor: pointer;
 }
 
-.talk span.tab {
-    position:absolute;
-    bottom:0;
-    width: 100%;
+#chats .chat .avatar {
+    float: left;
+    height: 20px;
+    border-left: 1px solid #444;
+}
+
+#chats .chat .messages .message.me span.date {
+    color: #444;
+}
+
+#chats .chat textarea {
+    width: 194px;
+    resize: none;
+    border: 1px solid #444;
     padding: 2px;
-    background-color: #EFEFEF;
-    border-top: 1px solid #DCDCDC;
-    border-left: 1px solid #DCDCDC;
-}
-
-.talk .box {
-    background-color: white;
-    height: 230px;
     overflow: auto;
-
-    display: none;
-    border: 1px solid #DCDCDC;
+    height: 2.5em;
 }
 
-.talk .box .message {
-    border-bottom: 1px solid #EEE;
-    padding: 3px;
-    max-width: 100%;
-    min-height: 15px;
-}
-
-.talk .box .info {
-    background-color: #D0CAC7;
-}
-
-.talk .box .message .date {
-    color: #BDBDBD;
+#chats .chat .messages .message span.date {
     float: right;
-    padding-right: 5px;
-}
-
-.talk .box .me {
-    border-left: 2px solid #AEAEAE;
-}
-
-.talk .box .input {
-    position:absolute;
-    bottom:20px;
-    margin: 0px;
-    width: 192px;
-    padding: 3px;
-    border-radius: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-top: 1px solid #DCDCDC;
+    color: #ccc;
+    padding: 2px;
+    line-height: 1em;
 }

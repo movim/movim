@@ -9,8 +9,8 @@
  *
  * @author Movim Project <movim@movim.eu>
  *
- * @version 1.0
- * @date 13 October 2010
+ * @version 0.4
+ * @date 30 September 2010
  *
  * Copyright (C)2010 Movim Project
  * 
@@ -44,16 +44,17 @@ ini_set('log_errors', 0);
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
-
 // If the configuration doesn't exist, run the installer.
 if(!file_exists("config/conf.xml")) {
-	require_once('install.php');
+    header('Location:install/part1.php'); exit;
 } else {
-	// Run
+    // Run
     require('init.php');
 
     $polling = false;
-	$rqst = new ControllerMain();
-	$rqst->handle();
+    $rqst = new ControllerMain();
+    $rqst->handle();
 }
+
+
 ?>

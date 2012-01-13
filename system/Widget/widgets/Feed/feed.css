@@ -1,0 +1,21 @@
+/* WALL STYLE */
+
+#feed {
+    padding-top: 10px;
+}
+
+#feed #feedmessage {
+    resize: none;
+    width: 85%;
+	border: 1px solid #E5E5E5;
+	margin: 0.5em 0em;
+	padding: 5px;
+    color: gray;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+#feed #feedmessagesubmit {
+    margin: 1.7em 0em; 
+    float: right;
+}

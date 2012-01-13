@@ -24,16 +24,14 @@ class Logout extends WidgetBase
     function WidgetLoad()
     {
     	$this->addcss('logout.css');
-    	$this->addjs('logout.js');
 		$this->registerEvent('postdisconnected', 'onPostDisconnect');
         $this->registerEvent('serverdisconnect', 'onPostDisconnect'); // When you're kicked out
     }
 
     function onPostDisconnect($data)
     {
-		$uri = str_replace("jajax.php", "", BASE_URI);
-	    RPC::call('pageLogout',
-                       RPC::cdata($uri."index.php?q=disconnect"));
+	    RPC::call('movim_reload',
+                       RPC::cdata(BASE_URI."index.php?q=disconnect"));
     }
 
 	function ajaxLogout()
@@ -46,7 +44,7 @@ class Logout extends WidgetBase
     function build()
     {
         ?>
-        <div id="logout" onclick="<?php $this->callAjax('ajaxLogout');?>"><?php echo t('Logout'); ?></div>
+        <div id="logout" onclick="<?php $this->callAjax('ajaxLogout');?> this.innerHTML = '<?php echo t('Disconnecting...'); ?>'"><?php echo t('Logout'); ?></div>
         <?php
     }
 }

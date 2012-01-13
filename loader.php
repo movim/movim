@@ -1,7 +1,5 @@
 <?php
 
-  //ini_set('html_errors', false);
-
 // A few constants...
 define('BASE_PATH', dirname(__FILE__) . '/');
 define('APP_NAME', 'movim');
@@ -10,31 +8,48 @@ define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 define('USERS_PATH', BASE_PATH . 'user/');
 
-// Loads up all system libraries.
-require(LIB_PATH . "Lang/i18n.php");
+#define('DB_DEBUG', true);
+#define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
 
-require(LIB_PATH . "Storage/loader.php");
+// Loads up all system libraries.
+require_once(LIB_PATH . "Lang/i18n.php");
+
+require_once(LIB_PATH . "Storage/loader.php");
 load_storage(array('sqlite'));
 
-require(LIB_PATH . "Session.php");
-require(LIB_PATH . "Utils.php");
-require(LIB_PATH . "Cache.php");
-require(LIB_PATH . "Conf.php");
-require(LIB_PATH . "Event.php");
-require(LIB_PATH . "Jabber.php");
-require(LIB_PATH . "Logger.php");
-require(LIB_PATH . "MovimException.php");
-require(LIB_PATH . "RPC.php");
-require(LIB_PATH . "User.php");
+require_once(LIB_PATH . "Session.php");
+require_once(LIB_PATH . "Utils.php");
+require_once(LIB_PATH . "Cache.php");
+require_once(LIB_PATH . "Conf.php");
+require_once(LIB_PATH . "Event.php");
+require_once(LIB_PATH . "Jabber.php");
+require_once(LIB_PATH . "Logger.php");
+require_once(LIB_PATH . "MovimException.php");
+require_once(LIB_PATH . "RPC.php");
+require_once(LIB_PATH . "User.php");
 
-require(LIB_PATH . "Controller/ControllerBase.php");
-require(LIB_PATH . "Controller/ControllerMain.php");
-require(LIB_PATH . "Controller/ControllerAjax.php");
+require_once(LIB_PATH . "Contact.php");
+require_once(LIB_PATH . "Presence.php");
+require_once(LIB_PATH . "Message.php");
+require_once(LIB_PATH . "Attachment.php");
 
-require(LIB_PATH . "Tpl/TplPageBuilder.php");
+require_once(LIB_PATH . "Controller/ControllerBase.php");
+require_once(LIB_PATH . "Controller/ControllerMain.php");
+require_once(LIB_PATH . "Controller/ControllerAjax.php");
 
-require(LIB_PATH . "Widget/WidgetBase.php");
-require(LIB_PATH . "Widget/WidgetWrapper.php");
+require_once(LIB_PATH . "Tpl/TplPageBuilder.php");
+
+require_once(LIB_PATH . "Widget/WidgetBase.php");
+require_once(LIB_PATH . "Widget/WidgetWrapper.php");
+
+/* Jaxl Configuration */
+
+define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
+define('JAXL_LOG_EVENT', true);
+define('JAXL_LOG_LEVEL', 4);
+define('JAXL_LOG_ROTATE', false);
+
+define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
 
 // User agent detection
 
@@ -87,5 +102,7 @@ define('BROWSER_COMP', $compatible);
 storage_load_driver(Conf::getServerConfElement('storageDriver'));
 StorageEngineWrapper::setdriver(Conf::getServerConfElement('storageDriver'));
 Session::start(APP_NAME);
+
+$sdb = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
 
 ?>

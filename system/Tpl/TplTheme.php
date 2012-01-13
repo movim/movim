@@ -48,6 +48,7 @@ class TplTheme
             $this->conf = simplexml_load_file($this->path . 'conf.xml');
         } else {
             throw new MovimException(t("Couldn't load file %s", $this->path . 'conf.xml'));
+        }
     }
 }
 

@@ -22,8 +22,9 @@ interface StorageDriver
     public function save(&$object);
     public function delete(&$object);
     public function load(&$object, array $cond);
-    public function select($objecttype, array $cond);
+    public function select($objecttype, array $cond, $order, $desc);
     public function drop(&$object);
+    public function close();
 }
 
 ?>

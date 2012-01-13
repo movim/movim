@@ -1,0 +1,32 @@
+#contactcard {
+    padding-top: 10px;
+}
+
+#contactcard .element {
+    padding: 5px;
+    clear: both;
+    overflow: auto;
+    width: 100%;
+}
+
+#contactcard img {
+    max-width: 200px;
+    padding: 3px;
+    border: 1px solid #CCC;
+}
+
+#contactcard .element span {
+    font-weight: bold;
+    width: 170px;
+    display: block;
+    float: left;
+    padding-right: 2em;
+    text-align: right;
+}
+
+#contactcard .content {
+    display: block;
+    float: left;
+    width: auto;
+    max-width: 400px;
+}

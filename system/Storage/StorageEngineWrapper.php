@@ -4,7 +4,7 @@
  * Wrapper for default storage engine (convenient for configurable mon-db
  * systems).
  */
-class StorageEngineWrapper implements StorageDriver
+class StorageEngineWrapper extends StorageEngineBase implements StorageDriver
 {
     private $db;
     private static $driver = null;
@@ -22,9 +22,18 @@ class StorageEngineWrapper implements StorageDriver
         }
     }
 
-    public static function setdriver($name)
+    /**
+     * Sets a default driver.
+     * @name is the driver's name.
+     * @replace sets the behaviour in case of an already loaded driver. If
+     *   $replace is true and a driver is already set, then this driver will be
+     *   dropped and the new one loaded in its place. Otherwise (and by
+     *   default), an exception will be thrown indicating a driver is already
+     *   loaded.
+     */
+    public static function setdriver($name, $replace = FALSE)
     {
-        if(self::$driver != null) {
+        if(self::$driver != NULL && !$replace) {
             throw new StorageException("A storage driver is already loaded.");
         } else {
             $drivername = "StorageEngine".ucfirst(strtolower($name));
@@ -32,6 +41,11 @@ class StorageEngineWrapper implements StorageDriver
             if(!class_exists($drivername)) {
                 storage_load($name);
             }
+
+            if(self::$driver != NULL) {
+
+            }
+
             self::$driver = $drivername;
         }
     }
@@ -67,9 +81,14 @@ class StorageEngineWrapper implements StorageDriver
         return $this->db->load(&$object, $cond);
     }
 
-    function select($objecttype, array $cond)
+    function select($objecttype, array $cond, $order = false, $desc = false)
     {
-        return $this->db->select($objecttype, $cond);
+        return $this->db->select($objecttype, $cond, $order, $desc);
+    }
+
+    function close()
+    {
+        return $this->db->close();
     }
 }
 
