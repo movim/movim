@@ -131,7 +131,7 @@ form p {
     clear: both;
 }
 
-input.big, label.big {
+input.big, label.big, a.big {
     margin: 5px;
     font-size: 17px;
 }
@@ -179,7 +179,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 
 .button.icon {
     padding-left: 18px;
-    text-indent: 7px;
+    text-indent: 10px;
     background-repeat: no-repeat;
 }
 
@@ -297,6 +297,7 @@ label {
     padding: 10px;
     margin: 10px 0px;
     color: #9F6000;
+    overflow: auto;
 }
 
 .warning.right {

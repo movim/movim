@@ -219,6 +219,10 @@ function test_requirements()
                 <fieldset>
                     <legend><?php echo t('XMPP Connection Preferences'); ?></legend>
                     <p>
+                        <label for="host">XMPP Host</label>
+                        <input type="text" id="host" name="host" value="movim.eu"/> 
+                    </p>
+                    <p>
                         <label for="domain">XMPP Domain</label>
                         <input type="text" id="domain" name="domain" value="etenil.thruhere.net"/> 
                     </p>
@@ -236,17 +240,37 @@ function test_requirements()
 
                     <p>
                         <label for="defBoshHost">Bosh Host</label>
-                        <input type="text" id="defBoshHost" name="defBoshHost" value="etenil.thruhere.net"/> 
+                        <input type="text" id="defBoshHost" name="defBoshHost" value="bosh.etenil.thruhere.net"/> 
                     </p>
                     
                     <p> 
                         <label for="defBoshSuffix">Bosh Suffix</label>
-                        <input type="text" id="defBoshSuffix" name="defBoshSuffix" value="http-bind"/> 
+                        <input type="text" id="defBoshSuffix" name="defBoshSuffix" value=""/> 
                     </p>
                     
                     <p>
                         <label for="defBoshPort">Bosh Port</label>
-                        <input type="text" id="defBoshPort" name="defBoshPort" value="5280"/>
+                        <input style="width: 50px" type="text" id="defBoshPort" name="defBoshPort" value="80"/>
+                    </p>
+                </fieldset>
+                
+                <br />
+                <fieldset>
+                    <legend><?php echo t('Proxy Preferences'); ?></legend>
+
+                    <p>
+                        <label for="proxyEnabled">Proxy server enabled</label>
+                        <input type="checkbox" name="proxyEnabled" id="proxyEnabled" />
+                    </p>
+                    
+                    <p> 
+                        <label for="proxyURL">Proxy URL (without http(s)://)</label>
+                        <input style="width: 300px" type="text" id="proxyURL" name="proxyURL" value=""/> 
+                    </p>
+                    
+                    <p>
+                        <label for="proxyPort">Proxy Port</label>
+                        <input style="width: 50px" type="text" id="proxyPort" name="proxyPort" value=""/>
                     </p>
                 </fieldset>
                 

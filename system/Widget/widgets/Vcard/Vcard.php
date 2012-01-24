@@ -48,11 +48,27 @@ class Vcard extends WidgetBase
         global $sdb;
         $user = new User();
         $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        
+        $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
+        
+        if(!isset($me[0])) { 
+        ?>
+            <div class="warning">
+                <?php echo "It's your first time on Movim! To fill in a 
+                few informations about you and display them to your 
+                contacts, create your virtual card by clicking the next button."; ?>
+                <a 
+                onclick="<?php echo $submit; ?>" style="float: right; margin: 5px 0px 0px 0px;"
+                href="#" class="button big icon add"><?php echo t("Create my vCard"); ?></a><br />
+            </div>
+
+        <?php
+        }
+    
 
         if(isset($me[0])) {
             $me = $me[0];
-
-		    $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
+        
             $html .= '
             <form name="vcard"><br />
                 <fieldset class="protect red">
