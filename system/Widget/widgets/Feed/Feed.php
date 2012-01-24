@@ -102,29 +102,42 @@ class Feed extends WidgetBase {
             onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessage').value") ?>"
             href="#" id="feedmessagesubmit" class="button tiny icon submit"><?php echo t("Submit"); ?></a><br />
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
-        <a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>
+        <?php 
+            global $sdb;
+            $user = new User();
+            
+        ?>
+        <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
         <div id="feed_content">
             <?php
             
-            global $sdb;
-            $user = new User();
-            $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $user->getLogin()), 'updated', true);
-            
-            if($messages == false) {
+            $conf = $sdb->select('ConfVar', array('login' => $user->getLogin()));
+            $conf_arr = $conf[0]->getConf(); 
+            if($conf_arr["first"] == 0) { 
             ?>
-                <script type="text/javascript">
-                    <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);'; ?>
-                </script>
+                    <a 
+                    onclick="<?php $this->callAjax('ajaxCreateNode') ?>"
+                    href="#" class="button tiny icon add"><?php echo t("Create the feed"); ?></a><br />
             <?php
-                echo t('Loading your feed ...');
             } else {
-                $html = '';
+                $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $user->getLogin()), 'updated', true);
                 
-                foreach(array_slice($messages, 0, 20) as $message) {
-                    $html .= $this->preparePost($message, $user);
+                if($messages == false) {
+                ?>
+                    <script type="text/javascript">
+                        <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);'; ?>
+                    </script>
+                <?php
+                    echo t('Loading your feed ...');
+                } else {
+                    $html = '';
+                    
+                    foreach(array_slice($messages, 0, 20) as $message) {
+                        $html .= $this->preparePost($message, $user);
+                    }
+                    echo $html;
                 }
-                echo $html;
             }
             ?>
         </div>

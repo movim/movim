@@ -7,11 +7,11 @@ function get_checkbox($name, $if = 'true', $else = 'false')
   return (isset($_POST[$name])? $if : $else);
 }
 
-function test_bosh($host, $port, $suffix)
+function test_bosh($boshhost, $port, $suffix, $host)
 {
     $url = (get_checkbox('boshCookieHTTPS') == "true")? 'https://' : 'http://';
         
-    $url .= $host.":".$port.'/'.$suffix;
+    $url .= $boshhost.":".$port.'/'.$suffix;
 
     $headers = array('Accept-Encoding: gzip, deflate', 'Content-Type: text/xml; charset=utf-8');
     $data = "
@@ -42,6 +42,8 @@ function test_bosh($host, $port, $suffix)
     $rs['errno'] = curl_errno($ch);
     $rs['errmsg'] = curl_error($ch);
     $rs['header'] = curl_getinfo($ch);
+    
+    printf($rs['errmsg']);
 
     curl_close($ch);
     $arr = simplexml_load_string($rs["content"]);
@@ -118,12 +120,16 @@ function perform_install()
       'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
       'logLevel'           => $_POST['verbosity'],
       'accountCreation'    => get_checkbox('accountCreation', 1, 0),
-      'domain'        => $_POST['domain'],
+      'host'               => $_POST['host'],
+      'domain'             => $_POST['domain'],
       'defBoshHost'        => $_POST['defBoshHost'],
       'defBoshSuffix'      => $_POST['defBoshSuffix'],
       'defBoshPort'        => $_POST['defBoshPort'],
       'storageDriver'      => $_POST['storage'],
       'storageConnection'  => $_POST['database'],
+      'proxyEnabled'       => get_checkbox('proxyEnabled'),
+      'proxyURL'           => $_POST['proxyURL'],
+      'proxyPort'          => $_POST['proxyPort'],
       ),
     );
   if(!@file_put_contents('../config/conf.xml', make_xml($conf))) {
@@ -136,7 +142,7 @@ function perform_install()
 
 if(isset($_POST['install'])) {
     // We test the Bosh configuration
-    if(!test_bosh($_POST['defBoshHost'], $_POST['defBoshPort'], $_POST['defBoshSuffix'])) {
+    if(!test_bosh($_POST['defBoshHost'], $_POST['defBoshPort'], $_POST['defBoshSuffix'], $_POST['host'])) {
         header('Location:part1.php?err=bosh'); exit;
     }
     // We create the configuration file    

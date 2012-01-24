@@ -33,7 +33,7 @@ class Account extends WidgetBase {
 	        'last', 'email', 'address', 'city', 'state', 'zip', 'phone', 'url',
 	        'date', 'misc', 'text', 'key');
 
-        define(XMPP_HOST, $conf['domain']);
+        define(XMPP_HOST, $conf['host']);
         define(XMPP_CONN, $conf['domain']);
         define(XMPP_PORT, 5222);
 
@@ -108,20 +108,20 @@ class Account extends WidgetBase {
     
     function localRegistration($data) {
        	$confvar = Conf::getServerConf();
-    movim_log($confvar);
+
         global $sdb;
         $conf = new ConfVar();
         $conf->setConf(
                         $data['username'].'@'.$data['server'], 
                         $data['password'], 
-                        $confvar['domain'],
-                        $confvar['domain'],
+                        $confvar['host'],
+                        $confvar['host'],
                         $confvar['port'],
                         $confvar['defBoshHost'], 
                         $confvar['defBoshSuffix'], 
                         $confvar['defBoshPort'], 
                         $confvar['defLang'],
-                        true
+                        false
                       );
                                    
         $sdb->save($conf);
@@ -229,7 +229,7 @@ class Account extends WidgetBase {
 	<div id="account" style="width: 730px; margin: 0 auto;">
         <?php echo $warning; ?>
 	    <form  style="width: 500px; float: left;" name="account">
-	        <input type="hidden" name="server" value="<?php echo $conf['domain']; ?>">
+	        <input type="hidden" name="server" value="<?php echo $conf['host']; ?>">
 	        <h1>Create a new account</h1>
 	        <p style="margin-top: 20px;">
 	            <input 
@@ -241,7 +241,7 @@ class Account extends WidgetBase {
 	                class="big" 
 	                style="text-align: right;" 
 	                name="username"/>
-	                <span style="font-size: 17px;">@<?php echo $conf['domain']; ?></span>
+	                <span style="font-size: 17px;">@<?php echo $conf['host']; ?></span>
 	        </p>
 	        
 	        <p>
