@@ -62,7 +62,7 @@ if(isset($_GET['c'])) {
         $user = new User();
         $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['c']));
         
-        if($contact[0]->phototype != '' && $contact[0]->photobin != '') {
+        if($contact[0]->phototype != '' && $contact[0]->photobin != '' && $contact[0]->phototype != 'f' && $contact[0]->photobin != 'f') {
             if(isset($_GET['size']) && $_GET['size'] != 'normal') {
                 switch ($_GET['size']) {
                     case 'm':
