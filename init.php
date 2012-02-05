@@ -14,12 +14,20 @@ define('APP_TITLE', t("MOVIM - Test Client"));
 	} else {
 		$path = substr($_SERVER['PHP_SELF'], 0, $index_pos);
 	}
-	$uri = "";
-	if($path == "") {
-		$uri = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-	} else {
-		$uri = 'http://' . $_SERVER['HTTP_HOST'] . $path;
-	}
+    // Determining the protocol to use.
+    $uri = "http://";
+    if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "") {
+        $uri = 'https://';
+    }
+    else if(mvc_get_conf('app/https_only', false)) {
+        $uri = 'https://';
+    }
+
+    if($path == "") {
+        $uri .= $_SERVER['HTTP_HOST'] . '/';
+    } else {
+        $uri .= $_SERVER['HTTP_HOST'] . $path;
+    }
 
 	define('BASE_URI', str_replace('jajax.php', '', $uri));
 }
