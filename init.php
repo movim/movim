@@ -19,9 +19,6 @@ define('APP_TITLE', t("MOVIM - Test Client"));
     if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "") {
         $uri = 'https://';
     }
-    else if(mvc_get_conf('app/https_only', false)) {
-        $uri = 'https://';
-    }
 
     if($path == "") {
         $uri .= $_SERVER['HTTP_HOST'] . '/';
