@@ -186,7 +186,7 @@ class Wall extends WidgetBase
 	{
 		?>
 		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
-		        <a 
+		        <!--<a 
                     class="button tiny icon follow" 
                     href="#"
                     style="float: right;"
@@ -194,7 +194,7 @@ class Wall extends WidgetBase
                 >
                     <?php echo t('Follow'); ?>
                 </a>
-                <br /><br />
+                <br /><br />-->
             <?php 
             global $sdb;
             $user = new User();

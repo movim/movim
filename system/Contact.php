@@ -87,7 +87,14 @@ class Contact extends StorageBase {
     }
     
     public function getPhoto($size = 'normal') {
-        if(isset($this->phototype) && isset($this->photobin) && $this->phototype->getval() != '' && $this->photobin->getval() != '') {
+        if(
+               isset($this->phototype) 
+            && isset($this->photobin) 
+            && $this->phototype->getval() != '' 
+            && $this->photobin->getval() != ''
+            && $this->phototype->getval() != 'f' 
+            && $this->photobin->getval() != 'f'
+        ) {
             $str = 'image.php?c='.$this->jid->getval().'&size='.$size;
         } else {
             $str = 'image.php?c=default';

@@ -83,8 +83,23 @@ class Feed extends WidgetBase {
     
     function ajaxCreateNode()
     {
+        $user = new User();
+        
+        global $sdb;
+        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        
+	                $conf = new ConfVar();
+	                $sdb->load($conf, array(
+                                        'login' => $user->getLogin()
+                                            ));
+	                $conf->setConf(false, false, false, false, false, false, false, false, false, true);
+	                $sdb->save($conf);
+        
 		$xmpp = Jabber::getInstance();
         $xmpp->createNode();
+        
+        RPC::call('movim_reload');
+        RPC::commit();
     }
     
     function ajaxFeed()
@@ -118,7 +133,7 @@ class Feed extends WidgetBase {
             ?>
                     <a 
                     onclick="<?php $this->callAjax('ajaxCreateNode') ?>"
-                    href="#" class="button tiny icon add"><?php echo t("Create the feed"); ?></a><br />
+                    href="#" class="button tiny icon add">&nbsp;&nbsp;<?php echo t("Create the feed"); ?></a><br />
             <?php
             } else {
                 $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $user->getLogin()), 'updated', true);
