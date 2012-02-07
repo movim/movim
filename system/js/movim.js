@@ -58,7 +58,7 @@ function movim_parse_form(formname) {
 function movim_reload(uri) {
     window.location.replace(uri);
 }
-	
+
 /**
  * Set a global var for widgets to see if document is focused
  */
@@ -67,7 +67,7 @@ var document_title = document.title;
 var messages_cpt = 1;
 document.onblur = function() { document_focus = false; }
 document.onfocus = function() { document_focus = true; document.title = document_title; messages_cpt = 1; }
- 
+
 function movim_title_inc(){
 	document.title='[' + messages_cpt + '] ' + document_title ;
 	messages_cpt++;
