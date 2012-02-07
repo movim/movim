@@ -26,32 +26,32 @@ class ContactCard extends WidgetBase
     	$this->addcss('contactcard.css');
 		$this->registerEvent('vcard', 'onVcard');
     }
-    
+
     private function displayIf($element, $title, $html = false) {
         if(!$html) $html = $element;
         if(isset($element) && $element != '')
                 return '<div class="element"><span>'.$title.'</span><div class="content">'.$html.'</div></div>';
     }
-    
+
     function onVcard($contact)
     {
         $html = $this->prepareContactCard($contact);
         RPC::call('movim_fill', 'contactcard', RPC::cdata($html));
     }
-    
+
     function prepareContactCard($contact)
     {
         $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
 
         $html .='
-        <a 
+        <a
 	        class="button tiny icon rm';
 	    if(isset($presence['presence']) && $presence['presence'] != 5)
 	        $html .=' merged right';
-	    $html .= '" 
+	    $html .= '"
 	        href="#"
 	        style="float: right;"
-	        id="friendremoveask"  
+	        id="friendremoveask"
 	        onclick="
 	            document.querySelector(\'#friendremoveyes\').style.display = \'block\';
 	            document.querySelector(\'#friendremoveno\').style.display = \'block\';
@@ -60,12 +60,12 @@ class ContactCard extends WidgetBase
 	    >
 	        '.t('Remove this contact').'
 	    </a>
-	    
-        <a 
-	        class="button tiny icon no merged right" 
+
+        <a
+	        class="button tiny icon no merged right"
 	        href="#"
 	        style="float: right; display: none;"
-	        id="friendremoveno" 
+	        id="friendremoveno"
 	        onclick="
 	            document.querySelector(\'#friendremoveask\').style.display = \'block\';
 	            document.querySelector(\'#friendremoveyes\').style.display = \'none\';
@@ -74,69 +74,69 @@ class ContactCard extends WidgetBase
 	    >
 	        '.t('No').'
 	    </a>
-	    
-	    <a 
+
+	    <a
 	        class="button tiny icon yes merged';
 	    if(!isset($presence['presence']) || $presence['presence'] == 5)
-	        $html .=' left'; 
+	        $html .=' left';
 	    $html .= '"
-	        href="#" 
-	        id="friendremoveyes" 
+	        href="#"
+	        id="friendremoveyes"
 	        style="float: right; display: none;"
 	        onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$contact->getData('jid')."'").'"
 	    >
 	        '.t('Yes').'
 	    </a>';
-	    
+
         if(isset($presence['presence']) && $presence['presence'] != 5) {
             $html .= '
-                <a 
-	                class="button tiny icon chat merged left" 
+                <a
+	                class="button tiny icon chat merged left"
 	                href="#"
 	                style="float: right;"
-	                id="friendchat"  
+	                id="friendchat"
 	                onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"
 	            >
 	                '.t('Chat').'
 	            </a>';
         }
-	    
-	    
+
+
         $html .='
         <form><br />
             <fieldset class="protect red">
                 <legend>'.t('General Informations').'</legend>';
-        
+
         $html .= $this->displayIf($contact->getData('fn'), t('Name'));
         $html .= $this->displayIf($contact->getData('name'), t('Nickname'));
-        $html .= $this->displayIf($contact->getData('jid'), t('Adress'));
+        $html .= $this->displayIf($contact->getData('jid'), t('Address'));
         if($contact->getData('date') != '0000-00-00')
         $html .= $this->displayIf($contact->getData('date'), t('Date of Birth'), date('j F Y',strtotime($contact->getData('date'))));
-        
+
         $html .= '<br />';
-        
+
         $html .= $this->displayIf($contact->getData('url'), t('Website'), '<a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>');
         $html .= $this->displayIf($contact->getPhoto(), t('Avatar'), '<img src="'.$contact->getPhoto().'">');
-        
+
         $html .= '<br />';
         $html .= $this->displayIf($contact->getData('desc'), t('About Me'));
-        
+
         $html .= '
             </fieldset>
         </form>';
         return $html;
     }
-    
+
     function ajaxRemoveContact($jid) {
 		$xmpp = Jabber::getInstance();
         $xmpp->removeContact($jid);
-        
+
         global $sdb;
     	$user = new User();
         $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
         $sdb->delete($contact[0]);
     }
-    
+
     function build()
     {
         global $sdb;
