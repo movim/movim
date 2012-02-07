@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-26 23:46+0200\n"
+"POT-Creation-Date: 2012-02-07 15:49+0000\n"
 "PO-Revision-Date: 2011-08-12 16:13:36\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,123 +15,9 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "Movim - testiasiakas"
 
-#: ../install.php:18 ../install/part1.php:59
+#: ../install/part1.php:59
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 msgstr "PHP versio ei yhteensopiva. Movim vaatii vähintään PHP 5.3:n"
-
-#: ../install.php:21 ../install.php:24 ../install.php:40
-#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:85
-#, php-format
-msgid "Movim requires the %s extension."
-msgstr "Movim vaatii %s laajennuksen."
-
-#: ../install.php:27 ../install/part1.php:71
-msgid "Movim's folder must be writable."
-msgstr "Movim -kansioon täytyy olla kirjoitusoikeudet"
-
-#: ../install.php:39 ../install/part1.php:84
-msgid "or"
-msgstr ""
-
-#: ../install.php:155 ../install/part1.php:135 ../install/part1.php:145
-#: ../install/part2.php:176
-msgid "Movim Installer"
-msgstr "Movim installer"
-
-#: ../install.php:163
-msgid "Theme"
-msgstr "Teema"
-
-#: ../install.php:164
-msgid "Default language"
-msgstr "Oletuskieli"
-
-#: ../install.php:165
-msgid "Bosh cookie's expiration (s)"
-msgstr "Bosh evästeen vanhentuminen (s)"
-
-#: ../install.php:166
-msgid "Bosh cookie's path"
-msgstr "Bosh evästeen hakemistopolku"
-
-#: ../install.php:167
-msgid "Bosh cookie's domain"
-msgstr "Bosh evästeen domain"
-
-#: ../install.php:169
-msgid "Use HTTPS for Bosh"
-msgstr "Käytä salattua yhteyttä (https)"
-
-#: ../install.php:171
-msgid "Use only HTTP for Bosh"
-msgstr "Käytä vain salaamatonta yhteyttä (http)"
-
-#: ../install.php:173
-msgid "Log verbosity"
-msgstr "Lokita laajemmin"
-
-#: ../install.php:174
-msgid "Allow account creation"
-msgstr "Salli käyttäjätilien luominen"
-
-#: ../install.php:177 ../system/Controller/ControllerMain.php:225
-#: ../system/Widget/widgets/Config/Config.php:63
-msgid "Bosh Host"
-msgstr "Bosh isäntä"
-
-#: ../install.php:178 ../system/Controller/ControllerMain.php:229
-#: ../system/Widget/widgets/Config/Config.php:67
-msgid "Bosh Suffix"
-msgstr "Bosh suffiksi"
-
-#: ../install.php:179 ../system/Controller/ControllerMain.php:233
-#: ../system/Widget/widgets/Config/Config.php:70
-msgid "Bosh Port"
-msgstr "Bosh portti"
-
-#: ../install.php:181
-msgid "<h2>Storage</h2>"
-msgstr "<h2>Varastointi</h2>"
-
-#: ../install.php:182
-msgid "Storage driver"
-msgstr ""
-
-#: ../install.php:186
-msgid "Database"
-msgstr ""
-
-#: ../install.php:234 ../install.php:238 ../install.php:242
-#: ../install/part2.php:97 ../install/part2.php:101 ../install/part2.php:105
-#, php-format
-msgid "Couldn't create directory '%s'."
-msgstr "Ei voitu tehdä kansiota '%s'"
-
-#: ../install.php:266 ../install/part2.php:129
-#, php-format
-msgid "Couldn't create configuration file '%s'."
-msgstr "Ei voitu luoda asetustiedostoa '%s'"
-
-#: ../install.php:305 ../install/part1.php:135
-msgid "Compatibility Test"
-msgstr "Yhteensopivuustesti"
-
-#: ../install.php:306 ../install/part1.php:136
-msgid ""
-"The following requirements were not met. Please make sure they are all "
-"satisfied in order to install Movim."
-msgstr ""
-"Seuraavia vaatimuksia ei voitu täyttää. Varmista että kaikki vaatimukset "
-"täytetty että voit asentaa Movimin."
-
-#: ../install.php:319
-msgid "Movim is installed!"
-msgstr "Movim asennettu!"
-
-#: ../install.php:320
-#, php-format
-msgid "You can now access your shiny %sMovim instance%s"
-msgstr "Voi nyt yhdistää uudenkartheaan %s Movim instanssiin %s"
 
 #: ../install/part1.php:59
 msgid "Actual version : "
@@ -141,88 +27,128 @@ msgstr ""
 msgid "Update your PHP version or contact your server administrator"
 msgstr ""
 
+#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:71
+#: ../install/part1.php:89
+#, php-format
+msgid "Movim requires the %s extension."
+msgstr "Movim vaatii %s laajennuksen."
+
 #: ../install/part1.php:64
 #, php-format
 msgid "Install %s and %s packages"
 msgstr ""
 
-#: ../install/part1.php:68
+#: ../install/part1.php:68 ../install/part1.php:72
 #, php-format
-msgid "Install %s packages"
+msgid "Install the %s package"
 msgstr ""
 
-#: ../install/part1.php:72
+#: ../install/part1.php:75
+msgid "Movim's folder must be writable."
+msgstr "Movim -kansioon täytyy olla kirjoitusoikeudet"
+
+#: ../install/part1.php:76
 msgid "Enable read and write rights on Movim's root folder"
 msgstr ""
 
-#: ../install/part1.php:228
+#: ../install/part1.php:88
+msgid "or"
+msgstr ""
+
+#: ../install/part1.php:140 ../install/part1.php:150 ../install/part2.php:188
+msgid "Movim Installer"
+msgstr "Movim installer"
+
+#: ../install/part1.php:140
+msgid "Compatibility Test"
+msgstr "Yhteensopivuustesti"
+
+#: ../install/part1.php:141
+msgid ""
+"The following requirements were not met. Please make sure they are all "
+"satisfied in order to install Movim."
+msgstr ""
+"Seuraavia vaatimuksia ei voitu täyttää. Varmista että kaikki vaatimukset "
+"täytetty että voit asentaa Movimin."
+
+#: ../install/part1.php:220
+#, fuzzy
+msgid "XMPP Connection Preferences"
+msgstr "BOSH yhteyden asetukset"
+
+#: ../install/part1.php:233
+#, fuzzy
+msgid "BOSH Connection Preferences"
+msgstr "BOSH yhteyden asetukset"
+
+#: ../install/part1.php:237
 msgid "The Bosh configuration is invalid"
 msgstr ""
 
-#: ../install/part1.php:257
+#: ../install/part1.php:259
+msgid "Proxy Preferences"
+msgstr ""
+
+#: ../install/part1.php:284
 msgid "The Database configuration is invalid"
 msgstr ""
 
-#: ../install/part2.php:176
+#: ../install/part2.php:99 ../install/part2.php:103 ../install/part2.php:107
+#, php-format
+msgid "Couldn't create directory '%s'."
+msgstr "Ei voitu tehdä kansiota '%s'"
+
+#: ../install/part2.php:136
+#, php-format
+msgid "Couldn't create configuration file '%s'."
+msgstr "Ei voitu luoda asetustiedostoa '%s'"
+
+#: ../install/part2.php:188
 msgid "Success !"
 msgstr ""
 
-#: ../install/part2.php:179
+#: ../install/part2.php:191
 msgid "Valid Bosh"
 msgstr ""
 
-#: ../install/part2.php:180
+#: ../install/part2.php:192
 msgid "Database Detected"
 msgstr ""
 
-#: ../install/part2.php:181
+#: ../install/part2.php:193
 #, fuzzy
 msgid "Database Movim schema installed"
 msgstr "Movim asennettu!"
 
-#: ../install/part2.php:184
+#: ../install/part2.php:196
 #, fuzzy, php-format
 msgid "You can now access your shiny Movim instance %sJump In !%s"
 msgstr "Voi nyt yhdistää uudenkartheaan %s Movim instanssiin %s"
 
-#: ../install/part2.php:185 ../system/Controller/ControllerMain.php:188
+#: ../install/part2.php:197 ../system/Widget/widgets/Login/Login.php:87
 #, php-format
 msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
 
-#: ../system/Conf.php:38 ../system/Conf.php:58
+#: ../system/Conf.php:125
 #, php-format
 msgid "Cannot load element value'%s'"
 msgstr "Ei voitu ladata elementin arvoa '%s'"
 
-#: ../system/Conf.php:96 ../system/Conf.php:142 ../system/Conf.php:144
-#, php-format
-msgid "Couldn't create file %s"
-msgstr "Ei voi luoda tiedostoa %s"
-
-#: ../system/Conf.php:146
-msgid "Couldn't create configuration files."
-msgstr "Ei voitu luoda asetustiedostoja."
-
-#: ../system/Conf.php:157 ../system/Conf.php:161
-#, php-format
-msgid "Couldn't save img file %s"
-msgstr "Ei voitu tallentaa kuvatiedostoa %s"
-
-#: ../system/Conf.php:183
+#: ../system/Conf.php:136
 #, php-format
 msgid "Cannot load file '%s'"
 msgstr "Ei voi ladata tiedostoa '%s'"
 
-#: ../system/Jabber.php:107
+#: ../system/Jabber.php:109
 msgid "User not logged in."
 msgstr "Käyttäjä ei ole kirjautunut sisään."
 
-#: ../system/Jabber.php:111
+#: ../system/Jabber.php:113
 msgid "JID not provided."
 msgstr "JID ei määritetty."
 
-#: ../system/Jabber.php:130
+#: ../system/Jabber.php:132
 #, php-format
 msgid "jid '%s' is incorrect"
 msgstr "jid '%s' on väärin"
@@ -237,7 +163,7 @@ msgstr "Ei voi avata lokitiedostoa '%s'"
 msgid "Error: %s"
 msgstr "Virhe: %s"
 
-#: ../system/User.php:90
+#: ../system/User.php:94 ../system/Widget/widgets/Account/Account.php:185
 msgid "Wrong password"
 msgstr "Väärä salasana"
 
@@ -253,8 +179,13 @@ msgstr ""
 msgid "Yesterday"
 msgstr ""
 
-#: ../system/Utils.php:58 ../system/Utils.php:61
+#: ../system/Utils.php:58
 msgid "day"
+msgstr ""
+
+#: ../system/Utils.php:61
+#, php-format
+msgid " %d days ago"
 msgstr ""
 
 #: ../system/Controller/ControllerMain.php:40
@@ -266,7 +197,8 @@ msgstr "%s - Tervetuloa käyttämään Movimia"
 #: ../system/Controller/ControllerMain.php:41
 #: ../system/Controller/ControllerMain.php:59
 #: ../system/Controller/ControllerMain.php:93
-#: ../system/Controller/ControllerMain.php:107
+#: ../system/Controller/ControllerMain.php:108
+#: ../system/Controller/ControllerMain.php:127
 msgid "Home"
 msgstr "Koti"
 
@@ -286,212 +218,277 @@ msgstr "%s - Konfigurointi"
 msgid "%s - Account Creation"
 msgstr "%s - Tilin luominen"
 
-#: ../system/Controller/ControllerMain.php:123
+#: ../system/Controller/ControllerMain.php:109
+#: ../system/Controller/ControllerMain.php:129
+msgid "Account Creation"
+msgstr "Käyttäjätilin luominen"
+
+#: ../system/Controller/ControllerMain.php:125
 #, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - Kirjaudu Movimiin"
 
-#: ../system/Controller/ControllerMain.php:126
-msgid "Account Creation"
-msgstr "Käyttäjätilin luominen"
-
-#: ../system/Controller/ControllerMain.php:132
-msgid "Wrong username"
+#: ../system/Widget/widgets/Account/Account.php:173
+msgid "Some data are missing !"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:138
-msgid "Invalid JID"
+#: ../system/Widget/widgets/Account/Account.php:179
+msgid "Wrong ID"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:144
-msgid "The XMPP authentification failed"
+#: ../system/Widget/widgets/Account/Account.php:191
+msgid "You entered different passwords"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:150
-msgid "The current BOSH URL in invalid"
+#: ../system/Widget/widgets/Account/Account.php:197
+#, fuzzy
+msgid "Invalid name"
+msgstr "Validoi"
+
+#: ../system/Widget/widgets/Account/Account.php:203
+msgid "Username already taken"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:156
-msgid "Internal server error"
+#: ../system/Widget/widgets/Account/Account.php:209
+msgid "Could not connect to the XMPP server"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:162
-msgid "Session error"
+#: ../system/Widget/widgets/Account/Account.php:215
+msgid "Could not communicate with the XMPP server"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:170
-msgid "Your web browser is too old to use with Movim."
+#: ../system/Widget/widgets/Account/Account.php:221
+msgid "Unknown error"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:181
-msgid "You don't have javascript enabled.  Good luck with that."
+#: ../system/Widget/widgets/Account/Account.php:236
+msgid ""
+"Firstly fill in this blank with a brand new account ID, this address will "
+"follow you on all the Movim network !"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:214
+#: ../system/Widget/widgets/Account/Account.php:236
+msgid "Only alphanumerics elements are authorized"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:240
+#: ../system/Widget/widgets/Login/Login.php:113
 msgid "My address"
 msgstr "Oma osoite"
 
-#: ../system/Controller/ControllerMain.php:216
+#: ../system/Widget/widgets/Account/Account.php:251
+msgid "Make sure your password is safe :"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:251
+msgid "A capital letter, a digit and a special character are required"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:251
+msgid "8 characters minimum"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:251
+msgid "Example :"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:254
+#: ../system/Widget/widgets/Login/Login.php:115
 msgid "Password"
 msgstr "Salasana"
 
-#: ../system/Controller/ControllerMain.php:218
-msgid "Options"
+#: ../system/Widget/widgets/Account/Account.php:263
+msgid "Same here !"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:221
-msgid "First Login"
+#: ../system/Widget/widgets/Account/Account.php:266
+msgid "Retype"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:237
-msgid "Connecting..."
+#: ../system/Widget/widgets/Account/Account.php:275
+msgid "Pseudo"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:237
-msgid "Come in!"
-msgstr "Tule sisään!"
+#: ../system/Widget/widgets/Account/Account.php:283
+msgid "Create"
+msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:133
+#: ../system/Widget/widgets/Chat/Chat.php:162
 #, fuzzy
 msgid "Composing..."
 msgstr "Lähetetään"
-
-#: ../system/Widget/widgets/Chatold/Chat.php:120
-msgid "Composing"
-msgstr "Lähetetään"
-
-#: ../system/Widget/widgets/Chatold/Chat.php:134
-msgid "Paused"
-msgstr "Pysäytetty"
-
-#: ../system/Widget/widgets/Chatold/Chat.php:155
-msgid "Message"
-msgstr "Viesti"
 
 #: ../system/Widget/widgets/Config/Config.php:45
 msgid "Language"
 msgstr "Kieli"
 
-#: ../system/Widget/widgets/Config/Config.php:60
-msgid "BOSH Connection Prefrences"
-msgstr "BOSH yhteyden asetukset"
-
-#: ../system/Widget/widgets/Config/Config.php:61
-msgid ""
-"Changing these data can be dangerous and may compromise the connection to "
-"the Jabber server"
-msgstr ""
-"Näiden tietojen vaihtaminen voi olla vaarallista ja evätä yhteyden Jabber "
-"serverille."
-
-#: ../system/Widget/widgets/Config/Config.php:74
-#: ../system/Widget/widgets/Feed/Feed.php:71
-#: ../system/Widget/widgets/Vcard/Vcard.php:102
+#: ../system/Widget/widgets/Config/Config.php:75
+#: ../system/Widget/widgets/Feed/Feed.php:118
+#: ../system/Widget/widgets/Vcard/Vcard.php:119
 msgid "Submit"
 msgstr "Lähetä"
 
-#: ../system/Widget/widgets/Config/Config.php:75
+#: ../system/Widget/widgets/Config/Config.php:76
+#: ../system/Widget/widgets/Vcard/Vcard.php:120
 msgid "Reset"
 msgstr "Nollaa"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:58
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:61
 msgid "Remove this contact"
 msgstr "Poista tämä kontakti"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:72
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:75
 msgid "No"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:82
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:88
 msgid "Yes"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:94
-#: ../system/Widget/widgets/Profile/Profile.php:34
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:100
 msgid "Chat"
 msgstr "Chat"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:102
-#: ../system/Widget/widgets/Vcard/Vcard.php:59
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
+#: ../system/Widget/widgets/Vcard/Vcard.php:75
 msgid "General Informations"
 msgstr "Perustiedot"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:104
-#: ../system/Widget/widgets/Vcard/Vcard.php:61
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:110
+#: ../system/Widget/widgets/Vcard/Vcard.php:77
 msgid "Name"
 msgstr "Nimi"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:105
-#: ../system/Widget/widgets/Vcard/Vcard.php:64
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:111
+#: ../system/Widget/widgets/Vcard/Vcard.php:80
 msgid "Nickname"
 msgstr "Lempinimi"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:106
-msgid "Adress"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
+#, fuzzy
+msgid "Address"
 msgstr "Osoite"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
-#: ../system/Widget/widgets/Vcard/Vcard.php:67
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:114
+#: ../system/Widget/widgets/Vcard/Vcard.php:83
 msgid "Date of Birth"
 msgstr "Syntymäaika"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
-#: ../system/Widget/widgets/Vcard/Vcard.php:72
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:118
+#: ../system/Widget/widgets/Vcard/Vcard.php:88
 msgid "Website"
 msgstr "Nettisivu"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:113
-#: ../system/Widget/widgets/Vcard/Vcard.php:77
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:119
+#: ../system/Widget/widgets/Vcard/Vcard.php:93
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:140
-#: ../system/Widget/widgets/Vcard/Vcard.php:120
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:122
+#: ../system/Widget/widgets/Vcard/Vcard.php:100
+msgid "About Me"
+msgstr "Tietoja minusta"
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:146
+#: ../system/Widget/widgets/Vcard/Vcard.php:143
 msgid "Profile"
 msgstr "Profiili"
 
-#: ../system/Widget/widgets/Feed/Feed.php:29
+#: ../system/Widget/widgets/Feed/Feed.php:61
 msgid "Me"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:35
-#: ../system/Widget/widgets/Wall/Wall.php:54
+#: ../system/Widget/widgets/Feed/Feed.php:67
+#: ../system/Widget/widgets/Wall/Wall.php:67
 msgid "Get the comments"
 msgstr "Lataa kommentit"
 
-#: ../system/Widget/widgets/Feed/Feed.php:42
+#: ../system/Widget/widgets/Feed/Feed.php:74
 #, fuzzy
 msgid "Your feed cannot be loaded."
 msgstr "Kontakteja ei voi ladata."
 
-#: ../system/Widget/widgets/Feed/Feed.php:67
-#: ../system/Widget/widgets/Wall/Wall.php:168
+#: ../system/Widget/widgets/Feed/Feed.php:114
+#: ../system/Widget/widgets/Wall/Wall.php:188
 msgid "Feed"
 msgstr "Feedi"
 
-#: ../system/Widget/widgets/Feed/Feed.php:68
+#: ../system/Widget/widgets/Feed/Feed.php:115
 msgid "What's new ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:81
+#: ../system/Widget/widgets/Feed/Feed.php:136
+msgid "Create the feed"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:147
 #, fuzzy
 msgid "Loading your feed ..."
 msgstr "Ladataan kontaktit-feediä"
+
+#: ../system/Widget/widgets/Login/Login.php:34
+msgid "Wrong username"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:40
+msgid "Invalid JID"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:46
+msgid "The XMPP authentification failed"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:52
+msgid "The current BOSH URL in invalid"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:58
+msgid "Internal server error"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:64
+msgid "Session error"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:70
+msgid "Account successfully created"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:78
+msgid "Your web browser is too old to use with Movim."
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:136
+msgid "Connecting..."
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:136
+msgid "Come in!"
+msgstr "Tule sisään!"
+
+#: ../system/Widget/widgets/Login/Login.php:143
+#, php-format
+msgid "This server host %s accounts"
+msgstr ""
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr "Debug konsoli"
 
-#: ../system/Widget/widgets/Logout/Logout.php:49
+#: ../system/Widget/widgets/Logout/Logout.php:47
 msgid "Disconnecting..."
 msgstr ""
 
-#: ../system/Widget/widgets/Logout/Logout.php:49
+#: ../system/Widget/widgets/Logout/Logout.php:47
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
-#: ../system/Widget/widgets/News/News.php:43
+#: ../system/Widget/widgets/News/News.php:44
 msgid "News"
+msgstr ""
+
+#: ../system/Widget/widgets/News/News.php:62
+msgid "You have no news yet..."
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:46
@@ -519,37 +516,129 @@ msgstr "Alias"
 msgid "Add a contact"
 msgstr "Lisää kontakti"
 
-#: ../system/Widget/widgets/Profile/Profile.php:35
-msgid "Do not disturb"
-msgstr "Ei saa häiritä"
+#: ../system/Widget/widgets/Profile/Profile.php:49
+#, fuzzy
+msgid "Online"
+msgstr "Hylkää"
 
-#: ../system/Widget/widgets/Profile/Profile.php:36
+#: ../system/Widget/widgets/Profile/Profile.php:50
 msgid "Away"
 msgstr "Poissa"
 
-#: ../system/Widget/widgets/Profile/Profile.php:37
-msgid "Away for a long time"
-msgstr "Poissa pitkään"
+#: ../system/Widget/widgets/Profile/Profile.php:51
+#, fuzzy
+msgid "Do Not Disturb"
+msgstr "Ei saa häiritä"
 
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "Sinun avatar"
+#: ../system/Widget/widgets/Profile/Profile.php:52
+msgid "Long Absence"
+msgstr ""
 
-#: ../system/Widget/widgets/Roster/Roster.php:108
+#: ../system/Widget/widgets/Roster/Roster.php:109
 msgid "Show All"
 msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:74
-msgid "Contact's feed cannot be loaded."
-msgstr "Kontakteja ei voi ladata."
+#: ../system/Widget/widgets/Vcard/Vcard.php:62
+msgid "Create my vCard"
+msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:84
+#: ../system/Widget/widgets/Vcard/Vcard.php:119
+#, fuzzy
+msgid "Submitting"
+msgstr "Lähetä"
+
+#: ../system/Widget/widgets/Wall/Wall.php:67
+#, fuzzy
+msgid "Loading comments ..."
+msgstr "Ladataan kontaktit-feediä"
+
+#: ../system/Widget/widgets/Wall/Wall.php:98
+#: ../system/Widget/widgets/Wall/Wall.php:195
 msgid "Follow"
 msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:173
+#: ../system/Widget/widgets/Wall/Wall.php:209
 msgid "Loading the contact feed ..."
 msgstr "Ladataan kontaktit-feediä"
+
+#~ msgid "Theme"
+#~ msgstr "Teema"
+
+#~ msgid "Default language"
+#~ msgstr "Oletuskieli"
+
+#~ msgid "Bosh cookie's expiration (s)"
+#~ msgstr "Bosh evästeen vanhentuminen (s)"
+
+#~ msgid "Bosh cookie's path"
+#~ msgstr "Bosh evästeen hakemistopolku"
+
+#~ msgid "Bosh cookie's domain"
+#~ msgstr "Bosh evästeen domain"
+
+#~ msgid "Use HTTPS for Bosh"
+#~ msgstr "Käytä salattua yhteyttä (https)"
+
+#~ msgid "Use only HTTP for Bosh"
+#~ msgstr "Käytä vain salaamatonta yhteyttä (http)"
+
+#~ msgid "Log verbosity"
+#~ msgstr "Lokita laajemmin"
+
+#~ msgid "Allow account creation"
+#~ msgstr "Salli käyttäjätilien luominen"
+
+#~ msgid "Bosh Host"
+#~ msgstr "Bosh isäntä"
+
+#~ msgid "Bosh Suffix"
+#~ msgstr "Bosh suffiksi"
+
+#~ msgid "Bosh Port"
+#~ msgstr "Bosh portti"
+
+#~ msgid "<h2>Storage</h2>"
+#~ msgstr "<h2>Varastointi</h2>"
+
+#~ msgid "Movim is installed!"
+#~ msgstr "Movim asennettu!"
+
+#~ msgid "You can now access your shiny %sMovim instance%s"
+#~ msgstr "Voi nyt yhdistää uudenkartheaan %s Movim instanssiin %s"
+
+#~ msgid "Couldn't create file %s"
+#~ msgstr "Ei voi luoda tiedostoa %s"
+
+#~ msgid "Couldn't create configuration files."
+#~ msgstr "Ei voitu luoda asetustiedostoja."
+
+#~ msgid "Couldn't save img file %s"
+#~ msgstr "Ei voitu tallentaa kuvatiedostoa %s"
+
+#~ msgid "Composing"
+#~ msgstr "Lähetetään"
+
+#~ msgid "Paused"
+#~ msgstr "Pysäytetty"
+
+#~ msgid "Message"
+#~ msgstr "Viesti"
+
+#~ msgid ""
+#~ "Changing these data can be dangerous and may compromise the connection to "
+#~ "the Jabber server"
+#~ msgstr ""
+#~ "Näiden tietojen vaihtaminen voi olla vaarallista ja evätä yhteyden Jabber "
+#~ "serverille."
+
+#~ msgid "Away for a long time"
+#~ msgstr "Poissa pitkään"
+
+#~ msgid "Your avatar"
+#~ msgstr "Sinun avatar"
+
+#~ msgid "Contact's feed cannot be loaded."
+#~ msgstr "Kontakteja ei voi ladata."
 
 #~ msgid "Couldn't open cache. Please contact the administrator."
 #~ msgstr "Ei voitu avata välimustia. Ota yhteyttä järjestelmänvalvojaan."
@@ -562,6 +651,3 @@ msgstr "Ladataan kontaktit-feediä"
 
 #~ msgid "Hye, I'm on Movim !"
 #~ msgstr "Hei, olen Movim -verkossa !"
-
-#~ msgid "About Me"
-#~ msgstr "Tietoja minusta"
