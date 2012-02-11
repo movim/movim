@@ -73,18 +73,18 @@ class Roster extends WidgetBase
         $start .= '" 
                 id="roster'.$contact->getData('jid').'" 
              >';
-        $middle = '<div class="chat ';
-            if(isset($presence) && $presence["presence_txt"] != 'offline') {
-                $middle .= 'on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'");
-            }
-        $middle .= '"></div>
+             
+        $middle = '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"></div>
                  <a ';
             $middle .= 
                      'title="'.$contact->getTrueName().' ('.$contact->getData('jid').')" 
                      href="?q=friend&f='.$contact->getData('jid').'"
                  >
                     <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.
-                    '<span>'.$contact->getTrueName().'</span>
+                       '<span>'.$contact->getTrueName();
+                    if($contact->getData('rosterask') == 'subscribe')
+						$middle .= " #";
+            $middle .= '</span>
                  </a>';
         $end = '</li>';
         //var_dump($presence);
@@ -104,7 +104,8 @@ class Roster extends WidgetBase
 
             if($contact != false) {
                 foreach($contact as $c) {
-                    $html .= $this->prepareRosterElement($c);
+					if($c->getData('rostersubscription') != 'none' || $c->getData('rosterask') == 'subscribe')
+						$html .= $this->prepareRosterElement($c);
                 }
                 $html .= '<li class="more" onclick="showRoster(this);"><a href="#"><span>'.t('Show All').'</span></a></li>';
             } else {
