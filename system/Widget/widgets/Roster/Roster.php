@@ -75,19 +75,18 @@ class Roster extends WidgetBase
              >';
              
         $middle = '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"></div>
-                 <a ';
-            $middle .= 
-                     'title="'.$contact->getTrueName().' ('.$contact->getData('jid').')" 
-                     href="?q=friend&f='.$contact->getData('jid').'"
+                 <a 
+					title="'.$contact->getTrueName().' ('.$contact->getData('jid').')" 
+                    href="?q=friend&f='.$contact->getData('jid').'"
                  >
                     <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.
-                       '<span>'.$contact->getTrueName();
-                    if($contact->getData('rosterask') == 'subscribe')
-						$middle .= " #";
+                    '<span>'.$contact->getTrueName();
+						if($contact->getData('rosterask') == 'subscribe')
+							$middle .= " #";
             $middle .= '</span>
                  </a>';
         $end = '</li>';
-        //var_dump($presence);
+
         if($inner == true)
             return $middle;
         else

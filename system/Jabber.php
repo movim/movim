@@ -141,7 +141,7 @@ class Jabber
 			$this->jaxl->startCore('bosh');
 		}
 
-		self::setStatus('Online Using Movim 0.4-dev', false, false, true);
+		self::setStatus('Online Using Movim 0.4', false, false, true);
 	}
 
 	/**

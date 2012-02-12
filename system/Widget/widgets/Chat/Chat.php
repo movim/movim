@@ -35,7 +35,7 @@ class Chat extends WidgetBase
         
         $log = Cache::c('log'.$jid);
         array_push($log, $html);
-        if(count($log)>20) {
+        if(count($log)>25) {
             array_shift($log);
         }
         Cache::c('log'.$jid, $log);
@@ -56,6 +56,8 @@ class Chat extends WidgetBase
     
 	    
         $html = '<div class="message presence"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($txt[$tab['presence']], ENT_COMPAT, "UTF-8")).'</div>';
+        $this->cacheMessage($arr['jid'], $html);
+
         RPC::call('movim_append',
                        'messages'.$tab['jid'],
                        RPC::cdata($html)); 
@@ -88,9 +90,12 @@ class Chat extends WidgetBase
         $message = $payload['movim']['body'];
         
         if(preg_match("#^/me#", $message)) {
-			$html .= "own";
+			$html .= "own ";
 			$message = "** ".$contact->getTrueName()." ".substr($message, 4);
 		}
+		
+		if($payload['me'] == true)
+			$html .= "me";
 		        
         $html .= '"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($message, ENT_COMPAT, "UTF-8")).'</div>';
         
@@ -108,6 +113,7 @@ class Chat extends WidgetBase
                        
         RPC::call('newMessage');
             
+        RPC::commit();
     }
     
     function onComposing($payload)
@@ -161,11 +167,14 @@ class Chat extends WidgetBase
      */
     function ajaxSendMessage($to, $message)
     {
-        $this->cacheMessage($to, '<div class="message me"><span class="date">'.date('G:i', time()).'</span>'.rawurldecode($message).'</div>');
-    
 		$xmpp = Jabber::getInstance();
 		// We decode URL codes to send the correct message to the XMPP server
         $xmpp->sendMessage($to, rawurldecode($message));
+		
+		$arr['from'] = $to;
+		$arr['me'] = true;
+		$arr['movim']['body'] = rawurldecode($message);
+		$this->onMessage($arr);
     }
     
 	/**
