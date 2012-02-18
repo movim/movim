@@ -3,19 +3,20 @@
     margin-bottom: 20px;
 }
 
+#profile td {
+	vertical-align: middle;
+	text-align: left;
+}
+
 #profile h1 {
-    border: none;
-    padding: 0;
-    width: 60%;
-    margin-bottom: 5px;
-    float: right;
-    text-align: left;
+    margin: 0px;
+    line-height: 1em;
+    padding: 0px;
+    padding-left: 10px;
 }
 
 #profile img {
-	float: left;
-	display: block;
-    width: 35%;
+	width: 80px;
 }
 
 #profile #status {

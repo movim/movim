@@ -1,21 +1,40 @@
 /* WALL STYLE */
 
 #feed {
-    padding-top: 10px;
+/*    padding-top: 10px;*/
+}
+
+#feed #submit {
+	padding: 1.5em;
+	padding-bottom: 0.5em;
 }
 
 #feed #feedmessage {
-    resize: none;
-    width: 85%;
+	width: 300%;
+	padding-right: 8px;
+/*    resize: none;
+    width: 65%;
 	border: 1px solid #E5E5E5;
 	margin: 0.5em 0em;
 	padding: 5px;
     color: gray;
     font-size: 1.3em;
+    margin: 1.5em;
     margin-bottom: 20px;
+    margin: 1.5em;
+    width: auto;*/
+}
+
+#feed #feedmessage input {
+	margin: 0px;
+	width: 100%;
+	border-right: 0px;
 }
 
 #feed #feedmessagesubmit {
-    margin: 1.7em 0em; 
-    float: right;
+	border-color: #999999 #BBBBBB #BBBBBB;
+	background-color: white;
+	border-radius: 0px;
+	border-left: 0px;
+	font-size: 17px;
 }

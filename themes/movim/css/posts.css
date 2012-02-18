@@ -7,10 +7,6 @@
     min-height: 50px;
 }
 
-.post:first-child {
-    padding-top: 0.2em;
-}
-
 .post:last-child {
     border-bottom: 0px;
 }
@@ -114,6 +110,21 @@
     padding: 5px;
     margin: 5px;
     border: 1px solid #CCC;
+}
+
+.post.older {
+	border: 1px solid #D3D3D3;
+	background-color: #F3F3F3;
+	text-align: center;
+	margin: 1.5em;
+	font-weight: bold;
+	min-height: 0px;
+	cursor: pointer;
+}
+
+.post.older:hover {
+	border: 1px solid #C3C3C3;
+	background-color: #E3E3E3;
 }
 
 label {

@@ -68,7 +68,7 @@ hr {
 
 h1 {
     color: #1F3C48;
-    padding: 5px 1.5em 0px; 
+    padding: 10px 20px 0px; 
     font-size: 1.5em;
 }
 
@@ -95,7 +95,6 @@ h3 {
 
 #left
 {
-	padding-top: 10px;
     width: 210px;
     float: left;
     height: 100%;
@@ -108,7 +107,6 @@ h3 {
     padding: 10px 0px 10px;
     min-height: 600px;
     border-left: 1px solid #CCC;
-
 }
 
 #right
@@ -117,6 +115,7 @@ h3 {
     float: right;
     overflow: auto;
     width: 190px;
+	padding-top: 15px;
 }
 
 #footer {

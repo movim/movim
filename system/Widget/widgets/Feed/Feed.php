@@ -40,6 +40,38 @@ class Feed extends WidgetBase {
        	return $tmp;
     }
     
+    function prepareFeed($start) {
+		global $sdb;
+        $user = new User();
+		$messages = $sdb->select('Message', array('key' => $user->getLogin()), 'updated', true);
+		
+		if($messages == false) {
+			$html = '
+				<script type="text/javascript">
+					setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);
+				</script>';
+			echo t('Loading your feed ...');
+		} else {
+			$html = '';
+			
+			foreach(array_slice($messages, $start, 20) as $message) {
+				$html .= $this->preparePost($message, $user);
+			}
+			
+			$next = $start + 20;
+			
+			if(sizeof($messages) > $next)
+				$html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+		}
+		
+		return $html;
+	}
+	
+	function ajaxGetFeed($start) {
+		RPC::call('movim_append', 'feed_content', RPC::cdata($this->prepareFeed($start)));
+        RPC::commit();
+	}
+    
     function onStream($payload) {
         $html = '';
         $i = 0;
@@ -112,10 +144,26 @@ class Feed extends WidgetBase {
     {
     ?>
     <div class="tabelem protect orange" title="<?php echo t('Feed'); ?>" id="feed">
-        <textarea id="feedmessage" onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;"><?php echo t('What\'s new ?'); ?></textarea>
-        <a 
-            onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessage').value") ?>"
-            href="#" id="feedmessagesubmit" class="button tiny icon submit"><?php echo t("Submit"); ?></a><br />
+		<table id="submit">
+			<tr>
+				<td id="feedmessage">
+					<input 
+						class="big" 
+						onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;" 
+						value="<?php echo t('What\'s new ?'); ?>">
+				</td>
+				<td>
+					<a 
+						title="<?php echo t("Submit"); ?>"
+						onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessage').value") ?>"
+						href="#" 
+						id="feedmessagesubmit" 
+						class="button tiny icon submit">
+					</a>
+				</td>
+			</tr>
+		</table>
+
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
         <?php 
             global $sdb;
@@ -135,25 +183,10 @@ class Feed extends WidgetBase {
                     onclick="<?php $this->callAjax('ajaxCreateNode') ?>"
                     href="#" class="button tiny icon add">&nbsp;&nbsp;<?php echo t("Create the feed"); ?></a><br />
             <?php
-            } else {
-                $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $user->getLogin()), 'updated', true);
-                
-                if($messages == false) {
-                ?>
-                    <script type="text/javascript">
-                        <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);'; ?>
-                    </script>
-                <?php
-                    echo t('Loading your feed ...');
-                } else {
-                    $html = '';
-                    
-                    foreach(array_slice($messages, 0, 20) as $message) {
-                        $html .= $this->preparePost($message, $user);
-                    }
-                    echo $html;
-                }
             }
+            
+            echo $this->prepareFeed(0);
+            
             ?>
         </div>
     </div>
