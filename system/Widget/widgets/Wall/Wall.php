@@ -64,7 +64,7 @@ class Wall extends WidgetBase
               
             $tmp .= '
 	            	<div class="comments" id="'.$message->getData('nodeid').'comments">
-	            	    <a class="getcomments icon comments" style="margin-left: 0px;" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.t('Get the comments').'</a>
+	            	    <a class="getcomments icon bubble" style="margin-left: 0px;" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.t('Get the comments').'</a>
 	            	</div>
            		</div>';
 

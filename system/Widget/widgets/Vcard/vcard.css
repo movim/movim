@@ -1,3 +1,7 @@
+#vcard {
+	padding: 1.5em;
+}
+
 #vcard .element {
     padding: 5px;
     clear: both;

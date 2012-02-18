@@ -2,8 +2,8 @@
 
 .post {
 	border-bottom: 1px solid #ECECEC;
-    width: 100%;
-	padding: 1em 0em;
+    width: auto;
+	padding: 1.5em 1.5em;
     min-height: 50px;
 }
 
@@ -17,6 +17,7 @@
 
 .post span {
     font-weight: bold;
+    line-height: 1.5em;
 }
 
 .post span.date {
@@ -47,6 +48,9 @@
 	margin-right: 5px;
 	margin-top: 10px;
 	width: 80%;
+    box-shadow: 0 1px 1px rgba(34, 25, 25, 0.2);
+	background-color: #F2F0F0;
+
 }
 
 .post .comments:hover {
@@ -55,9 +59,15 @@
 
 .post .comments .comment {
     border-bottom: 1px solid #E3E3E3;
-    padding: 0.7em;
+    padding: 1em;
     overflow: auto;
-	width: 95%;
+	width: auto;
+    border-bottom: 1px solid #D9D4D4;
+    border-top: 1px solid #FCFAFA;
+}
+
+.post .comments .comment:first-child {
+	border-top: none;
 }
 
 .post .comments .comment:last-child {

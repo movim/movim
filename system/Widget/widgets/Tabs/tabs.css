@@ -1,7 +1,7 @@
 #navtabs {
     list-style-type: none;
     margin: 0px;
-    padding: 7px 0px;
+    padding: 7px 5px;
     width: 100%;
     border-bottom: 1px solid #E5E5E5;
 }
@@ -18,13 +18,12 @@
 }
 
 #navtabs li:hover {
-    background-color: #F5F5F5;
+    background-color: #E5E5E5;
     padding-bottom: 7px;
 }
 
 #navtabs li.on {
-    background-color: white;
-    border: 1px solid #E5E5E5;
-    border-bottom-color: white;
+/*    border: 1px solid #E5E5E5;
+    border-bottom-color: white;*/
     font-weight: bold;
 }

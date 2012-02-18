@@ -28,8 +28,9 @@ body {
     font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
     font-size: 12px;
     margin: 0 auto;
-    margin-top: 38px;
+    margin-top: 25px;
     color: #4E4E4E;
+    height: 100%;
 }
 
 .clear {
@@ -67,8 +68,8 @@ hr {
 
 h1 {
     color: #1F3C48;
+    padding: 5px 1.5em 0px; 
     font-size: 1.5em;
-    padding: 10px 0px 5px; 
 }
 
 h3 {
@@ -94,16 +95,20 @@ h3 {
 
 #left
 {
-    width: 190px;
+	padding-top: 10px;
+    width: 210px;
     float: left;
-    border-right: 1px solid #EEE;
+    height: 100%;
+    padding-top: 15px;
 }
 
 #center
 {
     overflow: hidden;
-    padding: 0px 10px;
-    min-height: 510px;
+    padding: 10px 0px 10px;
+    min-height: 600px;
+    border-left: 1px solid #CCC;
+
 }
 
 #right
@@ -120,7 +125,6 @@ h3 {
     text-align: right;
     clear: both;
     color: gray;
-    margin-top: 10px;
 }
 
 /* Formulaires */
@@ -185,7 +189,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 
 .icon.yes { background-image: url(../img/icons/yes_icon.png); }
 .icon.no { background-image: url(../img/icons/no_icon.png); }
-.icon.comments { background-image: url(../img/icons/comments_icon.png); }
+.icon.bubble { background-image: url(../img/icons/comments_icon.png); }
 .icon.follow { background-image: url(../img/icons/follow_icon.png); }
 .icon.chat{ background-image: url(../img/icons/chat_icon.png); }
 .icon.add { background-image: url(../img/icons/add_icon.png); }
