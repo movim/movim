@@ -39,6 +39,15 @@
     background-color: #FFC;
 }
 
+#chats .chat .messages .message.own {
+	color: blue;
+}
+
+#chats .chat .messages .message.presence {
+	color: black;
+	font-weight: bold;
+}
+
 #chats .chat span.cross {
     background-image: url(img/cross.png);
     width: 15px;

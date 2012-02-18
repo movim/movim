@@ -36,7 +36,11 @@ function sprintln($string)
  * @return string
  */
 function prepareString($string) {
-    return preg_replace('@((https?://)?([-\w]+\.[-\w\.]+)+\w(:\d+)?(/([-\w/_\.]*(\?\S+)?)?)*)@', '<a target="_blank" href="$1">$1</a>', $string);
+    return preg_replace(
+		"@\b(https?://)?(([0-9a-zA-Z_!~*'().&=+$%-]+:)?[0-9a-zA-Z_!~*'().&=+$%-]+\@)?(([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-zA-Z_!~*'()-]+\.)*([0-9a-zA-Z][0-9a-zA-Z-]{0,61})?[0-9a-zA-Z]\.[a-zA-Z]{2,6})(:[0-9]{1,4})?((/[0-9a-zA-Z_!~*'().;?:\@&=+$,%#-]+)*/?)@", 
+		'<a target="_blank" title="\0" href="\0">\0</a>', 
+		$string
+	);
 }
 
 function prepareDate($time) {

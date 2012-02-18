@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-26 23:46+0200\n"
+"POT-Creation-Date: 2012-02-07 15:49+0000\n"
 "PO-Revision-Date: 2011-05-21 19:09:50\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,121 +15,8 @@ msgstr ""
 msgid "MOVIM - Test Client"
 msgstr "MOVIM - 测试平台"
 
-#: ../install.php:18 ../install/part1.php:59
+#: ../install/part1.php:59
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-msgstr ""
-
-#: ../install.php:21 ../install.php:24 ../install.php:40
-#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:85
-#, php-format
-msgid "Movim requires the %s extension."
-msgstr ""
-
-#: ../install.php:27 ../install/part1.php:71
-msgid "Movim's folder must be writable."
-msgstr ""
-
-#: ../install.php:39 ../install/part1.php:84
-msgid "or"
-msgstr ""
-
-#: ../install.php:155 ../install/part1.php:135 ../install/part1.php:145
-#: ../install/part2.php:176
-msgid "Movim Installer"
-msgstr ""
-
-#: ../install.php:163
-msgid "Theme"
-msgstr ""
-
-#: ../install.php:164
-msgid "Default language"
-msgstr ""
-
-#: ../install.php:165
-msgid "Bosh cookie's expiration (s)"
-msgstr ""
-
-#: ../install.php:166
-msgid "Bosh cookie's path"
-msgstr ""
-
-#: ../install.php:167
-msgid "Bosh cookie's domain"
-msgstr ""
-
-#: ../install.php:169
-msgid "Use HTTPS for Bosh"
-msgstr ""
-
-#: ../install.php:171
-msgid "Use only HTTP for Bosh"
-msgstr ""
-
-#: ../install.php:173
-msgid "Log verbosity"
-msgstr ""
-
-#: ../install.php:174
-#, fuzzy
-msgid "Allow account creation"
-msgstr "建立帐号"
-
-#: ../install.php:177 ../system/Controller/ControllerMain.php:225
-#: ../system/Widget/widgets/Config/Config.php:63
-msgid "Bosh Host"
-msgstr "Bosh 主机名"
-
-#: ../install.php:178 ../system/Controller/ControllerMain.php:229
-#: ../system/Widget/widgets/Config/Config.php:67
-msgid "Bosh Suffix"
-msgstr "Bosh 结尾辞"
-
-#: ../install.php:179 ../system/Controller/ControllerMain.php:233
-#: ../system/Widget/widgets/Config/Config.php:70
-msgid "Bosh Port"
-msgstr "Bosh 端口"
-
-#: ../install.php:181
-msgid "<h2>Storage</h2>"
-msgstr ""
-
-#: ../install.php:182
-msgid "Storage driver"
-msgstr ""
-
-#: ../install.php:186
-msgid "Database"
-msgstr ""
-
-#: ../install.php:234 ../install.php:238 ../install.php:242
-#: ../install/part2.php:97 ../install/part2.php:101 ../install/part2.php:105
-#, fuzzy, php-format
-msgid "Couldn't create directory '%s'."
-msgstr "不能建立文件 %s"
-
-#: ../install.php:266 ../install/part2.php:129
-#, fuzzy, php-format
-msgid "Couldn't create configuration file '%s'."
-msgstr "不能建立设置文件。"
-
-#: ../install.php:305 ../install/part1.php:135
-msgid "Compatibility Test"
-msgstr ""
-
-#: ../install.php:306 ../install/part1.php:136
-msgid ""
-"The following requirements were not met. Please make sure they are all "
-"satisfied in order to install Movim."
-msgstr ""
-
-#: ../install.php:319
-msgid "Movim is installed!"
-msgstr ""
-
-#: ../install.php:320
-#, php-format
-msgid "You can now access your shiny %sMovim instance%s"
 msgstr ""
 
 #: ../install/part1.php:59
@@ -140,89 +27,127 @@ msgstr ""
 msgid "Update your PHP version or contact your server administrator"
 msgstr ""
 
+#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:71
+#: ../install/part1.php:89
+#, php-format
+msgid "Movim requires the %s extension."
+msgstr ""
+
 #: ../install/part1.php:64
 #, php-format
 msgid "Install %s and %s packages"
 msgstr ""
 
-#: ../install/part1.php:68
+#: ../install/part1.php:68 ../install/part1.php:72
 #, php-format
-msgid "Install %s packages"
+msgid "Install the %s package"
 msgstr ""
 
-#: ../install/part1.php:72
+#: ../install/part1.php:75
+msgid "Movim's folder must be writable."
+msgstr ""
+
+#: ../install/part1.php:76
 msgid "Enable read and write rights on Movim's root folder"
 msgstr ""
 
-#: ../install/part1.php:228
+#: ../install/part1.php:88
+msgid "or"
+msgstr ""
+
+#: ../install/part1.php:140 ../install/part1.php:150 ../install/part2.php:188
+msgid "Movim Installer"
+msgstr ""
+
+#: ../install/part1.php:140
+msgid "Compatibility Test"
+msgstr ""
+
+#: ../install/part1.php:141
+msgid ""
+"The following requirements were not met. Please make sure they are all "
+"satisfied in order to install Movim."
+msgstr ""
+
+#: ../install/part1.php:220
+#, fuzzy
+msgid "XMPP Connection Preferences"
+msgstr "BOSH 链接设置"
+
+#: ../install/part1.php:233
+#, fuzzy
+msgid "BOSH Connection Preferences"
+msgstr "BOSH 链接设置"
+
+#: ../install/part1.php:237
 msgid "The Bosh configuration is invalid"
 msgstr ""
 
-#: ../install/part1.php:257
+#: ../install/part1.php:259
+msgid "Proxy Preferences"
+msgstr ""
+
+#: ../install/part1.php:284
 msgid "The Database configuration is invalid"
 msgstr ""
 
-#: ../install/part2.php:176
+#: ../install/part2.php:99 ../install/part2.php:103 ../install/part2.php:107
+#, fuzzy, php-format
+msgid "Couldn't create directory '%s'."
+msgstr "不能建立文件 %s"
+
+#: ../install/part2.php:136
+#, fuzzy, php-format
+msgid "Couldn't create configuration file '%s'."
+msgstr "不能建立设置文件。"
+
+#: ../install/part2.php:188
 msgid "Success !"
 msgstr ""
 
-#: ../install/part2.php:179
+#: ../install/part2.php:191
 msgid "Valid Bosh"
 msgstr ""
 
-#: ../install/part2.php:180
+#: ../install/part2.php:192
 msgid "Database Detected"
 msgstr ""
 
-#: ../install/part2.php:181
+#: ../install/part2.php:193
 msgid "Database Movim schema installed"
 msgstr ""
 
-#: ../install/part2.php:184
+#: ../install/part2.php:196
 #, php-format
 msgid "You can now access your shiny Movim instance %sJump In !%s"
 msgstr ""
 
-#: ../install/part2.php:185 ../system/Controller/ControllerMain.php:188
+#: ../install/part2.php:197 ../system/Widget/widgets/Login/Login.php:87
 #, php-format
 msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
 
-#: ../system/Conf.php:38 ../system/Conf.php:58
+#: ../system/Conf.php:125
 #, fuzzy, php-format
 msgid "Cannot load element value'%s'"
 msgstr "错误：不能加载元素 ‘%s'"
 
-#: ../system/Conf.php:96 ../system/Conf.php:142 ../system/Conf.php:144
-#, php-format
-msgid "Couldn't create file %s"
-msgstr "不能建立文件 %s"
-
-#: ../system/Conf.php:146
-msgid "Couldn't create configuration files."
-msgstr "不能建立设置文件。"
-
-#: ../system/Conf.php:157 ../system/Conf.php:161
-#, fuzzy, php-format
-msgid "Couldn't save img file %s"
-msgstr "不能建立文件 %s"
-
-#: ../system/Conf.php:183
+#: ../system/Conf.php:136
 #, fuzzy, php-format
 msgid "Cannot load file '%s'"
 msgstr "错误：不能加载文件 ‘%s'"
 
-#: ../system/Jabber.php:107
+#: ../system/Jabber.php:109
 #, fuzzy
 msgid "User not logged in."
 msgstr "错误：用户没有登录。"
 
-#: ../system/Jabber.php:111
+#: ../system/Jabber.php:113
 #, fuzzy
 msgid "JID not provided."
 msgstr "错误：没有提供 JID"
 
-#: ../system/Jabber.php:130
+#: ../system/Jabber.php:132
 #, fuzzy, php-format
 msgid "jid '%s' is incorrect"
 msgstr "错误：错误 JID ‘%s’"
@@ -237,7 +162,7 @@ msgstr "错误：不能加载文件 ‘%s'"
 msgid "Error: %s"
 msgstr "错误"
 
-#: ../system/User.php:90
+#: ../system/User.php:94 ../system/Widget/widgets/Account/Account.php:185
 msgid "Wrong password"
 msgstr "错误密码"
 
@@ -253,8 +178,13 @@ msgstr ""
 msgid "Yesterday"
 msgstr ""
 
-#: ../system/Utils.php:58 ../system/Utils.php:61
+#: ../system/Utils.php:58
 msgid "day"
+msgstr ""
+
+#: ../system/Utils.php:61
+#, php-format
+msgid " %d days ago"
 msgstr ""
 
 #: ../system/Controller/ControllerMain.php:40
@@ -266,7 +196,8 @@ msgstr "%s - 欢迎来到 MOVIM"
 #: ../system/Controller/ControllerMain.php:41
 #: ../system/Controller/ControllerMain.php:59
 #: ../system/Controller/ControllerMain.php:93
-#: ../system/Controller/ControllerMain.php:107
+#: ../system/Controller/ControllerMain.php:108
+#: ../system/Controller/ControllerMain.php:127
 msgid "Home"
 msgstr "主页"
 
@@ -286,211 +217,275 @@ msgstr "%s - 配置"
 msgid "%s - Account Creation"
 msgstr "%s - 建立帐号"
 
-#: ../system/Controller/ControllerMain.php:123
-#, php-format
-msgid "%s - Login to Movim"
-msgstr "%s - 登录 MOVIM"
-
-#: ../system/Controller/ControllerMain.php:126
+#: ../system/Controller/ControllerMain.php:109
+#: ../system/Controller/ControllerMain.php:129
 #, fuzzy
 msgid "Account Creation"
 msgstr "%s - 建立帐号"
 
-#: ../system/Controller/ControllerMain.php:132
-msgid "Wrong username"
+#: ../system/Controller/ControllerMain.php:125
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - 登录 MOVIM"
+
+#: ../system/Widget/widgets/Account/Account.php:173
+msgid "Some data are missing !"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:138
-msgid "Invalid JID"
+#: ../system/Widget/widgets/Account/Account.php:179
+msgid "Wrong ID"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:144
-msgid "The XMPP authentification failed"
+#: ../system/Widget/widgets/Account/Account.php:191
+msgid "You entered different passwords"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:150
-msgid "The current BOSH URL in invalid"
+#: ../system/Widget/widgets/Account/Account.php:197
+msgid "Invalid name"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:156
-msgid "Internal server error"
+#: ../system/Widget/widgets/Account/Account.php:203
+msgid "Username already taken"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:162
-msgid "Session error"
+#: ../system/Widget/widgets/Account/Account.php:209
+msgid "Could not connect to the XMPP server"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:170
-msgid "Your web browser is too old to use with Movim."
+#: ../system/Widget/widgets/Account/Account.php:215
+msgid "Could not communicate with the XMPP server"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:181
-msgid "You don't have javascript enabled.  Good luck with that."
+#: ../system/Widget/widgets/Account/Account.php:221
+msgid "Unknown error"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:214
+#: ../system/Widget/widgets/Account/Account.php:236
+msgid ""
+"Firstly fill in this blank with a brand new account ID, this address will "
+"follow you on all the Movim network !"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:236
+msgid "Only alphanumerics elements are authorized"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:240
+#: ../system/Widget/widgets/Login/Login.php:113
 #, fuzzy
 msgid "My address"
 msgstr "我的识别符"
 
-#: ../system/Controller/ControllerMain.php:216
+#: ../system/Widget/widgets/Account/Account.php:251
+msgid "Make sure your password is safe :"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:251
+msgid "A capital letter, a digit and a special character are required"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:251
+msgid "8 characters minimum"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:251
+msgid "Example :"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:254
+#: ../system/Widget/widgets/Login/Login.php:115
 msgid "Password"
 msgstr "密码"
 
-#: ../system/Controller/ControllerMain.php:218
-msgid "Options"
+#: ../system/Widget/widgets/Account/Account.php:263
+msgid "Same here !"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:221
-msgid "First Login"
+#: ../system/Widget/widgets/Account/Account.php:266
+msgid "Retype"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:237
-msgid "Connecting..."
+#: ../system/Widget/widgets/Account/Account.php:275
+msgid "Pseudo"
 msgstr ""
 
-#: ../system/Controller/ControllerMain.php:237
-msgid "Come in!"
-msgstr "登录"
+#: ../system/Widget/widgets/Account/Account.php:283
+msgid "Create"
+msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:133
+#: ../system/Widget/widgets/Chat/Chat.php:162
 msgid "Composing..."
 msgstr ""
-
-#: ../system/Widget/widgets/Chatold/Chat.php:120
-msgid "Composing"
-msgstr ""
-
-#: ../system/Widget/widgets/Chatold/Chat.php:134
-msgid "Paused"
-msgstr ""
-
-#: ../system/Widget/widgets/Chatold/Chat.php:155
-msgid "Message"
-msgstr "信息"
 
 #: ../system/Widget/widgets/Config/Config.php:45
 msgid "Language"
 msgstr "语言"
 
-#: ../system/Widget/widgets/Config/Config.php:60
-msgid "BOSH Connection Prefrences"
-msgstr "BOSH 链接设置"
-
-#: ../system/Widget/widgets/Config/Config.php:61
-#, fuzzy
-msgid ""
-"Changing these data can be dangerous and may compromise the connection to "
-"the Jabber server"
-msgstr "改变这些设置会影响到你的 XMPP 服务器连接"
-
-#: ../system/Widget/widgets/Config/Config.php:74
-#: ../system/Widget/widgets/Feed/Feed.php:71
-#: ../system/Widget/widgets/Vcard/Vcard.php:102
+#: ../system/Widget/widgets/Config/Config.php:75
+#: ../system/Widget/widgets/Feed/Feed.php:118
+#: ../system/Widget/widgets/Vcard/Vcard.php:119
 msgid "Submit"
 msgstr "提交 "
 
-#: ../system/Widget/widgets/Config/Config.php:75
+#: ../system/Widget/widgets/Config/Config.php:76
+#: ../system/Widget/widgets/Vcard/Vcard.php:120
 msgid "Reset"
 msgstr "重置"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:58
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:61
 msgid "Remove this contact"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:72
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:75
 msgid "No"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:82
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:88
 msgid "Yes"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:94
-#: ../system/Widget/widgets/Profile/Profile.php:34
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:100
 msgid "Chat"
 msgstr "聊天"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:102
-#: ../system/Widget/widgets/Vcard/Vcard.php:59
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
+#: ../system/Widget/widgets/Vcard/Vcard.php:75
 msgid "General Informations"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:104
-#: ../system/Widget/widgets/Vcard/Vcard.php:61
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:110
+#: ../system/Widget/widgets/Vcard/Vcard.php:77
 msgid "Name"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:105
-#: ../system/Widget/widgets/Vcard/Vcard.php:64
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:111
+#: ../system/Widget/widgets/Vcard/Vcard.php:80
 msgid "Nickname"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:106
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
 #, fuzzy
-msgid "Adress"
+msgid "Address"
 msgstr "我的识别符"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
-#: ../system/Widget/widgets/Vcard/Vcard.php:67
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:114
+#: ../system/Widget/widgets/Vcard/Vcard.php:83
 msgid "Date of Birth"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
-#: ../system/Widget/widgets/Vcard/Vcard.php:72
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:118
+#: ../system/Widget/widgets/Vcard/Vcard.php:88
 msgid "Website"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:113
-#: ../system/Widget/widgets/Vcard/Vcard.php:77
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:119
+#: ../system/Widget/widgets/Vcard/Vcard.php:93
 msgid "Avatar"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:140
-#: ../system/Widget/widgets/Vcard/Vcard.php:120
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:122
+#: ../system/Widget/widgets/Vcard/Vcard.php:100
+msgid "About Me"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:146
+#: ../system/Widget/widgets/Vcard/Vcard.php:143
 msgid "Profile"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:29
+#: ../system/Widget/widgets/Feed/Feed.php:61
 msgid "Me"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:35
-#: ../system/Widget/widgets/Wall/Wall.php:54
+#: ../system/Widget/widgets/Feed/Feed.php:67
+#: ../system/Widget/widgets/Wall/Wall.php:67
 msgid "Get the comments"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:42
+#: ../system/Widget/widgets/Feed/Feed.php:74
 msgid "Your feed cannot be loaded."
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:67
-#: ../system/Widget/widgets/Wall/Wall.php:168
+#: ../system/Widget/widgets/Feed/Feed.php:114
+#: ../system/Widget/widgets/Wall/Wall.php:188
 msgid "Feed"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:68
+#: ../system/Widget/widgets/Feed/Feed.php:115
 msgid "What's new ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:81
+#: ../system/Widget/widgets/Feed/Feed.php:136
+msgid "Create the feed"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:147
 msgid "Loading your feed ..."
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:34
+msgid "Wrong username"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:40
+msgid "Invalid JID"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:46
+msgid "The XMPP authentification failed"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:52
+msgid "The current BOSH URL in invalid"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:58
+msgid "Internal server error"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:64
+msgid "Session error"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:70
+msgid "Account successfully created"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:78
+msgid "Your web browser is too old to use with Movim."
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:136
+msgid "Connecting..."
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:136
+msgid "Come in!"
+msgstr "登录"
+
+#: ../system/Widget/widgets/Login/Login.php:143
+#, php-format
+msgid "This server host %s accounts"
 msgstr ""
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr "检查更正主控台"
 
-#: ../system/Widget/widgets/Logout/Logout.php:49
+#: ../system/Widget/widgets/Logout/Logout.php:47
 msgid "Disconnecting..."
 msgstr ""
 
-#: ../system/Widget/widgets/Logout/Logout.php:49
+#: ../system/Widget/widgets/Logout/Logout.php:47
 msgid "Logout"
 msgstr "注销"
 
-#: ../system/Widget/widgets/News/News.php:43
+#: ../system/Widget/widgets/News/News.php:44
 msgid "News"
+msgstr ""
+
+#: ../system/Widget/widgets/News/News.php:62
+msgid "You have no news yet..."
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:46
@@ -519,38 +514,84 @@ msgstr ""
 msgid "Add a contact"
 msgstr ""
 
-#: ../system/Widget/widgets/Profile/Profile.php:35
+#: ../system/Widget/widgets/Profile/Profile.php:49
 #, fuzzy
-msgid "Do not disturb"
-msgstr "不要打扰"
+msgid "Online"
+msgstr "离线"
 
-#: ../system/Widget/widgets/Profile/Profile.php:36
+#: ../system/Widget/widgets/Profile/Profile.php:50
 msgid "Away"
 msgstr "离开"
 
-#: ../system/Widget/widgets/Profile/Profile.php:37
-msgid "Away for a long time"
+#: ../system/Widget/widgets/Profile/Profile.php:51
+#, fuzzy
+msgid "Do Not Disturb"
+msgstr "不要打扰"
+
+#: ../system/Widget/widgets/Profile/Profile.php:52
+msgid "Long Absence"
 msgstr ""
 
-#: ../system/Widget/widgets/Profile/Profile.php:48
-msgid "Your avatar"
-msgstr "你的头像"
-
-#: ../system/Widget/widgets/Roster/Roster.php:108
+#: ../system/Widget/widgets/Roster/Roster.php:109
 msgid "Show All"
 msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:74
-msgid "Contact's feed cannot be loaded."
+#: ../system/Widget/widgets/Vcard/Vcard.php:62
+msgid "Create my vCard"
 msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:84
+#: ../system/Widget/widgets/Vcard/Vcard.php:119
+#, fuzzy
+msgid "Submitting"
+msgstr "提交 "
+
+#: ../system/Widget/widgets/Wall/Wall.php:67
+msgid "Loading comments ..."
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:98
+#: ../system/Widget/widgets/Wall/Wall.php:195
 msgid "Follow"
 msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:173
+#: ../system/Widget/widgets/Wall/Wall.php:209
 msgid "Loading the contact feed ..."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Allow account creation"
+#~ msgstr "建立帐号"
+
+#~ msgid "Bosh Host"
+#~ msgstr "Bosh 主机名"
+
+#~ msgid "Bosh Suffix"
+#~ msgstr "Bosh 结尾辞"
+
+#~ msgid "Bosh Port"
+#~ msgstr "Bosh 端口"
+
+#~ msgid "Couldn't create file %s"
+#~ msgstr "不能建立文件 %s"
+
+#~ msgid "Couldn't create configuration files."
+#~ msgstr "不能建立设置文件。"
+
+#, fuzzy
+#~ msgid "Couldn't save img file %s"
+#~ msgstr "不能建立文件 %s"
+
+#~ msgid "Message"
+#~ msgstr "信息"
+
+#, fuzzy
+#~ msgid ""
+#~ "Changing these data can be dangerous and may compromise the connection to "
+#~ "the Jabber server"
+#~ msgstr "改变这些设置会影响到你的 XMPP 服务器连接"
+
+#~ msgid "Your avatar"
+#~ msgstr "你的头像"
 
 #, fuzzy
 #~ msgid "Refresh the data"
@@ -573,9 +614,6 @@ msgstr ""
 
 #~ msgid "Refresh vCard"
 #~ msgstr "更新 vCard"
-
-#~ msgid "Offline"
-#~ msgstr "离线"
 
 #~ msgid "Hidden"
 #~ msgstr "隐身"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-20 21:27+0100\n"
+"POT-Creation-Date: 2012-02-07 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "or"
 msgstr ""
 
-#: ../install/part1.php:140 ../install/part1.php:150 ../install/part2.php:182
+#: ../install/part1.php:140 ../install/part1.php:150 ../install/part2.php:188
 msgid "Movim Installer"
 msgstr ""
 
@@ -79,50 +79,54 @@ msgstr ""
 msgid "XMPP Connection Preferences"
 msgstr ""
 
-#: ../install/part1.php:229
+#: ../install/part1.php:233
 msgid "BOSH Connection Preferences"
 msgstr ""
 
-#: ../install/part1.php:233
+#: ../install/part1.php:237
 msgid "The Bosh configuration is invalid"
 msgstr ""
 
-#: ../install/part1.php:260
+#: ../install/part1.php:259
+msgid "Proxy Preferences"
+msgstr ""
+
+#: ../install/part1.php:284
 msgid "The Database configuration is invalid"
 msgstr ""
 
-#: ../install/part2.php:97 ../install/part2.php:101 ../install/part2.php:105
+#: ../install/part2.php:99 ../install/part2.php:103 ../install/part2.php:107
 #, php-format
 msgid "Couldn't create directory '%s'."
 msgstr ""
 
-#: ../install/part2.php:130
+#: ../install/part2.php:136
 #, php-format
 msgid "Couldn't create configuration file '%s'."
 msgstr ""
 
-#: ../install/part2.php:182
+#: ../install/part2.php:188
 msgid "Success !"
 msgstr ""
 
-#: ../install/part2.php:185
+#: ../install/part2.php:191
 msgid "Valid Bosh"
 msgstr ""
 
-#: ../install/part2.php:186
+#: ../install/part2.php:192
 msgid "Database Detected"
 msgstr ""
 
-#: ../install/part2.php:187
+#: ../install/part2.php:193
 msgid "Database Movim schema installed"
 msgstr ""
 
-#: ../install/part2.php:190
+#: ../install/part2.php:196
 #, php-format
 msgid "You can now access your shiny Movim instance %sJump In !%s"
 msgstr ""
 
-#: ../install/part2.php:191 ../system/Widget/widgets/Login/Login.php:87
+#: ../install/part2.php:197 ../system/Widget/widgets/Login/Login.php:87
 #, php-format
 msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
@@ -259,7 +263,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:236
 msgid ""
-"Firstly fill in this blank with a brand new account ID, this adress will "
+"Firstly fill in this blank with a brand new account ID, this address will "
 "follow you on all the Movim network !"
 msgstr ""
 
@@ -318,13 +322,13 @@ msgid "Language"
 msgstr ""
 
 #: ../system/Widget/widgets/Config/Config.php:75
-#: ../system/Widget/widgets/Feed/Feed.php:103
-#: ../system/Widget/widgets/Vcard/Vcard.php:121
+#: ../system/Widget/widgets/Feed/Feed.php:118
+#: ../system/Widget/widgets/Vcard/Vcard.php:119
 msgid "Submit"
 msgstr ""
 
 #: ../system/Widget/widgets/Config/Config.php:76
-#: ../system/Widget/widgets/Vcard/Vcard.php:122
+#: ../system/Widget/widgets/Vcard/Vcard.php:120
 msgid "Reset"
 msgstr ""
 
@@ -345,46 +349,46 @@ msgid "Chat"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:108
-#: ../system/Widget/widgets/Vcard/Vcard.php:77
+#: ../system/Widget/widgets/Vcard/Vcard.php:75
 msgid "General Informations"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:110
-#: ../system/Widget/widgets/Vcard/Vcard.php:79
+#: ../system/Widget/widgets/Vcard/Vcard.php:77
 msgid "Name"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:111
-#: ../system/Widget/widgets/Vcard/Vcard.php:82
+#: ../system/Widget/widgets/Vcard/Vcard.php:80
 msgid "Nickname"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:112
-msgid "Adress"
+msgid "Address"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:114
-#: ../system/Widget/widgets/Vcard/Vcard.php:85
+#: ../system/Widget/widgets/Vcard/Vcard.php:83
 msgid "Date of Birth"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:118
-#: ../system/Widget/widgets/Vcard/Vcard.php:90
+#: ../system/Widget/widgets/Vcard/Vcard.php:88
 msgid "Website"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:119
-#: ../system/Widget/widgets/Vcard/Vcard.php:95
+#: ../system/Widget/widgets/Vcard/Vcard.php:93
 msgid "Avatar"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:122
-#: ../system/Widget/widgets/Vcard/Vcard.php:102
+#: ../system/Widget/widgets/Vcard/Vcard.php:100
 msgid "About Me"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:146
-#: ../system/Widget/widgets/Vcard/Vcard.php:145
+#: ../system/Widget/widgets/Vcard/Vcard.php:143
 msgid "Profile"
 msgstr ""
 
@@ -401,20 +405,20 @@ msgstr ""
 msgid "Your feed cannot be loaded."
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:99
+#: ../system/Widget/widgets/Feed/Feed.php:114
 #: ../system/Widget/widgets/Wall/Wall.php:188
 msgid "Feed"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:100
+#: ../system/Widget/widgets/Feed/Feed.php:115
 msgid "What's new ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:121
+#: ../system/Widget/widgets/Feed/Feed.php:136
 msgid "Create the feed"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:132
+#: ../system/Widget/widgets/Feed/Feed.php:147
 msgid "Loading your feed ..."
 msgstr ""
 
@@ -528,11 +532,11 @@ msgstr ""
 msgid "Show All"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:64
+#: ../system/Widget/widgets/Vcard/Vcard.php:62
 msgid "Create my vCard"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:121
+#: ../system/Widget/widgets/Vcard/Vcard.php:119
 msgid "Submitting"
 msgstr ""
 

@@ -51,7 +51,7 @@ class User {
                 header('Location:'.BASE_URI.'index.php?q=disconnect&err=invalidjid');
                 exit();
             }*/
-            
+
             $data = false;
             if( !($data = $this->getConf($login)) ) {
 			    // We check if we wants to create an account
@@ -62,7 +62,7 @@ class User {
                     curl_exec($ch);
                     $errno = curl_errno($ch);
                     curl_close($ch);
-                    
+
 			        if($errno != 0) {
 			            header('Location:'.BASE_URI.'index.php?q=disconnect&err=bosherror');
                         exit();
@@ -75,7 +75,7 @@ class User {
                         $data = $this->getConf($login);
                     }
                 } else {
-                    header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');   
+                    header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');
                 }
             }
 
@@ -103,38 +103,47 @@ class User {
 	function desauth()
 	{
         PresenceHandler::clearPresence();
-        
+
         $sess = Session::start('jaxl');
         Session::dispose('jaxl');
-        
+
         $sess = Session::start(APP_NAME);
         Session::dispose(APP_NAME);
 	}
-	
-	function setConf($data) {
+
+    function setLang($language)
+    {
+        global $sdb;
+        $conf = $sdb->select('ConfVar', array('login' => $this->username));
+        $conf[0]->language = $language;
+        $sdb->save($conf[0]);
+    }
+
+	function setConf($data)
+    {
         global $sdb;
         $conf = $sdb->select('ConfVar', array('login' => $this->username));
         $conf[0]->setConf(
-                            $data['login'], 
-                            $data['pass'], 
+                            $data['login'],
+                            $data['pass'],
                             $data['host'],
                             $data['domain'],
                             $data['port'],
-                            $data['boshhost'], 
-                            $data['boshsuffix'], 
-                            $data['boshport'], 
+                            $data['boshhost'],
+                            $data['boshsuffix'],
+                            $data['boshport'],
                             $data['language'],
                             $data['first']
                          );
-        $sdb->save($conf[0]); 
+        $sdb->save($conf[0]);
 	}
 
     function getConf($user = false, $element = false) {
         $login = ($user != false) ? $user : $this->username;
-        
+
         global $sdb;
         $conf = $sdb->select('ConfVar', array('login' => $login));
-        
+
         if($conf != false) {
             $array = $conf[0]->getConf();
             if($element != false)
