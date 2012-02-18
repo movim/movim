@@ -63,7 +63,7 @@ class Profile extends WidgetBase
             $me = $me[0];
             $html = '<h1>'.$me->getTrueName().'</h1>';
             $html .= '<img src="'.$me->getPhoto().'">';
-            $html .= '<input type="text" id="status" value="'.$presence['status'].'">';
+            $html .= '<input type="text" id="status" value="'.$presence['status'].'"><br />';
             $html .= '
                 <a 
                     onclick="showPresence(this)"
@@ -106,114 +106,4 @@ class Profile extends WidgetBase
         </div>
     <?php
     }
-/*    	$this->addcss('profile.css');
-    	$this->addjs('profile.js');
-		$this->registerEvent('myvcardreceived', 'onMyVcardReceived');
-		$this->registerEvent('incomemypresence', 'onMyPresence');
-
-		$this->status = array(
-                        1 => array('chat', t('Chat')),
-                        2 => array('dnd', t('Do not disturb')),
-                        3 => array('away', t('Away')),
-                        5 => array('xa', t('Away for a long time')),
-                    );
-    }
-
-    function onMyVcardReceived($vcard)
-    {
-		$html = $this->prepareVcard($vcard);
-        RPC::call('movim_fill', 'avatar', RPC::cdata($html));
-    }
-
-    function prepareVcard($vcard) {
-        $html = '<div id="profileavatar"><img alt="' . t("Your avatar") . '" src="data:'.
-            $vcard['vCardPhotoType'] . ';base64,' . $vcard['vCardPhotoBinVal'] . '" /></div>'
-
-            .'<h2>'.$vcard['vCardFN'].'<br />'.$vcard['vCardFamily'].'</h2>';
-        return $html;
-    }
-
-	function ajaxRefreshMyVcard()
-	{
-		$xmpp = Jabber::getInstance();
-		$xmpp->getVCard($jid); // We send the vCard request
-	}
-
-	function ajaxPresence($presence)
-	{
-		$xmpp = Jabber::getInstance();
-		$xmpp->setStatus($presence, false);
-	}
-
-	function ajaxSetStatus($statustext, $status)
-	{
-		$xmpp = Jabber::getInstance();
-		$xmpp->setStatus($statustext, $status);
-	}
-
-	function onMyPresence($presence)
-	{
-	    $uri = $this->respath();
-        RPC::call('movim_fill', 'presencebutton', RPC::cdata(
-            '<img id="presenceimage" class="'.$presence['show'].'" src="'.str_replace('jajax.php', '',$uri).'img/'.$presence['show'].'.png">'
-        ));
-	}
-
-    function build()
-    {
-
-        // We grab the presences
-        $session = Session::start(APP_NAME);
-        $presences = $session->get('presences');
-
-        // We grab my presence
-        $user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());
-		$mypresence = $presences[$user->getLogin()][$xmpp->getResource()];
-
-
-
-        // We set the status
-        $status = (isset($presences[$user->getLogin()]['status']))
-            ? $presences[$user->getLogin()]['status']
-            : $user->getLogin();
-        ?>
-		<div id="profile">
-			<div id="presencebutton" onclick="showPresence(this);">
-			    <img
-			        id="presenceimage"
-			        class="<?php echo $this->status[$mypresence][0]; ?>"
-			        src="<?php echo $this->respath('img/'.$this->status[$mypresence][0].'.png'); ?>"
-			     >
-			     <?php echo $this->status[$mypresence][1]; ?>
-			</div>
-
-			<ul id="presencelist">
-			    <?php foreach($this->status as $key) { ?>
-			        <li onclick="<?php $this->callAjax('ajaxSetStatus', "getStatusText()", "'$key[0]'");?> closePresence();">
-			            <img src="<?php echo $this->respath('img/'.$key[0].'.png'); ?>">
-			            <?php echo $key[1]; ?>
-			         </li>
-			    <?php } ?>
-			</ul>
-
-			<div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshMyVcard');?>"></div>
-			<?php echo $this->prepareVcard(Cache::c('myvcard')); ?>
-
-
-			<div id="profiledescription">
-			    <p>
-			        <input
-				        type="text"
-				        id="profilestatustext"
-				        value="<?php echo $status; ?>"
-				        onkeypress="if(event.keyCode == 13) {<?php $this->callAjax('ajaxSetStatus', "getStatusText()", "getStatusShow()");?>}"
-			        />
-			    </p>
-			</div>
-		</div>
-        <?php
-    }*/
 }
-
-?>
