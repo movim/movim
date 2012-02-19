@@ -28,7 +28,6 @@ class Profile extends WidgetBase
         $this->addcss('profile.css');
         $this->addjs('profile.js');
         $this->registerEvent('myvcard', 'onMyVcardReceived');
-        $this->registerEvent('mypresence', 'onMyVcardReceived');
     }
     
     function onMyVcardReceived($vcard = false)
@@ -45,12 +44,6 @@ class Profile extends WidgetBase
     
     function prepareVcard($vcard = false)
     {
-        $txt = array(
-                1 => t('Online'),
-                2 => t('Away'),
-                3 => t('Do Not Disturb'),
-                4 => t('Long Absence'),
-            );
     
         global $sdb;
         $user = new User();
@@ -74,32 +67,6 @@ class Profile extends WidgetBase
 				</table>
 				';
             $html .= '<input type="text" id="status" value="'.$presence['status'].'"><br />';
-            $html .= '
-                <a 
-                    onclick="showPresence(this)"
-                    class="presence_button button tiny icon '.$presence['presence_txt'].'" 
-                    href="#">&nbsp;'.$txt[$presence['presence']].'
-                </a>
-                <a 
-                    onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'online'").'" 
-                    style="display: none;";
-                    class="presence_button button merged left tiny icon online" href="#">
-                </a>
-                <a 
-                    onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'away'").'"
-                    style="display: none;";
-                    class="presence_button button merged tiny icon away" href="#">
-                </a>
-                <a 
-                    onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'dnd'").'" 
-                    style="display: none;";
-                    class="presence_button button merged tiny icon dnd" href="#">
-                </a>
-                <a 
-                    onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'xa'").'" 
-                    style="display: none;";
-                    class="presence_button button merged right tiny icon xa" href="#">
-                </a>';
         }
         
         return $html;

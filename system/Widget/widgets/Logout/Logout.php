@@ -24,8 +24,17 @@ class Logout extends WidgetBase
     function WidgetLoad()
     {
     	$this->addcss('logout.css');
+        $this->addjs('logout.js');
 		$this->registerEvent('postdisconnected', 'onPostDisconnect');
         $this->registerEvent('serverdisconnect', 'onPostDisconnect'); // When you're kicked out
+        $this->registerEvent('mypresence', 'onMyPresence');
+    }
+    
+    function onMyPresence()
+    {
+		$html = $this->preparePresence();
+        RPC::call('movim_fill', 'logout', RPC::cdata($html));
+        RPC::commit();
     }
 
     function onPostDisconnect($data)
@@ -40,11 +49,51 @@ class Logout extends WidgetBase
 		$xmpp = Jabber::getInstance($user->getLogin());
 		$xmpp->logout();
 	}
+    
+	function ajaxSetStatus($statustext, $status)
+	{
+		$xmpp = Jabber::getInstance();
+		$xmpp->setStatus($statustext, $status);
+	}
+    
+    function preparePresence()
+    {
+        $txt = array(
+                1 => t('Online'),
+                2 => t('Away'),
+                3 => t('Do Not Disturb'),
+                4 => t('Extended Away'),
+                5 => t('Logout')
+            );
+    
+        global $sdb;
+        $user = new User();
+        $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        
+		$xmpp = Jabber::getInstance();
+        $presence = PresenceHandler::getPresence($user->getLogin(), true, $xmpp->getResource());
+        
+        $html = '<div id="logouttab" class="'.$presence['presence_txt'].'" onclick="showLogoutList();">'.$txt[$presence['presence']].'</div>';
+                
+        $html .= '
+            <div id="logoutlist">
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'online'").'; hideLogoutList();" class="online">'.$txt[1].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'away'").'; hideLogoutList();" class="away">'.$txt[2].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'dnd'").'; hideLogoutList();" class="dnd">'.$txt[3].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'xa'").'; hideLogoutList();" class="xa">'.$txt[4].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxLogout').'">'.$txt[5].'</a>
+            </div>
+                ';
+        
+        return $html;
+    }
 
     function build()
     {
         ?>
-        <div id="logout" onclick="<?php $this->callAjax('ajaxLogout');?> this.innerHTML = '<?php echo t('Disconnecting...'); ?>'"><?php echo t('Logout'); ?></div>
+        <div id="logout">
+            <?php echo $this->preparePresence(); ?>
+        </div>
         <?php
     }
 }
