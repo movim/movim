@@ -5,6 +5,7 @@ class Message extends StorageBase {
     protected $jid;
     
     protected $nodeid;
+    protected $parentid;
     protected $title;
     protected $content;
     
@@ -26,6 +27,7 @@ class Message extends StorageBase {
         $this->jid      = StorageType::varchar(128);
         
         $this->nodeid   = StorageType::varchar(128);
+        $this->parentid   = StorageType::varchar(128);
         $this->title    = StorageType::varchar(128);
         $this->content  = StorageType::text();
 
@@ -57,8 +59,12 @@ class Message extends StorageBase {
 }
 
 class MessageHandler {   
-    function saveMessage($array, $jid, $from) {
+    function saveMessage($array, $jid, $from, $parent = false) {
+        
         if(isset($jid) && isset($from) && isset($array['entry']['content'])) {
+            if($parent != false)
+                $from = substr($array['entry']['source']['author']['uri'], 5);
+                
             global $sdb;
             $message = $sdb->select('Message', array(
                                                     'key' => $jid, 
@@ -70,6 +76,7 @@ class MessageHandler {
                 $message->key = $jid;
                 $message->jid = $from;
                 $message->nodeid = $array['@attributes']['id'];
+                $message->parentid = $parent;
                 $message->content = $array['entry']['content'];
                 $message->published = date('Y-m-d H:i:s', strtotime($array['entry']['published']));
                 $message->updated = date('Y-m-d H:i:s', strtotime($array['entry']['updated']));
@@ -83,6 +90,14 @@ class MessageHandler {
                 $message->locality = $array['entry']['geoloc']['locality'];
                 $message->street = $array['entry']['geoloc']['street'];
                 $message->building = $array['entry']['geoloc']['building'];
+
+                if(is_array($array['entry']['link'])) {
+                    foreach($array['entry']['link'] as $attachment) {
+                        if($attachment['link'][0]['@attributes']['title'] == 'thumb') {
+                            AttachmentHandler::saveAttachment($attachment, $jid, $from, $array['@attributes']['id']);
+                        }
+                    }
+                }
                 
                 $sdb->save($message);
                 
@@ -93,6 +108,7 @@ class MessageHandler {
                 $sdb->load($message, array('key' => $jid, 
                                            'jid' => $from,
                                            'nodeid' => $array['@attributes']['id']));
+                $message->parentid = $parent;
                 $message->content = $array['entry']['content'];
                 $message->published = date('Y-m-d H:i:s', strtotime($array['entry']['published']));
                 $message->updated = date('Y-m-d H:i:s', strtotime($array['entry']['updated']));

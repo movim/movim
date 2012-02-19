@@ -30,6 +30,15 @@ class Wall extends WidgetBase
 		$this->registerEvent('currentpost', 'onNewPost');
     }
     
+    function onComments($parent) {        
+        global $sdb;
+        $user = new User();
+        $message = $sdb->select('Message', array('key' => $user->getLogin(), 'nodeid' => $parent));
+
+        $html = $this->prepareComments($message[0], $user);
+        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
+    }
+    
     function preparePost($message, $user) {
         global $sdb;
         $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
@@ -61,15 +70,51 @@ class Wall extends WidgetBase
      		                    href="http://www.openstreetmap.org/?lat='.$message->getData('lat').'&lon='.$message->getData('lon').'&zoom=10"
      		                >'.$message->getPlace().'</a>
      		             </span>';
-              
+                          
+            $tmp .= '<div class="comments" id="'.$message->getData('nodeid').'comments">';
+
+            $tmp .= $this->prepareComments($message, $user);
+
             $tmp .= '
-	            	<div class="comments" id="'.$message->getData('nodeid').'comments">
+	            	<div class="comment">
 	            	    <a class="getcomments icon bubble" style="margin-left: 0px;" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.t('Get the comments').'</a>
-	            	</div>
-           		</div>';
+	            	</div>';
+            $tmp .= '</div>';
+              
+            $tmp .= '</div>';
 
         }
        	return $tmp;
+    }
+    
+    function prepareComments($message, $user) {
+        global $sdb;
+        $comments = $sdb->select('Message', array('key' => $user->getLogin(), 'parentid' => $message->getData('nodeid')), 'updated', true);
+        
+        if($comments) {
+            foreach($comments as $comment) {
+                $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $comment->getData('jid')));
+                
+                if(isset($contact[0])) {
+                    $photo = $contact[0]->getPhoto('s');
+                    $name = $contact[0]->getTrueName();
+                }
+                else {
+                    $photo = "image.php?c=default";
+                    $name = $comment->getData('jid');
+                }
+                
+                $tmp .= '
+                    <div class="comment">
+                        <img class="avatar tiny" src="'.$photo.'">
+                        <span><a href="?q=friend&f='.$comment->getData('jid').'">'.$name.'</a></span>
+                        <span class="date">'.prepareDate(strtotime($comment->getData('published'))).'</span><br />
+                        <div class="content tiny">'.prepareString($comment->getData('content')).'</div>
+                    </div>';
+            }
+        }
+        
+        return $tmp;
     }
     
     function onNewPost($payload) {
@@ -118,54 +163,7 @@ class Wall extends WidgetBase
 
         RPC::call('movim_fill', 'wall', RPC::cdata($html));
     }
-    
-    function onComments($payload) {
-        list($xmlns, $id) = explode("/", $payload['movim']['pubsub']['items']['@attributes']['node']);
-    
-        $html = '';
-        global $sdb;
-        $user = new User();
-        
-        if(isset($payload['movim']['pubsub']['items']['item']['@attributes']['id'])) {
-            
-            $jid = substr_replace($payload['movim']['pubsub']['items']['item']['entry']['source']['author']['uri'], "", 0, 5);
-            $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
-            
-            if(isset($contact[0])) {
-                $photo = $contact[0]->getPhoto('s');
-                $name = $contact[0]->getTrueName();
-            }
-            
-            $html .= '
-                <div class="comment">
-                	<img class="avatar tiny" src="'.$photo.'">
-                    <span><a href="?q=friend&f='.substr_replace($payload['movim']['pubsub']['items']['item']['entry']['source']['author']['uri'], "", 0, 5).'">'.$payload['movim']['pubsub']['items']['item']['entry']['source']['author']['name'].'</a></span>
-                    <span class="date">'.prepareDate(strtotime($payload['movim']['pubsub']['items']['item']['entry']['published'])).'</span><br />
-                    <div class="content tiny">'.prepareString($payload['movim']['pubsub']['items']['item']['entry']['content']).'</div>
-                </div>';
-        } elseif(isset($payload['movim']['pubsub']['items']['item'])) {
-            foreach($payload['movim']['pubsub']['items']['item'] as $comment) {
-            
-                $jid = substr_replace($comment['entry']['source']['author']['uri'], "", 0, 5);
-                $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
-                
-                if(isset($contact[0])) {
-                    $photo = $contact[0]->getPhoto('s');
-                    $name = $contact[0]->getTrueName();
-                }
-            
-                $html = '
-                    <div class="comment">
-                    	<img class="avatar tiny" src="'.$photo.'">
-                        <span><a href="?q=friend&f='.substr_replace($comment['entry']['source']['author']['uri'], "", 0, 5).'">'.$comment['entry']['source']['author']['name'].'</a></span>
-                        <span class="date">'.prepareDate(strtotime($comment['entry']['published'])).'</span><br />
-                        <div class="content tiny">'.prepareString($comment['entry']['content']).'</div>
-                    </div>' . $html;
-            }
-        }
-        
-        RPC::call('movim_fill', $id.'comments', RPC::cdata($html));
-    }
+
 
 	function ajaxWall($jid) {
 		$xmpp = Jabber::getInstance();
@@ -198,7 +196,7 @@ class Wall extends WidgetBase
             <?php 
             global $sdb;
             $user = new User();
-            $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $_GET['f']), 'updated', true);
+            $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $_GET['f'], 'parentid' => ''), 'updated', true);
             
             if($messages == false) {
             ?>

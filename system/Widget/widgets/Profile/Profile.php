@@ -44,7 +44,6 @@ class Profile extends WidgetBase
     
     function prepareVcard($vcard = false)
     {
-    
         global $sdb;
         $user = new User();
         $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
