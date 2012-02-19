@@ -12,17 +12,6 @@
 #feed #feedmessage {
 	width: 300%;
 	padding-right: 8px;
-/*    resize: none;
-    width: 65%;
-	border: 1px solid #E5E5E5;
-	margin: 0.5em 0em;
-	padding: 5px;
-    color: gray;
-    font-size: 1.3em;
-    margin: 1.5em;
-    margin-bottom: 20px;
-    margin: 1.5em;
-    width: auto;*/
 }
 
 #feed #feedmessage input {
@@ -37,4 +26,31 @@
 	border-radius: 0px;
 	border-left: 0px;
 	font-size: 17px;
+}
+
+#feed #feedcontent {
+	clear: both;
+}
+
+#feed #feedfilters {
+	float: right;
+	margin: 1em 1.5em 0em;
+}
+
+#feed #feedfilters ul li {
+	display: inline;
+	margin-left: 0.5em;
+	padding: 0.5em 1.5em;
+	border-radius: 3px;
+}
+
+#feed #feedfilters ul li:hover {
+	color: white;
+	background-color: gray;
+	cursor: pointer;
+}
+
+#feed #feedfilters ul li.on {
+	background-color: #444444;
+	color: white;
 }

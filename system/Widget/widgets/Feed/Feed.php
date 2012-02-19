@@ -4,6 +4,7 @@ class Feed extends WidgetBase {
 	function WidgetLoad()
 	{
     	$this->addcss('feed.css');
+    	$this->addjs('feed.js');
 		$this->registerEvent('post', 'onPost');
 		$this->registerEvent('streamreceived', 'onStream');
     }
@@ -15,7 +16,7 @@ class Feed extends WidgetBase {
 
         if($post != false) {  
             $html = $this->preparePost($post[0], $user);
-            RPC::call('movim_prepend', 'feed_content', RPC::cdata($html));
+            RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
         }
     }
     
@@ -26,8 +27,10 @@ class Feed extends WidgetBase {
         $tmp = '';
         
         if(isset($contact[0])) {
-            $tmp = '
-                <div class="post" id="'.$message->getData('nodeid').'">
+            $tmp = '<div class="post ';
+                if($user->getLogin() == $message->getData('jid'))
+					$tmp .= 'me';
+            $tmp .= '" id="'.$message->getData('nodeid').'" >
 		            <img class="avatar" src="'.$contact[0]->getPhoto('s').'">
 
      			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span> 
@@ -68,7 +71,7 @@ class Feed extends WidgetBase {
 	}
 	
 	function ajaxGetFeed($start) {
-		RPC::call('movim_append', 'feed_content', RPC::cdata($this->prepareFeed($start)));
+		RPC::call('movim_append', 'feedcontent', RPC::cdata($this->prepareFeed($start)));
         RPC::commit();
 	}
     
@@ -148,6 +151,7 @@ class Feed extends WidgetBase {
 			<tr>
 				<td id="feedmessage">
 					<input 
+						id="feedmessagecontent"
 						class="big" 
 						onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;" 
 						value="<?php echo t('What\'s new ?'); ?>">
@@ -155,7 +159,7 @@ class Feed extends WidgetBase {
 				<td>
 					<a 
 						title="<?php echo t("Submit"); ?>"
-						onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessage').value") ?>"
+						onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessagecontent').value") ?>"
 						href="#" 
 						id="feedmessagesubmit" 
 						class="button tiny icon submit">
@@ -172,7 +176,14 @@ class Feed extends WidgetBase {
         ?>
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
-        <div id="feed_content">
+        <div id="feedfilters">
+			<ul>
+				<li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
+				<li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>
+			</ul>
+        </div>
+        
+        <div id="feedcontent">
             <?php
             
             $conf = $sdb->select('ConfVar', array('login' => $user->getLogin()));

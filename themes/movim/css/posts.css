@@ -44,7 +44,7 @@
 	margin-right: 5px;
 	margin-top: 10px;
 	width: 80%;
-    box-shadow: 0 1px 1px rgba(34, 25, 25, 0.2);
+    box-shadow: 0 0px 1px rgba(34, 25, 25, 0.2);
 	background-color: #F2F0F0;
 
 }
@@ -113,18 +113,22 @@
 }
 
 .post.older {
-	border: 1px solid #D3D3D3;
-	background-color: #F3F3F3;
 	text-align: center;
 	margin: 1.5em;
 	font-weight: bold;
 	min-height: 0px;
 	cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    color: #666;
+    background-color: #F5F5F5;
 }
 
 .post.older:hover {
-	border: 1px solid #C3C3C3;
-	background-color: #E3E3E3;
+    background-color: #F8F8F8;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-color: #C6C6C6;
+    color: #333;
 }
 
 label {

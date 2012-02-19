@@ -205,8 +205,10 @@ class Wall extends WidgetBase
                 <script type="text/javascript">
                 <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
                 </script>
-            <?php
-                echo t('Loading the contact feed ...'); 
+                <div style="padding: 1em; text-align: center;">
+                    <?php echo t('Loading the contact feed ...'); ?>
+                </div>
+                <?php
             } else {
                 $html = '';
                 

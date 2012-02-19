@@ -10,13 +10,13 @@
 
 #profile h1 {
     margin: 0px;
-    line-height: 1em;
+    line-height: 1.3em;
     padding: 0px;
     padding-left: 10px;
 }
 
 #profile img {
-	width: 80px;
+	width: 70px;
 }
 
 #profile #status {
