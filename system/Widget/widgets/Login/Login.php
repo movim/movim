@@ -114,25 +114,6 @@ class Login extends WidgetBase {
 			        <input type="password" name="pass" id="pass" required
 			            placeholder="<?php echo t("Password"); ?>"/><br />
 
-			        <?php /*<a href="#" class="showoptions" onclick="getElementById('options').style.display = 'block';"><?php echo t('Options'); ?></a>
-
-                    <fieldset id="options" style="display: none;">
-			            <label class="tiny"><?php echo t('First Login'); ?></label>
-			                <input type="checkbox" class="tiny" name="create" id="create"><br />
-			                <hr />
-
-			            <label class="tiny"><?php echo t('Bosh Host'); ?></label>
-			                <input type="text" class="tiny" name="host" id="host"
-			                    value="<?php echo $serverconf['defBoshHost']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
-
-			            <label class="tiny"><?php echo t('Bosh Suffix'); ?></label>
-			                <input type="text" class="tiny" name="suffix" id="suffix"
-			                    value="<?php echo $serverconf['defBoshSuffix']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
-
-			            <label class="tiny"><?php echo t('Bosh Port'); ?></label>
-			                <input type="text" class="tiny" name="port" id="port"
-			                    value="<?php echo $serverconf['defBoshPort']; ?>"  onfocus="myFocus(this);" onblur="myBlur(this);"/><br />
-			        </fieldset>*/ ?>
 			        <input style="float: right;" onclick="if(document.querySelector('#login').value != '' && document.querySelector('#pass').value != '') {this.value = '<?php echo t('Connecting...');?>'; this.className='button icon loading'}"  type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
 			        
 			        <div style="padding-top: 20px; width: 100%; text-align: center; clear: both;">
