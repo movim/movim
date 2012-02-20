@@ -44,7 +44,7 @@ class Feed extends WidgetBase {
     
     function prepareFeed($start) {
 		global $sdb;
-		$messages = $sdb->select('Message', array('key' => $this->user->getLogin()), 'updated', true);
+		$messages = $sdb->select('Message', array('key' => $this->user->getLogin(), 'parentid' => ''), 'updated', true);
 		
 		if($messages == false) {
 			$html = '
