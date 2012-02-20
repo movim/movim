@@ -98,11 +98,12 @@ switch($browser) {
 
 define('BROWSER_COMP', $compatible);
 
-// Starting session.
 datajar_load_driver(Conf::getServerConfElement('datajarDriver'));
 DatajarEngineWrapper::setdriver(Conf::getServerConfElement('datajarDriver'));
-Session::start(APP_NAME);
 
 $sdb = new DatajarEngineWrapper(Conf::getServerConfElement('datajarConnection'));
+DatajarBase::bind($sdb);
 
+// Starting session.
+Session::start(APP_NAME);
 ?>

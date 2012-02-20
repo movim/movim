@@ -21,6 +21,7 @@ class Feed extends WidgetBase {
     
     function preparePost($message) {
         global $sdb;
+        
         $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $message->getData('jid')));
         
         $tmp = '';
@@ -43,8 +44,10 @@ class Feed extends WidgetBase {
     }
     
     function prepareFeed($start) {
-		global $sdb;
-		$messages = $sdb->select('Message', array('key' => $this->user->getLogin()), 'updated', true);
+        $query = Message::query()
+                            ->where(array('key' => $this->user->getLogin(), 'parentid' => ''))
+                            ->orderby('updated', true);
+        $messages = Message::run_query($query);
 		
 		if($messages == false) {
 			$html = '
