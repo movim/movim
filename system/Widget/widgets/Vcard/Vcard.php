@@ -33,21 +33,13 @@ class Vcard extends WidgetBase
         RPC::call('movim_fill', 'vcard', RPC::cdata($html));
     }
     
-/*    private function displayIf($element, $title, $html = false) {
-        if(!$html) $html = $element;
-        if(isset($element)) 
-                return '<div class="element"><span>'.$title.'</span><div class="content">'.$html.'</div></div>';
-    }*/
-    
 	function ajaxVcardSubmit($vcard) {
-		$xmpp = Jabber::getInstance();
-		$xmpp->updateVcard($vcard);
+		$this->xmpp->updateVcard($vcard);
 	}
     
     function prepareInfos($vcard = false) {
         global $sdb;
-        $user = new User();
-        $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         
         $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
         
@@ -133,8 +125,7 @@ class Vcard extends WidgetBase
     
     function ajaxGetVcard()
     {
-		$xmpp = Jabber::getInstance();
-		$xmpp->getVcard();
+		$this->xmpp->getVcard();
     }
 
     function build()

@@ -18,6 +18,7 @@ class User {
 	 */
 	function __construct()
 	{
+        movim_log("1.");
 		if($this->isLogged()) {
             $sess = Session::start(APP_NAME);
 			$this->username = $sess->get('login');

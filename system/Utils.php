@@ -36,11 +36,35 @@ function sprintln($string)
  * @return string
  */
 function prepareString($string) {
-    return preg_replace(
-		"@\b(https?://)?(([0-9a-zA-Z_!~*'().&=+$%-]+:)?[0-9a-zA-Z_!~*'().&=+$%-]+\@)?(([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-zA-Z_!~*'()-]+\.)*([0-9a-zA-Z][0-9a-zA-Z-]{0,61})?[0-9a-zA-Z]\.[a-zA-Z]{2,6})(:[0-9]{1,4})?((/[0-9a-zA-Z_!~*'().;?:\@&=+$,%#-]+)*/?)@", 
-		'<a target="_blank" title="\0" href="\0">\0</a>', 
-		$string
-	);
+    //return preg_replace(
+	//	"@\b(https?://)?(([0-9a-zA-Z_!~*'().&=+$%-]+:)?[0-9a-zA-Z_!~*'().&=+$%-]+\@)?(([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-zA-Z_!~*'()-]+\.)*([0-9a-zA-Z][0-9a-zA-Z-]{0,61})?[0-9a-zA-Z]\.[a-zA-Z]{2,6})(:[0-9]{1,4})?((/[0-9a-zA-Z_!~*'().;?:\@&=+$,%#-]+)*/?)@", 
+	//	'<a target="_blank" title="\0" href="\0">\0</a>', 
+	//	$string
+	//);
+    
+  return  preg_replace(
+     array(
+       '/(?(?=<a[^>]*>.+<\/a>)
+             (?:<a[^>]*>.+<\/a>)
+             |
+             ([^="\']?)((?:https?|ftp|bf2|):\/\/[^<> \n\r]+)
+         )/iex',
+       '/<a([^>]*)target="?[^"\']+"?/i',
+       '/<a([^>]+)>/i',
+       '/(^|\s)(www.[^<> \n\r]+)/iex',
+       '/(([_A-Za-z0-9-]+)(\\.[_A-Za-z0-9-]+)*@([A-Za-z0-9-]+)
+       (\\.[A-Za-z0-9-]+)*)/iex'
+       ),
+     array(
+       "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\">\\2</a>\\3':'\\0'))",
+       '<a\\1',
+       '<a\\1 target="_blank">',
+       "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\">\\2</a>\\3':'\\0'))",
+       "stripslashes((strlen('\\2')>0?'<a href=\"mailto:\\0\">\\0</a>':'\\0'))"
+       ),
+       $string
+   );
+
 }
 
 function prepareDate($time) {

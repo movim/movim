@@ -45,15 +45,12 @@ class Logout extends WidgetBase
 
 	function ajaxLogout()
 	{
-		$user = new User();
-		$xmpp = Jabber::getInstance($user->getLogin());
-		$xmpp->logout();
+		$this->xmpp->logout();
 	}
     
 	function ajaxSetStatus($statustext, $status)
 	{
-		$xmpp = Jabber::getInstance();
-		$xmpp->setStatus($statustext, $status);
+		$this->xmpp->setStatus($statustext, $status);
 	}
     
     function preparePresence()
@@ -67,11 +64,9 @@ class Logout extends WidgetBase
             );
     
         global $sdb;
-        $user = new User();
-        $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         
-		$xmpp = Jabber::getInstance();
-        $presence = PresenceHandler::getPresence($user->getLogin(), true, $xmpp->getResource());
+        $presence = PresenceHandler::getPresence($this->user->getLogin(), true, $this->xmpp->getResource());
         
         $html = '<div id="logouttab" class="'.$presence['presence_txt'].'" onclick="showLogoutList();">'.$txt[$presence['presence']].'</div>';
                 

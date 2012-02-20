@@ -35,8 +35,7 @@ class ContactSummary extends WidgetBase
     
 	function ajaxRefreshVcard($jid)
 	{
-		$xmpp = Jabber::getInstance();
-		$xmpp->getVCard($jid);
+		$this->xmpp->getVCard($jid);
 	}
 	
 	function prepareContactSummary($contact)
@@ -55,8 +54,7 @@ class ContactSummary extends WidgetBase
     function build()
     {
         global $sdb;
-        $user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['f']));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
         ?>
         <div id="contactsummary">
         <?php

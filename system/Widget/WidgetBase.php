@@ -23,6 +23,7 @@ class WidgetBase
 	protected $external; /*< Boolean: TRUE if not a system widget. */
 	protected $ajax;	 /*< Contains ajax client code. */
 	protected $xmpp; /*< Jabber instance. */
+    protected $user;
 	protected $name;
 	protected $events;
 
@@ -34,9 +35,11 @@ class WidgetBase
 	{
 		// Put default widget init here.
 		$this->external = $external;
-		if(!Jabber::getInstance()) 
+		if(Jabber::getInstance()) 
 		    $this->xmpp = Jabber::getInstance();
 		$this->ajax = ControllerAjax::getInstance();
+        
+        $this->user = new User();
 
 		// Generating ajax calls.
 		$refl = new ReflectionClass(get_class($this));

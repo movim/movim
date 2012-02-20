@@ -32,16 +32,15 @@ class Wall extends WidgetBase
     
     function onComments($parent) {        
         global $sdb;
-        $user = new User();
-        $message = $sdb->select('Message', array('key' => $user->getLogin(), 'nodeid' => $parent));
+        $message = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
 
         $html = $this->prepareComments($message[0], $user);
         RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
-    function preparePost($message, $user) {
+    function preparePost($message) {
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $message->getData('jid')));
         
         $tmp = '';
         
@@ -73,7 +72,7 @@ class Wall extends WidgetBase
                           
             $tmp .= '<div class="comments" id="'.$message->getData('nodeid').'comments">';
 
-            $tmp .= $this->prepareComments($message, $user);
+            $tmp .= $this->prepareComments($message);
 
             $tmp .= '
 	            	<div class="comment">
@@ -87,13 +86,13 @@ class Wall extends WidgetBase
        	return $tmp;
     }
     
-    function prepareComments($message, $user) {
+    function prepareComments($message) {
         global $sdb;
-        $comments = $sdb->select('Message', array('key' => $user->getLogin(), 'parentid' => $message->getData('nodeid')), 'updated', true);
+        $comments = $sdb->select('Message', array('key' => $this->user->getLogin(), 'parentid' => $message->getData('nodeid')), 'updated', true);
         
         if($comments) {
             foreach($comments as $comment) {
-                $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $comment->getData('jid')));
+                $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $comment->getData('jid')));
                 
                 if(isset($contact[0])) {
                     $photo = $contact[0]->getPhoto('s');
@@ -119,9 +118,8 @@ class Wall extends WidgetBase
     
     function onNewPost($payload) {
         global $sdb;
-        $user = new User(); 
         $message = $sdb->select('Message', array('nodeid' => $payload['event']['items']['item']['@attributes']['id']));
-        $html = $this->preparePost($message[0], $user);
+        $html = $this->preparePost($message[0]);
 
         RPC::call('movim_prepend', 'wall', RPC::cdata($html));
     }
@@ -146,8 +144,7 @@ class Wall extends WidgetBase
                 ';
             
             global $sdb;
-            $user = new User();
-            $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
+            $messages = $sdb->select('Message', array('key' => $this->user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
             
             if($messages == false) {            
                 RPC::call('hideWall'); 
@@ -155,7 +152,7 @@ class Wall extends WidgetBase
                 $html = '';
                 
                 foreach(array_slice($messages, 0, 20) as $message) {
-                    $html .= $this->preparePost($message, $user);
+                    $html .= $this->preparePost($message);
                 }
                 echo $html;
             }
@@ -166,18 +163,15 @@ class Wall extends WidgetBase
 
 
 	function ajaxWall($jid) {
-		$xmpp = Jabber::getInstance();
-		$xmpp->getWall($jid);
+		$this->xmpp->getWall($jid);
 	}
 	
 	function ajaxSubscribe($jid) {
-		$xmpp = Jabber::getInstance();
-		$xmpp->subscribeNode($jid);
+		$this->xmpp->subscribeNode($jid);
 	}
 	
 	function ajaxGetComments($jid, $id) {
-		$xmpp = Jabber::getInstance();
-		$xmpp->getComments($jid, $id);
+		$this->xmpp->getComments($jid, $id);
 	}
 
 	function build()
@@ -195,8 +189,7 @@ class Wall extends WidgetBase
                 <br /><br />-->
             <?php 
             global $sdb;
-            $user = new User();
-            $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $_GET['f'], 'parentid' => ''), 'updated', true);
+            $messages = $sdb->select('Message', array('key' => $this->user->getLogin(), 'jid' => $_GET['f'], 'parentid' => ''), 'updated', true);
             
             if($messages == false) {
             ?>
@@ -211,7 +204,7 @@ class Wall extends WidgetBase
                 $html = '';
                 
                 foreach(array_slice($messages, 0, 20) as $message) {
-                    $html .= $this->preparePost($message, $user);
+                    $html .= $this->preparePost($message);
                 }
                 echo $html;
             }

@@ -38,18 +38,15 @@ class Profile extends WidgetBase
     
 	function ajaxSetStatus($statustext, $status)
 	{
-		$xmpp = Jabber::getInstance();
-		$xmpp->setStatus($statustext, $status);
+		$this->xmpp->setStatus($statustext, $status);
 	}
     
     function prepareVcard($vcard = false)
     {
         global $sdb;
-        $user = new User();
-        $me = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         
-		$xmpp = Jabber::getInstance();
-        $presence = PresenceHandler::getPresence($user->getLogin(), true, $xmpp->getResource());
+        $presence = PresenceHandler::getPresence($this->user->getLogin(), true, $this->xmpp->getResource());
         
         if(isset($me[0])) {
             $me = $me[0];

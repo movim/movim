@@ -11,8 +11,7 @@ class Feed extends WidgetBase {
     
     function onPost($payload) {
         global $sdb;
-        $user = new User();
-        $post = $sdb->select('Message', array('key' => $user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+        $post = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
 
         if($post != false) {  
             $html = $this->preparePost($post[0], $user);
@@ -20,15 +19,15 @@ class Feed extends WidgetBase {
         }
     }
     
-    function preparePost($message, $user) {
+    function preparePost($message) {
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $message->getData('jid')));
         
         $tmp = '';
         
         if(isset($contact[0])) {
             $tmp = '<div class="post ';
-                if($user->getLogin() == $message->getData('jid'))
+                if($this->user->getLogin() == $message->getData('jid'))
 					$tmp .= 'me';
             $tmp .= '" id="'.$message->getData('nodeid').'" >
 		            <img class="avatar" src="'.$contact[0]->getPhoto('s').'">
@@ -45,8 +44,7 @@ class Feed extends WidgetBase {
     
     function prepareFeed($start) {
 		global $sdb;
-        $user = new User();
-		$messages = $sdb->select('Message', array('key' => $user->getLogin()), 'updated', true);
+		$messages = $sdb->select('Message', array('key' => $this->user->getLogin()), 'updated', true);
 		
 		if($messages == false) {
 			$html = '
@@ -58,7 +56,7 @@ class Feed extends WidgetBase {
 			$html = '';
 			
 			foreach(array_slice($messages, $start, 20) as $message) {
-				$html .= $this->preparePost($message, $user);
+				$html .= $this->preparePost($message);
 			}
 			
 			$next = $start + 20;
@@ -78,11 +76,10 @@ class Feed extends WidgetBase {
     function onStream($payload) {
         $html = '';
         $i = 0;
-        $user = new User();
         $jid = $user->getLogin();
         
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $this->user->getLogin()));
         
         if(isset($contact[0]))
             $photo = $contact[0]->getPhoto();
@@ -112,26 +109,22 @@ class Feed extends WidgetBase {
     
     function ajaxPublishItem($content)
     {
-		$xmpp = Jabber::getInstance();
-        $xmpp->publishItem($content);
+        $this->xmpp->publishItem($content);
     }
     
     function ajaxCreateNode()
     {
-        $user = new User();
-        
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         
 	                $conf = new ConfVar();
 	                $sdb->load($conf, array(
-                                        'login' => $user->getLogin()
+                                        'login' => $this->user->getLogin()
                                             ));
 	                $conf->setConf(false, false, false, false, false, false, false, false, false, true);
 	                $sdb->save($conf);
         
-		$xmpp = Jabber::getInstance();
-        $xmpp->createNode();
+        $this->xmpp->createNode();
         
         RPC::call('movim_reload');
         RPC::commit();
@@ -139,8 +132,7 @@ class Feed extends WidgetBase {
     
     function ajaxFeed()
     {
-		$xmpp = Jabber::getInstance();
-        $xmpp->getWall($xmpp->getCleanJid());
+        $this->xmpp->getWall($this->xmpp->getCleanJid());
     }
     
     function build()
@@ -171,8 +163,6 @@ class Feed extends WidgetBase {
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
         <?php 
             global $sdb;
-            $user = new User();
-            
         ?>
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
@@ -186,7 +176,7 @@ class Feed extends WidgetBase {
         <div id="feedcontent">
             <?php
             
-            $conf = $sdb->select('ConfVar', array('login' => $user->getLogin()));
+            $conf = $sdb->select('ConfVar', array('login' => $this->user->getLogin()));
             $conf_arr = $conf[0]->getConf(); 
             if($conf_arr["first"] == 0) { 
             ?>
