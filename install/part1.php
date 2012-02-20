@@ -276,7 +276,7 @@ function test_requirements()
                 
                 <br />
                 <fieldset>
-                    <legend>Storage</legend>
+                    <legend>Datajar</legend>
                 
                     <?php if(isset($_GET['err']) && $_GET['err']=='bdd') { ?>
                     
@@ -287,8 +287,8 @@ function test_requirements()
                     <?php } ?>
                     
                     <p>
-                        <label for="sqlite">Storage driver</label>
-                        <select id="storage" name="storage" onchange="changeDB(this.options[this.selectedIndex].value)">
+                        <label for="sqlite">Datajar driver</label>
+                        <select id="datajar" name="datajar" onchange="changeDB(this.options[this.selectedIndex].value)">
                             <option value="mysql">MySQL</option>
                             <!--<option value="sqlite">SQLite</option>-->
                         </select>

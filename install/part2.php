@@ -10,7 +10,7 @@ function get_checkbox($name, $if = 'true', $else = 'false')
 function test_bosh($boshhost, $port, $suffix, $host)
 {
     $url = (get_checkbox('boshCookieHTTPS') == "true")? 'https://' : 'http://';
-        
+
     $url .= $boshhost.":".$port.'/'.$suffix;
 
     $headers = array('Accept-Encoding: gzip, deflate', 'Content-Type: text/xml; charset=utf-8');
@@ -25,7 +25,7 @@ function test_bosh($boshhost, $port, $suffix, $host)
               xmpp:version='1.0'
               xmlns='http://jabber.org/protocol/httpbind'
               xmlns:xmpp='urn:xmpp:xbosh'/>";
-              
+
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -42,7 +42,7 @@ function test_bosh($boshhost, $port, $suffix, $host)
     $rs['errno'] = curl_errno($ch);
     $rs['errmsg'] = curl_error($ch);
     $rs['header'] = curl_getinfo($ch);
-    
+
     printf($rs['errmsg']);
 
     curl_close($ch);
@@ -125,8 +125,8 @@ function perform_install()
       'defBoshHost'        => $_POST['defBoshHost'],
       'defBoshSuffix'      => $_POST['defBoshSuffix'],
       'defBoshPort'        => $_POST['defBoshPort'],
-      'storageDriver'      => $_POST['storage'],
-      'storageConnection'  => $_POST['database'],
+      'datajarDriver'      => $_POST['datajar'],
+      'datajarConnection'  => $_POST['database'],
       'proxyEnabled'       => get_checkbox('proxyEnabled'),
       'proxyURL'           => $_POST['proxyURL'],
       'proxyPort'          => $_POST['proxyPort'],
@@ -145,32 +145,32 @@ if(isset($_POST['install'])) {
     if(!test_bosh($_POST['defBoshHost'], $_POST['defBoshPort'], $_POST['defBoshSuffix'], $_POST['host'])) {
         header('Location:part1.php?err=bosh'); exit;
     }
-    // We create the configuration file    
-    perform_install(); 
+    // We create the configuration file
+    perform_install();
 
     // We try to connect to the database
-    try {       
+    try {
         include('../init.php');
     } catch (Exception $e) {
-            header('Location:part1.php?err=bdd');
+        header('Location:part1.php?err=bdd');
     }
 
     // We create correctly the tables
     global $sdb;
     $contact = new Contact();
-    $sdb->create($contact); 
-    
+    $sdb->create($contact);
+
     $conf = new ConfVar();
-    $sdb->create($conf); 
+    $sdb->create($conf);
 
     $message = new Message();
     $sdb->create($message);
 
     $presence = new Presence();
-    $sdb->create($presence);      
-    
+    $sdb->create($presence);
+
     $attachment = new Attachment();
-    $sdb->create($attachment);   
+    $sdb->create($attachment);
 }
 
 ?>
@@ -186,7 +186,7 @@ if(isset($_POST['install'])) {
 	<body>
 		<div id="content">
 	        <h1><?php echo t('Movim Installer')." - ".t('Success !'); ?></h1>
-	        
+
 	        <div class="valid">
                 - <?php echo t('Valid Bosh'); ?><br />
                 - <?php echo t('Database Detected'); ?><br />

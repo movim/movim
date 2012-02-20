@@ -1,6 +1,6 @@
 <?php
 
-class Presence extends StorageBase {
+class Presence extends DatajarBase {
     protected $key;
     protected $jid;
     
@@ -10,13 +10,13 @@ class Presence extends StorageBase {
     protected $status;
     
     protected function type_init() {
-        $this->key      = StorageType::varchar(128);
-        $this->jid      = StorageType::varchar(128);
+        $this->key      = DatajarType::varchar(128);
+        $this->jid      = DatajarType::varchar(128);
         
-        $this->ressource = StorageType::varchar(128);
-        $this->presence = StorageType::int();
-        $this->priority = StorageType::int();
-        $this->status   = StorageType::text();
+        $this->ressource = DatajarType::varchar(128);
+        $this->presence = DatajarType::int();
+        $this->priority = DatajarType::int();
+        $this->status   = DatajarType::text();
     }
     
     public function setPresence($array) {
