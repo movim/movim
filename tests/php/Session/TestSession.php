@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @file TestStorage.php
+ * @file TestDatajar.php
  * This file is part of Movim.
  *
- * @brief Tests the Storage module.
+ * @brief Tests the Datajar module.
  *
  * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
  *
@@ -30,8 +30,8 @@ class TestSession
         define('TEST_DB_DRIVER', 'sqlite');
         define('TEST_DB_CONN', 'sqlite:///'.$this->db_file);
 
-        storage_load_driver(TEST_DB_DRIVER);
-        StorageEngineWrapper::setdriver(TEST_DB_DRIVER, TRUE);
+        datajar_load_driver(TEST_DB_DRIVER);
+        DatajarEngineWrapper::setdriver(TEST_DB_DRIVER, TRUE);
 
         $this->_wipe();
     }

@@ -1,6 +1,6 @@
 <?php
 
-class Message extends StorageBase {
+class Message extends DatajarBase {
     protected $key;
     protected $jid;
     
@@ -22,25 +22,25 @@ class Message extends StorageBase {
     protected $building;
     
     protected function type_init() {
-        $this->key      = StorageType::varchar(128);
-        $this->jid      = StorageType::varchar(128);
+        $this->key      = DatajarType::varchar(128);
+        $this->jid      = DatajarType::varchar(128);
         
-        $this->nodeid   = StorageType::varchar(128);
-        $this->title    = StorageType::varchar(128);
-        $this->content  = StorageType::text();
+        $this->nodeid   = DatajarType::varchar(128);
+        $this->title    = DatajarType::varchar(128);
+        $this->content  = DatajarType::text();
 
-        $this->published = StorageType::datetime();
-        $this->updated   = StorageType::datetime();
+        $this->published = DatajarType::datetime();
+        $this->updated   = DatajarType::datetime();
         
-        $this->lat         = StorageType::varchar(128);
-        $this->lon         = StorageType::varchar(128);
-        $this->country     = StorageType::varchar(128);
-        $this->countrycode = StorageType::varchar(128);
-        $this->region      = StorageType::varchar(128);
-        $this->postalcode  = StorageType::varchar(128);
-        $this->locality    = StorageType::varchar(128);
-        $this->street      = StorageType::varchar(128);
-        $this->building    = StorageType::varchar(128);
+        $this->lat         = DatajarType::varchar(128);
+        $this->lon         = DatajarType::varchar(128);
+        $this->country     = DatajarType::varchar(128);
+        $this->countrycode = DatajarType::varchar(128);
+        $this->region      = DatajarType::varchar(128);
+        $this->postalcode  = DatajarType::varchar(128);
+        $this->locality    = DatajarType::varchar(128);
+        $this->street      = DatajarType::varchar(128);
+        $this->building    = DatajarType::varchar(128);
     }
     
     public function getData($data) {

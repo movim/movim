@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @file TestStorage.php
+ * @file TestDatajar.php
  * This file is part of Movim.
  *
- * @brief Tests the Storage module.
+ * @brief Tests the Datajar module.
  *
  * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
  *
@@ -20,7 +20,7 @@ if(function_exists("mysql_connect")) {
     define('DB_LOGFILE', 'queries.log');
 
     if(!class_exists('Account')) {
-        class Account extends StorageBase
+        class Account extends DatajarBase
         {
             // Storable fields.
             protected $balance;
@@ -29,14 +29,14 @@ if(function_exists("mysql_connect")) {
 
             protected function type_init()
             {
-                $this->balance = StorageType::float();
-                $this->interest = StorageType::float();
+                $this->balance = DatajarType::float();
+                $this->interest = DatajarType::float();
             }
         }
     }
 
     if(!class_exists('Owner')) {
-        class Owner extends StorageBase
+        class Owner extends DatajarBase
         {
             protected $name;
             protected $dob;
@@ -44,8 +44,8 @@ if(function_exists("mysql_connect")) {
 
             protected function type_init()
             {
-                $this->name = StorageType::varchar(256);
-                $this->dob = StorageType::date();
+                $this->name = DatajarType::varchar(256);
+                $this->dob = DatajarType::date();
                 $this->foreignkey('account', 'Account');
             }
         }
@@ -61,8 +61,8 @@ if(function_exists("mysql_connect")) {
 
         function __construct()
         {
-            Conf::$conf_path = "tests/php/Storage";
-            storage_load_driver('mysql');
+            Conf::$conf_path = "tests/php/Datajar";
+            datajar_load_driver('mysql');
             $this->_wipe();
         }
 
@@ -81,7 +81,7 @@ if(function_exists("mysql_connect")) {
             }
 
             if(!isset($this->sdb)) {
-                $this->sdb = new StorageEngineMysql("mysql://".$this->username.":".$this->password."@".$this->host.":".$this->port."/".$this->schema);
+                $this->sdb = new DatajarEngineMysql("mysql://".$this->username.":".$this->password."@".$this->host.":".$this->port."/".$this->schema);
             }
         }
 

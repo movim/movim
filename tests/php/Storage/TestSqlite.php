@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @file TestStorage.php
+ * @file TestDatajar.php
  * This file is part of Movim.
  *
- * @brief Tests the Storage module.
+ * @brief Tests the Datajar module.
  *
  * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
  *
@@ -21,7 +21,7 @@ if(class_exists("SQLite3")) {
     define('DB_LOGFILE', 'queries.log');
 
     if(!class_exists('Account')) {
-        class Account extends StorageBase
+        class Account extends DatajarBase
         {
             // Storable fields.
             protected $balance;
@@ -30,14 +30,14 @@ if(class_exists("SQLite3")) {
 
             protected function type_init()
             {
-                $this->balance = StorageType::float();
-                $this->interest = StorageType::float();
+                $this->balance = DatajarType::float();
+                $this->interest = DatajarType::float();
             }
         }
     }
 
     if(!class_exists('Owner')) {
-        class Owner extends StorageBase
+        class Owner extends DatajarBase
         {
             protected $name;
             protected $dob;
@@ -45,8 +45,8 @@ if(class_exists("SQLite3")) {
 
             protected function type_init()
             {
-                $this->name = StorageType::varchar(256);
-                $this->dob = StorageType::date();
+                $this->name = DatajarType::varchar(256);
+                $this->dob = DatajarType::date();
                 $this->foreignkey('account', 'Account');
             }
         }
@@ -56,8 +56,8 @@ if(class_exists("SQLite3")) {
     {
         function __construct()
         {
-            Conf::$conf_path = "tests/php/Storage";
-            storage_load_driver('sqlite');
+            Conf::$conf_path = "tests/php/Datajar";
+            datajar_load_driver('sqlite');
             $this->db_file = ut_res('tests.db');
             $this->_wipe();
         }
@@ -70,9 +70,9 @@ if(class_exists("SQLite3")) {
                 unset($this->db);
 
             unlink($this->db_file);
-            $this->sdb = new StorageEngineSqlite("sqlite:///" . $this->db_file);
+            $this->sdb = new DatajarEngineSqlite("sqlite:///" . $this->db_file);
             $this->db = new SQLite3($this->db_file);
-            StorageBase::bind($this->sdb);
+            DatajarBase::bind($this->sdb);
         }
 
         function testCreate()

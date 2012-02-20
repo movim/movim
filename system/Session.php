@@ -21,7 +21,7 @@
 
 if(!class_exists('Session')):
 
-class SessionVar extends StorageBase
+class SessionVar extends DatajarBase
 {
     protected $name;
     protected $value;
@@ -31,11 +31,11 @@ class SessionVar extends StorageBase
 
     protected function type_init()
     {
-        $this->name      = StorageType::varchar(128);
-        $this->value     = StorageType::text();
-        $this->session   = StorageType::varchar(128);
-        $this->container = StorageType::varchar(128);
-        $this->timestamp = StorageType::int();
+        $this->name      = DatajarType::varchar(128);
+        $this->value     = DatajarType::text();
+        $this->session   = DatajarType::varchar(128);
+        $this->container = DatajarType::varchar(128);
+        $this->timestamp = DatajarType::int();
     }
 }
 
@@ -54,9 +54,9 @@ class Session
     protected function __construct($name)
     {
         if(defined('TEST_DB_CONN')) {
-            $this->db = new StorageEngineWrapper(TEST_DB_CONN);
+            $this->db = new DatajarEngineWrapper(TEST_DB_CONN);
         } else {
-            $this->db = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
+            $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('datajarConnection'));
         }
 
         // Does the database exist?
