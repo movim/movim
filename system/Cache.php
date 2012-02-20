@@ -1,6 +1,6 @@
 <?php
 
-class CacheVar extends StorageBase
+class CacheVar extends DatajarBase
 {
     protected $key;
     protected $data;
@@ -9,10 +9,10 @@ class CacheVar extends StorageBase
 
     protected function type_init()
     {
-        $this->key       = StorageType::varchar(128);
-        $this->data      = StorageType::text();
-        $this->checksum  = StorageType::varchar(64);
-        $this->timestamp = StorageType::int();
+        $this->key       = DatajarType::varchar(128);
+        $this->data      = DatajarType::text();
+        $this->checksum  = DatajarType::varchar(64);
+        $this->timestamp = DatajarType::int();
     }
 }
 
@@ -36,7 +36,7 @@ class Cache
         $user = new User();
         $this->login = $user->getLogin();
 
-        $this->db = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
+        $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('datajarConnection'));
 
         $var = new CacheVar();
         $this->db->create($var);

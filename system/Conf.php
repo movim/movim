@@ -1,6 +1,6 @@
 <?php
 
-class ConfVar extends StorageBase {
+class ConfVar extends DatajarBase {
     protected $login;
     protected $pass;
 
@@ -17,20 +17,20 @@ class ConfVar extends StorageBase {
     protected $first;
 
     protected function type_init() {
-        $this->login      = StorageType::varchar(128);
-        $this->pass       = StorageType::varchar(128);
+        $this->login      = DatajarType::varchar(128);
+        $this->pass       = DatajarType::varchar(128);
 
-        $this->host       = StorageType::varchar(128);
-        $this->domain     = StorageType::varchar(128);
-        $this->port       = StorageType::int();
+        $this->host       = DatajarType::varchar(128);
+        $this->domain     = DatajarType::varchar(128);
+        $this->port       = DatajarType::int();
 
-        $this->boshHost   = StorageType::varchar(128);
-        $this->boshSuffix = StorageType::varchar(128);
-        $this->boshPort   = StorageType::int();
+        $this->boshHost   = DatajarType::varchar(128);
+        $this->boshSuffix = DatajarType::varchar(128);
+        $this->boshPort   = DatajarType::int();
 
-        $this->language   = StorageType::varchar(128);
+        $this->language   = DatajarType::varchar(128);
 
-        $this->first      = StorageType::int();
+        $this->first      = DatajarType::int();
     }
 
     public function setConf(

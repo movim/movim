@@ -1,6 +1,6 @@
 <?php
 
-class Contact extends StorageBase {
+class Contact extends DatajarBase {
     protected $key;
     protected $jid;
     
@@ -22,25 +22,25 @@ class Contact extends StorageBase {
     protected $chaton;
     
     protected function type_init() {
-        $this->key      = StorageType::varchar(128);
-        $this->jid      = StorageType::varchar(128);
+        $this->key      = DatajarType::varchar(128);
+        $this->jid      = DatajarType::varchar(128);
         
-        $this->fn       = StorageType::varchar(128);
-        $this->name     = StorageType::varchar(128);
-        $this->date     = StorageType::date();
-        $this->url      = StorageType::varchar(128);
+        $this->fn       = DatajarType::varchar(128);
+        $this->name     = DatajarType::varchar(128);
+        $this->date     = DatajarType::date();
+        $this->url      = DatajarType::varchar(128);
         
-        $this->rostername     = StorageType::varchar(128);
-        $this->rosterask      = StorageType::varchar(128);
-        $this->rostersubscription = StorageType::varchar(128);
+        $this->rostername     = DatajarType::varchar(128);
+        $this->rosterask      = DatajarType::varchar(128);
+        $this->rostersubscription = DatajarType::varchar(128);
         
-        $this->phototype = StorageType::varchar(128);
-        $this->photobin  = StorageType::text();
+        $this->phototype = DatajarType::varchar(128);
+        $this->photobin  = DatajarType::text();
         
-        $this->desc = StorageType::text();
+        $this->desc = DatajarType::text();
         
-        $this->vcardreceived  = StorageType::int();
-        $this->chaton  = StorageType::int();
+        $this->vcardreceived  = DatajarType::int();
+        $this->chaton  = DatajarType::int();
     }
     
     public function setContact($array) {

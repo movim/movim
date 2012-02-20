@@ -14,8 +14,8 @@ define('USERS_PATH', BASE_PATH . 'user/');
 // Loads up all system libraries.
 require_once(LIB_PATH . "Lang/i18n.php");
 
-require_once(LIB_PATH . "Storage/loader.php");
-load_storage(array('sqlite'));
+require_once(LIB_PATH . "Datajar/loader.php");
+load_datajar(array('sqlite'));
 
 require_once(LIB_PATH . "Session.php");
 require_once(LIB_PATH . "Utils.php");
@@ -99,10 +99,10 @@ switch($browser) {
 define('BROWSER_COMP', $compatible);
 
 // Starting session.
-storage_load_driver(Conf::getServerConfElement('storageDriver'));
-StorageEngineWrapper::setdriver(Conf::getServerConfElement('storageDriver'));
+datajar_load_driver(Conf::getServerConfElement('datajarDriver'));
+DatajarEngineWrapper::setdriver(Conf::getServerConfElement('datajarDriver'));
 Session::start(APP_NAME);
 
-$sdb = new StorageEngineWrapper(Conf::getServerConfElement('storageConnection'));
+$sdb = new DatajarEngineWrapper(Conf::getServerConfElement('datajarConnection'));
 
 ?>

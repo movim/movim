@@ -1,6 +1,6 @@
 <?php
 
-class Attachment extends StorageBase {
+class Attachment extends DatajarBase {
     protected $key;
     protected $jid;
     
@@ -16,19 +16,19 @@ class Attachment extends StorageBase {
     protected $thumb;
     
     protected function type_init() {
-        $this->key      = StorageType::varchar(128);
-        $this->jid      = StorageType::varchar(128);
+        $this->key      = DatajarType::varchar(128);
+        $this->jid      = DatajarType::varchar(128);
         
-        $this->node      = StorageType::varchar(128);
-        $this->attachmentid      = StorageType::varchar(128);
+        $this->node      = DatajarType::varchar(128);
+        $this->attachmentid      = DatajarType::varchar(128);
              
-        $this->title = StorageType::varchar(128);
-        $this->type = StorageType::varchar(128);
+        $this->title = DatajarType::varchar(128);
+        $this->type = DatajarType::varchar(128);
         
-        $this->length  = StorageType::int();
+        $this->length  = DatajarType::int();
 
-        $this->link = StorageType::varchar(128);
-        $this->thumb = StorageType::varchar(128);
+        $this->link = DatajarType::varchar(128);
+        $this->thumb = DatajarType::varchar(128);
     }
     
     public function getData($data) {
