@@ -39,6 +39,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
+            $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
 
 			$content = new TplPageBuilder($user);
@@ -70,7 +71,7 @@ class ControllerMain extends ControllerBase
                     $name = $_GET['f'];
 
 				$this->page->menuAddLink($name, false, true);
-
+				$this->page->menuAddLink(t('Profile'), '?q=profile');
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
 				$content = new TplPageBuilder($user);
 
@@ -91,6 +92,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Configuration', APP_TITLE));
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
 
 			$content = new TplPageBuilder($user);
@@ -98,6 +100,25 @@ class ControllerMain extends ControllerBase
 			$this->page->setContent($content->build('config.tpl'));
 			echo $this->page->build('page.tpl');
 		}
+	}
+	
+	function profile()
+	{
+		$user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			$this->page->setTitle(t('%s - Profile', APP_TITLE));
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+			$this->page->menuAddLink(t('Profile'), '?q=profile', true);
+			$this->page->menuAddLink(t('Configuration'), '?q=config');
+
+			$content = new TplPageBuilder($user);
+
+			$this->page->setContent($content->build('profile.tpl'));
+			echo $this->page->build('page.tpl');
+		}	
 	}
 
 	function account()

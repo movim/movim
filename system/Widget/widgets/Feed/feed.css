@@ -1,21 +1,56 @@
 /* WALL STYLE */
 
 #feed {
-    padding-top: 10px;
+/*    padding-top: 10px;*/
+}
+
+#feed #submit {
+	padding: 1.5em;
+	padding-bottom: 0.5em;
 }
 
 #feed #feedmessage {
-    resize: none;
-    width: 85%;
-	border: 1px solid #E5E5E5;
-	margin: 0.5em 0em;
-	padding: 5px;
-    color: gray;
-    font-size: 1.3em;
-    margin-bottom: 20px;
+	width: 300%;
+	padding-right: 8px;
+}
+
+#feed #feedmessage input {
+	margin: 0px;
+	width: 100%;
+	border-right: 0px;
 }
 
 #feed #feedmessagesubmit {
-    margin: 1.7em 0em; 
-    float: right;
+	border-color: #999999 #BBBBBB #BBBBBB;
+	background-color: white;
+	border-radius: 0px;
+	border-left: 0px;
+	font-size: 17px;
+}
+
+#feed #feedcontent {
+	clear: both;
+}
+
+#feed #feedfilters {
+	float: right;
+	margin: 1em 1.5em 0em;
+}
+
+#feed #feedfilters ul li {
+	display: inline;
+	margin-left: 0.5em;
+	padding: 0.5em 1.5em;
+	border-radius: 3px;
+}
+
+#feed #feedfilters ul li:hover {
+	color: white;
+	background-color: gray;
+	cursor: pointer;
+}
+
+#feed #feedfilters ul li.on {
+	background-color: #444444;
+	color: white;
 }

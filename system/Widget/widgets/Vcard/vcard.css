@@ -1,3 +1,7 @@
+#vcard {
+	padding: 1.5em;
+}
+
 #vcard .element {
     padding: 5px;
     clear: both;
@@ -41,5 +45,5 @@
 #vcard .content {
     display: block;
     float: left;
-    width: 500px;
+    width: 370px;
 }

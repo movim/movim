@@ -2,13 +2,9 @@
 
 .post {
 	border-bottom: 1px solid #ECECEC;
-    width: 100%;
-	padding: 1em 0em;
+    width: auto;
+	padding: 1.5em 1.5em;
     min-height: 50px;
-}
-
-.post:first-child {
-    padding-top: 0.2em;
 }
 
 .post:last-child {
@@ -17,6 +13,7 @@
 
 .post span {
     font-weight: bold;
+    line-height: 1.5em;
 }
 
 .post span.date {
@@ -47,6 +44,9 @@
 	margin-right: 5px;
 	margin-top: 10px;
 	width: 80%;
+    box-shadow: 0 0px 1px rgba(34, 25, 25, 0.2);
+	background-color: #F2F0F0;
+
 }
 
 .post .comments:hover {
@@ -55,9 +55,15 @@
 
 .post .comments .comment {
     border-bottom: 1px solid #E3E3E3;
-    padding: 0.7em;
+    padding: 1em;
     overflow: auto;
-	width: 95%;
+	width: auto;
+    border-bottom: 1px solid #D9D4D4;
+    border-top: 1px solid #FCFAFA;
+}
+
+.post .comments .comment:first-child {
+	border-top: none;
 }
 
 .post .comments .comment:last-child {
@@ -104,6 +110,25 @@
     padding: 5px;
     margin: 5px;
     border: 1px solid #CCC;
+}
+
+.post.older {
+	text-align: center;
+	margin: 1.5em;
+	font-weight: bold;
+	min-height: 0px;
+	cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    color: #666;
+    background-color: #F5F5F5;
+}
+
+.post.older:hover {
+    background-color: #F8F8F8;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-color: #C6C6C6;
+    color: #333;
 }
 
 label {

@@ -1,26 +1,28 @@
 #profile {
     text-align: center;
-    margin-bottom: 20px;
-    padding-top: 5px;
-}
-
-#profile h1 {
-    border: none;
-    padding: 0;
     margin-bottom: 5px;
 }
 
+#profile td {
+	vertical-align: middle;
+	text-align: left;
+}
+
+#profile h1 {
+    margin: 0px;
+    line-height: 1.3em;
+    padding: 0px;
+    padding-left: 10px;
+}
+
 #profile img {
-    border: 1px solid #CCCCCC;
-    margin: 0 auto;
-    max-width: 120px;
-    padding: 3px;
+	width: 70px;
 }
 
 #profile #status {
     color: #444444;
     font-size: 11px;
-    padding: 3px;
+    padding-top: 7px;
     margin-bottom: 10px;
     border: 1px solid transparent;
     text-align: center;

@@ -53,8 +53,7 @@ class Roster extends WidgetBase
     
 	function ajaxRefreshRoster()
 	{
-		$xmpp = Jabber::getInstance();
-		$xmpp->getRosterList();
+		$this->xmpp->getRosterList();
 	}
 	
 	function prepareRosterElement($contact, $inner = false)
@@ -96,8 +95,7 @@ class Roster extends WidgetBase
 	function prepareRoster()
 	{
         global $sdb;
-        $user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin())); 
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin())); 
         
         $html = '';
 
