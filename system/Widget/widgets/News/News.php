@@ -8,8 +8,7 @@ class News extends WidgetBase {
     
     function onPost($payload) {
         global $sdb;
-        $user = new User();
-        $post = $sdb->select('Message', array('key' => $user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+        $post = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
 
         if($post != false) {  
             $html = $this->preparePost($post[0], $user);
@@ -17,9 +16,9 @@ class News extends WidgetBase {
         }
     }
     
-    function preparePost($message, $user) {
+    function preparePost($message) {
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $message->getData('jid')));
         
         $tmp = '';
         
@@ -44,15 +43,14 @@ class News extends WidgetBase {
     <div class="tabelem protect orange" style="padding-top: 15px;" title="<?php echo t('News'); ?>" id="news">
     <?php
         global $sdb;
-        $user = new User();
-        $messages = $sdb->select('Message', array('key' => $user->getLogin()), 'updated', true);
+        $messages = $sdb->select('Message', array('key' => $this->user->getLogin()), 'updated', true);
         
         $html = '';
         if($messages != false) {  
             
             foreach(array_slice($messages, 0, 20) as $message) {
-                if($user->getLogin() != $message->getData('jid')) {
-                    $html .= $this->preparePost($message, $user);
+                if($this->user->getLogin() != $message->getData('jid')) {
+                    $html .= $this->preparePost($message);
                }
             }
             echo $html;

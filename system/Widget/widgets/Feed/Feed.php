@@ -4,30 +4,32 @@ class Feed extends WidgetBase {
 	function WidgetLoad()
 	{
     	$this->addcss('feed.css');
+    	$this->addjs('feed.js');
 		$this->registerEvent('post', 'onPost');
 		$this->registerEvent('streamreceived', 'onStream');
     }
     
     function onPost($payload) {
         global $sdb;
-        $user = new User();
-        $post = $sdb->select('Message', array('key' => $user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+        $post = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
 
         if($post != false) {  
             $html = $this->preparePost($post[0], $user);
-            RPC::call('movim_prepend', 'feed_content', RPC::cdata($html));
+            RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
         }
     }
     
-    function preparePost($message, $user) {
+    function preparePost($message) {
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $message->getData('jid')));
         
         $tmp = '';
         
         if(isset($contact[0])) {
-            $tmp = '
-                <div class="post" id="'.$message->getData('nodeid').'">
+            $tmp = '<div class="post ';
+                if($this->user->getLogin() == $message->getData('jid'))
+					$tmp .= 'me';
+            $tmp .= '" id="'.$message->getData('nodeid').'" >
 		            <img class="avatar" src="'.$contact[0]->getPhoto('s').'">
 
      			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span> 
@@ -40,14 +42,44 @@ class Feed extends WidgetBase {
        	return $tmp;
     }
     
+    function prepareFeed($start) {
+		global $sdb;
+		$messages = $sdb->select('Message', array('key' => $this->user->getLogin()), 'updated', true);
+		
+		if($messages == false) {
+			$html = '
+				<script type="text/javascript">
+					setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);
+				</script>';
+			echo t('Loading your feed ...');
+		} else {
+			$html = '';
+			
+			foreach(array_slice($messages, $start, 20) as $message) {
+				$html .= $this->preparePost($message);
+			}
+			
+			$next = $start + 20;
+			
+			if(sizeof($messages) > $next)
+				$html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+		}
+		
+		return $html;
+	}
+	
+	function ajaxGetFeed($start) {
+		RPC::call('movim_append', 'feedcontent', RPC::cdata($this->prepareFeed($start)));
+        RPC::commit();
+	}
+    
     function onStream($payload) {
         $html = '';
         $i = 0;
-        $user = new User();
         $jid = $user->getLogin();
         
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $this->user->getLogin()));
         
         if(isset($contact[0]))
             $photo = $contact[0]->getPhoto();
@@ -77,26 +109,22 @@ class Feed extends WidgetBase {
     
     function ajaxPublishItem($content)
     {
-		$xmpp = Jabber::getInstance();
-        $xmpp->publishItem($content);
+        $this->xmpp->publishItem($content);
     }
     
     function ajaxCreateNode()
     {
-        $user = new User();
-        
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $user->getLogin()));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         
 	                $conf = new ConfVar();
 	                $sdb->load($conf, array(
-                                        'login' => $user->getLogin()
+                                        'login' => $this->user->getLogin()
                                             ));
 	                $conf->setConf(false, false, false, false, false, false, false, false, false, true);
 	                $sdb->save($conf);
         
-		$xmpp = Jabber::getInstance();
-        $xmpp->createNode();
+        $this->xmpp->createNode();
         
         RPC::call('movim_reload');
         RPC::commit();
@@ -104,30 +132,51 @@ class Feed extends WidgetBase {
     
     function ajaxFeed()
     {
-		$xmpp = Jabber::getInstance();
-        $xmpp->getWall($xmpp->getCleanJid());
+        $this->xmpp->getWall($this->xmpp->getCleanJid());
     }
     
     function build()
     {
     ?>
     <div class="tabelem protect orange" title="<?php echo t('Feed'); ?>" id="feed">
-        <textarea id="feedmessage" onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;"><?php echo t('What\'s new ?'); ?></textarea>
-        <a 
-            onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessage').value") ?>"
-            href="#" id="feedmessagesubmit" class="button tiny icon submit"><?php echo t("Submit"); ?></a><br />
+		<table id="submit">
+			<tr>
+				<td id="feedmessage">
+					<input 
+						id="feedmessagecontent"
+						class="big" 
+						onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;" 
+						value="<?php echo t('What\'s new ?'); ?>">
+				</td>
+				<td>
+					<a 
+						title="<?php echo t("Submit"); ?>"
+						onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessagecontent').value") ?>"
+						href="#" 
+						id="feedmessagesubmit" 
+						class="button tiny icon submit">
+					</a>
+				</td>
+			</tr>
+		</table>
+
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
         <?php 
             global $sdb;
-            $user = new User();
-            
         ?>
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
-        <div id="feed_content">
+        <div id="feedfilters">
+			<ul>
+				<li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
+				<li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>
+			</ul>
+        </div>
+        
+        <div id="feedcontent">
             <?php
             
-            $conf = $sdb->select('ConfVar', array('login' => $user->getLogin()));
+            $conf = $sdb->select('ConfVar', array('login' => $this->user->getLogin()));
             $conf_arr = $conf[0]->getConf(); 
             if($conf_arr["first"] == 0) { 
             ?>
@@ -135,25 +184,10 @@ class Feed extends WidgetBase {
                     onclick="<?php $this->callAjax('ajaxCreateNode') ?>"
                     href="#" class="button tiny icon add">&nbsp;&nbsp;<?php echo t("Create the feed"); ?></a><br />
             <?php
-            } else {
-                $messages = $sdb->select('Message', array('key' => $user->getLogin(), 'jid' => $user->getLogin()), 'updated', true);
-                
-                if($messages == false) {
-                ?>
-                    <script type="text/javascript">
-                        <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);'; ?>
-                    </script>
-                <?php
-                    echo t('Loading your feed ...');
-                } else {
-                    $html = '';
-                    
-                    foreach(array_slice($messages, 0, 20) as $message) {
-                        $html .= $this->preparePost($message, $user);
-                    }
-                    echo $html;
-                }
             }
+            
+            echo $this->prepareFeed(0);
+            
             ?>
         </div>
     </div>

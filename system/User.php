@@ -18,6 +18,7 @@ class User {
 	 */
 	function __construct()
 	{
+        movim_log("1.");
 		if($this->isLogged()) {
             $sess = Session::start(APP_NAME);
 			$this->username = $sess->get('login');
@@ -29,7 +30,7 @@ class User {
 				&& isset($_POST['pass'])
 				&& $_POST['login'] != ''
 				&& $_POST['pass'] != '') {
-			$this->authenticate($_POST['login'], $_POST['pass'], $_POST['host'], $_POST['suffix'], $_POST['port'], $_POST['create']);
+			$this->authenticate($_POST['login'], $_POST['pass'], $_POST['host'], $_POST['suffix'], $_POST['port']);
 		}
 	}
 
@@ -43,40 +44,14 @@ class User {
 		return (($this->username != '' && $this->password != '') || $sess->get('login'));
 	}
 
-	function authenticate($login,$pass, $boshhost, $boshsuffix, $boshport, $create)
+	function authenticate($login,$pass, $boshhost, $boshsuffix, $boshport)
 	{
 		try{
-		    // We check the JID
-		    /*if(filter_var($login, FILTER_VALIDATE_EMAIL) == false) {
-                header('Location:'.BASE_URI.'index.php?q=disconnect&err=invalidjid');
-                exit();
-            }*/
 
             $data = false;
             if( !($data = $this->getConf($login)) ) {
 			    // We check if we wants to create an account
-			    if($create == "on") {
-			        // We check the BOSH URL if we create a new account
-			        $ch = curl_init('http://'.$boshhost.':'.$boshport.'/'.$boshsuffix.'/');
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                    curl_exec($ch);
-                    $errno = curl_errno($ch);
-                    curl_close($ch);
-
-			        if($errno != 0) {
-			            header('Location:'.BASE_URI.'index.php?q=disconnect&err=bosherror');
-                        exit();
-			        } else {
-			            global $sdb;
-			            $conf = new ConfVar();
-			            $conf->setConf($login, $pass, $boshhost, $boshsuffix, $boshport, Conf::getServerConfElement('defLang'), true);
-			            $sdb->save($conf);
-
-                        $data = $this->getConf($login);
-                    }
-                } else {
-                    header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');
-                }
+                header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');
             }
 
 			$this->xmppSession = Jabber::getInstance($login);

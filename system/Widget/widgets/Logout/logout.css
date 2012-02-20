@@ -1,16 +1,57 @@
 #logout {
+
+}
+
+#logouttab {
 	position: absolute;
 	top: 3px;
 	right: 0px;
     overflow: hidden;
     display: block;
-    padding: 4px 15px;
+    padding: 5px 15px 5px 25px;
 	cursor: pointer;
     color: white;
     font-size: 11px;
     z-index: 2;
+    background-repeat: no-repeat;
+    background-position: 7px 6px;
 }
 
-#logout:hover {
+#logouttab:hover {
     background-color: #6F6F6F;
 }
+
+#logouttab.online { background-image: url(img/online.png); }
+#logouttab.away { background-image: url(img/away.png); }
+#logouttab.dnd { background-image: url(img/dnd.png); }
+#logouttab.xa { background-image: url(img/xa.png); }
+
+#logoutlist {
+    border: 1px solid #CCC;
+    border-top: none;
+    border-right: none;
+    position: absolute;
+    top: 25px;
+    right: 0px;
+    box-shadow: 0 5px 10px rgba(150, 150, 150, 0.1);
+    display: none;
+}
+
+#logoutlist a {
+    display: block;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-position: 7px 7px;
+    padding-left: 25px;
+    font-size: 11px;
+}
+
+#logoutlist a:hover {
+    cursor: pointer;
+    background-color: #EEE;
+}
+
+#logoutlist a.online { background-image: url(img/online.png); }
+#logoutlist a.away { background-image: url(img/away.png); }
+#logoutlist a.dnd { background-image: url(img/dnd.png); }
+#logoutlist a.xa { background-image: url(img/xa.png); }

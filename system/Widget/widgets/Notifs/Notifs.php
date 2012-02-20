@@ -32,8 +32,7 @@ class Notifs extends WidgetBase
     function onMessage($payload) {
         global $sdb;
         $contact = new Contact();
-        $user = new User();
-        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
+        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
         RPC::call('notification', $contact->getTrueName(), RPC::cdata($payload['movim']['body'], ENT_COMPAT, "UTF-8"));
         RPC::commit();
     }
@@ -57,13 +56,11 @@ class Notifs extends WidgetBase
     }
     
     function ajaxSubscribed($jid) {
-		$xmpp = Jabber::getInstance();
-        $xmpp->subscribedContact($jid);
+        $this->xmpp->subscribedContact($jid);
     }
     
     function ajaxRefuse($jid) {
-		$xmpp = Jabber::getInstance();
-        $xmpp->unsubscribed($jid);
+        $this->xmpp->unsubscribed($jid);
         
    	    $notifs = Cache::c('activenotifs');
    	    unset($notifs['sub'.$jid]);
@@ -72,8 +69,7 @@ class Notifs extends WidgetBase
     }
     
     function ajaxAccept($jid, $alias) {
-		$xmpp = Jabber::getInstance();
-        $xmpp->acceptContact($jid, false, $alias);
+        $this->xmpp->acceptContact($jid, false, $alias);
         
    	    $notifs = Cache::c('activenotifs');
    	    unset($notifs['sub'.$jid]);
@@ -82,8 +78,7 @@ class Notifs extends WidgetBase
     }
     
     function ajaxAddContact($jid, $alias) {
-		$xmpp = Jabber::getInstance();
-        $xmpp->addContact($jid, false, $alias);
+        $this->xmpp->addContact($jid, false, $alias);
     }
     
     function build() {  

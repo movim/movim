@@ -22,7 +22,7 @@ class Config extends WidgetBase
 {
     function WidgetLoad()
     {
-
+		$this->addcss('config.css');
     }
 
 	function ajaxSubmit($data) {
@@ -40,7 +40,7 @@ class Config extends WidgetBase
 			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
                 . "document.getElementById('confspinner').style.display='block'; setTimeout(function() {location.reload(true)}, 5000);";
 ?>
-
+		<div id="config">
 			<form enctype="multipart/form-data" method="post" action="index.php" name="general">
 
 				<label id="lock" for="language"><?php echo t('Language'); ?></label>
@@ -61,7 +61,7 @@ class Config extends WidgetBase
 				<input type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">
                 </p>
 			</form>
-
+		</div>
 <?php
 	}
 

@@ -73,8 +73,7 @@ class Chat extends WidgetBase
         global $sdb;
         
         $contact = new Contact();
-        $user = new User();
-        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => $jid));
+        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
         
         if($contact->getData('chaton') != 1) {
             RPC::call('movim_prepend',
@@ -120,8 +119,7 @@ class Chat extends WidgetBase
     {
         global $sdb;
         $contact = new Contact();
-        $user = new User();
-        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
+        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
         if($contact->getData('chaton') == 1) {
             RPC::call('showComposing',
                        $contact->getData('jid'));
@@ -144,8 +142,7 @@ class Chat extends WidgetBase
         $presence = PresenceHandler::getPresence($jid, true);
         if(isset($presence) && $presence["presence_txt"] != 'offline') {	
 			$contact = new Contact();
-			$user = new User();
-			$sdb->load($contact, array('key' => $user->getLogin(), 'jid' => $jid));
+			$sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
 			if($contact->getData('chaton') != 1) {
 				RPC::call('movim_prepend',
 							   'chats',
@@ -167,9 +164,8 @@ class Chat extends WidgetBase
      */
     function ajaxSendMessage($to, $message)
     {
-		$xmpp = Jabber::getInstance();
 		// We decode URL codes to send the correct message to the XMPP server
-        $xmpp->sendMessage($to, rawurldecode($message));
+        $this->xmpp->sendMessage($to, rawurldecode($message));
 		
 		$arr['from'] = $to;
 		$arr['me'] = true;
@@ -187,8 +183,7 @@ class Chat extends WidgetBase
 	{
         global $sdb;
         $contact = new Contact();
-        $user = new User();
-        $sdb->load($contact, array('key' => $user->getLogin(), 'jid' => $jid));
+        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
         if($contact->getData('chaton') == 1) {
             $contact->chaton = 0;
             $sdb->save($contact);
@@ -219,8 +214,7 @@ class Chat extends WidgetBase
     {
 
         global $sdb;
-        $user = new User();
-        $contacts = $sdb->select('Contact', array('key' => $user->getLogin(), 'chaton' => 1));
+        $contacts = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'chaton' => 1));
         echo '<div id="chats">';
         if($contacts != false) {
             foreach($contacts as $contact) {

@@ -349,14 +349,25 @@ class Jabber
             }
         }
         elseif('urn:xmpp:microblog:0:comments' == reset(explode("/", $payload['movim']['pubsub']['items']['@attributes']['node']))) {
-            $evt->runEvent('comments', $payload);
+            $payload = $payload['movim'];
+            $from = $payload['@attributes']['from'];
+            
+            list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
+
+            // We test if there is more than one item in the stream
+            if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
+                foreach($payload['pubsub']['items']['item'] as $item)
+                    MessageHandler::saveMessage($item, $this->getCleanJid(), $from, $parent);
+            } else {
+                MessageHandler::saveMessage($payload['pubsub']['items']['item'], $this->getCleanJid(), $from, $parent);
+            }
+            
+            $evt->runEvent('comments', $parent);
         }
         
         // Pubsub node case
         elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
             $payload = $payload['movim'];
-            global $sdb;
-            
             $from = $payload['@attributes']['from'];
             
             // We test if there is more than one item in the stream

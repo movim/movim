@@ -119,7 +119,7 @@ class ContactCard extends WidgetBase
         $html .= $this->displayIf($contact->getPhoto(), t('Avatar'), '<img src="'.$contact->getPhoto().'">');
 
         $html .= '<br />';
-        $html .= $this->displayIf($contact->getData('desc'), t('About Me'));
+        $html .= $this->displayIf(prepareString($contact->getData('desc')), t('About Me'));
 
         $html .= '
             </fieldset>
@@ -128,20 +128,17 @@ class ContactCard extends WidgetBase
     }
 
     function ajaxRemoveContact($jid) {
-		$xmpp = Jabber::getInstance();
-        $xmpp->removeContact($jid);
+        $this->xmpp->removeContact($jid);
 
         global $sdb;
-    	$user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $jid));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $jid));
         $sdb->delete($contact[0]);
     }
 
     function build()
     {
         global $sdb;
-        $user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['f']));
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
     ?>
     <div class="tabelem" title="<?php echo t('Profile'); ?>" id="contactcard">
         <?php
