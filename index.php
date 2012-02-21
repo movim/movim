@@ -54,6 +54,11 @@ if(!file_exists("config/conf.xml")) {
     $polling = false;
     $rqst = new ControllerMain();
     $rqst->handle();
+    
+    // Closing stuff
+    WidgetWrapper::destroyInstance();
+    global $sdb;
+    $sdb->close();
 }
 
 

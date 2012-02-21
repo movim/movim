@@ -95,3 +95,7 @@ if(isset($_GET['c'])) {
         }
     }
 }
+
+// Closing db (dirty...)
+global $sdb;
+$sdb->close();
