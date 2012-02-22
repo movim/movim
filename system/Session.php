@@ -45,7 +45,7 @@ class Session
     protected static $instances = array();
     protected static $sid = null;
     protected $container;
-    protected $max_age = 3600;
+    protected $max_age = 86400; // 24hours
 
     /**
      * Loads and immediately closes the session variables for the namespace
