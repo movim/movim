@@ -54,14 +54,26 @@ class WidgetWrapper
         return self::$instance;
     }
 
+    static function destroyInstance()
+    {
+        self::$instance->destroy();
+        self::$instance = null;
+    }
+
     /**
      * Saves the list of loaded widgets if necessary.
      */
     function __destruct()
     {
+        $this->destroy();
+    }
+
+    protected function destroy()
+    {
         if($this->register_widgets) {
             $sess = Session::start(APP_NAME);
             $sess->set('loaded_widgets', $this->loaded_widgets);
+            $this->register_widgets = false;
         }
     }
 

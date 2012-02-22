@@ -119,6 +119,11 @@ class Jabber
 		return self::$instance;
 	}
 
+    function destroy()
+    {
+        self::$instance = null;
+    }
+
     /**
 	 * Start the BOSH connection
 	 *
