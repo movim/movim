@@ -27,4 +27,9 @@ $polling = true;
 
 $rpc = new RPC();
 $rpc->handle();
+
+// Closing database (dirty...)
+/*Jabber::destroy();
+global $sdb;
+$sdb->close();*/
 ?>
