@@ -38,11 +38,9 @@
 
 .post .comments {
     clear: both;
-	margin-bottom: 0.3em;
 	background-color: #F3F3F3;
 	margin-left: 60px;
 	margin-right: 5px;
-	margin-top: 10px;
 	width: 80%;
     box-shadow: 0 0px 1px rgba(34, 25, 25, 0.2);
 	background-color: #F2F0F0;
@@ -63,6 +61,7 @@
 }
 
 .post .comments .comment:first-child {
+    margin-top: 10px;
 	border-top: none;
 }
 
