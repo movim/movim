@@ -69,6 +69,15 @@
     border-bottom: none;
 }
 
+.post .getcomments {
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    padding: 2px;
+    display: block;
+    
+    padding-left: 20px;
+}
+
 .post .avatar {
 	width: 50px;
 	height: 50px;

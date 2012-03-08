@@ -34,14 +34,14 @@ class Wall extends WidgetBase
         global $sdb;
         $message = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
 
-        $html = $prepareComments($message[0]);
+        $html = $this->prepareComments($message[0]);
         RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
     function onNewPost($payload) {
         global $sdb;
         $message = $sdb->select('Message', array('nodeid' => $payload['event']['items']['item']['@attributes']['id']));
-        $html = preparePost($message[0]);
+        $html = $this->preparePost($message[0]);
 
         RPC::call('movim_prepend', 'wall', RPC::cdata($html));
     }
@@ -74,7 +74,7 @@ class Wall extends WidgetBase
                 $html = '';
                 
                 foreach(array_slice($messages, 0, 20) as $message) {
-                    $html .= preparePost($message);
+                    $html .= $this->preparePost($message);
                 }
                 echo $html;
             }
@@ -91,7 +91,7 @@ class Wall extends WidgetBase
 	function ajaxSubscribe($jid) {
 		$this->xmpp->subscribeNode($jid);
 	}
-	
+    
 	function ajaxGetComments($jid, $id) {
 		$this->xmpp->getComments($jid, $id);
 	}
@@ -126,7 +126,7 @@ class Wall extends WidgetBase
                 $html = '';
                 
                 foreach(array_slice($messages, 0, 20) as $message) {
-                    $html .= preparePost($message);
+                    $html .= $this->preparePost($message);
                 }
                 echo $html;
             }

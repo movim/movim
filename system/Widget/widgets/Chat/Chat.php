@@ -71,7 +71,7 @@ class Chat extends WidgetBase
         $jid = reset(explode("/", $payload['from']));
     
         global $sdb;
-        
+
         $contact = new Contact();
         $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
         

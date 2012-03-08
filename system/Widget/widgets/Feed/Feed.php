@@ -6,7 +6,16 @@ class Feed extends WidgetBase {
     	$this->addcss('feed.css');
     	$this->addjs('feed.js');
 		$this->registerEvent('post', 'onPost');
+		$this->registerEvent('comments', 'onComments');
 		$this->registerEvent('streamreceived', 'onStream');
+    }
+    
+    function onComments($parent) {        
+        global $sdb;
+        $message = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
+
+        $html = $this->prepareComments($message[0]);
+        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
     function onPost($payload) {
@@ -15,7 +24,7 @@ class Feed extends WidgetBase {
         $post = Message::run_query($query);
 
         if($post != false) {  
-            $html = preparePost($post[0]);
+            $html = $this->preparePost($post[0]);
             RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
         }
     }
@@ -37,7 +46,7 @@ class Feed extends WidgetBase {
 			$html = '';
 			
 			foreach($messages as $message) {
-				$html .= preparePost($message);
+				$html .= $this->preparePost($message);
 			}
 			
             $next = $start + 20;
@@ -54,6 +63,10 @@ class Feed extends WidgetBase {
         RPC::commit();
 	}
     
+	function ajaxGetComments($jid, $id) {
+		$this->xmpp->getComments($jid, $id);
+	}
+        
     function onStream($payload) {
         $html = '';
         $i = 0;
