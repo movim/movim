@@ -36,29 +36,70 @@ function sprintln($string)
  * @return string
  */
 function prepareString($string) {
-  return  preg_replace(
-     array(
-       '/(?(?=<a[^>]*>.+<\/a>)
-             (?:<a[^>]*>.+<\/a>)
-             |
-             ([^="\']?)((?:https?|ftp|bf2|):\/\/[^<> \n\r]+)
-         )/iex',
-       '/<a([^>]*)target="?[^"\']+"?/i',
-       '/<a([^>]+)>/i',
-       '/(^|\s)(www.[^<> \n\r]+)/iex',
-       '/(([_A-Za-z0-9-]+)(\\.[_A-Za-z0-9-]+)*@([A-Za-z0-9-]+)
-       (\\.[A-Za-z0-9-]+)*)/iex'
-       ),
-     array(
-       "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\">\\2</a>\\3':'\\0'))",
-       '<a\\1',
-       '<a\\1 target="_blank">',
-       "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\">\\2</a>\\3':'\\0'))",
-       "stripslashes((strlen('\\2')>0?'<a href=\"mailto:\\0\">\\0</a>':'\\0'))"
-       ),
-       $string
-   );
+    $smileys = 
+        array(
+            ':okay:' => 'okay.gif',
+            'O:)' => 'ange.gif',
+            'O:-)' => 'ange.gif',
+            ':)' => 'smile.gif',
+            ':-)' => 'smile.gif',
+            ':(' => 'frown.gif',
+            ':o' => 'redface.gif',
+            ':love:' => 'love.gif',
+            '<3' => 'love.gif',
+            ':D' => 'biggrin.gif',
+            ':d' => 'biggrin.gif',
+            ':p' => 'tongue.gif',
+            ':P' => 'tongue.gif',
+            ':-P' => 'tongue.gif',
+            ' :/' => 'bof.gif', // Here we add a space to prevent URL parse error in the second part of the function
+            ';)' => 'wink.gif',
+            'B)' => 'sol.gif',
+            ":'(" => 'cry.gif',
+            ':trolldad:' => 'trolldad.png',
+            ':epic:' => 'epic.png',
+            ':aloneyeah:' => 'aloneyeah.png',
+            ':fapfap:' => 'fapfap.png',
+            ':megusta:' => 'gusta.png',
+            ':trollface:' => 'trollface.png',
+            ':troll:' => 'trollface.png',
+            ':lol:' => 'trollol.png',
+        );
+    
+    $string = preg_replace(
+        array(
+            '/(?(?=<a[^>]*>.+<\/a>)
+            (?:<a[^>]*>.+<\/a>)
+            |
+            ([^="\']?)((?:https?|ftp|bf2|):\/\/[^<> \n\r]+)
+            )/iex',
+            '/<a([^>]*)target="?[^"\']+"?/i',
+            '/<a([^>]+)>/i',
+            '/(^|\s)(www.[^<> \n\r]+)/iex',
+            '/(([_A-Za-z0-9-]+)(\\.[_A-Za-z0-9-]+)*@([A-Za-z0-9-]+)
+            (\\.[A-Za-z0-9-]+)*)/iex'
+        ),
+        array(
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\">\\2</a>\\3':'\\0'))",
+            '<a\\1',
+            '<a\\1 target="_blank">',
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\">\\2</a>\\3':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'<a href=\"mailto:\\0\">\\0</a>':'\\0'))"
+        ),
+        $string
+    );
+    
+    $conf = new Conf();
+    $theme = $conf->getServerConfElement('theme');
+    
+    $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';
 
+    foreach($smileys as $key => $value) {
+        $replace = '<img src="'.$path.$value.'">';
+        $string = str_replace($key, $replace, $string);
+    }
+
+    return $string;
 }
 
 function prepareDate($time) {
