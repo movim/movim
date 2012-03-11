@@ -43,6 +43,7 @@ class WidgetCommon {
                 $tmp .= '</div>';
             }
             
+            
             if($message->getPlace() != false)
                 $tmp .= '<span class="place">
                             <a 
@@ -50,6 +51,9 @@ class WidgetCommon {
                                 href="http://www.openstreetmap.org/?lat='.$message->getData('lat').'&lon='.$message->getData('lon').'&zoom=10"
                             >'.$message->getPlace().'</a>
                          </span>';
+                         
+            if($message->getData('jid') != $message->getData('uri'))
+                $tmp .= '<span class="recycle"><a href="?q=friend&f='.$message->getData('uri').'">'.$message->getData('name').'</a></span>';
                           
             $tmp .= '<div class="comments" id="'.$message->getData('nodeid').'comments">';
 

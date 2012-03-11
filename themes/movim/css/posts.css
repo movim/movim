@@ -22,18 +22,26 @@
     color: #777;
 }
 
-.post span.place {
+.post span.place, .post span.recycle {
     display: inline-block;
-    background: url(../img/icons/place.png) 0px 2px no-repeat;
     padding-left: 14px;
     font-weight: normal;
     margin-top: 5px;
     float: right;
+    margin-left: 10px;
+}
+
+.post span.place {
     max-width: 350px;
+    background: url(../img/icons/place.png) 0px 4px no-repeat;
     white-space: nowrap;  
     overflow: hidden;
     text-overflow: ellipsis;
     padding-bottom: 0.7em;
+}
+
+.post span.recycle {
+    background: url(../img/icons/recycle.png) 0px 4px no-repeat;
 }
 
 .post .comments {

@@ -72,7 +72,7 @@ class Feed extends WidgetBase {
         $i = 0;
         
         $query = Contact::query()
-                            ->where(array('key' => $user->getLogin(), 'jid' => $this->user->getLogin()));
+                            ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         $contact = Contact::run_query($query);
         
         if(isset($contact[0]))
