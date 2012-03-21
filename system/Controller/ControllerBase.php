@@ -54,8 +54,9 @@ class ControllerBase
      * Loads up the language, either from the User or default.
      */
     function load_language() {
-		if(User::isLogged()) {
-			$user = new User();
+        $user = new user();
+		if($user->isLogged()) {
+			//$user = new User();
             try{
                 $lang = $user->getConf(false, 'language');
                 load_language($lang);

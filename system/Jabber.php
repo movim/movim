@@ -99,7 +99,7 @@ class Jabber
 	 * @param string $jid = false
 	 * @return instance
 	 */
-	public function getInstance($jid = false)
+	static public function getInstance($jid = false)
 	{
 		if(!is_object(self::$instance)) {
 			if(!$jid) {

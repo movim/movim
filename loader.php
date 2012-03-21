@@ -52,7 +52,8 @@ define('JAXL_LOG_ROTATE', false);
 
 define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
 
-// User agent detection
+// We set the default timezone to the server timezone
+ini_set('date.timezone', date_default_timezone_get());
 
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 
