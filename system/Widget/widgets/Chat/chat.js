@@ -10,6 +10,26 @@ movim_add_onload(function()
     scrollAllTalks();
 });
 
+function colorTalk(params) {
+    chat = document.getElementById(params);
+    chat.parentNode.style.backgroundColor = '#DD951F';
+}
+
+function hideTalk(n) {
+    n.parentNode.style.backgroundColor = '#444';
+    childs = n.parentNode.childNodes;
+    messages = childs[0];
+    text = childs[1];
+    if(messages.style.display == 'none') {
+        messages.style.display = 'block';
+        text.style.display = 'block';
+    }
+    else {
+        messages.style.display = 'none';
+        text.style.display = 'none';   
+    }
+}
+
 function closeTalk(n) {
     n.parentNode.parentNode.removeChild(n.parentNode);
 }

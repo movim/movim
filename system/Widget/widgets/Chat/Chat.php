@@ -50,7 +50,7 @@ class Chat extends WidgetBase
                 1 => t('Online'),
                 2 => t('Away'),
                 3 => t('Do Not Disturb'),
-                4 => t('Long Absence'),
+                4 => t('Extended Away'),
                 5 => t('Offline'),
             );
     
@@ -71,11 +71,11 @@ class Chat extends WidgetBase
         $jid = reset(explode("/", $payload['from']));
     
         global $sdb;
-        
+
         $contact = new Contact();
         $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
         
-        if($contact->getData('chaton') != 1) {
+        if($contact->getData('chaton') == 0) {
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
@@ -99,6 +99,11 @@ class Chat extends WidgetBase
         $html .= '"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($message, ENT_COMPAT, "UTF-8")).'</div>';
         
         $this->cacheMessage($jid, $html);
+        
+        if($contact->getData('chaton') == 2) {
+            RPC::call('colorTalk',
+                        'messages'.$contact->getData('jid'));
+        }
         
         RPC::call('movim_append',
                        'messages'.$contact->getData('jid'),
@@ -190,6 +195,25 @@ class Chat extends WidgetBase
         }
 	}
     
+    function ajaxHideTalk($jid)
+    {
+        global $sdb;
+        $contact = new Contact();
+        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
+        if($contact->getData('chaton') == 1) {
+            $contact->chaton = 2;
+            $sdb->save($contact);
+        }
+        else {
+            $contact->chaton = 1;
+            $sdb->save($contact);
+        }
+        
+        RPC::call('scrollTalk',
+                   'messages'.$contact->getData('jid'));
+        RPC::commit();
+    }
+    
     function prepareChat($contact)
     {
         $log = Cache::c('log'.$contact->getData('jid'));
@@ -197,14 +221,21 @@ class Chat extends WidgetBase
             foreach($log as $key => $value)
                 $m .= $value;
         }
+        
+        $style = '';
+        if($contact->getData('chaton') == 2) {
+            $style = ' style="display: none;" ';
+        }
     
         $html = '
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
-                '<div class="messages" id="messages'.$contact->getData('jid').'">'.$m.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
-                '<textarea
+                '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$m.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
+                '<textarea '.$style.'
                     onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
                 ></textarea>'.
-                '<img class="avatar"  src="'.$contact->getPhoto('xs').'" /><span>'.$contact->getTrueName().'</span>'.
+                '<a class="name" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' hideTalk(this);">'.
+                    '<img class="avatar"  src="'.$contact->getPhoto('xs').'" /><span>'.$contact->getTrueName().'</span>'.
+                '</a>'.
                 '<span class="cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->getData('jid')."'").' closeTalk(this)"></span>'.
             '</div>';
         return $html;
@@ -214,7 +245,7 @@ class Chat extends WidgetBase
     {
 
         global $sdb;
-        $contacts = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'chaton' => 1));
+        $contacts = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'chaton' => array(1, '|2')));
         echo '<div id="chats">';
         if($contacts != false) {
             foreach($contacts as $contact) {

@@ -6,47 +6,34 @@ class Feed extends WidgetBase {
     	$this->addcss('feed.css');
     	$this->addjs('feed.js');
 		$this->registerEvent('post', 'onPost');
+		$this->registerEvent('comments', 'onComments');
 		$this->registerEvent('streamreceived', 'onStream');
     }
     
-    function onPost($payload) {
+    function onComments($parent) {        
         global $sdb;
-        $post = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+        $message = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
 
-        if($post != false) {  
-            $html = $this->preparePost($post[0], $user);
-            RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
-        }
+        $html = $this->prepareComments($message[0]);
+        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
-    function preparePost($message) {
-        global $sdb;
-        
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $message->getData('jid')));
-        
-        $tmp = '';
-        
-        if(isset($contact[0])) {
-            $tmp = '<div class="post ';
-                if($this->user->getLogin() == $message->getData('jid'))
-					$tmp .= 'me';
-            $tmp .= '" id="'.$message->getData('nodeid').'" >
-		            <img class="avatar" src="'.$contact[0]->getPhoto('s').'">
+    function onPost($payload) {
+        $query = Message::query()
+                            ->where(array('key' => $this->user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+        $post = Message::run_query($query);
 
-     			    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span> 
-     			    <span class="date">'.prepareDate(strtotime($message->getData('updated'))).'</span>
-     			    <div class="content">
-     			        '.prepareString($message->getData('content')).'
-                	</div>
-           		</div>';
+        if($post != false) {  
+            $html = $this->preparePost($post[0]);
+            RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
         }
-       	return $tmp;
     }
     
     function prepareFeed($start) {
         $query = Message::query()
                             ->where(array('key' => $this->user->getLogin(), 'parentid' => ''))
-                            ->orderby('updated', true);
+                            ->orderby('updated', true)
+                            ->limit($start, '20');
         $messages = Message::run_query($query);
 		
 		if($messages == false) {
@@ -58,13 +45,13 @@ class Feed extends WidgetBase {
 		} else {
 			$html = '';
 			
-			foreach(array_slice($messages, $start, 20) as $message) {
+			foreach($messages as $message) {
 				$html .= $this->preparePost($message);
 			}
 			
-			$next = $start + 20;
-			
-			if(sizeof($messages) > $next)
+            $next = $start + 20;
+            
+			if(sizeof($messages) > 0)
 				$html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
 		}
 		
@@ -76,13 +63,17 @@ class Feed extends WidgetBase {
         RPC::commit();
 	}
     
+	function ajaxGetComments($jid, $id) {
+		$this->xmpp->getComments($jid, $id);
+	}
+        
     function onStream($payload) {
         $html = '';
         $i = 0;
-        $jid = $user->getLogin();
         
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $this->user->getLogin()));
+        $query = Contact::query()
+                            ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+        $contact = Contact::run_query($query);
         
         if(isset($contact[0]))
             $photo = $contact[0]->getPhoto();
@@ -93,7 +84,7 @@ class Feed extends WidgetBase {
                 <div class="post" id="'.$post['@attributes']['id'].'">
 			        <img class="avatar" src="'.$photo.'">
 
-     			        <span><a href="?q=friend&f='.$jid.'">'.t('Me').'</a></span>
+     			        <span><a href="?q=friend&f='.$this->user->getLogin().'">'.t('Me').'</a></span>
      			        <span class="date">'.prepareDate(strtotime($post['entry']['published'])).'</span>
      			    <div class="content"> 
      			    '.prepareString($post['entry']['content']).'
@@ -118,14 +109,12 @@ class Feed extends WidgetBase {
     function ajaxCreateNode()
     {
         global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
-        
-	                $conf = new ConfVar();
-	                $sdb->load($conf, array(
-                                        'login' => $this->user->getLogin()
-                                            ));
-	                $conf->setConf(false, false, false, false, false, false, false, false, false, true);
-	                $sdb->save($conf);
+        $conf = new ConfVar();
+        $sdb->load($conf, array(
+                            'login' => $this->user->getLogin()
+                                ));
+        $conf->setConf(false, false, false, false, false, false, false, false, false, true);
+        $sdb->save($conf);
         
         $this->xmpp->createNode();
         
@@ -164,9 +153,6 @@ class Feed extends WidgetBase {
 		</table>
 
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
-        <?php 
-            global $sdb;
-        ?>
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
         <div id="feedfilters">
@@ -179,7 +165,10 @@ class Feed extends WidgetBase {
         <div id="feedcontent">
             <?php
             
-            $conf = $sdb->select('ConfVar', array('login' => $this->user->getLogin()));
+            $query = ConfVar::query()
+                                ->where(array('login' => $this->user->getLogin()));
+            $conf = ConfVar::run_query($query);
+
             $conf_arr = $conf[0]->getConf(); 
             if($conf_arr["first"] == 0) { 
             ?>

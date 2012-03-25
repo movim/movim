@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-class WidgetBase
+class WidgetBase extends WidgetCommon
 {
 	protected $js = array(); /*< Contains javascripts. */
 	protected $css = array(); /*< Contains CSS files. */

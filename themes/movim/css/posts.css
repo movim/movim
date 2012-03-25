@@ -22,27 +22,33 @@
     color: #777;
 }
 
-.post span.place {
+.post span.place, .post span.recycle {
     display: inline-block;
-    background: url(../img/icons/place.png) 0px 2px no-repeat;
     padding-left: 14px;
     font-weight: normal;
     margin-top: 5px;
     float: right;
+    margin-left: 10px;
+}
+
+.post span.place {
     max-width: 350px;
+    background: url(../img/icons/place.png) 0px 4px no-repeat;
     white-space: nowrap;  
     overflow: hidden;
     text-overflow: ellipsis;
     padding-bottom: 0.7em;
 }
 
+.post span.recycle {
+    background: url(../img/icons/recycle.png) 0px 4px no-repeat;
+}
+
 .post .comments {
     clear: both;
-	margin-bottom: 0.3em;
 	background-color: #F3F3F3;
 	margin-left: 60px;
 	margin-right: 5px;
-	margin-top: 10px;
 	width: 80%;
     box-shadow: 0 0px 1px rgba(34, 25, 25, 0.2);
 	background-color: #F2F0F0;
@@ -63,11 +69,21 @@
 }
 
 .post .comments .comment:first-child {
+    margin-top: 10px;
 	border-top: none;
 }
 
 .post .comments .comment:last-child {
     border-bottom: none;
+}
+
+.post .getcomments {
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    padding: 2px;
+    display: block;
+    
+    padding-left: 20px;
 }
 
 .post .avatar {

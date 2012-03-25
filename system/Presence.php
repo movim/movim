@@ -72,7 +72,7 @@ class PresenceHandler {
 
     }
     
-    public function getPresence($jid, $one = false, $ressource = false) {
+    static public function getPresence($jid, $one = false, $ressource = false) {
 	    global $sdb;
     	$user = new User();
     	if($ressource == false)

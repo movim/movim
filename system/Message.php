@@ -4,6 +4,8 @@ class Message extends DatajarBase {
     protected $key;
     protected $jid;
 
+    protected $name;
+    protected $uri; 
     protected $nodeid;
     protected $parentid;
     protected $title;
@@ -26,6 +28,8 @@ class Message extends DatajarBase {
         $this->key      = DatajarType::varchar(128);
         $this->jid      = DatajarType::varchar(128);
 
+        $this->name     = DatajarType::varchar(128);
+        $this->uri      = DatajarType::varchar(128);
         $this->nodeid   = DatajarType::varchar(128);
         $this->parentid = DatajarType::varchar(128);
         $this->title    = DatajarType::varchar(128);
@@ -75,6 +79,9 @@ class MessageHandler {
                 $message = new Message();
                 $message->key = $jid;
                 $message->jid = $from;
+                
+                $message->name = $array['entry']['source']['author']['name'];
+                $message->uri = substr($array['entry']['source']['author']['uri'], 5);
                 $message->nodeid = $array['@attributes']['id'];
                 $message->parentid = $parent;
                 $message->content = $array['entry']['content'];
@@ -108,6 +115,8 @@ class MessageHandler {
                 $sdb->load($message, array('key' => $jid,
                                            'jid' => $from,
                                            'nodeid' => $array['@attributes']['id']));
+                $message->name = $array['entry']['source']['author']['name'];
+                $message->uri = substr($array['entry']['source']['author']['uri'], 5);
                 $message->parentid = $parent;
                 $message->content = $array['entry']['content'];
                 $message->published = date('Y-m-d H:i:s', strtotime($array['entry']['published']));
