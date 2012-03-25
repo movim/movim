@@ -46,7 +46,7 @@ class Notifs extends WidgetBase
    	            <input id="notifsalias" class="tiny" value="'.$payload['from'].'" onfocus="myFocus(this);" onblur="myBlur(this);"/>
    	            <a class="button tiny icon yes merged right" href="#" onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$payload['from']."'").' showAlias(this);">'.t("Accept").'</a>
    	            <a class="button tiny icon add merged right" href="#" id="notifsvalidate" onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['from']."'", "getAlias()").' hideNotification(this);">'.t("Validate").'</a>
-   	            <a class="button tiny icon yes merged left" href="#" onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['from']."'").' hideNotification(this);">'.t("Decline").'</a>
+   	            <a class="button tiny icon no merged left" href="#" onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['from']."'").' hideNotification(this);">'.t("Decline").'</a>
    	        </li>';
    	    $notifs['sub'.$payload['from']] = $html;
    	    
