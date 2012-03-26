@@ -56,7 +56,6 @@ class ControllerBase
     function load_language() {
         $user = new user();
 		if($user->isLogged()) {
-			//$user = new User();
             try{
                 $lang = $user->getConf(false, 'language');
                 load_language($lang);
