@@ -26,6 +26,7 @@
     margin-bottom: 10px;
     border: 1px solid transparent;
     text-align: center;
+    width: 80%;
 }
 
 #profile #status:hover {

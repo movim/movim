@@ -146,25 +146,7 @@ class Jabber
 			$this->jaxl->startCore('bosh');
 		}
         
-
-
-        /*if($presence != false && $presence['presence'] != null && $presence['presence'] != '') {
-            movim_log($presence);
-            $show = $presence['status'];
-        } else {
-            $show = 'Online using Movim';
-        }*/
-        
-        self::setStatus('Online using Movim', false, false, true);  
-        
-        $presence = Cache::c('presence'.$this->getCleanJid());
-        $status = $presence['status'];
-        movim_log($presence);
-        /*if($presence != false && $presence['presence'] != null && $presence['presence'] != '') {
-            movim_log($presence);
-            self::setStatus($presence['status'], false, false, true);  
-        }*/
-                self::setStatus($status, false, false, true);  
+        self::setStatus(t('Connecting...'), false, false, true);  
 	}
 
 	/**
@@ -471,23 +453,24 @@ class Jabber
         $evt = new Event();
 		
         foreach($payloads as $payload) {
-    		if($payload['movim']['@attributes']['type'] == 'subscribe') {
+            $payload = $payload['movim'];
+    		if($payload['@attributes']['type'] == 'subscribe') {
         		$evt->runEvent('subscribe', $payload);
-    		} elseif($payload['movim']['@attributes']['type'] == 'result') {
+    		} elseif($payload['@attributes']['type'] == 'result') {
     		
-    		} elseif(in_array($payload['movim']['@attributes']['type'], array('available', 'unavailable', '', 'error'))) {
+    		} elseif(in_array($payload['@attributes']['type'], array('available', 'unavailable', '', 'error'))) {
     		    
     		    // We update the presences
-                list($jid, $ressource) = explode('/',$payload['movim']['@attributes']['from']);
+                list($jid, $ressource) = explode('/',$payload['@attributes']['from']);
                 
     		    // We ask for the entity-capabilities
-    		    if(isset($payload['movim']['c'])) {
+    		    if(isset($payload['c'])) {
 		            $this->jaxl->JAXL0030(
 		                'discoInfo', 
-		                $payload['movim']['@attributes']['from'], 
+		                $payload['@attributes']['from'], 
 		                $this->jaxl->jid, 
 		                false, 
-		                $payload['movim']['c']['@attributes']['node'].'#'.$payload['movim']['c']['@attributes']['ver']
+		                $payload['c']['@attributes']['node'].'#'.$payload['c']['@attributes']['ver']
 		            );
     		    }
                 
@@ -498,7 +481,7 @@ class Jabber
 	                                                    ));
 	            if($presence == false) {
 	                $presence = new Presence();
-	                $presence->setPresence($payload['movim']);
+	                $presence->setPresence($payload);
 	                $sdb->save($presence);
 	            } else {
 	                $presence = new Presence();
@@ -507,28 +490,13 @@ class Jabber
                                             'jid' => $jid,
                                             'ressource' => $ressource
                                             ));
-	                $presence->setPresence($payload['movim']);
+	                $presence->setPresence($payload);
 	                $sdb->save($presence);
 	            }
 	            
-	            if($payload['movim']['@attributes']['from'] == $payload['movim']['@attributes']['to']) {
-                    // We update the cache with our status and presence
-                    if(
-                        isset($payload['movim']['show']) && 
-                        isset($payload['movim']['status']) &&
-                        $payload['movim']['show'] != null
-                        //in_array($payload['movim']['show'], array('away','dnd','xa', 'chat'))
-                        ) {
-                        Cache::c(
-                            'presence'.$this->getCleanJid(), 
-                            array(
-                                'presence' => $payload['movim']['show'], 
-                                'status' => $payload['movim']['status']
-                                )
-                        ); 
-                    }
+	            if($payload['@attributes']['from'] == $payload['@attributes']['to']) 
 	                $evt->runEvent('mypresence', $presence);
-                }
+
 		        $evt->runEvent('presence', $presence);
             }
         }

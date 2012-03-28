@@ -45,12 +45,32 @@ class Logout extends WidgetBase
 
 	function ajaxLogout()
 	{
+        $presence = Cache::c('presence');
+        Cache::c(
+            'presence', 
+            array(
+                'status' => $presence['status'],
+                'show' => $presence['show'],
+                'boot' => true
+                )
+        );
 		$this->xmpp->logout();
 	}
     
-	function ajaxSetStatus($statustext, $status)
+	function ajaxSetStatus($show)
 	{
-		$this->xmpp->setStatus($statustext, $status);
+        // We update the cache with our status and presence
+        $presence = Cache::c('presence');
+        if($show == "boot") $show = $presence['show'];
+        Cache::c(
+            'presence', 
+            array(
+                'status' => $presence['status'],
+                'show' => $show,
+                'boot' => false
+                )
+        );
+		$this->xmpp->setStatus($presence['status'], $show);
 	}
     
     function preparePresence()
@@ -72,13 +92,16 @@ class Logout extends WidgetBase
                 
         $html .= '
             <div id="logoutlist">
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'online'").'; hideLogoutList();" class="online">'.$txt[1].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'away'").'; hideLogoutList();" class="away">'.$txt[2].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'dnd'").'; hideLogoutList();" class="dnd">'.$txt[3].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "':D'", "'xa'").'; hideLogoutList();" class="xa">'.$txt[4].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'chat'").'; hideLogoutList();" class="online">'.$txt[1].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'away'").'; hideLogoutList();" class="away">'.$txt[2].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'dnd'").'; hideLogoutList();" class="dnd">'.$txt[3].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'xa'").'; hideLogoutList();" class="xa">'.$txt[4].'</a>
                 <a onclick="'.$this->genCallAjax('ajaxLogout').'">'.$txt[5].'</a>
             </div>
                 ';
+        $presence = Cache::c('presence');
+        if($presence['boot'])
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxSetStatus', '"boot"').'\', 1500);</script>';
         
         return $html;
     }

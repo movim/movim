@@ -289,7 +289,7 @@ label {
     margin-top: 1px;
 }
 #nav .menu li:hover a {
-    background-color: #6F6F6F;
+    background-color: rgba(255, 255, 255, 0.3);
 } 
 
 /* Warning */
