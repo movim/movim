@@ -164,7 +164,7 @@ class Feed extends WidgetBase {
         
         <div id="feedcontent">
             <?php
-            
+            var_dump(Cache::c('presence'.$this->user->getLogin()));
             $query = ConfVar::query()
                                 ->where(array('login' => $this->user->getLogin()));
             $conf = ConfVar::run_query($query);

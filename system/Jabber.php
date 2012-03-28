@@ -145,8 +145,26 @@ class Jabber
 			$this->jaxl->pass = $pass;
 			$this->jaxl->startCore('bosh');
 		}
+        
 
-		self::setStatus('Online Using Movim 0.4', false, false, true);
+
+        /*if($presence != false && $presence['presence'] != null && $presence['presence'] != '') {
+            movim_log($presence);
+            $show = $presence['status'];
+        } else {
+            $show = 'Online using Movim';
+        }*/
+        
+        self::setStatus('Online using Movim', false, false, true);  
+        
+        $presence = Cache::c('presence'.$this->getCleanJid());
+        $status = $presence['status'];
+        movim_log($presence);
+        /*if($presence != false && $presence['presence'] != null && $presence['presence'] != '') {
+            movim_log($presence);
+            self::setStatus($presence['status'], false, false, true);  
+        }*/
+                self::setStatus($status, false, false, true);  
 	}
 
 	/**
@@ -493,8 +511,24 @@ class Jabber
 	                $sdb->save($presence);
 	            }
 	            
-	            if($payload['movim']['@attributes']['from'] == $payload['movim']['@attributes']['to']) 
+	            if($payload['movim']['@attributes']['from'] == $payload['movim']['@attributes']['to']) {
+                    // We update the cache with our status and presence
+                    if(
+                        isset($payload['movim']['show']) && 
+                        isset($payload['movim']['status']) &&
+                        $payload['movim']['show'] != null
+                        //in_array($payload['movim']['show'], array('away','dnd','xa', 'chat'))
+                        ) {
+                        Cache::c(
+                            'presence'.$this->getCleanJid(), 
+                            array(
+                                'presence' => $payload['movim']['show'], 
+                                'status' => $payload['movim']['status']
+                                )
+                        ); 
+                    }
 	                $evt->runEvent('mypresence', $presence);
+                }
 		        $evt->runEvent('presence', $presence);
             }
         }

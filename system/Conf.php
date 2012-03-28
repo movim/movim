@@ -64,7 +64,7 @@ class Conf
     * @param $arr Target array where the values will be stored
     * @return NULL
     */
-    private function convertXmlObjToArr( $obj, &$arr = null)
+    static private function convertXmlObjToArr( $obj, &$arr = null)
     {
         $children = $obj->children();
         $executed = false;
