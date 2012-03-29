@@ -56,7 +56,7 @@ class Profile extends WidgetBase
         global $sdb;
         $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         
-        $presence = PresenceHandler::getPresence($this->user->getLogin(), true, $this->xmpp->getResource());
+        $presence = Cache::c('presence');
         
         if(isset($me[0])) {
             $me = $me[0];
