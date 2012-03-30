@@ -29,7 +29,7 @@ class User {
 				&& isset($_POST['pass'])
 				&& $_POST['login'] != ''
 				&& $_POST['pass'] != '') {
-			$this->authenticate($_POST['login'], $_POST['pass'], $_POST['host'], $_POST['suffix'], $_POST['port']);
+			$this->authenticate($_POST['login'], $_POST['pass']);
 		}
 	}
 
@@ -43,7 +43,7 @@ class User {
 		return (($this->username != '' && $this->password != '') || $sess->get('login'));
 	}
 
-	function authenticate($login,$pass, $boshhost, $boshsuffix, $boshport)
+	function authenticate($login,$pass)
 	{
 		try{
 
@@ -115,9 +115,10 @@ class User {
     function getConf($user = false, $element = false) {
         $login = ($user != false) ? $user : $this->username;
 
-        global $sdb;
-        $conf = $sdb->select('ConfVar', array('login' => $login));
-
+        $query = ConfVar::query()
+                            ->where(array('login' => $login));
+        $conf = ConfVar::run_query($query);
+        
         if($conf != false) {
             $array = $conf[0]->getConf();
             if($element != false)

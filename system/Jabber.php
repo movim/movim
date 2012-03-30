@@ -133,13 +133,11 @@ class Jabber
 	 */
 	public function login($jid, $pass)
 	{
-		if(!$this->checkJid($jid)) {
+		if(!checkJid($jid)) {
 		 	throw new MovimException(t("jid '%s' is incorrect", $jid));
 		} else {
 			$id = explode('@',$jid);
 			$user = $id[0];
-			$userConf = $id[1];
-			$domain = $id[1];
 
 			$this->jaxl->user = $user;
 			$this->jaxl->pass = $pass;
@@ -148,16 +146,6 @@ class Jabber
         
         self::setStatus(t('Connecting...'), false, false, true);  
 	}
-
-	/**
-     * postAuth
-     *
-     * @return void
-     */
-    public function postAuth() {
-		//$this->jaxl->getRosterList();
-		//$this->jaxl->getVCard();
-    }
 
     /**
      * postAuthFailure
@@ -638,19 +626,6 @@ class Jabber
 	public function setStatus($status, $show)
 	{
 		$this->jaxl->setStatus($status, $show, 41, false);
-	}
-
-    /**
-	 * Check the current Jid
-	 *
-	 * @param string $jid
-	 * @return bool
-	 */
-	private function checkJid($jid)
-	{
-		return true; /*
-			preg_match('/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\(?:.[a-z]{2,5})?$/',
-					   $jid); */
 	}
 
 	/**

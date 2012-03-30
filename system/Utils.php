@@ -152,6 +152,17 @@ function generateHash(){
     return sha1($result);
 }
 
+/**
+ * Check the current Jid
+ *
+ * @param string $jid
+ * @return bool
+ */
+function checkJid($jid)
+{
+    return filter_var($jid, FILTER_VALIDATE_EMAIL);
+}
+
 function movim_log($log) {
 	ob_start();
 //    var_dump($log);

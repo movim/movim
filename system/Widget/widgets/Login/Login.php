@@ -119,8 +119,8 @@ class Login extends WidgetBase {
 			        <div style="padding-top: 20px; width: 100%; text-align: center; clear: both;">
 			        
 			        <?php 
-		                global $sdb;
-                        $contacts = $sdb->select('ConfVar', array());
+                        $query = ConfVar::query();
+                        $contacts = ConfVar::run_query($query);
                         echo t('This server host %s accounts', count($contacts));
 			        ?>
 			        </div>
