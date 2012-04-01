@@ -16,8 +16,6 @@
  * See COPYING for licensing information.
  */
 
-//define('JAXL_COMPONENT_PORT', 5559);
-
 include(LIB_PATH . 'Jaxl/core/jaxl.class.php');
 
 class Jabber
@@ -638,7 +636,7 @@ class Jabber
 	public function sendMessage($addressee, $body)
 	{
 		// Checking on the jid.
-		if($this->checkJid($addressee)) {
+		if(checkJid($addressee)) {
 			$this->jaxl->sendMessage($addressee, $body, false, 'chat');
 		} else {
 			throw new MovimException("Incorrect JID `$addressee'");
@@ -652,7 +650,7 @@ class Jabber
 	 * @return void
 	 */
 	public function subscribedContact($jid) {
-		if($this->checkJid($jid)) {
+		if(checkJid($jid)) {
 			$this->jaxl->subscribed($jid);
 			$this->jaxl->addRoster($jid);
 		} else {
@@ -670,7 +668,7 @@ class Jabber
 	 */
 	public function acceptContact($jid, $group, $alias)
 	{
-		if($this->checkJid($jid)) {
+		if(checkJid($jid)) {
 			$this->jaxl->addRoster($jid, $group, $alias);
 			$this->jaxl->subscribe($jid);
 		} else {
@@ -687,8 +685,7 @@ class Jabber
 	 * @return void
 	 */
 	public function addContact($jid, $group, $alias) {
-		if($this->checkJid($jid)) {
-			//$this->jaxl->addRoster($jid, $group, $alias);
+		if(checkJid($jid)) {
 			$this->jaxl->subscribe($jid);
 		} else {
 			throw new MovimException("Incorrect JID `$jid'");
@@ -702,7 +699,7 @@ class Jabber
 	 * @return void
 	 */
 	public function removeContact($jid) {
-		if($this->checkJid($jid)) {
+		if(checkJid($jid)) {
 			$this->jaxl->deleteRoster($jid);
 			$this->jaxl->unsubscribe($jid);
 		} else {
