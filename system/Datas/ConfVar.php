@@ -32,57 +32,54 @@ class ConfVar extends DatajarBase {
 
         $this->first      = DatajarType::int();
     }
+    
+    public function get() {
+        $conf = array();
+        $arr = get_object_vars($this);
+        
+        foreach($arr as $key => $value) {
+            if(method_exists($value, 'getval'))
+                $conf[$key] = $value->getval();
+        }
+        
+        return $conf;
+    }
+    
+    public function set($att, $val) {
+        $arr = get_object_vars($this);
+        
+        if(array_key_exists($att, $arr))
+            $this->$att->setval($val);
+        else
+            Logger::log(3, 'ConfVar::set() set a value on a non existent attribute');
 
-    public function setConf(
-                            $login = false,
-                            $pass = false,
-                            $host = false,
-                            $domain = false,
-                            $port = false,
-                            $boshhost = false,
-                            $boshsuffix = false,
-                            $boshport = false,
-                            $language = false,
-                            $first = false
-                           ) {
-
-        list($user, $host) = explode('@', $login);
-
-        $this->login->setval(($login != false) ? $login : $this->login->getval());
-        $this->pass->setval(($pass != false) ? sha1($pass) : $this->pass->getval());
-
-        $this->host->setval(($host != false) ? $host : $this->host->getval());
-        $this->domain->setval(($host != false) ? $host : $this->domain->getval());
-        $this->port->setval(5222);
-
-        $this->boshHost->setval(($boshhost != false) ? $boshhost : $this->boshHost->getval());
-        $this->boshSuffix->setval(($boshsuffix != false) ? $boshsuffix : $this->boshSuffix->getval());
-        $this->boshPort->setval(($boshport != false) ? $boshport : $this->boshPort->getval());
-
-        $this->language->setval(($language != false) ? $language : $this->language->getval());
-
-        if($first) $this->first->setval(1);
-
+        return $this;
     }
 
-    public function getConf() {
-        $array = array();
-        $array['login'] = $this->login->getval();
-        $array['pass'] = $this->pass->getval();
+}
 
-        $array['host'] = $this->host->getval();
-        $array['domain'] = $this->domain->getval();
-        $array['port'] = $this->port->getval();
+class UserConf {
+    static function getConf($jid = false, $element = false) {
+        $sess = Session::start(APP_NAME);
+        
+        if($jid)
+            $login = $jid;
+        elseif($sess->get('login') != '')
+            $login = $sess->get('login');
+        else
+            Logger::log(3, 'UserConf::getConf() on an unset Session');
 
-        $array['boshHost'] = $this->boshHost->getval();
-        $array['boshSuffix'] = $this->boshSuffix->getval();
-        $array['boshPort'] = $this->boshPort->getval();
-
-        $array['language'] = $this->language->getval();
-
-        $array['first'] = $this->first->getval();
-
-        return $array;
+        $query = ConfVar::query()
+            ->where(array('login' => $login));
+            
+        $conf = ConfVar::run_query($query);
+        
+        $arr = $conf[0]->get();
+        
+        if($element != false)
+            return $arr[$element];
+        else
+            return $arr;     
     }
-
+    
 }

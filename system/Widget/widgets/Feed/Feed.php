@@ -113,7 +113,7 @@ class Feed extends WidgetBase {
         $sdb->load($conf, array(
                             'login' => $this->user->getLogin()
                                 ));
-        $conf->setConf(false, false, false, false, false, false, false, false, false, true);
+        $conf->set('first', true);
         $sdb->save($conf);
         
         $this->xmpp->createNode();
@@ -164,11 +164,9 @@ class Feed extends WidgetBase {
         
         <div id="feedcontent">
             <?php
-            $query = ConfVar::query()
-                                ->where(array('login' => $this->user->getLogin()));
-            $conf = ConfVar::run_query($query);
+            
+            $conf_arr = UserConf::getConf();
 
-            $conf_arr = $conf[0]->getConf(); 
             if($conf_arr["first"] == 0) { 
             ?>
                     <a 

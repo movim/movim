@@ -29,7 +29,7 @@ class Jabber
 	 */
 	private function __construct($jid)
 	{
-        $userConf = User::getConf($jid);
+        $userConf = UserConf::getConf($jid);
 
 		$serverConf = Conf::getServerConf();
 
