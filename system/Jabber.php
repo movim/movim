@@ -323,6 +323,7 @@ class Jabber
 			            $contact->rostername = $item['@attributes']['name'];
 			            $contact->rosterask = $item['@attributes']['ask'];
 			            $contact->rostersubscription = $item['@attributes']['subscription'];
+                        $contact->group = $item['group'];
 			            $sdb->save($contact);
 		            } else {
 		                $contact = new Contact();
@@ -330,6 +331,7 @@ class Jabber
 			            $contact->rostername = $item['@attributes']['name'];
 			            $contact->rosterask = $item['@attributes']['ask'];
 			            $contact->rostersubscription = $item['@attributes']['subscription'];
+                        $contact->group = $item['group'];
 			            $sdb->save($contact); 
 		            }
 		        }

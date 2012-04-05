@@ -9,6 +9,8 @@ class Contact extends DatajarBase {
     protected $date;
     protected $url;
     
+    protected $group;
+    
     protected $rostername;
     protected $rosterask;
     protected $rostersubscription;
@@ -20,6 +22,7 @@ class Contact extends DatajarBase {
     
     protected $vcardreceived;
     protected $chaton;
+    protected $public;
     
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);
@@ -29,6 +32,8 @@ class Contact extends DatajarBase {
         $this->name     = DatajarType::varchar(128);
         $this->date     = DatajarType::date();
         $this->url      = DatajarType::varchar(128);
+        
+        $this->group    = DatajarType::varchar(128);
         
         $this->rostername     = DatajarType::varchar(128);
         $this->rosterask      = DatajarType::varchar(128);
@@ -41,6 +46,7 @@ class Contact extends DatajarBase {
         
         $this->vcardreceived  = DatajarType::int();
         $this->chaton  = DatajarType::int();
+        $this->public  = DatajarType::int();
     }
     
     public function setContact($array) {
@@ -66,6 +72,7 @@ class Contact extends DatajarBase {
         $this->desc->setval($array['vCard']['DESC']);
         
         $this->vcardreceived->setval(1);
+        $this->public->setval(0);
     }
 
     public function getTrueName() {

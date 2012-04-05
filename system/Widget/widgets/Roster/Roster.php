@@ -94,20 +94,42 @@ class Roster extends WidgetBase
 	
 	function prepareRoster()
 	{
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin())); 
+        $query = Contact::query()
+                            ->where(array('key' => $this->user->getLogin()))
+                            ->orderby('group', true);
+        $contacts = Contact::run_query($query);
         
+        $group = '';        
         $html = '';
 
-            if($contact != false) {
-                foreach($contact as $c) {
-					if($c->getData('rostersubscription') != 'none' || $c->getData('rosterask') == 'subscribe')
-						$html .= $this->prepareRosterElement($c);
+        if($contacts != false) {
+            foreach($contacts as $c) {
+                
+                if($group != $c->getData('group')) {
+                    if($group != '')
+                        $html .= '</div>';
+                    
+                    $group = $c->getData('group');
+                    
+                    if($group == '') {
+                        $group = t('Ungrouped');
+                        $html .= '<div><h1>'.$group.'</h1>';
+                        $group = '';
+                    }
+                    else
+                        $html .= '<div><h1>'.$group.'</h1>';                    
                 }
-                $html .= '<li class="more" onclick="showRoster(this);"><a href="#"><span>'.t('Show All').'</span></a></li>';
-            } else {
-                $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
+                
+                movim_log($c->getData('group'))."\n";
+                if($c->getData('rostersubscription') != 'none' || $c->getData('rosterask') == 'subscribe')
+                    $html .= $this->prepareRosterElement($c);
             }
+            $html .= '</div>';
+            
+            $html .= '<li class="more" onclick="showRoster(this);"><a href="#"><span>'.t('Show All').'</span></a></li>';
+        } else {
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
+        }
 
         return $html;
 	}

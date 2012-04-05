@@ -1,6 +1,5 @@
 #profile {
     text-align: center;
-    margin-bottom: 5px;
 }
 
 #profile td {
@@ -23,7 +22,7 @@
     color: #444444;
     font-size: 11px;
     padding-top: 7px;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     border: 1px solid transparent;
     text-align: center;
     width: 80%;
