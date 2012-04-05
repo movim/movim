@@ -120,7 +120,6 @@ class Roster extends WidgetBase
                         $html .= '<div><h1>'.$group.'</h1>';                    
                 }
                 
-                movim_log($c->getData('group'))."\n";
                 if($c->getData('rostersubscription') != 'none' || $c->getData('rosterask') == 'subscribe')
                     $html .= $this->prepareRosterElement($c);
             }

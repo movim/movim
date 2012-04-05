@@ -8,10 +8,10 @@
 <div id="left">
     <?php $this->widget('Profile');?>
     <?php $this->widget('Roster');?>
-    <?php $this->widget('Notifs');?>
 </div>
 <div id="right">
     <?php $this->widget('ContactSummary');?>
+    <?php $this->widget('Notifs');?>
 </div>
 <div id="center">
     <?php $this->widget('Tabs');?>
