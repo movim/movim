@@ -9,7 +9,7 @@
     width: 100%;
 }
 
-#contactcard img {
+#contactcard img.avatar {
     max-width: 200px;
     padding: 3px;
     border: 1px solid #CCC;

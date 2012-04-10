@@ -153,6 +153,32 @@ function generateHash(){
 }
 
 /**
+ * Return the list of gender
+ */
+function getGender() {
+    return array('N' => t('None'),
+                    'M' => t('Male'),
+                    'F' => t('Female'),
+                    'O' => t('Other')
+                    );
+}
+
+/**
+ * Return the list of marital status
+ */
+function getMarital() {
+    return array('none' => t('None'),
+                    'single' => t('Single'),
+                    'relationship' => t('In a relationship'),
+                    'married' => t('Married'),
+                    'divorced' => t('Divorced'),
+                    'widowed' => t('Widowed'),
+                    'cohabiting' => t('Cohabiting'),
+                    'union' => t('Civil Union')
+                    );                      
+}
+
+/**
  * Check the current Jid
  *
  * @param string $jid

@@ -60,7 +60,7 @@ class Roster extends WidgetBase
 	{
         $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
         $start = 
-            '<li 
+            '<li
                 class="';
                     if(isset($presence['presence']))
                         $start .= ''.$presence['presence_txt'].' ';
@@ -75,8 +75,11 @@ class Roster extends WidgetBase
              
         $middle = '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"></div>
                  <a 
-					title="'.$contact->getTrueName().' ('.$contact->getData('jid').')" 
-                    href="?q=friend&f='.$contact->getData('jid').'"
+					title="'.$contact->getData('jid');
+                    if($presence['status'] != '')
+                        $middle .= ' - '.$presence['status'];
+        $middle .= '"';
+        $middle .= ' href="?q=friend&f='.$contact->getData('jid').'"
                  >
                     <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.
                     '<span>'.$contact->getTrueName();

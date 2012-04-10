@@ -13,4 +13,3 @@ function getPos(n)
 	    });
 	}
 }
-//<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://labs.metacarta.com/osm/embed.html?lat=42&lon=-71&zoom=12&marker=1"></iframe>

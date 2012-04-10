@@ -243,9 +243,17 @@ class Chat extends WidgetBase
     
     function build()
     {
-
-        global $sdb;
-        $contacts = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'chaton' => array(1, '|2')));
+        $query = Contact::query()
+                          ->where(
+                                array(
+                                    'key' => $this->user->getLogin(), 
+                                    array(
+                                        'chaton' => 
+                                        array(1, '|2'))
+                                )
+                            );
+        $contacts = Contact::run_query($query);
+        
         echo '<div id="chats">';
         if($contacts != false) {
             foreach($contacts as $contact) {

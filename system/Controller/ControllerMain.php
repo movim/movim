@@ -139,7 +139,7 @@ class ControllerMain extends ControllerBase
 	}
 
 	/**
-	 * Show login interface (hard-coded).
+	 * Show login interface
 	 */
 	function login()
 	{

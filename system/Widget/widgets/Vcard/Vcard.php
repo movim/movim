@@ -75,6 +75,31 @@ class Vcard extends WidgetBase
             $html .= '<div class="element"><span>'.t('Date of Birth').' YYYY-MM-DD</span>
                         <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$me->getData('date').'">
                       </div>';
+            
+
+            
+            $html .= '<br />
+                      <div class="element"><span style="padding-top: 5px;">'.t('Gender').'</span>
+                        <select name="vCardGender">';
+                        foreach(getGender() as $key => $value) {
+                            $html .= '<option ';
+                            if($key == $me->getData('gender'))
+                                $html .= 'selected ';
+                            $html .= 'value="'.$key.'">'.$value.'</option>';
+                        }
+            $html .= '  </select>
+                      </div>';
+                      
+            $html .= '<div class="element"><span style="padding-top: 5px;">'.t('Marital Status').'</span>
+                        <select name="vCardMaritalStatus">';
+                        foreach(getMarital() as $key => $value) {
+                            $html .= '<option ';
+                            if($key == $me->getData('marital'))
+                                $html .= 'selected ';
+                            $html .= 'value="'.$key.'">'.$value.'</option>';
+                        }
+            $html .= '  </select>
+                      </div>';
                       
             $html .= '<br />
                       <div class="element"><span>'.t('Website').'</span>
