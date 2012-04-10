@@ -1,13 +1,13 @@
 #loginpage {
     min-height: 400px;
-    background-image: url(img/cloud.png);
+    background-image: url(img/wall.jpg);
     background-repeat: no-repeat;
-    background-position: 50px 0px;
+    background-position: 10px -20px;
 }
 
 #loginpage #quote {
     float: left;
-    margin-top: 55px; 
+    margin-top: 42px; 
     height: 150px;
     color: #aaa;
     background-image: url(img/quotestart.png);
@@ -32,7 +32,7 @@
     padding: 0px 10px;
     float: right;
     min-height: 200px;
-    margin-top: 50px;
+    margin-top: 60px;
     border-left: 1px solid #ccc;
 }
 
