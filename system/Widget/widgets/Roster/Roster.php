@@ -44,7 +44,7 @@ class Roster extends WidgetBase
         RPC::call('movim_fill', 'roster'.$contact->getData('jid'), RPC::cdata($html));
     }
 	
-    function onRoster($roster)
+    function onRoster()
     {
 		$html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', RPC::cdata($html));

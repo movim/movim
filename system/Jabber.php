@@ -255,14 +255,15 @@ class Jabber
 	 * @return void
 	 */
 	public function getIq($payload) {
-	
+        $payload = $payload['movim'];
+
 		$evt = new Event();
 		// vCard case
-		if(is_array($payload['movim']['vCard']) && $payload['movim']['@attributes']['type'] != 'error') { // Holy mackerel, that's a vcard!
+		if(is_array($payload['vCard']) && $payload['@attributes']['type'] != 'error') { // Holy mackerel, that's a vcard!
             // If the vcard is mine
 			if(
-			    $payload['movim']['@attributes']['from'] == reset(explode("/", $payload['movim']['@attributes']['to'])) || 
-			    $payload['movim']['@attributes']['from'] == NULL
+			    $payload['@attributes']['from'] == reset(explode("/", $payload['@attributes']['to'])) || 
+			    $payload['@attributes']['from'] == NULL
 			  ) {
 			  
 		        global $sdb;
@@ -271,12 +272,12 @@ class Jabber
 		        
 		        if($contact == false) {
 			        $contact = new Contact();
-	                $contact->setContact($payload['movim']);			            
+	                $contact->setContact($payload);			            
 			        $sdb->save($contact);
 		        } else {
 		        	$c = new ContactHandler();
 	                $contact = $c->get($this->getCleanJid());
-	                $contact->setContact($payload['movim']);			            
+	                $contact->setContact($payload);			            
 			        $sdb->save($contact); 
 		        }
 			
@@ -286,16 +287,16 @@ class Jabber
 			} else {
 		        global $sdb;
 
-                if(isset($payload['movim']['@attributes']['from'])) {
-		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $payload['movim']['@attributes']['from']));
+                if(isset($payload['@attributes']['from'])) {
+		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $payload['@attributes']['from']));
 		            if($contact == false) {
 			            $contact = new Contact();
-	                    $contact->setContact($payload['movim']);			            
+	                    $contact->setContact($payload);			            
 			            $sdb->save($contact);
 		            } else {
 		            	$c = new ContactHandler();
-	                    $contact = $c->get($payload['movim']['@attributes']['from']);
-	                    $contact->setContact($payload['movim']);			            
+	                    $contact = $c->get($payload['@attributes']['from']);
+	                    $contact->setContact($payload);			            
 			            $sdb->save($contact); 
 		            }
 
@@ -306,14 +307,13 @@ class Jabber
 		
 		// Roster case
 		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
-
-		    if($payload['type'] == "result") {
+		    if($payload['@attributes']['type'] == "result") {
 		        global $sdb;
 		        
-		        foreach($payload['movim']['query']['item'] as $item) {
+		        foreach($payload['query']['item'] as $item) {
 		            // If we've got only one item in the roster we use it as the only one
 		            if(isset($item['subscription']))
-		                $item = $payload['movim']['query']['item'];
+		                $item = $payload['query']['item'];
 		                
 		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $item['@attributes']['jid']));
 		            if($contact == false && isset($item['@attributes']['jid'])) {
@@ -341,8 +341,7 @@ class Jabber
                 $this->getRosterList();
             }
         }
-        elseif('urn:xmpp:microblog:0:comments' == reset(explode("/", $payload['movim']['pubsub']['items']['@attributes']['node']))) {
-            $payload = $payload['movim'];
+        elseif('urn:xmpp:microblog:0:comments' == reset(explode("/", $payload['pubsub']['items']['@attributes']['node']))) {
             $from = $payload['@attributes']['from'];
             
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
@@ -360,7 +359,6 @@ class Jabber
         
         // Pubsub node case
         elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
-            $payload = $payload['movim'];
             $from = $payload['@attributes']['from'];
             
             // We test if there is more than one item in the stream

@@ -27,9 +27,9 @@ class Vcard extends WidgetBase
     	$this->addjs('vcard.js');
     }
     
-    function onMyVcardReceived($vcard)
+    function onMyVcardReceived()
     {
-		$html = $this->prepareInfos($vcard);
+		$html = $this->prepareInfos();
         RPC::call('movim_fill', 'vcard', RPC::cdata($html));
     }
     
@@ -37,9 +37,10 @@ class Vcard extends WidgetBase
 		$this->xmpp->updateVcard($vcard);
 	}
     
-    function prepareInfos($vcard = false) {
-        global $sdb;
-        $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+    function prepareInfos() {
+        $query = Contact::query()
+                            ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+        $me = Contact::run_query($query);
         
         $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
         
