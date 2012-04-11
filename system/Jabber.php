@@ -256,7 +256,7 @@ class Jabber
 	 */
 	public function getIq($payload) {
         $payload = $payload['movim'];
-
+        movim_log($payload);
 		$evt = new Event();
 		// vCard case
 		if(is_array($payload['vCard']) && $payload['@attributes']['type'] != 'error') { // Holy mackerel, that's a vcard!
@@ -358,7 +358,7 @@ class Jabber
         }
         
         // Pubsub node case
-        elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
+        elseif($payload['pubsub']['items']['@attributes']['node'] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
             $from = $payload['@attributes']['from'];
             
             // We test if there is more than one item in the stream
