@@ -136,7 +136,6 @@ class Feed extends WidgetBase {
 				<td id="feedmessage">
 					<input 
 						id="feedmessagecontent"
-						class="big" 
 						onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;" 
 						value="<?php echo t('What\'s new ?'); ?>">
 				</td>
@@ -146,7 +145,7 @@ class Feed extends WidgetBase {
 						onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessagecontent').value") ?>"
 						href="#" 
 						id="feedmessagesubmit" 
-						class="button tiny icon submit">
+						class="button tiny icon submit"><?php echo t("Submit"); ?>
 					</a>
 				</td>
 			</tr>

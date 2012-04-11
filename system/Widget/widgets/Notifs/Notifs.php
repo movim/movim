@@ -88,6 +88,7 @@ class Notifs extends WidgetBase
         $notifs = array();
     ?>
     <div id="notifs">
+        <span id="widgettitle"><?php echo t('Add a contact'); ?></span>
         <ul id="notifslist">
             <?php
             ksort($notifs);

@@ -25,8 +25,8 @@ time, mark, audio, video {
 /* Zeu CSS */
 
 body {
-    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
-    font-size: 12px;
+    font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 13px;
     margin: 0 auto;
     margin-top: 25px;
     color: #4E4E4E;
@@ -126,6 +126,17 @@ h3 {
     color: gray;
 }
 
+/* Widgets */
+
+span#widgettitle {
+    font-weight: bold;
+    border-top: 1px solid #DDD;
+    display: block;
+    padding: 3px;
+    background-color: #FDFDFD;
+    text-align: center;
+}
+
 /* Formulaires */
 
 form p {
@@ -165,12 +176,11 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     border-radius: 3px;
     color: #666;
     background-color: #F5F5F5;
-    font-weight: bold;
     font-family: Arial,sans-serif;
     text-align: center;
     
     background-repeat: no-repeat;
-    background-position: 6px center;
+    background-position: 9px center;
 }
 
 input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .button:hover {

@@ -39,7 +39,7 @@ class WidgetCommon {
             if($attachments) {
                 $tmp .= '<div class="attachment">';
                 foreach($attachments as $attachment)
-                    $tmp .= '<a target="_blank" href="'.$attachment->getData('link').'"><img src="'.$attachment->getData('thumb').'"></a>';
+                    $tmp .= '<a target="_blank" href="'.$attachment->getData('link').'"><img alt="'.$attachment->getData('title').'" title="'.$attachment->getData('title').'" src="'.$attachment->getData('thumb').'"></a>';
                 $tmp .= '</div>';
             }
             
