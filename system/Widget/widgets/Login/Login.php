@@ -92,18 +92,19 @@ class Login extends WidgetBase {
 
 		        <div id="quote">
                     <blockquote>
-                    He say I know you, you know me<br />
-                    One thing I can tell you is<br />
-                    You got to be free<br /><br />
-
-                    Come together, right now<br />
-                    Over me<br />
+                        We don't need no education<br />
+                        We dont need no thought control<br />
+                        No dark sarcasm in the classroom<br />
+                        Teachers leave them kids alone<br />
+                        Hey! Teachers! Leave them kids alone!<br /><br />
+                        All in all it's just another brick in the wall.<br />
+                        All in all you're just another brick in the wall.<br />
                     </blockquote>
                 <cite>
-                    <a href="http://wikipedia.org/wiki/Lennon/McCartney">John Lennon & Paul McCartney</a>, in
-                    <a href="http://wikipedia.org/wiki/Come_Together">"Come Together"</a> on
-                    <a href="http://wikipedia.org/wiki/Abbey_Road_(album)">Abbey Road</a> by
-                    <a href="http://wikipedia.org/wiki/The_Beatles">The Beatles</a>
+                    <a href="http://en.wikipedia.org/wiki/Roger_Waters">Roger Waters</a>, in
+                    <a href="http://en.wikipedia.org/wiki/Another_Brick_in_the_Wall_%28Part_2%29#Part_2">"Another Brick in the Wall (Part II)"</a> on
+                    <a href="http://en.wikipedia.org/wiki/The_Wall">The Wall</a> by
+                    <a href="http://en.wikipedia.org/wiki/Pink_Floyd">Pink Floyd</a>
                 </cite>
 
 		        </div>
@@ -119,8 +120,8 @@ class Login extends WidgetBase {
 			        <div style="padding-top: 20px; width: 100%; text-align: center; clear: both;">
 			        
 			        <?php 
-		                global $sdb;
-                        $contacts = $sdb->select('ConfVar', array());
+                        $query = ConfVar::query();
+                        $contacts = ConfVar::run_query($query);
                         echo t('This server host %s accounts', count($contacts));
 			        ?>
 			        </div>

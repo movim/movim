@@ -100,7 +100,9 @@ class ContactCard extends WidgetBase
 	                '.t('Chat').'
 	            </a>';
         }
-
+        
+        $gender = getGender();
+        $marital = getMarital();
 
         $html .='
         <form><br />
@@ -109,14 +111,17 @@ class ContactCard extends WidgetBase
 
         $html .= $this->displayIf($contact->getData('fn'), t('Name'));
         $html .= $this->displayIf($contact->getData('name'), t('Nickname'));
-        $html .= $this->displayIf($contact->getData('jid'), t('Address'));
+        $html .= $this->displayIf($gender[$contact->getData('gender')], t('Gender'));
+        $html .= $this->displayIf($marital[$contact->getData('marital')], t('Marital Status'));
+
         if($contact->getData('date') != '0000-00-00')
         $html .= $this->displayIf($contact->getData('date'), t('Date of Birth'), date('j F Y',strtotime($contact->getData('date'))));
+        $html .= $this->displayIf($contact->getData('jid'), t('Address'));
 
         $html .= '<br />';
 
         $html .= $this->displayIf($contact->getData('url'), t('Website'), '<a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>');
-        $html .= $this->displayIf($contact->getPhoto(), t('Avatar'), '<img src="'.$contact->getPhoto().'">');
+        $html .= $this->displayIf($contact->getPhoto(), t('Avatar'), '<img class="avatar" src="'.$contact->getPhoto().'">');
 
         $html .= '<br />';
         $html .= $this->displayIf(prepareString($contact->getData('desc')), t('About Me'));

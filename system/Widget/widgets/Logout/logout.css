@@ -18,7 +18,7 @@
 }
 
 #logouttab:hover {
-    background-color: #6F6F6F;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 #logouttab.online { background-image: url(img/online.png); }

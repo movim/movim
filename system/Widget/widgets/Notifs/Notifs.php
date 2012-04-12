@@ -42,13 +42,13 @@ class Notifs extends WidgetBase
    	    
    	    $html = '
             <li>
-                '.$payload['from'].' '.t('wants to talk with you'). ' <br />
-   	            <input id="notifsalias" class="tiny" value="'.$payload['from'].'" onfocus="myFocus(this);" onblur="myBlur(this);"/>
-   	            <a class="button tiny icon yes merged right" href="#" onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$payload['from']."'").' showAlias(this);">'.t("Accept").'</a>
-   	            <a class="button tiny icon add merged right" href="#" id="notifsvalidate" onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['from']."'", "getAlias()").' hideNotification(this);">'.t("Validate").'</a>
-   	            <a class="button tiny icon no merged left" href="#" onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['from']."'").' hideNotification(this);">'.t("Decline").'</a>
+                '.$payload['@attributes']['from'].' '.t('wants to talk with you'). ' <br />
+   	            <input id="notifsalias" class="tiny" value="'.$payload['@attributes']['from'].'" onfocus="myFocus(this);" onblur="myBlur(this);"/>
+   	            <a class="button tiny icon yes merged right" href="#" onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$payload['@attributes']['from']."'").' showAlias(this);">'.t("Accept").'</a>
+   	            <a class="button tiny icon add merged right" href="#" id="notifsvalidate" onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['@attributes']['from']."'", "getAlias()").' hideNotification(this);">'.t("Validate").'</a>
+   	            <a class="button tiny icon yes merged left" href="#" onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['@attributes']['from']."'").' hideNotification(this);">'.t("Decline").'</a>
    	        </li>';
-   	    $notifs['sub'.$payload['from']] = $html;
+   	    $notifs['sub'.$payload['@attributes']['from']] = $html;
    	    
         RPC::call('movim_prepend', 'notifslist', RPC::cdata($html));
         
@@ -56,6 +56,7 @@ class Notifs extends WidgetBase
     }
     
     function ajaxSubscribed($jid) {
+        movim_log($jid);
         $this->xmpp->subscribedContact($jid);
     }
     
@@ -87,6 +88,7 @@ class Notifs extends WidgetBase
         $notifs = array();
     ?>
     <div id="notifs">
+        <span id="widgettitle"><?php echo t('Add a contact'); ?></span>
         <ul id="notifslist">
             <?php
             ksort($notifs);

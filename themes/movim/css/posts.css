@@ -17,7 +17,7 @@
 }
 
 .post span.date {
-    float: right;
+    margin-left: 10px;
     font-weight: normal;
     color: #777;
 }
@@ -47,12 +47,15 @@
 .post .comments {
     clear: both;
 	background-color: #F3F3F3;
-	margin-left: 60px;
+	margin-left: 65px;
 	margin-right: 5px;
 	width: 80%;
-    box-shadow: 0 0px 1px rgba(34, 25, 25, 0.2);
-	background-color: #F2F0F0;
-
+    box-shadow: 0 1px 1px rgba(34, 25, 25, 0.2);
+	background-color: #F5F5F5;
+    border: 1px solid #E2E2E2; 
+    border-top: 1px solid #E7E7E7;
+    border-bottom: 1px solid #D2D2D2;
+    margin-top: 5px;
 }
 
 .post .comments:hover {
@@ -61,7 +64,7 @@
 
 .post .comments .comment {
     border-bottom: 1px solid #E3E3E3;
-    padding: 1em;
+    padding: 0.5em;
     overflow: auto;
 	width: auto;
     border-bottom: 1px solid #D9D4D4;
@@ -69,7 +72,6 @@
 }
 
 .post .comments .comment:first-child {
-    margin-top: 10px;
 	border-top: none;
 }
 
@@ -77,22 +79,27 @@
     border-bottom: none;
 }
 
+.post .comments .comment .avatar {
+    margin-top: 5px;
+    margin-left: 3px;
+}
+
 .post .getcomments {
     background-repeat: no-repeat;
     background-position: 5px 5px;
     padding: 2px;
     display: block;
-    
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 .post .avatar {
 	width: 50px;
 	height: 50px;
-	margin-right: 10px;
+	margin-right: 15px;
 	margin-left: 0px;
 	display: block;
 	float: left;
+    border-radius: 3px;
 }
 
 .post .avatar.tiny {
@@ -103,7 +110,7 @@
 
 .post .content {
     text-align: justify;
-	margin-left: 60px;
+	margin-left: 65px;
 	margin-right: 5px;
     margin-top: 0.3em;
 }
@@ -117,15 +124,27 @@
 
 .post .attachment {
     display: block;
-    margin-left: 60px;
+    margin-left: 65px;
     clear: both;
+    margin-top: 10px;
 }
 
 .post .attachment img {
     max-width: 140px;
     padding: 5px;
-    margin: 5px;
+    margin-bottom: 5px;
+    margin-right: 7px;
     border: 1px solid #CCC;
+    background-color: white;
+}
+
+.post .attachment img:hover {
+    transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transition-duration: 0.5s; 
+    -webkit-transition-duration: 0.5s;   
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
 .post.older {

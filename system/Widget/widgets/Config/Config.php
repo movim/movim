@@ -34,11 +34,10 @@ class Config extends WidgetBase
 	{
 			$languages = load_lang_array();
 			/* We load the user configuration */
-			$usr = new User();
-			$conf = $usr->getConf();
+			$conf = UserConf::getConf();
 
 			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
-                . "document.getElementById('confspinner').style.display='block'; setTimeout(function() {location.reload(true)}, 5000);";
+                . "this.className='button icon loading merged right'; setTimeout(function() {location.reload(true)}, 2000);";
 ?>
 		<div id="config">
 			<form enctype="multipart/form-data" method="post" action="index.php" name="general">

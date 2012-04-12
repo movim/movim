@@ -8,14 +8,20 @@ define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 define('USERS_PATH', BASE_PATH . 'user/');
 
-define('DB_DEBUG', true);
-define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
+//define('DB_DEBUG', true);
+//define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
 
 // Loads up all system libraries.
 require_once(LIB_PATH . "Lang/i18n.php");
 
 require_once(LIB_PATH . "Datajar/loader.php");
 load_datajar(array('sqlite'));
+
+require_once(LIB_PATH . "Datas/ConfVar.php");
+require_once(LIB_PATH . "Datas/Contact.php");
+require_once(LIB_PATH . "Datas/Presence.php");
+require_once(LIB_PATH . "Datas/Message.php");
+require_once(LIB_PATH . "Datas/Attachment.php");
 
 require_once(LIB_PATH . "Session.php");
 require_once(LIB_PATH . "Utils.php");
@@ -27,11 +33,6 @@ require_once(LIB_PATH . "Logger.php");
 require_once(LIB_PATH . "MovimException.php");
 require_once(LIB_PATH . "RPC.php");
 require_once(LIB_PATH . "User.php");
-
-require_once(LIB_PATH . "Contact.php");
-require_once(LIB_PATH . "Presence.php");
-require_once(LIB_PATH . "Message.php");
-require_once(LIB_PATH . "Attachment.php");
 
 require_once(LIB_PATH . "Controller/ControllerBase.php");
 require_once(LIB_PATH . "Controller/ControllerMain.php");
@@ -53,7 +54,7 @@ define('JAXL_LOG_ROTATE', false);
 define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
 
 // We set the default timezone to the server timezone
-ini_set('date.timezone', date_default_timezone_get());
+date_default_timezone_set('UTC');
 
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 

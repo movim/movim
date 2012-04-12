@@ -113,7 +113,7 @@ class Feed extends WidgetBase {
         $sdb->load($conf, array(
                             'login' => $this->user->getLogin()
                                 ));
-        $conf->setConf(false, false, false, false, false, false, false, false, false, true);
+        $conf->set('first', true);
         $sdb->save($conf);
         
         $this->xmpp->createNode();
@@ -136,7 +136,6 @@ class Feed extends WidgetBase {
 				<td id="feedmessage">
 					<input 
 						id="feedmessagecontent"
-						class="big" 
 						onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;" 
 						value="<?php echo t('What\'s new ?'); ?>">
 				</td>
@@ -146,7 +145,7 @@ class Feed extends WidgetBase {
 						onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessagecontent').value") ?>"
 						href="#" 
 						id="feedmessagesubmit" 
-						class="button tiny icon submit">
+						class="button tiny icon submit"><?php echo t("Submit"); ?>
 					</a>
 				</td>
 			</tr>
@@ -165,11 +164,8 @@ class Feed extends WidgetBase {
         <div id="feedcontent">
             <?php
             
-            $query = ConfVar::query()
-                                ->where(array('login' => $this->user->getLogin()));
-            $conf = ConfVar::run_query($query);
+            $conf_arr = UserConf::getConf();
 
-            $conf_arr = $conf[0]->getConf(); 
             if($conf_arr["first"] == 0) { 
             ?>
                     <a 

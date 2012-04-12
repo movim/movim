@@ -36,9 +36,19 @@ class Profile extends WidgetBase
         RPC::call('movim_fill', 'profile', RPC::cdata($html));
     }
     
-	function ajaxSetStatus($statustext, $status)
+	function ajaxSetStatus($status)
 	{
-		$this->xmpp->setStatus($statustext, $status);
+        // We update the cache with our status and presence
+        $presence = Cache::c('presence');
+        Cache::c(
+            'presence', 
+            array(
+                'status' => $status,
+                'show' => $presence['show'],
+                'boot' => false
+                )
+        );
+		$this->xmpp->setStatus($status, $presence['show']);
 	}
     
     function prepareVcard($vcard = false)
@@ -46,7 +56,7 @@ class Profile extends WidgetBase
         global $sdb;
         $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         
-        $presence = PresenceHandler::getPresence($this->user->getLogin(), true, $this->xmpp->getResource());
+        $presence = Cache::c('presence');
         
         if(isset($me[0])) {
             $me = $me[0];
@@ -62,7 +72,15 @@ class Profile extends WidgetBase
 					</tr>
 				</table>
 				';
-            $html .= '<input type="text" id="status" value="'.$presence['status'].'"><br />';
+            $html .= '
+                <input 
+                    type="text" 
+                    id="status" 
+                    value="'.$presence['status'].'"
+                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', 'this.value').' return false;}"
+                />
+                <br />
+                ';
         }
         
         return $html;

@@ -30,7 +30,7 @@ function sprintln($string)
 }
 
 /**
- * Prepare the string (add the a the the links)
+ * Prepare the string (add the a to the links and show the smileys)
  *
  * @param string $string
  * @return string
@@ -102,6 +102,12 @@ function prepareString($string) {
     return $string;
 }
 
+/**
+ * Return a human-readable date 
+ *
+ * @param timestamp $string
+ * @return string
+ */
 function prepareDate($time) {
 
     $today = strtotime(date('M j, Y'));
@@ -129,6 +135,58 @@ function prepareDate($time) {
     } else {
         return date('l, j F, Y',$time ? $time : time());
     }
+}
+
+/**
+ * Generate a ramdom hash
+ *
+ * @return string
+ */
+function generateHash(){
+    $result = "";
+    $charPool = '0123456789abcdefghijklmnopqrstuvwxyz';
+
+    for($p = 0; $p<15; $p++)
+        $result .= $charPool[mt_rand(0,strlen($charPool)-1)];
+
+    return sha1($result);
+}
+
+/**
+ * Return the list of gender
+ */
+function getGender() {
+    return array('N' => t('None'),
+                    'M' => t('Male'),
+                    'F' => t('Female'),
+                    'O' => t('Other')
+                    );
+}
+
+/**
+ * Return the list of marital status
+ */
+function getMarital() {
+    return array('none' => t('None'),
+                    'single' => t('Single'),
+                    'relationship' => t('In a relationship'),
+                    'married' => t('Married'),
+                    'divorced' => t('Divorced'),
+                    'widowed' => t('Widowed'),
+                    'cohabiting' => t('Cohabiting'),
+                    'union' => t('Civil Union')
+                    );                      
+}
+
+/**
+ * Check the current Jid
+ *
+ * @param string $jid
+ * @return bool
+ */
+function checkJid($jid)
+{
+    return filter_var($jid, FILTER_VALIDATE_EMAIL);
 }
 
 function movim_log($log) {

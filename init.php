@@ -4,7 +4,7 @@ ob_start();
 
 require('loader.php');
 
-define('APP_TITLE', t("MOVIM - Test Client"));
+define('APP_TITLE', 'Movim');
 
 {
 	$index_pos = strpos($_SERVER['PHP_SELF'], 'index.php');

@@ -5,8 +5,11 @@
 }
 
 #feed #submit {
-	padding: 1.5em;
-	padding-bottom: 0.5em;
+	margin: 1.5em;
+	margin-bottom: 0.5em;
+    border: 1px solid gray;
+	border-color: #999999 #BBBBBB #BBBBBB;
+    padding-right: 8px;
 }
 
 #feed #feedmessage {
@@ -17,15 +20,11 @@
 #feed #feedmessage input {
 	margin: 0px;
 	width: 100%;
-	border-right: 0px;
+	border: 0px;
 }
 
 #feed #feedmessagesubmit {
-	border-color: #999999 #BBBBBB #BBBBBB;
-	background-color: white;
-	border-radius: 0px;
-	border-left: 0px;
-	font-size: 17px;
+    padding-left: 30px;
 }
 
 #feed #feedcontent {

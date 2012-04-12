@@ -1,3 +1,7 @@
+#roster {
+    margin-top: 5px;
+}
+
 #roster ul {
     list-style-type: none;
     font-size: 13px;
@@ -85,4 +89,11 @@
     margin-bottom: -5px;
     max-width: 24px;
     float: left;
+}
+
+#roster h1 {
+    margin: 0px;
+    padding: 5px 0px;
+    font-size: 14px;
+    font-weight: bold;
 }

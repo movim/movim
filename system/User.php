@@ -29,7 +29,7 @@ class User {
 				&& isset($_POST['pass'])
 				&& $_POST['login'] != ''
 				&& $_POST['pass'] != '') {
-			$this->authenticate($_POST['login'], $_POST['pass'], $_POST['host'], $_POST['suffix'], $_POST['port']);
+			$this->authenticate($_POST['login'], $_POST['pass']);
 		}
 	}
 
@@ -43,12 +43,12 @@ class User {
 		return (($this->username != '' && $this->password != '') || $sess->get('login'));
 	}
 
-	function authenticate($login,$pass, $boshhost, $boshsuffix, $boshport)
+	function authenticate($login,$pass)
 	{
 		try{
 
             $data = false;
-            if( !($data = $this->getConf($login)) ) {
+            if( !($data = UserConf::getConf($login)) ) {
 			    // We check if we wants to create an account
                 header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');
             }
@@ -89,44 +89,8 @@ class User {
     {
         global $sdb;
         $conf = $sdb->select('ConfVar', array('login' => $this->username));
-        $conf[0]->language = $language;
+        $conf[0]->set('language', $language);
         $sdb->save($conf[0]);
-    }
-
-	function setConf($data)
-    {
-        global $sdb;
-        $conf = $sdb->select('ConfVar', array('login' => $this->username));
-        $conf[0]->setConf(
-                            $data['login'],
-                            $data['pass'],
-                            $data['host'],
-                            $data['domain'],
-                            $data['port'],
-                            $data['boshhost'],
-                            $data['boshsuffix'],
-                            $data['boshport'],
-                            $data['language'],
-                            $data['first']
-                         );
-        $sdb->save($conf[0]);
-	}
-
-    function getConf($user = false, $element = false) {
-        $login = ($user != false) ? $user : $this->username;
-
-        global $sdb;
-        $conf = $sdb->select('ConfVar', array('login' => $login));
-
-        if($conf != false) {
-            $array = $conf[0]->getConf();
-            if($element != false)
-	            return $array[$element];
-	        else
-	            return $array;
-        } else {
-            return false;
-        }
     }
 
 	function getLogin()

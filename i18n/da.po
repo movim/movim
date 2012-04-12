@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 15:49+0000\n"
+"POT-Creation-Date: 2012-04-02 21:03+0200\n"
 "PO-Revision-Date: 2011-08-12 16:13:10\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,28 +130,32 @@ msgstr "Du kan nu tilgå din skinnende %sMovim udgave%s"
 msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
 
-#: ../system/Conf.php:125
+#: ../system/Conf.php:38
 #, php-format
 msgid "Cannot load element value'%s'"
 msgstr "Kan ikke indlæse element værdi '%s'"
 
-#: ../system/Conf.php:136
+#: ../system/Conf.php:49
 #, php-format
 msgid "Cannot load file '%s'"
 msgstr "Kan ikke indlæse fil '%s'"
 
-#: ../system/Jabber.php:109
+#: ../system/Jabber.php:107
 msgid "User not logged in."
 msgstr "Bruger er ikke logget ind."
 
-#: ../system/Jabber.php:113
+#: ../system/Jabber.php:111
 msgid "JID not provided."
 msgstr "JID ikke givet."
 
-#: ../system/Jabber.php:132
+#: ../system/Jabber.php:135
 #, php-format
 msgid "jid '%s' is incorrect"
 msgstr "jid '%s' er ikke korrekt"
+
+#: ../system/Jabber.php:145 ../system/Widget/widgets/Login/Login.php:117
+msgid "Connecting..."
+msgstr ""
 
 #: ../system/Logger.php:27
 #, php-format
@@ -163,157 +167,197 @@ msgstr "Kan ikke åbne log fil '%s'"
 msgid "Error: %s"
 msgstr "Fejl: '%s'"
 
-#: ../system/User.php:94 ../system/Widget/widgets/Account/Account.php:185
+#: ../system/User.php:68
 msgid "Wrong password"
 msgstr "Forkert adgangskode"
 
-#: ../system/Utils.php:48
+#: ../system/Utils.php:117
 msgid "Today"
 msgstr ""
 
-#: ../system/Utils.php:50
+#: ../system/Utils.php:119
 msgid "Tomorrow"
 msgstr ""
 
-#: ../system/Utils.php:52
+#: ../system/Utils.php:121
 msgid "Yesterday"
 msgstr ""
 
-#: ../system/Utils.php:58
+#: ../system/Utils.php:127
 msgid "day"
 msgstr ""
 
-#: ../system/Utils.php:61
+#: ../system/Utils.php:130
 #, php-format
 msgid " %d days ago"
 msgstr ""
 
 #: ../system/Controller/ControllerMain.php:40
-#: ../system/Controller/ControllerMain.php:58
+#: ../system/Controller/ControllerMain.php:59
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Velkommen til Movim"
 
 #: ../system/Controller/ControllerMain.php:41
-#: ../system/Controller/ControllerMain.php:59
-#: ../system/Controller/ControllerMain.php:93
-#: ../system/Controller/ControllerMain.php:108
-#: ../system/Controller/ControllerMain.php:127
+#: ../system/Controller/ControllerMain.php:60
+#: ../system/Controller/ControllerMain.php:94
+#: ../system/Controller/ControllerMain.php:113
+#: ../system/Controller/ControllerMain.php:129
+#: ../system/Controller/ControllerMain.php:148
 msgid "Home"
 msgstr "Start"
 
 #: ../system/Controller/ControllerMain.php:42
 #: ../system/Controller/ControllerMain.php:74
-#: ../system/Controller/ControllerMain.php:94
+#: ../system/Controller/ControllerMain.php:95
+#: ../system/Controller/ControllerMain.php:114
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:143
+#: ../system/Widget/widgets/Vcard/Vcard.php:134
+msgid "Profile"
+msgstr "Profil"
+
+#: ../system/Controller/ControllerMain.php:43
+#: ../system/Controller/ControllerMain.php:75
+#: ../system/Controller/ControllerMain.php:96
+#: ../system/Controller/ControllerMain.php:115
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: ../system/Controller/ControllerMain.php:92
+#: ../system/Controller/ControllerMain.php:93
 #, php-format
 msgid "%s - Configuration"
 msgstr "%s - Konfiguration"
 
-#: ../system/Controller/ControllerMain.php:106
+#: ../system/Controller/ControllerMain.php:112
+#, fuzzy, php-format
+msgid "%s - Profile"
+msgstr "Profil"
+
+#: ../system/Controller/ControllerMain.php:127
 #, php-format
 msgid "%s - Account Creation"
 msgstr "%s - Konto oprettelse"
 
-#: ../system/Controller/ControllerMain.php:109
-#: ../system/Controller/ControllerMain.php:129
+#: ../system/Controller/ControllerMain.php:130
+#: ../system/Controller/ControllerMain.php:150
 msgid "Account Creation"
 msgstr "Konto oprettelse"
 
-#: ../system/Controller/ControllerMain.php:125
+#: ../system/Controller/ControllerMain.php:146
 #, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - Log Ind til Movim"
 
-#: ../system/Widget/widgets/Account/Account.php:173
+#: ../system/Widget/widgets/Account/Account.php:169
 msgid "Some data are missing !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:179
+#: ../system/Widget/widgets/Account/Account.php:175
 msgid "Wrong ID"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:191
+#: ../system/Widget/widgets/Account/Account.php:181
 msgid "You entered different passwords"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:197
+#: ../system/Widget/widgets/Account/Account.php:187
 #, fuzzy
 msgid "Invalid name"
 msgstr "Gyldighedskontrol"
 
-#: ../system/Widget/widgets/Account/Account.php:203
+#: ../system/Widget/widgets/Account/Account.php:193
 msgid "Username already taken"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:209
+#: ../system/Widget/widgets/Account/Account.php:199
 msgid "Could not connect to the XMPP server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:215
+#: ../system/Widget/widgets/Account/Account.php:205
 msgid "Could not communicate with the XMPP server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:221
+#: ../system/Widget/widgets/Account/Account.php:211
 msgid "Unknown error"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:236
+#: ../system/Widget/widgets/Account/Account.php:226
 msgid ""
 "Firstly fill in this blank with a brand new account ID, this address will "
 "follow you on all the Movim network !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:236
+#: ../system/Widget/widgets/Account/Account.php:226
 msgid "Only alphanumerics elements are authorized"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:240
+#: ../system/Widget/widgets/Account/Account.php:230
 #: ../system/Widget/widgets/Login/Login.php:113
 msgid "My address"
 msgstr "Min adresse"
 
-#: ../system/Widget/widgets/Account/Account.php:251
+#: ../system/Widget/widgets/Account/Account.php:241
 msgid "Make sure your password is safe :"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:251
-msgid "A capital letter, a digit and a special character are required"
+#: ../system/Widget/widgets/Account/Account.php:241
+msgid "A capital letter, a digit and a special character are recommended"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:251
-msgid "8 characters minimum"
+#: ../system/Widget/widgets/Account/Account.php:241
+msgid "8 characters"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:251
+#: ../system/Widget/widgets/Account/Account.php:241
 msgid "Example :"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:254
+#: ../system/Widget/widgets/Account/Account.php:243
 #: ../system/Widget/widgets/Login/Login.php:115
 msgid "Password"
 msgstr "Adgangskode"
 
-#: ../system/Widget/widgets/Account/Account.php:263
+#: ../system/Widget/widgets/Account/Account.php:252
 msgid "Same here !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:266
+#: ../system/Widget/widgets/Account/Account.php:254
 msgid "Retype"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:275
+#: ../system/Widget/widgets/Account/Account.php:263
 msgid "Pseudo"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:283
+#: ../system/Widget/widgets/Account/Account.php:271
 msgid "Create"
 msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:162
+#: ../system/Widget/widgets/Chat/Chat.php:50
+#: ../system/Widget/widgets/Logout/Logout.php:79
+msgid "Online"
+msgstr "Online"
+
+#: ../system/Widget/widgets/Chat/Chat.php:51
+#: ../system/Widget/widgets/Logout/Logout.php:80
+msgid "Away"
+msgstr "Ikke tilstede"
+
+#: ../system/Widget/widgets/Chat/Chat.php:52
+#: ../system/Widget/widgets/Logout/Logout.php:81
+msgid "Do Not Disturb"
+msgstr "Forstyr ikke"
+
+#: ../system/Widget/widgets/Chat/Chat.php:53
+#: ../system/Widget/widgets/Logout/Logout.php:82
+msgid "Extended Away"
+msgstr ""
+
+#: ../system/Widget/widgets/Chat/Chat.php:54
+msgid "Offline"
+msgstr "Offline"
+
+#: ../system/Widget/widgets/Chat/Chat.php:232
 #, fuzzy
 msgid "Composing..."
 msgstr "Sammensætning"
@@ -322,14 +366,14 @@ msgstr "Sammensætning"
 msgid "Language"
 msgstr "Sprog"
 
-#: ../system/Widget/widgets/Config/Config.php:75
-#: ../system/Widget/widgets/Feed/Feed.php:118
-#: ../system/Widget/widgets/Vcard/Vcard.php:119
+#: ../system/Widget/widgets/Config/Config.php:59
+#: ../system/Widget/widgets/Feed/Feed.php:145
+#: ../system/Widget/widgets/Vcard/Vcard.php:111
 msgid "Submit"
 msgstr "Indsend"
 
-#: ../system/Widget/widgets/Config/Config.php:76
-#: ../system/Widget/widgets/Vcard/Vcard.php:120
+#: ../system/Widget/widgets/Config/Config.php:60
+#: ../system/Widget/widgets/Vcard/Vcard.php:112
 msgid "Reset"
 msgstr "Nulstil"
 
@@ -350,17 +394,17 @@ msgid "Chat"
 msgstr "Samtale"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:108
-#: ../system/Widget/widgets/Vcard/Vcard.php:75
+#: ../system/Widget/widgets/Vcard/Vcard.php:67
 msgid "General Informations"
 msgstr "Generelle informationer"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:110
-#: ../system/Widget/widgets/Vcard/Vcard.php:77
+#: ../system/Widget/widgets/Vcard/Vcard.php:69
 msgid "Name"
 msgstr "Navn"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:111
-#: ../system/Widget/widgets/Vcard/Vcard.php:80
+#: ../system/Widget/widgets/Vcard/Vcard.php:72
 msgid "Nickname"
 msgstr "Kaldenavn"
 
@@ -370,61 +414,67 @@ msgid "Address"
 msgstr "Adresse"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:114
-#: ../system/Widget/widgets/Vcard/Vcard.php:83
+#: ../system/Widget/widgets/Vcard/Vcard.php:75
 msgid "Date of Birth"
 msgstr "Fødselsdag"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:118
-#: ../system/Widget/widgets/Vcard/Vcard.php:88
+#: ../system/Widget/widgets/Vcard/Vcard.php:80
 msgid "Website"
 msgstr "Internetside"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:119
-#: ../system/Widget/widgets/Vcard/Vcard.php:93
+#: ../system/Widget/widgets/Vcard/Vcard.php:85
 msgid "Avatar"
 msgstr "Profilbillede"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:122
-#: ../system/Widget/widgets/Vcard/Vcard.php:100
+#: ../system/Widget/widgets/Vcard/Vcard.php:92
 msgid "About Me"
 msgstr "Om mig"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:146
-#: ../system/Widget/widgets/Vcard/Vcard.php:143
-msgid "Profile"
-msgstr "Profil"
+#: ../system/Widget/widgets/Feed/Feed.php:44
+#, fuzzy
+msgid "Loading your feed ..."
+msgstr "Indlæse kontakt kilde..."
 
-#: ../system/Widget/widgets/Feed/Feed.php:61
+#: ../system/Widget/widgets/Feed/Feed.php:55
+msgid "Get older posts"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:87
 msgid "Me"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:67
-#: ../system/Widget/widgets/Wall/Wall.php:67
+#: ../system/Widget/widgets/Feed/Feed.php:93
 msgid "Get the comments"
 msgstr "Hent kommentarer"
 
-#: ../system/Widget/widgets/Feed/Feed.php:74
+#: ../system/Widget/widgets/Feed/Feed.php:100
 #, fuzzy
 msgid "Your feed cannot be loaded."
 msgstr "Kontakters kilde kan ikke indlæses."
 
-#: ../system/Widget/widgets/Feed/Feed.php:114
-#: ../system/Widget/widgets/Wall/Wall.php:188
+#: ../system/Widget/widgets/Feed/Feed.php:133
+#: ../system/Widget/widgets/Wall/Wall.php:102
 msgid "Feed"
 msgstr "Kilde"
 
-#: ../system/Widget/widgets/Feed/Feed.php:115
+#: ../system/Widget/widgets/Feed/Feed.php:141
 msgid "What's new ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:136
-msgid "Create the feed"
+#: ../system/Widget/widgets/Feed/Feed.php:160
+msgid "All"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:147
-#, fuzzy
-msgid "Loading your feed ..."
-msgstr "Indlæse kontakt kilde..."
+#: ../system/Widget/widgets/Feed/Feed.php:161
+msgid "My Posts"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:174
+msgid "Create the feed"
+msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:34
 msgid "Wrong username"
@@ -458,15 +508,11 @@ msgstr ""
 msgid "Your web browser is too old to use with Movim."
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:136
-msgid "Connecting..."
-msgstr ""
-
-#: ../system/Widget/widgets/Login/Login.php:136
+#: ../system/Widget/widgets/Login/Login.php:117
 msgid "Come in!"
 msgstr "Kom Ind!"
 
-#: ../system/Widget/widgets/Login/Login.php:143
+#: ../system/Widget/widgets/Login/Login.php:124
 #, php-format
 msgid "This server host %s accounts"
 msgstr ""
@@ -475,89 +521,60 @@ msgstr ""
 msgid "Debug console"
 msgstr "Fejlsøgningskonsol"
 
-#: ../system/Widget/widgets/Logout/Logout.php:47
-msgid "Disconnecting..."
-msgstr ""
-
-#: ../system/Widget/widgets/Logout/Logout.php:47
+#: ../system/Widget/widgets/Logout/Logout.php:83
 msgid "Logout"
 msgstr "Log ud"
 
-#: ../system/Widget/widgets/News/News.php:44
-msgid "News"
-msgstr ""
-
-#: ../system/Widget/widgets/News/News.php:62
-msgid "You have no news yet..."
-msgstr ""
-
-#: ../system/Widget/widgets/Notifs/Notifs.php:46
+#: ../system/Widget/widgets/Notifs/Notifs.php:45
 msgid "wants to talk with you"
 msgstr "ønsker at snakke med dig"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:48
+#: ../system/Widget/widgets/Notifs/Notifs.php:47
 msgid "Accept"
 msgstr "Godkend"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:49
-#: ../system/Widget/widgets/Notifs/Notifs.php:105
+#: ../system/Widget/widgets/Notifs/Notifs.php:48
+#: ../system/Widget/widgets/Notifs/Notifs.php:100
 msgid "Validate"
 msgstr "Gyldighedskontrol"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:50
+#: ../system/Widget/widgets/Notifs/Notifs.php:49
 msgid "Decline"
 msgstr "Afvis"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:104
+#: ../system/Widget/widgets/Notifs/Notifs.php:99
 msgid "Alias"
 msgstr "Alias"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:106
+#: ../system/Widget/widgets/Notifs/Notifs.php:101
 msgid "Add a contact"
 msgstr "Tilføj en kontakt"
 
-#: ../system/Widget/widgets/Profile/Profile.php:49
-msgid "Online"
-msgstr "Online"
-
-#: ../system/Widget/widgets/Profile/Profile.php:50
-msgid "Away"
-msgstr "Ikke tilstede"
-
-#: ../system/Widget/widgets/Profile/Profile.php:51
-msgid "Do Not Disturb"
-msgstr "Forstyr ikke"
-
-#: ../system/Widget/widgets/Profile/Profile.php:52
-msgid "Long Absence"
-msgstr ""
-
-#: ../system/Widget/widgets/Roster/Roster.php:109
+#: ../system/Widget/widgets/Roster/Roster.php:107
 msgid "Show All"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:62
+#: ../system/Widget/widgets/Vcard/Vcard.php:54
 msgid "Create my vCard"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:119
+#: ../system/Widget/widgets/Vcard/Vcard.php:111
 #, fuzzy
 msgid "Submitting"
 msgstr "Indsend"
 
-#: ../system/Widget/widgets/Wall/Wall.php:67
-#, fuzzy
-msgid "Loading comments ..."
-msgstr "Indlæse kontakt kilde..."
-
-#: ../system/Widget/widgets/Wall/Wall.php:98
-#: ../system/Widget/widgets/Wall/Wall.php:195
+#: ../system/Widget/widgets/Wall/Wall.php:63
+#: ../system/Widget/widgets/Wall/Wall.php:109
 msgid "Follow"
 msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:209
+#: ../system/Widget/widgets/Wall/Wall.php:122
 msgid "Loading the contact feed ..."
 msgstr "Indlæse kontakt kilde..."
+
+#, fuzzy
+#~ msgid "Loading comments ..."
+#~ msgstr "Indlæse kontakt kilde..."
 
 #~ msgid "Theme"
 #~ msgstr "Tema"
@@ -695,9 +712,6 @@ msgstr "Indlæse kontakt kilde..."
 
 #~ msgid "Refresh vCard"
 #~ msgstr "Genopfriske"
-
-#~ msgid "Offline"
-#~ msgstr "Offline"
 
 #~ msgid "Hidden"
 #~ msgstr "Skjult"

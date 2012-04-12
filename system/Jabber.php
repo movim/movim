@@ -16,8 +16,6 @@
  * See COPYING for licensing information.
  */
 
-//define('JAXL_COMPONENT_PORT', 5559);
-
 include(LIB_PATH . 'Jaxl/core/jaxl.class.php');
 
 class Jabber
@@ -31,7 +29,7 @@ class Jabber
 	 */
 	private function __construct($jid)
 	{
-        $userConf = User::getConf($jid);
+        $userConf = UserConf::getConf($jid);
 
 		$serverConf = Conf::getServerConf();
 
@@ -133,31 +131,19 @@ class Jabber
 	 */
 	public function login($jid, $pass)
 	{
-		if(!$this->checkJid($jid)) {
+		if(!checkJid($jid)) {
 		 	throw new MovimException(t("jid '%s' is incorrect", $jid));
 		} else {
 			$id = explode('@',$jid);
 			$user = $id[0];
-			$userConf = $id[1];
-			$domain = $id[1];
 
 			$this->jaxl->user = $user;
 			$this->jaxl->pass = $pass;
 			$this->jaxl->startCore('bosh');
 		}
-
-		self::setStatus('Online Using Movim 0.4', false, false, true);
+        
+        self::setStatus(t('Connecting...'), false, false, true);  
 	}
-
-	/**
-     * postAuth
-     *
-     * @return void
-     */
-    public function postAuth() {
-		//$this->jaxl->getRosterList();
-		//$this->jaxl->getVCard();
-    }
 
     /**
      * postAuthFailure
@@ -269,14 +255,15 @@ class Jabber
 	 * @return void
 	 */
 	public function getIq($payload) {
-	
+        $payload = $payload['movim'];
+        movim_log($payload);
 		$evt = new Event();
 		// vCard case
-		if(is_array($payload['movim']['vCard']) && $payload['movim']['@attributes']['type'] != 'error') { // Holy mackerel, that's a vcard!
+		if(is_array($payload['vCard']) && $payload['@attributes']['type'] != 'error') { // Holy mackerel, that's a vcard!
             // If the vcard is mine
 			if(
-			    $payload['movim']['@attributes']['from'] == reset(explode("/", $payload['movim']['@attributes']['to'])) || 
-			    $payload['movim']['@attributes']['from'] == NULL
+			    $payload['@attributes']['from'] == reset(explode("/", $payload['@attributes']['to'])) || 
+			    $payload['@attributes']['from'] == NULL
 			  ) {
 			  
 		        global $sdb;
@@ -285,12 +272,12 @@ class Jabber
 		        
 		        if($contact == false) {
 			        $contact = new Contact();
-	                $contact->setContact($payload['movim']);			            
+	                $contact->setContact($payload);			            
 			        $sdb->save($contact);
 		        } else {
 		        	$c = new ContactHandler();
 	                $contact = $c->get($this->getCleanJid());
-	                $contact->setContact($payload['movim']);			            
+	                $contact->setContact($payload);			            
 			        $sdb->save($contact); 
 		        }
 			
@@ -300,16 +287,16 @@ class Jabber
 			} else {
 		        global $sdb;
 
-                if(isset($payload['movim']['@attributes']['from'])) {
-		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $payload['movim']['@attributes']['from']));
+                if(isset($payload['@attributes']['from'])) {
+		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $payload['@attributes']['from']));
 		            if($contact == false) {
 			            $contact = new Contact();
-	                    $contact->setContact($payload['movim']);			            
+	                    $contact->setContact($payload);			            
 			            $sdb->save($contact);
 		            } else {
 		            	$c = new ContactHandler();
-	                    $contact = $c->get($payload['movim']['@attributes']['from']);
-	                    $contact->setContact($payload['movim']);			            
+	                    $contact = $c->get($payload['@attributes']['from']);
+	                    $contact->setContact($payload);			            
 			            $sdb->save($contact); 
 		            }
 
@@ -320,14 +307,13 @@ class Jabber
 		
 		// Roster case
 		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
-
-		    if($payload['type'] == "result") {
+		    if($payload['@attributes']['type'] == "result") {
 		        global $sdb;
 		        
-		        foreach($payload['movim']['query']['item'] as $item) {
+		        foreach($payload['query']['item'] as $item) {
 		            // If we've got only one item in the roster we use it as the only one
 		            if(isset($item['subscription']))
-		                $item = $payload['movim']['query']['item'];
+		                $item = $payload['query']['item'];
 		                
 		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $item['@attributes']['jid']));
 		            if($contact == false && isset($item['@attributes']['jid'])) {
@@ -337,6 +323,7 @@ class Jabber
 			            $contact->rostername = $item['@attributes']['name'];
 			            $contact->rosterask = $item['@attributes']['ask'];
 			            $contact->rostersubscription = $item['@attributes']['subscription'];
+                        $contact->group = $item['group'];
 			            $sdb->save($contact);
 		            } else {
 		                $contact = new Contact();
@@ -344,6 +331,7 @@ class Jabber
 			            $contact->rostername = $item['@attributes']['name'];
 			            $contact->rosterask = $item['@attributes']['ask'];
 			            $contact->rostersubscription = $item['@attributes']['subscription'];
+                        $contact->group = $item['group'];
 			            $sdb->save($contact); 
 		            }
 		        }
@@ -353,8 +341,7 @@ class Jabber
                 $this->getRosterList();
             }
         }
-        elseif('urn:xmpp:microblog:0:comments' == reset(explode("/", $payload['movim']['pubsub']['items']['@attributes']['node']))) {
-            $payload = $payload['movim'];
+        elseif('urn:xmpp:microblog:0:comments' == reset(explode("/", $payload['pubsub']['items']['@attributes']['node']))) {
             $from = $payload['@attributes']['from'];
             
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
@@ -371,8 +358,7 @@ class Jabber
         }
         
         // Pubsub node case
-        elseif($payload["pubsubNode"] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
-            $payload = $payload['movim'];
+        elseif($payload['pubsub']['items']['@attributes']['node'] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
             $from = $payload['@attributes']['from'];
             
             // We test if there is more than one item in the stream
@@ -453,23 +439,24 @@ class Jabber
         $evt = new Event();
 		
         foreach($payloads as $payload) {
-    		if($payload['movim']['@attributes']['type'] == 'subscribe') {
+            $payload = $payload['movim'];
+    		if($payload['@attributes']['type'] == 'subscribe') {
         		$evt->runEvent('subscribe', $payload);
-    		} elseif($payload['movim']['@attributes']['type'] == 'result') {
+    		} elseif($payload['@attributes']['type'] == 'result') {
     		
-    		} elseif(in_array($payload['movim']['@attributes']['type'], array('available', 'unavailable', '', 'error'))) {
+    		} elseif(in_array($payload['@attributes']['type'], array('available', 'unavailable', '', 'error'))) {
     		    
     		    // We update the presences
-                list($jid, $ressource) = explode('/',$payload['movim']['@attributes']['from']);
+                list($jid, $ressource) = explode('/',$payload['@attributes']['from']);
                 
     		    // We ask for the entity-capabilities
-    		    if(isset($payload['movim']['c'])) {
+    		    if(isset($payload['c'])) {
 		            $this->jaxl->JAXL0030(
 		                'discoInfo', 
-		                $payload['movim']['@attributes']['from'], 
+		                $payload['@attributes']['from'], 
 		                $this->jaxl->jid, 
 		                false, 
-		                $payload['movim']['c']['@attributes']['node'].'#'.$payload['movim']['c']['@attributes']['ver']
+		                $payload['c']['@attributes']['node'].'#'.$payload['c']['@attributes']['ver']
 		            );
     		    }
                 
@@ -480,7 +467,7 @@ class Jabber
 	                                                    ));
 	            if($presence == false) {
 	                $presence = new Presence();
-	                $presence->setPresence($payload['movim']);
+	                $presence->setPresence($payload);
 	                $sdb->save($presence);
 	            } else {
 	                $presence = new Presence();
@@ -489,12 +476,13 @@ class Jabber
                                             'jid' => $jid,
                                             'ressource' => $ressource
                                             ));
-	                $presence->setPresence($payload['movim']);
+	                $presence->setPresence($payload);
 	                $sdb->save($presence);
 	            }
 	            
-	            if($payload['movim']['@attributes']['from'] == $payload['movim']['@attributes']['to']) 
+	            if($payload['@attributes']['from'] == $payload['@attributes']['to']) 
 	                $evt->runEvent('mypresence', $presence);
+
 		        $evt->runEvent('presence', $presence);
             }
         }
@@ -638,19 +626,6 @@ class Jabber
 		$this->jaxl->setStatus($status, $show, 41, false);
 	}
 
-    /**
-	 * Check the current Jid
-	 *
-	 * @param string $jid
-	 * @return bool
-	 */
-	private function checkJid($jid)
-	{
-		return true; /*
-			preg_match('/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\(?:.[a-z]{2,5})?$/',
-					   $jid); */
-	}
-
 	/**
 	 * Send a message
 	 *
@@ -661,7 +636,7 @@ class Jabber
 	public function sendMessage($addressee, $body)
 	{
 		// Checking on the jid.
-		if($this->checkJid($addressee)) {
+		if(checkJid($addressee)) {
 			$this->jaxl->sendMessage($addressee, $body, false, 'chat');
 		} else {
 			throw new MovimException("Incorrect JID `$addressee'");
@@ -675,7 +650,7 @@ class Jabber
 	 * @return void
 	 */
 	public function subscribedContact($jid) {
-		if($this->checkJid($jid)) {
+		if(checkJid($jid)) {
 			$this->jaxl->subscribed($jid);
 			$this->jaxl->addRoster($jid);
 		} else {
@@ -693,7 +668,7 @@ class Jabber
 	 */
 	public function acceptContact($jid, $group, $alias)
 	{
-		if($this->checkJid($jid)) {
+		if(checkJid($jid)) {
 			$this->jaxl->addRoster($jid, $group, $alias);
 			$this->jaxl->subscribe($jid);
 		} else {
@@ -710,8 +685,7 @@ class Jabber
 	 * @return void
 	 */
 	public function addContact($jid, $group, $alias) {
-		if($this->checkJid($jid)) {
-			//$this->jaxl->addRoster($jid, $group, $alias);
+		if(checkJid($jid)) {
 			$this->jaxl->subscribe($jid);
 		} else {
 			throw new MovimException("Incorrect JID `$jid'");
@@ -725,7 +699,7 @@ class Jabber
 	 * @return void
 	 */
 	public function removeContact($jid) {
-		if($this->checkJid($jid)) {
+		if(checkJid($jid)) {
 			$this->jaxl->deleteRoster($jid);
 			$this->jaxl->unsubscribe($jid);
 		} else {

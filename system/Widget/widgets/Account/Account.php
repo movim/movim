@@ -111,18 +111,18 @@ class Account extends WidgetBase {
 
         global $sdb;
         $conf = new ConfVar();
-        $conf->setConf(
-                        $data['username'].'@'.$data['server'],
-                        $data['password'],
-                        $confvar['host'],
-                        $confvar['host'],
-                        $confvar['port'],
-                        $confvar['defBoshHost'],
-                        $confvar['defBoshSuffix'],
-                        $confvar['defBoshPort'],
-                        $confvar['defLang'],
-                        false
-                      );
+        
+        $conf
+            ->set('login', $data['username'].'@'.$data['server'])
+            ->set('pass', $data['password'])
+            ->set('host', $confvar['host'])
+            ->set('domain', $confvar['host'])
+            ->set('port', $confvar['port'])
+            ->set('boshHost', $confvar['defBoshHost'])
+            ->set('boshSuffix', $confvar['defBoshSuffix'])
+            ->set('boshPort', $confvar['defBoshPort'])
+            ->set('language', $confvar['defLang'])
+            ->set('first', false);
 
         $sdb->save($conf);
 

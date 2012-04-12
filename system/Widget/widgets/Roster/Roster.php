@@ -44,7 +44,7 @@ class Roster extends WidgetBase
         RPC::call('movim_fill', 'roster'.$contact->getData('jid'), RPC::cdata($html));
     }
 	
-    function onRoster($roster)
+    function onRoster()
     {
 		$html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', RPC::cdata($html));
@@ -60,7 +60,7 @@ class Roster extends WidgetBase
 	{
         $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
         $start = 
-            '<li 
+            '<li
                 class="';
                     if(isset($presence['presence']))
                         $start .= ''.$presence['presence_txt'].' ';
@@ -75,8 +75,11 @@ class Roster extends WidgetBase
              
         $middle = '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"></div>
                  <a 
-					title="'.$contact->getTrueName().' ('.$contact->getData('jid').')" 
-                    href="?q=friend&f='.$contact->getData('jid').'"
+					title="'.$contact->getData('jid');
+                    if($presence['status'] != '')
+                        $middle .= ' - '.$presence['status'];
+        $middle .= '"';
+        $middle .= ' href="?q=friend&f='.$contact->getData('jid').'"
                  >
                     <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.
                     '<span>'.$contact->getTrueName();
@@ -94,20 +97,43 @@ class Roster extends WidgetBase
 	
 	function prepareRoster()
 	{
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin())); 
+        $query = Contact::query()
+                            ->where(array('key' => $this->user->getLogin()))
+                            ->orderby('group', true);
+        $contacts = Contact::run_query($query);
         
+        $group = '';        
         $html = '';
+        
+        $html .= '<span id="widgettitle">'.t('Contacts (%s)', sizeof($contacts)).'</span>';
 
-            if($contact != false) {
-                foreach($contact as $c) {
-					if($c->getData('rostersubscription') != 'none' || $c->getData('rosterask') == 'subscribe')
-						$html .= $this->prepareRosterElement($c);
+        if($contacts != false) {
+            foreach($contacts as $c) {
+                
+                if($group != $c->getData('group')) {
+                    if($group != '')
+                        $html .= '</div>';
+                    
+                    $group = $c->getData('group');
+                    
+                    if($group == '') {
+                        $group = t('Ungrouped');
+                        $html .= '<div><h1>'.$group.'</h1>';
+                        $group = '';
+                    }
+                    else
+                        $html .= '<div><h1>'.$group.'</h1>';                    
                 }
-                $html .= '<li class="more" onclick="showRoster(this);"><a href="#"><span>'.t('Show All').'</span></a></li>';
-            } else {
-                $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
+                
+                if($c->getData('rostersubscription') != 'none' || $c->getData('rosterask') == 'subscribe')
+                    $html .= $this->prepareRosterElement($c);
             }
+            $html .= '</div>';
+            
+            $html .= '<li class="more" onclick="showRoster(this);"><a href="#"><span>'.t('Show All').'</span></a></li>';
+        } else {
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
+        }
 
         return $html;
 	}

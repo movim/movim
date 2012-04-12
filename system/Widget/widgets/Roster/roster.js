@@ -4,28 +4,28 @@ function sortRoster() {
 
     online = roster.querySelectorAll('.online');
     for(i = 0; i < online.length; i++) {
-        roster.insertBefore(online.item(i), contacts.item(contacts.length))
+        online.item(i).parentNode.insertBefore(online.item(i), contacts.item(contacts.length))
     }
     away = roster.querySelectorAll('.away');
     for(i = 0; i < away.length; i++) {
-        roster.insertBefore(away.item(i), contacts.item(contacts.length))
+        away.item(i).parentNode.insertBefore(away.item(i), contacts.item(contacts.length))
     }
     dnd = roster.querySelectorAll('.dnd');
     for(i = 0; i < dnd.length; i++) {
-        roster.insertBefore(dnd.item(i), contacts.item(contacts.length))
+        dnd.item(i).parentNode.insertBefore(dnd.item(i), contacts.item(contacts.length))
     }
     xa = roster.querySelectorAll('.xa');
     for(i = 0; i < xa.length; i++) {
-        roster.insertBefore(xa.item(i), contacts.item(contacts.length))
+        xa.item(i).parentNode.insertBefore(xa.item(i), contacts.item(contacts.length))
     }
     offline = roster.querySelectorAll('.offline');
     for(i = 0; i < offline.length; i++) {
-        roster.insertBefore(offline.item(i), contacts.item(contacts.length))
+        offline.item(i).parentNode.insertBefore(offline.item(i), contacts.item(contacts.length))
     }
     
     server_error = roster.querySelectorAll('.server_error');
     for(i = 0; i < server_error.length; i++) {
-        roster.insertBefore(server_error.item(i), contacts.item(contacts.length))
+        server_error.item(i).parentNode.insertBefore(server_error.item(i), contacts.item(contacts.length))
     }
     
     more = roster.querySelector('.more');

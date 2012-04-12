@@ -27,9 +27,9 @@ class Vcard extends WidgetBase
     	$this->addjs('vcard.js');
     }
     
-    function onMyVcardReceived($vcard)
+    function onMyVcardReceived()
     {
-		$html = $this->prepareInfos($vcard);
+		$html = $this->prepareInfos();
         RPC::call('movim_fill', 'vcard', RPC::cdata($html));
     }
     
@@ -37,9 +37,10 @@ class Vcard extends WidgetBase
 		$this->xmpp->updateVcard($vcard);
 	}
     
-    function prepareInfos($vcard = false) {
-        global $sdb;
-        $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+    function prepareInfos() {
+        $query = Contact::query()
+                            ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+        $me = Contact::run_query($query);
         
         $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
         
@@ -74,6 +75,31 @@ class Vcard extends WidgetBase
                       </div>';
             $html .= '<div class="element"><span>'.t('Date of Birth').' YYYY-MM-DD</span>
                         <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$me->getData('date').'">
+                      </div>';
+            
+
+            
+            $html .= '<br />
+                      <div class="element"><span style="padding-top: 5px;">'.t('Gender').'</span>
+                        <select name="vCardGender">';
+                        foreach(getGender() as $key => $value) {
+                            $html .= '<option ';
+                            if($key == $me->getData('gender'))
+                                $html .= 'selected ';
+                            $html .= 'value="'.$key.'">'.$value.'</option>';
+                        }
+            $html .= '  </select>
+                      </div>';
+                      
+            $html .= '<div class="element"><span style="padding-top: 5px;">'.t('Marital Status').'</span>
+                        <select name="vCardMaritalStatus">';
+                        foreach(getMarital() as $key => $value) {
+                            $html .= '<option ';
+                            if($key == $me->getData('marital'))
+                                $html .= 'selected ';
+                            $html .= 'value="'.$key.'">'.$value.'</option>';
+                        }
+            $html .= '  </select>
                       </div>';
                       
             $html .= '<br />

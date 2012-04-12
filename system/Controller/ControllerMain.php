@@ -56,19 +56,22 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
-				$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
-                $this->page->menuAddLink(t('Home'), '?q=mainPage');
-
                 $sess = Session::start(APP_NAME);
                 $sess->set('currentcontact', $_GET['f']);
 
-                global $sdb;
                 $user = new User();
-                $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['f']));
+
+                $query = Contact::query()
+                                    ->where(array('key' => $user->getLogin(), 'jid' => $_GET['f']));
+                $contact = Contact::run_query($query);
+
                 if(isset($contact[0]))
                     $name = $contact[0]->getTrueName();
                 else
                     $name = $_GET['f'];
+                
+				$this->page->setTitle(APP_TITLE.' - '.$name);
+                $this->page->menuAddLink(t('Home'), '?q=mainPage');
 
 				$this->page->menuAddLink($name, false, true);
 				$this->page->menuAddLink(t('Profile'), '?q=profile');
@@ -139,10 +142,17 @@ class ControllerMain extends ControllerBase
 	}
 
 	/**
-	 * Show login interface (hard-coded).
+	 * Show login interface
 	 */
 	function login()
 	{
+    global $sdb;
+    $contact = new Contact();
+    $sdb->create($contact);
+
+    $conf = new ConfVar();
+    $sdb->create($conf);
+        
     	$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
