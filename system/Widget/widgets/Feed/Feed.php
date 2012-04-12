@@ -71,30 +71,6 @@ class Feed extends WidgetBase {
         $html = '';
         $i = 0;
         
-        /*$query = Contact::query()
-                            ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
-        $contact = Contact::run_query($query);
-        
-        if(isset($contact[0]))
-            $photo = $contact[0]->getPhoto();
-        
-        if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
-            foreach($payload['pubsub']['items']['item'] as $post) {
-                $html .= '
-                <div class="post" id="'.$post['@attributes']['id'].'">
-			        <img class="avatar" src="'.$photo.'">
-
-     			        <span><a href="?q=friend&f='.$this->user->getLogin().'">'.t('Me').'</a></span>
-     			        <span class="date">'.prepareDate(strtotime($post['entry']['published'])).'</span>
-     			    <div class="content"> 
-     			    '.prepareString($post['entry']['content']).'
-	            	</div>
-	            	<!--<div class="comments" id="'.$post['@attributes']['id'].'comments">
-	            	    <a onclick="'.$this->genCallAjax('ajaxGetComments', "'".$_GET['f']."'", "'".$post['@attributes']['id']."'").'">'.t('Get the comments').'</a>
-	            	</div>-->
-           		</div>';
-            }
-        }*/
         $html = $this->prepareFeed(0);
         
         if($html == '') 

@@ -86,7 +86,7 @@ class Contact extends DatajarBase {
     
     public function setContactRosterItem($item) {
         $user = new User();
-        //movim_log($item);
+
         $this->key->setval($user->getLogin());
         $this->jid->setval($item['@attributes']['jid']);
         $this->rostername->setval($item['@attributes']['name']);

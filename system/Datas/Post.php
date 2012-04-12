@@ -49,10 +49,15 @@ class Post extends DatajarBase {
         $this->building    = DatajarType::varchar(128);
     }
     
-    public function setPost($array, $from, $parent = false) {
-        $user = new User();
+    public function setPost($array, $from, $parent = false, $key = false) {
         
-        $this->key->setval($user->getLogin());
+        if($key == false) {
+            $user = new User();
+            $key = $user->getLogin();
+        }
+        
+        $this->key->setval($key);
+        
         if($parent != false)
             $this->jid->setval(substr($array['entry']['source']['author']['uri'], 5));
         else
@@ -79,7 +84,7 @@ class Post extends DatajarBase {
         if(is_array($array['entry']['link'])) {
             foreach($array['entry']['link'] as $attachment) {
                 if($attachment['link'][0]['@attributes']['title'] == 'thumb') {
-                    AttachmentHandler::saveAttachment($attachment, $user->getLogin(), $from, $array['@attributes']['id']);
+                    AttachmentHandler::saveAttachment($attachment, $key, $from, $array['@attributes']['id']);
                 }
             }
         }

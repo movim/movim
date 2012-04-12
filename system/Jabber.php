@@ -309,47 +309,9 @@ class Jabber
                 $this->getRosterList();
             }
         }
-        /*elseif('urn:xmpp:microblog:0:comments' == reset(explode("/", $payload['pubsub']['items']['@attributes']['node']))) {
-            $from = $payload['@attributes']['from'];
-            movim_log($payload);
-            
+        elseif(isset($payload['pubsub']) && !(isset($payload['error']))) {
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
 
-            // We test if there is more than one item in the stream
-            if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
-                foreach($payload['pubsub']['items']['item'] as $item)
-                    MessageHandler::saveMessage($item, $this->getCleanJid(), $from, $parent);
-            } else {
-                MessageHandler::saveMessage($payload['pubsub']['items']['item'], $this->getCleanJid(), $from, $parent);
-            }
-            
-            $evt->runEvent('comments', $parent);
-        }
-        
-        // Pubsub node case
-        elseif($payload['pubsub']['items']['@attributes']['node'] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
-            $from = $payload['@attributes']['from'];
-            movim_log($payload);
-            // We test if there is more than one item in the stream
-            if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
-                foreach($payload['pubsub']['items']['item'] as $item)
-                    MessageHandler::saveMessage($item, $this->getCleanJid(), $from);
-            } else {
-                MessageHandler::saveMessage($payload['pubsub']['items']['item'], $this->getCleanJid(), $from);
-            }
-       
-            $evt->runEvent('streamreceived', $payload);
-		}*/
-        
-        else {
-            $evt->runEvent('none', var_export($payload, true));
-        }
-        
-        
-        if(isset($payload['pubsub']) && !(isset($payload['error']))) {
-            list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
-            
-            movim_log($payload);
             foreach($payload['pubsub']['items']['item'] as $item) {
                 if(isset($item['id']))
                     $item = $payload['pubsub']['items']['item'];
@@ -372,6 +334,10 @@ class Jabber
                 }
             }
         }
+        else {
+            $evt->runEvent('none', var_export($payload, true));
+        }
+        
         $evt->runEvent('incomingemptybody', 'ping');
     }
 
@@ -401,8 +367,15 @@ class Jabber
 					$evt->runEvent('message', $payload);
 				}
             } elseif($payload['movim']['event']['items']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
-                $new = MessageHandler::saveMessage($payload['movim']['event']['items']['item'], $this->getCleanJid(), $payload['movim']['@attributes']['from']);
                 $payload = $payload['movim'];
+                
+                global $sdb;
+                movim_log($payload);
+                $c = new PostHandler();
+                $post = $c->get($payload['event']['items']['item']['@attributes']['id']);
+                $post->setPost($payload['event']['items']['item'], $payload['@attributes']['from'], false, $this->getCleanJid());
+                $sdb->save($post); 
+            
                 if($new == false) {
 		            $sess = Session::start(APP_NAME);
                     if($sess->get('currentcontact') == $payload['@attributes']['from']) {
