@@ -74,7 +74,7 @@ class WidgetCommon {
     protected function prepareComments($message) {
         global $sdb;
         $user = new User();
-        $comments = $sdb->select('Message', array('key' => $user->getLogin(), 'parentid' => $message->getData('nodeid')), 'updated', true);
+        $comments = $sdb->select('Post', array('key' => $user->getLogin(), 'parentid' => $message->getData('nodeid')), 'updated', true);
         
         if($comments) {
             foreach($comments as $comment) {

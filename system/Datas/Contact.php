@@ -83,6 +83,17 @@ class Contact extends DatajarBase {
         $this->vcardreceived->setval(1);
         $this->public->setval(0);
     }
+    
+    public function setContactRosterItem($item) {
+        $user = new User();
+        //movim_log($item);
+        $this->key->setval($user->getLogin());
+        $this->jid->setval($item['@attributes']['jid']);
+        $this->rostername->setval($item['@attributes']['name']);
+        $this->rosterask->setval($item['@attributes']['ask']);
+        $this->rostersubscription->setval($item['@attributes']['subscription']);
+        $this->group->setval($item['group']);
+    }
 
     public function getTrueName() {
         $truename = '';

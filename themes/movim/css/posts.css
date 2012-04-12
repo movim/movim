@@ -118,7 +118,8 @@
 .post .content.tiny {
     margin: 0px;
     padding: 0px;
-    margin-left: 3em;
+    margin-left: 3.3em;
+    margin-right: 0.5em;
     margin-top: 0.3em;
 }
 

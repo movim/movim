@@ -25,12 +25,12 @@ class Wall extends WidgetBase
     {
     	$this->addcss('wall.css');
     	$this->addjs('wall.js');
-		$this->registerEvent('streamreceived', 'onStream');
-		$this->registerEvent('comments', 'onComments');
+		$this->registerEvent('stream', 'onStream');
+		$this->registerEvent('comment', 'onComment');
 		$this->registerEvent('currentpost', 'onNewPost');
     }
     
-    function onComments($parent) {        
+    function onComment($parent) {        
         global $sdb;
         $message = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
 
@@ -66,7 +66,7 @@ class Wall extends WidgetBase
                 ';
             
             global $sdb;
-            $messages = $sdb->select('Message', array('key' => $this->user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
+            $messages = $sdb->select('Post', array('key' => $this->user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
             
             if($messages == false) {            
                 RPC::call('hideWall'); 
@@ -111,7 +111,7 @@ class Wall extends WidgetBase
                 <br /><br />-->
             <?php 
             global $sdb;
-            $messages = $sdb->select('Message', array('key' => $this->user->getLogin(), 'jid' => $_GET['f'], 'parentid' => ''), 'updated', true);
+            $messages = $sdb->select('Post', array('key' => $this->user->getLogin(), 'jid' => $_GET['f'], 'parentid' => ''), 'updated', true);
             
             if($messages == false) {
             ?>

@@ -6,22 +6,22 @@ class Feed extends WidgetBase {
     	$this->addcss('feed.css');
     	$this->addjs('feed.js');
 		$this->registerEvent('post', 'onPost');
-		$this->registerEvent('comments', 'onComments');
-		$this->registerEvent('streamreceived', 'onStream');
+		$this->registerEvent('comment', 'onComment');
+		$this->registerEvent('stream', 'onStream');
     }
     
-    function onComments($parent) {        
+    function onComment($parent) {        
         global $sdb;
-        $message = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
+        $message = $sdb->select('Post', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
 
         $html = $this->prepareComments($message[0]);
         RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
     function onPost($payload) {
-        $query = Message::query()
+        $query = Post::query()
                             ->where(array('key' => $this->user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
-        $post = Message::run_query($query);
+        $post = Post::run_query($query);
 
         if($post != false) {  
             $html = $this->preparePost($post[0]);
@@ -30,18 +30,18 @@ class Feed extends WidgetBase {
     }
     
     function prepareFeed($start) {
-        $query = Message::query()
+        $query = Post::query()
                             ->where(array('key' => $this->user->getLogin(), 'parentid' => ''))
                             ->orderby('updated', true)
                             ->limit($start, '20');
-        $messages = Message::run_query($query);
+        $messages = Post::run_query($query);
 		
 		if($messages == false) {
 			$html = '
 				<script type="text/javascript">
 					setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);
 				</script>';
-			echo t('Loading your feed ...');
+			$html .=  '<div style="padding: 1em; text-align: center;">'.t('Loading your feed ...').'</div>';
 		} else {
 			$html = '';
 			
@@ -71,7 +71,7 @@ class Feed extends WidgetBase {
         $html = '';
         $i = 0;
         
-        $query = Contact::query()
+        /*$query = Contact::query()
                             ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         $contact = Contact::run_query($query);
         
@@ -94,11 +94,13 @@ class Feed extends WidgetBase {
 	            	</div>-->
            		</div>';
             }
-        }
+        }*/
+        $html = $this->prepareFeed(0);
         
         if($html == '') 
             $html = t("Your feed cannot be loaded.");
         RPC::call('movim_fill', 'feed_content', RPC::cdata($html));
+        RPC::commit();
     }
     
     function ajaxPublishItem($content)
