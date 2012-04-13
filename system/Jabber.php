@@ -369,12 +369,15 @@ class Jabber
             } elseif($payload['movim']['event']['items']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
                 $payload = $payload['movim'];
                 
-                global $sdb;
                 movim_log($payload);
-                $c = new PostHandler();
-                $post = $c->get($payload['event']['items']['item']['@attributes']['id']);
-                $post->setPost($payload['event']['items']['item'], $payload['@attributes']['from'], false, $this->getCleanJid());
-                $sdb->save($post); 
+                
+                if(isset($payload['event']['items']['item'])) {
+                    global $sdb;
+                    $c = new PostHandler();
+                    $post = $c->get($payload['event']['items']['item']['@attributes']['id']);
+                    $post->setPost($payload['event']['items']['item'], $payload['@attributes']['from'], false, $this->getCleanJid());
+                    $sdb->save($post); 
+                }
             
                 if($new == false) {
 		            $sess = Session::start(APP_NAME);

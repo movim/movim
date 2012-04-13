@@ -20,6 +20,7 @@
 
 class Roster extends WidgetBase
 {
+    private $grouphtml;
 
     function WidgetLoad()
     {
@@ -94,39 +95,50 @@ class Roster extends WidgetBase
         else
             return $start.$middle.$end;
 	}
+    
+    function stackGroup() {
+        
+    }
 	
 	function prepareRoster()
 	{
         $query = Contact::query()
-                            ->where(array('key' => $this->user->getLogin()))
+                            ->where(
+                                array(
+                                    'key' => $this->user->getLogin(),
+                                    'rostersubscription!' => 'none',
+                                    '|rosterask' => 'subscribe'
+                                )
+                            )
                             ->orderby('group', true);
         $contacts = Contact::run_query($query);
-        
-        $group = '';        
+    
         $html = '';
+        $group = '';
         
-        $html .= '<span id="widgettitle">'.t('Contacts (%s)', sizeof($contacts)).'</span>';
+        $html .= '<span id="widgettitle">'.t('Contacts (%s)', sizeof($contacts) -1).'</span>';
 
         if($contacts != false) {
+            
+            if($contacts[0]->getData('group') == '')
+                $html .= '<div><h1>'.t('Ungrouped').'</h1>';
+            else {
+                $group = $contacts[0]->getData('group');
+                $html .= '<div><h1>'.$group.'</h1>';
+            }
+            
             foreach($contacts as $c) {
                 
                 if($group != $c->getData('group')) {
-                    if($group != '')
-                        $html .= '</div>';
-                    
                     $group = $c->getData('group');
-                    
-                    if($group == '') {
-                        $group = t('Ungrouped');
-                        $html .= '<div><h1>'.$group.'</h1>';
-                        $group = '';
-                    }
+                    $html .= '</div>';
+                    if($group == '')
+                        $html .= '<div><h1>'.t('Ungrouped').'</h1>';
                     else
-                        $html .= '<div><h1>'.$group.'</h1>';                    
+                        $html .= '<div><h1>'.$group.'</h1>';
                 }
                 
-                if($c->getData('rostersubscription') != 'none' || $c->getData('rosterask') == 'subscribe')
-                    $html .= $this->prepareRosterElement($c);
+                $html .= $this->prepareRosterElement($c);
             }
             $html .= '</div>';
             
