@@ -39,14 +39,34 @@ class Notifs extends WidgetBase
     
     function onSubscribe($payload) {
    	    $notifs = Cache::c('activenotifs');
-   	    
    	    $html = '
             <li>
                 '.$payload['@attributes']['from'].' '.t('wants to talk with you'). ' <br />
-   	            <input id="notifsalias" class="tiny" value="'.$payload['@attributes']['from'].'" onfocus="myFocus(this);" onblur="myBlur(this);"/>
-   	            <a class="button tiny icon yes merged right" href="#" onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$payload['@attributes']['from']."'").' showAlias(this);">'.t("Accept").'</a>
-   	            <a class="button tiny icon add merged right" href="#" id="notifsvalidate" onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['@attributes']['from']."'", "getAlias()").' hideNotification(this);">'.t("Validate").'</a>
-   	            <a class="button tiny icon yes merged left" href="#" onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['@attributes']['from']."'").' hideNotification(this);">'.t("Decline").'</a>
+   	            <input 
+                    id="notifsalias" 
+                    class="tiny" 
+                    value="'.$payload['@attributes']['from'].'" 
+                    onfocus="myFocus(this);" 
+                    onblur="myBlur(this);"
+                />
+   	            <a 
+                    class="button tiny icon yes merged right" 
+                    href="#" 
+                    onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$payload['@attributes']['from']."'").' showAlias(this);">'.
+                    t("Accept").'
+                </a>
+   	            <a 
+                    class="button tiny icon add merged right" 
+                    href="#" id="notifsvalidate" 
+                    onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['@attributes']['from']."'", "getAlias()").' hideNotification(this);">'.
+                    t("Validate").'
+                </a>
+   	            <a 
+                    class="button tiny icon yes merged left" 
+                    href="#" 
+                    onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['@attributes']['from']."'").' hideNotification(this);">'.
+                    t("Decline").'
+                </a>
    	        </li>';
    	    $notifs['sub'.$payload['@attributes']['from']] = $html;
    	    
@@ -86,9 +106,16 @@ class Notifs extends WidgetBase
     $notifs = Cache::c('activenotifs');
     if($notifs == false)
         $notifs = array();
+        
+    $query = Contact::query()
+                        ->where(
+                            array('key' => $this->user->getLogin())
+                        );
+    $contacts = Contact::run_query($query);
+        
     ?>
     <div id="notifs">
-        <span id="widgettitle"><?php echo t('Add a contact'); ?></span>
+        <span id="widgettitle"><?php echo t('Contacts (%s)', sizeof($contacts) -1); ?></span>
         <ul id="notifslist">
             <?php
             ksort($notifs);
@@ -97,10 +124,33 @@ class Notifs extends WidgetBase
             }
             ?>
             <li>
-                <input id="addjid" class="tiny" value="user@server.tld" onfocus="myFocus(this);" onblur="myBlur(this);"/>
-                <input id="addalias" class="tiny" value="<?php echo t('Alias'); ?>" onfocus="myFocus(this);" onblur="myBlur(this);"/>
-                <a class="button tiny icon yes" href="#" id="addvalidate" onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>"><?php echo t('Validate'); ?></a>
-                <a class="button tiny icon add" href="#" onclick="addJid(this);"><?php echo t('Add a contact'); ?></a>
+                <input 
+                    id="addjid" 
+                    class="tiny" 
+                    value="user@server.tld" 
+                    onfocus="myFocus(this);" 
+                    onblur="myBlur(this);"
+                />
+                <input 
+                    id="addalias" 
+                    class="tiny" 
+                    value="<?php echo t('Alias'); ?>" 
+                    onfocus="myFocus(this);" 
+                    onblur="myBlur(this);"
+                />
+                <a 
+                    class="button tiny icon yes" 
+                    href="#" 
+                    id="addvalidate" 
+                    onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>">
+                    <?php echo t('Validate'); ?>
+                </a>
+                <a 
+                    class="button tiny icon add" 
+                    href="#" 
+                    onclick="addJid(this);">
+                    <?php echo t('Add a contact'); ?>
+                </a>
             </li>
         </ul>
     </div>

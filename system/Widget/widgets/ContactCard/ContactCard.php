@@ -111,8 +111,10 @@ class ContactCard extends WidgetBase
 
         $html .= $this->displayIf($contact->getData('fn'), t('Name'));
         $html .= $this->displayIf($contact->getData('name'), t('Nickname'));
-        $html .= $this->displayIf($gender[$contact->getData('gender')], t('Gender'));
-        $html .= $this->displayIf($marital[$contact->getData('marital')], t('Marital Status'));
+        if($contact->getData('gender') != 'N')
+            $html .= $this->displayIf($gender[$contact->getData('gender')], t('Gender'));
+        if($contact->getData('marital') != 'none')
+            $html .= $this->displayIf($marital[$contact->getData('marital')], t('Marital Status'));
 
         if($contact->getData('date') != '0000-00-00')
         $html .= $this->displayIf($contact->getData('date'), t('Date of Birth'), date('j F Y',strtotime($contact->getData('date'))));

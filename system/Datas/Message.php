@@ -63,6 +63,12 @@ class Message extends DatajarBase {
 }
 
 class MessageHandler {
+    private $instance;
+
+    public function __construct() {
+    	$this->instance = new Message();
+    }
+    
     function saveMessage($array, $jid, $from, $parent = false) {
 
         if(isset($jid) && isset($from) && isset($array['entry']['content'])) {

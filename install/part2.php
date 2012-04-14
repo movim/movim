@@ -171,6 +171,9 @@ if(isset($_POST['install'])) {
 
     $attachment = new Attachment();
     $sdb->create($attachment);
+    
+    $post = new Post();
+    $sdb->create($post);
 }
 
 ?>

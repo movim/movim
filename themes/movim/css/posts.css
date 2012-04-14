@@ -118,7 +118,8 @@
 .post .content.tiny {
     margin: 0px;
     padding: 0px;
-    margin-left: 3em;
+    margin-left: 3.3em;
+    margin-right: 0.5em;
     margin-top: 0.3em;
 }
 
@@ -142,8 +143,8 @@
     transform: scale(1.2);
     -moz-transform: scale(1.2);
     -webkit-transform: scale(1.2);
-    -moz-transition-duration: 0.5s; 
-    -webkit-transition-duration: 0.5s;   
+    -moz-transition-duration: 0.2s; 
+    -webkit-transition-duration: 0.2s;   
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 

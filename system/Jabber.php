@@ -256,57 +256,40 @@ class Jabber
 	 */
 	public function getIq($payload) {
         $payload = $payload['movim'];
-        movim_log($payload);
+        
+		global $sdb;
 		$evt = new Event();
-		// vCard case
-		if(is_array($payload['vCard']) && $payload['@attributes']['type'] != 'error') { // Holy mackerel, that's a vcard!
+        
+        // Holy mackerel, that's a vcard!
+		if(is_array($payload['vCard']) &&
+           $payload['@attributes']['type'] != 'error') 
+        {
+            $c = new ContactHandler();
+                
             // If the vcard is mine
-			if(
-			    $payload['@attributes']['from'] == reset(explode("/", $payload['@attributes']['to'])) || 
-			    $payload['@attributes']['from'] == NULL
-			  ) {
-			  
-		        global $sdb;
-		        
-		        $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $this->getCleanJid()));
-		        
-		        if($contact == false) {
-			        $contact = new Contact();
-	                $contact->setContact($payload);			            
-			        $sdb->save($contact);
-		        } else {
-		        	$c = new ContactHandler();
-	                $contact = $c->get($this->getCleanJid());
-	                $contact->setContact($payload);			            
-			        $sdb->save($contact); 
-		        }
-			
+			if($payload['@attributes']['from'] == $this->getCleanJid() || 
+               $payload['@attributes']['from'] == NULL ) 
+            {
+                $contact = $c->get($this->getCleanJid());
+                $contact->setContact($payload);			            
+                $sdb->save($contact); 
 				$evt->runEvent('myvcard', $payload);
-	        
+			}
+            
 	        // Yo it's your vcard dude !
-			} else {
-		        global $sdb;
-
-                if(isset($payload['@attributes']['from'])) {
-		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $payload['@attributes']['from']));
-		            if($contact == false) {
-			            $contact = new Contact();
-	                    $contact->setContact($payload);			            
-			            $sdb->save($contact);
-		            } else {
-		            	$c = new ContactHandler();
-	                    $contact = $c->get($payload['@attributes']['from']);
-	                    $contact->setContact($payload);			            
-			            $sdb->save($contact); 
-		            }
-
-				    $evt->runEvent('vcard', $contact);
-				}
+            elseif(isset($payload['@attributes']['from'])) {
+                $contact = $c->get($payload['@attributes']['from']);
+                $contact->setContact($payload);			            
+                $sdb->save($contact); 
+                $evt->runEvent('vcard', $contact);
 			}
 		}
 		
 		// Roster case
-		elseif($payload['queryXmlns'] == "jabber:iq:roster") {
+		elseif(
+            isset($payload['query']['item'][0]['@attributes']['subscription']) ||
+            isset($payload['query']['item']['@attributes']['subscription'])
+        ) {
 		    if($payload['@attributes']['type'] == "result") {
 		        global $sdb;
 		        
@@ -314,26 +297,11 @@ class Jabber
 		            // If we've got only one item in the roster we use it as the only one
 		            if(isset($item['subscription']))
 		                $item = $payload['query']['item'];
-		                
-		            $contact = $sdb->select('Contact', array('key' => $this->getCleanJid(), 'jid' => $item['@attributes']['jid']));
-		            if($contact == false && isset($item['@attributes']['jid'])) {
-			            $contact = new Contact();
-			            $contact->key = $this->getCleanJid();
-			            $contact->jid = $item['@attributes']['jid'];
-			            $contact->rostername = $item['@attributes']['name'];
-			            $contact->rosterask = $item['@attributes']['ask'];
-			            $contact->rostersubscription = $item['@attributes']['subscription'];
-                        $contact->group = $item['group'];
-			            $sdb->save($contact);
-		            } else {
-		                $contact = new Contact();
-		                $sdb->load($contact, array('key' => $this->getCleanJid(), 'jid' => $item['@attributes']['jid']));
-			            $contact->rostername = $item['@attributes']['name'];
-			            $contact->rosterask = $item['@attributes']['ask'];
-			            $contact->rostersubscription = $item['@attributes']['subscription'];
-                        $contact->group = $item['group'];
-			            $sdb->save($contact); 
-		            }
+                        
+                    $c = new ContactHandler();
+                    $contact = $c->get($item['@attributes']['jid']);
+                    $contact->setContactRosterItem($item);	
+                    $sdb->save($contact); 
 		        }
 
                 $evt->runEvent('roster', $payload);
@@ -341,48 +309,35 @@ class Jabber
                 $this->getRosterList();
             }
         }
-        elseif('urn:xmpp:microblog:0:comments' == reset(explode("/", $payload['pubsub']['items']['@attributes']['node']))) {
-            $from = $payload['@attributes']['from'];
-            
+        elseif(isset($payload['pubsub']) && !(isset($payload['error']))) {
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
 
-            // We test if there is more than one item in the stream
-            if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
-                foreach($payload['pubsub']['items']['item'] as $item)
-                    MessageHandler::saveMessage($item, $this->getCleanJid(), $from, $parent);
-            } else {
-                MessageHandler::saveMessage($payload['pubsub']['items']['item'], $this->getCleanJid(), $from, $parent);
+            foreach($payload['pubsub']['items']['item'] as $item) {
+                if(isset($item['id']))
+                    $item = $payload['pubsub']['items']['item'];
+                    
+                if(isset($item['@attributes'])) {    
+                    $c = new PostHandler();
+                    $post = $c->get($item['@attributes']['id']);
+                    
+                    if($xmlns == 'urn:xmpp:microblog:0')
+                        $post->setPost($item, $payload['@attributes']['from']);
+                    elseif($xmlns == 'urn:xmpp:microblog:0:comments')
+                        $post->setPost($item, $payload['@attributes']['from'], $parent);
+                        
+                    $sdb->save($post);  
+                    
+                    if($xmlns == 'urn:xmpp:microblog:0')
+                        $evt->runEvent('stream', $payload);
+                    elseif($xmlns == 'urn:xmpp:microblog:0:comments')
+                        $evt->runEvent('comment', $parent);
+                }
             }
-            
-            $evt->runEvent('comments', $parent);
         }
-        
-        // Pubsub node case
-        elseif($payload['pubsub']['items']['@attributes']['node'] ==  "urn:xmpp:microblog:0" && !(isset($payload['error']))) {
-            $from = $payload['@attributes']['from'];
-            
-            // We test if there is more than one item in the stream
-            if(isset($payload['pubsub']['items']['item'][0]['@attributes'])) {
-                foreach($payload['pubsub']['items']['item'] as $item)
-                    MessageHandler::saveMessage($item, $this->getCleanJid(), $from);
-            } else {
-                MessageHandler::saveMessage($payload['pubsub']['items']['item'], $this->getCleanJid(), $from);
-            }
-       
-            $evt->runEvent('streamreceived', $payload);
-		}
-
-		elseif(isset($payload["pubsubNode"])) {
-            $evt->runEvent('thread', $payload);
-		}
-
-        elseif($payload["queryXmlns"] == "http://jabber.org/protocol/disco#items") {
-            $evt->runEvent('disconodes', $payload);
-        } 
-        
         else {
             $evt->runEvent('none', var_export($payload, true));
         }
+        
         $evt->runEvent('incomingemptybody', 'ping');
     }
 
@@ -412,8 +367,18 @@ class Jabber
 					$evt->runEvent('message', $payload);
 				}
             } elseif($payload['movim']['event']['items']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
-                $new = MessageHandler::saveMessage($payload['movim']['event']['items']['item'], $this->getCleanJid(), $payload['movim']['@attributes']['from']);
                 $payload = $payload['movim'];
+                
+                movim_log($payload);
+                
+                if(isset($payload['event']['items']['item'])) {
+                    global $sdb;
+                    $c = new PostHandler();
+                    $post = $c->get($payload['event']['items']['item']['@attributes']['id']);
+                    $post->setPost($payload['event']['items']['item'], $payload['@attributes']['from'], false, $this->getCleanJid());
+                    $sdb->save($post); 
+                }
+            
                 if($new == false) {
 		            $sess = Session::start(APP_NAME);
                     if($sess->get('currentcontact') == $payload['@attributes']['from']) {
