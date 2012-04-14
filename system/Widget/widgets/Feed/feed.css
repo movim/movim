@@ -4,12 +4,76 @@
 /*    padding-top: 10px;*/
 }
 
-#feed #submit {
+#feed table#submit {
 	margin: 1.5em;
 	margin-bottom: 0.5em;
     border: 1px solid gray;
 	border-color: #999999 #BBBBBB #BBBBBB;
-    padding-right: 8px;
+    width: 92%;
+    padding: 0px;
+    border-spacing: 0px;
+}
+
+#feed #feedmessage {
+    border: 0px;
+    width: 100%;
+    border-spacing: 5px;
+}
+
+#feed td {
+    padding: 5px;
+}
+
+#feed #feedmessage textarea{
+    border: 0px;
+    width: 100%;
+    height: 1.5em;
+    text-align: left;
+    resize: vertical;
+    padding: 0px;
+    -webkit-transition-property: height;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-out;
+    transition-property: height;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    -moz-transition-property: height;
+    -moz-transition-duration: 0.5s;
+    -moz-transition-timing-function: ease-out;
+}
+
+#feed #feedsubmitrow {
+    display: none;
+    background-color: #EEE;
+}
+
+#feed #feedmessage textarea:focus {
+    height: 4em;
+}
+
+#feed td {
+    width: 100%;
+}
+
+#feed #feedsubmitrow #feedmessagesubmit {
+    float: right;
+}
+
+
+/*#feed #submit #submitrow {
+    background-color: #EEE;
+    padding: 4px;
+}
+
+#feed #feedmessagecontent {
+    border: 0px;
+    width: 100%;
+    resize: vertical;
+    1em;
+}
+
+#feed #feedmessagecontent:focus {
+    height: 4em;
 }
 
 #feed #feedmessage {
@@ -25,7 +89,7 @@
 
 #feed #feedmessagesubmit {
     padding-left: 30px;
-}
+}*/
 
 #feed #feedcontent {
 	clear: both;

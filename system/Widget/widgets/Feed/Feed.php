@@ -81,7 +81,7 @@ class Feed extends WidgetBase {
     
     function ajaxPublishItem($content)
     {
-        $this->xmpp->publishItem($content);
+        $this->xmpp->publishItem(rawurldecode($content));
     }
     
     function ajaxCreateNode()
@@ -104,28 +104,45 @@ class Feed extends WidgetBase {
     {
         $this->xmpp->getWall($this->xmpp->getCleanJid());
     }
-    
+    /*onblur="
+                            if(this.value == '') {this.value='<?php echo t('What\'s new ?'); ?>';}
+                            document.querySelector('#feedsubmitrow').style.display = 'none';"
+    onclick="if(getFeedMessage() != '') {<?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>};"
+                            */
     function build()
     {
     ?>
     <div class="tabelem protect orange" title="<?php echo t('Feed'); ?>" id="feed">
 		<table id="submit">
-			<tr>
-				<td id="feedmessage">
-					<input 
-						id="feedmessagecontent"
-						onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;" 
-						value="<?php echo t('What\'s new ?'); ?>">
-				</td>
+			<tr id="feedmessage">
 				<td>
-					<a 
-						title="<?php echo t("Submit"); ?>"
-						onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessagecontent').value") ?>"
-						href="#" 
-						id="feedmessagesubmit" 
-						class="button tiny icon submit"><?php echo t("Submit"); ?>
-					</a>
+					<textarea 
+						id="feedmessagecontent"
+						onfocus="
+                            if(this.value == '<?php echo t('What\'s new ?'); ?>') {this.value='';}
+                            document.querySelector('#feedsubmitrow').style.display = 'block';" 
+                        
+                    ><?php echo t('What\'s new ?'); ?></textarea>
 				</td>
+            </tr>
+            <tr id="feedsubmitrow">
+                <td style="width: %"></td>
+                <td>
+                    <a 
+                        title="<?php echo t("Submit"); ?>"
+                        onclick="
+                            if(
+                                document.querySelector('#feedmessagecontent').value != '' && 
+                                document.querySelector('#feedmessagecontent').value != '<?php echo t('What\'s new ?'); ?>') {
+                                    <?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>
+                            }
+                            else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\'s new ?'); ?>' }                  
+                            "
+                        href="#" 
+                        id="feedmessagesubmit" 
+                        class="button tiny icon submit"><?php echo t("Submit"); ?>
+                    </a>
+                </td>
 			</tr>
 		</table>
 

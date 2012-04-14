@@ -139,15 +139,24 @@ class Notifs extends WidgetBase
                     onblur="myBlur(this);"
                 />
                 <a 
-                    class="button tiny icon yes" 
+                    class="button tiny icon yes merged right" 
                     href="#" 
                     id="addvalidate" 
-                    onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>">
+                    onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
                     <?php echo t('Validate'); ?>
                 </a>
                 <a 
+                    class="button tiny icon no merged left"
+                    href="#"
+                    id="addrefuse"
+                    onclick="cancelAddJid();">
+                    <?php echo t('Cancel'); ?>
+                </a>
+                
+                <a 
                     class="button tiny icon add" 
                     href="#" 
+                    id="addstart"
                     onclick="addJid(this);">
                     <?php echo t('Add a contact'); ?>
                 </a>

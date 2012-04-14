@@ -375,6 +375,8 @@ class Jabber
                     global $sdb;
                     $c = new PostHandler();
                     $post = $c->get($payload['event']['items']['item']['@attributes']['id']);
+                    if($post->getData('nodeid') == $payload['event']['items']['item']['@attributes']['id'])
+                        $new = true;
                     $post->setPost($payload['event']['items']['item'], $payload['@attributes']['from'], false, $this->getCleanJid());
                     $sdb->save($post); 
                 }
