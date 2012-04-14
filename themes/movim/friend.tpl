@@ -7,11 +7,11 @@
     
 <div id="left">
     <?php $this->widget('Profile');?>
+    <?php $this->widget('Notifs');?>
     <?php $this->widget('Roster');?>
 </div>
 <div id="right">
     <?php $this->widget('ContactSummary');?>
-    <?php $this->widget('Notifs');?>
 </div>
 <div id="center">
     <?php $this->widget('Tabs');?>

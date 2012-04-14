@@ -115,8 +115,6 @@ class Roster extends WidgetBase
     
         $html = '';
         $group = '';
-        
-        $html .= '<span id="widgettitle">'.t('Contacts (%s)', sizeof($contacts) -1).'</span>';
 
         if($contacts != false) {
             
