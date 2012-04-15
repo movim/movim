@@ -81,7 +81,8 @@ class Feed extends WidgetBase {
     
     function ajaxPublishItem($content)
     {
-        $this->xmpp->publishItem(rawurldecode($content));
+        if($content != '')
+            $this->xmpp->publishItem(rawurldecode($content));
     }
     
     function ajaxCreateNode()
@@ -104,11 +105,7 @@ class Feed extends WidgetBase {
     {
         $this->xmpp->getWall($this->xmpp->getCleanJid());
     }
-    /*onblur="
-                            if(this.value == '') {this.value='<?php echo t('What\'s new ?'); ?>';}
-                            document.querySelector('#feedsubmitrow').style.display = 'none';"
-    onclick="if(getFeedMessage() != '') {<?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>};"
-                            */
+
     function build()
     {
     ?>
