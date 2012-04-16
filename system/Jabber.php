@@ -286,10 +286,7 @@ class Jabber
 		}
 		
 		// Roster case
-		elseif(
-            isset($payload['query']['item'][0]['@attributes']['subscription']) ||
-            isset($payload['query']['item']['@attributes']['subscription'])
-        ) {
+		elseif($payload['@attributes']['xmlns'] == 'jabber:iq:roster') {
 		    if($payload['@attributes']['type'] == "result") {
 		        global $sdb;
 		        
@@ -310,28 +307,49 @@ class Jabber
             }
         }
         elseif(isset($payload['pubsub']) && !(isset($payload['error']))) {
+            movim_log($payload);
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
+            
+            if(isset($payload['pubsub']['items']['item'])) {
+                foreach($payload['pubsub']['items']['item'] as $item) {
+                    
+                    if(isset($item['id']))
+                        $item = $payload['pubsub']['items']['item'];
 
-            foreach($payload['pubsub']['items']['item'] as $item) {
-                if(isset($item['id']))
-                    $item = $payload['pubsub']['items']['item'];
-                    
-                if(isset($item['@attributes'])) {    
-                    $c = new PostHandler();
-                    $post = $c->get($item['@attributes']['id']);
-                    
-                    if($xmlns == 'urn:xmpp:microblog:0')
-                        $post->setPost($item, $payload['@attributes']['from']);
-                    elseif($xmlns == 'urn:xmpp:microblog:0:comments')
-                        $post->setPost($item, $payload['@attributes']['from'], $parent);
+                    if(isset($item['@attributes']) && isset($item['entry'])) {    
+                        $c = new PostHandler();
+                        $post = $c->get($item['@attributes']['id']);
                         
-                    $sdb->save($post);  
-                    
-                    if($xmlns == 'urn:xmpp:microblog:0')
-                        $evt->runEvent('stream', $payload);
-                    elseif($xmlns == 'urn:xmpp:microblog:0:comments')
-                        $evt->runEvent('comment', $parent);
+                        if($xmlns == 'urn:xmpp:microblog:0')
+                            $post->setPost($item, $payload['@attributes']['from']);
+                        elseif($xmlns == 'urn:xmpp:microblog:0:comments')
+                            $post->setPost($item, $payload['@attributes']['from'], $parent);
+                            
+                        $sdb->save($post);  
+                        
+                        if($xmlns == 'urn:xmpp:microblog:0')
+                            $evt->runEvent('stream', $payload);
+                        elseif($xmlns == 'urn:xmpp:microblog:0:comments')
+                            $evt->runEvent('comment', $parent);
+                    }
                 }
+            } elseif(isset($payload['pubsub']['publish']['@attributes']['node'])) {
+                list($xmlns, $id) = explode("/", $payload['pubsub']['publish']['@attributes']['node']);
+                $this->getComments(false, $id);
+            
+            } else {
+                $evt->runEvent('nocomment', $parent);
+            }
+        }
+        elseif(isset($payload['pubsub']) && isset($payload['error'])) {
+            list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
+            if(isset($payload['error']['item-not-found'])) {
+                $c = new PostHandler();
+                $post = $c->get($parent);
+                $post->setNoComments();
+                $sdb->save($post);
+                
+                $evt->runEvent('nocommentstream', $parent);
             }
         }
         else {
@@ -368,8 +386,6 @@ class Jabber
 				}
             } elseif($payload['movim']['event']['items']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
                 $payload = $payload['movim'];
-                
-                movim_log($payload);
                 
                 if(isset($payload['event']['items']['item'])) {
                     global $sdb;
@@ -569,6 +585,17 @@ class Jabber
 	public function publishItem($content)
 	{
 	    $this->jaxl->JAXL0277('publishItem', $this->getCleanJid() ,$content);
+	}
+    
+	/**
+	 * Publish a comment on a microblog item
+	 *
+	 * @param string $content
+	 * @return void
+	 */
+	public function publishComment($to, $id, $content)
+	{
+	    $this->jaxl->JAXL0277('publishComment', $to, $id ,$content, $this->getCleanJid());
 	}
 
     /**

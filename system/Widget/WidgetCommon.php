@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
 
-class WidgetCommon {
+class WidgetCommon extends WidgetBase {
     protected function preparePost($message) {
         global $sdb;
         $user = new User();
@@ -54,16 +54,47 @@ class WidgetCommon {
                          
             if($message->getData('jid') != $message->getData('uri'))
                 $tmp .= '<span class="recycle"><a href="?q=friend&f='.$message->getData('uri').'">'.$message->getData('name').'</a></span>';
-                          
-            $tmp .= '<div class="comments" id="'.$message->getData('nodeid').'comments">';
+              
+            if($message->getData('commentson') == 1) {
+                $tmp .= '<div class="comments" id="'.$message->getData('nodeid').'comments">';
 
-            $tmp .= WidgetCommon::prepareComments($message);
+                $comments .= WidgetCommon::prepareComments($message->getData('nodeid'));
+                
+                if($comments != false)
+                    $tmp .= $comments;
 
-            $tmp .= '
-                    <div class="comment">
-                        <a class="getcomments icon bubble" style="margin-left: 0px;" onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.t('Get the comments').'</a>
-                    </div>';
-            $tmp .= '</div>';
+                $tmp .= '
+                            <div class="comment">
+                                <a 
+                                    class="getcomments icon bubble" 
+                                    style="margin-left: 0px;" 
+                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
+                                        t('Get the comments').'
+                                </a>
+                            </div>';
+                $tmp .= '
+                            <div class="comment">
+                                <table id="commentsubmit">
+                                <tr>
+                                    <td>
+                                        <textarea id="'.$message->getData('nodeid').'commentsubmitcontent"></textarea>
+                                    </td>
+                                    <td>
+                                        <a
+                                            onclick="
+                                                    if(document.querySelector(\'#'.$message->getData('nodeid').'commentsubmitcontent\').value != \'\') {
+                                                        '.$this->genCallAjax('ajaxPublishComment', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'", "document.querySelector('#".$message->getData('nodeid')."commentsubmitcontent').value").'
+                                                    }"
+                                            class="button tiny icon submit"
+                                        >'.
+                                            t("Submit").'
+                                        </a>
+                                    </td>
+                                </tr>
+                                </table>
+                            </div>';
+                $tmp .= '</div>';
+            }
               
             $tmp .= '</div>';
 
@@ -71,15 +102,22 @@ class WidgetCommon {
         return $tmp;
     }
 
-    protected function prepareComments($message) {
-        global $sdb;
+    protected function prepareComments($parentid) {
         $user = new User();
-        $comments = $sdb->select('Post', array('key' => $user->getLogin(), 'parentid' => $message->getData('nodeid')), 'updated', true);
+
+        $query = Post::query()
+                            ->where(array('key' => $user->getLogin(), 'parentid' => $parentid))
+                            ->orderby('updated', false);
+        $comments = Post::run_query($query);
+        
+        $tmp = false;
         
         if($comments) {
             foreach($comments as $comment) {
-                $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $comment->getData('jid')));
-                
+                $query = Contact::query()
+                                    ->where(array('key' => $user->getLogin(), 'jid' => $comment->getData('jid')));
+                $contact = Post::run_query($query);
+
                 if(isset($contact[0])) {
                     $photo = $contact[0]->getPhoto('s');
                     $name = $contact[0]->getTrueName();
@@ -100,5 +138,43 @@ class WidgetCommon {
         }
         
         return $tmp;
+    }
+    
+    function onComment($parent) {        
+        $html = $this->prepareComments($parent);
+        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
+    }
+    
+    function onNoComment($parent) {     
+        $html = '
+            <div class="comment">
+                <a 
+                    class="getcomments icon bubble" 
+                    style="margin-left: 0px;">'.
+                    t('No comments').
+                '</a>
+            </div>';
+        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
+    }
+    
+    function onNoCommentStream($parent) { 
+        $html = '
+            <div class="comment">
+                <a 
+                    class="getcomments icon bubble" 
+                    style="margin-left: 0px;">'.
+                    t('No comments stream').
+                '</a>
+            </div>';
+        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
+    }
+    
+	function ajaxGetComments($jid, $id) {
+		$this->xmpp->getComments($jid, $id);
+	}
+    
+    function ajaxPublishComment($to, $id, $content) {
+        if($content != '')
+            $this->xmpp->publishComment($to, $id, rawurldecode($content));
     }
 }

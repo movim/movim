@@ -1,21 +1,15 @@
 <?php
 
-class Feed extends WidgetBase {
+class Feed extends WidgetCommon {
 	function WidgetLoad()
 	{
     	$this->addcss('feed.css');
     	$this->addjs('feed.js');
 		$this->registerEvent('post', 'onPost');
 		$this->registerEvent('comment', 'onComment');
+		$this->registerEvent('nocomment', 'onNoComment');
+		$this->registerEvent('nocommentstream', 'onNoCommentStream');
 		$this->registerEvent('stream', 'onStream');
-    }
-    
-    function onComment($parent) {        
-        global $sdb;
-        $message = $sdb->select('Post', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
-
-        $html = $this->prepareComments($message[0]);
-        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
     function onPost($payload) {
@@ -61,10 +55,6 @@ class Feed extends WidgetBase {
 	function ajaxGetFeed($start) {
 		RPC::call('movim_append', 'feedcontent', RPC::cdata($this->prepareFeed($start)));
         RPC::commit();
-	}
-    
-	function ajaxGetComments($jid, $id) {
-		$this->xmpp->getComments($jid, $id);
 	}
         
     function onStream($payload) {

@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
 
-class Wall extends WidgetBase
+class Wall extends WidgetCommon
 {
 
     function WidgetLoad()
@@ -27,15 +27,9 @@ class Wall extends WidgetBase
     	$this->addjs('wall.js');
 		$this->registerEvent('stream', 'onStream');
 		$this->registerEvent('comment', 'onComment');
+		$this->registerEvent('nocomment', 'onNoComment');
+		$this->registerEvent('nocommentstream', 'onNoCommentStream');
 		$this->registerEvent('currentpost', 'onNewPost');
-    }
-    
-    function onComment($parent) {        
-        global $sdb;
-        $message = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
-
-        $html = $this->prepareComments($message[0]);
-        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
     function onNewPost($payload) {
