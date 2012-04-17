@@ -88,36 +88,39 @@ class Chat extends WidgetBase
         
         $message = $payload['movim']['body'];
         
-        if(preg_match("#^/me#", $message)) {
-			$html .= "own ";
-			$message = "** ".$contact->getTrueName()." ".substr($message, 4);
-		}
-		
-		if($payload['me'] == true)
-			$html .= "me";
-		        
-        $html .= '"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($message, ENT_COMPAT, "UTF-8")).'</div>';
+        if($message != '') {
         
-        $this->cacheMessage($jid, $html);
-        
-        if($contact->getData('chaton') == 2) {
-            RPC::call('colorTalk',
-                        'messages'.$contact->getData('jid'));
-        }
-        
-        RPC::call('movim_append',
-                       'messages'.$contact->getData('jid'),
-                       RPC::cdata($html));   
-                       
-        RPC::call('hideComposing',
-                       $contact->getData('jid')); 
-                       
-        RPC::call('scrollTalk',
-                       'messages'.$contact->getData('jid'));
-                       
-        RPC::call('newMessage');
+            if(preg_match("#^/me#", $message)) {
+                $html .= "own ";
+                $message = "** ".$contact->getTrueName()." ".substr($message, 4);
+            }
             
-        RPC::commit();
+            if($payload['me'] == true)
+                $html .= "me";
+                    
+            $html .= '"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($message, ENT_COMPAT, "UTF-8")).'</div>';
+            
+            $this->cacheMessage($jid, $html);
+            
+            if($contact->getData('chaton') == 2) {
+                RPC::call('colorTalk',
+                            'messages'.$contact->getData('jid'));
+            }
+            
+            RPC::call('movim_append',
+                           'messages'.$contact->getData('jid'),
+                           RPC::cdata($html));   
+                           
+            RPC::call('hideComposing',
+                           $contact->getData('jid')); 
+                           
+            RPC::call('scrollTalk',
+                           'messages'.$contact->getData('jid'));
+                           
+            RPC::call('newMessage');
+                
+            RPC::commit();
+        }
     }
     
     function onComposing($payload)

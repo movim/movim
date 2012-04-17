@@ -81,7 +81,7 @@ class WidgetCommon extends WidgetBase {
                             <table id="commentsubmit">
                                 <tr>
                                     <td>
-                                        <textarea id="'.$message->getData('nodeid').'commentsubmitcontent"></textarea>
+                                        <textarea id="'.$message->getData('nodeid').'commentcontent"></textarea>
                                     </td>
                                 </tr>
                                 <tr class="commentsubmitrow">
@@ -89,13 +89,13 @@ class WidgetCommon extends WidgetBase {
                                     <td>
                                         <a
                                             onclick="
-                                                    if(document.querySelector(\'#'.$message->getData('nodeid').'commentsubmitcontent\').value != \'\') {
+                                                    if(document.getElementById(\''.$message->getData('nodeid').'commentcontent\').value != \'\') {
                                                         '.$this->genCallAjax(
                                                             'ajaxPublishComment', 
                                                             "'".$message->getData('commentplace')."'", 
                                                             "'".$message->getData('nodeid')."'", 
-                                                            "document.querySelector('#".$message->getData('nodeid')."commentsubmitcontent').value").'
-                                                            document.querySelector(\'#'.$message->getData('nodeid').'commentsubmitcontent\').value = \'\';
+                                                            "document.getElementById('".$message->getData('nodeid')."commentcontent').value").
+                                                            'document.getElementById(\''.$message->getData('nodeid').'commentcontent\').value = \'\';
                                                     }"
                                             class="button tiny icon submit"
                                             style="padding-left: 28px;"
