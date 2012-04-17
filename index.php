@@ -39,15 +39,6 @@
  * using massively asynchronous javascript and abstracting XMPP calls into an
  * events-based API.
  */
-function getTime()
-    {
-    $a = explode (' ',microtime());
-    return(double) $a[0] + $a[1];
-    }
-$Start = getTime(); 
-ini_set('log_errors', 0);
-ini_set('display_errors', 1);
-ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
 // If the configuration doesn't exist, run the installer.
 if(!file_exists("config/conf.xml")) {
@@ -65,7 +56,5 @@ if(!file_exists("config/conf.xml")) {
     global $sdb;
     $sdb->close();
 }
-$End = getTime();
-echo "Time taken = ".number_format(($End - $Start),2)." secs"; 
 
 ?>
