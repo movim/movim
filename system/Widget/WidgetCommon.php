@@ -58,7 +58,7 @@ class WidgetCommon extends WidgetBase {
             if($message->getData('commentson') == 1) {
                 $tmp .= '<div class="comments" id="'.$message->getData('nodeid').'comments">';
 
-                $comments .= WidgetCommon::prepareComments($message->getData('nodeid'));
+                $comments = WidgetCommon::prepareComments($message->getData('nodeid'));
                 
                 if($comments != false)
                     $tmp .= $comments;
