@@ -541,7 +541,7 @@ class Jabber
 	 * @param string $id
 	 * @return void
 	 */
-	public function getComments($jid, $id) {
+	public function getComments($place, $id) {
 		$this->jaxl->JAXL0277('getComments', 'pubsub.jappix.com', $id);
 	}
 
@@ -593,9 +593,9 @@ class Jabber
 	 * @param string $content
 	 * @return void
 	 */
-	public function publishComment($to, $id, $content)
+	public function publishComment($place, $id, $content)
 	{
-	    $this->jaxl->JAXL0277('publishComment', $to, $id ,$content, $this->getCleanJid());
+	    $this->jaxl->JAXL0277('publishComment', $place, $id ,$content, $this->getCleanJid());
 	}
 
     /**

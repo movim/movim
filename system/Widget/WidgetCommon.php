@@ -68,31 +68,43 @@ class WidgetCommon extends WidgetBase {
                                 <a 
                                     class="getcomments icon bubble" 
                                     style="margin-left: 0px;" 
-                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
+                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('commentplace')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
                                         t('Get the comments').'
                                 </a>
-                            </div>';
-                $tmp .= '
-                            <div class="comment">
-                                <table id="commentsubmit">
+                            </div></div>';
+                $tmp .= '<div class="comments">
+                            <div 
+                                class="comment"
+                                onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
+                                <a class="getcomments icon bubbleadd">'.t('Add a comment').'</a>
+                            </div>
+                            <table id="commentsubmit">
                                 <tr>
                                     <td>
                                         <textarea id="'.$message->getData('nodeid').'commentsubmitcontent"></textarea>
                                     </td>
+                                </tr>
+                                <tr class="commentsubmitrow">
+                                    <td style="width: 100%;"></td>
                                     <td>
                                         <a
                                             onclick="
                                                     if(document.querySelector(\'#'.$message->getData('nodeid').'commentsubmitcontent\').value != \'\') {
-                                                        '.$this->genCallAjax('ajaxPublishComment', "'".$message->getData('jid')."'", "'".$message->getData('nodeid')."'", "document.querySelector('#".$message->getData('nodeid')."commentsubmitcontent').value").'
+                                                        '.$this->genCallAjax(
+                                                            'ajaxPublishComment', 
+                                                            "'".$message->getData('commentplace')."'", 
+                                                            "'".$message->getData('nodeid')."'", 
+                                                            "document.querySelector('#".$message->getData('nodeid')."commentsubmitcontent').value").'
+                                                            document.querySelector(\'#'.$message->getData('nodeid').'commentsubmitcontent\').value = \'\';
                                                     }"
                                             class="button tiny icon submit"
+                                            style="padding-left: 28px;"
                                         >'.
                                             t("Submit").'
                                         </a>
                                     </td>
                                 </tr>
-                                </table>
-                            </div>';
+                            </table>';
                 $tmp .= '</div>';
             }
               

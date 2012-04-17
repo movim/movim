@@ -200,6 +200,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 .icon.yes { background-image: url(../img/icons/yes_icon.png); }
 .icon.no { background-image: url(../img/icons/no_icon.png); }
 .icon.bubble { background-image: url(../img/icons/comments_icon.png); }
+.icon.bubbleadd { background-image: url(../img/icons/comments_add.png); }
 .icon.follow { background-image: url(../img/icons/follow_icon.png); }
 .icon.chat{ background-image: url(../img/icons/chat_icon.png); }
 .icon.add { background-image: url(../img/icons/add_icon.png); }
