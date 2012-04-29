@@ -29,18 +29,6 @@ class Chat extends WidgetBase
 		$this->registerEvent('presence', 'onPresence');
     }
     
-    function cacheMessage($jid, $html) {
-        if(Cache::c('log'.$jid) == false)
-            Cache::c('log'.$jid, array());
-        
-        $log = Cache::c('log'.$jid);
-        array_push($log, $html);
-        if(count($log)>25) {
-            array_shift($log);
-        }
-        Cache::c('log'.$jid, $log);
-    }
-    
     function onPresence($presence)
     {
 	    $arr = $presence->getPresence();
@@ -55,8 +43,11 @@ class Chat extends WidgetBase
             );
     
 	    
-        $html = '<div class="message presence"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($txt[$tab['presence']], ENT_COMPAT, "UTF-8")).'</div>';
-        $this->cacheMessage($arr['jid'], $html);
+        $html = '
+            <div class="message presence">
+                <span class="date">'.date('G:i', time()).'</span>'.
+                prepareString(htmlentities($txt[$tab['presence']], ENT_COMPAT, "UTF-8")).'
+            </div>';
 
         RPC::call('movim_append',
                        'messages'.$tab['jid'],
@@ -66,11 +57,16 @@ class Chat extends WidgetBase
                        'messages'.$tab['jid']);
 	}
     
-    function onMessage($payload)
+    function onMessage($message)
     {
-        $jid = reset(explode("/", $payload['from']));
+        if($message->getData('key') == $message->getData('from'))
+            $jid = $message->getData('to');
+        else
+            $jid = $message->getData('from');
     
         global $sdb;
+
+        movim_log("GNNAAAA".$jid);
 
         $contact = new Contact();
         $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
@@ -84,24 +80,10 @@ class Chat extends WidgetBase
             $sdb->save($contact);
         }
         
-        $html = '<div class="message ';
-        
-        $message = $payload['movim']['body'];
-        
-        if($message != '') {
-        
-            if(preg_match("#^/me#", $message)) {
-                $html .= "own ";
-                $message = "** ".$contact->getTrueName()." ".substr($message, 4);
-            }
+        if($message->getData('body') != '') {
             
-            if($payload['me'] == true)
-                $html .= "me";
-                    
-            $html .= '"><span class="date">'.date('G:i', time()).'</span>'.prepareString(htmlentities($message, ENT_COMPAT, "UTF-8")).'</div>';
-            
-            $this->cacheMessage($jid, $html);
-            
+            $html = $this->prepareMessage($message);
+
             if($contact->getData('chaton') == 2) {
                 RPC::call('colorTalk',
                             'messages'.$contact->getData('jid'));
@@ -118,9 +100,12 @@ class Chat extends WidgetBase
                            'messages'.$contact->getData('jid'));
                            
             RPC::call('newMessage');
-                
-            RPC::commit();
-        }
+            
+
+        }            
+        
+        RPC::commit();
+
     }
     
     function onComposing($payload)
@@ -172,13 +157,21 @@ class Chat extends WidgetBase
      */
     function ajaxSendMessage($to, $message)
     {
+        $item = array('@attributes' => array(
+                                        'to' => $to,
+                                        'from' => $this->user->getLogin()),
+                      'body' => rawurldecode($message));
+                      
+        
+        global $sdb;
+        $m = new Message();
+        $m->setMessageChat($item);
+        $sdb->save($m);
+
+        $this->onMessage($m);
+             
 		// We decode URL codes to send the correct message to the XMPP server
         $this->xmpp->sendMessage($to, rawurldecode($message));
-		
-		$arr['from'] = $to;
-		$arr['me'] = true;
-		$arr['movim']['body'] = rawurldecode($message);
-		$this->onMessage($arr);
     }
     
 	/**
@@ -217,12 +210,40 @@ class Chat extends WidgetBase
         RPC::commit();
     }
     
+    function prepareMessage($message) {
+        $html = '<div class="message ';
+            if($message->getData('key') == $message->getData('from'))
+                $html.= 'me';
+                
+        /*if(preg_match("#^/me#", $message->getData('body'))) {
+            $html .= "own ";
+            $message = "** ".substr($message->getData('body'), 4);
+        }*/
+                
+        $html .= '"><span class="date">'.date('H:i', strtotime($message->getData('published'))).'</span>';
+        $html.= prepareString(htmlentities($message->getData('body'), ENT_COMPAT, "UTF-8")).'</div>';
+        
+        return $html;
+    }
+    
     function prepareChat($contact)
     {
-        $log = Cache::c('log'.$contact->getData('jid'));
-        if(is_array($log)) {
-            foreach($log as $key => $value)
-                $m .= $value;
+        $query = Message::query()
+                  ->where(
+                        array(
+                            'key' => $this->user->getLogin(), 
+                                array('to' => $contact->getData('jid') , '|from' => $contact->getData('jid')) 
+                        )
+                    )
+                  ->orderby('published', true)
+                  ->limit(0, 20);
+        $messages = Message::run_query($query);
+
+        if($messages != false) {
+            $messages = array_reverse($messages);
+        
+            foreach($messages as $m)
+                $messageshtml .= $this->prepareMessage($m);
         }
         
         $style = '';
@@ -232,7 +253,7 @@ class Chat extends WidgetBase
     
         $html = '
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
-                '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$m.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
+                '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$messageshtml.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
                 '<textarea '.$style.'
                     onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
                 ></textarea>'.

@@ -43,12 +43,12 @@ class Profile extends WidgetBase
         Cache::c(
             'presence', 
             array(
-                'status' => $status,
+                'status' => rawurldecode($status),
                 'show' => $presence['show'],
                 'boot' => false
                 )
         );
-		$this->xmpp->setStatus($status, $presence['show']);
+		$this->xmpp->setStatus(rawurldecode($status), $presence['show']);
 	}
     
     function prepareVcard($vcard = false)
@@ -77,7 +77,7 @@ class Profile extends WidgetBase
                     type="text" 
                     id="status" 
                     value="'.$presence['status'].'"
-                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', 'this.value').' return false;}"
+                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' return false;}"
                 />
                 <br />
                 ';

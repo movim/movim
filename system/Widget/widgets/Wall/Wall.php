@@ -29,6 +29,7 @@ class Wall extends WidgetCommon
 		$this->registerEvent('comment', 'onComment');
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
+        $this->registerEvent('nostream', 'onNoStream');
 		$this->registerEvent('currentpost', 'onNewPost');
     }
     
@@ -40,38 +41,39 @@ class Wall extends WidgetCommon
         RPC::call('movim_prepend', 'wall', RPC::cdata($html));
     }
     
+    function onNoStream() {
+        RPC::call('hideWall'); 
+        RPC::commit();
+    }
+    
     function onStream($payload) {
         $html = '';
 
-        if(isset($payload['error']))
+        $html .= '
+            <!--<a 
+                class="button tiny icon" 
+                href="#"
+                style="float: right;"
+                id="wallfollow" 
+                onclick="'.$this->genCallAjax('ajaxSubscribe', "'".$payload["@attributes"]["from"]."'").'" 
+            >
+                '.t('Follow').'
+            </a>
+            <br /><br />-->
+            ';
+        
+        global $sdb;
+        $messages = $sdb->select('Post', array('key' => $this->user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
+        
+        if($messages == false) {            
             RPC::call('hideWall'); 
-        else {
-            $html .= '
-                <!--<a 
-                    class="button tiny icon" 
-                    href="#"
-                    style="float: right;"
-                    id="wallfollow" 
-                    onclick="'.$this->genCallAjax('ajaxSubscribe', "'".$payload["@attributes"]["from"]."'").'" 
-                >
-                    '.t('Follow').'
-                </a>
-                <br /><br />-->
-                ';
+        } else {
+            $html = '';
             
-            global $sdb;
-            $messages = $sdb->select('Post', array('key' => $this->user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
-            
-            if($messages == false) {            
-                RPC::call('hideWall'); 
-            } else {
-                $html = '';
-                
-                foreach(array_slice($messages, 0, 20) as $message) {
-                    $html .= $this->preparePost($message);
-                }
-                echo $html;
+            foreach(array_slice($messages, 0, 20) as $message) {
+                $html .= $this->preparePost($message);
             }
+            echo $html;
         }
 
         RPC::call('movim_fill', 'wall', RPC::cdata($html));

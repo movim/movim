@@ -119,7 +119,7 @@ class WidgetCommon extends WidgetBase {
 
         $query = Post::query()
                             ->where(array('key' => $user->getLogin(), 'parentid' => $parentid))
-                            ->orderby('updated', false);
+                            ->orderby('published', false);
         $comments = Post::run_query($query);
         
         $tmp = false;

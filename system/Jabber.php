@@ -349,9 +349,14 @@ class Jabber
                 $post->setNoComments();
                 $sdb->save($post);
                 
-                $evt->runEvent('nocommentstream', $parent);
+                $evt->runEvent('nostream', $parent);
             }
+            elseif(isset($payload['error']['feature-not-implemented']))
+                $evt->runEvent('nostream');
         }
+        elseif(isset($payload['error']) && isset($payload['error']['item-not-found']))
+            $evt->runEvent('nostream');
+        
         else {
             $evt->runEvent('none', var_export($payload, true));
         }
@@ -382,7 +387,13 @@ class Jabber
                 	$evt->runEvent('paused', $payload);
 				}
 				else {
-					$evt->runEvent('message', $payload);
+                    movim_log($payload);
+                    global $sdb;
+                    $m = new Message();
+                    $m->setMessageChat($payload['movim']);
+                    $sdb->save($m);
+                    
+					$evt->runEvent('message', $m);
 				}
             } elseif($payload['movim']['event']['items']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
                 $payload = $payload['movim'];

@@ -29,11 +29,11 @@ class Notifs extends WidgetBase
 		$this->registerEvent('subscribe', 'onSubscribe');
     }
     
-    function onMessage($payload) {
+    function onMessage($message) {
         global $sdb;
         $contact = new Contact();
-        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
-        RPC::call('notification', $contact->getTrueName(), RPC::cdata($payload['movim']['body'], ENT_COMPAT, "UTF-8"));
+        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $message->getData('from')));
+        RPC::call('notification', $contact->getTrueName(), RPC::cdata($message->getData('body'), ENT_COMPAT, "UTF-8"));
         RPC::commit();
     }
     
@@ -98,7 +98,8 @@ class Notifs extends WidgetBase
     }
     
     function ajaxAddContact($jid, $alias) {
-        $this->xmpp->addContact($jid, false, $alias);
+        if(checkJid($jid))
+            $this->xmpp->addContact($jid, false, $alias); 
     }
     
     function build() {  
