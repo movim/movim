@@ -145,9 +145,10 @@ class Vcard extends WidgetBase
                       
             $html .= '<br />
                       <div class="element"><span>'.t('Avatar').'</span>
-                        <img src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
+                        <img id="vCardPhotoPreview" src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
                         <input type="hidden" name="vCardPhotoType"  value="'.$me->getData('phototype').'">
-                        <input type="hidden" name="vCardPhotoBinVal"  value="'.$me->getData('photobin').'">
+                        <input type="hidden" name="vCardPhotoBinVal"  value="'.$me->getData('photobin').'"><br />
+                        <span></span><input type="file" onchange="vCardImageLoad(this.files);">
                       </div>';
                       
             $html .= '<br />

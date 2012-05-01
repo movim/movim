@@ -48,7 +48,7 @@ a:link, a:visited {
 }
 
 .protect {
-    background-size: 30px;
+    background-size: 28px;
     background-repeat: no-repeat;
     background-position: 100% 0px;
 }
@@ -179,7 +179,6 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     background-color: #F5F5F5;
     font-family: Arial,sans-serif;
     text-align: center;
-    
     background-repeat: no-repeat;
     background-position: 9px center;
 }
