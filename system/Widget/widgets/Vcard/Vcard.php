@@ -106,7 +106,7 @@ class Vcard extends WidgetBase
             }
             $html .= '</select>';
             $html .= '<select name="vCardBYear" class="datepicker"><option value="-1">'.t('Year').'</option>';
-            for($i=2012; $i>= 1920; $i--){
+            for($i=date('o'); $i>= 1920; $i--){
                 if($i == substr( $me->getData('date'), 0, 4)) {
                     $html .= '<option value="'.$i.'" selected>'.$i.'</option>';
                 } else {

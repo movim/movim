@@ -9,7 +9,7 @@
 	margin-bottom: 0.5em;
     border: 1px solid gray;
 	border-color: #999999 #BBBBBB #BBBBBB;
-    width: 92%;
+    width: 88%;
     padding: 0px;
     border-spacing: 0px;
 }
@@ -58,38 +58,6 @@
 #feed #feedsubmitrow #feedmessagesubmit {
     float: right;
 }
-
-
-/*#feed #submit #submitrow {
-    background-color: #EEE;
-    padding: 4px;
-}
-
-#feed #feedmessagecontent {
-    border: 0px;
-    width: 100%;
-    resize: vertical;
-    1em;
-}
-
-#feed #feedmessagecontent:focus {
-    height: 4em;
-}
-
-#feed #feedmessage {
-	width: 300%;
-	padding-right: 8px;
-}
-
-#feed #feedmessage input {
-	margin: 0px;
-	width: 100%;
-	border: 0px;
-}
-
-#feed #feedmessagesubmit {
-    padding-left: 30px;
-}*/
 
 #feed #feedcontent {
 	clear: both;

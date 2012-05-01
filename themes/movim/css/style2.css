@@ -48,9 +48,9 @@ a:link, a:visited {
 }
 
 .protect {
-    background-size: 15px 15px;
+    background-size: 30px;
     background-repeat: no-repeat;
-    background-position: top right;
+    background-position: 100% 0px;
 }
 
 .protect.green { background-image: url(../img/protect/green.svg); }
@@ -159,7 +159,7 @@ input, select, textarea, .button {
     overflow: hidden;
     padding: 5px;
     color: #333;
-    background-color: white;
+    background-color: transparent;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -201,6 +201,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 .icon.no { background-image: url(../img/icons/no_icon.png); }
 .icon.bubble { background-image: url(../img/icons/comments_icon.png); }
 .icon.bubbleadd { background-image: url(../img/icons/comments_add.png); }
+.icon.bubbleold { background-image: url(../img/icons/comments_show.png); }
 .icon.follow { background-image: url(../img/icons/follow_icon.png); }
 .icon.chat{ background-image: url(../img/icons/chat_icon.png); }
 .icon.add { background-image: url(../img/icons/add_icon.png); }
