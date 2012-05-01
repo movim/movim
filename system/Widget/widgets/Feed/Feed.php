@@ -1,21 +1,15 @@
 <?php
 
-class Feed extends WidgetBase {
+class Feed extends WidgetCommon {
 	function WidgetLoad()
 	{
     	$this->addcss('feed.css');
     	$this->addjs('feed.js');
 		$this->registerEvent('post', 'onPost');
 		$this->registerEvent('comment', 'onComment');
+		$this->registerEvent('nocomment', 'onNoComment');
+		$this->registerEvent('nocommentstream', 'onNoCommentStream');
 		$this->registerEvent('stream', 'onStream');
-    }
-    
-    function onComment($parent) {        
-        global $sdb;
-        $message = $sdb->select('Post', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
-
-        $html = $this->prepareComments($message[0]);
-        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
     function onPost($payload) {
@@ -62,10 +56,6 @@ class Feed extends WidgetBase {
 		RPC::call('movim_append', 'feedcontent', RPC::cdata($this->prepareFeed($start)));
         RPC::commit();
 	}
-    
-	function ajaxGetComments($jid, $id) {
-		$this->xmpp->getComments($jid, $id);
-	}
         
     function onStream($payload) {
         $html = '';
@@ -81,7 +71,8 @@ class Feed extends WidgetBase {
     
     function ajaxPublishItem($content)
     {
-        $this->xmpp->publishItem($content);
+        if($content != '')
+            $this->xmpp->publishItem(rawurldecode($content));
     }
     
     function ajaxCreateNode()
@@ -104,28 +95,41 @@ class Feed extends WidgetBase {
     {
         $this->xmpp->getWall($this->xmpp->getCleanJid());
     }
-    
+
     function build()
     {
     ?>
     <div class="tabelem protect orange" title="<?php echo t('Feed'); ?>" id="feed">
 		<table id="submit">
-			<tr>
-				<td id="feedmessage">
-					<input 
-						id="feedmessagecontent"
-						onfocus="this.value=''; this.style.color='#333333'; this.onfocus=null;" 
-						value="<?php echo t('What\'s new ?'); ?>">
-				</td>
+			<tr id="feedmessage">
 				<td>
-					<a 
-						title="<?php echo t("Submit"); ?>"
-						onclick="<?php $this->callAjax('ajaxPublishItem', "document.querySelector('#feedmessagecontent').value") ?>"
-						href="#" 
-						id="feedmessagesubmit" 
-						class="button tiny icon submit"><?php echo t("Submit"); ?>
-					</a>
+					<textarea 
+						id="feedmessagecontent"
+						onfocus="
+                            if(this.value == '<?php echo t('What\'s new ?'); ?>') {this.value='';}
+                            document.querySelector('#feedsubmitrow').style.display = 'block';" 
+                        
+                    ><?php echo t('What\'s new ?'); ?></textarea>
 				</td>
+            </tr>
+            <tr id="feedsubmitrow">
+                <td style="width: %"></td>
+                <td>
+                    <a 
+                        title="<?php echo t("Submit"); ?>"
+                        onclick="
+                            if(
+                                document.querySelector('#feedmessagecontent').value != '' && 
+                                document.querySelector('#feedmessagecontent').value != '<?php echo t('What\'s new ?'); ?>') {
+                                    <?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>
+                            }
+                            else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\'s new ?'); ?>' }                  
+                            "
+                        href="#" 
+                        id="feedmessagesubmit" 
+                        class="button tiny icon submit"><?php echo t("Submit"); ?>
+                    </a>
+                </td>
 			</tr>
 		</table>
 

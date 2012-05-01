@@ -18,3 +18,12 @@ function showPosts(n, me) {
         tabs[i].className = '';
     n.className = 'on';
 }
+
+function getFeedMessage() {
+    var text = document.querySelector('#feedmessagecontent');
+    message = text.value;
+    text.value = '';
+    text.blur();
+    document.querySelector('#feedsubmitrow').style.display = 'none';
+    return encodeURIComponent(message);
+}

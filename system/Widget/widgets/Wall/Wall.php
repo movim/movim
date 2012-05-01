@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
 
-class Wall extends WidgetBase
+class Wall extends WidgetCommon
 {
 
     function WidgetLoad()
@@ -27,15 +27,10 @@ class Wall extends WidgetBase
     	$this->addjs('wall.js');
 		$this->registerEvent('stream', 'onStream');
 		$this->registerEvent('comment', 'onComment');
+		$this->registerEvent('nocomment', 'onNoComment');
+		$this->registerEvent('nocommentstream', 'onNoCommentStream');
+        $this->registerEvent('nostream', 'onNoStream');
 		$this->registerEvent('currentpost', 'onNewPost');
-    }
-    
-    function onComment($parent) {        
-        global $sdb;
-        $message = $sdb->select('Message', array('key' => $this->user->getLogin(), 'nodeid' => $parent));
-
-        $html = $this->prepareComments($message[0]);
-        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
     function onNewPost($payload) {
@@ -46,38 +41,39 @@ class Wall extends WidgetBase
         RPC::call('movim_prepend', 'wall', RPC::cdata($html));
     }
     
+    function onNoStream() {
+        RPC::call('hideWall'); 
+        RPC::commit();
+    }
+    
     function onStream($payload) {
         $html = '';
 
-        if(isset($payload['error']))
+        $html .= '
+            <!--<a 
+                class="button tiny icon" 
+                href="#"
+                style="float: right;"
+                id="wallfollow" 
+                onclick="'.$this->genCallAjax('ajaxSubscribe', "'".$payload["@attributes"]["from"]."'").'" 
+            >
+                '.t('Follow').'
+            </a>
+            <br /><br />-->
+            ';
+        
+        global $sdb;
+        $messages = $sdb->select('Post', array('key' => $this->user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
+        
+        if($messages == false) {            
             RPC::call('hideWall'); 
-        else {
-            $html .= '
-                <!--<a 
-                    class="button tiny icon" 
-                    href="#"
-                    style="float: right;"
-                    id="wallfollow" 
-                    onclick="'.$this->genCallAjax('ajaxSubscribe', "'".$payload["@attributes"]["from"]."'").'" 
-                >
-                    '.t('Follow').'
-                </a>
-                <br /><br />-->
-                ';
+        } else {
+            $html = '';
             
-            global $sdb;
-            $messages = $sdb->select('Post', array('key' => $this->user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
-            
-            if($messages == false) {            
-                RPC::call('hideWall'); 
-            } else {
-                $html = '';
-                
-                foreach(array_slice($messages, 0, 20) as $message) {
-                    $html .= $this->preparePost($message);
-                }
-                echo $html;
+            foreach(array_slice($messages, 0, 20) as $message) {
+                $html .= $this->preparePost($message);
             }
+            echo $html;
         }
 
         RPC::call('movim_fill', 'wall', RPC::cdata($html));

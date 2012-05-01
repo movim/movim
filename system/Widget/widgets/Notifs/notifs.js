@@ -11,8 +11,17 @@ function showAlias(n) {
 function addJid(n) {
     n.style.display = "none";
     document.querySelector('#addvalidate').style.display = "block";
+    document.querySelector('#addrefuse').style.display = "block";
     document.querySelector('#addalias').style.display = "block";
     document.querySelector('#addjid').style.display = "block";
+}
+
+function cancelAddJid() {
+    document.querySelector('#addvalidate').style.display = "none";
+    document.querySelector('#addrefuse').style.display = "none";
+    document.querySelector('#addalias').style.display = "none";
+    document.querySelector('#addjid').style.display = "none";
+    document.querySelector('#addstart').style.display = "block";
 }
 
 function getAlias() {

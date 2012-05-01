@@ -9,7 +9,7 @@ function showPresence(n)
 
 function getStatusText()
 {
-    status = document.querySelectorAll('#profile #status');
-    console.log(status);
-    return status.value;
+    status = document.querySelector('#profile #status');
+    console.log(status.value);
+    return encodeURIComponent(status.value);
 }

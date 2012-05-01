@@ -35,6 +35,6 @@
     margin-top: 3px;
 }
 
-#notifs #notifsvalidate, #notifs #addvalidate {
+#notifs #notifsvalidate, #notifs #addvalidate, #notifs #addrefuse {
     display: none;
 }

@@ -29,11 +29,11 @@ class Notifs extends WidgetBase
 		$this->registerEvent('subscribe', 'onSubscribe');
     }
     
-    function onMessage($payload) {
+    function onMessage($message) {
         global $sdb;
         $contact = new Contact();
-        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
-        RPC::call('notification', $contact->getTrueName(), RPC::cdata($payload['movim']['body'], ENT_COMPAT, "UTF-8"));
+        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $message->getData('from')));
+        RPC::call('notification', $contact->getTrueName(), RPC::cdata($message->getData('body'), ENT_COMPAT, "UTF-8"));
         RPC::commit();
     }
     
@@ -99,7 +99,8 @@ class Notifs extends WidgetBase
     }
     
     function ajaxAddContact($jid, $alias) {
-        $this->xmpp->addContact($jid, false, $alias);
+        if(checkJid($jid))
+            $this->xmpp->addContact($jid, false, $alias); 
     }
     
     function build() {  
@@ -139,15 +140,24 @@ class Notifs extends WidgetBase
                     onblur="myBlur(this);"
                 />
                 <a 
-                    class="button tiny icon yes" 
+                    class="button tiny icon yes merged right" 
                     href="#" 
                     id="addvalidate" 
-                    onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?>">
+                    onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
                     <?php echo t('Validate'); ?>
                 </a>
                 <a 
+                    class="button tiny icon no merged left"
+                    href="#"
+                    id="addrefuse"
+                    onclick="cancelAddJid();">
+                    <?php echo t('Cancel'); ?>
+                </a>
+                
+                <a 
                     class="button tiny icon add" 
                     href="#" 
+                    id="addstart"
                     onclick="addJid(this);">
                     <?php echo t('Add a contact'); ?>
                 </a>

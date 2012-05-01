@@ -23,6 +23,9 @@ class Post extends DatajarBase {
     protected $locality;
     protected $street;
     protected $building;
+    
+    protected $commentson;
+    protected $commentplace;
 
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);
@@ -47,6 +50,9 @@ class Post extends DatajarBase {
         $this->locality    = DatajarType::varchar(128);
         $this->street      = DatajarType::varchar(128);
         $this->building    = DatajarType::varchar(128);
+        
+        $this->commentson  = DatajarType::int();
+        $this->commentplace= DatajarType::varchar(128);
     }
     
     public function setPost($array, $from, $parent = false, $key = false) {
@@ -67,7 +73,12 @@ class Post extends DatajarBase {
         $this->uri->setval(substr($array['entry']['source']['author']['uri'], 5));
         $this->nodeid->setval($array['@attributes']['id']);
         $this->parentid->setval($parent);
-        $this->content->setval($array['entry']['content']);
+        
+        if(isset($array['entry']['content']))
+            $this->content->setval($array['entry']['content']);
+        elseif(isset($array['entry']['body']))
+            $this->content->setval($array['entry']['body']);
+
         $this->published->setval(date('Y-m-d H:i:s', strtotime($array['entry']['published'])));
         $this->updated->setval(date('Y-m-d H:i:s', strtotime($array['entry']['updated'])));
 
@@ -86,8 +97,16 @@ class Post extends DatajarBase {
                 if($attachment['link'][0]['@attributes']['title'] == 'thumb') {
                     AttachmentHandler::saveAttachment($attachment, $key, $from, $array['@attributes']['id']);
                 }
+                if($attachment['@attributes']['title'] == 'comments') {
+                    $this->commentson->setval(1);
+                    $this->commentplace->setval(reset(explode('?', substr($attachment['@attributes']['href'], 5))));
+                }
             }
         }
+    }
+    
+    public function setNoComments() {
+        $this->commentson->setval(0);
     }
 
     public function getData($data) {

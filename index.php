@@ -61,5 +61,4 @@ if(!file_exists("config/conf.xml")) {
     $sdb->close();
 }
 
-
 ?>

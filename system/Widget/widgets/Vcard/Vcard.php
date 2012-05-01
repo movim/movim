@@ -34,6 +34,8 @@ class Vcard extends WidgetBase
     }
     
 	function ajaxVcardSubmit($vcard) {
+	    # Format it ISO 8601:
+	    $vcard['vCardBDay'] = $vcard['vCardBYear'].'-'.$vcard['vCardBMonth'].'-'.$vcard['vCardBDay'];
 		$this->xmpp->updateVcard($vcard);
 	}
     
@@ -73,11 +75,45 @@ class Vcard extends WidgetBase
             $html .= '<div class="element"><span>'.t('Nickname').'</span>
                         <input type="text" name ="vCardNickname" class="content" value="'.$me->getData('name').'">
                       </div>';
-            $html .= '<div class="element"><span>'.t('Date of Birth').' YYYY-MM-DD</span>
-                        <input type="text" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name ="vCardBDay" class="content" value="'.$me->getData('date').'">
-                      </div>';
-            
-
+                      
+            $html .= '<div class="element"><span>'.t('Date of Birth').'</span>';
+            $html .= '<select name="vCardBDay" class="datepicker"><option value="-1">'.t('Day').'</option>';
+            for($i=1; $i<= 31; $i++){
+                if($i < 10){
+                    $j = '0'.$i;
+                } else {
+                    $j = $i;
+                }
+                if($i == substr( $me->getData('date'), 8)) {
+                    $html .= '<option value="'.$j.'" selected>'.$j.'</option>';
+                } else {
+                    $html .= '<option value="'.$j.'">'.$j.'</option>';
+                }
+            }
+            $html .= '</select>';
+            $html .= '<select name="vCardBMonth" class="datepicker"><option value="-1">'.t('Month').'</option>';
+            for($i=1; $i<= 12; $i++){
+                if($i < 10){
+                    $j = '0'.$i;
+                } else {
+                    $j = $i;
+                }
+                if($i == substr( $me->getData('date'), 5, 2)) {
+                    $html .= '<option value="'.$j.'" selected>'.$j.'</option>';
+                } else {
+                    $html .= '<option value="'.$j.'">'.$j.'</option>';
+                }
+            }
+            $html .= '</select>';
+            $html .= '<select name="vCardBYear" class="datepicker"><option value="-1">'.t('Year').'</option>';
+            for($i=2012; $i>= 1920; $i--){
+                if($i == substr( $me->getData('date'), 0, 4)) {
+                    $html .= '<option value="'.$i.'" selected>'.$i.'</option>';
+                } else {
+                    $html .= '<option value="'.$i.'">'.$i.'</option>';
+                }
+            }
+            $html .= '</select></div>';
             
             $html .= '<br />
                       <div class="element"><span style="padding-top: 5px;">'.t('Gender').'</span>
@@ -101,7 +137,7 @@ class Vcard extends WidgetBase
                         }
             $html .= '  </select>
                       </div>';
-                      
+         
             $html .= '<br />
                       <div class="element"><span>'.t('Website').'</span>
                         <input type="url" name ="vCardUrl" class="content" value="'.$me->getData('url').'">

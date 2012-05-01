@@ -55,7 +55,8 @@
     border: 1px solid #E2E2E2; 
     border-top: 1px solid #E7E7E7;
     border-bottom: 1px solid #D2D2D2;
-    margin-top: 5px;
+    margin-top: 7px;
+    overflow: hidden;
 }
 
 .post .comments:hover {
@@ -172,4 +173,43 @@ label {
     text-align:right;
     width: auto;
     padding: 5px 9px 5px 9px;
+}
+
+.post table#commentsubmit {
+    border-spacing: 0px;
+    background-color: white;
+    width: 100%;
+    display: none;
+}
+
+.post table#commentsubmit td {
+    padding: 5px;
+    width: 100%;
+}
+
+.post table#commentsubmit textarea {
+    border: 0px;
+    width: 100%;
+    resize: vertical;
+    padding: 0px;
+    height: 1.5em;
+    -webkit-transition-property: height;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-out;
+    transition-property: height;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    -moz-transition-property: height;
+    -moz-transition-duration: 0.5s;
+    -moz-transition-timing-function: ease-out;
+}
+
+.post table#commentsubmit textarea:focus {
+    /*height: 2.7em;*/
+}
+
+.post table#commentsubmit .commentsubmitrow {
+    background-color: #F3F3F3;
+    display: block;
+    padding: 5px;
 }

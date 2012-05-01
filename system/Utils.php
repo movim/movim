@@ -127,13 +127,13 @@ function prepareDate($time) {
             return 'In ' . $reldays . ' '.t('day') . ($reldays != 1 ? 's' : '');
         } else {
             $reldays = abs(floor($reldays));
-            return t(' %d days ago', $reldays) .' - '. date('H:i', $time); // . ' '.t('day') . ($reldays != 1 ? 's' : '') . ' ago';
+            return t(' %d days ago', $reldays) .' - '. date('H:i', $time);
         }
     }
     if (abs($reldays) < 182) {
-        return date('l, j F',$time ? $time : time());
+        return date('l, j F - H:i',$time ? $time : time());
     } else {
-        return date('l, j F, Y',$time ? $time : time());
+        return date('l, j F, Y - H:i',$time ? $time : time());
     }
 }
 
