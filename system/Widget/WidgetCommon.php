@@ -124,8 +124,24 @@ class WidgetCommon extends WidgetBase {
         
         $tmp = false;
         
+        $size = sizeof($comments);
+        
+        $comcounter = 0;
+        
+        if($size > 3) {
+            $tmp = '<div 
+                        class="comment"
+                        onclick="
+                            com = this.parentNode.querySelectorAll(\'.comment\'); 
+                            for(i = 0; i < com.length; i++) { com.item(i).style.display = \'block\';};
+                            this.style.display = \'none\';">
+                        <a class="getcomments icon bubbleadd">'.t('Show the older comments').'</a>
+                    </div>';
+            $comcounter = $size - 3;
+        }
+        
         if($comments) {
-            foreach($comments as $comment) {
+            foreach($comments as $comment) {                
                 $query = Contact::query()
                                     ->where(array('key' => $user->getLogin(), 'jid' => $comment->getData('jid')));
                 $contact = Post::run_query($query);
@@ -140,7 +156,13 @@ class WidgetCommon extends WidgetBase {
                 }
                 
                 $tmp .= '
-                    <div class="comment">
+                    <div class="comment" ';
+                if($comcounter > 0) {
+                    $tmp .= 'style="display:none;"';
+                    $comcounter--;
+                }
+                    
+                $tmp .='>
                         <img class="avatar tiny" src="'.$photo.'">
                         <span><a href="?q=friend&f='.$comment->getData('jid').'">'.$name.'</a></span>
                         <span class="date">'.prepareDate(strtotime($comment->getData('published'))).'</span><br />
