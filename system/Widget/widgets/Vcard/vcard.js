@@ -38,10 +38,11 @@ function vCardImageResize(img) {
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0, width, height);
     
-    var base64 = canvas.toDataURL('image/jpeg', 0.9);
+    var base64 = canvas.toDataURL('image/png');
+    var bin = base64.split(",");
     document.querySelector('#vCardPhotoPreview').src = base64;
-    document.querySelector('input[name="vCardPhotoType"]').value = 'image/jpeg';
-    document.querySelector('input[name="vCardPhotoBinVal"]').value = base64.substring(23);
+    document.querySelector('input[name="vCardPhotoType"]').value = 'image/png';
+    document.querySelector('input[name="vCardPhotoBinVal"]').value = bin[1];
 };
 
 function vCardImageLoad(files) {
@@ -56,7 +57,7 @@ function vCardImageLoad(files) {
             var img = new Image();
             img.src = ev.target.result;
             img.onload = function() {
-                vCardImageResize( this);
+                vCardImageResize(this);
             };
         };
     };

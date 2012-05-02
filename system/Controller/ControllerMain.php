@@ -146,6 +146,9 @@ class ControllerMain extends ControllerBase
 	 */
 	function login()
 	{
+        global $sdb;
+        $message = new Message();
+    $sdb->create($message);
     	$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
