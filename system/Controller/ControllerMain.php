@@ -41,6 +41,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
+            $this->page->menuAddLink(t('Help'), '?q=help');            
 
 			$content = new TplPageBuilder($user);
 
@@ -76,6 +77,7 @@ class ControllerMain extends ControllerBase
 				$this->page->menuAddLink($name, false, true);
 				$this->page->menuAddLink(t('Profile'), '?q=profile');
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
+            $this->page->menuAddLink(t('Help'), '?q=help');                
 				$content = new TplPageBuilder($user);
 
 				$this->page->setContent($content->build('friend.tpl'));
@@ -97,6 +99,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
+            $this->page->menuAddLink(t('Help'), '?q=help');            
 
 			$content = new TplPageBuilder($user);
 
@@ -116,6 +119,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Profile'), '?q=profile', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
+            $this->page->menuAddLink(t('Help'), '?q=help');            
 
 			$content = new TplPageBuilder($user);
 
@@ -131,6 +135,7 @@ class ControllerMain extends ControllerBase
 		    $this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Account Creation'), '?q=account', true);
+            //$this->page->menuAddLink(t('Help'), '?q=help');            
 			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('account.tpl'));
@@ -146,19 +151,50 @@ class ControllerMain extends ControllerBase
 	 */
 	function login()
 	{
-        global $sdb;
-        $message = new Message();
-    $sdb->create($message);
     	$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
 		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
 		if(Conf::getServerConfElement("accountCreation") == 1)
 			$this->page->menuAddLink(t('Account Creation'), '?q=account');
+            
+        //$this->page->menuAddLink(t('Help'), '?q=help');
 
         $content = new TplPageBuilder($user);
 		$this->page->setContent($content->build('login.tpl'));
 		echo $this->page->build('page.tpl');
 	}
+    
+    /*
+     * Show help page
+     */
+     function help()
+     {
+		$user = new User();
+
+
+        $this->page->setTitle(t('%s - Help Page', APP_TITLE));
+
+		if(!$user->isLogged()) {
+            /*$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
+                $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            if(Conf::getServerConfElement("accountCreation") == 1)
+                $this->page->menuAddLink(t('Account Creation'), '?q=account');
+            $this->page->menuAddLink(t('Help'), '?q=help', true);*/
+            $this->login();
+		} else {
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Profile'), '?q=profile');
+			$this->page->menuAddLink(t('Configuration'), '?q=config');
+            $this->page->menuAddLink(t('Help'), '?q=help', true);
+            
+
+		}
+        
+        $content = new TplPageBuilder($user);
+        $this->page->setContent($content->build('help.tpl'));
+        echo $this->page->build('page.tpl'); 
+            
+     }
 
 	function disconnect()
 	{
