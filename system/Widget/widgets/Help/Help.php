@@ -28,7 +28,35 @@ class Help extends WidgetBase
     {
         ?>
             <div id="help">
-            <h2>Traduction de H. Rackham (1914)</h2>
+                
+            <h2>Qu'est ce que Movim ?</h2>
+            
+            <p>Visitez la page <a href="http://wiki.movim.eu/fr:whoami" target="_blank">Qu'est ce que Movim ?</a> 
+            pour connaitre un peu plus le projet, ses buts et comprendre son fonctionnement.</p>
+            
+            <h2>À quoi correspondent les petit fanions sur l'interface ?</h2>
+            <center>    
+            <div style="width: 60px; height: 50px; display: inline-block;" class="protect white"></div>
+            <div style="width: 60px; height: 50px; display: inline-block;" class="protect green"></div>
+            <div style="width: 60px; height: 50px; display: inline-block;" class="protect orange"></div>
+            <div style="width: 60px; height: 50px; display: inline-block;" class="protect red"></div>
+            <div style="width: 60px; height: 50px; display: inline-block;" class="protect black"></div>
+            </center>
+                
+            <p>Ces 5 petits fanions vous permetent, en un coup d'oeil, de connaitre la confidentialité 
+            des données contenus en dessous de ceux-ci.</p>
+            
+            <p>
+                <ul class="clean">
+                    <li>Blanc, les données ne sont visibles que par vous même</li>
+                    <li>Vert, les données ne sont visibles que par le contact choisit</li>
+                    <li>Orange, les données sont visibles par toute votre liste de contact</li>
+                    <li>Rouge, les données sont visibles par tout le monde, au sein du réseau XMPP</li>
+                    <li>Noir, les données sont visibles par tout le monde sur internet</li>
+                </ul>
+            </p>
+            
+            <!--<h2>Traduction de H. Rackham (1914)</h2>
 
             <p>"But I must explain to you how all this mistaken idea of 
             denouncing pleasure and praising pain was born and I will 
@@ -69,7 +97,7 @@ class Help extends WidgetBase
             recusandae. Itaque earum rerum hic tenetur a sapiente 
             delectus, ut aut reiciendis voluptatibus maiores alias 
             consequatur aut perferendis doloribus asperiores repellat."
-            </p>
+            </p>-->
             </div>
         <?php
     }

@@ -53,9 +53,11 @@ a:link, a:visited {
     background-position: 100% 0px;
 }
 
+.protect.white { background-image: url(../img/protect/white.svg); }
 .protect.green { background-image: url(../img/protect/green.svg); }
 .protect.orange { background-image: url(../img/protect/orange.svg); }
 .protect.red { background-image: url(../img/protect/red.svg); }
+.protect.black { background-image: url(../img/protect/black.svg); }
 
 hr {
     border: 0px;
@@ -78,8 +80,7 @@ h2:first-child {
 
 h2 {
     color: #888;
-    padding-top: 0.6em;
-    padding-bottom: 0.5em;
+    padding: 0.8em 0px;
     font-size: 1.2em;
 }
 
@@ -98,6 +99,15 @@ p:first-letter {
     padding-right: 0.1em;
     padding-top: 0.15em;
     float: left;
+}
+
+ul.clean {
+    margin-left: 1.5em;
+    margin-top: 1em;
+}
+
+ul.clean li {
+    list-style-type: square;
 }
 
 #topgray {
