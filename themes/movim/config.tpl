@@ -13,7 +13,7 @@
 <div id="right">
 
 </div>
-<div id="center">
+<div id="center" class="protect white">
   <h1><?php echo t('Configuration'); ?></h1>
   <?php $this->widget('Config');?>
 </div>

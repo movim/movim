@@ -56,6 +56,21 @@ class Help extends WidgetBase
                 </ul>
             </p>
             
+            <h2>Il manque des fonctionnalités/Je n'arrive pas à faire ce que je faisais sur les autres réseaux sociaux</h2>
+            
+            <p>Même si Movim avance vite, il manque encore de (très) nombreuses fonctionnalités. Soyez patient ;).
+            Vous pouvez aller jeter un oeil <a href="http://wiki.movim.eu/fr:roadmaps" target="_blank">aux feuilles de routes
+            des prochaines version</a> pour voir si celle-ci n'est pas déjà prévue.
+            
+            Et n'oubliez pas que Movim est un logiciel libre, un petit coup de main est toujours le bienvenu
+            (voir la page <a href="http://wiki.movim.eu/fr:whoami#puis-je_participer" target="_blank">Puis-je participer</a>).</p>
+            
+            <h2>Ma question n'est pas listée ici</h2>
+            
+            <p>Allez jeter un oeil <a href="http://wiki.movim.eu/fr:whoami#foire_aux_questions" target="_blank">à la Foire aux Questions</a>
+            ou venez nous la poser directement sur le salon officiel <a href="xmpp:movim@conference.movim.eu" target="_blank">movim@conference.movim.eu</a>
+            ou sur la mailing-list (<a href="http://wiki.movim.eu/fr:mailing_list" target="_blank">voir la page dédié</a>).
+            
             <!--<h2>Traduction de H. Rackham (1914)</h2>
 
             <p>"But I must explain to you how all this mistaken idea of 
