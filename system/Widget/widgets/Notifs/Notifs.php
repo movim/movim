@@ -115,7 +115,16 @@ class Notifs extends WidgetBase
         
     ?>
     <div id="notifs">
-        <span id="widgettitle"><?php echo t('Contacts (%s)', sizeof($contacts) -1); ?></span>
+        <span id="widgettitle">
+            <?php echo t('Contacts (%s)', sizeof($contacts) -1); ?> - 
+            <a 
+                    class="" 
+                    href="#" 
+                    id="addstart"
+                    onclick="addJid(this);">
+                    <?php echo t('Add'); ?>
+            </a>
+        </span>
         <ul id="notifslist">
             <?php
             ksort($notifs);
@@ -153,13 +162,7 @@ class Notifs extends WidgetBase
                     <?php echo t('Cancel'); ?>
                 </a>
                 
-                <a 
-                    class="button tiny icon add" 
-                    href="#" 
-                    id="addstart"
-                    onclick="addJid(this);">
-                    <?php echo t('Add a contact'); ?>
-                </a>
+
             </li>
         </ul>
     </div>

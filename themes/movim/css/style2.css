@@ -28,7 +28,7 @@ body {
     font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
     font-size: 13px;
     margin: 0 auto;
-    margin-top: 25px;
+    margin-top: 35px;
     color: #4E4E4E;
     height: 100%;
 }
@@ -293,38 +293,48 @@ label {
 }
 #nav {
     width: 100%;
-    background-color: #444444;
-    min-height: 22px;
+    background-color: #444;
+    min-height: 34px;
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: 1;
+
+    background-image: linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
+    background-image: -o-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
+    background-image: -moz-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
+    background-image: -webkit-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
+    background-image: -ms-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
 }
 #nav .menu {
-    width: 1024px;
-    margin: 0 auto;
+    width: 810px;
+    margin: 0px auto;
     list-style-type: none;
     display: block;
     overflow: hidden;
     clear: both;
+    padding-left: 210px;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: 20px 7px;
 }
 #nav .menu li {
     float: left;
 }
 #nav .menu li a {
-    padding: 5px 15px;
+    padding: 10px 20px;
     display: block;
-    color: white;
+    color: #ccc;
     font-size: 11px;
 }
 #nav .menu li a.active {
     font-weight: bold;
-    background-color: white;
-    color: #444;
+    /*background-color: white;*/
+    color: #fff;
 }
 
 #nav .menu li:hover a.active {
-    background-color: white;
+    /*background-color: white;*/
 }
 
 #nav .menu li img {
@@ -334,7 +344,8 @@ label {
     margin-top: 1px;
 }
 #nav .menu li:hover a {
-    background-color: rgba(255, 255, 255, 0.3);
+    /*background-color: rgba(255, 255, 255, 0.3);*/
+    color: #fff;
 } 
 
 /* Warning */

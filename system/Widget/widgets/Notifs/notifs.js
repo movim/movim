@@ -21,7 +21,7 @@ function cancelAddJid() {
     document.querySelector('#addrefuse').style.display = "none";
     document.querySelector('#addalias').style.display = "none";
     document.querySelector('#addjid').style.display = "none";
-    document.querySelector('#addstart').style.display = "block";
+    document.querySelector('#addstart').style.display = "inline";
 }
 
 function getAlias() {

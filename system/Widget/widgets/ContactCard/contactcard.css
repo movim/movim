@@ -11,8 +11,8 @@
 
 #contactcard img.avatar {
     max-width: 200px;
-    padding: 3px;
-    border: 1px solid #CCC;
+    padding: 6px;
+    box-shadow: 0px 0px 5px #DDD;
 }
 
 #contactcard .element span {

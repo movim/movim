@@ -15,8 +15,8 @@
 #contactsummary img {
     max-width: 120px;
     margin: 0 auto;
-    border: 1px solid #ccc;
-    padding: 3px;
+    padding: 6px;
+    box-shadow: 0px 0px 5px #DDD;
 }
 
 #contactsummary #status {

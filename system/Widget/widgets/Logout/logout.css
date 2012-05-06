@@ -4,21 +4,23 @@
 
 #logouttab {
 	position: absolute;
-	top: 3px;
-	right: 0px;
+	top: 7px;
+	left: 50%;
+    margin-left: 420px;
     overflow: hidden;
     display: block;
     padding: 5px 15px 5px 25px;
 	cursor: pointer;
-    color: white;
+    color: #ccc;
     font-size: 11px;
     z-index: 2;
     background-repeat: no-repeat;
-    background-position: 7px 6px;
+    background-position: 7px 7px;
 }
 
 #logouttab:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    /*background-color: rgba(255, 255, 255, 0.3);*/
+    color: #fff;
 }
 
 #logouttab.online { background-image: url(img/online.png); }
@@ -29,10 +31,10 @@
 #logoutlist {
     border: 1px solid #CCC;
     border-top: none;
-    border-right: none;
     position: absolute;
-    top: 25px;
-    right: 0px;
+    top: 35px;
+	left: 50%;
+    margin-left: 380px;
     box-shadow: 0 5px 10px rgba(150, 150, 150, 0.1);
     display: none;
     background-color: white;
