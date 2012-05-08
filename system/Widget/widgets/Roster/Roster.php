@@ -106,8 +106,11 @@ class Roster extends WidgetBase
                             ->where(
                                 array(
                                     'key' => $this->user->getLogin(),
-                                    'rostersubscription!' => 'none',
-                                    '|rosterask' => 'subscribe'
+                                    'jid!' => '',
+                                    array(
+                                        'rostersubscription!' => 'none',
+                                        '|rosterask' => 'subscribe'
+                                    )
                                 )
                             )
                             ->orderby('group', true);

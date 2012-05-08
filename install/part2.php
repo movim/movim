@@ -122,6 +122,7 @@ function perform_install()
       'accountCreation'    => get_checkbox('accountCreation', 1, 0),
       'host'               => $_POST['host'],
       'domain'             => $_POST['domain'],
+      'port'               => 5222, 
       'defBoshHost'        => $_POST['defBoshHost'],
       'defBoshSuffix'      => $_POST['defBoshSuffix'],
       'defBoshPort'        => $_POST['defBoshPort'],

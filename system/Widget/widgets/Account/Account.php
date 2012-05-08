@@ -114,9 +114,9 @@ class Account extends WidgetBase {
         
         $conf
             ->set('login', $data['username'].'@'.$data['server'])
-            ->set('pass', $data['password'])
+            ->set('pass', sha1($data['password']))
             ->set('host', $confvar['host'])
-            ->set('domain', $confvar['host'])
+            ->set('domain', $confvar['domain'])
             ->set('port', $confvar['port'])
             ->set('boshHost', $confvar['defBoshHost'])
             ->set('boshSuffix', $confvar['defBoshSuffix'])
