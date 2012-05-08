@@ -12,7 +12,7 @@
 <div id="right">
 
 </div>
-<div id="center">
+<div id="center" class="protect orange">
 	<h1><?php echo t('Feed'); ?></h1>
     <?php $this->widget('Feed');?>
 </div>

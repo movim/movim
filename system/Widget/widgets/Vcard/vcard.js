@@ -12,4 +12,53 @@ function getPos(n)
 	        document.forms["vcard"].elements["vCardLong"].value = longitude;
 	    });
 	}
-}
+};
+
+function vCardImageResize(img) {
+    var canvas = document.createElement('canvas');
+    
+    var MAX_WIDTH = 150;
+    var MAX_HEIGHT = 150;
+    var width = img.width;
+    var height = img.height;
+     
+    if (width > height) {
+      if (width > MAX_WIDTH) {
+        height *= MAX_WIDTH / width;
+        width = MAX_WIDTH;
+      }
+    } else {
+      if (height > MAX_HEIGHT) {
+        width *= MAX_HEIGHT / height;
+        height = MAX_HEIGHT;
+      }
+    }
+    canvas.width = width;
+    canvas.height = height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, width, height);
+    
+    var base64 = canvas.toDataURL('image/png');
+    var bin = base64.split(",");
+    document.querySelector('#vCardPhotoPreview').src = base64;
+    document.querySelector('input[name="vCardPhotoType"]').value = 'image/png';
+    document.querySelector('input[name="vCardPhotoBinVal"]').value = bin[1];
+};
+
+function vCardImageLoad(files) {
+    var f = files[0];
+    if (!f.type.match(/image.*/)) {
+      console.log("Not a picture !");
+    } else {
+        var reader = new FileReader();
+        reader.readAsDataURL(f);
+        
+        reader.onload = function ( ev ) {
+            var img = new Image();
+            img.src = ev.target.result;
+            img.onload = function() {
+                vCardImageResize(this);
+            };
+        };
+    };
+};

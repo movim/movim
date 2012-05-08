@@ -13,9 +13,9 @@
 <div id="right">
 
 </div>
-<div id="center" class="protect white">
-  <h1><?php echo t('Configuration'); ?></h1>
-  <?php $this->widget('Config');?>
+<div id="center">
+  <h1><?php echo t('Help'); ?></h1>
+  <?php $this->widget('Help');?>
 </div>
 
 

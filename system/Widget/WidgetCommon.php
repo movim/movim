@@ -28,7 +28,7 @@ class WidgetCommon extends WidgetBase {
                 if($user->getLogin() == $message->getData('jid'))
                     $tmp .= 'me';
             $tmp .= '" id="'.$message->getData('nodeid').'" >
-                    <img class="avatar" src="'.$contact[0]->getPhoto('m').'">
+                    <img class="avatar" src="'.$contact[0]->getPhoto('s').'">
 
                     <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span>
                     <span class="date">'.prepareDate(strtotime($message->getData('updated'))).'</span>
@@ -135,7 +135,7 @@ class WidgetCommon extends WidgetBase {
                             com = this.parentNode.querySelectorAll(\'.comment\'); 
                             for(i = 0; i < com.length; i++) { com.item(i).style.display = \'block\';};
                             this.style.display = \'none\';">
-                        <a class="getcomments icon bubbleadd">'.t('Show the older comments').'</a>
+                        <a class="getcomments icon bubbleold">'.t('Show the older comments').'</a>
                     </div>';
             $comcounter = $size - 3;
         }

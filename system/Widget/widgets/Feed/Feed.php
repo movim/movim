@@ -99,7 +99,7 @@ class Feed extends WidgetCommon {
     function build()
     {
     ?>
-    <div class="tabelem protect orange" title="<?php echo t('Feed'); ?>" id="feed">
+    <div class="tabelem" title="<?php echo t('Feed'); ?>" id="feed">
 		<table id="submit">
 			<tr id="feedmessage">
 				<td>

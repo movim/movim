@@ -62,7 +62,10 @@ if(isset($_GET['c'])) {
         $user = new User();
         $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['c']));
         
-        if($contact[0]->phototype != '' && $contact[0]->photobin != '' && $contact[0]->phototype != 'f' && $contact[0]->photobin != 'f') {
+        if($contact[0]->phototype != '' && 
+           $contact[0]->photobin != '' && 
+           $contact[0]->phototype != 'f' && 
+           $contact[0]->photobin != 'f') {
             if(isset($_GET['size']) && $_GET['size'] != 'normal') {
                 switch ($_GET['size']) {
                     case 'm':
@@ -75,14 +78,30 @@ if(isset($_GET['c'])) {
                         $size = 24;
                         break;
                 }
+                
                 $thumb = imagecreatetruecolor($size, $size);
                 $white = imagecolorallocate($thumb, 255, 255, 255);
                 imagefill($thumb, 0, 0, $white);
+                
                 $source = imagecreatefromstring(base64_decode($contact[0]->photobin));
+                
+                $width = imagesx($source);
+                $height = imagesy($source);
+                
+                if($width >= $height) {
+                    // For landscape images
+                    $x_offset = ($width - $height) / 2;
+                    $y_offset = 0;
+                    $square_size = $width - ($x_offset * 2);
+                } else {
+                    // For portrait and square images
+                    $x_offset = 0;
+                    $y_offset = ($height - $width) / 2;
+                    $square_size = $height - ($y_offset * 2);
+                }
+                
                 if($source) {
-                    $width = imagesx($source);
-                    $height = imagesy($source);
-                    imagecopyresampled($thumb, $source, 0, 0, 0, 0, $size, $size, $width, $height);
+                    imagecopyresampled($thumb, $source, 0, 0, $x_offset, $y_offset, $size, $size, $square_size, $square_size);
                     
                     display_image($hash, "image/jpeg");
                     imagejpeg($thumb, NULL, 95);

@@ -85,6 +85,7 @@
     margin-bottom: -5px;
     max-width: 24px;
     float: left;
+    border-radius: 2px;
 }
 
 #roster h1 {
