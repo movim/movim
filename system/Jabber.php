@@ -307,7 +307,6 @@ class Jabber
             }
         }
         elseif(isset($payload['pubsub']) && !(isset($payload['error']))) {
-            movim_log($payload);
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
             
             if(isset($payload['pubsub']['items']['item'])) {
@@ -327,16 +326,17 @@ class Jabber
                             
                         $sdb->save($post);  
                         
-                        if($xmlns == 'urn:xmpp:microblog:0')
+                        if($xmlns == 'urn:xmpp:microblog:0') {
                             $evt->runEvent('stream', $payload);
-                        elseif($xmlns == 'urn:xmpp:microblog:0:comments')
+                            $evt->runEvent('post', $item['@attributes']['id']);
+                        } elseif($xmlns == 'urn:xmpp:microblog:0:comments')
                             $evt->runEvent('comment', $parent);
                     }
                 }
             } elseif(isset($payload['pubsub']['publish']['@attributes']['node'])) {
-                list($xmlns, $id) = explode("/", $payload['pubsub']['publish']['@attributes']['node']);
-                $this->getComments(false, $id);
-            
+                //list($xmlns, $id) = explode("/", $payload['pubsub']['publish']['@attributes']['node']);
+                //$this->getComments(false, $id);
+                $this->getWallItem(false, $payload['pubsub']['publish']['item']['@attributes']['id']);
             } else {
                 $evt->runEvent('nocomment', $parent);
             }
@@ -387,7 +387,6 @@ class Jabber
                 	$evt->runEvent('paused', $payload);
 				}
 				else {
-                    movim_log($payload);
                     global $sdb;
                     $m = new Message();
                     $m->setMessageChat($payload['movim']);
@@ -414,7 +413,7 @@ class Jabber
                         $evt->runEvent('currentpost', $payload);
                     }
                     
-                    $evt->runEvent('post', $payload);
+                    $evt->runEvent('post', $payload['event']['items']['item']['@attributes']['id']);
                 }	            
             }
         }
@@ -544,6 +543,16 @@ class Jabber
 	public function getWall($jid = false) {
 		$this->jaxl->JAXL0277('getItems', $jid);
 	}
+    
+	/**
+	 * Ask for an item
+	 *
+	 * @param unknown $jid = false
+	 * @return void
+	 */
+	public function getWallItem($jid = false, $id) {
+		$this->jaxl->JAXL0277('getItem', $jid, $id);
+	}
 
 	/**
 	 * Ask for some comments of an article
@@ -553,7 +562,7 @@ class Jabber
 	 * @return void
 	 */
 	public function getComments($place, $id) {
-		$this->jaxl->JAXL0277('getComments', 'pubsub.jappix.com', $id);
+		$this->jaxl->JAXL0277('getComments', $place, $id);
 	}
 
     /**

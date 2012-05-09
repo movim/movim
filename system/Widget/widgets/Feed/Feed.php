@@ -12,9 +12,9 @@ class Feed extends WidgetCommon {
 		$this->registerEvent('stream', 'onStream');
     }
     
-    function onPost($payload) {
+    function onPost($id) {
         $query = Post::query()
-                            ->where(array('key' => $this->user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+                            ->where(array('key' => $this->user->getLogin(), 'nodeid' => $id));
         $post = Post::run_query($query);
 
         if($post != false) {  

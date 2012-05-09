@@ -25,20 +25,23 @@ class Wall extends WidgetCommon
     {
     	$this->addcss('wall.css');
     	$this->addjs('wall.js');
+		$this->registerEvent('post', 'onNewPost');
 		$this->registerEvent('stream', 'onStream');
 		$this->registerEvent('comment', 'onComment');
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
         $this->registerEvent('nostream', 'onNoStream');
-		$this->registerEvent('currentpost', 'onNewPost');
     }
     
-    function onNewPost($payload) {
-        global $sdb;
-        $message = $sdb->select('Message', array('nodeid' => $payload['event']['items']['item']['@attributes']['id']));
-        $html = $this->preparePost($message[0]);
+    function onNewPost($id) {
+        $query = Post::query()
+                            ->where(array('key' => $this->user->getLogin(), 'nodeid' => $id));
+        $post = Post::run_query($query);
 
-        RPC::call('movim_prepend', 'wall', RPC::cdata($html));
+        if($post != false) {  
+            $html = $this->preparePost($post[0]);
+            RPC::call('movim_prepend', 'wall', RPC::cdata($html));
+        }
     }
     
     function onNoStream() {
@@ -62,8 +65,14 @@ class Wall extends WidgetCommon
             <br /><br />-->
             ';
         
-        global $sdb;
-        $messages = $sdb->select('Post', array('key' => $this->user->getLogin(), 'jid' => $payload["@attributes"]["from"]), 'updated', true);
+        
+        $query = Post::query()
+                            ->where(array(
+                                        'key' => $this->user->getLogin(), 
+                                        'parentid' => '',
+                                        'jid' => $payload["@attributes"]["from"]))
+                            ->orderby('updated', true);
+        $messages = Post::run_query($query);
         
         if($messages == false) {            
             RPC::call('hideWall'); 

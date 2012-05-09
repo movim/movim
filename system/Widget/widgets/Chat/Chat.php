@@ -214,14 +214,16 @@ class Chat extends WidgetBase
         $html = '<div class="message ';
             if($message->getData('key') == $message->getData('from'))
                 $html.= 'me';
+               
+        $content = $message->getData('body');
                 
-        /*if(preg_match("#^/me#", $message->getData('body'))) {
+        if(preg_match("#^/me#", $message->getData('body'))) {
             $html .= "own ";
-            $message = "** ".substr($message->getData('body'), 4);
-        }*/
+            $content = "** ".substr($message->getData('body'), 4);
+        }
                 
         $html .= '"><span class="date">'.date('H:i', strtotime($message->getData('published'))).'</span>';
-        $html.= prepareString(htmlentities($message->getData('body'), ENT_COMPAT, "UTF-8")).'</div>';
+        $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
         
         return $html;
     }
