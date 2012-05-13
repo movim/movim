@@ -101,7 +101,7 @@ class Logout extends WidgetBase
                 ';
         $presence = Cache::c('presence');
         if($presence['boot'])
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxSetStatus', '"boot"').'\', 1500);</script>';
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxSetStatus', '"boot"').'\', 5000);</script>';
         
         return $html;
     }

@@ -77,7 +77,6 @@ class Jabber
 		// Connect-Disconnect
         $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'postAuth'));
         $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
-        //$this->jaxl->addPlugin('jaxl_post_roster_update', array(&$this, 'postRosterUpdate'));
         $this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
 		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
 
@@ -144,6 +143,15 @@ class Jabber
         
         self::setStatus(t('Connecting...'), false, false, true);  
 	}
+    
+    /**
+     * postAuth
+     *
+     * @return void
+     */
+    public function postAuth() {
+
+    }
 
     /**
      * postAuthFailure
@@ -256,7 +264,7 @@ class Jabber
 	 */
 	public function getIq($payload) {
         $payload = $payload['movim'];
-        
+
 		global $sdb;
 		$evt = new Event();
         
@@ -284,11 +292,23 @@ class Jabber
                 $evt->runEvent('vcard', $contact);
 			}
 		}
-		
+        
+        elseif($payload['@attributes']['xmlns'] == 'http://jabber.org/protocol/disco#info') {
+		    global $sdb;
+            
+            $c = new CapsHandler();
+            $caps = $c->get($payload['query']['@attributes']['node']);
+            $caps->setCaps($payload['query']);
+            
+            $sdb->save($caps);
+		}
+        
 		// Roster case
 		elseif($payload['@attributes']['xmlns'] == 'jabber:iq:roster') {
-		    if($payload['@attributes']['type'] == "result") {
-		        global $sdb;
+		    global $sdb;
+            
+            // If we got the full roster list
+		    if($payload['@attributes']['type'] == 'result') {
 		        
 		        foreach($payload['query']['item'] as $item) {
 		            // If we've got only one item in the roster we use it as the only one
@@ -302,8 +322,23 @@ class Jabber
 		        }
 
                 $evt->runEvent('roster', $payload);
-            } elseif($payload['type'] == "set") {
-                $this->getRosterList();
+            } 
+            // If we got only one item
+            elseif($payload['@attributes']['type'] == "set") {
+                $c = new ContactHandler();
+                
+                $item = $payload['query']['item'];
+                $contact = $c->get($item['@attributes']['jid']);
+
+                if($item['@attributes']['subscription'] == 'remove') {
+                    //$sdb->delete($contact);
+                    $evt->runEvent('contactremove', $item['@attributes']['jid']);
+                } 
+                elseif(in_array($item['@attributes']['subscription'], array('from', 'to', 'both'))) {
+                    $contact->setContactRosterItem($item);
+                    $sdb->save($contact);
+                    $evt->runEvent('contactadd', $item['@attributes']['jid']);
+                }
             }
         }
         elseif(isset($payload['pubsub']) && !(isset($payload['error']))) {
@@ -377,15 +412,13 @@ class Jabber
 
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') { // reject offline message
 
-				if($payload['chatState'] == 'active' && $payload['body'] == NULL) {
+				if($payload['chatState'] == 'active' && $payload['body'] == NULL)
 					$evt->runEvent('incomeactive', $payload);
-				}
-				elseif($payload['chatState'] == 'composing') {
+				elseif($payload['chatState'] == 'composing')
                 	$evt->runEvent('composing', $payload);
-				}
-				elseif($payload['chatState'] == 'paused') {
+				elseif($payload['chatState'] == 'paused') 
                 	$evt->runEvent('paused', $payload);
-				}
+                    
 				else {
                     global $sdb;
                     $m = new Message();
@@ -432,28 +465,35 @@ class Jabber
         $evt = new Event();
 		
         foreach($payloads as $payload) {
+
             $payload = $payload['movim'];
+            movim_log($payload);
     		if($payload['@attributes']['type'] == 'subscribe') {
         		$evt->runEvent('subscribe', $payload);
-    		} elseif($payload['@attributes']['type'] == 'result') {
-    		
-    		} elseif(in_array($payload['@attributes']['type'], array('available', 'unavailable', '', 'error'))) {
+    		}
+            else {
     		    
     		    // We update the presences
                 list($jid, $ressource) = explode('/',$payload['@attributes']['from']);
                 
-    		    // We ask for the entity-capabilities
-    		    if(isset($payload['c'])) {
-		            $this->jaxl->JAXL0030(
-		                'discoInfo', 
-		                $payload['@attributes']['from'], 
-		                $this->jaxl->jid, 
-		                false, 
-		                $payload['c']['@attributes']['node'].'#'.$payload['c']['@attributes']['ver']
-		            );
+    		    // We ask for the entity-capabilities and we prevent to ask our own capabilities
+    		    if(isset($payload['c']) && $jid != $this->getCleanJid()) {
+                    $c = new CapsHandler();
+                    $caps = $c->get($payload['c']['@attributes']['node'].'#'.$payload['c']['@attributes']['ver']);
+                    
+                    // We ask for the caps only if we haven't found it in the database
+                    if($caps->getData('category') == null) {
+                        $this->jaxl->JAXL0030(
+                            'discoInfo', 
+                            $payload['@attributes']['from'], 
+                            $this->getCleanJid(), 
+                            false, 
+                            $payload['c']['@attributes']['node'].'#'.$payload['c']['@attributes']['ver']
+                        );
+                    }
     		    }
-                
-	            $presence = $sdb->select('Presence', array(
+	            
+                $presence = $sdb->select('Presence', array(
 	                                                    'key' => $this->getCleanJid(), 
 	                                                    'jid' => $jid,
 	                                                    'ressource' => $ressource
@@ -482,11 +522,6 @@ class Jabber
 
         $evt->runEvent('incomingemptybody', 'ping');
 	}
-
-   	/*public function postRosterUpdate($payload) {
-   		$evt = new Event();
-		$evt->runEvent('rosterreceived', $payload);
-   	}*/
 
     /**
 	 * Ask for a vCard
@@ -573,10 +608,7 @@ class Jabber
 	 */
 	public function discover($jid = false)
 	{
-		//$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
-		//$this->jaxl->JAXL0030('discoItems', $jid, $this->jaxl->jid, false, false);mov
 		$this->jaxl->JAXL0277('getItems', 'edhelas@jappix.com');
-        //psgxs.linkmauve.fr
 	}
 
 	public function discoNodes($pod)

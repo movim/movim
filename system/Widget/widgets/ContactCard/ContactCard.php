@@ -131,6 +131,31 @@ class ContactCard extends WidgetBase
         $html .= '
             </fieldset>
         </form>';
+        
+        if($presence['node'] != '' && $presence['ver'] != '') {
+            $clienttype = 
+                array(
+                    'bot' => t('Bot'),
+                    'pc' => t('Desktop'),
+                    'phone' => t('Phone')
+                    );
+            
+            $c = new CapsHandler();
+            $caps = $c->get($presence['node'].'#'.$presence['ver']);
+            
+            $html .='
+            <form><br />
+                <fieldset class="protect red">
+                    <legend>'.t('Client Informations').'</legend>';
+
+            $html .= $this->displayIf($caps->getData('name'), t('Client Name'));
+            $html .= $this->displayIf($clienttype[$caps->getData('type')], t('Client Type'));
+
+            $html .= '
+                </fieldset>
+            </form>';
+        }
+        
         return $html;
     }
 

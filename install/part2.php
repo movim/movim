@@ -158,6 +158,9 @@ if(isset($_POST['install'])) {
 
     // We create correctly the tables
     global $sdb;
+    $caps = new Caps();
+    $sdb->create($caps);
+    
     $contact = new Contact();
     $sdb->create($contact);
 
