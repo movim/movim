@@ -37,7 +37,6 @@ class CapsHandler {
     
     public function get($node) {
 	    global $sdb;
-    	$user = new User();
         $sdb->load($this->instance, array('node' => $node));
         return $this->instance;
     }

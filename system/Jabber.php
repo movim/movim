@@ -39,8 +39,11 @@ class Jabber
 
 		$this->jaxl = new JAXL(array(
 								   // User Configuration
-								   'host' => $userConf['host'],
-								   'domain' => isset($userConf['domain']) ? $userConf['domain'] : $userConf['host'],
+								   
+								   // Here we need to exchange the host and domain to allow the connexion, Jaxl bug ?
+								   'host' => $userConf['domain'],
+								   'domain' => $userConf['host'],
+								   
 								   'boshHost' => $userConf['boshHost'],
 								   'boshSuffix' => $userConf['boshSuffix'],
 								   'boshPort' => $userConf['boshPort'],
@@ -330,10 +333,11 @@ class Jabber
                 $item = $payload['query']['item'];
                 $contact = $c->get($item['@attributes']['jid']);
 
+				// It's a new contact !
                 if($item['@attributes']['subscription'] == 'remove') {
-                    //$sdb->delete($contact);
                     $evt->runEvent('contactremove', $item['@attributes']['jid']);
                 } 
+                // Contact removed
                 elseif(in_array($item['@attributes']['subscription'], array('from', 'to', 'both'))) {
                     $contact->setContactRosterItem($item);
                     $sdb->save($contact);
@@ -341,6 +345,7 @@ class Jabber
                 }
             }
         }
+        // Pubsub case
         elseif(isset($payload['pubsub']) && !(isset($payload['error']))) {
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
             
@@ -350,10 +355,12 @@ class Jabber
                     if(isset($item['id']))
                         $item = $payload['pubsub']['items']['item'];
 
+					// We've got a new Post !
                     if(isset($item['@attributes']) && isset($item['entry'])) {    
                         $c = new PostHandler();
                         $post = $c->get($item['@attributes']['id']);
                         
+                        // We save it in the database
                         if($xmlns == 'urn:xmpp:microblog:0')
                             $post->setPost($item, $payload['@attributes']['from']);
                         elseif($xmlns == 'urn:xmpp:microblog:0:comments')
@@ -361,22 +368,23 @@ class Jabber
                             
                         $sdb->save($post);  
                         
+                        // And we run the correct event
                         if($xmlns == 'urn:xmpp:microblog:0') {
-                            $evt->runEvent('stream', $payload);
                             $evt->runEvent('post', $item['@attributes']['id']);
+                            $evt->runEvent('stream', $payload);
                         } elseif($xmlns == 'urn:xmpp:microblog:0:comments')
                             $evt->runEvent('comment', $parent);
                     }
                 }
             } elseif(isset($payload['pubsub']['publish']['@attributes']['node'])) {
-                //list($xmlns, $id) = explode("/", $payload['pubsub']['publish']['@attributes']['node']);
-                //$this->getComments(false, $id);
-                $this->getWallItem(false, $payload['pubsub']['publish']['item']['@attributes']['id']);
+                list($xmlns, $id) = explode("/", $payload['pubsub']['publish']['@attributes']['node']);
+                $this->getComments($payload['@attributes']['from'], $id);
             } else {
                 $evt->runEvent('nocomment', $parent);
             }
         }
         elseif(isset($payload['pubsub']) && isset($payload['error'])) {
+			movim_log($payload);
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
             if(isset($payload['error']['item-not-found'])) {
                 $c = new PostHandler();
@@ -385,8 +393,19 @@ class Jabber
                 $sdb->save($post);
                 
                 $evt->runEvent('nostream', $parent);
-            }
-            elseif(isset($payload['error']['feature-not-implemented']))
+            } 
+            elseif(in_array( $payload['error']['@attributes']['code'], array(501, 503)) && $payload['pubsub']['create']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
+
+				$conf = new ConfVar();
+				$sdb->load($conf, array(
+									'login' => $this->getCleanJid()
+										));
+				$conf->set('first', 3);
+				$sdb->save($conf);	
+			}
+            elseif(isset($payload['error']['feature-not-implemented']) ||
+				   isset($payload['error']['not-authorized']) || 
+				   isset($payload['error']['service-unavailable']))
                 $evt->runEvent('nostream');
         }
         elseif(isset($payload['error']) && isset($payload['error']['item-not-found']))
@@ -467,7 +486,6 @@ class Jabber
         foreach($payloads as $payload) {
 
             $payload = $payload['movim'];
-            movim_log($payload);
     		if($payload['@attributes']['type'] == 'subscribe') {
         		$evt->runEvent('subscribe', $payload);
     		}

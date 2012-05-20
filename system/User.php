@@ -47,25 +47,29 @@ class User {
 	{
 		try{
 
-            $data = false;
-            if( !($data = UserConf::getConf($login)) ) {
+            $data = UserConf::getConf($login);
+            if( $data == false ) {
 			    // We check if we wants to create an account
                 header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');
+                exit;
             }
 
-			$this->xmppSession = Jabber::getInstance($login);
-			$this->xmppSession->login($login, $pass);
 
 			// Careful guys, md5 is _not_ secure. SHA1 recommended here.
-			if(sha1($pass) == $data['pass']) {
+			if(sha1($pass) == $data['pass']) {				
                 $sess = Session::start(APP_NAME);
+ 
                 $sess->set('login', $login);
                 $sess->set('pass', $pass);
 
+				$this->xmppSession = Jabber::getInstance($login);
+				$this->xmppSession->login($login, $pass);
+			
 				$this->username = $login;
 				$this->password = $pass;
 			} else {
-				throw new MovimException(t("Wrong password"));
+				header('Location:'.BASE_URI.'index.php?q=disconnect&err=wrongpass');
+                exit;
 			}
 		}
 		catch(MovimException $e){

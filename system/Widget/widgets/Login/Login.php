@@ -40,6 +40,12 @@ class Login extends WidgetBase {
 	                        '.t('Invalid JID').'
 	                    </div> ';
                 break;
+            case 'wrongpass':
+	            $warning = '
+	                    <div class="warning">
+	                        '.t('Wrong password').'
+	                    </div> ';
+                break;
             case 'failauth':
 	            $warning = '
 	                    <div class="warning">

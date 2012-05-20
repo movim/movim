@@ -50,6 +50,7 @@ class Account extends WidgetBase {
 
             // We try to connect to the XMPP Server
 	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
+
 	        if(!$f) {
                 	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
                     RPC::commit();
@@ -238,7 +239,7 @@ class Account extends WidgetBase {
 	            <input
 	                type="password"
 	                onfocus="
-	                    accountAdvices('<p><?php echo t('Make sure your password is safe :'); ?> <ul><li><?php echo t('A capital letter, a digit and a special character are recommended'); ?></li><li><?php echo t('8 characters'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');"
+	                    accountAdvices('<p><?php echo addslashes(t('Make sure your password is safe :')); ?> <ul><li><?php echo addslashes(t('A capital letter, a digit and a special character are recommended')); ?></li><li><?php echo t('8 characters'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');"
 	                onblur="accountAdvices();"
 	                placeholder="<?php echo t("Password"); ?>"
 	                class="big"

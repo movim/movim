@@ -73,13 +73,17 @@ class UserConf {
             ->where(array('login' => $login));
             
         $conf = ConfVar::run_query($query);
-        
-        $arr = $conf[0]->get();
-        
-        if($element != false)
-            return $arr[$element];
-        else
-            return $arr;     
+
+        if($conf != false) {
+			$arr = $conf[0]->get();
+			
+			if($element != false)
+				return $arr[$element];
+			else
+				return $arr;
+		} else {
+			return false;
+		}
     }
     
 }

@@ -307,13 +307,12 @@ label {
     background-image: -ms-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
 }
 #nav .menu {
-    width: 810px;
+    width: 1024px;
     margin: 0px auto;
     list-style-type: none;
     display: block;
     overflow: hidden;
     clear: both;
-    padding-left: 210px;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
     background-position: 20px 7px;
@@ -321,6 +320,12 @@ label {
 #nav .menu li {
     float: left;
 }
+
+#nav .menu li:first-child {
+	width: 210px;
+	opacity: 0;
+}
+
 #nav .menu li a {
     padding: 10px 20px;
     display: block;
