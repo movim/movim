@@ -85,54 +85,47 @@ class Login extends WidgetBase {
 			            </div> ';
 
 		$serverconf = Conf::getServerConf();
-		?>
-		    <div id="loginpage">
-		        <?php echo $browser_comp; 
-		        if(file_exists(BASE_PATH.'install/part1.php')) { ?>
-                    <div class="warning">
-                    <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
-                    </div>
-                <?php
-                }
+        echo $browser_comp; 
 		        ?>
 
-		        <div id="quote">
-                    <blockquote>
-                        We don't need no education<br />
-                        We dont need no thought control<br />
-                        No dark sarcasm in the classroom<br />
-                        Teachers leave them kids alone<br />
-                        Hey! Teachers! Leave them kids alone!<br /><br />
-                        All in all it's just another brick in the wall.<br />
-                        All in all you're just another brick in the wall.<br />
-                    </blockquote>
-                <cite>
-                    <a href="http://en.wikipedia.org/wiki/Roger_Waters">Roger Waters</a>, in
-                    <a href="http://en.wikipedia.org/wiki/Another_Brick_in_the_Wall_%28Part_2%29#Part_2">"Another Brick in the Wall (Part II)"</a> on
-                    <a href="http://en.wikipedia.org/wiki/The_Wall">The Wall</a> by
-                    <a href="http://en.wikipedia.org/wiki/Pink_Floyd">Pink Floyd</a>
-                </cite>
-
-		        </div>
+		    <div id="loginpage">
 			    <form id="connectform" action="index.php" method="post">
 		            <?php echo $warning; ?>
-			        <input type="email" name="login" id="login" autofocus required
-			            placeholder="<?php echo t("My address"); ?>"/><br />
-			        <input type="password" name="pass" id="pass" required
-			            placeholder="<?php echo t("Password"); ?>"/><br />
+                    <div id="cells">
+                        <input type="email" name="login" id="login" autofocus required
+                            placeholder="<?php echo t("My address"); ?>"/>
+                        <input type="password" name="pass" id="pass" required
+                            placeholder="<?php echo t("Password"); ?>"/>
 
-			        <input style="float: right;" onclick="if(document.querySelector('#login').value != '' && document.querySelector('#pass').value != '') {this.value = '<?php echo t('Connecting...');?>'; this.className='button icon loading'}"  type="submit" name="submit" value="<?php echo t("Come in!"); ?>"/>
-			        
-			        <div style="padding-top: 20px; width: 100%; text-align: center; clear: both;">
-			        
+                        <input 
+                            onclick="if(document.querySelector('#login').value != '' && document.querySelector('#pass').value != '') {this.value = '<?php echo t('Connecting...');?>'; this.className='button icon loading'}"  
+                            type="submit" 
+                            name="submit" value="<?php echo t("Come in!"); ?>"/>
+			        </div>
+	
+                    <span>
 			        <?php 
                         $query = ConfVar::query();
                         $contacts = ConfVar::run_query($query);
                         echo t('This server host %s accounts', count($contacts));
-			        ?>
+			        
+                        if(Conf::getServerConfElement("accountCreation") == 1) {
+                    ?> - 
+                            <a href="?q=accountCreate"><?php echo t('Create a new account'); ?></a> - 
+                            <a href="?q=accountAdd"><?php echo t('Link my actual account'); ?></a>
+                    <?php
+                        }
+                    ?>
+                    </span>
 			        </div>
 			    </form>
 			</div>
 	    <?php
+        if(file_exists(BASE_PATH.'install/part1.php')) { ?>
+            <div class="warning">
+            <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
+            </div>
+        <?php
+        }
 	}
 }

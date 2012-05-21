@@ -126,7 +126,7 @@ class Feed extends WidgetCommon {
 					<textarea 
 						id="feedmessagecontent"
 						onfocus="
-                            if(this.value == '<?php echo t('What\\\'s new ?'); ?>') {this.value='';}
+                            if(this.value == '<?php echo t('What\'s new ?'); ?>') {this.value='';}
                             document.querySelector('#feedsubmitrow').style.display = 'block';" 
                         
                     ><?php echo t('What\'s new ?'); ?></textarea>

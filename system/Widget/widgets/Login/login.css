@@ -1,4 +1,76 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: radial-gradient(center
+     45deg, circle closest-corner, #ffffff 0%, #717171 100%);
+    background-image: -moz-radial-gradient(center
+     45deg, ellipse, #6E9EA8 0%, #274950 100%);
+    background-repeat: no-repeat;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
 #loginpage {
+    height: 500px;
+    width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -400px;
+    background-image: url(img/logo.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+    padding-top: 200px;
+}
+
+#loginpage input {
+    background-color: white;
+    font-size: 1.4em;
+    border: 1px solid #274950;
+    box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.4);
+    padding: 0.3em 0.5em;
+    color: #15414A;
+    border-radius: 4px;
+}
+
+#loginpage input[type=submit] {
+    background: -moz-linear-gradient(top, #6E9EA8 0%, #274950 100%);
+    color: white;
+    box-shadow: none;
+}
+
+#connectform {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#connectform span {
+    display: block;
+    color: white;
+    padding: 8px 0px;
+    text-align: center;
+}
+
+#footer {
+    border: 0px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color: white;
+}
+
+.error, .warning {
+    border-radius: 4px;
+    display: block;
+    width: 500px;
+    margin: 0em auto;
+    margin-bottom: 1em;
+}
+/*#loginpage {
     min-height: 400px;
     background-image: url(img/wall.jpg);
     background-repeat: no-repeat;
@@ -68,4 +140,4 @@
     margin: 0px;
     border: none;
 }
-
+*/

@@ -163,7 +163,9 @@ class Jabber
      */
     public function postAuthFailure() {
     	$this->jaxl->shutdown();
-    	throw new MovimException("Login error.");
+    	
+    	throw new MovimException("Login error.", 300);
+
     	$user = new User();
     	$user->desauth();
     }
@@ -252,8 +254,8 @@ class Jabber
 	public function getEmptyBody($payload) {
         $evt = new Event();
         // Oooooh, am I disconnected??
-        if(preg_match('/condition=[\'"]item-not-found[\'"]/', $payload)) {
-            $evt->runEvent('serverdisconnect', null);
+        if(preg_match('/condition=[\'"]item-not-found[\'"]/', $payload) || preg_match('/condition=[\'"]improper-addressing[\'"]/', $payload)) {
+            $this->postAuthFailure();
         } else {
             $evt->runEvent('incomingemptybody', 'ping');
         }
@@ -378,6 +380,10 @@ class Jabber
                 }
             } elseif(isset($payload['pubsub']['publish']['@attributes']['node'])) {
                 list($xmlns, $id) = explode("/", $payload['pubsub']['publish']['@attributes']['node']);
+                if($payload['pubsub']['publish']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
+					movim_log($payload);
+					$this->getWallItem($this->getCleanJid(), $payload['pubsub']['publish']['item']['@attributes']['id']);
+				}
                 $this->getComments($payload['@attributes']['from'], $id);
             } else {
                 $evt->runEvent('nocomment', $parent);
@@ -395,7 +401,6 @@ class Jabber
                 $evt->runEvent('nostream', $parent);
             } 
             elseif(in_array( $payload['error']['@attributes']['code'], array(501, 503)) && $payload['pubsub']['create']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
-
 				$conf = new ConfVar();
 				$sdb->load($conf, array(
 									'login' => $this->getCleanJid()
@@ -465,7 +470,8 @@ class Jabber
                         $evt->runEvent('currentpost', $payload);
                     }
                     
-                    $evt->runEvent('post', $payload['event']['items']['item']['@attributes']['id']);
+                    if($payload['@attributes']['from'] != $this->getCleanJid())
+						$evt->runEvent('post', $payload['event']['items']['item']['@attributes']['id']);
                 }	            
             }
         }

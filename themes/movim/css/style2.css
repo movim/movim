@@ -260,6 +260,16 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 
 .button.merged:hover { border: 1px solid #C6C6C6; }
 
+.button.green {
+	background-color: #40A546;
+	color: white;
+	border-color: #297A2E;
+}
+
+.button.green:hover {
+	box-shadow: 0 1px 1px rgba(0, 120, 0, 0.3);
+}
+
 fieldset {
     border: none;
     margin-top: 20px;
