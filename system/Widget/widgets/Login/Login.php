@@ -76,6 +76,12 @@ class Login extends WidgetBase {
 	                        '.t('Account successfully created').'
 	                    </div> ';
                 break;
+            case 'wrongaccount':
+	            $warning = '
+	                    <div class="error">
+	                        '.t('Movim fail to authenticate. You entered wrong data').'
+	                    </div> ';
+                break;
         }
 
         if(!BROWSER_COMP)

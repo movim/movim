@@ -61,12 +61,12 @@ class User {
  
                 $sess->set('login', $login);
                 $sess->set('pass', $pass);
+                
+                $this->username = $login;
+				$this->password = $pass;
 
 				$this->xmppSession = Jabber::getInstance($login);
 				$this->xmppSession->login($login, $pass);
-			
-				$this->username = $login;
-				$this->password = $pass;
 			} else {
 				header('Location:'.BASE_URI.'index.php?q=disconnect&err=wrongpass');
                 exit;
@@ -74,6 +74,21 @@ class User {
 		}
 		catch(MovimException $e){
 			echo $e->getMessage();
+            
+            // If we've got an error on a new account
+            if($e->getCode() == 300)
+            {
+                global $sdb;
+                $conf = new ConfVar();
+				$sdb->load($conf, array(
+									'login' => $this->getLogin()
+										));
+                if($conf->get('first') == 0)
+                    $conf->set('first', 2);
+				$sdb->save($conf);	
+                header('Location:'.BASE_URI.'index.php?q=disconnect&err=wrongaccount');
+                exit;
+            }
 			return $e->getMessage();
 		}
 	}

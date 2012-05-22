@@ -3,10 +3,12 @@ html {
 }
 
 body {
+    background-color: #274950;
     background-image: radial-gradient(center
-     45deg, circle closest-corner, #ffffff 0%, #717171 100%);
+     45deg, ellipse, #6E9EA8 0%, #274950 100%);
     background-image: -moz-radial-gradient(center
      45deg, ellipse, #6E9EA8 0%, #274950 100%);
+    background-image: -webkit-radial-gradient(50% 50%, ellipse, #6E9EA8, #274950);
     background-repeat: no-repeat;
     height: auto;
     display: block;
@@ -14,16 +16,16 @@ body {
 }
 
 #loginpage {
-    height: 500px;
-    width: 800px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -400px;
+    display: block;
+    position: fixed;
+    height: 100px;
     background-image: url(img/logo.png);
     background-repeat: no-repeat;
     background-position: top center;
+    margin: 0 auto;
+    width: 1024px;
+    top: 50%;
+    margin-top: -150px;
     padding-top: 200px;
 }
 
@@ -39,6 +41,7 @@ body {
 
 #loginpage input[type=submit] {
     background: -moz-linear-gradient(top, #6E9EA8 0%, #274950 100%);
+    background: -webkit-linear-gradient(top, #6E9EA8 0%, #274950 100%);    
     color: white;
     box-shadow: none;
 }
