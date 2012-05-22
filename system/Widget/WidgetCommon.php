@@ -35,7 +35,7 @@ class WidgetCommon extends WidgetBase {
                     <div class="content">
                         '.prepareString($message->getData('content')). '</div>';
                         
-            $attachments = AttachmentHandler::getAttachment($message->getData('nodeid'));
+            $attachments = AttachmentHandler::getAttachment($user->getLogin(), $message->getData('nodeid'));
             if($attachments) {
                 $tmp .= '<div class="attachment">';
                 foreach($attachments as $attachment)

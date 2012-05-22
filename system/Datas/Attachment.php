@@ -37,9 +37,9 @@ class Attachment extends DatajarBase {
 }
 
 class AttachmentHandler {
-    static function getAttachment($node) {
+    static function getAttachment($key, $node) {
         global $sdb;
-        $attachment = $sdb->select('Attachment', array('node'=> $node));
+        $attachment = $sdb->select('Attachment', array('key' => $key, 'node'=> $node));
         if($attachment != false)
             return $attachment;
         else
