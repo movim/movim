@@ -31,6 +31,7 @@ body {
     margin-top: 35px;
     color: #4E4E4E;
     height: 100%;
+    background-color: #DDD;
 }
 
 .clear {
@@ -43,8 +44,11 @@ a:link, a:visited {
 }
 
 #content {
-    width: 1024px;
+    width: 800px;
     margin: 0 auto;
+    padding-right: 240px;
+    overflow: hidden;
+    background: #555;
 }
 
 .protect {
@@ -128,27 +132,42 @@ ul.clean li {
 
 #left
 {
-    width: 210px;
-    float: left;
+    width: 185px;
     height: 100%;
-    padding-top: 15px;
+    padding-top: 5px;
+    background-color: #EFEFEF;
+    padding-left: 5px;
+    float: left;
 }
 
 #center
 {
-    overflow: hidden;
     padding: 10px 0px 10px;
     min-height: 600px;
     border-left: 1px solid #CCC;
+    background-color: #FFF;
+    width: 610px;
+    float: left;
 }
 
 #right
 {
-    display: block;
+    /*display: block;
     float: right;
     overflow: auto;
     width: 190px;
 	padding-top: 15px;
+    background-color: #FFF;*/
+    display: block;
+    position: fixed;
+    top: 32px;
+    right: 0px;
+    width: 230px;
+    height: 97%;
+    overflow: scroll;
+    background-color: #EFEFEF;
+    padding: 5px;
+    border-left: 1px solid #EEE;
 }
 
 #footer {
@@ -305,11 +324,11 @@ label {
     width: 100%;
     background-color: #444;
     min-height: 34px;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     z-index: 1;
-
+    
     background-image: linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
     background-image: -o-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
     background-image: -moz-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
