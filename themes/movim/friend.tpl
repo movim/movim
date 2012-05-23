@@ -6,12 +6,12 @@
 <?php $this->widget('Chat');?>
     
 <div id="left">
-    <?php $this->widget('Profile');?>
-    <?php $this->widget('Notifs');?>
-    <?php $this->widget('Roster');?>
+    <?php /*$this->widget('Profile');*/?>
+    <?php $this->widget('ContactSummary');?>
 </div>
 <div id="right">
-    <?php $this->widget('ContactSummary');?>
+    <?php $this->widget('Notifs');?>
+    <?php $this->widget('Roster');?>
 </div>
 <div id="center">
     <?php $this->widget('Tabs');?>

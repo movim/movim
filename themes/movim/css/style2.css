@@ -27,11 +27,19 @@ time, mark, audio, video {
 body {
     font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
     font-size: 13px;
-    margin: 0 auto;
-    margin-top: 35px;
+    /*margin: 0 auto;
+    margin-top: 35px;*/
     color: #4E4E4E;
-    height: 100%;
-    background-color: #DDD;
+    background-color: #274950;
+    background-image: radial-gradient(center
+     45deg, ellipse, #6E9EA8 0%, #274950 100%);
+    background-image: -moz-radial-gradient(center
+     45deg, ellipse, #6E9EA8 0%, #274950 100%);
+    background-image: -webkit-radial-gradient(50% 50%, ellipse, #6E9EA8, #274950);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    margin: 0 auto;
+    width: 1000px;
 }
 
 .clear {
@@ -43,18 +51,11 @@ a:link, a:visited {
     text-decoration: none ;
 }
 
-#content {
-    width: 800px;
-    margin: 0 auto;
-    padding-right: 240px;
-    overflow: hidden;
-    background: #555;
-}
 
 .protect {
     background-size: 28px;
     background-repeat: no-repeat;
-    background-position: 100% 0px;
+    background-position: 98% 0px;
 }
 
 .protect.white { background-image: url(../img/protect/white.svg); }
@@ -73,7 +74,7 @@ hr {
 }
 
 h1 {
-    color: #1F3C48;
+    color: #183C67;
     padding: 10px 20px 0px; 
     font-size: 1.5em;
 }
@@ -130,62 +131,67 @@ ul.clean li {
     height: 120px;
 }
 
+#content {
+    width: 800px;
+    margin-right: 200px;
+    background-color: #EEE;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+}
+
+
 #left
 {
-    width: 185px;
-    height: 100%;
-    padding-top: 5px;
-    background-color: #EFEFEF;
-    padding-left: 5px;
     float: left;
+    width: 170px;
+    padding-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #center
 {
-    padding: 10px 0px 10px;
-    min-height: 600px;
-    border-left: 1px solid #CCC;
-    background-color: #FFF;
-    width: 610px;
     float: left;
+    width: 599px;
+    background-color: white;
+    border-left: 1px solid #DDD;
+    padding-top: 40px;
+    min-height: 1000px;
+    overflow: hidden;
 }
 
 #right
 {
-    /*display: block;
-    float: right;
-    overflow: auto;
-    width: 190px;
-	padding-top: 15px;
-    background-color: #FFF;*/
     display: block;
+    width: 194px;
+    background-color: green;
     position: fixed;
-    top: 32px;
-    right: 0px;
-    width: 230px;
-    height: 97%;
-    overflow: scroll;
+    top: 0px;
+    right: -20px;
+    border-left: 1px solid #DDD;
+    padding-top: 40px;
+    padding-left: 5px;
+    padding-right: 10px;
+    height: 100%;
     background-color: #EFEFEF;
-    padding: 5px;
-    border-left: 1px solid #EEE;
+    overflow: scroll;
 }
 
-#footer {
-    border-top: 1px solid #CCC;
-    padding: 0.5em;
-    text-align: right;
+#footer 
+{
+    border-top: 1px solid #DDD;
     clear: both;
-    color: gray;
+    padding: 5px 10px;
+    text-align: right;
+    color: #666;
 }
 
 /* Widgets */
 
 span#widgettitle {
     font-weight: bold;
-    border-top: 1px solid #DDD;
     display: block;
     padding: 3px;
-    background-color: #FDFDFD;
     text-align: center;
     margin-bottom: 4px;
 }
@@ -211,7 +217,7 @@ input, select, textarea, .button {
     overflow: hidden;
     padding: 5px;
     color: #333;
-    background-color: transparent;
+    background-color: white;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -329,11 +335,11 @@ label {
     left: 0px;
     z-index: 1;
     
-    background-image: linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
+    /*background-image: linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
     background-image: -o-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
     background-image: -moz-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
     background-image: -webkit-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
-    background-image: -ms-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
+    background-image: -ms-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);*/
 }
 #nav .menu {
     width: 1024px;
@@ -344,7 +350,7 @@ label {
     clear: both;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
-    background-position: 20px 7px;
+    background-position: 30px 7px;
 }
 #nav .menu li {
     float: left;

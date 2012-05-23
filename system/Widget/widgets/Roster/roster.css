@@ -1,3 +1,7 @@
+#roster {
+    margin-bottom: 60px;
+}
+
 #roster ul {
     list-style-type: none;
     font-size: 13px;
@@ -61,7 +65,7 @@
 #roster ul li a {
     display: block;
     white-space: nowrap;
-    width: 170px;
+    width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -93,4 +97,5 @@
     padding: 5px 0px;
     font-size: 14px;
     font-weight: bold;
+    text-align: center;
 }

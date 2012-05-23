@@ -27,10 +27,12 @@
     border: 1px solid transparent;
     text-align: center;
     width: 80%;
+    background-color: transparent;
 }
 
 #profile #status:hover {
     border-color: #DDD;
+    background-color: white;
 }
 
 #profile .presence_button.online { background-image: url(img/online.png); }
