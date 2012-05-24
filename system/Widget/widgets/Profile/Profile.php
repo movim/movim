@@ -28,6 +28,8 @@ class Profile extends WidgetBase
         $this->addcss('profile.css');
         $this->addjs('profile.js');
         $this->registerEvent('myvcard', 'onMyVcardReceived');
+        
+        $this->cached = true;
     }
     
     function onMyVcardReceived($vcard = false)

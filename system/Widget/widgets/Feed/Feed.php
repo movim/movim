@@ -10,6 +10,8 @@ class Feed extends WidgetCommon {
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
 		$this->registerEvent('stream', 'onStream');
+        
+        $this->cached = true;
     }
     
     function onPost($id) {

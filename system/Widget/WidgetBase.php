@@ -26,6 +26,8 @@ class WidgetBase
     protected $user;
 	protected $name;
 	protected $events;
+    
+    protected $cached;
 
 	/**
 	 * Initialises Widget stuff.
@@ -56,6 +58,9 @@ class WidgetBase
 				$this->ajax->defun(get_class($this), $method->name, $params);
 			}
 		}
+        
+        $this->name = get_class($this);
+        $this->cached = false;
 
 		$this->WidgetLoad();
 	}
@@ -92,6 +97,54 @@ class WidgetBase
 
         return $path;
 	}
+    
+    /**
+     * Set the cache element to true to cache the widget at the end of the PHP exec
+     */
+    public function setCacheCall()
+    {
+        if($this->cached) {
+            $widgets = WidgetWrapper::getInstance(false);
+            $widgets->set_cached_widget($this->name);
+        }
+    }
+    
+    public function saveCache() 
+    {
+        $widgets = WidgetWrapper::getInstance(false);
+        if($widgets->get_cached_widget($this->name) == true) {    
+            $fp = fopen(BASE_PATH."/cache/".md5($this->name.$this->user->getLogin()).".thtml", "w");
+            ob_start();
+            $this->build();
+            $out = ob_get_clean();
+            fwrite($fp, $out);
+            fclose($fp);
+        }
+    }
+    
+    public function getCache()
+    {
+        $file = BASE_PATH."/cache/".md5($this->name.$this->user->getLogin()).".thtml";
+        if(file_exists($file)) {
+            $fp = fopen($file, "r");
+            echo fread($fp, filesize($file));
+            fclose($fp);
+        }
+        else {
+            $widgets = WidgetWrapper::getInstance(false);
+            if($this->cached == true) {  
+                $fp = fopen($file, "w");
+                ob_start();
+                $this->build();
+                $out = ob_get_clean();
+                fwrite($fp, $out);
+                fclose($fp);
+                echo $out;
+            }
+            else
+                $this->build();
+        }
+    }
 
     /**
      * Generates and print an ajax call.
@@ -181,8 +234,10 @@ class WidgetBase
 	 */
 	public function runEvents($proto)
 	{
-		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
 
+		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
+            // If a new event came to the widget, we update the cache
+            $this->setCacheCall();
             $returns = array();
 
 			foreach($this->events[$proto['type']] as $handler) {

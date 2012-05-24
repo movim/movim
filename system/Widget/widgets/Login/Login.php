@@ -20,7 +20,8 @@
  
 class Login extends WidgetBase {
     
-    function __construct() {
+    function WidgetLoad()
+    {
         $this->addcss('login.css');
     }
     

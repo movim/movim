@@ -95,8 +95,8 @@ function make_xml($stuff)
 function perform_install()
 {
   // Creating the folders.
-  if(!test_dir('../user') && !@mkdir('../user')) {
-    echo t("Couldn't create directory '%s'.", 'user');
+  if(!test_dir('../cache') && !@mkdir('../cache')) {
+    echo t("Couldn't create directory '%s'.", 'cache');
     return false;
   }
   if(!test_dir('../log') && !@mkdir('../log')) {

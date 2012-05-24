@@ -4,10 +4,6 @@
 <?php $this->widget('Logout');?>
 <?php $this->widget('Chat');?>
 
-
-
-
-
 <div id="left">
   <?php $this->widget('Profile');?>
 </div>

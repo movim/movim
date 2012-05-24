@@ -93,6 +93,11 @@ class RPC
 			$user = new User();
 			$xmppSession = Jabber::getInstance($user->getLogin());
 			$xmppSession->pingServer();
+            
+            // We cache the widgets
+            $widgets = WidgetWrapper::getInstance(false);
+            foreach($widgets->get_loaded_widgets() as $widget_name)
+                $widgets->run_widget($widget_name, 'saveCache');
 		} else {
             $xml = file_get_contents('php://input');
 			$request = simplexml_load_string($xml);
@@ -125,7 +130,7 @@ class RPC
                     }
                 }
             }
-
+            
             $widgets = WidgetWrapper::getInstance(false);
             $widgets->run_widget($widget_name, (string)$request['name'], $params);
 		}

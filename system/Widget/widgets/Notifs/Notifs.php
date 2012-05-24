@@ -27,6 +27,8 @@ class Notifs extends WidgetBase
 
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('subscribe', 'onSubscribe');
+        
+        $this->cached = true;
     }
     
     function onMessage($message) {

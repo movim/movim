@@ -28,6 +28,8 @@ class Logout extends WidgetBase
 		$this->registerEvent('postdisconnected', 'onPostDisconnect');
         $this->registerEvent('serverdisconnect', 'onPostDisconnect'); // When you're kicked out
         $this->registerEvent('mypresence', 'onMyPresence');
+        
+        $this->cached = true;
     }
     
     function onMyPresence()

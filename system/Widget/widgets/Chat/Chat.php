@@ -27,6 +27,8 @@ class Chat extends WidgetBase
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('composing', 'onComposing');
 		$this->registerEvent('presence', 'onPresence');
+        
+        $this->cached = false;
     }
     
     function onPresence($presence)
@@ -65,9 +67,6 @@ class Chat extends WidgetBase
             $jid = $message->getData('from');
     
         global $sdb;
-
-        movim_log("GNNAAAA".$jid);
-
         $contact = new Contact();
         $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
         

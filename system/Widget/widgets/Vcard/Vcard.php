@@ -25,6 +25,8 @@ class Vcard extends WidgetBase
 		$this->registerEvent('myvcard', 'onMyVcardReceived');
     	$this->addcss('vcard.css');
     	$this->addjs('vcard.js');
+        
+        $this->cached = true;
     }
     
     function onMyVcardReceived()

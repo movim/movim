@@ -31,6 +31,8 @@ class Roster extends WidgetBase
         $this->registerEvent('contactremove', 'onRoster');
 		$this->registerEvent('presence', 'onPresence');
 		$this->registerEvent('vcard', 'onVcard');
+        
+        $this->cached = true;
     }
     
 	function onPresence($presence)

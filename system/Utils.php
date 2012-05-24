@@ -29,6 +29,15 @@ function sprintln($string)
     return call_user_func_array('sprintf', $args) . PHP_EOL;
 }
 
+/*
+ * Return the current microtime
+ */
+function getTime()
+{
+    $a = explode (' ',microtime());
+    return(double) $a[0] + $a[1];
+}
+
 /**
  * Prepare the string (add the a to the links and show the smileys)
  *

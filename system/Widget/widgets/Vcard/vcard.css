@@ -18,6 +18,7 @@
 #vcard input[type=text], #vcard input[type=url], #vcard textarea {
     border: 1px solid transparent;
     margin: -5px;
+    background-color: transparent;
 }
 
 #vcard input[type=text]:hover, #vcard input[type=url]:hover,  #vcard textarea:hover {
@@ -35,7 +36,7 @@
 
 #vcard .element span {
     font-weight: bold;
-    width: 170px;
+    width: 160px;
     display: block;
     float: left;
     padding-right: 2em;

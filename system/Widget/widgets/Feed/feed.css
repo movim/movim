@@ -31,15 +31,6 @@
     text-align: left;
     resize: vertical;
     padding: 0px;
-    -webkit-transition-property: height;
-    -webkit-transition-duration: 0.5s;
-    -webkit-transition-timing-function: ease-out;
-    transition-property: height;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-out;
-    -moz-transition-property: height;
-    -moz-transition-duration: 0.5s;
-    -moz-transition-timing-function: ease-out;
 }
 
 #feed #feedsubmitrow {

@@ -27,5 +27,4 @@ $polling = true;
 
 $rpc = new RPC();
 $rpc->handle();
-
 ?>
