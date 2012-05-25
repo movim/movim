@@ -117,7 +117,7 @@ class WidgetBase
             ob_start();
             $this->build();
             $out = ob_get_clean();
-            fwrite($fp, $out);
+            fwrite($fp, trim(preg_replace( '/\s+/', ' ',$out)));
             fclose($fp);
         }
     }
@@ -137,7 +137,7 @@ class WidgetBase
                 ob_start();
                 $this->build();
                 $out = ob_get_clean();
-                fwrite($fp, $out);
+                fwrite($fp, trim(preg_replace( '/\s+/', ' ',$out)));
                 fclose($fp);
                 echo $out;
             }

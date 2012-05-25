@@ -45,6 +45,15 @@ class WidgetWrapper
         if(is_array($widgets)) {
             $this->loaded_widgets_old = $widgets;
         }
+        
+        $this->register_widgets = array();
+        $widgets_dir = scandir(LIB_PATH ."Widget/widgets/");
+        foreach($widgets_dir as $widget_dir) {
+            if(is_dir(LIB_PATH ."Widget/widgets/".$widget_dir) && 
+                $widget_dir != '..' &&
+                $widget_dir != '.')
+               array_push($this->register_widgets, $widget_dir);         
+        }
     }
 
     static function getInstance($register = true)
@@ -52,6 +61,7 @@ class WidgetWrapper
         if(!is_object(self::$instance)) {
             self::$instance = new WidgetWrapper($register);
         }
+        //movim_log(self::$instance);
         return self::$instance;
     }
 
@@ -88,6 +98,11 @@ class WidgetWrapper
         } else {
             return $this->loaded_widgets_old;
         }
+    }
+    
+    function get_registered_widgets()
+    {
+        return $this->register_widgets;
     }
     
     function set_cached_widget($widget_name)
@@ -143,7 +158,7 @@ class WidgetWrapper
      */
     function run_widget($widget_name, $method, array $params = NULL)
     {
-        if($this->register_widgets &&
+        if(//$this->register_widgets &&
            !in_array($widget_name, $this->loaded_widgets)) {
             $this->loaded_widgets[] = $widget_name;
         }

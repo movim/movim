@@ -65,7 +65,7 @@
 #roster ul li a {
     display: block;
     white-space: nowrap;
-    width: 150px;
+    width: 145px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
