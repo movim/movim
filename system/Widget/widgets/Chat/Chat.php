@@ -234,12 +234,12 @@ class Chat extends WidgetBase
                                 array('to' => $contact->getData('jid') , '|from' => $contact->getData('jid')) 
                         )
                     )
-                  ->orderby('published', false)
+                  ->orderby('published', true)
                   ->limit(0, 20);
         $messages = Message::run_query($query);
 
-        if($messages != false) {
-        
+        if(!empty($messages)) {
+            $messages = array_reverse($messages);
             $day = '';
             foreach($messages as $m) {
                 $messageshtml .= $this->prepareMessage($m);

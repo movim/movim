@@ -119,7 +119,7 @@ class Login extends WidgetBase {
                         if(Conf::getServerConfElement("accountCreation") == 1) {
                     ?> - 
                             <a href="?q=accountCreate"><?php echo t('Create a new account'); ?></a> - 
-                            <a href="?q=accountAdd"><?php echo t('Link my actual account'); ?></a>
+                            <a href="?q=accountAdd"><?php echo t('Link my current account'); ?></a>
                     <?php
                         }
                     ?>
