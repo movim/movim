@@ -1,4 +1,4 @@
-# Danish translations for Movim  package.
+# Romanian translations for Movim  package.
 # This file is distributed under the same license as the Movim  package.
 # This file was translated from CodingTeam at <http://codingteam.net/>.
 msgid ""
@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-27 21:41+0200\n"
-"PO-Revision-Date: 2011-10-26 21:31+0000\n"
+"PO-Revision-Date: 2011-10-26 21:35+0000\n"
 "Last-Translator: edhelas <edhelas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-msgstr "PHP version passer ikke. Movim kræver PHP 5.3 eller højere."
+msgstr "Versiune de PHP nepotrivita. Movim necesita PHP 5.3 sau mai mare."
 
 #: ../install/index.php:85
 msgid "Actual version : "
@@ -31,7 +31,7 @@ msgstr ""
 #: ../install/index.php:115
 #, php-format
 msgid "Movim requires the %s extension."
-msgstr "Movim kræver %s udvidelsen."
+msgstr "Movin necesita extensia %s."
 
 #: ../install/index.php:90
 #, php-format
@@ -45,7 +45,7 @@ msgstr ""
 
 #: ../install/index.php:101
 msgid "Movim's folder must be writable."
-msgstr "Movim's mapper skal være skrivbare."
+msgstr "Directorul Movin trebuie sa aibe permisiuni de scriere."
 
 #: ../install/index.php:102
 msgid "Enable read and write rights on Movim's root folder"
@@ -68,12 +68,12 @@ msgstr ""
 #: ../install/index.php:224 ../install/index.php:228 ../install/index.php:232
 #, php-format
 msgid "Couldn't create directory '%s'."
-msgstr "Kunne ikke oprette bibliotek '%s'."
+msgstr "Directorul '%s' nu a putut fi creat."
 
 #: ../install/index.php:261
 #, php-format
 msgid "Couldn't create configuration file '%s'."
-msgstr "Kunne ikke oprette konfigurationfil '%s'."
+msgstr "Fisierul de configuratie '%s' nu poate fi creat"
 
 #: ../install/index.php:283
 #, php-format
@@ -98,19 +98,19 @@ msgstr ""
 
 #: ../install/part1.php:41 ../install/part1.php:56 ../install/part2.php:15
 msgid "Movim Installer"
-msgstr "Movim installeringspakke"
+msgstr "Instalator Movim"
 
 #: ../install/part1.php:41
 msgid "Compatibility Test"
-msgstr "Kompabilitetstest"
+msgstr "Test de compatibilitate"
 
 #: ../install/part1.php:42
 msgid ""
 "The following requirements were not met. Please make sure they are all "
 "satisfied in order to install Movim."
 msgstr ""
-"De følgende krav blev ikke opfyldt. Sikre dig venligst de alle er dækket for "
-"at kunne installere Movim."
+"Urmatoarele cerinte nu sunt satisfacute. Asigura-te ca sunt satisfacute "
+"toate inainte sa instalezi Movim."
 
 #: ../install/part1.php:52
 msgid ""
@@ -179,25 +179,25 @@ msgstr ""
 #: ../system/Conf.php:38
 #, php-format
 msgid "Cannot load element value'%s'"
-msgstr "Kan ikke indlæse element værdi '%s'"
+msgstr ""
 
 #: ../system/Conf.php:49
 #, php-format
 msgid "Cannot load file '%s'"
-msgstr "Kan ikke indlæse fil '%s'"
+msgstr "Fisierul '%s' nu poate fi incarcat."
 
 #: ../system/Jabber.php:109
 msgid "User not logged in."
-msgstr "Bruger er ikke logget ind."
+msgstr "Utilizatorul nu este logat."
 
 #: ../system/Jabber.php:113
 msgid "JID not provided."
-msgstr "JID ikke givet."
+msgstr ""
 
 #: ../system/Jabber.php:137
 #, php-format
 msgid "jid '%s' is incorrect"
-msgstr "jid '%s' er ikke korrekt"
+msgstr ""
 
 #: ../system/Jabber.php:147 ../system/Widget/widgets/Login/Login.php:108
 msgid "Connecting..."
@@ -206,12 +206,12 @@ msgstr ""
 #: ../system/Logger.php:27
 #, php-format
 msgid "Cannot open log file '%s'"
-msgstr "Kan ikke åbne log fil '%s'"
+msgstr "Fisierul jurnal %s un a putut fi deschis."
 
 #: ../system/MovimException.php:15
 #, php-format
 msgid "Error: %s"
-msgstr "Fejl: '%s'"
+msgstr "Eroare: %s"
 
 #: ../system/Utils.php:123
 msgid "Monday"
@@ -353,7 +353,7 @@ msgstr ""
 #: ../system/Controller/ControllerMain.php:40
 #, php-format
 msgid "%s - Welcome to Movim"
-msgstr "%s - Velkommen til Movim"
+msgstr "%s - Bine ati venit pe MOVIM"
 
 #: ../system/Controller/ControllerMain.php:41
 #: ../system/Controller/ControllerMain.php:75
@@ -364,7 +364,7 @@ msgstr "%s - Velkommen til Movim"
 #: ../system/Controller/ControllerMain.php:186
 #: ../system/Controller/ControllerMain.php:215
 msgid "Home"
-msgstr "Start"
+msgstr "Pagina Principala"
 
 #: ../system/Controller/ControllerMain.php:42
 #: ../system/Controller/ControllerMain.php:78
@@ -381,7 +381,7 @@ msgstr "Profil"
 #: ../system/Controller/ControllerMain.php:121
 #: ../system/Controller/ControllerMain.php:217
 msgid "Configuration"
-msgstr "Konfiguration"
+msgstr "Configurare"
 
 #: ../system/Controller/ControllerMain.php:44
 #: ../system/Controller/ControllerMain.php:80
@@ -394,7 +394,7 @@ msgstr ""
 #: ../system/Controller/ControllerMain.php:98
 #, php-format
 msgid "%s - Configuration"
-msgstr "%s - Konfiguration"
+msgstr "%s - Configurare"
 
 #: ../system/Controller/ControllerMain.php:118
 #, php-format
@@ -404,12 +404,12 @@ msgstr ""
 #: ../system/Controller/ControllerMain.php:150
 #, php-format
 msgid "%s - Account Creation"
-msgstr "%s - Konto oprettelse"
+msgstr "%s - Cont nou"
 
 #: ../system/Controller/ControllerMain.php:152
 #: ../system/Controller/ControllerMain.php:168
 msgid "Account Creation"
-msgstr "Konto oprettelse"
+msgstr "Cont nou"
 
 #: ../system/Controller/ControllerMain.php:166
 #, php-format
@@ -419,7 +419,7 @@ msgstr ""
 #: ../system/Controller/ControllerMain.php:184
 #, php-format
 msgid "%s - Login to Movim"
-msgstr "%s - Log Ind til Movim"
+msgstr "%s - Conectare pe Movim"
 
 #: ../system/Controller/ControllerMain.php:205
 #, php-format
@@ -482,7 +482,7 @@ msgstr ""
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:150
 #: ../system/Widget/widgets/Login/Login.php:103
 msgid "My address"
-msgstr "Min adresse"
+msgstr "Adresa mea"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "Make sure your password is safe :"
@@ -504,7 +504,7 @@ msgstr ""
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:159
 #: ../system/Widget/widgets/Login/Login.php:105
 msgid "Password"
-msgstr "Adgangskode"
+msgstr "Parola"
 
 #: ../system/Widget/widgets/Account/Account.php:259
 msgid "Same here !"
@@ -540,7 +540,7 @@ msgstr ""
 #: ../system/Widget/widgets/Chat/Chat.php:41
 #: ../system/Widget/widgets/Logout/Logout.php:83
 msgid "Away"
-msgstr "Ikke tilstede"
+msgstr "Plecat"
 
 #: ../system/Widget/widgets/Chat/Chat.php:42
 #: ../system/Widget/widgets/Logout/Logout.php:84
@@ -562,23 +562,23 @@ msgstr ""
 
 #: ../system/Widget/widgets/Config/Config.php:45
 msgid "Language"
-msgstr "Sprog"
+msgstr "Limba"
 
 #: ../system/Widget/widgets/Config/Config.php:59
 #: ../system/Widget/widgets/Feed/Feed.php:144
 #: ../system/Widget/widgets/Feed/Feed.php:155
 #: ../system/Widget/widgets/Vcard/Vcard.php:179
 msgid "Submit"
-msgstr "Indsend"
+msgstr "Inregistrare"
 
 #: ../system/Widget/widgets/Config/Config.php:60
 #: ../system/Widget/widgets/Vcard/Vcard.php:180
 msgid "Reset"
-msgstr "Nulstil"
+msgstr "Reinitializeaza"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:61
 msgid "Remove this contact"
-msgstr "Fjern denne kontakt"
+msgstr "Sterge acest contact"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:75
 msgid "No"
@@ -590,23 +590,23 @@ msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:100
 msgid "Chat"
-msgstr "Samtale"
+msgstr "Chat"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:110
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:63
 #: ../system/Widget/widgets/Vcard/Vcard.php:75
 msgid "General Informations"
-msgstr "Generelle informationer"
+msgstr "Informatii generale"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:112
 #: ../system/Widget/widgets/Vcard/Vcard.php:77
 msgid "Name"
-msgstr "Navn"
+msgstr "Nume"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:113
 #: ../system/Widget/widgets/Vcard/Vcard.php:80
 msgid "Nickname"
-msgstr "Kaldenavn"
+msgstr "Porecla"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:115
 #: ../system/Widget/widgets/Vcard/Vcard.php:124
@@ -621,7 +621,7 @@ msgstr ""
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:120
 #: ../system/Widget/widgets/Vcard/Vcard.php:84
 msgid "Date of Birth"
-msgstr "Fødselsdag"
+msgstr "Data nasterii"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:121
 msgid "Address"
@@ -630,12 +630,12 @@ msgstr ""
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:125
 #: ../system/Widget/widgets/Vcard/Vcard.php:147
 msgid "Website"
-msgstr "Internetside"
+msgstr "Website"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:126
 #: ../system/Widget/widgets/Vcard/Vcard.php:152
 msgid "Avatar"
-msgstr "Profilbillede"
+msgstr "Avatar"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:129
 #: ../system/Widget/widgets/Vcard/Vcard.php:160
@@ -685,7 +685,7 @@ msgstr ""
 #: ../system/Widget/widgets/Feed/Feed.php:108
 #: ../system/Widget/widgets/Wall/Wall.php:109
 msgid "Feed"
-msgstr "Kilde"
+msgstr ""
 
 #: ../system/Widget/widgets/Feed/Feed.php:122
 msgid ""
@@ -792,7 +792,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:47
 msgid "Wrong password"
-msgstr "Forkert adgangskode"
+msgstr "Parola gresita"
 
 #: ../system/Widget/widgets/Login/Login.php:53
 msgid "The XMPP authentification failed"
@@ -824,7 +824,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:110
 msgid "Come in!"
-msgstr "Kom Ind!"
+msgstr "Intrati!"
 
 #: ../system/Widget/widgets/Login/Login.php:117
 #, php-format
@@ -837,28 +837,28 @@ msgstr ""
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
-msgstr "Fejlsøgningskonsol"
+msgstr "Consola de debug"
 
 #: ../system/Widget/widgets/Logout/Logout.php:86
 msgid "Logout"
-msgstr "Log ud"
+msgstr "Delogare"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:44
 msgid "wants to talk with you"
-msgstr "ønsker at snakke med dig"
+msgstr "vrea sa vorbeasca cu tine"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:56
 msgid "Accept"
-msgstr "Godkend"
+msgstr "Accepta"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:62
 #: ../system/Widget/widgets/Notifs/Notifs.php:156
 msgid "Validate"
-msgstr "Gyldighedskontrol"
+msgstr "Valideaza"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:68
 msgid "Decline"
-msgstr "Afvis"
+msgstr "Respinge"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:120
 #, php-format
@@ -922,13 +922,10 @@ msgstr ""
 
 #: ../system/Widget/widgets/Wall/Wall.php:135
 msgid "Loading the contact feed ..."
-msgstr "Indlæse kontakt kilde..."
+msgstr ""
 
 #~ msgid "MOVIM - Test Client"
-#~ msgstr "MOVIM - Test klient"
+#~ msgstr "MOVIM - Test Client"
 
 #~ msgid "Add a contact"
-#~ msgstr "Tilføj en kontakt"
-
-#~ msgid "Get the comments"
-#~ msgstr "Hent kommentarer"
+#~ msgstr "Adauga un contact"

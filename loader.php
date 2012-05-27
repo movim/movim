@@ -53,7 +53,7 @@ define('JAXL_LOG_EVENT', true);
 define('JAXL_LOG_LEVEL', 4);
 define('JAXL_LOG_ROTATE', false);
 
-define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
+//define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
 
 // We set the default timezone to the server timezone
 date_default_timezone_set('UTC');
@@ -103,10 +103,10 @@ switch($browser) {
 
 define('BROWSER_COMP', $compatible);
 
-datajar_load_driver(Conf::getServerConfElement('datajarDriver'));
-DatajarEngineWrapper::setdriver(Conf::getServerConfElement('datajarDriver'));
+datajar_load_driver(Conf::getServerConfElement('storageDriver'));
+DatajarEngineWrapper::setdriver(Conf::getServerConfElement('storageDriver'));
 
-$sdb = new DatajarEngineWrapper(Conf::getServerConfElement('datajarConnection'));
+$sdb = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
 DatajarBase::bind($sdb);
 
 // Starting session.

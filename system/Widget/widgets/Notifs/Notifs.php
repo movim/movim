@@ -76,6 +76,7 @@ class Notifs extends WidgetBase
     }
     
     function ajaxSubscribed($jid) {
+        movim_log($jid);
         $this->xmpp->subscribedContact($jid);
     }
     

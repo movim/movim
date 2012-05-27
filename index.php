@@ -47,7 +47,7 @@ ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
 // If the configuration doesn't exist, run the installer.
 if(!file_exists("config/conf.xml")) {
-    header('Location:install/part1.php'); exit;
+    header('Location: install/'); exit;
 } else {
     // Run
     require('init.php');

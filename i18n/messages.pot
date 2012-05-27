@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-27 15:21+0200\n"
+"POT-Creation-Date: 2012-05-27 21:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,112 +17,160 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../install/part1.php:59
+#: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 msgstr ""
 
-#: ../install/part1.php:59
+#: ../install/index.php:85
 msgid "Actual version : "
 msgstr ""
 
-#: ../install/part1.php:60
+#: ../install/index.php:86
 msgid "Update your PHP version or contact your server administrator"
 msgstr ""
 
-#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:71
-#: ../install/part1.php:89
+#: ../install/index.php:89 ../install/index.php:93 ../install/index.php:97
+#: ../install/index.php:115
 #, php-format
 msgid "Movim requires the %s extension."
 msgstr ""
 
-#: ../install/part1.php:64
+#: ../install/index.php:90
 #, php-format
 msgid "Install %s and %s packages"
 msgstr ""
 
-#: ../install/part1.php:68 ../install/part1.php:72
+#: ../install/index.php:94 ../install/index.php:98
 #, php-format
 msgid "Install the %s package"
 msgstr ""
 
-#: ../install/part1.php:75
+#: ../install/index.php:101
 msgid "Movim's folder must be writable."
 msgstr ""
 
-#: ../install/part1.php:76
+#: ../install/index.php:102
 msgid "Enable read and write rights on Movim's root folder"
 msgstr ""
 
-#: ../install/part1.php:88
+#: ../install/index.php:114
 msgid "or"
 msgstr ""
 
-#: ../install/part1.php:140 ../install/part1.php:150 ../install/part2.php:195
+#: ../install/index.php:169
+#, php-format
+msgid "Bosh connection failed with error `%s'"
+msgstr ""
+
+#: ../install/index.php:178
+#, php-format
+msgid "XMPP connection through Bosh failed with error `%s'"
+msgstr ""
+
+#: ../install/index.php:224 ../install/index.php:228 ../install/index.php:232
+#, php-format
+msgid "Couldn't create directory '%s'."
+msgstr ""
+
+#: ../install/index.php:261
+#, php-format
+msgid "Couldn't create configuration file '%s'."
+msgstr ""
+
+#: ../install/index.php:283
+#, php-format
+msgid "Database connection failed with error `%s'"
+msgstr ""
+
+#: ../install/part1.php:29
+msgid "Thank you for downloading Movim!"
+msgstr ""
+
+#: ../install/part1.php:30
+msgid "Before you enjoy your social network, a few adjustements are required."
+msgstr ""
+
+#: ../install/part1.php:31
+msgid ""
+"Keep in mind that Movim is still under development and will handle many "
+"personal details. Its use can potentially endanger your data. Always pay "
+"attention to information that you submit."
+msgstr ""
+
+#: ../install/part1.php:41 ../install/part1.php:56 ../install/part2.php:15
 msgid "Movim Installer"
 msgstr ""
 
-#: ../install/part1.php:140
+#: ../install/part1.php:41
 msgid "Compatibility Test"
 msgstr ""
 
-#: ../install/part1.php:141
+#: ../install/part1.php:42
 msgid ""
 "The following requirements were not met. Please make sure they are all "
 "satisfied in order to install Movim."
 msgstr ""
 
-#: ../install/part1.php:220
+#: ../install/part1.php:52
+msgid ""
+"Some errors were detected. Please correct them for the installation to "
+"proceed."
+msgstr ""
+
+#: ../install/part1.php:110
+msgid "empty"
+msgstr ""
+
+#: ../install/part1.php:111
+msgid "terse"
+msgstr ""
+
+#: ../install/part1.php:112
+msgid "normal"
+msgstr ""
+
+#: ../install/part1.php:113
+msgid "talkative"
+msgstr ""
+
+#: ../install/part1.php:114
+msgid "ultimate"
+msgstr ""
+
+#: ../install/part1.php:144
 msgid "XMPP Connection Preferences"
 msgstr ""
 
-#: ../install/part1.php:233
+#: ../install/part1.php:157
 msgid "BOSH Connection Preferences"
 msgstr ""
 
-#: ../install/part1.php:237
-msgid "The Bosh configuration is invalid"
-msgstr ""
-
-#: ../install/part1.php:259
+#: ../install/part1.php:183
 msgid "Proxy Preferences"
 msgstr ""
 
-#: ../install/part1.php:284
-msgid "The Database configuration is invalid"
-msgstr ""
-
-#: ../install/part2.php:99 ../install/part2.php:103 ../install/part2.php:107
-#, php-format
-msgid "Couldn't create directory '%s'."
-msgstr ""
-
-#: ../install/part2.php:137
-#, php-format
-msgid "Couldn't create configuration file '%s'."
-msgstr ""
-
-#: ../install/part2.php:195
+#: ../install/part2.php:15
 msgid "Success !"
 msgstr ""
 
-#: ../install/part2.php:198
+#: ../install/part2.php:18
 msgid "Valid Bosh"
 msgstr ""
 
-#: ../install/part2.php:199
+#: ../install/part2.php:19
 msgid "Database Detected"
 msgstr ""
 
-#: ../install/part2.php:200
+#: ../install/part2.php:20
 msgid "Database Movim schema installed"
 msgstr ""
 
-#: ../install/part2.php:203
+#: ../install/part2.php:23
 #, php-format
 msgid "You can now access your shiny Movim instance %sJump In !%s"
 msgstr ""
 
-#: ../install/part2.php:204 ../system/Widget/widgets/Login/Login.php:133
+#: ../install/part2.php:24 ../system/Widget/widgets/Login/Login.php:133
 #, php-format
 msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
@@ -414,64 +462,64 @@ msgstr ""
 msgid "Unknown error"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:224
+#: ../system/Widget/widgets/Account/Account.php:229
 #: ../system/Widget/widgets/Login/Login.php:121
 msgid "Create a new account"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:227
+#: ../system/Widget/widgets/Account/Account.php:232
 msgid ""
 "Firstly fill in this blank with a brand new account ID, this address will "
 "follow you on all the Movim network !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:227
+#: ../system/Widget/widgets/Account/Account.php:232
 msgid "Only alphanumerics elements are authorized"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:231
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:146
+#: ../system/Widget/widgets/Account/Account.php:236
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:150
 #: ../system/Widget/widgets/Login/Login.php:103
 msgid "My address"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:242
+#: ../system/Widget/widgets/Account/Account.php:247
 msgid "Make sure your password is safe :"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:242
+#: ../system/Widget/widgets/Account/Account.php:247
 msgid "A capital letter, a digit and a special character are recommended"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:242
+#: ../system/Widget/widgets/Account/Account.php:247
 msgid "8 characters"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:242
+#: ../system/Widget/widgets/Account/Account.php:247
 msgid "Example :"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:244
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:155
+#: ../system/Widget/widgets/Account/Account.php:249
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:159
 #: ../system/Widget/widgets/Login/Login.php:105
 msgid "Password"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:253
+#: ../system/Widget/widgets/Account/Account.php:259
 msgid "Same here !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:255
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:165
+#: ../system/Widget/widgets/Account/Account.php:261
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:169
 msgid "Retype"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:264
+#: ../system/Widget/widgets/Account/Account.php:271
 msgid "Pseudo"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:272
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:173
+#: ../system/Widget/widgets/Account/Account.php:280
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:177
 msgid "Create"
 msgstr ""
 
@@ -479,7 +527,7 @@ msgstr ""
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:139
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:143
 msgid "Add your login informations"
 msgstr ""
 
@@ -659,6 +707,80 @@ msgstr ""
 msgid "My Posts"
 msgstr ""
 
+#: ../system/Widget/widgets/Help/Help.php:32
+msgid "What is Movim ?"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:34
+#, php-format
+msgid ""
+"Visit the page %s What is Movim ? %s to know more about the project, its "
+"aims and understand how it works."
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:37
+msgid "What do the little banners refer to ?"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:46
+msgid ""
+"Thanks to these five little banners, you can quickly identitfy the level of "
+"confdentiality applied to the information you provide."
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:50
+msgid "White, only you can see the information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:51
+msgid "Green, you have chosen some contacts who can see your information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:52
+msgid "Orange, all your contact list can see your information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:53
+msgid "Red, everybody in the XMPP network can see your information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:54
+msgid "Black, the whole Internet can see your information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:58
+msgid ""
+"Some features are missing/I can't do everything I used to do on other social "
+"networks"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:60
+#, php-format
+msgid ""
+"Although Movim is evolving fast, many (many) features are missing. Be "
+"patient ;). You can have a look %s at next versions's roadmaps %s to know if "
+"the one you want is on its way."
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:62
+#, php-format
+msgid ""
+"Don't forget that Movim is an open source project, a helping hand is always "
+"welcome (see %s Can I participate %s)"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:65
+msgid "I can't find the answer to my question here"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:67
+#, php-format
+msgid ""
+"Go to the %s to the Frequently Asked Questions %s or come ask your question "
+"on the official chatroom %s or via our mailing-list (%s see the dedicated "
+"page %s)."
+msgstr ""
+
 #: ../system/Widget/widgets/Login/Login.php:35
 msgid "Wrong username"
 msgstr ""
@@ -709,7 +831,7 @@ msgid "This server host %s accounts"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:122
-msgid "Link my actual account"
+msgid "Link my current account"
 msgstr ""
 
 #: ../system/Widget/widgets/Log/Log.php:33
@@ -729,7 +851,7 @@ msgid "Accept"
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:62
-#: ../system/Widget/widgets/Notifs/Notifs.php:155
+#: ../system/Widget/widgets/Notifs/Notifs.php:156
 msgid "Validate"
 msgstr ""
 
@@ -737,20 +859,20 @@ msgstr ""
 msgid "Decline"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:119
+#: ../system/Widget/widgets/Notifs/Notifs.php:120
 #, php-format
 msgid "Contacts (%s)"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:125
+#: ../system/Widget/widgets/Notifs/Notifs.php:126
 msgid "Add"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:146
+#: ../system/Widget/widgets/Notifs/Notifs.php:147
 msgid "Alias"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:162
+#: ../system/Widget/widgets/Notifs/Notifs.php:163
 msgid "Cancel"
 msgstr ""
 

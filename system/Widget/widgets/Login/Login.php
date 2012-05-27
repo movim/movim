@@ -129,7 +129,7 @@ class Login extends WidgetBase {
 			</div>
 	    <?php
         if(file_exists(BASE_PATH.'install/part1.php')) { ?>
-            <div class="warning">
+            <div class="warning" style="margin-top: 40px;">
             <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
             </div>
         <?php

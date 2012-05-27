@@ -56,7 +56,7 @@ class Session
         if(defined('TEST_DB_CONN')) {
             $this->db = new DatajarEngineWrapper(TEST_DB_CONN);
         } else {
-            $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('datajarConnection'));
+            $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
         }
 
         // Does the database exist?

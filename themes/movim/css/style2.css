@@ -27,8 +27,6 @@ time, mark, audio, video {
 body {
     font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
     font-size: 13px;
-    /*margin: 0 auto;
-    margin-top: 35px;*/
     color: #4E4E4E;
     background-color: #274950;
     background-image: radial-gradient(center
@@ -75,7 +73,7 @@ hr {
 
 h1 {
     color: #183C67;
-    padding: 10px 20px 0px; 
+    padding: 15px 20px 0px; 
     font-size: 1.5em;
 }
 
@@ -137,6 +135,7 @@ ul.clean li {
     background-color: #EEE;
     border-left: 1px solid #DDD;
     border-right: 1px solid #DDD;
+    overflow: auto;
 }
 
 

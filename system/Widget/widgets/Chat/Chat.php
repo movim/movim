@@ -242,11 +242,11 @@ class Chat extends WidgetBase
             $messages = array_reverse($messages);
             $day = '';
             foreach($messages as $m) {
-                $messageshtml .= $this->prepareMessage($m);
                 if($day != date('d',strtotime($m->getData('published')))) {
                     $messageshtml .= '<div class="message presence">'.prepareDate(strtotime($m->getData('published')), false).'</div>';
                     $day = date('d',strtotime($m->getData('published')));
                 }
+                $messageshtml .= $this->prepareMessage($m);
             }
         }
         
