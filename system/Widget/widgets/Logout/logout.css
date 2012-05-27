@@ -3,10 +3,10 @@
 }
 
 #logouttab {
-	position: absolute;
+	position: fixed;
 	top: 7px;
 	left: 50%;
-    margin-left: 390px;
+    margin-left: 205px;
     overflow: hidden;
     display: block;
     padding: 5px 15px 5px 25px;
@@ -31,10 +31,10 @@
 #logoutlist {
     border: 1px solid #CCC;
     border-top: none;
-    position: absolute;
+    position: fixed;
     top: 35px;
 	left: 50%;
-    margin-left: 380px;
+    margin-left: 175px;
     box-shadow: 0 5px 10px rgba(150, 150, 150, 0.1);
     display: none;
     background-color: white;

@@ -33,7 +33,7 @@ class ConfVar extends DatajarBase {
         $this->first      = DatajarType::int();
     }
     
-    public function get() {
+    public function get($element = false) {
         $conf = array();
         $arr = get_object_vars($this);
         
@@ -42,7 +42,10 @@ class ConfVar extends DatajarBase {
                 $conf[$key] = $value->getval();
         }
         
-        return $conf;
+        if($element == false)
+            return $conf;
+        else
+            return $conf[$element];
     }
     
     public function set($att, $val) {
@@ -73,13 +76,17 @@ class UserConf {
             ->where(array('login' => $login));
             
         $conf = ConfVar::run_query($query);
-        
-        $arr = $conf[0]->get();
-        
-        if($element != false)
-            return $arr[$element];
-        else
-            return $arr;     
+
+        if($conf != false) {
+			$arr = $conf[0]->get();
+			
+			if($element != false)
+				return $arr[$element];
+			else
+				return $arr;
+		} else {
+			return false;
+		}
     }
     
 }

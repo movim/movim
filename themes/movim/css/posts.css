@@ -144,8 +144,6 @@
     transform: scale(1.2);
     -moz-transform: scale(1.2);
     -webkit-transform: scale(1.2);
-    -moz-transition-duration: 0.2s; 
-    -webkit-transition-duration: 0.2s;   
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
@@ -193,15 +191,6 @@ label {
     resize: vertical;
     padding: 0px;
     height: 1.5em;
-    -webkit-transition-property: height;
-    -webkit-transition-duration: 0.5s;
-    -webkit-transition-timing-function: ease-out;
-    transition-property: height;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-out;
-    -moz-transition-property: height;
-    -moz-transition-duration: 0.5s;
-    -moz-transition-timing-function: ease-out;
 }
 
 .post table#commentsubmit textarea:focus {

@@ -128,17 +128,47 @@ class ControllerMain extends ControllerBase
 		}	
 	}
 
-	function account()
+	/*function account()
 	{
 		if(Conf::getServerConfElement("accountCreation") == 1) {
-			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
-		    $this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
+			$this->page->setTitle(t('%s - Account', APP_TITLE));
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
-			$this->page->menuAddLink(t('Account Creation'), '?q=account', true);
-            //$this->page->menuAddLink(t('Help'), '?q=help');            
+			$this->page->menuAddLink(t('Account Creation'), '?q=account', true);           
 			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('account.tpl'));
+			echo $this->page->build('page.tpl');
+
+		} else {
+			$this->login();
+		}
+	}*/
+	
+	function accountCreate()
+	{
+		if(Conf::getServerConfElement("accountCreation") == 1) {
+			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+			$this->page->menuAddLink(t('Account Creation'), '?q=accountCreate', true);         
+			$content = new TplPageBuilder($user);
+
+			$this->page->setContent($content->build('account_create.tpl'));
+			echo $this->page->build('page.tpl');
+
+		} else {
+			$this->login();
+		}
+	}
+	
+	function accountAdd()
+	{
+		if(Conf::getServerConfElement("accountCreation") == 1) {
+			$this->page->setTitle(t('%s - Add An Account', APP_TITLE));
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+			$this->page->menuAddLink(t('Account Creation'), '?q=accountAdd', true);         
+			$content = new TplPageBuilder($user);
+
+			$this->page->setContent($content->build('account_add.tpl'));
 			echo $this->page->build('page.tpl');
 
 		} else {
@@ -152,10 +182,10 @@ class ControllerMain extends ControllerBase
 	function login()
 	{
     	$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
-		$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
-            $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
-		if(Conf::getServerConfElement("accountCreation") == 1)
-			$this->page->menuAddLink(t('Account Creation'), '?q=account');
+		//$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
+		$this->page->menuAddLink(t('Home'), '?q=mainPage', true);
+		//if(Conf::getServerConfElement("accountCreation") == 1)
+		//	$this->page->menuAddLink(t('Account Creation'), '?q=account');
             
         //$this->page->menuAddLink(t('Help'), '?q=help');
 

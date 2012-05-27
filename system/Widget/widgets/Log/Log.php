@@ -40,11 +40,11 @@ class Log extends WidgetBase
 
     function onEvent($data)
     {
-        RPC::call('movim_prepend',
+/*        RPC::call('movim_prepend',
                              'log_content',
                              RPC::cdata("<span>%s&gt; data : </span>%s<br />",
                                              date('H:i:s'),
-                                             var_export($data, true)));
+                                             var_export($data, true)));*/
     }
 }
 

@@ -26,6 +26,8 @@ class WidgetBase
     protected $user;
 	protected $name;
 	protected $events;
+    
+    protected $cached;
 
 	/**
 	 * Initialises Widget stuff.
@@ -56,6 +58,9 @@ class WidgetBase
 				$this->ajax->defun(get_class($this), $method->name, $params);
 			}
 		}
+        
+        $this->name = get_class($this);
+        $this->cached = false;
 
 		$this->WidgetLoad();
 	}
@@ -92,6 +97,48 @@ class WidgetBase
 
         return $path;
 	}
+    
+    private function saveCacheFile()
+    {
+        Logger::log(2, 'Cache: Update of '.$this->name.' widget - '.$this->user->getLogin());
+        $fp = fopen(BASE_PATH."/cache/".md5($this->name.$this->user->getLogin()).".thtml", "w");
+        ob_start();
+        $this->build();
+        $out = ob_get_clean();
+        fwrite($fp, trim(preg_replace( '/\s+/', ' ',$out)));
+        fclose($fp);
+        
+        return $out;
+    }
+    
+    public function saveCache() 
+    { 
+        $this->saveCacheFile();
+    }
+    
+    public function getCache()
+    {
+        $file = BASE_PATH."/cache/".md5($this->name.$this->user->getLogin()).".thtml";
+        if(file_exists($file)) {
+            $fp = fopen($file, "r");
+            echo fread($fp, filesize($file));
+            fclose($fp);
+        }
+        else {
+            $widgets = WidgetWrapper::getInstance(false);
+            if($this->cached == true) {  
+                $out = $this->saveCacheFile();
+                echo $out;
+            }
+            else
+                $this->build();
+        }
+    }
+    
+    public function getName()
+    {
+        return $this->name;
+    }
 
     /**
      * Generates and print an ajax call.
@@ -181,8 +228,10 @@ class WidgetBase
 	 */
 	public function runEvents($proto)
 	{
-		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
 
+		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
+            // If a new event came to the widget, we update the cache
+            //$this->setCacheCall();
             $returns = array();
 
 			foreach($this->events[$proto['type']] as $handler) {
@@ -192,6 +241,15 @@ class WidgetBase
             return $returns;
 		}
 	}
+    
+    public function isEvents($proto)
+    {
+        if(is_array($this->events) && 
+            array_key_exists($proto['type'], $this->events) &&
+            $this->cached == true) {
+            return true;
+        }
+    }
 
 	/**
 	 * returns the list of javascript files to be loaded for the widget.

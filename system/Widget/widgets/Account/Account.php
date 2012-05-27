@@ -50,8 +50,9 @@ class Account extends WidgetBase {
 
             // We try to connect to the XMPP Server
 	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
+
 	        if(!$f) {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=xmppconnect"));
                     RPC::commit();
      	            exit;
 		    }
@@ -62,7 +63,7 @@ class Account extends WidgetBase {
 	        $response = stream_get_contents($f);
 
 	        if(!$response) {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppcomm"));
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=xmppcomm"));
                     RPC::commit();
      	            exit;
 		    }
@@ -85,7 +86,7 @@ class Account extends WidgetBase {
 	        if($iq->error) {
 		        list($cond) = $iq->error->children();
 		        if($cond->getName() == 'conflict') {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=userconflict"));
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=userconflict"));
                     RPC::commit();
      	            exit;
 		        }
@@ -95,7 +96,7 @@ class Account extends WidgetBase {
 	        if($iq = $response->iq and $iq->attributes()->type == 'result') {
 	            $this->localRegistration($data, $conf);
 	        } else {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=unknown"));
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=unknown"));
                     RPC::commit();
      	            exit;
 		    }
@@ -134,7 +135,7 @@ class Account extends WidgetBase {
 	function ajaxSubmit($data) {
 	    foreach($data as $value) {
 	        if($value == NULL || $value == '') {
-	            RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
+	            RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=datamissing"));
 	            RPC::commit();
 	            exit;
 	        }
@@ -142,15 +143,15 @@ class Account extends WidgetBase {
 
 	    foreach($data as $value) {
             if(!filter_var($data['username'].'@'.$data['server'], FILTER_VALIDATE_EMAIL)) {
-            	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=jiderror"));
+            	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=jiderror"));
                 RPC::commit();
                 exit;
             } elseif($data['password'] != $data['passwordconf']) {
-            	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=passworddiff"));
+            	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=passworddiff"));
                 RPC::commit();
  	            exit;
             } elseif(eregi('[^a-zA-Z0-9_]', $data['nick'])) {
-            	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=nameerr"));
+            	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=nameerr"));
                 RPC::commit();
  	            exit;
             }
@@ -220,7 +221,7 @@ class Account extends WidgetBase {
         <?php echo $warning; ?>
 	    <form  style="width: 500px; float: left;" name="account">
 	        <input type="hidden" name="server" value="<?php echo $conf['host']; ?>">
-	        <h1>Create a new account</h1>
+	        <h1><?php echo t('Create a new account'); ?></h1>
 	        <p style="margin-top: 20px;">
 	            <input
 	                onfocus="accountAdvices('<p><?php echo t('Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');"
@@ -238,7 +239,7 @@ class Account extends WidgetBase {
 	            <input
 	                type="password"
 	                onfocus="
-	                    accountAdvices('<p><?php echo t('Make sure your password is safe :'); ?> <ul><li><?php echo t('A capital letter, a digit and a special character are recommended'); ?></li><li><?php echo t('8 characters'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');"
+	                    accountAdvices('<p><?php echo addslashes(t('Make sure your password is safe :')); ?> <ul><li><?php echo addslashes(t('A capital letter, a digit and a special character are recommended')); ?></li><li><?php echo t('8 characters'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');"
 	                onblur="accountAdvices();"
 	                placeholder="<?php echo t("Password"); ?>"
 	                class="big"
@@ -268,7 +269,7 @@ class Account extends WidgetBase {
 	        </p>
 
 	        <p>
-	            <input type="button" class="big icon submit" style="float: right;" value="   <?php echo t('Create'); ?>" onclick="<?php echo $submit;?>">
+	            <input type="button" class="button big icon submit" style="float: right;" value="<?php echo t('Create'); ?>" onclick="<?php echo $submit;?> this.className='button big icon loading';">
 	        </p>
 
 	    </form>

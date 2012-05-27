@@ -74,7 +74,9 @@ class Post extends DatajarBase {
         $this->nodeid->setval($array['@attributes']['id']);
         $this->parentid->setval($parent);
         
-        if(isset($array['entry']['content']))
+        if(isset($array['entry']['title']))
+            $this->content->setval($array['entry']['title']);        
+        elseif(isset($array['entry']['content']))
             $this->content->setval($array['entry']['content']);
         elseif(isset($array['entry']['body']))
             $this->content->setval($array['entry']['body']);

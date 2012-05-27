@@ -10,11 +10,14 @@ class Feed extends WidgetCommon {
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
 		$this->registerEvent('stream', 'onStream');
+        $this->registerEvent('vcard', 'onVcard');
+        
+        $this->cached = true;
     }
     
-    function onPost($payload) {
+    function onPost($id) {
         $query = Post::query()
-                            ->where(array('key' => $this->user->getLogin(), 'nodeid' => $payload['event']['items']['item']['@attributes']['id']));
+                            ->where(array('key' => $this->user->getLogin(), 'nodeid' => $id));
         $post = Post::run_query($query);
 
         if($post != false) {  
@@ -22,6 +25,8 @@ class Feed extends WidgetCommon {
             RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
         }
     }
+    
+    function onVcard($contact) { }
     
     function prepareFeed($start) {
         $query = Post::query()
@@ -45,7 +50,7 @@ class Feed extends WidgetCommon {
 			
             $next = $start + 20;
             
-			if(sizeof($messages) > 0)
+			if(sizeof($messages) > 0 && $html != '')
 				$html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
 		}
 		
@@ -97,9 +102,29 @@ class Feed extends WidgetCommon {
     }
 
     function build()
-    {
+    { 
+		$conf_arr = UserConf::getConf();
     ?>
     <div class="tabelem" title="<?php echo t('Feed'); ?>" id="feed">
+		<?php
+		
+		if($conf_arr["first"] == 0) { 
+		?>
+			<script type="text/javascript">
+				setTimeout('<?php $this->callAjax('ajaxCreateNode'); ?>' , 500);
+			</script>
+
+		<?php
+		}
+		elseif($conf_arr["first"] == 3) {
+		?>
+			<div class="warning" style="margin: 1.5em;">
+			<?php echo t("Your server doesn't support post publication, you can only read contact's feeds"); ?>
+			</div>
+		<?php
+		}
+		else {		
+		?>
 		<table id="submit">
 			<tr id="feedmessage">
 				<td>
@@ -144,21 +169,16 @@ class Feed extends WidgetCommon {
         </div>
         
         <div id="feedcontent">
-            <?php
-            
-            $conf_arr = UserConf::getConf();
-
-            if($conf_arr["first"] == 0) { 
-            ?>
-                    <a 
+		<?php
+		/*			<a 
                     onclick="<?php $this->callAjax('ajaxCreateNode') ?>"
-                    href="#" class="button tiny icon add">&nbsp;&nbsp;<?php echo t("Create the feed"); ?></a><br />
-            <?php
-            }
+                    href="#" class="button tiny icon add">&nbsp;&nbsp;<?php echo t("Create the feed"); ?></a><br />*/
+
+        }
+        
+		echo $this->prepareFeed(0);
             
-            echo $this->prepareFeed(0);
-            
-            ?>
+		?>
         </div>
     </div>
     <?php

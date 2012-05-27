@@ -27,6 +27,8 @@ class Chat extends WidgetBase
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('composing', 'onComposing');
 		$this->registerEvent('presence', 'onPresence');
+        
+        $this->cached = false;
     }
     
     function onPresence($presence)
@@ -65,9 +67,6 @@ class Chat extends WidgetBase
             $jid = $message->getData('from');
     
         global $sdb;
-
-        movim_log("GNNAAAA".$jid);
-
         $contact = new Contact();
         $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
         
@@ -78,9 +77,7 @@ class Chat extends WidgetBase
             RPC::call('scrollAllTalks');
             $contact->chaton = 1;
             $sdb->save($contact);
-        }
-        
-        if($message->getData('body') != '') {
+        }else if($message->getData('body') != '') {
             
             $html = $this->prepareMessage($message);
 
@@ -214,14 +211,16 @@ class Chat extends WidgetBase
         $html = '<div class="message ';
             if($message->getData('key') == $message->getData('from'))
                 $html.= 'me';
+               
+        $content = $message->getData('body');
                 
-        /*if(preg_match("#^/me#", $message->getData('body'))) {
+        if(preg_match("#^/me#", $message->getData('body'))) {
             $html .= "own ";
-            $message = "** ".substr($message->getData('body'), 4);
-        }*/
+            $content = "** ".substr($message->getData('body'), 4);
+        }
                 
         $html .= '"><span class="date">'.date('H:i', strtotime($message->getData('published'))).'</span>';
-        $html.= prepareString(htmlentities($message->getData('body'), ENT_COMPAT, "UTF-8")).'</div>';
+        $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
         
         return $html;
     }
@@ -235,15 +234,20 @@ class Chat extends WidgetBase
                                 array('to' => $contact->getData('jid') , '|from' => $contact->getData('jid')) 
                         )
                     )
-                  ->orderby('published', true)
+                  ->orderby('published', false)
                   ->limit(0, 20);
         $messages = Message::run_query($query);
 
         if($messages != false) {
-            $messages = array_reverse($messages);
         
-            foreach($messages as $m)
+            $day = '';
+            foreach($messages as $m) {
                 $messageshtml .= $this->prepareMessage($m);
+                if($day != date('d',strtotime($m->getData('published')))) {
+                    $messageshtml .= '<div class="message presence">'.prepareDate(strtotime($m->getData('published')), false).'</div>';
+                    $day = date('d',strtotime($m->getData('published')));
+                }
+            }
         }
         
         $style = '';

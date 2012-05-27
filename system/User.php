@@ -47,29 +47,48 @@ class User {
 	{
 		try{
 
-            $data = false;
-            if( !($data = UserConf::getConf($login)) ) {
+            $data = UserConf::getConf($login);
+            if( $data == false ) {
 			    // We check if we wants to create an account
                 header('Location:'.BASE_URI.'index.php?q=disconnect&err=noaccount');
+                exit;
             }
 
-			$this->xmppSession = Jabber::getInstance($login);
-			$this->xmppSession->login($login, $pass);
 
 			// Careful guys, md5 is _not_ secure. SHA1 recommended here.
-			if(sha1($pass) == $data['pass']) {
+			if(sha1($pass) == $data['pass']) {				
                 $sess = Session::start(APP_NAME);
+ 
                 $sess->set('login', $login);
                 $sess->set('pass', $pass);
-
-				$this->username = $login;
+                
+                $this->username = $login;
 				$this->password = $pass;
+
+				$this->xmppSession = Jabber::getInstance($login);
+				$this->xmppSession->login($login, $pass);
 			} else {
-				throw new MovimException(t("Wrong password"));
+				header('Location:'.BASE_URI.'index.php?q=disconnect&err=wrongpass');
+                exit;
 			}
 		}
 		catch(MovimException $e){
 			echo $e->getMessage();
+            
+            // If we've got an error on a new account
+            if($e->getCode() == 300)
+            {
+                global $sdb;
+                $conf = new ConfVar();
+				$sdb->load($conf, array(
+									'login' => $this->getLogin()
+										));
+                if($conf->get('first') == 0)
+                    $conf->set('first', 2);
+				$sdb->save($conf);	
+                header('Location:'.BASE_URI.'index.php?q=disconnect&err=wrongaccount');
+                exit;
+            }
 			return $e->getMessage();
 		}
 	}

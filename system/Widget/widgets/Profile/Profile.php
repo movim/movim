@@ -28,6 +28,8 @@ class Profile extends WidgetBase
         $this->addcss('profile.css');
         $this->addjs('profile.js');
         $this->registerEvent('myvcard', 'onMyVcardReceived');
+        
+        $this->cached = true;
     }
     
     function onMyVcardReceived($vcard = false)
@@ -60,7 +62,8 @@ class Profile extends WidgetBase
         
         if(isset($me[0])) {
             $me = $me[0];
-            $html = '
+            $html ='<h1>'.$me->getTrueName().'</h1><img src="'.$me->getPhoto().'"/>';
+            /*$html = '
 				<table>
 					<tr>
 						<td>
@@ -71,7 +74,7 @@ class Profile extends WidgetBase
 						</td>
 					</tr>
 				</table>
-				';
+				';*/
             $html .= '
                 <input 
                     type="text" 
@@ -81,7 +84,10 @@ class Profile extends WidgetBase
                 />
                 <br />
                 ';
-        }
+        } else {
+			$html .= t('No profile yet ?').'<br /><br />';
+			$html .= '<a class="button icon add" style="padding-left: 25px;" href="?q=profile">'.t("Create my vCard").'</a><br /><br />';
+		}
         
         return $html;
     }

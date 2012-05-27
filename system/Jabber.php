@@ -39,8 +39,11 @@ class Jabber
 
 		$this->jaxl = new JAXL(array(
 								   // User Configuration
-								   'host' => $userConf['host'],
-								   'domain' => isset($userConf['domain']) ? $userConf['domain'] : $userConf['host'],
+								   
+								   // Here we need to exchange the host and domain to allow the connexion, Jaxl bug ?
+								   'host' => $userConf['domain'],
+								   'domain' => $userConf['host'],
+								   
 								   'boshHost' => $userConf['boshHost'],
 								   'boshSuffix' => $userConf['boshSuffix'],
 								   'boshPort' => $userConf['boshPort'],
@@ -77,7 +80,6 @@ class Jabber
 		// Connect-Disconnect
         $this->jaxl->addPlugin('jaxl_post_auth', array(&$this, 'postAuth'));
         $this->jaxl->addPlugin('jaxl_post_auth_failure', array(&$this, 'postAuthFailure'));
-        //$this->jaxl->addPlugin('jaxl_post_roster_update', array(&$this, 'postRosterUpdate'));
         $this->jaxl->addPlugin('jaxl_post_disconnect', array(&$this, 'postDisconnect'));
 		$this->jaxl->addPlugin('jaxl_get_auth_mech', array(&$this, 'postAuthMech'));
 
@@ -144,6 +146,15 @@ class Jabber
         
         self::setStatus(t('Connecting...'), false, false, true);  
 	}
+    
+    /**
+     * postAuth
+     *
+     * @return void
+     */
+    public function postAuth() {
+
+    }
 
     /**
      * postAuthFailure
@@ -152,7 +163,9 @@ class Jabber
      */
     public function postAuthFailure() {
     	$this->jaxl->shutdown();
-    	throw new MovimException("Login error.");
+    	
+    	throw new MovimException("Login error.", 300);
+
     	$user = new User();
     	$user->desauth();
     }
@@ -241,8 +254,8 @@ class Jabber
 	public function getEmptyBody($payload) {
         $evt = new Event();
         // Oooooh, am I disconnected??
-        if(preg_match('/condition=[\'"]item-not-found[\'"]/', $payload)) {
-            $evt->runEvent('serverdisconnect', null);
+        if(preg_match('/condition=[\'"]item-not-found[\'"]/', $payload) || preg_match('/condition=[\'"]improper-addressing[\'"]/', $payload)) {
+            $this->postAuthFailure();
         } else {
             $evt->runEvent('incomingemptybody', 'ping');
         }
@@ -256,7 +269,7 @@ class Jabber
 	 */
 	public function getIq($payload) {
         $payload = $payload['movim'];
-        
+
 		global $sdb;
 		$evt = new Event();
         
@@ -284,11 +297,23 @@ class Jabber
                 $evt->runEvent('vcard', $contact);
 			}
 		}
-		
+        
+        elseif($payload['@attributes']['xmlns'] == 'http://jabber.org/protocol/disco#info') {
+		    global $sdb;
+            
+            $c = new CapsHandler();
+            $caps = $c->get($payload['query']['@attributes']['node']);
+            $caps->setCaps($payload['query']);
+            
+            $sdb->save($caps);
+		}
+        
 		// Roster case
 		elseif($payload['@attributes']['xmlns'] == 'jabber:iq:roster') {
-		    if($payload['@attributes']['type'] == "result") {
-		        global $sdb;
+		    global $sdb;
+            
+            // If we got the full roster list
+		    if($payload['@attributes']['type'] == 'result') {
 		        
 		        foreach($payload['query']['item'] as $item) {
 		            // If we've got only one item in the roster we use it as the only one
@@ -302,12 +327,28 @@ class Jabber
 		        }
 
                 $evt->runEvent('roster', $payload);
-            } elseif($payload['type'] == "set") {
-                $this->getRosterList();
+            } 
+            // If we got only one item
+            elseif($payload['@attributes']['type'] == "set") {
+                $c = new ContactHandler();
+                
+                $item = $payload['query']['item'];
+                $contact = $c->get($item['@attributes']['jid']);
+
+				// It's a new contact !
+                if($item['@attributes']['subscription'] == 'remove') {
+                    $evt->runEvent('contactremove', $item['@attributes']['jid']);
+                } 
+                // Contact removed
+                elseif(in_array($item['@attributes']['subscription'], array('from', 'to', 'both'))) {
+                    $contact->setContactRosterItem($item);
+                    $sdb->save($contact);
+                    $evt->runEvent('contactadd', $item['@attributes']['jid']);
+                }
             }
         }
+        // Pubsub case
         elseif(isset($payload['pubsub']) && !(isset($payload['error']))) {
-            movim_log($payload);
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
             
             if(isset($payload['pubsub']['items']['item'])) {
@@ -316,10 +357,12 @@ class Jabber
                     if(isset($item['id']))
                         $item = $payload['pubsub']['items']['item'];
 
+					// We've got a new Post !
                     if(isset($item['@attributes']) && isset($item['entry'])) {    
                         $c = new PostHandler();
                         $post = $c->get($item['@attributes']['id']);
                         
+                        // We save it in the database
                         if($xmlns == 'urn:xmpp:microblog:0')
                             $post->setPost($item, $payload['@attributes']['from']);
                         elseif($xmlns == 'urn:xmpp:microblog:0:comments')
@@ -327,16 +370,20 @@ class Jabber
                             
                         $sdb->save($post);  
                         
-                        if($xmlns == 'urn:xmpp:microblog:0')
+                        // And we run the correct event
+                        if($xmlns == 'urn:xmpp:microblog:0') {
+                            $evt->runEvent('post', $item['@attributes']['id']);
                             $evt->runEvent('stream', $payload);
-                        elseif($xmlns == 'urn:xmpp:microblog:0:comments')
+                        } elseif($xmlns == 'urn:xmpp:microblog:0:comments')
                             $evt->runEvent('comment', $parent);
                     }
                 }
             } elseif(isset($payload['pubsub']['publish']['@attributes']['node'])) {
                 list($xmlns, $id) = explode("/", $payload['pubsub']['publish']['@attributes']['node']);
-                $this->getComments(false, $id);
-            
+                if($payload['pubsub']['publish']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
+					$this->getWallItem($this->getCleanJid(), $payload['pubsub']['publish']['item']['@attributes']['id']);
+				}
+                $this->getComments($payload['@attributes']['from'], $id);
             } else {
                 $evt->runEvent('nocomment', $parent);
             }
@@ -350,8 +397,18 @@ class Jabber
                 $sdb->save($post);
                 
                 $evt->runEvent('nostream', $parent);
-            }
-            elseif(isset($payload['error']['feature-not-implemented']))
+            } 
+            elseif(in_array( $payload['error']['@attributes']['code'], array(501, 503)) && $payload['pubsub']['create']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
+				$conf = new ConfVar();
+				$sdb->load($conf, array(
+									'login' => $this->getCleanJid()
+										));
+				$conf->set('first', 3);
+				$sdb->save($conf);	
+			}
+            elseif(isset($payload['error']['feature-not-implemented']) ||
+				   isset($payload['error']['not-authorized']) || 
+				   isset($payload['error']['service-unavailable']))
                 $evt->runEvent('nostream');
         }
         elseif(isset($payload['error']) && isset($payload['error']['item-not-found']))
@@ -377,17 +434,14 @@ class Jabber
 
             if($payload['offline'] != JAXL0203::$ns && $payload['type'] == 'chat') { // reject offline message
 
-				if($payload['chatState'] == 'active' && $payload['body'] == NULL) {
+				if($payload['chatState'] == 'active' && $payload['body'] == NULL)
 					$evt->runEvent('incomeactive', $payload);
-				}
-				elseif($payload['chatState'] == 'composing') {
+				elseif($payload['chatState'] == 'composing')
                 	$evt->runEvent('composing', $payload);
-				}
-				elseif($payload['chatState'] == 'paused') {
+				elseif($payload['chatState'] == 'paused') 
                 	$evt->runEvent('paused', $payload);
-				}
+                    
 				else {
-                    movim_log($payload);
                     global $sdb;
                     $m = new Message();
                     $m->setMessageChat($payload['movim']);
@@ -414,7 +468,8 @@ class Jabber
                         $evt->runEvent('currentpost', $payload);
                     }
                     
-                    $evt->runEvent('post', $payload);
+                    if($payload['@attributes']['from'] != $this->getCleanJid())
+						$evt->runEvent('post', $payload['event']['items']['item']['@attributes']['id']);
                 }	            
             }
         }
@@ -433,28 +488,34 @@ class Jabber
         $evt = new Event();
 		
         foreach($payloads as $payload) {
+
             $payload = $payload['movim'];
     		if($payload['@attributes']['type'] == 'subscribe') {
         		$evt->runEvent('subscribe', $payload);
-    		} elseif($payload['@attributes']['type'] == 'result') {
-    		
-    		} elseif(in_array($payload['@attributes']['type'], array('available', 'unavailable', '', 'error'))) {
+    		}
+            else {
     		    
     		    // We update the presences
                 list($jid, $ressource) = explode('/',$payload['@attributes']['from']);
                 
-    		    // We ask for the entity-capabilities
-    		    if(isset($payload['c'])) {
-		            $this->jaxl->JAXL0030(
-		                'discoInfo', 
-		                $payload['@attributes']['from'], 
-		                $this->jaxl->jid, 
-		                false, 
-		                $payload['c']['@attributes']['node'].'#'.$payload['c']['@attributes']['ver']
-		            );
+    		    // We ask for the entity-capabilities and we prevent to ask our own capabilities
+    		    if(isset($payload['c']) && $jid != $this->getCleanJid()) {
+                    $c = new CapsHandler();
+                    $caps = $c->get($payload['c']['@attributes']['node'].'#'.$payload['c']['@attributes']['ver']);
+                    
+                    // We ask for the caps only if we haven't found it in the database
+                    if($caps->getData('category') == null) {
+                        $this->jaxl->JAXL0030(
+                            'discoInfo', 
+                            $payload['@attributes']['from'], 
+                            $this->getCleanJid(), 
+                            false, 
+                            $payload['c']['@attributes']['node'].'#'.$payload['c']['@attributes']['ver']
+                        );
+                    }
     		    }
-                
-	            $presence = $sdb->select('Presence', array(
+	            
+                $presence = $sdb->select('Presence', array(
 	                                                    'key' => $this->getCleanJid(), 
 	                                                    'jid' => $jid,
 	                                                    'ressource' => $ressource
@@ -483,11 +544,6 @@ class Jabber
 
         $evt->runEvent('incomingemptybody', 'ping');
 	}
-
-   	/*public function postRosterUpdate($payload) {
-   		$evt = new Event();
-		$evt->runEvent('rosterreceived', $payload);
-   	}*/
 
     /**
 	 * Ask for a vCard
@@ -544,6 +600,16 @@ class Jabber
 	public function getWall($jid = false) {
 		$this->jaxl->JAXL0277('getItems', $jid);
 	}
+    
+	/**
+	 * Ask for an item
+	 *
+	 * @param unknown $jid = false
+	 * @return void
+	 */
+	public function getWallItem($jid = false, $id) {
+		$this->jaxl->JAXL0277('getItem', $jid, $id);
+	}
 
 	/**
 	 * Ask for some comments of an article
@@ -553,7 +619,7 @@ class Jabber
 	 * @return void
 	 */
 	public function getComments($place, $id) {
-		$this->jaxl->JAXL0277('getComments', 'pubsub.jappix.com', $id);
+		$this->jaxl->JAXL0277('getComments', $place, $id);
 	}
 
     /**
@@ -564,10 +630,7 @@ class Jabber
 	 */
 	public function discover($jid = false)
 	{
-		//$this->jaxl->JAXL0030('discoInfo', $jid, $this->jaxl->jid, false, false);
-		//$this->jaxl->JAXL0030('discoItems', $jid, $this->jaxl->jid, false, false);mov
 		$this->jaxl->JAXL0277('getItems', 'edhelas@jappix.com');
-        //psgxs.linkmauve.fr
 	}
 
 	public function discoNodes($pod)

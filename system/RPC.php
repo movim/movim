@@ -125,7 +125,7 @@ class RPC
                     }
                 }
             }
-
+            
             $widgets = WidgetWrapper::getInstance(false);
             $widgets->run_widget($widget_name, (string)$request['name'], $params);
 		}

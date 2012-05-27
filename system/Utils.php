@@ -29,6 +29,15 @@ function sprintln($string)
     return call_user_func_array('sprintf', $args) . PHP_EOL;
 }
 
+/*
+ * Return the current microtime
+ */
+function getTime()
+{
+    $a = explode (' ',microtime());
+    return(double) $a[0] + $a[1];
+}
+
 /**
  * Prepare the string (add the a to the links and show the smileys)
  *
@@ -108,33 +117,38 @@ function prepareString($string) {
  * @param timestamp $string
  * @return string
  */
-function prepareDate($time) {
+function prepareDate($time, $hours = true) {
 
     $today = strtotime(date('M j, Y'));
     $reldays = ($time - $today)/86400;
 
     if ($reldays >= 0 && $reldays < 1) {
-        return t('Today') .' - '. date('H:i', $time);
+        $date = t('Today');
     } else if ($reldays >= 1 && $reldays < 2) {
-        return t('Tomorrow') .' - '. date('H:i', $time);
+        $date = t('Tomorrow');
     } else if ($reldays >= -1 && $reldays < 0) {
-        return t('Yesterday') .' - '. date('H:i', $time);
-    }
+        $date = t('Yesterday');
+    } else {
 
-    if (abs($reldays) < 7) {
-        if ($reldays > 0) {
-            $reldays = floor($reldays);
-            return 'In ' . $reldays . ' '.t('day') . ($reldays != 1 ? 's' : '');
+        if (abs($reldays) < 7) {
+            if ($reldays > 0) {
+                $reldays = floor($reldays);
+                $date = 'In ' . $reldays . ' '.t('day') . ($reldays != 1 ? 's' : '');
+            } else {
+                $reldays = abs(floor($reldays));
+                $date = t(' %d days ago', $reldays);
+            }
+        }
+        if (abs($reldays) < 182) {
+            $date = date('l, j F',$time ? $time : time());
         } else {
-            $reldays = abs(floor($reldays));
-            return t(' %d days ago', $reldays) .' - '. date('H:i', $time);
+            $date = date('l, j F, Y',$time ? $time : time());
         }
     }
-    if (abs($reldays) < 182) {
-        return date('l, j F - H:i',$time ? $time : time());
-    } else {
-        return date('l, j F, Y - H:i',$time ? $time : time());
-    }
+    if($hours)
+        $date .= ' - '. date('H:i', $time);
+    
+    return $date;
 }
 
 /**

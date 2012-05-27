@@ -9,14 +9,17 @@
 }
 
 #profile h1 {
-    margin: 0px;
-    line-height: 1.3em;
     padding: 0px;
-    padding-left: 10px;
+    border: none;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #profile img {
-	width: 70px;
+    max-width: 150px;
+    margin: 0 auto;
 }
 
 #profile #status {
@@ -27,10 +30,12 @@
     border: 1px solid transparent;
     text-align: center;
     width: 80%;
+    background-color: transparent;
 }
 
 #profile #status:hover {
     border-color: #DDD;
+    background-color: white;
 }
 
 #profile .presence_button.online { background-image: url(img/online.png); }

@@ -9,6 +9,9 @@ class Presence extends DatajarBase {
     protected $priority;
     protected $status;
     
+    protected $node;
+    protected $ver;
+    
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);
         $this->jid      = DatajarType::varchar(128);
@@ -17,6 +20,9 @@ class Presence extends DatajarBase {
         $this->presence = DatajarType::int();
         $this->priority = DatajarType::int();
         $this->status   = DatajarType::text();
+        
+        $this->node     = DatajarType::varchar(128);
+        $this->ver      = DatajarType::varchar(128);
     }
     
     public function setPresence($array) {
@@ -27,6 +33,9 @@ class Presence extends DatajarBase {
         $this->jid->setval($jid);
         $this->ressource->setval($ressource);
         $this->status->setval($array['status']);
+        
+        $this->node->setval($array['c']['@attributes']['node']);
+        $this->ver->setval($array['c']['@attributes']['ver']);
         
         $this->priority->setval($array['priority']);
         
@@ -62,14 +71,18 @@ class Presence extends DatajarBase {
         $arr['presence_txt'] = $txt[$this->presence->getval()];
         $arr['priority'] = $this->priority->getval();
         $arr['status'] = $this->status->getval();
+        $arr['node'] = $this->node->getval();
+        $arr['ver'] = $this->ver->getval();
         
         return $arr;
     }
 }
 
 class PresenceHandler {
+    private $instance;
+    
     public function __contruct() {
-
+        $this->instance = new Presence();
     }
     
     static public function getPresence($jid, $one = false, $ressource = false) {

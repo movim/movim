@@ -228,7 +228,7 @@ class TplPageBuilder
 	function widget($name)
 	{
         $widgets = WidgetWrapper::getInstance();
-        $widgets->run_widget($name, 'build');
+        $widgets->run_widget($name, 'getCache');
 	}
 
 	/**

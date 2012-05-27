@@ -8,8 +8,8 @@ define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 define('USERS_PATH', BASE_PATH . 'user/');
 
-//define('DB_DEBUG', true);
-//define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
+define('DB_DEBUG', true);
+define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
 
 // Loads up all system libraries.
 require_once(LIB_PATH . "Lang/i18n.php");
@@ -17,6 +17,7 @@ require_once(LIB_PATH . "Lang/i18n.php");
 require_once(LIB_PATH . "Datajar/loader.php");
 load_datajar(array('sqlite'));
 
+require_once(LIB_PATH . "Datas/Caps.php");
 require_once(LIB_PATH . "Datas/ConfVar.php");
 require_once(LIB_PATH . "Datas/Contact.php");
 require_once(LIB_PATH . "Datas/Presence.php");

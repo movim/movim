@@ -27,8 +27,12 @@ class Roster extends WidgetBase
     	$this->addcss('roster.css');
     	$this->addjs('roster.js');
 		$this->registerEvent('roster', 'onRoster');
+        $this->registerEvent('contactadd', 'onRoster');
+        $this->registerEvent('contactremove', 'onRoster');
 		$this->registerEvent('presence', 'onPresence');
 		$this->registerEvent('vcard', 'onVcard');
+        
+        $this->cached = true;
     }
     
 	function onPresence($presence)
