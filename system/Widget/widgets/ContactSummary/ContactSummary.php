@@ -81,8 +81,21 @@ class ContactSummary extends WidgetBase
             
         if($this->testIsSet($contact->getData('url')))
             $html .= '<span class="website"></span>'.'<a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>';
-        //if($this->testIsSet($contact->getData('desc')))
-        //    $html .= t('About Me').prepareString($contact->getData('desc'));
+            
+            
+        if($this->testIsSet($contact->getData('desc')))
+            $html .= '
+                <h2>'.t('About Me').'</h2>
+                <div style="
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    display: block; 
+                    max-height: 200px;
+                    word-wrap: break-word;
+                    text-align: justify;
+                    white-space: normal;">'.
+                    prepareString($contact->getData('desc')).'
+                </div>';
         
         if($presence['node'] != '' && $presence['ver'] != '') {
             $clienttype = 
