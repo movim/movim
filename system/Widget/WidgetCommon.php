@@ -94,7 +94,7 @@ class WidgetCommon extends WidgetBase {
                                                             'ajaxPublishComment', 
                                                             "'".$message->getData('commentplace')."'", 
                                                             "'".$message->getData('nodeid')."'", 
-                                                            "document.getElementById('".$message->getData('nodeid')."commentcontent').value").
+                                                            "encodeURIComponent(document.getElementById('".$message->getData('nodeid')."commentcontent').value)").
                                                             'document.getElementById(\''.$message->getData('nodeid').'commentcontent\').value = \'\';
                                                     }"
                                             class="button tiny icon submit"
@@ -209,6 +209,6 @@ class WidgetCommon extends WidgetBase {
     
     function ajaxPublishComment($to, $id, $content) {
         if($content != '')
-            $this->xmpp->publishComment($to, $id, rawurldecode($content));
+            $this->xmpp->publishComment($to, $id, htmlentities(rawurldecode($content)));
     }
 }

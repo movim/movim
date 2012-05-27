@@ -78,13 +78,7 @@ class Logout extends WidgetBase
     
     function preparePresence()
     {
-        $txt = array(
-                1 => t('Online'),
-                2 => t('Away'),
-                3 => t('Do Not Disturb'),
-                4 => t('Extended Away'),
-                5 => t('Logout')
-            );
+        $txt = getPresences();
     
         global $sdb;
         $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));

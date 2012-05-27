@@ -52,7 +52,7 @@ class ContactSummary extends WidgetBase
         $marital = getMarital();
         
         $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
-        $html ='<h1>'.$contact->getTrueName().'</h1><img src="'.$contact->getPhoto().'"/>';
+        $html ='<h1>'.$contact->getTrueName().'</h1><center><img src="'.$contact->getPhoto().'"/></center>';
         
         if($contact->getData('vcardreceived') != 1)
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 500);</script>';
@@ -61,12 +61,14 @@ class ContactSummary extends WidgetBase
             $html .= '<div id="status">'.$presence['status'].'</div>';
             
         $html .='<h2>'.t('General Informations').'</h2>';
+        
+        if($contact->getData('gender') != 'N' && $this->testIsSet($contact->getData('gender')))
+            $html .= '<span class="'.$contact->getData('gender').'"></span>';
             
         if($this->testIsSet($contact->getData('name')))
             $html .= $contact->getData('name').'<br />';
-            
-        if($contact->getData('gender') != 'N' && $this->testIsSet($contact->getData('gender')))
-            $html .= $gender[$contact->getData('gender')].'<br />';
+        else
+            $html .= $contact->getTrueName().'<br />';
             
         if($contact->getData('marital') != 'none' && $this->testIsSet($contact->getData('marital')))
             $html .= '<span class="hearth"></span>'.$marital[$contact->getData('marital')].'<br />';
@@ -105,6 +107,67 @@ class ContactSummary extends WidgetBase
             if($cinfos != "")
                 $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
         }
+        
+        $html .='<h2>'.t('Actions').'</h2>';
+        
+        $presences = getPresences();
+        
+        if(isset($presence['presence']) && $presence['presence'] != 5) {
+            $html .= '
+                <a
+	                class="button tiny icon chat"
+	                href="#"
+	                style="float: left;"
+	                id="friendchat"
+	                onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"
+	            >
+	                '.$presences[$presence['presence']].' - '.t('Chat').'
+	            </a>';
+        }
+        
+        $html .= '<div style="clear: both;"></div>';
+
+        $html .='
+        <a
+	        class=""
+	        href="#"
+	        style="margin: 10px 0px; display: block;"
+	        id="friendremoveask"
+	        onclick="
+	            document.querySelector(\'#friendremoveyes\').style.display = \'block\';
+	            document.querySelector(\'#friendremoveno\').style.display = \'block\';
+	            this.style.display = \'none\'
+	        "
+	    >
+	        '.t('Remove this contact').'
+	    </a>
+
+        <a
+	        class="button tiny icon yes merged left';
+	    if(!isset($presence['presence']) || $presence['presence'] == 5)
+	        $html .=' left';
+	    $html .= '"
+	        href="#"
+	        id="friendremoveyes"
+	        style="float: left; display: none;"
+	        onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$contact->getData('jid')."'").'"
+	    >
+	        '.t('Yes').'
+	    </a>
+
+	    <a
+	        class="button tiny icon no merged right"
+	        href="#"
+	        style="float: left; display: none;"
+	        id="friendremoveno"
+	        onclick="
+	            document.querySelector(\'#friendremoveask\').style.display = \'block\';
+	            document.querySelector(\'#friendremoveyes\').style.display = \'none\';
+	            this.style.display = \'none\'
+	        "
+	    >
+	        '.t('No').'
+	    </a>';
 
         return $html;
 	}

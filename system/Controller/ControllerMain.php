@@ -52,29 +52,24 @@ class ControllerMain extends ControllerBase
 
 	function friend()
 	{
-		$user = new User();
+        $user = new User();
+
+        $query = Contact::query()
+                            ->where(array('key' => $user->getLogin(), 'jid' => $_GET['f']));
+        $contact = Contact::run_query($query);
+
+        if(isset($contact[0]))
+            $name = $contact[0]->getTrueName();
+        else
+            $name = $_GET['f'];
+                
 		if(!$user->isLogged()) {
 			$this->login();
 		} else {
-			if(isset($_GET['f']) && $_GET['f'] != "" ) {
-                $sess = Session::start(APP_NAME);
-                $sess->set('currentcontact', $_GET['f']);
-
-                $user = new User();
-
-                $query = Contact::query()
-                                    ->where(array('key' => $user->getLogin(), 'jid' => $_GET['f']));
-                $contact = Contact::run_query($query);
-
-                if(isset($contact[0]))
-                    $name = $contact[0]->getTrueName();
-                else
-                    $name = $_GET['f'];
-                
+			if(isset($_GET['f']) && $_GET['f'] != "" ) {                
 				$this->page->setTitle(APP_TITLE.' - '.$name);
                 $this->page->menuAddLink(t('Home'), '?q=mainPage');
 
-				$this->page->menuAddLink($name, false, true);
 				$this->page->menuAddLink(t('Profile'), '?q=profile');
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
             $this->page->menuAddLink(t('Help'), '?q=help');                
