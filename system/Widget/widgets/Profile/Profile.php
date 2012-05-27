@@ -62,7 +62,8 @@ class Profile extends WidgetBase
         
         if(isset($me[0])) {
             $me = $me[0];
-            $html = '
+            $html ='<h1>'.$me->getTrueName().'</h1><img src="'.$me->getPhoto().'"/>';
+            /*$html = '
 				<table>
 					<tr>
 						<td>
@@ -73,7 +74,7 @@ class Profile extends WidgetBase
 						</td>
 					</tr>
 				</table>
-				';
+				';*/
             $html .= '
                 <input 
                     type="text" 

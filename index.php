@@ -56,6 +56,9 @@ if(!file_exists("config/conf.xml")) {
     $rqst = new ControllerMain();
     $rqst->handle();
     
+    $widgets = WidgetWrapper::getInstance(false);
+    $widgets->iterateCached('saveCache');
+    
     // Closing stuff
     WidgetWrapper::destroyInstance();
     global $sdb;

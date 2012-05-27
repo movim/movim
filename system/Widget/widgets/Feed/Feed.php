@@ -10,6 +10,7 @@ class Feed extends WidgetCommon {
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
 		$this->registerEvent('stream', 'onStream');
+        $this->registerEvent('vcard', 'onVcard');
         
         $this->cached = true;
     }
@@ -24,6 +25,8 @@ class Feed extends WidgetCommon {
             RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
         }
     }
+    
+    function onVcard($contact) { }
     
     function prepareFeed($start) {
         $query = Post::query()

@@ -45,9 +45,10 @@ class Wall extends WidgetCommon
     }
     
     function onNoStream() {
-        RPC::call('hideWall'); 
+        $html = '<div style="padding: 1.5em; text-align: center;">Ain\'t Nobody Here But Us Chickens...</div>';
+        RPC::call('movim_fill', 'wall', RPC::cdata($html));
         RPC::commit();
-    }
+    }    
     
     function onStream($payload) {
         $html = '';
@@ -71,15 +72,16 @@ class Wall extends WidgetCommon
                                         'key' => $this->user->getLogin(), 
                                         'parentid' => '',
                                         'jid' => $payload["@attributes"]["from"]))
-                            ->orderby('updated', true);
+                            ->orderby('updated', true)
+                            ->limit('0', '20');
         $messages = Post::run_query($query);
         
         if($messages == false) {            
-            RPC::call('hideWall'); 
+            $this->onNoStream();
         } else {
             $html = '';
             
-            foreach(array_slice($messages, 0, 20) as $message) {
+            foreach($messages as $message) {
                 $html .= $this->preparePost($message);
             }
             echo $html;
@@ -115,22 +117,28 @@ class Wall extends WidgetCommon
                 </a>
                 <br /><br />-->
             <?php 
-            global $sdb;
-            $messages = $sdb->select('Post', array('key' => $this->user->getLogin(), 'jid' => $_GET['f'], 'parentid' => ''), 'updated', true);
+            $query = Post::query()
+                                ->where(array(
+                                            'key' => $this->user->getLogin(), 
+                                            'parentid' => '',
+                                            'jid' => $_GET['f']))
+                                ->orderby('updated', true)
+                                ->limit('0', '20');
+            $messages = Post::run_query($query);
             
             if($messages == false) {
             ?>
                 <script type="text/javascript">
                 <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
                 </script>
-                <div style="padding: 1em; text-align: center;">
+                <div style="padding: 1.5em; text-align: center;">
                     <?php echo t('Loading the contact feed ...'); ?>
                 </div>
                 <?php
             } else {
                 $html = '';
                 
-                foreach(array_slice($messages, 0, 20) as $message) {
+                foreach($messages as $message) {
                     $html .= $this->preparePost($message);
                 }
                 echo $html;

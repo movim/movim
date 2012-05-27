@@ -9,14 +9,17 @@
 }
 
 #profile h1 {
-    margin: 0px;
-    line-height: 1.3em;
     padding: 0px;
-    padding-left: 10px;
+    border: none;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #profile img {
-	width: 70px;
+    max-width: 150px;
+    margin: 0 auto;
 }
 
 #profile #status {

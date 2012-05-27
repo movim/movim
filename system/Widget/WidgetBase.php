@@ -98,28 +98,22 @@ class WidgetBase
         return $path;
 	}
     
-    /**
-     * Set the cache element to true to cache the widget at the end of the PHP exec
-     */
-    public function setCacheCall()
+    private function saveCacheFile()
     {
-        if($this->cached) {
-            $widgets = WidgetWrapper::getInstance(false);
-            $widgets->set_cached_widget($this->name);
-        }
+        Logger::log(2, 'Cache: Update of '.$this->name.' widget - '.$this->user->getLogin());
+        $fp = fopen(BASE_PATH."/cache/".md5($this->name.$this->user->getLogin()).".thtml", "w");
+        ob_start();
+        $this->build();
+        $out = ob_get_clean();
+        fwrite($fp, trim(preg_replace( '/\s+/', ' ',$out)));
+        fclose($fp);
+        
+        return $out;
     }
     
     public function saveCache() 
-    {
-        $widgets = WidgetWrapper::getInstance(false);
-        if($widgets->get_cached_widget($this->name) == true) {    
-            $fp = fopen(BASE_PATH."/cache/".md5($this->name.$this->user->getLogin()).".thtml", "w");
-            ob_start();
-            $this->build();
-            $out = ob_get_clean();
-            fwrite($fp, trim(preg_replace( '/\s+/', ' ',$out)));
-            fclose($fp);
-        }
+    { 
+        $this->saveCacheFile();
     }
     
     public function getCache()
@@ -133,17 +127,17 @@ class WidgetBase
         else {
             $widgets = WidgetWrapper::getInstance(false);
             if($this->cached == true) {  
-                $fp = fopen($file, "w");
-                ob_start();
-                $this->build();
-                $out = ob_get_clean();
-                fwrite($fp, trim(preg_replace( '/\s+/', ' ',$out)));
-                fclose($fp);
+                $out = $this->saveCacheFile();
                 echo $out;
             }
             else
                 $this->build();
         }
+    }
+    
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -237,7 +231,7 @@ class WidgetBase
 
 		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
             // If a new event came to the widget, we update the cache
-            $this->setCacheCall();
+            //$this->setCacheCall();
             $returns = array();
 
 			foreach($this->events[$proto['type']] as $handler) {
@@ -247,6 +241,15 @@ class WidgetBase
             return $returns;
 		}
 	}
+    
+    public function isEvents($proto)
+    {
+        if(is_array($this->events) && 
+            array_key_exists($proto['type'], $this->events) &&
+            $this->cached == true) {
+            return true;
+        }
+    }
 
 	/**
 	 * returns the list of javascript files to be loaded for the widget.

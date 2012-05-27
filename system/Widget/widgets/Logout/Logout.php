@@ -29,7 +29,7 @@ class Logout extends WidgetBase
         $this->registerEvent('serverdisconnect', 'onPostDisconnect'); // When you're kicked out
         $this->registerEvent('mypresence', 'onMyPresence');
         
-        $this->cached = true;
+        //$this->cached = true;
     }
     
     function onMyPresence()
@@ -63,6 +63,7 @@ class Logout extends WidgetBase
 	{
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
+        movim_log($presence);
         if($show == "boot") $show = $presence['show'];
         Cache::c(
             'presence', 
@@ -102,7 +103,7 @@ class Logout extends WidgetBase
             </div>
                 ';
         $presence = Cache::c('presence');
-        if($presence['boot'])
+        if($presence['boot'] == true)
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxSetStatus', '"boot"').'\', 5000);</script>';
         
         return $html;

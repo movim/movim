@@ -27,4 +27,12 @@ $polling = true;
 
 $rpc = new RPC();
 $rpc->handle();
+    
+$widgets = WidgetWrapper::getInstance(false);
+$widgets->iterateCached('saveCache');
+
+// Closing stuff
+WidgetWrapper::destroyInstance();
+global $sdb;
+$sdb->close();
 ?>

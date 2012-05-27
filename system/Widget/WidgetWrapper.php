@@ -23,9 +23,11 @@
 class WidgetWrapper
 {
     private $register_widgets;
+    private $all_widgets = array();
     private $loaded_widgets = array();
     private $loaded_widgets_old;
-    private $loaded_widgets_cached = array();
+    //private $loaded_widgets_cached = array();
+    private $cached_widgets;
 
     private static $instance;
 
@@ -46,13 +48,14 @@ class WidgetWrapper
             $this->loaded_widgets_old = $widgets;
         }
         
-        $this->register_widgets = array();
+        $this->all_widgets = array();
+        
         $widgets_dir = scandir(LIB_PATH ."Widget/widgets/");
         foreach($widgets_dir as $widget_dir) {
             if(is_dir(LIB_PATH ."Widget/widgets/".$widget_dir) && 
                 $widget_dir != '..' &&
                 $widget_dir != '.')
-               array_push($this->register_widgets, $widget_dir);         
+               array_push($this->all_widgets, $widget_dir);         
         }
     }
 
@@ -61,7 +64,6 @@ class WidgetWrapper
         if(!is_object(self::$instance)) {
             self::$instance = new WidgetWrapper($register);
         }
-        //movim_log(self::$instance);
         return self::$instance;
     }
 
@@ -100,29 +102,20 @@ class WidgetWrapper
         }
     }
     
-    function get_registered_widgets()
+    function get_all_widgets()
     {
-        return $this->register_widgets;
+        return $this->all_widgets;
     }
     
-    function set_cached_widget($widget_name)
+    function get_cached_widgets()
     {
-        //if(in_array($widget_name, $this->loaded_widgets))
-            $this->loaded_widgets_cached[$widget_name] = true;
-    }
-    
-    function get_cached_widget($widget_name)
-    {
-        if($this->loaded_widgets_cached[$widget_name] == true)
-            return true;
-        else
-            return false;
+        return $this->cached_widgets;
     }
 
     /**
      * Loads a widget and returns it.
      */
-    private function load_widget($widget_name)
+    public function load_widget($widget_name)
     {
         // Attempting to load the user's widgets in priority
 		$widget_path = "";
@@ -158,7 +151,7 @@ class WidgetWrapper
      */
     function run_widget($widget_name, $method, array $params = NULL)
     {
-        if(//$this->register_widgets &&
+        if($this->register_widgets &&
            !in_array($widget_name, $this->loaded_widgets)) {
             $this->loaded_widgets[] = $widget_name;
         }
@@ -190,6 +183,35 @@ class WidgetWrapper
         $widgets = $this->get_loaded_widgets();
         foreach($widgets as $widget) {
             $buff[] = $this->run_widget($widget, $method, $params);
+        }
+
+        return $buff;
+    }
+    
+    function iterateAll($method, array $params = NULL) {
+        $widgets = $this->get_all_widgets();
+        $isevent = array();
+        foreach($widgets as $widget) {
+            if($this->run_widget($widget, $method, $params))
+                $isevent[$widget] = true;
+        }
+                
+        if(!empty($isevent))
+            $this->cached_widgets = $isevent;
+            
+        return $isevent;
+    }
+    
+    function iterateCached($method, array $params = NULL)
+    {
+        $buff = array();
+                
+        $widgets = $this->cached_widgets;
+        
+        if(!empty($widgets)) {
+            foreach($widgets as $widget => $val) {
+                $buff[] = $this->run_widget($widget, $method, $params);
+            }
         }
 
         return $buff;

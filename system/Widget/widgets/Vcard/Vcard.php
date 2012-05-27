@@ -26,7 +26,7 @@ class Vcard extends WidgetBase
     	$this->addcss('vcard.css');
     	$this->addjs('vcard.js');
         
-        $this->cached = true;
+        //$this->cached = true;
     }
     
     function onMyVcardReceived()
@@ -35,7 +35,10 @@ class Vcard extends WidgetBase
         RPC::call('movim_fill', 'vcard', RPC::cdata($html));
     }
     
-	function ajaxVcardSubmit($vcard) {
+	function ajaxVcardSubmit($vcard)
+    {
+        foreach($vcard as $key => $value)
+            $vcard[$key] = rawurldecode($value);
 	    # Format it ISO 8601:
 	    $vcard['vCardBDay'] = $vcard['vCardBYear'].'-'.$vcard['vCardBMonth'].'-'.$vcard['vCardBDay'];
 		$this->xmpp->updateVcard($vcard);
@@ -196,7 +199,7 @@ class Vcard extends WidgetBase
     function build()
     {
         ?>
-		<div class="tabelem" title="<?php echo t('Profile'); ?>" id="vcard">
+		<div class="tabelem" title="<?php echo t('Edit my Profile'); ?>" id="vcard">
 			<?php 
 				echo $this->prepareInfos();
 			?>

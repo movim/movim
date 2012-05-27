@@ -381,7 +381,6 @@ class Jabber
             } elseif(isset($payload['pubsub']['publish']['@attributes']['node'])) {
                 list($xmlns, $id) = explode("/", $payload['pubsub']['publish']['@attributes']['node']);
                 if($payload['pubsub']['publish']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
-					movim_log($payload);
 					$this->getWallItem($this->getCleanJid(), $payload['pubsub']['publish']['item']['@attributes']['id']);
 				}
                 $this->getComments($payload['@attributes']['from'], $id);
@@ -390,7 +389,6 @@ class Jabber
             }
         }
         elseif(isset($payload['pubsub']) && isset($payload['error'])) {
-			movim_log($payload);
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
             if(isset($payload['error']['item-not-found'])) {
                 $c = new PostHandler();
