@@ -119,7 +119,7 @@ class Login extends WidgetBase {
                         if(Conf::getServerConfElement("accountCreation") == 1) {
                     ?> - 
                             <a href="?q=accountCreate"><?php echo t('Create a new account'); ?></a> - 
-                            <a href="?q=accountAdd"><?php echo t('Link my actual account'); ?></a>
+                            <a href="?q=accountAdd"><?php echo t('Link my current account'); ?></a>
                     <?php
                         }
                     ?>
@@ -129,7 +129,7 @@ class Login extends WidgetBase {
 			</div>
 	    <?php
         if(file_exists(BASE_PATH.'install/part1.php')) { ?>
-            <div class="warning">
+            <div class="warning" style="margin-top: 40px;">
             <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
             </div>
         <?php

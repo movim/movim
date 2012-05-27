@@ -134,45 +134,50 @@ class AccountAdd extends WidgetBase {
         
         $submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('accountAdd')");
         ?>
-        <div id="account" style="width: 730px; margin: 0 auto;">
-            <?php echo $warning; ?>
-            <h1><?php echo t('Add your login informations'); ?></h1>
-            <form  style="width: 500px; float: left;" name="accountAdd">
-                
-                <p style="margin-top: 20px;">
-                    <input
-                        type="email"
-                        autofocus
-                        placeholder="<?php echo t("My address"); ?>"
-                        class="big"
-                        style="width: 500px;"
-                        name="jid"/>
-                </p>
+        <div id="content" style="width: 900px">
+            <div id="left" style="width: 230px;">
+                <?php echo $warning; ?>
+            </div>
+            <div id="center" style="padding: 20px; margin-top: 20px;" >
 
-                <p>
-                    <input
-                        type="password"
-                        placeholder="<?php echo t("Password"); ?>"
-                        class="big"
-                        style="width: 500px;"
-                        name="password"
-                    />
-                </p>
+                <h1><?php echo t('Add your login informations'); ?></h1>
+                <form  style="width: 500px; float: left;" name="accountAdd">
+                    
+                    <p style="margin-top: 20px;">
+                        <input
+                            type="email"
+                            autofocus
+                            placeholder="<?php echo t("My address"); ?>"
+                            class="big"
+                            style="width: 450px;"
+                            name="jid"/>
+                    </p>
 
-                <p>
-                    <input
-                        type="password"
-                        placeholder="<?php echo t("Retype"); ?>"
-                        class="big"
-                        style="width: 500px;"
-                        name="passwordconf"
-                    />
-                </p>
-                
-                <p>
-                    <input type="button" class="button big icon submit" style="float: right;" value="<?php echo t('Create'); ?>" onclick="<?php echo $submit;?> this.className='button big icon loading';">
-                </p>
-            </form>
+                    <p>
+                        <input
+                            type="password"
+                            placeholder="<?php echo t("Password"); ?>"
+                            class="big"
+                            style="width: 450px;"
+                            name="password"
+                        />
+                    </p>
+
+                    <p>
+                        <input
+                            type="password"
+                            placeholder="<?php echo t("Retype"); ?>"
+                            class="big"
+                            style="width: 450px;"
+                            name="passwordconf"
+                        />
+                    </p>
+                    
+                    <p>
+                        <input type="button" class="button big icon submit" style="float: right;" value="<?php echo t('Create'); ?>" onclick="<?php echo $submit;?> this.className='button big icon loading';">
+                    </p>
+                </form>
+            </div>
         </div>
         <?php
     }

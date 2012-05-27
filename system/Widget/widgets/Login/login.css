@@ -3,12 +3,6 @@ html {
 }
 
 body {
-    background-color: #274950;
-    background-image: radial-gradient(center
-     45deg, ellipse, #6E9EA8 0%, #274950 100%);
-    background-image: -moz-radial-gradient(center
-     45deg, ellipse, #6E9EA8 0%, #274950 100%);
-    background-image: -webkit-radial-gradient(50% 50%, ellipse, #6E9EA8, #274950);
     background-repeat: no-repeat;
     height: auto;
     display: block;

@@ -398,7 +398,8 @@ class Jabber
                 
                 $evt->runEvent('nostream', $parent);
             } 
-            elseif(in_array( $payload['error']['@attributes']['code'], array(501, 503)) && $payload['pubsub']['create']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
+            elseif(in_array( $payload['error']['@attributes']['code'], array(501, 503)) && 
+                   $payload['pubsub']['create']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
 				$conf = new ConfVar();
 				$sdb->load($conf, array(
 									'login' => $this->getCleanJid()
@@ -408,11 +409,14 @@ class Jabber
 			}
             elseif(isset($payload['error']['feature-not-implemented']) ||
 				   isset($payload['error']['not-authorized']) || 
-				   isset($payload['error']['service-unavailable']))
+				   isset($payload['error']['service-unavailable']) ||
+                   isset($payload['error']['item-not-found'])) {
                 $evt->runEvent('nostream');
+            }
         }
-        elseif(isset($payload['error']) && isset($payload['error']['item-not-found']))
+        elseif(isset($payload['error'])) {
             $evt->runEvent('nostream');
+        }
         
         else {
             $evt->runEvent('none', var_export($payload, true));

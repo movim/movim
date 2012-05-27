@@ -36,7 +36,7 @@ class Cache
         $user = new User();
         $this->login = $user->getLogin();
 
-        $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('datajarConnection'));
+        $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
 
         $var = new CacheVar();
         $this->db->create($var);

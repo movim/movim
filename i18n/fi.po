@@ -3,67 +3,108 @@
 # This file was translated from CodingTeam at <http://codingteam.net/>.
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim \n"
+"Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-02 21:03+0200\n"
-"PO-Revision-Date: 2011-08-12 16:13:36\n"
+"POT-Creation-Date: 2012-05-27 21:41+0200\n"
+"PO-Revision-Date: 2011-10-13 19:51+0000\n"
+"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-05-27 19:56+0000\n"
+"X-Generator: Launchpad (build 15288)\n"
 
-#: ../init.php:7
-msgid "MOVIM - Test Client"
-msgstr "Movim - testiasiakas"
-
-#: ../install/part1.php:59
+#: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 msgstr "PHP versio ei yhteensopiva. Movim vaatii vähintään PHP 5.3:n"
 
-#: ../install/part1.php:59
+#: ../install/index.php:85
 msgid "Actual version : "
 msgstr ""
 
-#: ../install/part1.php:60
+#: ../install/index.php:86
 msgid "Update your PHP version or contact your server administrator"
 msgstr ""
 
-#: ../install/part1.php:63 ../install/part1.php:67 ../install/part1.php:71
-#: ../install/part1.php:89
+#: ../install/index.php:89 ../install/index.php:93 ../install/index.php:97
+#: ../install/index.php:115
 #, php-format
 msgid "Movim requires the %s extension."
 msgstr "Movim vaatii %s laajennuksen."
 
-#: ../install/part1.php:64
+#: ../install/index.php:90
 #, php-format
 msgid "Install %s and %s packages"
 msgstr ""
 
-#: ../install/part1.php:68 ../install/part1.php:72
+#: ../install/index.php:94 ../install/index.php:98
 #, php-format
 msgid "Install the %s package"
 msgstr ""
 
-#: ../install/part1.php:75
+#: ../install/index.php:101
 msgid "Movim's folder must be writable."
 msgstr "Movim -kansioon täytyy olla kirjoitusoikeudet"
 
-#: ../install/part1.php:76
+#: ../install/index.php:102
 msgid "Enable read and write rights on Movim's root folder"
 msgstr ""
 
-#: ../install/part1.php:88
+#: ../install/index.php:114
 msgid "or"
 msgstr ""
 
-#: ../install/part1.php:140 ../install/part1.php:150 ../install/part2.php:188
+#: ../install/index.php:169
+#, php-format
+msgid "Bosh connection failed with error `%s'"
+msgstr ""
+
+#: ../install/index.php:178
+#, php-format
+msgid "XMPP connection through Bosh failed with error `%s'"
+msgstr ""
+
+#: ../install/index.php:224 ../install/index.php:228 ../install/index.php:232
+#, php-format
+msgid "Couldn't create directory '%s'."
+msgstr "Ei voitu tehdä kansiota '%s'"
+
+#: ../install/index.php:261
+#, php-format
+msgid "Couldn't create configuration file '%s'."
+msgstr "Ei voitu luoda asetustiedostoa '%s'"
+
+#: ../install/index.php:283
+#, php-format
+msgid "Database connection failed with error `%s'"
+msgstr ""
+
+#: ../install/part1.php:29
+msgid "Thank you for downloading Movim!"
+msgstr ""
+
+#: ../install/part1.php:30
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
+msgstr ""
+
+#: ../install/part1.php:31
+msgid ""
+"Keep in mind that Movim is still under development and will handle many "
+"personal details. Its use can potentially endanger your data. Always pay "
+"attention to information that you submit."
+msgstr ""
+
+#: ../install/part1.php:41 ../install/part1.php:56 ../install/part2.php:15
 msgid "Movim Installer"
 msgstr "Movim installer"
 
-#: ../install/part1.php:140
+#: ../install/part1.php:41
 msgid "Compatibility Test"
 msgstr "Yhteensopivuustesti"
 
-#: ../install/part1.php:141
+#: ../install/part1.php:42
 msgid ""
 "The following requirements were not met. Please make sure they are all "
 "satisfied in order to install Movim."
@@ -71,61 +112,66 @@ msgstr ""
 "Seuraavia vaatimuksia ei voitu täyttää. Varmista että kaikki vaatimukset "
 "täytetty että voit asentaa Movimin."
 
-#: ../install/part1.php:220
-#, fuzzy
-msgid "XMPP Connection Preferences"
-msgstr "BOSH yhteyden asetukset"
-
-#: ../install/part1.php:233
-#, fuzzy
-msgid "BOSH Connection Preferences"
-msgstr "BOSH yhteyden asetukset"
-
-#: ../install/part1.php:237
-msgid "The Bosh configuration is invalid"
+#: ../install/part1.php:52
+msgid ""
+"Some errors were detected. Please correct them for the installation to "
+"proceed."
 msgstr ""
 
-#: ../install/part1.php:259
+#: ../install/part1.php:110
+msgid "empty"
+msgstr ""
+
+#: ../install/part1.php:111
+msgid "terse"
+msgstr ""
+
+#: ../install/part1.php:112
+msgid "normal"
+msgstr ""
+
+#: ../install/part1.php:113
+msgid "talkative"
+msgstr ""
+
+#: ../install/part1.php:114
+msgid "ultimate"
+msgstr ""
+
+#: ../install/part1.php:144
+msgid "XMPP Connection Preferences"
+msgstr ""
+
+#: ../install/part1.php:157
+msgid "BOSH Connection Preferences"
+msgstr ""
+
+#: ../install/part1.php:183
 msgid "Proxy Preferences"
 msgstr ""
 
-#: ../install/part1.php:284
-msgid "The Database configuration is invalid"
-msgstr ""
-
-#: ../install/part2.php:99 ../install/part2.php:103 ../install/part2.php:107
-#, php-format
-msgid "Couldn't create directory '%s'."
-msgstr "Ei voitu tehdä kansiota '%s'"
-
-#: ../install/part2.php:136
-#, php-format
-msgid "Couldn't create configuration file '%s'."
-msgstr "Ei voitu luoda asetustiedostoa '%s'"
-
-#: ../install/part2.php:188
+#: ../install/part2.php:15
 msgid "Success !"
 msgstr ""
 
-#: ../install/part2.php:191
+#: ../install/part2.php:18
 msgid "Valid Bosh"
 msgstr ""
 
-#: ../install/part2.php:192
+#: ../install/part2.php:19
 msgid "Database Detected"
 msgstr ""
 
-#: ../install/part2.php:193
-#, fuzzy
+#: ../install/part2.php:20
 msgid "Database Movim schema installed"
-msgstr "Movim asennettu!"
+msgstr ""
 
-#: ../install/part2.php:196
-#, fuzzy, php-format
+#: ../install/part2.php:23
+#, php-format
 msgid "You can now access your shiny Movim instance %sJump In !%s"
-msgstr "Voi nyt yhdistää uudenkartheaan %s Movim instanssiin %s"
+msgstr ""
 
-#: ../install/part2.php:197 ../system/Widget/widgets/Login/Login.php:87
+#: ../install/part2.php:24 ../system/Widget/widgets/Login/Login.php:133
 #, php-format
 msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
@@ -140,20 +186,20 @@ msgstr "Ei voitu ladata elementin arvoa '%s'"
 msgid "Cannot load file '%s'"
 msgstr "Ei voi ladata tiedostoa '%s'"
 
-#: ../system/Jabber.php:107
+#: ../system/Jabber.php:109
 msgid "User not logged in."
 msgstr "Käyttäjä ei ole kirjautunut sisään."
 
-#: ../system/Jabber.php:111
+#: ../system/Jabber.php:113
 msgid "JID not provided."
 msgstr "JID ei määritetty."
 
-#: ../system/Jabber.php:135
+#: ../system/Jabber.php:137
 #, php-format
 msgid "jid '%s' is incorrect"
 msgstr "jid '%s' on väärin"
 
-#: ../system/Jabber.php:145 ../system/Widget/widgets/Login/Login.php:117
+#: ../system/Jabber.php:147 ../system/Widget/widgets/Login/Login.php:108
 msgid "Connecting..."
 msgstr ""
 
@@ -167,216 +213,366 @@ msgstr "Ei voi avata lokitiedostoa '%s'"
 msgid "Error: %s"
 msgstr "Virhe: %s"
 
-#: ../system/User.php:68
-msgid "Wrong password"
-msgstr "Väärä salasana"
+#: ../system/Utils.php:123
+msgid "Monday"
+msgstr ""
 
-#: ../system/Utils.php:117
+#: ../system/Utils.php:124
+msgid "Tuesday"
+msgstr ""
+
+#: ../system/Utils.php:125
+msgid "Wednesday"
+msgstr ""
+
+#: ../system/Utils.php:126
+msgid "Thursday"
+msgstr ""
+
+#: ../system/Utils.php:127 ../system/Utils.php:129
+msgid "Friday"
+msgstr ""
+
+#: ../system/Utils.php:128
+msgid "Saturday"
+msgstr ""
+
+#: ../system/Utils.php:132
+msgid "January"
+msgstr ""
+
+#: ../system/Utils.php:133
+msgid "February"
+msgstr ""
+
+#: ../system/Utils.php:134
+msgid "March"
+msgstr ""
+
+#: ../system/Utils.php:135
+msgid "April"
+msgstr ""
+
+#: ../system/Utils.php:136
+msgid "May"
+msgstr ""
+
+#: ../system/Utils.php:137
+msgid "June"
+msgstr ""
+
+#: ../system/Utils.php:138
+msgid "July"
+msgstr ""
+
+#: ../system/Utils.php:139
+msgid "August"
+msgstr ""
+
+#: ../system/Utils.php:140
+msgid "September"
+msgstr ""
+
+#: ../system/Utils.php:141
+msgid "October"
+msgstr ""
+
+#: ../system/Utils.php:142
+msgid "November"
+msgstr ""
+
+#: ../system/Utils.php:143
+msgid "December"
+msgstr ""
+
+#: ../system/Utils.php:149
 msgid "Today"
 msgstr ""
 
-#: ../system/Utils.php:119
+#: ../system/Utils.php:151
 msgid "Tomorrow"
 msgstr ""
 
-#: ../system/Utils.php:121
+#: ../system/Utils.php:153
 msgid "Yesterday"
 msgstr ""
 
-#: ../system/Utils.php:127
+#: ../system/Utils.php:159
 msgid "day"
 msgstr ""
 
-#: ../system/Utils.php:130
+#: ../system/Utils.php:162
 #, php-format
 msgid " %d days ago"
 msgstr ""
 
+#: ../system/Utils.php:195 ../system/Utils.php:206
+msgid "None"
+msgstr ""
+
+#: ../system/Utils.php:196
+msgid "Male"
+msgstr ""
+
+#: ../system/Utils.php:197
+msgid "Female"
+msgstr ""
+
+#: ../system/Utils.php:198
+msgid "Other"
+msgstr ""
+
+#: ../system/Utils.php:207
+msgid "Single"
+msgstr ""
+
+#: ../system/Utils.php:208
+msgid "In a relationship"
+msgstr ""
+
+#: ../system/Utils.php:209
+msgid "Married"
+msgstr ""
+
+#: ../system/Utils.php:210
+msgid "Divorced"
+msgstr ""
+
+#: ../system/Utils.php:211
+msgid "Widowed"
+msgstr ""
+
+#: ../system/Utils.php:212
+msgid "Cohabiting"
+msgstr ""
+
+#: ../system/Utils.php:213
+msgid "Civil Union"
+msgstr ""
+
 #: ../system/Controller/ControllerMain.php:40
-#: ../system/Controller/ControllerMain.php:59
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Tervetuloa käyttämään Movimia"
 
 #: ../system/Controller/ControllerMain.php:41
-#: ../system/Controller/ControllerMain.php:60
-#: ../system/Controller/ControllerMain.php:94
-#: ../system/Controller/ControllerMain.php:113
-#: ../system/Controller/ControllerMain.php:129
-#: ../system/Controller/ControllerMain.php:148
+#: ../system/Controller/ControllerMain.php:75
+#: ../system/Controller/ControllerMain.php:99
+#: ../system/Controller/ControllerMain.php:119
+#: ../system/Controller/ControllerMain.php:151
+#: ../system/Controller/ControllerMain.php:167
+#: ../system/Controller/ControllerMain.php:186
+#: ../system/Controller/ControllerMain.php:215
 msgid "Home"
 msgstr "Koti"
 
 #: ../system/Controller/ControllerMain.php:42
-#: ../system/Controller/ControllerMain.php:74
-#: ../system/Controller/ControllerMain.php:95
-#: ../system/Controller/ControllerMain.php:114
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:143
-#: ../system/Widget/widgets/Vcard/Vcard.php:134
+#: ../system/Controller/ControllerMain.php:78
+#: ../system/Controller/ControllerMain.php:100
+#: ../system/Controller/ControllerMain.php:120
+#: ../system/Controller/ControllerMain.php:216
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:175
 msgid "Profile"
 msgstr "Profiili"
 
 #: ../system/Controller/ControllerMain.php:43
-#: ../system/Controller/ControllerMain.php:75
-#: ../system/Controller/ControllerMain.php:96
-#: ../system/Controller/ControllerMain.php:115
+#: ../system/Controller/ControllerMain.php:79
+#: ../system/Controller/ControllerMain.php:101
+#: ../system/Controller/ControllerMain.php:121
+#: ../system/Controller/ControllerMain.php:217
 msgid "Configuration"
 msgstr "Konfiguraatio"
 
-#: ../system/Controller/ControllerMain.php:93
+#: ../system/Controller/ControllerMain.php:44
+#: ../system/Controller/ControllerMain.php:80
+#: ../system/Controller/ControllerMain.php:102
+#: ../system/Controller/ControllerMain.php:122
+#: ../system/Controller/ControllerMain.php:218
+msgid "Help"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:98
 #, php-format
 msgid "%s - Configuration"
 msgstr "%s - Konfigurointi"
 
-#: ../system/Controller/ControllerMain.php:112
-#, fuzzy, php-format
+#: ../system/Controller/ControllerMain.php:118
+#, php-format
 msgid "%s - Profile"
-msgstr "Profiili"
+msgstr ""
 
-#: ../system/Controller/ControllerMain.php:127
+#: ../system/Controller/ControllerMain.php:150
 #, php-format
 msgid "%s - Account Creation"
 msgstr "%s - Tilin luominen"
 
-#: ../system/Controller/ControllerMain.php:130
-#: ../system/Controller/ControllerMain.php:150
+#: ../system/Controller/ControllerMain.php:152
+#: ../system/Controller/ControllerMain.php:168
 msgid "Account Creation"
 msgstr "Käyttäjätilin luominen"
 
-#: ../system/Controller/ControllerMain.php:146
+#: ../system/Controller/ControllerMain.php:166
+#, php-format
+msgid "%s - Add An Account"
+msgstr ""
+
+#: ../system/Controller/ControllerMain.php:184
 #, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - Kirjaudu Movimiin"
 
-#: ../system/Widget/widgets/Account/Account.php:169
+#: ../system/Controller/ControllerMain.php:205
+#, php-format
+msgid "%s - Help Page"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:170
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:100
 msgid "Some data are missing !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:175
+#: ../system/Widget/widgets/Account/Account.php:176
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:106
 msgid "Wrong ID"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:181
+#: ../system/Widget/widgets/Account/Account.php:182
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:112
 msgid "You entered different passwords"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:187
-#, fuzzy
+#: ../system/Widget/widgets/Account/Account.php:188
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:118
 msgid "Invalid name"
-msgstr "Validoi"
+msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:193
+#: ../system/Widget/widgets/Account/Account.php:194
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:124
 msgid "Username already taken"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:199
+#: ../system/Widget/widgets/Account/Account.php:200
 msgid "Could not connect to the XMPP server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:205
+#: ../system/Widget/widgets/Account/Account.php:206
 msgid "Could not communicate with the XMPP server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:211
+#: ../system/Widget/widgets/Account/Account.php:212
 msgid "Unknown error"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:226
+#: ../system/Widget/widgets/Account/Account.php:229
+#: ../system/Widget/widgets/Login/Login.php:121
+msgid "Create a new account"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:232
 msgid ""
 "Firstly fill in this blank with a brand new account ID, this address will "
 "follow you on all the Movim network !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:226
+#: ../system/Widget/widgets/Account/Account.php:232
 msgid "Only alphanumerics elements are authorized"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:230
-#: ../system/Widget/widgets/Login/Login.php:113
+#: ../system/Widget/widgets/Account/Account.php:236
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:150
+#: ../system/Widget/widgets/Login/Login.php:103
 msgid "My address"
 msgstr "Oma osoite"
 
-#: ../system/Widget/widgets/Account/Account.php:241
+#: ../system/Widget/widgets/Account/Account.php:247
 msgid "Make sure your password is safe :"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:241
+#: ../system/Widget/widgets/Account/Account.php:247
 msgid "A capital letter, a digit and a special character are recommended"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:241
+#: ../system/Widget/widgets/Account/Account.php:247
 msgid "8 characters"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:241
+#: ../system/Widget/widgets/Account/Account.php:247
 msgid "Example :"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:243
-#: ../system/Widget/widgets/Login/Login.php:115
+#: ../system/Widget/widgets/Account/Account.php:249
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:159
+#: ../system/Widget/widgets/Login/Login.php:105
 msgid "Password"
 msgstr "Salasana"
 
-#: ../system/Widget/widgets/Account/Account.php:252
+#: ../system/Widget/widgets/Account/Account.php:259
 msgid "Same here !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:254
+#: ../system/Widget/widgets/Account/Account.php:261
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:169
 msgid "Retype"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:263
+#: ../system/Widget/widgets/Account/Account.php:271
 msgid "Pseudo"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:271
+#: ../system/Widget/widgets/Account/Account.php:280
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:177
 msgid "Create"
 msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:50
-#: ../system/Widget/widgets/Logout/Logout.php:79
-#, fuzzy
-msgid "Online"
-msgstr "Hylkää"
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:130
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
+msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:51
-#: ../system/Widget/widgets/Logout/Logout.php:80
+#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:143
+msgid "Add your login informations"
+msgstr ""
+
+#: ../system/Widget/widgets/Chat/Chat.php:40
+#: ../system/Widget/widgets/Logout/Logout.php:82
+msgid "Online"
+msgstr ""
+
+#: ../system/Widget/widgets/Chat/Chat.php:41
+#: ../system/Widget/widgets/Logout/Logout.php:83
 msgid "Away"
 msgstr "Poissa"
 
-#: ../system/Widget/widgets/Chat/Chat.php:52
-#: ../system/Widget/widgets/Logout/Logout.php:81
-#, fuzzy
+#: ../system/Widget/widgets/Chat/Chat.php:42
+#: ../system/Widget/widgets/Logout/Logout.php:84
 msgid "Do Not Disturb"
-msgstr "Ei saa häiritä"
+msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:53
-#: ../system/Widget/widgets/Logout/Logout.php:82
+#: ../system/Widget/widgets/Chat/Chat.php:43
+#: ../system/Widget/widgets/Logout/Logout.php:85
 msgid "Extended Away"
 msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:54
-#, fuzzy
+#: ../system/Widget/widgets/Chat/Chat.php:44
 msgid "Offline"
-msgstr "Hylkää"
+msgstr ""
 
-#: ../system/Widget/widgets/Chat/Chat.php:232
-#, fuzzy
+#: ../system/Widget/widgets/Chat/Chat.php:260
 msgid "Composing..."
-msgstr "Lähetetään"
+msgstr ""
 
 #: ../system/Widget/widgets/Config/Config.php:45
 msgid "Language"
 msgstr "Kieli"
 
 #: ../system/Widget/widgets/Config/Config.php:59
-#: ../system/Widget/widgets/Feed/Feed.php:145
-#: ../system/Widget/widgets/Vcard/Vcard.php:111
+#: ../system/Widget/widgets/Feed/Feed.php:144
+#: ../system/Widget/widgets/Feed/Feed.php:155
+#: ../system/Widget/widgets/Vcard/Vcard.php:179
 msgid "Submit"
 msgstr "Lähetä"
 
 #: ../system/Widget/widgets/Config/Config.php:60
-#: ../system/Widget/widgets/Vcard/Vcard.php:112
+#: ../system/Widget/widgets/Vcard/Vcard.php:180
 msgid "Reset"
 msgstr "Nollaa"
 
@@ -396,276 +592,343 @@ msgstr ""
 msgid "Chat"
 msgstr "Chat"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:108
-#: ../system/Widget/widgets/Vcard/Vcard.php:67
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:110
+#: ../system/Widget/widgets/ContactSummary/ContactSummary.php:63
+#: ../system/Widget/widgets/Vcard/Vcard.php:75
 msgid "General Informations"
 msgstr "Perustiedot"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:110
-#: ../system/Widget/widgets/Vcard/Vcard.php:69
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
+#: ../system/Widget/widgets/Vcard/Vcard.php:77
 msgid "Name"
 msgstr "Nimi"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:111
-#: ../system/Widget/widgets/Vcard/Vcard.php:72
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:113
+#: ../system/Widget/widgets/Vcard/Vcard.php:80
 msgid "Nickname"
 msgstr "Lempinimi"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:112
-#, fuzzy
-msgid "Address"
-msgstr "Osoite"
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:115
+#: ../system/Widget/widgets/Vcard/Vcard.php:124
+msgid "Gender"
+msgstr ""
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:114
-#: ../system/Widget/widgets/Vcard/Vcard.php:75
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:117
+#: ../system/Widget/widgets/Vcard/Vcard.php:135
+msgid "Marital Status"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:120
+#: ../system/Widget/widgets/Vcard/Vcard.php:84
 msgid "Date of Birth"
 msgstr "Syntymäaika"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:118
-#: ../system/Widget/widgets/Vcard/Vcard.php:80
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:121
+msgid "Address"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:125
+#: ../system/Widget/widgets/Vcard/Vcard.php:147
 msgid "Website"
 msgstr "Nettisivu"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:119
-#: ../system/Widget/widgets/Vcard/Vcard.php:85
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:126
+#: ../system/Widget/widgets/Vcard/Vcard.php:152
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:122
-#: ../system/Widget/widgets/Vcard/Vcard.php:92
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:129
+#: ../system/Widget/widgets/Vcard/Vcard.php:160
 msgid "About Me"
-msgstr "Tietoja minusta"
+msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:44
-#, fuzzy
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:138
+#: ../system/Widget/widgets/ContactSummary/ContactSummary.php:88
+msgid "Bot"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:139
+#: ../system/Widget/widgets/ContactSummary/ContactSummary.php:89
+msgid "Desktop"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:140
+#: ../system/Widget/widgets/ContactSummary/ContactSummary.php:90
+msgid "Phone"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:149
+#: ../system/Widget/widgets/ContactSummary/ContactSummary.php:106
+msgid "Client Informations"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:151
+msgid "Client Name"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:152
+msgid "Client Type"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:43
 msgid "Loading your feed ..."
-msgstr "Ladataan kontaktit-feediä"
+msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:55
+#: ../system/Widget/widgets/Feed/Feed.php:54
 msgid "Get older posts"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:87
-msgid "Me"
+#: ../system/Widget/widgets/Feed/Feed.php:72
+msgid "Your feed cannot be loaded."
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:93
-msgid "Get the comments"
-msgstr "Lataa kommentit"
-
-#: ../system/Widget/widgets/Feed/Feed.php:100
-#, fuzzy
-msgid "Your feed cannot be loaded."
-msgstr "Kontakteja ei voi ladata."
-
-#: ../system/Widget/widgets/Feed/Feed.php:133
-#: ../system/Widget/widgets/Wall/Wall.php:102
+#: ../system/Widget/widgets/Feed/Feed.php:108
+#: ../system/Widget/widgets/Wall/Wall.php:109
 msgid "Feed"
 msgstr "Feedi"
 
-#: ../system/Widget/widgets/Feed/Feed.php:141
+#: ../system/Widget/widgets/Feed/Feed.php:122
+msgid ""
+"Your server doesn't support post publication, you can only read contact's "
+"feeds"
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:134
+#: ../system/Widget/widgets/Feed/Feed.php:137
+#: ../system/Widget/widgets/Feed/Feed.php:148
+#: ../system/Widget/widgets/Feed/Feed.php:151
 msgid "What's new ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:160
+#: ../system/Widget/widgets/Feed/Feed.php:166
 msgid "All"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:161
+#: ../system/Widget/widgets/Feed/Feed.php:167
 msgid "My Posts"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:174
-msgid "Create the feed"
+#: ../system/Widget/widgets/Help/Help.php:32
+msgid "What is Movim ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:34
+#: ../system/Widget/widgets/Help/Help.php:34
+#, php-format
+msgid ""
+"Visit the page %s What is Movim ? %s to know more about the project, its "
+"aims and understand how it works."
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:37
+msgid "What do the little banners refer to ?"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:46
+msgid ""
+"Thanks to these five little banners, you can quickly identitfy the level of "
+"confdentiality applied to the information you provide."
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:50
+msgid "White, only you can see the information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:51
+msgid "Green, you have chosen some contacts who can see your information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:52
+msgid "Orange, all your contact list can see your information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:53
+msgid "Red, everybody in the XMPP network can see your information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:54
+msgid "Black, the whole Internet can see your information"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:58
+msgid ""
+"Some features are missing/I can't do everything I used to do on other social "
+"networks"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:60
+#, php-format
+msgid ""
+"Although Movim is evolving fast, many (many) features are missing. Be "
+"patient ;). You can have a look %s at next versions's roadmaps %s to know if "
+"the one you want is on its way."
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:62
+#, php-format
+msgid ""
+"Don't forget that Movim is an open source project, a helping hand is always "
+"welcome (see %s Can I participate %s)"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:65
+msgid "I can't find the answer to my question here"
+msgstr ""
+
+#: ../system/Widget/widgets/Help/Help.php:67
+#, php-format
+msgid ""
+"Go to the %s to the Frequently Asked Questions %s or come ask your question "
+"on the official chatroom %s or via our mailing-list (%s see the dedicated "
+"page %s)."
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:35
 msgid "Wrong username"
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:40
+#: ../system/Widget/widgets/Login/Login.php:41
 msgid "Invalid JID"
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:46
+#: ../system/Widget/widgets/Login/Login.php:47
+msgid "Wrong password"
+msgstr "Väärä salasana"
+
+#: ../system/Widget/widgets/Login/Login.php:53
 msgid "The XMPP authentification failed"
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:52
+#: ../system/Widget/widgets/Login/Login.php:59
 msgid "The current BOSH URL in invalid"
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:58
+#: ../system/Widget/widgets/Login/Login.php:65
 msgid "Internal server error"
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:64
+#: ../system/Widget/widgets/Login/Login.php:71
 msgid "Session error"
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:70
+#: ../system/Widget/widgets/Login/Login.php:77
 msgid "Account successfully created"
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:78
+#: ../system/Widget/widgets/Login/Login.php:83
+msgid "Movim fail to authenticate. You entered wrong data"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:91
 msgid "Your web browser is too old to use with Movim."
 msgstr ""
 
-#: ../system/Widget/widgets/Login/Login.php:117
+#: ../system/Widget/widgets/Login/Login.php:110
 msgid "Come in!"
 msgstr "Tule sisään!"
 
-#: ../system/Widget/widgets/Login/Login.php:124
+#: ../system/Widget/widgets/Login/Login.php:117
 #, php-format
 msgid "This server host %s accounts"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:122
+msgid "Link my current account"
 msgstr ""
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr "Debug konsoli"
 
-#: ../system/Widget/widgets/Logout/Logout.php:83
+#: ../system/Widget/widgets/Logout/Logout.php:86
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:45
+#: ../system/Widget/widgets/Notifs/Notifs.php:44
 msgid "wants to talk with you"
 msgstr "haluaa jutella kanssasi"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:47
+#: ../system/Widget/widgets/Notifs/Notifs.php:56
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:48
-#: ../system/Widget/widgets/Notifs/Notifs.php:100
+#: ../system/Widget/widgets/Notifs/Notifs.php:62
+#: ../system/Widget/widgets/Notifs/Notifs.php:156
 msgid "Validate"
 msgstr "Validoi"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:49
+#: ../system/Widget/widgets/Notifs/Notifs.php:68
 msgid "Decline"
 msgstr "Hylkää"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:99
+#: ../system/Widget/widgets/Notifs/Notifs.php:120
+#, php-format
+msgid "Contacts (%s)"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:126
+msgid "Add"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:147
 msgid "Alias"
 msgstr "Alias"
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:101
-msgid "Add a contact"
-msgstr "Lisää kontakti"
-
-#: ../system/Widget/widgets/Roster/Roster.php:107
-msgid "Show All"
+#: ../system/Widget/widgets/Notifs/Notifs.php:163
+msgid "Cancel"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:54
+#: ../system/Widget/widgets/Profile/Profile.php:88
+msgid "No profile yet ?"
+msgstr ""
+
+#: ../system/Widget/widgets/Profile/Profile.php:89
+#: ../system/Widget/widgets/Vcard/Vcard.php:62
 msgid "Create my vCard"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:111
-#, fuzzy
-msgid "Submitting"
-msgstr "Lähetä"
+#: ../system/Widget/widgets/Roster/Roster.php:129
+#: ../system/Widget/widgets/Roster/Roster.php:141
+msgid "Ungrouped"
+msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:63
-#: ../system/Widget/widgets/Wall/Wall.php:109
+#: ../system/Widget/widgets/Roster/Roster.php:150
+msgid "Show All"
+msgstr ""
+
+#: ../system/Widget/widgets/Vcard/Vcard.php:85
+msgid "Day"
+msgstr ""
+
+#: ../system/Widget/widgets/Vcard/Vcard.php:99
+msgid "Month"
+msgstr ""
+
+#: ../system/Widget/widgets/Vcard/Vcard.php:113
+msgid "Year"
+msgstr ""
+
+#: ../system/Widget/widgets/Vcard/Vcard.php:179
+msgid "Submitting"
+msgstr ""
+
+#: ../system/Widget/widgets/Vcard/Vcard.php:202
+msgid "Edit my Profile"
+msgstr ""
+
+#: ../system/Widget/widgets/Wall/Wall.php:64
+#: ../system/Widget/widgets/Wall/Wall.php:116
 msgid "Follow"
 msgstr ""
 
-#: ../system/Widget/widgets/Wall/Wall.php:122
+#: ../system/Widget/widgets/Wall/Wall.php:135
 msgid "Loading the contact feed ..."
 msgstr "Ladataan kontaktit-feediä"
 
-#, fuzzy
-#~ msgid "Loading comments ..."
-#~ msgstr "Ladataan kontaktit-feediä"
+#~ msgid "MOVIM - Test Client"
+#~ msgstr "Movim - testiasiakas"
 
-#~ msgid "Theme"
-#~ msgstr "Teema"
+#~ msgid "Add a contact"
+#~ msgstr "Lisää kontakti"
 
-#~ msgid "Default language"
-#~ msgstr "Oletuskieli"
-
-#~ msgid "Bosh cookie's expiration (s)"
-#~ msgstr "Bosh evästeen vanhentuminen (s)"
-
-#~ msgid "Bosh cookie's path"
-#~ msgstr "Bosh evästeen hakemistopolku"
-
-#~ msgid "Bosh cookie's domain"
-#~ msgstr "Bosh evästeen domain"
-
-#~ msgid "Use HTTPS for Bosh"
-#~ msgstr "Käytä salattua yhteyttä (https)"
-
-#~ msgid "Use only HTTP for Bosh"
-#~ msgstr "Käytä vain salaamatonta yhteyttä (http)"
-
-#~ msgid "Log verbosity"
-#~ msgstr "Lokita laajemmin"
-
-#~ msgid "Allow account creation"
-#~ msgstr "Salli käyttäjätilien luominen"
-
-#~ msgid "Bosh Host"
-#~ msgstr "Bosh isäntä"
-
-#~ msgid "Bosh Suffix"
-#~ msgstr "Bosh suffiksi"
-
-#~ msgid "Bosh Port"
-#~ msgstr "Bosh portti"
-
-#~ msgid "<h2>Storage</h2>"
-#~ msgstr "<h2>Varastointi</h2>"
-
-#~ msgid "Movim is installed!"
-#~ msgstr "Movim asennettu!"
-
-#~ msgid "You can now access your shiny %sMovim instance%s"
-#~ msgstr "Voi nyt yhdistää uudenkartheaan %s Movim instanssiin %s"
-
-#~ msgid "Couldn't create file %s"
-#~ msgstr "Ei voi luoda tiedostoa %s"
-
-#~ msgid "Couldn't create configuration files."
-#~ msgstr "Ei voitu luoda asetustiedostoja."
-
-#~ msgid "Couldn't save img file %s"
-#~ msgstr "Ei voitu tallentaa kuvatiedostoa %s"
-
-#~ msgid "Composing"
-#~ msgstr "Lähetetään"
-
-#~ msgid "Paused"
-#~ msgstr "Pysäytetty"
-
-#~ msgid "Message"
-#~ msgstr "Viesti"
-
-#~ msgid ""
-#~ "Changing these data can be dangerous and may compromise the connection to "
-#~ "the Jabber server"
-#~ msgstr ""
-#~ "Näiden tietojen vaihtaminen voi olla vaarallista ja evätä yhteyden Jabber "
-#~ "serverille."
-
-#~ msgid "Away for a long time"
-#~ msgstr "Poissa pitkään"
-
-#~ msgid "Your avatar"
-#~ msgstr "Sinun avatar"
-
-#~ msgid "Contact's feed cannot be loaded."
-#~ msgstr "Kontakteja ei voi ladata."
-
-#~ msgid "Couldn't open cache. Please contact the administrator."
-#~ msgstr "Ei voitu avata välimustia. Ota yhteyttä järjestelmänvalvojaan."
-
-#~ msgid "Date of birth"
-#~ msgstr "Syntymäaika"
-
-#~ msgid "Refresh the data"
-#~ msgstr "Virkistä tiedot"
-
-#~ msgid "Hye, I'm on Movim !"
-#~ msgstr "Hei, olen Movim -verkossa !"
+#~ msgid "Get the comments"
+#~ msgstr "Lataa kommentit"

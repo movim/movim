@@ -2,6 +2,9 @@
 require_once('../system/Lang/i18n.php');
 require_once('../system/Lang/languages.php');
 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 function get_mysql_port() { 
     $port = ini_get('mysql.default_port');
     if($port == "")
@@ -217,8 +220,8 @@ function make_xml($stuff)
 function perform_install()
 {
   // Creating the folders.
-  if(!test_dir('../user') && !@mkdir('../user')) {
-    echo t("Couldn't create directory '%s'.", 'user');
+  if(!test_dir('../cache') && !@mkdir('../cache')) {
+    echo t("Couldn't create directory '%s'.", 'cache');
     return false;
   }
   if(!test_dir('../log') && !@mkdir('../log')) {
@@ -247,7 +250,7 @@ function perform_install()
       'defBoshHost'        => $_POST['defBoshHost'],
       'defBoshSuffix'      => $_POST['defBoshSuffix'],
       'defBoshPort'        => $_POST['defBoshPort'],
-      'storageDriver'      => $_POST['storage'],
+      'storageDriver'      => $_POST['datajar'],
       'storageConnection'  => $_POST['database'],
       'proxyEnabled'       => get_checkbox('proxyEnabled'),
       'proxyURL'           => $_POST['proxyURL'],
@@ -293,7 +296,13 @@ if(isset($_POST['install'])) {
     $sdb->create($message);
 
     $presence = new Presence();
-    $sdb->create($presence);      
+    $sdb->create($presence);   
+    
+    $post = new Post();
+    $sdb->create($post);   
+    
+    $caps = new Caps();
+    $sdb->create($caps);   
     
     $attachment = new Attachment();
     $sdb->create($attachment);

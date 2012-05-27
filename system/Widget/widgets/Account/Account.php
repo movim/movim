@@ -217,63 +217,70 @@ class Account extends WidgetBase {
 	$conf = Conf::getServerConf();
 	$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('account')");
 	?>
-	<div id="account" style="width: 730px; margin: 0 auto;">
-        <?php echo $warning; ?>
-	    <form  style="width: 500px; float: left;" name="account">
-	        <input type="hidden" name="server" value="<?php echo $conf['host']; ?>">
-	        <h1><?php echo t('Create a new account'); ?></h1>
-	        <p style="margin-top: 20px;">
-	            <input
-	                onfocus="accountAdvices('<p><?php echo t('Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');"
-	                onblur="accountAdvices(); document.querySelector('#nick').value = this.value;"
-	                pattern="[a-zA-Z0-9]+"
-	                autofocus
-	                placeholder="<?php echo t("My address"); ?>"
-	                class="big"
-	                style="text-align: right;"
-	                name="username"/>
-	                <span style="font-size: 17px;">@<?php echo $conf['host']; ?></span>
-	        </p>
+    <div id="content" style="width: 900px">
+        <div id="left" style="width: 230px;">
+            <?php echo $warning; ?>
+            <div id="advices" class="warning"></div>
+        </div>
+        <div id="center" style="padding: 20px; margin-top: 20px;" >
+        
+            <form name="account">
+                <input type="hidden" name="server" value="<?php echo $conf['host']; ?>">
+                <h1><?php echo t('Create a new account'); ?></h1>
+                <p style="margin-top: 20px;">
+                    <input
+                        onfocus="accountAdvices('<p><?php echo t('Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');"
+                        onblur="accountAdvices(); document.querySelector('#nick').value = this.value;"
+                        pattern="[a-zA-Z0-9]+"
+                        autofocus
+                        placeholder="<?php echo t("My address"); ?>"
+                        class="big"
+                        style="text-align: right; width: 300px;"
+                        name="username"/>
+                        <span style="font-size: 17px;">@<?php echo $conf['host']; ?></span>
+                </p>
 
-	        <p>
-	            <input
-	                type="password"
-	                onfocus="
-	                    accountAdvices('<p><?php echo addslashes(t('Make sure your password is safe :')); ?> <ul><li><?php echo addslashes(t('A capital letter, a digit and a special character are recommended')); ?></li><li><?php echo t('8 characters'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');"
-	                onblur="accountAdvices();"
-	                placeholder="<?php echo t("Password"); ?>"
-	                class="big"
-	                name="password"
-	            />
-	        </p>
+                <p>
+                    <input
+                        type="password"
+                        onfocus="
+                            accountAdvices('<p><?php echo addslashes(t('Make sure your password is safe :')); ?> <ul><li><?php echo addslashes(t('A capital letter, a digit and a special character are recommended')); ?></li><li><?php echo t('8 characters'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');"
+                        onblur="accountAdvices();"
+                        placeholder="<?php echo t("Password"); ?>"
+                        class="big"
+                        name="password"
+                        style="width: 300px;"
+                    />
+                </p>
 
-	        <p>
-	            <input
-	                type="password"
-	                onfocus="accountAdvices('<p><?php echo t('Same here !'); ?></p>');"
-	                onblur="accountAdvices();"
-	                placeholder="<?php echo t("Retype"); ?>"
-	                class="big"
-	                name="passwordconf"
-	            />
-	        </p>
+                <p>
+                    <input
+                        type="password"
+                        onfocus="accountAdvices('<p><?php echo t('Same here !'); ?></p>');"
+                        onblur="accountAdvices();"
+                        placeholder="<?php echo t("Retype"); ?>"
+                        class="big"
+                        name="passwordconf"
+                        style="width: 300px;"
+                    />
+                </p>
 
-	        <p>
-	            <input
-	                pattern="[a-zA-Z0-9]+"
-	                placeholder="<?php echo t("Pseudo"); ?>"
-	                class="big"
-	                name="nick"
-	                id="nick"
-	            />
-	        </p>
+                <p>
+                    <input
+                        pattern="[a-zA-Z0-9]+"
+                        placeholder="<?php echo t("Pseudo"); ?>"
+                        class="big"
+                        name="nick"
+                        id="nick"
+                        style="width: 300px;"
+                    />
+                </p>
 
-	        <p>
-	            <input type="button" class="button big icon submit" style="float: right;" value="<?php echo t('Create'); ?>" onclick="<?php echo $submit;?> this.className='button big icon loading';">
-	        </p>
+                <p>
+                    <input type="button" class="button big icon submit" style="margin-left: 400px;" value="<?php echo t('Create'); ?>" onclick="<?php echo $submit;?> this.className='button big icon loading';">
+                </p>
 
-	    </form>
-	    <div id="advices" class="warning" style="width: 200px; height: 160px; float: right; margin-top: 60px;">
+            </form>
 	    </div>
 	</div>
 	<?php
