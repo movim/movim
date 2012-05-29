@@ -55,7 +55,7 @@ class Config extends WidgetBase
 				  } ?>
 				</select>
 				<hr />
-                <img style="display: none; float: right;" src="<?php echo $this->respath('spinner.gif');?>" id="confspinner"/>
+                
 				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;">
 				<input type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">
                 </p>
