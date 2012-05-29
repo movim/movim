@@ -17,7 +17,7 @@
  */
 
 ini_set('log_errors', 1);
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 ini_set('error_log', 'log/php.log');
 
@@ -35,6 +35,20 @@ function display_image($hash, $type) {
     header('Date: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
     header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT');
 }
+
+if (!function_exists('getallheaders')) {
+        function getallheaders() {
+            foreach($_SERVER as $key=>$value) {
+                if (substr($key,0,5)=="HTTP_") {
+                    $key=str_replace(" ","-",ucwords(strtolower(str_replace("_"," ",substr($key,5)))));
+                    $out[$key]=$value;
+                }else{
+                    $out[$key]=$value;
+        }
+            }
+            return $out;
+        }
+} 
 
 // We load the avatar from the database and we display it
 if(isset($_GET['c'])) {
