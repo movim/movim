@@ -131,7 +131,7 @@ class Feed extends WidgetCommon {
 					<textarea 
 						id="feedmessagecontent"
 						onfocus="
-                            if(this.value == '<?php echo t('What\'s new ?'); ?>') {this.value='';}
+                            if(this.value == '<?php echo t('What\\\'s new ?'); ?>') {this.value='';}
                             document.querySelector('#feedsubmitrow').style.display = 'block';" 
                         
                     ><?php echo t('What\'s new ?'); ?></textarea>
@@ -145,10 +145,10 @@ class Feed extends WidgetCommon {
                         onclick="
                             if(
                                 document.querySelector('#feedmessagecontent').value != '' && 
-                                document.querySelector('#feedmessagecontent').value != '<?php echo t('What\'s new ?'); ?>') {
+                                document.querySelector('#feedmessagecontent').value != '<?php echo t('What\\\'s new ?'); ?>') {
                                     <?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>
                             }
-                            else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\'s new ?'); ?>' }                  
+                            else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\\\'s new ?'); ?>' }                  
                             "
                         href="#" 
                         id="feedmessagesubmit" 
