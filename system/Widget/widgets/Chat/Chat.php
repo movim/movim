@@ -182,7 +182,7 @@ class Chat extends WidgetBase
         global $sdb;
         $contact = new Contact();
         $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
-        if($contact->getData('chaton') == 1) {
+        if($contact->getData('chaton') == 1 || $contact->getData('chaton') == 2) {
             $contact->chaton = 0;
             $sdb->save($contact);
         }
