@@ -1,59 +1,8 @@
 /* MAIN FEED STYLE */
 
-/*#feed {
+#feed {
 
 }
-
-#feed table#submit {
-	margin: 18px;
-	margin-bottom: 0.5em;
-    border: 1px solid gray;
-	border-color: #999999 #BBBBBB #BBBBBB;
-    width: 564px;
-    padding: 0px;
-    border-spacing: 0px;
-}
-
-#feed table#submit:hover #feedmessagesubmit {
-    display: block;
-}
-
-#feed td {
-    padding: 5px;
-    width: 100%;
-}
-
-#feed #feedmessage {
-    border: 0px;
-    padding: 0px;
-    border-spacing: 5px;
-}
-
-#feed #feedmessage td {
-    margin: 0px;
-    padding: 0px;
-}
-
-#feed #feedmessage textarea{
-    border: 0px;
-    width: 564px;
-    resize: vertical;
-    margin: 0px;
-    padding: 0px;
-}
-
-#feed #feedmessage textarea:focus {
-    height: 4em;
-}
-
-#feed #feedsubmitrow {
-    background-color: #EEE;
-    height: 35px;
-}
-
-#feed #feedsubmitrow #feedmessagesubmit {
-    display: none;
-}*/
 
 #feed table#feedsubmitform {
     display: block;

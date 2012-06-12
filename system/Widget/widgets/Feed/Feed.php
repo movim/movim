@@ -129,7 +129,7 @@ class Feed extends WidgetCommon {
             <tbody>
                 <tr>
                     <td>
-                        <textarea onkeyup="movim_textarea_autoheight(this);"></textarea>
+                        <textarea id="feedmessagecontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
                     </td>
                 </tr>
                 <tr id="feedsubmitrow">
@@ -138,6 +138,7 @@ class Feed extends WidgetCommon {
                             title="<?php echo t("Submit"); ?>"
                             href="#" 
                             id="feedmessagesubmit" 
+                            onclick="<?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>"
                             class="button tiny icon submit"><?php echo t("Submit"); ?>
                         </a>
                     </td>
