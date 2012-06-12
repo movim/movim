@@ -59,6 +59,11 @@ function movim_reload(uri) {
     window.location.replace(uri);
 }
 
+/* A magical function to autoresize textarea when typing */
+function movim_textarea_autoheight(textbox) {
+    textbox.style.height = 0;
+    textbox.style.height = textbox.scrollHeight+"px";
+}
 /**
  * Set a global var for widgets to see if document is focused
  */

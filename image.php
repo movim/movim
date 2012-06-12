@@ -36,6 +36,20 @@ function display_image($hash, $type) {
     header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT');
 }
 
+if (!function_exists('getallheaders')) {
+        function getallheaders() {
+            foreach($_SERVER as $key=>$value) {
+                if (substr($key,0,5)=="HTTP_") {
+                    $key=str_replace(" ","-",ucwords(strtolower(str_replace("_"," ",substr($key,5)))));
+                    $out[$key]=$value;
+                }else{
+                    $out[$key]=$value;
+        }
+            }
+            return $out;
+        }
+} 
+
 // We load the avatar from the database and we display it
 if(isset($_GET['c'])) {
     $hash = md5($_GET['c'].$_GET['size']);

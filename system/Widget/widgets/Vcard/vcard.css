@@ -48,6 +48,7 @@
     display: block;
     float: left;
     width: 370px;
+    resize: none;
 }
 
 #vcard .datepicker {

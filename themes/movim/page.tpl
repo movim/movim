@@ -9,6 +9,7 @@
     <?php
         $this->addCss('css/style2.css');
         $this->addCss('css/posts.css');
+        $this->addCss('css/animations.css');
     ?>
     <?php $this->scripts();?>
   </head>

@@ -80,13 +80,13 @@
 
 #chats .chat textarea {
     width: 194px;
-    resize: none;
     border: 1px solid #444;
     padding: 2px;
     overflow: auto;
-    height: 2.5em;
     border-bottom: none;
     background-color: white;
+    height: 1.2em;
+    resize: none;
 }
 
 #chats .chat .messages .message span.date {
