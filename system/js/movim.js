@@ -50,7 +50,7 @@ function movim_parse_form(formname) {
 	var data = H();
 	for(var i = 0; i < form.elements.length; i++) {
         data.set(form.elements[i].name,
-                 encodeURIComponent(form.elements[i].value));
+                 form.elements[i].value);
 	}
 	return data;
 }

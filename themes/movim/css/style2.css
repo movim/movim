@@ -162,15 +162,14 @@ ul.clean li {
 #right
 {
     display: block;
-    width: 194px;
+    width: 199px;
     background-color: green;
     position: fixed;
     top: 0px;
     right: -20px;
     border-left: 1px solid #DDD;
     padding-top: 40px;
-    padding-left: 5px;
-    padding-right: 10px;
+    padding-right: 20px;
     height: 100%;
     background-color: #EFEFEF;
     overflow: scroll;
