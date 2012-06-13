@@ -18,12 +18,14 @@
 class WidgetCommon extends WidgetBase {
     protected function preparePost($message) {
         global $sdb;
+        
+        // We get some informartions about the author
         $user = new User();
         $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
         
         $tmp = '';
         
-        if(isset($contact[0])) {
+        if(isset($contact[0])) {            
             $tmp = '<div class="post ';
                 if($user->getLogin() == $message->getData('jid'))
                     $tmp .= 'me';
@@ -37,12 +39,12 @@ class WidgetCommon extends WidgetBase {
                         
             $attachments = AttachmentHandler::getAttachment($user->getLogin(), $message->getData('nodeid'));
             if($attachments) {
-                $tmp .= '<div class="attachment">';
-                foreach($attachments as $attachment)
+                foreach($attachments as $attachment) {
                     $tmp .= '<a target="_blank" href="'.$attachment->getData('link').'"><img alt="'.$attachment->getData('title').'" title="'.$attachment->getData('title').'" src="'.$attachment->getData('thumb').'"></a>';
                 $tmp .= '</div>';
             }
             
+            $tmp = $post->build();
             
             if($message->getPlace() != false)
                 $tmp .= '<span class="place">
@@ -81,7 +83,7 @@ class WidgetCommon extends WidgetBase {
                             <table id="commentsubmit">
                                 <tr>
                                     <td>
-                                        <textarea id="'.$message->getData('nodeid').'commentcontent"></textarea>
+                                        <textarea id="'.$message->getData('nodeid').'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
                                     </td>
                                 </tr>
                                 <tr class="commentsubmitrow">

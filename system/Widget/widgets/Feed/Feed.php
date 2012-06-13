@@ -76,8 +76,9 @@ class Feed extends WidgetCommon {
     
     function ajaxPublishItem($content)
     {
+        movim_log($content." ".htmlentities(rawurldecode($content)));
         if($content != '')
-            $this->xmpp->publishItem(rawurldecode($content));
+            $this->xmpp->publishItem(htmlentities(rawurldecode($content)));
     }
     
     function ajaxCreateNode()

@@ -188,13 +188,12 @@ label {
 .post table#commentsubmit textarea {
     border: 0px;
     width: 100%;
-    resize: vertical;
+    resize: none;
     padding: 0px;
     height: 1.5em;
 }
 
 .post table#commentsubmit textarea:focus {
-    /*height: 2.7em;*/
 }
 
 .post table#commentsubmit .commentsubmitrow {
