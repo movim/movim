@@ -56,9 +56,6 @@ class Post extends DatajarBase {
     }
     
     public function setPost($array, $from, $parent = false, $key = false) {
-        
-        movim_log($array);
-        
         if($key == false) {
             $user = new User();
             $key = $user->getLogin();

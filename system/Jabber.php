@@ -144,7 +144,8 @@ class Jabber
 			$this->jaxl->startCore('bosh');
 		}
         
-        self::setStatus(t('Connecting...'), false, false, true);  
+        movim_log($presence = Cache::c('presence'));
+        self::setStatus($presence['status'], $presence['show'], false, true);  
 	}
     
     /**

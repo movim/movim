@@ -39,13 +39,11 @@ class WidgetCommon extends WidgetBase {
                         
             $attachments = AttachmentHandler::getAttachment($user->getLogin(), $message->getData('nodeid'));
             if($attachments) {
-                foreach($attachments as $attachment) {
+                foreach($attachments as $attachment)
                     $tmp .= '<a target="_blank" href="'.$attachment->getData('link').'"><img alt="'.$attachment->getData('title').'" title="'.$attachment->getData('title').'" src="'.$attachment->getData('thumb').'"></a>';
                 $tmp .= '</div>';
             }
-            
-            $tmp = $post->build();
-            
+
             if($message->getPlace() != false)
                 $tmp .= '<span class="place">
                             <a 
