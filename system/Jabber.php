@@ -665,7 +665,9 @@ class Jabber
 	 */
 	public function publishItem($content)
 	{
-	    $this->jaxl->JAXL0277('publishItem', $this->getCleanJid() ,$content);
+        $id = md5(openssl_random_pseudo_bytes(5));
+        $this->jaxl->JAXL0277('createCommentNode', $this->getCleanJid() ,$id);
+	    $this->jaxl->JAXL0277('publishItem', $this->getCleanJid() ,$content, false, false, $id);
 	}
     
 	/**

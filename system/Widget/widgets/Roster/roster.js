@@ -31,10 +31,10 @@ function sortRoster() {
     more = roster.querySelector('.more');
     roster.insertBefore(more, contacts.item(contacts.length));
         
-    for(i = 0; i < 10; i++) {
+    /*for(i = 0; i < 10; i++) {
         if(contacts.item(i) != null)
             contacts.item(i).style.display = 'block';
-    }
+    }*/
     
     if(contacts.length < 9)
         more.style.display = 'none';

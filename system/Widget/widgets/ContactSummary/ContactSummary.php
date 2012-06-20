@@ -45,6 +45,14 @@ class ContactSummary extends WidgetBase
         else
             return false;
     }
+
+    function ajaxRemoveContact($jid) {
+        $this->xmpp->removeContact($jid);
+
+        global $sdb;
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $jid));
+        $sdb->delete($contact[0]);
+    }
 	
 	function prepareContactSummary($contact)
 	{
