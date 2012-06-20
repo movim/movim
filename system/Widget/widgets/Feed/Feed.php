@@ -77,7 +77,7 @@ class Feed extends WidgetCommon {
     function ajaxPublishItem($content)
     {
         if($content != '')
-            $this->xmpp->publishItem(rawurldecode($content));
+            $this->xmpp->publishItem(htmlentities(rawurldecode($content)));
     }
     
     function ajaxCreateNode()
@@ -124,38 +124,26 @@ class Feed extends WidgetCommon {
 		<?php
 		}
 		else {		
-		?>
-		<table id="submit">
-			<tr id="feedmessage">
-				<td>
-					<textarea 
-						id="feedmessagecontent"
-						onfocus="
-                            if(this.value == '<?php echo t('What\\\'s new ?'); ?>') {this.value='';}
-                            document.querySelector('#feedsubmitrow').style.display = 'block';" 
-                        
-                    ><?php echo t('What\'s new ?'); ?></textarea>
-				</td>
-            </tr>
-            <tr id="feedsubmitrow">
-                <td style="width: %"></td>
-                <td>
-                    <a 
-                        title="<?php echo t("Submit"); ?>"
-                        onclick="
-                            if(
-                                document.querySelector('#feedmessagecontent').value != '' && 
-                                document.querySelector('#feedmessagecontent').value != '<?php echo t('What\\\'s new ?'); ?>') {
-                                    <?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>
-                            }
-                            else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\\\'s new ?'); ?>' }                  
-                            "
-                        href="#" 
-                        id="feedmessagesubmit" 
-                        class="button tiny icon submit"><?php echo t("Submit"); ?>
-                    </a>
-                </td>
-			</tr>
+		?><?php //echo t('What\'s new ?'); ?>
+		<table id="feedsubmitform">
+            <tbody>
+                <tr>
+                    <td>
+                        <textarea id="feedmessagecontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
+                    </td>
+                </tr>
+                <tr id="feedsubmitrow">
+                    <td>
+                        <a 
+                            title="<?php echo t("Submit"); ?>"
+                            href="#" 
+                            id="feedmessagesubmit" 
+                            onclick="<?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>"
+                            class="button tiny icon submit"><?php echo t("Submit"); ?>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
 		</table>
 
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
@@ -172,8 +160,15 @@ class Feed extends WidgetCommon {
 		<?php
 		/*			<a 
                     onclick="<?php $this->callAjax('ajaxCreateNode') ?>"
-                    href="#" class="button tiny icon add">&nbsp;&nbsp;<?php echo t("Create the feed"); ?></a><br />*/
-
+                    href="#" class="button tiny icon add">&nbsp;&nbsp;<?php echo t("Create the feed"); ?></a><br />
+                        onclick="
+                            if(
+                                document.querySelector('#feedmessagecontent').value != '' && 
+                                document.querySelector('#feedmessagecontent').value != '<?php echo t('What\\\'s new ?'); ?>') {
+                                    <?php $this->callAjax('ajaxPublishItem', 'getFeedMessage()') ?>
+                            }
+                            else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\\\'s new ?'); ?>' }                  
+                            "*/
         }
         
 		echo $this->prepareFeed(0);

@@ -214,6 +214,16 @@ function getMarital() {
                     );                      
 }
 
+function getPresences() {
+    return array(
+                1 => t('Online'),
+                2 => t('Away'),
+                3 => t('Do Not Disturb'),
+                4 => t('Extended Away'),
+                5 => t('Logout')
+            );
+}
+
 /**
  * Check the current Jid
  *

@@ -182,7 +182,7 @@ class Chat extends WidgetBase
         global $sdb;
         $contact = new Contact();
         $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
-        if($contact->getData('chaton') == 1) {
+        if($contact->getData('chaton') == 1 || $contact->getData('chaton') == 2) {
             $contact->chaton = 0;
             $sdb->save($contact);
         }
@@ -258,7 +258,7 @@ class Chat extends WidgetBase
         $html = '
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
                 '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$messageshtml.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
-                '<textarea '.$style.'
+                '<textarea onkeyup="movim_textarea_autoheight(this);"  '.$style.'
                     onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
                 ></textarea>'.
                 '<a class="name" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' hideTalk(this);">'.

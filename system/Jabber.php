@@ -144,7 +144,8 @@ class Jabber
 			$this->jaxl->startCore('bosh');
 		}
         
-        self::setStatus(t('Connecting...'), false, false, true);  
+        movim_log($presence = Cache::c('presence'));
+        self::setStatus($presence['status'], $presence['show'], false, true);  
 	}
     
     /**
@@ -386,6 +387,8 @@ class Jabber
                 $this->getComments($payload['@attributes']['from'], $id);
             } else {
                 $evt->runEvent('nocomment', $parent);
+                if($xmlns == 'urn:xmpp:microblog:0')
+                    $evt->runEvent('nostream', $parent);
             }
         }
         elseif(isset($payload['pubsub']) && isset($payload['error'])) {

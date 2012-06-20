@@ -1,6 +1,7 @@
 #notifs {
     padding-right: 5px;
     clear: both;
+    width: 200px;
 }
 
 #notifs ul {

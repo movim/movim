@@ -24,6 +24,5 @@ function getFeedMessage() {
     message = text.value;
     text.value = '';
     text.blur();
-    document.querySelector('#feedsubmitrow').style.display = 'none';
     return encodeURIComponent(message);
 }

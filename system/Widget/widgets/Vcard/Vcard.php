@@ -38,7 +38,7 @@ class Vcard extends WidgetBase
 	function ajaxVcardSubmit($vcard)
     {
         foreach($vcard as $key => $value)
-            $vcard[$key] = rawurldecode($value);
+            $vcard[$key] = htmlentities(rawurldecode($value));
 	    # Format it ISO 8601:
 	    $vcard['vCardBDay'] = $vcard['vCardBYear'].'-'.$vcard['vCardBMonth'].'-'.$vcard['vCardBDay'];
 		$this->xmpp->updateVcard($vcard);
@@ -158,7 +158,7 @@ class Vcard extends WidgetBase
                       
             $html .= '<br />
                       <div class="element"><span>'.t('About Me').'</span>
-                        <textarea name ="vCardDesc" class="content" >'.$me->getData('desc').'</textarea>
+                        <textarea name ="vCardDesc" class="content" onkeyup="movim_textarea_autoheight(this);">'.$me->getData('desc').'</textarea>
                       </div>';
                       
             $html .= '</fieldset>';                  

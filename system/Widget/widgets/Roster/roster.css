@@ -1,5 +1,6 @@
 #roster {
     margin-bottom: 60px;
+    width: 200px;
 }
 
 #roster ul {
@@ -8,11 +9,10 @@
 }
 
 #roster ul li {
-    margin-bottom: 4px;
+    padding: 2px 3px;
 }
 
 #roster ul li .chat {
-	margin-right: 5px;
     width: 22px;
     height: 22px;
     float: right;
@@ -65,7 +65,7 @@
 #roster ul li a {
     display: block;
     white-space: nowrap;
-    width: 145px;
+    width: 165px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

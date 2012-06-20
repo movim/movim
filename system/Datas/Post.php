@@ -56,7 +56,6 @@ class Post extends DatajarBase {
     }
     
     public function setPost($array, $from, $parent = false, $key = false) {
-        
         if($key == false) {
             $user = new User();
             $key = $user->getLogin();
