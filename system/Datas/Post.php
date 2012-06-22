@@ -134,9 +134,9 @@ class PostHandler {
     	$this->instance = new Post();
     }
     
-    public function get($id) {
+    public function get($jid, $id) {
 	    global $sdb;
-        $sdb->load($this->instance, array('nodeid' => $id));
+        $sdb->load($this->instance, array('key' => $jid, 'nodeid' => $id));
         return $this->instance;
     }
 }

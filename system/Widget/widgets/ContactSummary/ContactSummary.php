@@ -148,47 +148,60 @@ class ContactSummary extends WidgetBase
         
         $html .= '<div style="clear: both;"></div>';
 
-        $html .='
-        <a
-	        class=""
-	        href="#"
-	        style="margin: 10px 0px; display: block;"
-	        id="friendremoveask"
-	        onclick="
-	            document.querySelector(\'#friendremoveyes\').style.display = \'block\';
-	            document.querySelector(\'#friendremoveno\').style.display = \'block\';
-	            this.style.display = \'none\'
-	        "
-	    >
-	        '.t('Remove this contact').'
-	    </a>
+        if($contact->getData('rostersubscription') != 'none') {
+            $html .='
+            <a
+                class=""
+                href="#"
+                style="margin: 10px 0px; display: block;"
+                id="friendremoveask"
+                onclick="
+                    document.querySelector(\'#friendremoveyes\').style.display = \'block\';
+                    document.querySelector(\'#friendremoveno\').style.display = \'block\';
+                    this.style.display = \'none\'
+                "
+            >
+                '.t('Remove this contact').'
+            </a>
 
-        <a
-	        class="button tiny icon yes merged left';
-	    if(!isset($presence['presence']) || $presence['presence'] == 5)
-	        $html .=' left';
-	    $html .= '"
-	        href="#"
-	        id="friendremoveyes"
-	        style="float: left; display: none;"
-	        onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$contact->getData('jid')."'").'"
-	    >
-	        '.t('Yes').'
-	    </a>
+            <a
+                class="button tiny icon yes merged left';
+            if(!isset($presence['presence']) || $presence['presence'] == 5)
+                $html .=' left';
+            $html .= '"
+                href="#"
+                id="friendremoveyes"
+                style="float: left; display: none;"
+                onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$contact->getData('jid')."'")
+                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
+            >
+                '.t('Yes').'
+            </a>
 
-	    <a
-	        class="button tiny icon no merged right"
-	        href="#"
-	        style="float: left; display: none;"
-	        id="friendremoveno"
-	        onclick="
-	            document.querySelector(\'#friendremoveask\').style.display = \'block\';
-	            document.querySelector(\'#friendremoveyes\').style.display = \'none\';
-	            this.style.display = \'none\'
-	        "
-	    >
-	        '.t('No').'
-	    </a>';
+            <a
+                class="button tiny icon no merged right"
+                href="#"
+                style="float: left; display: none;"
+                id="friendremoveno"
+                onclick="
+                    document.querySelector(\'#friendremoveask\').style.display = \'block\';
+                    document.querySelector(\'#friendremoveyes\').style.display = \'none\';
+                    this.style.display = \'none\'
+                "
+            >
+                '.t('No').'
+            </a>';
+        } else {
+            $html .='<br />
+            <a
+                class="button tiny icon add"
+                href="#"
+                style="padding-left: 25px;"
+                onclick="'.$this->genCallWidget("Notifs","ajaxAddContact", "'".$contact->getData('jid')."'", "''").'"
+            >
+                '.t('Invite this user').'
+            </a>';
+        }
 
         return $html;
 	}

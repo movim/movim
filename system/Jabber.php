@@ -361,7 +361,7 @@ class Jabber
 					// We've got a new Post !
                     if(isset($item['@attributes']) && isset($item['entry'])) {    
                         $c = new PostHandler();
-                        $post = $c->get($item['@attributes']['id']);
+                        $post = $c->get($this->getCleanJid(), $item['@attributes']['id']);
                         
                         // We save it in the database
                         if($xmlns == 'urn:xmpp:microblog:0')
@@ -394,12 +394,10 @@ class Jabber
         elseif(isset($payload['pubsub']) && isset($payload['error'])) {
             list($xmlns, $parent) = explode("/", $payload['pubsub']['items']['@attributes']['node']);
             if(isset($payload['error']['item-not-found'])) {
-                $c = new PostHandler();
-                $post = $c->get($parent);
-                $post->setNoComments();
-                $sdb->save($post);
-                
-                $evt->runEvent('nostream', $parent);
+                if($xmlns == 'urn:xmpp:microblog:0:comments')
+                    $evt->runEvent('nocommentstream', $parent);
+                else
+                    $evt->runEvent('nostream', $parent);
             } 
             elseif(in_array( $payload['error']['@attributes']['code'], array(501, 503)) && 
                    $payload['pubsub']['create']['@attributes']['node'] == 'urn:xmpp:microblog:0') {
@@ -462,7 +460,7 @@ class Jabber
                 if(isset($payload['event']['items']['item'])) {
                     global $sdb;
                     $c = new PostHandler();
-                    $post = $c->get($payload['event']['items']['item']['@attributes']['id']);
+                    $post = $c->get($this->getCleanJid(), $payload['event']['items']['item']['@attributes']['id']);
                     if($post->getData('nodeid') == $payload['event']['items']['item']['@attributes']['id'])
                         $new = true;
                     $post->setPost($payload['event']['items']['item'], $payload['@attributes']['from'], false, $this->getCleanJid());
