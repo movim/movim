@@ -28,7 +28,7 @@
 #logoutlist {
     display: none;
     position: fixed;
-    top: 38px;
+    top: 36px;
     right: 50%;
     margin-right: -302px;
     z-index: 1;
