@@ -50,7 +50,7 @@ function movim_parse_form(formname) {
 	var data = H();
 	for(var i = 0; i < form.elements.length; i++) {
         data.set(form.elements[i].name,
-                 encodeURIComponent(form.elements[i].value));
+                 form.elements[i].value);
 	}
 	return data;
 }
@@ -59,6 +59,11 @@ function movim_reload(uri) {
     window.location.replace(uri);
 }
 
+/* A magical function to autoresize textarea when typing */
+function movim_textarea_autoheight(textbox) {
+    textbox.style.height = 0;
+    textbox.style.height = textbox.scrollHeight+"px";
+}
 /**
  * Set a global var for widgets to see if document is focused
  */

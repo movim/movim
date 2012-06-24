@@ -1,60 +1,53 @@
 #logout {
-
+    font-size: 13px;
+    color: #ccc;
 }
+
+#logout .online { background-image: url(img/online.png); }
+#logout .away { background-image: url(img/away.png); }
+#logout .dnd { background-image: url(img/dnd.png); }
+#logout .xa { background-image: url(img/xa.png); }
 
 #logouttab {
 	position: fixed;
-	top: 7px;
-	left: 50%;
-    margin-left: 205px;
-    overflow: hidden;
-    display: block;
-    padding: 5px 15px 5px 25px;
+	top: 0px;
+	right: 50%;
+    margin-right: -300px;
 	cursor: pointer;
-    color: #ccc;
-    font-size: 11px;
-    z-index: 2;
+    z-index: 3;
+    padding: 12px 10px;
+    padding-left: 20px;
     background-repeat: no-repeat;
-    background-position: 7px 7px;
+    background-position: 0px 16px;
 }
 
 #logouttab:hover {
-    /*background-color: rgba(255, 255, 255, 0.3);*/
-    color: #fff;
+    color: white;
 }
 
-#logouttab.online { background-image: url(img/online.png); }
-#logouttab.away { background-image: url(img/away.png); }
-#logouttab.dnd { background-image: url(img/dnd.png); }
-#logouttab.xa { background-image: url(img/xa.png); }
-
 #logoutlist {
-    border: 1px solid #CCC;
-    border-top: none;
-    position: fixed;
-    top: 35px;
-	left: 50%;
-    margin-left: 175px;
-    box-shadow: 0 5px 10px rgba(150, 150, 150, 0.1);
     display: none;
-    background-color: white;
+    position: fixed;
+    top: 36px;
+    right: 50%;
+    margin-right: -302px;
+    z-index: 1;
+    background-color: #444;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+    overflow: hidden; 
 }
 
 #logoutlist a {
     display: block;
-    padding: 5px;
+    padding: 12px 10px;
     background-repeat: no-repeat;
-    background-position: 7px 7px;
-    padding-left: 25px;
-    font-size: 11px;
+    background-position: 10px 16px;
+    padding-left: 28px;
 }
 
 #logoutlist a:hover {
     cursor: pointer;
     background-color: #EEE;
+    color: black;
 }
-
-#logoutlist a.online { background-image: url(img/online.png); }
-#logoutlist a.away { background-image: url(img/away.png); }
-#logoutlist a.dnd { background-image: url(img/dnd.png); }
-#logoutlist a.xa { background-image: url(img/xa.png); }

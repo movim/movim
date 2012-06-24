@@ -143,7 +143,7 @@ ul.clean li {
 {
     float: left;
     width: 170px;
-    padding-top: 50px;
+    padding-top: 55px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -154,7 +154,7 @@ ul.clean li {
     width: 599px;
     background-color: white;
     border-left: 1px solid #DDD;
-    padding-top: 35px;
+    padding-top: 38px;
     min-height: 1000px;
     overflow: hidden;
 }
@@ -162,15 +162,14 @@ ul.clean li {
 #right
 {
     display: block;
-    width: 194px;
+    width: 199px;
     background-color: green;
     position: fixed;
     top: 0px;
     right: -20px;
     border-left: 1px solid #DDD;
-    padding-top: 40px;
-    padding-left: 5px;
-    padding-right: 10px;
+    padding-top: 42px;
+    padding-right: 20px;
     height: 100%;
     background-color: #EFEFEF;
     overflow: scroll;
@@ -320,8 +319,6 @@ label {
     margin: 0px;
     padding: 0px;
     font-size: 12px;
-    font-family: arial, 'lucida grande', sans-serif;
-    font-size: 12px;
     padding-top: 1px;
     text-decoration: none;
 }
@@ -332,13 +329,7 @@ label {
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 1;
-    
-    /*background-image: linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
-    background-image: -o-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
-    background-image: -moz-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
-    background-image: -webkit-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);
-    background-image: -ms-linear-gradient(bottom, rgb(51,51,51) 15%, rgb(68,68,68) 82%);*/
+    z-index: 3;
 }
 #nav .menu {
     width: 1024px;
@@ -349,7 +340,7 @@ label {
     clear: both;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
-    background-position: 30px 7px;
+    background-position: 40px 7px;
 }
 #nav .menu li {
     float: left;
@@ -361,10 +352,10 @@ label {
 }
 
 #nav .menu li a {
-    padding: 10px 20px;
+    padding: 9px 20px;
     display: block;
     color: #ccc;
-    font-size: 11px;
+    font-size: 13px;
 }
 #nav .menu li a.active {
     font-weight: bold;

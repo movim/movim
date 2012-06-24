@@ -1,52 +1,41 @@
-/* WALL STYLE */
+/* MAIN FEED STYLE */
 
 #feed {
-/*    padding-top: 10px;*/
+
 }
 
-#feed table#submit {
-	margin: 1.5em;
-	margin-bottom: 0.5em;
-    border: 1px solid gray;
+#feed table#feedsubmitform {
+    display: block;
+    border: 1px solid;
 	border-color: #999999 #BBBBBB #BBBBBB;
-    width: 88%;
-    padding: 0px;
-    border-spacing: 0px;
+    margin: 18px;
+    overflow: hidden;
 }
 
-#feed #feedmessage {
-    border: 0px;
-    width: 100%;
-    border-spacing: 5px;
+#feed #feedsubmitform tbody, #feed #feedsubmitform tr, #feed #feedsubmitform td {
+    display: block;
 }
 
-#feed td {
+#feed #feedsubmitform td {
     padding: 5px;
 }
 
-#feed #feedmessage textarea{
-    border: 0px;
+#feed #feedsubmitform textarea {
     width: 100%;
-    height: 1.5em;
-    text-align: left;
-    resize: vertical;
     padding: 0px;
+    border: 0px;
+    height: 2em;
+    resize: none;
 }
 
-#feed #feedsubmitrow {
-    display: none;
+#feed #feedsubmitform #feedsubmitrow {
     background-color: #EEE;
+    width: auto;
+    overflow: auto;
+    padding-bottom: 5px;
 }
 
-#feed #feedmessage textarea:focus {
-    height: 4em;
-}
-
-#feed td {
-    width: 100%;
-}
-
-#feed #feedsubmitrow #feedmessagesubmit {
+#feed #feedsubmitform #feedsubmitrow a {
     float: right;
 }
 

@@ -56,7 +56,6 @@ class Post extends DatajarBase {
     }
     
     public function setPost($array, $from, $parent = false, $key = false) {
-        
         if($key == false) {
             $user = new User();
             $key = $user->getLogin();
@@ -94,15 +93,19 @@ class Post extends DatajarBase {
         $this->street->setval($array['entry']['geoloc']['street']);
         $this->building->setval($array['entry']['geoloc']['building']);
         
-        if(is_array($array['entry']['link'])) {
-            foreach($array['entry']['link'] as $attachment) {
-                if($attachment['link'][0]['@attributes']['title'] == 'thumb') {
-                    AttachmentHandler::saveAttachment($attachment, $key, $from, $array['@attributes']['id']);
-                }
-                if($attachment['@attributes']['title'] == 'comments') {
-                    $this->commentson->setval(1);
-                    $this->commentplace->setval(reset(explode('?', substr($attachment['@attributes']['href'], 5))));
-                }
+        // If we have only one link in the entry
+        if(isset($array['entry']['link']['@attributes'])) {
+            $array['entry']['link'][0]['@attributes'] = $array['entry']['link']['@attributes'];
+            unset($array['entry']['link']['@attributes']);
+        }
+        
+        foreach($array['entry']['link'] as $attachment) {
+            if($attachment['link'][0]['@attributes']['title'] == 'thumb') {
+                AttachmentHandler::saveAttachment($attachment, $key, $from, $array['@attributes']['id']);
+            }
+            if($attachment['@attributes']['title'] == 'comments') {
+                $this->commentson->setval(1);
+                $this->commentplace->setval(reset(explode('?', substr($attachment['@attributes']['href'], 5))));
             }
         }
     }
@@ -131,9 +134,9 @@ class PostHandler {
     	$this->instance = new Post();
     }
     
-    public function get($id) {
+    public function get($jid, $id) {
 	    global $sdb;
-        $sdb->load($this->instance, array('nodeid' => $id));
+        $sdb->load($this->instance, array('key' => $jid, 'nodeid' => $id));
         return $this->instance;
     }
 }

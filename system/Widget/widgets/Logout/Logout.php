@@ -52,8 +52,7 @@ class Logout extends WidgetBase
             'presence', 
             array(
                 'status' => $presence['status'],
-                'show' => $presence['show'],
-                'boot' => true
+                'show' => $presence['show']
                 )
         );
 		$this->xmpp->logout();
@@ -63,14 +62,13 @@ class Logout extends WidgetBase
 	{
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
-        movim_log($presence);
+
         if($show == "boot") $show = $presence['show'];
         Cache::c(
             'presence', 
             array(
                 'status' => $presence['status'],
-                'show' => $show,
-                'boot' => false
+                'show' => $show
                 )
         );
 		$this->xmpp->setStatus($presence['status'], $show);
@@ -96,9 +94,6 @@ class Logout extends WidgetBase
                 <a onclick="'.$this->genCallAjax('ajaxLogout').'">'.$txt[5].'</a>
             </div>
                 ';
-        $presence = Cache::c('presence');
-        if($presence['boot'] == true)
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxSetStatus', '"boot"').'\', 5000);</script>';
         
         return $html;
     }

@@ -28,8 +28,6 @@ class Profile extends WidgetBase
         $this->addcss('profile.css');
         $this->addjs('profile.js');
         $this->registerEvent('myvcard', 'onMyVcardReceived');
-        
-        $this->cached = true;
     }
     
     function onMyVcardReceived($vcard = false)
@@ -47,7 +45,6 @@ class Profile extends WidgetBase
             array(
                 'status' => rawurldecode($status),
                 'show' => $presence['show'],
-                'boot' => false
                 )
         );
 		$this->xmpp->setStatus(rawurldecode($status), $presence['show']);
@@ -63,18 +60,7 @@ class Profile extends WidgetBase
         if(isset($me[0])) {
             $me = $me[0];
             $html ='<h1>'.$me->getTrueName().'</h1><img src="'.$me->getPhoto().'"/>';
-            /*$html = '
-				<table>
-					<tr>
-						<td>
-							<img src="'.$me->getPhoto().'">
-						</td>
-						<td>
-							<h1>'.$me->getTrueName().'</h1>
-						</td>
-					</tr>
-				</table>
-				';*/
+
             $html .= '
                 <input 
                     type="text" 
