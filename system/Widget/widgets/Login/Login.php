@@ -80,7 +80,7 @@ class Login extends WidgetBase {
             case 'wrongaccount':
 	            $warning = '
 	                    <div class="error">
-	                        '.t('Movim fail to authenticate. You entered wrong data').'
+	                        '.t('Movim failed to authenticate. You entered wrong data').'
 	                    </div> ';
                 break;
         }

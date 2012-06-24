@@ -59,10 +59,10 @@ class Notifs extends WidgetBase
                     class="button tiny icon add merged right" 
                     href="#" id="notifsvalidate" 
                     onclick="'.$this->genCallAjax("ajaxAccept", "'".$payload['@attributes']['from']."'", "getAlias()").' hideNotification(this);">'.
-                    t("Validate").'
+                    t("Add").'
                 </a>
    	            <a 
-                    class="button tiny icon yes merged left" 
+                    class="button tiny icon no merged left" 
                     href="#" 
                     onclick="'.$this->genCallAjax("ajaxRefuse", "'".$payload['@attributes']['from']."'").' hideNotification(this);">'.
                     t("Decline").'
@@ -153,7 +153,7 @@ class Notifs extends WidgetBase
                     href="#" 
                     id="addvalidate" 
                     onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
-                    <?php echo t('Validate'); ?>
+                    <?php echo t('Send request'); ?>
                 </a>
                 <a 
                     class="button tiny icon no merged left"
