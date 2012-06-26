@@ -154,7 +154,7 @@ ul.clean li {
     width: 599px;
     background-color: white;
     border-left: 1px solid #DDD;
-    padding-top: 40px;
+    padding-top: 38px;
     min-height: 1000px;
     overflow: hidden;
 }
@@ -340,7 +340,7 @@ label {
     clear: both;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
-    background-position: 30px 8px;
+    background-position: 40px 7px;
 }
 #nav .menu li {
     float: left;

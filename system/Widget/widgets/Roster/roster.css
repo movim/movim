@@ -38,6 +38,10 @@
     display: none;
 }
 
+#roster ul li.server_error {
+    display: none;
+}
+
 #roster ul li.online .chat {
     background-image: url(img/online.png);
 }

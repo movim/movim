@@ -11,7 +11,7 @@ class Feed extends WidgetCommon {
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
 		$this->registerEvent('stream', 'onStream');
         $this->registerEvent('vcard', 'onVcard');
-        
+
         $this->cached = true;
     }
     

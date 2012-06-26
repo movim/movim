@@ -55,6 +55,7 @@ class WidgetCommon extends WidgetBase {
             if($message->getData('jid') != $message->getData('uri'))
                 $tmp .= '<span class="recycle"><a href="?q=friend&f='.$message->getData('uri').'">'.$message->getData('name').'</a></span>';
               
+            movim_log($message->getData('commentson').' '.$message->getData('nodeid'));
             if($message->getData('commentson') == 1) {
                 $tmp .= '<div class="comments" id="'.$message->getData('nodeid').'comments">';
 
@@ -64,7 +65,7 @@ class WidgetCommon extends WidgetBase {
                     $tmp .= $comments;
 
                 $tmp .= '
-                            <div class="comment">
+                         <div class="comment">
                                 <a 
                                     class="getcomments icon bubble" 
                                     style="margin-left: 0px;" 
