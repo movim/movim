@@ -114,7 +114,7 @@ class Login extends WidgetBase {
 			        <?php 
                         $query = ConfVar::query();
                         $contacts = ConfVar::run_query($query);
-                        echo t('This server host %s accounts', count($contacts));
+                        echo t('This server hosts %s accounts', count($contacts));
 			        
                         if(Conf::getServerConfElement("accountCreation") == 1) {
                     ?> - 
