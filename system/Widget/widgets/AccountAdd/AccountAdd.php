@@ -54,15 +54,27 @@ class AccountAdd extends WidgetBase {
         $u = new UserConf();
         if($u->getConf($data['jid']) == false) {
             $host = end(explode('@', $data['jid']));
-            $dns = dns_get_record('_xmpp-client._tcp.'.$host);
-            
-            if(isset($dns[0]['target']) && $dns[0]['target'] != null)
+
+            // We attempt to resolve the actual xmpp domain.
+            $domain = null;
+            $dns = dns_get_record('_xmpp-client._tcp.'.$host, DNS_SRV);
+
+            if(count($dns) > 0) {
                 $domain = $dns[0]['target'];
-            else {
+            } else {
+                // Just checking if the domain exists.
+                $dns = dns_get_record($host, DNS_A);
+                if(count($dns) > 0) {
+                    $domain = $host;
+                }
+            }
+
+            if(!$domain) {
             	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountAdd&err=dnsdomain"));
                 RPC::commit();
  	            exit;
             }
+
             $confvar = Conf::getServerConf();
 
             global $sdb;
