@@ -55,7 +55,8 @@ class Config extends WidgetBase
 				  } ?>
 				</select>
 				<hr />
-                
+               <label id="lock" for="soundnotif"><?php echo t('Enable Sound Notification:'); ?></label>
+              <input type="checkbox" name="soundnotif" value="soundnotif" checked="checked" /><br /> 
 				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;">
 				<input type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">
                 </p>
