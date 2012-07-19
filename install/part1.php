@@ -79,6 +79,10 @@
 
                             </select>
                         </p>
+
+                        <p>
+						  <label for="maxUsers">Maximum number of users (-1 is infinite)</label>
+						  <input type="text" name="maxUsers" id="maxUsers" value="-1" />
                         
                         <p>
                             <label for="boshCookieTTL">Bosh cookie's expiration (s)</label>

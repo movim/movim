@@ -114,9 +114,13 @@ class Login extends WidgetBase {
 			        <?php 
                         $query = ConfVar::query();
                         $contacts = ConfVar::run_query($query);
+                        $conf = Conf::getServerConf();
+                        
                         echo t('This server host %s accounts', count($contacts));
 			        
-                        if(Conf::getServerConfElement("accountCreation") == 1) {
+                        if($conf["accountCreation"] == 1
+                           && ($conf['maxUsers'] == -1
+                               || count($contacts) < $conf['maxUsers'])) {
                     ?> - 
                             <a href="?q=accountCreate"><?php echo t('Create a new account'); ?></a> - 
                             <a href="?q=accountAdd"><?php echo t('Link my current account'); ?></a>
