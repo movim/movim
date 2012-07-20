@@ -172,17 +172,22 @@ function test_bosh($boshhost, $port, $suffix, $host)
 
     curl_close($ch);
     $arr = simplexml_load_string($rs["content"]);
-    if(is_object($arr))
-        $att = $arr->attributes();
-	if($att['type'] == 'terminate') {
-		set_error('bosh', t("XMPP connection through Bosh failed with error '%s'", $att['condition']));
-	}
-    else if(isset($att['sid'])) {
-        return true;
-	}
+    if(is_object($arr)) {
+      $att = $arr->attributes();
+      if($att['type'] == 'terminate') {
+        set_error('bosh', t("XMPP connection through Bosh failed with error '%s'", $att['condition']));
+      }
+      else {
+        $sid_set = isset($att['sid']);
+        if(!$sid_set)
+          set_error('bosh', "XMPP connection through Bosh returned invalid XML data");
+        return ($sid_set);
+      }
+    }
     else {
-        return false;
-	}
+      set_error('bosh', "XMPP connection through Bosh failed, check server parameters");
+      return false;
+    }
 }
 
 function make_xml($stuff)
