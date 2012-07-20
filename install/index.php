@@ -5,7 +5,7 @@ require_once('../system/Lang/languages.php');
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-function get_mysql_port() { 
+function get_mysql_port() {
     $port = ini_get('mysql.default_port');
     if($port == "")
         $port = ini_get('mysqli.default_port');
@@ -80,7 +80,7 @@ function list_lang()
 function test_requirements()
 {
   $errors = array();
-  
+
   if(!(version_compare(PHP_VERSION, '5.3.0') >= 0)) {
     $errors[] = t("PHP version mismatch. Movim requires PHP 5.3 minimum.")." ".t("Actual version : "). PHP_VERSION .
                 '<div class="guidance">'.t("Update your PHP version or contact your server administrator").'</div>';
@@ -132,7 +132,7 @@ function get_checkbox($name, $if = 'true', $else = 'false')
 function test_bosh($boshhost, $port, $suffix, $host)
 {
     $url = (get_checkbox('boshCookieHTTPS') == "true")? 'https://' : 'http://';
-        
+
     $url .= $boshhost.":".$port.'/'.$suffix;
 
     $headers = array('Accept-Encoding: gzip, deflate', 'Content-Type: text/xml; charset=utf-8');
@@ -147,7 +147,7 @@ function test_bosh($boshhost, $port, $suffix, $host)
               xmpp:version='1.0'
               xmlns='http://jabber.org/protocol/httpbind'
               xmlns:xmpp='urn:xmpp:xbosh'/>";
-              
+
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -164,7 +164,7 @@ function test_bosh($boshhost, $port, $suffix, $host)
     $rs['errno'] = curl_errno($ch);
     $rs['errmsg'] = curl_error($ch);
     $rs['header'] = curl_getinfo($ch);
-    
+
 	if($rs['errno']) {
 		set_error('bosh', t("Bosh connection failed with error '%s'", $rs['errmsg']));
 		return false;
@@ -172,17 +172,22 @@ function test_bosh($boshhost, $port, $suffix, $host)
 
     curl_close($ch);
     $arr = simplexml_load_string($rs["content"]);
-    if(is_object($arr))
-        $att = $arr->attributes();
-	if($att['type'] == 'terminate') {
-		set_error('bosh', t("XMPP connection through Bosh failed with error '%s'", $att['condition']));
-	}
-    else if(isset($att['sid'])) {
-        return true;
-	}
+    if(is_object($arr)) {
+      $att = $arr->attributes();
+      if($att['type'] == 'terminate') {
+        set_error('bosh', t("XMPP connection through Bosh failed with error '%s'", $att['condition']));
+      }
+      else {
+        $sid_set = isset($att['sid']);
+        if(!$sid_set)
+          set_error('bosh', "XMPP connection through Bosh returned invalid XML data");
+        return ($sid_set);
+      }
+    }
     else {
-        return false;
-	}
+      set_error('bosh', "XMPP connection through Bosh failed, check server parameters");
+      return false;
+    }
 }
 
 function make_xml($stuff)
@@ -255,6 +260,7 @@ function perform_install()
       'proxyEnabled'       => get_checkbox('proxyEnabled'),
       'proxyURL'           => $_POST['proxyURL'],
       'proxyPort'          => $_POST['proxyPort'],
+      'maxUsers'           => $_POST['maxUsers'],
       ),
     );
   if(!@file_put_contents('../config/conf.xml', make_xml($conf))) {
@@ -271,13 +277,13 @@ if(isset($_POST['install'])) {
     // We test the Bosh configuration
     if(!test_bosh($_POST['defBoshHost'], $_POST['defBoshPort'], $_POST['defBoshSuffix'], $_POST['host'])) {
         goto loadpage;
-    } 
+    }
 
-	// We create the configuration file    
+	// We create the configuration file
     perform_install();
 
     // We try to connect to the database
-    try {       
+    try {
         include('../init.php');
     } catch (Exception $e) {
 		set_error('bdd', t("Database connection failed with error '%s'", $e->getMessage()));
@@ -287,23 +293,23 @@ if(isset($_POST['install'])) {
     // We create correctly the tables
     global $sdb;
     $contact = new Contact();
-    $sdb->create($contact); 
-    
+    $sdb->create($contact);
+
     $conf = new ConfVar();
-    $sdb->create($conf); 
+    $sdb->create($conf);
 
     $message = new Message();
     $sdb->create($message);
 
     $presence = new Presence();
-    $sdb->create($presence);   
-    
+    $sdb->create($presence);
+
     $post = new Post();
-    $sdb->create($post);   
-    
+    $sdb->create($post);
+
     $caps = new Caps();
-    $sdb->create($caps);   
-    
+    $sdb->create($caps);
+
     $attachment = new Attachment();
     $sdb->create($attachment);
 
