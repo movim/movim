@@ -166,7 +166,7 @@ function test_bosh($boshhost, $port, $suffix, $host)
     $rs['header'] = curl_getinfo($ch);
     
 	if($rs['errno']) {
-		set_error('bosh', t("Bosh connection failed with error `%s'", $rs['errmsg']));
+		set_error('bosh', t("Bosh connection failed with error '%s'", $rs['errmsg']));
 		return false;
 	}
 
@@ -175,7 +175,7 @@ function test_bosh($boshhost, $port, $suffix, $host)
     if(is_object($arr))
         $att = $arr->attributes();
 	if($att['type'] == 'terminate') {
-		set_error('bosh', t("XMPP connection through Bosh failed with error `%s'", $att['condition']));
+		set_error('bosh', t("XMPP connection through Bosh failed with error '%s'", $att['condition']));
 	}
     else if(isset($att['sid'])) {
         return true;
@@ -280,7 +280,7 @@ if(isset($_POST['install'])) {
     try {       
         include('../init.php');
     } catch (Exception $e) {
-		set_error('bdd', t("Database connection failed with error `%s'", $e->getMessage()));
+		set_error('bdd', t("Database connection failed with error '%s'", $e->getMessage()));
         goto loadpage;
     }
 
