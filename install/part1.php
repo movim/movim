@@ -81,6 +81,10 @@
                         </p>
 
                         <p>
+						  <label for="maxUsers">Maximum number of users (-1 is infinite)</label>
+						  <input type="text" name="maxUsers" id="maxUsers" value="-1" />
+                        </p>
+                        <p>
                             <label for="boshCookieTTL">Bosh cookie's expiration (s)</label>
                             <input type="text" id="boshCookieTTL" name="boshCookieTTL" value="<?php echo (isset($_POST['boshCookieTTL'])? $_POST['boshCookieTTL'] : 3600);?>"/>
                         </p>

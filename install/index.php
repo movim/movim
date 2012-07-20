@@ -260,6 +260,7 @@ function perform_install()
       'proxyEnabled'       => get_checkbox('proxyEnabled'),
       'proxyURL'           => $_POST['proxyURL'],
       'proxyPort'          => $_POST['proxyPort'],
+      'maxUsers'           => $_POST['maxUsers'],
       ),
     );
   if(!@file_put_contents('../config/conf.xml', make_xml($conf))) {
