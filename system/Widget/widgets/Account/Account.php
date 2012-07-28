@@ -163,6 +163,17 @@ class Account extends WidgetBase {
 
 	function build()
 	{
+        // Do we still allow user registration?
+        $conf = Conf::getServerConf();
+
+        $users = count(ConfVar::select(array()));
+
+        if($conf['maxUsers'] > -1 && $users > $conf['maxUsers']) {
+            echo '<br /><br /><br />';
+            echo '<div class="error">'.t('User registration is disabled.').'</div>';
+            return;
+        }
+        
         switch ($_GET['err']) {
             case 'datamissing':
 	            $warning = '
@@ -214,7 +225,6 @@ class Account extends WidgetBase {
                 break;
         }
 
-	$conf = Conf::getServerConf();
 	$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('account')");
 	?>
     <div id="content" style="width: 900px">

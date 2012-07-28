@@ -96,7 +96,7 @@ class Chat extends WidgetBase
             RPC::call('scrollTalk',
                            'messages'.$contact->getData('jid'));
                            
-            RPC::call('newMessage');
+            RPC::call('notify');
             
 
         }            
@@ -221,7 +221,6 @@ class Chat extends WidgetBase
                 
         $html .= '"><span class="date">'.date('H:i', strtotime($message->getData('published'))).'</span>';
         $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
-        
         return $html;
     }
     
@@ -259,7 +258,7 @@ class Chat extends WidgetBase
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
                 '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$messageshtml.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
                 '<textarea onkeyup="movim_textarea_autoheight(this);"  '.$style.'
-                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
+                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false; }"
                 ></textarea>'.
                 '<a class="name" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' hideTalk(this);">'.
                     '<img class="avatar"  src="'.$contact->getPhoto('xs').'" /><span>'.$contact->getTrueName().'</span>'.
