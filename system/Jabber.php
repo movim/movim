@@ -39,6 +39,7 @@ class Jabber
 
 		$this->jaxl = new JAXL(array(
 								   // User Configuration
+                                   'resource' => "Movim",
 								   
 								   // Here we need to exchange the host and domain to allow the connexion, Jaxl bug ?
 								   'host' => $userConf['domain'],
