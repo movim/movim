@@ -82,7 +82,7 @@ class WidgetCommon extends WidgetBase {
                             <table id="commentsubmit">
                                 <tr>
                                     <td>
-                                        <textarea id="'.$message->getData('nodeid').'commentcontent"></textarea>
+                                        <textarea id="'.$message->getData('nodeid').'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
                                     </td>
                                 </tr>
                                 <tr class="commentsubmitrow">

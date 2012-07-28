@@ -35,7 +35,7 @@ class Conf
 		$conf = self::getServerConf();
 
 		if(!isset($conf[$element])) {
-			throw new MovimException(t("Cannot load element value'%s'", $element));
+			throw new MovimException(t("Cannot load element value '%s'", $element));
 		}
 		else {
 			return $conf[$element];

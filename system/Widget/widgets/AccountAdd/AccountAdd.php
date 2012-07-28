@@ -33,7 +33,6 @@ class AccountAdd extends WidgetBase {
 	    }
 
 	    foreach($data as $value) {
-            movim_log($data);
             if(!filter_var($data['jid'], FILTER_VALIDATE_EMAIL)) {
             	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountAdd&err=jiderror"));
                 RPC::commit();
@@ -94,6 +93,17 @@ class AccountAdd extends WidgetBase {
     
 	function build()
 	{
+        // Do we still allow user registration?
+        $conf = Conf::getServerConf();
+
+        $users = count(ConfVar::select(array()));
+
+        if($conf['maxUsers'] > -1 && $users > $conf['maxUsers']) {
+            echo '<br /><br /><br />';
+            echo '<div class="error">'.t('Account linkage disabled.').'</div>';
+            return;
+        }
+        
         switch ($_GET['err']) {
             case 'datamissing':
 	            $warning = '
