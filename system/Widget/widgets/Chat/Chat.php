@@ -88,16 +88,17 @@ class Chat extends WidgetBase
             
             RPC::call('movim_append',
                            'messages'.$contact->getData('jid'),
-                           RPC::cdata($html));   
-                           
+                           RPC::cdata($html));
+            
             RPC::call('hideComposing',
                            $contact->getData('jid')); 
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->getData('jid'));
-                           
+            //Sound and title notification               
             RPC::call('notify');
-            
+            //Highlight the new chat message
+            RPC::call('setBackgroundColor', 'chatwindow'.$contact->getData('jid'), 'red');
 
         }            
         
@@ -255,10 +256,11 @@ class Chat extends WidgetBase
         }
     
         $html = '
-            <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
+            <div class="chat" onclick="this.querySelector(\'textarea\').focus()" id="chatwindow'.$contact->getData('jid').'">'.
                 '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$messageshtml.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
                 '<textarea onkeyup="movim_textarea_autoheight(this);"  '.$style.'
                     onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false; }"
+					onfocus="setBackgroundColor(\'chatwindow'.$contact->getData('jid').'\', \'#444444\')"
                 ></textarea>'.
                 '<a class="name" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' hideTalk(this);">'.
                     '<img class="avatar"  src="'.$contact->getPhoto('xs').'" /><span>'.$contact->getTrueName().'</span>'.
