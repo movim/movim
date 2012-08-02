@@ -85,3 +85,13 @@ function sendMessage(n, jid)
 function disableSound(){
 	chatSoundNotif.volume = 0;
 }
+
+function setBackgroundColor(where, color)
+{
+    target = document.getElementById(where);
+    console.debug('test');
+    if(target) {
+		    console.debug('tesssst');
+        target.style.backgroundColor = color;
+    }
+}
