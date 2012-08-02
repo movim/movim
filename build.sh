@@ -71,6 +71,6 @@ case $1 in
     "jaxl")  jaxl;;
     "package")  package;;
     "clean")  clean;;
-    *)  jaxl
-        datajar;;
+    *)  datajar
+        jaxl;;
 esac
