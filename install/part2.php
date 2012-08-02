@@ -1,29 +1,41 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>MOVIM</title>
-		<link rel="shortcut icon" href="../themes/movim/img/favicon.ico" />
-		<link rel="stylesheet" href="../themes/movim/css/style2.css" type="text/css" />
-	</head>
-	<body>
-		<div id="content" style="width: 900px">
-            <div id="left" style="width: 230px; padding-top: 10px;">
 
-            </div>
-            <div id="center" style="padding: 20px;" >
-                <h1><?php echo t('Movim Installer')." - ".t('Success !'); ?></h1>
-
-                <div class="valid">
-                    - <?php echo t('Valid Bosh'); ?><br />
-                    - <?php echo t('Database Detected'); ?><br />
-                    - <?php echo t('Database Movim schema installed'); ?><br />
-                </div>
-                <div class="warning">
-                    <?php echo t('You can now access your shiny Movim instance %sJump In !%s', '<a class="button tiny" style="float: right;" href="../index.php">', '</a>');?><br /><br /><br />
-                    - <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
-                </div>
-            </div>
-		</div>
-    </body>
-</html>
+<div id="left" style="width: 230px; padding-top: 10px;">
+	<div class="warning" id="leftside">
+		<p><?php echo t('Move your mousepointer over the configure options to receive more information.');?></p>
+	</div>
+</div>
+<div id="center" style="padding: 20px;" >
+	<h1 style="padding: 10px 0px;"><?php echo t('Movim Installer'); ?></h1>
+	<br>
+		<form method="post" action="index.php">
+			<fieldset>
+				<legend><?php echo $steps[$step]; ?></legend>
+					<p>
+						<input type="hidden" name="step" value="2" />
+					</p>
+					
+					<p <?php echo generate_Tooltip(t("Set the logging options.")); ?>>
+						<label for="dbsystem"><?php echo t('Database System to use:'); ?></label>
+						<select id="dbsystem" name="dbsystem" onchange="changeDB(this);">		
+							<?php 
+								$dbsystems = array("mysql", "sqlite", "mongodb"); 
+								foreach($dbsystems as $dbsystem):
+							?>
+								<option value="<?php echo $dbsystem; ?>">
+									<?php if(isset($_POST['dbystem']) && $_POST['dbsystem'] == $dbsystem):?>
+										selected="selected"
+									<?php endif;?>
+									<?php echo $dbsystem; ?>
+								</option>
+							<?php endforeach; ?>
+						</select>
+					</p>
+			</fieldset>
+			<fieldset id="dbform">
+				
+			</fieldset>
+			<?php include('buttons.php'); ?>
+			<br />
+		</form>
+	
+</div>

@@ -262,6 +262,9 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 .icon.add { background-image: url(../img/icons/add_icon.png); }
 .icon.rm { background-image: url(../img/icons/rm_icon.png); }
 .icon.submit { background-image: url(../img/icons/submit_icon.png); }
+.icon.next { background-image: url(../img/icons/next_icon.png); }
+.icon.back { background-image: url(../img/icons/back_icon.png); }
+
 
 .icon.loading { background-image: url(../img/icons/loading.gif); }
 
@@ -381,12 +384,18 @@ label {
 /* Warning */
 
 .warning {
-    background-color: #FEEFB3;
+    background-color: #90DC89;
     border: 1px solid #CEB13D;
     padding: 10px;
     margin: 10px 0px;
     color: #9F6000;
     overflow: auto;
+}
+
+.warning.no {
+	background: #90DC89 url(../img/icons/no_icon.png);
+	background-repeat: no-repeat;
+	background-position: right;
 }
 
 .warning.right {
@@ -412,12 +421,24 @@ label {
     color: #852424;
 }
 
+
 .valid {
-    background-color: #90DC89;
+    background-color: #FEEFB3; 
     border: 1px solid #4ABB3F;
     padding: 10px;
     margin: 10px 0px;    
     color: #1C4D17;
+}
+
+.valid.yes {
+	background: #FEEFB3 url(../img/icons/yes_icon.png);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.error a, .warning a, .valid a{
+	color: #555555;
+	text-decoration: underline;
 }
 
 .guidance {

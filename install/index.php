@@ -5,6 +5,9 @@ require_once('../system/Lang/languages.php');
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
+$tmpfile = "../config/conf.xml.temp";
+$conffile = "../config/conf.xml";
+
 function get_mysql_port() {
     $port = ini_get('mysql.default_port');
     if($port == "")
@@ -37,10 +40,7 @@ function has_errors()
 	return count($err);
 }
 
-function test_dir($dir)
-{
-  return (file_exists($dir) && is_dir($dir) && is_writable($dir));
-}
+
 
 function list_themes()
 {
@@ -75,53 +75,6 @@ function list_lang()
   }
 
   return $langs;
-}
-
-function test_requirements()
-{
-  $errors = array();
-
-  if(!(version_compare(PHP_VERSION, '5.3.0') >= 0)) {
-    $errors[] = t("PHP version mismatch. Movim requires PHP 5.3 minimum.")." ".t("Actual version : "). PHP_VERSION .
-                '<div class="guidance">'.t("Update your PHP version or contact your server administrator").'</div>';
-  }
-  if(!extension_loaded('curl')) {
-    $errors[] = t("Movim requires the %s extension.", 'PHP Curl') .
-                '<div class="guidance">'.t("Install %s and %s packages", 'php5-curl', 'curl').'</div>';
-  }
-  if(!extension_loaded('gd')) {
-    $errors[] = t("Movim requires the %s extension.", 'PHP GD') .
-                '<div class="guidance">'.t("Install the %s package", 'php5-gd').'</div>';
-  }
-  if(!extension_loaded('SimpleXML')) {
-    $errors[] = t("Movim requires the %s extension.", 'SimpleXML') .
-                '<div class="guidance">'.t("Install the %s package", 'php5-cli').'</div>';
-  }
-  if(!test_dir('../')) {
-    $errors[] = t("Movim's folder must be writable.") .
-                '<div class="guidance">'.t("Enable read and write rights on Movim's root folder").'</div>';
-  }
-  /*if(!test_dir('user')) {
-    $errors[] = t("The <em>%s</em> folder must exist and be writable.", 'user');
-  }
-  if(!test_dir('log')) {
-    $errors[] = t("The <em>%s</em> folder must exist and be writable.", 'log');
-  }*/
-
-  // Must have sqlite or mysql (so far...)
-  if(!extension_loaded('mysql') && !class_exists('SQLite3')) {
-      $exts = array('MySQL', 'SQLite');
-      $exts_txt = implode(t("or"), $exts);
-      $errors[] = t("Movim requires the %s extension.", $exts_txt);
-  }
-
-  global $databases;
-  if(extension_loaded('mysql'))
-      $databases['mysql'] = 'MySQL';
-  if(class_exists('SQLite3'))
-      $databases['sqlite'] = 'SQLite';
-
-  return (count($errors) > 0)? $errors : false;
 }
 
 function get_checkbox($name, $if = 'true', $else = 'false')
@@ -190,6 +143,86 @@ function test_bosh($boshhost, $port, $suffix, $host)
     }
 }
 
+function test_dir($dir){
+	return (file_exists($dir) && is_dir($dir) && is_writable($dir));
+}
+/*
+ * Create the dirs 
+ */
+
+function create_dirs(){
+
+  if(!test_dir('../cache') && !@mkdir('../cache')) {
+    echo t("Couldn't create directory '%s'.", 'cache');
+    return false;
+  }
+  if(!test_dir('../log') && !@mkdir('../log')) {
+    echo t("Couldn't create directory '%s'.", 'log');
+    return false;
+  }
+  if(!test_dir('../config') && !@mkdir('../config')) {
+    echo t("Couldn't create directory '%s'.", 'config');
+    return false;
+  }
+}
+
+//Returns the content of the post, of the xml, or a placeholder string
+function get_entry($post){
+	global $xml;
+	if(isset($_POST[$post])){
+		return $_POST[$post];
+	}elseif(isset($xml->$post)){
+		return $xml->$post;
+	}else{
+		return "n/a";
+	}
+}
+
+//Checks if movim already knows the user choice, or it returns a preset for the given form data
+function get_preset_value($post, $preset){
+	if(get_entry($post) == "n/a" || get_entry($post) == ""){
+		return $preset;
+	}else{
+		return get_entry($post);
+	}
+}
+
+function make_config(){
+	global $xml;
+	$conf = array(
+	'config' => array(
+	  'theme'              => get_entry('theme'),
+	  'defLang'            => get_entry('defLang'),
+//	  'boshCookieTTL'      => $_POST['boshCookieTTL'],
+//	  'boshCookiePath'     => $_POST['boshCookiePath'],
+//	  'boshCookieDomain'   => get_checkbox('boshCookieDomain'),
+//	  'boshCookieHTTPS'    => get_checkbox('boshCookieHTTPS'),
+//	  'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
+	  'logLevel'           => get_entry('logLevel'),
+	  //you should be able to do something with new pods, so:
+	  'accountCreation'    => True,
+//	  'host'               => $_POST['host'],
+//	  'domain'             => $_POST['domain'],
+//	  'defBoshHost'        => $_POST['defBoshHost'],
+//	  'defBoshSuffix'      => $_POST['defBoshSuffix'],
+//	  'defBoshPort'        => $_POST['defBoshPort'],
+//	  'storageDriver'      => $_POST['datajar'],
+//	  'storageConnection'  => $_POST['database'],
+//	  'proxyEnabled'       => get_checkbox('proxyEnabled'),
+//	  'proxyURL'           => $_POST['proxyURL'], 
+//	  'proxyPort'          => $_POST['proxyPort'],
+	  'maxUsers'           => get_entry('maxUsers'),
+	  ),
+	);
+	if(!@file_put_contents('../config/conf.xml.temp', make_xml($conf))) {
+	echo t("Couldn't create configuration file '%s'.", 'config/conf.xml.temp');
+	return false;
+	}
+	
+	return true;
+}
+
+
 function make_xml($stuff)
 {
   static $level = 0;
@@ -222,101 +255,90 @@ function make_xml($stuff)
   return $buffer;
 }
 
-function perform_install()
-{
-  // Creating the folders.
-  if(!test_dir('../cache') && !@mkdir('../cache')) {
-    echo t("Couldn't create directory '%s'.", 'cache');
-    return false;
-  }
-  if(!test_dir('../log') && !@mkdir('../log')) {
-    echo t("Couldn't create directory '%s'.", 'log');
-    return false;
-  }
-  if(!test_dir('../config') && !@mkdir('../config')) {
-    echo t("Couldn't create directory '%s'.", 'config');
-    return false;
-  }
 
-  // Creating the configuration file.
-  $conf = array(
-    'config' => array(
-      'theme'              => $_POST['theme'],
-      'defLang'            => $_POST['language'],
-      'boshCookieTTL'      => $_POST['boshCookieTTL'],
-      'boshCookiePath'     => $_POST['boshCookiePath'],
-      'boshCookieDomain'   => get_checkbox('boshCookieDomain'),
-      'boshCookieHTTPS'    => get_checkbox('boshCookieHTTPS'),
-      'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
-      'logLevel'           => $_POST['verbosity'],
-      'accountCreation'    => get_checkbox('accountCreation', 1, 0),
-      'host'               => $_POST['host'],
-      'domain'             => $_POST['domain'],
-      'defBoshHost'        => $_POST['defBoshHost'],
-      'defBoshSuffix'      => $_POST['defBoshSuffix'],
-      'defBoshPort'        => $_POST['defBoshPort'],
-      'storageDriver'      => $_POST['datajar'],
-      'storageConnection'  => $_POST['database'],
-      'proxyEnabled'       => get_checkbox('proxyEnabled'),
-      'proxyURL'           => $_POST['proxyURL'],
-      'proxyPort'          => $_POST['proxyPort'],
-      'maxUsers'           => $_POST['maxUsers'],
-      ),
-    );
-  if(!@file_put_contents('../config/conf.xml', make_xml($conf))) {
-    echo t("Couldn't create configuration file '%s'.", 'config/conf.xml');
-    return false;
-  }
 
-  return true;
+function generate_Tooltip($text, $background=True){
+	$html = 'onmouseover=" elmnt = document.getElementById(\'leftside\'); elmnt.innerHTML=\''.$text.'\'; ';
+	if($background){
+		$html .= 'this.style.background = \'#F8F8F8\';" onmouseout="this.style.background=\'white\';"';
+	}else{
+		$html .= '"';
+	}
+	return $html;
 }
 
-$step = 'part1.php';
 
-if(isset($_POST['install'])) {
-    // We test the Bosh configuration
-    if(!test_bosh($_POST['defBoshHost'], $_POST['defBoshPort'], $_POST['defBoshSuffix'], $_POST['host'])) {
-        goto loadpage;
-    }
 
-	// We create the configuration file
-    perform_install();
+$steps = array(
+	t("Compatibility Check"),
+	t("General Settings"),
+	t("Database Settings"),
+	t("Bosh Configuration"),
+	t("XMPP Server"),
+	t("Done")
+	);
 
-    // We try to connect to the database
-    try {
-        include('../init.php');
-    } catch (Exception $e) {
-		set_error('bdd', t("Database connection failed with error '%s'", $e->getMessage()));
-        goto loadpage;
-    }
 
-    // We create correctly the tables
-    global $sdb;
-    $contact = new Contact();
-    $sdb->create($contact);
 
-    $conf = new ConfVar();
-    $sdb->create($conf);
-
-    $message = new Message();
-    $sdb->create($message);
-
-    $presence = new Presence();
-    $sdb->create($presence);
-
-    $post = new Post();
-    $sdb->create($post);
-
-    $caps = new Caps();
-    $sdb->create($caps);
-
-    $attachment = new Attachment();
-    $sdb->create($attachment);
-
-	$step = 'part2.php';
+#################
+#Handle the forms
+###############
+if(isset($_POST['back'])){
+	$_POST['step'] -= 2;
+}
+//When the tests do not fail, we just create some directories and succeed to the next step
+if(isset($_POST['step'])) {
+	switch($_POST['step']){
+		
+		//The checks passed:
+		case 0:{
+			//We load the array.
+			$xml = simplexml_load_file($tmpfile);
+			create_dirs();
+			$step = 1;
+			break;
+			
+		//Store the basic settings
+		}case 1:{
+			//We load the array.
+			$xml = simplexml_load_file($tmpfile);
+			make_config();
+			$step = 2;
+			break;
+			
+		//Store the DB settings
+		#TODO: Verify the SQL Settings
+		}case 2: {
+			//We load the array.
+			$xml = simplexml_load_file($tmpfile);
+			$step = 3;
+			break;
+			
+		//The BOSH settings
+		#TODO: Check if bosh settings are right and whether open Bosh (e.g. connect to random xmpp); when bosh closed warn the user
+		}case 3: {
+			$step = 4;
+			break;
+			
+		#TODO: Display all Settings again
+		}case 4: {
+			break;
+			
+		#TOTO: Write Database; Rename conf.xml.part
+		}case 5: {
+			break;
+		//If the user goes back to the checks:
+		}case -1: {
+			$step = 0;
+			break;
+			
+		}default: die("Something went wrong");
+	}
+}else{
+	$step = 0;
 }
 
-loadpage:
-require($step);
+
+require('template.php');
 
 ?>
