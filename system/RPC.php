@@ -90,9 +90,10 @@ class RPC
     public function handle()
     {
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
-			$user = new User();
+			/*$user = new User();
 			$xmppSession = Jabber::getInstance($user->getLogin());
-			$xmppSession->pingServer();
+			$xmppSession->pingServer();*/
+            moxl\ping();
 		} else {
             $xml = file_get_contents('php://input');
 			$request = simplexml_load_string($xml);

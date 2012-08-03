@@ -26,6 +26,7 @@ class Chat extends WidgetBase
     	$this->addjs('chat.js');
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('composing', 'onComposing');
+        $this->registerEvent('paused', 'onPaused');
 		$this->registerEvent('presence', 'onPresence');
         
         $this->cached = false;
@@ -34,7 +35,6 @@ class Chat extends WidgetBase
     function onPresence($presence)
     {
 	    $arr = $presence->getPresence();
-	    $tab = PresenceHandler::getPresence($arr['jid'], true);
 
         $txt = array(
                 1 => t('Online'),
@@ -48,27 +48,34 @@ class Chat extends WidgetBase
         $html = '
             <div class="message presence">
                 <span class="date">'.date('G:i', time()).'</span>'.
-                prepareString(htmlentities($txt[$tab['presence']], ENT_COMPAT, "UTF-8")).'
+                prepareString(htmlentities($txt[$arr['presence']], ENT_COMPAT, "UTF-8")).'
             </div>';
 
         RPC::call('movim_append',
-                       'messages'.$tab['jid'],
+                       'messages'.$arr['jid'],
                        RPC::cdata($html)); 
                        
         RPC::call('scrollTalk',
-                       'messages'.$tab['jid']);
+                       'messages'.$arr['jid']);
 	}
     
     function onMessage($message)
     {
-        if($message->getData('key') == $message->getData('from'))
+        if($message->getData('key') == $message->getData('from')) {
+            $key = $message->getData('from');
             $jid = $message->getData('to');
-        else
+        } else {
+            $key = $message->getData('to');
             $jid = $message->getData('from');
-    
-        global $sdb;
-        $contact = new Contact();
-        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
+        }
+
+        $query = Contact::query()->select()
+                                 ->where(array(
+                                            'key' => $key,
+                                            'jid' => $jid));
+        $contact = Contact::run_query($query);
+
+        $contact = $contact[0];
         
         if($contact->getData('chaton') == 0) {
             RPC::call('movim_prepend',
@@ -76,8 +83,9 @@ class Chat extends WidgetBase
                            RPC::cdata($this->prepareChat($contact)));
             RPC::call('scrollAllTalks');
             $contact->chaton = 1;
-            $sdb->save($contact);
-        }else if($message->getData('body') != '') {
+            
+            $contact->run_query($contact->query()->save($contact));
+        } else if($message->getData('body') != '') {
             
             $html = $this->prepareMessage($message);
 
@@ -92,6 +100,9 @@ class Chat extends WidgetBase
                            
             RPC::call('hideComposing',
                            $contact->getData('jid')); 
+
+            RPC::call('hidePaused',
+                           $contact->getData('jid')); 
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->getData('jid'));
@@ -105,11 +116,15 @@ class Chat extends WidgetBase
 
     }
     
-    function onComposing($payload)
+    function onComposing($jid)
     {
-        global $sdb;
-        $contact = new Contact();
-        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => reset(explode("/", $payload['from']))));
+        $query = Contact::query()->select()
+                                 ->where(array(
+                                            'key' => $this->user->getLogin(),
+                                            'jid' => $jid));
+        $contact = Contact::run_query($query);
+        $contact = $contact[0];
+        
         if($contact->getData('chaton') == 1) {
             RPC::call('showComposing',
                        $contact->getData('jid'));
@@ -118,6 +133,25 @@ class Chat extends WidgetBase
                       'messages'.$contact->getData('jid'));
         }
     }
+
+    function onPaused($jid)
+    {
+        $query = Contact::query()->select()
+                                 ->where(array(
+                                            'key' => $this->user->getLogin(),
+                                            'jid' => $jid));
+        $contact = Contact::run_query($query);
+        $contact = $contact[0];
+        
+        if($contact->getData('chaton') == 1) {
+            RPC::call('showPaused',
+                       $contact->getData('jid'));
+                           
+            RPC::call('scrollTalk',
+                      'messages'.$contact->getData('jid'));
+        }
+    }
+    
     
 	/**
 	 * Open a new talk
@@ -127,22 +161,24 @@ class Chat extends WidgetBase
 	 */
 	function ajaxOpenTalk($jid) 
 	{
-        global $sdb;
+        $query = Contact::query()->select()
+                                 ->where(array(
+                                            'key' => $this->user->getLogin(),
+                                            'jid' => $jid));
+        $contact = Contact::run_query($query);
+        $contact = $contact[0];
         
-        $presence = PresenceHandler::getPresence($jid, true);
-        if(isset($presence) && $presence["presence_txt"] != 'offline') {	
-			$contact = new Contact();
-			$sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
-			if($contact->getData('chaton') != 1) {
-				RPC::call('movim_prepend',
-							   'chats',
-							   RPC::cdata($this->prepareChat($contact)));
-				RPC::call('scrollAllTalks');
-				$contact->chaton = 1;
-				$sdb->save($contact);
-				RPC::commit();
-			}
-		}
+        if($contact->getData('chaton') != 1) {
+            RPC::call('movim_prepend',
+                           'chats',
+                           RPC::cdata($this->prepareChat($contact)));
+            RPC::call('scrollAllTalks');
+            $contact->chaton = 1;
+            
+            $contact->run_query($contact->query()->save($contact));
+
+            RPC::commit();
+        }
     }
     
 	/**
@@ -154,21 +190,25 @@ class Chat extends WidgetBase
      */
     function ajaxSendMessage($to, $message)
     {
-        $item = array('@attributes' => array(
-                                        'to' => $to,
-                                        'from' => $this->user->getLogin()),
-                      'body' => rawurldecode($message));
-                      
+        $m = new \Message();
         
-        global $sdb;
-        $m = new Message();
-        $m->setMessageChat($item);
-        $sdb->save($m);
+        $m->key->setval($this->user->getLogin());
+        $m->to->setval($to);
+        $m->from->setval($this->user->getLogin());
+        
+        $m->type->setval("chat");
+        
+        $m->body->setval(rawurldecode($message));
+        
+        $m->published->setval(date('Y-m-d H:i:s'));
+        $m->delivered->setval(date('Y-m-d H:i:s'));
+    
+        $m->run_query($m->query()->save($m));
 
         $this->onMessage($m);
              
 		// We decode URL codes to send the correct message to the XMPP server
-        $this->xmpp->sendMessage($to, rawurldecode($message));
+        moxl\message($to, rawurldecode($message));
     }
     
 	/**
@@ -178,29 +218,37 @@ class Chat extends WidgetBase
 	 * @return void
 	 */
 	function ajaxCloseTalk($jid) 
-	{
-        global $sdb;
-        $contact = new Contact();
-        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
+	{        
+        $query = Contact::query()->select()
+                                 ->where(array(
+                                            'key' => $this->user->getLogin(),
+                                            'jid' => $jid));
+        $contact = Contact::run_query($query);
+        $contact = $contact[0];
+        
         if($contact->getData('chaton') == 1 || $contact->getData('chaton') == 2) {
             $contact->chaton = 0;
-            $sdb->save($contact);
+            
+            $contact->run_query($contact->query()->save($contact));
         }
 	}
     
     function ajaxHideTalk($jid)
     {
-        global $sdb;
-        $contact = new Contact();
-        $sdb->load($contact, array('key' => $this->user->getLogin(), 'jid' => $jid));
+        $query = Contact::query()->select()
+                                 ->where(array(
+                                            'key' => $this->user->getLogin(),
+                                            'jid' => $jid));
+        $contact = Contact::run_query($query);
+        $contact = $contact[0];
+        
         if($contact->getData('chaton') == 1) {
             $contact->chaton = 2;
-            $sdb->save($contact);
         }
         else {
             $contact->chaton = 1;
-            $sdb->save($contact);
         }
+        $contact->run_query($contact->query()->save($contact));
         
         RPC::call('scrollTalk',
                    'messages'.$contact->getData('jid'));
@@ -257,7 +305,10 @@ class Chat extends WidgetBase
     
         $html = '
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
-                '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$messageshtml.'<div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div></div>'.
+                '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$messageshtml.'
+                    <div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div>
+                    <div style="display: none;" class="message" id="paused'.$contact->getData('jid').'">'.t('Paused...').'</div>
+                 </div>'.
                 '<textarea onkeyup="movim_textarea_autoheight(this);"  '.$style.'
                     onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
                 ></textarea>'.

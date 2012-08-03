@@ -12,7 +12,7 @@ class Feed extends WidgetCommon {
 		$this->registerEvent('stream', 'onStream');
         $this->registerEvent('vcard', 'onVcard');
 
-        $this->cached = true;
+        $this->cached = false;
     }
     
     function onPost($id) {
@@ -30,8 +30,9 @@ class Feed extends WidgetCommon {
     
     function prepareFeed($start) {
         $query = Post::query()
-                            ->where(array('key' => $this->user->getLogin(), 'parentid' => ''))
-                            ->orderby('updated', true)
+                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
+                            ->where(array('Post`.`key' => $this->user->getLogin(), 'Post`.`parentid' => ''))
+                            ->orderby('Post.updated', true)
                             ->limit($start, '20');
         $messages = Post::run_query($query);
 		
@@ -44,8 +45,13 @@ class Feed extends WidgetCommon {
 		} else {
 			$html = '';
 			
+            $i = 0;
 			foreach($messages as $message) {
-				$html .= $this->preparePost($message);
+                if(
+                    isset($messages[$i+1]) && 
+                    $messages[$i][0]->getData('nodeid') != $messages[$i+1][0]->getData('nodeid'))
+                    $html .= $this->preparePost($message);
+                $i++;
 			}
 			
             $next = $start + 20;

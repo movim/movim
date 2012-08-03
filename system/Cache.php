@@ -36,10 +36,10 @@ class Cache
         $user = new User();
         $this->login = $user->getLogin();
 
-        $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
+        //$this->db = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
 
-        $var = new CacheVar();
-        $this->db->create($var);
+        //$var = new CacheVar();
+        //$this->db->create($var);
     }
 
     function __destruct()
@@ -113,15 +113,35 @@ class Cache
         $md5 = md5($data);
         $time = time();
 
+        //$var = new CacheVar();
+        //$this->db->load($var, array('key' => $cache_key));
+        
         $var = new CacheVar();
-        $this->db->load($var, array('key' => $cache_key));
+
+        /*$success = $var->load(array(
+                                   'session' => self::$sid,
+                                   'container' => $this->container,
+                                   'name' => $varname));*/
+                                   
+        $query = CacheVar::query()->select()
+                                   ->where(array(
+                                           'key' => $cache_key))
+                                   ->limit(0, 1);
+        $result = Cache::run_query($query);
+
+
+        if($result) {
+            $var = $result[0];
+        }
 
         $var->key = $cache_key;
         $var->data = $data;
         $var->checksum = $md5;
         $var->timestamp = $time;
 
-        $this->db->save($var);
+        $var->run_query($var->query()->save($var));
+
+        //$this->db->save($var);
     }
 
     /**
@@ -132,13 +152,21 @@ class Cache
         $cache_key = $this->login.':'.$key;
 
         $var = new CacheVar();
+        if($var->load(array('key' => $cache_key))) {
+                        return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
+
+        } else {
+            return false;
+        }
+
+        /*$var = new CacheVar();
         $success = $this->db->load($var, array('key' => $cache_key));
 
         if($success) {
             return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
         } else {
             return false;
-        }
+        }*/
     }
 }
 

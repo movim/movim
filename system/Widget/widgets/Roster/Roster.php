@@ -32,15 +32,14 @@ class Roster extends WidgetBase
 		$this->registerEvent('presence', 'onPresence');
 		$this->registerEvent('vcard', 'onVcard');
         
-        $this->cached = true;
+        $this->cached = false;
     }
     
 	function onPresence($presence)
 	{
 	    $arr = $presence->getPresence();
-	    $tab = PresenceHandler::getPresence($arr['jid'], true);
 	    RPC::call('incomingPresence',
-                      RPC::cdata($tab['jid']), RPC::cdata($tab['presence_txt']));
+                      RPC::cdata($arr['jid']), RPC::cdata($arr['presence_txt']));
 	}
 	
     function onVcard($contact)
@@ -58,12 +57,12 @@ class Roster extends WidgetBase
     
 	function ajaxRefreshRoster()
 	{
-		$this->xmpp->getRosterList();
+		//$this->xmpp->getRosterList();
 	}
 	
 	function prepareRosterElement($contact, $inner = false)
 	{
-        $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
+        $presence = $contact[1]->getPresence();
         $start = 
             '<li
                 class="';
@@ -72,24 +71,26 @@ class Roster extends WidgetBase
                     else
                         $start .= 'offline ';
                         
-                    if($contact->getData('jid') == $_GET['f'])
+                    if($contact[0]->getData('jid') == $_GET['f'])
                         $start .= 'active ';
         $start .= '" 
-                id="roster'.$contact->getData('jid').'" 
+                id="roster'.$contact[0]->getData('jid').'" 
              >';
              
-        $middle = '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"></div>
+        $middle = '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact[0]->getData('jid')."'").'"></div>
                  <a 
-					title="'.$contact->getData('jid');
+					title="'.$contact[0]->getData('jid');
                     if($presence['status'] != '')
                         $middle .= ' - '.$presence['status'];
         $middle .= '"';
-        $middle .= ' href="?q=friend&f='.$contact->getData('jid').'"
+        $middle .= ' href="?q=friend&f='.$contact[0]->getData('jid').'"
                  >
-                    <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.
-                    '<span>'.$contact->getTrueName();
-						if($contact->getData('rosterask') == 'subscribe')
+                    <img class="avatar"  src="'.$contact[0]->getPhoto('xs').'" />'.
+                    '<span>'.$contact[0]->getTrueName();
+						if($contact[0]->getData('rosterask') == 'subscribe')
 							$middle .= " #";
+                        if($presence['ressource'] != '')
+                            $middle .= ' ('.$presence['ressource'].')';
             $middle .= '</span>
                  </a>';
         $end = '</li>';
@@ -106,18 +107,12 @@ class Roster extends WidgetBase
 	
 	function prepareRoster()
 	{
-        $query = Contact::query()
-                            ->where(
-                                array(
-                                    'key' => $this->user->getLogin(),
-                                    'jid!' => '',
-                                    array(
-                                        'rostersubscription!' => 'none',
-                                        '|rosterask' => 'subscribe'
-                                    )
-                                )
-                            )
-                            ->orderby('group', true);
+        $query = Contact::query()->join('Presence',
+                                              array('Contact.jid' =>
+                                                    'Presence.jid'))
+                                 ->where(array('Contact`.`key' => $this->user->getLogin()))
+                                 ->orderby('Contact.group', true);
+
         $contacts = Contact::run_query($query);
     
         $html = '';
@@ -125,17 +120,16 @@ class Roster extends WidgetBase
 
         if($contacts != false) {
             
-            if($contacts[0]->getData('group') == '')
+            if($contacts[0][0]->getData('group') == '')
                 $html .= '<div><h1>'.t('Ungrouped').'</h1>';
             else {
-                $group = $contacts[0]->getData('group');
+                $group = $contacts[0][0]->getData('group');
                 $html .= '<div><h1>'.$group.'</h1>';
             }
             
             foreach($contacts as $c) {
-                
-                if($group != $c->getData('group')) {
-                    $group = $c->getData('group');
+                if($group != $c[0]->getData('group')) {
+                    $group = $c[0]->getData('group');
                     $html .= '</div>';
                     if($group == '')
                         $html .= '<div><h1>'.t('Ungrouped').'</h1>';
@@ -146,10 +140,8 @@ class Roster extends WidgetBase
                 $html .= $this->prepareRosterElement($c);
             }
             $html .= '</div>';
-            
-            $html .= '<li class="more" onclick="showRoster(this);"><a href="#"><span>'.t('Show All').'</span></a></li>';
         } else {
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
+            //$html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
         }
 
         return $html;
@@ -162,6 +154,11 @@ class Roster extends WidgetBase
             <ul id="rosterlist">
             <?php echo $this->prepareRoster(); ?>
             </ul>
+            <div id="rostermenu">
+                <ul>
+                    <li onclick="showRoster(this);"><a href="#"><?php echo t('Show/Hide'); ?></a></li>
+                </ul>
+            </div>
             <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
             <script type="text/javascript">sortRoster();</script>
         </div>

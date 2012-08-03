@@ -16,7 +16,7 @@
  * See COPYING for licensing information.
  */
 
-include(LIB_PATH . 'Jaxl/core/jaxl.class.php');
+//include(LIB_PATH . 'Jaxl/core/jaxl.class.php');
 
 class Jabber
 {
@@ -144,7 +144,6 @@ class Jabber
 			$this->jaxl->startCore('bosh');
 		}
         
-        movim_log($presence = Cache::c('presence'));
         self::setStatus($presence['status'], $presence['show'], false, true);  
 	}
     

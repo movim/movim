@@ -17,49 +17,49 @@
 
 class WidgetCommon extends WidgetBase {
     protected function preparePost($message) {
-        global $sdb;
+        /*global $sdb;
         $user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));
+        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));*/
         
         $tmp = '';
         
-        if(isset($contact[0])) {
+        if(isset($message[1])) {
             $tmp = '<div class="post ';
-                if($user->getLogin() == $message->getData('jid'))
+                if($this->user->getLogin() == $message[0]->getData('jid'))
                     $tmp .= 'me';
-            $tmp .= '" id="'.$message->getData('nodeid').'" >
-                    <img class="avatar" src="'.$contact[0]->getPhoto('s').'">
+            $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
+                    <img class="avatar" src="'.$message[1]->getPhoto('s').'">
 
-                    <span><a href="?q=friend&f='.$message->getData('jid').'">'.$contact[0]->getTrueName().'</a></span>
-                    <span class="date">'.prepareDate(strtotime($message->getData('updated'))).'</span>
+                    <span><a href="?q=friend&f='.$message[0]->getData('jid').'">'.$message[1]->getTrueName().'</a></span>
+                    <span class="date">'.prepareDate(strtotime($message[0]->getData('updated'))).'</span>
                     <div class="content">
-                        '.prepareString($message->getData('content')). '</div>';
+                        '.prepareString($message[0]->getData('content')). '</div>';
                         
-            $attachments = AttachmentHandler::getAttachment($user->getLogin(), $message->getData('nodeid'));
-            if($attachments) {
+            //$attachments = AttachmentHandler::getAttachment($this->user->getLogin(), $message[0]->getData('nodeid'));
+            /*if($attachments) {
                 $tmp .= '<div class="attachment">';
                 foreach($attachments as $attachment)
                     $tmp .= '<a target="_blank" href="'.$attachment->getData('link').'"><img alt="'.$attachment->getData('title').'" title="'.$attachment->getData('title').'" src="'.$attachment->getData('thumb').'"></a>';
                 $tmp .= '</div>';
-            }
+            }*/
             
             
-            if($message->getPlace() != false)
+            if($message[0]->getPlace() != false)
                 $tmp .= '<span class="place">
                             <a 
                                 target="_blank" 
-                                href="http://www.openstreetmap.org/?lat='.$message->getData('lat').'&lon='.$message->getData('lon').'&zoom=10"
-                            >'.$message->getPlace().'</a>
+                                href="http://www.openstreetmap.org/?lat='.$message[0]->getData('lat').'&lon='.$message[0]->getData('lon').'&zoom=10"
+                            >'.$message[0]->getPlace().'</a>
                          </span>';
                          
-            if($message->getData('jid') != $message->getData('uri'))
-                $tmp .= '<span class="recycle"><a href="?q=friend&f='.$message->getData('uri').'">'.$message->getData('name').'</a></span>';
+            if($message[0]->getData('jid') != $message[0]->getData('uri'))
+                $tmp .= '<span class="recycle"><a href="?q=friend&f='.$message[0]->getData('uri').'">'.$message[0]->getData('name').'</a></span>';
               
-            movim_log($message->getData('commentson').' '.$message->getData('nodeid'));
-            if($message->getData('commentson') == 1) {
-                $tmp .= '<div class="comments" id="'.$message->getData('nodeid').'comments">';
+            movim_log($message[0]->getData('commentson').' '.$message[0]->getData('nodeid'));
+            if($message[0]->getData('commentson') == 1) {
+                $tmp .= '<div class="comments" id="'.$message[0]->getData('nodeid').'comments">';
 
-                $comments = WidgetCommon::prepareComments($message->getData('nodeid'));
+                $comments = WidgetCommon::prepareComments($message[0]->getData('nodeid'));
                 
                 if($comments != false)
                     $tmp .= $comments;
@@ -69,7 +69,7 @@ class WidgetCommon extends WidgetBase {
                                 <a 
                                     class="getcomments icon bubble" 
                                     style="margin-left: 0px;" 
-                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message->getData('commentplace')."'", "'".$message->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
+                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message[0]->getData('commentplace')."'", "'".$message[0]->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
                                         t('Get the comments').'
                                 </a>
                             </div></div>';
@@ -82,7 +82,7 @@ class WidgetCommon extends WidgetBase {
                             <table id="commentsubmit">
                                 <tr>
                                     <td>
-                                        <textarea id="'.$message->getData('nodeid').'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
+                                        <textarea id="'.$message[0]->getData('nodeid').'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
                                     </td>
                                 </tr>
                                 <tr class="commentsubmitrow">
@@ -90,13 +90,13 @@ class WidgetCommon extends WidgetBase {
                                     <td>
                                         <a
                                             onclick="
-                                                    if(document.getElementById(\''.$message->getData('nodeid').'commentcontent\').value != \'\') {
+                                                    if(document.getElementById(\''.$message[0]->getData('nodeid').'commentcontent\').value != \'\') {
                                                         '.$this->genCallAjax(
                                                             'ajaxPublishComment', 
-                                                            "'".$message->getData('commentplace')."'", 
-                                                            "'".$message->getData('nodeid')."'", 
-                                                            "encodeURIComponent(document.getElementById('".$message->getData('nodeid')."commentcontent').value)").
-                                                            'document.getElementById(\''.$message->getData('nodeid').'commentcontent\').value = \'\';
+                                                            "'".$message[0]->getData('commentplace')."'", 
+                                                            "'".$message[0]->getData('nodeid')."'", 
+                                                            "encodeURIComponent(document.getElementById('".$message[0]->getData('nodeid')."commentcontent').value)").
+                                                            'document.getElementById(\''.$message[0]->getData('nodeid').'commentcontent\').value = \'\';
                                                     }"
                                             class="button tiny icon submit"
                                             style="padding-left: 28px;"
@@ -116,18 +116,25 @@ class WidgetCommon extends WidgetBase {
     }
 
     protected function prepareComments($parentid) {
-        $user = new User();
+        //$user = new User();
 
         $query = Post::query()
+                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
+                            ->where(array('Post`.`key' => $this->user->getLogin(), 'Post`.`parentid' => $parentid))
+                            ->orderby('Post.updated', false);
+        $comments = Post::run_query($query);
+
+        /*$query = Post::query()
                             ->where(array('key' => $user->getLogin(), 'parentid' => $parentid))
                             ->orderby('published', false);
-        $comments = Post::run_query($query);
+        $comments = Post::run_query($query);*/
         
         $tmp = false;
         
         $size = sizeof($comments);
         
-        $comcounter = 0;
+        /*$comcounter = 0;
+        var_dump($size);
         
         if($size > 3) {
             $tmp = '<div 
@@ -139,36 +146,40 @@ class WidgetCommon extends WidgetBase {
                         <a class="getcomments icon bubbleold">'.t('Show the older comments').'</a>
                     </div>';
             $comcounter = $size - 3;
-        }
+        }*/
         
         if($comments) {
-            foreach($comments as $comment) {                
-                $query = Contact::query()
+            $i = 0;
+            foreach($comments as $comment) {             
+                /*$query = Contact::query()
                                     ->where(array('key' => $user->getLogin(), 'jid' => $comment->getData('jid')));
-                $contact = Post::run_query($query);
+                $contact = Post::run_query($query);*/
+                if(isset($comments[$i+1]) && $comments[$i][0]->getData('nodeid') != $comments[$i+1][0]->getData('nodeid')) {
 
-                if(isset($contact[0])) {
-                    $photo = $contact[0]->getPhoto('s');
-                    $name = $contact[0]->getTrueName();
-                }
-                else {
-                    $photo = "image.php?c=default";
-                    $name = $comment->getData('jid');
-                }
-                
-                $tmp .= '
-                    <div class="comment" ';
-                if($comcounter > 0) {
-                    $tmp .= 'style="display:none;"';
-                    $comcounter--;
-                }
+                    if(isset($comment[1])) {
+                        $photo = $comment[1]->getPhoto('s');
+                        $name = $comment[1]->getTrueName();
+                    }
+                    else {
+                        $photo = "image.php?c=default";
+                        $name = $comment[0]->getData('jid');
+                    }
                     
-                $tmp .='>
-                        <img class="avatar tiny" src="'.$photo.'">
-                        <span><a href="?q=friend&f='.$comment->getData('jid').'">'.$name.'</a></span>
-                        <span class="date">'.prepareDate(strtotime($comment->getData('published'))).'</span><br />
-                        <div class="content tiny">'.prepareString($comment->getData('content')).'</div>
-                    </div>';
+                    $tmp .= '
+                        <div class="comment" ';
+                    /*if($comcounter > 0) {
+                        $tmp .= 'style="display:none;"';
+                        $comcounter--;
+                    }*/
+                        
+                    $tmp .='>
+                            <img class="avatar tiny" src="'.$photo.'">
+                            <span><a href="?q=friend&f='.$comment[0]->getData('jid').'">'.$name.'</a></span>
+                            <span class="date">'.prepareDate(strtotime($comment[0]->getData('published'))).'</span><br />
+                            <div class="content tiny">'.prepareString($comment[0]->getData('content')).'</div>
+                        </div>';
+                }
+                $i++;
             }
         }
         

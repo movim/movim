@@ -52,13 +52,16 @@ class Profile extends WidgetBase
     
     function prepareVcard($vcard = false)
     {
-        global $sdb;
-        $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+        $query = Contact::query()->select()
+                                 ->where(array(
+                                            'key' => $this->user->getLogin(),
+                                            'jid' => $this->user->getLogin()));
+        $contact = Contact::run_query($query);
         
         $presence = Cache::c('presence');
         
-        if(isset($me[0])) {
-            $me = $me[0];
+        if(isset($contact[0])) {
+            $me = $contact[0];
             $html ='<h1>'.$me->getTrueName().'</h1><img src="'.$me->getPhoto().'"/>';
 
             $html .= '

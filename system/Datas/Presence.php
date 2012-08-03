@@ -1,16 +1,16 @@
 <?php
 
 class Presence extends DatajarBase {
-    protected $key;
-    protected $jid;
+    public $key;
+    public $jid;
     
-    protected $ressource;
-    protected $presence;
-    protected $priority;
-    protected $status;
+    public $ressource;
+    public $presence;
+    public $priority;
+    public $status;
     
-    protected $node;
-    protected $ver;
+    public $node;
+    public $ver;
     
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);

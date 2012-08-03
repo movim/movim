@@ -1,7 +1,8 @@
 function getPos(n)
 {
-    n.style.display = "none";
+    //n.style.display = "none";
 	if(navigator.geolocation){
+        console.log(navigator.geolocation.getCurrentPosition);
 	    navigator.geolocation.getCurrentPosition(function(position){
 	        var latitude = position.coords.latitude;
 	        var longitude = position.coords.longitude;

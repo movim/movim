@@ -25,8 +25,6 @@ class Vcard extends WidgetBase
 		$this->registerEvent('myvcard', 'onMyVcardReceived');
     	$this->addcss('vcard.css');
     	$this->addjs('vcard.js');
-        
-        //$this->cached = true;
     }
     
     function onMyVcardReceived()
@@ -162,7 +160,7 @@ class Vcard extends WidgetBase
                       </div>';
                       
             $html .= '</fieldset>';                  
-    /*        $html .= '<br />
+            $html .= '<br />
                 <fieldset>
                     <legend>'.t('Geographic Position').'</legend>';
 		    $html .= '<div class="warning"><a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
@@ -172,7 +170,7 @@ class Vcard extends WidgetBase
                       </div>';
             $html .= '<div class="element"><span>'.t('Longitude').'</span>
                         <input type="text" name="vCardLong" class="content" value="Longitude" readonly>
-                      </div>';*/
+                      </div>';
 
             $html .= '<hr />';
 

@@ -1,18 +1,18 @@
 <?php
 
 class Message extends DatajarBase {
-    protected $key;
-    protected $to;
-    protected $from;
+    public $key;
+    public $to;
+    public $from;
     
-    protected $type;
+    public $type;
 
-    protected $subject;
-    protected $thread;
-    protected $body;
+    public $subject;
+    public $thread;
+    public $body;
 
-    protected $published;
-    protected $delivered;
+    public $published;
+    public $delivered;
 
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);

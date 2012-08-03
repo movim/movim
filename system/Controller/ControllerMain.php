@@ -41,13 +41,14 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
-            $this->page->menuAddLink(t('Help'), '?q=help');            
+            $this->page->menuAddLink(t('Help'), '?q=help');
+            $this->page->menuAddLink(t('Logout'), '?q=disconnect');
 
 			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('main.tpl'));
 			echo $this->page->build('page.tpl');
-		}
+        }
 	}
 
 	function friend()
@@ -114,7 +115,8 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
 			$this->page->menuAddLink(t('Profile'), '?q=profile', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
-            $this->page->menuAddLink(t('Help'), '?q=help');            
+            $this->page->menuAddLink(t('Help'), '?q=help');
+            $this->page->menuAddLink(t('Logout'), '?q=disconnect');
 
 			$content = new TplPageBuilder($user);
 
