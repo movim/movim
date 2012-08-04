@@ -29,9 +29,10 @@ class Feed extends WidgetCommon {
     function onVcard($contact) { }
     
     function prepareFeed($start) {
+        // We query the last messages
         $query = Post::query()
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where(array('Post`.`key' => $this->user->getLogin(), 'Post`.`parentid' => ''))
+                            ->where(array('Contact`.`key' => $this->user->getLogin(), 'Post`.`parentid' => ''))
                             ->orderby('Post.updated', true)
                             ->limit($start, '20');
         $messages = Post::run_query($query);
@@ -44,14 +45,43 @@ class Feed extends WidgetCommon {
 			$html .=  '<div style="padding: 1em; text-align: center;">'.t('Loading your feed ...').'</div>';
 		} else {
 			$html = '';
-			
+
+            // We create the array for the comments request
+            $commentid = array();
             $i = 0;
-			foreach($messages as $message) {
-                if(
-                    isset($messages[$i+1]) && 
-                    $messages[$i][0]->getData('nodeid') != $messages[$i+1][0]->getData('nodeid'))
-                    $html .= $this->preparePost($message);
+            foreach($messages as $message) {
+                if($i == 0)
+                    array_push($commentid, $message[0]->getData('nodeid'));
+
+                else
+                    array_push($commentid, '|'.$message[0]->getData('nodeid'));
                 $i++;
+            }
+            
+            // We request all the comment relative to our messages
+            $query = Post::query()
+                                ->join('Contact', array('Post.jid' => 'Contact.jid'))
+                                ->where(
+                                    array(
+                                        'Contact`.`key' => $this->user->getLogin(), 
+                                        array('Post`.`parentid' => $commentid)))
+                                ->orderby('Post.published', false);
+            $comments = Post::run_query($query);
+            
+            foreach($messages as $message) {
+                
+                // We split the interesting comments for each messages
+                $i = 0;
+                $messagecomment = array();
+                foreach($comments as $comment) {
+                    if($message[0]->getData('nodeid') == $comments[$i][0]->getData('parentid')) {
+                        array_push($messagecomment, $comment);
+                        unset($comment);
+                    }
+                    $i++;
+                }
+        
+                $html .= $this->preparePost($message, $messagecomment);
 			}
 			
             $next = $start + 20;

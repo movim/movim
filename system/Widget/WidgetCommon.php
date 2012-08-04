@@ -16,11 +16,7 @@
  */
 
 class WidgetCommon extends WidgetBase {
-    protected function preparePost($message) {
-        /*global $sdb;
-        $user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $message->getData('jid')));*/
-        
+    protected function preparePost($message, $comments = false) {        
         $tmp = '';
         
         if(isset($message[1])) {
@@ -55,11 +51,10 @@ class WidgetCommon extends WidgetBase {
             if($message[0]->getData('jid') != $message[0]->getData('uri'))
                 $tmp .= '<span class="recycle"><a href="?q=friend&f='.$message[0]->getData('uri').'">'.$message[0]->getData('name').'</a></span>';
               
-            movim_log($message[0]->getData('commentson').' '.$message[0]->getData('nodeid'));
             if($message[0]->getData('commentson') == 1) {
                 $tmp .= '<div class="comments" id="'.$message[0]->getData('nodeid').'comments">';
 
-                $comments = WidgetCommon::prepareComments($message[0]->getData('nodeid'));
+                $comments = WidgetCommon::prepareComments($comments);
                 
                 if($comments != false)
                     $tmp .= $comments;
@@ -115,26 +110,12 @@ class WidgetCommon extends WidgetBase {
         return $tmp;
     }
 
-    protected function prepareComments($parentid) {
-        //$user = new User();
-
-        $query = Post::query()
-                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where(array('Post`.`key' => $this->user->getLogin(), 'Post`.`parentid' => $parentid))
-                            ->orderby('Post.updated', false);
-        $comments = Post::run_query($query);
-
-        /*$query = Post::query()
-                            ->where(array('key' => $user->getLogin(), 'parentid' => $parentid))
-                            ->orderby('published', false);
-        $comments = Post::run_query($query);*/
-        
+    protected function prepareComments($comments) {
         $tmp = false;
         
         $size = sizeof($comments);
         
-        /*$comcounter = 0;
-        var_dump($size);
+        $comcounter = 0;
         
         if($size > 3) {
             $tmp = '<div 
@@ -146,14 +127,11 @@ class WidgetCommon extends WidgetBase {
                         <a class="getcomments icon bubbleold">'.t('Show the older comments').'</a>
                     </div>';
             $comcounter = $size - 3;
-        }*/
+        }
         
         if($comments) {
             $i = 0;
-            foreach($comments as $comment) {             
-                /*$query = Contact::query()
-                                    ->where(array('key' => $user->getLogin(), 'jid' => $comment->getData('jid')));
-                $contact = Post::run_query($query);*/
+            foreach($comments as $comment) {
                 if(isset($comments[$i+1]) && $comments[$i][0]->getData('nodeid') != $comments[$i+1][0]->getData('nodeid')) {
 
                     if(isset($comment[1])) {
@@ -167,10 +145,10 @@ class WidgetCommon extends WidgetBase {
                     
                     $tmp .= '
                         <div class="comment" ';
-                    /*if($comcounter > 0) {
+                    if($comcounter > 0) {
                         $tmp .= 'style="display:none;"';
                         $comcounter--;
-                    }*/
+                    }
                         
                     $tmp .='>
                             <img class="avatar tiny" src="'.$photo.'">
