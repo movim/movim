@@ -35,7 +35,8 @@ class ContactSummary extends WidgetBase
     
 	function ajaxRefreshVcard($jid)
 	{
-		$this->xmpp->getVCard($jid);
+        $r = new moxl\VcardGet();
+        $r->setTo($jid)->request();
 	}
     
     private function testIsSet($element)
@@ -59,7 +60,16 @@ class ContactSummary extends WidgetBase
         $gender = getGender();
         $marital = getMarital();
         
-        $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
+        $query = \Presence::query()->select()
+                           ->where(array(
+                                   'key' => $this->user->getLogin(),
+                                   'jid' => $contact->getData('jid')))
+                           ->limit(0, 1);
+        $data = \Presence::run_query($query);
+        
+        if(isset($data[0]))
+            $presence = $data[0]->getPresence();
+        
         $html ='<h1>'.$contact->getTrueName().'</h1><center><img src="'.$contact->getPhoto().'"/></center>';
         
         if($contact->getData('vcardreceived') != 1)
@@ -208,8 +218,14 @@ class ContactSummary extends WidgetBase
     
     function build()
     {
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
+        //global $sdb;
+        //$contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
+        
+        $query = \Contact::query()->select()
+                                   ->where(array(
+                                           'key' => $this->user->getLogin(),
+                                           'jid' => $_GET['f']));
+        $contact = \Contact::run_query($query);
         ?>
         <div id="contactsummary">
         <?php

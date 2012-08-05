@@ -82,7 +82,7 @@ class Chat extends WidgetBase
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
             RPC::call('scrollAllTalks');
-            $contact->chaton = 1;
+            $contact->chaton->setval(1);
             
             $contact->run_query($contact->query()->save($contact));
         } else if($message->getData('body') != '') {
@@ -168,12 +168,15 @@ class Chat extends WidgetBase
         $contact = Contact::run_query($query);
         $contact = $contact[0];
         
+
+        
         if($contact->getData('chaton') != 1) {
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
             RPC::call('scrollAllTalks');
-            $contact->chaton = 1;
+
+            $contact->chaton->setval(1);
             
             $contact->run_query($contact->query()->save($contact));
 
@@ -227,7 +230,7 @@ class Chat extends WidgetBase
         $contact = $contact[0];
         
         if($contact->getData('chaton') == 1 || $contact->getData('chaton') == 2) {
-            $contact->chaton = 0;
+            $contact->chaton->setval(0);
             
             $contact->run_query($contact->query()->save($contact));
         }
@@ -243,10 +246,10 @@ class Chat extends WidgetBase
         $contact = $contact[0];
         
         if($contact->getData('chaton') == 1) {
-            $contact->chaton = 2;
+            $contact->chaton->setval(2);
         }
         else {
-            $contact->chaton = 1;
+            $contact->chaton->setval(1);
         }
         $contact->run_query($contact->query()->save($contact));
         

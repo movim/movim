@@ -44,7 +44,20 @@ class Roster extends WidgetBase
 	
     function onVcard($contact)
     {
-        $html = $this->prepareRosterElement($contact, true);
+
+        
+        $query = \Presence::query()->select()
+                           ->where(array(
+                                   'key' => $this->user->getLogin(),
+                                   'jid' => $contact->getData('jid')))
+                           ->limit(0, 1);
+        $data = \Presence::run_query($query);
+        
+        $c = array();
+        $c[0] = $contact;
+        $c[1] = $data[0];
+        
+        $html = $this->prepareRosterElement($c, true);
         RPC::call('movim_fill', 'roster'.$contact->getData('jid'), RPC::cdata($html));
     }
 	
@@ -57,12 +70,14 @@ class Roster extends WidgetBase
     
 	function ajaxRefreshRoster()
 	{
-		//$this->xmpp->getRosterList();
+        $r = new moxl\RosterGetList();
+        $r->request();
 	}
 	
 	function prepareRosterElement($contact, $inner = false)
 	{
-        $presence = $contact[1]->getPresence();
+        if(isset($contact[1]))
+            $presence = $contact[1]->getPresence();
         $start = 
             '<li
                 class="';
@@ -141,7 +156,7 @@ class Roster extends WidgetBase
             }
             $html .= '</div>';
         } else {
-            //$html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
         }
 
         return $html;

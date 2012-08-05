@@ -134,17 +134,17 @@ class Feed extends WidgetCommon {
     
     function ajaxFeed()
     {
-        $this->xmpp->getWall($this->xmpp->getCleanJid());
+        //$this->xmpp->getWall($this->xmpp->getCleanJid());
     }
 
     function build()
     { 
-		$conf_arr = UserConf::getConf();
+	//	$conf_arr = UserConf::getConf();
     ?>
     <div class="tabelem" title="<?php echo t('Feed'); ?>" id="feed">
 		<?php
 		
-		if($conf_arr["first"] == 0) { 
+		/*if($conf_arr["first"] == 0) { 
 		?>
 			<script type="text/javascript">
 				setTimeout('<?php $this->callAjax('ajaxCreateNode'); ?>' , 500);
@@ -159,7 +159,7 @@ class Feed extends WidgetCommon {
 			</div>
 		<?php
 		}
-		else {		
+		else {*/		
 		?><?php //echo t('What\'s new ?'); ?>
 		<table id="feedsubmitform">
             <tbody>
@@ -205,10 +205,10 @@ class Feed extends WidgetCommon {
                             }
                             else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\\\'s new ?'); ?>' }                  
                             "*/
-        }
+        //}
         
 		echo $this->prepareFeed(0);
-            
+        //}
 		?>
         </div>
     </div>

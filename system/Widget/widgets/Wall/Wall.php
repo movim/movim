@@ -92,7 +92,9 @@ class Wall extends WidgetCommon
 
 
 	function ajaxWall($jid) {
-		$this->xmpp->getWall($jid);
+		//$this->xmpp->getWall($jid);
+        $r = new moxl\MicroblogGet();
+        $r->setTo($jid)->request();
 	}
 	
 	function ajaxSubscribe($jid) {
@@ -105,7 +107,12 @@ class Wall extends WidgetCommon
 
 	function build()
 	{
-		?>
+        ?>
+        <script type="text/javascript">
+            <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
+        </script>
+        <?php
+		/*?>
 		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
 		        <!--<a 
                     class="button tiny icon follow" 
@@ -148,7 +155,7 @@ class Wall extends WidgetCommon
             <br />
             <div class="config_button" onclick="<?php $this->callAjax('ajaxWall', "'".$_GET['f']."'");?>"></div>
        	</div>
-		<?php
+		<?php*/
 	}
 }
 
