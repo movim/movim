@@ -37,58 +37,13 @@ class Feed extends WidgetCommon {
                             ->limit($start, '20');
         $messages = Post::run_query($query);
 		
-		if($messages == false) {
-			$html = '
-				<script type="text/javascript">
-					setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);
-				</script>';
-			$html .=  '<div style="padding: 1em; text-align: center;">'.t('Loading your feed ...').'</div>';
-		} else {
-			$html = '';
-
-            // We create the array for the comments request
-            $commentid = array();
-            $i = 0;
-            foreach($messages as $message) {
-                if($i == 0)
-                    array_push($commentid, $message[0]->getData('nodeid'));
-
-                else
-                    array_push($commentid, '|'.$message[0]->getData('nodeid'));
-                $i++;
-            }
-            
-            // We request all the comment relative to our messages
-            $query = Post::query()
-                                ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                                ->where(
-                                    array(
-                                        'Contact`.`key' => $this->user->getLogin(), 
-                                        array('Post`.`parentid' => $commentid)))
-                                ->orderby('Post.published', false);
-            $comments = Post::run_query($query);
-            
-            foreach($messages as $message) {
-                
-                // We split the interesting comments for each messages
-                $i = 0;
-                $messagecomment = array();
-                foreach($comments as $comment) {
-                    if($message[0]->getData('nodeid') == $comments[$i][0]->getData('parentid')) {
-                        array_push($messagecomment, $comment);
-                        unset($comment);
-                    }
-                    $i++;
-                }
+        // We ask for the HTML of all the posts
+        $html = $this->preparePosts($messages);
         
-                $html .= $this->preparePost($message, $messagecomment);
-			}
-			
-            $next = $start + 20;
+        $next = $start + 20;
             
-			if(sizeof($messages) > 0 && $html != '')
-				$html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
-		}
+        if(sizeof($messages) > 0 && $html != '')
+            $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
 		
 		return $html;
 	}

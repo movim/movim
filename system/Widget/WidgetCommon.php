@@ -16,6 +16,60 @@
  */
 
 class WidgetCommon extends WidgetBase {
+    /*
+     * @desc Prepare a group of messages
+     * @param array of messages
+     * @return generated HTML
+     */
+    protected function preparePosts($messages) {
+        if($messages == false) {
+			$html = false;
+		} else {
+			$html = '';
+
+            // We create the array for the comments request
+            $commentid = array();
+            $i = 0;
+            foreach($messages as $message) {
+                if($i == 0)
+                    array_push($commentid, $message[0]->getData('nodeid'));
+
+                else
+                    array_push($commentid, '|'.$message[0]->getData('nodeid'));
+                $i++;
+            }
+            
+            // We request all the comment relative to our messages
+            $query = Post::query()
+                                ->join('Contact', array('Post.jid' => 'Contact.jid'))
+                                ->where(
+                                    array(
+                                        'Contact`.`key' => $this->user->getLogin(), 
+                                        array('Post`.`parentid' => $commentid)))
+                                ->orderby('Post.published', false);
+            $comments = Post::run_query($query);
+            
+            foreach($messages as $message) {
+                
+                // We split the interesting comments for each messages
+                $i = 0;
+                $messagecomment = array();
+                foreach($comments as $comment) {
+                    if($message[0]->getData('nodeid') == $comments[$i][0]->getData('parentid')) {
+                        array_push($messagecomment, $comment);
+                        unset($comment);
+                    }
+                    $i++;
+                }
+        
+                $html .= $this->preparePost($message, $messagecomment);
+			}
+			
+        }
+		
+		return $html;
+    }
+    
     protected function preparePost($message, $comments = false) {        
         $tmp = '';
         
