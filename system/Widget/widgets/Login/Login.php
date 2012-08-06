@@ -48,6 +48,12 @@ class Login extends WidgetBase {
                                 '.t('Authentification mechanism not supported by Movim').'
                             </div> '; 
                     break;
+                case 'errorchallenge':
+                    $warning = '
+                            <div class="error">
+                                '.t('Empty Challenge from the server').'
+                            </div> '; 
+                    break;
                 case 'dnsdomain':
                     $warning = '
                             <div class="error">
