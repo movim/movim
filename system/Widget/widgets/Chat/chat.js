@@ -1,7 +1,8 @@
 function scrollAllTalks() {
     var mes = document.querySelectorAll('.messages');
     for (var i=0; i<mes.length; i++){
-        mes.item(i).scrollTop = mes.item(i).scrollHeight;
+        // We add 200px to prevent smiley loading
+        mes.item(i).scrollTop = mes.item(i).scrollHeight + 200;
     }
 }
 

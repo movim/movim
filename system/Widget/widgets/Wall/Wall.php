@@ -94,13 +94,31 @@ class Wall extends WidgetCommon
         $messages = Post::run_query($query);
 		
         // We ask for the HTML of all the posts
-        $html = $this->preparePosts($messages);
+        $htmlmessages = $this->preparePosts($messages);
         
         $next = $start + 10;
             
-        if(sizeof($messages) > 0 && $html != false)
-            $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$_GET['f']."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
-		
+        if(sizeof($messages) > 0 && $htmlmessages != false) {
+            if($start == 0) {
+                $html .= '
+                        <div id="wallheader">
+                        <a 
+                                    class="button tiny icon follow" 
+                                    href="#"
+                                    onclick="'.$this->genCallAjax('ajaxWall', "'".$from."'").'
+                                        this.innerHTML = \''.t('Updating').'\'; 
+                                        this.className= \'button tiny icon loading\';
+                                        this.onclick = \'return false;\'";
+                                >
+                                    '.t('Update').'
+                                </a>
+                        </div>';
+            }
+            $html .= $htmlmessages;
+            if(sizeof($messages) > 9)
+                $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+		}
+        
 		return $html;
 	}
     
@@ -116,10 +134,6 @@ class Wall extends WidgetCommon
 	
 	function ajaxSubscribe($jid) {
 		$this->xmpp->subscribeNode($jid);
-	}
-    
-	function ajaxGetComments($jid, $id) {
-		$this->xmpp->getComments($jid, $id);
 	}
 
 	function build()

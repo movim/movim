@@ -42,9 +42,9 @@ class Feed extends WidgetCommon {
         
         $next = $start + 20;
             
-        if(sizeof($messages) > 0 && $html != '')
+        if(sizeof($messages) > 9 && $html != '') {
             $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
-		
+		}
 		return $html;
 	}
 	

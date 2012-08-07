@@ -63,9 +63,9 @@ class Post extends DatajarBase {
         
         $this->key->setval($key);
         
-        if($parent != false)
+        /*if($parent != false)
             $this->jid->setval(substr((string)$item->entry->source->author->uri, 5));
-        else
+        else*/
             $this->jid->setval($from);
         
         $this->name->setval((string)$item->entry->source->author->name);
@@ -83,7 +83,11 @@ class Post extends DatajarBase {
             $this->content->setval((string)$item->entry->body);
 
         $this->published->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->published)));
-        $this->updated->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->updated)));
+        
+        if(!$item->entry->updated)
+            $this->updated->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->published)));
+        else
+            $this->updated->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->updated)));
 
         $this->lat->setval((string)$item->entry->geoloc->lat);
         $this->lon->setval((string)$item->entry->geoloc->lon);
@@ -99,17 +103,17 @@ class Post extends DatajarBase {
         /*if(string)$item->entry->link->attributes()) {
             (string)$item->entry->link[0]['attributes() = (string)$item->entry->link->attributes();
             unset((string)$item->entry->link->attributes());
-        }
-        
-        foreach((string)$item->entry->link as $attachment) {
-            if($attachment['link[0]['attributes()->title == 'thumb') {
-                AttachmentHandler::saveAttachment($attachment, $key, $from, (string)$item->attributes()->id);
-            }
-            if($attachment['attributes()->title == 'comments') {
-                $this->commentson->setval(1);
-                $this->commentplace->setval(reset(explode('?', substr($attachment['attributes()->href, 5))));
-            }
         }*/
+        
+        foreach($item->entry->link as $attachment) {
+            /*if($attachment['link[0]['attributes()->title == 'thumb') {
+                AttachmentHandler::saveAttachment($attachment, $key, $from, (string)$item->attributes()->id);
+            }*/
+            if($attachment->attributes()->title == 'comments') {
+                $this->commentson->setval(1);
+                $this->commentplace->setval(reset(explode('?', substr($attachment->attributes()->href, 5))));
+            }
+        }
     }
     
     public function setNoComments() {

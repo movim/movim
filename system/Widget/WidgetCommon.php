@@ -39,11 +39,12 @@ class WidgetCommon extends WidgetBase {
                 $i++;
             }
             
-            // We request all the comment relative to our messages
+            // We request all the comments relative to our messages
             $query = Post::query()
-                                ->join('Contact', array('Post.jid' => 'Contact.jid'))
+                                ->join('Contact', array('Post.uri' => 'Contact.jid'))
                                 ->where(
                                     array(
+                                        'Post`.`key' => $this->user->getLogin(), 
                                         'Contact`.`key' => $this->user->getLogin(), 
                                         array('Post`.`parentid' => $commentid)))
                                 ->orderby('Post.published', false);
@@ -108,10 +109,10 @@ class WidgetCommon extends WidgetBase {
             if($message[0]->getData('commentson') == 1) {
                 $tmp .= '<div class="comments" id="'.$message[0]->getData('nodeid').'comments">';
 
-                $comments = WidgetCommon::prepareComments($comments);
+                $commentshtml = $this->prepareComments($comments);
                 
-                if($comments != false)
-                    $tmp .= $comments;
+                if($commentshtml != false)
+                    $tmp .= $commentshtml;
 
                 $tmp .= '
                          <div class="comment">
@@ -182,44 +183,51 @@ class WidgetCommon extends WidgetBase {
                     </div>';
             $comcounter = $size - 3;
         }
-        
-        if($comments) {
-            $i = 0;
-            foreach($comments as $comment) {
-                if(isset($comments[$i+1]) && $comments[$i][0]->getData('nodeid') != $comments[$i+1][0]->getData('nodeid')) {
 
-                    if(isset($comment[1])) {
-                        $photo = $comment[1]->getPhoto('s');
-                        $name = $comment[1]->getTrueName();
-                    }
-                    else {
-                        $photo = "image.php?c=default";
-                        $name = $comment[0]->getData('jid');
-                    }
-                    
-                    $tmp .= '
-                        <div class="comment" ';
-                    if($comcounter > 0) {
-                        $tmp .= 'style="display:none;"';
-                        $comcounter--;
-                    }
-                        
-                    $tmp .='>
-                            <img class="avatar tiny" src="'.$photo.'">
-                            <span><a href="?q=friend&f='.$comment[0]->getData('jid').'">'.$name.'</a></span>
-                            <span class="date">'.prepareDate(strtotime($comment[0]->getData('published'))).'</span><br />
-                            <div class="content tiny">'.prepareString($comment[0]->getData('content')).'</div>
-                        </div>';
+        if($comments) {
+            foreach($comments as $comment) {
+                if(isset($comment[1])) {
+                    $photo = $comment[1]->getPhoto('s');
+                    $name = $comment[1]->getTrueName();
                 }
-                $i++;
+                else {
+                    $photo = "image.php?c=default";
+                }
+                
+                if($name == null)
+                    $name = $comment[0]->getData('uri');
+                
+                $tmp .= '
+                    <div class="comment" ';
+                if($comcounter > 0) {
+                    $tmp .= 'style="display:none;"';
+                    $comcounter--;
+                }
+                    
+                $tmp .='>
+                        <img class="avatar tiny" src="'.$photo.'">
+                        <span><a href="?q=friend&f='.$comment[0]->getData('uri').'">'.$name.'</a></span>
+                        <span class="date">'.prepareDate(strtotime($comment[0]->getData('published'))).'</span><br />
+                        <div class="content tiny">'.prepareString($comment[0]->getData('content')).'</div>
+                    </div>';
             }
         }
         
         return $tmp;
     }
     
-    function onComment($parent) {        
-        $html = $this->prepareComments($parent);
+    function onComment($parent, $comments) {
+        // We request all the comments relative to our messages
+        $query = Post::query()
+                            ->join('Contact', array('Post.uri' => 'Contact.jid'))
+                            ->where(
+                                array(
+                                    'Post`.`key' => $this->user->getLogin(), 
+                                    'Contact`.`key' => $this->user->getLogin(), 
+                                    'Post`.`parentid' => $parent))
+                            ->orderby('Post.published', false);
+        $comments = Post::run_query($query);   
+        $html = $this->prepareComments($comments);
         RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
     
@@ -248,7 +256,10 @@ class WidgetCommon extends WidgetBase {
     }
     
 	function ajaxGetComments($jid, $id) {
-		$this->xmpp->getComments($jid, $id);
+		$c = new moxl\MicroblogCommentsGet();
+        $c->setTo($jid)
+          ->setId($id)
+          ->request();
 	}
     
     function ajaxPublishComment($to, $id, $content) {

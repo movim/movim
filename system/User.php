@@ -103,6 +103,9 @@ class User {
 
     //    $sess = Session::start('jaxl');
     //    Session::dispose('jaxl');
+    
+        $p = new moxl\PresenceUnavaiable();
+        $p->request();
 
         $sess = Session::start(APP_NAME);
         Session::dispose(APP_NAME);

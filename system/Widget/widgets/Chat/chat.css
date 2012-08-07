@@ -27,7 +27,7 @@
 #chats .chat .messages {
     background-color: white;
     color: gray;
-    max-height: 15em;
+    max-height: 200px;
     overflow: auto;
     border: 1px solid black;
     min-height: 3em;
@@ -87,6 +87,11 @@
     background-color: white;
     height: 1.2em;
     resize: none;
+    display: none;
+}
+
+#chats .chat:hover textarea {
+    display: block;
 }
 
 #chats .chat .messages .message span.date {
