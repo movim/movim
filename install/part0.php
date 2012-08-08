@@ -1,4 +1,5 @@
 <?php
+	/*
 	$errors = 0;
 	function test_requirements(){
 		$errors = array();
@@ -39,20 +40,8 @@
 		
 		return (count($errors) > 0)? $errors : false;
 	}
+*/
 
-
-	function is_valid($what){
-		global $errors;
-		if($what){
-			echo "valid yes";
-		}else{
-			echo "warning no";
-			$errors += 1;
-		}
-	}
-	
-
-	
 
 ?>
 
@@ -61,14 +50,15 @@
 		<p><?php echo t('Thank you for downloading Movim!');?></p>
 		<p><?php echo t('Before you enjoy your social network, a few adjustements are required.'); ?></p>
 		<p><?php echo t('Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit.'); ?></p>
-
+		<p><?php echo t('For help on installation see the').' <a href="http://wiki.movim.eu/install">wiki</a>.'?></p>
 	</div>
 </div>
 <div id="center" style="padding: 20px;" >
 	<h1><?php echo t('Welcome to Movim!'); ?></h1>
 	<br>
 	<p>
-		<?php echo t('You are about to install the distributed XMPP-based opensource Social Network Movim.');?><br>
+		<h2><?php echo t('You are about to install or change the configuration of the distributed XMPP-based opensource Social Network Movim.');?></h2><br><br>
+		<?php echo ('This sign <img src="../themes/movim/img/icons/follow_icon.png"> indicates that there are additional help texts available, which will be displayed on the left.'); ?><br><br><br>
 	</p>
 	<p>
 		<?php echo t('Movim requires certain external components. Please install them before you succeed:');?>
@@ -88,10 +78,10 @@
 			<div class="<?php is_valid(test_dir('../')); ?>">
 				<?php echo t('Read and write rights for the webserver in Movim\'s root directory') ?>
 			</div>
-			<div class="<?php is_valid(test_dir('../')); ?>">
-				<?php echo t('<a href="http://datajar.movim.eu">Datajar</a> version: asd<br> Required: asdasd') ?>
+			<div class="<?php is_valid((datajar_version() >= 0.01)); ?>">
+				<?php echo t('<a href="http://datajar.movim.eu">Datajar</a> version: '.datajar_version().'<br> Required: 0.01') ?>
 			</div>
-			<div class="<?php is_valid(test_dir('../')); ?>">
+			<div class="<?php is_valid(True); ?>">
 				<?php echo t('<a href="https://launchpad.net/moxl">Moxl</a> version: asd<br> Required: asdasd') ?>
 			</div>
 	</p>

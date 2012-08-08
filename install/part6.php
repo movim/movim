@@ -10,12 +10,18 @@
 			<fieldset>
 				<legend><?php echo $steps[$display]; ?></legend>
 					<p>
-						<input type="hidden" name="step" value="4" />
+						<input type="hidden" name="step" value="3" />
 					</p>
-					<p <?php echo generate_Tooltip(t("Enter the XMPP-Server here: ")); ?>>
-						<label for="xmppServer"><?php echo t("XMPP-Server"); ?></label>
-						<input type="text" id="xmppServer" name="xmppServer" value="<? echo get_preset_value('xmppServer', ''); ?>"/>
+					<p <?php echo generate_Tooltip(t("Enter here the BOSH-URL in the form: http://domain:123/asd")); ?>>
+						<label for="defBoshURL"><?php echo t("Bosh URL"); ?></label>
+						<input type="text" id="defBoshURL" name="defBoshURL" value="<? echo get_preset_value('defBoshURL', ''); ?>"/>
+
 					</p>
+					
+					
+			</fieldset>
+			<fieldset id="dbform">
+				
 			</fieldset>
 			<?php include('buttons.php'); ?>
 			<br />

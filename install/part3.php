@@ -8,20 +8,19 @@
 	<br>
 		<form method="post" action="index.php">
 			<fieldset>
-				<legend><?php echo $steps[$step] ?></legend>
+				<legend><?php echo $steps[$display]; ?></legend>
 					<p>
 						<input type="hidden" name="step" value="3" />
 					</p>
-					<p <?php echo generate_Tooltip(t("Enter here the BOSH-URL in the form: http://domain:123/asd")); ?>>
-						<label for="defBoshURL"><?php echo t("Bosh URL"); ?></label>
-						<input type="text" id="defBoshURL" name="defBoshURL" value="<? echo get_preset_value('defBoshURL', ''); ?> " size="40"/>
-
+					<p <?php echo generate_Tooltip(t("Enter here the BOSH-URL in the form: http(s)://domain:port/path<br>If you enter an open BOSH-Server, you can connect to many XMPP-Servers. If it is closed, you have to specify the corresponding Server on the next page.<br>If you are unsure about this config option visit the wiki", '<a href="http://wiki.movim.eu/concepts:bosh">', '</a>')); ?>>
+						<label for="boshUrl"><?php echo t("Bosh URL"); ?></label>
+						<input type="text" id="boshUrl" name="boshUrl" value="<? echo get_preset_value('boshUrl', ''); ?> " size="40"/>
 					</p>
+					 <p>
+                            <label for="userDefinedBosh">Use HTTPS for Bosh</label>
+                            <input type="checkbox" name="userDefinedBosh" id="userDefinedBosh" <?php if(get_preset_value('userDefinedBosh', True)){ echo 'checked="checked"'; }?>/>
+                     </p>
 					
-					
-			</fieldset>
-			<fieldset id="dbform">
-				
 			</fieldset>
 			<?php include('buttons.php'); ?>
 			<br />

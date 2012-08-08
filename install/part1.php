@@ -1,5 +1,7 @@
 
 <div id="left" style="width: 230px; padding-top: 10px;">
+	
+	<?php include("error.php"); ?>
 	<div class="warning" id="leftside">
 		<p><?php echo t('Move your mousepointer over the configure options to receive more information.');?></p>
 	</div>
@@ -9,7 +11,7 @@
 	<br>
 		<form method="post" action="index.php">
 			<fieldset>
-				<legend><?php echo $steps[$step] ?></legend>
+				<legend><?php echo $steps[$display]; ?></legend>
 					<p>
 						<input type="hidden" name="step" value="1" />
 					</p>
