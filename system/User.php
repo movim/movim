@@ -19,18 +19,20 @@ class User {
 	function __construct()
 	{
 		if($this->isLogged()) {
-            $sess = Session::start(APP_NAME);
-			$this->username = $sess->get('login');
-			$this->password = $sess->get('pass');
+            global $session;
+            
+            //$sess = Session::start(APP_NAME);
+			$this->username = $session['user'].'@'.$session['host'];
+			//$this->password = $sess->get('pass');
 
-			$this->xmppSession = Jabber::getInstance($this->username);
+			/*$this->xmppSession = Jabber::getInstance($this->username);*/
 		}
-		else if(isset($_POST['login'])
+		/*else if(isset($_POST['login'])
 				&& isset($_POST['pass'])
 				&& $_POST['login'] != ''
 				&& $_POST['pass'] != '') {
 			$this->authenticate($_POST['login'], $_POST['pass']);
-		}
+		}*/
 	}
 
 	/**
@@ -39,11 +41,13 @@ class User {
 	function isLogged()
 	{
 		// User is not logged in if both the session vars and the members are unset.
-        $sess = Session::start(APP_NAME);
-		return (($this->username != '' && $this->password != '') || $sess->get('login'));
+        //$sess = Session::start(APP_NAME);
+		//return (($this->username != '' && $this->password != '') || $sess->get('login'));
+        global $session;
+        return $session['on'];
 	}
 
-	function authenticate($login,$pass)
+	/*function authenticate($login,$pass)
 	{
 		try{
 
@@ -91,14 +95,17 @@ class User {
             }
 			return $e->getMessage();
 		}
-	}
+	}*/
 
 	function desauth()
 	{
         PresenceHandler::clearPresence();
 
-        $sess = Session::start('jaxl');
-        Session::dispose('jaxl');
+    //    $sess = Session::start('jaxl');
+    //    Session::dispose('jaxl');
+    
+        $p = new moxl\PresenceUnavaiable();
+        $p->request();
 
         $sess = Session::start(APP_NAME);
         Session::dispose(APP_NAME);

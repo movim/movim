@@ -74,12 +74,22 @@ if(isset($_GET['c'])) {
     
      else {
         $user = new User();
-        $contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['c']));
+        //$contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['c']));
         
-        if($contact[0]->phototype != '' && 
-           $contact[0]->photobin != '' && 
-           $contact[0]->phototype != 'f' && 
-           $contact[0]->photobin != 'f') {
+        $c = new \Contact();
+
+        $query = \Contact::query()->select()
+                                   ->where(array(
+                                           'key' => $user->getLogin(),
+                                           'jid' => $_GET['c']));
+        $contact = \Contact::run_query($query);
+        
+        movim_log($contact[0]->getData('phototype'));
+        
+        if($contact[0]->getData('phototype') != '' && 
+           $contact[0]->getData('photobin') != '' && 
+           $contact[0]->getData('phototype') != 'f' && 
+           $contact[0]->getData('photobin') != 'f') {
             if(isset($_GET['size']) && $_GET['size'] != 'normal') {
                 switch ($_GET['size']) {
                     case 'm':
@@ -97,7 +107,7 @@ if(isset($_GET['c'])) {
                 $white = imagecolorallocate($thumb, 255, 255, 255);
                 imagefill($thumb, 0, 0, $white);
                 
-                $source = imagecreatefromstring(base64_decode($contact[0]->photobin));
+                $source = imagecreatefromstring(base64_decode($contact[0]->getData('photobin')));
                 
                 $width = imagesx($source);
                 $height = imagesy($source);
@@ -122,8 +132,8 @@ if(isset($_GET['c'])) {
                 }
                 
             } elseif(isset($_GET['size']) && $_GET['size'] == 'normal') { // The original picture
-                display_image($hash, $contact[0]->phototype);
-                echo base64_decode($contact[0]->photobin);
+                display_image($hash, $contact[0]->getData('phototype'));
+                echo base64_decode($contact[0]->getData('photobin'));
             }
         }
     }

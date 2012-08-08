@@ -12,7 +12,7 @@ class Feed extends WidgetCommon {
 		$this->registerEvent('stream', 'onStream');
         $this->registerEvent('vcard', 'onVcard');
 
-        $this->cached = true;
+        $this->cached = false;
     }
     
     function onPost($id) {
@@ -29,31 +29,28 @@ class Feed extends WidgetCommon {
     function onVcard($contact) { }
     
     function prepareFeed($start) {
+        // We query the last messages
         $query = Post::query()
-                            ->where(array('key' => $this->user->getLogin(), 'parentid' => ''))
-                            ->orderby('updated', true)
+                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
+                            ->where(
+                                array(
+                                    'Contact`.`key' => $this->user->getLogin(), 
+                                    array(
+                                        'Contact`.`rostersubscription!' => 'none',
+                                        '|Contact`.`rosterask' => 'subscribe'),
+                                    'Post`.`parentid' => ''))
+                            ->orderby('Post.updated', true)
                             ->limit($start, '20');
         $messages = Post::run_query($query);
 		
-		if($messages == false) {
-			$html = '
-				<script type="text/javascript">
-					setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);
-				</script>';
-			$html .=  '<div style="padding: 1em; text-align: center;">'.t('Loading your feed ...').'</div>';
-		} else {
-			$html = '';
-			
-			foreach($messages as $message) {
-				$html .= $this->preparePost($message);
-			}
-			
-            $next = $start + 20;
+        // We ask for the HTML of all the posts
+        $html = $this->preparePosts($messages);
+        
+        $next = $start + 20;
             
-			if(sizeof($messages) > 0 && $html != '')
-				$html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+        if(sizeof($messages) > 9 && $html != '') {
+            $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
 		}
-		
 		return $html;
 	}
 	
@@ -98,17 +95,17 @@ class Feed extends WidgetCommon {
     
     function ajaxFeed()
     {
-        $this->xmpp->getWall($this->xmpp->getCleanJid());
+        //$this->xmpp->getWall($this->xmpp->getCleanJid());
     }
 
     function build()
     { 
-		$conf_arr = UserConf::getConf();
+	//	$conf_arr = UserConf::getConf();
     ?>
     <div class="tabelem" title="<?php echo t('Feed'); ?>" id="feed">
 		<?php
 		
-		if($conf_arr["first"] == 0) { 
+		/*if($conf_arr["first"] == 0) { 
 		?>
 			<script type="text/javascript">
 				setTimeout('<?php $this->callAjax('ajaxCreateNode'); ?>' , 500);
@@ -123,7 +120,7 @@ class Feed extends WidgetCommon {
 			</div>
 		<?php
 		}
-		else {		
+		else {*/		
 		?><?php //echo t('What\'s new ?'); ?>
 		<table id="feedsubmitform">
             <tbody>
@@ -169,10 +166,10 @@ class Feed extends WidgetCommon {
                             }
                             else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\\\'s new ?'); ?>' }                  
                             "*/
-        }
+        //}
         
 		echo $this->prepareFeed(0);
-            
+        //}
 		?>
         </div>
     </div>

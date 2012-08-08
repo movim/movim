@@ -45,10 +45,11 @@ function showRoster(n) {
     roster = document.querySelector('#rosterlist');
     offline = roster.querySelectorAll('.offline');
     for(i = 0; i < offline.length; i++) {
-        offline.item(i).style.display = 'block';
+        if(offline.item(i).style.display == 'block')
+            offline.item(i).style.display = 'none';
+        else
+            offline.item(i).style.display = 'block';
     }
-    
-    n.style.display = 'none';
 }
 
 function incomingPresence(val) {

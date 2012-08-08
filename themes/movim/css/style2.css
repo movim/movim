@@ -247,8 +247,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 }
 
 .button.icon {
-    padding-left: 18px;
-    text-indent: 10px;
+    padding-left: 25px;
     background-repeat: no-repeat;
 }
 
@@ -266,7 +265,10 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 .icon.back { background-image: url(../img/icons/back_icon.png); }
 
 
-.icon.loading { background-image: url(../img/icons/loading.gif); }
+.icon.loading { 
+    background-image: url(../img/icons/loading.gif); 
+    padding-left: 30px;
+}
 
 .tiny {
     font-size: 11px;
@@ -327,7 +329,7 @@ label {
 }
 #nav {
     width: 100%;
-    background-color: #444;
+    background-color: rgba(36, 36, 36, 1);
     min-height: 34px;
     position: fixed;
     top: 0px;
@@ -350,7 +352,7 @@ label {
 }
 
 #nav .menu li:first-child {
-	width: 210px;
+	width: 215px;
 	opacity: 0;
 }
 
@@ -361,13 +363,12 @@ label {
     font-size: 13px;
 }
 #nav .menu li a.active {
-    font-weight: bold;
-    /*background-color: white;*/
-    color: #fff;
+    font-weight: 700;
+    color: #EEE;
 }
 
 #nav .menu li:hover a.active {
-    /*background-color: white;*/
+    color: #FFF;
 }
 
 #nav .menu li img {

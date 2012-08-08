@@ -1,6 +1,7 @@
 #roster {
     margin-bottom: 60px;
     width: 200px;
+    overflow: hidden;
 }
 
 #roster ul {
@@ -102,4 +103,21 @@
     font-size: 14px;
     font-weight: bold;
     text-align: center;
+}
+
+#roster #rostermenu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #444;
+    color: white;
+    height: 21px;
+    width: 200px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+#roster #rostermenu a:link, #roster #rostermenu a:visited {
+    color: white;
+    line-height: 17px;
+    font-size: 11px;
 }

@@ -1,7 +1,8 @@
 function scrollAllTalks() {
     var mes = document.querySelectorAll('.messages');
     for (var i=0; i<mes.length; i++){
-        mes.item(i).scrollTop = mes.item(i).scrollHeight;
+        // We add 200px to prevent smiley loading
+        mes.item(i).scrollTop = mes.item(i).scrollHeight + 200;
     }
 }
 //Loads the Notification sound.
@@ -48,10 +49,22 @@ function showComposing(jid) {
     var box = document.getElementById('messages' + jid);
     var composing = document.getElementById('composing' + jid);
     
+    hidePaused(jid);
     box.appendChild(composing);
     
     composing.style.display = 'block';
 }
+
+function showPaused(jid) {
+    var box = document.getElementById('messages' + jid);
+    var paused = document.getElementById('paused' + jid);
+    
+    hideComposing(jid);
+    box.appendChild(paused);
+    
+    paused.style.display = 'block';
+}
+
 
 function notify() {
     if(document_focus == false) {
@@ -67,6 +80,11 @@ function notify() {
 function hideComposing(jid) {
     var composing = document.getElementById('composing' + jid);
     composing.style.display = 'none';
+}
+
+function hidePaused(jid) {
+    var paused = document.getElementById('paused' + jid);
+    paused.style.display = 'none';
 }
 
 function sendMessage(n, jid)

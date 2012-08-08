@@ -35,7 +35,8 @@ class ContactSummary extends WidgetBase
     
 	function ajaxRefreshVcard($jid)
 	{
-		$this->xmpp->getVCard($jid);
+        $r = new moxl\VcardGet();
+        $r->setTo($jid)->request();
 	}
     
     private function testIsSet($element)
@@ -59,15 +60,27 @@ class ContactSummary extends WidgetBase
         $gender = getGender();
         $marital = getMarital();
         
-        $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
+        $query = \Presence::query()->select()
+                           ->where(array(
+                                   'key' => $this->user->getLogin(),
+                                   'jid' => $contact->getData('jid')))
+                           ->limit(0, 1);
+        $data = \Presence::run_query($query);
+        
+        if(isset($data[0]))
+            $presence = $data[0]->getPresence();
+        
         $html ='<h1>'.$contact->getTrueName().'</h1><center><img src="'.$contact->getPhoto().'"/></center>';
         
         if($contact->getData('vcardreceived') != 1)
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 500);</script>';
             
-        if($presence != NULL)
+        if($presence != NULL && $presence['status'] != '')
             $html .= '<div id="status">'.$presence['status'].'</div>';
             
+            
+        // General Informations
+                    
         $html .='<h2>'.t('General Informations').'</h2>';
         
         if($contact->getData('gender') != 'N' && $this->testIsSet($contact->getData('gender')))
@@ -91,17 +104,12 @@ class ContactSummary extends WidgetBase
             $html .= '<span class="website"></span>'.'<a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>';
             
             
+        // About me
+            
         if($this->testIsSet($contact->getData('desc')))
             $html .= '
                 <h2>'.t('About Me').'</h2>
-                <div style="
-                    overflow-y: auto;
-                    overflow-x: hidden;
-                    display: block; 
-                    max-height: 200px;
-                    word-wrap: break-word;
-                    text-align: justify;
-                    white-space: normal;">'.
+                <div id="status" style="text-align: left; margin-top: 0px;">'.
                     prepareString($contact->getData('desc')).'
                 </div>';
         
@@ -128,6 +136,8 @@ class ContactSummary extends WidgetBase
             if($cinfos != "")
                 $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
         }
+        
+        // Actions
         
         $html .='<h2>'.t('Actions').'</h2>';
         
@@ -196,7 +206,6 @@ class ContactSummary extends WidgetBase
             <a
                 class="button tiny icon add"
                 href="#"
-                style="padding-left: 25px;"
                 onclick="'.$this->genCallWidget("Notifs","ajaxAddContact", "'".$contact->getData('jid')."'", "''").'"
             >
                 '.t('Invite this user').'
@@ -208,8 +217,14 @@ class ContactSummary extends WidgetBase
     
     function build()
     {
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
+        //global $sdb;
+        //$contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
+        
+        $query = \Contact::query()->select()
+                                   ->where(array(
+                                           'key' => $this->user->getLogin(),
+                                           'jid' => $_GET['f']));
+        $contact = \Contact::run_query($query);
         ?>
         <div id="contactsummary">
         <?php
