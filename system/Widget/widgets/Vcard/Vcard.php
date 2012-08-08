@@ -117,7 +117,7 @@ class Vcard extends WidgetBase
         if(isset($me[0])) {
             $me = $me[0];
             
-            if($error = 'vcardfeaturenotimpl') {
+            if($error == 'vcardfeaturenotimpl') {
                 $html .= '
                     <div class="error">'.t("Profil not updated : Your server does not support the vCard feature").'</div>';
             }

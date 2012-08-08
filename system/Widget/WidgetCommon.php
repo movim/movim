@@ -30,6 +30,7 @@ class WidgetCommon extends WidgetBase {
             // We create the array for the comments request
             $commentid = array();
             $i = 0;
+            
             foreach($messages as $message) {
                 if($i == 0)
                     array_push($commentid, $message[0]->getData('nodeid'));
@@ -50,20 +51,26 @@ class WidgetCommon extends WidgetBase {
                                 ->orderby('Post.published', false);
             $comments = Post::run_query($query);
             
+            $duplicate = array();
+            
             foreach($messages as $message) {
-                
-                // We split the interesting comments for each messages
-                $i = 0;
-                $messagecomment = array();
-                foreach($comments as $comment) {
-                    if($message[0]->getData('nodeid') == $comments[$i][0]->getData('parentid')) {
-                        array_push($messagecomment, $comment);
-                        unset($comment);
+                if(!in_array($message[0]->getData('nodeid'), $duplicate)) {
+
+                    // We split the interesting comments for each messages
+                    $i = 0;
+                    $messagecomment = array();
+                    foreach($comments as $comment) {
+                        if($message[0]->getData('nodeid') == $comments[$i][0]->getData('parentid')) {
+                            array_push($messagecomment, $comment);
+                            unset($comment);
+
+                        }
+                        $i++;
                     }
-                    $i++;
+                    array_push($duplicate, $message[0]->getData('nodeid'));
+
+                    $html .= $this->preparePost($message, $messagecomment);
                 }
-        
-                $html .= $this->preparePost($message, $messagecomment);
 			}
 			
         }
