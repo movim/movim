@@ -23,6 +23,7 @@ class Vcard extends WidgetBase
     function WidgetLoad()
     {
 		$this->registerEvent('myvcardvalid', 'onMyVcardReceived');
+		$this->registerEvent('myvcardinvalid', 'onMyVcardNotReceived');
     	$this->addcss('vcard.css');
     	$this->addjs('vcard.js');
     }
@@ -30,6 +31,12 @@ class Vcard extends WidgetBase
     function onMyVcardReceived()
     {
 		$html = $this->prepareInfos();
+        RPC::call('movim_fill', 'vcard', RPC::cdata($html));
+    }
+    
+    function onMyVcardNotReceived($error)
+    {
+		$html = $this->prepareInfos($error);
         RPC::call('movim_fill', 'vcard', RPC::cdata($html));
     }
     
@@ -85,7 +92,7 @@ class Vcard extends WidgetBase
         $r->setData($vcard)->request();
 	}
     
-    function prepareInfos() {
+    function prepareInfos($error = false) {
         $query = Contact::query()
                             ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
         $me = Contact::run_query($query);
@@ -109,6 +116,11 @@ class Vcard extends WidgetBase
 
         if(isset($me[0])) {
             $me = $me[0];
+            
+            if($error = 'vcardfeaturenotimpl') {
+                $html .= '
+                    <div class="error">'.t("Profil not updated : Your server does not support the vCard feature").'</div>';
+            }
         
             $html .= '
             <form name="vcard"><br />
@@ -218,7 +230,19 @@ class Vcard extends WidgetBase
             $html .= '<hr />
                 </fieldset>';*/
 
-		    $html .= '<input value="'.t('Submit').'" onclick="'.$submit.' this.value = \''.t('Submitting').'\'; this.className=\'button icon loading merged right\'" class="button icon yes merged right" type="button" style="float: right;"> ';
+		    $html .= '<input 
+                            value="'.t('Submit').'" 
+                            onclick="
+                                '.$submit.' this.value = \''.t('Submitting').'\'; 
+                                this.className=\'button icon loading merged right\'" 
+                            class="button icon ';
+                if($error)
+                    $html .= 'no';
+                else
+                    $html .= 'yes';
+            $html .=        ' merged right" 
+                            type="button" style="float: right;"
+                        > ';
             $html .= '<input type="reset" value="'.t('Reset').'" class="button icon no merged left" style="float: right;">';
 
 

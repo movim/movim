@@ -32,7 +32,13 @@ class Feed extends WidgetCommon {
         // We query the last messages
         $query = Post::query()
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where(array('Contact`.`key' => $this->user->getLogin(), 'Post`.`parentid' => ''))
+                            ->where(
+                                array(
+                                    'Contact`.`key' => $this->user->getLogin(), 
+                                    array(
+                                        'Contact`.`rostersubscription!' => 'none',
+                                        '|Contact`.`rosterask' => 'subscribe'),
+                                    'Post`.`parentid' => ''))
                             ->orderby('Post.updated', true)
                             ->limit($start, '20');
         $messages = Post::run_query($query);

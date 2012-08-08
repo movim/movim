@@ -125,7 +125,12 @@ class Roster extends WidgetBase
         $query = Contact::query()->join('Presence',
                                               array('Contact.jid' =>
                                                     'Presence.jid'))
-                                 ->where(array('Contact`.`key' => $this->user->getLogin()))
+                                 ->where(
+                                    array(
+                                        'Contact`.`key' => $this->user->getLogin(),
+                                        array(
+                                            'Contact`.`rostersubscription!' => 'none',
+                                            '|Contact`.`rosterask' => 'subscribe')))
                                  ->orderby('Contact.group', true);
 
         $contacts = Contact::run_query($query);
@@ -142,17 +147,24 @@ class Roster extends WidgetBase
                 $html .= '<div><h1>'.$group.'</h1>';
             }
             
+            // Temporary array to prevent duplicate contact
+            $duplicate = array();
+            
             foreach($contacts as $c) {
-                if($group != $c[0]->getData('group')) {
-                    $group = $c[0]->getData('group');
-                    $html .= '</div>';
-                    if($group == '')
-                        $html .= '<div><h1>'.t('Ungrouped').'</h1>';
-                    else
-                        $html .= '<div><h1>'.$group.'</h1>';
+                if(!in_array($c[0]->getData('jid'), $duplicate)) {
+                    if($group != $c[0]->getData('group')) {
+                        $group = $c[0]->getData('group');
+                        $html .= '</div>';
+                        if($group == '')
+                            $html .= '<div><h1>'.t('Ungrouped').'</h1>';
+                        else
+                            $html .= '<div><h1>'.$group.'</h1>';
+                    }
+                    
+                    $html .= $this->prepareRosterElement($c);
+                    
+                    array_push($duplicate, $c[0]->getData('jid'));
                 }
-                
-                $html .= $this->prepareRosterElement($c);
             }
             $html .= '</div>';
         } else {

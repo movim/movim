@@ -360,14 +360,12 @@ label {
     font-size: 13px;
 }
 #nav .menu li a.active {
-    font-weight: bold;
-    background-color: white;
-    color: #444;
-    border-radius: 7px 7px 0px 0px; 
+    font-weight: 700;
+    color: #EEE;
 }
 
 #nav .menu li:hover a.active {
-    color: black;
+    color: #FFF;
 }
 
 #nav .menu li img {

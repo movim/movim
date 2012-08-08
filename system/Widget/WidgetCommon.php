@@ -45,7 +45,7 @@ class WidgetCommon extends WidgetBase {
                                 ->where(
                                     array(
                                         'Post`.`key' => $this->user->getLogin(), 
-                                        'Contact`.`key' => $this->user->getLogin(), 
+                                        //'Contact`.`key' => $this->user->getLogin(), 
                                         array('Post`.`parentid' => $commentid)))
                                 ->orderby('Post.published', false);
             $comments = Post::run_query($query);
@@ -183,33 +183,42 @@ class WidgetCommon extends WidgetBase {
                     </div>';
             $comcounter = $size - 3;
         }
+        
+        // Temporary array to prevent duplicate comments
+        $duplicate = array();
 
         if($comments) {
             foreach($comments as $comment) {
-                if(isset($comment[1])) {
-                    $photo = $comment[1]->getPhoto('s');
-                    $name = $comment[1]->getTrueName();
-                }
-                else {
-                    $photo = "image.php?c=default";
-                }
-                
-                if($name == null)
-                    $name = $comment[0]->getData('uri');
-                
-                $tmp .= '
-                    <div class="comment" ';
-                if($comcounter > 0) {
-                    $tmp .= 'style="display:none;"';
+                if(!in_array($comment[0]->getData('nodeid'), $duplicate)) {
+                    if(isset($comment[1])) {
+                        $photo = $comment[1]->getPhoto('s');
+                        $name = $comment[1]->getTrueName();
+                    }
+                    else {
+                        $photo = "image.php?c=default";
+                    }
+                    
+                    if($name == null)
+                        $name = $comment[0]->getData('uri');
+                    
+                    $tmp .= '
+                        <div class="comment" ';
+                    if($comcounter > 0) {
+                        $tmp .= 'style="display:none;"';
+                        $comcounter--;
+                    }
+                        
+                    $tmp .='>
+                            <img class="avatar tiny" src="'.$photo.'">
+                            <span><a href="?q=friend&f='.$comment[0]->getData('uri').'">'.$name.'</a></span>
+                            <span class="date">'.prepareDate(strtotime($comment[0]->getData('published'))).'</span><br />
+                            <div class="content tiny">'.prepareString($comment[0]->getData('content')).'</div>
+                        </div>';
+                    
+                    array_push($duplicate, $comment[0]->getData('nodeid'));
+                } else {
                     $comcounter--;
                 }
-                    
-                $tmp .='>
-                        <img class="avatar tiny" src="'.$photo.'">
-                        <span><a href="?q=friend&f='.$comment[0]->getData('uri').'">'.$name.'</a></span>
-                        <span class="date">'.prepareDate(strtotime($comment[0]->getData('published'))).'</span><br />
-                        <div class="content tiny">'.prepareString($comment[0]->getData('content')).'</div>
-                    </div>';
             }
         }
         
@@ -223,7 +232,7 @@ class WidgetCommon extends WidgetBase {
                             ->where(
                                 array(
                                     'Post`.`key' => $this->user->getLogin(), 
-                                    'Contact`.`key' => $this->user->getLogin(), 
+                                    //'Contact`.`key' => $this->user->getLogin(), 
                                     'Post`.`parentid' => $parent))
                             ->orderby('Post.published', false);
         $comments = Post::run_query($query);   
