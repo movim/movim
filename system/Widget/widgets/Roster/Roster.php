@@ -44,8 +44,6 @@ class Roster extends WidgetBase
 	
     function onVcard($contact)
     {
-
-        
         $query = \Presence::query()->select()
                            ->where(array(
                                    'key' => $this->user->getLogin(),

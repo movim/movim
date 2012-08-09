@@ -464,3 +464,35 @@ label {
     padding: 3px;
     cursor: pointer;
 }
+
+/* Bubble */
+
+.textbubble {
+    background-color: #555;
+    color: white;
+    padding: 8px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 11px;
+    font-style: italic;
+    margin: 0 auto;
+    margin-top: 15px;
+    position: relative;
+    white-space: normal;
+}
+
+.textbubble:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    border-width: 0px 10px 10px 10px;
+    border-style: solid;
+    border-color: #555 transparent;
+}
+
+.textbubble a {
+    color: #CCC;
+    text-decoration: underline;
+}

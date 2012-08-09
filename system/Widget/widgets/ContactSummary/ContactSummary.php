@@ -76,7 +76,7 @@ class ContactSummary extends WidgetBase
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 500);</script>';
             
         if($presence != NULL && $presence['status'] != '')
-            $html .= '<div id="status">'.$presence['status'].'</div>';
+            $html .= '<div class="textbubble">'.$presence['status'].'</div>';
             
             
         // General Informations
@@ -109,7 +109,7 @@ class ContactSummary extends WidgetBase
         if($this->testIsSet($contact->getData('desc')))
             $html .= '
                 <h2>'.t('About Me').'</h2>
-                <div id="status" style="text-align: left; margin-top: 0px;">'.
+                <div class="textbubble" style="text-align: left; margin-top: 0px;">'.
                     prepareString($contact->getData('desc')).'
                 </div>';
         

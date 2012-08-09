@@ -127,7 +127,7 @@ class Cache
                                    ->where(array(
                                            'key' => $cache_key))
                                    ->limit(0, 1);
-        $result = Cache::run_query($query);
+        $result = CacheVar::run_query($query);
 
 
         if($result) {

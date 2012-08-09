@@ -2,7 +2,7 @@
 ?>
 
 <?php $this->widget('Poller');?>
-<?php /*$this->widget('Logout');*/?>
+<?php $this->widget('Logout');?>
 <?php $this->widget('Chat');?>
 <?php /*$this->widget('Log');*/?>
     
