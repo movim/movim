@@ -29,6 +29,7 @@
     color:  white;
     text-align: center;
     background-color: transparent;
+    width: 90%;
 }
 
 #profile #status:hover {
