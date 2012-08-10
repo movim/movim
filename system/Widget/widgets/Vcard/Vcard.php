@@ -81,7 +81,7 @@ class Vcard extends WidgetBase
         $c->phototype->setval($vcard['phototype']);
         $c->photobin->setval($vcard['photobin']);
         
-        $c->desc->setval($vcard['desc']);
+        $c->desc->setval(trim($vcard['desc']));
         
         $c->vcardreceived->setval(0);
         $c->public->setval(0);
@@ -211,7 +211,7 @@ class Vcard extends WidgetBase
                       
             $html .= '<br />
                       <div class="element"><span>'.t('About Me').'</span>
-                        <textarea name ="desc" class="content" onkeyup="movim_textarea_autoheight(this);">'.$me->getData('desc').'</textarea>
+                        <textarea name ="desc" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
                       </div>';
                       
             $html .= '</fieldset>';                  

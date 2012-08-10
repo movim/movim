@@ -12,7 +12,7 @@ class Feed extends WidgetCommon {
 		$this->registerEvent('stream', 'onStream');
         $this->registerEvent('vcard', 'onVcard');
         $this->registerEvent('postpublished', 'onPostPublished');
-        //$this->registerEvent('postunpublishedfeature'
+        $this->registerEvent('postpublisherror', 'onPostPublishError');
 
         $this->cached = false;
     }
@@ -41,7 +41,13 @@ class Feed extends WidgetCommon {
         $html = $this->preparePosts($messages);
         
         RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
-    }    
+    }  
+    
+    function onPostPublishError($error) {
+        $html .=
+            '<div class="error">'.t('An error occured : ').$error.'</div>';
+        RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
+    }
     
     function onVcard($contact) { }
     
@@ -54,7 +60,8 @@ class Feed extends WidgetCommon {
                                     'Contact`.`key' => $this->user->getLogin(), 
                                     array(
                                         'Contact`.`rostersubscription!' => 'none',
-                                        '|Contact`.`rosterask' => 'subscribe'),
+                                        '|Contact`.`rosterask' => 'subscribe',
+                                        '|Contact`.`jid' => $this->user->getLogin()),
                                     'Post`.`parentid' => ''))
                             ->orderby('Post.updated', true)
                             ->limit($start, '20');
@@ -170,6 +177,8 @@ class Feed extends WidgetCommon {
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
+        <div id="feednotifs"></div>
+        
         <div id="feedfilters">
 			<ul>
 				<li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>

@@ -8,7 +8,7 @@
   <?php $this->widget('Profile');?>
 </div>
 <div id="right">
-  <?php /*$this->widget('Notifs');*/?>
+  <?php $this->widget('Notifs');?>
   <?php $this->widget('Roster');?>
 </div>
 <div id="center" class="protect orange">

@@ -86,7 +86,9 @@ class WidgetCommon extends WidgetBase {
                 if($this->user->getLogin() == $message[0]->getData('jid'))
                     $tmp .= 'me';
             $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
-                    <img class="avatar" src="'.$message[1]->getPhoto('s').'">
+                    <a href="?q=friend&f='.$message[0]->getData('jid').'">
+                        <img class="avatar" src="'.$message[1]->getPhoto('s').'">
+                    </a>
 
                     <span><a href="?q=friend&f='.$message[0]->getData('jid').'">'.$message[1]->getTrueName().'</a></span>
                     <span class="date">'.prepareDate(strtotime($message[0]->getData('updated'))).'</span>

@@ -48,7 +48,19 @@ class ContactSummary extends WidgetBase
     }
 
     function ajaxRemoveContact($jid) {
-        $this->xmpp->removeContact($jid);
+        //$this->xmpp->removeContact($jid
+        
+		if(checkJid($jid)) {            
+            $r = new moxl\RosterRemoveItem();
+            $r->setTo($jid)
+              ->request();
+            
+			$p = new moxl\PresenceUnsubscribe();
+            $p->setTo($jid)
+              ->request();
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
 
         global $sdb;
         $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $jid));
@@ -106,12 +118,13 @@ class ContactSummary extends WidgetBase
             
         // About me
             
-        if($this->testIsSet($contact->getData('desc')))
+        if($this->testIsSet(prepareString($contact->getData('desc')))) {
             $html .= '
                 <h2>'.t('About Me').'</h2>
                 <div class="textbubble" style="text-align: left; margin-top: 0px;">'.
                     prepareString($contact->getData('desc')).'
                 </div>';
+        }
         
         if($presence['node'] != '' && $presence['ver'] != '') {
             $clienttype = 

@@ -82,7 +82,11 @@ class Profile extends WidgetBase
         
         if(isset($contact[0])) {
             $me = $contact[0];
-            $html ='<h1>'.$me->getTrueName().'</h1><img src="'.$me->getPhoto().'"/>';
+            $html ='
+                <a href="?q=friend&f='.$this->user->getLogin().'">
+                    <h1>'.$me->getTrueName().'</h1>
+                    <img src="'.$me->getPhoto().'"/>
+                </a>';
             $html .= '
                 <div class="textbubble">
                     <textarea 

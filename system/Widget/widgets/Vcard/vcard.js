@@ -42,8 +42,8 @@ function vCardImageResize(img) {
     var base64 = canvas.toDataURL('image/jpeg', 0.8);
     var bin = base64.split(",");
     document.querySelector('#vCardPhotoPreview').src = base64;
-    document.querySelector('input[name="vCardPhotoType"]').value = 'image/jpeg';
-    document.querySelector('input[name="vCardPhotoBinVal"]').value = bin[1];
+    document.querySelector('input[name="phototype"]').value = 'image/jpeg';
+    document.querySelector('input[name="photobin"]').value = bin[1];
 };
 
 function vCardImageLoad(files) {
