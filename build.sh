@@ -1,8 +1,7 @@
 #!/bin/bash
 
 SYSTEM_PATH=system
-JAXL_REPO=git://gitorious.org/titine/jaxl-titine.git
-JAXL_PATH="${SYSTEM_PATH}/Jaxl/"
+MOXL_REPO=lp:~edhelas/moxl/trunk
 DATAJAR_REPO=lp:datajar/trunk/
 VERSION=`cat VERSION`
 PACKAGENAME="movim-${VERSION}"
@@ -15,10 +14,10 @@ package() {
     bzr export $PACKAGENAME
 
     cd $PACKAGENAME
-    jaxl
-    rm -rf "$JAXL_PATH/.git"
+    moxl
+    rm -rf "$SYSTEM_PATH/Moxl/.bzr"
     datajar
-    rm -rf "$DATAJAR_PATH/.bzr"
+    rm -rf "$SYSTEM_PATH/Datajar/.bzr"
 
     # Compressing
     cd ..
@@ -31,23 +30,13 @@ package() {
     gpg --armor --sign --detach-sign $PACKAGEZIP
 }
 
-jaxl() {
-    if [ -d $JAXL_PATH ]
-    then
-        if [ -d "$JAXL_PATH/.git" ]
-        then
-            cd $JAXL_PATH
-            git pull
-            cd ..
-        else
-            rm -rf $JAXL_PATH
-            # Checking out jaxl.
-            git clone $JAXL_REPO $JAXL_PATH
-        fi
-    else
-        # Checking out jaxl.
-        git clone $JAXL_REPO $JAXL_PATH
-    fi
+moxl() {
+	moxl_temp="moxl"
+    # Checking out Moxl.
+    bzr branch $MOXL_REPO $moxl_temp
+    rm -rf "$SYSTEM_PATH/Moxl"
+    cp -r "$moxl_temp/" $SYSTEM_PATH
+    rm -rf $moxl_temp
 }
 
 datajar() {
@@ -60,17 +49,18 @@ datajar() {
 }
 
 clean() {
-    rm -rf $JAXL_PATH
+    rm -rf "${SYSTEM_PATH}/Moxl"
     rm -rf "${SYSTEM_PATH}/Datajar"
     rm -rf datajar
+    rm -rf moxl
 }
 
 # Doing the job
 case $1 in
     "datajar")  datajar;;
-    "jaxl")  jaxl;;
+    "moxl")  moxl;;
     "package")  package;;
     "clean")  clean;;
     *)  datajar
-        jaxl;;
+        moxl;;
 esac

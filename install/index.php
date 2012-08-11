@@ -1,7 +1,7 @@
 <?php
 require_once('../system/Lang/i18n.php');
 require_once('../system/Lang/languages.php');
-require_once('../system/Datajar/loader.php');
+include_once('../system/Datajar/loader.php');
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -9,6 +9,8 @@ ini_set('display_errors', '1');
 $tmpfile = "../config/conf.xml.temp";
 $conffile = "../config/conf.xml";
 $errors = array();
+$title = t('Movim Installer and Configuration Manager');
+$djloaded = False;
 
 
 function get_mysql_port() {
@@ -61,12 +63,12 @@ function has_errors()
 }
 
 function is_valid($what){
-	global $errors;
+	#global $errors;
 	if($what){
 		echo "valid yes";
 	}else{
 		echo "warning no";
-		$errors += 1;
+		#$errors += 1;
 	}
 }
 
@@ -392,9 +394,27 @@ if(isset($_POST['step'])) {
 		//Store the DB settings
 		#TODO: Verify the SQL Settings
 		}case 2: {
+			//The @ for some undefined vars^^
 			$dbarray = @array('type' => $_POST['dbtype'] , 'username'=> $_POST['dbusername'] , 'password' => $_POST['dbpassword'] , 'host' => $_POST['dbhost'], 'port' => $_POST['dbport'], 'database' => $_POST['dbdatabase'] );
 			$_POST['db'] = generate_db_string($dbarray);
-			#ToDo: Test Connection
+			#ToDo: Test Connection for Mongo
+			if(!$djloaded){
+				load_datajar();
+				$djloaded = True;
+			}
+			//This should pass without errors, as we already tested the backend before
+			datajar_load_driver($dbarray['type']);
+			DatajarEngineWrapper::setdriver($dbarray['type']);
+			//This can fail:
+			try{
+				$sdb = new DatajarEngineWrapper(generate_db_string($dbarray));
+				DatajarBase::bind($sdb);	
+			}catch(DatajarException $e){
+				//Append it to the error array
+				$errors[] = $e->getMessage();
+				//The page is displayed again, to correct the mistakes
+				$display = 2;
+			}
 			//We load the array.
 			$xml = simplexml_load_file($file);
 			make_config();

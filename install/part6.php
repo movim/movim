@@ -4,7 +4,7 @@
 	</div>
 </div>
 <div id="center" style="padding: 20px;" >
-	<h1 style="padding: 10px 0px;"><?php echo t('Movim Installer'); ?></h1>
+	<h1 style="padding: 10px 0px;"><?php echo $title; ?></h1>
 	<br>
 		<form method="post" action="index.php">
 			<fieldset>

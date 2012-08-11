@@ -1,17 +1,21 @@
 <div id="left" style="width: 230px; padding-top: 10px;">
+	<?php include("error.php"); ?>
 	<div class="warning" id="leftside">
 		<p><?php echo t('Move your mousepointer over the configure options to receive more information.');?></p>
 	</div>
 </div>
 <div id="center" style="padding: 20px;" >
-	<h1 style="padding: 10px 0px;"><?php echo t('Movim Installer'); ?></h1>
+	<h1 style="padding: 10px 0px;"><?php echo $title; ?></h1>
 	<br>
 	<p <?php echo generate_Tooltip(t("If no database system is supported then you have to install one or more PHP-plugins and maybe also a database system. For more help on databases see the wiki")) ?>>
 		<?php echo t('Movim\'s database engine "Datajar" can handle a lot of database systems. Here you can see which ones are available in your setup.');?><br>
 	</p>
 	<p>
 		<?php
-			load_datajar();
+			if(!$djloaded){
+				load_datajar();
+				$djloaded = True;
+			}
 			$dbsystems = datajar_test_backends();
 			foreach($dbsystems as $dbsystem => $supported):
 		?>
@@ -66,14 +70,18 @@
 					</p>
 					<p <?php echo generate_Tooltip(t("You get this values from your hosting provider or you have to create a new MySQL user on your system")); ?>>
 					  <label for="dbpassword"><?php echo t('MySQL Password'); ?></label>
-					  <input type="text" name="dbpassword" id="dbpassword" value="<?  echo get_preset_value_db('password', ''); ?>" />
+					  <input type="password" name="dbpassword" id="dbpassword" value="<?  echo get_preset_value_db('password', ''); ?>" />
 					</p>
 					<p <?php echo generate_Tooltip(t("You get this values from your hosting provider or you have to create a new MySQL database on your system")); ?>>
 					  <label for="dbdatabase"><?php echo t('MySQL Database'); ?></label>
 					  <input type="text" name="dbdatabase" id="dbdatabase" value="<?  echo get_preset_value_db('database', ''); ?>" />
 			</fieldset>
 			<fieldset id="sqlite" style=" display: <?php if(get_preset_value_db('type', $dbpreset) == 'sqlite'): echo 'block'; else: echo 'none'; endif;?>">
-				asd
+				<legend><?php echo t('SQlite Settings'); ?></legend>
+					<p <?php echo generate_Tooltip(t("Enter a full path! Webserver must have read/write access")); ?>>
+					  <label for="dbdatabase"><?php echo t('Path to SQlite file'); ?></label>
+					  <input type="text" name="dbdatabase" id="dbdatabase" value="<?  echo get_preset_value_db('database', '/dev/null'); ?>" />
+					</p>
 			</fieldset>
 			<?php include('buttons.php'); ?>
 			<br />
