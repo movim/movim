@@ -182,12 +182,7 @@ class ControllerMain extends ControllerBase
 	function login()
 	{
     	$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
-		//$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
 		$this->page->menuAddLink(t('Home'), '?q=mainPage', true);
-		//if(Conf::getServerConfElement("accountCreation") == 1)
-		//	$this->page->menuAddLink(t('Account Creation'), '?q=account');
-            
-        //$this->page->menuAddLink(t('Help'), '?q=help');
 
         $content = new TplPageBuilder($user);
 		$this->page->setContent($content->build('login.tpl'));
@@ -205,11 +200,6 @@ class ControllerMain extends ControllerBase
         $this->page->setTitle(t('%s - Help Page', APP_TITLE));
 
 		if(!$user->isLogged()) {
-            /*$this->page->menuAddLink('Movim | Human Network', 'http://www.movim.eu/');
-                $this->page->menuAddLink(t('Home'), '?q=mainPage');
-            if(Conf::getServerConfElement("accountCreation") == 1)
-                $this->page->menuAddLink(t('Account Creation'), '?q=account');
-            $this->page->menuAddLink(t('Help'), '?q=help', true);*/
             $this->login();
 		} else {
             $this->page->menuAddLink(t('Home'), '?q=mainPage');

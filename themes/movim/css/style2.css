@@ -66,8 +66,7 @@ hr {
     border: 0px;
     background-color: #DCDCDC;
     height: 1px;
-    background: -moz-linear-gradient( left center, rgba(60, 60, 60, 0), rgba(220, 220, 220, 0.8), rgba(60, 60, 60, 0) );
-    margin: 0.7em;
+    margin: 10px 0px;
     padding: 0px;
 }
 
@@ -381,22 +380,42 @@ label {
 
 /* Warning */
 
-.warning {
-    background-color: #FEEFB3;
-    border: 1px solid #CEB13D;
+.message.warning, .message.info, .message.error, .message.success {
+    border-radius: 4px;
+    background-size: 40px 40px;
+    background-image: linear-gradient(135deg, rgba(255,255, 255, 0.05) 25%, transparent 25%,
+                        transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
+                        transparent 75%, transparent);
+    bax-shadow: inset 0 -1px 0 rgba(255,255, 255, 0.4);
+    border: 1px solid;
+    color: #fff;
     padding: 10px;
-    margin: 10px 0px;
-    color: #9F6000;
-    overflow: auto;
+    text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1);
+    font-size: 1.1em;
+    margin: 5px 0px;
 }
 
-.warning.right {
-    float: right;
-    clear: right;
-    width: 300px;
+.message.warning {
+    background-color: #ED9519;
+    border-color: #C37A12;
 }
 
-.warning p {
+.message.info {
+    background-color: #3C7995;
+    border-color: #156386;
+}
+
+.message.error {
+    background-color: #DE4343;
+    border-color: #C43D3D;
+}
+
+.message.success {
+    background-color: #61B832;
+    border-color: #55A12C;
+}
+
+/*.warning p {
     margin: 5px 0px;
 }
 
@@ -429,7 +448,7 @@ label {
     color: #1F1F1F;
     max-width: 600px;
     margin-left: 2em;
-}
+}*/
 
 /* Config button */
 

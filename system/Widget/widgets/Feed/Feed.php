@@ -45,7 +45,7 @@ class Feed extends WidgetCommon {
     
     function onPostPublishError($error) {
         $html .=
-            '<div class="error">'.t('An error occured : ').$error.'</div>';
+            '<div class="message error">'.t('An error occured : ').$error.'</div>';
         RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
     }
     

@@ -23,18 +23,32 @@ class Config extends WidgetBase
     function WidgetLoad()
     {
 		$this->addcss('config.css');
+        $this->registerEvent('config', 'onConfig');
+    }
+    
+    function onConfig(array $data)
+    {
+        $this->user->setConfig($data);
     }
 
 	function ajaxSubmit($data) {
-		$usr = new User();
-        $usr->setLang($data['language']);
+        $s = new moxl\StorageSet();
+        $s->setXmlns('movim:prefs')
+          ->setData(serialize($data))
+          ->request();
+	}
+
+	function ajaxGet() {
+        $s = new moxl\StorageGet();
+        $s->setXmlns('movim:prefs')
+          ->request();
 	}
 
 	function build()
 	{
 			$languages = load_lang_array();
 			/* We load the user configuration */
-			$conf = UserConf::getConf();
+			$conf = $this->user->getConfig('language');
 
 			$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
                 . "this.className='button icon loading merged right'; setTimeout(function() {location.reload(true)}, 2000);";
@@ -47,7 +61,7 @@ class Config extends WidgetBase
 					<option value="en">English (default)</option>
 <?php
 			   	  foreach($languages as $key => $value ) {
-			   	  	 if($key == $conf['language']) { ?>
+			   	  	 if($key == $conf) { ?>
 			   	  	 	<option value="<?php echo $key; ?>" selected="selected"><?php echo $value; ?></option>
 <?php		     	 } else {?>
 			   	  	 	<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
@@ -60,6 +74,7 @@ class Config extends WidgetBase
 				<input type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">
                 </p>
 			</form>
+            <div class="message info"><?php echo t("This configuration is shared wherever you are connected !");?></div>
 		</div>
 <?php
 	}

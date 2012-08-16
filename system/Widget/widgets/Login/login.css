@@ -60,8 +60,7 @@ body {
     color: white;
 }
 
-.error, .warning {
-    border-radius: 4px;
+.message.error, .message.warning {
     display: block;
     width: 500px;
     margin: 0em auto;
