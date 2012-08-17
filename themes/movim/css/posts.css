@@ -166,13 +166,6 @@
     color: #333;
 }
 
-label {
-    float:left;
-    text-align:right;
-    width: auto;
-    padding: 5px 9px 5px 9px;
-}
-
 .post table#commentsubmit {
     border-spacing: 0px;
     background-color: white;

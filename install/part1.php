@@ -25,7 +25,7 @@
 	<body>
 		<div id="content" style="width: 900px">
             <div id="left" style="width: 230px; padding-top: 10px;">
-                <div class="warning">
+                <div class="message warning">
                     <p><?php echo t('Thank you for downloading Movim!');?></p>
                     <p><?php echo t('Before you enjoy your social network, a few adjustements are required.'); ?></p>
                     <p><?php echo t('Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit.'); ?></p>

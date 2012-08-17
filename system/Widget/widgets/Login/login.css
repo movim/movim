@@ -22,7 +22,7 @@ body {
     margin-top: -170px;
     padding-top: 200px;
 }
-
+/*
 #loginpage input {
     background-color: white;
     font-size: 1.4em;
@@ -39,10 +39,47 @@ body {
     color: white;
     box-shadow: none;
 }
-
+*/
 #connectform {
     text-align: center;
     margin: 0 auto;
+    width: 640px;
+}
+
+#connectform .element {
+    min-height: 0px;
+    max-width: 250px;
+    clear: none;
+}
+
+#connectform .element input {
+    max-width: auto;
+    font-size: 1.4em;
+    border: 1px solid #274950;
+    box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.4);
+    padding: 0.1em 0.5em;
+    color: #15414A;
+}
+
+#connectform a[name=submit] {
+    border: 1px solid #274950;
+    background: -moz-linear-gradient(top, #6E9EA8 0%, #274950 100%);
+    background: -webkit-linear-gradient(top, #6E9EA8 0%, #274950 100%);    
+    color: white;
+    box-shadow: none;
+    width: 100px;
+    font-size: 1.4em;
+    text-shadow: -1px -1px 1px #274950;
+    padding-top: 4px;
+    overflow: hidden;
+    padding-left: 20px;
+    float: right;
+    margin-top: 5px;
+    height: 30px;
+}
+
+#connectform a[name=submit]:before {
+    color: white;
 }
 
 #connectform span {

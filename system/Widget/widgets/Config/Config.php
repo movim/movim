@@ -55,8 +55,9 @@ class Config extends WidgetBase
 ?>
 		<div id="config">
 			<form enctype="multipart/form-data" method="post" action="index.php" name="general">
-
+                <div class="element">
 				<label id="lock" for="language"><?php echo t('Language'); ?></label>
+                <div class="select">
 				<select name="language" id="language">
 					<option value="en">English (default)</option>
 <?php
@@ -68,12 +69,15 @@ class Config extends WidgetBase
 <?php			     }
 				  } ?>
 				</select>
+                </div>
+                </div>
 				<hr />
-                
-				<input value="<?php echo t('Submit'); ?>" onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;">
-				<input type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">
+                <br />
+				<a onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;"><?php echo t('Submit'); ?></a>
+				<!--<a type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">-->
                 </p>
 			</form>
+            <br /><br />
             <div class="message info"><?php echo t("This configuration is shared wherever you are connected !");?></div>
 		</div>
 <?php

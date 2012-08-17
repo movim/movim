@@ -216,17 +216,21 @@ class Login extends WidgetBase {
                 name="login" 
                 id="connectform" 
                 onkeypress="if(event.keyCode == 13) {<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>');}">
+                <div class="element">
+                    <input type="email" name="login" id="login" autofocus required
+                        placeholder="<?php echo t("My address"); ?>"/>
+                </div>
+                <div class="element">
+                    <input type="password" name="pass" id="pass" required
+                        placeholder="<?php echo t("Password"); ?>"/>
+                </div>
                 
-                <input type="email" name="login" id="login" autofocus required
-                    placeholder="<?php echo t("My address"); ?>"/>
-                <input type="password" name="pass" id="pass" required
-                    placeholder="<?php echo t("Password"); ?>"/>
-
-                <input 
-                    type="button"
-                    onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>');"  
-                    id="submit"
-                    name="submit" value="<?php echo t("Come in!"); ?>"/>
+                    <a
+                        class="button icon yes"
+                        onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>');"  
+                        id="submit"
+                        name="submit"><?php echo t("Come in!"); ?></a>
+        
             </form>
         </div>
     <?php
