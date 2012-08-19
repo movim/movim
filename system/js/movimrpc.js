@@ -94,9 +94,9 @@ function MovimRPC()
 
    	    movim_xmlhttp.onreadystatechange = function()
         {
-            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
+            //if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
 		        handler(movim_xmlhttp.responseXML);
-            }
+            //}
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500) {
                 var url = window.location.href;
                 var urlparts = url.split('/');

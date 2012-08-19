@@ -5,7 +5,7 @@ class Feed extends WidgetCommon {
 	{
     	$this->addcss('feed.css');
     	$this->addjs('feed.js');
-		$this->registerEvent('post', 'onPost');
+		$this->registerEvent('post', 'onStream');
 		$this->registerEvent('comment', 'onComment');
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
@@ -85,8 +85,6 @@ class Feed extends WidgetCommon {
         
     function onStream($payload) {
         $html = '';
-        $i = 0;
-        
         $html = $this->prepareFeed(0);
         
         if($html == '') 

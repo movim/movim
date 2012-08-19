@@ -86,7 +86,7 @@ class Login extends WidgetBase {
                     break;
                 case 'bosherror':
                     $warning = '
-                            <div class="message warning">
+                            <div class="message error">
                                 '.t('The current BOSH URL in invalid').'
                             </div> ';
                     break;
@@ -172,7 +172,7 @@ class Login extends WidgetBase {
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,
-                    'ressource' => 'moxl', 
+                    'ressource' => 'moxl'.md5(date()), 
                     
                     'user'     => $user,
                     'password' => $element['pass']);
@@ -202,37 +202,49 @@ class Login extends WidgetBase {
 	function build()
 	{ 
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
+
         ?>
         <div id="loginpage">
-            <?php
-            if(file_exists(BASE_PATH.'install/part1.php')) { ?>
+        <?php
+            if(!BROWSER_COMP) {
+            echo '
                 <div class="message warning">
-                <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
-                </div>
-            <?php
-            }?>
-            <div id="warning"></div>
-            <form 
-                name="login" 
-                id="connectform" 
-                onkeypress="if(event.keyCode == 13) {<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>');}">
-                <div class="element">
-                    <input type="email" name="login" id="login" autofocus required
-                        placeholder="<?php echo t("My address"); ?>"/>
-                </div>
-                <div class="element">
-                    <input type="password" name="pass" id="pass" required
-                        placeholder="<?php echo t("Password"); ?>"/>
-                </div>
+                    '.t('Your web browser is too old to use with Movim.').'
+                </div> ';
+            } else {
                 
-                    <a
-                        class="button icon yes"
-                        onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>');"  
-                        id="submit"
-                        name="submit"><?php echo t("Come in!"); ?></a>
-        
-            </form>
+                if(file_exists(BASE_PATH.'install/part1.php')) { ?>
+                    <div class="message warning">
+                    <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
+                    </div>
+                <?php
+                }?>
+                <div id="warning"></div>
+                <form 
+                    name="login" 
+                    id="connectform" 
+                    onkeypress="if(event.keyCode == 13) {<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);}">
+                    <div class="element">
+                        <input type="email" name="login" id="login" autofocus required autocomplete="off"
+                            placeholder="<?php echo t("My address"); ?>"/>
+                    </div>
+                    <div class="element">
+                        <input type="password" name="pass" id="pass" required 
+                            placeholder="<?php echo t("Password"); ?>"/>
+                    </div>
+                    
+                        <a
+                            class="button icon yes"
+                            onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);"  
+                            id="submit"
+                            name="submit"><?php echo t("Come in!"); ?></a>
+            
+                </form>
+            <?php 
+            } 
+            ?>
         </div>
     <?php
+
 	}
 }

@@ -72,6 +72,7 @@
     height: 20px;
     margin: 1px;
     margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 #chats .chat .messages .message.me span.date {
@@ -83,11 +84,11 @@
     border: 1px solid #444;
     padding: 2px;
     overflow: auto;
-    border-bottom: none;
+    border-bottom: 0px;
     background-color: white;
     height: 1.2em;
     resize: none;
-    display: none;
+    border-top: 0px;
 }
 
 #chats .chat:hover textarea {

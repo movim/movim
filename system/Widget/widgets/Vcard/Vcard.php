@@ -24,6 +24,7 @@ class Vcard extends WidgetBase
     {
 		$this->registerEvent('myvcardvalid', 'onMyVcardReceived');
 		$this->registerEvent('myvcardinvalid', 'onMyVcardNotReceived');
+        $this->registerEvent('myvcard', 'onMyVcardReceived');
     	$this->addcss('vcard.css');
     	$this->addjs('vcard.js');
     }
@@ -101,14 +102,15 @@ class Vcard extends WidgetBase
         
         if(!isset($me[0])) { 
         ?>
-            <div class="warning">
+            <div class="message info">
                 <?php echo "It's your first time on Movim! To fill in a 
                 few informations about you and display them to your 
                 contacts, create your virtual card by clicking the next button."; ?>
-                <a 
-                onclick="<?php echo $submit; ?>" style="float: right; margin: 5px 0px 0px 0px;"
-                href="#" class="button big icon add"><?php echo t("Create my vCard"); ?></a><br />
             </div>
+            
+            <a 
+                onclick="<?php echo $this->genCallAjax('ajaxGetVcard'); ?>" style="float: right; margin: 5px 0px 0px 0px;"
+                href="#" class="button big icon add"><?php echo t("Create my vCard"); ?></a>
 
         <?php
         }
@@ -119,7 +121,12 @@ class Vcard extends WidgetBase
             
             if($error == 'vcardfeaturenotimpl') {
                 $html .= '
-                    <div class="error">'.t("Profil not updated : Your server does not support the vCard feature").'</div>';
+                    <div class="message error">'.t("Profil not updated : Your server does not support the vCard feature").'</div>';
+            }
+            
+            if($error == 'vcardbadrequest') {
+                $html .= '
+                    <div class="message error">'.t("Profil not updated : Request error").'</div>';
             }
         
             $html .= '
@@ -134,14 +141,14 @@ class Vcard extends WidgetBase
                       
             $html .= '<div class="element">
                         <label for="name">'.t('Nickname').'</label>
-                        <input type="text" name ="name" class="content" value="'.$me->getData('name').'">
+                        <input type="text" name="name" class="content" value="'.$me->getData('name').'">
                       </div>';
                       
-            $html .= '<div class="element large">
+            $html .= '<div class="element ">
                         <label for="day">'.t('Date of Birth').'</label>';
                         
                 $html .= '
-                        <div class="select">
+                        <div class="select" style="width: 29%; float: left;">
                             <select name="day" class="datepicker">
                             <option value="-1">'.t('Day').'</option>';
                                 for($i=1; $i<= 31; $i++){
@@ -161,7 +168,7 @@ class Vcard extends WidgetBase
                         
     
                 $html .= '
-                        <div class="select">
+                        <div class="select" style="width: 29%; float: left;">
                             <select name="month" class="datepicker">
                             <option value="-1">'.t('Month').'</option>';
                                 for($i=1; $i<= 12; $i++){
@@ -180,7 +187,7 @@ class Vcard extends WidgetBase
                         </div>';
                         
                 $html .= '
-                        <div class="select">
+                        <div class="select" style="width: 29%; float: left;">
                             <select name="year" class="datepicker">
                             <option value="-1">'.t('Year').'</option>';
                                 for($i=date('o'); $i>= 1920; $i--){
@@ -229,7 +236,7 @@ class Vcard extends WidgetBase
                         <input type="hidden" name="photobin"  value="'.$me->getData('photobin').'"><br />
                       </div>';
                       
-            $html .= '<div class="element large"><label for="desc">'.t('About Me').'</label>
+            $html .= '<div class="element"><label for="desc">'.t('About Me').'</label>
                         <textarea name ="desc" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
                       </div>';
                       

@@ -74,17 +74,13 @@ if(isset($_GET['c'])) {
     
      else {
         $user = new User();
-        //$contact = $sdb->select('Contact', array('key' => $user->getLogin(), 'jid' => $_GET['c']));
-        
-        $c = new \Contact();
+        $c = new Contact();
 
-        $query = \Contact::query()->select()
+        $query = Contact::query()->select()
                                    ->where(array(
                                            'key' => $user->getLogin(),
                                            'jid' => $_GET['c']));
-        $contact = \Contact::run_query($query);
-        
-        movim_log($contact[0]->getData('phototype'));
+        $contact = Contact::run_query($query);
         
         if($contact[0]->getData('phototype') != '' && 
            $contact[0]->getData('photobin') != '' && 

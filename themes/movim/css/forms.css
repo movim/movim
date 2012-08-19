@@ -23,9 +23,17 @@ form .element:nth-child(2) {
 
 form .element {
     overflow: auto;
-    min-height: 70px;
+    min-height: 80px;
     width: 50%;
     float: left;
+}
+
+form .element.large {
+    width: 100%;
+}
+
+form .element > label {
+    display: block;
 }
 
 form .element > *:not(label):not(img) {
@@ -37,12 +45,15 @@ form .element > *:not(label):not(img) {
     background-color: white;
     box-shadow: inset 0 2px 1px #ddd;
     margin: 5px 0px;
+    margin-right: 5px;
     padding-left: 5px;
 }
 
 form .element > *:not(label):not(img):focus {
     border: 1px solid gray;
     box-shadow: inset 0 2px 2px #bbb;
+    outline: none;
+    background-color: white;
 }
 
 form .element textarea, textarea {
@@ -59,6 +70,8 @@ form .element .select {
     height: 20px;
     position: relative;
     overflow: hidden;
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
+    background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
     background-color: white;
     background-size: 100% 100%;
@@ -70,7 +83,7 @@ form .element .select:hover {
 }
 
 form .element .select select {
-    width: 107%;
+    width: 120%;
     background-color: transparent;
     display: block;
     padding-top: 5px;
@@ -86,6 +99,7 @@ form .element .select:before {
     right: 0px;
     transform: rotate(90deg);
     -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
     padding: 8px;
     position: absolute;
     display: block;
@@ -97,7 +111,7 @@ form .element .select select option {
 }
 
 input[type=submit], input[type=reset], input[type=button], .button, .button:link, .button:visited {
-    display: block;
+    display: inline-block;
     border: 1px solid #999;
     border-radius: 4px;
     box-shadow: 0 1px 1px #ddd;
@@ -106,6 +120,8 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     padding: 0px 10px;
     position: relative;
     overflow: hidden;
+    background-image: -moz-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
+    background-image: -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
     background-color: white;
     background-size: 100% 100%;
@@ -131,21 +147,26 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
     font-weight: bold;
     color: #444;
     left: 0px;
-    padding: 6px 10px;
+    padding: 5px 10px;
     position: absolute;
+    background-position: 6px 6px;
+    background-repeat: no-repeat;
+    min-width: 10px;
+    min-height: 10px;
 }
 
-.icon.yes:before { content: "✔"; }
-.icon.no:before { content: "✘"; }
+.icon.yes:before { content: "✔"; padding: 6px 10px;}
+.icon.no:before { content: "✘"; padding: 6px 10px; }
 .icon.bubble { background-image: url(../img/icons/comments_icon.png); }
 .icon.bubbleadd { background-image: url(../img/icons/comments_add.png); }
 .icon.bubbleold { background-image: url(../img/icons/comments_show.png); }
-.icon.follow { background-image: url(../img/icons/follow_icon.png); }
-.icon.chat{ background-image: url(../img/icons/chat_icon.png); }
-.icon.add { background-image: url(../img/icons/add_icon.png); }
+.icon.follow:before { content:"⇒" }
+.icon.chat:before { background-image: url(../img/icons/chat_icon.png); content:"";}
+.icon.add:before { content: "+"; }
 .icon.rm { background-image: url(../img/icons/rm_icon.png); }
 .icon.submit:before { content: "▼"; }
 .icon.loading:before { content: "◕"; }
+.tiny.icon.loading:before { padding: 4px 7px; }
 
 .tiny.icon {
     font-size: 11px;
