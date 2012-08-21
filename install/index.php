@@ -37,7 +37,11 @@ function parse_db_string($string){
 }
 
 function generate_db_string($arr){
-	return $arr['type'].'://'.$arr['username'].':'.$arr['password'].'@'.$arr['host'].':'.$arr['port'].'/'.$arr['database'];
+	if($arr['type'] != 'sqlite'){
+		return $arr['type'].'://'.$arr['username'].':'.$arr['password'].'@'.$arr['host'].':'.$arr['port'].'/'.$arr['database'];
+    }else{
+		return $arr['type'].'://sqlite:sqlite@sqlite/'.$arr['database'];
+	}
 }
 $err = array();
 function set_error($error_name, $error_message)
@@ -46,29 +50,13 @@ function set_error($error_name, $error_message)
 	$err[$error_name] = $error_message;
 }
 
-function err($error_name)
-{
-	global $err;
-	if(isset($err[$error_name])) {
-		return $err[$error_name];
-	} else {
-		return false;
-	}
-}
-
-function has_errors()
-{
-	global $err;
-	return count($err);
-}
-
 function is_valid($what){
-	#global $errors;
+	global $errors;
 	if($what){
 		echo "valid yes";
 	}else{
 		echo "warning no";
-		#$errors += 1;
+		$errors[] = True;
 	}
 }
 
@@ -176,10 +164,10 @@ function test_bosh($boshhost, $port, $suffix, $host)
 function test_dir($dir){
 	return (file_exists($dir) && is_dir($dir) && is_writable($dir));
 }
+
 /*
  * Create the dirs 
  */
-
 function create_dirs(){
 
   if(!test_dir('../cache') && !@mkdir('../cache')) {
@@ -240,27 +228,13 @@ function make_config(){
 	'config' => array(
 	  'theme'              => get_entry('theme'),
 	  'defLang'            => get_entry('defLang'),
-//	  'boshCookieTTL'      => $_POST['boshCookieTTL'],
-//	  'boshCookiePath'     => $_POST['boshCookiePath'],
-//	  'boshCookieDomain'   => get_checkbox('boshCookieDomain'),
-//	  'boshCookieHTTPS'    => get_checkbox('boshCookieHTTPS'),
-//	  'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
 	  'maxUsers'           => get_entry('maxUsers'),
 	  'logLevel'           => get_entry('logLevel'),
-	  //you should be able to do something with new pods, so:
-	  'accountCreation'    => True,
-//	  'host'               => $_POST['host'],
-//	  'domain'             => $_POST['domain'],
-//	  'defBoshHost'        => $_POST['defBoshHost'],
-//	  'defBoshSuffix'      => $_POST['defBoshSuffix'],
-//	  'defBoshPort'        => $_POST['defBoshPort'],
-//	  'storageDriver'      => $_POST['datajar'],
 	  'db'				   => get_entry('db'),
-//	  'proxyEnabled'       => get_checkbox('proxyEnabled'),
-//	  'proxyURL'           => $_POST['proxyURL'], 
-//	  'proxyPort'          => $_POST['proxyPort'],
 	  'boshUrl' 		   => get_entry('boshUrl'),
-	  'userDefinedBosh'    => get_entry('userDefinedBosh')
+	  'userDefinedBosh'    => get_entry('userDefinedBosh'),
+	  'boshOpen'		   => get_entry('boshOpen'),
+	  'boshProxy'		   => get_entry('boshProxy')
 	  ),
 	);
 	if(!@file_put_contents($file, make_xml($conf))){
@@ -424,13 +398,24 @@ if(isset($_POST['step'])) {
 		#TODO: Check if bosh settings are right and whether open Bosh (e.g. connect to random xmpp); when bosh closed warn the user
 		}case 3: {
 			#ToDo: Test Connection
+			try{
+			}catch(MoxlException $e){
+				//Apennd it to the error array
+				$errors[] = $e->getMessage();
+				//The apge is displayed again:
+				$display = 3;
+			}
+			if(True){
+				$_POST['boshOpen'] = True;
+			}
 			//We load the array
 			$xml = simplexml_load_file($file);
 			make_config();
 			break;
 			
-		#TODO: Display all Settings again
+		#TODO: If BOSH closed, display xmpp form, else display 5
 		}case 4: {
+			$display = 5;
 			break;
 			
 		#TOTO: Write Database; Rename conf.xml.part

@@ -5,27 +5,9 @@
 </div>
 <div id="center" style="padding: 20px;" >
 	<h1 style="padding: 10px 0px;"><?php echo $title; ?></h1>
-	<br>
-		<form method="post" action="index.php">
-			<fieldset>
-				<legend><?php echo $steps[$display]; ?></legend>
-					<p>
-						<input type="hidden" name="step" value="3" />
-					</p>
-					<p <?php echo generate_Tooltip(t("Enter here the BOSH-URL in the form: http://domain:123/asd")); ?>>
-						<label for="defBoshURL"><?php echo t("Bosh URL"); ?></label>
-						<input type="text" id="defBoshURL" name="defBoshURL" value="<? echo get_preset_value('defBoshURL', ''); ?>"/>
-
-					</p>
-					
-					
-			</fieldset>
-			<fieldset id="dbform">
-				
-			</fieldset>
-			<?php include('buttons.php'); ?>
-			<br />
-		</form>
+	<?php echo t("That's it. Your configuration is now finished, and the database has been created."); ?><br>
+	<?php echo t("If you want to change something later on you can do this by coming back to the installer."); ?>
+		
 	
 </div>
 

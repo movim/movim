@@ -1,50 +1,3 @@
-<?php
-	/*
-	$errors = 0;
-	function test_requirements(){
-		$errors = array();
-	  
-		if(!(version_compare(PHP_VERSION, '5.3.0') >= 0)) {
-			$errors[] = t("PHP version mismatch. Movim requires PHP 5.3 minimum.")." ".t("Actual version : "). PHP_VERSION .
-					'<div class="guidance">'.t("Update your PHP version or contact your server administrator").'</div>';
-		}
-		if(!extension_loaded('curl')) {
-		$errors[] = t("Movim requires the %s extension.", 'PHP Curl') .
-				'<div class="guidance">'.t("Install %s and %s packages", 'php5-curl', 'curl').'</div>';
-		}
-		if(!extension_loaded('gd')) {
-		$errors[] = t("Movim requires the %s extension.", 'PHP GD') .
-				'<div class="guidance">'.t("Install the %s package", 'php5-gd').'</div>';
-		}
-		if(!extension_loaded('SimpleXML')) {
-		$errors[] = t("Movim requires the %s extension.", 'SimpleXML') .
-				'<div class="guidance">'.t("Install the %s package", 'php5-cli').'</div>';
-		}
-		if(!test_dir('../')) {
-		$errors[] = t("Movim's folder must be writable.") .
-				'<div class="guidance">'.t("Enable read and write rights on Movim's root folder").'</div>';
-		}
-		#TODO: Mongo
-		// Must have sqlite or mysql (so far...)
-		if(!extension_loaded('mysql') && !class_exists('SQLite3')) {
-		$exts = array('MySQL', 'SQLite');
-		$exts_txt = implode(t("or"), $exts);
-		$errors[] = t("Movim requires the %s extension.", $exts_txt);
-		}
-		
-		global $databases;
-		if(extension_loaded('mysql'))
-		$databases['mysql'] = 'MySQL';
-		if(class_exists('SQLite3'))
-		$databases['sqlite'] = 'SQLite';
-		
-		return (count($errors) > 0)? $errors : false;
-	}
-*/
-
-
-?>
-
 <div id="left" style="width: 230px; padding-top: 10px;">
 	<div class="warning">
 		<p><?php echo t('Thank you for downloading Movim!');?></p>
@@ -61,7 +14,7 @@
 		<?php echo ('This sign <img src="../themes/movim/img/icons/follow_icon.png"> indicates that there are additional help texts available, which will be displayed on the left.'); ?><br><br><br>
 	</p>
 	<p>
-		<?php echo t('Movim requires certain external components. Please install them before you succeed:');?>
+		<?php echo t('Movim requires certain external components. Please install them before you can succeed:');?>
 			
 			<div class="<?php is_valid((version_compare(PHP_VERSION, '5.3.0') >= 0)); ?>">
 				<?php echo t('Your PHP-Version: %s <br>Required: 5.3.0', PHP_VERSION); ?>

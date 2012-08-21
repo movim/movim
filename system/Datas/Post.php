@@ -1,31 +1,31 @@
 <?php
 
 class Post extends DatajarBase {
-    protected $key;
-    protected $jid;
+    public $key;
+    public $jid;
 
-    protected $name;
-    protected $uri; 
-    protected $nodeid;
-    protected $parentid;
-    protected $title;
-    protected $content;
+    public $name;
+    public $uri; 
+    public $nodeid;
+    public $parentid;
+    public $title;
+    public $content;
 
-    protected $published;
-    protected $updated;
+    public $published;
+    public $updated;
 
-    protected $lat;
-    protected $lon;
-    protected $country;
-    protected $countrycode;
-    protected $region;
-    protected $postalcode;
-    protected $locality;
-    protected $street;
-    protected $building;
+    public $lat;
+    public $lon;
+    public $country;
+    public $countrycode;
+    public $region;
+    public $postalcode;
+    public $locality;
+    public $street;
+    public $building;
     
-    protected $commentson;
-    protected $commentplace;
+    public $commentson;
+    public $commentplace;
 
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);

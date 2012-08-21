@@ -2,7 +2,7 @@
 
 SYSTEM_PATH=system
 MOXL_REPO=lp:~edhelas/moxl/trunk
-DATAJAR_REPO=lp:datajar/trunk/
+DATAJAR_REPO=lp:~kili4n/datajar/next
 VERSION=`cat VERSION`
 PACKAGENAME="movim-${VERSION}"
 

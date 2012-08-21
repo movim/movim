@@ -38,16 +38,36 @@ class Profile extends WidgetBase
     
 	function ajaxSetStatus($status)
 	{
+        $status = rawurldecode($status);
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
         Cache::c(
             'presence', 
             array(
-                'status' => rawurldecode($status),
+                'status' => $status,
                 'show' => $presence['show'],
                 )
         );
-		$this->xmpp->setStatus(rawurldecode($status), $presence['show']);
+        
+        switch($presence['show']) {
+            case 'chat':
+                $p = new moxl\PresenceChat();
+                $p->setStatus($status)->request();
+                break;
+            case 'away':
+                $p = new moxl\PresenceAway();
+                $p->setStatus($status)->request();
+                break;
+            case 'dnd':
+                $p = new moxl\PresenceDND();
+                $p->setStatus($status)->request();
+                break;
+            case 'xa':
+                $p = new moxl\PresenceXA();
+                $p->setStatus($status)->request();
+                break;
+        }
+		//$this->xmpp->setStatus(rawurldecode($status), $presence['show']);
 	}
     
     function prepareVcard($vcard = false)
@@ -62,15 +82,20 @@ class Profile extends WidgetBase
         
         if(isset($contact[0])) {
             $me = $contact[0];
-            $html ='<h1>'.$me->getTrueName().'</h1><img src="'.$me->getPhoto().'"/>';
-
+            $html ='
+                <a href="?q=friend&f='.$this->user->getLogin().'">
+                    <h1>'.$me->getTrueName().'</h1>
+                    <img src="'.$me->getPhoto().'"/>
+                </a>';
             $html .= '
-                <input 
-                    type="text" 
-                    id="status" 
-                    value="'.$presence['status'].'"
-                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' return false;}"
-                />
+                <div class="textbubble">
+                    <textarea 
+                        id="status" 
+                        spellcheck="false"
+                        onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' return false;}"
+                        onload="movim_textarea_autoheight(this);"
+                        onkeyup="movim_textarea_autoheight(this);">'.$presence['status'].'</textarea>
+                </div>
                 <br />
                 ';
         } else {

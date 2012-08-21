@@ -30,6 +30,7 @@ class WidgetCommon extends WidgetBase {
             // We create the array for the comments request
             $commentid = array();
             $i = 0;
+            
             foreach($messages as $message) {
                 if($i == 0)
                     array_push($commentid, $message[0]->getData('nodeid'));
@@ -50,20 +51,26 @@ class WidgetCommon extends WidgetBase {
                                 ->orderby('Post.published', false);
             $comments = Post::run_query($query);
             
+            $duplicate = array();
+            
             foreach($messages as $message) {
-                
-                // We split the interesting comments for each messages
-                $i = 0;
-                $messagecomment = array();
-                foreach($comments as $comment) {
-                    if($message[0]->getData('nodeid') == $comments[$i][0]->getData('parentid')) {
-                        array_push($messagecomment, $comment);
-                        unset($comment);
+                if(!in_array($message[0]->getData('nodeid'), $duplicate)) {
+
+                    // We split the interesting comments for each messages
+                    $i = 0;
+                    $messagecomment = array();
+                    foreach($comments as $comment) {
+                        if($message[0]->getData('nodeid') == $comments[$i][0]->getData('parentid')) {
+                            array_push($messagecomment, $comment);
+                            unset($comment);
+
+                        }
+                        $i++;
                     }
-                    $i++;
+                    array_push($duplicate, $message[0]->getData('nodeid'));
+
+                    $html .= $this->preparePost($message, $messagecomment);
                 }
-        
-                $html .= $this->preparePost($message, $messagecomment);
 			}
 			
         }
@@ -79,7 +86,9 @@ class WidgetCommon extends WidgetBase {
                 if($this->user->getLogin() == $message[0]->getData('jid'))
                     $tmp .= 'me';
             $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
-                    <img class="avatar" src="'.$message[1]->getPhoto('s').'">
+                    <a href="?q=friend&f='.$message[0]->getData('jid').'">
+                        <img class="avatar" src="'.$message[1]->getPhoto('s').'">
+                    </a>
 
                     <span><a href="?q=friend&f='.$message[0]->getData('jid').'">'.$message[1]->getTrueName().'</a></span>
                     <span class="date">'.prepareDate(strtotime($message[0]->getData('updated'))).'</span>
