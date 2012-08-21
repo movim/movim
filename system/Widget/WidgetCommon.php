@@ -286,7 +286,7 @@ class WidgetCommon extends WidgetBase {
             $p->setTo($to)
               ->setFrom($this->user->getLogin())
               ->setParentId($id)
-              ->setContent(htmlentities(rawurldecode($content)))
+              ->setContent(htmlspecialchars(rawurldecode($content)))
               ->request();
         }
     }

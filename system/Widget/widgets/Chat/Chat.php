@@ -75,7 +75,8 @@ class Chat extends WidgetBase
                                             'jid' => $jid));
         $contact = Contact::run_query($query);
 
-        $contact = $contact[0];
+        if($contact)
+            $contact = $contact[0];
         
         if($contact->getData('chaton') == 0) {
             RPC::call('movim_prepend',
@@ -211,7 +212,7 @@ class Chat extends WidgetBase
         $this->onMessage($m);
              
 		// We decode URL codes to send the correct message to the XMPP server
-        moxl\message($to, rawurldecode($message));
+        moxl\message($to, htmlspecialchars(rawurldecode($message)));
     }
     
 	/**

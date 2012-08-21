@@ -171,7 +171,7 @@ class Login extends WidgetBase {
                     'rid' => 1,
                     'sid' => 0,
                     'id'  => 0,
-                    'url' => 'http://'.$serverconfig['defBoshHost'].':'.$serverconfig['defBoshPort'].'/'.$serverconfig['defBoshSuffix'],
+                    'url' => 'http://'.$serverconfig['defBoshHost'].':'.$serverconfig['defBoshPort'].'/'.$serverconfig['defBoshSuffix'].'/',
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,

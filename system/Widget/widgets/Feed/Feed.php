@@ -109,7 +109,7 @@ class Feed extends WidgetCommon {
             $p = new moxl\MicroblogPostPublish();
             $p->setTo($this->user->getLogin())
               ->setId($id)
-              ->setContent(htmlentities(rawurldecode($content)))
+              ->setContent(htmlspecialchars(rawurldecode($content)))
               ->request();
         }
     }

@@ -85,6 +85,10 @@ class Notifs extends WidgetBase
 			$p = new moxl\PresenceSubscribed();
             $p->setTo($jid)
               ->request();
+              
+			/*$p = new moxl\PresenceSubscribe();
+            $p->setTo($jid)
+              ->request();*/
 		} else {
 			throw new MovimException("Incorrect JID `$jid'");
 		}

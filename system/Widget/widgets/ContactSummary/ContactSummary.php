@@ -48,8 +48,6 @@ class ContactSummary extends WidgetBase
     }
 
     function ajaxRemoveContact($jid) {
-        //$this->xmpp->removeContact($jid
-        
 		if(checkJid($jid)) {            
             $r = new moxl\RosterRemoveItem();
             $r->setTo($jid)
