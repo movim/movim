@@ -63,9 +63,9 @@ class Post extends DatajarBase {
         
         $this->key->setval($key);
         
-        /*if($parent != false)
+        if($parent != false)
             $this->jid->setval(substr((string)$item->entry->source->author->uri, 5));
-        else*/
+        else
             $this->jid->setval($from);
         
         $this->name->setval((string)$item->entry->source->author->name);
@@ -109,9 +109,11 @@ class Post extends DatajarBase {
             /*if($attachment['link[0]['attributes()->title == 'thumb') {
                 AttachmentHandler::saveAttachment($attachment, $key, $from, (string)$item->attributes()->id);
             }*/
-            if($attachment->attributes()->title == 'comments') {
+            
+            if((string)$attachment->attributes()->title == 'comments') {
+                movim_log(reset(explode('?', substr((string)$attachment->attributes()->href, 5)))."\n");
                 $this->commentson->setval(1);
-                $this->commentplace->setval(reset(explode('?', substr($attachment->attributes()->href, 5))));
+                $this->commentplace->setval(reset(explode('?', substr((string)$attachment->attributes()->href, 5))));
             }
         }
     }

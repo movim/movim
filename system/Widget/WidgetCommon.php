@@ -281,7 +281,13 @@ class WidgetCommon extends WidgetBase {
 	}
     
     function ajaxPublishComment($to, $id, $content) {
-        if($content != '')
-            $this->xmpp->publishComment($to, $id, htmlentities(rawurldecode($content)));
+        if($content != '') {
+            $p = new moxl\MicroblogCommentPublish();
+            $p->setTo($to)
+              ->setFrom($this->user->getLogin())
+              ->setParentId($id)
+              ->setContent(htmlentities(rawurldecode($content)))
+              ->request();
+        }
     }
 }

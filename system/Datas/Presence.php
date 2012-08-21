@@ -25,29 +25,32 @@ class Presence extends DatajarBase {
         $this->ver      = DatajarType::varchar(128);
     }
     
-    public function setPresence($array) {
-        $xmpp = Jabber::getInstance();        
-        list($jid, $ressource) = explode('/',$array['@attributes']['from']);
+    public function setPresence($stanza) {
+        $to = current(explode('/',(string)$stanza->attributes()->to));
+        $jid = explode('/',(string)$stanza->attributes()->from);
+
+        $this->key->setval($to);
+        $this->jid->setval($jid[0]);
+        $this->ressource->setval($jid[1]);
+        $this->status->setval((string)$stanza->status);
         
-        $this->key->setval($xmpp->getCleanJid());
-        $this->jid->setval($jid);
-        $this->ressource->setval($ressource);
-        $this->status->setval($array['status']);
+        if($stanza->c) {
+            $this->node->setval((string)$stanza->c->attributes()->node);
+            $this->ver->setval((string)$stanza->c->attributes()->ver);
+        }
         
-        $this->node->setval($array['c']['@attributes']['node']);
-        $this->ver->setval($array['c']['@attributes']['ver']);
+        if($stanza->priority)
+            $this->priority->setval((string)$stanza->priority);
         
-        $this->priority->setval($array['priority']);
-        
-        if($array['@attributes']['type'] == 'error') {
+        if((string)$stanza->attributes()->type == 'error') {
             $this->presence->setval(6);    
-        } elseif($array['@attributes']['type'] == 'unavailable') {
+        } elseif((string)$stanza->attributes()->type == 'unavailable') {
             $this->presence->setval(5);
-        } elseif($array['show'] == 'away') {
+        } elseif((string)$stanza->show == 'away') {
             $this->presence->setval(2);
-        } elseif($array['show'] == 'dnd') {
+        } elseif((string)$stanza->show == 'dnd') {
             $this->presence->setval(3);
-        } elseif($array['show'] == 'xa') {
+        } elseif((string)$stanza->show == 'xa') {
             $this->presence->setval(4);
         } else {
             $this->presence->setval(1);

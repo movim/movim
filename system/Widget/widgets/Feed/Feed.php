@@ -28,7 +28,7 @@ class Feed extends WidgetCommon {
         }
     }
 
-    function onPostPublished($post) {
+    function onPostPublished($post) {        
         $query = Post::query()
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
                             ->where(
@@ -39,9 +39,17 @@ class Feed extends WidgetCommon {
 		
         // We ask for the HTML of all the posts
         $html = $this->preparePosts($messages);
-        
+
+        RPC::call('createCommentNode', $post->nodeid->getval());            
         RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
     }  
+    
+    function ajaxCreateCommentNode($parentid) {
+        $n = new moxl\MicroblogCommentCreateNode();
+        $n->setTo($this->user->getLogin())
+          ->setParentId($parentid)
+          ->request();
+    }
     
     function onPostPublishError($error) {
         $html .=
@@ -89,19 +97,19 @@ class Feed extends WidgetCommon {
         
         if($html == '') 
             $html = t("Your feed cannot be loaded.");
-        RPC::call('movim_fill', 'feed_content', RPC::cdata($html));
+        RPC::call('movim_fill', 'feedcontent', RPC::cdata($html));
         RPC::commit();
     }
     
     function ajaxPublishItem($content)
     {
         if($content != '') {
-            //$this->xmpp->publishItem(htmlentities(rawurldecode($content)));
             $id = md5(openssl_random_pseudo_bytes(5));
+            
             $p = new moxl\MicroblogPostPublish();
             $p->setTo($this->user->getLogin())
               ->setId($id)
-              ->setContent(rawurldecode($content))
+              ->setContent(htmlentities(rawurldecode($content)))
               ->request();
         }
     }
@@ -130,6 +138,7 @@ class Feed extends WidgetCommon {
     function build()
     { 
 	//	$conf_arr = UserConf::getConf();
+
     ?>
     <div class="tabelem" title="<?php echo t('Feed'); ?>" id="feed">
 		<?php
@@ -151,6 +160,13 @@ class Feed extends WidgetCommon {
 		}
 		else {*/		
 		?><?php //echo t('What\'s new ?'); ?>
+        <script type="text/javascript">
+            function createCommentNode(parentid) {
+                <?php 
+                    echo $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]');
+                ?>
+            }
+        </script>
 		<table id="feedsubmitform">
             <tbody>
                 <tr>

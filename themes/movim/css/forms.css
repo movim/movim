@@ -155,6 +155,20 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
     min-height: 10px;
 }
 
+.button.merged {
+    border-radius: 0px;
+    border-left: none;
+}
+
+.button.merged.left {
+    border-radius: 4px 0px 0px 4px;
+    border-left: 1px solid #999;
+}
+
+.button.merged.right {
+    border-radius: 0px 4px 4px 0px;
+}
+
 .icon.yes:before { content: "✔"; padding: 6px 10px;}
 .icon.no:before { content: "✘"; padding: 6px 10px; }
 .icon.bubble { background-image: url(../img/icons/comments_icon.png); }

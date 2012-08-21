@@ -73,7 +73,7 @@ class Config extends WidgetBase
                 </div>
 				<hr />
                 <br />
-				<a onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;"><?php echo t('Submit'); ?></a>
+				<a onclick="<?php echo $submit; ?>" type="button" class="button icon yes" style="float: right;"><?php echo t('Submit'); ?></a>
 				<!--<a type="reset" value="<?php echo t('Reset'); ?>" class="button icon no merged left" style="float: right;">-->
                 </p>
 			</form>

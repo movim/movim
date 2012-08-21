@@ -192,5 +192,8 @@
 .post table#commentsubmit .commentsubmitrow {
     background-color: #F3F3F3;
     display: block;
-    padding: 5px;
+}
+
+.post table#commentsubmit .commentsubmitrow td {
+    padding-bottom: 0px;
 }

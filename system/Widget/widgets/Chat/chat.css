@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 0;
     right: 210px;
+    z-index: 3;
 }
 
 #chats .chat {

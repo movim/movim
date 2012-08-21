@@ -43,8 +43,6 @@ class Vcard extends WidgetBase
     
 	function ajaxVcardSubmit($vcard)
     {
-        //foreach($vcard as $key => $value)
-        //    $vcard[$key] = rawurldecode($value);
 	    # Format it ISO 8601:
 	    $vcard['date'] = $vcard['year'].'-'.$vcard['month'].'-'.$vcard['day'];
         unset($vcard['year']);
@@ -130,7 +128,7 @@ class Vcard extends WidgetBase
             }
         
             $html .= '
-            <form name="vcard"><br />
+            <form name="vcard" id="vcardform"><br />
                 <fieldset class="protect red">
                     <legend>'.t('General Informations').'</legend>';
                     
@@ -268,7 +266,7 @@ class Vcard extends WidgetBase
             $html .=        ' merged right" 
                             type="button" style="float: right;"
                         >'.t('Submit').'</a>';
-            //$html .= '<a type="reset" class="button icon no merged left" style="float: right;">'.t('Reset').'</a>';
+            $html .= '<a onclick="document.querySelector(\'#vcardform\').reset();" class="button icon no merged left" style="float: right;">'.t('Reset').'</a>';
 
 
             $html .= '

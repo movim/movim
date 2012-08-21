@@ -157,6 +157,9 @@ class Login extends WidgetBase {
         }
         
         $this->displayWarning($warning);
+        
+        // We get the Server Configuration
+        $serverconfig = Conf::getServerConf();
 
         global $session;
 
@@ -168,14 +171,20 @@ class Login extends WidgetBase {
                     'rid' => 1,
                     'sid' => 0,
                     'id'  => 0,
-                    'url' => 'localhost:5280/http-bind',
+                    'url' => 'http://'.$serverconfig['defBoshHost'].':'.$serverconfig['defBoshPort'].'/'.$serverconfig['defBoshSuffix'],
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,
                     'ressource' => 'moxl'.md5(date()), 
                     
                     'user'     => $user,
-                    'password' => $element['pass']);
+                    'password' => $element['pass'],
+                    
+                    'proxyenabled' => $serverconfig['proxyEnabled'],
+                    'proxyurl' => $serverconfig['proxyURL'],
+                    'proxyport' => $serverconfig['proxyPort'],
+                    'proxyuser' => $serverconfig['proxyUser'],
+                    'proxypass' => $serverconfig['proxyPass']);
         }
         
         $sess = Session::start(APP_NAME);
