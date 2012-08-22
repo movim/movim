@@ -5,6 +5,7 @@ function hideNotification(n) {
 function showAlias(n) {
     n.style.display = "none";
     document.querySelector('#notifsvalidate').style.display = "block";
+    document.querySelector('#labelnotifsalias').style.display = "block";
     document.querySelector('#notifsalias').style.display = "block";
 }
 

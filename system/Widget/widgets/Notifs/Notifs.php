@@ -46,32 +46,37 @@ class Notifs extends WidgetBase
    	    $notifs = Cache::c('activenotifs');
    	    $html = '
             <li>
-                '.$from.' '.t('wants to talk with you'). ' <br />
-   	            <input 
-                    id="notifsalias" 
-                    class="tiny" 
-                    value="'.$from.'" 
-                    onfocus="myFocus(this);" 
-                    onblur="myBlur(this);"
-                />
-   	            <a 
-                    class="button tiny icon yes merged right" 
-                    href="#" 
-                    onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$from."'").' showAlias(this);">'.
-                    t("Accept").'
-                </a>
-   	            <a 
-                    class="button tiny icon add merged right" 
-                    href="#" id="notifsvalidate" 
-                    onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "getAlias()").' hideNotification(this);">'.
-                    t("Add").'
-                </a>
-   	            <a 
-                    class="button tiny icon no merged left" 
-                    href="#" 
-                    onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").' hideNotification(this);">'.
-                    t("Decline").'
-                </a>
+                <form id="acceptcontact">
+                    '.$from.' '.t('wants to talk with you'). ' <br />
+                    <div class="element large">
+                        <label id="labelnotifsalias" for="notifsalias">'.t('Alias').'</label>
+                        <input 
+                            id="notifsalias"
+                            class="tiny" 
+                            value="'.$from.'" 
+                            onfocus="myFocus(this);" 
+                            onblur="myBlur(this);"
+                        />
+                    </div>
+                    <a 
+                        class="button tiny icon yes merged right" 
+                        href="#" 
+                        onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$from."'").' showAlias(this);">'.
+                        t("Accept").'
+                    </a>
+                    <a 
+                        class="button tiny icon add merged right" 
+                        href="#" id="notifsvalidate" 
+                        onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "getAlias()").' hideNotification(this);">'.
+                        t("Add").'
+                    </a>
+                    <a 
+                        class="button tiny icon no merged left" 
+                        href="#" 
+                        onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").' hideNotification(this);">'.
+                        t("Decline").'
+                    </a>
+                </form>
    	        </li>';
    	    $notifs['sub'.$from] = $html;
    	    
@@ -95,12 +100,18 @@ class Notifs extends WidgetBase
     }
     
     function ajaxRefuse($jid) {
-        $this->xmpp->unsubscribed($jid);
-        
-   	    $notifs = Cache::c('activenotifs');
-   	    unset($notifs['sub'.$jid]);
-   	    
-	    Cache::c('activenotifs', $notifs);
+		if(checkJid($jid)) {
+			$p = new moxl\PresenceUnsubscribed();
+            $p->setTo($jid)
+              ->request();
+            
+            $notifs = Cache::c('activenotifs');
+            unset($notifs['sub'.$jid]);
+            
+            Cache::c('activenotifs', $notifs);
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
     }
     
     function ajaxAccept($jid, $alias) {        
