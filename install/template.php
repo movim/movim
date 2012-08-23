@@ -4,7 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title><?php echo $title; ?></title>
 		<link rel="shortcut icon" href="../themes/movim/img/favicon.ico" />
-		<link rel="stylesheet" href="../themes/movim/css/style2.css" type="text/css" />
+		<link rel="stylesheet" href="style2.css" type="text/css" />
 		<script type="text/javascript">
           function changeDB(select)
           {

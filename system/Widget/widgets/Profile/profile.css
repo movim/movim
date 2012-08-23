@@ -24,12 +24,12 @@
 
 #profile #status {
     border: 1px solid transparent;
-    min-height: 1.2em;
-    resize: vertical;
+    resize: none;
     color:  white;
     text-align: center;
     background-color: transparent;
-    width: 90%;
+    height: 20px;
+    font-style: italic;
 }
 
 #profile #status:hover {

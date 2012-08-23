@@ -24,6 +24,7 @@ class Vcard extends WidgetBase
     {
 		$this->registerEvent('myvcardvalid', 'onMyVcardReceived');
 		$this->registerEvent('myvcardinvalid', 'onMyVcardNotReceived');
+        $this->registerEvent('myvcard', 'onMyVcardReceived');
     	$this->addcss('vcard.css');
     	$this->addjs('vcard.js');
     }
@@ -101,14 +102,15 @@ class Vcard extends WidgetBase
         
         if(!isset($me[0])) { 
         ?>
-            <div class="warning">
+            <div class="message info">
                 <?php echo "It's your first time on Movim! To fill in a 
                 few informations about you and display them to your 
                 contacts, create your virtual card by clicking the next button."; ?>
-                <a 
-                onclick="<?php echo $submit; ?>" style="float: right; margin: 5px 0px 0px 0px;"
-                href="#" class="button big icon add"><?php echo t("Create my vCard"); ?></a><br />
             </div>
+            
+            <a 
+                onclick="<?php echo $this->genCallAjax('ajaxGetVcard'); ?>" style="float: right; margin: 5px 0px 0px 0px;"
+                href="#" class="button big icon add"><?php echo t("Create my vCard"); ?></a>
 
         <?php
         }
@@ -119,7 +121,12 @@ class Vcard extends WidgetBase
             
             if($error == 'vcardfeaturenotimpl') {
                 $html .= '
-                    <div class="error">'.t("Profil not updated : Your server does not support the vCard feature").'</div>';
+                    <div class="message error">'.t("Profil not updated : Your server does not support the vCard feature").'</div>';
+            }
+            
+            if($error == 'vcardbadrequest') {
+                $html .= '
+                    <div class="message error">'.t("Profil not updated : Request error").'</div>';
             }
         
             $html .= '
@@ -127,90 +134,109 @@ class Vcard extends WidgetBase
                 <fieldset class="protect red">
                     <legend>'.t('General Informations').'</legend>';
                     
-            $html .= '<div class="element"><span>'.t('Name').'</span>
+            $html .= '<div class="element">
+                        <label for="fn">'.t('Name').'</label>
                         <input type="text" name="fn" class="content" value="'.$me->getData('fn').'">
                       </div>';
-            $html .= '<div class="element"><span>'.t('Nickname').'</span>
-                        <input type="text" name ="name" class="content" value="'.$me->getData('name').'">
+                      
+            $html .= '<div class="element">
+                        <label for="name">'.t('Nickname').'</label>
+                        <input type="text" name="name" class="content" value="'.$me->getData('name').'">
                       </div>';
                       
-            $html .= '<div class="element"><span>'.t('Date of Birth').'</span>';
-            $html .= '<select name="day" class="datepicker"><option value="-1">'.t('Day').'</option>';
-            for($i=1; $i<= 31; $i++){
-                if($i < 10){
-                    $j = '0'.$i;
-                } else {
-                    $j = $i;
-                }
-                if($i == substr( $me->getData('date'), 8)) {
-                    $html .= '<option value="'.$j.'" selected>'.$j.'</option>';
-                } else {
-                    $html .= '<option value="'.$j.'">'.$j.'</option>';
-                }
-            }
-            $html .= '</select>';
-            $html .= '<select name="month" class="datepicker"><option value="-1">'.t('Month').'</option>';
-            for($i=1; $i<= 12; $i++){
-                if($i < 10){
-                    $j = '0'.$i;
-                } else {
-                    $j = $i;
-                }
-                if($i == substr( $me->getData('date'), 5, 2)) {
-                    $html .= '<option value="'.$j.'" selected>'.$j.'</option>';
-                } else {
-                    $html .= '<option value="'.$j.'">'.$j.'</option>';
-                }
-            }
-            $html .= '</select>';
-            $html .= '<select name="year" class="datepicker"><option value="-1">'.t('Year').'</option>';
-            for($i=date('o'); $i>= 1920; $i--){
-                if($i == substr( $me->getData('date'), 0, 4)) {
-                    $html .= '<option value="'.$i.'" selected>'.$i.'</option>';
-                } else {
-                    $html .= '<option value="'.$i.'">'.$i.'</option>';
-                }
-            }
-            $html .= '</select></div>';
+            $html .= '<div class="element ">
+                        <label for="day">'.t('Date of Birth').'</label>';
+                        
+                $html .= '
+                        <div class="select" style="width: 29%; float: left;">
+                            <select name="day" class="datepicker">
+                            <option value="-1">'.t('Day').'</option>';
+                                for($i=1; $i<= 31; $i++){
+                                    if($i < 10){
+                                        $j = '0'.$i;
+                                    } else {
+                                        $j = $i;
+                                    }
+                                    if($i == substr( $me->getData('date'), 8)) {
+                                        $html .= '<option value="'.$j.'" selected>'.$j.'</option>';
+                                    } else {
+                                        $html .= '<option value="'.$j.'">'.$j.'</option>';
+                                    }
+                                }
+                $html .= '  </select>
+                        </div>';
+                        
+    
+                $html .= '
+                        <div class="select" style="width: 29%; float: left;">
+                            <select name="month" class="datepicker">
+                            <option value="-1">'.t('Month').'</option>';
+                                for($i=1; $i<= 12; $i++){
+                                    if($i < 10){
+                                        $j = '0'.$i;
+                                    } else {
+                                        $j = $i;
+                                    }
+                                    if($i == substr( $me->getData('date'), 5, 2)) {
+                                        $html .= '<option value="'.$j.'" selected>'.$j.'</option>';
+                                    } else {
+                                        $html .= '<option value="'.$j.'">'.$j.'</option>';
+                                    }
+                                }
+                $html .= '  </select>
+                        </div>';
+                        
+                $html .= '
+                        <div class="select" style="width: 29%; float: left;">
+                            <select name="year" class="datepicker">
+                            <option value="-1">'.t('Year').'</option>';
+                                for($i=date('o'); $i>= 1920; $i--){
+                                    if($i == substr( $me->getData('date'), 0, 4)) {
+                                        $html .= '<option value="'.$i.'" selected>'.$i.'</option>';
+                                    } else {
+                                        $html .= '<option value="'.$i.'">'.$i.'</option>';
+                                    }
+                                }
+                $html .= '  </select>
+                        </div>
+                    </div>';
+
             
-            $html .= '<br />
-                      <div class="element"><span style="padding-top: 5px;">'.t('Gender').'</span>
-                        <select name="gender">';
+            $html .= '<div class="element">
+                        <label for="gender">'.t('Gender').'</label>
+                        <div class="select"><select name="gender">';
                         foreach(getGender() as $key => $value) {
                             $html .= '<option ';
                             if($key == $me->getData('gender'))
                                 $html .= 'selected ';
                             $html .= 'value="'.$key.'">'.$value.'</option>';
                         }
-            $html .= '  </select>
+            $html .= '  </select></div>
                       </div>';
                       
-            $html .= '<div class="element"><span style="padding-top: 5px;">'.t('Marital Status').'</span>
-                        <select name="marital">';
+            $html .= '<div class="element"><label for="marital">'.t('Marital Status').'</label>
+                        <div class="select"><select name="marital">';
                         foreach(getMarital() as $key => $value) {
                             $html .= '<option ';
                             if($key == $me->getData('marital'))
                                 $html .= 'selected ';
                             $html .= 'value="'.$key.'">'.$value.'</option>';
                         }
-            $html .= '  </select>
+            $html .= '  </select></div>
                       </div>';
          
-            $html .= '<br />
-                      <div class="element"><span>'.t('Website').'</span>
+            $html .= '<div class="element"><label for="url">'.t('Website').'</label>
                         <input type="url" name ="url" class="content" value="'.$me->getData('url').'">
                       </div>';
                       
-            $html .= '<br />
-                      <div class="element"><span>'.t('Avatar').'</span>
+            $html .= '<div class="element"><label for="avatar">'.t('Avatar').'</label>
+                        <input type="file" onchange="vCardImageLoad(this.files);">
                         <img id="vCardPhotoPreview" src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
                         <input type="hidden" name="phototype"  value="'.$me->getData('phototype').'">
                         <input type="hidden" name="photobin"  value="'.$me->getData('photobin').'"><br />
-                        <span></span><input type="file" onchange="vCardImageLoad(this.files);">
                       </div>';
                       
-            $html .= '<br />
-                      <div class="element"><span>'.t('About Me').'</span>
+            $html .= '<div class="element"><label for="desc">'.t('About Me').'</label>
                         <textarea name ="desc" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
                       </div>';
                       
@@ -220,18 +246,17 @@ class Vcard extends WidgetBase
                     <legend>'.t('Geographic Position').'</legend>';
 		    $html .= '<div class="warning"><a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
 		    $html .= '<div id="geolocation"></div>';
-            $html .= '<div class="element"><span>'.t('Latitude').'</span>
+            $html .= '<div class="element"><label>'.t('Latitude').'</label>
                         <input type="text" name="lat" class="content" value="Latitude" readonly>
                       </div>';
-            $html .= '<div class="element"><span>'.t('Longitude').'</span>
+            $html .= '<div class="element"><label>'.t('Longitude').'</label>
                         <input type="text" name="long" class="content" value="Longitude" readonly>
                       </div>';
 
             $html .= '<hr />
                 </fieldset>';*/
-
-		    $html .= '<input 
-                            value="'.t('Submit').'" 
+            $html .= '<hr /><br />';
+		    $html .= '<a
                             onclick="
                                 '.$submit.' this.value = \''.t('Submitting').'\'; 
                                 this.className=\'button icon loading merged right\'" 
@@ -242,8 +267,8 @@ class Vcard extends WidgetBase
                     $html .= 'yes';
             $html .=        ' merged right" 
                             type="button" style="float: right;"
-                        > ';
-            $html .= '<input type="reset" value="'.t('Reset').'" class="button icon no merged left" style="float: right;">';
+                        >'.t('Submit').'</a>';
+            //$html .= '<a type="reset" class="button icon no merged left" style="float: right;">'.t('Reset').'</a>';
 
 
             $html .= '

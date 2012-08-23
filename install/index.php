@@ -326,17 +326,6 @@ if(file_exists($conffile)){
 	$file = $tmpfile;
 }
 
-
-
-
-/*if($file == $tmpfile){
-	$install = True;
-}else{
-	$install = False;
-}
-*/
-
-
 //When the tests do not fail, we just create some directories and succeed to the next step
 if(isset($_POST['step'])) {
 	$handle = $_POST['step'];
@@ -397,14 +386,16 @@ if(isset($_POST['step'])) {
 		//The BOSH settings
 		#TODO: Check if bosh settings are right and whether open Bosh (e.g. connect to random xmpp); when bosh closed warn the user
 		}case 3: {
+			include_once("../system/Moxl/loader.php");
 			#ToDo: Test Connection
-			try{
-			}catch(MoxlException $e){
+			$Session = array();
+			
+		
 				//Apennd it to the error array
-				$errors[] = $e->getMessage();
+				#$errors[] = $e->getMessage();
 				//The apge is displayed again:
-				$display = 3;
-			}
+				#$display = 3;
+			
 			if(True){
 				$_POST['boshOpen'] = True;
 			}

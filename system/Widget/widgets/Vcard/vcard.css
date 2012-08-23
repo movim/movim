@@ -2,57 +2,6 @@
 	padding: 1em 1.5em;
 }
 
-#vcard .element {
-    padding: 5px;
-    clear: both;
-    overflow: auto;
-    width: 100%;
-}
-
 #vcard img {
-    max-width: 200px;
-    padding: 5px;
-    border: 1px solid #CCC;
-}
-
-#vcard input[type=text], #vcard input[type=url], #vcard textarea {
-    border: 1px solid transparent;
-    margin: -5px;
-    background-color: transparent;
-}
-
-#vcard input[type=text]:hover, #vcard input[type=url]:hover,  #vcard textarea:hover {
-    border-color: #DDD;
-}
-
-#vcard input[type=text]:focus, #vcard input[type=url]:focus, #vcard textarea:focus {
-    border-color: #CCC;
-}
-
-#vcard input:invalid, #vcard input:invalid:hover, #vcard input:invalid:focus {
-    border-color: #983A3A;
-}
-
-
-#vcard .element span {
-    font-weight: bold;
-    width: 160px;
-    display: block;
-    float: left;
-    padding-right: 2em;
-    text-align: right;
-    min-height: 2em;
-}
-
-#vcard .content {
-    display: block;
-    float: left;
-    width: 370px;
-    resize: none;
-}
-
-#vcard .datepicker {
-    display: block;
-    float: left;
-    width: 80px;
+    margin: 0 auto;
 }

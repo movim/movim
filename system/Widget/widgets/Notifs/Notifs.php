@@ -120,6 +120,10 @@ class Notifs extends WidgetBase
     
     function ajaxAddContact($jid, $alias) {
 		if(checkJid($jid)) {
+            $r = new moxl\RosterAddItem();
+            $r->setTo($jid)
+              ->request();
+              
 			$p = new moxl\PresenceSubscribe();
             $p->setTo($jid)
               ->request();
@@ -159,35 +163,43 @@ class Notifs extends WidgetBase
             }
             ?>
             <li>
-                <input 
-                    id="addjid" 
-                    class="tiny" 
-                    value="user@server.tld" 
-                    onfocus="myFocus(this);" 
-                    onblur="myBlur(this);"
-                />
-                <input 
-                    id="addalias" 
-                    class="tiny" 
-                    value="<?php echo t('Alias'); ?>" 
-                    onfocus="myFocus(this);" 
-                    onblur="myBlur(this);"
-                />
-                <a 
-                    class="button tiny icon yes merged right" 
-                    href="#" 
-                    id="addvalidate" 
-                    onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
-                    <?php echo t('Send request'); ?>
-                </a>
-                <a 
-                    class="button tiny icon no merged left"
-                    href="#"
-                    id="addrefuse"
-                    onclick="cancelAddJid();">
-                    <?php echo t('Cancel'); ?>
-                </a>
-                
+                <form id="addcontact">
+                    <div class="element large">
+                        <label for="addjid"><?php echo t('JID'); ?></label>
+                        <input 
+                            id="addjid" 
+                            class="tiny" 
+                            placeholder="user@server.tld" 
+                            onfocus="myFocus(this);" 
+                            onblur="myBlur(this);"
+                        />
+                    </div>
+                    <div class="element large">
+                        <label for="addalias"><?php echo t('Alias'); ?></label>
+                        <input 
+                            id="addalias"
+                            type="text"
+                            class="tiny" 
+                            placeholder="<?php echo t('Alias'); ?>" 
+                            onfocus="myFocus(this);" 
+                            onblur="myBlur(this);"
+                        />
+                    </div>
+                    <a 
+                        class="button tiny icon yes merged right" 
+                        href="#" 
+                        id="addvalidate" 
+                        onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
+                        <?php echo t('Send request'); ?>
+                    </a>
+                    <a 
+                        class="button tiny icon no merged left"
+                        href="#"
+                        id="addrefuse"
+                        onclick="cancelAddJid();">
+                        <?php echo t('Cancel'); ?>
+                    </a>
+                </form>  
 
             </li>
         </ul>

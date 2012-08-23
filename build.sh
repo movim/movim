@@ -31,7 +31,7 @@ package() {
 }
 
 moxl() {
-	moxl_temp="moxl"
+	moxl_temp="Moxl"
     # Checking out Moxl.
     bzr branch $MOXL_REPO $moxl_temp
     rm -rf "$SYSTEM_PATH/Moxl"
@@ -52,7 +52,7 @@ clean() {
     rm -rf "${SYSTEM_PATH}/Moxl"
     rm -rf "${SYSTEM_PATH}/Datajar"
     rm -rf datajar
-    rm -rf moxl
+    rm -rf Moxl
 }
 
 # Doing the job

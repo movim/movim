@@ -22,7 +22,7 @@ body {
     margin-top: -170px;
     padding-top: 200px;
 }
-
+/*
 #loginpage input {
     background-color: white;
     font-size: 1.4em;
@@ -39,10 +39,57 @@ body {
     color: white;
     box-shadow: none;
 }
-
+*/
 #connectform {
     text-align: center;
     margin: 0 auto;
+    width: 665px;
+}
+
+#connectform .element {
+    min-height: 0px;
+    max-width: 250px;
+    clear: none;
+}
+
+#connectform .element input {
+    max-width: auto;
+    font-size: 1.4em;
+    border: 1px solid #274950;
+    box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.4);
+    padding: 0.1em 0.5em;
+    color: #15414A;
+    background-color: white;
+}
+
+#connectform a[name=submit] {
+    border: 1px solid #274950;
+    background-color: #547D86;
+    background: linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
+    background: -moz-linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
+    background: -webkit-linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
+    color: white;
+    box-shadow: none;
+    min-width: 130px;
+    font-size: 1.4em;
+    text-shadow: -1px -1px 1px #274950;
+    padding-top: 4px;
+    overflow: hidden;
+    padding-left: 20px;
+    float: right;
+    margin-top: 5px;
+    height: 30px;
+}
+
+#connectform a[name=submit]:active {
+    background: linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
+    background: -moz-linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
+    background: -webkit-linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
+    background-color: #274950;
+}
+
+#connectform a[name=submit]:before {
+    color: white;
 }
 
 #connectform span {
@@ -60,8 +107,7 @@ body {
     color: white;
 }
 
-.error, .warning {
-    border-radius: 4px;
+.message.error, .message.warning {
     display: block;
     width: 500px;
     margin: 0em auto;

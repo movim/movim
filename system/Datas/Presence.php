@@ -118,12 +118,15 @@ class PresenceHandler {
 	     }
     }
     
-    public function clearPresence() {
-        global $sdb;
+    static public function clearPresence() {
     	$user = new User();
-        $presences = $sdb->select('Presence', array('key' => $user->getLogin())); 
- 
+        
+        $query = Presence::query()
+                            ->where(
+                                array('key' => $user->getLogin()));
+        $presences = Presence::run_query($query);
+
         foreach($presences as $presence)
-            $sdb->delete($presence);
+            $presence->delete();
     }
 }

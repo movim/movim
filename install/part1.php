@@ -1,4 +1,3 @@
-
 <div id="left" style="width: 230px; padding-top: 10px;">
 	
 	

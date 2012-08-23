@@ -34,7 +34,7 @@
 			<div class="<?php is_valid((datajar_version() >= 0.01)); ?>">
 				<?php echo t('<a href="http://datajar.movim.eu">Datajar</a> version: '.datajar_version().'<br> Required: 0.01') ?>
 			</div>
-			<div class="<?php is_valid(True); ?>">
+			<div class="<?php is_valid(true); ?>">
 				<?php echo t('<a href="https://launchpad.net/moxl">Moxl</a> version: asd<br> Required: asdasd') ?>
 			</div>
 	</p>

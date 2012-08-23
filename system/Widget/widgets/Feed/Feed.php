@@ -5,7 +5,7 @@ class Feed extends WidgetCommon {
 	{
     	$this->addcss('feed.css');
     	$this->addjs('feed.js');
-		$this->registerEvent('post', 'onPost');
+		$this->registerEvent('post', 'onStream');
 		$this->registerEvent('comment', 'onComment');
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
@@ -45,7 +45,7 @@ class Feed extends WidgetCommon {
     
     function onPostPublishError($error) {
         $html .=
-            '<div class="error">'.t('An error occured : ').$error.'</div>';
+            '<div class="message error">'.t('An error occured : ').$error.'</div>';
         RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
     }
     
@@ -85,8 +85,6 @@ class Feed extends WidgetCommon {
         
     function onStream($payload) {
         $html = '';
-        $i = 0;
-        
         $html = $this->prepareFeed(0);
         
         if($html == '') 

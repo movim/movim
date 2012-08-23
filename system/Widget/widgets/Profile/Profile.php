@@ -66,9 +66,12 @@ class Profile extends WidgetBase
                 $p = new moxl\PresenceXA();
                 $p->setStatus($status)->request();
                 break;
+            default :
+                $p = new moxl\PresenceChat();
+                $p->setStatus($status)->request();
+                break;
         }
-		//$this->xmpp->setStatus(rawurldecode($status), $presence['show']);
-	}
+    }
     
     function prepareVcard($vcard = false)
     {
