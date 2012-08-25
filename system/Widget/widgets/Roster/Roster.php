@@ -31,17 +31,17 @@ class Roster extends WidgetBase
         $this->registerEvent('contactremove', 'onRoster');
 		$this->registerEvent('presence', 'onPresence');
 		$this->registerEvent('vcard', 'onVcard');
-        
+
         $this->cached = false;
     }
-    
+
 	function onPresence($presence)
 	{
 	    $arr = $presence->getPresence();
 	    RPC::call('incomingPresence',
                       RPC::cdata($arr['jid']), RPC::cdata($arr['presence_txt']));
 	}
-	
+
     function onVcard($contact)
     {
         $query = \Presence::query()->select()
@@ -50,48 +50,48 @@ class Roster extends WidgetBase
                                    'jid' => $contact->getData('jid')))
                            ->limit(0, 1);
         $data = \Presence::run_query($query);
-        
+
         $c = array();
         $c[0] = $contact;
         $c[1] = $data[0];
-        
+
         $html = $this->prepareRosterElement($c, true);
         RPC::call('movim_fill', 'roster'.$contact->getData('jid'), RPC::cdata($html));
     }
-	
+
     function onRoster()
     {
 		$html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', RPC::cdata($html));
         RPC::call('sortRoster');
     }
-    
+
 	function ajaxRefreshRoster()
 	{
         $r = new moxl\RosterGetList();
         $r->request();
 	}
-	
+
 	function prepareRosterElement($contact, $inner = false)
 	{
         if(isset($contact[1]))
             $presence = $contact[1]->getPresence();
-        $start = 
+        $start =
             '<li
                 class="';
                     if(isset($presence['presence']))
                         $start .= ''.$presence['presence_txt'].' ';
                     else
                         $start .= 'offline ';
-                        
+
                     if($contact[0]->getData('jid') == $_GET['f'])
                         $start .= 'active ';
-        $start .= '" 
-                id="roster'.$contact[0]->getData('jid').'" 
+        $start .= '"
+                id="roster'.$contact[0]->getData('jid').'"
              >';
-             
+
         $middle = '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact[0]->getData('jid')."'").'"></div>
-                 <a 
+                 <a
 					title="'.$contact[0]->getData('jid');
                     if($presence['status'] != '')
                         $middle .= ' - '.$presence['status'];
@@ -113,11 +113,11 @@ class Roster extends WidgetBase
         else
             return $start.$middle.$end;
 	}
-    
+
     function stackGroup() {
-        
+
     }
-	
+
 	function prepareRoster()
 	{
         $query = Contact::query()->join('Presence',
@@ -132,22 +132,22 @@ class Roster extends WidgetBase
                                  ->orderby('Contact.group', true);
 
         $contacts = Contact::run_query($query);
-    
+
         $html = '';
         $group = '';
 
         if($contacts != false) {
-            
+
             if($contacts[0][0]->getData('group') == '')
                 $html .= '<div><h1>'.t('Ungrouped').'</h1>';
             else {
                 $group = $contacts[0][0]->getData('group');
                 $html .= '<div><h1>'.$group.'</h1>';
             }
-            
+
             // Temporary array to prevent duplicate contact
             $duplicate = array();
-            
+
             foreach($contacts as $c) {
                 if(!in_array($c[0]->getData('jid'), $duplicate)) {
                     if($group != $c[0]->getData('group')) {
@@ -158,9 +158,9 @@ class Roster extends WidgetBase
                         else
                             $html .= '<div><h1>'.$group.'</h1>';
                     }
-                    
+
                     $html .= $this->prepareRosterElement($c);
-                    
+
                     array_push($duplicate, $c[0]->getData('jid'));
                 }
             }
@@ -171,9 +171,9 @@ class Roster extends WidgetBase
 
         return $html;
 	}
-    
+
     function build()
-    { 
+    {
     ?>
         <div id="roster">
             <ul id="rosterlist">
@@ -186,6 +186,8 @@ class Roster extends WidgetBase
             </div>
             <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
             <script type="text/javascript">sortRoster();</script>
+
+			<input type="text" name="search" id="request" onkeyup="search(event);" onclick="focusContact();"/>
         </div>
     <?php
     }
