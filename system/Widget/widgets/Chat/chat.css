@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 0;
     right: 210px;
+    z-index: 3;
 }
 
 #chats .chat {
@@ -27,7 +28,7 @@
 #chats .chat .messages {
     background-color: white;
     color: gray;
-    max-height: 15em;
+    max-height: 200px;
     overflow: auto;
     border: 1px solid black;
     min-height: 3em;
@@ -72,6 +73,7 @@
     height: 20px;
     margin: 1px;
     margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 #chats .chat .messages .message.me span.date {
@@ -83,10 +85,15 @@
     border: 1px solid #444;
     padding: 2px;
     overflow: auto;
-    border-bottom: none;
+    border-bottom: 0px;
     background-color: white;
     height: 1.2em;
     resize: none;
+    border-top: 0px;
+}
+
+#chats .chat:hover textarea {
+    display: block;
 }
 
 #chats .chat .messages .message span.date {

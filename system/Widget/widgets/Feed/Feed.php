@@ -5,14 +5,18 @@ class Feed extends WidgetCommon {
 	{
     	$this->addcss('feed.css');
     	$this->addjs('feed.js');
-		$this->registerEvent('post', 'onPost');
+		$this->registerEvent('post', 'onStream');
+        $this->registerEvent('postdeleted', 'onPostDelete');
+        $this->registerEvent('postdeleteerror', 'onPostDeleteError');
 		$this->registerEvent('comment', 'onComment');
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
 		$this->registerEvent('stream', 'onStream');
         $this->registerEvent('vcard', 'onVcard');
+        $this->registerEvent('postpublished', 'onPostPublished');
+        $this->registerEvent('postpublisherror', 'onPostPublishError');
 
-        $this->cached = true;
+        $this->cached = false;
     }
     
     function onPost($id) {
@@ -25,35 +29,62 @@ class Feed extends WidgetCommon {
             RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
         }
     }
+
+    function onPostPublished($post) {        
+        $query = Post::query()
+                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
+                            ->where(
+                                array(
+                                    'Post`.`nodeid' => $post->nodeid->getval()))
+                            ->limit(0, 1);
+        $messages = Post::run_query($query);
+		
+        // We ask for the HTML of all the posts
+        $html = $this->preparePosts($messages);
+
+        RPC::call('createCommentNode', $post->nodeid->getval());            
+        RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
+    }  
+    
+    function ajaxCreateCommentNode($parentid) {
+        $n = new moxl\MicroblogCommentCreateNode();
+        $n->setTo($this->user->getLogin())
+          ->setParentId($parentid)
+          ->request();
+    }
+    
+    function onPostPublishError($error) {
+        $html .=
+            '<div class="message error">'.t('An error occured : ').$error.'</div>';
+        RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
+    }
     
     function onVcard($contact) { }
     
     function prepareFeed($start) {
+        // We query the last messages
         $query = Post::query()
-                            ->where(array('key' => $this->user->getLogin(), 'parentid' => ''))
-                            ->orderby('updated', true)
+                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
+                            ->where(
+                                array(
+                                    'Contact`.`key' => $this->user->getLogin(), 
+                                    array(
+                                        'Contact`.`rostersubscription!' => 'none',
+                                        '|Contact`.`rosterask' => 'subscribe',
+                                        '|Contact`.`jid' => $this->user->getLogin()),
+                                    'Post`.`parentid' => ''))
+                            ->orderby('Post.updated', true)
                             ->limit($start, '20');
         $messages = Post::run_query($query);
 		
-		if($messages == false) {
-			$html = '
-				<script type="text/javascript">
-					setTimeout(\''.$this->genCallAjax('ajaxFeed').'\', 500);
-				</script>';
-			$html .=  '<div style="padding: 1em; text-align: center;">'.t('Loading your feed ...').'</div>';
-		} else {
-			$html = '';
-			
-			foreach($messages as $message) {
-				$html .= $this->preparePost($message);
-			}
-			
-            $next = $start + 20;
+        // We ask for the HTML of all the posts
+        $html = $this->preparePosts($messages);
+        
+        $next = $start + 20;
             
-			if(sizeof($messages) > 0 && $html != '')
-				$html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+        if(sizeof($messages) > 9 && $html != '') {
+            $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
 		}
-		
 		return $html;
 	}
 	
@@ -64,20 +95,25 @@ class Feed extends WidgetCommon {
         
     function onStream($payload) {
         $html = '';
-        $i = 0;
-        
         $html = $this->prepareFeed(0);
         
         if($html == '') 
             $html = t("Your feed cannot be loaded.");
-        RPC::call('movim_fill', 'feed_content', RPC::cdata($html));
+        RPC::call('movim_fill', 'feedcontent', RPC::cdata($html));
         RPC::commit();
     }
     
     function ajaxPublishItem($content)
     {
-        if($content != '')
-            $this->xmpp->publishItem(htmlentities(rawurldecode($content)));
+        if($content != '') {
+            $id = md5(openssl_random_pseudo_bytes(5));
+            
+            $p = new moxl\MicroblogPostPublish();
+            $p->setTo($this->user->getLogin())
+              ->setId($id)
+              ->setContent(htmlspecialchars(rawurldecode($content)))
+              ->request();
+        }
     }
     
     function ajaxCreateNode()
@@ -98,17 +134,18 @@ class Feed extends WidgetCommon {
     
     function ajaxFeed()
     {
-        $this->xmpp->getWall($this->xmpp->getCleanJid());
+        //$this->xmpp->getWall($this->xmpp->getCleanJid());
     }
 
     function build()
     { 
-		$conf_arr = UserConf::getConf();
+	//	$conf_arr = UserConf::getConf();
+
     ?>
     <div class="tabelem" title="<?php echo t('Feed'); ?>" id="feed">
 		<?php
 		
-		if($conf_arr["first"] == 0) { 
+		/*if($conf_arr["first"] == 0) { 
 		?>
 			<script type="text/javascript">
 				setTimeout('<?php $this->callAjax('ajaxCreateNode'); ?>' , 500);
@@ -123,8 +160,15 @@ class Feed extends WidgetCommon {
 			</div>
 		<?php
 		}
-		else {		
+		else {*/		
 		?><?php //echo t('What\'s new ?'); ?>
+        <script type="text/javascript">
+            function createCommentNode(parentid) {
+                <?php 
+                    echo $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]');
+                ?>
+            }
+        </script>
 		<table id="feedsubmitform">
             <tbody>
                 <tr>
@@ -149,6 +193,8 @@ class Feed extends WidgetCommon {
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxPublishItem', "'BAZINGA !'") ?>">go !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxCreateNode') ?>">create !</a>-->
         <!--<a href="#"  onclick="<?php $this->callAjax('ajaxGetElements') ?>">get !</a>-->
+        <div id="feednotifs"></div>
+        
         <div id="feedfilters">
 			<ul>
 				<li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
@@ -169,10 +215,10 @@ class Feed extends WidgetCommon {
                             }
                             else { document.querySelector('#feedmessagecontent').value ='<?php echo t('What\\\'s new ?'); ?>' }                  
                             "*/
-        }
+        //}
         
 		echo $this->prepareFeed(0);
-            
+        //}
 		?>
         </div>
     </div>

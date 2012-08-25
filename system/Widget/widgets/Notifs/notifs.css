@@ -17,9 +17,10 @@
 #notifs ul li {
     padding-bottom: 5px;
     border-top: 1px solid #CCC;
-    border-bottom: 1px solid #DDD;
+    /*border-bottom: 1px solid #DDD;*/
     font-size: 10px;
     overflow: auto;
+    padding: 5px;
 }
 
 #notifs input {
@@ -31,12 +32,14 @@
     margin-top: 5px;
 }
 
-#notifs #notifsalias, #notifs #addjid, #notifs #addalias {
+#notifs #notifsalias, #notifs #labelnotifsalias/*, #notifs #addjid, #notifs #addalias*/ {
     display: none;
-    width: 92%;
-    margin-top: 3px;
 }
 
-#notifs #notifsvalidate, #notifs #addvalidate, #notifs #addrefuse {
+#notifs #addcontact, #notifs #notifsvalidate/*, #notifs #addvalidate, #notifs #addrefuse*/ {
     display: none;
+}
+
+#notifs .element {
+    min-height: 20px;
 }

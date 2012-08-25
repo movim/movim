@@ -23,19 +23,18 @@
 }
 
 #profile #status {
-    color: #444444;
-    font-size: 11px;
-    padding-top: 7px;
-    margin-bottom: 2px;
     border: 1px solid transparent;
+    resize: none;
+    color:  white;
     text-align: center;
-    width: 80%;
     background-color: transparent;
+    height: 20px;
+    font-style: italic;
+    width: 90%;
 }
 
 #profile #status:hover {
     border-color: #DDD;
-    background-color: white;
 }
 
 #profile .presence_button.online { background-image: url(img/online.png); }

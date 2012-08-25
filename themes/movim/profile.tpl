@@ -4,7 +4,6 @@
 <?php $this->widget('Poller');?>
 <?php $this->widget('Logout');?>
 <?php $this->widget('Chat');?>
-<?php /*$this->widget('Log');*/?>
     
 <div id="left">
     <?php $this->widget('Profile');?>

@@ -41,7 +41,15 @@ class ContactCard extends WidgetBase
 
     function prepareContactCard($contact)
     {
-        $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
+        $query = \Presence::query()->select()
+                           ->where(array(
+                                   'key' => $this->user->getLogin(),
+                                   'jid' => $contact->getData('jid')))
+                           ->limit(0, 1);
+        $data = \Presence::run_query($query);
+        //$presence = PresenceHandler::getPresence($contact->getData('jid'), true);
+        
+        $presence = $data[0];
 
         $html .='
         <a

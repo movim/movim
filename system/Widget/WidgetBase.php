@@ -37,8 +37,8 @@ class WidgetBase
 	{
 		// Put default widget init here.
 		$this->external = $external;
-		if(Jabber::getInstance()) 
-		    $this->xmpp = Jabber::getInstance();
+		//if(Jabber::getInstance()) 
+		//    $this->xmpp = Jabber::getInstance();
 		$this->ajax = ControllerAjax::getInstance();
         
         $this->user = new User();

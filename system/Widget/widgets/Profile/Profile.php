@@ -38,36 +38,67 @@ class Profile extends WidgetBase
     
 	function ajaxSetStatus($status)
 	{
+        $status = rawurldecode($status);
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
         Cache::c(
             'presence', 
             array(
-                'status' => rawurldecode($status),
+                'status' => $status,
                 'show' => $presence['show'],
                 )
         );
-		$this->xmpp->setStatus(rawurldecode($status), $presence['show']);
-	}
+        
+        switch($presence['show']) {
+            case 'chat':
+                $p = new moxl\PresenceChat();
+                $p->setStatus($status)->request();
+                break;
+            case 'away':
+                $p = new moxl\PresenceAway();
+                $p->setStatus($status)->request();
+                break;
+            case 'dnd':
+                $p = new moxl\PresenceDND();
+                $p->setStatus($status)->request();
+                break;
+            case 'xa':
+                $p = new moxl\PresenceXA();
+                $p->setStatus($status)->request();
+                break;
+            default :
+                $p = new moxl\PresenceChat();
+                $p->setStatus($status)->request();
+                break;
+        }
+    }
     
     function prepareVcard($vcard = false)
     {
-        global $sdb;
-        $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+        $query = Contact::query()->select()
+                                 ->where(array(
+                                            'key' => $this->user->getLogin(),
+                                            'jid' => $this->user->getLogin()));
+        $contact = Contact::run_query($query);
         
         $presence = Cache::c('presence');
         
-        if(isset($me[0])) {
-            $me = $me[0];
-            $html ='<h1>'.$me->getTrueName().'</h1><img src="'.$me->getPhoto().'"/>';
-
+        if(isset($contact[0])) {
+            $me = $contact[0];
+            $html ='
+                <a href="?q=friend&f='.$this->user->getLogin().'">
+                    <h1>'.$me->getTrueName().'</h1>
+                    <img src="'.$me->getPhoto().'"/>
+                </a>';
             $html .= '
-                <input 
-                    type="text" 
-                    id="status" 
-                    value="'.$presence['status'].'"
-                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' return false;}"
-                />
+                <div class="textbubble">
+                    <textarea 
+                        id="status" 
+                        spellcheck="false"
+                        onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' return false;}"
+                        onload="movim_textarea_autoheight(this);"
+                        onkeyup="movim_textarea_autoheight(this);">'.$presence['status'].'</textarea>
+                </div>
                 <br />
                 ';
         } else {

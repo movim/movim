@@ -1,31 +1,31 @@
 <?php
 
 class Post extends DatajarBase {
-    protected $key;
-    protected $jid;
+    public $key;
+    public $jid;
 
-    protected $name;
-    protected $uri; 
-    protected $nodeid;
-    protected $parentid;
-    protected $title;
-    protected $content;
+    public $name;
+    public $uri; 
+    public $nodeid;
+    public $parentid;
+    public $title;
+    public $content;
 
-    protected $published;
-    protected $updated;
+    public $published;
+    public $updated;
 
-    protected $lat;
-    protected $lon;
-    protected $country;
-    protected $countrycode;
-    protected $region;
-    protected $postalcode;
-    protected $locality;
-    protected $street;
-    protected $building;
+    public $lat;
+    public $lon;
+    public $country;
+    public $countrycode;
+    public $region;
+    public $postalcode;
+    public $locality;
+    public $street;
+    public $building;
     
-    protected $commentson;
-    protected $commentplace;
+    public $commentson;
+    public $commentplace;
 
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);
@@ -55,7 +55,7 @@ class Post extends DatajarBase {
         $this->commentplace= DatajarType::varchar(128);
     }
     
-    public function setPost($array, $from, $parent = false, $key = false) {
+    public function setPost($item, $from, $parent = false, $key = false) {
         if($key == false) {
             $user = new User();
             $key = $user->getLogin();
@@ -64,48 +64,55 @@ class Post extends DatajarBase {
         $this->key->setval($key);
         
         if($parent != false)
-            $this->jid->setval(substr($array['entry']['source']['author']['uri'], 5));
+            $this->jid->setval(substr((string)$item->entry->source->author->uri, 5));
         else
             $this->jid->setval($from);
         
-        $this->name->setval($array['entry']['source']['author']['name']);
-        $this->uri->setval(substr($array['entry']['source']['author']['uri'], 5));
-        $this->nodeid->setval($array['@attributes']['id']);
-        $this->parentid->setval($parent);
+        $this->name->setval((string)$item->entry->source->author->name);
+        $this->uri->setval(substr((string)$item->entry->source->author->uri, 5));
+        $this->nodeid->setval((string)$item->attributes()->id);
         
-        if(isset($array['entry']['title']))
-            $this->content->setval($array['entry']['title']);        
-        elseif(isset($array['entry']['content']))
-            $this->content->setval($array['entry']['content']);
-        elseif(isset($array['entry']['body']))
-            $this->content->setval($array['entry']['body']);
+        if($parent)
+            $this->parentid->setval($parent);
+        
+        if($item->entry->title)
+            $this->content->setval((string)$item->entry->title);        
+        elseif($item->entry->content)
+            $this->content->setval((string)$item->entry->content);
+        elseif($item->entry->body)
+            $this->content->setval((string)$item->entry->body);
 
-        $this->published->setval(date('Y-m-d H:i:s', strtotime($array['entry']['published'])));
-        $this->updated->setval(date('Y-m-d H:i:s', strtotime($array['entry']['updated'])));
+        $this->published->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->published)));
+        
+        if(!$item->entry->updated)
+            $this->updated->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->published)));
+        else
+            $this->updated->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->updated)));
 
-        $this->lat->setval($array['entry']['geoloc']['lat']);
-        $this->lon->setval($array['entry']['geoloc']['lon']);
-        $this->country->setval($array['entry']['geoloc']['country']);
-        $this->countrycode->setval($array['entry']['geoloc']['countrycode']);
-        $this->region->setval($array['entry']['geoloc']['region']);
-        $this->postalcode->setval($array['entry']['geoloc']['postalcode']);
-        $this->locality->setval($array['entry']['geoloc']['locality']);
-        $this->street->setval($array['entry']['geoloc']['street']);
-        $this->building->setval($array['entry']['geoloc']['building']);
+        $this->lat->setval((string)$item->entry->geoloc->lat);
+        $this->lon->setval((string)$item->entry->geoloc->lon);
+        $this->country->setval((string)$item->entry->geoloc->country);
+        $this->countrycode->setval((string)$item->entry->geoloc->countrycode);
+        $this->region->setval((string)$item->entry->geoloc->region);
+        $this->postalcode->setval((string)$item->entry->geoloc->postalcode);
+        $this->locality->setval((string)$item->entry->geoloc->locality);
+        $this->street->setval((string)$item->entry->geoloc->street);
+        $this->building->setval((string)$item->entry->geoloc->building);
         
         // If we have only one link in the entry
-        if(isset($array['entry']['link']['@attributes'])) {
-            $array['entry']['link'][0]['@attributes'] = $array['entry']['link']['@attributes'];
-            unset($array['entry']['link']['@attributes']);
-        }
+        /*if(string)$item->entry->link->attributes()) {
+            (string)$item->entry->link[0]['attributes() = (string)$item->entry->link->attributes();
+            unset((string)$item->entry->link->attributes());
+        }*/
         
-        foreach($array['entry']['link'] as $attachment) {
-            if($attachment['link'][0]['@attributes']['title'] == 'thumb') {
-                AttachmentHandler::saveAttachment($attachment, $key, $from, $array['@attributes']['id']);
-            }
-            if($attachment['@attributes']['title'] == 'comments') {
+        foreach($item->entry->link as $attachment) {
+            /*if($attachment['link[0]['attributes()->title == 'thumb') {
+                AttachmentHandler::saveAttachment($attachment, $key, $from, (string)$item->attributes()->id);
+            }*/
+            
+            if((string)$attachment->attributes()->title == 'comments') {
                 $this->commentson->setval(1);
-                $this->commentplace->setval(reset(explode('?', substr($attachment['@attributes']['href'], 5))));
+                $this->commentplace->setval(reset(explode('?', substr((string)$attachment->attributes()->href, 5))));
             }
         }
     }

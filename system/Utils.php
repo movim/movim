@@ -108,7 +108,7 @@ function prepareString($string) {
         $string = str_replace($key, $replace, $string);
     }
 
-    return $string;
+    return trim($string);
 }
 
 /**

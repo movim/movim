@@ -8,13 +8,14 @@ define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 define('USERS_PATH', BASE_PATH . 'user/');
 
-//define('DB_DEBUG', true);
-//define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
+define('DB_DEBUG', true);
+define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
 
 // Loads up all system libraries.
 require_once(LIB_PATH . "Lang/i18n.php");
 
-require_once(LIB_PATH . "Datajar/loader.php");
+require_once(LIB_PATH . "Datajar2/Datajar/loader.php");
+
 load_datajar(array('sqlite'));
 
 require_once(LIB_PATH . "Datas/Caps.php");
@@ -30,11 +31,13 @@ require_once(LIB_PATH . "Utils.php");
 require_once(LIB_PATH . "Cache.php");
 require_once(LIB_PATH . "Conf.php");
 require_once(LIB_PATH . "Event.php");
-require_once(LIB_PATH . "Jabber.php");
+//require_once(LIB_PATH . "Jabber.php");
 require_once(LIB_PATH . "Logger.php");
 require_once(LIB_PATH . "MovimException.php");
 require_once(LIB_PATH . "RPC.php");
 require_once(LIB_PATH . "User.php");
+
+require_once(LIB_PATH . "Moxl/loader.php");
 
 require_once(LIB_PATH . "Controller/ControllerBase.php");
 require_once(LIB_PATH . "Controller/ControllerMain.php");
@@ -110,5 +113,6 @@ $sdb = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'))
 DatajarBase::bind($sdb);
 
 // Starting session.
-Session::start(APP_NAME);
+$sess = Session::start(APP_NAME);
+$session = $sess->get('session');
 ?>

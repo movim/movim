@@ -21,17 +21,28 @@
     margin: 0 auto;
 }
 
-#contactsummary #status {
-    color: #444;
-    padding: 3px;
-    font-size: 11px;
-    text-align: center;
-}
-
 #contactsummary span {
     background-repeat: no-repeat;
     background-position: 0px 12px;
     padding: 8px;
+}
+
+#contactsummary #mapdiv img {
+    max-width: none;
+    max-height: none;
+    margin: 0 auto;
+}
+
+#contactsummary .textbubble span {
+    display: block;
+    padding: 0px;
+    max-height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#contactsummary .textbubble span:hover {
+    max-height: none;
 }
 
 #contactsummary span.birth { background-image: url(img/birth.png); }

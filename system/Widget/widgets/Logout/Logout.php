@@ -25,8 +25,8 @@ class Logout extends WidgetBase
     {
     	$this->addcss('logout.css');
         $this->addjs('logout.js');
-		$this->registerEvent('postdisconnected', 'onPostDisconnect');
-        $this->registerEvent('serverdisconnect', 'onPostDisconnect'); // When you're kicked out
+		//$this->registerEvent('postdisconnected', 'onPostDisconnect');
+        //$this->registerEvent('serverdisconnect', 'onPostDisconnect'); // When you're kicked out
         $this->registerEvent('mypresence', 'onMyPresence');
         
         //$this->cached = true;
@@ -71,17 +71,42 @@ class Logout extends WidgetBase
                 'show' => $show
                 )
         );
-		$this->xmpp->setStatus($presence['status'], $show);
+        
+        switch($show) {
+            case 'chat':
+                $p = new moxl\PresenceChat();
+                $p->setStatus($presence['status'])->request();
+                break;
+            case 'away':
+                $p = new moxl\PresenceAway();
+                $p->setStatus($presence['status'])->request();
+                break;
+            case 'dnd':
+                $p = new moxl\PresenceDND();
+                $p->setStatus($presence['status'])->request();
+                break;
+            case 'xa':
+                $p = new moxl\PresenceXA();
+                $p->setStatus($presence['status'])->request();
+                break;
+        }
 	}
     
     function preparePresence()
     {
         $txt = getPresences();
     
-        global $sdb;
-        $me = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
-        
-        $presence = PresenceHandler::getPresence($this->user->getLogin(), true, $this->xmpp->getResource());
+        global $session;
+        $query = Presence::query()->select()
+                           ->where(array(
+                                   'key' => $this->user->getLogin(),
+                                   'jid' => $this->user->getLogin(),
+                                   'ressource' => $session['ressource']))
+                           ->limit(0, 1);
+        $data = Presence::run_query($query);
+
+        if($data)
+            $presence = $data[0]->getPresence();
         
         $html = '<div id="logouttab" class="'.$presence['presence_txt'].'" onclick="showLogoutList();">'.$txt[$presence['presence']].'</div>';
                 
@@ -91,7 +116,7 @@ class Logout extends WidgetBase
                 <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'away'").'; hideLogoutList();" class="away">'.$txt[2].'</a>
                 <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'dnd'").'; hideLogoutList();" class="dnd">'.$txt[3].'</a>
                 <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'xa'").'; hideLogoutList();" class="xa">'.$txt[4].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxLogout').'; setTimeout(\'window.location.reload()\', 2000);">'.$txt[5].'</a>
+                <!--<a onclick="'.$this->genCallAjax('ajaxLogout').'; setTimeout(\'window.location.reload()\', 2000);">'.$txt[5].'</a>-->
             </div>
                 ';
         

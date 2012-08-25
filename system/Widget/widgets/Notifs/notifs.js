@@ -5,22 +5,25 @@ function hideNotification(n) {
 function showAlias(n) {
     n.style.display = "none";
     document.querySelector('#notifsvalidate').style.display = "block";
+    document.querySelector('#labelnotifsalias').style.display = "block";
     document.querySelector('#notifsalias').style.display = "block";
 }
 
 function addJid(n) {
     n.style.display = "none";
-    document.querySelector('#addvalidate').style.display = "block";
+/*    document.querySelector('#addvalidate').style.display = "block";
     document.querySelector('#addrefuse').style.display = "block";
     document.querySelector('#addalias').style.display = "block";
-    document.querySelector('#addjid').style.display = "block";
+    document.querySelector('#addjid').style.display = "block";*/
+    document.querySelector('#addcontact').style.display = "block";
 }
 
 function cancelAddJid() {
-    document.querySelector('#addvalidate').style.display = "none";
+/*    document.querySelector('#addvalidate').style.display = "none";
     document.querySelector('#addrefuse').style.display = "none";
     document.querySelector('#addalias').style.display = "none";
-    document.querySelector('#addjid').style.display = "none";
+    document.querySelector('#addjid').style.display = "none";*/
+    document.querySelector('#addcontact').style.display = "none";
     document.querySelector('#addstart').style.display = "inline";
 }
 

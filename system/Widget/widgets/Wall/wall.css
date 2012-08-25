@@ -4,8 +4,7 @@
 
 }
 
-#wall #wallfollow {
-    background-image: url(img/follow_icon.png);
+#wall #wallheader{
+    padding: 1.5em;
+    padding-bottom: 0.8em;
 }
-
-

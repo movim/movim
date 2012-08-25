@@ -45,6 +45,12 @@ function movim_fill(params)
         target.innerHTML = params[1];
     }
 }
+// movim_delete(div)
+function movim_delete(params)
+{
+    target = document.getElementById(params[0]);
+    target.parentNode.removeChild(target);
+}
 // movim_drop()
 function movim_drop(params)
 {
@@ -94,9 +100,9 @@ function MovimRPC()
 
    	    movim_xmlhttp.onreadystatechange = function()
         {
-            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
+            //if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
 		        handler(movim_xmlhttp.responseXML);
-            }
+            //}
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500) {
                 var url = window.location.href;
                 var urlparts = url.split('/');

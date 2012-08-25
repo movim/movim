@@ -57,7 +57,7 @@ class ControllerBase
         $user = new user();
 		if($user->isLogged()) {
             try{
-                $lang = UserConf::getConf(false,'language');
+                $lang = $user->getConfig('language');//UserConf::getConf(false,'language');
                 load_language($lang);
             }
             catch(MovimException $e) {

@@ -35,7 +35,8 @@ class ContactSummary extends WidgetBase
     
 	function ajaxRefreshVcard($jid)
 	{
-		$this->xmpp->getVCard($jid);
+        $r = new moxl\VcardGet();
+        $r->setTo($jid)->request();
 	}
     
     private function testIsSet($element)
@@ -47,7 +48,17 @@ class ContactSummary extends WidgetBase
     }
 
     function ajaxRemoveContact($jid) {
-        $this->xmpp->removeContact($jid);
+		if(checkJid($jid)) {            
+            $r = new moxl\RosterRemoveItem();
+            $r->setTo($jid)
+              ->request();
+            
+			$p = new moxl\PresenceUnsubscribe();
+            $p->setTo($jid)
+              ->request();
+		} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}
 
         global $sdb;
         $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $jid));
@@ -59,19 +70,33 @@ class ContactSummary extends WidgetBase
         $gender = getGender();
         $marital = getMarital();
         
-        $presence = PresenceHandler::getPresence($contact->getData('jid'), true);
+        $query = \Presence::query()->select()
+                           ->where(array(
+                                   'key' => $this->user->getLogin(),
+                                   'jid' => $contact->getData('jid')))
+                           ->limit(0, 1);
+        $data = \Presence::run_query($query);
+        
+        if(isset($data[0]))
+            $presence = $data[0]->getPresence();
+        
         $html ='<h1>'.$contact->getTrueName().'</h1><center><img src="'.$contact->getPhoto().'"/></center>';
         
         if($contact->getData('vcardreceived') != 1)
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 500);</script>';
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 2000);</script>';
             
-        if($presence != NULL)
-            $html .= '<div id="status">'.$presence['status'].'</div>';
+        if($presence != NULL && $presence['status'] != '')
+            $html .= '<div class="textbubble">'.$presence['status'].'</div>';
             
+            
+        // General Informations
+                    
         $html .='<h2>'.t('General Informations').'</h2>';
         
         if($contact->getData('gender') != 'N' && $this->testIsSet($contact->getData('gender')))
             $html .= '<span class="'.$contact->getData('gender').'"></span>';
+        else
+            $html .= '<span></span>';
             
         if($this->testIsSet($contact->getData('name')))
             $html .= $contact->getData('name').'<br />';
@@ -89,21 +114,64 @@ class ContactSummary extends WidgetBase
             
         if($this->testIsSet($contact->getData('url')))
             $html .= '<span class="website"></span>'.'<a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>';
+        
+        if(isset($data[0])) {
+            if($data[0]->mood->getval() != '') {
+                $mood = '';
+                foreach(unserialize($data[0]->mood->getval()) as $m)
+                    $mood .= ucfirst(t($m)).',';
+                $html .= '<br /><span></span>'.t("I'm ").substr($mood, 0, -1).'<br />';
+            }
             
+            // Last seen
+            if($data[0]->delay->getval() != '0000-00-00 00:00:00' && $this->testIsSet($data[0]->delay->getval())) {
+                $html .= '<h2>'.t('Last seen').'</h2>';
+                $html .= '<span></span>'.date('j M Y - H:i',strtotime($data[0]->delay->getval())).'<br />';
+            }
             
-        if($this->testIsSet($contact->getData('desc')))
+            // Location
+            if(($data[0]->loclatitude->getval() != '' && 
+                $data[0]->loclongitude->getval() != '') || $data[0]->getPlace() != ''
+              ) {
+                $html .= '
+                    <h2>'.t('Location').'</h2>';
+                if($data[0]->getPlace() != '')
+                    $html .= $data[0]->getPlace().'<br /><br />';
+                $html .= '
+                  <div id="mapdiv" style="width: auto; height: 250px;"></div>
+                  <script>
+                    map = new OpenLayers.Map("mapdiv");
+                    map.addLayer(new OpenLayers.Layer.OSM());
+                 
+                    var lonLat = new OpenLayers.LonLat( '.$data[0]->loclongitude->getval().' ,'.$data[0]->loclatitude->getval().' )
+                          .transform(
+                            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                            map.getProjectionObject() // to Spherical Mercator Projection
+                          );
+                 
+                    var zoom=11;
+                 
+                    var markers = new OpenLayers.Layer.Markers( "Markers" );
+                    map.addLayer(markers);
+                 
+                    markers.addMarker(new OpenLayers.Marker(lonLat));
+                 
+                    map.setCenter (lonLat, zoom);
+                  </script>';
+            }
+        }
+            
+        // About me
+            
+        if($this->testIsSet(prepareString($contact->getData('desc')))) {
             $html .= '
                 <h2>'.t('About Me').'</h2>
-                <div style="
-                    overflow-y: auto;
-                    overflow-x: hidden;
-                    display: block; 
-                    max-height: 200px;
-                    word-wrap: break-word;
-                    text-align: justify;
-                    white-space: normal;">'.
-                    prepareString($contact->getData('desc')).'
+                <div class="textbubble" style="text-align: left; margin-top: 0px;">
+                    <span>'.prepareString($contact->getData('desc')).'</span>
                 </div>';
+        }
+        
+        // Client informations
         
         if($presence['node'] != '' && $presence['ver'] != '') {
             $clienttype = 
@@ -128,6 +196,8 @@ class ContactSummary extends WidgetBase
             if($cinfos != "")
                 $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
         }
+        
+        // Actions
         
         $html .='<h2>'.t('Actions').'</h2>';
         
@@ -196,7 +266,6 @@ class ContactSummary extends WidgetBase
             <a
                 class="button tiny icon add"
                 href="#"
-                style="padding-left: 25px;"
                 onclick="'.$this->genCallWidget("Notifs","ajaxAddContact", "'".$contact->getData('jid')."'", "''").'"
             >
                 '.t('Invite this user').'
@@ -208,8 +277,14 @@ class ContactSummary extends WidgetBase
     
     function build()
     {
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
+        //global $sdb;
+        //$contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
+        
+        $query = \Contact::query()->select()
+                                   ->where(array(
+                                           'key' => $this->user->getLogin(),
+                                           'jid' => $_GET['f']));
+        $contact = \Contact::run_query($query);
         ?>
         <div id="contactsummary">
         <?php

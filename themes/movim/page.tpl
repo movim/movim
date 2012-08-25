@@ -5,10 +5,11 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title><?php $this->title();?></title>
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
-
+    <script src="http://openlayers.org/api/2.12/OpenLayers.js"></script>
     <?php
         $this->addCss('css/style2.css');
         $this->addCss('css/posts.css');
+        $this->addCss('css/forms.css');
         $this->addCss('css/animations.css');
     ?>
     <?php $this->scripts();?>

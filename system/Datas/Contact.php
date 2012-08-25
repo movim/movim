@@ -1,31 +1,31 @@
 <?php
 
 class Contact extends DatajarBase {
-    protected $key;
-    protected $jid;
+    public $key;
+    public $jid;
     
-    protected $fn;
-    protected $name;
-    protected $date;
-    protected $url;
+    public $fn;
+    public $name;
+    public $date;
+    public $url;
     
-    protected $gender;
-    protected $marital;
+    public $gender;
+    public $marital;
     
-    protected $group;
+    public $group;
     
-    protected $rostername;
-    protected $rosterask;
-    protected $rostersubscription;
+    public $rostername;
+    public $rosterask;
+    public $rostersubscription;
     
-    protected $phototype;
-    protected $photobin;
+    public $phototype;
+    public $photobin;
     
-    protected $desc;
+    public $desc;
     
-    protected $vcardreceived;
-    protected $chaton;
-    protected $public;
+    public $vcardreceived;
+    public $chaton;
+    public $public;
     
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);
