@@ -83,7 +83,7 @@ class ContactSummary extends WidgetBase
         $html ='<h1>'.$contact->getTrueName().'</h1><center><img src="'.$contact->getPhoto().'"/></center>';
         
         if($contact->getData('vcardreceived') != 1)
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 500);</script>';
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 2000);</script>';
             
         if($presence != NULL && $presence['status'] != '')
             $html .= '<div class="textbubble">'.$presence['status'].'</div>';
@@ -95,6 +95,8 @@ class ContactSummary extends WidgetBase
         
         if($contact->getData('gender') != 'N' && $this->testIsSet($contact->getData('gender')))
             $html .= '<span class="'.$contact->getData('gender').'"></span>';
+        else
+            $html .= '<span></span>';
             
         if($this->testIsSet($contact->getData('name')))
             $html .= $contact->getData('name').'<br />';
@@ -112,17 +114,64 @@ class ContactSummary extends WidgetBase
             
         if($this->testIsSet($contact->getData('url')))
             $html .= '<span class="website"></span>'.'<a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>';
+        
+        if(isset($data[0])) {
+            if($data[0]->mood->getval() != '') {
+                $mood = '';
+                foreach(unserialize($data[0]->mood->getval()) as $m)
+                    $mood .= ucfirst(t($m)).',';
+                $html .= '<br /><span></span>'.t("I'm ").substr($mood, 0, -1).'<br />';
+            }
             
+            // Last seen
+            if($data[0]->delay->getval() != '0000-00-00 00:00:00' && $this->testIsSet($data[0]->delay->getval())) {
+                $html .= '<h2>'.t('Last seen').'</h2>';
+                $html .= '<span></span>'.date('j M Y - H:i',strtotime($data[0]->delay->getval())).'<br />';
+            }
+            
+            // Location
+            if(($data[0]->loclatitude->getval() != '' && 
+                $data[0]->loclongitude->getval() != '') || $data[0]->getPlace() != ''
+              ) {
+                $html .= '
+                    <h2>'.t('Location').'</h2>';
+                if($data[0]->getPlace() != '')
+                    $html .= $data[0]->getPlace().'<br /><br />';
+                $html .= '
+                  <div id="mapdiv" style="width: auto; height: 250px;"></div>
+                  <script>
+                    map = new OpenLayers.Map("mapdiv");
+                    map.addLayer(new OpenLayers.Layer.OSM());
+                 
+                    var lonLat = new OpenLayers.LonLat( '.$data[0]->loclongitude->getval().' ,'.$data[0]->loclatitude->getval().' )
+                          .transform(
+                            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                            map.getProjectionObject() // to Spherical Mercator Projection
+                          );
+                 
+                    var zoom=11;
+                 
+                    var markers = new OpenLayers.Layer.Markers( "Markers" );
+                    map.addLayer(markers);
+                 
+                    markers.addMarker(new OpenLayers.Marker(lonLat));
+                 
+                    map.setCenter (lonLat, zoom);
+                  </script>';
+            }
+        }
             
         // About me
             
         if($this->testIsSet(prepareString($contact->getData('desc')))) {
             $html .= '
                 <h2>'.t('About Me').'</h2>
-                <div class="textbubble" style="text-align: left; margin-top: 0px;">'.
-                    prepareString($contact->getData('desc')).'
+                <div class="textbubble" style="text-align: left; margin-top: 0px;">
+                    <span>'.prepareString($contact->getData('desc')).'</span>
                 </div>';
         }
+        
+        // Client informations
         
         if($presence['node'] != '' && $presence['ver'] != '') {
             $clienttype = 

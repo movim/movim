@@ -111,7 +111,6 @@ class Post extends DatajarBase {
             }*/
             
             if((string)$attachment->attributes()->title == 'comments') {
-                movim_log(reset(explode('?', substr((string)$attachment->attributes()->href, 5)))."\n");
                 $this->commentson->setval(1);
                 $this->commentplace->setval(reset(explode('?', substr((string)$attachment->attributes()->href, 5))));
             }

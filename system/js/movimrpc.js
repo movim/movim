@@ -45,6 +45,12 @@ function movim_fill(params)
         target.innerHTML = params[1];
     }
 }
+// movim_delete(div)
+function movim_delete(params)
+{
+    target = document.getElementById(params[0]);
+    target.parentNode.removeChild(target);
+}
 // movim_drop()
 function movim_drop(params)
 {

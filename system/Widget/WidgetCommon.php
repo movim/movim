@@ -86,13 +86,34 @@ class WidgetCommon extends WidgetBase {
                 if($this->user->getLogin() == $message[0]->getData('jid'))
                     $tmp .= 'me';
             $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
+            
                     <a href="?q=friend&f='.$message[0]->getData('jid').'">
                         <img class="avatar" src="'.$message[1]->getPhoto('s').'">
                     </a>
 
-                    <span><a href="?q=friend&f='.$message[0]->getData('jid').'">'.$message[1]->getTrueName().'</a></span>
-                    <span class="date">'.prepareDate(strtotime($message[0]->getData('updated'))).'</span>
-                    <div class="content">
+                    <span>
+                        <a href="?q=friend&f='.$message[0]->getData('jid').'">'.$message[1]->getTrueName().'</a>
+                    </span>
+                    <span class="date">
+                        '.prepareDate(strtotime($message[0]->getData('updated'))).'
+                    </span>';
+                    
+                    if($this->user->getLogin() == $message[0]->getData('jid')) {
+                        $tmp .= '
+                            <span 
+                                class="delete" 
+                                onclick="'.
+                                    $this->genCallAjax(
+                                        'ajaxDeletePost', 
+                                        "'".$this->user->getLogin()."'", 
+                                        "'".$message[0]->getData('nodeid')."'").'" 
+                                title="'.t("Delete this post").'">
+                                X
+                            </span>';
+                    }
+                    
+                    
+            $tmp .= '<div class="content">
                         '.prepareString($message[0]->getData('content')). '</div>';
                         
             //$attachments = AttachmentHandler::getAttachment($this->user->getLogin(), $message[0]->getData('nodeid'));
@@ -289,5 +310,22 @@ class WidgetCommon extends WidgetBase {
               ->setContent(htmlspecialchars(rawurldecode($content)))
               ->request();
         }
+    }
+    
+    function ajaxDeletePost($to, $id) {
+        $p = new moxl\MicroblogPostDelete();
+        $p->setTo($to)
+          ->setId($id)
+          ->request();
+    }
+    
+    function onPostDelete($id) {
+        RPC::call('movim_delete', $id);
+    }
+    
+    function onPostDeleteError($params) {
+        $html .=
+            '<div class="message error">'.t('An error occured : ').$params[1].'</div>';
+        RPC::call('movim_fill', $params[0] , RPC::cdata($html));
     }
 }

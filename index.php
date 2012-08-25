@@ -62,6 +62,7 @@ if(!file_exists("config/conf.xml")) {
     // Closing stuff
     WidgetWrapper::destroyInstance();
     global $sdb;
+    
     $sdb->close();
 }
 ?>

@@ -27,6 +27,24 @@
     padding: 8px;
 }
 
+#contactsummary #mapdiv img {
+    max-width: none;
+    max-height: none;
+    margin: 0 auto;
+}
+
+#contactsummary .textbubble span {
+    display: block;
+    padding: 0px;
+    max-height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#contactsummary .textbubble span:hover {
+    max-height: none;
+}
+
 #contactsummary span.birth { background-image: url(img/birth.png); }
 #contactsummary span.address { background-image: url(img/address.png); }
 #contactsummary span.website { background-image: url(img/place.png); }

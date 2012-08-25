@@ -30,6 +30,7 @@
     background-color: transparent;
     height: 20px;
     font-style: italic;
+    width: 90%;
 }
 
 #profile #status:hover {

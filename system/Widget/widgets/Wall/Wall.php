@@ -90,7 +90,7 @@ class Wall extends WidgetCommon
                                 'Post`.`jid' => $from,
                                 'Post`.`parentid' => ''))
                             ->orderby('Post.updated', true)
-                            ->limit($start, '10');
+                            ->limit($start, '20');
         $messages = Post::run_query($query);
 		
         // We ask for the HTML of all the posts
