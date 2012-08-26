@@ -181,13 +181,16 @@ class Roster extends WidgetBase
             </ul>
             <div id="rostermenu">
                 <ul>
-                    <li onclick="showRoster(this);"><a href="#"><?php echo t('Show/Hide'); ?></a></li>
+                    <li>
+                        <input type="text" name="search" id="request" onkeyup="search(event);" onclick="focusContact();" placeholder="<?php echo t('Search');?>"/>
+                    </li>
+                    <li onclick="showRoster(this);" style="float: right; padding-right: 10px;">
+                        <a href="#">◐</a>
+                    </li>
                 </ul>
             </div>
             <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
             <script type="text/javascript">sortRoster();</script>
-
-			<input type="text" name="search" id="request" onkeyup="search(event);" onclick="focusContact();"/>
         </div>
     <?php
     }
