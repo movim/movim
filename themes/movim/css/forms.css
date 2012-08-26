@@ -180,6 +180,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 .icon.rm { background-image: url(../img/icons/rm_icon.png); }
 .icon.submit:before { content: "▼"; }
 .icon.loading:before { content: "◕"; }
+.icon.next:before { content: "→"; }
 .tiny.icon.loading:before { padding: 4px 7px; }
 
 .tiny.icon {

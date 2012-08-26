@@ -53,9 +53,9 @@ function set_error($error_name, $error_message)
 function is_valid($what){
 	global $errors;
 	if($what){
-		echo "valid yes";
+		echo "message success";
 	}else{
-		echo "warning no";
+		echo "message error";
 		$errors[] = True;
 	}
 }
