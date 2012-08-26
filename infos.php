@@ -52,11 +52,16 @@ $doc->appendChild($infos);
         $version = $doc->createElement("version");
         $version->appendChild($doc->createTextNode(trim(fgets($f))));
         $infos->appendChild($version);
+        fclose($f);
     }
     
     $phpversion = $doc->createElement("phpversion");
     $phpversion->appendChild($doc->createTextNode(phpversion()));
     $infos->appendChild($phpversion);
+
+    $limit = $doc->createElement("userlimit");
+    $limit->appendChild($doc->createTextNode($conf['maxUsers']));
+    $infos->appendChild($limit);
 
 // And we dispatch it !
 ob_clean();
