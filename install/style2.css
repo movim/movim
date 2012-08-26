@@ -251,18 +251,18 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
     background-repeat: no-repeat;
 }
 
-.icon.yes { background-image: url(../img/icons/yes_icon.png); }
-.icon.no { background-image: url(../img/icons/no_icon.png); }
-.icon.bubble { background-image: url(../img/icons/comments_icon.png); }
-.icon.bubbleadd { background-image: url(../img/icons/comments_add.png); }
-.icon.bubbleold { background-image: url(../img/icons/comments_show.png); }
-.icon.follow { background-image: url(../img/icons/follow_icon.png); }
-.icon.chat{ background-image: url(../img/icons/chat_icon.png); }
-.icon.add { background-image: url(../img/icons/add_icon.png); }
-.icon.rm { background-image: url(../img/icons/rm_icon.png); }
-.icon.submit { background-image: url(../img/icons/submit_icon.png); }
-.icon.next { background-image: url(../img/icons/next_icon.png); }
-.icon.back { background-image: url(../img/icons/back_icon.png); }
+.icon.yes { background-image: url(../themes/movim/img/icons/yes_icon.png); }
+.icon.no { background-image: url(../themes/movim/img/icons/no_icon.png); }
+.icon.bubble { background-image: url(../themes/movim/img/icons/comments_icon.png); }
+.icon.bubbleadd { background-image: url(../themes/movim/img/icons/comments_add.png); }
+.icon.bubbleold { background-image: url(../themes/movim/img/icons/comments_show.png); }
+.icon.follow { background-image: url(../themes/movim/img/icons/follow_icon.png); }
+.icon.chat{ background-image: url(../themes/movim/img/icons/chat_icon.png); }
+.icon.add { background-image: url(../themes/movim/img/icons/add_icon.png); }
+.icon.rm { background-image: url(../themes/movim/img/icons/rm_icon.png); }
+.icon.submit { background-image: url(../themes/movim/img/icons/submit_icon.png); }
+.icon.next { background-image: url(../themes/movim/img/icons/next_icon.png); }
+.icon.back { background-image: url(../themes/movim/img/icons/back_icon.png); }
 
 
 .icon.loading { 
@@ -394,7 +394,7 @@ label {
 }
 
 .warning.no {
-	background: #90DC89 url(../img/icons/no_icon.png);
+	background: #90DC89 url(../themes/movim/img/icons/no_icon.png);
 	background-repeat: no-repeat;
 	background-position: right;
 }
@@ -432,7 +432,7 @@ label {
 }
 
 .valid.yes {
-	background: #FEEFB3 url(../img/icons/yes_icon.png);
+	background: #FEEFB3 url(../themes/movim/img/icons/yes_icon.png);
 	background-repeat: no-repeat;
 	background-position: right;
 }
