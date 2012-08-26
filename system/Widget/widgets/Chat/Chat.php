@@ -97,8 +97,8 @@ class Chat extends WidgetBase
             
             RPC::call('movim_append',
                            'messages'.$contact->getData('jid'),
-                           RPC::cdata($html));   
-                           
+                           RPC::cdata($html));
+            
             RPC::call('hideComposing',
                            $contact->getData('jid')); 
 
@@ -107,9 +107,10 @@ class Chat extends WidgetBase
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->getData('jid'));
-                           
-            RPC::call('newMessage');
-            
+            //Sound and title notification               
+            RPC::call('notify');
+            //Highlight the new chat message
+            RPC::call('setBackgroundColor', 'chatwindow'.$contact->getData('jid'), 'red');
 
         }            
         
@@ -273,7 +274,6 @@ class Chat extends WidgetBase
                 
         $html .= '"><span class="date">'.date('H:i', strtotime($message->getData('published'))).'</span>';
         $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
-        
         return $html;
     }
     
@@ -314,7 +314,8 @@ class Chat extends WidgetBase
                     <div style="display: none;" class="message" id="paused'.$contact->getData('jid').'">'.t('Paused...').'</div>
                  </div>'.
                 '<textarea onkeyup="movim_textarea_autoheight(this);"  '.$style.'
-                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false;}"
+                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false; }"
+					onfocus="setBackgroundColor(\'chatwindow'.$contact->getData('jid').'\', \'#444444\')"
                 ></textarea>'.
                 '<a class="name" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' hideTalk(this);">'.
                     '<img class="avatar"  src="'.$contact->getPhoto('xs').'" /><span>'.$contact->getTrueName().'</span>'.

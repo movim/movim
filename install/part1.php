@@ -106,7 +106,7 @@
 
                         <p>
                             <label for="boshCookieHTTPOnly">Use only HTTP for Bosh</label>
-                            <input type="checkbox" checked="checked" name="boshCookieHTTPOnly" id="boshCookieHTTPOnly" <?php if(isset($_POST['boshCookieHTTPOnly'])) echo 'checked="checked"';?>/>
+                            <input type="checkbox" name="boshCookieHTTPOnly" id="boshCookieHTTPOnly" <?php if(isset($_POST['boshCookieHTTPOnly'])) echo 'checked="checked"';?>/>
                         </p>
 
     <?php

@@ -121,3 +121,15 @@
     line-height: 17px;
     font-size: 11px;
 }
+
+#request{
+    position: fixed;
+    bottom: 0px;
+    z-index: 3;
+    display: block;
+}
+
+.focused{
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
