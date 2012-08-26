@@ -261,20 +261,24 @@ class Chat extends WidgetBase
     }
     
     function prepareMessage($message) {
-        $html = '<div class="message ';
-            if($message->getData('key') == $message->getData('from'))
-                $html.= 'me';
-               
-        $content = $message->getData('body');
-                
-        if(preg_match("#^/me#", $message->getData('body'))) {
-            $html .= "own ";
-            $content = "** ".substr($message->getData('body'), 4);
+        if($message->getData('body') != '') {
+            $html = '<div class="message ';
+                if($message->getData('key') == $message->getData('from'))
+                    $html.= 'me';
+                   
+            $content = $message->getData('body');
+                    
+            if(preg_match("#^/me#", $message->getData('body'))) {
+                $html .= "own ";
+                $content = "** ".substr($message->getData('body'), 4);
+            }
+                    
+            $html .= '"><span class="date">'.date('H:i', strtotime($message->getData('published'))).'</span>';
+            $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
+            return $html;
+        } else {
+            return '';
         }
-                
-        $html .= '"><span class="date">'.date('H:i', strtotime($message->getData('published'))).'</span>';
-        $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
-        return $html;
     }
     
     function prepareChat($contact)
