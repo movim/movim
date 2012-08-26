@@ -17,8 +17,10 @@ body {
     background-repeat: no-repeat;
     background-position: top center;
     margin: 0 auto;
-    width: 1024px;
+    width: 700px;
     top: 50%;
+    left: 50%;
+    margin-left: -350px;
     margin-top: -170px;
     padding-top: 200px;
 }
