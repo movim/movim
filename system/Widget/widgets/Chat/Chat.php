@@ -78,7 +78,7 @@ class Chat extends WidgetBase
         if($contact)
             $contact = $contact[0];
         
-        if($contact->getData('chaton') == 0) {
+        if(isset($contact) && $contact->getData('chaton') == 0) {
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));

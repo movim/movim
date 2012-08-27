@@ -74,3 +74,4 @@ function movim_title_inc(){
 	document.title='[' + messages_cpt + '] ' + document_title ;
 	messages_cpt++;
 }
+
