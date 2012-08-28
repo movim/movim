@@ -75,7 +75,7 @@ class ContactSummary extends WidgetCommon
         // Contact avatar
         $html .= '
             <div class="block avatar">
-                <img src="'.$contact->getPhoto().'"/>
+                <img src="'.$contact->getPhoto('l').'"/>
             </div>';
             
         // Contact general infos
@@ -87,18 +87,6 @@ class ContactSummary extends WidgetCommon
                 $html .= $contact->getData('name').' ';
             else
                 $html .= $contact->getTrueName().' ';
-                
-            if($contact->getData('gender') != 'N' && $this->testIsSet($contact->getData('gender')))
-                $html .= '<br /><span>'.t('Gender').'</span>'.$gender[$contact->getData('gender')].' ';
-                
-            if($contact->getData('marital') != 'none' && $this->testIsSet($contact->getData('marital')))
-                $html .= $marital[$contact->getData('marital')].' ';
-                
-            if($contact->getData('date') != '0000-00-00' && $this->testIsSet($contact->getData('date')))
-                $html .= '<span>'.t('Date of Birth').'</span>'.date('j M Y',strtotime($contact->getData('date'))).' ';
-                
-            if($this->testIsSet($contact->getData('jid')))
-                $html .= $contact->getData('jid').' ';
                 
             if($this->testIsSet($contact->getData('url')))
                 $html .= '<br /><a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>';
