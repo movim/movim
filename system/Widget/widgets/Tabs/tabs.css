@@ -1,16 +1,17 @@
 #navtabs {
     list-style-type: none;
     margin: 0px;
-    padding: 7px 5px;
+    padding: 0px;
     width: 100%;
     border-bottom: 1px solid #E5E5E5;
+    overflow: hidden;
 }
 
 #navtabs li {
     display: inline;
-    padding: 6px 15px;
-    padding-bottom: 8px;
     cursor: pointer;
+    line-height: 3em;
+    padding: 1em 20px;
 }
 
 .tabs {
@@ -19,7 +20,6 @@
 
 #navtabs li:hover {
     background-color: #F5F5F5;
-    padding-bottom: 7px;
 }
 
 #navtabs li.on {

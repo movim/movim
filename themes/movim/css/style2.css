@@ -128,7 +128,6 @@ ul.clean li {
     margin-right: 200px;
     position: relative;
     margin-top: 55px;
-    min-height: 600px;
 }
 
 #head {
@@ -136,15 +135,102 @@ ul.clean li {
     overflow: hidden;
 }
 
+#head .block {
+    min-height: 160px;
+    float: left;
+    width: 295px;
+    overflow: hidden;
+    color: white;
+    text-shadow: 0px 0px 2px #333;
+    font-size: 14px;
+    margin-right: 20px;
+    padding-top: 10px;
+}
+
+#head .block:first-child {
+    width: auto;
+}
+
+#head .block h1 {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 26px;
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+    padding: 10px 0px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    display: inline;
+    line-height: 1.2em;
+    padding-right: 20px;
+}
+
+#head .block h1.online { background-image: url(../img/icons/online.png); }
+#head .block h1.away { background-image: url(../img/icons/away.png); }
+#head .block h1.dnd { background-image: url(../img/icons/dnd.png); }
+#head .block h1.xa { background-image: url(../img/icons/xa.png); }
+
+#head .block span {
+    display: inline-block;
+    padding-right: 7px;
+    color: #CCC;
+}
+
+#head .block a:link, #head .block a:visited {
+    color: #EEE;
+    text-decoration: underline;
+}
+
+#head .block.avatar img {
+    background-color: white;
+    padding: 4px; 
+    border-radius: 3px;
+    height: 120px;
+    width: auto;
+    margin-left: 20px;
+    border: 1px solid #DDD;
+}
+
+#head .block .textbubble {
+    margin: 0px 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    width: 85%;
+}
+
+#head .block .textbubble:after {
+    top: 10px;
+    text-shadow: none;
+    left: -14px;
+    transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+}
+
+#head .block .textbubble textarea {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: white;
+    padding: 10px;
+}
+
+#head .block .textbubble textarea:hover {
+    border-color: white;
+}
+
+#main {
+    background-color: #EEE;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    height: 100%;
+}
+
 #left
 {
     float: left;
-    min-height: 500px;
-    border-radius: 5px 0px 0px 5px;
     padding: 15px;
     width: 170px;
-    background-color: #EEE;
-    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+
 }
 
 #center
@@ -153,11 +239,7 @@ ul.clean li {
     width: 599px;
     background-color: white;
     border-left: 1px solid #DDD;
-    min-height: 1000px;
-    overflow: hidden;
-    border-radius: 0px 5px 5px 0px;
-    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
-    z-index: 2;
+    min-height: 600px;
 }
 
 #right
