@@ -90,7 +90,7 @@ class Profile extends WidgetBase
             $html .= '
             <a href="?q=friend&f='.$this->user->getLogin().'">
                 <div class="block avatar">
-                    <img src="'.$me->getPhoto().'"/>
+                    <img src="'.$me->getPhoto('l').'"/>
                 </div>';
                 
             // Contact general infos

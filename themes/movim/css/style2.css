@@ -138,7 +138,7 @@ ul.clean li {
 #head .block {
     min-height: 160px;
     float: left;
-    width: 295px;
+    max-width: 260px;
     overflow: hidden;
     color: white;
     text-shadow: 0px 0px 2px #333;
@@ -185,32 +185,46 @@ ul.clean li {
     background-color: white;
     padding: 4px; 
     border-radius: 3px;
-    height: 120px;
-    width: auto;
+    width: 150px;
+    max-height: 200px;
     margin-left: 20px;
     border: 1px solid #DDD;
 }
 
 #head .block .textbubble {
-    margin: 0px 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-    width: 85%;
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#head .block .textbubble:before {
+    content: '\201C'; 
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    font-size: 4em;
+    color: rgba(255, 255, 255, 0.3);
+    text-shadow: none;
 }
 
 #head .block .textbubble:after {
-    top: 10px;
+    content: '\201D'; 
+    position: absolute;
+    bottom: -25px;
+    right: 0px;
+    font-size: 4em;
+    color: rgba(255, 255, 255, 0.3);
     text-shadow: none;
-    left: -14px;
-    transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
 }
 
 #head .block .textbubble textarea {
     background-color: transparent;
     border: 1px solid transparent;
+    resize: none;
     color: white;
-    padding: 10px;
+    text-align: center;
+    padding: 0px;
 }
 
 #head .block .textbubble textarea:hover {
@@ -223,6 +237,7 @@ ul.clean li {
     border-radius: 5px;
     overflow: hidden;
     height: 100%;
+    margin-top: -50px;
 }
 
 #left
@@ -230,7 +245,7 @@ ul.clean li {
     float: left;
     padding: 15px;
     width: 170px;
-
+    padding-top: 60px;
 }
 
 #center
@@ -423,35 +438,3 @@ span#widgettitle {
     cursor: pointer;
 }
 
-/* Bubble */
-
-.textbubble {
-    background-color: #555;
-    color: white;
-    padding: 8px;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 11px;
-    font-style: italic;
-    margin: 0 auto;
-    margin-top: 15px;
-    position: relative;
-    white-space: normal;
-    max-height: 200px;
-}
-
-.textbubble:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -10px;
-    left: 30px;
-    border-width: 0px 10px 10px 10px;
-    border-style: solid;
-    border-color: #555 transparent;
-}
-
-.textbubble a {
-    color: #CCC;
-    text-decoration: underline;
-}

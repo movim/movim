@@ -18,8 +18,8 @@ function getPos(n)
 function vCardImageResize(img) {
     var canvas = document.createElement('canvas');
     
-    var MAX_WIDTH = 150;
-    var MAX_HEIGHT = 150;
+    var MAX_WIDTH = 200;
+    var MAX_HEIGHT = 200;
     var width = img.width;
     var height = img.height;
      
