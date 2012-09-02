@@ -10,7 +10,7 @@
 
 <div id="main">
     <div id="left">
-
+        <?php $this->widget('ProfileData');?>
     </div>
     <div id="center" class="protect orange">
         <h1><?php echo t('Feed'); ?></h1>

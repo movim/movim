@@ -39,24 +39,6 @@ class ContactSummary extends WidgetCommon
         $r->setTo($jid)->request();
 	}
     
-    function ajaxRemoveContact($jid) {
-		if(checkJid($jid)) {            
-            $r = new moxl\RosterRemoveItem();
-            $r->setTo($jid)
-              ->request();
-            
-			$p = new moxl\PresenceUnsubscribe();
-            $p->setTo($jid)
-              ->request();
-		} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}
-
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $jid));
-        $sdb->delete($contact[0]);
-    }
-	
 	function prepareContactSummary($contact)
 	{
         $gender = getGender();

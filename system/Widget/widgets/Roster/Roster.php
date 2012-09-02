@@ -126,9 +126,9 @@ class Roster extends WidgetBase
                                  ->where(
                                     array(
                                         'Contact`.`key' => $this->user->getLogin(),
-                                        array(
+                                        /*array(
                                             'Contact`.`rostersubscription!' => 'none',
-                                            '|Contact`.`rosterask' => 'subscribe')))
+                                            '|Contact`.`rosterask' => 'subscribe')*/))
                                  ->orderby('Contact.group', true);
 
         $contacts = Contact::run_query($query);

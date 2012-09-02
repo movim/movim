@@ -42,9 +42,10 @@ class Notifs extends WidgetBase
         RPC::commit();
     }
     
-    function onSubscribe($from) {
-   	    $notifs = Cache::c('activenotifs');
-   	    $html = '
+    function prepareNotifs($from) {
+        $html = '';
+        
+   	    $html .= '
             <li>
                 <form id="acceptcontact">
                     '.$from.' '.t('wants to talk with you'). ' <br />
@@ -78,9 +79,19 @@ class Notifs extends WidgetBase
                     </a>
                 </form>
    	        </li>';
-   	    $notifs['sub'.$from] = $html;
+            
+        return $html;
+    }
+    
+    function onSubscribe($from) {
+   	    $notifs = Cache::c('activenotifs');
+        
+        $html = '';
+        foreach($notifs as $key => $value)
+            $html .= $this->prepareNotifs($key);
+   	    //$notifs['sub'.$from] = $html;
    	    
-        RPC::call('movim_prepend', 'notifslist', RPC::cdata($html));
+        RPC::call('movim_fill', 'notifslist', RPC::cdata($html));
         
 	    Cache::c('activenotifs', $notifs);
     }
@@ -106,7 +117,7 @@ class Notifs extends WidgetBase
               ->request();
             
             $notifs = Cache::c('activenotifs');
-            unset($notifs['sub'.$jid]);
+            unset($notifs[$jid]);
             
             Cache::c('activenotifs', $notifs);
 		} else {
@@ -128,7 +139,7 @@ class Notifs extends WidgetBase
 		}
         
    	    $notifs = Cache::c('activenotifs');
-   	    unset($notifs['sub'.$jid]);
+   	    unset($notifs[$jid]);
    	    
 	    Cache::c('activenotifs', $notifs);
     }
@@ -174,7 +185,7 @@ class Notifs extends WidgetBase
             <?php
             ksort($notifs);
             foreach($notifs as $key => $value) {
-                    echo $value;
+                    echo $this->prepareNotifs($key);
             }
             ?>
             <li>

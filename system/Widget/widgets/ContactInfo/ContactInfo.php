@@ -24,6 +24,25 @@ class ContactInfo extends WidgetCommon
         
     }
     
+    function ajaxRemoveContact($jid) {
+		//if(checkJid($jid)) {            
+            $r = new moxl\RosterRemoveItem();
+            $r->setTo($jid)
+              ->request();
+            
+			$p = new moxl\PresenceUnsubscribe();
+            $p->setTo($jid)
+              ->request();
+		/*} else {
+			throw new MovimException("Incorrect JID `$jid'");
+		}*/
+
+        /*global $sdb;
+        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $jid));
+        $sdb->delete($contact[0]);*/
+    }
+	
+    
     function prepareContactInfo()
     {
         $query = Contact::query()->join('Presence',
@@ -36,17 +55,12 @@ class ContactInfo extends WidgetCommon
         
         $html = '';
         
-        if(isset($user)) {
+        if(isset($user) && isset($user[0][1])) {
             $contact = $user[0][0];
-            $presence = $user[0][1]->getPresence();
-        
-            /*if($this->testIsSet(prepareString($contact->getData('desc')))) {
-                $html .= '
-                    <div class="textbubble">
-                        '.prepareString($contact->getData('desc')).'
-                    </div>';
-            }*/
             
+            $presence = $user[0][1]->getPresence();
+            
+            // Mood
             if($contact->mood->getval() != '') {
                 $mood = '';
                 foreach(unserialize($contact->mood->getval()) as $m)
@@ -95,7 +109,6 @@ class ContactInfo extends WidgetCommon
             }
             
             // Client informations
-            
             if($presence['node'] != '' && $presence['ver'] != '') {
                 $clienttype = 
                     array(
@@ -141,7 +154,7 @@ class ContactInfo extends WidgetCommon
                         
             $html .= '<div style="clear: both;"></div>';
             
-            if($contact->getData('rostersubscription') != 'none') {
+            if($contact->rostersubscription->getval() != 'vcard') {
                 $html .='
                 <a
                     class=""
