@@ -120,8 +120,11 @@ class Profile extends WidgetBase
             </div>
                 ';
         } else {
-			$html .= t('No profile yet ?').'<br /><br />';
-			$html .= '<a class="button icon add" style="padding-left: 25px;" href="?q=profile">'.t("Create my vCard").'</a><br /><br />';
+			$html .= '
+                <div class="block">
+                    '.t('No profile yet ?').'<br /><br />
+                    <a class="button icon add" style="text-shadow: none; color: rgb(43, 43, 43); text-decoration: none;" href="?q=profile">'.t("Create my vCard").'</a><br /><br />
+                </div>';
 		}
         
         return $html;
