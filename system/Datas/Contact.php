@@ -160,7 +160,7 @@ class Contact extends DatajarBase {
         if(isset($this->fn) && $this->fn->getval() != '' && !filter_var($this->fn->getval(), FILTER_VALIDATE_EMAIL))
             $truename = $this->fn->getval();
         elseif(isset($this->nickname) && $this->nickname->getval() != '' && !filter_var($this->nickname->getval(), FILTER_VALIDATE_EMAIL))
-            $truename = $this->fn->getval();
+            $truename = $this->nickname->getval();
         elseif(isset($this->name) && $this->name->getval() != '' && !filter_var($this->name->getval(), FILTER_VALIDATE_EMAIL))
             $truename = $this->name->getval();
         elseif(isset($this->rostername) && $this->rostername->getval() != '' && !filter_var($this->rostername->getval(), FILTER_VALIDATE_EMAIL)) 

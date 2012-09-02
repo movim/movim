@@ -38,7 +38,7 @@ function movim_poll()
                     movim_disconnect('&err=internal');
             }
             
-			if(poller.status > 0) {
+			if(poller.status == 200) {
 				// Restarting polling.
 				movim_poll();
 			}
