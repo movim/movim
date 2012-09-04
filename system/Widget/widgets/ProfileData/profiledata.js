@@ -1,10 +1,16 @@
 var myposition = 0;
 
-function getMyPositionData() { return myposition; }//return myposition.latitude; }
+function getMyPositionData() { return myposition; }
 
 window.cb = function cb(json) {
     document.getElementById('mapdata').innerHTML = json.display_name + ',' + json.address.city;
     myposition = JSON.stringify(json);
+}
+
+function hidePositionChoice()
+{
+    document.querySelector("#mypossubmit").style.display = 'none';
+    document.querySelector("#myposrefuse").style.display = 'none';   
 }
 
 function getMyPosition() {

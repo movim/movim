@@ -36,10 +36,6 @@ class ContactInfo extends WidgetCommon
 		/*} else {
 			throw new MovimException("Incorrect JID `$jid'");
 		}*/
-
-        /*global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $jid));
-        $sdb->delete($contact[0]);*/
     }
 	
     
@@ -133,79 +129,81 @@ class ContactInfo extends WidgetCommon
                 if($cinfos != "")
                     $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
             }
-
             
-            $presences = getPresences();
+            if($contact->jid->getval() != $this->user->getLogin()) {
             
-            $html .='<h2>'.t('Actions').'</h2>';
-            
-            if(isset($presence['presence']) && $presence['presence'] != 5) {
-                $html .= '
+                $presences = getPresences();
+                
+                $html .='<h2>'.t('Actions').'</h2>';
+                
+                if(isset($presence['presence']) && $presence['presence'] != 5) {
+                    $html .= '
+                        <a
+                            class="button tiny icon chat"
+                            href="#"
+                            style="float: left;"
+                            id="friendchat"
+                            onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"
+                        >
+                            '.$presences[$presence['presence']].' - '.t('Chat').'
+                        </a>';
+                }
+                            
+                $html .= '<div style="clear: both;"></div>';
+                
+                if($contact->rostersubscription->getval() != 'vcard') {
+                    $html .='
                     <a
-                        class="button tiny icon chat"
+                        class=""
                         href="#"
-                        style="float: left;"
-                        id="friendchat"
-                        onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"
+                        style="margin: 10px 0px; display: block;"
+                        id="friendremoveask"
+                        onclick="
+                            document.querySelector(\'#friendremoveyes\').style.display = \'block\';
+                            document.querySelector(\'#friendremoveno\').style.display = \'block\';
+                            this.style.display = \'none\'
+                        "
                     >
-                        '.$presences[$presence['presence']].' - '.t('Chat').'
+                        '.t('Remove this contact').'
+                    </a>
+
+                    <a
+                        class="button tiny icon yes merged left';
+                    if(!isset($presence['presence']) || $presence['presence'] == 5)
+                        $html .=' left';
+                    $html .= '"
+                        href="#"
+                        id="friendremoveyes"
+                        style="float: left; display: none;"
+                        onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$contact->getData('jid')."'")
+                        . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
+                    >
+                        '.t('Yes').'
+                    </a>
+
+                    <a
+                        class="button tiny icon no merged right"
+                        href="#"
+                        style="float: left; display: none;"
+                        id="friendremoveno"
+                        onclick="
+                            document.querySelector(\'#friendremoveask\').style.display = \'block\';
+                            document.querySelector(\'#friendremoveyes\').style.display = \'none\';
+                            this.style.display = \'none\'
+                        "
+                    >
+                        '.t('No').'
                     </a>';
-            }
-                        
-            $html .= '<div style="clear: both;"></div>';
-            
-            if($contact->rostersubscription->getval() != 'vcard') {
-                $html .='
-                <a
-                    class=""
-                    href="#"
-                    style="margin: 10px 0px; display: block;"
-                    id="friendremoveask"
-                    onclick="
-                        document.querySelector(\'#friendremoveyes\').style.display = \'block\';
-                        document.querySelector(\'#friendremoveno\').style.display = \'block\';
-                        this.style.display = \'none\'
-                    "
-                >
-                    '.t('Remove this contact').'
-                </a>
-
-                <a
-                    class="button tiny icon yes merged left';
-                if(!isset($presence['presence']) || $presence['presence'] == 5)
-                    $html .=' left';
-                $html .= '"
-                    href="#"
-                    id="friendremoveyes"
-                    style="float: left; display: none;"
-                    onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$contact->getData('jid')."'")
-                    . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
-                >
-                    '.t('Yes').'
-                </a>
-
-                <a
-                    class="button tiny icon no merged right"
-                    href="#"
-                    style="float: left; display: none;"
-                    id="friendremoveno"
-                    onclick="
-                        document.querySelector(\'#friendremoveask\').style.display = \'block\';
-                        document.querySelector(\'#friendremoveyes\').style.display = \'none\';
-                        this.style.display = \'none\'
-                    "
-                >
-                    '.t('No').'
-                </a>';
-            } else {
-                $html .='<br />
-                <a
-                    class="button tiny icon add"
-                    href="#"
-                    onclick="'.$this->genCallWidget("Notifs","ajaxAddContact", "'".$contact->getData('jid')."'", "''").'"
-                >
-                    '.t('Invite this user').'
-                </a>';
+                } else {
+                    $html .='<br />
+                    <a
+                        class="button tiny icon add"
+                        href="#"
+                        onclick="'.$this->genCallWidget("Notifs","ajaxAddContact", "'".$contact->getData('jid')."'", "''").'"
+                    >
+                        '.t('Invite this user').'
+                    </a>';
+                }
             }
             
         }
