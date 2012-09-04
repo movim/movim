@@ -97,7 +97,7 @@ class Notifs extends WidgetBase
     }
     
     function ajaxSubscribed($jid) {
-		if(checkJid($jid)) {
+		//if(checkJid($jid)) {
 			$p = new moxl\PresenceSubscribed();
             $p->setTo($jid)
               ->request();
@@ -105,13 +105,13 @@ class Notifs extends WidgetBase
 			/*$p = new moxl\PresenceSubscribe();
             $p->setTo($jid)
               ->request();*/
-		} else {
+		/*} else {
 			throw new MovimException("Incorrect JID `$jid'");
-		}
+		}*/
     }
     
     function ajaxRefuse($jid) {
-		if(checkJid($jid)) {
+		//if(checkJid($jid)) {
 			$p = new moxl\PresenceUnsubscribed();
             $p->setTo($jid)
               ->request();
@@ -120,13 +120,13 @@ class Notifs extends WidgetBase
             unset($notifs[$jid]);
             
             Cache::c('activenotifs', $notifs);
-		} else {
+		/*} else {
 			throw new MovimException("Incorrect JID `$jid'");
-		}
+		}*/
     }
     
     function ajaxAccept($jid, $alias) {        
-		if(checkJid($jid)) {
+		//if(checkJid($jid)) {
             $r = new moxl\RosterAddItem();
             $r->setTo($jid)
               ->request();
@@ -134,9 +134,9 @@ class Notifs extends WidgetBase
 			$p = new moxl\PresenceSubscribe();
             $p->setTo($jid)
               ->request();
-		} else {
+		/*} else {
 			throw new MovimException("Incorrect JID `$jid'");
-		}
+		}*/
         
    	    $notifs = Cache::c('activenotifs');
    	    unset($notifs[$jid]);
@@ -145,7 +145,7 @@ class Notifs extends WidgetBase
     }
     
     function ajaxAddContact($jid, $alias) {
-		if(checkJid($jid)) {
+		//if(checkJid($jid)) {
             $r = new moxl\RosterAddItem();
             $r->setTo($jid)
               ->request();
@@ -153,9 +153,9 @@ class Notifs extends WidgetBase
 			$p = new moxl\PresenceSubscribe();
             $p->setTo($jid)
               ->request();
-		} else {
+		/*} else {
 			throw new MovimException("Incorrect JID `$jid'");
-		}
+		}*/
     }
     
     function build() {  
