@@ -38,6 +38,7 @@ body {
     background-attachment:fixed;
     margin: 0 auto;
     width: 1000px;
+    position: relative;
 }
 
 .clear {
@@ -97,13 +98,6 @@ p {
     text-align: justify;
 }
 
-/*p:first-letter {
-    font-size: 2.5em;
-    padding-right: 0.1em;
-    padding-top: 0.15em;
-    float: left;
-}*/
-
 ul.clean {
     margin-left: 1.5em;
     margin-top: 1em;
@@ -132,31 +126,135 @@ ul.clean li {
 #content {
     width: 800px;
     margin-right: 200px;
-    background-color: #EEE;
-    border-left: 1px solid #DDD;
-    border-right: 1px solid #DDD;
-    overflow: auto;
+    position: relative;
+    margin-top: 55px;
 }
 
+#head {
+    width: 800px;
+    overflow: hidden;
+}
+
+#head .block {
+    min-height: 160px;
+    float: left;
+    max-width: 260px;
+    overflow: hidden;
+    color: white;
+    text-shadow: 0px 0px 2px #333;
+    font-size: 14px;
+    margin-right: 20px;
+    padding-top: 10px;
+}
+
+#head .block:first-child {
+    width: auto;
+}
+
+#head .block h1 {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 26px;
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+    padding: 10px 0px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    display: inline;
+    line-height: 1.2em;
+    padding-right: 20px;
+}
+
+#head .block h1.online { background-image: url(../img/icons/online.png); }
+#head .block h1.away { background-image: url(../img/icons/away.png); }
+#head .block h1.dnd { background-image: url(../img/icons/dnd.png); }
+#head .block h1.xa { background-image: url(../img/icons/xa.png); }
+
+#head .block span {
+    display: inline-block;
+    padding-right: 7px;
+    color: #CCC;
+}
+
+#head .block a:link, #head .block a:visited {
+    color: #EEE;
+    text-decoration: underline;
+}
+
+#head .block.avatar img {
+    background-color: white;
+    padding: 4px; 
+    border-radius: 3px;
+    width: 150px;
+    max-height: 200px;
+    margin-left: 20px;
+    border: 1px solid #DDD;
+}
+
+#head .block .textbubble {
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#head .block .textbubble:before {
+    content: '\201C'; 
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    font-size: 4em;
+    color: rgba(255, 255, 255, 0.3);
+    text-shadow: none;
+}
+
+#head .block .textbubble:after {
+    content: '\201D'; 
+    position: absolute;
+    bottom: -25px;
+    right: 0px;
+    font-size: 4em;
+    color: rgba(255, 255, 255, 0.3);
+    text-shadow: none;
+}
+
+#head .block .textbubble textarea {
+    background-color: transparent;
+    border: 1px solid transparent;
+    resize: none;
+    color: white;
+    text-align: center;
+    padding: 0px;
+}
+
+#head .block .textbubble textarea:hover {
+    border-color: white;
+}
+
+#main {
+    background-color: #EEE;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    height: 100%;
+    margin-top: -50px;
+}
 
 #left
 {
     float: left;
+    padding: 15px;
     width: 170px;
-    padding-top: 55px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-top: 60px;
 }
 
 #center
 {
-    float: left;
+    float: right;
     width: 599px;
     background-color: white;
     border-left: 1px solid #DDD;
-    padding-top: 38px;
-    min-height: 1000px;
-    overflow: hidden;
+    min-height: 600px;
 }
 
 #right
@@ -178,11 +276,14 @@ ul.clean li {
 
 #footer 
 {
-    border-top: 1px solid #DDD;
     clear: both;
     padding: 5px 10px;
     text-align: right;
-    color: #666;
+    color: white;
+}
+
+#footer a:link, #footer a:visited {
+    color: #CCC;
 }
 
 /* Widgets */
@@ -337,34 +438,3 @@ span#widgettitle {
     cursor: pointer;
 }
 
-/* Bubble */
-
-.textbubble {
-    background-color: #555;
-    color: white;
-    padding: 8px;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 11px;
-    font-style: italic;
-    margin: 0 auto;
-    margin-top: 15px;
-    position: relative;
-    white-space: normal;
-}
-
-.textbubble:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -10px;
-    left: 30px;
-    border-width: 0px 10px 10px 10px;
-    border-style: solid;
-    border-color: #555 transparent;
-}
-
-.textbubble a {
-    color: #CCC;
-    text-decoration: underline;
-}

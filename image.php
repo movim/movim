@@ -88,6 +88,9 @@ if(isset($_GET['c'])) {
            $contact[0]->getData('photobin') != 'f') {
             if(isset($_GET['size']) && $_GET['size'] != 'normal') {
                 switch ($_GET['size']) {
+                    case 'l':
+                        $size = 150;
+                        break;
                     case 'm':
                         $size = 120;
                         break;
