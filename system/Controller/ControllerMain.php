@@ -23,7 +23,11 @@ class ControllerMain extends ControllerBase
 	function __construct()
 	{
 		parent::__construct();
-
+        global $sdb;
+        $c = new Contact();
+        $sdb->create($c);
+        $p = new Presence();
+        $sdb->create($p);
 		$this->page = new TplPageBuilder();
         $this->page->addScript('hash.js');
         $this->page->addScript('movimrpc.js');

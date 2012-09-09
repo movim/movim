@@ -65,7 +65,7 @@ function showPaused(jid) {
     paused.style.display = 'block';
 }
 
-function newMessage() {
+function notify() {
     if(document_focus == false) {
         movim_title_inc();
         //play the notif sound
