@@ -18,19 +18,13 @@
  * See COPYING for licensing information.
  */
 
-class ContactCard extends WidgetBase
+class ContactCard extends WidgetCommon
 {
 
     function WidgetLoad()
     {
     	$this->addcss('contactcard.css');
 		$this->registerEvent('vcard', 'onVcard');
-    }
-
-    private function displayIf($element, $title, $html = false) {
-        if(!$html) $html = $element;
-        if(isset($element) && $element != '')
-                return '<div class="element"><span>'.$title.'</span><div class="content">'.$html.'</div></div>';
     }
 
     function onVcard($contact)
@@ -41,151 +35,77 @@ class ContactCard extends WidgetBase
 
     function prepareContactCard($contact)
     {
-        $query = \Presence::query()->select()
-                           ->where(array(
-                                   'key' => $this->user->getLogin(),
-                                   'jid' => $contact->getData('jid')))
-                           ->limit(0, 1);
-        $data = \Presence::run_query($query);
-        //$presence = PresenceHandler::getPresence($contact->getData('jid'), true);
-        
-        $presence = $data[0];
-
-        $html .='
-        <a
-	        class="button tiny icon rm';
-	    if(isset($presence['presence']) && $presence['presence'] != 5)
-	        $html .=' merged right';
-	    $html .= '"
-	        href="#"
-	        style="float: right;"
-	        id="friendremoveask"
-	        onclick="
-	            document.querySelector(\'#friendremoveyes\').style.display = \'block\';
-	            document.querySelector(\'#friendremoveno\').style.display = \'block\';
-	            this.style.display = \'none\'
-	        "
-	    >
-	        '.t('Remove this contact').'
-	    </a>
-
-        <a
-	        class="button tiny icon no merged right"
-	        href="#"
-	        style="float: right; display: none;"
-	        id="friendremoveno"
-	        onclick="
-	            document.querySelector(\'#friendremoveask\').style.display = \'block\';
-	            document.querySelector(\'#friendremoveyes\').style.display = \'none\';
-	            this.style.display = \'none\'
-	        "
-	    >
-	        '.t('No').'
-	    </a>
-
-	    <a
-	        class="button tiny icon yes merged';
-	    if(!isset($presence['presence']) || $presence['presence'] == 5)
-	        $html .=' left';
-	    $html .= '"
-	        href="#"
-	        id="friendremoveyes"
-	        style="float: right; display: none;"
-	        onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$contact->getData('jid')."'").'"
-	    >
-	        '.t('Yes').'
-	    </a>';
-
-        if(isset($presence['presence']) && $presence['presence'] != 5) {
-            $html .= '
-                <a
-	                class="button tiny icon chat merged left"
-	                href="#"
-	                style="float: right;"
-	                id="friendchat"
-	                onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"
-	            >
-	                '.t('Chat').'
-	            </a>';
-        }
-        
         $gender = getGender();
         $marital = getMarital();
 
-        $html .='
-        <form><br />
-            <fieldset class="protect red">
-                <legend>'.t('General Informations').'</legend>';
-
-        $html .= $this->displayIf($contact->getData('fn'), t('Name'));
-        $html .= $this->displayIf($contact->getData('name'), t('Nickname'));
-        if($contact->getData('gender') != 'N')
-            $html .= $this->displayIf($gender[$contact->getData('gender')], t('Gender'));
-        if($contact->getData('marital') != 'none')
-            $html .= $this->displayIf($marital[$contact->getData('marital')], t('Marital Status'));
-
-        if($contact->getData('date') != '0000-00-00')
-        $html .= $this->displayIf($contact->getData('date'), t('Date of Birth'), date('j F Y',strtotime($contact->getData('date'))));
-        $html .= $this->displayIf($contact->getData('jid'), t('Address'));
-
-        $html .= '<br />';
-
-        $html .= $this->displayIf($contact->getData('url'), t('Website'), '<a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>');
-        $html .= $this->displayIf($contact->getPhoto(), t('Avatar'), '<img class="avatar" src="'.$contact->getPhoto().'">');
-
-        $html .= '<br />';
-        $html .= $this->displayIf(prepareString($contact->getData('desc')), t('About Me'));
-
         $html .= '
-            </fieldset>
-        </form>';
-        
-        if($presence['node'] != '' && $presence['ver'] != '') {
-            $clienttype = 
-                array(
-                    'bot' => t('Bot'),
-                    'pc' => t('Desktop'),
-                    'phone' => t('Phone')
-                    );
-            
-            $c = new CapsHandler();
-            $caps = $c->get($presence['node'].'#'.$presence['ver']);
-            
-            $html .='
-            <form><br />
-                <fieldset class="protect red">
-                    <legend>'.t('Client Informations').'</legend>';
+            <form name="vcard" id="vcardform" class="protect red"><br />
+            <h1>'.t('Profile').'</h1><br />
+                <fieldset>
+                    <legend>'.t('General Informations').'</legend>';
+                    
+            if($this->testIsSet($contact->getData('fn')))
+            $html .= '<div class="element simple">
+                        <label for="fn">'.t('Name').'</label>
+                        <span>'.$contact->getData('fn').'</span>
+                      </div>';
 
-            $html .= $this->displayIf($caps->getData('name'), t('Client Name'));
-            $html .= $this->displayIf($clienttype[$caps->getData('type')], t('Client Type'));
-
-            $html .= '
-                </fieldset>
-            </form>';
-        }
+            if($this->testIsSet($contact->getData('name')))                        
+            $html .= '<div class="element simple">
+                        <label for="name">'.t('Nickname').'</label>
+                        <span>'.$contact->getData('name').'</span>
+                      </div>';
+                      
+            if($contact->getData('date') != '0000-00-00' && $this->testIsSet($contact->getData('date')))
+            $html .= '<div class="element simple">
+                        <label for="day">'.t('Date of Birth').'</label>
+                        <span>'.date('j M Y',strtotime($contact->getData('date'))).'</span>
+                      </div>';
+            
+            if($contact->getData('gender') != 'N' && $this->testIsSet($contact->getData('gender')))
+            $html .= '<div class="element simple">
+                        <label for="gender">'.t('Gender').'</label>
+                        <span>'.$gender[$contact->getData('gender')].'</span>
+                      </div>';
+       
+            if($contact->getData('marital') != 'none' && $this->testIsSet($contact->getData('marital')))               
+            $html .= '<div class="element simple">
+                        <label for="marital">'.t('Marital Status').'</label>
+                        <span>'.$marital[$contact->getData('marital')].'</span>
+                      </div>';
+         
+            if($this->testIsSet($contact->getData('url')))
+            $html .= '<div class="element simple">
+                        <label for="url">'.t('Website').'</label>
+                        <a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>
+                      </div>';
+              
+            if($this->testIsSet($contact->getData('desc')) && prepareString($contact->getData('desc')) != '')
+            $html .= '<div class="element large simple">
+                        <label for="desc">'.t('About Me').'</label>
+                        <span>'.prepareString($contact->getData('desc')).'</span>
+                      </div>';
+                      
+            $html .= '</fieldset>
+                </form>';
         
         return $html;
     }
 
-    function ajaxRemoveContact($jid) {
-        $this->xmpp->removeContact($jid);
-
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $jid));
-        $sdb->delete($contact[0]);
-    }
-
     function build()
     {
-        global $sdb;
-        $contact = $sdb->select('Contact', array('key' => $this->user->getLogin(), 'jid' => $_GET['f']));
-    ?>
-    <div class="tabelem" title="<?php echo t('Profile'); ?>" id="contactcard">
-        <?php
-        if(isset($contact[0]))
-            echo $this->prepareContactCard($contact[0]);
+        $query = Contact::query()->select()
+                           ->where(array(
+                                   'key' => $this->user->getLogin(),
+                                   'jid' => $_GET['f']));
+        $contact = Contact::run_query($query);
         ?>
-    </div>
-    <?php
+        <div class="tabelem" title="<?php echo t('Profile'); ?>" id="contactcard" >
+            <?php
+            if(isset($contact[0]))
+                echo $this->prepareContactCard($contact[0]);
+            ?>
+        </div>
+        <?php
     }
 }
