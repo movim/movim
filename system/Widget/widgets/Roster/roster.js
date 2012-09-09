@@ -83,7 +83,7 @@ function search(e){
 	if(e.keyCode==8 || (e.keyCode>47 && e.keyCode<91) || (e.keyCode>95 && e.keyCode<106) || e.keyCode==46){//key pressed is backspace, alphanumeric or delete
 		focusflag = false;
 		for(i = 0; i < parents.length; i++){
-			if(names[i].innerHTML.toLowerCase().lastIndexOf(request) == -1){
+			if(names[i].innerHTML.toLowerCase().lastIndexOf(request.toLowerCase()) == -1){
 				parents[i].style.display = "none";
 			}
 			else{

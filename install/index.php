@@ -250,7 +250,7 @@ function perform_install()
       'boshCookieHTTPOnly' => get_checkbox('boshCookieHTTPOnly'),
       'logLevel'           => $_POST['verbosity'],
       //Temporary workaround
-      'accountCreation'    => 1,,
+      'accountCreation'    => 1,
       'host'               => $_POST['host'],
       'domain'             => $_POST['domain'],
       'defBoshHost'        => $_POST['defBoshHost'],
@@ -293,6 +293,10 @@ if(isset($_POST['install'])) {
 
     // We create correctly the tables
     global $sdb;
+
+    $session = new SessionVar();
+    $sdb->create($session);
+
     $contact = new Contact();
     $sdb->create($contact);
 
