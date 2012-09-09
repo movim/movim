@@ -85,12 +85,30 @@ class Profile extends WidgetBase
         
         if(isset($contact[0])) {
             $me = $contact[0];
-            $html ='
+
+            // My avatar
+            $html .= '
+            <a href="?q=friend&f='.$this->user->getLogin().'">
+                <div class="block avatar">
+                    <img src="'.$me->getPhoto('l').'"/>
+                </div>';
+                
+            // Contact general infos
+            $html .= '
+                <div class="block">
+                    <h1>'.$me->getTrueName().'</h1><br />';
+
+            $html .= '<br /><br />
+                </div>
+            </a>';
+                
+            /*$html .='
                 <a href="?q=friend&f='.$this->user->getLogin().'">
                     <h1>'.$me->getTrueName().'</h1>
                     <img src="'.$me->getPhoto().'"/>
-                </a>';
+                </a>';*/
             $html .= '
+            <div class="block">
                 <div class="textbubble">
                     <textarea 
                         id="status" 
@@ -99,11 +117,14 @@ class Profile extends WidgetBase
                         onload="movim_textarea_autoheight(this);"
                         onkeyup="movim_textarea_autoheight(this);">'.$presence['status'].'</textarea>
                 </div>
-                <br />
+            </div>
                 ';
         } else {
-			$html .= t('No profile yet ?').'<br /><br />';
-			$html .= '<a class="button icon add" style="padding-left: 25px;" href="?q=profile">'.t("Create my vCard").'</a><br /><br />';
+			$html .= '
+                <div class="block">
+                    '.t('No profile yet ?').'<br /><br />
+                    <a class="button icon add" style="text-shadow: none; color: rgb(43, 43, 43); text-decoration: none;" href="?q=profile">'.t("Create my vCard").'</a><br /><br />
+                </div>';
 		}
         
         return $html;
