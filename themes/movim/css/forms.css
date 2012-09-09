@@ -133,6 +133,14 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
     cursor: pointer;
 }
 
+form .element.simple > *:not(label):not(img),
+form .element.simple > *:not(label):not(img):focus {
+    border: 0px;
+    box-shadow: none;
+    padding: 3px 0px;
+    font-weight: bold;
+}
+
 .button.icon {
     padding-left: 35px;
     background-repeat: no-repeat;
@@ -180,6 +188,7 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
 .icon.rm { background-image: url(../img/icons/rm_icon.png); }
 .icon.submit:before { content: "▼"; }
 .icon.loading:before { content: "◕"; }
+.icon.next:before { content: "→"; }
 .tiny.icon.loading:before { padding: 4px 7px; }
 
 .tiny.icon {

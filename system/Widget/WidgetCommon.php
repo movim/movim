@@ -78,6 +78,14 @@ class WidgetCommon extends WidgetBase {
 		return $html;
     }
     
+    protected function testIsSet($element)
+    {
+        if(isset($element) && $element != '')
+            return true;
+        else
+            return false;
+    }    
+   
     protected function preparePost($message, $comments = false) {        
         $tmp = '';
         
