@@ -48,6 +48,7 @@ class Wall extends WidgetCommon
     function onNoStream() {
         $html = '<div style="padding: 1.5em; text-align: center;">Ain\'t Nobody Here But Us Chickens...</div>';
         RPC::call('movim_fill', 'wall', RPC::cdata($html));
+        RPC::call('hideWall');
         RPC::commit();
     }
     

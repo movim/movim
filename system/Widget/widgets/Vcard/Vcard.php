@@ -31,8 +31,11 @@ class Vcard extends WidgetBase
     
     function onMyVcardReceived()
     {
+        \movim_log("LOOOOOOOOOOOLLLLLLLL");
 		$html = $this->prepareInfos();
+        //RPC::call('movim_textarea_autoheight(document.querySelector("#desctext"))');
         RPC::call('movim_fill', 'vcard', RPC::cdata($html));
+        RPC::commit();
     }
     
     function onMyVcardNotReceived($error)
@@ -235,7 +238,7 @@ class Vcard extends WidgetBase
                       </div>';
                       
             $html .= '<div class="element"><label for="desc">'.t('About Me').'</label>
-                        <textarea name ="desc" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
+                        <textarea name ="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
                       </div>';
                       
             $html .= '</fieldset>';                  
@@ -272,7 +275,7 @@ class Vcard extends WidgetBase
             $html .= '
             </form>';
         } else { 
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxGetVcard').'\', 500);</script>';
+            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxGetVcard').'\', 2000);</script>';
         }
         $html .= '<div class="config_button" onclick="'.$this->genCallAjax('ajaxGetVcard').'"></div>';
 
@@ -292,6 +295,7 @@ class Vcard extends WidgetBase
 			<?php 
 				echo $this->prepareInfos();
 			?>
+            <div class="clear"></div>
 		</div>
         <?php
     }
