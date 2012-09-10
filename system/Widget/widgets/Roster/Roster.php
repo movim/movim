@@ -183,7 +183,7 @@ class Roster extends WidgetBase
             <div id="rostermenu">
                 <ul>
                     <li>
-                        <input type="text" name="search" id="request" onkeyup="search(event);" onclick="focusContact();" placeholder="<?php echo t('Search');?>"/>
+                        <input type="text" name="search" id="request" onkeyup="rosterSearch(event);" onclick="focusContact();" placeholder="<?php echo t('Search');?>"/>
                     </li>
                     <li onclick="showRoster(this);" style="float: right; padding-right: 10px;">
                         <a href="#">◐</a>
