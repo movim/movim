@@ -172,7 +172,7 @@ class Notifs extends WidgetBase
     ?>
     <div id="notifs">
         <span id="widgettitle">
-            <?php echo t('Contacts (%s)', sizeof($contacts) -1); ?> - 
+            <?php echo t('Contacts (%s)', sizeof($contacts)); ?> - 
             <a 
                     class="" 
                     href="#" 
