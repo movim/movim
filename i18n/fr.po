@@ -6,15 +6,14 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-18 21:48+0200\n"
-"PO-Revision-Date: 2012-05-27 19:51+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"PO-Revision-Date: 2012-07-19 07:36+0000\n"
+"Last-Translator: Vincent <influence-pc@1s.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-27 19:56+0000\n"
-"X-Generator: Launchpad (build 15288)\n"
+"X-Launchpad-Export-Date: 2012-09-11 19:52+0000\n"
+"X-Generator: Launchpad (build 15930)\n"
 
 #: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
@@ -62,14 +61,14 @@ msgid "or"
 msgstr "ou"
 
 #: ../install/index.php:169
-#, fuzzy, php-format
+#, php-format
 msgid "Bosh connection failed with error '%s'"
-msgstr "Échec de la connexion Bosh, erreur `%s'"
+msgstr "La connection Bosh a échoué avec l'erreur '%s'"
 
 #: ../install/index.php:178
-#, fuzzy, php-format
+#, php-format
 msgid "XMPP connection through Bosh failed with error '%s'"
-msgstr "Échec de la connexion XMPP via Bosh, erreur `%s'"
+msgstr "La connection XMPP à travers Bosh a échoué avec l'erreur '%s'"
 
 #: ../install/index.php:224 ../install/index.php:228 ../install/index.php:232
 #, php-format
@@ -82,16 +81,17 @@ msgid "Couldn't create configuration file '%s'."
 msgstr "La création du fichier de configuration '%s' est impossible."
 
 #: ../install/index.php:283
-#, fuzzy, php-format
+#, php-format
 msgid "Database connection failed with error '%s'"
-msgstr "Échec de la connexion avec la base de donnée, erreur `%s'"
+msgstr "La connexion à la base de données à échoué avec l'erreur '%s'"
 
 #: ../install/part1.php:29
 msgid "Thank you for downloading Movim!"
 msgstr "Merci d'avoir téléchargé Movim!"
 
 #: ../install/part1.php:30
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
 "Avant que vous utilisiez votre réseau social, quelques ajustements sont "
 "nécessaires."
@@ -191,9 +191,9 @@ msgid "Please remove the %s folder in order to complete the installation"
 msgstr "Veuillez supprimer le dossier %s pour terminer l'installation"
 
 #: ../system/Conf.php:38
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "L'élément de valeur '%s' ne peut pas être chargé"
+msgstr "Impossible de charger la valeur de l'élément '%s'"
 
 #: ../system/Conf.php:49
 #, php-format
@@ -338,7 +338,7 @@ msgstr "Célibataire"
 
 #: ../system/Utils.php:208
 msgid "In a relationship"
-msgstr "Dans une relation"
+msgstr "En couple"
 
 #: ../system/Utils.php:209
 msgid "Married"
@@ -692,11 +692,11 @@ msgstr "Type de Client"
 
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:132
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:202
 msgid "Invite this user"
-msgstr ""
+msgstr "Inviter cet utilisateur"
 
 #: ../system/Widget/widgets/Feed/Feed.php:43
 msgid "Loading your feed ..."
@@ -732,9 +732,8 @@ msgid "My Posts"
 msgstr "Mes posts"
 
 #: ../system/Widget/widgets/Help/Help.php:32
-#, fuzzy
 msgid "What is Movim?"
-msgstr "Qu'est ce que Movim ?"
+msgstr "Qu'est-ce que Movim ?"
 
 #: ../system/Widget/widgets/Help/Help.php:34
 #, php-format
@@ -855,11 +854,9 @@ msgid "Account successfully created"
 msgstr "Compte créé avec succès"
 
 #: ../system/Widget/widgets/Login/Login.php:83
-#, fuzzy
 msgid "Movim failed to authenticate. You entered wrong data"
 msgstr ""
-"Erreur d'authentification de Movim. Les données saisies ne sont pas "
-"correctes."
+"Movim n'a pas pu vous authentifier. Vous avez entré des données erronées"
 
 #: ../system/Widget/widgets/Login/Login.php:91
 msgid "Your web browser is too old to use with Movim."
@@ -874,7 +871,7 @@ msgid "Come in!"
 msgstr "Entrez!"
 
 #: ../system/Widget/widgets/Login/Login.php:117
-#, fuzzy, php-format
+#, php-format
 msgid "This server hosts %s accounts"
 msgstr "Ce serveur héberge %s comptes"
 
@@ -914,7 +911,7 @@ msgstr "Alias"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:155
 msgid "Send request"
-msgstr ""
+msgstr "Envoyer la demande"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:162
 msgid "Cancel"
@@ -966,33 +963,3 @@ msgstr "Suivre"
 #: ../system/Widget/widgets/Wall/Wall.php:135
 msgid "Loading the contact feed ..."
 msgstr "Chargement du flux ..."
-
-#~ msgid "What's new ?"
-#~ msgstr "Quoi de neuf ?"
-
-#~ msgid "Validate"
-#~ msgstr "Valider"
-
-#~ msgid "MOVIM - Test Client"
-#~ msgstr "MOVIM - Client de test"
-
-#~ msgid "Add a contact"
-#~ msgstr "Ajouter un contact"
-
-#~ msgid "Get the comments"
-#~ msgstr "Voir les commentaires"
-
-#~ msgid "The Database configuration is invalid"
-#~ msgstr "La configuration de la base de données n'est pas valide"
-
-#~ msgid "The Bosh configuration is invalid"
-#~ msgstr "La configuration de Bosh n'est pas valide"
-
-#~ msgid "Me"
-#~ msgstr "Moi"
-
-#~ msgid "Create the feed"
-#~ msgstr "Créer le flux"
-
-#~ msgid "Link my actual account"
-#~ msgstr "Lier à mon compte actuel"

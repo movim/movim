@@ -6,88 +6,90 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-18 21:48+0200\n"
-"PO-Revision-Date: 2011-10-26 21:36+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"PO-Revision-Date: 2012-08-02 15:08+0000\n"
+"Last-Translator: Nazar Banakh <flesch91@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-27 19:56+0000\n"
-"X-Generator: Launchpad (build 15288)\n"
+"X-Launchpad-Export-Date: 2012-09-11 19:52+0000\n"
+"X-Generator: Launchpad (build 15930)\n"
 
 #: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-msgstr ""
+msgstr "PHP версії не збігаються. Movim вимагає мінімум PHP 5.3"
 
 #: ../install/index.php:85
 msgid "Actual version : "
-msgstr ""
+msgstr "Актуальна версія "
 
 #: ../install/index.php:86
 msgid "Update your PHP version or contact your server administrator"
-msgstr ""
+msgstr "Оновіть вашу версію PHP або зверніться до адміністратора сервера"
 
 #: ../install/index.php:89 ../install/index.php:93 ../install/index.php:97
 #: ../install/index.php:115
 #, php-format
 msgid "Movim requires the %s extension."
-msgstr ""
+msgstr "Movim вимагає розширення %s ."
 
 #: ../install/index.php:90
 #, php-format
 msgid "Install %s and %s packages"
-msgstr ""
+msgstr "Встановити %s і  %s пакетів."
 
 #: ../install/index.php:94 ../install/index.php:98
 #, php-format
 msgid "Install the %s package"
-msgstr ""
+msgstr "Установка пакету %s"
 
 #: ../install/index.php:101
 msgid "Movim's folder must be writable."
-msgstr ""
+msgstr "Папка Movim повинна бути доступна для запису"
 
 #: ../install/index.php:102
 msgid "Enable read and write rights on Movim's root folder"
-msgstr ""
+msgstr "Включити права читання і запису на кореневу папку Movim"
 
 #: ../install/index.php:114
 msgid "or"
-msgstr ""
+msgstr "або"
 
 #: ../install/index.php:169
 #, php-format
 msgid "Bosh connection failed with error '%s'"
-msgstr ""
+msgstr "Сталася помилка '%s'"
 
 #: ../install/index.php:178
 #, php-format
 msgid "XMPP connection through Bosh failed with error '%s'"
-msgstr ""
+msgstr "XMPP з'єднання  з помилкою '%s'"
 
 #: ../install/index.php:224 ../install/index.php:228 ../install/index.php:232
 #, php-format
 msgid "Couldn't create directory '%s'."
-msgstr ""
+msgstr "Не вдалося створити '%s' каталог."
 
 #: ../install/index.php:261
 #, php-format
 msgid "Couldn't create configuration file '%s'."
-msgstr ""
+msgstr "Не вдається створити файл конфігурації  '%s'."
 
 #: ../install/index.php:283
 #, php-format
 msgid "Database connection failed with error '%s'"
-msgstr ""
+msgstr "Підключення до бази даних з помилкою '%s'"
 
 #: ../install/part1.php:29
 msgid "Thank you for downloading Movim!"
-msgstr ""
+msgstr "Дякуємо Вам за завантаження Movim!"
 
 #: ../install/part1.php:30
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
+"Перед тим, як користуватися вашою соціальною мережею,  потрібно кілька "
+"налаштувань."
 
 #: ../install/part1.php:31
 msgid ""
@@ -95,46 +97,53 @@ msgid ""
 "personal details. Its use can potentially endanger your data. Always pay "
 "attention to information that you submit."
 msgstr ""
+"Майте на увазі, що Movim знаходиться на стадії розробки і буде обробляти "
+"багато особистих даних. Його використання може потенційно загрожувати вашим "
+"даним. Завжди звертайте увагу на інформацію, яку Ви представляєте."
 
 #: ../install/part1.php:41 ../install/part1.php:56 ../install/part2.php:15
 msgid "Movim Installer"
-msgstr ""
+msgstr "Movim установник"
 
 #: ../install/part1.php:41
 msgid "Compatibility Test"
-msgstr ""
+msgstr "Тест на сумісність"
 
 #: ../install/part1.php:42
 msgid ""
 "The following requirements were not met. Please make sure they are all "
 "satisfied in order to install Movim."
 msgstr ""
+"Наступні вимоги не були виконані. Будь ласка, переконайтеся, що всі вони "
+"були виконані  для того, щоб встановити Movim."
 
 #: ../install/part1.php:52
 msgid ""
 "Some errors were detected. Please correct them for the installation to "
 "proceed."
 msgstr ""
+"Були виявлено деякі помилки . Будь ласка, виправте їх, щоб продовжити "
+"установку."
 
 #: ../install/part1.php:110
 msgid "empty"
-msgstr ""
+msgstr "порожній"
 
 #: ../install/part1.php:111
 msgid "terse"
-msgstr ""
+msgstr "стислий"
 
 #: ../install/part1.php:112
 msgid "normal"
-msgstr ""
+msgstr "звичайний"
 
 #: ../install/part1.php:113
 msgid "talkative"
-msgstr ""
+msgstr "мовність"
 
 #: ../install/part1.php:114
 msgid "ultimate"
-msgstr ""
+msgstr "загальна"
 
 #: ../install/part1.php:144
 msgid "XMPP Connection Preferences"
