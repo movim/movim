@@ -234,7 +234,7 @@ class Login extends WidgetBase {
                     id="connectform" 
                     onkeypress="if(event.keyCode == 13) {<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);}">
                     <div class="element">
-                        <input type="email" name="login" id="login" autofocus required autocomplete="off"
+                        <input type="email" name="login" id="login" autofocus required
                             placeholder="<?php echo t("My address"); ?>"/>
                     </div>
                     <div class="element">

@@ -87,6 +87,7 @@ class ContactCard extends WidgetCommon
                       </div>';
                       
             $html .= '</fieldset>
+                      <div class="config_button" onclick="'.$this->genCallWidget("ContactSummary","ajaxRefreshVcard", "'".$contact->getData('jid')."'").'"></div>
                 </form>';
         
         return $html;
