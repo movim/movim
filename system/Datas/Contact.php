@@ -199,8 +199,8 @@ class Contact extends DatajarBase {
     }
     
     public function setContactGeoloc($stanza) {
-        $this->loclatitude->setval((string)$stanza->item->geoloc->latitude);
-        $this->loclongitude->setval((string)$stanza->item->geoloc->longitude);
+        $this->loclatitude->setval((string)$stanza->item->geoloc->lat);
+        $this->loclongitude->setval((string)$stanza->item->geoloc->lon);
         $this->localtitude->setval((string)$stanza->item->geoloc->alt);
         $this->loccountry->setval((string)$stanza->item->geoloc->country);
         $this->loccountrycode->setval((string)$stanza->item->geoloc->countrycode);
