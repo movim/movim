@@ -6,15 +6,14 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-18 21:48+0200\n"
-"PO-Revision-Date: 2012-03-29 10:16+0000\n"
+"PO-Revision-Date: 2012-07-06 22:50+0000\n"
 "Last-Translator: Rotaru Dorin <d.rotarou@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-27 19:56+0000\n"
-"X-Generator: Launchpad (build 15288)\n"
+"X-Launchpad-Export-Date: 2012-09-11 19:52+0000\n"
+"X-Generator: Launchpad (build 15930)\n"
 
 #: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
@@ -29,6 +28,7 @@ msgstr "Τρέχουσα έκδοση "
 #: ../install/index.php:86
 msgid "Update your PHP version or contact your server administrator"
 msgstr ""
+"Κάντε αναβάθμιση του PHP ή επικοινωνήστε με τον διαχειρηστή του εξυπηρετητή"
 
 #: ../install/index.php:89 ../install/index.php:93 ../install/index.php:97
 #: ../install/index.php:115
@@ -39,12 +39,12 @@ msgstr "Το Movim απαιτεί την %s επέκταση."
 #: ../install/index.php:90
 #, php-format
 msgid "Install %s and %s packages"
-msgstr ""
+msgstr "Εγκατασταση %s και %s πακέτα"
 
 #: ../install/index.php:94 ../install/index.php:98
 #, php-format
 msgid "Install the %s package"
-msgstr ""
+msgstr "Εγκαταστήστε το %s πακέτο"
 
 #: ../install/index.php:101
 msgid "Movim's folder must be writable."
@@ -85,11 +85,13 @@ msgstr ""
 
 #: ../install/part1.php:29
 msgid "Thank you for downloading Movim!"
-msgstr ""
+msgstr "Ευχαριστούμε που κατεβάσατε το Movim!"
 
 #: ../install/part1.php:30
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
+"Πριν απολαύσετε το κοινωνικό σας δίκτυο, απαιτούνται ορισμένες προσαρμογές."
 
 #: ../install/part1.php:31
 msgid ""
@@ -119,6 +121,8 @@ msgid ""
 "Some errors were detected. Please correct them for the installation to "
 "proceed."
 msgstr ""
+"Εντοπίστηκαν μερικά σφάλματα. Παρακαλούμε διορθώστε τα για να συνεχίστεί η "
+"εγκατάσταση"
 
 #: ../install/part1.php:110
 msgid "empty"
@@ -126,7 +130,7 @@ msgstr ""
 
 #: ../install/part1.php:111
 msgid "terse"
-msgstr ""
+msgstr "λιτός"
 
 #: ../install/part1.php:112
 msgid "normal"
@@ -134,7 +138,7 @@ msgstr ""
 
 #: ../install/part1.php:113
 msgid "talkative"
-msgstr ""
+msgstr "ομιλητικός"
 
 #: ../install/part1.php:114
 msgid "ultimate"
@@ -142,7 +146,7 @@ msgstr ""
 
 #: ../install/part1.php:144
 msgid "XMPP Connection Preferences"
-msgstr ""
+msgstr "Προτιμήσεις σύνδεσης XMPP"
 
 #: ../install/part1.php:157
 msgid "BOSH Connection Preferences"
@@ -150,7 +154,7 @@ msgstr "Επιλογές σύνδεσης BOSH"
 
 #: ../install/part1.php:183
 msgid "Proxy Preferences"
-msgstr ""
+msgstr "Προτιμήσεις proxy"
 
 #: ../install/part2.php:15
 msgid "Success !"
@@ -158,11 +162,11 @@ msgstr "Επιτυχής!"
 
 #: ../install/part2.php:18
 msgid "Valid Bosh"
-msgstr ""
+msgstr "Εγκυρο bosh"
 
 #: ../install/part2.php:19
 msgid "Database Detected"
-msgstr ""
+msgstr "Εντοπίστηκε βάση δεδομένων"
 
 #: ../install/part2.php:20
 msgid "Database Movim schema installed"
@@ -179,9 +183,9 @@ msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
 
 #: ../system/Conf.php:38
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "Αδύνατη η φόρτωση του element value'%s'"
+msgstr ""
 
 #: ../system/Conf.php:49
 #, php-format
@@ -213,27 +217,27 @@ msgstr "Σφάλμα: %s"
 
 #: ../system/Utils.php:123
 msgid "Monday"
-msgstr ""
+msgstr "Δευ"
 
 #: ../system/Utils.php:124
 msgid "Tuesday"
-msgstr ""
+msgstr "Τρι"
 
 #: ../system/Utils.php:125
 msgid "Wednesday"
-msgstr ""
+msgstr "Τετ"
 
 #: ../system/Utils.php:126
 msgid "Thursday"
-msgstr ""
+msgstr "Πεμ"
 
 #: ../system/Utils.php:127 ../system/Utils.php:129
 msgid "Friday"
-msgstr ""
+msgstr "Παρ"
 
 #: ../system/Utils.php:128
 msgid "Saturday"
-msgstr ""
+msgstr "Σαβ"
 
 #: ../system/Utils.php:132
 msgid "January"
@@ -417,7 +421,7 @@ msgstr "%s - Ρύθμιση"
 #: ../system/Controller/ControllerMain.php:113
 #, php-format
 msgid "%s - Profile"
-msgstr ""
+msgstr "%s - Προφίλ"
 
 #: ../system/Controller/ControllerMain.php:145
 #, php-format
@@ -432,7 +436,7 @@ msgstr "Δημιουργία Λογαριασμού"
 #: ../system/Controller/ControllerMain.php:161
 #, php-format
 msgid "%s - Add An Account"
-msgstr ""
+msgstr "%s - Προσθέστε λογαριασμό"
 
 #: ../system/Controller/ControllerMain.php:179
 #, php-format
@@ -442,7 +446,7 @@ msgstr "%s - Είσοδος στο Movim"
 #: ../system/Controller/ControllerMain.php:200
 #, php-format
 msgid "%s - Help Page"
-msgstr ""
+msgstr "%s - Σελίδα βοήθειας"
 
 #: ../system/Widget/widgets/Account/Account.php:170
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:101
@@ -471,11 +475,11 @@ msgstr "Αυτό το όνομα χρήστη χρησιμοποιείται ή�
 
 #: ../system/Widget/widgets/Account/Account.php:200
 msgid "Could not connect to the XMPP server"
-msgstr ""
+msgstr "Δεν είναι εφικτή η σύνδεση στον διακομιστή  XMPP"
 
 #: ../system/Widget/widgets/Account/Account.php:206
 msgid "Could not communicate with the XMPP server"
-msgstr ""
+msgstr "Δεν είναι εφικτή η επικοινωνία με τον διακομιστή  XMPP"
 
 #: ../system/Widget/widgets/Account/Account.php:212
 msgid "Unknown error"
@@ -484,7 +488,7 @@ msgstr ""
 #: ../system/Widget/widgets/Account/Account.php:229
 #: ../system/Widget/widgets/Login/Login.php:121
 msgid "Create a new account"
-msgstr ""
+msgstr "Δημιουργία νέου λογαριασμού"
 
 #: ../system/Widget/widgets/Account/Account.php:232
 msgid ""
@@ -504,15 +508,16 @@ msgstr "Η διεύθυνσή μου"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "Make sure your password is safe :"
-msgstr ""
+msgstr "Σιγουρευτείτε εαν ο κωδικός σας είναι ασφαλής"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "A capital letter, a digit and a special character are recommended"
 msgstr ""
+"Προτείνεται ένα κεφαλαίο γράμμα, ένα ψηφίο και ένας ειδικός χαρακτήρας"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "8 characters"
-msgstr ""
+msgstr "8 χαρακτήρες"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "Example :"
@@ -556,7 +561,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Chat/Chat.php:260
 msgid "Composing..."
-msgstr ""
+msgstr "Συνθέτοντας..."
 
 #: ../system/Widget/widgets/Config/Config.php:45
 msgid "Language"
@@ -776,7 +781,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Help/Help.php:65
 msgid "I can't find the answer to my question here"
-msgstr ""
+msgstr "Δεν βρίσκω απάντηση εδώ"
 
 #: ../system/Widget/widgets/Help/Help.php:67
 #, php-format
@@ -927,18 +932,3 @@ msgstr ""
 #: ../system/Widget/widgets/Wall/Wall.php:135
 msgid "Loading the contact feed ..."
 msgstr "Φορτώνεται το contact feed ..."
-
-#~ msgid "What's new ?"
-#~ msgstr "Νέα"
-
-#~ msgid "Validate"
-#~ msgstr "Επικύρωση"
-
-#~ msgid "MOVIM - Test Client"
-#~ msgstr "MOVIM - Test Client"
-
-#~ msgid "Add a contact"
-#~ msgstr "Προσθήκη Επαφής"
-
-#~ msgid "Get the comments"
-#~ msgstr "Συλλλέξτε τα σχόλια"

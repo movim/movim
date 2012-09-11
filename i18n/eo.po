@@ -9,12 +9,11 @@ msgstr ""
 "PO-Revision-Date: 2012-05-19 08:53+0000\n"
 "Last-Translator: Eliovir <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-27 19:56+0000\n"
-"X-Generator: Launchpad (build 15288)\n"
+"X-Launchpad-Export-Date: 2012-09-11 19:52+0000\n"
+"X-Generator: Launchpad (build 15930)\n"
 
 #: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
@@ -26,7 +25,8 @@ msgstr "Actuala versio: "
 
 #: ../install/index.php:86
 msgid "Update your PHP version or contact your server administrator"
-msgstr "Ĝisdatigu vian PHP-an version aŭ kontaktu vian servilan administranton"
+msgstr ""
+"Ĝisdatigu vian PHP-an version aŭ kontaktu vian servilan administranton"
 
 #: ../install/index.php:89 ../install/index.php:93 ../install/index.php:97
 #: ../install/index.php:115
@@ -86,7 +86,8 @@ msgid "Thank you for downloading Movim!"
 msgstr ""
 
 #: ../install/part1.php:30
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
 
 #: ../install/part1.php:31
@@ -177,9 +178,9 @@ msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
 
 #: ../system/Conf.php:38
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "Ne povas ŝargi valuon “%s” de la elemento."
+msgstr ""
 
 #: ../system/Conf.php:49
 #, php-format
@@ -925,21 +926,3 @@ msgstr ""
 #: ../system/Widget/widgets/Wall/Wall.php:135
 msgid "Loading the contact feed ..."
 msgstr "Ŝarĝante la kontakta fluo…"
-
-#~ msgid "Validate"
-#~ msgstr "Validigi"
-
-#~ msgid "MOVIM - Test Client"
-#~ msgstr "MOVIM - Testkliento"
-
-#~ msgid "Add a contact"
-#~ msgstr "Aldoni kontakton"
-
-#~ msgid "Get the comments"
-#~ msgstr "Vidi komentojn"
-
-#~ msgid "The Database configuration is invalid"
-#~ msgstr "La agordo de datumbazo ne validas"
-
-#~ msgid "The Bosh configuration is invalid"
-#~ msgstr "La agordo de BOSH ne validas"
