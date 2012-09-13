@@ -297,6 +297,8 @@ class Vcard extends WidgetBase
 			?>
             <div class="clear"></div>
 		</div>
+        <br />
+        <br />
         <?php
     }
 }
