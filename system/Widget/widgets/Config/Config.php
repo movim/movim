@@ -33,7 +33,8 @@ class Config extends WidgetBase
 
 	function ajaxSubmit($data) {
         $config = $this->user->getConfig();
-        $data = array_merge($config, $data);
+        if(isset($config))
+            $data = array_merge($config, $data);
         
         $s = new moxl\StorageSet();
         $s->setXmlns('movim:prefs')

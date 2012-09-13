@@ -94,13 +94,13 @@ class Feed extends WidgetCommon {
         $html = '';
         
         global $session;
-        if(!isset($session['config']) || $session['config']['feed'] == 'error') {
+
+        if($session['config']['config'] == false) {
             $html .= 
                 '<div class="message warning" style="margin: 1.5em;">'.
                     t("Your server doesn't support post publication, you can only read contact's feeds").
                 '</div>';
-        } else {
-            if(!isset($session['config']['feed'])) {
+        } elseif(!isset($session['config']['feed'])) {
             $html .= '
                 <div id="feednotifs">
                     <div class="message info">'.
@@ -110,39 +110,38 @@ class Feed extends WidgetCommon {
                 <script type="text/javascript">'.
                         $this->genCallAjax('ajaxCreateNode').
                 '</script>';
-            } else {
-                $html .= '
-                    <script type="text/javascript">
-                        function createCommentNode(parentid) {'.
-                            $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]').
-                    '}
-                    </script>
-                    <table id="feedsubmitform">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <textarea 
-                                        placeholder="'.t("What's new ?").'" 
-                                        id="feedmessagecontent" 
-                                        onkeyup="movim_textarea_autoheight(this);"></textarea>
-                                </td>
-                            </tr>
-                            <tr id="feedsubmitrow">
-                                <td>
-                                    <a 
-                                        title="'.t("Submit").'"
-                                        href="#" 
-                                        id="feedmessagesubmit" 
-                                        onclick="'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'"
-                                        class="button tiny icon submit">'.t("Submit").'
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        } else {
+            $html .= '
+                <script type="text/javascript">
+                    function createCommentNode(parentid) {'.
+                        $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]').
+                '}
+                </script>
+                <table id="feedsubmitform">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <textarea 
+                                    placeholder="'.t("What's new ?").'" 
+                                    id="feedmessagecontent" 
+                                    onkeyup="movim_textarea_autoheight(this);"></textarea>
+                            </td>
+                        </tr>
+                        <tr id="feedsubmitrow">
+                            <td>
+                                <a 
+                                    title="'.t("Submit").'"
+                                    href="#" 
+                                    id="feedmessagesubmit" 
+                                    onclick="'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'"
+                                    class="button tiny icon submit">'.t("Submit").'
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <div id="feednotifs"></div>';
-            }
+                <div id="feednotifs"></div>';
         }
         
         return $html;
