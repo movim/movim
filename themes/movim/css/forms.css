@@ -191,6 +191,13 @@ form .element.simple > *:not(label):not(img):focus {
 .icon.next:before { content: "→"; }
 .tiny.icon.loading:before { padding: 4px 7px; }
 
+.button.tiny {
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .tiny.icon {
     font-size: 11px;
     line-height: 22px;

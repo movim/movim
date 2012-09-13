@@ -6,15 +6,14 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-18 21:48+0200\n"
-"PO-Revision-Date: 2011-10-13 19:51+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"PO-Revision-Date: 2012-07-07 15:46+0000\n"
+"Last-Translator: ben <ben.henderson@planet.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-27 19:56+0000\n"
-"X-Generator: Launchpad (build 15288)\n"
+"X-Launchpad-Export-Date: 2012-09-11 19:52+0000\n"
+"X-Generator: Launchpad (build 15930)\n"
 
 #: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
@@ -26,7 +25,7 @@ msgstr ""
 
 #: ../install/index.php:86
 msgid "Update your PHP version or contact your server administrator"
-msgstr ""
+msgstr "Update de PHR versie of neem contact op met de sever beheerder"
 
 #: ../install/index.php:89 ../install/index.php:93 ../install/index.php:97
 #: ../install/index.php:115
@@ -50,7 +49,7 @@ msgstr "De Movim map moet schrijfbaar zijn."
 
 #: ../install/index.php:102
 msgid "Enable read and write rights on Movim's root folder"
-msgstr ""
+msgstr "Enable de lees en schrijfrechten in Movim`s root folder"
 
 #: ../install/index.php:114
 msgid "or"
@@ -83,11 +82,14 @@ msgstr ""
 
 #: ../install/part1.php:29
 msgid "Thank you for downloading Movim!"
-msgstr ""
+msgstr "Dank u voor het downloaden van Movim!"
 
 #: ../install/part1.php:30
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
+"Voordat u gebruik kunt maken van uw social network, zijn er enkele "
+"aanpassingen noodzakelijk."
 
 #: ../install/part1.php:31
 msgid ""
@@ -177,9 +179,9 @@ msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
 
 #: ../system/Conf.php:38
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "Kan bestand %s niet laden"
+msgstr ""
 
 #: ../system/Conf.php:49
 #, php-format
@@ -925,15 +927,3 @@ msgstr ""
 #: ../system/Widget/widgets/Wall/Wall.php:135
 msgid "Loading the contact feed ..."
 msgstr "Laad de gebruiker feed"
-
-#~ msgid "Validate"
-#~ msgstr "Valideren"
-
-#~ msgid "MOVIM - Test Client"
-#~ msgstr "MOVIM - Test klant"
-
-#~ msgid "Add a contact"
-#~ msgstr "Contact toevoegen"
-
-#~ msgid "Get the comments"
-#~ msgstr "Geef de commentaren"
