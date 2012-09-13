@@ -6,15 +6,14 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-18 21:48+0200\n"
-"PO-Revision-Date: 2011-10-26 21:31+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"PO-Revision-Date: 2012-07-07 07:48+0000\n"
+"Last-Translator: Ole Carlsen <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-27 19:56+0000\n"
-"X-Generator: Launchpad (build 15288)\n"
+"X-Launchpad-Export-Date: 2012-09-11 19:52+0000\n"
+"X-Generator: Launchpad (build 15930)\n"
 
 #: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
@@ -54,7 +53,7 @@ msgstr ""
 
 #: ../install/index.php:114
 msgid "or"
-msgstr ""
+msgstr "eller"
 
 #: ../install/index.php:169
 #, php-format
@@ -86,7 +85,8 @@ msgid "Thank you for downloading Movim!"
 msgstr ""
 
 #: ../install/part1.php:30
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
 
 #: ../install/part1.php:31
@@ -120,27 +120,27 @@ msgstr ""
 
 #: ../install/part1.php:110
 msgid "empty"
-msgstr ""
+msgstr "tom"
 
 #: ../install/part1.php:111
 msgid "terse"
-msgstr ""
+msgstr "kort"
 
 #: ../install/part1.php:112
 msgid "normal"
-msgstr ""
+msgstr "normal"
 
 #: ../install/part1.php:113
 msgid "talkative"
-msgstr ""
+msgstr "snakkesalig"
 
 #: ../install/part1.php:114
 msgid "ultimate"
-msgstr ""
+msgstr "ultimativ"
 
 #: ../install/part1.php:144
 msgid "XMPP Connection Preferences"
-msgstr ""
+msgstr "XMPP forbindelse indstillinger"
 
 #: ../install/part1.php:157
 msgid "BOSH Connection Preferences"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: ../install/part2.php:15
 msgid "Success !"
-msgstr ""
+msgstr "Fuldført!"
 
 #: ../install/part2.php:18
 msgid "Valid Bosh"
@@ -177,9 +177,9 @@ msgid "Please remove the %s folder in order to complete the installation"
 msgstr ""
 
 #: ../system/Conf.php:38
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "Kan ikke indlæse element værdi '%s'"
+msgstr ""
 
 #: ../system/Conf.php:49
 #, php-format
@@ -211,91 +211,91 @@ msgstr "Fejl: '%s'"
 
 #: ../system/Utils.php:123
 msgid "Monday"
-msgstr ""
+msgstr "Mandag"
 
 #: ../system/Utils.php:124
 msgid "Tuesday"
-msgstr ""
+msgstr "Tirsdag"
 
 #: ../system/Utils.php:125
 msgid "Wednesday"
-msgstr ""
+msgstr "Onsdag"
 
 #: ../system/Utils.php:126
 msgid "Thursday"
-msgstr ""
+msgstr "Torsdag"
 
 #: ../system/Utils.php:127 ../system/Utils.php:129
 msgid "Friday"
-msgstr ""
+msgstr "Fredag"
 
 #: ../system/Utils.php:128
 msgid "Saturday"
-msgstr ""
+msgstr "Lørdag"
 
 #: ../system/Utils.php:132
 msgid "January"
-msgstr ""
+msgstr "Januar"
 
 #: ../system/Utils.php:133
 msgid "February"
-msgstr ""
+msgstr "Februar"
 
 #: ../system/Utils.php:134
 msgid "March"
-msgstr ""
+msgstr "Marts"
 
 #: ../system/Utils.php:135
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #: ../system/Utils.php:136
 msgid "May"
-msgstr ""
+msgstr "Maj"
 
 #: ../system/Utils.php:137
 msgid "June"
-msgstr ""
+msgstr "Juni"
 
 #: ../system/Utils.php:138
 msgid "July"
-msgstr ""
+msgstr "Juli"
 
 #: ../system/Utils.php:139
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: ../system/Utils.php:140
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: ../system/Utils.php:141
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: ../system/Utils.php:142
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: ../system/Utils.php:143
 msgid "December"
-msgstr ""
+msgstr "December"
 
 #: ../system/Utils.php:149
 msgid "Today"
-msgstr ""
+msgstr "Idag"
 
 #: ../system/Utils.php:151
 msgid "Tomorrow"
-msgstr ""
+msgstr "I morgen"
 
 #: ../system/Utils.php:153
 msgid "Yesterday"
-msgstr ""
+msgstr "I går"
 
 #: ../system/Utils.php:159
 msgid "day"
-msgstr ""
+msgstr "dag"
 
 #: ../system/Utils.php:162
 #, php-format
@@ -826,7 +826,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:108
 msgid "Connecting..."
-msgstr ""
+msgstr "Forbinder..."
 
 #: ../system/Widget/widgets/Login/Login.php:110
 msgid "Come in!"
@@ -925,15 +925,3 @@ msgstr ""
 #: ../system/Widget/widgets/Wall/Wall.php:135
 msgid "Loading the contact feed ..."
 msgstr "Indlæse kontakt kilde..."
-
-#~ msgid "Validate"
-#~ msgstr "Gyldighedskontrol"
-
-#~ msgid "MOVIM - Test Client"
-#~ msgstr "MOVIM - Test klient"
-
-#~ msgid "Add a contact"
-#~ msgstr "Tilføj en kontakt"
-
-#~ msgid "Get the comments"
-#~ msgstr "Hent kommentarer"

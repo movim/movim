@@ -76,8 +76,10 @@ class User {
         $sess->set('session', $session);
     }
     
-    function getConfig($key)
+    function getConfig($key = false)
     {
+        if($key == false)
+            return $this->config;
         if(isset($this->config[$key]))
             return $this->config[$key];
     }
