@@ -64,11 +64,11 @@ function incomingPresence(val) {
 function focusContact(){
 	rosterlist = document.querySelector('#rosterlist');
 	if(rosterlist.querySelector('.focused') == null){
-		if(rosterlist.querySelector("li[style='display: list-item; ']")){
+		/*if(rosterlist.querySelector("li[style='display: list-item; ']")){
 			rosterlist.querySelector("li[style='display: list-item; ']").className += " focused";
 		}
-		else
-			rosterlist.querySelector("li:not([class='offline '])").className += " focused";
+		else*/
+			rosterlist.querySelector("li:not([class='offline ']):not([style=''])").className += " focused";
 	}
 }
 
@@ -76,8 +76,9 @@ function rosterNext(c){
 	if(c.className.lastIndexOf("focused")>-1){
 		found = true;
 	}
-	if(contact.nextSibling != null && contact.nextSibling.className.lastIndexOf("offline")<0){
-		contact = c.nextSibling;
+	if(c.nextSibling != null){
+		if((c.nextSibling.style.display !='' || c.nextSibling.className.lastIndexOf("offline")<0))
+			contact = c.nextSibling;
 	}
 	else{
 		if(contact.parentNode.nextSibling!=null && contact.parentNode.nextSibling.nodeName!='#text'){
@@ -159,37 +160,44 @@ function rosterSearch(e){
 							contact = contact.parentNode.nextSibling.querySelectorAll("li")[0];
 						}
 					}
-					if(document.querySelector('.offline').style.display == ''){//before filtering, offline contacts are hidden
-						while((contact.className.lastIndexOf("offline")>-1 || contact.className.lastIndexOf("error")>-1) || !found){//so they can't be focused
-							rosterPrevious(contact);
+					if(!(contact.previousSibling.nodeName == "H1" && contact.parentNode.previousSibling == null)){
+						if(document.querySelector('.offline').style.display == ''){//before filtering, offline contacts are hidden
+							while((contact.className.lastIndexOf("offline")>-1 || contact.className.lastIndexOf("error")>-1) || !found){//so they can't be focused
+								rosterPrevious(contact);
+							}
+						}
+						else{
+							while(contact.getAttribute('style')=="" || !found){ //.lastIndexOf('list-item')<0
+								rosterPrevious(contact);
+							}
+						}
+						if(contact.offsetTop-document.querySelector('#right').scrollTop < decallage){
+							document.querySelector('#right').scrollTop -= decallage -(contact.offsetTop-document.querySelector('#right').scrollTop) +10;
 						}
 					}
 					else{
-						while(contact.getAttribute('style').lastIndexOf('list-item')<0 || !found){
-							rosterPrevious(contact);
+console.log(contact.parentNode.previousSibling);
 						}
-					}
-					if(contact.offsetTop-document.querySelector('#right').scrollTop < decallage){
-						document.querySelector('#right').scrollTop -= decallage -(contact.offsetTop-document.querySelector('#right').scrollTop) +10;
-					}
-					console.log(contact.offsetTop-document.querySelector('#right').scrollTop+" ? "+decallage);
 					break;
 				//next
 				case e.keyCode = 39:
 				case e.keyCode = 40:
-					if(document.querySelector('.offline').style.display == '' ){
-						while((contact.className.lastIndexOf("offline")>-1 || contact.className.lastIndexOf("error")>-1 || !found) ){
-							rosterNext(contact);
+					//if(contact !== rosterlist.querySelectorAll("li:not([class='offline'])")[rosterlist.querySelectorAll("li:not([class='offline'])").length-1]){
+						console.log(rosterlist.querySelectorAll("li:not([class='offline'])")[rosterlist.querySelectorAll("li:not([class='offline'])").length-1]);
+						if(document.querySelector('.offline').style.display == '' ){
+							while((contact.className.lastIndexOf("offline")>-1 || contact.className.lastIndexOf("error")>-1 || !found) ){
+								rosterNext(contact);
+							}
 						}
-					}
-					else{
-						while((contact.getAttribute('style').lastIndexOf('list-item')<0 || !found) ){
-							rosterNext(contact);
+						else{
+							while((contact.getAttribute('style')=="" || !found) ){//.lastIndexOf('list-item')<0
+								rosterNext(contact);
+							}
 						}
-					}
-					if(contact.offsetTop+decallage-document.querySelector('#right').scrollTop >= document.querySelector('#rostermenu').offsetTop){
-						document.querySelector('#right').scrollTop += contact.offsetTop+decallage-document.querySelector('#right').scrollTop - document.querySelector('#rostermenu').offsetTop;
-					}
+						if(contact.offsetTop+decallage-document.querySelector('#right').scrollTop >= document.querySelector('#rostermenu').offsetTop){
+							document.querySelector('#right').scrollTop += contact.offsetTop+decallage-document.querySelector('#right').scrollTop - document.querySelector('#rostermenu').offsetTop;
+						}
+					//}
 					break;
 			}
 			if(focused.className == (focused.className = focused.className.replace(" focused", "")))
