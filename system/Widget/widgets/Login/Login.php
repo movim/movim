@@ -5,7 +5,7 @@
  *
  * @file Login.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief The login form.
  *
  * @author Timothée Jaussoin <edhelas@gmail.com>
@@ -14,25 +14,25 @@
  * @date 07 December 2011
  *
  * Copyright (C)2010 MOVIM project
- * 
+ *
  * See COPYING for licensing information.
  */
- 
+
 class Login extends WidgetBase {
-    
+
     function WidgetLoad()
     {
         $this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
     }
-    
+
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
     }
-    
-    private function displayWarning($warning) 
+
+    private function displayWarning($warning)
     {
         if($warning != false) {
             switch ($warning) {
@@ -52,13 +52,13 @@ class Login extends WidgetBase {
                     $warning = '
                             <div class="message error">
                                 '.t('Authentification mechanism not supported by Movim').'
-                            </div> '; 
+                            </div> ';
                     break;
                 case 'errorchallenge':
                     $warning = '
                             <div class="message error">
                                 '.t('Empty Challenge from the server').'
-                            </div> '; 
+                            </div> ';
                     break;
                 case 'dnsdomain':
                     $warning = '
@@ -115,16 +115,16 @@ class Login extends WidgetBase {
                             </div> ';
                     break;
             }
-            
+
             RPC::call('movim_fill', 'warning',
                RPC::cdata($warning));
             RPC::call('loginButtonSet', t("Come in!"));
-               
+
             RPC::commit();
             exit;
         }
     }
-    
+
     function ajaxLogin($element)
     {
         $warning = false;
@@ -135,29 +135,29 @@ class Login extends WidgetBase {
                 $warning = 'datamissing';
 	        }
 	    }
-        
+
         $this->displayWarning($warning);
 
         // Correct email test
         if(!filter_var($element['login'], FILTER_VALIDATE_EMAIL))
             $warning = 'invalidjid';
-            
+
         $this->displayWarning($warning);
-        
+
         // Correct XMPP account test
         $login_arr = explode('@', $element['login']);
         $user = $login_arr[0];
         $host = $login_arr[1];
         $dns = dns_get_record('_xmpp-client._tcp.'.$login_arr[1]);
-        
+
         if(isset($dns[0]['target']) && $dns[0]['target'] != null)
             $domain = $dns[0]['target'];
         else {
             $warning = 'dnsdomain';
         }
-        
+
         $this->displayWarning($warning);
-        
+
         // We get the Server Configuration
         $serverconfig = Conf::getServerConf();
 
@@ -175,18 +175,18 @@ class Login extends WidgetBase {
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,
-                    'ressource' => 'moxl'.md5(date()), 
-                    
+                    'ressource' => 'moxl'.md5(date()),
+
                     'user'     => $user,
                     'password' => $element['pass'],
-                    
+
                     'proxyenabled' => $serverconfig['proxyEnabled'],
                     'proxyurl' => $serverconfig['proxyURL'],
                     'proxyport' => $serverconfig['proxyPort'],
                     'proxyuser' => $serverconfig['proxyUser'],
                     'proxypass' => $serverconfig['proxyPass']);
         }
-        
+
         $sess = Session::start(APP_NAME);
 
         $sess->set('session', $session);
@@ -195,11 +195,11 @@ class Login extends WidgetBase {
         $warning = moxl\login();
         if($warning != 'OK')
             $this->displayWarning($warning);
-        
+
         RPC::call('enterMovim', BASE_URI.'?q=mainPage');
         RPC::commit();
     }
-    
+
     function ajaxGetConfig()
     {
         $s = new moxl\StorageGet();
@@ -207,9 +207,9 @@ class Login extends WidgetBase {
           ->request();        $evt = new \Event();
         $evt->runEvent('nostream');
     }
-	
+
 	function build()
-	{ 
+	{
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
 
         ?>
@@ -221,7 +221,7 @@ class Login extends WidgetBase {
                     '.t('Your web browser is too old to use with Movim.').'
                 </div> ';
             } else {
-                
+
                 if(file_exists(BASE_PATH.'install/part1.php')) { ?>
                     <div class="message warning">
                     <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
@@ -229,28 +229,28 @@ class Login extends WidgetBase {
                 <?php
                 }?>
                 <div id="warning"></div>
-                <form 
-                    name="login" 
-                    id="connectform" 
+                <form
+                    name="login"
+                    id="connectform"
                     onkeypress="if(event.keyCode == 13) {<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);}">
                     <div class="element">
-                        <input type="email" name="login" id="login" autofocus required autocomplete="off"
+                        <input type="email" name="login" id="login" autofocus required
                             placeholder="<?php echo t("My address"); ?>"/>
                     </div>
                     <div class="element">
-                        <input type="password" name="pass" id="pass" required 
+                        <input type="password" name="pass" id="pass" required
                             placeholder="<?php echo t("Password"); ?>"/>
                     </div>
-                    
+
                         <a
                             class="button icon yes"
-                            onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);"  
+                            onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);"
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
-            
+
                 </form>
-            <?php 
-            } 
+            <?php
+            }
             ?>
         </div>
     <?php
