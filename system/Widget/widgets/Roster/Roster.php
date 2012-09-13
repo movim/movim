@@ -129,6 +129,7 @@ class Roster extends WidgetBase
                                         'Contact`.`jid!' => $this->user->getLogin(),
                                         array(
                                             'Contact`.`rostersubscription!' => 'none',
+                                            'Contact`.`rostersubscription!' => 'vcard',
                                             '|Contact`.`rosterask' => 'subscribe')))
                                  ->orderby('Contact.group', true);
 
