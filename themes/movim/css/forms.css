@@ -92,6 +92,7 @@ form .element .select select {
 }
 
 form .element .select:before {
+    pointer-events:none;
     content: "▶";
     font: 11px sans-serif;
     font-weight: bold;
