@@ -170,6 +170,7 @@ class Notifs extends WidgetBase
                             'jid!' => $this->user->getLogin(),
                             array(
                                 'rostersubscription!' => 'none',
+                                'Contact`.`rostersubscription!' => 'vcard',
                                 '|rosterask' => 'subscribe')));
     $contacts = Contact::run_query($query);
     ?>
