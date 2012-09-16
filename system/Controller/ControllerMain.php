@@ -28,6 +28,8 @@ class ControllerMain extends ControllerBase
         $sdb->create($c);
         $p = new Presence();
         $sdb->create($p);
+        $o = new Post();
+        $sdb->create($o);
 		$this->page = new TplPageBuilder();
         $this->page->addScript('hash.js');
         $this->page->addScript('movimrpc.js');
@@ -191,6 +193,21 @@ class ControllerMain extends ControllerBase
         $content = new TplPageBuilder($user);
 		$this->page->setContent($content->build('login.tpl'));
 		echo $this->page->build('page.tpl');
+	}
+    
+	/**
+	 * Create the Atom feed of a user
+	 */
+	function feed()
+	{
+    	/*$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
+		$this->page->menuAddLink(t('Home'), '?q=mainPage', true);
+
+        $content = new TplPageBuilder($user);
+		$this->page->setContent($content->build('login.tpl'));
+		echo $this->page->build('page.tpl');*/
+        $content = new TplPageBuilder();
+        echo $content->build('feed.tpl');
 	}
     
     /*

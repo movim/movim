@@ -26,6 +26,8 @@ class Post extends DatajarBase {
     
     public $commentson;
     public $commentplace;
+    
+    public $public;
 
     protected function type_init() {
         $this->key      = DatajarType::varchar(128);
@@ -53,6 +55,8 @@ class Post extends DatajarBase {
         
         $this->commentson  = DatajarType::int();
         $this->commentplace= DatajarType::varchar(128);
+        
+        $this->public      = DatajarType::int();
     }
     
     public function setPost($item, $from, $parent = false, $key = false) {
