@@ -91,8 +91,14 @@ class WidgetCommon extends WidgetBase {
         
         if(isset($message[1])) {
             $tmp = '<div class="post ';
-                if($this->user->getLogin() == $message[0]->getData('jid'))
-                    $tmp .= 'me';
+                if($this->user->getLogin() == $message[0]->getData('jid')) {
+                    $tmp .= 'me ';
+                    if($message[0]->getData('public') == 1)
+                        $tmp .= 'protect black';
+                    else
+                        $tmp .= 'protect orange';
+                    //$tmp .= 'me';
+                }
             $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
             
                     <a href="?q=friend&f='.$message[0]->getData('jid').'">
@@ -104,22 +110,7 @@ class WidgetCommon extends WidgetBase {
                     </span>
                     <span class="date">
                         '.prepareDate(strtotime($message[0]->getData('updated'))).'
-                    </span>';
-                    
-                    if($this->user->getLogin() == $message[0]->getData('jid')) {
-                        $tmp .= '
-                            <span 
-                                class="delete" 
-                                onclick="'.
-                                    $this->genCallAjax(
-                                        'ajaxDeletePost', 
-                                        "'".$this->user->getLogin()."'", 
-                                        "'".$message[0]->getData('nodeid')."'").'" 
-                                title="'.t("Delete this post").'">
-                                X
-                            </span>';
-                    }
-                    
+                    </span>';                    
                     
             $tmp .= '<div class="content">
                         '.prepareString($message[0]->getData('content')). '</div>';
@@ -195,6 +186,62 @@ class WidgetCommon extends WidgetBase {
                                 </tr>
                             </table>';
                 $tmp .= '</div>';
+            }
+            
+            if($this->user->getLogin() == $message[0]->getData('jid')) {
+                $tmp .= '
+                    <div class="tools">
+                        '.t("Change the privacy level").' : 
+                        <a
+                            onclick="'.
+                                $this->genCallAjax(
+                                    'ajaxPrivacyPost', 
+                                    "'".$this->user->getLogin()."'", 
+                                    "'".$message[0]->getData('nodeid')."'",
+                                    "'black'").'" >
+                            '.t("Everyone").'
+                        </a>,
+                        <a
+                            onclick="'.
+                                $this->genCallAjax(
+                                    'ajaxPrivacyPost', 
+                                    "'".$this->user->getLogin()."'", 
+                                    "'".$message[0]->getData('nodeid')."'",
+                                    "'orange'").'" >
+                            '.t("Your contacts").'
+                        </a>
+                        <a
+                            style="float: right; display: none;";
+                            id="deleteno"
+                            onclick="
+                                this.parentNode.querySelector(\'#deleteyes\').style.display = \'none\';
+                                this.style.display = \'none\';
+                                "
+                            onclick="">
+                            ✘ '.t("No").'
+                        </a>
+                        <a
+                            style="float: right; padding-right: 1em; display: none;";
+                            id="deleteyes"
+                            onclick="'.
+                                $this->genCallAjax(
+                                    'ajaxDeletePost', 
+                                    "'".$this->user->getLogin()."'", 
+                                    "'".$message[0]->getData('nodeid')."'").'" >
+                            ✔ '.t("Yes").' 
+                        </a>
+                        <a
+                            style="float: right; padding-right: 1em;";
+                            onclick="
+                                this.parentNode.querySelector(\'#deleteyes\').style.display = \'inline\';
+                                this.parentNode.querySelector(\'#deleteno\').style.display = \'inline\';
+                                " 
+                            title="'.t("Delete this post").'">
+                            '.t("Delete this post").'
+                        </a>
+
+
+                    </div>';
             }
               
             $tmp .= '</div>';
@@ -325,6 +372,31 @@ class WidgetCommon extends WidgetBase {
         $p->setTo($to)
           ->setId($id)
           ->request();
+    }
+    
+    function ajaxPrivacyPost($to, $id, $privacy) {
+        $query = Post::query()
+                            ->where(
+                                array(
+                                    'key' => $to,
+                                    'jid' => $to,
+                                    'nodeid' => $id))
+                            ->limit(0, 1);
+        $post = Post::run_query($query);
+        
+        if(isset($post[0])) {
+            $post = $post[0];
+
+            if($privacy == 'orange')
+                $post->public->setval(0);
+            elseif($privacy == 'black')
+                $post->public->setval(1);
+                
+            $post->run_query($post->query()->save($post));
+        }
+        
+        RPC::call('movim_change_class', $id , 'post me protect '.$privacy);
+        RPC::commit();
     }
     
     function onPostDelete($id) {

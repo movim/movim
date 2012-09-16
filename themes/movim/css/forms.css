@@ -186,7 +186,7 @@ form .element.simple > *:not(label):not(img):focus {
 .icon.follow:before { content:"⇒" }
 .icon.chat:before { background-image: url(../img/icons/chat_icon.png); content:"";}
 .icon.add:before { content: "+"; }
-.icon.rm { background-image: url(../img/icons/rm_icon.png); }
+.icon.rm:before { content:"—"; }
 .icon.submit:before { content: "▼"; }
 .icon.loading:before { content: "◕"; }
 .icon.next:before { content: "→"; }
