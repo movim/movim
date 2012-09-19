@@ -75,7 +75,7 @@ function prepareString($string) {
             ':lol:' => 'trollol.png',
         );
     
-    $string = preg_replace(
+    /*$string = preg_replace(
         array(
             '/(?(?=<a[^>]*>.+<\/a>)
             (?:<a[^>]*>.+<\/a>)
@@ -96,7 +96,7 @@ function prepareString($string) {
             "stripslashes((strlen('\\2')>0?'<a href=\"mailto:\\0\">\\0</a>':'\\0'))"
         ),
         $string
-    );
+    );*/
     
     $conf = new Conf();
     $theme = $conf->getServerConfElement('theme');
