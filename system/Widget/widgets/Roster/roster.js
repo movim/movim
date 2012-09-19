@@ -41,15 +41,20 @@ function sortRoster() {
 
 }
 
+function rosterToggleClass(myClass){
+	c = roster.querySelectorAll('.'+myClass);
+    for(i = 0; i < c.length; i++) {
+        if(c.item(i).style.display == 'list-item')
+            c.item(i).style.display = 'none';
+        else
+            c.item(i).style.display = 'list-item';
+    }
+}
+
 function showRoster(n) {
     roster = document.querySelector('#rosterlist');
-    offline = roster.querySelectorAll('.offline');
-    for(i = 0; i < offline.length; i++) {
-        if(offline.item(i).style.display == 'list-item')
-            offline.item(i).style.display = 'none';
-        else
-            offline.item(i).style.display = 'list-item';
-    }
+    rosterToggleClass("offline");
+    rosterToggleClass("server_error");
 }
 
 function incomingPresence(val) {
@@ -64,16 +69,155 @@ function incomingPresence(val) {
 function focusContact(){
 	rosterlist = document.querySelector('#rosterlist');
 	if(rosterlist.querySelector('.focused') == null){
-		if(rosterlist.querySelector("li[style='display: list-item; ']")){
-			rosterlist.querySelector("li[style='display: list-item; ']").className += " focused";
+		//offline are shown
+		if(rosterlist.querySelector(".offline").style!=""){
+			rosterlist.querySelector("li").className += " focused";
 		}
-		else
-			rosterlist.querySelector("li:not([class='offline '])").className += " focused";
+		//offline are hidden
+		else{
+			rosterlist.querySelector("linot([class='offline '])").className += " focused";
+		}
+		document.querySelector('#right').scrollTop = 0;
 	}
 }
 
+function rosterNextGroup(cgp){
+	thisGp = gp[0];
+	while(cgp != thisGp && thisGp.nextSibling!= null){
+		thisGp = thisGp.nextSibling;
+	}
+	if(thisGp.nextSibling!= null){
+		cgp = thisGp.nextSibling;
+		currContact = cgp.querySelectorAll("li")[0];
+	}
+}
 
-function search(e){
+function rosterNext(){
+	currFocus = rosterlist.querySelector(".focused");
+	currGp = currFocus.parentNode;
+	end = false;
+	gp = rosterlist.querySelectorAll("div:not([class='chat on'])");
+	currContact = currGp.querySelectorAll("li")[0];
+	while(currContact.className.lastIndexOf("focused") < 0 && currContact.nextSibling != null){
+		currContact = currContact.nextSibling;
+	}
+	currContact = currContact.nextSibling;
+	//Change groupe
+	if(currContact == null ){
+		if( currGp !== gp[gp.length-1]){
+			rosterNextGroup(currGp);
+		}
+		else{
+			end = true;
+		}
+	}
+	if(currContact !== null && !end){
+		//offline are shown
+		if(rosterlist.querySelector(".offline").style.display != ""){
+			while(currContact.style.display.lastIndexOf("none") > (-1) && !end){
+				if(currContact.nextSibling != null){
+					currContact = currContact.nextSibling;
+				}
+				else{
+					if(currGp != gp[gp.length-1])
+						rosterNextGroup(currGp);
+					else{
+						end = true;
+					}
+				}
+			}
+		}
+		//offline are hidden
+		else{
+			while((currContact.className.lastIndexOf("offline") > -1 || currContact.className.lastIndexOf("server") > -1) && !end){
+				if(currContact.nextSibling != null){
+					currContact = currContact.nextSibling;
+				}
+				else{
+					if(currGp != gp[gp.length-1])
+						rosterNextGroup(currGp);
+					else{
+						end = true;
+					}
+				}
+			}
+		}
+		if(end)
+			contact = currFocus;
+		else
+			contact = currContact;
+	}
+	else{
+		if(end)
+			contact = currFocus;
+	}
+}
+
+function rosterPreviousGroup(cgp){
+	thisGp = gp[0];
+	if(cgp != thisGp){ //not first group
+		while(thisGp.nextSibling != cgp){
+			thisGp = thisGp.nextSibling;//change group
+		}
+		currGp = thisGp;
+		first = currGp.querySelector("li");
+		currContact = thisGp.querySelectorAll("li")[thisGp.querySelectorAll("li").length-1];
+	}
+	else{
+		end = true;
+	}
+}
+
+function rosterPrevious(){
+	currFocus = rosterlist.querySelector(".focused");
+	currGp = currFocus.parentNode;
+	gp = rosterlist.querySelectorAll("div:not([class='chat on'])");
+	firstGroup = gp[0];
+	end = false;
+	firstContact = currGp.querySelector("li");
+	currContact = currGp.querySelectorAll("li")[currGp.querySelectorAll("li").length -1];
+	while(currContact.className.lastIndexOf("focused") < 0 && currContact != firstContact){
+		currContact = currContact.previousSibling;
+	}
+	currContact = currContact.previousSibling;
+	if(currGp.querySelector("li") == currFocus){ //first contact of the group
+		rosterPreviousGroup(currGp);
+	}
+	if(currGp.querySelector("li") != currFocus && !end){
+		//offline are shown
+		if(rosterlist.querySelector(".offline").style.display != ""){
+			while(currContact.style.display.lastIndexOf("none") > (-1)){
+				if(currContact != firstContact){
+					currContact = currContact.previousSibling;
+				}
+				else{
+					rosterPreviousGroup(currGp);
+				}
+			}
+			if(end)
+				contact = currFocus;
+			else
+				contact = currContact;
+		}
+		//offline are hidden
+		else{
+			while((currContact.className.lastIndexOf("offline") > -1 || currContact.className.lastIndexOf("server") > -1) && !end){
+				if(currContact != firstContact){
+					currContact = currContact.previousSibling;
+				}
+				else{
+					rosterPreviousGroup(currGp);
+				}
+			}
+			if(end)
+				contact = currFocus;
+			else
+				contact = currContact;
+		}
+	}
+}
+
+function rosterSearch(e){
 	rosterlist = document.querySelector('#rosterlist');
 	parents = rosterlist.querySelectorAll('li');
 	names = rosterlist.getElementsByTagName('span');
@@ -95,115 +239,64 @@ function search(e){
 				}
 			}
 		}
+		document.querySelector('#right').scrollTop = 0;
 	}
 	else{
 		if(e.keyCode == 13){ //key pressed is enter; launch chat
 			eval(focused.getElementsByTagName("div")[0].getAttribute("onclick"));
 		}
-		/*if(e.keyCode>36 && e.keyCode<41){ //key pressed is an arrow
+		if(e.keyCode>36 && e.keyCode<41){ //key pressed is an arrow
 			//contact is the first contact of the list which is shown (already sorted)
 			contact = rosterlist.querySelectorAll("li[style='display: list-item; ']")[0];
 			//otherwise it is the first contact of the list
 			if(typeof contact === 'undefined'){
 				contact = rosterlist.querySelectorAll("li:not([class='offline '])")[0];
 			}
+			found = false;
+			if(0 == (decallage = contact.offsetHeight))
+				decallage = contact.nextSibling.offsetHeight;
+
 			switch(e.keyCode){
 				//previous
-				case e.keyCode = 37:
+				//case e.keyCode = 37:
 				case e.keyCode = 38:
-					found = false;//the focused one
-					while(contact.className.lastIndexOf("focused") == -1){
+					/*while(contact.className.lastIndexOf("focused") == -1){
 						if(contact.nextSibling != null){
 							contact = contact.nextSibling;
 						}
 						else{
 							contact = contact.parentNode.nextSibling.querySelectorAll("li")[0];
 						}
-					}
-					found = false;
-					if(document.querySelector('.offline').style.display == ''){//before filtering, offline contacts are hidden
-						while((contact.className.lastIndexOf("offline")>-1 || contact.className.lastIndexOf("error")>-1) || !found){//so they can't be focused
-							if(contact.className.lastIndexOf("focused") > -1){
-								found = true;
-							}
-							if(contact.previousSibling == null || contact.previousSibling.nodeName == "H1"){
-								if(contact.parentNode.previousSibling.nodeName!='#text' && contact.parentNode.previousSibling!=null){
-									last = contact.parentNode.previousSibling.querySelectorAll("li").length - 1;
-									contact = contact.parentNode.previousSibling.querySelectorAll("li")[last];
-									decallage = 2*contact.offsetHeight;
-								}
-							}
-							else{
-								contact = contact.previousSibling;
-								decallage = contact.offsetHeight;
-							}
+					}*/
+					//if(!(contact.previousSibling.nodeName == "H1" && contact.parentNode.previousSibling == null)){
+						//if(document.querySelector('.offline').style.display == ''){//before filtering, offline contacts are hidden
+							//while((contact.className.lastIndexOf("offline")>-1 || contact.className.lastIndexOf("error")>-1) || !found){//so they can't be focused
+								rosterPrevious();
+							//}
+						//}
+						//else{
+							//while(contact.getAttribute('style')=="" || !found){ //.lastIndexOf('list-item')<0
+								//rosterPrevious(contact);
+							//}
+						//}
+						if(contact.offsetTop-document.querySelector('#right').scrollTop < decallage){
+							document.querySelector('#right').scrollTop -= decallage -(contact.offsetTop-document.querySelector('#right').scrollTop) +10;
 						}
-					}
-					else{
-						while(contact.getAttribute('style').lastIndexOf('list-item')<0 || !found){
-							if(contact.className.lastIndexOf("focused")>-1){
-								found = true;
-							}
-							if(contact.previousSibling == null || contact.previousSibling.nodeName == "H1"){
-								if(contact.parentNode.previousSibling.nodeName!='#text' && contact.parentNode.previousSibling!=null){
-									last = contact.parentNode.previousSibling.querySelectorAll("li").length - 1;
-									contact = contact.parentNode.previousSibling.querySelectorAll("li")[last];
-									decallage = 2*contact.offsetHeight;
-								}
-							}
-							else{
-								contact = contact.previousSibling;
-								decallage = contact.offsetHeight;
-							}
-						}
-					}
-					if(contact.offsetTop-document.querySelector('#right').scrollTop < decallage){
-						document.querySelector('#right').scrollTop -= decallage -(contact.offsetTop-document.querySelector('#right').scrollTop) +10;
-					}
+					//}
 					break;
 				//next
-				case e.keyCode = 39:
+				//case e.keyCode = 39:
 				case e.keyCode = 40:
-					decallage = contact.offsetHeight;
-					found = false;
-					if(document.querySelector('.offline').style.display == ''){
-						while((contact.className.lastIndexOf("offline")>-1 || contact.className.lastIndexOf("error")>-1 || !found)){
-							if(contact.className.lastIndexOf("focused") > -1){
-								found = true;
-							}
-							if(contact.nextSibling != null){
-								contact = contact.nextSibling;
-							}
-							else{
-								if(contact.parentNode.nextSibling!=null && contact.parentNode.nextSibling.nodeName != '#text'){
-									contact = contact.parentNode.nextSibling.querySelectorAll("li")[0];
-								}
-								console.log('=/');
-							}
-						}
-					}
-					else{
-						while(contact.getAttribute('style').lastIndexOf('list-item')<0 || !found){
-							if(contact.className.lastIndexOf("focused")>-1){
-								found = true;
-							}
-							if(contact.nextSibling != null){
-								contact = contact.nextSibling;
-							}
-							else{
-								contact = contact.parentNode.nextSibling.querySelectorAll("li")[0];
-							}
-						}
-					}
-
-					if(contact.offsetTop+decallage-document.querySelector('#right').scrollTop >= document.querySelector('#request').offsetTop){
-						document.querySelector('#right').scrollTop += contact.offsetTop+decallage-document.querySelector('#right').scrollTop - document.querySelector('#request').offsetTop ;
+					rosterNext();
+					if(contact.offsetTop+decallage-document.querySelector('#right').scrollTop >= document.querySelector('#rostermenu').offsetTop){
+						document.querySelector('#right').scrollTop += contact.offsetTop+decallage-document.querySelector('#right').scrollTop - document.querySelector('#rostermenu').offsetTop;
 					}
 					break;
 			}
-			focused.className = focused.className.split(' ')[0];
-			contact.className = contact.className.split(" ")[0] + " focused";
-
-		}*/
+			if(focused.className == (focused.className = focused.className.replace(" focused", "")))
+				focused.className = focused.className.replace("focused", "");
+			if(contact.className.lastIndexOf("focused")<0)
+				contact.className += " focused";
+		}
 	}
 }

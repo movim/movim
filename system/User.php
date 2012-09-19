@@ -39,7 +39,7 @@ class User {
 	function desauth()
 	{
         PresenceHandler::clearPresence();
-    
+
         if($this->isLogged()) {
             $p = new moxl\PresenceUnavaiable();
             $p->request();
@@ -66,16 +66,16 @@ class User {
 	{
 		return $this->password;
 	}
-    
+
     function setConfig(array $config)
     {
         global $session;
         $session['config'] = $config;
-        
+
         $sess = Session::start(APP_NAME);
         $sess->set('session', $session);
     }
-    
+
     function getConfig($key = false)
     {
         if($key == false)

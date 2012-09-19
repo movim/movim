@@ -3,7 +3,7 @@
 /**
  * @file index.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief Prepares all the needed fixtures and fires up the main request
  * handler.
  *
@@ -13,7 +13,7 @@
  * @date 30 September 2010
  *
  * Copyright (C)2010 Movim Project
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,14 +55,14 @@ if(!file_exists("config/conf.xml")) {
     $polling = false;
     $rqst = new ControllerMain();
     $rqst->handle();
-    
+
     $widgets = WidgetWrapper::getInstance(false);
     $widgets->iterateCached('saveCache');
-    
+
     // Closing stuff
     WidgetWrapper::destroyInstance();
     global $sdb;
-    
+
     $sdb->close();
 }
 ?>
