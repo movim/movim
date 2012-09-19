@@ -1,10 +1,11 @@
 function showPosts(n, me) {
+    //feed = document.querySelector('#feedcontent div:not([class="post me])');
     feed = document.querySelector('#feedcontent');
     posts = feed.children;
 
     for(i = 0; i < posts.length; i++) {
         if(me == true) {
-            if(posts.item(i).className != 'post me')
+            if(posts.item(i).className.split(' ', 2)[1] != 'me')
                 posts.item(i).style.display = 'none';
         }
         else
