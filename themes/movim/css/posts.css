@@ -133,16 +133,24 @@
     margin-top: 0.3em;
 }
 
-.post .content a:hover {
-    text-decoration: underline;
-}
-
 .post .content.tiny {
     margin: 0px;
     padding: 0px;
     margin-left: 3.3em;
     margin-right: 0.5em;
     margin-top: 0.3em;
+}
+
+.post .content i { font-style: italic; }
+.post .content b { font-weight: bold; }
+.post .content u, .post .content a { text-decoration: underline; }
+.post .content img {
+    margin: 1em 0px;
+    max-width: 100%;
+}
+
+.post .content ul, .post .content ol {
+    margin-left: 2em;
 }
 
 .post .attachment {

@@ -46,7 +46,7 @@ class WidgetCommon extends WidgetBase {
                                 ->where(
                                     array(
                                         'Post`.`key' => $this->user->getLogin(), 
-                                        //'Contact`.`key' => $this->user->getLogin(), 
+                                        'Contact`.`key' => $this->user->getLogin(), 
                                         array('Post`.`parentid' => $commentid)))
                                 ->orderby('Post.published', false);
             $comments = Post::run_query($query);
@@ -113,7 +113,7 @@ class WidgetCommon extends WidgetBase {
                     </span>';                    
                     
             $tmp .= '<div class="content">
-                        '.prepareString($message[0]->getData('content')). '</div>';
+                        '.html_entity_decode(prepareString($message[0]->getData('content'))). '</div>';
                         
             //$attachments = AttachmentHandler::getAttachment($this->user->getLogin(), $message[0]->getData('nodeid'));
             /*if($attachments) {
@@ -199,8 +199,7 @@ class WidgetCommon extends WidgetBase {
                                     "'".$this->user->getLogin()."'", 
                                     "'".$message[0]->getData('nodeid')."'",
                                     "'black'").'" >
-                            '.t("Everyone").'
-                        </a>,
+                            '.t("Everyone").'</a>,
                         <a
                             onclick="'.
                                 $this->genCallAjax(
@@ -208,8 +207,7 @@ class WidgetCommon extends WidgetBase {
                                     "'".$this->user->getLogin()."'", 
                                     "'".$message[0]->getData('nodeid')."'",
                                     "'orange'").'" >
-                            '.t("Your contacts").'
-                        </a>
+                            '.t("Your contacts").'</a>
                         <a
                             style="float: right; display: none;";
                             id="deleteno"
@@ -254,6 +252,15 @@ class WidgetCommon extends WidgetBase {
         $tmp = false;
         
         $size = sizeof($comments);
+    
+        $i = 0;
+        while($i < $size-1) {
+            if($comments[$i][0]->getData('nodeid') == $comments[$i+1][0]->getData('nodeid'))
+                unset($comments[$i]);
+            $i++;
+        }
+        
+        $size = sizeof($comments);
         
         $comcounter = 0;
         
@@ -269,41 +276,33 @@ class WidgetCommon extends WidgetBase {
             $comcounter = $size - 3;
         }
         
-        // Temporary array to prevent duplicate comments
-        $duplicate = array();
-
         if($comments) {
             foreach($comments as $comment) {
-                if(!in_array($comment[0]->getData('nodeid'), $duplicate)) {
-                    if(isset($comment[1])) {
-                        $photo = $comment[1]->getPhoto('s');
-                        $name = $comment[1]->getTrueName();
-                    }
-                    else {
-                        $photo = "image.php?c=default";
-                    }
-                    
-                    if($name == null)
-                        $name = $comment[0]->getData('uri');
-                    
-                    $tmp .= '
-                        <div class="comment" ';
-                    if($comcounter > 0) {
-                        $tmp .= 'style="display:none;"';
-                        $comcounter--;
-                    }
-                        
-                    $tmp .='>
-                            <img class="avatar tiny" src="'.$photo.'">
-                            <span><a href="?q=friend&f='.$comment[0]->getData('uri').'">'.$name.'</a></span>
-                            <span class="date">'.prepareDate(strtotime($comment[0]->getData('published'))).'</span><br />
-                            <div class="content tiny">'.prepareString($comment[0]->getData('content')).'</div>
-                        </div>';
-                    
-                    array_push($duplicate, $comment[0]->getData('nodeid'));
-                } else {
+                //var_dump($comment[1]);
+                if(isset($comment[1])) {
+                    $photo = $comment[1]->getPhoto('s');
+                    $name = $comment[1]->getTrueName();
+                }
+                else {
+                    $photo = "image.php?c=default";
+                }
+                
+                if($name == null)
+                    $name = $comment[0]->getData('uri');
+                
+                $tmp .= '
+                    <div class="comment" ';
+                if($comcounter > 0) {
+                    $tmp .= 'style="display:none;"';
                     $comcounter--;
                 }
+                    
+                $tmp .='>
+                        <img class="avatar tiny" src="'.$photo.'">
+                        <span><a href="?q=friend&f='.$comment[0]->getData('uri').'">'.$name.'</a></span>
+                        <span class="date">'.prepareDate(strtotime($comment[0]->getData('published'))).'</span><br />
+                        <div class="content tiny">'.prepareString($comment[0]->getData('content')).'</div>
+                    </div>';
             }
         }
         

@@ -124,22 +124,31 @@ class Feed extends WidgetCommon {
                                 <textarea 
                                     placeholder="'.t("What's new ?").'" 
                                     id="feedmessagecontent" 
+                                    class="steditor"
                                     onkeyup="movim_textarea_autoheight(this);"></textarea>
                             </td>
                         </tr>
+                        
+                        <script type="text/javascript">
+                            var ste = new SimpleTextEditor("feedmessagecontent", "ste");
+                            ste.init();
+                        </script>
+                        
                         <tr id="feedsubmitrow">
                             <td>
                                 <a 
                                     title="'.t("Submit").'"
                                     href="#" 
                                     id="feedmessagesubmit" 
-                                    onclick="'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'"
+                                    onclick="ste.submit();'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'"
                                     class="button tiny icon submit">'.t("Submit").'
                                 </a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+
+
 
                 <div id="feednotifs"></div>';
         }
@@ -191,6 +200,7 @@ class Feed extends WidgetCommon {
     
     function ajaxPublishItem($content)
     {
+        movim_log(htmlspecialchars(rawurldecode($content)));
         if($content != '') {
             $id = md5(openssl_random_pseudo_bytes(5));
             

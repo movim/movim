@@ -34,7 +34,7 @@ class Syndication extends WidgetBase
                                 ->orderby('updated', true)
                                 ->limit(0, 20);
             $messages = Post::run_query($query);
-            
+
             $query = Contact::query()->select()
                                        ->where(array(
                                                'key' => $from,
@@ -64,7 +64,7 @@ class Syndication extends WidgetBase
                                 <title>'.$title.'</title>
                                 <id>urn:uuid:'.$message->nodeid->getval().'</id>
                                 <updated>'.date('c', strtotime($message->updated->getval())).'</updated>
-                                <summary type="html"><![CDATA['.prepareString($message->content->getval()).']]></summary>
+                                <summary type="html"><![CDATA['.html_entity_decode(prepareString($message->content->getval())).']]></summary>
                             </entry>
                         ';
                         
