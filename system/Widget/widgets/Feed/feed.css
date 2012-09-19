@@ -112,7 +112,7 @@
     margin-bottom: 5px;
     border-bottom: 1px solid gray;
     padding-bottom: 5px;
-    /*display: none;*/
+    display: none;
 }
 
 #feed #feedsubmitform:hover .menueditor {
