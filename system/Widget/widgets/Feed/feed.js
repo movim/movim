@@ -27,3 +27,13 @@ function getFeedMessage() {
     text.blur();
     return encodeURIComponent(message);
 }
+
+function frameHeight(n) {
+    if(n.className == 'button tiny icon add') {
+        n.className = 'button tiny icon rm';
+    document.querySelector('iframe#feedmessagecontent-frame').style.height = '400px';
+    } else {
+        n.className = 'button tiny icon add';
+        document.querySelector('iframe#feedmessagecontent-frame').style.height = '50px';
+    }
+}
