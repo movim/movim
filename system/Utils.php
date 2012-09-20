@@ -104,7 +104,7 @@ function prepareString($string) {
     $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';
 
     foreach($smileys as $key => $value) {
-        $replace = '<img src="'.$path.$value.'">';
+        $replace = '<img class="smiley" src="'.$path.$value.'">';
         $string = str_replace($key, $replace, $string);
     }
 

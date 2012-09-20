@@ -102,6 +102,8 @@
     margin: 0px;
     padding: 0px;
     margin-top: 2px;
+    width: auto;
+    height: auto;
 }
 
 #feed #feedsubmitform td.frame {
@@ -110,7 +112,6 @@
 
 #feed #feedsubmitform .menueditor {
     margin-bottom: 5px;
-    border-bottom: 1px solid gray;
     padding-bottom: 5px;
     display: none;
 }
