@@ -149,6 +149,10 @@
     max-width: 100%;
 }
 
+.post .content img.smiley {
+    margin: 0px;
+}
+
 .post .content ul, .post .content ol {
     margin-left: 2em;
 }

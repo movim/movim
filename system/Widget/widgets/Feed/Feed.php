@@ -137,6 +137,13 @@ class Feed extends WidgetCommon {
                         <tr id="feedsubmitrow">
                             <td>
                                 <a 
+                                    title="Plus"
+                                    href="#" 
+                                    onclick="frameHeight(this);"
+                                    style="float: left;"
+                                    class="button tiny icon add">'.t("Size").'
+                                </a>
+                                <a 
                                     title="'.t("Submit").'"
                                     href="#" 
                                     id="feedmessagesubmit" 

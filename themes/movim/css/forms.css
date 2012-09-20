@@ -21,22 +21,22 @@ form .element:nth-child(2) {
     clear: both;
 }
 
-form .element {
+.element {
     overflow: auto;
     min-height: 80px;
     width: 50%;
     float: left;
 }
 
-form .element.large {
+.element.large {
     width: 100%;
 }
 
-form .element > label {
+.element > label {
     display: block;
 }
 
-form .element > *:not(label):not(img) {
+.element > *:not(label):not(img) {
     display: block;
     width: 90%;
     border: 1px solid #999;
@@ -49,20 +49,20 @@ form .element > *:not(label):not(img) {
     padding-left: 5px;
 }
 
-form .element > *:not(label):not(img):focus {
+.element > *:not(label):not(img):focus {
     border: 1px solid gray;
     box-shadow: inset 0 2px 2px #bbb;
     outline: none;
     background-color: white;
 }
 
-form .element textarea, textarea {
+.element textarea, textarea {
     padding: 10px 0px;
     resize: vertical;
     background-color: white;
 }
 
-form .element .select {
+.element .select {
     box-shadow: 0 1px 1px #ddd;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #888;
@@ -77,12 +77,12 @@ form .element .select {
     background-size: 100% 100%;
 }
 
-form .element .select:hover {
+.element .select:hover {
     box-shadow: 0px 1px 1px #ccc;
     border: 1px solid gray;
 }
 
-form .element .select select {
+.element .select select {
     width: 120%;
     background-color: transparent;
     display: block;
@@ -91,7 +91,7 @@ form .element .select select {
     height: 30px;
 }
 
-form .element .select:before {
+.element .select:before {
     pointer-events:none;
     content: "▶";
     font: 11px sans-serif;
@@ -106,7 +106,7 @@ form .element .select:before {
     display: block;
 }
 
-form .element .select select option {
+.element .select select option {
     height: 20px;
     padding: 5px;
 }
