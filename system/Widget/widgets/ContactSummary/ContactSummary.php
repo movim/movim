@@ -105,9 +105,7 @@ class ContactSummary extends WidgetCommon
         <?php
         if(isset($contact[0])) {
             echo $this->prepareContactSummary($contact[0]);
-        /*?>
-        <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshVcard', "'".$contact[0]->getData('jid')."'");?>"></div>
-        <?php*/ } 
+        } 
         
         else {
         ?>

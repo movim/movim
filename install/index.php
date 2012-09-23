@@ -166,7 +166,7 @@ function test_dir($dir){
 }
 
 /*
- * Create the dirs 
+ * Create the dirs
  */
 function create_dirs(){
 
@@ -223,7 +223,7 @@ function get_preset_value($post, $preset){
 function make_config(){
 	global $xml;
 	global $file;
-	
+
 	$conf = array(
 	'config' => array(
 	  'theme'              => get_entry('theme'),
@@ -274,8 +274,6 @@ function make_xml($stuff)
   $level--;
   return $buffer;
 }
-
-
 
 function generate_Tooltip($text, $background=True){
 	$html = 'style="background: url(../themes/movim/img/icons/follow_icon.png) no-repeat right; padding-right: 20px;" onmouseover=" elmnt = document.getElementById(\'leftside\'); elmnt.innerHTML=\''.$text.'\'; ';
@@ -334,7 +332,7 @@ if(isset($_POST['step'])) {
 		$display -= 2;
 	}
 	switch($handle){
-		
+
 		//The checks passed:
 		case 0:{
 			//Create the dirs
@@ -346,14 +344,14 @@ if(isset($_POST['step'])) {
 			}
 			$xml = simplexml_load_file($file);
 			break;
-			
+
 		//Store the basic settings
 		}case 1:{
 			//We load the array.
 			$xml = simplexml_load_file($file);
 			make_config();
 			break;
-			
+
 		//Store the DB settings
 		#TODO: Verify the SQL Settings
 		}case 2: {
@@ -371,7 +369,7 @@ if(isset($_POST['step'])) {
 			//This can fail:
 			try{
 				$sdb = new DatajarEngineWrapper(generate_db_string($dbarray));
-				DatajarBase::bind($sdb);	
+				DatajarBase::bind($sdb);
 			}catch(DatajarException $e){
 				//Append it to the error array
 				$errors[] = $e->getMessage();
@@ -382,20 +380,20 @@ if(isset($_POST['step'])) {
 			$xml = simplexml_load_file($file);
 			make_config();
 			break;
-			
+
 		//The BOSH settings
 		#TODO: Check if bosh settings are right and whether open Bosh (e.g. connect to random xmpp); when bosh closed warn the user
 		}case 3: {
 			include_once("../system/Moxl/loader.php");
 			#ToDo: Test Connection
 			$Session = array();
-			
-		
+
+
 				//Apennd it to the error array
 				#$errors[] = $e->getMessage();
 				//The apge is displayed again:
 				#$display = 3;
-			
+
 			if(True){
 				$_POST['boshOpen'] = True;
 			}
@@ -403,12 +401,12 @@ if(isset($_POST['step'])) {
 			$xml = simplexml_load_file($file);
 			make_config();
 			break;
-			
+
 		#TODO: If BOSH closed, display xmpp form, else display 5
 		}case 4: {
 			$display = 5;
 			break;
-			
+
 		#TOTO: Write Database; Rename conf.xml.part
 		}case 5: {
 			break;
@@ -416,7 +414,7 @@ if(isset($_POST['step'])) {
 		}case -1: {
 			$display = 0;
 			break;
-			
+
 		}default: die("Something went wrong");
 	}
 }else{

@@ -6,27 +6,29 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-18 21:48+0200\n"
-"PO-Revision-Date: 2011-10-26 21:33+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"PO-Revision-Date: 2012-07-19 01:58+0000\n"
+"Last-Translator: kimj <emailadhoc@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-27 19:56+0000\n"
-"X-Generator: Launchpad (build 15288)\n"
+"X-Launchpad-Export-Date: 2012-09-11 19:52+0000\n"
+"X-Generator: Launchpad (build 15930)\n"
 
 #: ../install/index.php:85
 msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 msgstr ""
+"Discrepanza nella versione di PHP. Movim richiede PHP 5.3 o maggiore."
 
 #: ../install/index.php:85
 msgid "Actual version : "
-msgstr ""
+msgstr "Versione corrente "
 
 #: ../install/index.php:86
 msgid "Update your PHP version or contact your server administrator"
 msgstr ""
+"Aggiorna la tua versione di PHP oppure contatta l'amministratore del tuo "
+"server"
 
 #: ../install/index.php:89 ../install/index.php:93 ../install/index.php:97
 #: ../install/index.php:115
@@ -37,57 +39,60 @@ msgstr "Movim necessita l'estensione %s"
 #: ../install/index.php:90
 #, php-format
 msgid "Install %s and %s packages"
-msgstr ""
+msgstr "Installa %s e i pacchetti %s"
 
 #: ../install/index.php:94 ../install/index.php:98
 #, php-format
 msgid "Install the %s package"
-msgstr ""
+msgstr "Installa il pacchetto %s"
 
 #: ../install/index.php:101
 msgid "Movim's folder must be writable."
-msgstr ""
+msgstr "La cartella di Movim deve avere i permessi di scrittura"
 
 #: ../install/index.php:102
 msgid "Enable read and write rights on Movim's root folder"
 msgstr ""
+"Imposta i permessi di lettura e scrittura sulla cartella root di Movim"
 
 #: ../install/index.php:114
 msgid "or"
-msgstr ""
+msgstr "oppure"
 
 #: ../install/index.php:169
 #, php-format
 msgid "Bosh connection failed with error '%s'"
-msgstr ""
+msgstr "Connessione Bosh fallita con errore '%s'"
 
 #: ../install/index.php:178
 #, php-format
 msgid "XMPP connection through Bosh failed with error '%s'"
-msgstr ""
+msgstr "Connessione XMPP tramite Bosh fallita con errore '%s'"
 
 #: ../install/index.php:224 ../install/index.php:228 ../install/index.php:232
 #, php-format
 msgid "Couldn't create directory '%s'."
-msgstr ""
+msgstr "Impossibile creare la cartella '%s'"
 
 #: ../install/index.php:261
 #, php-format
 msgid "Couldn't create configuration file '%s'."
-msgstr ""
+msgstr "Impossibile creare il file di configurazione '%s'"
 
 #: ../install/index.php:283
 #, php-format
 msgid "Database connection failed with error '%s'"
-msgstr ""
+msgstr "Connessione al database fallita con errore '%s'"
 
 #: ../install/part1.php:29
 msgid "Thank you for downloading Movim!"
-msgstr ""
+msgstr "Grazie per aver scaricato Movim!"
 
 #: ../install/part1.php:30
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
+"Prima di goderti il tuo social network, alcune modifiche sono richieste."
 
 #: ../install/part1.php:31
 msgid ""
@@ -95,6 +100,10 @@ msgid ""
 "personal details. Its use can potentially endanger your data. Always pay "
 "attention to information that you submit."
 msgstr ""
+"Tieni in considerazione che Movim è ancora in sviluppo e tratterà molte "
+"informazioni personali. Il suo utilizzo può potenzialmente mettere in "
+"pericolo le tue informazioni. Stai sempre attendo alle informazioni che "
+"fornisci."
 
 #: ../install/part1.php:41 ../install/part1.php:56 ../install/part2.php:15
 msgid "Movim Installer"
@@ -102,87 +111,92 @@ msgstr "Movim Installer"
 
 #: ../install/part1.php:41
 msgid "Compatibility Test"
-msgstr ""
+msgstr "Test di compatibilità"
 
 #: ../install/part1.php:42
 msgid ""
 "The following requirements were not met. Please make sure they are all "
 "satisfied in order to install Movim."
 msgstr ""
+"I seguenti requisiti non sono stati riscontrati. Per favore assicurati che "
+"siano soddisfatti per poter installare Movim."
 
 #: ../install/part1.php:52
 msgid ""
 "Some errors were detected. Please correct them for the installation to "
 "proceed."
 msgstr ""
+"Alcuni errori sono stati rilevati. Per favore correggili prima che "
+"l'installazione proceda."
 
 #: ../install/part1.php:110
 msgid "empty"
-msgstr ""
+msgstr "vuoto"
 
 #: ../install/part1.php:111
 msgid "terse"
-msgstr ""
+msgstr "conciso"
 
 #: ../install/part1.php:112
 msgid "normal"
-msgstr ""
+msgstr "normale"
 
 #: ../install/part1.php:113
 msgid "talkative"
-msgstr ""
+msgstr "loquace"
 
 #: ../install/part1.php:114
 msgid "ultimate"
-msgstr ""
+msgstr "ultimo"
 
 #: ../install/part1.php:144
 msgid "XMPP Connection Preferences"
-msgstr ""
+msgstr "Preferenze Connessione XMPP"
 
 #: ../install/part1.php:157
 msgid "BOSH Connection Preferences"
-msgstr ""
+msgstr "Preferenze Connessione BOSH"
 
 #: ../install/part1.php:183
 msgid "Proxy Preferences"
-msgstr ""
+msgstr "Preferenze Proxy"
 
 #: ../install/part2.php:15
 msgid "Success !"
-msgstr ""
+msgstr "Successo!"
 
 #: ../install/part2.php:18
 msgid "Valid Bosh"
-msgstr ""
+msgstr "Valido Bosh"
 
 #: ../install/part2.php:19
 msgid "Database Detected"
-msgstr ""
+msgstr "Database Trovato"
 
 #: ../install/part2.php:20
 msgid "Database Movim schema installed"
-msgstr ""
+msgstr "Installato lo schema del database Movim"
 
 #: ../install/part2.php:23
 #, php-format
 msgid "You can now access your shiny Movim instance %sJump In !%s"
 msgstr ""
+"Puoi ora accedere alla tua splendente istanza Movim %sTuffati dentro!%s"
 
 #: ../install/part2.php:24 ../system/Widget/widgets/Login/Login.php:133
 #, php-format
 msgid "Please remove the %s folder in order to complete the installation"
-msgstr ""
+msgstr "Per completare l'installazione rimuovere la cartella %s"
 
 #: ../system/Conf.php:38
 #, php-format
 msgid "Cannot load element value '%s'"
-msgstr ""
+msgstr "Impossibile caricare il valore dell'elemento '%s'"
 
 #: ../system/Conf.php:49
 #, php-format
 msgid "Cannot load file '%s'"
-msgstr ""
+msgstr "Impossibile caricare il file '%s'"
 
 #: ../system/Jabber.php:109
 msgid "User not logged in."
@@ -190,17 +204,17 @@ msgstr "Utente non connesso"
 
 #: ../system/Jabber.php:113
 msgid "JID not provided."
-msgstr ""
+msgstr "JID non fornito"
 
 #: ../system/Jabber.php:137
 #, php-format
 msgid "jid '%s' is incorrect"
-msgstr ""
+msgstr "Il jabber id  '%s' é sbagliato"
 
 #: ../system/Logger.php:27
 #, php-format
 msgid "Cannot open log file '%s'"
-msgstr ""
+msgstr "Impossibile aprire il file di log '%s'"
 
 #: ../system/MovimException.php:15
 #, php-format
@@ -209,156 +223,156 @@ msgstr "Errore: %s"
 
 #: ../system/Utils.php:123
 msgid "Monday"
-msgstr ""
+msgstr "Lunedì"
 
 #: ../system/Utils.php:124
 msgid "Tuesday"
-msgstr ""
+msgstr "Martedì"
 
 #: ../system/Utils.php:125
 msgid "Wednesday"
-msgstr ""
+msgstr "Mercoledì"
 
 #: ../system/Utils.php:126
 msgid "Thursday"
-msgstr ""
+msgstr "Giovedì"
 
 #: ../system/Utils.php:127 ../system/Utils.php:129
 msgid "Friday"
-msgstr ""
+msgstr "Venerdì"
 
 #: ../system/Utils.php:128
 msgid "Saturday"
-msgstr ""
+msgstr "Sabato"
 
 #: ../system/Utils.php:132
 msgid "January"
-msgstr ""
+msgstr "gennaio"
 
 #: ../system/Utils.php:133
 msgid "February"
-msgstr ""
+msgstr "febbraio"
 
 #: ../system/Utils.php:134
 msgid "March"
-msgstr ""
+msgstr "marzo"
 
 #: ../system/Utils.php:135
 msgid "April"
-msgstr ""
+msgstr "aprile"
 
 #: ../system/Utils.php:136
 msgid "May"
-msgstr ""
+msgstr "maggio"
 
 #: ../system/Utils.php:137
 msgid "June"
-msgstr ""
+msgstr "giugno"
 
 #: ../system/Utils.php:138
 msgid "July"
-msgstr ""
+msgstr "luglio"
 
 #: ../system/Utils.php:139
 msgid "August"
-msgstr ""
+msgstr "agosto"
 
 #: ../system/Utils.php:140
 msgid "September"
-msgstr ""
+msgstr "settembre"
 
 #: ../system/Utils.php:141
 msgid "October"
-msgstr ""
+msgstr "ottobre"
 
 #: ../system/Utils.php:142
 msgid "November"
-msgstr ""
+msgstr "novembre"
 
 #: ../system/Utils.php:143
 msgid "December"
-msgstr ""
+msgstr "dicembre"
 
 #: ../system/Utils.php:149
 msgid "Today"
-msgstr ""
+msgstr "Oggi"
 
 #: ../system/Utils.php:151
 msgid "Tomorrow"
-msgstr ""
+msgstr "Domani"
 
 #: ../system/Utils.php:153
 msgid "Yesterday"
-msgstr ""
+msgstr "Ieri"
 
 #: ../system/Utils.php:159
 msgid "day"
-msgstr ""
+msgstr "giorno"
 
 #: ../system/Utils.php:162
 #, php-format
 msgid " %d days ago"
-msgstr ""
+msgstr " %d giorni fa"
 
 #: ../system/Utils.php:195 ../system/Utils.php:206
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 #: ../system/Utils.php:196
 msgid "Male"
-msgstr ""
+msgstr "Maschio"
 
 #: ../system/Utils.php:197
 msgid "Female"
-msgstr ""
+msgstr "Femmina"
 
 #: ../system/Utils.php:198
 msgid "Other"
-msgstr ""
+msgstr "Altro"
 
 #: ../system/Utils.php:207
 msgid "Single"
-msgstr ""
+msgstr "Single"
 
 #: ../system/Utils.php:208
 msgid "In a relationship"
-msgstr ""
+msgstr "Impegnato in una relazione"
 
 #: ../system/Utils.php:209
 msgid "Married"
-msgstr ""
+msgstr "Sposato/a"
 
 #: ../system/Utils.php:210
 msgid "Divorced"
-msgstr ""
+msgstr "Divorziato/a"
 
 #: ../system/Utils.php:211
 msgid "Widowed"
-msgstr ""
+msgstr "Vedovo/a"
 
 #: ../system/Utils.php:212
 msgid "Cohabiting"
-msgstr ""
+msgstr "Coabito"
 
 #: ../system/Utils.php:213
 msgid "Civil Union"
-msgstr ""
+msgstr "Unione Civile"
 
 #: ../system/Utils.php:219 ../system/Widget/widgets/Chat/Chat.php:40
 msgid "Online"
-msgstr ""
+msgstr "In linea"
 
 #: ../system/Utils.php:220 ../system/Widget/widgets/Chat/Chat.php:41
 msgid "Away"
-msgstr ""
+msgstr "Assente"
 
 #: ../system/Utils.php:221 ../system/Widget/widgets/Chat/Chat.php:42
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "Non disturbare"
 
 #: ../system/Utils.php:222 ../system/Widget/widgets/Chat/Chat.php:43
 msgid "Extended Away"
-msgstr ""
+msgstr "Assenza prolungata"
 
 #: ../system/Utils.php:223
 msgid "Logout"
@@ -387,7 +401,7 @@ msgstr "Inizio"
 #: ../system/Controller/ControllerMain.php:211
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:175
 msgid "Profile"
-msgstr ""
+msgstr "Profilo"
 
 #: ../system/Controller/ControllerMain.php:43
 #: ../system/Controller/ControllerMain.php:74
@@ -403,7 +417,7 @@ msgstr "Configurazione"
 #: ../system/Controller/ControllerMain.php:117
 #: ../system/Controller/ControllerMain.php:213
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #: ../system/Controller/ControllerMain.php:93
 #, php-format
@@ -413,7 +427,7 @@ msgstr "%s - Configurazione"
 #: ../system/Controller/ControllerMain.php:113
 #, php-format
 msgid "%s - Profile"
-msgstr ""
+msgstr "%s - Profilo"
 
 #: ../system/Controller/ControllerMain.php:145
 #, php-format
@@ -428,7 +442,7 @@ msgstr "Registrazione"
 #: ../system/Controller/ControllerMain.php:161
 #, php-format
 msgid "%s - Add An Account"
-msgstr ""
+msgstr "%s - Aggiungi un account"
 
 #: ../system/Controller/ControllerMain.php:179
 #, php-format
@@ -438,59 +452,61 @@ msgstr "%s - Entra su Movim"
 #: ../system/Controller/ControllerMain.php:200
 #, php-format
 msgid "%s - Help Page"
-msgstr ""
+msgstr "%s - Pagine di Aiuto"
 
 #: ../system/Widget/widgets/Account/Account.php:170
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:101
 msgid "Some data are missing !"
-msgstr ""
+msgstr "Mancano alcuni dati!"
 
 #: ../system/Widget/widgets/Account/Account.php:176
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:107
 msgid "Wrong ID"
-msgstr ""
+msgstr "ID Errato"
 
 #: ../system/Widget/widgets/Account/Account.php:182
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:113
 msgid "You entered different passwords"
-msgstr ""
+msgstr "Hai digitato una password diversa"
 
 #: ../system/Widget/widgets/Account/Account.php:188
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:119
 msgid "Invalid name"
-msgstr ""
+msgstr "Nome non valido"
 
 #: ../system/Widget/widgets/Account/Account.php:194
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:125
 msgid "Username already taken"
-msgstr ""
+msgstr "Nome utente non disponibile"
 
 #: ../system/Widget/widgets/Account/Account.php:200
 msgid "Could not connect to the XMPP server"
-msgstr ""
+msgstr "Non è possibile connettersi al server XMPP"
 
 #: ../system/Widget/widgets/Account/Account.php:206
 msgid "Could not communicate with the XMPP server"
-msgstr ""
+msgstr "Impossibile comunicare con il server XMPP"
 
 #: ../system/Widget/widgets/Account/Account.php:212
 msgid "Unknown error"
-msgstr ""
+msgstr "Errore sconosciuto"
 
 #: ../system/Widget/widgets/Account/Account.php:229
 #: ../system/Widget/widgets/Login/Login.php:121
 msgid "Create a new account"
-msgstr ""
+msgstr "Crea un nuovo account"
 
 #: ../system/Widget/widgets/Account/Account.php:232
 msgid ""
 "Firstly fill in this blank with a brand new account ID, this address will "
 "follow you on all the Movim network !"
 msgstr ""
+"Prima di tutto compila questo spazio con un nuovo ID utente, questo "
+"indirizzo ti seguirà su tutta la rete Movim!"
 
 #: ../system/Widget/widgets/Account/Account.php:232
 msgid "Only alphanumerics elements are authorized"
-msgstr ""
+msgstr "Sono permessi solo elementi alfanumerici"
 
 #: ../system/Widget/widgets/Account/Account.php:236
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:151
@@ -500,19 +516,20 @@ msgstr "Il mio indirizzo"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "Make sure your password is safe :"
-msgstr ""
+msgstr "Assicurati che la tua password sia sicura:"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "A capital letter, a digit and a special character are recommended"
 msgstr ""
+"Sono consigliati una lettera maiuscola, un numero ed un carattere spaciale"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "8 characters"
-msgstr ""
+msgstr "8 caratteri"
 
 #: ../system/Widget/widgets/Account/Account.php:247
 msgid "Example :"
-msgstr ""
+msgstr "Esempio:"
 
 #: ../system/Widget/widgets/Account/Account.php:249
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:160
@@ -522,37 +539,37 @@ msgstr "Password"
 
 #: ../system/Widget/widgets/Account/Account.php:259
 msgid "Same here !"
-msgstr ""
+msgstr "Anche qui!"
 
 #: ../system/Widget/widgets/Account/Account.php:261
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:170
 msgid "Retype"
-msgstr ""
+msgstr "Ridigita"
 
 #: ../system/Widget/widgets/Account/Account.php:271
 msgid "Pseudo"
-msgstr ""
+msgstr "Pseudo"
 
 #: ../system/Widget/widgets/Account/Account.php:280
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:178
 msgid "Create"
-msgstr ""
+msgstr "Crea"
 
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:131
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
+msgstr "Errore di dominio XMPP, il tuo account non è un ID Jabber corretto"
 
 #: ../system/Widget/widgets/AccountAdd/AccountAdd.php:144
 msgid "Add your login informations"
-msgstr ""
+msgstr "Inserisci le tue informazioni di login"
 
 #: ../system/Widget/widgets/Chat/Chat.php:44
 msgid "Offline"
-msgstr ""
+msgstr "Non in linea"
 
 #: ../system/Widget/widgets/Chat/Chat.php:260
 msgid "Composing..."
-msgstr ""
+msgstr "Scrivendo..."
 
 #: ../system/Widget/widgets/Config/Config.php:45
 msgid "Language"
@@ -573,17 +590,17 @@ msgstr "Resettare"
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:61
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:164
 msgid "Remove this contact"
-msgstr ""
+msgstr "Elimina questo contatto"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:75
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:192
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:88
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:178
 msgid "Yes"
-msgstr ""
+msgstr "Sì"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:100
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:145
@@ -594,123 +611,125 @@ msgstr "Chat"
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:71
 #: ../system/Widget/widgets/Vcard/Vcard.php:75
 msgid "General Informations"
-msgstr ""
+msgstr "Informazioni Generali"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:112
 #: ../system/Widget/widgets/Vcard/Vcard.php:77
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:113
 #: ../system/Widget/widgets/Vcard/Vcard.php:80
 msgid "Nickname"
-msgstr ""
+msgstr "Nickname"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:115
 #: ../system/Widget/widgets/Vcard/Vcard.php:124
 msgid "Gender"
-msgstr ""
+msgstr "Sesso"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:117
 #: ../system/Widget/widgets/Vcard/Vcard.php:135
 msgid "Marital Status"
-msgstr ""
+msgstr "Stato civile"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:120
 #: ../system/Widget/widgets/Vcard/Vcard.php:84
 msgid "Date of Birth"
-msgstr ""
+msgstr "Data di nascita"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:121
 msgid "Address"
-msgstr ""
+msgstr "Indirizzo"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:125
 #: ../system/Widget/widgets/Vcard/Vcard.php:147
 msgid "Website"
-msgstr ""
+msgstr "Sito web"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:126
 #: ../system/Widget/widgets/Vcard/Vcard.php:152
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:129
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:96
 #: ../system/Widget/widgets/Vcard/Vcard.php:160
 msgid "About Me"
-msgstr ""
+msgstr "Informazioni su di me"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:138
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:111
 msgid "Bot"
-msgstr ""
+msgstr "Bot"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:139
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:112
 msgid "Desktop"
-msgstr ""
+msgstr "Scrivania"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:140
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:113
 msgid "Phone"
-msgstr ""
+msgstr "Telefono"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:149
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:129
 msgid "Client Informations"
-msgstr ""
+msgstr "Informazioni sul client"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:151
 msgid "Client Name"
-msgstr ""
+msgstr "Nome client"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:152
 msgid "Client Type"
-msgstr ""
+msgstr "Tipologia client"
 
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:132
 msgid "Actions"
-msgstr ""
+msgstr "Azioni"
 
 #: ../system/Widget/widgets/ContactSummary/ContactSummary.php:202
 msgid "Invite this user"
-msgstr ""
+msgstr "Invita questo utente"
 
 #: ../system/Widget/widgets/Feed/Feed.php:43
 msgid "Loading your feed ..."
-msgstr ""
+msgstr "Caricando il tuo feed..."
 
 #: ../system/Widget/widgets/Feed/Feed.php:54
 msgid "Get older posts"
-msgstr ""
+msgstr "Carica i post più vecchi"
 
 #: ../system/Widget/widgets/Feed/Feed.php:72
 msgid "Your feed cannot be loaded."
-msgstr ""
+msgstr "Il tuo feed non può essere caricato"
 
 #: ../system/Widget/widgets/Feed/Feed.php:108
 #: ../system/Widget/widgets/Wall/Wall.php:109
 msgid "Feed"
-msgstr ""
+msgstr "Feed"
 
 #: ../system/Widget/widgets/Feed/Feed.php:122
 msgid ""
 "Your server doesn't support post publication, you can only read contact's "
 "feeds"
 msgstr ""
+"Il tuo server non supporta la pubblicazione dei post, puoi solo leggere i "
+"feed dei tuoi contatti"
 
 #: ../system/Widget/widgets/Feed/Feed.php:154
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 #: ../system/Widget/widgets/Feed/Feed.php:155
 msgid "My Posts"
-msgstr ""
+msgstr "I miei post"
 
 #: ../system/Widget/widgets/Help/Help.php:32
 msgid "What is Movim?"
-msgstr ""
+msgstr "Cosa è Movim?"
 
 #: ../system/Widget/widgets/Help/Help.php:34
 #, php-format
@@ -718,42 +737,49 @@ msgid ""
 "Visit the page %s What is Movim ? %s to know more about the project, its "
 "aims and understand how it works."
 msgstr ""
+"Visita la pagina %s Cosa è Movim ? %s per sapere di più sul progetto, è "
+"dedicata a farti capire come funziona."
 
 #: ../system/Widget/widgets/Help/Help.php:37
 msgid "What do the little banners refer to ?"
-msgstr ""
+msgstr "A cosa si riferiscono i piccoli banner?"
 
 #: ../system/Widget/widgets/Help/Help.php:46
 msgid ""
 "Thanks to these five little banners, you can quickly identitfy the level of "
 "confdentiality applied to the information you provide."
 msgstr ""
+"Grazie a questi cinque piccoli banner, puoi facilmente identificare il "
+"livello di confidenzialità applicato alle informazioni che pubblichi"
 
 #: ../system/Widget/widgets/Help/Help.php:50
 msgid "White, only you can see the information"
-msgstr ""
+msgstr "Bianco, solo tu puoi vedere l'informazione"
 
 #: ../system/Widget/widgets/Help/Help.php:51
 msgid "Green, you have chosen some contacts who can see your information"
 msgstr ""
+"Verde, hai scelto alcuni contatti che possono vedere la tua informazione"
 
 #: ../system/Widget/widgets/Help/Help.php:52
 msgid "Orange, all your contact list can see your information"
-msgstr ""
+msgstr "Arancione, tutti i tuoi contatti possono vedere la tua informazione"
 
 #: ../system/Widget/widgets/Help/Help.php:53
 msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
+msgstr "Rosso, tutti nella rete XMPP possono vedere la tua informazione"
 
 #: ../system/Widget/widgets/Help/Help.php:54
 msgid "Black, the whole Internet can see your information"
-msgstr ""
+msgstr "Nero, l'intera Internet può vedere la tua informazione"
 
 #: ../system/Widget/widgets/Help/Help.php:58
 msgid ""
 "Some features are missing/I can't do everything I used to do on other social "
 "networks"
 msgstr ""
+"Alcune caratteristiche mancano/Non posso fare tutto quello che ero solito "
+"fare su altri social netowk"
 
 #: ../system/Widget/widgets/Help/Help.php:60
 #, php-format
@@ -762,6 +788,10 @@ msgid ""
 "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
 "the one you want is on its way."
 msgstr ""
+"Nonostante Movim si stia sviluppando velocemente, molte (molte) "
+"caratteristiche mancano. Sii paziente ;). Puoi guardare %s alla roadmap "
+"della prossima versione %s per scoprire se una delle cose che vuoi sta "
+"venendo sviluppata."
 
 #: ../system/Widget/widgets/Help/Help.php:62
 #, php-format
@@ -769,10 +799,12 @@ msgid ""
 "Don't forget that Movim is an open source project, a helping hand is always "
 "welcome (see %s Can I participate %s)"
 msgstr ""
+"Non scordarti che Movim è un progetto open source, una mano è sempre "
+"benvenuta (vedi %s Posso partecipare %s)"
 
 #: ../system/Widget/widgets/Help/Help.php:65
 msgid "I can't find the answer to my question here"
-msgstr ""
+msgstr "Non riesco a trovare la soluzione alla mia domanda qui"
 
 #: ../system/Widget/widgets/Help/Help.php:67
 #, php-format
@@ -781,14 +813,17 @@ msgid ""
 "on the official chatroom %s or via our mailing-list (%s see the dedicated "
 "page %s)."
 msgstr ""
+"Vai alle %s domande chieste frequentemente (FAQ) %s o vieni a fare le tue "
+"domande sulla chatroom ufficiale %s o tramite la nostra mailing-list (%s "
+"vedi la pagina dedicata %s)."
 
 #: ../system/Widget/widgets/Login/Login.php:35
 msgid "Wrong username"
-msgstr ""
+msgstr "Nome utente errato"
 
 #: ../system/Widget/widgets/Login/Login.php:41
 msgid "Invalid JID"
-msgstr ""
+msgstr "ID Jabber non valido"
 
 #: ../system/Widget/widgets/Login/Login.php:47
 msgid "Wrong password"
@@ -796,35 +831,36 @@ msgstr "Password sbagliata"
 
 #: ../system/Widget/widgets/Login/Login.php:53
 msgid "The XMPP authentification failed"
-msgstr ""
+msgstr "L'autenticazione XMPP è fallita"
 
 #: ../system/Widget/widgets/Login/Login.php:59
 msgid "The current BOSH URL in invalid"
-msgstr ""
+msgstr "Il corrente indirizzo BOSH è invalido"
 
 #: ../system/Widget/widgets/Login/Login.php:65
 msgid "Internal server error"
-msgstr ""
+msgstr "Errore interno del server"
 
 #: ../system/Widget/widgets/Login/Login.php:71
 msgid "Session error"
-msgstr ""
+msgstr "Errore di sessione"
 
 #: ../system/Widget/widgets/Login/Login.php:77
 msgid "Account successfully created"
-msgstr ""
+msgstr "Account creato con successo"
 
 #: ../system/Widget/widgets/Login/Login.php:83
 msgid "Movim failed to authenticate. You entered wrong data"
 msgstr ""
+"Movim ha fallito ad autenticarti. Devi aver inserito i dati sbagliati"
 
 #: ../system/Widget/widgets/Login/Login.php:91
 msgid "Your web browser is too old to use with Movim."
-msgstr ""
+msgstr "Il tuo browser web è troppo vecchio per usarlo con Movim"
 
 #: ../system/Widget/widgets/Login/Login.php:108
 msgid "Connecting..."
-msgstr ""
+msgstr "Connessione in corso..."
 
 #: ../system/Widget/widgets/Login/Login.php:110
 msgid "Come in!"
@@ -833,96 +869,93 @@ msgstr "Entra!"
 #: ../system/Widget/widgets/Login/Login.php:117
 #, php-format
 msgid "This server hosts %s accounts"
-msgstr ""
+msgstr "Questo server ospita %s account"
 
 #: ../system/Widget/widgets/Login/Login.php:122
 msgid "Link my current account"
-msgstr ""
+msgstr "Link al mio account corrente"
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
-msgstr ""
+msgstr "Console di debug"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:44
 msgid "wants to talk with you"
-msgstr ""
+msgstr "vuole parlarti"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:56
 msgid "Accept"
-msgstr ""
+msgstr "Accetta"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:62
 #: ../system/Widget/widgets/Notifs/Notifs.php:125
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:68
 msgid "Decline"
-msgstr ""
+msgstr "Rifiuta"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:119
 #, php-format
 msgid "Contacts (%s)"
-msgstr ""
+msgstr "Contatti (%s)"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:146
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:155
 msgid "Send request"
-msgstr ""
+msgstr "Invia richiesta"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:162
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #: ../system/Widget/widgets/Profile/Profile.php:74
 msgid "No profile yet ?"
-msgstr ""
+msgstr "Ancora nessun profilo?"
 
 #: ../system/Widget/widgets/Profile/Profile.php:75
 #: ../system/Widget/widgets/Vcard/Vcard.php:62
 msgid "Create my vCard"
-msgstr ""
+msgstr "Crea la mia vCard"
 
 #: ../system/Widget/widgets/Roster/Roster.php:129
 #: ../system/Widget/widgets/Roster/Roster.php:141
 msgid "Ungrouped"
-msgstr ""
+msgstr "Non raggruppati"
 
 #: ../system/Widget/widgets/Roster/Roster.php:150
 msgid "Show All"
-msgstr ""
+msgstr "Mostra tutto"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:85
 msgid "Day"
-msgstr ""
+msgstr "Giorno"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:99
 msgid "Month"
-msgstr ""
+msgstr "Mese"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:113
 msgid "Year"
-msgstr ""
+msgstr "Anno"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:179
 msgid "Submitting"
-msgstr ""
+msgstr "Inviando..."
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:202
 msgid "Edit my Profile"
-msgstr ""
+msgstr "Modifica il mio Profilo"
 
 #: ../system/Widget/widgets/Wall/Wall.php:64
 #: ../system/Widget/widgets/Wall/Wall.php:116
 msgid "Follow"
-msgstr ""
+msgstr "Segui"
 
 #: ../system/Widget/widgets/Wall/Wall.php:135
 msgid "Loading the contact feed ..."
-msgstr ""
-
-#~ msgid "MOVIM - Test Client"
-#~ msgstr "MOVIM - Versione Test"
+msgstr "Caricando il feed del contatto..."

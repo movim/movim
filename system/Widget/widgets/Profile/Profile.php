@@ -38,7 +38,7 @@ class Profile extends WidgetBase
     
 	function ajaxSetStatus($status)
 	{
-        $status = rawurldecode($status);
+        $status = htmlspecialchars(rawurldecode($status));
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
         Cache::c(

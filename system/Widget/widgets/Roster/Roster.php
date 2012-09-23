@@ -129,6 +129,7 @@ class Roster extends WidgetBase
                                         'Contact`.`jid!' => $this->user->getLogin(),
                                         array(
                                             'Contact`.`rostersubscription!' => 'none',
+                                            'Contact`.`rostersubscription!' => 'vcard',
                                             '|Contact`.`rosterask' => 'subscribe')))
                                  ->orderby('Contact.group', true);
 
@@ -183,9 +184,9 @@ class Roster extends WidgetBase
             <div id="rostermenu">
                 <ul>
                     <li>
-                        <input type="text" name="search" id="request" onkeyup="search(event);" onclick="focusContact();" placeholder="<?php echo t('Search');?>"/>
+                        <input type="text" name="search" id="request" autocomplete="off" onkeyup="rosterSearch(event);" onclick="focusContact();" placeholder="<?php echo t('Search');?>"/>
                     </li>
-                    <li onclick="showRoster(this);" style="float: right; padding-right: 10px;">
+                    <li onclick="showRoster(this);" style="float: right; padding-right: 10px;" title="<?php echo t('Show/Hide'); ?>">
                         <a href="#">◐</a>
                     </li>
                 </ul>

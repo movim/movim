@@ -77,6 +77,20 @@ function prepareString($string) {
     
     $string = preg_replace(
         array(
+            '/(^|\s|>)(www.[^<> \n\r]+)/iex',
+            '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/iex',
+            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\']?)((?:https?):\/\/([^<> \n\r]+)))/iex'
+        ),  
+        array(
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\3':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\4':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\3</a>&nbsp;':'\\0'))",
+        ),  
+        $string
+    );
+
+    /*$string = preg_replace(
+        array(
             '/(?(?=<a[^>]*>.+<\/a>)
             (?:<a[^>]*>.+<\/a>)
             |
@@ -96,7 +110,7 @@ function prepareString($string) {
             "stripslashes((strlen('\\2')>0?'<a href=\"mailto:\\0\">\\0</a>':'\\0'))"
         ),
         $string
-    );
+    );*/
     
     $conf = new Conf();
     $theme = $conf->getServerConfElement('theme');
@@ -104,7 +118,7 @@ function prepareString($string) {
     $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';
 
     foreach($smileys as $key => $value) {
-        $replace = '<img src="'.$path.$value.'">';
+        $replace = '<img class="smiley" src="'.$path.$value.'">';
         $string = str_replace($key, $replace, $string);
     }
 

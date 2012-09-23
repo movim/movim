@@ -41,6 +41,7 @@
 
 #feed #feedcontent {
 	clear: both;
+    padding-top: 15px
 }
 
 #feed #feedfilters {
@@ -68,4 +69,53 @@
 #feed #feedfilters ul li.on {
 	background-color: #444444;
 	color: white;
+}
+
+#feed .ste .button {
+    /*border: 0px;
+    display: block;
+    float: left;
+    background-color: white;
+    background-image: none;
+    box-shadow: none;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 0px;*/
+}
+
+#feed #feedsubmitform .ste {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+/*
+#feed .ste .separator {
+    float: left;
+    display: none;
+}*/
+
+#feed #feedsubmitform .button.merged.right {
+    margin-right: 5px;
+}
+
+#feed #feedsubmitform .button img {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 2px;
+    width: auto;
+    height: auto;
+}
+
+#feed #feedsubmitform td.frame {
+    padding: 0px;
+}
+
+#feed #feedsubmitform .menueditor {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    display: none;
+}
+
+iframe {
+    width: 100%;
 }

@@ -70,8 +70,12 @@ var messages_cpt = 1;
 document.onblur = function() { document_focus = false; }
 document.onfocus = function() { document_focus = true; document.title = document_title; messages_cpt = 1; }
 
-function movim_title_inc(){
+function movim_title_inc() {
 	document.title='[' + messages_cpt + '] ' + document_title ;
 	messages_cpt++;
 }
 
+function movim_change_class(params) {
+    var node = document.getElementById(params[0]);
+    node.className = params[1];
+}

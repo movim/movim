@@ -170,9 +170,14 @@ class Chat extends WidgetBase
         $contact = Contact::run_query($query);
         $contact = $contact[0];
         
-
+        $query = Presence::query()->select()
+                                  ->where(array(
+                                            'key' => $this->user->getLogin(),
+                                            'jid' => $jid));
+        $presence = Presence::run_query($query);
+        $presence = $presence[0];
         
-        if($contact->getData('chaton') != 1) {
+        if($contact->getData('chaton') != 1 && isset($presence) && $presence->presence->getval() != 6) {
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
