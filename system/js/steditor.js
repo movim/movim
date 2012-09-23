@@ -81,23 +81,29 @@ function SimpleTextEditor(id, objectId) {
         //html += '<td><div class="separator"></div></td>';
         html += '<div class="menueditor">';
             //html += '<div class="element" style="width: auto; min-height: 0px; float: right;"><div class="select"><select onchange="'+this.objectId+'.execCommand(\'formatblock\', this.value);this.selectedIndex=0;"><option value=""></option><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
+            html += '<a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h1>\');"><img src="'+this.path+'images/h1.png" alt="H1" title="H1" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
+            html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h2>\');"><img src="'+this.path+'images/h2.png" alt="H2" title="H2" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
+            html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h3>\');"><img src="'+this.path+'images/h3.png" alt="H3" title="H3" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
+            html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h4>\');"><img src="'+this.path+'images/h4.png" alt="H4" title="H4" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
+            
+            html += '<a class="button tiny" style="margin-right: 5px;" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<p>\');"><img src="'+this.path+'images/paragraph.png" alt="Paragraph" title="Paragraph" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
 
-            html += '<a class="button tiny merged left"><img src="'+this.path+'images/bold.png" alt="Bold" title="Bold" onclick="'+this.objectId+'.execCommand(\'bold\')"></a>';
-            html += '<a class="button tiny merged"><img src="'+this.path+'images/italic.png" alt="Italic" title="Italic" onclick="'+this.objectId+'.execCommand(\'italic\')"></a>';
-            html += '<a class="button tiny merged right"><img src="'+this.path+'images/underline.png" alt="Underline" title="Underline" onclick="'+this.objectId+'.execCommand(\'underline\')"></a>';
-            //html += '<td><div class="separator"></div></td>';
-            html += '<a class="button tiny merged left"><img src="'+this.path+'images/left.png" alt="Align Left" title="Align Left" onclick="'+this.objectId+'.execCommand(\'justifyleft\')"></a>';
-            html += '<a class="button tiny merged"><img src="'+this.path+'images/center.png" alt="Center" title="Center" onclick="'+this.objectId+'.execCommand(\'justifycenter\')"></a>';
-            html += '<a class="button tiny merged right"><img src="'+this.path+'images/right.png" alt="Align Right" title="Align Right" onclick="'+this.objectId+'.execCommand(\'justifyright\')"></a>';
-            //html += '<td><div class="separator"></div></td>';
-            html += '<a class="button tiny merged left"><img src="'+this.path+'images/ol.png" alt="Ordered List" title="Ordered List" onclick="'+this.objectId+'.execCommand(\'insertorderedlist\')"></a>';
-            html += '<a class="button tiny merged right"><img src="'+this.path+'images/ul.png" alt="Unordered List" title="Unordered List" onclick="'+this.objectId+'.execCommand(\'insertunorderedlist\')"></a>';
-            //html += '<td><div class="separator"></div></td>';
-            html += '<a class="button tiny merged left"><img src="'+this.path+'images/outdent.png" alt="Outdent" title="Outdent" onclick="'+this.objectId+'.execCommand(\'outdent\')"></a>';
-            html += '<a class="button tiny merged right"><img src="'+this.path+'images/indent.png" alt="Indent" title="Indent" onclick="'+this.objectId+'.execCommand(\'indent\')"></a>';
-            //html += '<td><div class="separator"></div></td>';
-            html += '<a class="button tiny merged left"><img src="'+this.path+'images/link.png" alt="Insert Link" title="Insert Link" onclick="'+this.objectId+'.execCommand(\'createlink\')"></a>';
-            html += '<a class="button tiny merged right"><img src="'+this.path+'images/picture.png" alt="Insert Image" title="Insert Image" onclick="'+this.objectId+'.execCommand(\'insertimage\')"></a>';
+            html += '<a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'bold\')"><img src="'+this.path+'images/bold.png" alt="Bold" title="Bold"></a>';
+            html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'italic\')"><img src="'+this.path+'images/italic.png" alt="Italic" title="Italic"></a>';
+            html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'underline\')"><img src="'+this.path+'images/underline.png" alt="Underline" title="Underline"></a>';
+
+            html += '<a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'justifyleft\')"><img src="'+this.path+'images/left.png" alt="Align Left" title="Align Left"></a>';
+            html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'justifycenter\')"><img src="'+this.path+'images/center.png" alt="Center" title="Center"></a>';
+            html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'justifyright\')"><img src="'+this.path+'images/right.png" alt="Align Right" title="Align Right"></a>';
+
+            html += '<a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'insertorderedlist\')"><img src="'+this.path+'images/ol.png" alt="Ordered List" title="Ordered List"></a>';
+            html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'insertunorderedlist\')"><img src="'+this.path+'images/ul.png" alt="Unordered List" title="Unordered List"></a>';
+
+            html += '<br /><a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'outdent\')"><img src="'+this.path+'images/outdent.png" alt="Outdent" title="Outdent"></a>';
+            html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'indent\')"><img src="'+this.path+'images/indent.png" alt="Indent" title="Indent"></a>';
+
+            html += '<a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'createlink\')"><img src="'+this.path+'images/link.png" alt="Insert Link" title="Insert Link"></a>';
+            html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'insertimage\')"><img src="'+this.path+'images/picture.png" alt="Insert Image" title="Insert Image"></a>';
 
         html += '</div>';
         //html += '<td><div class="separator"></div></td>';
