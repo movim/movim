@@ -27,18 +27,6 @@ function sortRoster() {
     for(i = 0; i < server_error.length; i++) {
         server_error.item(i).parentNode.insertBefore(server_error.item(i), contacts.item(contacts.length))
     }
-
-    more = roster.querySelector('.more');
-    roster.insertBefore(more, contacts.item(contacts.length));
-
-    /*for(i = 0; i < 10; i++) {
-        if(contacts.item(i) != null)
-            contacts.item(i).style.display = 'block';
-    }*/
-
-    if(contacts.length < 9)
-        more.style.display = 'none';
-
 }
 
 function rosterToggleClass(myClass){
@@ -70,14 +58,17 @@ function focusContact(){
 	rosterlist = document.querySelector('#rosterlist');
 	if(rosterlist.querySelector('.focused') == null){
 		//offline are shown
-		if(rosterlist.querySelector(".offline").style!=""){
+		if(rosterlist.querySelector(".offline").style.display!=""){
 			rosterlist.querySelector("li").className += " focused";
 		}
 		//offline are hidden
 		else{
-			rosterlist.querySelector("linot([class='offline '])").className += " focused";
+			rosterlist.querySelector("li:not(.offline)").className += " focused";
 		}
 		document.querySelector('#right').scrollTop = 0;
+	}
+	else{
+		document.querySelector('#right').scrollTop = rosterlist.querySelector('.focused').offsetTop-document.querySelector('#nav').offsetHeight;
 	}
 }
 
@@ -87,7 +78,20 @@ function rosterNextGroup(cgp){
 		thisGp = thisGp.nextSibling;
 	}
 	if(thisGp.nextSibling!= null){
-		cgp = thisGp.nextSibling;
+		//test "ob"
+		console.log(thisGp.querySelectorAll("li")[0]);
+        thisGp = thisGp.nextSibling;
+        //if(rosterlist.querySelector(".offline").style.display != ""){//offline are shown
+            while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0){
+                thisGp = thisGp.nextSibling;
+            }
+        /*}
+        else{
+            while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0){
+                thisGp = thisGp.nextSibling;
+            }
+        }*/
+		cgp = thisGp;
 		currContact = cgp.querySelectorAll("li")[0];
 	}
 }
@@ -98,59 +102,68 @@ function rosterNext(){
 	end = false;
 	gp = rosterlist.querySelectorAll("div:not([class='chat on'])");
 	currContact = currGp.querySelectorAll("li")[0];
-	while(currContact.className.lastIndexOf("focused") < 0 && currContact.nextSibling != null){
-		currContact = currContact.nextSibling;
-	}
-	currContact = currContact.nextSibling;
-	//Change groupe
-	if(currContact == null ){
-		if( currGp !== gp[gp.length-1]){
-			rosterNextGroup(currGp);
-		}
-		else{
-			end = true;
-		}
-	}
-	if(currContact !== null && !end){
-		//offline are shown
-		if(rosterlist.querySelector(".offline").style.display != ""){
-			while(currContact.style.display.lastIndexOf("none") > (-1) && !end){
-				if(currContact.nextSibling != null){
-					currContact = currContact.nextSibling;
-				}
-				else{
-					if(currGp != gp[gp.length-1])
-						rosterNextGroup(currGp);
-					else{
-						end = true;
-					}
-				}
-			}
-		}
-		//offline are hidden
-		else{
-			while((currContact.className.lastIndexOf("offline") > -1 || currContact.className.lastIndexOf("server") > -1) && !end){
-				if(currContact.nextSibling != null){
-					currContact = currContact.nextSibling;
-				}
-				else{
-					if(currGp != gp[gp.length-1])
-						rosterNextGroup(currGp);
-					else{
-						end = true;
-					}
-				}
-			}
-		}
-		if(end)
-			contact = currFocus;
-		else
-			contact = currContact;
-	}
-	else{
-		if(end)
-			contact = currFocus;
-	}
+    //Define contact end limit
+    if(rosterlist.querySelector(".offline").style.display != "")//offline are shown
+        last = rosterlist.querySelectorAll("li:not([style='display: none;'])")[rosterlist.querySelectorAll("li:not([style='display: none;'])").length -1];
+    else
+        last = rosterlist.querySelectorAll("li:not(.offline), li:not([style='display: none;'])")[rosterlist.querySelectorAll("li:not(.offline), li:not([style='display: none;'])").length -1];
+
+    if(currFocus != last){
+        while(currContact.className.lastIndexOf("focused") < 0 && currContact != null){
+            currContact = currContact.nextSibling;
+        }
+        currContact = currContact.nextSibling;
+        //Change groupe
+        if(currContact == null ){
+            if( currGp !== gp[gp.length-1]){
+                rosterNextGroup(currGp);
+            }
+            else{
+                end = true;
+            }
+        }
+        if(currContact !== null && !end){
+            //offline are shown
+            if(rosterlist.querySelector(".offline").style.display != ""){
+                while(currContact.style.display.lastIndexOf("none") > (-1) && !end){
+                    if(currContact.nextSibling != null){
+                        currContact = currContact.nextSibling;
+                    }
+                    else{
+                        if(currGp != gp[gp.length-1])
+                            rosterNextGroup(currGp);
+                        else{
+                            end = true;
+                        }
+                    }
+                }
+            }
+            //offline are hidden
+            else{
+                while((currContact.className.lastIndexOf("offline") > -1 || currContact.className.lastIndexOf("server") > -1) && !end){
+                    if(currContact.nextSibling != null){
+                        currContact = currContact.nextSibling;
+                    }
+                    else{
+                        if(currGp != gp[gp.length-1])
+                            rosterNextGroup(currGp);
+                        else{
+                            end = true;
+                        }
+                    }
+                }
+            }
+            if(end)
+                contact = currFocus;
+            else
+                contact = currContact;
+        }
+        else{
+            if(end)
+                contact = currFocus;
+        }
+    }
+    else contact = currFocus;
 }
 
 function rosterPreviousGroup(cgp){
@@ -159,12 +172,15 @@ function rosterPreviousGroup(cgp){
 		while(thisGp.nextSibling != cgp){
 			thisGp = thisGp.nextSibling;//change group
 		}
-		currGp = thisGp;
-		first = currGp.querySelector("li");
-		currContact = thisGp.querySelectorAll("li")[thisGp.querySelectorAll("li").length-1];
-	}
-	else{
-		end = true;
+		console.log(thisGp.querySelectorAll("li:not([style='display: none;'])")[0]);
+			//thisGp = thisGp.previousSibling;
+			while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0 && thisGp != firstGroup){
+				thisGp = thisGp.previousSibling;
+			}
+			currGp = thisGp;
+			first = currGp.querySelector("li");
+			currContact = thisGp.querySelectorAll("li")[thisGp.querySelectorAll("li").length-1];
+			console.log(currContact);
 	}
 }
 
@@ -176,45 +192,54 @@ function rosterPrevious(){
 	end = false;
 	firstContact = currGp.querySelector("li");
 	currContact = currGp.querySelectorAll("li")[currGp.querySelectorAll("li").length -1];
-	while(currContact.className.lastIndexOf("focused") < 0 && currContact != firstContact){
-		currContact = currContact.previousSibling;
-	}
-	currContact = currContact.previousSibling;
-	if(currGp.querySelector("li") == currFocus){ //first contact of the group
-		rosterPreviousGroup(currGp);
-	}
-	if(currGp.querySelector("li") != currFocus && !end){
-		//offline are shown
-		if(rosterlist.querySelector(".offline").style.display != ""){
-			while(currContact.style.display.lastIndexOf("none") > (-1)){
-				if(currContact != firstContact){
-					currContact = currContact.previousSibling;
-				}
-				else{
-					rosterPreviousGroup(currGp);
-				}
-			}
-			if(end)
-				contact = currFocus;
-			else
-				contact = currContact;
-		}
-		//offline are hidden
-		else{
-			while((currContact.className.lastIndexOf("offline") > -1 || currContact.className.lastIndexOf("server") > -1) && !end){
-				if(currContact != firstContact){
-					currContact = currContact.previousSibling;
-				}
-				else{
-					rosterPreviousGroup(currGp);
-				}
-			}
-			if(end)
-				contact = currFocus;
-			else
-				contact = currContact;
-		}
-	}
+    if(rosterlist.querySelector(".offline").style.display != "")//offline are shown
+        first = rosterlist.querySelector("li:not([style='display: none;'])");
+    else
+        first = rosterlist.querySelector("li:not(.offline), li:not([style='display: none;'])");
+    if(currFocus != first){
+        while(currContact.className.lastIndexOf("focused") < 0 && currContact != firstContact){
+            currContact = currContact.previousSibling;
+        }
+        currContact = currContact.previousSibling;
+        if(currGp.querySelector("li") == currFocus){ //first contact of the group
+            rosterPreviousGroup(currGp);
+        }
+        if(currGp.querySelector("li") != currFocus && !end){
+            //offline are shown
+            if(rosterlist.querySelector(".offline").style.display != ""){
+                while(currContact.style.display.lastIndexOf("none") > (-1)){
+                    if(currContact != firstContact){
+                        currContact = currContact.previousSibling;
+                    }
+                    else{
+                        rosterPreviousGroup(currGp);
+                    }
+                }
+                if(end)
+                    contact = currFocus;
+                else
+                    contact = currContact;
+            }
+            //offline are hidden
+            else{
+                while((currContact.className.lastIndexOf("offline") > -1 || currContact.className.lastIndexOf("server") > -1) && !end){
+                    if(currContact != firstContact){
+                        currContact = currContact.previousSibling;
+                    }
+                    else{
+                        rosterPreviousGroup(currGp);
+                    }
+                }
+                if(end)
+                    contact = currFocus;
+                else
+                    contact = currContact;
+            }
+        }
+    }
+    else{
+        contact = currFocus;
+    }
 }
 
 function rosterSearch(e){
@@ -250,7 +275,7 @@ function rosterSearch(e){
 			contact = rosterlist.querySelectorAll("li[style='display: list-item; ']")[0];
 			//otherwise it is the first contact of the list
 			if(typeof contact === 'undefined'){
-				contact = rosterlist.querySelectorAll("li:not([class='offline '])")[0];
+				contact = rosterlist.querySelectorAll("li:not(.offline)")[0];
 			}
 			found = false;
 			if(0 == (decallage = contact.offsetHeight))
@@ -258,34 +283,13 @@ function rosterSearch(e){
 
 			switch(e.keyCode){
 				//previous
-				//case e.keyCode = 37:
 				case e.keyCode = 38:
-					/*while(contact.className.lastIndexOf("focused") == -1){
-						if(contact.nextSibling != null){
-							contact = contact.nextSibling;
-						}
-						else{
-							contact = contact.parentNode.nextSibling.querySelectorAll("li")[0];
-						}
-					}*/
-					//if(!(contact.previousSibling.nodeName == "H1" && contact.parentNode.previousSibling == null)){
-						//if(document.querySelector('.offline').style.display == ''){//before filtering, offline contacts are hidden
-							//while((contact.className.lastIndexOf("offline")>-1 || contact.className.lastIndexOf("error")>-1) || !found){//so they can't be focused
-								rosterPrevious();
-							//}
-						//}
-						//else{
-							//while(contact.getAttribute('style')=="" || !found){ //.lastIndexOf('list-item')<0
-								//rosterPrevious(contact);
-							//}
-						//}
-						if(contact.offsetTop-document.querySelector('#right').scrollTop < decallage){
-							document.querySelector('#right').scrollTop -= decallage -(contact.offsetTop-document.querySelector('#right').scrollTop) +10;
-						}
-					//}
+					rosterPrevious();
+					if(contact.offsetTop-document.querySelector('#right').scrollTop < decallage){
+						document.querySelector('#right').scrollTop = currContact.offsetTop-document.querySelector('#nav').offsetHeight;
+					}
 					break;
 				//next
-				//case e.keyCode = 39:
 				case e.keyCode = 40:
 					rosterNext();
 					if(contact.offsetTop+decallage-document.querySelector('#right').scrollTop >= document.querySelector('#rostermenu').offsetTop){

@@ -75,6 +75,20 @@ function prepareString($string) {
             ':lol:' => 'trollol.png',
         );
     
+    $string = preg_replace(
+        array(
+            '/(^|\s|>)(www.[^<> \n\r]+)/iex',
+            '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/iex',
+            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\']?)((?:https?):\/\/([^<> \n\r]+)))/iex'
+        ),  
+        array(
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\3':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\4':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\3</a>&nbsp;':'\\0'))",
+        ),  
+        $string
+    );
+
     /*$string = preg_replace(
         array(
             '/(?(?=<a[^>]*>.+<\/a>)
