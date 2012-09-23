@@ -11,9 +11,17 @@
     border-bottom: 0px;
 }
 
+.post.me:hover {
+    padding-bottom: 0px;
+}
+
 .post span {
     font-weight: bold;
     line-height: 1.5em;
+}
+
+.post span a:hover {
+    text-decoration: underline;
 }
 
 .post span.date {
@@ -23,16 +31,11 @@
 }
 
 .post span.delete {
-    float: right;
-    font-family: sans-serif;
-    font-weight: bold;
-    border-radius: 3px;
-    padding: 3px 8px;
+    font-weight: normal;
+    margin-left: 1em;
 }
 
 .post span.delete:hover {
-	color: white;
-	background-color: gray;
 	cursor: pointer;
 }
 
@@ -138,6 +141,22 @@
     margin-top: 0.3em;
 }
 
+.post .content i { font-style: italic; }
+.post .content b { font-weight: bold; }
+.post .content u, .post .content a { text-decoration: underline; }
+.post .content img {
+    margin: 1em 0px;
+    max-width: 100%;
+}
+
+.post .content img.smiley {
+    margin: 0px;
+}
+
+.post .content ul, .post .content ol {
+    margin-left: 2em;
+}
+
 .post .attachment {
     display: block;
     margin-left: 65px;
@@ -210,4 +229,24 @@
 
 .post table#commentsubmit .commentsubmitrow td {
     padding-bottom: 0px;
+}
+
+.post .tools {
+    background-color: #FDFDFD; 
+    margin: 0em -1.5em; 
+    margin-top: 1em; 
+    padding-left: 1.5em; 
+    padding-right: 1.5em; 
+    padding-bottom: 0.6em; 
+    padding-top: 0.7em;
+    display: none;
+}
+
+.post:hover .tools {
+    display: block;
+}
+
+.post .tools a:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
