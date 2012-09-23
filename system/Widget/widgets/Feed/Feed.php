@@ -141,7 +141,14 @@ class Feed extends WidgetCommon {
                                     href="#" 
                                     onclick="frameHeight(this);"
                                     style="float: left;"
-                                    class="button tiny icon add">'.t("Size").'
+                                    class="button tiny icon add merged left">'.t("Size").'
+                                </a>
+                                <a 
+                                    title="Rich"
+                                    href="#" 
+                                    onclick="richText(this);"
+                                    style="float: left;"
+                                    class="button tiny icon yes merged right">'.t("Rich Text").'
                                 </a>
                                 <a 
                                     title="'.t("Submit").'"

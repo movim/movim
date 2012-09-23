@@ -116,10 +116,6 @@
     display: none;
 }
 
-#feed #feedsubmitform:hover .menueditor {
-    display: block;
-}
-
 iframe {
     width: 100%;
 }
