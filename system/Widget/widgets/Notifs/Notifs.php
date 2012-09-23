@@ -164,15 +164,19 @@ class Notifs extends WidgetBase
         $notifs = array();
         
     $query = Contact::query()
-                        ->where(
-                            array('key' => $this->user->getLogin())
-                        );
+                     ->where(
+                        array(
+                            'key' => $this->user->getLogin(),
+                            'jid!' => $this->user->getLogin(),
+                            array(
+                                'rostersubscription!' => 'none',
+                                'Contact`.`rostersubscription!' => 'vcard',
+                                '|rosterask' => 'subscribe')));
     $contacts = Contact::run_query($query);
-        
     ?>
     <div id="notifs">
         <span id="widgettitle">
-            <?php echo t('Contacts (%s)', sizeof($contacts) -1); ?> - 
+            <?php echo t('Contacts (%s)', sizeof($contacts)); ?> - 
             <a 
                     class="" 
                     href="#" 
