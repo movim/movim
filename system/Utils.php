@@ -39,6 +39,42 @@ function getTime()
 }
 
 /**
+ * Replaces anchor tags with text
+ * - Will search string and replace all anchor tags with text (case insensitive)
+ *
+ * How it works:
+ * - Searches string for an anchor tag, checks to make sure it matches the criteria
+ *         Anchor search criteria:
+ *             - 1 - <a (must have the start of the anchor tag )
+ *             - 2 - Can have any number of spaces or other attributes before and after the href attribute
+ *             - 3 - Must close the anchor tag
+ *
+ * - Once the check has passed it will then replace the anchor tag with the string replacement
+ * - The string replacement can be customized
+ *
+ * Know issue:
+ * - This will not work for anchors that do not use a ' or " to contain the attributes.
+ *         (i.e.- <a href=http: //php.net>PHP.net</a> will not be replaced)
+ */
+function replaceAnchorsWithText($data) {
+    /**
+     * Had to modify $regex so it could post to the site... so I broke it into 6 parts.
+     */
+    $regex  = '/(<a\s*'; // Start of anchor tag
+    $regex .= '(.*?)\s*'; // Any attributes or spaces that may or may not exist
+    $regex .= 'href=[\'"]+?\s*(?P<link>\S+)\s*[\'"]+?'; // Grab the link
+    $regex .= '\s*(.*?)\s*>\s*'; // Any attributes or spaces that may or may not exist before closing tag
+    $regex .= '(?P<name>\S+)'; // Grab the name
+    $regex .= '\s*<\/a>)/i'; // Any number of spaces between the closing anchor tag (case insensitive)
+   
+    if (is_array($data)) {
+        // This is what will replace the link (modify to you liking)
+        $data = "{$data['name']} {$data['link']} ";
+    }
+    return preg_replace_callback($regex, 'replaceAnchorsWithText', $data);
+}
+
+/**
  * Prepare the string (add the a to the links and show the smileys)
  *
  * @param string $string
@@ -74,43 +110,22 @@ function prepareString($string) {
             ':troll:' => 'trollface.png',
             ':lol:' => 'trollol.png',
         );
-    
+
+    $string = replaceAnchorsWithText($string);
+
     $string = preg_replace(
         array(
             '/(^|\s|>)(www.[^<> \n\r]+)/iex',
             '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/iex',
-            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\']?)((?:https?):\/\/([^<> \n\r]+)))/iex'
+            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\'])((?:https?):\/\/([^<> \n\r]+)))/iex'
         ),  
         array(
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\3':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\2':'\\0'))",
             "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\4':'\\0'))",
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\3</a>&nbsp;':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\2</a>&nbsp;':'\\0'))",
         ),  
-        $string
+        ' '.$string
     );
-
-    /*$string = preg_replace(
-        array(
-            '/(?(?=<a[^>]*>.+<\/a>)
-            (?:<a[^>]*>.+<\/a>)
-            |
-            ([^="\']?)((?:https?|ftp|bf2|):\/\/[^<> \n\r]+)
-            )/iex',
-            '/<a([^>]*)target="?[^"\']+"?/i',
-            '/<a([^>]+)>/i',
-            '/(^|\s)(www.[^<> \n\r]+)/iex',
-            '/(([_A-Za-z0-9-]+)(\\.[_A-Za-z0-9-]+)*@([A-Za-z0-9-]+)
-            (\\.[A-Za-z0-9-]+)*)/iex'
-        ),
-        array(
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\">\\2</a>\\3':'\\0'))",
-            '<a\\1',
-            '<a\\1 target="_blank">',
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\">\\2</a>\\3':'\\0'))",
-            "stripslashes((strlen('\\2')>0?'<a href=\"mailto:\\0\">\\0</a>':'\\0'))"
-        ),
-        $string
-    );*/
     
     $conf = new Conf();
     $theme = $conf->getServerConfElement('theme');
@@ -123,6 +138,69 @@ function prepareString($string) {
     }
 
     return trim($string);
+}
+
+/**
+ * Convert plaintext URI to HTML links.
+ *
+ * Converts URI, www and ftp, and email addresses. Finishes by fixing links
+ * within links.
+ *
+ * @since 0.71
+ *
+ * @param string $text Content to convert URIs.
+ * @return string Content with converted URIs.
+ */
+function make_clickable( $text ) {
+	$r = '';
+	$textarr = preg_split( '/(<[^<>]+>)/', $text, -1, PREG_SPLIT_DELIM_CAPTURE ); // split out HTML tags
+	foreach ( $textarr as $piece ) {
+		if ( empty( $piece ) || ( $piece[0] == '<' && ! preg_match('|^<\s*[\w]{1,20}+://|', $piece) ) ) {
+			$r .= $piece;
+			continue;
+		}
+
+		// Long strings might contain expensive edge cases ...
+		if ( 10000 < strlen( $piece ) ) {
+			// ... break it up
+			foreach ( _split_str_by_whitespace( $piece, 2100 ) as $chunk ) { // 2100: Extra room for scheme and leading and trailing paretheses
+				if ( 2101 < strlen( $chunk ) ) {
+					$r .= $chunk; // Too big, no whitespace: bail.
+				} else {
+					$r .= make_clickable( $chunk );
+				}
+			}
+		} else {
+			$ret = " $piece "; // Pad with whitespace to simplify the regexes
+
+			$url_clickable = '~
+				([\\s(<.,;:!?])                                        # 1: Leading whitespace, or punctuation
+				(                                                      # 2: URL
+					[\\w]{1,20}+://                                # Scheme and hier-part prefix
+					(?=\S{1,2000}\s)                               # Limit to URLs less than about 2000 characters long
+					[\\w\\x80-\\xff#%\\~/@\\[\\]*(+=&$-]*+         # Non-punctuation URL character
+					(?:                                            # Unroll the Loop: Only allow puctuation URL character if followed by a non-punctuation URL character
+						[\'.,;:!?)]                            # Punctuation URL character
+						[\\w\\x80-\\xff#%\\~/@\\[\\]*(+=&$-]++ # Non-punctuation URL character
+					)*
+				)
+				(\)?)                                                  # 3: Trailing closing parenthesis (for parethesis balancing post processing)
+			~xS'; // The regex is a non-anchored pattern and does not have a single fixed starting character.
+			      // Tell PCRE to spend more time optimizing since, when used on a page load, it will probably be used several times.
+
+			$ret = preg_replace_callback( $url_clickable, '_make_url_clickable_cb', $ret );
+
+			$ret = preg_replace_callback( '#([\s>])((www|ftp)\.[\w\\x80-\\xff\#$%&~/.\-;:=,?@\[\]+]+)#is', '_make_web_ftp_clickable_cb', $ret );
+			$ret = preg_replace_callback( '#([\s>])([.0-9a-z_+-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})#i', '_make_email_clickable_cb', $ret );
+
+			$ret = substr( $ret, 1, -1 ); // Remove our whitespace padding.
+			$r .= $ret;
+		}
+	}
+
+	// Cleanup of accidental links within links
+	$r = preg_replace( '#(<a( [^>]+?>|>))<a [^>]+?>([^>]+?)</a></a>#i', "$1$3</a>", $r );
+	return $r;
 }
 
 /**
