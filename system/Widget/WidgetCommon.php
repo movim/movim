@@ -113,7 +113,7 @@ class WidgetCommon extends WidgetBase {
                     </span>';                    
                     
             $tmp .= '<div class="content">
-                        '.html_entity_decode(prepareString($message[0]->getData('content'))). '</div>';
+                        '.prepareString(html_entity_decode($message[0]->getData('content'))). '</div>';
                         
             //$attachments = AttachmentHandler::getAttachment($this->user->getLogin(), $message[0]->getData('nodeid'));
             /*if($attachments) {
