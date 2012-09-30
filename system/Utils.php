@@ -136,6 +136,9 @@ function prepareString($string) {
         $replace = '<img class="smiley" src="'.$path.$value.'">';
         $string = str_replace($key, $replace, $string);
     }
+    
+    $string = preg_replace('#<script[^>]*>.*?</script>#is','',$string);
+    
 
     return trim($string);
 }
