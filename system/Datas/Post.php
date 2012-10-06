@@ -80,11 +80,11 @@ class Post extends DatajarBase {
             $this->parentid->setval($parent);
         
         if($item->entry->title)
-            $this->content->setval((string)$item->entry->title);        
+            $content = (string)$item->entry->title;        
         elseif($item->entry->content)
-            $this->content->setval((string)$item->entry->content);
+            $content = (string)$item->entry->content;
         elseif($item->entry->body)
-            $this->content->setval((string)$item->entry->body);
+            $content = (string)$item->entry->body;
 
         $this->published->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->published)));
         
@@ -109,16 +109,27 @@ class Post extends DatajarBase {
             unset((string)$item->entry->link->attributes());
         }*/
         
+        $contentimg = '';
+        
         foreach($item->entry->link as $attachment) {
             /*if($attachment['link[0]['attributes()->title == 'thumb') {
                 AttachmentHandler::saveAttachment($attachment, $key, $from, (string)$item->attributes()->id);
             }*/
+            if(isset($attachment->link[0]) && (string)$attachment->link[0]->attributes()->title == 'thumb') {
+                $contentimg .= '
+                    <a href="'.(string)$attachment->attributes()->href.'" target="_blank" class="imglink"><img title="'.(string)$attachment->attributes()->title.'" src="'.(string)$attachment->link[0]->attributes()->href.'"/></a>';
+            }
             
             if((string)$attachment->attributes()->title == 'comments') {
                 $this->commentson->setval(1);
                 $this->commentplace->setval(reset(explode('?', substr((string)$attachment->attributes()->href, 5))));
             }
         }
+        
+        if($contentimg != '')
+            $content .= '<br />'.$contentimg;
+        
+        $this->content->setval($content);
     }
     
     public function setNoComments() {
