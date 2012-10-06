@@ -25,8 +25,33 @@
     border-bottom: 0px;
 }
 
+#chats .chat .tab.alert .name {
+    display: relative;
+}
+
+#chats .chat .tab.alert .name:after {
+    /*background-color: #69B628;
+    border: 1px solid #437519;
+    border-top: 1px solid #A4DA77;
+    border-bottom: 0px;*/
+    content: "+1";
+    color: white;
+    font-size: 10px;
+    padding: 0px;
+    line-height: 1.7em;
+    float: right;
+    background-color: #C5371E;
+    margin-top: 3px;
+    padding: 0px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
 #chats .chat .tab:hover {
     background-color: #EEE;
+    border: 1px solid #AAA;
+    border-bottom: none;
+    color: black;
 }
 
 #chats .chat .tab .name {
