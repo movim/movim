@@ -21,23 +21,23 @@ function colorTalk(params) {
     chat.parentNode.style.backgroundColor = '#DD951F';
 }
 
+function showTalk(n) {
+    panel = n.parentNode.querySelector('.panel');
+    
+    panel.style.display = 'block';
+    n.style.display = 'none'; 
+}
+
 function hideTalk(n) {
-    n.parentNode.style.backgroundColor = '#444';
-    childs = n.parentNode.childNodes;
-    messages = childs[0];
-    text = childs[1];
-    if(messages.style.display == 'none') {
-        messages.style.display = 'block';
-        text.style.display = 'block';
-    }
-    else {
-        messages.style.display = 'none';
-        text.style.display = 'none';   
-    }
+    panel = n.parentNode.parentNode.parentNode.querySelector('.panel');
+    tab = n.parentNode.parentNode.parentNode.querySelector('.tab');
+    
+    panel.style.display = 'none';
+    tab.style.display = 'block';
 }
 
 function closeTalk(n) {
-    n.parentNode.parentNode.removeChild(n.parentNode);
+    n.parentNode.parentNode.parentNode.parentNode.removeChild(n.parentNode.parentNode.parentNode);
 }
 
 function scrollTalk(params) {

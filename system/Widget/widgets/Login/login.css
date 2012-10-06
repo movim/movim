@@ -46,6 +46,7 @@
     background: linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
     background: -moz-linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
     background: -webkit-linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
+    background: -o-linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
     color: white;
     box-shadow: none;
     min-width: 130px;
@@ -63,6 +64,7 @@
     background: linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
     background: -moz-linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
     background: -webkit-linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
+    background: -o-linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
     background-color: #274950;
 }
 
