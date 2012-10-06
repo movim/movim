@@ -17,8 +17,8 @@ movim_add_onload(function()
 });
 
 function colorTalk(params) {
-    chat = document.getElementById(params);
-    chat.parentNode.style.backgroundColor = '#DD951F';
+    messages = document.getElementById(params);
+    tabstyle = messages.parentNode.parentNode.querySelector('.tab').className = 'tab alert';
 }
 
 function showTalk(n) {
@@ -26,6 +26,8 @@ function showTalk(n) {
     
     panel.style.display = 'block';
     n.style.display = 'none'; 
+    
+    n.className = 'tab';
 }
 
 function hideTalk(n) {
@@ -106,9 +108,7 @@ function disableSound(){
 function setBackgroundColor(where, color)
 {
     target = document.getElementById(where);
-    console.debug('test');
     if(target) {
-		    console.debug('tesssst');
         target.style.backgroundColor = color;
     }
 }

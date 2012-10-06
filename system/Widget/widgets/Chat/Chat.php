@@ -79,18 +79,18 @@ class Chat extends WidgetBase
             $contact = $contact[0];
         
         if(isset($contact) && $contact->getData('chaton') == 0) {
+            $contact->chaton->setval(2);
+            $contact->run_query($contact->query()->save($contact));
+            
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
             RPC::call('scrollAllTalks');
-            $contact->chaton->setval(1);
-            
-            $contact->run_query($contact->query()->save($contact));
         } else if($message->getData('body') != '') {
             
             $html = $this->prepareMessage($message);
 
-            if($contact->getData('chaton') == 2) {
+            if($contact->getData('chaton') == 1) {
                 RPC::call('colorTalk',
                             'messages'.$contact->getData('jid'));
             }
@@ -317,7 +317,7 @@ class Chat extends WidgetBase
             $tabstyle = ' style="display: none;" ';            
             $panelstyle = ' style="display: block;" ';
         }
-    
+        
         $html = '
             <div class="chat" onclick="this.querySelector(\'textarea\').focus()">
                 <div class="panel" '.$panelstyle.'>
@@ -345,7 +345,7 @@ class Chat extends WidgetBase
                     </div>
                 </div>
                 
-                <div class="tab" '.$tabstyle.' onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' showTalk(this);">
+                <div class="tab '.$tabclass.'" '.$tabstyle.' onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' showTalk(this);">
                     <div class="name">
                         <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.$contact->getTrueName().'
                     </div>
