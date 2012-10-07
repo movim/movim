@@ -134,11 +134,12 @@ class Roster extends WidgetBase
                                  ->orderby('Contact.group', true);
 
         $contactsq = Contact::run_query($query);
-        
+
         $contacts = array();
         
         foreach($contactsq as $c) {
-            if(isset($c[1])) {
+            $p = $c[1]->getPresence();
+            if(isset($p['jid'])) {
                 $query = Presence::query()->where(
                                                 array(
                                                     'key' => $this->user->getLogin(),
@@ -149,7 +150,7 @@ class Roster extends WidgetBase
                     array_push($contacts, array($c[0], $presences[0]));
             }
             else
-                array_push($contacts, array($c[0], false));
+                array_push($contacts, array($c[0], $c[1]));
         }
 
         $html = '';
