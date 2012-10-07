@@ -177,7 +177,7 @@ class Chat extends WidgetBase
         $presence = Presence::run_query($query);
         $presence = $presence[0];
         
-        if($contact->getData('chaton') != 1 && isset($presence) && $presence->presence->getval() != 6) {
+        if($contact->getData('chaton') == 0 && isset($presence) && $presence->presence->getval() != 6) {
             $contact->chaton->setval(2);
             
             $contact->run_query($contact->query()->save($contact));
