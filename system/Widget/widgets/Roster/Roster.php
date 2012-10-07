@@ -133,7 +133,24 @@ class Roster extends WidgetBase
                                             '|Contact`.`rosterask' => 'subscribe')))
                                  ->orderby('Contact.group', true);
 
-        $contacts = Contact::run_query($query);
+        $contactsq = Contact::run_query($query);
+        
+        $contacts = array();
+        
+        foreach($contactsq as $c) {
+            if(isset($c[1])) {
+                $query = Presence::query()->where(
+                                                array(
+                                                    'key' => $this->user->getLogin(),
+                                                    'jid' => $c[0]->getData('jid')))
+                                        ->orderby('presence', false);
+                $presences = Presence::run_query($query);
+                if(isset($presences[0]))
+                    array_push($contacts, array($c[0], $presences[0]));
+            }
+            else
+                array_push($contacts, array($c[0], false));
+        }
 
         $html = '';
         $group = '';
