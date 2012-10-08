@@ -73,12 +73,12 @@ if(isset($_GET['c'])) {
      }
     
      else {
-        $user = new User();
+        //$user = new User();
         $c = new Contact();
 
         $query = Contact::query()->select()
                                    ->where(array(
-                                           'key' => $user->getLogin(),
+                                           //'key' => $user->getLogin(),
                                            'jid' => $_GET['c']));
         $contact = Contact::run_query($query);
         
