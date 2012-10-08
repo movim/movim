@@ -46,8 +46,13 @@ function movim_parse_form(formname) {
 
 	var data = H();
 	for(var i = 0; i < form.elements.length; i++) {
-        data.set(form.elements[i].name,
-                 form.elements[i].value);
+        if(form.elements[i].type == 'checkbox') {
+            data.set(form.elements[i].name,
+                     form.elements[i].checked);
+        } else {
+            data.set(form.elements[i].name,
+                     form.elements[i].value);
+        }
 	}
 	return data;
 }
