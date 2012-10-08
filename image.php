@@ -73,13 +73,16 @@ if(isset($_GET['c'])) {
      }
     
      else {
-        //$user = new User();
+        $user = new User();
+        if($user->isLogged())
+            $where = array('key' => $user->getLogin(), 'jid' => $_GET['c']);
+        else
+            $where = array('jid' => $_GET['c']);
+        
         $c = new Contact();
 
         $query = Contact::query()->select()
-                                   ->where(array(
-                                           //'key' => $user->getLogin(),
-                                           'jid' => $_GET['c']));
+                                   ->where($where);
         $contact = Contact::run_query($query);
         
         if($contact[0]->getData('phototype') != '' && 
