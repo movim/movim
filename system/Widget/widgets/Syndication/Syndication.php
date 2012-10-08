@@ -42,6 +42,8 @@ class Syndication extends WidgetBase
             $contact = Contact::run_query($query);
 
             if(isset($messages[0]) && isset($contact[0])) {
+                header("Content-Type: application/atom+xml; charset=UTF-8");
+        
                 $contact = $contact[0];
                 $xml = '
                     <?xml version="1.0" encoding="utf-8"?>
@@ -73,6 +75,8 @@ class Syndication extends WidgetBase
                 $xml .= '
                     </feed>';
                 echo trim($xml);
+            } else {
+                echo t('No public feed for this contact');
             }
         } else {
             echo t('No contact specified');
