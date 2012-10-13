@@ -248,7 +248,7 @@ class Vcard extends WidgetBase
                             <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
                           </div>';
                       
-            $html .= '</fieldset>'; 
+            $html .= '</fieldset><br />'; 
                       
             $html .= '<fieldset>
                         <legend>'.t('Privacy Level').'</legend>';
@@ -257,8 +257,13 @@ class Vcard extends WidgetBase
                     $checked = 'checked="true"';
                 else
                     $checked =  '';
+                
+                $html .= '';
                           
-                $html .= '<div class="element">
+                $html .= '<div class="element large">
+                            <div class="message info" style="float: right; width: 70%; margin-bottom: 1.5em;">
+                                '.t('Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet.').'
+                            </div>
                             <label>'.t('Is this profile public ?').'</label>
                               <div class="checkbox">
                                 <input type="checkbox" id="checkbox" name="public" '.$checked.'/>

@@ -8,7 +8,7 @@ class Explore extends WidgetCommon {
     
     function build()
     {
-        $users_limit = 20;
+        $users_limit = 10;
        
         $gender = getGender();
         $marital = getMarital();
@@ -16,6 +16,7 @@ class Explore extends WidgetCommon {
         $query = Contact::query()->select()
                        ->where(array(
                                'public' => 1))
+                       ->orderby('id', true)
                        ->limit(0, $users_limit);
         $users = Contact::run_query($query);
         
@@ -29,9 +30,15 @@ class Explore extends WidgetCommon {
             $users = array_merge($users, $users_fill);
         }*/
         
-        shuffle($users);
+        //shuffle($users);
     ?>
         <div id="explore">
+            <div class="filters">
+                <ul>
+                    <li class="on""><?php echo t('Last registered');?></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
     <?php
         foreach($users as $user) {
             echo '

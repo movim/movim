@@ -1,12 +1,11 @@
 #explore {
-    padding: 1.5em;
-    padding-top: 0px;
+    padding-top: 1em;
     margin-bottom: 2em;
 }
 
 .contactbox {
     height: 50px;
-    padding: 1.5em 0px;
+    padding: 1.5em;
     border-bottom: 1px solid #DDD;
 }
 
