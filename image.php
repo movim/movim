@@ -36,6 +36,16 @@ function display_image($hash, $type) {
     header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT');
 }
 
+function display_default() {
+    ob_clean();
+    ob_start();
+    $content = file_get_contents('themes/movim/img/default.svg');
+    
+    display_image($hash, "image/svg+xml");
+    echo $content;
+    exit;
+}
+
 if (!function_exists('getallheaders')) {
         function getallheaders() {
             foreach($_SERVER as $key=>$value) {
@@ -51,7 +61,7 @@ if (!function_exists('getallheaders')) {
 } 
 
 // We load the avatar from the database and we display it
-if(isset($_GET['c'])) {
+//if(isset($_GET['c'])) {
     $hash = md5($_GET['c'].$_GET['size']);
     $headers = getallheaders();
     
@@ -61,31 +71,25 @@ if(isset($_GET['c'])) {
     {
         header('HTTP/1.1 304 Not Modified');
         exit;
-    } elseif($_GET['c'] == 'default') {
-            ob_clean();
-            ob_start();
-            $content = file_get_contents('themes/movim/img/default.svg');
-            
-            display_image($hash, "image/svg+xml");
-            echo $content;
-            exit;
-
-     }
+    } elseif($_GET['c'] == '' || $_GET['c'] == 'default') {
+        display_default();
+    }
     
      else {
         $user = new User();
         if($user->isLogged())
-            $where = array('key' => $user->getLogin(), 'jid' => $_GET['c']);
+            $where = array('jid' => $_GET['c']);
         else
             $where = array('jid' => $_GET['c']);
         
         $c = new Contact();
 
         $query = Contact::query()->select()
-                                   ->where($where);
+                                 ->where($where);
         $contact = Contact::run_query($query);
         
-        if($contact[0]->getData('phototype') != '' && 
+        if(isset($contact[0]) &&
+           $contact[0]->getData('phototype') != '' && 
            $contact[0]->getData('photobin') != '' && 
            $contact[0]->getData('phototype') != 'f' && 
            $contact[0]->getData('photobin') != 'f') {
@@ -137,9 +141,11 @@ if(isset($_GET['c'])) {
                 display_image($hash, $contact[0]->getData('phototype'));
                 echo base64_decode($contact[0]->getData('photobin'));
             }
+        } else {
+            display_default();
         }
     }
-}
+//}
 
 // Closing db (dirty...)
 global $sdb;

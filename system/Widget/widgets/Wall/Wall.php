@@ -87,7 +87,6 @@ class Wall extends WidgetCommon
         $query = Post::query()
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
                             ->where(array(
-                                'Contact`.`key' => $this->user->getLogin(),
                                 'Post`.`jid' => $from,
                                 'Post`.`parentid' => ''))
                             ->orderby('Post.updated', true)

@@ -250,7 +250,7 @@ class Login extends WidgetBase {
 
                 </form>
                 <div id="publicusers">
-                <?php
+                <?php /*
                     $users_limit = 55;
                     
                     $query = Contact::query()->select()
@@ -278,7 +278,7 @@ class Login extends WidgetBase {
                         else
                             echo '<img src="'.$user->getPhoto('s').'"/>';
                     }
-                ?>
+                */ ?>
                 </div>
             <?php
             }

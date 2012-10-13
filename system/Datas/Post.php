@@ -103,18 +103,9 @@ class Post extends DatajarBase {
         $this->street->setval((string)$item->entry->geoloc->street);
         $this->building->setval((string)$item->entry->geoloc->building);
         
-        // If we have only one link in the entry
-        /*if(string)$item->entry->link->attributes()) {
-            (string)$item->entry->link[0]['attributes() = (string)$item->entry->link->attributes();
-            unset((string)$item->entry->link->attributes());
-        }*/
-        
         $contentimg = '';
         
         foreach($item->entry->link as $attachment) {
-            /*if($attachment['link[0]['attributes()->title == 'thumb') {
-                AttachmentHandler::saveAttachment($attachment, $key, $from, (string)$item->attributes()->id);
-            }*/
             if(isset($attachment->link[0]) && (string)$attachment->link[0]->attributes()->title == 'thumb') {
                 $contentimg .= '
                     <a href="'.(string)$attachment->attributes()->href.'" target="_blank" class="imglink"><img title="'.(string)$attachment->attributes()->title.'" src="'.(string)$attachment->link[0]->attributes()->href.'"/></a>';

@@ -69,11 +69,11 @@ class Chat extends WidgetBase
             $jid = $message->getData('from');
         }
 
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $key,
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
+        $contact = RosterLink::run_query($query);
 
         if($contact)
             $contact = $contact[0];
@@ -120,11 +120,11 @@ class Chat extends WidgetBase
     
     function onComposing($jid)
     {
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
+        $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
         if($contact->getData('chaton') == 1) {
@@ -138,11 +138,11 @@ class Chat extends WidgetBase
 
     function onPaused($jid)
     {
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
+        $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
         if($contact->getData('chaton') == 1) {
@@ -163,21 +163,22 @@ class Chat extends WidgetBase
 	 */
 	function ajaxOpenTalk($jid) 
 	{
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
-                                            'key' => $this->user->getLogin(),
-                                            'jid' => $jid));
-        $contact = Contact::run_query($query);
+                                            'RosterLink`.`key' => $this->user->getLogin(),
+                                            'RosterLink`.`jid' => $jid));
+        $contact = RosterLink::run_query($query);
         $contact = $contact[0];
-        
+
         $query = Presence::query()->select()
                                   ->where(array(
                                             'key' => $this->user->getLogin(),
-                                            'jid' => $jid));
+                                            'jid' => $jid))
+                                  ->orderby('presence', false);
         $presence = Presence::run_query($query);
         $presence = $presence[0];
-        
-        if($contact->getData('chaton') == 0 && isset($presence) && $presence->presence->getval() != 6) {
+
+        if($contact->getData('chaton') == 0 && isset($presence) && !in_array($presence->presence->getval(), array(5, 6))) {
             $contact->chaton->setval(2);
             
             $contact->run_query($contact->query()->save($contact));
@@ -229,12 +230,12 @@ class Chat extends WidgetBase
 	 */
 	function ajaxCloseTalk($jid) 
 	{        
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
                                             'jid' => $jid));
-        $contacts = Contact::run_query($query);
-        //$contact = $contact[0];
+        $contacts = RosterLink::run_query($query);
+
         foreach($contacts as $contact) {
             if((int)$contact->getData('chaton') == 1 || (int)$contact->getData('chaton') == 2) {
                 $contact->chaton->setval(0);
@@ -246,11 +247,11 @@ class Chat extends WidgetBase
     
     function ajaxHideTalk($jid)
     {
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
+        $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
         if($contact->getData('chaton') == 1) {
@@ -324,9 +325,9 @@ class Chat extends WidgetBase
                     <div class="head" >
                         <span class="chatbutton cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->getData('jid')."'").' closeTalk(this)"></span>
                         <span class="chatbutton arrow" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' hideTalk(this)"></span>
-                        <img class="avatar"  src="'.$contact->getPhoto('xs').'" />
+                        <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact->getData('jid')).'" />
                         <a class="name" href="?q=friend&f='.$contact->getData('jid').'">
-                            '.$contact->getTrueName().'
+                            '.$contact->getData('rostername').'
                         </a>
                     </div>
                     <div class="messages" id="messages'.$contact->getData('jid').'">
@@ -347,7 +348,7 @@ class Chat extends WidgetBase
                 
                 <div class="tab '.$tabclass.'" '.$tabstyle.' onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' showTalk(this);">
                     <div class="name">
-                        <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.$contact->getTrueName().'
+                        <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact->getData('jid')).'" />'.$contact->getData('rostername').'
                     </div>
                 </div>
             </div>
@@ -357,16 +358,16 @@ class Chat extends WidgetBase
     
     function build()
     {
-        $query = Contact::query()
-                          ->where(
-                                array(
-                                    'key' => $this->user->getLogin(), 
+        $query = RosterLink::query()
+                                ->where(
                                     array(
-                                        'chaton' => 
-                                        array(1, '|2'))
-                                )
-                            );
-        $contacts = Contact::run_query($query);
+                                        'RosterLink`.`key' => $this->user->getLogin(), 
+                                        array(
+                                            'chaton' => 
+                                            array(1, '|2'))
+                                    )
+                                );
+        $contacts = RosterLink::run_query($query);
         
         echo '<div id="chats">';
         if($contacts != false) {

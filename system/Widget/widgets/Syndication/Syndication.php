@@ -25,9 +25,7 @@ class Syndication extends WidgetBase
         if(isset($from)) {
             // We query the last messages
             $query = Post::query()
-                                //->join('Contact', array('Post.jid' => 'Contact.jid'))
                                 ->where(array(
-                                    'key' => $from,
                                     'jid' => $from,
                                     'public' => 1,
                                     'parentid' => ''))

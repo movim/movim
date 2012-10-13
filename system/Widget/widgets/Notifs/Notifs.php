@@ -32,7 +32,6 @@ class Notifs extends WidgetBase
     function onMessage($message) {
         $query = Contact::query()->select()
                                  ->where(array(
-                                            'key' => $message->getData('to'),
                                             'jid' => $message->getData('from')));
         $contact = Contact::run_query($query);
 
@@ -97,46 +96,30 @@ class Notifs extends WidgetBase
     }
     
     function ajaxSubscribed($jid) {
-		//if(checkJid($jid)) {
-			$p = new moxl\PresenceSubscribed();
-            $p->setTo($jid)
-              ->request();
-              
-			/*$p = new moxl\PresenceSubscribe();
-            $p->setTo($jid)
-              ->request();*/
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+        $p = new moxl\PresenceSubscribed();
+        $p->setTo($jid)
+          ->request();
     }
     
     function ajaxRefuse($jid) {
-		//if(checkJid($jid)) {
-			$p = new moxl\PresenceUnsubscribed();
-            $p->setTo($jid)
-              ->request();
-            
-            $notifs = Cache::c('activenotifs');
-            unset($notifs[$jid]);
-            
-            Cache::c('activenotifs', $notifs);
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+        $p = new moxl\PresenceUnsubscribed();
+        $p->setTo($jid)
+          ->request();
+        
+        $notifs = Cache::c('activenotifs');
+        unset($notifs[$jid]);
+        
+        Cache::c('activenotifs', $notifs);
     }
     
     function ajaxAccept($jid, $alias) {        
-		//if(checkJid($jid)) {
-            $r = new moxl\RosterAddItem();
-            $r->setTo($jid)
-              ->request();
-            
-			$p = new moxl\PresenceSubscribe();
-            $p->setTo($jid)
-              ->request();
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+        $r = new moxl\RosterAddItem();
+        $r->setTo($jid)
+          ->request();
+        
+        $p = new moxl\PresenceSubscribe();
+        $p->setTo($jid)
+          ->request();
         
    	    $notifs = Cache::c('activenotifs');
    	    unset($notifs[$jid]);
@@ -145,17 +128,13 @@ class Notifs extends WidgetBase
     }
     
     function ajaxAddContact($jid, $alias) {
-		//if(checkJid($jid)) {
-            $r = new moxl\RosterAddItem();
-            $r->setTo($jid)
-              ->request();
-              
-			$p = new moxl\PresenceSubscribe();
-            $p->setTo($jid)
-              ->request();
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+        $r = new moxl\RosterAddItem();
+        $r->setTo($jid)
+          ->request();
+          
+        $p = new moxl\PresenceSubscribe();
+        $p->setTo($jid)
+          ->request();
     }
     
     function build() {  
@@ -163,16 +142,15 @@ class Notifs extends WidgetBase
     if($notifs == false)
         $notifs = array();
         
-    $query = Contact::query()
+    $query = RosterLink::query()
                      ->where(
                         array(
-                            'key' => $this->user->getLogin(),
                             'jid!' => $this->user->getLogin(),
                             array(
                                 'rostersubscription!' => 'none',
-                                'Contact`.`rostersubscription!' => 'vcard',
+                                'rostersubscription!' => 'vcard',
                                 '|rosterask' => 'subscribe')));
-    $contacts = Contact::run_query($query);
+    $contacts = RosterLink::run_query($query);
     ?>
     <div id="notifs">
         <span id="widgettitle">

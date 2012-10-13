@@ -30,7 +30,7 @@ class Roster extends WidgetBase
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
 		$this->registerEvent('presence', 'onPresence');
-		$this->registerEvent('vcard', 'onVcard');
+		//this->registerEvent('vcard', 'onVcard');
 
         $this->cached = false;
     }
@@ -42,7 +42,7 @@ class Roster extends WidgetBase
                       RPC::cdata($arr['jid']), RPC::cdata($arr['presence_txt']));
 	}
 
-    function onVcard($contact)
+    /*function onVcard($contact)
     {
         $query = \Presence::query()->select()
                            ->where(array(
@@ -57,7 +57,7 @@ class Roster extends WidgetBase
 
         $html = $this->prepareRosterElement($c, true);
         RPC::call('movim_fill', 'roster'.$contact->getData('jid'), RPC::cdata($html));
-    }
+    }*/
 
     function onRoster()
     {
@@ -98,8 +98,8 @@ class Roster extends WidgetBase
         $middle .= '"';
         $middle .= ' href="?q=friend&f='.$contact[0]->getData('jid').'"
                  >
-                    <img class="avatar"  src="'.$contact[0]->getPhoto('xs').'" />'.
-                    '<span>'.$contact[0]->getTrueName();
+                    <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact[0]->getData('jid')).'" />'.
+                    '<span>'.$contact[0]->getData('rostername');
 						if($contact[0]->getData('rosterask') == 'subscribe')
 							$middle .= " #";
                         if($presence['ressource'] != '')
@@ -120,18 +120,17 @@ class Roster extends WidgetBase
 
 	function prepareRoster()
 	{
-        $query = Contact::query()->join('Presence',
-                                              array('Contact.jid' =>
+        $query = RosterLink::query()->join('Presence',
+                                              array('RosterLink.jid' =>
                                                     'Presence.jid'))
-                                 ->where(
-                                    array(
-                                        'Contact`.`key' => $this->user->getLogin(),
-                                        'Contact`.`jid!' => $this->user->getLogin(),
+                                     ->where(
                                         array(
-                                            'Contact`.`rostersubscription!' => 'none',
-                                            'Contact`.`rostersubscription!' => 'vcard',
-                                            '|Contact`.`rosterask' => 'subscribe')))
-                                 ->orderby('Contact.group', true);
+                                            'RosterLink`.`key' => $this->user->getLogin(),
+                                            array(
+                                                'RosterLink`.`rostersubscription!' => 'none',
+                                                'RosterLink`.`rostersubscription!' => 'vcard',
+                                                '|RosterLink`.`rosterask' => 'subscribe')))
+                                     ->orderby('RosterLink.group', true);
 
         $contactsq = Contact::run_query($query);
 
