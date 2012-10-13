@@ -78,7 +78,15 @@ class ContactSummary extends WidgetCommon
           
         if($this->testIsSet($presence['status'])) {
             $html .= '
-                <div class="block">';
+                <div 
+                    class="block" 
+                    style="
+                        max-width: 320px; 
+                        max-height: 90px; 
+                        min-height: auto; 
+                        overflow: hidden; 
+                        text-overflow: ellipsis;"
+                    >';
                 $html .= '
                     <div class="textbubble">
                         '.prepareString($presence['status']).'
