@@ -442,3 +442,27 @@ span#widgettitle {
     cursor: pointer;
 }
 
+/* Filters */
+
+.filters {
+	float: right;
+	margin: 1em 1.5em 0em;
+}
+
+.filters ul li {
+	display: inline;
+	margin-left: 0.5em;
+	padding: 0.5em 1.5em;
+	border-radius: 3px;
+}
+
+.filters ul li:hover {
+	color: white;
+	background-color: gray;
+	cursor: pointer;
+}
+
+.filters ul li.on {
+	background-color: #444444;
+	color: white;
+}
