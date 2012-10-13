@@ -84,7 +84,7 @@ class ControllerMain extends ControllerBase
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(APP_TITLE.' - '.$name);
                 $this->page->menuAddLink(t('Home'), '?q=mainPage');
-
+                $this->page->menuAddLink(t('Explore'), '?q=explore');
 				$this->page->menuAddLink(t('Profile'), '?q=profile');
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
                 $this->page->menuAddLink(t('Help'), '?q=help');

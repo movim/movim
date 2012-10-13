@@ -107,7 +107,7 @@ class Profile extends WidgetBase
                     <img src="'.$me->getPhoto().'"/>
                 </a>';*/
             $html .= '
-            <div class="block">
+            <div class="block" style="width: 550px;">
                 <div class="textbubble">
                     <textarea 
                         id="status" 
