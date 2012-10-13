@@ -238,7 +238,7 @@ class Feed extends WidgetCommon {
         ?>
         </div>
         
-        <div id="feedfilters">
+        <div class="filters">
             <ul>
                 <li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
                 <li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>
