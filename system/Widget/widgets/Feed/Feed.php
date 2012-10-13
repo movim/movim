@@ -178,13 +178,13 @@ class Feed extends WidgetCommon {
                                 array(
                                     'Post`.`parentid' => ''))
                             ->orderby('Post.updated', true)
-                            ->limit($start, '20');
+                            ->limit($start, '60');
         $messages = Post::run_query($query);
 
         // We ask for the HTML of all the posts
         $html = $this->preparePosts($messages);
         
-        $next = $start + 20;
+        $next = $start + 60;
             
         if(sizeof($messages) > 9 && $html != '') {
             $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
