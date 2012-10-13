@@ -176,11 +176,6 @@ class Feed extends WidgetCommon {
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
                             ->where(
                                 array(
-                                    'Contact`.`key' => $this->user->getLogin(), 
-                                    array(
-                                        'Contact`.`rostersubscription!' => 'none',
-                                        '|Contact`.`rosterask' => 'subscribe',
-                                        '|Contact`.`jid' => $this->user->getLogin()),
                                     'Post`.`parentid' => ''))
                             ->orderby('Post.updated', true)
                             ->limit($start, '20');
@@ -231,11 +226,6 @@ class Feed extends WidgetCommon {
         $p = new moxl\MicroblogCreateNode();
         $p->setTo($this->user->getLogin())
           ->request();
-    }
-    
-    function ajaxFeed()
-    {
-        //$this->xmpp->getWall($this->xmpp->getCleanJid());
     }
 
     function build()

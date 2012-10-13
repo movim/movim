@@ -35,11 +35,6 @@ class Cache
         // Saving the user's login.
         $user = new User();
         $this->login = $user->getLogin();
-
-        //$this->db = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
-
-        //$var = new CacheVar();
-        //$this->db->create($var);
     }
 
     function __destruct()
@@ -113,9 +108,6 @@ class Cache
         $md5 = md5($data);
         $time = time();
 
-        //$var = new CacheVar();
-        //$this->db->load($var, array('key' => $cache_key));
-        
         $var = new CacheVar();
 
         /*$success = $var->load(array(
@@ -140,8 +132,6 @@ class Cache
         $var->timestamp = $time;
 
         $var->run_query($var->query()->save($var));
-
-        //$this->db->save($var);
     }
 
     /**

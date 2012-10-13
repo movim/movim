@@ -97,7 +97,6 @@ class ContactCard extends WidgetCommon
     {
         $query = Contact::query()->select()
                            ->where(array(
-                                   'key' => $this->user->getLogin(),
                                    'jid' => $_GET['f']));
         $contact = Contact::run_query($query);
         ?>
