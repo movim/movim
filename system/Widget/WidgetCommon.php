@@ -88,15 +88,27 @@ class WidgetCommon extends WidgetBase {
     protected function preparePost($message, $comments = false) {        
         $tmp = '';
         
-        if(isset($message[1])) {
+        // Test if the message can be displayed for the user
+        $query = RosterLink::query()
+                            ->where(
+                                array(
+                                    'key' => $this->user->getLogin(),
+                                    'jid' => $message[0]->getData('jid')))
+                            ->limit(0, 1);
+        $rosterlink = RosterLink::run_query($query);
+        
+        if(isset($rosterlink[0]))
+            $jidtest = $rosterlink[0]->getData('jid');
+        
+        if(isset($message[1]) && $jidtest != null) {
             $tmp = '<div class="post ';
-                if($this->user->getLogin() == $message[0]->getData('jid')) {
-                    $tmp .= 'me ';
-                    if($message[0]->getData('public') == 1)
-                        $tmp .= 'protect black';
-                    else
-                        $tmp .= 'protect orange';
-                }
+            if($this->user->getLogin() == $message[0]->getData('jid')) {
+                $tmp .= 'me ';
+                if($message[0]->getData('public') == 1)
+                    $tmp .= 'protect black';
+                else
+                    $tmp .= 'protect orange';
+            }
                 
             if($message[1]->getTrueName() == null)
                 $name = $message[0]->getData('jid');
