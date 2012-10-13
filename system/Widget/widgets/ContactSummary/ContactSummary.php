@@ -86,9 +86,6 @@ class ContactSummary extends WidgetCommon
             $html .= '
                 </div>';   
         }
-        
-        if($contact->getData('vcardreceived') != 1)
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 2000);</script>';
 
         return $html;
 	}
@@ -97,7 +94,6 @@ class ContactSummary extends WidgetCommon
     {
         $query = \Contact::query()->select()
                                    ->where(array(
-                                           'key' => $this->user->getLogin(),
                                            'jid' => $_GET['f']));
         $contact = \Contact::run_query($query);
         ?>

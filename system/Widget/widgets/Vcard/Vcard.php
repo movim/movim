@@ -55,15 +55,14 @@ class Vcard extends WidgetBase
 
         $query = \Contact::query()->select()
                                    ->where(array(
-                                           'key' => $this->user->getLogin(),
-                                           'jid' => $this->user->getLogin()));
+                                           'jid' => $this->user->getLogin())
+                                        );
         $data = \Contact::run_query($query);
 
         if($data) {
             $c = $data[0];
         }
 
-        $c->key->setval($this->user->getLogin());
         $c->jid->setval($this->user->getLogin());
         
         $date = strtotime($vcard['date']);
@@ -75,16 +74,13 @@ class Vcard extends WidgetBase
         
         $c->gender->setval($vcard['gender']);
         $c->marital->setval($vcard['marital']);
-        
-        if($c->rostersubscription->getval() == false)
-            $c->rostersubscription->setval('none');
+
         
         $c->phototype->setval($vcard['phototype']);
         $c->photobin->setval($vcard['photobin']);
         
         $c->desc->setval(trim($vcard['desc']));
         
-        $c->vcardreceived->setval(0);
         if($vcard['public'] == 'true')
             $c->public->setval(1);
         else
@@ -98,7 +94,11 @@ class Vcard extends WidgetBase
     
     function prepareInfos($error = false) {
         $query = Contact::query()
-                            ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+                            ->where(
+                                array(
+                                    'jid' => $this->user->getLogin()
+                                    )
+                                );
         $me = Contact::run_query($query);
         
         $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");

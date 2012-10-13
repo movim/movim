@@ -77,7 +77,6 @@ class Profile extends WidgetBase
     {
         $query = Contact::query()->select()
                                  ->where(array(
-                                            'key' => $this->user->getLogin(),
                                             'jid' => $this->user->getLogin()));
         $contact = Contact::run_query($query);
         

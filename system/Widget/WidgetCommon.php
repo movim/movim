@@ -46,7 +46,6 @@ class WidgetCommon extends WidgetBase {
                                 ->where(
                                     array(
                                         'Post`.`key' => $this->user->getLogin(), 
-                                        'Contact`.`key' => $this->user->getLogin(), 
                                         array('Post`.`parentid' => $commentid)))
                                 ->orderby('Post.published', false);
             $comments = Post::run_query($query);
@@ -97,8 +96,13 @@ class WidgetCommon extends WidgetBase {
                         $tmp .= 'protect black';
                     else
                         $tmp .= 'protect orange';
-                    //$tmp .= 'me';
                 }
+                
+            if($message[1]->getTrueName() == null)
+                $name = $message[0]->getData('jid');
+            else
+                $name = $message[1]->getTrueName();
+                
             $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
             
                     <a href="?q=friend&f='.$message[0]->getData('jid').'">
@@ -106,7 +110,7 @@ class WidgetCommon extends WidgetBase {
                     </a>
 
                     <span>
-                        <a href="?q=friend&f='.$message[0]->getData('jid').'">'.$message[1]->getTrueName().'</a>
+                        <a href="?q=friend&f='.$message[0]->getData('jid').'">'.$name.'</a>
                     </span>
                     <span class="date">
                         '.prepareDate(strtotime($message[0]->getData('updated'))).'
@@ -114,16 +118,7 @@ class WidgetCommon extends WidgetBase {
                     
             $tmp .= '<div class="content">
                         '.prepareString(html_entity_decode($message[0]->getData('content'))). '</div>';
-                        
-            //$attachments = AttachmentHandler::getAttachment($this->user->getLogin(), $message[0]->getData('nodeid'));
-            /*if($attachments) {
-                $tmp .= '<div class="attachment">';
-                foreach($attachments as $attachment)
-                    $tmp .= '<a target="_blank" href="'.$attachment->getData('link').'"><img alt="'.$attachment->getData('title').'" title="'.$attachment->getData('title').'" src="'.$attachment->getData('thumb').'"></a>';
-                $tmp .= '</div>';
-            }*/
-            
-            
+                                    
             if($message[0]->getPlace() != false)
                 $tmp .= '<span class="place">
                             <a 
@@ -278,7 +273,6 @@ class WidgetCommon extends WidgetBase {
         
         if($comments) {
             foreach($comments as $comment) {
-                //var_dump($comment[1]);
                 if(isset($comment[1])) {
                     $photo = $comment[1]->getPhoto('s');
                     $name = $comment[1]->getTrueName();

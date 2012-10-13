@@ -85,6 +85,12 @@
 
 #chats .chat .panel .head a.name {
     padding-right: 1em;
+    display: inline-block;
+    margin: 0px;
+    width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 3px;
 }
 
 #chats .chat .tab:hover {
@@ -100,7 +106,7 @@
 #chats .chat .panel .head {
     background-color: #242424;
     color: white;
-    line-height: 24px;
+    line-height: 17px;
     border: 1px solid #222;
     border-radius: 2px 2px 0px 0px;
     border-bottom: 1px solid #242424;

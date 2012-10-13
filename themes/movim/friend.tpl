@@ -11,7 +11,6 @@
 
 <div id="main">
     <div id="left">
-        <?php /*$this->widget('Profile');*/?>
         <?php $this->widget('ContactInfo');?>
     </div>
 
