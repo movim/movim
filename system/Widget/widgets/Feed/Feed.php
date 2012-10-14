@@ -176,7 +176,8 @@ class Feed extends WidgetCommon {
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
                             ->where(
                                 array(
-                                    'Post`.`parentid' => ''))
+                                    'Post`.`parentid' => '',
+                                    'Post`.`key' => $this->user->getLogin()))
                             ->orderby('Post.updated', true)
                             ->limit($start, '60');
         $messages = Post::run_query($query);
