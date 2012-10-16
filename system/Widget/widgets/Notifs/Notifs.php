@@ -37,8 +37,10 @@ class Notifs extends WidgetBase
 
         $contact = $contact[0];
 
-        RPC::call('notification', $contact->getTrueName(), RPC::cdata($message->getData('body'), ENT_COMPAT, "UTF-8"));
-        RPC::commit();
+        if(is_object($contact)) {
+            RPC::call('notification', $contact->getTrueName(), RPC::cdata($message->getData('body'), ENT_COMPAT, "UTF-8"));
+            RPC::commit();
+        }
     }
     
     function prepareNotifs($from) {
@@ -127,41 +129,32 @@ class Notifs extends WidgetBase
 	    Cache::c('activenotifs', $notifs);
     }
     
-    function ajaxAddContact($jid, $alias) {
-        $r = new moxl\RosterAddItem();
-        $r->setTo($jid)
-          ->request();
-          
-        $p = new moxl\PresenceSubscribe();
-        $p->setTo($jid)
-          ->request();
-    }
-    
     function build() {  
     $notifs = Cache::c('activenotifs');
     if($notifs == false)
         $notifs = array();
         
-    $query = RosterLink::query()
+    /*$query = RosterLink::query()
                      ->where(
                         array(
+                            'key' => $this->user->getLogin(),
                             'jid!' => $this->user->getLogin(),
                             array(
                                 'rostersubscription!' => 'none',
                                 'rostersubscription!' => 'vcard',
                                 '|rosterask' => 'subscribe')));
-    $contacts = RosterLink::run_query($query);
+    $contacts = RosterLink::run_query($query);*/
     ?>
     <div id="notifs">
         <span id="widgettitle">
-            <?php echo t('Contacts (%s)', sizeof($contacts)); ?> - 
-            <a 
+            <?php //echo t('Contacts (%s)', sizeof($contacts)); ?>
+            <!--<a 
                     class="" 
                     href="#" 
                     id="addstart"
                     onclick="addJid(this);">
                     <?php echo t('Add'); ?>
-            </a>
+            </a>-->
         </span>
         <ul id="notifslist">
             <?php
@@ -170,46 +163,6 @@ class Notifs extends WidgetBase
                     echo $this->prepareNotifs($key);
             }
             ?>
-            <li>
-                <form id="addcontact">
-                    <div class="element large">
-                        <label for="addjid"><?php echo t('JID'); ?></label>
-                        <input 
-                            id="addjid" 
-                            class="tiny" 
-                            placeholder="user@server.tld" 
-                            onfocus="myFocus(this);" 
-                            onblur="myBlur(this);"
-                        />
-                    </div>
-                    <div class="element large">
-                        <label for="addalias"><?php echo t('Alias'); ?></label>
-                        <input 
-                            id="addalias"
-                            type="text"
-                            class="tiny" 
-                            placeholder="<?php echo t('Alias'); ?>" 
-                            onfocus="myFocus(this);" 
-                            onblur="myBlur(this);"
-                        />
-                    </div>
-                    <a 
-                        class="button tiny icon yes merged right" 
-                        href="#" 
-                        id="addvalidate" 
-                        onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
-                        <?php echo t('Send request'); ?>
-                    </a>
-                    <a 
-                        class="button tiny icon no merged left"
-                        href="#"
-                        id="addrefuse"
-                        onclick="cancelAddJid();">
-                        <?php echo t('Cancel'); ?>
-                    </a>
-                </form>  
-
-            </li>
         </ul>
     </div>
     <?php    

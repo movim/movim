@@ -93,7 +93,8 @@ class ProfileData extends WidgetBase
         
         if($c) {
             $c = $c[0];
-            $data = $c->getPlace();
+            $data = prepareDate(strtotime($c->loctimestamp->getval())).'<br /><br />';
+            $data .= $c->getPlace();
         } else {
             $data = '';
         }

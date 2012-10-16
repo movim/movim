@@ -127,7 +127,7 @@ class Chat extends WidgetBase
         $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
-        if($contact->getData('chaton') == 1) {
+        if(in_array($contact->getData('chaton'), array(1, 2))) {
             RPC::call('showComposing',
                        $contact->getData('jid'));
                            
@@ -145,7 +145,7 @@ class Chat extends WidgetBase
         $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
-        if($contact->getData('chaton') == 1) {
+        if(in_array($contact->getData('chaton'), array(1, 2))) {
             RPC::call('showPaused',
                        $contact->getData('jid'));
                            

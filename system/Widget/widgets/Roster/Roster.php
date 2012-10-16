@@ -114,10 +114,6 @@ class Roster extends WidgetBase
             return $start.$middle.$end;
 	}
 
-    function stackGroup() {
-
-    }
-
 	function prepareRoster()
 	{
         $query = RosterLink::query()->join('Presence',
@@ -156,7 +152,8 @@ class Roster extends WidgetBase
         $group = '';
 
         if($contacts != false) {
-
+            $currentchat = '';
+            
             if($contacts[0][0]->getData('group') == '')
                 $html .= '<div><h1>'.t('Ungrouped').'</h1>';
             else {
@@ -178,18 +175,34 @@ class Roster extends WidgetBase
                             $html .= '<div><h1>'.$group.'</h1>';
                     }
 
+                    if($c[0]->getData('chaton') > 0)
+                        $currentchat .= $this->prepareRosterElement($c);
                     $html .= $this->prepareRosterElement($c);
 
                     array_push($duplicate, $c[0]->getData('jid'));
                 }
             }
             $html .= '</div>';
+            
+            if($currentchat != '')
+                $html = '<div><h1>'.t('Active Chat').'</h1>'.$currentchat.'</div>'.$html;
         } else {
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
         }
 
         return $html;
 	}
+    
+    function ajaxAddContact($jid, $alias) {
+        $r = new moxl\RosterAddItem();
+        $r->setTo($jid)
+          ->request();
+          
+        $p = new moxl\PresenceSubscribe();
+        $p->setTo($jid)
+          ->request();
+    }
+    
 
     function build()
     {
@@ -198,13 +211,54 @@ class Roster extends WidgetBase
             <ul id="rosterlist">
             <?php echo $this->prepareRoster(); ?>
             </ul>
-            <div id="rostermenu">
+            <div id="rostermenu" class="menubar">
+                <form id="addcontact">
+                    <div class="element large">
+                        <label for="addjid"><?php echo t('JID'); ?></label>
+                        <input 
+                            id="addjid" 
+                            class="tiny" 
+                            placeholder="user@server.tld" 
+                            onfocus="myFocus(this);" 
+                            onblur="myBlur(this);"
+                        />
+                    </div>
+                    <div class="element large">
+                        <label for="addalias"><?php echo t('Alias'); ?></label>
+                        <input 
+                            id="addalias"
+                            type="text"
+                            class="tiny" 
+                            placeholder="<?php echo t('Alias'); ?>" 
+                            onfocus="myFocus(this);" 
+                            onblur="myBlur(this);"
+                        />
+                    </div>
+                    <a 
+                        class="button tiny icon no merged left"
+                        href="#"
+                        id="addrefuse"
+                        onclick="cancelAddJid();">
+                        <?php echo t('Cancel'); ?>
+                    </a>
+                    <a 
+                        class="button tiny icon yes merged right" 
+                        href="#" 
+                        id="addvalidate" 
+                        onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
+                        <?php echo t('Send request'); ?>
+                    </a>
+                </form> 
+
                 <ul>
+                    <li onclick="addJid(this)"; style="float: right;" title="<?php echo t('Add'); ?>">
+                        <a href="#">+</a>
+                    </li>
+                    <li onclick="showRoster(this);" style="float: right;" title="<?php echo t('Show/Hide'); ?>">
+                        <a href="#">◐</a>
+                    </li>
                     <li>
                         <input type="text" name="search" id="request" autocomplete="off" onkeyup="rosterSearch(event);" onclick="focusContact();" placeholder="<?php echo t('Search');?>"/>
-                    </li>
-                    <li onclick="showRoster(this);" style="float: right; padding-right: 10px;" title="<?php echo t('Show/Hide'); ?>">
-                        <a href="#">◐</a>
                     </li>
                 </ul>
             </div>
