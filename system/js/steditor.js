@@ -77,16 +77,14 @@ function SimpleTextEditor(id, objectId) {
         var html = "";
         html += '<input type="hidden" id="'+this.id+'" name="'+this.id+'" value="" autofocus="autofocus">';
         html += '<table class="ste" cellspacing="0" cellpadding="0">';
-        //html += '<tr><td class="bar"><table id="'+this.id+'-buttons" cellspacing="0" cellpadding="0"><tr>';
-        //html += '<td><div class="separator"></div></td>';
+
         html += '<div class="menueditor">';
-            //html += '<div class="element" style="width: auto; min-height: 0px; float: right;"><div class="select"><select onchange="'+this.objectId+'.execCommand(\'formatblock\', this.value);this.selectedIndex=0;"><option value=""></option><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
-            html += '<a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h1>\');"><img src="'+this.path+'images/h1.png" alt="H1" title="H1" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
-            html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h2>\');"><img src="'+this.path+'images/h2.png" alt="H2" title="H2" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
-            html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h3>\');"><img src="'+this.path+'images/h3.png" alt="H3" title="H3" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
-            html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h4>\');"><img src="'+this.path+'images/h4.png" alt="H4" title="H4" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
+            html += '<a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h1>\');"><img src="'+this.path+'images/h1.png" alt="H1" title="H1" ></a>';
+            html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h2>\');"><img src="'+this.path+'images/h2.png" alt="H2" title="H2" ></a>';
+            html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h3>\');"><img src="'+this.path+'images/h3.png" alt="H3" title="H3" ></a>';
+            html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<h4>\');"><img src="'+this.path+'images/h4.png" alt="H4" title="H4" ></a>';
             
-            html += '<a class="button tiny" style="margin-right: 5px;" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<p>\');"><img src="'+this.path+'images/paragraph.png" alt="Paragraph" title="Paragraph" ></a>';//this.selectedIndex=0;"><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></div></div>';
+            html += '<a class="button tiny" style="margin-right: 5px;" onclick="'+this.objectId+'.execCommand(\'formatblock\', \'<p>\');"><img src="'+this.path+'images/paragraph.png" alt="Paragraph" title="Paragraph" ></a>';
 
             html += '<a class="button tiny merged left" onclick="'+this.objectId+'.execCommand(\'bold\')"><img src="'+this.path+'images/bold.png" alt="Bold" title="Bold"></a>';
             html += '<a class="button tiny merged" onclick="'+this.objectId+'.execCommand(\'italic\')"><img src="'+this.path+'images/italic.png" alt="Italic" title="Italic"></a>';
@@ -106,11 +104,9 @@ function SimpleTextEditor(id, objectId) {
             html += '<a class="button tiny merged right" onclick="'+this.objectId+'.execCommand(\'insertimage\')"><img src="'+this.path+'images/picture.png" alt="Insert Image" title="Insert Image"></a>';
 
         html += '</div>';
-        //html += '<td><div class="separator"></div></td>';
-        //html += '<td class="button"><img src="'+this.path+'images/help.gif" width="20" height="20" alt="Help" title="Help" onclick="'+this.objectId+'.openWindow(\''+this.path+'help.html\', \'300\', \'300\')"></td>';
-        //html += '</tr></table></td></tr>';
+
         html += '<tr><td class="frame"><iframe style="height: 50px;" id="'+this.id+'-frame" frameborder="0"></iframe></td></tr>';
-        //html += '<tr><td class="source"><input id="'+this.id+'-viewSource" type="checkbox" onclick="'+this.objectId+'.toggleSource()"> View Source</td></tr>';
+
         html += '</table>';
         return html;
     };
@@ -121,8 +117,7 @@ function SimpleTextEditor(id, objectId) {
         html += '<html><head>';
         html += '<meta http-equiv="Content-Type" content="text/html; charset='+this.charset+'">';
         html += '<title>SimpleTextEditor frame</title>';
-        //html += '<style type="text/css">pre { background-color: #eeeeee; padding: 0.75em 1.5em; border: 1px solid #dddddd; }</style>';
-        //if (this.cssFile) { html += '<link rel="stylesheet" type="text/css" href="'+this.cssFile+'">'; }
+
         html += '<style type="text/css">html,body { cursor: text; } body { margin: 0px; padding: 0; font-size: 12px; }</style>';
         html += '</head><body></body></html>';
         return html;
@@ -204,5 +199,9 @@ function SimpleTextEditor(id, objectId) {
             if (this.viewSource) { this.toggleSource(); }
             document.getElementById(this.id).value = this.getContent();
         }
+    };
+    
+    this.clearContent = function() {
+        this.frame.document.body.innerHTML = '';
     };
 }

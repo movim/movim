@@ -153,7 +153,8 @@
     overflow: auto;
     background-color: white;
     resize: none;
-    height: 1.1em;
+    height: 17px;
+    line-height: 17px;
 }
 
 #chats .chat .panel .text textarea:focus {

@@ -154,7 +154,7 @@ class Feed extends WidgetCommon {
                                     title="'.t("Submit").'"
                                     href="#" 
                                     id="feedmessagesubmit" 
-                                    onclick="ste.submit();'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'"
+                                    onclick="ste.submit();'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'; ste.clearContent();"
                                     class="button tiny icon submit">'.t("Submit").'
                                 </a>
                             </td>
@@ -179,13 +179,13 @@ class Feed extends WidgetCommon {
                                     'Post`.`parentid' => '',
                                     'Post`.`key' => $this->user->getLogin()))
                             ->orderby('Post.updated', true)
-                            ->limit($start, '60');
+                            ->limit($start, '20');
         $messages = Post::run_query($query);
 
         // We ask for the HTML of all the posts
         $html = $this->preparePosts($messages);
         
-        $next = $start + 60;
+        $next = $start + 20;
             
         if(sizeof($messages) > 9 && $html != '') {
             $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';

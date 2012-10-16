@@ -106,42 +106,60 @@
 }
 
 #roster #rostermenu {
+    border-top: 1px solid #888;
     position: fixed;
     bottom: 0;
     right: 0;
-    background-color: #242424;
-    color: white;
-    height: 21px;
     width: 200px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    color: black;
+    background-color: #f0f0f0;
 }
 
-/*
-#roster #rostermenu a:link, #roster #rostermenu a:visited {
-    color: white;
-    line-height: 17px;
-    font-size: 11px;
-}
-*/
-
-#roster #rostermenu ul li {
-    display: inline;
-    float: left;
-}
-
-#roster #rostermenu ul li a {
-    color: white;
+#roster #rostermenu li, #roster #rostermenu li a {
+    margin: 0px;
+    padding: 0px;
     width: auto;
 }
 
-#roster #request{
-    /*position: fixed;
-    bottom: 0px;
-    z-index: 3;
-    display: block;*/
+#roster #rostermenu #request {
+    line-height: 24px;
+    height: 24px;
+    padding: 0px 5px;
+    width: 120px;
 }
 
-.focused{
+#roster #rostermenu li {
+    display: inline-block;
+    line-height: 22px;
+    border-left: 1px solid #AAA;
+    padding: 0 8px;
+    height: 24px;
+    background-color: #ddd;
+}
+
+#roster #rostermenu li:last-child {
+    border-left: none;
+    padding: 0px;
+}
+
+#roster #rostermenu li:hover, #roster #rostermenu li:hover a {
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+}
+
+#roster #rostermenu #addcontact {
+    padding: 5px;
+    border-bottom: 1px solid #888;
+    display: none;
+}
+
+#roster #rostermenu #addcontact .element {
+    min-height: 0px;
+}
+
+#roster li.focused{
     background-color: #B8C7DA;
 }
 
