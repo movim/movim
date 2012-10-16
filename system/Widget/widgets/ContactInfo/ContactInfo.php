@@ -72,6 +72,8 @@ class ContactInfo extends WidgetCommon
               ) {
                 $html .= '
                     <h2>'.t('Location').'</h2>';
+                    
+                $html .= prepareDate(strtotime($contact->loctimestamp->getval())).'<br /><br />';
                 if($contact->getPlace() != '')
                     $html .= $contact->getPlace().'<br /><br />';
                 

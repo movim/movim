@@ -1,7 +1,13 @@
 #notifs {
-    padding-right: 5px;
-    clear: both;
+    border-bottom: 1px solid #888;
+    position: fixed;
+    top: 28px;
+    z-index: 3;
+    right: 0;
     width: 200px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    color: black;
+    background-color: #f0f0f0;
 }
 
 #notifs ul {
@@ -9,15 +15,8 @@
     overflow: hidden;
 }
 
-#notifs ul li:last-child {
-    border-bottom: 0px;
-    padding: 3px;
-}
-
 #notifs ul li {
     padding-bottom: 5px;
-    border-top: 1px solid #CCC;
-    /*border-bottom: 1px solid #DDD;*/
     font-size: 10px;
     overflow: auto;
     padding: 5px;
@@ -32,14 +31,14 @@
     margin-top: 5px;
 }
 
-#notifs #notifsalias, #notifs #labelnotifsalias/*, #notifs #addjid, #notifs #addalias*/ {
+#notifs #notifsalias, #notifs #labelnotifsalias {
     display: none;
 }
 
-#notifs #addcontact, #notifs #notifsvalidate/*, #notifs #addvalidate, #notifs #addrefuse*/ {
+#notifs #addcontact, #notifs #notifsvalidate {
     display: none;
 }
 
 #notifs .element {
-    min-height: 20px;
+    min-height: 0px;
 }
