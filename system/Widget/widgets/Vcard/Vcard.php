@@ -75,6 +75,10 @@ class Vcard extends WidgetBase
         $c->gender->setval($vcard['gender']);
         $c->marital->setval($vcard['marital']);
 
+        $c->email->setval($vcard['email']);
+        
+        $c->adrlocality->setval($vcard['locality']);
+        $c->adrcountry->setval($vcard['country']);
         
         $c->phototype->setval($vcard['phototype']);
         $c->photobin->setval($vcard['photobin']);
@@ -150,6 +154,11 @@ class Vcard extends WidgetBase
                 $html .= '<div class="element">
                             <label for="name">'.t('Nickname').'</label>
                             <input type="text" name="name" class="content" value="'.$me->getData('name').'">
+                          </div>';
+                          
+                $html .= '<div class="element">
+                            <label for="name">'.t('Email').'</label>
+                            <input type="email" name="email" class="content" value="'.$me->getData('email').'">
                           </div>';
                           
                 $html .= '<div class="element ">
@@ -250,6 +259,29 @@ class Vcard extends WidgetBase
                       
             $html .= '</fieldset><br />'; 
                       
+            $html .= '
+                <fieldset>
+                    <legend>'.t('Geographic Position').'</legend>';
+                    
+                $html .= '<div class="element"><label for="url">'.t('Locality').'</label>
+                            <input type="text" type="locality" name ="locality" class="content" value="'.$me->getData('adrlocality').'">
+                          </div>';
+                          
+                $html .= '<div class="element"><label for="country">'.t('Country').'</label>
+                            <div class="select"><select name="country">';
+                            $ctry = $me->adrcountry->getval();
+                            foreach(getCountries() as $value) {
+                                $html .= '<option ';
+                                if($value == $ctry)
+                                    $html .= 'selected ';
+                                $html .= 'value="'.$value.'">'.$value.'</option>';
+                            }
+                $html .= '  </select></div>
+                          </div>';
+                          
+            $html .= '
+                </fieldset>';   
+                      
             $html .= '<fieldset>
                         <legend>'.t('Privacy Level').'</legend>';
 
@@ -271,7 +303,8 @@ class Vcard extends WidgetBase
                               </div>
                           </div>';
                       
-            $html .= '</fieldset>';                  
+            $html .= '</fieldset>'; 
+                       
             /*$html .= '<br />
                 <fieldset>
                     <legend>'.t('Geographic Position').'</legend>';
