@@ -240,8 +240,7 @@ class Roster extends WidgetBase
                         id="addrefuse"
                         onclick="cancelAddJid();">
                         <?php echo t('Cancel'); ?>
-                    </a>
-                    <a 
+                    </a><a 
                         class="button tiny icon yes merged right" 
                         href="#" 
                         id="addvalidate" 

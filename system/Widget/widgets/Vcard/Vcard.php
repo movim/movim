@@ -253,7 +253,7 @@ class Vcard extends WidgetBase
                             <input type="hidden" name="photobin"  value="'.$me->getData('photobin').'"><br />
                           </div>';
                       
-                $html .= '<div class="element"><label for="desc">'.t('About Me').'</label>
+                $html .= '<div class="element large"><label for="desc">'.t('About Me').'</label>
                             <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
                           </div>';
                       
