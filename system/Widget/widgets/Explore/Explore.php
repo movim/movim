@@ -8,7 +8,7 @@ class Explore extends WidgetCommon {
     
     function build()
     {
-        $users_limit = 10;
+        $users_limit = 20;
        
         $gender = getGender();
         $marital = getMarital();
