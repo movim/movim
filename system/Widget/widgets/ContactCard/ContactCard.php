@@ -74,6 +74,11 @@ class ContactCard extends WidgetCommon
                         <span>'.$marital[$contact->getData('marital')].'</span>
                       </div>';
          
+            if($this->testIsSet($contact->getData('email')))
+            $html .= '<div class="element simple">
+                        <label for="url">'.t('Email').'</label>
+                        <a target="_blank" href="mailto:'.$contact->getData('email').'">'.$contact->getData('email').'</a>
+                      </div>';
             if($this->testIsSet($contact->getData('url')))
             $html .= '<div class="element simple">
                         <label for="url">'.t('Website').'</label>
@@ -84,6 +89,29 @@ class ContactCard extends WidgetCommon
             $html .= '<div class="element large simple">
                         <label for="desc">'.t('About Me').'</label>
                         <span>'.prepareString($contact->getData('desc')).'</span>
+                      </div>';
+                      
+            $html .= '</fieldset>
+            
+                      <fieldset>
+                        <legend>'.t('Geographic Position').'</legend>';
+                        
+            if($this->testIsSet($contact->getData('adrlocality'))) {
+                $locality .= '<div class="element simple">
+                            <label for="desc">'.t('Locality').'</label>
+                            <span>'.$contact->getData('adrlocality');
+                if($this->testIsSet($contact->getData('adrpostalcode')))
+                    $locality .= ' ('.$contact->getData('adrpostalcode').')';
+                $locality .= '</span>
+                          </div>';
+                
+                $html .= $locality;
+            }
+                        
+            if($this->testIsSet($contact->getData('adrcountry')))
+            $html .= '<div class="element simple">
+                        <label for="desc">'.t('Country').'</label>
+                        <span>'.$contact->getData('adrcountry').'</span>
                       </div>';
                       
             $html .= '</fieldset>

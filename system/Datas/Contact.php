@@ -9,6 +9,12 @@ class Contact extends DatajarBase {
     public $date;
     public $url;
     
+    public $email;
+    
+    public $adrlocality;
+    public $adrpostalcode;
+    public $adrcountry;
+    
     public $gender;
     public $marital;
     
@@ -60,6 +66,12 @@ class Contact extends DatajarBase {
         $this->name     = DatajarType::varchar(128);
         $this->date     = DatajarType::date();
         $this->url      = DatajarType::varchar(128);
+
+        $this->email    = DatajarType::varchar(128);
+        
+        $this->adrlocality   = DatajarType::varchar(128);
+        $this->adrpostalcode = DatajarType::int();
+        $this->adrcountry    = DatajarType::varchar(128);
         
         $this->gender   = DatajarType::varchar(1);
         $this->marital  = DatajarType::varchar(20);

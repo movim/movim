@@ -222,6 +222,12 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
     cursor: pointer;
 }
 
+form .element input:invalid {
+    border: 1px solid red;
+    box-shadow: inset 0 2px 1px rgba(200, 0, 0, 0.4);
+    color: #B70000;
+}
+
 form .element.simple > *:not(label):not(img),
 form .element.simple > *:not(label):not(img):focus {
     border: 0px;
