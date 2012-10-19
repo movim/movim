@@ -104,7 +104,13 @@ class Wall extends WidgetCommon
                 $html .= '
                         <div id="wallheader">
                         <a 
-                                    class="button tiny icon follow" 
+                                    class="button tiny icon feed merged left" 
+                                    href="?q=feed&f='.$from.'"
+                                    target="_blank"
+                                >
+                                    '.t('Feed').' (Atom)
+                                </a><a 
+                                    class="button tiny icon follow merged right" 
                                     href="#"
                                     onclick="'.$this->genCallAjax('ajaxWall', "'".$from."'").'
                                         this.innerHTML = \''.t('Updating').'\'; 

@@ -35,7 +35,7 @@ class Syndication extends WidgetBase
 
             $query = Contact::query()->select()
                                        ->where(array(
-                                               'key' => $from,
+                                               //'key' => $from,
                                                'jid' => $from));
             $contact = Contact::run_query($query);
 
