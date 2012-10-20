@@ -23,6 +23,7 @@
     border: 1px solid #888;
     border-top: 1px solid #AAA;
     border-bottom: 0px;
+    overflow: hidden;
 }
 
 #chats .chat .tab.alert .name {
@@ -30,10 +31,6 @@
 }
 
 #chats .chat .tab.alert .name:after {
-    /*background-color: #69B628;
-    border: 1px solid #437519;
-    border-top: 1px solid #A4DA77;
-    border-bottom: 0px;*/
     content: "+1";
     color: white;
     font-size: 10px;
@@ -91,6 +88,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-top: 3px;
+    white-space: nowrap;
 }
 
 #chats .chat .tab:hover {

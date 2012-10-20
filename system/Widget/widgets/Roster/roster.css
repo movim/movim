@@ -70,7 +70,7 @@
 #roster ul li a {
     display: block;
     white-space: nowrap;
-    width: 165px;
+    width: auto;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -113,7 +113,7 @@
     width: 200px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
     color: black;
-    background-color: #f0f0f0;
+    background-color: white;
 }
 
 #roster #rostermenu li, #roster #rostermenu li a {
@@ -139,7 +139,6 @@
 }
 
 #roster #rostermenu li:last-child {
-    border-left: none;
     padding: 0px;
 }
 

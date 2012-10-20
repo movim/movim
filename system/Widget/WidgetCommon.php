@@ -86,7 +86,7 @@ class WidgetCommon extends WidgetBase {
     }    
    
     protected function preparePost($message, $comments = false) {        
-        $tmp = '';
+        $tmp = '<a name="'.$message[0]->getData('nodeid').'"></a>';
         
         // Test if the message can be displayed for the user
         /*$query = RosterLink::query()

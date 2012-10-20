@@ -121,12 +121,12 @@ function prepareString($string) {
         array(
             "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\2':'\\0'))",
             "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\4':'\\0'))",
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\2</a>&nbsp;':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\2</a>&nbsp;':'\\0'))"
         ),  
         ' '.$string
     );
-    
-    $string = str_replace("\n", "<br>\n", $string);  
+    $string = nl2br($string);
+    $string = str_replace("><br />", "", $string);  
     
     $conf = new Conf();
     $theme = $conf->getServerConfElement('theme');
@@ -230,6 +230,31 @@ function getGender() {
                     'F' => t('Female'),
                     'O' => t('Other')
                     );
+}
+
+/**
+ * Return an array of informations from a XMPP uri
+ */
+function explodeURI($uri) {
+    $arr = parse_url(urldecode($uri));
+    $result = array();
+    
+    if(isset($arr['query'])) {
+        $query = explode(';', $arr['query']);
+
+
+        foreach($query as $elt) {
+            if($elt != '') {
+                list($key, $val) = explode('=', $elt);
+                $result[$key] = $val;
+            }
+        }
+
+        $arr = array_merge($arr, $result);
+    }
+    
+    return $arr;
+
 }
 
 /**

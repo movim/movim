@@ -120,7 +120,7 @@ class ProfileData extends WidgetBase
                     style="display: none;" 
                     id="myposrefuse" 
                     onclick="hidePositionChoice();"
-                    class="button tiny icon yes merged right">'.t('Cancel').'</a>
+                    class="button tiny icon no merged right">'.t('Cancel').'</a>
             </div>';
         
         return $html;

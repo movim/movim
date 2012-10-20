@@ -1,7 +1,7 @@
 #notifs {
     border-bottom: 1px solid #888;
     position: fixed;
-    top: 28px;
+    top: 25px;
     z-index: 3;
     right: 0;
     width: 200px;
