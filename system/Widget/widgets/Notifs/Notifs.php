@@ -27,6 +27,7 @@ class Notifs extends WidgetBase
 
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('subscribe', 'onSubscribe');
+		$this->registerEvent('notification', 'onNotification');
     }
     
     function onMessage($message) {
@@ -43,43 +44,47 @@ class Notifs extends WidgetBase
         }
     }
     
-    function prepareNotifs($from) {
+    function prepareNotifs($from, $value = false) {
         $html = '';
         
-   	    $html .= '
-            <li>
-                <form id="acceptcontact">
-                    '.$from.' '.t('wants to talk with you'). ' <br />
-                    <div class="element large">
-                        <label id="labelnotifsalias" for="notifsalias">'.t('Alias').'</label>
-                        <input 
-                            id="notifsalias"
-                            class="tiny" 
-                            value="'.$from.'" 
-                            onfocus="myFocus(this);" 
-                            onblur="myBlur(this);"
-                        />
-                    </div>
-                    <a 
-                        class="button tiny icon yes merged right" 
-                        href="#" 
-                        onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$from."'").' showAlias(this);">'.
-                        t("Accept").'
-                    </a>
-                    <a 
-                        class="button tiny icon add merged right" 
-                        href="#" id="notifsvalidate" 
-                        onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "getAlias()").' hideNotification(this);">'.
-                        t("Add").'
-                    </a>
-                    <a 
-                        class="button tiny icon no merged left" 
-                        href="#" 
-                        onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").' hideNotification(this);">'.
-                        t("Decline").'
-                    </a>
-                </form>
-   	        </li>';
+        if($value == 'sub') {
+            $html .= '
+                <li>
+                    <form id="acceptcontact">
+                        '.$from.' '.t('wants to talk with you'). ' <br />
+                        <div class="element large">
+                            <label id="labelnotifsalias" for="notifsalias">'.t('Alias').'</label>
+                            <input 
+                                id="notifsalias"
+                                class="tiny" 
+                                value="'.$from.'" 
+                                onfocus="myFocus(this);" 
+                                onblur="myBlur(this);"
+                            />
+                        </div>
+                        <a 
+                            class="button tiny icon yes merged right" 
+                            href="#" 
+                            onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$from."'").' showAlias(this);">'.
+                            t("Accept").'
+                        </a>
+                        <a 
+                            class="button tiny icon add merged right" 
+                            href="#" id="notifsvalidate" 
+                            onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "getAlias()").' hideNotification(this);">'.
+                            t("Add").'
+                        </a>
+                        <a 
+                            class="button tiny icon no merged left" 
+                            href="#" 
+                            onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").' hideNotification(this);">'.
+                            t("Decline").'
+                        </a>
+                    </form>
+                </li>';
+        } elseif($value != false) {
+            //$html .= $value;
+        }
             
         return $html;
     }
@@ -89,8 +94,36 @@ class Notifs extends WidgetBase
         
         $html = '';
         foreach($notifs as $key => $value)
-            $html .= $this->prepareNotifs($key);
-   	    //$notifs['sub'.$from] = $html;
+            $html .= $this->prepareNotifs($key, $value);
+   	    
+        RPC::call('movim_fill', 'notifslist', RPC::cdata($html));
+        
+	    Cache::c('activenotifs', $notifs);
+    }
+    
+    function onNotification($item) {
+        $arr = explodeURI((string)$item->entry->link[0]->attributes()->href);
+        $post = end(explode('/', $arr['node']));
+        //movim_log(explodeURI($item->entry->link[0]->attributes()->href));
+   	    $notifs = Cache::c('activenotifs');
+        
+        $html = '';
+        foreach($notifs as $key => $value)
+            $html .= $this->prepareNotifs($key, $value);
+        
+        $nhtml = '
+        <a href="?q=friend&f='.$arr['path'].'&p='.$post.'">
+            <li>
+                
+                    <span style="font-weight: bold;">'.
+                        (string)$item->entry->source->author->name.'
+                    </span> - '.prepareDate(strtotime((string)$item->entry->published)).'<br />'.
+                    (string)$item->entry->content.'
+                
+            </li></a>
+                ';
+        
+        $notifs[(string)$item->attributes()->id] = $nhtml;
    	    
         RPC::call('movim_fill', 'notifslist', RPC::cdata($html));
         
@@ -129,6 +162,12 @@ class Notifs extends WidgetBase
 	    Cache::c('activenotifs', $notifs);
     }
     
+    function ajaxGetNotifications() {
+        $p = new moxl\NotificationGet();
+        $p->setTo($this->user->getLogin())
+          ->request();
+    }
+    
     function build() {  
     $notifs = Cache::c('activenotifs');
     if($notifs == false)
@@ -156,11 +195,19 @@ class Notifs extends WidgetBase
                     <?php echo t('Add'); ?>
             </a>-->
         </span>
+        
+        <!--<a 
+            class="button tiny icon yes" 
+            href="#" 
+            id="addvalidate" 
+            onclick="<?php $this->callAjax("ajaxGetNotifications"); ?>">
+            <?php echo t('Send request'); ?>
+        </a>-->
         <ul id="notifslist">
             <?php
             ksort($notifs);
             foreach($notifs as $key => $value) {
-                    echo $this->prepareNotifs($key);
+                    echo $this->prepareNotifs($key, $value);
             }
             ?>
         </ul>
