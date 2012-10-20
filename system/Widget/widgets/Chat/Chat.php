@@ -329,6 +329,7 @@ class Chat extends WidgetBase
                         <a class="name" href="?q=friend&f='.$contact->getData('jid').'">
                             '.$contact->getData('rostername').'
                         </a>
+                        <div class="clear"></div>
                     </div>
                     <div class="messages" id="messages'.$contact->getData('jid').'">
                         '.$messageshtml.'

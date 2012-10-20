@@ -192,6 +192,28 @@ class ControllerMain extends ControllerBase
 		}
 	}
 
+	function post()
+	{
+		$user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			$this->page->setTitle(t('%s - Post View', APP_TITLE));
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Explore'), '?q=explore');
+			$this->page->menuAddLink(t('Profile'), '?q=profile');
+			$this->page->menuAddLink(t('Configuration'), '?q=config');
+            $this->page->menuAddLink(t('Help'), '?q=help');
+            $this->page->menuAddLink(t('Logout'), '?q=disconnect');
+
+			$content = new TplPageBuilder($user);
+
+			$this->page->setContent($content->build('post.tpl'));
+			echo $this->page->build('page.tpl');
+		}
+	}
+
 	/**
 	 * Show login interface
 	 */
