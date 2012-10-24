@@ -78,7 +78,14 @@ class ContactSummary extends WidgetCommon
           
         if($this->testIsSet($presence['status'])) {
             $html .= '
-                <div class="block">';
+                <div 
+                    class="block" 
+                    style="
+                        max-height: 90px; 
+                        min-height: auto; 
+                        overflow: hidden; 
+                        text-overflow: ellipsis;"
+                    >';
                 $html .= '
                     <div class="textbubble">
                         '.prepareString($presence['status']).'
@@ -86,9 +93,6 @@ class ContactSummary extends WidgetCommon
             $html .= '
                 </div>';   
         }
-        
-        if($contact->getData('vcardreceived') != 1)
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshVcard', '"'.$contact->getData('jid').'"').'\', 2000);</script>';
 
         return $html;
 	}
@@ -97,7 +101,6 @@ class ContactSummary extends WidgetCommon
     {
         $query = \Contact::query()->select()
                                    ->where(array(
-                                           'key' => $this->user->getLogin(),
                                            'jid' => $_GET['f']));
         $contact = \Contact::run_query($query);
         ?>

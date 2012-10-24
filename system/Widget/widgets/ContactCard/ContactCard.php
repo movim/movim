@@ -74,6 +74,11 @@ class ContactCard extends WidgetCommon
                         <span>'.$marital[$contact->getData('marital')].'</span>
                       </div>';
          
+            if($this->testIsSet($contact->getData('email')))
+            $html .= '<div class="element simple">
+                        <label for="url">'.t('Email').'</label>
+                        <a target="_blank" href="mailto:'.$contact->getData('email').'">'.$contact->getData('email').'</a>
+                      </div>';
             if($this->testIsSet($contact->getData('url')))
             $html .= '<div class="element simple">
                         <label for="url">'.t('Website').'</label>
@@ -86,6 +91,32 @@ class ContactCard extends WidgetCommon
                         <span>'.prepareString($contact->getData('desc')).'</span>
                       </div>';
                       
+            if($this->testIsSet($contact->getData('adrlocality')) ||
+               $this->testIsSet($contact->getData('adrcountry'))) {
+                $html .= '</fieldset>
+                            <br />
+                          <fieldset>
+                            <legend>'.t('Geographic Position').'</legend>';
+                            
+                if($this->testIsSet($contact->getData('adrlocality'))) {
+                    $locality .= '<div class="element simple">
+                                <label for="desc">'.t('Locality').'</label>
+                                <span>'.$contact->getData('adrlocality');
+                    if($contact->getData('adrpostalcode') != 0)
+                        $locality .= ' ('.$contact->getData('adrpostalcode').')';
+                    $locality .= '</span>
+                              </div>';
+                    
+                    $html .= $locality;
+                }
+                            
+                if($this->testIsSet($contact->getData('adrcountry')))
+                $html .= '<div class="element simple">
+                            <label for="desc">'.t('Country').'</label>
+                            <span>'.$contact->getData('adrcountry').'</span>
+                          </div>';
+            }
+                      
             $html .= '</fieldset>
                       <div class="config_button" onclick="'.$this->genCallWidget("ContactSummary","ajaxRefreshVcard", "'".$contact->getData('jid')."'").'"></div>
                 </form>';
@@ -97,7 +128,6 @@ class ContactCard extends WidgetCommon
     {
         $query = Contact::query()->select()
                            ->where(array(
-                                   'key' => $this->user->getLogin(),
                                    'jid' => $_GET['f']));
         $contact = Contact::run_query($query);
         ?>

@@ -1,6 +1,6 @@
 #chats {
     position: fixed;
-    bottom: 0;
+    bottom: -4px;
     right: 210px;
     z-index: 3;
 }
@@ -9,96 +9,182 @@
     display: inline-block;
     position: relative;
     bottom: 0;
-    background-color: #444;
-    color: white;
-    width: 200px;
+    border-radius: 2px 2px 0px 0px;
+    overflow: hidden;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
 }
 
-#chats .chat .name:hover {
-    cursor: pointer;
+#chats .chat .panel {
+    display: none;
 }
 
-#chats .chat span {
-    padding: 5px;
-    line-height: 20px;
-    font-size: 11px;
+#chats .chat .tab {
+    background-color: #DDD;
+    border: 1px solid #888;
+    border-top: 1px solid #AAA;
+    border-bottom: 0px;
+    overflow: hidden;
 }
 
-#chats .chat .messages {
-    background-color: white;
-    color: gray;
-    max-height: 200px;
-    overflow: auto;
-    border: 1px solid black;
-    min-height: 3em;
-    border-color: #E5E5E5 #E5E5E5 white;
+#chats .chat .tab.alert .name {
+    display: relative;
 }
 
-#chats .chat .messages .message {
-    padding: 5px;
-    word-wrap: break-word;
+#chats .chat .tab.alert .name:after {
+    content: "+1";
+    color: white;
+    font-size: 10px;
+    padding: 0px;
+    line-height: 1.7em;
+    float: right;
+    background-color: #C5371E;
+    margin-top: 3px;
+    padding: 0px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
 }
 
-#chats .chat .messages .message.me {
-    background-color: #FFC;
+#chats .chat .tab:hover {
+    background-color: #EEE;
+    border: 1px solid #AAA;
+    border-bottom: none;
+    color: black;
 }
 
-#chats .chat .messages .message.own {
-	color: blue;
+#chats .chat .tab .name {
+    padding-right: 5px ;
+    line-height: 24px;
 }
 
-#chats .chat .messages .message.presence {
-	color: black;
-	font-weight: bold;
+#chats .chat .tab .name img {
+    margin-right: 5px;
+    float: left;
+    width: 24px;
 }
 
-#chats .chat span.cross {
-    background-image: url(img/cross.png);
+#chats .chat .panel .head span.chatbutton {
     width: 15px;
     height: 15px;
     background-repeat: no-repeat;
     padding: 0px;
-    margin-top: 5px;
-    margin-right: 2px;
-    float: right;
-} 
+    margin-top: 6px;
+    margin-right: 3px;
+    float: right;   
+}
 
-#chats .chat span.cross:hover {
+#chats .chat .panel .head span.chatbutton.cross {
+    background-image: url(img/cross.png);
+}
+
+#chats .chat .panel .head span.chatbutton.arrow {
+    background-image: url(img/arrow.png);
+}
+
+#chats .chat .panel .head a.name {
+    padding-right: 1em;
+    display: inline-block;
+    margin: 0px;
+    width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 3px;
+    white-space: nowrap;
+}
+
+#chats .chat .tab:hover {
     cursor: pointer;
 }
 
-#chats .chat .avatar {
+#chats .chat .panel {
+    background-color: white;
+    width: 225px;
+    border-radius: 2px 2px 0px 0px;
+}
+
+#chats .chat .panel .head {
+    background-color: #242424;
+    color: white;
+    line-height: 17px;
+    border: 1px solid #222;
+    border-radius: 2px 2px 0px 0px;
+    border-bottom: 1px solid #242424;
+}
+
+#chats .chat .panel .head:hover {
+    cursor: pointer;
+}
+
+#chats .chat .panel .head > * {
+    color: white;
+}
+
+#chats .chat .panel .head a:hover {
+    text-decoration: underline;
+}
+
+#chats .chat .panel .head img {
+    margin-right: 5px;
     float: left;
-    height: 20px;
-    margin: 1px;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    width: 24px;
 }
 
-#chats .chat .messages .message.me span.date {
-    color: #444;
+#chats .chat .panel .messages {
+    background-color: white;
+    color: gray;
+    max-height: 250px;
+    overflow: auto;
+    min-height: 3em;
+    border: 1px solid #888;
+    border-top: 0px;
+    border-bottom: 0px;
 }
 
-#chats .chat textarea {
-    width: 194px;
-    border: 1px solid #444;
+#chats .chat .panel .text {
+    overflow: hidden;
+    border: 1px solid #888;
+}
+
+#chats .chat .panel .text textarea {
+    width: 100%;
+    border: 0px;
     padding: 2px;
     overflow: auto;
-    border-bottom: 0px;
     background-color: white;
-    height: 1.2em;
     resize: none;
-    border-top: 0px;
+    height: 17px;
+    line-height: 17px;
 }
 
-#chats .chat:hover textarea {
-    display: block;
+#chats .chat .panel .text textarea:focus {
+    border: 0px;
 }
 
-#chats .chat .messages .message span.date {
+#chats .chat .panel .messages .message {
+    padding: 5px;
+    word-wrap: break-word;
+    font-size: 12px;
+}
+
+#chats .chat .panel .messages .message.me {
+    background-color: #FFC;
+}
+
+#chats .chat .panel .messages .message.own {
+	color: blue;
+}
+
+#chats .chat .panel .messages .message.presence {
+	color: black;
+	font-weight: bold;
+}
+
+#chats .chat .panel .messages .message span.date {
     float: right;
     color: #ccc;
     padding: 2px;
     line-height: 1em;
+}
+
+#chats .chat .panel .messages .message.me span.date {
+    color: #444;
 }

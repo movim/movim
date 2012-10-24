@@ -1,7 +1,7 @@
 <?php
 
 class Contact extends DatajarBase {
-    public $key;
+    //public $key;
     public $jid;
     
     public $fn;
@@ -9,22 +9,20 @@ class Contact extends DatajarBase {
     public $date;
     public $url;
     
+    public $email;
+    
+    public $adrlocality;
+    public $adrpostalcode;
+    public $adrcountry;
+    
     public $gender;
     public $marital;
-    
-    public $group;
-    
-    public $rostername;
-    public $rosterask;
-    public $rostersubscription;
     
     public $phototype;
     public $photobin;
     
     public $desc;
     
-    public $vcardreceived;
-    public $chaton;
     public $public;
     
     // User Mood (contain serialized array) - XEP 0107
@@ -62,30 +60,27 @@ class Contact extends DatajarBase {
     
     
     protected function type_init() {
-        $this->key      = DatajarType::varchar(128);
         $this->jid      = DatajarType::varchar(128);
         
         $this->fn       = DatajarType::varchar(128);
         $this->name     = DatajarType::varchar(128);
         $this->date     = DatajarType::date();
         $this->url      = DatajarType::varchar(128);
+
+        $this->email    = DatajarType::varchar(128);
+        
+        $this->adrlocality   = DatajarType::varchar(128);
+        $this->adrpostalcode = DatajarType::int();
+        $this->adrcountry    = DatajarType::varchar(128);
         
         $this->gender   = DatajarType::varchar(1);
         $this->marital  = DatajarType::varchar(20);
-        
-        $this->group    = DatajarType::varchar(128);
-        
-        $this->rostername     = DatajarType::varchar(128);
-        $this->rosterask      = DatajarType::varchar(128);
-        $this->rostersubscription = DatajarType::varchar(128);
         
         $this->phototype = DatajarType::varchar(128);
         $this->photobin  = DatajarType::text();
         
         $this->desc = DatajarType::text();
-        
-        $this->vcardreceived  = DatajarType::int();
-        $this->chaton  = DatajarType::int();
+
         $this->public  = DatajarType::int();
         
         $this->mood            = DatajarType::varchar(128);
@@ -114,46 +109,6 @@ class Contact extends DatajarBase {
         $this->locuri          = DatajarType::varchar(128);
         $this->loctimestamp    = DatajarType::datetime();
     }
-    
-    public function setContact($array) {
-        $user = new User();
-        
-        $date = strtotime($array['vCard']['BDAY']);
-        if($date != false) 
-            $this->date->setval(date('Y-m-d', $date)); 
-                   
-        $this->key->setval($user->getLogin());
-        $this->jid->setval(($array['@attributes']['from'] != NULL) ? $array['@attributes']['from'] : $user->getLogin());
-        
-        $this->name->setval($array['vCard']['NICKNAME']);
-        $this->fn->setval($array['vCard']['FN']);
-        $this->url->setval($array['vCard']['URL']);
-        
-        $this->gender->setval($array['vCard']['X-GENDER']);
-        $this->marital->setval($array['vCard']['MARITAL']['STATUS']);
-        
-        if($this->rostersubscription->getval() == false)
-            $this->rostersubscription->setval('none');
-        
-        $this->phototype->setval($array['vCard']['PHOTO']['TYPE']);
-        $this->photobin->setval($array['vCard']['PHOTO']['BINVAL']);
-        
-        $this->desc->setval($array['vCard']['DESC']);
-        
-        $this->vcardreceived->setval(1);
-        $this->public->setval(0);
-    }
-    
-    public function setContactRosterItem($item) {
-        $user = new User();
-
-        $this->key->setval($user->getLogin());
-        $this->jid->setval($item['@attributes']['jid']);
-        $this->rostername->setval($item['@attributes']['name']);
-        $this->rosterask->setval($item['@attributes']['ask']);
-        $this->rostersubscription->setval($item['@attributes']['subscription']);
-        $this->group->setval($item['group']);
-    }
 
     public function getTrueName() {
         $truename = '';
@@ -163,8 +118,8 @@ class Contact extends DatajarBase {
             $truename = $this->nickname->getval();
         elseif(isset($this->name) && $this->name->getval() != '' && !filter_var($this->name->getval(), FILTER_VALIDATE_EMAIL))
             $truename = $this->name->getval();
-        elseif(isset($this->rostername) && $this->rostername->getval() != '' && !filter_var($this->rostername->getval(), FILTER_VALIDATE_EMAIL)) 
-            $truename = $this->rostername->getval();
+        //elseif(isset($this->rostername) && $this->rostername->getval() != '' && !filter_var($this->rostername->getval(), FILTER_VALIDATE_EMAIL)) 
+        //    $truename = $this->rostername->getval();
         else
             $truename = $this->jid->getval();
 
@@ -172,7 +127,15 @@ class Contact extends DatajarBase {
     }
     
     public function getData($data) {
-        return $this->$data->getval();
+        return trim($this->$data->getval());
+    }
+    
+    public function getAge() {
+        if(isset($this->date) && $this->date->getval() != '0000-00-00') {
+            return  floor( (strtotime(date('Y-m-d')) - strtotime($this->date->getval())) / 31556926).' '.t('yo');
+        } else {
+            return '';
+        }
     }
     
     public function getPlace() {
@@ -216,8 +179,10 @@ class Contact extends DatajarBase {
                             strtotime((string)$stanza->item->geoloc->timestamp)));
     }
     
-    public function getPhoto($size = 'normal') {
-        if(
+    public function getPhoto($size = 'normal', $jid = false) {
+        if($jid != false)
+            $str = 'image.php?c='.$jid.'&size='.$size;
+        elseif(
                isset($this->phototype) 
             && isset($this->photobin) 
             && $this->phototype->getval() != '' 
@@ -232,6 +197,11 @@ class Contact extends DatajarBase {
         return $str;
     }
     
+    static public function getPhotoFromJid($size, $jid) {
+        $c = new Contact();
+        return $c->getPhoto($size, $jid);
+    }
+    
 }
 
 class ContactHandler {
@@ -244,7 +214,7 @@ class ContactHandler {
     public function get($jid) {
 	    global $sdb;
     	$user = new User();
-        $sdb->load($this->instance, array('key' => $user->getLogin(), 'jid' => $jid));
+        $sdb->load($this->instance, array('jid' => $jid));
         return $this->instance;
     }
 }

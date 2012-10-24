@@ -112,7 +112,6 @@ function prepareString($string) {
         );
 
     $string = replaceAnchorsWithText($string);
-
     $string = preg_replace(
         array(
             '/(^|\s|>)(www.[^<> \n\r]+)/iex',
@@ -122,10 +121,12 @@ function prepareString($string) {
         array(
             "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\2':'\\0'))",
             "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\4':'\\0'))",
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\2</a>&nbsp;':'\\0'))",
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\2</a>&nbsp;':'\\0'))"
         ),  
         ' '.$string
     );
+    $string = nl2br($string);
+    $string = str_replace("><br />", "", $string);  
     
     $conf = new Conf();
     $theme = $conf->getServerConfElement('theme');
@@ -141,69 +142,6 @@ function prepareString($string) {
     
 
     return trim($string);
-}
-
-/**
- * Convert plaintext URI to HTML links.
- *
- * Converts URI, www and ftp, and email addresses. Finishes by fixing links
- * within links.
- *
- * @since 0.71
- *
- * @param string $text Content to convert URIs.
- * @return string Content with converted URIs.
- */
-function make_clickable( $text ) {
-	$r = '';
-	$textarr = preg_split( '/(<[^<>]+>)/', $text, -1, PREG_SPLIT_DELIM_CAPTURE ); // split out HTML tags
-	foreach ( $textarr as $piece ) {
-		if ( empty( $piece ) || ( $piece[0] == '<' && ! preg_match('|^<\s*[\w]{1,20}+://|', $piece) ) ) {
-			$r .= $piece;
-			continue;
-		}
-
-		// Long strings might contain expensive edge cases ...
-		if ( 10000 < strlen( $piece ) ) {
-			// ... break it up
-			foreach ( _split_str_by_whitespace( $piece, 2100 ) as $chunk ) { // 2100: Extra room for scheme and leading and trailing paretheses
-				if ( 2101 < strlen( $chunk ) ) {
-					$r .= $chunk; // Too big, no whitespace: bail.
-				} else {
-					$r .= make_clickable( $chunk );
-				}
-			}
-		} else {
-			$ret = " $piece "; // Pad with whitespace to simplify the regexes
-
-			$url_clickable = '~
-				([\\s(<.,;:!?])                                        # 1: Leading whitespace, or punctuation
-				(                                                      # 2: URL
-					[\\w]{1,20}+://                                # Scheme and hier-part prefix
-					(?=\S{1,2000}\s)                               # Limit to URLs less than about 2000 characters long
-					[\\w\\x80-\\xff#%\\~/@\\[\\]*(+=&$-]*+         # Non-punctuation URL character
-					(?:                                            # Unroll the Loop: Only allow puctuation URL character if followed by a non-punctuation URL character
-						[\'.,;:!?)]                            # Punctuation URL character
-						[\\w\\x80-\\xff#%\\~/@\\[\\]*(+=&$-]++ # Non-punctuation URL character
-					)*
-				)
-				(\)?)                                                  # 3: Trailing closing parenthesis (for parethesis balancing post processing)
-			~xS'; // The regex is a non-anchored pattern and does not have a single fixed starting character.
-			      // Tell PCRE to spend more time optimizing since, when used on a page load, it will probably be used several times.
-
-			$ret = preg_replace_callback( $url_clickable, '_make_url_clickable_cb', $ret );
-
-			$ret = preg_replace_callback( '#([\s>])((www|ftp)\.[\w\\x80-\\xff\#$%&~/.\-;:=,?@\[\]+]+)#is', '_make_web_ftp_clickable_cb', $ret );
-			$ret = preg_replace_callback( '#([\s>])([.0-9a-z_+-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})#i', '_make_email_clickable_cb', $ret );
-
-			$ret = substr( $ret, 1, -1 ); // Remove our whitespace padding.
-			$r .= $ret;
-		}
-	}
-
-	// Cleanup of accidental links within links
-	$r = preg_replace( '#(<a( [^>]+?>|>))<a [^>]+?>([^>]+?)</a></a>#i', "$1$3</a>", $r );
-	return $r;
 }
 
 /**
@@ -295,6 +233,232 @@ function getGender() {
 }
 
 /**
+ * Return an array of informations from a XMPP uri
+ */
+function explodeURI($uri) {
+    $arr = parse_url(urldecode($uri));
+    $result = array();
+    
+    if(isset($arr['query'])) {
+        $query = explode(';', $arr['query']);
+
+
+        foreach($query as $elt) {
+            if($elt != '') {
+                list($key, $val) = explode('=', $elt);
+                $result[$key] = $val;
+            }
+        }
+
+        $arr = array_merge($arr, $result);
+    }
+    
+    return $arr;
+
+}
+
+/**
+ * Return a list of all the country
+ */
+function getCountries() {
+    return array(
+		"Afghanistan",
+		"Albania",
+		"Algeria",
+		"Andorra",
+		"Angola",
+		"Antigua and Barbuda",
+		"Argentina",
+		"Armenia",
+		"Australia",
+		"Austria",
+		"Azerbaijan",
+		"Bahamas",
+		"Bahrain",
+		"Bangladesh",
+		"Barbados",
+		"Belarus",
+		"Belgium",
+		"Belize",
+		"Benin",
+		"Bhutan",
+		"Bolivia",
+		"Bosnia and Herzegovina",
+		"Botswana",
+		"Brazil",
+		"Brunei",
+		"Bulgaria",
+		"Burkina Faso",
+		"Burundi",
+		"Cambodia",
+		"Cameroon",
+		"Canada",
+		"Cape Verde",
+		"Central African Republic",
+		"Chad",
+		"Chile",
+		"China",
+		"Colombi",
+		"Comoros",
+		"Congo (Brazzaville)",
+		"Congo",
+		"Costa Rica",
+		"Cote d'Ivoire",
+		"Croatia",
+		"Cuba",
+		"Cyprus",
+		"Czech Republic",
+		"Denmark",
+		"Djibouti",
+		"Dominica",
+		"Dominican Republic",
+		"East Timor (Timor Timur)",
+		"Ecuador",
+		"Egypt",
+		"El Salvador",
+		"Equatorial Guinea",
+		"Eritrea",
+		"Estonia",
+		"Ethiopia",
+		"Fiji",
+		"Finland",
+		"France",
+		"Gabon",
+		"Gambia, The",
+		"Georgia",
+		"Germany",
+		"Ghana",
+		"Greece",
+		"Grenada",
+		"Guatemala",
+		"Guinea",
+		"Guinea-Bissau",
+		"Guyana",
+		"Haiti",
+		"Honduras",
+		"Hungary",
+		"Iceland",
+		"India",
+		"Indonesia",
+		"Iran",
+		"Iraq",
+		"Ireland",
+		"Israel",
+		"Italy",
+		"Jamaica",
+		"Japan",
+		"Jordan",
+		"Kazakhstan",
+		"Kenya",
+		"Kiribati",
+		"Korea, North",
+		"Korea, South",
+		"Kuwait",
+		"Kyrgyzstan",
+		"Laos",
+		"Latvia",
+		"Lebanon",
+		"Lesotho",
+		"Liberia",
+		"Libya",
+		"Liechtenstein",
+		"Lithuania",
+		"Luxembourg",
+		"Macedonia",
+		"Madagascar",
+		"Malawi",
+		"Malaysia",
+		"Maldives",
+		"Mali",
+		"Malta",
+		"Marshall Islands",
+		"Mauritania",
+		"Mauritius",
+		"Mexico",
+		"Micronesia",
+		"Moldova",
+		"Monaco",
+		"Mongolia",
+		"Morocco",
+		"Mozambique",
+		"Myanmar",
+		"Namibia",
+		"Nauru",
+		"Nepa",
+		"Netherlands",
+		"New Zealand",
+		"Nicaragua",
+		"Niger",
+		"Nigeria",
+		"Norway",
+		"Oman",
+		"Pakistan",
+		"Palau",
+		"Panama",
+		"Papua New Guinea",
+		"Paraguay",
+		"Peru",
+		"Philippines",
+		"Poland",
+		"Portugal",
+		"Qatar",
+		"Romania",
+		"Russia",
+		"Rwanda",
+		"Saint Kitts and Nevis",
+		"Saint Lucia",
+		"Saint Vincent",
+		"Samoa",
+		"San Marino",
+		"Sao Tome and Principe",
+		"Saudi Arabia",
+		"Senegal",
+		"Serbia and Montenegro",
+		"Seychelles",
+		"Sierra Leone",
+		"Singapore",
+		"Slovakia",
+		"Slovenia",
+		"Solomon Islands",
+		"Somalia",
+		"South Africa",
+		"Spain",
+		"Sri Lanka",
+		"Sudan",
+		"Suriname",
+		"Swaziland",
+		"Sweden",
+		"Switzerland",
+		"Syria",
+		"Taiwan",
+		"Tajikistan",
+		"Tanzania",
+		"Thailand",
+		"Togo",
+		"Tonga",
+		"Trinidad and Tobago",
+		"Tunisia",
+		"Turkey",
+		"Turkmenistan",
+		"Tuvalu",
+		"Uganda",
+		"Ukraine",
+		"United Arab Emirates",
+		"United Kingdom",
+		"United States",
+		"Uruguay",
+		"Uzbekistan",
+		"Vanuatu",
+		"Vatican City",
+		"Venezuela",
+		"Vietnam",
+		"Yemen",
+		"Zambia",
+		"Zimbabwe"
+	);
+}
+
+/**
  * Return the list of marital status
  */
 function getMarital() {
@@ -317,6 +481,61 @@ function getPresences() {
                 4 => t('Extended Away'),
                 5 => t('Logout')
             );
+}
+
+/*
+ * Get the user local timezone
+ */
+function getLocalTimezone()
+{
+    $iTime = time();
+    $arr = localtime($iTime);
+    $arr[5] += 1900;
+    $arr[4]++;
+    $iTztime = gmmktime($arr[2], $arr[1], $arr[0], $arr[4], $arr[3], $arr[5], $arr[8]);
+    $offset = doubleval(($iTztime-$iTime)/(60*60));
+    $zonelist =
+    array
+    (
+        'Kwajalein' => -12.00,
+        'Pacific/Midway' => -11.00,
+        'Pacific/Honolulu' => -10.00,
+        'America/Anchorage' => -9.00,
+        'America/Los_Angeles' => -8.00,
+        'America/Denver' => -7.00,
+        'America/Tegucigalpa' => -6.00,
+        'America/New_York' => -5.00,
+        'America/Caracas' => -4.30,
+        'America/Halifax' => -4.00,
+        'America/St_Johns' => -3.30,
+        'America/Argentina/Buenos_Aires' => -3.00,
+        'America/Sao_Paulo' => -3.00,
+        'Atlantic/South_Georgia' => -2.00,
+        'Atlantic/Azores' => -1.00,
+        'Europe/Dublin' => 0,
+        'Europe/Belgrade' => 1.00,
+        'Europe/Minsk' => 2.00,
+        'Asia/Kuwait' => 3.00,
+        'Asia/Tehran' => 3.30,
+        'Asia/Muscat' => 4.00,
+        'Asia/Yekaterinburg' => 5.00,
+        'Asia/Kolkata' => 5.30,
+        'Asia/Katmandu' => 5.45,
+        'Asia/Dhaka' => 6.00,
+        'Asia/Rangoon' => 6.30,
+        'Asia/Krasnoyarsk' => 7.00,
+        'Asia/Brunei' => 8.00,
+        'Asia/Seoul' => 9.00,
+        'Australia/Darwin' => 9.30,
+        'Australia/Canberra' => 10.00,
+        'Asia/Magadan' => 11.00,
+        'Pacific/Fiji' => 12.00,
+        'Pacific/Tongatapu' => 13.00
+    );
+    $index = array_keys($zonelist, $offset);
+    if(sizeof($index)!=1)
+        return false;
+    return $index[0];
 }
 
 /**
