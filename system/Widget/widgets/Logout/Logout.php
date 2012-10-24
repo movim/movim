@@ -25,11 +25,7 @@ class Logout extends WidgetBase
     {
     	$this->addcss('logout.css');
         $this->addjs('logout.js');
-		//$this->registerEvent('postdisconnected', 'onPostDisconnect');
-        //$this->registerEvent('serverdisconnect', 'onPostDisconnect'); // When you're kicked out
         $this->registerEvent('mypresence', 'onMyPresence');
-        
-        //$this->cached = true;
     }
     
     function onMyPresence()

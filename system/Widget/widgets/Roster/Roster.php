@@ -30,7 +30,7 @@ class Roster extends WidgetBase
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
 		$this->registerEvent('presence', 'onPresence');
-		$this->registerEvent('vcard', 'onVcard');
+		//this->registerEvent('vcard', 'onVcard');
 
         $this->cached = false;
     }
@@ -42,7 +42,7 @@ class Roster extends WidgetBase
                       RPC::cdata($arr['jid']), RPC::cdata($arr['presence_txt']));
 	}
 
-    function onVcard($contact)
+    /*function onVcard($contact)
     {
         $query = \Presence::query()->select()
                            ->where(array(
@@ -57,7 +57,7 @@ class Roster extends WidgetBase
 
         $html = $this->prepareRosterElement($c, true);
         RPC::call('movim_fill', 'roster'.$contact->getData('jid'), RPC::cdata($html));
-    }
+    }*/
 
     function onRoster()
     {
@@ -98,8 +98,8 @@ class Roster extends WidgetBase
         $middle .= '"';
         $middle .= ' href="?q=friend&f='.$contact[0]->getData('jid').'"
                  >
-                    <img class="avatar"  src="'.$contact[0]->getPhoto('xs').'" />'.
-                    '<span>'.$contact[0]->getTrueName();
+                    <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact[0]->getData('jid')).'" />'.
+                    '<span>'.$contact[0]->getData('rostername');
 						if($contact[0]->getData('rosterask') == 'subscribe')
 							$middle .= " #";
                         if($presence['ressource'] != '')
@@ -114,32 +114,46 @@ class Roster extends WidgetBase
             return $start.$middle.$end;
 	}
 
-    function stackGroup() {
-
-    }
-
 	function prepareRoster()
 	{
-        $query = Contact::query()->join('Presence',
-                                              array('Contact.jid' =>
+        $query = RosterLink::query()->join('Presence',
+                                              array('RosterLink.jid' =>
                                                     'Presence.jid'))
-                                 ->where(
-                                    array(
-                                        'Contact`.`key' => $this->user->getLogin(),
-                                        'Contact`.`jid!' => $this->user->getLogin(),
+                                     ->where(
                                         array(
-                                            'Contact`.`rostersubscription!' => 'none',
-                                            'Contact`.`rostersubscription!' => 'vcard',
-                                            '|Contact`.`rosterask' => 'subscribe')))
-                                 ->orderby('Contact.group', true);
+                                            'RosterLink`.`key' => $this->user->getLogin(),
+                                            array(
+                                                'RosterLink`.`rostersubscription!' => 'none',
+                                                'RosterLink`.`rostersubscription!' => 'vcard',
+                                                '|RosterLink`.`rosterask' => 'subscribe')))
+                                     ->orderby('RosterLink.group', true);
 
-        $contacts = Contact::run_query($query);
+        $contactsq = Contact::run_query($query);
+
+        $contacts = array();
+        
+        foreach($contactsq as $c) {
+            $p = $c[1]->getPresence();
+            if(isset($p['jid'])) {
+                $query = Presence::query()->where(
+                                                array(
+                                                    'key' => $this->user->getLogin(),
+                                                    'jid' => $c[0]->getData('jid')))
+                                        ->orderby('presence', false);
+                $presences = Presence::run_query($query);
+                if(isset($presences[0]))
+                    array_push($contacts, array($c[0], $presences[0]));
+            }
+            else
+                array_push($contacts, array($c[0], $c[1]));
+        }
 
         $html = '';
         $group = '';
 
         if($contacts != false) {
-
+            $currentchat = '';
+            
             if($contacts[0][0]->getData('group') == '')
                 $html .= '<div><h1>'.t('Ungrouped').'</h1>';
             else {
@@ -161,18 +175,34 @@ class Roster extends WidgetBase
                             $html .= '<div><h1>'.$group.'</h1>';
                     }
 
+                    if($c[0]->getData('chaton') > 0)
+                        $currentchat .= $this->prepareRosterElement($c);
                     $html .= $this->prepareRosterElement($c);
 
                     array_push($duplicate, $c[0]->getData('jid'));
                 }
             }
             $html .= '</div>';
+            
+            if($currentchat != '')
+                $html = '<div><h1>'.t('Active Chat').'</h1>'.$currentchat.'</div>'.$html;
         } else {
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
         }
 
         return $html;
 	}
+    
+    function ajaxAddContact($jid, $alias) {
+        $r = new moxl\RosterAddItem();
+        $r->setTo($jid)
+          ->request();
+          
+        $p = new moxl\PresenceSubscribe();
+        $p->setTo($jid)
+          ->request();
+    }
+    
 
     function build()
     {
@@ -181,13 +211,53 @@ class Roster extends WidgetBase
             <ul id="rosterlist">
             <?php echo $this->prepareRoster(); ?>
             </ul>
-            <div id="rostermenu">
+            <div id="rostermenu" class="menubar">
+                <form id="addcontact">
+                    <div class="element large">
+                        <label for="addjid"><?php echo t('JID'); ?></label>
+                        <input 
+                            id="addjid" 
+                            class="tiny" 
+                            placeholder="user@server.tld" 
+                            onfocus="myFocus(this);" 
+                            onblur="myBlur(this);"
+                        />
+                    </div>
+                    <div class="element large">
+                        <label for="addalias"><?php echo t('Alias'); ?></label>
+                        <input 
+                            id="addalias"
+                            type="text"
+                            class="tiny" 
+                            placeholder="<?php echo t('Alias'); ?>" 
+                            onfocus="myFocus(this);" 
+                            onblur="myBlur(this);"
+                        />
+                    </div>
+                    <a 
+                        class="button tiny icon no merged left"
+                        href="#"
+                        id="addrefuse"
+                        onclick="cancelAddJid();">
+                        <?php echo t('Cancel'); ?>
+                    </a><a 
+                        class="button tiny icon yes merged right" 
+                        href="#" 
+                        id="addvalidate" 
+                        onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
+                        <?php echo t('Send request'); ?>
+                    </a>
+                </form> 
+
                 <ul>
+                    <li onclick="addJid(this)"; style="float: right;" title="<?php echo t('Add'); ?>">
+                        <a href="#">+</a>
+                    </li>
+                    <li onclick="showRoster(this);" style="float: right;" title="<?php echo t('Show/Hide'); ?>">
+                        <a href="#">◐</a>
+                    </li>
                     <li>
                         <input type="text" name="search" id="request" autocomplete="off" onkeyup="rosterSearch(event);" onclick="focusContact();" placeholder="<?php echo t('Search');?>"/>
-                    </li>
-                    <li onclick="showRoster(this);" style="float: right; padding-right: 10px;" title="<?php echo t('Show/Hide'); ?>">
-                        <a href="#">◐</a>
                     </li>
                 </ul>
             </div>

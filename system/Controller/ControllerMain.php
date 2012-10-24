@@ -24,6 +24,8 @@ class ControllerMain extends ControllerBase
 	{
 		parent::__construct();
         global $sdb;
+        $c = new RosterLink();
+        $sdb->create($c);
         $c = new Contact();
         $sdb->create($c);
         $p = new Presence();
@@ -46,6 +48,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
             $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
+            $this->page->menuAddLink(t('Explore'), '?q=explore');
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
             $this->page->menuAddLink(t('Help'), '?q=help');
@@ -63,7 +66,11 @@ class ControllerMain extends ControllerBase
         $user = new User();
 
         $query = Contact::query()
-                            ->where(array('key' => $user->getLogin(), 'jid' => $_GET['f']));
+                            ->where(
+                                array( 
+                                    'jid' => $_GET['f']
+                                    )
+                                );
         $contact = Contact::run_query($query);
 
         if(isset($contact[0]))
@@ -77,7 +84,7 @@ class ControllerMain extends ControllerBase
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(APP_TITLE.' - '.$name);
                 $this->page->menuAddLink(t('Home'), '?q=mainPage');
-
+                $this->page->menuAddLink(t('Explore'), '?q=explore');
 				$this->page->menuAddLink(t('Profile'), '?q=profile');
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
                 $this->page->menuAddLink(t('Help'), '?q=help');
@@ -102,6 +109,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Configuration', APP_TITLE));
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Explore'), '?q=explore');
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
             $this->page->menuAddLink(t('Help'), '?q=help');
@@ -123,6 +131,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Profile', APP_TITLE));
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Explore'), '?q=explore');
 			$this->page->menuAddLink(t('Profile'), '?q=profile', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
             $this->page->menuAddLink(t('Help'), '?q=help');
@@ -183,6 +192,28 @@ class ControllerMain extends ControllerBase
 		}
 	}
 
+	function post()
+	{
+		$user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			$this->page->setTitle(t('%s - Post View', APP_TITLE));
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Explore'), '?q=explore');
+			$this->page->menuAddLink(t('Profile'), '?q=profile');
+			$this->page->menuAddLink(t('Configuration'), '?q=config');
+            $this->page->menuAddLink(t('Help'), '?q=help');
+            $this->page->menuAddLink(t('Logout'), '?q=disconnect');
+
+			$content = new TplPageBuilder($user);
+
+			$this->page->setContent($content->build('post.tpl'));
+			echo $this->page->build('page.tpl');
+		}
+	}
+
 	/**
 	 * Show login interface
 	 */
@@ -201,14 +232,33 @@ class ControllerMain extends ControllerBase
 	 */
 	function feed()
 	{
-    	/*$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
-		$this->page->menuAddLink(t('Home'), '?q=mainPage', true);
-
-        $content = new TplPageBuilder($user);
-		$this->page->setContent($content->build('login.tpl'));
-		echo $this->page->build('page.tpl');*/
         $content = new TplPageBuilder();
         echo $content->build('feed.tpl');
+	}
+    
+	/**
+	 * Explore the XMPP network
+	 */
+	function explore()
+	{
+		$user = new User();
+
+        $this->page->setTitle(t('%s - Explore', APP_TITLE));
+
+		if(!$user->isLogged()) {
+            $this->login();
+		} else {
+            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Explore'), '?q=explore', true);
+            $this->page->menuAddLink(t('Profile'), '?q=profile');
+			$this->page->menuAddLink(t('Configuration'), '?q=config');
+            $this->page->menuAddLink(t('Help'), '?q=help');
+            $this->page->menuAddLink(t('Logout'), '?q=disconnect');
+		}
+
+        $content = new TplPageBuilder($user);
+        $this->page->setContent($content->build('explore.tpl'));
+        echo $this->page->build('page.tpl');
 	}
     
 
@@ -226,6 +276,7 @@ class ControllerMain extends ControllerBase
             $this->login();
 		} else {
             $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Explore'), '?q=explore');
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
             $this->page->menuAddLink(t('Help'), '?q=help', true);

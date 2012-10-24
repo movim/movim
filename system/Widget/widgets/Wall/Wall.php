@@ -83,13 +83,18 @@ class Wall extends WidgetCommon
         
         if(!$from)
             $from = $_GET['f'];
+            
+        $where = array(
+                    'Post`.`key' => $this->user->getLogin(),
+                    'Post`.`jid' => $from,
+                    'Post`.`parentid' => '');
+                    
+        if(isset($_GET['p']))
+            $where['Post`.`nodeid'] = $_GET['p'];
         // We query the last messages
         $query = Post::query()
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where(array(
-                                'Contact`.`key' => $this->user->getLogin(),
-                                'Post`.`jid' => $from,
-                                'Post`.`parentid' => ''))
+                            ->where($where)
                             ->orderby('Post.updated', true)
                             ->limit($start, '20');
         $messages = Post::run_query($query);
@@ -104,11 +109,17 @@ class Wall extends WidgetCommon
                 $html .= '
                         <div id="wallheader">
                         <a 
-                                    class="button tiny icon follow" 
+                                    class="button tiny icon feed merged left" 
+                                    href="?q=feed&f='.$from.'"
+                                    target="_blank"
+                                >
+                                    '.t('Feed').' (Atom)
+                                </a><a 
+                                    class="button tiny icon follow merged right" 
                                     href="#"
                                     onclick="'.$this->genCallAjax('ajaxWall', "'".$from."'").'
                                         this.innerHTML = \''.t('Updating').'\'; 
-                                        this.className= \'button tiny icon loading\';
+                                        this.className= \'button tiny icon merged right loading\';
                                         this.onclick = \'return false;\'";
                                 >
                                     '.t('Update').'

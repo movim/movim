@@ -31,7 +31,6 @@ class Vcard extends WidgetBase
     
     function onMyVcardReceived()
     {
-        \movim_log("LOOOOOOOOOOOLLLLLLLL");
 		$html = $this->prepareInfos();
         //RPC::call('movim_textarea_autoheight(document.querySelector("#desctext"))');
         RPC::call('movim_fill', 'vcard', RPC::cdata($html));
@@ -56,15 +55,14 @@ class Vcard extends WidgetBase
 
         $query = \Contact::query()->select()
                                    ->where(array(
-                                           'key' => $this->user->getLogin(),
-                                           'jid' => $this->user->getLogin()));
+                                           'jid' => $this->user->getLogin())
+                                        );
         $data = \Contact::run_query($query);
 
         if($data) {
             $c = $data[0];
         }
 
-        $c->key->setval($this->user->getLogin());
         $c->jid->setval($this->user->getLogin());
         
         $date = strtotime($vcard['date']);
@@ -76,17 +74,21 @@ class Vcard extends WidgetBase
         
         $c->gender->setval($vcard['gender']);
         $c->marital->setval($vcard['marital']);
+
+        $c->email->setval($vcard['email']);
         
-        if($c->rostersubscription->getval() == false)
-            $c->rostersubscription->setval('none');
+        $c->adrlocality->setval($vcard['locality']);
+        $c->adrcountry->setval($vcard['country']);
         
         $c->phototype->setval($vcard['phototype']);
         $c->photobin->setval($vcard['photobin']);
         
         $c->desc->setval(trim($vcard['desc']));
         
-        $c->vcardreceived->setval(0);
-        $c->public->setval(0);
+        if($vcard['public'] == 'true')
+            $c->public->setval(1);
+        else
+            $c->public->setval(0);
         
         $c->run_query($c->query()->save($c));
         
@@ -96,7 +98,11 @@ class Vcard extends WidgetBase
     
     function prepareInfos($error = false) {
         $query = Contact::query()
-                            ->where(array('key' => $this->user->getLogin(), 'jid' => $this->user->getLogin()));
+                            ->where(
+                                array(
+                                    'jid' => $this->user->getLogin()
+                                    )
+                                );
         $me = Contact::run_query($query);
         
         $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
@@ -130,23 +136,33 @@ class Vcard extends WidgetBase
                     <div class="message error">'.t("Profil not updated : Request error").'</div>';
             }
         
+            if($me->getData('public') == '1')
+                $color = 'black';
+            else
+                $color =  'red';
+        
             $html .= '
             <form name="vcard" id="vcardform"><br />
-                <fieldset class="protect red">
+                <fieldset class="protect '.$color.'">
                     <legend>'.t('General Informations').'</legend>';
                     
-            $html .= '<div class="element">
-                        <label for="fn">'.t('Name').'</label>
-                        <input type="text" name="fn" class="content" value="'.$me->getData('fn').'">
-                      </div>';
-                      
-            $html .= '<div class="element">
-                        <label for="name">'.t('Nickname').'</label>
-                        <input type="text" name="name" class="content" value="'.$me->getData('name').'">
-                      </div>';
-                      
-            $html .= '<div class="element ">
-                        <label for="day">'.t('Date of Birth').'</label>';
+                $html .= '<div class="element">
+                            <label for="fn">'.t('Name').'</label>
+                            <input type="text" name="fn" class="content" value="'.$me->getData('fn').'">
+                          </div>';
+                          
+                $html .= '<div class="element">
+                            <label for="name">'.t('Nickname').'</label>
+                            <input type="text" name="name" class="content" value="'.$me->getData('name').'">
+                          </div>';
+                          
+                $html .= '<div class="element">
+                            <label for="name">'.t('Email').'</label>
+                            <input type="email" name="email" class="content" value="'.$me->getData('email').'">
+                          </div>';
+                          
+                $html .= '<div class="element ">
+                            <label for="day">'.t('Date of Birth').'</label>';
                         
                 $html .= '
                         <div class="select" style="width: 29%; float: left;">
@@ -203,45 +219,92 @@ class Vcard extends WidgetBase
                     </div>';
 
             
-            $html .= '<div class="element">
-                        <label for="gender">'.t('Gender').'</label>
-                        <div class="select"><select name="gender">';
-                        foreach(getGender() as $key => $value) {
-                            $html .= '<option ';
-                            if($key == $me->getData('gender'))
-                                $html .= 'selected ';
-                            $html .= 'value="'.$key.'">'.$value.'</option>';
-                        }
-            $html .= '  </select></div>
-                      </div>';
+                $html .= '<div class="element">
+                            <label for="gender">'.t('Gender').'</label>
+                            <div class="select"><select name="gender">';
+                            foreach(getGender() as $key => $value) {
+                                $html .= '<option ';
+                                if($key == $me->getData('gender'))
+                                    $html .= 'selected ';
+                                $html .= 'value="'.$key.'">'.$value.'</option>';
+                            }
+                $html .= '  </select></div>
+                          </div>';
+                          
+                $html .= '<div class="element"><label for="marital">'.t('Marital Status').'</label>
+                            <div class="select"><select name="marital">';
+                            foreach(getMarital() as $key => $value) {
+                                $html .= '<option ';
+                                if($key == $me->getData('marital'))
+                                    $html .= 'selected ';
+                                $html .= 'value="'.$key.'">'.$value.'</option>';
+                            }
+                $html .= '  </select></div>
+                          </div>';
+             
+                $html .= '<div class="element"><label for="url">'.t('Website').'</label>
+                            <input type="url" name ="url" class="content" value="'.$me->getData('url').'">
+                          </div>';
+                          
+                $html .= '<div class="element"><label for="avatar">'.t('Avatar').'</label>
+                            <input type="file" onchange="vCardImageLoad(this.files);">
+                            <img id="vCardPhotoPreview" src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
+                            <input type="hidden" name="phototype"  value="'.$me->getData('phototype').'">
+                            <input type="hidden" name="photobin"  value="'.$me->getData('photobin').'"><br />
+                          </div>';
                       
-            $html .= '<div class="element"><label for="marital">'.t('Marital Status').'</label>
-                        <div class="select"><select name="marital">';
-                        foreach(getMarital() as $key => $value) {
-                            $html .= '<option ';
-                            if($key == $me->getData('marital'))
-                                $html .= 'selected ';
-                            $html .= 'value="'.$key.'">'.$value.'</option>';
-                        }
-            $html .= '  </select></div>
-                      </div>';
-         
-            $html .= '<div class="element"><label for="url">'.t('Website').'</label>
-                        <input type="url" name ="url" class="content" value="'.$me->getData('url').'">
-                      </div>';
+                $html .= '<div class="element large"><label for="desc">'.t('About Me').'</label>
+                            <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
+                          </div>';
                       
-            $html .= '<div class="element"><label for="avatar">'.t('Avatar').'</label>
-                        <input type="file" onchange="vCardImageLoad(this.files);">
-                        <img id="vCardPhotoPreview" src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
-                        <input type="hidden" name="phototype"  value="'.$me->getData('phototype').'">
-                        <input type="hidden" name="photobin"  value="'.$me->getData('photobin').'"><br />
-                      </div>';
+            $html .= '</fieldset><br />'; 
                       
-            $html .= '<div class="element"><label for="desc">'.t('About Me').'</label>
-                        <textarea name ="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
-                      </div>';
+            $html .= '
+                <fieldset>
+                    <legend>'.t('Geographic Position').'</legend>';
+                    
+                $html .= '<div class="element"><label for="url">'.t('Locality').'</label>
+                            <input type="text" type="locality" name ="locality" class="content" value="'.$me->getData('adrlocality').'">
+                          </div>';
+                          
+                $html .= '<div class="element"><label for="country">'.t('Country').'</label>
+                            <div class="select"><select name="country">';
+                            $ctry = $me->adrcountry->getval();
+                            foreach(getCountries() as $value) {
+                                $html .= '<option ';
+                                if($value == $ctry)
+                                    $html .= 'selected ';
+                                $html .= 'value="'.$value.'">'.$value.'</option>';
+                            }
+                $html .= '  </select></div>
+                          </div>';
+                          
+            $html .= '
+                </fieldset>';   
                       
-            $html .= '</fieldset>';                  
+            $html .= '<fieldset>
+                        <legend>'.t('Privacy Level').'</legend>';
+
+                if($me->getData('public') == '1')
+                    $checked = 'checked="true"';
+                else
+                    $checked =  '';
+                
+                $html .= '';
+                          
+                $html .= '<div class="element large">
+                            <div class="message info" style="float: right; width: 70%; margin-bottom: 1.5em;">
+                                '.t('Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet.').'
+                            </div>
+                            <label>'.t('Is this profile public ?').'</label>
+                              <div class="checkbox">
+                                <input type="checkbox" id="checkbox" name="public" '.$checked.'/>
+                                <label for="checkbox"></label>
+                              </div>
+                          </div>';
+                      
+            $html .= '</fieldset>'; 
+                       
             /*$html .= '<br />
                 <fieldset>
                     <legend>'.t('Geographic Position').'</legend>';

@@ -24,14 +24,13 @@ require_once(LIB_PATH . "Datas/Contact.php");
 require_once(LIB_PATH . "Datas/Presence.php");
 require_once(LIB_PATH . "Datas/Message.php");
 require_once(LIB_PATH . "Datas/Post.php");
-require_once(LIB_PATH . "Datas/Attachment.php");
+require_once(LIB_PATH . "Datas/RosterLink.php");
 
 require_once(LIB_PATH . "Session.php");
 require_once(LIB_PATH . "Utils.php");
 require_once(LIB_PATH . "Cache.php");
 require_once(LIB_PATH . "Conf.php");
 require_once(LIB_PATH . "Event.php");
-//require_once(LIB_PATH . "Jabber.php");
 require_once(LIB_PATH . "Logger.php");
 require_once(LIB_PATH . "MovimException.php");
 require_once(LIB_PATH . "RPC.php");
@@ -56,10 +55,9 @@ define('JAXL_LOG_EVENT', true);
 define('JAXL_LOG_LEVEL', 4);
 define('JAXL_LOG_ROTATE', false);
 
-//define('JAXL_BASE_PATH', LIB_PATH . 'Jaxl/');
-
 // We set the default timezone to the server timezone
-date_default_timezone_set('UTC');
+
+date_default_timezone_set(getLocalTimezone());
 
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 

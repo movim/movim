@@ -127,7 +127,6 @@
 }
 
 .post .content {
-    text-align: justify;
 	margin-left: 65px;
 	margin-right: 5px;
     margin-top: 0.3em;
@@ -144,10 +143,24 @@
 .post .content i, .post .content em { font-style: italic; }
 .post .content b, .post .content strong { font-weight: bold; }
 .post .content u, .post .content a { text-decoration: underline; }
+
+.post content a.imglink {
+    text-decoration: none;
+    display: none;
+}
+
 .post .content img {
-    margin: 1em 0px;
+    margin: 10px 5px 0px 5px;
     max-width: 100%;
     max-height: 300px;
+    padding: 5px;
+    border: 1px solid #AAA;
+}
+
+.post .content img.smiley {
+    margin: 0px;
+    padding: 0px;
+    border: none;
 }
 
 .post .content h1, .post .content h2, .post .content h3, .post .content h4 {

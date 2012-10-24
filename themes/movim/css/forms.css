@@ -111,6 +111,94 @@ form .element:nth-child(2) {
     padding: 5px;
 }
 
+.element .checkbox {
+	width: 80px;
+	height: 26px;
+
+    overflow: hidden;
+	position: relative;
+
+    border: 1px solid #999;
+    min-height: 30px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: inset 0 10px 10px #ddd;
+}
+
+.element input[type=checkbox] {
+	visibility: hidden;
+}
+
+.element .checkbox:after {
+	content: 'NO';
+
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 30px;
+    height: 30px;
+    width: 38px;
+    text-align: center;
+    
+    color: white;
+    background-color: #E43626;
+
+	font-weight: bold;
+	text-shadow: 0px -1px 0px #6E160D;
+    
+    box-shadow: inset 0 10px 10px #5C1C16;
+}
+
+.element .checkbox:before {
+	content: 'YES';
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    line-height: 30px;
+    height: 30px;
+    width: 44px;
+    background-color: #333;
+    text-align: center;
+
+    color: white;
+	font-weight: bold;
+	text-shadow: 0px -1px 0px #000;
+    
+    box-shadow: inset 0 10px 10px #000;
+}
+
+.element .checkbox label[for=checkbox] {
+	display: block;
+	width: 48px;
+	height: 30px;
+
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+
+	cursor: pointer;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+    
+    border-left: none;
+    border-right: 1px solid #888;
+
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
+    background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
+    background-color: white;
+}
+
+.element .checkbox input[type=checkbox]:checked + label {
+	left: 43px;
+    border-right: none;
+    border-left: 1px solid #888;
+}
+
 input[type=submit], input[type=reset], input[type=button], .button, .button:link, .button:visited {
     display: inline-block;
     border: 1px solid #999;
@@ -132,6 +220,12 @@ input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .bu
     box-shadow: 0px 1px 1px #ccc;
     border: 1px solid gray;
     cursor: pointer;
+}
+
+form .element input:invalid {
+    border: 1px solid red;
+    box-shadow: inset 0 2px 1px rgba(200, 0, 0, 0.4);
+    color: #B70000;
 }
 
 form .element.simple > *:not(label):not(img),
@@ -190,6 +284,7 @@ form .element.simple > *:not(label):not(img):focus {
 .icon.submit:before { content: "▼"; }
 .icon.loading:before { content: "◕"; }
 .icon.next:before { content: "→"; }
+.icon.feed:before { content: "≡"; }
 .tiny.icon.loading:before { padding: 4px 7px; }
 
 .button.tiny {

@@ -27,58 +27,64 @@ class Notifs extends WidgetBase
 
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('subscribe', 'onSubscribe');
+		$this->registerEvent('notification', 'onNotification');
     }
     
     function onMessage($message) {
         $query = Contact::query()->select()
                                  ->where(array(
-                                            'key' => $message->getData('to'),
                                             'jid' => $message->getData('from')));
         $contact = Contact::run_query($query);
 
         $contact = $contact[0];
 
-        RPC::call('notification', $contact->getTrueName(), RPC::cdata($message->getData('body'), ENT_COMPAT, "UTF-8"));
-        RPC::commit();
+        if(is_object($contact)) {
+            RPC::call('notification', $contact->getTrueName(), RPC::cdata($message->getData('body'), ENT_COMPAT, "UTF-8"));
+            RPC::commit();
+        }
     }
     
-    function prepareNotifs($from) {
+    function prepareNotifs($from, $value = false) {
         $html = '';
         
-   	    $html .= '
-            <li>
-                <form id="acceptcontact">
-                    '.$from.' '.t('wants to talk with you'). ' <br />
-                    <div class="element large">
-                        <label id="labelnotifsalias" for="notifsalias">'.t('Alias').'</label>
-                        <input 
-                            id="notifsalias"
-                            class="tiny" 
-                            value="'.$from.'" 
-                            onfocus="myFocus(this);" 
-                            onblur="myBlur(this);"
-                        />
-                    </div>
-                    <a 
-                        class="button tiny icon yes merged right" 
-                        href="#" 
-                        onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$from."'").' showAlias(this);">'.
-                        t("Accept").'
-                    </a>
-                    <a 
-                        class="button tiny icon add merged right" 
-                        href="#" id="notifsvalidate" 
-                        onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "getAlias()").' hideNotification(this);">'.
-                        t("Add").'
-                    </a>
-                    <a 
-                        class="button tiny icon no merged left" 
-                        href="#" 
-                        onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").' hideNotification(this);">'.
-                        t("Decline").'
-                    </a>
-                </form>
-   	        </li>';
+        if($value == 'sub') {
+            $html .= '
+                <li>
+                    <form id="acceptcontact">
+                        '.$from.' '.t('wants to talk with you'). ' <br />
+                        <div class="element large">
+                            <label id="labelnotifsalias" for="notifsalias">'.t('Alias').'</label>
+                            <input 
+                                id="notifsalias"
+                                class="tiny" 
+                                value="'.$from.'" 
+                                onfocus="myFocus(this);" 
+                                onblur="myBlur(this);"
+                            />
+                        </div>
+                        <a 
+                            class="button tiny icon yes merged right" 
+                            href="#" 
+                            onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$from."'").' showAlias(this);">'.
+                            t("Accept").'
+                        </a>
+                        <a 
+                            class="button tiny icon add merged right" 
+                            href="#" id="notifsvalidate" 
+                            onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "getAlias()").' hideNotification(this);">'.
+                            t("Add").'
+                        </a>
+                        <a 
+                            class="button tiny icon no merged left" 
+                            href="#" 
+                            onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").' hideNotification(this);">'.
+                            t("Decline").'
+                        </a>
+                    </form>
+                </li>';
+        } elseif($value != false) {
+            //$html .= $value;
+        }
             
         return $html;
     }
@@ -88,8 +94,36 @@ class Notifs extends WidgetBase
         
         $html = '';
         foreach($notifs as $key => $value)
-            $html .= $this->prepareNotifs($key);
-   	    //$notifs['sub'.$from] = $html;
+            $html .= $this->prepareNotifs($key, $value);
+   	    
+        RPC::call('movim_fill', 'notifslist', RPC::cdata($html));
+        
+	    Cache::c('activenotifs', $notifs);
+    }
+    
+    function onNotification($item) {
+        $arr = explodeURI((string)$item->entry->link[0]->attributes()->href);
+        $post = end(explode('/', $arr['node']));
+        //movim_log(explodeURI($item->entry->link[0]->attributes()->href));
+   	    $notifs = Cache::c('activenotifs');
+        
+        $html = '';
+        foreach($notifs as $key => $value)
+            $html .= $this->prepareNotifs($key, $value);
+        
+        $nhtml = '
+        <a href="?q=friend&f='.$arr['path'].'&p='.$post.'">
+            <li>
+                
+                    <span style="font-weight: bold;">'.
+                        (string)$item->entry->source->author->name.'
+                    </span> - '.prepareDate(strtotime((string)$item->entry->published)).'<br />'.
+                    (string)$item->entry->content.'
+                
+            </li></a>
+                ';
+        
+        $notifs[(string)$item->attributes()->id] = $nhtml;
    	    
         RPC::call('movim_fill', 'notifslist', RPC::cdata($html));
         
@@ -97,46 +131,30 @@ class Notifs extends WidgetBase
     }
     
     function ajaxSubscribed($jid) {
-		//if(checkJid($jid)) {
-			$p = new moxl\PresenceSubscribed();
-            $p->setTo($jid)
-              ->request();
-              
-			/*$p = new moxl\PresenceSubscribe();
-            $p->setTo($jid)
-              ->request();*/
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+        $p = new moxl\PresenceSubscribed();
+        $p->setTo($jid)
+          ->request();
     }
     
     function ajaxRefuse($jid) {
-		//if(checkJid($jid)) {
-			$p = new moxl\PresenceUnsubscribed();
-            $p->setTo($jid)
-              ->request();
-            
-            $notifs = Cache::c('activenotifs');
-            unset($notifs[$jid]);
-            
-            Cache::c('activenotifs', $notifs);
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+        $p = new moxl\PresenceUnsubscribed();
+        $p->setTo($jid)
+          ->request();
+        
+        $notifs = Cache::c('activenotifs');
+        unset($notifs[$jid]);
+        
+        Cache::c('activenotifs', $notifs);
     }
     
     function ajaxAccept($jid, $alias) {        
-		//if(checkJid($jid)) {
-            $r = new moxl\RosterAddItem();
-            $r->setTo($jid)
-              ->request();
-            
-			$p = new moxl\PresenceSubscribe();
-            $p->setTo($jid)
-              ->request();
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+        $r = new moxl\RosterAddItem();
+        $r->setTo($jid)
+          ->request();
+        
+        $p = new moxl\PresenceSubscribe();
+        $p->setTo($jid)
+          ->request();
         
    	    $notifs = Cache::c('activenotifs');
    	    unset($notifs[$jid]);
@@ -144,18 +162,10 @@ class Notifs extends WidgetBase
 	    Cache::c('activenotifs', $notifs);
     }
     
-    function ajaxAddContact($jid, $alias) {
-		//if(checkJid($jid)) {
-            $r = new moxl\RosterAddItem();
-            $r->setTo($jid)
-              ->request();
-              
-			$p = new moxl\PresenceSubscribe();
-            $p->setTo($jid)
-              ->request();
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+    function ajaxGetNotifications() {
+        $p = new moxl\NotificationGet();
+        $p->setTo($this->user->getLogin())
+          ->request();
     }
     
     function build() {  
@@ -163,75 +173,43 @@ class Notifs extends WidgetBase
     if($notifs == false)
         $notifs = array();
         
-    $query = Contact::query()
+    /*$query = RosterLink::query()
                      ->where(
                         array(
                             'key' => $this->user->getLogin(),
                             'jid!' => $this->user->getLogin(),
                             array(
                                 'rostersubscription!' => 'none',
-                                'Contact`.`rostersubscription!' => 'vcard',
+                                'rostersubscription!' => 'vcard',
                                 '|rosterask' => 'subscribe')));
-    $contacts = Contact::run_query($query);
+    $contacts = RosterLink::run_query($query);*/
     ?>
     <div id="notifs">
         <span id="widgettitle">
-            <?php echo t('Contacts (%s)', sizeof($contacts)); ?> - 
-            <a 
+            <?php //echo t('Contacts (%s)', sizeof($contacts)); ?>
+            <!--<a 
                     class="" 
                     href="#" 
                     id="addstart"
                     onclick="addJid(this);">
                     <?php echo t('Add'); ?>
-            </a>
+            </a>-->
         </span>
+        
+        <!--<a 
+            class="button tiny icon yes" 
+            href="#" 
+            id="addvalidate" 
+            onclick="<?php $this->callAjax("ajaxGetNotifications"); ?>">
+            <?php echo t('Send request'); ?>
+        </a>-->
         <ul id="notifslist">
             <?php
             ksort($notifs);
             foreach($notifs as $key => $value) {
-                    echo $this->prepareNotifs($key);
+                    echo $this->prepareNotifs($key, $value);
             }
             ?>
-            <li>
-                <form id="addcontact">
-                    <div class="element large">
-                        <label for="addjid"><?php echo t('JID'); ?></label>
-                        <input 
-                            id="addjid" 
-                            class="tiny" 
-                            placeholder="user@server.tld" 
-                            onfocus="myFocus(this);" 
-                            onblur="myBlur(this);"
-                        />
-                    </div>
-                    <div class="element large">
-                        <label for="addalias"><?php echo t('Alias'); ?></label>
-                        <input 
-                            id="addalias"
-                            type="text"
-                            class="tiny" 
-                            placeholder="<?php echo t('Alias'); ?>" 
-                            onfocus="myFocus(this);" 
-                            onblur="myBlur(this);"
-                        />
-                    </div>
-                    <a 
-                        class="button tiny icon yes merged right" 
-                        href="#" 
-                        id="addvalidate" 
-                        onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
-                        <?php echo t('Send request'); ?>
-                    </a>
-                    <a 
-                        class="button tiny icon no merged left"
-                        href="#"
-                        id="addrefuse"
-                        onclick="cancelAddJid();">
-                        <?php echo t('Cancel'); ?>
-                    </a>
-                </form>  
-
-            </li>
         </ul>
     </div>
     <?php    
