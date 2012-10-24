@@ -77,7 +77,6 @@ class Profile extends WidgetBase
     {
         $query = Contact::query()->select()
                                  ->where(array(
-                                            'key' => $this->user->getLogin(),
                                             'jid' => $this->user->getLogin()));
         $contact = Contact::run_query($query);
         
@@ -108,7 +107,7 @@ class Profile extends WidgetBase
                     <img src="'.$me->getPhoto().'"/>
                 </a>';*/
             $html .= '
-            <div class="block">
+            <div class="block" style="width: 550px;">
                 <div class="textbubble">
                     <textarea 
                         id="status" 

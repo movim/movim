@@ -69,28 +69,28 @@ class Chat extends WidgetBase
             $jid = $message->getData('from');
         }
 
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $key,
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
+        $contact = RosterLink::run_query($query);
 
         if($contact)
             $contact = $contact[0];
         
         if(isset($contact) && $contact->getData('chaton') == 0) {
+            $contact->chaton->setval(2);
+            $contact->run_query($contact->query()->save($contact));
+            
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
             RPC::call('scrollAllTalks');
-            $contact->chaton->setval(1);
-            
-            $contact->run_query($contact->query()->save($contact));
         } else if($message->getData('body') != '') {
             
             $html = $this->prepareMessage($message);
 
-            if($contact->getData('chaton') == 2) {
+            if($contact->getData('chaton') == 1) {
                 RPC::call('colorTalk',
                             'messages'.$contact->getData('jid'));
             }
@@ -120,14 +120,14 @@ class Chat extends WidgetBase
     
     function onComposing($jid)
     {
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
+        $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
-        if($contact->getData('chaton') == 1) {
+        if(in_array($contact->getData('chaton'), array(1, 2))) {
             RPC::call('showComposing',
                        $contact->getData('jid'));
                            
@@ -138,14 +138,14 @@ class Chat extends WidgetBase
 
     function onPaused($jid)
     {
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
+        $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
-        if($contact->getData('chaton') == 1) {
+        if(in_array($contact->getData('chaton'), array(1, 2))) {
             RPC::call('showPaused',
                        $contact->getData('jid'));
                            
@@ -163,29 +163,30 @@ class Chat extends WidgetBase
 	 */
 	function ajaxOpenTalk($jid) 
 	{
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
-                                            'key' => $this->user->getLogin(),
-                                            'jid' => $jid));
-        $contact = Contact::run_query($query);
+                                            'RosterLink`.`key' => $this->user->getLogin(),
+                                            'RosterLink`.`jid' => $jid));
+        $contact = RosterLink::run_query($query);
         $contact = $contact[0];
-        
+
         $query = Presence::query()->select()
                                   ->where(array(
                                             'key' => $this->user->getLogin(),
-                                            'jid' => $jid));
+                                            'jid' => $jid))
+                                  ->orderby('presence', false);
         $presence = Presence::run_query($query);
         $presence = $presence[0];
-        
-        if($contact->getData('chaton') != 1 && isset($presence) && $presence->presence->getval() != 6) {
+
+        if($contact->getData('chaton') == 0 && isset($presence) && !in_array($presence->presence->getval(), array(5, 6))) {
+            $contact->chaton->setval(2);
+            
+            $contact->run_query($contact->query()->save($contact));
+            
             RPC::call('movim_prepend',
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
             RPC::call('scrollAllTalks');
-
-            $contact->chaton->setval(1);
-            
-            $contact->run_query($contact->query()->save($contact));
 
             RPC::commit();
         }
@@ -229,27 +230,28 @@ class Chat extends WidgetBase
 	 */
 	function ajaxCloseTalk($jid) 
 	{        
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
-        $contact = $contact[0];
-        
-        if($contact->getData('chaton') == 1 || $contact->getData('chaton') == 2) {
-            $contact->chaton->setval(0);
-            
-            $contact->run_query($contact->query()->save($contact));
+        $contacts = RosterLink::run_query($query);
+
+        foreach($contacts as $contact) {
+            if((int)$contact->getData('chaton') == 1 || (int)$contact->getData('chaton') == 2) {
+                $contact->chaton->setval(0);
+
+                $contact->run_query($contact->query()->save($contact));
+            }
         }
 	}
     
     function ajaxHideTalk($jid)
     {
-        $query = Contact::query()->select()
+        $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
                                             'jid' => $jid));
-        $contact = Contact::run_query($query);
+        $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
         if($contact->getData('chaton') == 1) {
@@ -274,7 +276,7 @@ class Chat extends WidgetBase
             $content = $message->getData('body');
                     
             if(preg_match("#^/me#", $message->getData('body'))) {
-                $html .= "own ";
+                $html .= " own ";
                 $content = "** ".substr($message->getData('body'), 4);
             }
                     
@@ -313,39 +315,60 @@ class Chat extends WidgetBase
         
         $style = '';
         if($contact->getData('chaton') == 2) {
-            $style = ' style="display: none;" ';
+            $tabstyle = ' style="display: none;" ';            
+            $panelstyle = ' style="display: block;" ';
         }
-    
+        
         $html = '
-            <div class="chat" onclick="this.querySelector(\'textarea\').focus()">'.
-                '<div class="messages" '.$style.' id="messages'.$contact->getData('jid').'">'.$messageshtml.'
-                    <div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div>
-                    <div style="display: none;" class="message" id="paused'.$contact->getData('jid').'">'.t('Paused...').'</div>
-                 </div>'.
-                '<textarea onkeyup="movim_textarea_autoheight(this);"  '.$style.'
-                    onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false; }"
-					onfocus="setBackgroundColor(\'chatwindow'.$contact->getData('jid').'\', \'#444444\')"
-                ></textarea>'.
-                '<a class="name" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' hideTalk(this);">'.
-                    '<img class="avatar"  src="'.$contact->getPhoto('xs').'" /><span>'.$contact->getTrueName().'</span>'.
-                '</a>'.
-                '<span class="cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->getData('jid')."'").' closeTalk(this)"></span>'.
-            '</div>';
+            <div class="chat" onclick="this.querySelector(\'textarea\').focus()">
+                <div class="panel" '.$panelstyle.'>
+                    <div class="head" >
+                        <span class="chatbutton cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->getData('jid')."'").' closeTalk(this)"></span>
+                        <span class="chatbutton arrow" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' hideTalk(this)"></span>
+                        <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact->getData('jid')).'" />
+                        <a class="name" href="?q=friend&f='.$contact->getData('jid').'">
+                            '.$contact->getData('rostername').'
+                        </a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="messages" id="messages'.$contact->getData('jid').'">
+                        '.$messageshtml.'
+                        <div style="display: none;" class="message" id="composing'.$contact->getData('jid').'">'.t('Composing...').'</div>
+                        <div style="display: none;" class="message" id="paused'.$contact->getData('jid').'">'.t('Paused...').'</div>
+                    </div>
+                    
+                    <div class="text">
+                         <textarea 
+                            rows="1"
+                            onkeyup="movim_textarea_autoheight(this);"
+                            onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->getData('jid')."'", "sendMessage(this, '".$contact->getData('jid')."')").' return false; }"
+                            onfocus="setBackgroundColor(\'chatwindow'.$contact->getData('jid').'\', \'#444444\')"
+                        ></textarea>
+                    </div>
+                </div>
+                
+                <div class="tab '.$tabclass.'" '.$tabstyle.' onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->getData('jid')."'").' showTalk(this);">
+                    <div class="name">
+                        <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact->getData('jid')).'" />'.$contact->getData('rostername').'
+                    </div>
+                </div>
+            </div>
+            ';
         return $html;
     }
     
     function build()
     {
-        $query = Contact::query()
-                          ->where(
-                                array(
-                                    'key' => $this->user->getLogin(), 
+        $query = RosterLink::query()
+                                ->where(
                                     array(
-                                        'chaton' => 
-                                        array(1, '|2'))
-                                )
-                            );
-        $contacts = Contact::run_query($query);
+                                        'RosterLink`.`key' => $this->user->getLogin(), 
+                                        array(
+                                            'chaton' => 
+                                            array(1, '|2'))
+                                    )
+                                );
+        $contacts = RosterLink::run_query($query);
         
         echo '<div id="chats">';
         if($contacts != false) {

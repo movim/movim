@@ -25,9 +25,7 @@ class Syndication extends WidgetBase
         if(isset($from)) {
             // We query the last messages
             $query = Post::query()
-                                //->join('Contact', array('Post.jid' => 'Contact.jid'))
                                 ->where(array(
-                                    'key' => $from,
                                     'jid' => $from,
                                     'public' => 1,
                                     'parentid' => ''))
@@ -37,11 +35,13 @@ class Syndication extends WidgetBase
 
             $query = Contact::query()->select()
                                        ->where(array(
-                                               'key' => $from,
+                                               //'key' => $from,
                                                'jid' => $from));
             $contact = Contact::run_query($query);
 
             if(isset($messages[0]) && isset($contact[0])) {
+                header("Content-Type: application/atom+xml; charset=UTF-8");
+        
                 $contact = $contact[0];
                 $xml = '
                     <?xml version="1.0" encoding="utf-8"?>
@@ -73,6 +73,8 @@ class Syndication extends WidgetBase
                 $xml .= '
                     </feed>';
                 echo trim($xml);
+            } else {
+                echo t('No public feed for this contact');
             }
         } else {
             echo t('No contact specified');

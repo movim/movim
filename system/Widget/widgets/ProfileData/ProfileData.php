@@ -87,14 +87,14 @@ class ProfileData extends WidgetBase
         $query = Contact::query()
                         ->select()
                         ->where(
-                            array('key' => $this->user->getLogin(),
-                                  'jid' => $this->user->getLogin())
+                            array('jid' => $this->user->getLogin())
                         );
         $c = Contact::run_query($query);
         
         if($c) {
             $c = $c[0];
-            $data = $c->getPlace();
+            $data = prepareDate(strtotime($c->loctimestamp->getval())).'<br /><br />';
+            $data .= $c->getPlace();
         } else {
             $data = '';
         }
@@ -120,7 +120,7 @@ class ProfileData extends WidgetBase
                     style="display: none;" 
                     id="myposrefuse" 
                     onclick="hidePositionChoice();"
-                    class="button tiny icon yes merged right">'.t('Cancel').'</a>
+                    class="button tiny icon no merged right">'.t('Cancel').'</a>
             </div>';
         
         return $html;

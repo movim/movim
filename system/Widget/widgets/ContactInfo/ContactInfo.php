@@ -24,28 +24,24 @@ class ContactInfo extends WidgetCommon
         
     }
     
-    function ajaxRemoveContact($jid) {
-		//if(checkJid($jid)) {            
-            $r = new moxl\RosterRemoveItem();
-            $r->setTo($jid)
-              ->request();
-            
-			$p = new moxl\PresenceUnsubscribe();
-            $p->setTo($jid)
-              ->request();
-		/*} else {
-			throw new MovimException("Incorrect JID `$jid'");
-		}*/
+    function ajaxRemoveContact($jid) {         
+        $r = new moxl\RosterRemoveItem();
+        $r->setTo($jid)
+          ->request();
+        
+        $p = new moxl\PresenceUnsubscribe();
+        $p->setTo($jid)
+          ->request();
     }
 	
     
     function prepareContactInfo()
     {
-        $query = Contact::query()->join('Presence',
+        $query = Contact::query()
+                            ->join('Presence',
                                               array('Contact.jid' =>
                                                     'Presence.jid'))
                            ->where(array(
-                                   'Contact`.`key' => $this->user->getLogin(),
                                    'Contact`.`jid' => $_GET['f']));
         $user = Contact::run_query($query);
         
@@ -76,6 +72,8 @@ class ContactInfo extends WidgetCommon
               ) {
                 $html .= '
                     <h2>'.t('Location').'</h2>';
+                    
+                $html .= prepareDate(strtotime($contact->loctimestamp->getval())).'<br /><br />';
                 if($contact->getPlace() != '')
                     $html .= $contact->getPlace().'<br /><br />';
                 
@@ -117,9 +115,6 @@ class ContactInfo extends WidgetCommon
                 $c = new CapsHandler();
                 $caps = $c->get($presence['node'].'#'.$presence['ver']);
                 
-
-                
-
                 if($this->testIsSet($caps->getData('type'))) {
                     if($caps->getData('type') == 'phone')
                         $cinfos = '<span class="mobile"></span>';
@@ -136,7 +131,7 @@ class ContactInfo extends WidgetCommon
                 
                 $html .='<h2>'.t('Actions').'</h2>';
                 
-                if(isset($presence['presence']) && $presence['presence'] != 5) {
+                if(isset($presence['presence']) && !in_array($presence['presence'], array(5, 6))) {
                     $html .= '
                         <a
                             class="button tiny icon chat"
@@ -151,7 +146,7 @@ class ContactInfo extends WidgetCommon
                             
                 $html .= '<div style="clear: both;"></div>';
                 
-                if($contact->rostersubscription->getval() != 'vcard') {
+                /*if($contact->rostersubscription->getval() != 'vcard') {
                     $html .='
                     <a
                         class=""
@@ -203,7 +198,7 @@ class ContactInfo extends WidgetCommon
                     >
                         '.t('Invite this user').'
                     </a>';
-                }
+                }*/
             }
             
         }

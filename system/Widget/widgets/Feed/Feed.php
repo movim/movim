@@ -154,7 +154,7 @@ class Feed extends WidgetCommon {
                                     title="'.t("Submit").'"
                                     href="#" 
                                     id="feedmessagesubmit" 
-                                    onclick="ste.submit();'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'"
+                                    onclick="ste.submit();'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'; ste.clearContent();"
                                     class="button tiny icon submit">'.t("Submit").'
                                 </a>
                             </td>
@@ -176,12 +176,8 @@ class Feed extends WidgetCommon {
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
                             ->where(
                                 array(
-                                    'Contact`.`key' => $this->user->getLogin(), 
-                                    array(
-                                        'Contact`.`rostersubscription!' => 'none',
-                                        '|Contact`.`rosterask' => 'subscribe',
-                                        '|Contact`.`jid' => $this->user->getLogin()),
-                                    'Post`.`parentid' => ''))
+                                    'Post`.`parentid' => '',
+                                    'Post`.`key' => $this->user->getLogin()))
                             ->orderby('Post.updated', true)
                             ->limit($start, '20');
         $messages = Post::run_query($query);
@@ -232,11 +228,6 @@ class Feed extends WidgetCommon {
         $p->setTo($this->user->getLogin())
           ->request();
     }
-    
-    function ajaxFeed()
-    {
-        //$this->xmpp->getWall($this->xmpp->getCleanJid());
-    }
 
     function build()
     { 
@@ -248,7 +239,7 @@ class Feed extends WidgetCommon {
         ?>
         </div>
         
-        <div id="feedfilters">
+        <div class="filters">
             <ul>
                 <li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
                 <li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>

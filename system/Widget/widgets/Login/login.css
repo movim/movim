@@ -14,6 +14,23 @@
     padding-top: 200px;
 }
 
+#loginpage #publicusers {
+    position: fixed;
+    bottom: -5px;
+    left: 0px;
+    width: auto;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+     white-space:nowrap;
+}
+
+#loginpage #publicusers img {
+    height: 40px;
+    margin: 0 auto;
+}
+
 #footer {
     display: none;
 }
@@ -46,6 +63,7 @@
     background: linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
     background: -moz-linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
     background: -webkit-linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
+    background: -o-linear-gradient(top, #B9D1D6 0%, #547D86 2px, #547D86 32px, #274950 100%);
     color: white;
     box-shadow: none;
     min-width: 130px;
@@ -63,6 +81,7 @@
     background: linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
     background: -moz-linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
     background: -webkit-linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
+    background: -o-linear-gradient(top, #274950 0%, #456C74 2px, #456C74 32px, #6A959F 100%);
     background-color: #274950;
 }
 
