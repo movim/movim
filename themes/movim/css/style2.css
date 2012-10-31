@@ -30,11 +30,11 @@ body {
     color: #4E4E4E;
     background-color: #274950;
     background-image: radial-gradient(center
-     45deg, ellipse, #6E9EA8 0%, #274950 100%);
+     45deg, ellipse, #95AEC9 0%, #082D50 100%);
     background-image: -moz-radial-gradient(center
-     45deg, ellipse, #6E9EA8 0%, #274950 100%);
-    background-image: -webkit-radial-gradient(50% 50%, ellipse, #6E9EA8, #274950);
-    background-image: -o-radial-gradient(50% 50%, ellipse, #6E9EA8, #274950);
+     45deg, ellipse, #95AEC9 0%, #082D50 100%);
+    background-image: -webkit-radial-gradient(50% 50%, ellipse, #95AEC9, #082D50 );
+    background-image: -o-radial-gradient(50% 50%, ellipse, #95AEC9, #082D50 );
     background-repeat: no-repeat;
     background-attachment:fixed;
     margin: 0 auto;
@@ -187,7 +187,7 @@ ul.clean li {
     padding: 4px; 
     border-radius: 3px;
     width: 150px;
-    max-height: 200px;
+    height: 150px;
     margin-left: 20px;
     border: 1px solid #DDD;
 }
@@ -333,6 +333,16 @@ span#widgettitle {
 #nav .menu li:first-child {
 	width: 215px;
 	opacity: 0;
+}
+
+#nav .menu li:last-child {
+    background-image: url(../img/logout.svg);
+    background-position: 90% center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+    position: fixed;
+    top: 2px;
+    right: 0px;
 }
 
 #nav .menu li a {
