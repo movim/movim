@@ -32,7 +32,7 @@ function parse_db_string($string){
 				 'port'     => $matches[5],
 				 'database' => $matches[6]);
 	}else{
-		return False;
+		return false;
 	}
 }
 
@@ -56,7 +56,7 @@ function is_valid($what){
 		echo "message success";
 	}else{
 		echo "message error";
-		$errors[] = True;
+		$errors[] = true;
 	}
 }
 
@@ -234,7 +234,9 @@ function make_config(){
 	  'boshUrl' 		   => get_entry('boshUrl'),
 	  'userDefinedBosh'    => get_entry('userDefinedBosh'),
 	  'boshOpen'		   => get_entry('boshOpen'),
-	  'boshProxy'		   => get_entry('boshProxy')
+	  'boshProxy'		   => get_entry('boshProxy'),
+	  'username'		   => get_entry('username'),
+	  'password'		   => get_entry('password')
 	  ),
 	);
 	if(!@file_put_contents($file, make_xml($conf))){
@@ -293,12 +295,12 @@ function authenticate(){
 }
 
 $steps = array(
-	t("Compatibility Check"),
-	t("General Settings"),
-	t("Database Settings"),
-	t("Bosh Configuration"),
-	t("XMPP Server"),
-	t("Done")
+        t("Compatibility Check"),
+        t("General Settings"),
+        t("Database Settings"),
+        t("Bosh Configuration"),
+        t("XMPP Server"),
+        t("Done")
 	);
 
 
@@ -309,6 +311,7 @@ $steps = array(
 
 //We have already a running install
 if(file_exists($conffile)){
+    $file = $conffile;
 	//!!!!!
 	$xml = simplexml_load_file($conffile);
 	if (!isset($_SERVER['PHP_AUTH_USER'])) {
@@ -319,7 +322,7 @@ if(file_exists($conffile)){
 		}else{
 			authenticate();
 		}
-	}
+    }
 }else{
 	$file = $tmpfile;
 }
@@ -348,7 +351,12 @@ if(isset($_POST['step'])) {
 		//Store the basic settings
 		}case 1:{
 			//We load the array.
-			$xml = simplexml_load_file($file);
+			if (!file_exists($file)){
+				if(!@file_put_contents($file, '<?xml version="1.0" encoding="UTF-8"?><config></config>')){
+					die("Cannot write to the config file!!!!!");
+				}
+			}
+            $xml = simplexml_load_file($file);
 			make_config();
 			break;
 
@@ -394,8 +402,8 @@ if(isset($_POST['step'])) {
 				//The apge is displayed again:
 				#$display = 3;
 
-			if(True){
-				$_POST['boshOpen'] = True;
+			if(true){
+				$_POST['boshOpen'] = true;
 			}
 			//We load the array
 			$xml = simplexml_load_file($file);
@@ -405,10 +413,25 @@ if(isset($_POST['step'])) {
 		#TODO: If BOSH closed, display xmpp form, else display 5
 		}case 4: {
 			$display = 5;
+                        
+			$xml = simplexml_load_file($file);
+			make_config();
 			break;
 
 		#TOTO: Write Database; Rename conf.xml.part
 		}case 5: {
+            if($_POST['password'] != '' && 
+               $_POST['repassword'] != '' &&
+               $_POST['password'] == $_POST['repassword'])
+               $_POST['password'] = sha1($_POST['password']);
+            else {   
+                set_error('password', t('You entered different passwords'));
+                $errors = $err;
+                $display = 5;
+            }
+            
+			$xml = simplexml_load_file($file);
+			make_config();
 			break;
 		//If the user goes back to the checks:
 		}case -1: {

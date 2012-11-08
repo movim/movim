@@ -285,6 +285,8 @@ form .element.simple > *:not(label):not(img):focus {
 .icon.loading:before { content: "◕"; }
 .icon.next:before { content: "→"; }
 .icon.feed:before { content: "≡"; }
+.icon.back:before { content: "←"; }
+.icon.next:before { content: "→"; }
 .tiny.icon.loading:before { padding: 4px 7px; }
 
 .button.tiny {

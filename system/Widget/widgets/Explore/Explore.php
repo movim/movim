@@ -95,7 +95,7 @@ class Explore extends WidgetCommon {
             </form>
             <div class="filters">
                 <ul>
-                    <li class="on""><?php echo t('Last registered');?></li>
+                    <li class="on"><?php echo t('Last registered');?></li>
                 </ul>
             </div>
             <div class="clear"></div>
