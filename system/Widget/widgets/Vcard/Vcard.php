@@ -325,7 +325,8 @@ class Vcard extends WidgetBase
 		    $html .= '<a
                             onclick="
                                 '.$submit.' this.value = \''.t('Submitting').'\'; 
-                                this.className=\'button icon loading merged right\'" 
+                                this.className=\'button icon loading merged right\';
+                                this.onclick=null;" 
                             class="button icon ';
                 if($error)
                     $html .= 'no';

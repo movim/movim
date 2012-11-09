@@ -155,7 +155,7 @@ class ContactInfo extends WidgetCommon
                            'jid' => $_GET['f']));
         $r = RosterLink::run_query($query);
         
-        if(isset($r[0]->rostername) && $r[0]->rostername->getval() != '') {
+        if(isset($r[0]->jid) && $r[0]->jid->getval() != '') {
             $html .='
             <a
                 class=""
