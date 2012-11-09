@@ -51,10 +51,9 @@
     overflow: hidden; 
 }
 
-#notifslist #refresh {
+#notifslist .black {
     float: right;
     box-shadow: none;
-    margin: 5px;
     background-color: #333;
     color: #BBB;
     border-color: #444;
@@ -71,12 +70,17 @@
 }
 
 #notifslist ul li {
-    padding: 0 5px;
+    padding: 5px;
     line-height: 28px;
     width: 100%;
     width: 250px;
-    max-height: 56px;
+    /*max-height: 56px;*/
     border-top: 1px solid #333;
+}
+
+#notifslist ul li p {
+    line-height: 1em;
+    margin: 5px 0px;
 }
 
 #notifslist ul li span.num {
@@ -98,8 +102,13 @@
     border-top: 1px solid #EEE;
 }
 
+#notifslist ul li:hover .black {
+    color: #BBB;
+}
+
 #notifslist ul li.title {
     border-bottom: 1px solid white;
+    padding: 0px 5px;
     border-top: none;
     color: white;
 }
@@ -129,6 +138,15 @@ display: none;
 #notifslist ul li:hover a {
     color: black;
 }
+
+/*#notifs #notifsalias, #notifs #labelnotifsalias {
+    display: none;
+}
+
+#notifs #addcontact, #notifs #notifsvalidate {
+    display: none;
+}*/
+
 
 /*#notifs {
     border-bottom: 1px solid #888;

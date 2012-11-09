@@ -222,17 +222,19 @@ class Login extends WidgetBase {
                 </div> ';
             } else {
 
-                if(file_exists(BASE_PATH.'install/part1.php')) { ?>
+                /*if(file_exists(BASE_PATH.'install/part1.php')) { ?>
                     <div class="message warning">
                     <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
                     </div>
                 <?php
-                }?>
+                }*/?>
                 <div id="warning"></div>
                 <form
                     name="login"
                     id="connectform"
-                    onkeypress="if(event.keyCode == 13) {<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);}">
+                    onkeypress="
+                        if(event.keyCode == 13) {
+                            <?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;}">
                     <div class="element">
                         <input type="email" name="login" id="login" autofocus required
                             placeholder="<?php echo t("My address"); ?>"/>
@@ -244,7 +246,7 @@ class Login extends WidgetBase {
 
                         <a
                             class="button icon yes"
-                            onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);"
+                            onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;"
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
 
