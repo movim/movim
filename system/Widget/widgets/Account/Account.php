@@ -17,7 +17,224 @@
  *
  * See COPYING for licensing information.
  */
+ 
+class Account extends WidgetBase {
+    
+    function ajaxDiscoverServer($ndd) {
+        if($ndd['ndd'] == '') {
+            RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
+            RPC::commit();
+            exit;
+        }
+        
+        
+        try {
+            $dns = dns_get_record('_xmpp-client._tcp.'.$ndd['ndd']);
 
+            if(isset($dns[0]['target']) && $dns[0]['target'] != null)
+                $domain = $dns[0]['target'];
+            
+            $f = fsockopen($domain, 5222, $errno, $errstr, 10);
+
+            if(!$f) {
+                RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
+                RPC::commit();
+                exit;
+            }
+            
+            $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq type="get" id="reg1"><query xmlns="jabber:iq:register"/></iq></stream:stream>');
+            $stream->addAttribute('to', $ndd['ndd']);
+            fwrite($f, $stream->asXML());
+            
+            unset($stream);
+
+            $response = stream_get_contents($f);
+            
+	        if(!$response) {
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=xmppcomm"));
+                    RPC::commit();
+     	            exit;
+		    }
+
+	        fclose($f); unset($f);
+
+	        $response = simplexml_load_string($response);
+
+            
+            $elements = (array)$response->iq->query;
+            
+            if(!empty($elements)) {
+                
+                $html .= '
+                    <form name="account">
+                        <fieldset>
+                                <legend>'.t('Step 2 - Fill in your informations').'</legend><br />';
+
+                if(!isset($elements['x'])) {
+                    foreach($elements as $element => $val) {
+                        if($element == 'instructions')
+                            $html .= '<p>'.$val.'</p><br />';
+                        else {
+                            $html .= '
+                                <div class="element">
+                                    <label for="'.$element.'">'.t(ucfirst($element)).'</label>
+                                    <input
+                                        name="'.$element.'"
+                                        id="'.$element.'"
+                                        placeholder="'.t(ucfirst($element)).'"
+                                    />
+                                </div>';
+                        }
+                    }
+                } elseif(isset($elements['x'])) {
+                    $html .= '<p>'.(string)$elements['x']->instructions.'</p><br />';
+                    
+                    foreach($elements['x']->field as $element) {
+                        if((string)$element->attributes()->var != '' && (string)$element->attributes()->label != '') {
+                            $html .= '
+                                <div class="element">
+                                    <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
+                                    <input
+                                        name="'.(string)$element->attributes()->var.'"
+                                        type="'.(string)$element->attributes()->type.'"
+                                        id="'.(string)$element->attributes()->var.'"
+                                        placeholder="'.(string)$element->attributes()->label.'"
+                                    />
+                                </div>';
+                        }
+                    }
+                } 
+                
+                $submit = $this->genCallAjax('ajaxSubmitSubscribe', "movim_parse_form('account')");
+                
+                $html .= '
+                        <a
+                            class="button icon yes" 
+                            style="float: right;"
+                            onclick="'.$submit.'"
+                        >
+                            '.t('Validate').'
+                        </a>';
+                
+                $html .= '
+                        </fieldset>
+                    </form>';
+            
+                RPC::call('movim_fill', 'fillform', RPC::cdata($html));
+                RPC::commit();
+                
+            } else {
+                $html = '
+                    <div class="message warning">
+                        '.t('No account creation form founded on the server').'
+                    </div>';
+                
+                RPC::call('movim_fill', 'fillform', RPC::cdata($html));
+                RPC::commit();
+            }
+
+
+            
+            
+        } catch(Exception $e) {
+            header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
+            header('Content-Type: text/plain; charset=utf-8');
+            echo $e->getMessage(),"\n";
+        }
+    }
+    
+	function build()
+	{
+        switch ($_GET['err']) {
+            case 'datamissing':
+	            $warning = '
+	                    <div class="message error">
+	                        '.t('Some data are missing !').'
+	                    </div> ';
+                break;
+            case 'jiderror':
+	            $warning = '
+	                    <div class="message error">
+	                        '.t('Wrong ID').'
+	                    </div> ';
+                break;
+            case 'passworddiff':
+	            $warning = '
+	                    <div class="message error">
+	                        '.t('You entered different passwords').'
+	                    </div> ';
+                break;
+            case 'nameerr':
+	            $warning = '
+	                    <div class="message error">
+	                        '.t('Invalid name').'
+	                    </div> ';
+                break;
+            case 'userconflict':
+	            $warning = '
+	                    <div class="message error">
+	                        '.t('Username already taken').'
+	                    </div> ';
+                break;
+            case 'xmppconnect':
+	            $warning = '
+	                    <div class="message error">
+	                        '.t('Could not connect to the XMPP server').'
+	                    </div> ';
+                break;
+            case 'xmppcomm':
+	            $warning = '
+	                    <div class="message error">
+	                        '.t('Could not communicate with the XMPP server').'
+	                    </div> ';
+                break;
+            case 'unknown':
+	            $warning = '
+	                    <div class="message error">
+	                        '.t('Unknown error').'
+	                    </div> ';
+                break;
+        }
+        
+        $submit = $this->genCallAjax('ajaxDiscoverServer', "movim_parse_form('account')");
+        ?>
+        <div id="main">
+            <div id="left">
+                <?php echo $warning; ?>
+            </div>
+            <div id="center">
+                <h1><?php echo t('Create a new account'); ?></h1>
+                <div style="margin: 35px 20px;">
+                    <form name="account">
+                        <fieldset>
+                            <legend><?php echo t('Step 1 - Search the server'); ?></legend>
+                                <div class="element">
+                                    <label for="ndd"><?php echo t("Server"); ?></label>
+                                    <input
+                                        pattern="^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$"
+                                        placeholder="<?php echo t("Enter the server domain (ex: movim.eu)"); ?>"
+                                        name="ndd"
+                                        id="ndd"
+                                    />
+                                </div>                    
+                                <div class="clear"></div>
+                                <a
+                                    class="button icon next" 
+                                    style="float: right;"
+                                    onclick="<?php echo $submit;?>"
+                                >
+                                    <?php echo t('Search'); ?>
+                                </a>                    
+                    </form>
+                    <div class="clear"></div>
+                    <div id="fillform"></div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+}
+/*
 class Account extends WidgetBase {
 
     function __construct() {
@@ -170,56 +387,56 @@ class Account extends WidgetBase {
 
         if($conf['maxUsers'] > -1 && $users > $conf['maxUsers']) {
             echo '<br /><br /><br />';
-            echo '<div class="error">'.t('User registration is disabled.').'</div>';
+            echo '<div class="message error">'.t('User registration is disabled.').'</div>';
             return;
         }
         
         switch ($_GET['err']) {
             case 'datamissing':
 	            $warning = '
-	                    <div class="error">
+	                    <div class="message error">
 	                        '.t('Some data are missing !').'
 	                    </div> ';
                 break;
             case 'jiderror':
 	            $warning = '
-	                    <div class="error">
+	                    <div class="message error">
 	                        '.t('Wrong ID').'
 	                    </div> ';
                 break;
             case 'passworddiff':
 	            $warning = '
-	                    <div class="error">
+	                    <div class="message error">
 	                        '.t('You entered different passwords').'
 	                    </div> ';
                 break;
             case 'nameerr':
 	            $warning = '
-	                    <div class="error">
+	                    <div class="message error">
 	                        '.t('Invalid name').'
 	                    </div> ';
                 break;
             case 'userconflict':
 	            $warning = '
-	                    <div class="error">
+	                    <div class="message error">
 	                        '.t('Username already taken').'
 	                    </div> ';
                 break;
             case 'xmppconnect':
 	            $warning = '
-	                    <div class="error">
+	                    <div class="message error">
 	                        '.t('Could not connect to the XMPP server').'
 	                    </div> ';
                 break;
             case 'xmppcomm':
 	            $warning = '
-	                    <div class="error">
+	                    <div class="message error">
 	                        '.t('Could not communicate with the XMPP server').'
 	                    </div> ';
                 break;
             case 'unknown':
 	            $warning = '
-	                    <div class="error">
+	                    <div class="message error">
 	                        '.t('Unknown error').'
 	                    </div> ';
                 break;
@@ -227,72 +444,84 @@ class Account extends WidgetBase {
 
 	$submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('account')");
 	?>
-    <div id="content" style="width: 900px">
-        <div id="left" style="width: 230px;">
+    <div id="main">
+        <div id="left">
             <?php echo $warning; ?>
-            <div id="advices" class="warning"></div>
         </div>
-        <div id="center" style="padding: 20px; margin-top: 20px;" >
-        
-            <form name="account">
-                <input type="hidden" name="server" value="<?php echo $conf['host']; ?>">
-                <h1><?php echo t('Create a new account'); ?></h1>
-                <p style="margin-top: 20px;">
-                    <input
-                        onfocus="accountAdvices('<p><?php echo t('Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');"
-                        onblur="accountAdvices(); document.querySelector('#nick').value = this.value;"
-                        pattern="[a-zA-Z0-9]+"
-                        autofocus
-                        placeholder="<?php echo t("My address"); ?>"
-                        class="big"
-                        style="text-align: right; width: 300px;"
-                        name="username"/>
-                        <span style="font-size: 17px;">@<?php echo $conf['host']; ?></span>
-                </p>
+        <div id="center">
+            <h1><?php echo t('Create a new account'); ?></h1>
+            <div style="margin: 20px">
+                <form name="account">
+                    <input type="hidden" name="server" value="<?php echo $conf['host']; ?>">
+                    
+                        <div class="element">
+                            <label for="fn"><?php echo t("My address"); ?></label>
+                            <input
+                                onfocus="accountAdvices('<p><?php echo t('Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');"
+                                onblur="accountAdvices(); document.querySelector('#nick').value = this.value;"
+                                pattern="[a-zA-Z0-9]+"
+                                autofocus
+                                placeholder="<?php echo t("My address"); ?>"
+                                class="big"
+                                name="username"/>
+                        </div>
+                        
+                        <div class="element">
+                            <label for="fn"><?php echo t("Password"); ?></label>
+                            <input
+                                type="password"
+                                onfocus="
+                                    accountAdvices('<p><?php echo addslashes(t('Make sure your password is safe :')); ?> <ul><li><?php echo addslashes(t('A capital letter, a digit and a special character are recommended')); ?></li><li><?php echo t('8 characters'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');"
+                                onblur="accountAdvices();"
+                                placeholder="<?php echo t("Password"); ?>"
+                                class="big"
+                                name="password"
+                            />
+                        </div>
+                        
+                        <div class="element">
+                            <label for="fn"><?php echo t("Retype password"); ?></label>
+                            <input
+                                type="password"
+                                onfocus="accountAdvices('<p><?php echo t('Same here !'); ?></p>');"
+                                onblur="accountAdvices();"
+                                placeholder="<?php echo t("Retype"); ?>"
+                                class="big"
+                                name="passwordconf"
+                            />
+                        </div>
+                        
+                        <div class="element">
+                            <label for="nick"><?php echo t("Pseudo"); ?></label>
+                            <input
+                                pattern="[a-zA-Z0-9]+"
+                                placeholder="<?php echo t("Pseudo"); ?>"
+                                class="big"
+                                name="nick"
+                                id="nick"
+                            />
+                        </div>
 
-                <p>
-                    <input
-                        type="password"
-                        onfocus="
-                            accountAdvices('<p><?php echo addslashes(t('Make sure your password is safe :')); ?> <ul><li><?php echo addslashes(t('A capital letter, a digit and a special character are recommended')); ?></li><li><?php echo t('8 characters'); ?></li></ul></p><p><?php echo t('Example :'); ?> m0vimP@ss</p>');"
-                        onblur="accountAdvices();"
-                        placeholder="<?php echo t("Password"); ?>"
-                        class="big"
-                        name="password"
-                        style="width: 300px;"
-                    />
-                </p>
-
-                <p>
-                    <input
-                        type="password"
-                        onfocus="accountAdvices('<p><?php echo t('Same here !'); ?></p>');"
-                        onblur="accountAdvices();"
-                        placeholder="<?php echo t("Retype"); ?>"
-                        class="big"
-                        name="passwordconf"
-                        style="width: 300px;"
-                    />
-                </p>
-
-                <p>
-                    <input
-                        pattern="[a-zA-Z0-9]+"
-                        placeholder="<?php echo t("Pseudo"); ?>"
-                        class="big"
-                        name="nick"
-                        id="nick"
-                        style="width: 300px;"
-                    />
-                </p>
-
-                <p>
-                    <input type="button" class="button big icon submit" style="margin-left: 400px;" value="<?php echo t('Create'); ?>" onclick="<?php echo $submit;?> this.className='button big icon loading';">
-                </p>
-
-            </form>
-	    </div>
-	</div>
+                        <input
+                            onfocus="accountAdvices('<p><?php echo t('Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !'); ?></p><p><?php echo t('Only alphanumerics elements are authorized'); ?></p>');"
+                            onblur="accountAdvices(); document.querySelector('#nick').value = this.value;"
+                            pattern="[a-zA-Z0-9]+"
+                            autofocus
+                            placeholder="<?php echo t("My address"); ?>"
+                            class="big"
+                            style="text-align: right; width: 300px;"
+                            name="username"/>
+                            <span style="font-size: 17px;">@<?php echo $conf['host']; ?></span>
+                    
+                    
+                        <input type="button" class="button big icon submit" style="margin-left: 400px;" value="<?php echo t('Create'); ?>" onclick="<?php echo $submit;?> this.className='button big icon loading';">
+                    
+                        <div id="advices" class="message info"></div>
+                </form>
+            </div>
+        </div>
+    </div>
 	<?php
 	}
 }
+*/
