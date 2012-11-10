@@ -196,7 +196,7 @@ class Login extends WidgetBase {
         if($warning != 'OK')
             $this->displayWarning($warning);
 
-        RPC::call('enterMovim', BASE_URI.'?q=mainPage');
+        RPC::call('enterMovim', BASE_URI.'?q=main');
         RPC::commit();
     }
 
