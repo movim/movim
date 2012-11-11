@@ -159,39 +159,7 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		}
 	}
-    /*
-	function accountCreate()
-	{
-		if(Conf::getServerConfElement("accountCreation") == 1) {
-			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=main');
-			$this->page->menuAddLink(t('Account Creation'), '?q=accountCreate', true);
-			$content = new TplPageBuilder($user);
 
-			$this->page->setContent($content->build('account_create.tpl'));
-			echo $this->page->build('page.tpl');
-
-		} else {
-			$this->login();
-		}
-	}
-
-	function accountAdd()
-	{
-		if(Conf::getServerConfElement("accountCreation") == 1) {
-			$this->page->setTitle(t('%s - Add An Account', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=main');
-			$this->page->menuAddLink(t('Account Creation'), '?q=accountAdd', true);
-			$content = new TplPageBuilder($user);
-
-			$this->page->setContent($content->build('account_add.tpl'));
-			echo $this->page->build('page.tpl');
-
-		} else {
-			$this->login();
-		}
-	}
-    */
 	function post()
 	{
 		$user = new User();
