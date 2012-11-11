@@ -251,37 +251,6 @@ class Login extends WidgetBase {
                             name="submit"><?php echo t("Come in!"); ?></a>
 
                 </form>
-                <div id="publicusers">
-                <?php /*
-                    $users_limit = 55;
-                    
-                    $query = Contact::query()->select()
-                                   ->where(array(
-                                           'phototype!' => '',
-                                           'public' => 1))
-                                   ->limit(0, $users_limit);
-                    $users = Contact::run_query($query);
-                    
-                    $users_number = sizeof($users);
-                    
-                    if($users_number < $users_limit) {
-                        $users_fill = array();
-                        for($i = 0; $i<$users_limit-$users_number; $i++)
-                            array_push($users_fill, new Contact());
-                            
-                        $users = array_merge($users, $users_fill);
-                    }
-                    
-                    shuffle($users);
-
-                    foreach($users as $user) {
-                        if($user->getData('jid') != '')
-                            echo '<a href="?q=feed&f='.$user->getData('jid').'" target="_blank"><img src="'.$user->getPhoto('s').'"/></a>';
-                        else
-                            echo '<img src="'.$user->getPhoto('s').'"/>';
-                    }
-                */ ?>
-                </div>
             <?php
             }
             ?>
