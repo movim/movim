@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
 
-class Notifs extends WidgetBase
+class Notifs extends WidgetCommon
 {
     function WidgetLoad()
     {
@@ -43,11 +43,20 @@ class Notifs extends WidgetBase
         $html = '';
         foreach($notifs as $key => $value)
             $html .= $this->prepareNotifs($key, $value);
+    
+        $explodedurn = explodeURI((string)$item->entry->link[0]->attributes()->href);
+        $id = end(explode('/', $explodedurn['node']));
         
+        $request = $this->genCallAjax(
+                            "ajaxGetComments", 
+                            "'".$this->user->getLogin()."'", 
+                            "'".$id."'");
+
         $nhtml = '
         
             <li>
-                <a href="?q=friend&f='.$arr['path'].'&p='.$post.'">
+                <a href="?q=friend&f='.$arr['path'].'&p='.$post.'"
+                   onclick="'.$request.'">
                     <span style="font-weight: bold;">'.
                         (string)$item->entry->source->author->name.'
                     </span> - '.prepareDate(strtotime((string)$item->entry->published)).'<br />'.
@@ -175,6 +184,7 @@ class Notifs extends WidgetBase
         
         RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
 
+        RPC::commit();
     }
     
     function ajaxAccept($jid, $alias) {  
@@ -191,14 +201,14 @@ class Notifs extends WidgetBase
           ->request();          
           
         $notifs = Cache::c('activenotifs');
-        movim_log($notifs);
 
    	    unset($notifs[$jid]);
    	    
 	    Cache::c('activenotifs', $notifs);
         
         RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
-        //RPC::commit();
+        
+        RPC::commit();
     }
     
     function prepareNotifInvitation($from) {
@@ -206,22 +216,7 @@ class Notifs extends WidgetBase
             <li>
                 <form id="acceptcontact">
                     <p>'.$from.' '.t('wants to talk with you'). '</p>
-                    <!--<div class="element large">
-                        <label id="labelnotifsalias" for="notifsalias">'.t('Alias').'</label>
-                        <input 
-                            id="notifsalias"
-                            class="tiny" 
-                            value="'.$from.'" 
-                            onfocus="myFocus(this);" 
-                            onblur="myBlur(this);"
-                        />
-                    </div>-->
-                    <!--<a 
-                        class="button tiny icon yes merged right black" 
-                        href="#" 
-                        onclick="'.$this->genCallAjax("ajaxSubscribed", "'".$from."'").' showAlias(this);">'.
-                        t("Accept").'
-                    </a>--><a 
+                    <a 
                         class="button tiny icon add merged right black" 
                         href="#" id="notifsvalidate" 
                         onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "'alias'").'">'.

@@ -210,7 +210,6 @@ class Feed extends WidgetCommon {
     
     function ajaxPublishItem($content)
     {
-        movim_log(htmlspecialchars(rawurldecode($content)));
         if($content != '') {
             $id = md5(openssl_random_pseudo_bytes(5));
             

@@ -538,6 +538,14 @@ function getLocalTimezone()
     return $index[0];
 }
 
+/*
+ * Echap the JID 
+ */
+function echapJid($jid)
+{
+    return str_replace(' ', '\40', $jid);
+}
+
 /**
  * Check the current Jid
  *

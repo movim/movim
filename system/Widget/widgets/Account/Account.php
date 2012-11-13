@@ -59,14 +59,12 @@ class Account extends WidgetBase {
 	        fclose($f); unset($f);
 
 	        $response = simplexml_load_string($response);
-
             
             $elements = (array)$response->iq->query;
             
             if(!empty($elements)) {
-                
                 $html .= '
-                    <form name="account">
+                    <form name="data">
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br />';
 
@@ -90,7 +88,7 @@ class Account extends WidgetBase {
                     $html .= '<p>'.(string)$elements['x']->instructions.'</p><br />';
                     
                     foreach($elements['x']->field as $element) {
-                        if((string)$element->attributes()->var != '' && (string)$element->attributes()->label != '') {
+                        if((string)$element->attributes()->type != ''/* && (string)$element->attributes()->label != ''*/) {
                             $html .= '
                                 <div class="element">
                                     <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
@@ -105,7 +103,12 @@ class Account extends WidgetBase {
                     }
                 } 
                 
-                $submit = $this->genCallAjax('ajaxSubmitSubscribe', "movim_parse_form('account')");
+                                    
+                if(isset($elements['data'])) {
+                    $html .= '<img src="data:image/jpg;base64,'.$elements['data'].'"/>';
+                }
+                
+                $submit = $this->genCallAjax('ajaxSubmitData', "movim_parse_form('data')");
                 
                 $html .= '
                         <a
@@ -141,6 +144,10 @@ class Account extends WidgetBase {
             header('Content-Type: text/plain; charset=utf-8');
             echo $e->getMessage(),"\n";
         }
+    }
+    
+    function ajaxSubmitData($datas) {
+        movim_log($datas);
     }
     
 	function build()
@@ -221,7 +228,7 @@ class Account extends WidgetBase {
                                 <a
                                     class="button icon next" 
                                     style="float: right;"
-                                    onclick="<?php echo $submit;?>"
+                                    onclick="<?php echo $submit;?>; document.getElementById('fillform').innerHTML ='<?php echo t('Searching...');?>'"
                                 >
                                     <?php echo t('Search'); ?>
                                 </a>                    
