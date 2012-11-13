@@ -75,7 +75,7 @@ class Chat extends WidgetBase
                                             'jid' => $jid));
         $contact = RosterLink::run_query($query);
 
-        if($contact)
+        if(isset($contact))
             $contact = $contact[0];
         
         if(isset($contact) && $contact->getData('chaton') == 0) {
@@ -86,7 +86,7 @@ class Chat extends WidgetBase
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
             RPC::call('scrollAllTalks');
-        } else if($message->getData('body') != '') {
+        } else if(isset($contact) && $message->getData('body') != '') {
             
             $html = $this->prepareMessage($message);
 
@@ -123,7 +123,7 @@ class Chat extends WidgetBase
         $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
-                                            'jid' => $jid));
+                                            'jid' => echapJid($jid)));
         $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
@@ -141,7 +141,7 @@ class Chat extends WidgetBase
         $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
-                                            'jid' => $jid));
+                                            'jid' => echapJid($jid)));
         $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
@@ -166,19 +166,19 @@ class Chat extends WidgetBase
         $query = RosterLink::query()->select()
                                  ->where(array(
                                             'RosterLink`.`key' => $this->user->getLogin(),
-                                            'RosterLink`.`jid' => $jid));
+                                            'RosterLink`.`jid' => echapJid($jid)));
         $contact = RosterLink::run_query($query);
         $contact = $contact[0];
 
         $query = Presence::query()->select()
                                   ->where(array(
                                             'key' => $this->user->getLogin(),
-                                            'jid' => $jid))
+                                            'jid' => echapJid($jid)))
                                   ->orderby('presence', false);
         $presence = Presence::run_query($query);
         $presence = $presence[0];
 
-        if($contact->getData('chaton') == 0 && isset($presence) && !in_array($presence->presence->getval(), array(5, 6))) {
+        if(isset($contact) && $contact->getData('chaton') == 0 && isset($presence) && !in_array($presence->presence->getval(), array(5, 6))) {
             $contact->chaton->setval(2);
             
             $contact->run_query($contact->query()->save($contact));
@@ -204,7 +204,7 @@ class Chat extends WidgetBase
         $m = new \Message();
         
         $m->key->setval($this->user->getLogin());
-        $m->to->setval($to);
+        $m->to->setval(echapJid($to));
         $m->from->setval($this->user->getLogin());
         
         $m->type->setval("chat");
@@ -233,7 +233,7 @@ class Chat extends WidgetBase
         $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
-                                            'jid' => $jid));
+                                            'jid' => echapJid($jid)));
         $contacts = RosterLink::run_query($query);
 
         foreach($contacts as $contact) {
@@ -250,7 +250,7 @@ class Chat extends WidgetBase
         $query = RosterLink::query()->select()
                                  ->where(array(
                                             'key' => $this->user->getLogin(),
-                                            'jid' => $jid));
+                                            'jid' => echapJid($jid)));
         $contact = RosterLink::run_query($query);
         $contact = $contact[0];
         
