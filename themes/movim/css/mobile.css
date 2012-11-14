@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+img {
+    max-width: 90%;
+}
+
+img.smiley {
+    margin: 0px;
+}
+
+a:link, a:visited {
+    color: #2B2B2B ;
+    text-decoration: none ;
+}
+
+/* The navigation bar */
+
+#nav, #nav .menu, #nav .menu li, #nav .menu li a {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    padding-top: 1px;
+    text-decoration: none;
+}
+#nav {
+    width: 100%;
+    background-color: rgba(36, 36, 36, 1);
+    min-height: 34px;
+    /*position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3;*/
+}
+#nav .menu {
+/*    width: 1024px;*/
+    margin: 0px auto;
+    list-style-type: none;
+    display: block;
+    overflow: hidden;
+    clear: both;
+/*    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: 40px 7px;*/
+}
+#nav .menu li {
+    float: left;
+}
+/*
+#nav .menu li:first-child {
+	width: 215px;
+	opacity: 0;
+}*/
+/*
+#nav .menu li:last-child {
+    background-image: url(../img/logout.svg);
+    background-position: 90% center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+    position: fixed;
+    top: 2px;
+    right: 0px;
+}*/
+
+#nav .menu li a {
+    padding: 9px 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 50px;
+    display: block;
+    color: #ccc;
+    font-size: 13px;
+}
+#nav .menu li a.active {
+    font-weight: 700;
+    color: #EEE;
+}
+
+#nav .menu li:hover a.active {
+    color: #FFF;
+}
+
+#nav .menu li img {
+    float: left;
+    border: 0px;
+    margin-right: 10px;
+    margin-top: 1px;
+}
+#nav .menu li:hover a {
+    /*background-color: rgba(255, 255, 255, 0.3);*/
+    color: #fff;
+} 
+
+#head {
+    background-color: #CCC;
+}
+
+#head img {
+    max-width: 60px;
+    float: left;
+}
+
+#head #status {
+    display: none;
+}
+
+h1 {
+    color: #183C67;
+    padding: 15px 20px 0px; 
+    font-size: 1.2em;
+    line-height: 1.2em;
+    padding: 0px;
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#left {
+    background-color: #DDD;
+    font-size: 11px;
+    padding: 5px;
+}
+
+#right {
+    display: none;
+}
+
+#center {
+
+}
+
+#center h1 {
+    display: none;
+}
+
+.post {
+    padding: 8px;
+    font-size: 11px;
+    border-top: 1px solid #666;
+}
+
+.post span {
+    height: 30px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.post .avatar {
+    max-width: 30px;
+}
+
+.post .content {
+    margin: 0px;
+}
+
+.post .comments {
+    margin: 0px;
+    background-color: #EEE;
+    border: 1px solid #E2E2E2; 
+    border-top: 1px solid #E7E7E7;
+    border-bottom: 1px solid #D2D2D2;
+    margin-top: 1em;
+}
+
+.post .comments .comment {
+    padding: 5px;
+    border-bottom: 1px solid #D9D4D4;
+    border-top: 1px solid #FCFAFA;
+}
