@@ -50,21 +50,31 @@ class Explore extends WidgetCommon {
 
         $html = '';
         foreach($users as $user) {
-            $html.= '
+            $html .= '
                 <a href="?q=friend&f='.$user->getData('jid').'">
-                    <div class="contactbox">
+                    <div class="post">
                         <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                        <div class="desc">'.prepareString($user->getData('desc')).'</div>
                         <span class="name">'.
                             $this->colorSearch($form['search'], $user->getTrueName()).'
                         </span>
                         <span class="asv">'.
                             $user->getAge().' '.
-                            $gender[$user->getData('gender')].'<br />'.
+                            $gender[$user->getData('gender')].' '.
                             $marital[$user->getData('marital')].'
                         </span>
+                        <div 
+                            class="content"
+                            style="
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: pre-wrap;
+                                max-height: 2em;
+                            "
+                        >'.prepareString($user->getData('desc')).'</div>
                     </div>
-                </a>';
+
+                </a>
+                ';
         }
 
         return $html;
