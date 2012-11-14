@@ -22,7 +22,7 @@ class Login extends WidgetBase {
 
     function WidgetLoad()
     {
-        $this->addcss('login.css');
+        //$this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
     }
