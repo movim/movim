@@ -22,7 +22,7 @@ class Login extends WidgetBase {
 
     function WidgetLoad()
     {
-        //$this->addcss('login.css');
+        $this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
     }
@@ -243,13 +243,13 @@ class Login extends WidgetBase {
                         <input type="password" name="pass" id="pass" required
                             placeholder="<?php echo t("Password"); ?>"/>
                     </div>
-
+                    <div class="element">
                         <a
                             class="button icon yes"
                             onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;"
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
-
+                    </div>
                 </form>
             <?php
             }
