@@ -1,4 +1,78 @@
+body {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+#content {
+    margin: 0 auto;
+    display: relative;
+    margin-top: 50px;
+    width: 100%;
+}
+
 #loginpage {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    
+    background-image: url(img/logo.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 80% auto;
+    
+    padding-top: 200px;
+}
+
+#loginpage #connectform .element {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 40px;
+}
+
+#loginpage #connectform .element input {
+    width: 95%;
+    margin: 0 auto;
+
+    border: 1px solid #274950;
+    box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.4);
+    color: #15414A;
+    background-color: white;
+}
+
+#loginpage #connectform a[name=submit] {
+    margin: 0 auto;
+    display: block;
+    width: 95%;
+    padding: 0px;
+    padding-left: 5px;
+    text-align: center;
+    
+    border: 1px solid #274950;
+    background-color: #305172;
+    background: linear-gradient(top, #92ABC7 0%, #7692AE 2px, #305172 32px, #274950 100%);
+    background: -moz-linear-gradient(top, #92ABC7 0%, #547D86 2px, #305172 32px, #274950 100%);
+    background: -webkit-linear-gradient(top, #92ABC7 0%, #547D86 2px, #305172 32px, #274950 100%);
+    background: -o-linear-gradient(top, #92ABC7 0%, #547D86 2px, #305172 32px, #274950 100%);
+    color: white;
+    box-shadow: none;
+    text-shadow: -1px -1px 1px #274950;
+}
+
+#connectform a[name=submit]:active {
+    background: linear-gradient(top, #274950 0%, #455E74 2px, #455E74 32px, #376068 100%);
+    background: -moz-linear-gradient(top, #274950 0%, #455E74 2px, #455E74 32px, #376068 100%);
+    background: -webkit-linear-gradient(top, #274950 0%, #455E74 2px, #455E74 32px, #376068 100%);
+    background: -o-linear-gradient(top, #274950 0%, #455E74 2px, #455E74 32px, #376068 100%);
+    background-color: #455E74;
+}
+
+#connectform a[name=submit]:before {
+    color: white;
+}
+
+/*#loginpage {
     display: block;
     position: fixed;
     height: 1200px;
@@ -110,4 +184,4 @@
     margin: 0em auto;
     margin-bottom: 1em;
     text-align: center;
-}
+}*/
