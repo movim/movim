@@ -13,6 +13,7 @@
     
 
     $this->addCss('css/animations.css');
+    $this->addCss('css/forms.css');
     
     if(preg_match('/(alcatel|amoi|android|avantgo|blackberry|benq|cell|cricket|docomo|elaine|htc|iemobile|iphone|ipad|ipaq|ipod|j2me|java|midp|mini|mmp|mobi|motorola|nec-|nokia|palm|panasonic|philips|phone|sagem|sharp|sie-|smartphone|sony|symbian|t-mobile|telus|up\.browser|up\.link|vodafone|wap|webos|wireless|xda|xoom|zte)/i', $_SERVER['HTTP_USER_AGENT']))
     { 
@@ -22,7 +23,6 @@
             ';
         $this->addCss('css/mobile.css'); 
     } else { 
-        $this->addCss('css/forms.css');
         $this->addCss('css/posts.css');
         $this->addCss('css/style2.css');
     }
