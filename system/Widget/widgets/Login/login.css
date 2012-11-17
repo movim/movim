@@ -18,10 +18,14 @@ body {
     
     background-image: url(img/logo.png);
     background-repeat: no-repeat;
-    background-position: top center;
+    background-position: center center;
     background-size: 80% auto;
     
-    padding-top: 200px;
+    padding-top: 45%;
+}
+
+#loginpage #warning {
+    margin: 10px;
 }
 
 #loginpage #connectform .element {

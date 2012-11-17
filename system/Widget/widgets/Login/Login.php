@@ -228,13 +228,14 @@ class Login extends WidgetBase {
                     </div>
                 <?php
                 }*/?>
-                <div id="warning"></div>
+                
                 <form
                     name="login"
                     id="connectform"
                     onkeypress="
                         if(event.keyCode == 13) {
                             <?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;}">
+                    <div id="warning"></div>
                     <div class="element">
                         <input type="email" name="login" id="login" autofocus required
                             placeholder="<?php echo t("My address"); ?>"/>

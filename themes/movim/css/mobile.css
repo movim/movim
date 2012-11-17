@@ -11,6 +11,13 @@ body {
     font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
     color: #4E4E4E;
     font-size: 16px;
+    background-color: #274950;
+    background-image: radial-gradient(center
+     45deg, ellipse, #95AEC9 0%, #082D50 100%);
+    background-image: -moz-radial-gradient(center
+     45deg, ellipse, #95AEC9 0%, #082D50 100%);
+    background-image: -webkit-radial-gradient(50% 50%, ellipse, #95AEC9, #082D50 );
+    background-image: -o-radial-gradient(50% 50%, ellipse, #95AEC9, #082D50 );
 }
 
 #content {
@@ -164,7 +171,7 @@ h1 {
 }
 
 #center {
-
+    background-color: white;
 }
 
 #feedsubmitform, #vcard, #config, #contactcard, #feed #feedcontent,
@@ -302,7 +309,7 @@ h1 {
 
 .element {
     padding: 5px !important;
-    width: 100% !important;
+    width: 98% !important;
     clear: both !important;
 }
 
@@ -382,8 +389,13 @@ legend {
 
 #footer {
     font-size: 12px;
-    border-top: 1px solid #DDD;
     padding: 5px;
+    color: #BBB;
+    text-align: center;
+}
+
+#footer a:link, #footer a:visited {
+    color: #CCC;
 }
 
 /* Filters */
