@@ -1,7 +1,7 @@
 <?php
 
 // A few constants...
-define('BASE_PATH', dirname(__FILE__) . '/');
+define('BASE_PATH', str_replace('install/', '', dirname(__FILE__) . '/'));
 define('APP_NAME', 'movim');
 define('LIB_PATH', BASE_PATH.'system/');
 define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
@@ -104,10 +104,14 @@ switch($browser) {
 
 define('BROWSER_COMP', $compatible);
 
-datajar_load_driver(Conf::getServerConfElement('storageDriver'));
-DatajarEngineWrapper::setdriver(Conf::getServerConfElement('storageDriver'));
+$dbarr = explode(':',Conf::getServerConfElement('db'));
+$dbtype = array_shift($dbarr);
 
-$sdb = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
+datajar_load_driver($dbtype);
+DatajarEngineWrapper::setdriver($dbtype);
+
+$sdb = new DatajarEngineWrapper(Conf::getServerConfElement('db'));
+
 DatajarBase::bind($sdb);
 
 // Starting session.
