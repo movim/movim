@@ -1,7 +1,7 @@
 <div id="main">
     <div id="left">
         <?php include("error.php"); ?>
-        <div class="message warning" id="leftside">
+        <div class="message warning">
             <p><?php echo t('Move your mousepointer over the configure options to receive more information.');?></p>
         </div>
     </div>
@@ -20,16 +20,16 @@
                         <input type="hidden" name="step" value="5" />
                         <div class="element" <?php //echo generate_Tooltip(t("Enter a us")); ?>>
                             <label for="username"><?php echo t("Username"); ?></label>
-                            <input type="text" id="username" name="username" value="<? echo get_preset_value('username', ''); ?>"/>
+                            <input type="text" id="user" name="user" value="<? echo get_preset_value('user', ''); ?>"/>
 
                         </div>
                         <div class="element" <?php //echo generate_Tooltip(t("Enter here the BOSH-URL in the form: http://domain:123/asd")); ?>>
-                            <label for="password"><?php echo t("Password"); ?></label>
-                            <input type="password" id="password" name="password" value=""/>
+                            <label for="pass"><?php echo t("Password"); ?></label>
+                            <input type="password" id="pass" name="pass" value=""/>
                         </div>			                
                         <div class="element" <?php //echo generate_Tooltip(t("Enter here the BOSH-URL in the form: http://domain:123/asd")); ?>>
-                            <label for="repassword"><?php echo t("Retype password"); ?></label>
-                            <input type="password" id="repassword" name="repassword" value=""/>
+                            <label for="repass"><?php echo t("Retype password"); ?></label>
+                            <input type="password" id="repass" name="repass" value=""/>
                         </div>			                
                 </fieldset>
 
