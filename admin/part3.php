@@ -1,5 +1,6 @@
 <div id="main">
     <div id="left">
+        <?php include("error.php"); ?>
         <div class="message warning">
             <p><?php echo t('Move your mousepointer over the configure options to receive more information.');?></p>
         </div>
@@ -21,10 +22,10 @@
                                 <label for="userDefinedBosh"><?php echo t('BOSH changeable'); ?></label>
                                 <input type="checkbox" name="userDefinedBosh" id="userDefinedBosh" <?php if(get_preset_value('userDefinedBosh', True)){ echo 'checked="checked"'; }?>/>
                         </div>-->
-                        <div class="element" <?php //echo generate_Tooltip(t("If you have to connect to the BOSH server with a Proxy fill this form with a proxy URL in the form http://hostname:port otherwise leave blank. <br> If unsure leave blank")); ?>>
+                        <!--<div class="element" <?php //echo generate_Tooltip(t("If you have to connect to the BOSH server with a Proxy fill this form with a proxy URL in the form http://hostname:port otherwise leave blank. <br> If unsure leave blank")); ?>>
                             <label for="boshProxy"><?php echo t("Bosh Proxy"); ?></label>
                             <input type="text" id="boshProxy" name="boshProxy" value="<? echo get_preset_value('boshProxy', ''); ?> " size="40"/>
-                        </div>
+                        </div>-->
                 </fieldset>
                 <?php include('buttons.php'); ?>
                 <br />

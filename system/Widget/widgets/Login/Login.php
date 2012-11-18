@@ -171,7 +171,7 @@ class Login extends WidgetBase {
                     'rid' => 1,
                     'sid' => 0,
                     'id'  => 0,
-                    'url' => 'http://'.$serverconfig['defBoshHost'].':'.$serverconfig['defBoshPort'].'/'.$serverconfig['defBoshSuffix'].'/',
+                    'url' => $serverconfig['boshUrl'],
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,
@@ -221,13 +221,7 @@ class Login extends WidgetBase {
                     '.t('Your web browser is too old to use with Movim.').'
                 </div> ';
             } else {
-
-                /*if(file_exists(BASE_PATH.'install/part1.php')) { ?>
-                    <div class="message warning">
-                    <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
-                    </div>
-                <?php
-                }*/?>
+        ?>
                 
                 <form
                     name="login"
