@@ -51,7 +51,7 @@ class Account extends WidgetBase {
             $response = stream_get_contents($f);
             
 	        if(!$response) {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=accountCreate&err=xmppcomm"));
+                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppcomm"));
                     RPC::commit();
      	            exit;
 		    }
@@ -86,19 +86,41 @@ class Account extends WidgetBase {
                     }
                 } elseif(isset($elements['x'])) {
                     $html .= '<p>'.(string)$elements['x']->instructions.'</p><br />';
-                    
+                    movim_log($elements);
                     foreach($elements['x']->field as $element) {
-                        if((string)$element->attributes()->type != ''/* && (string)$element->attributes()->label != ''*/) {
-                            $html .= '
-                                <div class="element">
-                                    <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
-                                    <input
+                        switch((string)$element->attributes()->type) {
+                            case 'hidden':
+                                $html .= '
+                                    <input 
+                                        type="hidden"
                                         name="'.(string)$element->attributes()->var.'"
-                                        type="'.(string)$element->attributes()->type.'"
-                                        id="'.(string)$element->attributes()->var.'"
-                                        placeholder="'.(string)$element->attributes()->label.'"
-                                    />
-                                </div>';
+                                        value="'.(string)$element->value.'"
+                                        />';
+                                break;
+                            case 'text-single':
+                                $html .= '
+                                    <div class="element">
+                                        <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
+                                        <input
+                                            name="'.(string)$element->attributes()->var.'"
+                                            type="'.(string)$element->attributes()->type.'"
+                                            id="'.(string)$element->attributes()->var.'"
+                                            placeholder="'.(string)$element->attributes()->label.'"
+                                        />
+                                    </div>';
+                                break;
+                            case 'text-private':
+                                $html .= '
+                                    <div class="element">
+                                        <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
+                                        <input
+                                            name="'.(string)$element->attributes()->var.'"
+                                            type="password"
+                                            id="'.(string)$element->attributes()->var.'"
+                                            placeholder="'.(string)$element->attributes()->label.'"
+                                        />
+                                    </div>';
+                                break;
                         }
                     }
                 } 
@@ -135,9 +157,6 @@ class Account extends WidgetBase {
                 RPC::call('movim_fill', 'fillform', RPC::cdata($html));
                 RPC::commit();
             }
-
-
-            
             
         } catch(Exception $e) {
             header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));

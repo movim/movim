@@ -48,7 +48,7 @@
                 if($errors) { 
             ?>
                 <br />
-                <p class="error">Please make the required changes to continue.</p>
+                <p class="error"><?php echo t('Please make the required changes to continue.'); ?></p>
             <?php 
                 } 
             ?>
