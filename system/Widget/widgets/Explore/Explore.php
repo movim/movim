@@ -67,8 +67,7 @@ class Explore extends WidgetCommon {
                             style="
                                 overflow: hidden;
                                 text-overflow: ellipsis;
-                                white-space: pre-wrap;
-                                max-height: 2em;
+                                white-space: nowrap;
                             "
                         >'.prepareString($user->getData('desc')).'</div>
                     </div>
