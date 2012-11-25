@@ -163,47 +163,7 @@ class Wall extends WidgetCommon
                     <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
                 </script>
             <?php
-            }
-        /*        <!--<a 
-                    class="button tiny icon follow" 
-                    href="#"
-                    style="float: right;"
-                    onclick="<?php echo $this->callAjax('ajaxSubscribe', "'".$_GET['f']."'"); ?>" 
-                >
-                    <?php echo t('Follow'); ?>
-                </a>
-                <br /><br />-->
-            <?php 
-            $query = Post::query()
-                                ->where(array(
-                                            'key' => $this->user->getLogin(), 
-                                            'parentid' => '',
-                                            'jid' => $_GET['f']))
-                                ->orderby('updated', true)
-                                ->limit('0', '20');
-            $messages = Post::run_query($query);
-            
-            if($messages == false) {
-            ?>
-                <script type="text/javascript">
-                <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
-                </script>
-                <div style="padding: 1.5em; text-align: center;">
-                    <?php echo t('Loading the contact feed ...'); ?>
-                </div>
-                <?php
-            } else {
-                $html = '';
-                
-                foreach($messages as $message) {
-                    $html .= $this->preparePost($message);
-                }
-                echo $html;
-            }
-
-            ?>
-            <br />
-            <div class="config_button" onclick="<?php $this->callAjax('ajaxWall', "'".$_GET['f']."'");?>"></div>*/ ?>
+            } ?>
        	</div>
 		<?php
 	}

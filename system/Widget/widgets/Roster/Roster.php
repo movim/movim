@@ -94,12 +94,12 @@ class Roster extends WidgetBase
                  <a
 					title="'.$contact[0]->getData('jid');
                     if($presence['status'] != '')
-                        $middle .= ' - '.$presence['status'];
+                        $middle .= ' - '.htmlentities($presence['status']);
         $middle .= '"';
         $middle .= ' href="?q=friend&f='.$contact[0]->getData('jid').'"
                  >
                     <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact[0]->getData('jid')).'" />'.
-                    '<span>'.$contact[0]->getData('rostername');
+                    '<span>'.$contact[0]->getTrueName();
 						if($contact[0]->getData('rosterask') == 'subscribe')
 							$middle .= " #";
                         if($presence['ressource'] != '')
@@ -124,6 +124,7 @@ class Roster extends WidgetBase
                                             'RosterLink`.`key' => $this->user->getLogin(),
                                             array(
                                                 'RosterLink`.`rostersubscription!' => 'none',
+                                                'RosterLink`.`rostersubscription!' => '',
                                                 'RosterLink`.`rostersubscription!' => 'vcard',
                                                 '|RosterLink`.`rosterask' => 'subscribe')))
                                      ->orderby('RosterLink.group', true);

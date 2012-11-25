@@ -12,7 +12,7 @@
 	position: fixed;
 	top: 0px;
 	right: 50%;
-    margin-right: -300px;
+    margin-right: -250px;
 	cursor: pointer;
     z-index: 3;
     padding: 12px 10px;
@@ -30,7 +30,7 @@
     position: fixed;
     top: 36px;
     right: 50%;
-    margin-right: -302px;
+    margin-right: -250px;
     z-index: 1;
     background-color: #242424;
     border-radius: 0 0 5px 5px;

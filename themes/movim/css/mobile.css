@@ -1,0 +1,428 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
+    color: #4E4E4E;
+    font-size: 16px;
+    background-color: #274950;
+    background-image: radial-gradient(center
+     45deg, ellipse, #95AEC9 0%, #082D50 100%);
+    background-image: -moz-radial-gradient(center
+     45deg, ellipse, #95AEC9 0%, #082D50 100%);
+    background-image: -webkit-radial-gradient(50% 50%, ellipse, #95AEC9, #082D50 );
+    background-image: -o-radial-gradient(50% 50%, ellipse, #95AEC9, #082D50 );
+}
+
+#content {
+    position: relative;
+    margin-top: 35px;
+    overflow-x: hidden;
+}
+
+#chat {
+    display: none;
+}
+
+img {
+    max-width: 90%;
+    height: auto;
+}
+
+img.smiley {
+    margin: 0px;
+}
+
+a:link, a:visited {
+    color: #2B2B2B ;
+    text-decoration: none ;
+}
+
+/* The navigation bar */
+
+#nav, #nav .menu, #nav .menu li, #nav .menu li a {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    padding-top: 1px;
+    text-decoration: none;
+}
+#nav {
+    width: 100%;
+    background-color: rgba(36, 36, 36, 1);
+    min-height: 34px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    overflow: auto;
+}
+#nav .menu {
+    margin: 0px auto;
+    list-style-type: none;
+    display: block;
+    clear: both;
+    white-space:nowrap;
+/*    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: 40px 7px;*/
+}
+#nav .menu li {
+    /*float: left;*/
+display: inline-block;
+}
+/*
+#nav .menu li:first-child {
+	width: 215px;
+	opacity: 0;
+}*/
+/*
+#nav .menu li:last-child {
+    background-image: url(../img/logout.svg);
+    background-position: 90% center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+    position: fixed;
+    top: 2px;
+    right: 0px;
+}*/
+
+#nav .menu li a {
+    padding: 9px 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /*max-width: 45px;
+    overflow: hidden;*/
+    display: block;
+    color: #ccc;
+    font-size: 15px;
+}
+#nav .menu li a.active {
+    font-weight: 700;
+    color: #EEE;
+}
+
+#nav .menu li:hover a.active {
+    color: #FFF;
+}
+
+#nav .menu li img {
+    float: left;
+    border: 0px;
+    margin-right: 10px;
+    margin-top: 1px;
+}
+#nav .menu li:hover a {
+    /*background-color: rgba(255, 255, 255, 0.3);*/
+    color: #fff;
+} 
+
+#head {
+    background-color: #CCC;
+    height: 60px;
+    overflow: hidden;
+}
+
+#head img {
+    max-width: 60px;
+    height: auto;
+    float: left;
+    margin-right: 5px;
+}
+
+#head #status {
+    display: none;
+}
+
+#head h1 {
+    line-height: 1.2em;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px;
+    padding-left: 0px;
+}
+
+h1 {
+    color: #183C67;
+    padding: 15px 20px 0px; 
+    font-size: 1.2em;
+    line-height: 1.2em;
+    padding: 0px;
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#left {
+    background-color: #DDD;
+    font-size: 11px;
+    padding: 5px;
+    display: none;
+}
+
+#right {
+    display: none;
+}
+
+#center {
+    background-color: white;
+}
+
+#feedsubmitform, #vcard, #config, #contactcard, #feed #feedcontent,
+#wall #wallheader {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+#center h1 {
+    display: none;
+}
+
+.post {
+    padding: 8px;
+    border-top: 1px solid #888;
+    clear: both;
+}
+
+.post span {
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+.post .avatar {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+	float: left;
+}
+
+.post .content {
+    margin: 0px;
+    text-align: justify;
+}
+
+.post .content ul {
+    list-style-type: square;
+    margin-left: 2em;
+}
+
+.post .comments {
+    margin: 0px;
+    background-color: #EEE;
+    border: 1px solid #E2E2E2; 
+    border-top: 1px solid #E7E7E7;
+    border-bottom: 1px solid #D2D2D2;
+    margin-top: 1em;
+    clear: both;
+}
+
+.post .comments img {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.post .comments .comment {
+    padding: 5px;
+    border-bottom: 1px solid #D9D4D4;
+    border-top: 1px solid #FCFAFA;
+    clear: both;
+}
+
+.post .getcomments {
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    padding: 2px;
+    display: block;
+    padding-left: 25px;
+}
+
+.post table#commentsubmit {
+    border-spacing: 0px;
+    background-color: white;
+    width: 100%;
+    display: none;
+}
+
+.post table#commentsubmit td {
+    padding: 5px;
+    width: 100%;
+}
+
+.post table#commentsubmit textarea {
+    border: 0px;
+    width: 100%;
+    resize: none;
+    padding: 0px;
+    height: 1.5em;
+}
+
+.post table#commentsubmit textarea:focus {
+}
+
+.post table#commentsubmit .commentsubmitrow {
+    background-color: #F3F3F3;
+    display: block;
+}
+
+.post table#commentsubmit .commentsubmitrow td {
+    padding-bottom: 0px;
+}
+
+.post span.place {
+    max-width: 350px;
+    background: url(../img/icons/place.png) 0px 4px no-repeat;
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 0.7em;
+}
+
+.post span.recycle {
+    background: url(../img/icons/recycle.png) 0px 4px no-repeat;
+}
+
+.post span.delete {
+    font-weight: normal;
+    margin-left: 1em;
+}
+
+.post span.delete:hover {
+	cursor: pointer;
+}
+
+.post span.place, .post span.recycle {
+    display: inline-block;
+    padding-left: 14px;
+    font-weight: normal;
+    margin-top: 5px;
+    float: right;
+    margin-left: 10px;
+}
+
+.element {
+    padding: 5px !important;
+    width: 98% !important;
+    clear: both !important;
+}
+
+legend {
+    text-align: center;
+    display: block;
+    width: 100%;
+    font-weight: bold;
+}
+
+/* Warning */
+
+.message.warning, .message.info, .message.error, .message.success {
+    border-radius: 4px;
+    background-size: 40px 40px;
+    background-image: linear-gradient(135deg, rgba(255,255, 255, 0.05) 25%, transparent 25%,
+                        transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
+                        transparent 75%, transparent);
+    background-image: -moz-linear-gradient(top left, rgba(255,255, 255, 0.05) 25%, transparent 25%,
+                        transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
+                        transparent 75%, transparent);
+    background-image: -webkit-linear-gradient(top left, rgba(255,255, 255, 0.05) 25%, transparent 25%,
+                        transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
+                        transparent 75%, transparent);
+    background-image: -o-linear-gradient(top left, rgba(255,255, 255, 0.05) 25%, transparent 25%,
+                        transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
+                        transparent 75%, transparent);
+    box-shadow: inset 0 -1px 0 rgba(255,255, 255, 0.4);
+    border: 1px solid;
+    color: #fff;
+    padding: 10px;
+    text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    margin: 5px 0px;
+    clear: both;
+}
+
+.message.warning {
+    background-color: #ED9519;
+    border-color: #C37A12;
+}
+
+.message.info {
+    background-color: #3C7995;
+    border-color: #156386;
+}
+
+.message.error {
+    background-color: #DE4343;
+    border-color: #C43D3D;
+}
+
+.message.success {
+    background-color: #61B832;
+    border-color: #55A12C;
+}
+
+
+.post.older {
+	text-align: center;
+	margin: 1.5em;
+	font-weight: bold;
+	min-height: 0px;
+	cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    color: #666;
+    background-color: #F5F5F5;
+}
+
+.post.older:hover {
+    background-color: #F8F8F8;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-color: #C6C6C6;
+    color: #333;
+}
+
+#footer {
+    font-size: 12px;
+    padding: 5px;
+    color: #BBB;
+    text-align: center;
+}
+
+#footer a:link, #footer a:visited {
+    color: #CCC;
+}
+
+/* Filters */
+
+.filters {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.filters ul li {
+    display: inline;
+    cursor: pointer;
+    line-height: 3em;
+    padding: 1em 15px;
+}
+
+.filters ul li:hover {
+	color: white;
+	background-color: gray;
+	cursor: pointer;
+}
+
+.filters ul li.on {
+	background-color: #444444;
+	color: white;
+}

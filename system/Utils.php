@@ -492,7 +492,7 @@ function getLocalTimezone()
     $arr = localtime($iTime);
     $arr[5] += 1900;
     $arr[4]++;
-    $iTztime = gmmktime($arr[2], $arr[1], $arr[0], $arr[4], $arr[3], $arr[5], $arr[8]);
+    $iTztime = gmmktime($arr[2], $arr[1], $arr[0], $arr[4], $arr[3], $arr[5]);
     $offset = doubleval(($iTztime-$iTime)/(60*60));
     $zonelist =
     array
@@ -536,6 +536,14 @@ function getLocalTimezone()
     if(sizeof($index)!=1)
         return false;
     return $index[0];
+}
+
+/*
+ * Echap the JID 
+ */
+function echapJid($jid)
+{
+    return str_replace(' ', '\40', $jid);
 }
 
 /**
