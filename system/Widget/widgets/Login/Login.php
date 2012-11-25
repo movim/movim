@@ -114,6 +114,12 @@ class Login extends WidgetBase {
                                 '.t('Movim failed to authenticate. You entered wrong data').'
                             </div> ';
                     break;
+                case 'serverunauthorized':
+                    $warning = '
+                            <div class="message warning">
+                                '.t('Your XMPP server is unauthorized').'
+                            </div>';
+                    break;
             }
 
             RPC::call('movim_fill', 'warning',
@@ -127,6 +133,9 @@ class Login extends WidgetBase {
 
     function ajaxLogin($element)
     {
+        // We get the Server Configuration
+        $serverconfig = Conf::getServerConf();
+        
         $warning = false;
 
         // Empty input test
@@ -143,6 +152,19 @@ class Login extends WidgetBase {
             $warning = 'invalidjid';
 
         $this->displayWarning($warning);
+        
+        // Check whitelisted server
+        if(
+            $serverconfig['xmppWhiteList'] != '' &&!
+            in_array(
+                end(
+                    explode('@', $element['login'])
+                    ), 
+                explode(',',$serverconfig['xmppWhiteList'])
+                )
+            )
+            $warning = 'serverunauthorized';
+        $this->displayWarning($warning);
 
         // Correct XMPP account test
         $login_arr = explode('@', $element['login']);
@@ -158,9 +180,6 @@ class Login extends WidgetBase {
 
         $this->displayWarning($warning);
 
-        // We get the Server Configuration
-        $serverconfig = Conf::getServerConf();
-
         global $session;
 
         if($s != false) {
@@ -171,7 +190,7 @@ class Login extends WidgetBase {
                     'rid' => 1,
                     'sid' => 0,
                     'id'  => 0,
-                    'url' => 'http://'.$serverconfig['defBoshHost'].':'.$serverconfig['defBoshPort'].'/'.$serverconfig['defBoshSuffix'].'/',
+                    'url' => $serverconfig['boshUrl'],
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,
@@ -196,7 +215,7 @@ class Login extends WidgetBase {
         if($warning != 'OK')
             $this->displayWarning($warning);
 
-        RPC::call('enterMovim', BASE_URI.'?q=mainPage');
+        RPC::call('enterMovim', BASE_URI.'?q=main');
         RPC::commit();
     }
 
@@ -221,18 +240,15 @@ class Login extends WidgetBase {
                     '.t('Your web browser is too old to use with Movim.').'
                 </div> ';
             } else {
-
-                if(file_exists(BASE_PATH.'install/part1.php')) { ?>
-                    <div class="message warning">
-                    <?php echo t('Please remove the %s folder in order to complete the installation', 'install/'); ?>
-                    </div>
-                <?php
-                }?>
-                <div id="warning"></div>
+        ?>
+                
                 <form
                     name="login"
                     id="connectform"
-                    onkeypress="if(event.keyCode == 13) {<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);}">
+                    onkeypress="
+                        if(event.keyCode == 13) {
+                            <?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;}">
+                    <div id="warning"></div>
                     <div class="element">
                         <input type="email" name="login" id="login" autofocus required
                             placeholder="<?php echo t("My address"); ?>"/>
@@ -241,45 +257,14 @@ class Login extends WidgetBase {
                         <input type="password" name="pass" id="pass" required
                             placeholder="<?php echo t("Password"); ?>"/>
                     </div>
-
+                    <div class="element">
                         <a
                             class="button icon yes"
-                            onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true);"
+                            onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;"
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
-
+                    </div>
                 </form>
-                <div id="publicusers">
-                <?php /*
-                    $users_limit = 55;
-                    
-                    $query = Contact::query()->select()
-                                   ->where(array(
-                                           'phototype!' => '',
-                                           'public' => 1))
-                                   ->limit(0, $users_limit);
-                    $users = Contact::run_query($query);
-                    
-                    $users_number = sizeof($users);
-                    
-                    if($users_number < $users_limit) {
-                        $users_fill = array();
-                        for($i = 0; $i<$users_limit-$users_number; $i++)
-                            array_push($users_fill, new Contact());
-                            
-                        $users = array_merge($users, $users_fill);
-                    }
-                    
-                    shuffle($users);
-
-                    foreach($users as $user) {
-                        if($user->getData('jid') != '')
-                            echo '<a href="?q=feed&f='.$user->getData('jid').'" target="_blank"><img src="'.$user->getPhoto('s').'"/></a>';
-                        else
-                            echo '<img src="'.$user->getPhoto('s').'"/>';
-                    }
-                */ ?>
-                </div>
             <?php
             }
             ?>

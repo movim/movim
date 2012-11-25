@@ -1,6 +1,8 @@
 function showLogoutList() {
     show = document.getElementById('logoutlist');
-    console.log(show);
+    
+    hideNotifsList();
+
     if(show.style.display == 'block')
         show.style.display = 'none';
     else

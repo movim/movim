@@ -103,6 +103,7 @@ class ContactSummary extends WidgetCommon
                                    ->where(array(
                                            'jid' => $_GET['f']));
         $contact = \Contact::run_query($query);
+        
         ?>
         <div id="contactsummary">
         <?php
@@ -111,6 +112,8 @@ class ContactSummary extends WidgetCommon
         } 
         
         else {
+            $contact = new Contact();
+            echo $this->prepareContactSummary($contact);
         ?>
         <script type="text/javascript"><?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?></script>
         <?php } ?>

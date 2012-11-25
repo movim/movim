@@ -24,7 +24,7 @@
     text-decoration: underline;
 }
 
-.post span.date {
+.post span.date, .post span.asv {
     margin-left: 10px;
     font-weight: normal;
     color: #777;

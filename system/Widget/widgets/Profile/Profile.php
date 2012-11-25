@@ -101,11 +101,6 @@ class Profile extends WidgetBase
                 </div>
             </a>';
                 
-            /*$html .='
-                <a href="?q=friend&f='.$this->user->getLogin().'">
-                    <h1>'.$me->getTrueName().'</h1>
-                    <img src="'.$me->getPhoto().'"/>
-                </a>';*/
             $html .= '
             <div class="block" style="width: 550px;">
                 <div class="textbubble">

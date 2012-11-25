@@ -32,7 +32,7 @@ function parse_db_string($string){
 				 'port'     => $matches[5],
 				 'database' => $matches[6]);
 	}else{
-		return False;
+		return false;
 	}
 }
 
@@ -56,7 +56,7 @@ function is_valid($what){
 		echo "message success";
 	}else{
 		echo "message error";
-		$errors[] = True;
+		$errors[] = true;
 	}
 }
 
@@ -99,7 +99,7 @@ function get_checkbox($name, $if = 'true', $else = 'false')
 {
   return (isset($_POST[$name])? $if : $else);
 }
-
+/*
 function test_bosh($boshhost, $port, $suffix, $host)
 {
     $url = (get_checkbox('boshCookieHTTPS') == "true")? 'https://' : 'http://';
@@ -160,6 +160,32 @@ function test_bosh($boshhost, $port, $suffix, $host)
       return false;
     }
 }
+*/
+
+function test_bosh($url) {
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+    // Fire !
+    $rs = array();
+
+    $rs['content'] = curl_exec($ch);
+    $rs['errno'] = curl_errno($ch);
+    $rs['errmsg'] = curl_error($ch);
+    $rs['header'] = curl_getinfo($ch);
+    
+    if($rs['content'] != false && $rs['content'] != '') {
+        return true;
+    }
+
+    elseif($rs['errno'] != 0 || $rs['content'] == '') {
+        return false;
+    }
+    curl_close($ch);
+}
 
 function test_dir($dir){
 	return (file_exists($dir) && is_dir($dir) && is_writable($dir));
@@ -192,9 +218,13 @@ function create_dirs(){
 function get_entry($post){
 	global $xml;
 	if(isset($_POST[$post])){
-		return $_POST[$post];
+        // Little hack to force sha1 hash of the password
+        if($post == 'pass')
+            return sha1($_POST[$post]);
+        else
+            return trim($_POST[$post]);
 	}elseif(isset($xml->$post)){
-		return $xml->$post;
+		return trim($xml->$post);
 	}else{
 		return "n/a";
 	}
@@ -232,9 +262,12 @@ function make_config(){
 	  'logLevel'           => get_entry('logLevel'),
 	  'db'				   => get_entry('db'),
 	  'boshUrl' 		   => get_entry('boshUrl'),
-	  'userDefinedBosh'    => get_entry('userDefinedBosh'),
-	  'boshOpen'		   => get_entry('boshOpen'),
-	  'boshProxy'		   => get_entry('boshProxy')
+	  //'userDefinedBosh'    => get_entry('userDefinedBosh'),
+	  //'boshOpen'		   => get_entry('boshOpen'),
+	  //'boshProxy'		   => get_entry('boshProxy'),
+      'xmppWhiteList'      => get_entry('xmppWhiteList'),
+	  'user'		       => get_entry('user'),
+	  'pass'		       => get_entry('pass')
 	  ),
 	);
 	if(!@file_put_contents($file, make_xml($conf))){
@@ -293,12 +326,12 @@ function authenticate(){
 }
 
 $steps = array(
-	t("Compatibility Check"),
-	t("General Settings"),
-	t("Database Settings"),
-	t("Bosh Configuration"),
-	t("XMPP Server"),
-	t("Done")
+        t("Compatibility Check"),
+        t("General Settings"),
+        t("Database Settings"),
+        t("Bosh Configuration"),
+        t("Whitelist - XMPP Server"),
+        t("Done")
 	);
 
 
@@ -309,17 +342,19 @@ $steps = array(
 
 //We have already a running install
 if(file_exists($conffile)){
+    $file = $conffile;
 	//!!!!!
 	$xml = simplexml_load_file($conffile);
+    //var_dump($_SERVER);
 	if (!isset($_SERVER['PHP_AUTH_USER'])) {
 		authenticate();
 	}else{
-		if($_SERVER['PHP_AUTH_USER'] = $xml->user && $_SERVER['PHP_AUTH_PW'] == $xml->pw){
+		if($_SERVER['PHP_AUTH_USER'] == (string)$xml->user && sha1($_SERVER['PHP_AUTH_PW']) == (string)$xml->pass){
 			$file = $conffile;
 		}else{
 			authenticate();
 		}
-	}
+    }
 }else{
 	$file = $tmpfile;
 }
@@ -348,7 +383,12 @@ if(isset($_POST['step'])) {
 		//Store the basic settings
 		}case 1:{
 			//We load the array.
-			$xml = simplexml_load_file($file);
+			if (!file_exists($file)){
+				if(!@file_put_contents($file, '<?xml version="1.0" encoding="UTF-8"?><config></config>')){
+					die("Cannot write to the config file!!!!!");
+				}
+			}
+            $xml = simplexml_load_file($file);
 			make_config();
 			break;
 
@@ -386,16 +426,17 @@ if(isset($_POST['step'])) {
 		}case 3: {
 			include_once("../system/Moxl/loader.php");
 			#ToDo: Test Connection
-			$Session = array();
-
-
-				//Apennd it to the error array
-				#$errors[] = $e->getMessage();
-				//The apge is displayed again:
-				#$display = 3;
-
-			if(True){
-				$_POST['boshOpen'] = True;
+			//$Session = array();
+            if(test_bosh($_POST['boshUrl']))
+                $display = 4;
+            else {
+                set_error('boshUrl', t('Your Bosh URL is not reachable'));
+                $errors = $err;
+                $display = 3;
+            }
+            
+			if(true){
+				$_POST['boshOpen'] = true;
 			}
 			//We load the array
 			$xml = simplexml_load_file($file);
@@ -404,11 +445,58 @@ if(isset($_POST['step'])) {
 
 		#TODO: If BOSH closed, display xmpp form, else display 5
 		}case 4: {
-			$display = 5;
+            $values = str_getcsv($_POST['xmppWhiteList']);
+            $valid = true;
+            
+            foreach ($values as $value) {
+                if(filter_var(gethostbyname($value), FILTER_VALIDATE_IP) && $valid == true)
+                    $valid = true;
+                else
+                    $valid = false;
+            }
+            
+            if($valid || $_POST['xmppWhiteList'] == '')
+                $display = 5;
+            else {
+                set_error('xmppWhiteList', t('Please put a valid domain name list'));
+                $errors = $err;
+                $display = 4;
+            }
+                        
+			$xml = simplexml_load_file($file);
+			make_config();
 			break;
 
 		#TOTO: Write Database; Rename conf.xml.part
 		}case 5: {
+            $final = false;
+            
+            if($_POST['user'] != '' &&
+               $_POST['pass'] != '' && 
+               $_POST['repass'] != '' &&
+               $_POST['pass'] == $_POST['repass']) {
+                        
+                $xml = simplexml_load_file($file);
+                make_config();
+                
+                rename($tmpfile, $conffile);
+                include_once("../loader.php");
+                $c = new RosterLink();
+                $sdb->create($c);
+                $c = new Contact();
+                $sdb->create($c);
+                $p = new Presence();
+                $sdb->create($p);
+                $o = new Post();
+                $sdb->create($o);
+                
+                $display = 6;
+            } else {   
+                set_error('password', t('You entered different passwords'));
+                $errors = $err;
+                $display = 5;
+            }
+
 			break;
 		//If the user goes back to the checks:
 		}case -1: {
