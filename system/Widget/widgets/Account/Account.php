@@ -49,7 +49,7 @@ class Account extends WidgetBase {
             unset($stream);
 
             $response = stream_get_contents($f);
-            
+
 	        if(!$response) {
                 	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppcomm"));
                     RPC::commit();
@@ -59,6 +59,8 @@ class Account extends WidgetBase {
 	        fclose($f); unset($f);
 
 	        $response = simplexml_load_string($response);
+            
+            $id = (string)$response->attributes()->id;
             
             $elements = (array)$response->iq->query;
             
@@ -125,6 +127,32 @@ class Account extends WidgetBase {
                     }
                 } 
                 
+                $html .= '
+                        <input
+                            type="hidden"
+                            value="'.$domain.'"
+                            name="ndd"
+                            id="ndd"
+                        />
+                    ';
+                    
+                $html .= '
+                        <input
+                            type="hidden"
+                            value="'.$ndd['ndd'].'"
+                            name="to"
+                            id="to"
+                        />
+                    ';
+                    
+                $html .= '
+                        <input
+                            type="hidden"
+                            value="'.$id.'"
+                            name="id"
+                            id="id"
+                        />
+                    ';
                                     
                 if(isset($elements['data'])) {
                     $html .= '<img src="data:image/jpg;base64,'.$elements['data'].'"/>';
@@ -166,7 +194,67 @@ class Account extends WidgetBase {
     }
     
     function ajaxSubmitData($datas) {
+        try {
         movim_log($datas);
+
+            $f = fsockopen($datas['ndd'], 5222, $errno, $errstr, 10);
+            
+            $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq type="get" id="reg1"><query xmlns="jabber:iq:register"/></iq></stream:stream>');
+            $stream->addAttribute('to', $datas['ndd']);
+            fwrite($f, $stream->asXML());
+            
+
+            unset($stream);
+            
+            $response = stream_get_contents($f);
+            
+            movim_log($response);
+            
+            $xml = '
+                <stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0">
+                    <iq type="set" id="reg2" to="'.$datas['ndd'].'">
+                        <query xmlns="jabber:iq:register">';
+                    
+                foreach($datas as $data => $value) {
+                    if($data != '')
+                        $xml .= '<'.$data.'>'.$value.'</'.$data.'>';
+                }
+                    
+            $xml .= '
+                        </query>
+                    </iq>
+                </stream:stream>';
+                
+                movim_log($xml);
+            
+            $stream = simplexml_load_string($xml);
+
+            //movim_log($stream);
+            
+            fwrite($f, $stream->asXML());
+            
+            //unset($stream);
+
+            $response = stream_get_contents($f);
+            
+            movim_log($response);
+            
+            /*if(!$response) {
+                    RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppcomm"));
+                    RPC::commit();
+                    exit;
+            }*/
+
+            fclose($f); unset($f);
+
+            $response = simplexml_load_string($response);
+            
+            //movim_log($response);
+        } catch(Exception $e) {
+            header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
+            header('Content-Type: text/plain; charset=utf-8');
+            echo $e->getMessage(),"\n";
+        }
     }
     
 	function build()
