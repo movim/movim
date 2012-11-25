@@ -114,6 +114,12 @@ class Login extends WidgetBase {
                                 '.t('Movim failed to authenticate. You entered wrong data').'
                             </div> ';
                     break;
+                case 'serverunauthorized':
+                    $warning = '
+                            <div class="message warning">
+                                '.t('Your XMPP server is unauthorized').'
+                            </div>';
+                    break;
             }
 
             RPC::call('movim_fill', 'warning',
@@ -127,6 +133,9 @@ class Login extends WidgetBase {
 
     function ajaxLogin($element)
     {
+        // We get the Server Configuration
+        $serverconfig = Conf::getServerConf();
+        
         $warning = false;
 
         // Empty input test
@@ -143,6 +152,19 @@ class Login extends WidgetBase {
             $warning = 'invalidjid';
 
         $this->displayWarning($warning);
+        
+        // Check whitelisted server
+        if(
+            $serverconfig['xmppWhiteList'] != '' &&!
+            in_array(
+                end(
+                    explode('@', $element['login'])
+                    ), 
+                explode(',',$serverconfig['xmppWhiteList'])
+                )
+            )
+            $warning = 'serverunauthorized';
+        $this->displayWarning($warning);
 
         // Correct XMPP account test
         $login_arr = explode('@', $element['login']);
@@ -157,9 +179,6 @@ class Login extends WidgetBase {
         }
 
         $this->displayWarning($warning);
-
-        // We get the Server Configuration
-        $serverconfig = Conf::getServerConf();
 
         global $session;
 
