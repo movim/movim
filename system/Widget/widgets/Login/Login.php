@@ -32,7 +32,7 @@ class Login extends WidgetBase {
         $this->user->setConfig($data);
     }
 
-    private function displayWarning($warning)
+    private function displayWarning($warning, $htmlonly = false)
     {
         if($warning != false) {
             switch ($warning) {
@@ -104,7 +104,7 @@ class Login extends WidgetBase {
                     break;
                 case 'acccreated':
                     $warning = '
-                            <div class="error valid">
+                            <div class="message success">
                                 '.t('Account successfully created').'
                             </div> ';
                     break;
@@ -122,12 +122,16 @@ class Login extends WidgetBase {
                     break;
             }
 
-            RPC::call('movim_fill', 'warning',
-               RPC::cdata($warning));
-            RPC::call('loginButtonSet', t("Come in!"));
+            if($htmlonly)
+                return $warning;
+            else {
+                RPC::call('movim_fill', 'warning',
+                   RPC::cdata($warning));
+                RPC::call('loginButtonSet', t("Come in!"));
 
-            RPC::commit();
-            exit;
+                RPC::commit();
+                exit;
+            }
         }
     }
 
@@ -248,7 +252,7 @@ class Login extends WidgetBase {
                     onkeypress="
                         if(event.keyCode == 13) {
                             <?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;}">
-                    <div id="warning"></div>
+                    <div id="warning"><?php echo $this->displayWarning($_GET['err'], true); ?></div>
                     <div class="element">
                         <input type="email" name="login" id="login" autofocus required
                             placeholder="<?php echo t("My address"); ?>"/>
@@ -265,9 +269,16 @@ class Login extends WidgetBase {
                             name="submit"><?php echo t("Come in!"); ?></a>
                     </div>
                 </form>
+                
             <?php
             }
             ?>
+            <div class="infos">
+                    <?php echo t('No account yet ?'); ?>
+                    <a href="?q=account">
+                        <?php echo t('Create one !'); ?>
+                    </a>
+            </div>
         </div>
     <?php
 
