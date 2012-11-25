@@ -146,18 +146,13 @@ class ControllerMain extends ControllerBase
 
 	function account()
 	{
-		if(Conf::getServerConfElement("accountCreation") == 1) {
-			$this->page->setTitle(t('%s - Account', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=main');
-			$this->page->menuAddLink(t('Account Creation'), '?q=account', true);
-			$content = new TplPageBuilder($user);
+        $this->page->setTitle(t('%s - Account', APP_TITLE));
+        $this->page->menuAddLink(t('Home'), '?q=main');
+        $this->page->menuAddLink(t('Account Creation'), '?q=account', true);
+        $content = new TplPageBuilder($user);
 
-			$this->page->setContent($content->build('account.tpl'));
-			echo $this->page->build('page.tpl');
-
-		} else {
-			$this->login();
-		}
+        $this->page->setContent($content->build('account.tpl'));
+        echo $this->page->build('page.tpl');
 	}
 
 	function post()
