@@ -8,6 +8,8 @@ class RosterLink extends DatajarBase {
     public $rosterask;
     public $rostersubscription;
     
+    public $realname;
+    
     public $group;
     
     public $chaton;
@@ -20,6 +22,8 @@ class RosterLink extends DatajarBase {
         $this->rosterask      = DatajarType::varchar(128);
         $this->rostersubscription = DatajarType::varchar(128);
         
+        $this->realname = DatajarType::varchar(128);
+        
         $this->group    = DatajarType::varchar(128);
         
         $this->chaton  = DatajarType::int();
@@ -27,5 +31,17 @@ class RosterLink extends DatajarBase {
     
     public function getData($data) {
         return trim($this->$data->getval());
+    }
+    
+    public function getTrueName() {
+        $truename = '';
+        if(isset($this->realname) && $this->realname->getval() != '' && !filter_var($this->realname->getval(), FILTER_VALIDATE_EMAIL))
+            $truename = $this->realname->getval();
+        elseif(isset($this->rostername) && $this->rostername->getval() != '' && !filter_var($this->rostername->getval(), FILTER_VALIDATE_EMAIL))
+            $truename = $this->rostername->getval();
+        else
+            $truename = $this->jid->getval();
+
+        return $truename;
     }
 }

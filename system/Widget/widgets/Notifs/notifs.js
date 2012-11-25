@@ -1,4 +1,18 @@
-function hideNotification(n) {
+function showNotifsList() {
+    show = document.getElementById('notifslist');
+    
+    hideLogoutList();
+
+    if(show.style.display == 'block')
+        show.style.display = 'none';
+    else
+        show.style.display = 'block';
+}
+
+function hideNotifsList() {
+    document.getElementById('notifslist').style.display = 'none';
+}
+/*function hideNotification(n) {
     n.parentNode.parentNode.removeChild(n.parentNode);
 }
 
@@ -52,3 +66,4 @@ function notification(params)
         }, '30');
     }
 }
+*/
