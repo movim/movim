@@ -22,7 +22,7 @@ require("init.php");
 // We get the informations
 $conf = Conf::getServerConf();
 global $sdb;
-$contacts = $sdb->select('ConfVar', array());
+$contacts = $sdb->select('CacheVar', array());
   
 // We create a simple DOMDocument
 $doc = new DOMDocument("1.0");
@@ -35,17 +35,13 @@ $doc->appendChild($infos);
     $language->appendChild($doc->createTextNode($conf["defLang"]));
     $infos->appendChild($language);
     
-    $host = $doc->createElement("host");
-    $host->appendChild($doc->createTextNode($conf["host"]));
-    $infos->appendChild($host);
-    
     $population = $doc->createElement("population");
-    $population->appendChild($doc->createTextNode(count($contacts)));
+    $population->appendChild($doc->createTextNode(ceil(count($contacts)/2)));
     $infos->appendChild($population);
     
-    $accountcreation = $doc->createElement("accountcreation");
-    $accountcreation->appendChild($doc->createTextNode($conf["accountCreation"]));
-    $infos->appendChild($accountcreation);
+    $whitelist = $doc->createElement("whitelist");
+    $whitelist->appendChild($doc->createTextNode($conf["xmppWhiteList"]));
+    $infos->appendChild($whitelist);
 
     $file = "VERSION";
     if($f = fopen($file, 'r')){
