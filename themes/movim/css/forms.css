@@ -13,8 +13,12 @@ fieldset {
 legend {
     float: left;
     position: relative;
-    top: -25px;
+    top: -12px;
     clear: both;
+    display: block;
+    width: 50%;
+    border-bottom: 1px solid rgb(220, 220, 220) !important;
+    line-height: 2em !important;
 }
 
 form .element:nth-child(2) {
@@ -63,7 +67,7 @@ form .element:nth-child(2) {
 }
 
 .element .select {
-    box-shadow: 0 1px 1px #ddd;
+    box-shadow: 0 1px 0px #ddd;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #888;
     padding: 0px;
@@ -78,7 +82,7 @@ form .element:nth-child(2) {
 }
 
 .element .select:hover {
-    box-shadow: 0px 1px 1px #ccc;
+    box-shadow: 0px 1px 0px #ccc;
     border: 1px solid gray;
 }
 
@@ -203,21 +207,21 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     display: inline-block;
     border: 1px solid #999;
     border-radius: 4px;
-    box-shadow: 0 1px 1px #ddd;
+    box-shadow: 0 1px 0px #ddd;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #888;
     padding: 0px 10px;
     position: relative;
     overflow: hidden;
-    background-image: -moz-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
-    background-image: -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 2px);
+    background-image: -moz-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 1px);
+    background-image: -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 1px);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 1px);
     background-color: white;
     background-size: 100% 100%;
 }
 
 input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .button:hover {
-    box-shadow: 0px 1px 1px #ccc;
+    box-shadow: 0px 1px 0px #ccc;
     border: 1px solid gray;
     cursor: pointer;
 }

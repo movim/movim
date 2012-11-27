@@ -97,7 +97,7 @@ class Explore extends WidgetCommon {
                         class="tiny"
                         name="search"
                         placeholder="<?php echo t('Search a contact'); ?>"
-                        style="width:80%;"
+                        style="width:70%;"
                         onkeypress="if(event.keyCode==13){<?php $this->callAjax("ajaxSearchContacts","movim_parse_form('searchform')"); ?>}"
                     />
                 </div>

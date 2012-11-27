@@ -150,6 +150,7 @@ class WidgetCommon extends WidgetBase {
                 $tmp .= '<div class="comments">
                             <div 
                                 class="comment"
+                                style="border-bottom: none;"
                                 onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
                                 <a class="getcomments icon bubbleadd">'.t('Add a comment').'</a>
                             </div>
