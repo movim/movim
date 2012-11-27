@@ -277,7 +277,7 @@ class Login extends WidgetBase {
                     <?php
                     $query = CacheVar::query()->where();
                     $contacts = CacheVar::run_query($query);
-                    echo t('Population').' '.ceil(count($contacts)/2).' | ';
+                    echo t('Population').' '.ceil(count($contacts)/2).' • ';
                     ?>
                     <?php echo t('No account yet ?'); ?>
                     <a href="?q=account">

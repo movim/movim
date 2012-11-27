@@ -153,6 +153,7 @@
     padding: 5px;
     border-bottom: 1px solid #888;
     display: none;
+    background-color: #EFEFEF;
 }
 
 #roster #rostermenu #addcontact .element {
