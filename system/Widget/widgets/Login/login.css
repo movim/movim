@@ -71,20 +71,17 @@ body {
                             rgba(134, 195, 40, 1) 2px,
                             rgba(113, 163, 16, 1) 100%);
     background: -moz-linear-gradient(top, 
-                            rgba(172, 239, 41, 1) 0px,
+                            rgba(255, 255, 255, 0.5) 0px,
                             rgba(134, 195, 40, 1) 2px,
-                            rgba(134, 195, 40, 1) 3px,
                             rgba(113, 163, 16, 1) 100%);
     background: -webkit-linear-gradient(top, 
                             rgba(255, 255, 255, 0.5) 0px,
-                            rgba(70, 230, 10, 0.6) 2px,
-                            rgba(70, 230, 10, 0.5) 18px,
-                            rgba(70, 230, 10, 0.4) 100%);
+                            rgba(134, 195, 40, 1) 2px,
+                            rgba(113, 163, 16, 1) 100%);
     background: -o-linear-gradient(top, 
                             rgba(255, 255, 255, 0.5) 0px,
-                            rgba(70, 230, 10, 0.6) 2px,
-                            rgba(70, 230, 10, 0.5) 18px,
-                            rgba(70, 230, 10, 0.4) 100%);
+                            rgba(134, 195, 40, 1) 2px,
+                            rgba(113, 163, 16, 1) 100%);
     text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.4);
     
     color: white;
