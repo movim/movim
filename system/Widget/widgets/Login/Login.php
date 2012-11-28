@@ -268,22 +268,25 @@ class Login extends WidgetBase {
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
                     </div>
+                    <div class="infos">
+                            <?php
+                            $query = CacheVar::query()->where();
+                            $contacts = CacheVar::run_query($query);
+                            echo t('Population').' '.ceil(count($contacts)/2).' • ';
+                            ?>
+                            <?php echo t('No account yet ?'); ?>
+                            <a href="?q=account">
+                                <?php echo t('Create one !'); ?>
+                            </a>
+                    </div>
+                                <div class="clear"></div>
                 </form>
                 
             <?php
             }
             ?>
-            <div class="infos">
-                    <?php
-                    $query = CacheVar::query()->where();
-                    $contacts = CacheVar::run_query($query);
-                    echo t('Population').' '.ceil(count($contacts)/2).' • ';
-                    ?>
-                    <?php echo t('No account yet ?'); ?>
-                    <a href="?q=account">
-                        <?php echo t('Create one !'); ?>
-                    </a>
-            </div>
+
+
         </div>
     <?php
 
