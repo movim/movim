@@ -234,7 +234,7 @@ ul.clean li {
 
 #main {
     background-color: #EEE;
-    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
     border-radius: 5px;
     overflow: hidden;
     height: 100%;
@@ -305,8 +305,8 @@ span#widgettitle {
 #nav {
     width: 100%;
     background-color: rgba(36, 36, 36, 1);
-    border-bottom: 1px solid rgb(68, 68, 68);
-    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.4), 0px -1px 0px 0px rgb(21, 21, 21);
+    border-bottom: 1px solid #111;
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2), 0px -1px 0px 0px rgb(21, 21, 21);
     min-height: 34px;
     position: fixed;
     top: 0px;
