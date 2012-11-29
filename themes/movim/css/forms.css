@@ -238,6 +238,7 @@ form .element.simple > *:not(label):not(img):focus {
     box-shadow: none;
     padding: 3px 0px;
     font-weight: bold;
+    background-color: transparent;
 }
 
 .button.icon {
