@@ -1,5 +1,4 @@
 function showPosts(n, me) {
-    //feed = document.querySelector('#feedcontent div:not([class="post me])');
     feed = document.querySelector('#feedcontent');
     posts = feed.children;
 

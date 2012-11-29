@@ -90,13 +90,6 @@ class WidgetCommon extends WidgetBase {
         
         if(isset($message[1])) {
             $tmp = '<div class="post ';
-            if($this->user->getLogin() == $message[0]->getData('jid')) {
-                $tmp .= 'me ';
-                if($message[0]->getData('public') == 1)
-                    $tmp .= 'protect black';
-                else
-                    $tmp .= 'protect orange';
-            }
                 
             if($message[1]->getTrueName() == null)
                 $name = $message[0]->getData('jid');
@@ -109,7 +102,16 @@ class WidgetCommon extends WidgetBase {
                         <img class="avatar" src="'.$message[1]->getPhoto('s').'">
                     </a>
                     
-                    <div class="postbubble">
+                    <div id="'.$message[0]->getData('nodeid').'bubble" class="postbubble ';
+            if($this->user->getLogin() == $message[0]->getData('jid')) {
+                $tmp .= 'me ';
+                if($message[0]->getData('public') == 1)
+                    $tmp .= 'protect black';
+                else
+                    $tmp .= 'protect orange';
+            }
+                    
+            $tmp .= '">
 
                     <span>
                         <a href="?q=friend&f='.$message[0]->getData('jid').'">'.$name.'</a>
@@ -183,8 +185,12 @@ class WidgetCommon extends WidgetBase {
                                     </td>
                                 </tr>
                             </table>';
-                $tmp .= '</div></div>';
+                $tmp .= '</div>';
             }
+            
+              
+            $tmp .= '
+                </div>';
             
             if($this->user->getLogin() == $message[0]->getData('jid')) {
                 $tmp .= '
@@ -239,9 +245,7 @@ class WidgetCommon extends WidgetBase {
 
                     </div>';
             }
-              
-            $tmp .= '
-                </div>';
+            $tmp .= '</div>';
 
         }
         return $tmp;
@@ -392,7 +396,7 @@ class WidgetCommon extends WidgetBase {
             $post->run_query($post->query()->save($post));
         }
         
-        RPC::call('movim_change_class', $id , 'post me protect '.$privacy);
+        RPC::call('movim_change_class', $id.'bubble' , 'postbubble me protect '.$privacy);
         RPC::commit();
     }
     

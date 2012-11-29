@@ -184,12 +184,17 @@ ul.clean li {
 
 #head .block.avatar img {
     background-color: white;
-    padding: 4px; 
-    border-radius: 3px;
+    /*padding: 4px; 
+    border-radius: 3px;*/
     width: 150px;
     height: 150px;
-    margin-left: 20px;
-    border: 1px solid #DDD;
+    margin-left: 22px;
+    margin-right: 5px;
+    /*border: 1px solid #DDD;*/
+    padding: 2px;
+
+    border-radius: 2px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5),  0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
 #head .block .textbubble {
@@ -232,12 +237,14 @@ ul.clean li {
     border-color: white;
 }
 
-#main {
-    background-color: #EEE;    
-    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.2), 0px 0px 2px rgba(0, 0, 0, 0.2);
+#main {  
+    /*box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2), 0px 0px 2px rgba(0, 0, 0, 0.2);*/
+    box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     height: 100%;
+    background-color: #EEE;
     margin-top: -50px;
+    border-bottom: 1px solid #555;
 }
 
 #left
@@ -252,8 +259,8 @@ ul.clean li {
 {
     float: right;
     width: 599px;
-    background-color: #F6F6F6;
-    border-left: 1px solid #DDD;
+    background-color: white;  
+    border-left: 1px solid #AAA;
     min-height: 600px;
 }
 
@@ -261,15 +268,15 @@ ul.clean li {
 {
     display: block;
     width: 199px;
-    background-color: green;
     position: fixed;
     top: 0px;
     right: -20px;
-    border-left: 1px solid #DDD;
-    padding-top: 42px;
+    border-left: 1px solid rgba(0, 0, 0, 0.8);
+    background-color: rgb(45, 45, 45);
+    padding-top: 38px;
     padding-right: 20px;
     height: 100%;
-    background-color: #EFEFEF;
+    /*background-color: #EFEFEF;*/
     overflow: scroll;
     z-index: 2;
 }
@@ -280,6 +287,10 @@ ul.clean li {
     padding: 5px 10px;
     text-align: right;
     color: white;
+}
+
+#footer a {
+    color: #BBB;
 }
 
 /* Widgets */
@@ -454,22 +465,23 @@ span#widgettitle {
 .filters {
 	float: right;
 	margin: 1em 1.5em 0em;
+    padding-right: 1.5em;
 }
 
-.filters ul li {
+.filters li {
 	display: inline;
 	margin-left: 0.5em;
 	padding: 0.5em 1.5em;
 	border-radius: 3px;
 }
 
-.filters ul li:hover {
+.filters li:hover {
 	color: white;
 	background-color: gray;
 	cursor: pointer;
 }
 
-.filters ul li.on {
+.filters li.on {
 	background-color: #444444;
 	color: white;
 }

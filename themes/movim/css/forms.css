@@ -7,7 +7,7 @@ form * {
 fieldset {
     border: none;
     margin-top: 20px;
-    border-top: 1px solid #DCDCDC;
+    /*border-top: 1px solid #DCDCDC;*/
 }
 
 legend {
@@ -16,7 +16,7 @@ legend {
     top: -12px;
     clear: both;
     display: block;
-    width: 50%;
+    width: 51%;
     border-bottom: 1px solid rgb(220, 220, 220) !important;
     line-height: 2em !important;
 }

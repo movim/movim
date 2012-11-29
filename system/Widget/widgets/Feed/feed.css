@@ -37,7 +37,6 @@
 
 #feed #feedcontent {
 	clear: both;
-    padding-top: 15px
 }
 
 #feed #feednotifs {
@@ -73,12 +72,6 @@
 }
 
 #feed #feedhead {
-    background-image: -moz-linear-gradient(top, 
-        rgba(255, 255, 255, 0) 0%, 
-        rgba(255, 255, 255, 0.8) 15%, 
-        rgba(255, 255, 255, 0.9) 100%);
-    padding: 0.4em 0em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 iframe {
