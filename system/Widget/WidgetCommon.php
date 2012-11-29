@@ -108,6 +108,8 @@ class WidgetCommon extends WidgetBase {
                     <a href="?q=friend&f='.$message[0]->getData('jid').'">
                         <img class="avatar" src="'.$message[1]->getPhoto('s').'">
                     </a>
+                    
+                    <div class="postbubble">
 
                     <span>
                         <a href="?q=friend&f='.$message[0]->getData('jid').'">'.$name.'</a>
@@ -181,7 +183,7 @@ class WidgetCommon extends WidgetBase {
                                     </td>
                                 </tr>
                             </table>';
-                $tmp .= '</div>';
+                $tmp .= '</div></div>';
             }
             
             if($this->user->getLogin() == $message[0]->getData('jid')) {
@@ -238,7 +240,8 @@ class WidgetCommon extends WidgetBase {
                     </div>';
             }
               
-            $tmp .= '</div>';
+            $tmp .= '
+                </div>';
 
         }
         return $tmp;
