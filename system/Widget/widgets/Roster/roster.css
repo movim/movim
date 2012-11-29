@@ -25,7 +25,7 @@
     padding-right: 3px;
     background-image: url(img/offline.png);
     background-repeat: no-repeat;
-    background-position: 3px 4px;
+    background-position: 3px 6px;
 }
 
 #roster ul li .chat.on:hover {

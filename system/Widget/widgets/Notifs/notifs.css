@@ -47,9 +47,10 @@
     margin-right: -300px;
     z-index: 1;
     background-color: #333;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 2px 2px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
     overflow: hidden; 
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 #notifslist .black {
@@ -68,6 +69,8 @@
     list-style-type: none;
     clear: both;
     background-color: #242424;
+    border-top: 1px solid #444;
+    box-shadow: 0px -1px 0px #222;
 }
 
 #notifslist ul li {
@@ -108,7 +111,7 @@
 }
 
 #notifslist ul li.title {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #222;
     padding: 0px 5px;
     border-top: none;
     color: white;
