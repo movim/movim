@@ -14,6 +14,15 @@
     background-image: -moz-linear-gradient(top, 
         rgba(47, 47, 47, 1) 0%,
         rgba(43, 43, 43, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(47, 47, 47, 1) 0%,
+        rgba(43, 43, 43, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(47, 47, 47, 1) 0%,
+        rgba(43, 43, 43, 1) 100%);
+    background-image: linear-gradient(top, 
+        rgba(47, 47, 47, 1) 0%,
+        rgba(43, 43, 43, 1) 100%);
     border-top: 1px solid rgb(80, 80, 80);
     border-bottom: 1px solid rgb(30, 30, 30);
 }
@@ -91,6 +100,15 @@
     background-image: -moz-linear-gradient(top, 
         rgba(67, 67, 67, 1) 0%,
         rgba(63, 63, 63, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(67, 67, 67, 1) 0%,
+        rgba(63, 63, 63, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(67, 67, 67, 1) 0%,
+        rgba(63, 63, 63, 1) 100%);
+    background-image: linear-gradient(top, 
+        rgba(67, 67, 67, 1) 0%,
+        rgba(63, 63, 63, 1) 100%);
     border-top: 1px solid rgb(100, 100, 100);
     border-bottom: 1px solid rgb(50, 50, 50);
 }
@@ -118,6 +136,15 @@
     color: #AAA;
     font-size: 12px;
     background-image: -moz-linear-gradient(top, 
+        rgba(37, 37, 37, 1) 0%,
+        rgba(33, 33, 33, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(37, 37, 37, 1) 0%,
+        rgba(33, 33, 33, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(37, 37, 37, 1) 0%,
+        rgba(33, 33, 33, 1) 100%);
+    background-image: linear-gradient(top, 
         rgba(37, 37, 37, 1) 0%,
         rgba(33, 33, 33, 1) 100%);
     border-top: 1px solid rgb(70, 70, 70);
@@ -183,6 +210,15 @@
 
 #roster li.focused{
     background-image: -moz-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: linear-gradient(top, 
         rgba(47, 57, 87, 1) 0%,
         rgba(43, 53, 83, 1) 100%);
     border-top: 1px solid rgb(80, 80, 97, 1);
