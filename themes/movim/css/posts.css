@@ -1,13 +1,7 @@
 /* CSS of messages (Wall, Feed, News...) */
 
 .posthead {
-    background-image: -moz-linear-gradient(left, 
-        #F5F5F5 0%, 
-        #F5F5F5 44px, 
-        rgba(0, 0, 0, 0.3) 44px, 
-        rgba(0, 0, 0, 0.3) 46px, 
-        #F5F5F5 46px, 
-        #F5F5F5 100%);
+    background-color: #F5F5F5;
     display: block;
     width: 100%;
     min-height: 40px;
@@ -23,21 +17,12 @@
 }
 
 .post {
-	/*border-bottom: 1px solid #ECECEC;*/
     width: auto;
 	padding: 0em 1.5em;
     padding-bottom: 1.5em;
     padding-right: 0px;
     min-height: 50px;
-    background-image: -moz-linear-gradient(left, 
-        #F5F5F5 0%, 
-        #F5F5F5 44px, 
-        rgba(0, 0, 0, 0.3) 44px, 
-        rgba(0, 0, 0, 0.3) 46px, 
-        #F5F5F5 46px, 
-        #F5F5F5 100%);
-    background-repeat: no-repeat;
-    /*background-position: 0px 40px;*/
+    background-color: #F5F5F5;
     clear: both;
 }
 
