@@ -48,28 +48,39 @@ class Explore extends WidgetCommon {
                        ->limit(0, $users_limit);
         $users = Contact::run_query($query);
 
-        $html = '';
+        $html = '
+                <div class="posthead" style="min-height: 70px;">
+                    <ul class="filters">
+                        <li class="on">'.t('Last registered').'</li>
+                    </ul>
+   
+                    <div class="clear"></div>
+                </div>';
         foreach($users as $user) {
             $html .= '
+
                 <a href="?q=friend&f='.$user->getData('jid').'">
                     <div class="post">
                         <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                        <span class="name">'.
-                            $this->colorSearch($form['search'], $user->getTrueName()).'
-                        </span>
-                        <span class="asv">'.
-                            $user->getAge().' '.
-                            $gender[$user->getData('gender')].' '.
-                            $marital[$user->getData('marital')].'
-                        </span>
-                        <div 
-                            class="content"
-                            style="
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                            "
-                        >'.prepareString($user->getData('desc')).'</div>
+                        <div class="postbubble">
+                            <span class="name">'.
+                                $this->colorSearch($form['search'], $user->getTrueName()).'
+                            </span>
+                            <span class="asv">'.
+                                $user->getAge().' '.
+                                $gender[$user->getData('gender')].' '.
+                                $marital[$user->getData('marital')].'
+                            </span>
+                            <div 
+                                class="content"
+                                style="
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    height: 1.5em;
+                                "
+                            >'.prepareString($user->getData('desc')).'</div>
+                        </div>
                     </div>
 
                 </a>
@@ -102,13 +113,8 @@ class Explore extends WidgetCommon {
                     />
                 </div>
             </form>
-            <div class="filters">
-                <ul>
-                    <li class="on"><?php echo t('Last registered');?></li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-            <div id="contactsresult">
+
+            <div id="contactsresult">   
                 <?php echo $this->prepareContacts(); ?>
             </div>
         </div>

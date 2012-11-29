@@ -107,8 +107,8 @@ class Wall extends WidgetCommon
         if(sizeof($messages) > 0 && $htmlmessages != false) {
             if($start == 0) {
                 $html .= '
-                        <div id="wallheader">
-                        <a 
+                        <div class="posthead" style="border-top: 0px;">
+                                <a 
                                     class="button tiny icon feed merged left" 
                                     href="?q=feed&f='.$from.'"
                                     target="_blank"
