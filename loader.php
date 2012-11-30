@@ -28,6 +28,7 @@ require_once(LIB_PATH . "Datas/RosterLink.php");
 
 require_once(LIB_PATH . "Session.php");
 require_once(LIB_PATH . "Utils.php");
+require_once(LIB_PATH . "UtilsString.php");
 require_once(LIB_PATH . "Cache.php");
 require_once(LIB_PATH . "Conf.php");
 require_once(LIB_PATH . "Event.php");
