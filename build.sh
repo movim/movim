@@ -2,7 +2,7 @@
 
 SYSTEM_PATH=system
 MOXL_REPO=lp:~edhelas/moxl/trunk
-DATAJAR_REPO=lp:~kili4n/datajar/next
+DATAJAR_REPO=lp:~edhelas/datajar/datajar
 VERSION=`cat VERSION`
 PACKAGENAME="movim-${VERSION}"
 
@@ -17,7 +17,7 @@ package() {
     moxl
     rm -rf "$SYSTEM_PATH/Moxl/.bzr"
     datajar
-    rm -rf "$SYSTEM_PATH/Datajar/.bzr"
+    rm -rf "$SYSTEM_PATH/Datajar2/.bzr"
 
     # Compressing
     cd ..
@@ -43,14 +43,14 @@ datajar() {
     datajar_temp="datajar"
     # Checking out Datajar.
     bzr branch $DATAJAR_REPO $datajar_temp
-    rm -rf "$SYSTEM_PATH/Datajar"
-    cp -r "$datajar_temp/Datajar" $SYSTEM_PATH
+    rm -rf "$SYSTEM_PATH/Datajar2"
+    cp -r "$datajar_temp/Datajar2" $SYSTEM_PATH
     rm -rf $datajar_temp
 }
 
 clean() {
     rm -rf "${SYSTEM_PATH}/Moxl"
-    rm -rf "${SYSTEM_PATH}/Datajar"
+    rm -rf "${SYSTEM_PATH}/Datajar2"
     rm -rf datajar
     rm -rf Moxl
 }
