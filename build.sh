@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SYSTEM_PATH=system
-MOXL_REPO=lp:~edhelas/moxl/trunk
-DATAJAR_REPO=lp:~edhelas/datajar/datajar
+MOXL_REPO="lp:~edhelas/moxl/trunk"
+DATAJAR_REPO="lp:~edhelas/datajar/datajar"
 VERSION=`cat VERSION`
 PACKAGENAME="movim-${VERSION}"
 
