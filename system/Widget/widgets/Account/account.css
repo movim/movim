@@ -1,0 +1,5 @@
+#nav .menu li:last-child {
+    background-image: none;
+    padding-right: 0px;
+    position: relative;
+}

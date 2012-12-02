@@ -188,7 +188,14 @@ class Feed extends WidgetCommon {
         $next = $start + 20;
             
         if(sizeof($messages) > 9 && $html != '') {
-            $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+            $html .= '
+                <div class="post">
+                    <div 
+                        class="older" 
+                        onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
+                            t('Get older posts').'
+                    </div>
+                </div>';
         }
         return $html;
     }
@@ -238,8 +245,8 @@ class Feed extends WidgetCommon {
         ?>
         </div>
         
-        <div class="filters">
-            <ul>
+        <div class="posthead">
+            <ul class="filters">
                 <li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
                 <li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>
             </ul>

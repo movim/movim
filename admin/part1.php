@@ -12,8 +12,7 @@
                 <fieldset>
                     <legend><?php echo $steps[$display]; ?></legend>
                         <input type="hidden" name="step" value="1" />
-                        
-                        <br />
+
                         
                         <div class="element" <?php //echo generate_Tooltip("So far there is only one theme. :-)"); ?>>
                             <label for="movim" ><?php echo t('Theme'); ?></label>
