@@ -44,7 +44,7 @@ datajar() {
     # Checking out Datajar.
     bzr branch $DATAJAR_REPO $datajar_temp
     rm -rf "$SYSTEM_PATH/Datajar2"
-    cp -r "$datajar_temp/Datajar2" $SYSTEM_PATH
+    cp -r "$datajar_temp" "$SYSTEM_PATH/Datajar2"
     rm -rf $datajar_temp
 }
 
