@@ -410,6 +410,36 @@ if(isset($_POST['step'])) {
 			try{
 				$sdb = new DatajarEngineWrapper(generate_db_string($dbarray));
 				DatajarBase::bind($sdb);
+                
+                // Database initialisation
+                include_once("../system/Datas/Caps.php");
+                include_once("../system/Datas/ConfVar.php");
+                include_once("../system/Datas/Contact.php");
+                include_once("../system/Datas/Message.php");
+                include_once("../system/Datas/Post.php");
+                include_once("../system/Datas/Presence.php");
+                include_once("../system/Datas/RosterLink.php");
+                include_once("../system/Session.php");
+                include_once("../system/Cache.php");
+                
+                $s = new SessionVar();
+                $sdb->create($s);
+                $c = new CacheVar();
+                $sdb->create($c);
+                $r = new RosterLink();
+                $sdb->create($r);
+                $c = new Caps();
+                $sdb->create($c);
+                $c = new ConfVar();
+                $sdb->create($c);
+                $m = new Message();
+                $sdb->create($m);
+                $c = new Contact();
+                $sdb->create($c);
+                $p = new Presence();
+                $sdb->create($p);
+                $o = new Post();
+                $sdb->create($o);
 			}catch(DatajarException $e){
 				//Append it to the error array
 				$errors[] = $e->getMessage();
@@ -481,14 +511,6 @@ if(isset($_POST['step'])) {
                 
                 rename($tmpfile, $conffile);
                 include_once("../loader.php");
-                $c = new RosterLink();
-                $sdb->create($c);
-                $c = new Contact();
-                $sdb->create($c);
-                $p = new Presence();
-                $sdb->create($p);
-                $o = new Post();
-                $sdb->create($o);
                 
                 $display = 6;
             } else {   
