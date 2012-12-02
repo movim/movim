@@ -481,8 +481,14 @@ if(isset($_POST['step'])) {
                 
                 rename($tmpfile, $conffile);
                 include_once("../loader.php");
-                $c = new RosterLink();
+                $r = new RosterLink();
+                $sdb->create($r);
+                $c = new Caps();
                 $sdb->create($c);
+                $c = new ConfVar();
+                $sdb->create($c);
+                $m = new Message();
+                $sdb->create($m);
                 $c = new Contact();
                 $sdb->create($c);
                 $p = new Presence();
