@@ -10,7 +10,21 @@
 }
 
 #roster ul li {
-    padding: 2px 3px;
+    padding: 5px;
+    background-image: -moz-linear-gradient(top, 
+        rgba(47, 47, 47, 1) 0%,
+        rgba(43, 43, 43, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(47, 47, 47, 1) 0%,
+        rgba(43, 43, 43, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(47, 47, 47, 1) 0%,
+        rgba(43, 43, 43, 1) 100%);
+    background-image: linear-gradient(top, 
+        rgba(47, 47, 47, 1) 0%,
+        rgba(43, 43, 43, 1) 100%);
+    border-top: 1px solid rgb(80, 80, 80);
+    border-bottom: 1px solid rgb(30, 30, 30);
 }
 
 #roster ul li .chat {
@@ -20,7 +34,7 @@
     padding-right: 3px;
     background-image: url(img/offline.png);
     background-repeat: no-repeat;
-    background-position: 3px 4px;
+    background-position: 3px 6px;
 }
 
 #roster ul li .chat.on:hover {
@@ -73,20 +87,34 @@
     width: auto;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #AAA;
+    text-shadow: 0px 1px 0px #222;
 }
 
 #roster ul li a span {
     padding-left: 5px;
-    line-height: 24px;
+    line-height: 29px;
 }
 
-#roster ul li:hover, #roster ul li:hover a , #roster ul li.active, #roster ul li.active a {
-    background-color: #444;
-    color: white;
+#roster ul li:hover, #roster ul li.active {
+    background-image: -moz-linear-gradient(top, 
+        rgba(67, 67, 67, 1) 0%,
+        rgba(63, 63, 63, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(67, 67, 67, 1) 0%,
+        rgba(63, 63, 63, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(67, 67, 67, 1) 0%,
+        rgba(63, 63, 63, 1) 100%);
+    background-image: linear-gradient(top, 
+        rgba(67, 67, 67, 1) 0%,
+        rgba(63, 63, 63, 1) 100%);
+    border-top: 1px solid rgb(100, 100, 100);
+    border-bottom: 1px solid rgb(50, 50, 50);
 }
 
 #roster ul li a:hover img, #roster ul li.active img {
-    background-color: white;
+
 }
 
 #roster ul li img {
@@ -94,30 +122,50 @@
     margin-bottom: -5px;
     max-width: 24px;
     float: left;
-    border-radius: 2px;
+    border-radius: 4px;
+    background-color: #161616;
+    padding: 2px;
+    box-shadow: 0px 1px 0px #444;
 }
 
 #roster h1 {
     margin: 0px;
     padding: 5px 0px;
     font-size: 14px;
-    font-weight: bold;
     text-align: center;
+    color: #AAA;
+    font-size: 12px;
+    background-image: -moz-linear-gradient(top, 
+        rgba(37, 37, 37, 1) 0%,
+        rgba(33, 33, 33, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(37, 37, 37, 1) 0%,
+        rgba(33, 33, 33, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(37, 37, 37, 1) 0%,
+        rgba(33, 33, 33, 1) 100%);
+    background-image: linear-gradient(top, 
+        rgba(37, 37, 37, 1) 0%,
+        rgba(33, 33, 33, 1) 100%);
+    border-top: 1px solid rgb(70, 70, 70);
+    border-bottom: 1px solid rgb(20, 20, 20);
 }
 
 #roster #rostermenu {
-    border-top: 1px solid #888;
+    border-top: 1px solid #222;
+    border-left: 1px solid #111;
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 200px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    width: 199px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     color: black;
     background-color: white;
 }
 
 #roster #rostermenu li, #roster #rostermenu li a {
     margin: 0px;
+    border: 0px;
     padding: 0px;
     width: auto;
 }
@@ -125,7 +173,8 @@
 #roster #rostermenu #request {
     line-height: 24px;
     height: 24px;
-    padding: 0px 5px;
+    padding: 0px 6px;
+    border: 0px;
     width: 120px;
     background-color: white;
 }
@@ -133,7 +182,7 @@
 #roster #rostermenu li {
     display: inline-block;
     line-height: 22px;
-    border-left: 1px solid #AAA;
+    border-left: 1px solid #111;
     padding: 0 8px;
     height: 24px;
     background-color: #ddd;
@@ -145,7 +194,6 @@
 
 #roster #rostermenu li:hover, #roster #rostermenu li:hover a {
     background-color: transparent;
-    color: black;
     cursor: pointer;
 }
 
@@ -153,6 +201,7 @@
     padding: 5px;
     border-bottom: 1px solid #888;
     display: none;
+    background-color: #EFEFEF;
 }
 
 #roster #rostermenu #addcontact .element {
@@ -160,6 +209,19 @@
 }
 
 #roster li.focused{
-    background-color: #B8C7DA;
+    background-image: -moz-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    border-top: 1px solid rgb(80, 80, 97, 1);
+    border-bottom: 1px solid rgba(20, 20, 30, 1);
 }
 

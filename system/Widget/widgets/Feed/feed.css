@@ -37,7 +37,6 @@
 
 #feed #feedcontent {
 	clear: both;
-    padding-top: 15px
 }
 
 #feed #feednotifs {
@@ -70,6 +69,9 @@
     margin-bottom: 5px;
     padding-bottom: 5px;
     display: none;
+}
+
+#feed #feedhead {
 }
 
 iframe {
