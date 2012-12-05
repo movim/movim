@@ -43,7 +43,7 @@
                                     <select id="dbtype" name="dbtype" onchange="changeDB(this);">		
                                         <?php 
                                             foreach($dbsystems as $dbsystem => $supported):
-                                                if($supported):
+                                                if($supported && $dbsystem == 'mysql'):
                                         ?>
                                                 <option value="<?php echo $dbsystem; ?>" 
                                                     <?php if(get_preset_value_db('type', $dbpreset) == $dbsystem):?>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                     </fieldset>
-                    <fieldset id="mysql" style=" display: <?php if(get_preset_value_db('type', $dbpreset) == 'mysql'): echo 'block'; else: echo 'none'; endif;?>">
+                    <fieldset id="mysql" style=" display: <?php /*if(get_preset_value_db('type', $dbpreset) == 'mysql'): echo 'block'; else: echo 'none'; endif;*/ ?>">
                             <legend><?php echo t('MySQL Settings'); ?></legend>
                             <div class="element" <?php //echo generate_Tooltip(t("This defaults in most cases to localhost")); ?>>
                               <label for="dbhost"><?php echo t('MySQL Host'); ?></label>
