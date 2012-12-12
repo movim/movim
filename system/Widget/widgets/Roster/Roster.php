@@ -66,13 +66,27 @@ class Roster extends WidgetBase
         RPC::call('sortRoster');
     }
 
-	function ajaxRefreshRoster()
+	/**
+     * @brief Force the roster refresh
+     * @returns 
+     * 
+     * 
+     */
+    function ajaxRefreshRoster()
 	{
         $r = new moxl\RosterGetList();
         $r->request();
 	}
 
-	function prepareRosterElement($contact, $inner = false)
+	/**
+     * @brief Generate the HTML for a roster contact
+     * @param $contact 
+     * @param $inner 
+     * @returns 
+     * 
+     * 
+     */
+    function prepareRosterElement($contact, $inner = false)
 	{
         if(isset($contact[1]))
             $presence = $contact[1]->getPresence();
@@ -113,8 +127,50 @@ class Roster extends WidgetBase
         else
             return $start.$middle.$end;
 	}
+    
+    /**
+     * @brief Create the HTML for a roster group and add the title
+     * @param $contacts 
+     * @param $i 
+     * @returns html
+     * 
+     * 
+     */
+    private function prepareRosterGroup($contacts, &$i)
+    {
+        // We get the current name of the group
+        $currentgroup = $contacts[$i][0]->getData('group');
+        
+        // Temporary array to prevent duplicate contact
+        $duplicate = array();
+        
+        // We grab all the contacts of the group 
+        $grouphtml = '';
+        while(isset($contacts[$i][0]) && $contacts[$i][0]->getData('group') == $currentgroup) {
+            if(!in_array($contacts[$i][0]->getData('jid'), $duplicate)) {
+                $grouphtml .= $this->prepareRosterElement($contacts[$i]);
+                array_push($duplicate, $contacts[$i][0]->getData('jid'));
+            }
+            
+            $i++;
+        } 
+        
+        // And we add the title at the head of the group 
+        if($currentgroup == '')
+            $currentgroup = t('Ungrouped');
+            
+        $grouphtml = '<div><h1>'.$currentgroup.' - '.count($duplicate).'</h1>'.$grouphtml.'</div>';
+        
+        return $grouphtml;
+    }
 
-	function prepareRoster()
+	/**
+     * @brief Here we generate the roster
+     * @returns 
+     * 
+     * 
+     */
+    function prepareRoster()
 	{
         $query = RosterLink::query()->join('Presence',
                                               array('RosterLink.jid' =>
@@ -153,40 +209,11 @@ class Roster extends WidgetBase
         $group = '';
 
         if($contacts != false) {
-            $currentchat = '';
+            $i = 0;
             
-            if($contacts[0][0]->getData('group') == '')
-                $html .= '<div><h1>'.t('Ungrouped').'</h1>';
-            else {
-                $group = $contacts[0][0]->getData('group');
-                $html .= '<div><h1>'.$group.'</h1>';
-            }
+            while($i < count($contacts))
+                $html .= $this->prepareRosterGroup($contacts, $i);
 
-            // Temporary array to prevent duplicate contact
-            $duplicate = array();
-
-            foreach($contacts as $c) {
-                if(!in_array($c[0]->getData('jid'), $duplicate)) {
-                    if($group != $c[0]->getData('group')) {
-                        $group = $c[0]->getData('group');
-                        $html .= '</div>';
-                        if($group == '')
-                            $html .= '<div><h1>'.t('Ungrouped').'</h1>';
-                        else
-                            $html .= '<div><h1>'.$group.'</h1>';
-                    }
-
-                    if($c[0]->getData('chaton') > 0)
-                        $currentchat .= $this->prepareRosterElement($c);
-                    $html .= $this->prepareRosterElement($c);
-
-                    array_push($duplicate, $c[0]->getData('jid'));
-                }
-            }
-            $html .= '</div>';
-            
-            if($currentchat != '')
-                $html = '<div><h1>'.t('Active Chat').'</h1>'.$currentchat.'</div>'.$html;
         } else {
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
         }
@@ -194,6 +221,14 @@ class Roster extends WidgetBase
         return $html;
 	}
     
+    /**
+     * @brief Adding a new contact from the Rostermenu
+     * @param $jid 
+     * @param $alias 
+     * @returns 
+     * 
+     * 
+     */
     function ajaxAddContact($jid, $alias) {
         $r = new moxl\RosterAddItem();
         $r->setTo($jid)
@@ -204,7 +239,6 @@ class Roster extends WidgetBase
           ->request();
     }
     
-
     function build()
     {
     ?>

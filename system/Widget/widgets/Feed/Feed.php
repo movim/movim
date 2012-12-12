@@ -18,6 +18,7 @@ class Feed extends WidgetCommon {
         $this->registerEvent('postpublisherror', 'onPostPublishError');
         
         $this->registerEvent('nodecreated', 'onNodeCreated');
+        $this->registerEvent('nodecreationerror', 'onNodeCreationError');
         
         $this->registerEvent('config', 'onConfig');
 
@@ -59,6 +60,13 @@ class Feed extends WidgetCommon {
         $s->setXmlns('movim:prefs')
           ->setData(serialize($config))
           ->request();
+        
+        $html .=
+            '<div class="message error">'.
+                t("Your server doesn't support post publication, you can only read contact's feeds").'
+             </div>';
+        RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
+        RPC::commit();
     }
 
     function onPostPublished($post) {        
