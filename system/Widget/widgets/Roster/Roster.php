@@ -185,7 +185,7 @@ class Roster extends WidgetBase
                                                 '|RosterLink`.`rosterask' => 'subscribe')))
                                      ->orderby('RosterLink.group', true);
 
-        $contactsq = Contact::run_query($query);
+        $contactsq = RosterLink::run_query($query);
 
         $contacts = array();
         
