@@ -209,14 +209,20 @@ class Feed extends WidgetCommon {
             $i++;
         }
         
+        if(empty($rosterc))
+            $where = array(
+                        'Post`.`parentid' => '',
+                        'Post`.`key' => $this->user->getLogin());
+        else
+            $where = array(
+                        'Post`.`parentid' => '',
+                        'Post`.`key' => $this->user->getLogin(),
+                        array('Post`.`jid' => $rosterc));
+        
         // We query the last messages
         $query = Post::query()
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where(
-                                array(
-                                    'Post`.`parentid' => '',
-                                    'Post`.`key' => $this->user->getLogin(),
-                                    array('Post`.`jid' => $rosterc)))
+                            ->where($where)
                             ->orderby('Post.updated', true)
                             ->limit($start+1, '10');
         $messages = Post::run_query($query);
