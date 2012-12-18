@@ -31,7 +31,7 @@ function display_image($hash, $type) {
     header("ETag: \"{$hash}\"");
     header("Accept-Ranges: bytes");
     header("Content-type: ".$type);
-    header("Cache-Control: max-age=".rand(1, 5)*3600);
+    //header("Cache-Control: max-age=".rand(1, 5)*3600);
     header('Date: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
     header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT');
 }

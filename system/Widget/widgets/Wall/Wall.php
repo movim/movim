@@ -96,7 +96,7 @@ class Wall extends WidgetCommon
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
                             ->where($where)
                             ->orderby('Post.updated', true)
-                            ->limit($start, '20');
+                            ->limit($start, '10');
         $messages = Post::run_query($query);
 		
         // We ask for the HTML of all the posts
@@ -128,7 +128,10 @@ class Wall extends WidgetCommon
             }
             $html .= $htmlmessages;
             if(sizeof($messages) > 9)
-                $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+                $html .= '
+                    <div class="post">
+                        <div class="older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").';  this.parentNode.style.display = \'none\'">'.t('Get older posts').'</div>
+                    </div>';
 		}
         
 		return $html;

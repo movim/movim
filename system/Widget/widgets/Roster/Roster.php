@@ -109,6 +109,8 @@ class Roster extends WidgetBase
 					title="'.$contact[0]->getData('jid');
                     if($presence['status'] != '')
                         $middle .= ' - '.htmlentities($presence['status']);
+                    if($presence['ressource'] != '')
+                        $middle .= ' ('.$presence['ressource'].')';
         $middle .= '"';
         $middle .= ' href="?q=friend&f='.$contact[0]->getData('jid').'"
                  >
@@ -185,7 +187,7 @@ class Roster extends WidgetBase
                                                 '|RosterLink`.`rosterask' => 'subscribe')))
                                      ->orderby('RosterLink.group', true);
 
-        $contactsq = Contact::run_query($query);
+        $contactsq = RosterLink::run_query($query);
 
         $contacts = array();
         

@@ -45,7 +45,7 @@
     top: 38px;
     right: 50%;
     margin-right: -300px;
-    z-index: 1;
+    z-index: 3;
     background-color: #333;
     border-radius: 0 0 2px 2px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
