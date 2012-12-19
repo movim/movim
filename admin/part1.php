@@ -38,7 +38,7 @@
                         
                         <div class="element" <?php //echo generate_Tooltip(t("Movim can limit the maximum allowed amounts of registered users. If you do not want this feature leave the value \'-1\'.")); ?>>
                           <label for="maxUsers"><?php echo t('Maximum population'); ?></label>
-                          <input type="text" name="maxUsers" id="maxUsers" value="<?  echo get_preset_value('maxUsers', -1); ?>" />
+                          <input type="text" name="maxUsers" id="maxUsers" value="<?php  echo get_preset_value('maxUsers', -1); ?>" />
                         </div>
                         
                         <div class="element" <?php //echo generate_Tooltip(t("Set the logging options.")); ?>>

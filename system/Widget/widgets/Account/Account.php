@@ -364,9 +364,6 @@ class Account extends WidgetBase {
                 <h1><?php echo t('Create a new account'); ?></h1>
                 <div style="margin: 35px 20px;">
                     <form name="account">
-                        <p>
-                            <?php echo t(); ?>
-                        </p>
                         <fieldset>
                             <legend><?php echo t('Step 1 - Search the server'); ?></legend>
                                 <div class="element">

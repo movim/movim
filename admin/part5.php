@@ -17,7 +17,7 @@
                         <input type="hidden" name="step" value="5" />
                         <div class="element" <?php //echo generate_Tooltip(t("Enter a us")); ?>>
                             <label for="username"><?php echo t("Username"); ?></label>
-                            <input type="text" id="user" name="user" value="<? echo get_preset_value('user', ''); ?>"/>
+                            <input type="text" id="user" name="user" value="<?php echo get_preset_value('user', ''); ?>"/>
 
                         </div>
                         <div class="element" <?php //echo generate_Tooltip(t("Enter here the BOSH-URL in the form: http://domain:123/asd")); ?>>

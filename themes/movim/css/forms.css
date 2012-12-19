@@ -97,14 +97,11 @@ form .element:nth-child(2) {
 
 .element .select:before {
     pointer-events:none;
-    content: "▶";
+    content: "▼";
     font: 11px sans-serif;
     font-weight: bold;
     color: #444;
     right: 0px;
-    transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
     padding: 8px;
     position: absolute;
     display: block;
