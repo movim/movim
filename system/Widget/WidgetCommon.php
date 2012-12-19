@@ -88,27 +88,8 @@ class WidgetCommon extends WidgetBase {
     protected function preparePost($message, $comments = false) {        
         $tmp = '<a name="'.$message[0]->getData('nodeid').'"></a>';
         
-        // Test if the message can be displayed for the user
-        /*$query = RosterLink::query()
-                            ->where(
-                                array(
-                                    'key' => $this->user->getLogin(),
-                                    'jid' => $message[0]->getData('jid')))
-                            ->limit(0, 1);
-        $rosterlink = RosterLink::run_query($query);
-        
-        if(isset($rosterlink[0]))
-            $jidtest = $rosterlink[0]->getData('jid');*/
-        
-        if(isset($message[1]) /*&& $jidtest != null*/) {
+        if(isset($message[1])) {
             $tmp = '<div class="post ';
-            if($this->user->getLogin() == $message[0]->getData('jid')) {
-                $tmp .= 'me ';
-                if($message[0]->getData('public') == 1)
-                    $tmp .= 'protect black';
-                else
-                    $tmp .= 'protect orange';
-            }
                 
             if($message[1]->getTrueName() == null)
                 $name = $message[0]->getData('jid');
@@ -120,6 +101,17 @@ class WidgetCommon extends WidgetBase {
                     <a href="?q=friend&f='.$message[0]->getData('jid').'">
                         <img class="avatar" src="'.$message[1]->getPhoto('s').'">
                     </a>
+                    
+                    <div id="'.$message[0]->getData('nodeid').'bubble" class="postbubble ';
+            if($this->user->getLogin() == $message[0]->getData('jid')) {
+                $tmp .= 'me ';
+                if($message[0]->getData('public') == 1)
+                    $tmp .= 'protect black';
+                else
+                    $tmp .= 'protect orange';
+            }
+                    
+            $tmp .= '">
 
                     <span>
                         <a href="?q=friend&f='.$message[0]->getData('jid').'">'.$name.'</a>
@@ -162,6 +154,7 @@ class WidgetCommon extends WidgetBase {
                 $tmp .= '<div class="comments">
                             <div 
                                 class="comment"
+                                style="border-bottom: none;"
                                 onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
                                 <a class="getcomments icon bubbleadd">'.t('Add a comment').'</a>
                             </div>
@@ -194,6 +187,10 @@ class WidgetCommon extends WidgetBase {
                             </table>';
                 $tmp .= '</div>';
             }
+            
+              
+            $tmp .= '
+                </div>';
             
             if($this->user->getLogin() == $message[0]->getData('jid')) {
                 $tmp .= '
@@ -248,7 +245,6 @@ class WidgetCommon extends WidgetBase {
 
                     </div>';
             }
-              
             $tmp .= '</div>';
 
         }
@@ -400,7 +396,7 @@ class WidgetCommon extends WidgetBase {
             $post->run_query($post->query()->save($post));
         }
         
-        RPC::call('movim_change_class', $id , 'post me protect '.$privacy);
+        RPC::call('movim_change_class', $id.'bubble' , 'postbubble me protect '.$privacy);
         RPC::commit();
     }
     

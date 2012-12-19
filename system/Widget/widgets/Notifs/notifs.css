@@ -1,44 +1,144 @@
 #notifs {
-    border-bottom: 1px solid #888;
-    position: fixed;
-    top: 25px;
-    z-index: 3;
-    right: 0;
-    width: 200px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
-    color: black;
-    background-color: #f0f0f0;
+    font-size: 13px;
+    color: #ccc;
 }
 
-#notifs ul {
-    list-style-type: none;
-    overflow: hidden;
+#notifstab {
+	position: fixed;
+	top: 0px;
+	right: 50%;
+    margin-right: -300px;
+	cursor: pointer;
+    z-index: 4;
+    padding: 11px 5px;
+    padding-left: 20px;
 }
 
-#notifs ul li {
-    padding-bottom: 5px;
+#notifstab span {
+    color: white;
     font-size: 10px;
-    overflow: auto;
-    padding: 5px;
-}
-
-#notifs input {
-    margin-bottom: 2px;
-}
-
-#notifs ul li a {
+    padding: 0px;
+    line-height: 1.7em;
     float: right;
-    margin-top: 5px;
+    padding: 0px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
+    background-color: #444;
 }
 
-#notifs #notifsalias, #notifs #labelnotifsalias {
+#notifstab span.red {
+    background-color: #C5371E;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3) inset, 0px 0px 2px rgba(0, 0, 0, 0.3);
+}
+
+#notifstab:hover {
+    color: white;
+}
+
+#notifstab:hover:after {
+    background-color: #888;
+}
+
+#notifslist {
     display: none;
+    position: fixed;
+    top: 38px;
+    right: 50%;
+    margin-right: -300px;
+    z-index: 3;
+    background-color: #333;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+    overflow: hidden; 
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-#notifs #addcontact, #notifs #notifsvalidate {
-    display: none;
+#notifslist .black {
+    float: right;
+    box-shadow: none;
+    background-color: #333;
+    color: #BBB;
+    border-color: #444;
 }
 
-#notifs .element {
-    min-height: 0px;
+#notifslist #refresh:before {
+    color: #BBB;
+}
+
+#notifslist ul {
+    list-style-type: none;
+    clear: both;
+    background-color: #242424;
+    border-top: 1px solid #444;
+    box-shadow: 0px -1px 0px #222;
+}
+
+#notifslist ul li {
+    padding: 5px;
+    line-height: 28px;
+    width: 100%;
+    width: 250px;
+    /*max-height: 56px;*/
+    border-top: 1px solid #333;
+}
+
+#notifslist ul li p {
+    line-height: 1em;
+    margin: 5px 0px;
+}
+
+#notifslist ul li span.num {
+    color: white;
+    font-size: 10px;
+    padding: 0px;
+    line-height: 1.7em;
+    float: right;
+    background-color: #C5371E;
+    margin-top: 6px;
+    padding: 0px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+#notifslist ul li:hover {
+    background-color: #EEE;
+    color: black;
+    border-top: 1px solid #EEE;
+}
+
+#notifslist ul li:hover .black {
+    color: #BBB;
+}
+
+#notifslist ul li.title {
+    border-bottom: 1px solid #222;
+    padding: 0px 5px;
+    border-top: none;
+    color: white;
+}
+
+#notifslist ul li.title:hover {
+    color: white;
+    background-color: #242424;
+    color: white;
+}
+
+#notifslist ul li img {
+display: none;
+    height: 24px;
+    max-width: 24px;
+    float: left;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+#notifslist ul li a {
+    color: #ccc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+#notifslist ul li:hover a {
+    color: black;
 }

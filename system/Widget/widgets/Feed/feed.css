@@ -1,9 +1,5 @@
 /* MAIN FEED STYLE */
 
-#feed {
-
-}
-
 #feed table#feedsubmitform {
     display: block;
     border: 1px solid;
@@ -41,23 +37,10 @@
 
 #feed #feedcontent {
 	clear: both;
-    padding-top: 15px
 }
 
 #feed #feednotifs {
 	margin: 1em 1.5em 0em;
-}
-
-#feed .ste .button {
-    /*border: 0px;
-    display: block;
-    float: left;
-    background-color: white;
-    background-image: none;
-    box-shadow: none;
-    padding: 0px;
-    margin: 0px;
-    border-radius: 0px;*/
 }
 
 #feed #feedsubmitform .ste {
@@ -65,11 +48,6 @@
     margin: 0px;
     padding: 0px;
 }
-/*
-#feed .ste .separator {
-    float: left;
-    display: none;
-}*/
 
 #feed #feedsubmitform .button.merged.right {
     margin-right: 5px;
@@ -91,6 +69,9 @@
     margin-bottom: 5px;
     padding-bottom: 5px;
     display: none;
+}
+
+#feed #feedhead {
 }
 
 iframe {

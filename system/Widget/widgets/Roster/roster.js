@@ -304,3 +304,23 @@ function rosterSearch(e){
 		}
 	}
 }
+
+function addJid(n) {
+    document.querySelector('#addcontact').style.display = "block";
+}
+
+function cancelAddJid() {
+    document.querySelector('#addcontact').style.display = "none";
+}
+
+function getAlias() {
+    return document.querySelector('#notifsalias').value;
+}
+
+function getAddJid() {
+    return document.querySelector('#addjid').value;
+}
+
+function getAddAlias() {
+    return document.querySelector('#addalias').value;
+}

@@ -17,7 +17,7 @@
 
 class ControllerMain extends ControllerBase
 {
-	protected $default_handler = 'mainPage';
+	protected $default_handler = 'main';
 	private $page;
 
 	function __construct()
@@ -39,7 +39,7 @@ class ControllerMain extends ControllerBase
 		$this->page->addScript('movim.js');
 	}
 
-	function mainPage()
+	function main()
 	{
 		$user = new User();
 
@@ -47,7 +47,7 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=mainPage', true);
+            $this->page->menuAddLink(t('Home'), '?q=main', true);
             $this->page->menuAddLink(t('Explore'), '?q=explore');
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
@@ -83,7 +83,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(APP_TITLE.' - '.$name);
-                $this->page->menuAddLink(t('Home'), '?q=mainPage');
+                $this->page->menuAddLink(t('Home'), '?q=main');
                 $this->page->menuAddLink(t('Explore'), '?q=explore');
 				$this->page->menuAddLink(t('Profile'), '?q=profile');
 				$this->page->menuAddLink(t('Configuration'), '?q=config');
@@ -96,7 +96,7 @@ class ControllerMain extends ControllerBase
 				echo $this->page->build('page.tpl');
 			}
 			else
-				$this->mainPage();
+				$this->main();
 		}
 	}
 
@@ -108,7 +108,7 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			$this->page->setTitle(t('%s - Configuration', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Home'), '?q=main');
             $this->page->menuAddLink(t('Explore'), '?q=explore');
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config', true);
@@ -130,7 +130,7 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			$this->page->setTitle(t('%s - Profile', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Home'), '?q=main');
             $this->page->menuAddLink(t('Explore'), '?q=explore');
 			$this->page->menuAddLink(t('Profile'), '?q=profile', true);
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
@@ -144,52 +144,15 @@ class ControllerMain extends ControllerBase
 		}
 	}
 
-	/*function account()
+	function account()
 	{
-		if(Conf::getServerConfElement("accountCreation") == 1) {
-			$this->page->setTitle(t('%s - Account', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=mainPage');
-			$this->page->menuAddLink(t('Account Creation'), '?q=account', true);
-			$content = new TplPageBuilder($user);
+        $this->page->setTitle(t('%s - Account', APP_TITLE));
+        $this->page->menuAddLink(t('Home'), '?q=main');
+        $this->page->menuAddLink(t('Account Creation'), '?q=account', true);
+        $content = new TplPageBuilder($user);
 
-			$this->page->setContent($content->build('account.tpl'));
-			echo $this->page->build('page.tpl');
-
-		} else {
-			$this->login();
-		}
-	}*/
-
-	function accountCreate()
-	{
-		if(Conf::getServerConfElement("accountCreation") == 1) {
-			$this->page->setTitle(t('%s - Account Creation', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=mainPage');
-			$this->page->menuAddLink(t('Account Creation'), '?q=accountCreate', true);
-			$content = new TplPageBuilder($user);
-
-			$this->page->setContent($content->build('account_create.tpl'));
-			echo $this->page->build('page.tpl');
-
-		} else {
-			$this->login();
-		}
-	}
-
-	function accountAdd()
-	{
-		if(Conf::getServerConfElement("accountCreation") == 1) {
-			$this->page->setTitle(t('%s - Add An Account', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=mainPage');
-			$this->page->menuAddLink(t('Account Creation'), '?q=accountAdd', true);
-			$content = new TplPageBuilder($user);
-
-			$this->page->setContent($content->build('account_add.tpl'));
-			echo $this->page->build('page.tpl');
-
-		} else {
-			$this->login();
-		}
+        $this->page->setContent($content->build('account.tpl'));
+        echo $this->page->build('page.tpl');
 	}
 
 	function post()
@@ -200,7 +163,7 @@ class ControllerMain extends ControllerBase
 			$this->login();
 		} else {
 			$this->page->setTitle(t('%s - Post View', APP_TITLE));
-            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Home'), '?q=main');
             $this->page->menuAddLink(t('Explore'), '?q=explore');
 			$this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
@@ -220,7 +183,7 @@ class ControllerMain extends ControllerBase
 	function login()
 	{
     	$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
-		$this->page->menuAddLink(t('Home'), '?q=mainPage', true);
+		$this->page->menuAddLink(t('Home'), '?q=main', true);
 
         $content = new TplPageBuilder($user);
 		$this->page->setContent($content->build('login.tpl'));
@@ -248,7 +211,7 @@ class ControllerMain extends ControllerBase
 		if(!$user->isLogged()) {
             $this->login();
 		} else {
-            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Home'), '?q=main');
             $this->page->menuAddLink(t('Explore'), '?q=explore', true);
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
@@ -275,7 +238,7 @@ class ControllerMain extends ControllerBase
 		if(!$user->isLogged()) {
             $this->login();
 		} else {
-            $this->page->menuAddLink(t('Home'), '?q=mainPage');
+            $this->page->menuAddLink(t('Home'), '?q=main');
             $this->page->menuAddLink(t('Explore'), '?q=explore');
             $this->page->menuAddLink(t('Profile'), '?q=profile');
 			$this->page->menuAddLink(t('Configuration'), '?q=config');
