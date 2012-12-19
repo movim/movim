@@ -110,11 +110,6 @@ class Cache
 
         $var = new CacheVar();
 
-        /*$success = $var->load(array(
-                                   'session' => self::$sid,
-                                   'container' => $this->container,
-                                   'name' => $varname));*/
-                                   
         $query = CacheVar::query()->select()
                                    ->where(array(
                                            'key' => $cache_key))
@@ -148,15 +143,6 @@ class Cache
         } else {
             return false;
         }
-
-        /*$var = new CacheVar();
-        $success = $this->db->load($var, array('key' => $cache_key));
-
-        if($success) {
-            return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
-        } else {
-            return false;
-        }*/
     }
 }
 

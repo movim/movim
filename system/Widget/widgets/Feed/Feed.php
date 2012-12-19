@@ -18,6 +18,7 @@ class Feed extends WidgetCommon {
         $this->registerEvent('postpublisherror', 'onPostPublishError');
         
         $this->registerEvent('nodecreated', 'onNodeCreated');
+        $this->registerEvent('nodecreationerror', 'onNodeCreationError');
         
         $this->registerEvent('config', 'onConfig');
 
@@ -59,6 +60,13 @@ class Feed extends WidgetCommon {
         $s->setXmlns('movim:prefs')
           ->setData(serialize($config))
           ->request();
+        
+        $html .=
+            '<div class="message error">'.
+                t("Your server doesn't support post publication, you can only read contact's feeds").'
+             </div>';
+        RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
+        RPC::commit();
     }
 
     function onPostPublished($post) {        
@@ -171,24 +179,68 @@ class Feed extends WidgetCommon {
     }
     
     function prepareFeed($start) {
+        $query = RosterLink::query()->where(
+                                        array(
+                                            'RosterLink`.`key' => $this->user->getLogin(),
+                                            array(
+                                                'RosterLink`.`rostersubscription!' => 'none',
+                                                'RosterLink`.`rostersubscription!' => '',
+                                                'RosterLink`.`rostersubscription!' => 'vcard',
+                                                '|RosterLink`.`rosterask' => 'subscribe')))
+                                     ->orderby('RosterLink.group', true);
+
+        $contacts = RosterLink::run_query($query);
+        
+        $rosterc = array();
+        
+        //foreach($contactsq as $c)
+        //    array_push($rosterc, $c->getData('jid'));
+            
+        // We create the array for the comments request
+        $commentid = array();
+        $i = 0;
+            
+        foreach($contacts as $c) {
+            if($i == 0)
+                array_push($rosterc, $c->getData('jid'));
+
+            else
+                array_push($rosterc, '|'.$c->getData('jid'));
+            $i++;
+        }
+        
+        if(empty($rosterc))
+            $where = array(
+                        'Post`.`parentid' => '',
+                        'Post`.`key' => $this->user->getLogin());
+        else
+            $where = array(
+                        'Post`.`parentid' => '',
+                        'Post`.`key' => $this->user->getLogin(),
+                        array('Post`.`jid' => $rosterc));
+        
         // We query the last messages
         $query = Post::query()
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where(
-                                array(
-                                    'Post`.`parentid' => '',
-                                    'Post`.`key' => $this->user->getLogin()))
+                            ->where($where)
                             ->orderby('Post.updated', true)
-                            ->limit($start, '20');
+                            ->limit($start+1, '10');
         $messages = Post::run_query($query);
 
         // We ask for the HTML of all the posts
         $html = $this->preparePosts($messages);
         
-        $next = $start + 20;
+        $next = $start + 10;
             
         if(sizeof($messages) > 9 && $html != '') {
-            $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+            $html .= '
+                <div class="post">
+                    <div 
+                        class="older" 
+                        onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
+                            t('Get older posts').'
+                    </div>
+                </div>';
         }
         return $html;
     }
@@ -210,7 +262,6 @@ class Feed extends WidgetCommon {
     
     function ajaxPublishItem($content)
     {
-        movim_log(htmlspecialchars(rawurldecode($content)));
         if($content != '') {
             $id = md5(openssl_random_pseudo_bytes(5));
             
@@ -239,8 +290,8 @@ class Feed extends WidgetCommon {
         ?>
         </div>
         
-        <div class="filters">
-            <ul>
+        <div class="posthead">
+            <ul class="filters">
                 <li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
                 <li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>
             </ul>
@@ -248,7 +299,7 @@ class Feed extends WidgetCommon {
         
         <div id="feedcontent">
         <?php
-            echo $this->prepareFeed(0);
+            echo $this->prepareFeed(-1);
         ?>
         </div>
     </div>

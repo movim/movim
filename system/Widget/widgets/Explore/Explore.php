@@ -6,25 +6,35 @@ class Explore extends WidgetCommon {
         $this->addcss('explore.css');
     }
 
-    function ajaxSearchContacts($form){
+    function ajaxSearchContacts($form) {
         $html = $this->prepareContacts($form);
         movim_log($html);
         RPC::call('movim_fill', 'contactsresult', RPC::cdata($html));
         RPC::commit();
     }
+    
+    function colorSearch($search, $text) {
+        return str_replace(
+                $search, 
+                '<span style="background-color: yellow;">'.$search.'</span>',
+                $text
+                );
+    }
 
-    function prepareContacts($form = false){
+    function prepareContacts($form = false) {
         if(!$form){
             $where = array('public' => 1);
         }
         else{
             $where = array(
-                'fn%' => '%'.$form[search].'%',
-                '|jid%' => '%'.$form[search].'%',
-                '|name%' => '%'.$form[search].'%',
-                '|email%' => '%'.$form[search].'%',
-                '|nickname%' => '%'.$form[search].'%',
-                'public' => 1
+                'public' => 1, 
+                array(
+                    'fn%' => '%'.$form['search'].'%',
+                    '|jid%' => '%'.$form['search'].'%',
+                    '|name%' => '%'.$form['search'].'%',
+                    '|email%' => '%'.$form['search'].'%',
+                    '|nickname%' => '%'.$form['search'].'%'
+                )
             );
         }
         $users_limit = 20;
@@ -38,21 +48,43 @@ class Explore extends WidgetCommon {
                        ->limit(0, $users_limit);
         $users = Contact::run_query($query);
 
-        $html = '';
+        $html = '
+                <div class="posthead" style="min-height: 70px;">
+                    <ul class="filters">
+                        <li class="on">'.t('Last registered').'</li>
+                    </ul>
+   
+                    <div class="clear"></div>
+                </div>';
         foreach($users as $user) {
-            $html.= '
+            $html .= '
+
                 <a href="?q=friend&f='.$user->getData('jid').'">
-                    <div class="contactbox">
+                    <div class="post">
                         <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                        <div class="desc">'.prepareString($user->getData('desc')).'</div>
-                        <span class="name">'.$user->getTrueName().'</span>
-                        <span class="asv">'.
-                            $user->getAge().' '.
-                            $gender[$user->getData('gender')].'<br />'.
-                            $marital[$user->getData('marital')].'
-                        </span>
+                        <div class="postbubble">
+                            <span class="name">'.
+                                $this->colorSearch($form['search'], $user->getTrueName()).'
+                            </span>
+                            <span class="asv">'.
+                                $user->getAge().' '.
+                                $gender[$user->getData('gender')].' '.
+                                $marital[$user->getData('marital')].'
+                            </span>
+                            <div 
+                                class="content"
+                                style="
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    height: 1.5em;
+                                "
+                            >'.prepareString($user->getData('desc')).'</div>
+                        </div>
                     </div>
-                </a>';
+
+                </a>
+                ';
         }
 
         return $html;
@@ -60,17 +92,6 @@ class Explore extends WidgetCommon {
 
     function build()
     {
-        /*$users_number = sizeof($users);
-
-        if($users_number < $users_limit) {
-            $users_fill = array();
-            for($i = 0; $i<$users_limit-$users_number; $i++)
-                array_push($users_fill, new Contact());
-
-            $users = array_merge($users, $users_fill);
-        }*/
-
-        //shuffle($users);
     ?>
         <div id="explore">
             <form name="searchform" style="margin: 1em 1.5em;" onsubmit="event.preventDefault();">
@@ -79,7 +100,7 @@ class Explore extends WidgetCommon {
                         class="button icon submit"
                         href="#"
                         onclick="<?php $this->callAjax("ajaxSearchContacts","movim_parse_form('searchform')"); ?> "
-                        style="float:right; width: 15%;">
+                        style="float:right; width: auto; margin-right: 0px;">
                         <?php echo t('Search'); ?>
                     </a>
                     <input
@@ -92,13 +113,8 @@ class Explore extends WidgetCommon {
                     />
                 </div>
             </form>
-            <div class="filters">
-                <ul>
-                    <li class="on""><?php echo t('Last registered');?></li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-            <div id="contactsresult">
+
+            <div id="contactsresult">   
                 <?php echo $this->prepareContacts(); ?>
             </div>
         </div>

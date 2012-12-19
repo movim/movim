@@ -1,43 +1,5 @@
 #explore {
-    padding-top: 1em;
     margin-bottom: 2em;
-}
-
-.contactbox {
-    height: 50px;
-    padding: 1.5em;
-    border-bottom: 1px solid #DDD;
-}
-
-.contactbox:hover {
-    background-color: #F9F9F9;
-}
-
-.contactbox img.avatar {
-    height: 50px;
-    width: 50px;
-    float: left;
-    margin-right: 10px;
-    border-radius: 4px;
-}
-
-.contactbox .name {
-    font-weight: bold;
-    display: block;
-    text-overflow: ellipsis;
-    max-width: 30%;
-    white-space: nowrap;
-}
-
-.contactbox .asv {
-    color: #888;
-}
-
-.contactbox .desc {
-    width: 50%;
-    height: 100%;
-    float: right;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: pre-wrap;
+    background-color: #F5F5F5;
+    min-height: 600px;
 }

@@ -6,6 +6,10 @@
 		<link rel="shortcut icon" href="../themes/movim/img/favicon.ico" />
 		<link rel="stylesheet" href="../themes/movim/css/style2.css" type="text/css" />
 		<link rel="stylesheet" href="../themes/movim/css/forms.css" type="text/css" />
+        <style type="text/css">
+            #left { padding-top: 10px; }
+            #content {margin: 0 auto; margin-top: 100px; }
+        </style>
 		<script type="text/javascript">
           function changeDB(select)
           {
@@ -49,8 +53,12 @@
           
         </script>
 	</head>
-	<body>
-		<div id="content" style="width: 900px">
+    <body>
+        <div id="nav">
+          
+        </div>
+
+        <div id="content">
 			
 			<?php require("part".$display.".php"); ?>
 			
