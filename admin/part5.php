@@ -1,9 +1,6 @@
 <div id="main">
     <div id="left">
         <?php include("error.php"); ?>
-        <div class="message warning">
-            <p><?php echo t('Move your mousepointer over the configure options to receive more information.');?></p>
-        </div>
     </div>
     <div id="center">
         <h1><?php echo $title; ?></h1>
