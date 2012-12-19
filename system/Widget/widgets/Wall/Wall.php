@@ -96,7 +96,7 @@ class Wall extends WidgetCommon
                             ->join('Contact', array('Post.jid' => 'Contact.jid'))
                             ->where($where)
                             ->orderby('Post.updated', true)
-                            ->limit($start, '20');
+                            ->limit($start, '10');
         $messages = Post::run_query($query);
 		
         // We ask for the HTML of all the posts
@@ -107,8 +107,8 @@ class Wall extends WidgetCommon
         if(sizeof($messages) > 0 && $htmlmessages != false) {
             if($start == 0) {
                 $html .= '
-                        <div id="wallheader">
-                        <a 
+                        <div class="posthead" style="border-top: 0px;">
+                                <a 
                                     class="button tiny icon feed merged left" 
                                     href="?q=feed&f='.$from.'"
                                     target="_blank"
@@ -128,7 +128,10 @@ class Wall extends WidgetCommon
             }
             $html .= $htmlmessages;
             if(sizeof($messages) > 9)
-                $html .= '<div class="post older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").'; this.style.display = \'none\'">'.t('Get older posts').'</div>';
+                $html .= '
+                    <div class="post">
+                        <div class="older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").';  this.parentNode.style.display = \'none\'">'.t('Get older posts').'</div>
+                    </div>';
 		}
         
 		return $html;
@@ -163,47 +166,7 @@ class Wall extends WidgetCommon
                     <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
                 </script>
             <?php
-            }
-        /*        <!--<a 
-                    class="button tiny icon follow" 
-                    href="#"
-                    style="float: right;"
-                    onclick="<?php echo $this->callAjax('ajaxSubscribe', "'".$_GET['f']."'"); ?>" 
-                >
-                    <?php echo t('Follow'); ?>
-                </a>
-                <br /><br />-->
-            <?php 
-            $query = Post::query()
-                                ->where(array(
-                                            'key' => $this->user->getLogin(), 
-                                            'parentid' => '',
-                                            'jid' => $_GET['f']))
-                                ->orderby('updated', true)
-                                ->limit('0', '20');
-            $messages = Post::run_query($query);
-            
-            if($messages == false) {
-            ?>
-                <script type="text/javascript">
-                <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
-                </script>
-                <div style="padding: 1.5em; text-align: center;">
-                    <?php echo t('Loading the contact feed ...'); ?>
-                </div>
-                <?php
-            } else {
-                $html = '';
-                
-                foreach($messages as $message) {
-                    $html .= $this->preparePost($message);
-                }
-                echo $html;
-            }
-
-            ?>
-            <br />
-            <div class="config_button" onclick="<?php $this->callAjax('ajaxWall', "'".$_GET['f']."'");?>"></div>*/ ?>
+            } ?>
        	</div>
 		<?php
 	}

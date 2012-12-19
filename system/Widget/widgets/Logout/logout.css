@@ -12,9 +12,9 @@
 	position: fixed;
 	top: 0px;
 	right: 50%;
-    margin-right: -300px;
+    margin-right: -250px;
 	cursor: pointer;
-    z-index: 3;
+    z-index: 5;
     padding: 12px 10px;
     padding-left: 20px;
     background-repeat: no-repeat;
@@ -30,12 +30,13 @@
     position: fixed;
     top: 36px;
     right: 50%;
-    margin-right: -302px;
+    margin-right: -250px;
     z-index: 1;
     background-color: #242424;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 2px 2px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
     overflow: hidden; 
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 #logoutlist a {

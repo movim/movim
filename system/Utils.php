@@ -110,24 +110,30 @@ function prepareString($string) {
             ':troll:' => 'trollface.png',
             ':lol:' => 'trollol.png',
         );
+    
+    $fixer = new HtmlFixer();
+    $string = $fixer->getFixedHtml($string);
+    
+    $string = str_replace('<a ', '<a target="_blank" ', $string);
 
-    $string = replaceAnchorsWithText($string);
+    
     $string = preg_replace(
         array(
             '/(^|\s|>)(www.[^<> \n\r]+)/iex',
             '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/iex',
-            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\'])((?:https?):\/\/([^<> \n\r]+)))/iex'
+            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\'])((?:https?):\/\/([^<> \n\r]+)))/iex',
+            '#<script[^>]*>.*?</script>#is'
         ),  
         array(
             "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\2':'\\0'))",
             "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\4':'\\0'))",
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\2</a>&nbsp;':'\\0'))"
+            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\2</a>&nbsp;':'\\0'))",
+            ''
         ),  
         ' '.$string
     );
-    $string = nl2br($string);
-    $string = str_replace("><br />", "", $string);  
     
+    // We add some smileys...    
     $conf = new Conf();
     $theme = $conf->getServerConfElement('theme');
     
@@ -137,9 +143,6 @@ function prepareString($string) {
         $replace = '<img class="smiley" src="'.$path.$value.'">';
         $string = str_replace($key, $replace, $string);
     }
-    
-    $string = preg_replace('#<script[^>]*>.*?</script>#is','',$string);
-    
 
     return trim($string);
 }
@@ -492,7 +495,7 @@ function getLocalTimezone()
     $arr = localtime($iTime);
     $arr[5] += 1900;
     $arr[4]++;
-    $iTztime = gmmktime($arr[2], $arr[1], $arr[0], $arr[4], $arr[3], $arr[5], $arr[8]);
+    $iTztime = gmmktime($arr[2], $arr[1], $arr[0], $arr[4], $arr[3], $arr[5]);
     $offset = doubleval(($iTztime-$iTime)/(60*60));
     $zonelist =
     array
@@ -536,6 +539,14 @@ function getLocalTimezone()
     if(sizeof($index)!=1)
         return false;
     return $index[0];
+}
+
+/*
+ * Echap the JID 
+ */
+function echapJid($jid)
+{
+    return str_replace(' ', '\40', $jid);
 }
 
 /**

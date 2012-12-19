@@ -32,7 +32,6 @@ class Vcard extends WidgetBase
     function onMyVcardReceived()
     {
 		$html = $this->prepareInfos();
-        //RPC::call('movim_textarea_autoheight(document.querySelector("#desctext"))');
         RPC::call('movim_fill', 'vcard', RPC::cdata($html));
         RPC::commit();
     }
@@ -268,7 +267,9 @@ class Vcard extends WidgetBase
                           </div>';
                           
                 $html .= '<div class="element"><label for="country">'.t('Country').'</label>
-                            <div class="select"><select name="country">';
+                            <div class="select">
+                                <select name="country">
+                                    <option value=""></option>';
                             $ctry = $me->adrcountry->getval();
                             foreach(getCountries() as $value) {
                                 $html .= '<option ';
@@ -276,7 +277,8 @@ class Vcard extends WidgetBase
                                     $html .= 'selected ';
                                 $html .= 'value="'.$value.'">'.$value.'</option>';
                             }
-                $html .= '  </select></div>
+                $html .= '      </select>
+                            </div>
                           </div>';
                           
             $html .= '
@@ -323,7 +325,8 @@ class Vcard extends WidgetBase
 		    $html .= '<a
                             onclick="
                                 '.$submit.' this.value = \''.t('Submitting').'\'; 
-                                this.className=\'button icon loading merged right\'" 
+                                this.className=\'button icon loading merged right\';
+                                this.onclick=null;" 
                             class="button icon ';
                 if($error)
                     $html .= 'no';

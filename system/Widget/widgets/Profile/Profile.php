@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
 
-class Profile extends WidgetBase
+class Profile extends WidgetCommon
 {
 
     private static $status;
@@ -90,22 +90,27 @@ class Profile extends WidgetBase
             <a href="?q=friend&f='.$this->user->getLogin().'">
                 <div class="block avatar">
                     <img src="'.$me->getPhoto('l').'"/>
-                </div>';
+                </div>
+            </a>';
                 
             // Contact general infos
             $html .= '
                 <div class="block">
-                    <h1>'.$me->getTrueName().'</h1><br />';
+                    <h1 style="text-decoration: none;">'.$me->getTrueName().'</h1><br />';
+
+            if($this->testIsSet($me->getData('name')))
+                $html .= $me->getData('name').' ';
+            else
+                $html .= $me->getTrueName().' ';
+                
+            if($this->testIsSet($me->getData('url')))
+                $html .= '<br /><a target="_blank" href="'.$me->getData('url').'">'.$me->getData('url').'</a>';
+            
 
             $html .= '<br /><br />
                 </div>
-            </a>';
+            ';
                 
-            /*$html .='
-                <a href="?q=friend&f='.$this->user->getLogin().'">
-                    <h1>'.$me->getTrueName().'</h1>
-                    <img src="'.$me->getPhoto().'"/>
-                </a>';*/
             $html .= '
             <div class="block" style="width: 550px;">
                 <div class="textbubble">
