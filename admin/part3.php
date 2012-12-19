@@ -1,15 +1,23 @@
 <div id="main">
     <div id="left">
         <?php include("error.php"); ?>
-        <div class="message warning">
-            <p><?php echo t('Move your mousepointer over the configure options to receive more information.');?></p>
-        </div>
     </div>
     <div id="center">
         <h1 ><?php echo $title; ?></h1>
         <br />
         <div style="margin: 20px;">
-        
+            <p>
+                <?php echo t("To function properly you need to Movim specify a functional BOSH server. This server will act as an intermediary between Movim and XMPP server."); ?>
+            </p>
+            <br />
+            <p>
+                <?php echo t("You will find a list of public servers BOSH on the page"); ?><a href="http://pod.movim.eu/#bosh">http://pod.movim.eu/#bosh</a>.
+            </p>
+            <br />
+            <p>
+                <?php echo t("You can also install your own BOSH server, to do this follow the documentation!"); ?> <a href="http://wiki.movim.eu/manual:bosh_servers?s[]=bosh">http://wiki.movim.eu/manual:bosh_servers?s[]=bosh</a>.
+            </p>
+            <br />
             <form method="post" action="index.php">
                 <fieldset>
                     <legend><?php echo $steps[$display]; ?></legend><br />

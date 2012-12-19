@@ -19,7 +19,6 @@ require_once(LIB_PATH . "Datajar2/Datajar/loader.php");
 load_datajar();
 
 require_once(LIB_PATH . "Datas/Caps.php");
-require_once(LIB_PATH . "Datas/ConfVar.php");
 require_once(LIB_PATH . "Datas/Contact.php");
 require_once(LIB_PATH . "Datas/Presence.php");
 require_once(LIB_PATH . "Datas/Message.php");
