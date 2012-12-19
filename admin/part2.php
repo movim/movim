@@ -27,7 +27,7 @@
                             $dbpreset = $dbsystem
                          ?>
                 </div>
-                <?PHP endforeach; ?>
+                <?php endforeach; ?>
             </p>
             <br />
                 <form method="post" action="index.php">
@@ -61,30 +61,30 @@
                             <legend><?php echo t('MySQL Settings'); ?></legend>
                             <div class="element" <?php //echo generate_Tooltip(t("This defaults in most cases to localhost")); ?>>
                               <label for="dbhost"><?php echo t('MySQL Host'); ?></label>
-                              <input type="text" name="dbhost" id="dbhost" value="<?  echo get_preset_value_db('host', 'localhost'); ?>" />
+                              <input type="text" name="dbhost" id="dbhost" value="<?php  echo get_preset_value_db('host', 'localhost'); ?>" />
                             </div>
                             <div class="element" <?php //echo generate_Tooltip(t("If not sure, leave default")); ?>>
                               <label for="dbport"><?php echo t('MySQL Port'); ?></label>
-                              <input type="text" name="dbport" id="dbport" value="<?  echo get_preset_value_db('port', get_mysql_port()); ?>" />
+                              <input type="text" name="dbport" id="dbport" value="<?php  echo get_preset_value_db('port', get_mysql_port()); ?>" />
                             </div>
                             <div class="element" <?php //echo generate_Tooltip(t("You get this values from your hosting provider or you have to create a new MySQL user on your system")); ?>>
                               <label for="dbusername"><?php echo t('MySQL Username'); ?></label>
-                              <input type="text" name="dbusername" id="dbusername" value="<?  echo get_preset_value_db('username', ''); ?>" />
+                              <input type="text" name="dbusername" id="dbusername" value="<?php  echo get_preset_value_db('username', ''); ?>" />
                             </div>
                             <div class="element" <?php //echo generate_Tooltip(t("You get this values from your hosting provider or you have to create a new MySQL user on your system")); ?>>
                               <label for="dbpassword"><?php echo t('MySQL Password'); ?></label>
-                              <input type="password" name="dbpassword" id="dbpassword" value="<?  echo get_preset_value_db('password', ''); ?>" />
+                              <input type="password" name="dbpassword" id="dbpassword" value="<?php  echo get_preset_value_db('password', ''); ?>" />
                             </div>
                             <div class="element" <?php //echo generate_Tooltip(t("You get this values from your hosting provider or you have to create a new MySQL database on your system")); ?>>
                               <label for="dbdatabase"><?php echo t('MySQL Database'); ?></label>
-                              <input type="text" name="dbdatabase" id="dbdatabase" value="<?  echo get_preset_value_db('database', ''); ?>" />
+                              <input type="text" name="dbdatabase" id="dbdatabase" value="<?php  echo get_preset_value_db('database', ''); ?>" />
                             </div>
                     </fieldset>
                     <?php /*<fieldset id="sqlite" style=" display: <?php if(get_preset_value_db('type', $dbpreset) == 'sqlite'): echo 'block'; else: echo 'none'; endif;?>">
                         <legend><?php echo t('SQlite Settings'); ?></legend>
                             <div class="element" <?php echo generate_Tooltip(t("Enter a full path! Webserver must have read/write access")); ?>>
                               <label for="dbdatabase"><?php echo t('Path to SQlite file'); ?></label>
-                              <input type="text" name="dbdatabase" id="dbdatabase" value="<?  echo get_preset_value_db('database', '/dev/null'); ?>" />
+                              <input type="text" name="dbdatabase" id="dbdatabase" value="<?php  echo get_preset_value_db('database', '/dev/null'); ?>" />
                             </div>
                     </fieldset>*/ ?>
                     <?php include('buttons.php'); ?>

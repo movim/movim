@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------
 // HTML FIXER v.2.05 15/07/2010
 // clean dirty html and make it better, fix open tags
@@ -12,7 +12,7 @@
 // $clean_html = $a->getFixedHtml($dirty_html);
 // -------------------------------------------------
 
-Class HtmlFixer {
+class HtmlFixer {
 	public $dirtyhtml;
 	public $fixedhtml;
 	public $allowed_styles;		// inline styles array of allowed css (if empty means ALL allowed)
