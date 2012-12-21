@@ -39,7 +39,7 @@ class Profile extends WidgetCommon
     
     function onMyPresence()
     {
-        RPC::call('movim_fill', 'valid', RPC::cdata('done'));        
+        RPC::call('movim_fill', 'statussaved', RPC::cdata('✔ '.t('Saved')));        
     }
     
 	function ajaxSetStatus($status)
@@ -123,12 +123,14 @@ class Profile extends WidgetCommon
                     <textarea 
                         id="status" 
                         spellcheck="false"
-                        onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' return false;}"
+						onfocus="this.style.fontStyle=\'italic\'; this.parentNode.querySelector(\'#statussaved\').innerHTML = \'\'"
+						onblur="this.style.fontStyle=\'normal\';"
+                        onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' this.blur(); return false;}"
                         onload="movim_textarea_autoheight(this);"
                         onkeyup="movim_textarea_autoheight(this);">'.$presence['status'].'</textarea>
+                    <div id="statussaved" style="text-align: right;"></div>
                 </div>
             </div>
-            <div id="valid"></div>
                 ';
         } else {
 			$html .= '
