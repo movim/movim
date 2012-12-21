@@ -90,12 +90,10 @@ class WidgetCommon extends WidgetBase {
         
         if(isset($message[1])) {
             $tmp = '<div class="post ';
-                
-            if($message[1]->getTrueName() == null)
-                $name = $message[0]->getData('jid');
-            else
-                $name = $message[1]->getTrueName();
-                
+            
+            if($message[0]->getData('jid') == $this->user->getLogin())
+                $tmp .= 'me';
+
             $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
             
                     <a href="?q=friend&f='.$message[0]->getData('jid').'">
@@ -110,6 +108,11 @@ class WidgetCommon extends WidgetBase {
                 else
                     $tmp .= 'protect orange';
             }
+        
+            if($message[1]->getTrueName() == null)
+                $name = $message[0]->getData('jid');
+            else
+                $name = $message[1]->getTrueName();
                     
             $tmp .= '">
 
