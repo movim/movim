@@ -117,7 +117,9 @@ class Profile extends WidgetCommon
                     <textarea 
                         id="status" 
                         spellcheck="false"
-                        onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' return false;}"
+						onfocus="this.style.fontStyle=\'italic\';"
+						onblur="this.style.fontStyle=\'normal\';"
+                        onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', "getStatusText()").' this.blur();}"
                         onload="movim_textarea_autoheight(this);"
                         onkeyup="movim_textarea_autoheight(this);">'.$presence['status'].'</textarea>
                 </div>
