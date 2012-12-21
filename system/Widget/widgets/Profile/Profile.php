@@ -28,12 +28,18 @@ class Profile extends WidgetCommon
         $this->addcss('profile.css');
         $this->addjs('profile.js');
         $this->registerEvent('myvcard', 'onMyVcardReceived');
+        $this->registerEvent('mypresence', 'onMyPresence');
     }
     
     function onMyVcardReceived($vcard = false)
     {
 		$html = $this->prepareVcard($vcard);
         RPC::call('movim_fill', 'profile', RPC::cdata($html));
+    }
+    
+    function onMyPresence()
+    {
+        RPC::call('movim_fill', 'valid', RPC::cdata('done'));        
     }
     
 	function ajaxSetStatus($status)
@@ -122,6 +128,7 @@ class Profile extends WidgetCommon
                         onkeyup="movim_textarea_autoheight(this);">'.$presence['status'].'</textarea>
                 </div>
             </div>
+            <div id="valid"></div>
                 ';
         } else {
 			$html .= '

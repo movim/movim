@@ -198,16 +198,14 @@ class Feed extends WidgetCommon {
             
         // We create the array for the comments request
         $commentid = array();
-        $i = 0;
-            
-        foreach($contacts as $c) {
-            if($i == 0)
-                array_push($rosterc, $c->getData('jid'));
 
-            else
-                array_push($rosterc, '|'.$c->getData('jid'));
-            $i++;
+        array_push($rosterc, $this->user->getLogin());
+        
+        foreach($contacts as $c) {
+            array_push($rosterc, '|'.$c->getData('jid'));
         }
+        
+        //var_dump($rosterc);
         
         if(empty($rosterc))
             $where = array(

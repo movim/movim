@@ -51,6 +51,8 @@
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
     overflow: hidden; 
     border: 1px solid rgba(0, 0, 0, 0.5);
+    max-height: 400px;
+    overflow-y: scroll;
 }
 
 #notifslist .black {
