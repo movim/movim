@@ -1,7 +1,7 @@
 <div id="main">
     <div id="left">
         <div class="message warning">
-            <p><?php echo t('Thank you for downloading Movim !');?></p>
+            <p><?php echo t('Thank you for downloading Movim!');?></p>
             <p><?php echo t('Before you enjoy your social network, a few adjustements are required.'); ?></p>
             <p><?php echo t('Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit.'); ?></p>
             <p><?php echo t('For help on installation see the').' <a href="http://wiki.movim.eu/install">wiki</a>.'?></p>
