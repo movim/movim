@@ -31,17 +31,6 @@ class Feed extends WidgetCommon {
         RPC::call('movim_fill', 'feedhead', RPC::cdata($this->prepareHead()));
     }
     
-    function onPost($id) {
-        $query = Post::query()
-                            ->where(array('key' => $this->user->getLogin(), 'nodeid' => $id));
-        $post = Post::run_query($query);
-
-        if($post != false) {  
-            $html = $this->preparePost($post[0]);
-            RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
-        }
-    }
-    
     function onNodeCreated() {
         $config = $this->user->getConfig();
         $config['feed'] = 'created';
@@ -193,10 +182,6 @@ class Feed extends WidgetCommon {
         
         $rosterc = array();
         
-        //foreach($contactsq as $c)
-        //    array_push($rosterc, $c->getData('jid'));
-            
-        // We create the array for the comments request
         $commentid = array();
 
         array_push($rosterc, $this->user->getLogin());
@@ -205,7 +190,6 @@ class Feed extends WidgetCommon {
             array_push($rosterc, '|'.$c->getData('jid'));
         }
         
-        //var_dump($rosterc);
         
         if(empty($rosterc))
             $where = array(
@@ -250,7 +234,7 @@ class Feed extends WidgetCommon {
         
     function onStream($payload) {
         $html = '';
-        $html = $this->prepareFeed(0);
+        $html = $this->prepareFeed(-1);
         
         if($html == '') 
             $html = t("Your feed cannot be loaded.");

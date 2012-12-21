@@ -61,6 +61,8 @@ form .element:nth-child(2) {
 }
 
 .element textarea, textarea {
+	font-family: helvetica, sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 13px;
     padding: 10px 0px;
     resize: vertical;
     background-color: white;
