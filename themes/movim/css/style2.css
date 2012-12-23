@@ -485,3 +485,21 @@ span#widgettitle {
 	background-color: #444444;
 	color: white;
 }
+
+/* Table */
+table thead {
+    font-weight: bold;
+}
+
+table thead tr td {
+    text-align: center;
+}
+
+table tbody tr:nth-child(2n+1) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+table tbody tr td {
+    vertical-align: middle;
+    padding: 0.3em;
+}
