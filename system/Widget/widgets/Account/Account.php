@@ -312,7 +312,7 @@ class Account extends WidgetBase {
             
             $html .= '
                 <div class="clear"></div>
-                <table>
+                <table id="list">
                     <thead>
                         <tr>
                             <td>

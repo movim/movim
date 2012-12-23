@@ -495,7 +495,7 @@ table thead tr td {
     text-align: center;
 }
 
-table tbody tr:nth-child(2n+1) {
+table#list tbody tr:nth-child(2n+1) {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
