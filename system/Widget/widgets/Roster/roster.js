@@ -39,7 +39,8 @@ function rosterToggleClass(myClass){
     }
 }
 
-function showRoster(n) {
+function showRoster(n, test) {
+	alert(test);
     roster = document.querySelector('#rosterlist');
     rosterToggleClass("offline");
     rosterToggleClass("server_error");
@@ -78,19 +79,12 @@ function rosterNextGroup(cgp){
 		thisGp = thisGp.nextSibling;
 	}
 	if(thisGp.nextSibling!= null){
-		//test "ob"
 		console.log(thisGp.querySelectorAll("li")[0]);
         thisGp = thisGp.nextSibling;
-        //if(rosterlist.querySelector(".offline").style.display != ""){//offline are shown
+		//offline are shown
             while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0){
                 thisGp = thisGp.nextSibling;
             }
-        /*}
-        else{
-            while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0){
-                thisGp = thisGp.nextSibling;
-            }
-        }*/
 		cgp = thisGp;
 		currContact = cgp.querySelectorAll("li")[0];
 	}
@@ -173,7 +167,6 @@ function rosterPreviousGroup(cgp){
 			thisGp = thisGp.nextSibling;//change group
 		}
 		console.log(thisGp.querySelectorAll("li:not([style='display: none;'])")[0]);
-			//thisGp = thisGp.previousSibling;
 			while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0 && thisGp != firstGroup){
 				thisGp = thisGp.previousSibling;
 			}
@@ -301,6 +294,21 @@ function rosterSearch(e){
 				focused.className = focused.className.replace("focused", "");
 			if(contact.className.lastIndexOf("focused")<0)
 				contact.className += " focused";
+		}
+	}
+}
+
+function rosterToggleGroup(h, offline){
+	alert(offline);
+	parent = h.parentNode.querySelectorAll("li");
+	if(parent[0].style.display=="none"){
+		for(i=0; i<parent.length; i++){
+			parent[i].style.display="inline";
+		}
+	}
+	else{
+		for(i=0; i<parent.length; i++){
+			parent[i].style.display="none";
 		}
 	}
 }

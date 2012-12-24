@@ -160,8 +160,9 @@ class Roster extends WidgetBase
         // And we add the title at the head of the group 
         if($currentgroup == '')
             $currentgroup = t('Ungrouped');
-            
-        $grouphtml = '<div><h1>'.$currentgroup.' - '.count($duplicate).'</h1>'.$grouphtml.'</div>';
+			
+		
+        $grouphtml = '<div><h1 onclick=" rosterToggleGroup(this, '.Cache::c("offlineShown").');">'.$currentgroup.' - '.count($duplicate).'</h1>'.$grouphtml.'</div>';
         
         return $grouphtml;
     }
@@ -241,9 +242,23 @@ class Roster extends WidgetBase
           ->request();
     }
     
-    function build()
+	/**
+     * @brief Toggling boolean variables in the Cache
+	 * @param $param
+     * @returns 
+     * 
+     * 
+     */
+	function ajaxToggleCache($param){
+		$old = Cache::c($param);
+		$bool = ($old== "true") ? "false" : "true";
+ 		Cache::c($param, $bool);
+		return $old;
+	}
+    
+	function build()
     {
-    ?>
+    $c = Cache::c('offlineShown', 'false');?>
         <div id="roster">
             <ul id="rosterlist">
             <?php echo $this->prepareRoster(); ?>
@@ -290,7 +305,7 @@ class Roster extends WidgetBase
                     <li onclick="addJid(this)"; style="float: right;" title="<?php echo t('Add'); ?>">
                         <a href="#">+</a>
                     </li>
-                    <li onclick="showRoster(this);" style="float: right;" title="<?php echo t('Show/Hide'); ?>">
+                    <li onclick="showRoster(this, <?php $this->callAjax('ajaxToggleCache', "'offlineShown'"); ?>); " style="float: right;" title="<?php echo t('Show/Hide'); ?>">
                         <a href="#">◐</a>
                     </li>
                     <li>

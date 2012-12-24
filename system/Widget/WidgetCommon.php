@@ -197,6 +197,7 @@ class WidgetCommon extends WidgetBase {
                     <div class="tools">
                         '.t("Change the privacy level").' : 
                         <a
+							title="'.t("your post will appear in your Movim public feed").'"
                             onclick="'.
                                 $this->genCallAjax(
                                     'ajaxPrivacyPost', 
