@@ -40,7 +40,7 @@ form .element:nth-child(2) {
     display: block;
 }
 
-.element > *:not(label):not(img) {
+.element > *:not(label):not(img):not(span) {
     display: block;
     width: 90%;
     border: 1px solid #999;
