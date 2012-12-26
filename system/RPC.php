@@ -79,9 +79,6 @@ class RPC
             println('</funcall>');
         }
         println('</movimcontainer>');
-
-        $xml = ob_get_flush();
-        file_put_contents('debug', $xml . "\n" . var_export(self::$funcalls, true));
     }
 
     /**
