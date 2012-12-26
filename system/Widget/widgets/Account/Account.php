@@ -94,7 +94,7 @@ class Account extends WidgetBase {
                     }
                 } elseif(isset($elements['x'])) {
                     $html .= '<p>'.(string)$elements['x']->instructions.'</p><br />';
-                    movim_log($elements);
+
                     foreach($elements['x']->field as $element) {
                         switch((string)$element->attributes()->type) {
                             case 'hidden':
