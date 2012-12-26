@@ -54,9 +54,11 @@ class ContactInfo extends WidgetCommon
             
             // Mood
             if($contact->mood->getval() != '') {
+                $moodarray = getMood();
+                
                 $mood = '';
                 foreach(unserialize($contact->mood->getval()) as $m)
-                    $mood .= ucfirst(t($m)).',';
+                    $mood .= $moodarray[$m].',';
                 $html .= t("I'm ").substr($mood, 0, -1).'<br />';
             }
             
@@ -103,26 +105,29 @@ class ContactInfo extends WidgetCommon
             }
             
             // Client informations
-            if($presence['node'] != '' && $presence['ver'] != '') {
+            if($presence['node'] != '' && $presence['ver'] != '') {                
+                $node = $presence['node'].'#'.$presence['ver'];
+
+                $query = \Caps::query()->select()
+                                           ->where(array(
+                                                   'node' => $node))
+                                           ->limit(0, 1);
+                $data = \Caps::run_query($query);
+                
                 $clienttype = 
                     array(
                         'bot' => t('Bot'),
                         'pc' => t('Desktop'),
-                        'phone' => t('Phone')
+                        'phone' => t('Phone'),
+                        'web' => t('Web'),
                         );
-                
-                
-                $c = new CapsHandler();
-                $caps = $c->get($presence['node'].'#'.$presence['ver']);
-                
-                if($this->testIsSet($caps->getData('type'))) {
-                    if($caps->getData('type') == 'phone')
-                        $cinfos = '<span class="mobile"></span>';
-                }
-                if($this->testIsSet($caps->getData('name')))
-                    $cinfos .=  $caps->getData('name').'<br />';
-                if($cinfos != "")
+                        
+                if(isset($data[0])) {
+                    $data = $data[0];
+                    $cinfos = '';
+                    $cinfos .=  $data->getData('name').' ('.$clienttype[$data->getData('type')].')<br />';
                     $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
+                }
             }
             
             if($contact->jid->getval() != $this->user->getLogin()) {

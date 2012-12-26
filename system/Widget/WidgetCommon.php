@@ -135,7 +135,11 @@ class WidgetCommon extends WidgetBase {
                          </span>';
                          
             if($message[0]->getData('jid') != $message[0]->getData('uri'))
-                $tmp .= '<span class="recycle"><a href="?q=friend&f='.$message[0]->getData('uri').'">'.$message[0]->getData('name').'</a></span>';
+                $tmp .= '<span class="recycle">
+                            <a href="?q=friend&f='.$message[0]->getData('uri').'">'.$message[0]->getData('name').'</a>
+                         </span>';
+                         
+            $tmp .= '<div class="clear"></div>';
               
             if($message[0]->getData('commentson') == 1) {
                 $tmp .= '<div class="comments" id="'.$message[0]->getData('nodeid').'comments">';

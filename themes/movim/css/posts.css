@@ -110,6 +110,8 @@
 
 .post span.recycle {
     background: url(../img/icons/recycle.png) 0px 4px no-repeat;
+    padding-right: 1em;
+    padding-bottom: 0.7em;
 }
 
 .post .comments {
