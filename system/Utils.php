@@ -532,8 +532,8 @@ function getMood() {
         'hungry' => t('hungry'), // Having a physical need for food.
         'hurt' => t('hurt'), // Wounded, injured, or pained, whether physically or emotionally.
         'impressed' => t('impressed'), // Favourably affected by something or someone.
-        'in_awe' => t('in_awe'), // Feeling amazement at something or someone; or feeling a combination of fear and reverence.
-        'in_love' => t('in_love'), // Feeling strong affection, care, liking, or attraction..
+        'in_awe' => t('in awe'), // Feeling amazement at something or someone; or feeling a combination of fear and reverence.
+        'in_love' => t('in love'), // Feeling strong affection, care, liking, or attraction..
         'indignant' => ('indignant'), // Showing anger or indignation, especially at something unjust or wrong.
         'interested' => t('interested'), // Showing great attention to something or someone; having or showing interest.
         'intoxicated' => t('intoxicated'), // Under the influence of alcohol; drunk.
