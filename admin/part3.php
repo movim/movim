@@ -7,7 +7,7 @@
         <br />
         <div style="margin: 20px;">
             <p>
-                <?php echo t("To function properly you need to Movim specify a functional BOSH server. This server will act as an intermediary between Movim and XMPP server."); ?>
+                <?php echo t("You need to specify a functional BOSH server. This server will act as an intermediary between Movim and XMPP server."); ?>
             </p>
             <br />
             <p>
