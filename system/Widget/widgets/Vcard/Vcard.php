@@ -127,12 +127,12 @@ class Vcard extends WidgetBase
             
             if($error == 'vcardfeaturenotimpl') {
                 $html .= '
-                    <div class="message error">'.t("Profil not updated : Your server does not support the vCard feature").'</div>';
+                    <div class="message error">'.t("Profile not updated : Your server does not support the vCard feature").'</div>';
             }
             
             if($error == 'vcardbadrequest') {
                 $html .= '
-                    <div class="message error">'.t("Profil not updated : Request error").'</div>';
+                    <div class="message error">'.t("Profile not updated : Request error").'</div>';
             }
         
             if($me->getData('public') == '1')
