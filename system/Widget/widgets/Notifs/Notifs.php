@@ -134,7 +134,7 @@ class Notifs extends WidgetCommon
                             this.innerHTML = \''.t('Updating').'\'; 
                             this.className= \'button tiny icon loading black\';
                             this.onclick=null;">
-                    '.t('Rafraichir').'
+                    '.t('Refresh').'
                 </a>
                 <ul>';
             // XMPP notifications
