@@ -28,13 +28,13 @@ body {
     font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
     font-size: 13px;
     color: #4E4E4E;
-    background-color: #274950;
+    background-color: #082D50;
     background-image: radial-gradient(center
-     45deg, ellipse, #95AEC9 0%, #082D50 100%);
+     45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
     background-image: -moz-radial-gradient(center
-     45deg, ellipse, #95AEC9 0%, #082D50 100%);
-    background-image: -webkit-radial-gradient(50% 50%, ellipse, #95AEC9, #082D50 );
-    background-image: -o-radial-gradient(50% 50%, ellipse, #95AEC9, #082D50 );
+     45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
+    background-image: -webkit-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
+    background-image: -o-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
     background-repeat: no-repeat;
     background-attachment:fixed;
     margin: 0 auto;
