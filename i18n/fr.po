@@ -1476,7 +1476,7 @@ msgstr "Connexion…"
 #: ../system/Widget/widgets/Login/Login.php:275
 #, fuzzy
 msgid "Population"
-msgstr "Position"
+msgstr "Population"
 
 #: ../system/Widget/widgets/Login/Login.php:277
 msgid "No account yet ?"
