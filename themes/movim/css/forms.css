@@ -21,9 +21,9 @@ legend {
     line-height: 2em !important;
 }
 
-form .element:nth-child(2) {
+/*form .element:nth-child(2) {
     clear: both;
-}
+}*/
 
 .element {
     overflow: auto;
@@ -40,7 +40,7 @@ form .element:nth-child(2) {
     display: block;
 }
 
-.element > *:not(label):not(img):not(span) {
+.element > *:not(label):not(img):not(span):not(a) {
     display: block;
     width: 90%;
     border: 1px solid #999;
