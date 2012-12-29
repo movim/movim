@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-25 16:52+0100\n"
+"POT-Creation-Date: 2012-12-28 15:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: ../admin/buttons.php:2 ../admin/part0.php:66
+#: ../admin/buttons.php:2 ../admin/part0.php:63
 msgid "Next"
 msgstr ""
 
@@ -31,55 +31,54 @@ msgid ""
 "satisfied in order to install Movim."
 msgstr ""
 
-#: ../admin/index.php:12
+#: ../admin/index.php:11
 msgid "Movim Installer and Configuration Manager"
 msgstr ""
 
-#: ../admin/index.php:200 ../admin/index.php:204 ../admin/index.php:208
-#: ../admin/index.php:212
+#: ../admin/index.php:199 ../admin/index.php:203 ../admin/index.php:207
+#: ../admin/index.php:211
 #, php-format
 msgid "Couldn't create directory '%s'."
 msgstr ""
 
-#: ../admin/index.php:274
+#: ../admin/index.php:273
 #, php-format
 msgid "Couldn't create configuration file '%s'."
 msgstr ""
 
-#: ../admin/index.php:329
+#: ../admin/index.php:323
 msgid "Compatibility Check"
 msgstr ""
 
-#: ../admin/index.php:330
+#: ../admin/index.php:324
 msgid "General Settings"
 msgstr ""
 
-#: ../admin/index.php:331
+#: ../admin/index.php:325
 msgid "Database Settings"
 msgstr ""
 
-#: ../admin/index.php:332
+#: ../admin/index.php:326
 msgid "Bosh Configuration"
 msgstr ""
 
-#: ../admin/index.php:333
+#: ../admin/index.php:327
 msgid "Whitelist - XMPP Server"
 msgstr ""
 
-#: ../admin/index.php:334
+#: ../admin/index.php:328
 msgid "Done"
 msgstr ""
 
-#: ../admin/index.php:433
+#: ../admin/index.php:454
 msgid "Your Bosh URL is not reachable"
 msgstr ""
 
-#: ../admin/index.php:461
+#: ../admin/index.php:482
 msgid "Please put a valid domain name list"
 msgstr ""
 
-#: ../admin/index.php:495 ../system/Widget/widgets/Account/Account.php:322
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:135
+#: ../admin/index.php:508 ../system/Widget/widgets/Account/Account.php:384
 msgid "You entered different passwords"
 msgstr ""
 
@@ -143,154 +142,157 @@ msgstr ""
 msgid "<a href=\"http://datajar.movim.eu\">Datajar</a> version: "
 msgstr ""
 
-#: ../admin/part0.php:44
-msgid ""
-"<a href=\"https://launchpad.net/moxl\">Moxl</a> version: asd<br> Required: "
-"asdasd"
-msgstr ""
-
-#: ../admin/part0.php:51
+#: ../admin/part0.php:48
 msgid "Please make the required changes to continue."
 msgstr ""
 
-#: ../admin/part1.php:4 ../admin/part2.php:5 ../admin/part3.php:5
-#: ../admin/part4.php:5 ../admin/part5.php:5 ../admin/part6.php:4
-msgid ""
-"Move your mousepointer over the configure options to receive more "
-"information."
-msgstr ""
-
-#: ../admin/part1.php:19
+#: ../admin/part1.php:15
 msgid "Theme"
 msgstr ""
 
-#: ../admin/part1.php:31
+#: ../admin/part1.php:27
 msgid "Default language"
 msgstr ""
 
-#: ../admin/part1.php:44
+#: ../admin/part1.php:40
 msgid "Maximum population"
 msgstr ""
 
-#: ../admin/part1.php:51
+#: ../admin/part1.php:47
 msgid "empty"
 msgstr ""
 
-#: ../admin/part1.php:52
+#: ../admin/part1.php:48
 msgid "terse"
 msgstr ""
 
-#: ../admin/part1.php:53
+#: ../admin/part1.php:49
 msgid "normal"
 msgstr ""
 
-#: ../admin/part1.php:54
+#: ../admin/part1.php:50
 msgid "talkative"
 msgstr ""
 
-#: ../admin/part1.php:55
+#: ../admin/part1.php:51
 msgid "ultimate"
 msgstr ""
 
-#: ../admin/part1.php:60
+#: ../admin/part1.php:56
 msgid "Log verbosity"
 msgstr ""
 
-#: ../admin/part2.php:12
+#: ../admin/part2.php:9
 msgid ""
 "Movim's database engine \"Datajar\" can handle a lot of database systems. "
 "Here you can see which ones are available in your setup."
 msgstr ""
 
-#: ../admin/part2.php:41
+#: ../admin/part2.php:38
 msgid "Database System to use:"
 msgstr ""
 
-#: ../admin/part2.php:61
+#: ../admin/part2.php:58
 msgid "MySQL Settings"
 msgstr ""
 
-#: ../admin/part2.php:63
+#: ../admin/part2.php:60
 msgid "MySQL Host"
 msgstr ""
 
-#: ../admin/part2.php:67
+#: ../admin/part2.php:64
 msgid "MySQL Port"
 msgstr ""
 
-#: ../admin/part2.php:71
+#: ../admin/part2.php:68
 msgid "MySQL Username"
 msgstr ""
 
-#: ../admin/part2.php:75
+#: ../admin/part2.php:72
 msgid "MySQL Password"
 msgstr ""
 
-#: ../admin/part2.php:79
+#: ../admin/part2.php:76
 msgid "MySQL Database"
 msgstr ""
 
-#: ../admin/part3.php:18
-msgid "Bosh URL"
+#: ../admin/part3.php:10
+msgid ""
+"You need to specify a functional BOSH server. This server will act as an "
+"intermediary between Movim and XMPP server."
 msgstr ""
 
-#: ../admin/part3.php:22
-msgid "BOSH changeable"
+#: ../admin/part3.php:14
+#, php-format
+msgid "You will find a list of public servers BOSH on the page %s."
+msgstr ""
+
+#: ../admin/part3.php:18
+#, php-format
+msgid ""
+"You can also install your own BOSH server, to do this follow the "
+"documentation %s!"
 msgstr ""
 
 #: ../admin/part3.php:26
+msgid "Bosh URL"
+msgstr ""
+
+#: ../admin/part3.php:30
+msgid "BOSH changeable"
+msgstr ""
+
+#: ../admin/part3.php:34
 msgid "Bosh Proxy"
 msgstr ""
 
-#: ../admin/part4.php:13
+#: ../admin/part4.php:10
 msgid ""
 "If you want to specify a list of authorized XMPP servers on your Movim pod "
 "and forbid the connection on all the others please put their domain name "
 "here, with comma (ex: movim.eu,jabber.fr)"
 msgstr ""
 
-#: ../admin/part4.php:15
+#: ../admin/part4.php:12
 msgid ""
 "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr ""
 
-#: ../admin/part4.php:23
+#: ../admin/part4.php:20
 msgid "List of whitelisted XMPP servers"
 msgstr ""
 
-#: ../admin/part5.php:13
+#: ../admin/part5.php:10
 msgid ""
 "You are able to access this installation manager later to make changes to "
 "your install. Please specify a username and a password to protect it."
 msgstr ""
 
-#: ../admin/part5.php:22
+#: ../admin/part5.php:19
 msgid "Username"
 msgstr ""
 
-#: ../admin/part5.php:27
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:182
-#: ../system/Widget/widgets/Login/Login.php:262
+#: ../admin/part5.php:24 ../system/Widget/widgets/Login/Login.php:262
 msgid "Password"
 msgstr ""
 
-#: ../admin/part5.php:31
+#: ../admin/part5.php:28
 msgid "Retype password"
 msgstr ""
 
-#: ../admin/part6.php:10
+#: ../admin/part6.php:7
 msgid ""
 "That's it. Your configuration is now finished, and the database has been "
 "created."
 msgstr ""
 
-#: ../admin/part6.php:11
+#: ../admin/part6.php:8
 msgid ""
 "If you want to change something later on you can do this by coming back to "
 "the installer."
 msgstr ""
 
-#: ../admin/part6.php:17
+#: ../admin/part6.php:14
 msgid "Here we go !"
 msgstr ""
 
@@ -314,160 +316,160 @@ msgstr ""
 msgid "Error: %s"
 msgstr ""
 
-#: ../system/Utils.php:156
+#: ../system/Utils.php:159
 msgid "Monday"
 msgstr ""
 
-#: ../system/Utils.php:157
+#: ../system/Utils.php:160
 msgid "Tuesday"
 msgstr ""
 
-#: ../system/Utils.php:158
+#: ../system/Utils.php:161
 msgid "Wednesday"
 msgstr ""
 
-#: ../system/Utils.php:159
+#: ../system/Utils.php:162
 msgid "Thursday"
 msgstr ""
 
-#: ../system/Utils.php:160 ../system/Utils.php:162
+#: ../system/Utils.php:163 ../system/Utils.php:165
 msgid "Friday"
 msgstr ""
 
-#: ../system/Utils.php:161
+#: ../system/Utils.php:164
 msgid "Saturday"
 msgstr ""
 
-#: ../system/Utils.php:165
+#: ../system/Utils.php:168
 msgid "January"
 msgstr ""
 
-#: ../system/Utils.php:166
+#: ../system/Utils.php:169
 msgid "February"
 msgstr ""
 
-#: ../system/Utils.php:167
+#: ../system/Utils.php:170
 msgid "March"
 msgstr ""
 
-#: ../system/Utils.php:168
+#: ../system/Utils.php:171
 msgid "April"
 msgstr ""
 
-#: ../system/Utils.php:169
+#: ../system/Utils.php:172
 msgid "May"
 msgstr ""
 
-#: ../system/Utils.php:170
+#: ../system/Utils.php:173
 msgid "June"
 msgstr ""
 
-#: ../system/Utils.php:171
+#: ../system/Utils.php:174
 msgid "July"
 msgstr ""
 
-#: ../system/Utils.php:172
+#: ../system/Utils.php:175
 msgid "August"
 msgstr ""
 
-#: ../system/Utils.php:173
+#: ../system/Utils.php:176
 msgid "September"
 msgstr ""
 
-#: ../system/Utils.php:174
+#: ../system/Utils.php:177
 msgid "October"
 msgstr ""
 
-#: ../system/Utils.php:175
+#: ../system/Utils.php:178
 msgid "November"
 msgstr ""
 
-#: ../system/Utils.php:176
+#: ../system/Utils.php:179
 msgid "December"
 msgstr ""
 
-#: ../system/Utils.php:182
+#: ../system/Utils.php:185
 msgid "Today"
 msgstr ""
 
-#: ../system/Utils.php:184
+#: ../system/Utils.php:187
 msgid "Tomorrow"
 msgstr ""
 
-#: ../system/Utils.php:186
+#: ../system/Utils.php:189
 msgid "Yesterday"
 msgstr ""
 
-#: ../system/Utils.php:192
+#: ../system/Utils.php:195
 msgid "day"
 msgstr ""
 
-#: ../system/Utils.php:195
+#: ../system/Utils.php:198
 #, php-format
 msgid " %d days ago"
 msgstr ""
 
-#: ../system/Utils.php:228 ../system/Utils.php:465
+#: ../system/Utils.php:231 ../system/Utils.php:468
 msgid "None"
 msgstr ""
 
-#: ../system/Utils.php:229
+#: ../system/Utils.php:232
 msgid "Male"
 msgstr ""
 
-#: ../system/Utils.php:230
+#: ../system/Utils.php:233
 msgid "Female"
 msgstr ""
 
-#: ../system/Utils.php:231
+#: ../system/Utils.php:234
 msgid "Other"
 msgstr ""
 
-#: ../system/Utils.php:466
+#: ../system/Utils.php:469
 msgid "Single"
 msgstr ""
 
-#: ../system/Utils.php:467
+#: ../system/Utils.php:470
 msgid "In a relationship"
 msgstr ""
 
-#: ../system/Utils.php:468
+#: ../system/Utils.php:471
 msgid "Married"
 msgstr ""
 
-#: ../system/Utils.php:469
+#: ../system/Utils.php:472
 msgid "Divorced"
 msgstr ""
 
-#: ../system/Utils.php:470
+#: ../system/Utils.php:473
 msgid "Widowed"
 msgstr ""
 
-#: ../system/Utils.php:471
+#: ../system/Utils.php:474
 msgid "Cohabiting"
 msgstr ""
 
-#: ../system/Utils.php:472
+#: ../system/Utils.php:475
 msgid "Civil Union"
 msgstr ""
 
-#: ../system/Utils.php:478 ../system/Widget/widgets/Chat/Chat.php:40
+#: ../system/Utils.php:481 ../system/Widget/widgets/Chat/Chat.php:40
 msgid "Online"
 msgstr ""
 
-#: ../system/Utils.php:479 ../system/Widget/widgets/Chat/Chat.php:41
+#: ../system/Utils.php:482 ../system/Widget/widgets/Chat/Chat.php:41
 msgid "Away"
 msgstr ""
 
-#: ../system/Utils.php:480 ../system/Widget/widgets/Chat/Chat.php:42
+#: ../system/Utils.php:483 ../system/Widget/widgets/Chat/Chat.php:42
 msgid "Do Not Disturb"
 msgstr ""
 
-#: ../system/Utils.php:481 ../system/Widget/widgets/Chat/Chat.php:43
+#: ../system/Utils.php:484 ../system/Widget/widgets/Chat/Chat.php:43
 msgid "Extended Away"
 msgstr ""
 
-#: ../system/Utils.php:482 ../system/Controller/ControllerMain.php:55
+#: ../system/Utils.php:485 ../system/Controller/ControllerMain.php:55
 #: ../system/Controller/ControllerMain.php:91
 #: ../system/Controller/ControllerMain.php:116
 #: ../system/Controller/ControllerMain.php:138
@@ -475,6 +477,338 @@ msgstr ""
 #: ../system/Controller/ControllerMain.php:219
 #: ../system/Controller/ControllerMain.php:246
 msgid "Logout"
+msgstr ""
+
+#: ../system/Utils.php:491
+msgid "afraid"
+msgstr ""
+
+#: ../system/Utils.php:492
+msgid "amazed"
+msgstr ""
+
+#: ../system/Utils.php:493
+msgid "amorous"
+msgstr ""
+
+#: ../system/Utils.php:494
+msgid "angry"
+msgstr ""
+
+#: ../system/Utils.php:495
+msgid "annoyed"
+msgstr ""
+
+#: ../system/Utils.php:496
+msgid "anxious"
+msgstr ""
+
+#: ../system/Utils.php:497
+msgid "aroused"
+msgstr ""
+
+#: ../system/Utils.php:498
+msgid "ashamed"
+msgstr ""
+
+#: ../system/Utils.php:499
+msgid "bored"
+msgstr ""
+
+#: ../system/Utils.php:500
+msgid "brave"
+msgstr ""
+
+#: ../system/Utils.php:501
+msgid "calm"
+msgstr ""
+
+#: ../system/Utils.php:502
+msgid "cautious"
+msgstr ""
+
+#: ../system/Utils.php:503
+msgid "cold"
+msgstr ""
+
+#: ../system/Utils.php:504
+msgid "confident"
+msgstr ""
+
+#: ../system/Utils.php:505
+msgid "confused"
+msgstr ""
+
+#: ../system/Utils.php:506
+msgid "contemplative"
+msgstr ""
+
+#: ../system/Utils.php:507
+msgid "contented"
+msgstr ""
+
+#: ../system/Utils.php:508
+msgid "cranky"
+msgstr ""
+
+#: ../system/Utils.php:509
+msgid "crazy"
+msgstr ""
+
+#: ../system/Utils.php:510
+msgid "creative"
+msgstr ""
+
+#: ../system/Utils.php:511
+msgid "curious"
+msgstr ""
+
+#: ../system/Utils.php:512
+msgid "dejected"
+msgstr ""
+
+#: ../system/Utils.php:513
+msgid "depressed"
+msgstr ""
+
+#: ../system/Utils.php:514
+msgid "disappointed"
+msgstr ""
+
+#: ../system/Utils.php:515
+msgid "disgusted"
+msgstr ""
+
+#: ../system/Utils.php:516
+msgid "dismayed"
+msgstr ""
+
+#: ../system/Utils.php:517
+msgid "distracted"
+msgstr ""
+
+#: ../system/Utils.php:518
+msgid "embarrassed"
+msgstr ""
+
+#: ../system/Utils.php:519
+msgid "envious"
+msgstr ""
+
+#: ../system/Utils.php:520
+msgid "excited"
+msgstr ""
+
+#: ../system/Utils.php:521
+msgid "flirtatious"
+msgstr ""
+
+#: ../system/Utils.php:522
+msgid "frustrated"
+msgstr ""
+
+#: ../system/Utils.php:523
+msgid "grateful"
+msgstr ""
+
+#: ../system/Utils.php:524
+msgid "grieving"
+msgstr ""
+
+#: ../system/Utils.php:525
+msgid "grumpy"
+msgstr ""
+
+#: ../system/Utils.php:526
+msgid "guilty"
+msgstr ""
+
+#: ../system/Utils.php:527
+msgid "happy"
+msgstr ""
+
+#: ../system/Utils.php:528
+msgid "hopeful"
+msgstr ""
+
+#: ../system/Utils.php:529
+msgid "hot"
+msgstr ""
+
+#: ../system/Utils.php:530
+msgid "humbled"
+msgstr ""
+
+#: ../system/Utils.php:531
+msgid "humiliated"
+msgstr ""
+
+#: ../system/Utils.php:532
+msgid "hungry"
+msgstr ""
+
+#: ../system/Utils.php:533
+msgid "hurt"
+msgstr ""
+
+#: ../system/Utils.php:534
+msgid "impressed"
+msgstr ""
+
+#: ../system/Utils.php:535
+msgid "in awe"
+msgstr ""
+
+#: ../system/Utils.php:536
+msgid "in love"
+msgstr ""
+
+#: ../system/Utils.php:538
+msgid "interested"
+msgstr ""
+
+#: ../system/Utils.php:539
+msgid "intoxicated"
+msgstr ""
+
+#: ../system/Utils.php:540
+msgid "invincible"
+msgstr ""
+
+#: ../system/Utils.php:541
+msgid "jealous"
+msgstr ""
+
+#: ../system/Utils.php:542
+msgid "lonely"
+msgstr ""
+
+#: ../system/Utils.php:543
+msgid "lost"
+msgstr ""
+
+#: ../system/Utils.php:544
+msgid "lucky"
+msgstr ""
+
+#: ../system/Utils.php:545
+msgid "mean"
+msgstr ""
+
+#: ../system/Utils.php:546
+msgid "moody"
+msgstr ""
+
+#: ../system/Utils.php:547
+msgid "nervous"
+msgstr ""
+
+#: ../system/Utils.php:548
+msgid "neutral"
+msgstr ""
+
+#: ../system/Utils.php:549
+msgid "offended"
+msgstr ""
+
+#: ../system/Utils.php:550
+msgid "outraged"
+msgstr ""
+
+#: ../system/Utils.php:551
+msgid "playful"
+msgstr ""
+
+#: ../system/Utils.php:552
+msgid "proud"
+msgstr ""
+
+#: ../system/Utils.php:553
+msgid "relaxed"
+msgstr ""
+
+#: ../system/Utils.php:554
+msgid "relieved"
+msgstr ""
+
+#: ../system/Utils.php:555
+msgid "remorseful"
+msgstr ""
+
+#: ../system/Utils.php:556
+msgid "restless"
+msgstr ""
+
+#: ../system/Utils.php:557
+msgid "sad"
+msgstr ""
+
+#: ../system/Utils.php:558
+msgid "sarcastic"
+msgstr ""
+
+#: ../system/Utils.php:559
+msgid "satisfied"
+msgstr ""
+
+#: ../system/Utils.php:560
+msgid "serious"
+msgstr ""
+
+#: ../system/Utils.php:561
+msgid "shocked"
+msgstr ""
+
+#: ../system/Utils.php:562
+msgid "shy"
+msgstr ""
+
+#: ../system/Utils.php:563
+msgid "sick"
+msgstr ""
+
+#: ../system/Utils.php:564
+msgid "sleepy"
+msgstr ""
+
+#: ../system/Utils.php:565
+msgid "spontaneous"
+msgstr ""
+
+#: ../system/Utils.php:566
+msgid "stressed"
+msgstr ""
+
+#: ../system/Utils.php:567
+msgid "strong"
+msgstr ""
+
+#: ../system/Utils.php:568
+msgid "surprised"
+msgstr ""
+
+#: ../system/Utils.php:569
+msgid "thankful"
+msgstr ""
+
+#: ../system/Utils.php:570
+msgid "thirsty"
+msgstr ""
+
+#: ../system/Utils.php:571
+msgid "tired"
+msgstr ""
+
+#: ../system/Utils.php:572
+msgid "undefined"
+msgstr ""
+
+#: ../system/Utils.php:573
+msgid "weak"
+msgstr ""
+
+#: ../system/Utils.php:574
+msgid "worried"
 msgstr ""
 
 #: ../system/Moxl/xec/action/location/LocationPublish.php:87
@@ -608,101 +942,103 @@ msgstr ""
 msgid "%s - Help Page"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:76
+#: ../system/Widget/widgets/Account/Account.php:77
 msgid "Step 2 - Fill in your informations"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:186
+#: ../system/Widget/widgets/Account/Account.php:187
 msgid "Validate"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:199
+#: ../system/Widget/widgets/Account/Account.php:200
 msgid "No account creation form founded on the server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:310
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:123
+#: ../system/Widget/widgets/Account/Account.php:319
+#: ../system/Widget/widgets/ContactCard/ContactCard.php:49
+#: ../system/Widget/widgets/Vcard/Vcard.php:149
+msgid "Name"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:322
+msgid "Description"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:325
+msgid "URL"
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:372
 #: ../system/Widget/widgets/Login/Login.php:72
 msgid "Some data are missing !"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:316
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:129
+#: ../system/Widget/widgets/Account/Account.php:378
 msgid "Wrong ID"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:328
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:141
+#: ../system/Widget/widgets/Account/Account.php:390
 msgid "Invalid name"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:334
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:147
+#: ../system/Widget/widgets/Account/Account.php:396
 msgid "Username already taken"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:340
+#: ../system/Widget/widgets/Account/Account.php:402
 msgid "Could not connect to the XMPP server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:346
+#: ../system/Widget/widgets/Account/Account.php:408
 msgid "Could not communicate with the XMPP server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:352
+#: ../system/Widget/widgets/Account/Account.php:414
 msgid "Unknown error"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:364
+#: ../system/Widget/widgets/Account/Account.php:426
 msgid "Create a new account"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:368
+#: ../system/Widget/widgets/Account/Account.php:429
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:430
+msgid "Keep in mind that this server will handle all your personnal data."
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:435
 msgid "Step 1 - Search the server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:370
+#: ../system/Widget/widgets/Account/Account.php:439
+msgid "You can enter your server domain name."
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:443
 msgid "Server"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:373
+#: ../system/Widget/widgets/Account/Account.php:446
 msgid "Enter the server domain (ex: movim.eu)"
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:382
+#: ../system/Widget/widgets/Account/Account.php:454
+msgid "Or you can choose a server from this list."
+msgstr ""
+
+#: ../system/Widget/widgets/Account/Account.php:462
 msgid "Searching..."
 msgstr ""
 
-#: ../system/Widget/widgets/Account/Account.php:384
-#: ../system/Widget/widgets/Explore/Explore.php:93
-#: ../system/Widget/widgets/Roster/Roster.php:261
+#: ../system/Widget/widgets/Account/Account.php:464
+#: ../system/Widget/widgets/Explore/Explore.php:104
+#: ../system/Widget/widgets/Roster/Roster.php:297
 msgid "Search"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:115
-msgid "Account linkage disabled."
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:153
-#: ../system/Widget/widgets/Login/Login.php:66
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:166
-msgid "Add your login informations"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:173
-#: ../system/Widget/widgets/Login/Login.php:258
-msgid "My address"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:192
-msgid "Retype"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:200
-msgid "Create"
 msgstr ""
 
 #: ../system/Widget/widgets/Chat/Chat.php:44
@@ -727,15 +1063,15 @@ msgstr ""
 
 #: ../system/Widget/widgets/Config/Config.php:81
 #: ../system/Widget/widgets/Config/Config.php:85
-#: ../system/Widget/widgets/Feed/Feed.php:154
-#: ../system/Widget/widgets/Feed/Feed.php:158
-#: ../system/Widget/widgets/Vcard/Vcard.php:337
+#: ../system/Widget/widgets/Feed/Feed.php:151
+#: ../system/Widget/widgets/Feed/Feed.php:155
+#: ../system/Widget/widgets/Vcard/Vcard.php:338
 msgid "Submit"
 msgstr ""
 
 #: ../system/Widget/widgets/Config/Config.php:82
 #: ../system/Widget/widgets/Config/Config.php:86
-#: ../system/Widget/widgets/Vcard/Vcard.php:338
+#: ../system/Widget/widgets/Vcard/Vcard.php:339
 msgid "Reset"
 msgstr ""
 
@@ -746,11 +1082,6 @@ msgstr ""
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:45
 #: ../system/Widget/widgets/Vcard/Vcard.php:146
 msgid "General Informations"
-msgstr ""
-
-#: ../system/Widget/widgets/ContactCard/ContactCard.php:49
-#: ../system/Widget/widgets/Vcard/Vcard.php:149
-msgid "Name"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:55
@@ -784,132 +1115,137 @@ msgid "Website"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:90
-#: ../system/Widget/widgets/Vcard/Vcard.php:255
+#: ../system/Widget/widgets/Vcard/Vcard.php:256
 msgid "About Me"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:99
-#: ../system/Widget/widgets/Vcard/Vcard.php:263
+#: ../system/Widget/widgets/Vcard/Vcard.php:264
 msgid "Geographic Position"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:103
-#: ../system/Widget/widgets/Vcard/Vcard.php:265
+#: ../system/Widget/widgets/Vcard/Vcard.php:266
 msgid "Locality"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:115
-#: ../system/Widget/widgets/Vcard/Vcard.php:269
+#: ../system/Widget/widgets/Vcard/Vcard.php:270
 msgid "Country"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:60
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:62
 msgid "I'm "
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:65
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:67
 msgid "Last seen"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:74
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:76
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:105
 msgid "Location"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:109
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:119
 msgid "Bot"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:110
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:120
 msgid "Desktop"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:111
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:121
 msgid "Phone"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:125
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:122
+msgid "Web"
+msgstr ""
+
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:129
 msgid "Client Informations"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:132
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:137
 msgid "Actions"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:143
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:148
 msgid "Chat"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:171
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:176
 msgid "Remove this contact"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:185
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:190
 msgid "Yes"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:199
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:204
 msgid "No"
 msgstr ""
 
-#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:208
+#: ../system/Widget/widgets/ContactInfo/ContactInfo.php:213
 msgid "Invite this user"
 msgstr ""
 
-#: ../system/Widget/widgets/Explore/Explore.php:99
-msgid "Search a contact"
-msgstr ""
-
-#: ../system/Widget/widgets/Explore/Explore.php:107
+#: ../system/Widget/widgets/Explore/Explore.php:54
 msgid "Last registered"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:89
-msgid "An error occured : "
+#: ../system/Widget/widgets/Explore/Explore.php:110
+msgid "Search a contact"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:101
+#: ../system/Widget/widgets/Feed/Feed.php:55
+#: ../system/Widget/widgets/Feed/Feed.php:98
 msgid ""
 "Your server doesn't support post publication, you can only read contact's "
 "feeds"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:107
+#: ../system/Widget/widgets/Feed/Feed.php:86
+msgid "An error occured : "
+msgstr ""
+
+#: ../system/Widget/widgets/Feed/Feed.php:104
 msgid "Creating your feed..."
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:125
+#: ../system/Widget/widgets/Feed/Feed.php:122
 msgid "What's new ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:144
+#: ../system/Widget/widgets/Feed/Feed.php:141
 msgid "Size"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:151
+#: ../system/Widget/widgets/Feed/Feed.php:148
 msgid "Rich Text"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:191
-#: ../system/Widget/widgets/Wall/Wall.php:131
+#: ../system/Widget/widgets/Feed/Feed.php:223
+#: ../system/Widget/widgets/Wall/Wall.php:133
 msgid "Get older posts"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:206
+#: ../system/Widget/widgets/Feed/Feed.php:240
 msgid "Your feed cannot be loaded."
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:234
+#: ../system/Widget/widgets/Feed/Feed.php:268
 #: ../system/Widget/widgets/Wall/Wall.php:116
-#: ../system/Widget/widgets/Wall/Wall.php:154
+#: ../system/Widget/widgets/Wall/Wall.php:157
 msgid "Feed"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:243
+#: ../system/Widget/widgets/Feed/Feed.php:277
 msgid "All"
 msgstr ""
 
-#: ../system/Widget/widgets/Feed/Feed.php:244
+#: ../system/Widget/widgets/Feed/Feed.php:278
 msgid "My Posts"
 msgstr ""
 
@@ -996,11 +1332,15 @@ msgid "Invalid JID"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:54
-msgid "Authentification mechanism not supported by Movim"
+msgid "Authentication mechanism not supported by Movim"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:60
 msgid "Empty Challenge from the server"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:66
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:78
@@ -1049,6 +1389,14 @@ msgstr ""
 msgid "Connecting..."
 msgstr ""
 
+#: ../system/Widget/widgets/Login/Login.php:258
+msgid "My address"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:275
+msgid "Population"
+msgstr ""
+
 #: ../system/Widget/widgets/Login/Login.php:277
 msgid "No account yet ?"
 msgstr ""
@@ -1061,33 +1409,37 @@ msgstr ""
 msgid "Debug console"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:90
+#: ../system/Widget/widgets/Notifs/Notifs.php:82
+msgid "Delete"
+msgstr ""
+
+#: ../system/Widget/widgets/Notifs/Notifs.php:134
 #: ../system/Widget/widgets/Wall/Wall.php:121
 msgid "Updating"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:93
-msgid "Rafraichir"
+#: ../system/Widget/widgets/Notifs/Notifs.php:137
+msgid "Refresh"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:108
+#: ../system/Widget/widgets/Notifs/Notifs.php:152
 msgid "Notifications"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:133
+#: ../system/Widget/widgets/Notifs/Notifs.php:177
 msgid "Contact request pending"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:218
+#: ../system/Widget/widgets/Notifs/Notifs.php:266
 msgid "wants to talk with you"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:223
-#: ../system/Widget/widgets/Roster/Roster.php:254
+#: ../system/Widget/widgets/Notifs/Notifs.php:271
+#: ../system/Widget/widgets/Roster/Roster.php:290
 msgid "Add"
 msgstr ""
 
-#: ../system/Widget/widgets/Notifs/Notifs.php:228
+#: ../system/Widget/widgets/Notifs/Notifs.php:276
 msgid "Decline"
 msgstr ""
 
@@ -1108,42 +1460,41 @@ msgid "Accept"
 msgstr ""
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:123
-#: ../system/Widget/widgets/Roster/Roster.php:243
+#: ../system/Widget/widgets/Roster/Roster.php:279
 msgid "Cancel"
 msgstr ""
 
-#: ../system/Widget/widgets/Profile/Profile.php:119
+#: ../system/Widget/widgets/Profile/Profile.php:42
+msgid "Saved"
+msgstr ""
+
+#: ../system/Widget/widgets/Profile/Profile.php:138
 msgid "No profile yet ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Profile/Profile.php:120
+#: ../system/Widget/widgets/Profile/Profile.php:139
 #: ../system/Widget/widgets/Vcard/Vcard.php:119
 msgid "Create my vCard"
 msgstr ""
 
-#: ../system/Widget/widgets/Roster/Roster.php:159
-#: ../system/Widget/widgets/Roster/Roster.php:174
+#: ../system/Widget/widgets/Roster/Roster.php:162
 msgid "Ungrouped"
 msgstr ""
 
-#: ../system/Widget/widgets/Roster/Roster.php:189
-msgid "Active Chat"
-msgstr ""
-
-#: ../system/Widget/widgets/Roster/Roster.php:218
+#: ../system/Widget/widgets/Roster/Roster.php:254
 msgid "JID"
 msgstr ""
 
-#: ../system/Widget/widgets/Roster/Roster.php:228
-#: ../system/Widget/widgets/Roster/Roster.php:233
+#: ../system/Widget/widgets/Roster/Roster.php:264
+#: ../system/Widget/widgets/Roster/Roster.php:269
 msgid "Alias"
 msgstr ""
 
-#: ../system/Widget/widgets/Roster/Roster.php:249
+#: ../system/Widget/widgets/Roster/Roster.php:285
 msgid "Send request"
 msgstr ""
 
-#: ../system/Widget/widgets/Roster/Roster.php:257
+#: ../system/Widget/widgets/Roster/Roster.php:293
 msgid "Show/Hide"
 msgstr ""
 
@@ -1161,11 +1512,11 @@ msgid "No contact specified"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:130
-msgid "Profil not updated : Your server does not support the vCard feature"
+msgid "Profile not updated : Your server does not support the vCard feature"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:135
-msgid "Profil not updated : Request error"
+msgid "Profile not updated : Request error"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:169
@@ -1184,26 +1535,26 @@ msgstr ""
 msgid "Avatar"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:288
+#: ../system/Widget/widgets/Vcard/Vcard.php:289
 msgid "Privacy Level"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:299
+#: ../system/Widget/widgets/Vcard/Vcard.php:300
 msgid ""
 "Please pay attention ! By making your profile public, all the information "
 "listed above will be available for all the Movim users and on the whole "
 "Internet."
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:301
+#: ../system/Widget/widgets/Vcard/Vcard.php:302
 msgid "Is this profile public ?"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:327
+#: ../system/Widget/widgets/Vcard/Vcard.php:328
 msgid "Submitting"
 msgstr ""
 
-#: ../system/Widget/widgets/Vcard/Vcard.php:360
+#: ../system/Widget/widgets/Vcard/Vcard.php:361
 msgid "Edit my Profile"
 msgstr ""
 

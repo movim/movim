@@ -21,9 +21,9 @@ legend {
     line-height: 2em !important;
 }
 
-form .element:nth-child(2) {
+/*form .element:nth-child(2) {
     clear: both;
-}
+}*/
 
 .element {
     overflow: auto;
@@ -40,7 +40,7 @@ form .element:nth-child(2) {
     display: block;
 }
 
-.element > *:not(label):not(img) {
+.element > *:not(label):not(img):not(span):not(a) {
     display: block;
     width: 90%;
     border: 1px solid #999;
@@ -61,6 +61,8 @@ form .element:nth-child(2) {
 }
 
 .element textarea, textarea {
+	font-family: helvetica, sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 13px;
     padding: 10px 0px;
     resize: vertical;
     background-color: white;
@@ -97,14 +99,11 @@ form .element:nth-child(2) {
 
 .element .select:before {
     pointer-events:none;
-    content: "▶";
+    content: "▼";
     font: 11px sans-serif;
     font-weight: bold;
     color: #444;
     right: 0px;
-    transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
     padding: 8px;
     position: absolute;
     display: block;

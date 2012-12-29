@@ -1,9 +1,6 @@
 <div id="main">
     <div id="left">
         <?php include("error.php"); ?>
-        <div class="message warning">
-            <p><?php echo t('Move your mousepointer over the configure options to receive more information.');?></p>
-        </div>
     </div>
     <div id="center">
         <h1><?php echo $title; ?></h1>
@@ -21,7 +18,7 @@
                         <input type="hidden" name="step" value="4" />
                         <div class="element" <?php //echo generate_Tooltip(t("Enter the XMPP-Server here")); ?>>
                             <label for="xmppWhiteList"><?php echo t("List of whitelisted XMPP servers"); ?></label>
-                            <input type="text" id="xmppWhiteList" name="xmppWhiteList" value="<? echo get_preset_value('xmppWhiteList', ''); ?>"/>
+                            <input type="text" id="xmppWhiteList" name="xmppWhiteList" value="<?php echo get_preset_value('xmppWhiteList', ''); ?>"/>
                         </div>
                 </fieldset>
                 <?php include('buttons.php'); ?>

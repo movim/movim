@@ -18,32 +18,39 @@ function getPos(n)
 function vCardImageResize(img) {
     var canvas = document.createElement('canvas');
     
-    var MAX_WIDTH = 200;
-    var MAX_HEIGHT = 200;
-    var width = img.width;
-    var height = img.height;
-     
-    if (width > height) {
-      if (width > MAX_WIDTH) {
-        height *= MAX_WIDTH / width;
-        width = MAX_WIDTH;
-      }
-    } else {
-      if (height > MAX_HEIGHT) {
-        width *= MAX_HEIGHT / height;
-        height = MAX_HEIGHT;
-      }
-    }
-    canvas.width = width;
-    canvas.height = height;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, width, height);
+    canvas.width = canvas.height = 210;
     
-    var base64 = canvas.toDataURL('image/jpeg', 0.8);
+    var width = canvas.width;
+    var height = canvas.height;
+ 
+    if (img.width == img.height) {
+        canvas.getContext("2d").drawImage(img, 0, 0, width, height);
+    } else {
+        minVal = Math.min(img.width, img.height);
+        if (img.width > img.height) {
+            canvas.getContext("2d").drawImage(img, (img.width - minVal) / 2, 0, minVal, minVal, 0, 0, width, height);
+        } else {
+            canvas.getContext("2d").drawImage(img, 0, (img.height - minVal) / 2, minVal, minVal, 0, 0, width, height);
+        }
+    }
+
+    canvas.style.width = 200;
+    canvas.style.height = 200;
+    
+    var base64 = canvas.toDataURL('image/jpeg', 0.9);
     var bin = base64.split(",");
     document.querySelector('#vCardPhotoPreview').src = base64;
     document.querySelector('input[name="phototype"]').value = 'image/jpeg';
     document.querySelector('input[name="photobin"]').value = bin[1];
+    
+    function bytesToSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return 'n/a';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+    };
+    
+    document.getElementById("picturesize").innerHTML = bytesToSize(encodeURI(base64).split(/%..|./).length - 1);
 };
 
 function vCardImageLoad(files) {
