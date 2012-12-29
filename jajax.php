@@ -23,6 +23,8 @@ ini_set('error_log', 'log/php.log');
 
 require("init.php");
 
+set_time_limit(200);
+
 $polling = true;
 
 $rpc = new RPC();

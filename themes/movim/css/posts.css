@@ -38,7 +38,7 @@
 .post .postbubble {
     width: 83%;
     background-color: white;
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 0px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 0px 3px rgba(0, 0, 0, 0.2);
     margin-left: 80px;
     position: relative;
     padding-top: 1em;
@@ -110,6 +110,8 @@
 
 .post span.recycle {
     background: url(../img/icons/recycle.png) 0px 4px no-repeat;
+    padding-right: 1em;
+    padding-bottom: 0.7em;
 }
 
 .post .comments {

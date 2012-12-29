@@ -51,6 +51,10 @@
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
     overflow: hidden; 
     border: 1px solid rgba(0, 0, 0, 0.5);
+    max-height: 400px;
+    width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #notifslist .black {
@@ -77,8 +81,7 @@
     padding: 5px;
     line-height: 28px;
     width: 100%;
-    width: 250px;
-    /*max-height: 56px;*/
+    display: block;
     border-top: 1px solid #333;
 }
 
@@ -98,6 +101,7 @@
     padding: 0px 8px;
     border-radius: 3px;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 #notifslist ul li:hover {
@@ -137,6 +141,15 @@ display: none;
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
+}
+
+#notifslist ul li a.delete {
+    float: right;
+    margin-right: 10px;
+}
+
+#notifslist ul li a.delete:hover {
+    text-decoration: underline;
 }
 
 #notifslist ul li:hover a {

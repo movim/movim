@@ -32,7 +32,6 @@ class Logout extends WidgetBase
     {
 		$html = $this->preparePresence();
         RPC::call('movim_fill', 'logout', RPC::cdata($html));
-        RPC::commit();
     }
 
     function onPostDisconnect($data)

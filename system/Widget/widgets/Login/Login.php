@@ -51,7 +51,7 @@ class Login extends WidgetBase {
                 case 'errormechanism':
                     $warning = '
                             <div class="message error">
-                                '.t('Authentification mechanism not supported by Movim').'
+                                '.t('Authentication mechanism not supported by Movim').'
                             </div> ';
                     break;
                 case 'errorchallenge':

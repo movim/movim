@@ -25,32 +25,48 @@ class Notifs extends WidgetCommon
     	$this->addcss('notifs.css');
     	$this->addjs('notifs.js');
         $this->registerEvent('notification', 'onNotification');
+        $this->registerEvent('notificationdelete', 'onNotificationDelete');
+        $this->registerEvent('notifications', 'displayNotifications');
         $this->registerEvent('nonotification', 'onNoNotification');
     }
     
+    /*
+     * Retrieve all the notifications
+     */  
     function ajaxGetNotifications() {
         $p = new moxl\NotificationGet();
         $p->setTo($this->user->getLogin())
           ->request();
     }
     
+    /*
+     * Delete a notification item
+     */
+    function ajaxDeleteNotification($id) {
+        $d = new moxl\NotificationItemDelete();
+        $d->setTo($this->user->getLogin())
+          ->setId($id)
+          ->request();
+    }
+    
+    /*
+     * Create the notification element from the inbox item
+     * @param SimpleXMLElement $item
+     */  
     function onNotification($item) {
         $arr = explodeURI((string)$item->entry->link[0]->attributes()->href);
         $post = end(explode('/', $arr['node']));
         
    	    $notifs = Cache::c('activenotifs');
         
-        $html = '';
-        foreach($notifs as $key => $value)
-            $html .= $this->prepareNotifs($key, $value);
-    
-        $explodedurn = explodeURI((string)$item->entry->link[0]->attributes()->href);
-        $id = end(explode('/', $explodedurn['node']));
-        
         $request = $this->genCallAjax(
                             "ajaxGetComments", 
                             "'".$this->user->getLogin()."'", 
-                            "'".$id."'");
+                            "'".$post."'");
+                            
+        $delete = $this->genCallAjax(
+                            "ajaxDeleteNotification", 
+                            "'".(string)$item->attributes()->id."'");
 
         $nhtml = '
         
@@ -62,20 +78,48 @@ class Notifs extends WidgetCommon
                     </span> - '.prepareDate(strtotime((string)$item->entry->published)).'<br />'.
                     (string)$item->entry->content.'
                 </a>
+
+                <a class="delete" href="#" onclick="'.$delete.'">'.t('Delete').'</a>
+                <div class="clear"></div>
             </li>
                 ';
         
         $notifs[(string)$item->attributes()->id] = $nhtml;
-   	    
-        RPC::call('movim_fill', 'notifs', RPC::cdata($html));
-        
+
 	    Cache::c('activenotifs', $notifs);
     }
     
+    /*
+     * In notification deletion
+     * @param string $id
+     */ 
+    function onNotificationDelete($id) {
+        $notifs = Cache::c('activenotifs');
+        unset($notifs[$id]);
+	    Cache::c('activenotifs', $notifs);
+        
+        RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
+    }
+
+    /*
+     * Display all the notifications to the browser
+     */    
+    function displayNotifications() {
+        RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
+    }
+    
+    /*
+     * Display all the notifications to the browser if there is no new
+     * notifications
+     */  
     function onNoNotification() {
         RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
     }
     
+    /*
+     * Create the list of notifications
+     * @return string
+     */  
     function prepareNotifs()
     {
         $notifsnum = 0;
@@ -90,7 +134,7 @@ class Notifs extends WidgetCommon
                             this.innerHTML = \''.t('Updating').'\'; 
                             this.className= \'button tiny icon loading black\';
                             this.onclick=null;">
-                    '.t('Rafraichir').'
+                    '.t('Refresh').'
                 </a>
                 <ul>';
             // XMPP notifications
@@ -211,6 +255,10 @@ class Notifs extends WidgetCommon
         RPC::commit();
     }
     
+    /*
+     * Prepare a notification for incoming invitation
+     * @return string
+     */  
     function prepareNotifInvitation($from) {
         $html .= '
             <li>

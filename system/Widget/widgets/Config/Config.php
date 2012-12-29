@@ -23,6 +23,7 @@ class Config extends WidgetBase
     function WidgetLoad()
     {
 		$this->addcss('config.css');
+		$this->addjs('color/jscolor.js');
         $this->registerEvent('config', 'onConfig');
     }
     
@@ -53,6 +54,7 @@ class Config extends WidgetBase
             $languages = load_lang_array();
             /* We load the user configuration */
             $conf = $this->user->getConfig('language');
+            $color = $this->user->getConfig('color');
 
             $submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
                 . "this.className='button icon loading'; setTimeout(function() {location.reload(true)}, 2000);";
@@ -60,21 +62,45 @@ class Config extends WidgetBase
         <div id="config">
             <form enctype="multipart/form-data" method="post" action="index.php" name="general">
                 <div class="element">
-                <label id="lock" for="language"><?php echo t('Language'); ?></label>
-                <div class="select">
-                <select name="language" id="language">
-                    <option value="en">English (default)</option>
-    <?php
-                  foreach($languages as $key => $value ) {
-                     if($key == $conf) { ?>
-                        <option value="<?php echo $key; ?>" selected="selected"><?php echo $value; ?></option>
-    <?php		       	 } else {?>
-                        <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-    <?php			     }
-                  } ?>
-                </select>
+                    <label for="language"><?php echo t('Language'); ?></label>
+                    <div class="select">
+                        <select name="language" id="language">
+                            <option value="en">English (default)</option>
+            <?php
+                          foreach($languages as $key => $value ) {
+                             if($key == $conf) { ?>
+                                <option value="<?php echo $key; ?>" selected="selected"><?php echo $value; ?></option>
+            <?php		       	 } else {?>
+                                <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+            <?php			     }
+                          } ?>
+                        </select>
+                    </div>
                 </div>
+                <div class="element">
+                    <label for="color"><?php echo t('Background color'); ?></label>
+                    <input 
+                        style="box-shadow: none; width: 50%; float: left;"
+                        name="color"
+                        class="color" 
+                        onchange="document.body.style.backgroundColor = '#'+this.value;"
+                        value="
+                        <?php 
+                            if(isset($color))
+                                echo $color;
+                            else
+                                echo "66ff00";
+                        ?>
+                        ">
+                    <a 
+                        type="button" 
+                        onclick="document.querySelector('input[name=color]').value = '66ff00';"
+                        style="width: 25%; float: left; margin-top: 6px;" 
+                        class="button icon back">
+                        <?php echo t('Reset');?>
+                    </a>
                 </div>
+                
                 <hr />
     <!--<label id="lock" for="soundnotif"><?php echo t('Enable Sound Notification:'); ?></label>
               <input type="checkbox" name="soundnotif" value="soundnotif" checked="checked" /><br /> -->
