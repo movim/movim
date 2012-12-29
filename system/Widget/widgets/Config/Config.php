@@ -62,7 +62,7 @@ class Config extends WidgetBase
         <div id="config">
             <form enctype="multipart/form-data" method="post" action="index.php" name="general">
                 <div class="element">
-                    <label id="lock" for="language"><?php echo t('Language'); ?></label>
+                    <label for="language"><?php echo t('Language'); ?></label>
                     <div class="select">
                         <select name="language" id="language">
                             <option value="en">English (default)</option>
@@ -80,9 +80,10 @@ class Config extends WidgetBase
                 <div class="element">
                     <label for="color"><?php echo t('Background color'); ?></label>
                     <input 
-                        style="box-shadow: none;"
+                        style="box-shadow: none; width: 50%; float: left;"
                         name="color"
                         class="color" 
+                        onchange="document.body.style.backgroundColor = '#'+this.value;"
                         value="
                         <?php 
                             if(isset($color))
@@ -91,6 +92,13 @@ class Config extends WidgetBase
                                 echo "66ff00";
                         ?>
                         ">
+                    <a 
+                        type="button" 
+                        onclick="document.querySelector('input[name=color]').value = '66ff00';"
+                        style="width: 25%; float: left; margin-top: 6px;" 
+                        class="button icon back">
+                        <?php echo t('Reset');?>
+                    </a>
                 </div>
                 
                 <hr />
