@@ -8,7 +8,7 @@ class Explore extends WidgetCommon {
 
     function ajaxSearchContacts($form) {
         $html = $this->prepareContacts($form);
-        movim_log($html);
+
         RPC::call('movim_fill', 'contactsresult', RPC::cdata($html));
         RPC::commit();
     }
