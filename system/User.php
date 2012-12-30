@@ -23,6 +23,7 @@ class User {
             global $session;
 			$this->username = $session['user'].'@'.$session['host'];
             $this->config = $session['config'];
+			
         }
 	}
 
