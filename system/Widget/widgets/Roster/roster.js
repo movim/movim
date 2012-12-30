@@ -27,23 +27,23 @@ function sortRoster() {
     for(i = 0; i < server_error.length; i++) {
         server_error.item(i).parentNode.insertBefore(server_error.item(i), contacts.item(contacts.length))
     }
+	/*cacher ce qu'il y a à cacher*/
 }
 
-function rosterToggleClass(myClass){
+function rosterToggleClass(myClass, bool){
 	c = roster.querySelectorAll('.'+myClass);
     for(i = 0; i < c.length; i++) {
-        if(c.item(i).style.display == 'list-item')
+        if(bool=='false')
             c.item(i).style.display = 'none';
         else
             c.item(i).style.display = 'list-item';
     }
 }
 
-function showRoster(n, test) {
-	alert(test);
+function showRoster(boolOffline) {
     roster = document.querySelector('#rosterlist');
-    rosterToggleClass("offline");
-    rosterToggleClass("server_error");
+    rosterToggleClass("offline", boolOffline);
+    rosterToggleClass("server_error", false);
 }
 
 function incomingPresence(val) {
@@ -298,17 +298,41 @@ function rosterSearch(e){
 	}
 }
 
-function rosterToggleGroup(h, offline){
-	alert(offline);
-	parent = h.parentNode.querySelectorAll("li");
-	if(parent[0].style.display=="none"){
-		for(i=0; i<parent.length; i++){
-			parent[i].style.display="inline";
-		}
+function rosterToggleGroup(h){
+	alert(h);
+	rosterlist = document.querySelector('#rosterlist');
+	groups = rosterlist.querySelectorAll('h1');
+	group = h[0].substring(5); //remove the 'group' prefix of the first parameter to get the name of the group
+	i = 0;
+	while(groups[i].innerHTML.split(' -')[0]!=group && i<groups.length){
+		i++;
 	}
-	else{
-		for(i=0; i<parent.length; i++){
-			parent[i].style.display="none";
+	if(i<groups.length){
+		if(h[2]=="true"){//offline contacts are shown
+			group = groups[i].parentNode.querySelectorAll('li');
+			if(h[1]=="true"){//contacts will be shown
+				for(j=0; j<group.length; j++){
+					group[j].style.display="list-item";
+				}
+			}
+			else{
+				for(j=0; j<group.length; j++){
+					group[j].style.display="none";
+				}
+			}
+		}
+		else{//offline contacts are hidden
+			group = groups[i].parentNode.querySelectorAll('li:not(.offline)');
+			if(h[1]=="true"){//contacts will be shown
+				for(j=0; j<group.length; j++){
+						group[j].style.display="list-item";
+				}
+			}
+			else{
+				for(j=0; j<group.length; j++){
+					group[j].style.display="none";
+				}
+			}
 		}
 	}
 }
