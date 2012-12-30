@@ -22,6 +22,9 @@ class Login extends WidgetBase {
 
     function WidgetLoad()
     {
+		Cache::c('offlineshown', 'false'); 
+		Cache::c('groupContacts', 'true');
+		movim_log("ICI ".Cache::c('offlineshown'));
         $this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');

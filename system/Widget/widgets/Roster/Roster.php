@@ -63,6 +63,7 @@ class Roster extends WidgetBase
     {
 		$html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', RPC::cdata($html));
+		$groups = Cache::c('#^group#');
         RPC::call('sortRoster');
     }
 
@@ -86,21 +87,26 @@ class Roster extends WidgetBase
      * 
      * 
      */
-    function prepareRosterElement($contact, $inner = false)
+    function prepareRosterElement($contact, $groupState, $offlineState, $inner = false)
 	{
         if(isset($contact[1]))
             $presence = $contact[1]->getPresence();
         $start =
             '<li
                 class="';
-                    if(isset($presence['presence']))
-                        $start .= ''.$presence['presence_txt'].' ';
-                    else
-                        $start .= 'offline ';
-
-                    if($contact[0]->getData('jid') == $_GET['f'])
+					if($contact[0]->getData('jid') == $_GET['f'])
                         $start .= 'active ';
-        $start .= '"
+                    if(isset($presence['presence'])){
+                        $start .= ''.$presence['presence_txt'].' '.$offlineState.'"';
+						if($groupState=='false')
+							$start.= 'style="display: none;"';
+					}
+                    else{
+                        $start .= 'offline "';
+						if($offlineState=='false' || $groupState=='false')
+							$start.= 'style="display: none;"';
+					}
+        $start .= '
                 id="roster'.$contact[0]->getData('jid').'"
              >';
 
@@ -142,7 +148,11 @@ class Roster extends WidgetBase
     {
         // We get the current name of the group
         $currentgroup = $contacts[$i][0]->getData('group');
-        
+		
+        // get the current showing state of the group and the offline contacts
+		$groupState = Cache::c('group'.$currentgroup);
+		$offlineState = Cache::c('offlineshown');
+		
         // Temporary array to prevent duplicate contact
         $duplicate = array();
         
@@ -150,7 +160,7 @@ class Roster extends WidgetBase
         $grouphtml = '';
         while(isset($contacts[$i][0]) && $contacts[$i][0]->getData('group') == $currentgroup) {
             if(!in_array($contacts[$i][0]->getData('jid'), $duplicate)) {
-                $grouphtml .= $this->prepareRosterElement($contacts[$i]);
+                $grouphtml .= $this->prepareRosterElement($contacts[$i], $groupState, $offlineState);
                 array_push($duplicate, $contacts[$i][0]->getData('jid'));
             }
             
@@ -162,7 +172,7 @@ class Roster extends WidgetBase
             $currentgroup = t('Ungrouped');
 			
 		
-        $grouphtml = '<div><h1 onclick=" rosterToggleGroup(this, '.Cache::c("offlineShown").');">'.$currentgroup.' - '.count($duplicate).'</h1>'.$grouphtml.'</div>';
+        $grouphtml = '<div><h1 onclick="'.$this->genCallAjax('ajaxToggleCache', "'group".$currentgroup."'").'">'.$currentgroup.' - '.count($duplicate).'</h1>'.$grouphtml.'</div>';
         
         return $grouphtml;
     }
@@ -250,15 +260,21 @@ class Roster extends WidgetBase
      * 
      */
 	function ajaxToggleCache($param){
-		$old = Cache::c($param);
-		$bool = ($old== "true") ? "false" : "true";
- 		Cache::c($param, $bool);
-		return $old;
+		$bool = (Cache::c($param) == "true") ? "false" : "true";
+		Cache::c($param, $bool);
+		$offline = Cache::c("offlineshown");
+		
+		if($param=="offlineshown")
+			RPC::call('showRoster', $bool);
+		else{
+			RPC::call('rosterToggleGroup', $param, $bool, $offline);
+		}
+		RPC::commit();
 	}
     
 	function build()
     {
-    $c = Cache::c('offlineShown', 'false');?>
+	?>
         <div id="roster">
             <ul id="rosterlist">
             <?php echo $this->prepareRoster(); ?>
@@ -305,7 +321,7 @@ class Roster extends WidgetBase
                     <li onclick="addJid(this)"; style="float: right;" title="<?php echo t('Add'); ?>">
                         <a href="#">+</a>
                     </li>
-                    <li onclick="showRoster(this, <?php $this->callAjax('ajaxToggleCache', "'offlineShown'"); ?>); " style="float: right;" title="<?php echo t('Show/Hide'); ?>">
+                    <li onclick="<?php echo $this->callAjax('ajaxToggleCache', "'offlineshown'");?>" style="float: right;" title="<?php echo t('Show/Hide'); ?>">
                         <a href="#">◐</a>
                     </li>
                     <li>
