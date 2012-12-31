@@ -93,14 +93,17 @@ class Roster extends WidgetBase
         $start =
             '<li
                 class="';
-                    if(isset($presence['presence']))
-                        $start .= ''.$presence['presence_txt'].' ';
-                    else
-                        $start .= 'offline ';
-
-                    if($contact[0]->getData('jid') == $_GET['f'])
+					if($contact[0]->getData('jid') == $_GET['f'])
                         $start .= 'active ';
-        $start .= '"
+
+                    if(isset($presence['presence']))
+                        $start .= $presence['presence_txt'];
+                    else
+                        $start .= 'offline';
+                    
+        $start .= '"';
+
+        $start .= '
                 id="roster'.$contact[0]->getData('jid').'"
              >';
 
@@ -142,14 +145,14 @@ class Roster extends WidgetBase
     {
         // We get the current name of the group
         $currentgroup = $contacts[$i][0]->getData('group');
-        
+		
         // Temporary array to prevent duplicate contact
         $duplicate = array();
         
         // We grab all the contacts of the group 
         $grouphtml = '';
         while(isset($contacts[$i][0]) && $contacts[$i][0]->getData('group') == $currentgroup) {
-            if(!in_array($contacts[$i][0]->getData('jid'), $duplicate)) {
+            if(!in_array($contacts[$i][0]->getData('jid'), $duplicate)) {                
                 $grouphtml .= $this->prepareRosterElement($contacts[$i]);
                 array_push($duplicate, $contacts[$i][0]->getData('jid'));
             }
@@ -160,8 +163,20 @@ class Roster extends WidgetBase
         // And we add the title at the head of the group 
         if($currentgroup == '')
             $currentgroup = t('Ungrouped');
-            
-        $grouphtml = '<div><h1>'.$currentgroup.' - '.count($duplicate).'</h1>'.$grouphtml.'</div>';
+			
+        $groupshown = '';
+        // get the current showing state of the group and the offline contacts
+		$groupState = Cache::c('group'.$currentgroup);
+
+        if($groupState == true)
+            $groupshown = 'groupshown';
+		
+        $grouphtml = '
+            <div id="group'.$currentgroup.'" class="'.$groupshown.'">
+                <h1 onclick="'.$this->genCallAjax('ajaxToggleCache', "'group".$currentgroup."'").'">'.
+                    $currentgroup.' - '.count($duplicate).'
+                </h1>'.$grouphtml.'
+            </div>';
         
         return $grouphtml;
     }
@@ -241,11 +256,40 @@ class Roster extends WidgetBase
           ->request();
     }
     
-    function build()
+	/**
+     * @brief Toggling boolean variables in the Cache
+	 * @param $param
+     * @returns 
+     * 
+     * 
+     */
+	function ajaxToggleCache($param){
+		$bool = (Cache::c($param) == true) ? false : true;
+        
+		Cache::c($param, $bool);
+		
+        $offline = Cache::c('offlineshown');
+        
+		if($param == 'offlineshown') {
+            Cache::c('offlineshown', $bool);
+            
+            RPC::call('showRoster', $bool);
+		} else 
+			RPC::call('rosterToggleGroup', $param, $bool, $offline);
+		
+		RPC::commit();
+	}
+    
+	function build()
     {
-    ?>
+        $offlineshown = '';
+        $offlineState = Cache::c('offlineshown');
+
+        if($offlineState == true)
+            $offlineshown = 'offlineshown';
+	?>
         <div id="roster">
-            <ul id="rosterlist">
+            <ul id="rosterlist" class="<?php echo $offlineshown; ?>">
             <?php echo $this->prepareRoster(); ?>
             </ul>
             <div id="rostermenu" class="menubar">
@@ -290,7 +334,7 @@ class Roster extends WidgetBase
                     <li onclick="addJid(this)"; style="float: right;" title="<?php echo t('Add'); ?>">
                         <a href="#">+</a>
                     </li>
-                    <li onclick="showRoster(this);" style="float: right;" title="<?php echo t('Show/Hide'); ?>">
+                    <li onclick="<?php echo $this->callAjax('ajaxToggleCache', "'offlineshown'");?>" style="float: right;" title="<?php echo t('Show/Hide'); ?>">
                         <a href="#">◐</a>
                     </li>
                     <li>
