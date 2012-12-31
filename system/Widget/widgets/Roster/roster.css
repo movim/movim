@@ -41,20 +41,16 @@
     cursor: pointer;
 }
 
-#roster ul li.more {
-    text-align: center;
-}
-
-#roster ul li.more a {
-    width: auto;
-}
-
-#roster ul li.offline {
+#roster ul div li {
     display: none;
 }
 
-#roster ul li.server_error {
-    display: none;
+#roster ul div.groupshown li:not([class=offline]):not([class=server_error]) {
+    display: list-item;
+}
+
+#roster ul.offlineshown div.groupshown li {
+    display: list-item;
 }
 
 #roster ul li.online .chat {
@@ -149,6 +145,10 @@
         rgba(33, 33, 33, 1) 100%);
     border-top: 1px solid rgb(70, 70, 70);
     border-bottom: 1px solid rgb(20, 20, 20);
+}
+
+#roster h1:hover {
+    cursor: pointer;
 }
 
 #roster #rostermenu {
