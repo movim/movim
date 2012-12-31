@@ -147,6 +147,20 @@
     border-bottom: 1px solid rgb(20, 20, 20);
 }
 
+#roster h1:before {
+    content: "►";
+    color: #AAA;
+    left: 0px;
+    padding: 0px 10px;
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+}
+
+#roster div.groupshown h1:before {
+    content: "▼";
+}
+
 #roster h1:hover {
     cursor: pointer;
 }
