@@ -33,6 +33,8 @@ class Syndication extends WidgetBase
                                 ->limit(0, 20);
             $messages = Post::run_query($query);
 
+            //var_dump($messages);
+
             $query = Contact::query()->select()
                                        ->where(array(
                                                //'key' => $from,
@@ -58,13 +60,13 @@ class Syndication extends WidgetBase
                     foreach($messages as $message) {
                         $title = $message->title->getval();
                         if($title == null)
-                            $title = substr($message->content->getval(), 0, 20).'...';
+                            $title = substr(strip_tags($message->content->getval()), 0, 40).'...';
                         $xml .= '
                             <entry>
-                                <title>'.$title.'</title>
+                                <title>'.prepareString(html_entity_decode($title)).'</title>
                                 <id>urn:uuid:'.$message->nodeid->getval().'</id>
                                 <updated>'.date('c', strtotime($message->updated->getval())).'</updated>
-                                <summary type="html"><![CDATA['.html_entity_decode(prepareString($message->content->getval())).']]></summary>
+                                <summary type="html"><![CDATA['.prepareString(html_entity_decode($message->content->getval())).']]></summary>
                             </entry>
                         ';
                         
