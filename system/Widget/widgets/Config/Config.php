@@ -89,12 +89,14 @@ class Config extends WidgetBase
                             if(isset($color))
                                 echo $color;
                             else
-                                echo "66ff00";
+                                echo "082D50";
                         ?>
                         ">
                     <a 
                         type="button" 
-                        onclick="document.querySelector('input[name=color]').value = '66ff00';"
+                        onclick="
+                            document.querySelector('input[name=color]').value = '082D50';
+                            document.body.style.backgroundColor = '#082D50';"
                         style="width: 25%; float: left; margin-top: 6px;" 
                         class="button icon back">
                         <?php echo t('Reset');?>

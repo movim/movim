@@ -84,11 +84,11 @@ function prepareString($string) {
     $smileys = 
         array(
             ':okay:' => 'okay.gif',
-            'O:)' => 'ange.gif',
-            'O:-)' => 'ange.gif',
-            ':)' => 'smile.gif',
-            ':-)' => 'smile.gif',
-            ':(' => 'frown.gif',
+            'O:\)' => 'ange.gif',
+            'O:-\)' => 'ange.gif',
+            ':\)' => 'smile.gif',
+            ':-\)' => 'smile.gif',
+            ':\(' => 'frown.gif',
             ':o' => 'redface.gif',
             ':love:' => 'love.gif',
             '<3' => 'love.gif',
@@ -97,10 +97,10 @@ function prepareString($string) {
             ':p' => 'tongue.gif',
             ':P' => 'tongue.gif',
             ':-P' => 'tongue.gif',
-            ' :/' => 'bof.gif', // Here we add a space to prevent URL parse error in the second part of the function
-            ';)' => 'wink.gif',
-            'B)' => 'sol.gif',
-            ":'(" => 'cry.gif',
+            ':\/' => 'bof.gif',
+            ';\)' => 'wink.gif',
+            'B\)' => 'sol.gif',
+            ":'\(" => 'cry.gif',
             ':trolldad:' => 'trolldad.png',
             ':epic:' => 'epic.png',
             ':aloneyeah:' => 'aloneyeah.png',
@@ -140,8 +140,8 @@ function prepareString($string) {
     $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';
 
     foreach($smileys as $key => $value) {
-        $replace = '<img class="smiley" src="'.$path.$value.'">';
-        $string = str_replace($key, $replace, $string);
+        $replace = ' <img class="smiley" src="'.$path.$value.'">';
+        $string = preg_replace('/(^|[ ])('.$key.')/',  $replace, $string);
     }
 
     return trim($string);

@@ -27,22 +27,14 @@ function sortRoster() {
     for(i = 0; i < server_error.length; i++) {
         server_error.item(i).parentNode.insertBefore(server_error.item(i), contacts.item(contacts.length))
     }
+	/*cacher ce qu'il y a à cacher*/
 }
 
-function rosterToggleClass(myClass){
-	c = roster.querySelectorAll('.'+myClass);
-    for(i = 0; i < c.length; i++) {
-        if(c.item(i).style.display == 'list-item')
-            c.item(i).style.display = 'none';
-        else
-            c.item(i).style.display = 'list-item';
-    }
-}
-
-function showRoster(n) {
-    roster = document.querySelector('#rosterlist');
-    rosterToggleClass("offline");
-    rosterToggleClass("server_error");
+function showRoster(boolOffline) {
+    if(boolOffline == '1')
+        document.querySelector('ul#rosterlist').className = 'offlineshown';
+    else
+        document.querySelector('ul#rosterlist').className = '';
 }
 
 function incomingPresence(val) {
@@ -78,19 +70,12 @@ function rosterNextGroup(cgp){
 		thisGp = thisGp.nextSibling;
 	}
 	if(thisGp.nextSibling!= null){
-		//test "ob"
 		console.log(thisGp.querySelectorAll("li")[0]);
         thisGp = thisGp.nextSibling;
-        //if(rosterlist.querySelector(".offline").style.display != ""){//offline are shown
+		//offline are shown
             while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0){
                 thisGp = thisGp.nextSibling;
             }
-        /*}
-        else{
-            while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0){
-                thisGp = thisGp.nextSibling;
-            }
-        }*/
 		cgp = thisGp;
 		currContact = cgp.querySelectorAll("li")[0];
 	}
@@ -173,7 +158,6 @@ function rosterPreviousGroup(cgp){
 			thisGp = thisGp.nextSibling;//change group
 		}
 		console.log(thisGp.querySelectorAll("li:not([style='display: none;'])")[0]);
-			//thisGp = thisGp.previousSibling;
 			while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0 && thisGp != firstGroup){
 				thisGp = thisGp.previousSibling;
 			}
@@ -303,6 +287,15 @@ function rosterSearch(e){
 				contact.className += " focused";
 		}
 	}
+}
+
+function rosterToggleGroup(h){
+    group = document.getElementById(h[0]);
+    
+    if(group.className == '')
+        group.className = 'groupshown';
+    else
+        group.className = '';
 }
 
 function addJid(n) {
