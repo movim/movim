@@ -5,24 +5,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-26 18:24+0100\n"
-"PO-Revision-Date: 2012-10-03 09:21+0000\n"
+"POT-Creation-Date: 2012-12-28 15:51+0100\n"
+"PO-Revision-Date: 2012-12-17 14:25+0000\n"
 "Last-Translator: Maime <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-19 14:20+0000\n"
-"X-Generator: Launchpad (build 16165)\n"
+"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
 #: ../admin/buttons.php:2
 msgid "Back"
-msgstr ""
+msgstr "Retorn"
 
 #: ../admin/buttons.php:2 ../admin/part0.php:63
 msgid "Next"
-msgstr ""
+msgstr "Seguent"
 
 #: ../admin/error.php:2
 msgid ""
@@ -34,46 +33,42 @@ msgstr ""
 
 #: ../admin/index.php:11
 msgid "Movim Installer and Configuration Manager"
-msgstr ""
+msgstr "Gestionari d'Installacion e de Configuracion de Movim"
 
 #: ../admin/index.php:199 ../admin/index.php:203 ../admin/index.php:207
 #: ../admin/index.php:211
 #, php-format
 msgid "Couldn't create directory '%s'."
-msgstr "La creacion del repertòri '%s' es impossibla."
+msgstr "La creacion dau repertòri '%s' es impossibla."
 
 #: ../admin/index.php:273
 #, php-format
 msgid "Couldn't create configuration file '%s'."
-msgstr "La creacion del fichièr de configuracion '%s' es impossibla."
+msgstr "La creacion dau fichier de configuracion '%s' es impossibla."
 
 #: ../admin/index.php:323
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "Tèst de compatibilitat"
+msgstr "Verificacion de la compatibilitat dau servidor"
 
 #: ../admin/index.php:324
-#, fuzzy
 msgid "General Settings"
-msgstr "Informacions Generalas"
+msgstr "Configuracion generala"
 
 #: ../admin/index.php:325
-#, fuzzy
 msgid "Database Settings"
-msgstr "Banca de donadas detectada"
+msgstr "Parametres de la banca de donadas"
 
 #: ../admin/index.php:326
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Configuracion"
+msgstr "Configuracion Bosh"
 
 #: ../admin/index.php:327
 msgid "Whitelist - XMPP Server"
-msgstr ""
+msgstr "Servidros XMPP - Lista blancha"
 
 #: ../admin/index.php:328
 msgid "Done"
-msgstr ""
+msgstr "Chabat"
 
 #: ../admin/index.php:454
 msgid "Your Bosh URL is not reachable"
@@ -81,20 +76,21 @@ msgstr ""
 
 #: ../admin/index.php:482
 msgid "Please put a valid domain name list"
-msgstr ""
+msgstr "Picatz, si vos plai, una lista de domenis valida"
 
 #: ../admin/index.php:508 ../system/Widget/widgets/Account/Account.php:384
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:135
 msgid "You entered different passwords"
-msgstr "Avètz picat de senhals diferents"
+msgstr "Avetz picat daus senhaus diferents"
 
 #: ../admin/part0.php:4
 msgid "Thank you for downloading Movim!"
-msgstr ""
+msgstr "Mercés per lo descharjament de Movim !"
 
 #: ../admin/part0.php:5
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
+"Davant d'utilizar vòstre malhum sociau, quauques ajsutaments son necessaris."
 
 #: ../admin/part0.php:6
 msgid ""
@@ -102,70 +98,75 @@ msgid ""
 "personal details. Its use can potentially endanger your data. Always pay "
 "attention to information that you submit."
 msgstr ""
+"Oblidatz pas que Movim es enquera en desvelopament e vai manipular de la "
+"sinformacions personalaS. Son utilizacion las pòt far córrer un dangier. "
+"Fasetz totjorn 'tencion a las informacions qu'enviatz."
 
 #: ../admin/part0.php:7
 msgid "For help on installation see the"
-msgstr ""
+msgstr "Per de l'ajuda sus l'installacion 'visatz"
 
 #: ../admin/part0.php:11
-#, fuzzy
 msgid "Welcome to Movim!"
-msgstr "%s - Benvengut a MOVIM"
+msgstr "Benvenguda sus Movim!"
 
 #: ../admin/part0.php:13
 msgid ""
 "You are about to install or change the configuration of the distributed XMPP-"
 "based opensource Social Network Movim."
 msgstr ""
+"Setz a installar o a modificar la configuracion dau malhum sociau "
+"descentralizat Movim basat sus lo protocòl XMPP."
 
 #: ../admin/part0.php:21
 msgid ""
 "Movim requires certain external components. Please install them before you "
 "can succeed:"
 msgstr ""
+"Per poder foncionar correctament, Movim a mestier de certans compausants. "
+"Installatz-los, si vos plai, davant de poder contunhar :"
 
 #: ../admin/part0.php:26
 #, php-format
 msgid "Your PHP-Version: %s <br>Required: 5.3.0"
-msgstr ""
+msgstr "Vòstra version de PHP: %s <br>Requesida: 5.3.0"
 
 #: ../admin/part0.php:29
 msgid "CURL-Library"
-msgstr ""
+msgstr "Biblioteca CURL"
 
 #: ../admin/part0.php:32
 msgid "GD"
-msgstr ""
+msgstr "GD"
 
 #: ../admin/part0.php:35
 msgid "SimpleXML"
-msgstr ""
+msgstr "SimpleXML"
 
 #: ../admin/part0.php:38
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's root directory"
 msgstr ""
-"Activatz los drechess de lectura e d'escritura sul dorsièr raiç de Movim"
+"Movim a pas los drechs de lectura nimai d'escritura dins son dorsier raiç"
 
 #: ../admin/part0.php:41
 msgid "<a href=\"http://datajar.movim.eu\">Datajar</a> version: "
-msgstr ""
+msgstr "Version de <a href=\"http://datajar.movim.eu\">Datajar</a>: "
 
 #: ../admin/part0.php:48
 msgid "Please make the required changes to continue."
-msgstr ""
+msgstr "Si vo splai, fasetz los chamjaments necessaris per poder contunhar."
 
 #: ../admin/part1.php:15
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: ../admin/part1.php:27
 msgid "Default language"
-msgstr ""
+msgstr "Lenga per defaut"
 
 #: ../admin/part1.php:40
 msgid "Maximum population"
-msgstr ""
+msgstr "Populacion maximala"
 
 #: ../admin/part1.php:47
 msgid "empty"
@@ -173,7 +174,7 @@ msgstr "voide"
 
 #: ../admin/part1.php:48
 msgid "terse"
-msgstr ""
+msgstr "concís"
 
 #: ../admin/part1.php:49
 msgid "normal"
@@ -181,51 +182,52 @@ msgstr "normau"
 
 #: ../admin/part1.php:50
 msgid "talkative"
-msgstr ""
+msgstr "platussaire"
 
 #: ../admin/part1.php:51
 msgid "ultimate"
-msgstr "ultima"
+msgstr "complet"
 
 #: ../admin/part1.php:56
 msgid "Log verbosity"
-msgstr ""
+msgstr "Niveu de jornalizacion"
 
 #: ../admin/part2.php:9
 msgid ""
 "Movim's database engine \"Datajar\" can handle a lot of database systems. "
 "Here you can see which ones are available in your setup."
 msgstr ""
+"Lo gestionari de basa de donadas \"Datajar\" utilizat per Movim pòt gerir "
+"mai d'un sistema de basa de donadas different. Aquí-sos trobaretz la lista "
+"de los disponibles sus vòstre sistema."
 
 #: ../admin/part2.php:38
-#, fuzzy
 msgid "Database System to use:"
-msgstr "Banca de donadas detectada"
+msgstr "Gestionari de basa de donadas d'utilizar:"
 
 #: ../admin/part2.php:58
 msgid "MySQL Settings"
-msgstr ""
+msgstr "Parametres MySQL"
 
 #: ../admin/part2.php:60
 msgid "MySQL Host"
-msgstr ""
+msgstr "Òste MySQL"
 
 #: ../admin/part2.php:64
 msgid "MySQL Port"
-msgstr ""
+msgstr "Pòrt MySQL"
 
 #: ../admin/part2.php:68
 msgid "MySQL Username"
-msgstr ""
+msgstr "Nom d'utilizaire MySQL"
 
 #: ../admin/part2.php:72
-#, fuzzy
 msgid "MySQL Password"
-msgstr "Senhal"
+msgstr "Senhau MySQL"
 
 #: ../admin/part2.php:76
 msgid "MySQL Database"
-msgstr ""
+msgstr "Basa de donadas MySQL"
 
 #: ../admin/part3.php:10
 msgid ""
@@ -247,7 +249,7 @@ msgstr ""
 
 #: ../admin/part3.php:26
 msgid "Bosh URL"
-msgstr ""
+msgstr "URL Bosh"
 
 #: ../admin/part3.php:30
 msgid "BOSH changeable"
@@ -255,7 +257,7 @@ msgstr ""
 
 #: ../admin/part3.php:34
 msgid "Bosh Proxy"
-msgstr ""
+msgstr "Proxy Bosh"
 
 #: ../admin/part4.php:10
 msgid ""
@@ -263,15 +265,21 @@ msgid ""
 "and forbid the connection on all the others please put their domain name "
 "here, with comma (ex: movim.eu,jabber.fr)"
 msgstr ""
+"Si desiratz especificar una lista de servidors XMPP autorizats sus vòstre "
+"pòd Movim e interdire la connexion a tots los autres, especificatz si vos "
+"plai la lista de lor noms de domeni, separats per de las virgulas (ex: "
+"movim.eu, jabber.fr)"
 
 #: ../admin/part4.php:12
 msgid ""
 "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr ""
+"Laissatz queu champ voide si desiratz autorizar la connexion a tots los "
+"comptes XMPP."
 
 #: ../admin/part4.php:20
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "Lista blancha daus servidors XMPP"
 
 #: ../admin/part5.php:10
 msgid ""
@@ -280,20 +288,16 @@ msgid ""
 msgstr ""
 
 #: ../admin/part5.php:19
-#, fuzzy
 msgid "Username"
-msgstr "Nom d'utilizaire incorrècte"
+msgstr "Nom d'utilizaire"
 
-#: ../admin/part5.php:24
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:182
-#: ../system/Widget/widgets/Login/Login.php:262
+#: ../admin/part5.php:24 ../system/Widget/widgets/Login/Login.php:262
 msgid "Password"
-msgstr "Senhal"
+msgstr "Senhau"
 
 #: ../admin/part5.php:28
-#, fuzzy
 msgid "Retype password"
-msgstr "Marrit senhal"
+msgstr "Tornar picar lo senhau"
 
 #: ../admin/part6.php:7
 msgid ""
@@ -309,7 +313,7 @@ msgstr ""
 
 #: ../admin/part6.php:14
 msgid "Here we go !"
-msgstr ""
+msgstr "Anem Òc !"
 
 #: ../system/Conf.php:38
 #, php-format
@@ -324,12 +328,12 @@ msgstr "Lo fichier '%s' es pas accessible"
 #: ../system/Logger.php:27
 #, php-format
 msgid "Cannot open log file '%s'"
-msgstr "Impossible de dobrir lo jornal '%s'"
+msgstr "Impossible de dubrir lo jornau '%s'"
 
 #: ../system/MovimException.php:15
 #, php-format
 msgid "Error: %s"
-msgstr "Error : %s"
+msgstr "Error : %s"
 
 #: ../system/Utils.php:159
 msgid "Monday"
@@ -341,7 +345,7 @@ msgstr "Dimars"
 
 #: ../system/Utils.php:161
 msgid "Wednesday"
-msgstr "Dimècres"
+msgstr "Dimecres"
 
 #: ../system/Utils.php:162
 msgid "Thursday"
@@ -357,7 +361,7 @@ msgstr "Dissabde"
 
 #: ../system/Utils.php:168
 msgid "January"
-msgstr "Genièr"
+msgstr "Genier"
 
 #: ../system/Utils.php:169
 msgid "February"
@@ -405,7 +409,7 @@ msgstr "Decembre"
 
 #: ../system/Utils.php:185
 msgid "Today"
-msgstr "Uèi"
+msgstr "Uei"
 
 #: ../system/Utils.php:187
 msgid "Tomorrow"
@@ -413,7 +417,7 @@ msgstr "Deman"
 
 #: ../system/Utils.php:189
 msgid "Yesterday"
-msgstr "Ièr"
+msgstr "Ier"
 
 #: ../system/Utils.php:195
 msgid "day"
@@ -426,7 +430,7 @@ msgstr " i a %d jorns"
 
 #: ../system/Utils.php:231 ../system/Utils.php:468
 msgid "None"
-msgstr ""
+msgstr "P'un piau"
 
 #: ../system/Utils.php:232
 msgid "Male"
@@ -438,11 +442,11 @@ msgstr "Femna"
 
 #: ../system/Utils.php:234
 msgid "Other"
-msgstr ""
+msgstr "Autre"
 
 #: ../system/Utils.php:469
 msgid "Single"
-msgstr ""
+msgstr "Celibatari(ària)"
 
 #: ../system/Utils.php:470
 msgid "In a relationship"
@@ -462,7 +466,7 @@ msgstr ""
 
 #: ../system/Utils.php:474
 msgid "Cohabiting"
-msgstr ""
+msgstr "Associat"
 
 #: ../system/Utils.php:475
 msgid "Civil Union"
@@ -478,11 +482,11 @@ msgstr "Absent(a)"
 
 #: ../system/Utils.php:483 ../system/Widget/widgets/Chat/Chat.php:42
 msgid "Do Not Disturb"
-msgstr "De derengar pas"
+msgstr "De derenjar pas"
 
 #: ../system/Utils.php:484 ../system/Widget/widgets/Chat/Chat.php:43
 msgid "Extended Away"
-msgstr "Abséncia longa"
+msgstr "Abséncia lonja"
 
 #: ../system/Utils.php:485 ../system/Controller/ControllerMain.php:55
 #: ../system/Controller/ControllerMain.php:91
@@ -492,7 +496,7 @@ msgstr "Abséncia longa"
 #: ../system/Controller/ControllerMain.php:219
 #: ../system/Controller/ControllerMain.php:246
 msgid "Logout"
-msgstr "Acabar la sesilha"
+msgstr "Barrar la session"
 
 #: ../system/Utils.php:491
 msgid "afraid"
@@ -571,9 +575,8 @@ msgid "crazy"
 msgstr ""
 
 #: ../system/Utils.php:510
-#, fuzzy
 msgid "creative"
-msgstr "Crear"
+msgstr ""
 
 #: ../system/Utils.php:511
 msgid "curious"
@@ -584,9 +587,8 @@ msgid "dejected"
 msgstr ""
 
 #: ../system/Utils.php:513
-#, fuzzy
 msgid "depressed"
-msgstr "Adreça"
+msgstr ""
 
 #: ../system/Utils.php:514
 msgid "disappointed"
@@ -825,9 +827,8 @@ msgid "weak"
 msgstr ""
 
 #: ../system/Utils.php:574
-#, fuzzy
 msgid "worried"
-msgstr "Maridat(ada)"
+msgstr ""
 
 #: ../system/Moxl/xec/action/location/LocationPublish.php:87
 msgid "Your server doesn't support location publication"
@@ -852,7 +853,7 @@ msgstr ""
 #: ../system/Moxl/xec/action/microblog/MicroblogPostDelete.php:116
 #: ../system/Moxl/xec/action/microblog/MicroblogPostPublish.php:100
 msgid "Service unavaiable"
-msgstr ""
+msgstr "Servici indisponible"
 
 #: ../system/Moxl/xec/action/microblog/MicroblogPostPublish.php:90
 msgid "Your server doesn't support post publication"
@@ -877,7 +878,7 @@ msgstr "%s - Benvengut a MOVIM"
 #: ../system/Controller/ControllerMain.php:214
 #: ../system/Controller/ControllerMain.php:241
 msgid "Home"
-msgstr "Acuèlh"
+msgstr "Acuelh"
 
 #: ../system/Controller/ControllerMain.php:51
 #: ../system/Controller/ControllerMain.php:87
@@ -887,7 +888,7 @@ msgstr "Acuèlh"
 #: ../system/Controller/ControllerMain.php:215
 #: ../system/Controller/ControllerMain.php:242
 msgid "Explore"
-msgstr ""
+msgstr "Explorar"
 
 #: ../system/Controller/ControllerMain.php:52
 #: ../system/Controller/ControllerMain.php:88
@@ -932,42 +933,41 @@ msgid "%s - Profile"
 msgstr "%s - Perfil"
 
 #: ../system/Controller/ControllerMain.php:149
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Creacion de compte"
+msgstr "%s - Compte"
 
 #: ../system/Controller/ControllerMain.php:151
 msgid "Account Creation"
 msgstr "Creacion de compte"
 
 #: ../system/Controller/ControllerMain.php:165
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Post View"
-msgstr "%s - Perfil"
+msgstr "%s - Visda daus pòsts"
 
 #: ../system/Controller/ControllerMain.php:185
 #, php-format
 msgid "%s - Login to Movim"
-msgstr "%s - Dobrir una sesilha MOVIM"
+msgstr "%s - Dubrir una session MOVIM"
 
 #: ../system/Controller/ControllerMain.php:209
 #, php-format
 msgid "%s - Explore"
-msgstr ""
+msgstr "%s - Explorar"
 
 #: ../system/Controller/ControllerMain.php:236
 #, php-format
 msgid "%s - Help Page"
-msgstr ""
+msgstr "%s - Pagina d'Ajuda"
 
 #: ../system/Widget/widgets/Account/Account.php:77
 msgid "Step 2 - Fill in your informations"
-msgstr ""
+msgstr "Etapa 2 - Emplir lo formulari"
 
 #: ../system/Widget/widgets/Account/Account.php:187
-#, fuzzy
 msgid "Validate"
-msgstr "Aqueste nom es pas valid"
+msgstr "Validar"
 
 #: ../system/Widget/widgets/Account/Account.php:200
 msgid "No account creation form founded on the server"
@@ -988,29 +988,25 @@ msgid "URL"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:372
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:123
 #: ../system/Widget/widgets/Login/Login.php:72
 msgid "Some data are missing !"
-msgstr "Manca d'informacions !"
+msgstr "Manca de las informacions !"
 
 #: ../system/Widget/widgets/Account/Account.php:378
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:129
 msgid "Wrong ID"
-msgstr "Merrit identifiant"
+msgstr "Meschant identificant"
 
 #: ../system/Widget/widgets/Account/Account.php:390
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:141
 msgid "Invalid name"
-msgstr "Aqueste nom es pas valid"
+msgstr "Queu nom es pas valid"
 
 #: ../system/Widget/widgets/Account/Account.php:396
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:147
 msgid "Username already taken"
-msgstr "Nom d'utilizaire ja existent"
+msgstr "Nom d'utilizaire desjà existent"
 
 #: ../system/Widget/widgets/Account/Account.php:402
 msgid "Could not connect to the XMPP server"
-msgstr "Error a la connexion al servidor XMPP"
+msgstr "Error a la connexion au servidor XMPP"
 
 #: ../system/Widget/widgets/Account/Account.php:408
 msgid "Could not communicate with the XMPP server"
@@ -1022,7 +1018,7 @@ msgstr "Error desconeguda"
 
 #: ../system/Widget/widgets/Account/Account.php:426
 msgid "Create a new account"
-msgstr ""
+msgstr "Crear un noveu compte"
 
 #: ../system/Widget/widgets/Account/Account.php:429
 msgid ""
@@ -1036,7 +1032,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:435
 msgid "Step 1 - Search the server"
-msgstr ""
+msgstr "Etapa 1 - Cherchar lo servidor"
 
 #: ../system/Widget/widgets/Account/Account.php:439
 msgid "You can enter your server domain name."
@@ -1044,53 +1040,25 @@ msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:443
 msgid "Server"
-msgstr ""
+msgstr "Servidor"
 
 #: ../system/Widget/widgets/Account/Account.php:446
 msgid "Enter the server domain (ex: movim.eu)"
-msgstr ""
+msgstr "Picatz lo nom de domeni (ex: movim.eu)"
 
 #: ../system/Widget/widgets/Account/Account.php:454
 msgid "Or you can choose a server from this list."
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:462
-#, fuzzy
 msgid "Searching..."
-msgstr "Connexion en cors..."
+msgstr "Rechercha en cors..."
 
 #: ../system/Widget/widgets/Account/Account.php:464
 #: ../system/Widget/widgets/Explore/Explore.php:104
 #: ../system/Widget/widgets/Roster/Roster.php:297
-#, fuzzy
 msgid "Search"
-msgstr "Març"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:115
-msgid "Account linkage disabled."
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:153
-#: ../system/Widget/widgets/Login/Login.php:66
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:166
-msgid "Add your login informations"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:173
-#: ../system/Widget/widgets/Login/Login.php:258
-msgid "My address"
-msgstr "Mon adreça"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:192
-msgid "Retype"
-msgstr "Tornar picar"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:200
-msgid "Create"
-msgstr "Crear"
+msgstr "Cherchar"
 
 #: ../system/Widget/widgets/Chat/Chat.php:44
 msgid "Offline"
@@ -1102,7 +1070,7 @@ msgstr "A escriure..."
 
 #: ../system/Widget/widgets/Chat/Chat.php:337
 msgid "Paused..."
-msgstr ""
+msgstr "En pausa..."
 
 #: ../system/Widget/widgets/Config/Config.php:63
 msgid "Language"
@@ -1138,7 +1106,7 @@ msgstr "Informacions Generalas"
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:55
 #: ../system/Widget/widgets/Vcard/Vcard.php:154
 msgid "Nickname"
-msgstr "Escais"
+msgstr "Chafre"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:61
 #: ../system/Widget/widgets/Vcard/Vcard.php:164
@@ -1153,17 +1121,17 @@ msgstr "Sèxe"
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:73
 #: ../system/Widget/widgets/Vcard/Vcard.php:233
 msgid "Marital Status"
-msgstr ""
+msgstr "Situacion familhala"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:79
 #: ../system/Widget/widgets/Vcard/Vcard.php:159
 msgid "Email"
-msgstr ""
+msgstr "Adreça electronica"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:84
 #: ../system/Widget/widgets/Vcard/Vcard.php:244
 msgid "Website"
-msgstr "Site Internet"
+msgstr "Sit web"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:90
 #: ../system/Widget/widgets/Vcard/Vcard.php:256
@@ -1173,35 +1141,34 @@ msgstr "A prepaus de ieu"
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:99
 #: ../system/Widget/widgets/Vcard/Vcard.php:264
 msgid "Geographic Position"
-msgstr ""
+msgstr "Posicion geografica"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:103
 #: ../system/Widget/widgets/Vcard/Vcard.php:266
 msgid "Locality"
-msgstr ""
+msgstr "Localitat"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:115
 #: ../system/Widget/widgets/Vcard/Vcard.php:270
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:62
 msgid "I'm "
-msgstr ""
+msgstr "Sei "
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:67
 msgid "Last seen"
-msgstr ""
+msgstr "Darriera visita"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:76
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:105
-#, fuzzy
 msgid "Location"
-msgstr "Accions"
+msgstr "Luòc"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:119
 msgid "Bot"
-msgstr ""
+msgstr "Robòt"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:120
 msgid "Desktop"
@@ -1212,9 +1179,8 @@ msgid "Phone"
 msgstr "Telefòn"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:122
-#, fuzzy
 msgid "Web"
-msgstr "Site Internet"
+msgstr ""
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:129
 msgid "Client Informations"
@@ -1226,11 +1192,11 @@ msgstr "Accions"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:148
 msgid "Chat"
-msgstr "Messatjariá instantanèa (chat)"
+msgstr "Charrador"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:176
 msgid "Remove this contact"
-msgstr "Suprimir aqueste contacte"
+msgstr "Suprimir queu contacte"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:190
 msgid "Yes"
@@ -1242,15 +1208,15 @@ msgstr "Non"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:213
 msgid "Invite this user"
-msgstr ""
+msgstr "Convidar quel utilizaire"
 
 #: ../system/Widget/widgets/Explore/Explore.php:54
 msgid "Last registered"
-msgstr ""
+msgstr "Darriers marcats"
 
 #: ../system/Widget/widgets/Explore/Explore.php:110
 msgid "Search a contact"
-msgstr ""
+msgstr "Cherchar un contacte"
 
 #: ../system/Widget/widgets/Feed/Feed.php:55
 #: ../system/Widget/widgets/Feed/Feed.php:98
@@ -1261,20 +1227,19 @@ msgstr ""
 
 #: ../system/Widget/widgets/Feed/Feed.php:86
 msgid "An error occured : "
-msgstr ""
+msgstr "Una error s'es producha : "
 
 #: ../system/Widget/widgets/Feed/Feed.php:104
-#, fuzzy
 msgid "Creating your feed..."
-msgstr "Cargament de vòstre flux ..."
+msgstr "Creacion de vòstre fiau..."
 
 #: ../system/Widget/widgets/Feed/Feed.php:122
 msgid "What's new ?"
-msgstr ""
+msgstr "Que de nuòu ?"
 
 #: ../system/Widget/widgets/Feed/Feed.php:141
 msgid "Size"
-msgstr ""
+msgstr "Talha"
 
 #: ../system/Widget/widgets/Feed/Feed.php:148
 msgid "Rich Text"
@@ -1283,17 +1248,17 @@ msgstr ""
 #: ../system/Widget/widgets/Feed/Feed.php:223
 #: ../system/Widget/widgets/Wall/Wall.php:133
 msgid "Get older posts"
-msgstr "Recuperar los ancians posts"
+msgstr "Recuperar los ancians pòsts"
 
 #: ../system/Widget/widgets/Feed/Feed.php:240
 msgid "Your feed cannot be loaded."
-msgstr "Vòstre flux es pas accessible."
+msgstr "Vòstre fiau es pas accessible."
 
 #: ../system/Widget/widgets/Feed/Feed.php:268
 #: ../system/Widget/widgets/Wall/Wall.php:116
 #: ../system/Widget/widgets/Wall/Wall.php:157
 msgid "Feed"
-msgstr "Flux"
+msgstr "Fiau"
 
 #: ../system/Widget/widgets/Feed/Feed.php:277
 msgid "All"
@@ -1301,7 +1266,7 @@ msgstr "Tot"
 
 #: ../system/Widget/widgets/Feed/Feed.php:278
 msgid "My Posts"
-msgstr "Mos posts"
+msgstr "Mos pòsts"
 
 #: ../system/Widget/widgets/Help/Help.php:32
 msgid "What is Movim?"
@@ -1379,27 +1344,31 @@ msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:42
 msgid "Wrong username"
-msgstr "Nom d'utilizaire incorrècte"
+msgstr "Nom d'utilizaire incorrecte"
 
 #: ../system/Widget/widgets/Login/Login.php:48
 msgid "Invalid JID"
 msgstr "Identificant Jabber invalid"
 
 #: ../system/Widget/widgets/Login/Login.php:54
-msgid "Authentification mechanism not supported by Movim"
+msgid "Authentication mechanism not supported by Movim"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:60
 msgid "Empty Challenge from the server"
 msgstr ""
 
+#: ../system/Widget/widgets/Login/Login.php:66
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
+msgstr ""
+
 #: ../system/Widget/widgets/Login/Login.php:78
 msgid "Wrong password"
-msgstr "Marrit senhal"
+msgstr "Meschant senhau"
 
 #: ../system/Widget/widgets/Login/Login.php:84
 msgid "The XMPP authentification failed"
-msgstr "L'autentification al servidor XMPP se faguèt pas"
+msgstr "L'autentificacion au servidor XMPP se faguet pas"
 
 #: ../system/Widget/widgets/Login/Login.php:90
 msgid "The current BOSH URL in invalid"
@@ -1407,15 +1376,15 @@ msgstr "L'URL Bosh balhada es pas valida"
 
 #: ../system/Widget/widgets/Login/Login.php:96
 msgid "Internal server error"
-msgstr "Error intèrna del servidor"
+msgstr "Error interna dau servidor"
 
 #: ../system/Widget/widgets/Login/Login.php:102
 msgid "Session error"
-msgstr "Error de sesilha"
+msgstr "Error de session"
 
 #: ../system/Widget/widgets/Login/Login.php:108
 msgid "Account successfully created"
-msgstr "Compte creat amb succès"
+msgstr "Compte creat emb succès"
 
 #: ../system/Widget/widgets/Login/Login.php:114
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1428,7 +1397,7 @@ msgstr ""
 #: ../system/Widget/widgets/Login/Login.php:130
 #: ../system/Widget/widgets/Login/Login.php:269
 msgid "Come in!"
-msgstr "Dintratz !"
+msgstr "'Chabatz d'entrar !"
 
 #: ../system/Widget/widgets/Login/Login.php:244
 msgid "Your web browser is too old to use with Movim."
@@ -1439,19 +1408,21 @@ msgstr "Vòstre navigador es tròp vielh per utilizar Movim"
 msgid "Connecting..."
 msgstr "Connexion en cors..."
 
+#: ../system/Widget/widgets/Login/Login.php:258
+msgid "My address"
+msgstr "Mon adreça"
+
 #: ../system/Widget/widgets/Login/Login.php:275
-#, fuzzy
 msgid "Population"
-msgstr "Configuracion"
+msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:277
 msgid "No account yet ?"
-msgstr ""
+msgstr "Pas enquera de compte ?"
 
 #: ../system/Widget/widgets/Login/Login.php:279
-#, fuzzy
 msgid "Create one !"
-msgstr "Crear"
+msgstr "Creatz ne'n un !"
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
@@ -1464,16 +1435,15 @@ msgstr ""
 #: ../system/Widget/widgets/Notifs/Notifs.php:134
 #: ../system/Widget/widgets/Wall/Wall.php:121
 msgid "Updating"
-msgstr ""
+msgstr "Actualizacion"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:137
-msgid "Rafraichir"
+msgid "Refresh"
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:152
-#, fuzzy
 msgid "Notifications"
-msgstr "Configuracion"
+msgstr "Notificacions"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:177
 msgid "Contact request pending"
@@ -1481,7 +1451,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:266
 msgid "wants to talk with you"
-msgstr "vòl charrar amb vos"
+msgstr "vòu charra emb vosautres"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:271
 #: ../system/Widget/widgets/Roster/Roster.php:290
@@ -1493,9 +1463,8 @@ msgid "Decline"
 msgstr "Refusar"
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:55
-#, fuzzy
 msgid "Wrong position"
-msgstr "Marrit senhal"
+msgstr ""
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:67
 msgid "Location updated"
@@ -1520,7 +1489,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Profile/Profile.php:138
 msgid "No profile yet ?"
-msgstr ""
+msgstr "Pas enquera de perfil ?"
 
 #: ../system/Widget/widgets/Profile/Profile.php:139
 #: ../system/Widget/widgets/Vcard/Vcard.php:119
@@ -1533,7 +1502,7 @@ msgstr "Pas agropat"
 
 #: ../system/Widget/widgets/Roster/Roster.php:254
 msgid "JID"
-msgstr ""
+msgstr "JID"
 
 #: ../system/Widget/widgets/Roster/Roster.php:264
 #: ../system/Widget/widgets/Roster/Roster.php:269
@@ -1542,32 +1511,31 @@ msgstr "Aliàs"
 
 #: ../system/Widget/widgets/Roster/Roster.php:285
 msgid "Send request"
-msgstr ""
+msgstr "Enviar la demanda"
 
 #: ../system/Widget/widgets/Roster/Roster.php:293
 msgid "Show/Hide"
-msgstr ""
+msgstr "Afichar/Escondre"
 
 #: ../system/Widget/widgets/Syndication/Syndication.php:50
 #, php-format
 msgid "%s's feed"
-msgstr ""
+msgstr "Fiau de %s"
 
 #: ../system/Widget/widgets/Syndication/Syndication.php:77
-#, fuzzy
 msgid "No public feed for this contact"
-msgstr "Suprimir aqueste contacte"
+msgstr ""
 
 #: ../system/Widget/widgets/Syndication/Syndication.php:80
 msgid "No contact specified"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:130
-msgid "Profil not updated : Your server does not support the vCard feature"
+msgid "Profile not updated : Your server does not support the vCard feature"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:135
-msgid "Profil not updated : Request error"
+msgid "Profile not updated : Request error"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:169
@@ -1588,7 +1556,7 @@ msgstr "Avatar"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:289
 msgid "Privacy Level"
-msgstr ""
+msgstr "Niveu de confidencialitat"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:300
 msgid ""
@@ -1599,7 +1567,7 @@ msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:302
 msgid "Is this profile public ?"
-msgstr ""
+msgstr "Es lo perfil public ?"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:328
 msgid "Submitting"
@@ -1607,95 +1575,45 @@ msgstr "Somission en cors"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:361
 msgid "Edit my Profile"
-msgstr ""
+msgstr "Modificar mon perfil"
 
 #: ../system/Widget/widgets/Wall/Wall.php:125
 msgid "Update"
-msgstr ""
+msgstr "Actualizar"
 
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr ""
-#~ "Avètz pas la bona version de PHP. Movim a mestièr al mens de PHP 5.3."
+#~ msgid "JID not provided."
+#~ msgstr "JID indisponible."
+
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Creacion de compte"
+
+#~ msgid "or"
+#~ msgstr "o"
 
 #~ msgid "Actual version : "
 #~ msgstr "Version actuala : "
+
+#, php-format
+#~ msgid "Install the %s package"
+#~ msgstr "Installar lo paquet %s"
+
+#~ msgid "XMPP Connection Preferences"
+#~ msgstr "Configuracion de la connexion XMPP"
+
+#~ msgid "Valid Bosh"
+#~ msgstr "Bosh valid"
+
+#~ msgid "Success !"
+#~ msgstr "Òsca !"
 
 #~ msgid "Update your PHP version or contact your server administrator"
 #~ msgstr ""
 #~ "Actualizatz vòstra version de PHP o contactatz l'administrador de vòstre "
 #~ "servidor"
 
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim a mestièr de l'extension %s."
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Installatz los paquets %s e %s"
-
-#~ msgid "Install the %s package"
-#~ msgstr "Installar lo paquet %s"
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Lo dorsièr Movim deu èsser accessible en escritura"
-
-#~ msgid "or"
-#~ msgstr "o"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Installar Movim"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "Configuracion de la connexion XMPP"
-
 #~ msgid "BOSH Connection Preferences"
 #~ msgstr "Configuracion de la connexion BOSH"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "Preferéncias du Proxy"
-
-#~ msgid "Success !"
-#~ msgstr "Òsca !"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "Bosh valid"
-
-#~ msgid "Database Movim schema installed"
-#~ msgstr "L'esquèma de la banca de donadas es estat installat"
-
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "Ara, podètz accedir a vòstra version de Movim tota nòva %sAnem !%s"
-
-#~ msgid "Please remove the %s folder in order to complete the installation"
-#~ msgstr "Si vos plai, suprimètz lo dorsièr %s per acabar l'installacion"
-
-#~ msgid "User not logged in."
-#~ msgstr "Sètz pas autentificat."
-
-#~ msgid "JID not provided."
-#~ msgstr "JID indisponible."
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "Lo jid '%s' es incorrècte"
-
-#~ msgid ""
-#~ "Firstly fill in this blank with a brand new account ID, this address will "
-#~ "follow you on all the Movim network !"
-#~ msgstr ""
-#~ "D'en prumier, completatz quel espaci emb una identificacion de compte "
-#~ "tota novela, quela adreça vos segrà pertot sus lo malhum Movim !"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "Sols los caractèrs alfanumerics son autorizats."
-
-#~ msgid "Make sure your password is safe :"
-#~ msgstr "Asseguratz-vos que vòstre senhal es segur :"
-
-#~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr ""
-#~ "Un bon senhal es compausat d'al mens una majuscula, una chifra e un "
-#~ "caractèr especial"
-
-#~ msgid "8 characters"
-#~ msgstr "8 caractèrs"
 
 #~ msgid "Example :"
 #~ msgstr "Exemple :"
@@ -1703,20 +1621,102 @@ msgstr ""
 #~ msgid "Same here !"
 #~ msgstr "Parier aicí !"
 
+#~ msgid "Retype"
+#~ msgstr "Tornar picar"
+
+#~ msgid "Create"
+#~ msgstr "Crear"
+
+#~ msgid "Show All"
+#~ msgstr "Afichar tot"
+
+#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+#~ msgstr ""
+#~ "Avètz pas la bona version de PHP. Movim a mestièr al mens de PHP 5.3."
+
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr ""
+#~ "Activatz los drechess de lectura e d'escritura sul dorsièr raiç de Movim"
+
+#, php-format
+#~ msgid "Install %s and %s packages"
+#~ msgstr "Installatz los paquets %s e %s"
+
+#~ msgid "Movim's folder must be writable."
+#~ msgstr "Lo dorsièr Movim deu èsser accessible en escritura"
+
+#, php-format
+#~ msgid "Movim requires the %s extension."
+#~ msgstr "Movim a mestièr de l'extension %s."
+
+#~ msgid "Proxy Preferences"
+#~ msgstr "Preferéncias du Proxy"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "Tèst de compatibilitat"
+
+#~ msgid "Movim Installer"
+#~ msgstr "Installar Movim"
+
+#~ msgid "User not logged in."
+#~ msgstr "Sètz pas autentificat."
+
+#, php-format
+#~ msgid "Please remove the %s folder in order to complete the installation"
+#~ msgstr "Si vos plai, suprimètz lo dorsièr %s per acabar l'installacion"
+
+#, php-format
+#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
+#~ msgstr "Ara, podètz accedir a vòstra version de Movim tota nòva %sAnem !%s"
+
+#~ msgid "Database Movim schema installed"
+#~ msgstr "L'esquèma de la banca de donadas es estat installat"
+
+#~ msgid "Database Detected"
+#~ msgstr "Banca de donadas detectada"
+
+#, php-format
+#~ msgid "jid '%s' is incorrect"
+#~ msgstr "Lo jid '%s' es incorrècte"
+
+#~ msgid "Only alphanumerics elements are authorized"
+#~ msgstr "Sols los caractèrs alfanumerics son autorizats."
+
+#~ msgid "Make sure your password is safe :"
+#~ msgstr "Asseguratz-vos que vòstre senhal es segur :"
+
 #~ msgid "Pseudo"
 #~ msgstr "Escais"
+
+#~ msgid "8 characters"
+#~ msgstr "8 caractèrs"
+
+#~ msgid "Address"
+#~ msgstr "Adreça"
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "Cargament de vòstre flux ..."
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Cargament del flux ..."
+
+#~ msgid "Follow"
+#~ msgstr "Seguir"
+
+#~ msgid "A capital letter, a digit and a special character are recommended"
+#~ msgstr ""
+#~ "Un bon senhal es compausat d'al mens una majuscula, una chifra e un caractèr "
+#~ "especial"
+
+#~ msgid ""
+#~ "Firstly fill in this blank with a brand new account ID, this address will "
+#~ "follow you on all the Movim network !"
+#~ msgstr ""
+#~ "D'en prumier, completatz quel espaci emb una identificacion de compte tota "
+#~ "novela, quela adreça vos segrà pertot sus lo malhum Movim !"
 
 #~ msgid "Client Name"
 #~ msgstr "Nom dau client"
 
 #~ msgid "Client Type"
 #~ msgstr "Tipe de Client"
-
-#~ msgid "Show All"
-#~ msgstr "Afichar tot"
-
-#~ msgid "Follow"
-#~ msgstr "Seguir"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "Cargament del flux ..."

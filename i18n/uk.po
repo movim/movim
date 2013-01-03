@@ -5,16 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-26 18:24+0100\n"
+"POT-Creation-Date: 2012-12-28 15:51+0100\n"
 "PO-Revision-Date: 2012-08-02 15:08+0000\n"
 "Last-Translator: Nazar Banakh <flesch91@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-19 14:20+0000\n"
-"X-Generator: Launchpad (build 16165)\n"
+"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
 #: ../admin/buttons.php:2
 msgid "Back"
@@ -48,9 +47,8 @@ msgid "Couldn't create configuration file '%s'."
 msgstr "Не вдається створити файл конфігурації  '%s'."
 
 #: ../admin/index.php:323
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "Тест на сумісність"
+msgstr ""
 
 #: ../admin/index.php:324
 msgid "General Settings"
@@ -61,9 +59,8 @@ msgid "Database Settings"
 msgstr ""
 
 #: ../admin/index.php:326
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Конфігурація"
+msgstr ""
 
 #: ../admin/index.php:327
 msgid "Whitelist - XMPP Server"
@@ -82,7 +79,6 @@ msgid "Please put a valid domain name list"
 msgstr ""
 
 #: ../admin/index.php:508 ../system/Widget/widgets/Account/Account.php:384
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:135
 msgid "You entered different passwords"
 msgstr ""
 
@@ -91,7 +87,8 @@ msgid "Thank you for downloading Movim!"
 msgstr "Дякуємо Вам за завантаження Movim!"
 
 #: ../admin/part0.php:5
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
 "Перед тим, як користуватися вашою соціальною мережею,  потрібно кілька "
 "налаштувань."
@@ -144,9 +141,8 @@ msgid "SimpleXML"
 msgstr ""
 
 #: ../admin/part0.php:38
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr "Включити права читання і запису на кореневу папку Movim"
+msgstr ""
 
 #: ../admin/part0.php:41
 msgid "<a href=\"http://datajar.movim.eu\">Datajar</a> version: "
@@ -282,9 +278,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: ../admin/part5.php:24
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:182
-#: ../system/Widget/widgets/Login/Login.php:262
+#: ../admin/part5.php:24 ../system/Widget/widgets/Login/Login.php:262
 msgid "Password"
 msgstr ""
 
@@ -552,9 +546,8 @@ msgid "confused"
 msgstr ""
 
 #: ../system/Utils.php:506
-#, fuzzy
 msgid "contemplative"
-msgstr "мовність"
+msgstr ""
 
 #: ../system/Utils.php:507
 msgid "contented"
@@ -982,23 +975,19 @@ msgid "URL"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:372
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:123
 #: ../system/Widget/widgets/Login/Login.php:72
 msgid "Some data are missing !"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:378
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:129
 msgid "Wrong ID"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:390
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:141
 msgid "Invalid name"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:396
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:147
 msgid "Username already taken"
 msgstr ""
 
@@ -1056,32 +1045,6 @@ msgstr ""
 #: ../system/Widget/widgets/Explore/Explore.php:104
 #: ../system/Widget/widgets/Roster/Roster.php:297
 msgid "Search"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:115
-msgid "Account linkage disabled."
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:153
-#: ../system/Widget/widgets/Login/Login.php:66
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:166
-msgid "Add your login informations"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:173
-#: ../system/Widget/widgets/Login/Login.php:258
-msgid "My address"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:192
-msgid "Retype"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:200
-msgid "Create"
 msgstr ""
 
 #: ../system/Widget/widgets/Chat/Chat.php:44
@@ -1375,11 +1338,15 @@ msgid "Invalid JID"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:54
-msgid "Authentification mechanism not supported by Movim"
+msgid "Authentication mechanism not supported by Movim"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:60
 msgid "Empty Challenge from the server"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:66
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:78
@@ -1428,10 +1395,13 @@ msgstr ""
 msgid "Connecting..."
 msgstr ""
 
+#: ../system/Widget/widgets/Login/Login.php:258
+msgid "My address"
+msgstr ""
+
 #: ../system/Widget/widgets/Login/Login.php:275
-#, fuzzy
 msgid "Population"
-msgstr "Конфігурація"
+msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:277
 msgid "No account yet ?"
@@ -1455,13 +1425,12 @@ msgid "Updating"
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:137
-msgid "Rafraichir"
+msgid "Refresh"
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:152
-#, fuzzy
 msgid "Notifications"
-msgstr "Конфігурація"
+msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:177
 msgid "Contact request pending"
@@ -1549,11 +1518,11 @@ msgid "No contact specified"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:130
-msgid "Profil not updated : Your server does not support the vCard feature"
+msgid "Profile not updated : Your server does not support the vCard feature"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:135
-msgid "Profil not updated : Request error"
+msgid "Profile not updated : Request error"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:169
@@ -1608,32 +1577,34 @@ msgstr ""
 #~ msgid "Update your PHP version or contact your server administrator"
 #~ msgstr "Оновіть вашу версію PHP або зверніться до адміністратора сервера"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim вимагає розширення %s ."
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Встановити %s і  %s пакетів."
-
-#~ msgid "Install the %s package"
-#~ msgstr "Установка пакету %s"
 
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "Папка Movim повинна бути доступна для запису"
 
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr "Включити права читання і запису на кореневу папку Movim"
+
+#, php-format
+#~ msgid "Install the %s package"
+#~ msgstr "Установка пакету %s"
+
 #~ msgid "or"
 #~ msgstr "або"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "Сталася помилка '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "XMPP з'єднання  з помилкою '%s'"
-
-#~ msgid "Database connection failed with error '%s'"
-#~ msgstr "Підключення до бази даних з помилкою '%s'"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Movim установник"
 
 #~ msgid ""
 #~ "Some errors were detected. Please correct them for the installation to "
@@ -1641,3 +1612,13 @@ msgstr ""
 #~ msgstr ""
 #~ "Були виявлено деякі помилки . Будь ласка, виправте їх, щоб продовжити "
 #~ "установку."
+
+#, php-format
+#~ msgid "Database connection failed with error '%s'"
+#~ msgstr "Підключення до бази даних з помилкою '%s'"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "Тест на сумісність"
+
+#~ msgid "Movim Installer"
+#~ msgstr "Movim установник"
