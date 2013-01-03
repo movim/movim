@@ -5,16 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-26 18:24+0100\n"
+"POT-Creation-Date: 2012-12-28 15:51+0100\n"
 "PO-Revision-Date: 2012-07-06 22:50+0000\n"
 "Last-Translator: Rotaru Dorin <d.rotarou@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-19 14:20+0000\n"
-"X-Generator: Launchpad (build 16165)\n"
+"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
 #: ../admin/buttons.php:2
 msgid "Back"
@@ -48,24 +47,20 @@ msgid "Couldn't create configuration file '%s'."
 msgstr "Αδύνατη η δημιουργία του αρχείου ρύθμισης '%s'."
 
 #: ../admin/index.php:323
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "Δοκιμασία συμβατότητας"
+msgstr ""
 
 #: ../admin/index.php:324
-#, fuzzy
 msgid "General Settings"
-msgstr "Γενικές πληροφορίες"
+msgstr ""
 
 #: ../admin/index.php:325
-#, fuzzy
 msgid "Database Settings"
-msgstr "Εντοπίστηκε βάση δεδομένων"
+msgstr ""
 
 #: ../admin/index.php:326
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../admin/index.php:327
 msgid "Whitelist - XMPP Server"
@@ -84,7 +79,6 @@ msgid "Please put a valid domain name list"
 msgstr ""
 
 #: ../admin/index.php:508 ../system/Widget/widgets/Account/Account.php:384
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:135
 msgid "You entered different passwords"
 msgstr "Εισάγατε διαφορετικούς κωδικούς"
 
@@ -93,7 +87,8 @@ msgid "Thank you for downloading Movim!"
 msgstr "Ευχαριστούμε που κατεβάσατε το Movim!"
 
 #: ../admin/part0.php:5
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
 "Πριν απολαύσετε το κοινωνικό σας δίκτυο, απαιτούνται ορισμένες προσαρμογές."
 
@@ -109,9 +104,8 @@ msgid "For help on installation see the"
 msgstr ""
 
 #: ../admin/part0.php:11
-#, fuzzy
 msgid "Welcome to Movim!"
-msgstr "%s - Καλωσήλθατε στο Movim"
+msgstr ""
 
 #: ../admin/part0.php:13
 msgid ""
@@ -197,9 +191,8 @@ msgid ""
 msgstr ""
 
 #: ../admin/part2.php:38
-#, fuzzy
 msgid "Database System to use:"
-msgstr "Εντοπίστηκε βάση δεδομένων"
+msgstr ""
 
 #: ../admin/part2.php:58
 msgid "MySQL Settings"
@@ -218,9 +211,8 @@ msgid "MySQL Username"
 msgstr ""
 
 #: ../admin/part2.php:72
-#, fuzzy
 msgid "MySQL Password"
-msgstr "Κωδικός πρόσβασης"
+msgstr ""
 
 #: ../admin/part2.php:76
 msgid "MySQL Database"
@@ -279,20 +271,16 @@ msgid ""
 msgstr ""
 
 #: ../admin/part5.php:19
-#, fuzzy
 msgid "Username"
-msgstr "Λάθος όνομα χρήστη"
+msgstr ""
 
-#: ../admin/part5.php:24
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:182
-#: ../system/Widget/widgets/Login/Login.php:262
+#: ../admin/part5.php:24 ../system/Widget/widgets/Login/Login.php:262
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
 #: ../admin/part5.php:28
-#, fuzzy
 msgid "Retype password"
-msgstr "Λανθασμένος κωδικός"
+msgstr ""
 
 #: ../admin/part6.php:7
 msgid ""
@@ -554,9 +542,8 @@ msgid "confused"
 msgstr ""
 
 #: ../system/Utils.php:506
-#, fuzzy
 msgid "contemplative"
-msgstr "ομιλητικός"
+msgstr ""
 
 #: ../system/Utils.php:507
 msgid "contented"
@@ -571,9 +558,8 @@ msgid "crazy"
 msgstr ""
 
 #: ../system/Utils.php:510
-#, fuzzy
 msgid "creative"
-msgstr "Δημιούργησε"
+msgstr ""
 
 #: ../system/Utils.php:511
 msgid "curious"
@@ -930,18 +916,18 @@ msgid "%s - Profile"
 msgstr "%s - Προφίλ"
 
 #: ../system/Controller/ControllerMain.php:149
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Προσθέστε λογαριασμό"
+msgstr ""
 
 #: ../system/Controller/ControllerMain.php:151
 msgid "Account Creation"
 msgstr "Δημιουργία Λογαριασμού"
 
 #: ../system/Controller/ControllerMain.php:165
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Post View"
-msgstr "%s - Προφίλ"
+msgstr ""
 
 #: ../system/Controller/ControllerMain.php:185
 #, php-format
@@ -985,23 +971,19 @@ msgid "URL"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:372
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:123
 #: ../system/Widget/widgets/Login/Login.php:72
 msgid "Some data are missing !"
 msgstr "Μερικά δεδομένα λείπουν"
 
 #: ../system/Widget/widgets/Account/Account.php:378
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:129
 msgid "Wrong ID"
 msgstr "Λάθος ID"
 
 #: ../system/Widget/widgets/Account/Account.php:390
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:141
 msgid "Invalid name"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:396
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:147
 msgid "Username already taken"
 msgstr "Αυτό το όνομα χρήστη χρησιμοποιείται ήδη"
 
@@ -1060,32 +1042,6 @@ msgstr ""
 #: ../system/Widget/widgets/Roster/Roster.php:297
 msgid "Search"
 msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:115
-msgid "Account linkage disabled."
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:153
-#: ../system/Widget/widgets/Login/Login.php:66
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:166
-msgid "Add your login informations"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:173
-#: ../system/Widget/widgets/Login/Login.php:258
-msgid "My address"
-msgstr "Η διεύθυνσή μου"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:192
-msgid "Retype"
-msgstr "Επαναπληκτρολόγηση"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:200
-msgid "Create"
-msgstr "Δημιούργησε"
 
 #: ../system/Widget/widgets/Chat/Chat.php:44
 msgid "Offline"
@@ -1206,9 +1162,8 @@ msgid "Phone"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:122
-#, fuzzy
 msgid "Web"
-msgstr "Ιστότοπος"
+msgstr ""
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:129
 msgid "Client Informations"
@@ -1379,11 +1334,15 @@ msgid "Invalid JID"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:54
-msgid "Authentification mechanism not supported by Movim"
+msgid "Authentication mechanism not supported by Movim"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:60
 msgid "Empty Challenge from the server"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:66
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:78
@@ -1432,19 +1391,21 @@ msgstr "Ο περιηγητης σας είναι αρκετά παλιός γι
 msgid "Connecting..."
 msgstr ""
 
+#: ../system/Widget/widgets/Login/Login.php:258
+msgid "My address"
+msgstr "Η διεύθυνσή μου"
+
 #: ../system/Widget/widgets/Login/Login.php:275
-#, fuzzy
 msgid "Population"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:277
 msgid "No account yet ?"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:279
-#, fuzzy
 msgid "Create one !"
-msgstr "Δημιούργησε"
+msgstr ""
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
@@ -1460,13 +1421,12 @@ msgid "Updating"
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:137
-msgid "Rafraichir"
+msgid "Refresh"
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:152
-#, fuzzy
 msgid "Notifications"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:177
 msgid "Contact request pending"
@@ -1486,9 +1446,8 @@ msgid "Decline"
 msgstr "Απόρριψη"
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:55
-#, fuzzy
 msgid "Wrong position"
-msgstr "Λανθασμένος κωδικός"
+msgstr ""
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:67
 msgid "Location updated"
@@ -1547,20 +1506,19 @@ msgid "%s's feed"
 msgstr ""
 
 #: ../system/Widget/widgets/Syndication/Syndication.php:77
-#, fuzzy
 msgid "No public feed for this contact"
-msgstr "Διαγραφή αυτής της επαφής"
+msgstr ""
 
 #: ../system/Widget/widgets/Syndication/Syndication.php:80
 msgid "No contact specified"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:130
-msgid "Profil not updated : Your server does not support the vCard feature"
+msgid "Profile not updated : Your server does not support the vCard feature"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:135
-msgid "Profil not updated : Request error"
+msgid "Profile not updated : Request error"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:169
@@ -1608,25 +1566,12 @@ msgstr ""
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr ""
-#~ "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση "
-#~ "5.3 της PHP."
+#~ "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση 5.3 "
+#~ "της PHP."
 
-#~ msgid "Actual version : "
-#~ msgstr "Τρέχουσα έκδοση "
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr ""
-#~ "Κάντε αναβάθμιση του PHP ή επικοινωνήστε με τον διαχειρηστή του "
-#~ "εξυπηρετητή"
-
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Το Movim απαιτεί την %s επέκταση."
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Εγκατασταση %s και %s πακέτα"
-
-#~ msgid "Install the %s package"
-#~ msgstr "Εγκαταστήστε το %s πακέτο"
 
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "Ο φάκελλος του Movim πρέπε να διαθέτει δικαίωμα εγγραφής."
@@ -1634,27 +1579,8 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Πρόγραμμα εγκατάστασης του Movim"
 
-#~ msgid ""
-#~ "Some errors were detected. Please correct them for the installation to "
-#~ "proceed."
-#~ msgstr ""
-#~ "Εντοπίστηκαν μερικά σφάλματα. Παρακαλούμε διορθώστε τα για να συνεχίστεί "
-#~ "η εγκατάσταση"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "Προτιμήσεις σύνδεσης XMPP"
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "Επιλογές σύνδεσης BOSH"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "Προτιμήσεις proxy"
-
-#~ msgid "Success !"
-#~ msgstr "Επιτυχής!"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "Εγκυρο bosh"
+#~ msgid "Compatibility Test"
+#~ msgstr "Δοκιμασία συμβατότητας"
 
 #~ msgid "User not logged in."
 #~ msgstr "Χρήστης μη συνδεδεμένος."
@@ -1662,14 +1588,71 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "Δεν παρέχονται JID (Jabber Identif. Codes)"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Ο jid '%s' είναι λανθασμένος"
 
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Δημιουργία Λογαριασμού"
 
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Φορτώνεται το contact feed ..."
+
+#~ msgid "BOSH Connection Preferences"
+#~ msgstr "Επιλογές σύνδεσης BOSH"
+
+#~ msgid "Success !"
+#~ msgstr "Επιτυχής!"
+
 #~ msgid "Only alphanumerics elements are authorized"
 #~ msgstr "Επιτρέπονται μόνο αλφαριθμιτικά στοιχεία"
+
+#~ msgid "Example :"
+#~ msgstr "Παράδειγμα"
+
+#~ msgid "Same here !"
+#~ msgstr "Το ίδιο και εδώ"
+
+#~ msgid "Retype"
+#~ msgstr "Επαναπληκτρολόγηση"
+
+#~ msgid "Create"
+#~ msgstr "Δημιούργησε"
+
+#~ msgid "Actual version : "
+#~ msgstr "Τρέχουσα έκδοση "
+
+#, php-format
+#~ msgid "Install the %s package"
+#~ msgstr "Εγκαταστήστε το %s πακέτο"
+
+#, php-format
+#~ msgid "Install %s and %s packages"
+#~ msgstr "Εγκατασταση %s και %s πακέτα"
+
+#~ msgid "Update your PHP version or contact your server administrator"
+#~ msgstr ""
+#~ "Κάντε αναβάθμιση του PHP ή επικοινωνήστε με τον διαχειρηστή του εξυπηρετητή"
+
+#~ msgid "Proxy Preferences"
+#~ msgstr "Προτιμήσεις proxy"
+
+#~ msgid "XMPP Connection Preferences"
+#~ msgstr "Προτιμήσεις σύνδεσης XMPP"
+
+#~ msgid ""
+#~ "Some errors were detected. Please correct them for the installation to "
+#~ "proceed."
+#~ msgstr ""
+#~ "Εντοπίστηκαν μερικά σφάλματα. Παρακαλούμε διορθώστε τα για να συνεχίστεί η "
+#~ "εγκατάσταση"
+
+#~ msgid "Valid Bosh"
+#~ msgstr "Εγκυρο bosh"
+
+#~ msgid "Database Detected"
+#~ msgstr "Εντοπίστηκε βάση δεδομένων"
 
 #~ msgid "Make sure your password is safe :"
 #~ msgstr "Σιγουρευτείτε εαν ο κωδικός σας είναι ασφαλής"
@@ -1678,14 +1661,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Προτείνεται ένα κεφαλαίο γράμμα, ένα ψηφίο και ένας ειδικός χαρακτήρας"
 
+#, php-format
+#~ msgid "%s - Add An Account"
+#~ msgstr "%s - Προσθέστε λογαριασμό"
+
 #~ msgid "8 characters"
 #~ msgstr "8 χαρακτήρες"
-
-#~ msgid "Example :"
-#~ msgstr "Παράδειγμα"
-
-#~ msgid "Same here !"
-#~ msgstr "Το ίδιο και εδώ"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "Φορτώνεται το contact feed ..."

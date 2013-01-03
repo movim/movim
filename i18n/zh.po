@@ -5,16 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-26 18:24+0100\n"
+"POT-Creation-Date: 2012-12-28 15:51+0100\n"
 "PO-Revision-Date: 2011-12-18 14:01+0000\n"
 "Last-Translator: edhelas <edhelas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-19 14:20+0000\n"
-"X-Generator: Launchpad (build 16165)\n"
+"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
 #: ../admin/buttons.php:2
 msgid "Back"
@@ -46,9 +45,8 @@ msgid "Couldn't create configuration file '%s'."
 msgstr "不能建立配置文件  '%s'。"
 
 #: ../admin/index.php:323
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "兼容性测试"
+msgstr ""
 
 #: ../admin/index.php:324
 msgid "General Settings"
@@ -59,9 +57,8 @@ msgid "Database Settings"
 msgstr ""
 
 #: ../admin/index.php:326
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "配置"
+msgstr ""
 
 #: ../admin/index.php:327
 msgid "Whitelist - XMPP Server"
@@ -80,7 +77,6 @@ msgid "Please put a valid domain name list"
 msgstr ""
 
 #: ../admin/index.php:508 ../system/Widget/widgets/Account/Account.php:384
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:135
 msgid "You entered different passwords"
 msgstr ""
 
@@ -89,7 +85,8 @@ msgid "Thank you for downloading Movim!"
 msgstr ""
 
 #: ../admin/part0.php:5
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr ""
 
 #: ../admin/part0.php:6
@@ -104,9 +101,8 @@ msgid "For help on installation see the"
 msgstr ""
 
 #: ../admin/part0.php:11
-#, fuzzy
 msgid "Welcome to Movim!"
-msgstr "%s - 欢迎来到 MOVIM"
+msgstr ""
 
 #: ../admin/part0.php:13
 msgid ""
@@ -212,9 +208,8 @@ msgid "MySQL Username"
 msgstr ""
 
 #: ../admin/part2.php:72
-#, fuzzy
 msgid "MySQL Password"
-msgstr "密码"
+msgstr ""
 
 #: ../admin/part2.php:76
 msgid "MySQL Database"
@@ -276,16 +271,13 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: ../admin/part5.php:24
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:182
-#: ../system/Widget/widgets/Login/Login.php:262
+#: ../admin/part5.php:24 ../system/Widget/widgets/Login/Login.php:262
 msgid "Password"
 msgstr "密码"
 
 #: ../admin/part5.php:28
-#, fuzzy
 msgid "Retype password"
-msgstr "错误密码"
+msgstr ""
 
 #: ../admin/part6.php:7
 msgid ""
@@ -921,9 +913,9 @@ msgid "%s - Profile"
 msgstr ""
 
 #: ../system/Controller/ControllerMain.php:149
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - 建立帐号"
+msgstr ""
 
 #: ../system/Controller/ControllerMain.php:151
 msgid "Account Creation"
@@ -976,23 +968,19 @@ msgid "URL"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:372
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:123
 #: ../system/Widget/widgets/Login/Login.php:72
 msgid "Some data are missing !"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:378
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:129
 msgid "Wrong ID"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:390
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:141
 msgid "Invalid name"
 msgstr ""
 
 #: ../system/Widget/widgets/Account/Account.php:396
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:147
 msgid "Username already taken"
 msgstr ""
 
@@ -1050,32 +1038,6 @@ msgstr ""
 #: ../system/Widget/widgets/Explore/Explore.php:104
 #: ../system/Widget/widgets/Roster/Roster.php:297
 msgid "Search"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:115
-msgid "Account linkage disabled."
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:153
-#: ../system/Widget/widgets/Login/Login.php:66
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:166
-msgid "Add your login informations"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:173
-#: ../system/Widget/widgets/Login/Login.php:258
-msgid "My address"
-msgstr "我的识别符"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:192
-msgid "Retype"
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:200
-msgid "Create"
 msgstr ""
 
 #: ../system/Widget/widgets/Chat/Chat.php:44
@@ -1197,9 +1159,8 @@ msgid "Phone"
 msgstr ""
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:122
-#, fuzzy
 msgid "Web"
-msgstr "你的网站"
+msgstr ""
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:129
 msgid "Client Informations"
@@ -1370,11 +1331,15 @@ msgid "Invalid JID"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:54
-msgid "Authentification mechanism not supported by Movim"
+msgid "Authentication mechanism not supported by Movim"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:60
 msgid "Empty Challenge from the server"
+msgstr ""
+
+#: ../system/Widget/widgets/Login/Login.php:66
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:78
@@ -1423,10 +1388,13 @@ msgstr ""
 msgid "Connecting..."
 msgstr ""
 
+#: ../system/Widget/widgets/Login/Login.php:258
+msgid "My address"
+msgstr "我的识别符"
+
 #: ../system/Widget/widgets/Login/Login.php:275
-#, fuzzy
 msgid "Population"
-msgstr "配置"
+msgstr ""
 
 #: ../system/Widget/widgets/Login/Login.php:277
 msgid "No account yet ?"
@@ -1450,13 +1418,12 @@ msgid "Updating"
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:137
-msgid "Rafraichir"
+msgid "Refresh"
 msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:152
-#, fuzzy
 msgid "Notifications"
-msgstr "配置"
+msgstr ""
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:177
 msgid "Contact request pending"
@@ -1476,9 +1443,8 @@ msgid "Decline"
 msgstr ""
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:55
-#, fuzzy
 msgid "Wrong position"
-msgstr "错误密码"
+msgstr ""
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:67
 msgid "Location updated"
@@ -1545,11 +1511,11 @@ msgid "No contact specified"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:130
-msgid "Profil not updated : Your server does not support the vCard feature"
+msgid "Profile not updated : Your server does not support the vCard feature"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:135
-msgid "Profil not updated : Request error"
+msgid "Profile not updated : Request error"
 msgstr ""
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:169
@@ -1595,9 +1561,14 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - 建立帐号"
+
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "PHP 版本不符。 Movim 需要 PHP 5.3以上的版本。"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim 需要 %s 扩展名。"
 
@@ -1607,11 +1578,15 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Movim 安装程序。"
 
+#~ msgid "Compatibility Test"
+#~ msgstr "兼容性测试"
+
 #~ msgid "User not logged in."
 #~ msgstr "用户还未登录。"
 
 #~ msgid "JID not provided."
 #~ msgstr "还未提供JID。"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "JID %s 是不正确"
