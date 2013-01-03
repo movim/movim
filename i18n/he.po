@@ -6,26 +6,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-26 18:24+0100\n"
-"PO-Revision-Date: 2012-10-02 18:42+0000\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-12-28 15:51+0100\n"
+"PO-Revision-Date: 2013-01-01 23:05+0000\n"
 "Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
 "Language-Team: Rahut <genghiskhan@gmx.ca>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-10-19 14:28+0000\n"
-"X-Generator: Launchpad (build 16165)\n"
+"X-Launchpad-Export-Date: 2013-01-03 20:56+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 "X-Poedit-Language: Hebrew\n"
 
 #: ../admin/buttons.php:2
 msgid "Back"
-msgstr ""
+msgstr "חזרה"
 
 #: ../admin/buttons.php:2 ../admin/part0.php:63
 msgid "Next"
-msgstr ""
+msgstr "הבא"
 
 #: ../admin/error.php:2
 msgid ""
@@ -35,7 +34,7 @@ msgstr "הדרישות הבאות לא סופקו. נא לוודא שכולן מ
 
 #: ../admin/index.php:11
 msgid "Movim Installer and Configuration Manager"
-msgstr ""
+msgstr "מתקין Movim ומנהל תצורה"
 
 #: ../admin/index.php:199 ../admin/index.php:203 ../admin/index.php:207
 #: ../admin/index.php:211
@@ -49,44 +48,38 @@ msgid "Couldn't create configuration file '%s'."
 msgstr "לא ניתן ליצור קובץ תצורה '%s'."
 
 #: ../admin/index.php:323
-#, fuzzy
 msgid "Compatibility Check"
 msgstr "בדיקת תאימות"
 
-# BUG: Information(s)
 #: ../admin/index.php:324
-#, fuzzy
 msgid "General Settings"
-msgstr "מידע כללי"
+msgstr "הגדרות כלליות"
 
 #: ../admin/index.php:325
-#, fuzzy
 msgid "Database Settings"
-msgstr "מסד נתונים אותר"
+msgstr "הגדרות מסד נתונים"
 
 #: ../admin/index.php:326
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "תצורה"
+msgstr "תצורת Bosh"
 
 #: ../admin/index.php:327
 msgid "Whitelist - XMPP Server"
-msgstr ""
+msgstr "רשימה לבנה - שרת XMPP"
 
 #: ../admin/index.php:328
 msgid "Done"
-msgstr ""
+msgstr "סיום"
 
 #: ../admin/index.php:454
 msgid "Your Bosh URL is not reachable"
-msgstr ""
+msgstr "כתובת Bosh URL אינה ברת השגה"
 
 #: ../admin/index.php:482
 msgid "Please put a valid domain name list"
-msgstr ""
+msgstr "אנא השם רשימת שם מתחם תקפה"
 
 #: ../admin/index.php:508 ../system/Widget/widgets/Account/Account.php:384
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:135
 msgid "You entered different passwords"
 msgstr "הזנת סיסמאות שונות"
 
@@ -97,7 +90,8 @@ msgstr "תודה לך על שהורדת את Movim!"
 # בטרם ברצונך ליהנות
 # רשת העבודה החברתית
 #: ../admin/part0.php:5
-msgid "Before you enjoy your social network, a few adjustements are required."
+msgid ""
+"Before you enjoy your social network, a few adjustements are required."
 msgstr "לפני שיהיה ביכולתך ליהנות מן הרשת החברתית שלך, נדרשות התאמות מספר."
 
 # בכוח potentially
@@ -115,12 +109,11 @@ msgstr ""
 
 #: ../admin/part0.php:7
 msgid "For help on installation see the"
-msgstr ""
+msgstr "למידע על התקנה ראה את"
 
 #: ../admin/part0.php:11
-#, fuzzy
 msgid "Welcome to Movim!"
-msgstr "‏‏%s - ברוך בואך אל Movim"
+msgstr "ברוך בואך אל Movim!"
 
 #: ../admin/part0.php:13
 msgid ""
@@ -133,118 +126,109 @@ msgid ""
 "Movim requires certain external components. Please install them before you "
 "can succeed:"
 msgstr ""
+"Movim מצריכה רכיבים חיצוניים מסוימים. אנא התקן אותם לפני שתהיה באפשרותך "
+"להצליח:"
 
 #: ../admin/part0.php:26
 #, php-format
 msgid "Your PHP-Version: %s <br>Required: 5.3.0"
-msgstr ""
+msgstr "גרסת PHP-שברשותך: %s <br>נדרשת: 5.3.0"
 
 #: ../admin/part0.php:29
 msgid "CURL-Library"
-msgstr ""
+msgstr "ספריית-CURL"
 
 #: ../admin/part0.php:32
 msgid "GD"
-msgstr ""
+msgstr "GD"
 
 #: ../admin/part0.php:35
 msgid "SimpleXML"
-msgstr ""
+msgstr "XML פשוט"
 
-# permissions
 #: ../admin/part0.php:38
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr "החלת הרשאות קריאה וכתיבה על תיקיית השורש של Movim"
+msgstr "הרשאות קריאה וכתיבה עבור שרת הרשת במדור השורש (root) של Movim"
 
 #: ../admin/part0.php:41
 msgid "<a href=\"http://datajar.movim.eu\">Datajar</a> version: "
-msgstr ""
+msgstr "<a href=\"http://datajar.movim.eu\">Datajar</a> גרסא: "
 
 #: ../admin/part0.php:48
 msgid "Please make the required changes to continue."
-msgstr ""
+msgstr "נא לקיים את השינויים הנדרשים כדי להמשיך."
 
 #: ../admin/part1.php:15
 msgid "Theme"
-msgstr ""
+msgstr "מוטיב"
 
 #: ../admin/part1.php:27
 msgid "Default language"
-msgstr ""
+msgstr "שפה משתמטת"
 
 #: ../admin/part1.php:40
 msgid "Maximum population"
-msgstr ""
+msgstr "אוכלוסייה מרבית"
 
-# log verbosity
-# ריק
 #: ../admin/part1.php:47
 msgid "empty"
-msgstr "empty"
+msgstr "ריק"
 
-# log verbosity
-# תמציתי
 #: ../admin/part1.php:48
 msgid "terse"
-msgstr "terse"
+msgstr "תמציתי"
 
-# log verbosity
-# רגיל
 #: ../admin/part1.php:49
 msgid "normal"
-msgstr "normal"
+msgstr "רגיל"
 
-# log verbosity
-# פטפטני
 #: ../admin/part1.php:50
 msgid "talkative"
-msgstr "talkative"
+msgstr "פטפטני"
 
-# log verbosity
 #: ../admin/part1.php:51
 msgid "ultimate"
-msgstr "ultimate"
+msgstr "מוחלט"
 
 #: ../admin/part1.php:56
 msgid "Log verbosity"
-msgstr ""
+msgstr "גיבוב רשומת יומן"
 
 #: ../admin/part2.php:9
 msgid ""
 "Movim's database engine \"Datajar\" can handle a lot of database systems. "
 "Here you can see which ones are available in your setup."
 msgstr ""
+"מנוע מסד הנתונים של Movim הקרוי \"Datajar\" יכול להתמודד עם מערכות מסד "
+"נתונים רבות. כאן ביכולתך לראות אילו טיפוסי מסד נתונים זמינים בהתקנה שלך."
 
 #: ../admin/part2.php:38
-#, fuzzy
 msgid "Database System to use:"
-msgstr "מסד נתונים אותר"
+msgstr "מערכת מסד נתונים לשימוש:"
 
 #: ../admin/part2.php:58
 msgid "MySQL Settings"
-msgstr ""
+msgstr "הגדרות MySQL"
 
 #: ../admin/part2.php:60
 msgid "MySQL Host"
-msgstr ""
+msgstr "מארח MySQL"
 
 #: ../admin/part2.php:64
 msgid "MySQL Port"
-msgstr ""
+msgstr "פורט MySQL"
 
 #: ../admin/part2.php:68
 msgid "MySQL Username"
-msgstr ""
+msgstr "שם משתמש MySQL"
 
 #: ../admin/part2.php:72
-#, fuzzy
 msgid "MySQL Password"
-msgstr "סיסמה"
+msgstr "סיסמת MySQL"
 
 #: ../admin/part2.php:76
 msgid "MySQL Database"
-msgstr ""
+msgstr "מסד נתונים MySQL"
 
 #: ../admin/part3.php:10
 msgid ""
@@ -255,26 +239,26 @@ msgstr ""
 #: ../admin/part3.php:14
 #, php-format
 msgid "You will find a list of public servers BOSH on the page %s."
-msgstr ""
+msgstr "אתה תמצא רשימה של שרתי BOSH פומביים בעמוד %s."
 
 #: ../admin/part3.php:18
 #, php-format
 msgid ""
 "You can also install your own BOSH server, to do this follow the "
 "documentation %s!"
-msgstr ""
+msgstr "ביכולתך גם להתקין שרת BOSH עצמי, כדי לעשות זאת עקוב אחר התיעוד %s!"
 
 #: ../admin/part3.php:26
 msgid "Bosh URL"
-msgstr ""
+msgstr "Bosh URL"
 
 #: ../admin/part3.php:30
 msgid "BOSH changeable"
-msgstr ""
+msgstr "BOSH מתחלף"
 
 #: ../admin/part3.php:34
 msgid "Bosh Proxy"
-msgstr ""
+msgstr "פרוקסי Bosh"
 
 #: ../admin/part4.php:10
 msgid ""
@@ -286,11 +270,11 @@ msgstr ""
 #: ../admin/part4.php:12
 msgid ""
 "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "השאר את שדה זה ריק אם ברצונך להתיר גישה אל כל החשבונות של XMPP."
 
 #: ../admin/part4.php:20
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "רשימה של שרתי XMPP שמצויים תחת רשימה לבנה"
 
 #: ../admin/part5.php:10
 msgid ""
@@ -299,36 +283,33 @@ msgid ""
 msgstr ""
 
 #: ../admin/part5.php:19
-#, fuzzy
 msgid "Username"
-msgstr "שם משתמש שגוי"
+msgstr "שם משתמש"
 
-#: ../admin/part5.php:24
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:182
-#: ../system/Widget/widgets/Login/Login.php:262
+#: ../admin/part5.php:24 ../system/Widget/widgets/Login/Login.php:262
 msgid "Password"
 msgstr "סיסמה"
 
 #: ../admin/part5.php:28
-#, fuzzy
 msgid "Retype password"
-msgstr "סיסמה שגויה"
+msgstr "הקלד סיסמה מחדש"
 
 #: ../admin/part6.php:7
 msgid ""
 "That's it. Your configuration is now finished, and the database has been "
 "created."
-msgstr ""
+msgstr "זהו זה. התצורה שלך כעת גמורה, ומסד הנתונים נוצר."
 
 #: ../admin/part6.php:8
 msgid ""
 "If you want to change something later on you can do this by coming back to "
 "the installer."
 msgstr ""
+"אם ברצונך לשנות משהו מאוחר יותר ביכולתך לעשות זאת בבואך חזרה אל המתקין."
 
 #: ../admin/part6.php:14
 msgid "Here we go !"
-msgstr ""
+msgstr "קדימה לדרך !"
 
 # אלמנט
 #: ../system/Conf.php:38
@@ -518,378 +499,368 @@ msgstr "התנתקות"
 
 #: ../system/Utils.php:491
 msgid "afraid"
-msgstr ""
+msgstr "מפחד"
 
 #: ../system/Utils.php:492
 msgid "amazed"
-msgstr ""
+msgstr "נדהם"
 
 #: ../system/Utils.php:493
 msgid "amorous"
-msgstr ""
+msgstr "חושק"
 
 #: ../system/Utils.php:494
 msgid "angry"
-msgstr ""
+msgstr "כועס"
 
 #: ../system/Utils.php:495
 msgid "annoyed"
-msgstr ""
+msgstr "נרגז"
 
 #: ../system/Utils.php:496
 msgid "anxious"
-msgstr ""
+msgstr "חרד"
 
 #: ../system/Utils.php:497
 msgid "aroused"
-msgstr ""
+msgstr "מרוגש"
 
 #: ../system/Utils.php:498
 msgid "ashamed"
-msgstr ""
+msgstr "מתבייש"
 
 #: ../system/Utils.php:499
 msgid "bored"
-msgstr ""
+msgstr "משועמם"
 
 #: ../system/Utils.php:500
 msgid "brave"
-msgstr ""
+msgstr "אמיץ"
 
 #: ../system/Utils.php:501
 msgid "calm"
-msgstr ""
+msgstr "רגוע"
 
 #: ../system/Utils.php:502
 msgid "cautious"
-msgstr ""
+msgstr "זהיר"
 
 #: ../system/Utils.php:503
 msgid "cold"
-msgstr ""
+msgstr "קר"
 
 #: ../system/Utils.php:504
 msgid "confident"
-msgstr ""
+msgstr "סמוך"
 
 #: ../system/Utils.php:505
 msgid "confused"
-msgstr ""
+msgstr "מבולבל"
 
-# log verbosity
-# פטפטני
 #: ../system/Utils.php:506
-#, fuzzy
 msgid "contemplative"
-msgstr "talkative"
+msgstr "ספקולטיבי"
 
 #: ../system/Utils.php:507
 msgid "contented"
-msgstr ""
+msgstr "מסופק"
 
 #: ../system/Utils.php:508
 msgid "cranky"
-msgstr ""
+msgstr "נרגז"
 
 #: ../system/Utils.php:509
 msgid "crazy"
-msgstr ""
+msgstr "מטורף"
 
 #: ../system/Utils.php:510
-#, fuzzy
 msgid "creative"
-msgstr "יצירה"
+msgstr "יצירתי"
 
 #: ../system/Utils.php:511
 msgid "curious"
-msgstr ""
+msgstr "סקרן"
 
 #: ../system/Utils.php:512
 msgid "dejected"
-msgstr ""
+msgstr "מיואש"
 
 #: ../system/Utils.php:513
-#, fuzzy
 msgid "depressed"
-msgstr "כתובת"
+msgstr "מדוכא"
 
 #: ../system/Utils.php:514
 msgid "disappointed"
-msgstr ""
+msgstr "מאוכזב"
 
 #: ../system/Utils.php:515
 msgid "disgusted"
-msgstr ""
+msgstr "נגעל"
 
 #: ../system/Utils.php:516
 msgid "dismayed"
-msgstr ""
+msgstr "נחרד"
 
 #: ../system/Utils.php:517
 msgid "distracted"
-msgstr ""
+msgstr "טרוד"
 
 #: ../system/Utils.php:518
 msgid "embarrassed"
-msgstr ""
+msgstr "נבוך"
 
 #: ../system/Utils.php:519
 msgid "envious"
-msgstr ""
+msgstr "מקנא"
 
 #: ../system/Utils.php:520
 msgid "excited"
-msgstr ""
+msgstr "נרגש"
 
 #: ../system/Utils.php:521
 msgid "flirtatious"
-msgstr ""
+msgstr "פלרטטני"
 
 #: ../system/Utils.php:522
 msgid "frustrated"
-msgstr ""
+msgstr "מתוסכל"
 
 #: ../system/Utils.php:523
 msgid "grateful"
-msgstr ""
+msgstr "נעים"
 
 #: ../system/Utils.php:524
 msgid "grieving"
-msgstr ""
+msgstr "מתאבל"
 
 #: ../system/Utils.php:525
 msgid "grumpy"
-msgstr ""
+msgstr "זועף"
 
 #: ../system/Utils.php:526
 msgid "guilty"
-msgstr ""
+msgstr "אשם"
 
 #: ../system/Utils.php:527
 msgid "happy"
-msgstr ""
+msgstr "שמח"
 
 #: ../system/Utils.php:528
 msgid "hopeful"
-msgstr ""
+msgstr "אופטימי"
 
 #: ../system/Utils.php:529
-#, fuzzy
 msgid "hot"
-msgstr "בוט"
+msgstr "לוהט"
 
 #: ../system/Utils.php:530
 msgid "humbled"
-msgstr ""
+msgstr "מוכנע"
 
 #: ../system/Utils.php:531
 msgid "humiliated"
-msgstr ""
+msgstr "מושפל"
 
 #: ../system/Utils.php:532
 msgid "hungry"
-msgstr ""
+msgstr "רעב"
 
 #: ../system/Utils.php:533
 msgid "hurt"
-msgstr ""
+msgstr "פגוע"
 
 #: ../system/Utils.php:534
 msgid "impressed"
-msgstr ""
+msgstr "מתפעל"
 
 #: ../system/Utils.php:535
 msgid "in awe"
-msgstr ""
+msgstr "מפוחד"
 
 #: ../system/Utils.php:536
 msgid "in love"
-msgstr ""
+msgstr "מאוהב"
 
 #: ../system/Utils.php:538
 msgid "interested"
-msgstr ""
+msgstr "מתעניין"
 
 #: ../system/Utils.php:539
 msgid "intoxicated"
-msgstr ""
+msgstr "שיכור"
 
 #: ../system/Utils.php:540
 msgid "invincible"
-msgstr ""
+msgstr "בלתי מנוצח"
 
 #: ../system/Utils.php:541
 msgid "jealous"
-msgstr ""
+msgstr "מקנא"
 
 #: ../system/Utils.php:542
 msgid "lonely"
-msgstr ""
+msgstr "בודד"
 
 #: ../system/Utils.php:543
 msgid "lost"
-msgstr ""
+msgstr "אבוד"
 
 #: ../system/Utils.php:544
 msgid "lucky"
-msgstr ""
+msgstr "בר מזל"
 
 #: ../system/Utils.php:545
 msgid "mean"
-msgstr ""
+msgstr "דל"
 
 #: ../system/Utils.php:546
 msgid "moody"
-msgstr ""
+msgstr "מדוכדך"
 
 #: ../system/Utils.php:547
 msgid "nervous"
-msgstr ""
+msgstr "עצבני"
 
 #: ../system/Utils.php:548
 msgid "neutral"
-msgstr ""
+msgstr "אדיש"
 
 #: ../system/Utils.php:549
 msgid "offended"
-msgstr ""
+msgstr "נעלב"
 
 #: ../system/Utils.php:550
 msgid "outraged"
-msgstr ""
+msgstr "מזועזע"
 
 #: ../system/Utils.php:551
 msgid "playful"
-msgstr ""
+msgstr "שובב"
 
 #: ../system/Utils.php:552
 msgid "proud"
-msgstr ""
+msgstr "יהיר"
 
 #: ../system/Utils.php:553
 msgid "relaxed"
-msgstr ""
+msgstr "רגוע"
 
 #: ../system/Utils.php:554
 msgid "relieved"
-msgstr ""
+msgstr "משוחרר"
 
 #: ../system/Utils.php:555
 msgid "remorseful"
-msgstr ""
+msgstr "מתייסר"
 
 #: ../system/Utils.php:556
 msgid "restless"
-msgstr ""
+msgstr "חסר מנוחה"
 
 #: ../system/Utils.php:557
 msgid "sad"
-msgstr ""
+msgstr "עצוב"
 
 #: ../system/Utils.php:558
 msgid "sarcastic"
-msgstr ""
+msgstr "עוקצני"
 
 #: ../system/Utils.php:559
 msgid "satisfied"
-msgstr ""
+msgstr "מרוצה"
 
 #: ../system/Utils.php:560
 msgid "serious"
-msgstr ""
+msgstr "רציני"
 
 #: ../system/Utils.php:561
 msgid "shocked"
-msgstr ""
+msgstr "הלום"
 
 #: ../system/Utils.php:562
 msgid "shy"
-msgstr ""
+msgstr "ביישן"
 
 #: ../system/Utils.php:563
 msgid "sick"
-msgstr ""
+msgstr "חולה"
 
 #: ../system/Utils.php:564
 msgid "sleepy"
-msgstr ""
+msgstr "ישנוני"
 
 #: ../system/Utils.php:565
 msgid "spontaneous"
-msgstr ""
+msgstr "ספונטני"
 
 #: ../system/Utils.php:566
 msgid "stressed"
-msgstr ""
+msgstr "לחוץ"
 
 #: ../system/Utils.php:567
 msgid "strong"
-msgstr ""
+msgstr "חזק"
 
 #: ../system/Utils.php:568
 msgid "surprised"
-msgstr ""
+msgstr "מופתע"
 
 #: ../system/Utils.php:569
 msgid "thankful"
-msgstr ""
+msgstr "אסיר תודה"
 
 #: ../system/Utils.php:570
 msgid "thirsty"
-msgstr ""
+msgstr "צמא"
 
 #: ../system/Utils.php:571
 msgid "tired"
-msgstr ""
+msgstr "עייף"
 
 #: ../system/Utils.php:572
 msgid "undefined"
-msgstr ""
+msgstr "מעורפל"
 
 #: ../system/Utils.php:573
 msgid "weak"
-msgstr ""
+msgstr "חלש"
 
 #: ../system/Utils.php:574
-#, fuzzy
 msgid "worried"
-msgstr "נישואים"
+msgstr "מודאג"
 
 #: ../system/Moxl/xec/action/location/LocationPublish.php:87
-#, fuzzy
 msgid "Your server doesn't support location publication"
-msgstr "שרתך לא תומך בפרסום רשומות, ביכולתך לקרוא ערוצי איש־קשר בלבד"
+msgstr "שרתך לא תומך בפרסום מיקום"
 
 #: ../system/Moxl/xec/action/location/LocationPublish.php:92
 msgid "Your are not authorized to publish your location"
-msgstr ""
+msgstr "אינך מורשה לפרסם את מיקומך"
 
 #: ../system/Moxl/xec/action/microblog/MicroblogPostDelete.php:89
 msgid "This post doesn't exist on the server"
-msgstr ""
+msgstr "פוסט זה לא קיים על השרת"
 
 #: ../system/Moxl/xec/action/microblog/MicroblogPostDelete.php:98
-#, fuzzy
 msgid "Your server doesn't support post deletetion"
-msgstr "שרתך לא תומך בפרסום רשומות, ביכולתך לקרוא ערוצי איש־קשר בלבד"
+msgstr "שרתך לא תומך במחיקת פוסט"
 
 #: ../system/Moxl/xec/action/microblog/MicroblogPostDelete.php:107
 msgid "You are not autorized to delete items on this node"
-msgstr ""
+msgstr "אינך מורשה למחוק פריטים על נקודת ממסר זו"
 
 #: ../system/Moxl/xec/action/microblog/MicroblogPostDelete.php:116
 #: ../system/Moxl/xec/action/microblog/MicroblogPostPublish.php:100
 msgid "Service unavaiable"
-msgstr ""
+msgstr "שירות לא זמין"
 
 #: ../system/Moxl/xec/action/microblog/MicroblogPostPublish.php:90
-#, fuzzy
 msgid "Your server doesn't support post publication"
-msgstr "שרתך לא תומך בפרסום רשומות, ביכולתך לקרוא ערוצי איש־קשר בלבד"
+msgstr "שרתך לא תומך בפרסום פוסט"
 
 #: ../system/Moxl/xec/action/microblog/MicroblogPostPublish.php:95
 msgid "You are not autorized to publish on this node"
-msgstr ""
+msgstr "אינך מורשה לפרסם על נקודת ממסר זו"
 
 #: ../system/Controller/ControllerMain.php:49
 #, php-format
@@ -916,7 +887,7 @@ msgstr "בית"
 #: ../system/Controller/ControllerMain.php:215
 #: ../system/Controller/ControllerMain.php:242
 msgid "Explore"
-msgstr ""
+msgstr "סייר"
 
 #: ../system/Controller/ControllerMain.php:52
 #: ../system/Controller/ControllerMain.php:88
@@ -961,18 +932,18 @@ msgid "%s - Profile"
 msgstr "‏‏%s - דיוקן"
 
 #: ../system/Controller/ControllerMain.php:149
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "‏‏%s - הוספת חשבון"
+msgstr "%s - חשבון"
 
 #: ../system/Controller/ControllerMain.php:151
 msgid "Account Creation"
 msgstr "יצירת חשבון"
 
 #: ../system/Controller/ControllerMain.php:165
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Post View"
-msgstr "‏‏%s - דיוקן"
+msgstr ""
 
 #: ../system/Controller/ControllerMain.php:185
 #, php-format
@@ -982,7 +953,7 @@ msgstr "‏‏%s - התחברות אל Movim"
 #: ../system/Controller/ControllerMain.php:209
 #, php-format
 msgid "%s - Explore"
-msgstr ""
+msgstr "%s - סייר"
 
 #: ../system/Controller/ControllerMain.php:236
 #, php-format
@@ -991,16 +962,15 @@ msgstr "‏‏%s - עמוד עזרה"
 
 #: ../system/Widget/widgets/Account/Account.php:77
 msgid "Step 2 - Fill in your informations"
-msgstr ""
+msgstr "צעד 2 - הוספת המידע שלך"
 
 #: ../system/Widget/widgets/Account/Account.php:187
-#, fuzzy
 msgid "Validate"
-msgstr "שם שגוי"
+msgstr "מתן תוקף"
 
 #: ../system/Widget/widgets/Account/Account.php:200
 msgid "No account creation form founded on the server"
-msgstr ""
+msgstr "לא נמצאה תבנית יצירת חשבון על השרת"
 
 #: ../system/Widget/widgets/Account/Account.php:319
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:49
@@ -1010,31 +980,27 @@ msgstr "שם"
 
 #: ../system/Widget/widgets/Account/Account.php:322
 msgid "Description"
-msgstr ""
+msgstr "תיאור"
 
 #: ../system/Widget/widgets/Account/Account.php:325
 msgid "URL"
-msgstr ""
+msgstr "‏URL"
 
 #: ../system/Widget/widgets/Account/Account.php:372
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:123
 #: ../system/Widget/widgets/Login/Login.php:72
 msgid "Some data are missing !"
 msgstr "חסר מידע מסוים !"
 
 #: ../system/Widget/widgets/Account/Account.php:378
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:129
 msgid "Wrong ID"
 msgstr "‏ID שגויה"
 
 #: ../system/Widget/widgets/Account/Account.php:390
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:141
 msgid "Invalid name"
 msgstr "שם שגוי"
 
 # שם משתמש תפוס
 #: ../system/Widget/widgets/Account/Account.php:396
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:147
 msgid "Username already taken"
 msgstr "שם משתמש כבר בשימוש"
 
@@ -1059,69 +1025,42 @@ msgid ""
 "Movim is a decentralized social network, before creating a new account you "
 "need to choose a server to register."
 msgstr ""
+"Movim הינה רשת חברתית מבוזרת (א-ריכוזית), טרם יצירת חשבון חדש עליך לבחור שרת "
+"להירשם אליו."
 
 #: ../system/Widget/widgets/Account/Account.php:430
 msgid "Keep in mind that this server will handle all your personnal data."
-msgstr ""
+msgstr "זכור ששרת זה יטפל בכל המידע האישי שלך."
 
 #: ../system/Widget/widgets/Account/Account.php:435
 msgid "Step 1 - Search the server"
-msgstr ""
+msgstr "צעד 1 - חיפוש השרת"
 
 #: ../system/Widget/widgets/Account/Account.php:439
 msgid "You can enter your server domain name."
-msgstr ""
+msgstr "ביכולתך להזין את שם מתחם שרתך."
 
 #: ../system/Widget/widgets/Account/Account.php:443
 msgid "Server"
-msgstr ""
+msgstr "שרת"
 
 #: ../system/Widget/widgets/Account/Account.php:446
 msgid "Enter the server domain (ex: movim.eu)"
-msgstr ""
+msgstr "הזן מתחם שרת (דוגמא: movim.eu)"
 
 #: ../system/Widget/widgets/Account/Account.php:454
 msgid "Or you can choose a server from this list."
-msgstr ""
+msgstr "או שביכולתך לבחור שרת מרשימה זו"
 
 #: ../system/Widget/widgets/Account/Account.php:462
-#, fuzzy
 msgid "Searching..."
-msgstr "מתחבר כעת..."
+msgstr "מחפש כעת..."
 
 #: ../system/Widget/widgets/Account/Account.php:464
 #: ../system/Widget/widgets/Explore/Explore.php:104
 #: ../system/Widget/widgets/Roster/Roster.php:297
-#, fuzzy
 msgid "Search"
-msgstr "מרץ"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:115
-msgid "Account linkage disabled."
-msgstr ""
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:153
-#: ../system/Widget/widgets/Login/Login.php:66
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr "שגיאת מתחם XMPP, חשבונך אינו כתובת JID תקינה"
-
-# BUG: Information(s)
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:166
-msgid "Add your login informations"
-msgstr "נא להוסיף את נתוני התחברותך"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:173
-#: ../system/Widget/widgets/Login/Login.php:258
-msgid "My address"
-msgstr "כתובתי"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:192
-msgid "Retype"
-msgstr "הקלדה חוזרת"
-
-#: ../system/Widget/widgets/AccountAdd/AccountAdd.php:200
-msgid "Create"
-msgstr "יצירה"
+msgstr "חיפוש"
 
 #: ../system/Widget/widgets/Chat/Chat.php:44
 msgid "Offline"
@@ -1133,7 +1072,7 @@ msgstr "מלחין כעת..."
 
 #: ../system/Widget/widgets/Chat/Chat.php:337
 msgid "Paused..."
-msgstr ""
+msgstr "מושהה..."
 
 #: ../system/Widget/widgets/Config/Config.php:63
 msgid "Language"
@@ -1141,7 +1080,7 @@ msgstr "שפה"
 
 #: ../system/Widget/widgets/Config/Config.php:79
 msgid "Enable Sound Notification:"
-msgstr ""
+msgstr "אפשר התראות קול:"
 
 #: ../system/Widget/widgets/Config/Config.php:81
 #: ../system/Widget/widgets/Config/Config.php:85
@@ -1159,7 +1098,7 @@ msgstr "איפוס"
 
 #: ../system/Widget/widgets/Config/Config.php:90
 msgid "This configuration is shared wherever you are connected !"
-msgstr ""
+msgstr "תצורה זו הינה משותפת בכל מקום בו הינך מחובר !"
 
 # BUG: Information(s)
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:45
@@ -1190,7 +1129,7 @@ msgstr "מצב משפחתי"
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:79
 #: ../system/Widget/widgets/Vcard/Vcard.php:159
 msgid "Email"
-msgstr ""
+msgstr "דוא״ל"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:84
 #: ../system/Widget/widgets/Vcard/Vcard.php:244
@@ -1205,31 +1144,30 @@ msgstr "אודותיי"
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:99
 #: ../system/Widget/widgets/Vcard/Vcard.php:264
 msgid "Geographic Position"
-msgstr ""
+msgstr "מיקום גאוגרפי"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:103
 #: ../system/Widget/widgets/Vcard/Vcard.php:266
 msgid "Locality"
-msgstr ""
+msgstr "מקומיות"
 
 #: ../system/Widget/widgets/ContactCard/ContactCard.php:115
 #: ../system/Widget/widgets/Vcard/Vcard.php:270
 msgid "Country"
-msgstr ""
+msgstr "ארץ"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:62
 msgid "I'm "
-msgstr ""
+msgstr "אני "
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:67
 msgid "Last seen"
-msgstr ""
+msgstr "נראה לאחרונה"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:76
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:105
-#, fuzzy
 msgid "Location"
-msgstr "פעולות"
+msgstr "מיקום"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:119
 msgid "Bot"
@@ -1244,9 +1182,8 @@ msgid "Phone"
 msgstr "טלפון"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:122
-#, fuzzy
 msgid "Web"
-msgstr "אתר רשת"
+msgstr "רשת"
 
 #: ../system/Widget/widgets/ContactInfo/ContactInfo.php:129
 msgid "Client Informations"
@@ -1278,11 +1215,11 @@ msgstr "הזמנת משתמש זה"
 
 #: ../system/Widget/widgets/Explore/Explore.php:54
 msgid "Last registered"
-msgstr ""
+msgstr "נרשם לאחרונה"
 
 #: ../system/Widget/widgets/Explore/Explore.php:110
 msgid "Search a contact"
-msgstr ""
+msgstr "חיפוש איש קשר"
 
 #: ../system/Widget/widgets/Feed/Feed.php:55
 #: ../system/Widget/widgets/Feed/Feed.php:98
@@ -1293,29 +1230,28 @@ msgstr "שרתך לא תומך בפרסום רשומות, ביכולתך לקר�
 
 #: ../system/Widget/widgets/Feed/Feed.php:86
 msgid "An error occured : "
-msgstr ""
+msgstr "ארעה שגיאה : "
 
 #: ../system/Widget/widgets/Feed/Feed.php:104
-#, fuzzy
 msgid "Creating your feed..."
-msgstr "מטעין כעת את ערוצך ..."
+msgstr "יוצר כעת את ערוצך..."
 
 #: ../system/Widget/widgets/Feed/Feed.php:122
 msgid "What's new ?"
-msgstr ""
+msgstr "מה חדש ?"
 
 #: ../system/Widget/widgets/Feed/Feed.php:141
 msgid "Size"
-msgstr ""
+msgstr "גודל"
 
 #: ../system/Widget/widgets/Feed/Feed.php:148
 msgid "Rich Text"
-msgstr ""
+msgstr "תמליל עשיר"
 
 #: ../system/Widget/widgets/Feed/Feed.php:223
 #: ../system/Widget/widgets/Wall/Wall.php:133
 msgid "Get older posts"
-msgstr "השגת רשומות ישנות יותר"
+msgstr "השגת רשומות נושנות"
 
 #: ../system/Widget/widgets/Feed/Feed.php:240
 msgid "Your feed cannot be loaded."
@@ -1330,7 +1266,7 @@ msgstr "ערוץ"
 
 #: ../system/Widget/widgets/Feed/Feed.php:277
 msgid "All"
-msgstr "הכול"
+msgstr "הכל"
 
 # הרשומות שלי
 #: ../system/Widget/widgets/Feed/Feed.php:278
@@ -1347,20 +1283,19 @@ msgid ""
 "Visit the page %s What is Movim ? %s to know more about the project, its "
 "aims and understand how it works."
 msgstr ""
-"בקר/י בעמוד %s מה זה Movim ? %s כדי לדעת עוד אודות הפרויקט, מטרותיו וגם כדי "
-"להבין כיצד הוא פועל."
+"ניתן לבקר בעמוד %s מה זה Movim ? %s כדי לדעת עוד אודות הפרויקט, מטרותיו וגם "
+"כדי להבין כיצד הוא פועל."
 
 #: ../system/Widget/widgets/Help/Help.php:37
 msgid "What do the little banners refer to ?"
 msgstr "מה כרזות קטנות אלו מייחסות ?"
 
-# typo: confdentiality > confidentiality
 #: ../system/Widget/widgets/Help/Help.php:46
 msgid ""
 "Thanks to these five little banners, you can quickly identitfy the level of "
 "confdentiality applied to the information you provide."
 msgstr ""
-"הודות לחמשת כרזות אלו, ביכולתך לברר במהירות את רמת הסודיות שחלה עד המידע "
+"הודות לחמשת כרזות אלו, ביכולתך לברר במהירות את רמת החיסיון שחלה על המידע "
 "אותו בחרת לספק."
 
 #: ../system/Widget/widgets/Help/Help.php:50
@@ -1401,24 +1336,21 @@ msgid ""
 "the one you want is on its way."
 msgstr ""
 "אף על פי שהפלטפורמה Movim מתפתחת מהר, המון (המון) תכונות חסרות. עליך להיעזר "
-"בסבלנות ;). ביכולתך להגניב הצצה %s במפות הדרכים של הגרסה הבאה %s כדי לדעת אם "
+"בסבלנות ;). ביכולתך להגניב הצצה %s במפות הדרכים של הגרסא הבאה %s כדי לדעת אם "
 "התכונה שרצונך בה כבר בדרך."
 
-# Where is the question mark?
-# Can I participate (?)
 #: ../system/Widget/widgets/Help/Help.php:62
 #, php-format
 msgid ""
 "Don't forget that Movim is an open source project, a helping hand is always "
 "welcome (see %s Can I participate %s)"
 msgstr ""
-"נא לא לשכוח שהפלטפורמה Movim הינה פרויקט קוד פתוח, a סיוע תמיד יתקבל באהדה "
+"נא לא לשכוח שהפלטפורמה Movim הינה פרויקט קוד פתוח, סיוע תמיד יתקבל באהדה "
 "(ראו %s האם ביכולתי להשתתף %s)"
 
-# can't > don't
 #: ../system/Widget/widgets/Help/Help.php:65
 msgid "I can't find the answer to my question here"
-msgstr "אין ביכולתי למצוא את התשובה אל שאלתי כאן"
+msgstr "אין ביכולתי למצוא את התשובה לשאלתי כאן"
 
 # typo X2 to the to the
 # Go to the %s to the Frequently Asked Questions %s
@@ -1443,12 +1375,16 @@ msgid "Invalid JID"
 msgstr "‫JID שגויה"
 
 #: ../system/Widget/widgets/Login/Login.php:54
-msgid "Authentification mechanism not supported by Movim"
-msgstr ""
+msgid "Authentication mechanism not supported by Movim"
+msgstr "מנגנון אימות לא נתמך על ידי Movim"
 
 #: ../system/Widget/widgets/Login/Login.php:60
 msgid "Empty Challenge from the server"
-msgstr ""
+msgstr "רוקן הזמנה מן השרת"
+
+#: ../system/Widget/widgets/Login/Login.php:66
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
+msgstr "שגיאת מתחם XMPP, חשבונך אינו כתובת JID תקינה"
 
 #: ../system/Widget/widgets/Login/Login.php:78
 msgid "Wrong password"
@@ -1481,7 +1417,7 @@ msgstr "‫Movim נכשלה לאמת. הזנת מידע שגוי"
 
 #: ../system/Widget/widgets/Login/Login.php:120
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "השרת של XMPP שלך אינו מורשה"
 
 # היכנסו פנימה!
 # היכנס/י
@@ -1499,20 +1435,21 @@ msgstr "דפדפן הרשת שלך הינו ישן מידי בכדי לעשות 
 msgid "Connecting..."
 msgstr "מתחבר כעת..."
 
+#: ../system/Widget/widgets/Login/Login.php:258
+msgid "My address"
+msgstr "כתובתי"
+
 #: ../system/Widget/widgets/Login/Login.php:275
-#, fuzzy
 msgid "Population"
-msgstr "תצורה"
+msgstr "אוכלוסייה"
 
 #: ../system/Widget/widgets/Login/Login.php:277
-#, fuzzy
 msgid "No account yet ?"
-msgstr "אין דיוקן עדיין ?"
+msgstr "אין חשבון עדיין ?"
 
 #: ../system/Widget/widgets/Login/Login.php:279
-#, fuzzy
 msgid "Create one !"
-msgstr "יצירה"
+msgstr "צור אחד !"
 
 #: ../system/Widget/widgets/Log/Log.php:33
 msgid "Debug console"
@@ -1520,25 +1457,24 @@ msgstr "מסוף ניפוי שגיאות"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:82
 msgid "Delete"
-msgstr ""
+msgstr "מחק"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:134
 #: ../system/Widget/widgets/Wall/Wall.php:121
 msgid "Updating"
-msgstr ""
+msgstr "מעדכן כעת"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:137
-msgid "Rafraichir"
-msgstr ""
+msgid "Refresh"
+msgstr "רענן"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:152
-#, fuzzy
 msgid "Notifications"
-msgstr "תצורה"
+msgstr "התראות"
 
 #: ../system/Widget/widgets/Notifs/Notifs.php:177
 msgid "Contact request pending"
-msgstr ""
+msgstr "בקשת איש קשר ממתינה"
 
 # עמך
 #: ../system/Widget/widgets/Notifs/Notifs.php:266
@@ -1555,17 +1491,16 @@ msgid "Decline"
 msgstr "דחיה"
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:55
-#, fuzzy
 msgid "Wrong position"
-msgstr "סיסמה שגויה"
+msgstr "מיקום שגוי"
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:67
 msgid "Location updated"
-msgstr ""
+msgstr "מיקום עודכן"
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:113
 msgid "Update my position"
-msgstr ""
+msgstr "עדכן את מיקומי"
 
 #: ../system/Widget/widgets/ProfileData/ProfileData.php:119
 msgid "Accept"
@@ -1578,7 +1513,7 @@ msgstr "ביטול"
 
 #: ../system/Widget/widgets/Profile/Profile.php:42
 msgid "Saved"
-msgstr ""
+msgstr "נשמר"
 
 #: ../system/Widget/widgets/Profile/Profile.php:138
 msgid "No profile yet ?"
@@ -1596,7 +1531,7 @@ msgstr "ללא קבוצה"
 
 #: ../system/Widget/widgets/Roster/Roster.php:254
 msgid "JID"
-msgstr ""
+msgstr "JID"
 
 #: ../system/Widget/widgets/Roster/Roster.php:264
 #: ../system/Widget/widgets/Roster/Roster.php:269
@@ -1605,33 +1540,32 @@ msgstr "כינוי"
 
 #: ../system/Widget/widgets/Roster/Roster.php:285
 msgid "Send request"
-msgstr "שליחת בקשה"
+msgstr "שלח בקשה"
 
 #: ../system/Widget/widgets/Roster/Roster.php:293
 msgid "Show/Hide"
-msgstr ""
+msgstr "הצג/הסתר"
 
 #: ../system/Widget/widgets/Syndication/Syndication.php:50
 #, php-format
 msgid "%s's feed"
-msgstr ""
+msgstr "הערוץ של %s"
 
 #: ../system/Widget/widgets/Syndication/Syndication.php:77
-#, fuzzy
 msgid "No public feed for this contact"
-msgstr "הסרת איש־קשר זה"
+msgstr "אין ערוץ פומבי עבור איש קשר זה"
 
 #: ../system/Widget/widgets/Syndication/Syndication.php:80
 msgid "No contact specified"
-msgstr ""
+msgstr "לא צוין איש קשר"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:130
-msgid "Profil not updated : Your server does not support the vCard feature"
-msgstr ""
+msgid "Profile not updated : Your server does not support the vCard feature"
+msgstr "דיוקן לא מעודכן : שרתך לא תומך בתכונת vCard"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:135
-msgid "Profil not updated : Request error"
-msgstr ""
+msgid "Profile not updated : Request error"
+msgstr "דיוקן לא מעודכן : שגיאת בקשה"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:169
 msgid "Day"
@@ -1651,7 +1585,7 @@ msgstr "אווטאר"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:289
 msgid "Privacy Level"
-msgstr ""
+msgstr "רמת פרטיות"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:300
 msgid ""
@@ -1659,10 +1593,12 @@ msgid ""
 "listed above will be available for all the Movim users and on the whole "
 "Internet."
 msgstr ""
+"לצומת לבך ! בהופכך את דיוקנך לפומבי, כל המידע שמנוי מעלה יהיה זמין לכל "
+"המשתמשים של Movim וגם בכל המרשתת."
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:302
 msgid "Is this profile public ?"
-msgstr ""
+msgstr "האם דיוקן זה הינו פומבי ?"
 
 #: ../system/Widget/widgets/Vcard/Vcard.php:328
 msgid "Submitting"
@@ -1676,11 +1612,7 @@ msgstr "עריכת דיוקן"
 
 #: ../system/Widget/widgets/Wall/Wall.php:125
 msgid "Update"
-msgstr ""
-
-# לכל הפחות
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "גרסת PHP לא תואמת. Movim מצריכה PHP 5.3 לפחות."
+msgstr "עדכן"
 
 #~ msgid "Actual version : "
 #~ msgstr "גרסה ממשית : "
@@ -1688,27 +1620,33 @@ msgstr ""
 #~ msgid "Update your PHP version or contact your server administrator"
 #~ msgstr "נא לעדכן גרסת PHP או ליצור קשר עם מנהל שרתך"
 
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "‫Movim מצריכה את ההרחבות %s."
-
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "התקנת %s וגם חבילות %s"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "התקנת החבילה %s"
 
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "על התיקייה של Movim להיות ברת כתיבה."
 
+# permissions
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr "החלת הרשאות קריאה וכתיבה על תיקיית השורש של Movim"
+
 #~ msgid "or"
 #~ msgstr "או"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "חיבור Bosh נכשל עם שגיאה '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "חיבור XMPP דרך Bosh נכשל עם שגיאה '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "חיבור מסד נתונים נכשל עם שגיאה '%s'"
 
@@ -1716,6 +1654,9 @@ msgstr ""
 # המתקין של
 #~ msgid "Movim Installer"
 #~ msgstr "אשף התקנת Movim"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "בדיקת תאימות"
 
 #~ msgid ""
 #~ "Some errors were detected. Please correct them for the installation to "
@@ -1737,15 +1678,8 @@ msgstr ""
 #~ msgid "Valid Bosh"
 #~ msgstr "‫Bosh תקף"
 
-#~ msgid "Database Movim schema installed"
-#~ msgstr "סכימת מסד נתונים Movim מותקנת"
-
-# you can replace the word instance with "server", "pod"
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "כעת ביכולתך לגשת אל שרת ה־Movim המבריק שלך %sזנק/י פנימה !%s"
-
-#~ msgid "Please remove the %s folder in order to complete the installation"
-#~ msgstr "נא להסיר את התיקייה %s כדי לסיים את ההתקנה"
+#~ msgid "Database Detected"
+#~ msgstr "מסד נתונים אותר"
 
 #~ msgid "User not logged in."
 #~ msgstr "משתמש לא מחובר."
@@ -1753,21 +1687,17 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "לא סופקה כתובת JID."
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "כתובת jid ‫'%s' שגויה"
 
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "‏‏%s - יצירת חשבון"
 
-#~ msgid ""
-#~ "Firstly fill in this blank with a brand new account ID, this address will "
-#~ "follow you on all the Movim network !"
-#~ msgstr ""
-#~ "ראשית נא למלא את חלל זה עם ID חדשה לגמרי, כתובת זו תעקוב אחריך לכל אורך "
-#~ "רשת Movim !"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "יסודות אלפא-נומריות בלבד מותרות"
+#, php-format
+#~ msgid "%s - Add An Account"
+#~ msgstr "‏‏%s - הוספת חשבון"
 
 #~ msgid "Make sure your password is safe :"
 #~ msgstr "נא לוודא שסיסמתך מוגנת :"
@@ -1784,8 +1714,18 @@ msgstr ""
 #~ msgid "Same here !"
 #~ msgstr "אותו הדבר כאן !"
 
-#~ msgid "Pseudo"
-#~ msgstr "שם עט"
+#~ msgid "Retype"
+#~ msgstr "הקלדה חוזרת"
+
+#~ msgid "Create"
+#~ msgstr "יצירה"
+
+# BUG: Information(s)
+#~ msgid "Add your login informations"
+#~ msgstr "נא להוסיף את נתוני התחברותך"
+
+#~ msgid "Address"
+#~ msgstr "כתובת"
 
 #~ msgid "Client Name"
 #~ msgstr "שם לקוח"
@@ -1793,20 +1733,58 @@ msgstr ""
 #~ msgid "Client Type"
 #~ msgstr "סוג לקוח"
 
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "שרת זה מארח %s חשבונות"
 
-#~ msgid "Link my current account"
-#~ msgstr "קישור אל חשבוני הנוכחי"
-
-#~ msgid "Contacts (%s)"
-#~ msgstr "אישי־קשר (%s)"
-
 #~ msgid "Show All"
 #~ msgstr "הצגה מוחלטת"
+
+# לכל הפחות
+#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+#~ msgstr "גרסת PHP לא תואמת. Movim מצריכה PHP 5.3 לפחות."
+
+#, php-format
+#~ msgid "Movim requires the %s extension."
+#~ msgstr "‫Movim מצריכה את ההרחבות %s."
+
+#~ msgid "Database Movim schema installed"
+#~ msgstr "סכימת מסד נתונים Movim מותקנת"
+
+#~ msgid ""
+#~ "Firstly fill in this blank with a brand new account ID, this address will "
+#~ "follow you on all the Movim network !"
+#~ msgstr ""
+#~ "ראשית נא למלא את חלל זה עם ID חדשה לגמרי, כתובת זו תעקוב אחריך לכל אורך רשת "
+#~ "Movim !"
+
+#~ msgid "Only alphanumerics elements are authorized"
+#~ msgstr "יסודות אלפא-נומריות בלבד מותרות"
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "מטעין כעת את ערוצך ..."
+
+#, php-format
+#~ msgid "Contacts (%s)"
+#~ msgstr "אישי־קשר (%s)"
 
 #~ msgid "Follow"
 #~ msgstr "עקוב"
 
 #~ msgid "Loading the contact feed ..."
 #~ msgstr "ערוץ איש־קשר נטען כעת ..."
+
+# you can replace the word instance with "server", "pod"
+#, php-format
+#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
+#~ msgstr "כעת ביכולתך לגשת אל שרת ה־Movim המבריק שלך %sזנק/י פנימה !%s"
+
+#~ msgid "Pseudo"
+#~ msgstr "שם עט"
+
+#~ msgid "Link my current account"
+#~ msgstr "קישור אל חשבוני הנוכחי"
+
+#, php-format
+#~ msgid "Please remove the %s folder in order to complete the installation"
+#~ msgstr "נא להסיר את התיקייה ‭%s‬ כדי לסיים את ההתקנה"
