@@ -174,13 +174,13 @@ class Login extends WidgetBase {
         $login_arr = explode('@', $element['login']);
         $user = $login_arr[0];
         $host = $login_arr[1];
-        $dns = dns_get_record('_xmpp-client._tcp.'.$login_arr[1]);
+        /*$dns = dns_get_record('_xmpp-client._tcp.'.$login_arr[1]);
 
         if(isset($dns[0]['target']) && $dns[0]['target'] != null)
             $domain = $dns[0]['target'];
         else {
             $warning = 'dnsdomain';
-        }
+        }*/
 
         $this->displayWarning($warning);
 
