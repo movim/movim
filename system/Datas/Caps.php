@@ -16,8 +16,6 @@ class Caps extends DatajarBase {
     }
     
     public function setCaps($query) {
-        
-        \movim_log($query);
         $this->node->setval((string)$query->query->attributes()->node);
         $this->category->setval((string)$query->query->identity->attributes()->category);
         $this->type->setval((string)$query->query->identity->attributes()->type);
