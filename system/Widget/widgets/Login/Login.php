@@ -200,7 +200,7 @@ class Login extends WidgetBase {
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,
-                    'ressource' => 'moxl'.md5(date('c')),
+                    'ressource' => 'moxl'.substr(md5(date('c')), 3, 6),
 
                     'user'     => $user,
                     'password' => $element['pass'],
