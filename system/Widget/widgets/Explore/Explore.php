@@ -100,7 +100,7 @@ class Explore extends WidgetCommon {
                         class="button icon submit"
                         href="#"
                         onclick="<?php $this->callAjax("ajaxSearchContacts","movim_parse_form('searchform')"); ?> "
-                        style="float:right; width: auto; margin-right: 0px;">
+                        style="float:right; width: auto; margin-right: 0px; margin-top: 5px">
                         <?php echo t('Search'); ?>
                     </a>
                     <input

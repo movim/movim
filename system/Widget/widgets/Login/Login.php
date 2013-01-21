@@ -174,12 +174,14 @@ class Login extends WidgetBase {
         $login_arr = explode('@', $element['login']);
         $user = $login_arr[0];
         $host = $login_arr[1];
+        
         $dns = dns_get_record('_xmpp-client._tcp.'.$login_arr[1]);
 
         if(isset($dns[0]['target']) && $dns[0]['target'] != null)
             $domain = $dns[0]['target'];
         else {
-            $warning = 'dnsdomain';
+            $domain = $host;
+            //$warning = 'dnsdomain';
         }
 
         $this->displayWarning($warning);
@@ -198,7 +200,7 @@ class Login extends WidgetBase {
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,
-                    'ressource' => 'moxl'.md5(date('c')),
+                    'ressource' => 'moxl'.substr(md5(date('c')), 3, 6),
 
                     'user'     => $user,
                     'password' => $element['pass'],

@@ -44,10 +44,16 @@ class ContactInfo extends WidgetCommon
                            ->where(array(
                                    'Contact`.`jid' => $_GET['f']));
         $user = Contact::run_query($query);
+
+        $query = RosterLink::query()
+                   ->where(array(
+                           'key' => $this->user->getLogin(),
+                           'jid' => $_GET['f']));
+        $r = RosterLink::run_query($query);
         
         $html = '';
         
-        if(isset($user) && isset($user[0][1])) {
+        if(isset($user) && isset($user[0][1]) && isset($r[0]->jid) && $r[0]->jid->getval() != '') {
             $contact = $user[0][0];
             
             $presence = $user[0][1]->getPresence();
@@ -154,12 +160,6 @@ class ContactInfo extends WidgetCommon
                             
         $html .= '<div style="clear: both;"></div>';
         
-        $query = RosterLink::query()
-                   ->where(array(
-                           'key' => $this->user->getLogin(),
-                           'jid' => $_GET['f']));
-        $r = RosterLink::run_query($query);
-        
         if(isset($r[0]->jid) && $r[0]->jid->getval() != '') {
             $html .='
             <a
@@ -208,7 +208,8 @@ class ContactInfo extends WidgetCommon
             <a
                 class="button tiny icon add"
                 href="#"
-                onclick="'.$this->genCallWidget("Notifs","ajaxAddContact", "'".$_GET['f']."'", "''").'"
+                onclick="'.$this->genCallWidget("Roster","ajaxAddContact", "'".$_GET['f']."'", "''")
+                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
             >
                 '.t('Invite this user').'
             </a>';
