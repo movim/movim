@@ -81,13 +81,13 @@ body {
                             rgba(255, 255, 255, 0.2) 2px,
                             rgba(255, 255, 255, 0.05) 100%);
     background: -webkit-linear-gradient(top, 
-                           rgba(255, 255, 255, 0.5) 0px,
-                            rgba(255, 255, 255, 1) 2px,
-                            rgba(255, 255, 255, 1) 100%);
+                            rgba(255, 255, 255, 0.2) 0px,
+                            rgba(255, 255, 255, 0.2) 2px,
+                            rgba(255, 255, 255, 0.05) 100%);
     background: -o-linear-gradient(top, 
-                           rgba(255, 255, 255, 0.5) 0px,
-                            rgba(255, 255, 255, 1) 2px,
-                            rgba(255, 255, 255, 1) 100%);
+                            rgba(255, 255, 255, 0.2) 0px,
+                            rgba(255, 255, 255, 0.2) 2px,
+                            rgba(255, 255, 255, 0.05) 100%);
 
     background-color: #76AB16;
     text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.4);
