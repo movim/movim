@@ -238,7 +238,7 @@ class Login extends WidgetBase {
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
 
         ?>
-        <div id="loginpage">
+        <div id="loginpage" class="fadeDown">
         <?php
             if(!BROWSER_COMP) {
             echo '
