@@ -85,6 +85,8 @@ class Post extends DatajarBase {
             $content = (string)$item->entry->content;
         elseif($item->entry->body)
             $content = (string)$item->entry->body;
+        elseif($item->entry->summary)
+            $content = (string)$item->entry->summary;
 
         $this->published->setval(date('Y-m-d H:i:s', strtotime((string)$item->entry->published)));
         
