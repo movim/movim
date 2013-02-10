@@ -148,11 +148,17 @@ class Roster extends WidgetBase
         $j = $i;
         // We get the current name of the group
         $currentgroup = $contacts[$i]->group;
+
+        // Temporary array to prevent duplicate contact
+        $duplicate = array();
         
         // We grab all the contacts of the group 
         $grouphtml = '';
         while(isset($contacts[$i]) && $contacts[$i]->group == $currentgroup) {
-            $grouphtml .= $this->prepareRosterElement($contacts[$i]);
+            if(!in_array($contacts[$i]->jid, $duplicate)) {                
+                $grouphtml .= $this->prepareRosterElement($contacts[$i]);
+                array_push($duplicate, $contacts[$i]->jid);
+            }
             $i++;
         } 
         

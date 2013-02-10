@@ -251,6 +251,10 @@ class Login extends WidgetBase {
                 <form
                     name="login"
                     id="connectform"
+                    autocomplete="on"
+                    target="passwordiframe"
+                    method="POST"
+                    action="blank.php"
                     onkeypress="
                         if(event.keyCode == 13) {
                             <?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;}">
@@ -270,6 +274,10 @@ class Login extends WidgetBase {
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
                     </div>
+                    
+                    <input style="display: none;" type="submit" id="submitb" name="submitb" value="submit"/>
+                    <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
+                    
                     <div class="infos">
                             <?php
                             $query = CacheVar::query()->where();
