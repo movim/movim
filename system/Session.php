@@ -53,18 +53,8 @@ class Session
      */
     protected function __construct($name)
     {
-        /*if(defined('TEST_DB_CONN')) {
-            $this->db = new DatajarEngineWrapper(TEST_DB_CONN);
-        } else {
-            $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
-        }
-        
-        var_dump($this->db);*/
-
         // Does the database exist?
         $var = new SessionVar();
-        //$query = $var->query()->create($var);
-        //$var->run_query($query);
 
         if(self::$sid == null) {
             if(isset($_COOKIE['PHPFASTSESSID'])) {
@@ -110,16 +100,6 @@ class Session
      */
     public function get($varname)
     {
-        /*$data = new SessionVar();
-        
-        $query = $data->query()->select($data)->where(array(
-                               'session' => self::$sid,
-                               'container' => $this->container,
-                               'name' => $varname));
-        
-                //$query = $var->query()->save($var);
-        $data->run_query($query);*/
-        
         $query = SessionVar::query()->select()
                                    ->where(array(
                                            'session' => self::$sid,
@@ -141,11 +121,6 @@ class Session
     {
         // Does the variable exist?
         $var = new SessionVar();
-
-        /*$success = $var->load(array(
-                                   'session' => self::$sid,
-                                   'container' => $this->container,
-                                   'name' => $varname));*/
                                    
         $query = SessionVar::query()->select()
                                    ->where(array(
@@ -154,21 +129,18 @@ class Session
                                            'name' => $varname))
                                    ->limit(0, 1);
         $data = SessionVar::run_query($query);
-                                   
-        //var_dump($data);
-        
-                
+
 
         Logger::log(1, "Session: Setting variable $varname");
 
         if($data) {
             $var = $data[0];
         }
-        //if(!$success) {
+
             $var->session = self::$sid;
             $var->container = $this->container;
             $var->name = $varname;
-        //}
+
         
         $var->value = base64_encode(serialize($value));
         $var->timestamp = time();
@@ -195,9 +167,6 @@ class Session
 
     public function delete_container()
     {
-        /*$vars = $this->db->select('SessionVar', array('container' => $this->container,
-                                                      'session' => self::$sid));*/
-                                                      
         $query = SessionVar::query()->select()
                            ->where(array(
                                    'session' => self::$sid,
