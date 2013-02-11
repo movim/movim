@@ -100,15 +100,11 @@ class Session
      */
     public function get($varname)
     {
-        $query = SessionVar::query()->select()
-                                   ->where(array(
-                                           'session' => self::$sid,
-                                           'container' => $this->container,
-                                           'name' => $varname));
-        $data = SessionVar::run_query($query);
+        $sd = new modl\SessionDAO();
+        $data = $sd->get(self::$sid, $this->container, $varname);
 
         if($data) {
-            return unserialize(base64_decode($data[0]->value));
+            return unserialize(base64_decode($data->value));
         } else {
             return false;
         }
@@ -119,35 +115,12 @@ class Session
      */
     public function set($varname, $value)
     {
-        // Does the variable exist?
-        $var = new SessionVar();
-                                   
-        $query = SessionVar::query()->select()
-                                   ->where(array(
-                                           'session' => self::$sid,
-                                           'container' => $this->container,
-                                           'name' => $varname))
-                                   ->limit(0, 1);
-        $data = SessionVar::run_query($query);
-
-
-        Logger::log(1, "Session: Setting variable $varname");
-
-        if($data) {
-            $var = $data[0];
-        }
-
-            $var->session = self::$sid;
-            $var->container = $this->container;
-            $var->name = $varname;
-
+        $value = base64_encode(serialize($value));
         
-        $var->value = base64_encode(serialize($value));
-        $var->timestamp = time();
-        
-        $var->run_query($var->query()->save($var));
+        $sd = new modl\SessionDAO();
+        $sd->set(self::$sid, $this->container, $varname, $value, time());
 
-        return $var->value;
+        return $value;
     }
 
     /**
@@ -167,17 +140,8 @@ class Session
 
     public function delete_container()
     {
-        $query = SessionVar::query()->select()
-                           ->where(array(
-                                   'session' => self::$sid,
-                                   'container' => $this->container));
-        $vars = SessionVar::run_query($query);
-        
-        foreach($vars as $var)
-        {
-            $query = SessionVar::query()->delete($var);
-            SessionVar::run_query($query);
-        }
+        $sd = new modl\SessionDAO();
+        $sd->deleteContainer(self::$sid, $this->container);
     }
 
     /**
