@@ -44,81 +44,81 @@ class ContactCard extends WidgetCommon
                 <fieldset>
                     <legend>'.t('General Informations').'</legend>';
                     
-            if($this->testIsSet($contact->getData('fn')))
+            if($this->testIsSet($contact->fn))
             $html .= '<div class="element simple">
                         <label for="fn">'.t('Name').'</label>
-                        <span>'.$contact->getData('fn').'</span>
+                        <span>'.$contact->fn.'</span>
                       </div>';
 
-            if($this->testIsSet($contact->getData('name')))                        
+            if($this->testIsSet($contact->name))                        
             $html .= '<div class="element simple">
                         <label for="name">'.t('Nickname').'</label>
-                        <span>'.$contact->getData('name').'</span>
+                        <span>'.$contact->name.'</span>
                       </div>';
                       
-            if($contact->getData('date') != '0000-00-00' && $this->testIsSet($contact->getData('date')))
+            if($contact->date != '0000-00-00' && $this->testIsSet($contact->date))
             $html .= '<div class="element simple">
                         <label for="day">'.t('Date of Birth').'</label>
-                        <span>'.date('j M Y',strtotime($contact->getData('date'))).'</span>
+                        <span>'.date('j M Y',strtotime($contact->date)).'</span>
                       </div>';
             
-            if($contact->getData('gender') != 'N' && $this->testIsSet($contact->getData('gender')))
+            if($contact->gender != 'N' && $this->testIsSet($contact->gender))
             $html .= '<div class="element simple">
                         <label for="gender">'.t('Gender').'</label>
-                        <span>'.$gender[$contact->getData('gender')].'</span>
+                        <span>'.$gender[$contact->gender].'</span>
                       </div>';
        
-            if($contact->getData('marital') != 'none' && $this->testIsSet($contact->getData('marital')))               
+            if($contact->marital != 'none' && $this->testIsSet($contact->marital))               
             $html .= '<div class="element simple">
                         <label for="marital">'.t('Marital Status').'</label>
-                        <span>'.$marital[$contact->getData('marital')].'</span>
+                        <span>'.$marital[$contact->marital].'</span>
                       </div>';
          
-            if($this->testIsSet($contact->getData('email')))
+            if($this->testIsSet($contact->email))
             $html .= '<div class="element simple">
                         <label for="url">'.t('Email').'</label>
-                        <a target="_blank" href="mailto:'.$contact->getData('email').'">'.$contact->getData('email').'</a>
+                        <a target="_blank" href="mailto:'.$contact->email.'">'.$contact->email.'</a>
                       </div>';
-            if($this->testIsSet($contact->getData('url')))
+            if($this->testIsSet($contact->url))
             $html .= '<div class="element simple">
                         <label for="url">'.t('Website').'</label>
-                        <a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>
+                        <a target="_blank" href="'.$contact->url.'">'.$contact->url.'</a>
                       </div>';
               
-            if($this->testIsSet($contact->getData('desc')) && prepareString($contact->getData('desc')) != '')
+            if($this->testIsSet($contact->desc) && prepareString($contact->desc) != '')
             $html .= '<div class="element large simple">
                         <label for="desc">'.t('About Me').'</label>
-                        <span>'.prepareString($contact->getData('desc')).'</span>
+                        <span>'.prepareString($contact->desc).'</span>
                       </div>';
                       
-            if($this->testIsSet($contact->getData('adrlocality')) ||
-               $this->testIsSet($contact->getData('adrcountry'))) {
+            if($this->testIsSet($contact->adrlocality) ||
+               $this->testIsSet($contact->adrcountry)) {
                 $html .= '</fieldset>
                             <br />
                           <fieldset>
                             <legend>'.t('Geographic Position').'</legend>';
                             
-                if($this->testIsSet($contact->getData('adrlocality'))) {
+                if($this->testIsSet($contact->adrlocality)) {
                     $locality .= '<div class="element simple">
                                 <label for="desc">'.t('Locality').'</label>
-                                <span>'.$contact->getData('adrlocality');
-                    if($contact->getData('adrpostalcode') != 0)
-                        $locality .= ' ('.$contact->getData('adrpostalcode').')';
+                                <span>'.$contact->adrlocality;
+                    if($contact->adrpostalcode != 0)
+                        $locality .= ' ('.$contact->adrpostalcode.')';
                     $locality .= '</span>
                               </div>';
                     
                     $html .= $locality;
                 }
                             
-                if($this->testIsSet($contact->getData('adrcountry')))
+                if($this->testIsSet($contact->adrcountry))
                 $html .= '<div class="element simple">
                             <label for="desc">'.t('Country').'</label>
-                            <span>'.$contact->getData('adrcountry').'</span>
+                            <span>'.$contact->adrcountry.'</span>
                           </div>';
             }
                       
             $html .= '</fieldset>
-                      <div class="config_button" onclick="'.$this->genCallWidget("ContactSummary","ajaxRefreshVcard", "'".$contact->getData('jid')."'").'"></div>
+                      <div class="config_button" onclick="'.$this->genCallWidget("ContactSummary","ajaxRefreshVcard", "'".$contact->jid."'").'"></div>
                 </form>';
         
         return $html;
@@ -126,15 +126,13 @@ class ContactCard extends WidgetCommon
 
     function build()
     {
-        $query = Contact::query()->select()
-                           ->where(array(
-                                   'jid' => $_GET['f']));
-        $contact = Contact::run_query($query);
+        $cd = new modl\ContactDAO();
+        $contact = $cd->get($_GET['f']);
         ?>
         <div class="tabelem" title="<?php echo t('Profile'); ?>" id="contactcard" >
             <?php
-            if(isset($contact[0]))
-                echo $this->prepareContactCard($contact[0]);
+            if(isset($contact))
+                echo $this->prepareContactCard($contact);
             ?>
         </div>
         <?php
