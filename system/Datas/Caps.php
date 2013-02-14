@@ -16,28 +16,20 @@ class Caps extends DatajarBase {
     }
     
     public function setCaps($query) {
-        $this->node->setval($query['@attributes']['node']);
-        $this->category->setval($query['identity']['@attributes']['category']);
-        $this->type->setval($query['identity']['@attributes']['type']);
-        $this->name->setval($query['identity']['@attributes']['name']);
-        $this->features->setval(serialize($query['feature']));
+        $this->node->setval((string)$query->query->attributes()->node);
+        $this->category->setval((string)$query->query->identity->attributes()->category);
+        $this->type->setval((string)$query->query->identity->attributes()->type);
+        $this->name->setval((string)$query->query->identity->attributes()->name);
+        
+        $fet = array();
+        foreach($query->query->feature as $f) {
+            array_push($fet, (string)$f->attributes()->var);
+        }
+        $this->features->setval(serialize($fet));
+        
     }
     
     public function getData($data) {
         return $this->$data->getval();
-    }
-}
-
-class CapsHandler {
-    private $instance;
-
-    public function __construct() {
-    	$this->instance = new Caps();
-    }
-    
-    public function get($node) {
-	    global $sdb;
-        $sdb->load($this->instance, array('node' => $node));
-        return $this->instance;
     }
 }

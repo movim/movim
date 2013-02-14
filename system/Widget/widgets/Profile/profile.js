@@ -7,12 +7,6 @@ function showPresence(n)
     }
 }
 
-function getStatusText()
-{
-    status = document.querySelector('#profile #status').value;
-    return encodeURIComponent(status);
-}
-
 movim_add_onload(function()
 {
     movim_textarea_autoheight(document.querySelector('#profile #status'));

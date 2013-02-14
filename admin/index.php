@@ -3,8 +3,7 @@ require_once('../system/Lang/i18n.php');
 require_once('../system/Lang/languages.php');
 include_once('../system/Datajar2/Datajar/loader.php');
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+error_reporting(0);
 
 $tmpfile = "../config/conf.xml.temp";
 $conffile = "../config/conf.xml";
@@ -308,13 +307,8 @@ function make_xml($stuff)
   return $buffer;
 }
 
-function generate_Tooltip($text, $background=True){
-	$html = 'style="background: url(../themes/movim/img/icons/follow_icon.png) no-repeat right; padding-right: 20px;" onmouseover=" elmnt = document.getElementById(\'leftside\'); elmnt.innerHTML=\''.$text.'\'; ';
-	if($background){
-		$html .= 'this.style.background = \'#F8F8F8 url(../themes/movim/img/icons/follow_icon.png) no-repeat right\';" onmouseout="this.style.background = \'white url(../themes/movim/img/icons/follow_icon.png) no-repeat right\';"';
-	}else{
-		$html .= '"';
-	}
+function generate_Tooltip($text){
+	$html = 'onmouseover=" elmnt = document.getElementById(\'leftside\'); elmnt.innerHTML=\''.$text.'\'; "';
 	return $html;
 }
 
@@ -413,7 +407,6 @@ if(isset($_POST['step'])) {
                 
                 // Database initialisation
                 include_once("../system/Datas/Caps.php");
-                include_once("../system/Datas/ConfVar.php");
                 include_once("../system/Datas/Contact.php");
                 include_once("../system/Datas/Message.php");
                 include_once("../system/Datas/Post.php");
@@ -429,8 +422,6 @@ if(isset($_POST['step'])) {
                 $r = new RosterLink();
                 $sdb->create($r);
                 $c = new Caps();
-                $sdb->create($c);
-                $c = new ConfVar();
                 $sdb->create($c);
                 $m = new Message();
                 $sdb->create($m);

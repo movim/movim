@@ -100,6 +100,58 @@ class ControllerMain extends ControllerBase
 		}
 	}
 
+    function server()
+	{
+        $user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			if(isset($_GET['s']) && $_GET['s'] != "" ) {
+				$this->page->setTitle(APP_TITLE.' - Server');
+                $this->page->menuAddLink(t('Home'), '?q=main');
+                $this->page->menuAddLink(t('Explore'), '?q=explore');
+				$this->page->menuAddLink(t('Profile'), '?q=profile');
+				$this->page->menuAddLink(t('Configuration'), '?q=config');
+                $this->page->menuAddLink(t('Help'), '?q=help');
+                $this->page->menuAddLink(t('Logout'), '?q=disconnect');
+
+				$content = new TplPageBuilder($user);
+
+				$this->page->setContent($content->build('server.tpl'));
+				echo $this->page->build('page.tpl');
+			}
+			else
+				$this->main();
+		}
+	}
+    
+    function node()
+	{
+        $user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			if(isset($_GET['n']) && $_GET['n'] != "" ) {
+				$this->page->setTitle(APP_TITLE.' - Node');
+                $this->page->menuAddLink(t('Home'), '?q=main');
+                $this->page->menuAddLink(t('Explore'), '?q=explore');
+				$this->page->menuAddLink(t('Profile'), '?q=profile');
+				$this->page->menuAddLink(t('Configuration'), '?q=config');
+                $this->page->menuAddLink(t('Help'), '?q=help');
+                $this->page->menuAddLink(t('Logout'), '?q=disconnect');
+
+				$content = new TplPageBuilder($user);
+
+				$this->page->setContent($content->build('node.tpl'));
+				echo $this->page->build('page.tpl');
+			}
+			else
+				$this->main();
+		}
+	}
+
 	function config()
 	{
 		$user = new User();

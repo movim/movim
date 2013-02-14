@@ -22,9 +22,6 @@ class Login extends WidgetBase {
 
     function WidgetLoad()
     {
-		Cache::c('offlineshown', 'false'); 
-		Cache::c('groupContacts', 'true');
-		movim_log("ICI ".Cache::c('offlineshown'));
         $this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
@@ -54,7 +51,7 @@ class Login extends WidgetBase {
                 case 'errormechanism':
                     $warning = '
                             <div class="message error">
-                                '.t('Authentification mechanism not supported by Movim').'
+                                '.t('Authentication mechanism not supported by Movim').'
                             </div> ';
                     break;
                 case 'errorchallenge':
@@ -177,12 +174,14 @@ class Login extends WidgetBase {
         $login_arr = explode('@', $element['login']);
         $user = $login_arr[0];
         $host = $login_arr[1];
+        
         $dns = dns_get_record('_xmpp-client._tcp.'.$login_arr[1]);
 
         if(isset($dns[0]['target']) && $dns[0]['target'] != null)
             $domain = $dns[0]['target'];
         else {
-            $warning = 'dnsdomain';
+            $domain = $host;
+            //$warning = 'dnsdomain';
         }
 
         $this->displayWarning($warning);
@@ -201,7 +200,7 @@ class Login extends WidgetBase {
                     'port'=> 5222,
                     'host'=> $host,
                     'domain' => $domain,
-                    'ressource' => 'moxl'.md5(date('c')),
+                    'ressource' => 'moxl'.substr(md5(date('c')), 3, 6),
 
                     'user'     => $user,
                     'password' => $element['pass'],
@@ -239,7 +238,7 @@ class Login extends WidgetBase {
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
 
         ?>
-        <div id="loginpage">
+        <div id="loginpage" class="fadeDown">
         <?php
             if(!BROWSER_COMP) {
             echo '
@@ -252,6 +251,10 @@ class Login extends WidgetBase {
                 <form
                     name="login"
                     id="connectform"
+                    autocomplete="on"
+                    target="passwordiframe"
+                    method="POST"
+                    action="blank.php"
                     onkeypress="
                         if(event.keyCode == 13) {
                             <?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;}">
@@ -271,6 +274,10 @@ class Login extends WidgetBase {
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
                     </div>
+                    
+                    <input style="display: none;" type="submit" id="submitb" name="submitb" value="submit"/>
+                    <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
+                    
                     <div class="infos">
                             <?php
                             $query = CacheVar::query()->where();

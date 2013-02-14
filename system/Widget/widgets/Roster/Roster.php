@@ -63,7 +63,6 @@ class Roster extends WidgetBase
     {
 		$html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', RPC::cdata($html));
-		$groups = Cache::c('#^group#');
         RPC::call('sortRoster');
     }
 
@@ -87,53 +86,53 @@ class Roster extends WidgetBase
      * 
      * 
      */
-    function prepareRosterElement($contact, $groupState, $offlineState, $inner = false)
+    function prepareRosterElement($contact, $inner = false)
 	{
-        if(isset($contact[1]))
-            $presence = $contact[1]->getPresence();
-        $start =
-            '<li
+        $html = '';
+
+        $html .= '<li
                 class="';
-					if($contact[0]->getData('jid') == $_GET['f'])
-                        $start .= 'active ';
-                    if(isset($presence['presence'])){
-                        $start .= ''.$presence['presence_txt'].' '.$offlineState.'"';
-						if($groupState=='false')
-							$start.= 'style="display: none;"';
-					}
-                    else{
-                        $start .= 'offline "';
-						if($offlineState=='false' || $groupState=='false')
-							$start.= 'style="display: none;"';
-					}
-        $start .= '
-                id="roster'.$contact[0]->getData('jid').'"
+					if($contact->jid == $_GET['f'])
+                        $html .= 'active ';
+
+                    if(isset($contact->presence)) {
+                        $presencestxt = getPresencesTxt();
+                        $html.= $presencestxt[$contact->presence];
+                    } else
+                        $html .= 'offline';
+
+        $html .= '"';
+
+        $html .= '
+                id="roster'.$contact->jid.'"
              >';
 
-        $middle = '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact[0]->getData('jid')."'").'"></div>
+        $html .= '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->jid."'").'"></div>
                  <a
-					title="'.$contact[0]->getData('jid');
-                    if($presence['status'] != '')
-                        $middle .= ' - '.htmlentities($presence['status']);
-                    if($presence['ressource'] != '')
-                        $middle .= ' ('.$presence['ressource'].')';
-        $middle .= '"';
-        $middle .= ' href="?q=friend&f='.$contact[0]->getData('jid').'"
-                 >
-                    <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact[0]->getData('jid')).'" />'.
-                    '<span>'.$contact[0]->getTrueName();
-						if($contact[0]->getData('rosterask') == 'subscribe')
-							$middle .= " #";
-                        if($presence['ressource'] != '')
-                            $middle .= ' ('.$presence['ressource'].')';
-            $middle .= '</span>
-                 </a>';
-        $end = '</li>';
+					title="'.$contact->jid;
+                    if($contact->status != '')
+                        $html .= ' - '.htmlentities($contact->status);
+                    if($contact->ressource != '')
+                        $html .= ' ('.$contact->ressource.')';
 
-        if($inner == true)
-            return $middle;
-        else
-            return $start.$middle.$end;
+        $html .= '"';
+        $html .= ' href="?q=friend&f='.$contact->jid.'"
+                 >
+                <img
+                    class="avatar"
+                    src="'.$contact->getPhoto('xs').'"
+                    />'.
+                    '<span>'.$contact->getTrueName();
+						if($contact->rosterask == 'subscribe')
+							$html .= " #";
+                        if($contact->ressource != '')
+                            $html .= ' ('.$contact->ressource.')';
+            $html .= '</span>
+                 </a>';
+
+        $html .= '</li>';
+
+        return $html;
 	}
     
     /**
@@ -146,24 +145,20 @@ class Roster extends WidgetBase
      */
     private function prepareRosterGroup($contacts, &$i)
     {
+        $j = $i;
         // We get the current name of the group
-        $currentgroup = $contacts[$i][0]->getData('group');
-		
-        // get the current showing state of the group and the offline contacts
-		$groupState = Cache::c('group'.$currentgroup);
-		$offlineState = Cache::c('offlineshown');
-		
+        $currentgroup = $contacts[$i]->group;
+
         // Temporary array to prevent duplicate contact
         $duplicate = array();
         
         // We grab all the contacts of the group 
         $grouphtml = '';
-        while(isset($contacts[$i][0]) && $contacts[$i][0]->getData('group') == $currentgroup) {
-            if(!in_array($contacts[$i][0]->getData('jid'), $duplicate)) {
-                $grouphtml .= $this->prepareRosterElement($contacts[$i], $groupState, $offlineState);
-                array_push($duplicate, $contacts[$i][0]->getData('jid'));
+        while(isset($contacts[$i]) && $contacts[$i]->group == $currentgroup) {
+            if(!in_array($contacts[$i]->jid, $duplicate)) {                
+                $grouphtml .= $this->prepareRosterElement($contacts[$i]);
+                array_push($duplicate, $contacts[$i]->jid);
             }
-            
             $i++;
         } 
         
@@ -171,8 +166,21 @@ class Roster extends WidgetBase
         if($currentgroup == '')
             $currentgroup = t('Ungrouped');
 			
+        $groupshown = '';
+        // get the current showing state of the group and the offline contacts
+		$groupState = Cache::c('group'.$currentgroup);
+
+        if($groupState == true)
+            $groupshown = 'groupshown';
+
+        $count = $i-$j;
 		
-        $grouphtml = '<div><h1 onclick="'.$this->genCallAjax('ajaxToggleCache', "'group".$currentgroup."'").'">'.$currentgroup.' - '.count($duplicate).'</h1>'.$grouphtml.'</div>';
+        $grouphtml = '
+            <div id="group'.$currentgroup.'" class="'.$groupshown.'">
+                <h1 onclick="'.$this->genCallAjax('ajaxToggleCache', "'group".$currentgroup."'").'">'.
+                    $currentgroup.' - '.$count.'
+                </h1>'.$grouphtml.'
+            </div>';
         
         return $grouphtml;
     }
@@ -185,41 +193,10 @@ class Roster extends WidgetBase
      */
     function prepareRoster()
 	{
-        $query = RosterLink::query()->join('Presence',
-                                              array('RosterLink.jid' =>
-                                                    'Presence.jid'))
-                                     ->where(
-                                        array(
-                                            'RosterLink`.`key' => $this->user->getLogin(),
-                                            array(
-                                                'RosterLink`.`rostersubscription!' => 'none',
-                                                'RosterLink`.`rostersubscription!' => '',
-                                                'RosterLink`.`rostersubscription!' => 'vcard',
-                                                '|RosterLink`.`rosterask' => 'subscribe')))
-                                     ->orderby('RosterLink.group', true);
-
-        $contactsq = RosterLink::run_query($query);
-
-        $contacts = array();
-        
-        foreach($contactsq as $c) {
-            $p = $c[1]->getPresence();
-            if(isset($p['jid'])) {
-                $query = Presence::query()->where(
-                                                array(
-                                                    'key' => $this->user->getLogin(),
-                                                    'jid' => $c[0]->getData('jid')))
-                                        ->orderby('presence', false);
-                $presences = Presence::run_query($query);
-                if(isset($presences[0]))
-                    array_push($contacts, array($c[0], $presences[0]));
-            }
-            else
-                array_push($contacts, array($c[0], $c[1]));
-        }
+        $contactdao = new modl\ContactDAO();
+        $contacts = $contactdao->getRoster();
 
         $html = '';
-        $group = '';
 
         if($contacts != false) {
             $i = 0;
@@ -260,23 +237,32 @@ class Roster extends WidgetBase
      * 
      */
 	function ajaxToggleCache($param){
-		$bool = (Cache::c($param) == "true") ? "false" : "true";
+		$bool = (Cache::c($param) == true) ? false : true;
+        
 		Cache::c($param, $bool);
-		$offline = Cache::c("offlineshown");
 		
-		if($param=="offlineshown")
-			RPC::call('showRoster', $bool);
-		else{
+        $offline = Cache::c('offlineshown');
+        
+		if($param == 'offlineshown') {
+            Cache::c('offlineshown', $bool);
+            
+            RPC::call('showRoster', $bool);
+		} else 
 			RPC::call('rosterToggleGroup', $param, $bool, $offline);
-		}
+		
 		RPC::commit();
 	}
     
 	function build()
     {
+        $offlineshown = '';
+        $offlineState = Cache::c('offlineshown');
+
+        if($offlineState == true)
+            $offlineshown = 'offlineshown';
 	?>
         <div id="roster">
-            <ul id="rosterlist">
+            <ul id="rosterlist" class="<?php echo $offlineshown; ?>">
             <?php echo $this->prepareRoster(); ?>
             </ul>
             <div id="rostermenu" class="menubar">
