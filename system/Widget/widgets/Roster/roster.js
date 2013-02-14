@@ -30,20 +30,11 @@ function sortRoster() {
 	/*cacher ce qu'il y a à cacher*/
 }
 
-function rosterToggleClass(myClass, bool){
-	c = roster.querySelectorAll('.'+myClass);
-    for(i = 0; i < c.length; i++) {
-        if(bool=='false')
-            c.item(i).style.display = 'none';
-        else
-            c.item(i).style.display = 'list-item';
-    }
-}
-
 function showRoster(boolOffline) {
-    roster = document.querySelector('#rosterlist');
-    rosterToggleClass("offline", boolOffline);
-    rosterToggleClass("server_error", false);
+    if(boolOffline == '1')
+        document.querySelector('ul#rosterlist').className = 'offlineshown';
+    else
+        document.querySelector('ul#rosterlist').className = '';
 }
 
 function incomingPresence(val) {
@@ -299,42 +290,12 @@ function rosterSearch(e){
 }
 
 function rosterToggleGroup(h){
-	alert(h);
-	rosterlist = document.querySelector('#rosterlist');
-	groups = rosterlist.querySelectorAll('h1');
-	group = h[0].substring(5); //remove the 'group' prefix of the first parameter to get the name of the group
-	i = 0;
-	while(groups[i].innerHTML.split(' -')[0]!=group && i<groups.length){
-		i++;
-	}
-	if(i<groups.length){
-		if(h[2]=="true"){//offline contacts are shown
-			group = groups[i].parentNode.querySelectorAll('li');
-			if(h[1]=="true"){//contacts will be shown
-				for(j=0; j<group.length; j++){
-					group[j].style.display="list-item";
-				}
-			}
-			else{
-				for(j=0; j<group.length; j++){
-					group[j].style.display="none";
-				}
-			}
-		}
-		else{//offline contacts are hidden
-			group = groups[i].parentNode.querySelectorAll('li:not(.offline)');
-			if(h[1]=="true"){//contacts will be shown
-				for(j=0; j<group.length; j++){
-						group[j].style.display="list-item";
-				}
-			}
-			else{
-				for(j=0; j<group.length; j++){
-					group[j].style.display="none";
-				}
-			}
-		}
-	}
+    group = document.getElementById(h[0]);
+    
+    if(group.className == '')
+        group.className = 'groupshown';
+    else
+        group.className = '';
 }
 
 function addJid(n) {

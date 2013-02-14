@@ -23,6 +23,7 @@ class Account extends WidgetBase {
 	function WidgetLoad()
 	{
     	$this->addcss('account.css');
+    	$this->addjs('account.js');
     }
     
     function ajaxDiscoverServer($ndd) {
@@ -73,7 +74,7 @@ class Account extends WidgetBase {
                 $html .= '
                     <form name="data">
                         <fieldset>
-                                <legend>'.t('Step 2 - Fill in your informations').'</legend><br />';
+                                <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
 
                 if(!isset($elements['x'])) {
                     foreach($elements as $element => $val) {
@@ -93,7 +94,7 @@ class Account extends WidgetBase {
                     }
                 } elseif(isset($elements['x'])) {
                     $html .= '<p>'.(string)$elements['x']->instructions.'</p><br />';
-                    movim_log($elements);
+
                     foreach($elements['x']->field as $element) {
                         switch((string)$element->attributes()->type) {
                             case 'hidden':
@@ -301,6 +302,67 @@ class Account extends WidgetBase {
         }
     }
     
+    function printServerList() {        
+        $file = dirname(__FILE__).DIRECTORY_SEPARATOR.'server-vcards.xml';
+        
+        $html = '';
+        
+        if(file_exists($file)) {
+            $vcards = simplexml_load_file($file);
+            
+            $html .= '
+                <div class="clear"></div>
+                <table id="list">
+                    <thead>
+                        <tr>
+                            <td>
+                                '.t('Name').'
+                            </td>
+                            <td>
+                                '.t('Description').'
+                            </td>
+                            <td>
+                                '.t('URL').'
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                ';
+                            
+                    foreach($vcards as $vcard) {
+                        //if((string)$vcard->name != 'Prosody') {
+                            $html .='                                
+                                <tr onclick="selectServer(\''.(string)$vcard->fn->text.'\');">
+                                    <td>
+                                        <a href="#nddlink">'.(string)$vcard->fn->text.'</a>
+                                    </td>
+                                    <td>
+                                        '.(string)$vcard->note->text.'
+                                    </td>
+                                    <td>
+                                        <a target="_blank" href="'.(string)$vcard->url->uri.'">
+                                            '.(string)$vcard->url->uri.'
+                                        </a>
+                                    </td>
+                                </tr>
+                                ';
+                            /*$html .= '
+                                <option value="'.(string)$vcard->fn->text.'">
+                                    '.(string)$vcard->fn->text.'<br /><br />
+                                    '.(string)$vcard->note->text.'
+                                </option>
+                                ';*/
+                        //}
+                    }
+                    
+            $html .= '
+                    </tbody>
+                </table>';
+        }
+        
+        return $html;
+    }
+    
 	function build()
 	{
         switch ($_GET['err']) {
@@ -362,10 +424,21 @@ class Account extends WidgetBase {
             </div>
             <div id="center">
                 <h1><?php echo t('Create a new account'); ?></h1>
-                <div style="margin: 35px 20px;">
+                <div style="margin: 15px 20px;">
+                    <p>
+                        <?php echo t('Movim is a decentralized social network, before creating a new account you need to choose a server to register.'); ?>
+                        <?php echo t('Keep in mind that this server will handle all your personnal data.'); ?>
+                    </p>
+                    <br />
                     <form name="account">
                         <fieldset>
                             <legend><?php echo t('Step 1 - Search the server'); ?></legend>
+                                <a name="nddlink"/>
+                                <div class="clear"></div>
+                                <p>
+                                    <?php echo t('You can enter your server domain name.'); ?>
+                                </p>
+                                <br />
                                 <div class="element">
                                     <label for="ndd"><?php echo t("Server"); ?></label>
                                     <input
@@ -374,8 +447,15 @@ class Account extends WidgetBase {
                                         name="ndd"
                                         id="ndd"
                                     />
-                                </div>                    
+                                </div>     
+                                
                                 <div class="clear"></div>
+                                <p>
+                                    <?php echo t('Or you can choose a server from this list.'); ?>
+                                </p>
+                                <br />
+                                <?php echo $this->printServerList(); ?>               
+                                
                                 <a
                                     class="button icon next" 
                                     style="float: right;"

@@ -44,19 +44,27 @@ class ContactInfo extends WidgetCommon
                            ->where(array(
                                    'Contact`.`jid' => $_GET['f']));
         $user = Contact::run_query($query);
+
+        $query = RosterLink::query()
+                   ->where(array(
+                           'key' => $this->user->getLogin(),
+                           'jid' => $_GET['f']));
+        $r = RosterLink::run_query($query);
         
         $html = '';
         
-        if(isset($user) && isset($user[0][1])) {
+        if(isset($user) && isset($user[0][1]) && isset($r[0]->jid) && $r[0]->jid->getval() != '') {
             $contact = $user[0][0];
             
             $presence = $user[0][1]->getPresence();
             
             // Mood
             if($contact->mood->getval() != '') {
+                $moodarray = getMood();
+                
                 $mood = '';
                 foreach(unserialize($contact->mood->getval()) as $m)
-                    $mood .= ucfirst(t($m)).',';
+                    $mood .= $moodarray[$m].',';
                 $html .= t("I'm ").substr($mood, 0, -1).'<br />';
             }
             
@@ -103,26 +111,29 @@ class ContactInfo extends WidgetCommon
             }
             
             // Client informations
-            if($presence['node'] != '' && $presence['ver'] != '') {
+            if($presence['node'] != '' && $presence['ver'] != '') {                
+                $node = $presence['node'].'#'.$presence['ver'];
+
+                $query = \Caps::query()->select()
+                                           ->where(array(
+                                                   'node' => $node))
+                                           ->limit(0, 1);
+                $data = \Caps::run_query($query);
+                
                 $clienttype = 
                     array(
                         'bot' => t('Bot'),
                         'pc' => t('Desktop'),
-                        'phone' => t('Phone')
+                        'phone' => t('Phone'),
+                        'web' => t('Web'),
                         );
-                
-                
-                $c = new CapsHandler();
-                $caps = $c->get($presence['node'].'#'.$presence['ver']);
-                
-                if($this->testIsSet($caps->getData('type'))) {
-                    if($caps->getData('type') == 'phone')
-                        $cinfos = '<span class="mobile"></span>';
-                }
-                if($this->testIsSet($caps->getData('name')))
-                    $cinfos .=  $caps->getData('name').'<br />';
-                if($cinfos != "")
+                        
+                if(isset($data[0])) {
+                    $data = $data[0];
+                    $cinfos = '';
+                    $cinfos .=  $data->getData('name').' ('.$clienttype[$data->getData('type')].')<br />';
                     $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
+                }
             }
             
             if($contact->jid->getval() != $this->user->getLogin()) {
@@ -148,12 +159,6 @@ class ContactInfo extends WidgetCommon
         }
                             
         $html .= '<div style="clear: both;"></div>';
-        
-        $query = RosterLink::query()
-                   ->where(array(
-                           'key' => $this->user->getLogin(),
-                           'jid' => $_GET['f']));
-        $r = RosterLink::run_query($query);
         
         if(isset($r[0]->jid) && $r[0]->jid->getval() != '') {
             $html .='
@@ -203,7 +208,8 @@ class ContactInfo extends WidgetCommon
             <a
                 class="button tiny icon add"
                 href="#"
-                onclick="'.$this->genCallWidget("Notifs","ajaxAddContact", "'".$_GET['f']."'", "''").'"
+                onclick="'.$this->genCallWidget("Roster","ajaxAddContact", "'".$_GET['f']."'", "''")
+                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
             >
                 '.t('Invite this user').'
             </a>';
