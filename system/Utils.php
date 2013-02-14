@@ -486,6 +486,17 @@ function getPresences() {
             );
 }
 
+function getPresencesTxt() {
+    return array(
+                1 => 'online',
+                2 => 'away',
+                3 => 'dnd',
+                4 => 'xa',
+                5 => 'offline',
+                6 => 'server_error'
+            );
+}
+
 function getMood() {
     return array(
         'afraid' => t('afraid'), // Impressed with fear or apprehension; in fear; apprehensive.
