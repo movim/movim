@@ -109,9 +109,9 @@ class Vcard extends WidgetBase
         if(!isset($me[0])) { 
         ?>
             <div class="message info">
-                <?php echo "It's your first time on Movim! To fill in a 
+                <?php echo t("It's your first time on Movim! To fill in a 
                 few informations about you and display them to your 
-                contacts, create your virtual card by clicking the next button."; ?>
+                contacts, create your virtual card by clicking the next button."); ?>
             </div>
             
             <a 
@@ -127,12 +127,12 @@ class Vcard extends WidgetBase
             
             if($error == 'vcardfeaturenotimpl') {
                 $html .= '
-                    <div class="message error">'.t("Profil not updated : Your server does not support the vCard feature").'</div>';
+                    <div class="message error">'.t("Profile not updated : Your server does not support the vCard feature").'</div>';
             }
             
             if($error == 'vcardbadrequest') {
                 $html .= '
-                    <div class="message error">'.t("Profil not updated : Request error").'</div>';
+                    <div class="message error">'.t("Profile not updated : Request error").'</div>';
             }
         
             if($me->getData('public') == '1')
@@ -248,8 +248,9 @@ class Vcard extends WidgetBase
                 $html .= '<div class="element"><label for="avatar">'.t('Avatar').'</label>
                             <input type="file" onchange="vCardImageLoad(this.files);">
                             <img id="vCardPhotoPreview" src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
-                            <input type="hidden" name="phototype"  value="'.$me->getData('phototype').'">
-                            <input type="hidden" name="photobin"  value="'.$me->getData('photobin').'"><br />
+                            <br /><span id="picturesize" class="clean"></span>
+                            <input type="hidden" name="phototype"  value="'.$me->getData('phototype').'"/>
+                            <input type="hidden" name="photobin"  value="'.$me->getData('photobin').'"/><br />
                           </div>';
                       
                 $html .= '<div class="element large"><label for="desc">'.t('About Me').'</label>

@@ -32,7 +32,6 @@ class Logout extends WidgetBase
     {
 		$html = $this->preparePresence();
         RPC::call('movim_fill', 'logout', RPC::cdata($html));
-        RPC::commit();
     }
 
     function onPostDisconnect($data)
@@ -112,7 +111,6 @@ class Logout extends WidgetBase
                 <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'away'").'; hideLogoutList();" class="away">'.$txt[2].'</a>
                 <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'dnd'").'; hideLogoutList();" class="dnd">'.$txt[3].'</a>
                 <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'xa'").'; hideLogoutList();" class="xa">'.$txt[4].'</a>
-                <!--<a onclick="'.$this->genCallAjax('ajaxLogout').'; setTimeout(\'window.location.reload()\', 2000);">'.$txt[5].'</a>-->
             </div>
                 ';
         

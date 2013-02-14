@@ -1,1 +1,3 @@
-
+#profile textarea#status {
+    overflow: hidden;
+}

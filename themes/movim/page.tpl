@@ -27,14 +27,19 @@
         $this->addCss('css/style2.css');
     }
 
+    $this->scripts();
+    
+    $user = new User();
 
+    $color = $user->getConfig('color');
+    if(isset($color)) {
+        echo '
+        <style type="text/css">
+            body { background-color: #'.$color.'; }
+        </style>';
+    }
     ?>
 
-    <!--<link rel='stylesheet' media='screen and (max-width: 700px)' href='themes/movim/css/mobile.css' />
-    <link rel='stylesheet' media='screen and (min-width: 701px)' href='themes/movim/css/style2.css' />
-    <link rel='stylesheet' media='screen and (min-width: 701px)' href='themes/movim/css/posts.css' />-->
-
-    <?php $this->scripts();?>
   </head>
 <body onload="movim_onload();">
 	<noscript>
