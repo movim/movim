@@ -53,18 +53,8 @@ class Session
      */
     protected function __construct($name)
     {
-        /*if(defined('TEST_DB_CONN')) {
-            $this->db = new DatajarEngineWrapper(TEST_DB_CONN);
-        } else {
-            $this->db = new DatajarEngineWrapper(Conf::getServerConfElement('storageConnection'));
-        }
-        
-        var_dump($this->db);*/
-
         // Does the database exist?
         $var = new SessionVar();
-        //$query = $var->query()->create($var);
-        //$var->run_query($query);
 
         if(self::$sid == null) {
             if(isset($_COOKIE['PHPFASTSESSID'])) {
@@ -110,25 +100,11 @@ class Session
      */
     public function get($varname)
     {
-        /*$data = new SessionVar();
-        
-        $query = $data->query()->select($data)->where(array(
-                               'session' => self::$sid,
-                               'container' => $this->container,
-                               'name' => $varname));
-        
-                //$query = $var->query()->save($var);
-        $data->run_query($query);*/
-        
-        $query = SessionVar::query()->select()
-                                   ->where(array(
-                                           'session' => self::$sid,
-                                           'container' => $this->container,
-                                           'name' => $varname));
-        $data = SessionVar::run_query($query);
+        $sd = new modl\SessionDAO();
+        $data = $sd->get(self::$sid, $this->container, $varname);
 
         if($data) {
-            return unserialize(base64_decode($data[0]->value));
+            return unserialize(base64_decode($data->value));
         } else {
             return false;
         }
@@ -139,43 +115,12 @@ class Session
      */
     public function set($varname, $value)
     {
-        // Does the variable exist?
-        $var = new SessionVar();
-
-        /*$success = $var->load(array(
-                                   'session' => self::$sid,
-                                   'container' => $this->container,
-                                   'name' => $varname));*/
-                                   
-        $query = SessionVar::query()->select()
-                                   ->where(array(
-                                           'session' => self::$sid,
-                                           'container' => $this->container,
-                                           'name' => $varname))
-                                   ->limit(0, 1);
-        $data = SessionVar::run_query($query);
-                                   
-        //var_dump($data);
+        $value = base64_encode(serialize($value));
         
-                
+        $sd = new modl\SessionDAO();
+        $sd->set(self::$sid, $this->container, $varname, $value, time());
 
-        Logger::log(1, "Session: Setting variable $varname");
-
-        if($data) {
-            $var = $data[0];
-        }
-        //if(!$success) {
-            $var->session = self::$sid;
-            $var->container = $this->container;
-            $var->name = $varname;
-        //}
-        
-        $var->value = base64_encode(serialize($value));
-        $var->timestamp = time();
-        
-        $var->run_query($var->query()->save($var));
-
-        return $var->value;
+        return $value;
     }
 
     /**
@@ -195,20 +140,8 @@ class Session
 
     public function delete_container()
     {
-        /*$vars = $this->db->select('SessionVar', array('container' => $this->container,
-                                                      'session' => self::$sid));*/
-                                                      
-        $query = SessionVar::query()->select()
-                           ->where(array(
-                                   'session' => self::$sid,
-                                   'container' => $this->container));
-        $vars = SessionVar::run_query($query);
-        
-        foreach($vars as $var)
-        {
-            $query = SessionVar::query()->delete($var);
-            SessionVar::run_query($query);
-        }
+        $sd = new modl\SessionDAO();
+        $sd->deleteContainer(self::$sid, $this->container);
     }
 
     /**

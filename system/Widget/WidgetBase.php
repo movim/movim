@@ -43,6 +43,9 @@ class WidgetBase
         
         $this->user = new User();
 
+        $db = modl\Modl::getInstance();
+        $db->setUser(new User());
+
 		// Generating ajax calls.
 		$refl = new ReflectionClass(get_class($this));
 		$meths = $refl->getMethods();
