@@ -63,20 +63,29 @@ class Account extends WidgetBase {
 		    }
 
 	        fclose($f); unset($f);
-
+	        
 	        $response = simplexml_load_string($response);
             
-            $id = (string)$response->attributes()->id;
+            /*$id = (string)$response->attributes()->id;*/
             
             $elements = (array)$response->iq->query;
             
             if(!empty($elements)) {
-                $html .= '
+				/*NEW PARSE CLASS*/
+				$html .= '
                     <form name="data">
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
+				$form = new XMPPtoForm();
+				if(!empty($response->iq->query->x)){
+					$html .= $form->getHTML($response->iq->query->x->asXML());
+				}
+				else{/*no <x> element in the XML*/	
+					$html .= $form->getHTML($response->iq->query->asXML());
+				}
+				
 
-                if(!isset($elements['x'])) {
+                /*if(!isset($elements['x'])) {
                     foreach($elements as $element => $val) {
                         if($element == 'instructions')
                             $html .= '<p>'.$val.'</p><br />';
@@ -174,7 +183,7 @@ class Account extends WidgetBase {
                                     
                 if(isset($elements['data'])) {
                     $html .= '<img src="data:image/jpg;base64,'.$elements['data'].'"/>';
-                }
+                }*/
                 
                 $submit = $this->genCallAjax('ajaxSubmitData', "movim_parse_form('data')");
                 
@@ -194,7 +203,8 @@ class Account extends WidgetBase {
                 RPC::call('movim_fill', 'fillform', RPC::cdata($html));
                 RPC::commit();
                 
-            } else {
+            }
+            else {
                 $html = '
                     <div class="message warning">
                         '.t('No account creation form founded on the server').'
@@ -433,11 +443,14 @@ class Account extends WidgetBase {
                     <form name="account">
                         <fieldset>
                             <legend><?php echo t('Step 1 - Search the server'); ?></legend>
-                                <a name="nddlink"/>
                                 <div class="clear"></div>
                                 <p>
-                                    <?php echo t('You can enter your server domain name.'); ?>
+                                    <?php echo t('You can%s enter your server domain name%s. ', '<a href="#nddlink">', '</a>'); 
+										echo t('Or you can choose a server from this list.'); ?>   
                                 </p>
+                                <br />
+                                <?php echo $this->printServerList(); ?>               
+                                
                                 <br />
                                 <div class="element">
                                     <label for="ndd"><?php echo t("Server"); ?></label>
@@ -450,13 +463,9 @@ class Account extends WidgetBase {
                                 </div>     
                                 
                                 <div class="clear"></div>
-                                <p>
-                                    <?php echo t('Or you can choose a server from this list.'); ?>
-                                </p>
-                                <br />
-                                <?php echo $this->printServerList(); ?>               
                                 
                                 <a
+									name="nddlink"
                                     class="button icon next" 
                                     style="float: right;"
                                     onclick="<?php echo $submit;?>; document.getElementById('fillform').innerHTML ='<?php echo t('Searching...');?>'"
