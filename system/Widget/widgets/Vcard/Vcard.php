@@ -80,11 +80,9 @@ class Vcard extends WidgetBase
             $c->public = 0;
             
         $cd = new modl\ContactDAO();
-        $cd->update($c);
+        $cd->set($c);
         
         $c->createThumbnails();
-        
-        //$c->run_query($c->query()->save($c));
         
         $r = new moxl\VcardSet();
         $r->setData($vcard)->request();
