@@ -30,6 +30,7 @@ require_once(LIB_PATH . "Datas/RosterLink.php");
 require_once(LIB_PATH . "Session.php");
 require_once(LIB_PATH . "Utils.php");
 require_once(LIB_PATH . "UtilsString.php");
+require_once(LIB_PATH . "UtilsPicture.php");
 require_once(LIB_PATH . "Cache.php");
 require_once(LIB_PATH . "Conf.php");
 require_once(LIB_PATH . "Event.php");
@@ -56,13 +57,6 @@ require_once(LIB_PATH . "Tpl/TplPageBuilder.php");
 require_once(LIB_PATH . "Widget/WidgetBase.php");
 require_once(LIB_PATH . "Widget/WidgetCommon.php");
 require_once(LIB_PATH . "Widget/WidgetWrapper.php");
-
-/* Jaxl Configuration */
-
-define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
-define('JAXL_LOG_EVENT', true);
-define('JAXL_LOG_LEVEL', 4);
-define('JAXL_LOG_ROTATE', false);
 
 // We set the default timezone to the server timezone
 

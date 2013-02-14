@@ -44,7 +44,6 @@ class Profile extends WidgetCommon
     
 	function ajaxSetStatus($status)
 	{
-        movim_log("GNAP".$status);
         $status = htmlspecialchars(rawurldecode($status));
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
@@ -82,15 +81,17 @@ class Profile extends WidgetCommon
     
     function prepareVcard($vcard = false)
     {
-        $query = Contact::query()->select()
+        $cd = new modl\ContactDAO();
+        $contact = $cd->get($this->user->getLogin());
+        /*$query = Contact::query()->select()
                                  ->where(array(
                                             'jid' => $this->user->getLogin()));
-        $contact = Contact::run_query($query);
+        $contact = Contact::run_query($query);*/
         
         $presence = Cache::c('presence');
         
-        if(isset($contact[0])) {
-            $me = $contact[0];
+        if(isset($contact)) {
+            $me = $contact;
 
             // My avatar
             $html .= '
@@ -105,13 +106,13 @@ class Profile extends WidgetCommon
                 <div class="block">
                     <h1 style="text-decoration: none;">'.$me->getTrueName().'</h1><br />';
 
-            if($this->testIsSet($me->getData('name')))
-                $html .= $me->getData('name').' ';
+            if($this->testIsSet($me->name))
+                $html .= $me->name.' ';
             else
                 $html .= $me->getTrueName().' ';
                 
-            if($this->testIsSet($me->getData('url')))
-                $html .= '<br /><a target="_blank" href="'.$me->getData('url').'">'.$me->getData('url').'</a>';
+            if($this->testIsSet($me->url))
+                $html .= '<br /><a target="_blank" href="'.$me->url.'">'.$me->url.'</a>';
             
 
             $html .= '<br /><br />
