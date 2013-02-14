@@ -50,46 +50,6 @@ class Vcard extends WidgetBase
         unset($vcard['month']);
         unset($vcard['day']);
         
-        
-        /*$c = new \Contact();
-
-        $query = \Contact::query()->select()
-                                   ->where(array(
-                                           'jid' => $this->user->getLogin())
-                                        );
-        $data = \Contact::run_query($query);
-
-        if($data) {
-            $c = $data[0];
-        }*/
-
-        /*$c->jid->setval($this->user->getLogin());
-        
-        $date = strtotime($vcard['date']);
-        $c->date->setval(date('Y-m-d', $date)); 
-        
-        $c->name->setval($vcard['name']);
-        $c->fn->setval($vcard['fn']);
-        $c->url->setval($vcard['url']);
-        
-        $c->gender->setval($vcard['gender']);
-        $c->marital->setval($vcard['marital']);
-
-        $c->email->setval($vcard['email']);
-        
-        $c->adrlocality->setval($vcard['locality']);
-        $c->adrcountry->setval($vcard['country']);
-        
-        $c->phototype->setval($vcard['phototype']);
-        $c->photobin->setval($vcard['photobin']);
-        
-        $c->desc->setval(trim($vcard['desc']));
-        
-        if($vcard['public'] == 'true')
-            $c->public->setval(1);
-        else
-            $c->public->setval(0);*/
-        
         $c = new modl\Contact();
             
         $c->jid = $this->user->getLogin();
@@ -120,7 +80,7 @@ class Vcard extends WidgetBase
             $c->public = 0;
             
         $cd = new modl\ContactDAO();
-        $cd->set($c);
+        $cd->update($c);
         
         $c->createThumbnails();
         
