@@ -50,7 +50,8 @@ class Vcard extends WidgetBase
         unset($vcard['month']);
         unset($vcard['day']);
         
-        $c = new \Contact();
+        
+        /*$c = new \Contact();
 
         $query = \Contact::query()->select()
                                    ->where(array(
@@ -60,9 +61,9 @@ class Vcard extends WidgetBase
 
         if($data) {
             $c = $data[0];
-        }
+        }*/
 
-        $c->jid->setval($this->user->getLogin());
+        /*$c->jid->setval($this->user->getLogin());
         
         $date = strtotime($vcard['date']);
         $c->date->setval(date('Y-m-d', $date)); 
@@ -87,9 +88,43 @@ class Vcard extends WidgetBase
         if($vcard['public'] == 'true')
             $c->public->setval(1);
         else
-            $c->public->setval(0);
+            $c->public->setval(0);*/
         
-        $c->run_query($c->query()->save($c));
+        $c = new modl\Contact();
+            
+        $c->jid = $this->user->getLogin();
+        
+        $date = strtotime($vcard['date']);
+        $c->date = date('Y-m-d', $date); 
+        
+        $c->name = $vcard['name'];
+        $c->fn = $vcard['fn'];
+        $c->url = $vcard['url'];
+        
+        $c->gender = $vcard['gender'];
+        $c->marital = $vcard['marital'];
+
+        $c->email = $vcard['email'];
+        
+        $c->adrlocality = $vcard['locality'];
+        $c->adrcountry = $vcard['country'];
+        
+        $c->phototype = $vcard['phototype'];
+        $c->photobin = $vcard['photobin'];
+        
+        $c->desc = trim($vcard['desc']);
+        
+        if($vcard['public'] == 'true')
+            $c->public = 1;
+        else
+            $c->public = 0;
+            
+        $cd = new modl\ContactDAO();
+        $cd->set($c);
+        
+        $c->createThumbnails();
+        
+        //$c->run_query($c->query()->save($c));
         
         $r = new moxl\VcardSet();
         $r->setData($vcard)->request();

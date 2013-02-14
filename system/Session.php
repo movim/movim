@@ -65,7 +65,6 @@ class Session
         }
 
         $this->container = $name;
-        Logger::log(1, "Session: Starting session ".self::$sid);
     }
 
     protected function regenerate()

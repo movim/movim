@@ -47,7 +47,7 @@ class ContactSummary extends WidgetCommon
         $query = \Presence::query()->select()
                            ->where(array(
                                    'key' => $this->user->getLogin(),
-                                   'jid' => $contact->getData('jid')))
+                                   'jid' => $contact->jid))
                            ->limit(0, 1);
         $data = \Presence::run_query($query);
         
@@ -65,13 +65,13 @@ class ContactSummary extends WidgetCommon
             <div class="block">
                 <h1 class="'.$presence['presence_txt'].'">'.$contact->getTrueName().'</h1><br />';
 
-            if($this->testIsSet($contact->getData('name')))
-                $html .= $contact->getData('name').' ';
+            if($this->testIsSet($contact->name))
+                $html .= $contact->name.' ';
             else
                 $html .= $contact->getTrueName().' ';
                 
-            if($this->testIsSet($contact->getData('url')))
-                $html .= '<br /><a target="_blank" href="'.$contact->getData('url').'">'.$contact->getData('url').'</a>';
+            if($this->testIsSet($contact->url))
+                $html .= '<br /><a target="_blank" href="'.$contact->url.'">'.$contact->url.'</a>';
             
         $html .= '<br /><br />
             </div>';
@@ -99,20 +99,18 @@ class ContactSummary extends WidgetCommon
     
     function build()
     {
-        $query = \Contact::query()->select()
-                                   ->where(array(
-                                           'jid' => $_GET['f']));
-        $contact = \Contact::run_query($query);
+        $cd = new modl\ContactDAO();
+        $contact = $cd->get($_GET['f']);
         
         ?>
         <div id="contactsummary">
         <?php
-        if(isset($contact[0])) {
-            echo $this->prepareContactSummary($contact[0]);
+        if(isset($contact)) {
+            echo $this->prepareContactSummary($contact);
         } 
         
         else {
-            $contact = new Contact();
+            $contact = new modl\Contact();
             echo $this->prepareContactSummary($contact);
         ?>
         <script type="text/javascript"><?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?></script>
