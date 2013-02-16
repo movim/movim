@@ -71,11 +71,11 @@ class Account extends WidgetBase {
             $elements = (array)$response->iq->query;
             
             if(!empty($elements)) {
-				/*NEW PARSE CLASS*/
 				$html .= '
                     <form name="data">
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
+                                
 				$form = new XMPPtoForm();
 				if(!empty($response->iq->query->x)){
 					$html .= $form->getHTML($response->iq->query->x->asXML());
@@ -83,76 +83,6 @@ class Account extends WidgetBase {
 				else{/*no <x> element in the XML*/	
 					$html .= $form->getHTML($response->iq->query->asXML());
 				}
-				
-
-                /*if(!isset($elements['x'])) {
-                    foreach($elements as $element => $val) {
-                        if($element == 'instructions')
-                            $html .= '<p>'.$val.'</p><br />';
-                        else {
-                            $html .= '
-                                <div class="element">
-                                    <label for="'.$element.'">'.t(ucfirst($element)).'</label>
-                                    <input
-                                        name="'.$element.'"
-                                        id="'.$element.'"
-                                        placeholder="'.t(ucfirst($element)).'"
-                                    />
-                                </div>';
-                        }
-                    }
-                } elseif(isset($elements['x'])) {
-                    $html .= '<p>'.(string)$elements['x']->instructions.'</p><br />';
-
-                    foreach($elements['x']->field as $element) {
-                        switch((string)$element->attributes()->type) {
-                            case 'hidden':
-                                $html .= '
-                                    <input 
-                                        type="hidden"
-                                        name="'.(string)$element->attributes()->var.'"
-                                        value="'.(string)$element->value.'"
-                                        />';
-                                break;
-                            case 'text-single':
-                                $html .= '
-                                    <div class="element">
-                                        <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
-                                        <input
-                                            name="'.(string)$element->attributes()->var.'"
-                                            type="'.(string)$element->attributes()->type.'"
-                                            id="'.(string)$element->attributes()->var.'"
-                                            placeholder="'.(string)$element->attributes()->label.'"
-                                        />
-                                    </div>';
-                                break;
-                            case 'text-private':
-                                $html .= '
-                                    <div class="element">
-                                        <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
-                                        <input
-                                            name="'.(string)$element->attributes()->var.'"
-                                            type="password"
-                                            id="'.(string)$element->attributes()->var.'"
-                                            placeholder="'.(string)$element->attributes()->label.'"
-                                        />
-                                    </div>';
-                                break;
-                            case 'text-private':
-                                $html .= '
-                                    <div class="element">
-                                        <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
-                                        <input
-                                            name="'.(string)$element->attributes()->var.'"
-                                            type="password"
-                                            id="'.(string)$element->attributes()->var.'"
-                                            placeholder="'.(string)$element->attributes()->label.'"
-                                        />
-                                    </div>';
-                                break;
-                        }
-                    }
-                } */
                 
                 $html .= '
                         <input
@@ -222,11 +152,7 @@ class Account extends WidgetBase {
     }
     
     function ajaxSubmitData($datas) {
-		\movim_log($datas);
-        $valid_fields = array('username', 'nick', 'password', 'name', 'first',
-	        'last', 'email', 'address', 'city', 'state', 'zip', 'phone', 'url',
-	        'date', 'misc', 'text', 'key');
-
+		
         define(XMPP_HOST, $datas['to']);
         define(XMPP_CONN, $datas['ndd']);
         define(XMPP_PORT, 5222);
@@ -238,23 +164,16 @@ class Account extends WidgetBase {
 
 	        $stream->addAttribute('to', XMPP_HOST);
 
-	        foreach($datas as $key => $value) {
-                if($value == '') {
-                    RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
-                    RPC::commit();
-     	            exit;
-                }
-		        elseif(in_array($key, $valid_fields))
-			        $stream->iq->query->addChild($key, $value);
-            }
+			$xmpp = new FormtoXMPP();
+			$stream = $xmpp->getXMPP($stream->asXML(), $datas);
 
             // We try to connect to the XMPP Server
 	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
 
 	        if(!$f) {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
-                    RPC::commit();
-     	            exit;
+                RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
+                RPC::commit();
+     	        exit;
 		    }
             
             echo $stream->asXML();
