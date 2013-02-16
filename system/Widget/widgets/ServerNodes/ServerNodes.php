@@ -28,7 +28,7 @@ class ServerNodes extends WidgetCommon
 
     function onDiscoNodes($items)
     {
-        $html = '<ul>';
+        $html = '<ul class="list">';
 
         foreach($items as $item) {
             $html .= '
@@ -48,7 +48,7 @@ class ServerNodes extends WidgetCommon
     
     function onDiscoItems($items)
     {
-        $html = '<ul>';
+        $html = '<ul class="list">';
 
         foreach($items as $item) {
             $html .= '
@@ -74,8 +74,8 @@ class ServerNodes extends WidgetCommon
 
     function build()
     {
-    ?><br /><br /><br /><br />
-        <div id="servernodes">
+    ?>
+        <div class="tabelem protect red" id="servernodes" title="<?php echo t('Groups');?>">
             <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?></script>
         </div>
     <?php
