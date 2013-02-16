@@ -8,8 +8,8 @@ define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 define('USERS_PATH', BASE_PATH . 'user/');
 
-define('DB_DEBUG', true);
-define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
+//define('DB_DEBUG', true);
+//define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
 
 
 
@@ -30,6 +30,7 @@ require_once(LIB_PATH . "Datas/RosterLink.php");
 require_once(LIB_PATH . "Session.php");
 require_once(LIB_PATH . "Utils.php");
 require_once(LIB_PATH . "UtilsString.php");
+require_once(LIB_PATH . "UtilsPicture.php");
 require_once(LIB_PATH . "Cache.php");
 require_once(LIB_PATH . "Conf.php");
 require_once(LIB_PATH . "Event.php");
@@ -37,6 +38,7 @@ require_once(LIB_PATH . "Logger.php");
 require_once(LIB_PATH . "MovimException.php");
 require_once(LIB_PATH . "RPC.php");
 require_once(LIB_PATH . "User.php");
+require_once(LIB_PATH . "XMPPtoForm.php");
 
 // We load Movim Data Layer
 require_once(LIB_PATH . 'Modl/loader.php');
@@ -56,13 +58,6 @@ require_once(LIB_PATH . "Tpl/TplPageBuilder.php");
 require_once(LIB_PATH . "Widget/WidgetBase.php");
 require_once(LIB_PATH . "Widget/WidgetCommon.php");
 require_once(LIB_PATH . "Widget/WidgetWrapper.php");
-
-/* Jaxl Configuration */
-
-define('JAXL_LOG_PATH', BASE_PATH . 'log/jaxl.log');
-define('JAXL_LOG_EVENT', true);
-define('JAXL_LOG_LEVEL', 4);
-define('JAXL_LOG_ROTATE', false);
 
 // We set the default timezone to the server timezone
 

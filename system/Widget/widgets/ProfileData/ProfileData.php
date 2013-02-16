@@ -84,16 +84,11 @@ class ProfileData extends WidgetBase
     {
         $submit = $this->genCallAjax('ajaxLocationPublish', "getMyPositionData()");
         
-        $query = Contact::query()
-                        ->select()
-                        ->where(
-                            array('jid' => $this->user->getLogin())
-                        );
-        $c = Contact::run_query($query);
+        $cd = new modl\ContactDAO();
+        $c = $cd->get($this->user->getLogin());
         
         if($c) {
-            $c = $c[0];
-            $data = prepareDate(strtotime($c->loctimestamp->getval())).'<br /><br />';
+            $data = prepareDate(strtotime($c->loctimestamp)).'<br /><br />';
             $data .= $c->getPlace();
         } else {
             $data = '';

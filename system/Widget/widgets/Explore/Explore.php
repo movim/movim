@@ -44,7 +44,7 @@ class Explore extends WidgetCommon {
 
         $query = Contact::query()->select()
                        ->where($where)
-                       ->orderby('id', true)
+                       //s->orderby('id', true)
                        ->limit(0, $users_limit);
         $users = Contact::run_query($query);
 
