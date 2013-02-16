@@ -509,3 +509,17 @@ table tbody tr td {
     vertical-align: middle;
     padding: 0.3em;
 }
+
+/* List */
+ul.list {
+    list-style-type: none;
+}
+
+ul.list li {
+    border-bottom: 1px solid #EEE;
+}
+
+ul.list li a {
+    padding: 0.7em;
+    display: block;
+}
