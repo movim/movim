@@ -66,7 +66,7 @@ class Account extends WidgetBase {
 	        
 	        $response = simplexml_load_string($response);
             
-            /*$id = (string)$response->attributes()->id;*/
+            $id = (string)$response->attributes()->id;
             
             $elements = (array)$response->iq->query;
             
@@ -152,7 +152,7 @@ class Account extends WidgetBase {
                                 break;
                         }
                     }
-                } 
+                } */
                 
                 $html .= '
                         <input
@@ -183,7 +183,7 @@ class Account extends WidgetBase {
                                     
                 if(isset($elements['data'])) {
                     $html .= '<img src="data:image/jpg;base64,'.$elements['data'].'"/>';
-                }*/
+                }
                 
                 $submit = $this->genCallAjax('ajaxSubmitData', "movim_parse_form('data')");
                 
@@ -222,6 +222,7 @@ class Account extends WidgetBase {
     }
     
     function ajaxSubmitData($datas) {
+		\movim_log($datas);
         $valid_fields = array('username', 'nick', 'password', 'name', 'first',
 	        'last', 'email', 'address', 'city', 'state', 'zip', 'phone', 'url',
 	        'date', 'misc', 'text', 'key');
