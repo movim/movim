@@ -8,8 +8,8 @@ define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 define('USERS_PATH', BASE_PATH . 'user/');
 
-define('DB_DEBUG', true);
-define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
+//define('DB_DEBUG', true);
+//define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
 
 
 
