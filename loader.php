@@ -38,6 +38,7 @@ require_once(LIB_PATH . "Logger.php");
 require_once(LIB_PATH . "MovimException.php");
 require_once(LIB_PATH . "RPC.php");
 require_once(LIB_PATH . "User.php");
+require_once(LIB_PATH . "XMPPtoForm.php");
 
 // We load Movim Data Layer
 require_once(LIB_PATH . 'Modl/loader.php');
