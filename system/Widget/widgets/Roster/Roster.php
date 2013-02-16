@@ -197,8 +197,10 @@ class Roster extends WidgetBase
         $contacts = $contactdao->getRoster();
 
         $html = '';
+        
+        $rd = new modl\RosterLinkDAO();
 
-        if($contacts != false) {
+        if(count($contacts) != 0) {
             $i = 0;
             
             while($i < count($contacts))

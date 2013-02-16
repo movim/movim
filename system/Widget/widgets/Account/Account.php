@@ -63,7 +63,7 @@ class Account extends WidgetBase {
 		    }
 
 	        fclose($f); unset($f);
-
+	        
 	        $response = simplexml_load_string($response);
             
             $id = (string)$response->attributes()->id;
@@ -71,79 +71,18 @@ class Account extends WidgetBase {
             $elements = (array)$response->iq->query;
             
             if(!empty($elements)) {
-                $html .= '
+				$html .= '
                     <form name="data">
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
-
-                if(!isset($elements['x'])) {
-                    foreach($elements as $element => $val) {
-                        if($element == 'instructions')
-                            $html .= '<p>'.$val.'</p><br />';
-                        else {
-                            $html .= '
-                                <div class="element">
-                                    <label for="'.$element.'">'.t(ucfirst($element)).'</label>
-                                    <input
-                                        name="'.$element.'"
-                                        id="'.$element.'"
-                                        placeholder="'.t(ucfirst($element)).'"
-                                    />
-                                </div>';
-                        }
-                    }
-                } elseif(isset($elements['x'])) {
-                    $html .= '<p>'.(string)$elements['x']->instructions.'</p><br />';
-
-                    foreach($elements['x']->field as $element) {
-                        switch((string)$element->attributes()->type) {
-                            case 'hidden':
-                                $html .= '
-                                    <input 
-                                        type="hidden"
-                                        name="'.(string)$element->attributes()->var.'"
-                                        value="'.(string)$element->value.'"
-                                        />';
-                                break;
-                            case 'text-single':
-                                $html .= '
-                                    <div class="element">
-                                        <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
-                                        <input
-                                            name="'.(string)$element->attributes()->var.'"
-                                            type="'.(string)$element->attributes()->type.'"
-                                            id="'.(string)$element->attributes()->var.'"
-                                            placeholder="'.(string)$element->attributes()->label.'"
-                                        />
-                                    </div>';
-                                break;
-                            case 'text-private':
-                                $html .= '
-                                    <div class="element">
-                                        <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
-                                        <input
-                                            name="'.(string)$element->attributes()->var.'"
-                                            type="password"
-                                            id="'.(string)$element->attributes()->var.'"
-                                            placeholder="'.(string)$element->attributes()->label.'"
-                                        />
-                                    </div>';
-                                break;
-                            case 'text-private':
-                                $html .= '
-                                    <div class="element">
-                                        <label for="'.(string)$element->attributes()->var.'">'.(string)$element->attributes()->label.'</label>
-                                        <input
-                                            name="'.(string)$element->attributes()->var.'"
-                                            type="password"
-                                            id="'.(string)$element->attributes()->var.'"
-                                            placeholder="'.(string)$element->attributes()->label.'"
-                                        />
-                                    </div>';
-                                break;
-                        }
-                    }
-                } 
+                                
+				$form = new XMPPtoForm();
+				if(!empty($response->iq->query->x)){
+					$html .= $form->getHTML($response->iq->query->x->asXML());
+				}
+				else{/*no <x> element in the XML*/	
+					$html .= $form->getHTML($response->iq->query->asXML());
+				}
                 
                 $html .= '
                         <input
@@ -194,7 +133,8 @@ class Account extends WidgetBase {
                 RPC::call('movim_fill', 'fillform', RPC::cdata($html));
                 RPC::commit();
                 
-            } else {
+            }
+            else {
                 $html = '
                     <div class="message warning">
                         '.t('No account creation form founded on the server').'
@@ -212,10 +152,7 @@ class Account extends WidgetBase {
     }
     
     function ajaxSubmitData($datas) {
-        $valid_fields = array('username', 'nick', 'password', 'name', 'first',
-	        'last', 'email', 'address', 'city', 'state', 'zip', 'phone', 'url',
-	        'date', 'misc', 'text', 'key');
-
+		
         define(XMPP_HOST, $datas['to']);
         define(XMPP_CONN, $datas['ndd']);
         define(XMPP_PORT, 5222);
@@ -227,23 +164,16 @@ class Account extends WidgetBase {
 
 	        $stream->addAttribute('to', XMPP_HOST);
 
-	        foreach($datas as $key => $value) {
-                if($value == '') {
-                    RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
-                    RPC::commit();
-     	            exit;
-                }
-		        elseif(in_array($key, $valid_fields))
-			        $stream->iq->query->addChild($key, $value);
-            }
+			$xmpp = new FormtoXMPP();
+			$stream = $xmpp->getXMPP($stream->asXML(), $datas);
 
             // We try to connect to the XMPP Server
 	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
 
 	        if(!$f) {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
-                    RPC::commit();
-     	            exit;
+                RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
+                RPC::commit();
+     	        exit;
 		    }
             
             echo $stream->asXML();
@@ -433,11 +363,14 @@ class Account extends WidgetBase {
                     <form name="account">
                         <fieldset>
                             <legend><?php echo t('Step 1 - Search the server'); ?></legend>
-                                <a name="nddlink"/>
                                 <div class="clear"></div>
                                 <p>
-                                    <?php echo t('You can enter your server domain name.'); ?>
+                                    <?php echo t('You can%s enter your server domain name%s. ', '<a href="#nddlink">', '</a>'); 
+										echo t('Or you can choose a server from this list.'); ?>   
                                 </p>
+                                <br />
+                                <?php echo $this->printServerList(); ?>               
+                                
                                 <br />
                                 <div class="element">
                                     <label for="ndd"><?php echo t("Server"); ?></label>
@@ -450,13 +383,9 @@ class Account extends WidgetBase {
                                 </div>     
                                 
                                 <div class="clear"></div>
-                                <p>
-                                    <?php echo t('Or you can choose a server from this list.'); ?>
-                                </p>
-                                <br />
-                                <?php echo $this->printServerList(); ?>               
                                 
                                 <a
+									name="nddlink"
                                     class="button icon next" 
                                     style="float: right;"
                                     onclick="<?php echo $submit;?>; document.getElementById('fillform').innerHTML ='<?php echo t('Searching...');?>'"
