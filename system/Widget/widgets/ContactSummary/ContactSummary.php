@@ -44,26 +44,18 @@ class ContactSummary extends WidgetCommon
         $gender = getGender();
         $marital = getMarital();
         
-        $query = \Presence::query()->select()
-                           ->where(array(
-                                   'key' => $this->user->getLogin(),
-                                   'jid' => $contact->jid))
-                           ->limit(0, 1);
-        $data = \Presence::run_query($query);
-        
-        if(isset($data[0]))
-            $presence = $data[0]->getPresence();
-        
         // Contact avatar
         $html .= '
             <div class="block avatar">
                 <img src="'.$contact->getPhoto('l').'"/>
             </div>';
             
+        $presencetxt = getPresencesTxt();
+            
         // Contact general infos
         $html .= '
             <div class="block">
-                <h1 class="'.$presence['presence_txt'].'">'.$contact->getTrueName().'</h1><br />';
+                <h1 class="'.$presencetxt[$contact->presence].'">'.$contact->getTrueName().'</h1><br />';
 
             if($this->testIsSet($contact->name))
                 $html .= $contact->name.' ';
@@ -76,7 +68,7 @@ class ContactSummary extends WidgetCommon
         $html .= '<br /><br />
             </div>';
           
-        if($this->testIsSet($presence['status'])) {
+        if($this->testIsSet($contact->status)) {
             $html .= '
                 <div 
                     class="block" 
@@ -88,7 +80,7 @@ class ContactSummary extends WidgetCommon
                     >';
                 $html .= '
                     <div class="textbubble">
-                        '.prepareString($presence['status']).'
+                        '.prepareString($contact->status).'
                     </div>';
             $html .= '
                 </div>';   
@@ -100,12 +92,12 @@ class ContactSummary extends WidgetCommon
     function build()
     {
         $cd = new modl\ContactDAO();
-        $contact = $cd->get($_GET['f']);
+        $contact = $cd->getRosterItem($_GET['f']);
         
         ?>
         <div id="contactsummary">
         <?php
-        if(isset($contact)) {
+        if(isset($contact->photobin)) {
             echo $this->prepareContactSummary($contact);
         } 
         

@@ -17,6 +17,12 @@
 
 class WidgetCommon extends WidgetBase {
     protected function printPost($post) {
+        if($post->title)
+            $title = '
+                <span>
+                    '.$post->title.'
+                </span><br />';
+        
         $html = '
             <div class="post " id="'.$post->nodeid.'">
                 <a href="?q=friend&amp;f='.$post->getContact()->jid.'">
@@ -24,17 +30,15 @@ class WidgetCommon extends WidgetBase {
                 </a>
 
                 <div id="'.$post->nodeid.'" class="postbubble ">
+                    '.$title.'
                     <span>
-                        '.$post->title.'
-                    </span>
-                    <span>
-                        '.$post->name.' <a href="?q=friend&amp;f='.$post->uri.'">'.$post->getContact()->getTrueName().'</a>
+                        <a href="?q=friend&amp;f='.$post->uri.'">'.$post->getContact()->getTrueName().'</a>
                     </span>
                     <span class="date">
                         '.prepareDate(strtotime($post->published)).'
                     </span>
                     <div class="content">
-                        '.$post->content.'
+                        '.prepareString(html_entity_decode($post->content)).'
                     </div>
                 </div>
                 <div class="clear"></div>

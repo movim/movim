@@ -37,63 +37,46 @@ class ContactInfo extends WidgetCommon
     
     function prepareContactInfo()
     {
-        $query = Contact::query()
-                            ->join('Presence',
-                                              array('Contact.jid' =>
-                                                    'Presence.jid'))
-                           ->where(array(
-                                   'Contact`.`jid' => $_GET['f']));
-        $user = Contact::run_query($query);
-
-        $query = RosterLink::query()
-                   ->where(array(
-                           'key' => $this->user->getLogin(),
-                           'jid' => $_GET['f']));
-        $r = RosterLink::run_query($query);
+        $cd = new \modl\ContactDAO();
+        $c = $cd->getRosterItem($_GET['f']);
         
         $html = '';
         
-        if(isset($user) && isset($user[0][1]) && isset($r[0]->jid) && $r[0]->jid->getval() != '') {
-            $contact = $user[0][0];
-            
-            $presence = $user[0][1]->getPresence();
-            
+        if(isset($c)) {
             // Mood
-            if($contact->mood->getval() != '') {
+            if($c->mood) {
                 $moodarray = getMood();
                 
                 $mood = '';
-                foreach(unserialize($contact->mood->getval()) as $m)
+                foreach(unserialize($c->mood) as $m)
                     $mood .= $moodarray[$m].',';
                 $html .= t("I'm ").substr($mood, 0, -1).'<br />';
             }
             
             // Last seen
-            if($user[0][1]->delay->getval() != '0000-00-00 00:00:00' && $this->testIsSet($user[0][1]->delay->getval())) {
+            if($c->delay) {
                 $html .= '<h2>'.t('Last seen').'</h2>';
-                $html .= '<span></span>'.date('j M Y - H:i',strtotime($user[0][1]->delay->getval())).'<br />';
+                $html .= prepareDate(strtotime($c->delay)).'<br />';
             }
             
-            // Location
-            if(($contact->loclatitude->getval() != '' && 
-                $contact->loclongitude->getval() != '') || $contact->getPlace() != ''
-              ) {
+            if($c->loclatitude != '' && $c->loclongitude != ''
+             || $c->getPlace() != '') {
+                 
                 $html .= '
                     <h2>'.t('Location').'</h2>';
                     
-                $html .= prepareDate(strtotime($contact->loctimestamp->getval())).'<br /><br />';
-                if($contact->getPlace() != '')
-                    $html .= $contact->getPlace().'<br /><br />';
+                $html .= prepareDate(strtotime($c->loctimestamp)).'<br /><br />';
+                if($c->getPlace() != '')
+                    $html .= $c->getPlace().'<br /><br />';
                 
-                if($contact->loclatitude->getval() != '' && 
-                   $contact->loclongitude->getval() != '')
+                if(isset($c->loclatitude) && isset($c->loclongitude))
                 $html .= '
                   <div id="mapdiv" style="width: auto; height: 250px;"></div>
                   <script>
                     map = new OpenLayers.Map("mapdiv");
                     map.addLayer(new OpenLayers.Layer.OSM());
                  
-                    var lonLat = new OpenLayers.LonLat( '.$contact->loclongitude->getval().' ,'.$contact->loclatitude->getval().' )
+                    var lonLat = new OpenLayers.LonLat( '.$c->loclongitude.' ,'.$c->loclatitude.' )
                           .transform(
                             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
                             map.getProjectionObject() // to Spherical Mercator Projection
@@ -111,56 +94,52 @@ class ContactInfo extends WidgetCommon
             }
             
             // Client informations
-            if($presence['node'] != '' && $presence['ver'] != '') {                
-                $node = $presence['node'].'#'.$presence['ver'];
+            if($c->node && $c->ver) {                
+                $node = $c->node.'#'.$c->ver;
 
-                $query = \Caps::query()->select()
-                                           ->where(array(
-                                                   'node' => $node))
-                                           ->limit(0, 1);
-                $data = \Caps::run_query($query);
-                
+                $cad = new \modl\CapsDAO();
+                $caps = $cad->get($node);
+
                 $clienttype = 
                     array(
                         'bot' => t('Bot'),
                         'pc' => t('Desktop'),
                         'phone' => t('Phone'),
+                        'handheld' => t('Phone'),
                         'web' => t('Web'),
                         );
                         
-                if(isset($data[0])) {
-                    $data = $data[0];
+                if(isset($caps)) {
                     $cinfos = '';
-                    $cinfos .=  $data->getData('name').' ('.$clienttype[$data->getData('type')].')<br />';
+                    $cinfos .=  $caps->name.' ('.$clienttype[$caps->type].')<br />';
+                    
                     $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
                 }
             }
             
-            if($contact->jid->getval() != $this->user->getLogin()) {
+            // Chat button
+            if($c->jid != $this->user->getLogin()) {
             
                 $presences = getPresences();
                 
                 $html .='<h2>'.t('Actions').'</h2>';
                 
-                if(isset($presence['presence']) && !in_array($presence['presence'], array(5, 6))) {
+                if(isset($c->presence) && !in_array($presence['presence'], array(5, 6))) {
                     $html .= '
                         <a
                             class="button tiny icon chat"
                             href="#"
                             style="float: left;"
                             id="friendchat"
-                            onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->getData('jid')."'").'"
+                            onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$c->jid."'").'"
                         >
-                            '.$presences[$presence['presence']].' - '.t('Chat').'
+                            '.$presences[$c->presence].' - '.t('Chat').'
                         </a>';
                 }
             }
             
-        }
-                            
-        $html .= '<div style="clear: both;"></div>';
-        
-        if(isset($r[0]->jid) && $r[0]->jid->getval() != '') {
+            $html .= '<div style="clear: both;"></div>';
+            
             $html .='
             <a
                 class=""
@@ -178,7 +157,7 @@ class ContactInfo extends WidgetCommon
 
             <a
                 class="button tiny icon yes merged left';
-            if(!isset($presence['presence']) || $presence['presence'] == 5)
+            if(!isset($c->presence) || $c->presence == 5)
                 $html .=' left';
             $html .= '"
                 href="#"
