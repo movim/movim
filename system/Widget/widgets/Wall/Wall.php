@@ -59,22 +59,9 @@ class Wall extends WidgetCommon
     }  
     
     function onStream($from) {
-        /*$html = '';
-
-        $html .= '
-            <!--<a 
-                class="button tiny icon" 
-                href="#"
-                style="float: right;"
-                id="wallfollow" 
-                onclick="'.$this->genCallAjax('ajaxSubscribe', "'".$payload["@attributes"]["from"]."'").'" 
-            >
-                '.t('Follow').'
-            </a>
-            <br /><br />-->
-            ';
-        */
-        $html = $this->prepareFeed(0, $from);
+        $html = $this->prepareFeed(-1, $from);
+        
+        movim_log($html);
 
         RPC::call('movim_fill', 'wall', RPC::cdata($html));
     }
@@ -83,29 +70,19 @@ class Wall extends WidgetCommon
         
         if(!$from)
             $from = $_GET['f'];
-            
-        $where = array(
-                    'Post`.`key' => $this->user->getLogin(),
-                    'Post`.`jid' => $from,
-                    'Post`.`parentid' => '');
-                    
-        if(isset($_GET['p']))
-            $where['Post`.`nodeid'] = $_GET['p'];
-        // We query the last messages
-        $query = Post::query()
-                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where($where)
-                            ->orderby('Post.updated', true)
-                            ->limit($start, '10');
-        $messages = Post::run_query($query);
-		
-        // We ask for the HTML of all the posts
-        $htmlmessages = $this->preparePosts($messages);
         
+        $pd = new \modl\PostDAO();
+        $pl = $pd->getContact($from, $start+1, 10);
+        
+        // We ask for the HTML of all the posts
+        foreach($pl as $post) {
+            $htmlmessages .= $this->printPost($post);
+        }		
+
         $next = $start + 10;
-            
-        if(sizeof($messages) > 0 && $htmlmessages != false) {
-            if($start == 0) {
+        
+        if(count($pl) > 0 && $htmlmessages != false) {
+            if($start == -1) {
                 $html .= '
                         <div class="posthead" style="border-top: 0px;">
                                 <a 
@@ -127,7 +104,7 @@ class Wall extends WidgetCommon
                         </div>';
             }
             $html .= $htmlmessages;
-            if(sizeof($messages) > 9)
+            if(count($pl) > 9)
                 $html .= '
                     <div class="post">
                         <div class="older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").';  this.parentNode.style.display = \'none\'">'.t('Get older posts').'</div>
@@ -156,7 +133,7 @@ class Wall extends WidgetCommon
 		?>
 		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
 		<?php 
-            $wall = $this->prepareFeed(0);
+            $wall = $this->prepareFeed(-1);
             if($wall)
                 echo $wall;
             else {

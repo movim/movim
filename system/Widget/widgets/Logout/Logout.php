@@ -92,6 +92,7 @@ class Logout extends WidgetBase
         $txt = getPresences();
     
         global $session;
+        
         $query = Presence::query()->select()
                            ->where(array(
                                    'key' => $this->user->getLogin(),
