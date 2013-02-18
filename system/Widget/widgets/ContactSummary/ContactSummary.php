@@ -105,7 +105,7 @@ class ContactSummary extends WidgetCommon
             $contact = new modl\Contact();
             echo $this->prepareContactSummary($contact);
         ?>
-        <script type="text/javascript"><?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?></script>
+        <script type="text/javascript">setTimeout("<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>", 1000);</script>
         <?php } ?>
         </div>
         <?php
