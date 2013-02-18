@@ -8,5 +8,17 @@
     
     $cd = new \modl\ContactDAO();
     $cd->create();
+    
+    $cad = new \modl\CapsDAO();
+    $cad->create();
+    
+    $prd = new \modl\PresenceDAO();
+    $prd->create();
+    
+    $rd = new \modl\RosterLinkDAO();
+    $rd->create();
+    
+    $sd = new \modl\SessionDAO();
+    $sd->create();
 
 echo 'Recreate database... done !';

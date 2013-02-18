@@ -60,8 +60,6 @@ class Wall extends WidgetCommon
     
     function onStream($from) {
         $html = $this->prepareFeed(-1, $from);
-        
-        movim_log($html);
 
         RPC::call('movim_fill', 'wall', RPC::cdata($html));
     }
