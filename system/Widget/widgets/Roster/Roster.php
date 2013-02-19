@@ -86,7 +86,7 @@ class Roster extends WidgetBase
      * 
      * 
      */
-    function prepareRosterElement($contact, $inner = false)
+    function prepareRosterElement($contact, $caps = false)
 	{
         $html = '';
 
@@ -106,9 +106,32 @@ class Roster extends WidgetBase
         $html .= '
                 id="roster'.$contact->jid.'"
              >';
+             
+        $type = '';
+             
+        if($caps) {
+            foreach($caps as $c) {
+                if($c->node == $contact->node.'#'.$contact->ver) {
+                    $type = $c->type;
+                }
+            }
+        }
 
-        $html .= '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->jid."'").'"></div>
-                 <a
+        $html .= '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->jid."'").'"></div>';
+
+        if($type == 'handheld')
+            $html .= '<div class="infoicon mobile"></div>';
+            
+        if($type == 'web')
+            $html .= '<div class="infoicon web"></div>';
+
+        if($type == 'bot')
+            $html .= '<div class="infoicon bot"></div>';
+            
+        if(isset($contact->tuneartist) && $contact->tuneartist != '')
+            $html .= '<div class="infoicon tune"></div>';
+        
+        $html .= '<a
 					title="'.$contact->jid;
                     if($contact->status != '')
                         $html .= ' - '.htmlentities($contact->status);
@@ -129,7 +152,7 @@ class Roster extends WidgetBase
                             $html .= ' ('.$contact->ressource.')';
             $html .= '</span>
                  </a>';
-
+        
         $html .= '</li>';
 
         return $html;
@@ -143,7 +166,7 @@ class Roster extends WidgetBase
      * 
      * 
      */
-    private function prepareRosterGroup($contacts, &$i)
+    private function prepareRosterGroup($contacts, &$i, $caps)
     {
         $j = $i;
         // We get the current name of the group
@@ -155,10 +178,10 @@ class Roster extends WidgetBase
         // We grab all the contacts of the group 
         $grouphtml = '';
         while(isset($contacts[$i]) && $contacts[$i]->group == $currentgroup) {
-            if(!in_array($contacts[$i]->jid, $duplicate)) {                
-                $grouphtml .= $this->prepareRosterElement($contacts[$i]);
+            //if(!in_array($contacts[$i]->jid, $duplicate)) {                
+                $grouphtml .= $this->prepareRosterElement($contacts[$i], $caps);
                 array_push($duplicate, $contacts[$i]->jid);
-            }
+            //}
             $i++;
         } 
         
@@ -199,12 +222,15 @@ class Roster extends WidgetBase
         $html = '';
         
         $rd = new modl\RosterLinkDAO();
+        
+        $capsdao = new modl\CapsDAO();
+        $caps = $capsdao->getAll();
 
         if(count($contacts) != 0) {
             $i = 0;
             
             while($i < count($contacts))
-                $html .= $this->prepareRosterGroup($contacts, $i);
+                $html .= $this->prepareRosterGroup($contacts, $i, $caps);
 
         } else {
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
