@@ -239,3 +239,27 @@
     border-bottom: 1px solid rgba(20, 20, 30, 1);
 }
 
+#roster li .infoicon {
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    float: right;
+    margin-top: 6px;
+    margin-right: 2px;
+}
+
+#roster li .mobile {
+    background-image: url('img/mobile.png');
+}
+
+#roster li .web {
+    background-image: url('img/earth.png');
+}
+
+#roster li .bot {
+    background-image: url('img/robot.png');
+}
+
+#roster li .tune {
+    background-image: url('img/music.png');
+}
