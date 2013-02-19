@@ -53,6 +53,11 @@ class ContactInfo extends WidgetCommon
                 $html .= t("I'm ").substr($mood, 0, -1).'<br />';
             }
             
+            if($c->tuneartist) {
+                $html .= '<h2>'.t('Listening').'</h2>';
+                $html .= $c->tuneartist. ' - '.$c->tunetitle.' '.t('on').$c->tunesource;
+            }
+            
             // Last seen
             if($c->delay) {
                 $html .= '<h2>'.t('Last seen').'</h2>';
@@ -109,7 +114,7 @@ class ContactInfo extends WidgetCommon
                         'web' => t('Web'),
                         );
                         
-                if(isset($caps)) {
+                if(isset($caps) && $caps->name != '' && $caps->type != '' ) {
                     $cinfos = '';
                     $cinfos .=  $caps->name.' ('.$clienttype[$caps->type].')<br />';
                     
