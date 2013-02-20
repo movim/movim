@@ -25,7 +25,7 @@ class WidgetCommon extends WidgetBase {
         
         $html = '
             <div class="post " id="'.$post->nodeid.'">
-                <a href="?q=friend&amp;f='.$post->getContact()->jid.'">
+                <a href="?q=friend&amp;f='.$post->uri.'">
                     <img class="avatar" src="'.$post->getContact()->getPhoto('m').'">
                 </a>
 
