@@ -61,12 +61,12 @@ class Chat extends WidgetBase
     
     function onMessage($message)
     {
-        if($message->getData('key') == $message->getData('from')) {
-            $key = $message->getData('from');
-            $jid = $message->getData('to');
+        if($message->key == $message->from) {
+            $key = $message->from;
+            $jid = $message->to;
         } else {
-            $key = $message->getData('to');
-            $jid = $message->getData('from');
+            $key = $message->to;
+            $jid = $message->from;
         }
 
         $query = RosterLink::query()->select()
@@ -86,7 +86,7 @@ class Chat extends WidgetBase
                            'chats',
                            RPC::cdata($this->prepareChat($contact)));
             RPC::call('scrollAllTalks');
-        } else if(isset($contact) && $message->getData('body') != '') {
+        } else if(isset($contact) && $message->body != '') {
             
             $html = $this->prepareMessage($message);
 
@@ -203,18 +203,21 @@ class Chat extends WidgetBase
     {
         $m = new \Message();
         
-        $m->key->setval($this->user->getLogin());
-        $m->to->setval(echapJid($to));
-        $m->from->setval($this->user->getLogin());
+        $m = new \modl\Message();
         
-        $m->type->setval("chat");
+        $m->key     = $this->user->getLogin();
+        $m->to      = echapJid($to);
+        $m->from    = $this->user->getLogin();
         
-        $m->body->setval(rawurldecode($message));
+        $m->type    = 'chat';
         
-        $m->published->setval(date('Y-m-d H:i:s'));
-        $m->delivered->setval(date('Y-m-d H:i:s'));
+        $m->body    = rawurldecode($message);
+        
+        $m->published = date('Y-m-d H:i:s');
+        $m->delivered = date('Y-m-d H:i:s');
     
-        $m->run_query($m->query()->save($m));
+        $md = new \modl\MessageDAO();
+        $md->set($m);
 
         $this->onMessage($m);
              
@@ -268,19 +271,19 @@ class Chat extends WidgetBase
     }
     
     function prepareMessage($message) {
-        if($message->getData('body') != '') {
+        if($message->body != '') {
             $html = '<div class="message ';
-                if($message->getData('key') == $message->getData('from'))
+                if($message->key == $message->from)
                     $html.= 'me';
                    
-            $content = $message->getData('body');
+            $content = $message->body;
                     
-            if(preg_match("#^/me#", $message->getData('body'))) {
+            if(preg_match("#^/me#", $message->body)) {
                 $html .= " own ";
-                $content = "** ".substr($message->getData('body'), 4);
+                $content = "** ".substr($message->body, 4);
             }
                     
-            $html .= '"><span class="date">'.date('H:i', strtotime($message->getData('published'))).'</span>';
+            $html .= '"><span class="date">'.date('H:i', strtotime($message->published)).'</span>';
             $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
             return $html;
         } else {
@@ -290,24 +293,15 @@ class Chat extends WidgetBase
     
     function prepareChat($contact)
     {
-        $query = Message::query()
-                  ->where(
-                        array(
-                            'key' => $this->user->getLogin(), 
-                                array('to' => $contact->getData('jid') , '|from' => $contact->getData('jid')) 
-                        )
-                    )
-                  ->orderby('published', true)
-                  ->limit(0, 20);
-        $messages = Message::run_query($query);
+        $md = new \modl\MessageDAO();
+        $messages = $md->getContact($contact->getData('jid'));
 
         if(!empty($messages)) {
-            $messages = array_reverse($messages);
             $day = '';
             foreach($messages as $m) {
-                if($day != date('d',strtotime($m->getData('published')))) {
-                    $messageshtml .= '<div class="message presence">'.prepareDate(strtotime($m->getData('published')), false).'</div>';
-                    $day = date('d',strtotime($m->getData('published')));
+                if($day != date('d',strtotime($m->published))) {
+                    $messageshtml .= '<div class="message presence">'.prepareDate(strtotime($m->published), false).'</div>';
+                    $day = date('d',strtotime($m->published));
                 }
                 $messageshtml .= $this->prepareMessage($m);
             }
