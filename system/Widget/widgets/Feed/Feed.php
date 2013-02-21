@@ -168,53 +168,18 @@ class Feed extends WidgetCommon {
     }
     
     function prepareFeed($start) {
-        $query = RosterLink::query()->where(
-                                        array(
-                                            'RosterLink`.`key' => $this->user->getLogin(),
-                                            array(
-                                                'RosterLink`.`rostersubscription!' => 'none',
-                                                'RosterLink`.`rostersubscription!' => '',
-                                                'RosterLink`.`rostersubscription!' => 'vcard',
-                                                '|RosterLink`.`rosterask' => 'subscribe')))
-                                     ->orderby('RosterLink.group', true);
-
-        $contacts = RosterLink::run_query($query);
+        $pd = new \modl\PostDAO();
+        $pl = $pd->getFeed($start+1, 10);
         
-        $rosterc = array();
-        
-        $commentid = array();
-
-        array_push($rosterc, $this->user->getLogin());
-        
-        foreach($contacts as $c) {
-            array_push($rosterc, '|'.$c->getData('jid'));
-        }
-        
-        
-        if(empty($rosterc))
-            $where = array(
-                        'Post`.`parentid' => '',
-                        'Post`.`key' => $this->user->getLogin());
-        else
-            $where = array(
-                        'Post`.`parentid' => '',
-                        'Post`.`key' => $this->user->getLogin(),
-                        array('Post`.`jid' => $rosterc));
-        
-        // We query the last messages
-        $query = Post::query()
-                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where($where)
-                            ->orderby('Post.updated', true)
-                            ->limit($start+1, '10');
-        $messages = Post::run_query($query);
+        foreach($pl as $post) {
+            $html .= $this->printPost($post);
+        } 
 
         // We ask for the HTML of all the posts
-        $html = $this->preparePosts($messages);
         
         $next = $start + 10;
             
-        if(sizeof($messages) > 9 && $html != '') {
+        if(sizeof($pl) > 9 && $html != '') {
             $html .= '
                 <div class="post">
                     <div 
@@ -224,6 +189,7 @@ class Feed extends WidgetCommon {
                     </div>
                 </div>';
         }
+        
         return $html;
     }
 
@@ -237,7 +203,10 @@ class Feed extends WidgetCommon {
         $html = $this->prepareFeed(-1);
         
         if($html == '') 
-            $html = t("Your feed cannot be loaded.");
+            $html = '
+                <div class="message info" style="margin: 1.5em; margin-top: 0em;">'.
+                    t("Your feed cannot be loaded.").'
+                </div>';
         RPC::call('movim_fill', 'feedcontent', RPC::cdata($html));
         RPC::commit();
     }

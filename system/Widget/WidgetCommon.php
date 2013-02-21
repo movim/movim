@@ -16,6 +16,37 @@
  */
 
 class WidgetCommon extends WidgetBase {
+    protected function printPost($post) {
+        if($post->title)
+            $title = '
+                <span>
+                    '.$post->title.'
+                </span><br />';
+        
+        $html = '
+            <div class="post " id="'.$post->nodeid.'">
+                <a href="?q=friend&amp;f='.$post->uri.'">
+                    <img class="avatar" src="'.$post->getContact()->getPhoto('m').'">
+                </a>
+
+                <div id="'.$post->nodeid.'" class="postbubble ">
+                    '.$title.'
+                    <span>
+                        <a href="?q=friend&amp;f='.$post->uri.'">'.$post->getContact()->getTrueName().'</a>
+                    </span>
+                    <span class="date">
+                        '.prepareDate(strtotime($post->published)).'
+                    </span>
+                    <div class="content">
+                        '.prepareString(html_entity_decode($post->content)).'
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            ';
+        return $html;
+    }
+    
     /*
      * @desc Prepare a group of messages
      * @param array of messages

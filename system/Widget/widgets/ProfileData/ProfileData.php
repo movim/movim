@@ -64,7 +64,7 @@ class ProfileData extends WidgetBase
         RPC::call('movim_fill', 'mapdata', RPC::cdata($html));
         
         $html = '
-                <div class="message success">'.t('Location updated').'</div>';
+                <div class="message success">'.t('Location updated').'</div><br />';
         RPC::call('movim_fill', 'maperror', RPC::cdata($html));
         RPC::call('movim_delete', 'mapdiv');
         RPC::commit();
@@ -84,16 +84,11 @@ class ProfileData extends WidgetBase
     {
         $submit = $this->genCallAjax('ajaxLocationPublish', "getMyPositionData()");
         
-        $query = Contact::query()
-                        ->select()
-                        ->where(
-                            array('jid' => $this->user->getLogin())
-                        );
-        $c = Contact::run_query($query);
-        
-        if($c) {
-            $c = $c[0];
-            $data = prepareDate(strtotime($c->loctimestamp->getval())).'<br /><br />';
+        $cd = new modl\ContactDAO();
+        $c = $cd->get($this->user->getLogin());
+
+        if($c->loctimestamp) {
+            $data = prepareDate(strtotime($c->loctimestamp)).'<br /><br />';
             $data .= $c->getPlace();
         } else {
             $data = '';
@@ -107,6 +102,7 @@ class ProfileData extends WidgetBase
                 <div id="maperror"></div>
                 <div id="mapdata" style="margin-bottom: 10px;">'.$data.'</div>
                 <div id="mapdiv" style="width: auto; height: 250px; display: none;"></div>
+                <div class="clear"></div>
                 <a 
                     class="button tiny icon add" 
                     onclick="getMyPosition(); this.style.display = \'none\';">'.
@@ -117,7 +113,7 @@ class ProfileData extends WidgetBase
                     style="display: none;" 
                     class="button tiny icon yes merged left" 
                     onclick="'.$submit.' hidePositionChoice();">'.t('Accept').'</a><a 
-                    style="display: none;" 
+                    style="display: none; margin-top: 1em;" 
                     id="myposrefuse" 
                     onclick="hidePositionChoice();"
                     class="button tiny icon no merged right">'.t('Cancel').'</a>
