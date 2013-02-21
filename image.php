@@ -73,9 +73,7 @@ if (!function_exists('getallheaders')) {
         exit;
     } elseif($_GET['c'] == '' || $_GET['c'] == 'default') {
         display_default();
-    }
-    
-     else {
+    } else {
         $user = new User();
         if($user->isLogged())
             $where = array('jid' => $_GET['c']);

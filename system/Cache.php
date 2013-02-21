@@ -108,7 +108,12 @@ class Cache
         $md5 = md5($data);
         $time = time();
 
-        $var = new CacheVar();
+        $cd = new \modl\CacheDAO();
+        //$var = $cd->get($cache_key)
+        
+        $c = new \modl\Cache();
+        
+        /*$var = new CacheVar();
 
         $query = CacheVar::query()->select()
                                    ->where(array(
@@ -119,14 +124,16 @@ class Cache
 
         if($result) {
             $var = $result[0];
-        }
+        }*/
 
-        $var->key = $cache_key;
-        $var->data = $data;
-        $var->checksum = $md5;
-        $var->timestamp = $time;
+        $c->key = $cache_key;
+        $c->data = $data;
+        $c->checksum = $md5;
+        $c->timestamp = $time;
+        
+        $cd->set($c);
 
-        $var->run_query($var->query()->save($var));
+        //$var->run_query($var->query()->save($var));
     }
 
     /**
@@ -135,9 +142,13 @@ class Cache
     private function read_cache($key)
     {
         $cache_key = $this->login.':'.$key;
+        
+        $cd = new \modl\CacheDAO();
+        $var = $cd->get($cache_key);
 
-        $var = new CacheVar();
-        if($var->load(array('key' => $cache_key))) {
+        //$var = new CacheVar();
+        //if($var->load(array('key' => $cache_key))) {
+        if(isset($var)) {
                         return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
 
         } else {
@@ -148,4 +159,3 @@ class Cache
 
 
 ?>
-

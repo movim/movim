@@ -206,7 +206,8 @@ function prepareDate($time, $hours = true) {
     if($hours)
         $date .= ' - '. date('H:i', $time);
     
-    return $date;
+    if($time)
+        return $date;
 }
 
 /**
