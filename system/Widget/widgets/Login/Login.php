@@ -280,9 +280,10 @@ class Login extends WidgetBase {
                     
                     <div class="infos">
                             <?php
-                            $query = CacheVar::query()->where();
-                            $contacts = CacheVar::run_query($query);
-                            echo t('Population').' '.ceil(count($contacts)/2).' • ';
+                            $rd = new \modl\RosterLinkDAO();
+                            $pop = $rd->countAccounts();
+                            
+                            echo t('Population').' '.$pop[0].' • ';
                             ?>
                             <?php echo t('No account yet ?'); ?>
                             <a href="?q=account">

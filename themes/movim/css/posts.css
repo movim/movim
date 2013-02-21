@@ -67,6 +67,7 @@
     font-weight: bold;
     line-height: 1.5em;
     padding-left: 1em;
+    display: inline-block;
 }
 
 .post span a:hover {
