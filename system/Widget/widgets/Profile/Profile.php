@@ -83,10 +83,6 @@ class Profile extends WidgetCommon
     {
         $cd = new modl\ContactDAO();
         $contact = $cd->get($this->user->getLogin());
-        /*$query = Contact::query()->select()
-                                 ->where(array(
-                                            'jid' => $this->user->getLogin()));
-        $contact = Contact::run_query($query);*/
         
         $presence = Cache::c('presence');
         
