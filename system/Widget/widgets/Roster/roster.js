@@ -48,14 +48,22 @@ function incomingPresence(val) {
 function focusContact(){
 	rosterlist = document.querySelector('#rosterlist');
 	if(rosterlist.querySelector('.focused') == null){
+        allLi="";
 		//offline are shown
-		if(rosterlist.querySelectorAll(".offline").length !=0 && rosterlist.querySelectorAll(".offline").style!=""){
-			rosterlist.querySelector("li").className += " focused";
+		if(rosterlist.className!=""){
+            allLi = rosterlist.querySelectorAll("li");
+            
 		}
 		//offline are hidden
 		else{
-			rosterlist.querySelector("li:not(.offline)").className += " focused";
+			allLi = rosterlist.querySelectorAll("li:not(.offline)");
 		}
+        for(j=0; j<allLi.length; j++){
+            if(rosterInArray(allLi[j], allLi)){
+                allLi[j].className += " focused";
+                break;
+            }
+        }
 		document.querySelector('#right').scrollTop = 0;
 	}
 	else{
@@ -64,45 +72,30 @@ function focusContact(){
 }
 
 function rosterNextGroup(cgp){
-	thisGp = gp[0];
-	while(cgp != thisGp){
-		thisGp = thisGp.nextSibling;
-	}
-    //here thisGp=cgp
-	if(thisGp.nextSibling.nextSibling != null){
-        thisGp = thisGp.nextSibling.nextSibling;
-        if(rosterInArray(thisGp.querySelector("li"), thisGp.querySelectorAll("li"))){//offline are shown
-            currContact = thisGp.querySelector("li");
-            console.log(currContact);
+	if(cgp.nextSibling.nextSibling != null){
+        cgp = cgp.nextSibling.nextSibling;
+        while(cgp.className == "" && cgp != gp[gp.length-1]){ //do not read hidden groups
+            rosterNextGroup(cgp);
+        }
+        if(rosterInArray(cgp.querySelector("li"), cgp.querySelectorAll("li"))){
+            returned = cgp.querySelector("li");
         }
         else{
-            rosterNext(thisGp.querySelector("li"));
+            rosterNext(cgp.querySelector("li"));
         }
 	}
 }
-function rosterInArray(thing, array){
-    for(i=0; i<array.length; i++){
-        if(array[i] == thing){
-            visibility = thing.currentStyle ? thing.currentStyle.display :
-                              getComputedStyle(thing, null).display;
-            
-            if(visibility != "none"){
-                return true;
-            }
-        }
-    }
-    return false;
-}
+
 
 function rosterNext(currFocus){
 	currGp = currFocus.parentNode;
 	viable = false;
 	gp = rosterlist.querySelectorAll("div:not([class='chat on'])");
-    //querySelectorAll is used to be able to get nextsiblings
-	currContact = currGp.querySelectorAll("li")[0];
+    returned = "";
     //Define contact end limit
     visible = "";
     currentGroupVisible = "";
+    
     if(rosterlist.class != ""){//offline are shown
         visible = rosterlist.querySelectorAll("li");
         currentGroupVisible = currGp.querySelectorAll("li");
@@ -114,154 +107,86 @@ function rosterNext(currFocus){
     last = visible[visible.length - 1];
     
     if(currFocus != last){
-        while(currContact.className.lastIndexOf("focused") < 0){
-            currContact = currContact.nextSibling;
-        }
-        //here we have currContact = currFocus
-        currContact = currContact.nextSibling;
-        //here currContact can be null, visible, or invisible
-        if(currContact != null){
+        //search for currFocused or end of group
+        if(currFocus.nextSibling != null){ //not end of group
+            currFocus = currFocus.nextSibling;
             //search for the next viable contact or find the end of the group
-            while(!rosterInArray(currContact, currentGroupVisible) && currContact != null){
-                currContact = currContact.nextSibling;
-            }       
-            viable = true;
+            while(!rosterInArray(currFocus, currentGroupVisible) && currFocus.nextSibling != null){
+                currFocus = currFocus.nextSibling;
+            }    
+            if(rosterInArray(currFocus, currentGroupVisible)){    
+                viable = true;
+                returned = currFocus;
+            }
         }
-        if(currContact == null || (currContact.nextSibling == null && !viable)){//Change groupe
-            if(currGp != gp[gp.length-1] && currContact == null){
+        if(currFocus.nextSibling == null && !viable){//Change groupe
+            if(currGp != gp[gp.length-1]){
                 rosterNextGroup(currGp);
             }
-            else{//end of roster
-                //if(currContact == null)
-                currContact = currContact.previousSibling;
-            }
         }
-        /*elseif(!end){
-            //offline are shown
-            if(rosterlist.className != ""){
-                while(currContact.style.display.lastIndexOf("none") > (-1) && !end){
-                    if(currContact.nextSibling != null){
-                        currContact = currContact.nextSibling;
-                    }
-                    else{
-                        if(currGp != gp[gp.length-1])
-                            rosterNextGroup(currGp);
-                        else{
-                            end = true;
-                        }
-                    }
-                }
-            }
-            //offline are hidden
-            else{
-                if((currContact.className.lastIndexOf("offline") > -1 || currContact.className.lastIndexOf("server") > -1) && !end){
-                    console.log(currContact);
-                    if(currContact != null){
-                        contact = currContact;
-                    }
-                    else{
-                        if(currGp != gp[gp.length-1])
-                            rosterNextGroup(currGp);
-                        else{
-                            end = true;
-                        }
-                    }
-                }
-            }
-            if(end)
-                contact = currFocus;
-            else
-                contact = currContact;
-        }
-        else{
-            if(end)
-                contact = currFocus;
-        }*/
-    }
-    else{
-        currContact = currFocus;
-    }
+    }else{returned = currFocus;}    
     
-    giveFocusTo(currContact);
+    giveFocusTo(returned);
 }
 
-/*function rosterPreviousGroup(cgp){
-	thisGp = gp[0];
-	if(cgp != thisGp){ //not first group
-		while(thisGp.nextSibling != cgp){
-			thisGp = thisGp.nextSibling;//change group
-		}
-		console.log(thisGp.querySelectorAll("li:not([style='display: none;'])")[0]);
-			while(thisGp.querySelectorAll("li:not([style='display: none;'])").length == 0 && thisGp != firstGroup){
-				thisGp = thisGp.previousSibling;
-			}
-			currGp = thisGp;
-			first = currGp.querySelector("li");
-			currContact = thisGp.querySelectorAll("li")[thisGp.querySelectorAll("li").length-1];
-			console.log(currContact);
+function rosterPreviousGroup(cgp){
+    if(cgp.previousSibling.previousSibling != null){
+        cgp = cgp.previousSibling.previousSibling;
+        while(cgp.className == "" && cgp != gp[0]){ //do not read hidden groups
+            rosterPreviousGroup(cgp);
+        }
+        newLi = cgp.querySelectorAll("li");
+        newLi = newLi[newLi.length - 1];
+        if(rosterInArray(newLi, cgp.querySelectorAll("li"))){
+            returned = newLi;
+        }
+        else{
+            rosterPrevious(newLi);
+        }
 	}
-}*/
+}
 
-/*function rosterPrevious(currFocus){
-	currGp = currFocus.parentNode;
+function rosterPrevious(currFocus){
+    currGp = currFocus.parentNode;
+	viable = false;
 	gp = rosterlist.querySelectorAll("div:not([class='chat on'])");
-	firstGroup = gp[0];
-	end = false;
-	firstContact = currGp.querySelector("li");
-    //begin to read at the end of current group
-	currContact = currGp.querySelectorAll("li")[currGp.querySelectorAll("li").length -1];
-    //defining the upper limit
-    if(rosterlist.className != "")//offline are shown
-        first = rosterlist.querySelector("li:not([style='display: none;'])");
-    else
-        first = rosterlist.querySelector("li:not(.offline), li:not([style='display: none;'])");
-    if(currFocus != first){
-        //til the focused is found, read backward
-        while(currContact.className.lastIndexOf("focused") < 0){
-            currContact = currContact.previousSibling;
-        }
-        console.log(currContact);
-        currContact = currContact.previousSibling;
-        if(currGp.querySelector("li") == currFocus){ //first contact of the group
-            rosterPreviousGroup(currGp);
-        }
-        if(currGp.querySelector("li") != currFocus && !end){
-            //offline are shown
-            if(rosterlist.querySelector(".offline").style.display != ""){
-                while(currContact.style.display.lastIndexOf("none") > (-1)){
-                    if(currContact != firstContact){
-                        currContact = currContact.previousSibling;
-                    }
-                    else{
-                        rosterPreviousGroup(currGp);
-                    }
-                }
-                if(end)
-                    contact = currFocus;
-                else
-                    contact = currContact;
-            }
-            //offline are hidden
-            else{
-                while((currContact.className.lastIndexOf("offline") > -1 || currContact.className.lastIndexOf("server") > -1) && !end){
-                    if(currContact != firstContact){
-                        currContact = currContact.previousSibling;
-                    }
-                    else{
-                        rosterPreviousGroup(currGp);
-                    }
-                }
-                if(end)
-                    contact = currFocus;
-                else
-                    contact = currContact;
-            }
-        }
+    returned = "";
+    visible = "";
+    currentGroupVisible = "";
+    
+    //Define contact begin limit
+    if(rosterlist.class != ""){//offline are shown
+        visible = rosterlist.querySelectorAll("li");
+        currentGroupVisible = currGp.querySelectorAll("li");
     }
     else{
-        contact = currFocus;
+        visible = rosterlist.querySelectorAll("li:not(.offline)");
+        currentGroupVisible = currGp.querySelectorAll("li:not(.offline)");
     }
-}*/
+    first = visible[0];
+    
+    if(currFocus != first){
+        //currentFocus' previous can be null, not li or viable
+        if(currFocus.previousSibling != null){ //not beginning of group
+            currFocus = currFocus.previousSibling;
+            //search for the next viable contact or find the end of the group
+            while(!rosterInArray(currFocus, currentGroupVisible) && currFocus.previousSibling != null){
+                currFocus = currFocus.previousSibling;
+            }    
+            if(rosterInArray(currFocus, currentGroupVisible)){    
+                viable = true;
+                returned = currFocus;
+            }
+        }
+        if(currFocus.previousSibling == null && !viable){//Change groupe
+            if(currGp != gp[0]){
+                rosterPreviousGroup(currGp);
+            }
+        }
+    }else{returned = currFocus;}    
+    
+    giveFocusTo(returned);
+}
 function giveFocusTo(newFocused){
     focused = document.querySelector('#rosterlist').querySelector('.focused');
     if(newFocused != focused){
@@ -323,14 +248,21 @@ function rosterSearch(e){
 					}
 					break;
 			}
-			/*if(focused.className == (focused.className = focused.className.replace(" focused", "")))
-				focused.className = focused.className.replace("focused", "");
-			if(contact.className.lastIndexOf("focused")<0){
-				contact.className += " focused";
-                console.log("303");
-            }*/
 		}
 	}
+}
+function rosterInArray(thing, array){
+    for(i=0; i<array.length; i++){
+        if(array[i] == thing){
+            visibility = thing.currentStyle ? thing.currentStyle.display :
+                              getComputedStyle(thing, null).display;
+            
+            if(visibility != "none"){
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 function rosterToggleGroup(h){
