@@ -226,7 +226,7 @@ class Roster extends WidgetBase
         $capsdao = new modl\CapsDAO();
         $caps = $capsdao->getAll();
 
-        if(count($contacts) != 0) {
+        if(count($contacts) > 0) {
             $i = 0;
             
             while($i < count($contacts))
