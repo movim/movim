@@ -237,15 +237,14 @@ class Roster extends WidgetBase
      * 
      */
 	function ajaxToggleCache($param){
+        //$bool = !currentValue
 		$bool = (Cache::c($param) == true) ? false : true;
-        
+        //toggling value in cache
 		Cache::c($param, $bool);
-		
+		//$offline = new value of wether offline are shown or not
         $offline = Cache::c('offlineshown');
         
 		if($param == 'offlineshown') {
-            Cache::c('offlineshown', $bool);
-            
             RPC::call('showRoster', $bool);
 		} else 
 			RPC::call('rosterToggleGroup', $param, $bool, $offline);
