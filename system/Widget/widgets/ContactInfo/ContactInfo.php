@@ -55,7 +55,7 @@ class ContactInfo extends WidgetCommon
             
             if($c->tuneartist) {
                 $html .= '<h2>'.t('Listening').'</h2>';
-                $html .= $c->tuneartist. ' - '.$c->tunetitle.' '.t('on').$c->tunesource;
+                $html .= $c->tuneartist. ' - '.$c->tunetitle.' '.t('on').' '.$c->tunesource;
             }
             
             // Last seen
@@ -129,7 +129,7 @@ class ContactInfo extends WidgetCommon
                 
                 $html .='<h2>'.t('Actions').'</h2>';
                 
-                if(isset($c->presence) && !in_array($presence['presence'], array(5, 6))) {
+                if(isset($c->presence) && !in_array($c->presence, array(5, 6))) {
                     $html .= '
                         <a
                             class="button tiny icon chat"
