@@ -315,7 +315,7 @@ class Chat extends WidgetBase
                 
                 <div class="tab '.$tabclass.'" '.$tabstyle.' onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'").' showTalk(this);">
                     <div class="name">
-                        <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $contact->jid).'" />'.$contact->rostername.'
+                        <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.$contact->getTrueName().'
                     </div>
                 </div>
             </div>
