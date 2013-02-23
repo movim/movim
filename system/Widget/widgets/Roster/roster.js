@@ -66,9 +66,9 @@ function focusContact(){
         }
 		document.querySelector('#right').scrollTop = 0;
 	}
-	else{
+	/*else{
 		document.querySelector('#right').scrollTop = rosterlist.querySelector('.focused').offsetTop-document.querySelector('#nav').offsetHeight;
-	}
+	}*/
 }
 
 function rosterNextGroup(cgp){
@@ -77,11 +77,13 @@ function rosterNextGroup(cgp){
         while(cgp.className == "" && cgp != gp[gp.length-1]){ //do not read hidden groups
             rosterNextGroup(cgp);
         }
-        if(rosterInArray(cgp.querySelector("li"), cgp.querySelectorAll("li"))){
-            returned = cgp.querySelector("li");
+        newLis = cgp.querySelectorAll("li");
+        if(rosterInArray(newLis[0], newLis)){
+            returned = newLis[0];
+            decalage += cgp.querySelector("h1").offsetHeight;
         }
         else{
-            rosterNext(cgp.querySelector("li"));
+            rosterNext(newLis[0]);
         }
 	}
 }
@@ -135,10 +137,11 @@ function rosterPreviousGroup(cgp){
         while(cgp.className == "" && cgp != gp[0]){ //do not read hidden groups
             rosterPreviousGroup(cgp);
         }
-        newLi = cgp.querySelectorAll("li");
-        newLi = newLi[newLi.length - 1];
-        if(rosterInArray(newLi, cgp.querySelectorAll("li"))){
+        newLis = cgp.querySelectorAll("li");
+        newLi = newLis[newLis.length - 1];
+        if(rosterInArray(newLi, newLis)){
             returned = newLi;
+            decalage -= cgp.querySelector("h1").offsetHeight;
         }
         else{
             rosterPrevious(newLi);
@@ -227,30 +230,38 @@ function rosterSearch(e){
 		}
 		if(e.keyCode>36 && e.keyCode<41){ //key pressed is an arrow
 			//begin reading from focused
-			contact = rosterlist.querySelector('.focused');
-			found = false;
-			if(0 == (decallage = contact.offsetHeight))
-				decallage = contact.nextSibling.offsetHeight;
-
+            decalage = focused.offsetHeight;
+			//if(0 == (decalage = focused.offsetHeight))
+				//decalage = focused.nextSibling.offsetHeight;
 			switch(e.keyCode){
 				//previous
 				case e.keyCode = 38:
 					rosterPrevious(rosterlist.querySelector(".focused"));
-					if(contact.offsetTop-document.querySelector('#right').scrollTop < decallage){
-						document.querySelector('#right').scrollTop = currContact.offsetTop-document.querySelector('#nav').offsetHeight;
+                    //top of the focused must be under navbar
+                    diff = focused.offsetTop - rosterlist.offsetTop - document.querySelector('#right').scrollTop - focused.offsetHeight;
+                    console.log(diff);
+                    if(decalage < focused.offsetHeight)
+                            diff -= rosterlist.querySelector("h1").offsetHeight;
+					if(diff < 0){
+						document.querySelector('#right').scrollTop += diff;
 					}
 					break;
 				//next
 				case e.keyCode = 40:
-					rosterNext(rosterlist.querySelector(".focused"));
-					if(contact.offsetTop+decallage-document.querySelector('#right').scrollTop >= document.querySelector('#rostermenu').offsetTop){
-						document.querySelector('#right').scrollTop += contact.offsetTop+decallage-document.querySelector('#right').scrollTop - document.querySelector('#rostermenu').offsetTop;
+					rosterNext(rosterlist.querySelector(".focused"));                    
+                    //bottom of the focused must be over the rostermenu, scrollTop is the only variable
+                    diff = focused.offsetTop + rosterlist.offsetTop + focused.offsetHeight - document.querySelector('#rostermenu').offsetTop - document.querySelector('#right').scrollTop;
+                    if(decalage > focused.offsetHeight)
+                            diff += rosterlist.querySelector("h1").offsetHeight;
+					if(diff > 0){
+                        document.querySelector('#right').scrollTop += diff;
 					}
 					break;
 			}
 		}
 	}
 }
+
 function rosterInArray(thing, array){
     for(i=0; i<array.length; i++){
         if(array[i] == thing){
