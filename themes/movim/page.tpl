@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title><?php $this->title();?></title>
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
-    <?php /*<script src="http://openlayers.org/api/2.12/OpenLayers.js"></script>*/ ?>
+    <script src="http://openlayers.org/api/2.12/OpenLayers.js"></script>
     <script src="system/js/steditor.js"></script>
     <?php
     $this->addCss('css/animations.css');
@@ -23,6 +23,8 @@
     $color = $user->getConfig('color');
     
     $pattern = $user->getConfig('pattern');
+    if(!isset($pattern))
+        $pattern = 'default';
     
     if(isset($color)) {
         echo '
