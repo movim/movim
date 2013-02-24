@@ -29,17 +29,78 @@ body {
     font-size: 13px;
     color: #4E4E4E;
     background-color: #082D50;
+    /*
     background-image: radial-gradient(center
      45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
     background-image: -moz-radial-gradient(center
      45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
     background-image: -webkit-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
     background-image: -o-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
-    background-repeat: no-repeat;
+    
+    background-repeat: no-repeat;*/
     background-attachment:fixed;
+
     margin: 0 auto;
     width: 1000px;
     position: relative;
+}
+
+/* Background pattern */
+.argyle {
+    background-image:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    background-size: 70px 120px;
+}
+
+.carbon {
+/*
+    background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;*/
+    background-size:16px 16px;
+}
+
+.blueprint {
+    background-image: 
+    linear-gradient(rgba(255,255,255,.5) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255,255,255,.5) 2px, transparent 2px),
+    linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px);
+    background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+.tableclothe {
+    background-image: linear-gradient(90deg, rgba(255,255,255,.1) 50%, transparent 50%),
+    linear-gradient(rgba(255,255,255,.1) 50%, transparent 50%);
+    background-size:50px 50px;
+}
+.cicada {
+    background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+    background-size: 13px, 29px, 37px, 53px;
+}
+
+.stripes {
+    background-image: linear-gradient(90deg, transparent 50%, rgba(255,255,255,.5) 50%);
+    background-size: 50px 50px;
+}
+
+.stars {
+    background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 
 .clear {

@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title><?php $this->title();?></title>
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
-    <script src="http://openlayers.org/api/2.12/OpenLayers.js"></script>
+    <?php /*<script src="http://openlayers.org/api/2.12/OpenLayers.js"></script>*/ ?>
     <script src="system/js/steditor.js"></script>
     <?php
     $this->addCss('css/animations.css');
@@ -21,6 +21,9 @@
     $user = new User();
 
     $color = $user->getConfig('color');
+    
+    $pattern = $user->getConfig('pattern');
+    
     if(isset($color)) {
         echo '
         <style type="text/css">
@@ -56,26 +59,28 @@
     ?>
 
   </head>
-<body onload="movim_onload();">
-	<noscript>
-        <style type="text/css">
-            #nav {display:none;} #content {display: none;}
-        </style>
-        <div class="warning" style="width: 500px; margin: 0 auto;">
-        <?php echo t("You don't have javascript enabled.  Good luck with that."); ?>
+    <body onload="movim_onload();" class="<?php echo $pattern; ?>">
+        <noscript>
+            <style type="text/css">
+                #nav {display:none;} #content {display: none;}
+            </style>
+            <div class="warning" style="width: 500px; margin: 0 auto;">
+            <?php echo t("You don't have javascript enabled.  Good luck with that."); ?>
+            </div>
+        </noscript>
+        <div id="nav">
+            <?php $this->menu();?>	
         </div>
-    </noscript>
-	<div id="nav">
-	  <?php $this->menu();?>	
-	</div>
 
-	<div id="content">
-	  <?php $this->content();?>
-      
-	  	<div id="footer">
-			© <a href="http://www.movim.eu">Movim</a> - 2012 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
-		</div>
-	</div>
+        <div id="content">
+            <?php $this->content();
+            
+            var_dump($pattern);?>
+          
+            <div id="footer">
+                © <a href="http://www.movim.eu">Movim</a> - 2012 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
+            </div>
+        </div>
 
-  </body>
+    </body>
 </html>
