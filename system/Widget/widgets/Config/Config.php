@@ -57,7 +57,7 @@ class Config extends WidgetBase
             $color = $this->user->getConfig('color');
 
             $submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
-                . "this.className='button icon loading'; setTimeout(function() {location.reload(true)}, 2000);";
+                . "this.className='button icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
     ?>
         <div id="config">
             <form enctype="multipart/form-data" method="post" action="index.php" name="general">
