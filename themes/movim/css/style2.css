@@ -29,7 +29,16 @@ body {
     font-size: 13px;
     color: #4E4E4E;
     background-color: #082D50;
-    /*
+
+    margin: 0 auto;
+    width: 1000px;
+    position: relative;
+    
+    background-attachment:fixed;
+}
+
+/* Background pattern */
+.default {
     background-image: radial-gradient(center
      45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
     background-image: -moz-radial-gradient(center
@@ -37,15 +46,9 @@ body {
     background-image: -webkit-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
     background-image: -o-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
     
-    background-repeat: no-repeat;*/
-    background-attachment:fixed;
-
-    margin: 0 auto;
-    width: 1000px;
-    position: relative;
+    background-repeat: no-repeat;
 }
 
-/* Background pattern */
 .argyle {
     background-image:
     repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
