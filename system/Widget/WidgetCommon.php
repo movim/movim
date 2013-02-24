@@ -17,15 +17,31 @@
 
 class WidgetCommon extends WidgetBase {
     protected function printPost($post) {
+        //var_dump($post->getPlace());
         if($post->title)
             $title = '
                 <span>
                     '.$post->title.'
                 </span><br />';
+
+        if($post->jid != $post->uri)
+            $recycle .= '
+                <span class="recycle">
+                    <a href="?q=friend&f='.$post->uri.'">'.$post->uri.'</a>
+                 </span>';
+
+        if($post->getPlace() != false)
+            $place .= '
+                <span class="place">
+                    <a 
+                        target="_blank" 
+                        href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
+                    >'.$post->getPlace().'</a>
+                </span>';
         
         $html = '
             <div class="post " id="'.$post->nodeid.'">
-                <a href="?q=friend&amp;f='.$post->uri.'">
+                <a href="?q=friend&amp;f='.$post->jid.'">
                     <img class="avatar" src="'.$post->getContact()->getPhoto('m').'">
                 </a>
 
@@ -40,6 +56,8 @@ class WidgetCommon extends WidgetBase {
                     <div class="content">
                         '.prepareString(html_entity_decode($post->content)).'
                     </div>
+                    '.$place.'
+                    '.$recycle.'
                 </div>
                 <div class="clear"></div>
             </div>
