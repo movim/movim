@@ -114,6 +114,41 @@ legend {
     padding: 5px;
 }
 
+/* Radio button */
+
+.element input[type="radio"] {
+    display: none;
+}
+
+.element input[type="radio"] + label {
+    float: left;
+    width: 46%;
+    margin-right: 3%;
+    margin-top: 2%;
+}
+
+.element input[type="radio"] + label:hover {
+    cursor: pointer;
+}
+
+.element input[type="radio"]:checked + label span {
+
+}
+
+.element input[type="radio"] + label .preview {
+    border: 2px solid gray;
+    width: 100;
+    height: 60px;
+    border-radius: 2px;
+    padding: 3px;
+}
+
+.element input[type="radio"]:checked + label .preview {
+    border-color: green;
+}
+
+/* Checkbox button */
+
 .element .checkbox {
 	width: 80px;
 	height: 26px;

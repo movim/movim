@@ -20,5 +20,11 @@
     
     $sd = new \modl\SessionDAO();
     $sd->create();
+    
+    $cd = new \modl\CacheDAO();
+    $cd->create();
+    
+    $md = new \modl\MessageDAO();
+    $md->create();
 
 echo 'Recreate database... done !';

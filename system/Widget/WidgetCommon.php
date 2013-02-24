@@ -38,14 +38,22 @@ class WidgetCommon extends WidgetBase {
                         href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
                     >'.$post->getPlace().'</a>
                 </span>';
+                
+        if($this->user->getLogin() == $post->jid) {
+            $class = 'me ';
+            if($post->public == 1)
+                $access .= 'protect black';
+            else
+                $access .= 'protect orange';
+        }
         
         $html = '
-            <div class="post " id="'.$post->nodeid.'">
+            <div class="post '.$class.'" id="'.$post->nodeid.'">
                 <a href="?q=friend&amp;f='.$post->jid.'">
                     <img class="avatar" src="'.$post->getContact()->getPhoto('m').'">
                 </a>
 
-                <div id="'.$post->nodeid.'" class="postbubble ">
+                <div id="'.$post->nodeid.'" class="postbubble '.$access.'">
                     '.$title.'
                     <span>
                         <a href="?q=friend&amp;f='.$post->uri.'">'.$post->getContact()->getTrueName().'</a>
