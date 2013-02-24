@@ -73,9 +73,11 @@ class Wall extends WidgetCommon
         $pl = $pd->getContact($from, $start+1, 10);
         
         // We ask for the HTML of all the posts
-        foreach($pl as $post) {
+        /*foreach($pl as $post) {
             $htmlmessages .= $this->printPost($post);
-        }		
+        }*/
+        
+        $htmlmessages = $this->preparePosts($pl);
 
         $next = $start + 10;
         
