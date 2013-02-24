@@ -56,7 +56,7 @@ class WidgetCommon extends WidgetBase {
                 <div id="'.$post->nodeid.'" class="postbubble '.$access.'">
                     '.$title.'
                     <span>
-                        <a href="?q=friend&amp;f='.$post->uri.'">'.$post->getContact()->getTrueName().'</a>
+                        <a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
                     </span>
                     <span class="date">
                         '.prepareDate(strtotime($post->published)).'
