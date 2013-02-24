@@ -170,10 +170,8 @@ class Feed extends WidgetCommon {
     function prepareFeed($start) {
         $pd = new \modl\PostDAO();
         $pl = $pd->getFeed($start+1, 10);
-        
-        foreach($pl as $post) {
-            $html .= $this->printPost($post);
-        } 
+
+        $html .= $this->preparePosts($pl);
 
         // We ask for the HTML of all the posts
         

@@ -16,8 +16,7 @@
  */
 
 class WidgetCommon extends WidgetBase {
-    protected function printPost($post) {
-        //var_dump($post->getPlace());
+    protected function printPost($post, $comments) {
         if($post->title)
             $title = '
                 <span>
@@ -47,6 +46,11 @@ class WidgetCommon extends WidgetBase {
                 $access .= 'protect orange';
         }
         
+        if($post->commentplace)
+            $comments = $this->printComments($post, $comments);
+        else
+            $comments = '';
+        
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
                 <a href="?q=friend&amp;f='.$post->jid.'">
@@ -63,7 +67,10 @@ class WidgetCommon extends WidgetBase {
                     </span>
                     <div class="content">
                         '.prepareString(html_entity_decode($post->content)).'
+                        <div class="clear"></div>
+                        
                     </div>
+                    '.$comments.'
                     '.$place.'
                     '.$recycle.'
                 </div>
@@ -73,60 +80,92 @@ class WidgetCommon extends WidgetBase {
         return $html;
     }
     
+    protected function printComments($post, $comments) {
+                $tmp .= '
+                    <div class="comments" id="'.$post->nodeid.'comments">';
+
+                $commentshtml = $this->prepareComments($comments);
+                
+                if($commentshtml != false)
+                    $tmp .= $commentshtml;
+
+                $tmp .= '
+                         <div class="comment">
+                                <a 
+                                    class="getcomments icon bubble" 
+                                    style="margin-left: 0px;" 
+                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$post->commentplace."'", "'".$post->nodeid."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
+                                        t('Get the comments').'
+                                </a>
+                            </div></div>';
+                $tmp .= '<div class="comments">
+                            <div 
+                                class="comment"
+                                style="border-bottom: none;"
+                                onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
+                                <a class="getcomments icon bubbleadd">'.t('Add a comment').'</a>
+                            </div>
+                            <table id="commentsubmit">
+                                <tr>
+                                    <td>
+                                        <textarea id="'.$post->nodeid.'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
+                                    </td>
+                                </tr>
+                                <tr class="commentsubmitrow">
+                                    <td style="width: 100%;"></td>
+                                    <td>
+                                        <a
+                                            onclick="
+                                                    if(document.getElementById(\''.$post->nodeid.'commentcontent\').value != \'\') {
+                                                        '.$this->genCallAjax(
+                                                            'ajaxPublishComment', 
+                                                            "'".$post->commentplace."'", 
+                                                            "'".$post->nodeid."'", 
+                                                            "encodeURIComponent(document.getElementById('".$post->nodeid."commentcontent').value)").
+                                                            'document.getElementById(\''.$post->nodeid.'commentcontent\').value = \'\';
+                                                    }"
+                                            class="button tiny icon submit"
+                                            style="padding-left: 28px;"
+                                        >'.
+                                            t("Submit").'
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>';
+                $tmp .= '</div>';
+        return $tmp;
+
+    }
+    
     /*
      * @desc Prepare a group of messages
      * @param array of messages
      * @return generated HTML
      */
-    protected function preparePosts($messages) {
-        if($messages == false) {
+    protected function preparePosts($posts) {
+        if($posts == false) {
 			$html = false;
 		} else {
 			$html = '';
 
-            // We create the array for the comments request
-            $commentid = array();
-            $i = 0;
-            
-            foreach($messages as $message) {
-                if($i == 0)
-                    array_push($commentid, $message[0]->getData('nodeid'));
-
-                else
-                    array_push($commentid, '|'.$message[0]->getData('nodeid'));
-                $i++;
-            }
-            
-            // We request all the comments relative to our messages
-            $query = Post::query()
-                                ->join('Contact', array('Post.uri' => 'Contact.jid'))
-                                ->where(
-                                    array(
-                                        'Post`.`key' => $this->user->getLogin(), 
-                                        array('Post`.`parentid' => $commentid)))
-                                ->orderby('Post.published', false);
-            $comments = Post::run_query($query);
+            $pd = new \modl\PostDAO();
+            $comments = $pd->getComments($posts);
             
             $duplicate = array();
             
-            foreach($messages as $message) {
-                if(!in_array($message[0]->getData('nodeid'), $duplicate)) {
-
-                    // We split the interesting comments for each messages
-                    $i = 0;
-                    $messagecomment = array();
-                    foreach($comments as $comment) {
-                        if($message[0]->getData('nodeid') == $comments[$i][0]->getData('parentid')) {
-                            array_push($messagecomment, $comment);
-                            unset($comment);
-
-                        }
-                        $i++;
+            foreach($posts as $post) {
+                // We split the interesting comments for each messages
+                $i = 0;
+                $messagecomment = array();
+                foreach($comments as $comment) {
+                    if($post->nodeid == $comments[$i]->parentid) {
+                        array_push($messagecomment, $comment);
+                        unset($comment);
                     }
-                    array_push($duplicate, $message[0]->getData('nodeid'));
-
-                    $html .= $this->preparePost($message, $messagecomment);
+                    $i++;
                 }
+                
+                $html .= $this->printPost($post, $messagecomment);
 			}
 			
         }
@@ -323,7 +362,7 @@ class WidgetCommon extends WidgetBase {
     
         $i = 0;
         while($i < $size-1) {
-            if($comments[$i][0]->getData('nodeid') == $comments[$i+1][0]->getData('nodeid'))
+            if($comments[$i]->nodeid == $comments[$i+1]->nodeid)
                 unset($comments[$i]);
             $i++;
         }
@@ -346,17 +385,9 @@ class WidgetCommon extends WidgetBase {
         
         if($comments) {
             foreach($comments as $comment) {
-                if(isset($comment[1])) {
-                    $photo = $comment[1]->getPhoto('s');
-                    $name = $comment[1]->getTrueName();
-                }
-                else {
-                    $photo = "image.php?c=default";
-                }
-                
-                if($name == null)
-                    $name = $comment[0]->getData('uri');
-                
+                $photo = $comment->getContact()->getPhoto('s');
+                $name = $comment->getContact()->getTrueName();
+                                
                 $tmp .= '
                     <div class="comment" ';
                 if($comcounter > 0) {
@@ -366,27 +397,18 @@ class WidgetCommon extends WidgetBase {
                     
                 $tmp .='>
                         <img class="avatar tiny" src="'.$photo.'">
-                        <span><a href="?q=friend&f='.$comment[0]->getData('uri').'">'.$name.'</a></span>
-                        <span class="date">'.prepareDate(strtotime($comment[0]->getData('published'))).'</span><br />
-                        <div class="content tiny">'.prepareString($comment[0]->getData('content')).'</div>
+                        <span><a href="?q=friend&f='.$comment->uri.'">'.$name.'</a></span>
+                        <span class="date">'.prepareDate(strtotime($comment->published)).'</span><br />
+                        <div class="content tiny">'.prepareString($comment->content).'</div>
                     </div>';
             }
         }
-        
         return $tmp;
     }
     
-    function onComment($parent, $comments) {
-        // We request all the comments relative to our messages
-        $query = Post::query()
-                            ->join('Contact', array('Post.uri' => 'Contact.jid'))
-                            ->where(
-                                array(
-                                    'Post`.`key' => $this->user->getLogin(), 
-                                    //'Contact`.`key' => $this->user->getLogin(), 
-                                    'Post`.`parentid' => $parent))
-                            ->orderby('Post.published', false);
-        $comments = Post::run_query($query);   
+    function onComment($params) {
+        list($parent, $comments) = $params;
+
         $html = $this->prepareComments($comments);
         RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
     }
