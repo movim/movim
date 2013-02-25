@@ -59,7 +59,7 @@ class ContactInfo extends WidgetCommon
             }
             
             // Last seen
-            if($c->delay) {
+            if($c->delay && $c->delay != '0000-00-00 00:00:00') {
                 $html .= '<h2>'.t('Last seen').'</h2>';
                 $html .= prepareDate(strtotime($c->delay)).'<br />';
             }

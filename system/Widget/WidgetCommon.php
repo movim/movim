@@ -151,11 +151,10 @@ class WidgetCommon extends WidgetBase {
             $pd = new \modl\PostDAO();
             $comments = $pd->getComments($posts);
             
-            $duplicate = array();
-            
             foreach($posts as $post) {
                 // We split the interesting comments for each messages
                 $i = 0;
+                
                 $messagecomment = array();
                 foreach($comments as $comment) {
                     if($post->nodeid == $comments[$i]->parentid) {
@@ -406,8 +405,14 @@ class WidgetCommon extends WidgetBase {
         return $tmp;
     }
     
-    function onComment($params) {
-        list($parent, $comments) = $params;
+    function onComment($parent) {
+        //list($parent, $comments) = $params;
+        
+        $p = new \modl\ContactPost();
+        $p->nodeid = $parent;
+        
+        $pd = new \modl\PostDAO();
+        $comments = $pd->getComments($p);
 
         $html = $this->prepareComments($comments);
         RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
