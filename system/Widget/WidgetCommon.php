@@ -405,9 +405,7 @@ class WidgetCommon extends WidgetBase {
         return $tmp;
     }
     
-    function onComment($parent) {
-        //list($parent, $comments) = $params;
-        
+    function onComment($parent) {        
         $p = new \modl\ContactPost();
         $p->nodeid = $parent;
         

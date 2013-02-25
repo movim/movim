@@ -163,11 +163,8 @@ class Notifs extends WidgetCommon
             }           
             
             // Contact request pending
-            $query = RosterLink::query()->where(
-                                        array(
-                                            'key' => $this->user->getLogin(),
-                                            'rosterask' => 'subscribe'));
-            $subscribes = Contact::run_query($query);
+            $cd = new \modl\ContactDAO();
+            $subscribes = $cd->getRosterSubscribe();
             
             if(sizeof($subscribes) != 0) {
                 $notifsnum += sizeof($subscribes);
@@ -181,8 +178,8 @@ class Notifs extends WidgetCommon
                 foreach($subscribes as $s) {
                     $html .= '
                         <li>
-                            <a href="?q=friend&f='.$s->getData('jid').'">
-                            <img class="avatar"  src="'.Contact::getPhotoFromJid('xs', $s->getData('jid')).'" />
+                            <a href="?q=friend&f='.$s->jid.'">
+                            <img class="avatar" src="'.$s->getPhoto('s').'" />
                             '.
                                 $s->getTrueName().'
                             </a>
