@@ -7,10 +7,14 @@ body {
     width: 100%;
 }
 
+h1 {
+    padding: 0.3em;
+}
+
 #head {
     width: 100%;
-    height: 150px;
-    position: relative;
+    font-size: 0.9em;
+    overflow: visible;
 }
 
 #head .block {
@@ -20,7 +24,6 @@ body {
     height: auto;
     min-height: auto;
     max-width: auto;
-
 }
 
 #head .block.avatar img {
@@ -28,6 +31,7 @@ body {
     height: 80px;
     margin: 0px;
     margin-right: 5px;
+    padding: 0px;
 }
 
 #head .block .textbubble, #left, #right, #chats, #logout {
@@ -71,6 +75,71 @@ body {
 
 .element {
     width: 100%;
+}
+
+.posthead {
+    padding: 0.3em;
+}
+
+.post {
+    padding: 0.2em;
+}
+
+.post .avatar {
+    display: none;
+}
+
+.post .postbubble {
+    margin-left: 0px;
+    width: 100%;
+}
+
+.post .content .img {
+    max-width: 42%;
+    padding: 2px;
+}
+
+.post .older {
+    margin-right: 0px;
+}
+
+#feed #feedcontent {
+    padding-top: 0px !important;
+}
+
+#feed table#feedsubmitform {
+    margin: 0.5em 0.3em !important;
+}
+
+.filters {
+    padding: 0em;
+}
+
+#footer {
+    font-size: 0.85em;
+    background-color: black;
+}
+
+.post .postbubble:before {
+    display: none;
+}
+
+#nav .menu li a {
+    font-family: monospace;
+    padding: 0.2em 0.8em;
+    width: 1.7em;
+    overflow: hidden;
+    letter-spacing: 0.1em;
+    
+    white-space: nowrap;
+}
+
+#nav .menu li a:first-letter {
+    font-size: 20px;
+}
+
+#loginpage {
+    margin-top: 5% ! important;
 }
 
 }
