@@ -59,19 +59,13 @@ class Feed extends WidgetCommon {
     }
 
     function onPostPublished($post) {        
-        $query = Post::query()
-                            ->join('Contact', array('Post.jid' => 'Contact.jid'))
-                            ->where(
-                                array(
-                                    'Post`.`nodeid' => $post->nodeid->getval()))
-                            ->limit(0, 1);
-        $messages = Post::run_query($query);
+        $pd = new \modl\PostDAO();
+        $pl = $pd->getFeed($start+1, 10);
 
-        // We ask for the HTML of all the posts
-        $html = $this->preparePosts($messages);
+        $html = $this->preparePosts($pl);
 
-        RPC::call('createCommentNode', $post->nodeid->getval());            
-        RPC::call('movim_prepend', 'feedcontent', RPC::cdata($html));
+        RPC::call('createCommentNode', $post->nodeid);            
+        RPC::call('movim_fill', 'feedcontent', RPC::cdata($html));
     }  
     
     function ajaxCreateCommentNode($parentid) {
@@ -171,7 +165,7 @@ class Feed extends WidgetCommon {
         $pd = new \modl\PostDAO();
         $pl = $pd->getFeed($start+1, 10);
 
-        $html .= $this->preparePosts($pl);
+        $html = $this->preparePosts($pl);
 
         // We ask for the HTML of all the posts
         
