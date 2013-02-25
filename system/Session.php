@@ -127,16 +127,13 @@ class Session
      */
     public function remove($varname)
     {
-        $var = new SessionVar();
-        $var->load(array(
-                            'session' => self::$sid,
-                            'container' => $this->container,
-                            'name' => $varname));
-
-        $query = $var->query()->delete($var);
-        $var->run_query($query);
+        $sd = new modl\SessionDAO();
+        $sd->delete(self::$sid, $this->container, $varname);
     }
-
+    
+    /**
+     * Deletes all variables of the session.
+     */    
     public function delete_container()
     {
         $sd = new modl\SessionDAO();

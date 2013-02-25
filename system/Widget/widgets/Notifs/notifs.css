@@ -128,8 +128,7 @@
 }
 
 #notifslist ul li img {
-display: none;
-    height: 24px;
+    margin-top: 2px;
     max-width: 24px;
     float: left;
     border-radius: 2px;

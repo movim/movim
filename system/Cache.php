@@ -108,23 +108,8 @@ class Cache
         $md5 = md5($data);
         $time = time();
 
-        $cd = new \modl\CacheDAO();
-        //$var = $cd->get($cache_key)
-        
+        $cd = new \modl\CacheDAO();        
         $c = new \modl\Cache();
-        
-        /*$var = new CacheVar();
-
-        $query = CacheVar::query()->select()
-                                   ->where(array(
-                                           'key' => $cache_key))
-                                   ->limit(0, 1);
-        $result = CacheVar::run_query($query);
-
-
-        if($result) {
-            $var = $result[0];
-        }*/
 
         $c->key = $cache_key;
         $c->data = $data;
@@ -132,8 +117,6 @@ class Cache
         $c->timestamp = $time;
         
         $cd->set($c);
-
-        //$var->run_query($var->query()->save($var));
     }
 
     /**
@@ -146,8 +129,6 @@ class Cache
         $cd = new \modl\CacheDAO();
         $var = $cd->get($cache_key);
 
-        //$var = new CacheVar();
-        //if($var->load(array('key' => $cache_key))) {
         if(isset($var)) {
                         return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
 
