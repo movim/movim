@@ -169,7 +169,7 @@ class ContactInfo extends WidgetCommon
                 id="friendremoveyes"
                 style="float: left; display: none;"
                 onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'")
-                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
+                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
                 '.t('Yes').'
             </a>
@@ -193,7 +193,7 @@ class ContactInfo extends WidgetCommon
                 class="button tiny icon add"
                 href="#"
                 onclick="'.$this->genCallWidget("Roster","ajaxAddContact", "'".$_GET['f']."'", "''")
-                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
+                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
                 '.t('Invite this user').'
             </a>';

@@ -30,7 +30,6 @@ class Roster extends WidgetBase
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
 		$this->registerEvent('presence', 'onPresence');
-		//this->registerEvent('vcard', 'onVcard');
 
         $this->cached = false;
     }
@@ -41,23 +40,6 @@ class Roster extends WidgetBase
 	    RPC::call('incomingPresence',
                       RPC::cdata($arr['jid']), RPC::cdata($arr['presence_txt']));
 	}
-
-    /*function onVcard($contact)
-    {
-        $query = \Presence::query()->select()
-                           ->where(array(
-                                   'key' => $this->user->getLogin(),
-                                   'jid' => $contact->getData('jid')))
-                           ->limit(0, 1);
-        $data = \Presence::run_query($query);
-
-        $c = array();
-        $c[0] = $contact;
-        $c[1] = $data[0];
-
-        $html = $this->prepareRosterElement($c, true);
-        RPC::call('movim_fill', 'roster'.$contact->getData('jid'), RPC::cdata($html));
-    }*/
 
     function onRoster()
     {

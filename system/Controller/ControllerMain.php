@@ -64,17 +64,12 @@ class ControllerMain extends ControllerBase
 	function friend()
 	{
         $user = new User();
+        
+        $cd = new \modl\ContactDAO();
+        $contact = $cd->get($_GET['f']);
 
-        $query = Contact::query()
-                            ->where(
-                                array( 
-                                    'jid' => $_GET['f']
-                                    )
-                                );
-        $contact = Contact::run_query($query);
-
-        if(isset($contact[0]))
-            $name = $contact[0]->getTrueName();
+        if(isset($contact))
+            $name = $contact->getTrueName();
         else
             $name = $_GET['f'];
 
