@@ -30,6 +30,7 @@ legend {
     min-height: 80px;
     width: 50%;
     float: left;
+    display: block;
 }
 
 .element.large {
@@ -42,7 +43,7 @@ legend {
 
 .element > *:not(label):not(img):not(span):not(a) {
     display: block;
-    width: 90%;
+    width: 96%;
     border: 1px solid #999;
     min-height: 30px;
     border-radius: 2px;
