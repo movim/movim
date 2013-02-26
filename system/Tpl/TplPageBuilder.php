@@ -145,7 +145,7 @@ class TplPageBuilder
 		echo '<ul class="menu">' . "\n";
 		foreach($this->menu as $link) {
 			if($link['type'] == 'link') {
-				echo "\t\t".'<li><a href="' . $link['href'].'"' ;
+				echo "\t\t".'<li><a class="'.$link['href'].'" href="?q='.$link['href'].'"' ;
 				if($link['active'] == true) {
 					echo " class='active' ";
 				}

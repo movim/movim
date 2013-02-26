@@ -436,17 +436,14 @@ span#widgettitle {
 }
 
 #nav .menu li:last-child {
-    background-image: url(../img/logout.svg);
-    background-position: 90% center;
-    background-repeat: no-repeat;
-    padding-right: 30px;
     position: fixed;
     top: 2px;
     right: 0px;
 }
 
 #nav .menu li a {
-    padding: 9px 20px;
+    padding: 9px 15px;
+    padding-left: 25px;
     display: block;
     color: #ccc;
     font-size: 13px;
@@ -470,6 +467,18 @@ span#widgettitle {
     /*background-color: rgba(255, 255, 255, 0.3);*/
     color: #fff;
 } 
+
+#nav .menu li a {
+    background-image: url(../img/icons/menu/home.png);
+    background-repeat: no-repeat;
+    background-position: 0px 9px;
+}
+
+#nav .menu li a.explore { background-image: url(../img/icons/menu/globe.png); }
+#nav .menu li a.profile { background-image: url(../img/icons/menu/user.png); }
+#nav .menu li a.config { background-image: url(../img/icons/menu/settings.png); }
+#nav .menu li a.help { background-image: url(../img/icons/menu/support.png); }
+#nav .menu li a.disconnect { background-image: url(../img/icons/menu/exit.png); }
 
 /* Warning */
 
