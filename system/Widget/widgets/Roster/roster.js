@@ -36,6 +36,13 @@ function showRoster(boolOffline) {
         document.querySelector('ul#rosterlist').className = '';
 }
 
+function showHideRoster(hide) {
+    if(hide == '1')
+        document.querySelector('#rosterhide').className = 'hide';
+    else
+        document.querySelector('#rosterhide').className = '';        
+}
+
 function incomingPresence(val) {
     target = document.getElementById('roster'+val[0]);
     if(target) {
