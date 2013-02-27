@@ -145,10 +145,13 @@ class TplPageBuilder
 		echo '<ul class="menu">' . "\n";
 		foreach($this->menu as $link) {
 			if($link['type'] == 'link') {
-				echo "\t\t".'<li><a class="'.$link['href'].'" href="?q='.$link['href'].'"' ;
+				echo "\t\t".'<li><a 
+                    href="?q='.$link['href'].'" 
+                    class="'.$link['href'].'' ;
 				if($link['active'] == true) {
-					echo " class='active' ";
+					echo ' active ';
 				}
+                echo '"';
 				echo ">".$link['label'] . "</a></li>\n";
 			} else {
 				echo $link['html'];
