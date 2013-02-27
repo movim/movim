@@ -134,16 +134,18 @@ body {
     background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 
+/* A simple clear element*/
 .clear {
     clear: both;
 }
 
+/* Stylish all the links */
 a:link, a:visited {
     color: #2B2B2B ;
     text-decoration: none ;
 }
 
-
+/* The protection flags */
 .protect {
     background-size: 28px;
     background-repeat: no-repeat;
@@ -191,6 +193,7 @@ p {
     text-align: justify;
 }
 
+/* For the simple xHTML lists */
 ul.clean {
     margin-left: 1.5em;
     margin-top: 1em;
@@ -200,17 +203,7 @@ ul.clean li {
     list-style-type: square;
 }
 
-#topgray {
-    background-color: #F5F5F5;
-    height: 140px;
-    width: 100%;  
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    border-bottom: 1px solid #E5E5E5;
-}
-
+/* The main parts of the page */
 #top {
     z-index: 3;
     height: 120px;
@@ -276,13 +269,10 @@ ul.clean li {
 
 #head .block.avatar img {
     background-color: white;
-    /*padding: 4px; 
-    border-radius: 3px;*/
     width: 150px;
     height: 150px;
     margin-left: 22px;
     margin-right: 5px;
-    /*border: 1px solid #DDD;*/
     padding: 2px;
 
     border-radius: 2px;
@@ -330,7 +320,6 @@ ul.clean li {
 }
 
 #main {  
-    /*box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2), 0px 0px 2px rgba(0, 0, 0, 0.2);*/
     box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     height: 100%;
@@ -362,14 +351,12 @@ ul.clean li {
     width: 199px;
     position: fixed;
     top: 0px;
-    right: -20px;
+    right: 0px;
     border-left: 1px solid rgba(0, 0, 0, 0.8);
-    background-color: rgb(45, 45, 45);
-    padding-top: 38px;
-    padding-right: 20px;
+    pointer-events:none;
+    padding-top: 37px;
     height: 100%;
-    /*background-color: #EFEFEF;*/
-    overflow: scroll;
+    overflow: hidden;
     z-index: 2;
 }
 
@@ -385,100 +372,120 @@ ul.clean li {
     color: #BBB;
 }
 
-/* Widgets */
-
-span#widgettitle {
-    font-weight: bold;
-    display: block;
-    padding: 3px;
-    text-align: center;
-    margin-bottom: 4px;
-}
-
 /* The navigation bar */
 
-#nav, #nav .menu, #nav .menu li, #nav .menu li a {
+#nav {
     margin: 0px;
     padding: 0px;
     font-size: 12px;
     padding-top: 1px;
     text-decoration: none;
-}
-#nav {
     width: 100%;
     background-color: rgba(36, 36, 36, 1);
     border-bottom: 1px solid #111;
     box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2), 0px -1px 0px 0px rgb(21, 21, 21);
-    min-height: 34px;
     position: fixed;
     top: 0px;
     left: 0px;
     z-index: 4;
 }
-#nav .menu {
-    width: 1024px;
+
+.menu {
+    padding-top: 1px;
+    max-width: 1024px;
+    width: 100%;
     margin: 0px auto;
     list-style-type: none;
-    display: block;
     overflow: hidden;
-    clear: both;
-    background-image: url(../img/logo.png);
-    background-repeat: no-repeat;
-    background-position: 40px 7px;
+    min-height: 34px;
 }
-#nav .menu li {
+
+.menu li {
     float: left;
 }
 
-#nav .menu li:first-child {
-	width: 215px;
-	opacity: 0;
+.menu li input[type=checkbox] {
+    display: none;
 }
 
-#nav .menu li:last-child {
+.menu li a, .menu li label {
+    padding: 9px 8px;
+    padding-left: 28px;
+    display: block;
+    color: #ccc;
+    min-height: 1em;
+    font-size: 13px;
+    background-repeat: no-repeat;
+    background-position: 5px 9px;
+}
+
+.menu li a.disconnect{
     position: fixed;
-    top: 2px;
+    top: 3px;
     right: 0px;
 }
 
-#nav .menu li a {
-    padding: 9px 15px;
-    padding-left: 25px;
-    display: block;
-    color: #ccc;
-    font-size: 13px;
-}
-#nav .menu li a.active {
+.menu li a.active {
     font-weight: 700;
     color: #EEE;
 }
 
-#nav .menu li:hover a.active {
+.menu li:hover a.active {
     color: #FFF;
 }
 
-#nav .menu li img {
+.menu li img {
     float: left;
     border: 0px;
     margin-right: 10px;
     margin-top: 1px;
 }
-#nav .menu li:hover a {
-    /*background-color: rgba(255, 255, 255, 0.3);*/
+.menu li:hover a, .menu li label:hover {
     color: #fff;
+    cursor: pointer;
 } 
 
-#nav .menu li a {
-    background-image: url(../img/icons/menu/home.png);
+.menu li a.main, .menu li a.main.active {
+	width: 180px;
+    color: transparent;
+    background-image: url(../img/logo.png);
     background-repeat: no-repeat;
-    background-position: 0px 9px;
+    background-position: 40px 5px;
 }
 
-#nav .menu li a.explore { background-image: url(../img/icons/menu/globe.png); }
-#nav .menu li a.profile { background-image: url(../img/icons/menu/user.png); }
-#nav .menu li a.config { background-image: url(../img/icons/menu/settings.png); }
-#nav .menu li a.help { background-image: url(../img/icons/menu/support.png); }
-#nav .menu li a.disconnect { background-image: url(../img/icons/menu/exit.png); }
+.menu li .explore { background-image: url(../img/icons/menu/globe.png); }
+.menu li .profile { background-image: url(../img/icons/menu/user.png); }
+.menu li .config { background-image: url(../img/icons/menu/settings.png); }
+.menu li .help { background-image: url(../img/icons/menu/support.png); }
+.menu li .disconnect { background-image: url(../img/icons/menu/exit.png); }
+.menu li .down { background-image: url(../img/icons/menu/download.png); }
+.menu li .up { background-image: url(../img/icons/menu/upload.png); }
+.menu li .plus { background-image: url(../img/icons/menu/plus.png); }
+.menu li .search { background-image: url(../img/icons/menu/search.png); }
+.menu li .users { background-image: url(../img/icons/menu/users.png); }
+
+#roster ul li .tabbed {
+    background-color: rgba(36, 36, 36, 1);
+    display: none;
+    position: absolute;
+    bottom: 36px;
+    left: 0px;
+    width: 100%;
+    border-top: 1px solid rgba(100, 100, 100, 0.4);
+}
+
+#roster ul li .tabbed label {
+    display: none;
+}
+
+#roster ul li .tabbed .element {
+    min-height: 0px;
+}
+
+#roster ul li input[type=checkbox]:checked ~ .tabbed {
+    display: block;
+}
+
 
 /* Warning */
 
@@ -497,8 +504,7 @@ span#widgettitle {
     background-image: -o-linear-gradient(top left, rgba(255,255, 255, 0.05) 25%, transparent 25%,
                         transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
                         transparent 75%, transparent);
-    /*box-shadow: inset 0 -1px 0 rgba(255,255, 255, 0.4);
-    border: 1px solid;*/
+
     box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.3),
         -1px 0px 0px rgba(0, 0, 0, 0.3),
         0px 1px 0px rgba(0, 0, 0, 0.4),
@@ -517,21 +523,10 @@ span#widgettitle {
     clear: both;
 }
 
-.message.warning {
-    background-color: #ED9519;
-}
-
-.message.info {
-    background-color: #3C7995;
-}
-
-.message.error {
-    background-color: #DE4343;
-}
-
-.message.success {
-    background-color: #76AB16;
-}
+.message.warning { background-color: #ED9519; }
+.message.info { background-color: #3C7995; }
+.message.error { background-color: #DE4343; }
+.message.success { background-color: #76AB16; }
 
 /* Config button */
 
@@ -539,11 +534,7 @@ span#widgettitle {
     width: 8px;
     height: 8px;
     border: 1px solid #ccc;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
-    -moz-box-shadow: 0 1px 0 #F8F8F8;
-    -wekbit-box-shadow: 0 1px 0 #F8F8F8;
     box-shadow: 0 1px 0 #F8F8F8;
     background-color: white;
     float: right;
@@ -552,18 +543,6 @@ span#widgettitle {
 .config_button:hover {
     background-image: url(../img/config_on.png);
     background-position: -1px -1px;
-    cursor: pointer;
-}
-
-/* Refresh button */
-
-.refresh {
-    background-image: url(../img/refresh.png);
-    background-repeat: no-repeat;
-    width: 90%;
-    background-position: center;
-    text-align: center;
-    padding: 3px;
     cursor: pointer;
 }
 

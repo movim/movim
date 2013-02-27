@@ -32,10 +32,17 @@ h1 {
     margin: 0px;
     margin-right: 5px;
     padding: 0px;
+    margin-bottom: -3px;
 }
 
-#head .block .textbubble, #left, #right, #chats, #logout {
+#head .block .textbubble, #left, #chats, #logout, #notifstab {
     display: none;
+}
+
+#right {
+    width: 100%;
+    padding: 0px;
+    margin-top: 38px;
 }
 
 #main {
@@ -62,9 +69,9 @@ h1 {
     background-image: none;
 }
 
-#nav .menu li:first-child {
+#nav .menu li a.main {
     opacity: 1;
-    width: auto;
+    width: 0px;
 }
 
 #nav .menu li:last-child {
@@ -124,16 +131,32 @@ h1 {
     display: none;
 }
 
-#nav .menu li a, #nav .menu li a:hover {
+.menu li a, .menu li a:hover,
+.menu li a.active, .menu li a.active:hover,
+.menu li label, .menu li label:hover {
     width: 0px;
     color: transparent;
-    overflow: hidden;
     white-space: nowrap;
     background-position: center center;
 }
 
+.menu li a.main, .menu li a.active.main {
+    background-image: url(../img/icons/menu/home.png);
+    background-position: center center;
+}
+
+.menu li + a.disconnect{
+    position: absolute;
+    top: 3px;
+    right: 0px;
+}
+
 #loginpage {
     margin-top: 5% ! important;
+}
+
+#roster #rostermenu {
+    width: 100% !important;
 }
 
 }
