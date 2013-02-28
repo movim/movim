@@ -36,7 +36,7 @@ class Config extends WidgetBase
         $config = $this->user->getConfig();
         if(isset($config))
             $data = array_merge($config, $data);
-        
+
         $s = new moxl\StorageSet();
         $s->setXmlns('movim:prefs')
           ->setData(serialize($data))
@@ -57,51 +57,99 @@ class Config extends WidgetBase
             $color = $this->user->getConfig('color');
 
             $submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
-                . "this.className='button icon loading'; setTimeout(function() {location.reload(true)}, 2000);";
+                . "this.className='button icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
     ?>
         <div id="config">
             <form enctype="multipart/form-data" method="post" action="index.php" name="general">
-                <div class="element">
-                    <label for="language"><?php echo t('Language'); ?></label>
-                    <div class="select">
-                        <select name="language" id="language">
-                            <option value="en">English (default)</option>
-            <?php
-                          foreach($languages as $key => $value ) {
-                             if($key == $conf) { ?>
-                                <option value="<?php echo $key; ?>" selected="selected"><?php echo $value; ?></option>
-            <?php		       	 } else {?>
-                                <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-            <?php			     }
-                          } ?>
-                        </select>
+                <fieldset>
+                    <legend><?php echo t('General'); ?></legend>
+                    <div class="element">
+                        <label for="language"><?php echo t('Language'); ?></label>
+                        <div class="select">
+                            <select name="language" id="language">
+                                <option value="en">English (default)</option>
+                <?php
+                              foreach($languages as $key => $value ) {
+                                 if($key == $conf) { ?>
+                                    <option value="<?php echo $key; ?>" selected="selected"><?php echo $value; ?></option>
+                <?php		       	 } else {?>
+                                    <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                <?php			     }
+                              } ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="element">
-                    <label for="color"><?php echo t('Background color'); ?></label>
-                    <input 
-                        style="box-shadow: none; width: 50%; float: left;"
-                        name="color"
-                        class="color" 
-                        onchange="document.body.style.backgroundColor = '#'+this.value;"
-                        value="
-                        <?php 
-                            if(isset($color))
-                                echo $color;
-                            else
-                                echo "082D50";
-                        ?>
-                        ">
-                    <a 
-                        type="button" 
-                        onclick="
-                            document.querySelector('input[name=color]').value = '082D50';
-                            document.body.style.backgroundColor = '#082D50';"
-                        style="width: 25%; float: left; margin-top: 6px;" 
-                        class="button icon back">
-                        <?php echo t('Reset');?>
-                    </a>
-                </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend><?php echo t('Apparence'); ?></legend>
+                    <div class="element">
+                        <label for="color"><?php echo t('Background color'); ?></label>
+                        <input 
+                            style="box-shadow: none; width: 50%; float: left;"
+                            name="color"
+                            class="color" 
+                            onchange="document.body.style.backgroundColor = '#'+this.value;"
+                            value="
+                            <?php 
+                                if(isset($color))
+                                    echo $color;
+                                else
+                                    echo "082D50";
+                            ?>
+                            ">
+                        <a 
+                            type="button" 
+                            onclick="
+                                document.querySelector('input[name=color]').value = '082D50';
+                                document.body.style.backgroundColor = '#082D50';"
+                            style="width: 25%; float: left; margin-top: 6px;" 
+                            class="button icon back">
+                            <?php echo t('Reset');?>
+                        </a>
+                    </div>
+                    
+                    <div class="element">
+                        <label for="pattern"><?php echo t('Pattern'); ?></label>
+                        
+                        <input type="radio" name="pattern" id="argyle" value="argyle"/>
+                        <label for="argyle"><span></span>
+                            <div class="preview argyle"
+                                style="background-color: #6d695c;"></div>
+                        </label>
+                        
+                        <input type="radio" name="pattern" id="tableclothe" value="tableclothe"/>
+                        <label for="tableclothe"><span></span>
+                            <div class="preview tableclothe"
+                                style="background-color: rgba(200, 0, 0, 1);"></div>
+                        </label>
+                        
+                        <input type="radio" name="pattern" id="blueprint" value="blueprint"/>
+                        <label for="blueprint"><span></span>
+                            <div class="preview blueprint"
+                                style="background-color:#269;"></div>
+                        </label>
+                        
+                        <input type="radio" name="pattern" id="cicada" value="cicada"/>
+                        <label for="cicada"><span></span>
+                            <div class="preview cicada"
+                                style="background-color: #026873;"></div>
+                        </label>
+                        
+                        <input type="radio" name="pattern" id="stripes" value="stripes"/>
+                        <label for="stripes"><span></span>
+                            <div class="preview stripes"
+                                style="background-color: orange;"></div>
+                        </label>
+                        
+                        <input type="radio" name="pattern" id="stars" value="stars"/>
+                        <label for="stars"><span></span>
+                            <div class="preview stars"
+                                style="background-color:black;"></div>
+                        </label>
+                    </div>
+                </fieldset>
+                <br />
                 
                 <hr />
     <!--<label id="lock" for="soundnotif"><?php echo t('Enable Sound Notification:'); ?></label>
@@ -121,4 +169,3 @@ class Config extends WidgetBase
 	}
 
 }
-

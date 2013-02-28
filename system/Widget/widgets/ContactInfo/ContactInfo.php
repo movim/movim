@@ -55,11 +55,11 @@ class ContactInfo extends WidgetCommon
             
             if($c->tuneartist) {
                 $html .= '<h2>'.t('Listening').'</h2>';
-                $html .= $c->tuneartist. ' - '.$c->tunetitle.' '.t('on').$c->tunesource;
+                $html .= $c->tuneartist. ' - '.$c->tunetitle.' '.t('on').' '.$c->tunesource;
             }
             
             // Last seen
-            if($c->delay) {
+            if($c->delay && $c->delay != '0000-00-00 00:00:00') {
                 $html .= '<h2>'.t('Last seen').'</h2>';
                 $html .= prepareDate(strtotime($c->delay)).'<br />';
             }
@@ -129,7 +129,7 @@ class ContactInfo extends WidgetCommon
                 
                 $html .='<h2>'.t('Actions').'</h2>';
                 
-                if(isset($c->presence) && !in_array($presence['presence'], array(5, 6))) {
+                if(isset($c->presence) && !in_array($c->presence, array(5, 6))) {
                     $html .= '
                         <a
                             class="button tiny icon chat"
@@ -169,7 +169,7 @@ class ContactInfo extends WidgetCommon
                 id="friendremoveyes"
                 style="float: left; display: none;"
                 onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'")
-                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
+                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
                 '.t('Yes').'
             </a>
@@ -193,7 +193,7 @@ class ContactInfo extends WidgetCommon
                 class="button tiny icon add"
                 href="#"
                 onclick="'.$this->genCallWidget("Roster","ajaxAddContact", "'".$_GET['f']."'", "''")
-                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(true)}, 2000);"
+                . 'this.className=\'button tiny icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
                 '.t('Invite this user').'
             </a>';

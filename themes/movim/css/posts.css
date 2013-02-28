@@ -90,11 +90,12 @@
 
 .post span.place, .post span.recycle {
     display: inline-block;
-    padding-left: 14px;
+    padding-left: 17px;
     font-weight: normal;
     margin-top: 5px;
     float: right;
     margin-left: 10px;
+    padding-right: 0.5em;
 }
 
 .post span.place {
@@ -103,14 +104,11 @@
     white-space: nowrap;  
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-bottom: 0.7em;
-    padding-right: 1em;
 }
 
 .post span.recycle {
     background: url(../img/icons/recycle.png) 0px 4px no-repeat;
-    padding-right: 1em;
-    padding-bottom: 0.7em;
+
 }
 
 .post .comments {
