@@ -95,22 +95,23 @@ class Explore extends WidgetCommon {
     ?>
         <div id="explore">
             <form name="searchform" style="margin: 1em 1.5em;" onsubmit="event.preventDefault();">
-                <div class="element large" style="min-height: 0em;">
-                    <a
-                        class="button icon submit"
-                        href="#"
-                        onclick="<?php $this->callAjax("ajaxSearchContacts","movim_parse_form('searchform')"); ?> "
-                        style="float:right; width: auto; margin-right: 0px; margin-top: 5px">
-                        <?php echo t('Search'); ?>
-                    </a>
+                <div class="element" style="min-height: 0em;">
                     <input
                         id="addjid"
                         class="tiny"
                         name="search"
                         placeholder="<?php echo t('Search a contact'); ?>"
-                        style="width:70%;"
                         onkeypress="if(event.keyCode==13){<?php $this->callAjax("ajaxSearchContacts","movim_parse_form('searchform')"); ?>}"
                     />
+                </div>
+                <div class="element" style="min-height: 0em; margin-top: 5px;">
+                    <a
+                        class="button icon submit"
+                        href="#"
+                        onclick="<?php $this->callAjax("ajaxSearchContacts","movim_parse_form('searchform')"); ?> "
+                        style="">
+                        <?php echo t('Search'); ?>
+                    </a>
                 </div>
             </form>
 
