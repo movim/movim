@@ -90,21 +90,14 @@ class Logout extends WidgetBase
     function preparePresence()
     {
         $txt = getPresences();
+        $txts = getPresencesTxt();
     
         global $session;
         
-        $query = Presence::query()->select()
-                           ->where(array(
-                                   'key' => $this->user->getLogin(),
-                                   'jid' => $this->user->getLogin(),
-                                   'ressource' => $session['ressource']))
-                           ->limit(0, 1);
-        $data = Presence::run_query($query);
-
-        if($data)
-            $presence = $data[0]->getPresence();
+        $pd = new \modl\PresenceDAO();
+        $p = $pd->getPresence($this->user->getLogin(), $session['ressource']);
         
-        $html = '<div id="logouttab" class="'.$presence['presence_txt'].'" onclick="showLogoutList();">'.$txt[$presence['presence']].'</div>';
+        $html = '<div id="logouttab" class="'.$txts[$p->presence].'" onclick="showLogoutList();">'.$txt[$p->presence].'</div>';
                 
         $html .= '
             <div id="logoutlist">

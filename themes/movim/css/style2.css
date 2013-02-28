@@ -26,32 +26,126 @@ time, mark, audio, video {
 
 body {
     font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
-    font-size: 13px;
+    font-size: 0.8em;
     color: #4E4E4E;
     background-color: #082D50;
+
+    margin: 0 auto;
+    width: 1000px;
+    position: relative;
+    
+    background-attachment:fixed;
+}
+
+/* Background pattern */
+.default {
     background-image: radial-gradient(center
      45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
     background-image: -moz-radial-gradient(center
      45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
     background-image: -webkit-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
     background-image: -o-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
+    
     background-repeat: no-repeat;
-    background-attachment:fixed;
-    margin: 0 auto;
-    width: 1000px;
-    position: relative;
 }
 
+.argyle {
+    background-image:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    background-image:
+    -webkit-repeating-linear-gradient(-30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    -webkit-repeating-linear-gradient(30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    -webkit-linear-gradient(30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+    -webkit-linear-gradient(-30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    background-size: 70px 120px;
+}
+
+.carbon {
+/*
+    background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;*/
+    background-size:16px 16px;
+}
+
+.blueprint {
+    background-image: 
+    linear-gradient(rgba(255,255,255,.5) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255,255,255,.5) 2px, transparent 2px),
+    linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px);
+    background-image: 
+    -webkit-linear-gradient(rgba(255,255,255,.5) 2px, transparent 2px),
+    -webkit-linear-gradient(left, rgba(255,255,255,.5) 2px, transparent 2px),
+    -webkit-linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px),
+    -webkit-linear-gradient(left, rgba(255,255,255,.2) 1px, transparent 1px);
+    background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+.tableclothe {
+    background-image: 
+    linear-gradient(90deg, rgba(255,255,255,.1) 50%, transparent 50%),
+    linear-gradient(rgba(255,255,255,.1) 50%, transparent 50%);
+    background-image: 
+    -webkit-linear-gradient(left, rgba(255,255,255,.1) 50%, transparent 50%),
+    -webkit-linear-gradient(rgba(255,255,255,.1) 50%, transparent 50%);
+    background-size:50px 50px;
+}
+.cicada {
+    background-image: 
+    linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+    background-image: 
+    -webkit-linear-gradient(left, rgba(255,255,255,.07) 50%, transparent 50%),
+    -webkit-linear-gradient(left, rgba(255,255,255,.13) 50%, transparent 50%),
+    -webkit-linear-gradient(left, transparent 50%, rgba(255,255,255,.17) 50%),
+    -webkit-linear-gradient(left, transparent 50%, rgba(255,255,255,.19) 50%);
+    background-size: 13px, 29px, 37px, 53px;
+}
+
+.stripes {
+    background-image: 
+    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.5) 50%);
+    background-image: 
+    -webkit-linear-gradient(left, transparent 50%, rgba(255,255,255,.5) 50%);
+    background-size: 50px 50px;
+}
+
+.stars {
+    background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-image:
+    -webkit-radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    -webkit-radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    -webkit-radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    -webkit-radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+
+/* A simple clear element*/
 .clear {
     clear: both;
 }
 
+/* Stylish all the links */
 a:link, a:visited {
     color: #2B2B2B ;
     text-decoration: none ;
 }
 
-
+/* The protection flags */
 .protect {
     background-size: 28px;
     background-repeat: no-repeat;
@@ -99,6 +193,7 @@ p {
     text-align: justify;
 }
 
+/* For the simple xHTML lists */
 ul.clean {
     margin-left: 1.5em;
     margin-top: 1em;
@@ -108,17 +203,7 @@ ul.clean li {
     list-style-type: square;
 }
 
-#topgray {
-    background-color: #F5F5F5;
-    height: 140px;
-    width: 100%;  
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    border-bottom: 1px solid #E5E5E5;
-}
-
+/* The main parts of the page */
 #top {
     z-index: 3;
     height: 120px;
@@ -143,7 +228,7 @@ ul.clean li {
     overflow: hidden;
     color: white;
     text-shadow: 0px 0px 2px #333;
-    font-size: 14px;
+    font-size: 1em;
     margin-right: 20px;
     padding-top: 10px;
 }
@@ -154,7 +239,7 @@ ul.clean li {
 
 #head .block h1 {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-size: 26px;
+    font-size: 2em;
     color: white;
     font-weight: bold;
     margin: 0px;
@@ -184,13 +269,10 @@ ul.clean li {
 
 #head .block.avatar img {
     background-color: white;
-    /*padding: 4px; 
-    border-radius: 3px;*/
     width: 150px;
     height: 150px;
     margin-left: 22px;
     margin-right: 5px;
-    /*border: 1px solid #DDD;*/
     padding: 2px;
 
     border-radius: 2px;
@@ -238,7 +320,6 @@ ul.clean li {
 }
 
 #main {  
-    /*box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2), 0px 0px 2px rgba(0, 0, 0, 0.2);*/
     box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     height: 100%;
@@ -270,14 +351,12 @@ ul.clean li {
     width: 199px;
     position: fixed;
     top: 0px;
-    right: -20px;
+    right: 0px;
     border-left: 1px solid rgba(0, 0, 0, 0.8);
-    background-color: rgb(45, 45, 45);
-    padding-top: 38px;
-    padding-right: 20px;
+    pointer-events:none;
+    padding-top: 37px;
     height: 100%;
-    /*background-color: #EFEFEF;*/
-    overflow: scroll;
+    overflow: hidden;
     z-index: 2;
 }
 
@@ -293,91 +372,120 @@ ul.clean li {
     color: #BBB;
 }
 
-/* Widgets */
-
-span#widgettitle {
-    font-weight: bold;
-    display: block;
-    padding: 3px;
-    text-align: center;
-    margin-bottom: 4px;
-}
-
 /* The navigation bar */
 
-#nav, #nav .menu, #nav .menu li, #nav .menu li a {
+#nav {
     margin: 0px;
     padding: 0px;
     font-size: 12px;
     padding-top: 1px;
     text-decoration: none;
-}
-#nav {
     width: 100%;
     background-color: rgba(36, 36, 36, 1);
     border-bottom: 1px solid #111;
     box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2), 0px -1px 0px 0px rgb(21, 21, 21);
-    min-height: 34px;
     position: fixed;
     top: 0px;
     left: 0px;
     z-index: 4;
 }
-#nav .menu {
-    width: 1024px;
+
+.menu {
+    padding-top: 1px;
+    max-width: 1024px;
+    width: 100%;
     margin: 0px auto;
     list-style-type: none;
-    display: block;
     overflow: hidden;
-    clear: both;
-    background-image: url(../img/logo.png);
-    background-repeat: no-repeat;
-    background-position: 40px 7px;
+    min-height: 34px;
 }
-#nav .menu li {
+
+.menu li {
     float: left;
 }
 
-#nav .menu li:first-child {
-	width: 215px;
-	opacity: 0;
+.menu li input[type=checkbox] {
+    display: none;
 }
 
-#nav .menu li:last-child {
-    background-image: url(../img/logout.svg);
-    background-position: 90% center;
+.menu li a, .menu li label {
+    padding: 9px 8px;
+    padding-left: 28px;
+    display: block;
+    color: #ccc;
+    min-height: 1em;
+    font-size: 13px;
     background-repeat: no-repeat;
-    padding-right: 30px;
+    background-position: 5px 9px;
+}
+
+.menu li a.disconnect{
     position: fixed;
-    top: 2px;
+    top: 3px;
     right: 0px;
 }
 
-#nav .menu li a {
-    padding: 9px 20px;
-    display: block;
-    color: #ccc;
-    font-size: 13px;
-}
-#nav .menu li a.active {
+.menu li a.active {
     font-weight: 700;
     color: #EEE;
 }
 
-#nav .menu li:hover a.active {
+.menu li:hover a.active {
     color: #FFF;
 }
 
-#nav .menu li img {
+.menu li img {
     float: left;
     border: 0px;
     margin-right: 10px;
     margin-top: 1px;
 }
-#nav .menu li:hover a {
-    /*background-color: rgba(255, 255, 255, 0.3);*/
+.menu li:hover a, .menu li label:hover {
     color: #fff;
+    cursor: pointer;
 } 
+
+.menu li a.main, .menu li a.main.active {
+	width: 180px;
+    color: transparent;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-position: 40px 5px;
+}
+
+.menu li .explore { background-image: url(../img/icons/menu/globe.png); }
+.menu li .profile { background-image: url(../img/icons/menu/user.png); }
+.menu li .config { background-image: url(../img/icons/menu/settings.png); }
+.menu li .help { background-image: url(../img/icons/menu/support.png); }
+.menu li .disconnect { background-image: url(../img/icons/menu/exit.png); }
+.menu li .down { background-image: url(../img/icons/menu/download.png); }
+.menu li .up { background-image: url(../img/icons/menu/upload.png); }
+.menu li .plus { background-image: url(../img/icons/menu/plus.png); }
+.menu li .search { background-image: url(../img/icons/menu/search.png); }
+.menu li .users { background-image: url(../img/icons/menu/users.png); }
+
+#roster ul li .tabbed {
+    background-color: rgba(36, 36, 36, 1);
+    display: none;
+    position: absolute;
+    bottom: 36px;
+    left: 0px;
+    width: 100%;
+    border-top: 1px solid rgba(100, 100, 100, 0.4);
+}
+
+#roster ul li .tabbed label {
+    display: none;
+}
+
+#roster ul li .tabbed .element {
+    min-height: 0px;
+}
+
+#roster ul li input[type=checkbox]:checked ~ .tabbed {
+    display: block;
+}
+
 
 /* Warning */
 
@@ -396,8 +504,7 @@ span#widgettitle {
     background-image: -o-linear-gradient(top left, rgba(255,255, 255, 0.05) 25%, transparent 25%,
                         transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
                         transparent 75%, transparent);
-    /*box-shadow: inset 0 -1px 0 rgba(255,255, 255, 0.4);
-    border: 1px solid;*/
+
     box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.3),
         -1px 0px 0px rgba(0, 0, 0, 0.3),
         0px 1px 0px rgba(0, 0, 0, 0.4),
@@ -416,21 +523,10 @@ span#widgettitle {
     clear: both;
 }
 
-.message.warning {
-    background-color: #ED9519;
-}
-
-.message.info {
-    background-color: #3C7995;
-}
-
-.message.error {
-    background-color: #DE4343;
-}
-
-.message.success {
-    background-color: #76AB16;
-}
+.message.warning { background-color: #ED9519; }
+.message.info { background-color: #3C7995; }
+.message.error { background-color: #DE4343; }
+.message.success { background-color: #76AB16; }
 
 /* Config button */
 
@@ -438,11 +534,7 @@ span#widgettitle {
     width: 8px;
     height: 8px;
     border: 1px solid #ccc;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
-    -moz-box-shadow: 0 1px 0 #F8F8F8;
-    -wekbit-box-shadow: 0 1px 0 #F8F8F8;
     box-shadow: 0 1px 0 #F8F8F8;
     background-color: white;
     float: right;
@@ -451,18 +543,6 @@ span#widgettitle {
 .config_button:hover {
     background-image: url(../img/config_on.png);
     background-position: -1px -1px;
-    cursor: pointer;
-}
-
-/* Refresh button */
-
-.refresh {
-    background-image: url(../img/refresh.png);
-    background-repeat: no-repeat;
-    width: 90%;
-    background-position: center;
-    text-align: center;
-    padding: 3px;
     cursor: pointer;
 }
 

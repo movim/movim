@@ -49,7 +49,11 @@ function movim_parse_form(formname) {
         if(form.elements[i].type == 'checkbox') {
             data.set(form.elements[i].name,
                      form.elements[i].checked);
-        } else {
+        } else if(form.elements[i].type == 'radio'
+               && form.elements[i].checked ) {
+            data.set(form.elements[i].name,
+                     form.elements[i].value);
+        } else if(form.elements[i].type != 'radio'){
             data.set(form.elements[i].name,
                      form.elements[i].value);
         }

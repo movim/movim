@@ -25,24 +25,13 @@ class Wall extends WidgetCommon
     {
     	$this->addcss('wall.css');
     	$this->addjs('wall.js');
-		$this->registerEvent('post', 'onNewPost');
+		$this->registerEvent('post', 'onStream');
 		$this->registerEvent('stream', 'onStream');
 		$this->registerEvent('comment', 'onComment');
 		$this->registerEvent('nocomment', 'onNoComment');
 		$this->registerEvent('nocommentstream', 'onNoCommentStream');
         $this->registerEvent('nostream', 'onNoStream');
         $this->registerEvent('nostreamautorized', 'onNoStreamAutorized');
-    }
-    
-    function onNewPost($id) {
-        $query = Post::query()
-                            ->where(array('key' => $this->user->getLogin(), 'nodeid' => $id));
-        $post = Post::run_query($query);
-
-        if($post != false) {  
-            $html = $this->preparePost($post[0]);
-            RPC::call('movim_prepend', 'wall', RPC::cdata($html));
-        }
     }
     
     function onNoStream() {
@@ -73,9 +62,8 @@ class Wall extends WidgetCommon
         $pl = $pd->getContact($from, $start+1, 10);
         
         // We ask for the HTML of all the posts
-        foreach($pl as $post) {
-            $htmlmessages .= $this->printPost($post);
-        }		
+        
+        $htmlmessages = $this->preparePosts($pl);
 
         $next = $start + 10;
         
