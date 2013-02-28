@@ -59,10 +59,10 @@
 
 #notifslist .black {
     float: right;
-    box-shadow: none;
-    background-color: #333;
+}
+
+#notifslist ul li:hover .black {
     color: #BBB;
-    border-color: #444;
 }
 
 #notifslist #refresh:before {
@@ -110,10 +110,6 @@
     border-top: 1px solid #EEE;
 }
 
-#notifslist ul li:hover .black {
-    color: #BBB;
-}
-
 #notifslist ul li.title {
     border-bottom: 1px solid #222;
     padding: 0px 5px;
@@ -128,8 +124,7 @@
 }
 
 #notifslist ul li img {
-display: none;
-    height: 24px;
+    margin-top: 2px;
     max-width: 24px;
     float: left;
     border-radius: 2px;
