@@ -1,15 +1,25 @@
 #roster {
-    margin-bottom: 60px;
-    width: 200px;
-    overflow: hidden;
+    overflow: auto;
+    height: 100%;
 }
 
-#roster ul {
+#roster #rosterhide {
+    overflow: auto;
+}
+
+#roster ul#rosterlist {
     list-style-type: none;
     font-size: 13px;
+    margin-bottom: 51px;
+    display: block;
+    pointer-events: auto;
 }
 
-#roster ul li {
+#roster #rosterhide.hide {
+    display: none;
+}
+
+#roster ul#rosterlist li {
     padding: 5px;
     background-image: -moz-linear-gradient(top, 
         rgba(47, 47, 47, 1) 0%,
@@ -27,7 +37,7 @@
     border-bottom: 1px solid rgb(30, 30, 30);
 }
 
-#roster ul li .chat {
+#roster ul#rosterlist li .chat {
     width: 22px;
     height: 22px;
     float: right;
@@ -37,47 +47,47 @@
     background-position: 3px 6px;
 }
 
-#roster ul li .chat.on:hover {
+#roster ul#rosterlist li .chat.on:hover {
     cursor: pointer;
 }
 
-#roster ul div li {
+#roster ul#rosterlist div li {
     display: none;
 }
 
-#roster ul div.groupshown li:not([class=offline]):not([class=server_error]) {
+#roster ul#rosterlist div.groupshown li:not([class=offline]):not([class=server_error]) {
     display: list-item;
 }
 
-#roster ul.offlineshown div.groupshown li {
+#roster ul#rosterlist.offlineshown div.groupshown li {
     display: list-item;
 }
 
-#roster ul li.online .chat {
+#roster ul#rosterlist li.online .chat {
     background-image: url(img/online.png);
 }
 
-#roster ul li.away .chat {
+#roster ul#rosterlist li.away .chat {
     background-image: url(img/away.png);
 }
 
-#roster ul li.dnd .chat {
+#roster ul#rosterlist li.dnd .chat {
     background-image: url(img/dnd.png);
 }
 
-#roster ul li.xa .chat {
+#roster ul#rosterlist li.xa .chat {
     background-image: url(img/xa.png);
 }
 
-#roster ul li.server_error .chat {
+#roster ul#rosterlist li.server_error .chat {
     background-image: url(img/server_error.png);
 }
 
-#roster ul li .chat:hover {
+#roster ul#rosterlist li .chat:hover {
     background-color: #444;
 }
 
-#roster ul li a {
+#roster ul#rosterlist li a {
     display: block;
     white-space: nowrap;
     width: auto;
@@ -87,12 +97,12 @@
     text-shadow: 0px 1px 0px #222;
 }
 
-#roster ul li a span {
+#roster ul#rosterlist li a span {
     padding-left: 5px;
     line-height: 29px;
 }
 
-#roster ul li:hover, #roster ul li.active {
+#roster ul#rosterlist li:hover, #roster ul li.active {
     background-image: -moz-linear-gradient(top, 
         rgba(67, 67, 67, 1) 0%,
         rgba(63, 63, 63, 1) 100%);
@@ -109,11 +119,11 @@
     border-bottom: 1px solid rgb(50, 50, 50);
 }
 
-#roster ul li a:hover img, #roster ul li.active img {
+#roster ul#rosterlist li a:hover img, #roster ul li.active img {
 
 }
 
-#roster ul li img {
+#roster ul#rosterlist li img {
     height: 24px;
     margin-bottom: -5px;
     max-width: 24px;
@@ -165,6 +175,81 @@
     cursor: pointer;
 }
 
+#roster li.focused{
+    background-image: -moz-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: -webkit-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: -o-linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    background-image: linear-gradient(top, 
+        rgba(47, 57, 87, 1) 0%,
+        rgba(43, 53, 83, 1) 100%);
+    border-top: 1px solid rgb(80, 80, 97, 1);
+    border-bottom: 1px solid rgba(20, 20, 30, 1);
+}
+
+#roster li .infoicon {
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    float: right;
+    margin-top: 6px;
+    margin-right: 2px;
+}
+
+#roster li .mobile {
+    background-image: url('img/mobile.png');
+}
+
+#roster li .web {
+    background-image: url('img/earth.png');
+}
+
+#roster li .bot {
+    background-image: url('img/robot.png');
+}
+
+#roster li .tune {
+    background-image: url('img/music.png');
+}
+
+#roster #rostermenu {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    display: block;
+    background-color: rgba(36, 36, 36, 1);
+    width: 199px;
+    border-top: 1px solid rgba(100, 100, 100, 0.4);
+    pointer-events: auto;
+}
+
+#roster li#search input {
+    height: 30px;
+    width: 100%;
+}
+
+#roster li:last-child {
+    float: right;
+}
+/*
+#roster li#search:hover > a {
+    display: none;
+}
+
+#roster li#search:hover {
+    width: 100%;
+}
+
+#roster li#search:hover > input {
+    display: block;
+}*/
+
+/*
 #roster #rostermenu {
     border-top: 1px solid #222;
     border-left: 1px solid #111;
@@ -221,45 +306,4 @@
 #roster #rostermenu #addcontact .element {
     min-height: 0px;
 }
-
-#roster li.focused{
-    background-image: -moz-linear-gradient(top, 
-        rgba(47, 57, 87, 1) 0%,
-        rgba(43, 53, 83, 1) 100%);
-    background-image: -webkit-linear-gradient(top, 
-        rgba(47, 57, 87, 1) 0%,
-        rgba(43, 53, 83, 1) 100%);
-    background-image: -o-linear-gradient(top, 
-        rgba(47, 57, 87, 1) 0%,
-        rgba(43, 53, 83, 1) 100%);
-    background-image: linear-gradient(top, 
-        rgba(47, 57, 87, 1) 0%,
-        rgba(43, 53, 83, 1) 100%);
-    border-top: 1px solid rgb(80, 80, 97, 1);
-    border-bottom: 1px solid rgba(20, 20, 30, 1);
-}
-
-#roster li .infoicon {
-    width: 18px;
-    height: 18px;
-    background-repeat: no-repeat;
-    float: right;
-    margin-top: 6px;
-    margin-right: 2px;
-}
-
-#roster li .mobile {
-    background-image: url('img/mobile.png');
-}
-
-#roster li .web {
-    background-image: url('img/earth.png');
-}
-
-#roster li .bot {
-    background-image: url('img/robot.png');
-}
-
-#roster li .tune {
-    background-image: url('img/music.png');
-}
+*/

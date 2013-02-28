@@ -89,17 +89,13 @@ class Vcard extends WidgetBase
 	}
     
     function prepareInfos($error = false) {
-        $query = Contact::query()
-                            ->where(
-                                array(
-                                    'jid' => $this->user->getLogin()
-                                    )
-                                );
-        $me = Contact::run_query($query);
+                
+        $cd = new \modl\ContactDAO();
+        $me = $cd->get($this->user->getLogin());
         
         $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
         
-        if(!isset($me[0])) { 
+        if(!isset($me)) { 
         ?>
             <div class="message info">
                 <?php echo t("It's your first time on Movim! To fill in a 
@@ -115,8 +111,7 @@ class Vcard extends WidgetBase
         }
     
 
-        if(isset($me[0])) {
-            $me = $me[0];
+        if(isset($me)) {
             
             if($error == 'vcardfeaturenotimpl') {
                 $html .= '
@@ -128,7 +123,7 @@ class Vcard extends WidgetBase
                     <div class="message error">'.t("Profile not updated : Request error").'</div>';
             }
         
-            if($me->getData('public') == '1')
+            if($me->public == '1')
                 $color = 'black';
             else
                 $color =  'red';
@@ -140,17 +135,17 @@ class Vcard extends WidgetBase
                     
                 $html .= '<div class="element">
                             <label for="fn">'.t('Name').'</label>
-                            <input type="text" name="fn" class="content" value="'.$me->getData('fn').'">
+                            <input type="text" name="fn" class="content" value="'.$me->fn.'">
                           </div>';
                           
                 $html .= '<div class="element">
                             <label for="name">'.t('Nickname').'</label>
-                            <input type="text" name="name" class="content" value="'.$me->getData('name').'">
+                            <input type="text" name="name" class="content" value="'.$me->name.'">
                           </div>';
                           
                 $html .= '<div class="element">
                             <label for="name">'.t('Email').'</label>
-                            <input type="email" name="email" class="content" value="'.$me->getData('email').'">
+                            <input type="email" name="email" class="content" value="'.$me->email.'">
                           </div>';
                           
                 $html .= '<div class="element ">
@@ -166,7 +161,7 @@ class Vcard extends WidgetBase
                                     } else {
                                         $j = $i;
                                     }
-                                    if($i == substr( $me->getData('date'), 8)) {
+                                    if($i == substr( $me->date, 8)) {
                                         $html .= '<option value="'.$j.'" selected>'.$j.'</option>';
                                     } else {
                                         $html .= '<option value="'.$j.'">'.$j.'</option>';
@@ -186,7 +181,7 @@ class Vcard extends WidgetBase
                                     } else {
                                         $j = $i;
                                     }
-                                    if($i == substr( $me->getData('date'), 5, 2)) {
+                                    if($i == substr( $me->date, 5, 2)) {
                                         $html .= '<option value="'.$j.'" selected>'.$j.'</option>';
                                     } else {
                                         $html .= '<option value="'.$j.'">'.$j.'</option>';
@@ -200,7 +195,7 @@ class Vcard extends WidgetBase
                             <select name="year" class="datepicker">
                             <option value="-1">'.t('Year').'</option>';
                                 for($i=date('o'); $i>= 1920; $i--){
-                                    if($i == substr( $me->getData('date'), 0, 4)) {
+                                    if($i == substr( $me->date, 0, 4)) {
                                         $html .= '<option value="'.$i.'" selected>'.$i.'</option>';
                                     } else {
                                         $html .= '<option value="'.$i.'">'.$i.'</option>';
@@ -216,7 +211,7 @@ class Vcard extends WidgetBase
                             <div class="select"><select name="gender">';
                             foreach(getGender() as $key => $value) {
                                 $html .= '<option ';
-                                if($key == $me->getData('gender'))
+                                if($key == $me->gender)
                                     $html .= 'selected ';
                                 $html .= 'value="'.$key.'">'.$value.'</option>';
                             }
@@ -227,7 +222,7 @@ class Vcard extends WidgetBase
                             <div class="select"><select name="marital">';
                             foreach(getMarital() as $key => $value) {
                                 $html .= '<option ';
-                                if($key == $me->getData('marital'))
+                                if($key == $me->marital)
                                     $html .= 'selected ';
                                 $html .= 'value="'.$key.'">'.$value.'</option>';
                             }
@@ -235,19 +230,19 @@ class Vcard extends WidgetBase
                           </div>';
              
                 $html .= '<div class="element"><label for="url">'.t('Website').'</label>
-                            <input type="url" name ="url" class="content" value="'.$me->getData('url').'">
+                            <input type="url" name ="url" class="content" value="'.$me->url.'">
                           </div>';
                           
                 $html .= '<div class="element"><label for="avatar">'.t('Avatar').'</label>
                             <input type="file" onchange="vCardImageLoad(this.files);">
-                            <img id="vCardPhotoPreview" src="data:'.$me->getData('phototype').';base64,'.$me->getData('photobin').'">
+                            <img id="vCardPhotoPreview" src="data:'.$me->phototype.';base64,'.$me->photobin.'">
                             <br /><span id="picturesize" class="clean"></span>
-                            <input type="hidden" name="phototype"  value="'.$me->getData('phototype').'"/>
-                            <input type="hidden" name="photobin"  value="'.$me->getData('photobin').'"/><br />
+                            <input type="hidden" name="phototype"  value="'.$me->phototype.'"/>
+                            <input type="hidden" name="photobin"  value="'.$me->photobin.'"/><br />
                           </div>';
                       
                 $html .= '<div class="element large"><label for="desc">'.t('About Me').'</label>
-                            <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->getData('desc')).'</textarea>
+                            <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->desc).'</textarea>
                           </div>';
                       
             $html .= '</fieldset><br />'; 
@@ -257,14 +252,14 @@ class Vcard extends WidgetBase
                     <legend>'.t('Geographic Position').'</legend>';
                     
                 $html .= '<div class="element"><label for="url">'.t('Locality').'</label>
-                            <input type="text" type="locality" name ="locality" class="content" value="'.$me->getData('adrlocality').'">
+                            <input type="text" type="locality" name ="locality" class="content" value="'.$me->adrlocality.'">
                           </div>';
                           
                 $html .= '<div class="element"><label for="country">'.t('Country').'</label>
                             <div class="select">
                                 <select name="country">
                                     <option value=""></option>';
-                            $ctry = $me->adrcountry->getval();
+                            $ctry = $me->adrcountry;
                             foreach(getCountries() as $value) {
                                 $html .= '<option ';
                                 if($value == $ctry)
@@ -281,7 +276,7 @@ class Vcard extends WidgetBase
             $html .= '<fieldset>
                         <legend>'.t('Privacy Level').'</legend>';
 
-                if($me->getData('public') == '1')
+                if($me->public == '1')
                     $checked = 'checked="true"';
                 else
                     $checked =  '';
@@ -300,21 +295,7 @@ class Vcard extends WidgetBase
                           </div>';
                       
             $html .= '</fieldset>'; 
-                       
-            /*$html .= '<br />
-                <fieldset>
-                    <legend>'.t('Geographic Position').'</legend>';
-		    $html .= '<div class="warning"><a class="button tiny" style="float: right;" onclick="getPos(this);">Récupérer ma position</a></div>';
-		    $html .= '<div id="geolocation"></div>';
-            $html .= '<div class="element"><label>'.t('Latitude').'</label>
-                        <input type="text" name="lat" class="content" value="Latitude" readonly>
-                      </div>';
-            $html .= '<div class="element"><label>'.t('Longitude').'</label>
-                        <input type="text" name="long" class="content" value="Longitude" readonly>
-                      </div>';
-
-            $html .= '<hr />
-                </fieldset>';*/
+            
             $html .= '<hr /><br />';
 		    $html .= '<a
                             onclick="
