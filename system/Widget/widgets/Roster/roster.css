@@ -1,21 +1,18 @@
 #roster {
-    overflow: auto;
     height: 100%;
-}
-
-#roster #rosterhide {
-    overflow: auto;
+    background-color: #333;
 }
 
 #roster ul#rosterlist {
     list-style-type: none;
     font-size: 13px;
-    margin-bottom: 51px;
     display: block;
+    background-color: #333;
+    padding-bottom: 91px;
     pointer-events: auto;
 }
 
-#roster #rosterhide.hide {
+#roster.hide {
     display: none;
 }
 
@@ -175,7 +172,7 @@
     cursor: pointer;
 }
 
-#roster li.focused{
+#roster ul#rosterlist li.focused{
     background-image: -moz-linear-gradient(top, 
         rgba(47, 57, 87, 1) 0%,
         rgba(43, 53, 83, 1) 100%);
@@ -217,7 +214,7 @@
     background-image: url('img/music.png');
 }
 
-#roster #rostermenu {
+#rostermenu {
     position: fixed;
     bottom: 0px;
     right: 0px;
@@ -228,12 +225,12 @@
     pointer-events: auto;
 }
 
-#roster li#search input {
+#rostermenu li#search input {
     height: 30px;
     width: 100%;
 }
 
-#roster li:last-child {
+#rostermenu li:last-child {
     float: right;
 }
 /*
