@@ -38,9 +38,9 @@ function showRoster(boolOffline) {
 
 function showHideRoster(hide) {
     if(hide == '1')
-        document.querySelector('#rosterhide').className = 'hide';
+        document.querySelector('#roster').className = 'hide';
     else
-        document.querySelector('#rosterhide').className = '';        
+        document.querySelector('#roster').className = '';        
 }
 
 function incomingPresence(val) {
