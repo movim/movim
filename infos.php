@@ -20,9 +20,9 @@
 require("init.php");
   
 // We get the informations
-$conf = Conf::getServerConf();
-global $sdb;
-$contacts = $sdb->select('CacheVar', array());
+$rd = new \modl\RosterLinkDAO();
+$pop = $rd->countAccounts();
+$pop = $pop[0];
   
 // We create a simple DOMDocument
 $doc = new DOMDocument("1.0");
@@ -36,7 +36,7 @@ $doc->appendChild($infos);
     $infos->appendChild($language);
     
     $population = $doc->createElement("population");
-    $population->appendChild($doc->createTextNode(ceil(count($contacts)/2)));
+    $population->appendChild($doc->createTextNode($pop));
     $infos->appendChild($population);
     
     $whitelist = $doc->createElement("whitelist");
