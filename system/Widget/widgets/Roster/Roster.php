@@ -198,12 +198,12 @@ class Roster extends WidgetBase
      */
     function prepareRoster()
 	{
-        $contactdao = new modl\ContactDAO();
+        $contactdao = new \modl\ContactDAO();
         $contacts = $contactdao->getRoster();
 
         $html = '';
         
-        $rd = new modl\RosterLinkDAO();
+        $rd = new \modl\RosterLinkDAO();
         
         $capsdao = new modl\CapsDAO();
         $caps = $capsdao->getAll();

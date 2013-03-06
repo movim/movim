@@ -22,21 +22,6 @@ class WidgetCommon extends WidgetBase {
                 <span>
                     '.$post->title.'
                 </span><br />';
-
-        if($post->jid != $post->uri)
-            $recycle .= '
-                <span class="recycle">
-                    <a href="?q=friend&f='.$post->uri.'">'.$post->uri.'</a>
-                 </span>';
-
-        if($post->getPlace() != false)
-            $place .= '
-                <span class="place">
-                    <a 
-                        target="_blank" 
-                        href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
-                    >'.$post->getPlace().'</a>
-                </span>';
                 
         if($this->user->getLogin() == $post->jid) {
             $class = 'me ';
@@ -46,16 +31,50 @@ class WidgetCommon extends WidgetBase {
                 $access .= 'protect orange';
         }
         
-        if($post->commentplace)
-            $comments = $this->printComments($post, $comments);
-        else
+        if($post->public != 2) {
+
+            if($post->jid != $post->uri)
+                $recycle .= '
+                    <span class="recycle">
+                        <a href="?q=friend&f='.$post->uri.'">'.$post->uri.'</a>
+                     </span>';
+
+            if($post->getPlace() != false)
+                $place .= '
+                    <span class="place">
+                        <a 
+                            target="_blank" 
+                            href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
+                        >'.$post->getPlace().'</a>
+                    </span>';
+
+            $content = 
+                    prepareString(html_entity_decode($post->content));
+            
+            if($post->commentplace)
+                $comments = $this->printComments($post, $comments);
+            else
+                $comments = '';
+                
+            $fold = t('Fold');
+        } else {
+            $content = '…';
             $comments = '';
+
+            $fold = t('Unfold');
+        }
         
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
                 <a href="?q=friend&amp;f='.$post->jid.'">
                     <img class="avatar" src="'.$post->getContact()->getPhoto('m').'">
                 </a>
+                
+                <div class="postmenu">
+                    <a 
+                        href="" 
+                        onclick="'.$this->genCallAjax('ajaxPostFold', "'".$post->nodeid."'").'">'.$fold.'</a>
+                </div>
 
                 <div id="'.$post->nodeid.'" class="postbubble '.$access.'">
                     '.$title.'
@@ -66,9 +85,7 @@ class WidgetCommon extends WidgetBase {
                         '.prepareDate(strtotime($post->published)).'
                     </span>
                     <div class="content">
-                        '.prepareString(html_entity_decode($post->content)).'
-                        <div class="clear"></div>
-                        
+                    '.$content.'
                     </div>
                     '.$comments.'
                     '.$place.'
@@ -179,7 +196,7 @@ class WidgetCommon extends WidgetBase {
         else
             return false;
     }    
-   
+    /*
     protected function preparePost($message, $comments = false) {        
         $tmp = '<a name="'.$message[0]->getData('nodeid').'"></a>';
         
@@ -352,7 +369,7 @@ class WidgetCommon extends WidgetBase {
 
         }
         return $tmp;
-    }
+    }*/
 
     protected function prepareComments($comments) {
         $tmp = false;
@@ -488,6 +505,22 @@ class WidgetCommon extends WidgetBase {
         
         RPC::call('movim_change_class', $id.'bubble' , 'postbubble me protect '.$privacy);
         RPC::commit();
+    }
+    
+    function ajaxPostFold($nodeid) {
+        $pd = new \modl\PostDAO();
+        $p = $pd->get($nodeid);
+
+        $public = $p->public;
+        
+        if($public == 0) {
+            $p->public = 2;
+            $pd->set($p);
+        } elseif($public != 0) {
+            $p->public = 0;
+            $pd->set($p);
+        }
+
     }
     
     function onPostDelete($id) {

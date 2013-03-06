@@ -59,7 +59,7 @@ class Config extends WidgetBase
             $submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
                 . "this.className='button icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
     ?>
-        <div id="config">
+        <div class="tabelem" title="<?php echo t('Configuration'); ?>" id="config" >
             <form enctype="multipart/form-data" method="post" action="index.php" name="general">
                 <fieldset>
                     <legend><?php echo t('General'); ?></legend>
@@ -118,6 +118,12 @@ class Config extends WidgetBase
                                 style="background-color: #6d695c;"></div>
                         </label>
                         
+                        <input type="radio" name="pattern" id="default" value="default"/>
+                        <label for="default"><span></span>
+                            <div class="preview default"
+                                style="background-color: #082D50;;"></div>
+                        </label>
+                        
                         <input type="radio" name="pattern" id="tableclothe" value="tableclothe"/>
                         <label for="tableclothe"><span></span>
                             <div class="preview tableclothe"
@@ -146,6 +152,12 @@ class Config extends WidgetBase
                         <label for="stars"><span></span>
                             <div class="preview stars"
                                 style="background-color:black;"></div>
+                        </label>
+                        
+                        <input type="radio" name="pattern" id="tartan" value="tartan"/>
+                        <label for="tartan"><span></span>
+                            <div class="preview tartan"
+                                style="background-color: hsl(2, 57%, 40%);"></div>
                         </label>
                     </div>
                 </fieldset>
