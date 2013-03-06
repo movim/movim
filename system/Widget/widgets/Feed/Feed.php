@@ -12,6 +12,7 @@ class Feed extends WidgetCommon {
         $this->registerEvent('comment', 'onComment');
         $this->registerEvent('nocomment', 'onNoComment');
         $this->registerEvent('nocommentstream', 'onNoCommentStream');
+        $this->registerEvent('commentpublisherror', 'onCommentPublishError');
         
 		$this->registerEvent('stream', 'onStream');
         $this->registerEvent('postpublished', 'onPostPublished');
@@ -56,6 +57,14 @@ class Feed extends WidgetCommon {
              </div>';
         RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
         RPC::commit();
+    }
+    
+    function onCommentPublishError() {
+        $html =
+            '<div class="message error">'.
+                t("Comment publication error").'
+             </div>';
+        RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
     }
 
     function onPostPublished($post) {        
@@ -200,7 +209,6 @@ class Feed extends WidgetCommon {
                     t("Your feed cannot be loaded.").'
                 </div>';
         RPC::call('movim_fill', 'feedcontent', RPC::cdata($html));
-        RPC::commit();
     }
     
     function ajaxPublishItem($content)

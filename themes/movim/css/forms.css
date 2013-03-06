@@ -32,6 +32,10 @@ legend {
     width: 100%;
 }
 
+.element.thin {
+    width: 25%;
+}
+
 .element > label {
     display: block;
 }
