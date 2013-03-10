@@ -1,21 +1,18 @@
 #roster {
-    overflow: auto;
     height: 100%;
-}
-
-#roster #rosterhide {
-    overflow: auto;
+    background-color: #333;
 }
 
 #roster ul#rosterlist {
     list-style-type: none;
     font-size: 13px;
-    margin-bottom: 51px;
     display: block;
+    background-color: #333;
+    padding-bottom: 91px;
     pointer-events: auto;
 }
 
-#roster #rosterhide.hide {
+#roster.hide {
     display: none;
 }
 
@@ -175,7 +172,7 @@
     cursor: pointer;
 }
 
-#roster li.focused{
+#roster ul#rosterlist li.focused{
     background-image: -moz-linear-gradient(top, 
         rgba(47, 57, 87, 1) 0%,
         rgba(43, 53, 83, 1) 100%);
@@ -217,7 +214,7 @@
     background-image: url('img/music.png');
 }
 
-#roster #rostermenu {
+#rostermenu {
     position: fixed;
     bottom: 0px;
     right: 0px;
@@ -228,82 +225,11 @@
     pointer-events: auto;
 }
 
-#roster li#search input {
+#rostermenu li#search input {
     height: 30px;
     width: 100%;
 }
 
-#roster li:last-child {
+#rostermenu li:last-child {
     float: right;
 }
-/*
-#roster li#search:hover > a {
-    display: none;
-}
-
-#roster li#search:hover {
-    width: 100%;
-}
-
-#roster li#search:hover > input {
-    display: block;
-}*/
-
-/*
-#roster #rostermenu {
-    border-top: 1px solid #222;
-    border-left: 1px solid #111;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 199px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    color: black;
-    background-color: white;
-}
-
-#roster #rostermenu li, #roster #rostermenu li a {
-    margin: 0px;
-    border: 0px;
-    padding: 0px;
-    width: auto;
-}
-
-#roster #rostermenu #request {
-    line-height: 24px;
-    height: 24px;
-    padding: 0px 6px;
-    border: 0px;
-    width: 120px;
-    background-color: white;
-}
-
-#roster #rostermenu li {
-    display: inline-block;
-    line-height: 22px;
-    border-left: 1px solid #111;
-    padding: 0 8px;
-    height: 24px;
-    background-color: #ddd;
-}
-
-#roster #rostermenu li:last-child {
-    padding: 0px;
-}
-
-#roster #rostermenu li:hover, #roster #rostermenu li:hover a {
-    background-color: transparent;
-    cursor: pointer;
-}
-
-#roster #rostermenu #addcontact {
-    padding: 5px;
-    border-bottom: 1px solid #888;
-    display: none;
-    background-color: #EFEFEF;
-}
-
-#roster #rostermenu #addcontact .element {
-    min-height: 0px;
-}
-*/

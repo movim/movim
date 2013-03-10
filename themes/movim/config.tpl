@@ -14,13 +14,12 @@
 
     </div>
     <div id="center" class="protect white">
-      <h1><?php echo t('Configuration'); ?></h1>
-      <?php $this->widget('Config');?>
+        <?php $this->widget('Tabs');?>
+        <?php $this->widget('Config');?>
+        <?php $this->widget('ConfigData');?>
     </div>
 </div>
 
 <div id="right">
     <?php $this->widget('Roster');?>
 </div>
-
-
