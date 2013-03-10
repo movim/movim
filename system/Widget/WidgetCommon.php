@@ -16,12 +16,29 @@
  */
 
 class WidgetCommon extends WidgetBase {
-    protected function printPost($post, $comments) {
+    protected function printPost($post, $comments = false) {
         if($post->title)
             $title = '
                 <span>
                     '.$post->title.'
                 </span><br />';
+                
+        if($this->user->getLogin() == $post->jid) {
+            $class = 'me ';
+            if($post->public == 1)
+                $access .= 'protect black';
+            else
+                $access .= 'protect orange';
+        }
+        
+        if($post->public == 2) {
+            $class .= ' folded';
+            $fold = t('Unfold');
+            $avatar = $post->getContact()->getPhoto('xs');
+        } else {
+            $fold = t('Fold');
+            $avatar = $post->getContact()->getPhoto('m');
+        }
 
         if($post->jid != $post->uri)
             $recycle .= '
@@ -37,16 +54,11 @@ class WidgetCommon extends WidgetBase {
                         href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
                     >'.$post->getPlace().'</a>
                 </span>';
-                
-        if($this->user->getLogin() == $post->jid) {
-            $class = 'me ';
-            if($post->public == 1)
-                $access .= 'protect black';
-            else
-                $access .= 'protect orange';
-        }
+
+        $content = 
+                prepareString(html_entity_decode($post->content));
         
-        if($post->commentplace)
+        if($post->commentplace && $post->commentson)
             $comments = $this->printComments($post, $comments);
         else
             $comments = '';
@@ -54,11 +66,16 @@ class WidgetCommon extends WidgetBase {
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
                 <a href="?q=friend&amp;f='.$post->jid.'">
-                    <img class="avatar" src="'.$post->getContact()->getPhoto('m').'">
+                    <img class="avatar" src="'.$avatar.'">
                 </a>
 
                 <div id="'.$post->nodeid.'" class="postbubble '.$access.'">
-                    '.$title.'
+                    <span class="title">'.$title.'</span>
+                    <span class="fold">
+                        <a 
+                        href="" 
+                        onclick="'.$this->genCallAjax('ajaxPostFold', "'".$post->nodeid."'").'">'.$fold.'</a>
+                    </span>
                     <span>
                         <a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
                     </span>
@@ -66,9 +83,7 @@ class WidgetCommon extends WidgetBase {
                         '.prepareDate(strtotime($post->published)).'
                     </span>
                     <div class="content">
-                        '.prepareString(html_entity_decode($post->content)).'
-                        <div class="clear"></div>
-                        
+                    '.$content.'
                     </div>
                     '.$comments.'
                     '.$place.'
@@ -143,8 +158,8 @@ class WidgetCommon extends WidgetBase {
      * @return generated HTML
      */
     protected function preparePosts($posts) {
-        if($posts == false) {
-			$html = false;
+        if($posts == false || empty($posts)) {
+			$html = '<div style="padding: 1.5em; text-align: center;">Ain\'t Nobody Here But Us Chickens...</div>';
 		} else {
 			$html = '';
 
@@ -179,7 +194,7 @@ class WidgetCommon extends WidgetBase {
         else
             return false;
     }    
-   
+    /*
     protected function preparePost($message, $comments = false) {        
         $tmp = '<a name="'.$message[0]->getData('nodeid').'"></a>';
         
@@ -352,7 +367,7 @@ class WidgetCommon extends WidgetBase {
 
         }
         return $tmp;
-    }
+    }*/
 
     protected function prepareComments($comments) {
         $tmp = false;
@@ -488,6 +503,22 @@ class WidgetCommon extends WidgetBase {
         
         RPC::call('movim_change_class', $id.'bubble' , 'postbubble me protect '.$privacy);
         RPC::commit();
+    }
+    
+    function ajaxPostFold($nodeid) {
+        $pd = new \modl\PostDAO();
+        $p = $pd->get($nodeid);
+
+        $public = $p->public;
+        
+        if($public == 0) {
+            $p->public = 2;
+            $pd->set($p);
+        } elseif($public != 0) {
+            $p->public = 0;
+            $pd->set($p);
+        }
+
     }
     
     function onPostDelete($id) {
