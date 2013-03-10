@@ -11,7 +11,8 @@
 </div>
 <div id="main">
     <div id="left">
-
+        <?php $this->widget('Bookmark');?>
+        <?php $this->widget('ProfileData');?>
     </div>
     <div id="center">
         <h1><?php echo t('Edit my profile'); ?></h1>
