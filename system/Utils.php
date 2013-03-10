@@ -661,6 +661,16 @@ function checkJid($jid)
     return filter_var($jid, FILTER_VALIDATE_EMAIL);
 }
 
+function stringToUri($url) {
+    $url = utf8_decode($url);
+    $url = strtolower(strtr($url, utf8_decode('ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ()[]\'"~$&%*@ç!?;,:/\^¨€{}<>|+.- '),  'aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn    --      c  ---    e       --'));
+    $url = str_replace(' ', '', $url);
+    $url = str_replace('---', '-', $url);
+    $url = str_replace('--', '-', $url);
+    $url = trim($url,'-');
+    return $url;
+}
+
 function movim_log($log) {
 	ob_start();
 //    var_dump($log);
