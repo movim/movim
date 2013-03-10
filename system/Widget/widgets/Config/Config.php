@@ -84,7 +84,16 @@ class Config extends WidgetBase
                 <fieldset>
                     <legend><?php echo t('Apparence'); ?></legend>
                     <div class="element">
-                        <label for="color"><?php echo t('Background color'); ?></label>
+                        <label for="color"><?php echo t('Background color'); ?></label>                        
+                        <a 
+                            type="button" 
+                            onclick="
+                                document.querySelector('input[name=color]').value = '082D50';
+                                document.body.style.backgroundColor = '#082D50';"
+                            style="width: 28%; float: right; margin-top: 5px" 
+                            class="button icon back">
+                            <?php echo t('Reset');?>
+                        </a>
                         <input 
                             style="box-shadow: none; width: 50%; float: left;"
                             name="color"
@@ -98,15 +107,6 @@ class Config extends WidgetBase
                                     echo "082D50";
                             ?>
                             ">
-                        <a 
-                            type="button" 
-                            onclick="
-                                document.querySelector('input[name=color]').value = '082D50';
-                                document.body.style.backgroundColor = '#082D50';"
-                            style="width: 25%; float: left;" 
-                            class="button icon back">
-                            <?php echo t('Reset');?>
-                        </a>
                     </div>
                     
                     <div class="element">
