@@ -84,6 +84,10 @@ h1 {
     width: 100%;
 }
 
+.element.thin {
+    width: 50%;
+}
+
 .posthead {
     padding: 0.3em;
 }
@@ -155,7 +159,7 @@ h1 {
     margin-top: 5% ! important;
 }
 
-#roster #rostermenu {
+#rostermenu {
     width: 100% !important;
 }
 

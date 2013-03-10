@@ -119,6 +119,11 @@ class Login extends WidgetBase {
                             <div class="message warning">
                                 '.t('Your XMPP server is unauthorized').'
                             </div>';
+                case 'mecerror':
+                    $warning = '
+                            <div class="message warning">
+                                '.t('The server takes too much time to repond').'
+                            </div>';
                     break;
             }
 

@@ -198,12 +198,12 @@ class Roster extends WidgetBase
      */
     function prepareRoster()
 	{
-        $contactdao = new modl\ContactDAO();
+        $contactdao = new \modl\ContactDAO();
         $contacts = $contactdao->getRoster();
 
         $html = '';
         
-        $rd = new modl\RosterLinkDAO();
+        $rd = new \modl\RosterLinkDAO();
         
         $capsdao = new modl\CapsDAO();
         $caps = $capsdao->getAll();
@@ -284,85 +284,85 @@ class Roster extends WidgetBase
         if($offlineState == true)
             $offlineshown = 'offlineshown';
 	?>
-        <div id="roster">
-            <div id="rosterhide" class="<?php echo $rostershow; ?>">
-                <ul id="rosterlist" class="<?php echo $offlineshown; ?>">
-                <?php echo $this->prepareRoster(); ?>
-                </ul>
-            </div>
-            <div id="rostermenu" class="menubar">
-                <ul class="menu">
-                    <li id="search">
-                        <label class="search" for="rostershow"></label>
-                        <input type="checkbox" id="rostershow"/>
-                        <div class="tabbed">
-                            <input 
-                                type="text" 
-                                name="search" 
-                                id="request" 
-                               
-                                autocomplete="off" 
-                                onkeyup="rosterSearch(event);" 
-                                onclick="focusContact();" 
-                                placeholder="<?php echo t('Search');?>"/>
-                        </div>
-                    </li>
-                    <li title="<?php echo t('Add'); ?>">
-                        <label class="plus" for="addc"></label>
-                        <input type="checkbox" id="addc"/>
-                        <div class="tabbed">
-                            <form id="addcontact">
-                                <div class="element large">
-                                    <label for="addjid"><?php echo t('JID'); ?></label>
-                                    <input 
-                                        id="addjid" 
-                                        class="tiny" 
-                                        placeholder="user@server.tld" 
-                                        onfocus="myFocus(this);" 
-                                        onblur="myBlur(this);"
-                                    />
-                                </div>
-                                <div class="element large">
-                                    <label for="addalias"><?php echo t('Alias'); ?></label>
-                                    <input 
-                                        id="addalias"
-                                        type="text"
-                                        class="tiny" 
-                                        placeholder="<?php echo t('Alias'); ?>" 
-                                        onfocus="myFocus(this);" 
-                                        onblur="myBlur(this);"
-                                    />
-                                </div>
-                                <a 
-                                    class="button tiny icon no merged left black"
-                                    href="#"
-                                    id="addrefuse"
-                                    onclick="cancelAddJid();">
-                                    <?php echo t('Cancel'); ?>
-                                </a><a 
-                                    class="button tiny icon yes merged right black" 
-                                    href="#" 
-                                    id="addvalidate" 
-                                    onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
-                                    <?php echo t('Send request'); ?>
-                                </a>
-                            </form>
-                        </div>
-                    </li>
-                    <li 
-                        onclick="<?php echo $this->callAjax('ajaxToggleCache', "'offlineshown'");?>"
-                        title="<?php echo t('Show/Hide'); ?>">
-                        <a class="users" href="#"></a>
-                    </li>
-                    <li 
-                        onclick="<?php echo $this->callAjax('ajaxShowHideRoster');?>"
-                        title="<?php echo t('Show/Hide'); ?>">
-                        <a class="down" href="#"></a>
-                    </li>
-                </ul>
-            </div>
+        <div id="roster" class="<?php echo $rostershow; ?>">
+            <ul id="rosterlist" class="<?php echo $offlineshown; ?>">
+            <?php echo $this->prepareRoster(); ?>
+            </ul>
+           
             <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
             <script type="text/javascript">sortRoster();</script>
+        </div>
+        
+        <div id="rostermenu" class="menubar">
+            <ul class="menu">
+                <li id="search">
+                    <label class="search" for="rostershow"></label>
+                    <input type="checkbox" id="rostershow"/>
+                    <div class="tabbed">
+                        <input 
+                            type="text" 
+                            name="search" 
+                            id="request" 
+                           
+                            autocomplete="off" 
+                            onkeyup="rosterSearch(event);" 
+                            onclick="focusContact();" 
+                            placeholder="<?php echo t('Search');?>"/>
+                    </div>
+                </li>
+                <li title="<?php echo t('Add'); ?>">
+                    <label class="plus" for="addc"></label>
+                    <input type="checkbox" id="addc"/>
+                    <div class="tabbed">
+                        <form id="addcontact">
+                            <div class="element large mini">
+                                <label for="addjid"><?php echo t('JID'); ?></label>
+                                <input 
+                                    id="addjid" 
+                                    class="tiny" 
+                                    placeholder="user@server.tld" 
+                                    onfocus="myFocus(this);" 
+                                    onblur="myBlur(this);"
+                                />
+                            </div>
+                            <div class="element large mini">
+                                <label for="addalias"><?php echo t('Alias'); ?></label>
+                                <input 
+                                    id="addalias"
+                                    type="text"
+                                    class="tiny" 
+                                    placeholder="<?php echo t('Alias'); ?>" 
+                                    onfocus="myFocus(this);" 
+                                    onblur="myBlur(this);"
+                                />
+                            </div>
+                            <a 
+                                class="button tiny icon no merged left black"
+                                href="#"
+                                id="addrefuse"
+                                onclick="cancelAddJid();">
+                                <?php echo t('Cancel'); ?>
+                            </a><a 
+                                class="button tiny icon yes merged right black" 
+                                href="#" 
+                                id="addvalidate" 
+                                onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
+                                <?php echo t('Send request'); ?>
+                            </a>
+                        </form>
+                    </div>
+                </li>
+                <li 
+                    onclick="<?php echo $this->callAjax('ajaxToggleCache', "'offlineshown'");?>"
+                    title="<?php echo t('Show/Hide'); ?>">
+                    <a class="users" href="#"></a>
+                </li>
+                <li 
+                    onclick="<?php echo $this->callAjax('ajaxShowHideRoster');?>"
+                    title="<?php echo t('Show/Hide'); ?>">
+                    <a class="down" href="#"></a>
+                </li>
+            </ul>
         </div>
     <?php
     }
