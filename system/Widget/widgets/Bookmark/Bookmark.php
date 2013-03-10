@@ -41,7 +41,10 @@ class Bookmark extends WidgetBase
     function ajaxSetBookmark() 
     {
         $b = new moxl\BookmarkSet();                
-        $arr = Cache::c('bookmark');
+        $bookmarks = Cache::c('bookmark');
+                
+        if($bookmarks == null)
+            $bookmarks = array();
         
         $b->setArr($arr)
           ->request();
@@ -59,16 +62,19 @@ class Bookmark extends WidgetBase
             RPC::commit();            
         }
         
-        $arr = Cache::c('bookmark');
+        $arr = Cache::c('bookmark');        
+                
+        if($bookmarks == null)
+            $bookmarks = array();
         
-        array_push($arr,
+        array_push($bookmarks,
             array(
                 'type'      => 'url',
                 'name'      => $form['name'],
                 'url'       => $form['url']));   
        
         $b = new moxl\BookmarkSet();
-        $b->setArr($arr)
+        $b->setArr($bookmarks)
           ->request();
     }
     
