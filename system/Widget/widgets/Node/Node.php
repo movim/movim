@@ -22,7 +22,7 @@ class Node extends WidgetCommon
 {
     function WidgetLoad()
     {
-		$this->registerEvent('stream', 'onStream');
+		//$this->registerEvent('stream', 'onStream');
     }
     
     function onStream($id) {
@@ -44,21 +44,24 @@ class Node extends WidgetCommon
     
     function prepareGroup($serverid, $groupid) {
         $title = '
-            <a href="?q=server&s='.$serverid.'">
-                '.$serverid.'
-            </a> >
-            <a href="?q=node&s='.$serverid.'&n='.$groupid.'">
-                '.$groupid.'
-            </a> >
-            '.t('Posts');
+            <div class="breadcrumb">
+                <a href="?q=server&s='.$serverid.'">
+                    '.$serverid.'
+                </a>
+                <a href="?q=node&s='.$serverid.'&n='.$groupid.'">
+                    '.$groupid.'
+                </a>
+                <a>
+                    '.t('Posts').
+                '</a>
+            </div>';
         
         $pd = new modl\PostDAO();
         $posts = $pd->getGroup($serverid, $groupid);
         
         $html = $title;
-        foreach($posts as $post) {
-            $html .= $this->printPost($post);
-        }
+
+        $html .= $this->preparePosts($posts);
         
         return $html;
     }
