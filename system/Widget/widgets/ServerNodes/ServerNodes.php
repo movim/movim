@@ -24,6 +24,8 @@ class ServerNodes extends WidgetCommon
     {
 		$this->registerEvent('discoitems', 'onDiscoItems');
         $this->registerEvent('disconodes', 'onDiscoNodes');
+        $this->registerEvent('defaultconfig', 'onDefaultConfig');
+        $this->registerEvent('creationsuccess', 'onCreationSuccess');
     }
 
     function onDiscoNodes($items)
@@ -65,16 +67,55 @@ class ServerNodes extends WidgetCommon
         RPC::call('movim_fill', 'servernodes', RPC::cdata($html));
         RPC::commit();
     }
+    
+    function onDefaultConfig($xml)
+    {
+        $html = '<form name="data">';
+        $form = new XMPPtoForm();
+        $html .= $form->getHTML($xml[0]->asXML());
+        
+        $submit = $this->genCallAjax('ajaxSetConfigToNewGroup', "'".$xml[1]."'", "movim_parse_form('data')");
+        $html .= '<a class="button tiny icon" onclick="'.$submit.'">'.t("Send").'</a>';
+        
+        $html .= '</form>';
+        RPC::call('movim_fill', 'newGroupForm', RPC::cdata($html));
+        RPC::commit();
+    }
+    
+    function onCreationSuccess($xml)
+    {
+        $r = new moxl\GroupSetConfig();
+        $r->setTo($xml[0])->setNode($xml[1])->setData($xml[2])
+          ->request();  
+    }
 
     function ajaxGetNodes($server)
     {
         $r = new moxl\GroupServerGetNodes();
         $r->setTo($server)->request();
     }
+    
+    function ajaxGetDefaultConfig($server)
+    {
+        $r = new moxl\GroupGetDefaultConfig();
+        $r->setTo($server)->request();
+    }
+    
+    function ajaxSetConfigToNewGroup($server, $data)
+    {
+        //make a uri of the title
+        $uri = stringToUri($data['pubsub#title']);
+        
+        $r = new moxl\GroupCreate();
+        $r->setTo($server)->setNode($uri)->setData($data)
+          ->request();
+    }
 
     function build()
     {
     ?>
+        <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetDefaultConfig', "'".$_GET['s']."'"); ?>"><?php echo t("Create a new group");?></a>
+        <div id="newGroupForm"></div>
         <div class="tabelem protect red" id="servernodes" title="<?php echo t('Groups');?>">
             <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?></script>
         </div>
