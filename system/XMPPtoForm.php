@@ -23,7 +23,6 @@ class XMPPtoForm{
 	public function create(){
 		$this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
 		$x = new SimpleXMLElement($this->xmpp);
-		//foreach($iq->command[0]->x[0]->children() as $element){
 		foreach($x->children() as $element){
 			switch($element->getName()){
 				case "title":
@@ -33,6 +32,7 @@ class XMPPtoForm{
 					$this->outP($element);
 					break;
 				case "field":
+                    $this->html .='<div class="element">';
 					switch($element['type']){
 						case "boolean":	
 							$this->outCheckbox($element);
@@ -67,6 +67,7 @@ class XMPPtoForm{
 						default:
 							$this->html .= "";
 					}
+                    $this->html .='</div>';
 					break;
 				/*XML without <x> element*/
 				case 'username':
@@ -85,7 +86,7 @@ class XMPPtoForm{
 
 	private function outGeneric($s){
 		$this->html .= '<label for="'.$s.'">'.$s.'</label>
-			<input name="'.$s.'" type="'.$s.'" required/><br />';;
+			<input name="'.$s.'" type="'.$s.'" required/>';;
 	}
 	private function outTitle($s){
 		$this->html .= '<h1>'.$s.'</h1>';
@@ -115,7 +116,7 @@ class XMPPtoForm{
 		<input name="'.$s['var'].'" type="checkbox" '.$s->required;
 		if($s->value == "true" || $s->value == "1")
 			$this->html .= ' checked';
-		$this->html .= '/><br />';
+		$this->html .= '/>';
 	}
 	
 	private function outTextarea($s){
@@ -126,7 +127,7 @@ class XMPPtoForm{
 				$this->html .= $value;
 			}
 		}
-		$this->html .= '</textarea><br />';
+		$this->html .= '</textarea>';
 	}
 	
 	private function outInput($s, $type, $multiple){
@@ -138,7 +139,7 @@ class XMPPtoForm{
 				}
 			}
 		$this->html .= '" type="'.$type.'" title="'.$s->desc.'" 
-			'.$multiple.' '.$s->required.'/><br />';
+			'.$multiple.' '.$s->required.'/>';
 	}
 	
 	private function outHiddeninput($s){
@@ -147,7 +148,7 @@ class XMPPtoForm{
 	
 	private function outList($s, $multiple){
 		$this->html .= '<label for="'.$s["var"].'">'.$s["label"].'</label>
-		<select name="'.$s['var'].'" '.$multiple.' '.$s->required.'>';
+		<div class="select"><select name="'.$s['var'].'" '.$multiple.' '.$s->required.'>';
 		
 		if(count($s->xpath('option')) > 0){
 			foreach($s->option as $option){
@@ -164,7 +165,7 @@ class XMPPtoForm{
 			}
 		}
 		
-		$this->html .= '</select><br />';
+		$this->html .= '</select></div>';
 	}
 }
 
@@ -185,22 +186,32 @@ class FormtoXMPP{
 	}
 	
 	public function setXMPP($stream){
-		$this->stream = $stream;
+		$this->stream = new SimpleXMLElement($stream);
 	}
 	public function setInputs($inputs){
 		$this->inputs = $inputs;
 	}
 	
 	public function create(){
-		$this->stream = new SimpleXMLElement($this->stream);
+        switch($this->stream->getName()){
+            case "stream": 
+                $node = $this->stream->iq->query;
+                break;
+            case "pubsub":
+                $node = $this->stream->configure->x;
+                break;
+        }
 		foreach($this->inputs as $key => $value) {
-            if($value == '') {
+            if($value == '' && $this->stream->getName() == "stream") {
                 RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
                 RPC::commit();
      	        exit;
             }
-		    else
-		        $this->stream->iq->query->addChild($key, $value);
+		    else{
+                $field = $node->addChild('field');
+                $field->addChild('value', $value);
+                $field->addAttribute('var', $key);
+            }
         }
 	}
 }
