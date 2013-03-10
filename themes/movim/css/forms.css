@@ -186,7 +186,7 @@ form .element.simple > *:not(label):not(img):focus {
 }
 
 .element input[type=checkbox] {
-	visibility: hidden;
+	/*visibility: hidden;*/
 }
 
 .element .checkbox:after {
