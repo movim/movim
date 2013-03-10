@@ -16,7 +16,7 @@
  */
 
 class WidgetCommon extends WidgetBase {
-    protected function printPost($post, $comments) {
+    protected function printPost($post, $comments = false) {
         if($post->title)
             $title = '
                 <span>
@@ -31,53 +31,51 @@ class WidgetCommon extends WidgetBase {
                 $access .= 'protect orange';
         }
         
-        if($post->public != 2) {
-
-            if($post->jid != $post->uri)
-                $recycle .= '
-                    <span class="recycle">
-                        <a href="?q=friend&f='.$post->uri.'">'.$post->uri.'</a>
-                     </span>';
-
-            if($post->getPlace() != false)
-                $place .= '
-                    <span class="place">
-                        <a 
-                            target="_blank" 
-                            href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
-                        >'.$post->getPlace().'</a>
-                    </span>';
-
-            $content = 
-                    prepareString(html_entity_decode($post->content));
-            
-            if($post->commentplace)
-                $comments = $this->printComments($post, $comments);
-            else
-                $comments = '';
-                
-            $fold = t('Fold');
-        } else {
-            $content = '…';
-            $comments = '';
-
+        if($post->public == 2) {
+            $class .= ' folded';
             $fold = t('Unfold');
+            $avatar = $post->getContact()->getPhoto('xs');
+        } else {
+            $fold = t('Fold');
+            $avatar = $post->getContact()->getPhoto('m');
         }
+
+        if($post->jid != $post->uri)
+            $recycle .= '
+                <span class="recycle">
+                    <a href="?q=friend&f='.$post->uri.'">'.$post->uri.'</a>
+                 </span>';
+
+        if($post->getPlace() != false)
+            $place .= '
+                <span class="place">
+                    <a 
+                        target="_blank" 
+                        href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
+                    >'.$post->getPlace().'</a>
+                </span>';
+
+        $content = 
+                prepareString(html_entity_decode($post->content));
+        
+        if($post->commentplace && $post->commentson)
+            $comments = $this->printComments($post, $comments);
+        else
+            $comments = '';
         
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
                 <a href="?q=friend&amp;f='.$post->jid.'">
-                    <img class="avatar" src="'.$post->getContact()->getPhoto('m').'">
+                    <img class="avatar" src="'.$avatar.'">
                 </a>
-                
-                <div class="postmenu">
-                    <a 
-                        href="" 
-                        onclick="'.$this->genCallAjax('ajaxPostFold', "'".$post->nodeid."'").'">'.$fold.'</a>
-                </div>
 
                 <div id="'.$post->nodeid.'" class="postbubble '.$access.'">
-                    '.$title.'
+                    <span class="title">'.$title.'</span>
+                    <span class="fold">
+                        <a 
+                        href="" 
+                        onclick="'.$this->genCallAjax('ajaxPostFold', "'".$post->nodeid."'").'">'.$fold.'</a>
+                    </span>
                     <span>
                         <a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
                     </span>
@@ -160,8 +158,8 @@ class WidgetCommon extends WidgetBase {
      * @return generated HTML
      */
     protected function preparePosts($posts) {
-        if($posts == false) {
-			$html = false;
+        if($posts == false || empty($posts)) {
+			$html = '<div style="padding: 1.5em; text-align: center;">Ain\'t Nobody Here But Us Chickens...</div>';
 		} else {
 			$html = '';
 

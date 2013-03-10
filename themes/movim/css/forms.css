@@ -6,7 +6,7 @@ form * {
 
 fieldset {
     border: none;
-    margin-top: 20px;
+    margin-bottom: 2em !important;
 }
 
 legend {
@@ -17,7 +17,7 @@ legend {
     display: block;
     width: 51%;
     border-bottom: 1px solid rgb(220, 220, 220) !important;
-    line-height: 2em !important;
+    line-height: 2.5em !important;
 }
 
 .element {
@@ -36,21 +36,32 @@ legend {
     width: 25%;
 }
 
+.element.mini {
+    min-height: 0px;
+}
+
+.element.mini > input {
+    min-height: 1.7em;
+}
+
 .element > label {
     display: block;
+    margin: 8px 0px;
 }
 
 .element > *:not(label):not(img):not(span):not(a) {
-    display: block;
-    width: 96%;
+    display: inline-block;
+    width: 100%;
     border: 1px solid #999;
     min-height: 30px;
     border-radius: 2px;
     background-color: white;
     box-shadow: inset 0 2px 1px #ddd;
     margin: 5px 0px;
-    margin-right: 5px;
-    padding-left: 5px;
+    padding: 0% 2%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 }
 
 .element > *:not(label):not(img):focus {
@@ -220,7 +231,7 @@ form .element.simple > *:not(label):not(img):focus {
 
 .element .checkbox label[for=checkbox] {
 	display: block;
-	width: 48px;
+	width: 38px;
 	height: 30px;
 
 	cursor: pointer;

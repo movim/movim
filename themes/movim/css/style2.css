@@ -191,13 +191,16 @@ h2:first-child {
 }
 
 h2 {
-    color: #888;
-    padding: 0.8em 0px;
-    font-size: 1.2em;
+    color: #777;
+    margin: 0.5em 0px;
+    margin-top: 1em;
+    padding: 0.3em 0px;
+    font-size: 1.15em;
+    border-bottom: 1px solid #CCC;
 }
 
 h3 {
-    color: #8C8C8C;
+    color: #777;
     font-size: 1.1em;
     padding: 0.3em 0px;
 }
@@ -349,6 +352,10 @@ ul.clean li {
     padding-top: 60px;
 }
 
+#left ul {
+    list-style-type: none;
+}
+
 #center
 {
     float: right;
@@ -437,7 +444,7 @@ ul.clean li {
 .menu li a.disconnect{
     position: fixed;
     top: 3px;
-    right: 0px;
+    right: 10px;
 }
 
 .menu li a.active {
@@ -618,3 +625,78 @@ ul.list li a {
     padding: 0.7em;
     display: block;
 }
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: #F5F5F5;
+    padding: 10px 5px;
+}
+
+.breadcrumb > a {
+    display: inline-block;
+    line-height: 30px;
+    padding-left: 30px;
+    padding-right: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.breadcrumb > a:first-child {
+    padding-left: 1.5em;
+}
+
+.breadcrumb > a:not(:first-child):after {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    content: "";
+    border-right: 1px solid rgba(0, 0, 0, 0.2);   
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+/* Popup */
+.popup {
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 5;
+    width: 50%;
+    height: 80%;
+    padding: 10% 25%;
+}
+
+.popup legend {
+    color: white;
+    font-size: 1.3em !important;
+    border: 0px !important;
+    text-shadow: 0px -1px 0px black;
+}
+/*
+.popup .close {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: #CCC;
+    background-color: black;
+    padding: 5px;
+    font-family: sans-serif;
+    font-weight: bold;
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #777;
+}
+
+.popup .close:hover {
+    cursor: pointer;
+}*/
