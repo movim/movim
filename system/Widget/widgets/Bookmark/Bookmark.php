@@ -62,7 +62,7 @@ class Bookmark extends WidgetBase
             RPC::commit();            
         }
         
-        $arr = Cache::c('bookmark');        
+        $bookmarks = Cache::c('bookmark');        
                 
         if($bookmarks == null)
             $bookmarks = array();
@@ -184,13 +184,16 @@ class Bookmark extends WidgetBase
         $setbookmark = $this->genCallAjax("ajaxSetBookmark");
     ?>
         <h2><?php echo t('Bookmarks'); ?></h2>
-        
-        <a class="button icon yes tiny" style="float: right;"
-           onclick="movim_toggle_display('#bookmarkadd')">Add</a>
+    
         <div id="bookmarks">
             <?php echo $this->prepareBookmark(Cache::c('bookmark')); ?>
         </div>
-        
+
+        <a class="button icon yes tiny merged right" style="float: right;"
+           onclick="movim_toggle_display('#bookmarkadd')">Add</a>
+        <a class="button icon yes tiny merged left" style="float: right;"
+           onclick="<?php echo $getbookmark; ?>">Refresh</a>
+        <br />
         <?php 
     }
 }
