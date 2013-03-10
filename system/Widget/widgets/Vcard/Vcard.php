@@ -144,7 +144,7 @@ class Vcard extends WidgetBase
                           </div>';
                           
                 $html .= '<div class="element">
-                            <label for="name">'.t('Email').'</label>
+                            <label for="email">'.t('Email').'</label>
                             <input type="email" name="email" class="content" value="'.$me->email.'">
                           </div>';
                           
@@ -326,7 +326,8 @@ class Vcard extends WidgetBase
     function ajaxGetVcard()
     {
         $r = new moxl\VcardGet();
-        $r->setTo($this->user->getLogin())->request();
+        $r->setTo($this->user->getLogin())
+          ->request();
     }
 
     function build()
