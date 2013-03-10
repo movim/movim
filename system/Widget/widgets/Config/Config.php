@@ -103,7 +103,7 @@ class Config extends WidgetBase
                             onclick="
                                 document.querySelector('input[name=color]').value = '082D50';
                                 document.body.style.backgroundColor = '#082D50';"
-                            style="width: 25%; float: left; margin-top: 6px;" 
+                            style="width: 25%; float: left;" 
                             class="button icon back">
                             <?php echo t('Reset');?>
                         </a>

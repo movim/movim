@@ -315,7 +315,7 @@ class Roster extends WidgetBase
                     <input type="checkbox" id="addc"/>
                     <div class="tabbed">
                         <form id="addcontact">
-                            <div class="element large">
+                            <div class="element large mini">
                                 <label for="addjid"><?php echo t('JID'); ?></label>
                                 <input 
                                     id="addjid" 
@@ -325,7 +325,7 @@ class Roster extends WidgetBase
                                     onblur="myBlur(this);"
                                 />
                             </div>
-                            <div class="element large">
+                            <div class="element large mini">
                                 <label for="addalias"><?php echo t('Alias'); ?></label>
                                 <input 
                                     id="addalias"
