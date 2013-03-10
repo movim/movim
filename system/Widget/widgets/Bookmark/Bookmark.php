@@ -22,8 +22,6 @@ class Bookmark extends WidgetBase
 {
     function WidgetLoad()
     {
-		/*$this->addcss('config.css');
-		$this->addjs('color/jscolor.js');*/
         $this->registerEvent('bookmark', 'onBookmark');
     }
     
@@ -93,6 +91,9 @@ class Bookmark extends WidgetBase
         $url = '';
         $conference = '';
         $subscription = '';
+        
+        if($bookmarks == null)
+            $bookmarks = array();
         
         foreach($bookmarks as $b) {
             switch ($b['type']) {
