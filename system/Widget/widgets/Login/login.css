@@ -30,6 +30,7 @@ body {
 
 #loginpage #connectform {
     padding: 0.7em 1em;
+    padding-top: 0.3em;
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: 1px solid rgba(255, 255, 255, 0.4);
@@ -54,7 +55,7 @@ body {
 }
 
 #loginpage #connectform a[name=submit] {
-    margin: 0ox;
+    margin: 0px 1px;
     display: block;
     padding: 0px;
     padding-left: 5px;
