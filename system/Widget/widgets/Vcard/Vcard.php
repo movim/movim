@@ -152,7 +152,7 @@ class Vcard extends WidgetBase
                             <label for="day">'.t('Date of Birth').'</label>';
                         
                 $html .= '
-                        <div class="select" style="width: 29%; float: left;">
+                        <div class="select" style="width: 33%; float: left;">
                             <select name="day" class="datepicker">
                             <option value="-1">'.t('Day').'</option>';
                                 for($i=1; $i<= 31; $i++){
@@ -172,7 +172,7 @@ class Vcard extends WidgetBase
                         
     
                 $html .= '
-                        <div class="select" style="width: 29%; float: left;">
+                        <div class="select" style="width: 34%; float: left;">
                             <select name="month" class="datepicker">
                             <option value="-1">'.t('Month').'</option>';
                                 for($i=1; $i<= 12; $i++){
@@ -191,7 +191,7 @@ class Vcard extends WidgetBase
                         </div>';
                         
                 $html .= '
-                        <div class="select" style="width: 29%; float: left;">
+                        <div class="select" style="width: 33%; float: left;">
                             <select name="year" class="datepicker">
                             <option value="-1">'.t('Year').'</option>';
                                 for($i=date('o'); $i>= 1920; $i--){

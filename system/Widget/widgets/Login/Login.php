@@ -263,7 +263,6 @@ class Login extends WidgetBase {
                     onkeypress="
                         if(event.keyCode == 13) {
                             <?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;}">
-                    <div id="warning"><?php echo $this->displayWarning($_GET['err'], true); ?></div>
                     <div class="element">
                         <input type="email" name="login" id="login" autofocus required
                             placeholder="<?php echo t("My address"); ?>"/>
@@ -283,6 +282,7 @@ class Login extends WidgetBase {
                     <input style="display: none;" type="submit" id="submitb" name="submitb" value="submit"/>
                     <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
                     
+                    <div id="warning"><?php echo $this->displayWarning($_GET['err'], true); ?></div>
                     <div class="infos">
                             <?php
                             $rd = new \modl\RosterLinkDAO();
