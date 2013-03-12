@@ -43,6 +43,30 @@ class ServerNodes extends WidgetCommon
         }
 
         $html .= '</ul>';
+        
+        $submit = $this->genCallAjax('ajaxCreateGroup', "movim_parse_form('groupCreation')");
+        
+        $html .= '<div class="popup" id="groupCreation">
+                <form name="groupCreation">
+                    <fieldset>
+                        <legend>'.t('Give a friendly name to your group').'</legend>
+                        <div class="element large mini">
+                            <input name="title" placeholder="'.t('My Little Pony - Fan Club').'"/>
+                        </div>
+                    </fieldset>
+                    <a 
+                        class="button tiny icon yes black merged left"
+                        onclick="'.$submit.'"
+                    >'.
+                            t('Add').'
+                    </a><a 
+                        class="button tiny icon black merged right" 
+                        onclick="this.parentNode.parentNode.style.display = \'none\'"
+                    >'.
+                            t('Close').'
+                    </a>
+                </form>
+            </div>';
 
         RPC::call('movim_fill', 'servernodes', RPC::cdata($html));
         RPC::commit();
@@ -95,13 +119,13 @@ class ServerNodes extends WidgetCommon
         $r->setTo($server)->request();
     }
     
-    function ajaxGetDefaultConfig($server)
+    /*function ajaxGetDefaultConfig($server)
     {
         $r = new moxl\GroupGetDefaultConfig();
         $r->setTo($server)->request();
-    }
+    }*/
     
-    function ajaxSetConfigToNewGroup($server, $data)
+    function ajaxCreateGroup($server, $data)
     {
         //make a uri of the title
         $uri = stringToUri($data['pubsub#title']);
@@ -114,7 +138,7 @@ class ServerNodes extends WidgetCommon
     function build()
     {
     ?>
-        <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetDefaultConfig', "'".$_GET['s']."'"); ?>"><?php echo t("Create a new group");?></a>
+        <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxCreateGroup', "'".$_GET['s']."'"); ?>"><?php echo t("Create a new group");?></a>
         <div id="newGroupForm"></div>
         <div class="tabelem protect red" id="servernodes" title="<?php echo t('Groups');?>">
             <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?></script>
