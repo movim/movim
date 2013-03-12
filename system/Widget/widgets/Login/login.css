@@ -24,11 +24,11 @@ body {
 }
 
 #loginpage #warning {
-    margin: 6px;
+    margin-bottom: 0.7em;
 }
 
 #loginpage #connectform {
-    padding: 1em;
+    padding: 0.6em;
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: 1px solid rgba(255, 255, 255, 0.4);
@@ -39,13 +39,13 @@ body {
 #loginpage #connectform .element {
     display: block;
     margin: 0 auto;
+    padding: 0px;
     width: 100%;
     min-height: 40px;
 }
 
 #loginpage #connectform .element input {
-    width: 95%;
-    margin: 0 auto;
+    margin: 0px;
     border-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.2) rgba(200, 200, 200, 0.3);
     box-shadow: none;
     color: black;
@@ -53,9 +53,8 @@ body {
 }
 
 #loginpage #connectform a[name=submit] {
-    margin: 0 auto;
+    margin: 0px 1px;
     display: block;
-    width: 94%;
     padding: 0px;
     padding-left: 5px;
     text-align: center;

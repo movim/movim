@@ -50,14 +50,6 @@ class User {
         Session::dispose(APP_NAME);
 	}
 
-    function setLang($language)
-    {
-        global $sdb;
-        $conf = $sdb->select('ConfVar', array('login' => $this->username));
-        $conf[0]->set('language', $language);
-        $sdb->save($conf[0]);
-    }
-
 	function getLogin()
 	{
 		return $this->username;
@@ -86,4 +78,3 @@ class User {
     }
 
 }
-
