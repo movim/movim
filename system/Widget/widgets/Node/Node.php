@@ -70,6 +70,7 @@ class Node extends WidgetCommon
     {
     ?>
         <div class="tabelem protect red" id="node" title="<?php echo t('Posts');?>">
+            <a href="#" class="button tiny icon next" style="float: right;"><?php echo t('Subscribe'); ?></a>
             <?php echo $this->prepareGroup($_GET['s'], $_GET['n']); ?>
             <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetItems', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?></script>
         </div>

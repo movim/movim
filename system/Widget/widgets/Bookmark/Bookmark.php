@@ -191,7 +191,7 @@ class Bookmark extends WidgetBase
 
         <a class="button icon yes tiny merged right" style="float: right;"
            onclick="movim_toggle_display('#bookmarkadd')">Add</a>
-        <a class="button icon yes tiny merged left" style="float: right;"
+        <a class="button icon submit tiny merged left" style="float: right;"
            onclick="<?php echo $getbookmark; ?>">Refresh</a>
         <br />
         <?php 
