@@ -189,6 +189,9 @@ class ContactInfo extends WidgetCommon
                 '.t('No').'
             </a>';
         } elseif($_GET['f'] != $this->user->getLogin()) {
+                            
+            $html .='<h2>'.t('Actions').'</h2>';
+            
             $html .='
             <a
                 class="button tiny icon add"
