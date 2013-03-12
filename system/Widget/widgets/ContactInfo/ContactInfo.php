@@ -47,6 +47,7 @@ class ContactInfo extends WidgetCommon
             if($c->mood) {
                 $moodarray = getMood();
                 
+                $html .= '<h2>'.t('Mood').'</h2>';
                 $mood = '';
                 foreach(unserialize($c->mood) as $m)
                     $mood .= $moodarray[$m].',';

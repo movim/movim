@@ -24,12 +24,17 @@ legend {
     overflow: auto;
     min-height: 80px;
     width: 50%;
+    padding-right: 2%;
     float: left;
     display: block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .element.large {
     width: 100%;
+    padding-right: 0px;
 }
 
 .element.thin {
@@ -60,8 +65,8 @@ legend {
     margin: 5px 0px;
     padding: 0% 2%;
     box-sizing: border-box;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .element > *:not(label):not(img):focus {
@@ -81,10 +86,10 @@ form .element.simple > *:not(label):not(img):focus {
     background-color: transparent;
 }
 
-.element textarea, textarea {
+.element > textarea, textarea {
 	font-family: helvetica, sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
     font-size: 13px;
-    padding: 10px 0px;
+    padding: 0px;
     resize: vertical;
     background-color: white;
 }
@@ -198,7 +203,7 @@ form .element.simple > *:not(label):not(img):focus {
     top: 0px;
     line-height: 30px;
     height: 30px;
-    width: 38px;
+    width: 40px;
     text-align: center;
     
     color: white;
@@ -218,7 +223,7 @@ form .element.simple > *:not(label):not(img):focus {
     top: 0px;
     line-height: 30px;
     height: 30px;
-    width: 44px;
+    width: 40px;
     background-color: #333;
     text-align: center;
 
@@ -231,7 +236,7 @@ form .element.simple > *:not(label):not(img):focus {
 
 .element .checkbox label[for=checkbox] {
 	display: block;
-	width: 38px;
+	width: 44px;
 	height: 30px;
 
 	cursor: pointer;
@@ -250,7 +255,7 @@ form .element.simple > *:not(label):not(img):focus {
 }
 
 .element .checkbox input[type=checkbox]:checked + label {
-	left: 43px;
+	left: 37px;
     border-right: none;
     border-left: 1px solid #888;
 }

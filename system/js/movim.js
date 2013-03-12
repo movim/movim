@@ -88,3 +88,12 @@ function movim_change_class(params) {
     var node = document.getElementById(params[0]);
     node.className = params[1];
 }
+
+
+function movim_toggle_display(param) {
+    var node = document.querySelector(param);
+    if(node.style.display == 'block')
+        node.style.display = 'none';
+    else
+        node.style.display = 'block';
+}
