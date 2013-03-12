@@ -629,12 +629,13 @@ ul.list li a {
 /* Breadcrumb */
 .breadcrumb {
     background-color: #F5F5F5;
-    padding: 10px 5px;
+    padding: 0px 5px;
+    height: 28px;
 }
 
 .breadcrumb > a {
     display: inline-block;
-    line-height: 30px;
+    line-height: 28px;
     padding-left: 30px;
     padding-right: 15px;
     position: relative;
@@ -650,7 +651,7 @@ ul.list li a {
     width: 20px;
     height: 20px;
     position: absolute;
-    top: 5px;
+    top: 4px;
     left: -10px;
     content: "";
     border-right: 1px solid rgba(0, 0, 0, 0.2);   
@@ -672,6 +673,10 @@ ul.list li a {
     width: 50%;
     height: 80%;
     padding: 10% 25%;
+}
+
+.popup span {
+    color: white;
 }
 
 .popup legend {

@@ -78,6 +78,46 @@ class Bookmark extends WidgetBase
           ->request();
     }
     
+    function ajaxSubscribeAdd($server, $node, $form)
+    {
+        if($form['title'] == '') {
+            $html = '<div class="message error">'.t('Enter a correct title').'</div>' ;
+            RPC::call('movim_fill', 'subscribeadderror', RPC::cdata($html));
+            RPC::commit();
+        }
+        $bookmarks = Cache::c('bookmark');        
+                
+        if($bookmarks == null)
+            $bookmarks = array();
+        
+        array_push($bookmarks,
+            array(
+                'type'      => 'subscription',
+                'server'    => $server,
+                'node'      => $node,
+                'title'     => $form['title']));   
+       
+        $b = new moxl\BookmarkSet();
+        $b->setArr($bookmarks)
+          ->request();        
+    }
+
+    function ajaxSubscribeRemove($server, $node)
+    {
+        $arr = Cache::c('bookmark');
+        foreach($arr as $key => $b) {
+            if(
+                $b['type'] == 'subscription' && 
+                $b['server'] == $server &&
+                $b['node'] == $node)
+                unset($arr[$key]);
+        }
+
+        $b = new moxl\BookmarkSet();
+        $b->setArr($arr)
+          ->request();
+    }
+    
     function ajaxBookmarkUrlRemove($url)
     {
         $arr = Cache::c('bookmark');
@@ -137,12 +177,15 @@ class Bookmark extends WidgetBase
             <h3>'.t('Links').'</h3>
             <ul>'.
                 $url.'
-            </ul>
-            
-            <h3>'.t('Conferences').'</h3>
-            <ul>'.
-                $conference.'
             </ul>';
+            
+        if($conference != '') {
+            $html .= '
+                <h3>'.t('Conferences').'</h3>
+                <ul>'.
+                    $conference.'
+                </ul>';
+        }
             
         $submit = $this->genCallAjax('ajaxBookmarkAdd', "movim_parse_form('bookmarkadd')");
             
@@ -167,7 +210,7 @@ class Bookmark extends WidgetBase
                             t('Add').'
                     </a><a 
                         class="button tiny icon black merged right" 
-                        onclick="this.parentNode.parentNode.style.display = \'none\'"
+                        onclick="movim_toggle_display(\'#bookmarkadd\')"
                     >'.
                             t('Close').'
                     </a>
@@ -188,7 +231,7 @@ class Bookmark extends WidgetBase
         <div id="bookmarks">
             <?php echo $this->prepareBookmark(Cache::c('bookmark')); ?>
         </div>
-
+        <br />
         <a class="button icon yes tiny merged right" style="float: right;"
            onclick="movim_toggle_display('#bookmarkadd')">Add</a>
         <a class="button icon submit tiny merged left" style="float: right;"
