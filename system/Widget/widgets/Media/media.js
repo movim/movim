@@ -162,6 +162,8 @@ function uploadFinish(e) { // upload successfully finished
     document.getElementById('remaining').innerHTML = ' 00:00:00';
 
     clearInterval(oTimer);
+    
+    refreshMedia();
 }
 
 function uploadError(e) { // upload error

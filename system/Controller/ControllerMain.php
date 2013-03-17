@@ -281,6 +281,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Home'), 'main');
             $this->page->menuAddLink(t('Explore'), 'explore', true);
             $this->page->menuAddLink(t('Profile'), 'profile');
+            $this->page->menuAddLink(t('Media'), 'media');
 			$this->page->menuAddLink(t('Configuration'), 'config');
             $this->page->menuAddLink(t('Help'), 'help');
             $this->page->menuAddLink(t('Logout'), 'disconnect');
@@ -308,6 +309,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Home'), 'main');
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
+            $this->page->menuAddLink(t('Media'), 'media');
 			$this->page->menuAddLink(t('Configuration'), 'config');
             $this->page->menuAddLink(t('Help'), 'help', true);
             $this->page->menuAddLink(t('Logout'), 'disconnect');
