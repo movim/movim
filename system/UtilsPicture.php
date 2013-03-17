@@ -1,14 +1,28 @@
 <?php
 
+function createThumbnailPicture($path, $filename) {  
+    if(file_exists($path.'thumb_'.$filename))
+        unlink($path.'thumb_'.$filename);
+    if(file_exists($path.'medium_'.$filename))
+        unlink($path.'medium_'.$filename);
+    
+    $handle = fopen($path.$filename, "r");
+    $file = fread($handle, filesize($path.$filename));
+    fclose($handle);
+    
+    createThumbnailSize($file, 200, $path.'thumb_'.$filename);
+    createThumbnailSize($file, 600, $path.'medium_'.$filename);
+}
+
 function createThumbnails($jid, $photobin) {
     unlink(BASE_PATH.'cache/'.$jid.'_l.jpg');
     unlink(BASE_PATH.'cache/'.$jid.'_m.jpg');
     unlink(BASE_PATH.'cache/'.$jid.'_s.jpg');
     unlink(BASE_PATH.'cache/'.$jid.'_xs.jpg');
-    createThumbnailSize($photobin, 150, BASE_PATH.'cache/'.$jid.'_l.jpg');
-    createThumbnailSize($photobin, 120, BASE_PATH.'cache/'.$jid.'_m.jpg');
-    createThumbnailSize($photobin, 50, BASE_PATH.'cache/'.$jid.'_s.jpg');
-    createThumbnailSize($photobin, 24, BASE_PATH.'cache/'.$jid.'_xs.jpg');
+    createThumbnailSize(base64_decode($photobin), 150, BASE_PATH.'cache/'.$jid.'_l.jpg');
+    createThumbnailSize(base64_decode($photobin), 120, BASE_PATH.'cache/'.$jid.'_m.jpg');
+    createThumbnailSize(base64_decode($photobin), 50, BASE_PATH.'cache/'.$jid.'_s.jpg');
+    createThumbnailSize(base64_decode($photobin), 24, BASE_PATH.'cache/'.$jid.'_xs.jpg');
 }
 
 function createThumbnailSize($photobin, $size, $path) {
@@ -16,7 +30,7 @@ function createThumbnailSize($photobin, $size, $path) {
     $white = imagecolorallocate($thumb, 255, 255, 255);
     imagefill($thumb, 0, 0, $white);
     
-    $source = imagecreatefromstring(base64_decode($photobin));
+    $source = imagecreatefromstring($photobin);
     
     $width = imagesx($source);
     $height = imagesy($source);
