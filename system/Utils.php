@@ -661,6 +661,11 @@ function checkJid($jid)
     return filter_var($jid, FILTER_VALIDATE_EMAIL);
 }
 
+/**
+ * Return a URIfied string
+ * @param string
+ * @return string
+ */
 function stringToUri($url) {
     $url = utf8_decode($url);
     $url = strtolower(strtr($url, utf8_decode('ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ()[]\'"~$&%*@ç!?;,:/\^¨€{}<>|+.- '),  'aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn    --      c  ---    e       --'));
@@ -671,8 +676,10 @@ function stringToUri($url) {
     return $url;
 }
 
-/*
- * 
+/**
+ * Return a human readable filesize
+ * @param string size in bytes
+ * @return string
  */
 function sizeToCleanSize($size)
 {
