@@ -27,19 +27,15 @@ class Node extends WidgetCommon
     }
     
     function onGroupSubscribed($params)
-    {
+    {        
         $html = $this->prepareGroup($params[0], $params[1]);
-        
-        RPC::call('movim_fill', 'node', RPC::cdata($html));
-        RPC::commit();        
+        RPC::call('movim_fill', 'node', RPC::cdata($html));    
     }
     
-    function onGroupUnubscribed($params)
+    function onGroupUnsubscribed($params)
     {
         $html = $this->prepareGroup($params[0], $params[1]);
-        
         RPC::call('movim_fill', 'node', RPC::cdata($html));
-        RPC::commit();
     }
     
     function onStream($id) {
@@ -48,7 +44,6 @@ class Node extends WidgetCommon
         if($html == '') 
             $html = t("Your feed cannot be loaded.");
         RPC::call('movim_fill', 'node', RPC::cdata($html));
-        RPC::commit();
     }
 
     function ajaxGetItems($server, $node)
@@ -70,15 +65,28 @@ class Node extends WidgetCommon
     
     function ajaxUnsubscribe($server, $node)
     {
-        $g = new moxl\GroupUnsubscribe();
-        $g->setTo($server)
+        $sd = new \modl\SubscriptionDAO();
+
+        foreach($sd->get($server, $node) as $s) {
+            $g = new moxl\GroupUnsubscribe();
+            $g->setTo($server)
+              ->setNode($node)
+              ->setSubid($s->subid)
+              ->setFrom($this->user->getLogin())
+              ->request();
+        }
+    }
+    
+    function ajaxGetSubscriptions($server, $node)
+    {
+        $r = new moxl\GroupGetSubscriptions();
+        $r->setTo($server)
           ->setNode($node)
-          ->setFrom($this->user->getLogin())
           ->request();
     }
     
     function prepareGroup($serverid, $groupid) {
-        if($this->searchSubscribed($serverid, $groupid))
+        if($this->searchSubscription($serverid, $groupid))
             $button = '
                 <a
                     href="#" 
@@ -97,43 +105,38 @@ class Node extends WidgetCommon
         
         $html = '
             <div class="breadcrumb">
-                <a href="?q=server&s='.$_GET['s'].'">
-                    '.$_GET['s'].'
+                <a href="?q=server&s='.$serverid.'">
+                    '.$serverid.'
                 </a>
-                <a href="?q=node&s='.$_GET['s'].'&n='.$_GET['n'].'">
-                    '.$_GET['n'].'
+                <a href="?q=node&s='.$serverid.'&n='.$groupid.'">
+                    '.$groupid.'
                 </a>
                 <a>'.t('Posts').'</a>
             </div>
             <div class="posthead">
                 '.$button.'<a
                     href="#"
-                    onclick="'.$this->genCallAjax('ajaxGetItems', "'".$_GET['s']."'", "'".$_GET['n']."'").'"
+                    onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").'"
                     class="button tiny icon follow merged right">
                     '.('Refresh').'
                 </a>
+                
+                <a 
+                    class="button tiny icon yes"
+                    onclick="
+                        '.$this->genCallAjax('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'").'"
+                >'.t('Get Subscription').'</a>
             </div>
             
             <div class="popup" id="groupsubscribe">
                 <form name="groupsubscribe">
                     <fieldset>
                         <legend>'.t('Subscribe').'</legend>
-                        
-                        <div id="subscribeadderror"></div>
-                        <div class="element large mini">
-                            <input name="title" placeholder="'.t('Title').'"/>
-                        </div>
                     </fieldset>
                     <a 
                         class="button tiny icon yes black merged left"
                         onclick="
-                            '.$this->genCallAjax('ajaxSubscribe', "'".$_GET['s']."'", "'".$_GET['n']."'").'
-                            '.$this->genCallWidget(
-                                                "Bookmark",
-                                                "ajaxSubscribeAdd", 
-                                                "'".$_GET['s']."'",
-                                                "'".$_GET['n']."'",
-                                                "movim_parse_form('groupsubscribe')").'"
+                            '.$this->genCallAjax('ajaxSubscribe', "'".$serverid."'", "'".$groupid."'").'"
                     >'.t('Subscribe').'</a><a 
                         class="button tiny icon black merged right" 
                         onclick="
@@ -152,12 +155,7 @@ class Node extends WidgetCommon
                     <a 
                         class="button tiny icon yes black merged left"
                         onclick="
-                            '.$this->genCallAjax('ajaxUnsubscribe', "'".$_GET['s']."'", "'".$_GET['n']."'").'
-                            '.$this->genCallWidget(
-                                                "Bookmark",
-                                                "ajaxSubscribeRemove", 
-                                                "'".$_GET['s']."'",
-                                                "'".$_GET['n']."'").'"
+                            '.$this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'").'"
                     >'.t('Unsubscribe').'</a><a 
                         class="button tiny icon black merged right" 
                         onclick="
@@ -187,6 +185,16 @@ class Node extends WidgetCommon
                 $bookmark['node'] == $node) {
                 return true;
             }
+        }
+        return false;
+    }
+    
+    function searchSubscription($server, $node) {
+        $sd = new \modl\SubscriptionDAO();
+        
+        foreach($sd->get($server, $node) as $s) {
+            if($s->subscription == 'subscribed')
+                return true;
         }
         return false;
     }

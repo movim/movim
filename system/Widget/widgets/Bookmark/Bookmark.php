@@ -23,6 +23,22 @@ class Bookmark extends WidgetBase
     function WidgetLoad()
     {
         $this->registerEvent('bookmark', 'onBookmark');
+		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
+		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
+    }
+    
+    function onGroupSubscribed()
+    {
+        $arr = Cache::c('bookmark');
+        $html = $this->prepareBookmark($arr);
+        RPC::call('movim_fill', 'bookmarks', RPC::cdata($html));        
+    }
+    
+    function onGroupUnsubscribed()
+    {
+        $arr = Cache::c('bookmark');
+        $html = $this->prepareBookmark($arr);
+        RPC::call('movim_fill', 'bookmarks', RPC::cdata($html));        
     }
     
     function onBookmark($arr)
@@ -78,46 +94,6 @@ class Bookmark extends WidgetBase
           ->request();
     }
     
-    function ajaxSubscribeAdd($server, $node, $form)
-    {
-        if($form['title'] == '') {
-            $html = '<div class="message error">'.t('Enter a correct title').'</div>' ;
-            RPC::call('movim_fill', 'subscribeadderror', RPC::cdata($html));
-            RPC::commit();
-        }
-        $bookmarks = Cache::c('bookmark');        
-                
-        if($bookmarks == null)
-            $bookmarks = array();
-        
-        array_push($bookmarks,
-            array(
-                'type'      => 'subscription',
-                'server'    => $server,
-                'node'      => $node,
-                'title'     => $form['title']));   
-       
-        $b = new moxl\BookmarkSet();
-        $b->setArr($bookmarks)
-          ->request();        
-    }
-
-    function ajaxSubscribeRemove($server, $node)
-    {
-        $arr = Cache::c('bookmark');
-        foreach($arr as $key => $b) {
-            if(
-                $b['type'] == 'subscription' && 
-                $b['server'] == $server &&
-                $b['node'] == $node)
-                unset($arr[$key]);
-        }
-
-        $b = new moxl\BookmarkSet();
-        $b->setArr($arr)
-          ->request();
-    }
-    
     function ajaxBookmarkUrlRemove($url)
     {
         $arr = Cache::c('bookmark');
@@ -138,6 +114,17 @@ class Bookmark extends WidgetBase
         $conference = '';
         $subscription = '';
         
+        $sd = new \modl\SubscriptionDAO();
+        
+        foreach($sd->getSubscribed() as $s) {
+            $subscription .= '
+                <li>
+                    <a href="?q=node&s='.$s->server.'&n='.$s->node.'">'.
+                        $s->node.'
+                    </a>
+                </li>';
+        }
+        
         if($bookmarks == null)
             $bookmarks = array();
         
@@ -157,27 +144,24 @@ class Bookmark extends WidgetBase
                         <a href="#" onclick="'.$remove.'">X</a>
                     </li>';
                 break;
-            case 'subscription':
-                $subscription .= '
-                    <li>
-                        <a href="?q=node&s='.$b['server'].'&n='.$b['node'].'">'.
-                            $b['title'].'
-                        </a>
-                    </li>';
-                break;
             }
         }
         
-        $html .= '
-            <h3>'.t('Groups').'</h3>
-            <ul>'.
-                $subscription.'
-            </ul>
-            
-            <h3>'.t('Links').'</h3>
-            <ul>'.
-                $url.'
-            </ul>';
+        if($subscription != '') {
+            $html .= '
+                <h3>'.t('Groups').'</h3>
+                <ul>'.
+                    $subscription.'
+                </ul>';
+        }
+        
+        if($url != '') {
+            $html .= '                
+                <h3>'.t('Links').'</h3>
+                <ul>'.
+                    $url.'
+                </ul>';
+        }
             
         if($conference != '') {
             $html .= '
