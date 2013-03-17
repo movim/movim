@@ -343,6 +343,7 @@ form .element input:invalid {
 .icon.add:before { content: "+"; }
 .icon.rm:before { content:"—"; }
 .icon.submit:before { content: "▼"; }
+.icon.upload:before { content: "▲"; }
 .icon.loading:before { content: "◕"; }
 .icon.next:before { content: "→"; }
 .icon.feed:before { content: "≡"; }

@@ -485,6 +485,7 @@ ul.clean li {
 .menu li .plus { background-image: url(../img/icons/menu/plus.png); }
 .menu li .search { background-image: url(../img/icons/menu/search.png); }
 .menu li .users { background-image: url(../img/icons/menu/users.png); }
+.menu li .media { background-image: url(../img/icons/menu/folder.png); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
@@ -624,6 +625,31 @@ ul.list li {
 ul.list li a {
     padding: 0.7em;
     display: block;
+}
+
+/* Thumb */
+ul.thumb {
+    list-style-type: none;
+}
+
+ul.thumb li {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    vertical-align: middle;
+    overflow: hidden;
+    
+    background-size: auto 100%;
+}
+
+ul.thumb a {
+    display: block;
+    float: left;
+    width: 25%;
+    height: 150px;
 }
 
 /* Breadcrumb */
