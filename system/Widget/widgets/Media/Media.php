@@ -36,6 +36,15 @@ class Media extends WidgetBase {
         
         if(!is_dir($this->_userdir))
             mkdir($this->_userdir);
+            
+        $this->registerEvent('media', 'onMediaUploaded');
+    }
+    
+    function ajaxRefreshMedia()
+    {
+		$html = $this->mainFolder();
+        RPC::call('movim_fill', 'media', RPC::cdata($html));
+        RPC::commit();
     }
     
     function dirSize()
@@ -73,20 +82,17 @@ class Media extends WidgetBase {
     
     function mainFolder()
     {
-    $percent = number_format(($this->dirSize()/$this->_sizelimit)*100, 2);
-    ?>
-    <div class="tabelem" title="<?php echo t('Media'); ?>" id="media">        
-        <?php echo $this->listFiles(); ?>
+        $percent = number_format(($this->dirSize()/$this->_sizelimit)*100, 2);
+    
+        $html = 
+            $this->listFiles().'                
+            <span class="size">
+                '.sizeToCleanSize($this->dirSize()).' '.t('on').' '.sizeToCleanSize($this->_sizelimit).
+                ' - '.
+                $percent.'%
+            </span>';
         
-        <span class="size">
-            <?php 
-                echo sizeToCleanSize($this->dirSize()).' '.t('on').' '.sizeToCleanSize($this->_sizelimit); 
-                echo ' - ';
-                echo $percent.'%';
-            ?>
-        </span>
-    </div>
-    <?php
+        return $html;
     }
     
     function pictureViewer($f)
@@ -119,30 +125,43 @@ class Media extends WidgetBase {
             
             $exif .= '<li><span>'.t('Original').'</span><a target="_blank" href="'.$this->_useruri.$f.'">'.t('Link').'</a></li>';
                 
-        ?>
-        <div class="tabelem" title="<?php echo t('Viewer'); ?>" id="viewer">
-            <div class="viewer">
-                <img src="<?php echo $this->_useruri.'medium_'.$f; ?>"/>
+            $html = '
+                <div class="viewer">
+                    <img src="'.$this->_useruri.'medium_'.$f.'"/>
+                    
+                    <div class="exif">
+                        <ul>
+                            '.$exif.'
+                        </ul>
+                    </div>
+                </div>';
                 
-                <div class="exif">
-                    <ul>
-                        <?php echo $exif; ?>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <?php
-    }
+            return $html;
+        }
     }
     
 	function build()
 	{
-        if(!isset($_GET['f']))
-            $this->mainFolder();
-        else {
-            $this->pictureViewer($_GET['f']);
-            $this->mainFolder();
+        $refresh = $this->genCallAjax('ajaxRefreshMedia');
+    ?>
+        <script type="text/javascript">
+            function refreshMedia() {
+                <?php echo $refresh; ?>
+            }
+        </script>
+    <?php
+        if(isset($_GET['f'])) {
+    ?>
+        <div class="tabelem" title="<?php echo t('Viewer'); ?>" id="viewer">
+            <?php echo $this->pictureViewer($_GET['f']); ?>
+        </div>
+    <?php
         }
+    ?>
+        <div class="tabelem" title="<?php echo t('Media'); ?>" id="media">    
+            <?php echo $this->mainFolder(); ?>
+        </div>
+    <?php
     }
 
 }
