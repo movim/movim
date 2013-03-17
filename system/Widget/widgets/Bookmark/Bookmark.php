@@ -116,13 +116,16 @@ class Bookmark extends WidgetBase
         
         $sd = new \modl\SubscriptionDAO();
         
-        foreach($sd->getSubscribed() as $s) {
-            $subscription .= '
-                <li>
-                    <a href="?q=node&s='.$s->server.'&n='.$s->node.'">'.
-                        $s->node.'
-                    </a>
-                </li>';
+        if($sd != null) {
+        
+            foreach($sd->getSubscribed() as $s) {
+                $subscription .= '
+                    <li>
+                        <a href="?q=node&s='.$s->server.'&n='.$s->node.'">'.
+                            $s->node.'
+                        </a>
+                    </li>';
+            }
         }
         
         if($bookmarks == null)
