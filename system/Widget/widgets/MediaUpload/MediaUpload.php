@@ -25,10 +25,8 @@ class MediaUpload extends WidgetBase {
     }
     
     function build()
-    {
-        $media = new Media();
-        
-        if($media->dirSize() < $media->_sizelimit) {
+    {        
+        if($this->user->dirSize() < $this->user->sizelimit) {
         ?>
         <div class="tabelem" title="<?php echo t('Upload'); ?>" id="mediaupload">      
             <form id="upload_form" enctype="multipart/form-data" method="post" action="upload.php">
