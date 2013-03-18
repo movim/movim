@@ -19,23 +19,15 @@
  */
 
 class Media extends WidgetBase {
-
-    private $_userdir;
-    private $_useruri;
-    public $_sizelimit;
-
     function WidgetLoad()
     {
         $this->addcss('media.css');
         $this->addjs('media.js');
         
-        $this->_sizelimit = (int)Conf::getServerConfElement('sizeLimit');
-
-        $this->_userdir = BASE_PATH.'users/'.$this->user->getLogin().'/';
-        $this->_useruri = BASE_URI.'users/'.$this->user->getLogin().'/';
-        
-        if(!is_dir($this->_userdir))
-            mkdir($this->_userdir);
+        if(!is_dir($this->user->userdir)) {
+            mkdir($this->user->userdir);
+            touch($this->user->userdir.'index.html');
+        }
             
         $this->registerEvent('media', 'onMediaUploaded');
     }
@@ -47,32 +39,33 @@ class Media extends WidgetBase {
         RPC::commit();
     }
     
-    function dirSize()
+    function ajaxDeleteItem($name)
     {
-        $sum = 0;
+        unlink($this->user->userdir.'thumb_'.$name);
+        unlink($this->user->userdir.'medium_'.$name);
+        unlink($this->user->userdir.$name);
         
-        foreach(scandir($this->_userdir) as $s) {
-            if($s != '.' && $s != '..')
-                $sum = $sum + filesize($this->_userdir.$s);
-        }
-        
-        return $sum;
+        $this->ajaxRefreshMedia();
     }
     
     function listFiles()
     {
         $html = '<ul class="thumb">';
         
-        foreach(scandir($this->_userdir) as $s) {
+        foreach(scandir($this->user->userdir) as $s) {
             if(
                 $s != '.' && 
                 $s != '..' && 
                 substr($s, 0, 6) != 'thumb_' &&
-                substr($s, 0, 7) != 'medium_')
+                substr($s, 0, 7) != 'medium_'
+                && $s != 'index.html')
                 $html .= 
-                    '<a href="?q=media&f='.$s.'">
-                        <li style="background-image: url('.$this->_useruri.'thumb_'.$s.');"></li>
-                    </a>';           
+                    '<li style="background-image: url('.$this->user->useruri.'thumb_'.$s.');">
+                        <a href="?q=media&f='.$s.'">
+                        </a>
+                            <div class="remove" onclick="'.$this->genCallAjax('ajaxDeleteItem', "'".$s."'").'">x</div>
+                    </li>
+                    ';           
         }
         
         $html .= '</ul>';
@@ -82,12 +75,12 @@ class Media extends WidgetBase {
     
     function mainFolder()
     {
-        $percent = number_format(($this->dirSize()/$this->_sizelimit)*100, 2);
+        $percent = number_format(($this->user->dirSize()/$this->user->sizelimit)*100, 2);
     
         $html = 
             $this->listFiles().'                
             <span class="size">
-                '.sizeToCleanSize($this->dirSize()).' '.t('on').' '.sizeToCleanSize($this->_sizelimit).
+                '.sizeToCleanSize($this->user->dirSize()).' '.t('on').' '.sizeToCleanSize($this->user->sizelimit).
                 ' - '.
                 $percent.'%
             </span>';
@@ -99,9 +92,9 @@ class Media extends WidgetBase {
     {
         //var_dump(exif_read_data($this->_userdir.$f));
         
-        if(file_exists($this->_userdir.$f) && getimagesize($this->_userdir.$f) != 0) {
+        if(file_exists($this->user->userdir.$f) && getimagesize($this->user->userdir.$f) != 0) {
         
-            $er = @exif_read_data($this->_userdir.$f);
+            $er = @exif_read_data($this->user->userdir.$f);
             
 
             $exif = '';
@@ -123,11 +116,11 @@ class Media extends WidgetBase {
                     $exif .= '<li><span>'.t('Artist').'</span>'.$er['Artist'].'</li>';
             }
             
-            $exif .= '<li><span>'.t('Original').'</span><a target="_blank" href="'.$this->_useruri.$f.'">'.t('Link').'</a></li>';
+            $exif .= '<li><span>'.t('Original').'</span><a target="_blank" href="'.$this->user->useruri.$f.'">'.t('Link').'</a></li>';
                 
             $html = '
                 <div class="viewer">
-                    <img src="'.$this->_useruri.'medium_'.$f.'"/>
+                    <img src="'.$this->user->useruri.'medium_'.$f.'"/>
                     
                     <div class="exif">
                         <ul>

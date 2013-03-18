@@ -19,6 +19,34 @@
     border-color: #222;
 }
 
+#media ul.thumb a {
+    position: relative;
+}
+
+#media ul.thumb li div.remove {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 3px 0px 0px 0px;
+    font-weight: bold;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 16px;
+    display: none;
+}
+
+#media ul.thumb li:hover div.remove {
+    display: block;
+}
+
+#media ul.thumb li:hover div.remove:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
 #media a:link, #media a:visited,
 #viewer a:link, #viewer a:visited {
     color: #DDD;
