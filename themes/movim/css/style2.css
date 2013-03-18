@@ -634,22 +634,22 @@ ul.thumb {
 
 ul.thumb li {
     display: inline-block;
-    width: 100%;
-    height: 100%;
+    width: 25%;
+    height: 150px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     vertical-align: middle;
     overflow: hidden;
-    
+    float: left;
     background-size: auto 100%;
+    position: relative;
 }
 
 ul.thumb a {
     display: block;
-    float: left;
-    width: 25%;
-    height: 150px;
+    width: 100%;
+    height: 100px;
 }
 
 /* Breadcrumb */
