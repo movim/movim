@@ -126,7 +126,7 @@ class WidgetCommon extends WidgetBase {
                             "'".$post->nodeid."'",
                             "'orange'").'" >
                     '.t("Your contacts").'</a>
-                <a
+                <!--<a
                     style="float: right; display: none;";
                     id="deleteno"
                     onclick="
@@ -154,7 +154,7 @@ class WidgetCommon extends WidgetBase {
                         " 
                     title="'.t("Delete this post").'">
                     '.t("Delete this post").'
-                </a>
+                </a>-->
 
 
             </div>';
