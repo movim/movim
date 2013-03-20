@@ -22,55 +22,41 @@ class Syndication extends WidgetBase
     function build()
     {
         $from = $_GET['f'];
-        if(isset($from)) {
-            // We query the last messages
-            $query = Post::query()
-                                ->where(array(
-                                    'jid' => $from,
-                                    'public' => 1,
-                                    'parentid' => ''))
-                                ->orderby('updated', true)
-                                ->limit(0, 20);
-            $messages = Post::run_query($query);
-
-            //var_dump($messages);
-
-            $query = Contact::query()->select()
-                                       ->where(array(
-                                               //'key' => $from,
-                                               'jid' => $from));
-            $contact = Contact::run_query($query);
-
-            if(isset($messages[0]) && isset($contact[0])) {
-                header("Content-Type: application/atom+xml; charset=UTF-8");
+        if(isset($from)) {          
+            $pd = new \modl\PostDAO();
+            $messages = $pd->getPublic($from);
         
-                $contact = $contact[0];
+
+            if(!empty($messages)) {
+                header("Content-Type: application/atom+xml; charset=UTF-8");
+                
                 $xml = '
                     <?xml version="1.0" encoding="utf-8"?>
                     <feed xmlns="http://www.w3.org/2005/Atom">
 
-                        <title>'.t("%s's feed",$contact->getTrueName()).'</title>
+                        <title>'.t("%s's feed",$messages[0]->getContact()->getTrueName()).'</title>
                         <link href="http://example.org/"/>
                         <updated>'.date('c').'</updated>
                         <author>
-                            <name>'.$contact->getTrueName().'</name>
+                            <name>'.$messages[0]->getContact()->getTrueName().'</name>
                         </author>
+                        <logo>'.$messages[0]->getContact()->getPhoto('l').'</logo>
                         <id>urn:uuid:60a76c80-d399-11d9-b91C-0003939e0af6</id>';
                         
                     foreach($messages as $message) {
-                        $title = $message->title->getval();
+                        $title = $message->title;
                         if($title == null)
-                            $title = substr(strip_tags($message->content->getval()), 0, 40).'...';
+                            $title = substr(strip_tags(html_entity_decode($message->content)), 0, 40).'...';
                         $xml .= '
                             <entry>
                                 <title>'.prepareString(html_entity_decode($title)).'</title>
-                                <id>urn:uuid:'.$message->nodeid->getval().'</id>
-                                <updated>'.date('c', strtotime($message->updated->getval())).'</updated>
-                                <summary type="html"><![CDATA['.prepareString(html_entity_decode($message->content->getval())).']]></summary>
+                                <id>urn:uuid:'.$message->nodeid.'</id>
+                                <updated>'.date('c', strtotime($message->published)).'</updated>
+                                <summary type="html">
+                                    <![CDATA['.prepareString(html_entity_decode($message->content)).']]>
+                                </summary>
                             </entry>
                         ';
-                        
-                        $redun = $message->nodeid->getval();
                     }
                 $xml .= '
                     </feed>';

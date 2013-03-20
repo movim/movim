@@ -16,7 +16,7 @@
  */
 
 class WidgetCommon extends WidgetBase {
-    protected function printPost($post, $comments = false) {
+    protected function printPost($post, $comments = false, $public = false) {
         if($post->title)
             $title = '
                 <span>
@@ -29,9 +29,9 @@ class WidgetCommon extends WidgetBase {
                 $access .= 'protect black';
             else
                 $access .= 'protect orange';
-        }
-        
-        if($post->public == 2) {
+                
+            $avatar = $post->getContact()->getPhoto('m');
+        } elseif($post->public == 2) {
             $class .= ' folded';
             $fold = t('Unfold');
             $avatar = $post->getContact()->getPhoto('xs');
@@ -59,9 +59,12 @@ class WidgetCommon extends WidgetBase {
                 prepareString(html_entity_decode($post->content));
         
         if($post->commentplace && $post->commentson)
-            $comments = $this->printComments($post, $comments);
+            $comments = $this->printComments($post, $comments, $public);
         else
             $comments = '';
+            
+        if($this->user->getLogin() == $post->jid) 
+            $toolbox = $this->getToolbox($post);
         
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
@@ -69,12 +72,18 @@ class WidgetCommon extends WidgetBase {
                     <img class="avatar" src="'.$avatar.'">
                 </a>
 
-                <div id="'.$post->nodeid.'" class="postbubble '.$access.'">
+                <div id="'.$post->nodeid.'bubble" class="postbubble '.$access.'">
                     <span class="title">'.$title.'</span>
                     <span class="fold">
                         <a 
-                        href="" 
-                        onclick="'.$this->genCallAjax('ajaxPostFold', "'".$post->nodeid."'").'">'.$fold.'</a>
+                        href="#" 
+                        onclick="'.
+                            $this->genCallAjax(
+                                'ajaxPostFold', 
+                                "'".$post->nodeid."'").' 
+                            movim_toggle_class(\'#'.$post->nodeid.'\',\'folded\')">'.
+                            $fold.'
+                        </a>
                     </span>
                     <span>
                         <a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
@@ -90,12 +99,70 @@ class WidgetCommon extends WidgetBase {
                     '.$recycle.'
                 </div>
                 <div class="clear"></div>
+                '.$toolbox.'
             </div>
             ';
         return $html;
     }
     
-    protected function printComments($post, $comments) {
+    private function getToolbox($post) {
+        $html = '
+            <div class="tools">
+                '.t("Change the privacy level").' : 
+                <a
+                    title="'.t("your post will appear in your Movim public feed").'"
+                    onclick="'.
+                        $this->genCallAjax(
+                            'ajaxPrivacyPost', 
+                            "'".$this->user->getLogin()."'", 
+                            "'".$post->nodeid."'",
+                            "'black'").'" >
+                    '.t("Everyone").'</a>,
+                <a
+                    onclick="'.
+                        $this->genCallAjax(
+                            'ajaxPrivacyPost', 
+                            "'".$this->user->getLogin()."'", 
+                            "'".$post->nodeid."'",
+                            "'orange'").'" >
+                    '.t("Your contacts").'</a>
+                <a
+                    style="float: right; display: none;";
+                    id="deleteno"
+                    onclick="
+                        this.parentNode.querySelector(\'#deleteyes\').style.display = \'none\';
+                        this.style.display = \'none\';
+                        "
+                    onclick="">
+                    ✘ '.t("No").'
+                </a>
+                <a
+                    style="float: right; padding-right: 1em; display: none;";
+                    id="deleteyes"
+                    onclick="'.
+                        $this->genCallAjax(
+                            'ajaxDeletePost', 
+                            "'".$this->user->getLogin()."'", 
+                            "'".$post->nodeid."'").'" >
+                    ✔ '.t("Yes").' 
+                </a>
+                <a
+                    style="float: right; padding-right: 1em;";
+                    onclick="
+                        this.parentNode.querySelector(\'#deleteyes\').style.display = \'inline\';
+                        this.parentNode.querySelector(\'#deleteno\').style.display = \'inline\';
+                        " 
+                    title="'.t("Delete this post").'">
+                    '.t("Delete this post").'
+                </a>
+
+
+            </div>';
+            
+        return $html;
+    }
+    
+    protected function printComments($post, $comments, $public = false) {
                 $tmp .= '
                     <div class="comments" id="'.$post->nodeid.'comments">';
 
@@ -104,49 +171,51 @@ class WidgetCommon extends WidgetBase {
                 if($commentshtml != false)
                     $tmp .= $commentshtml;
 
-                $tmp .= '
-                         <div class="comment">
-                                <a 
-                                    class="getcomments icon bubble" 
-                                    style="margin-left: 0px;" 
-                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$post->commentplace."'", "'".$post->nodeid."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
-                                        t('Get the comments').'
-                                </a>
-                            </div></div>';
-                $tmp .= '<div class="comments">
-                            <div 
-                                class="comment"
-                                style="border-bottom: none;"
-                                onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
-                                <a class="getcomments icon bubbleadd">'.t('Add a comment').'</a>
-                            </div>
-                            <table id="commentsubmit">
-                                <tr>
-                                    <td>
-                                        <textarea id="'.$post->nodeid.'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
-                                    </td>
-                                </tr>
-                                <tr class="commentsubmitrow">
-                                    <td style="width: 100%;"></td>
-                                    <td>
-                                        <a
-                                            onclick="
-                                                    if(document.getElementById(\''.$post->nodeid.'commentcontent\').value != \'\') {
-                                                        '.$this->genCallAjax(
-                                                            'ajaxPublishComment', 
-                                                            "'".$post->commentplace."'", 
-                                                            "'".$post->nodeid."'", 
-                                                            "encodeURIComponent(document.getElementById('".$post->nodeid."commentcontent').value)").
-                                                            'document.getElementById(\''.$post->nodeid.'commentcontent\').value = \'\';
-                                                    }"
-                                            class="button tiny icon submit"
-                                            style="padding-left: 28px;"
-                                        >'.
-                                            t("Submit").'
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>';
+                if($public == false) {
+                    $tmp .= '
+                             <div class="comment">
+                                    <a 
+                                        class="getcomments icon bubble" 
+                                        style="margin-left: 0px;" 
+                                        onclick="'.$this->genCallAjax('ajaxGetComments', "'".$post->commentplace."'", "'".$post->nodeid."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
+                                            t('Get the comments').'
+                                    </a>
+                                </div></div>';
+                    $tmp .= '<div class="comments">
+                                <div 
+                                    class="comment"
+                                    style="border-bottom: none;"
+                                    onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
+                                    <a class="getcomments icon bubbleadd">'.t('Add a comment').'</a>
+                                </div>
+                                <table id="commentsubmit">
+                                    <tr>
+                                        <td>
+                                            <textarea id="'.$post->nodeid.'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr class="commentsubmitrow">
+                                        <td style="width: 100%;"></td>
+                                        <td>
+                                            <a
+                                                onclick="
+                                                        if(document.getElementById(\''.$post->nodeid.'commentcontent\').value != \'\') {
+                                                            '.$this->genCallAjax(
+                                                                'ajaxPublishComment', 
+                                                                "'".$post->commentplace."'", 
+                                                                "'".$post->nodeid."'", 
+                                                                "encodeURIComponent(document.getElementById('".$post->nodeid."commentcontent').value)").
+                                                                'document.getElementById(\''.$post->nodeid.'commentcontent\').value = \'\';
+                                                        }"
+                                                class="button tiny icon submit"
+                                                style="padding-left: 28px;"
+                                            >'.
+                                                t("Submit").'
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>';
+                }
                 $tmp .= '</div>';
         return $tmp;
 
@@ -157,7 +226,7 @@ class WidgetCommon extends WidgetBase {
      * @param array of messages
      * @return generated HTML
      */
-    protected function preparePosts($posts) {
+    protected function preparePosts($posts, $public = false) {
         if($posts == false || empty($posts)) {
 			$html = '<div style="padding: 1.5em; text-align: center;">Ain\'t Nobody Here But Us Chickens...</div>';
 		} else {
@@ -179,7 +248,7 @@ class WidgetCommon extends WidgetBase {
                     $i++;
                 }
                 
-                $html .= $this->printPost($post, $messagecomment);
+                $html .= $this->printPost($post, $messagecomment, $public);
 			}
 			
         }
@@ -480,8 +549,27 @@ class WidgetCommon extends WidgetBase {
           ->request();
     }
     
-    function ajaxPrivacyPost($to, $id, $privacy) {
-        $query = Post::query()
+    function ajaxPrivacyPost($to, $nodeid, $privacy) {
+        $pd = new \modl\PostDAO();
+        
+        $p = $pd->get($nodeid);
+
+        $p->renew();
+        
+        if($privacy == 'orange') {
+            $p->public = 0;
+                    movim_log($p->public);
+            $pd->set($p);
+        } elseif($privacy == 'black') {
+            $p->public = 1;
+                    movim_log($p->public);
+            $pd->set($p);
+        }
+        
+        RPC::call('movim_change_class', $nodeid.'bubble' , 'postbubble me protect '.$privacy);
+        RPC::commit();
+        
+        /*$query = Post::query()
                             ->where(
                                 array(
                                     'key' => $to,
@@ -502,12 +590,14 @@ class WidgetCommon extends WidgetBase {
         }
         
         RPC::call('movim_change_class', $id.'bubble' , 'postbubble me protect '.$privacy);
-        RPC::commit();
+        RPC::commit();*/
     }
     
     function ajaxPostFold($nodeid) {
         $pd = new \modl\PostDAO();
         $p = $pd->get($nodeid);
+        
+        $p->renew();
 
         $public = $p->public;
         
