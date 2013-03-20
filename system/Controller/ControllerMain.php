@@ -25,9 +25,9 @@ class ControllerMain extends ControllerBase
 		parent::__construct();
 
 		$this->page = new TplPageBuilder();
+		$this->page->addScript('movim.js');
         $this->page->addScript('hash.js');
         $this->page->addScript('movimrpc.js');
-		$this->page->addScript('movim.js');
 	}
 
 	function main()
@@ -216,9 +216,20 @@ class ControllerMain extends ControllerBase
         $this->page->setTitle(t('%s - Account', APP_TITLE));
         $this->page->menuAddLink(t('Home'), 'main');
         $this->page->menuAddLink(t('Account Creation'), 'account', true);
-        $content = new TplPageBuilder($user);
+        $content = new TplPageBuilder();
 
         $this->page->setContent($content->build('account.tpl'));
+        echo $this->page->build('page.tpl');
+	}
+
+	function blog()
+	{
+        $this->page->setTitle(t('%s - Account', APP_TITLE));
+        $this->page->menuAddLink(t('Home'), 'main');
+        $this->page->menuAddLink(t('Blog'), 'blog', true);
+        $content = new TplPageBuilder();
+
+        $this->page->setContent($content->build('blog.tpl'));
         echo $this->page->build('page.tpl');
 	}
 
