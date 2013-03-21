@@ -14,7 +14,7 @@ function createThumbnailPicture($path, $filename) {
     createThumbnailSize($file, 600, $path.'medium_'.$filename);
 }
 
-function createThumbnails($jid, $photobin) {
+function createThumbnails($jid, $photobin) {    
     unlink(BASE_PATH.'cache/'.$jid.'_l.jpg');
     unlink(BASE_PATH.'cache/'.$jid.'_m.jpg');
     unlink(BASE_PATH.'cache/'.$jid.'_s.jpg');
