@@ -349,7 +349,7 @@ ul.clean li {
     float: left;
     padding: 15px;
     width: 170px;
-    padding-top: 60px;
+    padding-top: 45px;
 }
 
 #left ul {
@@ -665,6 +665,7 @@ ul.list li a {
 .popup {
     background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
+    display: none;
     top: 0px;
     left: 0px;
     z-index: 5;
@@ -679,24 +680,3 @@ ul.list li a {
     border: 0px !important;
     text-shadow: 0px -1px 0px black;
 }
-/*
-.popup .close {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    color: #CCC;
-    background-color: black;
-    padding: 5px;
-    font-family: sans-serif;
-    font-weight: bold;
-    width: 10px;
-    height: 10px;
-    line-height: 10px;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid #777;
-}
-
-.popup .close:hover {
-    cursor: pointer;
-}*/

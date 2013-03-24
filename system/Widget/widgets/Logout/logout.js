@@ -1,12 +1,7 @@
 function showLogoutList() {
-    show = document.getElementById('logoutlist');
-    
     hideNotifsList();
-
-    if(show.style.display == 'block')
-        show.style.display = 'none';
-    else
-        show.style.display = 'block';
+    
+    movim_toggle_display('#logoutlist');
 }
 
 function hideLogoutList() {
