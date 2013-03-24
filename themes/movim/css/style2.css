@@ -199,6 +199,10 @@ h2 {
     border-bottom: 1px solid #CCC;
 }
 
+h2.post-title {
+    border-bottom: none;
+}
+
 h3 {
     color: #777;
     font-size: 1.1em;
@@ -432,7 +436,7 @@ ul.clean li {
     /*padding: 9px 8px;
     padding-left: 28px;*/
     padding: 10px 5px;
-    padding-left: 32px;
+    padding-left: 36px;
     display: block;
     color: #ccc;
     min-height: 1em;
@@ -485,6 +489,8 @@ ul.clean li {
 .menu li .plus { background-image: url(../img/icons/menu/plus.png); }
 .menu li .search { background-image: url(../img/icons/menu/search.png); }
 .menu li .users { background-image: url(../img/icons/menu/users.png); }
+.menu li .media { background-image: url(../img/icons/menu/folder.png); }
+.menu li .blog { background-image: url(../img/icons/menu/quill.png); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
@@ -626,15 +632,41 @@ ul.list li a {
     display: block;
 }
 
+/* Thumb */
+ul.thumb {
+    list-style-type: none;
+}
+
+ul.thumb li {
+    display: inline-block;
+    width: 25%;
+    height: 150px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    vertical-align: middle;
+    overflow: hidden;
+    float: left;
+    background-size: auto 100%;
+    position: relative;
+}
+
+ul.thumb a {
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
 /* Breadcrumb */
 .breadcrumb {
     background-color: #F5F5F5;
-    padding: 10px 5px;
+    padding: 0px 5px;
+    height: 28px;
 }
 
 .breadcrumb > a {
     display: inline-block;
-    line-height: 30px;
+    line-height: 28px;
     padding-left: 30px;
     padding-right: 15px;
     position: relative;
@@ -650,7 +682,7 @@ ul.list li a {
     width: 20px;
     height: 20px;
     position: absolute;
-    top: 5px;
+    top: 4px;
     left: -10px;
     content: "";
     border-right: 1px solid rgba(0, 0, 0, 0.2);   
@@ -672,6 +704,10 @@ ul.list li a {
     width: 50%;
     height: 80%;
     padding: 10% 25%;
+}
+
+.popup span {
+    color: white;
 }
 
 .popup legend {
