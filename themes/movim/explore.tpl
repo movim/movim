@@ -11,6 +11,7 @@
 
 <div id="main">
     <div id="left">
+        <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
     <div id="center" class="protect black">
@@ -22,4 +23,3 @@
 <div id="right">
   <?php $this->widget('Roster');?>
 </div>
-
