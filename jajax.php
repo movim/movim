@@ -35,6 +35,6 @@ $widgets->iterateCached('saveCache');
 
 // Closing stuff
 WidgetWrapper::destroyInstance();
-global $sdb;
-$sdb->close();
+/*global $sdb;
+$sdb->close();*/
 ?>
