@@ -153,7 +153,6 @@ class Chat extends WidgetBase
 	{        
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
-        
 
         if(
             isset($contact) 
@@ -182,9 +181,7 @@ class Chat extends WidgetBase
      * @return void
      */
     function ajaxSendMessage($to, $message)
-    {
-        $m = new \Message();
-        
+    {        
         $m = new \modl\Message();
         
         $m->key     = $this->user->getLogin();
