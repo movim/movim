@@ -157,16 +157,7 @@ class Account extends WidgetBase {
         define(XMPP_CONN, $datas['ndd']);
         define(XMPP_PORT, 5222);
 
-        try {
-
-            // We create the XML Stanza
-	        $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq id="register" type="set"><query xmlns="jabber:iq:register"/></iq></stream:stream>');
-
-	        $stream->addAttribute('to', XMPP_HOST);
-
-			$xmpp = new FormtoXMPP();
-			$stream = $xmpp->getXMPP($stream->asXML(), $datas);
-
+        try {         
             // We try to connect to the XMPP Server
 	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
 
@@ -175,15 +166,19 @@ class Account extends WidgetBase {
                 RPC::commit();
      	        exit;
 		    }
-            
-            echo $stream->asXML();
+
+            // We create the XML Stanza
+	        $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq id="register" type="set"><query xmlns="jabber:iq:register"></query></iq></stream:stream>');
+
+	        $stream->addAttribute('to', XMPP_HOST);
+
+			$xmpp = new FormtoXMPP();
+			$stream = $xmpp->getXMPP($stream->asXML(), $datas);
 
 	        fwrite($f, $stream->asXML());
 	        unset($stream);
 
 	        $response = stream_get_contents($f);
-            
-            echo $response;
 
 	        if(!$response) {
                 	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppcomm"));

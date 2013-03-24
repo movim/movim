@@ -8,9 +8,14 @@
 class User {
 	private $xmppSession;
 
-	private $username = '';
+	public $username = '';
 	private $password = '';
     private $config = array();
+    
+    public $userdir;
+    public $useruri;
+    
+    public $sizelimit;
 
 	/**
 	 * Class constructor. Reloads the user's session or attempts to authenticate
@@ -23,9 +28,28 @@ class User {
             global $session;
 			$this->username = $session['user'].'@'.$session['host'];
             $this->config = $session['config'];
-			
+
+            $this->sizelimit = (int)Conf::getServerConfElement('sizeLimit');
+
+            $this->userdir = BASE_PATH.'users/'.$this->username.'/';
+            $this->useruri = BASE_URI.'users/'.$this->username.'/';
         }
 	}
+    
+    /**
+     * Get the current size in bytes of the user directory
+     */
+    function dirSize()
+    {
+        $sum = 0;
+        
+        foreach(scandir($this->userdir) as $s) {
+            if($s != '.' && $s != '..' && $s != 'index.html')
+                $sum = $sum + filesize($this->userdir.$s);
+        }
+        
+        return $sum;
+    }
 
 	/**
 	 * Checks if the user has an open session.

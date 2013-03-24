@@ -661,6 +661,11 @@ function checkJid($jid)
     return filter_var($jid, FILTER_VALIDATE_EMAIL);
 }
 
+/**
+ * Return a URIfied string
+ * @param string
+ * @return string
+ */
 function stringToUri($url) {
     $url = utf8_decode($url);
     $url = strtolower(strtr($url, utf8_decode('ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ()[]\'"~$&%*@ç!?;,:/\^¨€{}<>|+.- '),  'aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn    --      c  ---    e       --'));
@@ -670,6 +675,19 @@ function stringToUri($url) {
     $url = trim($url,'-');
     return $url;
 }
+
+/**
+ * Return a human readable filesize
+ * @param string size in bytes
+ * @return string
+ */
+function sizeToCleanSize($size)
+{
+    $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+    $power = $size > 0 ? floor(log($size, 1024)) : 0;
+    return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+}
+
 
 function movim_log($log) {
 	ob_start();

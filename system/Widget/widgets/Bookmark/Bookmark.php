@@ -23,6 +23,22 @@ class Bookmark extends WidgetBase
     function WidgetLoad()
     {
         $this->registerEvent('bookmark', 'onBookmark');
+		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
+		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
+    }
+    
+    function onGroupSubscribed()
+    {
+        $arr = Cache::c('bookmark');
+        $html = $this->prepareBookmark($arr);
+        RPC::call('movim_fill', 'bookmarks', RPC::cdata($html));        
+    }
+    
+    function onGroupUnsubscribed()
+    {
+        $arr = Cache::c('bookmark');
+        $html = $this->prepareBookmark($arr);
+        RPC::call('movim_fill', 'bookmarks', RPC::cdata($html));        
     }
     
     function onBookmark($arr)
@@ -98,6 +114,20 @@ class Bookmark extends WidgetBase
         $conference = '';
         $subscription = '';
         
+        $sd = new \modl\SubscriptionDAO();
+        
+        if($sd != null) {
+        
+            foreach($sd->getSubscribed() as $s) {
+                $subscription .= '
+                    <li>
+                        <a href="?q=node&s='.$s->server.'&n='.$s->node.'">'.
+                            $s->node.'
+                        </a>
+                    </li>';
+            }
+        }
+        
         if($bookmarks == null)
             $bookmarks = array();
         
@@ -117,32 +147,32 @@ class Bookmark extends WidgetBase
                         <a href="#" onclick="'.$remove.'">X</a>
                     </li>';
                 break;
-            case 'subscription':
-                $subscription .= '
-                    <li>
-                        <a href="?q=node&s='.$b['server'].'&n='.$b['node'].'">'.
-                            $b['title'].'
-                        </a>
-                    </li>';
-                break;
             }
         }
         
-        $html .= '
-            <h3>'.t('Groups').'</h3>
-            <ul>'.
-                $subscription.'
-            </ul>
+        if($subscription != '') {
+            $html .= '
+                <h3>'.t('Groups').'</h3>
+                <ul>'.
+                    $subscription.'
+                </ul>';
+        }
+        
+        if($url != '') {
+            $html .= '                
+                <h3>'.t('Links').'</h3>
+                <ul>'.
+                    $url.'
+                </ul>';
+        }
             
-            <h3>'.t('Links').'</h3>
-            <ul>'.
-                $url.'
-            </ul>
-            
-            <h3>'.t('Conferences').'</h3>
-            <ul>'.
-                $conference.'
-            </ul>';
+        if($conference != '') {
+            $html .= '
+                <h3>'.t('Conferences').'</h3>
+                <ul>'.
+                    $conference.'
+                </ul>';
+        }
             
         $submit = $this->genCallAjax('ajaxBookmarkAdd', "movim_parse_form('bookmarkadd')");
             
@@ -167,7 +197,7 @@ class Bookmark extends WidgetBase
                             t('Add').'
                     </a><a 
                         class="button tiny icon black merged right" 
-                        onclick="this.parentNode.parentNode.style.display = \'none\'"
+                        onclick="movim_toggle_display(\'#bookmarkadd\')"
                     >'.
                             t('Close').'
                     </a>
@@ -188,7 +218,7 @@ class Bookmark extends WidgetBase
         <div id="bookmarks">
             <?php echo $this->prepareBookmark(Cache::c('bookmark')); ?>
         </div>
-
+        <br />
         <a class="button icon yes tiny merged right" style="float: right;"
            onclick="movim_toggle_display('#bookmarkadd')">Add</a>
         <a class="button icon submit tiny merged left" style="float: right;"
