@@ -1,22 +1,4 @@
 <?php
-/*
-class CacheVar extends DatajarBase
-{
-    protected $key;
-    protected $data;
-    protected $checksum;
-    protected $timestamp;
-
-    protected function type_init()
-    {
-        $this->key       = DatajarType::varchar(128);
-        $this->data      = DatajarType::text();
-        $this->checksum  = DatajarType::varchar(64);
-        $this->timestamp = DatajarType::int();
-    }
-}
-*/
-
 /**
  * A fully-static class that deals with caching.
  */
