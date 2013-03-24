@@ -17,8 +17,8 @@
 
     <div id="center">
         <?php $this->widget('Tabs');?>
-        <?php //$this->widget('Wall');?>
         <?php $this->widget('Node');?>
+        <?php $this->widget('GroupConfig');?>
     </div>
 </div>
 
