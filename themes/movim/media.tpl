@@ -18,8 +18,8 @@
 
     <div id="center">
         <?php $this->widget('Tabs');?>
-        <?php $this->widget('Node');?>
-        <?php $this->widget('GroupConfig');?>
+        <?php $this->widget('Media');?>
+        <?php $this->widget('MediaUpload');?>
     </div>
 </div>
 

@@ -70,6 +70,37 @@ function movim_textarea_autoheight(textbox) {
     textbox.style.height = 0;
     textbox.style.height = textbox.scrollHeight+"px";
 }
+
+/**
+ * Class manipulation
+ */
+function movim_has_class(element,classname) {
+    var element = document.querySelector(element);
+    return element.className.match(new RegExp('(\\s|^)'+classname+'(\\s|$)'));
+}
+
+function movim_add_class(element,classname) {
+    if(!movim_has_class(element,classname)) {
+        var element = document.querySelector(element);
+        element.className += " "+classname;
+    }
+}
+
+function movim_remove_class(element,classname) {
+  if (movim_has_class(element,classname)) {
+      var reg = new RegExp('(\\s|^)'+classname+'(\\s|$)');
+      var element = document.querySelector(element);
+      element.className=element.className.replace(reg,' ');
+  }
+}
+
+function movim_toggle_class(element, classname) {
+    if(movim_has_class(element, classname))
+        movim_remove_class(element,classname);
+    else
+        movim_add_class(element, classname);
+}
+
 /**
  * Set a global var for widgets to see if document is focused
  */
@@ -88,7 +119,6 @@ function movim_change_class(params) {
     var node = document.getElementById(params[0]);
     node.className = params[1];
 }
-
 
 function movim_toggle_display(param) {
     var node = document.querySelector(param);
