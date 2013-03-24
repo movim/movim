@@ -23,15 +23,6 @@ class ControllerMain extends ControllerBase
 	function __construct()
 	{
 		parent::__construct();
-        global $sdb;
-        $c = new RosterLink();
-        $sdb->create($c);
-        $c = new Contact();
-        $sdb->create($c);
-        $p = new Presence();
-        $sdb->create($p);
-        $o = new Post();
-        $sdb->create($o);
 
 		$this->page = new TplPageBuilder();
         $this->page->addScript('hash.js');
