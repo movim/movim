@@ -302,6 +302,7 @@ class Login extends WidgetBase {
             }
             ?>
 
+            <div class="admin"><a href="?q=admin"><?php echo t('Administration'); ?></a></div>
 
         </div>
     <?php

@@ -54,6 +54,23 @@ class Conf
 		self::convertXmlObjToArr( $file , $arr );
 		return $arr;
 	}
+    
+    static function saveConfFile($conf = array()) {
+        $doc = new DOMDocument("1.0");
+        $doc->formatOutput = true;
+
+        $config = $doc->createElement("config");
+        $doc->appendChild($config);
+        
+        foreach($conf as $key => $value) {
+            $node = $doc->createElement($key);
+            $node->appendChild($doc->createTextNode($value));
+            $config->appendChild($node);
+        }
+        
+        $xml = $doc->saveXML();
+        file_put_contents(BASE_PATH.self::$conf_path.'/conf.xml', $xml);
+    }
 
 	/**
     * Parse a SimpleXMLElement object recursively into an Array.

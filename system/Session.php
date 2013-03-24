@@ -20,7 +20,7 @@
  */
 
 if(!class_exists('Session')):
-
+/*
 class SessionVar extends DatajarBase
 {
     protected $name;
@@ -37,7 +37,7 @@ class SessionVar extends DatajarBase
         $this->container = DatajarType::varchar(128);
         $this->timestamp = DatajarType::int();
     }
-}
+}*/
 
 class Session
 {
@@ -54,7 +54,7 @@ class Session
     protected function __construct($name)
     {
         // Does the database exist?
-        $var = new SessionVar();
+        //$var = new SessionVar();
 
         if(self::$sid == null) {
             if(isset($_COOKIE['PHPFASTSESSID'])) {
