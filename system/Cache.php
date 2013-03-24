@@ -1,5 +1,5 @@
 <?php
-
+/*
 class CacheVar extends DatajarBase
 {
     protected $key;
@@ -15,7 +15,7 @@ class CacheVar extends DatajarBase
         $this->timestamp = DatajarType::int();
     }
 }
-
+*/
 
 /**
  * A fully-static class that deals with caching.

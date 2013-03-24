@@ -14,16 +14,16 @@ define('USERS_PATH', BASE_PATH . 'users/');
 // Loads up all system libraries.
 require_once(LIB_PATH . "Lang/i18n.php");
 
-require_once(LIB_PATH . "Datajar2/Datajar/loader.php");
+//require_once(LIB_PATH . "Datajar2/Datajar/loader.php");
 
-load_datajar();
+//load_datajar();
 
-require_once(LIB_PATH . "Datas/Caps.php");
+/*require_once(LIB_PATH . "Datas/Caps.php");
 require_once(LIB_PATH . "Datas/Contact.php");
 require_once(LIB_PATH . "Datas/Presence.php");
 require_once(LIB_PATH . "Datas/Message.php");
 require_once(LIB_PATH . "Datas/Post.php");
-require_once(LIB_PATH . "Datas/RosterLink.php");
+require_once(LIB_PATH . "Datas/RosterLink.php");*/
 
 require_once(LIB_PATH . "Session.php");
 require_once(LIB_PATH . "Utils.php");
@@ -106,7 +106,7 @@ switch($browser) {
 
 define('BROWSER_COMP', $compatible);
 
-$dbarr = explode(':',Conf::getServerConfElement('db'));
+/*$dbarr = explode(':',Conf::getServerConfElement('db'));
 $dbtype = array_shift($dbarr);
 
 datajar_load_driver($dbtype);
@@ -114,7 +114,7 @@ DatajarEngineWrapper::setdriver($dbtype);
 
 $sdb = new DatajarEngineWrapper(Conf::getServerConfElement('db'));
 
-DatajarBase::bind($sdb);
+DatajarBase::bind($sdb);*/
 
 // Starting session.
 $sess = Session::start(APP_NAME);
