@@ -49,10 +49,10 @@ class Explore extends WidgetCommon {
         $users = Contact::run_query($query);
 
         $html = '
-                <div class="posthead" style="min-height: 70px;">
-                    <ul class="filters">
+                <div class="posthead">
+                    <!--<ul class="filters">
                         <li class="on">'.t('Last registered').'</li>
-                    </ul>
+                    </ul>-->
    
                     <div class="clear"></div>
                 </div>';

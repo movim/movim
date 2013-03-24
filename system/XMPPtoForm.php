@@ -86,7 +86,7 @@ class XMPPtoForm{
 
 	private function outGeneric($s){
 		$this->html .= '<label for="'.$s.'">'.$s.'</label>
-			<input name="'.$s.'" type="'.$s.'" required/>';;
+			<input name="generic_'.$s.'" type="'.$s.'" required/>';
 	}
 	private function outTitle($s){
 		$this->html .= '<h1>'.$s.'</h1>';
@@ -172,10 +172,12 @@ class XMPPtoForm{
 class FormtoXMPP{
 	private $stream;
 	private $inputs;
+    private $dataform;
 	
 	public function __construct(){
 		$this->stream = '';
 		$this->inputs = array();
+        $this->dataform = true;
 	}
 	
 	public function getXMPP($stream, $inputs){
@@ -191,6 +193,10 @@ class FormtoXMPP{
 	public function setInputs($inputs){
 		$this->inputs = $inputs;
 	}
+    
+    public function setDataformOff() {
+        $this->dataform = false;
+    }
 	
 	public function create(){
         switch($this->stream->getName()){
@@ -206,8 +212,10 @@ class FormtoXMPP{
                 RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
                 RPC::commit();
      	        exit;
-            }
-		    else{
+            } elseif(substr($key, 0, 8) == 'generic_') {
+                $key = str_replace('generic_', '', $key);
+                $node->addChild($key, $value);
+		    } else{
                 $field = $node->addChild('field');
                 $field->addChild('value', $value);
                 $field->addAttribute('var', $key);
