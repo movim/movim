@@ -7,7 +7,7 @@
   <db>mysql://movim:movim@localhost:3306/movim</db>
   <boshUrl>http://localhost:5280/http-bind</boshUrl>
   <xmppWhiteList></xmppWhiteList>
-  <user>admin</user>
-  <pass>5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8</pass>
+  <user>edhelas</user>
+  <pass>4f4b4d2a53a07c54d604e25a9516a7a49388abd8</pass>
   <sizeLimit>20240001</sizeLimit>
 </config>

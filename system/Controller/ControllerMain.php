@@ -348,6 +348,7 @@ class ControllerMain extends ControllerBase
                 $this->page->setTitle(t('%s - Administration Panel', APP_TITLE));
 
                 $this->page->menuAddLink(t('Home'), 'main');
+                $this->page->menuAddLink(t('Administration'), 'admin', true);
 
                 $content = new TplPageBuilder();
                 $this->page->setContent($content->build('admin.tpl'));
