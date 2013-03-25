@@ -491,6 +491,7 @@ ul.clean li {
 .menu li .users { background-image: url(../img/icons/menu/users.png); }
 .menu li .media { background-image: url(../img/icons/menu/folder.png); }
 .menu li .blog { background-image: url(../img/icons/menu/quill.png); }
+.menu li .admin { background-image: url(../img/icons/menu/admin.png); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
