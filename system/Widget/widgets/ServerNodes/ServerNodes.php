@@ -24,7 +24,6 @@ class ServerNodes extends WidgetCommon
     {
 		$this->registerEvent('discoitems', 'onDiscoItems');
         $this->registerEvent('disconodes', 'onDiscoNodes');
-        $this->registerEvent('defaultconfig', 'onDefaultConfig');
         $this->registerEvent('creationsuccess', 'onCreationSuccess');
     }
 
@@ -43,6 +42,31 @@ class ServerNodes extends WidgetCommon
         }
 
         $html .= '</ul>';
+        
+        $submit = $this->genCallAjax('ajaxCreateGroup', "movim_parse_form('groupCreation')");
+        
+        $html .= '<div class="popup" id="groupCreation">
+                <form name="groupCreation">
+                    <fieldset>
+                        <legend>'.t('Give a friendly name to your group').'</legend>
+                        <div class="element large mini">
+                            <input name="title" placeholder="'.t('My Little Pony - Fan Club').'"/>
+                        </div>
+                        <input type="hidden" name="server" value="'.$_GET['s'].'"/>
+                    </fieldset>
+                    <a 
+                        class="button tiny icon yes black merged left"
+                        onclick="'.$submit.'"
+                    >'.
+                            t('Add').'
+                    </a><a 
+                        class="button tiny icon black merged right" 
+                        onclick="movim_toggle_display(\'#groupCreation\')"
+                    >'.
+                            t('Close').'
+                    </a>
+                </form>
+            </div>';
 
         RPC::call('movim_fill', 'servernodes', RPC::cdata($html));
         RPC::commit();
@@ -68,25 +92,14 @@ class ServerNodes extends WidgetCommon
         RPC::commit();
     }
     
-    function onDefaultConfig($xml)
+    function onCreationSuccess($items)
     {
-        $html = '<form name="data">';
-        $form = new XMPPtoForm();
-        $html .= $form->getHTML($xml[0]->asXML());
-        
-        $submit = $this->genCallAjax('ajaxSetConfigToNewGroup', "'".$xml[1]."'", "movim_parse_form('data')");
-        $html .= '<a class="button tiny icon" onclick="'.$submit.'">'.t("Send").'</a>';
-        
-        $html .= '</form>';
-        RPC::call('movim_fill', 'newGroupForm', RPC::cdata($html));
+        $html = '<a class="button tiny icon" href="http://localhost/movim-ptrans/?q=node&s='.
+            $items[0].'&n='.
+            $items[1].'">'.$items[2].'</a>';
+
+        RPC::call('movim_fill', 'servernodes', RPC::cdata($html));
         RPC::commit();
-    }
-    
-    function onCreationSuccess($xml)
-    {
-        $r = new moxl\GroupSetConfig();
-        $r->setTo($xml[0])->setNode($xml[1])->setData($xml[2])
-          ->request();  
     }
 
     function ajaxGetNodes($server)
@@ -95,26 +108,20 @@ class ServerNodes extends WidgetCommon
         $r->setTo($server)->request();
     }
     
-    function ajaxGetDefaultConfig($server)
-    {
-        $r = new moxl\GroupGetDefaultConfig();
-        $r->setTo($server)->request();
-    }
-    
-    function ajaxSetConfigToNewGroup($server, $data)
+    function ajaxCreateGroup($data)
     {
         //make a uri of the title
-        $uri = stringToUri($data['pubsub#title']);
+        $uri = stringToUri($data['title']);
         
         $r = new moxl\GroupCreate();
-        $r->setTo($server)->setNode($uri)->setData($data)
+        $r->setTo($data['server'])->setNode($uri)->setData($data['title'])
           ->request();
     }
 
     function build()
     {
     ?>
-        <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetDefaultConfig', "'".$_GET['s']."'"); ?>"><?php echo t("Create a new group");?></a>
+        <a class="button tiny icon" onclick="movim_toggle_display('#groupCreation')"><?php echo t("Create a new group");?></a>
         <div id="newGroupForm"></div>
         <div class="tabelem protect red" id="servernodes" title="<?php echo t('Groups');?>">
             <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?></script>
