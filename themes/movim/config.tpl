@@ -18,6 +18,7 @@
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Config');?>
         <?php $this->widget('ConfigData');?>
+        <?php $this->widget('GroupSubscribedList');?>
     </div>
 </div>
 

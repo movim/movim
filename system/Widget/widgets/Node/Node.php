@@ -54,13 +54,23 @@ class Node extends WidgetCommon
           ->request();
     }
     
-    function ajaxSubscribe($server, $node)
+    function ajaxSubscribe($data, $server, $node)
     {
         $g = new moxl\GroupSubscribe();
         $g->setTo($server)
           ->setNode($node)
           ->setFrom($this->user->getLogin())
           ->request();
+        
+        //add the group to the public list (if checked)
+        if($data['listgroup'] == "true"){
+            $g = new moxl\PubsubSubscriptionListAdd();
+            $g->setTo($server)
+              ->setNode($node)
+              ->setFrom($this->user->getLogin())
+              ->setData($data['title'])
+              ->request();
+        }
     }
     
     function ajaxUnsubscribe($server, $node)
@@ -132,11 +142,19 @@ class Node extends WidgetCommon
                 <form name="groupsubscribe">
                     <fieldset>
                         <legend>'.t('Subscribe').'</legend>
+                        <div class="element large mini">
+                            <input type="checkbox" name="listgroup" id="listgroup"/>
+                            <span><label for="listgroup">'.t('Make your membership to this group public to your friends').'</label></span>
+                        </div>
+                        <div class="element large mini">
+                            <input type="text" name="title" value="'.$groupid.'" id="grouptitle"/>
+                            <span><label for="grouptitle">'.t('Give a nickname to this group if you want').'</label></span>
+                        </div>
                     </fieldset>
                     <a 
                         class="button tiny icon yes black merged left"
                         onclick="
-                            '.$this->genCallAjax('ajaxSubscribe', "'".$serverid."'", "'".$groupid."'").'"
+                            '.$this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'").'"
                     >'.t('Subscribe').'</a><a 
                         class="button tiny icon black merged right" 
                         onclick="
