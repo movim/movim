@@ -29,13 +29,13 @@ class Node extends WidgetCommon
     function onGroupSubscribed($params)
     {        
         $html = $this->prepareGroup($params[0], $params[1]);
-        RPC::call('movim_fill', 'node', RPC::cdata($html));    
+        RPC::call('movim_fill', 'node', $html);    
     }
     
     function onGroupUnsubscribed($params)
     {
         $html = $this->prepareGroup($params[0], $params[1]);
-        RPC::call('movim_fill', 'node', RPC::cdata($html));
+        RPC::call('movim_fill', 'node', $html);
     }
     
     function onStream($id) {
@@ -43,7 +43,7 @@ class Node extends WidgetCommon
         
         if($html == '') 
             $html = t("Your feed cannot be loaded.");
-        RPC::call('movim_fill', 'node', RPC::cdata($html));
+        RPC::call('movim_fill', 'node', $html);
     }
 
     function ajaxGetItems($server, $node)

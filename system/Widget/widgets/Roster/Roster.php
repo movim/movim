@@ -37,14 +37,13 @@ class Roster extends WidgetBase
 	function onPresence($presence)
 	{
 	    $arr = $presence->getPresence();
-	    RPC::call('incomingPresence',
-                      RPC::cdata($arr['jid']), RPC::cdata($arr['presence_txt']));
+	    RPC::call('incomingPresence', $arr['jid'], $arr['presence_txt']);
 	}
 
     function onRoster()
     {
 		$html = $this->prepareRoster();
-        RPC::call('movim_fill', 'rosterlist', RPC::cdata($html));
+        RPC::call('movim_fill', 'rosterlist', $html);
         RPC::call('sortRoster');
     }
 

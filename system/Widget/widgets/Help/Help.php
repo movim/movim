@@ -21,13 +21,12 @@
 class Help extends WidgetBase
 {
     function WidgetLoad() {
-        $this->addcss('help.css');
     }
     
     function build()
     {
         ?>
-            <div id="help">
+            <div id="help" class="padded">
                 
             <h2><?php echo t('What is Movim?'); ?></h2>
             

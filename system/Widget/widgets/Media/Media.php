@@ -35,7 +35,7 @@ class Media extends WidgetBase {
     function ajaxRefreshMedia()
     {
 		$html = $this->mainFolder();
-        RPC::call('movim_fill', 'media', RPC::cdata($html));
+        RPC::call('movim_fill', 'media', $html);
         RPC::commit();
     }
     

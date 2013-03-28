@@ -32,7 +32,8 @@ class XMPPtoForm{
 					$this->outP($element);
 					break;
 				case "field":
-                    $this->html .='<div class="element">';
+                    if($element['type'] != 'hidden')
+                        $this->html .='<div class="element">';
 					switch($element['type']){
 						case "boolean":	
 							$this->outCheckbox($element);
@@ -67,7 +68,8 @@ class XMPPtoForm{
 						default:
 							$this->html .= "";
 					}
-                    $this->html .='</div>';
+                    if($element['type'] != 'hidden')
+                        $this->html .='</div>';
 					break;
 				/*XML without <x> element*/
 				case 'username':
@@ -85,8 +87,11 @@ class XMPPtoForm{
 	}
 
 	private function outGeneric($s){
-		$this->html .= '<label for="'.$s.'">
-			<input id="'.$s.'" name="generic_'.$s.'" type="'.$s.'" required/>'.$s.'</label>';
+		$this->html .= '
+            <label for="'.$s.'">'.
+                $s.'
+            </label>
+            <input id="'.$s.'" name="generic_'.$s.'" type="'.$s.'" required/>';
 	}
 	private function outTitle($s){
 		$this->html .= '<h1>'.$s.'</h1>';
@@ -105,19 +110,26 @@ class XMPPtoForm{
 	}
 
 	private function outCheckbox($s){		
-        $this->html .= '<input id="'.$s['var'].'" name="'.$s['var'].'" type="checkbox" '.$s->required;
-		if($s->value == "true" || $s->value == "1")
-			$this->html .= ' checked';
+		$this->html .= '
+            <label for="'.$s['var'].'">';
+                if($s['label']==null){
+                    $this->html .= $s['var'];
+                }
+                else{
+                    $this->html .= $s['label'];
+                }
+		$this->html .= '
+            </label>';
+            
+        $this->html .= '
+            <input 
+                id="'.$s['var'].'" 
+                name="'.$s['var'].'" 
+                type="checkbox" '.$s->required;
+            if($s->value == "true" || $s->value == "1")
+                $this->html .= ' checked';
 		$this->html .= '/>';
         
-		$this->html .= '<span><label for="'.$s['var'].'">';
-        if($s['label']==null){
-			$this->html .= $s['var'];
-		}
-		else{
-			$this->html .= $s['label'];
-		}
-		$this->html .= '</label></span>';
 	}
 	
 	private function outTextarea($s){
@@ -132,7 +144,8 @@ class XMPPtoForm{
 	}
 	
 	private function outInput($s, $type, $multiple){
-		$this->html .= '<label for="'.$s["var"].'">'.$s["label"].'
+		$this->html .= '
+            <label for="'.$s["var"].'">'.$s["label"].'</label>
 			<input id="'.$s["var"].'" name="'.$s["var"].'" value="';
 			foreach($s->children() as $value){
 				if($value->getName() == "value"){
@@ -140,7 +153,7 @@ class XMPPtoForm{
 				}
 			}
 		$this->html .= '" type="'.$type.'" title="'.$s->desc.'" 
-			'.$multiple.' '.$s->required.'/></label>';
+			'.$multiple.' '.$s->required.'/>';
 	}
 	
 	private function outHiddeninput($s){
@@ -153,7 +166,7 @@ class XMPPtoForm{
 		
 		if(count($s->xpath('option')) > 0){
 			foreach($s->option as $option){
-				$this->html .= '<option value="'.$option['label'].'"';
+				$this->html .= '<option value="'.$option->value.'"';
 				if(in_array((string)$option->value, $s->xpath('value')))
 					$this->html .= ' selected';
 				$this->html .= '>'.$option->value.'</option>';
@@ -210,7 +223,7 @@ class FormtoXMPP{
         }
 		foreach($this->inputs as $key => $value) {
             if($value == '' && $this->stream->getName() == "stream") {
-                RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
+                RPC::call('movim_reload', BASE_URI."index.php?q=account&err=datamissing");
                 RPC::commit();
      	        exit;
             } elseif(substr($key, 0, 8) == 'generic_') {
@@ -218,8 +231,13 @@ class FormtoXMPP{
                 $node->addChild($key, $value);
 		    } else{
                 $field = $node->addChild('field');
-                $field->addChild('value', $value);
-                $field->addAttribute('var', $key);
+                if($value == 'true')
+                    $value = '1';
+                if($value == 'false')
+                    $value = '0';
+                    
+                $field->addChild('value', trim($value));
+                $field->addAttribute('var', trim($key));
             }
         }
 	}

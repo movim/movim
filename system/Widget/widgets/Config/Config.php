@@ -59,7 +59,7 @@ class Config extends WidgetBase
             $submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
                 . "this.className='button icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
     ?>
-        <div class="tabelem" title="<?php echo t('Configuration'); ?>" id="config" >
+        <div class="tabelem padded" title="<?php echo t('Configuration'); ?>" id="config" >
             <form enctype="multipart/form-data" method="post" action="index.php" name="general">
                 <fieldset>
                     <legend><?php echo t('General'); ?></legend>

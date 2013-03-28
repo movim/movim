@@ -98,14 +98,14 @@ class Notifs extends WidgetCommon
         unset($notifs[$id]);
 	    Cache::c('activenotifs', $notifs);
         
-        RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
+        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
     }
 
     /*
      * Display all the notifications to the browser
      */    
     function displayNotifications() {
-        RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
+        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
     }
     
     /*
@@ -113,7 +113,7 @@ class Notifs extends WidgetCommon
      * notifications
      */  
     function onNoNotification() {
-        RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
+        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
     }
     
     /*
@@ -223,7 +223,7 @@ class Notifs extends WidgetCommon
         
         Cache::c('activenotifs', $notifs);
         
-        RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
+        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
 
         RPC::commit();
     }
@@ -247,7 +247,7 @@ class Notifs extends WidgetCommon
    	    
 	    Cache::c('activenotifs', $notifs);
         
-        RPC::call('movim_fill', 'notifs', RPC::cdata($this->prepareNotifs()));
+        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
         
         RPC::commit();
     }
