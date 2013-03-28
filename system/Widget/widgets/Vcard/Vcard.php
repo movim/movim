@@ -3,7 +3,7 @@
 /**
  * @package Widgets
  *
- * @file Friendinfos.php
+ * @file Vcard.php
  * This file is part of MOVIM.
  * 
  * @brief A widget which display all the infos of a contact
