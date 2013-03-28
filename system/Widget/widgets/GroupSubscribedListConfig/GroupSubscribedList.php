@@ -3,7 +3,7 @@
 /**
  * @package Widgets
  *
- * @file GroupSubscribedList.php
+ * @file GroupConfig.php
  * This file is part of MOVIM.
  *
  * @brief The Group configuration widget
@@ -27,17 +27,15 @@ class GroupSubscribedList extends WidgetBase
     }
     
     function prepareList($list) { 
-        if(is_array($list[0])){
-            $html = '<ul class="list">';
-            
-            foreach($list as $item){
-                $html .= '<li><a href="?q=node&s='.$item[1].'&n='.$item[0].'">'.$item[2].'</a></li>';
-            }
-            
-            $html .= '</ul>';
-            return $html;
+        $html = '<ul class="list">';
+        
+        foreach($list as $item){
+            $delete = $this->genCallAjax('ajaxDeleteFromGroupSubscribedList', "'".$item[0]."'", "'".$item[1]."'");
+            $html .= '<li>'.$item[2].'<a onclick="'.$delete.'">'.t('Delete').'</a></li>';
         }
-        else return "No public groups found.";
+        
+        $html .= '</ul>';
+        return $html;
     }
     
     function onGroupSubscribedList($list) {
@@ -45,16 +43,24 @@ class GroupSubscribedList extends WidgetBase
         RPC::call('movim_fill', 'publicgroups', RPC::cdata($html)); 
     }
     
-    function ajaxGetGroupSubscribedList($to){
-        $r = new moxl\PubsubSubscriptionListGetFriends();
-        $r->setTo($to)->request();
+    function ajaxDeleteFromGroupSubscribedList($node, $server){
+        $r = new moxl\PubsubSubscriptionListRemove();
+        $r->setNode($node)
+          ->setTo($server)
+          ->setFrom($this->user->getLogin())
+          ->request();
+    }
+    
+    function ajaxGetGroupSubscribedList(){
+        $r = new moxl\PubsubSubscriptionListGet();
+        $r->request();
     }
     
 	function build()
     {
         ?>
 		<div class="tabelem" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlist">
-            <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>"><?php echo t("Get public groups");?></a>
+            <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
             <div id="publicgroups"></div>
         </div>
         <?php
