@@ -34,12 +34,12 @@ class Profile extends WidgetCommon
     function onMyVcardReceived($vcard = false)
     {
 		$html = $this->prepareVcard($vcard);
-        RPC::call('movim_fill', 'profile', RPC::cdata($html));
+        RPC::call('movim_fill', 'profile', $html);
     }
     
     function onMyPresence()
     {
-        RPC::call('movim_fill', 'statussaved', RPC::cdata('✔ '.t('Saved')));        
+        RPC::call('movim_fill', 'statussaved', '✔ '.t('Saved'));        
     }
     
 	function ajaxSetStatus($status)

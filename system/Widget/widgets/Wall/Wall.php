@@ -36,21 +36,21 @@ class Wall extends WidgetCommon
     
     function onNoStream() {
         $html = '<div style="padding: 1.5em; text-align: center;">Ain\'t Nobody Here But Us Chickens...</div>';
-        RPC::call('movim_fill', 'wall', RPC::cdata($html));
+        RPC::call('movim_fill', 'wall', $html);
         RPC::call('hideWall');
         RPC::commit();
     }
     
     function onNoStreamAutorized() {
         $html = '<div style="padding: 1.5em; text-align: center;">I\'m sorry, Dave. I\'m afraid I can\'t do that.</div>';
-        RPC::call('movim_fill', 'wall', RPC::cdata($html));
+        RPC::call('movim_fill', 'wall', $html);
         RPC::commit();
     }  
     
     function onStream($from) {
         $html = $this->prepareFeed(-1, $from);
 
-        RPC::call('movim_fill', 'wall', RPC::cdata($html));
+        RPC::call('movim_fill', 'wall', $html);
     }
 
     function prepareFeed($start, $from = false) {
@@ -70,7 +70,7 @@ class Wall extends WidgetCommon
         if(count($pl) > 0 && $htmlmessages != false) {
             if($start == -1) {
                 $html .= '
-                        <div class="posthead" style="border-top: 0px;">
+                        <div class="posthead">
                                 <a 
                                     class="button tiny icon feed merged left" 
                                     href="?q=feed&f='.$from.'"
@@ -101,7 +101,7 @@ class Wall extends WidgetCommon
 	}
     
 	function ajaxGetFeed($start, $from) {
-		RPC::call('movim_append', 'wall', RPC::cdata($this->prepareFeed($start, $from)));
+		RPC::call('movim_append', 'wall', $this->prepareFeed($start, $from));
         RPC::commit();
 	}
 

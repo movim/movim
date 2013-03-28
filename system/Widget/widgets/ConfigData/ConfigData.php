@@ -48,7 +48,7 @@ class ConfigData extends WidgetBase
     
     function refresh() {
 		$html = $this->prepareConfigData();
-        RPC::call('movim_fill', 'configdata', RPC::cdata($html));
+        RPC::call('movim_fill', 'configdata', $html);
         RPC::commit();
     }
     
@@ -96,7 +96,7 @@ class ConfigData extends WidgetBase
     function build()
     {
         ?>
-        <div class="tabelem" title="<?php echo t('Data'); ?>" id="configdata" >
+        <div class="tabelem padded" title="<?php echo t('Data'); ?>" id="configdata" >
             <?php echo $this->prepareConfigData(); ?>
         </div>
         <?php

@@ -72,7 +72,7 @@ class RPC
 
             if(is_array($funcall['params'])) {
                 foreach($funcall['params'] as $param) {
-                    println('<param>%s</param>', $param);
+                    println('<param><![CDATA[%s]]></param>', $param);
                 }
             }
 

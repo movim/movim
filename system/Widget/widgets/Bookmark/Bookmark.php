@@ -30,22 +30,45 @@ class Bookmark extends WidgetBase
     function onGroupSubscribed()
     {
         $arr = Cache::c('bookmark');
-        $html = $this->prepareBookmark($arr);
-        RPC::call('movim_fill', 'bookmarks', RPC::cdata($html));        
+
+        $html = $this->prepareBookmark($arr);     
+        RPC::call('movim_fill', 'bookmarks', $html);   
+        RPC::call('setBookmark');   
     }
     
     function onGroupUnsubscribed()
     {
         $arr = Cache::c('bookmark');
-        $html = $this->prepareBookmark($arr);
-        RPC::call('movim_fill', 'bookmarks', RPC::cdata($html));        
+        
+        $html = $this->prepareBookmark($arr);  
+        RPC::call('movim_fill', 'bookmarks', $html);   
+        RPC::call('setBookmark');        
     }
     
     function onBookmark($arr)
     {
+        $i = 0;
+        foreach($arr as $b) {
+            if($b['type'] == 'subscription') {
+                $su = new \modl\Subscription();
+                $su->jid    = $this->user->getLogin();
+                $su->server = $b['server'];
+                $su->node   = $b['node'];
+                $su->subscription   = 'subscribed';
+                $su->subid  = '';
+                $su->timestamp      = date('Y-m-d H:i:s', rand(1111111111, 8888888888));
+            
+                $sd = new \modl\SubscriptionDAO();
+                $sd->set($su);
+                
+                unset($arr[$i]);
+            }
+            $i++;
+        }
+        
         Cache::c('bookmark', $arr);
         $html = $this->prepareBookmark($arr);
-        RPC::call('movim_fill', 'bookmarks', RPC::cdata($html));
+        RPC::call('movim_fill', 'bookmarks', $html);
     }
     
     function ajaxGetBookmark() 
@@ -54,14 +77,34 @@ class Bookmark extends WidgetBase
         $b->request();
     }
     
-    function ajaxSetBookmark() 
-    {
-        $b = new moxl\BookmarkSet();                
-        $bookmarks = Cache::c('bookmark');
-                
-        if($bookmarks == null)
-            $bookmarks = array();
+    function ajaxSetBookmark($arr = null) 
+    {            
+        if($arr == null || $arr == '')
+            $arr = Cache::c('bookmark');
+        if($arr == null)
+            $arr = array();
         
+        $sd = new \modl\SubscriptionDAO();
+        
+        if($sd != null) {
+            foreach($sd->getSubscribed() as $s) {
+                $subscription .= '
+                    <li>
+                        <a href="?q=node&s='.$s->server.'&n='.$s->node.'">'.
+                            $s->node.'
+                        </a>
+                    </li>';
+
+                array_push($arr,
+                    array(
+                        'type'      => 'subscription',
+                        'server'    => $s->server,
+                        'title'    => $s->title,
+                        'node'      => $s->node));   
+            }
+        }
+        
+        $b = new moxl\BookmarkSet();
         $b->setArr($arr)
           ->request();
     }
@@ -70,11 +113,11 @@ class Bookmark extends WidgetBase
     {
         if(!filter_var($form['url'], FILTER_VALIDATE_URL)) {
             $html = '<div class="message error">'.t('Bad URL').'</div>' ;
-            RPC::call('movim_fill', 'bookmarkadderror', RPC::cdata($html));
+            RPC::call('movim_fill', 'bookmarkadderror', $html);
             RPC::commit();
         } elseif(trim($form['name']) == '') {
             $html = '<div class="message error">'.t('Empty name').'</div>' ;
-            RPC::call('movim_fill', 'bookmarkadderror', RPC::cdata($html));
+            RPC::call('movim_fill', 'bookmarkadderror', $html);
             RPC::commit();            
         }
         
@@ -88,10 +131,8 @@ class Bookmark extends WidgetBase
                 'type'      => 'url',
                 'name'      => $form['name'],
                 'url'       => $form['url']));   
-       
-        $b = new moxl\BookmarkSet();
-        $b->setArr($bookmarks)
-          ->request();
+        
+        $this->ajaxSetBookmark($bookmarks);
     }
     
     function ajaxBookmarkUrlRemove($url)
@@ -211,7 +252,14 @@ class Bookmark extends WidgetBase
     function build()
     {
         $getbookmark = $this->genCallAjax("ajaxGetBookmark");
-        $setbookmark = $this->genCallAjax("ajaxSetBookmark");
+        $setbookmark = $this->genCallAjax("ajaxSetBookmark", "''");
+    ?>
+        <script type="text/javascript">
+            function setBookmark() {
+                <?php echo $setbookmark; ?>
+            }
+        </script>
+    <?php
     ?>
         <h2><?php echo t('Bookmarks'); ?></h2>
     

@@ -497,7 +497,7 @@ class WidgetCommon extends WidgetBase {
         $comments = $pd->getComments($p);
 
         $html = $this->prepareComments($comments);
-        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
+        RPC::call('movim_fill', $parent.'comments', $html);
     }
     
     function onNoComment($parent) {     
@@ -509,7 +509,7 @@ class WidgetCommon extends WidgetBase {
                     t('No comments').
                 '</a>
             </div>';
-        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
+        RPC::call('movim_fill', $parent.'comments', $html);
     }
     
     function onNoCommentStream($parent) { 
@@ -521,7 +521,7 @@ class WidgetCommon extends WidgetBase {
                     t('No comments stream').
                 '</a>
             </div>';
-        RPC::call('movim_fill', $parent.'comments', RPC::cdata($html));
+        RPC::call('movim_fill', $parent.'comments', $html);
     }
     
 	function ajaxGetComments($jid, $id) {
@@ -558,39 +558,14 @@ class WidgetCommon extends WidgetBase {
         
         if($privacy == 'orange') {
             $p->public = 0;
-                    movim_log($p->public);
             $pd->set($p);
         } elseif($privacy == 'black') {
             $p->public = 1;
-                    movim_log($p->public);
             $pd->set($p);
         }
         
         RPC::call('movim_change_class', $nodeid.'bubble' , 'postbubble me protect '.$privacy);
         RPC::commit();
-        
-        /*$query = Post::query()
-                            ->where(
-                                array(
-                                    'key' => $to,
-                                    'jid' => $to,
-                                    'nodeid' => $id))
-                            ->limit(0, 1);
-        $post = Post::run_query($query);
-        
-        if(isset($post[0])) {
-            $post = $post[0];
-
-            if($privacy == 'orange')
-                $post->public->setval(0);
-            elseif($privacy == 'black')
-                $post->public->setval(1);
-                
-            $post->run_query($post->query()->save($post));
-        }
-        
-        RPC::call('movim_change_class', $id.'bubble' , 'postbubble me protect '.$privacy);
-        RPC::commit();*/
     }
     
     function ajaxPostFold($nodeid) {
@@ -618,6 +593,6 @@ class WidgetCommon extends WidgetBase {
     function onPostDeleteError($params) {
         $html .=
             '<div class="message error">'.t('An error occured : ').$params[1].'</div>';
-        RPC::call('movim_fill', $params[0] , RPC::cdata($html));
+        RPC::call('movim_fill', $params[0] , $html);
     }
 }

@@ -198,7 +198,7 @@ function MovimRPC()
                 var array = this.params[i]
                 params += "<array>\n";
                 for(var j = 0; j < array.length; j++) {
-                    params += "<arrayelt>" + array[j] + "</arrayelt>\n";
+                    params += "<arrayelt><![CDATA[" + array[j] + "]]></arrayelt>\n";
                 }
                 params += "</array>\n";
             }
@@ -208,13 +208,13 @@ function MovimRPC()
                 params += "<array>\n";
                 while(iter.next()) {
                     params += '<arrayelt name="' + iter.key() + '">'
-                        + iter.val()
+                        + '<![CDATA[' + iter.val() + ']]>'
                         + "</arrayelt>\n";
                 }
                 params += "</array>\n";
             }
             else {
-                params += this.params[i];
+                params += '<![CDATA[' + this.params[i] + ']]>';
             }
 
             params +="</param>\n";
