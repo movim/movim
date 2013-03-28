@@ -53,7 +53,7 @@ class ProfileData extends WidgetBase
         } else {
             $html = '
                 <div class="message error">'.t('Wrong position').'</div>';
-            RPC::call('movim_fill', 'maperror', RPC::cdata($html));
+            RPC::call('movim_fill', 'maperror', $html);
             RPC::commit();
         }
     }
@@ -61,11 +61,11 @@ class ProfileData extends WidgetBase
     function onLocationPublished($me)
     {
         $html = $me->getPlace();
-        RPC::call('movim_fill', 'mapdata', RPC::cdata($html));
+        RPC::call('movim_fill', 'mapdata', $html);
         
         $html = '
                 <div class="message success">'.t('Location updated').'</div><br />';
-        RPC::call('movim_fill', 'maperror', RPC::cdata($html));
+        RPC::call('movim_fill', 'maperror', $html);
         RPC::call('movim_delete', 'mapdiv');
         RPC::commit();
     }
@@ -74,7 +74,7 @@ class ProfileData extends WidgetBase
     {
         $html = '
             <div class="message error">'.$error.'</div>';
-        RPC::call('movim_fill', 'maperror', RPC::cdata($html));
+        RPC::call('movim_fill', 'maperror', $html);
         RPC::call('movim_delete', 'mapdiv');
         RPC::call('movim_delete', 'mapdata');
         RPC::commit();

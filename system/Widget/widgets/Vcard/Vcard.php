@@ -32,14 +32,14 @@ class Vcard extends WidgetBase
     function onMyVcardReceived()
     {
 		$html = $this->prepareInfos();
-        RPC::call('movim_fill', 'vcard', RPC::cdata($html));
+        RPC::call('movim_fill', 'vcard', $html);
         RPC::commit();
     }
     
     function onMyVcardNotReceived($error)
     {
 		$html = $this->prepareInfos($error);
-        RPC::call('movim_fill', 'vcard', RPC::cdata($html));
+        RPC::call('movim_fill', 'vcard', $html);
     }
     
 	function ajaxVcardSubmit($vcard)
@@ -333,7 +333,7 @@ class Vcard extends WidgetBase
     function build()
     {
         ?>
-		<div class="tabelem" title="<?php echo t('Edit my Profile'); ?>" id="vcard">
+		<div class="tabelem padded" title="<?php echo t('Edit my Profile'); ?>" id="vcard">
 			<?php 
 				echo $this->prepareInfos();
 			?>
