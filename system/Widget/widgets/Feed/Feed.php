@@ -242,6 +242,17 @@ class Feed extends WidgetCommon {
         </div>
         
         <div class="posthead">
+            <a 
+                class="button tiny icon feed merged left" 
+                href="?q=blog&f=<?php echo $this->user->getLogin(); ?>"
+                target="_blank">
+                <?php echo t('Blog'); ?>
+            </a><a 
+                class="button tiny icon feed merged right" 
+                href="?q=feed&f=<?php echo $this->user->getLogin(); ?>"
+                target="_blank">
+                <?php echo t('Feed'); ?> (Atom)
+            </a>
             <ul class="filters">
                 <li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
                 <li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>
