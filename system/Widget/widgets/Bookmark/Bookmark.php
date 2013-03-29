@@ -55,7 +55,7 @@ class Bookmark extends WidgetBase
                 $su->server = $b['server'];
                 $su->node   = $b['node'];
                 $su->subscription   = 'subscribed';
-                $su->subid  = '';
+                $su->subid  = $b['subid'];
                 $su->timestamp      = date('Y-m-d H:i:s', rand(1111111111, 8888888888));
             
                 $sd = new \modl\SubscriptionDAO();
@@ -99,7 +99,8 @@ class Bookmark extends WidgetBase
                     array(
                         'type'      => 'subscription',
                         'server'    => $s->server,
-                        'title'    => $s->title,
+                        'title'     => $s->title,
+                        'subid'     => $s->subid,
                         'node'      => $s->node));   
             }
         }
