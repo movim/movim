@@ -31,7 +31,11 @@ class GroupSubscribedListConfig extends WidgetBase
             $html = '<ul class="list">';
             foreach($list as $item){
                 $delete = $this->genCallAjax('ajaxDeleteFromGroupSubscribedList', "'".$item[0]."'", "'".$item[1]."'");
-                $html .= '<li>'.$item[2].'<a onclick="'.$delete.'">'.t('Delete').'</a></li>';
+                $html .= '
+                    <li>
+                        <a class="action" onclick="'.$delete.'">'.t('Delete').'</a>
+                        <a href="?q=node&s='.$item[1].'&n='.$item[0].'">'.$item[2].'</a>
+                    </li>';
             }
             $html .= '</ul>';
             return $html;
@@ -41,7 +45,7 @@ class GroupSubscribedListConfig extends WidgetBase
     
     function onGroupSubscribedList($list) {
         $html = $this->prepareList($list);
-        RPC::call('movim_fill', 'publicgroups', RPC::cdata($html)); 
+        RPC::call('movim_fill', 'groupsubscribedlistconfig', $html); 
     }
     
     function ajaxDeleteFromGroupSubscribedList($node, $server){
@@ -60,10 +64,8 @@ class GroupSubscribedListConfig extends WidgetBase
 	function build()
     {
         ?>
-		<div class="tabelem" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistconfig">
-            <div id="publicgroups">
-                <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
-            </div>
+		<div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistconfig">
+            <a class="button tiny icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
         </div>
         <?php
     }
