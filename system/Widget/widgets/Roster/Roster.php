@@ -287,8 +287,6 @@ class Roster extends WidgetBase
             <ul id="rosterlist" class="<?php echo $offlineshown; ?>">
             <?php echo $this->prepareRoster(); ?>
             </ul>
-           
-            <div class="config_button" onclick="<?php $this->callAjax('ajaxRefreshRoster');?>"></div>
             <script type="text/javascript">sortRoster();</script>
         </div>
         
