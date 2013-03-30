@@ -26,19 +26,31 @@ class GroupConfig extends WidgetBase
         $this->registerEvent('configform', 'onConfigForm');
         $this->registerEvent('groupconfigsubmited', 'onGroupConfig');
         $this->registerEvent('groupconfigerror', 'onGroupConfigError');
+        $this->registerEvent('deletionsuccess', 'onGroupDeleted');
+    }
+    
+    function onGroupDeleted($server) {
+        $html = '<div class="message success">'.t('Group deleted').'<br />
+                    <a href="?q=server&s='.$server.'">
+                        '.t("Return to %s's list of groups", $server).'
+                    </a>
+                </div>';
+        
+        RPC::call('movim_fill', 'handlingmessages', $html);
+        RPC::commit();        
     }
     
     function onGroupConfig($stanza) {
         $html = '<div class="message success">'.t('Group configuration saved').'</div>';
         
-        RPC::call('movim_append', 'groupconfig', $html);
+        RPC::call('movim_fill', 'handlingmessages', $html);
         RPC::commit();        
     }
     
     function onGroupConfigError($error) {
         $html = '<div class="message error">'.t('Error').' : '.$error.'</div>';
         
-        RPC::call('movim_append', 'groupconfig', $html);
+        RPC::call('movim_fill', 'handlingmessages', $html);
         RPC::commit();
     }
     
@@ -85,7 +97,8 @@ class GroupConfig extends WidgetBase
 	function build()
     {
         ?>
-		<div class="tabelem" title="<?php echo t('Configuration'); ?>" id="groupconfig">
+		<div class="tabelem padded" title="<?php echo t('Configuration'); ?>" id="groupconfig">
+            <div id="handlingmessages"></div>
             <div id="groupconfiguration">
                 <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?>"><?php echo t("Configure your group");?></a>
                 <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGroupDelete', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?>"><?php echo t("Delete this group");?></a>
