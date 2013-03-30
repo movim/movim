@@ -30,6 +30,7 @@ class Config extends WidgetBase
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
+        Notification::appendNotification(t('Configuration updated'));
     }
 
 	function ajaxSubmit($data) {

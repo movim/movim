@@ -125,7 +125,7 @@ form .element.simple > *:not(label):not(img):focus {
 }
 
 .element .select:before {
-    pointer-events:none;
+    pointer-events: none;
     content: "▼";
     font: 11px sans-serif;
     font-weight: bold;

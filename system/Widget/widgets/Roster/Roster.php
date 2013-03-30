@@ -37,6 +37,7 @@ class Roster extends WidgetBase
 	function onPresence($presence)
 	{
 	    $arr = $presence->getPresence();
+        //Notification::appendNotification($arr['jid'].' '. $arr['presence_txt']);
 	    RPC::call('incomingPresence', $arr['jid'], $arr['presence_txt']);
 	}
 

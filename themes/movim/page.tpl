@@ -78,6 +78,7 @@
         </div>
 
         <div id="content">
+            <?php $this->widget('Notification');?>
             <?php $this->content();?>
           
             <div id="footer">

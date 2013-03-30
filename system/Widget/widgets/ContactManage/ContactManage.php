@@ -30,6 +30,7 @@ class ContactManage extends WidgetCommon
            ->setName(htmlspecialchars($form['alias']))
            ->setGroup(htmlspecialchars($form['group']))
            ->request();
+        Notification::appendNotification(t('Contact updated'));
     }
     
     private function prepareContactManage($jid) {

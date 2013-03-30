@@ -51,10 +51,7 @@ class ProfileData extends WidgetBase
               ->setGeo($geo)
               ->request();
         } else {
-            $html = '
-                <div class="message error">'.t('Wrong position').'</div>';
-            RPC::call('movim_fill', 'maperror', $html);
-            RPC::commit();
+            Notification::appendNotification(t('Wrong position'), 'error');
         }
     }
     
@@ -63,18 +60,15 @@ class ProfileData extends WidgetBase
         $html = $me->getPlace();
         RPC::call('movim_fill', 'mapdata', $html);
         
-        $html = '
-                <div class="message success">'.t('Location updated').'</div><br />';
-        RPC::call('movim_fill', 'maperror', $html);
+        Notification::appendNotification(t('Location updated'), 'success');
         RPC::call('movim_delete', 'mapdiv');
         RPC::commit();
     }
     
     function onLocationPublishError($error)
     {
-        $html = '
-            <div class="message error">'.$error.'</div>';
-        RPC::call('movim_fill', 'maperror', $html);
+        Notification::appendNotification($error, 'error');
+
         RPC::call('movim_delete', 'mapdiv');
         RPC::call('movim_delete', 'mapdata');
         RPC::commit();
@@ -99,7 +93,6 @@ class ProfileData extends WidgetBase
         $html .= '
             <h2>'.t('Location').'</h2>
             <div id="location">
-                <div id="maperror"></div>
                 <div id="mapdata" style="margin-bottom: 10px;">'.$data.'</div>
                 <div id="mapdiv" style="width: auto; height: 250px; display: none;"></div>
                 <div class="clear"></div>

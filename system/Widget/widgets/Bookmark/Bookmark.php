@@ -69,6 +69,7 @@ class Bookmark extends WidgetBase
         Cache::c('bookmark', $arr);
         $html = $this->prepareBookmark($arr);
         RPC::call('movim_fill', 'bookmarks', $html);
+        Notification::appendNotification(t('Bookmarks updated'), 'info');
     }
     
     function ajaxGetBookmark() 

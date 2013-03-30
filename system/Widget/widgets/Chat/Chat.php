@@ -27,9 +27,8 @@ class Chat extends WidgetBase
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
+        $this->registerEvent('attention', 'onAttention');
 		$this->registerEvent('presence', 'onPresence');
-        
-        $this->cached = false;
     }
     
     function onPresence($presence)
@@ -140,6 +139,25 @@ class Chat extends WidgetBase
             RPC::call('scrollTalk',
                       'messages'.$contact->jid);
         }
+    }
+    
+    function onAttention($jid)
+    {        
+        $rc = new \modl\ContactDAO();
+        $contact = $rc->getRosterItem(echapJid($jid));
+        
+        $html = '
+            <div style="font-weight: bold; color: black;" class="message" >
+                <span class="date">'.date('G:i', time()).'</span>'.
+                t('%s needs your attention', $contact->getTrueName()).'
+            </div>';
+
+        RPC::call('movim_append',
+                       'messages'.$jid,
+                       $html); 
+                       
+        RPC::call('scrollTalk',
+                       'messages'.$jid);
     }
     
     
@@ -297,7 +315,7 @@ class Chat extends WidgetBase
                     <div class="messages" id="messages'.$contact->jid.'">
                         '.$messageshtml.'
                         <div style="display: none;" class="message" id="composing'.$contact->jid.'">'.t('Composing...').'</div>
-                        <div style="display: none;" class="message" id="paused'.$contact->jid.'">'.t('Paused...').'</div>
+                        <div style="display: none;" class="message" id="paused'.$contact->jid.'">'.t('Paused...').'</div>                        
                     </div>
                     
                     <div class="text">
