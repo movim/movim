@@ -30,7 +30,7 @@ class ContactCard extends WidgetCommon
     function onVcard($contact)
     {
         $html = $this->prepareContactCard($contact);
-        RPC::call('movim_fill', 'contactcard', RPC::cdata($html));
+        RPC::call('movim_fill', 'contactcard', $html);
     }
 
     function prepareContactCard($contact)

@@ -24,23 +24,42 @@ class GroupConfig extends WidgetBase
     function WidgetLoad()
     {
         $this->registerEvent('configform', 'onConfigForm');
-
+        $this->registerEvent('groupconfigsubmited', 'onGroupConfig');
+        $this->registerEvent('groupconfigerror', 'onGroupConfigError');
+    }
+    
+    function onGroupConfig($stanza) {
+        $html = '<div class="message success">'.t('Group configuration saved').'</div>';
+        
+        RPC::call('movim_append', 'groupconfig', $html);
+        RPC::commit();        
+    }
+    
+    function onGroupConfigError($error) {
+        $html = '<div class="message error">'.t('Error').' : '.$error.'</div>';
+        
+        RPC::call('movim_append', 'groupconfig', $html);
+        RPC::commit();
     }
     
     function onConfigForm($form) {
         $submit = $this->genCallAjax('ajaxSubmitConfig', "movim_parse_form('config')", "'".$form[1]."'", "'".$form[2]."'");
         $html = '<form name="config">'.
                     $form[0].
-                    '<a
+                    '
+                    <hr /><br />
+                    <a
                             class="button icon yes" 
                             style="float: right;"
                             onclick="'.$submit.'"
                         >
                             '.t('Validate').'
                     </a>
+                    <br />
+                    <br />
                 </form>';
         
-        RPC::call('movim_fill', 'groupconfiguration', RPC::cdata($html));
+        RPC::call('movim_fill', 'groupconfiguration', $html);
         RPC::commit();
     }
     
@@ -57,7 +76,7 @@ class GroupConfig extends WidgetBase
     }
     
     function ajaxSubmitConfig($data, $server, $node){
-        unset($data['pubsub#max_items']);
+        //unset($data['pubsub#max_items']);
         $r = new moxl\GroupSetConfig();
         $r->setTo($server)->setNode($node)->setData($data)
           ->request();

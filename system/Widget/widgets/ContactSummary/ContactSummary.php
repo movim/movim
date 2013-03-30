@@ -30,7 +30,7 @@ class ContactSummary extends WidgetCommon
     function onVcard($contact)
     {
         $html = $this->prepareContactSummary($contact);
-        RPC::call('movim_fill', 'contactsummary', RPC::cdata($html));
+        RPC::call('movim_fill', 'contactsummary', $html);
     }
     
 	function ajaxRefreshVcard($jid)

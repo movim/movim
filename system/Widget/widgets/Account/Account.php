@@ -28,7 +28,7 @@ class Account extends WidgetBase {
     
     function ajaxDiscoverServer($ndd) {
         if($ndd['ndd'] == '') {
-            RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=datamissing"));
+            RPC::call('movim_reload', BASE_URI."index.php?q=account&err=datamissing");
             RPC::commit();
             exit;
         }
@@ -43,7 +43,7 @@ class Account extends WidgetBase {
             $f = fsockopen($domain, 5222, $errno, $errstr, 10);
 
             if(!$f) {
-                RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
+                RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppconnect");
                 RPC::commit();
                 exit;
             }
@@ -57,7 +57,7 @@ class Account extends WidgetBase {
             $response = stream_get_contents($f);
 
 	        if(!$response) {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppcomm"));
+                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppcomm");
                     RPC::commit();
      	            exit;
 		    }
@@ -130,7 +130,7 @@ class Account extends WidgetBase {
                         </fieldset>
                     </form>';
             
-                RPC::call('movim_fill', 'fillform', RPC::cdata($html));
+                RPC::call('movim_fill', 'fillform', $html);
                 RPC::commit();
                 
             }
@@ -140,7 +140,7 @@ class Account extends WidgetBase {
                         '.t('No account creation form founded on the server').'
                     </div>';
                 
-                RPC::call('movim_fill', 'fillform', RPC::cdata($html));
+                RPC::call('movim_fill', 'fillform', $html);
                 RPC::commit();
             }
             
@@ -162,7 +162,7 @@ class Account extends WidgetBase {
 	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
 
 	        if(!$f) {
-                RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppconnect"));
+                RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppconnect");
                 RPC::commit();
      	        exit;
 		    }
@@ -181,7 +181,7 @@ class Account extends WidgetBase {
 	        $response = stream_get_contents($f);
 
 	        if(!$response) {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=xmppcomm"));
+                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppcomm");
                     RPC::commit();
      	            exit;
 		    }
@@ -204,7 +204,7 @@ class Account extends WidgetBase {
 	        if($iq->error) {
 		        list($cond) = $iq->error->children();
 		        if($cond->getName() == 'conflict') {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=userconflict"));
+                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=userconflict");
                     RPC::commit();
      	            exit;
 		        }
@@ -212,11 +212,11 @@ class Account extends WidgetBase {
 	        }
 
 	        if($iq = $response->iq and $iq->attributes()->type == 'result') {
-                RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=login&err=acccreated"));
+                RPC::call('movim_reload', BASE_URI."index.php?q=login&err=acccreated");
                 RPC::commit();
                 exit;
 	        } else {
-                	RPC::call('movim_reload', RPC::cdata(BASE_URI."index.php?q=account&err=unknown"));
+                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=unknown");
                     RPC::commit();
      	            exit;
 		    }

@@ -49,8 +49,6 @@ function createThumbnailSize($photobin, $size, $path) {
     
     if($source) {
         imagecopyresampled($thumb, $source, 0, 0, $x_offset, $y_offset, $size, $size, $square_size, $square_size);
-        
-        //display_image($hash, "image/jpeg");
         imagejpeg($thumb, $path, 95);
     }
 }

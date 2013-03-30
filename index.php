@@ -46,9 +46,9 @@ ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
 // If the configuration doesn't exist, run the installer.
-if(!file_exists("config/conf.xml")) {
-    header('Location: admin/'); exit;
-} else {
+/*if(!file_exists("config/conf.xml")) {
+    header('Location: ?q=admin'); exit;
+} else {*/
     // Run
     require('init.php');
 
@@ -61,8 +61,5 @@ if(!file_exists("config/conf.xml")) {
 
     // Closing stuff
     WidgetWrapper::destroyInstance();
-    global $sdb;
-
-    $sdb->close();
-}
+//}
 ?>
