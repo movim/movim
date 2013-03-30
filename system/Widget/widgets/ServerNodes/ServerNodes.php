@@ -93,7 +93,7 @@ class ServerNodes extends WidgetCommon
     }
     
     function onCreationSuccess($items)
-    {
+    {        
         $html = '<a class="button tiny icon" href="http://localhost/movim-ptrans/?q=node&s='.
             $items[0].'&n='.
             $items[1].'">'.$items[2].'</a>';
