@@ -31,7 +31,7 @@ class GroupSubscribedListConfig extends WidgetBase
             $html = '<ul class="list">';
             foreach($list as $item){
                 $delete = $this->genCallAjax('ajaxDeleteFromGroupSubscribedList', "'".$item[0]."'", "'".$item[1]."'");
-                $html .= '<li>'.$item.'<a onclick="'.$delete.'">'.t('Delete').'</a></li>';
+                $html .= '<li>'.$item[2].'<a onclick="'.$delete.'">'.t('Delete').'</a></li>';
             }
             $html .= '</ul>';
             return $html;
@@ -57,20 +57,12 @@ class GroupSubscribedListConfig extends WidgetBase
         $r->request();
     }
     
-    function ajaxGetGroupOwned(){
-        //$r = new moxl\();
-        //$r->request();
-    }
-    
 	function build()
     {
         ?>
 		<div class="tabelem" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistconfig">
             <div id="publicgroups">
                 <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
-            </div>
-            <div id="youownthem">
-                <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetGroupOwned'); ?>"><?php echo t("Get your groups");?></a>
             </div>
         </div>
         <?php
