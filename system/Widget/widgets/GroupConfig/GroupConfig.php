@@ -59,12 +59,18 @@ class GroupConfig extends WidgetBase
                     <br />
                 </form>';
         
-        RPC::call('movim_fill', 'groupconfig', $html);
+        RPC::call('movim_fill', 'groupconfiguration', $html);
         RPC::commit();
     }
     
     function ajaxGroupConfig($server, $node){
         $r = new moxl\GroupGetConfigForm();
+        $r->setTo($server)->setNode($node)
+          ->request();
+    }
+    
+    function ajaxGroupDelete($server, $node){
+        $r = new moxl\GroupDelete();
         $r->setTo($server)->setNode($node)
           ->request();
     }
@@ -79,8 +85,11 @@ class GroupConfig extends WidgetBase
 	function build()
     {
         ?>
-		<div class="tabelem padded" title="<?php echo t('Configuration'); ?>" id="groupconfig">
-            <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?>"><?php echo t("Configure your group");?></a>
+		<div class="tabelem" title="<?php echo t('Configuration'); ?>" id="groupconfig">
+            <div id="groupconfiguration">
+                <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?>"><?php echo t("Configure your group");?></a>
+                <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGroupDelete', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?>"><?php echo t("Delete this group");?></a>
+            </div>
         </div>
         <?php
     }
