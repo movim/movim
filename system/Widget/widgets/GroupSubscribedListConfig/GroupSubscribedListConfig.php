@@ -24,6 +24,7 @@ class GroupSubscribedListConfig extends WidgetBase
     function WidgetLoad()
     {
         $this->registerEvent('groupsubscribedlist', 'onGroupSubscribedList');
+        $this->registerEvent('groupremoved', 'onGroupRemoved');
     }
     
     function prepareList($list) { 
@@ -32,7 +33,7 @@ class GroupSubscribedListConfig extends WidgetBase
             foreach($list as $item){
                 $delete = $this->genCallAjax('ajaxDeleteFromGroupSubscribedList', "'".$item[0]."'", "'".$item[1]."'");
                 $html .= '
-                    <li>
+                    <li id="group'.$item[0].'">
                         <a class="action" onclick="'.$delete.'">'.t('Delete').'</a>
                         <a href="?q=node&s='.$item[1].'&n='.$item[0].'">'.$item[2].'</a>
                     </li>';
@@ -43,9 +44,17 @@ class GroupSubscribedListConfig extends WidgetBase
         else return "No groups found";
     }
     
+    function onGroupRemoved($node) {
+        $html = '<div class="message success">'.t('%s has been removed from your public groups', $node).'</div>';
+        
+        RPC::call('movim_delete', 'group'.$node);
+        RPC::call('movim_fill', 'handlingmessages', $html);
+        RPC::commit(); 
+    }
+    
     function onGroupSubscribedList($list) {
         $html = $this->prepareList($list);
-        RPC::call('movim_fill', 'groupsubscribedlistconfig', $html); 
+        RPC::call('movim_fill', 'listconfig', $html); 
     }
     
     function ajaxDeleteFromGroupSubscribedList($node, $server){
@@ -65,7 +74,10 @@ class GroupSubscribedListConfig extends WidgetBase
     {
         ?>
 		<div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistconfig">
-            <a class="button tiny icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
+            <div id="handlingmessages"></div>
+            <div id="listconfig">
+                <a class="button tiny icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
+            </div>
         </div>
         <?php
     }
