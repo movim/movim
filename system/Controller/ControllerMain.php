@@ -331,6 +331,34 @@ class ControllerMain extends ControllerBase
         echo $this->page->build('page.tpl');
 
      }
+     
+    /*
+     * Show admin page
+     */
+     function admin()
+     {
+        error_reporting(0); 
+         
+        if(!isset($_SERVER['PHP_AUTH_USER'])) {
+            $this->authenticate();
+        } else {
+            $conf = Conf::getServerConf();
+
+            if($_SERVER['PHP_AUTH_USER'] == (string)$conf['user'] && sha1($_SERVER['PHP_AUTH_PW']) == (string)$conf['pass']){
+                $this->page->setTitle(t('%s - Administration Panel', APP_TITLE));
+
+                $this->page->menuAddLink(t('Home'), 'main');
+                $this->page->menuAddLink(t('Administration'), 'admin', true);
+
+                $content = new TplPageBuilder();
+                $this->page->setContent($content->build('admin.tpl'));
+                echo $this->page->build('page.tpl');
+            } else {
+                $this->authenticate();
+            }
+        }
+
+     }
 
 	function disconnect()
 	{

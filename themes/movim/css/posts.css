@@ -5,7 +5,6 @@
     display: block;
     width: 100%;
     min-height: 40px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-left: 1.5em;
     padding-top: 1em;
 }
@@ -29,8 +28,7 @@
 }
 
 .post .content {
-    padding: 0em 1em;
-    padding-bottom: 1em;
+    padding: 1em;
 }
 
 .post .postbubble {
@@ -202,17 +200,22 @@
 .post .content b, .post .content strong { font-weight: bold; }
 .post .content u, .post .content a { text-decoration: underline; }
 
-.post content a.imglink {
+.post .content a.imglink {
     text-decoration: none;
-    display: none;
+    display: inline-block;
+    max-width: 100%;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    height: 0px;
+}
+
+.post .content a.imglink img {
+    max-height: 400px;
+    width: 100%;
 }
 
 .post .content img {
-    margin: 10px 5px 0px 5px;
-    max-width: 95%;
-    max-height: 300px;
-    padding: 5px;
-    border: 1px solid #AAA;
+    max-width: 100%;
 }
 
 .post .content img.smiley {
@@ -327,6 +330,7 @@
     background-color: transparent;
     box-shadow: 0px 0px 0px;
     padding: 0px;
+    padding-top: 0.7em;
 }
 
 .post.folded {

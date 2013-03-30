@@ -29,7 +29,7 @@ class Feed extends WidgetCommon {
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
-        RPC::call('movim_fill', 'feedhead', RPC::cdata($this->prepareHead()));
+        RPC::call('movim_fill', 'feedhead', $this->prepareHead());
     }
     
     function onNodeCreated() {
@@ -55,7 +55,7 @@ class Feed extends WidgetCommon {
             '<div class="message error">'.
                 t("Your server doesn't support post publication, you can only read contact's feeds").'
              </div>';
-        RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
+        RPC::call('movim_fill', 'feednotifs', $html);
         RPC::commit();
     }
     
@@ -64,7 +64,7 @@ class Feed extends WidgetCommon {
             '<div class="message error">'.
                 t("Comment publication error").'
              </div>';
-        RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
+        RPC::call('movim_fill', 'feednotifs', $html);
     }
 
     function onPostPublished($post) {        
@@ -74,7 +74,7 @@ class Feed extends WidgetCommon {
         $html = $this->preparePosts($pl);
 
         RPC::call('createCommentNode', $post->nodeid);            
-        RPC::call('movim_fill', 'feedcontent', RPC::cdata($html));
+        RPC::call('movim_fill', 'feedcontent', $html);
     }  
     
     function ajaxCreateCommentNode($parentid) {
@@ -87,7 +87,7 @@ class Feed extends WidgetCommon {
     function onPostPublishError($error) {
         $html .=
             '<div class="message error">'.t('An error occured : ').$error.'</div>';
-        RPC::call('movim_fill', 'feednotifs', RPC::cdata($html));
+        RPC::call('movim_fill', 'feednotifs', $html);
     }
     
     function prepareHead() {
@@ -195,7 +195,7 @@ class Feed extends WidgetCommon {
     }
 
     function ajaxGetFeed($start) {
-        RPC::call('movim_append', 'feedcontent', RPC::cdata($this->prepareFeed($start)));
+        RPC::call('movim_append', 'feedcontent', $this->prepareFeed($start));
         RPC::commit();
     }
         
@@ -208,7 +208,7 @@ class Feed extends WidgetCommon {
                 <div class="message info" style="margin: 1.5em; margin-top: 0em;">'.
                     t("Your feed cannot be loaded.").'
                 </div>';
-        RPC::call('movim_fill', 'feedcontent', RPC::cdata($html));
+        RPC::call('movim_fill', 'feedcontent', $html);
     }
     
     function ajaxPublishItem($content)
@@ -242,6 +242,17 @@ class Feed extends WidgetCommon {
         </div>
         
         <div class="posthead">
+            <a 
+                class="button tiny icon feed merged left" 
+                href="?q=blog&f=<?php echo $this->user->getLogin(); ?>"
+                target="_blank">
+                <?php echo t('Blog'); ?>
+            </a><a 
+                class="button tiny icon feed merged right" 
+                href="?q=feed&f=<?php echo $this->user->getLogin(); ?>"
+                target="_blank">
+                <?php echo t('Feed'); ?> (Atom)
+            </a>
             <ul class="filters">
                 <li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
                 <li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>

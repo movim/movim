@@ -57,7 +57,7 @@ class ControllerBase
         $user = new user();
 		if($user->isLogged()) {
             try{
-                $lang = $user->getConfig('language');//UserConf::getConf(false,'language');
+                $lang = $user->getConfig('language');
                 load_language($lang);
             }
             catch(MovimException $e) {
@@ -114,13 +114,31 @@ class ControllerBase
 			return false;
 		}
 	}
+    
+    /**
+     * Return a basic auth page for the administration area
+     */
+    protected function authenticate(){
+        header('WWW-Authenticate: Basic realm="Enter admin username/password"');
+        header('HTTP/1.0 401 Unauthorized');
+        echo 'Why are you hitting cancel?';
+        exit;
+    }
 
 	/**
 	 * Makes an error 404 page.
 	 */
 	protected function error404()
 	{
-		echo 'Error 404 - Page not found';
+		//echo 'Error 404 - Page not found';
+        $page = new TplPageBuilder();
+        
+        $page->setTitle(t('%s - 404', APP_TITLE));
+        $page->menuAddLink(t('Home'), 'main', true);
+        
+        $content = new TplPageBuilder();
+        $page->setContent($content->build('404.tpl'));
+        echo $page->build('page.tpl');
 	}
 }
 

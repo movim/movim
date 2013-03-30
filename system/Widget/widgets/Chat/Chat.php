@@ -53,7 +53,7 @@ class Chat extends WidgetBase
 
         RPC::call('movim_append',
                        'messages'.$arr['jid'],
-                       RPC::cdata($html)); 
+                       $html); 
                        
         RPC::call('scrollTalk',
                        'messages'.$arr['jid']);
@@ -80,7 +80,7 @@ class Chat extends WidgetBase
             
             RPC::call('movim_prepend',
                            'chats',
-                           RPC::cdata($this->prepareChat($contact)));
+                           $this->prepareChat($contact));
             RPC::call('scrollAllTalks');
         } else if(isset($contact) && $message->body != '') {
             
@@ -93,7 +93,7 @@ class Chat extends WidgetBase
             
             RPC::call('movim_append',
                            'messages'.$contact->jid,
-                           RPC::cdata($html));
+                           $html);
             
             RPC::call('hideComposing',
                            $contact->jid); 
@@ -153,7 +153,6 @@ class Chat extends WidgetBase
 	{        
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
-        
 
         if(
             isset($contact) 
@@ -167,7 +166,7 @@ class Chat extends WidgetBase
             
             RPC::call('movim_prepend',
                            'chats',
-                           RPC::cdata($this->prepareChat($contact)));
+                           $this->prepareChat($contact));
             RPC::call('scrollAllTalks');
 
             RPC::commit();
@@ -182,9 +181,7 @@ class Chat extends WidgetBase
      * @return void
      */
     function ajaxSendMessage($to, $message)
-    {
-        $m = new \Message();
-        
+    {        
         $m = new \modl\Message();
         
         $m->key     = $this->user->getLogin();

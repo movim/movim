@@ -16,7 +16,7 @@
     </div>
     <div id="center" class="protect black">
         <h1><?php echo t('Explore'); ?></h1>
-        <?php $this->widget('Explore');?>
+        <?php //$this->widget('Explore');?>
     </div>
 </div>
 

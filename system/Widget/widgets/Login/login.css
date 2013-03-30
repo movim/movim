@@ -23,6 +23,19 @@ body {
     margin-top: 40%;
 }
 
+#loginpage .admin {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    color: white;
+    padding: 1em;
+}
+
+#loginpage .admin a:link,
+#loginpage .admin a:visited {
+    color: white;
+}
+
 #loginpage #warning {
     margin-bottom: 0.7em;
 }
