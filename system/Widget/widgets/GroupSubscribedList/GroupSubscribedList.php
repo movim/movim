@@ -42,7 +42,7 @@ class GroupSubscribedList extends WidgetBase
     
     function onGroupSubscribedList($list) {
         $html = $this->prepareList($list);
-        RPC::call('movim_fill', 'publicgroups', RPC::cdata($html)); 
+        RPC::call('movim_fill', 'publicgroups', $html); 
     }
     
     function ajaxGetGroupSubscribedList($to){
@@ -53,8 +53,8 @@ class GroupSubscribedList extends WidgetBase
 	function build()
     {
         ?>
-		<div class="tabelem" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlist">
-            <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>"><?php echo t("Get public groups");?></a>
+		<div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlist">
+            <a class="button tiny icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>"><?php echo t("Get public groups");?></a>
             <div id="publicgroups"></div>
         </div>
         <?php
