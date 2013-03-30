@@ -39,7 +39,8 @@ class Profile extends WidgetCommon
     
     function onMyPresence()
     {
-        RPC::call('movim_fill', 'statussaved', '✔ '.t('Saved'));        
+        RPC::call('movim_fill', 'statussaved', '✔ '.t('Saved')); 
+        Notification::appendNotification(t('Status updated'), 'success');
     }
     
 	function ajaxSetStatus($status)
