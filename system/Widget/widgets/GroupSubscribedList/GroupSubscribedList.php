@@ -3,7 +3,7 @@
 /**
  * @package Widgets
  *
- * @file GroupConfig.php
+ * @file GroupSubscribedList.php
  * This file is part of MOVIM.
  *
  * @brief The Group configuration widget
@@ -27,56 +27,35 @@ class GroupSubscribedList extends WidgetBase
     }
     
     function prepareList($list) { 
-        $html = '<ul class="list">';
-        
-        foreach($list as $item){
-            $delete = $this->genCallAjax('ajaxDeleteFromGroupSubscribedList', "'".$item[0]."'", "'".$item[1]."'");
-            $html .= '
-                <li>
-                    <a class="action" onclick="'.$delete.'">'.
-                        t('Delete').'
-                    </a>
-                    <a href="?q=node&s='.$item[1].'&n='.$item[0].'">
-                        '.$item[2].'
-                    </a>
-                </li>';
+        if(is_array($list[0])){
+            $html = '<ul class="list">';
+            
+            foreach($list as $item){
+                $html .= '<li><a href="?q=node&s='.$item[1].'&n='.$item[0].'">'.$item[2].'</a></li>';
+            }
+            
+            $html .= '</ul>';
+            return $html;
         }
-        
-        $html .= '</ul>';
-        return $html;
+        else return "No public groups found.";
     }
     
     function onGroupSubscribedList($list) {
         $html = $this->prepareList($list);
-        RPC::call('movim_fill', 'publicgroups', $html); 
+        RPC::call('movim_fill', 'publicgroups', RPC::cdata($html)); 
     }
     
-    function ajaxDeleteFromGroupSubscribedList($node, $server){
-        $r = new moxl\PubsubSubscriptionListRemove();
-        $r->setNode($node)
-          ->setTo($server)
-          ->setFrom($this->user->getLogin())
-          ->request();
-    }
-    
-    function ajaxGetGroupSubscribedList(){
-        $r = new moxl\PubsubSubscriptionListGet();
-        $r->request();
+    function ajaxGetGroupSubscribedList($to){
+        $r = new moxl\PubsubSubscriptionListGetFriends();
+        $r->setTo($to)->request();
     }
     
 	function build()
     {
         ?>
 		<div class="tabelem" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlist">
-            <div class="posthead">
-                <a 
-                    class="button tiny icon" 
-                    onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>">
-                        <?php echo t("Get your public groups");?>
-                </a>
-            </div>
-            
-            <div id="publicgroups" class="padded"></div>
+            <a class="button tiny icon" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>"><?php echo t("Get public groups");?></a>
+            <div id="publicgroups"></div>
         </div>
         <?php
     }
