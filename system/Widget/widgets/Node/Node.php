@@ -60,17 +60,8 @@ class Node extends WidgetCommon
         $g->setTo($server)
           ->setNode($node)
           ->setFrom($this->user->getLogin())
+          ->setData($data)
           ->request();
-        
-        //add the group to the public list (if checked)
-        if($data['listgroup'] == "true"){
-            $g = new moxl\PubsubSubscriptionListAdd();
-            $g->setTo($server)
-              ->setNode($node)
-              ->setFrom($this->user->getLogin())
-              ->setData($data['title'])
-              ->request();
-        }
     }
     
     function ajaxUnsubscribe($server, $node)
