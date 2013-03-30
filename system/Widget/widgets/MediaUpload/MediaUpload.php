@@ -28,7 +28,7 @@ class MediaUpload extends WidgetBase {
     {        
         if($this->user->dirSize() < $this->user->sizelimit) {
         ?>
-        <div class="tabelem" title="<?php echo t('Upload'); ?>" id="mediaupload">      
+        <div class="tabelem padded" title="<?php echo t('Upload'); ?>" id="mediaupload">      
             <form id="upload_form" enctype="multipart/form-data" method="post" action="upload.php">
                 <fieldset>
                     <div class="element">

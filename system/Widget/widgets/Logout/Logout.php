@@ -31,14 +31,14 @@ class Logout extends WidgetBase
     function onMyPresence()
     {
 		$html = $this->preparePresence();
-        RPC::call('movim_fill', 'logout', RPC::cdata($html));
+        RPC::call('movim_fill', 'logout', $html);
         RPC::commit();
     }
 
     function onPostDisconnect($data)
     {
 	    RPC::call('movim_reload',
-                       RPC::cdata(BASE_URI."index.php?q=disconnect"));
+                       BASE_URI."index.php?q=disconnect");
     }
 
 	function ajaxLogout()

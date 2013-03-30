@@ -130,8 +130,7 @@ class Login extends WidgetBase {
             if($htmlonly)
                 return $warning;
             else {
-                RPC::call('movim_fill', 'warning',
-                   RPC::cdata($warning));
+                RPC::call('movim_fill', 'warning', $warning);
                 RPC::call('loginButtonSet', t("Come in!"));
 
                 RPC::commit();
@@ -302,6 +301,7 @@ class Login extends WidgetBase {
             }
             ?>
 
+            <div class="admin"><a href="?q=admin"><?php echo t('Administration'); ?></a></div>
 
         </div>
     <?php

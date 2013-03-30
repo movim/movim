@@ -68,7 +68,7 @@ class ServerNodes extends WidgetCommon
                 </form>
             </div>';
 
-        RPC::call('movim_fill', 'servernodes', RPC::cdata($html));
+        RPC::call('movim_fill', 'servernodes', $html);
         RPC::commit();
     }
     
@@ -88,7 +88,7 @@ class ServerNodes extends WidgetCommon
 
         $html .= '</ul>';
 
-        RPC::call('movim_fill', 'servernodes', RPC::cdata($html));
+        RPC::call('movim_fill', 'servernodes', $html);
         RPC::commit();
     }
     
@@ -98,7 +98,7 @@ class ServerNodes extends WidgetCommon
             $items[0].'&n='.
             $items[1].'">'.$items[2].'</a>';
 
-        RPC::call('movim_fill', 'servernodes', RPC::cdata($html));
+        RPC::call('movim_fill', 'servernodes', $html);
         RPC::commit();
     }
 

@@ -223,6 +223,11 @@ ul.clean li {
     list-style-type: square;
 }
 
+/* A default padding for some elements */
+.padded {
+    padding: 1.5em;
+}
+
 /* The main parts of the page */
 #top {
     z-index: 3;
@@ -491,6 +496,7 @@ ul.clean li {
 .menu li .users { background-image: url(../img/icons/menu/users.png); }
 .menu li .media { background-image: url(../img/icons/menu/folder.png); }
 .menu li .blog { background-image: url(../img/icons/menu/quill.png); }
+.menu li .admin { background-image: url(../img/icons/menu/admin.png); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
@@ -632,6 +638,14 @@ ul.list li a {
     display: block;
 }
 
+ul.list li a.action {
+    float: right;
+}
+
+ul.list li a.action:hover {
+    cursor: pointer;
+}
+
 /* Thumb */
 ul.thumb {
     list-style-type: none;
@@ -662,6 +676,7 @@ ul.thumb a {
     background-color: #F5F5F5;
     padding: 0px 5px;
     height: 28px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .breadcrumb > a {

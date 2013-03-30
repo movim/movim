@@ -63,7 +63,8 @@ class User {
 
 	function desauth()
 	{
-        PresenceHandler::clearPresence();
+        $pd = new modl\PresenceDAO();
+        $pd->clearPresence($this->username);
 
         if($this->isLogged()) {
             $p = new moxl\PresenceUnavaiable();
