@@ -228,7 +228,7 @@ class Admin extends WidgetBase {
                     <div class="'.$this->isValid($this->testDir(BASE_PATH)).'">
                         '.t('Read and write rights for the webserver in Movim\'s root directory').'
                     </div>
-                    <div class="'.$this->isValid($this->testFile(BASE_PATH.'config/conf.xml')).'">
+                    <div class="'.$this->isValid($this->testDir(BASE_PATH.'config/')).'">
                         '.t('Read and write rights conf.xml file in config/ directory').'
                     </div>';
             

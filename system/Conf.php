@@ -25,7 +25,18 @@ class Conf
             }
             return self::$conf_files[$name];
         } else {
-            return false;
+            // Return the default configuration
+            return array(
+                'theme'     => 'movim',
+                'defLang'   => 'en',
+                'maxUsers'  => -1,
+                'logLevel'  => 7,
+                'db'        => 'mysql://movim:movim@localhost:3306/movim',
+                'boshUrl'   => 'http://localhost:5280/http-bind',
+                'xmppWhiteList' => '',
+                'user'      => 'admin',
+                'pass'      => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
+                'sizeLimit' => 20240001);
         }
     }
 
