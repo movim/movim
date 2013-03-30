@@ -51,12 +51,13 @@ class Feed extends WidgetCommon {
           ->setData(serialize($config))
           ->request();
         
-        $html .=
+        /*$html .=
             '<div class="message error">'.
                 t("Your server doesn't support post publication, you can only read contact's feeds").'
              </div>';
         RPC::call('movim_fill', 'feednotifs', $html);
-        RPC::commit();
+        RPC::commit();*/
+        Notification::appendNotification(t("Your server doesn't support post publication, you can only read contact's feeds"), 'error');
     }
     
     function onCommentPublishError() {
@@ -85,9 +86,7 @@ class Feed extends WidgetCommon {
     }
     
     function onPostPublishError($error) {
-        $html .=
-            '<div class="message error">'.t('An error occured : ').$error.'</div>';
-        RPC::call('movim_fill', 'feednotifs', $html);
+        Notification::appendNotification(t('An error occured : ').$error, 'error');
     }
     
     function prepareHead() {
@@ -161,9 +160,6 @@ class Feed extends WidgetCommon {
                         </tr>
                     </tbody>
                 </table>
-
-
-
                 <div id="feednotifs"></div>';
         }
         
