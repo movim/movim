@@ -31,7 +31,7 @@ class ServerNodes extends WidgetCommon
     {
         $html = '<ul class="list">';
 
-        foreach($items as $item) {
+        foreach($items[0] as $item) {
             $html .= '
                 <li>
                     <a href="?q=node&s='.$item->attributes()->jid.'&n='.$item->attributes()->node.'">'.
@@ -52,7 +52,7 @@ class ServerNodes extends WidgetCommon
                         <div class="element large mini">
                             <input name="title" placeholder="'.t('My Little Pony - Fan Club').'"/>
                         </div>
-                        <input type="hidden" name="server" value="'.$_GET['s'].'"/>
+                        <input type="hidden" name="server" value="'.$items[1].'"/>
                     </fieldset>
                     <a 
                         class="button tiny icon yes black merged left"
