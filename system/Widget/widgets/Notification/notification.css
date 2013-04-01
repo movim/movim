@@ -50,7 +50,8 @@
 }
 
 @-webkit-keyframes fadeOut {
-      0% { opacity: 1; visibility: visible; left: 0px; }
+      0% { opacity: 0; visibility: visible; left: 0px; }
+      5% { opacity: 1; visibility: visible; left: 0px; }
      90% { opacity: 1; visibility: visible; left: 0px; }
     100% { opacity: 0; visibility: hidden; left: -300px; }
 }
@@ -63,7 +64,8 @@
 }
 
 @-ms-keyframes fadeOut {
-      0% { opacity: 1; visibility: visible; left: 0px; }
+      0% { opacity: 0; visibility: visible; left: 0px; }
+      5% { opacity: 1; visibility: visible; left: 0px; }
      90% { opacity: 1; visibility: visible; left: 0px; }
     100% { opacity: 0; visibility: hidden; left: -300px; }
 }
