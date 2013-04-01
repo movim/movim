@@ -29,6 +29,8 @@ class RPC
 
         $args = func_get_args();
         array_shift($args);
+        
+        $args = array_map('trim', $args);
 
         $funcall = array(
             'func' => $funcname,
@@ -42,7 +44,6 @@ class RPC
     {
         $args = func_get_args();
         return '<![CDATA['.
-            //call_user_func_array('sprintf', $args).
             $text.
             ']]>';
     }

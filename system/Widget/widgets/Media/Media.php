@@ -57,8 +57,8 @@ class Media extends WidgetBase {
                 $s != '.' && 
                 $s != '..' && 
                 substr($s, 0, 6) != 'thumb_' &&
-                substr($s, 0, 7) != 'medium_'
-                && $s != 'index.html')
+                substr($s, 0, 7) != 'medium_' && 
+                $s != 'index.html')
                 $html .= 
                     '<li style="background-image: url('.$this->user->useruri.'thumb_'.$s.');">
                         <a href="?q=media&f='.$s.'">

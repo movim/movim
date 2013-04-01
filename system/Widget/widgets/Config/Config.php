@@ -155,6 +155,12 @@ class Config extends WidgetBase
                                 style="background-color:black;"></div>
                         </label>
                         
+                        <input type="radio" name="pattern" id="paper" value="paper"/>
+                        <label for="paper"><span></span>
+                            <div class="preview paper"
+                                style="background-color:gray;"></div>
+                        </label>
+                        
                         <input type="radio" name="pattern" id="tartan" value="tartan"/>
                         <label for="tartan"><span></span>
                             <div class="preview tartan"
