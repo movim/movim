@@ -29,11 +29,7 @@ class Notification extends WidgetCommon
     static function appendNotification($message, $type = 'info')
     {
         $id = sha1($message.rand(0, 1500));
-        $html = '
-            <div 
-                class="notif notificationAnim '.$type.'"
-                id="'.$id.'"
-            >'.$message.'</div>';
+        $html = '<div class="notif notificationAnim '.$type.'" id="'.$id.'">'.$message.'</div>';
 
         RPC::call('movim_append', 'notification', $html);
         RPC::call('removeDiff', $id);
