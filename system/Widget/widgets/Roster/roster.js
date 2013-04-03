@@ -105,7 +105,7 @@ function rosterNext(currFocus){
     visible = "";
     currentGroupVisible = "";
     
-    if(rosterlist.class != ""){//offline are shown
+    if(rosterlist.class == "offlineshown"){//offline are shown
         visible = rosterlist.querySelectorAll("li");
         currentGroupVisible = currGp.querySelectorAll("li");
     }
@@ -246,7 +246,7 @@ function rosterSearch(e){
 					rosterPrevious(rosterlist.querySelector(".focused"));
                     //top of the focused must be under navbar
                     diff = focused.offsetTop - rosterlist.offsetTop - document.querySelector('#right').scrollTop - focused.offsetHeight;
-                    console.log(diff);
+                    
                     if(decalage < focused.offsetHeight)
                             diff -= rosterlist.querySelector("h1").offsetHeight;
 					if(diff < 0){
