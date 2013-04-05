@@ -64,6 +64,9 @@ class ContactManage extends WidgetCommon
     }
     
     function build() {
+        ?>
+        <div class="clear"></div>
+        <?php
         echo $this->prepareContactManage($_GET['f']);        
     }
     

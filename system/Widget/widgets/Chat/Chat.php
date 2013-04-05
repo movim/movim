@@ -234,7 +234,12 @@ class Chat extends WidgetBase
         $contacts = $rd->getChats();
 
         foreach($contacts as $contact) {
-            if((int)$contact->chaton == 1 || (int)$contact->chaton == 2) {
+            if(
+                $contact->jid == $jid 
+                && (
+                    (int)$contact->chaton == 1 
+                 || (int)$contact->chaton == 2)
+            ) {
                 $contact->chaton = 0;
                 $rd->setNow($contact);
             }
@@ -346,7 +351,7 @@ class Chat extends WidgetBase
         echo '<div id="chats">';
         if(isset($contacts)) {
             foreach($contacts as $contact) {
-                echo $this->prepareChat($contact);
+                echo trim($this->prepareChat($contact));
             }
         }
         echo '</div>';

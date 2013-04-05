@@ -1,47 +1,20 @@
 #roster {
+    background-color: rgba(36, 36, 36, 1);
     height: 100%;
-    background-color: #333;
 }
+
 
 #roster ul#rosterlist {
     list-style-type: none;
-    font-size: 13px;
     display: block;
-    background-color: #333;
+    background-color: rgba(36, 36, 36, 1);
     padding-bottom: 91px;
     pointer-events: auto;
 }
 
+/* Display/hide the elements */
 #roster.hide {
     display: none;
-}
-
-#roster ul#rosterlist li {
-    padding: 5px;
-    background-image: -moz-linear-gradient(top, 
-        rgba(47, 47, 47, 1) 0%,
-        rgba(43, 43, 43, 1) 100%);
-    background-image: -webkit-linear-gradient(top, 
-        rgba(47, 47, 47, 1) 0%,
-        rgba(43, 43, 43, 1) 100%);
-    background-image: -o-linear-gradient(top, 
-        rgba(47, 47, 47, 1) 0%,
-        rgba(43, 43, 43, 1) 100%);
-    background-image: linear-gradient(top, 
-        rgba(47, 47, 47, 1) 0%,
-        rgba(43, 43, 43, 1) 100%);
-    border-top: 1px solid rgb(80, 80, 80);
-    border-bottom: 1px solid rgb(30, 30, 30);
-}
-
-#roster ul#rosterlist li .chat {
-    width: 22px;
-    height: 22px;
-    float: right;
-    padding-right: 3px;
-    background-image: url(img/offline.png);
-    background-repeat: no-repeat;
-    background-position: 3px 6px;
 }
 
 #roster ul#rosterlist li .chat.on:hover {
@@ -58,6 +31,72 @@
 
 #roster ul#rosterlist.offlineshown div.groupshown li {
     display: list-item;
+}
+
+/* The list */
+
+#roster ul#rosterlist li:nth-child(2n) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+#roster ul#rosterlist li img {
+    float: left;
+    width: 30px;
+    margin-right: 7px;
+}
+
+#roster ul#rosterlist li a {
+    display: block;
+    white-space: nowrap;
+    width: auto;
+    overflow: hidden;
+    color: #BBB;
+    font-size: 13px;
+    line-height: 28px;
+    text-overflow: ellipsis;
+}
+
+#roster ul#rosterlist li a span.ressource {
+    font-size: 0.7em;
+    color: #777;
+    margin-left: 0.5em;
+}
+
+#roster ul#rosterlist h1 {
+    padding: 0.5em;
+    color: #777;
+    line-height: 1em;
+    font-size: 15px;
+}
+
+#roster ul#rosterlist h1:hover {
+    cursor: pointer;
+}
+
+#roster ul#rosterlist h1:before {
+    content: "+";
+    width: 20px;
+    padding-right: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+#roster ul#rosterlist div.groupshown h1:before {
+    content: "-";
+}
+
+#roster ul#rosterlist li .chat {
+    width: 22px;
+    height: 22px;
+    float: right;
+    padding-right: 3px;
+    background-image: url(img/offline.png);
+    background-repeat: no-repeat;
+    background-position: 3px 6px;
+}
+
+#roster ul#rosterlist li .chat.on:hover {
+    cursor: pointer;
 }
 
 #roster ul#rosterlist li.online .chat {
@@ -80,113 +119,12 @@
     background-image: url(img/server_error.png);
 }
 
-#roster ul#rosterlist li .chat:hover {
-    background-color: #444;
-}
-
-#roster ul#rosterlist li a {
-    display: block;
-    white-space: nowrap;
-    width: auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #AAA;
-    text-shadow: 0px 1px 0px #222;
-}
-
-#roster ul#rosterlist li a span {
-    padding-left: 5px;
-    line-height: 29px;
-}
-
 #roster ul#rosterlist li:hover, #roster ul li.active {
-    background-image: -moz-linear-gradient(top, 
-        rgba(67, 67, 67, 1) 0%,
-        rgba(63, 63, 63, 1) 100%);
-    background-image: -webkit-linear-gradient(top, 
-        rgba(67, 67, 67, 1) 0%,
-        rgba(63, 63, 63, 1) 100%);
-    background-image: -o-linear-gradient(top, 
-        rgba(67, 67, 67, 1) 0%,
-        rgba(63, 63, 63, 1) 100%);
-    background-image: linear-gradient(top, 
-        rgba(67, 67, 67, 1) 0%,
-        rgba(63, 63, 63, 1) 100%);
-    border-top: 1px solid rgb(100, 100, 100);
-    border-bottom: 1px solid rgb(50, 50, 50);
+    background-color: black;
 }
 
-#roster ul#rosterlist li a:hover img, #roster ul li.active img {
-
-}
-
-#roster ul#rosterlist li img {
-    height: 24px;
-    margin-bottom: -5px;
-    max-width: 24px;
-    float: left;
-    border-radius: 4px;
-    background-color: #161616;
-    padding: 2px;
-    box-shadow: 0px 1px 0px #444;
-}
-
-#roster h1 {
-    margin: 0px;
-    padding: 5px 0px;
-    font-size: 14px;
-    text-align: center;
-    color: #AAA;
-    font-size: 12px;
-    background-image: -moz-linear-gradient(top, 
-        rgba(37, 37, 37, 1) 0%,
-        rgba(33, 33, 33, 1) 100%);
-    background-image: -webkit-linear-gradient(top, 
-        rgba(37, 37, 37, 1) 0%,
-        rgba(33, 33, 33, 1) 100%);
-    background-image: -o-linear-gradient(top, 
-        rgba(37, 37, 37, 1) 0%,
-        rgba(33, 33, 33, 1) 100%);
-    background-image: linear-gradient(top, 
-        rgba(37, 37, 37, 1) 0%,
-        rgba(33, 33, 33, 1) 100%);
-    border-top: 1px solid rgb(70, 70, 70);
-    border-bottom: 1px solid rgb(20, 20, 20);
-}
-
-#roster h1:before {
-    content: "►";
-    color: #AAA;
-    left: 0px;
-    padding: 0px 10px;
-    position: absolute;
-    min-width: 10px;
-    min-height: 10px;
-}
-
-#roster div.groupshown h1:before {
-    content: "▼";
-}
-
-#roster h1:hover {
-    cursor: pointer;
-}
-
-#roster ul#rosterlist li.focused{
-    background-image: -moz-linear-gradient(top, 
-        rgba(47, 57, 87, 1) 0%,
-        rgba(43, 53, 83, 1) 100%);
-    background-image: -webkit-linear-gradient(top, 
-        rgba(47, 57, 87, 1) 0%,
-        rgba(43, 53, 83, 1) 100%);
-    background-image: -o-linear-gradient(top, 
-        rgba(47, 57, 87, 1) 0%,
-        rgba(43, 53, 83, 1) 100%);
-    background-image: linear-gradient(top, 
-        rgba(47, 57, 87, 1) 0%,
-        rgba(43, 53, 83, 1) 100%);
-    border-top: 1px solid rgb(80, 80, 97, 1);
-    border-bottom: 1px solid rgba(20, 20, 30, 1);
+#roster ul#rosterlist li.focused {
+    background-color: #555;
 }
 
 #roster li .infoicon {
@@ -220,8 +158,8 @@
     right: 0px;
     display: block;
     background-color: rgba(36, 36, 36, 1);
-    width: 199px;
-    border-top: 1px solid rgba(100, 100, 100, 0.4);
+    width: 200px;
+    box-shadow: 0px 0px 10px black;
     pointer-events: auto;
 }
 

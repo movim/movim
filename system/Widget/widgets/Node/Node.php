@@ -175,7 +175,7 @@ class Node extends WidgetCommon
         
         $title = '';
         
-        $pd = new modl\PostDAO();
+        $pd = new modl\PostnDAO();
         $posts = $pd->getGroup($serverid, $groupid);
         
         $html .= $title;

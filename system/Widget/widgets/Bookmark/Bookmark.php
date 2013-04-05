@@ -22,6 +22,7 @@ class Bookmark extends WidgetBase
 {
     function WidgetLoad()
     {
+        $this->addcss('bookmark.css');
         $this->registerEvent('bookmark', 'onBookmark');
 		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
 		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
@@ -89,13 +90,6 @@ class Bookmark extends WidgetBase
         
         if($sd != null) {
             foreach($sd->getSubscribed() as $s) {
-                $subscription .= '
-                    <li>
-                        <a href="?q=node&s='.$s->server.'&n='.$s->node.'">'.
-                            $s->node.'
-                        </a>
-                    </li>';
-
                 array_push($arr,
                     array(
                         'type'      => 'subscription',
@@ -165,7 +159,7 @@ class Bookmark extends WidgetBase
                 $subscription .= '
                     <li>
                         <a href="?q=node&s='.$s->server.'&n='.$s->node.'">'.
-                            $s->node.'
+                            $s->node.' ('.$s->server.')
                         </a>
                     </li>';
             }
