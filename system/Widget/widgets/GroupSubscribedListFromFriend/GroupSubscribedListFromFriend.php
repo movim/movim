@@ -61,7 +61,7 @@ class GroupSubscribedListFromFriend extends WidgetBase
     {
         ?>
 		<div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistfromfriend">
-            <a class="button tiny icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>"><?php echo t("Get public groups");?></a>
+            <a class="button icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>"><?php echo t("Get public groups");?></a>
             <div id="publicgroups"></div>
         </div>
         <?php

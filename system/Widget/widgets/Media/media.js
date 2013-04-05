@@ -37,16 +37,19 @@ function fileSelected() {
     // get selected file element
     var oFile = document.getElementById('image_file').files[0];
 
-    // filter for image files
-    var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
-    if (! rFilter.test(oFile.type)) {
+    document.getElementById('uploadbutton').style.display = 'inline-block';
+    
+    var img = new Image;
+    img.onerror = function() {
         document.getElementById('error').style.display = 'block';
+        document.getElementById('uploadbutton').style.display = 'none';
         return;
-    }
+    };
 
     // little test for filesize
     if (oFile.size > iMaxFilesize) {
         document.getElementById('warnsize').style.display = 'block';
+        document.getElementById('uploadbutton').style.display = 'none';
         return;
     }
 
@@ -56,6 +59,8 @@ function fileSelected() {
     // prepare HTML5 FileReader
     var oReader = new FileReader();
         oReader.onload = function(e){
+            
+        img.src = e.target.result;
 
         // e.target.result contains the DataURL which we will use as a source of the image
         oImage.src = e.target.result;

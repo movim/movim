@@ -22,7 +22,8 @@ function createThumbnails($jid, $photobin) {
     createThumbnailSize(base64_decode($photobin), 150, BASE_PATH.'cache/'.$jid.'_l.jpg');
     createThumbnailSize(base64_decode($photobin), 120, BASE_PATH.'cache/'.$jid.'_m.jpg');
     createThumbnailSize(base64_decode($photobin), 50, BASE_PATH.'cache/'.$jid.'_s.jpg');
-    createThumbnailSize(base64_decode($photobin), 24, BASE_PATH.'cache/'.$jid.'_xs.jpg');
+    createThumbnailSize(base64_decode($photobin), 30, BASE_PATH.'cache/'.$jid.'_xs.jpg');
+    createThumbnailSize(base64_decode($photobin), 24, BASE_PATH.'cache/'.$jid.'_xxs.jpg');
 }
 
 function createThumbnailSize($photobin, $size, $path) {

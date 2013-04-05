@@ -127,11 +127,12 @@ class Roster extends WidgetBase
                     class="avatar"
                     src="'.$contact->getPhoto('xs').'"
                     />'.
-                    '<span>'.$contact->getTrueName();
+                    $contact->getTrueName();
+            $html .= '<span class="ressource">';
 						if($contact->rosterask == 'subscribe')
 							$html .= " #";
                         if($contact->ressource != '')
-                            $html .= ' ('.$contact->ressource.')';
+                            $html .= ' '.$contact->ressource.'';
             $html .= '</span>
                  </a>';
         
