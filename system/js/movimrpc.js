@@ -18,11 +18,13 @@ function movim_append(params)
     
     var wrapper= document.createElement('div');
     wrapper.innerHTML = params[1];
-    var div= wrapper.firstChild;
+    var nodes = wrapper.childNodes;
 
     target = document.getElementById(params[0]);
     if(target) {
-        target.appendChild(div);
+        for(i = 0; i < nodes.length; i++) {
+            target.appendChild(nodes[i]);
+        }
     }
 }
 // movim_prepend(div, text)
@@ -34,11 +36,13 @@ function movim_prepend(params)
 
     var wrapper= document.createElement('div');
     wrapper.innerHTML = params[1];
-    var div= wrapper.firstChild;
+    var nodes = wrapper.childNodes;
 
     target = document.getElementById(params[0]);
     if(target) {
-        target.insertBefore(div,target.childNodes[0]);
+        for(i = 0; i < nodes.length; i++) {
+            target.insertBefore(nodes[i],target.childNodes[0]);
+        }
     }
 }
 // movim_fill(div, text)

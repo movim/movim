@@ -58,7 +58,7 @@ class Wall extends WidgetCommon
         if(!$from)
             $from = $_GET['f'];
         
-        $pd = new \modl\PostDAO();
+        $pd = new \modl\PostnDAO();
         $pl = $pd->getContact($from, $start+1, 10);
         
         // We ask for the HTML of all the posts
