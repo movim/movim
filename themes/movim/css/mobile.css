@@ -5,6 +5,7 @@ body {
     margin: 0px;
     padding: 0px;
     width: 100%;
+    margin-top: 38px;
 }
 
 h1 {
@@ -22,7 +23,7 @@ h1 {
     padding: 0px;
     width: auto;
     height: auto;
-    min-height: auto;
+    min-height: 0px;
     max-width: auto;
 }
 
@@ -60,13 +61,17 @@ h1 {
 }
 
 #nav {
-    position: relative;
+    position: fixed;
 }
 
 #nav .menu {
     width: 100%;
     position: relative;
     background-image: none;
+}
+
+#nav .menu li {
+    width: 40px;
 }
 
 #nav .menu li a.main {
