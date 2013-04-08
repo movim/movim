@@ -28,15 +28,13 @@
 #logoutlist {
     display: none;
     position: fixed;
-    top: 36px;
+    top: 38px;
     right: 50%;
-    margin-right: -250px;
+    margin-right: -300px;
     z-index: 1;
     background-color: #242424;
-    border-radius: 0 0 2px 2px;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
-    overflow: hidden; 
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    width: 150px;
 }
 
 #logoutlist a {
@@ -45,10 +43,12 @@
     background-repeat: no-repeat;
     background-position: 10px 16px;
     padding-left: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #logoutlist a:hover {
     cursor: pointer;
-    background-color: #EEE;
-    color: black;
+    background-color: #111;
 }

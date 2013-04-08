@@ -347,7 +347,7 @@ ul.clean li {
     right: 0px;
     /*border-left: 1px solid rgba(0, 0, 0, 0.8);*/
     pointer-events:none;
-    padding-top: 39px;
+    padding-top: 38px;
     height: 100%;
     overflow: auto;
     z-index: 2;
@@ -382,7 +382,6 @@ ul.clean li {
 }
 
 .menu {
-    padding-top: 1px;
     max-width: 1000px;
     width: 100%;
     margin: 0px auto;
@@ -411,8 +410,8 @@ ul.clean li {
 
 .menu li a.disconnect{
     position: fixed;
-    top: 3px;
-    right: 10px;
+    top: 0px;
+    right: 0px;
 }
 
 .menu li a.active {
@@ -436,11 +435,12 @@ ul.clean li {
 } 
 
 .menu li a.main, .menu li a.main.active {
-	width: 155px;
+	width: 200px;
+    padding: 0px;
     color: transparent;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
-    background-position: 30px 7px;
+    background-position: center 7px;
 }
 
 .menu li .explore { background-image: url(../img/icons/menu/globe.png); }
