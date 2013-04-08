@@ -47,10 +47,7 @@
     margin-right: -300px;
     z-index: 3;
     background-color: #333;
-    border-radius: 0 0 2px 2px;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
     overflow: hidden; 
-    border: 1px solid rgba(0, 0, 0, 0.5);
     max-height: 400px;
     width: 300px;
     overflow-y: auto;
