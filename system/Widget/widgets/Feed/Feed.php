@@ -205,7 +205,7 @@ class Feed extends WidgetCommon {
                     t("Your feed cannot be loaded.").'
                 </div>';
         RPC::call('movim_fill', 'feedcontent', $html);
-        //Notification::appendNotification(t('New post received').$error, 'info');
+
         RPC::commit();
     }
     
