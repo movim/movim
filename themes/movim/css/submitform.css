@@ -1,0 +1,83 @@
+/* MAIN FEED STYLE */
+
+table#feedsubmitform {
+    display: block;
+    border: 1px solid;
+	border-color: #999999 #BBBBBB #BBBBBB;
+    margin: 1.5em;
+    margin-top: 0px;
+    overflow: hidden;
+}
+
+#feedsubmitform tbody, #feedsubmitform tr, #feedsubmitform td {
+    display: block;
+}
+
+#feedsubmitform td {
+    padding: 5px;
+}
+
+#feedsubmitform textarea {
+    width: 100%;
+    padding: 0px;
+    border: 0px;
+    height: 2em;
+    resize: none;
+}
+
+#feedsubmitform #feedsubmitrow {
+    background-color: #EEE;
+    width: auto;
+    overflow: auto;
+    padding-bottom: 5px;
+}
+
+#feedsubmitform #feedsubmitrow a {
+    float: right;
+}
+
+#feedcontent {
+	clear: both;
+    /*padding-top: 1.5em;
+    background-color: rgb(245,245,245);
+}
+
+#feedcontent .post:first-child {
+    padding-top: 0px;*/
+}
+
+#feednotifs {
+	margin: 1em 1.5em 0em;
+}
+
+#feedsubmitform .ste {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#feedsubmitform .button.merged.right {
+    margin-right: 5px;
+}
+
+#feedsubmitform .button img {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 2px;
+    width: auto;
+    height: auto;
+}
+
+#feedsubmitform td.frame {
+    padding: 0px;
+}
+
+#feedsubmitform .menueditor {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    display: none;
+}
+
+iframe {
+    width: 100%;
+}

@@ -13,6 +13,7 @@
     <?php
     $this->addCss('css/animations.css');
     $this->addCss('css/forms.css');
+    $this->addCss('css/submitform.css');
 
     $this->addCss('css/posts.css');
     $this->addCss('css/style2.css');
