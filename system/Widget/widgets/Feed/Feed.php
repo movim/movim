@@ -113,50 +113,7 @@ class Feed extends WidgetCommon {
                         $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]').
                 '}
                 </script>
-                <table id="feedsubmitform">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <textarea 
-                                    placeholder="'.t("What's new ?").'" 
-                                    id="feedmessagecontent" 
-                                    class="steditor"
-                                    onkeyup="movim_textarea_autoheight(this);"></textarea>
-                            </td>
-                        </tr>
-                        
-                        <script type="text/javascript">
-                            var ste = new SimpleTextEditor("feedmessagecontent", "ste");
-                            ste.init();
-                        </script>
-                        
-                        <tr id="feedsubmitrow">
-                            <td>
-                                <a 
-                                    title="Plus"
-                                    href="#" 
-                                    onclick="frameHeight(this);"
-                                    style="float: left;"
-                                    class="button tiny icon add merged left">'.t("Size").'
-                                </a>
-                                <a 
-                                    title="Rich"
-                                    href="#" 
-                                    onclick="richText(this);"
-                                    style="float: left;"
-                                    class="button tiny icon yes merged right">'.t("Rich Text").'
-                                </a>
-                                <a 
-                                    title="'.t("Submit").'"
-                                    href="#" 
-                                    id="feedmessagesubmit" 
-                                    onclick="ste.submit();'.$this->genCallAjax('ajaxPublishItem', 'getFeedMessage()').'; ste.clearContent();"
-                                    class="button tiny icon submit">'.t("Submit").'
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                '.$this->prepareSubmitForm($this->user->getLogin(), 'urn:xmpp:microblog:0').'
                 <div id="feednotifs"></div>';
         }
         
@@ -205,18 +162,8 @@ class Feed extends WidgetCommon {
                     t("Your feed cannot be loaded.").'
                 </div>';
         RPC::call('movim_fill', 'feedcontent', $html);
-        //Notification::appendNotification(t('New post received').$error, 'info');
+
         RPC::commit();
-    }
-    
-    function ajaxPublishItem($content)
-    {
-        if($content != '') {
-            $p = new moxl\MicroblogPostPublish();
-            $p->setFrom($this->user->getLogin())
-              ->setContent(htmlspecialchars(rawurldecode($content)))
-              ->request();
-        }
     }
     
     function ajaxCreateNode()

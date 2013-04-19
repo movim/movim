@@ -39,11 +39,14 @@ class WidgetCommon extends WidgetBase {
             $fold = t('Fold');
             $avatar = $post->getContact()->getPhoto('s');
         }
+        
+//        if(!filter_var($post->from, FILTER_VALIDATE_EMAIL) && $post->node != '')
+//            $group 
 
         if($post->from != $post->aid)
             $recycle .= '
                 <span class="recycle">
-                    <a href="?q=friend&f='.$post->aid.'">'.$post->aid.'</a>
+                    <a href="?q=friend&f='.$post->from.'">'.$post->from.'</a>
                  </span>';
 
         if($post->getPlace() != false)
@@ -489,6 +492,57 @@ class WidgetCommon extends WidgetBase {
         return $tmp;
     }
     
+    protected function prepareSubmitForm($server = '', $node = '') {
+		$html = '
+			<table id="feedsubmitform">
+				<tbody>
+					<tr>
+						<td>
+							<textarea 
+								placeholder="'.t("What's new ?").'" 
+								id="feedmessagecontent" 
+								class="steditor"
+								onkeyup="movim_textarea_autoheight(this);"></textarea>
+						</td>
+					</tr>
+					
+					<script type="text/javascript">
+						var ste = new SimpleTextEditor("feedmessagecontent", "ste");
+						ste.init();
+					</script>
+					
+					<tr id="feedsubmitrow">
+						<td>
+							<a 
+								title="Plus"
+								href="#" 
+								onclick="frameHeight(this);"
+								style="float: left;"
+								class="button tiny icon add merged left">'.t("Size").'
+							</a>
+							<a 
+								title="Rich"
+								href="#" 
+								onclick="richText(this);"
+								style="float: left;"
+								class="button tiny icon yes merged right">'.t("Rich Text").'
+							</a>
+							<a 
+								title="'.t("Submit").'"
+								href="#" 
+								id="feedmessagesubmit" 
+								onclick="ste.submit();'.$this->genCallAjax('ajaxPublishItem', "'".$server."'", "'".$node."'",'getFeedMessage()').'; ste.clearContent();"
+								class="button tiny icon submit">'.t("Submit").'
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>';
+                
+                
+		return $html;
+	}
+    
     function onComment($parent) {        
         $p = new \modl\ContactPostn();
         $p->nodeid = $parent;
@@ -530,6 +584,18 @@ class WidgetCommon extends WidgetBase {
           ->setId($id)
           ->request();
 	}
+    
+    function ajaxPublishItem($server, $node, $content)
+    {
+        if($content != '') {
+            $p = new moxl\PubsubPostPublish();
+            $p->setFrom($this->user->getLogin())
+              ->setTo($server)
+              ->setNode($node)
+              ->setContent(htmlspecialchars(rawurldecode($content)))
+              ->request();
+        }
+    }
     
     function ajaxPublishComment($to, $id, $content) {
         if($content != '') {
