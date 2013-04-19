@@ -50,17 +50,11 @@ body {
 }
 
 .argyle {
-    background-image:
-    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
-    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
-    background-image:
-    -webkit-repeating-linear-gradient(-30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-    -webkit-repeating-linear-gradient(30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-    -webkit-linear-gradient(30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
-    -webkit-linear-gradient(-30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
-    background-size: 70px 120px;
+    background-image: url(../img/back/argyle.png);
+}
+
+.paper {
+    background-image: url(../img/back/paper.png);
 }
 
 .carbon {
@@ -89,34 +83,14 @@ body {
 }
 
 .tableclothe {
-    background-image: 
-    linear-gradient(90deg, rgba(255,255,255,.1) 50%, transparent 50%),
-    linear-gradient(rgba(255,255,255,.1) 50%, transparent 50%);
-    background-image: 
-    -webkit-linear-gradient(left, rgba(255,255,255,.1) 50%, transparent 50%),
-    -webkit-linear-gradient(rgba(255,255,255,.1) 50%, transparent 50%);
-    background-size:50px 50px;
+    background-image: url(../img/back/tableclothe.png);
 }
 .cicada {
-    background-image: 
-    linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
-    linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
-    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
-    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
-    background-image: 
-    -webkit-linear-gradient(left, rgba(255,255,255,.07) 50%, transparent 50%),
-    -webkit-linear-gradient(left, rgba(255,255,255,.13) 50%, transparent 50%),
-    -webkit-linear-gradient(left, transparent 50%, rgba(255,255,255,.17) 50%),
-    -webkit-linear-gradient(left, transparent 50%, rgba(255,255,255,.19) 50%);
-    background-size: 13px, 29px, 37px, 53px;
+    background-image: url(../img/back/cicada.png);
 }
 
 .stripes {
-    background-image: 
-    linear-gradient(90deg, transparent 50%, rgba(255,255,255,.5) 50%);
-    background-image: 
-    -webkit-linear-gradient(left, transparent 50%, rgba(255,255,255,.5) 50%);
-    background-size: 50px 50px;
+    background-image: url(../img/back/stripes.png);
 }
 
 .stars {
@@ -135,16 +109,7 @@ body {
 }
 
 .tartan {
-    background-image: 
-    repeating-linear-gradient(transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
-    repeating-linear-gradient(270deg, transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
-    repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
-
-background-image: 
-    -webkit-repeating-linear-gradient(transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
-    -webkit-repeating-linear-gradient(-180deg, transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
-    -webkit-repeating-linear-gradient(-35deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
-
+    background-image: url(../img/back/tartan.png);
 }
 
 /* A simple clear element*/
@@ -297,10 +262,7 @@ ul.clean li {
     width: 150px;
     height: 150px;
     margin-left: 22px;
-    margin-right: 5px;
-    padding: 2px;
-
-    border-radius: 2px;
+    margin-right: 9px;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5),  0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -345,20 +307,23 @@ ul.clean li {
 }
 
 #main {  
-    box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.2);
+    /*box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.2);*/
     overflow: hidden;
     height: 100%;
     background-color: #EEE;
     margin-top: -50px;
-    border-bottom: 1px solid #555;
+    /*border-bottom: 1px solid #555;*/
 }
 
 #left
 {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
     float: left;
-    padding: 15px;
-    width: 170px;
-    padding-top: 45px;
+    padding: 20px;
+    width: 25%;
+    margin-top: 20px;
 }
 
 #left ul {
@@ -368,20 +333,19 @@ ul.clean li {
 #center
 {
     float: right;
-    width: 599px;
-    background-color: white;  
-    border-left: 1px solid #AAA;
+    width: 75%;
+    background-color: white;
     min-height: 600px;
 }
 
 #right
 {
     display: block;
-    width: 199px;
+    width: 200px;
     position: fixed;
     top: 0px;
     right: 0px;
-    border-left: 1px solid rgba(0, 0, 0, 0.8);
+    /*border-left: 1px solid rgba(0, 0, 0, 0.8);*/
     pointer-events:none;
     padding-top: 39px;
     height: 100%;
@@ -406,13 +370,11 @@ ul.clean li {
 #nav {
     margin: 0px;
     padding: 0px;
-    font-size: 12px;
-    padding-top: 1px;
+    font-size: 13px;
+    padding-top: 0px;
     text-decoration: none;
     width: 100%;
     background-color: rgba(36, 36, 36, 1);
-    border-bottom: 1px solid #111;
-    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.2), 0px -1px 0px 0px rgb(21, 21, 21);
     position: fixed;
     top: 0px;
     left: 0px;
@@ -421,12 +383,11 @@ ul.clean li {
 
 .menu {
     padding-top: 1px;
-    max-width: 1024px;
+    max-width: 1000px;
     width: 100%;
     margin: 0px auto;
     list-style-type: none;
     overflow: hidden;
-    min-height: 34px;
 }
 
 .menu li {
@@ -438,16 +399,14 @@ ul.clean li {
 }
 
 .menu li a, .menu li label {
-    /*padding: 9px 8px;
-    padding-left: 28px;*/
-    padding: 10px 5px;
-    padding-left: 36px;
+    line-height: 38px;
+    padding-left: 34px;
+    padding-right: 10px;
     display: block;
     color: #ccc;
-    min-height: 1em;
-    font-size: 13px;
+    min-height: 34px;
     background-repeat: no-repeat;
-    background-position: 10px 10px;
+    background-position: 10px 11px;
 }
 
 .menu li a.disconnect{
@@ -457,7 +416,7 @@ ul.clean li {
 }
 
 .menu li a.active {
-    font-weight: 700;
+    background-color: #111;
     color: #EEE;
 }
 
@@ -477,11 +436,11 @@ ul.clean li {
 } 
 
 .menu li a.main, .menu li a.main.active {
-	width: 180px;
+	width: 155px;
     color: transparent;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
-    background-position: 40px 5px;
+    background-position: 30px 7px;
 }
 
 .menu li .explore { background-image: url(../img/icons/menu/globe.png); }
@@ -502,7 +461,7 @@ ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
     display: none;
     position: absolute;
-    bottom: 36px;
+    bottom: 35px;
     left: 0px;
     width: 100%;
     border-top: 1px solid rgba(100, 100, 100, 0.4);
@@ -584,26 +543,25 @@ ul li input[type=checkbox]:checked ~ .tabbed {
 
 .filters {
 	float: right;
-	margin: 1em 1.5em 0em;
-    padding-right: 1.5em;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2em;
+    margin-right: 1.5em;
 }
 
 .filters li {
-	display: inline;
-	margin-left: 0.5em;
-	padding: 0.5em 1.5em;
-	border-radius: 3px;
+	display: inline-block;
+    padding: 0em 1.5em;
 }
 
 .filters li:hover {
-	color: white;
-	background-color: gray;
+    color: #333;
 	cursor: pointer;
 }
 
 .filters li.on {
-	background-color: #444444;
-	color: white;
+    font-weight: bold;
+    color: #333;
 }
 
 /* Table */
@@ -673,7 +631,6 @@ ul.thumb a {
 
 /* Breadcrumb */
 .breadcrumb {
-    background-color: #F5F5F5;
     padding: 0px 5px;
     height: 28px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);

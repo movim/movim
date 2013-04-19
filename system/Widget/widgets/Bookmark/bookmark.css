@@ -1,0 +1,6 @@
+#bookmarks li {
+    white-space: nowrap;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -27,9 +27,8 @@ class Chat extends WidgetBase
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
+        $this->registerEvent('attention', 'onAttention');
 		$this->registerEvent('presence', 'onPresence');
-        
-        $this->cached = false;
     }
     
     function onPresence($presence)
@@ -142,6 +141,25 @@ class Chat extends WidgetBase
         }
     }
     
+    function onAttention($jid)
+    {        
+        $rc = new \modl\ContactDAO();
+        $contact = $rc->getRosterItem(echapJid($jid));
+        
+        $html = '
+            <div style="font-weight: bold; color: black;" class="message" >
+                <span class="date">'.date('G:i', time()).'</span>'.
+                t('%s needs your attention', $contact->getTrueName()).'
+            </div>';
+
+        RPC::call('movim_append',
+                       'messages'.$jid,
+                       $html); 
+                       
+        RPC::call('scrollTalk',
+                       'messages'.$jid);
+    }
+    
     
 	/**
 	 * Open a new talk
@@ -216,7 +234,12 @@ class Chat extends WidgetBase
         $contacts = $rd->getChats();
 
         foreach($contacts as $contact) {
-            if((int)$contact->chaton == 1 || (int)$contact->chaton == 2) {
+            if(
+                $contact->jid == $jid 
+                && (
+                    (int)$contact->chaton == 1 
+                 || (int)$contact->chaton == 2)
+            ) {
                 $contact->chaton = 0;
                 $rd->setNow($contact);
             }
@@ -297,7 +320,7 @@ class Chat extends WidgetBase
                     <div class="messages" id="messages'.$contact->jid.'">
                         '.$messageshtml.'
                         <div style="display: none;" class="message" id="composing'.$contact->jid.'">'.t('Composing...').'</div>
-                        <div style="display: none;" class="message" id="paused'.$contact->jid.'">'.t('Paused...').'</div>
+                        <div style="display: none;" class="message" id="paused'.$contact->jid.'">'.t('Paused...').'</div>                        
                     </div>
                     
                     <div class="text">
@@ -328,7 +351,7 @@ class Chat extends WidgetBase
         echo '<div id="chats">';
         if(isset($contacts)) {
             foreach($contacts as $contact) {
-                echo $this->prepareChat($contact);
+                echo trim($this->prepareChat($contact));
             }
         }
         echo '</div>';

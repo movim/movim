@@ -147,7 +147,7 @@ class Admin extends WidgetBase {
     
     public function ajaxRecreateDatabase()
     {
-        $pd = new \modl\PostDAO();
+        $pd = new \modl\PostnDAO();
         $pd->create();
 
         $nd = new \modl\NodeDAO();

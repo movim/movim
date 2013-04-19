@@ -24,6 +24,7 @@ class GroupSubscribedListFromFriend extends WidgetBase
     function WidgetLoad()
     {
         $this->registerEvent('groupsubscribedlist', 'onGroupSubscribedList');
+        $this->registerEvent('groupsubscribedlisterror', 'onGroupSubscribedListError');
     }
     
     function prepareList($list) { 
@@ -37,12 +38,18 @@ class GroupSubscribedListFromFriend extends WidgetBase
             $html .= '</ul>';
             return $html;
         }
-        else return "No public groups found.";
+        
+        Notification::appendNotification(t('No public groups found'), 'info');
     }
     
     function onGroupSubscribedList($list) {
         $html = $this->prepareList($list);
         RPC::call('movim_fill', 'publicgroups', $html); 
+    }
+    
+    function onGroupSubscribedListError($error)
+    {
+        Notification::appendNotification($error, 'error');
     }
     
     function ajaxGetGroupSubscribedList($to){
@@ -54,7 +61,7 @@ class GroupSubscribedListFromFriend extends WidgetBase
     {
         ?>
 		<div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistfromfriend">
-            <a class="button tiny icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>"><?php echo t("Get public groups");?></a>
+            <a class="button icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>"><?php echo t("Get public groups");?></a>
             <div id="publicgroups"></div>
         </div>
         <?php
