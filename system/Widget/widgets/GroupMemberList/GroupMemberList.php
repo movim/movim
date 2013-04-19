@@ -34,12 +34,9 @@ class GroupMemberList extends WidgetBase
             $html .= '
                 <li> '.$item[0].'
                     <select>';
-                        for($i=0; $i<count($affiliation); $i++){
-                            \movim_log($item[1]);
-                            if($affiliation[$i] == $item[1])
-                                $html .= '<option selected="selected">'.t($affiliation[$i]).'</option>';
-                            else
-                                $html .= '<option>'.t($affiliation[$i]).'</option>';
+                        foreach($affiliation as $status){
+                            $affiliation[$i] == $item[1] ? $selected = "selected" : $selected = "";
+                            $html .= '<option '.$selected.'>'.t($affiliation[$i]).'</option>';
                         }
                     $html .= '</select>    
                 </li>';
