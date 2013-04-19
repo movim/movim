@@ -39,11 +39,14 @@ class WidgetCommon extends WidgetBase {
             $fold = t('Fold');
             $avatar = $post->getContact()->getPhoto('s');
         }
+        
+//        if(!filter_var($post->from, FILTER_VALIDATE_EMAIL) && $post->node != '')
+//            $group 
 
         if($post->from != $post->aid)
             $recycle .= '
                 <span class="recycle">
-                    <a href="?q=friend&f='.$post->aid.'">'.$post->aid.'</a>
+                    <a href="?q=friend&f='.$post->from.'">'.$post->from.'</a>
                  </span>';
 
         if($post->getPlace() != false)
