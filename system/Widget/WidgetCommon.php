@@ -40,10 +40,12 @@ class WidgetCommon extends WidgetBase {
             $avatar = $post->getContact()->getPhoto('s');
         }
         
-//        if(!filter_var($post->from, FILTER_VALIDATE_EMAIL) && $post->node != '')
-//            $group 
-
-        if($post->from != $post->aid)
+        if(!filter_var($post->from, FILTER_VALIDATE_EMAIL) && $post->node != '')
+            $group = '
+                <span class="group">
+                    <a href="?q=node&s='.$post->from.'&n='.$post->node.'">'.$post->node.' ('.$post->from.')</a>
+                </span>';
+        elseif($post->from != $post->aid)
             $recycle .= '
                 <span class="recycle">
                     <a href="?q=friend&f='.$post->from.'">'.$post->from.'</a>
@@ -100,6 +102,7 @@ class WidgetCommon extends WidgetBase {
                     '.$comments.'
                     '.$place.'
                     '.$recycle.'
+                    '.$group.'
                 </div>
                 <div class="clear"></div>
                 '.$toolbox.'
