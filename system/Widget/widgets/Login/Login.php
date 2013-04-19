@@ -224,6 +224,9 @@ class Login extends WidgetBase {
         $warning = moxl\login();
         if($warning != 'OK')
             $this->displayWarning($warning);
+            
+        $pd = new modl\PresenceDAO();
+        $pd->clearPresence($element['login']);
 
         RPC::call('enterMovim', BASE_URI.'?q=main');
         RPC::commit();

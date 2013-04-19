@@ -179,6 +179,9 @@ class Node extends WidgetCommon
         $posts = $pd->getGroup($serverid, $groupid);
         
         $html .= $title;
+        
+        if($this->searchSubscription($serverid, $groupid))
+            $html .= $this->prepareSubmitForm($serverid, $groupid);
 
         $html .= $this->preparePosts($posts);
         
