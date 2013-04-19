@@ -112,8 +112,7 @@ class Cache
         $var = $cd->get($cache_key);
 
         if(isset($var)) {
-                        return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
-
+            return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
         } else {
             return false;
         }
