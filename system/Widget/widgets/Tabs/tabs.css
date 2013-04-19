@@ -3,7 +3,7 @@
     margin: 0px;
     padding: 0px;
     width: 100%;
-    border-bottom: 1px solid #E5E5E5;
+    background-color: #EEE;
     overflow: hidden;
 }
 
@@ -24,4 +24,5 @@
 
 #navtabs li.on {
     font-weight: bold;
+    background-color: white;
 }

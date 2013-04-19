@@ -30,6 +30,7 @@ class Config extends WidgetBase
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
+        Notification::appendNotification(t('Configuration updated'));
     }
 
 	function ajaxSubmit($data) {
@@ -152,6 +153,12 @@ class Config extends WidgetBase
                         <label for="stars"><span></span>
                             <div class="preview stars"
                                 style="background-color:black;"></div>
+                        </label>
+                        
+                        <input type="radio" name="pattern" id="paper" value="paper"/>
+                        <label for="paper"><span></span>
+                            <div class="preview paper"
+                                style="background-color:gray;"></div>
                         </label>
                         
                         <input type="radio" name="pattern" id="tartan" value="tartan"/>

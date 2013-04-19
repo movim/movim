@@ -28,15 +28,9 @@ function log(text)
     }
 }
 
-function myFocus(element) {
-	if (element.value == element.defaultValue) {
-		element.value = '';
-	}
-}
-function myBlur(element) {
-	if (element.value == '') {
-		element.value = element.defaultValue;
-	}
+function prependChild(parent,child)
+{
+    parent.insertBefore(child,parent.childNodes[0]);
 }
 
 function movim_parse_form(formname) {

@@ -63,7 +63,7 @@ class MediaUpload extends WidgetBase {
                 </fieldset>
 
                 <div class="clear"></div>
-                <a class="button icon upload tiny black" onclick="startUploading()" /><?php echo t('Upload'); ?></a>
+                <a id="uploadbutton" class="button icon upload tiny black" onclick="startUploading()" /><?php echo t('Upload'); ?></a>
                     
                 <div class="message info" id="error">
                     <?php echo t('You should select valid image files only!'); ?>
@@ -75,7 +75,7 @@ class MediaUpload extends WidgetBase {
                     <?php echo t('The upload has been canceled by the user or the browser dropped the connection'); ?>
                 </div>
                 <div class="message info" id="warnsize">
-                    <?php echo t("Your file is very big. We can't accept it. Please select more small file"); ?>
+                    <?php echo t("Your file is very big. We can't accept it. Please select a smaller file"); ?>
                 </div>
                 
             </form>

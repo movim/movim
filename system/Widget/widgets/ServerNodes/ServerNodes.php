@@ -68,7 +68,7 @@ class ServerNodes extends WidgetCommon
                 </form>
             </div>';
 
-        RPC::call('movim_fill', 'servernodes', $html);
+        RPC::call('movim_fill', 'servernodeslist', $html);
         RPC::commit();
     }
     
@@ -88,7 +88,7 @@ class ServerNodes extends WidgetCommon
 
         $html .= '</ul>';
 
-        RPC::call('movim_fill', 'servernodes', $html);
+        RPC::call('movim_fill', 'servernodeslist', $html);
         RPC::commit();
     }
     
@@ -121,11 +121,17 @@ class ServerNodes extends WidgetCommon
     function build()
     {
     ?>
-        <a class="button tiny icon" onclick="movim_toggle_display('#groupCreation')"><?php echo t("Create a new group");?></a>
+    <div id="servernodes" class="tabelem protect red padded">
+        <a 
+            class="button tiny icon add" 
+            onclick="movim_toggle_display('#groupCreation')">
+            <?php echo t("Create a new group");?>
+        </a>
         <div id="newGroupForm"></div>
-        <div class="tabelem protect red" id="servernodes" title="<?php echo t('Groups');?>">
+        <div id="servernodeslist" title="<?php echo t('Groups');?>">
             <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?></script>
         </div>
+    </div>
     <?php
     }
 }

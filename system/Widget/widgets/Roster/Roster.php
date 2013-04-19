@@ -37,6 +37,7 @@ class Roster extends WidgetBase
 	function onPresence($presence)
 	{
 	    $arr = $presence->getPresence();
+        //Notification::appendNotification($arr['jid'].' '. $arr['presence_txt']);
 	    RPC::call('incomingPresence', $arr['jid'], $arr['presence_txt']);
 	}
 
@@ -126,11 +127,12 @@ class Roster extends WidgetBase
                     class="avatar"
                     src="'.$contact->getPhoto('xs').'"
                     />'.
-                    '<span>'.$contact->getTrueName();
+                    $contact->getTrueName();
+            $html .= '<span class="ressource">';
 						if($contact->rosterask == 'subscribe')
 							$html .= " #";
                         if($contact->ressource != '')
-                            $html .= ' ('.$contact->ressource.')';
+                            $html .= ' '.$contact->ressource.'';
             $html .= '</span>
                  </a>';
         

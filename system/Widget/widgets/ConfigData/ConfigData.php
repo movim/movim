@@ -40,7 +40,7 @@ class ConfigData extends WidgetBase
     }
     
     function ajaxClearPost() {
-        $pd = new \modl\PostDAO();
+        $pd = new \modl\PostnDAO();
         $pd->clearPost();
         
         $this->refresh();

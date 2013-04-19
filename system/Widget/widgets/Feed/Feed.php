@@ -5,6 +5,7 @@ class Feed extends WidgetCommon {
     {
         $this->addcss('feed.css');
         $this->addjs('feed.js');
+        
         $this->registerEvent('post', 'onStream');
         $this->registerEvent('postdeleted', 'onPostDelete');
         $this->registerEvent('postdeleteerror', 'onPostDeleteError');
@@ -51,12 +52,9 @@ class Feed extends WidgetCommon {
           ->setData(serialize($config))
           ->request();
         
-        $html .=
-            '<div class="message error">'.
-                t("Your server doesn't support post publication, you can only read contact's feeds").'
-             </div>';
-        RPC::call('movim_fill', 'feednotifs', $html);
-        RPC::commit();
+        Notification::appendNotification(
+            t("Your server doesn't support post publication, you can only read contact's feeds"), 
+            'error');
     }
     
     function onCommentPublishError() {
@@ -69,7 +67,7 @@ class Feed extends WidgetCommon {
 
     function onPostPublished($post) {        
         $pd = new \modl\PostDAO();
-        $pl = $pd->getFeed($start+1, 10);
+        $pl = $pd->getFeed(-1, 10);
 
         $html = $this->preparePosts($pl);
 
@@ -85,9 +83,7 @@ class Feed extends WidgetCommon {
     }
     
     function onPostPublishError($error) {
-        $html .=
-            '<div class="message error">'.t('An error occured : ').$error.'</div>';
-        RPC::call('movim_fill', 'feednotifs', $html);
+        Notification::appendNotification(t('An error occured : ').$error, 'error');
     }
     
     function prepareHead() {
@@ -161,9 +157,6 @@ class Feed extends WidgetCommon {
                         </tr>
                     </tbody>
                 </table>
-
-
-
                 <div id="feednotifs"></div>';
         }
         
@@ -171,8 +164,10 @@ class Feed extends WidgetCommon {
     }
     
     function prepareFeed($start) {
-        $pd = new \modl\PostDAO();
+        $pd = new \modl\PostnDAO();
         $pl = $pd->getFeed($start+1, 10);
+        
+        //var_dump($pl);
 
         $html = $this->preparePosts($pl);
 
@@ -195,7 +190,8 @@ class Feed extends WidgetCommon {
     }
 
     function ajaxGetFeed($start) {
-        RPC::call('movim_append', 'feedcontent', $this->prepareFeed($start));
+        $html = $this->prepareFeed($start);        
+        RPC::call('movim_append', 'feedcontent', $html);
         RPC::commit();
     }
         
@@ -209,16 +205,15 @@ class Feed extends WidgetCommon {
                     t("Your feed cannot be loaded.").'
                 </div>';
         RPC::call('movim_fill', 'feedcontent', $html);
+        //Notification::appendNotification(t('New post received').$error, 'info');
+        RPC::commit();
     }
     
     function ajaxPublishItem($content)
     {
         if($content != '') {
-            $id = md5(openssl_random_pseudo_bytes(5));
-            
             $p = new moxl\MicroblogPostPublish();
-            $p->setTo($this->user->getLogin())
-              ->setId($id)
+            $p->setFrom($this->user->getLogin())
               ->setContent(htmlspecialchars(rawurldecode($content)))
               ->request();
         }
