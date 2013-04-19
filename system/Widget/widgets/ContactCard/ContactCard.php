@@ -55,8 +55,11 @@ class ContactCard extends WidgetCommon
                         <label for="name">'.t('Nickname').'</label>
                         <span>'.$contact->name.'</span>
                       </div>';
-                      
-            if($contact->date != '0000-00-00' && $this->testIsSet($contact->date))
+
+            if(
+                $contact->date != '0000-00-00' 
+                && $contact->date != '1970-01-01'
+                && $this->testIsSet($contact->date))
             $html .= '<div class="element simple">
                         <label for="day">'.t('Date of Birth').'</label>
                         <span>'.date('j M Y',strtotime($contact->date)).'</span>

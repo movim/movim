@@ -44,11 +44,9 @@ class GroupSubscribedListConfig extends WidgetBase
         else return "No groups found";
     }
     
-    function onGroupRemoved($node) {
-        $html = '<div class="message success">'.t('%s has been removed from your public groups', $node).'</div>';
-        
+    function onGroupRemoved($node) {       
         RPC::call('movim_delete', 'group'.$node);
-        RPC::call('movim_fill', 'handlingmessages', $html);
+        Notification::appendNotification(t('%s has been removed from your public groups', $node), 'success');
         RPC::commit(); 
     }
     
@@ -73,8 +71,7 @@ class GroupSubscribedListConfig extends WidgetBase
 	function build()
     {
         ?>
-		<div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistconfig">
-            <div id="handlingmessages"></div>
+		<div class="tabelem padded" title="<?php echo t('Public Groups'); ?>" id="groupsubscribedlistconfig">
             <div id="listconfig">
                 <a class="button tiny icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
             </div>

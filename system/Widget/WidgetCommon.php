@@ -30,20 +30,20 @@ class WidgetCommon extends WidgetBase {
             else
                 $access .= 'protect orange';
                 
-            $avatar = $post->getContact()->getPhoto('m');
+            $avatar = $post->getContact()->getPhoto('s');
         } elseif($post->public == 2) {
             $class .= ' folded';
             $fold = t('Unfold');
             $avatar = $post->getContact()->getPhoto('xs');
         } else {
             $fold = t('Fold');
-            $avatar = $post->getContact()->getPhoto('m');
+            $avatar = $post->getContact()->getPhoto('s');
         }
 
-        if($post->jid != $post->uri)
+        if($post->from != $post->aid)
             $recycle .= '
                 <span class="recycle">
-                    <a href="?q=friend&f='.$post->uri.'">'.$post->uri.'</a>
+                    <a href="?q=friend&f='.$post->aid.'">'.$post->aid.'</a>
                  </span>';
 
         if($post->getPlace() != false)
@@ -52,19 +52,19 @@ class WidgetCommon extends WidgetBase {
                     <a 
                         target="_blank" 
                         href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
-                    >'.$post->getPlace().'</a>
+                    >'.t('Place').'</a>
                 </span>';
 
         $content = 
                 prepareString(html_entity_decode($post->content));
         
-        if($post->commentplace && $post->commentson)
+        //if($post->commentplace && $post->commentson)
             $comments = $this->printComments($post, $comments, $public);
-        else
-            $comments = '';
+        //else
+        //$comments = '';
             
-        if($this->user->getLogin() == $post->jid) 
-            $toolbox = $this->getToolbox($post);
+        //if($this->user->getLogin() == $post->jid) 
+        //    $toolbox = $this->getToolbox($post);
         
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
@@ -232,7 +232,7 @@ class WidgetCommon extends WidgetBase {
 		} else {
 			$html = '';
 
-            $pd = new \modl\PostDAO();
+            $pd = new \modl\PostnDAO();
             $comments = $pd->getComments($posts);
             
             foreach($posts as $post) {
@@ -241,7 +241,7 @@ class WidgetCommon extends WidgetBase {
                 
                 $messagecomment = array();
                 foreach($comments as $comment) {
-                    if($post->nodeid == $comments[$i]->parentid) {
+                    if('urn:xmpp:microblog:0:comments/'.$post->nodeid == $comments[$i]->node) {
                         array_push($messagecomment, $comment);
                         unset($comment);
                     }
@@ -468,7 +468,7 @@ class WidgetCommon extends WidgetBase {
         
         if($comments) {
             foreach($comments as $comment) {
-                $photo = $comment->getContact()->getPhoto('s');
+                $photo = $comment->getContact()->getPhoto('xs');
                 $name = $comment->getContact()->getTrueName();
                                 
                 $tmp .= '
@@ -480,7 +480,7 @@ class WidgetCommon extends WidgetBase {
                     
                 $tmp .='>
                         <img class="avatar tiny" src="'.$photo.'">
-                        <span><a href="?q=friend&f='.$comment->uri.'">'.$name.'</a></span>
+                        <span><a href="?q=friend&f='.$comment->jid.'">'.$name.'</a></span>
                         <span class="date">'.prepareDate(strtotime($comment->published)).'</span><br />
                         <div class="content tiny">'.prepareString($comment->content).'</div>
                     </div>';
@@ -490,10 +490,10 @@ class WidgetCommon extends WidgetBase {
     }
     
     function onComment($parent) {        
-        $p = new \modl\ContactPost();
+        $p = new \modl\ContactPostn();
         $p->nodeid = $parent;
         
-        $pd = new \modl\PostDAO();
+        $pd = new \modl\PostnDAO();
         $comments = $pd->getComments($p);
 
         $html = $this->prepareComments($comments);
