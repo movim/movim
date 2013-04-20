@@ -28,21 +28,26 @@ class GroupMemberList extends WidgetBase
     
     function prepareList($list) { 
         $affiliation = array("owner", "member", "none");
-        $html = '<ul class="list">';
+        $html = '<form id="affiliationsManaging"><ul class="list">';
         
-        foreach($list as $item){
+        foreach($list as $item){ //0:jid 1:affiliation 2:subid 
             $html .= '
-                <li> '.$item[0].'
-                    <select>';
+                <li> <a href="?q=friend&f='.$item[0].'" style="clear:both;">'.$item[0].'</a>
+                    <div class="element"><select name="'.$item[0].'_'.$item[2].'">';
                         foreach($affiliation as $status){
-                            $affiliation[$i] == $item[1] ? $selected = "selected" : $selected = "";
-                            $html .= '<option '.$selected.'>'.t($affiliation[$i]).'</option>';
+                            $status == $item[1] ? $selected = "selected" : $selected = "";
+                            $html .= '<option '.$selected.'>'.t($status).'</option>';
                         }
-                    $html .= '</select>    
+                    $html .= '</select></div>   
                 </li>';
         }
-        
-        $html .= '</ul>';
+        $ok = $this->genCallAjax('ajaxChangeAffiliation', "'".$_GET['s']."'", "'".$_GET['n']."'", "movim_parse_form('affiliationsManaging')");
+        $html .= '</ul>
+                <a 
+                    class="button tiny icon" 
+                    onclick="'.$ok.'">
+                    '.t("Ok").'
+                </a></form>';
         return $html;
     }
     
@@ -51,13 +56,11 @@ class GroupMemberList extends WidgetBase
         RPC::call('movim_fill', 'memberlist', $html); 
     }
     
-    /*function ajaxDeleteFromMemberList($node, $server){
-        $r = new moxl\PubsubSubscriptionListRemove();
-        $r->setNode($node)
-          ->setTo($server)
-          ->setFrom($this->user->getLogin())
+    function ajaxChangeAffiliation($server, $node, $data){
+        $r = new moxl\GroupSetMemberListAffiliation();
+        $r->setNode($node)->setTo($server)->setData($data)
           ->request();
-    }*/
+    }
     
     function ajaxGetGroupMemberList($server, $node){
         $r = new moxl\GroupGetMemberList();
