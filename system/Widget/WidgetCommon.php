@@ -63,8 +63,10 @@ class WidgetCommon extends WidgetBase {
         $content = 
                 prepareString(html_entity_decode($post->content));
         
-        //if($post->commentplace && $post->commentson)
+        if($post->node == 'urn:xmpp:microblog:0')
             $comments = $this->printComments($post, $comments, $public);
+        else
+			$comments = '';
         //else
         //$comments = '';
             
