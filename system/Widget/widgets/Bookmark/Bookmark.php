@@ -24,6 +24,7 @@ class Bookmark extends WidgetBase
     {
         $this->addcss('bookmark.css');
         $this->registerEvent('bookmark', 'onBookmark');
+        $this->registerEvent('bookmarkerror', 'onBookmarkError');
 		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
 		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
     }
@@ -71,6 +72,11 @@ class Bookmark extends WidgetBase
         $html = $this->prepareBookmark($arr);
         RPC::call('movim_fill', 'bookmarks', $html);
         Notification::appendNotification(t('Bookmarks updated'), 'info');
+    }
+    
+    function onBookmarkError($error)
+    {
+        Notification::appendNotification(t('An error occured : ').$error, 'error');
     }
     
     function ajaxGetBookmark() 
