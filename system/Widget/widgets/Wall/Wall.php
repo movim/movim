@@ -47,10 +47,10 @@ class Wall extends WidgetCommon
         RPC::commit();
     }  
     
-    function onStream($from) {
-        $html = $this->prepareFeed(-1, $from);
+    function onStream($payload) {
+        $html = $this->prepareFeed(-1, $payload['from']);
 
-        RPC::call('movim_fill', 'wall', $html);
+        RPC::call('movim_fill', md5($payload['from'].$payload['node']), $html);
     }
 
     function prepareFeed($start, $from = false) {
@@ -59,7 +59,7 @@ class Wall extends WidgetCommon
             $from = $_GET['f'];
         
         $pd = new \modl\PostnDAO();
-        $pl = $pd->getContact($from, $start+1, 10);
+        $pl = $pd->getNode($from, 'urn:xmpp:microblog:0', $start+1, 10);
         
         // We ask for the HTML of all the posts
         
@@ -106,8 +106,10 @@ class Wall extends WidgetCommon
 	}
 
 	function ajaxWall($jid) {
-        $r = new moxl\MicroblogGet();
-        $r->setTo($jid)->request();
+        $r = new moxl\PubsubGetItems();
+        $r->setTo($jid)
+          ->setNode('urn:xmpp:microblog:0')
+          ->request();
 	}
 	
 	function ajaxSubscribe($jid) {
@@ -118,18 +120,20 @@ class Wall extends WidgetCommon
 	{
 		?>
 		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
-		<?php 
-            $wall = $this->prepareFeed(-1);
-            if($wall)
-                echo $wall;
-            else {
-            ?>
-                <div style="padding: 1.5em; text-align: center;">Ain't Nobody Here But Us Chickens...</div>
-                <script type="text/javascript">
-                    <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
-                </script>
-            <?php
-            } ?>
+            <div id="<?php echo md5($_GET['f'].'urn:xmpp:microblog:0'); ?>">
+            <?php 
+                $wall = $this->prepareFeed(-1);
+                if($wall)
+                    echo $wall;
+                else {
+                ?>
+                    <div style="padding: 1.5em; text-align: center;">Ain't Nobody Here But Us Chickens...</div>
+                    <script type="text/javascript">
+                        <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
+                    </script>
+                <?php
+                } ?>
+            </div>
        	</div>
 		<?php
 	}
