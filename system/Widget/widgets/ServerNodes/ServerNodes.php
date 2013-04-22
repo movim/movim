@@ -104,7 +104,7 @@ class ServerNodes extends WidgetCommon
 
     function ajaxGetNodes($server)
     {
-        $r = new moxl\GroupServerGetNodes();
+        $r = new moxl\PubsubDiscoItems();
         $r->setTo($server)->request();
     }
     
@@ -121,12 +121,26 @@ class ServerNodes extends WidgetCommon
     function build()
     {
     ?>
-    <div id="servernodes" class="tabelem protect red padded">
+    <div class="breadcrumb">
+        <a href="?q=server&s=<?php echo $_GET['s']; ?>">
+            <?php echo $_GET['s']; ?>
+        </a>
+        <a><?php echo t('Topics'); ?></a>
+    </div>
+    <div class="posthead">
+        <a
+            href="#"
+            onclick="<?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?>; this.style.display = 'none';"
+            class="button tiny icon follow">
+            <?php echo t('Refresh'); ?>
+        </a>
         <a 
             class="button tiny icon add" 
             onclick="movim_toggle_display('#groupCreation')">
             <?php echo t("Create a new group");?>
         </a>
+    </div>
+    <div id="servernodes" class="tabelem protect red paddedtop" title="<?php echo t('Server'); ?>">
         <div id="newGroupForm"></div>
         <div id="servernodeslist" title="<?php echo t('Groups');?>">
             <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?></script>

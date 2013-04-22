@@ -25,6 +25,7 @@ class Chat extends WidgetBase
     	$this->addcss('chat.css');
     	$this->addjs('chat.js');
 		$this->registerEvent('message', 'onMessage');
+		$this->registerEvent('messagepublished', 'onMessagePublished');
 		$this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('attention', 'onAttention');
@@ -111,6 +112,11 @@ class Chat extends WidgetBase
         
         RPC::commit();
 
+    }
+    
+    function onMessagePublished($jid)
+    {
+        Notification::appendNotification(t('Message Published'), 'success');
     }
     
     function onComposing($jid)
@@ -219,7 +225,10 @@ class Chat extends WidgetBase
         $this->onMessage($m);
              
 		// We decode URL codes to send the correct message to the XMPP server
-        moxl\message($to, htmlspecialchars(rawurldecode($message)));
+        $m = new \moxl\MessagePublish();
+        $m->setTo($to)
+           ->setContent(htmlspecialchars(rawurldecode($message)))
+           ->request();
     }
     
 	/**
