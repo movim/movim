@@ -22,6 +22,7 @@ class Node extends WidgetCommon
 {
     function WidgetLoad()
     {
+		$this->registerEvent('stream', 'onStream');
 		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
 		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
     }
@@ -38,17 +39,17 @@ class Node extends WidgetCommon
         RPC::call('movim_fill', 'node', $html);
     }
     
-    function onStream($id) {
-        $html = $this->prepareGroup($id[0], $id[1]);
-        
+    function onStream($payload) {
+        $html = $this->prepareGroup($payload['from'], $payload['node']);
+
         if($html == '') 
             $html = t("Your feed cannot be loaded.");
-        RPC::call('movim_fill', 'node', $html);
+        RPC::call('movim_fill', md5($payload['from'].$payload['node']), $html);
     }
 
     function ajaxGetItems($server, $node)
     {
-        $r = new moxl\GroupNodeGetItems();
+        $r = new moxl\PubsubGetItems();
         $r->setTo($server)
           ->setNode($node)
           ->request();
@@ -91,7 +92,7 @@ class Node extends WidgetCommon
             $button = '
                 <a
                     href="#" 
-                    class="button tiny icon back merged left"
+                    class="button tiny icon back"
                     onclick="movim_toggle_display(\'#groupunsubscribe\')">
                     '.t('Unsubscribe').'
                 </a>';
@@ -99,7 +100,7 @@ class Node extends WidgetCommon
             $button = '
                 <a 
                     href="#" 
-                    class="button tiny icon next merged left"
+                    class="button tiny icon next"
                     onclick="movim_toggle_display(\'#groupsubscribe\')">
                     '.t('Subscribe').'
                 </a>';
@@ -115,10 +116,11 @@ class Node extends WidgetCommon
                 <a>'.t('Posts').'</a>
             </div>
             <div class="posthead">
-                '.$button.'<a
+                '.$button.'
+                <a
                     href="#"
-                    onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").'"
-                    class="button tiny icon follow merged right">
+                    onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").' this.style.display = \'none\'"
+                    class="button tiny icon follow">
                     '.('Refresh').'
                 </a>
                 
@@ -176,7 +178,7 @@ class Node extends WidgetCommon
         $title = '';
         
         $pd = new modl\PostnDAO();
-        $posts = $pd->getGroup($serverid, $groupid);
+        $posts = $pd->getNode($serverid, $groupid, 0, 10);
         
         $html .= $title;
         
@@ -215,7 +217,9 @@ class Node extends WidgetCommon
     {
     ?>
         <div class="tabelem protect red" id="node" title="<?php echo t('Posts'); ?>">
-            <?php echo $this->prepareGroup($_GET['s'], $_GET['n']); ?>
+            <div id="<?php echo md5($_GET['s'].$_GET['n']); ?>">
+                <?php echo $this->prepareGroup($_GET['s'], $_GET['n']); ?>
+            </div>
         </div>
     <?php
     }

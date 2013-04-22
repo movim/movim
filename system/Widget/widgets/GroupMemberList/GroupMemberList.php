@@ -26,11 +26,11 @@ class GroupMemberList extends WidgetBase
         $this->registerEvent('groupmemberlist', 'onGroupMemberList');
     }
     
-    function prepareList($list) { 
+    function prepareList($list) { //0:data 1:server 2:node
         $affiliation = array("owner", "member", "none");
         $html = '<form id="affiliationsManaging"><ul class="list">';
         
-        foreach($list as $item){ //0:jid 1:affiliation 2:subid 
+        foreach($list[0] as $item){ //0:jid 1:affiliation 2:subid 
             $html .= '
                 <li> <a href="?q=friend&f='.$item[0].'" style="clear:both;">'.$item[0].'</a>
                     <div class="element"><select name="'.$item[0].'_'.$item[2].'">';
@@ -41,7 +41,7 @@ class GroupMemberList extends WidgetBase
                     $html .= '</select></div>   
                 </li>';
         }
-        $ok = $this->genCallAjax('ajaxChangeAffiliation', "'".$_GET['s']."'", "'".$_GET['n']."'", "movim_parse_form('affiliationsManaging')");
+        $ok = $this->genCallAjax('ajaxChangeAffiliation', "'".$list[1]."'", "'".$list[2]."'", "movim_parse_form('affiliationsManaging')");
         $html .= '</ul>
                 <a 
                     class="button tiny icon" 
@@ -54,6 +54,7 @@ class GroupMemberList extends WidgetBase
     function onGroupMemberList($list) {
         $html = $this->prepareList($list);
         RPC::call('movim_fill', 'memberlist', $html); 
+		RPC::commit(); 
     }
     
     function ajaxChangeAffiliation($server, $node, $data){
