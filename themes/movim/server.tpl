@@ -12,6 +12,7 @@
 
 <div id="main">
     <div id="left">
+        <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
 

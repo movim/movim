@@ -125,7 +125,6 @@ a:link, a:visited {
 
 /* The protection flags */
 .protect {
-    background-size: 28px;
     background-repeat: no-repeat;
     background-position: 98% 0px;
 }
@@ -191,6 +190,11 @@ ul.clean li {
 /* A default padding for some elements */
 .padded {
     padding: 1.5em;
+}
+
+.paddedtop {
+    padding: 1.5em;
+    padding-top: 0px;
 }
 
 /* The main parts of the page */
@@ -589,6 +593,10 @@ ul.list {
 
 ul.list li {
     border-bottom: 1px solid #EEE;
+}
+
+ul.list li:last-child {
+    border-bottom: 0px;
 }
 
 ul.list li a {
