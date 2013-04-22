@@ -123,9 +123,8 @@ class Feed extends WidgetCommon {
     function prepareFeed($start) {
         $pd = new \modl\PostnDAO();
         $pl = $pd->getFeed($start+1, 10);
-        
-        //var_dump($pl);
 
+		
         $html = $this->preparePosts($pl);
 
         // We ask for the HTML of all the posts

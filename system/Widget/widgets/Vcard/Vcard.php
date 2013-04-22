@@ -334,7 +334,7 @@ class Vcard extends WidgetBase
     function build()
     {
         ?>
-		<div class="tabelem padded" style="padding-top: 0px;" title="<?php echo t('Edit my Profile'); ?>" id="vcard">
+		<div class="tabelem paddedtop" title="<?php echo t('Edit my Profile'); ?>" id="vcard">
 			<?php 
 				echo $this->prepareInfos();
 			?>

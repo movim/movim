@@ -35,6 +35,8 @@ class ContactManage extends WidgetCommon
     
     private function prepareContactManage($jid) {
         $rd = new \modl\RosterLinkDAO();
+        
+        $groups = $rd->getGroups();
         $rl = $rd->get($jid);
         
         $submit = $this->genCallAjax('ajaxContactManage', "movim_parse_form('manage')");
@@ -46,13 +48,20 @@ class ContactManage extends WidgetCommon
         $html .= '
             <form name="manage">';
             
+        $ghtml = '';
+        foreach($groups as $g)
+            $ghtml .= '<option value="'.$g.'"/>';
+            
         $html .= '
                 <input type="hidden" name="jid" value="'.$jid.'"/>
                 <div class="element large mini">
                     <input name="alias" id="alias" class="tiny" placeholder="'.t('Alias').'" value="'.$rl->rostername.'"/>
                 </div>
                 <div class="element large mini">
-                    <input name="group" id="alias" class="tiny" placeholder="'.t('Group').'" value="'.$rl->group.'"/>
+                    <datalist id="group" style="display: none;">
+                        '.$ghtml.'
+                    </datalist>
+                    <input name="group" list="group" id="alias" class="tiny" placeholder="'.t('Group').'" value="'.$rl->group.'"/>
                 </div>
                 
                 <a class="button tiny icon yes" onclick="'.$submit.'">'.t('Save').'</a>';
@@ -67,7 +76,8 @@ class ContactManage extends WidgetCommon
         ?>
         <div class="clear"></div>
         <?php
-        echo $this->prepareContactManage($_GET['f']);        
+        if($_GET['f'] != $this->user->getLogin())
+            echo $this->prepareContactManage($_GET['f']);        
     }
     
 }

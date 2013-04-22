@@ -99,27 +99,31 @@
 	cursor: pointer;
 }
 
-.post span.place, .post span.recycle {
+.post span.place, .post span.recycle, .post span.group {
     display: inline-block;
-    padding-left: 17px;
+    padding-left: 20px;
     font-weight: normal;
     margin-top: 5px;
     float: right;
     margin-left: 10px;
     padding-right: 0.5em;
-}
-
-.post span.place {
-    max-width: 350px;
-    background: url(../img/icons/place.png) 0px 4px no-repeat;
+    
+    max-width: 300px;
     white-space: nowrap;  
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+.post span.place {
+    background: url(../img/icons/place.png) 0px 4px no-repeat;
+}
+
 .post span.recycle {
     background: url(../img/icons/recycle.png) 0px 4px no-repeat;
+}
 
+.post span.group {
+    background: url(../img/icons/users.png) 0px 3px no-repeat;
 }
 
 .post .comments {
