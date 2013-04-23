@@ -337,7 +337,7 @@ class ControllerMain extends ControllerBase
      */
      function admin()
      {
-        error_reporting(0); 
+        //error_reporting(0); 
          
         if(!isset($_SERVER['PHP_AUTH_USER'])) {
             $this->authenticate();

@@ -39,8 +39,10 @@ class Log extends WidgetBase
 	}
 
     function onEvent($data)
-    {
-
+    {               
+        RPC::call('movim_fill',
+                           'log_content',
+                           serialize($data));
     }
 }
 
