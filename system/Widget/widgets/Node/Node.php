@@ -23,17 +23,17 @@ class Node extends WidgetCommon
     function WidgetLoad()
     {
 		$this->registerEvent('stream', 'onStream');
-		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
-		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
+		$this->registerEvent('pubsubsubscribed', 'onPubsubSubscribed');
+		$this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
     }
     
-    function onGroupSubscribed($params)
+    function onPubsubSubscribed($params)
     {        
         $html = $this->prepareGroup($params[0], $params[1]);
         RPC::call('movim_fill', 'node', $html);    
     }
     
-    function onGroupUnsubscribed($params)
+    function onPubsubUnsubscribed($params)
     {
         $html = $this->prepareGroup($params[0], $params[1]);
         RPC::call('movim_fill', 'node', $html);
@@ -57,7 +57,7 @@ class Node extends WidgetCommon
     
     function ajaxSubscribe($data, $server, $node)
     {
-        $g = new moxl\GroupSubscribe();
+        $g = new moxl\PusubSubscribe();
         $g->setTo($server)
           ->setNode($node)
           ->setFrom($this->user->getLogin())
@@ -70,7 +70,7 @@ class Node extends WidgetCommon
         $sd = new \modl\SubscriptionDAO();
 
         foreach($sd->get($server, $node) as $s) {
-            $g = new moxl\GroupUnsubscribe();
+            $g = new moxl\PubsubUnsubscribe();
             $g->setTo($server)
               ->setNode($node)
               ->setSubid($s->subid)
@@ -81,7 +81,7 @@ class Node extends WidgetCommon
     
     function ajaxGetSubscriptions($server, $node)
     {
-        $r = new moxl\GroupGetSubscriptions();
+        $r = new moxl\PubsubGetSubscriptions();
         $r->setTo($server)
           ->setNode($node)
           ->request();

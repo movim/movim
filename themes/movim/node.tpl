@@ -20,6 +20,7 @@
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Node');?>
         <?php $this->widget('GroupConfig');?>
+        <?php $this->widget('GroupMemberList');?>
     </div>
 </div>
 
