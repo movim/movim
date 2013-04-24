@@ -181,6 +181,9 @@ class Admin extends WidgetBase {
 
         $cd = new \modl\SubscriptionDAO();
         $cd->create();
+
+        $pr = new \modl\PrivacyDAO();
+        $pr->create();
     }
     
     private function prepareAdmin()
