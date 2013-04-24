@@ -20,7 +20,7 @@
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Wall');?>
         <?php $this->widget('ContactCard');?>
-        <?php $this->widget('GroupSubscribedListFromFriend');?>
+        <?php $this->widget('ContactPubsubSubscription');?>
     </div>
 </div>
 
