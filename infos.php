@@ -20,9 +20,7 @@
 require("init.php");
   
 // We get the informations
-$rd = new \modl\RosterLinkDAO();
-$pop = $rd->countAccounts();
-$pop = $pop[0];
+$pop = count(scandir(USERS_PATH))-3;
   
 // We create a simple DOMDocument
 $doc = new DOMDocument("1.0");
