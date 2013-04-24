@@ -19,8 +19,8 @@
     <div id="center">
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Node');?>
-        <?php $this->widget('GroupConfig');?>
-        <?php $this->widget('GroupMemberList');?>
+        <?php $this->widget('NodeConfig');?>
+        <?php $this->widget('NodeAffiliations');?>
     </div>
 </div>
 
