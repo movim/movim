@@ -10,7 +10,7 @@ class Blog extends WidgetCommon {
     {
         $from = $_GET['f'];
         
-        $pd = new \modl\PostDAO();
+        $pd = new \modl\PostnDAO();
         $messages = $pd->getPublic($from);
         
         echo '
