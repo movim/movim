@@ -60,7 +60,7 @@ class NodeConfig extends WidgetBase
                 <a
                         class="button icon yes" 
                         style="float: right;"
-                        onclick="'.$submit.'"
+                        onclick="'.$submit.' this.onclick=null;"
                     >
                         '.t('Validate').'
                 </a>

@@ -32,18 +32,21 @@ class ServerNodes extends WidgetCommon
         $html = '<ul class="list">';
 
         foreach($items[0] as $item) {
-            $name = '';
-            if(isset($item->attributes()->name))
-                $name = $item->attributes()->name;
-            else
-                $name = $item->attributes()->node;
-        
-            $html .= '
-                <li>
-                    <a href="?q=node&s='.$item->attributes()->jid.'&n='.$item->attributes()->node.'">'.
-                        $name.'
-                    </a>
-                </li>';
+            
+            if (substr($item->attributes()->node, 0, 20) != 'urn:xmpp:microblog:0') {
+                $name = '';
+                if(isset($item->attributes()->name))
+                    $name = $item->attributes()->name;
+                else
+                    $name = $item->attributes()->node;
+            
+                $html .= '
+                    <li>
+                        <a href="?q=node&s='.$item->attributes()->jid.'&n='.$item->attributes()->node.'">'.
+                            $name.'
+                        </a>
+                    </li>';
+            }
         }
 
         $html .= '</ul>';

@@ -298,6 +298,25 @@ form .element input:invalid {
     overflow: hidden;
 }
 
+.button.icon.loading {
+    background-image: url(../img/loader.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto auto;
+    color: transparent;
+    border: 1px transparent;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.button.icon.loading:hover {
+    cursor: default;
+}
+
+.button.icon.loading:before {
+    content: "";
+}
+
 .button.icon:before {
     content: "✘";
     font: 14px sans-serif;
@@ -344,7 +363,6 @@ form .element input:invalid {
 .icon.rm:before { content:"—"; }
 .icon.submit:before { content: "▼"; }
 .icon.upload:before { content: "▲"; }
-.icon.loading:before { content: "◕"; }
 .icon.next:before { content: "→"; }
 .icon.feed:before { content: "≡"; }
 .icon.back:before { content: "←"; }
