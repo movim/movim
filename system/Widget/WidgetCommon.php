@@ -62,9 +62,12 @@ class WidgetCommon extends WidgetBase {
                 </span>';
                 
         if($post->links)
+			$enc = $this->printEnclosures($post->links);
+                
+        if($enc)
 			$enc = '
 				<div class="enclosure">'.
-					$this->printEnclosures($post->links).
+					$enc.
 				'</div>';
 
         $content = prepareString(html_entity_decode($post->content));
@@ -141,7 +144,7 @@ class WidgetCommon extends WidgetBase {
 						<a href="'.$l['href'].'" class="imglink" target="_blank">
 							<img src="'.$l['href'].'"/>
 						</a>';
-			} elseif($l['rel'] == 'alternate') {
+			} elseif($l['rel'] == 'alternate' && isset($l['title'])) {
 				$enc .= '
 					<a href="'.$l['href'].'" class="imglink" target="_blank">
 						'.$l['title'].'
