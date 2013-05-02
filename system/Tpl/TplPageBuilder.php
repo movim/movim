@@ -228,10 +228,10 @@ class TplPageBuilder
 	/**
 	 * Loads up a widget and prints it at the current place.
 	 */
-	function widget($name)
+	function widget($name, $register = true)
 	{
-        $widgets = WidgetWrapper::getInstance();
-        $widgets->run_widget($name, 'getCache');
+        $widgets = WidgetWrapper::getInstance($register);
+        $widgets->run_widget($name, 'build');
 	}
 
 	/**
