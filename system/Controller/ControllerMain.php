@@ -232,6 +232,17 @@ class ControllerMain extends ControllerBase
         $this->page->setContent($content->build('blog.tpl'));
         echo $this->page->build('page.tpl');
 	}
+    
+	function chatpop()
+	{
+		$user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			echo $this->page->build('chatpop.tpl');
+		}
+	}
 
 	function post()
 	{
