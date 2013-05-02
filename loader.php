@@ -1,7 +1,7 @@
 <?php
 
 // A few constants...
-define('BASE_PATH', str_replace('install/', '', dirname(__FILE__) . '/'));
+define('BASE_PATH', dirname(__FILE__) . '/');
 define('APP_NAME', 'movim');
 define('LIB_PATH', BASE_PATH.'system/');
 define('PROPERTIES_PATH', BASE_PATH.'page/properties/');

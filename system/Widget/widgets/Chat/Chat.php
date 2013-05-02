@@ -109,9 +109,6 @@ class Chat extends WidgetBase
             RPC::call('setBackgroundColor', 'chatwindow'.$contact->jid, 'red');
 
         }            
-        
-        RPC::commit();
-
     }
     
     function onMessagePublished($jid)
@@ -195,6 +192,9 @@ class Chat extends WidgetBase
 
             RPC::commit();
         }
+        
+        $evt = new Event();
+        $evt->runEvent('openchat');  
     }
     
 	/**
@@ -222,8 +222,9 @@ class Chat extends WidgetBase
         $md = new \modl\MessageDAO();
         $md->set($m);
 
-        $this->onMessage($m);
-             
+        $evt = new Event();
+        $evt->runEvent('message', $m);  
+        
 		// We decode URL codes to send the correct message to the XMPP server
         $m = new \moxl\MessagePublish();
         $m->setTo($to)
@@ -253,6 +254,9 @@ class Chat extends WidgetBase
                 $rd->setNow($contact);
             }
         }
+        
+        $evt = new Event();
+        $evt->runEvent('closechat');  
 	}
     
     function ajaxHideTalk($jid)
@@ -337,7 +341,6 @@ class Chat extends WidgetBase
                             rows="1"
                             onkeyup="movim_textarea_autoheight(this);"
                             onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").' return false; }"
-                            onfocus="setBackgroundColor(\'chatwindow'.$contact->jid.'\', \'#444444\')"
                         ></textarea>
                     </div>
                 </div>
@@ -357,7 +360,17 @@ class Chat extends WidgetBase
         $rc = new \modl\ContactDAO();
         $contacts = $rc->getRosterChat();
         
-        echo '<div id="chats">';
+        echo '<div id="chats">
+                <div class="chat">
+                    <div 
+                        class="tab" 
+                        style="font-weight: bold; font-size: 1.4em; width: 30px; text-align: center;"
+                        onclick="openPopup();">
+                        ↑
+                    </div>
+                </div>
+        
+        ';
         if(isset($contacts)) {
             foreach($contacts as $contact) {
                 echo trim($this->prepareChat($contact));

@@ -37,8 +37,7 @@ class WidgetBase
 	{
 		// Put default widget init here.
 		$this->external = $external;
-		//if(Jabber::getInstance()) 
-		//    $this->xmpp = Jabber::getInstance();
+
 		$this->ajax = ControllerAjax::getInstance();
         
         $this->user = new User();
@@ -63,7 +62,6 @@ class WidgetBase
 		}
         
         $this->name = get_class($this);
-        $this->cached = false;
 
 		$this->WidgetLoad();
 	}
@@ -100,43 +98,6 @@ class WidgetBase
 
         return $path;
 	}
-    
-    private function saveCacheFile()
-    {
-        Logger::log(2, 'Cache: Update of '.$this->name.' widget - '.$this->user->getLogin());
-        $fp = fopen(BASE_PATH."/cache/".md5($this->name.$this->user->getLogin()).".thtml", "w");
-        ob_start();
-        $this->build();
-        $out = ob_get_clean();
-        fwrite($fp, trim(preg_replace( '/\s+/', ' ',$out)));
-        fclose($fp);
-        
-        return $out;
-    }
-    
-    public function saveCache() 
-    { 
-        $this->saveCacheFile();
-    }
-    
-    public function getCache()
-    {
-        $file = BASE_PATH."/cache/".md5($this->name.$this->user->getLogin()).".thtml";
-        if(file_exists($file)) {
-            $fp = fopen($file, "r");
-            echo fread($fp, filesize($file));
-            fclose($fp);
-        }
-        else {
-            $widgets = WidgetWrapper::getInstance(false);
-            if($this->cached == true) {  
-                $out = $this->saveCacheFile();
-                echo $out;
-            }
-            else
-                $this->build();
-        }
-    }
     
     public function getName()
     {
