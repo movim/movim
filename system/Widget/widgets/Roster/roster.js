@@ -54,28 +54,27 @@ function incomingPresence(val) {
 /*ROSTER SEARCH*/
 function focusContact(){
 	rosterlist = document.querySelector('#rosterlist');
-	if(rosterlist.querySelector('.focused') == null){
-        allLi="";
-		//offline are shown
-		if(rosterlist.className!=""){
-            allLi = rosterlist.querySelectorAll("li");
-            
-		}
-		//offline are hidden
-		else{
-			allLi = rosterlist.querySelectorAll("li:not(.offline)");
-		}
-        for(j=0; j<allLi.length; j++){
-            if(rosterInArray(allLi[j], allLi)){
-                allLi[j].className += " focused";
-                break;
-            }
-        }
-		document.querySelector('#right').scrollTop = 0;
+	focused = rosterlist.querySelector('.focused');
+	if( focused != null){
+		focused.className = focused.className.split(' ')[0];
 	}
-	/*else{
-		document.querySelector('#right').scrollTop = rosterlist.querySelector('.focused').offsetTop-document.querySelector('#nav').offsetHeight;
-	}*/
+	
+    allLi = "";
+	//offline are shown
+	if(rosterlist.className!=""){
+        allLi = rosterlist.querySelectorAll("li");
+	}
+	//offline are hidden
+	else{
+		allLi = rosterlist.querySelectorAll("li:not(.offline)");
+	}
+    for(j=0; j<allLi.length; j++){
+        if(rosterInArray(allLi[j], allLi)){
+            allLi[j].className += " focused";
+            break;
+        }
+    }
+	document.querySelector('#right').scrollTop = 0;
 }
 
 function rosterNextGroup(cgp){
@@ -99,13 +98,13 @@ function rosterNextGroup(cgp){
 function rosterNext(currFocus){
 	currGp = currFocus.parentNode;
 	viable = false;
-	gp = rosterlist.querySelectorAll("div:not([class='chat on'])");
+	gp = rosterlist.querySelectorAll("div:not(.chat)");
     returned = "";
     //Define contact end limit
     visible = "";
     currentGroupVisible = "";
     
-    if(rosterlist.class == "offlineshown"){//offline are shown
+    if(rosterlist.className != ""){//offline are shown
         visible = rosterlist.querySelectorAll("li");
         currentGroupVisible = currGp.querySelectorAll("li");
     }
@@ -208,7 +207,7 @@ function giveFocusTo(newFocused){
 function rosterSearch(e){
 	rosterlist = document.querySelector('#rosterlist');
 	parents = rosterlist.querySelectorAll('li');
-	names = rosterlist.getElementsByTagName('span');
+	names = rosterlist.getElementsByTagName('a');
 	request = document.querySelector('#request').value;
 	focused = rosterlist.querySelector('.focused');
     
