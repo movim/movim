@@ -83,7 +83,7 @@
             <?php $this->content();?>
           
             <div id="footer">
-                © <a href="http://www.movim.eu">Movim</a> • 2008 - 2012 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
+                © <a href="http://www.movim.eu">Movim</a> • 2008 - 2013 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
             </div>
         </div>
 
