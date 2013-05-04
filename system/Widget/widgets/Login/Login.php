@@ -287,10 +287,9 @@ class Login extends WidgetBase {
                     <div id="warning"><?php echo $this->displayWarning($_GET['err'], true); ?></div>
                     <div class="infos">
                             <?php
-                            $rd = new \modl\RosterLinkDAO();
-                            $pop = $rd->countAccounts();
+                            $pop = count(scandir(USERS_PATH))-3;
                             
-                            echo t('Population').' '.$pop[0].' • ';
+                            echo t('Population').' '.$pop.' • ';
                             ?>
                             <?php echo t('No account yet ?'); ?>
                             <a href="?q=account">

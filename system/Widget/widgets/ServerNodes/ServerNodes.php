@@ -32,13 +32,21 @@ class ServerNodes extends WidgetCommon
         $html = '<ul class="list">';
 
         foreach($items[0] as $item) {
-            $html .= '
-                <li>
-                    <a href="?q=node&s='.$item->attributes()->jid.'&n='.$item->attributes()->node.'">'.
-                        $item->attributes()->node. ' - '.
-                        $item->attributes()->name.'
-                    </a>
-                </li>';
+            
+            if (substr($item->attributes()->node, 0, 20) != 'urn:xmpp:microblog:0') {
+                $name = '';
+                if(isset($item->attributes()->name))
+                    $name = $item->attributes()->name;
+                else
+                    $name = $item->attributes()->node;
+            
+                $html .= '
+                    <li>
+                        <a href="?q=node&s='.$item->attributes()->jid.'&n='.$item->attributes()->node.'">'.
+                            $name.'
+                        </a>
+                    </li>';
+            }
         }
 
         $html .= '</ul>';
@@ -121,13 +129,13 @@ class ServerNodes extends WidgetCommon
     function build()
     {
     ?>
-    <div class="breadcrumb">
+    <div class="breadcrumb protect red ">
         <a href="?q=server&s=<?php echo $_GET['s']; ?>">
             <?php echo $_GET['s']; ?>
         </a>
         <a><?php echo t('Topics'); ?></a>
-    </div>
-    <div class="posthead">
+    </div> 
+    <div class="posthead ">
         <a
             href="#"
             onclick="<?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?>; this.style.display = 'none';"
@@ -140,7 +148,7 @@ class ServerNodes extends WidgetCommon
             <?php echo t("Create a new group");?>
         </a>
     </div>
-    <div id="servernodes" class="tabelem protect red paddedtop" title="<?php echo t('Server'); ?>">
+    <div id="servernodes" class="tabelem paddedtop" title="<?php echo t('Server'); ?>">
         <div id="newGroupForm"></div>
         <div id="servernodeslist" title="<?php echo t('Groups');?>">
             <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?></script>

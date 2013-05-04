@@ -39,7 +39,7 @@ class ContactCard extends WidgetCommon
         $marital = getMarital();
 
         $html .= '
-            <form name="vcard" id="vcardform" class="protect red"><br />
+            <form name="vcard" id="vcardform"><br />
             <h1>'.t('Profile').'</h1><br />
                 <fieldset>
                     <legend>'.t('General Informations').'</legend>';
@@ -132,7 +132,7 @@ class ContactCard extends WidgetCommon
         $cd = new modl\ContactDAO();
         $contact = $cd->get($_GET['f']);
         ?>
-        <div class="tabelem" title="<?php echo t('Profile'); ?>" id="contactcard" >
+        <div class="tabelem protect red" title="<?php echo t('Profile'); ?>" id="contactcard" >
             <?php
             if(isset($contact))
                 echo $this->prepareContactCard($contact);

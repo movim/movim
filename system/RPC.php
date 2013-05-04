@@ -53,7 +53,6 @@ class RPC
 	 */
     public static function commit()
     {
-
         // Cleaning rubbish.
         ob_clean();
         ob_start();

@@ -27,7 +27,7 @@ class WidgetWrapper
     private $loaded_widgets = array();
     private $loaded_widgets_old;
     //private $loaded_widgets_cached = array();
-    private $cached_widgets;
+    //private $cached_widgets;
 
     private static $instance;
 
@@ -107,10 +107,10 @@ class WidgetWrapper
         return $this->all_widgets;
     }
     
-    function get_cached_widgets()
+    /*function get_cached_widgets()
     {
         return $this->cached_widgets;
-    }
+    }*/
 
     /**
      * Loads a widget and returns it.
@@ -202,7 +202,7 @@ class WidgetWrapper
         return $isevent;
     }
     
-    function iterateCached($method, array $params = NULL)
+    /*function iterateCached($method, array $params = NULL)
     {
         $buff = array();
                 
@@ -215,7 +215,7 @@ class WidgetWrapper
         }
 
         return $buff;
-    }
+    }*/
 
     /**
      * Returns the list of loaded CSS.

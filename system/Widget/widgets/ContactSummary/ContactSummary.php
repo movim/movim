@@ -92,10 +92,15 @@ class ContactSummary extends WidgetCommon
     function build()
     {
         $cd = new modl\ContactDAO();
-        $contact = $cd->getRosterItem($_GET['f']);
+
         
         if($_GET['f'] == $this->user->getLogin())
             $contact = $cd->get($this->user->getLogin());
+        else
+            $contact = $cd->getRosterItem($_GET['f']);
+        
+        if(!isset($contact))
+            $contact = $cd->get($_GET['f']);
         ?>
         <div id="contactsummary">
         <?php
