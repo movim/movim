@@ -8,6 +8,14 @@ function openPopup() {
 	} else popupWin.focus();
 }
 
+function closePopup() {
+    popupWin.close();
+}
+
+function focusPopup() {
+    popupWin.focus();
+}
+
 function popUpEvent(args) {
 	if( popupWin && !popupWin.closed ) {
 		// The popup is open so call it

@@ -141,3 +141,21 @@ body {
     font-weight: bold;
     min-height: 0px;
 }
+
+#chatpop #chatpoplist span.chatbutton {
+    width: 28px;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+
+#chatpop #chatpoplist span.chatbutton:hover {
+    cursor: pointer;
+}
+
+#chatpop #chatpoplist li span.chatbutton.cross {
+    background-image: url(img/cross.png);
+}
