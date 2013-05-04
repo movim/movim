@@ -55,6 +55,8 @@ class Account extends WidgetBase {
             unset($stream);
 
             $response = stream_get_contents($f);
+            
+            \movim_log($response);
 
 	        if(!$response) {
                 	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppcomm");
@@ -75,7 +77,22 @@ class Account extends WidgetBase {
                     <form name="data">
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
-                                
+
+                if($response->iq->query->instructions) {
+                    $html .= '
+                        <div class="element simple large">
+                            <label>'.(string)$response->iq->query->instructions.'</label>';
+                    if($response->iq->query->x->url)
+                        $html .= '
+                            <a href="'.(string)$response->iq->query->x->url.'" target="_blank">'.
+                                (string)$response->iq->query->x->url.'
+                            </a>';
+                            
+                    $html .= '
+                        </div>';
+                        
+                }
+
 				$form = new XMPPtoForm();
 				if(!empty($response->iq->query->x)){
 					$html .= $form->getHTML($response->iq->query->x->asXML());
@@ -238,7 +255,7 @@ class Account extends WidgetBase {
             $html .= '
                 <div class="clear"></div>
                 <table id="list">
-                    <thead>
+                    <thead> 
                         <tr>
                             <td>
                                 '.t('Name').'
@@ -248,6 +265,11 @@ class Account extends WidgetBase {
                             </td>
                             <td>
                                 '.t('URL').'
+                            </td>
+                            <td>
+                                '.t('Software').'
+                            </td>
+                            <td>
                             </td>
                         </tr>
                     </thead>
@@ -268,6 +290,15 @@ class Account extends WidgetBase {
                                         <a target="_blank" href="'.(string)$vcard->url->uri.'">
                                             '.(string)$vcard->url->uri.'
                                         </a>
+                                    </td>
+                                    <td>
+                                        '.(string)$vcard->name.'
+                                    </td>
+                                    <td>
+                                        <img 
+                                            title="'.(string)$vcard->adr->country.'" 
+                                            alt="'.(string)$vcard->adr->country.'" 
+                                            src="'.BASE_URI.'themes/movim/img/flags/'.strtolower((string)$vcard->adr->country).'.png"/>
                                     </td>
                                 </tr>
                                 ';
