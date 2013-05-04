@@ -46,13 +46,18 @@ class Admin extends WidgetBase {
      * Create the dirs
      */
     function createDirs(){
-        if(!test_dir(BASE_PATH.'cache') && !@mkdir(BASE_PATH.'cache')) {
+        if(!file_exists(BASE_PATH.'cache') && !@mkdir(BASE_PATH.'cache')) {
             echo t("Couldn't create directory '%s'.", 'cache');
             return false;
         }
         
-        if(!test_dir(BASE_PATH.'log') && !@mkdir(BASE_PATH.'log')) {
+        if(!file_exists(BASE_PATH.'log') && !@mkdir(BASE_PATH.'log')) {
             echo t("Couldn't create directory '%s'.", 'log');
+            return false;
+        }
+        
+        if(!file_exists(BASE_PATH.'config') && !@mkdir(BASE_PATH.'config')) {
+            echo t("Couldn't create directory '%s'.", 'config');
             return false;
         }
     }
@@ -176,12 +181,18 @@ class Admin extends WidgetBase {
 
         $cd = new \modl\SubscriptionDAO();
         $cd->create();
+
+        $pr = new \modl\PrivacyDAO();
+        $pr->create();
     }
     
     private function prepareAdmin()
     {
         $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
             ."this.className='button icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
+            
+        if($this->testDir(BASE_PATH))
+			$this->createDirs();
         
         $html = '
         <form name="admin" id="adminform">';
@@ -227,10 +238,10 @@ class Admin extends WidgetBase {
                     </div>
                     <div class="'.$this->isValid($this->testDir(BASE_PATH)).'">
                         '.t('Read and write rights for the webserver in Movim\'s root directory').'
-                    </div>
+                    </div>';/*
                     <div class="'.$this->isValid($this->testDir(BASE_PATH.'config/')).'">
                         '.t('Read and write rights conf.xml file in config/ directory').'
-                    </div>';
+                    </div>';*/
             
         $html .= '
             </fieldset>';

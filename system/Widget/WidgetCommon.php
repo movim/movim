@@ -25,18 +25,19 @@ class WidgetCommon extends WidgetBase {
                 
         if($this->user->getLogin() == $post->jid) {
             $class = 'me ';
-            if($post->public == 1)
+
+            if($post->privacy == 1)
                 $access .= 'protect black';
             else
                 $access .= 'protect orange';
                 
             $avatar = $post->getContact()->getPhoto('s');
         } elseif($post->public == 2) {
-            $class .= ' folded';
-            $fold = t('Unfold');
+            /*$class .= ' folded';
+            $fold = t('Unfold');*/
             $avatar = $post->getContact()->getPhoto('xs');
         } else {
-            $fold = t('Fold');
+            //$fold = t('Fold');
             $avatar = $post->getContact()->getPhoto('s');
         }
         
@@ -59,9 +60,17 @@ class WidgetCommon extends WidgetBase {
                         href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
                     >'.t('Place').'</a>
                 </span>';
+                
+        if($post->links)
+			$enc = $this->printEnclosures($post->links);
+                
+        if($enc)
+			$enc = '
+				<div class="enclosure">'.
+					$enc.
+				'</div>';
 
-        $content = 
-                prepareString(html_entity_decode($post->content));
+        $content = prepareString(html_entity_decode($post->content));
         
         if($post->node == 'urn:xmpp:microblog:0')
             $comments = $this->printComments($post, $comments, $public);
@@ -70,18 +79,10 @@ class WidgetCommon extends WidgetBase {
         //else
         //$comments = '';
             
-        //if($this->user->getLogin() == $post->jid) 
-        //    $toolbox = $this->getToolbox($post);
-        
-        $html = '
-            <div class="post '.$class.'" id="'.$post->nodeid.'">
-                <a href="?q=friend&amp;f='.$post->jid.'">
-                    <img class="avatar" src="'.$avatar.'">
-                </a>
-
-                <div id="'.$post->nodeid.'bubble" class="postbubble '.$access.'">
-                    <span class="title">'.$title.'</span>
-                    <span class="fold">
+        if($this->user->getLogin() == $post->jid) 
+            $toolbox = $this->getToolbox($post);
+        /*
+        <span class="fold">
                         <a 
                         href="#" 
                         onclick="'.
@@ -91,16 +92,29 @@ class WidgetCommon extends WidgetBase {
                             movim_toggle_class(\'#'.$post->nodeid.'\',\'folded\')">'.
                             $fold.'
                         </a>
-                    </span>
-                    <span>
-                        <a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
-                    </span>
-                    <span class="date">
-                        '.prepareDate(strtotime($post->published)).'
-                    </span>
+                    </span>*/
+        
+        $html = '
+            <div class="post '.$class.'" id="'.$post->nodeid.'">
+                <a href="?q=friend&amp;f='.$post->jid.'">
+                    <img class="avatar" src="'.$avatar.'">
+                </a>
+
+                <div id="'.$post->nodeid.'bubble" class="postbubble '.$access.'">
+					<div class="header">
+						<span class="title">'.$title.'</span>
+						
+						<span>
+							<a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
+						</span>
+						<span class="date">
+							'.prepareDate(strtotime($post->published)).'
+						</span>
+                    </div>
                     <div class="content">
                     '.$content.'
                     </div>
+                    '.$enc.'
                     '.$comments.'
                     '.$place.'
                     '.$recycle.'
@@ -113,6 +127,34 @@ class WidgetCommon extends WidgetBase {
         return $html;
     }
     
+    private function printEnclosures($links) {
+		$enc = '';
+		$links = unserialize($links);
+
+		foreach($links as $l) {
+			if($l['rel'] == 'enclosure') {
+				if(isset($l['thumb']))
+					$enc .= '
+						<a href="'.$l['href'].'" class="imglink" target="_blank">
+							<img src="'.$l['thumb']['href'].'"/>
+						</a>
+					';
+				else
+					$enc .= '
+						<a href="'.$l['href'].'" class="imglink" target="_blank">
+							<img src="'.$l['href'].'"/>
+						</a>';
+			} elseif($l['rel'] == 'alternate' && isset($l['title'])) {
+				$enc .= '
+					<a href="'.$l['href'].'" class="imglink" target="_blank">
+						'.$l['title'].'
+					</a>';
+			}
+		}
+		
+		return $enc;
+	}
+    
     private function getToolbox($post) {
         $html = '
             <div class="tools">
@@ -122,17 +164,17 @@ class WidgetCommon extends WidgetBase {
                     onclick="'.
                         $this->genCallAjax(
                             'ajaxPrivacyPost', 
-                            "'".$this->user->getLogin()."'", 
                             "'".$post->nodeid."'",
-                            "'black'").'" >
+                            "'black'").
+                '" >
                     '.t("Everyone").'</a>,
                 <a
                     onclick="'.
                         $this->genCallAjax(
                             'ajaxPrivacyPost', 
-                            "'".$this->user->getLogin()."'", 
                             "'".$post->nodeid."'",
-                            "'orange'").'" >
+                            "'orange'").
+                '" >
                     '.t("Your contacts").'</a>
                 <!--<a
                     style="float: right; display: none;";
@@ -620,26 +662,22 @@ class WidgetCommon extends WidgetBase {
           ->request();
     }
     
-    function ajaxPrivacyPost($to, $nodeid, $privacy) {
-        $pd = new \modl\PostDAO();
+    function ajaxPrivacyPost($nodeid, $privacy) {
+        $pd = new \modl\PrivacyDAO();
         
         $p = $pd->get($nodeid);
 
-        $p->renew();
-        
         if($privacy == 'orange') {
-            $p->public = 0;
-            $pd->set($p);
+			\modl\Privacy::set($nodeid, 0);
         } elseif($privacy == 'black') {
-            $p->public = 1;
-            $pd->set($p);
+			\modl\Privacy::set($nodeid, 1);
         }
-        
+
         RPC::call('movim_change_class', $nodeid.'bubble' , 'postbubble me protect '.$privacy);
         RPC::commit();
     }
     
-    function ajaxPostFold($nodeid) {
+    /*function ajaxPostFold($nodeid) {
         $pd = new \modl\PostDAO();
         $p = $pd->get($nodeid);
         
@@ -655,7 +693,7 @@ class WidgetCommon extends WidgetBase {
             $pd->set($p);
         }
 
-    }
+    }*/
     
     function onPostDelete($id) {
         RPC::call('movim_delete', $id);

@@ -66,7 +66,7 @@ class Feed extends WidgetCommon {
     }
 
     function onPostPublished($post) {        
-        $pd = new \modl\PostDAO();
+        $pd = new \modl\PostnDAO();
         $pl = $pd->getFeed(-1, 10);
 
         $html = $this->preparePosts($pl);

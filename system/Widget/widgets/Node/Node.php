@@ -23,19 +23,22 @@ class Node extends WidgetCommon
     function WidgetLoad()
     {
 		$this->registerEvent('stream', 'onStream');
-		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
-		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
+		$this->registerEvent('nostream', 'onStream');
+		$this->registerEvent('pubsubsubscribed', 'onPubsubSubscribed');
+		$this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
     }
     
-    function onGroupSubscribed($params)
+    function onPubsubSubscribed($params)
     {        
         $html = $this->prepareGroup($params[0], $params[1]);
-        RPC::call('movim_fill', 'node', $html);    
+        RPC::call('setBookmark');
+        RPC::call('movim_fill', 'node', $html);
     }
     
-    function onGroupUnsubscribed($params)
+    function onPubsubUnsubscribed($params)
     {
         $html = $this->prepareGroup($params[0], $params[1]);
+        RPC::call('setBookmark');
         RPC::call('movim_fill', 'node', $html);
     }
     
@@ -57,7 +60,7 @@ class Node extends WidgetCommon
     
     function ajaxSubscribe($data, $server, $node)
     {
-        $g = new moxl\GroupSubscribe();
+        $g = new moxl\PusubSubscribe();
         $g->setTo($server)
           ->setNode($node)
           ->setFrom($this->user->getLogin())
@@ -70,7 +73,7 @@ class Node extends WidgetCommon
         $sd = new \modl\SubscriptionDAO();
 
         foreach($sd->get($server, $node) as $s) {
-            $g = new moxl\GroupUnsubscribe();
+            $g = new moxl\PubsubUnsubscribe();
             $g->setTo($server)
               ->setNode($node)
               ->setSubid($s->subid)
@@ -81,7 +84,7 @@ class Node extends WidgetCommon
     
     function ajaxGetSubscriptions($server, $node)
     {
-        $r = new moxl\GroupGetSubscriptions();
+        $r = new moxl\PubsubGetSubscriptions();
         $r->setTo($server)
           ->setNode($node)
           ->request();
@@ -119,7 +122,8 @@ class Node extends WidgetCommon
                 '.$button.'
                 <a
                     href="#"
-                    onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").' this.style.display = \'none\'"
+                    onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").'
+                    this.className=\'button tiny icon loading\'; this.onclick=null;"
                     class="button tiny icon follow">
                     '.('Refresh').'
                 </a>
@@ -147,7 +151,8 @@ class Node extends WidgetCommon
                     <a 
                         class="button tiny icon yes black merged left"
                         onclick="
-                            '.$this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'").'"
+                            '.$this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'").'
+                            this.onclick=null;"
                     >'.t('Subscribe').'</a><a 
                         class="button tiny icon black merged right" 
                         onclick="
@@ -166,7 +171,8 @@ class Node extends WidgetCommon
                     <a 
                         class="button tiny icon yes black merged left"
                         onclick="
-                            '.$this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'").'"
+                            '.$this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'").' 
+                            this.onclick=null;"
                     >'.t('Unsubscribe').'</a><a 
                         class="button tiny icon black merged right" 
                         onclick="

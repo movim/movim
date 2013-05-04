@@ -21,6 +21,12 @@
     clear: both;
 }
 
+.post .header {
+    display: block;
+    height: auto;
+    overflow: auto;
+}
+
 .post:first-child {
     padding-top: 1.5em;
 }
@@ -59,6 +65,18 @@
     border-bottom: 0px;
 }
 
+.post p.summary {
+    margin-bottom: 1em;
+    font-style:italic;
+}
+
+.post .enclosure {
+    margin: 0em 1em;
+    border-top: 1px solid #DDD;
+    padding: 0.7em 0em 1em;
+    line-height: 1em;
+}
+
 .post span {
     font-weight: bold;
     line-height: 1.5em;
@@ -68,12 +86,9 @@
 
 .post span.title {
     padding-left: 0px;
-    max-width: 80%;
+    max-width: 70%;
     display: block;
     float: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .post span.fold {
@@ -198,7 +213,7 @@
 .post .content b, .post .content strong { font-weight: bold; }
 .post .content u, .post .content a { text-decoration: underline; }
 
-.post .content a.imglink {
+.post a.imglink {
     text-decoration: none;
     display: inline-block;
     max-width: 100%;
@@ -207,13 +222,14 @@
     height: 0px;
 }
 
-.post .content a.imglink img {
+.post a.imglink img {
     max-height: 400px;
     width: 100%;
 }
 
 .post .content img {
     max-width: 100%;
+    margin: 1em 0px;
 }
 
 .post .content img.smiley {

@@ -89,9 +89,7 @@ class Media extends WidgetBase {
     }
     
     function pictureViewer($f)
-    {
-        //var_dump(exif_read_data($this->_userdir.$f));
-        
+    {        
         if(file_exists($this->user->userdir.$f) && getimagesize($this->user->userdir.$f) != 0) {
         
             $er = @exif_read_data($this->user->userdir.$f);

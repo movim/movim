@@ -4,6 +4,7 @@
 <?php $this->widget('Logout');?>
 <?php $this->widget('Notifs');?>
 <?php $this->widget('Chat');?>
+<?php $this->widget('ChatExt');?>
 
 <div id="head">
     <?php $this->widget('Profile');?>
@@ -18,7 +19,7 @@
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Config');?>
         <?php $this->widget('ConfigData');?>
-        <?php $this->widget('GroupSubscribedListConfig');?>
+        <?php $this->widget('PubsubSubscriptionConfig');?>
     </div>
 </div>
 

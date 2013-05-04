@@ -76,9 +76,9 @@ class Vcard extends WidgetBase
         $c->desc = trim($vcard['desc']);
         
         if($vcard['public'] == 'true')
-            $c->public = 1;
+            \modl\Privacy::set($c->jid, 1);
         else
-            $c->public = 0;
+            \modl\Privacy::set($c->jid, 0);
             
         $cd = new modl\ContactDAO();
         $cd->set($c);
@@ -93,7 +93,7 @@ class Vcard extends WidgetBase
                 
         $cd = new \modl\ContactDAO();
         $me = $cd->get($this->user->getLogin());
-        
+
         $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_parse_form('vcard')");
         
         if(!isset($me)) { 
@@ -277,7 +277,7 @@ class Vcard extends WidgetBase
             $html .= '<fieldset>
                         <legend>'.t('Privacy Level').'</legend>';
 
-                if($me->public == '1')
+                if($me->value == 1)
                     $checked = 'checked="true"';
                 else
                     $checked =  '';

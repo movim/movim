@@ -70,6 +70,8 @@ class Chat extends WidgetBase
         }
 
         $rd = new \modl\RosterLinkDAO();
+
+        $chatpop = Cache::c('chatpop');
         
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
@@ -78,6 +80,10 @@ class Chat extends WidgetBase
             $contact->chaton = 2;
             $rd->setChat($jid, 2);
             
+            $evt = new Event();
+            $evt->runEvent('openchat');  
+            
+            if($chatpop)
             RPC::call('movim_prepend',
                            'chats',
                            $this->prepareChat($contact));
@@ -103,15 +109,14 @@ class Chat extends WidgetBase
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->jid);
-            //Sound and title notification               
-            RPC::call('notify');
+            //Sound and title notification, if the popup chat is closed
+
+            if($chatpop)              
+                RPC::call('notify');
             //Highlight the new chat message
             RPC::call('setBackgroundColor', 'chatwindow'.$contact->jid, 'red');
 
         }            
-        
-        RPC::commit();
-
     }
     
     function onMessagePublished($jid)
@@ -188,13 +193,20 @@ class Chat extends WidgetBase
             $rd = new \modl\RosterLinkDAO();
             $rd->setChat($jid, 2);
             
-            RPC::call('movim_prepend',
-                           'chats',
-                           $this->prepareChat($contact));
+            $chatpop = Cache::c('chatpop');
+            
+            if($chatpop) 
+                RPC::call('movim_prepend',
+                               'chats',
+                               $this->prepareChat($contact));
+                               
             RPC::call('scrollAllTalks');
 
             RPC::commit();
         }
+        
+        $evt = new Event();
+        $evt->runEvent('openchat');  
     }
     
 	/**
@@ -222,8 +234,9 @@ class Chat extends WidgetBase
         $md = new \modl\MessageDAO();
         $md->set($m);
 
-        $this->onMessage($m);
-             
+        $evt = new Event();
+        $evt->runEvent('message', $m);  
+        
 		// We decode URL codes to send the correct message to the XMPP server
         $m = new \moxl\MessagePublish();
         $m->setTo($to)
@@ -253,6 +266,9 @@ class Chat extends WidgetBase
                 $rd->setNow($contact);
             }
         }
+        
+        $evt = new Event();
+        $evt->runEvent('closechat');  
 	}
     
     function ajaxHideTalk($jid)
@@ -268,6 +284,19 @@ class Chat extends WidgetBase
         
         RPC::call('scrollTalk',
                    'messages'.$contact->jid);
+        RPC::commit();
+    }
+    
+    function ajaxToggleChat()
+    {
+        //$bool = !currentValue
+		$bool = (Cache::c('chatpop') == true) ? false : true;
+        //toggling value in cache
+		Cache::c('chatpop', $bool);
+        
+        RPC::call('movim_fill',
+                       'chats',
+                       $this->prepareChats()); 
         RPC::commit();
     }
     
@@ -292,10 +321,46 @@ class Chat extends WidgetBase
         }
     }
     
+    function prepareChats()
+    {
+        $rc = new \modl\ContactDAO();
+        $contacts = $rc->getRosterChat();
+        
+        $chatpop = Cache::c('chatpop');
+        
+        if($chatpop) {
+            $arrow = '⇑';
+            $ptoggle = 'openPopup();';
+        } else {
+            $arrow = '⇓';
+            $ptoggle = 'closePopup();';
+        }
+        
+        $html = '';
+        $html .= '
+                <div class="chat">
+                    <div 
+                        class="tab" 
+                        style="font-weight: bold; font-size: 1.4em; width: 30px; text-align: center;"
+                        onclick="'.$this->genCallAjax("ajaxToggleChat").' '.$ptoggle.'">
+                        '.$arrow.'
+                    </div>
+                </div>
+        
+        ';
+        if(isset($contacts) && $chatpop) {
+            foreach($contacts as $contact) {
+                $html .= trim($this->prepareChat($contact));
+            }
+        }
+        
+        return $html;
+    }
+    
     function prepareChat($contact)
     {
         $md = new \modl\MessageDAO();
-        $messages = $md->getContact($contact->jid);
+        $messages = $md->getContact($contact->jid, 0, 10);
 
         if(!empty($messages)) {
             $day = '';
@@ -337,7 +402,6 @@ class Chat extends WidgetBase
                             rows="1"
                             onkeyup="movim_textarea_autoheight(this);"
                             onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").' return false; }"
-                            onfocus="setBackgroundColor(\'chatwindow'.$contact->jid.'\', \'#444444\')"
                         ></textarea>
                     </div>
                 </div>
@@ -353,16 +417,9 @@ class Chat extends WidgetBase
     }
     
     function build()
-    {        
-        $rc = new \modl\ContactDAO();
-        $contacts = $rc->getRosterChat();
-        
+    {               
         echo '<div id="chats">';
-        if(isset($contacts)) {
-            foreach($contacts as $contact) {
-                echo trim($this->prepareChat($contact));
-            }
-        }
+        echo $this->prepareChats();
         echo '</div>';
     }
 }

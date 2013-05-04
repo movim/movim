@@ -3,7 +3,7 @@
 /**
  * @package Widgets
  *
- * @file GroupSubscribedListConfig.php
+ * @file PubsubSubscriptionConfig.php
  * This file is part of MOVIM.
  *
  * @brief The Group configuration widget
@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
 
-class GroupSubscribedListConfig extends WidgetBase
+class PubsubSubscriptionConfig extends WidgetBase
 {
 
     function WidgetLoad()
@@ -73,7 +73,7 @@ class GroupSubscribedListConfig extends WidgetBase
         ?>
 		<div class="tabelem padded" title="<?php echo t('Public Groups'); ?>" id="groupsubscribedlistconfig">
             <div id="listconfig">
-                <a class="button tiny icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
+                <a class="button icon yes" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
             </div>
         </div>
         <?php
