@@ -18,6 +18,10 @@ function handleError() {
 
 window.onerror = handleError;
 
+window.onunload = function() {
+    self.opener.Chat_ajaxToggleChat();
+};
+
 function scrollAllTalks() {
     var mes = document.querySelectorAll('.content');
     for (var i=0; i<mes.length; i++){
@@ -38,4 +42,5 @@ function sendMessage(n, jid)
 
 }
 
-scrollAllTalks();
+
+//setInterval( scrollAllTalks, 200 );

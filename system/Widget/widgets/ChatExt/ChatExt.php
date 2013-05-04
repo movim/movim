@@ -39,7 +39,7 @@ class ChatExt extends WidgetBase
     function prepareChat($contact)
     {
         $md = new \modl\MessageDAO();
-        $messages = $md->getContact($contact->jid);
+        $messages = $md->getContact($contact->jid, 0, 10);
 
         if(!empty($messages)) {
             $day = '';
@@ -87,11 +87,15 @@ class ChatExt extends WidgetBase
         $html .= '
             <li>
                 <input type="radio" name="contact" id="contact'.$contact->jid.'" '.$checked.'/>
-                <label class="tab" for="contact'.$contact->jid.'">
+                <label class="tab" for="contact'.$contact->jid.'" onclick="setTimeout(function() {scrollAllTalks()}, 100);">
                     <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.
                     $contact->getTrueName().'
                 </label>
-                <div class="content">'.trim($this->prepareChat($contact)).'</div>
+                <div class="content">'.trim($this->prepareChat($contact)).'
+                    <span 
+                        class="chatbutton cross" 
+                        onclick="self.opener.'.$this->genCallWidget('Chat','ajaxCloseTalk', "'".$contact->jid."'").'"></span>
+                </div>
             </li>';
         return $html;
     }
@@ -133,14 +137,17 @@ class ChatExt extends WidgetBase
             $jid = $message->from;
         }
         
-        $chat = new Chat();
-        RPC::call('popUpEvent', 'movim_append', 'messages'.$jid, $chat->prepareMessage($message));
-        RPC::call('popUpEvent', 'scrollAllTalks');
+        $chatpop = Cache::c('chatpop');
+        if(!$chatpop) {
+            $chat = new Chat();
+            RPC::call('popUpEvent', 'movim_append', 'messages'.$jid, $chat->prepareMessage($message));
+            RPC::call('popUpEvent', 'scrollAllTalks');
+        }
     }
     
     function build()
     {
-        ?><?php
+
     }
     
 }
