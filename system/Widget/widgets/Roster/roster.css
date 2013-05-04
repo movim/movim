@@ -25,7 +25,7 @@
     display: none;
 }
 
-#roster ul#rosterlist div.groupshown li:not([class=offline]):not([class=server_error]) {
+#roster ul#rosterlist div.groupshown li:not(.offline):not(.server_error) {
     display: list-item;
 }
 
