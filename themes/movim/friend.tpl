@@ -5,6 +5,7 @@
 <?php $this->widget('Logout');?>
 <?php $this->widget('Notifs');?>
 <?php $this->widget('Chat');?>
+<?php $this->widget('ChatExt');?>
 
 <div id="head">
     <?php $this->widget('ContactSummary');?>
@@ -20,7 +21,7 @@
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Wall');?>
         <?php $this->widget('ContactCard');?>
-        <?php $this->widget('GroupSubscribedListFromFriend');?>
+        <?php $this->widget('ContactPubsubSubscription');?>
     </div>
 </div>
 

@@ -45,21 +45,17 @@ ini_set('log_errors', 0);
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
-// If the configuration doesn't exist, run the installer.
-/*if(!file_exists("config/conf.xml")) {
-    header('Location: ?q=admin'); exit;
-} else {*/
-    // Run
-    require('init.php');
 
-    $polling = false;
-    $rqst = new ControllerMain();
-    $rqst->handle();
+// Run
+require('init.php');
 
-    $widgets = WidgetWrapper::getInstance(false);
-    $widgets->iterateCached('saveCache');
+$polling = false;
+$rqst = new ControllerMain();
+$rqst->handle();
 
-    // Closing stuff
-    WidgetWrapper::destroyInstance();
-//}
+WidgetWrapper::getInstance(false);
+
+// Closing stuff
+WidgetWrapper::destroyInstance();
+
 ?>

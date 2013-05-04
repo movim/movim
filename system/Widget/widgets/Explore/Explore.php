@@ -22,7 +22,7 @@ class Explore extends WidgetCommon {
     }
 
     function prepareContacts($form = false) {
-        if(!$form){
+        /*if(!$form){
             $where = array('public' => 1);
         }
         else{
@@ -55,21 +55,26 @@ class Explore extends WidgetCommon {
                     </ul>-->
    
                     <div class="clear"></div>
-                </div>';
+                </div>';*/
+        $cd = new \modl\ContactDAO();
+        $users = $cd->getAllPublic();
+        
+        $gender = getGender();
+        $marital = getMarital();
+                
         foreach($users as $user) {
             $html .= '
-
-                <a href="?q=friend&f='.$user->getData('jid').'">
-                    <div class="post">
+                <div class="post">
+                    <a href="?q=friend&f='.$user->jid.'">
                         <img class="avatar" src="'.$user->getPhoto('m').'"/>
                         <div class="postbubble">
                             <span class="name">'.
-                                $this->colorSearch($form['search'], $user->getTrueName()).'
+                                $user->getTrueName().'
                             </span>
                             <span class="asv">'.
                                 $user->getAge().' '.
-                                $gender[$user->getData('gender')].' '.
-                                $marital[$user->getData('marital')].'
+                                $gender[$user->gender].' '.
+                                $marital[$user->marital].'
                             </span>
                             <div 
                                 class="content"
@@ -79,11 +84,10 @@ class Explore extends WidgetCommon {
                                     white-space: nowrap;
                                     height: 1.5em;
                                 "
-                            >'.prepareString($user->getData('desc')).'</div>
+                            >'.prepareString($user->desc).'</div>
                         </div>
-                    </div>
-
-                </a>
+                    </a>
+                </div>
                 ';
         }
 
@@ -94,7 +98,7 @@ class Explore extends WidgetCommon {
     {
     ?>
         <div id="explore">
-            <form name="searchform" style="margin: 1em 1.5em;" onsubmit="event.preventDefault();">
+            <!--<form name="searchform" style="margin: 1em 1.5em;" onsubmit="event.preventDefault();">
                 <div class="element" style="min-height: 0em;">
                     <input
                         id="addjid"
@@ -113,7 +117,7 @@ class Explore extends WidgetCommon {
                         <?php echo t('Search'); ?>
                     </a>
                 </div>
-            </form>
+            </form>-->
 
             <div id="contactsresult">   
                 <?php echo $this->prepareContacts(); ?>

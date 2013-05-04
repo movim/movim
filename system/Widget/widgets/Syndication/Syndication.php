@@ -23,7 +23,7 @@ class Syndication extends WidgetBase
     {
         $from = $_GET['f'];
         if(isset($from)) {          
-            $pd = new \modl\PostDAO();
+            $pd = new \modl\PostnDAO();
             $messages = $pd->getPublic($from);
         
 

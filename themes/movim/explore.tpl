@@ -4,6 +4,7 @@
 <?php $this->widget('Logout');?>
 <?php $this->widget('Notifs');?>
 <?php $this->widget('Chat');?>
+<?php $this->widget('ChatExt');?>
 
 <div id="head">
   <?php $this->widget('Profile');?>
@@ -16,7 +17,7 @@
     </div>
     <div id="center" class="protect black">
         <h1><?php echo t('Explore'); ?></h1>
-        <?php //$this->widget('Explore');?>
+        <?php $this->widget('Explore');?>
     </div>
 </div>
 
