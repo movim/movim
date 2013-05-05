@@ -26,7 +26,7 @@ class Help extends WidgetBase
     function build()
     {
         ?>
-            <div id="help" class="padded">
+            <div class="tabelem paddedtop" title="<?php echo t('Help'); ?>" id="help">
                 
             <h2><?php echo t('What is Movim?'); ?></h2>
             

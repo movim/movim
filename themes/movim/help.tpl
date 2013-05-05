@@ -16,8 +16,9 @@
         <?php $this->widget('ProfileData');?>
     </div>
     <div id="center">
-      <h1><?php echo t('Help'); ?></h1>
+      <?php $this->widget('Tabs');?>
       <?php $this->widget('Help');?>
+      <?php $this->widget('About');?>
     </div>
 </div>
 
