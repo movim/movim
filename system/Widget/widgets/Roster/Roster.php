@@ -260,6 +260,7 @@ class Roster extends WidgetBase
 		} else 
 			RPC::call('rosterToggleGroup', $param, $bool, $offline);
 		
+		RPC::call('focusContact');
 		RPC::commit();
 	}
     
