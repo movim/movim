@@ -75,7 +75,22 @@ class Account extends WidgetBase {
                     <form name="data">
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
-                                
+
+                if($response->iq->query->instructions) {
+                    $html .= '
+                        <div class="element simple large">
+                            <label>'.(string)$response->iq->query->instructions.'</label>';
+                    if($response->iq->query->x->url)
+                        $html .= '
+                            <a href="'.(string)$response->iq->query->x->url.'" target="_blank">'.
+                                (string)$response->iq->query->x->url.'
+                            </a>';
+                            
+                    $html .= '
+                        </div>';
+                        
+                }
+
 				$form = new XMPPtoForm();
 				if(!empty($response->iq->query->x)){
 					$html .= $form->getHTML($response->iq->query->x->asXML());
@@ -231,13 +246,6 @@ class Account extends WidgetBase {
         $file = dirname(__FILE__).DIRECTORY_SEPARATOR.'server-vcards.xml';
         
         $html = '';
-        $javascript = '<script type="text/javascript">
-							var map = L.map("map").setView([40,0], 2);
-							
-							L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-								attribution: "Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>",
-								maxZoom: 18
-							}).addTo(map);';
 		
         if(file_exists($file)) {
             $vcards = simplexml_load_file($file);
@@ -245,7 +253,7 @@ class Account extends WidgetBase {
             $html .= '
                 <div class="clear"></div>
                 <table id="list">
-                    <thead>
+                    <thead> 
                         <tr>
                             <td>
                                 '.t('Name').'
@@ -256,55 +264,86 @@ class Account extends WidgetBase {
                             <td>
                                 '.t('URL').'
                             </td>
+                            <td>
+                                '.t('Software').'
+                            </td>
+                            <td>
+                            </td>
                         </tr>
                     </thead>
-                    <tbody>
-                ';
+                    <tbody>';
             
-			$id=0;			
+			$markers = array();			
             foreach($vcards as $vcard) {
-				$name = $vcard->fn->text;
-                //if((string)$vcard->name != 'Prosody') {
-                    $html .='                                
-                        <tr onclick="selectServer(\''.(string)$name.'\');">
-                            <td>
-                                <a href="#nddlink">'.(string)$name.'</a>
-                            </td>
-                            <td>
-                                '.(string)$vcard->note->text.'
-                            </td>
-                            <td>
-                                <a target="_blank" href="'.(string)$vcard->url->uri.'">
-                                    '.(string)$vcard->url->uri.'
-                                </a>
-                            </td>
-                        </tr>
-                        ';
-                    /*$html .= '
-                        <option value="'.(string)$vcard->fn->text.'">
-                            '.(string)$vcard->fn->text.'<br /><br />
+				$name = (string)$vcard->fn->text;
+                $html .='                                
+                    <tr onclick="selectServer(\''.$name.'\');">
+                        <td>
+                            <a href="#nddlink">'.$name.'</a>
+                        </td>
+                        <td>
                             '.(string)$vcard->note->text.'
-                        </option>
-                        ';*/
-                //}
-						
+                        </td>
+                        <td>
+                            <a target="_blank" href="'.(string)$vcard->url->uri.'">
+                                '.(string)$vcard->url->uri.'
+                            </a>
+                        </td>
+                        <td>
+                            '.(string)$vcard->name.'
+                        </td>
+                        <td>
+                            <img 
+                                title="'.(string)$vcard->adr->country.'" 
+                                alt="'.(string)$vcard->adr->country.'" 
+                                src="'.BASE_URI.'themes/movim/img/flags/'.strtolower((string)$vcard->adr->country).'.png"/>
+                        </td>
+                    </tr>
+                    ';	
 				$coord = explode("geo:", $vcard->geo->uri);
-							if(isset($coord[1])){
-								$javascript .= "var marker".$id." = L.marker([".$coord[1]."]).addTo(map);
-								marker".$id.".bindPopup('<a href=\"http://".$name."\">".$name."</a>');";
-								$id++;
-							}
-						
-				
+				if(isset($coord[1])){
+					$split = explode(",", $coord[1]);
+					$newkey = round(floatval($split[0]),1).",".round(floatval($split[1]),1);
+					if(!isset($markers[$newkey])){
+						$markers[$newkey] = array($name);
+					}
+					else{
+						array_push($markers[$newkey], $name);
+					}
+				}
             }
                     
             $html .= '
                     </tbody>
                 </table>';
+						
+			$javascript = '<script type="text/javascript">
+							var map = L.map("map").setView([40,0], 2);
+							
+							L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+								attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Mapnik ©",
+								maxZoom: 18
+							}).addTo(map);';
+			
+			$id = 0;
+			
+			foreach($markers as $coord => $arrayOfNames){
+				$javascript .= "
+								var marker".$id." = L.marker([".$coord."]).addTo(map);
+								marker".$id.".bindPopup('";
+				foreach($arrayOfNames as $name){
+					$action = 'selectServer("'.$name.'");';
+					$javascript .= "<span onclick=\'".$action."\' >".$name."</span><br />";
+				}
+				$javascript .= "');
+								";
+				$id++;
+			}
+			
 			$javascript .= '</script>';
         }
         
-        return $html.$javascript;
+        return $javascript.$html;
     }
     
 	function build()
@@ -382,9 +421,9 @@ class Account extends WidgetBase {
                                     <?php echo t('You can%s enter your server domain name%s. ', '<a href="#nddlink">', '</a>'); 
 										echo t('Or you can choose a server from this list.'); ?>   
                                 </p>
+								<br />
 								
 								<div style="height: 300px;" id="map"></div>
-								
 								
                                 <br />
                                 <?php echo $this->printServerList(); ?>               

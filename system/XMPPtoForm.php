@@ -23,7 +23,10 @@ class XMPPtoForm{
 	public function create(){
 		$this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
 		$x = new SimpleXMLElement($this->xmpp);
+                    
+            \movim_log($x);
 		foreach($x->children() as $element){
+
 			switch($element->getName()){
 				case "title":
 					$this->outTitle($element);
@@ -32,7 +35,7 @@ class XMPPtoForm{
 					$this->outP($element);
 					break;
 				case "field":
-                    if($element['type'] != 'hidden')
+                    if($element['type'] != 'hidden' && $element['type'] != 'fixed')
                         $this->html .='<div class="element">';
 					switch($element['type']){
 						case "boolean":	
@@ -71,6 +74,9 @@ class XMPPtoForm{
                     if($element['type'] != 'hidden')
                         $this->html .='</div>';
 					break;
+                case 'url':
+                    
+                    break;
 				/*XML without <x> element*/
 				case 'username':
 				case 'email':
@@ -94,12 +100,16 @@ class XMPPtoForm{
             <input id="'.$s.'" name="generic_'.$s.'" type="'.$s.'" required/>';
 	}
 	private function outTitle($s){
-		$this->html .= '<h1>'.$s.'</h1>';
+		$this->html .= '<h3>'.$s.'</h3>';
 	}
 	
 	private function outP($s){
 		$this->html .= '<p>'.$s.'</p>';
 	}
+    
+    private function outUrl($s) {
+        $this->html .= '<a href="'.$s->getName().'">'.$s->getName().'</a>';
+    }
 	
 	private function outBold($s){
 		if($this->fieldset > 0){
