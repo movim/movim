@@ -25,6 +25,7 @@ class ServerNodes extends WidgetCommon
 		$this->registerEvent('discoitems', 'onDiscoItems');
         $this->registerEvent('disconodes', 'onDiscoNodes');
         $this->registerEvent('creationsuccess', 'onCreationSuccess');
+        $this->registerEvent('creationerror', 'onCreationError');
     }
 
     function onDiscoNodes($items)
@@ -102,11 +103,17 @@ class ServerNodes extends WidgetCommon
     
     function onCreationSuccess($items)
     {        
-        $html = '<a class="button tiny icon" href="http://localhost/movim-ptrans/?q=node&s='.
+        $html = '<a class="" href="?q=node&s='.
             $items[0].'&n='.
             $items[1].'">'.$items[2].'</a>';
 
         RPC::call('movim_fill', 'servernodes', $html);
+        RPC::commit();
+    }
+    
+    function onCreationError($error) {
+        RPC::call('movim_fill', 'servernodes', '');
+        Notification::appendNotification(t('Error').' : '.$error, 'error');
         RPC::commit();
     }
 
@@ -128,6 +135,15 @@ class ServerNodes extends WidgetCommon
 
     function build()
     {
+        if (substr($_GET['s'], 0, 7) == 'pubsub.') {
+            $create = '
+            <a 
+                class="button tiny icon add" 
+                onclick="movim_toggle_display(\'#groupCreation\')">
+                '.t("Create a new group").'
+            </a>';
+        }
+        
     ?>
     <div class="breadcrumb protect red ">
         <a href="?q=server&s=<?php echo $_GET['s']; ?>">
@@ -142,11 +158,7 @@ class ServerNodes extends WidgetCommon
             class="button tiny icon follow">
             <?php echo t('Refresh'); ?>
         </a>
-        <a 
-            class="button tiny icon add" 
-            onclick="movim_toggle_display('#groupCreation')">
-            <?php echo t("Create a new group");?>
-        </a>
+        <?php echo $create; ?>
     </div>
     <div id="servernodes" class="tabelem paddedtop" title="<?php echo t('Server'); ?>">
         <div id="newGroupForm"></div>

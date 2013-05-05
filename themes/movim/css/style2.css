@@ -456,7 +456,7 @@ ul.clean li {
 .menu li .up { background-image: url(../img/icons/menu/upload.png); }
 .menu li .plus { background-image: url(../img/icons/menu/plus.png); }
 .menu li .search { background-image: url(../img/icons/menu/search.png); }
-.menu li .users { background-image: url(../img/icons/menu/users.png); }
+.menu li .users, .menu li .account { background-image: url(../img/icons/menu/users.png); }
 .menu li .media { background-image: url(../img/icons/menu/folder.png); }
 .menu li .blog { background-image: url(../img/icons/menu/quill.png); }
 .menu li .admin { background-image: url(../img/icons/menu/admin.png); }
