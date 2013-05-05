@@ -8,6 +8,8 @@
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.1, user-scalable=no" />
           
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
     <script src="http://openlayers.org/api/2.12/OpenLayers.js"></script>
     <script src="system/js/steditor.js"></script>
     <?php
