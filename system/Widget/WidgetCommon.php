@@ -61,6 +61,12 @@ class WidgetCommon extends WidgetBase {
                     >'.t('Place').'</a>
                 </span>';
                 
+        if($post->jid != '')
+			$c = '
+				<span>
+					<a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
+				</span>';
+                
         if($post->links)
 			$enc = $this->printEnclosures($post->links);
                 
@@ -103,10 +109,7 @@ class WidgetCommon extends WidgetBase {
                 <div id="'.$post->nodeid.'bubble" class="postbubble '.$access.'">
 					<div class="header">
 						<span class="title">'.$title.'</span>
-						
-						<span>
-							<a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
-						</span>
+						'.$c.'
 						<span class="date">
 							'.prepareDate(strtotime($post->published)).'
 						</span>

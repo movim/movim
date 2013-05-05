@@ -30,27 +30,8 @@ class ServerNodes extends WidgetCommon
 
     function onDiscoNodes($items)
     {
-        $html = '<ul class="list">';
-
-        foreach($items[0] as $item) {
-            
-            if (substr($item->attributes()->node, 0, 20) != 'urn:xmpp:microblog:0') {
-                $name = '';
-                if(isset($item->attributes()->name))
-                    $name = $item->attributes()->name;
-                else
-                    $name = $item->attributes()->node;
-            
-                $html .= '
-                    <li>
-                        <a href="?q=node&s='.$item->attributes()->jid.'&n='.$item->attributes()->node.'">'.
-                            $name.'
-                        </a>
-                    </li>';
-            }
-        }
-
-        $html .= '</ul>';
+        //\movim_log($items[1]);
+        $html = $this->prepareServer($items[1]);
         
         $submit = $this->genCallAjax('ajaxCreateGroup', "movim_parse_form('groupCreation')");
         
@@ -101,6 +82,41 @@ class ServerNodes extends WidgetCommon
         RPC::commit();
     }
     
+    function prepareServer($server) {
+        $nd = new \modl\NodeDAO();
+        
+        
+        
+        $nodes = $nd->getNodes($server);
+        
+        //var_dump($nodes);
+        
+        $html = '<ul class="list">';
+
+        foreach($nodes as $n) {
+            
+            if (substr($n->nodeid, 0, 20) != 'urn:xmpp:microblog:0') {
+                $name = '';
+                if(isset($n->title) && $n->title != '')
+                    $name = $n->title;
+                else
+                    $name = $n->nodeid;
+            
+                $html .= '
+                    <li>
+                        <a href="?q=node&s='.$n->serverid.'&n='.$n->nodeid.'">'.
+                            $name.'
+                            <span class="tag">'.$n->number.'</span>
+                        </a>
+                    </li>';
+            }
+        }
+
+        $html .= '</ul>';
+        
+        return $html;
+    }
+    
     function onCreationSuccess($items)
     {        
         $html = '<a class="" href="?q=node&s='.
@@ -142,6 +158,8 @@ class ServerNodes extends WidgetCommon
                 onclick="movim_toggle_display(\'#groupCreation\')">
                 '.t("Create a new group").'
             </a>';
+            
+            $server =  $this->prepareServer($_GET['s']);
         }
         
     ?>
@@ -162,8 +180,8 @@ class ServerNodes extends WidgetCommon
     </div>
     <div id="servernodes" class="tabelem paddedtop" title="<?php echo t('Server'); ?>">
         <div id="newGroupForm"></div>
-        <div id="servernodeslist" title="<?php echo t('Groups');?>">
-            <script type="text/javascript"><?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?></script>
+        <div id="servernodeslist">
+            <?php echo $server; ?>
         </div>
     </div>
     <?php
