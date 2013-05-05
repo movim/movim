@@ -197,6 +197,10 @@ ul.clean li {
     padding-top: 0px;
 }
 
+.paddedtopbottom {
+    padding: 0em 1.5em;
+}
+
 /* The main parts of the page */
 #top {
     z-index: 3;
@@ -610,6 +614,19 @@ ul.list li a.action {
 
 ul.list li a.action:hover {
     cursor: pointer;
+}
+
+ul.list li span.tag {
+    background-color: #555;
+    font-size: 0.9em;
+    color: white;
+    display: inline-block;
+    min-width: 30px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 1.8em;
+    float: right;
+    margin-top: -2px;
 }
 
 /* Thumb */
