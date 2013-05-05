@@ -55,8 +55,6 @@ class Account extends WidgetBase {
             unset($stream);
 
             $response = stream_get_contents($f);
-            
-            \movim_log($response);
 
 	        if(!$response) {
                 	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppcomm");
@@ -248,7 +246,7 @@ class Account extends WidgetBase {
         $file = dirname(__FILE__).DIRECTORY_SEPARATOR.'server-vcards.xml';
         
         $html = '';
-        
+		
         if(file_exists($file)) {
             $vcards = simplexml_load_file($file);
             
@@ -273,50 +271,79 @@ class Account extends WidgetBase {
                             </td>
                         </tr>
                     </thead>
-                    <tbody>
-                ';
-                            
-                    foreach($vcards as $vcard) {
-                        //if((string)$vcard->name != 'Prosody') {
-                            $html .='                                
-                                <tr onclick="selectServer(\''.(string)$vcard->fn->text.'\');">
-                                    <td>
-                                        <a href="#nddlink">'.(string)$vcard->fn->text.'</a>
-                                    </td>
-                                    <td>
-                                        '.(string)$vcard->note->text.'
-                                    </td>
-                                    <td>
-                                        <a target="_blank" href="'.(string)$vcard->url->uri.'">
-                                            '.(string)$vcard->url->uri.'
-                                        </a>
-                                    </td>
-                                    <td>
-                                        '.(string)$vcard->name.'
-                                    </td>
-                                    <td>
-                                        <img 
-                                            title="'.(string)$vcard->adr->country.'" 
-                                            alt="'.(string)$vcard->adr->country.'" 
-                                            src="'.BASE_URI.'themes/movim/img/flags/'.strtolower((string)$vcard->adr->country).'.png"/>
-                                    </td>
-                                </tr>
-                                ';
-                            /*$html .= '
-                                <option value="'.(string)$vcard->fn->text.'">
-                                    '.(string)$vcard->fn->text.'<br /><br />
-                                    '.(string)$vcard->note->text.'
-                                </option>
-                                ';*/
-                        //}
-                    }
+                    <tbody>';
+            
+			$markers = array();			
+            foreach($vcards as $vcard) {
+				$name = (string)$vcard->fn->text;
+                $html .='                                
+                    <tr onclick="selectServer(\''.$name.'\');">
+                        <td>
+                            <a href="#nddlink">'.$name.'</a>
+                        </td>
+                        <td>
+                            '.(string)$vcard->note->text.'
+                        </td>
+                        <td>
+                            <a target="_blank" href="'.(string)$vcard->url->uri.'">
+                                '.(string)$vcard->url->uri.'
+                            </a>
+                        </td>
+                        <td>
+                            '.(string)$vcard->name.'
+                        </td>
+                        <td>
+                            <img 
+                                title="'.(string)$vcard->adr->country.'" 
+                                alt="'.(string)$vcard->adr->country.'" 
+                                src="'.BASE_URI.'themes/movim/img/flags/'.strtolower((string)$vcard->adr->country).'.png"/>
+                        </td>
+                    </tr>
+                    ';	
+				$coord = explode("geo:", $vcard->geo->uri);
+				if(isset($coord[1])){
+					$split = explode(",", $coord[1]);
+					$newkey = round(floatval($split[0]),1).",".round(floatval($split[1]),1);
+					if(!isset($markers[$newkey])){
+						$markers[$newkey] = array($name);
+					}
+					else{
+						array_push($markers[$newkey], $name);
+					}
+				}
+            }
                     
             $html .= '
                     </tbody>
                 </table>';
+						
+			$javascript = '<script type="text/javascript">
+							var map = L.map("map").setView([40,0], 2);
+							
+							L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+								attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Mapnik ©",
+								maxZoom: 18
+							}).addTo(map);';
+			
+			$id = 0;
+			
+			foreach($markers as $coord => $arrayOfNames){
+				$javascript .= "
+								var marker".$id." = L.marker([".$coord."]).addTo(map);
+								marker".$id.".bindPopup('";
+				foreach($arrayOfNames as $name){
+					$action = 'selectServer("'.$name.'");';
+					$javascript .= "<span onclick=\'".$action."\' ><a href=\'#nddlink\'>".$name."</a></span><br />";
+				}
+				$javascript .= "');
+								";
+				$id++;
+			}
+			
+			$javascript .= '</script>';
         }
         
-        return $html;
+        return $javascript.$html;
     }
     
 	function build()
@@ -394,6 +421,10 @@ class Account extends WidgetBase {
                                     <?php echo t('You can%s enter your server domain name%s. ', '<a href="#nddlink">', '</a>'); 
 										echo t('Or you can choose a server from this list.'); ?>   
                                 </p>
+								<br />
+								
+								<div style="height: 300px;" id="map"></div>
+								
                                 <br />
                                 <?php echo $this->printServerList(); ?>               
                                 
