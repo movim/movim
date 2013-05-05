@@ -43,7 +43,7 @@ class ChatPop extends WidgetBase
         echo '</div>';
         ?>
         <div id="connection">
-            <?php echo t('Connexion').'...'; ?>
+            <?php echo t('Connection').'...'; ?>
         </div>
         <?php
     }
