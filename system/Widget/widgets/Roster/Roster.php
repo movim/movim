@@ -357,6 +357,11 @@ class Roster extends WidgetBase
                     title="<?php echo t('Show/Hide'); ?>">
                     <a class="users" href="#"></a>
                 </li>
+				<li 
+                    onclick="<?php echo $this->callAjax('ajaxToggleChat', "'offlineshown'");?> closePopup();"
+                    title="<?php echo t('Show/Hide'); ?>">
+                    <a class="expand" href="#"></a>
+                </li>
                 <li 
                     onclick="<?php echo $this->callAjax('ajaxShowHideRoster');?>"
                     title="<?php echo t('Show/Hide'); ?>">
