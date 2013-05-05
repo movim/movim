@@ -654,6 +654,28 @@ ul.thumb a {
     height: 100px;
 }
 
+/* Definition list */
+
+dl > * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    padding: 0 1em;
+    display: inline-block;
+    line-height: 2em;
+}
+
+dl dt {
+    text-align: right;
+    font-weight: bold;
+    width: 30%;
+}
+
+dl dd {
+    text-align: left;
+    width: 70%;
+}
+
 /* Breadcrumb */
 .breadcrumb {
     padding: 0px 5px;
