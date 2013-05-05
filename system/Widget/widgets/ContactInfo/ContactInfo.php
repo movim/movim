@@ -75,29 +75,23 @@ class ContactInfo extends WidgetCommon
                 if($c->getPlace() != '')
                     $html .= $c->getPlace().'<br /><br />';
                 
-                if(isset($c->loclatitude) && isset($c->loclongitude))
-                $html .= '
-                  <div id="mapdiv" style="width: auto; height: 250px;"></div>
-                  <script>
-                    map = new OpenLayers.Map("mapdiv");
-                    map.addLayer(new OpenLayers.Layer.OSM());
-                 
-                    var lonLat = new OpenLayers.LonLat( '.$c->loclongitude.' ,'.$c->loclatitude.' )
-                          .transform(
-                            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                            map.getProjectionObject() // to Spherical Mercator Projection
-                          );
-                 
-                    var zoom=11;
-                 
-                    var markers = new OpenLayers.Layer.Markers( "Markers" );
-                    map.addLayer(markers);
-                 
-                    markers.addMarker(new OpenLayers.Marker(lonLat));
-                 
-                    map.setCenter (lonLat, zoom);
-                  </script>';
+                if(isset($c->loclatitude) && isset($c->loclongitude))                  
+                    $html .= '
+                        <div style="height: 250px;" id="map"></div>
+                        <script type="text/javascript">
+                                var map = L.map("map").setView(['.$c->loclatitude.' ,'.$c->loclongitude.'], 11);
+                                
+                                L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                                    attribution: "",
+                                    maxZoom: 18
+                                }).addTo(map);
+                                var marker = L.marker(['.$c->loclatitude.' ,'.$c->loclongitude.']).addTo(map)
+                        </script>';
+
             }
+            
+
+			
             
             // Client informations
             if($c->node && $c->ver) {                
