@@ -403,7 +403,7 @@ ul.clean li {
 
 .menu li a, .menu li label {
     line-height: 38px;
-    padding-left: 34px;
+    padding-left: 30px;
     padding-right: 10px;
     display: block;
     color: #ccc;
@@ -452,11 +452,12 @@ ul.clean li {
 .menu li .config { background-image: url(../img/icons/menu/settings.png); }
 .menu li .help { background-image: url(../img/icons/menu/support.png); }
 .menu li .disconnect { background-image: url(../img/icons/menu/exit.png); }
-.menu li .down { background-image: url(../img/icons/menu/download.png); }
+.menu li .down { background-image: url(../img/icons/menu/list.png); }
 .menu li .up { background-image: url(../img/icons/menu/upload.png); }
 .menu li .plus { background-image: url(../img/icons/menu/plus.png); }
 .menu li .search { background-image: url(../img/icons/menu/search.png); }
 .menu li .users, .menu li .account { background-image: url(../img/icons/menu/users.png); }
+.menu li .expand { background-image: url(../img/icons/menu/expand.png); }
 .menu li .media { background-image: url(../img/icons/menu/folder.png); }
 .menu li .blog { background-image: url(../img/icons/menu/quill.png); }
 .menu li .admin { background-image: url(../img/icons/menu/admin.png); }
