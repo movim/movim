@@ -29,11 +29,6 @@ class ChatExt extends WidgetBase
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('openchat', 'onEvent');
 		$this->registerEvent('closechat', 'onEvent');
-		/*$this->registerEvent('messagepublished', 'onMessagePublished');
-		$this->registerEvent('composing', 'onComposing');
-        $this->registerEvent('paused', 'onPaused');
-        $this->registerEvent('attention', 'onAttention');
-		$this->registerEvent('presence', 'onPresence');*/
     }
     
     function prepareChat($contact)
@@ -102,9 +97,11 @@ class ChatExt extends WidgetBase
     
     function onEvent()
     {
-        $html = $this->preparePop();
-        RPC::call('popUpEvent', 'movim_fill', 'chatpop', $html);
-        RPC::call('popUpEvent', 'scrollAllTalks');
+        if(!Cache::c('chatpop')) {
+            $html = $this->preparePop();
+            RPC::call('popUpEvent', 'movim_fill', 'chatpop', $html);
+            RPC::call('popUpEvent', 'scrollAllTalks');
+        }
     }
     
     function preparePop()

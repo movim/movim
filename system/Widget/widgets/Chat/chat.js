@@ -38,10 +38,6 @@ function hideTalk(n) {
     tab.style.display = 'block';
 }
 
-function closeTalk(n) {
-    n.parentNode.parentNode.parentNode.parentNode.removeChild(n.parentNode.parentNode.parentNode);
-}
-
 function scrollTalk(params) {
     var messages = document.getElementById(params);
     messages.scrollTop = messages.scrollHeight;
@@ -103,12 +99,4 @@ function sendMessage(n, jid)
 
 function disableSound(){
 	chatSoundNotif.volume = 0;
-}
-
-function setBackgroundColor(where, color)
-{
-    target = document.getElementById(where);
-    if(target) {
-        target.style.backgroundColor = color;
-    }
 }

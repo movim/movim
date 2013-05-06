@@ -37,7 +37,6 @@ class Roster extends WidgetBase
 	function onPresence($presence)
 	{
 	    $arr = $presence->getPresence();
-        //Notification::appendNotification($arr['jid'].' '. $arr['presence_txt']);
 	    RPC::call('incomingPresence', $arr['jid'], $arr['presence_txt']);
 	}
 
@@ -264,6 +263,42 @@ class Roster extends WidgetBase
 		RPC::commit();
 	}
     
+    function ajaxToggleChat()
+    {
+        //$bool = !currentValue
+		$bool = (Cache::c('chatpop') == true) ? false : true;
+        //toggling value in cache
+		Cache::c('chatpop', $bool);
+        
+        RPC::call('movim_fill', 'chattoggle', $this->prepareChatToggle());
+        
+        RPC::commit();
+    }
+    
+    function prepareChatToggle()
+    {
+        $chatpop = Cache::c('chatpop');
+        
+        if($chatpop) {
+            $arrow = 'expand';
+            $ptoggle = 'openPopup();';
+            $call = $this->genCallAjax('ajaxToggleChat');
+        } else {
+            $arrow = 'contract';
+            $ptoggle = 'closePopup();';
+            $call = '';
+        }
+        
+        $html = '
+            <li 
+                onclick="'.$call.' '.$ptoggle.'"
+                title="'.t('Show/Hide').'">
+                <a class="'.$arrow.'" href="#"></a>
+            </li>';
+            
+        return $html;
+    }
+    
     /**
      * @brief Show/Hide the Roster
      */
@@ -284,7 +319,7 @@ class Roster extends WidgetBase
             $rostershow = 'hide';
 
         if($offlineState == true)
-            $offlineshown = 'offlineshown';
+            $offlineshown = 'offlineshown';        
 	?>
         <div id="roster" class="<?php echo $rostershow; ?>">
             <ul id="rosterlist" class="<?php echo $offlineshown; ?>">
@@ -357,6 +392,9 @@ class Roster extends WidgetBase
                     title="<?php echo t('Show/Hide'); ?>">
                     <a class="users" href="#"></a>
                 </li>
+                <div id="chattoggle">
+                    <?php echo $this->prepareChatToggle(); ?>
+                </div>
                 <li 
                     onclick="<?php echo $this->callAjax('ajaxShowHideRoster');?>"
                     title="<?php echo t('Show/Hide'); ?>">

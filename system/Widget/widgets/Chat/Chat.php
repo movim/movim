@@ -71,7 +71,7 @@ class Chat extends WidgetBase
 
         $rd = new \modl\RosterLinkDAO();
 
-        $chatpop = Cache::c('chatpop');
+        //$chatpop = Cache::c('chatpop');
         
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
@@ -83,7 +83,7 @@ class Chat extends WidgetBase
             $evt = new Event();
             $evt->runEvent('openchat');  
             
-            if($chatpop)
+            //if($chatpop)
             RPC::call('movim_prepend',
                            'chats',
                            $this->prepareChat($contact));
@@ -111,7 +111,7 @@ class Chat extends WidgetBase
                            'messages'.$contact->jid);
             //Sound and title notification, if the popup chat is closed
 
-            if($chatpop)              
+            //if($chatpop)              
                 RPC::call('notify');
             //Highlight the new chat message
             RPC::call('setBackgroundColor', 'chatwindow'.$contact->jid, 'red');
@@ -193,9 +193,9 @@ class Chat extends WidgetBase
             $rd = new \modl\RosterLinkDAO();
             $rd->setChat($jid, 2);
             
-            $chatpop = Cache::c('chatpop');
+            /*$chatpop = Cache::c('chatpop');
             
-            if($chatpop) 
+            if($chatpop) */
                 RPC::call('movim_prepend',
                                'chats',
                                $this->prepareChat($contact));
@@ -206,7 +206,7 @@ class Chat extends WidgetBase
         }
         
         $evt = new Event();
-        $evt->runEvent('openchat');  
+        $evt->runEvent('openchat');
     }
     
 	/**
@@ -267,8 +267,11 @@ class Chat extends WidgetBase
             }
         }
         
+        RPC::call('movim_delete',
+                   'chat'.$contact->jid);
+        
         $evt = new Event();
-        $evt->runEvent('closechat');  
+        $evt->runEvent('closechat');
 	}
     
     function ajaxHideTalk($jid)
@@ -284,19 +287,6 @@ class Chat extends WidgetBase
         
         RPC::call('scrollTalk',
                    'messages'.$contact->jid);
-        RPC::commit();
-    }
-    
-    function ajaxToggleChat()
-    {
-        //$bool = !currentValue
-		$bool = (Cache::c('chatpop') == true) ? false : true;
-        //toggling value in cache
-		Cache::c('chatpop', $bool);
-        
-        RPC::call('movim_fill',
-                       'chats',
-                       $this->prepareChats()); 
         RPC::commit();
     }
     
@@ -325,30 +315,8 @@ class Chat extends WidgetBase
     {
         $rc = new \modl\ContactDAO();
         $contacts = $rc->getRosterChat();
-        
-        $chatpop = Cache::c('chatpop');
-        
-        if($chatpop) {
-            $arrow = '⇑';
-            $ptoggle = 'openPopup();';
-        } else {
-            $arrow = '⇓';
-            $ptoggle = 'closePopup();';
-        }
-        
-        $html = '';
-        $html .= '
-                <div class="chat">
-                    <div 
-                        class="tab" 
-                        style="font-weight: bold; font-size: 1.4em; width: 30px; text-align: center;"
-                        onclick="'.$this->genCallAjax("ajaxToggleChat").' '.$ptoggle.'">
-                        '.$arrow.'
-                    </div>
-                </div>
-        
-        ';
-        if(isset($contacts) && $chatpop) {
+
+        if(isset($contacts) /*&& $chatpop*/) {
             foreach($contacts as $contact) {
                 $html .= trim($this->prepareChat($contact));
             }
@@ -380,10 +348,12 @@ class Chat extends WidgetBase
         }
         
         $html = '
-            <div class="chat" onclick="this.querySelector(\'textarea\').focus()">
+            <div class="chat" 
+                 onclick="this.querySelector(\'textarea\').focus()"
+                 id="chat'.$contact->jid.'">
                 <div class="panel" '.$panelstyle.'>
                     <div class="head" >
-                        <span class="chatbutton cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->jid."'").' closeTalk(this)"></span>
+                        <span class="chatbutton cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->jid."'").'"></span>
                         <span class="chatbutton arrow" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'").' hideTalk(this)"></span>
                         <img class="avatar"  src="'.$contact->getPhoto('xs').'" />
                         <a class="name" href="?q=friend&f='.$contact->jid.'">
