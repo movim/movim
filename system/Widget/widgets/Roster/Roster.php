@@ -360,7 +360,7 @@ class Roster extends WidgetBase
                                     onblur="myBlur(this);"
                                 />
                             </div>
-                            <div class="element large mini">
+                            <!--<div class="element large mini">
                                 <label for="addalias"><?php echo t('Alias'); ?></label>
                                 <input 
                                     id="addalias"
@@ -370,7 +370,7 @@ class Roster extends WidgetBase
                                     onfocus="myFocus(this);" 
                                     onblur="myBlur(this);"
                                 />
-                            </div>
+                            </div>-->
                             <a 
                                 class="button tiny icon no merged left black"
                                 href="#"
