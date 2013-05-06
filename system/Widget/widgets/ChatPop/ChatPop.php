@@ -26,12 +26,6 @@ class ChatPop extends WidgetBase
 	{
     	$this->addcss('chatpop.css');
     	$this->addjs('chatpop.js');
-		//$this->registerEvent('message', 'onMessage');
-		/*$this->registerEvent('messagepublished', 'onMessagePublished');
-		$this->registerEvent('composing', 'onComposing');
-        $this->registerEvent('paused', 'onPaused');
-        $this->registerEvent('attention', 'onAttention');
-		$this->registerEvent('presence', 'onPresence');*/
     }
     
     function build()

@@ -171,3 +171,7 @@
 #rostermenu li:last-child {
     float: right;
 }
+
+#rostermenu div#chattoggle {
+    display: inline-block;
+}
