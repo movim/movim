@@ -336,13 +336,15 @@ form .element input:invalid {
     border-left: none;
 }
 
-.button.merged.left {
+.button.merged.left:not(.loading) {
     border-radius: 2px 0px 0px 2px;
     border-left: 1px solid #999;
+    margin-left: 5px;
 }
 
-.button.merged.right {
+.button.merged.right:not(.loading) {
     border-radius: 0px 2px 2px 0px;
+    margin-right: 10px;
 }
 
 .button.black, .button.merged.left.black {
@@ -370,7 +372,7 @@ form .element input:invalid {
 .tiny.icon.loading:before { padding: 4px 7px; }
 
 .button.tiny {
-    max-width: 80px;
+    max-width: 75px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

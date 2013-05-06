@@ -405,7 +405,7 @@ ul.clean li {
     display: none;
 }
 
-.menu li a, .menu li label {
+.menu li a:not(.button), .menu li label {
     line-height: 38px;
     padding-left: 35px;
     display: block;
