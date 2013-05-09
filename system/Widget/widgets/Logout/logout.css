@@ -16,9 +16,13 @@
 	cursor: pointer;
     z-index: 5;
     /*padding: 12px 10px;*/
+    max-width: 70px;
     line-height: 3em;
     padding-left: 2em;
     background-repeat: no-repeat;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     background-position: 0px center;
 }
 
