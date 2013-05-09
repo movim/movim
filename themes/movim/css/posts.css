@@ -3,7 +3,7 @@
 .posthead {
     display: block;
     width: 100%;
-    min-height: 40px;
+    min-height: 3em;
     padding-left: 1.5em;
     padding-top: 1em;
 }
@@ -17,14 +17,15 @@
 .post {
     width: auto;
 	padding: 0em 1.5em 1.5em;
-    min-height: 50px;
+    min-height: 4em;
     clear: both;
 }
 
 .post .header {
     display: block;
-    height: auto;
     overflow: auto;
+    overflow-y: hidden;
+    padding-right: 1.5em;
 }
 
 .post:first-child {
@@ -75,12 +76,16 @@
     border-top: 1px solid #DDD;
     padding: 0.7em 0em 1em;
     line-height: 1em;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .post span {
     font-weight: bold;
-    line-height: 1.5em;
+    overflow: hidden;
     padding-left: 1em;
+    line-height: 1.5em;
     display: inline-block;
 }
 
@@ -118,9 +123,9 @@
     display: inline-block;
     padding-left: 20px;
     font-weight: normal;
-    margin-top: 5px;
+    margin-top: 0.5em;
     float: right;
-    margin-left: 10px;
+    margin-left: 1em;
     padding-right: 0.5em;
     
     max-width: 300px;
@@ -173,16 +178,16 @@
 }
 
 .post .comments .comment .avatar {
-    margin-top: 5px;
-    margin-left: 3px;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
 }
 
 .post .getcomments {
     background-repeat: no-repeat;
-    background-position: 5px 5px;
+    background-position: 0.5em center;
     padding: 2px;
     display: block;
-    padding-left: 25px;
+    padding-left: 2em;
 }
 
 .post .avatar {
@@ -246,29 +251,6 @@
     margin-left: 2em;
 }
 
-.post .attachment {
-    display: block;
-    margin-left: 65px;
-    clear: both;
-    margin-top: 10px;
-}
-
-.post .attachment img {
-    max-width: 140px;
-    padding: 5px;
-    margin-bottom: 5px;
-    margin-right: 7px;
-    border: 1px solid #CCC;
-    background-color: white;
-}
-
-.post .attachment img:hover {
-    transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-}
-
 .post .older {
 	text-align: center;
 	font-weight: bold;
@@ -295,7 +277,7 @@
 }
 
 .post table#commentsubmit td {
-    padding: 5px;
+    padding: 0.5em;
     width: 100%;
 }
 

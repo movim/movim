@@ -1,5 +1,5 @@
 #logout {
-    font-size: 13px;
+    font-size: 1em;
     color: #ccc;
 }
 
@@ -15,10 +15,11 @@
     margin-right: -250px;
 	cursor: pointer;
     z-index: 5;
-    padding: 12px 10px;
-    padding-left: 20px;
+    /*padding: 12px 10px;*/
+    line-height: 3em;
+    padding-left: 2em;
     background-repeat: no-repeat;
-    background-position: 0px 16px;
+    background-position: 0px center;
 }
 
 #logouttab:hover {
@@ -28,7 +29,7 @@
 #logoutlist {
     display: none;
     position: fixed;
-    top: 38px;
+    top: 3em;
     right: 50%;
     margin-right: -300px;
     z-index: 1;
@@ -39,10 +40,11 @@
 
 #logoutlist a {
     display: block;
-    padding: 12px 10px;
+    /*padding: 12px 10px;*/
+    line-height: 3em;
     background-repeat: no-repeat;
-    background-position: 10px 16px;
-    padding-left: 28px;
+    background-position: 0.5em center;
+    padding-left: 2em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -75,6 +75,9 @@ class Roster extends WidgetBase
                 class="';
 					if($contact->jid == $_GET['f'])
                         $html .= 'active ';
+                        
+                    if(isset($contact->last) && $contact->last > 60)
+                        $html .= 'inactive ';
 
                     if(isset($contact->presence)) {
                         $presencestxt = getPresencesTxt();

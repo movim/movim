@@ -129,7 +129,7 @@ class Notifs extends WidgetCommon
                 <a 
                     class="button tiny icon follow black" 
                     href="#" 
-                    style="margin: 5px;"
+                    style="margin: 0.5em;"
                     onclick="'.$this->genCallAjax("ajaxGetNotifications").';
                             this.innerHTML = \''.t('Updating').'\'; 
                             this.className= \'button tiny icon loading black\';
