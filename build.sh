@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SYSTEM_PATH=system
-MOXL_REPO="lp:~edhelas/moxl/trunk"
-DATAJAR_REPO="lp:~edhelas/datajar/datajar"
+MOXL_REPO="lp:moxl"
+MODL_REPO="lp:modl"
 VERSION=`cat VERSION`
 PACKAGENAME="movim-${VERSION}"
 
@@ -16,8 +16,8 @@ package() {
     cd $PACKAGENAME
     moxl
     rm -rf "$SYSTEM_PATH/Moxl/.bzr"
-    datajar
-    rm -rf "$SYSTEM_PATH/Datajar2/.bzr"
+    modl
+    rm -rf "$SYSTEM_PATH/Modl/.bzr"
 
     # Compressing
     cd ..
@@ -39,13 +39,13 @@ moxl() {
     rm -rf $moxl_temp
 }
 
-datajar() {
-    datajar_temp="datajar"
-    # Checking out Datajar.
-    bzr branch $DATAJAR_REPO $datajar_temp
-    rm -rf "$SYSTEM_PATH/Datajar2"
-    cp -r "$datajar_temp" "$SYSTEM_PATH/Datajar2"
-    rm -rf $datajar_temp
+modl() {
+	moxl_temp="Modl"
+    # Checking out Modl.
+    bzr branch $MODL_REPO $modl_temp
+    rm -rf "$SYSTEM_PATH/Modl"
+    cp -r "$modl_temp/" $SYSTEM_PATH
+    rm -rf $modl_temp
 }
 
 clean() {
@@ -57,10 +57,10 @@ clean() {
 
 # Doing the job
 case $1 in
-    "datajar")  datajar;;
+    "modl")  modl;;
     "moxl")  moxl;;
     "package")  package;;
     "clean")  clean;;
-    *)  datajar
+    *)  modl
         moxl;;
 esac
