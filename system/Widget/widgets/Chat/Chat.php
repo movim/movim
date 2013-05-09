@@ -268,7 +268,7 @@ class Chat extends WidgetBase
         }
         
         RPC::call('movim_delete',
-                   'chat'.$contact->jid);
+                   'chat'.$jid);
         
         $evt = new Event();
         $evt->runEvent('closechat');

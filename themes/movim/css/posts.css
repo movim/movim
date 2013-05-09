@@ -28,10 +28,6 @@
     padding-right: 1.5em;
 }
 
-.post:first-child {
-    padding-top: 1.5em;
-}
-
 .post .content {
     padding: 1em;
     line-height: 1.3em;
