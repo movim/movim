@@ -41,7 +41,8 @@
 
 #roster ul#rosterlist li img {
     float: left;
-    width: 30px;
+    width: 2em;
+    height: 2em;
     margin-right: 7px;
 }
 
@@ -51,8 +52,8 @@
     width: auto;
     overflow: hidden;
     color: #BBB;
-    font-size: 13px;
-    line-height: 28px;
+    font-size: 1em;
+    line-height: 1.8em;
     text-overflow: ellipsis;
 }
 
@@ -66,7 +67,7 @@
     padding: 0.5em;
     color: #777;
     line-height: 1em;
-    font-size: 15px;
+    font-size: 1em;
 }
 
 #roster ul#rosterlist h1:hover {
@@ -93,6 +94,10 @@
     background-image: url(img/offline.png);
     background-repeat: no-repeat;
     background-position: 3px 6px;
+}
+
+#roster ul#rosterlist li.inactive {
+    opacity: 0.5;
 }
 
 #roster ul#rosterlist li .chat.on:hover {
@@ -164,7 +169,7 @@
 }
 
 #rostermenu li#search input {
-    height: 30px;
+    height: 2em;
     width: 100%;
 }
 

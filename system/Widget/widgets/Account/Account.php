@@ -76,7 +76,7 @@ class Account extends WidgetBase {
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
 
-                if($response->iq->query->instructions) {
+                if($response->iq->query->instructions && $response->iq->query->x) {
                     $html .= '
                         <div class="element simple large">
                             <label>'.(string)$response->iq->query->instructions.'</label>';

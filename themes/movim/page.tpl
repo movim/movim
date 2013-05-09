@@ -78,6 +78,8 @@
         <div id="nav">
             <?php $this->menu();?>	
         </div>
+        
+        <!--<div id="baseline"></div>-->
 
         <div id="content">
             <?php $this->widget('Notification');?>

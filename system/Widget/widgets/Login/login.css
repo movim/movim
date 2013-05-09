@@ -1,7 +1,7 @@
 body {
     width: 100%;
     margin: 0 auto;
-    max-width: 350px;
+    max-width: 28em;
 }
 
 #content {
@@ -68,8 +68,6 @@ body {
 #loginpage #connectform a[name=submit] {
     margin: 0px 1px;
     display: block;
-    padding: 0px;
-    padding-left: 5px;
     text-align: center;
     margin-top: 1px;
     

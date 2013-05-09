@@ -117,7 +117,7 @@ class Profile extends WidgetCommon
             ';
                 
             $html .= '
-            <div class="block" style="width: 550px;">
+            <div class="block" style="width: 550px; margin: 1em 0em;">
                 <div class="textbubble">
                     <textarea 
                         id="status" 
