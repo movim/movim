@@ -40,7 +40,7 @@ moxl() {
 }
 
 modl() {
-	moxl_temp="Modl"
+	modl_temp="Modl"
     # Checking out Modl.
     bzr branch $MODL_REPO $modl_temp
     rm -rf "$SYSTEM_PATH/Modl"
