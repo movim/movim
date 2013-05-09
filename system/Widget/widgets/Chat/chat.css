@@ -83,10 +83,11 @@
     padding-right: 1em;
     display: inline-block;
     margin: 0px;
-    width: 145px;
+    width: 62%;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-top: 3px;
+    font-size: 0.9em;
     white-space: nowrap;
 }
 

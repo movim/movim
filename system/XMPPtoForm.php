@@ -81,7 +81,9 @@ class XMPPtoForm{
 				case 'username':
 				case 'email':
 				case 'password':
-					$this->outGeneric($element->getName());
+                    $this->html .='<div class="element">';
+                        $this->outGeneric($element->getName());
+                    $this->html .='</div>';
 					break;
 				default: 
 					$this->html .= "";

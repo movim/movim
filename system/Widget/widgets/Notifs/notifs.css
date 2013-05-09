@@ -1,5 +1,4 @@
 #notifs {
-    font-size: 13px;
     color: #ccc;
 }
 
@@ -14,15 +13,14 @@
     padding-left: 20px;
 }
 
-#notifstab span {
+#notifs span {
     color: white;
-    font-size: 10px;
+    font-size: 0.8em;
     padding: 0px;
     line-height: 1.7em;
     float: right;
-    padding: 0px 8px;
-    border-radius: 3px;
-    margin-left: 10px;
+    padding: 0px 0.7em;
+    border-radius: 2px;
     background-color: #444;
 }
 
@@ -39,10 +37,14 @@
     background-color: #888;
 }
 
+#notifslist #acceptcontact p {
+    padding: 0.5em;
+}
+
 #notifslist {
     display: none;
     position: fixed;
-    top: 38px;
+    top: 3em;
     right: 50%;
     margin-right: -300px;
     z-index: 3;
@@ -69,47 +71,48 @@
 #notifslist ul {
     list-style-type: none;
     clear: both;
-    background-color: #242424;
-    border-top: 1px solid #444;
+    background-color: rgba(36, 36, 36, 1);
     box-shadow: 0px -1px 0px #222;
 }
 
 #notifslist ul li {
-    padding: 5px;
-    line-height: 28px;
+    line-height: 2em;
     width: 100%;
     display: block;
-    border-top: 1px solid #333;
+}
+
+#notifslist ul li:nth-child(2n) {
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
 #notifslist ul li p {
     line-height: 1em;
-    margin: 5px 0px;
+    padding: 0em 0.5em;
+}
+
+#notifslist ul li a#notifsvalidate {
+    margin-right: 0.5em;
 }
 
 #notifslist ul li span.num {
-    color: white;
-    font-size: 10px;
+    /*color: white;
+    font-size: 0.8em;
     padding: 0px;
-    line-height: 1.7em;
-    float: right;
+    line-height: 2em;
+    float: right;*/
     background-color: #C5371E;
-    margin-top: 6px;
-    padding: 0px 8px;
-    border-radius: 3px;
-    margin-left: 10px;
-    margin-right: 10px;
+    /*padding: 0px 8px;
+    border-radius: 3px;*/
+    margin: 0.4em;
 }
 
 #notifslist ul li:hover {
     background-color: #EEE;
     color: black;
-    border-top: 1px solid #EEE;
 }
 
 #notifslist ul li.title {
-    border-bottom: 1px solid #222;
-    padding: 0px 5px;
+    text-align: center;
     border-top: none;
     color: white;
 }
@@ -121,11 +124,9 @@
 }
 
 #notifslist ul li img {
-    margin-top: 2px;
-    max-width: 24px;
+    max-width: 2em;
     float: left;
-    border-radius: 2px;
-    margin-right: 5px;
+    margin-right: 0.5em;
 }
 
 #notifslist ul li a {
