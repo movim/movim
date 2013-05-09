@@ -63,9 +63,13 @@ table#feedsubmitform {
 #feedsubmitform .button img {
     margin: 0px;
     padding: 0px;
-    margin-top: 2px;
     width: auto;
+    margin-top: 0.3em;
     height: auto;
+}
+
+#feedsubmitform .menueditor .button.tiny {
+    line-height: 1.7em;
 }
 
 #feedsubmitform td.frame {
