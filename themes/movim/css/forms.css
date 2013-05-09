@@ -124,9 +124,9 @@ form .element.simple > *:not(label):not(img):focus {
     width: 120%;
     background-color: transparent;
     display: block;
-    padding-top: 5px;
-    padding-left: 5px;
-    height: 30px;
+    padding-top: 0.3em;
+    padding-left: 0.3em;
+    height: 2em;
 }
 
 .element .select:before {
@@ -142,8 +142,8 @@ form .element.simple > *:not(label):not(img):focus {
 }
 
 .element .select select option {
-    height: 20px;
-    padding: 5px;
+    height: 1em;
+    padding: 0.4em;
 }
 
 /* Radio button */
@@ -342,7 +342,6 @@ form .element input:invalid {
 }
 
 .button.tiny {
-    max-width: 70%;
     white-space: nowrap;
     line-height: 2.45em;
     font-size: 0.8em;
