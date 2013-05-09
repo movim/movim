@@ -50,8 +50,8 @@ modl() {
 
 clean() {
     rm -rf "${SYSTEM_PATH}/Moxl"
-    rm -rf "${SYSTEM_PATH}/Datajar2"
-    rm -rf datajar
+    rm -rf "${SYSTEM_PATH}/Modl"
+    rm -rf Modl
     rm -rf Moxl
 }
 
