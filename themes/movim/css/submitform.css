@@ -38,12 +38,6 @@ table#feedsubmitform {
 
 #feedcontent {
 	clear: both;
-    /*padding-top: 1.5em;
-    background-color: rgb(245,245,245);
-}
-
-#feedcontent .post:first-child {
-    padding-top: 0px;*/
 }
 
 #feednotifs {
@@ -65,6 +59,7 @@ table#feedsubmitform {
     padding: 0px;
     width: auto;
     margin-top: 0.3em;
+    margin-left: 1em;
     height: auto;
 }
 
@@ -77,8 +72,6 @@ table#feedsubmitform {
 }
 
 #feedsubmitform .menueditor {
-    margin-bottom: 5px;
-    padding-bottom: 5px;
     display: none;
 }
 

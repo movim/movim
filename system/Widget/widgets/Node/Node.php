@@ -25,6 +25,8 @@ class Node extends WidgetCommon
 		$this->registerEvent('stream', 'onStream');
 		$this->registerEvent('nostream', 'onStream');
 		$this->registerEvent('pubsubsubscribed', 'onPubsubSubscribed');
+		$this->registerEvent('postpublisherror', 'onPostPublishError');
+		$this->registerEvent('pubsubsubscribederror', 'onPubsubSubscribedError');
 		$this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
     }
     
@@ -33,6 +35,14 @@ class Node extends WidgetCommon
         $html = $this->prepareGroup($params[0], $params[1]);
         RPC::call('setBookmark');
         RPC::call('movim_fill', 'node', $html);
+    }
+    
+    function onPubsubSubscribedError($params)
+    {        
+        $html = $this->prepareGroup($params[0], $params[1]);
+        RPC::call('setBookmark');
+        RPC::call('movim_fill', 'node', $html);
+        Notification::appendNotification(t('Error'), 'error');
     }
     
     function onPubsubUnsubscribed($params)

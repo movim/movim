@@ -32,7 +32,7 @@ class About extends WidgetBase
             </p>
             <h2><?php echo t('Thanks'); ?></h2>
             <dl>
-                <dt>Developers</dt><dd><a href="http://framabearn.tuxfamily.org/">Jaussoin Timothée aka edhelas</a></dd>
+                <dt>Developers</dt><dd><a href="http://edhelas.mov.im/">Jaussoin Timothée aka edhelas</a></dd>
                 <dt></dt><dd><a href="https://launchpad.net/~nodpounod">Ho Christine aka nodpounod</a></dd>
                 <dt></dt><dd><a href="https://etenil.net/">Pasquet Guillaume aka Etenil</a></dd>
                 <dt>Translators</dt><dd>Arabic - <a href="https://launchpad.net/~gharbeia">Ahmad Gharbeia أحمد غربية</a></dd>

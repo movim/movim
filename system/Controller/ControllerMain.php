@@ -232,6 +232,17 @@ class ControllerMain extends ControllerBase
         $this->page->setContent($content->build('blog.tpl'));
         echo $this->page->build('page.tpl');
 	}
+
+	function about()
+	{
+        $this->page->setTitle(t('%s - About', APP_TITLE));
+        $this->page->menuAddLink(t('Home'), 'main');
+        $this->page->menuAddLink(t('About'), 'about', true);
+        $content = new TplPageBuilder();
+
+        $this->page->setContent($content->build('about.tpl'));
+        echo $this->page->build('page.tpl');
+	}
     
 	function chatpop()
 	{
@@ -273,6 +284,7 @@ class ControllerMain extends ControllerBase
 	{
     	$this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
 		$this->page->menuAddLink(t('Home'), 'main', true);
+		$this->page->menuAddLink(t('About'), 'about');
 
         $content = new TplPageBuilder($user);
 		$this->page->setContent($content->build('login.tpl'));
