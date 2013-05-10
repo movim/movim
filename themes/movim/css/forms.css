@@ -274,7 +274,6 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     box-shadow: 0 1px 0px #ddd;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #888;
-    padding: 0px 10px;
     position: relative;
     overflow: hidden;
     background-image: -moz-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 1px);
@@ -282,6 +281,12 @@ input[type=submit], input[type=reset], input[type=button], .button, .button:link
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 1px);
     background-color: white;
     background-size: 100% 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    padding-right: 1em;
+    height: 2em;
+    line-height: 1.9em;
 }
 
 input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .button:hover {
@@ -299,14 +304,11 @@ form .element input:invalid {
 .button.icon {
     background-repeat: no-repeat;
     padding-left: 2.5em;
-    line-height: 2em;
     position: relative;
     overflow: hidden;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 }
 
+/* Button loading */
 .button.icon.loading {
     background-image: url(../img/loader.png);
     background-repeat: no-repeat;
@@ -341,23 +343,25 @@ form .element input:invalid {
     min-width: 10px;
 }
 
+/* Button tiny */
 .button.tiny {
     white-space: nowrap;
-    line-height: 2.45em;
+    line-height: 2.4em;
+    height: 2.4em;
     font-size: 0.8em;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.tiny.icon {
+.button.tiny.icon {
     padding-left: 2em;
 }
 
-.button.icon.tiny:before {
-    line-height: 2.5em;
-    min-height: 2.5em;
+.button.tiny.icon:before {
+    line-height: 2.4em;
 }
 
+/* Button merged */
 .button.merged {
     border-radius: 0px;
     border-left: none;
