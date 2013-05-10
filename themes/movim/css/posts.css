@@ -30,6 +30,7 @@
 
 .post .content {
     padding: 1em;
+    padding-top: 0em;
     line-height: 1.3em;
 }
 

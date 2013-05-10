@@ -592,6 +592,10 @@ class WidgetCommon extends WidgetBase {
                 
 		return $html;
 	}
+	
+	function onPostPublishError($error) {
+		Notification::appendNotification(t('Error').' : '.$error, 'error');
+	}
     
     function onComment($parent) {        
         $p = new \modl\ContactPostn();

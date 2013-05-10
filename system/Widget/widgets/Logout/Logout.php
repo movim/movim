@@ -30,6 +30,7 @@ class Logout extends WidgetBase
     
     function onMyPresence()
     {
+        \movim_log('tesssst');
 		$html = $this->preparePresence();
         RPC::call('movim_fill', 'logout', $html);
         RPC::commit();

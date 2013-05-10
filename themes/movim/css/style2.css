@@ -221,7 +221,6 @@ ul.clean li {
 #head {
     width: 800px;
     overflow: hidden;
-    height: 11em;
 }
 
 #head .block {
@@ -411,12 +410,12 @@ ul.clean li {
 
 .menu li a:not(.button), .menu li label {
     line-height: 3em;
-    padding-left: 35px;
+    padding-left: 2.5em;
     display: block;
     color: #ccc;
     background-repeat: no-repeat;
-    background-position: 10px center;
-            height: 3em;
+    background-position: 0.7em center;
+    height: 3em;
 }
 
 .menu li a, .menu li label:last-child {
@@ -473,6 +472,7 @@ ul.clean li {
 .menu li .media { background-image: url(../img/icons/menu/folder.png); }
 .menu li .blog { background-image: url(../img/icons/menu/quill.png); }
 .menu li .admin { background-image: url(../img/icons/menu/admin.png); }
+.menu li .about { background-image: url(../img/icons/menu/info.png); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
@@ -632,7 +632,7 @@ ul.list li span.tag {
     /*font-size: 0.9em;*/
     color: white;
     display: inline-block;
-    min-width: 2em;
+    min-width: 3em;
     border-radius: 2px;
     text-align: center;
     line-height: 1.8em;
@@ -675,17 +675,18 @@ dl > * {
     padding: 0 1em;
     display: inline-block;
     line-height: 2em;
+    vertical-align: middle;
 }
 
 dl dt {
     text-align: right;
     font-weight: bold;
-    width: 30%;
+    width: 25%;
 }
 
 dl dd {
     text-align: left;
-    width: 70%;
+    width: 75%;
 }
 
 /* Breadcrumb */
