@@ -16,7 +16,7 @@ body {
     
     background-image: url(img/logo.png);
     background-repeat: no-repeat;
-    background-position: center 10%;
+    background-position: center 1em;
     background-size: auto auto;
     padding-top: 40%;
 
@@ -54,7 +54,11 @@ body {
     margin: 0 auto;
     padding: 0px;
     width: 100%;
-    min-height: 40px;
+    min-height: 2.5em;
+}
+
+#loginpage #connectform .element:last-child {
+    min-height: 1em;
 }
 
 #loginpage #connectform .element input {
@@ -106,14 +110,6 @@ body {
     color: white;
 }
 
-#connectform a[name=submit]:active {
-    /*background: linear-gradient(top, #274950 0%, #455E74 2px, #455E74 32px, #376068 100%);
-    background: -moz-linear-gradient(top, #274950 0%, #455E74 2px, #455E74 32px, #376068 100%);
-    background: -webkit-linear-gradient(top, #274950 0%, #455E74 2px, #455E74 32px, #376068 100%);
-    background: -o-linear-gradient(top, #274950 0%, #455E74 2px, #455E74 32px, #376068 100%);
-    background-color: #455E74;*/
-}
-
 #connectform a[name=submit]:before {
     color: white;
 }
@@ -122,6 +118,33 @@ body {
     color: white;
     text-align: center;
 }
+
+#loginpage #loginhelp {
+    list-style-type: none;
+    color: white;
+    line-height: 1.2em;
+    text-align: justify;
+    transition: height 1s ease;
+    height: 0em;
+    overflow: hidden;
+}
+
+#loginpage #loginhelp li {
+    height: 2.5em;
+    background-repeat: no-repeat;
+    background-image: url(img/beaker.png);
+    padding-left: 2.5em;
+    background-position: 0.2em center;
+    margin: 0.5em 0em;
+}
+
+#loginpage #connectform:hover > #loginhelp {
+    height: 9em;
+}
+
+#loginpage #loginhelp li#jabber { background-image: url(img/jabber.png); }
+#loginpage #loginhelp li#gmail { background-image: url(img/envelope.png); }
+#loginpage #loginhelp li#facebook { background-image: url(img/facebook.png); }
 
 #footer {
     display: none;
