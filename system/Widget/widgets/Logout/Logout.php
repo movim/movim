@@ -98,7 +98,7 @@ class Logout extends WidgetBase
         
         $pd = new \modl\PresenceDAO();
         $p = $pd->getPresence($this->user->getLogin(), $session['ressource']);
-        
+
         $html = '<div id="logouttab" class="'.$txts[$p->presence].'" onclick="showLogoutList();">'.$txt[$p->presence].'</div>';
                 
         $html .= '

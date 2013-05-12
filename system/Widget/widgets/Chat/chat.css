@@ -145,12 +145,13 @@
 #chats .chat .panel .text textarea {
     width: 100%;
     border: 0px;
-    padding: 2px;
+    padding: 0.2em;
     overflow: auto;
     background-color: white;
     resize: none;
-    height: 17px;
-    line-height: 17px;
+    height: 1em;
+    line-height: 1em;
+    font-size: 1em;
 }
 
 #chats .chat .panel .text textarea:focus {
