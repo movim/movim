@@ -181,6 +181,14 @@ p {
     line-height: 1.3em;
 }
 
+pre {
+    padding: 1em 0em;
+}
+
+code {
+    font-family: monospace;
+}
+
 /* For the simple xHTML lists */
 ul.clean {
     margin-left: 1.5em;
@@ -726,18 +734,36 @@ dl dd {
 
 /* Popup */
 .popup {
-    background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
-    display: none;
-    top: 0px;
-    left: 0px;
-    z-index: 5;
+    top: 10%;
+    left: 25%;
+    z-index: 10;
     width: 50%;
-    height: 80%;
-    padding: 10% 25%;
+    max-height: 80%;
+    overflow-y: auto;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 2em;
+    border-radius: 3px;
+    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
-.popup span {
+.popup:after {
+    position: fixed;
+    display: block;
+    z-index: 4;
+    top: 0px;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.popup span, .popup p, .popup pre, .popup h2, .popup h3, .popup a {
     color: white;
 }
 

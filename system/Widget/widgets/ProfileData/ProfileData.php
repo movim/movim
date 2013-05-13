@@ -97,7 +97,7 @@ class ProfileData extends WidgetBase
                 <div id="mapdiv" style="width: auto; height: 250px; display: none;"></div>
                 <div class="clear"></div>
                 <a 
-                    class="button tiny icon add" 
+                    class="button tiny icon refresh" 
                     onclick="getMyPosition(); this.style.display = \'none\';">'.
                     t('Update my position').'
                 </a>
