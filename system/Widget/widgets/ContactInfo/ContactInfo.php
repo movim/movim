@@ -54,9 +54,15 @@ class ContactInfo extends WidgetCommon
                 $html .= t("I'm ").substr($mood, 0, -1).'<br />';
             }
             
-            if($c->tuneartist) {
+            if($c->tuneartist || $c->tunetitle) {
                 $html .= '<h2>'.t('Listening').'</h2>';
-                $html .= $c->tuneartist. ' - '.$c->tunetitle.' '.t('on').' '.$c->tunesource;
+                if($c->tuneartist)
+                    $artist = $c->tuneartist. ' - ';
+                if($c->tunetitle)
+                    $title = $c->tunetitle;
+                if($c->tunesource)
+                    $album = t('on').' '.$c->tunesource;
+                $html .= $artist.$title.' '.$album;
             }
             
             // Last seen

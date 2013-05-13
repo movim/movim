@@ -109,7 +109,7 @@ class About extends WidgetBase
             <br />
             <dl>
                <dt>Map Library</dt><dd>Leaflet <a href="http://leafletjs.com/">leafletjs.com</a> under BSD</dd>
-               <dt>WYSIWYG editor</dt><dd>STDEditor <a href="http://code.google.com/p/steditor/">code.google.com</a> under BSD</dd>
+               <dt>Markdown</dt><dd>Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin</dd>
                <dt>HTML Fixer</dt><dd> Giulio Pons <a href="http://www.barattalo.it">barattalo.it</a></dd>
             </dl>
             <h2><?php echo t('Ressources'); ?></h2>

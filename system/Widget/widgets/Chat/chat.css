@@ -149,9 +149,12 @@
     overflow: auto;
     background-color: white;
     resize: none;
-    height: 1em;
+    /*height: 1em;
     line-height: 1em;
+    font-size: 1em;*/
     font-size: 1em;
+    height: 1.3em;
+    overflow-y: hidden;
 }
 
 #chats .chat .panel .text textarea:focus {

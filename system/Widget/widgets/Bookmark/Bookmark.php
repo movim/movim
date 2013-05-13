@@ -113,6 +113,7 @@ class Bookmark extends WidgetBase
     
     function ajaxBookmarkAdd($form) 
     {
+        \movim_log($form);
         if(!filter_var($form['url'], FILTER_VALIDATE_URL)) {
             $html = '<div class="message error">'.t('Bad URL').'</div>' ;
             RPC::call('movim_fill', 'bookmarkadderror', $html);
@@ -121,20 +122,21 @@ class Bookmark extends WidgetBase
             $html = '<div class="message error">'.t('Empty name').'</div>' ;
             RPC::call('movim_fill', 'bookmarkadderror', $html);
             RPC::commit();            
+        } else {
+        
+            $bookmarks = Cache::c('bookmark');        
+                    
+            if($bookmarks == null)
+                $bookmarks = array();
+            
+            array_push($bookmarks,
+                array(
+                    'type'      => 'url',
+                    'name'      => $form['name'],
+                    'url'       => $form['url']));   
+            
+            $this->ajaxSetBookmark($bookmarks);
         }
-        
-        $bookmarks = Cache::c('bookmark');        
-                
-        if($bookmarks == null)
-            $bookmarks = array();
-        
-        array_push($bookmarks,
-            array(
-                'type'      => 'url',
-                'name'      => $form['name'],
-                'url'       => $form['url']));   
-        
-        $this->ajaxSetBookmark($bookmarks);
     }
     
     function ajaxBookmarkUrlRemove($url)
@@ -271,7 +273,7 @@ class Bookmark extends WidgetBase
         <br />
         <a class="button icon yes tiny merged right" style="float: right;"
            onclick="movim_toggle_display('#bookmarkadd')">Add</a>
-        <a class="button icon submit tiny merged left" style="float: right;"
+        <a class="button icon refresh tiny merged left" style="float: right;"
            onclick="<?php echo $getbookmark; ?>">Refresh</a>
         <br />
         <?php 

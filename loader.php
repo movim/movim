@@ -28,6 +28,9 @@ require_once(LIB_PATH . "RPC.php");
 require_once(LIB_PATH . "User.php");
 require_once(LIB_PATH . "XMPPtoForm.php");
 
+// Markdown lib
+require_once(LIB_PATH . "Markdown.php");
+
 // We load Movim Data Layer
 require_once(LIB_PATH . 'Modl/loader.php');
 
