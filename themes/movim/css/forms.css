@@ -34,6 +34,8 @@ legend {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+    
+    overflow-y: hidden;
 }
 
 .element.large {
@@ -306,6 +308,7 @@ form .element input:invalid {
     padding-left: 2.5em;
     position: relative;
     overflow: hidden;
+    max-width: 100%;
 }
 
 /* Button loading */
@@ -329,7 +332,7 @@ form .element input:invalid {
 }
 
 .button.icon:before {
-    content: "✘";
+    content: "";
     font: 1em sans-serif;
     font-weight: bold;
     color: #444;
@@ -346,19 +349,24 @@ form .element input:invalid {
 /* Button tiny */
 .button.tiny {
     white-space: nowrap;
-    line-height: 2.4em;
-    height: 2.4em;
-    font-size: 0.8em;
+    line-height: 2em;
+    padding-left: 1em;
+    height: 2em;
+    font-size: 0.9em;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .button.tiny.icon {
-    padding-left: 2em;
+    padding-left: 2.5em;
+}
+
+.button.tiny.icon.alone {
+    padding-left: 1em;
 }
 
 .button.tiny.icon:before {
-    line-height: 2.4em;
+    line-height: 1.9em;
 }
 
 /* Button merged */
@@ -383,19 +391,24 @@ form .element input:invalid {
     border-color: #444;
 }
 
-.icon.yes:before { content: "✔"; }
-.icon.no:before { content: "✘"; }
-.icon.bubble { background-image: url(../img/icons/comments_icon.png); }
-.icon.bubbleadd { background-image: url(../img/icons/comments_add.png); }
-.icon.bubbleold { background-image: url(../img/icons/comments_show.png); }
+.icon.yes:before    { background-image: url(../img/icons/button/checkmark.png); }
+.icon.no:before     { background-image: url(../img/icons/button/close.png); }
+.icon.bubble        { background-image: url(../img/icons/comments_icon.png); }
+.icon.bubbleadd     { background-image: url(../img/icons/comments_add.png); }
+.icon.bubbleold     { background-image: url(../img/icons/comments_show.png); }
 .icon.follow:before { content:"⇒" }
-.icon.chat:before { background-image: url(../img/icons/chat_icon.png); content:"";}
-.icon.add:before { content: "+"; }
-.icon.rm:before { content:"—"; }
+.icon.chat:before   { background-image: url(../img/icons/chat_icon.png); content:"";}
+.icon.add:before    { content: "+"; }
+.icon.rm:before     { content: "–"; }
+.icon.write:before  { background-image: url(../img/icons/button/pencil.png); }
+.icon.help:before   { background-image: url(../img/icons/button/support.png); }
 .icon.submit:before { content: "▼"; }
 .icon.upload:before { content: "▲"; }
-.icon.next:before { content: "→"; }
-.icon.feed:before { content: "≡"; }
-.icon.back:before { content: "←"; }
-.icon.next:before { content: "→"; }
+.icon.next:before   { content: "→"; }
+.icon.refresh:before{ background-image: url(../img/icons/button/loop.png); }
+.icon.blog:before   { background-image: url(../img/icons/button/quill.png); }
+.icon.feed:before   { background-image: url(../img/icons/button/feed.png); }
+.icon.back:before   { background-image: url(../img/icons/button/arrow-left.png); }
+.icon.next:before   { background-image: url(../img/icons/button/arrow-right.png); }
+.icon.geo:before    { background-image: url(../img/icons/button/location.png); }
 .tiny.icon.loading:before { padding: 4px 7px; }

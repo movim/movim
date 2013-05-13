@@ -134,13 +134,13 @@ function getFeedMessage() {
     return encodeURIComponent(message);
 }
 
-function frameHeight(n) {
-    if(n.className == 'button tiny icon add merged left') {
-        n.className = 'button tiny icon rm merged left';
-    document.querySelector('iframe#feedmessagecontent-frame').style.height = '400px';
+function frameHeight(n, text) {
+    if(n.className == 'button tiny icon alone add merged left') {
+        n.className = 'button tiny icon alone rm merged left';
+        text.style.minHeight = '20em';
     } else {
-        n.className = 'button tiny icon add merged left';
-        document.querySelector('iframe#feedmessagecontent-frame').style.height = '50px';
+        n.className = 'button tiny icon alone add merged left';
+        text.style.minHeight = '1.5em';
     }
 }
 
@@ -154,3 +154,21 @@ function richText(n) {
     }
 }
 
+/**
+ * Geolocalisation function
+ */
+
+function setPosition(node) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition( 
+            function (position) {
+                var poss = position.coords.latitude +','+position.coords.longitude;
+                node.value = poss;
+                
+                showPosition(poss);
+            }, 
+            // next function is the error callback
+            function (error) { }
+            );
+    }
+}

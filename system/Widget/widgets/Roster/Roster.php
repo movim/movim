@@ -112,7 +112,8 @@ class Roster extends WidgetBase
         if($type == 'bot')
             $html .= '<div class="infoicon bot"></div>';
             
-        if(isset($contact->tuneartist) && $contact->tuneartist != '')
+        if((isset($contact->tuneartist) && $contact->tuneartist != '') ||
+           (isset($contact->tunetitle) && $contact->tunetitle != ''))
             $html .= '<div class="infoicon tune"></div>';
         
         $html .= '<a
