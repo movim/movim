@@ -134,7 +134,7 @@ class Node extends WidgetCommon
                     href="#"
                     onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").'
                     this.className=\'button tiny icon loading\'; this.onclick=null;"
-                    class="button tiny icon follow">
+                    class="button tiny icon refresh">
                     '.('Refresh').'
                 </a>
                 
