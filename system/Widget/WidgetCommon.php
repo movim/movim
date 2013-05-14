@@ -707,7 +707,7 @@ This is an [example link](http://example.com/).
               ->setTo($server)
               ->setNode($node)
               ->setLocation($geo)
-              ->setContentHtml(htmlspecialchars(rawurldecode($content)))
+              ->setContentHtml(rawurldecode($content))
               ->request();
         }
     }
