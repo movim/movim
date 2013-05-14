@@ -181,7 +181,7 @@ class ServerNodes extends WidgetCommon
             href="#"
             onclick="<?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?>; 
                 this.className='button tiny icon loading'; this.onclick=null;"
-            class="button tiny icon follow">
+            class="button tiny icon refresh">
             <?php echo t('Refresh'); ?>
         </a>
         <?php echo $create; ?>

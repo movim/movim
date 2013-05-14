@@ -94,7 +94,7 @@ class NodeAffiliations extends WidgetBase
 		<div class="tabelem" title="<?php echo t('Manage your members'); ?>" id="groupmemberlist">
             <div class="posthead">
                 <a 
-                    class="button icon submit" 
+                    class="button icon users" 
                     onclick="<?php echo $this->genCallAjax('ajaxGetGroupMemberList', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?> this.parentNode.style.display = 'none'">
                         <?php echo t("Get the members");?>
                 </a>
