@@ -275,7 +275,7 @@ class Login extends WidgetBase {
                     </div>
                     <div class="element">
                         <a
-                            class="button icon yes"
+                            class="button"
                             onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;"
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>

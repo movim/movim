@@ -397,7 +397,7 @@ form .element input:invalid {
 .icon.bubbleadd     { background-image: url(../img/icons/comments_add.png); }
 .icon.bubbleold     { background-image: url(../img/icons/comments_show.png); }
 .icon.follow:before { content:"⇒" }
-.icon.chat:before   { background-image: url(../img/icons/chat_icon.png); content:"";}
+.icon.chat:before   { background-image: url(../img/icons/button/comment.png);}
 .icon.add:before    { content: "+"; }
 .icon.rm:before     { content: "–"; }
 .icon.write:before  { background-image: url(../img/icons/button/pencil.png); }
@@ -411,4 +411,5 @@ form .element input:invalid {
 .icon.back:before   { background-image: url(../img/icons/button/arrow-left.png); }
 .icon.next:before   { background-image: url(../img/icons/button/arrow-right.png); }
 .icon.geo:before    { background-image: url(../img/icons/button/location.png); }
+.icon.users:before  { background-image: url(../img/icons/users.png); }
 .tiny.icon.loading:before { padding: 4px 7px; }

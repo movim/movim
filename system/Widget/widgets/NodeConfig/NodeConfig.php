@@ -104,12 +104,12 @@ class NodeConfig extends WidgetBase
             <div id="groupconfiguration" class="paddedtop">
                 <div id="handlingmessages"></div>
                 <a 
-                    class="button icon submit" 
+                    class="button icon write" 
                     onclick="<?php echo $this->genCallAjax('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?> this.style.display = 'none'">
                     <?php echo t("Configure your group");?>
                 </a>
                 <a 
-                    class="button icon" 
+                    class="button icon no" 
                     onclick="<?php echo $this->genCallAjax('ajaxGroupDelete', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?> this.style.display = 'none'">
                     <?php echo t("Delete this group");?>
                 </a>
