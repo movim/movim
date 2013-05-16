@@ -271,10 +271,10 @@ class Bookmark extends WidgetBase
             <?php echo $this->prepareBookmark(Cache::c('bookmark')); ?>
         </div>
         <br />
-        <a class="button icon yes tiny merged right" style="float: right;"
-           onclick="movim_toggle_display('#bookmarkadd')">Add</a>
-        <a class="button icon refresh tiny merged left" style="float: right;"
-           onclick="<?php echo $getbookmark; ?>">Refresh</a>
+        <a class="button icon add tiny merged right" style="float: right;"
+           onclick="movim_toggle_display('#bookmarkadd')"><?php echo('Add'); ?></a>
+        <a class="button icon refresh alone tiny merged left" style="float: right;"
+           onclick="<?php echo $getbookmark; ?>"></a>
         <br />
         <?php 
     }
