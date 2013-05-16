@@ -35,7 +35,7 @@ class Syndication extends WidgetBase
                     <feed xmlns="http://www.w3.org/2005/Atom">
 
                         <title>'.t("%s's feed",$messages[0]->getContact()->getTrueName()).'</title>
-                        <link href="http://example.org/"/>
+                        <link href="'.BASE_URI.'?q=feed&f='.$from.'"/>
                         <updated>'.date('c').'</updated>
                         <author>
                             <name>'.$messages[0]->getContact()->getTrueName().'</name>
