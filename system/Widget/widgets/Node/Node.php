@@ -120,6 +120,9 @@ class Node extends WidgetCommon
         
         $html = '
             <div class="breadcrumb">
+                <a href="?q=explore">
+                    '.t('Explore').'
+                </a>
                 <a href="?q=server&s='.$serverid.'">
                     '.$serverid.'
                 </a>
