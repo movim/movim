@@ -113,7 +113,6 @@ class Bookmark extends WidgetBase
     
     function ajaxBookmarkAdd($form) 
     {
-        \movim_log($form);
         if(!filter_var($form['url'], FILTER_VALIDATE_URL)) {
             $html = '<div class="message error">'.t('Bad URL').'</div>' ;
             RPC::call('movim_fill', 'bookmarkadderror', $html);

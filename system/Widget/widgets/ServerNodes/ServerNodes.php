@@ -150,6 +150,9 @@ class ServerNodes extends WidgetCommon
 
     function ajaxGetNodes($server)
     {
+        $nd = new modl\NodeDAO();
+        $nd->deleteNodes($server);
+        
         $r = new moxl\PubsubDiscoItems();
         $r->setTo($server)->request();
     }
@@ -171,6 +174,7 @@ class ServerNodes extends WidgetCommon
         
     ?>
     <div class="breadcrumb protect red ">
+        <a href="?q=explore"><?php echo t('Explore'); ?></a>
         <a href="?q=server&s=<?php echo $_GET['s']; ?>">
             <?php echo $_GET['s']; ?>
         </a>

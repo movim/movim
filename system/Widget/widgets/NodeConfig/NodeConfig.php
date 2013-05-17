@@ -33,7 +33,7 @@ class NodeConfig extends WidgetBase
         $html = '
             <a href="?q=server&s='.$server.'">
                 '.t("Return to %s's list of groups", $server).'
-            </a>';
+            </a><br /><br />';
             
         Notification::appendNotification(t('Group deleted'), 'success');
         RPC::call('movim_fill', 'handlingmessages', $html);
@@ -80,6 +80,9 @@ class NodeConfig extends WidgetBase
     }
     
     function ajaxGroupDelete($server, $node){
+        $nd = new modl\NodeDAO();
+        $nd->deleteNode($server, $node);
+        
         $r = new moxl\GroupDelete();
         $r->setTo($server)
           ->setNode($node)
