@@ -33,9 +33,7 @@ class Syndication extends WidgetBase
                 $xml = '
                     <?xml version="1.0" encoding="utf-8"?>
                     <feed xmlns="http://www.w3.org/2005/Atom">
-
                         <title>'.t("%s's feed",$messages[0]->getContact()->getTrueName()).'</title>
-                        <link href="'.BASE_URI.'?q=feed&f='.$from.'"/>
                         <updated>'.date('c').'</updated>
                         <author>
                             <name>'.$messages[0]->getContact()->getTrueName().'</name>
@@ -46,15 +44,15 @@ class Syndication extends WidgetBase
                     foreach($messages as $message) {
                         $title = $message->title;
                         if($title == null)
-                            $title = substr(strip_tags(html_entity_decode($message->content)), 0, 40).'...';
+                            $title = trim(substr(strip_tags(html_entity_decode($message->content)), 0, 40)).'...';
                         $xml .= '
                             <entry>
                                 <title>'.prepareString(html_entity_decode($title)).'</title>
                                 <id>urn:uuid:'.$message->nodeid.'</id>
                                 <updated>'.date('c', strtotime($message->published)).'</updated>
-                                <summary type="html">
+                                <content type="html">
                                     <![CDATA['.prepareString(html_entity_decode($message->content)).']]>
-                                </summary>
+                                </content>
                             </entry>
                         ';
                     }
@@ -64,6 +62,8 @@ class Syndication extends WidgetBase
             } else {
                 echo t('No public feed for this contact');
             }
+
+            //var_dump($messages);
         } else {
             echo t('No contact specified');
         }

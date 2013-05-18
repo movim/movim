@@ -26,8 +26,6 @@ class WidgetWrapper
     private $all_widgets = array();
     private $loaded_widgets = array();
     private $loaded_widgets_old;
-    //private $loaded_widgets_cached = array();
-    //private $cached_widgets;
 
     private static $instance;
 
@@ -201,21 +199,6 @@ class WidgetWrapper
             
         return $isevent;
     }
-    
-    /*function iterateCached($method, array $params = NULL)
-    {
-        $buff = array();
-                
-        $widgets = $this->cached_widgets;
-        
-        if(!empty($widgets)) {
-            foreach($widgets as $widget => $val) {
-                $buff[] = $this->run_widget($widget, $method, $params);
-            }
-        }
-
-        return $buff;
-    }*/
 
     /**
      * Returns the list of loaded CSS.

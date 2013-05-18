@@ -25,14 +25,15 @@ function movim_poll()
 		{
 			if(poller.status == 200) {
 				// Handling poll return.
-				if(poller.responseXML == null) {
+				if(poller.response == null) {
+                    
 				    if(empty_count == 3)
 				        movim_disconnect('&err=session');
 				    else
 				        empty_count++;
 				} else {
 				    empty_count = 0;
-                    rpc.handle_rpc(poller.responseXML);
+                    rpc.handle_rpc_json(poller.response);
                 }
             } else if(poller.status == 500 || poller.status == 400) {            
                     movim_disconnect('&err=internal');

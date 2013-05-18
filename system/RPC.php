@@ -57,73 +57,56 @@ class RPC
         ob_clean();
         ob_start();
 
-        // Starting XML output.
-        header('Content-Type: text/xml');
-        println('<?xml version="1.0" encoding="UTF-8" ?>');
-        println('<movimcontainer>');
-
         // Just in case (warning)
         if(!is_array(self::$funcalls)) {
-            self::$funcalls = array();
+            self::$funcalls = array('ping');
         }
 
-        foreach(self::$funcalls as $funcall) {
-            println('<funcall name="%s">', $funcall['func']);
-
-            if(is_array($funcall['params'])) {
-                foreach($funcall['params'] as $param) {
-                    println('<param><![CDATA[%s]]></param>', $param);
-                }
-            }
-
-            println('</funcall>');
-        }
-        println('</movimcontainer>');
+        header('Content-Type: application/json');
+        printf('%s', json_encode(self::$funcalls));
+        
     }
 
     /**
      * Handles incoming requests.
      */
-    public function handle()
+    public function handle_json()
     {
 		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
             moxl\ping();
 		} else {
-            $xml = file_get_contents('php://input');
-			$request = simplexml_load_string($xml);
+            $json = file_get_contents('php://input');
+
+            $request = json_decode($json);
 
 			// Loading the widget.
-			$widget_name = (string)$request['widget'];
+			$widget_name = (string)$request->widget;
 
             // Preparing the parameters and calling the function.
-            $params = array();
-            foreach($request->children() as $child) {
-                if($child->getName() == 'param') {
-                    if($child->count() > 0) { // Probably contains an array.
-                        $arr = array();
-                        foreach($child->children() as $data) {
-                            if($data->getName() == 'array') {
-                                foreach($data->children() as $elt) {
-                                    if($elt->getName() == 'arrayelt') {
-                                        if(isset($elt['name'])) {
-                                            $arr[(string)$elt['name']] = (string)$elt;
-                                        } else {
-                                            $arr[] = (string)$elt;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        $params[] = $arr;
-                    } else {
-                        $params[] = (string)$child;
-                    }
-                }
+            $params = (array)$request->params;
+
+            $result = array();
+
+
+            foreach($params as $p) {
+                if(is_object($p))
+                    array_push($result, (array)$p->container);
+                else
+                    array_push($result, $p);
             }
+
             
+
+            /*if($params[0]->container)
+                $params = array((array)$params[0]->container);
+            elseif(count($params) > 1)
+                $params;
+            else
+                $params = array($params[0]);*/
+
             $widgets = WidgetWrapper::getInstance(false);
-            $widgets->run_widget($widget_name, (string)$request['name'], $params);
-		}
+            $widgets->run_widget($widget_name, (string)$request->func, $result);
+        }
     }
 }
 
