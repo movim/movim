@@ -108,20 +108,19 @@ function MovimRPC()
 
 	    movim_xmlhttp.open('POST', 'jajax.php', true);
 
-        //var handler = this.handle_rpc;
         var handler = this.handle_rpc_json;
 
    	    movim_xmlhttp.onreadystatechange = function()
         {
-            handler(movim_xmlhttp.response);
+            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200)
+                handler(movim_xmlhttp.response);
             
-            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500) {
+            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500)
                 movim_disconnect('&err=internal');
-            }
         };
 
 	    movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-        //var data = this.generate_xml();
+
         var json = this.generate_json();
 	    movim_xmlhttp.send(json);
     };
@@ -165,19 +164,16 @@ function MovimRPC()
      */
     this.handle_rpc_json = function(json)
     {
-        if(json != null) {
-            var funcalls = eval(json);
-            if(funcalls != null) {
-                for(h = 0; h < funcalls.length; h++) {
-                    //console.log(funcalls);
-                    var funcall = funcalls[h];
-                    
-                    try {
-                        window[funcall.func](funcall.params);
-                    }
-                    catch(err) {
-                        log("Error caught: " + err.toString());
-                    }
+        var funcalls = eval(json);
+        if(funcalls != null) {
+            for(h = 0; h < funcalls.length; h++) {
+                var funcall = funcalls[h];
+                
+                try {
+                    window[funcall.func](funcall.params);
+                }
+                catch(err) {
+                    log("Error caught: " + err.toString());
                 }
             }
         }
