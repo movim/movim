@@ -36,27 +36,32 @@ class Chat extends WidgetBase
     {
 	    $arr = $presence->getPresence();
 
-        $txt = array(
-                1 => t('Online'),
-                2 => t('Away'),
-                3 => t('Do Not Disturb'),
-                4 => t('Extended Away'),
-                5 => t('Offline'),
-            );
-    
-	    
-        $html = '
-            <div class="message presence">
-                <span class="date">'.date('G:i', time()).'</span>'.
-                prepareString(htmlentities($txt[$arr['presence']], ENT_COMPAT, "UTF-8")).'
-            </div>';
+        $rc = new \modl\ContactDAO();
+        $contact = $rc->getRosterItem(echapJid($jid));
 
-        RPC::call('movim_append',
-                       'messages'.$arr['jid'],
-                       $html); 
-                       
-        RPC::call('scrollTalk',
-                       'messages'.$arr['jid']);
+        if(isset($contact) && $contact->chaton == 1) {
+            $txt = array(
+                    1 => t('Online'),
+                    2 => t('Away'),
+                    3 => t('Do Not Disturb'),
+                    4 => t('Extended Away'),
+                    5 => t('Offline'),
+                );
+        
+            
+            $html = '
+                <div class="message presence">
+                    <span class="date">'.date('G:i', time()).'</span>'.
+                    prepareString(htmlentities($txt[$arr['presence']], ENT_COMPAT, "UTF-8")).'
+                </div>';
+
+            RPC::call('movim_append',
+                           'messages'.$arr['jid'],
+                           $html); 
+                           
+            RPC::call('scrollTalk',
+                           'messages'.$arr['jid']);
+        }
 	}
     
     function onMessage($message)

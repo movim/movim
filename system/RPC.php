@@ -32,12 +32,30 @@ class RPC
         
         $args = array_map('trim', $args);
 
-        $funcall = array(
-            'func' => $funcname,
-            'params' => $args,
-            );
+        if(self::filter($funcname, $args)) {
+            $funcall = array(
+                'func' => $funcname,
+                'params' => $args,
+                );
 
-        self::$funcalls[] = $funcall;
+            self::$funcalls[] = $funcall;
+        }
+    }
+
+    /**
+     * Check if the event is not already called
+     */
+    private static function filter($funcname, $args)
+    {
+        foreach(self::$funcalls as $f) {
+            if(isset($f['func']) &&
+               isset($f['params']) &&
+               $f['func'] == $funcname &&
+               $f['params'][0] == $args[0])
+               return false;
+        }
+
+        return true;
     }
 
     public static function cdata($text)
