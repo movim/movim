@@ -69,10 +69,11 @@ class Chat extends WidgetBase
             $jid = $message->from;
         }
 
+        if($message->key != $message->from)
+            RPC::call('notify');
+
         $rd = new \modl\RosterLinkDAO();
 
-        //$chatpop = Cache::c('chatpop');
-        
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
         
@@ -82,14 +83,12 @@ class Chat extends WidgetBase
             
             $evt = new Event();
             $evt->runEvent('openchat');  
-            
-            //if($chatpop)
+
             RPC::call('movim_prepend',
                            'chats',
                            $this->prepareChat($contact));
             RPC::call('scrollAllTalks');
         } else if(isset($contact) && $message->body != '') {
-            
             $html = $this->prepareMessage($message);
 
             if($contact->chaton == 1) {
@@ -109,13 +108,6 @@ class Chat extends WidgetBase
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->jid);
-            //Sound and title notification, if the popup chat is closed
-
-            //if($chatpop)              
-                RPC::call('notify');
-            //Highlight the new chat message
-            RPC::call('setBackgroundColor', 'chatwindow'.$contact->jid, 'red');
-
         }            
     }
     
@@ -192,13 +184,10 @@ class Chat extends WidgetBase
             
             $rd = new \modl\RosterLinkDAO();
             $rd->setChat($jid, 2);
-            
-            /*$chatpop = Cache::c('chatpop');
-            
-            if($chatpop) */
-                RPC::call('movim_prepend',
-                               'chats',
-                               $this->prepareChat($contact));
+
+            RPC::call('movim_prepend',
+                           'chats',
+                           $this->prepareChat($contact));
                                
             RPC::call('scrollAllTalks');
 
@@ -316,7 +305,7 @@ class Chat extends WidgetBase
         $rc = new \modl\ContactDAO();
         $contacts = $rc->getRosterChat();
 
-        if(isset($contacts) /*&& $chatpop*/) {
+        if(isset($contacts)) {
             foreach($contacts as $contact) {
                 $html .= trim($this->prepareChat($contact));
             }

@@ -708,6 +708,7 @@ This is an [example link](http://example.com/).
               ->setNode($node)
               ->setLocation($geo)
               ->setContentHtml(rawurldecode($content))
+              ->enableComments()
               ->request();
         }
     }
