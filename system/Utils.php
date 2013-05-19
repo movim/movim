@@ -662,6 +662,13 @@ function checkJid($jid)
 }
 
 /**
+ * Remove the tabulations, carriage return and multiple whitespaces
+ */
+function cleanString($s) {
+    return preg_replace('/(\s\s+|\t|\n)/', ' ', $s);
+}
+
+/**
  * Return a URIfied string
  * @param string
  * @return string
