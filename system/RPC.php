@@ -31,6 +31,7 @@ class RPC
         array_shift($args);
         
         $args = array_map('trim', $args);
+        $args = array_map('cleanString', $args);
 
         if(self::filter($funcname, $args)) {
             $funcall = array(
