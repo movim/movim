@@ -95,15 +95,6 @@ class RPC
                     array_push($result, $p);
             }
 
-            
-
-            /*if($params[0]->container)
-                $params = array((array)$params[0]->container);
-            elseif(count($params) > 1)
-                $params;
-            else
-                $params = array($params[0]);*/
-
             $widgets = WidgetWrapper::getInstance(false);
             $widgets->run_widget($widget_name, (string)$request->func, $result);
         }

@@ -694,9 +694,14 @@ function movim_log($log) {
 //    var_dump($log);
 	print_r($log);
 	$dump = ob_get_clean();
-	$fh = fopen(BASE_PATH . 'log/movim.log', 'w');
+	/*$fh = fopen(BASE_PATH . 'log/movim.log', 'w');
 	fwrite($fh, $dump);
-	fclose($fh);
+	fclose($fh);*/
+
+    openlog('movim', LOG_NDELAY, LOG_USER);
+    $errlines = explode("\n",$dump);
+    foreach ($errlines as $txt) { syslog(LOG_DEBUG, $txt); } 
+    closelog();
 }
 
 ?>
