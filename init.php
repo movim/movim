@@ -6,6 +6,11 @@ require('loader.php');
 
 define('APP_TITLE', 'Movim');
 
+$file = "VERSION";
+if($f = fopen($file, 'r')) {
+    define('APP_VERSION', trim(fgets($f)));
+}
+
 {
 	$index_pos = strpos($_SERVER['PHP_SELF'], 'index.php');
 	$path = "";
