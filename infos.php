@@ -41,13 +41,10 @@ $doc->appendChild($infos);
     $whitelist->appendChild($doc->createTextNode($conf["xmppWhiteList"]));
     $infos->appendChild($whitelist);
 
-    $file = "VERSION";
-    if($f = fopen($file, 'r')){
-        $version = $doc->createElement("version");
-        $version->appendChild($doc->createTextNode(trim(fgets($f))));
-        $infos->appendChild($version);
-        fclose($f);
-    }
+    $version = $doc->createElement("version");
+    $version->appendChild($doc->createTextNode(APP_VERSION));
+    $infos->appendChild($version);
+    fclose($f);
     
     $phpversion = $doc->createElement("phpversion");
     $phpversion->appendChild($doc->createTextNode(phpversion()));

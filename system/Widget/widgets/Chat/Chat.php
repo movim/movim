@@ -237,6 +237,32 @@ class Chat extends WidgetBase
            ->setContent(htmlspecialchars(rawurldecode($message)))
            ->request();
     }
+
+    /**
+     * Send a "composing" message
+     * 
+     * @param string $to
+     * @return void
+     */
+    function ajaxSendComposing($to)
+    {
+        $mc = new \moxl\MessageComposing();
+        $mc->setTo($to)
+           ->request();
+    }
+
+    /**
+     * Send a "paused" message
+     * 
+     * @param string $to
+     * @return void
+     */
+    function ajaxSendPaused($to)
+    {
+        $mp = new \moxl\MessagePaused();
+        $mp->setTo($to)
+           ->request();
+    }
     
 	/**
 	 * Close a talk
@@ -340,7 +366,7 @@ class Chat extends WidgetBase
             $tabstyle = ' style="display: none;" ';            
             $panelstyle = ' style="display: block;" ';
         }
-        
+
         $html = '
             <div class="chat" 
                  onclick="this.querySelector(\'textarea\').focus()"
@@ -364,8 +390,30 @@ class Chat extends WidgetBase
                     <div class="text">
                          <textarea 
                             rows="1"
-                            onkeyup="movim_textarea_autoheight(this);"
-                            onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").' return false; }"
+                            id="textarea'.$contact->jid.'"
+                            onkeypress="
+                                if(event.keyCode == 13) {
+                                    '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
+                                    lastkeypress = new Date().getTime()+1000;
+                                    return false;
+                                }
+
+                                if(lastkeypress < new Date().getTime())
+                                    '.$this->genCallAjax('ajaxSendComposing', "'".$contact->jid."'").'
+
+                                lastkeypress = new Date().getTime()+1000;
+                            "
+                            onkeyup="
+                                movim_textarea_autoheight(this);
+                                var val = this.value;
+                                setTimeout(function()
+                                {
+                                    if(lastkeypress < new Date().getTime() && val != \'\') {
+                                    '.$this->genCallAjax('ajaxSendPaused', "'".$contact->jid."'").'
+                                        lastkeypress = new Date().getTime()+1000;
+                                    }
+                                },1100); // Listen for 2 seconds of silence
+                            "
                         ></textarea>
                     </div>
                 </div>
@@ -376,6 +424,7 @@ class Chat extends WidgetBase
                     </div>
                 </div>
             </div>
+
             ';
         return $html;
     }
