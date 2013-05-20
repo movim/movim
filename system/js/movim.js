@@ -1,5 +1,7 @@
 var movimPollHandlers = new Array();
 var onloaders = new Array();
+var lastkeypress = new Date().getTime();
+var lastkeyup = new Date().getTime();
 
 /**
  * Adds a function to the onload event.
@@ -93,6 +95,13 @@ function movim_toggle_class(element, classname) {
         movim_remove_class(element,classname);
     else
         movim_add_class(element, classname);
+}
+
+function movim_ajax_script() {
+    var s = document.querySelectorAll('.ajaxscript');
+    console.log(s);
+    for (var i=0; i<s.length; i++)
+        eval(s.item(i).firstChild.innerHTML);
 }
 
 /**
