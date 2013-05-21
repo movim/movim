@@ -2,6 +2,8 @@
 
 ob_start();
 
+mb_internal_encoding("UTF-8");
+
 require('loader.php');
 
 define('APP_TITLE', 'Movim');

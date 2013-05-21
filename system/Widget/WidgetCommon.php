@@ -82,23 +82,9 @@ class WidgetCommon extends WidgetBase {
             $comments = $this->printComments($post, $comments, $public);
         else
 			$comments = '';
-        //else
-        //$comments = '';
             
         if($this->user->getLogin() == $post->jid) 
             $toolbox = $this->getToolbox($post);
-        /*
-        <span class="fold">
-                        <a 
-                        href="#" 
-                        onclick="'.
-                            $this->genCallAjax(
-                                'ajaxPostFold', 
-                                "'".$post->nodeid."'").' 
-                            movim_toggle_class(\'#'.$post->nodeid.'\',\'folded\')">'.
-                            $fold.'
-                        </a>
-                    </span>*/
         
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
@@ -316,180 +302,6 @@ class WidgetCommon extends WidgetBase {
         else
             return false;
     }    
-    /*
-    protected function preparePost($message, $comments = false) {        
-        $tmp = '<a name="'.$message[0]->getData('nodeid').'"></a>';
-        
-        if(isset($message[1])) {
-            $tmp = '<div class="post ';
-            
-            if($message[0]->getData('jid') == $this->user->getLogin())
-                $tmp .= 'me';
-
-            $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
-            
-                    <a href="?q=friend&f='.$message[0]->getData('jid').'">
-                        <img class="avatar" src="'.$message[1]->getPhoto('s').'">
-                    </a>
-                    
-                    <div id="'.$message[0]->getData('nodeid').'bubble" class="postbubble ';
-            if($this->user->getLogin() == $message[0]->getData('jid')) {
-                $tmp .= 'me ';
-                if($message[0]->getData('public') == 1)
-                    $tmp .= 'protect black';
-                else
-                    $tmp .= 'protect orange';
-            }
-        
-            if($message[1]->getTrueName() == null)
-                $name = $message[0]->getData('jid');
-            else
-                $name = $message[1]->getTrueName();
-                    
-            $tmp .= '">
-
-                    <span>
-                        <a href="?q=friend&f='.$message[0]->getData('jid').'">'.$name.'</a>
-                    </span>
-                    <span class="date">
-                        '.prepareDate(strtotime($message[0]->getData('updated'))).'
-                    </span>';                    
-                    
-            $tmp .= '<div class="content">
-                        '.prepareString(html_entity_decode($message[0]->getData('content'))). '</div>';
-                                    
-            if($message[0]->getPlace() != false)
-                $tmp .= '<span class="place">
-                            <a 
-                                target="_blank" 
-                                href="http://www.openstreetmap.org/?lat='.$message[0]->getData('lat').'&lon='.$message[0]->getData('lon').'&zoom=10"
-                            >'.$message[0]->getPlace().'</a>
-                         </span>';
-                         
-            if($message[0]->getData('jid') != $message[0]->getData('uri'))
-                $tmp .= '<span class="recycle">
-                            <a href="?q=friend&f='.$message[0]->getData('uri').'">'.$message[0]->getData('name').'</a>
-                         </span>';
-                         
-            $tmp .= '<div class="clear"></div>';
-              
-            if($message[0]->getData('commentson') == 1) {
-                $tmp .= '<div class="comments" id="'.$message[0]->getData('nodeid').'comments">';
-
-                $commentshtml = $this->prepareComments($comments);
-                
-                if($commentshtml != false)
-                    $tmp .= $commentshtml;
-
-                $tmp .= '
-                         <div class="comment">
-                                <a 
-                                    class="getcomments icon bubble" 
-                                    style="margin-left: 0px;" 
-                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message[0]->getData('commentplace')."'", "'".$message[0]->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
-                                        t('Get the comments').'
-                                </a>
-                            </div></div>';
-                $tmp .= '<div class="comments">
-                            <div 
-                                class="comment"
-                                style="border-bottom: none;"
-                                onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
-                                <a class="getcomments icon bubbleadd">'.t('Add a comment').'</a>
-                            </div>
-                            <table id="commentsubmit">
-                                <tr>
-                                    <td>
-                                        <textarea id="'.$message[0]->getData('nodeid').'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
-                                    </td>
-                                </tr>
-                                <tr class="commentsubmitrow">
-                                    <td style="width: 100%;"></td>
-                                    <td>
-                                        <a
-                                            onclick="
-                                                    if(document.getElementById(\''.$message[0]->getData('nodeid').'commentcontent\').value != \'\') {
-                                                        '.$this->genCallAjax(
-                                                            'ajaxPublishComment', 
-                                                            "'".$message[0]->getData('commentplace')."'", 
-                                                            "'".$message[0]->getData('nodeid')."'", 
-                                                            "encodeURIComponent(document.getElementById('".$message[0]->getData('nodeid')."commentcontent').value)").
-                                                            'document.getElementById(\''.$message[0]->getData('nodeid').'commentcontent\').value = \'\';
-                                                    }"
-                                            class="button tiny icon submit"
-                                            style="padding-left: 28px;"
-                                        >'.
-                                            t("Submit").'
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>';
-                $tmp .= '</div>';
-            }
-            
-              
-            $tmp .= '
-                </div>';
-            
-            if($this->user->getLogin() == $message[0]->getData('jid')) {
-                $tmp .= '
-                    <div class="tools">
-                        '.t("Change the privacy level").' : 
-                        <a
-							title="'.t("your post will appear in your Movim public feed").'"
-                            onclick="'.
-                                $this->genCallAjax(
-                                    'ajaxPrivacyPost', 
-                                    "'".$this->user->getLogin()."'", 
-                                    "'".$message[0]->getData('nodeid')."'",
-                                    "'black'").'" >
-                            '.t("Everyone").'</a>,
-                        <a
-                            onclick="'.
-                                $this->genCallAjax(
-                                    'ajaxPrivacyPost', 
-                                    "'".$this->user->getLogin()."'", 
-                                    "'".$message[0]->getData('nodeid')."'",
-                                    "'orange'").'" >
-                            '.t("Your contacts").'</a>
-                        <a
-                            style="float: right; display: none;";
-                            id="deleteno"
-                            onclick="
-                                this.parentNode.querySelector(\'#deleteyes\').style.display = \'none\';
-                                this.style.display = \'none\';
-                                "
-                            onclick="">
-                            ✘ '.t("No").'
-                        </a>
-                        <a
-                            style="float: right; padding-right: 1em; display: none;";
-                            id="deleteyes"
-                            onclick="'.
-                                $this->genCallAjax(
-                                    'ajaxDeletePost', 
-                                    "'".$this->user->getLogin()."'", 
-                                    "'".$message[0]->getData('nodeid')."'").'" >
-                            ✔ '.t("Yes").' 
-                        </a>
-                        <a
-                            style="float: right; padding-right: 1em;";
-                            onclick="
-                                this.parentNode.querySelector(\'#deleteyes\').style.display = \'inline\';
-                                this.parentNode.querySelector(\'#deleteno\').style.display = \'inline\';
-                                " 
-                            title="'.t("Delete this post").'">
-                            '.t("Delete this post").'
-                        </a>
-
-
-                    </div>';
-            }
-            $tmp .= '</div>';
-
-        }
-        return $tmp;
-    }*/
 
     protected function prepareComments($comments) {
         $tmp = false;
@@ -712,10 +524,6 @@ This is an [example link](http://example.com/).
               ->request();
         }
     }
-	
-	function onPostPublishError($error) {
-		Notification::appendNotification(t('Error').' : '.$error, 'error');
-	}
     
     function onComment($parent) {        
         $p = new \modl\ContactPostn();
@@ -792,25 +600,7 @@ This is an [example link](http://example.com/).
         RPC::commit();
     }
     
-    /*function ajaxPostFold($nodeid) {
-        $pd = new \modl\PostDAO();
-        $p = $pd->get($nodeid);
-        
-        $p->renew();
-
-        $public = $p->public;
-        
-        if($public == 0) {
-            $p->public = 2;
-            $pd->set($p);
-        } elseif($public != 0) {
-            $p->public = 0;
-            $pd->set($p);
-        }
-
-    }*/
-    
-    function onPostDelete($id) {
+    /*function onPostDelete($id) {
         RPC::call('movim_delete', $id);
     }
     
@@ -818,5 +608,5 @@ This is an [example link](http://example.com/).
         $html .=
             '<div class="message error">'.t('An error occured : ').$params[1].'</div>';
         RPC::call('movim_fill', $params[0] , $html);
-    }
+    }*/
 }
