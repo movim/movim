@@ -25,7 +25,6 @@ class NodeAffiliations extends WidgetBase
     {
         $this->registerEvent('pubsubaffiliations', 'onGroupMemberList');
         $this->registerEvent('pubsubaffiliationssubmited', 'onSubmit');
-        $this->registerEvent('pubsubaffiliationserror', 'onGroupMemberListError');
     }
     
     function prepareList($list) { //0:data 1:server 2:node
@@ -69,11 +68,6 @@ class NodeAffiliations extends WidgetBase
         $html = $this->prepareList($list);
         RPC::call('movim_fill', 'memberlist', $html); 
 		RPC::commit(); 
-    }
-    
-    function onGroupMemberListError($error) {        
-        Notification::appendNotification(t('Error').' : '.$error, 'error');
-        RPC::commit();
     }
     
     function ajaxChangeAffiliation($server, $node, $data){

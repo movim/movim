@@ -24,6 +24,7 @@ class Notification extends WidgetCommon
     {
     	$this->addcss('notification.css');
     	$this->addjs('notification.js');
+        $this->registerEvent('pubsuberror', 'onPubsubError');
     }
     
     static function appendNotification($message, $type = 'info')
@@ -34,6 +35,10 @@ class Notification extends WidgetCommon
         RPC::call('movim_append', 'notification', $html);
         RPC::call('removeDiff', $id);
         RPC::commit();
+    }
+
+    function onPubsubError($error) {
+        Notification::appendNotification($error, 'error');
     }
     
     function build()

@@ -23,15 +23,14 @@ class ServerNodes extends WidgetCommon
     function WidgetLoad()
     {
 		$this->registerEvent('discoitems', 'onDiscoItems');
-		$this->registerEvent('discoitemserror', 'onDiscoItemsError');
+		$this->registerEvent('discoerror', 'onDiscoError');
         $this->registerEvent('disconodes', 'onDiscoNodes');
         $this->registerEvent('creationsuccess', 'onCreationSuccess');
         $this->registerEvent('creationerror', 'onCreationError');
     }
     
-    function onDiscoItemsError($error)
+    function onDiscoError($error)
     {
-        Notification::appendNotification($error, 'error');
         RPC::call('movim_fill', 'servernodeshead', '');
     }
 
@@ -144,7 +143,6 @@ class ServerNodes extends WidgetCommon
     
     function onCreationError($error) {
         RPC::call('movim_fill', 'servernodes', '');
-        Notification::appendNotification(t('Error').' : '.$error, 'error');
         RPC::commit();
     }
 

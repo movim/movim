@@ -25,7 +25,6 @@ class NodeConfig extends WidgetBase
     {
         $this->registerEvent('pubsubconfig', 'onConfigForm');
         $this->registerEvent('pubsubconfigsubmited', 'onGroupConfig');
-        $this->registerEvent('pubsubconfigerror', 'onGroupConfigError');
         $this->registerEvent('deletionsuccess', 'onGroupDeleted');
     }
     
@@ -43,11 +42,6 @@ class NodeConfig extends WidgetBase
     function onGroupConfig($stanza) {        
         Notification::appendNotification(t('Group configuration saved'), 'success');
         RPC::commit();        
-    }
-    
-    function onGroupConfigError($error) {
-        Notification::appendNotification(t('Error').' : '.$error, 'error');
-        RPC::commit();
     }
     
     function onConfigForm($form) {
