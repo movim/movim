@@ -108,27 +108,21 @@ function MovimRPC()
 
 	    movim_xmlhttp.open('POST', 'jajax.php', true);
 
-        var handler = this.handle_rpc;
+        var handler = this.handle_rpc_json;
 
    	    movim_xmlhttp.onreadystatechange = function()
         {
-            //if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200) {
-		        handler(movim_xmlhttp.responseXML);
-            //}
-            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500) {
-                var url = window.location.href;
-                var urlparts = url.split('/');
-                var txt = urlparts[0]+'//';
-                for(i = 2; i < urlparts.length-1; i++) {
-                    txt = txt+urlparts[i]+'/'
-                }
-	            window.location.replace(txt+'index.php?q=disconnect&err=internal');
-            }
+            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200)
+                handler(movim_xmlhttp.response);
+            
+            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500)
+                movim_disconnect('&err=internal');
         };
 
-	    movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        var data = this.generate_xml();
-	    movim_xmlhttp.send(data);
+	    movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+
+        var json = this.generate_json();
+	    movim_xmlhttp.send(json);
     };
 
     /**
@@ -168,77 +162,29 @@ function MovimRPC()
     /**
      * Handles returns (xmlrpc)
      */
-    this.handle_rpc = function(xml)
+    this.handle_rpc_json = function(json)
     {
-        if(xml != null) {
-            var funcalls = xml.getElementsByTagName("funcall");
+        var funcalls = eval(json);
+        if(funcalls != null) {
             for(h = 0; h < funcalls.length; h++) {
-                var func = funcalls[h];
-                var funcname = func.attributes.getNamedItem("name").value;
-                var f = window[funcname];
-                var params = func.childNodes;
-
-                var aparams = new Array();
-
-                for(p = 0; p < params.length; p++) {
-                    if(params[p].nodeName != "param")
-                        continue;
-                    aparams.push(params[p].textContent);
-                }
-
+                var funcall = funcalls[h];
+                
                 try {
-                    f(aparams);
+                    window[funcall.func](funcall.params);
                 }
                 catch(err) {
                     log("Error caught: " + err.toString());
                 }
             }
         }
-    };
+    }
 
     /**
-     * Generates the XML document corresponding to the provided parameters.
+     * Generates the JSON document corresponding to the provided parameters.
      */
-    this.generate_xml = function()
+    this.generate_json = function()
     {
-        var params = "";
-        for(var i = 0; i < this.params.length; i++) {
-            params += '<param>';
-
-            // Argh! this is an array!
-            if(this.params[i].constructor == Array) {
-                var array = this.params[i]
-                params += "<array>\n";
-                for(var j = 0; j < array.length; j++) {
-                    params += "<arrayelt><![CDATA[" + array[j] + "]]></arrayelt>\n";
-                }
-                params += "</array>\n";
-            }
-            else if(this.params[i].constructor == Hash) {
-                var iter = this.params[i].iterate();
-                iter.start();
-                params += "<array>\n";
-                while(iter.next()) {
-                    params += '<arrayelt name="' + iter.key() + '">'
-                        + '<![CDATA[' + iter.val() + ']]>'
-                        + "</arrayelt>\n";
-                }
-                params += "</array>\n";
-            }
-            else {
-                params += '<![CDATA[' + this.params[i] + ']]>';
-            }
-
-            params +="</param>\n";
-        }
-
-        var request =
-            '<?xml version="1.0" encoding="UTF-8" ?>'
-            + '<funcall widget="'+ this.widget + '" name="' + this.func + '">' + "\n"
-            + params + "\n"
-            + '</funcall>' + "\n";
-
-        return request;
+        return JSON.stringify(this);
     };
 
     /* Properties */

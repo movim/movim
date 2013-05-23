@@ -233,7 +233,7 @@ class Vcard extends WidgetBase
                 $html .= '<div class="element"><label for="url">'.t('Website').'</label>
                             <input type="url" name ="url" class="content" value="'.$me->url.'">
                           </div>';
-                          
+                       
                 $html .= '<div class="element"><label for="avatar">'.t('Avatar').'</label>
                             <input type="file" onchange="vCardImageLoad(this.files);">
                             <img id="vCardPhotoPreview" src="data:'.$me->phototype.';base64,'.$me->photobin.'">
@@ -241,6 +241,12 @@ class Vcard extends WidgetBase
                             <input type="hidden" name="phototype"  value="'.$me->phototype.'"/>
                             <input type="hidden" name="photobin"  value="'.$me->photobin.'"/><br />
                           </div>';
+				
+				$html .= '<div class="element large" id="camdiv">
+							<video id="runningcam" class="squares" autoplay></video>
+							<canvas style="display:none;"></canvas><button id="shoot" class="hide" onclick="return false;">'.t("Cheese !").'</button>
+							<button id="capture" onclick="showVideo(); return false;">'.t("Take a snapshot from your webcam").'</button>
+						</div>';				
                       
                 $html .= '<div class="element large"><label for="desc">'.t('About Me').'</label>
                             <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->desc).'</textarea>

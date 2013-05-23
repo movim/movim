@@ -76,7 +76,7 @@ h1 {
 
 #nav .menu li a.main {
     opacity: 1;
-    width: 0px;
+    width: 40px;
 }
 
 #nav .menu li:last-child {
@@ -140,7 +140,7 @@ h1 {
     display: none;
 }
 
-.menu li a, .menu li a:hover,
+.menu li a:not(.button), .menu li a:hover,
 .menu li a.active, .menu li a.active:hover,
 .menu li label, .menu li label:hover {
     width: 0px;

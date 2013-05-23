@@ -28,7 +28,7 @@ set_time_limit(200);
 $polling = true;
 
 $rpc = new RPC();
-$rpc->handle();
+$rpc->handle_json();
 
 // Closing stuff
 WidgetWrapper::destroyInstance();

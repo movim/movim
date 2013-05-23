@@ -275,13 +275,32 @@ class Login extends WidgetBase {
                     </div>
                     <div class="element">
                         <a
-                            class="button icon yes"
+                            class="button"
                             onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;"
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
                     </div>
                     
                     <input style="display: none;" type="submit" id="submitb" name="submitb" value="submit"/>
+                    
+                    <div class="clear"></div>
+                    
+					<ul id="loginhelp">
+						<li id="jabber"><?php echo t('You can login using your favorite Jabber account')?>
+						<a href="#" onclick="fillExample('demonstration@movim.eu', 'demonstration');">
+							<?php echo t('or with our demonstration account'); ?>
+						</a>
+						</li>
+						<li id="gmail">
+							<?php echo t('%sGmail accounts are also compatible%s but are not fully supported',
+							'<a href="#" onclick="fillExample(\'your.id@gmail.com \', \'\');">', '</a>')?>
+						</li>
+						<li id="facebook">
+							<?php echo t('You can login with Facebook (chat only) using %s your.id@chat.facebook.com %s and your password',
+								'<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'); ?>
+						</li>
+					</ul>
+					
                     <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
                     
                     <div id="warning"><?php echo $this->displayWarning($_GET['err'], true); ?></div>
@@ -296,7 +315,8 @@ class Login extends WidgetBase {
                                 <?php echo t('Create one !'); ?>
                             </a>
                     </div>
-                                <div class="clear"></div>
+					<div class="clear"></div>
+
                 </form>
                 
             <?php

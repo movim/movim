@@ -17,22 +17,35 @@ time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+}
+
+#baseline {
+    width: 100%;
+    height: 10000%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: 
+    linear-gradient(red 1px, transparent 1px);
+    background-position: -1px -1px;
+    background-size: 14px 14px;
+    z-index: 999;
+    pointer-events: none;
 }
 
 /* Zeu CSS */
 
 body {
     font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
-    font-size: 0.8em;
+    font-size: 14px;
+    line-height: 1em;
     color: #4E4E4E;
     background-color: #082D50;
 
     margin: 0 auto;
     width: 1000px;
-    position: relative;
     
     background-attachment:fixed;
 }
@@ -58,12 +71,6 @@ body {
 }
 
 .carbon {
-/*
-    background:
-    radial-gradient(black 15%, transparent 16%) 0 0,
-    radial-gradient(black 15%, transparent 16%) 8px 8px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;*/
     background-size:16px 16px;
 }
 
@@ -146,20 +153,17 @@ hr {
 
 h1 {
     color: #183C67;
-    padding: 15px 20px; 
+    line-height: 2.5em;
     font-size: 1.5em;
-}
-
-h2:first-child {
-    padding-top: 0px;
+    margin: 0px;
+    padding: 0em 1em;
+    vertical-align: bottom;
 }
 
 h2 {
-    color: #777;
-    margin: 0.5em 0px;
-    margin-top: 1em;
-    padding: 0.3em 0px;
-    font-size: 1.15em;
+    color: #777;    
+    line-height: 2em;
+    margin: 1em 0em;
     border-bottom: 1px solid #CCC;
 }
 
@@ -169,12 +173,20 @@ h2.post-title {
 
 h3 {
     color: #777;
-    font-size: 1.1em;
-    padding: 0.3em 0px;
+    line-height: 2em;
 }
 
 p {
     text-align: justify;
+    line-height: 1.3em;
+}
+
+pre {
+    padding: 1em 0em;
+}
+
+code {
+    font-family: monospace;
 }
 
 /* For the simple xHTML lists */
@@ -197,6 +209,10 @@ ul.clean li {
     padding-top: 0px;
 }
 
+.paddedtopbottom {
+    padding: 0em 1.5em;
+}
+
 /* The main parts of the page */
 #top {
     z-index: 3;
@@ -207,7 +223,7 @@ ul.clean li {
     width: 800px;
     margin-right: 200px;
     position: relative;
-    margin-top: 55px;
+    margin-top: 4em;
 }
 
 #head {
@@ -216,15 +232,15 @@ ul.clean li {
 }
 
 #head .block {
-    min-height: 160px;
+    /*min-height: 160px;*/
     float: left;
     max-width: 260px;
     overflow: hidden;
     color: white;
     text-shadow: 0px 0px 2px #333;
-    font-size: 1em;
-    margin-right: 20px;
-    padding-top: 10px;
+    /*font-size: 1em;*/
+    margin-right: 1em;
+    /*padding-top: 10px;*/
 }
 
 #head .block:first-child {
@@ -233,15 +249,14 @@ ul.clean li {
 
 #head .block h1 {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-size: 2em;
+    font-size: 1.7em;
+    line-height: 2em;
     color: white;
     font-weight: bold;
-    margin: 0px;
-    padding: 10px 0px;
+    padding: 0px;
     background-repeat: no-repeat;
     background-position: right center;
     display: inline;
-    line-height: 1.2em;
     padding-right: 20px;
 }
 
@@ -265,22 +280,21 @@ ul.clean li {
     background-color: white;
     width: 150px;
     height: 150px;
-    margin-left: 22px;
-    margin-right: 9px;
+    margin-left: 1.8em;
+    margin-right: 1em;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5),  0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
 #head .block .textbubble {
     position: relative;
-    padding: 10px;
+    padding: 1em;
     text-align: center;
-    margin-top: 5px;
 }
 
 #head .block .textbubble:before {
     content: '\201C'; 
     position: absolute;
-    top: -10px;
+    top: 0.30em;
     left: 0px;
     font-size: 4em;
     color: rgba(255, 255, 255, 0.3);
@@ -290,7 +304,7 @@ ul.clean li {
 #head .block .textbubble:after {
     content: '\201D'; 
     position: absolute;
-    bottom: -25px;
+    bottom: -10px;
     right: 0px;
     font-size: 4em;
     color: rgba(255, 255, 255, 0.3);
@@ -315,8 +329,8 @@ ul.clean li {
     overflow: hidden;
     height: 100%;
     background-color: #EEE;
-    margin-top: -50px;
     /*border-bottom: 1px solid #555;*/
+    margin-top: -3em;
 }
 
 #left
@@ -325,9 +339,9 @@ ul.clean li {
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     float: left;
-    padding: 20px;
+    padding: 1em;
     width: 25%;
-    margin-top: 20px;
+    margin-top: 2em;
 }
 
 #left ul {
@@ -339,7 +353,7 @@ ul.clean li {
     float: right;
     width: 75%;
     background-color: white;
-    min-height: 600px;
+    min-height: 1000px;
 }
 
 #right
@@ -351,7 +365,7 @@ ul.clean li {
     right: 0px;
     /*border-left: 1px solid rgba(0, 0, 0, 0.8);*/
     pointer-events:none;
-    padding-top: 38px;
+    padding-top: 3em;
     height: 100%;
     overflow: auto;
     z-index: 2;
@@ -374,7 +388,6 @@ ul.clean li {
 #nav {
     margin: 0px;
     padding: 0px;
-    font-size: 13px;
     padding-top: 0px;
     text-decoration: none;
     width: 100%;
@@ -391,25 +404,30 @@ ul.clean li {
     margin: 0px auto;
     list-style-type: none;
     overflow: hidden;
+
 }
 
 .menu li {
     float: left;
+
 }
 
 .menu li input[type=checkbox] {
     display: none;
 }
 
-.menu li a, .menu li label {
-    line-height: 38px;
-    padding-left: 30px;
-    padding-right: 10px;
+.menu li a:not(.button), .menu li label {
+    line-height: 3em;
+    padding-left: 2.5em;
     display: block;
     color: #ccc;
-    min-height: 34px;
     background-repeat: no-repeat;
-    background-position: 7px 11px;
+    background-position: 0.7em center;
+    height: 3em;
+}
+
+.menu li a, .menu li label:last-child {
+    padding-right: 5px;
 }
 
 .menu li a.disconnect{
@@ -444,7 +462,7 @@ ul.clean li {
     color: transparent;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
-    background-position: center 7px;
+    background-position: center center;
 }
 
 .menu li .explore { background-image: url(../img/icons/menu/globe.png); }
@@ -458,15 +476,17 @@ ul.clean li {
 .menu li .search { background-image: url(../img/icons/menu/search.png); }
 .menu li .users, .menu li .account { background-image: url(../img/icons/menu/users.png); }
 .menu li .expand { background-image: url(../img/icons/menu/expand.png); }
+.menu li .contract { background-image: url(../img/icons/menu/contract.png); }
 .menu li .media { background-image: url(../img/icons/menu/folder.png); }
 .menu li .blog { background-image: url(../img/icons/menu/quill.png); }
 .menu li .admin { background-image: url(../img/icons/menu/admin.png); }
+.menu li .about { background-image: url(../img/icons/menu/info.png); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
     display: none;
     position: absolute;
-    bottom: 35px;
+    bottom: 3em;
     left: 0px;
     width: 100%;
     border-top: 1px solid rgba(100, 100, 100, 0.4);
@@ -514,10 +534,10 @@ ul li input[type=checkbox]:checked ~ .tabbed {
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     
     color: #fff;
-    padding: 10px;
+    padding: 0.5em;
     text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1);
-    font-size: 1.1em;
-    margin: 5px 0px;
+    /*font-size: 1.1em;*/
+    margin: 0.5em 0px;
     clear: both;
 }
 
@@ -550,13 +570,14 @@ ul li input[type=checkbox]:checked ~ .tabbed {
 	float: right;
     margin: 0px;
     padding: 0px;
-    font-size: 1.2em;
+    /*font-size: 1.2em;*/
     margin-right: 1.5em;
 }
 
 .filters li {
 	display: inline-block;
     padding: 0em 1.5em;
+    line-height: 2em;
 }
 
 .filters li:hover {
@@ -576,6 +597,7 @@ table thead {
 
 table thead tr td {
     text-align: center;
+    line-height: 2em;
 }
 
 table#list tbody tr:nth-child(2n+1) {
@@ -613,6 +635,20 @@ ul.list li a.action:hover {
     cursor: pointer;
 }
 
+ul.list li span.tag {
+    background-color: #555;
+    /*font-size: 0.9em;*/
+    color: white;
+    display: inline-block;
+    min-width: 3em;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 1.8em;
+    font-size: 0.8em;
+    float: right;
+    margin-top: -0.3em;
+}
+
 /* Thumb */
 ul.thumb {
     list-style-type: none;
@@ -638,18 +674,40 @@ ul.thumb a {
     height: 100px;
 }
 
+/* Definition list */
+
+dl > * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    padding: 0 1em;
+    display: inline-block;
+    line-height: 2em;
+    vertical-align: middle;
+}
+
+dl dt {
+    text-align: right;
+    font-weight: bold;
+    width: 25%;
+}
+
+dl dd {
+    text-align: left;
+    width: 75%;
+}
+
 /* Breadcrumb */
 .breadcrumb {
-    padding: 0px 5px;
-    height: 28px;
+    height: 2em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .breadcrumb > a {
     display: inline-block;
-    line-height: 28px;
-    padding-left: 30px;
-    padding-right: 15px;
+    line-height: 2em;
+    padding-left: 2em;
+    padding-right: 1em;
     position: relative;
     overflow: hidden;
 }
@@ -676,24 +734,42 @@ ul.thumb a {
 
 /* Popup */
 .popup {
-    background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
-    display: none;
-    top: 0px;
-    left: 0px;
-    z-index: 5;
+    top: 10%;
+    left: 25%;
+    z-index: 10;
     width: 50%;
-    height: 80%;
-    padding: 10% 25%;
+    max-height: 80%;
+    overflow-y: auto;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 2em;
+    border-radius: 3px;
+    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
-.popup span {
+.popup:after {
+    position: fixed;
+    display: block;
+    z-index: 4;
+    top: 0px;
+    left: 0px;
+    content: "";
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.popup span, .popup p, .popup pre, .popup h2, .popup h3, .popup a {
     color: white;
 }
 
 .popup legend {
     color: white;
-    font-size: 1.3em !important;
+    /*font-size: 1.3em !important;*/
     border: 0px !important;
     text-shadow: 0px -1px 0px black;
 }

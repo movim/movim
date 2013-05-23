@@ -1,5 +1,7 @@
 var movimPollHandlers = new Array();
 var onloaders = new Array();
+var lastkeypress = new Date().getTime();
+var lastkeyup = new Date().getTime();
 
 /**
  * Adds a function to the onload event.
@@ -95,6 +97,13 @@ function movim_toggle_class(element, classname) {
         movim_add_class(element, classname);
 }
 
+function movim_ajax_script() {
+    var s = document.querySelectorAll('.ajaxscript');
+    console.log(s);
+    for (var i=0; i<s.length; i++)
+        eval(s.item(i).firstChild.innerHTML);
+}
+
 /**
  * Set a global var for widgets to see if document is focused
  */
@@ -134,13 +143,13 @@ function getFeedMessage() {
     return encodeURIComponent(message);
 }
 
-function frameHeight(n) {
-    if(n.className == 'button tiny icon add merged left') {
-        n.className = 'button tiny icon rm merged left';
-    document.querySelector('iframe#feedmessagecontent-frame').style.height = '400px';
+function frameHeight(n, text) {
+    if(n.className == 'button tiny icon alone add merged left') {
+        n.className = 'button tiny icon alone rm merged left';
+        text.style.minHeight = '20em';
     } else {
-        n.className = 'button tiny icon add merged left';
-        document.querySelector('iframe#feedmessagecontent-frame').style.height = '50px';
+        n.className = 'button tiny icon alone add merged left';
+        text.style.minHeight = '1.5em';
     }
 }
 
@@ -154,3 +163,21 @@ function richText(n) {
     }
 }
 
+/**
+ * Geolocalisation function
+ */
+
+function setPosition(node) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition( 
+            function (position) {
+                var poss = position.coords.latitude +','+position.coords.longitude;
+                node.value = poss;
+                
+                showPosition(poss);
+            }, 
+            // next function is the error callback
+            function (error) { }
+            );
+    }
+}

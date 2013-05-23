@@ -97,7 +97,7 @@ class ProfileData extends WidgetBase
                 <div id="mapdiv" style="width: auto; height: 250px; display: none;"></div>
                 <div class="clear"></div>
                 <a 
-                    class="button tiny icon add" 
+                    class="button tiny icon geo" 
                     onclick="getMyPosition(); this.style.display = \'none\';">'.
                     t('Update my position').'
                 </a>
@@ -109,7 +109,7 @@ class ProfileData extends WidgetBase
                     style="display: none; margin-top: 1em;" 
                     id="myposrefuse" 
                     onclick="hidePositionChoice();"
-                    class="button tiny icon no merged right">'.t('Cancel').'</a>
+                    class="button tiny icon alone no merged right"></a>
             </div>';
         
         return $html;
