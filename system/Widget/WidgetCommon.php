@@ -61,6 +61,12 @@ class WidgetCommon extends WidgetBase {
                     >'.t('Place').'</a>
                 </span>';
                 
+        if($post->jid != '')
+			$c = '
+				<span>
+					<a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
+				</span>';
+                
         if($post->links)
 			$enc = $this->printEnclosures($post->links);
                 
@@ -76,23 +82,9 @@ class WidgetCommon extends WidgetBase {
             $comments = $this->printComments($post, $comments, $public);
         else
 			$comments = '';
-        //else
-        //$comments = '';
             
         if($this->user->getLogin() == $post->jid) 
             $toolbox = $this->getToolbox($post);
-        /*
-        <span class="fold">
-                        <a 
-                        href="#" 
-                        onclick="'.
-                            $this->genCallAjax(
-                                'ajaxPostFold', 
-                                "'".$post->nodeid."'").' 
-                            movim_toggle_class(\'#'.$post->nodeid.'\',\'folded\')">'.
-                            $fold.'
-                        </a>
-                    </span>*/
         
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
@@ -103,10 +95,7 @@ class WidgetCommon extends WidgetBase {
                 <div id="'.$post->nodeid.'bubble" class="postbubble '.$access.'">
 					<div class="header">
 						<span class="title">'.$title.'</span>
-						
-						<span>
-							<a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
-						</span>
+						'.$c.'
 						<span class="date">
 							'.prepareDate(strtotime($post->published)).'
 						</span>
@@ -313,180 +302,6 @@ class WidgetCommon extends WidgetBase {
         else
             return false;
     }    
-    /*
-    protected function preparePost($message, $comments = false) {        
-        $tmp = '<a name="'.$message[0]->getData('nodeid').'"></a>';
-        
-        if(isset($message[1])) {
-            $tmp = '<div class="post ';
-            
-            if($message[0]->getData('jid') == $this->user->getLogin())
-                $tmp .= 'me';
-
-            $tmp .= '" id="'.$message[0]->getData('nodeid').'" >
-            
-                    <a href="?q=friend&f='.$message[0]->getData('jid').'">
-                        <img class="avatar" src="'.$message[1]->getPhoto('s').'">
-                    </a>
-                    
-                    <div id="'.$message[0]->getData('nodeid').'bubble" class="postbubble ';
-            if($this->user->getLogin() == $message[0]->getData('jid')) {
-                $tmp .= 'me ';
-                if($message[0]->getData('public') == 1)
-                    $tmp .= 'protect black';
-                else
-                    $tmp .= 'protect orange';
-            }
-        
-            if($message[1]->getTrueName() == null)
-                $name = $message[0]->getData('jid');
-            else
-                $name = $message[1]->getTrueName();
-                    
-            $tmp .= '">
-
-                    <span>
-                        <a href="?q=friend&f='.$message[0]->getData('jid').'">'.$name.'</a>
-                    </span>
-                    <span class="date">
-                        '.prepareDate(strtotime($message[0]->getData('updated'))).'
-                    </span>';                    
-                    
-            $tmp .= '<div class="content">
-                        '.prepareString(html_entity_decode($message[0]->getData('content'))). '</div>';
-                                    
-            if($message[0]->getPlace() != false)
-                $tmp .= '<span class="place">
-                            <a 
-                                target="_blank" 
-                                href="http://www.openstreetmap.org/?lat='.$message[0]->getData('lat').'&lon='.$message[0]->getData('lon').'&zoom=10"
-                            >'.$message[0]->getPlace().'</a>
-                         </span>';
-                         
-            if($message[0]->getData('jid') != $message[0]->getData('uri'))
-                $tmp .= '<span class="recycle">
-                            <a href="?q=friend&f='.$message[0]->getData('uri').'">'.$message[0]->getData('name').'</a>
-                         </span>';
-                         
-            $tmp .= '<div class="clear"></div>';
-              
-            if($message[0]->getData('commentson') == 1) {
-                $tmp .= '<div class="comments" id="'.$message[0]->getData('nodeid').'comments">';
-
-                $commentshtml = $this->prepareComments($comments);
-                
-                if($commentshtml != false)
-                    $tmp .= $commentshtml;
-
-                $tmp .= '
-                         <div class="comment">
-                                <a 
-                                    class="getcomments icon bubble" 
-                                    style="margin-left: 0px;" 
-                                    onclick="'.$this->genCallAjax('ajaxGetComments', "'".$message[0]->getData('commentplace')."'", "'".$message[0]->getData('nodeid')."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
-                                        t('Get the comments').'
-                                </a>
-                            </div></div>';
-                $tmp .= '<div class="comments">
-                            <div 
-                                class="comment"
-                                style="border-bottom: none;"
-                                onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
-                                <a class="getcomments icon bubbleadd">'.t('Add a comment').'</a>
-                            </div>
-                            <table id="commentsubmit">
-                                <tr>
-                                    <td>
-                                        <textarea id="'.$message[0]->getData('nodeid').'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
-                                    </td>
-                                </tr>
-                                <tr class="commentsubmitrow">
-                                    <td style="width: 100%;"></td>
-                                    <td>
-                                        <a
-                                            onclick="
-                                                    if(document.getElementById(\''.$message[0]->getData('nodeid').'commentcontent\').value != \'\') {
-                                                        '.$this->genCallAjax(
-                                                            'ajaxPublishComment', 
-                                                            "'".$message[0]->getData('commentplace')."'", 
-                                                            "'".$message[0]->getData('nodeid')."'", 
-                                                            "encodeURIComponent(document.getElementById('".$message[0]->getData('nodeid')."commentcontent').value)").
-                                                            'document.getElementById(\''.$message[0]->getData('nodeid').'commentcontent\').value = \'\';
-                                                    }"
-                                            class="button tiny icon submit"
-                                            style="padding-left: 28px;"
-                                        >'.
-                                            t("Submit").'
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>';
-                $tmp .= '</div>';
-            }
-            
-              
-            $tmp .= '
-                </div>';
-            
-            if($this->user->getLogin() == $message[0]->getData('jid')) {
-                $tmp .= '
-                    <div class="tools">
-                        '.t("Change the privacy level").' : 
-                        <a
-							title="'.t("your post will appear in your Movim public feed").'"
-                            onclick="'.
-                                $this->genCallAjax(
-                                    'ajaxPrivacyPost', 
-                                    "'".$this->user->getLogin()."'", 
-                                    "'".$message[0]->getData('nodeid')."'",
-                                    "'black'").'" >
-                            '.t("Everyone").'</a>,
-                        <a
-                            onclick="'.
-                                $this->genCallAjax(
-                                    'ajaxPrivacyPost', 
-                                    "'".$this->user->getLogin()."'", 
-                                    "'".$message[0]->getData('nodeid')."'",
-                                    "'orange'").'" >
-                            '.t("Your contacts").'</a>
-                        <a
-                            style="float: right; display: none;";
-                            id="deleteno"
-                            onclick="
-                                this.parentNode.querySelector(\'#deleteyes\').style.display = \'none\';
-                                this.style.display = \'none\';
-                                "
-                            onclick="">
-                            ✘ '.t("No").'
-                        </a>
-                        <a
-                            style="float: right; padding-right: 1em; display: none;";
-                            id="deleteyes"
-                            onclick="'.
-                                $this->genCallAjax(
-                                    'ajaxDeletePost', 
-                                    "'".$this->user->getLogin()."'", 
-                                    "'".$message[0]->getData('nodeid')."'").'" >
-                            ✔ '.t("Yes").' 
-                        </a>
-                        <a
-                            style="float: right; padding-right: 1em;";
-                            onclick="
-                                this.parentNode.querySelector(\'#deleteyes\').style.display = \'inline\';
-                                this.parentNode.querySelector(\'#deleteno\').style.display = \'inline\';
-                                " 
-                            title="'.t("Delete this post").'">
-                            '.t("Delete this post").'
-                        </a>
-
-
-                    </div>';
-            }
-            $tmp .= '</div>';
-
-        }
-        return $tmp;
-    }*/
 
     protected function prepareComments($comments) {
         $tmp = false;
@@ -541,54 +356,174 @@ class WidgetCommon extends WidgetBase {
     
     protected function prepareSubmitForm($server = '', $node = '') {
 		$html = '
+			<script type="text/javascript">
+				function showPosition(poss) {
+					'.$this->genCallAjax('ajaxShowPosition', "poss").'
+				}
+			</script>
+			
+            <div class="popup" id="markdownhelp">
+
+				<a 
+					class="button tiny black" 
+					style="float: right;"
+					onclick="
+						movim_toggle_display(\'#markdownhelp\');"
+				>'.t('Close').'</a>
+				<h2>Title level</h2>
+				<pre>
+A First Level Header
+====================
+
+A Second Level Header
+---------------------
+
+Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.
+
+The quick brown fox jumped over the lazy
+dog\'s back.
+
+### Header 3
+
+> This is a blockquote.
+> 
+> This is the second paragraph in the blockquote.
+>
+> ## This is an H2 in a blockquote
+				</pre>
+				<h2>Phrase Emphasis</h2>
+				<pre>
+Some of these words *are emphasized*.
+Some of these words _are emphasized also_.
+
+Use two asterisks for **strong emphasis**.
+Or, if you prefer, __use two underscores instead__.
+				</pre>
+				<h2>Lists</h2>
+				<pre>
+*   Candy.
+*   Gum.
+*   Booze.
+				</pre>
+				<h2>Links</h2>
+				<pre>
+This is an [example link](http://example.com/).
+				</pre>
+				<h2>Learn more</h2>
+				<p>
+					<a href="http://daringfireball.net/projects/markdown/basics" target="_blank">
+						The whole help is avaiable here : http://daringfireball.net/projects/markdown/basics
+					</a>
+				</p>
+				<p>
+					<br />
+				</p>
+
+            </div>
 			<table id="feedsubmitform">
 				<tbody>
-					<tr>
-						<td>
-							<textarea 
-								placeholder="'.t("What's new ?").'" 
-								id="feedmessagecontent" 
-								class="steditor"
-								onkeyup="movim_textarea_autoheight(this);"></textarea>
-						</td>
-					</tr>
-					
-					<script type="text/javascript">
-						var ste = new SimpleTextEditor("feedmessagecontent", "ste");
-						ste.init();
-					</script>
-					
-					<tr id="feedsubmitrow">
-						<td>
-							<a 
-								title="Plus"
-								href="#" 
-								onclick="frameHeight(this);"
-								style="float: left;"
-								class="button tiny icon add merged left">'.t("Size").'
-							</a>
-							<a 
-								title="Rich"
-								href="#" 
-								onclick="richText(this);"
-								style="float: left;"
-								class="button tiny icon yes merged right">'.t("Rich Text").'
-							</a>
-							<a 
-								title="'.t("Submit").'"
-								href="#" 
-								id="feedmessagesubmit" 
-								onclick="ste.submit();'.$this->genCallAjax('ajaxPublishItem', "'".$server."'", "'".$node."'",'getFeedMessage()').'; ste.clearContent();"
-								class="button tiny icon submit">'.t("Submit").'
-							</a>
-						</td>
-					</tr>
+					<form name="postpublish" id="postpublish">
+						<tr>
+							<td>
+								<textarea 
+									name="content" 
+									id="postpublishcontent"
+									onkeyup="movim_textarea_autoheight(this);" 
+									placeholder="'.t("What's new ?").'" ></textarea>
+							</td>
+						</tr>
+						<tr id="feedsubmitrow">
+							<td>
+								<input type="hidden" id="latlonpos" name="latlonpos"/>
+								<a 
+									title="'.t("Submit").'"
+									href="#" 
+									id="feedmessagesubmit" 
+									onclick="'.$this->genCallAjax('ajaxPublishItem', "'".$server."'", "'".$node."'","movim_parse_form('postpublish')").';
+											document.querySelector(\'#postpublish\').reset();
+											movim_textarea_autoheight(document.querySelector(\'#postpublishcontent\'));"
+									class="button tiny icon yes">'.
+									t("Submit").'
+								</a>
+								<a 
+									title="Plus"
+									href="#"
+									id="postpublishsize"
+									onclick="frameHeight(this, document.querySelector(\'#postpublishcontent\'));"
+									style="float: left;"
+									class="button tiny icon alone add merged left"></a><a 
+									class="button tiny icon alone help merged" 
+									style="float: left;"
+									onclick="
+										movim_toggle_display(\'#markdownhelp\');"
+								></a><a title="'.t("Geolocalisation").'"
+									onclick="setPosition(document.querySelector(\'#latlonpos\'));"
+									style="float: left;"
+									class="button tiny icon alone geo merged right"></a>
+								<span id="postpublishlocation"></span>
+
+							</td>
+						</tr>
+					</form>
 				</tbody>
 			</table>';
                 
                 
 		return $html;
 	}
+	
+	function ajaxShowPosition($pos)
+	{
+		list($lat,$lon) = explode(',', $pos);	
+		
+		$pos = json_decode(
+					file_get_contents('http://nominatim.openstreetmap.org/reverse?format=json&lat='.$lat.'&lon='.$lon.'&zoom=27&addressdetails=1')
+				);
+
+        RPC::call('movim_fill', 'postpublishlocation' , (string)$pos->display_name);
+        RPC::commit();
+	}
+	
+    function ajaxPublishItem($server, $node, $form)
+    {
+		$content = $form['content'];
+		
+		list($lat,$lon) = explode(',', $form['latlonpos']);
+		
+		$pos = json_decode(
+					file_get_contents('http://nominatim.openstreetmap.org/reverse?format=json&lat='.$lat.'&lon='.$lon.'&zoom=27&addressdetails=1')
+				);
+				
+		$geo = array(
+			'latitude'      => (string)$pos->lat,
+			'longitude'     => (string)$pos->lon,
+			'altitude'      => (string)$pos->alt,
+			'country'       => (string)$pos->address->country,
+			'countrycode'   => (string)$pos->address->country_code,
+			'region'        => (string)$pos->address->county,
+			'postalcode'    => (string)$pos->address->postcode,
+			'locality'      => (string)$pos->address->city,
+			'street'        => (string)$pos->address->path,
+			'building'      => (string)$pos->address->building,
+			'text'          => (string)$pos->display_name,
+			'uri'           => ''//'http://www.openstreetmap.org/'.urlencode('?lat='.(string)$pos->lat.'&lon='.(string)$pos->lon.'&zoom=10')
+			);
+			
+        if($content != '') {
+			$content = Michelf\Markdown::defaultTransform($content);
+
+            $p = new moxl\PubsubPostPublish();
+            $p->setFrom($this->user->getLogin())
+              ->setTo($server)
+              ->setNode($node)
+              ->setLocation($geo)
+              ->setContentHtml(rawurldecode($content))
+              ->enableComments()
+              ->request();
+        }
+    }
     
     function onComment($parent) {        
         $p = new \modl\ContactPostn();
@@ -632,18 +567,6 @@ class WidgetCommon extends WidgetBase {
           ->request();
 	}
     
-    function ajaxPublishItem($server, $node, $content)
-    {
-        if($content != '') {
-            $p = new moxl\PubsubPostPublish();
-            $p->setFrom($this->user->getLogin())
-              ->setTo($server)
-              ->setNode($node)
-              ->setContent(htmlspecialchars(rawurldecode($content)))
-              ->request();
-        }
-    }
-    
     function ajaxPublishComment($to, $id, $content) {
         if($content != '') {
             $p = new moxl\MicroblogCommentPublish();
@@ -677,25 +600,7 @@ class WidgetCommon extends WidgetBase {
         RPC::commit();
     }
     
-    /*function ajaxPostFold($nodeid) {
-        $pd = new \modl\PostDAO();
-        $p = $pd->get($nodeid);
-        
-        $p->renew();
-
-        $public = $p->public;
-        
-        if($public == 0) {
-            $p->public = 2;
-            $pd->set($p);
-        } elseif($public != 0) {
-            $p->public = 0;
-            $pd->set($p);
-        }
-
-    }*/
-    
-    function onPostDelete($id) {
+    /*function onPostDelete($id) {
         RPC::call('movim_delete', $id);
     }
     
@@ -703,5 +608,5 @@ class WidgetCommon extends WidgetBase {
         $html .=
             '<div class="message error">'.t('An error occured : ').$params[1].'</div>';
         RPC::call('movim_fill', $params[0] , $html);
-    }
+    }*/
 }

@@ -25,6 +25,7 @@ class Node extends WidgetCommon
 		$this->registerEvent('stream', 'onStream');
 		$this->registerEvent('nostream', 'onStream');
 		$this->registerEvent('pubsubsubscribed', 'onPubsubSubscribed');
+		$this->registerEvent('pubsubsubscribederror', 'onPubsubSubscribedError');
 		$this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
     }
     
@@ -35,11 +36,14 @@ class Node extends WidgetCommon
         RPC::call('movim_fill', 'node', $html);
     }
     
+    function onPubsubSubscribedError($params)
+    {        
+        $this->onPubsubSubscribed($params);
+    }
+    
     function onPubsubUnsubscribed($params)
     {
-        $html = $this->prepareGroup($params[0], $params[1]);
-        RPC::call('setBookmark');
-        RPC::call('movim_fill', 'node', $html);
+        $this->onPubsubSubscribed($params);
     }
     
     function onStream($payload) {
@@ -110,6 +114,9 @@ class Node extends WidgetCommon
         
         $html = '
             <div class="breadcrumb">
+                <a href="?q=explore">
+                    '.t('Explore').'
+                </a>
                 <a href="?q=server&s='.$serverid.'">
                     '.$serverid.'
                 </a>
@@ -124,7 +131,7 @@ class Node extends WidgetCommon
                     href="#"
                     onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").'
                     this.className=\'button tiny icon loading\'; this.onclick=null;"
-                    class="button tiny icon follow">
+                    class="button tiny icon refresh">
                     '.('Refresh').'
                 </a>
                 

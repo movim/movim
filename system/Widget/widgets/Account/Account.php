@@ -76,7 +76,7 @@ class Account extends WidgetBase {
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
 
-                if($response->iq->query->instructions) {
+                if($response->iq->query->instructions && $response->iq->query->x) {
                     $html .= '
                         <div class="element simple large">
                             <label>'.(string)$response->iq->query->instructions.'</label>';
@@ -333,7 +333,7 @@ class Account extends WidgetBase {
 								marker".$id.".bindPopup('";
 				foreach($arrayOfNames as $name){
 					$action = 'selectServer("'.$name.'");';
-					$javascript .= "<span onclick=\'".$action."\' >".$name."</span><br />";
+					$javascript .= "<span onclick=\'".$action."\' ><a href=\'#nddlink\'>".$name."</a></span><br />";
 				}
 				$javascript .= "');
 								";

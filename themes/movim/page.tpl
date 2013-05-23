@@ -8,10 +8,8 @@
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.1, user-scalable=no" />
           
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
-	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
-    <script src="http://openlayers.org/api/2.12/OpenLayers.js"></script>
-    <script src="system/js/steditor.js"></script>
+	<link rel="stylesheet" href="system/js/leaflet.css" />
+	<script src="system/js/leaflet.js"></script>
     <?php
     $this->addCss('css/animations.css');
     $this->addCss('css/forms.css');
@@ -79,6 +77,8 @@
         <div id="nav">
             <?php $this->menu();?>	
         </div>
+        
+        <!--<div id="baseline"></div>-->
 
         <div id="content">
             <?php $this->widget('Notification');?>

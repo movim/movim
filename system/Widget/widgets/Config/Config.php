@@ -91,7 +91,7 @@ class Config extends WidgetBase
                             onclick="
                                 document.querySelector('input[name=color]').value = '082D50';
                                 document.body.style.backgroundColor = '#082D50';"
-                            style="width: 28%; float: right; margin-top: 5px" 
+                            style="width: 45%; float: right;" 
                             class="button icon back">
                             <?php echo t('Reset');?>
                         </a>
@@ -152,19 +152,25 @@ class Config extends WidgetBase
                         <input type="radio" name="pattern" id="stars" value="stars"/>
                         <label for="stars"><span></span>
                             <div class="preview stars"
-                                style="background-color:black;"></div>
+                                style="background-color:black; background-size: 100px 100px;"></div>
                         </label>
                         
                         <input type="radio" name="pattern" id="paper" value="paper"/>
                         <label for="paper"><span></span>
                             <div class="preview paper"
-                                style="background-color:gray;"></div>
+                                style="background-color: #23343E;"></div>
                         </label>
                         
                         <input type="radio" name="pattern" id="tartan" value="tartan"/>
                         <label for="tartan"><span></span>
                             <div class="preview tartan"
                                 style="background-color: hsl(2, 57%, 40%);"></div>
+                        </label>
+                        
+                        <input type="radio" name="pattern" id="empty" value=""/>
+                        <label for="empty"><span></span>
+                            <div class="preview empty"
+                                style="background-color: white;"></div>
                         </label>
                     </div>
                 </fieldset>

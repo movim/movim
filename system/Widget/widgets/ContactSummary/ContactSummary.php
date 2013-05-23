@@ -73,7 +73,8 @@ class ContactSummary extends WidgetCommon
                 <div 
                     class="block" 
                     style="
-                        max-height: 90px; 
+                        max-height: 7em;
+                        margin: 1em; 
                         min-height: auto; 
                         overflow: hidden; 
                         text-overflow: ellipsis;"

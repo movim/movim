@@ -25,7 +25,6 @@ class NodeConfig extends WidgetBase
     {
         $this->registerEvent('pubsubconfig', 'onConfigForm');
         $this->registerEvent('pubsubconfigsubmited', 'onGroupConfig');
-        $this->registerEvent('pubsubconfigerror', 'onGroupConfigError');
         $this->registerEvent('deletionsuccess', 'onGroupDeleted');
     }
     
@@ -33,7 +32,7 @@ class NodeConfig extends WidgetBase
         $html = '
             <a href="?q=server&s='.$server.'">
                 '.t("Return to %s's list of groups", $server).'
-            </a>';
+            </a><br /><br />';
             
         Notification::appendNotification(t('Group deleted'), 'success');
         RPC::call('movim_fill', 'handlingmessages', $html);
@@ -43,11 +42,6 @@ class NodeConfig extends WidgetBase
     function onGroupConfig($stanza) {        
         Notification::appendNotification(t('Group configuration saved'), 'success');
         RPC::commit();        
-    }
-    
-    function onGroupConfigError($error) {
-        Notification::appendNotification(t('Error').' : '.$error, 'error');
-        RPC::commit();
     }
     
     function onConfigForm($form) {
@@ -80,6 +74,9 @@ class NodeConfig extends WidgetBase
     }
     
     function ajaxGroupDelete($server, $node){
+        $nd = new modl\NodeDAO();
+        $nd->deleteNode($server, $node);
+        
         $r = new moxl\GroupDelete();
         $r->setTo($server)
           ->setNode($node)
@@ -104,12 +101,12 @@ class NodeConfig extends WidgetBase
             <div id="groupconfiguration" class="paddedtop">
                 <div id="handlingmessages"></div>
                 <a 
-                    class="button icon submit" 
+                    class="button icon write" 
                     onclick="<?php echo $this->genCallAjax('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?> this.style.display = 'none'">
                     <?php echo t("Configure your group");?>
                 </a>
                 <a 
-                    class="button icon" 
+                    class="button icon no" 
                     onclick="<?php echo $this->genCallAjax('ajaxGroupDelete', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?> this.style.display = 'none'">
                     <?php echo t("Delete this group");?>
                 </a>

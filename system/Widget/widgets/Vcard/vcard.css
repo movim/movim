@@ -1,3 +1,7 @@
 #vcard img {
     margin: 0 auto;
 }
+
+.squares, #snap{
+	height:150px;
+}
