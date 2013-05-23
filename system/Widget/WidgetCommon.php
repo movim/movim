@@ -60,11 +60,16 @@ class WidgetCommon extends WidgetBase {
                         href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
                     >'.t('Place').'</a>
                 </span>';
-                
+
         if($post->jid != '')
 			$c = '
 				<span>
 					<a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
+				</span>';
+        elseif($post->aid != '')
+			$c = '
+				<span>
+					<a href="?q=friend&amp;f='.$post->aid.'">'.$post->aid.'</a>
 				</span>';
                 
         if($post->links)
