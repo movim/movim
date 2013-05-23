@@ -83,10 +83,11 @@
     padding-right: 1em;
     display: inline-block;
     margin: 0px;
-    width: 145px;
+    width: 62%;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-top: 3px;
+    font-size: 0.9em;
     white-space: nowrap;
 }
 
@@ -144,12 +145,16 @@
 #chats .chat .panel .text textarea {
     width: 100%;
     border: 0px;
-    padding: 2px;
+    padding: 0.2em;
     overflow: auto;
     background-color: white;
     resize: none;
-    height: 17px;
-    line-height: 17px;
+    /*height: 1em;
+    line-height: 1em;
+    font-size: 1em;*/
+    font-size: 1em;
+    height: 1.3em;
+    overflow-y: hidden;
 }
 
 #chats .chat .panel .text textarea:focus {

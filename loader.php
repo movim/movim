@@ -8,12 +8,8 @@ define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
 define('THEMES_PATH', BASE_PATH . 'themes/');
 define('USERS_PATH', BASE_PATH . 'users/');
 
-//define('DB_DEBUG', true);
-//define('DB_LOGFILE', BASE_PATH . 'log/queries.log');
-
 // Loads up all system libraries.
 require_once(LIB_PATH . "Lang/i18n.php");
-
 
 require_once(LIB_PATH . "Session.php");
 require_once(LIB_PATH . "Utils.php");
@@ -27,6 +23,9 @@ require_once(LIB_PATH . "MovimException.php");
 require_once(LIB_PATH . "RPC.php");
 require_once(LIB_PATH . "User.php");
 require_once(LIB_PATH . "XMPPtoForm.php");
+
+// Markdown lib
+require_once(LIB_PATH . "Markdown.php");
 
 // We load Movim Data Layer
 require_once(LIB_PATH . 'Modl/loader.php');

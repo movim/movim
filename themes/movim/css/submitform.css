@@ -38,12 +38,6 @@ table#feedsubmitform {
 
 #feedcontent {
 	clear: both;
-    /*padding-top: 1.5em;
-    background-color: rgb(245,245,245);
-}
-
-#feedcontent .post:first-child {
-    padding-top: 0px;*/
 }
 
 #feednotifs {
@@ -53,7 +47,17 @@ table#feedsubmitform {
 #feedsubmitform .ste {
     width: 100%;
     margin: 0px;
-    padding: 0px;
+    padding: 0.2em;
+}
+
+#feedsubmitform span#postpublishlocation {
+    line-height: 1.8em;
+    height: 1.5em;
+    display: block;
+    white-space: nowrap;
+    width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #feedsubmitform .button.merged.right {
@@ -63,21 +67,8 @@ table#feedsubmitform {
 #feedsubmitform .button img {
     margin: 0px;
     padding: 0px;
-    margin-top: 2px;
     width: auto;
+    margin-top: 0.3em;
+    margin-left: 1em;
     height: auto;
-}
-
-#feedsubmitform td.frame {
-    padding: 0px;
-}
-
-#feedsubmitform .menueditor {
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    display: none;
-}
-
-iframe {
-    width: 100%;
 }

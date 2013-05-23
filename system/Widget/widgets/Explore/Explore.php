@@ -20,6 +20,29 @@ class Explore extends WidgetCommon {
                 $text
                 );
     }
+    
+    function prepareServers() {
+        $nd = new \modl\NodeDAO();
+        
+        $servers = $nd->getServers();
+        
+        $html = '<ul class="list">';
+
+        foreach($servers as $s) {
+            $html .= '
+                <li>
+                    <a href="?q=server&s='.$s->serverid.'">'.
+                        $s->serverid. ' 
+                        <span class="tag">'.$s->number.'</span>
+                    </a>
+                </li>';
+        }
+
+        $html .= '</ul>';
+        
+        return $html;
+        //var_dump($nd->getServers());
+    }
 
     function prepareContacts($form = false) {
         /*if(!$form){
@@ -57,7 +80,7 @@ class Explore extends WidgetCommon {
                     <div class="clear"></div>
                 </div>';*/
         $cd = new \modl\ContactDAO();
-        $users = $cd->getAllPublic();
+        $users = array_reverse($cd->getAllPublic());
         
         $gender = getGender();
         $marital = getMarital();
@@ -118,8 +141,16 @@ class Explore extends WidgetCommon {
                     </a>
                 </div>
             </form>-->
+            
+            <div id="serverresult" class="paddedtop">
+                <h2><?php echo t('Discussion Servers'); ?></h2>
+                <?php echo $this->prepareServers(); ?>
+            </div>
 
-            <div id="contactsresult">   
+            <div class="paddedtopbottom">
+            <h2><?php echo t('Last registered'); ?></h2>
+            </div>
+            <div id="contactsresult">
                 <?php echo $this->prepareContacts(); ?>
             </div>
         </div>

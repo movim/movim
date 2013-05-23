@@ -23,8 +23,7 @@ class XMPPtoForm{
 	public function create(){
 		$this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
 		$x = new SimpleXMLElement($this->xmpp);
-                    
-            \movim_log($x);
+
 		foreach($x->children() as $element){
 
 			switch($element->getName()){
@@ -81,7 +80,9 @@ class XMPPtoForm{
 				case 'username':
 				case 'email':
 				case 'password':
-					$this->outGeneric($element->getName());
+                    $this->html .='<div class="element">';
+                        $this->outGeneric($element->getName());
+                    $this->html .='</div>';
 					break;
 				default: 
 					$this->html .= "";

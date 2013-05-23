@@ -1,6 +1,8 @@
 <?php
 
 class Feed extends WidgetCommon {
+	private $_feedsize = 10;
+	
     function WidgetLoad()
     {
         $this->addcss('feed.css');
@@ -67,7 +69,7 @@ class Feed extends WidgetCommon {
 
     function onPostPublished($post) {        
         $pd = new \modl\PostnDAO();
-        $pl = $pd->getFeed(-1, 10);
+        $pl = $pd->getFeed(-1, $this->_feedsize);
 
         $html = $this->preparePosts($pl);
 
@@ -122,16 +124,16 @@ class Feed extends WidgetCommon {
     
     function prepareFeed($start) {
         $pd = new \modl\PostnDAO();
-        $pl = $pd->getFeed($start+1, 10);
+        $pl = $pd->getFeed($start+1, $this->_feedsize);
 
 		
         $html = $this->preparePosts($pl);
 
         // We ask for the HTML of all the posts
         
-        $next = $start + 10;
+        $next = $start + $this->_feedsize;
             
-        if(sizeof($pl) > 9 && $html != '') {
+        if(sizeof($pl) > $this->_feedsize-1 && $html != '') {
             $html .= '
                 <div class="post">
                     <div 
@@ -184,7 +186,7 @@ class Feed extends WidgetCommon {
         
         <div class="posthead">
             <a 
-                class="button tiny icon feed merged left" 
+                class="button tiny icon blog merged left" 
                 href="?q=blog&f=<?php echo $this->user->getLogin(); ?>"
                 target="_blank">
                 <?php echo t('Blog'); ?>

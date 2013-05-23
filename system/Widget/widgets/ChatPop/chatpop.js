@@ -19,7 +19,7 @@ function handleError() {
 window.onerror = handleError;
 
 window.onunload = function() {
-    self.opener.Chat_ajaxToggleChat();
+    self.opener.Roster_ajaxToggleChat();
 };
 
 function scrollAllTalks() {

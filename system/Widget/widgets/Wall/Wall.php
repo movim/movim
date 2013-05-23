@@ -78,7 +78,7 @@ class Wall extends WidgetCommon
                                 >
                                     '.t('Feed').' (Atom)
                                 </a><a 
-                                    class="button tiny icon follow merged right" 
+                                    class="button tiny icon refresh merged right" 
                                     href="#"
                                     onclick="'.$this->genCallAjax('ajaxWall', "'".$from."'").'
                                         this.innerHTML = \''.t('Updating').'\'; 
