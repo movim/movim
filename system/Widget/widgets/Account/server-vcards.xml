@@ -25,7 +25,7 @@
             <name>CAcert</name>
             <uri>http://www.cacert.org/</uri>
         </ca>
-        <name xmlns="jabber:iq:version">ejabberd</name>
+        <name xmlns="jabber:iq:version">Metronome</name>
         <impp>
             <uri>xmpp:vanaryon@jappix.com</uri>
         </impp>
@@ -93,7 +93,7 @@
             <name>StartSSL</name>
             <uri>http://www.startssl.com/</uri>
         </ca>
-        <name>Prosody</name>
+        <name>Metronome</name>
         <impp>
             <uri>xmpp:maranda@lightwitch.org</uri>
         </impp>

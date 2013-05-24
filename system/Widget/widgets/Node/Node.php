@@ -34,6 +34,7 @@ class Node extends WidgetCommon
         $html = $this->prepareGroup($params[0], $params[1]);
         RPC::call('setBookmark');
         RPC::call('movim_fill', 'node', $html);
+        RPC::call('movim_reload_this');
     }
     
     function onPubsubSubscribedError($params)

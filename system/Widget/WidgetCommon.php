@@ -494,7 +494,9 @@ This is an [example link](http://example.com/).
     function ajaxPublishItem($server, $node, $form)
     {
 		$content = $form['content'];
-		
+
+
+		\movim_log($server.$node.$from);
 		list($lat,$lon) = explode(',', $form['latlonpos']);
 		
 		$pos = json_decode(

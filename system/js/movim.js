@@ -61,6 +61,10 @@ function movim_reload(uri) {
     window.location.replace(uri);
 }
 
+function movim_reload_this() {
+    window.location.reload();
+}
+
 /* A magical function to autoresize textarea when typing */
 function movim_textarea_autoheight(textbox) {
     textbox.style.height = 0;
