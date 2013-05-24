@@ -349,7 +349,7 @@ class Roster extends WidgetBase
                             placeholder="<?php echo t('Search');?>"/>
                     </div>
                 </li>
-                <li title="<?php echo t('Add'); ?>">
+                <!--<li title="<?php echo t('Add'); ?>">
                     <label class="plus" for="addc"></label>
                     <input type="checkbox" id="addc"/>
                     <div class="tabbed">
@@ -364,17 +364,6 @@ class Roster extends WidgetBase
                                     onblur="myBlur(this);"
                                 />
                             </div>
-                            <!--<div class="element large mini">
-                                <label for="addalias"><?php echo t('Alias'); ?></label>
-                                <input 
-                                    id="addalias"
-                                    type="text"
-                                    class="tiny" 
-                                    placeholder="<?php echo t('Alias'); ?>" 
-                                    onfocus="myFocus(this);" 
-                                    onblur="myBlur(this);"
-                                />
-                            </div>-->
                             <a 
                                 class="button tiny icon no merged left black"
                                 href="#"
@@ -390,7 +379,7 @@ class Roster extends WidgetBase
                             </a>
                         </form>
                     </div>
-                </li>
+                </li>-->
                 <li 
                     onclick="<?php echo $this->callAjax('ajaxToggleCache', "'offlineshown'");?>"
                     title="<?php echo t('Show/Hide'); ?>">
