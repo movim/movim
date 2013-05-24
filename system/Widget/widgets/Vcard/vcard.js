@@ -2,7 +2,6 @@ function getPos(n)
 {
     //n.style.display = "none";
 	if(navigator.geolocation){
-        console.log(navigator.geolocation.getCurrentPosition);
 	    navigator.geolocation.getCurrentPosition(function(position){
 	        var latitude = position.coords.latitude;
 	        var longitude = position.coords.longitude;
@@ -70,3 +69,41 @@ function vCardImageLoad(files) {
         };
     };
 };
+
+
+function showVideo(){
+	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia; 
+	navigator.getUserMedia({video:true}, successCallback, errorCallback);
+}
+function successCallback(stream) {
+  video = document.getElementById("runningcam");
+  video.src = window.URL.createObjectURL(stream);
+  localMediaStream = stream; // stream available to console
+  video.addEventListener('loadeddata', addCanvasImg, false);
+  document.getElementById("shoot").addEventListener('click', snapshot, false);
+}
+
+function errorCallback(error){
+  console.log("navigator.getUserMedia error: ", error);
+}
+
+function addCanvasImg(){		
+	canvas = document.querySelector("canvas");
+	canvas.width = video.videoWidth;
+	canvas.height = video.videoHeight;
+	ctx = canvas.getContext('2d');
+}
+
+function snapshot() {
+	if (localMediaStream) {
+		video = document.getElementById("runningcam");
+		ctx.drawImage(video,0,0);
+		// "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.
+		var img = new Image();
+            img.src = canvas.toDataURL('image/webp');
+            img.onload = function() {
+                vCardImageResize(this);
+            }
+		//document.querySelector("#snap").src = canvas.toDataURL('image/webp');
+	}
+}

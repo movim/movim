@@ -366,66 +366,17 @@ class WidgetCommon extends WidgetBase {
 					'.$this->genCallAjax('ajaxShowPosition', "poss").'
 				}
 			</script>
-			
-            <div class="popup" id="markdownhelp">
+            
+            <div class="popup post" id="postpreview">
+				<h2>'.t('Preview').'</h2>
+				<div class="content" id="postpreviewcontent">
 
+				</div>
 				<a 
 					class="button tiny black" 
-					style="float: right;"
 					onclick="
-						movim_toggle_display(\'#markdownhelp\');"
+						movim_toggle_display(\'#postpreview\');"
 				>'.t('Close').'</a>
-				<h2>Title level</h2>
-				<pre>
-A First Level Header
-====================
-
-A Second Level Header
----------------------
-
-Now is the time for all good men to come to
-the aid of their country. This is just a
-regular paragraph.
-
-The quick brown fox jumped over the lazy
-dog\'s back.
-
-### Header 3
-
-> This is a blockquote.
-> 
-> This is the second paragraph in the blockquote.
->
-> ## This is an H2 in a blockquote
-				</pre>
-				<h2>Phrase Emphasis</h2>
-				<pre>
-Some of these words *are emphasized*.
-Some of these words _are emphasized also_.
-
-Use two asterisks for **strong emphasis**.
-Or, if you prefer, __use two underscores instead__.
-				</pre>
-				<h2>Lists</h2>
-				<pre>
-*   Candy.
-*   Gum.
-*   Booze.
-				</pre>
-				<h2>Links</h2>
-				<pre>
-This is an [example link](http://example.com/).
-				</pre>
-				<h2>Learn more</h2>
-				<p>
-					<a href="http://daringfireball.net/projects/markdown/basics" target="_blank">
-						The whole help is avaiable here : http://daringfireball.net/projects/markdown/basics
-					</a>
-				</p>
-				<p>
-					<br />
-				</p>
-
             </div>
 			<table id="feedsubmitform">
 				<tbody>
@@ -453,16 +404,25 @@ This is an [example link](http://example.com/).
 									t("Submit").'
 								</a>
 								<a 
+									class="button tiny icon alone merged left preview"
+									style="float: left;"
+									title="'.t('Preview').'"
+									onclick="
+										movim_toggle_display(\'#postpreview\');
+										'.$this->genCallAjax('ajaxPostPreview', "document.querySelector('#postpublishcontent').value").'"
+								></a>
+
+								<a 
 									title="Plus"
 									href="#"
 									id="postpublishsize"
 									onclick="frameHeight(this, document.querySelector(\'#postpublishcontent\'));"
 									style="float: left;"
-									class="button tiny icon alone add merged left"></a><a 
+									class="button tiny icon alone add merged"></a><a 
 									class="button tiny icon alone help merged" 
 									style="float: left;"
-									onclick="
-										movim_toggle_display(\'#markdownhelp\');"
+									href="http://daringfireball.net/projects/markdown/basics"
+									target="_blank"
 								></a><a title="'.t("Geolocalisation").'"
 									onclick="setPosition(document.querySelector(\'#latlonpos\'));"
 									style="float: left;"
@@ -489,6 +449,17 @@ This is an [example link](http://example.com/).
 
         RPC::call('movim_fill', 'postpublishlocation' , (string)$pos->display_name);
         RPC::commit();
+	}
+
+	function ajaxPostPreview($content)
+	{
+		if($content != '') {
+			$content = Michelf\Markdown::defaultTransform($content);
+			RPC::call('movim_fill', 'postpreviewcontent' , $content);
+		} else
+			RPC::call('movim_fill', 'postpreviewcontent' , t('No content'));
+
+		RPC::commit();
 	}
 	
     function ajaxPublishItem($server, $node, $form)

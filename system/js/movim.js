@@ -148,11 +148,11 @@ function getFeedMessage() {
 }
 
 function frameHeight(n, text) {
-    if(n.className == 'button tiny icon alone add merged left') {
-        n.className = 'button tiny icon alone rm merged left';
+    if(n.className == 'button tiny icon alone add merged') {
+        n.className = 'button tiny icon alone rm merged';
         text.style.minHeight = '20em';
     } else {
-        n.className = 'button tiny icon alone add merged left';
+        n.className = 'button tiny icon alone add merged';
         text.style.minHeight = '1.5em';
     }
 }
