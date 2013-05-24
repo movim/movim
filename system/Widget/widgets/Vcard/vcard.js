@@ -70,7 +70,6 @@ function vCardImageLoad(files) {
     };
 };
 
-
 function showVideo(){
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia; 
 	navigator.getUserMedia({video:true}, successCallback, errorCallback);
@@ -91,12 +90,15 @@ function addCanvasImg(){
 	canvas = document.querySelector("canvas");
 	canvas.width = video.videoWidth;
 	canvas.height = video.videoHeight;
-	ctx = canvas.getContext('2d');
+	
 }
 
 function snapshot() {
 	if (localMediaStream) {
+		canvas = document.querySelector("canvas");
+		ctx = canvas.getContext('2d');
 		video = document.getElementById("runningcam");
+		
 		ctx.drawImage(video,0,0);
 		// "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.
 		var img = new Image();
