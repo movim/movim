@@ -411,5 +411,7 @@ form .element input:invalid {
 .icon.back:before   { background-image: url(../img/icons/button/arrow-left.png); }
 .icon.next:before   { background-image: url(../img/icons/button/arrow-right.png); }
 .icon.geo:before    { background-image: url(../img/icons/button/location.png); }
+.icon.preview:before{ background-image: url(../img/icons/button/eye.png); }
+.icon.tag:before    { background-image: url(../img/icons/button/tag.png); }
 .icon.users:before  { background-image: url(../img/icons/users.png); }
 .tiny.icon.loading:before { padding: 4px 7px; }

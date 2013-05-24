@@ -23,6 +23,25 @@ table#feedsubmitform {
     border: 0px;
     height: 2em;
     resize: none;
+    overflow: hidden;
+}
+
+#postpreviewcontent {
+    background-color: white;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+#postpreviewcontent span,
+#postpreviewcontent p,
+#postpreviewcontent pre,
+#postpreviewcontent h2,
+#postpreviewcontent h3 {
+    color: rgb(78, 78, 78);
+}
+
+#postpreviewcontent a {
+    color: rgb(43, 43, 43);
 }
 
 #feedsubmitform #feedsubmitrow {
