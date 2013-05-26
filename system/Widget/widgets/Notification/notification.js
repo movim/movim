@@ -1,4 +1,5 @@
 function removeDiff(params) {
     target = document.getElementById(params[0]);
-    setTimeout(function() {target.parentNode.removeChild(target);}, 6000);
+    console.log(params);
+    setTimeout(function() {target.parentNode.removeChild(target.parentNode.firstChild);}, 6000);
 }
