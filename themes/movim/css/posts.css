@@ -33,6 +33,7 @@
     padding-top: 0em;
     line-height: 1.3em;
     word-wrap: break-word;
+    overflow: hidden;
 }
 
 .post .postbubble {
