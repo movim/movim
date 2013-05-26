@@ -74,30 +74,35 @@ class Account extends WidgetBase {
 				$html .= '
                     <form name="data">
                         <fieldset>
-                                <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br />';
+                                <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br /><br />';
 
                 if($response->iq->query->instructions && $response->iq->query->x) {
-                    $html .= '
+                    $instr = '
                         <div class="element simple large">
                             <label>'.(string)$response->iq->query->instructions.'</label>';
                     if($response->iq->query->x->url)
-                        $html .= '
+                        $instr .= '
                             <a href="'.(string)$response->iq->query->x->url.'" target="_blank">'.
                                 (string)$response->iq->query->x->url.'
                             </a>';
                             
-                    $html .= '
+                    $instr .= '
                         </div>';
                         
                 }
 
 				$form = new XMPPtoForm();
 				if(!empty($response->iq->query->x)){
-					$html .= $form->getHTML($response->iq->query->x->asXML());
+					$formh .= $form->getHTML($response->iq->query->x->asXML());
 				}
 				else{/*no <x> element in the XML*/	
-					$html .= $form->getHTML($response->iq->query->asXML());
+					$formh .= $form->getHTML($response->iq->query->asXML());
 				}
+
+                if($formh == '')
+                    $html .= $instr;
+                else
+                    $html .= $formh;
                 
                 $html .= '
                         <input
