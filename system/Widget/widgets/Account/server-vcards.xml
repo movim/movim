@@ -1,6 +1,40 @@
 <vcards>
     <vcard>
         <fn>
+            <text>movim.eu</text>
+        </fn>
+        <kind>
+            <text>application</text>
+        </kind>
+        <url>
+            <uri>http://movim.eu/</uri>
+        </url>
+        <note>
+            <text>The Movim XMPP service.</text>
+        </note>
+        <registration xmlns="urn:xmpp:vcard:registration:1">
+            <uri>xmpp:movim.eu</uri>
+        </registration>
+        <bday>
+            <date>2013</date>
+        </bday>
+        <adr>
+            <country>IE</country>
+        </adr>
+        <ca xmlns="urn:xmpp:vcard:ca:0">
+            <name>CAcert</name>
+            <uri>http://www.cacert.org/</uri>
+        </ca>
+        <name xmlns="jabber:iq:version">Metronome</name>
+        <impp>
+            <uri>xmpp:edhelas@movim.eu</uri>
+        </impp>
+        <geo>
+            <uri>geo:53.06,-7.29</uri>
+        </geo>
+    </vcard>
+    <vcard>
+        <fn>
             <text>jappix.com</text>
         </fn>
         <kind>
