@@ -32,14 +32,10 @@ class WidgetCommon extends WidgetBase {
                 $access .= 'protect orange';
                 
             $avatar = $post->getContact()->getPhoto('s');
-        } elseif($post->public == 2) {
-            /*$class .= ' folded';
-            $fold = t('Unfold');*/
+        } elseif($post->public == 2) 
             $avatar = $post->getContact()->getPhoto('xs');
-        } else {
-            //$fold = t('Fold');
+        else 
             $avatar = $post->getContact()->getPhoto('s');
-        }
         
         if(!filter_var($post->from, FILTER_VALIDATE_EMAIL) && $post->node != '')
             $group = '
@@ -108,6 +104,7 @@ class WidgetCommon extends WidgetBase {
                     <div class="content">
                     '.$content.'
                     </div>
+					'.$toolbox.'
                     '.$enc.'
                     '.$comments.'
                     '.$place.'
@@ -115,7 +112,7 @@ class WidgetCommon extends WidgetBase {
                     '.$group.'
                 </div>
                 <div class="clear"></div>
-                '.$toolbox.'
+                
             </div>
             ';
         return $html;
@@ -152,7 +149,7 @@ class WidgetCommon extends WidgetBase {
     private function getToolbox($post) {
         $html = '
             <div class="tools">
-                '.t("Change the privacy level").' : 
+                '.t("Share with").' : 
                 <a
                     title="'.t("your post will appear in your Movim public feed").'"
                     onclick="'.
@@ -169,9 +166,29 @@ class WidgetCommon extends WidgetBase {
                             "'".$post->nodeid."'",
                             "'orange'").
                 '" >
-                    '.t("Your contacts").'</a>
-                <!--<a
-                    style="float: right; display: none;";
+                    '.t("Your contacts").'</a><br />
+                <a
+                    style="padding-right: 1em;";
+                    onclick="
+                        this.parentNode.querySelector(\'#deleteyes\').style.display = \'inline\';
+                        this.parentNode.querySelector(\'#deleteno\').style.display = \'inline\';
+                        " 
+                    title="'.t("Delete this post").'">
+                    '.t("Delete this post").'
+                </a>
+                <a
+                    style="padding-right: 1em; display: none;";
+                    id="deleteyes"
+                    onclick="'.
+                        $this->genCallAjax(
+                            'ajaxDeletePost', 
+                            "'".$this->user->getLogin()."'",
+                            "'".$post->node."'",
+                            "'".$post->nodeid."'").'" >
+                    ✔ '.t("Yes").' 
+                </a>
+                <a
+                    style="display: none;";
                     id="deleteno"
                     onclick="
                         this.parentNode.querySelector(\'#deleteyes\').style.display = \'none\';
@@ -180,27 +197,6 @@ class WidgetCommon extends WidgetBase {
                     onclick="">
                     ✘ '.t("No").'
                 </a>
-                <a
-                    style="float: right; padding-right: 1em; display: none;";
-                    id="deleteyes"
-                    onclick="'.
-                        $this->genCallAjax(
-                            'ajaxDeletePost', 
-                            "'".$this->user->getLogin()."'", 
-                            "'".$post->nodeid."'").'" >
-                    ✔ '.t("Yes").' 
-                </a>
-                <a
-                    style="float: right; padding-right: 1em;";
-                    onclick="
-                        this.parentNode.querySelector(\'#deleteyes\').style.display = \'inline\';
-                        this.parentNode.querySelector(\'#deleteno\').style.display = \'inline\';
-                        " 
-                    title="'.t("Delete this post").'">
-                    '.t("Delete this post").'
-                </a>-->
-
-
             </div>';
             
         return $html;
@@ -466,8 +462,6 @@ class WidgetCommon extends WidgetBase {
     {
 		$content = $form['content'];
 
-
-		\movim_log($server.$node.$from);
 		list($lat,$lon) = explode(',', $form['latlonpos']);
 		
 		$pos = json_decode(
@@ -556,9 +550,10 @@ class WidgetCommon extends WidgetBase {
         }
     }
     
-    function ajaxDeletePost($to, $id) {
-        $p = new moxl\MicroblogPostDelete();
+    function ajaxDeletePost($to, $node, $id) {
+        $p = new moxl\PubsubPostDelete();
         $p->setTo($to)
+          ->setNode($node)
           ->setId($id)
           ->request();
     }

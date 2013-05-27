@@ -303,50 +303,13 @@
 }
 
 .post .tools {
-    margin: 0em -1.5em; 
-    margin-top: 1em; 
-    padding-left: 100px; 
-    padding-right: 1.5em; 
-    padding-bottom: 0.3em; 
-    padding-top: 0.3em;
-    display: none;
-}
-
-.post:hover .tools {
-    display: block;
+    border-top: 1px solid #EEE;
+    padding: 0.5em 1em;
+    position: relative;
+    line-height: 1.5em;
 }
 
 .post .tools a:hover {
     cursor: pointer;
     text-decoration: underline;
-}
-
-.post.folded > .postbubble {
-    border: 0px;
-    background-color: transparent;
-    box-shadow: 0px 0px 0px;
-    padding: 0px;
-    padding-top: 0.7em;
-}
-
-.post.folded {
-    padding-bottom: 0em;
-}
-
-.post.folded > .postbubble:before {
-    display: none;
-}
-
-.post.folded .avatar {
-    width: 24px;
-    height: 24px;
-    margin-left: 12px;
-    margin-top: 8px;
-}
-
-.post.folded > .postbubble > .content,
-.post.folded > .postbubble > .place,
-.post.folded > .postbubble > .recycle,
-.post.folded > .postbubble > .comments {
-    display: none;
 }
