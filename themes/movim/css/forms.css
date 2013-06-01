@@ -398,6 +398,7 @@ form .element input:invalid {
 .icon.bubbleold     { background-image: url(../img/icons/comments_show.png); }
 .icon.follow:before { content:"⇒" }
 .icon.chat:before   { background-image: url(../img/icons/button/comment.png);}
+.icon.image:before  { background-image: url(../img/icons/button/image.png);}
 .icon.add:before    { content: "+"; }
 .icon.rm:before     { content: "–"; }
 .icon.write:before  { background-image: url(../img/icons/button/pencil.png); }
