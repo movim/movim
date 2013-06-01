@@ -229,24 +229,41 @@ class Vcard extends WidgetBase
                             }
                 $html .= '  </select></div>
                           </div>';
-             
-                $html .= '<div class="element"><label for="url">'.t('Website').'</label>
-                            <input type="url" name ="url" class="content" value="'.$me->url.'">
-                          </div>';
                        
                 $html .= '<div class="element"><label for="avatar">'.t('Avatar').'</label>
-                            <input type="file" onchange="vCardImageLoad(this.files);">
                             <img id="vCardPhotoPreview" src="data:'.$me->phototype.';base64,'.$me->photobin.'">
-                            <br /><span id="picturesize" class="clean"></span>
+                            <br /><span id="picturesize" class="clean"></span><br /><br />
+                            
+                            <input type="file" onchange="vCardImageLoad(this.files);">
+
                             <input type="hidden" name="phototype"  value="'.$me->phototype.'"/>
-                            <input type="hidden" name="photobin"  value="'.$me->photobin.'"/><br />
+                            <input type="hidden" name="photobin"  value="'.$me->photobin.'"/>
                           </div>';
 				
-				$html .= '<div class="element large" id="camdiv">
+				$html .= '<div class="element" id="camdiv">
+                            <label for="url">'.t('Webcam').'</label>
 							<video id="runningcam" class="squares" autoplay></video>
-							<canvas style="display:none;"></canvas><button id="shoot" class="hide" onclick="return false;">'.t("Cheese !").'</button>
-							<button id="capture" onclick="showVideo(); return false;">'.t("Take a snapshot from your webcam").'</button>
-						</div>';				
+							<canvas style="display:none;"></canvas>
+                            
+                            <a 
+                                id="shoot" 
+                                class="button icon preview" 
+                                onclick="return false;">'.
+                                t("Cheese !").'
+                            </a>
+							<a
+                                id="capture" 
+                                class="button icon image" 
+                                onclick="
+                                    showVideo();
+                                    return false;">'.
+                                t("Take a webcam snapshot").'
+                            </a>
+						</div>';	
+                                     
+                $html .= '<div class="element large"><label for="url">'.t('Website').'</label>
+                            <input type="url" name ="url" class="content" value="'.$me->url.'">
+                          </div>';
                       
                 $html .= '<div class="element large"><label for="desc">'.t('About Me').'</label>
                             <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->desc).'</textarea>
