@@ -124,7 +124,7 @@ class Roster extends WidgetBase
                         $html .= ' ('.$contact->ressource.')';
 
         $html .= '"';
-        $html .= ' href="?q=friend&f='.$contact->jid.'"
+        $html .= ' href="'.Route::urlize('friend', $contact->jid).'"
                  >
                 <img
                     class="avatar"

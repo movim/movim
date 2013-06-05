@@ -17,7 +17,7 @@ function movimRegisterPollHandler(type, func)
 function movim_poll()
 {
 	poller = rpc.make_xmlhttp();
-	poller.open('GET', 'jajax.php?do=poll', true);
+	poller.open('GET', BASE_URI+'jajax.php?do=poll', true);
 
 	poller.onreadystatechange = function()
 	{

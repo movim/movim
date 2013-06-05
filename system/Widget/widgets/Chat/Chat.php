@@ -376,7 +376,7 @@ class Chat extends WidgetBase
                         <span class="chatbutton cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->jid."'").'"></span>
                         <span class="chatbutton arrow" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'").' hideTalk(this)"></span>
                         <img class="avatar"  src="'.$contact->getPhoto('xs').'" />
-                        <a class="name" href="?q=friend&f='.$contact->jid.'">
+                        <a class="name" href="'.Route::urlize('friend',$contact->jid).'">
                             '.$contact->getTrueName().'
                         </a>
                         <div class="clear"></div>

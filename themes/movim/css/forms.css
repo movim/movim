@@ -95,10 +95,10 @@ form .element.simple > *:not(label):not(img):focus {
 
 .element > textarea, textarea {
 	font-family: helvetica, sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
-    /*font-size: 13px;*/
     padding: 0px;
     resize: vertical;
     background-color: white;
+    overflow-y: hidden;
 }
 
 /* Select input CSS */

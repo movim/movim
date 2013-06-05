@@ -10,6 +10,10 @@
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
 	<link rel="stylesheet" href="system/js/leaflet.css" />
 	<script src="system/js/leaflet.js"></script>
+    
+    <script type="text/javascript">
+        var BASE_URI = '<?php echo BASE_URI; ?>';
+    </script>
     <?php
     $this->addCss('css/animations.css');
     $this->addCss('css/forms.css');

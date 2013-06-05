@@ -40,12 +40,12 @@ class WidgetCommon extends WidgetBase {
         if(!filter_var($post->from, FILTER_VALIDATE_EMAIL) && $post->node != '')
             $group = '
                 <span class="group">
-                    <a href="?q=node&s='.$post->from.'&n='.$post->node.'">'.$post->node.' ('.$post->from.')</a>
+                    <a href="'.Route::urlize('node', array($post->from, $post->node)).'">'.$post->node.' ('.$post->from.')</a>
                 </span>';
         elseif($post->from != $post->aid)
             $recycle .= '
                 <span class="recycle">
-                    <a href="?q=friend&f='.$post->from.'">'.$post->from.'</a>
+                    <a href="'.Route::urlize('friend', $post->from).'">'.$post->from.'</a>
                  </span>';
 
         if($post->getPlace() != false)
@@ -60,12 +60,12 @@ class WidgetCommon extends WidgetBase {
         if($post->jid != '')
 			$c = '
 				<span>
-					<a href="?q=friend&amp;f='.$post->jid.'">'.$post->getContact()->getTrueName().'</a>
+					<a href="'.Route::urlize('friend', $post->jid).'">'.$post->getContact()->getTrueName().'</a>
 				</span>';
         elseif($post->aid != '')
 			$c = '
 				<span>
-					<a href="?q=friend&amp;f='.$post->aid.'">'.$post->aid.'</a>
+					<a href="'.Route::urlize('friend', $post->aid).'">'.$post->aid.'</a>
 				</span>';
                 
         if($post->links)
@@ -89,7 +89,7 @@ class WidgetCommon extends WidgetBase {
         
         $html = '
             <div class="post '.$class.'" id="'.$post->nodeid.'">
-                <a href="?q=friend&amp;f='.$post->jid.'">
+                <a href="'.Route::urlize('friend', $post->jid).'">
                     <img class="avatar" src="'.$avatar.'">
                 </a>
 
@@ -346,7 +346,7 @@ class WidgetCommon extends WidgetBase {
                     
                 $tmp .='>
                         <img class="avatar tiny" src="'.$photo.'">
-                        <span><a href="?q=friend&f='.$comment->jid.'">'.$name.'</a></span>
+                        <span><a href="'.Route::urlize('friend', $comment->jid).'">'.$name.'</a></span>
                         <span class="date">'.prepareDate(strtotime($comment->published)).'</span><br />
                         <div class="content tiny">'.prepareString($comment->content).'</div>
                     </div>';

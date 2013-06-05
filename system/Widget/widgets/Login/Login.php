@@ -323,8 +323,11 @@ class Login extends WidgetBase {
             }
             ?>
 
-            <div class="admin"><a href="?q=admin"><?php echo t('Administration'); ?></a></div>
-
+            <div class="admin">
+                <a href="<?php echo Route::urlize('admin'); ?>">
+                    <?php echo t('Administration'); ?>
+                </a>
+            </div>
         </div>
     <?php
 
