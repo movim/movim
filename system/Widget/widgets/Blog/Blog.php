@@ -17,7 +17,7 @@ class Blog extends WidgetCommon {
                 <div class="posthead" style="border-top: 0px;">
                         <a 
                             class="button tiny icon feed merged left" 
-                            href="?q=feed&f='.$from.'"
+                            href="'.Route::urlize('feed',$from).'"
                             target="_blank"
                         >
                             '.t('Feed').' (Atom)
