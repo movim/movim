@@ -187,12 +187,12 @@ class Feed extends WidgetCommon {
         <div class="posthead">
             <a 
                 class="button tiny icon blog merged left" 
-                href="?q=blog&f=<?php echo $this->user->getLogin(); ?>"
+                href="<?php echo Route::urlize('blog',$this->user->getLogin()); ?>"
                 target="_blank">
                 <?php echo t('Blog'); ?>
             </a><a 
                 class="button tiny icon feed merged right" 
-                href="?q=feed&f=<?php echo $this->user->getLogin(); ?>"
+                href="<?php echo Route::urlize('feed',$this->user->getLogin()); ?>"
                 target="_blank">
                 <?php echo t('Feed'); ?> (Atom)
             </a>
