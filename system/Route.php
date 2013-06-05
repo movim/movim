@@ -15,6 +15,8 @@ class Route extends ControllerBase {
                 'about'         => false,
                 'disconnect'    => false,
                 'friend'        => array('f'),
+                'blog'          => array('f'),
+                'feed'          => array('f'),
                 'node'          => array('s', 'n'),
                 'server'        => array('s'),
             );
