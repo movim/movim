@@ -92,7 +92,7 @@ class Profile extends WidgetCommon
 
             // My avatar
             $html .= '
-            <a href="?q=friend&f='.$this->user->getLogin().'">
+            <a href="'.Route::urlize('friend',$this->user->getLogin()).'">
                 <div class="block avatar">
                     <img src="'.$me->getPhoto('l').'"/>
                 </div>

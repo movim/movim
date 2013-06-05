@@ -110,7 +110,7 @@ class Config extends WidgetBase
                             ">
                     </div>
                     
-                    <div class="element">
+                    <div class="element large">
                         <label for="pattern"><?php echo t('Pattern'); ?></label>
                         
                         <input type="radio" name="pattern" id="argyle" value="argyle"/>

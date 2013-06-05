@@ -165,7 +165,7 @@ class Bookmark extends WidgetBase
             foreach($sd->getSubscribed() as $s) {
                 $subscription .= '
                     <li>
-                        <a href="?q=node&s='.$s->server.'&n='.$s->node.'">'.
+                        <a href="'.Route::urlize('node', array($s->server, $s->node)).'">'.
                             $s->node.' ('.$s->server.')
                         </a>
                     </li>';

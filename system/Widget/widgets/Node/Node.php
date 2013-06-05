@@ -115,13 +115,13 @@ class Node extends WidgetCommon
         
         $html = '
             <div class="breadcrumb">
-                <a href="?q=explore">
+                <a href="'.Route::urlize('explore').'">
                     '.t('Explore').'
                 </a>
-                <a href="?q=server&s='.$serverid.'">
+                <a href="'.Route::urlize('server', $serverid).'">
                     '.$serverid.'
                 </a>
-                <a href="?q=node&s='.$serverid.'&n='.$groupid.'">
+                <a href="'.Route::urlize('node', array($serverid, $groupid)).'">
                     '.$groupid.'
                 </a>
                 <a>'.t('Posts').'</a>

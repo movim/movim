@@ -45,7 +45,6 @@ ini_set('log_errors', 0);
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
-
 // Run
 require('init.php');
 

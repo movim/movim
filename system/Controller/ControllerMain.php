@@ -42,7 +42,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media');
-			$this->page->menuAddLink(t('Configuration'), 'config');
+			$this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
             $this->page->menuAddLink(t('Logout'), 'disconnect');
 
@@ -74,7 +74,7 @@ class ControllerMain extends ControllerBase
                 $this->page->menuAddLink(t('Explore'), 'explore');
 				$this->page->menuAddLink(t('Profile'), 'profile');
                 $this->page->menuAddLink(t('Media'), 'media');
-				$this->page->menuAddLink(t('Configuration'), 'config');
+				$this->page->menuAddLink(t('Configuration'), 'conf');
                 $this->page->menuAddLink(t('Help'), 'help');
                 $this->page->menuAddLink(t('Logout'), 'disconnect');
 
@@ -101,7 +101,7 @@ class ControllerMain extends ControllerBase
                 $this->page->menuAddLink(t('Explore'), 'explore');
 				$this->page->menuAddLink(t('Profile'), 'profile');
                 $this->page->menuAddLink(t('Media'), 'media');
-				$this->page->menuAddLink(t('Configuration'), 'config');
+				$this->page->menuAddLink(t('Configuration'), 'conf');
                 $this->page->menuAddLink(t('Help'), 'help');
                 $this->page->menuAddLink(t('Logout'), 'disconnect');
 
@@ -128,7 +128,7 @@ class ControllerMain extends ControllerBase
                 $this->page->menuAddLink(t('Explore'), 'explore');
 				$this->page->menuAddLink(t('Profile'), 'profile');
                 $this->page->menuAddLink(t('Media'), 'media');
-				$this->page->menuAddLink(t('Configuration'), 'config');
+				$this->page->menuAddLink(t('Configuration'), 'conf');
                 $this->page->menuAddLink(t('Help'), 'help');
                 $this->page->menuAddLink(t('Logout'), 'disconnect');
 
@@ -154,7 +154,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media', true);
-            $this->page->menuAddLink(t('Configuration'), 'config');
+            $this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
             $this->page->menuAddLink(t('Logout'), 'disconnect');
 
@@ -165,7 +165,7 @@ class ControllerMain extends ControllerBase
 		}
 	}
 
-	function config()
+	function conf()
 	{
 		$user = new User();
 
@@ -177,13 +177,13 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media');
-			$this->page->menuAddLink(t('Configuration'), 'config', true);
+			$this->page->menuAddLink(t('Configuration'), 'conf', true);
             $this->page->menuAddLink(t('Help'), 'help');
             $this->page->menuAddLink(t('Logout'), 'disconnect');
 
 			$content = new TplPageBuilder($user);
 
-			$this->page->setContent($content->build('config.tpl'));
+			$this->page->setContent($content->build('conf.tpl'));
 			echo $this->page->build('page.tpl');
 		}
 	}
@@ -200,7 +200,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Explore'), 'explore');
 			$this->page->menuAddLink(t('Profile'), 'profile', true);
             $this->page->menuAddLink(t('Media'), 'media');
-			$this->page->menuAddLink(t('Configuration'), 'config');
+			$this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
             $this->page->menuAddLink(t('Logout'), 'disconnect');
 
@@ -266,7 +266,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Home'), 'main');
             $this->page->menuAddLink(t('Explore'), 'explore');
 			$this->page->menuAddLink(t('Profile'), 'profile');
-			$this->page->menuAddLink(t('Configuration'), 'config');
+			$this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
             $this->page->menuAddLink(t('Logout'), 'disconnect');
 
@@ -316,7 +316,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Explore'), 'explore', true);
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media');
-			$this->page->menuAddLink(t('Configuration'), 'config');
+			$this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
             $this->page->menuAddLink(t('Logout'), 'disconnect');
 		}
@@ -344,7 +344,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media');
-			$this->page->menuAddLink(t('Configuration'), 'config');
+			$this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help', true);
             $this->page->menuAddLink(t('Logout'), 'disconnect');
 		}
