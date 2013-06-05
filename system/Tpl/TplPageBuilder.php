@@ -146,7 +146,7 @@ class TplPageBuilder
 		foreach($this->menu as $link) {
 			if($link['type'] == 'link') {
 				echo "\t\t".'<li><a 
-                    href="?q='.$link['href'].'" 
+                    href="'.Route::urlize($link['href']).'" 
                     class="'.$link['href'].'' ;
 				if($link['active'] == true) {
 					echo ' active ';

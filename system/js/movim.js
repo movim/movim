@@ -103,7 +103,7 @@ function movim_toggle_class(element, classname) {
 
 function movim_ajax_script() {
     var s = document.querySelectorAll('.ajaxscript');
-    console.log(s);
+
     for (var i=0; i<s.length; i++)
         eval(s.item(i).firstChild.innerHTML);
 }

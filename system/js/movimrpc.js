@@ -106,7 +106,7 @@ function MovimRPC()
     {
         movim_xmlhttp = this.make_xmlhttp();
 
-	    movim_xmlhttp.open('POST', 'jajax.php', true);
+	    movim_xmlhttp.open('POST', BASE_URI+'jajax.php', true);
 
         var handler = this.handle_rpc_json;
 

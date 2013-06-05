@@ -40,6 +40,8 @@ require_once(LIB_PATH . "Controller/ControllerBase.php");
 require_once(LIB_PATH . "Controller/ControllerMain.php");
 require_once(LIB_PATH . "Controller/ControllerAjax.php");
 
+require_once(LIB_PATH . "Route.php");
+
 require_once(LIB_PATH . "Tpl/TplPageBuilder.php");
 
 require_once(LIB_PATH . "Widget/WidgetBase.php");

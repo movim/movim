@@ -101,6 +101,7 @@
 
 #media .size {
     position: absolute;
+    font-size: 0.9em;
     top: 0px;
     right: 0px;
     line-height: 3em;

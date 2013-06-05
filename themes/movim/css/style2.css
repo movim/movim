@@ -353,7 +353,7 @@ ul.clean li {
     float: right;
     width: 75%;
     background-color: white;
-    min-height: 1000px;
+    min-height: 620px;
 }
 
 #right
@@ -465,22 +465,22 @@ ul.clean li {
     background-position: center center;
 }
 
-.menu li .explore { background-image: url(../img/icons/menu/globe.png); }
-.menu li .profile { background-image: url(../img/icons/menu/user.png); }
-.menu li .config { background-image: url(../img/icons/menu/settings.png); }
-.menu li .help { background-image: url(../img/icons/menu/support.png); }
-.menu li .disconnect { background-image: url(../img/icons/menu/exit.png); }
-.menu li .down { background-image: url(../img/icons/menu/list.png); }
-.menu li .up { background-image: url(../img/icons/menu/upload.png); }
-.menu li .plus { background-image: url(../img/icons/menu/plus.png); }
-.menu li .search { background-image: url(../img/icons/menu/search.png); }
+.menu li .explore   { background-image: url(../img/icons/menu/globe.png); }
+.menu li .profile   { background-image: url(../img/icons/menu/user.png); }
+.menu li .conf      { background-image: url(../img/icons/menu/settings.png); }
+.menu li .help      { background-image: url(../img/icons/menu/support.png); }
+.menu li .disconnect{ background-image: url(../img/icons/menu/exit.png); }
+.menu li .down      { background-image: url(../img/icons/menu/list.png); }
+.menu li .up        { background-image: url(../img/icons/menu/upload.png); }
+.menu li .plus      { background-image: url(../img/icons/menu/plus.png); }
+.menu li .search    { background-image: url(../img/icons/menu/search.png); }
 .menu li .users, .menu li .account { background-image: url(../img/icons/menu/users.png); }
-.menu li .expand { background-image: url(../img/icons/menu/expand.png); }
-.menu li .contract { background-image: url(../img/icons/menu/contract.png); }
-.menu li .media { background-image: url(../img/icons/menu/folder.png); }
-.menu li .blog { background-image: url(../img/icons/menu/quill.png); }
-.menu li .admin { background-image: url(../img/icons/menu/admin.png); }
-.menu li .about { background-image: url(../img/icons/menu/info.png); }
+.menu li .expand    { background-image: url(../img/icons/menu/expand.png); }
+.menu li .contract  { background-image: url(../img/icons/menu/contract.png); }
+.menu li .media     { background-image: url(../img/icons/menu/folder.png); }
+.menu li .blog      { background-image: url(../img/icons/menu/quill.png); }
+.menu li .admin     { background-image: url(../img/icons/menu/admin.png); }
+.menu li .about     { background-image: url(../img/icons/menu/info.png); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);

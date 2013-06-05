@@ -41,6 +41,8 @@ class ControllerBase
 
 	public function handle()
 	{
+                
+        $r = new Route();
 		// Note that the request is always specified by 'q'.
 		$request;
 		if($request = $this->fetch_get('q')) {

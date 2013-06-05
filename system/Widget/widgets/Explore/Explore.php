@@ -31,7 +31,7 @@ class Explore extends WidgetCommon {
         foreach($servers as $s) {
             $html .= '
                 <li>
-                    <a href="?q=server&s='.$s->serverid.'">'.
+                    <a href="'.Route::urlize('server', $s->serverid).'">'.
                         $s->serverid. ' 
                         <span class="tag">'.$s->number.'</span>
                     </a>

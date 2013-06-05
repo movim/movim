@@ -86,7 +86,7 @@ class ServerNodes extends WidgetCommon
         foreach($items as $item) {
             $html .= '
                 <li>
-                    <a href="?q=server&s='.$item->attributes()->jid.'">'.
+                    <a href="'.Route::urlize('server', $item->attributes()->jid).'">'.
                         $item->attributes()->jid. ' - '.
                         $item->attributes()->name.'
                     </a>
@@ -118,7 +118,7 @@ class ServerNodes extends WidgetCommon
             
                 $html .= '
                     <li>
-                        <a href="?q=node&s='.$n->serverid.'&n='.$n->nodeid.'">'.
+                        <a href="'.Route::urlize('node', array($n->serverid, $n->nodeid)).'">'.
                             $name.'
                             <span class="tag">'.$n->number.'</span>
                         </a>
@@ -133,7 +133,7 @@ class ServerNodes extends WidgetCommon
     
     function onCreationSuccess($items)
     {        
-        $html = '<a class="" href="?q=node&s='.
+        $html = '<a href="?q=node&s='.
             $items[0].'&n='.
             $items[1].'">'.$items[2].'</a>';
 
@@ -172,8 +172,8 @@ class ServerNodes extends WidgetCommon
         
     ?>
     <div class="breadcrumb protect red ">
-        <a href="?q=explore"><?php echo t('Explore'); ?></a>
-        <a href="?q=server&s=<?php echo $_GET['s']; ?>">
+        <a href="<?php echo Route::urlize('explore'); ?>"><?php echo t('Explore'); ?></a>
+        <a href="<?php echo Route::urlize('server', $_GET['s']); ?>">
             <?php echo $_GET['s']; ?>
         </a>
         <a><?php echo t('Topics'); ?></a>

@@ -67,8 +67,10 @@ class WidgetWrapper
 
     static function destroyInstance()
     {
-        self::$instance->destroy();
-        self::$instance = null;
+        if(isset(self::$instance)) {
+            self::$instance->destroy();
+            self::$instance = null;
+        }
     }
 
     /**
