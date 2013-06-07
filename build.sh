@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SYSTEM_PATH=system
+LIB_PATH=lib
 MOXL_REPO="lp:moxl"
 MODL_REPO="lp:modl"
 VERSION=`cat VERSION`
@@ -15,9 +15,9 @@ package() {
 
     cd $PACKAGENAME
     moxl
-    rm -rf "$SYSTEM_PATH/Moxl/.bzr"
+    rm -rf "$LIB_PATH/Moxl/.bzr"
     modl
-    rm -rf "$SYSTEM_PATH/Modl/.bzr"
+    rm -rf "$LIB_PATH/Modl/.bzr"
 
     # Compressing
     cd ..
@@ -34,8 +34,8 @@ moxl() {
 	moxl_temp="Moxl"
     # Checking out Moxl.
     bzr branch $MOXL_REPO $moxl_temp
-    rm -rf "$SYSTEM_PATH/Moxl"
-    cp -r "$moxl_temp/" $SYSTEM_PATH
+    rm -rf "$LIB_PATH/Moxl"
+    cp -r "$moxl_temp/" $LIB_PATH
     rm -rf $moxl_temp
 }
 
@@ -43,14 +43,14 @@ modl() {
 	modl_temp="Modl"
     # Checking out Modl.
     bzr branch $MODL_REPO $modl_temp
-    rm -rf "$SYSTEM_PATH/Modl"
-    cp -r "$modl_temp/" $SYSTEM_PATH
+    rm -rf "$LIB_PATH/Modl"
+    cp -r "$modl_temp/" $LIB_PATH
     rm -rf $modl_temp
 }
 
 clean() {
-    rm -rf "${SYSTEM_PATH}/Moxl"
-    rm -rf "${SYSTEM_PATH}/Modl"
+    rm -rf "${LIB_PATH}/Moxl"
+    rm -rf "${LIB_PATH}/Modl"
     rm -rf Modl
     rm -rf Moxl
 }

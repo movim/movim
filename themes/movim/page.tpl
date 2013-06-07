@@ -8,8 +8,8 @@
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.1, user-scalable=no" />
           
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
-	<link rel="stylesheet" href="system/js/leaflet.css" />
-	<script src="system/js/leaflet.js"></script>
+	<link rel="stylesheet" href="assets/js/leaflet.css" />
+	<script src="assets/js/leaflet.js"></script>
     
     <script type="text/javascript">
         var BASE_URI = '<?php echo BASE_URI; ?>';
@@ -78,9 +78,9 @@
             <?php echo t("You don't have javascript enabled.  Good luck with that."); ?>
             </div>
         </noscript>
-        <div id="nav">
+        <nav id="nav">
             <?php $this->menu();?>	
-        </div>
+        </nav>
         
         <!--<div id="baseline"></div>-->
 
@@ -88,9 +88,9 @@
             <?php $this->widget('Notification');?>
             <?php $this->content();?>
           
-            <div id="footer">
+            <footer id="footer">
                 © <a href="http://www.movim.eu">Movim</a> • 2008 - 2013 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
-            </div>
+            </footer>
         </div>
 
     </body>

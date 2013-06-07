@@ -5,6 +5,7 @@ class Route extends ControllerBase {
     
     public function __construct() {
         $this->_routes = array(
+                'account'       => false,
                 'main'          => false,
                 'admin'         => false,
                 'explore'       => false,
