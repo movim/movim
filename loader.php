@@ -3,25 +3,32 @@
 // A few constants...
 define('BASE_PATH', dirname(__FILE__) . '/');
 define('APP_NAME', 'movim');
-define('LIB_PATH', BASE_PATH.'system/');
-define('PROPERTIES_PATH', BASE_PATH.'page/properties/');
-define('THEMES_PATH', BASE_PATH . 'themes/');
-define('USERS_PATH', BASE_PATH . 'users/');
+#define('LIB_PATH', BASE_PATH.'system/');
+
+define('THEMES_PATH',   BASE_PATH . 'themes/');
+define('USERS_PATH',    BASE_PATH . 'users/');
+define('APP_PATH',      BASE_PATH . 'app/');
+define('SYSTEM_PATH',   BASE_PATH . 'system/');
+define('LIB_PATH',      BASE_PATH . 'lib/');
+define('LOCALES_PATH',  BASE_PATH . 'locales/');
 
 // Loads up all system libraries.
-require_once(LIB_PATH . "Lang/i18n.php");
+require_once(SYSTEM_PATH . "i18n/i18n.php");
 
-require_once(LIB_PATH . "Session.php");
-require_once(LIB_PATH . "Utils.php");
-require_once(LIB_PATH . "UtilsString.php");
-require_once(LIB_PATH . "UtilsPicture.php");
-require_once(LIB_PATH . "Cache.php");
-require_once(LIB_PATH . "Conf.php");
-require_once(LIB_PATH . "Event.php");
-require_once(LIB_PATH . "Logger.php");
-require_once(LIB_PATH . "MovimException.php");
-require_once(LIB_PATH . "RPC.php");
-require_once(LIB_PATH . "User.php");
+require_once(SYSTEM_PATH . "Session.php");
+require_once(SYSTEM_PATH . "Utils.php");
+require_once(SYSTEM_PATH . "UtilsString.php");
+require_once(SYSTEM_PATH . "UtilsPicture.php");
+require_once(SYSTEM_PATH . "Cache.php");
+require_once(SYSTEM_PATH . "Conf.php");
+require_once(SYSTEM_PATH . "Event.php");
+require_once(SYSTEM_PATH . "Logger.php");
+require_once(SYSTEM_PATH . "MovimException.php");
+require_once(SYSTEM_PATH . "RPC.php");
+require_once(SYSTEM_PATH . "User.php");
+
+// LIBRARIES
+// XMPPtoForm lib
 require_once(LIB_PATH . "XMPPtoForm.php");
 
 // Markdown lib
@@ -36,17 +43,17 @@ $db->setConnection(Conf::getServerConfElement('db'));
 // We load Movim XMPP Library
 require_once(LIB_PATH . 'Moxl/loader.php');
 
-require_once(LIB_PATH . "Controller/ControllerBase.php");
-require_once(LIB_PATH . "Controller/ControllerMain.php");
-require_once(LIB_PATH . "Controller/ControllerAjax.php");
+require_once(APP_PATH . "controllers/ControllerBase.php");
+require_once(APP_PATH . "controllers/ControllerMain.php");
+require_once(APP_PATH . "controllers/ControllerAjax.php");
 
-require_once(LIB_PATH . "Route.php");
+require_once(SYSTEM_PATH . "Route.php");
 
-require_once(LIB_PATH . "Tpl/TplPageBuilder.php");
+require_once(SYSTEM_PATH . "Tpl/TplPageBuilder.php");
 
-require_once(LIB_PATH . "Widget/WidgetBase.php");
-require_once(LIB_PATH . "Widget/WidgetCommon.php");
-require_once(LIB_PATH . "Widget/WidgetWrapper.php");
+require_once(APP_PATH . "widget/WidgetBase.php");
+require_once(APP_PATH . "widget/WidgetCommon.php");
+require_once(APP_PATH . "widget/WidgetWrapper.php");
 
 // We set the default timezone to the server timezone
 

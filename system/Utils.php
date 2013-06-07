@@ -29,51 +29,6 @@ function sprintln($string)
     return call_user_func_array('sprintf', $args) . PHP_EOL;
 }
 
-/*
- * Return the current microtime
- */
-function getTime()
-{
-    $a = explode (' ',microtime());
-    return(double) $a[0] + $a[1];
-}
-
-/**
- * Replaces anchor tags with text
- * - Will search string and replace all anchor tags with text (case insensitive)
- *
- * How it works:
- * - Searches string for an anchor tag, checks to make sure it matches the criteria
- *         Anchor search criteria:
- *             - 1 - <a (must have the start of the anchor tag )
- *             - 2 - Can have any number of spaces or other attributes before and after the href attribute
- *             - 3 - Must close the anchor tag
- *
- * - Once the check has passed it will then replace the anchor tag with the string replacement
- * - The string replacement can be customized
- *
- * Know issue:
- * - This will not work for anchors that do not use a ' or " to contain the attributes.
- *         (i.e.- <a href=http: //php.net>PHP.net</a> will not be replaced)
- */
-function replaceAnchorsWithText($data) {
-    /**
-     * Had to modify $regex so it could post to the site... so I broke it into 6 parts.
-     */
-    $regex  = '/(<a\s*'; // Start of anchor tag
-    $regex .= '(.*?)\s*'; // Any attributes or spaces that may or may not exist
-    $regex .= 'href=[\'"]+?\s*(?P<link>\S+)\s*[\'"]+?'; // Grab the link
-    $regex .= '\s*(.*?)\s*>\s*'; // Any attributes or spaces that may or may not exist before closing tag
-    $regex .= '(?P<name>\S+)'; // Grab the name
-    $regex .= '\s*<\/a>)/i'; // Any number of spaces between the closing anchor tag (case insensitive)
-   
-    if (is_array($data)) {
-        // This is what will replace the link (modify to you liking)
-        $data = "{$data['name']} {$data['link']} ";
-    }
-    return preg_replace_callback($regex, 'replaceAnchorsWithText', $data);
-}
-
 /**
  * Prepare the string (add the a to the links and show the smileys)
  *
@@ -215,7 +170,7 @@ function prepareDate($time, $hours = true) {
  *
  * @return string
  */
-function generateHash(){
+/*function generateHash(){
     $result = "";
     $charPool = '0123456789abcdefghijklmnopqrstuvwxyz';
 
@@ -223,7 +178,7 @@ function generateHash(){
         $result .= $charPool[mt_rand(0,strlen($charPool)-1)];
 
     return sha1($result);
-}
+}*/
 
 /**
  * Return the list of gender
@@ -651,24 +606,6 @@ function echapJid($jid)
 }
 
 /**
- * Check the current Jid
- *
- * @param string $jid
- * @return bool
- */
-function checkJid($jid)
-{
-    return filter_var($jid, FILTER_VALIDATE_EMAIL);
-}
-
-/**
- * Remove the tabulations, carriage return and multiple whitespaces
- */
-function cleanString($s) {
-    return preg_replace('/(\s\s+|\t|\n)/', ' ', $s);
-}
-
-/**
  * Return a URIfied string
  * @param string
  * @return string
@@ -701,9 +638,6 @@ function movim_log($log) {
 //    var_dump($log);
 	print_r($log);
 	$dump = ob_get_clean();
-	/*$fh = fopen(BASE_PATH . 'log/movim.log', 'w');
-	fwrite($fh, $dump);
-	fclose($fh);*/
 
     openlog('movim', LOG_NDELAY, LOG_USER);
     $errlines = explode("\n",$dump);

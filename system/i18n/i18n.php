@@ -141,7 +141,7 @@ function load_language_auto()
         if($key == 'en') {
             load_language(Conf::getServerConfElement('defLang'));
             $langNotFound = false;
-        } elseif(file_exists(BASE_PATH . '/i18n/' . $key . '.po')) {
+        } elseif(file_exists(BASE_PATH . '/locales/' . $key . '.po')) {
             load_language($key);
             $langNotFound = false;
         }
@@ -160,7 +160,7 @@ function load_language($lang)
 		return true;
 	}
 
-	$translations = parse_lang_file(BASE_PATH . '/i18n/' . $lang . '.po');
+	$translations = parse_lang_file(BASE_PATH . '/locales/' . $lang . '.po');
 
 	$language = $lang;
 
@@ -207,7 +207,7 @@ function load_extra_lang($directory)
 
 function load_lang_array() {
 	$lang_list = get_lang_list();
-	$dir = scandir(BASE_PATH . '/i18n/');
+	$dir = scandir(BASE_PATH . '/locales/');
 	$po = array();
 	foreach($dir as $files) {
 		$explode = explode('.', $files);
