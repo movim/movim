@@ -162,7 +162,7 @@ class TplPageBuilder
 
 	function addScript($script)
 	{
-		$this->scripts[] = BASE_URI . 'system/js/' . $script;
+		$this->scripts[] = BASE_URI . 'app/assets/js/' . $script;
 	}
 
 	/**
