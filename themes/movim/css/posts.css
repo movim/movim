@@ -5,7 +5,7 @@
     width: 100%;
     min-height: 2em;
     padding-left: 1.5em;
-    padding-top: 0.5em;
+    padding-top: 1em;
 }
 
 .posthead:after {
@@ -34,6 +34,7 @@
     padding: 1em;
     padding-top: 0em;
     line-height: 1.3em;
+    padding-left: 0.5em;
     word-wrap: break-word;
     overflow: hidden;
 }
