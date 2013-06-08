@@ -1,0 +1,26 @@
+#vcard img {
+    margin: 0 auto;
+}
+
+#vcard .element #runningcam,
+#vcard .element #shoot{
+    display: none;
+}
+
+#vcard .element.active #runningcam{
+    display: block;
+}
+
+#vcard .element.active #shoot{
+    display: inline-block;
+}
+
+#vcard .element.active #capture {
+    display: none;
+}   
+
+.squares, #snap{
+	height:200px;
+    box-shadow: none !important;
+    border: 0px !important;
+}

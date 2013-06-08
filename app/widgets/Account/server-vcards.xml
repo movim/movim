@@ -1,0 +1,246 @@
+<vcards>
+    <vcard>
+        <fn>
+            <text>movim.eu</text>
+        </fn>
+        <kind>
+            <text>application</text>
+        </kind>
+        <url>
+            <uri>http://movim.eu/</uri>
+        </url>
+        <note>
+            <text>The Movim XMPP service.</text>
+        </note>
+        <registration xmlns="urn:xmpp:vcard:registration:1">
+            <uri>xmpp:movim.eu</uri>
+        </registration>
+        <bday>
+            <date>2013</date>
+        </bday>
+        <adr>
+            <country>IE</country>
+        </adr>
+        <ca xmlns="urn:xmpp:vcard:ca:0">
+            <name>CAcert</name>
+            <uri>http://www.cacert.org/</uri>
+        </ca>
+        <name xmlns="jabber:iq:version">Metronome</name>
+        <impp>
+            <uri>xmpp:edhelas@movim.eu</uri>
+        </impp>
+        <geo>
+            <uri>geo:53.06,-7.29</uri>
+        </geo>
+    </vcard>
+    <vcard>
+        <fn>
+            <text>jappix.com</text>
+        </fn>
+        <kind>
+            <text>application</text>
+        </kind>
+        <url>
+            <uri>http://jappix.com/</uri>
+        </url>
+        <note>
+            <text>The Jappix XMPP service.</text>
+        </note>
+        <registration xmlns="urn:xmpp:vcard:registration:1">
+            <uri>xmpp:jappix.com</uri>
+        </registration>
+        <bday>
+            <date>2010</date>
+        </bday>
+        <adr>
+            <country>FR</country>
+        </adr>
+        <ca xmlns="urn:xmpp:vcard:ca:0">
+            <name>CAcert</name>
+            <uri>http://www.cacert.org/</uri>
+        </ca>
+        <name xmlns="jabber:iq:version">Metronome</name>
+        <impp>
+            <uri>xmpp:vanaryon@jappix.com</uri>
+        </impp>
+        <geo>
+            <uri>geo:50.67,3.19</uri>
+        </geo>
+    </vcard>
+    <vcard>
+        <fn>
+            <text>tigase.im</text>
+        </fn>
+        <kind>
+            <text>application</text>
+        </kind>
+        <url>
+            <uri>http://www.tigase.im/</uri>
+        </url>
+        <note>
+            <text>The public Tigase service. - Also supports IPv6!</text>
+        </note>
+        <registration xmlns="urn:xmpp:vcard:registration:1">
+            <uri>xmpp:tigase.im</uri>
+        </registration>
+        <bday>
+            <date>2010</date>
+        </bday>
+        <adr>
+            <country>EU</country>
+        </adr>
+        <ca xmlns="urn:xmpp:vcard:ca:0">
+            <name>StartSSL</name>
+            <uri>http://www.startssl.com/</uri>
+        </ca>
+        <name xmlns="jabber:iq:version">Tigase</name>
+        <impp>
+            <uri>xmpp:admin@im.flosoft.biz</uri>
+        </impp>
+        <geo>
+            <uri>geo:50.69,3.19</uri>
+        </geo>
+    </vcard>
+    <vcard>
+        <fn>
+            <text>lightwitch.org</text>
+        </fn>
+        <kind>
+            <text>application</text>
+        </kind>
+        <url>
+            <uri>http://www.lightwitch.org/</uri>
+        </url>
+        <note>
+            <text>LW.Org XMPP Public Service.</text>
+        </note>
+        <registration>
+            <uri>xmpp:lightwitch.org</uri>
+        </registration>
+        <bday>
+            <date>2009</date>
+        </bday>
+        <adr>
+            <country>USA</country>
+        </adr>
+        <ca>
+            <name>StartSSL</name>
+            <uri>http://www.startssl.com/</uri>
+        </ca>
+        <name>Metronome</name>
+        <impp>
+            <uri>xmpp:maranda@lightwitch.org</uri>
+        </impp>
+        <geo>
+            <uri>geo:40.73,-74.17</uri>
+        </geo>
+    </vcard>
+    <vcard>
+        <fn>
+            <text>jabber.me</text>
+        </fn>
+        <kind>
+            <text>application</text>
+        </kind>
+        <url>
+            <uri>http://www.jabber.me/</uri>
+        </url>
+        <note>
+            <text>Just Jabber Me! - Also supports IPv6!</text>
+        </note>
+        <registration xmlns="urn:xmpp:vcard:registration:1">
+            <uri>xmpp:jabber.me</uri>
+        </registration>
+        <bday>
+            <date>2010</date>
+        </bday>
+        <adr>
+            <country>EU</country>
+        </adr>
+        <ca xmlns="urn:xmpp:vcard:ca:0">
+            <name>StartSSL</name>
+            <uri>http://www.startssl.com/</uri>
+        </ca>
+        <name xmlns="jabber:iq:version">Tigase</name>
+        <impp>
+            <uri>xmpp:admin@im.flosoft.biz</uri>
+        </impp>
+        <geo>
+            <uri>geo:50.69,3.19</uri>
+        </geo>
+    </vcard>
+    <vcard>
+        <fn>
+            <text>sure.im</text>
+        </fn>
+        <kind>
+            <text>application</text>
+        </kind>
+        <url>
+            <uri>http://www.sure.im/</uri>
+        </url>
+        <note>
+            <text>Just Sure Im! - Also supports IPv6!</text>
+        </note>
+        <registration xmlns="urn:xmpp:vcard:registration:1">
+            <uri>xmpp:sure.im</uri>
+        </registration>
+        <bday>
+            <date>2010</date>
+        </bday>
+        <adr>
+            <country>EU</country>
+        </adr>
+        <ca xmlns="urn:xmpp:vcard:ca:0">
+            <name>StartSSL</name>
+            <uri>http://www.startssl.com/</uri>
+        </ca>
+        <name xmlns="jabber:iq:version">Tigase</name>
+        <impp>
+            <uri>xmpp:admin@im.flosoft.biz</uri>
+        </impp>
+        <geo>
+            <uri>geo:50.69,3.19</uri>
+        </geo>
+    </vcard>
+    <vcard>
+        <fn>
+            <text>jabbim.cz</text>
+        </fn>
+        <kind>
+            <text>application</text>
+        </kind>
+        <url>
+            <uri>http://www.jabbim.cz/</uri>
+        </url>
+        <note>
+            <text>Stable ejabberd clustered server with good support and many transports and services: ICQ, AIM, MSN, Facebook, Weather, Yahoo, Notes, bots, MUCs, proxy65, STUN server for voice support, and more</text>
+        </note>
+        <registration xmlns="urn:xmpp:vcard:registration:1">
+            <uri>xmpp:jabbim.cz</uri>
+        </registration>
+        <bday>
+            <date>2005</date>
+        </bday>
+        <adr>
+            <country>CZ</country>
+        </adr>
+        <ca xmlns="urn:xmpp:vcard:ca:0">
+            <name>CAcert</name>
+            <uri>http://www.cacert.org/</uri>
+        </ca>
+        <name xmlns="jabber:iq:version">ejabberd</name>
+        <impp>
+            <uri>xmpp:pinky@njs.netlab.cz</uri>
+        </impp>
+    </vcard>
+    <vcard><fn><text>njs.netlab.cz</text></fn><kind><text>application</text></kind><url><uri>http://www.jabbim.cz/</uri></url><note><text>Public service hosted by jabbim.cz</text></note><registration xmlns="urn:xmpp:vcard:registration:1"><uri>xmpp:njs.netlab.cz</uri></registration><bday><date>2001</date></bday><adr><country>CZ</country></adr><ca xmlns="urn:xmpp:vcard:ca:0"><name>CAcert</name><uri>http://www.cacert.org/</uri></ca><name xmlns="jabber:iq:version">ejabberd</name><impp><uri>xmpp:pinky@njs.netlab.cz</uri></impp></vcard>
+    <vcard><fn><text>jabbim.pl</text></fn><kind><text>application</text></kind><url><uri>http://www.jabbim.cz/</uri></url><note><text>Public service hosted by jabbim.cz</text></note><registration xmlns="urn:xmpp:vcard:registration:1"><uri>xmpp:jabbim.pl</uri></registration><bday><date>2005</date></bday><adr><country>CZ</country></adr><ca xmlns="urn:xmpp:vcard:ca:0"><name>CAcert</name><uri>http://www.cacert.org/</uri></ca><name xmlns="jabber:iq:version">ejabberd</name><impp><uri>xmpp:pinky@njs.netlab.cz</uri></impp></vcard>
+    <vcard><fn><text>jabbim.sk</text></fn><kind><text>application</text></kind><url><uri>http://www.jabbim.cz/</uri></url><note><text>Public service hosted by jabbim.cz</text></note><registration xmlns="urn:xmpp:vcard:registration:1"><uri>xmpp:jabbim.sk</uri></registration><bday><date>2005</date></bday><adr><country>CZ</country></adr><ca xmlns="urn:xmpp:vcard:ca:0"><name>CAcert</name><uri>http://www.cacert.org/</uri></ca><name xmlns="jabber:iq:version">ejabberd</name><impp><uri>xmpp:pinky@njs.netlab.cz</uri></impp></vcard>
+    <vcard><fn><text>jabbim.com</text></fn><kind><text>application</text></kind><url><uri>http://www.jabbim.cz/</uri></url><note><text>Public service hosted by jabbim.cz</text></note><registration xmlns="urn:xmpp:vcard:registration:1"><uri>xmpp:jabbim.com</uri></registration><bday><date>2005</date></bday><adr><country>CZ</country></adr><ca xmlns="urn:xmpp:vcard:ca:0"><name>CAcert</name><uri>http://www.cacert.org/</uri></ca><name xmlns="jabber:iq:version">ejabberd</name><impp><uri>xmpp:pinky@njs.netlab.cz</uri></impp></vcard>
+    <vcard><fn><text>forumanalogue.fr</text></fn><kind><text>application</text></kind><url><uri>http://www.forumanalogue.fr/</uri></url><note><text>A public self-hosted Jabber server located in France.</text></note><registration xmlns="urn:xmpp:vcard:registration:1"><uri>xmpp:forumanalogue.fr</uri></registration><bday><date>2010</date></bday><adr><country>FR</country></adr><ca xmlns="urn:xmpp:vcard:ca:0"><name>StartSSL</name><uri>http://www.startssl.com/</uri></ca><name xmlns="jabber:iq:version">Openfire</name><impp><uri>xmpp:clement@forumanalogue.fr</uri></impp><geo><uri>geo:45.8,4.84</uri></geo><lang><parameters><pref>1</pref></parameters><language-tag>fr</language-tag></lang></vcard>
+
+</vcards>
+
+
+

@@ -1,0 +1,115 @@
+#main {
+    
+}
+
+#center {
+    position: relative;
+}
+
+#navtabs, #navtabs li.on {
+    background-color: transparent;
+    color: white;
+}
+
+#navtabs li.on {
+    background-color: #111;
+}
+
+#media .breadcrumb {
+    background-color: transparent;
+}
+
+#media .breadcrumb a:after {
+    border-color: #222;
+}
+
+#media ul.thumb a {
+    position: relative;
+}
+
+#media ul.thumb li div.remove {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 3px 0px 0px 0px;
+    font-weight: bold;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 16px;
+    display: none;
+}
+
+#media ul.thumb li:hover div.remove {
+    display: block;
+}
+
+#media ul.thumb li:hover div.remove:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+#media a:link, #media a:visited,
+#viewer a:link, #viewer a:visited {
+    color: #DDD;
+}
+
+#navtabs li:hover {
+    background-color: #111;
+}
+
+#center {
+    background-color: #222;
+    color: white;
+}
+
+#viewer .viewer {
+    position: relative;
+}
+
+#viewer .viewer img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#viewer .viewer .exif {
+    position: absolute;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    padding: 1em;
+}
+
+#viewer .viewer .exif ul {
+    list-style-type: none;
+}
+
+#viewer .viewer .exif ul li {
+    width: 50%;
+    display: block;
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#viewer .viewer .exif span {
+    font-weight: bold;
+    display: inline-block;
+    text-align: right;
+    margin-right: 1em;
+    width: 5em;
+}
+
+#media .size {
+    position: absolute;
+    font-size: 0.9em;
+    top: 0px;
+    right: 0px;
+    line-height: 3em;
+    display: block;
+    padding-right: 1em;
+}

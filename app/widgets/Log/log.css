@@ -1,0 +1,29 @@
+/* Logs style */
+
+#log {
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+/*	height: 350px;*/
+	overflow: hidden;
+    font-size: 10px;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    z-index: 3;
+    height: 12px;
+}
+
+#log:hover {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	width: 40%;
+	height: 100%;
+	border-left: 1px solid black;
+}
+
+#log span {
+	color: green;
+}

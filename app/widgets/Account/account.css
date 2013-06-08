@@ -1,0 +1,15 @@
+#left {
+    padding-top: 0px !important;
+    margin-top: 1em !important;
+}
+
+#nav .menu li:last-child {
+    background-image: none;
+    padding-right: 0px;
+    position: relative;
+}
+
+table#list {
+  border-spacing:0;
+  border-collapse:collapse;
+}

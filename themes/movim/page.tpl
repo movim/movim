@@ -8,8 +8,8 @@
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.1, user-scalable=no" />
           
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
-	<link rel="stylesheet" href="assets/js/leaflet.css" />
-	<script src="assets/js/leaflet.js"></script>
+	<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
+	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     
     <script type="text/javascript">
         var BASE_URI = '<?php echo BASE_URI; ?>';
@@ -32,7 +32,7 @@
     
     $pattern = $user->getConfig('pattern');
     if(!isset($pattern))
-        $pattern = 'default';
+        $pattern = 'empty';
     
     if(isset($color)) {
         echo '

@@ -1,0 +1,28 @@
+#contactsummary {
+    background-color: #272727;
+    margin: -1em;
+    padding: 1em;
+    line-height: 1.5em;
+}
+
+#contactsummary h1 {
+    color: white;
+    line-height: 1.5em;
+    padding: 0px;
+    margin: 0.5em 0em;
+}
+
+#contactsummary img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: -1em;
+    margin-bottom: 1em;
+}
+
+#contactsummary .textbubble {
+    margin: -1em;
+    margin-top: 1em;
+    background-color: #171717;
+    padding: 1em;
+}

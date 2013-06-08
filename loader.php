@@ -51,9 +51,9 @@ require_once(SYSTEM_PATH . "Route.php");
 
 require_once(SYSTEM_PATH . "Tpl/TplPageBuilder.php");
 
-require_once(APP_PATH . "widget/WidgetBase.php");
-require_once(APP_PATH . "widget/WidgetCommon.php");
-require_once(APP_PATH . "widget/WidgetWrapper.php");
+require_once(SYSTEM_PATH . "widget/WidgetBase.php");
+require_once(SYSTEM_PATH . "widget/WidgetCommon.php");
+require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");
 
 // We set the default timezone to the server timezone
 
