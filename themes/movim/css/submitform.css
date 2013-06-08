@@ -2,11 +2,7 @@
 
 table#feedsubmitform {
     display: block;
-    border: 1px solid;
-	border-color: #999999 #BBBBBB #BBBBBB;
-    margin: 1.5em;
     margin-top: 0px;
-    overflow: hidden;
 }
 
 #feedsubmitform tbody, #feedsubmitform tr, #feedsubmitform td {
@@ -14,16 +10,16 @@ table#feedsubmitform {
 }
 
 #feedsubmitform td {
-    padding: 5px;
+    padding: 0px;
 }
 
 #feedsubmitform textarea {
     width: 100%;
-    padding: 0px;
-    border: 0px;
-    height: 2em;
+    padding: 1em;
+    border: none;
+    height: 1.2em;
     resize: none;
-    overflow: hidden;
+    background-color: white;
 }
 
 #postpreviewcontent {
@@ -48,7 +44,7 @@ table#feedsubmitform {
     background-color: #EEE;
     width: auto;
     overflow: auto;
-    padding-bottom: 5px;
+    padding: 0px;
 }
 
 #feedsubmitform #feedsubmitrow a {
@@ -70,17 +66,14 @@ table#feedsubmitform {
 }
 
 #feedsubmitform span#postpublishlocation {
-    line-height: 1.8em;
-    height: 1.5em;
+    line-height: 2em;
+    height: 2em;
     display: block;
     white-space: nowrap;
+    padding-left: 0.5em;
     width: 55%;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-#feedsubmitform .button.merged.right {
-    margin-right: 5px;
 }
 
 #feedsubmitform .button img {

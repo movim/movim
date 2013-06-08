@@ -1,0 +1,161 @@
+body {
+    margin: 0px;
+    background-color: #333;
+    font-family: sans-serif;
+}
+
+#connection {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 5em;
+}
+
+#chatpop {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+#chatpop #chatpoplist label {
+    display: block;
+}
+
+#chatpop #chatpoplist li input[type=radio] {
+    display: none;
+}
+
+#chatpop #chatpoplist li input[type=radio]:checked ~ .content {
+    display: block;
+}
+
+#chatpop #chatpoplist input[type=radio]:checked ~ label {
+    background-color: #111;
+}
+
+#chatpop #chatpoplist {
+    width: 25%;
+    height: 100%;
+    list-style-type: none;
+    margin: 0px;
+    overflow-y: auto;
+    display: block;
+    padding: 0px;
+}
+
+#chatpop #chatpoplist li {
+    margin: 0px;
+    padding: 0px;
+}
+
+#chatpop #chatpoplist li .tab {
+    white-space: nowrap;
+    width: auto;
+    overflow: hidden;
+    color: #BBB;
+    line-height: 30px;
+    font-size: 13px;
+    text-overflow: ellipsis;
+}
+
+#chatpop #chatpoplist li:hover .tab {
+    background-color: #222;
+    cursor: pointer;
+}
+
+#chatpop #chatpoplist li .tab img.avatar {
+    float: left;
+    margin-right: 5px;
+    width: 30px;
+}
+
+#chatpop #chatpoplist li .content {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 90%;
+    width: 75%;
+    display: none;
+    background-color: white;
+    overflow-y: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+#chatpop #chatpoplist li .content .text {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 75%;
+    background-color: red;
+    min-height: 10%;
+    border-top: 1px solid #333;
+    background-color: white;
+}
+
+#chatpop #chatpoplist li .content .text textarea  {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    height: auto;
+    background-color: white;
+    resize: none;
+}
+
+#chatpop #chatpoplist li .content .messages {
+    font-size: 13px;
+}
+
+#chatpop #chatpoplist li .content .messages .message {
+    margin: 10px;
+    margin-right: 30px;
+    background-color: #FFE8CC;
+    padding: 5px;
+    min-height: 25px;
+}
+
+#chatpop #chatpoplist li .content .messages .message.me {
+    margin-left: 30px;
+    margin-right: 10px;
+    background-color: #FFFFCC;
+}
+
+#chatpop #chatpoplist li .content .messages .message .date {
+    float: right;
+    color: #888;
+    font-size: 11px;
+    padding-left: 10px;
+}
+
+#chatpop #chatpoplist li .content .messages .message.presence {
+    background-color: transparent;
+    font-weight: bold;
+    min-height: 0px;
+}
+
+#chatpop #chatpoplist span.chatbutton {
+    width: 28px;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+
+#chatpop #chatpoplist span.chatbutton:hover {
+    cursor: pointer;
+}
+
+#chatpop #chatpoplist li span.chatbutton.cross {
+    background-image: url(img/cross.png);
+}

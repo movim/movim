@@ -1,0 +1,47 @@
+#profile {
+    background-color: #272727;
+    margin: -1em;
+    padding: 1em;
+    line-height: 1.5em;
+}
+
+#profile h1 {
+    color: white;
+    line-height: 1.5em;
+    padding: 0px;
+    margin: 0.5em 0em;
+}
+
+#profile img {
+    width: auto;
+    height: auto;
+    display: block;
+    margin: -1em;
+    margin-bottom: 1em;
+}
+
+#profile .textbubble {
+    margin: -1em;
+    margin-top: 1em;
+    background-color: #171717;
+    padding: 1em;
+}
+
+#profile .textbubble textarea {
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 0.9em;
+    width: 100%;
+    resize: none;
+    color: white;
+    text-align: center;
+    padding: 0px;
+}
+
+#profile .textbubble textarea:hover {
+    border-color: white;
+}
+
+#profile textarea#status {
+    overflow: hidden;
+}

@@ -19,7 +19,7 @@ function createThumbnails($jid, $photobin) {
     unlink(BASE_PATH.'cache/'.$jid.'_m.jpg');
     unlink(BASE_PATH.'cache/'.$jid.'_s.jpg');
     unlink(BASE_PATH.'cache/'.$jid.'_xs.jpg');
-    createThumbnailSize(base64_decode($photobin), 150, BASE_PATH.'cache/'.$jid.'_l.jpg');
+    createThumbnailSize(base64_decode($photobin), 200, BASE_PATH.'cache/'.$jid.'_l.jpg');
     createThumbnailSize(base64_decode($photobin), 120, BASE_PATH.'cache/'.$jid.'_m.jpg');
     createThumbnailSize(base64_decode($photobin), 50, BASE_PATH.'cache/'.$jid.'_s.jpg');
     createThumbnailSize(base64_decode($photobin), 28, BASE_PATH.'cache/'.$jid.'_xs.jpg');

@@ -8,11 +8,11 @@
 <?php $this->widget('ChatExt');?>
 
 <div id="head">
-    <?php $this->widget('ContactSummary');?>
 </div>
 
 <div id="main">
     <div id="left">
+        <?php $this->widget('ContactSummary');?>
         <?php $this->widget('ContactInfo');?>
         <?php $this->widget('ContactManage');?>
     </div>
