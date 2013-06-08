@@ -7,16 +7,16 @@
 <?php $this->widget('ChatExt');?>
 
 <div id="head">
-  <?php $this->widget('Profile');?>
+  
 </div>
 
 <div id="main">
     <div id="left">
+        <?php $this->widget('Profile');?>
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
-    <div id="center" class="protect orange">
-        <h1><?php echo t('Feed'); ?></h1>
+    <div id="center">
         <?php $this->widget('Feed');?>
     </div>
 </div>

@@ -1,0 +1,134 @@
+#notifs {
+    color: #ccc;
+}
+
+#notifstab {
+	position: fixed;
+	top: 0px;
+	right: 50%;
+    margin-right: -300px;
+	cursor: pointer;
+    z-index: 4;
+    padding: 0.8em 0.5em;
+}
+
+#notifs span {
+    color: white;
+    font-size: 0.8em;
+    padding: 0px;
+    line-height: 1.7em;
+    float: right;
+    padding: 0px 1em;
+    border-radius: 0.1em;
+    background-color: #444;
+}
+
+#notifstab span.red {
+    background-color: #D92727;
+}
+
+#notifstab:hover {
+    color: white;
+}
+
+#notifstab:hover:after {
+    background-color: #888;
+}
+
+#notifslist #acceptcontact p {
+    padding: 0.5em;
+}
+
+#notifslist {
+    display: none;
+    position: fixed;
+    top: 3em;
+    right: 50%;
+    margin-right: -300px;
+    z-index: 3;
+    background-color: #4C5A61;
+    overflow: hidden; 
+    max-height: 400px;
+    width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#notifslist ul li:hover .black {
+    color: #BBB;
+}
+
+#notifslist #refresh:before {
+    color: #BBB;
+}
+
+#notifslist ul {
+    list-style-type: none;
+    clear: both;
+}
+
+#notifslist ul li {
+    line-height: 2em;
+    width: 100%;
+    display: block;
+}
+
+#notifslist ul li:nth-child(2n) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+#notifslist ul li p {
+    line-height: 1em;
+    padding: 0em 0.5em;
+}
+
+#notifslist ul li a#notifsvalidate {
+    margin-right: 0.5em;
+}
+
+#notifslist ul li span.num {
+    background-color: #D92727;
+    margin: 0.4em;
+}
+
+#notifslist ul li:hover {
+    color: black;
+}
+
+#notifslist ul li.title {
+    text-align: center;
+    border-top: none;
+    color: white;
+}
+
+#notifslist ul li.title:hover {
+    color: white;
+    background-color: #242424;
+    color: white;
+}
+
+#notifslist ul li img {
+    max-width: 2em;
+    float: left;
+    margin-right: 0.5em;
+}
+
+#notifslist ul li a {
+    color: #ccc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+#notifslist ul li a.delete {
+    float: right;
+    margin-right: 10px;
+}
+
+#notifslist ul li a.delete:hover {
+    text-decoration: underline;
+}
+
+#notifslist ul li:hover a {
+    color: black;
+}

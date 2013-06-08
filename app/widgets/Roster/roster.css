@@ -1,0 +1,186 @@
+#roster {
+    background-color: rgba(36, 36, 36, 1);
+    height: 100%;
+}
+
+
+#roster ul#rosterlist {
+    list-style-type: none;
+    display: block;
+    background-color: rgba(36, 36, 36, 1);
+    padding-bottom: 3em;
+    pointer-events: auto;
+}
+
+/* Display/hide the elements */
+#roster.hide {
+    display: none;
+}
+
+#roster ul#rosterlist li .chat.on:hover {
+    cursor: pointer;
+}
+
+#roster ul#rosterlist div li {
+    display: none;
+}
+
+#roster ul#rosterlist div.groupshown li:not(.offline):not(.server_error) {
+    display: list-item;
+}
+
+#roster ul#rosterlist.offlineshown div.groupshown li {
+    display: list-item;
+}
+
+/* The list */
+
+#roster ul#rosterlist li:nth-child(2n) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+#roster ul#rosterlist li img {
+    float: left;
+    width: 3em;
+    height: 3em;
+    margin-right: 7px;
+}
+
+#roster ul#rosterlist li a {
+    display: block;
+    white-space: nowrap;
+    width: auto;
+    overflow: hidden;
+    color: #BBB;
+    font-size: 1em;
+    line-height: 1.5em;
+    text-overflow: ellipsis;
+}
+
+#roster ul#rosterlist li a span.ressource {
+    font-size: 0.7em;
+    color: #777;
+    line-height: 1.1em;
+}
+
+#roster ul#rosterlist h1 {
+    padding: 1em;
+    color: #777;
+    line-height: 1em;
+    font-size: 1em;
+}
+
+#roster ul#rosterlist h1:hover {
+    cursor: pointer;
+}
+
+#roster ul#rosterlist h1:before {
+    content: "+";
+    width: 20px;
+    padding-right: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+#roster ul#rosterlist div.groupshown h1:before {
+    content: "-";
+}
+
+#roster ul#rosterlist li .chat {
+    width: 0.5em;
+    height: 3em;
+    float: right;
+    background-color: #DDD;
+    transition: width 0.5s ease;
+}
+
+#roster ul#rosterlist li.inactive {
+    opacity: 0.5;
+}
+
+#roster ul#rosterlist li:hover .chat {
+    width: 3em;
+    background-image: url(img/bubbles.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#roster ul#rosterlist li .chat.on:hover {
+    cursor: pointer;
+}
+
+#roster ul#rosterlist li.online .chat {
+    background-color: #6FCC43;
+}
+
+#roster ul#rosterlist li.away .chat {
+    background-color: #FFE433;
+}
+
+#roster ul#rosterlist li.dnd .chat {
+    background-color: #D92727;
+}
+
+#roster ul#rosterlist li.xa .chat {
+    background-color: #442178;
+}
+
+#roster ul#rosterlist li.server_error .chat {
+    background-color: #000;
+}
+
+#roster ul#rosterlist li:hover, #roster ul li.active {
+    background-color: black;
+}
+
+#roster ul#rosterlist li.focused {
+    background-color: #555;
+}
+
+#roster li .infoicon {
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    float: right;
+    margin-top: 0.9em;
+    margin-right: 0.2em;
+}
+
+#roster li .mobile {
+    background-image: url('img/mobile.png');
+}
+
+#roster li .web {
+    background-image: url('img/earth.png');
+}
+
+#roster li .bot {
+    background-image: url('img/robot.png');
+}
+
+#roster li .tune {
+    background-image: url('img/music.png');
+}
+
+#rostermenu {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    display: block;
+    background-color: rgba(36, 36, 36, 1);
+    width: 200px;
+    pointer-events: auto;
+}
+
+#rostermenu li#search input {
+    height: 2em;
+    width: 100%;
+}
+
+#rostermenu li:last-child {
+    float: right;
+}
+
+#rostermenu div#chattoggle {
+    display: inline-block;
+}

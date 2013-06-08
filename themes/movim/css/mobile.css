@@ -5,7 +5,7 @@ body {
     margin: 0px;
     padding: 0px;
     width: 100%;
-    margin-top: 38px;
+    margin-top: 3em;
 }
 
 h1 {
@@ -70,19 +70,15 @@ h1 {
     background-image: none;
 }
 
-#nav .menu li {
-    width: 40px;
-}
-
 #nav .menu li a.main {
     opacity: 1;
-    width: 40px;
+    width: 0em;
 }
 
-#nav .menu li:last-child {
-    background-image: none;
-    position: relative;
+#nav .menu li a.disconnect {
+    position: fixed;
     top: 0px;
+    right: 0px;
 }
 
 .element {
@@ -94,11 +90,11 @@ h1 {
 }
 
 .posthead {
-    padding: 0.3em;
+    padding: 0.2em;
 }
 
 .post {
-    padding: 0.2em;
+    padding: 1em 0.2em;
 }
 
 .post .avatar {

@@ -42,10 +42,16 @@ body {
     font-size: 14px;
     line-height: 1em;
     color: #4E4E4E;
-    background-color: #082D50;
+    background-color: #32434D;
 
     margin: 0 auto;
-    width: 1000px;
+    width: 100%;
+    max-width: 1280px;
+    padding-right: 200px;
+    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
     
     background-attachment:fixed;
 }
@@ -160,11 +166,10 @@ h1 {
     vertical-align: bottom;
 }
 
-h2 {
-    color: #777;    
+h2 {   
     line-height: 2em;
-    margin: 1em 0em;
-    border-bottom: 1px solid #CCC;
+    font-size: 1em;
+    margin-top: 1.5em;
 }
 
 h2.post-title {
@@ -172,7 +177,7 @@ h2.post-title {
 }
 
 h3 {
-    color: #777;
+    color: #BBB;
     line-height: 2em;
 }
 
@@ -220,27 +225,24 @@ ul.clean li {
 }
 
 #content {
-    width: 800px;
+    width: 100%;
     margin-right: 200px;
     position: relative;
-    margin-top: 4em;
+    margin-top: 3em;
 }
-
+/*
 #head {
     width: 800px;
     overflow: hidden;
 }
 
 #head .block {
-    /*min-height: 160px;*/
     float: left;
     max-width: 260px;
     overflow: hidden;
     color: white;
     text-shadow: 0px 0px 2px #333;
-    /*font-size: 1em;*/
     margin-right: 1em;
-    /*padding-top: 10px;*/
 }
 
 #head .block:first-child {
@@ -280,8 +282,6 @@ ul.clean li {
     background-color: white;
     width: 150px;
     height: 150px;
-    margin-left: 1.8em;
-    margin-right: 1em;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5),  0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -323,14 +323,13 @@ ul.clean li {
 #head .block .textbubble textarea:hover {
     border-color: white;
 }
-
+*/
 #main {  
-    /*box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.4), 0px 0px 2px rgba(0, 0, 0, 0.2);*/
     overflow: hidden;
     height: 100%;
-    background-color: #EEE;
-    /*border-bottom: 1px solid #555;*/
-    margin-top: -3em;
+    background-color: #383735;
+    position: relative;
+padding-right: 200px;
 }
 
 #left
@@ -340,8 +339,15 @@ ul.clean li {
 	-moz-box-sizing: border-box;
     float: left;
     padding: 1em;
-    width: 25%;
-    margin-top: 2em;
+    width: 200px;
+    color: white;
+    position: absolute;
+    top: 0px;
+}
+
+#left a:link, 
+#left a:visited {
+    color: #94A6B0;
 }
 
 #left ul {
@@ -350,10 +356,12 @@ ul.clean li {
 
 #center
 {
-    float: right;
-    width: 75%;
     background-color: white;
     min-height: 620px;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    left: 200px;
 }
 
 #right
@@ -363,9 +371,8 @@ ul.clean li {
     position: fixed;
     top: 0px;
     right: 0px;
-    /*border-left: 1px solid rgba(0, 0, 0, 0.8);*/
     pointer-events:none;
-    padding-top: 3em;
+    padding-top: 0em;
     height: 100%;
     overflow: auto;
     z-index: 2;
@@ -374,8 +381,9 @@ ul.clean li {
 #footer 
 {
     clear: both;
-    padding: 5px 10px;
     text-align: right;
+    background-color: #383735;
+    line-height: 3em;
     color: white;
 }
 
@@ -391,20 +399,20 @@ ul.clean li {
     padding-top: 0px;
     text-decoration: none;
     width: 100%;
-    background-color: rgba(36, 36, 36, 1);
+    background-color: #4C5A61;
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 4;
+    z-index: 2;
 }
 
 .menu {
-    max-width: 1000px;
+    max-width: 1280px;
     width: 100%;
     margin: 0px auto;
     list-style-type: none;
+    height: 3em;
     overflow: hidden;
-
 }
 
 .menu li {
@@ -418,32 +426,33 @@ ul.clean li {
 
 .menu li a:not(.button), .menu li label {
     line-height: 3em;
-    padding-left: 2.5em;
     display: block;
-    color: #ccc;
     background-repeat: no-repeat;
-    background-position: 0.7em center;
-    height: 3em;
-}
-
-.menu li a, .menu li label:last-child {
-    padding-right: 5px;
+    background-position: center center;
+    height: 0px;
+    width: 0px;
+    padding: 1.5em;
+    color: transparent;
 }
 
 .menu li a.disconnect{
     position: fixed;
     top: 0px;
-    right: 0px;
+    right: 200px;
 }
+
 
 .menu li a.active {
-    background-color: #111;
-    color: #EEE;
+    background-color: #445157;
 }
 
-.menu li:hover a.active {
-    color: #FFF;
+.menu li:hover {
+    background-color: #46565E;
 }
+/*
+.menu li:hover a.active {
+    color: transparent;
+}*/
 
 .menu li img {
     float: left;
@@ -452,13 +461,12 @@ ul.clean li {
     margin-top: 1px;
 }
 .menu li:hover a, .menu li label:hover {
-    color: #fff;
     cursor: pointer;
 } 
 
 .menu li a.main, .menu li a.main.active {
-	width: 200px;
-    padding: 0px;
+	width: 158px;
+    padding: 1.5em;
     color: transparent;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
@@ -508,7 +516,7 @@ ul li input[type=checkbox]:checked ~ .tabbed {
 /* Warning */
 
 .message.warning, .message.info, .message.error, .message.success {
-    border-radius: 1px;
+    border-radius: 0.1em;
     background-size: 40px 40px;
     background-image: linear-gradient(135deg, rgba(255,255, 255, 0.05) 25%, transparent 25%,
                         transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
@@ -523,7 +531,7 @@ ul li input[type=checkbox]:checked ~ .tabbed {
                         transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
                         transparent 75%, transparent);
 
-    box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.3),
+    /*box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.3),
         -1px 0px 0px rgba(0, 0, 0, 0.3),
         0px 1px 0px rgba(0, 0, 0, 0.4),
         0px -1px 0px rgba(0, 0, 0, 0.4);
@@ -531,11 +539,11 @@ ul li input[type=checkbox]:checked ~ .tabbed {
     border: 0px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-top: 1px solid rgba(255, 255, 255, 0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);*/
     
     color: #fff;
-    padding: 0.5em;
-    text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    /*text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1);*/
     /*font-size: 1.1em;*/
     margin: 0.5em 0px;
     clear: both;

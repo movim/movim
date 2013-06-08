@@ -1,0 +1,28 @@
+#mediaupload #fileinfo {
+    clear: left;
+}
+
+#progress_info {
+    margin-top: 1em;
+}
+#fileinfo,#error,#error2,#abort,#warnsize {
+    display:none;
+}
+#progress {
+    margin-right: 1em;
+    display:none;
+    float:left;
+    height:16px;
+    background-color: #111;
+}
+#progress_percent {
+    float:right;
+}
+
+#mediaupload #preview {
+    display:block;
+    float:right;
+    max-width: 200px;
+    max-height: 150px;
+    margin-top: 1em;
+}
