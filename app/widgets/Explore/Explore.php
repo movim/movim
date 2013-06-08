@@ -88,7 +88,7 @@ class Explore extends WidgetCommon {
         foreach($users as $user) {
             $html .= '
                 <div class="post">
-                    <a href="?q=friend&f='.$user->jid.'">
+                    <a href="'.Route::urlize('friend', $user->jid).'">
                         <img class="avatar" src="'.$user->getPhoto('m').'"/>
                         <div class="postbubble">
                             <span class="name">'.
