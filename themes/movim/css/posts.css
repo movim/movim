@@ -3,7 +3,7 @@
 .posthead {
     display: block;
     width: 100%;
-    min-height: 2em;
+    height: 2em;
     padding-left: 1.5em;
     padding-top: 1em;
 }
@@ -34,14 +34,14 @@
     padding: 1em;
     padding-top: 0em;
     line-height: 1.3em;
-    padding-left: 0.5em;
+    padding-left: 0em;
     word-wrap: break-word;
     overflow: hidden;
 }
 
 .post .postbubble {
     width: 92%;
-    margin-left: 4em;
+    margin-left: 5em;
     position: relative;
 }
 
@@ -67,7 +67,7 @@
 .post span {
     font-weight: bold;
     overflow: hidden;
-    padding-left: 0.5em;
+    padding-right: 0.5em;
     line-height: 2em;
     display: inline-block;
 }

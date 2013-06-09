@@ -83,7 +83,7 @@ class ContactInfo extends WidgetCommon
                 
                 if(isset($c->loclatitude) && isset($c->loclongitude))                  
                     $html .= '
-                        <div style="height: 250px;" id="map"></div>
+                        <div style="height: 250px; margin: 0em -1.2em;" id="map"></div>
                         <script type="text/javascript">
                                 var map = L.map("map").setView(['.$c->loclatitude.' ,'.$c->loclongitude.'], 11);
                                 
