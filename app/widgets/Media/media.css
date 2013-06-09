@@ -32,13 +32,12 @@
     bottom: 0px;
     right: 0px;
     background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 3px 0px 0px 0px;
     font-weight: bold;
-    width: 26px;
-    height: 26px;
+    width: 2em;
+    height: 2em;
     text-align: center;
-    line-height: 26px;
-    font-size: 16px;
+    line-height: 2em;
+    font-size: 1em;
     display: none;
 }
 

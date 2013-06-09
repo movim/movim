@@ -132,6 +132,8 @@ class Roster extends WidgetBase
                     />'.
                     $contact->getTrueName();
             $html .= '<br /><span class="ressource">';
+                    if($contact->status != '')
+                        $html .= htmlentities($contact->status) . ' - ';
 						if($contact->rosterask == 'subscribe')
 							$html .= " #";
                         if($contact->ressource != '')

@@ -6,10 +6,10 @@ function scrollAllTalks() {
     }
 }
 //Loads the Notification sound.
-var chatSoundNotif = document.createElement('audio');
+/*var chatSoundNotif = document.createElement('audio');
 chatSoundNotif.setAttribute('src', './system/Widget/widgets/Chat/sound/notif.ogg');
 chatSoundNotif.load();
-chatSoundNotif.volume = 1;
+chatSoundNotif.volume = 1;*/
 
 movim_add_onload(function()
 {

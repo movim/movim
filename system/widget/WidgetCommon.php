@@ -361,12 +361,11 @@ class WidgetCommon extends WidgetBase {
 			</script>
             
             <div class="popup post" id="postpreview">
-				<h2>'.t('Preview').'</h2>
 				<div class="content" id="postpreviewcontent">
 
 				</div>
 				<a 
-					class="button tiny black" 
+					class="button color icon no" 
 					onclick="
 						movim_toggle_display(\'#postpreview\');"
 				>'.t('Close').'</a>
@@ -509,8 +508,7 @@ class WidgetCommon extends WidgetBase {
         $html = '
             <div class="comment">
                 <a 
-                    class="getcomments icon bubble" 
-                    style="margin-left: 0px;">'.
+                    class="getcomments icon chat" >'.
                     t('No comments').
                 '</a>
             </div>';
@@ -521,8 +519,7 @@ class WidgetCommon extends WidgetBase {
         $html = '
             <div class="comment">
                 <a 
-                    class="getcomments icon bubble" 
-                    style="margin-left: 0px;">'.
+                    class="getcomments icon chat" >'.
                     t('No comments stream').
                 '</a>
             </div>';

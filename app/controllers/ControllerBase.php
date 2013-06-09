@@ -44,11 +44,12 @@ class ControllerBase
                 
         $r = new Route();
 		// Note that the request is always specified by 'q'.
-		$request;
+		//$request;
+        \movim_log($this->fetch_get('q'));
 		if($request = $this->fetch_get('q')) {
 			$this->run_req($request);
 		} else {
-			$this->run_req($this->default_handler);
+			$this->error404();
 		}
 	}
 
@@ -82,8 +83,6 @@ class ControllerBase
 	{
 		if(is_callable(array($this, $request))) {
 			call_user_func(array($this, $request));
-		} else {
-			$this->error404();
 		}
 	}
 

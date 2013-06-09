@@ -237,10 +237,10 @@ class TplPageBuilder
 	/**
 	 * Gets all the widgets that were loaded while building the page.
 	 */
-	function loadedWidgets()
+	/*function loadedWidgets()
 	{
 		return self::$loaded_widgets;
-	}
+	}*/
 }
 
 ?>
