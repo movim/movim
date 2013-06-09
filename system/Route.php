@@ -29,9 +29,14 @@ class Route extends ControllerBase {
     private function find($q) {        
         // We decompose the URL
         $request = explode('/', $q);
+                
+        if(empty($q)) {
+            $_GET['q'] = 'main';
+            return true;
+        }
         
         // And we search a pattern for the current page
-        if(isset($this->_routes[$request[0]])) {
+        elseif(isset($this->_routes[$request[0]])) {
             $route = $this->_routes[$request[0]];
             
             $_GET['q'] = $request[0];

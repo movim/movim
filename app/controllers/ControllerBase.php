@@ -43,9 +43,8 @@ class ControllerBase
 	{
                 
         $r = new Route();
+
 		// Note that the request is always specified by 'q'.
-		//$request;
-        \movim_log($this->fetch_get('q'));
 		if($request = $this->fetch_get('q')) {
 			$this->run_req($request);
 		} else {
