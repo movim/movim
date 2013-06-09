@@ -82,7 +82,7 @@ class Wall extends WidgetCommon
                                     href="#"
                                     onclick="'.$this->genCallAjax('ajaxWall', "'".$from."'").'
                                         this.innerHTML = \''.t('Updating').'\'; 
-                                        this.className= \'button tiny icon merged right loading\';
+                                        this.className= \'button color orange icon merged right loading\';
                                         this.onclick = \'return false;\'";
                                 >
                                     '.t('Update').'

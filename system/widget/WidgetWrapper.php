@@ -25,7 +25,7 @@ class WidgetWrapper
     private $register_widgets;
     private $all_widgets = array();
     private $loaded_widgets = array();
-    private $loaded_widgets_old;
+    //private $loaded_widgets_old;
 
     private static $instance;
 
@@ -42,10 +42,12 @@ class WidgetWrapper
         $this->register_widgets = $register;
         $sess = Session::start(APP_NAME);
         $widgets = $sess->get('loaded_widgets');
+
         if(is_array($widgets)) {
             $this->loaded_widgets_old = $widgets;
         }
         
+        // We search all the existent widgets
         $this->all_widgets = array();
         
         $widgets_dir = scandir(APP_PATH ."widgets/");
@@ -83,7 +85,7 @@ class WidgetWrapper
 
     protected function destroy()
     {
-        if($this->register_widgets) {
+        if($this->register_widgets && count($this->loaded_widgets) > 0) {
             $sess = Session::start(APP_NAME);
             $sess->set('loaded_widgets', $this->loaded_widgets);
             $this->register_widgets = false;
@@ -106,11 +108,6 @@ class WidgetWrapper
     {
         return $this->all_widgets;
     }
-    
-    /*function get_cached_widgets()
-    {
-        return $this->cached_widgets;
-    }*/
 
     /**
      * Loads a widget and returns it.
@@ -119,16 +116,10 @@ class WidgetWrapper
     {
         // Attempting to load the user's widgets in priority
 		$widget_path = "";
-        $extern = null;
+
 		if(file_exists(APP_PATH . "widgets/$widget_name/$widget_name.php")) {
 			$widget_path = APP_PATH . "widgets/$widget_name/$widget_name.php";
-			// Custom widgets have their own translations.
-			load_extra_lang(APP_PATH . 'widgets/$widget_name/i18n');
-            $extern = true;
-		}
-		else if(file_exists(APP_PATH . "widgets/$widget_name/$widget_name.php")) {
-			$widget_path = APP_PATH . "widgets/$widget_name/$widget_name.php";
-            $extern = false;
+        //    $extern = false;
 		}
 		else {
 			throw new MovimException(
@@ -136,7 +127,7 @@ class WidgetWrapper
 		}
 
         require_once($widget_path);
-        $widget = new $widget_name($extern);
+        $widget = new $widget_name();
         return $widget;
     }
 
@@ -179,13 +170,13 @@ class WidgetWrapper
      */
     function iterate($method, array $params = NULL)
     {
-        $buff = array();
         $widgets = $this->get_loaded_widgets();
+
         foreach($widgets as $widget) {
-            $buff[] = $this->run_widget($widget, $method, $params);
+            $this->run_widget($widget, $method, $params);
         }
 
-        return $buff;
+        //return $buff;
     }
     
     function iterateAll($method, array $params = NULL) {
@@ -195,9 +186,6 @@ class WidgetWrapper
             if($this->run_widget($widget, $method, $params))
                 $isevent[$widget] = true;
         }
-                
-        if(!empty($isevent))
-            $this->cached_widgets = $isevent;
             
         return $isevent;
     }

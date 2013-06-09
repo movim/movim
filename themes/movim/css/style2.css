@@ -664,8 +664,8 @@ ul.thumb {
 
 ul.thumb li {
     display: inline-block;
-    width: 25%;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -751,8 +751,7 @@ dl dd {
     overflow-y: auto;
     display: none;
     background-color: rgba(0, 0, 0, 0.9);
-    padding: 2em;
-    border-radius: 3px;
+    padding: 1em;
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;

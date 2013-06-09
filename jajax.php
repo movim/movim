@@ -31,5 +31,5 @@ $rpc = new RPC();
 $rpc->handle_json();
 
 // Closing stuff
-WidgetWrapper::destroyInstance();
+//WidgetWrapper::destroyInstance();
 ?>

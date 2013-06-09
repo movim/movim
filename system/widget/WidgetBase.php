@@ -192,9 +192,7 @@ class WidgetBase
 	 */
 	public function runEvents($proto)
 	{
-
 		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
-            // If a new event came to the widget, we update the cache
             //$this->setCacheCall();
             $returns = array();
 

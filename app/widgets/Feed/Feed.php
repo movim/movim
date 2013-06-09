@@ -25,8 +25,6 @@ class Feed extends WidgetCommon {
         $this->registerEvent('nodecreationerror', 'onNodeCreationError');
         
         $this->registerEvent('config', 'onConfig');
-
-        $this->cached = false;
     }
     
     function onConfig(array $data)
