@@ -46,7 +46,7 @@ class ContactSummary extends WidgetCommon
         
         // Contact avatar
         $html .= '
-            <img src="'.$contact->getPhoto('l').'"/>
+            <img class="avatar" src="'.$contact->getPhoto('l').'"/>
             ';
             
         $presencetxt = getPresencesTxt();

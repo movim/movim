@@ -12,7 +12,7 @@
     margin: 0.5em 0em;
 }
 
-#contactsummary img {
+#contactsummary img.avatar {
     width: 200px;
     height: 200px;
     display: block;

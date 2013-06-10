@@ -441,14 +441,15 @@ padding-right: 200px;
     right: 200px;
 }
 
+.menu li:hover,
+.menu li a.disconnect:hover {
+    background-color: #46565E;
+}
 
 .menu li a.active {
     background-color: #445157;
 }
 
-.menu li:hover {
-    background-color: #46565E;
-}
 /*
 .menu li:hover a.active {
     color: transparent;

@@ -14,7 +14,7 @@ class Route extends ControllerBase {
                 'conf'          => false,
                 'help'          => false,
                 'about'         => false,
-                'disconnect'    => false,
+                'disconnect'    => array('err'),
                 'friend'        => array('f'),
                 'blog'          => array('f'),
                 'feed'          => array('f'),
