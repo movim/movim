@@ -72,13 +72,21 @@ class Wall extends WidgetCommon
                 $html .= '
                         <div class="posthead">
                                 <a 
-                                    class="button color orange icon feed merged left" 
+                                    class="button color icon blog merged left" 
+                                    href="'.Route::urlize('blog',$from).'"
+                                    target="_blank"
+                                >
+                                    '.t('Blog').'
+                                </a><a 
+                                    class="button color orange icon feed merged right" 
                                     href="'.Route::urlize('feed',$from).'"
                                     target="_blank"
                                 >
                                     '.t('Feed').' (Atom)
-                                </a><a 
-                                    class="button color icon refresh merged right" 
+                                </a>
+                                
+                                <a 
+                                    class="button color icon refresh" 
                                     href="#"
                                     onclick="'.$this->genCallAjax('ajaxWall', "'".$from."'").'
                                         this.innerHTML = \''.t('Updating').'\'; 
