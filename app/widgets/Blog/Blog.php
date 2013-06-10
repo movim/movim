@@ -16,7 +16,7 @@ class Blog extends WidgetCommon {
         echo '
                 <div class="posthead" style="border-top: 0px;">
                         <a 
-                            class="button tiny icon feed merged left" 
+                            class="button color orange icon feed merged left" 
                             href="'.Route::urlize('feed',$from).'"
                             target="_blank"
                         >
