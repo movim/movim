@@ -330,7 +330,7 @@ class Admin extends WidgetBase {
                     
         $html .= '  
                     <div class="clear"></div>
-                    <a class="button icon submit" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
         
         $html .= '
                 </fieldset>';
@@ -354,7 +354,7 @@ class Admin extends WidgetBase {
                     $html .= '
                     <div class="element">
                         <label for="db">'.t('Recreate the database').'</label>
-                        <a class="button icon yes" onclick="'.$dbrecreate.'">'.t('Recreate').'</a>
+                        <a class="button icon loading color red" onclick="'.$dbrecreate.'">'.t('Recreate').'</a>
                     </div>
                     
                     <div class="message warning">
@@ -371,7 +371,7 @@ class Admin extends WidgetBase {
 
         $html .= '  
                     <div class="clear"></div>
-                    <a class="button icon submit" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
             
         $html .= '
             </fieldset>';
@@ -403,7 +403,7 @@ class Admin extends WidgetBase {
                     
         $html .= '  
                     <div class="clear"></div>
-                    <a class="button icon submit" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
 
         $html .= '
             </fieldset>';
@@ -428,7 +428,7 @@ class Admin extends WidgetBase {
 
         $html .= '  
                     <div class="clear"></div>
-                    <a class="button icon submit" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
 
         $html .= '
             </fieldset>';
@@ -462,10 +462,10 @@ class Admin extends WidgetBase {
 
         $html .= '  
                     <div class="clear"></div>
-                    <a class="button icon submit" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
                     
         $html .= '
-            </fieldset>';
+            </fieldset><br />';
             
         $html .= '
         </form>';
