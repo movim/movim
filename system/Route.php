@@ -6,6 +6,7 @@ class Route extends ControllerBase {
     public function __construct() {
         $this->_routes = array(
                 'account'       => false,
+                'chatpop'       => false,
                 'main'          => false,
                 'admin'         => false,
                 'explore'       => false,
@@ -22,11 +23,16 @@ class Route extends ControllerBase {
                 'server'        => array('s'),
             );
         
-        $q = $this->fetch_get('query');
-        return $this->find($q);
+        
+
+        if($_SERVER['HTTP_MOD_REWRITE'])
+            $q = $this->fetch_get('query');
+        else
+            $q = $this->fetch_get('q');
+            $this->find($q);
     }
     
-    private function find($q) {        
+    private function find($q) {
         // We decompose the URL
         $request = explode('/', $q);
                 
@@ -79,7 +85,7 @@ class Route extends ControllerBase {
                     elseif($params != false)
                         $uri .= '&'.$routes[$page][0].'='.$params;
                 } 
-                // Here we get a beautiful rewriten URL !
+                // Here we got a beautiful rewriten URL !
                 else {
                     $uri = BASE_URI.$page;
                     if($params != false && is_array($params))
