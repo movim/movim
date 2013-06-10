@@ -550,10 +550,10 @@ ul li input[type=checkbox]:checked ~ .tabbed {
     clear: both;
 }
 
-.message.warning { background-color: #ED9519; }
-.message.info { background-color: #3C7995; }
-.message.error { background-color: #DE4343; }
-.message.success { background-color: #76AB16; }
+.message.warning { background-color: #FC8F12; }
+.message.info { background-color: #0DB8B5; }
+.message.error { background-color: #D92727; }
+.message.success { background-color: #6FCC43; }
 
 /* Config button */
 

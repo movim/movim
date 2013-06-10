@@ -116,7 +116,7 @@ function MovimRPC()
                 handler(movim_xmlhttp.response);
             
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500)
-                movim_disconnect('&err=internal');
+                movim_disconnect('=internal');
         };
 
 	    movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");

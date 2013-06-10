@@ -50,7 +50,7 @@ class Wall extends WidgetCommon
     function onStream($payload) {
         $html = $this->prepareFeed(-1, $payload['from']);
 
-        RPC::call('movim_fill', md5($payload['from'].$payload['node']), $html);
+        RPC::call('movim_fill', stringToUri($payload['from'].$payload['node']), $html);
     }
 
     function prepareFeed($start, $from = false) {
@@ -120,7 +120,7 @@ class Wall extends WidgetCommon
 	{
 		?>
 		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
-            <div id="<?php echo md5($_GET['f'].'urn:xmpp:microblog:0'); ?>">
+            <div id="<?php echo stringToUri($_GET['f'].'urn:xmpp:microblog:0'); ?>">
             <?php 
                 $wall = $this->prepareFeed(-1);
                 if($wall)
