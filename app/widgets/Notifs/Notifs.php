@@ -71,12 +71,14 @@ class Notifs extends WidgetCommon
         $nhtml = '
         
             <li>
-                <a href="?q=friend&f='.$arr['path'].'&p='.$post.'"
+                <a href="'.Route::urlize('friend',$arr['path']).'"
                    onclick="'.$request.'">
+                   <p>
                     <span style="font-weight: bold;">'.
                         (string)$item->entry->source->author->name.'
-                    </span> - '.prepareDate(strtotime((string)$item->entry->published)).'<br />'.
+                    </span>'.prepareDate(strtotime((string)$item->entry->published)).'<br />'.
                     (string)$item->entry->content.'
+                    </p>
                 </a>
 
                 <a class="delete" href="#" onclick="'.$delete.'">'.t('Delete').'</a>
@@ -126,16 +128,15 @@ class Notifs extends WidgetCommon
               
         $html .= '
             <div id="notifslist">
-                <a 
+                <!--<a 
                     class="button icon color green refresh" 
-                    href="#" 
                     style="margin: 0.5em;"
                     onclick="'.$this->genCallAjax("ajaxGetNotifications").';
                             this.innerHTML = \''.t('Updating').'\'; 
-                            this.className= \'button tiny icon loading black\';
+                            this.className= \'button color orange icon loading\';
                             this.onclick=null;">
                     '.t('Refresh').'
-                </a>
+                </a>-->
                 <ul>';
             // XMPP notifications
             $notifs = Cache::c('activenotifs');
@@ -147,17 +148,17 @@ class Notifs extends WidgetCommon
             if(sizeof($notifs) != 0) {
                 $notifsnum += sizeof($notifs);
                 
-                $html .= '
+                /*$html .= '
                 <li class="title">'.
                     t('Notifications').'
                     <span class="num">'.sizeof($notifs).'</span>
-                </li>';
+                </li>';*/
                 
                 foreach($notifs as $n => $val) {
                     if($val == 'sub')
                         $html .= $this->prepareNotifInvitation($n);
-                    else
-                        $html .= $val;
+                    //else
+                    //    $html .= $val;
                 }
             
             }           
@@ -178,7 +179,7 @@ class Notifs extends WidgetCommon
                 foreach($subscribes as $s) {
                     $html .= '
                         <li>
-                            <a href="?q=friend&f='.$s->jid.'">
+                            <a href="'.Route::urlize('friend', $s->jid).'">
                             <img class="avatar" src="'.$s->getPhoto('s').'" />
                             '.
                                 $s->getTrueName().'
@@ -261,17 +262,18 @@ class Notifs extends WidgetCommon
             <li>
                 <form id="acceptcontact">
                     <p>'.$from.' '.t('wants to talk with you'). '</p>
-                    <a 
-                        class="button tiny icon add merged right black" 
-                        href="#" id="notifsvalidate" 
-                        onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "'alias'").'">'.
-                        t("Add").'
-                    </a><a 
-                        class="button tiny icon no merged left black" 
-                        href="#" 
-                        onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").'">'.
-                        t("Decline").'
-                    </a>
+                    <p>
+                        <a 
+                            class="button color green icon add merged left " 
+                            id="notifsvalidate" 
+                            onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "'alias'").'">'.
+                            t("Add").'
+                        </a><a 
+                            class="button color red icon no merged right" 
+                            onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").'">'.
+                            t("Decline").'
+                        </a>
+                    </p>
                 </form>
                 <div class="clear"></div>
             </li>';

@@ -2,7 +2,7 @@
 ?><!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title><?php $this->title();?></title>
 
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.1, user-scalable=no" />
@@ -44,6 +44,14 @@
             body { background-color: #'.$color.'; }
         </style>';
     }
+
+    $size = $user->getConfig('size');    
+    if(isset($size)) {
+        echo '
+        <style type="text/css">
+            body { font-size: '.$size.'px; }
+        </style>';
+    }
     /*$this->addCss('css/animations.css');
     $this->addCss('css/forms.css');
     
@@ -82,7 +90,7 @@
             <?php echo t("You don't have javascript enabled.  Good luck with that."); ?>
             </div>
         </noscript>
-        <nav id="nav">
+        <nav>
             <?php $this->menu();?>	
         </nav>
         
@@ -92,7 +100,7 @@
             <?php $this->widget('Notification');?>
             <?php $this->content();?>
           
-            <footer id="footer">
+            <footer>
                 © <a href="http://www.movim.eu">Movim</a> • 2008 - 2013 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
             </footer>
         </div>

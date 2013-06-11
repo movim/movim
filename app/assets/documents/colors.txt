@@ -3,3 +3,4 @@ orange : #FC8F12
 yellow : #FFE433
 green : #6FCC43
 blue : #0DB8B5
+purple : #442178

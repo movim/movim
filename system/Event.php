@@ -9,7 +9,7 @@ class Event
 		$this->conf = new Conf();
 	}
 
-	function runEvent($type, $event = false)
+	function runEvent($type, $event)
 	{
         global $polling;
         if(!$polling) { // avoids issues while loading pages.

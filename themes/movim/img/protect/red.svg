@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="24"
-   height="29.5"
+   width="16"
+   height="16"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
@@ -84,13 +84,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="13.99"
-     inkscape:cx="-4.3684686"
+     inkscape:cx="-14.768755"
      inkscape:cy="14.213308"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1445"
-     inkscape:window-height="1011"
+     inkscape:window-width="1280"
+     inkscape:window-height="800"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="0"
@@ -126,15 +126,9 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-139.42857,-379.36219)">
-    <path
-       style="fill:url(#linearGradient3773);fill-opacity:1;stroke:none"
-       d="m 139.42857,379.36219 0,16 c 0,1 0,2 1.12324,3.12324 l 8.87676,8.87676 c 2,2 2,2 4,0 l 9,-9 c 1,-1 1,-2 1,-3 l 0,-16 z"
-       id="path2985"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccc" />
+     transform="translate(-139.42857,-392.86219)">
     <g
-       transform="matrix(0.9012345,0,0,0.9012345,112.67549,-547.88929)"
+       transform="matrix(0.9012345,0,0,0.9012345,108.67549,-540.35301)"
        id="layer1-7"
        inkscape:label="Calque 1">
       <path

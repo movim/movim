@@ -35,7 +35,7 @@ class PubsubSubscriptionConfig extends WidgetBase
                 $html .= '
                     <li id="group'.$item[0].'">
                         <a class="action" onclick="'.$delete.'">'.t('Delete').'</a>
-                        <a href="?q=node&s='.$item[1].'&n='.$item[0].'">'.$item[2].'</a>
+                        <a href="'.Route::urlize('node', array($item[1],$item[0])).'">'.$item[2].'</a>
                     </li>';
             }
             $html .= '</ul>';

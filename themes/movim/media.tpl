@@ -17,7 +17,7 @@
         <?php $this->widget('ProfileData');?>
     </div>
 
-    <div id="center">
+    <div id="center" class="protect white">
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Media');?>
         <?php $this->widget('MediaUpload');?>

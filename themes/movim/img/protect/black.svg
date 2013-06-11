@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="24"
-   height="29.5"
+   width="16"
+   height="16"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
@@ -65,15 +65,6 @@
        fy="399.90564"
        r="0.99999821"
        gradientTransform="matrix(3.0160211,2.7120581e-5,-2.2958041e-4,20.690294,-109.41802,-8122.0508)"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3767"
-       id="linearGradient3773"
-       x1="151.42857"
-       y1="379.36218"
-       x2="151.42857"
-       y2="387.36218"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        gradientUnits="userSpaceOnUse"
@@ -131,14 +122,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="24.352036"
-     inkscape:cx="5.3955784"
-     inkscape:cy="14.1756"
+     inkscape:zoom="19.78"
+     inkscape:cx="7.747496"
+     inkscape:cy="6.3743437"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1012"
+     inkscape:window-width="1280"
+     inkscape:window-height="736"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -155,8 +146,8 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true"
-       originx="-8px"
-       originy="-3.5px" />
+       originx="-13.330426px"
+       originy="-12.183433px" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -166,7 +157,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -174,13 +165,7 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-139.42857,-379.36219)">
-    <path
-       style="fill:url(#linearGradient3773);fill-opacity:1;stroke:none;stroke-opacity:1;stroke-width:0.10000000000000001;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 139.42857,379.36219 0,16 c 0,1 0,2 1.12324,3.12324 l 8.87676,8.87676 c 2,2 2,2 4,0 l 9,-9 c 1,-1 1,-2 1,-3 l 0,-16 z"
-       id="path2985"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccc" />
+     transform="translate(-144.759,-384.17875)">
     <g
        transform="translate(108.42857,-653.00001)"
        id="layer1-7"
@@ -188,7 +173,7 @@
     <g
        id="layer1-4"
        inkscape:label="Calque 1"
-       transform="matrix(0.84322679,0,0,0.84322679,13.861226,61.780639)">
+       transform="matrix(0.84322679,0,0,0.84322679,15.191656,61.472695)">
       <g
          inkscape:label="Calque 1"
          id="layer1-7-8"
@@ -202,19 +187,19 @@
     </g>
     <path
        style="fill:none;stroke:#ffffff;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 151.42857,388.36219 0,-3.06756"
+       d="m 152.759,388.05425 0,-3.06756"
        id="path4042"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#ffffff;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 157.59767,387.19309 -2.1691,2.1691"
+       d="m 158.9281,386.88515 -2.1691,2.1691"
        id="path4042-5"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#ffffff;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 147.42857,389.36219 -2.1691,-2.1691"
+       d="m 148.759,389.05425 -2.1691,-2.1691"
        id="path4042-6"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
