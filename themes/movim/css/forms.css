@@ -75,22 +75,7 @@ legend {
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
-/*
-.element > *:not(label):not(img):not(span):not(a) {
-    display: inline-block;
-    width: 100%;
-    border: 1px solid #999;
-    min-height: 2em;
-    border-radius: 1px;
-    background-color: white;
-    box-shadow: inset 0 2px 1px #ddd;
-    margin: 0px;
-    padding: 0% 0.5em;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-}
-*/
+
 .element > *:not(label):not(img):focus {
     border: 1px solid gray;
     outline: none;
@@ -108,31 +93,9 @@ legend {
     background-color: white;
     overflow-y: hidden;
 }
-/*
-form .element.simple > *:not(label):not(img),
-form .element.simple > *:not(label):not(img):focus {
-    border: 0px;
-    box-shadow: none;
-    padding: 3px 0px;
-    font-weight: bold;
-    background-color: transparent;
-}
 
-.element > textarea, textarea {
-	font-family: helvetica, sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
-    padding: 0px;
-    resize: vertical;
-    background-color: white;
-    overflow-y: hidden;
-}
-*/
 /* Select input CSS */
 .element .select {
-    /*box-shadow: 0 1px 0px #ddd;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #888;
-    padding: 0px;
-    height: 20px;*/
     position: relative;
     padding: 0px;
     overflow: hidden;
@@ -143,11 +106,6 @@ form .element.simple > *:not(label):not(img):focus {
     background-size: 100% 100%;
     
     height: 2em;
-}
-
-.element .select:hover {
-    /*box-shadow: 0px 1px 0px #ccc;
-    border: 1px solid gray;*/
 }
 
 .element .select select {
@@ -258,8 +216,10 @@ form .element.simple > *:not(label):not(img):focus {
 
 .element .checkbox label[for=checkbox] {
 	display: block;
-	width: 3em;
+	width: 3.3em;
 	height: 2em;
+    
+    transition: left 0.5s ease;
 
 	cursor: pointer;
 	position: absolute;
@@ -273,7 +233,7 @@ form .element.simple > *:not(label):not(img):focus {
 }
 
 .element .checkbox input[type=checkbox]:checked + label {
-	left: 2.9em;
+	left: 2.8em;
     border-right: none;
 }
 
@@ -475,16 +435,13 @@ form .element input:invalid {
 
 .icon.yes:before    { background-image: url(../img/icons/button/checkmark.png); }
 .icon.no:before     { background-image: url(../img/icons/button/close.png); }
-.icon.follow:before { content:"⇒" }
 .icon.chat:before   { background-image: url(../img/icons/button/bubbles.png);}
 .icon.image:before  { background-image: url(../img/icons/button/image.png);}
 .icon.add:before    { background-image: url(../img/icons/button/plus.png); }
 .icon.rm:before     { content: "–"; }
 .icon.write:before  { background-image: url(../img/icons/button/pencil.png); }
 .icon.help:before   { background-image: url(../img/icons/button/support.png); }
-.icon.submit:before { content: "▼"; }
 .icon.upload:before { background-image: url(../img/icons/button/upload.png); }
-.icon.next:before   { content: "→"; }
 .icon.search:before { background-image: url(../img/icons/button/search.png); }
 .icon.refresh:before{ background-image: url(../img/icons/button/loop.png); }
 .icon.blog:before   { background-image: url(../img/icons/button/quill.png); }

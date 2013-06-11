@@ -89,7 +89,7 @@ switch($browser) {
             $compatible = true;
     break;
     case 'IE':
-        if($browser_version > 8.0)
+        if($browser_version > 9.0)
             $compatible = true;
     break;
     case 'Safari': // Also Chrome-Chromium

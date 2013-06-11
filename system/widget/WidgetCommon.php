@@ -324,7 +324,7 @@ class WidgetCommon extends WidgetBase {
                             com = this.parentNode.querySelectorAll(\'.comment\'); 
                             for(i = 0; i < com.length; i++) { com.item(i).style.display = \'block\';};
                             this.style.display = \'none\';">
-                        <a class="getcomments icon bubbleold">'.t('Show the older comments').'</a>
+                        <a class="getcomments icon chat">'.t('Show the older comments').'</a>
                     </div>';
             $comcounter = $size - 3;
         }

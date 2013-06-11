@@ -56,6 +56,7 @@ class Config extends WidgetBase
             /* We load the user configuration */
             $conf = $this->user->getConfig('language');
             $color = $this->user->getConfig('color');
+            $size = $this->user->getConfig('size');
 
             $submit = $this->genCallAjax('ajaxSubmit', "movim_parse_form('general')")
                 . "this.className='button icon color orange loading'; setTimeout(function() {location.reload(false)}, 2000); this.onclick=null;";
@@ -108,6 +109,52 @@ class Config extends WidgetBase
                                     echo "082D50";
                             ?>
                             ">
+                    </div>
+                    
+                    <div class="element">
+                        <label for="size"><?php echo t('Font size'); ?></label>
+                        <a 
+                            type="button" 
+                            onclick="
+                                var slide = document.querySelector('input[name=size]')
+                                slide.value = 14;
+                                slide.onchange();"
+                            style="width: 30%; float: right;" 
+                            class="button icon color purple back">
+                            <?php echo t('Reset');?>
+                        </a>
+                        <span>
+                            12
+                            <input 
+                                id="slide" 
+                                type="range" 
+                                min="12" 
+                                max="16" 
+                                step="0.5" 
+                                value="
+                                <?php 
+                                    if(isset($size))
+                                        echo $size;
+                                    else
+                                        echo "14";
+                                ?>
+                                " 
+                                name="size"
+                                style="width: 45%;"
+                                onchange="
+                                    document.body.style.fontSize = this.value+'px';
+                                    document.querySelector('#currentsize').innerHTML = this.value+'px'";
+                                     />
+                            16
+                        </span>
+                        <span id="currentsize">
+                            <?php 
+                                if(isset($size))
+                                    echo $size;
+                                else
+                                    echo "14";
+                            ?>px
+                        </span>
                     </div>
                     
                     <div class="element large">
