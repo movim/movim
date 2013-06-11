@@ -127,8 +127,7 @@
 
 #chats .chat .panel .messages {
     background-color: white;
-    color: gray;
-    max-height: 250px;
+    max-height: 16em;
     overflow: auto;
     min-height: 3em;
     border: 1px solid #888;
@@ -158,13 +157,14 @@
 }
 
 #chats .chat .panel .messages .message {
-    padding: 5px;
+    line-height: 1.5em;
+    padding: 0.25em;
     word-wrap: break-word;
-    font-size: 12px;
+    font-size: 0.9em;
 }
 
 #chats .chat .panel .messages .message.me {
-    background-color: #FFC;
+    background-color: rgba(76, 90, 97, 0.1);
 }
 
 #chats .chat .panel .messages .message.own {
@@ -179,10 +179,10 @@
 #chats .chat .panel .messages .message span.date {
     float: right;
     color: #ccc;
-    padding: 2px;
+    padding: 0.2em;
     line-height: 1em;
 }
 
 #chats .chat .panel .messages .message.me span.date {
-    color: #444;
+    color: #666;
 }

@@ -138,15 +138,41 @@ a:link, a:visited {
 
 /* The protection flags */
 .protect {
-    background-repeat: no-repeat;
-    background-position: 98% 0px;
+    position: relative;
 }
 
-.protect.white { background-image: url(../img/protect/white.svg); }
-.protect.green { background-image: url(../img/protect/green.svg); }
-.protect.orange { background-image: url(../img/protect/orange.svg); }
-.protect.red { background-image: url(../img/protect/red.svg); }
-.protect.black { background-image: url(../img/protect/black.svg); }
+.protect:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 3em;
+    height: 3em;
+    background-size: 2em 2em;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.protect.white:after { 
+    background-image: url(../img/protect/white.svg); 
+    background-color: #0DB8B5;
+}
+.protect.green:after { 
+    background-image: url(../img/protect/green.svg); 
+    background-color: #6FCC43;
+}
+.protect.orange:after { 
+    background-image: url(../img/protect/orange.svg);
+    background-color: #FC8F12;
+}
+.protect.red:after { 
+    background-image: url(../img/protect/red.svg); 
+    background-color: #D92727;
+}
+.protect.black:after { 
+    background-image: url(../img/protect/black.svg); 
+    background-color: #442178; /* yes it's purple ! */
+}
 
 hr {
     border: 0px;
@@ -219,117 +245,19 @@ ul.clean li {
 }
 
 /* The main parts of the page */
-#top {
-    z-index: 3;
-    height: 120px;
-}
 
 #content {
     width: 100%;
-    margin-right: 200px;
     position: relative;
     margin-top: 3em;
 }
-/*
-#head {
-    width: 800px;
-    overflow: hidden;
-}
 
-#head .block {
-    float: left;
-    max-width: 260px;
-    overflow: hidden;
-    color: white;
-    text-shadow: 0px 0px 2px #333;
-    margin-right: 1em;
-}
-
-#head .block:first-child {
-    width: auto;
-}
-
-#head .block h1 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-size: 1.7em;
-    line-height: 2em;
-    color: white;
-    font-weight: bold;
-    padding: 0px;
-    background-repeat: no-repeat;
-    background-position: right center;
-    display: inline;
-    padding-right: 20px;
-}
-
-#head .block h1.online { background-image: url(../img/icons/online.png); }
-#head .block h1.away { background-image: url(../img/icons/away.png); }
-#head .block h1.dnd { background-image: url(../img/icons/dnd.png); }
-#head .block h1.xa { background-image: url(../img/icons/xa.png); }
-
-#head .block span {
-    display: inline-block;
-    padding-right: 7px;
-    color: #CCC;
-}
-
-#head .block a:link, #head .block a:visited {
-    color: #EEE;
-    text-decoration: underline;
-}
-
-#head .block.avatar img {
-    background-color: white;
-    width: 150px;
-    height: 150px;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5),  0px 0px 4px rgba(0, 0, 0, 0.4);
-}
-
-#head .block .textbubble {
-    position: relative;
-    padding: 1em;
-    text-align: center;
-}
-
-#head .block .textbubble:before {
-    content: '\201C'; 
-    position: absolute;
-    top: 0.30em;
-    left: 0px;
-    font-size: 4em;
-    color: rgba(255, 255, 255, 0.3);
-    text-shadow: none;
-}
-
-#head .block .textbubble:after {
-    content: '\201D'; 
-    position: absolute;
-    bottom: -10px;
-    right: 0px;
-    font-size: 4em;
-    color: rgba(255, 255, 255, 0.3);
-    text-shadow: none;
-}
-
-#head .block .textbubble textarea {
-    background-color: transparent;
-    border: 1px solid transparent;
-    resize: none;
-    color: white;
-    text-align: center;
-    padding: 0px;
-}
-
-#head .block .textbubble textarea:hover {
-    border-color: white;
-}
-*/
 #main {  
-    overflow: hidden;
     height: 100%;
     background-color: #383735;
     position: relative;
-padding-right: 200px;
+    padding-right: 200px;
+    overflow: hidden;
 }
 
 #left
@@ -378,22 +306,23 @@ padding-right: 200px;
     z-index: 2;
 }
 
-#footer 
+footer 
 {
     clear: both;
     text-align: right;
     background-color: #383735;
     line-height: 3em;
+    padding-right: 1em;
     color: white;
 }
 
-#footer a {
+footer a:link, footer a:visited {
     color: #BBB;
 }
 
 /* The navigation bar */
 
-#nav {
+nav {
     margin: 0px;
     padding: 0px;
     padding-top: 0px;
@@ -466,12 +395,16 @@ padding-right: 200px;
 } 
 
 .menu li a.main, .menu li a.main.active {
-	width: 158px;
+	width: 200px;
     padding: 1.5em;
     color: transparent;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
     background-position: center center;
+    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .menu li .explore   { background-image: url(../img/icons/menu/globe.png); }

@@ -61,7 +61,7 @@ class Media extends WidgetBase {
                 $s != 'index.html')
                 $html .= 
                     '<li style="background-image: url('.$this->user->useruri.'thumb_'.$s.');">
-                        <a href="?q=media&f='.$s.'">
+                        <a href="'.Route::urlize('media', $s).'">
                         </a>
                             <div class="remove" onclick="'.$this->genCallAjax('ajaxDeleteItem', "'".$s."'").'">x</div>
                     </li>

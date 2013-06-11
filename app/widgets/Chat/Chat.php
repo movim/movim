@@ -323,7 +323,7 @@ class Chat extends WidgetBase
                 $content = "** ".substr($message->body, 4);
             }
                     
-            $html .= '"><span class="date">'.date('H:i', strtotime($message->published)).'</span>';
+            $html .= '"><!--<span class="date">'.date('H:i', strtotime($message->published)).'</span>-->';
             $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
             return $html;
         } else {

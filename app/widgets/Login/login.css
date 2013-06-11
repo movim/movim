@@ -151,6 +151,6 @@ body {
 #loginpage #loginhelp li#gmail { background-image: url(img/envelope.png); }
 #loginpage #loginhelp li#facebook { background-image: url(img/facebook.png); }
 
-#footer {
+footer {
     display: none;
 }

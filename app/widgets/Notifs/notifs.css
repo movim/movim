@@ -82,28 +82,14 @@
     padding: 0em 0.5em;
 }
 
-#notifslist ul li a#notifsvalidate {
-    margin-right: 0.5em;
-}
-
 #notifslist ul li span.num {
     background-color: #D92727;
-    margin: 0.4em;
-}
-
-#notifslist ul li:hover {
-    color: black;
+    margin: 0.3em 0.7em;
 }
 
 #notifslist ul li.title {
     text-align: center;
     border-top: none;
-    color: white;
-}
-
-#notifslist ul li.title:hover {
-    color: white;
-    background-color: #242424;
     color: white;
 }
 
@@ -114,10 +100,9 @@
 }
 
 #notifslist ul li a {
-    color: #ccc;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block;
+    color: white;
 }
 
 #notifslist ul li a.delete {
@@ -127,8 +112,4 @@
 
 #notifslist ul li a.delete:hover {
     text-decoration: underline;
-}
-
-#notifslist ul li:hover a {
-    color: black;
 }
