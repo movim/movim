@@ -110,8 +110,8 @@ class Vcard extends WidgetBase
             </div>
             
             <a 
-                onclick="<?php echo $this->genCallAjax('ajaxGetVcard'); ?>" style="float: right; margin: 5px 0px 0px 0px;"
-                href="#" class="button big icon add"><?php echo t("Create my vCard"); ?></a>
+                onclick="<?php echo $this->genCallAjax('ajaxGetVcard'); ?>"
+                class="button color green icon add"><?php echo t("Create my vCard"); ?></a>
 
         <?php
         }
