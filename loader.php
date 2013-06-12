@@ -38,7 +38,7 @@ require_once(LIB_PATH . "Markdown.php");
 require_once(LIB_PATH . 'Modl/loader.php');
 
 $db = modl\Modl::getInstance();
-$db->setConnection(Conf::getServerConfElement('db'));
+$db->setConnectionArray(Conf::getServerConf());
 
 // We load Movim XMPP Library
 require_once(LIB_PATH . 'Moxl/loader.php');

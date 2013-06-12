@@ -81,7 +81,7 @@ class Admin extends WidgetBase {
     
     private function listLangs()
     {
-        $dir = opendir(BASE_PATH.'i18n');
+        $dir = opendir(BASE_PATH.'locales');
         $langs = array('en' => 'English');
         $languages = get_lang_list();
 
@@ -189,29 +189,17 @@ class Admin extends WidgetBase {
     private function prepareAdmin()
     {
         $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
-            ."this.className='button icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
+            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
             
         if($this->testDir(BASE_PATH))
 			$this->createDirs();
+            
+        $validatebutton = '
+            <div class="clear"></div>
+            <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
         
         $html = '
         <form name="admin" id="adminform">';
-        
-        /*$html .= '
-            <fieldset>
-                <legend>'.t('General Informations').'</legend>';
-                
-            $file = BASE_PATH.'VERSION';
-            if($f = fopen($file, 'r')){
-                $html .= '
-                    <div class="element simple">
-                        <label for="fn">'.t('Version').'</label>
-                        <span>'.trim(fgets($f)).'</span>
-                    </div>';
-            }
-            
-        $html .= '
-            </fieldset>';*/
         
         $html .= '
             <fieldset>
@@ -287,13 +275,13 @@ class Admin extends WidgetBase {
         $html .= '              </select>
                             </div>
                         </div>';
-                        
+        /*                
         $html .= '
                     <div class="element">
                             <label for="maxUsers">'.t('Maximum population').'</label>
                             <input type="text" name="maxUsers" id="maxUsers" value="'.$this->_conf['maxUsers'].'" />
                     </div>';
-                    
+        */
         $html .= '
                     <div class="element">
                             <label for="sizeLimit">'.t('User folder size limit (in bytes)').'</label>
@@ -328,9 +316,7 @@ class Admin extends WidgetBase {
                         </div>
                     </div>';
                     
-        $html .= '  
-                    <div class="clear"></div>
-                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+        $html .= $validatebutton;
         
         $html .= '
                 </fieldset>';
@@ -363,15 +349,49 @@ class Admin extends WidgetBase {
                     ';
                 }
                 
-        $html .= '
+        /*$html .= '
                     <div class="element large">
                             <label for="db">'.t('Dabase String').'</label>
                             <input type="text" name="db" id="db" value="'.$this->_conf['db'].'" />
                     </div>';
-
-        $html .= '  
-                    <div class="clear"></div>
-                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+        */
+        $html .= '
+                    <div class="element">
+                            <label for="dbType">'.t('Database Type').'</label>
+                            <input type="text" disabled="true" name="dbType" id="dbType" value="'.$this->_conf['dbType'].'" />
+                    </div>';
+                    
+        $html .= '
+                    <div class="element">
+                            <label for="dbUsername">'.t('Username').'</label>
+                            <input type="text" name="dbUsername" id="dbUsername" value="'.$this->_conf['dbUsername'].'" />
+                    </div>';
+                    
+        $html .= '
+                    <div class="element">
+                            <label for="dbPassword">'.t('Password').'</label>
+                            <input type="password" name="dbPassword" id="dbPassword" value="'.$this->_conf['dbPassword'].'" />
+                    </div>';
+                    
+        $html .= '
+                    <div class="element">
+                            <label for="dbHost">'.t('Host').'</label>
+                            <input type="text" name="dbHost" id="dbHost" value="'.$this->_conf['dbHost'].'" />
+                    </div>';
+                    
+        $html .= '
+                    <div class="element">
+                            <label for="dbPort">'.t('Port').'</label>
+                            <input type="text" name="dbPort" id="dbPort" value="'.$this->_conf['dbPort'].'" />
+                    </div>';
+                    
+        $html .= '
+                    <div class="element">
+                            <label for="dbName">'.t('Database Name').'</label>
+                            <input type="text" name="dbName" id="dbName" value="'.$this->_conf['dbName'].'" />
+                    </div>';
+        
+        $html .= $validatebutton;
             
         $html .= '
             </fieldset>';
@@ -401,9 +421,7 @@ class Admin extends WidgetBase {
                         <input type="text" id="boshUrl" name="boshUrl" value="'.$this->_conf['boshUrl'].'"/>
                     </div>';
                     
-        $html .= '  
-                    <div class="clear"></div>
-                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+        $html .= $validatebutton;
 
         $html .= '
             </fieldset>';
@@ -426,9 +444,7 @@ class Admin extends WidgetBase {
                             <input type="text" name="xmppWhiteList" id="xmppWhiteList" value="'.$this->_conf['xmppWhiteList'].'" />
                     </div>';
 
-        $html .= '  
-                    <div class="clear"></div>
-                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+        $html .= $validatebutton;
 
         $html .= '
             </fieldset>';
@@ -460,9 +476,7 @@ class Admin extends WidgetBase {
                         <input type="password" id="repass" name="repass" value=""/>
                     </div>	';
 
-        $html .= '  
-                    <div class="clear"></div>
-                    <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+        $html .= $validatebutton;
                     
         $html .= '
             </fieldset><br />';
