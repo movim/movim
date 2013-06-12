@@ -31,7 +31,13 @@ class Conf
                 'defLang'   => 'en',
                 'maxUsers'  => -1,
                 'logLevel'  => 7,
-                'db'        => 'mysql://movim:movim@localhost:3306/movim',
+                //'db'        => 'mysql://movim:movim@localhost:3306/movim',
+                'dbType'    => 'mysql',
+                'dbUsername'=> 'username',
+                'dbPassword'=> 'password',
+                'dbHost'    => 'localhost',
+                'dbPort'    => '3306',
+                'dbName'    => 'movim',
                 'boshUrl'   => 'http://localhost:5280/http-bind',
                 'xmppWhiteList' => '',
                 'user'      => 'admin',
@@ -67,7 +73,7 @@ class Conf
 	}
     
     static function saveConfFile($conf = array()) {
-        $doc = new DOMDocument("1.0");
+        $doc = new DOMDocument('1.0', 'UTF-8');
         $doc->formatOutput = true;
 
         $config = $doc->createElement("config");
