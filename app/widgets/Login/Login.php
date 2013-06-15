@@ -243,7 +243,7 @@ class Login extends WidgetBase {
 	function build()
 	{
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
-
+        $conf = Conf::getServerConf();
         ?>
         <div id="loginpage" class="fadeDown">
         <?php
@@ -253,8 +253,14 @@ class Login extends WidgetBase {
                     '.t('Your web browser is too old to use with Movim.').'
                 </div> ';
             } else {
-        ?>
                 
+                if(isset($conf['info']) && $conf['info'] != '') {
+                    echo '
+                    <div class="message warning">
+                        '.$conf['info'].'
+                    </div> ';
+                } 
+        ?>
                 <form
                     name="login"
                     id="connectform"

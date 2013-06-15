@@ -40,6 +40,7 @@ class Conf
                 'dbName'    => 'movim',
                 'boshUrl'   => 'http://localhost:5280/http-bind',
                 'xmppWhiteList' => '',
+                'info'      => '',
                 'user'      => 'admin',
                 'pass'      => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
                 'sizeLimit' => 20240001);
@@ -74,12 +75,13 @@ class Conf
     
     static function saveConfFile($conf = array()) {
         $doc = new DOMDocument('1.0', 'UTF-8');
+
         $doc->formatOutput = true;
 
         $config = $doc->createElement("config");
         $doc->appendChild($config);
         
-        foreach($conf as $key => $value) {
+        foreach($conf as $key => $value) {            
             $node = $doc->createElement($key);
             $node->appendChild($doc->createTextNode($value));
             $config->appendChild($node);
