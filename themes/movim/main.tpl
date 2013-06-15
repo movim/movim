@@ -7,21 +7,16 @@
 <?php $this->widget('ChatExt');?>
     
 
-
-
-
-<div id="right">
-  <?php $this->widget('Roster');?>
-</div>
-
-<div id="main">
-
+<div id="main">    
     <div id="left">
         <?php $this->widget('Profile');?>
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
-
+    
+    <div id="right">
+      <?php $this->widget('Roster');?>
+    </div>
 
     <div id="center">
         <?php $this->widget('Feed');?>

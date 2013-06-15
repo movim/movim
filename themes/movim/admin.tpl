@@ -6,7 +6,8 @@
 
     </div>
     <div id="center">
-      <h1><?php echo t('Administration Panel'); ?></h1>
-      <?php $this->widget('Admin');?>
+        <h1><?php echo t('Administration Panel'); ?></h1>
+        <?php $this->widget('Tabs');?>
+        <?php $this->widget('Admin');?>
     </div>
 </div>

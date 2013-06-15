@@ -90,12 +90,12 @@ class WidgetCommon extends WidgetBase {
             $toolbox = $this->getToolbox($post);
         
         $html = '
-            <div class="post '.$class.'" id="'.$post->nodeid.'">
+            <div class="post '.$class.' '.$access.'" id="'.$post->nodeid.'">
                 <a href="'.Route::urlize('friend', $post->jid).'">
                     <img class="avatar" src="'.$avatar.'">
                 </a>
 
-                <div id="'.$post->nodeid.'bubble" class="postbubble '.$access.'">
+                <div id="'.$post->nodeid.'bubble" class="postbubble">
 					<div class="header">
 						<span class="title">'.$title.'</span>
 						'.$c.'
@@ -565,7 +565,7 @@ class WidgetCommon extends WidgetBase {
 			\modl\Privacy::set($nodeid, 1);
         }
 
-        RPC::call('movim_change_class', $nodeid.'bubble' , 'postbubble me protect '.$privacy);
+        RPC::call('movim_change_class', $nodeid , 'post me protect '.$privacy);
         RPC::commit();
     }
     
