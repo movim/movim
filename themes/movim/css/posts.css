@@ -197,9 +197,21 @@
     height: 0px;
 }
 
+.post .enclosure a.imglink {
+    display: block;
+    height: auto;
+    width: auto;
+}
+
 .post a.imglink img {
     max-height: 400px;
     width: 100%;
+}
+
+.post .enclosure a.imglink img {
+    max-height: 200px;
+    max-width: 100%;
+    width: auto;
 }
 
 .post .content img {

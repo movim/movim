@@ -151,6 +151,7 @@ class Media extends WidgetBase {
     ?>
         <div class="tabelem" title="<?php echo t('Media'); ?>" id="media">    
             <?php echo $this->mainFolder(); ?>
+            <div class="clear"></div>
         </div>
     <?php
     }

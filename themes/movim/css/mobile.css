@@ -5,54 +5,33 @@ body {
     margin: 0px;
     padding: 0px;
     width: 100%;
-    margin-top: 3em;
 }
 
 h1 {
     padding: 0.3em;
 }
 
-#head {
-    width: 100%;
-    font-size: 0.9em;
-    overflow: visible;
-}
-
-#head .block {
-    margin: 0px;
-    padding: 0px;
-    width: auto;
-    height: auto;
-    min-height: 0px;
-    max-width: auto;
-}
-
-#head .block.avatar img {
-    width: 80px;
-    height: 80px;
-    margin: 0px;
-    margin-right: 5px;
-    padding: 0px;
-    margin-bottom: -3px;
-}
-
-#head .block .textbubble, #left, #chats, #logout, #notifstab {
-    display: none;
-}
-
 #right {
     width: 100%;
     padding: 0px;
-    margin-top: 38px;
+    margin-top: 3em;
 }
 
 #main {
     clear: both;
+    padding-right: 0px;
 }
+
+#left {
+    display: none;
+}
+
 #center {
     margin: 0px;
+    margin-top: 3em;
     width: 100%;
     padding: 0px;
+    left: 0px;
 }
 
 #content {
@@ -60,22 +39,23 @@ h1 {
     margin: 0px;
 }
 
-#nav {
+nav {
     position: fixed;
 }
 
-#nav .menu {
+nav .menu {
     width: 100%;
     position: relative;
     background-image: none;
 }
 
-#nav .menu li a.main {
+nav .menu li a.main,
+nav .menu li a.main.active {
     opacity: 1;
     width: 0em;
 }
 
-#nav .menu li a.disconnect {
+nav .menu li a.disconnect {
     position: fixed;
     top: 0px;
     right: 0px;
