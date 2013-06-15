@@ -20,6 +20,7 @@
  
 class Admin extends WidgetBase {
     private $_conf;
+    private $_validatebutton;
     
     function WidgetLoad()
 	{
@@ -128,26 +129,19 @@ class Admin extends WidgetBase {
         
         $empty = false;
         
-        if($form['pass'] == '' || !isset($form['pass'])) {
+        if($form['repass'] == '' || !isset($form['repass']))
             $form['pass'] = $this->_conf['pass'];
-            $form['repass'] = $this->_conf['pass'];
-            
-            $empty = true;
+        elseif($form['pass'] == $form['repass']) {
+            unset($form['repass']);
+            $form['pass'] = sha1($form['pass']);
         }
         
-        if($form['pass'] == $form['repass']) {
-            unset($form['repass']);
-            
-            if(!$empty)
-                $form['pass'] = sha1($form['pass']);
-            
-            foreach($this->_conf as $key => $value) {
-                if(isset($form[$key]))
-                    $this->_conf[$key] = $form[$key];
-            }
-
-            Conf::saveConfFile($this->_conf);
+        foreach($this->_conf as $key => $value) {
+            if(isset($form[$key]))
+                $this->_conf[$key] = $form[$key];
         }
+
+        Conf::saveConfFile($this->_conf);
     }
     
     public function ajaxRecreateDatabase()
@@ -186,15 +180,16 @@ class Admin extends WidgetBase {
         $pr->create();
     }
     
-    private function prepareAdmin()
+    private function prepareAdminComp()
     {
-        $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
-            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
             
         if($this->testDir(BASE_PATH))
 			$this->createDirs();
             
-        $validatebutton = '
+        $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
+            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
+            
+        $this->_validatebutton = '
             <div class="clear"></div>
             <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
         
@@ -227,6 +222,12 @@ class Admin extends WidgetBase {
                     <div class="'.$this->isValid($this->testDir(BASE_PATH)).'">
                         '.t('Read and write rights for the webserver in Movim\'s root directory').'
                     </div>
+                    
+            </fieldset>
+
+            <fieldset>
+                <legend>'.t('URL Rewriting support').'</legend>
+                    <div class="clear"></div>
                     <div class="'.$this->isValid($_SERVER['HTTP_MOD_REWRITE']).'">
                         '.t('URL Rewriting support').'
                     </div>';
@@ -234,6 +235,10 @@ class Admin extends WidgetBase {
         $html .= '
             </fieldset>';
             
+        return $html;
+    }
+    
+    function prepareAdminGen() {
         $html .= '
             <fieldset>
                     <legend>'.t('General Settings').'</legend>
@@ -316,11 +321,123 @@ class Admin extends WidgetBase {
                         </div>
                     </div>';
                     
-        $html .= $validatebutton;
+        $html .= $this->_validatebutton;
         
         $html .= '
                 </fieldset>';
                 
+        $html .= '
+            <fieldset>
+                <legend>'.t("Bosh Configuration").'</legend>
+                    <div class="clear"></div>';
+                    
+        $html .= '<p>'.
+                    t("Enter here the BOSH-URL in the form: http(s)://domain:port/path.").' '.
+                    t('If you enter an open BOSH-Server, you can connect to many XMPP-Servers.').' '.
+                    t('If it is closed, you have to specify the corresponding Server on the next page.').' '.
+                    t('If you are unsure about this config option visit the wiki');
+                '</p>';
+                    
+        if(!$this->testBosh($this->_conf['boshUrl'])) {
+            $html .= '
+                <div class="message error">'.
+                    t('Your Bosh URL is not reachable').'
+                </div>';
+        }
+                    
+        $html .= '
+                    <div class="element">
+                        <label for="boshUrl">'.t("Bosh URL").'</label>
+                        <input type="text" id="boshUrl" name="boshUrl" value="'.$this->_conf['boshUrl'].'"/>
+                    </div>';
+                    
+        $html .= $this->_validatebutton;
+
+        $html .= '
+            </fieldset>';
+        
+        $html .= '
+            <fieldset>
+                <legend>'.t("Whitelist - XMPP Server").'</legend>
+                    <div class="clear"></div>';                    
+        
+        $html .= '<p>'.
+                    t("If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)").
+                '</p>'.
+                '<p>'.
+                    t("Leave this field blank if you allow the access to all the XMPP accounts.").
+                '</p>';
+                
+        $html .= '
+                    <div class="element large">
+                            <label for="xmppWhiteList">'.t("List of whitelisted XMPP servers").'</label>
+                            <input type="text" name="xmppWhiteList" id="xmppWhiteList" value="'.$this->_conf['xmppWhiteList'].'" />
+                    </div>';
+
+        $html .= $this->_validatebutton;
+
+        $html .= '
+            </fieldset>';
+            
+        $html .= '
+            <fieldset>
+                <legend>'.t("Information Message").'</legend>
+                    <div class="clear"></div>';                    
+        
+        $html .= '<p>'.
+                    t("This message will be displayed on the login page").
+                '</p>'.
+                '<p>'.
+                    t("Leave this field blank if you don't want to show any message.").
+                '</p>';
+                
+        $html .= '
+                    <div class="element large">
+                            <label for="info">'.t("Information Message").'</label>
+                            <textarea type="text" name="info" id="info" />'.$this->_conf['info'].'</textarea>
+                    </div>';
+
+        $html .= $this->_validatebutton;
+
+        $html .= '
+            </fieldset>';
+            
+        $html .= '
+            <fieldset>
+                <legend>'.t("Administration Credential").'</legend>';
+                    
+        if($this->_conf['user'] == 'admin' && $this->_conf['pass'] == sha1('password')) {
+            $html .= '
+                <div class="message error">'.
+                    t('Change the default username/password').'
+                </div>';
+        }
+            
+        $html .= '
+                    <div class="element" >
+                        <label for="username">'.t("Username").'</label>
+                        <input type="text" id="user" name="user" value="'.$this->_conf['user'].'"/>
+                    </div>
+                    <div class="clear"></div>
+                    
+                    <div class="element">
+                        <label for="pass">'.t("Password").'</label>
+                        <input type="password" id="pass" name="pass" value=""/>
+                    </div>			                
+                    <div class="element">
+                        <label for="repass">'.t("Retype password").'</label>
+                        <input type="password" id="repass" name="repass" value=""/>
+                    </div>	';
+
+        $html .= $this->_validatebutton;
+                    
+        $html .= '
+            </fieldset><br />';
+        
+        return $html;
+    }
+    
+    function prepareAdminDB() {
         $html .= '
             <fieldset>
                 <legend>'.t("Database Settings").'</legend>
@@ -391,97 +508,12 @@ class Admin extends WidgetBase {
                             <input type="text" name="dbName" id="dbName" value="'.$this->_conf['dbName'].'" />
                     </div>';
         
-        $html .= $validatebutton;
+        $html .= $this->_validatebutton;
             
         $html .= '
             </fieldset>';
             
-        $html .= '
-            <fieldset>
-                <legend>'.t("Bosh Configuration").'</legend>
-                    <div class="clear"></div>';
-                    
-        $html .= '<p>'.
-                    t("Enter here the BOSH-URL in the form: http(s)://domain:port/path.").' '.
-                    t('If you enter an open BOSH-Server, you can connect to many XMPP-Servers.').' '.
-                    t('If it is closed, you have to specify the corresponding Server on the next page.').' '.
-                    t('If you are unsure about this config option visit the wiki');
-                '</p>';
-                    
-        if(!$this->testBosh($this->_conf['boshUrl'])) {
             $html .= '
-                <div class="message error">'.
-                    t('Your Bosh URL is not reachable').'
-                </div>';
-        }
-                    
-        $html .= '
-                    <div class="element">
-                        <label for="boshUrl">'.t("Bosh URL").'</label>
-                        <input type="text" id="boshUrl" name="boshUrl" value="'.$this->_conf['boshUrl'].'"/>
-                    </div>';
-                    
-        $html .= $validatebutton;
-
-        $html .= '
-            </fieldset>';
-        
-        $html .= '
-            <fieldset>
-                <legend>'.t("Whitelist - XMPP Server").'</legend>
-                    <div class="clear"></div>';                    
-        
-        $html .= '<p>'.
-                    t("If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)").
-                '</p>'.
-                '<p>'.
-                    t("Leave this field blank if you allow the access to all the XMPP accounts.").
-                '</p>';
-                
-        $html .= '
-                    <div class="element large">
-                            <label for="xmppWhiteList">'.t("List of whitelisted XMPP servers").'</label>
-                            <input type="text" name="xmppWhiteList" id="xmppWhiteList" value="'.$this->_conf['xmppWhiteList'].'" />
-                    </div>';
-
-        $html .= $validatebutton;
-
-        $html .= '
-            </fieldset>';
-            
-        $html .= '
-            <fieldset>
-                <legend>'.t("Administration Credential").'</legend>';
-                    
-        if($this->_conf['user'] == 'admin' && $this->_conf['pass'] == sha1('password')) {
-            $html .= '
-                <div class="message error">'.
-                    t('Change the default username/password').'
-                </div>';
-        }
-            
-        $html .= '
-                    <div class="element" >
-                        <label for="username">'.t("Username").'</label>
-                        <input type="text" id="user" name="user" value="'.$this->_conf['user'].'"/>
-                    </div>
-                    <div class="clear"></div>
-                    
-                    <div class="element">
-                        <label for="pass">'.t("Password").'</label>
-                        <input type="password" id="pass" name="pass" value=""/>
-                    </div>			                
-                    <div class="element">
-                        <label for="repass">'.t("Retype password").'</label>
-                        <input type="password" id="repass" name="repass" value=""/>
-                    </div>	';
-
-        $html .= $validatebutton;
-                    
-        $html .= '
-            </fieldset><br />';
-            
-        $html .= '
         </form>';
             
         return $html;
@@ -490,8 +522,14 @@ class Admin extends WidgetBase {
     function build()
     {
     ?>
-        <div id="admin" style="margin: 1.5em;">
-            <?php echo $this->prepareAdmin(); ?>
+        <div id="admincomp" class="tabelem" title="<?php echo t("Compatibility Check"); ?>" style="margin: 1.5em;">
+            <?php echo $this->prepareAdminComp(); ?>
+        </div>
+        <div id="admingen" class="tabelem" title="<?php echo t('General Settings'); ?>" style="margin: 1.5em;">
+            <?php echo $this->prepareAdminGen(); ?>
+        </div>
+        <div id="admindb" class="tabelem" title="<?php echo t("Database Settings") ?>" style="margin: 1.5em;">
+            <?php echo $this->prepareAdminDB(); ?>
         </div>
     <?php 
     }
