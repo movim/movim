@@ -1,6 +1,9 @@
 #roster {
     background-color: rgba(36, 36, 36, 1);
     height: 100%;
+    position: relative;
+    transition: right 0.5s ease;
+    right: 0em;
 }
 
 
@@ -14,7 +17,7 @@
 
 /* Display/hide the elements */
 #roster.hide {
-    display: none;
+    right: -100%;
 }
 
 #roster ul#rosterlist li .chat.on:hover {
@@ -179,6 +182,25 @@
 
 #rostermenu li:last-child {
     float: right;
+}
+
+#rostermenu li.showhide {
+    border-right: 0.5em solid #0DB8B5;
+    position: relative;
+}
+
+#rostermenu li.showhide:before {
+    content: "";
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg); /* IE 9 */
+    -webkit-transform:rotate(45deg); /* Safari and Chrome */
+    background-color: #0DB8B5;
+    display: block;
+    position: absolute;
+    right: -0.25em;
+    top: 1.25em;
+    width: 0.5em;
+    height: 0.5em;
 }
 
 #rostermenu div#chattoggle {

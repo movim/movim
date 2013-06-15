@@ -391,6 +391,7 @@ class Roster extends WidgetBase
                     <?php echo $this->prepareChatToggle(); ?>
                 </div>
                 <li 
+                    class="showhide"
                     onclick="<?php echo $this->callAjax('ajaxShowHideRoster');?>"
                     title="<?php echo t('Show/Hide'); ?>">
                     <a class="down" href="#"></a>

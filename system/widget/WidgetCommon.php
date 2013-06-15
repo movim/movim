@@ -75,7 +75,9 @@ class WidgetCommon extends WidgetBase {
 			$enc = '
 				<div class="enclosure">'.
 					$enc.
-				'</div>';
+				'
+                    <div class="clear"></div>
+                </div>';
 
         $content = prepareString(html_entity_decode($post->content));
         
