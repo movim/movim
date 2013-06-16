@@ -168,6 +168,13 @@ function richText(n) {
 }
 
 /**
+ * Go to an url
+ */
+function movim_redirect(url) {
+    window.location.href = url;
+}
+
+/**
  * Geolocalisation function
  */
 

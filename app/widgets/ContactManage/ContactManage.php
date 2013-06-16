@@ -21,7 +21,7 @@
 class ContactManage extends WidgetCommon
 {
     function WidgetLoad() {
-        
+		$this->addcss('contactmanage.js');
     }
     
     public function ajaxContactManage($form) {
@@ -64,7 +64,7 @@ class ContactManage extends WidgetCommon
                     <input name="group" list="group" id="alias" class="tiny" placeholder="'.t('Group').'" value="'.$rl->group.'"/>
                 </div>
                 
-                <a class="button black icon yes" onclick="'.$submit.'">'.t('Save').'</a>';
+                <a name="submit" class="button black icon yes" onclick="'.$submit.' this.style.display = \'none\';">'.t('Save').'</a>';
             
         $html .= '
             </form>';

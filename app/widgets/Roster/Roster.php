@@ -315,6 +315,17 @@ class Roster extends WidgetBase
         RPC::commit();
     }
     
+    /**
+     *  @brief Search for a contact to add
+     */
+    function ajaxSearchContact($jid) {
+        if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
+            RPC::call('movim_redirect', Route::urlize('friend', $jid));
+            RPC::commit();
+        } else 
+            Notification::appendNotification(t('Please enter a valid Jabber ID'), 'info');
+    }
+    
 	function build()
     {
         $offlineshown = '';
@@ -328,60 +339,48 @@ class Roster extends WidgetBase
             $offlineshown = 'offlineshown';        
 	?>
         <div id="roster" class="<?php echo $rostershow; ?>">
+            <input 
+                type="text" 
+                name="search" 
+                id="request" 
+               
+                autocomplete="off" 
+                onkeyup="rosterSearch(event);" 
+                onclick="focusContact();" 
+                placeholder="<?php echo t('Search');?>"/>
             <ul id="rosterlist" class="<?php echo $offlineshown; ?>">
-            <?php echo $this->prepareRoster(); ?>
+                <?php echo $this->prepareRoster(); ?>
             </ul>
             <script type="text/javascript">sortRoster();</script>
         </div>
         
         <div id="rostermenu" class="menubar">
             <ul class="menu">
-                <li id="search">
-                    <label class="search" for="rostershow"></label>
-                    <input type="checkbox" id="rostershow"/>
-                    <div class="tabbed">
-                        <input 
-                            type="text" 
-                            name="search" 
-                            id="request" 
-                           
-                            autocomplete="off" 
-                            onkeyup="rosterSearch(event);" 
-                            onclick="focusContact();" 
-                            placeholder="<?php echo t('Search');?>"/>
-                    </div>
-                </li>
-                <!--<li title="<?php echo t('Add'); ?>">
+                <li title="<?php echo t('Add'); ?>">
                     <label class="plus" for="addc"></label>
                     <input type="checkbox" id="addc"/>
-                    <div class="tabbed">
-                        <form id="addcontact">
-                            <div class="element large mini">
-                                <label for="addjid"><?php echo t('JID'); ?></label>
-                                <input 
-                                    id="addjid" 
-                                    class="tiny" 
-                                    placeholder="user@server.tld" 
-                                    onfocus="myFocus(this);" 
-                                    onblur="myBlur(this);"
-                                />
-                            </div>
-                            <a 
-                                class="button tiny icon no merged left black"
-                                href="#"
-                                id="addrefuse"
-                                onclick="cancelAddJid();">
-                                <?php echo t('Cancel'); ?>
-                            </a><a 
-                                class="button tiny icon yes merged right black" 
-                                href="#" 
-                                id="addvalidate" 
-                                onclick="<?php $this->callAjax("ajaxAddContact", "getAddJid()", "getAddAlias()"); ?> cancelAddJid();">
-                                <?php echo t('Send request'); ?>
-                            </a>
-                        </form>
+                    <div class="tabbed">    
+                        <div class="message">                  
+                            <?php echo t('Enter the Jabber ID of your contact.'); ?><br />
+                            <?php echo t('Press enter to validate.'); ?>
+                        </div>  
+                        <input 
+                            name="searchjid" 
+                            class="tiny" 
+                            type="email"
+                            title="<?php echo t('JID'); ?>"
+                            placeholder="user@server.tld" 
+                            onkeypress="
+                                if(event.keyCode == 13) {
+                                    <?php echo 
+                                        $this->genCallAjax(
+                                            'ajaxSearchContact', 
+                                            'this.value'); ?>
+                                    return false;
+                                }"
+                        />
                     </div>
-                </li>-->
+                </li>
                 <li 
                     onclick="<?php echo $this->callAjax('ajaxToggleCache', "'offlineshown'");?>"
                     title="<?php echo t('Show/Hide'); ?>">

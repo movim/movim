@@ -70,11 +70,11 @@ nav .menu li a.disconnect {
 }
 
 .posthead {
-    padding: 0.2em;
+    padding: 1em;
 }
 
 .post {
-    padding: 1em 0.2em;
+    padding: 1em 1em;
 }
 
 .post .avatar {
@@ -97,19 +97,6 @@ nav .menu li a.disconnect {
 
 #feed #feedcontent {
     padding-top: 0px !important;
-}
-
-#feed table#feedsubmitform {
-    margin: 0.5em 0.3em !important;
-}
-
-.filters {
-    padding: 0em;
-}
-
-#footer {
-    font-size: 0.85em;
-    background-color: black;
 }
 
 .post .postbubble:before {
@@ -144,4 +131,14 @@ nav .menu li a.disconnect {
     width: 100% !important;
 }
 
+ul.thumb li {
+    width: 33.33%;
+}
+
+}
+
+@media screen and (max-width: 640px) {
+    ul.thumb li {
+        width: 50%;
+    }
 }

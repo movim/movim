@@ -1,18 +1,36 @@
 #roster {
     background-color: rgba(36, 36, 36, 1);
     height: 100%;
+    overflow: hidden;
     position: relative;
     transition: right 0.5s ease;
     right: 0em;
+    pointer-events: auto;
 }
 
+#roster:hover {
+    overflow: auto;
+}
+
+#roster input[name=search],
+#rostermenu input[name=searchjid] {
+    height: 3em;
+    padding: 0em 0.5em;
+    width: 100%;    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+#rostermenu input[name=searchjid]:invalid {
+    color: red;
+}
 
 #roster ul#rosterlist {
     list-style-type: none;
     display: block;
     background-color: rgba(36, 36, 36, 1);
     padding-bottom: 3em;
-    pointer-events: auto;
 }
 
 /* Display/hide the elements */
@@ -174,12 +192,9 @@
     background-color: rgba(36, 36, 36, 1);
     width: 200px;
     pointer-events: auto;
+    z-index: 3;
 }
 
-#rostermenu li#search input {
-    height: 2em;
-    width: 100%;
-}
 
 #rostermenu li:last-child {
     float: right;
@@ -210,4 +225,9 @@
 
 #rostermenu div#chattoggle {
     display: inline-block;
+}
+
+#rostermenu .message {
+    color: white;
+    padding: 0.5em;
 }

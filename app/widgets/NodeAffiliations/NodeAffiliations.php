@@ -86,6 +86,7 @@ class NodeAffiliations extends WidgetBase
     {
         ?>
 		<div class="tabelem" title="<?php echo t('Manage your members'); ?>" id="groupmemberlist">
+            <h1><?php echo t('Manage your members'); ?></h1>
             <div class="posthead">
                 <a 
                     class="button icon users color green" 

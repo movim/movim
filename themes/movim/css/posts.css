@@ -3,9 +3,13 @@
 .posthead {
     display: block;
     width: 100%;
-    height: 2em;
-    padding-left: 1.5em;
+    padding: 0em 1.5em;
+    
     padding-top: 1em;
+    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .posthead:after {
@@ -198,7 +202,7 @@
 }
 
 .post .enclosure a.imglink {
-    display: block;
+    display: inline-block;
     height: auto;
     width: auto;
 }

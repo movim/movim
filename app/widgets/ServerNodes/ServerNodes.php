@@ -42,7 +42,7 @@ class ServerNodes extends WidgetCommon
         
         $head = '
             <a 
-                class="button tiny icon add" 
+                class="button icon add color green" 
                 onclick="movim_toggle_display(\'#groupCreation\')">
                 '.t("Create a new group").'
             </a>';
@@ -61,12 +61,12 @@ class ServerNodes extends WidgetCommon
                         <input type="hidden" name="server" value="'.$items[1].'"/>
                     </fieldset>
                     <a 
-                        class="button tiny icon yes black merged left"
+                        class="button color icon yes blue merged left"
                         onclick="'.$submit.'"
                     >'.
                             t('Add').'
                     </a><a 
-                        class="button tiny icon black merged right" 
+                        class="button icon no black merged right" 
                         onclick="movim_toggle_display(\'#groupCreation\')"
                     >'.
                             t('Close').'
@@ -182,8 +182,8 @@ class ServerNodes extends WidgetCommon
         <a
             href="#"
             onclick="<?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?>; 
-                this.className='button tiny icon loading'; this.onclick=null;"
-            class="button tiny icon refresh">
+                this.className='button icon loading color orange'; this.onclick=null;"
+            class="button icon refresh color">
             <?php echo t('Refresh'); ?>
         </a>
         <?php echo $create; ?>

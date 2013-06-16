@@ -253,11 +253,15 @@ ul.clean li {
 }
 
 #main {  
-    height: 100%;
-    background-color: #383735;
-    position: relative;
     padding-right: 200px;
-    overflow: hidden;
+    background-color: white;
+}
+
+#main:after {
+  content: "";
+  display: block;
+  display: table;
+  clear: both;
 }
 
 #left
@@ -269,8 +273,8 @@ ul.clean li {
     padding: 1em;
     width: 200px;
     color: white;
-    position: absolute;
     top: 0px;
+    background-color: #383735;
 }
 
 #left a:link, 
@@ -285,11 +289,10 @@ ul.clean li {
 #center
 {
     background-color: white;
-    min-height: 620px;
     position: relative;
     top: 0px;
     width: 100%;
-    left: 200px;
+    overflow: hidden;
 }
 
 #right
@@ -379,11 +382,6 @@ nav {
     background-color: #445157;
 }
 
-/*
-.menu li:hover a.active {
-    color: transparent;
-}*/
-
 .menu li img {
     float: left;
     border: 0px;
@@ -426,12 +424,11 @@ nav {
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
-    display: none;
     position: absolute;
     bottom: 3em;
-    left: 0px;
+    right: -100%;
     width: 100%;
-    border-top: 1px solid rgba(100, 100, 100, 0.4);
+    transition: right 0.5s ease;
 }
 
 ul li .tabbed label {
@@ -443,7 +440,7 @@ ul li .tabbed .element {
 }
 
 ul li input[type=checkbox]:checked ~ .tabbed {
-    display: block;
+    right: 0%;
 }
 
 
@@ -464,21 +461,10 @@ ul li input[type=checkbox]:checked ~ .tabbed {
     background-image: -o-linear-gradient(top left, rgba(255,255, 255, 0.05) 25%, transparent 25%,
                         transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
                         transparent 75%, transparent);
-
-    /*box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.3),
-        -1px 0px 0px rgba(0, 0, 0, 0.3),
-        0px 1px 0px rgba(0, 0, 0, 0.4),
-        0px -1px 0px rgba(0, 0, 0, 0.4);
-
-    border: 0px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);*/
     
     color: #fff;
     padding: 1em;
-    /*text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.1);*/
-    /*font-size: 1.1em;*/
+
     margin: 0.5em 0px;
     clear: both;
 }
@@ -597,23 +583,18 @@ ul.thumb {
 }
 
 ul.thumb li {
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-    vertical-align: middle;
-    overflow: hidden;
+    background-size: 100% auto;
+    width: 25%;
     float: left;
-    background-size: auto 100%;
     position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
-ul.thumb a {
+ul.thumb li a {
     display: block;
     width: 100%;
-    height: 100px;
+    padding-bottom: 100%;
 }
 
 /* Definition list */
@@ -641,14 +622,14 @@ dl dd {
 
 /* Breadcrumb */
 .breadcrumb {
-    height: 2em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 3em;
+    margin-bottom: 1em;
 }
 
 .breadcrumb > a {
     display: inline-block;
-    line-height: 2em;
-    padding-left: 2em;
+    line-height: 3em;
+    padding-left: 1.5em;
     padding-right: 1em;
     position: relative;
     overflow: hidden;
@@ -660,14 +641,14 @@ dl dd {
 
 .breadcrumb > a:not(:first-child):after {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 2em;
+    height: 2em;
     position: absolute;
-    top: 4px;
-    left: -10px;
+    top: 0.5em;
+    left: -2em;
     content: "";
-    border-right: 1px solid rgba(0, 0, 0, 0.2);   
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    
+    background-color: #445157;
 
     transform: rotate(45deg);
     -moz-transform: rotate(45deg);
@@ -710,7 +691,6 @@ dl dd {
 
 .popup legend {
     color: white;
-    /*font-size: 1.3em !important;*/
     border: 0px !important;
     text-shadow: 0px -1px 0px black;
 }

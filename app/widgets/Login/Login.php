@@ -228,7 +228,7 @@ class Login extends WidgetBase {
         $pd = new modl\PresenceDAO();
         $pd->clearPresence($element['login']);
 
-        RPC::call('enterMovim', Route::urlize('main'));
+        RPC::call('movim_redirect', Route::urlize('main'));
         RPC::commit();
     }
 
