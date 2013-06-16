@@ -175,7 +175,7 @@ class Feed extends WidgetCommon {
     function build()
     { 
     ?>
-    <div class="tabelem" title="<?php echo t('Feed'); ?>" id="feed">
+    <div id="feed">
         <div id="feedhead">
         <?php
             echo $this->prepareHead();
@@ -194,10 +194,16 @@ class Feed extends WidgetCommon {
                 target="_blank">
                 <?php echo t('Feed'); ?> (Atom)
             </a>
-            <ul class="filters">
+            <!--<ul class="filters">
                 <li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
                 <li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>
-            </ul>
+            </ul>-->
+            
+            <a 
+                class="button color purple icon user oppose" 
+                href="<?php echo Route::urlize('friend',$this->user->getLogin()); ?>">
+                <?php echo t('My Posts');?>
+            </a>
         </div>
         
         <div id="feedcontent">

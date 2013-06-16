@@ -55,6 +55,8 @@ require_once(SYSTEM_PATH . "widget/WidgetBase.php");
 require_once(SYSTEM_PATH . "widget/WidgetCommon.php");
 require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");
 
+require_once(APP_PATH . "widgets/Notification/Notification.php");
+
 // We set the default timezone to the server timezone
 
 date_default_timezone_set(getLocalTimezone());

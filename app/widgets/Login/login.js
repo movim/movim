@@ -1,7 +1,3 @@
-function enterMovim(url) {
-    window.location.href = url;
-}
-
 function loginButtonSet(val, loading) {
     document.querySelector('#submit').innerHTML = val;
 }
