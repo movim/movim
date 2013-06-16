@@ -286,6 +286,10 @@ legend {
     background-color: #4C5A61;
 }
 
+.button.oppose {
+    float: right;
+}
+
 .button.color.red { background-color: #D92727; }
 .button.color.blue { background-color: #0DB8B5; }
 .button.color.green { background-color: #6FCC43; }
@@ -305,133 +309,6 @@ legend {
 .button.merged.right {
     border-radius: 0px 0.1em 0.1em 0px;
 }
-/*
-input[type=submit], input[type=reset], input[type=button], .button, .button:link, .button:visited {
-    display: inline-block;
-    border: 1px solid #999;
-    border-radius: 2px;
-    box-shadow: 0 1px 0px #ddd;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #888;
-    position: relative;
-    overflow: hidden;
-    background-image: -moz-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 1px);
-    background-image: -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 1px);
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.04) 1px);
-    background-color: white;
-    background-size: 100% 100%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-    padding-right: 1em;
-    height: 2em;
-    line-height: 1.9em;
-}
-
-input:hover[type=submit], input[type=reset]:hover, input[type=button]:hover, .button:hover {
-    box-shadow: 0px 1px 0px #ccc;
-    border: 1px solid gray;
-    cursor: pointer;
-}
-
-form .element input:invalid {
-    border: 1px solid red;
-    box-shadow: inset 0 2px 1px rgba(200, 0, 0, 0.4);
-    color: #B70000;
-}
-
-.button.icon {
-    background-repeat: no-repeat;
-    padding-left: 2.5em;
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-}
-*/
-/* Button loading */
-/*
-.button.icon.loading {
-    background-image: url(../img/loader.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: auto auto;
-    color: transparent;
-    border: 1px transparent;
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.button.icon.loading:hover {
-    cursor: default;
-}
-
-.button.icon.loading:before {
-    content: "";
-}
-
-.button.icon:before {
-    content: "";
-    font: 1em sans-serif;
-    font-weight: bold;
-    color: #444;
-    left: 0px;
-    position: absolute;
-    background-position: center center;
-    background-repeat: no-repeat;
-    padding: 0px 0.7em;
-    line-height: 2em;
-    min-height: 2em;
-    min-width: 10px;
-}
-*/
-/* Button tiny */
-/*
-.button.tiny {
-    white-space: nowrap;
-    line-height: 2em;
-    padding-left: 1em;
-    height: 2em;
-    font-size: 0.9em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.button.tiny.icon {
-    padding-left: 2.5em;
-}
-
-.button.tiny.icon.alone {
-    padding-left: 1em;
-}
-
-.button.tiny.icon:before {
-    line-height: 1.9em;
-}
-*/
-/* Button merged */
-
-/*
-.button.merged {
-    border-radius: 0px;
-    border-left: none;
-}
-
-.button.merged.left:not(.loading) {
-    border-radius: 2px 0px 0px 2px;
-    border-left: 1px solid #999;
-}
-
-.button.merged.right:not(.loading) {
-    border-radius: 0px 2px 2px 0px;
-}
-
-.button.black, .button.merged.left.black {
-    box-shadow: none;
-    background-color: #333;
-    color: #BBB;
-    border-color: #444;
-}
-*/
 
 .icon.yes:before    { background-image: url(../img/icons/button/checkmark.png); }
 .icon.no:before     { background-image: url(../img/icons/button/close.png); }
@@ -453,3 +330,4 @@ form .element input:invalid {
 .icon.tag:before    { background-image: url(../img/icons/button/tag.png); }
 .icon.users:before  { background-image: url(../img/icons/button/users.png); }
 .icon.loading:before{ background-image: url(../img/icons/button/loop.png); }
+.icon.user:before   { background-image: url(../img/icons/button/user.png); }
