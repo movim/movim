@@ -305,7 +305,6 @@ ul.clean li {
     pointer-events:none;
     padding-top: 0em;
     height: 100%;
-    overflow: auto;
     z-index: 2;
 }
 

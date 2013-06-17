@@ -8,6 +8,7 @@
 #notification .notif {
     background-color: rgba(0, 0, 0, 0.8);
     width: 20em;
+    max-width: 100%;
     margin: 1em;
     margin-top: 0em;
     color: white;
