@@ -6,6 +6,7 @@
     transition: right 0.5s ease;
     right: 0em;
     pointer-events: auto;
+    /*padding-top: 3em;*/
 }
 
 #roster:hover {
@@ -20,6 +21,11 @@
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+    position: fixed;
+    top: 0em;
+    /*position: absolute;
+    top: 0em;
+    left: 0em;*/
 }
 
 #rostermenu input[name=searchjid]:invalid {
@@ -31,6 +37,11 @@
     display: block;
     background-color: rgba(36, 36, 36, 1);
     padding-bottom: 3em;
+    padding-top: 3em;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    overflow: hidden;
 }
 
 /* Display/hide the elements */

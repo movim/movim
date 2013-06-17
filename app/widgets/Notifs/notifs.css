@@ -1,12 +1,79 @@
-#notifs {
-    color: #ccc;
+#notifstab, #notifslist {
+    position: fixed;
+    right: 0em;
+    top: 0em;
+    z-index: 4;
+    background-color: #242424;
 }
 
+#notifstab {
+    width: 3em;
+    height: 3em;
+    top: 0em;
+}
+
+#notifs, #notifs a:link, #notifs a:visited {
+    color: white;
+}
+
+#notifstab:hover {
+    cursor: pointer;
+}
+
+#notifstab span {
+    line-height: 3em;
+    font-weight: bold;
+    width: 3em;
+    text-align: center;
+    display: block;
+}
+
+#notifstab span.red {
+    background-color: #D92727;
+}
+
+#notifslist {
+    transition: right 0.5s ease;
+    margin-top: 3em;
+    right: -100%;
+    width: 200px;
+}
+
+#notifslist.show {
+    right: 0em;
+}
+
+#notifslist li {
+    overflow: hidden;
+    line-height: 3em;
+}
+
+#notifslist li:hover {
+    background-color: black;
+}
+
+#notifslist li a {
+    display: block;
+}
+
+#notifslist li.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0em 1em;
+}
+
+#notifslist li img {
+    float: left;
+    width: 3em;
+    height: 3em;
+    margin-right: 1em;
+}
+/*
 #notifstab {
 	position: fixed;
 	top: 0px;
 	right: 50%;
-    margin-right: -300px;
 	cursor: pointer;
     z-index: 4;
     padding: 0.8em 0.5em;
@@ -113,3 +180,4 @@
 #notifslist ul li a.delete:hover {
     text-decoration: underline;
 }
+*/
