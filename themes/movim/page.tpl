@@ -26,9 +26,9 @@
     $this->addCss('css/posts.css');
     $this->addCss('css/style2.css');
 
-    $this->addCss('css/mobile.css'); 
-
     $this->scripts();
+    
+    $this->addCss('css/mobile.css'); 
     
     $user = new User();
 
@@ -52,6 +52,7 @@
             body { font-size: '.$size.'px; }
         </style>';
     }
+
     /*$this->addCss('css/animations.css');
     $this->addCss('css/forms.css');
     
