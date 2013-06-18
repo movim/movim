@@ -21,7 +21,6 @@
 class ContactManage extends WidgetCommon
 {
     function WidgetLoad() {
-		$this->addcss('contactmanage.js');
     }
     
     public function ajaxContactManage($form) {
