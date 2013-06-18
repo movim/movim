@@ -23,7 +23,6 @@ class Wall extends WidgetCommon
 
     function WidgetLoad()
     {
-    	$this->addcss('wall.css');
     	$this->addjs('wall.js');
 		$this->registerEvent('post', 'onStream');
 		$this->registerEvent('stream', 'onStream');

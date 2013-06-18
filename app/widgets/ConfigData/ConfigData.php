@@ -22,7 +22,6 @@ class ConfigData extends WidgetBase
 {
     function WidgetLoad()
     {
-		$this->addcss('configdata.css');
     }
     
     function ajaxClearRosterLink() {
