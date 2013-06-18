@@ -24,7 +24,6 @@ class ChatExt extends WidgetBase
 {
 	function WidgetLoad()
 	{
-    	$this->addcss('chatext.css');
     	$this->addjs('chatext.js');
 		$this->registerEvent('message', 'onMessage');
 		$this->registerEvent('openchat', 'onEvent');
