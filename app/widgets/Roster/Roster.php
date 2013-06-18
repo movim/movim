@@ -119,7 +119,7 @@ class Roster extends WidgetBase
         $html .= '<a
 					title="'.$contact->jid;
                     if($contact->status != '')
-                        $html .= ' - '.htmlentities($contact->status);
+                        $html .= ' - '.htmlentities($contact->status, ENT_QUOTES, 'UTF-8');
                     if($contact->ressource != '')
                         $html .= ' ('.$contact->ressource.')';
 
@@ -133,7 +133,7 @@ class Roster extends WidgetBase
                     $contact->getTrueName();
             $html .= '<br /><span class="ressource">';
                     if($contact->status != '')
-                        $html .= htmlentities($contact->status) . ' - ';
+                        $html .= htmlentities($contact->status, ENT_QUOTES, 'UTF-8') . ' - ';
 						if($contact->rosterask == 'subscribe')
 							$html .= " #";
                         if($contact->ressource != '')
