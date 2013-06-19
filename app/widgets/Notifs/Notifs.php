@@ -262,7 +262,7 @@ class Notifs extends WidgetCommon
             <li>
                 <form id="acceptcontact">
                     <p>'.$from.' '.t('wants to talk with you'). '</p>
-                    <p>
+           
                         <a 
                             class="button color green icon add merged left " 
                             id="notifsvalidate" 
@@ -273,7 +273,7 @@ class Notifs extends WidgetCommon
                             onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").'">'.
                             t("Decline").'
                         </a>
-                    </p>
+       
                 </form>
                 <div class="clear"></div>
             </li>';

@@ -21,11 +21,15 @@
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+}
+
+#roster input[name=search] {
     position: fixed;
     top: 0em;
-    /*position: absolute;
-    top: 0em;
-    left: 0em;*/
+}
+
+#roster.hide input[name=search] {
+    display: none;
 }
 
 #rostermenu input[name=searchjid]:invalid {
@@ -223,8 +227,8 @@
 #rostermenu li.showhide:before {
     content: "";
     transform:rotate(45deg);
-    -ms-transform:rotate(45deg); /* IE 9 */
-    -webkit-transform:rotate(45deg); /* Safari and Chrome */
+    -ms-transform:rotate(45deg); 
+    -webkit-transform:rotate(45deg);
     background-color: #0DB8B5;
     display: block;
     position: absolute;

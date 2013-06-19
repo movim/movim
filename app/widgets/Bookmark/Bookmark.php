@@ -240,7 +240,7 @@ class Bookmark extends WidgetBase
                     >'.
                             t('Add').'
                     </a><a 
-                        class="button icon black merged right" 
+                        class="button icon no black merged right" 
                         onclick="movim_toggle_display(\'#bookmarkadd\')"
                     >'.
                             t('Close').'

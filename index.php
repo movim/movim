@@ -9,9 +9,6 @@
  *
  * @author Movim Project <movim@movim.eu>
  *
- * @version 0.4
- * @date 30 September 2010
- *
  * Copyright (C)2010 Movim Project
  *
  * This program is free software: you can redistribute it and/or modify

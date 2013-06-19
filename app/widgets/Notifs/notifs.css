@@ -46,13 +46,14 @@
 #notifslist li {
     overflow: hidden;
     line-height: 3em;
+    list-style-type: none;
 }
 
 #notifslist li:hover {
     background-color: black;
 }
 
-#notifslist li a {
+#notifslist li a:not(.button) {
     display: block;
 }
 
@@ -68,6 +69,11 @@
     width: 3em;
     height: 3em;
     margin-right: 1em;
+}
+
+#notifslist #acceptcontact {
+    padding: 0.5em;
+    padding-bottom: 0em;
 }
 /*
 #notifstab {
