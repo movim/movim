@@ -9,10 +9,11 @@
 }
 
 #navtabs li {
-    display: inline;
+    display: inline-block;
     cursor: pointer;
     line-height: 3em;
-    padding: 1em 2em;
+    padding: 0em 2em;
+    white-space: nowrap;
 }
 
 .tabs {

@@ -28,7 +28,7 @@ class Account extends WidgetBase {
     
     function ajaxDiscoverServer($ndd) {
         if($ndd['ndd'] == '') {
-            RPC::call('movim_reload', BASE_URI."index.php?q=account&err=datamissing");
+            RPC::call('movim_reload', Route::urlize('account', 'datamissing'));
             RPC::commit();
             exit;
         }
@@ -43,7 +43,7 @@ class Account extends WidgetBase {
             $f = fsockopen($domain, 5222, $errno, $errstr, 10);
 
             if(!$f) {
-                RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppconnect");
+                RPC::call('movim_reload', Route::urlize('account', 'xmppconnect'));
                 RPC::commit();
                 exit;
             }
@@ -57,7 +57,7 @@ class Account extends WidgetBase {
             $response = stream_get_contents($f);
 
 	        if(!$response) {
-                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppcomm");
+                	RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
      	            exit;
 		    }
@@ -191,7 +191,7 @@ class Account extends WidgetBase {
 	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
 
 	        if(!$f) {
-                RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppconnect");
+                RPC::call('movim_reload', Route::urlize('account', 'xmppconnect'));
                 RPC::commit();
      	        exit;
 		    }
@@ -206,14 +206,13 @@ class Account extends WidgetBase {
 			$xmpp = new FormtoXMPP();
 			$stream = $xmpp->getXMPP($stream->asXML(), $datas);
 
-\movim_log($stream->asXML());
 	        fwrite($f, $stream->asXML());
 	        unset($stream);
 
 	        $response = stream_get_contents($f);
 
 	        if(!$response) {
-                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=xmppcomm");
+                	RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
      	            exit;
 		    }
@@ -221,7 +220,7 @@ class Account extends WidgetBase {
 	        fclose($f); unset($f);
 
 	        $response = simplexml_load_string($response);
-\movim_log($response);
+
 	        if(!$response) throw new Exception('The XMPP server sent an invalid response', 500);
 
 	        if($stream_error = $response->xpath('/stream:stream/stream:error')) {
@@ -236,11 +235,11 @@ class Account extends WidgetBase {
 	        if($iq->error) {
 		        list($cond) = $iq->error->children();
 		        if($cond->getName() == 'conflict') {
-                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=userconflict");
+                	RPC::call('movim_reload', Route::urlize('account', 'userconflict'));
                     RPC::commit();
      	            exit;
 		        } else if($cond->getName() == 'not-acceptable') {
-                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=notacceptable");
+                	RPC::call('movim_reload', Route::urlize('account', 'notacceptable'));
                     RPC::commit();
      	            exit;
 		        }
@@ -248,11 +247,11 @@ class Account extends WidgetBase {
 	        }
 
 	        if($iq = $response->iq and $iq->attributes()->type == 'result') {
-                RPC::call('movim_reload', BASE_URI."index.php?q=login&err=acccreated");
+                RPC::call('movim_reload', Route::urlize('login', 'acccreated'));
                 RPC::commit();
                 exit;
 	        } else {
-                	RPC::call('movim_reload', BASE_URI."index.php?q=account&err=unknown");
+                	RPC::call('movim_reload', Route::urlize('account', 'unknown'));
                     RPC::commit();
      	            exit;
 		    }
@@ -434,7 +433,7 @@ class Account extends WidgetBase {
             </div>
             <div id="center">
                 <h1><?php echo t('Create a new account'); ?></h1>
-                <div style="margin: 15px 20px;">
+                <div style="margin: 0em 1.5em;">
                     <p>
                         <?php echo t('Movim is a decentralized social network, before creating a new account you need to choose a server to register.'); ?>
                         <?php echo t('Keep in mind that this server will handle all your personnal data.'); ?>

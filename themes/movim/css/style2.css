@@ -253,8 +253,9 @@ ul.clean li {
 }
 
 #main {  
-    padding-right: 200px;
-    background-color: white;
+    margin-right: 200px;
+    width: 100%;
+    background-color: #383735;
 }
 
 #main:after {
@@ -274,7 +275,7 @@ ul.clean li {
     width: 200px;
     color: white;
     top: 0px;
-    background-color: #383735;
+    overflow: hidden;
 }
 
 #left a:link, 
@@ -291,7 +292,6 @@ ul.clean li {
     background-color: white;
     position: relative;
     top: 0px;
-    width: 100%;
     overflow: hidden;
 }
 
@@ -664,7 +664,7 @@ dl dd {
     max-height: 80%;
     overflow-y: auto;
     display: none;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #242424;
     padding: 1em;
     
     box-sizing: border-box;

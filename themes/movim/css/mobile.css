@@ -7,10 +7,6 @@ body {
     width: 100%;
 }
 
-h1 {
-    padding: 0.3em;
-}
-
 #right {
     width: 100%;
     padding: 0px;
@@ -124,7 +120,7 @@ nav .menu li a.disconnect {
 }
 
 #loginpage {
-    margin-top: 5% ! important;
+    margin-top: 20% ! important;
 }
 
 #rostermenu {
@@ -144,8 +140,16 @@ ul.thumb li {
     top: 3em !important;
 }
 
-#notifslist {
+#notifslist, #logoutlist {
     width: 100% !important;
+}
+
+#logoutlist a {
+    margin-left: 1em !important;
+}
+
+#roster input[name=search] {
+    top: 3em !important;
 }
 
 }
