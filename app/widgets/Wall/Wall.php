@@ -127,7 +127,8 @@ class Wall extends WidgetCommon
 	function build()
 	{
 		?>
-		<div class="tabelem protect orange" id="wall" title="<?php echo t('Feed');?>">
+		<div class="tabelem" id="wall" title="<?php echo t('Feed');?>">
+            <div class="protect orange" title="<?php echo getFlagTitle("orange");?>"></div>
             <div id="<?php echo stringToUri($_GET['f'].'urn:xmpp:microblog:0'); ?>">
             <?php 
                 $wall = $this->prepareFeed(-1);
