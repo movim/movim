@@ -253,7 +253,6 @@ ul.clean li {
 }
 
 #main {  
-    padding-right: 200px;
     background-color: white;
 }
 
@@ -291,7 +290,6 @@ ul.clean li {
     background-color: white;
     position: relative;
     top: 0px;
-    width: 100%;
     overflow: hidden;
 }
 
