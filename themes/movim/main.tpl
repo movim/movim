@@ -13,13 +13,13 @@
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
-    
-    <div id="right">
-      <?php $this->widget('Roster');?>
-    </div>
 
     <div id="center">
         <?php $this->widget('Feed');?>
     </div>
 
+</div>
+
+<div id="right">
+  <?php $this->widget('Roster');?>
 </div>
