@@ -16,7 +16,7 @@
         <?php $this->widget('ProfileData');?>
     </div>
     <div id="center">
-        <div title="<?php echo t('Not shared'); ?>"  class="protect white"></div>
+        <div title="<?php echo getFlagTitle("white"); ?>"  class="protect white"></div>
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Config');?>
         <?php $this->widget('ConfigData');?>
