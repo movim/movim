@@ -136,7 +136,8 @@ class Vcard extends WidgetBase
         
             $html .= '
             <form name="vcard" id="vcardform"><br />
-                <fieldset class="protect '.$color.'">
+                <fieldset>
+                    <div class="protect '.$color.'" title="'.getFlagTitle($color).'"></div>
                     <legend>'.t('General Informations').'</legend>';
                     
                 $html .= '<div class="element">
