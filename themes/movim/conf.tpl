@@ -15,7 +15,8 @@
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
-    <div id="center" class="protect white">
+    <div id="center">
+        <div title="<?php echo t('Not shared'); ?>"  class="protect white"></div>
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Config');?>
         <?php $this->widget('ConfigData');?>
