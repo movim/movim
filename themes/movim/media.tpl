@@ -17,7 +17,8 @@
         <?php $this->widget('ProfileData');?>
     </div>
 
-    <div id="center" class="protect white">
+    <div id="center">
+        <div title="<?php echo t('Not shared'); ?>" style="z-index:1;" class="protect white"></div>
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Media');?>
         <?php $this->widget('MediaUpload');?>
