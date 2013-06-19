@@ -9,3 +9,8 @@ user
 log
 config
 
+./cache
+./config/conf.xml
+./lib/Modl
+./lib/Moxl
+./users/adrien@adorsaz.ch
