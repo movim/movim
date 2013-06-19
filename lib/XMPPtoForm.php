@@ -234,7 +234,7 @@ class FormtoXMPP{
         }
 		foreach($this->inputs as $key => $value) {
             if($value == '' && $this->stream->getName() == "stream") {
-                RPC::call('movim_reload', BASE_URI."index.php?q=account&err=datamissing");
+                RPC::call('movim_reload', Route::urlize('account','datamissing'));
                 RPC::commit();
      	        exit;
             } elseif(substr($key, 0, 8) == 'generic_') {
