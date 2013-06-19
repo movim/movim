@@ -35,11 +35,11 @@ class Help extends WidgetBase
             
             <h2><?php echo t('What do the little banners refer to ?'); ?></h2>
             <center>    
-            <div title="<?php echo t('Not shared'); ?>" style="width: 60px; height: 50px; display: inline-block;" class="protect white"></div>
-            <div title="<?php echo t('Shared with one contact'); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect green"></div>
-            <div title="<?php echo t('Shared with all contacts'); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect orange"></div>
-            <div title="<?php echo t('Shared with the XMPP network'); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect red"></div>
-            <div title="<?php echo t('Shared with the whole Internet'); ?>" title="<?php echo t('Help'); ?>" style="width: 60px; height: 50px; display: inline-block;" class="protect black"></div>
+            <div title="<?php echo getFlagTitle("white"); ?>" style="width: 60px; height: 50px; display: inline-block;" class="protect white"></div>
+            <div title="<?php echo getFlagTitle("green"); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect green"></div>
+            <div title="<?php echo getFlagTitle("orange"); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect orange"></div>
+            <div title="<?php echo getFlagTitle("red"); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect red"></div>
+            <div title="<?php echo getFlagTitle("black"); ?>" title="<?php echo t('Help'); ?>" style="width: 60px; height: 50px; display: inline-block;" class="protect black"></div>
             </center>
                 
             <p><?php echo t('Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide.'); ?></p>
