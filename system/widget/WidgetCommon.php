@@ -26,10 +26,14 @@ class WidgetCommon extends WidgetBase {
         if($this->user->getLogin() == $post->jid) {
             $class = 'me ';
 
-            if($post->privacy == 1)
+            if($post->privacy == 1){
+                $flagcolor='black';
                 $access .= 'protect black';
-            else
+            }
+            else{
+                $flagcolor='orange';
                 $access .= 'protect orange';
+            }
                 
             $avatar = $post->getContact()->getPhoto('s');
         } elseif($post->public == 2) 
@@ -90,7 +94,8 @@ class WidgetCommon extends WidgetBase {
             $toolbox = $this->getToolbox($post);
         
         $html = '
-            <div class="post '.$class.' '.$access.'" id="'.$post->nodeid.'">
+            <div class="post '.$class.'" id="'.$post->nodeid.'">
+                <div class="'.$access.'" title="'.getFlagTitle($flagcolor).'" style="z-index:1;"></div>
                 <a href="'.Route::urlize('friend', $post->jid).'">
                     <img class="avatar" src="'.$avatar.'">
                 </a>
@@ -406,13 +411,14 @@ class WidgetCommon extends WidgetBase {
 										'.$this->genCallAjax('ajaxPostPreview', "document.querySelector('#postpublishcontent').value").'"
 								></a>
 
-								<a 
+								<!--<a 
 									title="Plus"
 									href="#"
 									id="postpublishsize"
 									onclick="frameHeight(this, document.querySelector(\'#postpublishcontent\'));"
 									style="float: left;"
-									class="button color icon alone add merged"></a><a 
+									class="button color icon alone add merged"
+                                ></a>--><a 
 									class="button color icon alone help merged" 
 									style="float: left;"
                                     href="http://daringfireball.net/projects/markdown/basics"
@@ -565,7 +571,7 @@ class WidgetCommon extends WidgetBase {
 			\modl\Privacy::set($nodeid, 1);
         }
 
-        RPC::call('movim_change_class', $nodeid , 'post me protect '.$privacy);
+        RPC::call('movim_change_class', $nodeid , 'protect '.$privacy, getFlagTitle($privacy));
         RPC::commit();
     }
     

@@ -2,7 +2,7 @@
 ?>
 <?php $this->widget('Poller');?>
 <?php $this->widget('Logout');?>
-<?php $this->widget('Notifs');?>
+<?php //$this->widget('Notifs');?>
 <?php $this->widget('Chat');?>
 <?php $this->widget('ChatExt');?>
 
@@ -16,7 +16,8 @@
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
-    <div id="center" class="protect black">
+    <div id="center">
+        <div class="protect black" title="<?php echo getFlagTitle("black"); ?>"></div>
         <h1><?php echo t('Explore'); ?></h1>
         <?php $this->widget('Explore');?>
     </div>

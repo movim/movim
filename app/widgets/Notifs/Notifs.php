@@ -198,13 +198,13 @@ class Notifs extends WidgetCommon
         if($notifsnum > 0)
             $notifsnew = 'class="red"';
             
-        $html = '
+        /*$html = '
             <div id="notifstab" onclick="showNotifsList();">
                 <span '.$notifsnew.'>'.
                     $notifsnum.'
                 </span>
             </div>'.$html;
-        
+        */
         return $html;
     }
     

@@ -245,7 +245,7 @@ legend {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-    padding: 0 0.5em;
+    padding: 0 1em;
     
     min-height: 2em;
     min-width: 2em;
@@ -259,14 +259,19 @@ legend {
     display: inline-block;
     
     max-width: 100%;
+    
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8em;
+    line-height: 2.4em;
 }
 
 .icon:before {
     content: " ";
-    padding-left: 1em;
+    padding-left: 1.1em;
     background-position: center center;
     background-repeat: no-repeat;
-    margin-right: 0.5em;
+    margin-right: 0.7em;
 }
 
 .icon.alone:before {

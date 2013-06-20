@@ -68,7 +68,8 @@ function movim_reload_this() {
 /* A magical function to autoresize textarea when typing */
 function movim_textarea_autoheight(textbox) {
     textbox.style.height = 0;
-    textbox.style.height = textbox.scrollHeight+"px";
+    textbox.style.height = textbox.scrollHeight
+                          +"px";
 }
 
 /**
@@ -124,7 +125,18 @@ function movim_title_inc() {
 
 function movim_change_class(params) {
     var node = document.getElementById(params[0]);
-    node.className = params[1];
+    var tmp;
+    for (var i = 0; i < node.childNodes.length; i++) {
+        tmp=node.childNodes[i];
+        tmpClass = tmp.className;
+        if (typeof tmpClass != "undefined" && tmp.className.match(/.*protect.*/)) {
+            privacy = node.childNodes[i];
+            break;
+        }
+    }      
+
+    privacy.className = params[1];
+    privacy.title = params[2];
 }
 
 function movim_toggle_display(param) {
@@ -153,7 +165,7 @@ function frameHeight(n, text) {
         text.style.minHeight = '20em';
     } else {
         n.className = 'button icon color alone add merged';
-        text.style.minHeight = '1.5em';
+        text.style.minHeight = '3.5em';
     }
 }
 

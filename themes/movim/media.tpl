@@ -3,7 +3,7 @@
 
 <?php $this->widget('Poller');?>
 <?php $this->widget('Logout');?>
-<?php $this->widget('Notifs');?>
+<?php //$this->widget('Notifs');?>
 <?php $this->widget('Chat');?>
 <?php $this->widget('ChatExt');?>
 
@@ -17,7 +17,8 @@
         <?php $this->widget('ProfileData');?>
     </div>
 
-    <div id="center" class="protect white">
+    <div id="center">
+        <div title="<?php echo getFlagTitle("white"); ?>" style="z-index:1;" class="protect white"></div>
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Media');?>
         <?php $this->widget('MediaUpload');?>
