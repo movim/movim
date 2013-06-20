@@ -136,7 +136,8 @@ class Vcard extends WidgetBase
         
             $html .= '
             <form name="vcard" id="vcardform"><br />
-                <fieldset class="protect '.$color.'">
+                <fieldset>
+                    <div class="protect '.$color.'" title="'.getFlagTitle($color).'"></div>
                     <legend>'.t('General Informations').'</legend>';
                     
                 $html .= '<div class="element">
@@ -252,13 +253,13 @@ class Vcard extends WidgetBase
                             
                             <a 
                                 id="shoot" 
-                                class="button icon preview" 
+                                class="button icon preview color green" 
                                 onclick="return false;">'.
                                 t("Cheese !").'
                             </a>
 							<a
                                 id="capture" 
-                                class="button icon image" 
+                                class="button icon image color purple" 
                                 onclick="
                                     showVideo();
                                     return false;">'.

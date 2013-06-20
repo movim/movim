@@ -233,14 +233,6 @@ class TplPageBuilder
         $widgets = WidgetWrapper::getInstance($register);
         $widgets->run_widget($name, 'build');
 	}
-
-	/**
-	 * Gets all the widgets that were loaded while building the page.
-	 */
-	/*function loadedWidgets()
-	{
-		return self::$loaded_widgets;
-	}*/
 }
 
 ?>

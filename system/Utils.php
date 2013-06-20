@@ -645,4 +645,35 @@ function movim_log($log) {
     closelog();
 }
 
+/**
+ * Return a small help to recognize flag color
+ * */
+function getFlagTitle($color){
+    $title="";
+    switch($color){
+        case 'white':
+	    $title=t('Not shared');
+	break;
+        
+        case 'green':
+            $title=t('Shared with one contact');
+        break;
+
+        case 'orange':
+            $title=t('Shared with all contacts');
+        break;
+
+        case 'red':
+            $title=t('Shared with the XMPP network');
+        break;
+
+        case 'black':
+            $title=t('Shared with the whole Internet');
+        break;
+
+        default:
+        break;
+    }
+    return $title;
+}
 ?>

@@ -2,7 +2,6 @@
 ?>
 <?php $this->widget('Poller');?>
 <?php $this->widget('Logout');?>
-<?php $this->widget('Notifs');?>
 <?php $this->widget('Chat');?>
 <?php $this->widget('ChatExt');?>
     
@@ -13,13 +12,14 @@
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
-    
-    <div id="right">
-      <?php $this->widget('Roster');?>
-    </div>
 
     <div id="center">
         <?php $this->widget('Feed');?>
     </div>
 
+</div>
+
+<div id="right">
+    <?php $this->widget('Roster');?>
+    <?php //$this->widget('Notifs');?>
 </div>
