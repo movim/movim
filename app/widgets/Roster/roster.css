@@ -1,12 +1,10 @@
 #roster {
     background-color: rgba(36, 36, 36, 1);
-    height: 100%;
-    overflow: hidden;
     position: relative;
     transition: right 0.5s ease;
     right: 0em;
     pointer-events: auto;
-    /*padding-top: 3em;*/
+    height: 100%;
 }
 
 #roster:hover {
@@ -24,12 +22,11 @@
 }
 
 #roster input[name=search] {
-    position: fixed;
-    top: 0em;
-}
-
-#roster.hide input[name=search] {
-    display: none;
+    background-image: url(img/search.png);
+    background-repeat: no-repeat;
+    padding-left: 3em;
+    background-position: 1em center;
+    background-color: white;
 }
 
 #rostermenu input[name=searchjid]:invalid {
@@ -38,14 +35,11 @@
 
 #roster ul#rosterlist {
     list-style-type: none;
-    display: block;
     background-color: rgba(36, 36, 36, 1);
-    padding-bottom: 3em;
-    padding-top: 3em;
+    margin-bottom: 3em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-    overflow: hidden;
 }
 
 /* Display/hide the elements */
@@ -80,7 +74,8 @@
     float: left;
     width: 3em;
     height: 3em;
-    margin-right: 7px;
+    margin-right: 0.5em;
+    margin-top: -0.5em;
 }
 
 #roster ul#rosterlist li a {
@@ -90,14 +85,19 @@
     overflow: hidden;
     color: #BBB;
     font-size: 1em;
-    line-height: 1.5em;
+    padding-top: 0.5em;
     text-overflow: ellipsis;
+    vertical-align: text-bottom;
+
+    text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
+    /*border-top: 0.1em solid rgba(255, 255, 255, 0.05);
+    border-bottom: 0.1em solid rgba(0, 0, 0, 0.05);*/
 }
 
 #roster ul#rosterlist li a span.ressource {
-    font-size: 0.9em;
+    text-transform: uppercase;
+    font-size: 0.8em;
     color: #777;
-    line-height: 1.1em;
 }
 
 #roster ul#rosterlist h1 {
@@ -105,6 +105,8 @@
     color: #777;
     line-height: 1em;
     font-size: 1em;
+
+    text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
 }
 
 #roster ul#rosterlist h1:hover {

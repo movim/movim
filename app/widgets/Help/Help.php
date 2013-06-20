@@ -35,11 +35,11 @@ class Help extends WidgetBase
             
             <h2><?php echo t('What do the little banners refer to ?'); ?></h2>
             <center>    
-            <div style="width: 60px; height: 50px; display: inline-block;" class="protect white"></div>
-            <div style="width: 60px; height: 50px; display: inline-block;" class="protect green"></div>
-            <div style="width: 60px; height: 50px; display: inline-block;" class="protect orange"></div>
-            <div style="width: 60px; height: 50px; display: inline-block;" class="protect red"></div>
-            <div style="width: 60px; height: 50px; display: inline-block;" class="protect black"></div>
+            <div title="<?php echo getFlagTitle("white"); ?>" style="width: 60px; height: 50px; display: inline-block;" class="protect white"></div>
+            <div title="<?php echo getFlagTitle("green"); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect green"></div>
+            <div title="<?php echo getFlagTitle("orange"); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect orange"></div>
+            <div title="<?php echo getFlagTitle("red"); ?>"  style="width: 60px; height: 50px; display: inline-block;" class="protect red"></div>
+            <div title="<?php echo getFlagTitle("black"); ?>" title="<?php echo t('Help'); ?>" style="width: 60px; height: 50px; display: inline-block;" class="protect black"></div>
             </center>
                 
             <p><?php echo t('Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide.'); ?></p>

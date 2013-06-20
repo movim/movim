@@ -2,10 +2,13 @@
 *#*
 cache.tmp
 log/*
-i18n/files.list
+locales/files.list
 *.pdf
 *.swp
-user
-log
 config
 
+./cache
+./config/conf.xml
+./lib/Modl
+./lib/Moxl
+./users/
