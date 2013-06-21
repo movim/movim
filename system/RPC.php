@@ -107,7 +107,7 @@ class RPC
 
 
             foreach($params as $p) {
-                if(is_object($p))
+                if(is_object($p) && $p->container)
                     array_push($result, (array)$p->container);
                 else
                     array_push($result, $p);

@@ -101,15 +101,18 @@ class XMPPtoForm{
             <input id="'.$s.'" name="generic_'.$s.'" type="'.$s.'" required/>';
 	}
 	private function outTitle($s){
-		$this->html .= '<h3>'.$s.'</h3>';
+		$this->html .= '
+            <h3>'.$s.'</h3>';
 	}
 	
 	private function outP($s){
-		$this->html .= '<p>'.$s.'</p>';
+		$this->html .= '
+            <p>'.$s.'</p>';
 	}
     
     private function outUrl($s) {
-        $this->html .= '<a href="'.$s->getName().'">'.$s->getName().'</a>';
+        $this->html .= '
+            <a href="'.$s->getName().'">'.$s->getName().'</a>';
     }
 	
 	private function outBold($s){
@@ -136,6 +139,8 @@ class XMPPtoForm{
             <input 
                 id="'.$s['var'].'" 
                 name="'.$s['var'].'" 
+                xmpptype="'.$s['type'].'"
+                xmpplabel="'.$s['label'].'"
                 type="checkbox" '.$s->required;
             if($s->value == "true" || $s->value == "1")
                 $this->html .= ' checked';
@@ -144,8 +149,15 @@ class XMPPtoForm{
 	}
 	
 	private function outTextarea($s){
-		$this->html .= '<label for="'.$s["var"].'">'.$s["label"].'</label>
-			<textarea id="'.$s["var"].'" name="'.$s["var"].'" required="'.$s->required.'">';
+		$this->html .= '
+            <label for="'.$s["var"].'">'.$s["label"].'</label>
+			<textarea 
+                id="'.$s["var"].'" 
+                name="'.$s["var"].'" 
+                xmpptype="'.$s['type'].'"
+                xmpplabel="'.$s['label'].'"
+                required="'.$s->required.'">';
+                
 		foreach($s->children() as $value){
 			if($value->getName() == "value"){
 				$this->html .= $value;
@@ -155,42 +167,64 @@ class XMPPtoForm{
 	}
 	
 	private function outInput($s, $type, $multiple){
+        if($s->required)
+            $req = 'required';
 		$this->html .= '
             <label for="'.$s["var"].'">'.$s["label"].'</label>
 			<input id="'.$s["var"].'" name="'.$s["var"].'" value="';
+            
 			foreach($s->children() as $value){
 				if($value->getName() == "value"){
 					$this->html .= $value.' ';
 				}
 			}
-		$this->html .= '" type="'.$type.'" title="'.$s->desc.'" 
-			'.$multiple.' '.$s->required.'/>';
+            
+		$this->html .= '" 
+            type="'.$type.'" 
+            title="'.$s->desc.'" 
+            xmpptype="'.$s['type'].'"
+            xmpplabel="'.$s['label'].'"
+			'.$multiple.' '.$req.'/>';
 	}
 	
 	private function outHiddeninput($s){
-		$this->html .= '<input type="hidden" name="'.$s["var"].'" value="'.$s->value.'" />';
+		$this->html .= '
+            <input type="hidden" name="'.$s["var"].'" value="'.$s->value.'" />';
 	}
 	
 	private function outList($s, $multiple){
-		$this->html .= '<label for="'.$s["var"].'">'.$s["label"].'</label>
-		<div class="select"><select id="'.$s["var"].'" name="'.$s['var'].'" '.$multiple.' '.$s->required.'>';
+		$this->html .= '
+            <label for="'.$s["var"].'">'.$s["label"].'</label>
+            <div class="select">
+                <select 
+                    xmpptype="'.$s['type'].'"
+                    xmpplabel="'.$s['label'].'"
+                    id="'.$s["var"].'" 
+                    name="'.$s['var'].'" '.$multiple.' '.$s->required.'>';
 		
 		if(count($s->xpath('option')) > 0){
 			foreach($s->option as $option){
-				$this->html .= '<option value="'.$option->value.'"';
-				if(in_array((string)$option->value, $s->xpath('value')))
-					$this->html .= ' selected';
-				$this->html .= '>'.$option->value.'</option>';
+				$this->html .= '
+                    <option value="'.$option->value.'"';
+                    if(in_array((string)$option->value, $s->xpath('value')))
+                        $this->html .= ' selected';
+				$this->html .= '>'.
+                        $option->value.'
+                    </option>';
 			}
 		}
 		else{
 			foreach($s->value as $option){
-				$this->html .= '<option value="'.$option['label'].'" selected>'
-					.$option.'</option>';
+				$this->html .= '
+                    <option value="'.$option['label'].'" selected>'.
+                        $option.'
+                    </option>';
 			}
 		}
 		
-		$this->html .= '</select></div>';
+		$this->html .= '
+                </select>
+            </div>';
 	}
 }
 
@@ -226,7 +260,7 @@ class FormtoXMPP{
 	public function create(){
         switch($this->stream->getName()){
             case "stream": 
-                $node = $this->stream->iq->query;
+                $node = $this->stream->iq->query->x;
                 break;
             case "pubsub":
                 $node = $this->stream->configure->x;
@@ -240,7 +274,21 @@ class FormtoXMPP{
             } elseif(substr($key, 0, 8) == 'generic_') {
                 $key = str_replace('generic_', '', $key);
                 $node->addChild($key, $value);
-		    } else{
+		    } elseif($value->attributes) {
+                $field = $node->addChild('field');
+                if($value == 'true')
+                    $value = '1';
+                if($value == 'false')
+                    $value = '0';
+                    
+                $field->addChild('value', trim($value->value));
+                if(isset($value->attributes->required))
+                    $field->addChild('required', '');
+                $field->addAttribute('var', $value->attributes->name);
+                $field->addAttribute('type', $value->attributes->xmpptype);                
+                $field->addAttribute('label', $value->attributes->xmpplabel);     
+                           
+            } else{
                 $field = $node->addChild('field');
                 if($value == 'true')
                     $value = '1';

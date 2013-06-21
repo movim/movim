@@ -57,6 +57,27 @@ function movim_parse_form(formname) {
 	return data;
 }
 
+function movim_form_to_json(formname) {
+    var form = document.forms[formname];
+    if(!form)
+        return false;  
+        
+    var json = {};
+        
+    for(var i = 0; i < form.elements.length; i++) {
+        json_att = {};
+        
+        for(var j = 0; j < form.elements[i].attributes.length; j++) {
+            json_att[form.elements[i].attributes[j].name] = form.elements[i].attributes[j].value;
+        }
+         
+        if(form.elements[i].name.length != 0)
+            json[form.elements[i].name] = {'value' : form.elements[i].value, 'attributes' : json_att};
+	}
+    
+    return json;
+}
+
 function movim_reload(uri) {
     window.location.replace(uri);
 }

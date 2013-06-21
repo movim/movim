@@ -264,6 +264,9 @@ legend {
     font-weight: bold;
     font-size: 0.8em;
     line-height: 2.4em;
+    
+    text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0.1em 0px rgba(0, 0, 0, 0.2);
 }
 
 .icon:before {
