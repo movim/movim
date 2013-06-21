@@ -62,8 +62,10 @@ class Account extends WidgetBase {
      	            exit;
 		    }
 
-	        $response = simplexml_load_string($response);
+	        $response = simplexml_load_string($response);   
             
+            \movim_log(moxl\cleanXML($response->asXML()));         
+                        
             $id = (string)$response->attributes()->id;
             
             $elements = (array)$response->iq->query;
@@ -139,7 +141,7 @@ class Account extends WidgetBase {
                     $html .= '<img src="data:image/jpg;base64,'.$elements['data'].'"/>';
                 }
                 
-                $submit = $this->genCallAjax('ajaxSubmitData', "movim_parse_form('data')");
+                $submit = $this->genCallAjax('ajaxSubmitData', "movim_form_to_json('data')");
                 
                 $html .= '
                         <a
@@ -176,12 +178,11 @@ class Account extends WidgetBase {
     }
     
     function ajaxSubmitData($datas) {
-		
-        define(XMPP_HOST, $datas['to']);
-        define(XMPP_CONN, $datas['ndd']);
+        define(XMPP_HOST, $datas->to->value);
+        define(XMPP_CONN, $datas->ndd->value);
         
-        unset($datas['to']);
-        unset($datas['ndd']);
+        unset($datas->to);
+        unset($datas->ndd);
         //unset($datas['id']);
         
         define(XMPP_PORT, 5222);
@@ -197,14 +198,16 @@ class Account extends WidgetBase {
 		    }
 
             // We create the XML Stanza
-	        $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq id="'.$datas['id'].'" type="set"><query xmlns="jabber:iq:register"></query></iq></stream:stream>');
+	        $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq id="'.$datas->id->value.'" type="set"><query xmlns="jabber:iq:register"><x xmlns="jabber:x:data" type="form"></x></query></iq></stream:stream>');
             
-            unset($datas['id']);
+            unset($datas->id);
 
 	        $stream->addAttribute('to', XMPP_HOST);
 
 			$xmpp = new FormtoXMPP();
 			$stream = $xmpp->getXMPP($stream->asXML(), $datas);
+            
+            \movim_log(moxl\cleanXML($stream->asXML()));
 
 	        fwrite($f, $stream->asXML());
 	        unset($stream);
@@ -220,6 +223,8 @@ class Account extends WidgetBase {
 	        fclose($f); unset($f);
 
 	        $response = simplexml_load_string($response);
+            
+            \movim_log(moxl\cleanXML($response->asXML()));
 
 	        if(!$response) throw new Exception('The XMPP server sent an invalid response', 500);
 
