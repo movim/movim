@@ -206,8 +206,6 @@ class Account extends WidgetBase {
 
 			$xmpp = new FormtoXMPP();
 			$stream = $xmpp->getXMPP($stream->asXML(), $datas);
-            
-            \movim_log(moxl\cleanXML($stream->asXML()));
 
 	        fwrite($f, $stream->asXML());
 	        unset($stream);
@@ -223,8 +221,6 @@ class Account extends WidgetBase {
 	        fclose($f); unset($f);
 
 	        $response = simplexml_load_string($response);
-            
-            \movim_log(moxl\cleanXML($response->asXML()));
 
 	        if(!$response) throw new Exception('The XMPP server sent an invalid response', 500);
 
