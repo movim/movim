@@ -90,12 +90,9 @@
     vertical-align: text-bottom;
 
     text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
-    /*border-top: 0.1em solid rgba(255, 255, 255, 0.05);
-    border-bottom: 0.1em solid rgba(0, 0, 0, 0.05);*/
 }
 
 #roster ul#rosterlist li a span.ressource {
-    text-transform: uppercase;
     font-size: 0.8em;
     color: #777;
 }

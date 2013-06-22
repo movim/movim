@@ -376,9 +376,8 @@ class ControllerMain extends ControllerBase
                 $content = new TplPageBuilder();
                 $this->page->setContent($content->build('admin.tpl'));
                 echo $this->page->build('page.tpl');
-            } else {
+            } else
                 $this->authenticate();
-            }
         }
 
      }

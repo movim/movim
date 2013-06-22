@@ -44,11 +44,10 @@ class ControllerBase
         $r = new Route();
 
 		// Note that the request is always specified by 'q'.
-		if($request = $this->fetch_get('q')) {
+		if($request = $this->fetch_get('q'))
 			$this->run_req($request);
-		} else {
+		else 
 			$this->error404();
-		}
 	}
 
     /**
@@ -131,6 +130,8 @@ class ControllerBase
 	{
 		//echo 'Error 404 - Page not found';
         $page = new TplPageBuilder();
+        
+        WidgetWrapper::getInstance(false);
         
         $page->setTitle(t('%s - 404', APP_TITLE));
         $page->menuAddLink(t('Home'), 'main', true);
