@@ -71,8 +71,15 @@ function movim_form_to_json(formname) {
             json_att[form.elements[i].attributes[j].name] = form.elements[i].attributes[j].value;
         }
          
-        if(form.elements[i].name.length != 0)
-            json[form.elements[i].name] = {'value' : form.elements[i].value, 'attributes' : json_att};
+        if(form.elements[i].name.length != 0) {
+            if(form.elements[i].type == 'checkbox')
+                json[form.elements[i].name] = {'value' : form.elements[i].checked, 'attributes' : json_att};
+            else if(form.elements[i].type == 'radio'
+                   && form.elements[i].checked ) 
+                json[form.elements[i].name] = {'value' : form.elements[i].value, 'attributes' : json_att};
+            else if(form.elements[i].type != 'radio')
+                json[form.elements[i].name] = {'value' : form.elements[i].value, 'attributes' : json_att};
+        }
 	}
     
     return json;
