@@ -305,12 +305,14 @@ class Admin extends WidgetBase {
         
         $html .= '
                     <div class="element">
-                        <label for="7">'.t("Log verbosity").'</label>
+                        <label for="logLevel">'.t("Log verbosity").'</label>
                         <div class="select">
                             <select id="logLevel" name="logLevel">';
                                 foreach($logopts as $lognum => $text) {
                                     if($this->_conf['logLevel'] == $lognum)
                                         $sel = 'selected="selected"';
+                                    else
+                                        $sel = '';
 
                                 $html .= '
                                     <option value="'.$lognum.'" '.$sel.'>'.
@@ -319,6 +321,29 @@ class Admin extends WidgetBase {
                                 }
         $html .= '          </select>
                         </div>
+                    </div>';
+                    
+        $timezones = getTimezoneList();
+                    
+        $html .= '
+                    <div class="element">
+                        <label for="timezone">'.t("Server Timezone").'</label>
+                        <div class="select">
+                            <select id="timezone" name="timezone">';
+                                foreach($timezones as $key => $value) {
+                                    if($this->_conf['timezone'] == $key)
+                                        $sel = 'selected="selected"';
+                                    else
+                                        $sel = '';
+                                        
+                                $html .= '
+                                    <option value="'.$key.'" '.$sel.'>'.
+                                        $key.' ('.number_format($value, 2).')
+                                    </option>';
+                                }
+        $html .= '          </select>
+                        </div>
+                        <br /><br />'.date('l jS \of F Y h:i:s A').'
                     </div>';
                     
         $html .= $this->_validatebutton;
