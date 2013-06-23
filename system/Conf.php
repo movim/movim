@@ -31,7 +31,7 @@ class Conf
                 'defLang'   => 'en',
                 'maxUsers'  => -1,
                 'logLevel'  => 7,
-                //'db'        => 'mysql://movim:movim@localhost:3306/movim',
+                'timezone'  => getLocalTimezone(),
                 'dbType'    => 'mysql',
                 'dbUsername'=> 'username',
                 'dbPassword'=> 'password',
