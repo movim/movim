@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-10 09:00+0200\n"
-"PO-Revision-Date: 2013-05-05 11:10+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"PO-Revision-Date: 2013-06-19 10:55+0000\n"
+"Last-Translator: Ludovic Grossard <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-05-05 11:12+0000\n"
-"X-Generator: Launchpad (build 16598)\n"
+"X-Launchpad-Export-Date: 2013-06-23 20:36+0000\n"
+"X-Generator: Launchpad (build 16677)\n"
+"Language: \n"
 
 #: ../upload.php:29
 msgid "Not a picture"
@@ -27,12 +27,12 @@ msgstr "Taille limite du dossier dépassée"
 #: ../system/Conf.php:49
 #, php-format
 msgid "Cannot load element value '%s'"
-msgstr "Impossible de charger la valeur de l'élément '%s'"
+msgstr "Impossible de charger la valeur de l'élément « %s »"
 
 #: ../system/Conf.php:60
 #, php-format
 msgid "Cannot load file '%s'"
-msgstr "La fichier '%s' n'est pas accessible"
+msgstr "Le fichier « %s » n'est pas accessible"
 
 #: ../system/Utils.php:114
 msgid "Monday"
@@ -153,11 +153,11 @@ msgstr "En couple"
 
 #: ../system/Utils.php:427
 msgid "Married"
-msgstr "Marié"
+msgstr "Marié(e)"
 
 #: ../system/Utils.php:428
 msgid "Divorced"
-msgstr "Divorcé"
+msgstr "Divorcé(e)"
 
 #: ../system/Utils.php:429
 msgid "Widowed"
@@ -173,11 +173,11 @@ msgstr "Union civile"
 
 #: ../system/Utils.php:437 ../app/widgets/Chat/Chat.php:44
 msgid "Online"
-msgstr "Connecté"
+msgstr "Connecté(e)"
 
 #: ../system/Utils.php:438 ../app/widgets/Chat/Chat.php:45
 msgid "Away"
-msgstr "Absent"
+msgstr "Absent(e)"
 
 #: ../system/Utils.php:439 ../app/widgets/Chat/Chat.php:46
 msgid "Do Not Disturb"
@@ -202,15 +202,15 @@ msgstr "Se déconnecter"
 
 #: ../system/Utils.php:458
 msgid "afraid"
-msgstr "appeuré"
+msgstr "appeuré(e)"
 
 #: ../system/Utils.php:459
 msgid "amazed"
-msgstr "amusé"
+msgstr "étonné(e)"
 
 #: ../system/Utils.php:460
 msgid "amorous"
-msgstr "amoureux"
+msgstr "amoureux(se)"
 
 #: ../system/Utils.php:461
 msgid "angry"
@@ -218,27 +218,27 @@ msgstr "fâché(e)"
 
 #: ../system/Utils.php:462
 msgid "annoyed"
-msgstr "agacé"
+msgstr "contrarié(e)"
 
 #: ../system/Utils.php:463
 msgid "anxious"
-msgstr "anxieux"
+msgstr "anxieux(se)"
 
 #: ../system/Utils.php:464
 msgid "aroused"
-msgstr "suscité"
+msgstr "stimulé(e)"
 
 #: ../system/Utils.php:465
 msgid "ashamed"
-msgstr "honteux"
+msgstr "honteux(se)"
 
 #: ../system/Utils.php:466
 msgid "bored"
-msgstr "fatigué"
+msgstr "lassé(e)"
 
 #: ../system/Utils.php:467
 msgid "brave"
-msgstr "brave"
+msgstr "courageux(se)"
 
 #: ../system/Utils.php:468
 msgid "calm"
@@ -246,7 +246,7 @@ msgstr "calme"
 
 #: ../system/Utils.php:469
 msgid "cautious"
-msgstr "prudent"
+msgstr "prudent(e)"
 
 #: ../system/Utils.php:470
 msgid "cold"
@@ -254,23 +254,23 @@ msgstr "frileux"
 
 #: ../system/Utils.php:471
 msgid "confident"
-msgstr "confiant"
+msgstr "confiant(e)"
 
 #: ../system/Utils.php:472
 msgid "confused"
-msgstr "embrouillé"
+msgstr "perplexe"
 
 #: ../system/Utils.php:473
 msgid "contemplative"
-msgstr "contemplatif"
+msgstr "contemplatif(ve)"
 
 #: ../system/Utils.php:474
 msgid "contented"
-msgstr "satisfait"
+msgstr "satisfait(e)"
 
 #: ../system/Utils.php:475
 msgid "cranky"
-msgstr "grincheux"
+msgstr "grincheux(se)"
 
 #: ../system/Utils.php:476
 msgid "crazy"
@@ -278,27 +278,27 @@ msgstr "fou"
 
 #: ../system/Utils.php:477
 msgid "creative"
-msgstr "créatif"
+msgstr "créatif(ve)"
 
 #: ../system/Utils.php:478
 msgid "curious"
-msgstr "curieux"
+msgstr "curieux(se)"
 
 #: ../system/Utils.php:479
 msgid "dejected"
-msgstr "rejeté"
+msgstr "dépité(e)"
 
 #: ../system/Utils.php:480
 msgid "depressed"
-msgstr "dépréssif"
+msgstr "déprimé(e)"
 
 #: ../system/Utils.php:481
 msgid "disappointed"
-msgstr "déçu"
+msgstr "déçu(e)"
 
 #: ../system/Utils.php:482
 msgid "disgusted"
-msgstr "dégouté"
+msgstr "dégouté(e)"
 
 #: ../system/Utils.php:483
 msgid "dismayed"
@@ -306,15 +306,15 @@ msgstr "consterné"
 
 #: ../system/Utils.php:484
 msgid "distracted"
-msgstr "distrait"
+msgstr "distrait(e)"
 
 #: ../system/Utils.php:485
 msgid "embarrassed"
-msgstr "embarrassé"
+msgstr "embarrassé(e)"
 
 #: ../system/Utils.php:486
 msgid "envious"
-msgstr "envieux"
+msgstr "envieux(se)"
 
 #: ../system/Utils.php:487
 msgid "excited"
@@ -322,11 +322,11 @@ msgstr "excité"
 
 #: ../system/Utils.php:488
 msgid "flirtatious"
-msgstr "coquet"
+msgstr "séducteur"
 
 #: ../system/Utils.php:489
 msgid "frustrated"
-msgstr "frustré"
+msgstr "frustré(e)"
 
 #: ../system/Utils.php:490
 msgid "grateful"
@@ -358,7 +358,7 @@ msgstr "chaud"
 
 #: ../system/Utils.php:497
 msgid "humbled"
-msgstr "humilié"
+msgstr "ému"
 
 #: ../system/Utils.php:498
 msgid "humiliated"
@@ -366,7 +366,7 @@ msgstr "humilié"
 
 #: ../system/Utils.php:499
 msgid "hungry"
-msgstr "avide"
+msgstr "affamé"
 
 #: ../system/Utils.php:500
 msgid "hurt"
@@ -378,7 +378,7 @@ msgstr "impressionné"
 
 #: ../system/Utils.php:502
 msgid "in awe"
-msgstr "impressionné"
+msgstr "stupéfait"
 
 #: ../system/Utils.php:503
 msgid "in love"
@@ -545,7 +545,7 @@ msgstr "Le fichier %s ne peut être chargé"
 #: ../system/widget/WidgetWrapper.php:126
 #, php-format
 msgid "Requested widget '%s' doesn't exist."
-msgstr "Le widget '%s' n'existe pas"
+msgstr "Le widget « %s » n'existe pas"
 
 #: ../system/widget/WidgetCommon.php:57
 msgid "Place"
@@ -553,11 +553,11 @@ msgstr "Lieu"
 
 #: ../system/widget/WidgetCommon.php:152
 msgid "Share with"
-msgstr ""
+msgstr "Partager avec"
 
 #: ../system/widget/WidgetCommon.php:154
 msgid "your post will appear in your Movim public feed"
-msgstr "Votre post apparaitra dans votre flux public"
+msgstr "Votre post apparaîtra dans votre flux public"
 
 #: ../system/widget/WidgetCommon.php:161
 msgid "Everyone"
@@ -583,7 +583,7 @@ msgstr "Non"
 
 #: ../system/widget/WidgetCommon.php:219
 msgid "Loading comments ..."
-msgstr "Chargement des commentaires..."
+msgstr "Chargement des commentaires…"
 
 #: ../system/widget/WidgetCommon.php:220
 msgid "Get the comments"
@@ -619,17 +619,15 @@ msgstr "Quoi de neuf ?"
 
 #: ../system/widget/WidgetCommon.php:401
 msgid "Preview"
-msgstr ""
+msgstr "Aperçu"
 
 #: ../system/widget/WidgetCommon.php:418
-#, fuzzy
 msgid "Geolocalisation"
-msgstr "Position"
+msgstr "Géolocalisation"
 
 #: ../system/widget/WidgetCommon.php:452
-#, fuzzy
 msgid "No content"
-msgstr "Aucun commentaire"
+msgstr "Aucun contenu"
 
 #: ../system/widget/WidgetCommon.php:512
 msgid "No comments"
@@ -655,9 +653,8 @@ msgid "Cannot open log file '%s'"
 msgstr "Le journal '%s' ne peut être ouvert"
 
 #: ../lib/Modl/data/postn/Postn.php:82
-#, fuzzy
 msgid "Content not found"
-msgstr "Introuvable"
+msgstr "Contenu non trouvé"
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:85
 msgid "Your server doesn't support location publication"
@@ -674,41 +671,36 @@ msgstr "Erreur"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
-msgstr ""
+msgstr "Ce nœud n'existe pas"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:45
-#, fuzzy
 msgid "Your server doesn't support this feature"
-msgstr "Votre serveur ne supporte pas la suppression de posts"
+msgstr "Votre serveur ne supporte pas cette fonctionnalité"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:50
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:60
-#, fuzzy
 msgid "You are not autorized to do this action"
-msgstr "Vous n'êtes pas autorisé à publier sur ce noeud"
+msgstr "Vous n'êtes pas autorisé à effectuer cette action"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:55
-#, fuzzy
 msgid "This service is unavaiable"
-msgstr "Service non disponible"
+msgstr "Ce service n'est pas disponible"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:65
 msgid "The server does not exist"
-msgstr ""
+msgstr "Le serveur n'existe pas"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
-#, fuzzy
 msgid "Unexpected request"
-msgstr "Envoyer la demande"
+msgstr "Requête innatendue"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:75
 msgid "The server cannot accept this action"
-msgstr ""
+msgstr "Le serveur ne peut pas accepter cette action"
 
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:63
-#, fuzzy
 msgid "Item Not Found"
-msgstr "Introuvable"
+msgstr "Item non trouvé"
 
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:68
 msgid "Feature Not Implemented"
@@ -719,16 +711,16 @@ msgid "Profile Updated"
 msgstr "Profil mis à jour"
 
 #: ../app/widgets/Vcard/Vcard.php:108
-#, fuzzy
 msgid ""
 "It's your first time on Movim! To fill in a \n"
 "                few information about you and display them to your \n"
 "                contacts, create your virtual card by clicking the next "
 "button."
 msgstr ""
-"Bienvenu sur Movim ! Si vous souhaitez partager quelques informations sur "
-"vous à vos contacts, créer votre carte virtuelle en cliquant sur le bouton "
-"suivant."
+"C'est votre première fois sur Movim ! Pour remplir \n"
+"                quelques informations à votre propos et les montrer à vos  \n"
+"                contacts, créer votre carte cirtuelle en cliquant sur le "
+"prochain bouton."
 
 #: ../app/widgets/Vcard/Vcard.php:115 ../app/widgets/Profile/Profile.php:127
 msgid "Create my vCard"
@@ -756,7 +748,7 @@ msgstr "Nom"
 #: ../app/widgets/Vcard/Vcard.php:149
 #: ../app/widgets/ContactCard/ContactCard.php:55
 msgid "Nickname"
-msgstr "Surnom"
+msgstr "Pseudonyme"
 
 #: ../app/widgets/Vcard/Vcard.php:154
 #: ../app/widgets/ContactCard/ContactCard.php:82
@@ -796,15 +788,15 @@ msgstr "Avatar"
 
 #: ../app/widgets/Vcard/Vcard.php:250
 msgid "Webcam"
-msgstr ""
+msgstr "Caméra"
 
 #: ../app/widgets/Vcard/Vcard.php:258
 msgid "Cheese !"
-msgstr ""
+msgstr "Souriez !"
 
 #: ../app/widgets/Vcard/Vcard.php:266
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "Prendre une photo avec votre caméra"
 
 #: ../app/widgets/Vcard/Vcard.php:270
 #: ../app/widgets/ContactCard/ContactCard.php:87
@@ -1004,7 +996,7 @@ msgstr "Déposer"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:35
 msgid "Please select image file"
-msgstr "Veuillez sélection une image"
+msgstr "Veuillez sélectionner une image"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:69
 msgid "You should select valid image files only!"
@@ -1022,7 +1014,8 @@ msgstr ""
 "L'envois a été annulé par l'utilisateur ou la navigateur a coupé la connexion"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr "Votre fichier est trop gros !"
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1256,9 +1249,8 @@ msgid "Media"
 msgstr "Médias"
 
 #: ../app/widgets/ChatPop/ChatPop.php:40
-#, fuzzy
 msgid "Connection"
-msgstr "Connexion…"
+msgstr "Connexion"
 
 #: ../app/widgets/Explore/Explore.php:130
 msgid "Search a contact"
@@ -1271,7 +1263,7 @@ msgstr "Rechercher"
 
 #: ../app/widgets/Explore/Explore.php:146
 msgid "Discussion Servers"
-msgstr ""
+msgstr "Serveurs de discussion"
 
 #: ../app/widgets/Explore/Explore.php:151
 msgid "Last registered"
@@ -1436,13 +1428,12 @@ msgstr "%s a besoin de votre attention"
 
 #: ../app/widgets/About/About.php:29 ../app/controllers/ControllerMain.php:240
 #: ../app/controllers/ControllerMain.php:287
-#, fuzzy
 msgid "About"
-msgstr "À propos de moi"
+msgstr "À Propos"
 
 #: ../app/widgets/About/About.php:33
 msgid "Thanks"
-msgstr ""
+msgstr "Remerciements"
 
 #: ../app/widgets/About/About.php:104 ../app/widgets/Account/Account.php:289
 msgid "Software"
@@ -1450,7 +1441,7 @@ msgstr "Logiciel"
 
 #: ../app/widgets/About/About.php:115
 msgid "Ressources"
-msgstr ""
+msgstr "Ressources"
 
 #: ../app/widgets/Log/Log.php:33
 msgid "Debug console"
@@ -1485,9 +1476,8 @@ msgid "Invalid name"
 msgstr "Ce nom n'est pas valide."
 
 #: ../app/widgets/Account/Account.php:400
-#, fuzzy
 msgid "Request not acceptable"
-msgstr "Inacceptable"
+msgstr "Requête non acceptable"
 
 #: ../app/widgets/Account/Account.php:406
 msgid "Username already taken"
@@ -1566,7 +1556,7 @@ msgstr "S'abonner"
 
 #: ../app/widgets/Node/Node.php:127 ../app/widgets/Node/Node.php:233
 msgid "Posts"
-msgstr "Articles"
+msgstr "Posts"
 
 #: ../app/widgets/Node/Node.php:143
 msgid "Get Subscription"
@@ -1578,7 +1568,7 @@ msgstr "Partagez avec vos amis votre abonnement à ce groupe"
 
 #: ../app/widgets/Node/Node.php:156
 msgid "Give a nickname to this group if you want"
-msgstr "Donner un surnom au groupe"
+msgstr "Donner un nom à ce groupe"
 
 #: ../app/widgets/Node/Node.php:176
 msgid "Are you sure ?"
@@ -1644,7 +1634,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:243
 msgid "URL Rewriting support"
-msgstr ""
+msgstr "Gestion de la réécriture l'URL (URL rewriting)"
 
 #: ../app/widgets/Admin/Admin.php:251
 msgid "General Settings"
@@ -1725,7 +1715,8 @@ msgstr ""
 "Entrez ici votre URL-BOSH sous la forme : http(s)://domaine:port/chemin"
 
 #: ../app/widgets/Admin/Admin.php:386
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 "Si vous saisissez un serveur BOSH ouvert, vous allez pouvoir vous connecter "
 "sur de nombreux serveurs XMPP différents."
@@ -1735,6 +1726,8 @@ msgid ""
 "If it is closed, you have to specify the corresponding Server on the next "
 "page."
 msgstr ""
+"Si c'est fermé, vous devez spécifier le Serveur correspondant sur la "
+"prochaine page."
 
 #: ../app/widgets/Admin/Admin.php:388
 msgid "If you are unsure about this config option visit the wiki"
@@ -1800,7 +1793,7 @@ msgstr "Cache"
 
 #: ../app/widgets/ConfigData/ConfigData.php:69
 msgid "Post"
-msgstr "Articles"
+msgstr "Post"
 
 #: ../app/widgets/ConfigData/ConfigData.php:74
 #: ../app/widgets/ConfigData/ConfigData.php:82
@@ -1928,16 +1921,18 @@ msgstr "Mon adresse"
 
 #: ../app/widgets/Login/Login.php:289
 msgid "You can login using your favorite Jabber account"
-msgstr ""
+msgstr "Vous pouvez vous connecter en utilisant votre compte Jabber favori"
 
 #: ../app/widgets/Login/Login.php:291
 msgid "or with our demonstration account"
-msgstr ""
+msgstr "ou avec votre compte de démonstration"
 
 #: ../app/widgets/Login/Login.php:295
 #, php-format
 msgid "%sGmail accounts are also compatible%s but are not fully supported"
 msgstr ""
+"%sLes comptes Gmail sont aussi compatible%s mais ne sont pas totalement "
+"supportés"
 
 #: ../app/widgets/Login/Login.php:299
 #, php-format
@@ -1945,6 +1940,8 @@ msgid ""
 "You can login with Facebook (chat only) using %s your.id@chat.facebook.com "
 "%s and your password"
 msgstr ""
+"Vous pouvez vous connecter avec Facebook (seulement le chat) en utilisant %s "
+"votre.id@chat.facebook.com %s et votre mot de pass"
 
 #: ../app/widgets/Login/Login.php:311
 msgid "Population"
@@ -2028,9 +2025,9 @@ msgid "Account Creation"
 msgstr "Création de compte"
 
 #: ../app/controllers/ControllerMain.php:238
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - Compte"
+msgstr "%s - À propos"
 
 #: ../app/controllers/ControllerMain.php:265
 #, php-format
@@ -2062,54 +2059,10 @@ msgstr "%s - Panneau d'Administration"
 msgid "%s - 404"
 msgstr "%s - 404"
 
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Merci d'avoir téléchargé Movim !"
-
-#~ msgid ""
-#~ "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr ""
-#~ "Avant que vous utilisiez votre réseau social, quelques ajustements sont "
-#~ "nécessaires."
-
-#~ msgid ""
-#~ "Keep in mind that Movim is still under development and will handle many "
-#~ "personal details. Its use can potentially endanger your data. Always pay "
-#~ "attention to information that you submit."
-#~ msgstr ""
-#~ "Gardez à l'esprit que Movim est encore en développement et va manipuler "
-#~ "des informations personnelles. Son utilisation peut donc les mettre en "
-#~ "danger. Faites donc toujours attention aux informations que vous envoyez."
-
-#~ msgid "This post doesn't exist on the server"
-#~ msgstr "Ce post n'existe pas sur le serveur"
-
-#~ msgid "Your server doesn't support post deletetion"
-#~ msgstr "Votre serveur ne supporte pas la suppression de posts"
-
-#~ msgid "You are not autorized to delete items on this node"
-#~ msgstr "Vous n'êtes pas autorisé à supprimer des éléments sur ce serveur"
-
-#~ msgid "Service unavaiable"
-#~ msgstr "Service non disponible"
-
-#~ msgid "Change the privacy level"
-#~ msgstr "Changer le niveau de diffusion"
-
-#~ msgid "Rich Text"
-#~ msgstr "Texte enrichi"
-
-#~ msgid "Forbidden"
-#~ msgstr "Interdit"
-
-#~ msgid "Your server doesn't support post publication"
-#~ msgstr "Votre serveur ne supporte pas la publication de posts"
-
-#~ msgid "Feature not implemented"
-#~ msgstr "Fonctionnalité non implémentée"
-
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "Le dossier racine de Movim doit être accessible en écriture."
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "La création du fichier de configuration '%s' est impossible."
 
@@ -2122,9 +2075,11 @@ msgstr "%s - 404"
 #~ msgid "JID not provided."
 #~ msgstr "JID indisponible."
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Le JID '%s' n'est pas valide"
 
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Création de compte"
 
@@ -2137,6 +2092,7 @@ msgstr "%s - 404"
 #~ msgid "Actual version : "
 #~ msgstr "Version actuelle : "
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Veuillez installer les paquets %s et %s"
 
@@ -2149,6 +2105,7 @@ msgstr "%s - 404"
 #~ msgstr ""
 #~ "Activez les droits de lecture et d'écriture sur le dossier racine de Movim"
 
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Veuillez supprimer le dossier %s pour terminer l'installation"
 
@@ -2173,6 +2130,7 @@ msgstr "%s - 404"
 #~ msgid "Database Detected"
 #~ msgstr "Base de données détectée"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim a besoin de l'extension %s."
 
@@ -2180,14 +2138,16 @@ msgstr "%s - 404"
 #~ "The following requirements were not met. Please make sure they are all "
 #~ "satisfied in order to install Movim."
 #~ msgstr ""
-#~ "Les dépendances ci-dessous ne sont pas satisfaites. Assurez-vous qu'elles "
-#~ "le soient afin d'installer Movim."
+#~ "Les dépendances ci-dessous ne sont pas satisfaites. Assurez-vous qu'elles le "
+#~ "soient afin d'installer Movim."
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr ""
 #~ "Vous pouvez maintenant accéder à votre version fraîchement installée de "
 #~ "Movim %sAllons y !%s"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Installer le paquet %s"
 
@@ -2220,8 +2180,8 @@ msgstr "%s - 404"
 
 #~ msgid "A capital letter, a digit and a special character are recommended"
 #~ msgstr ""
-#~ "Un bon mot de passe est composé d'au moins une majuscule, un chiffre et "
-#~ "un caractère spécial"
+#~ "Un bon mot de passe est composé d'au moins une majuscule, un chiffre et un "
+#~ "caractère spécial"
 
 #~ msgid "8 characters"
 #~ msgstr "8 caractères"
@@ -2239,6 +2199,7 @@ msgstr "%s - 404"
 #~ "Tout d'abord remplir ce vide avec un ID de  tout nouveau compte, cette "
 #~ "adresse vous suivra sur tout le réseau Movim !"
 
+#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - Ajouter Un Compte"
 
@@ -2251,6 +2212,7 @@ msgstr "%s - 404"
 #~ msgid "Client Type"
 #~ msgstr "Type de Client"
 
+#, php-format
 #~ msgid "Contacts (%s)"
 #~ msgstr "Contacts (%s)"
 
@@ -2259,20 +2221,42 @@ msgstr "%s - 404"
 #~ "La version de PHP ne correspond pas. Movim nécessite la version 5.3 au "
 #~ "minimum."
 
+#~ msgid ""
+#~ "Keep in mind that Movim is still under development and will handle many "
+#~ "personal details. Its use can potentially endanger your data. Always pay "
+#~ "attention to information that you submit."
+#~ msgstr ""
+#~ "Gardez à l'esprit que Movim est encore en développement et va manipuler des "
+#~ "informations personnelles. Son utilisation peut donc les mettre en danger. "
+#~ "Faites donc toujours attention aux informations que vous envoyez."
+
+#~ msgid ""
+#~ "Before you enjoy your social network, a few adjustements are required."
+#~ msgstr ""
+#~ "Avant que vous utilisiez votre réseau social, quelques ajustements sont "
+#~ "nécessaires."
+
 #~ msgid "Link my current account"
 #~ msgstr "Lier mon compte actuel"
 
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "Ce serveur héberge %s comptes"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "La connection Bosh a échoué avec l'erreur '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "La connexion à la base de données à échoué avec l'erreur '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "La connection XMPP à travers Bosh a échoué avec l'erreur '%s'"
+
+#~ msgid "Thank you for downloading Movim!"
+#~ msgstr "Merci d'avoir téléchargé Movim !"
 
 #~ msgid ""
 #~ "Some errors were detected. Please correct them for the installation to "

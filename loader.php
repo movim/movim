@@ -58,8 +58,8 @@ require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");
 require_once(APP_PATH . "widgets/Notification/Notification.php");
 
 // We set the default timezone to the server timezone
-
-date_default_timezone_set(getLocalTimezone());
+$conf = Conf::getServerConf();
+date_default_timezone_set($conf['timezone']);
 
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 
