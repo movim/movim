@@ -60,7 +60,8 @@ class ContactPubsubSubscription extends WidgetBase
 	function build()
     {
         ?>
-		<div class="tabelem padded protect red" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistfromfriend">
+		<div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistfromfriend">
+            <div class="protect red" title="<?php echo getFlagTitle('red'); ?>"></div>
             <a 
                 class="button icon yes color green" 
                 onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?> this.style.display = 'none'">
