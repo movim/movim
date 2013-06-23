@@ -5,10 +5,10 @@ log/*
 locales/files.list
 *.pdf
 *.swp
-config
 
 ./cache
-./config/conf.xml
+./config/*
 ./lib/Modl
 ./lib/Moxl
-./users/
+./users/*
+./log
