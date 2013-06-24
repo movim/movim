@@ -24,11 +24,11 @@ class Route extends ControllerBase {
                 'server'        => array('s'),
             );
 
-        if($_SERVER['HTTP_MOD_REWRITE'])
+        if($_SERVER['HTTP_MOD_REWRITE']) {
             $q = $this->fetch_get('query');
-        else
+            $this->find($q);
+        } else
             $q = $this->fetch_get('q');
-        $this->find($q);
     }
     
     private function find($q) {

@@ -105,6 +105,9 @@ class Admin extends WidgetBase {
         curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
         // Fire !
         $rs = array();
 
