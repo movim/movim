@@ -107,6 +107,9 @@ class Admin extends WidgetBase {
 
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        
+        // We put a short timeout
+        curl_setopt($process, CURLOPT_TIMEOUT, 5); 
 
         // Fire !
         $rs = array();
