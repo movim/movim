@@ -259,18 +259,25 @@ class Login extends WidgetBase {
                     <div class="message warning">
                         '.$conf['info'].'
                     </div> ';
-                } 
+                }
+                
+                $submitevent = '
+                    document.getElementById(\'submitb\').click();
+                    '.$submit.'
+                    loginButtonSet(\''.t('Connecting...').'\', true); 
+                    this.onclick=null;';
         ?>
                 <form
                     name="login"
                     id="connectform"
-                    autocomplete="on"
                     target="passwordiframe"
                     method="POST"
                     action="blank.php"
                     onkeypress="
                         if(event.keyCode == 13) {
-                            <?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;}">
+                            <?php echo $submitevent; ?>
+                        }"
+                    >
                     <div class="element">
                         <input type="email" name="login" id="login" autofocus required
                             placeholder="<?php echo t("My address"); ?>"/>
@@ -282,12 +289,12 @@ class Login extends WidgetBase {
                     <div class="element">
                         <a
                             class="button color green icon yes"
-                            onclick="<?php echo $submit; ?> loginButtonSet('<?php echo t('Connecting...');?>', true); this.onclick=null;"
+                            onclick="<?php echo $submitevent; ?>"
                             id="submit"
                             name="submit"><?php echo t("Come in!"); ?></a>
                     </div>
                     
-                    <input style="display: none;" type="submit" id="submitb" name="submitb" value="submit"/>
+                    <input type="submit" id="submitb" name="submitb" value="submit" style="display: none;"/> 
                     
                     <div class="clear"></div>
                     
@@ -325,7 +332,7 @@ class Login extends WidgetBase {
 
                 </form>
                 
-            <?php
+            <?php            
             }
             ?>
 

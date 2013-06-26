@@ -76,7 +76,6 @@ class ContactSummary extends WidgetCommon
     function build()
     {
         $cd = new modl\ContactDAO();
-
         
         if($_GET['f'] == $this->user->getLogin())
             $contact = $cd->get($this->user->getLogin());

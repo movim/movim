@@ -20,20 +20,37 @@
 
 class ContactInfo extends WidgetCommon
 {
-    function WidgetLoad() {
-        
+    /**
+     * @brief Adding a new contact 
+     * @param $jid 
+     * @param $alias 
+     * @returns 
+     */
+    function ajaxAddContact($jid) {
+        $r = new moxl\RosterAddItem();
+        $r->setTo($jid)
+          ->setFrom($this->user->getLogin())
+          ->request();
     }
+    
+    function ajaxSubscribeContact($jid) {
+        $p = new moxl\PresenceSubscribe();
+        $p->setTo($jid)
+          ->request();
+    }
+    
     
     function ajaxRemoveContact($jid) {         
         $r = new moxl\RosterRemoveItem();
         $r->setTo($jid)
           ->request();
-        
+    }
+    
+    function ajaxUnsubscribeContact($jid) {         
         $p = new moxl\PresenceUnsubscribe();
         $p->setTo($jid)
           ->request();
     }
-	
     
     function prepareContactInfo()
     {
@@ -173,8 +190,10 @@ class ContactInfo extends WidgetCommon
             $html .= '"
                 id="friendremoveyes"
                 style="margin: 1em 0px; float: left; display: none;"
-                onclick="'.$this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'")
-                . 'this.className=\'button color green icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
+                onclick="'.
+                    $this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'").
+                    $this->genCallAjax("ajaxUnsubscribeContact", "'".$_GET['f']."'").
+                'this.className=\'button color green icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
                 '.t('Yes').'
             </a>
@@ -198,8 +217,10 @@ class ContactInfo extends WidgetCommon
             $html .='
             <a
                 class="button color purple icon add"
-                onclick="'.$this->genCallWidget("Roster","ajaxAddContact", "'".$_GET['f']."'", "''")
-                . 'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
+                onclick="'.
+                $this->genCallAjax("ajaxAddContact", "'".$_GET['f']."'").
+                $this->genCallAjax("ajaxSubscribeContact", "'".$_GET['f']."'").
+                'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
                 '.t('Invite this user').'
             </a>';
