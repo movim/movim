@@ -130,6 +130,7 @@ class ContactInfo extends WidgetCommon
                         'phone' => t('Phone'),
                         'handheld' => t('Phone'),
                         'web' => t('Web'),
+                        'registered' => t('Registered')
                         );
                         
                 if(isset($caps) && $caps->name != '' && $caps->type != '' ) {
