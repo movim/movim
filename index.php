@@ -53,4 +53,6 @@ WidgetWrapper::getInstance(false);
 // Closing stuff
 WidgetWrapper::destroyInstance();
 
+echo Logger::displayLog();
+
 ?>

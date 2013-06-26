@@ -14,6 +14,7 @@
     </div>
 
     <div id="center">
+        <?php $this->widget('Tabs');?>
         <?php $this->widget('Feed');?>
     </div>
 
