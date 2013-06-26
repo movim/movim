@@ -95,7 +95,7 @@ class NodeAffiliations extends WidgetBase
                 </a>
             </div>
             
-            <div id="memberlist" class="padded"></div>
+            <div id="memberlist" class="paddedtop"></div>
         </div>
         <?php
     }
