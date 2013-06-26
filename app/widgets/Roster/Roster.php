@@ -226,25 +226,7 @@ class Roster extends WidgetBase
 
         return $html;
 	}
-    
-    /**
-     * @brief Adding a new contact from the Rostermenu
-     * @param $jid 
-     * @param $alias 
-     * @returns 
-     * 
-     * 
-     */
-    function ajaxAddContact($jid, $alias) {
-        $r = new moxl\RosterAddItem();
-        $r->setTo($jid)
-          ->request();
-          
-        $p = new moxl\PresenceSubscribe();
-        $p->setTo($jid)
-          ->request();
-    }
-    
+
 	/**
      * @brief Toggling boolean variables in the Cache
 	 * @param $param

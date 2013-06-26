@@ -3,9 +3,7 @@
 .posthead {
     display: block;
     width: 100%;
-    padding: 0em 1.5em;
-    
-    padding-top: 1em;
+    padding: 1em 1.5em;
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
