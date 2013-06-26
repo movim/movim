@@ -75,7 +75,6 @@
 
 .post span.title {
     padding-left: 0px;
-    max-width: 70%;
     display: block;
     float: left;
 }
@@ -235,7 +234,7 @@
 .post .content img {
     max-width: 100%;
     height: auto;
-    margin: 1em 0px;
+    margin: 1em;
 }
 
 .post .content img.smiley {
