@@ -10,7 +10,7 @@
 	-moz-box-sizing: border-box;
 }
 
-.posthead:after {
+.post:after, .posthead:after {
     content: ""; /* Important, sinon l'élément n'est pas généré. */
     display: block;
     clear: both;
@@ -92,6 +92,21 @@
 .post span.date, .post span.asv {
     font-weight: normal;
     color: #777;
+}
+
+.post span.tag {
+    font-weight: normal;
+    background-color: #4C5A61;
+    color: white;
+    margin-right: 1em;
+    font-size: 0.8em;
+    padding: 0 1em;
+    position: relative;
+    border-radius: 0.2em;
+}
+
+.post span.tag:first-child {
+    display: block;
 }
 
 .post span.delete {

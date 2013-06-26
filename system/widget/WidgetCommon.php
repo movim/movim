@@ -74,6 +74,9 @@ class WidgetCommon extends WidgetBase {
                 
         if($post->links)
 			$enc = $this->printEnclosures($post->links);
+           
+        if($post->tags)
+            $tags = $this->printTags($post->tags);
                 
         if($enc)
 			$enc = '
@@ -109,19 +112,29 @@ class WidgetCommon extends WidgetBase {
 						</span>
                     </div>
                     <div class="content">
-                    '.$content.'
+                    '.$content.'<br />
                     </div>
+                    '.$tags.'
 					'.$toolbox.'
                     '.$enc.'
                     '.$comments.'
                     '.$place.'
                     '.$recycle.'
                     '.$group.'
-                </div>
-                <div class="clear"></div>
-                
+                </div>  
+                        
             </div>
             ';
+        return $html;
+    }
+    
+    private function printTags($tags) {
+        $html = '<br />';
+        
+        $tags = unserialize($tags);
+        foreach($tags as $t)
+            $html .= '<span class="tag">'.$t.'</span>';
+            
         return $html;
     }
     
