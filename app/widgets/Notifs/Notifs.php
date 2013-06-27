@@ -33,27 +33,27 @@ class Notifs extends WidgetCommon
     /*
      * Retrieve all the notifications
      */  
-    function ajaxGetNotifications() {
+    /*function ajaxGetNotifications() {
         $p = new moxl\NotificationGet();
         $p->setTo($this->user->getLogin())
           ->request();
-    }
+    }*/
     
     /*
      * Delete a notification item
      */
-    function ajaxDeleteNotification($id) {
+    /*function ajaxDeleteNotification($id) {
         $d = new moxl\NotificationItemDelete();
         $d->setTo($this->user->getLogin())
           ->setId($id)
           ->request();
-    }
+    }*/
     
     /*
      * Create the notification element from the inbox item
      * @param SimpleXMLElement $item
      */  
-    function onNotification($item) {
+    /*function onNotification($item) {
         $arr = explodeURI((string)$item->entry->link[0]->attributes()->href);
         $post = end(explode('/', $arr['node']));
         
@@ -89,34 +89,34 @@ class Notifs extends WidgetCommon
         $notifs[(string)$item->attributes()->id] = $nhtml;
 
 	    Cache::c('activenotifs', $notifs);
-    }
+    }*/
     
     /*
      * In notification deletion
      * @param string $id
      */ 
-    function onNotificationDelete($id) {
+    /*function onNotificationDelete($id) {
         $notifs = Cache::c('activenotifs');
         unset($notifs[$id]);
 	    Cache::c('activenotifs', $notifs);
         
         RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
-    }
+    }*/
 
     /*
      * Display all the notifications to the browser
      */    
-    function displayNotifications() {
+    /*function displayNotifications() {
         RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
-    }
+    }*/
     
     /*
      * Display all the notifications to the browser if there is no new
      * notifications
      */  
-    function onNoNotification() {
+    /*function onNoNotification() {
         RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
-    }
+    }*/
     
     /*
      * Create the list of notifications
@@ -228,19 +228,18 @@ class Notifs extends WidgetCommon
 
         RPC::commit();
     }
-    
-    function ajaxAccept($jid, $alias) {  
+
+    function ajaxAddRoster($jid) {
         $r = new moxl\RosterAddItem();
         $r->setTo($jid)
+          ->setFrom($this->user->getLogin())
           ->request();
-        
+    }
+    
+    function ajaxSubscribe($jid) { 
         $p = new moxl\PresenceSubscribe();
         $p->setTo($jid)
-          ->request();
-          
-        $p = new moxl\PresenceSubscribed();
-        $p->setTo($jid)
-          ->request();          
+          ->request();      
           
         $notifs = Cache::c('activenotifs');
 
@@ -252,7 +251,7 @@ class Notifs extends WidgetCommon
         
         RPC::commit();
     }
-    
+
     /*
      * Prepare a notification for incoming invitation
      * @return string
@@ -266,12 +265,19 @@ class Notifs extends WidgetCommon
                         <a 
                             class="button color green icon add merged left " 
                             id="notifsvalidate" 
-                            onclick="'.$this->genCallAjax("ajaxAccept", "'".$from."'", "'alias'").'">'.
+                            onclick="
+                                '.$this->genCallAjax("ajaxAddRoster", "'".$from."'").'
+                                setTimeout(function() {'.
+                                    $this->genCallAjax("ajaxSubscribed", "'".$from."'").
+                                '}, 1000);
+                                setTimeout(function() {'.
+                                    $this->genCallAjax("ajaxSubscribe", "'".$from."'").
+                                '}, 2000);
+                            ">'.
                             t("Add").'
                         </a><a 
-                            class="button color red icon no merged right" 
-                            onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").'">'.
-                            t("Decline").'
+                            class="button color red alone icon no merged right" 
+                            onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").'">
                         </a>
        
                 </form>

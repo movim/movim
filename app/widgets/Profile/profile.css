@@ -3,6 +3,7 @@
     margin: -1em;
     padding: 1em;
     line-height: 1.5em;
+    padding-bottom: 0em;
 }
 
 #profile h1 {
@@ -21,7 +22,7 @@
 }
 
 #profile .textbubble {
-    margin: -1em;
+    margin: 0em -1em;
     margin-top: 1em;
     background-color: #171717;
     padding: 1em;
