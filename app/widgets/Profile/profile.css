@@ -30,6 +30,7 @@
 #profile .textbubble textarea {
     background-color: transparent;
     border: 1px solid transparent;
+    border-bottom: 1px solid #333;
     font-size: 0.9em;
     width: 100%;
     resize: none;

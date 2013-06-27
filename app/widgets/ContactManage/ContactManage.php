@@ -26,6 +26,7 @@ class ContactManage extends WidgetCommon
     public function ajaxContactManage($form) {
         $rd = new \moxl\RosterUpdateItem();
         $rd->setTo(echapJid($form['jid']))
+           ->setFrom($this->user->getLogin())
            ->setName(htmlspecialchars($form['alias']))
            ->setGroup(htmlspecialchars($form['group']))
            ->request();

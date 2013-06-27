@@ -65,12 +65,15 @@ class Feed extends WidgetCommon {
     }
 
     function onPostPublished($post) {        
-        $pd = new \modl\PostnDAO();
+        /*$pd = new \modl\PostnDAO();
         $pl = $pd->getFeed(-1, $this->_feedsize);
 
-        $html = $this->preparePosts($pl);
+        $html = $this->preparePosts($pl);*/
+        
+        $html = $this->prepareFeeds();
 
-        RPC::call('createCommentNode', $post->nodeid);            
+        RPC::call('createCommentNode', $post->nodeid);   
+        RPC::call('createTabs');
         RPC::call('movim_fill', 'feedcontent', $html);
     }  
     
@@ -119,46 +122,79 @@ class Feed extends WidgetCommon {
         return $html;
     }
     
-    function prepareFeed($start) {
-        $pd = new \modl\PostnDAO();
-        $pl = $pd->getFeed($start+1, $this->_feedsize);
-
-		
-        $html = $this->preparePosts($pl);
-
-        // We ask for the HTML of all the posts
+    function prepareNext($start, $html = '', $posts, $function = 'ajaxGetFeed') {
+         // We ask for the HTML of all the posts
         
         $next = $start + $this->_feedsize;
             
-        if(sizeof($pl) > $this->_feedsize-1 && $html != '') {
-            $html .= '
+        if(sizeof($posts) > $this->_feedsize-1 && $html != '') {
+            $nexthtml = '
                 <div class="post">
                     <div 
                         class="older" 
-                        onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
+                        onclick="'.$this->genCallAjax($function, "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
                             t('Get older posts').'
                     </div>
                 </div>';
-        }
+        }   
         
+        return $nexthtml;    
+    }
+    
+    function prepareFeed($start) {
+        $pd = new \modl\PostnDAO();
+        $pl = $pd->getFeed($start+1, $this->_feedsize);
+        
+        $html = $this->preparePosts($pl);
+
+        $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetFeed');
+        
+        return $html;
+    }
+    
+    function prepareNews($start) {
+        $pd = new \modl\PostnDAO();
+        $pl = $pd->getNews($start+1, $this->_feedsize);
+
+        $html = $this->preparePosts($pl);
+
+        $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetNews');
+        
+        return $html;
+    }
+    
+    function prepareFeeds() {
+        $html = '
+            <div class="tabelem" id="feedposts" title="'.t('Feed').'">
+                '.$this->prepareFeed(-1).'
+            </div>
+            <div class="tabelem" id="newsposts" title="'.t('News').'">
+                '.$this->prepareNews(-1).'
+            </div>';
         return $html;
     }
 
     function ajaxGetFeed($start) {
         $html = $this->prepareFeed($start);        
-        RPC::call('movim_append', 'feedcontent', $html);
+        RPC::call('movim_append', 'feedposts', $html);
+        RPC::commit();
+    }
+
+    function ajaxGetNews($start) {
+        $html = $this->prepareNews($start);        
+        RPC::call('movim_append', 'newsposts', $html);
         RPC::commit();
     }
         
     function onStream($payload) {
-        $html = '';
-        $html = $this->prepareFeed(-1);
+        $html = $this->prepareFeeds();
         
         if($html == '') 
             $html = '
                 <div class="message info" style="margin: 1.5em; margin-top: 0em;">'.
                     t("Your feed cannot be loaded.").'
                 </div>';
+        RPC::call('createTabs');
         RPC::call('movim_fill', 'feedcontent', $html);
 
         RPC::commit();
@@ -193,11 +229,7 @@ class Feed extends WidgetCommon {
                 target="_blank">
                 <?php echo t('Feed'); ?> (Atom)
             </a>
-            <!--<ul class="filters">
-                <li class="on" onclick="showPosts(this, false);"><?php echo t('All');?></li>
-                <li onclick="showPosts(this, true);"><?php echo t('My Posts');?></li>
-            </ul>-->
-            
+
             <a 
                 class="button color purple icon user oppose" 
                 href="<?php echo Route::urlize('friend',$this->user->getLogin()); ?>">
@@ -206,9 +238,7 @@ class Feed extends WidgetCommon {
         </div>
         
         <div id="feedcontent">
-        <?php
-            echo $this->prepareFeed(-1);
-        ?>
+            <?php echo $this->prepareFeeds(); ?>
         </div>
     </div>
     <?php
