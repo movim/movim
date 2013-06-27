@@ -188,7 +188,7 @@ class Chat extends WidgetBase
             $contact->chaton = 2;
             
             $rd = new \modl\RosterLinkDAO();
-            $rd->setChat($jid, 2);
+            $rd->setChat(echapJid($jid), 2);
 
             RPC::call('movim_prepend',
                            'chats',
@@ -277,7 +277,7 @@ class Chat extends WidgetBase
 
         foreach($contacts as $contact) {
             if(
-                $contact->jid == $jid 
+                $contact->jid == echapJid($jid) 
                 && (
                     (int)$contact->chaton == 1 
                  || (int)$contact->chaton == 2)
@@ -288,7 +288,7 @@ class Chat extends WidgetBase
         }
         
         RPC::call('movim_delete',
-                   'chat'.$jid);
+                   'chat'.echapJid($jid));
         
         $evt = new Event();
         $evt->runEvent('closechat');
@@ -348,7 +348,7 @@ class Chat extends WidgetBase
     function prepareChat($contact)
     {
         $md = new \modl\MessageDAO();
-        $messages = $md->getContact($contact->jid, 0, 10);
+        $messages = $md->getContact(echapJid($contact->jid), 0, 10);
 
         if(!empty($messages)) {
             $day = '';
