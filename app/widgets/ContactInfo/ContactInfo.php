@@ -191,8 +191,10 @@ class ContactInfo extends WidgetCommon
             $html .= '"
                 id="friendremoveyes"
                 style="margin: 1em 0px; float: left; display: none;"
-                onclick="'.
-                    $this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'").
+                onclick="
+                    setTimeout(function() {'.
+                        $this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'").
+                    '}, 1500);'.
                     $this->genCallAjax("ajaxUnsubscribeContact", "'".$_GET['f']."'").
                 'this.className=\'button color green icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
@@ -218,10 +220,12 @@ class ContactInfo extends WidgetCommon
             $html .='
             <a
                 class="button color purple icon add"
-                onclick="'.
-                $this->genCallAjax("ajaxAddContact", "'".$_GET['f']."'").
+                onclick="
+                    setTimeout(function() {'.
+                        $this->genCallAjax("ajaxAddContact", "'".$_GET['f']."'").
+                    '}, 1500);'.
                 $this->genCallAjax("ajaxSubscribeContact", "'".$_GET['f']."'").
-                'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
+                'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 3000);"
             >
                 '.t('Invite this user').'
             </a>';

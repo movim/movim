@@ -9,6 +9,7 @@
 <div id="main">    
     <div id="left">
         <?php $this->widget('Profile');?>
+        <?php $this->widget('Notifs');?>
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('ProfileData');?>
     </div>
@@ -22,5 +23,4 @@
 
 <div id="right">
     <?php $this->widget('Roster');?>
-    <?php //$this->widget('Notifs');?>
 </div>

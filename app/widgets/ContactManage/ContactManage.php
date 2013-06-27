@@ -21,6 +21,14 @@
 class ContactManage extends WidgetCommon
 {
     function WidgetLoad() {
+		$this->registerEvent('rosterupdated', 'onRoster');
+    }
+
+	public function onRoster($roster)
+	{    
+        /*Notification::appendNotification(t('Contact updated'));
+        RPC::call('movim_reload_this');
+        RPC::commit();*/
     }
     
     public function ajaxContactManage($form) {
@@ -30,7 +38,6 @@ class ContactManage extends WidgetCommon
            ->setName(htmlspecialchars($form['alias']))
            ->setGroup(htmlspecialchars($form['group']))
            ->request();
-        Notification::appendNotification(t('Contact updated'));
     }
     
     private function prepareContactManage($jid) {

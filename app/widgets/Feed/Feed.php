@@ -73,8 +73,8 @@ class Feed extends WidgetCommon {
         $html = $this->prepareFeeds();
 
         RPC::call('createCommentNode', $post->nodeid);   
-        RPC::call('createTabs');
         RPC::call('movim_fill', 'feedcontent', $html);
+        RPC::call('createTabs');
     }  
     
     function ajaxCreateCommentNode($parentid) {
@@ -194,8 +194,9 @@ class Feed extends WidgetCommon {
                 <div class="message info" style="margin: 1.5em; margin-top: 0em;">'.
                     t("Your feed cannot be loaded.").'
                 </div>';
-        RPC::call('createTabs');
+
         RPC::call('movim_fill', 'feedcontent', $html);
+        RPC::call('createTabs');
 
         RPC::commit();
     }

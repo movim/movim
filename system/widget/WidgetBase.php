@@ -193,7 +193,6 @@ class WidgetBase
 	public function runEvents($proto)
 	{
 		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
-            //$this->setCacheCall();
             $returns = array();
 
 			foreach($this->events[$proto['type']] as $handler) {
