@@ -5,13 +5,18 @@
 #notifslist {
     transition: right 0.5s ease;
     background-color: #242424;
-    padding-bottom: 3em;
+    margin: 0em -1em;
+    margin-top: 1em;
 }
 
 #notifslist li {
     overflow: hidden;
     line-height: 3em;
     list-style-type: none;
+}
+
+#notifslist li:nth-child(2n) {
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
 #notifslist li:hover {
@@ -38,5 +43,9 @@
 
 #notifslist #acceptcontact {
     padding: 0.5em;
-    padding-bottom: 0em;
+    padding-bottom: 0;
+}
+
+#notifslist #acceptcontact p {
+    padding-bottom: 1em;
 }

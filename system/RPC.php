@@ -32,14 +32,14 @@ class RPC
         
         $args = array_map('trim', $args);
 
-        if(self::filter($funcname, $args)) {
+        //if(self::filter($funcname, $args)) {
             $funcall = array(
                 'func' => $funcname,
                 'params' => $args,
                 );
 
             self::$funcalls[] = $funcall;
-        }
+        //}
     }
 
     /**

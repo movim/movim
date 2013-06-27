@@ -30,14 +30,34 @@ class Roster extends WidgetBase
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
 		$this->registerEvent('presence', 'onPresence');
-
-        $this->cached = false;
     }
 
 	function onPresence($presence)
 	{
 	    $arr = $presence->getPresence();
-	    RPC::call('incomingPresence', $arr['jid'], $arr['presence_txt']);
+
+        $cd = new \modl\ContactDAO();
+        $c = $cd->getRosterItem($arr['jid']);
+
+        if($c != null) {
+            $c->setPresence($presence);
+            $html = $this->prepareRosterElement($c);
+            
+            if(empty($c->group))
+                $group = t('Ungrouped');
+            else
+                $group = $c->group;
+            
+            \movim_log('group'.$group.' '.$html);
+
+            RPC::call('movim_delete', 'roster'.$arr['jid']);
+            RPC::call('movim_append', 'group'.$group, $html);
+            
+            RPC::call('sortRoster');
+        }
+
+	    //RPC::call('incomingPresence', $arr['jid'], $arr['presence_txt']);
+        
 	}
 
     function onRoster()
