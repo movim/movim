@@ -39,7 +39,7 @@ class NodeConfig extends WidgetBase
         RPC::commit();        
     }
     
-    function onGroupConfig($stanza) {        
+    function onGroupConfig($stanza) { 
         Notification::appendNotification(t('Group configuration saved'), 'success');
         RPC::commit();        
     }
@@ -54,7 +54,11 @@ class NodeConfig extends WidgetBase
                 <a
                         class="button color green icon yes" 
                         style="float: right;"
-                        onclick="'.$submit.' this.onclick=null;"
+                        onclick="
+                            '.$submit.'
+                            this.onclick=null;
+                            this.style.display = \'none\'
+                            "
                     >
                         '.t('Validate').'
                 </a>
