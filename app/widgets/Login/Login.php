@@ -134,7 +134,6 @@ class Login extends WidgetBase {
                 RPC::call('loginButtonSet', t("Come in!"));
 
                 RPC::commit();
-                exit;
             }
         }
     }
@@ -222,11 +221,14 @@ class Login extends WidgetBase {
 
         // BOSH + XMPP connexion test
         $warning = moxl\login();
-        if($warning != 'OK')
-            $this->displayWarning($warning);
-            
-        $pd = new modl\PresenceDAO();
-        $pd->clearPresence($element['login']);
+        
+        if($warning != 'OK') {
+            //$this->displayWarning($warning);
+            RPC::call('movim_redirect', Route::urlize('login', $warning));        
+            RPC::commit();
+        } else {
+            $pd = new modl\PresenceDAO();
+            $pd->clearPresence($element['login']);
         
         /*global $session;
         $session['login'] = true;
@@ -242,7 +244,8 @@ class Login extends WidgetBase {
             RPC::call('movim_redirect', Route::urlize('loading'));
         else*/
             RPC::call('movim_redirect', Route::urlize('main'));            
-        RPC::commit();
+            RPC::commit();
+        }
     }
 
     function ajaxGetConfig()
@@ -257,6 +260,7 @@ class Login extends WidgetBase {
 	{
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
         $conf = Conf::getServerConf();
+        
         ?>
         <div id="loginpage" class="fadeDown">
         <?php
@@ -345,7 +349,7 @@ class Login extends WidgetBase {
 
                 </form>
                 
-            <?php            
+            <?php
             }
             ?>
 
