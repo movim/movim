@@ -32,14 +32,16 @@ class RPC
         
         $args = array_map('trim', $args);
 
-        //if(self::filter($funcname, $args)) {
+        if(self::filter($funcname, $args)) {
             $funcall = array(
                 'func' => $funcname,
                 'params' => $args,
                 );
 
             self::$funcalls[] = $funcall;
-        //}
+        } else {
+            Logger::log('RPC cleaning system : '.$funcname.', '.$args[0].' cleared');
+        }
     }
 
     /**
@@ -51,7 +53,7 @@ class RPC
             if(isset($f['func']) &&
                isset($f['params']) &&
                $f['func'] == $funcname &&
-               $f['params'][0] == $args[0])
+               $f['params'] === $args)
                return false;
         }
 

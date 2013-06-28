@@ -227,8 +227,21 @@ class Login extends WidgetBase {
             
         $pd = new modl\PresenceDAO();
         $pd->clearPresence($element['login']);
+        
+        /*global $session;
+        $session['login'] = true;
+        
+        moxl\ping();
+        $cached = \Cache::c('moxlcache');
+        
+        $session['login'] = false;
+        $sess = \Session::start(APP_NAME);
+        $sess->set('session', $session);
 
-        RPC::call('movim_redirect', Route::urlize('main'));
+        if(!empty($cached))
+            RPC::call('movim_redirect', Route::urlize('loading'));
+        else*/
+            RPC::call('movim_redirect', Route::urlize('main'));            
         RPC::commit();
     }
 
