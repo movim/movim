@@ -65,11 +65,6 @@ class Feed extends WidgetCommon {
     }
 
     function onPostPublished($post) {        
-        /*$pd = new \modl\PostnDAO();
-        $pl = $pd->getFeed(-1, $this->_feedsize);
-
-        $html = $this->preparePosts($pl);*/
-        
         $html = $this->prepareFeeds();
 
         RPC::call('createCommentNode', $post->nodeid);   
