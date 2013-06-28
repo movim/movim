@@ -277,6 +277,22 @@ class ControllerMain extends ControllerBase
 		}
 	}
 
+	function loading()
+	{
+		$user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			$this->page->setTitle(t('%s - Loading', APP_TITLE));
+
+			$content = new TplPageBuilder($user);
+
+			$this->page->setContent($content->build('loading.tpl'));
+			echo $this->page->build('page.tpl');
+		}
+	}
+
 	/**
 	 * Show login interface
 	 */
@@ -307,11 +323,11 @@ class ControllerMain extends ControllerBase
 	{
 		$user = new User();
 
-        $this->page->setTitle(t('%s - Explore', APP_TITLE));
-
-		if(!$user->isLogged()) {
+		if(!$user->isLogged())
             $this->login();
-		} else {
+		else {
+            $this->page->setTitle(t('%s - Explore', APP_TITLE));
+        
             $this->page->menuAddLink(t('Home'), 'main');
             $this->page->menuAddLink(t('Explore'), 'explore', true);
             $this->page->menuAddLink(t('Profile'), 'profile');
@@ -319,11 +335,11 @@ class ControllerMain extends ControllerBase
 			$this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
             $this->page->menuAddLink(t('Logout'), 'disconnect');
+            
+            $content = new TplPageBuilder($user);
+            $this->page->setContent($content->build('explore.tpl'));
+            echo $this->page->build('page.tpl');
 		}
-
-        $content = new TplPageBuilder($user);
-        $this->page->setContent($content->build('explore.tpl'));
-        echo $this->page->build('page.tpl');
 	}
     
 
@@ -334,12 +350,11 @@ class ControllerMain extends ControllerBase
      {
 		$user = new User();
 
-
-        $this->page->setTitle(t('%s - Help Page', APP_TITLE));
-
-		if(!$user->isLogged()) {
+		if(!$user->isLogged()) 
             $this->login();
-		} else {
+		else {
+            $this->page->setTitle(t('%s - Help Page', APP_TITLE));
+        
             $this->page->menuAddLink(t('Home'), 'main');
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
@@ -347,12 +362,11 @@ class ControllerMain extends ControllerBase
 			$this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help', true);
             $this->page->menuAddLink(t('Logout'), 'disconnect');
+            
+            $content = new TplPageBuilder($user);
+            $this->page->setContent($content->build('help.tpl'));
+            echo $this->page->build('page.tpl');
 		}
-
-        $content = new TplPageBuilder($user);
-        $this->page->setContent($content->build('help.tpl'));
-        echo $this->page->build('page.tpl');
-
      }
      
     /*

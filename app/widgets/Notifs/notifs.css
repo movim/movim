@@ -6,7 +6,8 @@
     transition: right 0.5s ease;
     background-color: #242424;
     margin: 0em -1em;
-    margin-top: 1em;
+    margin-top: 3em;
+    clear: both;
 }
 
 #notifslist li {

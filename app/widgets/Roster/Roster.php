@@ -47,8 +47,6 @@ class Roster extends WidgetBase
                 $group = t('Ungrouped');
             else
                 $group = $c->group;
-            
-            \movim_log('group'.$group.' '.$html);
 
             RPC::call('movim_delete', 'roster'.$arr['jid']);
             RPC::call('movim_append', 'group'.$group, $html);
