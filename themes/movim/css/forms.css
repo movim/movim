@@ -323,7 +323,7 @@ legend {
 .icon.chat:before   { background-image: url(../img/icons/button/bubbles.png);}
 .icon.image:before  { background-image: url(../img/icons/button/image.png);}
 .icon.add:before    { background-image: url(../img/icons/button/plus.png); }
-.icon.rm:before     { content: "–"; }
+.icon.rm:before     { background-image: url(../img/icons/button/minus.png); }
 .icon.write:before  { background-image: url(../img/icons/button/pencil.png); }
 .icon.help:before   { background-image: url(../img/icons/button/support.png); }
 .icon.upload:before { background-image: url(../img/icons/button/upload.png); }
@@ -335,6 +335,8 @@ legend {
 .icon.next:before   { background-image: url(../img/icons/button/arrow-right.png); }
 .icon.geo:before    { background-image: url(../img/icons/button/location.png); }
 .icon.preview:before{ background-image: url(../img/icons/button/eye.png); }
+.icon.share:before  { background-image: url(../img/icons/button/share.png); }
+.icon.mail:before   { background-image: url(../img/icons/button/envelope.png); }
 .icon.tag:before    { background-image: url(../img/icons/button/tag.png); }
 .icon.users:before  { background-image: url(../img/icons/button/users.png); }
 .icon.loading:before{ background-image: url(../img/icons/button/loop.png); }

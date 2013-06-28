@@ -231,7 +231,7 @@
     width: auto;
 }
 
-.post .content img {
+.post .content img, .post .content video {
     max-width: 100%;
     height: auto;
     margin: 1em;
