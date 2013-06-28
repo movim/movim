@@ -147,6 +147,7 @@ class TplPageBuilder
 			if($link['type'] == 'link') {
 				echo "\t\t".'<li><a 
                     href="'.Route::urlize($link['href']).'" 
+                    title="'.$link['label'].'"
                     class="'.$link['href'].'' ;
 				if($link['active'] == true) {
 					echo ' active ';
