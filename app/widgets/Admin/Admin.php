@@ -483,7 +483,9 @@ class Admin extends WidgetBase {
                         </div>
                     ';
                 } else {
-                    $dbrecreate = $this->genCallAjax('ajaxRecreateDatabase');
+                    $dbrecreate = $this->genCallAjax('ajaxRecreateDatabase')
+                        ."  this.className='button color orange icon loading'; 
+                            setTimeout(function() {location.reload(false)}, 2000);";
                     
                     $html .= '
                     <div class="element">
@@ -491,7 +493,7 @@ class Admin extends WidgetBase {
                         <a class="button icon loading color red" onclick="'.$dbrecreate.'">'.t('Recreate').'</a>
                     </div>
                     
-                    <div class="message warning">
+                    <div class="message error">
                         '.t('This button will clear and recreate the Movim database.').'
                     </div>
                     ';
