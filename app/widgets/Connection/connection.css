@@ -1,0 +1,19 @@
+body {
+    padding-right: 0px;
+}
+
+footer {
+    display: none;
+}
+
+#connection {
+    margin: 0 auto;
+    margin-top: 10%;
+    color: white;
+    text-align: center;
+}
+
+#connection #countdown {
+    line-height: 2em;
+    font-size: 1.5em;
+}
