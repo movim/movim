@@ -1,8 +1,7 @@
 <?php /* -*- mode: html -*- */
 ?>
 <?php $this->widget('Poller');?>
-<?php $this->widget('Logout');?>
-<?php //$this->widget('Notifs');?>
+<?php $this->widget('Presence');?>
 <?php $this->widget('Chat');?>
 <?php $this->widget('ChatExt');?>
 
@@ -14,7 +13,8 @@
     <div id="left">
         <?php $this->widget('Profile');?>
         <?php $this->widget('Bookmark');?>
-        <?php $this->widget('ProfileData');?>
+        <?php $this->widget('Notifs');?>
+        <?php $this->widget('Location');?>
     </div>
     <div id="center">
         <div class="protect black" title="<?php echo getFlagTitle("black"); ?>"></div>

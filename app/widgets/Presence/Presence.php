@@ -18,13 +18,12 @@
  * See COPYING for licensing information.
  */
 
-class Logout extends WidgetBase
+class Presence extends WidgetBase
 {
     
     function WidgetLoad()
     {
-    	$this->addcss('logout.css');
-        $this->addjs('logout.js');
+    	$this->addcss('presence.css');
         $this->registerEvent('mypresence', 'onMyPresence');
     }
     
@@ -40,19 +39,6 @@ class Logout extends WidgetBase
 	    RPC::call('movim_reload',
                        BASE_URI."index.php?q=disconnect");
     }
-
-	function ajaxLogout()
-	{
-        $presence = Cache::c('presence');
-        Cache::c(
-            'presence', 
-            array(
-                'status' => $presence['status'],
-                'show' => $presence['show']
-                )
-        );
-		$this->xmpp->logout();
-	}
     
 	function ajaxSetStatus($show)
 	{
@@ -98,7 +84,22 @@ class Logout extends WidgetBase
         $pd = new \modl\PresenceDAO();
         $p = $pd->getPresence($this->user->getLogin(), $session['ressource']);
 
-        $html = '<div id="logouttab" class="'.$txts[$p->presence].'" onclick="showLogoutList();">'.$txt[$p->presence].'</div>';
+        if($p)
+            $html = '
+                <div 
+                    id="logouttab" 
+                    class="'.$txts[$p->presence].'"
+                    onclick="movim_toggle_class(\'#logoutlist\', \'show\');">'.
+                    $txt[$p->presence].'
+                </div>';
+        else
+            $html = '
+                <div 
+                    id="logouttab" 
+                    class="'.$txts[1].'"
+                    onclick="movim_toggle_class(\'#logoutlist\', \'show\');">'.
+                    $txt[1].'
+                </div>';
                 
         $html .= '
             <div id="logoutlist">

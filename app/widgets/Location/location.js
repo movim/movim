@@ -14,6 +14,7 @@ function hidePositionChoice()
 }
 
 function getMyPosition() {
+    console.log(navigator.geolocation);
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( 
             function (position) {  
