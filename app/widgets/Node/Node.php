@@ -92,6 +92,7 @@ class Node extends WidgetCommon
         $r = new moxl\PubsubGetSubscriptions();
         $r->setTo($server)
           ->setNode($node)
+          ->setSync()
           ->request();
     }
     
