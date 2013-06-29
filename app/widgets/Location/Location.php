@@ -18,11 +18,11 @@
  * See COPYING for licensing information.
  */
 
-class ProfileData extends WidgetBase
+class Location extends WidgetBase
 {
     function WidgetLoad()
     {
-        $this->addjs('profiledata.js');
+        $this->addjs('location.js');
 		$this->registerEvent('locationpublished', 'onLocationPublished');
 		$this->registerEvent('locationpublisherror', 'onLocationPublishError');
     }
