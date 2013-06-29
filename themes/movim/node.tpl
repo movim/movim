@@ -23,6 +23,7 @@
         <?php $this->widget('Node');?>
         <?php $this->widget('NodeConfig');?>
         <?php $this->widget('NodeAffiliations');?>
+        <?php $this->widget('NodeSubscriptions');?>
     </div>
 </div>
 
