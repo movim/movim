@@ -36,7 +36,7 @@ function movim_poll()
                     rpc.handle_rpc_json(poller.response);
                 }
             } else if(poller.status == 500 || poller.status == 400) {            
-                    movim_disconnect('internal');
+                movim_disconnect('internal');
             }
             
 			if(poller.status == 200) {

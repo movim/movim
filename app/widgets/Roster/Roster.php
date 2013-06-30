@@ -48,7 +48,10 @@ class Roster extends WidgetBase
             else
                 $group = $c->group;
 
-            RPC::call('movim_delete', 'roster'.$arr['jid']);
+            RPC::call(
+                'movim_delete', 
+                'roster'.$arr['jid'], 
+                $html /* this second parameter is just to bypass the RPC filter*/);
             RPC::call('movim_append', 'group'.$group, $html);
             
             RPC::call('sortRoster');

@@ -56,8 +56,8 @@ body {
     min-height: 2.5em;
 }
 
-#loginpage #connectform .element:last-child {
-    min-height: 1em;
+#loginpage #connectform .element.login {
+    min-height: 0em;
 }
 
 #loginpage #connectform .element input {
