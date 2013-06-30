@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
 	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1";>
+    
     <script type="text/javascript">
         var BASE_URI = '<?php echo BASE_URI; ?>';
         var ERROR_URI = '<?php echo substr_replace(Route::urlize('disconnect', 'err'), '', -3); ?>';

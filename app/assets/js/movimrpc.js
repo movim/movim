@@ -114,6 +114,11 @@ function MovimRPC()
         {
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200)
                 handler(movim_xmlhttp.response);
+                
+            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 400) {
+                handler(movim_xmlhttp.response);
+                movim_disconnect('internal');
+            }
             
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500)
                 movim_disconnect('internal');
