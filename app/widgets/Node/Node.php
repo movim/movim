@@ -127,6 +127,7 @@ class Node extends WidgetCommon
                 </a>
                 <a>'.t('Posts').'</a>
             </div>
+            <div class="clear"></div>
             <div class="posthead">
                 '.$button.'
                 <a

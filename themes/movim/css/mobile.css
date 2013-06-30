@@ -50,10 +50,19 @@ nav .menu {
     background-image: none;
 }
 
+nav .menu li a,
 nav .menu li a.main,
 nav .menu li a.main.active {
     opacity: 1;
-    width: 0em;
+    width: 0;
+    height: 0;
+    display: block;
+    overflow: hidden;
+}
+
+/* A little hack for iOS devices */
+span.mobile {
+    display: none !important;
 }
 
 nav .menu li a.disconnect {
@@ -126,6 +135,7 @@ nav .menu li a.disconnect {
 
 #loginpage {
     margin-top: 20% ! important;
+    background-position: center 0em !important;
 }
 
 #rostermenu {

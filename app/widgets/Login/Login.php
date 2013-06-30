@@ -303,7 +303,7 @@ class Login extends WidgetBase {
                         <input type="password" name="pass" id="pass" required
                             placeholder="<?php echo t("Password"); ?>"/>
                     </div>
-                    <div class="element">
+                    <div class="element login">
                         <a
                             class="button color green icon yes"
                             onclick="<?php echo $submitevent; ?>"
