@@ -21,11 +21,13 @@
 class ContactManage extends WidgetCommon
 {
     function WidgetLoad() {
-		$this->registerEvent('rosterupdated', 'onRoster');
+		$this->registerEvent('rosterupdateditem', 'onRoster');
     }
 
 	public function onRoster($roster)
 	{    
+        RPC::call('movim_reload_this');
+        //\movim_log('GNAP');
         /*Notification::appendNotification(t('Contact updated'));
         RPC::call('movim_reload_this');
         RPC::commit();*/

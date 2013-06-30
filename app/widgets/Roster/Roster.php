@@ -55,10 +55,7 @@ class Roster extends WidgetBase
             RPC::call('movim_append', 'group'.$group, $html);
             
             RPC::call('sortRoster');
-        }
-
-	    //RPC::call('incomingPresence', $arr['jid'], $arr['presence_txt']);
-        
+        }        
 	}
 
     function onRoster()
