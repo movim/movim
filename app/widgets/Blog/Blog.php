@@ -9,12 +9,17 @@ class Blog extends WidgetCommon {
     function build()
     {
         $from = $_GET['f'];
+
+        if($_GET['n'])
+            $node = $_GET['n'];
+        else
+            $_GET['n'] = false;
         
         $pd = new \modl\PostnDAO();
-        $messages = $pd->getPublic($from);
+        $messages = $pd->getPublic($from, $node);
         
         echo '
-                <div class="posthead" style="border-top: 0px;">
+                <div class="posthead spacetop">
                         <a 
                             class="button color orange icon feed merged left" 
                             href="'.Route::urlize('feed',$from).'"

@@ -4,6 +4,7 @@
     display: block;
     width: 100%;
     padding: 1em 1.5em;
+    padding-top: 0;
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -233,9 +234,18 @@
 
 .post .content img, .post .content video {
     max-width: 100%;
+    width: auto;
     height: auto;
     margin: 1em;
+    /*max-height: 15em;*/
 }
+
+/*.post .content img:hover {
+    width: auto;
+    height: auto;
+    max-width: 80%;
+    max-height: 80%;
+}*/
 
 .post .content img.smiley {
     margin: 0px;

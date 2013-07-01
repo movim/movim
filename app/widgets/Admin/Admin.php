@@ -498,13 +498,7 @@ class Admin extends WidgetBase {
                     </div>
                     ';
                 }
-                
-        /*$html .= '
-                    <div class="element large">
-                            <label for="db">'.t('Dabase String').'</label>
-                            <input type="text" name="db" id="db" value="'.$this->_conf['db'].'" />
-                    </div>';
-        */
+
         $html .= '
                     <div class="element">
                             <label for="dbType">'.t('Database Type').'</label>

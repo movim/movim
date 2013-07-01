@@ -22,9 +22,15 @@ class Syndication extends WidgetBase
     function build()
     {
         $from = $_GET['f'];
+        
+        if($_GET['n'])
+            $node = $_GET['n'];
+        else
+            $_GET['n'] = false;
+        
         if(isset($from)) {          
             $pd = new \modl\PostnDAO();
-            $messages = $pd->getPublic($from);
+            $messages = $pd->getPublic($from, $node);
         
 
             if(!empty($messages)) {

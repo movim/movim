@@ -206,7 +206,7 @@ class Feed extends WidgetCommon {
     function build()
     { 
     ?>
-    <div id="feed">
+    <div id="feed" class="spacetop">
         <div id="feedhead">
         <?php
             echo $this->prepareHead();

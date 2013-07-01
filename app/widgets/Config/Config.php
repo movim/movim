@@ -83,7 +83,7 @@ class Config extends WidgetBase
                 </fieldset>
 
                 <fieldset>
-                    <legend><?php echo t('Apparence'); ?></legend>
+                    <legend><?php echo t('Appearence'); ?></legend>
                     <div class="element">
                         <label for="color"><?php echo t('Background color'); ?></label>                        
                         <a 

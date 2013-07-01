@@ -112,7 +112,7 @@ class About extends WidgetBase
                <dt>Markdown</dt><dd>Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin</dd>
                <dt>HTML Fixer</dt><dd> Giulio Pons <a href="http://www.barattalo.it">barattalo.it</a></dd>
             </dl>
-            <h2><?php echo t('Ressources'); ?></h2>
+            <h2><?php echo t('Resources'); ?></h2>
             <dl>
                <dt>Icons</dt><dd>Famfamfam <a href="http://www.famfamfam.com/">www.famfamfam.com</a> under CC BY 3.0</dd>
                <dt></dt><dd>Icomoon <a href="http://keyamoon.com/">by Keyamoon</a> under CC BY 3.0</dd>
