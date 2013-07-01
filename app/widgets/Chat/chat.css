@@ -64,12 +64,13 @@
 
 #chats .chat .panel {
     background-color: white;
-    width: 225px;
+    width: 250px;
 }
 
 #chats .chat .panel .head {
     background-color: #272727;
     height: 2em;
+    padding-left: 0.5em;
 }
 
 
@@ -158,13 +159,30 @@
 
 #chats .chat .panel .messages .message {
     line-height: 1.5em;
-    padding: 0.25em;
+    margin: 0.5em;
+    padding-top: 0.5em;
     word-wrap: break-word;
     font-size: 0.9em;
+    position: relative;
+    border-top: 1px solid #DDD;
+    clear: both;
+}
+
+#chats .chat .panel .messages .message img.avatar {
+    float: left;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    width: 28px;
+    height: 28px;
+}
+
+#chats .chat .panel .messages .message:first-child {
+    border-top: 0;
+    margin-top: 0;
 }
 
 #chats .chat .panel .messages .message.me {
-    background-color: rgba(76, 90, 97, 0.1);
+    
 }
 
 #chats .chat .panel .messages .message.own {
@@ -177,12 +195,15 @@
 }
 
 #chats .chat .panel .messages .message span.date {
-    float: right;
-    color: #ccc;
-    padding: 0.2em;
-    line-height: 1em;
+    position: absolute;
+    top: -0.8em;
+    color: #777;
+    background-color: white;
+    right: 0;
+    font-size: 0.9em;
+    display: none;
 }
 
-#chats .chat .panel .messages .message.me span.date {
-    color: #666;
+#chats .chat .panel .messages .message:hover span.date {
+    display: inline-block;
 }

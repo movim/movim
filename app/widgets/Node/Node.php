@@ -143,6 +143,11 @@ class Node extends WidgetCommon
                     onclick="
                         '.$this->genCallAjax('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'").'"
                 >'.t('Get Subscription').'</a>
+                <a 
+                    class="button color icon user"
+                    style="float: right;"
+                    href="'.Route::urlize('nodeconfig', array($serverid,$groupid)).'"
+                >'.t('Configuration').'</a>
             </div>
             
             <div class="popup" id="groupsubscribe">

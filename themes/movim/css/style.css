@@ -252,6 +252,10 @@ ul.clean li {
     padding: 0em 1.5em;
 }
 
+.spacetop {
+    padding-top: 1.5em;
+}
+
 /* The main parts of the page */
 
 #content {

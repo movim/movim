@@ -142,6 +142,33 @@ class ControllerMain extends ControllerBase
 		}
 	}
     
+    function nodeconfig()
+	{
+        $user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			if(isset($_GET['n']) && $_GET['n'] != "" ) {
+				$this->page->setTitle(APP_TITLE.' - Node'.' - '.t('Configuration'));
+                $this->page->menuAddLink(t('Home'), 'main');
+                $this->page->menuAddLink(t('Explore'), 'explore');
+				$this->page->menuAddLink(t('Profile'), 'profile');
+                $this->page->menuAddLink(t('Media'), 'media');
+				$this->page->menuAddLink(t('Configuration'), 'conf');
+                $this->page->menuAddLink(t('Help'), 'help');
+                $this->page->menuAddLink(t('Logout'), 'disconnect');
+
+				$content = new TplPageBuilder($user);
+
+				$this->page->setContent($content->build('nodeconfig.tpl'));
+				echo $this->page->build('page.tpl');
+			}
+			else
+				$this->main();
+		}
+	}
+    
     function media()
 	{
         $user = new User();
