@@ -19,11 +19,7 @@
     </div>
 
     <div id="center">
-        <?php $this->widget('Tabs');?>
         <?php $this->widget('Node');?>
-        <?php $this->widget('NodeConfig');?>
-        <?php $this->widget('NodeAffiliations');?>
-        <?php $this->widget('NodeSubscriptions');?>
     </div>
 </div>
 

@@ -97,8 +97,22 @@ class NodeConfig extends WidgetBase
     
 	function build()
     {
+
+        echo '
+            <div class="breadcrumb">
+                <a href="'.Route::urlize('explore').'">
+                    '.t('Explore').'
+                </a>
+                <a href="'.Route::urlize('server', $_GET['s']).'">
+                    '.$_GET['s'].'
+                </a>
+                <a href="'.Route::urlize('node', array($_GET['s'], $_GET['n'])).'">
+                    '.$_GET['n'].'
+                </a>
+                <a>'.t('Configuration').'</a>
+            </div>';
         ?>
-        
+
 		<div class="tabelem" title="<?php echo t('Configuration'); ?>" id="groupconfig">
             <h1><?php echo t('Configuration'); ?></h1>
             

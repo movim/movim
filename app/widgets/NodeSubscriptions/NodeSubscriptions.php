@@ -90,7 +90,7 @@ class NodeSubscriptions extends WidgetBase
 	function build()
     {
         ?>
-		<div id="subscriptions">
+		<div id="subscriptions" class="tabelem" title="<?php echo t('Manage your subscriptions'); ?>">
             <h1><?php echo t('Manage the subscriptions'); ?></h1>
             <div class="posthead">
                 <a 

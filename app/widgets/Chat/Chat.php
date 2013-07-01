@@ -113,7 +113,7 @@ class Chat extends WidgetBase
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->jid);
-        }            
+        }     
     }
     
     function onMessagePublished($jid)
@@ -322,8 +322,12 @@ class Chat extends WidgetBase
                 $html .= " own ";
                 $content = "** ".substr($message->body, 4);
             }
+            
+            $c = new \modl\Contact();
                     
-            $html .= '"><!--<span class="date">'.date('H:i', strtotime($message->published)).'</span>-->';
+            $html .= '">
+                <img class="avatar" src="'.$c->getPhoto('xs', $message->from).'" />
+                <span class="date">'.date('H:i', strtotime($message->published)).'</span>';
             $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
             return $html;
         } else {
@@ -375,7 +379,6 @@ class Chat extends WidgetBase
                     <div class="head" >
                         <span class="chatbutton cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->jid."'").'"></span>
                         <span class="chatbutton arrow" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'").' hideTalk(this)"></span>
-                        <img class="avatar"  src="'.$contact->getPhoto('xs').'" />
                         <a class="name" href="'.Route::urlize('friend',$contact->jid).'">
                             '.$contact->getTrueName().'
                         </a>
