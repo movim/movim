@@ -148,6 +148,20 @@ class Node extends WidgetCommon
                     style="float: right;"
                     href="'.Route::urlize('nodeconfig', array($serverid,$groupid)).'"
                 >'.t('Configuration').'</a>
+                
+                <a 
+                    class="button color icon blog merged left" 
+                    href="'.Route::urlize('blog',array($serverid,$groupid)).'"
+                    target="_blank"
+                >
+                    '.t('Blog').'
+                </a><a 
+                    class="button color orange icon feed merged right" 
+                    href="'.Route::urlize('feed',array($serverid,$groupid)).'"
+                    target="_blank"
+                >
+                    '.t('Feed').' (Atom)
+                </a>
             </div>
             
             <div class="popup" id="groupsubscribe">
