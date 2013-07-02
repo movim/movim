@@ -34,26 +34,27 @@ class Syndication extends WidgetBase
         $messages = $pd->getPublic($from, $node);
         $this->view->assign('messages', $messages);
         
-        // Title and logo
-        
-        // For a Pubsub feed
-        if(isset($from) && isset($node) && $node != '') {
-            $pd = new \modl\NodeDAO();
-            $n = $pd->getNode($from, $node);
-            if(isset($n->title))
-                $this->view->assign('title', $n->title);
-            else
-                $this->view->assign('title', $n->nodeid);
-        // Fir a simple contact
-        } else {
-            $this->view->assign('title', t("%s's feed",$messages[0]->getContact()->getTrueName()));
-            $this->view->assign('logo', $messages[0]->getContact()->getPhoto('l'));
+        if(isset($messages)) {
+            // Title and logo
+            // For a Pubsub feed
+            if(isset($from) && isset($node) && $node != '') {
+                $pd = new \modl\NodeDAO();
+                $n = $pd->getNode($from, $node);
+                if(isset($n->title))
+                    $this->view->assign('title', $n->title);
+                else
+                    $this->view->assign('title', $n->nodeid);
+            // Fir a simple contact
+            } else {
+                $this->view->assign('title', t("%s's feed",$messages[0]->getContact()->getTrueName()));
+                $this->view->assign('logo', $messages[0]->getContact()->getPhoto('l'));
+            }
+            
+            $this->view->assign('date', date('c'));
+            $this->view->assign('name', $messages[0]->getContact()->getTrueName());
+            $this->view->assign('uri',  Route::urlize('blog',array($from, $node)));
+            $this->view->assign('link', Route::urlize('feed',array($from, $node)));
         }
-        
-        $this->view->assign('date', date('c'));
-        $this->view->assign('name', $messages[0]->getContact()->getTrueName());
-        $this->view->assign('uri',  Route::urlize('blog',array($from, $node)));
-        $this->view->assign('link', Route::urlize('feed',array($from, $node)));
     }
     
     function prepareTitle($title) {
