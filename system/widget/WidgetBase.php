@@ -90,7 +90,7 @@ class WidgetBase
 	 */
     function build()
     {
-        echo $this->view->draw(strtolower($this->name), true);
+        echo trim($this->view->draw(strtolower($this->name), true));
     }
 
 	/**
