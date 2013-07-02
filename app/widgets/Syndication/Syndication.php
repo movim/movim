@@ -34,7 +34,7 @@ class Syndication extends WidgetBase
         $messages = $pd->getPublic($from, $node);
         $this->view->assign('messages', $messages);
         
-        if(isset($messages)) {
+        if(isset($messages[0])) {
             // Title and logo
             // For a Pubsub feed
             if(isset($from) && isset($node) && $node != '') {
