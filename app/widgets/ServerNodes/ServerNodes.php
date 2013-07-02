@@ -27,6 +27,11 @@ class ServerNodes extends WidgetCommon
         $this->registerEvent('disconodes', 'onDiscoNodes');
         $this->registerEvent('creationsuccess', 'onCreationSuccess');
         $this->registerEvent('creationerror', 'onCreationError');
+        
+        if (substr($_GET['s'], 0, 7) == 'pubsub.')
+            $this->view->assign('server', $this->prepareServer($_GET['s']));
+            
+        $this->view->assign('get_nodes', $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"));
     }
     
     function onDiscoError($error)
@@ -163,37 +168,5 @@ class ServerNodes extends WidgetCommon
         $r = new moxl\GroupCreate();
         $r->setTo($data['server'])->setNode($uri)->setData($data['title'])
           ->request();
-    }
-
-    function build()
-    {
-        if (substr($_GET['s'], 0, 7) == 'pubsub.')
-            $server =  $this->prepareServer($_GET['s']);
-        
-    ?>
-    <div class="breadcrumb protect red ">
-        <a href="<?php echo Route::urlize('explore'); ?>"><?php echo t('Explore'); ?></a>
-        <a href="<?php echo Route::urlize('server', $_GET['s']); ?>">
-            <?php echo $_GET['s']; ?>
-        </a>
-        <a><?php echo t('Topics'); ?></a>
-    </div> 
-    <div class="posthead " id="servernodeshead">
-        <a
-            href="#"
-            onclick="<?php echo $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"); ?>; 
-                this.className='button icon loading color orange'; this.onclick=null;"
-            class="button icon refresh color">
-            <?php echo t('Refresh'); ?>
-        </a>
-        <?php echo $create; ?>
-    </div>
-    <div id="servernodes" class="tabelem paddedtop" title="<?php echo t('Server'); ?>">
-        <div id="newGroupForm"></div>
-        <div id="servernodeslist">
-            <?php echo $server; ?>
-        </div>
-    </div>
-    <?php
     }
 }

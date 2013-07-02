@@ -130,16 +130,27 @@ class Node extends WidgetCommon
             <div class="clear"></div>
             <div class="posthead">
                 '.$button.'
+                <a 
+                    class="button color icon blog merged left" 
+                    href="'.Route::urlize('blog',array($serverid,$groupid)).'"
+                    target="_blank"
+                >
+                    '.t('Blog').'
+                </a><a 
+                    class="button color orange icon alone feed merged right" 
+                    href="'.Route::urlize('feed',array($serverid,$groupid)).'"
+                    target="_blank"
+                ></a>
                 <a
                     href="#"
                     onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").'
                     this.className=\'button icon color orange loading\'; this.onclick=null;"
-                    class="button color blue icon refresh">
-                    '.('Refresh').'
+                    class="button color blue icon alone refresh">
+                    
                 </a>
                 
                 <a 
-                    class="button color orange icon yes"
+                    class="button color icon yes"
                     onclick="
                         '.$this->genCallAjax('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'").'"
                 >'.t('Get Subscription').'</a>
@@ -148,20 +159,6 @@ class Node extends WidgetCommon
                     style="float: right;"
                     href="'.Route::urlize('nodeconfig', array($serverid,$groupid)).'"
                 >'.t('Configuration').'</a>
-                
-                <a 
-                    class="button color icon blog merged left" 
-                    href="'.Route::urlize('blog',array($serverid,$groupid)).'"
-                    target="_blank"
-                >
-                    '.t('Blog').'
-                </a><a 
-                    class="button color orange icon feed merged right" 
-                    href="'.Route::urlize('feed',array($serverid,$groupid)).'"
-                    target="_blank"
-                >
-                    '.t('Feed').' (Atom)
-                </a>
             </div>
             
             <div class="popup" id="groupsubscribe">

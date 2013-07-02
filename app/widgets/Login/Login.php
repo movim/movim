@@ -25,6 +25,28 @@ class Login extends WidgetBase {
         $this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
+        
+        $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
+        $this->view->assign('submit', $submit);
+        $this->view->assign('conf',   Conf::getServerConf($submit));
+        $this->view->assign('submit_event', 
+            'document.getElementById(\'submitb\').click();
+            '.$submit.'
+            loginButtonSet(\''.t('Connecting...').'\', true); 
+            this.onclick=null;');
+            
+        $this->view->assign('warnings', $this->displayWarning($_GET['err'], true));
+        
+        $this->view->assign('pop', count(scandir(USERS_PATH))-3);
+        
+        $this->view->assign('gmail',
+            t('%sGmail accounts are also compatible%s but are not fully supported',
+                '<a href="#" onclick="fillExample(\'your.id@gmail.com \', \'\');">', '</a>'));
+                
+        $this->view->assign('facebook',
+            t('You can login with Facebook (chat only) using %s your.id@chat.facebook.com %s and your password',
+                '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
+                    
     }
 
     function onConfig(array $data)
@@ -230,19 +252,6 @@ class Login extends WidgetBase {
             $pd = new modl\PresenceDAO();
             $pd->clearPresence($element['login']);
         
-        /*global $session;
-        $session['login'] = true;
-        
-        moxl\ping();
-        $cached = \Cache::c('moxlcache');
-        
-        $session['login'] = false;
-        $sess = \Session::start(APP_NAME);
-        $sess->set('session', $session);
-
-        if(!empty($cached))
-            RPC::call('movim_redirect', Route::urlize('loading'));
-        else*/
             RPC::call('movim_redirect', Route::urlize('main'));            
             RPC::commit();
         }
@@ -255,111 +264,4 @@ class Login extends WidgetBase {
           ->request();        $evt = new \Event();
         $evt->runEvent('nostream');
     }
-
-	function build()
-	{
-        $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
-        $conf = Conf::getServerConf();
-        
-        ?>
-        <div id="loginpage" class="fadeDown">
-        <?php
-            if(!BROWSER_COMP) {
-            echo '
-                <div class="message warning">
-                    '.t('Your web browser is too old to use with Movim.').'
-                </div> ';
-            } else {
-                
-                if(isset($conf['info']) && $conf['info'] != '') {
-                    echo '
-                    <div class="message warning">
-                        '.$conf['info'].'
-                    </div> ';
-                }
-                
-                $submitevent = '
-                    document.getElementById(\'submitb\').click();
-                    '.$submit.'
-                    loginButtonSet(\''.t('Connecting...').'\', true); 
-                    this.onclick=null;';
-        ?>
-                <form
-                    name="login"
-                    id="connectform"
-                    target="passwordiframe"
-                    method="POST"
-                    action="blank.php"
-                    onkeypress="
-                        if(event.keyCode == 13) {
-                            <?php echo $submitevent; ?>
-                        }"
-                    >
-                    <div class="element">
-                        <input type="email" name="login" id="login" autofocus required
-                            placeholder="<?php echo t("My address"); ?>"/>
-                    </div>
-                    <div class="element">
-                        <input type="password" name="pass" id="pass" required
-                            placeholder="<?php echo t("Password"); ?>"/>
-                    </div>
-                    <div class="element login">
-                        <a
-                            class="button color green icon yes"
-                            onclick="<?php echo $submitevent; ?>"
-                            id="submit"
-                            name="submit"><?php echo t("Come in!"); ?></a>
-                    </div>
-                    
-                    <input type="submit" id="submitb" name="submitb" value="submit" style="display: none;"/> 
-                    
-                    <div class="clear"></div>
-                    
-					<ul id="loginhelp">
-						<li id="jabber"><?php echo t('You can login using your favorite Jabber account')?>
-						<a href="#" onclick="fillExample('demonstration@movim.eu', 'demonstration');">
-							<?php echo t('or with our demonstration account'); ?>
-						</a>
-						</li>
-						<li id="gmail">
-							<?php echo t('%sGmail accounts are also compatible%s but are not fully supported',
-							'<a href="#" onclick="fillExample(\'your.id@gmail.com \', \'\');">', '</a>')?>
-						</li>
-						<li id="facebook">
-							<?php echo t('You can login with Facebook (chat only) using %s your.id@chat.facebook.com %s and your password',
-								'<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'); ?>
-						</li>
-					</ul>
-					
-                    <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
-                    
-                    <div id="warning"><?php echo $this->displayWarning($_GET['err'], true); ?></div>
-                    <div class="infos">
-                            <?php
-                            $pop = count(scandir(USERS_PATH))-3;
-                            
-                            echo t('Population').' '.$pop.' • ';
-                            ?>
-                            <?php echo t('No account yet ?'); ?>
-                            <a href="<?php echo Route::urlize('account'); ?>">
-                                <?php echo t('Create one !'); ?>
-                            </a>
-                    </div>
-					<div class="clear"></div>
-
-                </form>
-                
-            <?php
-            }
-            ?>
-
-            <div class="admin">
-                <a href="<?php echo Route::urlize('admin'); ?>">
-                    <?php echo t('Administration'); ?>
-                </a>
-            </div>
-        </div>
-    <?php
-
-	}
 }

@@ -499,8 +499,8 @@ ul li input[type=checkbox]:checked ~ .tabbed {
     margin: 0.5em 0px;
     clear: both;
     
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
 }
 
 .message.warning { background-color: #FC8F12; }
