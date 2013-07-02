@@ -19,65 +19,55 @@
 
 class Syndication extends WidgetBase
 {
-    function build()
+    function WidgetLoad()
     {
+        ob_clean();
+        header("Content-Type: application/atom+xml; charset=UTF-8");
+
         $from = $_GET['f'];
+        $node = $_GET['n'];
         
-        if($_GET['n'])
-            $node = $_GET['n'];
-        else
-            $_GET['n'] = false;
+        $this->view->assign('from', $from);
+        $this->view->assign('node', $node);
         
-        if(isset($from)) {          
-            $pd = new \modl\PostnDAO();
-            $messages = $pd->getPublic($from, $node);
+        $pd = new \modl\PostnDAO();
+        $messages = $pd->getPublic($from, $node);
+        $this->view->assign('messages', $messages);
         
-
-            if(!empty($messages)) {
-                header("Content-Type: application/atom+xml; charset=UTF-8");
-                
-                $xml = '
-                    <?xml version="1.0" encoding="utf-8"?>
-                    <feed xmlns="http://www.w3.org/2005/Atom">
-                        <title>'.t("%s's feed",$messages[0]->getContact()->getTrueName()).'</title>
-                        <updated>'.date('c').'</updated>
-                        <author>
-                            <name>'.$messages[0]->getContact()->getTrueName().'</name>
-                            <uri>'.Route::urlize('blog',$messages[0]->getContact()->jid).'</uri>
-                        </author>
-                        <link rel="self" href="'.Route::urlize('feed',$messages[0]->getContact()->jid).'" />
-                        <logo>'.$messages[0]->getContact()->getPhoto('l').'</logo>
-                        
-                        <generator uri="http://movim.eu/" version="'.APP_VERSION.'">
-                          Movim
-                        </generator>
-                        
-                        <id>urn:uuid:60a76c80-d399-11d9-b91C-0003939e0af6</id>';
-                        
-                    foreach($messages as $message) {
-                        $title = $message->title;
-                        if($title == null)
-                            $title = trim(substr(strip_tags(html_entity_decode($message->content)), 0, 40)).'...';
-                        $xml .= '
-                            <entry>
-                                <title>'.prepareString(html_entity_decode($title)).'</title>
-                                <id>urn:uuid:'.$message->nodeid.'</id>
-                                <updated>'.date('c', strtotime($message->published)).'</updated>
-                                <content type="html">
-                                    <![CDATA['.prepareString(html_entity_decode($message->content)).']]>
-                                </content>
-                            </entry>
-                        ';
-                    }
-                $xml .= '
-                    </feed>';
-                echo trim($xml);
-            } else {
-                echo t('No public feed for this contact');
-            }
-
+        // Title and logo
+        
+        // For a Pubsub feed
+        if(isset($from) && isset($node) && $node != '') {
+            $pd = new \modl\NodeDAO();
+            $n = $pd->getNode($from, $node);
+            if(isset($n->title))
+                $this->view->assign('title', $n->title);
+            else
+                $this->view->assign('title', $n->nodeid);
+        // Fir a simple contact
         } else {
-            echo t('No contact specified');
+            $this->view->assign('title', t("%s's feed",$messages[0]->getContact()->getTrueName()));
+            $this->view->assign('logo', $messages[0]->getContact()->getPhoto('l'));
         }
+        
+        $this->view->assign('date', date('c'));
+        $this->view->assign('name', $messages[0]->getContact()->getTrueName());
+        $this->view->assign('uri',  Route::urlize('blog',array($from, $node)));
+        $this->view->assign('link', Route::urlize('feed',array($from, $node)));
+    }
+    
+    function prepareTitle($title) {
+        if($title == null)
+            return trim(substr(strip_tags($title), 0, 40)).'...';
+        else
+            return $this->prepareContent($title);     
+    }
+    
+    function prepareContent($content) {
+        return prepareString($content);
+    }
+    
+    function prepareUpdated($date) {
+        return date('c', strtotime($date));
     }
 }

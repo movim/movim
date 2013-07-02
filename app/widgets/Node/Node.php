@@ -144,7 +144,7 @@ class Node extends WidgetCommon
                 <a
                     href="#"
                     onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").'
-                    this.className=\'button icon color orange loading\'; this.onclick=null;"
+                    this.className=\'button icon color alone orange loading\'; this.onclick=null;"
                     class="button color blue icon alone refresh">
                     
                 </a>
