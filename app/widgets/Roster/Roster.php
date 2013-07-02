@@ -30,6 +30,20 @@ class Roster extends WidgetBase
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
 		$this->registerEvent('presence', 'onPresence');
+        
+        $this->view->assign('offline_shown',  '');
+        $offline_state = Cache::c('offlineshown');
+        
+        $bool = Cache::c('rostershow');
+        if($bool)
+            $this->view->assign('roster_show', 'hide');
+
+        if($offline_state == true)
+            $this->view->assign('offline_shown',  'offlineshown');
+            
+        $this->view->assign('toggle_cache', $this->genCallAjax('ajaxToggleCache', "'offlineshown'"));
+        $this->view->assign('show_hide', $this->genCallAjax('ajaxShowHideRoster'));
+        $this->view->assign('search_contact', $this->genCallAjax('ajaxSearchContact','this.value'));
     }
 
 	function onPresence($presence)
@@ -324,80 +338,6 @@ class Roster extends WidgetBase
             RPC::commit();
         } else 
             Notification::appendNotification(t('Please enter a valid Jabber ID'), 'info');
-    }
-    
-	function build()
-    {
-        $offlineshown = '';
-        $offlineState = Cache::c('offlineshown');
-        
-        $bool = Cache::c('rostershow');
-        if($bool)
-            $rostershow = 'hide';
-
-        if($offlineState == true)
-            $offlineshown = 'offlineshown';        
-	?>
-        <div id="roster" class="<?php echo $rostershow; ?>">
-            <input 
-                type="text" 
-                name="search" 
-                id="request" 
-               
-                autocomplete="off" 
-                onkeyup="rosterSearch(event);" 
-                onclick="focusContact();" 
-                placeholder="<?php echo t('Search');?>"/>
-            <ul id="rosterlist" class="<?php echo $offlineshown; ?>">
-                <?php echo $this->prepareRoster(); ?>
-            </ul>
-            <script type="text/javascript">sortRoster();</script>
-        </div>
-        
-        <div id="rostermenu" class="menubar">
-            <ul class="menu">
-                <li title="<?php echo t('Add'); ?>">
-                    <label class="plus" for="addc"></label>
-                    <input type="checkbox" id="addc"/>
-                    <div class="tabbed">    
-                        <div class="message">                  
-                            <?php echo t('Enter the Jabber ID of your contact.'); ?><br />
-                            <?php echo t('Press enter to validate.'); ?>
-                        </div>  
-                        <input 
-                            name="searchjid" 
-                            class="tiny" 
-                            type="email"
-                            title="<?php echo t('JID'); ?>"
-                            placeholder="user@server.tld" 
-                            onkeypress="
-                                if(event.keyCode == 13) {
-                                    <?php echo 
-                                        $this->genCallAjax(
-                                            'ajaxSearchContact', 
-                                            'this.value'); ?>
-                                    return false;
-                                }"
-                        />
-                    </div>
-                </li>
-                <li 
-                    onclick="<?php echo $this->callAjax('ajaxToggleCache', "'offlineshown'");?>"
-                    title="<?php echo t('Show/Hide'); ?>">
-                    <a class="users" href="#"></a>
-                </li>
-                <div id="chattoggle">
-                    <?php echo $this->prepareChatToggle(); ?>
-                </div>
-                <li 
-                    class="showhide"
-                    onclick="<?php echo $this->callAjax('ajaxShowHideRoster');?>"
-                    title="<?php echo t('Show/Hide'); ?>">
-                    <a class="down" href="#"></a>
-                </li>
-            </ul>
-        </div>
-    <?php
     }
 }
 

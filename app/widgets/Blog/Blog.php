@@ -22,7 +22,7 @@ class Blog extends WidgetCommon {
                 <div class="posthead spacetop">
                         <a 
                             class="button color orange icon feed merged left" 
-                            href="'.Route::urlize('feed',$from).'"
+                            href="'.Route::urlize('feed',array($from, false)).'"
                             target="_blank"
                         >
                             '.t('Feed').' (Atom)

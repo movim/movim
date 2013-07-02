@@ -72,13 +72,13 @@ class Wall extends WidgetCommon
                         <div class="posthead">
                                 <a 
                                     class="button color icon blog merged left" 
-                                    href="'.Route::urlize('blog',$from).'"
+                                    href="'.Route::urlize('blog',array($from, false)).'"
                                     target="_blank"
                                 >
                                     '.t('Blog').'
                                 </a><a 
                                     class="button color orange icon feed merged right" 
-                                    href="'.Route::urlize('feed',$from).'"
+                                    href="'.Route::urlize('feed',array($from, false)).'"
                                     target="_blank"
                                 >
                                     '.t('Feed').' (Atom)
