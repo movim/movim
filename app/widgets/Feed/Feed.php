@@ -24,6 +24,10 @@ class Feed extends WidgetCommon {
         $this->registerEvent('nodecreationerror', 'onNodeCreationError');
         
         $this->registerEvent('config', 'onConfig');
+        
+        $this->view->assign('blog_url', Route::urlize('blog', array($this->user->getLogin(), false)));
+        $this->view->assign('feed_url', Route::urlize('feed',array($this->user->getLogin(), false)));
+        $this->view->assign('friend_url', Route::urlize('friend',$this->user->getLogin()));
     }
     
     function onConfig(array $data)
@@ -201,42 +205,5 @@ class Feed extends WidgetCommon {
         $p = new moxl\MicroblogCreateNode();
         $p->setTo($this->user->getLogin())
           ->request();
-    }
-
-    function build()
-    { 
-    ?>
-    <div id="feed" class="spacetop">
-        <div id="feedhead">
-        <?php
-            echo $this->prepareHead();
-        ?>
-        </div>
-        
-        <div class="posthead">
-            <a 
-                class="button color merged left icon blog" 
-                href="<?php echo Route::urlize('blog',$this->user->getLogin()); ?>"
-                target="_blank">
-                <?php echo t('Blog'); ?>
-            </a><a 
-                class="button color orange merged right icon feed" 
-                href="<?php echo Route::urlize('feed',$this->user->getLogin()); ?>"
-                target="_blank">
-                <?php echo t('Feed'); ?> (Atom)
-            </a>
-
-            <a 
-                class="button color purple icon user oppose" 
-                href="<?php echo Route::urlize('friend',$this->user->getLogin()); ?>">
-                <?php echo t('My Posts');?>
-            </a>
-        </div>
-        
-        <div id="feedcontent">
-            <?php echo $this->prepareFeeds(); ?>
-        </div>
-    </div>
-    <?php
     }
 }

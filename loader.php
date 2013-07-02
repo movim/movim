@@ -57,6 +57,9 @@ require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");
 
 require_once(APP_PATH . "widgets/Notification/Notification.php");
 
+// The template lib
+require_once(LIB_PATH . 'RainTPL.php');
+
 // We set the default timezone to the server timezone
 $conf = Conf::getServerConf();
 date_default_timezone_set($conf['timezone']);

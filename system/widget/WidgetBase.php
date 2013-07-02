@@ -22,7 +22,7 @@ class WidgetBase
 	protected $css = array(); /*< Contains CSS files. */
 	protected $external; /*< Boolean: TRUE if not a system widget. */
 	protected $ajax;	 /*< Contains ajax client code. */
-	protected $xmpp; /*< Jabber instance. */
+    protected $tpl;
     protected $user;
 	protected $name;
 	protected $events;
@@ -40,10 +40,10 @@ class WidgetBase
 
 		$this->ajax = ControllerAjax::getInstance();
         
-        $this->user = new User();
+        $this->user = new User;
 
         $db = modl\Modl::getInstance();
-        $db->setUser(new User());
+        $db->setUser(new User);
 
 		// Generating ajax calls.
 		$refl = new ReflectionClass(get_class($this));
@@ -61,10 +61,25 @@ class WidgetBase
 			}
 		}
         
+        // We load the template engine
+        RainTPL::configure('tpl_dir',      $this->respath('', true));
+        RainTPL::configure('cache_dir',    USERS_PATH);
+        RainTPL::configure('tpl_ext',      'tpl');
+        $this->view = new RainTPL;
+        $this->view->assign('c', $this);
+                
         $this->name = get_class($this);
 
 		$this->WidgetLoad();
 	}
+    
+    function t() {
+        return call_user_func_array('t',func_get_args());
+    }
+    
+    function route() {
+        return call_user_func_array('Route::urlize',func_get_args());
+    }
 
     function WidgetLoad()
     {
@@ -75,6 +90,7 @@ class WidgetBase
 	 */
     function build()
     {
+        echo $this->view->draw(strtolower($this->name), true);
     }
 
 	/**
