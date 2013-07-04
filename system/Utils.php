@@ -99,7 +99,7 @@ function prepareString($string) {
         $string = preg_replace('/(^|[ ])('.$key.')/',  $replace, $string);
     }
 
-    return trim($string);
+    return rtrim(trim($string), '<br />');
 }
 
 /**

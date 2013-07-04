@@ -143,7 +143,7 @@ class WidgetCommon extends WidgetBase {
 		$links = unserialize($links);
 
 		foreach($links as $l) {
-			if($l['rel'] == 'enclosure') {
+            if($l['rel'] == 'enclosure') {
 				if(isset($l['thumb']))
 					$enc .= '
 						<a href="'.$l['href'].'" class="imglink" target="_blank">
@@ -160,7 +160,13 @@ class WidgetCommon extends WidgetBase {
 					<a href="'.$l['href'].'" class="imglink" target="_blank">
 						'.$l['title'].'
 					</a>';
-			}
+			} elseif(isset($l['href'])) {
+                if(substr($l['href'], 0, 5) != 'xmpp:')
+                    $enc .= '
+                        <a href="'.$l['href'].'" class="imglink" target="_blank">
+                            '.$l['href'].'
+                        </a>';                
+            }
 		}
 		
 		return $enc;
