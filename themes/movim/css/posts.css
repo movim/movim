@@ -59,8 +59,9 @@
 
 .post .enclosure {
     border-top: 1px solid #DDD;
-    padding: 0.7em 0em 1em;
+    padding: 0.5em 0em 1em;
     line-height: 1em;
+    margin-top: 1em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -257,6 +258,13 @@
     margin-left: 0px;
     padding-left: 0px;
 }
+
+.post .content h3 {
+    color: #333;
+    line-height: 2em;
+    font-size: 1.1em;
+}
+
 .post .content ul, .post .content ol {
     margin-left: 2em;
 }

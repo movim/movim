@@ -1,4 +1,4 @@
-<div id="feed" class="spacetop">
+<div id="feed" class="spacetop tabelem"  title="{$c->t('Feed')}">
     <div id="feedhead">
     {$c->prepareHead()}
     </div>
@@ -26,6 +26,8 @@
     
     
     <div id="feedcontent">
-        {$c->prepareFeeds()}
+        <div id="feedposts">
+            {$feeds}
+        </div>
     </div>
 </div>
