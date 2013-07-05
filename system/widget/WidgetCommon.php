@@ -86,7 +86,7 @@ class WidgetCommon extends WidgetBase {
                     <div class="clear"></div>
                 </div>';
 
-        $content = prepareString(html_entity_decode($post->content, ENT_HTML5, 'UTF-8'));
+        $content = prepareString(html_entity_decode($post->content, ENT_HTML5));
         
         if($post->node == 'urn:xmpp:microblog:0')
             $comments = $this->printComments($post, $comments, $public);
