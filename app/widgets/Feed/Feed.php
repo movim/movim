@@ -28,6 +28,8 @@ class Feed extends WidgetCommon {
         $this->view->assign('blog_url', Route::urlize('blog', array($this->user->getLogin(), false)));
         $this->view->assign('feed_url', Route::urlize('feed',array($this->user->getLogin(), false)));
         $this->view->assign('friend_url', Route::urlize('friend',$this->user->getLogin()));
+        
+        $this->view->assign('feeds', $this->prepareFeed(-1));
     }
     
     function onConfig(array $data)
@@ -151,7 +153,7 @@ class Feed extends WidgetCommon {
         return $html;
     }
     
-    function prepareNews($start) {
+    /*function prepareNews($start) {
         $pd = new \modl\PostnDAO();
         $pl = $pd->getNews($start+1, $this->_feedsize);
 
@@ -160,9 +162,9 @@ class Feed extends WidgetCommon {
         $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetNews');
         
         return $html;
-    }
+    }*/
     
-    function prepareFeeds() {
+    /*function prepareFeeds() {
         $html = '
             <div class="tabelem" id="feedposts" title="'.t('Feed').'">
                 '.$this->prepareFeed(-1).'
@@ -171,7 +173,7 @@ class Feed extends WidgetCommon {
                 '.$this->prepareNews(-1).'
             </div>';
         return $html;
-    }
+    }*/
 
     function ajaxGetFeed($start) {
         $html = $this->prepareFeed($start);        
@@ -179,14 +181,14 @@ class Feed extends WidgetCommon {
         RPC::commit();
     }
 
-    function ajaxGetNews($start) {
+    /*function ajaxGetNews($start) {
         $html = $this->prepareNews($start);        
         RPC::call('movim_append', 'newsposts', $html);
         RPC::commit();
-    }
+    }*/
         
     function onStream($payload) {
-        $html = $this->prepareFeeds();
+        $html = $this->prepareFeed(-1);
         
         if($html == '') 
             $html = '
@@ -195,8 +197,6 @@ class Feed extends WidgetCommon {
                 </div>';
 
         RPC::call('movim_fill', 'feedcontent', $html);
-        RPC::call('createTabs');
-
         RPC::commit();
     }
     
