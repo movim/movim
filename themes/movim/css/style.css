@@ -224,8 +224,10 @@ pre {
     padding: 1em 0em;
 }
 
-code {
+code, code span, .post code span {
+    font-size: 0.9em;
     font-family: monospace;
+    font-weight: normal;
 }
 
 /* For the simple xHTML lists */

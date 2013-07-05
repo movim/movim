@@ -143,18 +143,12 @@ class WidgetCommon extends WidgetBase {
 		$links = unserialize($links);
 
 		foreach($links as $l) {
-            if($l['rel'] == 'enclosure') {
-				if(isset($l['thumb']))
-					$enc .= '
-						<a href="'.$l['href'].'" class="imglink" target="_blank">
-							<img src="'.$l['thumb']['href'].'"/>
-						</a>
-					';
-				else
-					$enc .= '
-						<a href="'.$l['href'].'" class="imglink" target="_blank">
-							<img src="'.$l['href'].'"/>
-						</a>';
+            if($l['rel'] == 'enclosure'
+            && $l['type'] != 'text/html') {
+                $enc .= '
+                    <a href="'.$l['href'].'" class="imglink" target="_blank">
+                        <img src="'.$l['href'].'"/>
+                    </a>';
 			} elseif($l['rel'] == 'alternate' && isset($l['title'])) {
 				$enc .= '
 					<a href="'.$l['href'].'" class="imglink" target="_blank">
