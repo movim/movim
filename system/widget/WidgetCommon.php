@@ -97,6 +97,7 @@ class WidgetCommon extends WidgetBase {
             $toolbox = $this->getToolbox($post);
         
         $html = '
+            <span id="'.md5($post->nodeid).'"></span>
             <div class="post '.$class.'" id="'.$post->nodeid.'">
                 <div class="'.$access.'" title="'.getFlagTitle($flagcolor).'" style="z-index:1;"></div>
                 <a href="'.Route::urlize('friend', $post->jid).'">
@@ -276,6 +277,47 @@ class WidgetCommon extends WidgetBase {
                 $tmp .= '</div>';
         return $tmp;
 
+    }
+    
+    protected function printMap($posts) {
+        $html = '<div style="height: 15em;" id="postsmap"></div>';
+        
+        $javascript = '
+            <script type="text/javascript">
+            var postsmap = L.map("postsmap").setView([40,0], 2);
+            
+            L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Mapnik ©",
+                maxZoom: 18
+            }).addTo(postsmap);';
+        
+        $id = 0;
+        
+        $posfound = false;
+        
+        foreach($posts as $post) {
+            if($post->getPlace() != false) {
+                $posfound = true;
+                
+                $javascript .= "
+                    var marker".$id." = L.marker([".$post->lat.",".$post->lon."]).addTo(postsmap);
+                    marker".$id.".on('click', function() {document.location = '#".md5($post->nodeid)."'});
+                    "; 
+                    
+                $bound .= '['.$post->lat.','.$post->lon.'],';
+                    
+                $id++;
+            }
+        }
+        
+        $javascript .= '
+        postsmap.fitBounds(['.$bound.']);
+        </script>';
+        
+        if($posfound)
+            return $html.$javascript;
+        else
+            return '';
     }
     
     /*
