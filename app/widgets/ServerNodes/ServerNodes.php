@@ -138,9 +138,9 @@ class ServerNodes extends WidgetCommon
     
     function onCreationSuccess($items)
     {        
-        $html = '<a href="?q=node&s='.
-            $items[0].'&n='.
-            $items[1].'">'.$items[2].'</a>';
+        $html = '<a href="
+            '.Route::urlize('node', array($items[0], $items[1])).'
+            ">'.$items[2].'</a>';
 
         RPC::call('movim_fill', 'servernodes', $html);
         RPC::commit();

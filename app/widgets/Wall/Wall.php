@@ -68,8 +68,10 @@ class Wall extends WidgetCommon
         
         if(count($pl) > 0 && $htmlmessages != false) {
             if($start == -1) {
+                $html .= $this->printMap($pl);
+                
                 $html .= '
-                        <div class="posthead">
+                        <div class="posthead spacetop">
                                 <a 
                                     class="button color icon blog merged left" 
                                     href="'.Route::urlize('blog',array($from, false)).'"
@@ -96,6 +98,7 @@ class Wall extends WidgetCommon
                                 </a>
                         </div>';
             }
+            
             $html .= $htmlmessages;
             if(count($pl) > 9)
                 $html .= '
@@ -126,7 +129,7 @@ class Wall extends WidgetCommon
 	function build()
 	{
 		?>
-		<div class="tabelem spacetop" id="wall" title="<?php echo t('Feed');?>" >
+		<div class="tabelem" id="wall" title="<?php echo t('Feed');?>" >
             <div class="protect orange" title="<?php echo getFlagTitle("orange");?>"></div>
             <div id="<?php echo stringToUri($_GET['f'].'urn:xmpp:microblog:0'); ?>">
             <?php 
