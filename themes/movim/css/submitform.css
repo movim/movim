@@ -20,7 +20,7 @@ table#feedsubmitform {
 }
 
 #feedsubmitform textarea {
-    width: 100%;
+    width: 96%;
     border: none;
     margin: 1em;
     resize: none;
