@@ -203,7 +203,7 @@ class WidgetCommon extends WidgetBase {
                     onclick="'.
                         $this->genCallAjax(
                             'ajaxDeletePost', 
-                            "'".$this->user->getLogin()."'",
+                            "'".$post->from."'",
                             "'".$post->node."'",
                             "'".$post->nodeid."'").'" >
                     ✔ '.t("Yes").' 
@@ -280,7 +280,7 @@ class WidgetCommon extends WidgetBase {
     }
     
     protected function printMap($posts) {
-        $html = '<div style="height: 15em;" id="postsmap"></div>';
+        $html = '<div style="height: 13em;" id="postsmap"></div>';
         
         $javascript = '
             <script type="text/javascript">
