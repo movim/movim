@@ -23,7 +23,9 @@ if($f = fopen($file, 'r')) {
 	}
     // Determining the protocol to use.
     $uri = "http://";
-    if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "") {
+    if((
+        isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "") 
+    || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == "https")) {
         $uri = 'https://';
     }
 
