@@ -237,16 +237,9 @@
     max-width: 100%;
     width: auto;
     height: auto;
-    margin: 1em;
-    /*max-height: 15em;*/
+    margin: 1em 0;
+    margin-right: 1em;
 }
-
-/*.post .content img:hover {
-    width: auto;
-    height: auto;
-    max-width: 80%;
-    max-height: 80%;
-}*/
 
 .post .content img.smiley {
     margin: 0px;

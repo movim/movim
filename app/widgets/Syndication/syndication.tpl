@@ -8,18 +8,18 @@
                 <name>{$name}</name>
                 <uri>{$uri}</uri>
             </author>
-            <link rel="self" href="{$link}" />
+            {$link}
             <logo>{$logo}</logo>
             
             <generator uri="http://movim.eu/" version="{#APP_VERSION#}">
               Movim
             </generator>
             
-            <id>urn:uuid:60a76c80-d399-11d9-b91C-0003939e0af6</id>
+            <id>urn:uuid:{$uuid}</id>
             {loop="messages"}
             <entry>
                 <title>{$c->prepareTitle($value->title)}</title>
-                <id>urn:uuid:{$value->nodeid}</id>
+                <id>urn:uuid:{$c->generateUUID()}</id>
                 <updated>{$c->prepareUpdated($value->published)}</updated>
                 <content type="html">
                     <![CDATA[{$c->prepareContent($value->content)}]]>

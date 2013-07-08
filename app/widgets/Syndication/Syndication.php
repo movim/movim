@@ -53,7 +53,8 @@ class Syndication extends WidgetBase
             $this->view->assign('date', date('c'));
             $this->view->assign('name', $messages[0]->getContact()->getTrueName());
             $this->view->assign('uri',  Route::urlize('blog',array($from, $node)));
-            $this->view->assign('link', Route::urlize('feed',array($from, $node)));
+            $this->view->assign('link', '<link rel="self" href="'.Route::urlize('feed',array($from, $node)).'"/>');
+            $this->view->assign('uuid', generateUUID());
         }
     }
     
@@ -65,9 +66,13 @@ class Syndication extends WidgetBase
     }
     
     function prepareContent($content) {
-        return prepareString($content);
+        return cleanHTMLTags(prepareString($content));
     }
-    
+
+    function generateUUID() {
+        return generateUUID();
+    }
+
     function prepareUpdated($date) {
         return date('c', strtotime($date));
     }
