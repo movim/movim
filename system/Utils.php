@@ -102,6 +102,19 @@ function prepareString($string) {
     return trim($string);
 }
 
+function cleanHTMLTags($string) {
+    return str_replace(
+        array(
+            '<content type="html">',
+            '<html xmlns="http://jabber.org/protocol/xhtml-im">',
+            '<body xmlns="http://www.w3.org/1999/xhtml">',
+            '</body>',
+            '</html>', 
+            '</content>'),
+        '',
+        $string);
+}
+
 /**
  * Return a human-readable date 
  *
@@ -164,21 +177,6 @@ function prepareDate($time, $hours = true) {
     if($time)
         return $date;
 }
-
-/**
- * Generate a ramdom hash
- *
- * @return string
- */
-/*function generateHash(){
-    $result = "";
-    $charPool = '0123456789abcdefghijklmnopqrstuvwxyz';
-
-    for($p = 0; $p<15; $p++)
-        $result .= $charPool[mt_rand(0,strlen($charPool)-1)];
-
-    return sha1($result);
-}*/
 
 /**
  * Return the list of gender
@@ -636,6 +634,18 @@ function sizeToCleanSize($size)
     $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
     $power = $size > 0 ? floor(log($size, 1024)) : 0;
     return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+}
+
+/*
+ * Generate a standard UUID
+ */
+function generateUUID() {
+    $data = openssl_random_pseudo_bytes(16);
+
+    $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0010
+    $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set bits 6-7 to 10
+
+    return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
 }
 
 
