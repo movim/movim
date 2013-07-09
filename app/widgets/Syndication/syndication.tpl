@@ -19,7 +19,7 @@
             {loop="messages"}
             <entry>
                 <title>{$c->prepareTitle($value->title)}</title>
-                <id>urn:uuid:{$c->generateUUID()}</id>
+                <id>urn:uuid:{$c->generateUUID($value->content)}</id>
                 <updated>{$c->prepareUpdated($value->published)}</updated>
                 <content type="html">
                     <![CDATA[{$c->prepareContent($value->content)}]]>
