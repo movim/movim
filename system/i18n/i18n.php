@@ -51,7 +51,11 @@ function t($string)
 	if(isset($translations[$string])) {
         $lstring = $translations[$string];
 	}
-
+    
+    // For compiled lang files, set en english default if no translation
+    if($lstring == '')
+        $lstring = $string;
+    
     if(func_num_args() > 1) {
         $args = func_get_args();
         $args[0] = $lstring; // Replacing with the translated string.
@@ -66,7 +70,8 @@ function get_quoted_string($string)
 	$matches = array();
 	preg_match('#"(.+)"#', $string, $matches);
 
-	return $matches[1];
+    if(isset($matches[1]))
+        return $matches[1];
 }
 
 /**
@@ -105,7 +110,7 @@ function parse_lang_file($pofile)
 			$msgstr = get_quoted_string($line);
 		}
 		else {
-			$$last_token .= get_quoted_string($line);
+			$last_token .= get_quoted_string($line);
 		}
 	}
 	if($last_token == "msgstr") {
@@ -160,7 +165,12 @@ function load_language($lang)
 		return true;
 	}
 
-	$translations = parse_lang_file(BASE_PATH . '/locales/' . $lang . '.po');
+    // Here we load the compiled language file
+    if(file_exists(BASE_PATH . '/cache/locales/' . $lang . '.php')) {
+        // And we set our gloabl $translations
+        require_once(BASE_PATH . '/cache/locales/' . $lang . '.php');
+    } else
+        $translations = parse_lang_file(BASE_PATH . '/locales/' . $lang . '.po');
 
 	$language = $lang;
 
