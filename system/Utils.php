@@ -66,8 +66,8 @@ function prepareString($string) {
             ':lol:' => 'trollol.png',
         );
     
-    $fixer = new HtmlFixer();
-    $string = $fixer->getFixedHtml($string);
+    //$fixer = new HtmlFixer();
+    //$string = $fixer->getFixedHtml($string);
     
     $string = str_replace('<a ', '<a target="_blank" ', $string);
 
