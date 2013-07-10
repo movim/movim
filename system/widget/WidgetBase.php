@@ -62,10 +62,11 @@ class WidgetBase
 		}
         
         // We load the template engine
-        RainTPL::configure('tpl_dir',      $this->respath('', true));
-        RainTPL::configure('cache_dir',    USERS_PATH);
-        RainTPL::configure('tpl_ext',      'tpl');
         $this->view = new RainTPL;
+        $this->view->configure('tpl_dir',      $this->respath('', true));
+        $this->view->configure('cache_dir',    USERS_PATH);
+        $this->view->configure('tpl_ext',      'tpl');
+
         $this->view->assign('c', $this);
                 
         $this->name = get_class($this);
@@ -90,7 +91,17 @@ class WidgetBase
 	 */
     function build()
     {
-        echo trim($this->view->draw(strtolower($this->name), true));
+        echo $this->draw();
+    }
+    
+    /**
+     * Return the template's HTML code 
+     * @param a specific template name to load (like Ruby partials)
+     * @param load the parent template, like for WidgetCommon
+     */
+    function draw()
+    {
+        return trim($this->view->draw(strtolower($this->name), true));
     }
 
 	/**
@@ -98,20 +109,25 @@ class WidgetBase
 	 * @param file is the file's name to make up the path for.
 	 * @param fspath is optional, returns the OS path if true, the URL by default.
 	 */
-	protected function respath($file, $fspath = false)
+	protected function respath($file, $fspath = false, $parent = false)
 	{
-        $path = "";
+        if($parent == false)
+            $folder = get_class($this);
+        else
+            $folder = get_parent_class($this);
+        
+        $path = '';
         if(!$this->external) {
             $path = 'app/';
         }
-        $path .= 'app/widgets/' . get_class($this) . '/' . $file;
+        $path .= 'app/widgets/' . $folder . '/' . $file;
 
         if($fspath) {
             $path = BASE_PATH . $path;
         } else {
             $path = BASE_URI . $path;
         }
-
+        
         return $path;
 	}
     
