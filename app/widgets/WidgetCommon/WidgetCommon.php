@@ -105,37 +105,30 @@ class WidgetCommon extends WidgetBase {
             
         if($this->user->getLogin() == $post->jid) 
             $toolbox = $this->getToolbox($post);
+            
+        $view = $this->loadTemplate();
+        $view->assign('idhash',     md5($post->nodeid));
+        $view->assign('id',         $post->nodeid);
+        $view->assign('class',      $class);
+        $view->assign('access',     $access);
+        $view->assign('flagtitle',  getFlagTitle($flagcolor));
+        $view->assign('friend',     Route::urlize('friend', $post->jid));
+        $view->assign('avatar',     '<img class="avatar" src="'.$avatar.'"/>');
+        $view->assign('title',      $title);
+        $view->assign('contact',    $c);
+        $view->assign('date',       prepareDate(strtotime($post->published)));
         
-        $html = '
-            <span id="'.md5($post->nodeid).'"></span>
-            <div class="post '.$class.'" id="'.$post->nodeid.'">
-                <div class="'.$access.'" title="'.getFlagTitle($flagcolor).'" style="z-index:1;"></div>
-                <a href="'.Route::urlize('friend', $post->jid).'">
-                    <img class="avatar" src="'.$avatar.'">
-                </a>
+        $view->assign('content',    $content);
+        $view->assign('tags',       $tags);
+        $view->assign('toolbox',    $toolbox);
+        $view->assign('enc',        $enc);
+        $view->assign('comments',   $comments);
+        $view->assign('place',      $place);
+        $view->assign('recycle',    $recycle);
+        $view->assign('group',      $group);
+        
+        $html = $view->draw('_post', true);
 
-                <div id="'.$post->nodeid.'bubble" class="postbubble">
-					<div class="header">
-						<span class="title">'.$title.'</span>
-						'.$c.'
-						<span class="date">
-							'.prepareDate(strtotime($post->published)).'
-						</span>
-                    </div>
-                    <div class="content">
-                    '.$content.'<br />
-                    </div>
-                    '.$tags.'
-					'.$toolbox.'
-                    '.$enc.'
-                    '.$comments.'
-                    '.$place.'
-                    '.$recycle.'
-                    '.$group.'
-                </div>  
-                        
-            </div>
-            ';
         return $html;
     }
     
@@ -208,6 +201,28 @@ class WidgetCommon extends WidgetBase {
     }
     
     protected function printComments($post, $comments, $public = false) {
+        
+        $view = $this->loadTemplate();
+        $view->assign('post',       $post);
+        $view->assign('comments',   $this->prepareComments($comments));
+        $view->assign('getcomments',
+            $this->genCallAjax(
+                'ajaxGetComments', 
+                "'".$post->from."'", 
+                "'".$post->nodeid."'")
+            );
+            
+        $view->assign('publishcomment',
+            $this->genCallAjax(
+                'ajaxPublishComment', 
+                "'".$post->commentplace."'", 
+                "'".$post->nodeid."'", 
+                "encodeURIComponent(document.getElementById('".$post->nodeid."commentcontent').value)")
+            );
+        
+        $html = $view->draw('_comments_toolbox', true);
+        
+        /*
         $tmp .= '
             <div class="comments" id="'.$post->nodeid.'comments">';
 
@@ -258,8 +273,8 @@ class WidgetCommon extends WidgetBase {
                             </tr>
                         </table>';
         }
-        $tmp .= '</div>';
-        return $tmp;
+        $tmp .= '</div>';*/
+        return $html;
 
     }
     
