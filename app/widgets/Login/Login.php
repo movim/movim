@@ -144,7 +144,7 @@ class Login extends WidgetBase {
                 case 'mecerror':
                     $warning = '
                             <div class="message warning">
-                                '.t('The server takes too much time to repond').'
+                                '.t('The server takes too much time to respond').'
                             </div>';
                     break;
             }

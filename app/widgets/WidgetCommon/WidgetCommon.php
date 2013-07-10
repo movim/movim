@@ -17,9 +17,13 @@
 
 class WidgetCommon extends WidgetBase {
     private function loadTemplate() {
-        $this->view = new RainTPL;
-        $this->view->configure('tpl_dir', $this->respath('', true, true));  
-        $this->view->assign('c', $this);
+        $view = new RainTPL;
+        $view->configure('tpl_dir', APP_PATH.'widgets/WidgetCommon/'); 
+        $view->configure('cache_dir',    USERS_PATH);
+        $view->configure('tpl_ext',      'tpl'); 
+        $view->assign('c', $this);
+        
+        return $view;
     }
     
     protected function printPost($post, $comments = false, $public = false) {
@@ -174,23 +178,23 @@ class WidgetCommon extends WidgetBase {
 	}
     
     private function getToolbox($post) {
-        /*$this->loadTemplate();
+        $view = $this->loadTemplate();
         
-        $this->view->assign(
+        $view->assign(
             'privacy_post_orange', 
             $this->genCallAjax(
                 'ajaxPrivacyPost', 
                 "'".$post->nodeid."'",
                 "'orange'"));
                 
-        $this->view->assign(
+        $view->assign(
             'privacy_post_black', 
             $this->genCallAjax(
                 'ajaxPrivacyPost', 
                 "'".$post->nodeid."'",
                 "'black'"));
                 
-        $this->view->assign(
+        $view->assign(
             'delete_post', 
             $this->genCallAjax(
                 'ajaxDeletePost', 
@@ -198,65 +202,63 @@ class WidgetCommon extends WidgetBase {
                 "'".$post->node."'",
                 "'".$post->nodeid."'"));
                 
-        $html = $this->draw('_post_toolbox', true);
+        $html = $view->draw('_post_toolbox', true);
         
-        RainTPL::configure('tpl_dir', $this->respath('', true));   
-        */
         return $html;
     }
     
     protected function printComments($post, $comments, $public = false) {
-                $tmp .= '
-                    <div class="comments" id="'.$post->nodeid.'comments">';
+        $tmp .= '
+            <div class="comments" id="'.$post->nodeid.'comments">';
 
-                $commentshtml = $this->prepareComments($comments);
-                
-                if($commentshtml != false)
-                    $tmp .= $commentshtml;
+        $commentshtml = $this->prepareComments($comments);
+        
+        if($commentshtml != false)
+            $tmp .= $commentshtml;
 
-                if($public == false) {
-                    $tmp .= '
-                             <div class="comment">
-                                    <a 
-                                        class="getcomments icon chat" 
-                                        onclick="'.$this->genCallAjax('ajaxGetComments', "'".$post->commentplace."'", "'".$post->nodeid."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
-                                            t('Get the comments').'
+        if($public == false) {
+            $tmp .= '
+                     <div class="comment">
+                            <a 
+                                class="getcomments icon chat" 
+                                onclick="'.$this->genCallAjax('ajaxGetComments', "'".$post->commentplace."'", "'".$post->nodeid."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
+                                    t('Get the comments').'
+                            </a>
+                        </div></div>';
+            $tmp .= '<div class="comments">
+                        <div 
+                            class="comment"
+                            onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
+                            <a class="addcomment icon chat">'.t('Add a comment').'</a>
+                        </div>
+                        <table id="commentsubmit">
+                            <tr>
+                                <td>
+                                    <textarea id="'.$post->nodeid.'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
+                                </td>
+                            </tr>
+                            <tr class="commentsubmitrow">
+                                <td style="width: 100%;"></td>
+                                <td>
+                                    <a
+                                        onclick="
+                                                if(document.getElementById(\''.$post->nodeid.'commentcontent\').value != \'\') {
+                                                    '.$this->genCallAjax(
+                                                        'ajaxPublishComment', 
+                                                        "'".$post->commentplace."'", 
+                                                        "'".$post->nodeid."'", 
+                                                        "encodeURIComponent(document.getElementById('".$post->nodeid."commentcontent').value)").
+                                                        'document.getElementById(\''.$post->nodeid.'commentcontent\').value = \'\';
+                                                }"
+                                        class="button color green icon yes"
+                                    >'.
+                                        t("Submit").'
                                     </a>
-                                </div></div>';
-                    $tmp .= '<div class="comments">
-                                <div 
-                                    class="comment"
-                                    onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
-                                    <a class="addcomment icon chat">'.t('Add a comment').'</a>
-                                </div>
-                                <table id="commentsubmit">
-                                    <tr>
-                                        <td>
-                                            <textarea id="'.$post->nodeid.'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
-                                        </td>
-                                    </tr>
-                                    <tr class="commentsubmitrow">
-                                        <td style="width: 100%;"></td>
-                                        <td>
-                                            <a
-                                                onclick="
-                                                        if(document.getElementById(\''.$post->nodeid.'commentcontent\').value != \'\') {
-                                                            '.$this->genCallAjax(
-                                                                'ajaxPublishComment', 
-                                                                "'".$post->commentplace."'", 
-                                                                "'".$post->nodeid."'", 
-                                                                "encodeURIComponent(document.getElementById('".$post->nodeid."commentcontent').value)").
-                                                                'document.getElementById(\''.$post->nodeid.'commentcontent\').value = \'\';
-                                                        }"
-                                                class="button color green icon yes"
-                                            >'.
-                                                t("Submit").'
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table>';
-                }
-                $tmp .= '</div>';
+                                </td>
+                            </tr>
+                        </table>';
+        }
+        $tmp .= '</div>';
         return $tmp;
 
     }
@@ -397,11 +399,11 @@ class WidgetCommon extends WidgetBase {
     }
     
     protected function prepareSubmitForm($server = '', $node = '') {  
-        /*$this->loadTemplate();
+        $view = $this->loadTemplate();
                 
-        $this->view->assign('toggle_position', $this->genCallAjax('ajaxShowPosition', "'poss'"));
+        $view->assign('toggle_position', $this->genCallAjax('ajaxShowPosition', "'poss'"));
         
-        $this->view->assign(
+        $view->assign(
             'publish_item', 
             $this->genCallAjax(
                 'ajaxPublishItem', 
@@ -409,13 +411,13 @@ class WidgetCommon extends WidgetBase {
                 "'".$node."'",
                 "movim_parse_form('postpublish')"));
                 
-        $this->view->assign(
+        $view->assign(
             'post_preview',
             $this->genCallAjax(
                 'ajaxPostPreview', 
                 "document.querySelector('#postpublishcontent').value"));
                 
-        $html = $this->view->draw('_submit_form', true);*/
+        $html = $view->draw('_submit_form', true);
                 
 		return $html;
 	}
