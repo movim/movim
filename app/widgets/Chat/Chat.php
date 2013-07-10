@@ -396,26 +396,8 @@ class Chat extends WidgetBase
                             onkeypress="
                                 if(event.keyCode == 13) {
                                     '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
-                                    lastkeypress = new Date().getTime()+1000;
                                     return false;
-                                }
-
-                                if(lastkeypress < new Date().getTime())
-                                    '.$this->genCallAjax('ajaxSendComposing', "'".$contact->jid."'").'
-
-                                lastkeypress = new Date().getTime()+1000;
-                            "
-                            onkeyup="
-                                movim_textarea_autoheight(this);
-                                var val = this.value;
-                                setTimeout(function()
-                                {
-                                    if(lastkeypress < new Date().getTime() && val != \'\') {
-                                    '.$this->genCallAjax('ajaxSendPaused', "'".$contact->jid."'").'
-                                        lastkeypress = new Date().getTime()+1000;
-                                    }
-                                },1100); // Listen for 2 seconds of silence
-                            "
+                                }"
                         ></textarea>
                     </div>
                 </div>
@@ -429,6 +411,32 @@ class Chat extends WidgetBase
 
             ';
         return $html;
+        
+/* This is the un optimized system to send "composing" and "paused"
+ *    onkeypress="
+        if(event.keyCode == 13) {
+            '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
+            lastkeypress = new Date().getTime()+1000;
+            return false;
+        }
+
+        if(lastkeypress < new Date().getTime())
+            '.$this->genCallAjax('ajaxSendComposing', "'".$contact->jid."'").'
+
+        lastkeypress = new Date().getTime()+1000;
+    "
+    onkeyup="
+        movim_textarea_autoheight(this);
+        var val = this.value;
+        setTimeout(function()
+        {
+            if(lastkeypress < new Date().getTime() && val != \'\') {
+            '.$this->genCallAjax('ajaxSendPaused', "'".$contact->jid."'").'
+                lastkeypress = new Date().getTime()+1000;
+            }
+        },1100); // Listen for 2 seconds of silence
+    "
+    * */
     }
     
     function build()
