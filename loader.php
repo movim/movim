@@ -17,7 +17,6 @@ require_once(SYSTEM_PATH . "i18n/i18n.php");
 
 require_once(SYSTEM_PATH . "Session.php");
 require_once(SYSTEM_PATH . "Utils.php");
-require_once(SYSTEM_PATH . "UtilsString.php");
 require_once(SYSTEM_PATH . "UtilsPicture.php");
 require_once(SYSTEM_PATH . "Cache.php");
 require_once(SYSTEM_PATH . "Conf.php");
@@ -52,9 +51,9 @@ require_once(SYSTEM_PATH . "Route.php");
 require_once(SYSTEM_PATH . "Tpl/TplPageBuilder.php");
 
 require_once(SYSTEM_PATH . "widget/WidgetBase.php");
-require_once(SYSTEM_PATH . "widget/WidgetCommon.php");
 require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");
 
+require_once(APP_PATH . "widgets/WidgetCommon/WidgetCommon.php");
 require_once(APP_PATH . "widgets/Notification/Notification.php");
 
 // The template lib
