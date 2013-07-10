@@ -34,7 +34,7 @@ function comploc() {
     $folder = 'cache/locales/';
     
     if(!file_exists($folder)) {
-        $bool = mkdir();
+        $bool = mkdir($folder);
         if(!$bool) {
             echo "The locales cache folder can't be created";
             exit;
