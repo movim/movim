@@ -64,7 +64,7 @@ class WidgetBase
         // We load the template engine
         $this->view = new RainTPL;
         $this->view->configure('tpl_dir',      $this->respath('', true));
-        $this->view->configure('cache_dir',    USERS_PATH);
+        $this->view->configure('cache_dir',    CACHE_PATH);
         $this->view->configure('tpl_ext',      'tpl');
 
         $this->view->assign('c', $this);
