@@ -213,9 +213,9 @@ class Roster extends WidgetBase
         // get the current showing state of the group and the offline contacts
 		$groupState = Cache::c('group'.$currentgroup);
 
-        if($groupState == true)
+        if($groupState == false)
             $groupshown = 'groupshown';
-
+            
         $count = $i-$j;
 		
         $grouphtml = '
