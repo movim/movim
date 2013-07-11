@@ -11,6 +11,7 @@ define('APP_PATH',      BASE_PATH . 'app/');
 define('SYSTEM_PATH',   BASE_PATH . 'system/');
 define('LIB_PATH',      BASE_PATH . 'lib/');
 define('LOCALES_PATH',  BASE_PATH . 'locales/');
+define('CACHE_PATH',    BASE_PATH . 'cache/');
 
 // Loads up all system libraries.
 require_once(SYSTEM_PATH . "i18n/i18n.php");

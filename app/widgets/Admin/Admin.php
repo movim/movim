@@ -61,6 +61,12 @@ class Admin extends WidgetBase {
             echo t("Couldn't create directory '%s'.", 'config');
             return false;
         }
+        
+        if(!file_exists(BASE_PATH.'users') && !@mkdir(BASE_PATH.'users')) {
+            echo t("Couldn't create directory '%s'.", 'users');
+            return false;
+        } else
+            touch(BASE_PATH.'users/index.html');
     }
     
     private function listThemes()
