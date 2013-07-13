@@ -19,7 +19,7 @@ class WidgetCommon extends WidgetBase {
     private function loadTemplate() {
         $view = new RainTPL;
         $view->configure('tpl_dir', APP_PATH.'widgets/WidgetCommon/'); 
-        $view->configure('cache_dir',    USERS_PATH);
+        $view->configure('cache_dir',    CACHE_PATH);
         $view->configure('tpl_ext',      'tpl'); 
         $view->assign('c', $this);
         
@@ -208,7 +208,7 @@ class WidgetCommon extends WidgetBase {
         $view->assign('getcomments',
             $this->genCallAjax(
                 'ajaxGetComments', 
-                "'".$post->from."'", 
+                "'".$post->commentplace."'", 
                 "'".$post->nodeid."'")
             );
             
