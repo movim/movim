@@ -1,19 +1,15 @@
-body {
-    padding-right: 0px;
-}
-
-footer {
-    display: none;
-}
-
 #connection {
-    margin: 0 auto;
-    margin-top: 10%;
-    color: white;
     text-align: center;
+    overflow: hidden;
+    
+    white-space: nowrap;
+    vertical-align: middle;
+
+    text-overflow: ellipsis;
+    margin: -1em;
+    padding-bottom: 1em;
 }
 
-#connection #countdown {
-    line-height: 2em;
-    font-size: 1.5em;
+#connection span#countdown {
+    line-height: 3em;
 }
