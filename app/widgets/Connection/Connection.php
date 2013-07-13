@@ -28,24 +28,26 @@ class Connection extends WidgetBase
     
     function onConnection($value)
     {
-        if($value <= 10)
+        /*if($value <= 10)
             RPC::call('movim_redirect', Route::urlize('main'));
-        else {
+        else {*/
+        if($value >= 10) {
             $value = floor(($value-10)/10);
-            RPC::call('movim_fill', 'countdown', $value);   
-        }
+            
+            if($value == 0)
+                RPC::call('movim_fill', 'countdown', '');
+            else
+                RPC::call('movim_fill', 'countdown', t('Please wait ').$value);   
+        } else
+        //}
         RPC::commit();
     }
 
     function build()
     {
     ?>
-        <script type="text/javascript">
-            setTimeout("<?php //echo $this->callAjax('ajaxSetPresence');?>", 1000);
-        </script>
         <div id="connection">
-            <?php echo t('Loading your session...'); ?>
-            <div id="countdown"></div>
+            <span id="countdown"></span>
         </div>
     <?php
     }
