@@ -240,6 +240,11 @@ class Login extends WidgetBase {
         $sess = Session::start(APP_NAME);
 
         $sess->set('session', $session);
+        
+        $wrapper = WidgetWrapper::getInstance(false);
+        
+        \movim_log($wrapper->register_events());
+        $sess->set('registered_events', $wrapper->register_events());
 
         // BOSH + XMPP connexion test
         $warning = moxl\login();

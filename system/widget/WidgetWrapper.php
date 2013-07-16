@@ -26,6 +26,7 @@ class WidgetWrapper
     private $all_widgets = array();
     private $loaded_widgets = array();
     private $loaded_widgets_old;
+    private $registered_events = array();
 
     private static $instance;
 
@@ -46,6 +47,8 @@ class WidgetWrapper
         if(is_array($widgets)) {
             $this->loaded_widgets_old = $widgets;
         }
+        
+        $this->registered_events = $sess->get('registered_events');
         
         // We search all the existent widgets
         $this->all_widgets = array();
@@ -158,6 +161,32 @@ class WidgetWrapper
 
         return $result;
     }
+    
+    /**
+     * We register all the events of all the widgets in the database
+     * 
+     * @return the registered events
+     */
+    function register_events() {
+        $widgets = $this->get_all_widgets();
+
+        foreach($widgets as $widget_name) {
+            $widget = $this->load_widget($widget_name);
+            // We save the registered events of the widget for the filter
+            if(isset($widget->events))
+                foreach($widget->events as $key => $value) {
+                    if(array_key_exists($key, $this->registered_events)) {
+                        $we = $this->registered_events[$key];
+                        array_push($we, $widget_name);
+                        $this->registered_events[$key] = $we;
+                    } else {
+                        $this->registered_events[$key] = array($widget_name);
+                    }
+                } 
+        }
+        
+        return $this->registered_events;
+    }
 
     /**
      * Calls a particular function with the given parameters on
@@ -168,7 +197,12 @@ class WidgetWrapper
      */
     function iterate($method, array $params = NULL)
     {
-        $widgets = $this->get_loaded_widgets();
+        // We only load the interesting widgets
+        if(isset($params)) {
+            $fct = $params[0]['type'];
+            $widgets = $this->registered_events[$fct];
+        } else
+            $widgets = $this->get_loaded_widgets();
 
         foreach($widgets as $widget)
             $this->run_widget($widget, $method, $params);
