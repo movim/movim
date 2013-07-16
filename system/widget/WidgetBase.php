@@ -25,7 +25,7 @@ class WidgetBase
     protected $tpl;
     protected $user;
 	protected $name;
-	protected $events;
+	public $events;
     
     protected $cached;
 
