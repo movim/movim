@@ -24,7 +24,7 @@ class Media extends WidgetBase {
         $this->addcss('media.css');
         $this->addjs('media.js');
         
-        if(!is_dir($this->user->userdir)) {
+        if(!is_dir($this->user->userdir) && $this->user->userdir != '') {
             mkdir($this->user->userdir);
             touch($this->user->userdir.'index.html');
         }
