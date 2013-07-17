@@ -475,7 +475,8 @@ class Account extends WidgetBase {
                                     onclick="<?php echo $submit;?>; document.getElementById('fillform').innerHTML ='<?php echo t('Searching...');?>'"
                                 >
                                     <?php echo t('Search'); ?>
-                                </a>                    
+                                </a>    
+                        </fieldset>
                     </form>
                     
                     <div class="clear"></div>
