@@ -393,6 +393,9 @@ class Chat extends WidgetBase
                          <textarea 
                             rows="1"
                             id="textarea'.$contact->jid.'"
+                            onkeyup="
+                                movim_textarea_autoheight(this);
+                                "
                             onkeypress="
                                 if(event.keyCode == 13) {
                                     '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
