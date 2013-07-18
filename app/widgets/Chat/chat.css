@@ -196,6 +196,13 @@
     text-indent: 1.3em;
 }
 
+#chats .chat .panel .messages .message.composing {
+    background-image: url(img/pencil.png);
+    background-position: 0em 0.6em;
+    background-repeat: no-repeat;
+    text-indent: 1.5em;
+}
+
 #chats .chat .panel .messages .message.presence {
 	color: black;
 	font-weight: bold;
