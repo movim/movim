@@ -189,6 +189,13 @@
 	color: blue;
 }
 
+#chats .chat .panel .messages .message.crypt {
+    background-image: url(img/locked.png);
+    background-position: 2.5em 0.6em;
+    background-repeat: no-repeat;
+    text-indent: 1.3em;
+}
+
 #chats .chat .panel .messages .message.presence {
 	color: black;
 	font-weight: bold;
