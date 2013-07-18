@@ -230,6 +230,12 @@ code, code span, .post code span {
     font-weight: normal;
 }
 
+blockquote {
+    padding: 1em 0;
+    padding-left: 1em;
+    font-style: italic;
+}
+
 /* For the simple xHTML lists */
 ul.clean {
     margin-left: 1.5em;
