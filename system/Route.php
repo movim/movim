@@ -8,6 +8,7 @@ class Route extends ControllerBase {
                 'account'       => array('err'),
                 'chatpop'       => false,
                 'main'          => false,
+                'news'          => false,
                 'loading'       => false,
                 'admin'         => false,
                 'explore'       => false,

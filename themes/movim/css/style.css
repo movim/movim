@@ -454,6 +454,7 @@ nav {
 .menu li .blog      { background-image: url(../img/icons/menu/quill.png); }
 .menu li .admin     { background-image: url(../img/icons/menu/admin.png); }
 .menu li .about     { background-image: url(../img/icons/menu/info.png); }
+.menu li .news      { background-image: url(../img/icons/menu/news.png); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);
