@@ -319,9 +319,15 @@ class Chat extends WidgetBase
             $content = $message->body;
                     
             if(preg_match("#^/me#", $message->body)) {
-                $html .= " own ";
-                $content = "** ".substr($message->body, 4);
+                $html .= ' own ';
+                $content = '** '.substr($message->body, 4);
             }
+            
+            if(preg_match("#^\?OTR:#", $message->body)) {
+                $html .= ' crypt ';
+                $content = t('Encrypted message');
+            }
+            
             
             $c = new \modl\Contact();
                     
@@ -393,14 +399,33 @@ class Chat extends WidgetBase
                          <textarea 
                             rows="1"
                             id="textarea'.$contact->jid.'"
+                            onkeypress="
+                                    if(event.keyCode == 13) {
+                                        '.$this->genCallAjax(
+                                            'ajaxSendMessage', 
+                                            "'".$contact->jid."'", 
+                                            "sendMessage(this, '".$contact->jid."')"
+                                        ).'
+                                        lastkeypress = new Date().getTime()+1000;
+                                        return false;
+                                    }
+
+                                    if(lastkeypress < new Date().getTime())
+                                        '.$this->genCallAjax('ajaxSendComposing', "'".$contact->jid."'").'
+
+                                    lastkeypress = new Date().getTime()+1000;
+                                "
                             onkeyup="
                                 movim_textarea_autoheight(this);
-                                "
-                            onkeypress="
-                                if(event.keyCode == 13) {
-                                    '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
-                                    return false;
-                                }"
+                                var val = this.value;
+                                setTimeout(function()
+                                {
+                                    if(lastkeypress < new Date().getTime() && val != \'\') {
+                                    '.$this->genCallAjax('ajaxSendPaused', "'".$contact->jid."'").'
+                                        lastkeypress = new Date().getTime()+1000;
+                                    }
+                                },1100); // Listen for 2 seconds of silence
+                            "
                         ></textarea>
                     </div>
                 </div>
@@ -416,29 +441,16 @@ class Chat extends WidgetBase
         return $html;
         
 /* This is the un optimized system to send "composing" and "paused"
- *    onkeypress="
-        if(event.keyCode == 13) {
-            '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
-            lastkeypress = new Date().getTime()+1000;
-            return false;
-        }
-
-        if(lastkeypress < new Date().getTime())
-            '.$this->genCallAjax('ajaxSendComposing', "'".$contact->jid."'").'
-
-        lastkeypress = new Date().getTime()+1000;
-    "
-    onkeyup="
-        movim_textarea_autoheight(this);
-        var val = this.value;
-        setTimeout(function()
-        {
-            if(lastkeypress < new Date().getTime() && val != \'\') {
-            '.$this->genCallAjax('ajaxSendPaused', "'".$contact->jid."'").'
-                lastkeypress = new Date().getTime()+1000;
-            }
-        },1100); // Listen for 2 seconds of silence
-    "
+ * 
+                            onkeyup="
+                                movim_textarea_autoheight(this);
+                                "
+                            onkeypress="
+                                if(event.keyCode == 13) {
+                                    '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
+                                    return false;
+                                }"
+     
     * */
     }
     

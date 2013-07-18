@@ -39,6 +39,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Welcome to Movim', APP_TITLE));
             $this->page->menuAddLink(t('Home'), 'main', true);
+            $this->page->menuAddLink(t('News'), 'news');
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media');
@@ -49,6 +50,30 @@ class ControllerMain extends ControllerBase
 			$content = new TplPageBuilder($user);
 
 			$this->page->setContent($content->build('main.tpl'));
+			echo $this->page->build('page.tpl');
+        }
+	}
+    
+	function news()
+	{
+		$user = new User();
+
+		if(!$user->isLogged()) {
+			$this->login();
+		} else {
+			$this->page->setTitle(t('%s - News', APP_TITLE));
+            $this->page->menuAddLink(t('Home'), 'main');
+            $this->page->menuAddLink(t('News'), 'news', true);
+            $this->page->menuAddLink(t('Explore'), 'explore');
+            $this->page->menuAddLink(t('Profile'), 'profile');
+            $this->page->menuAddLink(t('Media'), 'media');
+			$this->page->menuAddLink(t('Configuration'), 'conf');
+            $this->page->menuAddLink(t('Help'), 'help');
+            $this->page->menuAddLink(t('Logout'), 'disconnect');
+
+			$content = new TplPageBuilder($user);
+
+			$this->page->setContent($content->build('news.tpl'));
 			echo $this->page->build('page.tpl');
         }
 	}
@@ -71,6 +96,7 @@ class ControllerMain extends ControllerBase
 			if(isset($_GET['f']) && $_GET['f'] != "" ) {
 				$this->page->setTitle(APP_TITLE.' - '.$name);
                 $this->page->menuAddLink(t('Home'), 'main');
+                $this->page->menuAddLink(t('News'), 'news');
                 $this->page->menuAddLink(t('Explore'), 'explore');
 				$this->page->menuAddLink(t('Profile'), 'profile');
                 $this->page->menuAddLink(t('Media'), 'media');
@@ -98,6 +124,7 @@ class ControllerMain extends ControllerBase
 			if(isset($_GET['s']) && $_GET['s'] != "" ) {
 				$this->page->setTitle(APP_TITLE.' - Server');
                 $this->page->menuAddLink(t('Home'), 'main');
+                $this->page->menuAddLink(t('News'), 'news');
                 $this->page->menuAddLink(t('Explore'), 'explore');
 				$this->page->menuAddLink(t('Profile'), 'profile');
                 $this->page->menuAddLink(t('Media'), 'media');
@@ -125,6 +152,7 @@ class ControllerMain extends ControllerBase
 			if(isset($_GET['n']) && $_GET['n'] != "" ) {
 				$this->page->setTitle(APP_TITLE.' - Node');
                 $this->page->menuAddLink(t('Home'), 'main');
+                $this->page->menuAddLink(t('News'), 'news');
                 $this->page->menuAddLink(t('Explore'), 'explore');
 				$this->page->menuAddLink(t('Profile'), 'profile');
                 $this->page->menuAddLink(t('Media'), 'media');
@@ -152,6 +180,7 @@ class ControllerMain extends ControllerBase
 			if(isset($_GET['n']) && $_GET['n'] != "" ) {
 				$this->page->setTitle(APP_TITLE.' - Node'.' - '.t('Configuration'));
                 $this->page->menuAddLink(t('Home'), 'main');
+                $this->page->menuAddLink(t('News'), 'news');
                 $this->page->menuAddLink(t('Explore'), 'explore');
 				$this->page->menuAddLink(t('Profile'), 'profile');
                 $this->page->menuAddLink(t('Media'), 'media');
@@ -178,6 +207,7 @@ class ControllerMain extends ControllerBase
 		} else {
             $this->page->setTitle(APP_TITLE.' - Node');
             $this->page->menuAddLink(t('Home'), 'main');
+            $this->page->menuAddLink(t('News'), 'news');
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media', true);
@@ -201,6 +231,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Configuration', APP_TITLE));
             $this->page->menuAddLink(t('Home'), 'main');
+            $this->page->menuAddLink(t('News'), 'news');
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media');
@@ -224,6 +255,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Profile', APP_TITLE));
             $this->page->menuAddLink(t('Home'), 'main');
+            $this->page->menuAddLink(t('News'), 'news');
             $this->page->menuAddLink(t('Explore'), 'explore');
 			$this->page->menuAddLink(t('Profile'), 'profile', true);
             $this->page->menuAddLink(t('Media'), 'media');
@@ -291,6 +323,7 @@ class ControllerMain extends ControllerBase
 		} else {
 			$this->page->setTitle(t('%s - Post View', APP_TITLE));
             $this->page->menuAddLink(t('Home'), 'main');
+            $this->page->menuAddLink(t('News'), 'news');
             $this->page->menuAddLink(t('Explore'), 'explore');
 			$this->page->menuAddLink(t('Profile'), 'profile');
 			$this->page->menuAddLink(t('Configuration'), 'conf');
@@ -358,6 +391,7 @@ class ControllerMain extends ControllerBase
             $this->page->setTitle(t('%s - Explore', APP_TITLE));
         
             $this->page->menuAddLink(t('Home'), 'main');
+            $this->page->menuAddLink(t('News'), 'news');
             $this->page->menuAddLink(t('Explore'), 'explore', true);
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media');
@@ -385,6 +419,7 @@ class ControllerMain extends ControllerBase
             $this->page->setTitle(t('%s - Help Page', APP_TITLE));
         
             $this->page->menuAddLink(t('Home'), 'main');
+            $this->page->menuAddLink(t('News'), 'news');
             $this->page->menuAddLink(t('Explore'), 'explore');
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Media'), 'media');
