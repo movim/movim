@@ -31,7 +31,7 @@ class Node extends WidgetCommon
     
     function onPubsubSubscribed($params)
     {        
-        $html = $this->prepareGroup($params[0], $params[1]);
+        $html = $this->prepareNode($params[0], $params[1]);
         RPC::call('setBookmark');
         RPC::call('movim_fill', 'node', $html);
         RPC::call('movim_reload_this');
@@ -48,7 +48,7 @@ class Node extends WidgetCommon
     }
     
     function onStream($payload) {
-        $html = $this->prepareGroup($payload['from'], $payload['node']);
+        $html = $this->prepareNode($payload['from'], $payload['node']);
 
         if($html == '') 
             $html = t("Your feed cannot be loaded.");
@@ -96,7 +96,10 @@ class Node extends WidgetCommon
           ->request();
     }
     
-    function prepareGroup($serverid, $groupid) {
+    function prepareNode($serverid, $groupid) {
+        $nd = new modl\NodeDAO();
+        $node = $nd->getNode($serverid, $groupid);
+        
         if($this->searchSubscription($serverid, $groupid))
             $button = '
                 <a
@@ -123,7 +126,7 @@ class Node extends WidgetCommon
                     '.$serverid.'
                 </a>
                 <a href="'.Route::urlize('node', array($serverid, $groupid)).'">
-                    '.$groupid.'
+                    '.$node->getName().'
                 </a>
                 <a>'.t('Posts').'</a>
             </div>
@@ -250,7 +253,7 @@ class Node extends WidgetCommon
     ?>
         <div class="tabelem protect red" id="node" title="<?php echo t('Posts'); ?>">
             <div id="<?php echo md5($_GET['s'].$_GET['n']); ?>">
-                <?php echo $this->prepareGroup($_GET['s'], $_GET['n']); ?>
+                <?php echo $this->prepareNode($_GET['s'], $_GET['n']); ?>
             </div>
         </div>
     <?php
