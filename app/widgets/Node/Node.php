@@ -100,6 +100,11 @@ class Node extends WidgetCommon
         $nd = new modl\NodeDAO();
         $node = $nd->getNode($serverid, $groupid);
         
+        if(isset($node))
+            $title = $node->getName();
+        else
+            $title = $groupid;
+        
         if($this->searchSubscription($serverid, $groupid))
             $button = '
                 <a
@@ -126,7 +131,7 @@ class Node extends WidgetCommon
                     '.$serverid.'
                 </a>
                 <a href="'.Route::urlize('node', array($serverid, $groupid)).'">
-                    '.$node->getName().'
+                    '.$title.'
                 </a>
                 <a>'.t('Posts').'</a>
             </div>
