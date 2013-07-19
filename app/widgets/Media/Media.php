@@ -51,21 +51,23 @@ class Media extends WidgetBase {
     function listFiles()
     {
         $html = '<ul class="thumb">';
-        
-        foreach(scandir($this->user->userdir) as $s) {
-            if(
-                $s != '.' && 
-                $s != '..' && 
-                substr($s, 0, 6) != 'thumb_' &&
-                substr($s, 0, 7) != 'medium_' && 
-                $s != 'index.html')
-                $html .= 
-                    '<li style="background-image: url('.$this->user->useruri.'thumb_'.$s.');">
-                        <a href="'.Route::urlize('media', $s).'">
+
+        foreach($this->user->getDir() as $key => $value) {
+            $html .= 
+                    '<li style="background-image: url('.$value['thumb'].');">
+                        <a href="'.Route::urlize('media', $key).'">
                         </a>
-                            <div class="remove" onclick="'.$this->genCallAjax('ajaxDeleteItem', "'".$s."'").'">x</div>
+                            <div 
+                                class="remove" 
+                                onclick="'.
+                                    $this->genCallAjax(
+                                        'ajaxDeleteItem', 
+                                        "'".$key."'"
+                                    ).'">
+                                x
+                            </div>
                     </li>
-                    ';           
+                    '; 
         }
         
         $html .= '</ul>';

@@ -8,10 +8,28 @@
     <div class="content" id="postpreviewcontent">
 
     </div>
-    <a 
-        class="button color icon no" 
-        onclick="movim_toggle_display('#postpreview');"
-    >{$c->t('Close')}</a>
+    <div class="menu">
+        <a 
+            class="button color icon no" 
+            onclick="movim_toggle_display('#postpreview');"
+        >{$c->t('Close')}</a>
+    </div>
+</div>
+
+<div class="popup post" id="galleryselect" style="padding: 0;">
+    <ul class="thumb">
+    {loop="gallery"}
+        <li style="background-image: url({$value.thumb});">
+            <a href="#"></a>
+        </li>
+    {/loop}
+    </ul>
+    <div class="menu">
+        <a 
+            class="button color icon no" 
+            onclick="movim_toggle_display('#galleryselect');"
+        >{$c->t('Close')}</a>  
+    </div>  
 </div>
 <table id="feedsubmitform">
     <tbody>
@@ -38,6 +56,14 @@
                         class="button icon color green icon yes">
                         {$c->t("Submit")}
                     </a>
+                    <a 
+                        class="button icon color alone merged left images"
+                        style="float: left;"
+                        title="{$c->t('Gallery')}"
+                        onclick="
+                            movim_toggle_display('#galleryselect');
+                            "
+                    ></a>
                     <a 
                         class="button icon color alone merged left preview"
                         style="float: left;"

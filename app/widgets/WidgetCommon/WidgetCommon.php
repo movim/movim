@@ -366,6 +366,8 @@ class WidgetCommon extends WidgetBase {
                 
         $view->assign('toggle_position', $this->genCallAjax('ajaxShowPosition', "'poss'"));
         
+        $view->assign('gallery', $this->user->getDir());
+        
         $view->assign(
             'publish_item', 
             $this->genCallAjax(

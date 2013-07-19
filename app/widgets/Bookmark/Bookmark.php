@@ -234,17 +234,19 @@ class Bookmark extends WidgetBase
                             <input name="name" placeholder="'.t('Name').'"/>
                         </div>
                     </fieldset>
-                    <a 
-                        class="button icon yes black merged left"
-                        onclick="'.$submit.'"
-                    >'.
-                            t('Add').'
-                    </a><a 
-                        class="button icon no black merged right" 
-                        onclick="movim_toggle_display(\'#bookmarkadd\')"
-                    >'.
-                            t('Close').'
-                    </a>
+                    <div class="menu">
+                        <a 
+                            class="button icon yes black merged left"
+                            onclick="'.$submit.'"
+                        >'.
+                                t('Add').'
+                        </a><a 
+                            class="button icon no black merged right" 
+                            onclick="movim_toggle_display(\'#bookmarkadd\')"
+                        >'.
+                                t('Close').'
+                        </a>
+                    </div>
                 </form>
             </div>
         ';

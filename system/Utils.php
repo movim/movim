@@ -38,31 +38,38 @@ function sprintln($string)
 function prepareString($string) {
     $smileys = 
         array(
-            // famfamfam icons
-            ':\)'   => 'emoticon_smile.png',
-            ':-\)'  => 'emoticon_smile.png',
-            ':\('   => 'emoticon_unhappy.png',
-            ':o'    => 'emoticon_surprised.png',
-            ':O'    => 'emoticon_surprised.png',
-            ':3'    => 'emoticon_waii.png',
-            ':D'    => 'emoticon_grin.png',
-            ':d'    => 'emoticon_grin.png',
-            ':p'    => 'emoticon_tongue.png',
-            ':P'    => 'emoticon_tongue.png',
-            ':-P'   => 'emoticon_tongue.png',
-            ';D'    => 'emoticon_wink.png',
-            ';d'    => 'emoticon_wink.png',
-            '\^\^'  => 'emoticon_happy.png',
-            '\(k\)' => 'heart.png',
-            
             // HFR icons
-            ':\/'   => 'bof.gif',
-            ';\)'   => 'emoticon_wink.png',
-            'B\)'   => 'sol.gif',
             ":'\("  => 'cry.gif',
             ':love:'=> 'love.gif',
             'O:\)'  => 'ange.gif',
             'O:-\)' => 'ange.gif',
+            ':redface:' => 'redface.gif',
+            ':petrus:'  => 'petrus75.gif',
+            
+            // famfamfam icons
+            ':\)\)' => 'grin.png',
+            ':\)'   => 'smiley.png',
+            ':-\)'  => 'smiley.png',
+            ':\('   => 'sad.png',
+            ':o'    => 'shocked.png',
+            ':O'    => 'shocked.png',
+            ':3'    => 'emoticon_waii.png',
+            ':D'    => 'grin.png',
+            ':d'    => 'grin.png',
+            ':p'    => 'tongue.png',
+            ':P'    => 'tongue.png',
+            ':-P'   => 'tongue.png',
+            ';D'    => 'wink.png',
+            ';d'    => 'wink.png',
+            ';\)'   => 'wink.png',
+            '\^\^'  => 'happy.png',
+            '\(k\)' => 'heart.png',
+            'B\)'   => 'cool.png',
+            ':s'    => 'confused.png',
+            ':S'    => 'confused.png',
+            ':\/'   => 'wondering.png',
+            ':evil:'=> 'evil.png',
+            ":\|"   => 'neutral.png',
             
             // Meme icons
             ':okay:' => 'okay.gif',
