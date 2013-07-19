@@ -20,7 +20,13 @@
 require("init.php");
   
 // We get the informations
-$pop = count(scandir(USERS_PATH))-3;
+$pop = 0;
+
+foreach(scandir(USERS_PATH) as $f)
+    if(is_dir(USERS_PATH.'/'.$f))
+        $pop++;
+        
+$pop = $pop-2;
   
 // We create a simple DOMDocument
 $doc = new DOMDocument("1.0");
