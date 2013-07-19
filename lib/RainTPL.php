@@ -53,7 +53,7 @@ class RainTPL{
 		 *
 		 * @var unknown_type
 		 */
-		private $path_replace = true;
+		private $path_replace = false;
 
 
 		/**

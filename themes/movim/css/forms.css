@@ -322,6 +322,7 @@ legend {
 .icon.no:before     { background-image: url(../img/icons/button/close.png); }
 .icon.chat:before   { background-image: url(../img/icons/button/bubbles.png);}
 .icon.image:before  { background-image: url(../img/icons/button/image.png);}
+.icon.images:before { background-image: url(../img/icons/button/images.png);}
 .icon.add:before    { background-image: url(../img/icons/button/plus.png); }
 .icon.rm:before     { background-image: url(../img/icons/button/minus.png); }
 .icon.write:before  { background-image: url(../img/icons/button/pencil.png); }
