@@ -221,59 +221,7 @@ class WidgetCommon extends WidgetBase {
             );
         
         $html = $view->draw('_comments_toolbox', true);
-        
-        /*
-        $tmp .= '
-            <div class="comments" id="'.$post->nodeid.'comments">';
 
-        $commentshtml = $this->prepareComments($comments);
-        
-        if($commentshtml != false)
-            $tmp .= $commentshtml;
-
-        if($public == false) {
-            $tmp .= '
-                     <div class="comment">
-                            <a 
-                                class="getcomments icon chat" 
-                                onclick="'.$this->genCallAjax('ajaxGetComments', "'".$post->commentplace."'", "'".$post->nodeid."'").'; this.innerHTML = \''.t('Loading comments ...').'\'">'.
-                                    t('Get the comments').'
-                            </a>
-                        </div></div>';
-            $tmp .= '<div class="comments">
-                        <div 
-                            class="comment"
-                            onclick="this.parentNode.querySelector(\'#commentsubmit\').style.display = \'table\'; this.style.display =\'none\'">
-                            <a class="addcomment icon chat">'.t('Add a comment').'</a>
-                        </div>
-                        <table id="commentsubmit">
-                            <tr>
-                                <td>
-                                    <textarea id="'.$post->nodeid.'commentcontent" onkeyup="movim_textarea_autoheight(this);"></textarea>
-                                </td>
-                            </tr>
-                            <tr class="commentsubmitrow">
-                                <td style="width: 100%;"></td>
-                                <td>
-                                    <a
-                                        onclick="
-                                                if(document.getElementById(\''.$post->nodeid.'commentcontent\').value != \'\') {
-                                                    '.$this->genCallAjax(
-                                                        'ajaxPublishComment', 
-                                                        "'".$post->commentplace."'", 
-                                                        "'".$post->nodeid."'", 
-                                                        "encodeURIComponent(document.getElementById('".$post->nodeid."commentcontent').value)").
-                                                        'document.getElementById(\''.$post->nodeid.'commentcontent\').value = \'\';
-                                                }"
-                                        class="button color green icon yes"
-                                    >'.
-                                        t("Submit").'
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>';
-        }
-        $tmp .= '</div>';*/
         return $html;
 
     }
