@@ -37,7 +37,13 @@ class Login extends WidgetBase {
             
         $this->view->assign('warnings', $this->displayWarning($_GET['err'], true));
         
-        $this->view->assign('pop', count(scandir(USERS_PATH))-3);
+        $pop = 0;
+        
+        foreach(scandir(USERS_PATH) as $f)
+            if(is_dir(USERS_PATH.'/'.$f))
+                $pop++;
+
+        $this->view->assign('pop', $pop-2);
         
         $this->view->assign('gmail',
             t('%sGmail accounts are also compatible%s but are not fully supported',
