@@ -42,13 +42,37 @@ class User {
     function dirSize()
     {
         $sum = 0;
-        
-        foreach(scandir($this->userdir) as $s) {
-            if($s != '.' && $s != '..' && $s != 'index.html')
-                $sum = $sum + filesize($this->userdir.$s);
-        }
+
+        foreach($this->getDir() as $s)
+            $sum = $sum + filesize($s['dir']);
         
         return $sum;
+    }
+    
+    /**
+     * Get a list of the files in the user dir with uri, dir and thumbs
+     */
+    function getDir()
+    {
+        $dir = array();
+        foreach(scandir($this->userdir) as $s) {
+            if(
+                $s != '.' && 
+                $s != '..' && 
+                substr($s, 0, 6) != 'thumb_' &&
+                substr($s, 0, 7) != 'medium_' && 
+                $s != 'index.html') {
+                
+                $file = array(
+                    'uri'       => $this->useruri.$s,
+                    'dir'       => $this->userdir.$s,
+                    'thumb'    => $this->useruri.'thumb_'.$s,
+                    'medium'   => $this->useruri.'medium_'.$s);
+                $dir[$s] = $file;
+            }
+        }
+        
+        return $dir;
     }
 
 	/**
