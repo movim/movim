@@ -2,6 +2,12 @@
     function showPosition(poss) {
         {$toggle_position}
     }
+    
+    function insertImg(url) {
+        var cont = document.querySelector('#postpublishcontent');
+        cont.value = cont.value + '![](' + url + ')';
+        movim_textarea_autoheight(cont);
+    }
 </script>
 
 <div class="popup post" id="postpreview">
@@ -20,7 +26,12 @@
     <ul class="thumb">
     {loop="gallery"}
         <li style="background-image: url({$value.thumb});">
-            <a href="#"></a>
+            <a 
+                href="#" 
+                onclick="
+                    insertImg('{$value.uri}'); 
+                    movim_toggle_display('#galleryselect');">
+            </a>
         </li>
     {/loop}
     </ul>
