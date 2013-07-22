@@ -182,16 +182,18 @@ class Node extends WidgetCommon
                             <span><label for="grouptitle">'.t('Give a nickname to this group if you want').'</label></span>
                         </div>
                     </fieldset>
-                    <a 
-                        class="button tiny icon yes black merged left"
-                        onclick="
-                            '.$this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'").'
-                            this.onclick=null;"
-                    >'.t('Subscribe').'</a><a 
-                        class="button tiny icon black merged right" 
-                        onclick="
-                            movim_toggle_display(\'#groupsubscribe\');"
-                    >'.t('Close').'</a>
+                    <div class="menu">
+                        <a 
+                            class="button tiny icon yes black merged left"
+                            onclick="
+                                '.$this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'").'
+                                this.onclick=null;"
+                        >'.t('Subscribe').'</a><a 
+                            class="button tiny icon black merged right" 
+                            onclick="
+                                movim_toggle_display(\'#groupsubscribe\');"
+                        >'.t('Close').'</a>
+                    </div>
                 </form>
             </div>
             <div class="popup" id="groupunsubscribe">
@@ -202,16 +204,18 @@ class Node extends WidgetCommon
                             <span>'.t('Are you sure ?').'</span>
                         </div>
                     </fieldset>
-                    <a 
-                        class="button tiny icon yes black merged left"
-                        onclick="
-                            '.$this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'").' 
-                            this.onclick=null;"
-                    >'.t('Unsubscribe').'</a><a 
-                        class="button tiny icon black merged right" 
-                        onclick="
-                            movim_toggle_display(\'#groupunsubscribe\');"
-                    >'.t('Close').'</a>
+                    <div class="menu">
+                        <a 
+                            class="button tiny icon yes black merged left"
+                            onclick="
+                                '.$this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'").' 
+                                this.onclick=null;"
+                        >'.t('Unsubscribe').'</a><a 
+                            class="button tiny icon no black merged right" 
+                            onclick="
+                                movim_toggle_display(\'#groupunsubscribe\');"
+                        >'.t('Close').'</a>
+                    </div>
                 </form>
             </div>';
         
