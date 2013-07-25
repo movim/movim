@@ -55,22 +55,23 @@ class User {
     function getDir()
     {
         $dir = array();
-        foreach(scandir($this->userdir) as $s) {
-            if(
-                $s != '.' && 
-                $s != '..' && 
-                substr($s, 0, 6) != 'thumb_' &&
-                substr($s, 0, 7) != 'medium_' && 
-                $s != 'index.html') {
-                
-                $file = array(
-                    'uri'       => $this->useruri.$s,
-                    'dir'       => $this->userdir.$s,
-                    'thumb'    => $this->useruri.'thumb_'.$s,
-                    'medium'   => $this->useruri.'medium_'.$s);
-                $dir[$s] = $file;
+        if(is_dir($this->userdir))
+            foreach(scandir($this->userdir) as $s) {
+                if(
+                    $s != '.' && 
+                    $s != '..' && 
+                    substr($s, 0, 6) != 'thumb_' &&
+                    substr($s, 0, 7) != 'medium_' && 
+                    $s != 'index.html') {
+                    
+                    $file = array(
+                        'uri'       => $this->useruri.$s,
+                        'dir'       => $this->userdir.$s,
+                        'thumb'    => $this->useruri.'thumb_'.$s,
+                        'medium'   => $this->useruri.'medium_'.$s);
+                    $dir[$s] = $file;
+                }
             }
-        }
         
         return $dir;
     }
