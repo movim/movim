@@ -9,12 +9,12 @@ msgstr ""
 "PO-Revision-Date: 2012-07-19 13:34+0000\n"
 "Last-Translator: Sampo Harjula <sahtor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
+"X-Generator: Launchpad (build 16700)\n"
+"Language: \n"
 
 #: ../upload.php:29
 msgid "Not a picture"
@@ -129,7 +129,7 @@ msgstr " %d päivää sitten"
 
 #: ../system/Utils.php:187 ../system/Utils.php:424
 msgid "None"
-msgstr ""
+msgstr "Ei mitään"
 
 #: ../system/Utils.php:188
 msgid "Male"
@@ -262,9 +262,8 @@ msgid "confused"
 msgstr ""
 
 #: ../system/Utils.php:473
-#, fuzzy
 msgid "contemplative"
-msgstr "puhelias"
+msgstr ""
 
 #: ../system/Utils.php:474
 msgid "contented"
@@ -279,9 +278,8 @@ msgid "crazy"
 msgstr ""
 
 #: ../system/Utils.php:477
-#, fuzzy
 msgid "creative"
-msgstr "Luo"
+msgstr ""
 
 #: ../system/Utils.php:478
 msgid "curious"
@@ -292,9 +290,8 @@ msgid "dejected"
 msgstr ""
 
 #: ../system/Utils.php:480
-#, fuzzy
 msgid "depressed"
-msgstr "Osoite"
+msgstr ""
 
 #: ../system/Utils.php:481
 msgid "disappointed"
@@ -357,9 +354,8 @@ msgid "hopeful"
 msgstr ""
 
 #: ../system/Utils.php:496
-#, fuzzy
 msgid "hot"
-msgstr "Botti"
+msgstr ""
 
 #: ../system/Utils.php:497
 msgid "humbled"
@@ -534,9 +530,8 @@ msgid "weak"
 msgstr ""
 
 #: ../system/Utils.php:541
-#, fuzzy
 msgid "worried"
-msgstr "Naimisissa"
+msgstr ""
 
 #: ../system/Utils.php:661
 msgid "Not shared"
@@ -564,9 +559,9 @@ msgid "Error: %s"
 msgstr "Virhe: %s"
 
 #: ../system/Tpl/TplTheme.php:50
-#, fuzzy, php-format
+#, php-format
 msgid "Couldn't load file %s"
-msgstr "Ei voi ladata tiedostoa '%s'"
+msgstr ""
 
 #: ../system/widget/WidgetWrapper.php:126
 #, php-format
@@ -590,9 +585,8 @@ msgid "Everyone"
 msgstr ""
 
 #: ../system/widget/WidgetCommon.php:190
-#, fuzzy
 msgid "Your contacts"
-msgstr "Kontaktit (%s)"
+msgstr ""
 
 #: ../system/widget/WidgetCommon.php:197 ../system/widget/WidgetCommon.php:198
 msgid "Delete this post"
@@ -609,9 +603,8 @@ msgid "No"
 msgstr "Ei"
 
 #: ../system/widget/WidgetCommon.php:240
-#, fuzzy
 msgid "Loading comments ..."
-msgstr "Ladataan sinun syötteitä ..."
+msgstr ""
 
 #: ../system/widget/WidgetCommon.php:241
 msgid "Get the comments"
@@ -652,9 +645,8 @@ msgid "Geolocalisation"
 msgstr ""
 
 #: ../system/widget/WidgetCommon.php:515
-#, fuzzy
 msgid "No content"
-msgstr "Kontaktit (%s)"
+msgstr ""
 
 #: ../system/widget/WidgetCommon.php:575
 msgid "No comments"
@@ -689,10 +681,8 @@ msgid "Specified property %s is not set in %s"
 msgstr ""
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:85
-#, fuzzy
 msgid "Your server doesn't support location publication"
 msgstr ""
-"Palvelimesi ei tue postauksen julakisua, voit vain lukea kontaktisi syötteet"
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:90
 msgid "Your are not authorized to publish your location"
@@ -701,19 +691,16 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:72
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
-#, fuzzy
 msgid "Error"
-msgstr "Virhe: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
 msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:45
-#, fuzzy
 msgid "Your server doesn't support this feature"
 msgstr ""
-"Palvelimesi ei tue postauksen julakisua, voit vain lukea kontaktisi syötteet"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:50
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:60
@@ -729,9 +716,8 @@ msgid "The server does not exist"
 msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
-#, fuzzy
 msgid "Unexpected request"
-msgstr "Lähetä pyyntö"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:75
 msgid "The server cannot accept this action"
@@ -865,9 +851,8 @@ msgstr ""
 
 #: ../users/login.8ea18efcd5fb1a0c7c5d6c22fed22ac7.rtpl.php:89
 #: ../app/controllers/ControllerMain.php:417
-#, fuzzy
 msgid "Administration"
-msgstr "Käyttäjätilin luominen"
+msgstr ""
 
 #: ../users/feed.8ca800598a017095e30c901baeab7e36.rtpl.php:13
 #: ../app/widgets/Node/Node.php:138 ../app/widgets/Wall/Wall.php:80
@@ -880,9 +865,8 @@ msgid "My Posts"
 msgstr "Minun postaukset"
 
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Profiili"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:113
 msgid ""
@@ -1024,9 +1008,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:43
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Asetukset"
+msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:63
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
@@ -1092,9 +1075,8 @@ msgid "Your feed cannot be loaded."
 msgstr "Syötettäsi ei voitu ladata"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:52
-#, fuzzy
 msgid "Create a new group"
-msgstr "Luo uusi tili"
+msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:62
 msgid "Give a friendly name to your group"
@@ -1134,7 +1116,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1170,9 +1153,8 @@ msgid "Links"
 msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:215
-#, fuzzy
 msgid "Conferences"
-msgstr "Välityspalvelimen asetukset"
+msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:227
 msgid "Add a new URL"
@@ -1204,9 +1186,8 @@ msgid "Profile"
 msgstr "Profiili"
 
 #: ../app/widgets/Config/Config.php:32
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Asetukset"
+msgstr ""
 
 #: ../app/widgets/Config/Config.php:66
 msgid "General"
@@ -1241,14 +1222,12 @@ msgid "This configuration is shared wherever you are connected !"
 msgstr ""
 
 #: ../app/widgets/Connection/Connection.php:47
-#, fuzzy
 msgid "Loading your session..."
-msgstr "Ladataan sinun syötteitä ..."
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-#, fuzzy
 msgid "Subscriptions saved"
-msgstr "Asetukset"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:93
 msgid "Manage your subscriptions"
@@ -1276,9 +1255,8 @@ msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:81
 #: ../app/widgets/Media/Media.php:83
-#, fuzzy
 msgid "on"
-msgstr "Ei mitään"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:87
 msgid "Last seen"
@@ -1307,9 +1285,8 @@ msgid "Web"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:133
-#, fuzzy
 msgid "Registered"
-msgstr "Eilen"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:140
 msgid "Client Informations"
@@ -1390,9 +1367,8 @@ msgid "Media"
 msgstr ""
 
 #: ../app/widgets/ChatPop/ChatPop.php:40
-#, fuzzy
 msgid "Connection"
-msgstr "Yhdistetään..."
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:130
 msgid "Search a contact"
@@ -1547,9 +1523,8 @@ msgstr ""
 
 #: ../app/widgets/About/About.php:29 ../app/controllers/ControllerMain.php:267
 #: ../app/controllers/ControllerMain.php:332
-#, fuzzy
 msgid "About"
-msgstr "Tietoja minusta"
+msgstr ""
 
 #: ../app/widgets/About/About.php:33
 msgid "Thanks"
@@ -1673,9 +1648,8 @@ msgid "Subscribe"
 msgstr ""
 
 #: ../app/widgets/Node/Node.php:128 ../app/widgets/Node/Node.php:251
-#, fuzzy
 msgid "Posts"
-msgstr "Minun postaukset"
+msgstr ""
 
 #: ../app/widgets/Node/Node.php:156
 msgid "Get Subscription"
@@ -1804,7 +1778,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:367
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:368
@@ -1846,9 +1821,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:415 ../app/widgets/Admin/Admin.php:427
-#, fuzzy
 msgid "Information Message"
-msgstr "Asiakastiedot"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:419
 msgid "This message will be displayed on the login page"
@@ -1887,18 +1861,16 @@ msgid "Recreate the database"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:493
-#, fuzzy
 msgid "Recreate"
-msgstr "Luo"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:497
 msgid "This button will clear and recreate the Movim database."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:504
-#, fuzzy
 msgid "Database Type"
-msgstr "Tietokanta tunnistettu"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:522
 msgid "Host"
@@ -1909,9 +1881,8 @@ msgid "Port"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:534
-#, fuzzy
 msgid "Database Name"
-msgstr "Tietokanta tunnistettu"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
 msgid "Wrong position"
@@ -1934,9 +1905,8 @@ msgid "Cache"
 msgstr ""
 
 #: ../app/widgets/ConfigData/ConfigData.php:68
-#, fuzzy
 msgid "Post"
-msgstr "Minun postaukset"
+msgstr ""
 
 #: ../app/widgets/ConfigData/ConfigData.php:73
 #: ../app/widgets/ConfigData/ConfigData.php:81
@@ -1949,18 +1919,16 @@ msgid "Messages"
 msgstr ""
 
 #: ../app/widgets/ConfigData/ConfigData.php:84
-#, fuzzy
 msgid "Contacts"
-msgstr "Kontaktit (%s)"
+msgstr ""
 
 #: ../app/widgets/ConfigData/ConfigData.php:98
 msgid "Data"
 msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-#, fuzzy
 msgid "Affiliations saved"
-msgstr "Asetukset"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:88
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:89
@@ -2096,29 +2064,28 @@ msgstr "%s - Profiili"
 
 #: ../app/controllers/ControllerMain.php:243
 #: ../app/controllers/ControllerMain.php:254
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Lisää käyttäjätili"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:245
-#, fuzzy
 msgid "Account Creation"
-msgstr "%s - Tilin luominen"
+msgstr "Käyttäjätilin luominen"
 
 #: ../app/controllers/ControllerMain.php:265
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - Lisää käyttäjätili"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:292
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Post View"
-msgstr "%s - Profiili"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:314
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Loading"
-msgstr "%s - Konfigurointi"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:330
 #, php-format
@@ -2136,38 +2103,82 @@ msgid "%s - Help Page"
 msgstr "%s - Ohjesivu"
 
 #: ../app/controllers/ControllerMain.php:414
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "Käyttäjätilin luominen"
+msgstr ""
 
 #: ../app/controllers/ControllerBase.php:136
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
+#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+#~ msgstr "PHP versio ei yhteensopiva. Movim vaatii vähintään PHP 5.3:n"
+
+#, php-format
+#~ msgid "Movim requires the %s extension."
+#~ msgstr "Movim vaatii %s laajennuksen."
+
+#~ msgid "Movim's folder must be writable."
+#~ msgstr "Movim -kansioon täytyy olla kirjoitusoikeudet"
+
+#, php-format
+#~ msgid "Couldn't create configuration file '%s'."
+#~ msgstr "Ei voitu luoda asetustiedostoa '%s'"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "Yhteensopivuustesti"
+
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr ""
+#~ "Seuraavia vaatimuksia ei voitu täyttää. Varmista että kaikki vaatimukset "
+#~ "täytetty että voit asentaa Movimin."
+
+#~ msgid "User not logged in."
+#~ msgstr "Käyttäjä ei ole kirjautunut sisään."
+
+#~ msgid "JID not provided."
+#~ msgstr "JID ei määritetty."
+
+#, php-format
+#~ msgid "jid '%s' is incorrect"
+#~ msgstr "jid '%s' on väärin"
+
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Ei voi avata lokitiedostoa '%s'"
 
-#~ msgid "All"
-#~ msgstr "Kaikki"
-
-#~ msgid "Cancel"
-#~ msgstr "Peruuta"
-
-#~ msgid "Send request"
-#~ msgstr "Lähetä pyyntö"
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Tilin luominen"
 
 #~ msgid "Decline"
 #~ msgstr "Hylkää"
 
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Kiitos että latasit Movimin!"
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Ladataan kontaktit-feediä"
 
-#~ msgid ""
-#~ "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr ""
-#~ "Ennen kuin voit nauttia sosiaalisesta verkosta, tarvitaan vielä vähän "
-#~ "säätämistä"
+#, php-format
+#~ msgid "Install the %s package"
+#~ msgstr "Asenna %s paketti"
+
+#~ msgid "or"
+#~ msgstr "tai"
+
+#~ msgid "Actual version : "
+#~ msgstr "Nykyinen versio: "
+
+#, php-format
+#~ msgid "Install %s and %s packages"
+#~ msgstr "Asenna %s ja %s paketit"
+
+#~ msgid "Update your PHP version or contact your server administrator"
+#~ msgstr "Päivitä PHP versiosi tai ota yhteys palvelimen ylläpitäjään"
+
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr "kirjoitus- ja lukuoikeudet Movim-juurihakemistoon"
 
 #~ msgid ""
 #~ "Keep in mind that Movim is still under development and will handle many "
@@ -2178,72 +2189,20 @@ msgstr ""
 #~ "Käyttö vielä tässä vaiheessa voi joissain tapauksissa vaarantaa "
 #~ "yksityisyyden. Ole huolellinen jakaessasi tietoja."
 
-#, fuzzy
-#~ msgid "Your server doesn't support post deletetion"
-#~ msgstr ""
-#~ "Palvelimesi ei tue postauksen julakisua, voit vain lukea kontaktisi "
-#~ "syötteet"
-
-#, fuzzy
-#~ msgid "Your server doesn't support post publication"
-#~ msgstr ""
-#~ "Palvelimesi ei tue postauksen julakisua, voit vain lukea kontaktisi "
-#~ "syötteet"
-
 #~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
+#~ "Before you enjoy your social network, a few adjustements are required."
 #~ msgstr ""
-#~ "Seuraavia vaatimuksia ei voitu täyttää. Varmista että kaikki vaatimukset "
-#~ "täytetty että voit asentaa Movimin."
+#~ "Ennen kuin voit nauttia sosiaalisesta verkosta, tarvitaan vielä vähän "
+#~ "säätämistä"
 
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Ei voitu luoda asetustiedostoa '%s'"
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "PHP versio ei yhteensopiva. Movim vaatii vähintään PHP 5.3:n"
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim vaatii %s laajennuksen."
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Movim -kansioon täytyy olla kirjoitusoikeudet"
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Yhteensopivuustesti"
-
-#~ msgid "User not logged in."
-#~ msgstr "Käyttäjä ei ole kirjautunut sisään."
-
-#~ msgid "JID not provided."
-#~ msgstr "JID ei määritetty."
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "jid '%s' on väärin"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "Ladataan kontaktit-feediä"
-
-#~ msgid "Install the %s package"
-#~ msgstr "Asenna %s paketti"
-
-#~ msgid "or"
-#~ msgstr "tai"
-
-#~ msgid "Actual version : "
-#~ msgstr "Nykyinen versio: "
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Asenna %s ja %s paketit"
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Päivitä PHP versiosi tai ota yhteys palvelimen ylläpitäjään"
-
-#~ msgid "Enable read and write rights on Movim's root folder"
-#~ msgstr "kirjoitus- ja lukuoikeudet Movim-juurihakemistoon"
+#~ msgid "Thank you for downloading Movim!"
+#~ msgstr "Kiitos että latasit Movimin!"
 
 #~ msgid "Movim Installer"
 #~ msgstr "Movin asennusohjelma"
+
+#~ msgid "Proxy Preferences"
+#~ msgstr "Välityspalvelimen asetukset"
 
 #~ msgid "XMPP Connection Preferences"
 #~ msgstr "XMPP yhteysasetukset"
@@ -2254,11 +2213,19 @@ msgstr ""
 #~ msgid "Success !"
 #~ msgstr "Onnistui!"
 
+#~ msgid "Database Detected"
+#~ msgstr "Tietokanta tunnistettu"
+
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Poista %s kansio että voit saattaa asennuksen loppuun"
 
 #~ msgid "Database Movim schema installed"
 #~ msgstr "Movim tietokantamalli asennettu"
+
+#, php-format
+#~ msgid "%s - Add An Account"
+#~ msgstr "%s - Lisää käyttäjätili"
 
 #~ msgid "Only alphanumerics elements are authorized"
 #~ msgstr "vain numeeriset elementit on hyväksytty"
@@ -2282,6 +2249,9 @@ msgstr ""
 #~ msgid "Pseudo"
 #~ msgstr "Pseudo"
 
+#~ msgid "Create"
+#~ msgstr "Luo"
+
 #~ msgid "A capital letter, a digit and a special character are recommended"
 #~ msgstr ""
 #~ "Suositellaan käyttämään iso kirjainta, numeroa ja/tai erikoismerkkiä."
@@ -2295,14 +2265,31 @@ msgstr ""
 #~ msgid "Add your login informations"
 #~ msgstr "Lisää kirjautumistiedot"
 
+#~ msgid "Address"
+#~ msgstr "Osoite"
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "Ladataan sinun syötteitä ..."
+
 #~ msgid "Client Type"
 #~ msgstr "Asiakasohjelma"
 
+#~ msgid "All"
+#~ msgstr "Kaikki"
+
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr "Voi nyt mennä uudenkarheaan Movim instanssiisi %s hyppää sisään %s"
 
 #~ msgid "Client Name"
 #~ msgstr "Asiakkaan nimi"
+
+#, php-format
+#~ msgid "Contacts (%s)"
+#~ msgstr "Kontaktit (%s)"
+
+#~ msgid "Cancel"
+#~ msgstr "Peruuta"
 
 #~ msgid "Link my current account"
 #~ msgstr "Yhdistä nykyiseen käyttäjätiliin"
@@ -2317,20 +2304,27 @@ msgstr ""
 #~ "Some errors were detected. Please correct them for the installation to "
 #~ "proceed."
 #~ msgstr ""
-#~ "Joitain virheitä huomattiin, ole hyvä ja korjaa virheet että voidaan "
-#~ "jatkaa asentamista."
+#~ "Joitain virheitä huomattiin, ole hyvä ja korjaa virheet että voidaan jatkaa "
+#~ "asentamista."
 
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "Tämä palvelin ylläpitää %s käyttäjätiliä"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "XMPP yhteys Boshin kautta epäonnistui, virhekoodi '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "Yhteys tietokantaan epäonnistui, virhekoodi '%s'"
+
+#~ msgid "Send request"
+#~ msgstr "Lähetä pyyntö"
 
 #~ msgid "Valid Bosh"
 #~ msgstr "Validi Bosh-yhteys"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "Bosh yhteys epäonnistui, virhekoodi '%s'"

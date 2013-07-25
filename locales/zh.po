@@ -9,12 +9,12 @@ msgstr ""
 "PO-Revision-Date: 2011-12-18 14:01+0000\n"
 "Last-Translator: edhelas <edhelas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
+"X-Generator: Launchpad (build 16700)\n"
+"Language: \n"
 
 #: ../upload.php:29
 msgid "Not a picture"
@@ -25,9 +25,9 @@ msgid "Folder size limit exceeded"
 msgstr ""
 
 #: ../system/Conf.php:56
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "不能装载文件 '%s'"
+msgstr ""
 
 #: ../system/Conf.php:67
 #, php-format
@@ -559,9 +559,9 @@ msgid "Error: %s"
 msgstr "错误: %s"
 
 #: ../system/Tpl/TplTheme.php:50
-#, fuzzy, php-format
+#, php-format
 msgid "Couldn't load file %s"
-msgstr "不能装载文件 '%s'"
+msgstr ""
 
 #: ../system/widget/WidgetWrapper.php:126
 #, php-format
@@ -691,9 +691,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:72
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
-#, fuzzy
 msgid "Error"
-msgstr "错误: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -852,9 +851,8 @@ msgstr ""
 
 #: ../users/login.8ea18efcd5fb1a0c7c5d6c22fed22ac7.rtpl.php:89
 #: ../app/controllers/ControllerMain.php:417
-#, fuzzy
 msgid "Administration"
-msgstr "建立帐号"
+msgstr ""
 
 #: ../users/feed.8ca800598a017095e30c901baeab7e36.rtpl.php:13
 #: ../app/widgets/Node/Node.php:138 ../app/widgets/Wall/Wall.php:80
@@ -1010,9 +1008,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:43
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "配置"
+msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:63
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
@@ -1118,7 +1115,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1187,9 +1185,8 @@ msgid "Profile"
 msgstr ""
 
 #: ../app/widgets/Config/Config.php:32
-#, fuzzy
 msgid "Configuration updated"
-msgstr "配置"
+msgstr ""
 
 #: ../app/widgets/Config/Config.php:66
 msgid "General"
@@ -1228,9 +1225,8 @@ msgid "Loading your session..."
 msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-#, fuzzy
 msgid "Subscriptions saved"
-msgstr "配置"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:93
 msgid "Manage your subscriptions"
@@ -1370,9 +1366,8 @@ msgid "Media"
 msgstr ""
 
 #: ../app/widgets/ChatPop/ChatPop.php:40
-#, fuzzy
 msgid "Connection"
-msgstr "配置"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:130
 msgid "Search a contact"
@@ -1769,7 +1764,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:367
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:368
@@ -1917,9 +1913,8 @@ msgid "Data"
 msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-#, fuzzy
 msgid "Affiliations saved"
-msgstr "配置"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:88
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:89
@@ -2055,19 +2050,18 @@ msgstr ""
 
 #: ../app/controllers/ControllerMain.php:243
 #: ../app/controllers/ControllerMain.php:254
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - 建立帐号"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:245
-#, fuzzy
 msgid "Account Creation"
-msgstr "%s - 建立帐号"
+msgstr "建立帐号"
 
 #: ../app/controllers/ControllerMain.php:265
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - 建立帐号"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:292
 #, php-format
@@ -2075,9 +2069,9 @@ msgid "%s - Post View"
 msgstr ""
 
 #: ../app/controllers/ControllerMain.php:314
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Loading"
-msgstr "%s - 配置"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:330
 #, php-format
@@ -2095,30 +2089,23 @@ msgid "%s - Help Page"
 msgstr ""
 
 #: ../app/controllers/ControllerMain.php:414
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "建立帐号"
+msgstr ""
 
 #: ../app/controllers/ControllerBase.php:136
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
-#, fuzzy
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "不能装载文件 '%s'"
-
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
-#~ msgstr "没有达到符合安装 Movim的软件要求。请检查后再安装。"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "不能建立配置文件  '%s'。"
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - 建立帐号"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "PHP 版本不符。 Movim 需要 PHP 5.3以上的版本。"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim 需要 %s 扩展名。"
 
@@ -2128,8 +2115,17 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Movim 安装程序。"
 
+#, php-format
+#~ msgid "Couldn't create configuration file '%s'."
+#~ msgstr "不能建立配置文件  '%s'。"
+
 #~ msgid "Compatibility Test"
 #~ msgstr "兼容性测试"
+
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr "没有达到符合安装 Movim的软件要求。请检查后再安装。"
 
 #~ msgid "User not logged in."
 #~ msgstr "用户还未登录。"
@@ -2137,5 +2133,6 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "还未提供JID。"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "JID %s 是不正确"

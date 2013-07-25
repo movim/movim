@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-07 22:33+0200\n"
-"PO-Revision-Date: 2012-08-05 12:37+0000\n"
-"Last-Translator: Franky <Unknown>\n"
+"PO-Revision-Date: 2013-07-25 09:08+0000\n"
+"Last-Translator: Ppjet6 <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
+"X-Generator: Launchpad (build 16700)\n"
+"Language: \n"
 
 #: ../upload.php:29
 msgid "Not a picture"
@@ -129,7 +129,7 @@ msgstr " %d日間前に"
 
 #: ../system/Utils.php:187 ../system/Utils.php:424
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: ../system/Utils.php:188
 msgid "Male"
@@ -181,11 +181,11 @@ msgstr "アウェイ"
 
 #: ../system/Utils.php:439 ../app/widgets/Chat/Chat.php:46
 msgid "Do Not Disturb"
-msgstr "邪魔しないで下さい"
+msgstr "取り込み中"
 
 #: ../system/Utils.php:440 ../app/widgets/Chat/Chat.php:47
 msgid "Extended Away"
-msgstr "逃走中"
+msgstr "長時間の不在"
 
 #: ../system/Utils.php:441 ../app/controllers/ControllerMain.php:47
 #: ../app/controllers/ControllerMain.php:79
@@ -262,9 +262,8 @@ msgid "confused"
 msgstr ""
 
 #: ../system/Utils.php:473
-#, fuzzy
 msgid "contemplative"
-msgstr "軽口"
+msgstr ""
 
 #: ../system/Utils.php:474
 msgid "contented"
@@ -279,9 +278,8 @@ msgid "crazy"
 msgstr ""
 
 #: ../system/Utils.php:477
-#, fuzzy
 msgid "creative"
-msgstr "作成"
+msgstr ""
 
 #: ../system/Utils.php:478
 msgid "curious"
@@ -292,9 +290,8 @@ msgid "dejected"
 msgstr ""
 
 #: ../system/Utils.php:480
-#, fuzzy
 msgid "depressed"
-msgstr "住所"
+msgstr ""
 
 #: ../system/Utils.php:481
 msgid "disappointed"
@@ -357,9 +354,8 @@ msgid "hopeful"
 msgstr ""
 
 #: ../system/Utils.php:496
-#, fuzzy
 msgid "hot"
-msgstr "ボット"
+msgstr ""
 
 #: ../system/Utils.php:497
 msgid "humbled"
@@ -534,9 +530,8 @@ msgid "weak"
 msgstr ""
 
 #: ../system/Utils.php:541
-#, fuzzy
 msgid "worried"
-msgstr "既婚"
+msgstr ""
 
 #: ../system/Utils.php:661
 msgid "Not shared"
@@ -564,9 +559,9 @@ msgid "Error: %s"
 msgstr "エラーが発生しました。%s"
 
 #: ../system/Tpl/TplTheme.php:50
-#, fuzzy, php-format
+#, php-format
 msgid "Couldn't load file %s"
-msgstr "「%s」というファイルをロードできません。"
+msgstr ""
 
 #: ../system/widget/WidgetWrapper.php:126
 #, php-format
@@ -591,7 +586,7 @@ msgstr ""
 
 #: ../system/widget/WidgetCommon.php:190
 msgid "Your contacts"
-msgstr ""
+msgstr "コンタクト"
 
 #: ../system/widget/WidgetCommon.php:197 ../system/widget/WidgetCommon.php:198
 msgid "Delete this post"
@@ -608,35 +603,34 @@ msgid "No"
 msgstr "いいえ"
 
 #: ../system/widget/WidgetCommon.php:240
-#, fuzzy
 msgid "Loading comments ..."
-msgstr "フィードをローディング中・・・"
+msgstr "コメントを読み込み中"
 
 #: ../system/widget/WidgetCommon.php:241
 msgid "Get the comments"
-msgstr ""
+msgstr "コメントを見る"
 
 #: ../system/widget/WidgetCommon.php:248
 msgid "Add a comment"
-msgstr ""
+msgstr "コメントする"
 
 #: ../system/widget/WidgetCommon.php:271 ../system/widget/WidgetCommon.php:451
 #: ../system/widget/WidgetCommon.php:458 ../app/widgets/Vcard/Vcard.php:347
 #: ../app/widgets/Config/Config.php:228 ../app/widgets/Config/Config.php:232
 #: ../app/widgets/Admin/Admin.php:200
 msgid "Submit"
-msgstr "送る"
+msgstr "送信"
 
 #: ../system/widget/WidgetCommon.php:389
 msgid "Show the older comments"
-msgstr ""
+msgstr "前のコメントを見る"
 
 #: ../system/widget/WidgetCommon.php:433
 #: ../app/widgets/ServerNodes/ServerNodes.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:246 ../app/widgets/Node/Node.php:186
 #: ../app/widgets/Node/Node.php:206
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: ../system/widget/WidgetCommon.php:444
 msgid "What's new ?"
@@ -644,7 +638,7 @@ msgstr ""
 
 #: ../system/widget/WidgetCommon.php:463
 msgid "Preview"
-msgstr ""
+msgstr "プレビュー"
 
 #: ../system/widget/WidgetCommon.php:481
 msgid "Geolocalisation"
@@ -687,11 +681,8 @@ msgid "Specified property %s is not set in %s"
 msgstr ""
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:85
-#, fuzzy
 msgid "Your server doesn't support location publication"
 msgstr ""
-"サーバーではポスト掲載を取り締まることができません。それで、自分のコンタクト"
-"の掲載しか読めません。"
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:90
 msgid "Your are not authorized to publish your location"
@@ -700,20 +691,16 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:72
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
-#, fuzzy
 msgid "Error"
-msgstr "エラーが発生しました。%s"
+msgstr "エラー"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
-msgstr ""
+msgstr "指定されたノードは存在しません"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:45
-#, fuzzy
 msgid "Your server doesn't support this feature"
 msgstr ""
-"サーバーではポスト掲載を取り締まることができません。それで、自分のコンタクト"
-"の掲載しか読めません。"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:50
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:60
@@ -726,7 +713,7 @@ msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:65
 msgid "The server does not exist"
-msgstr ""
+msgstr "指定されたサーバーは存在しません"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
 msgid "Unexpected request"
@@ -742,7 +729,7 @@ msgstr ""
 
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:68
 msgid "Feature Not Implemented"
-msgstr ""
+msgstr "実装されていません"
 
 #: ../users/roster.2994b079afed9b7319179476a2101e77.rtpl.php:10
 #: ../app/widgets/Explore/Explore.php:140
@@ -755,7 +742,7 @@ msgstr ""
 #: ../app/widgets/Bookmark/Bookmark.php:241
 #: ../app/widgets/Notifs/Notifs.php:277
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: ../users/roster.2994b079afed9b7319179476a2101e77.rtpl.php:25
 msgid "Enter the Jabber ID of your contact."
@@ -767,13 +754,13 @@ msgstr ""
 
 #: ../users/roster.2994b079afed9b7319179476a2101e77.rtpl.php:33
 msgid "JID"
-msgstr ""
+msgstr "JID"
 
 #: ../users/roster.2994b079afed9b7319179476a2101e77.rtpl.php:46
 #: ../users/roster.2994b079afed9b7319179476a2101e77.rtpl.php:56
 #: ../app/widgets/Roster/Roster.php:315
 msgid "Show/Hide"
-msgstr ""
+msgstr "表示/非表示"
 
 #: ../users/servernodes.8998c92870cc6eff2d996036b595565f.rtpl.php:2
 #: ../app/widgets/NodeConfig/NodeConfig.php:104
@@ -856,32 +843,30 @@ msgstr ""
 
 #: ../users/login.8ea18efcd5fb1a0c7c5d6c22fed22ac7.rtpl.php:74
 msgid "No account yet ?"
-msgstr ""
+msgstr "まだ登録していない？"
 
 #: ../users/login.8ea18efcd5fb1a0c7c5d6c22fed22ac7.rtpl.php:77
 msgid "Create one !"
-msgstr ""
+msgstr "こちらです！"
 
 #: ../users/login.8ea18efcd5fb1a0c7c5d6c22fed22ac7.rtpl.php:89
 #: ../app/controllers/ControllerMain.php:417
-#, fuzzy
 msgid "Administration"
-msgstr "アカウントの作成"
+msgstr "システム管理"
 
 #: ../users/feed.8ca800598a017095e30c901baeab7e36.rtpl.php:13
 #: ../app/widgets/Node/Node.php:138 ../app/widgets/Wall/Wall.php:80
 #: ../app/controllers/ControllerMain.php:256
 msgid "Blog"
-msgstr ""
+msgstr "ブログ"
 
 #: ../users/feed.8ca800598a017095e30c901baeab7e36.rtpl.php:25
 msgid "My Posts"
 msgstr "マイポスト"
 
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "プロフィール"
+msgstr "プロフィールを更新しました"
 
 #: ../app/widgets/Vcard/Vcard.php:113
 msgid ""
@@ -893,7 +878,7 @@ msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:120 ../app/widgets/Profile/Profile.php:130
 msgid "Create my vCard"
-msgstr ""
+msgstr "vCardを作成"
 
 #: ../app/widgets/Vcard/Vcard.php:146
 #: ../app/widgets/ContactCard/ContactCard.php:45
@@ -914,12 +899,12 @@ msgstr "ニックネーム"
 #: ../app/widgets/Vcard/Vcard.php:159
 #: ../app/widgets/ContactCard/ContactCard.php:82
 msgid "Email"
-msgstr ""
+msgstr "Eメール"
 
 #: ../app/widgets/Vcard/Vcard.php:164
 #: ../app/widgets/ContactCard/ContactCard.php:64
 msgid "Date of Birth"
-msgstr "誕生日"
+msgstr "生年月日"
 
 #: ../app/widgets/Vcard/Vcard.php:169
 msgid "Day"
@@ -977,12 +962,12 @@ msgstr ""
 #: ../app/widgets/Vcard/Vcard.php:289
 #: ../app/widgets/ContactCard/ContactCard.php:106
 msgid "Locality"
-msgstr ""
+msgstr "現在地"
 
 #: ../app/widgets/Vcard/Vcard.php:293
 #: ../app/widgets/ContactCard/ContactCard.php:118
 msgid "Country"
-msgstr ""
+msgstr "国名"
 
 #: ../app/widgets/Vcard/Vcard.php:312
 msgid "Privacy Level"
@@ -1011,7 +996,7 @@ msgstr "リセット"
 
 #: ../app/widgets/Vcard/Vcard.php:370
 msgid "Edit my Profile"
-msgstr ""
+msgstr "プロフィールの変更"
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:34
 #, php-format
@@ -1020,12 +1005,11 @@ msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:37
 msgid "Group deleted"
-msgstr ""
+msgstr "このグループが削除されました"
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:43
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "設定"
+msgstr "グループの設定を保存しました"
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:63
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
@@ -1055,19 +1039,17 @@ msgstr "設定"
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:124
 msgid "Configure your group"
-msgstr ""
+msgstr "グループの設定"
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:129
 msgid "Delete this group"
-msgstr ""
+msgstr "このグループを削除する"
 
 #: ../app/widgets/Feed/Feed.php:61 ../app/widgets/Feed/Feed.php:100
 msgid ""
 "Your server doesn't support post publication, you can only read contact's "
 "feeds"
-msgstr ""
-"サーバーではポスト掲載を取り締まることができません。それで、自分のコンタクト"
-"の掲載しか読めません。"
+msgstr "サーバーではポスト掲載を取り締まることができません。それで、自分のコンタクトの掲載しか読めません。"
 
 #: ../app/widgets/Feed/Feed.php:68
 msgid "Comment publication error"
@@ -1075,16 +1057,16 @@ msgstr ""
 
 #: ../app/widgets/Feed/Feed.php:89 ../app/widgets/Bookmark/Bookmark.php:79
 msgid "An error occured : "
-msgstr ""
+msgstr "エラーが発生しました： "
 
 #: ../app/widgets/Feed/Feed.php:106
 msgid "Creating your feed..."
-msgstr ""
+msgstr "フィードの作成中..."
 
 #: ../app/widgets/Feed/Feed.php:137 ../app/widgets/News/News.php:46
 #: ../app/widgets/Wall/Wall.php:106
 msgid "Get older posts"
-msgstr "古いポストを読む"
+msgstr "前のポストを見る"
 
 #: ../app/widgets/Feed/Feed.php:196 ../app/widgets/News/News.php:77
 #: ../app/widgets/Node/Node.php:54
@@ -1092,9 +1074,8 @@ msgid "Your feed cannot be loaded."
 msgstr "フィードがロードできませんでした。"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:52
-#, fuzzy
 msgid "Create a new group"
-msgstr "新しいアカウントを作成する"
+msgstr "新しいグループを作成する"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:62
 msgid "Give a friendly name to your group"
@@ -1108,16 +1089,16 @@ msgstr ""
 #: ../app/widgets/Syndication/Syndication.php:49
 #, php-format
 msgid "%s's feed"
-msgstr ""
+msgstr "%sのフィード"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:31
 #: ../app/widgets/MediaUpload/MediaUpload.php:66
 msgid "Upload"
-msgstr ""
+msgstr "アップロード"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:35
 msgid "Please select image file"
-msgstr ""
+msgstr "画像ファイルを選択してください"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:69
 msgid "You should select valid image files only!"
@@ -1134,7 +1115,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1167,12 +1149,11 @@ msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:207
 msgid "Links"
-msgstr ""
+msgstr "リンク"
 
 #: ../app/widgets/Bookmark/Bookmark.php:215
-#, fuzzy
 msgid "Conferences"
-msgstr "プロクシ設定"
+msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:227
 msgid "Add a new URL"
@@ -1181,7 +1162,7 @@ msgstr ""
 #: ../app/widgets/Bookmark/Bookmark.php:231
 #: ../app/widgets/Account/Account.php:286
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: ../app/widgets/Bookmark/Bookmark.php:267
 msgid "Bookmarks"
@@ -1204,9 +1185,8 @@ msgid "Profile"
 msgstr "プロフィール"
 
 #: ../app/widgets/Config/Config.php:32
-#, fuzzy
 msgid "Configuration updated"
-msgstr "設定"
+msgstr "設定が変更されました"
 
 #: ../app/widgets/Config/Config.php:66
 msgid "General"
@@ -1222,7 +1202,7 @@ msgstr ""
 
 #: ../app/widgets/Config/Config.php:88
 msgid "Background color"
-msgstr ""
+msgstr "背景色"
 
 #: ../app/widgets/Config/Config.php:114
 msgid "Font size"
@@ -1241,14 +1221,12 @@ msgid "This configuration is shared wherever you are connected !"
 msgstr ""
 
 #: ../app/widgets/Connection/Connection.php:47
-#, fuzzy
 msgid "Loading your session..."
-msgstr "フィードをローディング中・・・"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-#, fuzzy
 msgid "Subscriptions saved"
-msgstr "設定"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:93
 msgid "Manage your subscriptions"
@@ -1276,9 +1254,8 @@ msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:81
 #: ../app/widgets/Media/Media.php:83
-#, fuzzy
 msgid "on"
-msgstr "なし"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:87
 msgid "Last seen"
@@ -1307,9 +1284,8 @@ msgid "Web"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:133
-#, fuzzy
 msgid "Registered"
-msgstr "昨日"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:140
 msgid "Client Informations"
@@ -1334,11 +1310,11 @@ msgstr "このユーザーを招待する"
 
 #: ../app/widgets/ChatExt/ChatExt.php:60 ../app/widgets/Chat/Chat.php:388
 msgid "Composing..."
-msgstr "合成中..."
+msgstr "書き込み中"
 
 #: ../app/widgets/ChatExt/ChatExt.php:61 ../app/widgets/Chat/Chat.php:389
 msgid "Paused..."
-msgstr ""
+msgstr "一時停止中..."
 
 #: ../app/widgets/Media/Media.php:104
 msgid "Resolution"
@@ -1370,7 +1346,7 @@ msgstr ""
 
 #: ../app/widgets/Media/Media.php:117
 msgid "Link"
-msgstr ""
+msgstr "リンク"
 
 #: ../app/widgets/Media/Media.php:146
 msgid "Viewer"
@@ -1387,12 +1363,11 @@ msgstr ""
 #: ../app/controllers/ControllerMain.php:363
 #: ../app/controllers/ControllerMain.php:390
 msgid "Media"
-msgstr ""
+msgstr "画像"
 
 #: ../app/widgets/ChatPop/ChatPop.php:40
-#, fuzzy
 msgid "Connection"
-msgstr "設定"
+msgstr "接続"
 
 #: ../app/widgets/Explore/Explore.php:130
 msgid "Search a contact"
@@ -1420,7 +1395,7 @@ msgstr ""
 
 #: ../app/widgets/ContactManage/ContactManage.php:76
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: ../app/widgets/Help/Help.php:29 ../app/widgets/Help/Help.php:42
 #: ../app/controllers/ControllerMain.php:46
@@ -1439,7 +1414,7 @@ msgstr "ヘルプ"
 
 #: ../app/widgets/Help/Help.php:31
 msgid "What is Movim?"
-msgstr ""
+msgstr "Movimとは？"
 
 #: ../app/widgets/Help/Help.php:33
 #, php-format
@@ -1534,9 +1509,8 @@ msgstr ""
 
 #: ../app/widgets/About/About.php:29 ../app/controllers/ControllerMain.php:267
 #: ../app/controllers/ControllerMain.php:332
-#, fuzzy
 msgid "About"
-msgstr "個人情報"
+msgstr ""
 
 #: ../app/widgets/About/About.php:33
 msgid "Thanks"
@@ -1592,11 +1566,11 @@ msgstr "使用されているユーザー名です"
 
 #: ../app/widgets/Account/Account.php:412
 msgid "Could not connect to the XMPP server"
-msgstr "XMPPサーバーにコネクションできませんでした。"
+msgstr "XMPPサーバーと接続ができませんでした。"
 
 #: ../app/widgets/Account/Account.php:418
 msgid "Could not communicate with the XMPP server"
-msgstr "XMPPサーバーに接続できませんでした。"
+msgstr "XMPPサーバーと通信ができませんでした。"
 
 #: ../app/widgets/Account/Account.php:424
 msgid "Unknown error"
@@ -1631,15 +1605,15 @@ msgstr ""
 
 #: ../app/widgets/Account/Account.php:463
 msgid "Enter the server domain (ex: movim.eu)"
-msgstr ""
+msgstr "ドメインネームを入力してください (例：movim.eu）"
 
 #: ../app/widgets/Account/Account.php:475
 msgid "Searching..."
-msgstr ""
+msgstr "検索中..."
 
 #: ../app/widgets/Profile/Profile.php:42
 msgid "Saved"
-msgstr ""
+msgstr "保存済み"
 
 #: ../app/widgets/Profile/Profile.php:43
 msgid "Status updated"
@@ -1660,9 +1634,8 @@ msgid "Subscribe"
 msgstr ""
 
 #: ../app/widgets/Node/Node.php:128 ../app/widgets/Node/Node.php:251
-#, fuzzy
 msgid "Posts"
-msgstr "マイポスト"
+msgstr "投稿"
 
 #: ../app/widgets/Node/Node.php:156
 msgid "Get Subscription"
@@ -1682,7 +1655,7 @@ msgstr ""
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:37
 msgid "Delete"
-msgstr ""
+msgstr "削除"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:49
 #, php-format
@@ -1724,11 +1697,11 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:223
 msgid "GD"
-msgstr ""
+msgstr "GD"
 
 #: ../app/widgets/Admin/Admin.php:226
 msgid "SimpleXML"
-msgstr ""
+msgstr "SimpleXML"
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Read and write rights for the webserver in Movim's root directory"
@@ -1791,7 +1764,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:367
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:368
@@ -1833,9 +1807,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:415 ../app/widgets/Admin/Admin.php:427
-#, fuzzy
 msgid "Information Message"
-msgstr "クライアントインフォメーション"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:419
 msgid "This message will be displayed on the login page"
@@ -1874,18 +1847,16 @@ msgid "Recreate the database"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:493
-#, fuzzy
 msgid "Recreate"
-msgstr "作成"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:497
 msgid "This button will clear and recreate the Movim database."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:504
-#, fuzzy
 msgid "Database Type"
-msgstr "データベースが発見されました。"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:522
 msgid "Host"
@@ -1896,9 +1867,8 @@ msgid "Port"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:534
-#, fuzzy
 msgid "Database Name"
-msgstr "データベースが発見されました。"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
 msgid "Wrong position"
@@ -1921,9 +1891,8 @@ msgid "Cache"
 msgstr ""
 
 #: ../app/widgets/ConfigData/ConfigData.php:68
-#, fuzzy
 msgid "Post"
-msgstr "マイポスト"
+msgstr ""
 
 #: ../app/widgets/ConfigData/ConfigData.php:73
 #: ../app/widgets/ConfigData/ConfigData.php:81
@@ -1944,9 +1913,8 @@ msgid "Data"
 msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-#, fuzzy
 msgid "Affiliations saved"
-msgstr "設定"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:88
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:89
@@ -1959,7 +1927,7 @@ msgstr ""
 
 #: ../app/widgets/Notifs/Notifs.php:135 ../app/widgets/Wall/Wall.php:93
 msgid "Updating"
-msgstr ""
+msgstr "更新中"
 
 #: ../app/widgets/Notifs/Notifs.php:175
 msgid "Contact request pending"
@@ -1971,7 +1939,7 @@ msgstr "はあなたとチャットしたいそうです。"
 
 #: ../app/widgets/Login/Login.php:35
 msgid "Connecting..."
-msgstr ""
+msgstr "接続中..."
 
 #: ../app/widgets/Login/Login.php:43
 #, php-format
@@ -2003,9 +1971,7 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:88
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
-"XMPPドメインエラーが発生しました。使われているアカウントは不可なJabberIDで"
-"す。"
+msgstr "XMPPドメインエラーが発生しました。使われているアカウントは不可なJabberIDです。"
 
 #: ../app/widgets/Login/Login.php:100
 msgid "Wrong password"
@@ -2045,7 +2011,7 @@ msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:97
 msgid "Update"
-msgstr ""
+msgstr "更新"
 
 #: ../app/controllers/ControllerMain.php:40
 #, php-format
@@ -2084,34 +2050,33 @@ msgstr "%s - プロファイル"
 
 #: ../app/controllers/ControllerMain.php:243
 #: ../app/controllers/ControllerMain.php:254
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - アカウントを追加"
+msgstr "%s - アカウント"
 
 #: ../app/controllers/ControllerMain.php:245
-#, fuzzy
 msgid "Account Creation"
-msgstr "%s - アカウントの作成"
+msgstr "アカウントの作成"
 
 #: ../app/controllers/ControllerMain.php:265
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - アカウントを追加"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:292
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Post View"
-msgstr "%s - プロファイル"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:314
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Loading"
-msgstr "%s - 設定"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:330
 #, php-format
 msgid "%s - Login to Movim"
-msgstr "%s - MOVIMへログインする"
+msgstr "%s - MOVIMにログインする"
 
 #: ../app/controllers/ControllerMain.php:358
 #, php-format
@@ -2124,63 +2089,18 @@ msgid "%s - Help Page"
 msgstr "%s - ヘルプページ"
 
 #: ../app/controllers/ControllerMain.php:414
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "アカウントの作成"
+msgstr ""
 
 #: ../app/controllers/ControllerBase.php:136
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "「%s」というログファイルをオープンできません。"
-
-#~ msgid "All"
-#~ msgstr "全て"
-
-#~ msgid "Decline"
-#~ msgstr "断る"
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Movimをダウンロードして頂き、誠にありがとうございます。"
-
-#~ msgid ""
-#~ "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr ""
-#~ "あなたのソーシャルネットワークをお楽しみする前に、いくつかの修整が必要で"
-#~ "す。"
-
-#~ msgid ""
-#~ "Keep in mind that Movim is still under development and will handle many "
-#~ "personal details. Its use can potentially endanger your data. Always pay "
-#~ "attention to information that you submit."
-#~ msgstr ""
-#~ "Movimは未だ開発中で、多くのパーソナルインフォメーションを扱うことを注目し"
-#~ "て下さい。これの使用はデータを危ぶむ可能性があります。送るインフォメーショ"
-#~ "ンにいつもご注意下さい。"
-
-#, fuzzy
-#~ msgid "Your server doesn't support post deletetion"
-#~ msgstr ""
-#~ "サーバーではポスト掲載を取り締まることができません。それで、自分のコンタク"
-#~ "トの掲載しか読めません。"
-
-#, fuzzy
-#~ msgid "Your server doesn't support post publication"
-#~ msgstr ""
-#~ "サーバーではポスト掲載を取り締まることができません。それで、自分のコンタク"
-#~ "トの掲載しか読めません。"
-
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
-#~ msgstr ""
-#~ "次の条件は認めませんでした。Movimをインストールするためには、全部認めるよ"
-#~ "うにしてください。"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "「%s」の設定ファイルをクリエートできませんでした。"
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - アカウントの作成"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "PHPバージョンが不一致です。MovimにはPHP5.3以上が必要です。"
@@ -2191,12 +2111,25 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Movimインストーラー"
 
+#, php-format
+#~ msgid "Couldn't create configuration file '%s'."
+#~ msgstr "「%s」の設定ファイルをクリエートできませんでした。"
+
 #~ msgid "Compatibility Test"
 #~ msgstr "両立テスト"
+
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr "次の条件は認めませんでした。Movimをインストールするためには、全部認めるようにしてください。"
+
+#~ msgid "Decline"
+#~ msgstr "断る"
 
 #~ msgid "Loading the contact feed ..."
 #~ msgstr "コンタクトのフィードをロードしています。"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "%sというパッケージをインストールしてください。"
 
@@ -2207,24 +2140,44 @@ msgstr ""
 #~ msgstr "現在のバージョン "
 
 #~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr ""
-#~ "PHPバージョンをアップデートしてください。それとも、アドミンサーバーを連絡"
-#~ "してください。"
+#~ msgstr "PHPバージョンをアップデートしてください。それとも、アドミンサーバーを連絡してください。"
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "%sと%sというパッケージをインストールしてください。"
 
 #~ msgid "Enable read and write rights on Movim's root folder"
 #~ msgstr "Movimルートフォルドに読取り書込み権利を許可してください。"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "「%s」というエラーでBoshコネクションが失敗しました。"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "「%s」というエラーでデータベースコネクションが失敗しました。"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "Boshを通じてXMPPコネクションは「%s」というエラーで失波しました。"
+
+#~ msgid ""
+#~ "Keep in mind that Movim is still under development and will handle many "
+#~ "personal details. Its use can potentially endanger your data. Always pay "
+#~ "attention to information that you submit."
+#~ msgstr ""
+#~ "Movimは未だ開発中で、多くのパーソナルインフォメーションを扱うことを注目して下さい。これの使用はデータを危ぶむ可能性があります。送るインフォメーション"
+#~ "にいつもご注意下さい。"
+
+#~ msgid ""
+#~ "Before you enjoy your social network, a few adjustements are required."
+#~ msgstr "あなたのソーシャルネットワークをお楽しみする前に、いくつかの修整が必要です。"
+
+#~ msgid "Thank you for downloading Movim!"
+#~ msgstr "Movimをダウンロードして頂き、誠にありがとうございます。"
+
+#~ msgid "Proxy Preferences"
+#~ msgstr "プロクシ設定"
 
 #~ msgid "XMPP Connection Preferences"
 #~ msgstr "XMPPコネクション設定"
@@ -2232,9 +2185,7 @@ msgstr ""
 #~ msgid ""
 #~ "Some errors were detected. Please correct them for the installation to "
 #~ "proceed."
-#~ msgstr ""
-#~ "エラーが発生されました。インストールを完成するには、それらを直してくださ"
-#~ "い。"
+#~ msgstr "エラーが発生されました。インストールを完成するには、それらを直してください。"
 
 #~ msgid "BOSH Connection Preferences"
 #~ msgstr "BOSHコネクション設定"
@@ -2242,6 +2193,7 @@ msgstr ""
 #~ msgid "Success !"
 #~ msgstr "成功！"
 
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "インストールを完成するには、「%s」というフォルダを抜いてください。"
 
@@ -2251,22 +2203,34 @@ msgstr ""
 #~ msgid "User not logged in."
 #~ msgstr "ユーザーはログインしていません。"
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr ""
-#~ "これから、「%sJump」というMovimインスタンスを「!%s」にアクセスすることがで"
-#~ "きます。"
+#~ msgstr "これから、「%sJump」というMovimインスタンスを「!%s」にアクセスすることができます。"
 
 #~ msgid "Database Movim schema installed"
 #~ msgstr "Movimデータベースのスキームがインストールされました。"
 
+#~ msgid "Database Detected"
+#~ msgstr "データベースが発見されました。"
+
 #~ msgid "Valid Bosh"
 #~ msgstr "妥当なBosh"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "「%s」というJIDは正しくありません。"
 
+#, php-format
+#~ msgid "Cannot open log file '%s'"
+#~ msgstr "「%s」というログファイルをオープンできません。"
+
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movimには「%s」という拡張子が必要です。"
+
+#, php-format
+#~ msgid "%s - Add An Account"
+#~ msgstr "%s - アカウントを追加"
 
 #~ msgid "Only alphanumerics elements are authorized"
 #~ msgstr "英数文字のみが認められています。"
@@ -2280,9 +2244,7 @@ msgstr ""
 #~ msgid ""
 #~ "Firstly fill in this blank with a brand new account ID, this address will "
 #~ "follow you on all the Movim network !"
-#~ msgstr ""
-#~ "はじめには、このブランクを真新しいIDで入力してください。このアドレスはすべ"
-#~ "てのMovimネットワークで使われるのです。"
+#~ msgstr "はじめには、このブランクを真新しいIDで入力してください。このアドレスはすべてのMovimネットワークで使われるのです。"
 
 #~ msgid "Add your login informations"
 #~ msgstr "ログインインフォメーションを追加してください。"
@@ -2299,11 +2261,23 @@ msgstr ""
 #~ msgid "Pseudo"
 #~ msgstr "ニックネーム"
 
+#~ msgid "Create"
+#~ msgstr "作成"
+
 #~ msgid "8 characters"
 #~ msgstr "８字"
+
+#~ msgid "Address"
+#~ msgstr "住所"
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "フィードをローディング中・・・"
 
 #~ msgid "Client Name"
 #~ msgstr "クライアント名"
 
 #~ msgid "Client Type"
 #~ msgstr "クライアントタイプ"
+
+#~ msgid "All"
+#~ msgstr "全て"
