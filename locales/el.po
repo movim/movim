@@ -9,12 +9,12 @@ msgstr ""
 "PO-Revision-Date: 2012-07-06 22:50+0000\n"
 "Last-Translator: Rotaru Dorin <d.rotarou@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
+"X-Generator: Launchpad (build 16700)\n"
+"Language: \n"
 
 #: ../upload.php:29
 msgid "Not a picture"
@@ -25,9 +25,9 @@ msgid "Folder size limit exceeded"
 msgstr ""
 
 #: ../system/Conf.php:56
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "Αδύνατη η φόρτωση του αρχείου '%s'"
+msgstr ""
 
 #: ../system/Conf.php:67
 #, php-format
@@ -75,9 +75,8 @@ msgid "April"
 msgstr ""
 
 #: ../system/Utils.php:127
-#, fuzzy
 msgid "May"
-msgstr "Δευ"
+msgstr ""
 
 #: ../system/Utils.php:128
 msgid "June"
@@ -120,9 +119,8 @@ msgid "Yesterday"
 msgstr ""
 
 #: ../system/Utils.php:150
-#, fuzzy
 msgid "day"
-msgstr "Δευ"
+msgstr ""
 
 #: ../system/Utils.php:153
 #, php-format
@@ -264,9 +262,8 @@ msgid "confused"
 msgstr ""
 
 #: ../system/Utils.php:473
-#, fuzzy
 msgid "contemplative"
-msgstr "ομιλητικός"
+msgstr ""
 
 #: ../system/Utils.php:474
 msgid "contented"
@@ -281,9 +278,8 @@ msgid "crazy"
 msgstr ""
 
 #: ../system/Utils.php:477
-#, fuzzy
 msgid "creative"
-msgstr "Δημιούργησε"
+msgstr ""
 
 #: ../system/Utils.php:478
 msgid "curious"
@@ -563,9 +559,9 @@ msgid "Error: %s"
 msgstr "Σφάλμα: %s"
 
 #: ../system/Tpl/TplTheme.php:50
-#, fuzzy, php-format
+#, php-format
 msgid "Couldn't load file %s"
-msgstr "Αδύνατη η φόρτωση του αρχείου '%s'"
+msgstr ""
 
 #: ../system/widget/WidgetWrapper.php:126
 #, php-format
@@ -607,9 +603,8 @@ msgid "No"
 msgstr ""
 
 #: ../system/widget/WidgetCommon.php:240
-#, fuzzy
 msgid "Loading comments ..."
-msgstr "Φορτώνεται το contact feed ..."
+msgstr ""
 
 #: ../system/widget/WidgetCommon.php:241
 msgid "Get the comments"
@@ -696,9 +691,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:72
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
-#, fuzzy
 msgid "Error"
-msgstr "Σφάλμα: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -857,9 +851,8 @@ msgstr ""
 
 #: ../users/login.8ea18efcd5fb1a0c7c5d6c22fed22ac7.rtpl.php:89
 #: ../app/controllers/ControllerMain.php:417
-#, fuzzy
 msgid "Administration"
-msgstr "Δημιουργία Λογαριασμού"
+msgstr ""
 
 #: ../users/feed.8ca800598a017095e30c901baeab7e36.rtpl.php:13
 #: ../app/widgets/Node/Node.php:138 ../app/widgets/Wall/Wall.php:80
@@ -872,9 +865,8 @@ msgid "My Posts"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Προφίλ"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:113
 msgid ""
@@ -1016,9 +1008,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:43
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:63
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
@@ -1083,9 +1074,8 @@ msgid "Your feed cannot be loaded."
 msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:52
-#, fuzzy
 msgid "Create a new group"
-msgstr "Δημιουργία νέου λογαριασμού"
+msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:62
 msgid "Give a friendly name to your group"
@@ -1125,7 +1115,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1161,9 +1152,8 @@ msgid "Links"
 msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:215
-#, fuzzy
 msgid "Conferences"
-msgstr "Προτιμήσεις proxy"
+msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:227
 msgid "Add a new URL"
@@ -1195,9 +1185,8 @@ msgid "Profile"
 msgstr "Προφίλ"
 
 #: ../app/widgets/Config/Config.php:32
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../app/widgets/Config/Config.php:66
 msgid "General"
@@ -1232,14 +1221,12 @@ msgid "This configuration is shared wherever you are connected !"
 msgstr ""
 
 #: ../app/widgets/Connection/Connection.php:47
-#, fuzzy
 msgid "Loading your session..."
-msgstr "Φορτώνεται το contact feed ..."
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-#, fuzzy
 msgid "Subscriptions saved"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:93
 msgid "Manage your subscriptions"
@@ -1379,9 +1366,8 @@ msgid "Media"
 msgstr ""
 
 #: ../app/widgets/ChatPop/ChatPop.php:40
-#, fuzzy
 msgid "Connection"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:130
 msgid "Search a contact"
@@ -1778,7 +1764,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:367
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:368
@@ -1820,9 +1807,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:415 ../app/widgets/Admin/Admin.php:427
-#, fuzzy
 msgid "Information Message"
-msgstr "Γενικές πληροφορίες"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:419
 msgid "This message will be displayed on the login page"
@@ -1861,18 +1847,16 @@ msgid "Recreate the database"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:493
-#, fuzzy
 msgid "Recreate"
-msgstr "Δημιούργησε"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:497
 msgid "This button will clear and recreate the Movim database."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:504
-#, fuzzy
 msgid "Database Type"
-msgstr "Εντοπίστηκε βάση δεδομένων"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:522
 msgid "Host"
@@ -1883,9 +1867,8 @@ msgid "Port"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:534
-#, fuzzy
 msgid "Database Name"
-msgstr "Εντοπίστηκε βάση δεδομένων"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
 msgid "Wrong position"
@@ -1930,9 +1913,8 @@ msgid "Data"
 msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-#, fuzzy
 msgid "Affiliations saved"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:88
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:89
@@ -2068,29 +2050,28 @@ msgstr "%s - Προφίλ"
 
 #: ../app/controllers/ControllerMain.php:243
 #: ../app/controllers/ControllerMain.php:254
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Προσθέστε λογαριασμό"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:245
-#, fuzzy
 msgid "Account Creation"
-msgstr "%s - Δημιουργία Λογαριασμού"
+msgstr "Δημιουργία Λογαριασμού"
 
 #: ../app/controllers/ControllerMain.php:265
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - Προσθέστε λογαριασμό"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:292
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Post View"
-msgstr "%s - Προφίλ"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:314
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Loading"
-msgstr "%s - Ρύθμιση"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:330
 #, php-format
@@ -2108,46 +2089,21 @@ msgid "%s - Help Page"
 msgstr "%s - Σελίδα βοήθειας"
 
 #: ../app/controllers/ControllerMain.php:414
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "Δημιουργία Λογαριασμού"
+msgstr ""
 
 #: ../app/controllers/ControllerBase.php:136
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Αδύνατο να ανοίξει το αρχείο καταγραφής '%s'"
-
-#~ msgid "Decline"
-#~ msgstr "Απόρριψη"
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Ευχαριστούμε που κατεβάσατε το Movim!"
-
-#~ msgid ""
-#~ "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr ""
-#~ "Πριν απολαύσετε το κοινωνικό σας δίκτυο, απαιτούνται ορισμένες "
-#~ "προσαρμογές."
-
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
-#~ msgstr ""
-#~ "Οι ακόλουθες προϋποθέσεις δεν καλύπτονταν. Παρακαλώ βεβαιωθείτε πως "
-#~ "καλύπτονται όλες, για να μπορέσετε να προχωρήσετε στην εγκατάσταση του "
-#~ "Movim."
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Αδύνατη η δημιουργία του αρχείου ρύθμισης '%s'."
-
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr ""
-#~ "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση "
-#~ "5.3 της PHP."
+#~ "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση 5.3 "
+#~ "της PHP."
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Το Movim απαιτεί την %s επέκταση."
 
@@ -2157,8 +2113,19 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Πρόγραμμα εγκατάστασης του Movim"
 
+#, php-format
+#~ msgid "Couldn't create configuration file '%s'."
+#~ msgstr "Αδύνατη η δημιουργία του αρχείου ρύθμισης '%s'."
+
 #~ msgid "Compatibility Test"
 #~ msgstr "Δοκιμασία συμβατότητας"
+
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr ""
+#~ "Οι ακόλουθες προϋποθέσεις δεν καλύπτονταν. Παρακαλώ βεβαιωθείτε πως "
+#~ "καλύπτονται όλες, για να μπορέσετε να προχωρήσετε στην εγκατάσταση του Movim."
 
 #~ msgid "User not logged in."
 #~ msgstr "Χρήστης μη συνδεδεμένος."
@@ -2166,8 +2133,23 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "Δεν παρέχονται JID (Jabber Identif. Codes)"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Ο jid '%s' είναι λανθασμένος"
+
+#, php-format
+#~ msgid "Cannot open log file '%s'"
+#~ msgstr "Αδύνατο να ανοίξει το αρχείο καταγραφής '%s'"
+
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Δημιουργία Λογαριασμού"
+
+#~ msgid "Decline"
+#~ msgstr "Απόρριψη"
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Φορτώνεται το contact feed ..."
 
 #~ msgid "BOSH Connection Preferences"
 #~ msgstr "Επιλογές σύνδεσης BOSH"
@@ -2187,19 +2169,34 @@ msgstr ""
 #~ msgid "Retype"
 #~ msgstr "Επαναπληκτρολόγηση"
 
+#~ msgid "Create"
+#~ msgstr "Δημιούργησε"
+
 #~ msgid "Actual version : "
 #~ msgstr "Τρέχουσα έκδοση "
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Εγκαταστήστε το %s πακέτο"
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Εγκατασταση %s και %s πακέτα"
 
 #~ msgid "Update your PHP version or contact your server administrator"
 #~ msgstr ""
-#~ "Κάντε αναβάθμιση του PHP ή επικοινωνήστε με τον διαχειρηστή του "
-#~ "εξυπηρετητή"
+#~ "Κάντε αναβάθμιση του PHP ή επικοινωνήστε με τον διαχειρηστή του εξυπηρετητή"
+
+#~ msgid ""
+#~ "Before you enjoy your social network, a few adjustements are required."
+#~ msgstr ""
+#~ "Πριν απολαύσετε το κοινωνικό σας δίκτυο, απαιτούνται ορισμένες προσαρμογές."
+
+#~ msgid "Thank you for downloading Movim!"
+#~ msgstr "Ευχαριστούμε που κατεβάσατε το Movim!"
+
+#~ msgid "Proxy Preferences"
+#~ msgstr "Προτιμήσεις proxy"
 
 #~ msgid "XMPP Connection Preferences"
 #~ msgstr "Προτιμήσεις σύνδεσης XMPP"
@@ -2208,11 +2205,14 @@ msgstr ""
 #~ "Some errors were detected. Please correct them for the installation to "
 #~ "proceed."
 #~ msgstr ""
-#~ "Εντοπίστηκαν μερικά σφάλματα. Παρακαλούμε διορθώστε τα για να συνεχίστεί "
-#~ "η εγκατάσταση"
+#~ "Εντοπίστηκαν μερικά σφάλματα. Παρακαλούμε διορθώστε τα για να συνεχίστεί η "
+#~ "εγκατάσταση"
 
 #~ msgid "Valid Bosh"
 #~ msgstr "Εγκυρο bosh"
+
+#~ msgid "Database Detected"
+#~ msgstr "Εντοπίστηκε βάση δεδομένων"
 
 #~ msgid "Make sure your password is safe :"
 #~ msgstr "Σιγουρευτείτε εαν ο κωδικός σας είναι ασφαλής"
@@ -2220,6 +2220,10 @@ msgstr ""
 #~ msgid "A capital letter, a digit and a special character are recommended"
 #~ msgstr ""
 #~ "Προτείνεται ένα κεφαλαίο γράμμα, ένα ψηφίο και ένας ειδικός χαρακτήρας"
+
+#, php-format
+#~ msgid "%s - Add An Account"
+#~ msgstr "%s - Προσθέστε λογαριασμό"
 
 #~ msgid "8 characters"
 #~ msgstr "8 χαρακτήρες"

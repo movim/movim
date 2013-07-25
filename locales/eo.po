@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-07 22:33+0200\n"
-"PO-Revision-Date: 2012-05-19 08:53+0000\n"
-"Last-Translator: Eliovir <Unknown>\n"
+"PO-Revision-Date: 2013-05-11 17:33+0000\n"
+"Last-Translator: Baptiste Darthenay <baptiste+launchpad@darthenay.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
+"X-Generator: Launchpad (build 16700)\n"
+"Language: \n"
 
 #: ../upload.php:29
 msgid "Not a picture"
@@ -25,9 +25,9 @@ msgid "Folder size limit exceeded"
 msgstr ""
 
 #: ../system/Conf.php:56
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "Ne povas ŝargi dosieron “%s”."
+msgstr "Ne eblas ŝarĝi elementvaloro '%s'"
 
 #: ../system/Conf.php:67
 #, php-format
@@ -36,76 +36,75 @@ msgstr "Ne povas ŝargi dosieron “%s”."
 
 #: ../system/Utils.php:114
 msgid "Monday"
-msgstr ""
+msgstr "Lundo"
 
 #: ../system/Utils.php:115
 msgid "Tuesday"
-msgstr ""
+msgstr "Mardo"
 
 #: ../system/Utils.php:116
 msgid "Wednesday"
-msgstr ""
+msgstr "Merkredo"
 
 #: ../system/Utils.php:117
 msgid "Thursday"
-msgstr ""
+msgstr "Ĵaŭdo"
 
 #: ../system/Utils.php:118 ../system/Utils.php:120
 msgid "Friday"
-msgstr ""
+msgstr "Vendredo"
 
 #: ../system/Utils.php:119
 msgid "Saturday"
-msgstr ""
+msgstr "Sabato"
 
 #: ../system/Utils.php:123
 msgid "January"
-msgstr ""
+msgstr "Januaro"
 
 #: ../system/Utils.php:124
 msgid "February"
-msgstr ""
+msgstr "Februaro"
 
 #: ../system/Utils.php:125
 msgid "March"
-msgstr ""
+msgstr "Marto"
 
 #: ../system/Utils.php:126
 msgid "April"
-msgstr ""
+msgstr "Aprilo"
 
 #: ../system/Utils.php:127
-#, fuzzy
 msgid "May"
-msgstr "tago"
+msgstr "Majo"
 
 #: ../system/Utils.php:128
 msgid "June"
-msgstr ""
+msgstr "Junio"
 
 #: ../system/Utils.php:129
 msgid "July"
-msgstr ""
+msgstr "Julio"
 
 #: ../system/Utils.php:130
 msgid "August"
-msgstr ""
+msgstr "Aŭgusto"
 
 #: ../system/Utils.php:131
 msgid "September"
-msgstr ""
+msgstr "Septembro"
 
 #: ../system/Utils.php:132
 msgid "October"
-msgstr ""
+msgstr "Oktobro"
 
 #: ../system/Utils.php:133
 msgid "November"
-msgstr ""
+msgstr "Novembro"
 
 #: ../system/Utils.php:134
 msgid "December"
-msgstr ""
+msgstr "Decembro"
 
 #: ../system/Utils.php:140
 msgid "Today"
@@ -130,23 +129,23 @@ msgstr " Antaŭ %d tagoj"
 
 #: ../system/Utils.php:187 ../system/Utils.php:424
 msgid "None"
-msgstr ""
+msgstr "Neniu"
 
 #: ../system/Utils.php:188
 msgid "Male"
-msgstr ""
+msgstr "Malina"
 
 #: ../system/Utils.php:189
 msgid "Female"
-msgstr ""
+msgstr "Ina"
 
 #: ../system/Utils.php:190
 msgid "Other"
-msgstr ""
+msgstr "Alia"
 
 #: ../system/Utils.php:425
 msgid "Single"
-msgstr ""
+msgstr "Unuope"
 
 #: ../system/Utils.php:426
 msgid "In a relationship"
@@ -154,7 +153,7 @@ msgstr ""
 
 #: ../system/Utils.php:427
 msgid "Married"
-msgstr ""
+msgstr "Edz(in)iĝinta"
 
 #: ../system/Utils.php:428
 msgid "Divorced"
@@ -174,7 +173,7 @@ msgstr ""
 
 #: ../system/Utils.php:437 ../app/widgets/Chat/Chat.php:44
 msgid "Online"
-msgstr ""
+msgstr "Enrete"
 
 #: ../system/Utils.php:438 ../app/widgets/Chat/Chat.php:45
 msgid "Away"
@@ -182,7 +181,7 @@ msgstr "For"
 
 #: ../system/Utils.php:439 ../app/widgets/Chat/Chat.php:46
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "Ne ĝenu"
 
 #: ../system/Utils.php:440 ../app/widgets/Chat/Chat.php:47
 msgid "Extended Away"
@@ -560,9 +559,9 @@ msgid "Error: %s"
 msgstr "Eraro: %s"
 
 #: ../system/Tpl/TplTheme.php:50
-#, fuzzy, php-format
+#, php-format
 msgid "Couldn't load file %s"
-msgstr "Ne povas ŝargi dosieron “%s”."
+msgstr ""
 
 #: ../system/widget/WidgetWrapper.php:126
 #, php-format
@@ -604,9 +603,8 @@ msgid "No"
 msgstr ""
 
 #: ../system/widget/WidgetCommon.php:240
-#, fuzzy
 msgid "Loading comments ..."
-msgstr "Ŝarĝante la kontakta fluo…"
+msgstr ""
 
 #: ../system/widget/WidgetCommon.php:241
 msgid "Get the comments"
@@ -693,9 +691,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:72
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
-#, fuzzy
 msgid "Error"
-msgstr "Eraro: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -745,7 +742,7 @@ msgstr ""
 #: ../app/widgets/Bookmark/Bookmark.php:241
 #: ../app/widgets/Notifs/Notifs.php:277
 msgid "Add"
-msgstr ""
+msgstr "Aldoni"
 
 #: ../users/roster.2994b079afed9b7319179476a2101e77.rtpl.php:25
 msgid "Enter the Jabber ID of your contact."
@@ -854,9 +851,8 @@ msgstr ""
 
 #: ../users/login.8ea18efcd5fb1a0c7c5d6c22fed22ac7.rtpl.php:89
 #: ../app/controllers/ControllerMain.php:417
-#, fuzzy
 msgid "Administration"
-msgstr "Kreado de konto"
+msgstr ""
 
 #: ../users/feed.8ca800598a017095e30c901baeab7e36.rtpl.php:13
 #: ../app/widgets/Node/Node.php:138 ../app/widgets/Wall/Wall.php:80
@@ -869,9 +865,8 @@ msgid "My Posts"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Profilo"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:113
 msgid ""
@@ -1013,9 +1008,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:43
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:63
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
@@ -1121,7 +1115,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1157,9 +1152,8 @@ msgid "Links"
 msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:215
-#, fuzzy
 msgid "Conferences"
-msgstr "Agordo de prokura servilo"
+msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:227
 msgid "Add a new URL"
@@ -1191,9 +1185,8 @@ msgid "Profile"
 msgstr "Profilo"
 
 #: ../app/widgets/Config/Config.php:32
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: ../app/widgets/Config/Config.php:66
 msgid "General"
@@ -1228,14 +1221,12 @@ msgid "This configuration is shared wherever you are connected !"
 msgstr ""
 
 #: ../app/widgets/Connection/Connection.php:47
-#, fuzzy
 msgid "Loading your session..."
-msgstr "Ŝarĝante la kontakta fluo…"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-#, fuzzy
 msgid "Subscriptions saved"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:93
 msgid "Manage your subscriptions"
@@ -1293,9 +1284,8 @@ msgid "Web"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:133
-#, fuzzy
 msgid "Registered"
-msgstr "Hieraŭ"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:140
 msgid "Client Informations"
@@ -1376,9 +1366,8 @@ msgid "Media"
 msgstr ""
 
 #: ../app/widgets/ChatPop/ChatPop.php:40
-#, fuzzy
 msgid "Connection"
-msgstr "Konektante..."
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:130
 msgid "Search a contact"
@@ -1421,7 +1410,7 @@ msgstr ""
 #: ../app/controllers/ControllerMain.php:365
 #: ../app/controllers/ControllerMain.php:392
 msgid "Help"
-msgstr ""
+msgstr "Helpo"
 
 #: ../app/widgets/Help/Help.php:31
 msgid "What is Movim?"
@@ -1740,7 +1729,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:303
 msgid "empty"
-msgstr ""
+msgstr "malplena"
 
 #: ../app/widgets/Admin/Admin.php:304
 msgid "terse"
@@ -1748,7 +1737,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:305
 msgid "normal"
-msgstr ""
+msgstr "normala"
 
 #: ../app/widgets/Admin/Admin.php:306
 msgid "talkative"
@@ -1775,7 +1764,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:367
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:368
@@ -1817,9 +1807,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:415 ../app/widgets/Admin/Admin.php:427
-#, fuzzy
 msgid "Information Message"
-msgstr "Generalaj informoj"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:419
 msgid "This message will be displayed on the login page"
@@ -1866,9 +1855,8 @@ msgid "This button will clear and recreate the Movim database."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:504
-#, fuzzy
 msgid "Database Type"
-msgstr "Datumbazo trovita"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:522
 msgid "Host"
@@ -1879,9 +1867,8 @@ msgid "Port"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:534
-#, fuzzy
 msgid "Database Name"
-msgstr "Datumbazo trovita"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
 msgid "Wrong position"
@@ -1926,9 +1913,8 @@ msgid "Data"
 msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-#, fuzzy
 msgid "Affiliations saved"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:88
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:89
@@ -2058,25 +2044,24 @@ msgid "%s - Configuration"
 msgstr "%s - Agordaĵoj"
 
 #: ../app/controllers/ControllerMain.php:225
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Profile"
-msgstr "Profilo"
+msgstr "%s - Profilo"
 
 #: ../app/controllers/ControllerMain.php:243
 #: ../app/controllers/ControllerMain.php:254
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Kreado de konto"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:245
-#, fuzzy
 msgid "Account Creation"
-msgstr "%s - Kreado de konto"
+msgstr "Kreado de konto"
 
 #: ../app/controllers/ControllerMain.php:265
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - Kreado de konto"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:292
 #, php-format
@@ -2084,9 +2069,9 @@ msgid "%s - Post View"
 msgstr ""
 
 #: ../app/controllers/ControllerMain.php:314
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Loading"
-msgstr "%s - Agordaĵoj"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:330
 #, php-format
@@ -2101,33 +2086,17 @@ msgstr ""
 #: ../app/controllers/ControllerMain.php:385
 #, php-format
 msgid "%s - Help Page"
-msgstr ""
+msgstr "%s - Helppaĝo"
 
 #: ../app/controllers/ControllerMain.php:414
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "Kreado de konto"
+msgstr ""
 
 #: ../app/controllers/ControllerBase.php:136
 #, php-format
 msgid "%s - 404"
 msgstr ""
-
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Ne povas malfermi protokolan dosieron '%s'"
-
-#~ msgid "Decline"
-#~ msgstr "Malakcepti"
-
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
-#~ msgstr ""
-#~ "La sekvaj elementoj ne estis trovita. Bonvolu kontroli ke ĉiuj estas "
-#~ "disponeblaj por instali Movim-on."
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Ne povas krei agorddosieron “%s”."
 
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "La Movima dosierujo devus esti skribebla."
@@ -2138,20 +2107,47 @@ msgstr ""
 #~ msgid "Compatibility Test"
 #~ msgstr "Kongrueca testo"
 
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr ""
+#~ "La sekvaj elementoj ne estis trovita. Bonvolu kontroli ke ĉiuj estas "
+#~ "disponeblaj por instali Movim-on."
+
 #~ msgid "User not logged in."
 #~ msgstr "Uzanto ne ensalutita."
 
 #~ msgid "JID not provided."
 #~ msgstr "JID maldisponebla"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "JID “%s” malkorekta"
+
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Kreado de konto"
+
+#~ msgid "Decline"
+#~ msgstr "Malakcepti"
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Ŝarĝante la kontakta fluo…"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Nekongrua versio de PHP. Movim necesas PHP 5.3 minimume."
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim necesas la kromaĵon %s."
+
+#, php-format
+#~ msgid "Couldn't create configuration file '%s'."
+#~ msgstr "Ne povas krei agorddosieron “%s”."
+
+#, php-format
+#~ msgid "Cannot open log file '%s'"
+#~ msgstr "Ne povas malfermi protokolan dosieron '%s'"
 
 #~ msgid "or"
 #~ msgstr "aŭ"
@@ -2163,6 +2159,7 @@ msgstr ""
 #~ msgstr ""
 #~ "Ĝisdatigu vian PHP-an version aŭ kontaktu vian servilan administranton"
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Instali %s kaj %s pakaĵojn"
 
@@ -2172,18 +2169,26 @@ msgstr ""
 #~ msgid "Success !"
 #~ msgstr "Sukseso!"
 
+#~ msgid "Proxy Preferences"
+#~ msgstr "Agordo de prokura servilo"
+
 #~ msgid "XMPP Connection Preferences"
 #~ msgstr "Agordoj de XMPP-konektado"
 
 #~ msgid "Enable read and write rights on Movim's root folder"
 #~ msgstr "Ebligi legi kaj skribi rajtojn on la radika dosierujo de Movim"
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr "Nun, vi povas aliri vian Movim-instancon %sEk en!%s"
 
 #~ msgid "Database Movim schema installed"
 #~ msgstr "Skemo de Movim-datumbazo instalita"
 
+#~ msgid "Database Detected"
+#~ msgstr "Datumbazo trovita"
+
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Intali la pakaĵon \"%s\""
 

@@ -9,12 +9,11 @@ msgstr ""
 "PO-Revision-Date: 2011-10-26 21:35+0000\n"
 "Last-Translator: edhelas <edhelas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
+"X-Generator: Launchpad (build 16700)\n"
 
 #: ../upload.php:29
 msgid "Not a picture"
@@ -25,9 +24,9 @@ msgid "Folder size limit exceeded"
 msgstr ""
 
 #: ../system/Conf.php:56
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load element value '%s'"
-msgstr "Fisierul '%s' nu poate fi incarcat."
+msgstr ""
 
 #: ../system/Conf.php:67
 #, php-format
@@ -559,9 +558,9 @@ msgid "Error: %s"
 msgstr "Eroare: %s"
 
 #: ../system/Tpl/TplTheme.php:50
-#, fuzzy, php-format
+#, php-format
 msgid "Couldn't load file %s"
-msgstr "Fisierul '%s' nu poate fi incarcat."
+msgstr ""
 
 #: ../system/widget/WidgetWrapper.php:126
 #, php-format
@@ -691,9 +690,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:72
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
-#, fuzzy
 msgid "Error"
-msgstr "Eroare: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -852,9 +850,8 @@ msgstr ""
 
 #: ../users/login.8ea18efcd5fb1a0c7c5d6c22fed22ac7.rtpl.php:89
 #: ../app/controllers/ControllerMain.php:417
-#, fuzzy
 msgid "Administration"
-msgstr "Cont nou"
+msgstr ""
 
 #: ../users/feed.8ca800598a017095e30c901baeab7e36.rtpl.php:13
 #: ../app/widgets/Node/Node.php:138 ../app/widgets/Wall/Wall.php:80
@@ -867,9 +864,8 @@ msgid "My Posts"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:113
 msgid ""
@@ -1011,9 +1007,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:43
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Configurare"
+msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:63
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
@@ -1119,7 +1114,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1188,9 +1184,8 @@ msgid "Profile"
 msgstr "Profil"
 
 #: ../app/widgets/Config/Config.php:32
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Configurare"
+msgstr ""
 
 #: ../app/widgets/Config/Config.php:66
 msgid "General"
@@ -1229,9 +1224,8 @@ msgid "Loading your session..."
 msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-#, fuzzy
 msgid "Subscriptions saved"
-msgstr "Configurare"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:93
 msgid "Manage your subscriptions"
@@ -1371,9 +1365,8 @@ msgid "Media"
 msgstr ""
 
 #: ../app/widgets/ChatPop/ChatPop.php:40
-#, fuzzy
 msgid "Connection"
-msgstr "Configurare"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:130
 msgid "Search a contact"
@@ -1770,7 +1763,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:367
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:368
@@ -1812,9 +1806,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:415 ../app/widgets/Admin/Admin.php:427
-#, fuzzy
 msgid "Information Message"
-msgstr "Informatii generale"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:419
 msgid "This message will be displayed on the login page"
@@ -1919,9 +1912,8 @@ msgid "Data"
 msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-#, fuzzy
 msgid "Affiliations saved"
-msgstr "Configurare"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:88
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:89
@@ -2051,25 +2043,24 @@ msgid "%s - Configuration"
 msgstr "%s - Configurare"
 
 #: ../app/controllers/ControllerMain.php:225
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Profile"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:243
 #: ../app/controllers/ControllerMain.php:254
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Cont nou"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:245
-#, fuzzy
 msgid "Account Creation"
-msgstr "%s - Cont nou"
+msgstr "Cont nou"
 
 #: ../app/controllers/ControllerMain.php:265
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - Cont nou"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:292
 #, php-format
@@ -2077,9 +2068,9 @@ msgid "%s - Post View"
 msgstr ""
 
 #: ../app/controllers/ControllerMain.php:314
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Loading"
-msgstr "%s - Configurare"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:330
 #, php-format
@@ -2097,34 +2088,23 @@ msgid "%s - Help Page"
 msgstr ""
 
 #: ../app/controllers/ControllerMain.php:414
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "Cont nou"
+msgstr ""
 
 #: ../app/controllers/ControllerBase.php:136
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Fisierul jurnal %s un a putut fi deschis."
-
-#~ msgid "Decline"
-#~ msgstr "Respinge"
-
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
-#~ msgstr ""
-#~ "Urmatoarele cerinte nu sunt satisfacute. Asigura-te ca sunt satisfacute "
-#~ "toate inainte sa instalezi Movim."
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Fisierul de configuratie '%s' nu poate fi creat"
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Cont nou"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Versiune de PHP nepotrivita. Movim necesita PHP 5.3 sau mai mare."
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movin necesita extensia %s."
 
@@ -2134,8 +2114,26 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Instalator Movim"
 
+#, php-format
+#~ msgid "Couldn't create configuration file '%s'."
+#~ msgstr "Fisierul de configuratie '%s' nu poate fi creat"
+
 #~ msgid "Compatibility Test"
 #~ msgstr "Test de compatibilitate"
 
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr ""
+#~ "Urmatoarele cerinte nu sunt satisfacute. Asigura-te ca sunt satisfacute "
+#~ "toate inainte sa instalezi Movim."
+
 #~ msgid "User not logged in."
 #~ msgstr "Utilizatorul nu este logat."
+
+#, php-format
+#~ msgid "Cannot open log file '%s'"
+#~ msgstr "Fisierul jurnal %s un a putut fi deschis."
+
+#~ msgid "Decline"
+#~ msgstr "Respinge"
