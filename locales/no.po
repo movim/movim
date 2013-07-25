@@ -7,14 +7,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-07 22:33+0200\n"
 "PO-Revision-Date: 2012-07-19 11:30+0000\n"
-"Last-Translator: Vincent <influence-pc@1s.fr>\n"
+"Last-Translator: Vincent <vincent@influence-pc.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-03 20:28+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
+"X-Generator: Launchpad (build 16700)\n"
+"Language: \n"
 
 #: ../upload.php:29
 msgid "Not a picture"
@@ -691,9 +691,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:72
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
-#, fuzzy
 msgid "Error"
-msgstr "Feil %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -866,9 +865,8 @@ msgid "My Posts"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:113
 msgid ""
@@ -1117,7 +1115,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1510,9 +1509,8 @@ msgstr ""
 
 #: ../app/widgets/About/About.php:29 ../app/controllers/ControllerMain.php:267
 #: ../app/controllers/ControllerMain.php:332
-#, fuzzy
 msgid "About"
-msgstr "Om meg"
+msgstr ""
 
 #: ../app/widgets/About/About.php:33
 msgid "Thanks"
@@ -1766,7 +1764,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:367
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:368
@@ -1808,9 +1807,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:415 ../app/widgets/Admin/Admin.php:427
-#, fuzzy
 msgid "Information Message"
-msgstr "Generell informasjon"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:419
 msgid "This message will be displayed on the login page"
@@ -2046,9 +2044,9 @@ msgid "%s - Configuration"
 msgstr ""
 
 #: ../app/controllers/ControllerMain.php:225
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Profile"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/controllers/ControllerMain.php:243
 #: ../app/controllers/ControllerMain.php:254
@@ -2100,11 +2098,11 @@ msgstr ""
 msgid "%s - 404"
 msgstr ""
 
-#~ msgid "Decline"
-#~ msgstr "Avslå"
-
 #~ msgid "User not logged in."
 #~ msgstr "Bruker ikke logget inn"
+
+#~ msgid "Decline"
+#~ msgstr "Avslå"
 
 #~ msgid "or"
 #~ msgstr "eller"
