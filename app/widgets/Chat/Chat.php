@@ -30,6 +30,8 @@ class Chat extends WidgetBase
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('attention', 'onAttention');
 		$this->registerEvent('presence', 'onPresence');
+        
+        $this->view->assign('chats', $this->prepareChats());
     }
     
     function onPresence($presence)
@@ -37,9 +39,9 @@ class Chat extends WidgetBase
 	    $arr = $presence->getPresence();
 
         $rc = new \modl\ContactDAO();
-        $contact = $rc->getRosterItem(echapJid($jid));
+        $contact = $rc->getRosterItem(echapJid($presence->jid));
 
-        if(isset($contact) && $contact->chaton == 1) {
+        if(isset($contact) && $contact->chaton == 2) {
             $txt = array(
                     1 => t('Online'),
                     2 => t('Away'),
@@ -61,6 +63,9 @@ class Chat extends WidgetBase
                            
             RPC::call('scrollTalk',
                            'messages'.$arr['jid']);
+        } elseif(!isset($contact)) {
+            RPC::call('movim_fill', 'chats', $this->prepareChats());
+            RPC::call('scrollAllTalks');
         }
 	}
     
@@ -113,7 +118,17 @@ class Chat extends WidgetBase
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->jid);
-        }     
+        } 
+    
+        // Muc case
+        elseif($message->ressource != '') {
+            $html = $this->prepareMessage($message, true);
+            RPC::call('movim_append',
+                           'messages'.$message->from,
+                           $html);
+            RPC::call('scrollTalk',
+                           'messages'.$message->from);
+        }
     }
     
     function onMessagePublished($jid)
@@ -210,15 +225,24 @@ class Chat extends WidgetBase
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message)
+    function ajaxSendMessage($to, $message, $muc = false)
     {        
         $m = new \modl\Message();
         
         $m->key     = $this->user->getLogin();
         $m->to      = echapJid($to);
         $m->from    = $this->user->getLogin();
+    
+        global $session;
         
         $m->type    = 'chat';
+        $m->ressource = $session['ressource'];
+    
+        if($muc) {
+            $m->type = 'groupchat';
+            $m->ressource = $session['user'];
+            $m->from = $to;
+        }
         
         $m->body    = rawurldecode($message);
         
@@ -234,8 +258,10 @@ class Chat extends WidgetBase
 		// We decode URL codes to send the correct message to the XMPP server
         $m = new \moxl\MessagePublish();
         $m->setTo($to)
-           ->setContent(htmlspecialchars(rawurldecode($message)))
-           ->request();
+          ->setContent(htmlspecialchars(rawurldecode($message)));
+        if($muc)
+            $m->setMuc();
+        $m->request();
     }
 
     /**
@@ -310,7 +336,7 @@ class Chat extends WidgetBase
         RPC::commit();
     }
     
-    function prepareMessage($message) {
+    function prepareMessage($message, $muc = false) {
         if($message->body != '') {
             $html = '<div class="message ';
                 if($message->key == $message->from)
@@ -334,6 +360,13 @@ class Chat extends WidgetBase
             $html .= '">
                 <img class="avatar" src="'.$c->getPhoto('xs', $message->from).'" />
                 <span class="date">'.date('H:i', strtotime($message->published)).'</span>';
+            
+            if($muc != false)
+                $html .= '
+                    <span class="ressource '.$this->colorNameMuc($message->ressource).'">'.
+                        $message->ressource.'
+                    </span>';
+                
             $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
             return $html;
         } else {
@@ -352,9 +385,91 @@ class Chat extends WidgetBase
             }
         }
         
+        $bk = Cache::c('bookmark');
+        foreach($bk as $b) {
+            if($b['type'] == 'conference') 
+                $html .= trim($this->prepareMuc($b['jid']));
+        }
+        
         return $html;
     }
     
+    function prepareMuc($jid)
+    {
+        // Zeu messages
+        $md = new \modl\MessageDAO();
+        $messages = $md->getContact($jid, 0, 10);
+        
+        if(!empty($messages)) {
+            $day = '';
+            foreach($messages as $m) {
+                if($day != date('d',strtotime($m->published))) {
+                    $messageshtml .= '<div class="message presence">'.prepareDate(strtotime($m->published), false).'</div>';
+                    $day = date('d',strtotime($m->published));
+                }
+                $messageshtml .= $this->prepareMessage($m, true);
+            }
+        }
+        
+        // Zeu muc list
+        $pd = new \modl\PresenceDAO();
+        $presences = $pd->getJid($jid);
+
+        $mucview = $this->tpl();
+        $mucview->assign('jid', $jid);
+        $mucview->assign('messageshtml', $messageshtml);
+        $mucview->assign('muclist', $presences);
+        $mucview->assign('toggle', 
+                            $this->genCallAjax(
+                                "ajaxToggleMuc", "'".$jid."'")
+                        );
+        $mucview->assign('sendmessage',
+                            $this->genCallAjax(
+                                'ajaxSendMessage', 
+                                "'".$jid."'", 
+                                "sendMessage(this, '".$jid."')",
+                                "true"
+                        ));
+        
+        $sess = \Session::start(APP_NAME);
+        $state = $sess->get('muc'.$jid);
+        
+        if($state == 1) {
+            $mucview->assign('tabstyle', 'style="display: none;"');            
+            $mucview->assign('panelstyle', 'style="display: block;"');
+        }
+
+        $html = $mucview->draw('_chat_muc', true);
+
+        return $html;
+    }
+    
+    function ajaxToggleMuc($jid)
+    {
+        $sess = \Session::start(APP_NAME);
+        $state = $sess->get('muc'.$jid);
+        if($state == 1)
+            $sess->set('muc'.$jid, 0);
+        else
+            $sess->set('muc'.$jid, 1);
+    }
+    
+    function colorNameMuc($jid)
+    {
+        $colors = array(
+            1 => 'purple',
+            2 => 'wine',
+            3 => 'yellow',
+            4 => 'orange',
+            5 => 'green',
+            6 => 'red',
+            7 => 'blue');
+            
+        $s = base_convert($jid, 32, 8);
+        return $colors[$s[7]];
+    }
+    
+    // Prepare Chat
     function prepareChat($contact)
     {
         $md = new \modl\MessageDAO();
@@ -452,12 +567,5 @@ class Chat extends WidgetBase
                                 }"
      
     * */
-    }
-    
-    function build()
-    {               
-        echo '<div id="chats">';
-        echo $this->prepareChats();
-        echo '</div>';
     }
 }
