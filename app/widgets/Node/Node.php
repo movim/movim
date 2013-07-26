@@ -8,7 +8,7 @@
  *
  * @brief The items of a node
  *
- * @author Timothée	Jaussoin <edhelas_at_gmail_dot_com>
+ * @author Timothée    Jaussoin <edhelas_at_gmail_dot_com>
  *
  * @version 1.0
  * @date 20 October 2010
@@ -22,11 +22,11 @@ class Node extends WidgetCommon
 {
     function WidgetLoad()
     {
-		$this->registerEvent('stream', 'onStream');
-		$this->registerEvent('nostream', 'onStream');
-		$this->registerEvent('pubsubsubscribed', 'onPubsubSubscribed');
-		$this->registerEvent('pubsubsubscribederror', 'onPubsubSubscribedError');
-		$this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
+        $this->registerEvent('stream', 'onStream');
+        $this->registerEvent('nostream', 'onStream');
+        $this->registerEvent('pubsubsubscribed', 'onPubsubSubscribed');
+        $this->registerEvent('pubsubsubscribederror', 'onPubsubSubscribedError');
+        $this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
     }
     
     function onPubsubSubscribed($params)

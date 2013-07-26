@@ -22,7 +22,7 @@ class Config extends WidgetBase
 {
     function WidgetLoad()
     {
-		$this->addjs('color/jscolor.js');
+        $this->addjs('color/jscolor.js');
         $this->registerEvent('config', 'onConfig');
         
         /* We load the user configuration */
@@ -51,7 +51,7 @@ class Config extends WidgetBase
         Notification::appendNotification(t('Configuration updated'));
     }
 
-	function ajaxSubmit($data) {
+    function ajaxSubmit($data) {
         $config = $this->user->getConfig();
         if(isset($config))
             $data = array_merge($config, $data);
@@ -60,11 +60,11 @@ class Config extends WidgetBase
         $s->setXmlns('movim:prefs')
           ->setData(serialize($data))
           ->request();
-	}
+    }
 
-	function ajaxGet() {
+    function ajaxGet() {
         $s = new moxl\StorageGet();
         $s->setXmlns('movim:prefs')
           ->request();
-	}
+    }
 }

@@ -22,8 +22,8 @@ class Tabs extends WidgetBase
 {
     function WidgetLoad()
     {
-    	$this->addcss('tabs.css');
-    	$this->addjs('tabs.js');
+        $this->addcss('tabs.css');
+        $this->addjs('tabs.js');
     }
     
     function build() {  

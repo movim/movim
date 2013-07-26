@@ -15,11 +15,11 @@
 
 class Connection extends WidgetBase
 {
-	function WidgetLoad()
-	{
-    	$this->addcss('connection.css');
+    function WidgetLoad()
+    {
+        $this->addcss('connection.css');
         $this->registerEvent('connection', 'onConnection');
-	}
+    }
     
     function ajaxSetPresence()
     {

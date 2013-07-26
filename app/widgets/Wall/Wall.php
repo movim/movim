@@ -23,12 +23,12 @@ class Wall extends WidgetCommon
 
     function WidgetLoad()
     {
-    	$this->addjs('wall.js');
-		$this->registerEvent('post', 'onStream');
-		$this->registerEvent('stream', 'onStream');
-		$this->registerEvent('comment', 'onComment');
-		$this->registerEvent('nocomment', 'onNoComment');
-		$this->registerEvent('nocommentstream', 'onNoCommentStream');
+        $this->addjs('wall.js');
+        $this->registerEvent('post', 'onStream');
+        $this->registerEvent('stream', 'onStream');
+        $this->registerEvent('comment', 'onComment');
+        $this->registerEvent('nocomment', 'onNoComment');
+        $this->registerEvent('nocommentstream', 'onNoCommentStream');
         $this->registerEvent('nostream', 'onNoStream');
         $this->registerEvent('nostreamautorized', 'onNoStreamAutorized');
     }
@@ -105,31 +105,31 @@ class Wall extends WidgetCommon
                     <div class="post">
                         <div class="older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").';  this.parentNode.style.display = \'none\'">'.t('Get older posts').'</div>
                     </div>';
-		}
+        }
         
-		return $html;
-	}
+        return $html;
+    }
     
-	function ajaxGetFeed($start, $from) {
-		RPC::call('movim_append', 'wall', $this->prepareFeed($start, $from));
+    function ajaxGetFeed($start, $from) {
+        RPC::call('movim_append', 'wall', $this->prepareFeed($start, $from));
         RPC::commit();
-	}
+    }
 
-	function ajaxWall($jid) {
+    function ajaxWall($jid) {
         $r = new moxl\PubsubGetItems();
         $r->setTo($jid)
           ->setNode('urn:xmpp:microblog:0')
           ->request();
-	}
-	
-	function ajaxSubscribe($jid) {
-		$this->xmpp->subscribeNode($jid);
-	}
+    }
+    
+    function ajaxSubscribe($jid) {
+        $this->xmpp->subscribeNode($jid);
+    }
 
-	function build()
-	{
-		?>
-		<div class="tabelem" id="wall" title="<?php echo t('Feed');?>" >
+    function build()
+    {
+        ?>
+        <div class="tabelem" id="wall" title="<?php echo t('Feed');?>" >
             <div class="protect orange" title="<?php echo getFlagTitle("orange");?>"></div>
             <div id="<?php echo stringToUri($_GET['f'].'urn:xmpp:microblog:0'); ?>">
             <?php 
@@ -145,9 +145,9 @@ class Wall extends WidgetCommon
                 <?php
                 } ?>
             </div>
-       	</div>
-		<?php
-	}
+           </div>
+        <?php
+    }
 }
 
 ?>

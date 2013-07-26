@@ -24,12 +24,12 @@ class Roster extends WidgetBase
 
     function WidgetLoad()
     {
-    	$this->addcss('roster.css');
-    	$this->addjs('roster.js');
-		$this->registerEvent('roster', 'onRoster');
+        $this->addcss('roster.css');
+        $this->addjs('roster.js');
+        $this->registerEvent('roster', 'onRoster');
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
-		$this->registerEvent('presence', 'onPresence');
+        $this->registerEvent('presence', 'onPresence');
         
         $this->view->assign('offline_shown',  '');
         $offline_state = Cache::c('offlineshown');
@@ -46,9 +46,9 @@ class Roster extends WidgetBase
         $this->view->assign('search_contact', $this->genCallAjax('ajaxSearchContact','this.value'));
     }
 
-	function onPresence($presence)
-	{
-	    $arr = $presence->getPresence();
+    function onPresence($presence)
+    {
+        $arr = $presence->getPresence();
 
         $cd = new \modl\ContactDAO();
         $c = $cd->getRosterItem($arr['jid']);
@@ -70,28 +70,28 @@ class Roster extends WidgetBase
             
             RPC::call('sortRoster');
         }        
-	}
+    }
 
     function onRoster()
     {
-		$html = $this->prepareRoster();
+        $html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', $html);
         RPC::call('sortRoster');
     }
 
-	/**
+    /**
      * @brief Force the roster refresh
      * @returns 
      * 
      * 
      */
     function ajaxRefreshRoster()
-	{
+    {
         $r = new moxl\RosterGetList();
         $r->request();
-	}
+    }
 
-	/**
+    /**
      * @brief Generate the HTML for a roster contact
      * @param $contact 
      * @param $inner 
@@ -100,12 +100,12 @@ class Roster extends WidgetBase
      * 
      */
     function prepareRosterElement($contact, $caps = false)
-	{
+    {
         $html = '';
 
         $html .= '<li
                 class="';
-					if($contact->jid == $_GET['f'])
+                    if($contact->jid == $_GET['f'])
                         $html .= 'active ';
                         
                     if(isset($contact->last) && $contact->last > 60)
@@ -149,7 +149,7 @@ class Roster extends WidgetBase
             $html .= '<div class="infoicon tune"></div>';
         
         $html .= '<a
-					title="'.$contact->jid;
+                    title="'.$contact->jid;
                     if($contact->status != '')
                         $html .= ' - '.htmlentities($contact->status, ENT_QUOTES, 'UTF-8');
                     if($contact->ressource != '')
@@ -166,8 +166,8 @@ class Roster extends WidgetBase
             $html .= '<br /><span class="ressource">';
                     if($contact->status != '')
                         $html .= htmlentities($contact->status, ENT_QUOTES, 'UTF-8') . ' - ';
-						if($contact->rosterask == 'subscribe')
-							$html .= " #";
+                        if($contact->rosterask == 'subscribe')
+                            $html .= " #";
                         if($contact->ressource != '')
                             $html .= ' '.$contact->ressource.'';
             $html .= '</span>
@@ -176,7 +176,7 @@ class Roster extends WidgetBase
         $html .= '</li>';
 
         return $html;
-	}
+    }
     
     /**
      * @brief Create the HTML for a roster group and add the title
@@ -208,16 +208,16 @@ class Roster extends WidgetBase
         // And we add the title at the head of the group 
         if($currentgroup == '')
             $currentgroup = t('Ungrouped');
-			
+            
         $groupshown = '';
         // get the current showing state of the group and the offline contacts
-		$groupState = Cache::c('group'.$currentgroup);
+        $groupState = Cache::c('group'.$currentgroup);
 
         if($groupState == false)
             $groupshown = 'groupshown';
             
         $count = $i-$j;
-		
+        
         $grouphtml = '
             <div id="group'.$currentgroup.'" class="'.$groupshown.'">
                 <h1 onclick="'.$this->genCallAjax('ajaxToggleCache', "'group".$currentgroup."'").'">'.
@@ -228,14 +228,14 @@ class Roster extends WidgetBase
         return $grouphtml;
     }
 
-	/**
+    /**
      * @brief Here we generate the roster
      * @returns 
      * 
      * 
      */
     function prepareRoster()
-	{
+    {
         $contactdao = new \modl\ContactDAO();
         $contacts = $contactdao->getRoster();
 
@@ -257,38 +257,38 @@ class Roster extends WidgetBase
         }
 
         return $html;
-	}
+    }
 
-	/**
+    /**
      * @brief Toggling boolean variables in the Cache
-	 * @param $param
+     * @param $param
      * @returns 
      * 
      * 
      */
-	function ajaxToggleCache($param){
+    function ajaxToggleCache($param){
         //$bool = !currentValue
-		$bool = (Cache::c($param) == true) ? false : true;
+        $bool = (Cache::c($param) == true) ? false : true;
         //toggling value in cache
-		Cache::c($param, $bool);
-		//$offline = new value of wether offline are shown or not
+        Cache::c($param, $bool);
+        //$offline = new value of wether offline are shown or not
         $offline = Cache::c('offlineshown');
         
-		if($param == 'offlineshown') {
+        if($param == 'offlineshown') {
             RPC::call('showRoster', $bool);
-		} else 
-			RPC::call('rosterToggleGroup', $param, $bool, $offline);
-		
-		RPC::call('focusContact');
-		RPC::commit();
-	}
+        } else 
+            RPC::call('rosterToggleGroup', $param, $bool, $offline);
+        
+        RPC::call('focusContact');
+        RPC::commit();
+    }
     
     function ajaxToggleChat()
     {
         //$bool = !currentValue
-		$bool = (Cache::c('chatpop') == true) ? false : true;
+        $bool = (Cache::c('chatpop') == true) ? false : true;
         //toggling value in cache
-		Cache::c('chatpop', $bool);
+        Cache::c('chatpop', $bool);
         
         RPC::call('movim_fill', 'chattoggle', $this->prepareChatToggle());
         
@@ -323,7 +323,7 @@ class Roster extends WidgetBase
      * @brief Show/Hide the Roster
      */
     function ajaxShowHideRoster() {
-		$bool = (Cache::c('rostershow') == true) ? false : true;
+        $bool = (Cache::c('rostershow') == true) ? false : true;
         Cache::c('rostershow', $bool);
         RPC::call('showHideRoster', $bool);
         RPC::commit();
