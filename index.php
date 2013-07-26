@@ -62,6 +62,5 @@ WidgetWrapper::getInstance(false);
 WidgetWrapper::destroyInstance();
 if (ENVIRONMENT === 'debug') {
     echo Logger::displayLog();
-} else {
-    Logger::defaultSaveLogs();
+   
 }

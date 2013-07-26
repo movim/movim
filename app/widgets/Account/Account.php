@@ -27,6 +27,7 @@ class Account extends WidgetBase {
     }
     
     function ajaxDiscoverServer($ndd) {
+        Logger::log($ndd);
         if($ndd['ndd'] == '') {
             RPC::call('movim_reload', Route::urlize('account', 'datamissing'));
             RPC::commit();
@@ -36,13 +37,16 @@ class Account extends WidgetBase {
         
         try {
             $dns = dns_get_record('_xmpp-client._tcp.'.$ndd['ndd']);
-
-            if(isset($dns[0]['target']) && $dns[0]['target'] != null)
+            Logger::log($dns);
+            if(isset($dns[0]['target']) && $dns[0]['target'] != null) {
                 $domain = $dns[0]['target'];
-            
+            } else {
+                $domain = $ndd['ndd'];
+            }
+            Logger::log('Account.php: Connect to domain '.$domain);
             $f = fsockopen($domain, 5222, $errno, $errstr, 10);
-
-            if(!$f) {
+  
+            if(!$f ) {
                 RPC::call('movim_reload', Route::urlize('account', 'xmppconnect'));
                 RPC::commit();
                 exit;
@@ -50,24 +54,28 @@ class Account extends WidgetBase {
             
             $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq type="get" id="reg1"><query xmlns="jabber:iq:register"/></iq></stream:stream>');
             $stream->addAttribute('to', $ndd['ndd']);
-            fwrite($f, $stream->asXML());
+            if (false === fwrite($f, $stream->asXML())) {
+                 logger::log('fail write to stream');
+                throw new \Exception('fail write to stream');
+            }
             
             unset($stream);
 
             $response = stream_get_contents($f);
-
+            logger::log('response');
+            logger::log($response);
             if(!$response) {
                     RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
                      exit;
             }
 
-            $response = simplexml_load_string($response);   
+            $response = simplexml_load_string($response);
             
-            \movim_log(moxl\cleanXML($response->asXML()));         
+            \movim_log(moxl\cleanXML($response->asXML()));
                         
             $id = (string)$response->attributes()->id;
-            
+            Logger::log($response);
             $elements = (array)$response->iq->query;
             
             // We close properly our first register request
@@ -78,6 +86,7 @@ class Account extends WidgetBase {
             fclose($f); unset($f);
             
             if(!empty($elements)) {
+                root.log('elements');
                 $html .= '
                     <form name="data">
                         <fieldset>
@@ -159,8 +168,7 @@ class Account extends WidgetBase {
                 RPC::call('movim_fill', 'fillform', $html);
                 RPC::commit();
                 
-            }
-            else {
+            } else {
                 $html = '
                     <div class="message warning">
                         '.t('No account creation form founded on the server').'
@@ -173,7 +181,8 @@ class Account extends WidgetBase {
         } catch(Exception $e) {
             header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
             header('Content-Type: text/plain; charset=utf-8');
-            echo $e->getMessage(),"\n";
+            Logger::log($e->getMessage());
+            //echo $e->getMessage(),"\n";
         }
     }
     
