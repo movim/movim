@@ -20,21 +20,21 @@
 
 class Chat extends WidgetBase
 {
-	function WidgetLoad()
-	{
-    	$this->addcss('chat.css');
-    	$this->addjs('chat.js');
-		$this->registerEvent('message', 'onMessage');
-		$this->registerEvent('messagepublished', 'onMessagePublished');
-		$this->registerEvent('composing', 'onComposing');
+    function WidgetLoad()
+    {
+        $this->addcss('chat.css');
+        $this->addjs('chat.js');
+        $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('messagepublished', 'onMessagePublished');
+        $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('attention', 'onAttention');
-		$this->registerEvent('presence', 'onPresence');
+        $this->registerEvent('presence', 'onPresence');
     }
     
     function onPresence($presence)
     {
-	    $arr = $presence->getPresence();
+        $arr = $presence->getPresence();
 
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
@@ -62,7 +62,7 @@ class Chat extends WidgetBase
             RPC::call('scrollTalk',
                            'messages'.$arr['jid']);
         }
-	}
+    }
     
     function onMessage($message)
     {
@@ -169,14 +169,14 @@ class Chat extends WidgetBase
     }
     
     
-	/**
-	 * Open a new talk
-	 *
-	 * @param string $jid
-	 * @return void
-	 */
-	function ajaxOpenTalk($jid) 
-	{        
+    /**
+     * Open a new talk
+     *
+     * @param string $jid
+     * @return void
+     */
+    function ajaxOpenTalk($jid) 
+    {        
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
 
@@ -203,7 +203,7 @@ class Chat extends WidgetBase
         $evt->runEvent('openchat');
     }
     
-	/**
+    /**
      * Send a message
      *
      * @param string $to
@@ -231,7 +231,7 @@ class Chat extends WidgetBase
         $evt = new Event();
         $evt->runEvent('message', $m);  
         
-		// We decode URL codes to send the correct message to the XMPP server
+        // We decode URL codes to send the correct message to the XMPP server
         $m = new \moxl\MessagePublish();
         $m->setTo($to)
            ->setContent(htmlspecialchars(rawurldecode($message)))
@@ -264,14 +264,14 @@ class Chat extends WidgetBase
            ->request();
     }
     
-	/**
-	 * Close a talk
-	 *
-	 * @param string $jid
-	 * @return void
-	 */
-	function ajaxCloseTalk($jid) 
-	{                
+    /**
+     * Close a talk
+     *
+     * @param string $jid
+     * @return void
+     */
+    function ajaxCloseTalk($jid) 
+    {                
         $rd = new \modl\RosterLinkDAO();
         $contacts = $rd->getChats();
 
@@ -292,7 +292,7 @@ class Chat extends WidgetBase
         
         $evt = new Event();
         $evt->runEvent('closechat');
-	}
+    }
     
     function ajaxHideTalk($jid)
     {

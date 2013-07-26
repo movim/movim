@@ -1,8 +1,8 @@
 <?php
 
 class Feed extends WidgetCommon {
-	private $_feedsize = 10;
-	
+    private $_feedsize = 10;
+    
     function WidgetLoad()
     {
         $this->addcss('feed.css');
@@ -16,7 +16,7 @@ class Feed extends WidgetCommon {
         $this->registerEvent('nocommentstream', 'onNoCommentStream');
         $this->registerEvent('commentpublisherror', 'onCommentPublishError');
         
-		$this->registerEvent('stream', 'onStream');
+        $this->registerEvent('stream', 'onStream');
         $this->registerEvent('postpublished', 'onPostPublished');
         $this->registerEvent('postpublisherror', 'onPostPublishError');
         

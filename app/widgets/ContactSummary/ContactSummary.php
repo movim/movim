@@ -23,8 +23,8 @@ class ContactSummary extends WidgetCommon
 
     function WidgetLoad()
     {
-    	$this->addcss('contactsummary.css');
-		$this->registerEvent('vcard', 'onVcard');
+        $this->addcss('contactsummary.css');
+        $this->registerEvent('vcard', 'onVcard');
     }
     
     function onVcard($contact)
@@ -33,14 +33,14 @@ class ContactSummary extends WidgetCommon
         RPC::call('movim_fill', 'contactsummary', $html);
     }
     
-	function ajaxRefreshVcard($jid)
-	{
+    function ajaxRefreshVcard($jid)
+    {
         $r = new moxl\VcardGet();
         $r->setTo($jid)->request();
-	}
+    }
     
-	function prepareContactSummary($contact)
-	{
+    function prepareContactSummary($contact)
+    {
         $gender = getGender();
         $marital = getMarital();
         
@@ -71,7 +71,7 @@ class ContactSummary extends WidgetCommon
         }
 
         return $html;
-	}
+    }
     
     function build()
     {

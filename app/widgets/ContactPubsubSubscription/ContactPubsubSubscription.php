@@ -57,7 +57,7 @@ class ContactPubsubSubscription extends WidgetBase
         $r->setTo($to)->request();
     }
     
-	function build()
+    function build()
     {
         ?>
         <div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistfromfriend">

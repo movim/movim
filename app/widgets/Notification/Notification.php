@@ -22,8 +22,8 @@ class Notification extends WidgetCommon
 {
     function WidgetLoad()
     {
-    	$this->addcss('notification.css');
-    	$this->addjs('notification.js');
+        $this->addcss('notification.css');
+        $this->addjs('notification.js');
         $this->registerEvent('pubsuberror', 'onPubsubError');
     }
     

@@ -23,25 +23,25 @@ class Presence extends WidgetBase
     
     function WidgetLoad()
     {
-    	$this->addcss('presence.css');
+        $this->addcss('presence.css');
         $this->registerEvent('mypresence', 'onMyPresence');
     }
     
     function onMyPresence()
     {
-		$html = $this->preparePresence();
+        $html = $this->preparePresence();
         RPC::call('movim_fill', 'logout', $html);
         RPC::commit();
     }
 
     function onPostDisconnect($data)
     {
-	    RPC::call('movim_reload',
+        RPC::call('movim_reload',
                        BASE_URI."index.php?q=disconnect");
     }
     
-	function ajaxSetStatus($show)
-	{
+    function ajaxSetStatus($show)
+    {
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
 
@@ -72,7 +72,7 @@ class Presence extends WidgetBase
                 $p->setStatus($presence['status'])->request();
                 break;
         }
-	}
+    }
     
     function preparePresence()
     {
