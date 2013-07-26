@@ -37,5 +37,3 @@ if($f = fopen($file, 'r')) {
 
     define('BASE_URI', str_replace('jajax.php', '', $uri));
 }
-
-?>
