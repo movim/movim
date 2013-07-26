@@ -8,7 +8,7 @@
  *
  * @brief The Profile widget
  *
- * @author Timothée	Jaussoin <edhelas_at_gmail_dot_com>
+ * @author Timothée    Jaussoin <edhelas_at_gmail_dot_com>
  *
  * @version 1.0
  * @date 20 October 2010
@@ -33,7 +33,7 @@ class Profile extends WidgetCommon
     
     function onMyVcardReceived($vcard = false)
     {
-		$html = $this->prepareVcard($vcard);
+        $html = $this->prepareVcard($vcard);
         RPC::call('movim_fill', 'profile', $html);
     }
     
@@ -43,8 +43,8 @@ class Profile extends WidgetCommon
         Notification::appendNotification(t('Status updated'), 'success');
     }
     
-	function ajaxSetStatus($status)
-	{
+    function ajaxSetStatus($status)
+    {
         $status = htmlspecialchars(rawurldecode($status));
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
@@ -113,8 +113,8 @@ class Profile extends WidgetCommon
                     <textarea 
                         id="status" 
                         spellcheck="false"
-						onfocus="this.style.fontStyle=\'italic\'; this.parentNode.querySelector(\'#statussaved\').innerHTML = \'\'"
-						onblur="this.style.fontStyle=\'normal\';"
+                        onfocus="this.style.fontStyle=\'italic\'; this.parentNode.querySelector(\'#statussaved\').innerHTML = \'\'"
+                        onblur="this.style.fontStyle=\'normal\';"
                         onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', 'encodeURIComponent(this.value)').'; this.blur(); return false;}"
                         onload="movim_textarea_autoheight(this);"
                         onkeyup="movim_textarea_autoheight(this);">'.$presence['status'].'</textarea>
@@ -122,13 +122,13 @@ class Profile extends WidgetCommon
                 </div>
                 ';
         } else {
-			$html .= '
+            $html .= '
                     '.t('No profile yet ?').'<br /><br />
                     <a 
                         class="button color green icon add" 
                         style="color: white;"
                         href="'.Route::urlize('profile').'">'.t("Create my vCard").'</a>';
-		}
+        }
         
         return $html;
     }
@@ -138,9 +138,9 @@ class Profile extends WidgetCommon
     ?>
     
         <div id="profile">
-			<?php 
-				echo $this->prepareVcard();
-			?>
+            <?php 
+                echo $this->prepareVcard();
+            ?>
         </div>
     <?php
     }

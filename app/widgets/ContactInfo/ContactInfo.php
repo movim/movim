@@ -114,7 +114,7 @@ class ContactInfo extends WidgetCommon
             }
             
 
-			
+            
             
             // Client informations
             if($c->node && $c->ver) {                

@@ -69,8 +69,8 @@ class RPC
     }
 
     /**
-	 * Sends outgoing requests.
-	 */
+     * Sends outgoing requests.
+     */
     public static function commit()
     {
         // Cleaning rubbish.
@@ -92,15 +92,15 @@ class RPC
      */
     public function handle_json()
     {
-		if(isset($_GET['do']) && $_GET['do'] == 'poll') {
+        if(isset($_GET['do']) && $_GET['do'] == 'poll') {
             moxl\ping();
-		} else {
+        } else {
             $json = file_get_contents('php://input');
 
             $request = json_decode($json);
 
-			// Loading the widget.
-			$widget_name = (string)$request->widget;
+            // Loading the widget.
+            $widget_name = (string)$request->widget;
 
             // Preparing the parameters and calling the function.
             $params = (array)$request->params;

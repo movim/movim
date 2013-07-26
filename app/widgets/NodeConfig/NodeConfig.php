@@ -95,7 +95,7 @@ class NodeConfig extends WidgetBase
           ->request();
     }
     
-	function build()
+    function build()
     {
 
         echo '
@@ -113,7 +113,7 @@ class NodeConfig extends WidgetBase
             </div>';
         ?>
 
-		<div class="tabelem" title="<?php echo t('Configuration'); ?>" id="groupconfig">
+        <div class="tabelem" title="<?php echo t('Configuration'); ?>" id="groupconfig">
             <h1><?php echo t('Configuration'); ?></h1>
             
             <div id="groupconfiguration" class="paddedtop">

@@ -8,7 +8,7 @@
  *
  * @brief The Profile widget
  *
- * @author Timothée	Jaussoin <edhelas_at_gmail_dot_com>
+ * @author Timothée    Jaussoin <edhelas_at_gmail_dot_com>
  *
  * @version 1.0
  * @date 20 October 2010
@@ -22,8 +22,8 @@ class ServerNodes extends WidgetCommon
 {
     function WidgetLoad()
     {
-		$this->registerEvent('discoitems', 'onDiscoItems');
-		$this->registerEvent('discoerror', 'onDiscoError');
+        $this->registerEvent('discoitems', 'onDiscoItems');
+        $this->registerEvent('discoerror', 'onDiscoError');
         $this->registerEvent('disconodes', 'onDiscoNodes');
         $this->registerEvent('creationsuccess', 'onCreationSuccess');
         $this->registerEvent('creationerror', 'onCreationError');

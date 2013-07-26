@@ -30,32 +30,32 @@
 
 class ControllerBase
 {
-	protected $default_handler = 'index';
-	protected $token;
+    protected $default_handler = 'index';
+    protected $token;
 
-	public function __construct($token = 'q')
-	{
+    public function __construct($token = 'q')
+    {
         $this->load_language();
-		$this->token = $token;
-	}
+        $this->token = $token;
+    }
 
-	public function handle()
-	{
+    public function handle()
+    {
         $r = new Route();
 
-		// Note that the request is always specified by 'q'.
-		if($request = $this->fetch_get('q'))
-			$this->run_req($request);
-		else 
-			$this->error404();
-	}
+        // Note that the request is always specified by 'q'.
+        if($request = $this->fetch_get('q'))
+            $this->run_req($request);
+        else 
+            $this->error404();
+    }
 
     /**
      * Loads up the language, either from the User or default.
      */
     function load_language() {
         $user = new user();
-		if($user->isLogged()) {
+        if($user->isLogged()) {
             try{
                 $lang = $user->getConfig('language');
                 load_language($lang);
@@ -64,54 +64,54 @@ class ControllerBase
                 // Load default language.
                 load_language(Conf::getServerConfElement('defLang'));
             }
-		}
-		else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-			load_language_auto();
-		}
-		else {
+        }
+        else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            load_language_auto();
+        }
+        else {
             load_language(Conf::getServerConfElement('defLang'));
         }
-	}
+    }
 
-	/**
-	 * Attempts to call back the given function.
-	 */
-	protected function run_req($request)
-	{
-		if(is_callable(array($this, $request))) {
-			call_user_func(array($this, $request));
-		}
-	}
+    /**
+     * Attempts to call back the given function.
+     */
+    protected function run_req($request)
+    {
+        if(is_callable(array($this, $request))) {
+            call_user_func(array($this, $request));
+        }
+    }
 
-	/**
-	 * Returns the value of a $_GET variable. Mainly used to avoid getting
-	 * notices from PHP when attempting to fetch an empty variable.
-	 * @param name is the desired variable's name.
-	 * @return the value of the requested variable, or FALSE.
-	 */
-	protected function fetch_get($name)
-	{
-		if(isset($_GET[$name])) {
-			return htmlentities($_GET[$name]);
-		} else {
-			return false;
-		}
-	}
+    /**
+     * Returns the value of a $_GET variable. Mainly used to avoid getting
+     * notices from PHP when attempting to fetch an empty variable.
+     * @param name is the desired variable's name.
+     * @return the value of the requested variable, or FALSE.
+     */
+    protected function fetch_get($name)
+    {
+        if(isset($_GET[$name])) {
+            return htmlentities($_GET[$name]);
+        } else {
+            return false;
+        }
+    }
 
-	/**
-	 * Returns the value of a $_POST variable. Mainly used to avoid getting
-	 * notices from PHP when attempting to fetch an empty variable.
-	 * @param name is the desired variable's name.
-	 * @return the value of the requested variable, or FALSE.
-	 */
-	protected function fetch_post($name)
-	{
-		if(isset($_POST[$name])) {
-			return htmlentities($_POST[$name]);
-		} else {
-			return false;
-		}
-	}
+    /**
+     * Returns the value of a $_POST variable. Mainly used to avoid getting
+     * notices from PHP when attempting to fetch an empty variable.
+     * @param name is the desired variable's name.
+     * @return the value of the requested variable, or FALSE.
+     */
+    protected function fetch_post($name)
+    {
+        if(isset($_POST[$name])) {
+            return htmlentities($_POST[$name]);
+        } else {
+            return false;
+        }
+    }
     
     /**
      * Return a basic auth page for the administration area
@@ -123,12 +123,12 @@ class ControllerBase
         exit;
     }
 
-	/**
-	 * Makes an error 404 page.
-	 */
-	protected function error404()
-	{
-		//echo 'Error 404 - Page not found';
+    /**
+     * Makes an error 404 page.
+     */
+    protected function error404()
+    {
+        //echo 'Error 404 - Page not found';
         $page = new TplPageBuilder();
         
         WidgetWrapper::getInstance(false);
@@ -139,7 +139,7 @@ class ControllerBase
         $content = new TplPageBuilder();
         $page->setContent($content->build('404.tpl'));
         echo $page->build('page.tpl');
-	}
+    }
 }
 
 ?>

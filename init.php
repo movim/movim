@@ -14,13 +14,13 @@ if($f = fopen($file, 'r')) {
 }
 
 {
-	$index_pos = strpos($_SERVER['PHP_SELF'], 'index.php');
-	$path = "";
-	if($index_pos <= 0) {
-		$path = $_SERVER['PHP_SELF'];
-	} else {
-		$path = substr($_SERVER['PHP_SELF'], 0, $index_pos);
-	}
+    $index_pos = strpos($_SERVER['PHP_SELF'], 'index.php');
+    $path = "";
+    if($index_pos <= 0) {
+        $path = $_SERVER['PHP_SELF'];
+    } else {
+        $path = substr($_SERVER['PHP_SELF'], 0, $index_pos);
+    }
     // Determining the protocol to use.
     $uri = "http://";
     if((
@@ -35,7 +35,7 @@ if($f = fopen($file, 'r')) {
         $uri .= $_SERVER['HTTP_HOST'] . $path;
     }
 
-	define('BASE_URI', str_replace('jajax.php', '', $uri));
+    define('BASE_URI', str_replace('jajax.php', '', $uri));
 }
 
 ?>

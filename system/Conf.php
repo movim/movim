@@ -5,16 +5,16 @@ class Conf
     public static $conf_path = "/config";
     public static $conf_files = array();
 
-	function __construct() {
+    function __construct() {
 
-	}
+    }
 
-	/* Return the general configuration */
+    /* Return the general configuration */
 
-	static function getServerConf() {
-		$conf_file = BASE_PATH . self::$conf_path . "/conf.xml";
+    static function getServerConf() {
+        $conf_file = BASE_PATH . self::$conf_path . "/conf.xml";
         return self::getConf('server', $conf_file);
-	}
+    }
 
     /* Gets a configuration. */
     static function getConf($name, $path)
@@ -47,31 +47,31 @@ class Conf
         }
     }
 
-	/* Return the element of the general configuration */
+    /* Return the element of the general configuration */
 
-	static function getServerConfElement($element) {
-		$conf = self::getServerConf();
+    static function getServerConfElement($element) {
+        $conf = self::getServerConf();
 
-		if(!isset($conf[$element])) {
-			throw new MovimException(t("Cannot load element value '%s'", $element));
-		}
-		else {
-			return $conf[$element];
-		}
-	}
+        if(!isset($conf[$element])) {
+            throw new MovimException(t("Cannot load element value '%s'", $element));
+        }
+        else {
+            return $conf[$element];
+        }
+    }
 
-	/* Actually reads the XML file if it exists */
+    /* Actually reads the XML file if it exists */
 
-	static function readConfFile($file_path) {
-		if(!file_exists($file_path)) {
-			throw new MovimException(t("Cannot load file '%s'", $file_path));
-		}
+    static function readConfFile($file_path) {
+        if(!file_exists($file_path)) {
+            throw new MovimException(t("Cannot load file '%s'", $file_path));
+        }
 
-		$file = simplexml_load_file($file_path);
-		$arr = array();
-		self::convertXmlObjToArr( $file , $arr );
-		return $arr;
-	}
+        $file = simplexml_load_file($file_path);
+        $arr = array();
+        self::convertXmlObjToArr( $file , $arr );
+        return $arr;
+    }
     
     static function saveConfFile($conf = array()) {
         $doc = new DOMDocument('1.0', 'UTF-8');
@@ -91,7 +91,7 @@ class Conf
         file_put_contents(BASE_PATH.self::$conf_path.'/conf.xml', $xml);
     }
 
-	/**
+    /**
     * Parse a SimpleXMLElement object recursively into an Array.
     * Attention: attributes skipped
     *

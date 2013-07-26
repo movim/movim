@@ -175,10 +175,10 @@ class Login extends WidgetBase {
 
         // Empty input test
         foreach($element as $value) {
-	        if($value == NULL || $value == '') {
+            if($value == NULL || $value == '') {
                 $warning = 'datamissing';
-	        }
-	    }
+            }
+        }
 
         $this->displayWarning($warning);
 
