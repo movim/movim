@@ -33,5 +33,5 @@ $rpc->handle_json();
 
 // Closing stuff
 WidgetWrapper::destroyInstance();
-Logger::defaultSaveLogs();
+
 ?>

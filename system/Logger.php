@@ -12,52 +12,34 @@ if (!is_dir(ROOTDIR)) {
  *
  * Static class to be invoked for every debug log purpose in Movim.
  */
-abstract class Logger
+class Logs
 {
 
-    /* public static $logfilename = "log/movim.log";
+    static $defined;
 
-      // Predefined log levels
-      const LOGLEVEL_CRITICAL = 0;
-      const LOGLEVEL_ERROR    = 1;
-      const LOGLEVEL_WARNING  = 2;
-      const LOGLEVEL_INFO     = 3;
-      const LOGLEVEL_STANDARD = 4;
-      const LOGLEVEL_FINE     = 5;
-      const LOGLEVEL_FINER    = 6;
-      const LOGLEVEL_FINEST   = 7;
-
-      public static function log($level, $message) {
-      $server_loglevel = Conf::getServerConfElement('logLevel');
-
-      if($server_loglevel >= $level) {
-      if(!($lfp = fopen(BASE_PATH . self::$logfilename, 'a'))) {
-      throw new MovimException(t("Cannot open log file '%s'", self::$logfilename));
-      }
-
-      fwrite($lfp, date('H:i:s').' '.$message."\n");
-      fclose($lfp);
-      }
-      } */
-
-    private static $logs = array();
-
-    public static function log($message)
+    public function __construct()
     {
-        self::addLog($message);
-
-        /*openlog('movim', LOG_NDELAY, LOG_USER);
-        $errlines = explode("\n", $message);
-        foreach ($errlines as $txt) {
-            syslog(LOG_DEBUG, trim($txt));
+        if (self::$defined === true) {
+            die('standalone');
         }
-        closelog();*/
+        self::$defined = true;
 
     }
 
-    public static function addLog($message)
+    private $logs = array();
+
+    public function log($message)
     {
-        array_push(self::$logs, $message);
+        $this->addLog($message);
+
+    }
+
+    public function addLog($message)
+    {
+        if (!is_string($message)) {
+            $message = var_export($message, true);
+        }
+        array_push($this->logs, $message);
 
     }
 
@@ -65,15 +47,15 @@ abstract class Logger
      * getter logs
      * @return array
      */
-    public static function getLog()
+    public function getLog()
     {
-        return self::$logs;
+        return $this->logs;
 
     }
 
-    public static function displayLog()
+    public function displayLog()
     {
-        $logs = self::getLog();
+        $logs = $this->getLog();
         $html = '';
         if (!empty($logs)) {
             $html = '<div class="message error">';
@@ -84,31 +66,33 @@ abstract class Logger
 
     }
 
-    public static function getInlineLogs()
+    public function getInlineLogs()
     {
-        $logs = self::getLog();
+        $logs = $this->getLog();
         $txt = '';
         foreach ($logs as $l) {
-            $txt .= $l . "\n";
+            if (trim($l)) {
+                $txt .= $l . "\n";
+            }
         }
         return $txt;
 
     }
 
-    public static function saveLogs($file)
+    public function saveLogs($file)
     {
-        if (self::getInlineLogs() !== '') {
+        if ($this->getInlineLogs() !== '') {
             try {
                 $f = fopen($file, 'a');
                 if ($f === false) {
                     throw new \Exception('Canno\'t open file ' . htmlentities($file));
                 }
-                if (false === fwrite($f, self::getInlineLogs())) {
+                if (false === fwrite($f, $this->getInlineLogs())) {
                     fclose($f);
                     throw new \Exception('Canno\'t write to file ' . htmlentities($file));
                 }
                 fclose($f);
-                self::clearLogs();
+                $this->clearLogs();
             } catch (\Exception $e) {
                 syslog(LOG_ERR, $e->getMessage());
                 die('An error happened'); //
@@ -117,15 +101,43 @@ abstract class Logger
 
     }
 
-    public static function defaultSaveLogs()
+    public function defaultSaveLogs()
     {
-        self::saveLogs(ROOTDIR . '/log/logger.log');
+        $this->saveLogs(ROOTDIR . '/log/logger.log');
 
     }
 
-    public static function clearLogs()
+    public function clearLogs()
     {
-        self::$logs = array();
+        $this->logs = array();
+
+    }
+
+    function __destruct()
+    {
+        $this->defaultSaveLogs();
+
+    }
+
+}
+
+abstract class Logger
+{
+
+    static $logs;
+
+    static function log($msg)
+    {
+        self::addLog($msg);
+
+    }
+
+    static function addLog($msg)
+    {
+        if (!isset(self::$logs)) {
+            self::$logs = new Logs();
+        }
+        self::$logs->addLog($msg);
 
     }
 
