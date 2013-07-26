@@ -23,7 +23,7 @@ class Admin extends WidgetBase {
     private $_validatebutton;
     
     function WidgetLoad()
-	{
+    {
         $this->_conf = Conf::getServerConf();
     }
     
@@ -196,7 +196,7 @@ class Admin extends WidgetBase {
     {
             
         if($this->testDir(BASE_PATH))
-			$this->createDirs();
+            $this->createDirs();
             
         $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
             ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
@@ -460,11 +460,11 @@ class Admin extends WidgetBase {
                     <div class="element">
                         <label for="pass">'.t("Password").'</label>
                         <input type="password" id="pass" name="pass" value=""/>
-                    </div>			                
+                    </div>                            
                     <div class="element">
                         <label for="repass">'.t("Retype password").'</label>
                         <input type="password" id="repass" name="repass" value=""/>
-                    </div>	';
+                    </div>    ';
 
         $html .= $this->_validatebutton;
                     

@@ -43,14 +43,14 @@ $translations = array();
  */
 function t($string)
 {
-	global $language;
-	global $translations;
+    global $language;
+    global $translations;
 
     $lstring = $string;
 
-	if(isset($translations[$string])) {
+    if(isset($translations[$string])) {
         $lstring = $translations[$string];
-	}
+    }
     
     // For compiled lang files, set en english default if no translation
     if($lstring == '')
@@ -62,13 +62,13 @@ function t($string)
         $lstring = call_user_func_array("sprintf", $args);
     }
 
-	return $lstring;
+    return $lstring;
 }
 
 function get_quoted_string($string)
 {
-	$matches = array();
-	preg_match('#"(.+)"#', $string, $matches);
+    $matches = array();
+    preg_match('#"(.+)"#', $string, $matches);
 
     if(isset($matches[1]))
         return $matches[1];
@@ -79,47 +79,47 @@ function get_quoted_string($string)
  */
 function parse_lang_file($pofile)
 {
-	if(!file_exists($pofile)) {
-		return false;
-	}
+    if(!file_exists($pofile)) {
+        return false;
+    }
 
-	// Parsing the file.
-	$handle = fopen($pofile, 'r');
+    // Parsing the file.
+    $handle = fopen($pofile, 'r');
 
-	$trans_string = array();
+    $trans_string = array();
 
-	$msgid = "";
-	$msgstr = "";
+    $msgid = "";
+    $msgstr = "";
 
-	$last_token = "";
+    $last_token = "";
 
-	while($line = fgets($handle)) {
-		if($line[0] == "#" || trim(rtrim($line)) == "") {
-			continue;
-		}
+    while($line = fgets($handle)) {
+        if($line[0] == "#" || trim(rtrim($line)) == "") {
+            continue;
+        }
 
-		if(preg_match('#^msgid#', $line)) {
-			if($last_token == "msgstr") {
-				$trans_string[$msgid] = $msgstr;
-			}
-			$last_token = "msgid";
-			$msgid = get_quoted_string($line);
-		}
-		else if(preg_match('#^msgstr#', $line)) {
-			$last_token = "msgstr";
-			$msgstr = get_quoted_string($line);
-		}
-		else {
-			$last_token .= get_quoted_string($line);
-		}
-	}
-	if($last_token == "msgstr") {
-		$trans_string[$msgid] = $msgstr;
-	}
+        if(preg_match('#^msgid#', $line)) {
+            if($last_token == "msgstr") {
+                $trans_string[$msgid] = $msgstr;
+            }
+            $last_token = "msgid";
+            $msgid = get_quoted_string($line);
+        }
+        else if(preg_match('#^msgstr#', $line)) {
+            $last_token = "msgstr";
+            $msgstr = get_quoted_string($line);
+        }
+        else {
+            $last_token .= get_quoted_string($line);
+        }
+    }
+    if($last_token == "msgstr") {
+        $trans_string[$msgid] = $msgstr;
+    }
 
-	fclose($handle);
+    fclose($handle);
 
-	return $trans_string;
+    return $trans_string;
 }
 
 /**
@@ -158,12 +158,12 @@ function load_language_auto()
  */
 function load_language($lang)
 {
-	global $translations;
-	global $language;
+    global $translations;
+    global $language;
 
-	if($lang == $language) {
-		return true;
-	}
+    if($lang == $language) {
+        return true;
+    }
 
     // Here we load the compiled language file
     if(file_exists(BASE_PATH . '/cache/locales/' . $lang . '.php')) {
@@ -172,9 +172,9 @@ function load_language($lang)
     } else
         $translations = parse_lang_file(BASE_PATH . '/locales/' . $lang . '.po');
 
-	$language = $lang;
+    $language = $lang;
 
-	return true;
+    return true;
 }
 
 /**
@@ -183,31 +183,31 @@ function load_language($lang)
  */
 function load_extra_lang($directory)
 {
-	global $translations;
-	global $language;
+    global $translations;
+    global $language;
 
-	// Converting to unix path (simpler and portable.)
-	$directory = str_replace('\\', '/', $directory);
+    // Converting to unix path (simpler and portable.)
+    $directory = str_replace('\\', '/', $directory);
 
-	if($directory[-1] != '/') {
-		$directory .= '/';
-	}
+    if($directory[-1] != '/') {
+        $directory .= '/';
+    }
 
-	$trans = parse_lang_file($directory . $language . '.po');
+    $trans = parse_lang_file($directory . $language . '.po');
 
-	if(!$trans) {
-		return false;
-	}
+    if(!$trans) {
+        return false;
+    }
 
-	// Merging the arrays. The existing translations have priority.
-	foreach($trans as $msgid => $msgstr) {
-		if(array_key_exists($msgid, $translations)) {
-			continue;
-		}
-		$translations[$msgid] = $msgstr;
-	}
+    // Merging the arrays. The existing translations have priority.
+    foreach($trans as $msgid => $msgstr) {
+        if(array_key_exists($msgid, $translations)) {
+            continue;
+        }
+        $translations[$msgid] = $msgstr;
+    }
 
-	return true;
+    return true;
 }
 
 /**
@@ -216,17 +216,17 @@ function load_extra_lang($directory)
  */
 
 function load_lang_array() {
-	$lang_list = get_lang_list();
-	$dir = scandir(BASE_PATH . '/locales/');
-	$po = array();
-	foreach($dir as $files) {
-		$explode = explode('.', $files);
-		if(end($explode) == 'po') {
-			$po[$explode[0]] = $lang_list[$explode[0]];
-		}
-	}
+    $lang_list = get_lang_list();
+    $dir = scandir(BASE_PATH . '/locales/');
+    $po = array();
+    foreach($dir as $files) {
+        $explode = explode('.', $files);
+        if(end($explode) == 'po') {
+            $po[$explode[0]] = $lang_list[$explode[0]];
+        }
+    }
 
-	return $po;
+    return $po;
 }
 
 

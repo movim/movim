@@ -2,15 +2,15 @@
 
 class Event
 {
-	private $conf;
+    private $conf;
 
-	function __construct()
-	{
-		$this->conf = new Conf();
-	}
+    function __construct()
+    {
+        $this->conf = new Conf();
+    }
 
-	function runEvent($type, $event = false)
-	{
+    function runEvent($type, $event = false)
+    {
         global $polling;
         if(!$polling) { // avoids issues while loading pages.
             return;
@@ -37,7 +37,7 @@ class Event
         
         // Outputting any RPC calls.
         RPC::commit();
-	}
+    }
 }
 
 ?>

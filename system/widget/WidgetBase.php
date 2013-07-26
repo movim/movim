@@ -18,48 +18,48 @@
 
 class WidgetBase
 {
-	protected $js = array(); /*< Contains javascripts. */
-	protected $css = array(); /*< Contains CSS files. */
-	protected $external; /*< Boolean: TRUE if not a system widget. */
-	protected $ajax;	 /*< Contains ajax client code. */
+    protected $js = array(); /*< Contains javascripts. */
+    protected $css = array(); /*< Contains CSS files. */
+    protected $external; /*< Boolean: TRUE if not a system widget. */
+    protected $ajax;     /*< Contains ajax client code. */
     protected $tpl;
     protected $user;
-	protected $name;
-	public $events;
+    protected $name;
+    public $events;
     
     protected $cached;
 
-	/**
-	 * Initialises Widget stuff.
-	 * @param external is optional, true if the widget is external (an add-on) to Movim.
-	 */
-	function __construct($external = true)
-	{
-		// Put default widget init here.
-		$this->external = $external;
+    /**
+     * Initialises Widget stuff.
+     * @param external is optional, true if the widget is external (an add-on) to Movim.
+     */
+    function __construct($external = true)
+    {
+        // Put default widget init here.
+        $this->external = $external;
 
-		$this->ajax = ControllerAjax::getInstance();
+        $this->ajax = ControllerAjax::getInstance();
         
         $this->user = new User;
 
         $db = modl\Modl::getInstance();
         $db->setUser(new User);
 
-		// Generating ajax calls.
-		$refl = new ReflectionClass(get_class($this));
-		$meths = $refl->getMethods();
+        // Generating ajax calls.
+        $refl = new ReflectionClass(get_class($this));
+        $meths = $refl->getMethods();
 
-		foreach($meths as $method) {
-			if(preg_match('#^ajax#', $method->name)) {
-				$pars = $method->getParameters();
-				$params = array();
-				foreach($pars as $param) {
-					$params[] = $param->name;
-				}
+        foreach($meths as $method) {
+            if(preg_match('#^ajax#', $method->name)) {
+                $pars = $method->getParameters();
+                $params = array();
+                foreach($pars as $param) {
+                    $params[] = $param->name;
+                }
 
-				$this->ajax->defun(get_class($this), $method->name, $params);
-			}
-		}
+                $this->ajax->defun(get_class($this), $method->name, $params);
+            }
+        }
         
         // We load the template engine
         $this->view = new RainTPL;
@@ -71,8 +71,8 @@ class WidgetBase
                 
         $this->name = get_class($this);
 
-		$this->WidgetLoad();
-	}
+        $this->WidgetLoad();
+    }
     
     function t() {
         return call_user_func_array('t',func_get_args());
@@ -86,9 +86,9 @@ class WidgetBase
     {
     }
 
-	/**
-	 * Generates the widget's HTML code.
-	 */
+    /**
+     * Generates the widget's HTML code.
+     */
     function build()
     {
         echo $this->draw();
@@ -104,13 +104,13 @@ class WidgetBase
         return trim($this->view->draw(strtolower($this->name), true));
     }
 
-	/**
-	 * Returns the path to the specified widget file.
-	 * @param file is the file's name to make up the path for.
-	 * @param fspath is optional, returns the OS path if true, the URL by default.
-	 */
-	protected function respath($file, $fspath = false, $parent = false)
-	{
+    /**
+     * Returns the path to the specified widget file.
+     * @param file is the file's name to make up the path for.
+     * @param fspath is optional, returns the OS path if true, the URL by default.
+     */
+    protected function respath($file, $fspath = false, $parent = false)
+    {
         if($parent == false)
             $folder = get_class($this);
         else
@@ -129,7 +129,7 @@ class WidgetBase
         }
         
         return $path;
-	}
+    }
     
     public function getName()
     {
@@ -139,10 +139,10 @@ class WidgetBase
     /**
      * Generates and print an ajax call.
      */
-	protected function callAjax($funcname)
-	{
-		echo $this->makeCallAjax(func_get_args());
-	}
+    protected function callAjax($funcname)
+    {
+        echo $this->makeCallAjax(func_get_args());
+    }
 
     /**
      * Calls an the ajax function of another widget.
@@ -156,10 +156,10 @@ class WidgetBase
     /**
      * Returns the javascript ajax call.
      */
-	protected function genCallAjax($funcname)
-	{
-		return $this->makeCallAjax(func_get_args());
-	}
+    protected function genCallAjax($funcname)
+    {
+        return $this->makeCallAjax(func_get_args());
+    }
 
     /**
      * Returns the javascript call to another widget's ajax function.
@@ -179,61 +179,61 @@ class WidgetBase
         $funcname = array_shift($params);
         $args = implode(', ', $params);
 
-		return $widget . '_' . $funcname . "(" . $args . ");";
+        return $widget . '_' . $funcname . "(" . $args . ");";
     }
 
-	/**
-	 * Adds a javascript file to this widget.
-	 */
-	protected function addjs($filename)
-	{
-		$this->js[] = $this->respath($filename);
-	}
+    /**
+     * Adds a javascript file to this widget.
+     */
+    protected function addjs($filename)
+    {
+        $this->js[] = $this->respath($filename);
+    }
 
-	/**
-	 * returns the list of javascript files to be loaded for the widget.
-	 */
-	public function loadjs()
-	{
-		return $this->js;
-	}
+    /**
+     * returns the list of javascript files to be loaded for the widget.
+     */
+    public function loadjs()
+    {
+        return $this->js;
+    }
 
-	/**
-	 * Adds a javascript file to this widget.
-	 */
-	protected function addcss($filename)
-	{
-		$this->css[] = $this->respath($filename);
-	}
+    /**
+     * Adds a javascript file to this widget.
+     */
+    protected function addcss($filename)
+    {
+        $this->css[] = $this->respath($filename);
+    }
 
-	/**
-	 * Registers an event handler.
-	 */
-	protected function registerEvent($type, $function)
-	{
-		if(!is_array($this->events)
-		   || !array_key_exists($type, $this->events)) {
-			$this->events[$type] = array($function);
-		} else {
-			$this->events[$type][] = $function;
-		}
-	}
+    /**
+     * Registers an event handler.
+     */
+    protected function registerEvent($type, $function)
+    {
+        if(!is_array($this->events)
+           || !array_key_exists($type, $this->events)) {
+            $this->events[$type] = array($function);
+        } else {
+            $this->events[$type][] = $function;
+        }
+    }
 
-	/**
-	 * Runs all events of a given type.
-	 */
-	public function runEvents($proto)
-	{
-		if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
+    /**
+     * Runs all events of a given type.
+     */
+    public function runEvents($proto)
+    {
+        if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
             $returns = array();
 
-			foreach($this->events[$proto['type']] as $handler) {
-				$returns[] = call_user_func(array($this, $handler), $proto['data']);
-			}
+            foreach($this->events[$proto['type']] as $handler) {
+                $returns[] = call_user_func(array($this, $handler), $proto['data']);
+            }
 
             return $returns;
-		}
-	}
+        }
+    }
     
     public function isEvents($proto)
     {
@@ -244,13 +244,13 @@ class WidgetBase
         }
     }
 
-	/**
-	 * returns the list of javascript files to be loaded for the widget.
-	 */
-	public function loadcss()
-	{
-		return $this->css;
-	}
+    /**
+     * returns the list of javascript files to be loaded for the widget.
+     */
+    public function loadcss()
+    {
+        return $this->css;
+    }
 }
 
 ?>

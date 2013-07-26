@@ -8,7 +8,7 @@
  * 
  * @brief A widget which display some help 
  *
- * @author Timothée	Jaussoin <edhelas_at_gmail_dot_com>
+ * @author Timothée    Jaussoin <edhelas_at_gmail_dot_com>
  *
  * @version 1.0
  * @date 3 may 2012

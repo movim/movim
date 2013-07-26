@@ -118,16 +118,16 @@ class WidgetWrapper
     public function load_widget($widget_name)
     {
         // Attempting to load the user's widgets in priority
-		$widget_path = "";
+        $widget_path = "";
 
-		if(file_exists(APP_PATH . "widgets/$widget_name/$widget_name.php")) {
-			$widget_path = APP_PATH . "widgets/$widget_name/$widget_name.php";
+        if(file_exists(APP_PATH . "widgets/$widget_name/$widget_name.php")) {
+            $widget_path = APP_PATH . "widgets/$widget_name/$widget_name.php";
         //    $extern = false;
-		}
-		else {
-			throw new MovimException(
-				t("Requested widget '%s' doesn't exist.", $widget_name));
-		}
+        }
+        else {
+            throw new MovimException(
+                t("Requested widget '%s' doesn't exist.", $widget_name));
+        }
 
         require_once($widget_path);
         $widget = new $widget_name();

@@ -24,12 +24,12 @@ class Cache
     }
 
     public static function create()
-	{
-		if(!is_object(self::$instance)) {
+    {
+        if(!is_object(self::$instance)) {
             self::$instance = new Cache();
-		}
-		return self::$instance;
-	}
+        }
+        return self::$instance;
+    }
 
     // Helper function to access cache.
     public static function c()

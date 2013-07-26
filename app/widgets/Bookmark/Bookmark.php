@@ -25,8 +25,8 @@ class Bookmark extends WidgetBase
         $this->addcss('bookmark.css');
         $this->registerEvent('bookmark', 'onBookmark');
         $this->registerEvent('bookmarkerror', 'onBookmarkError');
-		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
-		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
+        $this->registerEvent('groupsubscribed', 'onGroupSubscribed');
+        $this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
     }
     
     function onGroupSubscribed()

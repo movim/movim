@@ -69,7 +69,7 @@ class NodeSubscriptions extends WidgetBase
     function onSubscriptionsList($list) {
         $html = $this->prepareList($list);
         RPC::call('movim_fill', 'subscriptionslist', $html); 
-		RPC::commit(); 
+        RPC::commit(); 
     }
     
     function ajaxChangeSubscriptions($server, $node, $data){
@@ -87,10 +87,10 @@ class NodeSubscriptions extends WidgetBase
           ->request();
     }
     
-	function build()
+    function build()
     {
         ?>
-		<div id="subscriptions" class="tabelem" title="<?php echo t('Manage your subscriptions'); ?>">
+        <div id="subscriptions" class="tabelem" title="<?php echo t('Manage your subscriptions'); ?>">
             <h1><?php echo t('Manage the subscriptions'); ?></h1>
             <div class="posthead">
                 <a 

@@ -67,7 +67,7 @@ class NodeAffiliations extends WidgetBase
     function onGroupMemberList($list) {
         $html = $this->prepareList($list);
         RPC::call('movim_fill', 'memberlist', $html); 
-		RPC::commit(); 
+        RPC::commit(); 
     }
     
     function ajaxChangeAffiliation($server, $node, $data){
@@ -82,10 +82,10 @@ class NodeAffiliations extends WidgetBase
         ->request();
     }
     
-	function build()
+    function build()
     {
         ?>
-		<div class="tabelem" title="<?php echo t('Manage your members'); ?>" id="groupmemberlist">
+        <div class="tabelem" title="<?php echo t('Manage your members'); ?>" id="groupmemberlist">
             <h1><?php echo t('Manage your members'); ?></h1>
             <div class="posthead">
                 <a 

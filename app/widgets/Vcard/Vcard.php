@@ -8,7 +8,7 @@
  * 
  * @brief A widget which display all the infos of a contact
  *
- * @author Timothée	Jaussoin <edhelas_at_gmail_dot_com>
+ * @author Timothée    Jaussoin <edhelas_at_gmail_dot_com>
  *
  * @version 1.0
  * @date 20 October 2010
@@ -22,16 +22,16 @@ class Vcard extends WidgetBase
 {
     function WidgetLoad()
     {
-		$this->registerEvent('myvcardvalid', 'onMyVcardReceived');
-		$this->registerEvent('myvcardinvalid', 'onMyVcardNotReceived');
+        $this->registerEvent('myvcardvalid', 'onMyVcardReceived');
+        $this->registerEvent('myvcardinvalid', 'onMyVcardNotReceived');
         $this->registerEvent('myvcard', 'onMyVcardReceived');
-    	$this->addcss('vcard.css');
-    	$this->addjs('vcard.js');
+        $this->addcss('vcard.css');
+        $this->addjs('vcard.js');
     }
     
     function onMyVcardReceived()
     {
-		$html = $this->prepareInfos(true);
+        $html = $this->prepareInfos(true);
 
         RPC::call('movim_fill', 'vcard', $html);
         Notification::appendNotification(t('Profile Updated'), 'success');
@@ -40,13 +40,13 @@ class Vcard extends WidgetBase
     
     function onMyVcardNotReceived($error)
     {
-		$html = $this->prepareInfos(true);
+        $html = $this->prepareInfos(true);
         RPC::call('movim_fill', 'vcard', $html);
     }
     
-	function ajaxVcardSubmit($vcard)
+    function ajaxVcardSubmit($vcard)
     {
-	    # Format it ISO 8601:
+        # Format it ISO 8601:
         if($vcard->year->value  != -1 
         && $vcard->month->value != -1 
         && $vcard->day->value   != -1)
@@ -97,7 +97,7 @@ class Vcard extends WidgetBase
         
         $r = new moxl\VcardSet();
         $r->setData($vcard)->request();
-	}
+    }
     
     function prepareInfos($error = false) {
                 
@@ -270,7 +270,7 @@ class Vcard extends WidgetBase
                                 return false;">'.
                             t("Take a webcam snapshot").'
                         </a>
-                    </div>';	
+                    </div>';    
                                  
             $html .= '<div class="element large"><label for="url">'.t('Website').'</label>
                         <input type="url" name ="url" class="content" value="'.$me->url.'">
@@ -367,12 +367,12 @@ class Vcard extends WidgetBase
     function build()
     {
         ?>
-		<div class="tabelem paddedtop" title="<?php echo t('Edit my Profile'); ?>" id="vcard">
-			<?php 
-				echo $this->prepareInfos();
-			?>
+        <div class="tabelem paddedtop" title="<?php echo t('Edit my Profile'); ?>" id="vcard">
+            <?php 
+                echo $this->prepareInfos();
+            ?>
             <div class="clear"></div>
-		</div>
+        </div>
         <br />
         <br />
         <?php
