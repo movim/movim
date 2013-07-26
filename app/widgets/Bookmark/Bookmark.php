@@ -27,6 +27,10 @@ class Bookmark extends WidgetBase
         $this->registerEvent('bookmarkerror', 'onBookmarkError');
 		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
 		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
+        
+        $this->view->assign('getbookmark',      $this->genCallAjax("ajaxGetBookmark"));
+        $this->view->assign('setbookmark',      $this->genCallAjax("ajaxSetBookmark", "''"));
+        $this->view->assign('preparebookmark',  $this->prepareBookmark(Cache::c('bookmark')));
     }
     
     function onGroupSubscribed()
@@ -111,7 +115,61 @@ class Bookmark extends WidgetBase
           ->request();
     }
     
-    function ajaxBookmarkAdd($form) 
+    // Add a new MUC
+    function ajaxBookmarkMucAdd($form) 
+    {
+        if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
+            $html = '<div class="message error">'.t('Bad Chatroom ID').'</div>' ;
+            RPC::call('movim_fill', 'bookmarkmucadderror', $html);
+            RPC::commit();
+        } elseif(trim($form['name']) == '') {
+            $html = '<div class="message error">'.t('Empty name').'</div>' ;
+            RPC::call('movim_fill', 'bookmarkmucadderror', $html);
+            RPC::commit();            
+        } else {
+        
+            $bookmarks = Cache::c('bookmark');        
+                    
+            if($bookmarks == null)
+                $bookmarks = array();
+            
+            array_push($bookmarks,
+                array(
+                    'type'      => 'conference',
+                    'name'      => $form['name'],
+                    'autojoin'  => $form['autojoin'],
+                    'nick'      => $form['nick'],
+                    'jid'       => $form['jid']));   
+            
+            $this->ajaxSetBookmark($bookmarks);
+        }
+    }
+    
+    // Remove a MUC
+    function ajaxBookmarkMucRemove($jid)
+    {
+        $arr = Cache::c('bookmark');
+        foreach($arr as $key => $b) {
+            if($b['type'] == 'conference' && $b['jid'] == $jid)
+                unset($arr[$key]);
+        }
+
+        $b = new moxl\BookmarkSet();
+        $b->setArr($arr)
+          ->request();
+    }
+    
+    // Join a MUC 
+    function ajaxBookmarkMucJoin($jid, $nickname)
+    {
+        $p = new moxl\PresenceMuc();
+        $p->setTo($jid)
+          ->setNickname($nickname)
+          ->request();
+    }
+    
+    // Add a new URL
+    function ajaxBookmarkUrlAdd($form) 
     {
         if(!filter_var($form['url'], FILTER_VALIDATE_URL)) {
             $html = '<div class="message error">'.t('Bad URL').'</div>' ;
@@ -138,6 +196,7 @@ class Bookmark extends WidgetBase
         }
     }
     
+    // Remove an URL
     function ajaxBookmarkUrlRemove($url)
     {
         $arr = Cache::c('bookmark');
@@ -178,8 +237,16 @@ class Bookmark extends WidgetBase
         foreach($bookmarks as $b) {
             switch ($b['type']) {
             case 'conference':
+                $remove = $this->genCallAjax('ajaxBookmarkMucRemove', "'".$b['jid']."'");
+                $join   = $this->genCallAjax(
+                            'ajaxBookmarkMucJoin',   
+                            "'".$b['jid']."'",
+                            "'".$b['nick']."'");
                 $conference .= '
-                    <li>'.$b['name'].'</li>';
+                    <li>
+                        <a href="#" onclick="'.$join.'">'.$b['name'].'</a>
+                        <a href="#" onclick="'.$remove.'">X</a>
+                    </li>';
                 break;
             case 'url':
                 $remove = $this->genCallAjax('ajaxBookmarkUrlRemove', "'".$b['url']."'");
@@ -192,6 +259,14 @@ class Bookmark extends WidgetBase
                     </li>';
                 break;
             }
+        }
+            
+        if($conference != '') {
+            $html .= '
+                <h3>'.t('Conferences').'</h3>
+                <ul>'.
+                    $conference.'
+                </ul>';
         }
         
         if($subscription != '') {
@@ -209,74 +284,27 @@ class Bookmark extends WidgetBase
                     $url.'
                 </ul>';
         }
-            
-        if($conference != '') {
-            $html .= '
-                <h3>'.t('Conferences').'</h3>
-                <ul>'.
-                    $conference.'
-                </ul>';
-        }
-            
-        $submit = $this->genCallAjax('ajaxBookmarkAdd', "movim_parse_form('bookmarkadd')");
-            
-        $html .= '
-            <div class="popup" id="bookmarkadd">
-                <form name="bookmarkadd">
-                    <fieldset>
-                        <legend>'.t('Add a new URL').'</legend>
-                        
-                        <div id="bookmarkadderror"></div>
-                        <div class="element large mini">
-                            <input name="url" placeholder="'.t('URL').'"/>
-                        </div>
-                        <div class="element large mini">
-                            <input name="name" placeholder="'.t('Name').'"/>
-                        </div>
-                    </fieldset>
-                    <div class="menu">
-                        <a 
-                            class="button icon yes black merged left"
-                            onclick="'.$submit.'"
-                        >'.
-                                t('Add').'
-                        </a><a 
-                            class="button icon no black merged right" 
-                            onclick="movim_toggle_display(\'#bookmarkadd\')"
-                        >'.
-                                t('Close').'
-                        </a>
-                    </div>
-                </form>
-            </div>
-        ';
+          
+        // The URL add form
+        $urlview = $this->tpl();
+        $urlview->assign(
+            'submit', 
+            $this->genCallAjax(
+                'ajaxBookmarkUrlAdd', 
+                "movim_parse_form('bookmarkurladd')")
+        );
+        $html .= $urlview->draw('_bookmark_url_add', true);
+        
+        // The MUC add form
+        $mucview = $this->tpl();
+        $mucview->assign(
+            'submit', 
+            $this->genCallAjax(
+                'ajaxBookmarkMucAdd', 
+                "movim_parse_form('bookmarkmucadd')")
+        );
+        $html .= $mucview->draw('_bookmark_muc_add', true);
         
         return $html;
-    }
-    
-    function build()
-    {
-        $getbookmark = $this->genCallAjax("ajaxGetBookmark");
-        $setbookmark = $this->genCallAjax("ajaxSetBookmark", "''");
-    ?>
-        <script type="text/javascript">
-            function setBookmark() {
-                <?php echo $setbookmark; ?>
-            }
-        </script>
-    <?php
-    ?>
-        <h2><?php echo t('Bookmarks'); ?></h2>
-    
-        <div id="bookmarks">
-            <?php echo $this->prepareBookmark(Cache::c('bookmark')); ?>
-        </div>
-        <br />
-        <a class="button color blue icon add merged right" style="float: right;"
-           onclick="movim_toggle_display('#bookmarkadd')"><?php echo('Add'); ?></a>
-        <a class="button black icon refresh merged left" style="float: right;"
-           onclick="<?php echo $getbookmark; ?>"><?php echo('Refresh'); ?></a>
-        <br />
-        <?php 
     }
 }

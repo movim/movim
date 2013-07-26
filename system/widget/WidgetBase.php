@@ -103,6 +103,16 @@ class WidgetBase
     {
         return trim($this->view->draw(strtolower($this->name), true));
     }
+    
+    protected function tpl() {
+        $view = new RainTPL;
+        $view->configure('tpl_dir', APP_PATH.'widgets/'.$this->name.'/'); 
+        $view->configure('cache_dir',    CACHE_PATH);
+        $view->configure('tpl_ext',      'tpl'); 
+        $view->assign('c', $this);
+        
+        return $view;
+    }
 
 	/**
 	 * Returns the path to the specified widget file.
