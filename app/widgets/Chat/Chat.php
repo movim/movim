@@ -386,10 +386,11 @@ class Chat extends WidgetBase
         }
         
         $bk = Cache::c('bookmark');
-        foreach($bk as $b) {
-            if($b['type'] == 'conference') 
-                $html .= trim($this->prepareMuc($b['jid']));
-        }
+        if(isset($bk))
+            foreach($bk as $b) {
+                if($b['type'] == 'conference') 
+                    $html .= trim($this->prepareMuc($b['jid']));
+            }
         
         return $html;
     }
