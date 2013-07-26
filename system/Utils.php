@@ -667,7 +667,8 @@ function generateUUID($string = false) {
 
 
 function movim_log($log) {
-    ob_start();
+    \Logger::log($log);
+   /* ob_start();
 //    var_dump($log);
     print_r($log);
     $dump = ob_get_clean();
@@ -675,7 +676,7 @@ function movim_log($log) {
     openlog('movim', LOG_NDELAY, LOG_USER);
     $errlines = explode("\n",$dump);
     foreach ($errlines as $txt) { syslog(LOG_DEBUG, $txt); } 
-    closelog();
+    closelog();*/
 }
 
 /**

@@ -36,13 +36,21 @@
  * using massively asynchronous javascript and abstracting XMPP calls into an
  * events-based API.
  */
-
-ini_set('log_errors', 0);
-ini_set('display_errors', 1);
-ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
+define('ENVIRONMENT','debug');
+define('ROOTDIR',  dirname(__FILE__));
+if (ENVIRONMENT === 'debug') {
+    ini_set('log_errors', 0);
+    ini_set('display_errors', 1);
+    ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
+} else {
+    ini_set('log_errors', 1);
+    ini_set('display_errors', 0);
+    ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
+}
+ini_set('error_log', ROOTDIR.'/log/php.log');
 
 // Run
-require('init.php');
+require_once('init.php');
 
 $polling = false;
 $rqst = new ControllerMain();
@@ -52,7 +60,8 @@ WidgetWrapper::getInstance(false);
 
 // Closing stuff
 WidgetWrapper::destroyInstance();
-
-echo Logger::displayLog();
-
-?>
+if (ENVIRONMENT === 'debug') {
+    echo Logger::displayLog();
+} else {
+    Logger::defaultSaveLogs();
+}

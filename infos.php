@@ -17,7 +17,7 @@
  */
 
 // We load the Movim kernel
-require("init.php");
+require_once("init.php");
   
 // We get the informations
 $pop = 0;
