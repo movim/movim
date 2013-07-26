@@ -204,8 +204,9 @@ class WidgetWrapper
         } else
             $widgets = $this->get_loaded_widgets();
 
-        foreach($widgets as $widget)
-            $this->run_widget($widget, $method, $params);
+        if(is_array($widgets))
+            foreach($widgets as $widget)
+                $this->run_widget($widget, $method, $params);
     }
     
     function iterateAll($method, array $params = NULL) {
