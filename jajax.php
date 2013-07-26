@@ -15,11 +15,12 @@
  * 
  * See the file `COPYING' for licensing information.
  */
-
+define('ENVIRONMENT','debug');
+define('ROOTDIR',  dirname(__FILE__));
 ini_set('log_errors', 1);
 ini_set('display_errors', 0);
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
-ini_set('error_log', 'log/php.log');
+ini_set('error_log', ROOTDIR.'/log/php.log');
 
 require('init.php');
 
@@ -32,4 +33,5 @@ $rpc->handle_json();
 
 // Closing stuff
 WidgetWrapper::destroyInstance();
+Logger::defaultSaveLogs();
 ?>
