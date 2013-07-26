@@ -64,7 +64,7 @@
 
 #chats .chat .panel {
     background-color: white;
-    width: 250px;
+    width: 18em;
 }
 
 #chats .chat .panel .head {
@@ -221,3 +221,59 @@
 #chats .chat .panel .messages .message:hover span.date {
     display: inline-block;
 }
+
+/* Muc */
+#chats .muc .panel {
+    width: 28em;
+}
+
+#chats .muc .panel .head a.name {
+    width: 80%;
+}
+
+#chats .muc .tab .name {
+    padding-left: 0.5em;
+}
+
+#chats .muc .panel .messages {
+    height: 14em;
+}
+
+#chats .muc .panel .messages .message img.avatar {
+    display: none;
+}
+
+#chats .muc .list {
+    width: 8em;
+    height: 16em;
+    float: right;
+    border-right: 1px solid #888;
+}
+
+#chats .muc .panel .messages .message span.ressource {
+    font-weight: bold;
+}
+
+#chats .muc .list ul {
+    list-style-type: none;
+}
+
+#chats .muc .list ul li {
+    line-height: 1.5em;
+    padding: 0 0.5em;
+}
+
+#chats .muc .panel:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* Muc color */
+#chats .muc .purple { color: #442178; }
+#chats .muc .wine   { color: #800033; }
+#chats .muc .yellow { color: #DEC41C; }
+#chats .muc .orange { color: #FC8F12; }
+#chats .muc .green  { color: #6FCC43; }
+#chats .muc .red    { color: #D92727; }
+#chats .muc .blue   { color: #162D50; }
