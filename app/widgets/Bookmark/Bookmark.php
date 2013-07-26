@@ -25,9 +25,10 @@ class Bookmark extends WidgetBase
         $this->addcss('bookmark.css');
         $this->registerEvent('bookmark', 'onBookmark');
         $this->registerEvent('bookmarkerror', 'onBookmarkError');
-		$this->registerEvent('groupsubscribed', 'onGroupSubscribed');
-		$this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
-        
+
+        $this->registerEvent('groupsubscribed', 'onGroupSubscribed');
+        $this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
+
         $this->view->assign('getbookmark',      $this->genCallAjax("ajaxGetBookmark"));
         $this->view->assign('setbookmark',      $this->genCallAjax("ajaxSetBookmark", "''"));
         $this->view->assign('preparebookmark',  $this->prepareBookmark(Cache::c('bookmark')));

@@ -20,10 +20,10 @@
  
 class Account extends WidgetBase {
     
-	function WidgetLoad()
-	{
-    	$this->addcss('account.css');
-    	$this->addjs('account.js');
+    function WidgetLoad()
+    {
+        $this->addcss('account.css');
+        $this->addjs('account.js');
     }
     
     function ajaxDiscoverServer($ndd) {
@@ -56,13 +56,13 @@ class Account extends WidgetBase {
 
             $response = stream_get_contents($f);
 
-	        if(!$response) {
-                	RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
+            if(!$response) {
+                    RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
-     	            exit;
-		    }
+                     exit;
+            }
 
-	        $response = simplexml_load_string($response);   
+            $response = simplexml_load_string($response);   
             
             \movim_log(moxl\cleanXML($response->asXML()));         
                         
@@ -75,10 +75,10 @@ class Account extends WidgetBase {
             $stream->addAttribute('to', $ndd['ndd']);
             fwrite($f, $stream->asXML());
             
-	        fclose($f); unset($f);
+            fclose($f); unset($f);
             
             if(!empty($elements)) {
-				$html .= '
+                $html .= '
                     <form name="data">
                         <fieldset>
                                 <legend>'.t('Step 2 - Fill in your informations').'</legend><br /><br /><br />';
@@ -98,12 +98,12 @@ class Account extends WidgetBase {
                         
                 }
 
-				$form = new XMPPtoForm();
-				if(!empty($response->iq->query->x)){
-					$formh .= $form->getHTML($response->iq->query->x->asXML());
-				} else{/*no <x> element in the XML*/	
-					$formh .= $form->getHTML($response->iq->query->asXML());
-				}
+                $form = new XMPPtoForm();
+                if(!empty($response->iq->query->x)){
+                    $formh .= $form->getHTML($response->iq->query->x->asXML());
+                } else{/*no <x> element in the XML*/    
+                    $formh .= $form->getHTML($response->iq->query->asXML());
+                }
 
                 if($formh == '')
                     $html .= $instr;
@@ -189,77 +189,77 @@ class Account extends WidgetBase {
 
         try {         
             // We try to connect to the XMPP Server
-	        $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
+            $f = fsockopen(XMPP_CONN, XMPP_PORT, $errno, $errstr, 10);
 
-	        if(!$f) {
+            if(!$f) {
                 RPC::call('movim_reload', Route::urlize('account', 'xmppconnect'));
                 RPC::commit();
-     	        exit;
-		    }
+                 exit;
+            }
 
             // We create the XML Stanza
-	        $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq id="'.$datas->id->value.'" type="set"><query xmlns="jabber:iq:register"><x xmlns="jabber:x:data" type="form"></x></query></iq></stream:stream>');
+            $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq id="'.$datas->id->value.'" type="set"><query xmlns="jabber:iq:register"><x xmlns="jabber:x:data" type="form"></x></query></iq></stream:stream>');
             
             unset($datas->id);
 
-	        $stream->addAttribute('to', XMPP_HOST);
+            $stream->addAttribute('to', XMPP_HOST);
 
-			$xmpp = new FormtoXMPP();
-			$stream = $xmpp->getXMPP($stream->asXML(), $datas);
+            $xmpp = new FormtoXMPP();
+            $stream = $xmpp->getXMPP($stream->asXML(), $datas);
 
-	        fwrite($f, $stream->asXML());
-	        unset($stream);
+            fwrite($f, $stream->asXML());
+            unset($stream);
 
-	        $response = stream_get_contents($f);
+            $response = stream_get_contents($f);
 
-	        if(!$response) {
-                	RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
+            if(!$response) {
+                    RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
-     	            exit;
-		    }
+                     exit;
+            }
 
-	        fclose($f); unset($f);
+            fclose($f); unset($f);
 
-	        $response = simplexml_load_string($response);
+            $response = simplexml_load_string($response);
 
-	        if(!$response) throw new Exception('The XMPP server sent an invalid response', 500);
+            if(!$response) throw new Exception('The XMPP server sent an invalid response', 500);
 
-	        if($stream_error = $response->xpath('/stream:stream/stream:error')) {
-		        list($stream_error) = $stream_error;
-		        list($cond) = $stream_error->children();
+            if($stream_error = $response->xpath('/stream:stream/stream:error')) {
+                list($stream_error) = $stream_error;
+                list($cond) = $stream_error->children();
 
-		        throw new Exception($stream_error->text ? $stream_error->text : $cond->getName(), 500);
-	        }
+                throw new Exception($stream_error->text ? $stream_error->text : $cond->getName(), 500);
+            }
 
-	        $iq = $response->iq;
+            $iq = $response->iq;
 
-	        if($iq->error) {
-		        list($cond) = $iq->error->children();
-		        if($cond->getName() == 'conflict') {
-                	RPC::call('movim_reload', Route::urlize('account', 'userconflict'));
+            if($iq->error) {
+                list($cond) = $iq->error->children();
+                if($cond->getName() == 'conflict') {
+                    RPC::call('movim_reload', Route::urlize('account', 'userconflict'));
                     RPC::commit();
-     	            exit;
-		        } else if($cond->getName() == 'not-acceptable') {
-                	RPC::call('movim_reload', Route::urlize('account', 'notacceptable'));
+                     exit;
+                } else if($cond->getName() == 'not-acceptable') {
+                    RPC::call('movim_reload', Route::urlize('account', 'notacceptable'));
                     RPC::commit();
-     	            exit;
-		        }
-		        throw new Exception($iq->error->text ? $iq->error->text : $cond->getName(), 400);
-	        }
+                     exit;
+                }
+                throw new Exception($iq->error->text ? $iq->error->text : $cond->getName(), 400);
+            }
 
-	        if($iq = $response->iq and $iq->attributes()->type == 'result') {
+            if($iq = $response->iq and $iq->attributes()->type == 'result') {
                 RPC::call('movim_reload', Route::urlize('login', 'acccreated'));
                 RPC::commit();
                 exit;
-	        } else {
-                	RPC::call('movim_reload', Route::urlize('account', 'unknown'));
+            } else {
+                    RPC::call('movim_reload', Route::urlize('account', 'unknown'));
                     RPC::commit();
-     	            exit;
-		    }
+                     exit;
+            }
         } catch(Exception $e) {
-	        header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
-	        header('Content-Type: text/plain; charset=utf-8');
-	        echo $e->getMessage(),"\n";
+            header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
+            header('Content-Type: text/plain; charset=utf-8');
+            echo $e->getMessage(),"\n";
         }
     }
     
@@ -267,7 +267,7 @@ class Account extends WidgetBase {
         $file = dirname(__FILE__).DIRECTORY_SEPARATOR.'server-vcards.xml';
         
         $html = '';
-		
+        
         if(file_exists($file)) {
             $vcards = simplexml_load_file($file);
             
@@ -294,9 +294,9 @@ class Account extends WidgetBase {
                     </thead>
                     <tbody>';
             
-			$markers = array();			
+            $markers = array();            
             foreach($vcards as $vcard) {
-				$name = (string)$vcard->fn->text;
+                $name = (string)$vcard->fn->text;
                 $html .='                                
                     <tr onclick="selectServer(\''.$name.'\');">
                         <td>
@@ -320,109 +320,109 @@ class Account extends WidgetBase {
                                 src="'.BASE_URI.'themes/movim/img/flags/'.strtolower((string)$vcard->adr->country).'.png"/>
                         </td>
                     </tr>
-                    ';	
-				$coord = explode("geo:", $vcard->geo->uri);
-				if(isset($coord[1])){
-					$split = explode(",", $coord[1]);
-					$newkey = round(floatval($split[0]),1).",".round(floatval($split[1]),1);
-					if(!isset($markers[$newkey])){
-						$markers[$newkey] = array($name);
-					}
-					else{
-						array_push($markers[$newkey], $name);
-					}
-				}
+                    ';    
+                $coord = explode("geo:", $vcard->geo->uri);
+                if(isset($coord[1])){
+                    $split = explode(",", $coord[1]);
+                    $newkey = round(floatval($split[0]),1).",".round(floatval($split[1]),1);
+                    if(!isset($markers[$newkey])){
+                        $markers[$newkey] = array($name);
+                    }
+                    else{
+                        array_push($markers[$newkey], $name);
+                    }
+                }
             }
                     
             $html .= '
                     </tbody>
                 </table>';
-						
-			$javascript = '<script type="text/javascript">
-							var map = L.map("map").setView([40,0], 2);
-							
-							L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-								attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Mapnik ©",
-								maxZoom: 18
-							}).addTo(map);';
-			
-			$id = 0;
-			
-			foreach($markers as $coord => $arrayOfNames){
-				$javascript .= "
-								var marker".$id." = L.marker([".$coord."]).addTo(map);
-								marker".$id.".bindPopup('";
-				foreach($arrayOfNames as $name){
-					$action = 'selectServer("'.$name.'");';
-					$javascript .= "<span onclick=\'".$action."\' ><a href=\'#nddlink\'>".$name."</a></span><br />";
-				}
-				$javascript .= "');
-								";
-				$id++;
-			}
-			
-			$javascript .= '</script>';
+                        
+            $javascript = '<script type="text/javascript">
+                            var map = L.map("map").setView([40,0], 2);
+                            
+                            L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                                attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Mapnik ©",
+                                maxZoom: 18
+                            }).addTo(map);';
+            
+            $id = 0;
+            
+            foreach($markers as $coord => $arrayOfNames){
+                $javascript .= "
+                                var marker".$id." = L.marker([".$coord."]).addTo(map);
+                                marker".$id.".bindPopup('";
+                foreach($arrayOfNames as $name){
+                    $action = 'selectServer("'.$name.'");';
+                    $javascript .= "<span onclick=\'".$action."\' ><a href=\'#nddlink\'>".$name."</a></span><br />";
+                }
+                $javascript .= "');
+                                ";
+                $id++;
+            }
+            
+            $javascript .= '</script>';
         }
         
         return $javascript.$html;
     }
     
-	function build()
-	{
+    function build()
+    {
         switch ($_GET['err']) {
             case 'datamissing':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('Some data are missing !').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('Some data are missing !').'
+                        </div> ';
                 break;
             case 'jiderror':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('Wrong ID').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('Wrong ID').'
+                        </div> ';
                 break;
             case 'passworddiff':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('You entered different passwords').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('You entered different passwords').'
+                        </div> ';
                 break;
             case 'nameerr':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('Invalid name').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('Invalid name').'
+                        </div> ';
                 break;
             case 'notacceptable':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('Request not acceptable').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('Request not acceptable').'
+                        </div> ';
                 break;
             case 'userconflict':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('Username already taken').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('Username already taken').'
+                        </div> ';
                 break;
             case 'xmppconnect':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('Could not connect to the XMPP server').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('Could not connect to the XMPP server').'
+                        </div> ';
                 break;
             case 'xmppcomm':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('Could not communicate with the XMPP server').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('Could not communicate with the XMPP server').'
+                        </div> ';
                 break;
             case 'unknown':
-	            $warning = '
-	                    <div class="message error">
-	                        '.t('Unknown error').'
-	                    </div> ';
+                $warning = '
+                        <div class="message error">
+                            '.t('Unknown error').'
+                        </div> ';
                 break;
         }
         
@@ -446,12 +446,12 @@ class Account extends WidgetBase {
                                 <div class="clear"></div>
                                 <p>
                                     <?php echo t('You can%s enter your server domain name%s. ', '<a href="#nddlink">', '</a>'); 
-										echo t('Or you can choose a server from this list.'); ?>   
+                                        echo t('Or you can choose a server from this list.'); ?>   
                                 </p>
-								<br />
-								
-								<div style="height: 300px;" id="map"></div>
-								
+                                <br />
+                                
+                                <div style="height: 300px;" id="map"></div>
+                                
                                 <br />
                                 <?php echo $this->printServerList(); ?>               
                                 
@@ -469,7 +469,7 @@ class Account extends WidgetBase {
                                 <div class="clear"></div>
                                 
                                 <a
-									name="nddlink"
+                                    name="nddlink"
                                     class="button icon search color green" 
                                     style="float: right;"
                                     onclick="<?php echo $submit;?>; document.getElementById('fillform').innerHTML ='<?php echo t('Searching...');?>'"
