@@ -26,17 +26,17 @@ class Log extends WidgetBase
         $this->registerEvent('allEvents', 'onEvent');
     }
 
-	function build()
-	{
-		?>
-		<div id="log">
-		  <h3><?php echo t('Debug console'); ?></h3>
+    function build()
+    {
+        ?>
+        <div id="log">
+          <h3><?php echo t('Debug console'); ?></h3>
 
           <div id="log_content">
           </div>
-       	</div>
-		<?php
-	}
+           </div>
+        <?php
+    }
 
     function onEvent($data)
     {               
