@@ -98,7 +98,7 @@ class Bookmark extends WidgetBase
             $arr = array();
         
         $sd = new \modl\SubscriptionDAO();
-        
+
         if($sd != null) {
             foreach($sd->getSubscribed() as $s) {
                 array_push($arr,
@@ -217,7 +217,7 @@ class Bookmark extends WidgetBase
         $url = '';
         $conference = '';
         $subscription = '';
-        
+
         $sd = new \modl\SubscriptionDAO();
         
         if($sd != null) {
