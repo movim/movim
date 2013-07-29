@@ -53,7 +53,6 @@ function prepareString($string) {
             ':\('   => 'sad.png',
             ':o'    => 'shocked.png',
             ':O'    => 'shocked.png',
-            ':3'    => 'emoticon_waii.png',
             ':D'    => 'grin.png',
             ':d'    => 'grin.png',
             ':p'    => 'tongue.png',
