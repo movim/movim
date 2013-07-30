@@ -12,7 +12,7 @@ class Conf
     /* Return the general configuration */
 
     static function getServerConf() {
-        $conf_file = BASE_PATH . self::$conf_path . "/conf.xml";
+        $conf_file = ROOTDIR . self::$conf_path . "/conf.xml";
         return self::getConf('server', $conf_file);
     }
 
@@ -27,6 +27,7 @@ class Conf
         } else {
             // Return the default configuration
             return array(
+                'environment' => 'production',//allow "production" and "development" for the moment
                 'theme'     => 'movim',
                 'defLang'   => 'en',
                 'maxUsers'  => -1,
@@ -51,7 +52,6 @@ class Conf
 
     static function getServerConfElement($element) {
         $conf = self::getServerConf();
-
         if(!isset($conf[$element])) {
             throw new MovimException(t("Cannot load element value '%s'", $element));
         }

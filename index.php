@@ -36,9 +36,19 @@
  * using massively asynchronous javascript and abstracting XMPP calls into an
  * events-based API.
  */
-define('ENVIRONMENT','prod');
+
+/**
+* BOOTSTRAP
+**/
 define('ROOTDIR',  dirname(__FILE__));
-if (ENVIRONMENT === 'debug') {
+require_once(ROOTDIR.'/system/Utils.php');
+require_once(ROOTDIR.'/system/Conf.php');
+try {
+    define('ENVIRONMENT',Conf::getServerConfElement('environment'));
+} catch (Exception $e) {
+//    define('ENVIRONMENT','production');//default environment is production
+}
+if (ENVIRONMENT === 'development') {
     ini_set('log_errors', 0);
     ini_set('display_errors', 1);
     ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
@@ -60,7 +70,6 @@ WidgetWrapper::getInstance(false);
 
 // Closing stuff
 WidgetWrapper::destroyInstance();
-if (ENVIRONMENT === 'debug') {
+if (ENVIRONMENT === 'development') {
     echo Logger::displayLog();
-   
 }
