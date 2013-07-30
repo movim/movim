@@ -23,6 +23,13 @@
     color: white;
 }
 
+#chats .chat .tab .name {
+    max-width: 11em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 #chats .chat .tab.alert .name {
     display: relative;
 }
