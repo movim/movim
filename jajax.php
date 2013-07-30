@@ -15,14 +15,24 @@
  * 
  * See the file `COPYING' for licensing information.
  */
-define('ENVIRONMENT','debug');
+/**
+* BOOTSTRAP
+**/
 define('ROOTDIR',  dirname(__FILE__));
+require_once(ROOTDIR.'/system/Utils.php');
+require_once(ROOTDIR.'/system/Conf.php');
+try {
+    define('ENVIRONMENT',Conf::getServerConfElement('environment'));
+} catch (Exception $e) {
+    define('ENVIRONMENT','production');//default environment is production
+}
 ini_set('log_errors', 1);
 ini_set('display_errors', 0);
 ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 ini_set('error_log', ROOTDIR.'/log/php.log');
 
-require('init.php');
+// Run
+require_once('init.php');
 
 set_time_limit(200);
 
