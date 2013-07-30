@@ -140,5 +140,14 @@ abstract class Logger
         self::$logs->addLog($msg);
 
     }
+    static function displayLog()
+    {
+        if (!isset(self::$logs)) {
+            self::$logs = new Logs();
+        }
+        self::$logs->displayLog();
+
+
+    }
 
 }
