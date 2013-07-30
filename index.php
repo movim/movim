@@ -36,7 +36,7 @@
  * using massively asynchronous javascript and abstracting XMPP calls into an
  * events-based API.
  */
-define('ENVIRONMENT','debug');
+define('ENVIRONMENT','prod');
 define('ROOTDIR',  dirname(__FILE__));
 if (ENVIRONMENT === 'debug') {
     ini_set('log_errors', 0);

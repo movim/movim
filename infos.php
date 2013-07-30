@@ -17,6 +17,8 @@
  */
 
 // We load the Movim kernel
+define('ENVIRONMENT','debug');
+define('ROOTDIR',  dirname(__FILE__));
 require_once("init.php");
   
 // We get the informations
