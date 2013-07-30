@@ -248,6 +248,9 @@
     height: 16em;
     float: right;
     border-right: 1px solid #888;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
 }
 
 #chats .muc .panel .messages .message span.ressource {
