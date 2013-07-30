@@ -27,7 +27,8 @@ class Account extends WidgetBase {
     }
     
     function ajaxDiscoverServer($ndd) {
-        Logger::log($ndd);
+        Logger::log('ajaxDiscoverServer');
+	Logger::log($ndd);
         if($ndd['ndd'] == '') {
             RPC::call('movim_reload', Route::urlize('account', 'datamissing'));
             RPC::commit();
@@ -86,7 +87,7 @@ class Account extends WidgetBase {
             fclose($f); unset($f);
             
             if(!empty($elements)) {
-                root.log('elements');
+                Logger::log('elements');
                 $html .= '
                     <form name="data">
                         <fieldset>
@@ -187,6 +188,8 @@ class Account extends WidgetBase {
     }
     
     function ajaxSubmitData($datas) {
+	Logger::log('ajaxSubmitData');
+	Logger::log($datas);
         define(XMPP_HOST, $datas->to->value);
         define(XMPP_CONN, $datas->ndd->value);
         
@@ -217,10 +220,12 @@ class Account extends WidgetBase {
             $stream = $xmpp->getXMPP($stream->asXML(), $datas);
 
             fwrite($f, $stream->asXML());
+            Logger::log('post');
+            Logger::log($stream);
             unset($stream);
 
             $response = stream_get_contents($f);
-
+            Logger::log($response);
             if(!$response) {
                     RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
@@ -241,7 +246,8 @@ class Account extends WidgetBase {
             }
 
             $iq = $response->iq;
-
+            Logger::log('response');
+	    Logger::log($response);
             if($iq->error) {
                 list($cond) = $iq->error->children();
                 if($cond->getName() == 'conflict') {
@@ -268,7 +274,8 @@ class Account extends WidgetBase {
         } catch(Exception $e) {
             header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
             header('Content-Type: text/plain; charset=utf-8');
-            echo $e->getMessage(),"\n";
+            Logger::log($e->getCode().' '.$e->getMessage().' file:'.$e->getFile().' - l.'.$e->getLine());
+		echo $e->getMessage(),"\n";
         }
     }
     

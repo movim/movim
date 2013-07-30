@@ -273,6 +273,12 @@ class FormtoXMPP{
                  exit;
             } elseif(substr($key, 0, 8) == 'generic_') {
                 $key = str_replace('generic_', '', $key);
+                Logger::log($key);
+                Logger::log($value);
+                if (!is_string($value)) {
+			$value = $value->value;
+		}
+		Logger::log($value);
                 $node->addChild($key, $value);
             } elseif($value->attributes) {
                 $field = $node->addChild('field');
