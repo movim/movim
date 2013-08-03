@@ -49,9 +49,10 @@ try {
 //    define('ENVIRONMENT','production');//default environment is production
 }
 if (ENVIRONMENT === 'development') {
-    ini_set('log_errors', 0);
-    ini_set('display_errors', 1);
-    ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
+    ini_set('log_errors', 1);
+    ini_set('display_errors', 0);
+    ini_set('error_reporting', E_ALL );
+    
 } else {
     ini_set('log_errors', 1);
     ini_set('display_errors', 0);
@@ -71,5 +72,9 @@ WidgetWrapper::getInstance(false);
 // Closing stuff
 WidgetWrapper::destroyInstance();
 if (ENVIRONMENT === 'development') {
+   
+    print ' <div id="debug"><div class="carreful"><p>Be carrefull you are actually in devlopment environment</p></div>';
+    print '<div id="logs">';
     echo Logger::displayLog();
+    print '</div></div>';
 }

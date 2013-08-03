@@ -7,7 +7,7 @@ mb_internal_encoding("UTF-8");
 require('loader.php');
 
 define('APP_TITLE', 'Movim');
-
+set_error_handler('systemErrorHandler', E_ALL);
 $file = "VERSION";
 if($f = fopen($file, 'r')) {
     define('APP_VERSION', trim(fgets($f)));
