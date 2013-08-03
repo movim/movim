@@ -749,3 +749,14 @@ dl dd {
     border: 0px !important;
     text-shadow: 0px -1px 0px black;
 }
+
+#debug {
+    clear:both;
+    background-color: #fff;
+    color:#000;
+    padding:10px;
+    border:1px solid black;
+}
+.carreful {
+    color:red;
+}
