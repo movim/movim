@@ -71,19 +71,21 @@ function prepareString($string) {
             ":\|"   => 'neutral.png',
             
             // Meme icons
-            ':okay:' => 'okay.gif',
-            ':trolldad:' => 'trolldad.png',
-            ':epic:' => 'epic.png',
-            ':aloneyeah:' => 'aloneyeah.png',
-            ':fapfap:' => 'fapfap.png',
-            ':megusta:' => 'gusta.png',
-            ':trollface:' => 'trollface.png',
-            ':troll:' => 'trollface.png',
-            ':lol:' => 'trollol.png',
+            ':okay:'        => 'okay.gif',
+            ':trolldad:'    => 'trolldad.png',
+            ':epic:'        => 'epic.png',
+            ':aloneyeah:'   => 'aloneyeah.png',
+            ':fapfap:'      => 'fapfap.png',
+            ':megusta:'     => 'gusta.png',
+            ':trollface:'   => 'trollface.png',
+            ':troll:'       => 'trollface.png',
+            ':lol:'         => 'trollol.png',
+            ':genius:'      => 'genius.png',
         );
     
     $string = str_replace('<a ', '<a target="_blank" ', $string);
-
+    $string = str_replace('<iframe', '', $string);
+    //$string = preg_replace('/<iframe.*?\/iframe>/i','', $string);
     
     $string = preg_replace(
         array(
@@ -111,7 +113,8 @@ function prepareString($string) {
         $replace = ' <img class="smiley" src="'.$path.$value.'">';
         $string = preg_replace('/(^|[ ])('.$key.')/',  $replace, $string);
     }
-
+    
+    //return '';
     return trim($string);
 }
 
