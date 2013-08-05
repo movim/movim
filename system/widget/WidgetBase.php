@@ -133,7 +133,7 @@ class WidgetBase
         $path .= 'app/widgets/' . $folder . '/' . $file;
 
         if($fspath) {
-            $path = BASE_PATH . $path;
+            $path = DOCUMENT_ROOT . '/'.$path;
         } else {
             $path = BASE_URI . $path;
         }

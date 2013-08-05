@@ -1,20 +1,36 @@
 <?php
+function __autoload($className)
+{
+    $className = ltrim($className, '\\');
+    $fileName  = DOCUMENT_ROOT;
+    $namespace = '';
+    if ($lastNsPos = strrpos($className, '\\')) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    }
+    $fileName .= '/'.str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+    if (file_exists($fileName)) {
+        require_once( $fileName);
+    } else  {
+        return false;
+    }
+}
+
 
 // A few constants...
-define('BASE_PATH', dirname(__FILE__) . '/');
 define('APP_NAME', 'movim');
-#define('LIB_PATH', BASE_PATH.'system/');
 
-define('THEMES_PATH',   BASE_PATH . 'themes/');
-define('USERS_PATH',    BASE_PATH . 'users/');
-define('APP_PATH',      BASE_PATH . 'app/');
-define('SYSTEM_PATH',   BASE_PATH . 'system/');
-define('LIB_PATH',      BASE_PATH . 'lib/');
-define('LOCALES_PATH',  BASE_PATH . 'locales/');
-define('CACHE_PATH',    BASE_PATH . 'cache/');
+define('THEMES_PATH',   DOCUMENT_ROOT . '/themes/');
+define('USERS_PATH',    DOCUMENT_ROOT . '/users/');
+define('APP_PATH',      DOCUMENT_ROOT . '/app/');
+define('SYSTEM_PATH',   DOCUMENT_ROOT . '/system/');
+define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');
+define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
+define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
 
 // Loads up all system libraries.
-require_once(SYSTEM_PATH . "i18n/i18n.php");
+require_once(SYSTEM_PATH . "/i18n/i18n.php");
 
 require_once(SYSTEM_PATH . "Session.php");
 require_once(SYSTEM_PATH . "Utils.php");

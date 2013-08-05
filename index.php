@@ -40,9 +40,9 @@
 /**
 * BOOTSTRAP
 **/
-define('ROOTDIR',  dirname(__FILE__));
-require_once(ROOTDIR.'/system/Utils.php');
-require_once(ROOTDIR.'/system/Conf.php');
+define('DOCUMENT_ROOT',  dirname(__FILE__));
+require_once(DOCUMENT_ROOT.'/system/Utils.php');
+require_once(DOCUMENT_ROOT.'/system/Conf.php');
 try {
     define('ENVIRONMENT',Conf::getServerConfElement('environment'));
 } catch (Exception $e) {
@@ -58,7 +58,7 @@ if (ENVIRONMENT === 'development') {
     ini_set('display_errors', 0);
     ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 }
-ini_set('error_log', ROOTDIR.'/log/php.log');
+ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
 
 // Run
 require_once('init.php');
@@ -73,7 +73,7 @@ WidgetWrapper::getInstance(false);
 WidgetWrapper::destroyInstance();
 if (ENVIRONMENT === 'development') {
    
-    print ' <div id="debug"><div class="carreful"><p>Be carrefull you are actually in devlopment environment</p></div>';
+    print ' <div id="debug"><div class="carreful"><p>Be careful you are actually in development environment</p></div>';
     print '<div id="logs">';
     echo Logger::displayLog();
     print '</div></div>';

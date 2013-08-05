@@ -47,36 +47,36 @@ class Admin extends WidgetBase {
      * Create the dirs
      */
     function createDirs(){
-        if(!file_exists(BASE_PATH.'cache') && !@mkdir(BASE_PATH.'cache')) {
+        if(!file_exists(DOCUMENT_ROOT.'/cache') && !@mkdir(DOCUMENT_ROOT.'/cache')) {
             echo t("Couldn't create directory '%s'.", 'cache');
             return false;
         }
         
-        if(!file_exists(BASE_PATH.'log') && !@mkdir(BASE_PATH.'log')) {
+        if(!file_exists(DOCUMENT_ROOT.'/log') && !@mkdir(DOCUMENT_ROOT.'/log')) {
             echo t("Couldn't create directory '%s'.", 'log');
             return false;
         }
         
-        if(!file_exists(BASE_PATH.'config') && !@mkdir(BASE_PATH.'config')) {
+        if(!file_exists(DOCUMENT_ROOT.'/config') && !@mkdir(DOCUMENT_ROOT.'/config')) {
             echo t("Couldn't create directory '%s'.", 'config');
             return false;
         }
         
-        if(!file_exists(BASE_PATH.'users') && !@mkdir(BASE_PATH.'users')) {
+        if(!file_exists(DOCUMENT_ROOT.'/users') && !@mkdir(DOCUMENT_ROOT.'/users')) {
             echo t("Couldn't create directory '%s'.", 'users');
             return false;
         } else
-            touch(BASE_PATH.'users/index.html');
+            touch(DOCUMENT_ROOT.'/users/index.html');
     }
     
     private function listThemes()
     {
-        $dir = opendir(BASE_PATH.'themes');
+        $dir = opendir(DOCUMENT_ROOT.'/themes');
         $themes = array();
 
         while($theme = readdir($dir)) {
             if(preg_match('/^\.+$/', $theme)
-            || !is_dir(BASE_PATH.'themes/'.$theme)) {
+            || !is_dir(DOCUMENT_ROOT.'/themes/'.$theme)) {
                 continue;
             }
 
@@ -88,7 +88,7 @@ class Admin extends WidgetBase {
     
     private function listLangs()
     {
-        $dir = opendir(BASE_PATH.'locales');
+        $dir = opendir(DOCUMENT_ROOT.'/locales');
         $langs = array('en' => 'English');
         $languages = get_lang_list();
 
@@ -195,7 +195,7 @@ class Admin extends WidgetBase {
     private function prepareAdminComp()
     {
             
-        if($this->testDir(BASE_PATH))
+        if($this->testDir(DOCUMENT_ROOT))
             $this->createDirs();
             
         $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
@@ -231,7 +231,7 @@ class Admin extends WidgetBase {
                     <div class="'.$this->isValid(extension_loaded('SimpleXml')).'">
                         '.t('SimpleXML').'
                     </div>
-                    <div class="'.$this->isValid($this->testDir(BASE_PATH)).'">
+                    <div class="'.$this->isValid($this->testDir(DOCUMENT_ROOT)).'">
                         '.t('Read and write rights for the webserver in Movim\'s root directory').'
                     </div>
                     
