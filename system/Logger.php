@@ -1,9 +1,9 @@
 <?php
 
-if (!defined('ROOTDIR')) {
+if (!defined('DOCUMENT_ROOT')) {
     die('Error 57895');
 }
-if (!is_dir(ROOTDIR)) {
+if (!is_dir(DOCUMENT_ROOT)) {
     die('Error 57896');
 }
 
@@ -104,7 +104,7 @@ class Logs
 
     public function defaultSaveLogs()
     {
-        $this->saveLogs(ROOTDIR . '/log/logger.log');
+        $this->saveLogs(DOCUMENT_ROOT . '/log/logger.log');
 
     }
 

@@ -12,7 +12,7 @@ class Conf
     /* Return the general configuration */
 
     static function getServerConf() {
-        $conf_file = ROOTDIR . self::$conf_path . "/conf.xml";
+        $conf_file = DOCUMENT_ROOT . self::$conf_path . "/conf.xml";
         return self::getConf('server', $conf_file);
     }
 
@@ -88,7 +88,7 @@ class Conf
         }
         
         $xml = $doc->saveXML();
-        file_put_contents(BASE_PATH.self::$conf_path.'/conf.xml', $xml);
+        file_put_contents(DOCUMENT_ROOT.self::$conf_path.'/conf.xml', $xml);
     }
 
     /**
