@@ -27,9 +27,13 @@ class Route extends ControllerBase {
                 'server'        => array('s'),
             );
 
-        if($_SERVER['HTTP_MOD_REWRITE']) {
+        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
             $q = $this->fetch_get('query');
-            $this->find($q);
+            //load data in $_GET variable
+            if (!$this->find($q)) {
+                $this->error404();
+                exit;
+            }
         } else {
             $q = $this->fetch_get('q');
             if(empty($q))
@@ -37,32 +41,31 @@ class Route extends ControllerBase {
         }
     }
     
-    private function find($q) {
+    protected function find($q) {
         // We decompose the URL
         $request = explode('/', $q);
                 
         if(empty($q)) {
             $_GET['q'] = 'main';
             return true;
-        }
-        
-        // And we search a pattern for the current page
-        elseif(isset($this->_routes[$request[0]])) {
+        } elseif (isset($this->_routes[$request[0]])) {
+            // And we search a pattern for the current page
             $route = $this->_routes[$request[0]];
             
+            
             $_GET['q'] = $request[0];
-            
             array_shift($request);
-            
             // If we find it we see if it's a simple page (with no GET)
-            if($route != false) {
+            //check if something else to get...
+            if(count($request) ) {
                 $i = 0;
                 foreach($route as $key) {
-                    $_GET[$key] = $request[$i];
+                    if (isset($request[$i])) {
+                        $_GET[$key] = $request[$i];
+                    } 
                     $i++;
                 }
             }
-            
             return true;
         } else
             return false;
@@ -77,7 +80,7 @@ class Route extends ControllerBase {
                 Logger::log(t('Route error, please set all the parameters for the page %s', $page));
             else {
                 //We construct a classic URL if the rewriting is disabled
-                if(!$_SERVER['HTTP_MOD_REWRITE']) {
+                if(!isset($_SERVER['HTTP_MOD_REWRITE']) && !$_SERVER['HTTP_MOD_REWRITE']) {
                     $uri = BASE_URI.'?q='.$page;
                     
                     if($params != false && is_array($params)) {

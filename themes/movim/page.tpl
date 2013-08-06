@@ -15,7 +15,7 @@
         var BASE_URI = '<?php echo BASE_URI; ?>';
         var ERROR_URI = '<?php echo substr_replace(Route::urlize('disconnect', 'err'), '', -3); ?>';
         var PAGE_KEY_URI = '<?php 
-            if(!$_SERVER['HTTP_MOD_REWRITE'])
+            if(isset($_SERVER['HTTP_MOD_REWRITE']) && !$_SERVER['HTTP_MOD_REWRITE'])
                 echo '?q='; ?>'
     </script>
     <?php

@@ -18,7 +18,7 @@
 class ControllerMain extends ControllerBase
 {
     protected $default_handler = 'main';
-    private $page;
+    protected $page;
 
     function __construct()
     {
@@ -32,6 +32,7 @@ class ControllerMain extends ControllerBase
 
     function main()
     {
+        
         $user = new User();
 
         if(!$user->isLogged()) {
@@ -51,6 +52,7 @@ class ControllerMain extends ControllerBase
 
             $this->page->setContent($content->build('main.tpl'));
             echo $this->page->build('page.tpl');
+            
         }
     }
     
@@ -361,11 +363,15 @@ class ControllerMain extends ControllerBase
         error_reporting(0); 
         
         $this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
+        
         $this->page->menuAddLink(t('Home'), 'main', true);
         $this->page->menuAddLink(t('About'), 'about');
-
+        
         $content = new TplPageBuilder($user);
+   
+        
         $this->page->setContent($content->build('login.tpl'));
+        
         echo $this->page->build('page.tpl');
     }
     
