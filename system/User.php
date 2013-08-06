@@ -31,7 +31,7 @@ class User {
 
             $this->sizelimit = (int)Conf::getServerConfElement('sizeLimit');
 
-            $this->userdir = BASE_PATH.'users/'.$this->username.'/';
+            $this->userdir = DOCUMENT_ROOT.'/users/'.$this->username.'/';
             $this->useruri = BASE_URI.'users/'.$this->username.'/';
         }
     }

@@ -146,7 +146,7 @@ function load_language_auto()
         if($key == 'en') {
             load_language(Conf::getServerConfElement('defLang'));
             $langNotFound = false;
-        } elseif(file_exists(BASE_PATH . '/locales/' . $key . '.po')) {
+        } elseif(file_exists(DOCUMENT_ROOT . '/locales/' . $key . '.po')) {
             load_language($key);
             $langNotFound = false;
         }
@@ -166,11 +166,11 @@ function load_language($lang)
     }
 
     // Here we load the compiled language file
-    if(file_exists(BASE_PATH . '/cache/locales/' . $lang . '.php')) {
+    if(file_exists(DOCUMENT_ROOT . '/cache/locales/' . $lang . '.php')) {
         // And we set our gloabl $translations
-        require_once(BASE_PATH . '/cache/locales/' . $lang . '.php');
+        require_once(DOCUMENT_ROOT . '/cache/locales/' . $lang . '.php');
     } else
-        $translations = parse_lang_file(BASE_PATH . '/locales/' . $lang . '.po');
+        $translations = parse_lang_file(DOCUMENT_ROOT . '/locales/' . $lang . '.po');
 
     $language = $lang;
 
@@ -217,7 +217,7 @@ function load_extra_lang($directory)
 
 function load_lang_array() {
     $lang_list = get_lang_list();
-    $dir = scandir(BASE_PATH . '/locales/');
+    $dir = scandir(DOCUMENT_ROOT . '/locales/');
     $po = array();
     foreach($dir as $files) {
         $explode = explode('.', $files);

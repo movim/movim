@@ -35,7 +35,11 @@ class Login extends WidgetBase {
             loginButtonSet(\''.t('Connecting...').'\', true); 
             this.onclick=null;');
             
-        $this->view->assign('warnings', $this->displayWarning($_GET['err'], true));
+        if(isset($_GET['err'])) {
+            $this->view->assign('warnings', $this->displayWarning($_GET['err'], true));
+        } else {
+            $this->view->assign('warnings', '');
+        }
         
         $pop = 0;
         
@@ -52,7 +56,6 @@ class Login extends WidgetBase {
         $this->view->assign('facebook',
             t('You can login with Facebook (chat only) using %s your.id@chat.facebook.com %s and your password',
                 '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
-                    
     }
 
     function onConfig(array $data)

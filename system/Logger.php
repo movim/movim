@@ -1,70 +1,183 @@
 <?php
 
+if (!defined('DOCUMENT_ROOT')) {
+    die('Error 57895');
+}
+if (!is_dir(DOCUMENT_ROOT)) {
+    die('Error 57896');
+}
+
 /**
  * \brief Movim's logger class.
  *
  * Static class to be invoked for every debug log purpose in Movim.
  */
-class Logger
+class Logs
 {
-    /*public static $logfilename = "log/movim.log";
 
-    // Predefined log levels
-    const LOGLEVEL_CRITICAL = 0;
-    const LOGLEVEL_ERROR    = 1;
-    const LOGLEVEL_WARNING  = 2;
-    const LOGLEVEL_INFO     = 3;
-    const LOGLEVEL_STANDARD = 4;
-    const LOGLEVEL_FINE     = 5;
-    const LOGLEVEL_FINER    = 6;
-    const LOGLEVEL_FINEST   = 7;
+    static $defined;
 
-    public static function log($level, $message) {
-        $server_loglevel = Conf::getServerConfElement('logLevel');
-
-        if($server_loglevel >= $level) {
-            if(!($lfp = fopen(BASE_PATH . self::$logfilename, 'a'))) {
-                throw new MovimException(t("Cannot open log file '%s'", self::$logfilename));
-            }
-
-            fwrite($lfp, date('H:i:s').' '.$message."\n");
-            fclose($lfp);
+    protected $logs = array();
+    public function __construct()
+    {
+        if (self::$defined === true) {
+            die('standalone');
         }
-    }*/
-    
-    private static $logs = array();
-    
-    public static function log($message) 
-    {        
-        self::addLog($message);
-        
-        openlog('movim', LOG_NDELAY, LOG_USER);
-        $errlines = explode("\n",$message);
-        foreach ($errlines as $txt) { syslog(LOG_DEBUG, trim($txt)); } 
-        closelog();
+        self::$defined = true;
+
     }
+
     
-    public static function addLog($message)
+
+    public function log($message)
     {
-        array_push(self::$logs,$message);
+        $this->addLog($message);
+
     }
-    
-    public static function getLog()
+
+    public function addLog($message)
     {
-        return self::$logs;
+        if (!is_string($message)) {
+            $message = var_export($message, true);
+        }
+        array_push($this->logs, '['.date('r').'] '.$message);
+
     }
-    
-    public static function displayLog()
+
+    /**
+     * getter logs
+     * @return array
+     */
+    public function getLog()
     {
-        $logs = self::getLog();
+        return $this->logs;
+
+    }
+
+    public function displayLog()
+    {
+        $logs = $this->getLog();
         $html = '';
-        if(!empty($logs)) {           
+        if (!empty($logs)) {
             $html = '<div class="message error">';
-            foreach($logs as $l)
-                $html .= $l.'<br />';
+            foreach ($logs as $l) $html .= $l . '<br />';
             $html .= '</div>';
         }
-        
-        return $html;
+        print $html;
+
     }
+
+    public function getInlineLogs()
+    {
+        $logs = $this->getLog();
+        $txt = '';
+        foreach ($logs as $l) {
+            if (trim($l)) {
+                $txt .= $l . "\n";
+            }
+        }
+        return $txt;
+
+    }
+
+    public function saveLogs($file)
+    {
+        if ($this->getInlineLogs() !== '') {
+            try {
+                $f = fopen($file, 'a');
+                if ($f === false) {
+                    throw new \Exception('Canno\'t open file ' . htmlentities($file));
+                }
+                if (false === fwrite($f, $this->getInlineLogs())) {
+                    fclose($f);
+                    throw new \Exception('Canno\'t write to file ' . htmlentities($file));
+                }
+                fclose($f);
+                $this->clearLogs();
+            } catch (\Exception $e) {
+                syslog(LOG_ERR, $e->getMessage());
+                die('An error happened'); //
+            }
+        }
+
+    }
+
+    public function defaultSaveLogs()
+    {
+        $this->saveLogs(DOCUMENT_ROOT . '/log/logger.log');
+
+    }
+
+    public function clearLogs()
+    {
+        $this->logs = array();
+
+    }
+    
+    static function errorLevel($intval)
+    {
+        $errorLevels = array(
+            2047 => 'E_ALL',
+            1024 => 'E_USER_NOTICE',
+            512 => 'E_USER_WARNING',
+            256 => 'E_USER_ERROR',
+            128 => 'E_COMPILE_WARNING',
+            64 => 'E_COMPILE_ERROR',
+            32 => 'E_CORE_WARNING',
+            16 => 'E_CORE_ERROR',
+            8 => 'E_NOTICE',
+            4 => 'E_PARSE',
+            2 => 'E_WARNING',
+            1 => 'E_ERROR');
+        $result = '';
+        foreach($errorLevels as $number => $name)
+        {
+            if (($intval & $number) == $number) {
+                $result .= ($result != '' ? '&' : '').$name; }
+        }
+        return $result;
+    }
+
+    function __destruct()
+    {
+        $this->defaultSaveLogs();
+
+    }
+
+}
+function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcontext=null ) 
+{
+    Logger::addLog('['.Logs::errorLevel($errno).'] '.$errstr."\n".var_export(array('errfile'=>$errfile,'errline'=>$errline),true));
+    return false;
+}
+abstract class Logger
+{
+
+    static $logs;
+
+    
+    static function log($msg)
+    {
+        self::addLog($msg);
+
+    }
+
+    static function addLog($msg)
+    {
+        if (!isset(self::$logs)) {
+            self::$logs = new Logs();
+        }
+        self::$logs->addLog($msg);
+
+    }
+    static function displayLog()
+    {
+        if (!isset(self::$logs)) {
+            self::$logs = new Logs();
+        }
+        self::$logs->displayLog();
+
+
+    }
+
 }
