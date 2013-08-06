@@ -603,6 +603,7 @@ function getMood() {
  */
 function getLocalTimezone()
 {
+    date_default_timezone_set('UTC');
     $iTime = time();
     $arr = localtime($iTime);
     $arr[5] += 1900;
