@@ -15,15 +15,15 @@ function createThumbnailPicture($path, $filename) {
 }
 
 function createThumbnails($jid, $photobin) {    
-    unlink(BASE_PATH.'cache/'.$jid.'_l.jpg');
-    unlink(BASE_PATH.'cache/'.$jid.'_m.jpg');
-    unlink(BASE_PATH.'cache/'.$jid.'_s.jpg');
-    unlink(BASE_PATH.'cache/'.$jid.'_xs.jpg');
-    createThumbnailSize(base64_decode($photobin), 200, BASE_PATH.'cache/'.$jid.'_l.jpg');
-    createThumbnailSize(base64_decode($photobin), 120, BASE_PATH.'cache/'.$jid.'_m.jpg');
-    createThumbnailSize(base64_decode($photobin), 50, BASE_PATH.'cache/'.$jid.'_s.jpg');
-    createThumbnailSize(base64_decode($photobin), 28, BASE_PATH.'cache/'.$jid.'_xs.jpg');
-    createThumbnailSize(base64_decode($photobin), 24, BASE_PATH.'cache/'.$jid.'_xxs.jpg');
+    unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_l.jpg');
+    unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_m.jpg');
+    unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_s.jpg');
+    unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_xs.jpg');
+    createThumbnailSize(base64_decode($photobin), 200, DOCUMENT_ROOT.'/cache/'.$jid.'_l.jpg');
+    createThumbnailSize(base64_decode($photobin), 120, DOCUMENT_ROOT.'/cache/'.$jid.'_m.jpg');
+    createThumbnailSize(base64_decode($photobin), 50, DOCUMENT_ROOT.'/cache/'.$jid.'_s.jpg');
+    createThumbnailSize(base64_decode($photobin), 28, DOCUMENT_ROOT.'/cache/'.$jid.'_xs.jpg');
+    createThumbnailSize(base64_decode($photobin), 24, DOCUMENT_ROOT.'/cache/'.$jid.'_xxs.jpg');
 }
 
 function createThumbnailSize($photobin, $size, $path) {

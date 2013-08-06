@@ -37,14 +37,34 @@
  * events-based API.
  */
 
-ini_set('log_errors', 0);
-ini_set('display_errors', 1);
-ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
+/**
+* BOOTSTRAP
+**/
+define('DOCUMENT_ROOT',  dirname(__FILE__));
+require_once(DOCUMENT_ROOT.'/system/Utils.php');
+require_once(DOCUMENT_ROOT.'/system/Conf.php');
+try {
+    define('ENVIRONMENT',Conf::getServerConfElement('environment'));
+} catch (Exception $e) {
+//    define('ENVIRONMENT','production');//default environment is production
+}
+if (ENVIRONMENT === 'development') {
+    ini_set('log_errors', 1);
+    ini_set('display_errors', 0);
+    ini_set('error_reporting', E_ALL );
+    
+} else {
+    ini_set('log_errors', 1);
+    ini_set('display_errors', 0);
+    ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
+}
+ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
 
 // Run
-require('init.php');
+require_once('init.php');
 
 $polling = false;
+
 $rqst = new ControllerMain();
 $rqst->handle();
 
@@ -52,7 +72,10 @@ WidgetWrapper::getInstance(false);
 
 // Closing stuff
 WidgetWrapper::destroyInstance();
-
-echo Logger::displayLog();
-
-?>
+if (ENVIRONMENT === 'development') {
+   
+    print ' <div id="debug"><div class="carreful"><p>Be careful you are actually in development environment</p></div>';
+    print '<div id="logs">';
+    echo Logger::displayLog();
+    print '</div></div>';
+}

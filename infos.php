@@ -17,7 +17,31 @@
  */
 
 // We load the Movim kernel
-require("init.php");
+/**
+* BOOTSTRAP
+**/
+define('DOCUMENT_ROOT',  dirname(__FILE__));
+require_once(DOCUMENT_ROOT.'/system/Utils.php');
+require_once(DOCUMENT_ROOT.'/system/Conf.php');
+try {
+    define('ENVIRONMENT',Conf::getServerConfElement('environment'));
+} catch (Exception $e) {
+    define('ENVIRONMENT','production');//default environment is production
+}
+if (ENVIRONMENT === 'development') {
+    ini_set('log_errors', 0);
+    ini_set('display_errors', 1);
+    ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
+} else {
+    ini_set('log_errors', 1);
+    ini_set('display_errors', 0);
+    ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
+}
+ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
+
+// Run
+require_once('init.php');
+
   
 // We get the informations
 $pop = 0;
