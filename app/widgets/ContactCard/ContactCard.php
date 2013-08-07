@@ -37,6 +37,8 @@ class ContactCard extends WidgetCommon
     {
         $gender = getGender();
         $marital = getMarital();
+        
+        $html = '';
 
         $html .= '
             <form name="vcard" id="vcardform"><br />
@@ -102,7 +104,7 @@ class ContactCard extends WidgetCommon
                             <legend>'.t('Geographic Position').'</legend>';
                             
                 if($this->testIsSet($contact->adrlocality)) {
-                    $locality .= '<div class="element simple">
+                    $locality = '<div class="element simple">
                                 <label for="desc">'.t('Locality').'</label>
                                 <span>'.$contact->adrlocality;
                     if($contact->adrpostalcode != 0)

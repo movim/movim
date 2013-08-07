@@ -106,6 +106,8 @@ class Vcard extends WidgetBase
         $me = $cd->get($this->user->getLogin());
 
         $submit = $this->genCallAjax('ajaxVcardSubmit', "movim_form_to_json('vcard')");
+            
+        $html = '';
 
         if($me == null) { 
         ?>
