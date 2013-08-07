@@ -27,6 +27,10 @@ class WidgetCommon extends WidgetBase {
     }
     
     protected function printPost($post, $comments = false, $public = false) {
+        // Initialize the variables
+        $class = $title = $access = $flagcolor = $group =
+        $tags = $toolbox = $place = $recycle = '';
+        
         if($post->title)
             $title = '
                 <span>
@@ -246,6 +250,8 @@ class WidgetCommon extends WidgetBase {
         $id = 0;
         
         $posfound = false;
+        
+        $bound = '';
         
         foreach($posts as $post) {
             if($post->getPlace() != false) {

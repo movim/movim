@@ -45,7 +45,7 @@ class ContactSummary extends WidgetCommon
         $marital = getMarital();
         
         // Contact avatar
-        $html .= '
+        $html = '
             <img class="avatar" src="'.$contact->getPhoto('l').'"/>
             ';
             

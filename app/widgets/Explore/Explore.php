@@ -79,6 +79,8 @@ class Explore extends WidgetCommon {
    
                     <div class="clear"></div>
                 </div>';*/
+        $html = '';
+                
         $cd = new \modl\ContactDAO();
         $users = array_reverse($cd->getAllPublic());
         
