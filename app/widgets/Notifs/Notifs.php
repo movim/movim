@@ -126,7 +126,7 @@ class Notifs extends WidgetCommon
     {
         $notifsnum = 0;
               
-        $html .= '
+        $html = '
             <div id="notifslist">
                 <!--<a 
                     class="button icon color green refresh" 
