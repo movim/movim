@@ -89,6 +89,8 @@ class Profile extends WidgetCommon
         
         if(isset($contact)) {
             $me = $contact;
+            
+            $html = '';
 
             // My avatar
             $html .= '

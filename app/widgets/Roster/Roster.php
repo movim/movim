@@ -105,7 +105,7 @@ class Roster extends WidgetBase
 
         $html .= '<li
                 class="';
-                    if($contact->jid == $_GET['f'])
+                    if(isset($_GET['f']) && $contact->jid == $_GET['f'])
                         $html .= 'active ';
                         
                     if(isset($contact->last) && $contact->last > 60)
