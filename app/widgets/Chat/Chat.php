@@ -378,6 +378,8 @@ class Chat extends WidgetBase
     {
         $rc = new \modl\ContactDAO();
         $contacts = $rc->getRosterChat();
+        
+        $html = '';
 
         if(isset($contacts)) {
             foreach($contacts as $contact) {
