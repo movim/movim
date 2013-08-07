@@ -66,6 +66,8 @@ class Wall extends WidgetCommon
 
         $next = $start + 10;
         
+        $html = '';
+        
         if(count($pl) > 0 && $htmlmessages != false) {
             if($start == -1) {
                 $html .= $this->printMap($pl);
