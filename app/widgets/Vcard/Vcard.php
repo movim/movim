@@ -326,8 +326,8 @@ class Vcard extends WidgetBase
                         </div>
                         <label>'.t('Is this profile public ?').'</label>
                           <div class="checkbox">
-                            <input type="checkbox" id="checkbox" name="public" '.$checked.'/>
-                            <label for="checkbox"></label>
+                            <input type="checkbox" id="public" name="public" '.$checked.'/>
+                            <label for="public"></label>
                           </div>
                       </div>';
                   
