@@ -79,11 +79,20 @@ class ContactCard extends WidgetCommon
                         <span>'.$marital[$contact->marital].'</span>
                       </div>';
          
-            if($this->testIsSet($contact->email))
-            $html .= '<div class="element simple">
-                        <label for="url">'.t('Email').'</label>
-                        <a target="_blank" href="mailto:'.$contact->email.'">'.$contact->email.'</a>
-                      </div>';
+            if($this->testIsSet($contact->email)) {
+                if(filter_var($contact->email, FILTER_VALIDATE_EMAIL)) {
+                    $html .= '<div class="element simple">
+                                <label for="url">'.t('Email').'</label>
+                                <a target="_blank" href="mailto:'.$contact->email.'">'.$contact->email.'</a>
+                              </div>';
+                } else {
+                    $html .= '<div class="element simple">
+                                <label for="url">'.t('Email').'</label>
+                                '.$contact->email.'
+                              </div>';                    
+                }
+            }
+                      
             if($this->testIsSet($contact->url)) {
                 if(filter_var($contact->url, FILTER_VALIDATE_URL)) {
                     $html .= '<div class="element simple">
