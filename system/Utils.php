@@ -1,5 +1,5 @@
 <?php
-namespace system\Utils;
+
 /**
  * @file Utils.php
  * This file is part of PROJECT.
@@ -130,7 +130,7 @@ function prepareString($string) {
     );
 
     //what the fuck it is ???!!!
-    $string = preg_replace_callback(
+    /*$string = preg_replace_callback(
             '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/ix', function ($match) {
                 //print '<br />preg[3]';\system\Debug::dump($match);
                 if (isset($match[2]) && strlen($match[2])>0) {
@@ -139,12 +139,12 @@ function prepareString($string) {
                     return $match[2];
                 }
             }, ' ' . $string
-    );
+    );*/
 
     //remove all scripts
     $string = preg_replace_callback(
             '#<[^>]*script[^>]*>#is', function ($match) {
-        return '';
+                return '';
             }, ' ' . $string
     );
 
