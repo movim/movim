@@ -28,7 +28,7 @@ class WidgetCommon extends WidgetBase {
     
     protected function printPost($post, $comments = false, $public = false) {
         // Initialize the variables
-        $class = $title = $access = $flagcolor = $group =
+        $class = $title = $access = $flagcolor = $group = $c =
         $tags = $toolbox = $place = $recycle = '';
         
         if($post->title)

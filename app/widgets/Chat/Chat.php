@@ -403,6 +403,8 @@ class Chat extends WidgetBase
         $md = new \modl\MessageDAO();
         $messages = $md->getContact($jid, 0, 10);
         
+        $messageshtml = '';
+        
         if(!empty($messages)) {
             $day = '';
             foreach($messages as $m) {
@@ -440,6 +442,9 @@ class Chat extends WidgetBase
         if($state == 1) {
             $mucview->assign('tabstyle', 'style="display: none;"');            
             $mucview->assign('panelstyle', 'style="display: block;"');
+        } else {
+            $mucview->assign('tabstyle', '');            
+            $mucview->assign('panelstyle', '');   
         }
 
         $html = $mucview->draw('_chat_muc', true);
@@ -477,6 +482,8 @@ class Chat extends WidgetBase
     {
         $md = new \modl\MessageDAO();
         $messages = $md->getContact(echapJid($contact->jid), 0, 10);
+        
+        $messageshtml = '';
 
         if(!empty($messages)) {
             $day = '';
@@ -548,7 +555,7 @@ class Chat extends WidgetBase
                     </div>
                 </div>
                 
-                <div class="tab '.$tabclass.'" '.$tabstyle.' onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'").' showTalk(this);">
+                <div class="tab" '.$tabstyle.' onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'").' showTalk(this);">
                     <div class="name">
                         <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.$contact->getTrueName().'
                     </div>
