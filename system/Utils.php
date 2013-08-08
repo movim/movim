@@ -85,9 +85,11 @@ function prepareString($string) {
     
     $string = str_replace('<a ', '<a target="_blank" ', $string);
     $string = str_replace('<iframe', '', $string);
-    //$string = preg_replace('/<iframe.*?\/iframe>/i','', $string);
     
-    $string = preg_replace(
+    /*
+     * OLD VERSION preg_replace with EVAL ( :o ! )
+     * 
+       $string = preg_replace(
         array(
             '/(^|\s|>)(www.[^<> \n\r]+)/iex',
             '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/iex',
@@ -101,8 +103,52 @@ function prepareString($string) {
             ''
         ),  
         ' '.$string
-    );
+    );*/
     
+    //replace begin by www
+    $string = preg_replace_callback(
+            '/(^|\s|>)(www.[^<> \n\r]+)/ix', function ($match) {
+                //print '<br />preg[1]';\system\Debug::dump($match);
+                if (strlen($match[2])>0) {
+                    return stripslashes($match[1].'<a href=\"http://'.$match[2].'\" target=\"_blank\">'.$match[2].'</a>');
+                } else {
+                    return $match[2];
+                }
+            }, ' ' . $string
+    );
+
+    //replace  begin by http - https (before www)
+    $string = preg_replace_callback(
+            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\'])((?:https?):\/\/([^<> \n\r]+)))/ix', function ($match) {
+                //print '<br />preg[2]';\system\Debug::dump($match);
+                if (isset($match[2]) && strlen($match[2])>0) {
+                    return stripslashes($match[1].'<a href=\"'.$match[2].'\" target=\"_blank\">'.$match[3].'</a>');
+                } else {
+                    return $match[0];
+                }
+            }, ' ' . $string
+    );
+
+    //what the fuck it is ???!!!
+    /*$string = preg_replace_callback(
+            '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/ix', function ($match) {
+                //print '<br />preg[3]';\system\Debug::dump($match);
+                if (isset($match[2]) && strlen($match[2])>0) {
+                    return stripslashes($match[1].'<a href=\"http://'.$match[2].'\" target=\"_blank\">'.$match[2].'</a>');
+                } else {
+                    return $match[2];
+                }
+            }, ' ' . $string
+    );*/
+
+    //remove all scripts
+    $string = preg_replace_callback(
+            '#<[^>]*script[^>]*>#is', function ($match) {
+                return '';
+            }, ' ' . $string
+    );
+
+   
     // We add some smileys...    
     $conf = new Conf();
     $theme = $conf->getServerConfElement('theme');
@@ -114,7 +160,6 @@ function prepareString($string) {
         $string = preg_replace('/(^|[ ])('.$key.')/',  $replace, $string);
     }
     
-    //return '';
     return trim($string);
 }
 
