@@ -84,7 +84,7 @@ function prepareString($string) {
         );
     
     $string = str_replace('<a ', '<a target="_blank" ', $string);
-    $string = str_replace('<iframe', '', $string);
+
     
     /*
      * OLD VERSION preg_replace with EVAL ( :o ! )
@@ -143,13 +143,19 @@ function prepareString($string) {
 
     //remove all scripts
     $string = preg_replace_callback(
-            '#<[^>]*script[^>]*>#is', function ($match) {
+            '#<[/]?script[^>]*>#is', function ($match) {
+                return '';
+            }, ' ' . $string
+    );
+    //remove all iframe
+    $string = preg_replace_callback(
+            '#<[/]?iframe[^>]*>#is', function ($match) {
                 return '';
             }, ' ' . $string
     );
 
    
-    // We add some smileys...    
+    // We add some smileys...
     $conf = new Conf();
     $theme = $conf->getServerConfElement('theme');
     
