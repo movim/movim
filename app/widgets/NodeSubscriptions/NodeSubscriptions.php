@@ -35,7 +35,7 @@ class NodeSubscriptions extends WidgetBase
             $html .= '
                 <div class="element">
                     <label for="'.$item['jid'].'_'.$item['subid'].'">
-                        <a href="?q=friend&f='.$item['jid'].'">'.$item['jid'].'</a>
+                        <a href="'.Route::urlize('friend', $item['jid']).'">'.$item['jid'].'</a>
                     </label>
                     <div class="select">
                         <select name="'.$item['jid'].'_'.$item['subid'].'">';

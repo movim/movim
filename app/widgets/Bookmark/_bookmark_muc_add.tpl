@@ -16,8 +16,8 @@
             <div class="element large mini">
                 <label>{$c->t('Do you want do join automaticaly this Chat Room ?')}</label>
                 <div class="checkbox">
-                    <input type="checkbox" id="checkbox" name="autojoin"/>
-                    <label for="checkbox"></label>
+                    <input type="checkbox" id="autojoin" name="autojoin"/>
+                    <label for="autojoin"></label>
                 </div>
             </div>
         </fieldset>

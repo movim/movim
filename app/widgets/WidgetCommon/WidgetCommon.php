@@ -28,7 +28,7 @@ class WidgetCommon extends WidgetBase {
     
     protected function printPost($post, $comments = false, $public = false) {
         // Initialize the variables
-        $class = $title = $access = $flagcolor = $group =
+        $class = $title = $access = $flagcolor = $group = $c =
         $tags = $toolbox = $place = $recycle = '';
         
         if($post->title)
@@ -92,13 +92,15 @@ class WidgetCommon extends WidgetBase {
         if($post->tags)
             $tags = $this->printTags($post->tags);
                 
-        if($enc)
+        if(isset($enc))
             $enc = '
                 <div class="enclosure">'.
                     $enc.
                 '
                     <div class="clear"></div>
                 </div>';
+        else
+            $enc = '';
 
         $content = prepareString(html_entity_decode($post->content));
         
