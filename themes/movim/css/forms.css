@@ -170,6 +170,10 @@ legend {
 
 /* Checkbox element */
 
+.element .checkbox > input[type="checkbox"] {
+    display: none;
+}
+
 .element .checkbox {
 	width: 6em;
 
@@ -214,7 +218,7 @@ legend {
 	font-weight: bold;
 }
 
-.element .checkbox label[for=checkbox] {
+.element .checkbox > input[type="checkbox"] + label {
 	display: block;
 	width: 3.3em;
 	height: 2em;
@@ -232,7 +236,7 @@ legend {
     background-color: white;
 }
 
-.element .checkbox input[type=checkbox]:checked + label {
+.element .checkbox > input[type="checkbox"]:checked + label {
 	left: 2.8em;
     border-right: none;
 }
