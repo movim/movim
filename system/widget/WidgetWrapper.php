@@ -200,13 +200,17 @@ class WidgetWrapper
         // We only load the interesting widgets
         if(isset($params)) {
             $fct = $params[0]['type'];
-            $widgets = $this->registered_events[$fct];
-        } else
+            if (isset($this->registered_events[$fct])) {
+                $widgets = $this->registered_events[$fct];
+            }
+        } else {
             $widgets = $this->get_loaded_widgets();
-
-        if(is_array($widgets))
-            foreach($widgets as $widget)
+        }
+        if(isset($widgets) && is_array($widgets)) {
+            foreach($widgets as $widget) {
                 $this->run_widget($widget, $method, $params);
+            }
+        }
     }
     
     function iterateAll($method, array $params = NULL) {
