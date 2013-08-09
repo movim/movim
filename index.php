@@ -60,6 +60,28 @@ if (ENVIRONMENT === 'development') {
 }
 ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
 
+/**
+ * Check files permission
+ */
+$listWritableFile = array(
+    DOCUMENT_ROOT.'/log/logger.log',
+    DOCUMENT_ROOT.'/log/php.log',
+    DOCUMENT_ROOT.'/cache/test.tmp',
+);
+$errors=array();
+foreach($listWritableFile as $fileName) {
+    if (!file_exists($fileName)) {
+        if (touch($fileName) !== true) {
+            $errors[] = 'Impossible de créer le fichier '.$fileName.': vérifiez les permissions';
+        } else if (is_writable($fileName) !== true) {
+            $errors[] = 'Le systeme n\'a pas les droits d\'écriture sur le fichier '.$fileName.': vérifiez les permissions';
+        }
+    }
+}
+if (count($errors)) {
+    die('<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Movim - Welcome to Movim</title></head><body>'.var_export($errors,true));
+}
+
 // Run
 require_once('init.php');
 
