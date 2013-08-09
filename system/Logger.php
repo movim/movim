@@ -95,8 +95,14 @@ class Logs
                 fclose($f);
                 $this->clearLogs();
             } catch (\Exception $e) {
+                
+                //var_export($e);
+                if (ENVIRONMENT === 'development') {
+                    die(\system\Debug::getDump($e, 3, true));
+                } 
                 syslog(LOG_ERR, $e->getMessage());
                 die('An error happened'); //
+                
             }
         }
 
