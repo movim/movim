@@ -52,7 +52,9 @@ class ContactSummary extends WidgetCommon
         $presencetxt = getPresencesTxt();
             
         // Contact general infos
-        $html .= '
+        
+        if(isset($contact->presence))
+            $html .= '
                 <h1 class="'.$presencetxt[$contact->presence].'">'.$contact->getTrueName().'</h1>';
 
             if($this->testIsSet($contact->name))
@@ -63,7 +65,7 @@ class ContactSummary extends WidgetCommon
             if($this->testIsSet($contact->url))
                 $html .= '<br /><a target="_blank" href="'.$contact->url.'">'.$contact->url.'</a>';
           
-        if($this->testIsSet($contact->status)) {
+        if(isset($contact->status)) {
             $html .= '
                 <div class="textbubble">
                     '.prepareString($contact->status).'
