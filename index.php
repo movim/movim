@@ -73,9 +73,9 @@ foreach($listWritableFile as $fileName) {
     if (!file_exists($fileName)) {
         if (touch($fileName) !== true) {
             $errors[] = 'Impossible de créer le fichier '.$fileName.': vérifiez les permissions';
-        } else if (is_writable($fileName) !== true) {
-            $errors[] = 'Le systeme n\'a pas les droits d\'écriture sur le fichier '.$fileName.': vérifiez les permissions';
-        }
+        } 
+    } else if (is_writable($fileName) !== true) {
+        $errors[] = 'Le systeme n\'a pas les droits d\'écriture sur le fichier '.$fileName.': vérifiez les permissions';
     }
 }
 if (count($errors)) {
