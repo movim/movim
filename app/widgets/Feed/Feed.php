@@ -137,9 +137,11 @@ class Feed extends WidgetCommon {
                             t('Get older posts').'
                     </div>
                 </div>';
-        }   
+        } else {
+            return '';
+        }
         
-        return $nexthtml;    
+        return $nexthtml;
     }
     
     function prepareFeed($start) {

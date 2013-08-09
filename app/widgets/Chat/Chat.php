@@ -497,10 +497,12 @@ class Chat extends WidgetBase
         }
         
         $style = '';
+        $panelstyle='';
+        $tabstyle ='';
         if($contact->chaton == 2) {
-            $tabstyle = ' style="display: none;" ';            
+            $tabstyle = ' style="display: none;" ';
             $panelstyle = ' style="display: block;" ';
-        }
+        } 
 
         $html = '
             <div class="chat" 
