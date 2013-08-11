@@ -4,13 +4,11 @@ function createTabs() {
     
     // We create the list
     var html = '';
-	//'<li class="on" onclick="changeTab(this);"><a href="#'+tabs[0].id+'">' + tabs[0].title +  '</a></li>';
     for (var i=0; i<tabs.length; i++){
 		addclass = '';
 		if(document.URL.search(tabs[i].id)>-1)
 			addclass = 'class="on"';
-        html += '<li ' + addclass + ' onclick="changeTab(this, \''+tabs[i].id+'\');"> <a href="#'+tabs[i].id+'" style="display: block; height:100%; width:100%;">' + tabs[i].title + '</a></li>';
-        //tabs[i].style.display = "none";
+        html += '<li ' + addclass + ' onclick="changeTab(this, \'' + tabs[i].id + '\');"> <a href="#'+tabs[i].id+'">' + tabs[i].title + '</a></li>';
     }
 	
     
@@ -20,8 +18,11 @@ function createTabs() {
     // We insert the list
     document.querySelector('#navtabs').innerHTML = html;
 	
+	//if no tab is active, activate the first one
 	if(document.querySelector(".on") == null){
-		document.querySelector('#navtabs li').click();
+		start = document.querySelector('.tabelem').id;		
+		window.location = "#"+start;
+		document.querySelector('#navtabs li').className = 'on';
 	}
 }
 
@@ -29,27 +30,6 @@ movim_add_onload(function()
 {
     createTabs();
 });
-
-/*function changeTab(a, n) {
-    // We grab the tabs list
-    var navtabs = document.querySelector('#navtabs');
-    // We clean the class of the li
-    for (var j=0; j<navtabs.childNodes.length; j++) {
-        navtabs.childNodes[j].className = '';
-    }
-    
-    // We add the "on" class to the selected li
-    a.className = 'on';
-    
-    // We hide all the div
-    var tabs = document.querySelectorAll('.tabelem');
-    for (var i=0; i<tabs.length; i++){
-        tabs[i].style.display = "none";
-    }
-    // We show the selected div
-    var tabOn = document.querySelector('#'+n);
-    tabOn.style.display = "block"; 
-}*/
 
 function changeTab(current, n){
     // We grab the tabs list
@@ -69,5 +49,5 @@ function changeTab(current, n){
     }
     // We show the selected div
     var tabOn = document.querySelector('#'+n);
-    tabOn.style.display = "block"; 
+    tabOn.style.display = "block";
 }
