@@ -6,7 +6,7 @@
 
     </div>
     <div id="center" >
-		<div class="fixed_block" style="position: fixed; top: 3em; background-color: white; width: 880px; z-index:10">
+		<div class="fixed_block" style="position: fixed; background-color: white; width: 880px; z-index:10">
 			<h1><?php echo t('Administration Panel'); ?></h1>
 			<?php $this->widget('Tabs');?>
 		</div>
