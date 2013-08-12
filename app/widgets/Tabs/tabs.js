@@ -2,13 +2,15 @@ function createTabs() {
     // We search all the div with "tab" class
     var tabs = document.querySelectorAll('.tabelem');
     
+    var current = null;
     // We create the list
     var html = '';
     for (var i=0; i<tabs.length; i++){
-		addclass = '';
 		if(document.URL.search(tabs[i].id)>-1)
-			addclass = 'class="on"';
-        html += '<li ' + addclass + ' onclick="changeTab(this, \'' + tabs[i].id + '\');"> <a href="#'+tabs[i].id+'">' + tabs[i].title + '</a></li>';
+			current = tabs[i].id;
+        html += '<li class="' + tabs[i].id + '" onclick="changeTab(this, \'' + tabs[i].id + '\');">';
+        html += '<a href="#" onclick="actDifferent(event);">' + tabs[i].title + '</a>';
+        html += '</li>';
     }
 	
     
@@ -17,13 +19,16 @@ function createTabs() {
 
     // We insert the list
     document.querySelector('#navtabs').innerHTML = html;
-	
-	//if no tab is active, activate the first one
-	if(document.querySelector(".on") == null){
-		start = document.querySelector('.tabelem').id;		
-		window.location = "#"+start;
-		document.querySelector('#navtabs li').className = 'on';
+    
+    if(current != null){
+		tab = current;	
+		menuTab = document.querySelector('li.'+current);	
+	}//if no tab is active, activate the first one
+	else{
+		tab = document.querySelector('.tabelem').id;	
+		menuTab = document.querySelector('.fixed_block .'+tab);	
 	}
+	changeTab(menuTab, tab);
 }
 
 movim_add_onload(function()
@@ -36,11 +41,11 @@ function changeTab(current, n){
     var navtabs = document.querySelectorAll('#navtabs li');
     // We clean the class of the li
     for (var j=0; j<navtabs.length; j++) {
-        navtabs[j].className = '';
+        navtabs[j].className = navtabs[j].className.split(" on")[0];
     }
     
     // We add the "on" class to the selected li
-    current.className = 'on';
+    current.className += ' on';
 	
 	// We hide all the div
     var tabs = document.querySelectorAll('.tabelem');
@@ -50,4 +55,16 @@ function changeTab(current, n){
     // We show the selected div
     var tabOn = document.querySelector('#'+n);
     tabOn.style.display = "block";
+    window.location = document.URL.split("#")[0] + "#"+n;
+    
+    setTimeout(function(){scroll(0,0);}, 30);
+}
+
+function actDifferent(e){
+	e.preventDefault();
+	return false;
+}	
+
+window.onbeforeunload = function(e) {
+	actDifferent(e);
 }
