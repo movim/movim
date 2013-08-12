@@ -15,6 +15,12 @@
     padding: 0em 2em;
     white-space: nowrap;
 }
+#navtabs li a{
+    display: block; 
+	height:100%; 
+	width:100%;
+	color: white;
+}
 
 .tabs {
     clear: both;
@@ -24,7 +30,25 @@
     background-color: #46565E;
 }
 
-#navtabs li.on {
+#navtabs li.on,
+#navtabs li.on a{
     background-color: white;
     color: #445157;
+}
+
+.tabelem{
+	position: relative;
+	margin: 1.5em;
+	margin-top: 2em;
+	padding-top: 11em;
+}
+
+.moving-block{
+	position: absolute;
+	top: 0px;
+}
+
+.anchor{
+	display: block;
+	position: absolute;
 }
