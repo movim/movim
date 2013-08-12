@@ -53,7 +53,7 @@ class Bootstrap {
     }
     
     private function getBaseUri() {        
-        $path = dirname(dirname($_SERVER['PHP_SELF']));
+        $path = dirname($_SERVER['PHP_SELF']).'/';
         // Determining the protocol to use.
         $uri = "http://";
         if((
