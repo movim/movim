@@ -41,7 +41,7 @@ class Route extends ControllerBase {
         }
     }
     
-    protected function find($q) {
+    public function find($q) {
         // We decompose the URL
         $request = explode('/', $q);
                 

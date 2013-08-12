@@ -127,6 +127,8 @@ class Feed extends WidgetCommon {
          // We ask for the HTML of all the posts
         
         $next = $start + $this->_feedsize;
+        
+        $nexthtml = '';
             
         if(sizeof($posts) > $this->_feedsize-1 && $html != '') {
             $nexthtml = '

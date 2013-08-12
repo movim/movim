@@ -292,6 +292,30 @@ class Admin extends WidgetBase {
         $html .= '              </select>
                             </div>
                         </div>';
+                        
+        $env = array(
+            'development' => 'Development',
+            'production'  => 'Production');
+                        
+        $html .= '
+                    <div class="element">
+                        <label for="da">'.t('Environment').'</label>
+                            <div class="select">
+                                <select id="environment" name="environment">';
+                                    
+                                    foreach($env as $key => $value) {
+                                        if((string)$this->_conf['environment'] == $key)
+                                            $sel = 'selected="selected"';
+                                        else
+                                            $sel = '';
+                                                                            
+                                        $html .= '
+                                            <option value="'.$key.'" '.$sel.'>'.$value.'</option>';
+                                    }
+                    
+        $html .= '              </select>
+                            </div>
+                        </div>';
         /*                
         $html .= '
                     <div class="element">
