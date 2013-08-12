@@ -14,6 +14,7 @@ class Bootstrap {
         $this->setLogs();
         
         $loadmodlsuccess = $this->loadModl();
+        $this->loadMoxl();
         
         if($loadmodlsuccess) {
             $this->startingSession();
@@ -46,7 +47,7 @@ class Bootstrap {
 
     private function getVersion() {
         $file = "VERSION";
-        if($f = fopen($file, 'r')) {
+        if($f = fopen(DOCUMENT_ROOT.'/'.$file, 'r')) {
             return trim(fgets($f));
         }
     }
@@ -74,6 +75,8 @@ class Bootstrap {
         }
 
         $uri = str_replace('jajax.php', '', $uri);
+        
+        return $uri;
     }
     
     private function loadSystem() {
@@ -210,6 +213,7 @@ class Bootstrap {
     }
     
     private function startingSession() {
+        global $session;
         // Starting session.
         $sess = Session::start(APP_NAME);
         $session = $sess->get('session');
