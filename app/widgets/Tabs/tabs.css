@@ -40,12 +40,16 @@
 	position: relative;
 	margin: 1.5em;
 	margin-top: 2em;
-	padding-top: 11em;
+	/*padding-top: 11em;*/
 }
 
-.moving-block{
-	position: absolute;
-	top: 0px;
+.moving_block{
+	/*position: absolute;
+	top: 0px;*/
+}
+.fixed_block{ 
+	background-color: white; 
+	width: 880px;
 }
 
 .anchor{
