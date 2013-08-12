@@ -131,17 +131,39 @@ class ControllerBase
      */
     protected function error404()
     {
-        //echo 'Error 404 - Page not found';
-        $page = new TplPageBuilder();
-        
-        WidgetWrapper::getInstance(false);
-        
-        $page->setTitle(t('%s - 404', APP_TITLE));
-        $page->menuAddLink(t('Home'), 'main', true);
-        
-        $content = new TplPageBuilder();
-        $page->setContent($content->build('404.tpl'));
-        echo $page->build('page.tpl');
+        ?>
+        <style type="text/css">
+            body { 
+            }
+            #content {
+                margin: 0 auto;
+                max-width: 1024px;
+                font-family: sans-serif;
+                font-size: 3em; 
+                line-height: 1.5em; 
+                text-align: center;
+                padding: 1em 0em;
+            }
+            
+            img.logo {
+                display: block;
+                float: right;
+            }
+        </style>
+
+        <div id="content">
+            404<br />
+
+            <img src="<?php echo BASE_URI.'/themes/movim/img/yuno.png'; ?>" /> <br />
+
+            Y U NO FOUND    
+            <br />
+            <a href="http://movim.eu/">
+                <img class="logo" src="<?php echo BASE_URI.'themes/movim/img/logo_black.png'; ?>" />
+            </a>    
+        </div>
+
+        <?php
     }
 }
 

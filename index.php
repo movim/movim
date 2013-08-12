@@ -37,7 +37,7 @@
  * events-based API.
  */
 
-define('DOCUMENT_ROOT',  dirname(__FILE__));
+define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 $bootstrap = new Bootstrap();
