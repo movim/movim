@@ -31,6 +31,7 @@ class Bootstrap {
     
     private function setContants() {
         define('APP_TITLE',     'Movim');
+        define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
         define('BASE_URI',      $this->getBaseUri());
         
