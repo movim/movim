@@ -22,13 +22,13 @@ class Conf
             return self::$conf_files[$name];
         } else {
             // Return the default configuration
-            self::getDefault();
+            return self::getDefault();
         }
     }
     
     static function getDefault() {
         return array(
-            'environment' => 'production',//allow "production" and "development" for the moment
+            'environment' => 'development',//allow "production" and "development" for the moment
             'theme'     => 'movim',
             'defLang'   => 'en',
             'maxUsers'  => -1,
@@ -75,6 +75,7 @@ class Conf
     }
     
     static function saveConfFile($conf = array()) {
+        movim_log($conf);
         $doc = new DOMDocument('1.0', 'UTF-8');
 
         $doc->formatOutput = true;

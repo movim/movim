@@ -1,18 +1,19 @@
 <?php
 
-if (!defined('DOCUMENT_ROOT')) {
+/* WTF ? This number will not give me any clue
+ * if (!defined('DOCUMENT_ROOT')) {
     die('Error 57895');
 }
 if (!is_dir(DOCUMENT_ROOT)) {
     die('Error 57896');
-}
+}*/
 
 /**
  * \brief Movim's logger class.
  *
  * Static class to be invoked for every debug log purpose in Movim.
  */
-class Logs
+/*class Logs
 {
 
     static $defined;
@@ -43,11 +44,12 @@ class Logs
         array_push($this->logs, '['.date('r').'] '.$message);
 
     }
-
+*/
     /**
      * getter logs
      * @return array
      */
+/*
     public function getLog()
     {
         return $this->logs;
@@ -155,13 +157,13 @@ function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcont
 {
     Logger::addLog('['.Logs::errorLevel($errno).'] '.$errstr."\n".var_export(array('errfile'=>$errfile,'errline'=>$errline),true));
     return false;
-}
+}*/
 abstract class Logger
 {
 
-    static $logs;
+    static $logs = array();
 
-    
+    /*
     static function log($msg)
     {
         self::addLog($msg);
@@ -185,5 +187,27 @@ abstract class Logger
 
 
     }
+    */
+    
+    static function log($message) {
+        array_push(self::$logs, $message);
 
+        openlog('modl', LOG_NDELAY, LOG_USER);
+        $errlines = explode("\n",$message);
+        foreach ($errlines as $txt) { syslog(LOG_DEBUG, trim($txt)); } 
+        closelog();
+    }
+    
+    static function displayLog() {
+        foreach(self::$logs as $l) {
+            echo $l.'<br />';
+        }
+    }
+    
+    static function getLog() {
+        if(count(self::$logs) == 0)
+            return null;
+        else
+            return self::$logs;
+    }
 }
