@@ -40,7 +40,7 @@
 /**
 * BOOTSTRAP
 **/
-define('DOCUMENT_ROOT',  dirname(__FILE__));
+/*define('DOCUMENT_ROOT',  dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/system/Utils.php');
 require_once(DOCUMENT_ROOT.'/system/Conf.php');
 try {
@@ -58,12 +58,12 @@ if (ENVIRONMENT === 'development') {
     ini_set('display_errors', 0);
     ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 }
-ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
+ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');*/
 
 /**
  * Check files permission
  */
-$listWritableFile = array(
+/*$listWritableFile = array(
     DOCUMENT_ROOT.'/log/logger.log',
     DOCUMENT_ROOT.'/log/php.log',
     DOCUMENT_ROOT.'/cache/test.tmp',
@@ -73,17 +73,17 @@ foreach($listWritableFile as $fileName) {
     if (!file_exists($fileName)) {
         if (touch($fileName) !== true) {
             $errors[] = 'Impossible de créer le fichier '.$fileName.': vérifiez les permissions';
-        } else if (is_writable($fileName) !== true) {
-            $errors[] = 'Le systeme n\'a pas les droits d\'écriture sur le fichier '.$fileName.': vérifiez les permissions';
-        }
+        } 
+    } else if (is_writable($fileName) !== true) {
+        $errors[] = 'Le systeme n\'a pas les droits d\'écriture sur le fichier '.$fileName.': vérifiez les permissions';
     }
 }
 if (count($errors)) {
     die('<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Movim - Welcome to Movim</title></head><body>'.var_export($errors,true));
-}
+}*/
 
 // Run
-require_once('init.php');
+/*require_once('init.php');
 
 $polling = false;
 
@@ -100,4 +100,32 @@ if (ENVIRONMENT === 'development') {
     print '<div id="logs">';
     echo Logger::displayLog();
     print '</div></div>';
+}
+*/
+
+define('DOCUMENT_ROOT',  dirname(__FILE__));
+require_once(DOCUMENT_ROOT.'/bootstrap.php');
+
+$bootstrap = new Bootstrap();
+$booted = $bootstrap->boot();
+
+if($booted) {
+    $polling = false;
+
+    $rqst = new ControllerMain();
+    $rqst->handle();
+
+    WidgetWrapper::getInstance(false);
+
+    // Closing stuff
+    WidgetWrapper::destroyInstance();
+} else {
+    $r = new Route;
+    
+    if($_GET['q'] == 'admin') {
+        $rqst = new ControllerMain();
+        $rqst->handle();
+    }
+    
+    $bootstrap->bootLogs();
 }
