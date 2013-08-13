@@ -444,6 +444,7 @@ nav {
 	-moz-box-sizing: border-box;
 }
 
+.menu li .discover,
 .menu li .explore   { background-image: url(../img/icons/menu/globe.png); }
 .menu li .profile   { background-image: url(../img/icons/menu/user.png); }
 .menu li .conf      { background-image: url(../img/icons/menu/settings.png); }
@@ -453,7 +454,8 @@ nav {
 .menu li .up        { background-image: url(../img/icons/menu/upload.png); }
 .menu li .plus      { background-image: url(../img/icons/menu/plus.png); }
 .menu li .search    { background-image: url(../img/icons/menu/search.png); }
-.menu li .users, .menu li .account { background-image: url(../img/icons/menu/users.png); }
+.menu li .users, 
+.menu li .account   { background-image: url(../img/icons/menu/users.png); }
 .menu li .expand    { background-image: url(../img/icons/menu/expand.png); }
 .menu li .contract  { background-image: url(../img/icons/menu/contract.png); }
 .menu li .media     { background-image: url(../img/icons/menu/folder.png); }
