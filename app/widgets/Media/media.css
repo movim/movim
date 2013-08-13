@@ -15,6 +15,10 @@
     background-color: #111;
 }
 
+#navtabs li.on a {
+    color: white;
+}
+
 #media .breadcrumb {
     background-color: transparent;
 }
