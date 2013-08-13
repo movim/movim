@@ -12,6 +12,7 @@ class Route extends ControllerBase {
                 'loading'       => false,
                 'admin'         => false,
                 'explore'       => false,
+                'discover'      => false,
                 'profile'       => false,
                 'media'         => array('f'),
                 'conf'          => false,

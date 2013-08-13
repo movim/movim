@@ -298,6 +298,7 @@ class ControllerMain extends ControllerBase
     {
         $this->page->setTitle(t('%s - About', APP_TITLE));
         $this->page->menuAddLink(t('Home'), 'main');
+        $this->page->menuAddLink(t('Discover'), 'discover');
         $this->page->menuAddLink(t('About'), 'about', true);
         $content = new TplPageBuilder();
 
@@ -365,6 +366,7 @@ class ControllerMain extends ControllerBase
         $this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
         
         $this->page->menuAddLink(t('Home'), 'main', true);
+        $this->page->menuAddLink(t('Discover'), 'discover');
         $this->page->menuAddLink(t('About'), 'about');
         
         $content = new TplPageBuilder($user);
@@ -411,6 +413,22 @@ class ControllerMain extends ControllerBase
         }
     }
     
+    /**
+     * Discover the XMPP network from the internet
+     */
+    function discover()
+    {
+        $this->page->setTitle(t('%s - Discover', APP_TITLE));
+        $this->page->menuAddLink(t('Home'), 'main');
+        $this->page->menuAddLink(t('Discover'), 'discover', true);
+        $this->page->menuAddLink(t('About'), 'about');
+        $content = new TplPageBuilder();
+
+        $this->page->setContent($content->build('discover.tpl'));
+        echo $this->page->build('page.tpl');
+    }
+    
+
 
     /*
      * Show help page
