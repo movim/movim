@@ -17,9 +17,9 @@
 }
 #navtabs li a{
     display: block; 
-	height:100%; 
-	width:100%;
-	color: white;
+    height:100%; 
+    width:100%;
+    color: white;
 }
 
 .tabs {
@@ -30,29 +30,28 @@
     background-color: #46565E;
 }
 
-#navtabs li.on,
-#navtabs li.on a{
+#navtabs li.on {
     background-color: white;
-    color: #445157;
+}
+
+#navtabs li.on a {
+    color: #445157;    
 }
 
 .tabelem{
-	position: relative;
-	margin: 1.5em;
-	margin-top: 2em;
-	/*padding-top: 11em;*/
+    position: relative;
 }
 
 .moving_block{
-	/*position: absolute;
-	top: 0px;*/
+    /*position: absolute;
+    top: 0px;*/
 }
 .fixed_block{ 
-	background-color: white; 
-	width: 880px;
+    background-color: white; 
+    width: 880px;
 }
 
 .anchor{
-	display: block;
-	position: absolute;
+    display: block;
+    position: absolute;
 }

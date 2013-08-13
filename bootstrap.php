@@ -52,14 +52,8 @@ class Bootstrap {
         }
     }
     
-    private function getBaseUri() {
-        $index_pos = strpos($_SERVER['PHP_SELF'], 'index.php');
-        $path = "";
-        if($index_pos <= 0) {
-            $path = $_SERVER['PHP_SELF'];
-        } else {
-            $path = substr($_SERVER['PHP_SELF'], 0, $index_pos);
-        }
+    private function getBaseUri() {        
+        $path = dirname($_SERVER['PHP_SELF']).'/';
         // Determining the protocol to use.
         $uri = "http://";
         if((
@@ -223,55 +217,64 @@ class Bootstrap {
      * Display the boot errors
      */
     public function bootLogs() {
-        if (ENVIRONMENT === 'development') {
         ?>
-            <style type="text/css">
-                body {
-                    font-family: sans-serif;
-                }
-                
-                a:link, a:visited {
-                    text-decoration: none;
-                    color: #32434D;
-                }
-              
-                #debug {
-                    max-width: 1024px;
-                    margin: 0 auto;
-                    background-color: white;
-                    padding: 2em;
-                }
-                
-                #debug img {
-                    float: right;
-                    margin-top: 2em;
-                }
-                
-                #logs {
-                    font-family: monospace;
-                    background-color: #353535;
-                    color: white;
-                    padding: 1em;
-                    margin: 1em 0;
-                }
-            </style>
+        <style type="text/css">
+            body {
+                font-family: sans-serif;
+            }
+            
+            a:link, a:visited {
+                text-decoration: none;
+                color: #32434D;
+            }
+          
+            #debug {
+                max-width: 1024px;
+                margin: 0 auto;
+                background-color: white;
+                padding: 2em;
+            }
+            
+            #debug img {
+                float: right;
+                margin-top: 2em;
+            }
+            
+            #logs {
+                font-family: monospace;
+                background-color: #353535;
+                color: white;
+                padding: 1em;
+                margin: 1em 0;
+            }
+        </style>
 
-            <div id="debug">
+        <div id="debug">
+            <?php         
+            if (ENVIRONMENT === 'development') {
+            ?>
                 <div class="carreful">
-                    <p>Be careful you are actually in development environment</p>
+                    <p>Be careful you are currently in development environment</p>
                 </div>
                 <div id="logs">
                   <?php echo Logger::displayLog(); ?>
                 </div>
                 
-                Maybe you can fix some issues with the <a href="<?php echo Route::urlize('admin'); ?>">admin panel</a>
-                
+                Maybe you can fix some issues with the <a href="<?php echo Route::urlize('admin'); ?>">admin panel</a>            
+            <?php 
+            } elseif (ENVIRONMENT === 'production') {
+                ?>
+                <div class="carreful">
+                    <p>Oops... something went wrong.<br />But don't panic. The NSA is on the case.</p>
+                </div>
+                <?php
+            }   
+            ?>      
+            <a href="http://movim.eu/">
                 <img src="<?php echo BASE_URI.'themes/movim/img/logo_black.png'; ?>" />
-                
-                <div class="clear"></div>
-            </div>
-
-        <?php 
-        }
+            </a>
+            <div class="clear"></div>
+        </div>  
+    <?php
     }
 }
