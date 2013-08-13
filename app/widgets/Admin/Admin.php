@@ -579,13 +579,13 @@ class Admin extends WidgetBase {
     function build()
     {
     ?>
-        <div id="admincomp" class="tabelem" title="<?php echo t("Compatibility Check"); ?>">
+        <div id="admincomp" class="tabelem padded" title="<?php echo t("Compatibility Check"); ?>">
             <?php echo $this->prepareAdminComp(); ?>
         </div>
-        <div id="admingen" class="tabelem" title="<?php echo t('General Settings'); ?>">
+        <div id="admingen" class="tabelem padded" title="<?php echo t('General Settings'); ?>">
 			<?php echo $this->prepareAdminGen(); ?>
         </div>
-        <div id="admindb" class="tabelem" title="<?php echo t("Database Settings") ?>">
+        <div id="admindb" class="tabelem padded" title="<?php echo t("Database Settings") ?>">
 			<?php echo $this->prepareAdminDB(); ?>
         </div>
     <?php 
