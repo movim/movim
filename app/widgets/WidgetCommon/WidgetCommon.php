@@ -272,6 +272,11 @@ class WidgetCommon extends WidgetBase {
         
         if(isset($c) && $c->loclatitude != '' && $c->loclongitude != '') {    
             $posfound = true;          
+            
+            $popup  = '<img style=\'float: left; margin-right: 1em;\' src=\''.$c->getPhoto('s').'\'/>';
+            $popup .= '<div style=\'padding: 0.5em;\'>'.$c->getPlace().'<br />'.prepareDate(strtotime($c->loctimestamp)).'</div>';
+            $popup .= '<div class=\'clear\'></div>';
+            
             $javascript .= '
                 var red = L.icon({
                     iconUrl: "'.BASE_URI.'/themes/movim/img/marker-icon.png",
@@ -281,6 +286,7 @@ class WidgetCommon extends WidgetBase {
                 });
             
                 var marker = L.marker(['.$c->loclatitude.' ,'.$c->loclongitude.'], {icon: red}).addTo(postsmap);
+                marker.bindPopup("'.$popup.'").openPopup();
                 ';
              $bound .= '['.$c->loclatitude.','.$c->loclongitude.'],';
         }
