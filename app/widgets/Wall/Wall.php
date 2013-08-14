@@ -60,6 +60,9 @@ class Wall extends WidgetCommon
         $pd = new \modl\PostnDAO();
         $pl = $pd->getNode($from, 'urn:xmpp:microblog:0', $start+1, 10);
         
+        $cd = new \modl\ContactDAO();
+        $c = $cd->getRosterItem($from);
+        
         // We ask for the HTML of all the posts
         
         $htmlmessages = $this->preparePosts($pl);
@@ -70,7 +73,7 @@ class Wall extends WidgetCommon
         
         if(count($pl) > 0 && $htmlmessages != false) {
             if($start == -1) {
-                $html .= $this->printMap($pl);
+                $html .= $this->printMap($pl, $c);
                 
                 $html .= '
                         <div class="posthead spacetop">

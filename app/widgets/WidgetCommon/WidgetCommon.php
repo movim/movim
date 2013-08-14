@@ -237,7 +237,7 @@ class WidgetCommon extends WidgetBase {
 
     }
     
-    protected function printMap($posts) {
+    protected function printMap($posts, $c = null) {
         $html = '<div style="height: 13em;" id="postsmap"></div>';
         
         $javascript = '
@@ -268,6 +268,21 @@ class WidgetCommon extends WidgetBase {
                     
                 $id++;
             }
+        }
+        
+        if(isset($c) && $c->loclatitude != '' && $c->loclongitude != '') {    
+            $posfound = true;          
+            $javascript .= '
+                var red = L.icon({
+                    iconUrl: "'.BASE_URI.'/themes/movim/img/marker-icon.png",
+                    iconSize:     [25,41], // size of the icon
+                    shadowSize:   [50, 64], // size of the shadow
+                    iconAnchor:   [13, 41]
+                });
+            
+                var marker = L.marker(['.$c->loclatitude.' ,'.$c->loclongitude.'], {icon: red}).addTo(postsmap);
+                ';
+             $bound .= '['.$c->loclatitude.','.$c->loclongitude.'],';
         }
         
         $javascript .= '
