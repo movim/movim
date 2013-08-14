@@ -37,67 +37,49 @@
  * events-based API.
  */
 
-/**
-* BOOTSTRAP
-**/
-define('DOCUMENT_ROOT',  dirname(__FILE__));
-require_once(DOCUMENT_ROOT.'/system/Utils.php');
-require_once(DOCUMENT_ROOT.'/system/Conf.php');
+define('DOCUMENT_ROOT', dirname(__FILE__));
+require_once(DOCUMENT_ROOT.'/bootstrap.php');
+
 try {
-    define('ENVIRONMENT',Conf::getServerConfElement('environment'));
-} catch (Exception $e) {
-//    define('ENVIRONMENT','production');//default environment is production
-}
-if (ENVIRONMENT === 'development') {
-    ini_set('log_errors', 1);
-    ini_set('display_errors', 0);
-    ini_set('error_reporting', E_ALL );
+    $bootstrap = new Bootstrap();
     
-} else {
-    ini_set('log_errors', 1);
-    ini_set('display_errors', 0);
-    ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
-}
-ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
+    $bootstrap->boot();
 
-/**
- * Check files permission
- */
-$listWritableFile = array(
-    DOCUMENT_ROOT.'/log/logger.log',
-    DOCUMENT_ROOT.'/log/php.log',
-    DOCUMENT_ROOT.'/cache/test.tmp',
-);
-$errors=array();
-foreach($listWritableFile as $fileName) {
-    if (!file_exists($fileName)) {
-        if (touch($fileName) !== true) {
-            $errors[] = 'Impossible de créer le fichier '.$fileName.': vérifiez les permissions';
-        } 
-    } else if (is_writable($fileName) !== true) {
-        $errors[] = 'Le systeme n\'a pas les droits d\'écriture sur le fichier '.$fileName.': vérifiez les permissions';
-    }
-}
-if (count($errors)) {
-    die('<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Movim - Welcome to Movim</title></head><body>'.var_export($errors,true));
-}
-
-// Run
-require_once('init.php');
-
-$polling = false;
-
-$rqst = new ControllerMain();
-$rqst->handle();
-
-WidgetWrapper::getInstance(false);
-
-// Closing stuff
-WidgetWrapper::destroyInstance();
-if (ENVIRONMENT === 'development') {
+    $rqst = new ControllerMain();
+    $rqst->handle();
+    
+    WidgetWrapper::getInstance(false);
    
-    print ' <div id="debug"><div class="carreful"><p>Be careful you are actually in development environment</p></div>';
-    print '<div id="logs">';
-    echo Logger::displayLog();
-    print '</div></div>';
-}
+    // Closing stuff
+    WidgetWrapper::destroyInstance();
+    
+} catch (Exception $e) {
+    //manage errors
+    \system\Logger::displayDebugCSS();
+    if (ENVIRONMENT === 'development') {
+        
+        ?>
+            <div id="debug" class="error">
+                <h2>Une erreur est survenue</h2>
+                <p><?php print $e->getMessage();?></p>
+                <?php
+                    \system\Debug::dump($e);
+                ?>
+            </div>
+        <?php
+    } else {
+        ?>
+        <div class="carreful">
+            <p>Oops... something went wrong.<br />But don't panic. The NSA is on the case.</p>
+        </div>
+        <?php
+    }
+    $r = new Route;
+    if($_GET['q'] == 'admin') {
+        $rqst = new ControllerMain();
+        $rqst->handle();
+    }
+} 
+
+//display only if not already done and if there is something to display
+\system\Logs\Logger::displayFooterDebug();

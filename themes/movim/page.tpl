@@ -81,5 +81,8 @@
         <script type="text/javascript">
             movim_onload();
         </script>
+        <?php 
+            $this->displayFooterDebug();
+        ?>
     </body>
 </html>

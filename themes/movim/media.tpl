@@ -11,6 +11,7 @@
 
 <div id="main">
     <div id="left">
+        <?php $this->widget('Connection');?>
         <?php $this->widget('Profile');?>
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('Notifs');?>

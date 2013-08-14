@@ -50,11 +50,6 @@ function movim_poll()
 	poller.send();
 }
 
-function movim_disconnect(error)
-{
-    window.location.replace(ERROR_URI + error);
-}
-
 function halt_poll()
 {
 	poller.abort();

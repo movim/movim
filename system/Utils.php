@@ -156,7 +156,7 @@ function prepareString($string) {
 
    
     // We add some smileys...
-    $conf = new Conf();
+    $conf = new \system\Conf();
     $theme = $conf->getServerConfElement('theme');
     
     $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';

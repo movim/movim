@@ -69,6 +69,11 @@ function movim_drop(params)
     // log('movim_drop called.');
 }
 
+function movim_disconnect(error)
+{
+    window.location.replace(ERROR_URI + error);
+}
+
 var movim_xmlhttp;
 
 /***********************************************************************
