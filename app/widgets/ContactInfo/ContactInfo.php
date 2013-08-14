@@ -88,35 +88,6 @@ class ContactInfo extends WidgetCommon
                 $html .= prepareDate(strtotime($c->delay)).'<br />';
             }
             
-            /*
-             if($c->loclatitude != '' && $c->loclongitude != ''
-             || $c->getPlace() != '') {
-                 
-                $html .= '
-                    <h2>'.t('Location').'</h2>';
-                    
-                $html .= prepareDate(strtotime($c->loctimestamp)).'<br /><br />';
-                if($c->getPlace() != '')
-                    $html .= $c->getPlace().'<br /><br />';
-                
-                if(isset($c->loclatitude) && isset($c->loclongitude))                  
-                    $html .= '
-                        <div style="height: 250px; margin: 0em -1.2em;" id="map"></div>
-                        <script type="text/javascript">
-                                var map = L.map("map").setView(['.$c->loclatitude.' ,'.$c->loclongitude.'], 11);
-                                
-                                L.tileLayer("http://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                                    attribution: "",
-                                    maxZoom: 18
-                                }).addTo(map);
-                                var marker = L.marker(['.$c->loclatitude.' ,'.$c->loclongitude.']).addTo(map)
-                        </script>';
-
-            }
-            
-            */
-            
-            
             // Client informations
             if($c->node && $c->ver) {                
                 $node = $c->node.'#'.$c->ver;
