@@ -56,15 +56,15 @@ class Account extends WidgetBase {
             $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq type="get" id="reg1"><query xmlns="jabber:iq:register"/></iq></stream:stream>');
             $stream->addAttribute('to', $ndd['ndd']);
             if (false === fwrite($f, $stream->asXML())) {
-                 logger::log('fail write to stream');
+                 \system\Logs\Logger::log('fail write to stream');
                 throw new \Exception('fail write to stream');
             }
             
             unset($stream);
 
             $response = stream_get_contents($f);
-            logger::log('response');
-            logger::log($response);
+            \system\Logs\Logger::log('response');
+            \system\Logs\Logger::log($response);
             if(!$response) {
                     RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
@@ -182,7 +182,7 @@ class Account extends WidgetBase {
         } catch(Exception $e) {
             header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
             header('Content-Type: text/plain; charset=utf-8');
-            Logger::log($e->getMessage());
+            \system\Logs\Logger::log($e->getMessage());
             //echo $e->getMessage(),"\n";
         }
     }
@@ -274,7 +274,7 @@ class Account extends WidgetBase {
         } catch(Exception $e) {
             header(sprintf('HTTP/1.1 %d %s', $e->getCode(), $e->getMessage()));
             header('Content-Type: text/plain; charset=utf-8');
-            Logger::log($e->getCode().' '.$e->getMessage().' file:'.$e->getFile().' - l.'.$e->getLine());
+            \system\Logs\Logger::log($e->getCode().' '.$e->getMessage().' file:'.$e->getFile().' - l.'.$e->getLine());
 		echo $e->getMessage(),"\n";
         }
     }

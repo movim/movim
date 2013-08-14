@@ -28,7 +28,7 @@ class Login extends WidgetBase {
         
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
         $this->view->assign('submit', $submit);
-        $this->view->assign('conf',   Conf::getServerConf($submit));
+        $this->view->assign('conf',   \system\Conf::getServerConf($submit));
         $this->view->assign('submit_event', 
             'document.getElementById(\'submitb\').click();
             '.$submit.'
@@ -172,7 +172,7 @@ class Login extends WidgetBase {
     function ajaxLogin($element)
     {
         // We get the Server Configuration
-        $serverconfig = Conf::getServerConf();
+        $serverconfig = \system\Conf::getServerConf();
         
         $warning = false;
 

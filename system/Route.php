@@ -1,6 +1,5 @@
 <?php 
-
-class Route extends ControllerBase {
+class Route extends \ControllerBase {
     public $_routes;
     
     public function __construct() {
@@ -12,6 +11,7 @@ class Route extends ControllerBase {
                 'loading'       => false,
                 'admin'         => false,
                 'explore'       => false,
+                'discover'      => false,
                 'profile'       => false,
                 'media'         => array('f'),
                 'conf'          => false,
@@ -41,7 +41,7 @@ class Route extends ControllerBase {
         }
     }
     
-    protected function find($q) {
+    public function find($q) {
         // We decompose the URL
         $request = explode('/', $q);
                 
@@ -77,7 +77,7 @@ class Route extends ControllerBase {
         
         if(isset($routes[$page])) {        
             if($params != false && count($routes[$page]) != count($params)) 
-                Logger::log(t('Route error, please set all the parameters for the page %s', $page));
+                \system\Logs\Logger::log(t('Route error, please set all the parameters for the page %s', $page));
             else {
                 //We construct a classic URL if the rewriting is disabled
                 if(!isset($_SERVER['HTTP_MOD_REWRITE']) && !$_SERVER['HTTP_MOD_REWRITE']) {
@@ -105,6 +105,6 @@ class Route extends ControllerBase {
                 return $uri;
             }
         } else
-            Logger::log(t('Route not set for the page %s', $page));
+            \system\Logs\Logger::log(t('Route not set for the page %s', $page));
     }
 }
