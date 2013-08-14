@@ -298,6 +298,7 @@ class ControllerMain extends ControllerBase
     {
         $this->page->setTitle(t('%s - About', APP_TITLE));
         $this->page->menuAddLink(t('Home'), 'main');
+        $this->page->menuAddLink(t('Discover'), 'discover');
         $this->page->menuAddLink(t('About'), 'about', true);
         $content = new TplPageBuilder();
 
@@ -365,6 +366,7 @@ class ControllerMain extends ControllerBase
         $this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
         
         $this->page->menuAddLink(t('Home'), 'main', true);
+        $this->page->menuAddLink(t('Discover'), 'discover');
         $this->page->menuAddLink(t('About'), 'about');
         
         $content = new TplPageBuilder($user);
@@ -411,6 +413,22 @@ class ControllerMain extends ControllerBase
         }
     }
     
+    /**
+     * Discover the XMPP network from the internet
+     */
+    function discover()
+    {
+        $this->page->setTitle(t('%s - Discover', APP_TITLE));
+        $this->page->menuAddLink(t('Home'), 'main');
+        $this->page->menuAddLink(t('Discover'), 'discover', true);
+        $this->page->menuAddLink(t('About'), 'about');
+        $content = new TplPageBuilder();
+
+        $this->page->setContent($content->build('discover.tpl'));
+        echo $this->page->build('page.tpl');
+    }
+    
+
 
     /*
      * Show help page
@@ -449,7 +467,7 @@ class ControllerMain extends ControllerBase
         if(!isset($_SERVER['PHP_AUTH_USER'])) {
             $this->authenticate();
         } else {
-            $conf = Conf::getServerConf();
+            $conf = \system\Conf::getServerConf();
 
             if($_SERVER['PHP_AUTH_USER'] == (string)$conf['user'] && sha1($_SERVER['PHP_AUTH_PW']) == (string)$conf['pass']){
                 $this->page->setTitle(t('%s - Administration Panel', APP_TITLE));

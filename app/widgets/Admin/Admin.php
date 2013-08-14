@@ -24,7 +24,7 @@ class Admin extends WidgetBase {
     
     function WidgetLoad()
     {
-        $this->_conf = Conf::getServerConf();
+        $this->_conf = \system\Conf::getServerConf();
     }
     
     private function isValid($what)
@@ -153,7 +153,7 @@ class Admin extends WidgetBase {
                 $this->_conf[$key] = $form[$key];
         }
 
-        Conf::saveConfFile($this->_conf);
+        \system\Conf::saveConfFile($this->_conf);
     }
     
     public function ajaxRecreateDatabase()
@@ -281,6 +281,30 @@ class Admin extends WidgetBase {
                                     
                                     foreach($this->listLangs() as $key => $value) {
                                         if((string)$this->_conf['defLang'] == $key)
+                                            $sel = 'selected="selected"';
+                                        else
+                                            $sel = '';
+                                                                            
+                                        $html .= '
+                                            <option value="'.$key.'" '.$sel.'>'.$value.'</option>';
+                                    }
+                    
+        $html .= '              </select>
+                            </div>
+                        </div>';
+                        
+        $env = array(
+            'development' => 'Development',
+            'production'  => 'Production');
+                        
+        $html .= '
+                    <div class="element">
+                        <label for="da">'.t('Environment').'</label>
+                            <div class="select">
+                                <select id="environment" name="environment">';
+                                    
+                                    foreach($env as $key => $value) {
+                                        if((string)$this->_conf['environment'] == $key)
                                             $sel = 'selected="selected"';
                                         else
                                             $sel = '';
@@ -555,14 +579,14 @@ class Admin extends WidgetBase {
     function build()
     {
     ?>
-        <div id="admincomp" class="tabelem" title="<?php echo t("Compatibility Check"); ?>" style="margin: 1.5em;">
+        <div id="admincomp" class="tabelem padded" title="<?php echo t("Compatibility Check"); ?>">
             <?php echo $this->prepareAdminComp(); ?>
         </div>
-        <div id="admingen" class="tabelem" title="<?php echo t('General Settings'); ?>" style="margin: 1.5em;">
-            <?php echo $this->prepareAdminGen(); ?>
+        <div id="admingen" class="tabelem padded" title="<?php echo t('General Settings'); ?>">
+			<?php echo $this->prepareAdminGen(); ?>
         </div>
-        <div id="admindb" class="tabelem" title="<?php echo t("Database Settings") ?>" style="margin: 1.5em;">
-            <?php echo $this->prepareAdminDB(); ?>
+        <div id="admindb" class="tabelem padded" title="<?php echo t("Database Settings") ?>">
+			<?php echo $this->prepareAdminDB(); ?>
         </div>
     <?php 
     }

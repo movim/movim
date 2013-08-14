@@ -29,7 +29,7 @@ class User {
             $this->username = $session['user'].'@'.$session['host'];
             $this->config = $session['config'];
 
-            $this->sizelimit = (int)Conf::getServerConfElement('sizeLimit');
+            $this->sizelimit = (int)\system\Conf::getServerConfElement('sizeLimit');
 
             $this->userdir = DOCUMENT_ROOT.'/users/'.$this->username.'/';
             $this->useruri = BASE_URI.'users/'.$this->username.'/';
