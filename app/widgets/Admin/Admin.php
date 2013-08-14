@@ -396,7 +396,7 @@ class Admin extends WidgetBase {
                     t("Enter here the BOSH-URL in the form: http(s)://domain:port/path.").' '.
                     t('If you enter an open BOSH-Server, you can connect to many XMPP-Servers.').' '.
                     t('If it is closed, you have to specify the corresponding Server on the next page.').' '.
-                    t('If you are unsure about this config option visit the wiki');
+                    t('If you are unsure about this config option visit the %swiki%s', '<a href="http://wiki.movim.eu/install">', '</a>');
                 '</p>';
                     
         if(!$this->testBosh($this->_conf['boshUrl'])) {
