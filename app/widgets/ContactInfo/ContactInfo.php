@@ -88,7 +88,8 @@ class ContactInfo extends WidgetCommon
                 $html .= prepareDate(strtotime($c->delay)).'<br />';
             }
             
-            if($c->loclatitude != '' && $c->loclongitude != ''
+            /*
+             if($c->loclatitude != '' && $c->loclongitude != ''
              || $c->getPlace() != '') {
                  
                 $html .= '
@@ -113,7 +114,7 @@ class ContactInfo extends WidgetCommon
 
             }
             
-
+            */
             
             
             // Client informations
