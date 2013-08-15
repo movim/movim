@@ -24,6 +24,7 @@ class Admin extends WidgetBase {
     
     function WidgetLoad()
     {
+        $this->addjs('admin.js');
         $this->_conf = Conf::getServerConf();
     }
     
@@ -379,7 +380,8 @@ class Admin extends WidgetBase {
                                 }
         $html .= '          </select>
                         </div>
-                        <br /><br />'.date('l jS \of F Y h:i:s A').'
+                        <br /><br />
+                        <span class="dTimezone">'.date('l jS \of F Y h:i:s A').'</span>
                     </div>';
                     
         $html .= $this->_validatebutton;
