@@ -78,7 +78,6 @@ class ControllerBase
      */
     protected function run_req($request)
     {
- 
         if(is_callable(array($this, $request))) {
             call_user_func(array($this, $request));
         } else {

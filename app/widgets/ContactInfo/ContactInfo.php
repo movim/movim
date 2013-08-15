@@ -3,59 +3,38 @@
 /**
  * @package Widgets
  *
- * @file Roster.php
+ * @file ContactInfo.php
  * This file is part of MOVIM.
  *
- * @brief The Roster widget
+ * @brief Display some informations on a Contact
  *
  * @author Jaussoin Timothée <edhelas@gmail.com>
  *
- * @version 1.0
- * @date 30 August 2010
- *
- * Copyright (C)2010 MOVIM project
+ * Copyright (C)2013 MOVIM project
  *
  * See COPYING for licensing information.
  */
 
 class ContactInfo extends WidgetCommon
-{
-    /**
-     * @brief Adding a new contact 
-     * @param $jid 
-     * @param $alias 
-     * @returns 
-     */
-    function ajaxAddContact($jid) {
-        $r = new moxl\RosterAddItem();
-        $r->setTo($jid)
-          ->setFrom($this->user->getLogin())
-          ->request();
+{    
+    function WidgetLoad()
+    {
+        $this->registerEvent('tune', 'onTune');    
     }
     
-    function ajaxSubscribeContact($jid) {
-        $p = new moxl\PresenceSubscribe();
-        $p->setTo($jid)
-          ->request();
+    function onTune($from)
+    {
+        $html = $this->prepareContactInfo($from);     
+        RPC::call('movim_fill', 'contactinfo', $html);
     }
-    
-    
-    function ajaxRemoveContact($jid) {         
-        $r = new moxl\RosterRemoveItem();
-        $r->setTo($jid)
-          ->request();
-    }
-    
-    function ajaxUnsubscribeContact($jid) {         
-        $p = new moxl\PresenceUnsubscribe();
-        $p->setTo($jid)
-          ->request();
-    }
-    
-    function prepareContactInfo()
+
+    function prepareContactInfo($from = false)
     {
         $cd = new \modl\ContactDAO();
-        $c = $cd->getRosterItem($_GET['f']);
+        if($from != $this->user->getLogin())
+            $c = $cd->getRosterItem($from);
+        else
+            $c = $cd->get($from);
         
         $html = '';
         
@@ -71,6 +50,7 @@ class ContactInfo extends WidgetCommon
                 $html .= t("I'm ").substr($mood, 0, -1).'<br />';
             }
             
+            // Tune
             if($c->tuneartist || $c->tunetitle) {
                 $html .= '<h2>'.t('Listening').'</h2>';
                 if($c->tuneartist)
@@ -79,7 +59,36 @@ class ContactInfo extends WidgetCommon
                     $title = $c->tunetitle;
                 if($c->tunesource)
                     $album = t('on').' '.$c->tunesource;
-                $html .= $artist.$title.' '.$album;
+                    
+                if($c->tunesource) {
+                    $l = str_replace(
+                        ' ', 
+                        '%20', 
+                        'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=80c1aa3abfa9e3d06f404a2e781e38f9&artist='.
+                            $c->tuneartist.
+                            '&album='.
+                            $c->tunesource.
+                            '&format=json'
+                        );
+                    
+                    $json = json_decode(file_get_contents($l));
+                    
+                    //var_dump($json);
+                    
+                    $img = $json->album->image[2]->{'#text'};
+                    $url = $json->album->url;
+                    if(isset($img)) {
+                        $img = '
+                            <br />
+                            <br />
+                            <a href="'.$url.'" target="_blank">
+                                <img src="'.$img.'"/>
+                            </a>';
+                    }
+                    //var_dump();
+                }
+                    
+                $html .= $artist.$title.' '.$album.$img;
             }
             
             // Last seen
@@ -112,101 +121,16 @@ class ContactInfo extends WidgetCommon
                     $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
                 }
             }
-            
-            // Chat button
-            if($c->jid != $this->user->getLogin()) {
-            
-                $presences = getPresences();
-                
-                $html .='<h2>'.t('Actions').'</h2>';
-                
-                $ptoc = array(
-                    1 => 'green',
-                    2 => 'yellow',
-                    3 => 'red', 
-                    4 => 'purple'
-                        );
-                
-                if(isset($c->presence) && !in_array($c->presence, array(5, 6))) {
-                    $html .= '
-                        <a
-                            class="button color '.$ptoc[$c->presence].' icon chat"
-                            style="float: left;"
-                            id="friendchat"
-                            onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$c->jid."'").'"
-                        >
-                            '.$presences[$c->presence].' - '.t('Chat').'
-                        </a>';
-                }
-            }
-            
-            $html .= '<div style="clear: both;"></div>';
-            
-            $html .='
-            <a
-                class="button icon rm black"
-                style="margin: 1em 0px; display: block;"
-                id="friendremoveask"
-                onclick="
-                    document.querySelector(\'#friendremoveyes\').style.display = \'block\';
-                    document.querySelector(\'#friendremoveno\').style.display = \'block\';
-                    this.style.display = \'none\'
-                "
-            >
-                '.t('Remove this contact').'
-            </a>
-
-            <a
-                class="button color green icon yes merged left';
-            if(!isset($c->presence) || $c->presence == 5)
-                $html .=' left';
-            $html .= '"
-                id="friendremoveyes"
-                style="margin: 1em 0px; float: left; display: none;"
-                onclick="
-                    setTimeout(function() {'.
-                        $this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'").
-                    '}, 1500);'.
-                    $this->genCallAjax("ajaxUnsubscribeContact", "'".$_GET['f']."'").
-                'this.className=\'button color green icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
-            >
-                '.t('Yes').'
-            </a>
-
-            <a
-                class="button color red icon no merged right"
-                style="margin: 1em 0px; float: left; display: none;"
-                id="friendremoveno"
-                onclick="
-                    document.querySelector(\'#friendremoveask\').style.display = \'block\';
-                    document.querySelector(\'#friendremoveyes\').style.display = \'none\';
-                    this.style.display = \'none\'
-                "
-            >
-                '.t('No').'
-            </a>';
-        } elseif($_GET['f'] != $this->user->getLogin()) {
-                            
-            $html .='<h2>'.t('Actions').'</h2>';
-            
-            $html .='
-            <a
-                class="button color purple icon add"
-                onclick="
-                    setTimeout(function() {'.
-                        $this->genCallAjax("ajaxAddContact", "'".$_GET['f']."'").
-                    '}, 1500);'.
-                $this->genCallAjax("ajaxSubscribeContact", "'".$_GET['f']."'").
-                'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 3000);"
-            >
-                '.t('Invite this user').'
-            </a>';
         }
         
         return $html;
     }
     
     function build() {
-        echo $this->prepareContactInfo();
+        ?>
+        <div id="contactinfo">
+            <?php echo $this->prepareContactInfo($_GET['f']); ?>
+        </div>  
+        <?php
     }
 }
