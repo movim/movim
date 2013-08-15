@@ -101,13 +101,14 @@ class Bootstrap {
     }
     
     private function loadDispatcher() {
-        require_once(APP_PATH . "controllers/ControllerBase.php");
-        require_once(APP_PATH . "controllers/ControllerMain.php");
-        require_once(APP_PATH . "controllers/ControllerAjax.php");
+        require_once(SYSTEM_PATH . "controllers/ControllerBase.php");
+        require_once(SYSTEM_PATH . "controllers/ControllerMain.php");
+        require_once(SYSTEM_PATH . "controllers/ControllerAjax.php");
+        //require_once(SYSTEM_PATH . "controllers/FrontController.php");
 
         require_once(SYSTEM_PATH . "Route.php");
 
-        require_once(SYSTEM_PATH . "Tpl/TplPageBuilder.php");
+        require_once(SYSTEM_PATH . "template/TplPageBuilder.php");
 
         require_once(SYSTEM_PATH . "widget/WidgetBase.php");
         require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");

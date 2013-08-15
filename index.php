@@ -47,6 +47,7 @@ if($booted) {
     $polling = false;
 
     $rqst = new ControllerMain();
+    //$rqst = new FrontController();
     $rqst->handle();
 
     WidgetWrapper::getInstance(false);

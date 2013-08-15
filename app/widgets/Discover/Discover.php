@@ -52,7 +52,7 @@ class Discover extends WidgetCommon {
     ?>
         <div id="discover">
             <div class="paddedtopbottom">
-            <h2><?php echo t('Last registered'); ?></h2>
+            <h1><?php echo t('Last registered'); ?></h1>
             </div>
             <div id="contactsresult">
                 <?php echo $this->prepareContacts(); ?>
