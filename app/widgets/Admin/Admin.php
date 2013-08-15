@@ -235,6 +235,9 @@ class Admin extends WidgetBase {
                     <div class="'.$this->isValid($this->testDir(DOCUMENT_ROOT)).'">
                         '.t('Read and write rights for the webserver in Movim\'s root directory').'
                     </div>
+                    <div class="'.$this->isValid(extension_loaded('OpenSSL')).'">
+                        '.t('OpenSSL').'
+                    </div>
                     
             </fieldset>
 
