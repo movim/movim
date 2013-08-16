@@ -122,7 +122,6 @@ class WidgetWrapper
 
         if(file_exists(APP_PATH . "widgets/$widget_name/$widget_name.php")) {
             $widget_path = APP_PATH . "widgets/$widget_name/$widget_name.php";
-        //    $extern = false;
         }
         else {
             throw new MovimException(
@@ -200,17 +199,14 @@ class WidgetWrapper
         // We only load the interesting widgets
         if(isset($params)) {
             $fct = $params[0]['type'];
-            if (isset($this->registered_events[$fct])) {
+            if(array_key_exists($fct, $this->registered_events))
                 $widgets = $this->registered_events[$fct];
-            }
-        } else {
+        } else
             $widgets = $this->get_loaded_widgets();
-        }
-        if(isset($widgets) && is_array($widgets)) {
-            foreach($widgets as $widget) {
+
+        if(isset($widgets) && is_array($widgets))
+            foreach($widgets as $widget)
                 $this->run_widget($widget, $method, $params);
-            }
-        }
     }
     
     function iterateAll($method, array $params = NULL) {
@@ -246,5 +242,3 @@ class WidgetWrapper
             return $this->js;
     }
 }
-
-?>

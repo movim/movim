@@ -42,7 +42,6 @@ class ControllerBase
     public function handle()
     {
         $r = new Route();
-        
         // Note that the request is always specified by 'q'.
         if($request = $this->fetch_get('q')) {
             $this->run_req($request);
@@ -63,14 +62,14 @@ class ControllerBase
             }
             catch(MovimException $e) {
                 // Load default language.
-                load_language(\system\Conf::getServerConfElement('defLang'));
+                load_language(Conf::getServerConfElement('defLang'));
             }
         }
         else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             load_language_auto();
         }
         else {
-            load_language(\system\Conf::getServerConfElement('defLang'));
+            load_language(Conf::getServerConfElement('defLang'));
         }
     }
 
@@ -79,7 +78,6 @@ class ControllerBase
      */
     protected function run_req($request)
     {
- 
         if(is_callable(array($this, $request))) {
             call_user_func(array($this, $request));
         } else {
