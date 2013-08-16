@@ -25,6 +25,9 @@ abstract class Logger
             self::$logs = new \system\Logs\Logs();
         }
         self::$logs->addLog($message,$level,$canal,$file,$line);
+        if ($level<= E_ERROR) {
+            throw new Exception($message, $level);
+        }
 
     }
     static function displayLog()
