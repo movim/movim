@@ -237,7 +237,7 @@ class WidgetCommon extends WidgetBase {
 
     }
     
-    protected function printMap($posts) {
+    protected function printMap($posts, $c = null) {
         $html = '<div style="height: 13em;" id="postsmap"></div>';
         
         $javascript = '
@@ -268,6 +268,27 @@ class WidgetCommon extends WidgetBase {
                     
                 $id++;
             }
+        }
+        
+        if(isset($c) && $c->loclatitude != '' && $c->loclongitude != '') {    
+            $posfound = true;          
+            
+            $popup  = '<img style=\'float: left; margin-right: 1em;\' src=\''.$c->getPhoto('s').'\'/>';
+            $popup .= '<div style=\'padding: 0.5em;\'>'.$c->getPlace().'<br />'.prepareDate(strtotime($c->loctimestamp)).'</div>';
+            $popup .= '<div class=\'clear\'></div>';
+            
+            $javascript .= '
+                var red = L.icon({
+                    iconUrl: "'.BASE_URI.'/themes/movim/img/marker-icon.png",
+                    iconSize:     [25,41], // size of the icon
+                    shadowSize:   [50, 64], // size of the shadow
+                    iconAnchor:   [13, 41]
+                });
+            
+                var marker = L.marker(['.$c->loclatitude.' ,'.$c->loclongitude.'], {icon: red}).addTo(postsmap);
+                marker.bindPopup("'.$popup.'").openPopup();
+                ';
+             $bound .= '['.$c->loclatitude.','.$c->loclongitude.'],';
         }
         
         $javascript .= '

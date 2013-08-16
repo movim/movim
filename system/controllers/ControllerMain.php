@@ -467,7 +467,7 @@ class ControllerMain extends ControllerBase
         if(!isset($_SERVER['PHP_AUTH_USER'])) {
             $this->authenticate();
         } else {
-            $conf = \system\Conf::getServerConf();
+            $conf = Conf::getServerConf();
 
             if($_SERVER['PHP_AUTH_USER'] == (string)$conf['user'] && sha1($_SERVER['PHP_AUTH_PW']) == (string)$conf['pass']){
                 $this->page->setTitle(t('%s - Administration Panel', APP_TITLE));
