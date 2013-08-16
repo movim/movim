@@ -32,9 +32,10 @@
 
 #chats .chat .tab.alert .name {
     display: relative;
+    padding-right: 2.5em;
 }
 
-#chats .chat .tab.alert .name:after {
+#chats .chat .tab.alert .name:before {
     content: "";
     width: 2em;
     height: 2em;
@@ -46,7 +47,8 @@
     float: right;
     background-color: #D92727;
     margin-left: 0.5em;
-    margin-right: -0.5em;
+    margin-right: -2.5em;
+    z-index: 3;
 }
 
 #chats .chat .tab:hover {

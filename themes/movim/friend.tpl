@@ -13,6 +13,7 @@
     <div id="left">
         <?php $this->widget('ContactSummary');?>
         <?php $this->widget('ContactInfo');?>
+        <?php $this->widget('ContactAction');?>
         <?php $this->widget('ContactManage');?>
     </div>
 

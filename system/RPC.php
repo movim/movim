@@ -39,8 +39,8 @@ class RPC
                 );
 
             self::$funcalls[] = $funcall;
-        } else {
-            \system\Logs\Logger::log('RPC cleaning system : '.$funcname.', '.$args[0].' cleared');
+        } elseif(isset($args[0])) {
+            Logger::log('RPC cleaning system : '.$funcname.', '.$args[0].' cleared');
         }
     }
 
