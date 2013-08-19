@@ -40,6 +40,10 @@ body {
     margin: 0px;
 }
 
+#chats {
+    display: none;
+}
+
 nav {
     position: fixed;
 }
@@ -71,6 +75,10 @@ nav .menu li a.disconnect {
     right: 0px;
 }
 
+table#feedsubmitform {
+    margin: 0 1em;
+}
+
 .element {
     width: 100%;
 }
@@ -88,19 +96,19 @@ nav .menu li a.disconnect {
 }
 
 .post .avatar {
-    display: none;
+    margin-right: 1em;
 }
 
 .post .postbubble {
     margin-left: 0px;
     width: 100%;
 }
-
+/*
 .post .content .img {
     max-width: 42%;
     padding: 2px;
 }
-
+*/
 .post .older {
     margin-right: 0px;
 }
@@ -159,12 +167,28 @@ ul.thumb li {
     width: 100% !important;
 }
 
+#logouttab {
+    width: 0em !important;
+    color: transparent !important;
+    background-position: center center !important;
+}
+
 #logoutlist a {
     margin-left: 1em !important;
 }
 
 #roster input[name=search] {
     top: 3em !important;
+}
+
+.popup {
+    width: 100%;
+    left: 0%;
+}
+
+.popup .menu {
+    width: 100%;
+    left: 0%;
 }
 
 }

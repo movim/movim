@@ -250,6 +250,7 @@ legend {
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     padding: 0 1em;
+    text-decoration: none;
     
     min-height: 2em;
     min-width: 2em;

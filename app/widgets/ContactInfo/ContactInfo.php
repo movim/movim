@@ -73,8 +73,6 @@ class ContactInfo extends WidgetCommon
                     
                     $json = json_decode(file_get_contents($l));
                     
-                    //var_dump($json);
-                    
                     $img = $json->album->image[2]->{'#text'};
                     $url = $json->album->url;
                     if(isset($img)) {
@@ -85,7 +83,6 @@ class ContactInfo extends WidgetCommon
                                 <img src="'.$img.'"/>
                             </a>';
                     }
-                    //var_dump();
                 }
                     
                 $html .= $artist.$title.' '.$album.$img;

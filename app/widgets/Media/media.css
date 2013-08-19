@@ -109,7 +109,7 @@
 
 #media .size {
     position: absolute;
-    top: 0px;
+    top: -3em;
     right: 0px;
     line-height: 3em;
     display: block;
