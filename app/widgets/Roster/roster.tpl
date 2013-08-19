@@ -43,9 +43,11 @@
             title="{$c->t('Show/Hide')}">
             <a class="users" href="#"></a>
         </li>
-        <div id="chattoggle">
-            {$c->prepareChatToggle()}
-        </div>
+        {if="$chatbox == true"}
+            <div id="chattoggle">
+                {$c->prepareChatToggle()}
+            </div>
+        {/if}
         <li 
             class="showhide"
             onclick="{$show_hide}"

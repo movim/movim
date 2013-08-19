@@ -138,7 +138,6 @@ body {
 /* Stylish all the links */
 a:link, a:visited {
     color: #2B2B2B ;
-    text-decoration: none ;
 }
 
 /* The protection flags */
@@ -703,15 +702,16 @@ dl dd {
 .popup {
     position: fixed;
     top: 6em;
-    left: 50%;
+    left: 10%;
     z-index: 10;
-    width: 870px;
-    margin-left: -435px;
+    width: 80%;
     max-height: 80%;
     overflow-y: auto;
     display: none;
     background-color: #242424;
     padding: 1em;
+    
+    box-shadow: 0 0 3em black;
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -733,13 +733,15 @@ dl dd {
 .popup .menu {
     position: fixed;
     top: 3em;
-    left: 50%;
-    width: 870px;
-    margin-left: -435px;
+    left: 10%;
+    width: 80%;
     background-color: rgba(0, 0, 0, 0.8);
-    padding-top: 0.5em;
+    padding: 0.5em 0 ;
     padding-left: 0.5em;
-    height: 2.5em;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    height: 3em;
 }
 
 .popup span, .popup p, .popup pre, .popup h2, .popup h3, .popup a {
@@ -748,8 +750,8 @@ dl dd {
 
 .popup legend {
     color: white;
-    border: 0px !important;
-    text-shadow: 0px -1px 0px black;
+    border: 0 !important;
+    text-shadow: 0 -1px 0 black;
 }
 
 /* Dev CSS */

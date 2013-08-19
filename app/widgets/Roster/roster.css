@@ -7,6 +7,15 @@
     height: 100%;
 }
 
+#roster span.nocontacts {
+    color: white;
+    margin: 1.5em;
+    margin-top: 3em;
+    display: inline-block;
+    line-height: 1.7em;
+    text-align: center;
+}
+
 #roster:hover {
     overflow: auto;
 }
@@ -88,6 +97,7 @@
     padding-top: 0.5em;
     text-overflow: ellipsis;
     vertical-align: text-bottom;
+    text-decoration: none;
 
     text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
 }

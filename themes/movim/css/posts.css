@@ -34,10 +34,9 @@
 }
 
 .post .content {
-    padding: 1em;
-    padding-top: 0em;
     line-height: 1.3em;
-    padding-left: 0em;
+    padding: 0em;
+    padding-bottom: 1em;
     word-wrap: break-word;
     overflow: hidden;
 }
@@ -208,7 +207,6 @@
 .post .content u, .post .content a { text-decoration: underline; }
 
 .post a.imglink {
-    text-decoration: none;
     display: inline-block;
     max-width: 100%;
     margin-right: 0.5em;
@@ -248,7 +246,7 @@
 }
 
 .post .content p:first-child {
-    margin-right: 3em;
+    /*margin-right: 3em;*/
 }
 
 .post .content h1, .post .content h2, .post .content h3, .post .content h4 {
