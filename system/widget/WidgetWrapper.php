@@ -199,7 +199,8 @@ class WidgetWrapper
         // We only load the interesting widgets
         if(isset($params)) {
             $fct = $params[0]['type'];
-            if(array_key_exists($fct, $this->registered_events))
+            if(is_array($this->registered_events) && 
+               array_key_exists($fct, $this->registered_events))
                 $widgets = $this->registered_events[$fct];
         } else
             $widgets = $this->get_loaded_widgets();
