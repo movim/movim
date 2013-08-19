@@ -24,6 +24,7 @@ class Admin extends WidgetBase {
     
     function WidgetLoad()
     {
+        $this->addjs('admin.js');
         $this->_conf = Conf::getServerConf();
     }
     
@@ -234,6 +235,9 @@ class Admin extends WidgetBase {
                     <div class="'.$this->isValid($this->testDir(DOCUMENT_ROOT)).'">
                         '.t('Read and write rights for the webserver in Movim\'s root directory').'
                     </div>
+                    <div class="'.$this->isValid(extension_loaded('OpenSSL')).'">
+                        '.t('OpenSSL').'
+                    </div>
                     
             </fieldset>
 
@@ -379,7 +383,8 @@ class Admin extends WidgetBase {
                                 }
         $html .= '          </select>
                         </div>
-                        <br /><br />'.date('l jS \of F Y h:i:s A').'
+                        <br /><br />
+                        <span class="dTimezone">'.date('l jS \of F Y h:i:s A').'</span>
                     </div>';
                     
         $html .= $this->_validatebutton;
@@ -396,7 +401,7 @@ class Admin extends WidgetBase {
                     t("Enter here the BOSH-URL in the form: http(s)://domain:port/path.").' '.
                     t('If you enter an open BOSH-Server, you can connect to many XMPP-Servers.').' '.
                     t('If it is closed, you have to specify the corresponding Server on the next page.').' '.
-                    t('If you are unsure about this config option visit the wiki');
+                    t('If you are unsure about this config option visit the %swiki%s', '<a href="http://wiki.movim.eu/install">', '</a>');
                 '</p>';
                     
         if(!$this->testBosh($this->_conf['boshUrl'])) {
