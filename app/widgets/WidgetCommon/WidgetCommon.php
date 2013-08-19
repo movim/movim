@@ -92,14 +92,14 @@ class WidgetCommon extends WidgetBase {
         if($post->tags)
             $tags = $this->printTags($post->tags);
                 
-        if(isset($enc))
+        if(isset($enc) && $enc != '') {
             $enc = '
                 <div class="enclosure">'.
                     $enc.
                 '
                     <div class="clear"></div>
                 </div>';
-        else
+        } else
             $enc = '';
 
         $content = prepareString(html_entity_decode($post->content));

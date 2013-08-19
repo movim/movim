@@ -81,9 +81,9 @@ class Media extends WidgetBase {
     
         $html = 
             $this->listFiles().'                
-            <span class="size">
-                '.sizeToCleanSize($this->user->dirSize()).' '.t('on').' '.sizeToCleanSize($this->user->sizelimit).
-                ' - '.
+            <span class="size"
+                title="'.sizeToCleanSize($this->user->dirSize()).' '.t('on').' '.sizeToCleanSize($this->user->sizelimit).'"
+            >'.
                 $percent.'%
             </span>';
         

@@ -31,6 +31,12 @@ class Config extends WidgetBase
         $this->view->assign('conf',      $this->user->getConfig('language'));
         $this->view->assign('color',     $this->user->getConfig('color'));
         $this->view->assign('size',      $this->user->getConfig('size'));
+        
+        if($this->user->getConfig('chatbox') == 1)
+            $this->view->assign('chatbox', 'checked="true"');
+        else
+            $this->view->assign('chatbox', 'checked="false"');
+        
         $this->view->assign('submit',    
             $this->genCallAjax(
                 'ajaxSubmit', 

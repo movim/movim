@@ -46,7 +46,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Media'), 'media');
             $this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
-            $this->page->menuAddLink(t('Logout'), 'disconnect');
+            //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
             $content = new TplPageBuilder($user);
 
@@ -71,7 +71,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Media'), 'media');
             $this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
-            $this->page->menuAddLink(t('Logout'), 'disconnect');
+            //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
             $content = new TplPageBuilder($user);
 
@@ -104,7 +104,7 @@ class ControllerMain extends ControllerBase
                 $this->page->menuAddLink(t('Media'), 'media');
                 $this->page->menuAddLink(t('Configuration'), 'conf');
                 $this->page->menuAddLink(t('Help'), 'help');
-                $this->page->menuAddLink(t('Logout'), 'disconnect');
+                //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
                 $content = new TplPageBuilder($user);
 
@@ -132,7 +132,7 @@ class ControllerMain extends ControllerBase
                 $this->page->menuAddLink(t('Media'), 'media');
                 $this->page->menuAddLink(t('Configuration'), 'conf');
                 $this->page->menuAddLink(t('Help'), 'help');
-                $this->page->menuAddLink(t('Logout'), 'disconnect');
+                //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
                 $content = new TplPageBuilder($user);
 
@@ -160,7 +160,7 @@ class ControllerMain extends ControllerBase
                 $this->page->menuAddLink(t('Media'), 'media');
                 $this->page->menuAddLink(t('Configuration'), 'conf');
                 $this->page->menuAddLink(t('Help'), 'help');
-                $this->page->menuAddLink(t('Logout'), 'disconnect');
+                //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
                 $content = new TplPageBuilder($user);
 
@@ -188,7 +188,7 @@ class ControllerMain extends ControllerBase
                 $this->page->menuAddLink(t('Media'), 'media');
                 $this->page->menuAddLink(t('Configuration'), 'conf');
                 $this->page->menuAddLink(t('Help'), 'help');
-                $this->page->menuAddLink(t('Logout'), 'disconnect');
+                //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
                 $content = new TplPageBuilder($user);
 
@@ -215,7 +215,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Media'), 'media', true);
             $this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
-            $this->page->menuAddLink(t('Logout'), 'disconnect');
+            //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
             $content = new TplPageBuilder($user);
 
@@ -239,7 +239,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Media'), 'media');
             $this->page->menuAddLink(t('Configuration'), 'conf', true);
             $this->page->menuAddLink(t('Help'), 'help');
-            $this->page->menuAddLink(t('Logout'), 'disconnect');
+            //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
             $content = new TplPageBuilder($user);
 
@@ -263,7 +263,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Media'), 'media');
             $this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
-            $this->page->menuAddLink(t('Logout'), 'disconnect');
+            //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
             $content = new TplPageBuilder($user);
 
@@ -331,7 +331,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Profile'), 'profile');
             $this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
-            $this->page->menuAddLink(t('Logout'), 'disconnect');
+            //$this->page->menuAddLink(t('Logout'), 'disconnect');
 
             $content = new TplPageBuilder($user);
 
@@ -405,7 +405,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Media'), 'media');
             $this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help');
-            $this->page->menuAddLink(t('Logout'), 'disconnect');
+            //$this->page->menuAddLink(t('Logout'), 'disconnect');
             
             $content = new TplPageBuilder($user);
             $this->page->setContent($content->build('explore.tpl'));
@@ -449,7 +449,7 @@ class ControllerMain extends ControllerBase
             $this->page->menuAddLink(t('Media'), 'media');
             $this->page->menuAddLink(t('Configuration'), 'conf');
             $this->page->menuAddLink(t('Help'), 'help', true);
-            $this->page->menuAddLink(t('Logout'), 'disconnect');
+            //$this->page->menuAddLink(t('Logout'), 'disconnect');
             
             $content = new TplPageBuilder($user);
             $this->page->setContent($content->build('help.tpl'));
