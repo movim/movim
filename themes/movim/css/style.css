@@ -676,6 +676,7 @@ dl dd {
     padding-right: 1em;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
 }
 
 .breadcrumb > a:first-child {
