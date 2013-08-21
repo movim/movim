@@ -315,12 +315,12 @@ class Roster extends WidgetBase
         if($chatpop) {
             $arrow = 'expand';
             $ptoggle = 'openPopup();';
-            $call = $this->genCallAjax('ajaxToggleChat');
         } else {
             $arrow = 'contract';
             $ptoggle = 'closePopup();';
-            $call = '';
         }
+        
+        $call = $this->genCallAjax('ajaxToggleChat');
         
         $html = '
             <li 

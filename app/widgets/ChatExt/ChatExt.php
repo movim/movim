@@ -25,17 +25,19 @@ class ChatExt extends WidgetBase
     function WidgetLoad()
     {
         $this->addjs('chatext.js');
-        if($this->user->getConfig('chatbox') == 1) {
+        //if($this->user->getConfig('chatbox') == 1) {
             $this->registerEvent('message', 'onMessage');
             $this->registerEvent('openchat', 'onEvent');
             $this->registerEvent('closechat', 'onEvent');
-        }
+        //}
     }
     
     function prepareChat($contact)
     {
         $md = new \modl\MessageDAO();
         $messages = $md->getContact($contact->jid, 0, 10);
+        
+        $messageshtml ='';
 
         if(!empty($messages)) {
             $day = '';
@@ -80,7 +82,7 @@ class ChatExt extends WidgetBase
     {
         if($first)
             $checked = ' checked ';
-        $html .= '
+        $html = '
             <li>
                 <input type="radio" name="contact" id="contact'.$contact->jid.'" '.$checked.'/>
                 <label class="tab" for="contact'.$contact->jid.'" onclick="setTimeout(function() {scrollAllTalks()}, 100);">
