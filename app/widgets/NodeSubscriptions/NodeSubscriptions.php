@@ -89,6 +89,8 @@ class NodeSubscriptions extends WidgetBase
     
     function build()
     {
+        // A little filter to hide the widget if we load a PEP node
+        if(!filter_var($_GET['s'], FILTER_VALIDATE_EMAIL)) {
         ?>
         <div id="subscriptions" class="tabelem" title="<?php echo t('Manage your subscriptions'); ?>">
             <h1><?php echo t('Manage the subscriptions'); ?></h1>
@@ -103,6 +105,7 @@ class NodeSubscriptions extends WidgetBase
             <div id="subscriptionslist" class="paddedtop"></div>
         </div>
         <?php
+        }
     }
 }
 

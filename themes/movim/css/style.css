@@ -751,8 +751,12 @@ dl dd {
 
 .popup legend {
     color: white;
-    border: 0 !important;
+    border-color: #444 !important;
     text-shadow: 0 -1px 0 black;
+}
+
+.popup .element label {
+    color: white;
 }
 
 /* Dev CSS */
