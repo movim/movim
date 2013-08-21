@@ -543,7 +543,7 @@ class Chat extends WidgetBase
         
 
         
-        $html .= $chatview->draw('_chat_contact', true);
+        $html = $chatview->draw('_chat_contact', true);
 
         return $html;
         
