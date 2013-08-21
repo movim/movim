@@ -84,6 +84,8 @@ class NodeAffiliations extends WidgetBase
     
     function build()
     {
+        // A little filter to hide the widget if we load a PEP node
+        if(!filter_var($_GET['s'], FILTER_VALIDATE_EMAIL)) {
         ?>
         <div class="tabelem" title="<?php echo t('Manage your members'); ?>" id="groupmemberlist">
             <h1><?php echo t('Manage your members'); ?></h1>
@@ -98,6 +100,7 @@ class NodeAffiliations extends WidgetBase
             <div id="memberlist" class="paddedtop"></div>
         </div>
         <?php
+        }
     }
 }
 
