@@ -23,6 +23,7 @@
                     if(event.keyCode == 13) {
                         state = 0;
                         {$send}
+                        return false;
                     } else {
                         if(state == 0 || state == 2) {
                             state = 1;
@@ -32,6 +33,7 @@
                     }
                     "
                 onkeyup="
+                    movim_textarea_autoheight(this);
                     setTimeout(function()
                     {
                         if(state == 1 && since+5000 < new Date().getTime()) {
