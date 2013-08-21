@@ -173,13 +173,16 @@ class Node extends WidgetCommon
                 <form name="groupsubscribe">
                     <fieldset>
                         <legend>'.t('Subscribe').'</legend>
-                        <div class="element large mini">
-                            <input type="checkbox" name="listgroup" id="listgroup"/>
-                            <span><label for="listgroup">'.t('Make your membership to this group public to your friends').'</label></span>
+                        <div class="element">
+                            <label>'.t('Make your membership to this group public to your friends').'</label>                            
+                            <div class="checkbox">
+                                <input type="checkbox" name="listgroup" id="listgroup"/>
+                                <label for="listgroup"></label>
+                            </div>
                         </div>
-                        <div class="element large mini">
+                        <div class="element">
+                            <label for="grouptitle">'.t('Give a nickname to this group if you want').'</label>
                             <input type="text" name="title" value="'.$groupid.'" id="grouptitle"/>
-                            <span><label for="grouptitle">'.t('Give a nickname to this group if you want').'</label></span>
                         </div>
                     </fieldset>
                     <div class="menu">
@@ -189,7 +192,7 @@ class Node extends WidgetCommon
                                 '.$this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'").'
                                 this.onclick=null;"
                         >'.t('Subscribe').'</a><a 
-                            class="button tiny icon black merged right" 
+                            class="button tiny icon no black merged right" 
                             onclick="
                                 movim_toggle_display(\'#groupsubscribe\');"
                         >'.t('Close').'</a>
@@ -200,8 +203,8 @@ class Node extends WidgetCommon
                 <form name="groupunsubscribe">
                     <fieldset>
                         <legend>'.t('Unsubscribe').'</legend>
-                        <div class="element large mini">
-                            <span>'.t('Are you sure ?').'</span>
+                        <div class="element">
+                            <label>'.t('Are you sure ?').'</label>
                         </div>
                     </fieldset>
                     <div class="menu">

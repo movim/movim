@@ -28,7 +28,7 @@ class PubsubSubscriptionConfig extends WidgetBase
     }
     
     function prepareList($list) { 
-        if(is_array($list[0])){
+        if(isset($list) && is_array($list[0])){
             $html = '<ul class="list">';
             foreach($list as $item){
                 $delete = $this->genCallAjax('ajaxDeleteFromGroupSubscribedList', "'".$item[0]."'", "'".$item[1]."'");
@@ -41,7 +41,7 @@ class PubsubSubscriptionConfig extends WidgetBase
             $html .= '</ul>';
             return $html;
         }
-        else return "No groups found";
+        else return t('No public groups found');
     }
     
     function onGroupRemoved($node) {       
