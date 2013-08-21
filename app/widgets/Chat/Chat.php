@@ -504,67 +504,47 @@ class Chat extends WidgetBase
             $panelstyle = ' style="display: block;" ';
         }
 
-        $html = '
-            <div class="chat" 
-                 onclick="this.querySelector(\'textarea\').focus()"
-                 id="chat'.$contact->jid.'">
-                <div class="panel" '.$panelstyle.'>
-                    <div class="head" >
-                        <span class="chatbutton cross" onclick="'.$this->genCallAjax("ajaxCloseTalk", "'".$contact->jid."'").'"></span>
-                        <span class="chatbutton arrow" onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'").' hideTalk(this)"></span>
-                        <a class="name" href="'.Route::urlize('friend',$contact->jid).'">
-                            '.$contact->getTrueName().'
-                        </a>
-                    </div>
-                    <div class="messages" id="messages'.$contact->jid.'">
-                        '.$messageshtml.'
-                        <div style="display: none;" class="message composing" id="composing'.$contact->jid.'">'.t('Composing...').'</div>
-                        <div style="display: none;" class="message composing" id="paused'.$contact->jid.'">'.t('Paused...').'</div>                        
-                    </div>
-                    
-                    <div class="text">
-                         <textarea 
-                            rows="1"
-                            id="textarea'.$contact->jid.'"
-                            onkeypress="
-                                    if(event.keyCode == 13) {
-                                        '.$this->genCallAjax(
-                                            'ajaxSendMessage', 
-                                            "'".$contact->jid."'", 
-                                            "sendMessage(this, '".$contact->jid."')"
-                                        ).'
-                                        lastkeypress = new Date().getTime()+1000;
-                                        return false;
-                                    }
+        $chatview = $this->tpl();
+        
+        $chatview->assign('contact', $contact);
+        $chatview->assign('tabstyle', $tabstyle);
+        $chatview->assign('panelstyle', $panelstyle);
+        $chatview->assign('messageshtml', $messageshtml);
+        $chatview->assign(
+            'closetalk', 
+            $this->genCallAjax("ajaxCloseTalk", "'".$contact->jid."'")
+        );
+        $chatview->assign(
+            'hidetalk', 
+            $this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'")
+        );
+        $chatview->assign(
+            'send', 
+            $this->genCallAjax(
+                'ajaxSendMessage', 
+                "'".$contact->jid."'", 
+                "sendMessage(this, '".$contact->jid."')"
+            )
+        );
+        $chatview->assign(
+            'composing', 
+            $this->genCallAjax(
+                'ajaxSendComposing', 
+                "'".$contact->jid."'"
+            )
+        );
+        $chatview->assign(
+            'paused', 
+            $this->genCallAjax(
+                'ajaxSendPaused', 
+                "'".$contact->jid."'"
+            )
+        );
+        
 
-                                    if(lastkeypress < new Date().getTime())
-                                        '.$this->genCallAjax('ajaxSendComposing', "'".$contact->jid."'").'
+        
+        $html .= $chatview->draw('_chat_contact', true);
 
-                                    lastkeypress = new Date().getTime()+1000;
-                                "
-                            onkeyup="
-                                movim_textarea_autoheight(this);
-                                var val = this.value;
-                                setTimeout(function()
-                                {
-                                    if(lastkeypress < new Date().getTime() && val != \'\') {
-                                    '.$this->genCallAjax('ajaxSendPaused', "'".$contact->jid."'").'
-                                        lastkeypress = new Date().getTime()+1000;
-                                    }
-                                },1100); // Listen for 2 seconds of silence
-                            "
-                        ></textarea>
-                    </div>
-                </div>
-                
-                <div class="tab" '.$tabstyle.' onclick="'.$this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'").' showTalk(this);">
-                    <div class="name">
-                        <img class="avatar"  src="'.$contact->getPhoto('xs').'" />'.$contact->getTrueName().'
-                    </div>
-                </div>
-            </div>
-
-            ';
         return $html;
         
 /* This is the un optimized system to send "composing" and "paused"
@@ -577,6 +557,33 @@ class Chat extends WidgetBase
                                     '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
                                     return false;
                                 }"
+                            onkeypress="
+                                    if(event.keyCode == 13) {
+                                        '.$this->genCallAjax(
+                                            'ajaxSendMessage', 
+                                            "'".$contact->jid."'", 
+                                            "sendMessage(this, '".$contact->jid."')"
+                                        ).'
+                                        lastkeypress = new Date().getTime()+2000;
+                                        return false;
+                                    }
+
+                                    if(lastkeypress < new Date().getTime())
+                                        '.$this->genCallAjax('ajaxSendComposing', "'".$contact->jid."'").'
+
+                                    lastkeypress = new Date().getTime()+2000;
+                                "
+                            onkeyup="
+                                movim_textarea_autoheight(this);
+                                var val = this.value;
+                                setTimeout(function()
+                                {
+                                    if(lastkeypress < new Date().getTime() && val != \'\') {
+                                        '.$this->genCallAjax('ajaxSendPaused', "'".$contact->jid."'").'
+                                        lastkeypress = new Date().getTime()+2000;
+                                    }
+                                },2000); // Listen for 2 seconds of silence
+                            "
      
     * */
     }

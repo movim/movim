@@ -65,7 +65,7 @@ class Bootstrap {
         if($path == "") {
             $uri .= $_SERVER['HTTP_HOST'] . '/';
         } else {
-            $uri .= $_SERVER['HTTP_HOST'] . $path;
+            $uri .= str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
         }
 
         $uri = str_replace('jajax.php', '', $uri);

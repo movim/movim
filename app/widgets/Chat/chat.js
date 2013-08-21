@@ -5,6 +5,12 @@ function scrollAllTalks() {
         mes.item(i).scrollTop = mes.item(i).scrollHeight + 200;
     }
 }
+
+function scrollTalk(params) {
+    var messages = document.getElementById(params);
+    messages.scrollTop = messages.scrollHeight;
+}
+
 //Loads the Notification sound.
 /*var chatSoundNotif = document.createElement('audio');
 chatSoundNotif.setAttribute('src', './system/Widget/widgets/Chat/sound/notif.ogg');
@@ -38,11 +44,6 @@ function hideTalk(n) {
     tab.style.display = 'block';
 }
 
-function scrollTalk(params) {
-    var messages = document.getElementById(params);
-    messages.scrollTop = messages.scrollHeight;
-}
-
 function showComposing(jid) {
     var box = document.getElementById('messages' + jid);
     var composing = document.getElementById('composing' + jid);
@@ -67,9 +68,9 @@ function notify() {
     if(document_focus == false) {
         movim_title_inc();
         //play the notif sound
-        chatSoundNotif.pause();
+        /*chatSoundNotif.pause();
         chatSoundNotif.currentTime= 0;
-        chatSoundNotif.play();
+        chatSoundNotif.play();*/
     }
 
 }
