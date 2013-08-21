@@ -52,6 +52,8 @@ class ContactInfo extends WidgetCommon
             
             // Tune
             if($c->tuneartist || $c->tunetitle) {
+                $album = $artist = $title = $img = '';
+                
                 $html .= '<h2>'.t('Listening').'</h2>';
                 if($c->tuneartist)
                     $artist = $c->tuneartist. ' - ';
@@ -89,7 +91,7 @@ class ContactInfo extends WidgetCommon
             }
             
             // Last seen
-            if( isset($c->delay) 
+            if(isset($c->delay) 
                 && $c->delay 
                 && $c->delay != '0000-00-00 00:00:00') {
                 $html .= '<h2>'.t('Last seen').'</h2>';
