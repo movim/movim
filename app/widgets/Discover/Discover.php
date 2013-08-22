@@ -20,26 +20,29 @@ class Discover extends WidgetCommon {
                 <div class="post">
                     <a href="'.Route::urlize('blog', array($user->jid, false)).'">
                         <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                        <div class="postbubble">
-                            <span class="name">'.
-                                $user->getTrueName().'
-                            </span>
-                            <span class="asv">'.
-                                $user->getAge().' '.
-                                $gender[$user->gender].' '.
-                                $marital[$user->marital].'
-                            </span>
-                            <div 
-                                class="content"
-                                style="
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    white-space: nowrap;
-                                    height: 1.5em;
-                                "
-                            >'.prepareString($user->desc).'</div>
-                        </div>
                     </a>
+                    <div class="postbubble">
+                        <span class="name">
+                            <a href="'.Route::urlize('blog', array($user->jid, false)).'">'.
+                                $user->getTrueName().'
+                            </a>
+                        </span>
+                        <span class="asv">'.
+                            $user->getAge().' '.
+                            $gender[$user->gender].' '.
+                            $marital[$user->marital].'
+                        </span>
+                        <div 
+                            class="content"
+                            style="
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                height: 1.5em;
+                            "
+                        >'.prepareString($user->desc).'</div>
+                    </div>
+                    
                 </div>
                 ';
         }

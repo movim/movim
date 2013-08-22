@@ -47,36 +47,39 @@ class ContactManage extends WidgetCommon
         
         $groups = $rd->getGroups();
         $rl = $rd->get($jid);
-        
-        $submit = $this->genCallAjax('ajaxContactManage', "movim_parse_form('manage')");
-        
+                    
         $html = '';
         
-        $html .= '<h2>'.t('Manage').'</h2>';
+        if(isset($rl)) {
         
-        $html .= '
-            <form name="manage">';
+            $submit = $this->genCallAjax('ajaxContactManage', "movim_parse_form('manage')");
             
-        $ghtml = '';
-        foreach($groups as $g)
-            $ghtml .= '<option value="'.$g.'"/>';
+            $html .= '<h2>'.t('Manage').'</h2>';
             
-        $html .= '
-                <input type="hidden" name="jid" value="'.$jid.'"/>
-                <div class="element large mini">
-                    <input name="alias" id="alias" class="tiny" placeholder="'.t('Alias').'" value="'.$rl->rostername.'"/>
-                </div>
-                <div class="element large mini">
-                    <datalist id="group" style="display: none;">
-                        '.$ghtml.'
-                    </datalist>
-                    <input name="group" list="group" id="alias" class="tiny" placeholder="'.t('Group').'" value="'.$rl->group.'"/>
-                </div>
+            $html .= '
+                <form name="manage">';
                 
-                <a name="submit" class="button black icon yes" onclick="'.$submit.' this.style.display = \'none\';">'.t('Save').'</a>';
-            
-        $html .= '
-            </form>';
+            $ghtml = '';
+            foreach($groups as $g)
+                $ghtml .= '<option value="'.$g.'"/>';
+                
+            $html .= '
+                    <input type="hidden" name="jid" value="'.$jid.'"/>
+                    <div class="element large mini">
+                        <input name="alias" id="alias" class="tiny" placeholder="'.t('Alias').'" value="'.$rl->rostername.'"/>
+                    </div>
+                    <div class="element large mini">
+                        <datalist id="group" style="display: none;">
+                            '.$ghtml.'
+                        </datalist>
+                        <input name="group" list="group" id="alias" class="tiny" placeholder="'.t('Group').'" value="'.$rl->group.'"/>
+                    </div>
+                    
+                    <a name="submit" class="button black icon yes" onclick="'.$submit.' this.style.display = \'none\';">'.t('Save').'</a>';
+                
+            $html .= '
+                </form>';
+        }
         
         return $html;
     }
