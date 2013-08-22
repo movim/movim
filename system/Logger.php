@@ -199,9 +199,9 @@ abstract class Logger
     }
     
     static function displayLog() {
-        $logs = file_get_contents(LOGFILE);
+        /*$logs = file_get_contents(LOGFILE);
         
-        echo $logs;
+        echo $logs;*/
         
         foreach(self::$logs as $l) {
             echo $l.'<br />';
