@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DOCUMENT_ROOT')) die('Access denied');
 /**
  * @file RPC.php
  * This file is part of PROJECT.
@@ -106,7 +106,10 @@ class RPC
             $params = (array)$request->params;
 
             $result = array();
-
+            \system\Logs\Logger::log('c\'est un test', 3, 'test', __file__, __line__);
+            \system\Logs\Logger::log('c\'est un test2', 3, 'test', __file__, __line__);
+            \system\Logs\Logger::log('c\'est un test', 1, 'test', __file__, __line__);
+            
 
             foreach($params as $p) {
                 if(is_object($p) && $p->container)

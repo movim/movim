@@ -1,5 +1,7 @@
 <?php
 namespace system;
+if (!defined('DOCUMENT_ROOT')) die('Access denied');
+
 class Conf
 {
     public static $conf_path = "/config";
@@ -28,7 +30,7 @@ class Conf
     
     static function getDefault() {
         return array(
-            'environment' => 'development',//allow "production" and "development" for the moment
+            'environment' => 'production',//allow "production" and "development" for the moment
             'theme'     => 'movim',
             'defLang'   => 'en',
             'maxUsers'  => -1,

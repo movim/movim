@@ -17,19 +17,22 @@
  */
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
+define('DOCTYPE','application/json');
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
+try {
+    $bootstrap = new Bootstrap();
+    $booted = $bootstrap->boot();
 
-$bootstrap = new Bootstrap();
-$booted = $bootstrap->boot();
+    set_time_limit(200);
 
-set_time_limit(200);
+    $polling = true;
 
-$polling = true;
+    $rpc = new RPC();
+    $rpc->handle_json();
 
-$rpc = new RPC();
-$rpc->handle_json();
-
-// Closing stuff
-WidgetWrapper::destroyInstance();
-
+    // Closing stuff
+    WidgetWrapper::destroyInstance();
+} catch(\Exception $e) {
+    print $e->getMessage();
+}
 ?>

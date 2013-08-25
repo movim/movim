@@ -28,7 +28,6 @@ function __autoload($className)
 /**
  * Error Handler...
  */
-
 function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcontext=null ) 
 {
     \system\Logs\Logger::addLog( $errstr,$errno,'system',$errfile,$errline);
@@ -78,11 +77,14 @@ class Bootstrap {
         foreach($listWritableFile as $fileName) {
             if (!file_exists($fileName)) {
                 if (touch($fileName) !== true) {
-                    $errors[] = 'Impossible de créer le fichier '.$fileName.': vérifiez les permissions';
+                    $errors[] = 'We\'re unable to write to '.$fileName.': check rights';
                 } 
             }else if (is_writable($fileName) !== true) {
-                $errors[] = 'Le systeme n\'a pas les droits d\'écriture sur le fichier '.$fileName.': vérifiez les permissions';
+                $errors[] = 'We\'re unable to write to file '.$fileName.': check rights';
             }
+        }
+        if (!function_exists('json_decode')) {
+             $errors[] = 'You need to install php5-json that\'s not seems to be installed';
         }
         if (count($errors)) {
             throw new Exception(implode("\n<br />",$errors));
@@ -101,6 +103,10 @@ class Bootstrap {
         define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');
         define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
+        
+        if (!defined('DOCTYPE')) {
+            define('DOCTYPE','text/html');
+        }
     }
 
     private function getVersion() {
