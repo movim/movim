@@ -50,28 +50,26 @@ try {
     $rqst->handle();
     
     WidgetWrapper::getInstance(false);
-   
+
     // Closing stuff
     WidgetWrapper::destroyInstance();
     
 } catch (Exception $e) {
     //manage errors
-    \system\Logger::displayDebugCSS();
+    \system\Logs\Logger::displayDebugCSS();
     if (ENVIRONMENT === 'development') {
         
         ?>
-            <div id="debug" class="error">
-                <h2>Une erreur est survenue</h2>
+            <div id="FinalException" class="error debug">
+                <h2>An error happened</h2>
                 <p><?php print $e->getMessage();?></p>
-                <?php
-                    \system\Debug::dump($e);
-                ?>
             </div>
         <?php
     } else {
         ?>
         <div class="carreful">
-            <p>Oops... something went wrong.<br />But don't panic. The NSA is on the case.</p>
+            <h2> Oops... something went wrong.</h2>
+            <p>But don't panic. The NSA is on the case.</p>
         </div>
         <?php
     }

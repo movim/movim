@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DOCUMENT_ROOT')) die('Access denied');
 /**
  * @package Widgets
  *
