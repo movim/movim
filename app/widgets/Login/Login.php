@@ -54,7 +54,7 @@ class Login extends WidgetBase {
                 '<a href="#" onclick="fillExample(\'your.id@gmail.com \', \'\');">', '</a>'));
                 
         $this->view->assign('facebook',
-            t('You can login with Facebook (chat only) using %s your.id@chat.facebook.com %s and your password',
+            t('You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password',
                 '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
     }
 
