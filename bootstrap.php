@@ -174,6 +174,9 @@ class Bootstrap {
             } elseif(preg_match('|Safari/([0-9\.]+)|',$useragent,$matched)) {
                 $browser_version=$matched[1];
                 $browser = 'Safari';
+            } else {
+                $browser_version = 0;
+                $browser = 'other';
             }
         } else {
             $browser_version = 0;
