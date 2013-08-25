@@ -56,6 +56,21 @@ class Login extends WidgetBase {
         $this->view->assign('facebook',
             t('You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password',
                 '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
+        
+        $xmppWhiteList = Conf::getServerConf()['xmppWhiteList'];
+        if(isset($xmppWhiteList) && $xmppWhiteList!=''){
+            $this->view->assign('whitelist',
+                t('<p>This server accept only connection with xmpp accounts from these servers :</p>
+                <p style="font-weight:bold;text-align:center;margin:5px;">'.Conf::getServerConf()['xmppWhiteList'].'</p>
+                <p>If you don\'t have such xmpp account, you can try <a href="http://pod.movim.eu">another public Movim</a> client.</p>'));
+            
+            $this->view->assign('jabber_display', 'none');
+            $this->view->assign('gmail_display', 'none');
+            $this->view->assign('facebook_display', 'none');
+            $this->view->assign('whitelist_display', 'block');
+        }else{
+            $this->view->assign('whitelist_display', 'none');
+        }
     }
 
     function onConfig(array $data)

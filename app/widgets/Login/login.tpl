@@ -42,16 +42,19 @@
             <div class="clear"></div>
             
             <ul id="loginhelp">
-                <li id="jabber">{$c->t('You can login using your favorite Jabber account')}
+                <li id="jabber" style="display:{$jabber_display};">{$c->t('You can login using your favorite Jabber account')}
                 <a href="#" onclick="fillExample('demonstration@movim.eu', 'demonstration');">
                     {$c->t('or with our demonstration account')}
                 </a>
                 </li>
-                <li id="gmail">
+                <li id="gmail" style="display:{$gmail_display};">
                     {$gmail}
                 </li>
-                <li id="facebook">
+                <li id="facebook" style="display:{$facebook_display};">
                     {$facebook}
+                </li>
+                <li id="whitelist" style="display:{$whitelist_display};">
+                    {$whitelist}
                 </li>
             </ul>
             
