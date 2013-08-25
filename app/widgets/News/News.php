@@ -1,4 +1,5 @@
 <?php
+if (!defined('DOCUMENT_ROOT')) die('Access denied');
 
 class News extends WidgetCommon {
     private $_feedsize = 20;
@@ -31,7 +32,9 @@ class News extends WidgetCommon {
         
         $this->view->assign('news', $this->prepareNews(-1));
     }
-    
+    /**
+     * @todo nexthtml not always set... Add comments...
+     */
     function prepareNext($start, $html = '', $posts, $function = 'ajaxGetFeed') {
          // We ask for the HTML of all the posts
         
@@ -47,8 +50,8 @@ class News extends WidgetCommon {
                     </div>
                 </div>';
         }   
-        
-        return $nexthtml;    
+
+        return $nexthtml;
     }
     
     function prepareNews($start) {

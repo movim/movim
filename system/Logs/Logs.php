@@ -8,7 +8,12 @@ if (!defined('DOCUMENT_ROOT')) die('Access denied');
 class Logs
 {
 
-    static $defined;
+    const LEVEL_TO_STOP = E_ERROR;
+    /**
+     * set if a logs is already defined: Singleton, only one "new Logs();"
+     * @var bool
+     */
+    static protected $defined;
 
     protected $logs = array();
     public function __construct()
@@ -19,21 +24,78 @@ class Logs
         self::$defined = true;
 
     }
-
     
+    /**
+     * When script die, save all logs not already saved
+     */
+    public function __destruct()
+    {
+        $this->defaultSaveLogs();
+    }
 
+    /**
+     * alias function of addLog (shorter)
+     */
     public function log($message,$level=E_NOTICE,$canal='debug',$file=null,$line=null)
     {
         $this->addLog($message,$level,$canal,$file,$line);
 
     }
 
+    /**
+     * adding log array to collection. It's the only access point for this... !!! 
+     * Trow an exception if error level is too critical
+     * @param sting $message
+     * @param int $level Define your log level criticity
+     * @param string $canal tag your log, debug, system, error... 
+     * @param string $file
+     * @param int $line
+     */
     public function addLog($message,$level=E_NOTICE,$canal='debug',$file=null,$line=null)
     {
+        $level = (int)$level;
+        $line = (int)$line;
         if (!is_string($message)) {
             $message = var_export($message, true);
         }
-        array_push($this->logs, array('message'=>$message,'level'=>$level,'file'=>$file,'line'=>$line,'canal'=>$canal,'date'=> time()));
+        $log = array('message'=>$message,'level'=>$level,'file'=>$file,'line'=>$line,'canal'=>$canal,'date'=> time());
+        array_push($this->logs, $log);
+        $this->writeSingleLog($log);
+        if ($level <= self::LEVEL_TO_STOP) {
+            $this->criticalEvent($log);
+        }
+        
+    }
+    /**
+     * just defined what to do when a critical log is sent here
+     * @param array $log
+     * @throws Exception
+     */
+    protected function criticalEvent($log) {
+        $file ='';
+        $line=0;
+        if (!headers_sent ($file , $line )) {
+            if (ENVIRONMENT === 'development') {
+                header('HTTP/1.1 500 '.$log['message']);
+            } else {
+                header('HTTP/1.1 500 Internal Server Error');
+            }
+            
+        } else {
+            $log['message'].= ' - Headers sent on file '.$file.' l.'.$line;
+        }
+        if (ENVIRONMENT === 'development') {
+            
+            if (DOCTYPE!=='text/html') {
+                $this->displayInlineLogs();
+            }
+            ob_end_flush();
+            throw new \Exception('Fatal Error : '.$this->getDisplayLog($log,true, true),$log['level']);
+        } else {
+            ob_end_flush();
+            throw new \Exception('Fatal Error');
+        }
+        
     }
 
     /**
@@ -47,11 +109,17 @@ class Logs
     }
 
     /**
-     * 
+     * get One log display, in html or in text
      * @param array $log
+     * @param bool $stripTags
+     * @param type $removeBreak
+     * @return string
      */
     protected function getDisplayLog($log,$stripTags=false,$removeBreak=false)
     {
+        if (!is_array($log)) {
+            throw new Exception('Error type in getDisplayLog:"'.  gettype($log).'"');
+        }
         if ($stripTags) {
             $log['message'] = strip_tags($log['message']);
         }
@@ -67,7 +135,11 @@ class Logs
         }
         return $strReturn;
     }
-    public function displayLog()
+    /**
+     * Function to display all logs in html
+     * @return string
+     */
+    public function displayLogs()
     {
         $logs = $this->getLogs();
         $html = '';
@@ -79,48 +151,48 @@ class Logs
         print $html;
 
     }
+    /**
+     * Function to display all logs inline
+     * @return string
+     */
+    public function displayInlineLogs()
+    {
+        $logs = $this->getLogs();
+        $text = '';
+        if (!empty($logs)) {
+            foreach ($logs as $l) $text .= $this->getDisplayLog($l,true,true). "\n";
+        }
+        print $text;
 
-    public function getInlineLogs()
+    }
+
+    /**
+     * Function to return all logs in text
+     * @param bool $stripTags
+     * @return string
+     */
+    public function getInlineLogs($removeBreak=true)
     {
         $logs = $this->getLogs();
         $txt = '';
         foreach ($logs as $l) {
             
-                $txt .= $this->getDisplayLog($l,true,true) . "\n";
+                $txt .= $this->getDisplayLog($l,true,$removeBreak) . "\n";
             
         }
         return $txt;
 
     }
 
-    public function saveLogs($file)
+    /**
+     * save and clear logs
+     * @param string $file
+     */
+    public function saveAndClearLogs($file)
     {
         if (count($this->logs)) {
             try {
-                if (LOG_MANAGEMENT == 'log_folder') {
-                    $f = fopen($file, 'a');
-                    if ($f === false) {
-                        throw new \Exception('Canno\'t open file ' . htmlentities($file));
-                    }
-                    if (false === fwrite($f, $this->getInlineLogs())) {
-                        fclose($f);
-                        throw new \Exception('Canno\'t write to file ' . htmlentities($file));
-                    }
-                    fclose($f);
-                    $this->clearLogs();
-                } else if (LOG_MANAGEMENT == 'error_log') {
-                    foreach ($this->logs as $log) {
-                        error_log($this->getDisplayLog($log,true,true));
-                    }
-                    $this->clearLogs();
-                } else if (LOG_MANAGEMENT == 'syslog') {
-                    foreach ($this->logs as $log) {
-                        syslog($log['level'], $this->getDisplayLog($log,true,true));
-                    }
-                    $this->clearLogs();
-                } else {
-                    throw new \Exception('Error configuration: LOG_MANAGEMENT not defined');
-                }
+                $this->saveLogs($file);
             } catch (\Exception $e) {
                 if (ENVIRONMENT === 'development') {
                     die(\system\Debug::getDump($e, 3, true));
@@ -130,22 +202,79 @@ class Logs
                 
             }
         }
+    }
+    /**
+     * Save logs to a file 
+     * @param string $file
+     * @throws \Exception
+     */
+    protected function saveLogs($file)
+    {
+        if (LOG_MANAGEMENT == 'log_folder') {
+            $f = fopen($file, 'a');
+            if ($f === false) {
+                throw new \Exception('Canno\'t open file ' . htmlentities($file));
+            }
+            if (false === fwrite($f, $this->getInlineLogs())) {
+                fclose($f);
+                throw new \Exception('Canno\'t write to file ' . htmlentities($file));
+            }
+            fclose($f);
+            $this->clearLogs();
+        } else if (LOG_MANAGEMENT == 'error_log') {
+            /*foreach ($this->logs as $log) {
+                error_log($this->getDisplayLog($log,true,true));
+            }*/
+            $this->clearLogs();
+        } else if (LOG_MANAGEMENT == 'syslog') {
+            /*foreach ($this->logs as $log) {
+                syslog($log['level'], $this->getDisplayLog($log,true,true));
+            }*/
+            $this->clearLogs();
+        } else {
+            throw new \Exception('Error configuration: LOG_MANAGEMENT not defined');
+        }
 
     }
 
+    /**
+     * by default, save to logger.log file
+     */
     public function defaultSaveLogs()
     {
-        $this->saveLogs(DOCUMENT_ROOT . '/log/logger.log');
+        $this->saveAndClearLogs(DOCUMENT_ROOT . '/log/logger.log');
     }
 
-    public function clearLogs()
+    /**
+     * clear logs collection
+     */
+    protected function clearLogs()
     {
         $this->logs = array();
 
     }
+    /**
+     * if log is done by system, don't wait end of execution to write into file
+     * @param array $log
+     */
+    protected function writeSingleLog($log)
+    {
+        if (LOG_MANAGEMENT == 'error_log') {
+            error_log($this->getDisplayLog($log,true,true));
+            
+        } else if (LOG_MANAGEMENT == 'syslog') {
+            syslog($log['level'], $this->getDisplayLog($log,true,true));
+        }
+    }
+
     
+    /**
+     * @param int $intval
+     * @return string
+     */
     static function errorLevel($intval)
     {
+        $intval = (int)$intval;
         $errorLevels = array(
             2047 => 'E_ALL',
             1024 => 'E_USER_NOTICE',
@@ -170,12 +299,4 @@ class Logs
         }
         return $result;
     }
-
-    function __destruct()
-    {
-        $this->defaultSaveLogs();
-
-    }
-
 }
-?>
