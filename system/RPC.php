@@ -106,9 +106,6 @@ class RPC
             $params = (array)$request->params;
 
             $result = array();
-            \system\Logs\Logger::log('c\'est un test', 3, 'test', __file__, __line__);
-            \system\Logs\Logger::log('c\'est un test2', 3, 'test', __file__, __line__);
-            \system\Logs\Logger::log('c\'est un test', 1, 'test', __file__, __line__);
             
 
             foreach($params as $p) {
