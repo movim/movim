@@ -185,7 +185,13 @@ class Bootstrap {
         } catch (Exception $e) {
             define('ENVIRONMENT','development');//default environment is production
         }
-        define('LOG_MANAGEMENT','log_folder');//'error_log' || 'log_folder' || 'syslog'
+        /**
+         * LOG_MANAGEMENT: define where logs are saved, prefer error_log, or log_folder if you use mutual server.
+         * 'error_log'  : save in file defined on your file server
+         * 'log_folder' : save in log folder, in DOCUMENT_ROOT.'/log'
+         * 'syslog'     : save in global system logs (not in file server logs)
+         */
+        define('LOG_MANAGEMENT','error_log');
         if (ENVIRONMENT === 'development') {
             ini_set('log_errors', 1);
             ini_set('display_errors', 0);
