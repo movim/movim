@@ -1,35 +1,96 @@
 <?php
+if (!defined('DOCUMENT_ROOT')) die('Access denied');
 
+/**
+ * First thing, define autoloader
+ * @param string $className
+ * @return boolean
+ */
+function __autoload($className)
+{
+    $className = ltrim($className, '\\');
+    $fileName  = DOCUMENT_ROOT;
+    $namespace = '';
+    if ($lastNsPos = strrpos($className, '\\')) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    }
+    $fileName .= '/'.str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+    if (file_exists($fileName)) {
+        require_once( $fileName);
+        return true;
+    } else  {
+        return false;
+    }
+}
+
+/**
+ * Error Handler...
+ */
+function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcontext=null ) 
+{
+    \system\Logs\Logger::addLog( $errstr,$errno,'system',$errfile,$errline);
+    return false;
+}
+
+/**
+ * Manage boot order
+ */
 class Bootstrap {
     function boot() {
         mb_internal_encoding("UTF-8");
-        
+
+        //First thing to do, define error management (in case of error forward)
+        $this->setLogs();
+        //define all needed constants
         $this->setContants();
+        //Check if vital system need is OK
+        $this->checkSystem();
+        
+
         $this->setBrowserSupport();
+        
         $this->loadSystem();
         $this->loadCommonLibraries();
         $this->loadDispatcher();
         
         $this->setTimezone();
-        $this->setLogs();
+        
         
         $loadmodlsuccess = $this->loadModl();
+
         $this->loadMoxl();
         
         if($loadmodlsuccess) {
             $this->startingSession();
-            
-            if(Logger::getLog() != null) {
-                return false;
-            }
-            
-            return true;
         } else {
-            $this->bootLogs();
-            return false;
+            throw new Exception('Error loading Modl');
         }
     }
-    
+    private function checkSystem() {
+        $listWritableFile = array(
+            DOCUMENT_ROOT.'/log/logger.log',
+            DOCUMENT_ROOT.'/log/php.log',
+            DOCUMENT_ROOT.'/cache/test.tmp',
+        );
+        $errors=array();
+        foreach($listWritableFile as $fileName) {
+            if (!file_exists($fileName)) {
+                if (touch($fileName) !== true) {
+                    $errors[] = 'We\'re unable to write to '.$fileName.': check rights';
+                } 
+            }else if (is_writable($fileName) !== true) {
+                $errors[] = 'We\'re unable to write to file '.$fileName.': check rights';
+            }
+        }
+        if (!function_exists('json_decode')) {
+             $errors[] = 'You need to install php5-json that\'s not seems to be installed';
+        }
+        if (count($errors)) {
+            throw new Exception(implode("\n<br />",$errors));
+        }
+    }
     private function setContants() {
         define('APP_TITLE',     'Movim');
         define('APP_NAME',      'movim');
@@ -43,6 +104,10 @@ class Bootstrap {
         define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');
         define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
+        
+        if (!defined('DOCTYPE')) {
+            define('DOCTYPE','text/html');
+        }
     }
 
     private function getVersion() {
@@ -52,7 +117,7 @@ class Bootstrap {
         }
     }
     
-    private function getBaseUri() {        
+    private function getBaseUri() {
         $path = dirname($_SERVER['PHP_SELF']).'/';
         // Determining the protocol to use.
         $uri = "http://";
@@ -63,7 +128,7 @@ class Bootstrap {
         }
 
         if($path == "") {
-            $uri .= $_SERVER['HTTP_HOST'] . '/';
+            $uri .= $_SERVER['HTTP_HOST'] ;
         } else {
             $uri .= str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
         }
@@ -81,9 +146,7 @@ class Bootstrap {
         require_once(SYSTEM_PATH . "Utils.php");
         require_once(SYSTEM_PATH . "UtilsPicture.php");
         require_once(SYSTEM_PATH . "Cache.php");
-        require_once(SYSTEM_PATH . "Conf.php");
         require_once(SYSTEM_PATH . "Event.php");
-        require_once(SYSTEM_PATH . "Logger.php");
         require_once(SYSTEM_PATH . "MovimException.php");
         require_once(SYSTEM_PATH . "RPC.php");
         require_once(SYSTEM_PATH . "User.php");
@@ -119,10 +182,18 @@ class Bootstrap {
     
     private function setLogs() {
         try {
-            define('ENVIRONMENT',Conf::getServerConfElement('environment'));
+            define('ENVIRONMENT',\system\Conf::getServerConfElement('environment'));
         } catch (Exception $e) {
             define('ENVIRONMENT','development');//default environment is production
         }
+        /**
+         * LOG_MANAGEMENT: define where logs are saved, prefer error_log, or log_folder if you use mutual server.
+         * 'error_log'  : save in file defined on your file server
+         * 'log_folder' : save in log folder, in DOCUMENT_ROOT.'/log'
+         * 'syslog'     : save in global system logs (not in file server logs)
+         */
+         
+        define('LOG_MANAGEMENT','log_folder');
         if (ENVIRONMENT === 'development') {
             ini_set('log_errors', 1);
             ini_set('display_errors', 0);
@@ -133,12 +204,15 @@ class Bootstrap {
             ini_set('display_errors', 0);
             ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
         }
-        ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
+        if (LOG_MANAGEMENT === 'log_folder') {
+            ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
+        }
+        set_error_handler('systemErrorHandler', E_ALL);
     }
     
     private function setTimezone() {
         // We set the default timezone to the server timezone
-        $conf = Conf::getServerConf();
+        $conf = \system\Conf::getServerConf();
         if(isset($conf['timezone']))
             date_default_timezone_set($conf['timezone']);
     }
@@ -148,7 +222,7 @@ class Bootstrap {
         require_once(LIB_PATH . 'Modl/loader.php');
         
         $db = modl\Modl::getInstance();
-        $db->setConnectionArray(Conf::getServerConf());
+        $db->setConnectionArray(\System\Conf::getServerConf());
         
         return $db->testConnection();
     }
@@ -215,70 +289,5 @@ class Bootstrap {
         // Starting session.
         $sess = Session::start(APP_NAME);
         $session = $sess->get('session');
-    }
-    
-    /*
-     * Display the boot errors
-     */
-    public function bootLogs() {
-        ?>
-        <style type="text/css">
-            body {
-                font-family: sans-serif;
-            }
-            
-            a:link, a:visited {
-                text-decoration: none;
-                color: #32434D;
-            }
-          
-            #debug {
-                max-width: 1024px;
-                margin: 0 auto;
-                background-color: white;
-                padding: 2em;
-            }
-            
-            #debug img {
-                float: right;
-                margin-top: 2em;
-            }
-            
-            #logs {
-                font-family: monospace;
-                background-color: #353535;
-                color: white;
-                padding: 1em;
-                margin: 1em 0;
-            }
-        </style>
-
-        <div id="debug">
-            <?php         
-            if (ENVIRONMENT === 'development') {
-            ?>
-                <div class="carreful">
-                    <p>Be careful you are currently in development environment</p>
-                </div>
-                <div id="logs">
-                  <?php echo Logger::displayLog(); ?>
-                </div>
-                
-                Maybe you can fix some issues with the <a href="<?php echo Route::urlize('admin'); ?>">admin panel</a>            
-            <?php 
-            } elseif (ENVIRONMENT === 'production') {
-                ?>
-                <div class="carreful">
-                    <p>Oops... something went wrong.<br />But don't panic. The NSA is on the case.</p>
-                </div>
-                <?php
-            }   
-            ?>      
-            <a href="http://movim.eu/">
-                <img src="<?php echo BASE_URI.'themes/movim/img/logo_black.png'; ?>" />
-            </a>
-            <div class="clear"></div>
-        </div>  
-    <?php
     }
 }

@@ -36,7 +36,6 @@ class TplPageBuilder
         $this->user = $user;
         $conf = new \system\Conf();
         $this->theme = $conf->getServerConfElement('theme');
-     
     }
 
     function theme_path($file)
@@ -243,3 +242,4 @@ class TplPageBuilder
     }
 }
 
+?>

@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DOCUMENT_ROOT')) die('Access denied');
 /**
  * @package Widgets
  *
@@ -28,7 +28,7 @@ class Login extends WidgetBase {
         
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
         $this->view->assign('submit', $submit);
-        $this->view->assign('conf',   Conf::getServerConf($submit));
+        $this->view->assign('conf',   \system\Conf::getServerConf($submit));
         $this->view->assign('submit_event', 
             'document.getElementById(\'submitb\').click();
             '.$submit.'
@@ -57,11 +57,13 @@ class Login extends WidgetBase {
             t('You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password',
                 '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
         
-        $xmppWhiteList = Conf::getServerConf()['xmppWhiteList'];
-        if(isset($xmppWhiteList) && $xmppWhiteList!=''){
+        $conf = \system\Conf::getServerConf();
+        $whitelist = $conf['xmppWhiteList'];
+        
+        if(isset($whitelist) && $whitelist!=''){
             $this->view->assign('whitelist',
                 t('<p>This server accept only connection with xmpp accounts from these servers :</p>
-                <p style="font-weight:bold;text-align:center;margin:5px;">'.Conf::getServerConf()['xmppWhiteList'].'</p>
+                <p style="font-weight:bold;text-align:center;margin:5px;">'.$whitelist.'</p>
                 <p>If you don\'t have such xmpp account, you can try <a href="http://pod.movim.eu">another public Movim</a> client.</p>'));
             
             $this->view->assign('jabber_display', 'none');
@@ -187,7 +189,7 @@ class Login extends WidgetBase {
     function ajaxLogin($element)
     {
         // We get the Server Configuration
-        $serverconfig = Conf::getServerConf();
+        $serverconfig = \system\Conf::getServerConf();
         
         $warning = false;
 

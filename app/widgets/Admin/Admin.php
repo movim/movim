@@ -25,7 +25,7 @@ class Admin extends WidgetBase {
     function WidgetLoad()
     {
         $this->addjs('admin.js');
-        $this->_conf = Conf::getServerConf();
+        $this->_conf = \system\Conf::getServerConf();
     }
     
     private function isValid($what)
@@ -154,7 +154,7 @@ class Admin extends WidgetBase {
                 $this->_conf[$key] = $form[$key];
         }
 
-        Conf::saveConfFile($this->_conf);
+        \system\Conf::saveConfFile($this->_conf);
     }
     
     public function ajaxRecreateDatabase()

@@ -156,7 +156,7 @@ function prepareString($string) {
 
    
     // We add some smileys...
-    $conf = new Conf();
+    $conf = new \system\Conf();
     $theme = $conf->getServerConfElement('theme');
     
     $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';
@@ -721,16 +721,7 @@ function generateUUID($string = false) {
 
 
 function movim_log($log) {
-    \Logger::log($log);
-   /* ob_start();
-//    var_dump($log);
-    print_r($log);
-    $dump = ob_get_clean();
-
-    openlog('movim', LOG_NDELAY, LOG_USER);
-    $errlines = explode("\n",$dump);
-    foreach ($errlines as $txt) { syslog(LOG_DEBUG, $txt); } 
-    closelog();*/
+    \system\Logger::log($log);
 }
 
 /**
