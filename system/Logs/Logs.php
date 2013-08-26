@@ -263,7 +263,10 @@ class Logs
             error_log($this->getDisplayLog($log,true,true));
             
         } else if (LOG_MANAGEMENT == 'syslog') {
-            syslog($log['level'], $this->getDisplayLog($log,true,true));
+            if (!syslog($log['level'], $this->getDisplayLog($log,true,true))) {
+                throw new \Exception('Error, unable to use syslog');
+            }
+         
         }
     }
 
