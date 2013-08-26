@@ -75,11 +75,6 @@ abstract class Logger
                     #final_exception h2 {
                         color: red;
                     }
-                    
-                    a:link, a:visited {
-                        text-decoration: none;
-                        color: #32434D;
-                    }
 
                     .carreful, .debug {
                         margin: 0 auto;
