@@ -42,20 +42,25 @@
             <div class="clear"></div>
             
             <ul id="loginhelp">
-                <li id="jabber" style="display:{$jabber_display};">{$c->t('You can login using your favorite Jabber account')}
-                <a href="#" onclick="fillExample('demonstration@movim.eu', 'demonstration');">
-                    {$c->t('or with our demonstration account')}
-                </a>
-                </li>
-                <li id="gmail" style="display:{$gmail_display};">
-                    {$gmail}
-                </li>
-                <li id="facebook" style="display:{$facebook_display};">
-                    {$facebook}
-                </li>
-                <li id="whitelist" style="display:{$whitelist_display};">
-                    {$whitelist}
-                </li>
+                {if="$whitelist_display == true"}
+                    <li id="whitelist" style="display:{$whitelist_display};">
+                        <p>This server accept only connection with xmpp accounts from these servers :</p>
+                        <p style="font-weight:bold; text-align:center; margin:0.5em;">{$whitelist}</p>
+                        <p>If you don\'t have such xmpp account, you can try <a href="http://pod.movim.eu">another public Movim</a> client.</p>
+                    </li>
+                {else}
+                    <li id="jabber" style="display:{$jabber_display};">{$c->t('You can login using your favorite Jabber account')}
+                    <a href="#" onclick="fillExample('demonstration@movim.eu', 'demonstration');">
+                        {$c->t('or with our demonstration account')}
+                    </a>
+                    </li>
+                    <li id="gmail" style="display:{$gmail_display};">
+                        {$gmail}
+                    </li>
+                    <li id="facebook" style="display:{$facebook_display};">
+                        {$facebook}
+                    </li>
+                {/if}
             </ul>
             
             <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
