@@ -40,27 +40,44 @@
 define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
-$bootstrap = new Bootstrap();
-$booted = $bootstrap->boot();
-
-if($booted) {
-    $polling = false;
+try {
+    $bootstrap = new Bootstrap();
+    
+    $bootstrap->boot();
 
     $rqst = new ControllerMain();
-    //$rqst = new FrontController();
     $rqst->handle();
-
+    
     WidgetWrapper::getInstance(false);
-
     // Closing stuff
     WidgetWrapper::destroyInstance();
-} else {
-    $r = new Route;
     
+} catch (Exception $e) {
+    
+    //manage errors
+    \system\Logs\Logger::displayDebugCSS();
+    if (ENVIRONMENT === 'development') {
+        
+        ?>
+            <div id="final_exception" class="error debug">
+                <h2>An error happened</h2>
+                <p><?php print $e->getMessage();?></p>
+            </div>
+        <?php
+    } else {
+        ?>
+        <div class="carreful">
+            <h2> Oops... something went wrong.</h2>
+            <p>But don't panic. The NSA is on the case.</p>
+        </div>
+        <?php
+    }
+    $r = new Route;
     if($_GET['q'] == 'admin') {
         $rqst = new ControllerMain();
         $rqst->handle();
     }
-    
-    $bootstrap->bootLogs();
-}
+} 
+
+//display only if not already done and if there is something to display
+\system\Logs\Logger::displayFooterDebug();

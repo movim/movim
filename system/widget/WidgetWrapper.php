@@ -243,5 +243,3 @@ class WidgetWrapper
             return $this->js;
     }
 }
-
-?>
