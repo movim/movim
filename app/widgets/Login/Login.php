@@ -61,16 +61,10 @@ class Login extends WidgetBase {
         $whitelist = $conf['xmppWhiteList'];
         
         if(isset($whitelist) && $whitelist!=''){
-            $this->view->assign('whitelist',
-                t('<p>This server accept only connection with xmpp accounts from these servers :</p>
-                <p style="font-weight:bold;text-align:center;margin:5px;">'.$whitelist.'</p>
-                <p>If you don\'t have such xmpp account, you can try <a href="http://pod.movim.eu">another public Movim</a> client.</p>'));
-            
-            $this->view->assign('jabber_display', 'none');
-            $this->view->assign('gmail_display', 'none');
-            $this->view->assign('facebook_display', 'none');
-            $this->view->assign('whitelist_display', 'block');
-        }else{
+            $this->view->assign('whitelist', $whitelist);
+            $this->view->assign('whitelist_display', true);
+        } else{
+            $this->view->assign('whitelist_display', false);
             $this->view->assign('whitelist_display', 'none');
         }
     }

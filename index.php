@@ -53,7 +53,6 @@ try {
     WidgetWrapper::destroyInstance();
     
 } catch (Exception $e) {
-    
     //manage errors
     \system\Logs\Logger::displayDebugCSS();
     if (ENVIRONMENT === 'development') {
