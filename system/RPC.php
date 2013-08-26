@@ -1,5 +1,5 @@
 <?php
-
+if (!defined('DOCUMENT_ROOT')) die('Access denied');
 /**
  * @file RPC.php
  * This file is part of PROJECT.
@@ -40,7 +40,7 @@ class RPC
 
             self::$funcalls[] = $funcall;
         } elseif(isset($args[0])) {
-            Logger::log('RPC cleaning system : '.$funcname.', '.$args[0].' cleared');
+            \system\Logs\Logger::log('RPC cleaning system : '.$funcname.', '.$args[0].' cleared');
         }
     }
 
@@ -106,7 +106,7 @@ class RPC
             $params = (array)$request->params;
 
             $result = array();
-
+            
 
             foreach($params as $p) {
                 if(is_object($p) && $p->container)

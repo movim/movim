@@ -81,11 +81,8 @@
         <script type="text/javascript">
             movim_onload();
         </script>
-        <?php if (ENVIRONMENT === 'development') { ?>
-            <div class="dev">
-                <?php echo t('Development environment.'); ?> 
-                <?php echo t('Change it in the admin panel.'); ?>
-            </div>
-        <?php } ?>
+        <?php 
+            $this->displayFooterDebug();
+        ?>
     </body>
 </html>

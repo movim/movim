@@ -29,7 +29,7 @@ class User {
             $this->username = $session['user'].'@'.$session['host'];
             $this->config = $session['config'];
 
-            $this->sizelimit = (int)Conf::getServerConfElement('sizeLimit');
+            $this->sizelimit = (int)\system\Conf::getServerConfElement('sizeLimit');
 
             $this->userdir = DOCUMENT_ROOT.'/users/'.$this->username.'/';
             $this->useruri = BASE_URI.'users/'.$this->username.'/';
@@ -83,7 +83,10 @@ class User {
     {
         // User is not logged in if both the session vars and the members are unset.
         global $session;
-        return $session['on'];
+        if(isset($session['on']))
+            return $session['on'];
+        else
+            return false;
     }
 
     function desauth()

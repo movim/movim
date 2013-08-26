@@ -6,7 +6,7 @@ class Event
 
     function __construct()
     {
-        $this->conf = new Conf();
+        $this->conf = new \system\Conf();
     }
 
     function runEvent($type, $event = false)
