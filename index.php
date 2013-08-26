@@ -50,7 +50,6 @@ try {
     $rqst->handle();
     
     WidgetWrapper::getInstance(false);
-
     // Closing stuff
     WidgetWrapper::destroyInstance();
     
