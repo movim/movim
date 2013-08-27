@@ -78,7 +78,7 @@ class Conf
     
     static function saveConfFile($conf = array()) {
         movim_log($conf);
-        $doc = new DOMDocument('1.0', 'UTF-8');
+        $doc = new \DOMDocument('1.0', 'UTF-8');
 
         $doc->formatOutput = true;
 

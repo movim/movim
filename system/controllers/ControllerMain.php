@@ -462,12 +462,12 @@ class ControllerMain extends ControllerBase
      */
      function admin()
      {
-        error_reporting(0); 
+        //error_reporting(0); 
          
         if(!isset($_SERVER['PHP_AUTH_USER'])) {
             $this->authenticate();
         } else {
-            $conf = Conf::getServerConf();
+            $conf = \system\Conf::getServerConf();
 
             if($_SERVER['PHP_AUTH_USER'] == (string)$conf['user'] && sha1($_SERVER['PHP_AUTH_PW']) == (string)$conf['pass']){
                 $this->page->setTitle(t('%s - Administration Panel', APP_TITLE));

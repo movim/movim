@@ -66,7 +66,6 @@ class Login extends WidgetBase {
             $this->view->assign('whitelist_display', true);
         } else{
             $this->view->assign('whitelist_display', false);
-            $this->view->assign('whitelist_display', 'none');
         }
     }
 
