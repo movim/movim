@@ -25,6 +25,7 @@ class Login extends WidgetBase {
         $this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
+        $this->registerEvent('moxlerror', 'onMoxlError');
         
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
         $this->view->assign('submit', $submit);
@@ -67,6 +68,10 @@ class Login extends WidgetBase {
             $this->view->assign('whitelist_display', false);
             $this->view->assign('whitelist_display', 'none');
         }
+    }
+
+    function onMoxlError($error) {
+        RPC::call('movim_redirect', Route::urlize('disconnect', $error[1]));
     }
 
     function onConfig(array $data)
@@ -165,6 +170,12 @@ class Login extends WidgetBase {
                     $warning = '
                             <div class="message warning">
                                 '.t('The server takes too much time to respond').'
+                            </div>';
+                    break;
+                default: 
+                    $warning = '
+                            <div class="message error">
+                                '.$warning.'
                             </div>';
                     break;
             }

@@ -81,7 +81,7 @@ class RPC
         if(!is_array(self::$funcalls)) {
             self::$funcalls = array('ping');
         }
-
+        
         header('Content-Type: application/json');
         printf('%s', json_encode(self::$funcalls));
         
