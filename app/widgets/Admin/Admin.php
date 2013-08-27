@@ -116,7 +116,7 @@ class Admin extends WidgetBase {
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         
         // We put a short timeout
-        curl_setopt($process, CURLOPT_TIMEOUT, 5); 
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5); 
 
         // Fire !
         $rs = array();
@@ -255,6 +255,8 @@ class Admin extends WidgetBase {
     }
     
     function prepareAdminGen() {
+        $html = '';
+        
         $html .= '
             <fieldset>
                     <legend>'.t('General Settings').'</legend>
@@ -504,6 +506,8 @@ class Admin extends WidgetBase {
     }
     
     function prepareAdminDB() {
+        $html = '';
+        
         $html .= '
             <fieldset>
                 <legend>'.t("Database Settings").'</legend>
