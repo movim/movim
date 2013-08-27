@@ -87,21 +87,13 @@ abstract class Logger
 
                     #logs {
                         font-family: monospace;
-                        background-color: #353535;
-                        color: white;
-                        padding: 0.5em;
-                        margin: 0.5em 0;
                     }
                     .dev {
-                        padding:10px;
-                        height: 3em;
-                        line-height: 3em;
+                        padding: 1em;
                         background-color: yellow;
                         display: block;
                         clear:both;
                         color: black;
-
-                        border-radius: 0.1em 0.1em 0 0;
 
                         background-size: 5em 5em;
                         background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%,

@@ -721,7 +721,7 @@ function generateUUID($string = false) {
 
 
 function movim_log($log) {
-    \system\Logger::log($log);
+    \system\Logs\Logger::log($log);
 }
 
 /**

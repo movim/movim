@@ -111,28 +111,22 @@ function MovimRPC()
     {
         movim_xmlhttp = this.make_xmlhttp();
 
-	    movim_xmlhttp.open('POST', BASE_URI+'jajax.php', true);
+	movim_xmlhttp.open('POST', BASE_URI+'jajax.php', true);
 
         var handler = this.handle_rpc_json;
 
-   	    movim_xmlhttp.onreadystatechange = function()
+	movim_xmlhttp.onreadystatechange = function()
         {
-            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 200)
-                handler(movim_xmlhttp.response);
-                
-            if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 400) {
-                handler(movim_xmlhttp.response);
-                movim_disconnect('internal');
-            }
-            
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500)
                 movim_disconnect('internal');
+	    else if(movim_xmlhttp.readyState == 4)
+		handler(movim_xmlhttp.response);
         };
 
-	    movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+	movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
 
         var json = this.generate_json();
-	    movim_xmlhttp.send(json);
+	movim_xmlhttp.send(json);
     };
 
     /**
