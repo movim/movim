@@ -57,7 +57,6 @@ class Bootstrap {
         
         $this->setTimezone();
         
-        
         $loadmodlsuccess = $this->loadModl();
 
         $this->loadMoxl();
