@@ -224,8 +224,7 @@
     float: right;
 }
 
-#rostermenu li.showhide {
-    border-right: 0.5em solid #0DB8B5;
+#rostermenu li.show_hide {
     position: relative;
     
     box-sizing: border-box;
@@ -233,7 +232,7 @@
 	-moz-box-sizing: border-box;
 }
 
-#rostermenu li.showhide:before {
+#rostermenu li.show_hide:before {
     content: "";
     transform:rotate(45deg);
     -ms-transform:rotate(45deg); 
@@ -241,10 +240,27 @@
     background-color: #0DB8B5;
     display: block;
     position: absolute;
-    right: -0.25em;
     top: 1.25em;
     width: 0.5em;
     height: 0.5em;
+}
+
+#rostermenu li.body_roster {
+    border-right: 0.5em solid #0DB8B5;
+}
+
+#rostermenu li.body_roster:before {
+    background-color: #0DB8B5;
+    right: -0.25em;
+}
+
+#rostermenu li.body_infos {
+    border-left: 0.5em solid #6FCC43;
+}
+
+#rostermenu li.body_infos:before {
+    background-color: #6FCC43;
+    left: -0.25em;
 }
 
 #rostermenu div#chattoggle {

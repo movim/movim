@@ -16,6 +16,14 @@
 
 <div id="rostermenu" class="menubar">
     <ul class="menu">
+        <li 
+            class="show_hide body_infos on_mobile"
+            onclick="
+                movim_remove_class('body', 'roster'),
+                movim_toggle_class('body', 'infos')"
+            title="{$c->t('Show/Hide')}">
+            <a class="about" href="#"></a>
+        </li>
         <li title="{$c->t('Add')}">
             <label class="plus" for="addc"></label>
             <input type="checkbox" id="addc"/>
@@ -49,8 +57,10 @@
             </div>
         {/if}
         <li 
-            class="showhide"
-            onclick="{$show_hide}"
+            class="show_hide body_roster on_mobile"
+            onclick="
+                movim_remove_class('body', 'infos'),
+                movim_toggle_class('body', 'roster')"
             title="{$c->t('Show/Hide')}">
             <a class="down" href="#"></a>
         </li>
