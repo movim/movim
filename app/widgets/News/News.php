@@ -6,29 +6,8 @@ class News extends WidgetCommon {
     
     function WidgetLoad()
     {
-        //$this->addcss('feed.css');
-        
         $this->registerEvent('post', 'onStream');
-        //$this->registerEvent('postdeleted', 'onPostDelete');
-        //$this->registerEvent('postdeleteerror', 'onPostDeleteError');
-        
-        //$this->registerEvent('comment', 'onComment');
-        //$this->registerEvent('nocomment', 'onNoComment');
-        //$this->registerEvent('nocommentstream', 'onNoCommentStream');
-        //$this->registerEvent('commentpublisherror', 'onCommentPublishError');
-        
         $this->registerEvent('stream', 'onStream');
-        //$this->registerEvent('postpublished', 'onPostPublished');
-        //$this->registerEvent('postpublisherror', 'onPostPublishError');
-        
-        //$this->registerEvent('nodecreated', 'onNodeCreated');
-        //$this->registerEvent('nodecreationerror', 'onNodeCreationError');
-        
-        //$this->registerEvent('config', 'onConfig');
-        
-        //$this->view->assign('blog_url', Route::urlize('blog', array($this->user->getLogin(), false)));
-        //$this->view->assign('feed_url', Route::urlize('feed',array($this->user->getLogin(), false)));
-        //$this->view->assign('friend_url', Route::urlize('friend',$this->user->getLogin()));
         
         $this->view->assign('news', $this->prepareNews(-1));
     }
@@ -39,6 +18,8 @@ class News extends WidgetCommon {
          // We ask for the HTML of all the posts
         
         $next = $start + $this->_feedsize;
+        
+        $nexthtml = '';
             
         if(sizeof($posts) > $this->_feedsize-1 && $html != '') {
             $nexthtml = '
