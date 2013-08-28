@@ -61,6 +61,11 @@ body {
     background-attachment:fixed;
 }
 
+/* We hide all the mobiles elements */
+.on_mobile {
+    display: none;
+}
+
 /* Background pattern */
 .default {
     background-image: radial-gradient(center
@@ -758,5 +763,3 @@ dl dd {
 .popup .element label {
     color: white;
 }
-
-

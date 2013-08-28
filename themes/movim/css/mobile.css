@@ -5,13 +5,31 @@ body {
     margin: 0px;
     padding: 0px;
     width: 100%;
+    position: relative;
+    left: 0;
+    transition: left 0.5s ease;
+    overflow-x: hidden;
+}
+
+body.roster {
+    left: -100%;
+}
+
+body.infos {
+    left: 100%;
+}
+
+.on_mobile {
+    display: inherit;
 }
 
 #right {
     width: 100%;
     padding: 0px;
-    margin-top: 3em;
     background-image: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
 }
 
 #right:after {
@@ -24,7 +42,12 @@ body {
 }
 
 #left {
-    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background-color: #272727;
+    padding-bottom: 6em;
 }
 
 #center {
@@ -46,6 +69,7 @@ body {
 
 nav {
     position: fixed;
+    z-index: 3;
 }
 
 nav .menu {
@@ -189,6 +213,17 @@ ul.thumb li {
 .popup .menu {
     width: 100%;
     left: 0%;
+}
+
+#profile img {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+}
+
+#notifslist {
+    margin: 0 !important;
+    margin-top: 3em !important;
 }
 
 }

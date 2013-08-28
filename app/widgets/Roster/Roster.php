@@ -49,7 +49,7 @@ class Roster extends WidgetBase
             $this->view->assign('chatbox', false);
             
         $this->view->assign('toggle_cache', $this->genCallAjax('ajaxToggleCache', "'offlineshown'"));
-        $this->view->assign('show_hide', $this->genCallAjax('ajaxShowHideRoster'));
+        //$this->view->assign('show_hide', $this->genCallAjax('ajaxShowHideRoster'));
         $this->view->assign('search_contact', $this->genCallAjax('ajaxSearchContact','this.value'));
     }
 
