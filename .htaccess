@@ -1,5 +1,5 @@
 Options -Indexes
-
+AddType application/x-web-app-manifest+json .webapp
 <IfModule mod_rewrite.c>
     # Tell PHP that the mod_rewrite module is ENABLED.
     SetEnv HTTP_MOD_REWRITE 1
