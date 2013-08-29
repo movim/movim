@@ -1,0 +1,15 @@
+{
+    "version": "0.7beta3",
+    "name": "Movim",
+    "description": "Kick Ass Social Network, decentralized and fully based on XMPP ",
+	"icons": {
+		"16": "/themes/movim/img/icons/app/16.png",
+		"48": "/themes/movim/img/icons/app/48.png",
+		"128": "/themes/movim/img/icons/app/128.png"
+	},
+    "developer": {
+        "name": "Jaussoin Timothée",
+        "url": "http://movim.eu"
+    },
+    "installs_allowed_from": ["*"]
+}
