@@ -87,10 +87,10 @@ class Profile extends WidgetCommon
         
         $presence = Cache::c('presence');
         
+        $html = '';
+        
         if(isset($contact)) {
             $me = $contact;
-            
-            $html = '';
 
             // My avatar
             $html .= '

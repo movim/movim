@@ -129,12 +129,12 @@ class ChatExt extends WidgetBase
     
     function onMessage($message) 
     {
-        if($message->key == $message->from) {
-            $key = $message->from;
-            $jid = $message->to;
+        if($message->session == $message->jidfrom) {
+            $key = $message->jidfrom;
+            $jid = $message->jidto;
         } else {
-            $key = $message->to;
-            $jid = $message->from;
+            $key = $message->jidto;
+            $jid = $message->jidfrom;
         }
         
         $chatpop = Cache::c('chatpop');

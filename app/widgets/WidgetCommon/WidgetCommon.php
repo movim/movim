@@ -50,20 +50,20 @@ class WidgetCommon extends WidgetBase {
             }
                 
             $avatar = $post->getContact()->getPhoto('s');
-        } elseif($post->public == 2) 
+        } elseif($post->privacy == 2) 
             $avatar = $post->getContact()->getPhoto('xs');
         else 
             $avatar = $post->getContact()->getPhoto('s');
         
-        if(!filter_var($post->from, FILTER_VALIDATE_EMAIL) && $post->node != '')
+        if(!filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->node != '')
             $group = '
                 <span class="group">
-                    <a href="'.Route::urlize('node', array($post->from, $post->node)).'">'.$post->node.' ('.$post->from.')</a>
+                    <a href="'.Route::urlize('node', array($post->jid, $post->node)).'">'.$post->node.' ('.$post->jid.')</a>
                 </span>';
-        elseif($post->from != $post->aid)
+        elseif($post->jid != $post->aid)
             $recycle .= '
                 <span class="recycle">
-                    <a href="'.Route::urlize('friend', $post->from).'">'.$post->from.'</a>
+                    <a href="'.Route::urlize('friend', $post->jid).'">'.$post->jid.'</a>
                  </span>';
 
         if($post->getPlace() != false)
@@ -202,7 +202,7 @@ class WidgetCommon extends WidgetBase {
             'delete_post', 
             $this->genCallAjax(
                 'ajaxDeletePost', 
-                "'".$post->from."'",
+                "'".$post->jid."'",
                 "'".$post->node."'",
                 "'".$post->nodeid."'"));
                 
@@ -320,12 +320,15 @@ class WidgetCommon extends WidgetBase {
                 $i = 0;
                 
                 $messagecomment = array();
-                foreach($comments as $comment) {
-                    if('urn:xmpp:microblog:0:comments/'.$post->nodeid == $comments[$i]->node) {
-                        array_push($messagecomment, $comment);
-                        unset($comment);
+                
+                if(isset($comments)) {
+                    foreach($comments as $comment) {
+                        if('urn:xmpp:microblog:0:comments/'.$post->nodeid == $comments[$i]->node) {
+                            array_push($messagecomment, $comment);
+                            unset($comment);
+                        }
+                        $i++;
                     }
-                    $i++;
                 }
                 
                 $html .= $this->printPost($post, $messagecomment, $public);
@@ -374,7 +377,7 @@ class WidgetCommon extends WidgetBase {
         
         if($comments) {
             foreach($comments as $comment) {
-                $photo = $comment->getContact()->getPhoto('xs');
+                $photo = $comment->getContact()->getPhoto('xs', $comment->aid);
                 $name = $comment->getContact()->getTrueName();
                                 
                 $tmp .= '
@@ -386,7 +389,7 @@ class WidgetCommon extends WidgetBase {
                     
                 $tmp .='>
                         <img class="avatar tiny" src="'.$photo.'">
-                        <span><a href="'.Route::urlize('friend', $comment->jid).'">'.$name.'</a></span>
+                        <span><a href="'.Route::urlize('friend', $comment->aid).'">'.$name.'</a></span>
                         <span class="date">'.prepareDate(strtotime($comment->published)).'</span><br />
                         <div class="content tiny">'.prepareString($comment->content).'</div>
                     </div>';

@@ -83,7 +83,8 @@ class User {
     {
         // User is not logged in if both the session vars and the members are unset.
         global $session;
-        if(isset($session['on']))
+
+        if(isset($session['on']) && $session['on'])
             return $session['on'];
         else
             return false;
@@ -93,12 +94,11 @@ class User {
     {
         $pd = new modl\PresenceDAO();
         $pd->clearPresence($this->username);
-
-        if($this->isLogged()) {
-            $p = new moxl\PresenceUnavaiable();
-            $p->request();
-        }
-
+            /*if($this->isLogged()) {
+                $p = new moxl\PresenceUnavaiable();
+                $p->request();
+            }*/
+            
         $sess = Session::start(APP_NAME);
         Session::dispose(APP_NAME);
     }

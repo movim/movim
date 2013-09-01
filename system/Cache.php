@@ -93,7 +93,7 @@ class Cache
         $cd = new \modl\CacheDAO();        
         $c = new \modl\Cache();
 
-        $c->key = $cache_key;
+        $c->session = $cache_key;
         $c->data = $data;
         $c->checksum = $md5;
         $c->timestamp = $time;

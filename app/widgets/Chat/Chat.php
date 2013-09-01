@@ -71,15 +71,15 @@ class Chat extends WidgetBase
     
     function onMessage($message)
     {
-        if($message->key == $message->from) {
-            $key = $message->from;
-            $jid = $message->to;
+        if($message->session == $message->jidfrom) {
+            $key = $message->jidfrom;
+            $jid = $message->jidto;
         } else {
-            $key = $message->to;
-            $jid = $message->from;
+            $key = $message->jidto;
+            $jid = $message->jidfrom;
         }
 
-        if($message->key != $message->from)
+        if($message->session != $message->jidfrom)
             RPC::call('notify');
 
         $rd = new \modl\RosterLinkDAO();
@@ -87,7 +87,7 @@ class Chat extends WidgetBase
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
         
-        if(isset($contact) && $contact->chaton == 0) {
+        if($contact != null && $contact->chaton == 0) {
             $contact->chaton = 2;
             $rd->setChat($jid, 2);
             
@@ -98,7 +98,7 @@ class Chat extends WidgetBase
                            'chats',
                            $this->prepareChat($contact));
             RPC::call('scrollAllTalks');
-        } else if(isset($contact) && $message->body != '') {
+        } elseif($contact != null && $message->body != '') {
             $html = $this->prepareMessage($message);
 
             if($contact->chaton == 1) {
@@ -124,10 +124,10 @@ class Chat extends WidgetBase
         elseif($message->ressource != '') {
             $html = $this->prepareMessage($message, true);
             RPC::call('movim_append',
-                           'messages'.$message->from,
+                           'messages'.$message->jidfrom,
                            $html);
             RPC::call('scrollTalk',
-                           'messages'.$message->from);
+                           'messages'.$message->jidfrom);
         }
     }
     
@@ -225,13 +225,13 @@ class Chat extends WidgetBase
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message, $muc = false)
+    function ajaxSendMessage($to, $message, $muc = false, $ressource = false)
     {        
         $m = new \modl\Message();
         
-        $m->key     = $this->user->getLogin();
-        $m->to      = echapJid($to);
-        $m->from    = $this->user->getLogin();
+        $m->session     = $this->user->getLogin();
+        $m->jidto      = echapJid($to);
+        $m->jidfrom    = $this->user->getLogin();
     
         global $session;
         
@@ -241,7 +241,7 @@ class Chat extends WidgetBase
         if($muc) {
             $m->type = 'groupchat';
             $m->ressource = $session['user'];
-            $m->from = $to;
+            $m->jidfrom = $to;
         }
         
         $m->body    = rawurldecode($message);
@@ -254,6 +254,9 @@ class Chat extends WidgetBase
 
         $evt = new Event();
         $evt->runEvent('message', $m);  
+
+        if($ressource != false)
+            $to = $to.'/'.$ressource;
         
         // We decode URL codes to send the correct message to the XMPP server
         $m = new \moxl\MessagePublish();
@@ -339,7 +342,7 @@ class Chat extends WidgetBase
     function prepareMessage($message, $muc = false) {
         if($message->body != '') {
             $html = '<div class="message ';
-                if($message->key == $message->from)
+                if($message->session == $message->jidfrom)
                     $html.= 'me';
                    
             $content = $message->body;
@@ -358,7 +361,7 @@ class Chat extends WidgetBase
             $c = new \modl\Contact();
                     
             $html .= '">
-                <img class="avatar" src="'.$c->getPhoto('xs', $message->from).'" />
+                <img class="avatar" src="'.$c->getPhoto('xs', $message->jidfrom).'" />
                 <span class="date">'.date('H:i', strtotime($message->published)).'</span>';
             
             if($muc != false)
@@ -465,6 +468,7 @@ class Chat extends WidgetBase
     function colorNameMuc($jid)
     {
         $colors = array(
+            0 => 'purple',
             1 => 'purple',
             2 => 'wine',
             3 => 'yellow',
@@ -485,7 +489,9 @@ class Chat extends WidgetBase
         
         $messageshtml = '';
 
-        if(!empty($messages)) {
+        if($messages != null) {
+            $messages = array_reverse($messages);
+            
             $day = '';
             foreach($messages as $m) {
                 if($day != date('d',strtotime($m->published))) {
@@ -524,7 +530,9 @@ class Chat extends WidgetBase
             $this->genCallAjax(
                 'ajaxSendMessage', 
                 "'".$contact->jid."'", 
-                "sendMessage(this, '".$contact->jid."')"
+                "sendMessage(this, '".$contact->jid."')",
+                "false", 
+                "'".$contact->ressource."'"
             )
         );
         $chatview->assign(
