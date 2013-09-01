@@ -83,23 +83,23 @@ class ContactSummary extends WidgetCommon
             $contact = $cd->get($this->user->getLogin());
         else
             $contact = $cd->getRosterItem($_GET['f']);
-        
+
         if(!isset($contact))
             $contact = $cd->get($_GET['f']);
         ?>
         <div id="contactsummary">
         <?php
-        if(isset($contact->photobin)) {
+        if($contact->photobin != null) {
             echo $this->prepareContactSummary($contact);
         } 
         
         else {
             $contact = new modl\Contact();
             echo $this->prepareContactSummary($contact);
-        ?>
-        <script type="text/javascript">
-            setTimeout("<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>", 1000);
-        </script>
+            ?>
+            <script type="text/javascript">
+                setTimeout("<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>", 1000);
+            </script>
         <?php } ?>
         </div>
         <?php

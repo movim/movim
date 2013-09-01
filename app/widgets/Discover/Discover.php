@@ -10,41 +10,44 @@ class Discover extends WidgetCommon {
         $html = '';
                 
         $cd = new \modl\ContactDAO();
-        $users = array_reverse($cd->getAllPublic());
-        
-        $gender = getGender();
-        $marital = getMarital();
-                
-        foreach($users as $user) {
-            $html .= '
-                <div class="post">
-                    <a href="'.Route::urlize('blog', array($user->jid, false)).'">
-                        <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                    </a>
-                    <div class="postbubble">
-                        <span class="name">
-                            <a href="'.Route::urlize('blog', array($user->jid, false)).'">'.
-                                $user->getTrueName().'
-                            </a>
-                        </span>
-                        <span class="asv">'.
-                            $user->getAge().' '.
-                            $gender[$user->gender].' '.
-                            $marital[$user->marital].'
-                        </span>
-                        <div 
-                            class="content"
-                            style="
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                                height: 1.5em;
-                            "
-                        >'.prepareString($user->desc).'</div>
-                    </div>
+        $users = $cd->getAllPublic();
+        if(isset($users)) {
+            $users = array_reverse($users);
+            
+            $gender = getGender();
+            $marital = getMarital();
                     
-                </div>
-                ';
+            foreach($users as $user) {
+                $html .= '
+                    <div class="post">
+                        <a href="'.Route::urlize('blog', array($user->jid, false)).'">
+                            <img class="avatar" src="'.$user->getPhoto('m').'"/>
+                        </a>
+                        <div class="postbubble">
+                            <span class="name">
+                                <a href="'.Route::urlize('blog', array($user->jid, false)).'">'.
+                                    $user->getTrueName().'
+                                </a>
+                            </span>
+                            <span class="asv">'.
+                                $user->getAge().' '.
+                                $gender[$user->gender].' '.
+                                $marital[$user->marital].'
+                            </span>
+                            <div 
+                                class="content"
+                                style="
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    height: 1.5em;
+                                "
+                            >'.prepareString($user->desc).'</div>
+                        </div>
+                        
+                    </div>
+                    ';
+            }
         }
 
         return $html;

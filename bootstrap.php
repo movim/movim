@@ -220,10 +220,26 @@ class Bootstrap {
         // We load Movim Data Layer
         require_once(LIB_PATH . 'Modl/loader.php');
         
+        modl\loadModel('Presence');
+        modl\loadModel('Contact');
+        modl\loadModel('Privacy');
+        modl\loadModel('RosterLink');
+        modl\loadModel('Session');
+        modl\loadModel('Cache');
+        modl\loadModel('Postn');
+        modl\loadModel('Subscription');
+        modl\loadModel('Caps');
+        modl\loadModel('Node');
+        modl\loadModel('Message');
+        
         $db = modl\Modl::getInstance();
         $db->setConnectionArray(\System\Conf::getServerConf());
+        $db->connect();
         
-        return $db->testConnection();
+        //$db->check();
+        
+        return true;
+        //return $db->testConnection();
     }
     
     private function loadMoxl() {
@@ -288,5 +304,11 @@ class Bootstrap {
         // Starting session.
         $sess = Session::start(APP_NAME);
         $session = $sess->get('session');
+        
+        //$this->user = new User;
+
+        /*$db = modl\Modl::getInstance();
+        $u = new User();
+        $db->setUser($u->getLogin());*/
     }
 }

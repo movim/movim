@@ -144,7 +144,7 @@ class Logs
         $logs = $this->getLogs();
         $html = '';
         if (!empty($logs)) {
-            $html = '<div class="message error">';
+            $html = '<div class="message logs">';
             foreach ($logs as $l) $html .= $this->getDisplayLog($l). '<br />';
             $html .= '</div>';
         }

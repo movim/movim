@@ -31,13 +31,16 @@ class Syndication extends WidgetBase
         $this->view->assign('node', $node);
         
         $pd = new \modl\PostnDAO();
-        $messages = $pd->getPublic($from, $node);
-        $this->view->assign('messages', $messages);
+        
+        if(isset($from) && isset($node)) {
+            $messages = $pd->getPublic($from, $node);
+            $this->view->assign('messages', $messages);
+        }
         
         if(isset($messages[0])) {
             // Title and logo
             // For a Pubsub feed
-            if(isset($from) && isset($node) && $node != '') {
+            if(isset($from) && isset($node) && $node != 'urn:xmpp:microblog:0') {
                 $pd = new \modl\NodeDAO();
                 $n = $pd->getNode($from, $node);
                 if(isset($n->title))

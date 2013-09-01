@@ -25,8 +25,8 @@ class Feed extends WidgetCommon {
         
         $this->registerEvent('config', 'onConfig');
         
-        $this->view->assign('blog_url', Route::urlize('blog', array($this->user->getLogin(), false)));
-        $this->view->assign('feed_url', Route::urlize('feed',array($this->user->getLogin(), false)));
+        $this->view->assign('blog_url', Route::urlize('blog', array($this->user->getLogin(), 'urn:xmpp:microblog:0')));
+        $this->view->assign('feed_url', Route::urlize('feed',array($this->user->getLogin(), 'urn:xmpp:microblog:0')));
         $this->view->assign('friend_url', Route::urlize('friend',$this->user->getLogin()));
         
         $this->view->assign('feeds', $this->prepareFeed(-1));

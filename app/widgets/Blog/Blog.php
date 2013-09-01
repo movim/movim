@@ -11,12 +11,14 @@ class Blog extends WidgetCommon {
             $this->view->assign('node', $node);
         
         $pd = new \modl\PostnDAO();
-        $messages = $pd->getPublic($from, $node);
         
-        if(isset($messages[0])) {
+        if(isset($from) && isset($node))
+            $messages = $pd->getPublic($from, $node);
+
+        if($messages[0] != null) {
             // Title and logo
             // For a Pubsub feed
-            if(isset($from) && isset($node) && $node != '') {
+            if(isset($from) && isset($node) && $node != 'urn:xmpp:microblog:0') {
                 $pd = new \modl\NodeDAO();
                 $n = $pd->getNode($from, $node);
                 if(isset($n->title))

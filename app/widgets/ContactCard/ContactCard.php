@@ -107,10 +107,10 @@ class ContactCard extends WidgetCommon
                 }
             }
               
-            if($this->testIsSet($contact->desc) && prepareString($contact->desc) != '')
+            if($this->testIsSet($contact->description) && prepareString($contact->description) != '')
             $html .= '<div class="element large simple">
                         <label for="desc">'.t('About Me').'</label>
-                        <span>'.prepareString($contact->desc).'</span>
+                        <span>'.prepareString($contact->description).'</span>
                       </div>';
                       
             if($this->testIsSet($contact->adrlocality) ||
