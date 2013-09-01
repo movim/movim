@@ -492,7 +492,11 @@ ul li input[type=checkbox]:checked ~ .tabbed {
 
 /* Warning */
 
-.message.warning, .message.info, .message.error, .message.success {
+.message.warning, 
+.message.info, 
+.message.error, 
+.message.success,
+.message.logs {
     border-radius: 0.1em;
     background-size: 10em 10em;
     background-image: linear-gradient(135deg, rgba(255,255, 255, 0.05) 25%, transparent 25%,
@@ -522,6 +526,7 @@ ul li input[type=checkbox]:checked ~ .tabbed {
 .message.info { background-color: #0DB8B5; }
 .message.error { background-color: #D92727; }
 .message.success { background-color: #6FCC43; }
+.message.logs { background-color: black; font-size: 0.9em;}
 
 /* Config button */
 

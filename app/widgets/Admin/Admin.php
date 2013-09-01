@@ -513,8 +513,8 @@ class Admin extends WidgetBase {
                 <legend>'.t("Database Settings").'</legend>
                     <div class="clear"></div>';
 
-                $md = new \modl\ModlDAO();
-                if(isset($md->_dao->_error)) {
+                $md = \modl\Modl::getInstance();
+                if(!$md->_connected) {
                     $html .= '
                         <div class="message error">'.
                             t("Modl wasn't able to connect to the database").'<br />

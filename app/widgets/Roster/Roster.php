@@ -27,6 +27,7 @@ class Roster extends WidgetBase
         $this->addcss('roster.css');
         $this->addjs('roster.js');
         $this->registerEvent('roster', 'onRoster');
+        $this->registerEvent('rosterupdateditem', 'onRoster');
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
         $this->registerEvent('presence', 'onPresence');
@@ -59,15 +60,15 @@ class Roster extends WidgetBase
 
         $cd = new \modl\ContactDAO();
         $c = $cd->getRosterItem($arr['jid']);
-
+        
         if($c != null) {
             $c->setPresence($presence);
             $html = $this->prepareRosterElement($c);
-            
-            if(empty($c->group))
+
+            if($c->groupname == null)
                 $group = t('Ungrouped');
             else
-                $group = $c->group;
+                $group = $c->groupname;
 
             RPC::call(
                 'movim_delete', 
@@ -79,7 +80,7 @@ class Roster extends WidgetBase
         }        
     }
 
-    function onRoster()
+    function onRoster($jid)
     {
         $html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', $html);
@@ -109,7 +110,6 @@ class Roster extends WidgetBase
     function prepareRosterElement($contact, $caps = false)
     {
         $html = '';
-
         $html .= '<li
                 class="';
                     if(isset($_GET['f']) && $contact->jid == $_GET['f'])
@@ -118,9 +118,9 @@ class Roster extends WidgetBase
                     if(isset($contact->last) && $contact->last > 60)
                         $html .= 'inactive ';
 
-                    if(isset($contact->presence)) {
+                    if($contact->value) {
                         $presencestxt = getPresencesTxt();
-                        $html.= $presencestxt[$contact->presence];
+                        $html.= $presencestxt[$contact->value];
                     } else
                         $html .= 'offline';
 
@@ -197,18 +197,18 @@ class Roster extends WidgetBase
     {
         $j = $i;
         // We get the current name of the group
-        $currentgroup = $contacts[$i]->group;
+        $currentgroup = $contacts[$i]->groupname;
 
         // Temporary array to prevent duplicate contact
         $duplicate = array();
         
         // We grab all the contacts of the group 
         $grouphtml = '';
-        while(isset($contacts[$i]) && $contacts[$i]->group == $currentgroup) {
-            //if(!in_array($contacts[$i]->jid, $duplicate)) {                
+        while(isset($contacts[$i]) && $contacts[$i]->groupname == $currentgroup) {
+            if(!in_array($contacts[$i]->jid, $duplicate)) {                
                 $grouphtml .= $this->prepareRosterElement($contacts[$i], $caps);
                 array_push($duplicate, $contacts[$i]->jid);
-            //}
+            }
             $i++;
         } 
         

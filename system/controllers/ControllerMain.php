@@ -361,7 +361,7 @@ class ControllerMain extends ControllerBase
      */
     function login()
     {
-        error_reporting(0); 
+        //error_reporting(0); 
         
         $this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
         

@@ -76,8 +76,10 @@ class Presence extends WidgetBase
     
     function ajaxLogout()
     {
-        $user = new User();
-        $user->desauth();
+        $p = new moxl\PresenceUnavaiable();
+        $p->request();
+        //$user = new User();
+        //$user->desauth();
         RPC::call('movim_redirect', Route::urlize('disconnect')); 
         RPC::commit();
     }
@@ -96,9 +98,9 @@ class Presence extends WidgetBase
             $html = '
                 <div 
                     id="logouttab" 
-                    class="'.$txts[$p->presence].'"
+                    class="'.$txts[$p->value].'"
                     onclick="movim_toggle_class(\'#logoutlist\', \'show\');">'.
-                    $txt[$p->presence].'
+                    $txt[$p->value].'
                 </div>';
         else
             $html = '

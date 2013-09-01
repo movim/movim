@@ -83,9 +83,9 @@ class Vcard extends WidgetBase
         $c->phototype       = $vcard->phototype->value;
         $c->photobin        = $vcard->photobin->value;
         
-        $c->desc            = trim($vcard->desc->value);
+        $c->description     = trim($vcard->desc->value);
 
-        if($vcard->public->value == 1)
+        if($vcard->privacy->value == 1)
             \modl\Privacy::set($c->jid, 1);
         else
             \modl\Privacy::set($c->jid, 0);
@@ -279,7 +279,7 @@ class Vcard extends WidgetBase
                       </div>';
                   
             $html .= '<div class="element large"><label for="desc">'.t('About Me').'</label>
-                        <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->desc).'</textarea>
+                            <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">'.trim($me->description).'</textarea>
                       </div>';
                   
         $html .= '</fieldset><br />'; 
@@ -313,7 +313,7 @@ class Vcard extends WidgetBase
         $html .= '<fieldset>
                     <legend>'.t('Privacy Level').'</legend>';
 
-            if($me->value == 1)
+            if($me->privacy == 1)
                 $checked = 'checked="true"';
             else
                 $checked =  '';

@@ -24,13 +24,16 @@ class ContactManage extends WidgetCommon
         $this->registerEvent('rosterupdateditem', 'onRoster');
     }
 
-    public function onRoster($roster)
+    public function onRoster($jid)
     {    
-        RPC::call('movim_reload_this');
+        //RPC::call('movim_reload_this');
         //\movim_log('GNAP');
         /*Notification::appendNotification(t('Contact updated'));
         RPC::call('movim_reload_this');
         RPC::commit();*/
+        
+        $html = $this->prepareContactManage($jid);
+        RPC::call('movim_fill', 'contactmanage', $html);
     }
     
     public function ajaxContactManage($form) {
@@ -72,7 +75,7 @@ class ContactManage extends WidgetCommon
                         <datalist id="group" style="display: none;">
                             '.$ghtml.'
                         </datalist>
-                        <input name="group" list="group" id="alias" class="tiny" placeholder="'.t('Group').'" value="'.$rl->group.'"/>
+                        <input name="group" list="group" id="alias" class="tiny" placeholder="'.t('Group').'" value="'.$rl->groupname.'"/>
                     </div>
                     
                     <a name="submit" class="button black icon yes" onclick="'.$submit.' this.style.display = \'none\';">'.t('Save').'</a>';
@@ -87,9 +90,14 @@ class ContactManage extends WidgetCommon
     function build() {
         ?>
         <div class="clear"></div>
+        
+        <div id="contactmanage">
         <?php
         if($_GET['f'] != $this->user->getLogin())
-            echo $this->prepareContactManage($_GET['f']);        
+            echo $this->prepareContactManage($_GET['f']);       
+        ?>
+        </div>
+        <?php
     }
     
 }

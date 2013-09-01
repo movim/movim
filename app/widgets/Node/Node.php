@@ -100,7 +100,7 @@ class Node extends WidgetCommon
         $nd = new modl\NodeDAO();
         $node = $nd->getNode($serverid, $groupid);
         
-        if(isset($node))
+        if($node != null)
             $title = $node->getName();
         else
             $title = $groupid;
@@ -225,7 +225,7 @@ class Node extends WidgetCommon
         $title = '';
         
         $pd = new modl\PostnDAO();
-        $posts = $pd->getNode($serverid, $groupid, 0, 10);
+        $posts = $pd->getNode($serverid, $groupid, 0, 20);
         
         $html .= $title;
         
