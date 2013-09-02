@@ -219,6 +219,9 @@ class Bootstrap {
     private function loadModl() {
         // We load Movim Data Layer
         require_once(LIB_PATH . 'Modl/loader.php');
+
+        $db = modl\Modl::getInstance();
+        $db->setModelsPath(APP_PATH.'models');
         
         modl\loadModel('Presence');
         modl\loadModel('Contact');
@@ -232,7 +235,6 @@ class Bootstrap {
         modl\loadModel('Node');
         modl\loadModel('Message');
         
-        $db = modl\Modl::getInstance();
         $db->setConnectionArray(\System\Conf::getServerConf());
         $db->connect();
         
