@@ -75,7 +75,7 @@ class WidgetCommon extends WidgetBase {
                     >'.t('Place').'</a>
                 </span>';
 
-        if($post->jid != '')
+        if(filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->jid != '')
             $c = '
                 <span>
                     <a href="'.Route::urlize('friend', $post->jid).'">'.$post->getContact()->getTrueName().'</a>
@@ -118,7 +118,12 @@ class WidgetCommon extends WidgetBase {
         $view->assign('class',      $class);
         $view->assign('access',     $access);
         $view->assign('flagtitle',  getFlagTitle($flagcolor));
-        $view->assign('friend',     Route::urlize('friend', $post->jid));
+        if(filter_var($post->jid, FILTER_VALIDATE_EMAIL))
+            $view->assign('friend',     Route::urlize('friend', $post->jid));
+        elseif(!filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->node != '')
+            $view->assign('friend',     Route::urlize('node', array($post->jid, $post->node)));
+        else
+            $view->assign('friend',     '#');
         $view->assign('avatar',     '<img class="avatar" src="'.$avatar.'"/>');
         $view->assign('title',      $title);
         $view->assign('contact',    $c);

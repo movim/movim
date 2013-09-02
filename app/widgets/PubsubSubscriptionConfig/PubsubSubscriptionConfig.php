@@ -73,7 +73,11 @@ class PubsubSubscriptionConfig extends WidgetBase
         ?>
         <div class="tabelem padded" title="<?php echo t('Public Groups'); ?>" id="groupsubscribedlistconfig">
             <div id="listconfig">
-                <a class="button icon yes color green" onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?>"><?php echo t("Get your public groups");?></a>
+                <a 
+                    class="button icon yes color green" 
+                    onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?> this.style.display = 'none';">
+                    <?php echo t("Get your public groups");?>
+                </a>
             </div>
         </div>
         <?php
