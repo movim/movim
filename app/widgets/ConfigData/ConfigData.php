@@ -65,7 +65,7 @@ class ConfigData extends WidgetBase
                     <legend>'.t('Cache').'</legend>
                     <div class="clear"></div>
                     <div class="element thin">
-                        <label for="name">'.t('Post'). ' - '.$stats['Post'].'</label><br />
+                        <label for="name">'.t('Post'). ' - '.$stats['post'].'</label><br />
                         <a 
                             type="button" 
                             name="email" 
@@ -73,7 +73,7 @@ class ConfigData extends WidgetBase
                             onclick="'.$clearpost.'">'.t('Clear').'</a>
                     </div>
                     <div class="element thin">
-                        <label for="name">'.t('Messages'). ' - '.$stats['Message'].'</label><br />
+                        <label for="name">'.t('Messages'). ' - '.$stats['message'].'</label><br />
                         <a 
                             type="button" 
                             name="email" 
@@ -81,7 +81,7 @@ class ConfigData extends WidgetBase
                             onclick="'.$clearmessage.'">'.t('Clear').'</a>
                     </div>
                     <div class="element thin">
-                        <label for="name">'.t('Contacts'). ' - '.$stats['RosterLink'].'</label><br />
+                        <label for="name">'.t('Contacts'). ' - '.$stats['rosterlink'].'</label><br />
                         <a 
                             type="button" 
                             class="button icon color red back"

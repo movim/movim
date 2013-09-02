@@ -1,0 +1,46 @@
+<?php
+
+namespace modl;
+
+class Message extends ModlModel {
+    public $session;
+    public $jidto;
+    public $jidfrom;
+    
+    public $ressource;
+    
+    public $type;
+
+    public $subject;
+    public $thread;
+    public $body;
+
+    public $published;
+    public $delivered;
+
+    public function __construct() {
+        $this->_struct = "
+        {
+            'session' : 
+                {'type':'string', 'size':128, 'mandatory':true },
+            'jidto' : 
+                {'type':'string', 'size':128, 'mandatory':true },
+            'jidfrom' : 
+                {'type':'string', 'size':128, 'mandatory':true },
+            'ressource' : 
+                {'type':'string', 'size':128 },
+            'type' : 
+                {'type':'string', 'size':20 },
+            'subject' : 
+                {'type':'text'},
+            'thread' : 
+                {'type':'string', 'size':128 },
+            'body' : 
+                {'type':'text'},
+            'published' : 
+                {'type':'date'},
+            'delivered' : 
+                {'type':'date'}
+        }";
+    }
+}
