@@ -8,7 +8,7 @@ class Node extends ModlModel {
     public $title;
     public $config;
     public $updated;
-    public $number;
+    public $subscription;
     
     public function __construct() {
         $this->_struct = "
