@@ -3,23 +3,6 @@
 namespace modl;
 
 class NodeDAO extends ModlSQL { 
-    /*function create() {
-        $sql = '
-        drop table if exists Node';
-        
-        $this->_db->query($sql);
-
-        $sql = '
-        create table if not exists Node (
-          serverid varchar(45) NOT NULL,
-          nodeid varchar(45) NOT NULL,
-          title varchar(128) DEFAULT NULL,
-          config text,
-          updated datetime NOT NULL
-        ) CHARACTER SET utf8 COLLATE utf8_bin';
-        $this->_db->query($sql);     
-    }*/
-    
     function set(Node $node) {
         $this->_sql = '
             update node
@@ -72,64 +55,9 @@ class NodeDAO extends ModlSQL {
             
             $this->run('Node');
         }
-        
-        /*$request = $this->_db->prepare('
-            update Node
-            set config = ?,
-                title = ?,
-                updated = ?
-            where serverid = ?
-                and nodeid = ?');
-    
-        $request->bind_param(
-            'sssss',
-                $node->config,
-                $node->title,
-                $node->updated,
-                $node->serverid,
-                $node->nodeid
-            );
-              
-        $result = $request->execute();
-        
-        if($this->_db->affected_rows == 0) {
-            $request = $this->_db->prepare('
-                insert into Node
-                (serverid,
-                nodeid,
-                config,
-                title,
-                updated
-                )
-                values(
-                    ?,?,?,?,?
-                    )');
-                    
-            $request->bind_param(
-                'sssss',
-                $node->serverid,
-                $node->nodeid,
-                $node->config,
-                $node->title,
-                $node->updated
-                );
-            $request->execute();
-        }
-        
-        $request->close();*/
     }
     
     function getServers() {
-        /*$sql = '
-            select serverid, count(nodeid) as number 
-            from Node 
-            where nodeid not like \'urn:xmpp:microblog:0:comments/%\' 
-            group by serverid
-            order by number desc';
-            
-        $resultset = $this->_db->query($sql);       
-        return $this->mapper('Server', $this->_db->query($sql));*/
-        
         $this->_sql = '
             select serverid, count(nodeid) as number 
             from node 
@@ -167,11 +95,17 @@ class NodeDAO extends ModlSQL {
         
         $this->_sql = '
             select * from node 
-                where serverid= :serverid';
+            left outer join (select server, node, subscription from subscription where jid = :nodeid) 
+            as s on s.server = node.serverid 
+            and s.node = node.nodeid
+            where serverid= :serverid
+            order by node.title, nodeid';
             
         $this->prepare(
             'Node',
             array(
+                // Dirty hack, using nodeid param to inject the session key
+                'nodeid' => $this->_user,
                 'serverid' => $serverid
             )
         );

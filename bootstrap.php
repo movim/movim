@@ -241,7 +241,6 @@ class Bootstrap {
         //$db->check();
         
         return true;
-        //return $db->testConnection();
     }
     
     private function loadMoxl() {
