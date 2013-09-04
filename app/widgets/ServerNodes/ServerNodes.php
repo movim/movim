@@ -111,7 +111,7 @@ class ServerNodes extends WidgetCommon
         $nodes = $nd->getNodes($server);
         
         $html = '<ul class="list">';
-
+        
         foreach($nodes as $n) {
             
             if (substr($n->nodeid, 0, 20) != 'urn:xmpp:microblog:0') {
@@ -120,12 +120,16 @@ class ServerNodes extends WidgetCommon
                     $name = $n->title;
                 else
                     $name = $n->nodeid;
+                    
+                $tag = '';
+                if($n->subscription == 'subscribed')
+                    $tag .= '<span class="tag">'.t('Subscribed').'</span>';
             
                 $html .= '
                     <li>
                         <a href="'.Route::urlize('node', array($n->serverid, $n->nodeid)).'">'.
-                            $name.'
-                            <span class="tag">'.$n->number.'</span>
+                            $name.
+                            $tag.'
                         </a>
                     </li>';
             }

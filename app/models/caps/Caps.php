@@ -26,7 +26,6 @@ class Caps extends ModlModel {
     }
     
     public function set($query, $node = false) {
-        \movim_log($query);
         if(!$node)
             $this->node     = (string)$query->query->attributes()->node;
         else
