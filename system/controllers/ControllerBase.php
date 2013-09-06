@@ -62,14 +62,14 @@ class ControllerBase
             }
             catch(MovimException $e) {
                 // Load default language.
-                load_language(Conf::getServerConfElement('defLang'));
+                load_language(\system\Conf::getServerConfElement('defLang'));
             }
         }
         else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             load_language_auto();
         }
         else {
-            load_language(Conf::getServerConfElement('defLang'));
+            load_language(\system\Conf::getServerConfElement('defLang'));
         }
     }
 
