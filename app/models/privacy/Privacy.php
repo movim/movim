@@ -11,7 +11,7 @@ class Privacy extends ModlModel {
         $this->_struct = '
         {
             "pkey" : 
-                {"type":"string", "size":256, "mandatory":true, "key":true },
+                {"type":"string", "size":128, "mandatory":true, "key":true },
             "value" : 
                 {"type":"int",    "size":4,   "mandatory":true },
             "hash" : 

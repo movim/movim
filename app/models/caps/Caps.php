@@ -13,7 +13,7 @@ class Caps extends ModlModel {
         $this->_struct = '
         {
             "node" : 
-                {"type":"string", "size":256, "mandatory":true, "key":true },
+                {"type":"string", "size":128, "mandatory":true, "key":true },
             "category" : 
                 {"type":"string", "size":128, "mandatory":true },
             "type" : 
