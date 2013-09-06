@@ -10,18 +10,18 @@ class Session extends ModlModel {
     public $timestamp;
     
     public function __construct() {
-        $this->_struct = "
+        $this->_struct = '
         {
-            'name' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'value' : 
-                {'type':'text', 'mandatory':true },
-            'session' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'container' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'timestamp' : 
-                {'type':'date' }
-        }";
+            "name" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "value" : 
+                {"type":"text", "mandatory":true },
+            "session" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "container" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "timestamp" : 
+                {"type":"date" }
+        }';
     }
 }

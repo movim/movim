@@ -13,23 +13,23 @@ class Subscription extends ModlModel {
     
     
     public function __construct() {
-        $this->_struct = "
+        $this->_struct = '
         {
-            'jid' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'server' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'node' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'subscription' : 
-                {'type':'string', 'size':128, 'mandatory':true },
-            'subid' : 
-                {'type':'string', 'size':128 },
-            'title' : 
-                {'type':'string', 'size':128 },
-            'timestamp' : 
-                {'type':'date' }
-        }";
+            "jid" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "server" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "node" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "subscription" : 
+                {"type":"string", "size":128, "mandatory":true },
+            "subid" : 
+                {"type":"string", "size":128 },
+            "title" : 
+                {"type":"string", "size":128 },
+            "timestamp" : 
+                {"type":"date" }
+        }';
     }
 
     

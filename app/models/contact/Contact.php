@@ -60,83 +60,83 @@ class Contact extends ModlModel {
     protected $loctimestamp;
     
     public function __construct() {
-        $this->_struct = "
+        $this->_struct = '
         {
-            'jid' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'fn' : 
-                {'type':'string', 'size':128 },
-            'name' : 
-                {'type':'string', 'size':128 },
-            'date' : 
-                {'type':'date',   'size':11 },
-            'url' : 
-                {'type':'string', 'size':128 },
-            'email' : 
-                {'type':'string', 'size':128 },
-            'adrlocality' : 
-                {'type':'string', 'size':128 },
-            'adrpostalcode' : 
-                {'type':'string', 'size':128 },
-            'adrcountry' : 
-                {'type':'string', 'size':128 },
-            'gender' : 
-                {'type':'string', 'size':1 },
-            'marital' : 
-                {'type':'string', 'size':20 },
-            'phototype' : 
-                {'type':'string', 'size':128 },
-            'photobin' : 
-                {'type':'text'},
-            'description' : 
-                {'type':'text'},
-            'privacy' : 
-                {'type':'int',    'size':11 },
-            'mood' : 
-                {'type':'string', 'size':128 },
-            'activity' : 
-                {'type':'string', 'size':128 },
-            'nickname' : 
-                {'type':'string', 'size':128 },
-            'tuneartist' : 
-                {'type':'string', 'size':128 },
-            'tunelenght' : 
-                {'type':'int',    'size':11 },
-            'tunerating' : 
-                {'type':'int',    'size':11 },
-            'tunesource' : 
-                {'type':'string', 'size':128 },
-            'tunetitle' : 
-                {'type':'string', 'size':128 },
-            'tunetrack' : 
-                {'type':'string', 'size':128 },
-            'loclatitude' : 
-                {'type':'string', 'size':128 },
-            'loclongitude' : 
-                {'type':'string', 'size':128 },
-            'localtitude' : 
-                {'type':'int',    'size':11 },
-            'loccountry' : 
-                {'type':'string', 'size':128 },
-            'loccountrycode' : 
-                {'type':'string', 'size':128 },
-            'locregion' : 
-                {'type':'string', 'size':128 },
-            'locpostalcode' : 
-                {'type':'string', 'size':128 },
-            'loclocality' : 
-                {'type':'string', 'size':128 },
-            'locstreet' : 
-                {'type':'string', 'size':128 },
-            'locbuilding' : 
-                {'type':'string', 'size':128 },
-            'loctext' : 
-                {'type':'string', 'size':128 },
-            'locuri' : 
-                {'type':'string', 'size':128 },
-            'loctimestamp' : 
-                {'type':'date',   'size':11 }
-        }";
+            "jid" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "fn" : 
+                {"type":"string", "size":128 },
+            "name" : 
+                {"type":"string", "size":128 },
+            "date" : 
+                {"type":"date",   "size":11 },
+            "url" : 
+                {"type":"string", "size":128 },
+            "email" : 
+                {"type":"string", "size":128 },
+            "adrlocality" : 
+                {"type":"string", "size":128 },
+            "adrpostalcode" : 
+                {"type":"string", "size":128 },
+            "adrcountry" : 
+                {"type":"string", "size":128 },
+            "gender" : 
+                {"type":"string", "size":1 },
+            "marital" : 
+                {"type":"string", "size":20 },
+            "phototype" : 
+                {"type":"string", "size":128 },
+            "photobin" : 
+                {"type":"text"},
+            "description" : 
+                {"type":"text"},
+            "privacy" : 
+                {"type":"int",    "size":11 },
+            "mood" : 
+                {"type":"string", "size":128 },
+            "activity" : 
+                {"type":"string", "size":128 },
+            "nickname" : 
+                {"type":"string", "size":128 },
+            "tuneartist" : 
+                {"type":"string", "size":128 },
+            "tunelenght" : 
+                {"type":"int",    "size":11 },
+            "tunerating" : 
+                {"type":"int",    "size":11 },
+            "tunesource" : 
+                {"type":"string", "size":128 },
+            "tunetitle" : 
+                {"type":"string", "size":128 },
+            "tunetrack" : 
+                {"type":"string", "size":128 },
+            "loclatitude" : 
+                {"type":"string", "size":128 },
+            "loclongitude" : 
+                {"type":"string", "size":128 },
+            "localtitude" : 
+                {"type":"int",    "size":11 },
+            "loccountry" : 
+                {"type":"string", "size":128 },
+            "loccountrycode" : 
+                {"type":"string", "size":128 },
+            "locregion" : 
+                {"type":"string", "size":128 },
+            "locpostalcode" : 
+                {"type":"string", "size":128 },
+            "loclocality" : 
+                {"type":"string", "size":128 },
+            "locstreet" : 
+                {"type":"string", "size":128 },
+            "locbuilding" : 
+                {"type":"string", "size":128 },
+            "loctext" : 
+                {"type":"string", "size":128 },
+            "locuri" : 
+                {"type":"string", "size":128 },
+            "loctimestamp" : 
+                {"type":"date",   "size":11 }
+        }';
     }
     
     public function set($vcard, $jid) {
