@@ -17,25 +17,25 @@ class RosterLink extends ModlModel {
     public $chaton;
     
     public function __construct() {
-        $this->_struct = "
+        $this->_struct = '
         {
-            'session' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'jid' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'rostername' : 
-                {'type':'string', 'size':128 },
-            'rosterask' : 
-                {'type':'string', 'size':128 },
-            'rostersubscription' : 
-                {'type':'string', 'size':128 },
-            'realname' : 
-                {'type':'string', 'size':128 },
-            'groupname' : 
-                {'type':'string', 'size':128 },
-            'chaton' : 
-                {'type':'int', 'size':11 }
-        }";
+            "session" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "jid" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "rostername" : 
+                {"type":"string", "size":128 },
+            "rosterask" : 
+                {"type":"string", "size":128 },
+            "rostersubscription" : 
+                {"type":"string", "size":128 },
+            "realname" : 
+                {"type":"string", "size":128 },
+            "groupname" : 
+                {"type":"string", "size":128 },
+            "chaton" : 
+                {"type":"int", "size":11 }
+        }';
     }
 
     

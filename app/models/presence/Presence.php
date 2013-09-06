@@ -25,31 +25,31 @@ class Presence extends ModlModel {
     protected $last;
     
     public function __construct() {
-        $this->_struct = "
+        $this->_struct = '
         {
-            'id' : 
-                {'type':'string', 'size':128, 'mandatory':true },
-            'session' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'jid' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'ressource' : 
-                {'type':'string', 'size':128, 'key':true },
-            'value' : 
-                {'type':'int',    'size':11, 'mandatory':true },
-            'priority' : 
-                {'type':'int',    'size':11 },
-            'status' : 
-                {'type':'text'},
-            'node' : 
-                {'type':'string', 'size':128 },
-            'ver' : 
-                {'type':'string', 'size':128 },
-            'delay' : 
-                {'type':'date'},
-            'last' : 
-                {'type':'int',    'size':11 }
-        }";
+            "id" : 
+                {"type":"string", "size":128, "mandatory":true },
+            "session" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "jid" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "ressource" : 
+                {"type":"string", "size":128, "key":true },
+            "value" : 
+                {"type":"int",    "size":11, "mandatory":true },
+            "priority" : 
+                {"type":"int",    "size":11 },
+            "status" : 
+                {"type":"text"},
+            "node" : 
+                {"type":"string", "size":128 },
+            "ver" : 
+                {"type":"string", "size":128 },
+            "delay" : 
+                {"type":"date"},
+            "last" : 
+                {"type":"int",    "size":11 }
+        }';
     }
     
     // Validation
