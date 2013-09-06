@@ -38,13 +38,13 @@ class Postn extends ModlModel {
         $this->_struct = '
         {
             "session" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":32, "mandatory":true, "key":true },
             "jid" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":32, "mandatory":true, "key":true },
             "node" : 
                 {"type":"string", "size":128, "mandatory":true, "key":true },
             "nodeid" : 
-                {"type":"string", "size":256, "mandatory":true, "key":true },
+                {"type":"string", "size":128, "mandatory":true, "key":true },
             "aname" : 
                 {"type":"string", "size":128 },
             "aid" : 
