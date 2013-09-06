@@ -619,7 +619,8 @@ ul.list li a.action:hover {
 
 ul.list li span.tag {
     background-color: #555;
-    padding: 0 1em;
+    padding: 0 0.5em;
+    margin-left: 1em;
     color: white;
     display: inline-block;
     min-width: 3em;

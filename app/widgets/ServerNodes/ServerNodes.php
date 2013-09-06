@@ -121,15 +121,19 @@ class ServerNodes extends WidgetCommon
                 else
                     $name = $n->nodeid;
                     
-                $tag = '';
+                $tags = '';
+                
+                if($n->num != null)
+                    $tags .= '<span class="tag">'.$n->num.'</span>';
+                    
                 if($n->subscription == 'subscribed')
-                    $tag .= '<span class="tag">'.t('Subscribed').'</span>';
+                    $tags .= '<span class="tag">'.t('Subscribed').'</span>';
             
                 $html .= '
                     <li>
                         <a href="'.Route::urlize('node', array($n->serverid, $n->nodeid)).'">'.
                             $name.
-                            $tag.'
+                            $tags.'
                         </a>
                     </li>';
             }

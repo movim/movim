@@ -11,13 +11,13 @@
 #navtabs li {
     display: inline-block;
     cursor: pointer;
-    line-height: 3em;
+
     padding: 0em 2em;
     white-space: nowrap;
 }
 #navtabs li a{
     display: block; 
-    height:100%; 
+    line-height: 3em;
     width:100%;
     color: white;
     text-decoration: none;

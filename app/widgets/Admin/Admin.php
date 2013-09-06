@@ -157,6 +157,13 @@ class Admin extends WidgetBase {
         \system\Conf::saveConfFile($this->_conf);
     }
     
+    public function ajaxUpdateDatabase()
+    {
+        $md = \modl\Modl::getInstance();
+        $md->check(true);
+        RPC::call('movim_reload_this');
+    }
+    
     public function ajaxRecreateDatabase()
     {
         $pd = new \modl\PostnDAO();
@@ -200,16 +207,13 @@ class Admin extends WidgetBase {
             $this->createDirs();
             
         $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
-            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 2000);";
+            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 1000);";
             
         $this->_validatebutton = '
             <div class="clear"></div>
             <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
         
         $html = '
-        <form name="admin" id="adminform">';
-        
-        $html .= '
             <fieldset>
                 <legend>'.t("Compatibility Check").'</legend>
                     <div class="clear"></div>';
@@ -506,88 +510,36 @@ class Admin extends WidgetBase {
     }
     
     function prepareAdminDB() {
-        $html = '';
+        $dbview = $this->tpl();
         
-        $html .= '
-            <fieldset>
-                <legend>'.t("Database Settings").'</legend>
-                    <div class="clear"></div>';
-
-                $md = \modl\Modl::getInstance();
-                if(!$md->_connected) {
-                    $html .= '
-                        <div class="message error">'.
-                            t("Modl wasn't able to connect to the database").'<br />
-                            '.$md->_dao->_error.'
-                        </div>
-                    ';
-                } else {
-                    $dbrecreate = $this->genCallAjax('ajaxRecreateDatabase')
-                        ."  this.className='button color orange icon loading'; 
-                            setTimeout(function() {location.reload(false)}, 2000);";
-                    
-                    $html .= '
-                    <div class="element">
-                        <label for="db">'.t('Recreate the database').'</label>
-                        <a class="button icon loading color red" onclick="'.$dbrecreate.'">'.t('Recreate').'</a>
-                    </div>
-                    
-                    <div class="message error">
-                        '.t('This button will clear and recreate the Movim database.').'
-                    </div>
-                    ';
-                }
-
-        $html .= '
-                    <div class="element">
-                            <label for="dbType">'.t('Database Type').'</label>
-                            <input type="text" disabled="true" name="dbType" id="dbType" value="'.$this->_conf['dbType'].'" />
-                    </div>';
-                    
-        $html .= '
-                    <div class="element">
-                            <label for="dbUsername">'.t('Username').'</label>
-                            <input type="text" name="dbUsername" id="dbUsername" value="'.$this->_conf['dbUsername'].'" />
-                    </div>';
-                    
-        $html .= '
-                    <div class="element">
-                            <label for="dbPassword">'.t('Password').'</label>
-                            <input type="password" name="dbPassword" id="dbPassword" value="'.$this->_conf['dbPassword'].'" />
-                    </div>';
-                    
-        $html .= '
-                    <div class="element">
-                            <label for="dbHost">'.t('Host').'</label>
-                            <input type="text" name="dbHost" id="dbHost" value="'.$this->_conf['dbHost'].'" />
-                    </div>';
-                    
-        $html .= '
-                    <div class="element">
-                            <label for="dbPort">'.t('Port').'</label>
-                            <input type="text" name="dbPort" id="dbPort" value="'.$this->_conf['dbPort'].'" />
-                    </div>';
-                    
-        $html .= '
-                    <div class="element">
-                            <label for="dbName">'.t('Database Name').'</label>
-                            <input type="text" name="dbName" id="dbName" value="'.$this->_conf['dbName'].'" />
-                    </div>';
+        $md = \modl\Modl::getInstance();
+        $infos = $md->check();
         
-        $html .= $this->_validatebutton;
-            
-        $html .= '
-            </fieldset>';
-            
-            $html .= '
-        </form>';
-            
+        $errors = '';
+        
+        $dbview->assign('infos', $infos); 
+        $dbview->assign('db_update', $this->genCallAjax('ajaxUpdateDatabase')
+            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 1000);");
+        try {
+            $md->connect();
+        } catch(Exception $e) {
+            $errors = $e->getMessage();
+        }
+        
+        $dbview->assign('connected', $md->_connected);
+        $dbview->assign('validatebutton', $this->_validatebutton);
+        $dbview->assign('conf', $this->_conf);
+        $dbview->assign('supported_db', $md->getSupportedDatabases());
+        $dbview->assign('errors', $errors);
+        $html = $dbview->draw('_admin_db', true);
+
         return $html;
     }
 
     function build()
     {
     ?>
+    <form name="admin" id="adminform">
         <div id="admincomp" class="tabelem padded" title="<?php echo t("Compatibility Check"); ?>">
             <?php echo $this->prepareAdminComp(); ?>
         </div>
@@ -597,6 +549,7 @@ class Admin extends WidgetBase {
         <div id="admindb" class="tabelem padded" title="<?php echo t("Database Settings") ?>">
 			<?php echo $this->prepareAdminDB(); ?>
         </div>
+    </form>
     <?php 
     }
 }

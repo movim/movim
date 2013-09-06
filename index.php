@@ -41,6 +41,13 @@ define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 try {
+    if((isset($_GET['q']) && $_GET['q'] == 'admin') ||
+       (isset($_GET['query']) && $_GET['query'] == 'admin')
+      )
+        define('FAIL_SAFE', true);
+    else
+        define('FAIL_SAFE', false);
+    
     $bootstrap = new Bootstrap();
     
     $bootstrap->boot();
@@ -55,15 +62,15 @@ try {
 } catch (Exception $e) {
     //manage errors
     \system\Logs\Logger::displayDebugCSS();
-    if (ENVIRONMENT === 'development') {
-        
+    
+    if (ENVIRONMENT === 'development' && !FAIL_SAFE) {
         ?>
             <div id="final_exception" class="error debug">
                 <h2>An error happened</h2>
                 <p><?php print $e->getMessage();?></p>
             </div>
         <?php
-    } else {
+    } elseif(!FAIL_SAFE) {
         ?>
         <div class="carreful">
             <h2> Oops... something went wrong.</h2>
@@ -72,7 +79,7 @@ try {
         <?php
     }
     $r = new Route;
-    if($_GET['q'] == 'admin') {
+    if(FAIL_SAFE) {
         $rqst = new ControllerMain();
         $rqst->handle();
     }
