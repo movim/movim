@@ -98,6 +98,12 @@ class NodeDAO extends ModlSQL {
             left outer join (select server, node, subscription from subscription where jid = :nodeid) 
             as s on s.server = node.serverid 
             and s.node = node.nodeid
+            left outer join (select node, count(node) as num from (
+            select session, node, nodeid from postn
+            where session = :nodeid
+            group by nodeid, node, session
+            order by node) as f group by node)
+            as c on c.node = node.nodeid
             where serverid= :serverid
             order by node.title, nodeid';
             
@@ -114,13 +120,6 @@ class NodeDAO extends ModlSQL {
     }
 
     function deleteNodes($serverid) {
-        /*$serverid = $this->_db->real_escape_string($serverid); 
-        $sql = '
-            delete from Node
-            where serverid=\''.$serverid.'\' ';
-            
-        return $this->_db->query($sql);    */ 
-
         $this->_sql = '
             delete from node
             where serverid= :serverid';
@@ -136,15 +135,6 @@ class NodeDAO extends ModlSQL {
     }
 
     function deleteNode($serverid, $nodeid) {
-        /*$serverid = $this->_db->real_escape_string($serverid); 
-        $nodeid = $this->_db->real_escape_string($nodeid);
-        $sql = '
-            delete from Node
-            where serverid=\''.$serverid.'\' and
-                  nodeid=\''.$nodeid.'\'';
-            
-        return $this->_db->query($sql);     */
-
         $this->_sql = '
             delete from node
             where serverid = :serverid
@@ -162,13 +152,6 @@ class NodeDAO extends ModlSQL {
     }
     
     function getNode($serverid, $nodeid) {
-        /*$sql = '
-            select * from Node
-            where nodeid = \''.$nodeid.'\'
-                and serverid = \''.$serverid.'\'';
-                
-        return $this->mapper('Node', $this->_db->query($sql), 'item');*/
-        
         $this->_sql = '
             select * from node
             where 

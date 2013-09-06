@@ -237,9 +237,7 @@ class Bootstrap {
         
         $db->setConnectionArray(\System\Conf::getServerConf());
         $db->connect();
-        
-        //$db->check();
-        
+
         return true;
     }
     

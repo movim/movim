@@ -36,8 +36,6 @@ class Session
     protected function __construct($name)
     {
         // Does the database exist?
-        //$var = new SessionVar();
-
         if(self::$sid == null) {
             if(isset($_COOKIE['PHPFASTSESSID'])) {
                 self::$sid = $_COOKIE['PHPFASTSESSID'];

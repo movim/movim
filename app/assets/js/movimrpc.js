@@ -110,8 +110,13 @@ function MovimRPC()
     this.commit = function()
     {
         movim_xmlhttp = this.make_xmlhttp();
+	
+	if(FAIL_SAFE)
+	    var fail_safe = '?fail_safe=1';
+	else
+	    var fail_safe = '';
 
-	movim_xmlhttp.open('POST', BASE_URI+'jajax.php', true);
+	movim_xmlhttp.open('POST', BASE_URI+'jajax.php'+fail_safe, true);
 
         var handler = this.handle_rpc_json;
 

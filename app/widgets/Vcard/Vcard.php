@@ -84,8 +84,9 @@ class Vcard extends WidgetBase
         $c->photobin        = $vcard->photobin->value;
         
         $c->description     = trim($vcard->desc->value);
-
-        if($vcard->privacy->value == 1)
+        \movim_log('LOOOOOL');
+        \movim_log($vcard->privacy);
+        if($vcard->privacy->value == true)
             \modl\Privacy::set($c->jid, 1);
         else
             \modl\Privacy::set($c->jid, 0);
@@ -326,8 +327,8 @@ class Vcard extends WidgetBase
                         </div>
                         <label>'.t('Is this profile public ?').'</label>
                           <div class="checkbox">
-                            <input type="checkbox" id="public" name="public" '.$checked.'/>
-                            <label for="public"></label>
+                            <input type="checkbox" id="privacy" name="privacy" '.$checked.'/>
+                            <label for="privacy"></label>
                           </div>
                       </div>';
                   
