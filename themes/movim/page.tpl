@@ -16,7 +16,8 @@
         var ERROR_URI = '<?php echo substr_replace(Route::urlize('disconnect', 'err'), '', -3); ?>';
         var PAGE_KEY_URI = '<?php 
             if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE'])
-                echo '?q='; ?>'
+                echo '?q='; ?>';
+        var FAIL_SAFE = <?php if(FAIL_SAFE) echo FAIL_SAFE; else echo "''"; ?>;
     </script>
     <?php
         $this->addCss('css/animations.css');

@@ -33,6 +33,11 @@ try {
     // Closing stuff
     WidgetWrapper::destroyInstance();
 } catch(\Exception $e) {
+    if(isset($_GET['fail_safe']) && (int)$_GET['fail_safe']) {
+        $rpc = new RPC();
+        $rpc->handle_json();
+    }
+    
     print $e->getMessage();
 }
 ?>

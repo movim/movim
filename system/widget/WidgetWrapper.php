@@ -41,24 +41,28 @@ class WidgetWrapper
     private function __construct($register)
     {
         $this->register_widgets = $register;
-        $sess = Session::start(APP_NAME);
-        $widgets = $sess->get('loaded_widgets');
         
-        if(is_array($widgets)) {
-            $this->loaded_widgets_old = $widgets;
-        }
-        
-        $this->registered_events = $sess->get('registered_events');
-        
-        // We search all the existent widgets
-        $this->all_widgets = array();
-        
-        $widgets_dir = scandir(APP_PATH ."widgets/");
-        foreach($widgets_dir as $widget_dir) {
-            if(is_dir(APP_PATH ."widgets/".$widget_dir) && 
-                $widget_dir != '..' &&
-                $widget_dir != '.')
-               array_push($this->all_widgets, $widget_dir);         
+        $md = \modl\Modl::getInstance();
+        if($md->_connected) {
+            $sess = Session::start(APP_NAME);
+            $widgets = $sess->get('loaded_widgets');
+            
+            if(is_array($widgets)) {
+                $this->loaded_widgets_old = $widgets;
+            }
+            
+            $this->registered_events = $sess->get('registered_events');
+            
+            // We search all the existent widgets
+            $this->all_widgets = array();
+            
+            $widgets_dir = scandir(APP_PATH ."widgets/");
+            foreach($widgets_dir as $widget_dir) {
+                if(is_dir(APP_PATH ."widgets/".$widget_dir) && 
+                    $widget_dir != '..' &&
+                    $widget_dir != '.')
+                   array_push($this->all_widgets, $widget_dir);         
+            }
         }
     }
 
