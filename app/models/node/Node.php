@@ -12,19 +12,19 @@ class Node extends ModlModel {
     public $num;
     
     public function __construct() {
-        $this->_struct = "
+        $this->_struct = '
         {
-            'serverid' : 
-                {'type':'string', 'size':128, 'mandatory':true },
-            'nodeid' : 
-                {'type':'string', 'size':128, 'mandatory':true },
-            'title' : 
-                {'type':'string', 'size':128 },
-            'config' : 
-                {'type':'text' },
-            'updated' : 
-                {'type':'date'}
-        }";
+            "serverid" : 
+                {"type":"string", "size":128, "mandatory":true },
+            "nodeid" : 
+                {"type":"string", "size":128, "mandatory":true },
+            "title" : 
+                {"type":"string", "size":128 },
+            "config" : 
+                {"type":"text" },
+            "updated" : 
+                {"type":"date"}
+        }';
     }
 
     public function set($item, $serverid) {

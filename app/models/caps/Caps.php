@@ -10,19 +10,19 @@ class Caps extends ModlModel {
     public $features;
     
     public function __construct() {
-        $this->_struct = "
+        $this->_struct = '
         {
-            'node' : 
-                {'type':'string', 'size':256, 'mandatory':true, 'key':true },
-            'category' : 
-                {'type':'string', 'size':128, 'mandatory':true },
-            'type' : 
-                {'type':'string', 'size':128, 'mandatory':true },
-            'name' : 
-                {'type':'string', 'size':128, 'mandatory':true },
-            'features' : 
-                {'type':'text', 'mandatory':true }
-        }";
+            "node" : 
+                {"type":"string", "size":256, "mandatory":true, "key":true },
+            "category" : 
+                {"type":"string", "size":128, "mandatory":true },
+            "type" : 
+                {"type":"string", "size":128, "mandatory":true },
+            "name" : 
+                {"type":"string", "size":128, "mandatory":true },
+            "features" : 
+                {"type":"text", "mandatory":true }
+        }';
     }
     
     public function set($query, $node = false) {

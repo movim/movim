@@ -35,46 +35,46 @@ class Postn extends ModlModel {
     public function __construct() {
         $this->hash = md5(openssl_random_pseudo_bytes(5));
         
-        $this->_struct = "
+        $this->_struct = '
         {
-            'session' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'jid' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'node' : 
-                {'type':'string', 'size':128, 'mandatory':true, 'key':true },
-            'nodeid' : 
-                {'type':'string', 'size':256, 'mandatory':true, 'key':true },
-            'aname' : 
-                {'type':'string', 'size':128 },
-            'aid' : 
-                {'type':'string', 'size':128 },
-            'title' : 
-                {'type':'text' },
-            'content' : 
-                {'type':'text' },
-            'commentplace' : 
-                {'type':'string', 'size':128 },
+            "session" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "jid" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "node" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
+            "nodeid" : 
+                {"type":"string", "size":256, "mandatory":true, "key":true },
+            "aname" : 
+                {"type":"string", "size":128 },
+            "aid" : 
+                {"type":"string", "size":128 },
+            "title" : 
+                {"type":"text" },
+            "content" : 
+                {"type":"text" },
+            "commentplace" : 
+                {"type":"string", "size":128 },
 
-            'published' : 
-                {'type':'date' },
-            'updated' : 
-                {'type':'date' },
-            'delay' : 
-                {'type':'date' },
+            "published" : 
+                {"type":"date" },
+            "updated" : 
+                {"type":"date" },
+            "delay" : 
+                {"type":"date" },
                 
-            'lat' : 
-                {'type':'string', 'size':128 },
-            'lon' : 
-                {'type':'string', 'size':128 },
+            "lat" : 
+                {"type":"string", "size":128 },
+            "lon" : 
+                {"type":"string", "size":128 },
                 
-            'links' : 
-                {'type':'text' },
-            'tags' : 
-                {'type':'text' },
-            'hash' : 
-                {'type':'string', 'size':128 }
-        }";
+            "links" : 
+                {"type":"text" },
+            "tags" : 
+                {"type":"text" },
+            "hash" : 
+                {"type":"string", "size":128 }
+        }';
     }
     
     public function set($item, $from, $delay = false, $node = false) {

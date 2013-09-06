@@ -8,15 +8,15 @@ class Privacy extends ModlModel {
     protected $hash;
     
     public function __construct() {
-        $this->_struct = "
+        $this->_struct = '
         {
-            'pkey' : 
-                {'type':'string', 'size':256, 'mandatory':true, 'key':true },
-            'value' : 
-                {'type':'int',    'size':4,   'mandatory':true },
-            'hash' : 
-                {'type':'string', 'size':128, 'mandatory':true }
-        }";
+            "pkey" : 
+                {"type":"string", "size":256, "mandatory":true, "key":true },
+            "value" : 
+                {"type":"int",    "size":4,   "mandatory":true },
+            "hash" : 
+                {"type":"string", "size":128, "mandatory":true }
+        }';
     }
 
     static function set($key, $value) {
