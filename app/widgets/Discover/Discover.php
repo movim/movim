@@ -20,12 +20,12 @@ class Discover extends WidgetCommon {
             foreach($users as $user) {
                 $html .= '
                     <div class="post">
-                        <a href="'.Route::urlize('blog', array($user->jid, false)).'">
+                        <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">
                             <img class="avatar" src="'.$user->getPhoto('m').'"/>
                         </a>
                         <div class="postbubble">
                             <span class="name">
-                                <a href="'.Route::urlize('blog', array($user->jid, false)).'">'.
+                                <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">'.
                                     $user->getTrueName().'
                                 </a>
                             </span>

@@ -142,8 +142,11 @@ legend {
 
 .element input[type="radio"] + label {
     float: left;
-    width: 46%;
-    margin-right: 3%;
+    width: 18%;
+    margin-right: 2%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .element input[type="radio"] + label:hover {

@@ -217,7 +217,6 @@ class WidgetCommon extends WidgetBase {
     }
     
     protected function printComments($post, $comments, $public = false) {
-        
         $view = $this->loadTemplate();
         $view->assign('post',       $post);
         $view->assign('comments',   $this->prepareComments($comments));
