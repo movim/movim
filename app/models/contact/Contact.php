@@ -90,8 +90,6 @@ class Contact extends ModlModel {
                 {"type":"text"},
             "description" : 
                 {"type":"text"},
-            "privacy" : 
-                {"type":"int",    "size":11 },
             "mood" : 
                 {"type":"string", "size":128 },
             "activity" : 
@@ -166,8 +164,6 @@ class Contact extends ModlModel {
         $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
         
         $this->description = (string)$vcard->vCard->DESC;
-
-        $this->privacy = 0;
     }
 
     public function createThumbnails() {

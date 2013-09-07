@@ -217,6 +217,8 @@ class Bookmark extends WidgetBase
         $url = '';
         $conference = '';
         $subscription = '';
+        
+        $urlnum = $conferencenum = $subscriptionnum = 0;
 
         $sd = new \modl\SubscriptionDAO();
         
@@ -230,6 +232,8 @@ class Bookmark extends WidgetBase
                             $s->node.' 
                         </a>
                     </li>';
+                    
+                $subscriptionnum++;
             }
         }
         
@@ -249,6 +253,8 @@ class Bookmark extends WidgetBase
                         <a href="#" onclick="'.$join.'">'.$b['name'].'</a>
                         <a href="#" onclick="'.$remove.'">X</a>
                     </li>';
+                
+                $conferencenum++;
                 break;
             case 'url':
                 $remove = $this->genCallAjax('ajaxBookmarkUrlRemove', "'".$b['url']."'");
@@ -259,13 +265,15 @@ class Bookmark extends WidgetBase
                         </a>
                         <a href="#" onclick="'.$remove.'">X</a>
                     </li>';
+                    
+                $urlnum++;
                 break;
             }
         }
             
         if($conference != '') {
             $html .= '
-                <h3>'.t('Conferences').'</h3>
+                <h3>'.t('Conferences').' - '.$conferencenum.'</h3>
                 <ul>'.
                     $conference.'
                 </ul>';
@@ -273,7 +281,7 @@ class Bookmark extends WidgetBase
         
         if($subscription != '') {
             $html .= '
-                <h3>'.t('Groups').'</h3>
+                <h3>'.t('Groups').' - '.$subscriptionnum.'</h3>
                 <ul>'.
                     $subscription.'
                 </ul>';
@@ -281,7 +289,7 @@ class Bookmark extends WidgetBase
         
         if($url != '') {
             $html .= '                
-                <h3>'.t('Links').'</h3>
+                <h3>'.t('Links').' - '.$urlnum.'</h3>
                 <ul>'.
                     $url.'
                 </ul>';

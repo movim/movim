@@ -46,8 +46,6 @@ class ContactDAO extends ModlSQL {
                 
                 description     = :description,
                 
-                privacy         = :privacy,
-                
                 mood            = :mood,
                 
                 activity        = :activity,
@@ -97,8 +95,6 @@ class ContactDAO extends ModlSQL {
                 'photobin'   => $contact->photobin,
                 
                 'description'    => $contact->description,
-                
-                'privacy'  => $contact->privacy,
                 
                 // User Mood (contain serialized array) - XEP 0107
                 'mood'  => $contact->mood,
@@ -161,8 +157,6 @@ class ContactDAO extends ModlSQL {
                 
                 description,
                 
-                privacy,
-                
                 mood,
                 
                 activity,
@@ -209,8 +203,6 @@ class ContactDAO extends ModlSQL {
                     :photobin,
                     
                     :description,
-                    
-                    :privacy,
                     
                     :mood,
                     
@@ -262,8 +254,6 @@ class ContactDAO extends ModlSQL {
                     'photobin'   => $contact->photobin,
                     
                     'description'    => $contact->description,
-                
-                    'privacy'  => $contact->privacy,
                     
                     // User Mood (contain serialized array) - XEP 0107
                     'mood'  => $contact->mood,
