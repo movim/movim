@@ -290,7 +290,7 @@ class PostnDAO extends ModlSQL {
             where postn.session = :session
                 and postn.node in ('.$commentsid.')
             order by postn.published';
-            
+
         $this->prepare(
             'Postn', 
             array(

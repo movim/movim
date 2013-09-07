@@ -156,28 +156,6 @@ class Feed extends WidgetCommon {
         
         return $html;
     }
-    
-    /*function prepareNews($start) {
-        $pd = new \modl\PostnDAO();
-        $pl = $pd->getNews($start+1, $this->_feedsize);
-
-        $html = $this->preparePosts($pl);
-
-        $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetNews');
-        
-        return $html;
-    }*/
-    
-    /*function prepareFeeds() {
-        $html = '
-            <div class="tabelem" id="feedposts" title="'.t('Feed').'">
-                '.$this->prepareFeed(-1).'
-            </div>
-            <div class="tabelem" id="newsposts" title="'.t('News').'">
-                '.$this->prepareNews(-1).'
-            </div>';
-        return $html;
-    }*/
 
     function ajaxGetFeed($start) {
         $html = $this->prepareFeed($start);        
@@ -185,12 +163,6 @@ class Feed extends WidgetCommon {
         RPC::commit();
     }
 
-    /*function ajaxGetNews($start) {
-        $html = $this->prepareNews($start);        
-        RPC::call('movim_append', 'newsposts', $html);
-        RPC::commit();
-    }*/
-        
     function onStream($payload) {
         $html = $this->prepareFeed(-1);
         

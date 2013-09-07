@@ -66,7 +66,7 @@
 	-moz-box-sizing: border-box;
 }
 
-.post span {
+.post .header span {
     font-weight: bold;
     overflow: hidden;
     padding-right: 0.5em;
@@ -78,11 +78,6 @@
     padding-left: 0px;
     display: block;
     float: left;
-}
-
-.post span.fold {
-    float: right;
-    margin-right: 1.5em;
 }
 
 .post span a:hover {
@@ -100,7 +95,7 @@
     color: white;
     margin-right: 1em;
     font-size: 0.8em;
-    padding: 0 1em;
+    padding: 0.5em 1em;
     position: relative;
     border-radius: 0.2em;
 }
@@ -126,7 +121,7 @@
     float: right;
     margin-left: 1em;
     padding-right: 0.5em;
-    
+    line-height: 2em;
     max-width: 300px;
     white-space: nowrap;  
     overflow: hidden;

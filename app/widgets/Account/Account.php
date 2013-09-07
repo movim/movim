@@ -377,6 +377,9 @@ class Account extends WidgetBase {
     
     function build()
     {
+        $warning = '';
+        
+        if(isset($_GET['err']))
         switch ($_GET['err']) {
             case 'datamissing':
                 $warning = '
