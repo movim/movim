@@ -102,6 +102,8 @@ class WidgetCommon extends WidgetBase {
         } else
             $enc = '';
 
+        $author = $this->prepareAuthor($post);
+
         $content = prepareString(html_entity_decode($post->content));
         
         if($post->node == 'urn:xmpp:microblog:0')
@@ -137,6 +139,8 @@ class WidgetCommon extends WidgetBase {
         $view->assign('place',      $place);
         $view->assign('recycle',    $recycle);
         $view->assign('group',      $group);
+        
+        $view->assign('author',     $author);
         
         $html = $view->draw('_post', true);
 
@@ -184,6 +188,26 @@ class WidgetCommon extends WidgetBase {
         }
         
         return $enc;
+    }
+    
+    private function prepareAuthor($post) {
+        $html = $content = '';
+        if($post->aname != null) {
+            $content .= ' <span>'.t('by').'</span> '.$post->aname;
+        }
+
+        if($post->aemail != null) {
+            $content .= ' <span>'.t('email').'</span> '.$post->aemail;
+        }
+
+        if($post->aid != null) {
+            $content .= ' <span>'.t('jid').'</span> '.$post->aid;
+        }
+        
+        if($content .= '')
+            $html .= '<div class="author">'.$content.'</div>';
+        
+        return $html;
     }
     
     private function getToolbox($post) {

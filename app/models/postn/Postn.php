@@ -11,6 +11,7 @@ class Postn extends ModlModel {
     
     public $aname;      // author name
     public $aid;        // author id
+    public $aemail;     // author email
     
     public $title;      //
     public $content;    // the content
@@ -49,6 +50,8 @@ class Postn extends ModlModel {
                 {"type":"string", "size":128 },
             "aid" : 
                 {"type":"string", "size":128 },
+            "aemail" : 
+                {"type":"string", "size":64 },
             "title" : 
                 {"type":"text" },
             "content" : 
@@ -98,10 +101,13 @@ class Postn extends ModlModel {
         if($entry->entry->id)
             $this->nodeid = (string)$entry->entry->id;
 
+        // Get some informations on the author
         if($entry->entry->author->name)
             $this->aname   = (string)$entry->entry->author->name;
         if($entry->entry->author->uri)
             $this->aid     = substr((string)$entry->entry->author->uri, 5);
+        if($entry->entry->author->email)
+            $this->aemail     = (string)$entry->entry->author->email;
             
         // Non standard support
         if($entry->entry->source && $entry->entry->source->author->name)
@@ -150,12 +156,19 @@ class Postn extends ModlModel {
             
         $contentimg = $this->setAttachements($entry->entry->link);
         
+        
+        // Tags parsing
         if($entry->entry->category) {
             $this->tags = array();
-            foreach($entry->entry->category as $cat)
-                array_push($this->tags, (string)$cat->attributes()->term);
+
+            if($entry->entry->category->count() == 1 
+            && isset($entry->entry->category->attributes()->term))
+                array_push($this->tags, (string)$entry->entry->category->attributes()->term);
+            else
+                foreach($entry->entry->category as $cat)
+                    array_push($this->tags, (string)$cat->attributes()->term);
         }
-                
+
         if(!empty($this->tags))
             $this->tags = serialize($this->tags);
         

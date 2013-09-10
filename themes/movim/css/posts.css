@@ -64,6 +64,7 @@
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+    clear: both;
 }
 
 .post .header span {
@@ -98,6 +99,8 @@
     padding: 0.5em 1em;
     position: relative;
     border-radius: 0.2em;
+    float: left;
+    margin-bottom: 0.5em;
 }
 
 .post span.tag:first-child {
@@ -143,6 +146,7 @@
 .post .comments {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1);
+    clear: both;
 }
 
 .post .comments:hover {
@@ -195,6 +199,21 @@
     margin-right: 0.5em;
     margin-left: 3em;
     margin-bottom: 0.5em;
+}
+
+.post .author {
+    float: right;
+    font-weight: normal;
+    background-color: #4C5A61;
+    color: white;
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+    border-radius: 0.2em;
+    margin-bottom: 0.5em;
+}
+
+.post .author span {
+    font-weight: bold;
 }
 
 .post .content i, .post .content em { font-style: italic; }
@@ -307,6 +326,7 @@
     padding: 0.5em 1em;
     position: relative;
     line-height: 1.5em;
+    clear: both;
 }
 
 .post .tools a:hover {

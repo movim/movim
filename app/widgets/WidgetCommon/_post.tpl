@@ -17,6 +17,7 @@
         {$content}<br />
         </div>
         {$tags}
+        {$author}
         {$toolbox}
         {$enc}
         {$comments}
