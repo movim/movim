@@ -34,7 +34,7 @@ class Roster extends WidgetBase
         
         $this->view->assign('offline_shown',  '');
         $offline_state = Cache::c('offlineshown');
-        
+
         $bool = Cache::c('rostershow');
         if($bool)
             $this->view->assign('roster_show', 'hide');
