@@ -8,6 +8,7 @@ class PostnDAO extends ModlSQL {
             update postn
                 set aname = :aname,
                     aid = :aid,
+                    aemail = :aemail,
                     
                     title = :title,
                     content = :content,
@@ -36,6 +37,7 @@ class PostnDAO extends ModlSQL {
             array(
                 'aname'     => $post->aname,
                 'aid'       => $post->aid,
+                'aemail'    => $post->aemail,
                 
                 'title'     => $post->title,
                 'content'   => $post->content,
@@ -75,6 +77,7 @@ class PostnDAO extends ModlSQL {
                 
                 aname,
                 aid,
+                aemail,
                 
                 title,
                 content,
@@ -101,6 +104,7 @@ class PostnDAO extends ModlSQL {
                     
                     :aname,
                     :aid,
+                    :aemail,
                     
                     :title,
                     :content,
@@ -125,6 +129,7 @@ class PostnDAO extends ModlSQL {
                 array(
                     'aname'     => $post->aname,
                     'aid'       => $post->aid,
+                    'aemail'       => $post->aemail,
                     
                     'title'     => $post->title,
                     'content'   => $post->content,

@@ -24,18 +24,18 @@ class Config extends WidgetBase
     {
         $this->addjs('color/jscolor.js');
         $this->registerEvent('config', 'onConfig');
-        
+
         /* We load the user configuration */
         $this->view->assign('languages', load_lang_array());
         $this->view->assign('me',        $this->user->getLogin());
         $this->view->assign('conf',      $this->user->getConfig('language'));
         $this->view->assign('color',     $this->user->getConfig('color'));
         $this->view->assign('size',      $this->user->getConfig('size'));
-        
-        if($this->user->getConfig('chatbox') == 1)
-            $this->view->assign('chatbox', 'checked="true"');
+
+        if($this->user->getConfig('chatbox'))
+            $this->view->assign('chatbox', 'checked');
         else
-            $this->view->assign('chatbox', 'checked="false"');
+            $this->view->assign('chatbox', '');
         
         $this->view->assign('submit',    
             $this->genCallAjax(
@@ -43,10 +43,6 @@ class Config extends WidgetBase
                 "movim_parse_form('general')"
             )
                 . "this.className='button icon color orange loading'; 
-                    setTimeout(
-                        function() {
-                            location.reload(false)}, 2000
-                    ); 
                     this.onclick=null;"
         );
     }
@@ -54,6 +50,7 @@ class Config extends WidgetBase
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
+        RPC::call('movim_reload_this');
         Notification::appendNotification(t('Configuration updated'));
     }
 

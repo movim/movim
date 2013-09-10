@@ -1,9 +1,10 @@
 #!/usr/bin/php
 <?php 
+define('DOCUMENT_ROOT', dirname(__FILE__));
+require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
-
-require('loader.php');
-//var_dump($argv);
+$bootstrap = new Bootstrap();
+$bootstrap->boot();
 
 $argsize = count($argv);
 if($argsize == 1) {
@@ -31,7 +32,7 @@ Here some requests you can do with me :
 function comploc() {
     echo "Locales compiler\n";
     
-    $folder = 'cache/locales/';
+    $folder = DOCUMENT_ROOT.'/cache/locales/';
     
     if(!file_exists($folder)) {
         $bool = mkdir($folder);
