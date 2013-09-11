@@ -198,7 +198,7 @@ class Contact extends ModlModel {
     public function setLocation($stanza) {
         $this->loclatitude      = (string)$stanza->items->item->geoloc->lat;
         $this->loclongitude     = (string)$stanza->items->item->geoloc->lon;
-        $this->localtitude      = (string)$stanza->items->item->geoloc->alt;
+        $this->localtitude      = (int)$stanza->items->item->geoloc->alt;
         $this->loccountry       = (string)$stanza->items->item->geoloc->country;
         $this->loccountrycode   = (string)$stanza->items->item->geoloc->countrycode;
         $this->locregion        = (string)$stanza->items->item->geoloc->region;
