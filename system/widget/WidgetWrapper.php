@@ -181,6 +181,7 @@ class WidgetWrapper
                     if(array_key_exists($key, $this->registered_events)) {
                         $we = $this->registered_events[$key];
                         array_push($we, $widget_name);
+                        $we = array_unique($we);
                         $this->registered_events[$key] = $we;
                     } else {
                         $this->registered_events[$key] = array($widget_name);
@@ -208,7 +209,6 @@ class WidgetWrapper
                 $widgets = $this->registered_events[$fct];
         } else
             $widgets = $this->get_loaded_widgets();
-
         if(isset($widgets) && is_array($widgets))
             foreach($widgets as $widget)
                 $this->run_widget($widget, $method, $params);

@@ -27,7 +27,9 @@ class User {
         if($this->isLogged()) {
             global $session;
             $this->username = $session['user'].'@'.$session['host'];
-            $this->config = $session['config'];
+            
+            if(isset($session['config']))
+                $this->config = $session['config'];
 
             $this->sizelimit = (int)\system\Conf::getServerConfElement('sizeLimit');
 
