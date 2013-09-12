@@ -113,11 +113,11 @@ class Presence extends WidgetBase
                 
         $html .= '
             <div id="logoutlist">
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'chat'").'; hideLogoutList();" class="online">'.$txt[1].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'away'").'; hideLogoutList();" class="away">'.$txt[2].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'dnd'").'; hideLogoutList();" class="dnd">'.$txt[3].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'xa'").'; hideLogoutList();" class="xa">'.$txt[4].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxLogout').'; hideLogoutList();" class="disconnect">'.t('Disconnect').'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'chat'").'; movim_toggle_class(\'#logoutlist\', \'show\');" class="online">'.$txt[1].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'away'").'; movim_toggle_class(\'#logoutlist\', \'show\');" class="away">'.$txt[2].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'dnd'").';  movim_toggle_class(\'#logoutlist\', \'show\');" class="dnd">'.$txt[3].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'xa'").';   movim_toggle_class(\'#logoutlist\', \'show\');" class="xa">'.$txt[4].'</a>
+                <a onclick="'.$this->genCallAjax('ajaxLogout').';              movim_toggle_class(\'#logoutlist\', \'show\');" class="disconnect">'.t('Disconnect').'</a>
             </div>
                 ';
         //href="'.Route::urlize('disconnect').'"

@@ -39,6 +39,7 @@ body.infos {
 #main {
     clear: both;
     padding-right: 0px;
+    overflow-x: hidden;
 }
 
 #left {
@@ -48,19 +49,20 @@ body.infos {
     left: -100%;
     background-color: #272727;
     padding-bottom: 6em;
+    margin-top: 3em;
 }
 
 #center {
-    margin: 0px;
+    margin: 0;
     margin-top: 3em;
     width: 100%;
-    padding: 0px;
-    left: 0px;
+    padding: 0;
+    left: 0;
 }
 
 #content {
     width: 100%;
-    margin: 0px;
+    margin: 0;
 }
 
 #chats {
@@ -215,10 +217,13 @@ ul.thumb li {
     left: 0%;
 }
 
+#contactsummary img.avatar,
 #profile img {
-    width: 100% !important;
+    width: 25% !important;
     height: auto !important;
     margin: 0 !important;
+    float: right;
+    margin-left: 1em;
 }
 
 #notifslist {

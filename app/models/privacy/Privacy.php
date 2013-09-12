@@ -17,6 +17,8 @@ class Privacy extends ModlModel {
             "hash" : 
                 {"type":"string", "size":128, "mandatory":true }
         }';
+        
+        parent::__construct();
     }
 
     static function set($key, $value) {

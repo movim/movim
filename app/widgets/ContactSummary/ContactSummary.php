@@ -62,7 +62,7 @@ class ContactSummary extends WidgetCommon
             else
                 $html .= $contact->getTrueName().' ';
                 
-            if($this->testIsSet($contact->url))
+            if($this->testIsSet($contact->url) && filter_var($contact->url, FILTER_VALIDATE_URL)) 
                 $html .= '<br /><a target="_blank" href="'.$contact->url.'">'.$contact->url.'</a>';
           
         if(isset($contact->status)) {

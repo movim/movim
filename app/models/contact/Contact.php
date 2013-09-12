@@ -135,6 +135,8 @@ class Contact extends ModlModel {
             "loctimestamp" : 
                 {"type":"date",   "size":11 }
         }';
+        
+        parent::__construct();
     }
     
     public function set($vcard, $jid) {
@@ -170,7 +172,7 @@ class Contact extends ModlModel {
         \createThumbnails(strtolower($this->jid), $this->photobin);
     }
 
-    public function getPhoto($size = 'l', $jid = false) {   
+    public function getPhoto($size = 'l', $jid = false) {
         $jid = strtolower($jid);    
         if($jid != false) {
             $str = BASE_URI.'cache/'.strtolower($jid).'_'.$size.'.jpg';
@@ -284,7 +286,8 @@ class Contact extends ModlModel {
     }
 
     function getAge() {
-        if($this->date != '1970-01-01')
+        if( $this->date != '0000-00-00T00:00:00+0000' 
+            && $this->date != '1970-01-01T00:00:00+0000')
             return intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
     }
 }

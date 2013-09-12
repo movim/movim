@@ -36,6 +36,8 @@ class RosterLink extends ModlModel {
             "chaton" : 
                 {"type":"int", "size":11 }
         }';
+        
+        parent::__construct();
     }
 
     

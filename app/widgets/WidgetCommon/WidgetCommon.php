@@ -50,11 +50,9 @@ class WidgetCommon extends WidgetBase {
             }
                 
             $avatar = $post->getContact()->getPhoto('s');
-        } elseif($post->privacy == 2) 
-            $avatar = $post->getContact()->getPhoto('xs');
-        else 
+        } else 
             $avatar = $post->getContact()->getPhoto('s');
-        
+
         if(!filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->node != '')
             $group = '
                 <span class="group">
@@ -162,8 +160,7 @@ class WidgetCommon extends WidgetBase {
         $links = unserialize($links);
 
         foreach($links as $l) {
-            if(
-                isset($l['rel'])
+            if(isset($l['rel'])
                 && $l['rel'] == 'enclosure'
                 && $l['type'] != 'text/html') {
                 $enc .= '
@@ -179,11 +176,15 @@ class WidgetCommon extends WidgetBase {
                         '.$l['title'].'
                     </a>';
             } elseif(isset($l['href'])) {
-                if(substr($l['href'], 0, 5) != 'xmpp:')
+                if(substr($l['href'], 0, 5) != 'xmpp:') {
+                    $url = parse_url($l['href']);
+         
                     $enc .= '
                         <a href="'.$l['href'].'" class="imglink" target="_blank">
-                            '.$l['href'].'
-                        </a>';                
+                            <img src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>
+                            '.$url['scheme'].'://'.$url['host'].$url['path'].'
+                        </a>';
+                }
             }
         }
         

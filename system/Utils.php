@@ -83,27 +83,7 @@ function prepareString($string) {
             ':genius:'      => 'genius.png',
         );
     
-    $string = str_replace('<a ', '<a target="_blank" ', $string);
-
-    
-    /*
-     * OLD VERSION preg_replace with EVAL ( :o ! )
-     * 
-       $string = preg_replace(
-        array(
-            '/(^|\s|>)(www.[^<> \n\r]+)/iex',
-            '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/iex',
-            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\'])((?:https?):\/\/([^<> \n\r]+)))/iex',
-            '#<script[^>]*>.*?</script>#is'
-        ),  
-        array(
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\2':'\\0'))",
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>&nbsp;\\4':'\\0'))",
-            "stripslashes((strlen('\\2')>0?'\\1<a href=\"\\2\" target=\"_blank\">\\2</a>&nbsp;':'\\0'))",
-            ''
-        ),  
-        ' '.$string
-    );*/
+    //$string = str_replace('<a ', '<a target="_blank" ', $string);
     
     //replace begin by www
     $string = preg_replace_callback(
@@ -129,18 +109,6 @@ function prepareString($string) {
             }, ' ' . $string
     );
 
-    //what the fuck it is ???!!!
-    /*$string = preg_replace_callback(
-            '/(^|\s|>)([_A-Za-z0-9-]+(\\.[A-Za-z]{2,3})?\\.[A-Za-z]{2,4}\\/[^<> \n\r]+)/ix', function ($match) {
-                //print '<br />preg[3]';\system\Debug::dump($match);
-                if (isset($match[2]) && strlen($match[2])>0) {
-                    return stripslashes($match[1].'<a href=\"http://'.$match[2].'\" target=\"_blank\">'.$match[2].'</a>');
-                } else {
-                    return $match[2];
-                }
-            }, ' ' . $string
-    );*/
-
     //remove all scripts
     $string = preg_replace_callback(
             '#<[/]?script[^>]*>#is', function ($match) {
@@ -153,7 +121,6 @@ function prepareString($string) {
                 return '';
             }, ' ' . $string
     );
-
    
     // We add some smileys...
     $conf = new \system\Conf();

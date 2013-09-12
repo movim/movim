@@ -12,12 +12,12 @@
             <span class="date">
                 {$date}
             </span>
+            <!--{$author}-->
         </div>
         <div class="content">
         {$content}<br />
         </div>
         {$tags}
-        {$author}
         {$toolbox}
         {$enc}
         {$comments}

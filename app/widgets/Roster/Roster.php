@@ -115,7 +115,7 @@ class Roster extends WidgetBase
                     if(isset($_GET['f']) && $contact->jid == $_GET['f'])
                         $html .= 'active ';
                         
-                    if(isset($contact->last) && $contact->last > 60)
+                    if($contact->last != null && $contact->last > 60)
                         $html .= 'inactive ';
 
                     if($contact->value) {
@@ -131,13 +131,9 @@ class Roster extends WidgetBase
              >';
              
         $type = '';
-             
-        if($caps) {
-            foreach($caps as $c) {
-                if($c->node == $contact->node.'#'.$contact->ver) {
-                    $type = $c->type;
-                }
-            }
+
+        if($caps && isset($caps[$contact->node.'#'.$contact->ver])) {
+            $type = $caps[$contact->node.'#'.$contact->ver]->type;
         }
 
         $html .= '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->jid."'").'"></div>';
@@ -150,9 +146,9 @@ class Roster extends WidgetBase
 
         if($type == 'bot')
             $html .= '<div class="infoicon bot"></div>';
-            
-        if((isset($contact->tuneartist) && $contact->tuneartist != '') ||
-           (isset($contact->tunetitle) && $contact->tunetitle != ''))
+
+        if(($contact->tuneartist != null && $contact->tuneartist != '') ||
+           ($contact->tunetitle != null && $contact->tunetitle != ''))
             $html .= '<div class="infoicon tune"></div>';
         
         $html .= '<a
@@ -253,11 +249,16 @@ class Roster extends WidgetBase
         $capsdao = new modl\CapsDAO();
         $caps = $capsdao->getAll();
 
+        $capsarr = array();
+        foreach($caps as $c) {
+            $capsarr[$c->node] = $c;
+        }     
+        
         if(count($contacts) > 0) {
             $i = 0;
             
             while($i < count($contacts))
-                $html .= $this->prepareRosterGroup($contacts, $i, $caps);
+                $html .= $this->prepareRosterGroup($contacts, $i, $capsarr);
 
         } else {
             $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
