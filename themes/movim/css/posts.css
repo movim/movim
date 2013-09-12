@@ -30,7 +30,6 @@
     display: block;
     overflow: auto;
     overflow-y: hidden;
-    padding-right: 1.5em;
 }
 
 .post .content {
@@ -92,15 +91,13 @@
 
 .post span.tag {
     font-weight: normal;
-    background-color: #4C5A61;
-    color: white;
-    margin-right: 1em;
+
+    margin-right: 0.5em;
     font-size: 0.8em;
     padding: 0.5em 1em;
     position: relative;
-    border-radius: 0.2em;
+    border-radius: 0.2em 0.2em 0 0;
     float: left;
-    margin-bottom: 0.5em;
 }
 
 .post span.tag:first-child {
@@ -204,16 +201,15 @@
 .post .author {
     float: right;
     font-weight: normal;
-    background-color: #4C5A61;
-    color: white;
-    font-size: 0.8em;
     padding: 0.5em 1em;
-    border-radius: 0.2em;
     margin-bottom: 0.5em;
 }
 
 .post .author span {
     font-weight: bold;
+    padding-right: 0;
+    line-height: 1em;
+    display: inline;
 }
 
 .post .content i, .post .content em { font-style: italic; }
@@ -243,6 +239,7 @@
     max-height: 200px;
     max-width: 100%;
     width: auto;
+    margin-bottom: -0.2em;
 }
 
 .post .content img, .post .content video {

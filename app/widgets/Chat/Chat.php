@@ -64,8 +64,8 @@ class Chat extends WidgetBase
             RPC::call('scrollTalk',
                            'messages'.$arr['jid']);
         } elseif(!isset($contact)) {
-            RPC::call('movim_fill', 'chats', $this->prepareChats());
-            RPC::call('scrollAllTalks');
+            //RPC::call('movim_fill', 'chats', $this->prepareChats());
+            //RPC::call('scrollAllTalks');
         }
     }
     
@@ -302,9 +302,9 @@ class Chat extends WidgetBase
     function ajaxCloseTalk($jid) 
     {                
         $rd = new \modl\RosterLinkDAO();
-        $contacts = $rd->getChats();
+        $contact = $rd->get(echapJid($jid));
 
-        foreach($contacts as $contact) {
+        /*foreach($contacts as $contact) {
             if(
                 $contact->jid == echapJid($jid) 
                 && (
@@ -314,11 +314,16 @@ class Chat extends WidgetBase
                 $contact->chaton = 0;
                 $rd->setNow($contact);
             }
-        }
+        }*/
+        
+        $contact->chaton = 0;
+        $rd->setNow($contact);
         
         RPC::call('movim_delete',
                    'chat'.echapJid($jid));
         
+        RPC::commit();
+            
         $evt = new Event();
         $evt->runEvent('closechat');
     }
@@ -555,45 +560,5 @@ class Chat extends WidgetBase
         $html = $chatview->draw('_chat_contact', true);
 
         return $html;
-        
-/* This is the un optimized system to send "composing" and "paused"
- * 
-                            onkeyup="
-                                movim_textarea_autoheight(this);
-                                "
-                            onkeypress="
-                                if(event.keyCode == 13) {
-                                    '.$this->genCallAjax('ajaxSendMessage', "'".$contact->jid."'", "sendMessage(this, '".$contact->jid."')").'
-                                    return false;
-                                }"
-                            onkeypress="
-                                    if(event.keyCode == 13) {
-                                        '.$this->genCallAjax(
-                                            'ajaxSendMessage', 
-                                            "'".$contact->jid."'", 
-                                            "sendMessage(this, '".$contact->jid."')"
-                                        ).'
-                                        lastkeypress = new Date().getTime()+2000;
-                                        return false;
-                                    }
-
-                                    if(lastkeypress < new Date().getTime())
-                                        '.$this->genCallAjax('ajaxSendComposing', "'".$contact->jid."'").'
-
-                                    lastkeypress = new Date().getTime()+2000;
-                                "
-                            onkeyup="
-                                movim_textarea_autoheight(this);
-                                var val = this.value;
-                                setTimeout(function()
-                                {
-                                    if(lastkeypress < new Date().getTime() && val != \'\') {
-                                        '.$this->genCallAjax('ajaxSendPaused', "'".$contact->jid."'").'
-                                        lastkeypress = new Date().getTime()+2000;
-                                    }
-                                },2000); // Listen for 2 seconds of silence
-                            "
-     
-    * */
     }
 }

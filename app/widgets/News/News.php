@@ -6,7 +6,7 @@ class News extends WidgetCommon {
     
     function WidgetLoad()
     {
-        $this->registerEvent('post', 'onStream');
+        $this->registerEvent('opt_post', 'onStream');
         $this->registerEvent('stream', 'onStream');
         
         $this->view->assign('news', $this->prepareNews(-1));

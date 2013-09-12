@@ -25,9 +25,7 @@ class Discover extends WidgetCommon {
                         </a>
                         <div class="postbubble">
                             <span class="name">
-                                <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">'.
-                                    $user->getTrueName().'
-                                </a>
+                                <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">'.$user->getTrueName().'</a>
                             </span>
                             <span class="asv">'.
                                 $user->getAge().' '.

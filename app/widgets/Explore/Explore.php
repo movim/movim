@@ -95,9 +95,7 @@ class Explore extends WidgetCommon {
                     </a>
                     <div class="postbubble">
                         <span class="name">
-                            <a href="'.Route::urlize('friend', $user->jid).'">'.
-                                $user->getTrueName().'
-                            </a>
+                            <a href="'.Route::urlize('friend', $user->jid).'">'.$user->getTrueName().'</a>
                         </span>
                         <span class="asv">'.
                             $user->getAge().' '.

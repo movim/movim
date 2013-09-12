@@ -50,6 +50,8 @@ class Presence extends ModlModel {
             "last" : 
                 {"type":"int",    "size":11 }
         }';
+        
+        parent::__construct();
     }
     
     // Validation
