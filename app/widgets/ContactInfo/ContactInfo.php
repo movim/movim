@@ -91,16 +91,16 @@ class ContactInfo extends WidgetCommon
             }
             
             // Last seen
-            if(isset($c->delay) 
+            if($c->delay != null 
                 && $c->delay 
                 && $c->delay != '0000-00-00 00:00:00') {
                 $html .= '<h2>'.t('Last seen').'</h2>';
                 $html .= prepareDate(strtotime($c->delay)).'<br />';
             }
-            
+
             // Client informations
-            if( isset($c->node) 
-                && isset($c->ver) 
+            if( $c->node != null 
+                && $c->ver != null 
                 && $c->node 
                 && $c->ver) {                
                 $node = $c->node.'#'.$c->ver;

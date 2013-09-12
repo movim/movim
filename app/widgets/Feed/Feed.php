@@ -7,7 +7,7 @@ class Feed extends WidgetCommon {
     {
         $this->addcss('feed.css');
         
-        $this->registerEvent('post', 'onStream');
+        $this->registerEvent('opt_post', 'onStream');
         $this->registerEvent('postdeleted', 'onPostDelete');
         $this->registerEvent('postdeleteerror', 'onPostDeleteError');
         

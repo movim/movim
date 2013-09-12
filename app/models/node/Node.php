@@ -25,6 +25,8 @@ class Node extends ModlModel {
             "updated" : 
                 {"type":"date"}
         }';
+        
+        parent::__construct();
     }
 
     public function set($item, $serverid) {

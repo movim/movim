@@ -23,6 +23,8 @@ class Caps extends ModlModel {
             "features" : 
                 {"type":"text", "mandatory":true }
         }';
+        
+        parent::__construct();
     }
     
     public function set($query, $node = false) {

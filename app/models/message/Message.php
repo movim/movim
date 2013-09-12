@@ -42,5 +42,7 @@ class Message extends ModlModel {
             "delivered" : 
                 {"type":"date"}
         }';
+        
+        parent::__construct();
     }
 }

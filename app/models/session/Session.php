@@ -23,5 +23,7 @@ class Session extends ModlModel {
             "timestamp" : 
                 {"type":"date" }
         }';
+        
+        parent::__construct();
     }
 }

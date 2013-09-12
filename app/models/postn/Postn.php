@@ -78,6 +78,8 @@ class Postn extends ModlModel {
             "hash" : 
                 {"type":"string", "size":128 }
         }';
+        
+        parent::__construct();
     }
     
     public function set($item, $from, $delay = false, $node = false) {
