@@ -320,4 +320,21 @@ class PostnDAO extends ModlSQL {
             
         return $this->run('Postn');
     }
+    
+    function getStatistics() {
+        $this->_sql = '
+            select count(*), extract(month from published) as month, extract(year from published) as year 
+            from postn 
+            where session = :session
+            group by month, year order by year desc, month desc';
+        
+        $this->prepare(
+            'Postn', 
+            array(
+                'session' => $this->_user
+            )
+        );
+        
+        return $this->run(null, 'array'); 
+    }
 }

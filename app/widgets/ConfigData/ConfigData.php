@@ -22,6 +22,31 @@ class ConfigData extends WidgetBase
 {
     function WidgetLoad()
     {
+        $this->addcss('configdata.css');
+        
+        $cd = new \modl\ContactDAO();
+        $stats = $cd->getStatistics();
+
+        $pd = new \modl\PostnDAO();
+        $pstats = $pd->getStatistics();
+
+        $md = new \modl\MessageDAO();
+        $mstats = $md->getStatistics();
+
+        $this->view->assign('stats',            $stats[0]);
+        $this->view->assign('pstats',           $pstats);
+        $this->view->assign('mstats',           $mstats);
+        $this->view->assign('clearrosterlink',  $this->genCallAjax('ajaxClearRosterLink'));
+        $this->view->assign('clearmessage',     $this->genCallAjax('ajaxClearMessage'));
+        $this->view->assign('clearpost',        $this->genCallAjax('ajaxClearPost'));
+    }
+    
+    function formatDate($month, $year) {
+        return date('M', mktime(0, 0, 0, $month, 1, $year)); 
+    }
+    
+    function formatHeight($height) {
+        return log10($height)*20;
     }
     
     function ajaxClearRosterLink() {
@@ -51,7 +76,7 @@ class ConfigData extends WidgetBase
         RPC::commit();
     }
     
-    function prepareConfigData() {
+    /*function prepareConfigData() {
         $cd = new \modl\ContactDAO();
         $stats = $cd->getStatistics();
 
@@ -90,9 +115,9 @@ class ConfigData extends WidgetBase
                 </fieldset>
             </form>';
         return $html;
-    }
+    }*/
     
-    function build()
+    /*function build()
     {
         ?>
         <div class="tabelem padded" title="<?php echo t('Data'); ?>" id="configdata" >
@@ -100,4 +125,5 @@ class ConfigData extends WidgetBase
         </div>
         <?php
     }
+    */
 }
