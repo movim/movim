@@ -43,9 +43,9 @@ class Postn extends ModlModel {
             "jid" : 
                 {"type":"string", "size":64, "mandatory":true, "key":true },
             "node" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":96, "mandatory":true, "key":true },
             "nodeid" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":96, "mandatory":true, "key":true },
             "aname" : 
                 {"type":"string", "size":128 },
             "aid" : 
