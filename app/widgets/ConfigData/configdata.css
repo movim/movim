@@ -1,0 +1,17 @@
+.stats ul {
+    list-style-type: none;
+    position: relative;
+    height: 200px;
+}
+
+.stats ul li {
+    background-color: #383735;
+    width: 9%;
+    display: inline-block;
+}
+
+.stats ul li span {
+    margin-top: -2em;
+    text-align: center;
+    display: block;
+}
