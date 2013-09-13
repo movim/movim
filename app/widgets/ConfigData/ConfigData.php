@@ -28,10 +28,10 @@ class ConfigData extends WidgetBase
         $stats = $cd->getStatistics();
 
         $pd = new \modl\PostnDAO();
-        $pstats = $pd->getStatistics();
+        $pstats = array_slice($pd->getStatistics(), 0, 10);
 
         $md = new \modl\MessageDAO();
-        $mstats = $md->getStatistics();
+        $mstats = array_slice($md->getStatistics(), 0, 10);
 
         $this->view->assign('stats',            $stats[0]);
         $this->view->assign('pstats',           $pstats);
