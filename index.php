@@ -78,8 +78,9 @@ try {
         </div>
         <?php
     }
-    $r = new Route;
+    
     if(FAIL_SAFE) {
+        $r = new Route;
         $rqst = new ControllerMain();
         $rqst->handle();
     }

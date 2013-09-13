@@ -411,6 +411,8 @@ class Chat extends WidgetBase
         // Zeu messages
         $md = new \modl\MessageDAO();
         $messages = $md->getContact($jid, 0, 10);
+
+        $messages = array_reverse($messages);
         
         $messageshtml = '';
         
