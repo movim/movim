@@ -89,7 +89,7 @@ class MessageDAO extends ModlSQL {
     
     function getStatistics() {
         $this->_sql = '
-            select count(*), extract(month from published) as month, extract(year from published) as year 
+            select count(*) as count, extract(month from published) as month, extract(year from published) as year 
             from message
             where session = :session
             group by month, year order by year, month';
