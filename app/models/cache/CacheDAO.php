@@ -8,13 +8,13 @@ class CacheDAO extends ModlSQL {
             select * from cache
             where 
                 session = :session
-            and key     = :key';
+            and name    = :name';
         
         $this->prepare(
             'Cache', 
             array(
                 'session' => $session,
-                'key' => $key
+                'name' => $key
             )
         );
         
@@ -27,7 +27,7 @@ class CacheDAO extends ModlSQL {
                 set data = :data,
                     timestamp = :timestamp
                 where session = :session
-                and key = :key';
+                and name = :name';
         
         $this->prepare(
             'Cache', 
@@ -35,7 +35,7 @@ class CacheDAO extends ModlSQL {
                 'session'   => $cache->session,
                 'data'      => $cache->data,
                 'timestamp' => $cache->timestamp,
-                'key'       => $cache->key
+                'name'      => $cache->name
             )
         );
         
@@ -44,14 +44,14 @@ class CacheDAO extends ModlSQL {
         if(!$this->_effective) {
             $this->_sql = '
                 insert into cache
-                (session, key, data, timestamp)
-                values (:session, :key, :data, :timestamp)';
+                (session, name, data, timestamp)
+                values (:session, :name, :data, :timestamp)';
             
             $this->prepare(
                 'Cache', 
                 array(
                     'session'   => $cache->session,
-                    'key'       => $cache->key,
+                    'name'      => $cache->name,
                     'data'      => $cache->data,
                     'timestamp' => $cache->timestamp
                 )
