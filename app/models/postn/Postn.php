@@ -238,7 +238,7 @@ class ContactPostn extends Postn {
     
     function getContact() {
         $c = new Contact();
-        $c->jid = $this->jid;
+        $c->jid = $this->aid;
         $c->fn = $this->fn;
         $c->name = $this->name;
         $c->nickname = $this->nickname;

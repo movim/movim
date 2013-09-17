@@ -10,7 +10,7 @@ class Conf
     /* Return the general configuration */
 
     static function getServerConf() {
-        $conf_file = DOCUMENT_ROOT . self::$conf_path . "/conf.xml";
+        $conf_file = DOCUMENT_ROOT . self::$conf_path . "/conf.php";
         return self::getConf('server', $conf_file);
     }
 
@@ -30,7 +30,7 @@ class Conf
     
     static function getDefault() {
         return array(
-            'environment' => 'production',//allow "production" and "development" for the moment
+            'environment' => 'development',//allow "production" and "development" for the moment
             'theme'     => 'movim',
             'defLang'   => 'en',
             'maxUsers'  => -1,
@@ -70,74 +70,20 @@ class Conf
             throw new MovimException(t("Cannot load file '%s'", $file_path));
         }
 
-        $file = simplexml_load_file($file_path);
-        $arr = array();
-        self::convertXmlObjToArr( $file , $arr );
-        return $arr;
+        require($file_path);
+        return $conf;
     }
     
     static function saveConfFile($conf = array()) {
-        $doc = new \DOMDocument('1.0', 'UTF-8');
-
-        $doc->formatOutput = true;
-
-        $config = $doc->createElement("config");
-        $doc->appendChild($config);
+        $out = '<?php $conf = array(';
         
-        foreach($conf as $key => $value) {            
-            $node = $doc->createElement($key);
-            $node->appendChild($doc->createTextNode($value));
-            $config->appendChild($node);
-        }
+        foreach($conf as $key => $value) 
+            $out .= '"'.$key.'" => "'. $value . '",'."\n";
+        $out .= ');';
         
-        $xml = $doc->saveXML();
-        file_put_contents(DOCUMENT_ROOT.self::$conf_path.'/conf.xml', $xml);
-    }
-
-    /**
-    * Parse a SimpleXMLElement object recursively into an Array.
-    * Attention: attributes skipped
-    *
-    *
-    * @param $xml The SimpleXMLElement object
-    * @param $arr Target array where the values will be stored
-    * @return NULL
-    */
-    static private function convertXmlObjToArr( $obj, &$arr = null)
-    {
-        $children = $obj->children();
-        $executed = false;
-        foreach ($children as $elementName => $node)
-        {
-            if( array_key_exists( $elementName , $arr ) )
-            {
-                if(array_key_exists( 0 ,$arr[$elementName] ) )
-                {
-                    $i = count($arr[$elementName]);
-                    self::convertXmlObjToArr ($node, $arr[$elementName][$i]);
-                }
-                else
-                {
-                    $tmp = $arr[$elementName];
-                    $arr[$elementName] = array();
-                    $arr[$elementName][0] = $tmp;
-                    $i = count($arr[$elementName]);
-                    self::convertXmlObjToArr($node, $arr[$elementName][$i]);
-                }
-            }
-            else
-            {
-                $arr[$elementName] = array();
-                self::convertXmlObjToArr($node, $arr[$elementName]);
-            }
-            $executed = true;
-        }
-        if(!$executed&&$children->getName()=="")
-        {
-            $arr = (String)$obj;
-        }
-
-        return ;
+        $fp = fopen(DOCUMENT_ROOT.self::$conf_path.'/conf.php', 'w');
+        fwrite($fp, $out);
+        fclose($fp);
     }
 
 }

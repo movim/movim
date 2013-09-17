@@ -4,6 +4,9 @@ class Explore extends WidgetCommon {
     function WidgetLoad()
     {
         $this->addcss('explore.css');
+        
+        $this->view->assign('contacts', $this->prepareContacts());
+        $this->view->assign('servers', $this->prepareServers());
     }
 
     function ajaxSearchContacts($form) {
@@ -22,17 +25,38 @@ class Explore extends WidgetCommon {
     }
     
     function prepareServers() {
-        $nd = new \modl\NodeDAO();
+        $nd = new \modl\ItemDAO();
         
         $servers = $nd->getServers();
         
         $html = '<ul class="list">';
 
         foreach($servers as $s) {
+            list($type) = explode('.', $s->server);
+            
+            switch ($type) {
+                case 'conference':
+                    $cat = '<span class="tag green">'.t('Chatrooms').'</span>';
+                    break;
+                case 'muc':
+                    $cat = '<span class="tag green">'.t('Chatrooms').'</span>';                
+                    break;
+                case 'discussion':
+                    $cat = '<span class="tag green">'.t('Chatrooms').'</span>';
+                    break;
+                case 'pubsub':
+                    $cat = '<span class="tag orange">'.t('Groups').'</span>';
+                    break;
+                default:
+                    $cat = '';
+                    break;
+            }
+            
             $html .= '
                 <li>
-                    <a href="'.Route::urlize('server', $s->serverid).'">'.
-                        $s->serverid. ' 
+                    <a href="'.Route::urlize('server', $s->server).'">'.
+                        $cat.
+                        $s->server. ' 
                         <span class="tag">'.$s->number.'</span>
                     </a>
                 </li>';
@@ -93,7 +117,7 @@ class Explore extends WidgetCommon {
                     <a href="'.Route::urlize('friend', $user->jid).'">
                         <img class="avatar" src="'.$user->getPhoto('m').'"/>
                     </a>
-                    <div class="postbubble">
+                    <div class="postbubble profile">
                         <span class="name">
                             <a href="'.Route::urlize('friend', $user->jid).'">'.$user->getTrueName().'</a>
                         </span>
@@ -102,15 +126,7 @@ class Explore extends WidgetCommon {
                             $gender[$user->gender].' '.
                             $marital[$user->marital].'
                         </span>
-                        <div 
-                            class="content"
-                            style="
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                                height: 1.5em;
-                            "
-                        >'.prepareString($user->desc).'</div>
+                        <div class="content">'.prepareString($user->description).'</div>
                     </div>
                     
                 </div>
@@ -120,6 +136,7 @@ class Explore extends WidgetCommon {
         return $html;
     }
 
+    /*
     function build()
     {
     ?>
@@ -144,20 +161,8 @@ class Explore extends WidgetCommon {
                     </a>
                 </div>
             </form>-->
-            
-            <div id="serverresult" class="paddedtop">
-                <h2><?php echo t('Discussion Servers'); ?></h2>
-                <?php echo $this->prepareServers(); ?>
-            </div>
-
-            <div class="paddedtopbottom">
-            <h2><?php echo t('Last registered'); ?></h2>
-            </div>
-            <div id="contactsresult">
-                <?php echo $this->prepareContacts(); ?>
-            </div>
-        </div>
     <?php
 
     }
+    */
 }

@@ -23,7 +23,7 @@ class Discover extends WidgetCommon {
                         <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">
                             <img class="avatar" src="'.$user->getPhoto('m').'"/>
                         </a>
-                        <div class="postbubble">
+                        <div class="postbubble profile">
                             <span class="name">
                                 <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">'.$user->getTrueName().'</a>
                             </span>
@@ -32,15 +32,7 @@ class Discover extends WidgetCommon {
                                 $gender[$user->gender].' '.
                                 $marital[$user->marital].'
                             </span>
-                            <div 
-                                class="content"
-                                style="
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    white-space: nowrap;
-                                    height: 1.5em;
-                                "
-                            >'.prepareString($user->desc).'</div>
+                            <div class="content">'.prepareString($user->description).'</div>
                         </div>
                         
                     </div>
@@ -55,8 +47,8 @@ class Discover extends WidgetCommon {
     {
     ?>
         <div id="discover">
-            <div class="paddedtopbottom">
             <h1><?php echo t('Last registered'); ?></h1>
+            <div class="paddedtopbottom">
             </div>
             <div id="contactsresult">
                 <?php echo $this->prepareContacts(); ?>
