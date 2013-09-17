@@ -34,7 +34,7 @@ class NodeAffiliations extends WidgetBase
         foreach($list[0] as $item){ //0:jid 1:affiliation 2:subid 
             $html .= '
                 <div class="element">
-                    <label for="'.$item[0].'_'.$item[2].'"><a href="?q=friend&f='.$item[0].'">'.$item[0].'</a></label>
+                    <label for="'.$item[0].'_'.$item[2].'"><a href="'.Route::urlize('friend', $item[0]).'">'.$item[0].'</a></label>
                     <div class="select">
                         <select name="'.$item[0].'_'.$item[2].'">';
                         foreach($affiliation as $status){

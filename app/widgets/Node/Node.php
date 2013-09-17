@@ -252,11 +252,13 @@ class Node extends WidgetCommon
     
     function searchSubscription($server, $node) {
         $sd = new \modl\SubscriptionDAO();
+        $subs = $sd->get($server, $node);
         
-        foreach($sd->get($server, $node) as $s) {
-            if($s->subscription == 'subscribed')
-                return true;
-        }
+        if($subs != null)
+            foreach($subs as $s) {
+                if($s->subscription == 'subscribed')
+                    return true;
+            }
         return false;
     }
 
