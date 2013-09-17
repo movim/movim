@@ -74,6 +74,26 @@ class Bootstrap {
             DOCUMENT_ROOT.'/cache/test.tmp',
         );
         $errors=array();
+        
+        if(!is_writable(DOCUMENT_ROOT))
+            $errors[] = 'We\'re unable to write to folder '.DOCUMENT_ROOT.': check rights';
+        else {
+            if(!file_exists(DOCUMENT_ROOT.'/cache') && !@mkdir(DOCUMENT_ROOT.'/cache')) {
+                $errors[] = 'Couldn\'t create directory cache';
+            }
+            if(!file_exists(DOCUMENT_ROOT.'/log') && !@mkdir(DOCUMENT_ROOT.'/log')) {
+                $errors[] = 'Couldn\'t create directory log';
+            }
+            if(!file_exists(DOCUMENT_ROOT.'/config') && !@mkdir(DOCUMENT_ROOT.'/config')) {
+                $errors[] = 'Couldn\'t create directory config';
+            }
+            if(!file_exists(DOCUMENT_ROOT.'/users') && !@mkdir(DOCUMENT_ROOT.'/users')) {
+                $errors[] = 'Couldn\'t create directory users';
+            } else {
+                touch(DOCUMENT_ROOT.'/users/index.html');
+            }
+        }
+        
         foreach($listWritableFile as $fileName) {
             if (!file_exists($fileName)) {
                 if (touch($fileName) !== true) {
@@ -232,7 +252,7 @@ class Bootstrap {
         modl\loadModel('Postn');
         modl\loadModel('Subscription');
         modl\loadModel('Caps');
-        modl\loadModel('Node');
+        modl\loadModel('Item');
         modl\loadModel('Message');
         
         $db->setConnectionArray(\System\Conf::getServerConf());

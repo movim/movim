@@ -22,7 +22,6 @@ class Event
         if(!$event) 
             array_push(self::$_grouped_events, $type);
         else {
-
             $widgets = WidgetWrapper::getInstance(false);
 
     /*        $widgets->iterate('runEvents', array(

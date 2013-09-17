@@ -78,8 +78,8 @@ class NodeConfig extends WidgetBase
     }
     
     function ajaxGroupDelete($server, $node){
-        $nd = new modl\NodeDAO();
-        $nd->deleteNode($server, $node);
+        $nd = new modl\ItemDAO();
+        $nd->deleteItem($server, $node);
         
         $r = new moxl\GroupDelete();
         $r->setTo($server)

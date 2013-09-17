@@ -225,8 +225,9 @@ class PostnDAO extends ModlSQL {
     
     function getNews($limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid as jid from postn
+            select *, postn.aid as jid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
+            left outer join privacy on postn.nodeid = privacy.pkey
             left outer join subscription on 
                 postn.session = subscription.jid and 
                 postn.jid = subscription.server and

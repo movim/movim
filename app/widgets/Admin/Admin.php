@@ -138,15 +138,12 @@ class Admin extends WidgetBase {
     
     public function ajaxAdminSubmit($form)
     {
-        unset($form['']);
-        
-        $empty = false;
-        
-        if($form['repass'] == '' || !isset($form['repass']))
-            $form['pass'] = $this->_conf['pass'];
-        elseif($form['pass'] == $form['repass']) {
+        if($form['pass'] != '' && $form['repass'] != ''
+        && $form['pass'] == $form['repass']) {
             unset($form['repass']);
             $form['pass'] = sha1($form['pass']);
+        } else {
+            $form['pass'] = $this->_conf['pass'];
         }
         
         foreach($this->_conf as $key => $value) {
@@ -164,42 +161,6 @@ class Admin extends WidgetBase {
         RPC::call('movim_reload_this');
     }
     
-    public function ajaxRecreateDatabase()
-    {
-        $pd = new \modl\PostnDAO();
-        $pd->create();
-
-        $nd = new \modl\NodeDAO();
-        $nd->create();
-
-        $cd = new \modl\ContactDAO();
-        $cd->create();
-
-        $cad = new \modl\CapsDAO();
-        $cad->create();
-
-        $prd = new \modl\PresenceDAO();
-        $prd->create();
-
-        $rd = new \modl\RosterLinkDAO();
-        $rd->create();
-
-        $sd = new \modl\SessionDAO();
-        $sd->create();
-
-        $cd = new \modl\CacheDAO();
-        $cd->create();
-
-        $md = new \modl\MessageDAO();
-        $md->create();
-
-        $cd = new \modl\SubscriptionDAO();
-        $cd->create();
-
-        $pr = new \modl\PrivacyDAO();
-        $pr->create();
-    }
-    
     private function prepareAdminComp()
     {
             
@@ -207,8 +168,8 @@ class Admin extends WidgetBase {
             $this->createDirs();
             
         $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
-            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 1000);";
-            
+            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 3000);";
+
         $this->_validatebutton = '
             <div class="clear"></div>
             <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
@@ -478,10 +439,10 @@ class Admin extends WidgetBase {
             <fieldset>
                 <legend>'.t("Administration Credential").'</legend>';
                     
-        if($this->_conf['user'] == 'admin' && $this->_conf['pass'] == sha1('password')) {
+        if($this->_conf['user'] == 'admin' || $this->_conf['pass'] == sha1('password')) {
             $html .= '
                 <div class="message error">'.
-                    t('Change the default username/password').'
+                    t('Change the default credentials admin/password').'
                 </div>';
         }
             
@@ -516,7 +477,7 @@ class Admin extends WidgetBase {
         $infos = $md->check();
         
         $errors = '';
-        
+
         $dbview->assign('infos', $infos); 
         $dbview->assign('db_update', $this->genCallAjax('ajaxUpdateDatabase')
             ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 1000);");
