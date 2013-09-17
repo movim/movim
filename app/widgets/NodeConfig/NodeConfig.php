@@ -26,11 +26,18 @@ class NodeConfig extends WidgetBase
         $this->registerEvent('pubsubconfig', 'onConfigForm');
         $this->registerEvent('pubsubconfigsubmited', 'onGroupConfig');
         $this->registerEvent('deletionsuccess', 'onGroupDeleted');
+        
+        if(isset($_GET['s']) && isset($_GET['n'])) {
+            $this->view->assign('server', $_GET['s']);
+            $this->view->assign('node', $_GET['n']);
+            $this->view->assign('group_config', $this->genCallAjax('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('group_delete', $this->genCallAjax('ajaxGroupDelete', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+        }
     }
     
     function onGroupDeleted($server) {
         $html = '
-            <a href="?q=server&s='.$server.'">
+            <a href="'.Route::urlize('server', $server).'">
                 '.t("Return to %s's list of groups", $server).'
             </a><br /><br />';
             
@@ -94,7 +101,7 @@ class NodeConfig extends WidgetBase
           ->setData($data)
           ->request();
     }
-    
+    /*
     function build()
     {
 
@@ -132,6 +139,7 @@ class NodeConfig extends WidgetBase
         </div>
         <?php
     }
+    */
 }
 
 ?>

@@ -255,6 +255,9 @@
 
 .post .enclosure a.imglink img.icon {
     max-height: 24px;
+    margin-right: 0.5em;
+    min-width: 16px;
+    min-height: 16px;
 }
 
 .post .content img, .post .content video {

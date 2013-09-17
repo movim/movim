@@ -78,12 +78,12 @@ class WidgetCommon extends WidgetBase {
                 <span>
                     <a href="'.Route::urlize('friend', $post->jid).'">'.$post->getContact()->getTrueName().'</a>
                 </span>';
-        elseif($post->getContact()->getTrueName() != '')
+        elseif($post->getContact()->getTrueName() != '' && filter_var($post->aid, FILTER_VALIDATE_EMAIL))
             $c = '
                 <span>
                     <a href="'.Route::urlize('friend', $post->aid).'">'.$post->getContact()->getTrueName().'</a>
                 </span>';
-        elseif($post->aid != '')
+        elseif($post->aid != '' && filter_var($post->aid, FILTER_VALIDATE_EMAIL))
             $c = '
                 <span>
                     <a href="'.Route::urlize('friend', $post->aid).'">'.$post->aid.'</a>
@@ -179,18 +179,24 @@ class WidgetCommon extends WidgetBase {
                         '.$l['title'].'
                     </a>';
             } elseif(isset($l['href'])) {
+                $url = parse_url($l['href']);
                 if(substr($l['href'], 0, 5) != 'xmpp:') {
-                    $url = parse_url($l['href']);
-         
+                    if($url['host'] == 'www.youtube.com') {
+                        $enc .= '
+                        <a href="'.$l['href'].'" target="_blank">
+                            <img src="http://img.youtube.com/vi/'.substr($url['query'], 2, 11).'/1.jpg"/>
+                            <img src="http://img.youtube.com/vi/'.substr($url['query'], 2, 11).'/2.jpg"/>
+                            <img src="http://img.youtube.com/vi/'.substr($url['query'], 2, 11).'/3.jpg"/>
+                        </a><br />';
+                    }
                     $enc .= '
                         <a href="'.$l['href'].'" class="imglink" target="_blank">
-                            <img class="icon" src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>
-                            '.$url['scheme'].'://'.$url['host'].$url['path'].'
-                        </a>';
+                            <img class="icon" src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>'.$url['scheme'].'://'.$url['host'].$url['path'].'
+                        </a><br />';
                 }
             }
         }
-        
+        //<iframe src="http://www.youtube.com/embed/VIDEO_ID"></iframe>
         return $enc;
     }
     
