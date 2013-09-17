@@ -85,9 +85,7 @@ class Cache
      */
     private function write_cache($key, $object)
     {
-        //$cache_key = $this->login.':'.$key;
         $data = str_replace("'", "\\'", base64_encode(gzcompress(serialize($object))));
-        //$md5 = md5($data);
         $time = date(DATE_ISO8601, time());
 
         $cd = new \modl\CacheDAO();        
@@ -95,7 +93,7 @@ class Cache
 
         $c->session = $this->login;
         $c->data = $data;
-        $c->key = $key;
+        $c->name = $key;
         $c->timestamp = $time;
         
         $cd->set($c);
@@ -106,8 +104,6 @@ class Cache
      */
     private function read_cache($key)
     {
-        //$cache_key = $this->login.':'.$key;
-        
         $cd = new \modl\CacheDAO();
         $var = $cd->get($this->login, $key);
 

@@ -4,7 +4,7 @@ namespace modl;
 
 class Cache extends ModlModel{
     public $session;
-    public $key;
+    public $name;
     public $data;
     public $timestamp;
     
@@ -13,7 +13,7 @@ class Cache extends ModlModel{
         {
             "session" : 
                 {"type":"string", "size":64, "mandatory":true, "key":true },
-            "key" : 
+            "name" : 
                 {"type":"string", "size":32, "mandatory":true, "key":true },
             "data" : 
                 {"type":"text", "mandatory":true },
