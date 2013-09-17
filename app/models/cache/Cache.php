@@ -12,9 +12,9 @@ class Cache extends ModlModel{
         $this->_struct = '
         {
             "session" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "mandatory":true, "key":true },
             "key" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":32, "mandatory":true, "key":true },
             "data" : 
                 {"type":"text", "mandatory":true },
             "timestamp" : 
