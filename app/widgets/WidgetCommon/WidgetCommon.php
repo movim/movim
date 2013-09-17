@@ -28,16 +28,16 @@ class WidgetCommon extends WidgetBase {
     
     protected function printPost($post, $comments = false, $public = false) {
         // Initialize the variables
-        $class = $title = $access = $flagcolor = $group = $c =
+        $class = $title = $access = $flagcolor = $group = $c = $comments =
         $tags = $toolbox = $place = $recycle = '';
-        
+
         if($post->title)
             $title = '
                 <span>
                     '.$post->title.'
                 </span><br />';
                 
-        if($this->user->getLogin() == $post->jid) {
+        if($this->user->getLogin() == $post->aid) {
             $class = 'me ';
 
             if($post->privacy == 1){
@@ -49,10 +49,10 @@ class WidgetCommon extends WidgetBase {
                 $access .= 'protect orange';
             }
                 
-            $avatar = $post->getContact()->getPhoto('s');
+            $avatar = $post->getContact()->getPhoto('m');
         } else 
-            $avatar = $post->getContact()->getPhoto('s');
-
+            $avatar = $post->getContact()->getPhoto('m');
+            
         if(!filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->node != '')
             $group = '
                 <span class="group">
@@ -77,6 +77,11 @@ class WidgetCommon extends WidgetBase {
             $c = '
                 <span>
                     <a href="'.Route::urlize('friend', $post->jid).'">'.$post->getContact()->getTrueName().'</a>
+                </span>';
+        elseif($post->getContact()->getTrueName() != '')
+            $c = '
+                <span>
+                    <a href="'.Route::urlize('friend', $post->aid).'">'.$post->getContact()->getTrueName().'</a>
                 </span>';
         elseif($post->aid != '')
             $c = '
@@ -106,10 +111,8 @@ class WidgetCommon extends WidgetBase {
         
         if($post->node == 'urn:xmpp:microblog:0')
             $comments = $this->printComments($post, $comments, $public);
-        else
-            $comments = '';
-            
-        if($this->user->getLogin() == $post->jid) 
+        
+        if($this->user->getLogin() == $post->aid) 
             $toolbox = $this->getToolbox($post);
             
         $view = $this->loadTemplate();
@@ -181,7 +184,7 @@ class WidgetCommon extends WidgetBase {
          
                     $enc .= '
                         <a href="'.$l['href'].'" class="imglink" target="_blank">
-                            <img src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>
+                            <img class="icon" src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>
                             '.$url['scheme'].'://'.$url['host'].$url['path'].'
                         </a>';
                 }

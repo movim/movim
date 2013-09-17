@@ -46,6 +46,17 @@
     position: relative;
 }
 
+.post .postbubble.profile {
+    padding-top: 0.5em;
+}
+
+.post .postbubble.profile .content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 2em;
+}
+
 .post:last-child {
     border-bottom: 0px;
 }
@@ -240,6 +251,10 @@
     max-width: 100%;
     width: auto;
     margin-bottom: -0.2em;
+}
+
+.post .enclosure a.imglink img.icon {
+    max-height: 24px;
 }
 
 .post .content img, .post .content video {

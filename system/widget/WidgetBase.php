@@ -107,6 +107,7 @@ class WidgetBase
     
     protected function tpl() {
         $view = new RainTPL;
+                
         $view->configure('tpl_dir', APP_PATH.'widgets/'.$this->name.'/'); 
         $view->configure('cache_dir',    CACHE_PATH);
         $view->configure('tpl_ext',      'tpl'); 

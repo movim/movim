@@ -46,13 +46,12 @@ class WidgetWrapper
         if($md->_connected) {
             $sess = Session::start(APP_NAME);
             $widgets = $sess->get('loaded_widgets');
-            
+
             if(is_array($widgets)) {
                 $this->loaded_widgets_old = $widgets;
             }
             
             $this->registered_events = $sess->get('registered_events');
-            
             // We search all the existent widgets
             $this->all_widgets = array();
             
@@ -172,7 +171,6 @@ class WidgetWrapper
      */
     function register_events() {
         $widgets = $this->get_all_widgets();
-
         foreach($widgets as $widget_name) {
             $widget = $this->load_widget($widget_name);
             // We save the registered events of the widget for the filter
@@ -209,6 +207,7 @@ class WidgetWrapper
                 $widgets = $this->registered_events[$fct];
         } else
             $widgets = $this->get_loaded_widgets();
+
         if(isset($widgets) && is_array($widgets))
             foreach($widgets as $widget)
                 $this->run_widget($widget, $method, $params);

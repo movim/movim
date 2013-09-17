@@ -97,8 +97,8 @@ class Node extends WidgetCommon
     }
     
     function prepareNode($serverid, $groupid) {
-        $nd = new modl\NodeDAO();
-        $node = $nd->getNode($serverid, $groupid);
+        $nd = new modl\ItemDAO();
+        $node = $nd->getItem($serverid, $groupid);
         
         if($node != null)
             $title = $node->getName();

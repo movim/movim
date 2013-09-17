@@ -119,7 +119,7 @@ class ControllerBase
      * Return a basic auth page for the administration area
      */
     protected function authenticate(){
-        header('WWW-Authenticate: Basic realm="Enter admin username/password"');
+        header('WWW-Authenticate: Basic realm="Enter credentials admin/password"');
         header('HTTP/1.0 401 Unauthorized');
         echo 'Why are you hitting cancel?';
         exit;

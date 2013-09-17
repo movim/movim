@@ -24,21 +24,20 @@ class ServerNodes extends WidgetCommon
     {
         $this->registerEvent('discoitems', 'onDiscoItems');
         $this->registerEvent('discoerror', 'onDiscoError');
-        $this->registerEvent('disconodes', 'onDiscoNodes');
         $this->registerEvent('creationsuccess', 'onCreationSuccess');
         $this->registerEvent('creationerror', 'onCreationError');
-        
-        if (substr($_GET['s'], 0, 7) == 'pubsub.')
+
+        if($_GET['s'] != null) {
             $this->view->assign('server', $this->prepareServer($_GET['s']));
-            
-        $this->view->assign('get_nodes', $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"));
+            $this->view->assign('get_nodes', $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"));
+        }
     }
     
     function onDiscoError($error)
     {
         RPC::call('movim_fill', 'servernodeshead', '');
     }
-
+/*
     function onDiscoNodes($items)
     {
 
@@ -87,7 +86,6 @@ class ServerNodes extends WidgetCommon
     function onDiscoItems($items)
     {
         $html = '<ul class="list">';
-
         foreach($items as $item) {
             $html .= '
                 <li>
@@ -104,11 +102,94 @@ class ServerNodes extends WidgetCommon
         RPC::call('movim_fill', 'servernodeshead', '');
         RPC::commit();
     }
+    */
+    
+    function onDiscoItems($server) {
+        $submit = $this->genCallAjax('ajaxCreateGroup', "movim_parse_form('groupCreation')");
+        
+        list($type) = explode('.', $server);
+        
+        if($type == 'pubsub') {
+            $head = '
+                <a 
+                    class="button icon add color green" 
+                    onclick="movim_toggle_display(\'#groupCreation\')">
+                    '.t("Create a new group").'
+                </a>';
+                
+            $html = '
+                <div class="popup" id="groupCreation">
+                    <form name="groupCreation">
+                        <fieldset>
+                            <legend>'.t('Give a friendly name to your group').'</legend>
+                            <div class="element large mini">
+                                <input name="title" placeholder="'.t('My Little Pony - Fan Club').'"/>
+                            </div>
+                            <input type="hidden" name="server" value="'.$server.'"/>
+                        </fieldset>
+                        <div class="menu">
+                            <a 
+                                class="button color icon yes blue merged left"
+                                onclick="'.$submit.'"
+                            >'.
+                                    t('Add').'
+                            </a><a 
+                                class="button icon no black merged right" 
+                                onclick="movim_toggle_display(\'#groupCreation\')"
+                            >'.
+                                    t('Close').'
+                            </a>
+                        </div>
+                    </form>
+                </div>';
+        } else
+            $head = '';
+            
+        $html .= $this->prepareServer($server);
+        
+        RPC::call('movim_fill', 'servernodeshead', $head);
+        RPC::call('movim_fill', 'servernodeslist', $html);
+        RPC::commit();
+    }
     
     function prepareServer($server) {
-        $nd = new \modl\NodeDAO();
+        $nd = new \modl\ItemDAO();
+        $items = $nd->getItems($server);
         
-        $nodes = $nd->getNodes($server);
+        if($items == null)
+            return '';
+
+        $html = '<ul class="list">';
+        
+        foreach($items as $i) {
+            if(substr($i->node, 0, 20) != 'urn:xmpp:microblog:0') {
+                $tags = '';
+                if($i->num != null)
+                    $tags .= '<span class="tag">'.$i->num.'</span>';
+            
+                if($i->subscription == 'subscribed')
+                    $tags .= '<span class="tag green">'.t('Subscribed').'</span>';
+                    
+                $url = '';
+                if($i->node != null)
+                    $url = 'href="'.Route::urlize('node', array($i->server, $i->node)).'"';
+            
+                $html .= '
+                    <li>
+                        <a '.$url.'>'.
+                            $i->getName().
+                            $tags.'
+                        </a>
+                    </li>';
+            }
+        }
+        
+        $html .= '</ul>';
+        
+        return $html;
+/*        $nd = new \modl\ItemDAO();
+        
+        $nodes = $nd->getItems($server);
         
         $html = '<ul class="list">';
         
@@ -142,6 +223,7 @@ class ServerNodes extends WidgetCommon
         $html .= '</ul>';
         
         return $html;
+*/
     }
     
     function onCreationSuccess($items)
@@ -161,8 +243,8 @@ class ServerNodes extends WidgetCommon
 
     function ajaxGetNodes($server)
     {
-        $nd = new modl\NodeDAO();
-        $nd->deleteNodes($server);
+        $nd = new modl\ItemDAO();
+        $nd->deleteItems($server);
         
         $r = new moxl\PubsubDiscoItems();
         $r->setTo($server)->request();

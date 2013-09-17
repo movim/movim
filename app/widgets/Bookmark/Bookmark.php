@@ -222,7 +222,7 @@ class Bookmark extends WidgetBase
 
         $sd = new \modl\SubscriptionDAO();
         
-        if($sd != null) {
+        if($sd != null && $sd->getSubscribed() != null) {
         
             foreach($sd->getSubscribed() as $s) {
                 $subscription .= '

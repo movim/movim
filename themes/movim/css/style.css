@@ -633,6 +633,13 @@ ul.list li span.tag {
     margin-top: -0.3em;
 }
 
+ul.list li span.tag.red { background-color: #D92727; }
+ul.list li span.tag.blue { background-color: #0DB8B5; }
+ul.list li span.tag.green { background-color: #6FCC43; }
+ul.list li span.tag.yellow { background-color: #DEC41C; }
+ul.list li span.tag.orange { background-color: #FC8F12; }
+ul.list li span.tag.purple { background-color: #442178; }
+
 /* Thumb */
 ul.thumb {
     list-style-type: none;
@@ -723,6 +730,8 @@ dl dd {
     display: none;
     background-color: #242424;
     padding: 1em;
+    
+    border-bottom: none;
     
     box-shadow: 0 0 3em black;
     

@@ -3,16 +3,18 @@
 namespace modl;
 
 class CacheDAO extends ModlSQL { 
-    function get($key) {
+    function get($session, $key) {
         $this->_sql = '
             select * from cache
             where 
-                session = :session';
+                session = :session
+            and key     = :key';
         
         $this->prepare(
             'Cache', 
             array(
-                'session' => $key
+                'session' => $session,
+                'key' => $key
             )
         );
         
@@ -23,9 +25,9 @@ class CacheDAO extends ModlSQL {
         $this->_sql = '
             update cache
                 set data = :data,
-                    checksum = :checksum,
                     timestamp = :timestamp
-                where session = :session';
+                where session = :session
+                and key = :key';
         
         $this->prepare(
             'Cache', 
@@ -33,7 +35,7 @@ class CacheDAO extends ModlSQL {
                 'session'   => $cache->session,
                 'data'      => $cache->data,
                 'timestamp' => $cache->timestamp,
-                'checksum'  => $cache->checksum
+                'key'       => $cache->key
             )
         );
         
@@ -42,16 +44,16 @@ class CacheDAO extends ModlSQL {
         if(!$this->_effective) {
             $this->_sql = '
                 insert into cache
-                (session, data, checksum, timestamp)
-                values (:session, :data, :checksum, :timestamp)';
+                (session, key, data, timestamp)
+                values (:session, :key, :data, :timestamp)';
             
             $this->prepare(
                 'Cache', 
                 array(
                     'session'   => $cache->session,
+                    'key'       => $cache->key,
                     'data'      => $cache->data,
-                    'timestamp' => $cache->timestamp,
-                    'checksum'  => $cache->checksum
+                    'timestamp' => $cache->timestamp
                 )
             );
             

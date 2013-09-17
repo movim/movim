@@ -4,8 +4,8 @@ namespace modl;
 
 class Cache extends ModlModel{
     public $session;
+    public $key;
     public $data;
-    public $checksum;
     public $timestamp;
     
     public function __construct() {
@@ -13,10 +13,10 @@ class Cache extends ModlModel{
         {
             "session" : 
                 {"type":"string", "size":128, "mandatory":true, "key":true },
+            "key" : 
+                {"type":"string", "size":128, "mandatory":true, "key":true },
             "data" : 
                 {"type":"text", "mandatory":true },
-            "checksum" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
             "timestamp" : 
                 {"type":"date" }
         }';
