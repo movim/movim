@@ -84,8 +84,7 @@ class Vcard extends WidgetBase
         $c->photobin        = $vcard->photobin->value;
         
         $c->description     = trim($vcard->desc->value);
-        \movim_log('LOOOOOL');
-        \movim_log($vcard->privacy);
+
         if($vcard->privacy->value == true)
             \modl\Privacy::set($c->jid, 1);
         else

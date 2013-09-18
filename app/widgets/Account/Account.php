@@ -70,9 +70,7 @@ class Account extends WidgetBase {
             }
 
             $response = simplexml_load_string($response);
-            
-            \movim_log(moxl\cleanXML($response->asXML()));
-                        
+
             $id = (string)$response->attributes()->id;
 
             $elements = (array)$response->iq->query;
