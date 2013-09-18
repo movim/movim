@@ -28,7 +28,7 @@ class WidgetCommon extends WidgetBase {
     
     protected function printPost($post, $comments = false, $public = false) {
         // Initialize the variables
-        $class = $title = $access = $flagcolor = $group = $c = $comments =
+        $class = $title = $access = $flagcolor = $group = $c = 
         $tags = $toolbox = $place = $recycle = '';
 
         if($post->title)
@@ -111,6 +111,8 @@ class WidgetCommon extends WidgetBase {
         
         if($post->node == 'urn:xmpp:microblog:0')
             $comments = $this->printComments($post, $comments, $public);
+        else
+            $comments = '';
         
         if($this->user->getLogin() == $post->aid) 
             $toolbox = $this->getToolbox($post);
@@ -352,7 +354,7 @@ class WidgetCommon extends WidgetBase {
 
             $pd = new \modl\PostnDAO();
             $comments = $pd->getComments($posts);
-            
+
             foreach($posts as $post) {
                 // We split the interesting comments for each messages
                 $i = 0;
