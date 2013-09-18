@@ -57,9 +57,9 @@ class ContactSummary extends WidgetCommon
             $html .= '
                 <h1 class="'.$presencetxt[$contact->presence].'">'.$contact->getTrueName().'</h1>';
 
-            if($this->testIsSet($contact->name))
+            /*if($this->testIsSet($contact->name))
                 $html .= $contact->name.' ';
-            else
+            else*/
                 $html .= $contact->getTrueName().' ';
                 
             if($this->testIsSet($contact->url) && filter_var($contact->url, FILTER_VALIDATE_URL)) 
@@ -89,7 +89,7 @@ class ContactSummary extends WidgetCommon
         ?>
         <div id="contactsummary">
         <?php
-        if($contact->photobin != null) {
+        if($contact != null) {
             echo $this->prepareContactSummary($contact);
         } 
         
