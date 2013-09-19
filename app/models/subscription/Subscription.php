@@ -10,7 +10,7 @@ class Subscription extends ModlModel {
     public $subid;
     public $title;
     public $timestamp;
-    
+    public $name;
     
     public function __construct() {
         $this->_struct = '

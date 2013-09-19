@@ -136,8 +136,8 @@ class ItemDAO extends ModlSQL {
     }
     
     function getItem($server, $item) {
-        /*$this->_sql = '
-            select * from node
+        $this->_sql = '
+            select * from item
             where 
                 node = :node
                 and server = :server';
@@ -150,7 +150,6 @@ class ItemDAO extends ModlSQL {
             )
         );
         
-        return $this->run('Item', 'item');*/
-        return null;
+        return $this->run('Item', 'item');
     }
 }

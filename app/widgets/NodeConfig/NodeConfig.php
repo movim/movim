@@ -28,8 +28,17 @@ class NodeConfig extends WidgetBase
         $this->registerEvent('deletionsuccess', 'onGroupDeleted');
         
         if(isset($_GET['s']) && isset($_GET['n'])) {
+            $nd = new modl\ItemDAO();
+            $node = $nd->getItem($_GET['s'], $_GET['n']);
+            
+            if($node != null)
+                $title = $node->getName();
+            else
+                $title = $groupid;
+            
             $this->view->assign('server', $_GET['s']);
             $this->view->assign('node', $_GET['n']);
+            $this->view->assign('name', $title);
             $this->view->assign('group_config', $this->genCallAjax('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"));
             $this->view->assign('group_delete', $this->genCallAjax('ajaxGroupDelete', "'".$_GET['s']."'", "'".$_GET['n']."'"));
         }

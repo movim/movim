@@ -88,4 +88,11 @@
        <dt>Icons</dt><dd>Famfamfam <a href="http://www.famfamfam.com/">www.famfamfam.com</a> under CC BY 3.0</dd>
        <dt></dt><dd>Icomoon <a href="http://keyamoon.com/">by Keyamoon</a> under CC BY 3.0</dd>
     </dl>
+
+    <h2>{$c->t('API')}</h2>
+    <dl>
+       <dt>OpenStreetMap</dt><dd>Nominatim <a href="http://nominatim.openstreetmap.org/">nominatim.openstreetmap.org</a></dd>
+       <dt>Last.fm API</dt><dd><a href="http://www.last.fm/api">www.last.fm/api</a></dd>
+       <dt>Youtube API</dt><dd><a href="http://developers.google.com/youtube">developers.google.com/youtube</a></dd>
+    </dl>
 </div>
