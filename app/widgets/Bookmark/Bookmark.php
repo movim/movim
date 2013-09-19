@@ -225,11 +225,15 @@ class Bookmark extends WidgetBase
         if($sd != null && $sd->getSubscribed() != null) {
         
             foreach($sd->getSubscribed() as $s) {
+                if($s->name != null)
+                    $name = $s->name;
+                else
+                    $name = $s->node;
+                
                 $subscription .= '
                     <li>
-                        <a href="'.Route::urlize('node', array($s->server, $s->node)).'">
-                            <!--<span class="tag">'.$s->server.'</span>-->'.
-                            $s->node.' 
+                        <a href="'.Route::urlize('node', array($s->server, $s->node)).'">'.
+                            $name.' 
                         </a>
                     </li>';
                     

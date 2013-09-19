@@ -6,7 +6,7 @@
         {$server}
     </a>
     <a href="{$c->route('node', array($server, $node))}">
-        {$node}
+        {$name}
     </a>
     <a>{$c->t('Configuration')}</a>
 </div>

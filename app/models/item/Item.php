@@ -40,10 +40,6 @@ class Item extends ModlModel {
     }
     
     public function getName() {
-        /*if($this->name == '')
-            return $this->node;
-        else
-            return $this->name;*/
         if($this->name != null)
             return $this->name;
         elseif($this->node != null)
