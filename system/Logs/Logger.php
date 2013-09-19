@@ -89,7 +89,8 @@ abstract class Logger
                         font-family: monospace;
                     }
                     .dev {
-                        padding: 1em;
+                        padding: 0.5em;
+                        padding-top: 0.2em;
                         background-color: yellow;
                         display: block;
                         clear:both;
@@ -110,7 +111,6 @@ abstract class Logger
                                             transparent 75%, transparent);
 
                         pointer-events: none;
-                        opacity: 0.7;
                     }
                 </style>';
                 self::$cssOutputDone=true;
@@ -166,12 +166,13 @@ abstract class Logger
             if (!self::$warningDevelopmentModeDisplayed) {
                 if (ENVIRONMENT === 'development') {
                     if (function_exists('t')) {
-                        print '<div class="dev">
-                            <p>'.t('Development environment.').'</p>
-                            <p>'.t('Change it in the admin panel.').'</p>
+                        print '
+                        <div class="dev">
+                            <p>'.t('Development environment.').' - '.t('Change it in the admin panel.').'</p>
                         </div>';
                     } else {
-                        print '<div class="dev">
+                        print '
+                        <div class="dev">
                             <p>Be careful you are currently in development environment</p>
                         </div>';
                     }

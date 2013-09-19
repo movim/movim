@@ -70,9 +70,22 @@ class SubscriptionDAO extends ModlSQL {
     
     function getSubscribed() {
         $this->_sql = '
-            select jid, server, node, subscription from subscription
-            where jid = :jid
-            group by server, node, jid, subscription';
+            select 
+                subscription.jid, 
+                subscription.server, 
+                subscription.node, 
+                subscription, 
+                name
+            from subscription
+            left outer join item 
+                on item.server = subscription.server 
+                and item.node = subscription.node
+            where subscription.jid = :jid
+            group by 
+                subscription.server, 
+                subscription.node, 
+                subscription.jid, 
+                subscription, item.name';
         
         $this->prepare(
             'Subscription', 
