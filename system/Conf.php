@@ -78,7 +78,7 @@ class Conf
         $out = '<?php $conf = array(';
         
         foreach($conf as $key => $value) 
-            $out .= '"'.$key.'" => "'. $value . '",'."\n";
+            $out .= "'".$key."' => '". $value . "',"."\n";
         $out .= ');';
         
         $fp = fopen(DOCUMENT_ROOT.self::$conf_path.'/conf.php', 'w');
