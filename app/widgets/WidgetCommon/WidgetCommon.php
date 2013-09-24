@@ -191,6 +191,16 @@ class WidgetCommon extends WidgetBase {
                             <img src="http://img.youtube.com/vi/'.substr($url['query'], 2, 11).'/3.jpg"/>
                         </a><br />';
                     }
+
+                    if($url['host'] == 'youtu.be') {
+                        $enc .= '
+                        <a href="'.$l['href'].'" target="_blank">
+                            <img src="http://img.youtube.com/vi/'.substr($url['path'], 1, 11).'/1.jpg"/>
+                            <img src="http://img.youtube.com/vi/'.substr($url['path'], 1, 11).'/2.jpg"/>
+                            <img src="http://img.youtube.com/vi/'.substr($url['path'], 1, 11).'/3.jpg"/>
+                        </a><br />';
+                    }
+
                     $enc .= '
                         <a href="'.$l['href'].'" class="imglink" target="_blank">
                             <img class="icon" src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>'.$url['scheme'].'://'.$url['host'].$url['path'].'
@@ -198,7 +208,7 @@ class WidgetCommon extends WidgetBase {
                 }
             }
         }
-        //<iframe src="http://www.youtube.com/embed/VIDEO_ID"></iframe>
+
         return $enc;
     }
     
