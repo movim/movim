@@ -93,7 +93,7 @@ class ContactSummary extends WidgetCommon
         ?>
         <div id="contactsummary">
         <?php
-        if($contact != null) {
+        if($contact != null && $refresh == false) {
             echo $this->prepareContactSummary($contact);
         } 
         
