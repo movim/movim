@@ -145,9 +145,9 @@ class Contact extends ModlModel {
         $date = strtotime((string)$vcard->vCard->BDAY);
 
         if($date != false && $date != '' && $date != '-3600') 
-            $this->date = date('Y-m-d', $date);
-        else
-            $this->date = '0000-00-00';
+            $this->date = date(DATE_ISO8601, $date);
+        //else
+        //    $this->date = '0000-00-00';
         
         $this->name = (string)$vcard->vCard->NICKNAME;
         $this->fn = (string)$vcard->vCard->FN;
