@@ -81,23 +81,21 @@ class ContactSummary extends WidgetCommon
         
         if($_GET['f'] == $this->user->getLogin()) {
             $contact = $cd->get($this->user->getLogin());
-        } else {
+        } /*else {
             $contact = $cd->getRosterItem($_GET['f']);
             $refresh = true;
-        }
+        }*/
         
         if(!isset($contact)) {
             $contact = $cd->get($_GET['f']);
-            $refresh = false;
+            //$refresh = false;
         }
         ?>
         <div id="contactsummary">
         <?php
-        if($contact != null && $refresh == false) {
+        if($contact != null) {
             echo $this->prepareContactSummary($contact);
-        } 
-        
-        if($refresh == true) {
+        } else {
             $contact = new modl\Contact();
             echo $this->prepareContactSummary($contact);
             ?>
