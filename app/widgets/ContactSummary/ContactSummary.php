@@ -79,13 +79,17 @@ class ContactSummary extends WidgetCommon
     {
         $cd = new modl\ContactDAO();
         
-        if($_GET['f'] == $this->user->getLogin())
+        if($_GET['f'] == $this->user->getLogin()) {
             $contact = $cd->get($this->user->getLogin());
-        else
+        } else {
             $contact = $cd->getRosterItem($_GET['f']);
-
-        if(!isset($contact))
+            $refresh = true;
+        }
+        
+        if(!isset($contact)) {
             $contact = $cd->get($_GET['f']);
+            $refresh = false;
+        }
         ?>
         <div id="contactsummary">
         <?php
@@ -93,7 +97,7 @@ class ContactSummary extends WidgetCommon
             echo $this->prepareContactSummary($contact);
         } 
         
-        else {
+        if($refresh == true) {
             $contact = new modl\Contact();
             echo $this->prepareContactSummary($contact);
             ?>
