@@ -80,7 +80,7 @@ class Route extends \ControllerBase {
                 \system\Logs\Logger::log(t('Route error, please set all the parameters for the page %s', $page));
             else {
                 //We construct a classic URL if the rewriting is disabled
-                if(!isset($_SERVER['HTTP_MOD_REWRITE']) && !$_SERVER['HTTP_MOD_REWRITE']) {
+                if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE']) {
                     $uri = BASE_URI.'?q='.$page;
                     
                     if($params != false && is_array($params)) {
