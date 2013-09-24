@@ -1,6 +1,6 @@
 <span id="{$idhash}"></span>
 <div class="post {$class}" id="{$id}">
-    <div class="{$access}" title="{$flagtitle}" style="z-index:1;"></div>
+    <div class="{$access}" title="{$flagtitle}" style="margin-bottom:1em;"></div>
     <a href="{$friend}">
         {$avatar}
     </a>
