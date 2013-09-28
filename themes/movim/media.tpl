@@ -19,7 +19,7 @@
     </div>
 
     <div id="center">
-        <div title="<?php echo getFlagTitle("white"); ?>" style="z-index:1;" class="protect white"></div>
+        <div title="<?php echo getFlagTitle("white"); ?>" class="protect white"></div>
         <?php $this->widget('Tabs');?>
         <?php $this->widget('Media');?>
         <?php $this->widget('MediaUpload');?>
