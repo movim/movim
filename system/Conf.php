@@ -75,11 +75,9 @@ class Conf
     }
     
     static function saveConfFile($conf = array()) {
-        $out = '<?php $conf = array(';
-        
-        foreach($conf as $key => $value) 
-            $out .= "'".$key."' => '". $value . "',"."\n";
-        $out .= ');';
+        $out = "<?php\n"
+                .'$conf = '.var_export($conf, true).";\n"
+                ."?>\n";
         
         $fp = fopen(DOCUMENT_ROOT.self::$conf_path.'/conf.php', 'w');
         fwrite($fp, $out);
