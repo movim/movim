@@ -31,7 +31,7 @@ class Vcard extends WidgetBase
     
     function onMyVcardReceived()
     {
-        $html = $this->prepareInfos(true);
+        $html = $this->prepareInfos();
 
         RPC::call('movim_fill', 'vcard', $html);
         Notification::appendNotification(t('Profile Updated'), 'success');
