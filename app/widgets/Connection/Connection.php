@@ -28,9 +28,6 @@ class Connection extends WidgetBase
     
     function onConnection($value)
     {
-        /*if($value <= 10)
-            RPC::call('movim_redirect', Route::urlize('main'));
-        else {*/
         if($value >= 10) {
             $value = floor(($value-10)/10);
             
@@ -39,8 +36,7 @@ class Connection extends WidgetBase
             else
                 RPC::call('movim_fill', 'countdown', t('Please wait ').$value);   
         } else
-        //}
-        RPC::commit();
+            RPC::commit();
     }
 
     function build()
