@@ -24,7 +24,8 @@ class Event
         else {
             $widgets = WidgetWrapper::getInstance(false);
 
-    /*        $widgets->iterate('runEvents', array(
+            /*
+             * $widgets->iterate('runEvents', array(
                                   array(
                                       'type' => 'allEvents',
                                       'data' => $event,
@@ -35,13 +36,13 @@ class Event
                                       'data' => $event,
                                       )));
                                   
-        /*$widgets->iterateAll('isEvents', array(
-                              array(
-                                  'type' => $type,
-                                  'data' => $event,
-                                  )));*/
+            /*$widgets->iterateAll('isEvents', array(
+                                  array(
+                                      'type' => $type,
+                                      'data' => $event,
+                                      )));*/
         
-        // Outputting any RPC calls.
+            // Outputting any RPC calls.
             RPC::commit();
         }
     }
