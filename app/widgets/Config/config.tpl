@@ -47,8 +47,8 @@
                 <a 
                     type="button" 
                     onclick="
-                        document.querySelector('input[name=color]').value = '082D50';
-                        document.body.style.backgroundColor = '#082D50';"
+                        document.querySelector('input[name=color]').value = '32434D';
+                        document.body.style.backgroundColor = '#32434D';"
                     style="width: 45%; float: right;" 
                     class="button icon color purple back">
                     {$c->t('Reset')}
