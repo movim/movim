@@ -71,8 +71,9 @@ class ConfigData extends WidgetBase
     }
     
     function refresh() {
-        $html = $this->prepareConfigData();
-        RPC::call('movim_fill', 'configdata', $html);
+        //$html = $this->prepareConfigData();
+        //RPC::call('movim_fill', 'configdata', $html);
+        RPC::call('movim_reload_this');
         RPC::commit();
     }
     

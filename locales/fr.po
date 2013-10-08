@@ -1,20 +1,20 @@
-# French translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
+# French translations for Movim Website package.
+# This file is distributed under the same license as the Movim Website package.
 # This file was translated from CodingTeam at <http://codingteam.net/>.
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: Movim Website\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-09-18 15:41+0200\n"
-"PO-Revision-Date: 2013-07-25 09:13+0000\n"
+"PO-Revision-Date: 2013-09-19 11:22+0000\n"
 "Last-Translator: edhelas <edhelas@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-10-08 18:48+0000\n"
+"X-Generator: Launchpad (build 16799)\n"
+"Language: \n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -601,7 +601,7 @@ msgstr "Accueil"
 #: ../system/controllers/ControllerMain.php:446
 #: ../cache/news.65bf3cbc4ca337607275814dc4b9877b.rtpl.php:1
 msgid "News"
-msgstr "Actualités"
+msgstr "Actualité"
 
 #: ../system/controllers/ControllerMain.php:44
 #: ../system/controllers/ControllerMain.php:69
@@ -691,9 +691,9 @@ msgid "Help"
 msgstr "Aide"
 
 #: ../system/controllers/ControllerMain.php:66
-#, fuzzy, php-format
+#, php-format
 msgid "%s - News"
-msgstr "Actualités"
+msgstr ""
 
 #: ../system/controllers/ControllerMain.php:234
 #, php-format
@@ -729,9 +729,8 @@ msgstr "%s - À propos"
 #: ../system/controllers/ControllerMain.php:301
 #: ../system/controllers/ControllerMain.php:369
 #: ../system/controllers/ControllerMain.php:423
-#, fuzzy
 msgid "Discover"
-msgstr "Serveurs de discussion"
+msgstr ""
 
 #: ../system/controllers/ControllerMain.php:302
 #: ../system/controllers/ControllerMain.php:370
@@ -781,9 +780,9 @@ msgid "Administration"
 msgstr "Administration"
 
 #: ../system/controllers/FrontController.php:35
-#, fuzzy, php-format
+#, php-format
 msgid "Requested controller '%s' doesn't exist."
-msgstr "Le widget « %s » n'existe pas"
+msgstr ""
 
 #: ../system/controllers/FrontController.php:44
 msgid "Could not call the load method on the current controller"
@@ -1085,9 +1084,8 @@ msgid "Close"
 msgstr "Fermer"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:171
-#, fuzzy
 msgid "Subscribed"
-msgstr "S'abonner"
+msgstr ""
 
 #: ../app/widgets/Blog/Blog.php:30
 #: ../app/widgets/Syndication/Syndication.php:52
@@ -1128,7 +1126,8 @@ msgstr ""
 "L'envois a été annulé par l'utilisateur ou la navigateur a coupé la connexion"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr "Votre fichier est trop gros !"
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
@@ -1175,9 +1174,8 @@ msgid "Links"
 msgstr "Liens"
 
 #: ../app/widgets/Presence/Presence.php:120
-#, fuzzy
 msgid "Disconnect"
-msgstr "Connexion"
+msgstr ""
 
 #: ../app/widgets/Config/Config.php:54
 msgid "Configuration updated"
@@ -1185,7 +1183,7 @@ msgstr "La configuration a été mise à jour"
 
 #: ../app/widgets/Connection/Connection.php:40
 msgid "Please wait "
-msgstr ""
+msgstr "Patientez s'il vous plaît "
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
 msgid "Subscriptions saved"
@@ -1301,14 +1299,12 @@ msgstr "Connexion"
 
 #: ../app/widgets/Explore/Explore.php:39 ../app/widgets/Explore/Explore.php:42
 #: ../app/widgets/Explore/Explore.php:45
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/ContactManage/ContactManage.php:30
-#, fuzzy
 msgid "Contact updated"
-msgstr "Status mis à jour"
+msgstr ""
 
 #: ../app/widgets/ContactManage/ContactManage.php:55
 msgid "Manage"
@@ -1617,9 +1613,8 @@ msgid "by"
 msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:212
-#, fuzzy
 msgid "email"
-msgstr "Courriel"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:216
 msgid "jid"
@@ -1735,7 +1730,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:210 ../app/widgets/Admin/Admin.php:213
 msgid "URL Rewriting support"
-msgstr "Gestion de la réécriture l'URL (URL rewriting)"
+msgstr "Gestion de la réécriture d'URL (URL rewriting)"
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:507
 msgid "General Settings"
@@ -1795,7 +1790,8 @@ msgstr ""
 "Entrez ici votre URL-BOSH sous la forme : http(s)://domaine:port/chemin"
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 "Si vous saisissez un serveur BOSH ouvert, vous allez pouvoir vous connecter "
 "sur de nombreux serveurs XMPP différents."
@@ -1809,9 +1805,9 @@ msgstr ""
 "prochaine page."
 
 #: ../app/widgets/Admin/Admin.php:371
-#, fuzzy, php-format
+#, php-format
 msgid "If you are unsure about this config option visit the %swiki%s"
-msgstr "Si nous n'êtes pas certain de ce que vous faite, visitez le wiki"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:377
 msgid "Your Bosh URL is not reachable"
@@ -1864,9 +1860,8 @@ msgid "Administration Credential"
 msgstr "Identification de l'administrateur"
 
 #: ../app/widgets/Admin/Admin.php:445
-#, fuzzy
 msgid "Change the default credentials admin/password"
-msgstr "Changez les identifiants administrateurs"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:451
 #: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:67
@@ -1960,13 +1955,11 @@ msgstr ""
 "supportés"
 
 #: ../app/widgets/Login/Login.php:58
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
 "and your password"
 msgstr ""
-"Vous pouvez vous connecter avec Facebook (seulement le chat) en utilisant %s "
-"votre.id@chat.facebook.com %s et votre mot de pass"
 
 #: ../app/widgets/Login/Login.php:88
 msgid "Wrong username"
@@ -2023,9 +2016,8 @@ msgid "Your XMPP server is unauthorized"
 msgstr "Votre compte XMPP n'est pas autorisé à se connecter"
 
 #: ../app/widgets/Login/Login.php:171
-#, fuzzy
 msgid "The server takes too much time to respond"
-msgstr "Le serveur met trop de temps à répondre"
+msgstr "Le serveur est trop lent à répondre"
 
 #: ../app/widgets/Login/Login.php:186
 #: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:44
@@ -2050,7 +2042,7 @@ msgstr "Quoi de neuf ?"
 
 #: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:78
 msgid "Gallery"
-msgstr ""
+msgstr "Gallerie"
 
 #: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:86
 msgid "Preview"
@@ -2071,9 +2063,8 @@ msgstr "Modl n'est pas arrivé à se connecter à la base de données"
 #: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:18
 #: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:18
 #: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:18
-#, fuzzy
 msgid "Movim is connected to the database"
-msgstr "Modl n'est pas arrivé à se connecter à la base de données"
+msgstr ""
 
 #: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:22
 #: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:22
@@ -2165,9 +2156,8 @@ msgstr "Signets"
 
 #: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:17
 #: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:4
-#, fuzzy
 msgid "Add a new Chat Room"
-msgstr "Ajouter une nouvelle URL"
+msgstr ""
 
 #: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:6
 msgid "Your web browser is too old to use with Movim."
@@ -2198,9 +2188,8 @@ msgid "Create one !"
 msgstr "Créez en un !"
 
 #: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:6
-#, fuzzy
 msgid "Feed Configuration"
-msgstr "Configuration"
+msgstr "Configuration du Flux"
 
 #: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:12
 msgid "General"
@@ -2256,9 +2245,8 @@ msgid "Cache"
 msgstr "Cache"
 
 #: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:7
-#, fuzzy
 msgid "Contact"
-msgstr "Contacts"
+msgstr ""
 
 #: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:11
 #: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:40
@@ -2314,43 +2302,10 @@ msgstr "Récupérer les commentaires"
 msgid "Add a comment"
 msgstr "Commenter"
 
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Impossible de charger la valeur de l'élément « %s »"
-
-#~ msgid "Specified property %s doesn't exist in %s"
-#~ msgstr "La propriété %s spécifiée n'existe pas dans %s"
-
-#~ msgid "Specified property %s is not set in %s"
-#~ msgstr "La propriété %s spécifiée n'est pas configurée dans %s"
-
-#~ msgid "Search a contact"
-#~ msgstr "Rechercher un contact"
-
-#~ msgid "Recreate the database"
-#~ msgstr "Recréer la base de données"
-
-#~ msgid "Recreate"
-#~ msgstr "Recréer"
-
-#~ msgid "This button will clear and recreate the Movim database."
-#~ msgstr ""
-#~ "Ce bouton va supprimer et recréer intégralement la base de donnée de Movim"
-
-#~ msgid "Post"
-#~ msgstr "Post"
-
-#~ msgid "%s - 404"
-#~ msgstr "%s - 404"
-
-#~ msgid "Enable Sound Notification:"
-#~ msgstr "Activer les notifications sonores:"
-
-#~ msgid "Loading your session..."
-#~ msgstr "Chargement de votre compte..."
-
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "Le dossier racine de Movim doit être accessible en écriture."
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "La création du fichier de configuration '%s' est impossible."
 
@@ -2363,12 +2318,15 @@ msgstr "Commenter"
 #~ msgid "JID not provided."
 #~ msgstr "JID indisponible."
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Le JID '%s' n'est pas valide"
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Le journal '%s' ne peut être ouvert"
 
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Création de compte"
 
@@ -2384,6 +2342,7 @@ msgstr "Commenter"
 #~ msgid "Actual version : "
 #~ msgstr "Version actuelle : "
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Veuillez installer les paquets %s et %s"
 
@@ -2396,6 +2355,7 @@ msgstr "Commenter"
 #~ msgstr ""
 #~ "Activez les droits de lecture et d'écriture sur le dossier racine de Movim"
 
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Veuillez supprimer le dossier %s pour terminer l'installation"
 
@@ -2420,6 +2380,7 @@ msgstr "Commenter"
 #~ msgid "Database Detected"
 #~ msgstr "Base de données détectée"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim a besoin de l'extension %s."
 
@@ -2427,14 +2388,16 @@ msgstr "Commenter"
 #~ "The following requirements were not met. Please make sure they are all "
 #~ "satisfied in order to install Movim."
 #~ msgstr ""
-#~ "Les dépendances ci-dessous ne sont pas satisfaites. Assurez-vous qu'elles "
-#~ "le soient afin d'installer Movim."
+#~ "Les dépendances ci-dessous ne sont pas satisfaites. Assurez-vous qu'elles le "
+#~ "soient afin d'installer Movim."
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr ""
 #~ "Vous pouvez maintenant accéder à votre version fraîchement installée de "
 #~ "Movim %sAllons y !%s"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Installer le paquet %s"
 
@@ -2467,8 +2430,8 @@ msgstr "Commenter"
 
 #~ msgid "A capital letter, a digit and a special character are recommended"
 #~ msgstr ""
-#~ "Un bon mot de passe est composé d'au moins une majuscule, un chiffre et "
-#~ "un caractère spécial"
+#~ "Un bon mot de passe est composé d'au moins une majuscule, un chiffre et un "
+#~ "caractère spécial"
 
 #~ msgid "8 characters"
 #~ msgstr "8 caractères"
@@ -2489,6 +2452,7 @@ msgstr "Commenter"
 #~ "Tout d'abord remplir ce vide avec un ID de  tout nouveau compte, cette "
 #~ "adresse vous suivra sur tout le réseau Movim !"
 
+#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - Ajouter Un Compte"
 
@@ -2501,6 +2465,7 @@ msgstr "Commenter"
 #~ msgid "Client Type"
 #~ msgstr "Type de Client"
 
+#, php-format
 #~ msgid "Contacts (%s)"
 #~ msgstr "Contacts (%s)"
 
@@ -2517,9 +2482,9 @@ msgstr "Commenter"
 #~ "personal details. Its use can potentially endanger your data. Always pay "
 #~ "attention to information that you submit."
 #~ msgstr ""
-#~ "Gardez à l'esprit que Movim est encore en développement et va manipuler "
-#~ "des informations personnelles. Son utilisation peut donc les mettre en "
-#~ "danger. Faites donc toujours attention aux informations que vous envoyez."
+#~ "Gardez à l'esprit que Movim est encore en développement et va manipuler des "
+#~ "informations personnelles. Son utilisation peut donc les mettre en danger. "
+#~ "Faites donc toujours attention aux informations que vous envoyez."
 
 #~ msgid ""
 #~ "Before you enjoy your social network, a few adjustements are required."
@@ -2530,15 +2495,19 @@ msgstr "Commenter"
 #~ msgid "Link my current account"
 #~ msgstr "Lier mon compte actuel"
 
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "Ce serveur héberge %s comptes"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "La connection Bosh a échoué avec l'erreur '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "La connexion à la base de données à échoué avec l'erreur '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "La connection XMPP à travers Bosh a échoué avec l'erreur '%s'"
 
@@ -2554,3 +2523,7 @@ msgstr "Commenter"
 #~ msgstr ""
 #~ "Des erreurs ont été détectées. Veuillez les corriger pour terminer "
 #~ "correctement l'installation."
+
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "Impossible de charger la valeur de l'élément « %s »"
