@@ -95,9 +95,11 @@ function movim_reload_this() {
 
 /* A magical function to autoresize textarea when typing */
 function movim_textarea_autoheight(textbox) {
-    textbox.style.height = 0;
-    textbox.style.height = textbox.scrollHeight
-                          +"px";
+    if(textbox != null ) {
+        textbox.style.height = 0;
+        textbox.style.height = textbox.scrollHeight
+                              +"px";
+    }
 }
 
 /**
