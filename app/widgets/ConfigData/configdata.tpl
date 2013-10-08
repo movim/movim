@@ -8,7 +8,7 @@
                 <a 
                     type="button" 
                     class="button icon color red back"
-                    onclick="'.$clearrosterlink.'">{$c->t('Clear')}</a>
+                    onclick="{$clearrosterlink}">{$c->t('Clear')}</a>
             </div>
         </fieldset>
 
@@ -33,7 +33,7 @@
                     type="button" 
                     name="email" 
                     class="button icon color red back"
-                    onclick="'.$clearpost.'">{$c->t('Clear')}</a>
+                    onclick="{$clearpost}">{$c->t('Clear')}</a>
             </div>
         </fieldset>
         
@@ -57,7 +57,7 @@
                     type="button" 
                     name="email" 
                     class="button icon color red back"
-                    onclick="'.$clearmessage.'">{$c->t('Clear')}</a>
+                    onclick="{$clearmessage}">{$c->t('Clear')}</a>
             </div>
         </fieldset>
     </form>
