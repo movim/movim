@@ -72,7 +72,7 @@ class Roster extends WidgetBase
 
             RPC::call(
                 'movim_delete', 
-                'roster'.$arr['jid'], 
+                'roster'.$arr['jid'].$arr['ressource'], 
                 $html /* this second parameter is just to bypass the RPC filter*/);
             RPC::call('movim_append', 'group'.$group, $html);
             
@@ -127,7 +127,8 @@ class Roster extends WidgetBase
         $html .= '"';
 
         $html .= '
-                id="roster'.$contact->jid.'"
+                id="roster'.$contact->jid.$contact->ressource.'"
+                data-jid="'.$contact->jid.'"
              >';
              
         $type = '';
@@ -195,16 +196,10 @@ class Roster extends WidgetBase
         // We get the current name of the group
         $currentgroup = $contacts[$i]->groupname;
 
-        // Temporary array to prevent duplicate contact
-        $duplicate = array();
-        
         // We grab all the contacts of the group 
         $grouphtml = '';
-        while(isset($contacts[$i]) && $contacts[$i]->groupname == $currentgroup) {
-            if(!in_array($contacts[$i]->jid, $duplicate)) {                
-                $grouphtml .= $this->prepareRosterElement($contacts[$i], $caps);
-                array_push($duplicate, $contacts[$i]->jid);
-            }
+        while(isset($contacts[$i]) && $contacts[$i]->groupname == $currentgroup) {              
+            $grouphtml .= $this->prepareRosterElement($contacts[$i], $caps);
             $i++;
         } 
         
