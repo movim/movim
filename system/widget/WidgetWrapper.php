@@ -212,7 +212,7 @@ class WidgetWrapper
             foreach($widgets as $widget)
                 $this->run_widget($widget, $method, $params);
     }
-    
+    /*
     function iterateAll($method, array $params = NULL) {
         $widgets = $this->get_all_widgets();
         $isevent = array();
@@ -223,7 +223,7 @@ class WidgetWrapper
             
         return $isevent;
     }
-
+    */
     /**
      * Returns the list of loaded CSS.
      */
