@@ -142,16 +142,18 @@ class Postn extends ModlModel {
             $content = '';
         
         $content = $summary.$content;
-        
-        if($entry->entry->published)    
-            $this->published = date(DATE_ISO8601, strtotime((string)$entry->entry->published));
-        else
-            $this->published = date(DATE_ISO8601);
-            
+
         if($entry->entry->updated)    
             $this->updated   = date(DATE_ISO8601, strtotime((string)$entry->entry->updated));
         else
             $this->updated   = date(DATE_ISO8601);
+        
+        if($entry->entry->published)    
+            $this->published = date(DATE_ISO8601, strtotime((string)$entry->entry->published));
+        elseif($entry->entry->updated)
+            $this->published = date(DATE_ISO8601, strtotime((string)$entry->entry->updated));
+        else
+            $this->published = date(DATE_ISO8601);
         
         if($delay)
             $this->delay     = $delay;
