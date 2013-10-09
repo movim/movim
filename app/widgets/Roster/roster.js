@@ -27,6 +27,27 @@ function sortRoster() {
     for(i = 0; i < server_error.length; i++) {
         server_error.item(i).parentNode.insertBefore(server_error.item(i), contacts.item(contacts.length))
     }
+
+    cleanMulti();
+}
+
+function cleanMulti() {
+    roster = document.querySelector('#rosterlist');
+    contacts = roster.querySelectorAll('li');
+    
+    var i = 0;
+    var id = '';
+
+    while(i < contacts.length) {
+        if(contacts.item(i).className != 'offline'
+        && contacts.item(i).className != 'server_error')
+            contacts.item(i).style.display = 'list-item';
+        if(id == contacts.item(i).dataset.jid)
+            contacts.item(i).style.display = 'none';
+        
+        id = contacts.item(i).dataset.jid;
+        i++;
+    }
 }
 
 function showRoster(boolOffline) {
