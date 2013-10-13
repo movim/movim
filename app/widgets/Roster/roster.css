@@ -73,6 +73,19 @@
     display: list-item;
 }
 
+/* Show some clients icons, Xabber style */
+#roster ul#rosterlist li.client a {
+    background-repeat: no-repeat;
+    background-position: 95% center;
+}
+
+#roster ul#rosterlist li.client.adium a     { background-image: url(img/clients/adium.png); }
+#roster ul#rosterlist li.client.pidgin a    { background-image: url(img/clients/pidgin.png); }
+#roster ul#rosterlist li.client.gajim a     { background-image: url(img/clients/gajim.png); }
+#roster ul#rosterlist li.client.telepathy a { background-image: url(img/clients/empathy.png); }
+#roster ul#rosterlist li.client.xabber a    { background-image: url(img/clients/xabber.png); }
+#roster ul#rosterlist li.client.psi a       { background-image: url(img/clients/psi.png); }
+
 /* The list */
 
 #roster ul#rosterlist li:nth-child(2n) {
