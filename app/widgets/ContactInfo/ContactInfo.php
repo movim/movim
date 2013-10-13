@@ -120,7 +120,12 @@ class ContactInfo extends WidgetCommon
                         
                 if(isset($caps) && $caps->name != '' && $caps->type != '' ) {
                     $cinfos = '';
-                    $cinfos .=  $caps->name.' ('.$clienttype[$caps->type].')<br />';
+                    if(isset($clienttype[$caps->type]))
+                        $type = ' ('.$clienttype[$caps->type].')';
+                    else
+                        $type = '';
+                    
+                    $cinfos .=  $caps->name.$type.'<br />';
                     
                     $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
                 }
