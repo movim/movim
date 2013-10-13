@@ -109,6 +109,15 @@ class Roster extends WidgetBase
      */
     function prepareRosterElement($contact, $caps = false)
     {
+        $type = '';
+        
+        if($caps && isset($caps[$contact->node.'#'.$contact->ver])) {
+            $type = $caps[$contact->node.'#'.$contact->ver]->type;
+            $client = $caps[$contact->node.'#'.$contact->ver]->name;
+            $client = explode(' ',$client);
+            $client = reset($client);
+        }
+        
         $html = '';
         $html .= '<li
                 class="';
@@ -118,10 +127,15 @@ class Roster extends WidgetBase
                     if($contact->last != null && $contact->last > 60)
                         $html .= 'inactive ';
 
-                    if($contact->value) {
+                    if($contact->value && $contact->value < 5) {
                         $presencestxt = getPresencesTxt();
                         $html.= $presencestxt[$contact->value];
-                    } else
+
+                        if(isset($client))
+                            $html .= ' client '.strtolower($client);
+                    } elseif($contact->value == 6)
+                        $html .= 'server_error';
+                    else
                         $html .= 'offline';
 
         $html .= '"';
@@ -130,12 +144,6 @@ class Roster extends WidgetBase
                 id="roster'.$contact->jid.$contact->ressource.'"
                 data-jid="'.$contact->jid.'"
              >';
-             
-        $type = '';
-
-        if($caps && isset($caps[$contact->node.'#'.$contact->ver])) {
-            $type = $caps[$contact->node.'#'.$contact->ver]->type;
-        }
 
         $html .= '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->jid."'").'"></div>';
 
