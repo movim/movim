@@ -40,18 +40,18 @@
 
 
 @keyframes colorful {
-    0% { background-color: #127A97; }
+    0% { background-color: #3C7E91; }
     20% { background-color: #452B72; }
-    40% { background-color: #F8B915; }
-    60% { background-color: #8CAA00; }
+    40% { background-color: #DA8D31; }
+    60% { background-color: #839824; }
     80% { background-color: #294265; }
-    100% { background-color: #127A97; }
+    100% { background-color: #3C7E91; }
 }
 @-webkit-keyframes colorful {
-    0% { background-color: #32434D; }
-    20% { background-color: #652945; }
-    40% { background-color: #3F6529; }
-    60% { background-color: #296557; }
+    0% { background-color: #3C7E91; }
+    20% { background-color: #452B72; }
+    40% { background-color: #DA8D31; }
+    60% { background-color: #839824; }
     80% { background-color: #294265; }
-    100% { background-color: #382965; }
+    100% { background-color: #3C7E91; }
 }
