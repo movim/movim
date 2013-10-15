@@ -17,8 +17,8 @@
         <?php $this->widget('ContactManage');?>
     </div>
 
+    <?php $this->widget('Tabs');?>
     <div id="center">
-        <?php $this->widget('Tabs');?>
         <?php $this->widget('Wall');?>
         <?php $this->widget('ContactCard');?>
         <?php $this->widget('ContactPubsubSubscription');?>

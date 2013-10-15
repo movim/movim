@@ -47,7 +47,9 @@ body {
     font-size: 14px;
     line-height: 1em;
     color: #4E4E4E;
-    background-color: #32434D;
+
+	animation: 200s infinite colorful;
+    -webkit-animation: 200s infinite colorful;
 
     margin: 0 auto;
     width: 100%;
@@ -275,10 +277,12 @@ ul.clean li {
     width: 100%;
     position: relative;
     margin-top: 3em;
+    overflow: hidden;
 }
 
 #main {  
-    background-color: #383735;
+    /*background-color: #383735;*/
+    background-color: rgba(20, 20, 20, 0.7);
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -357,7 +361,7 @@ footer
 {
     clear: both;
     text-align: right;
-    background-color: #383735;
+    background-color: rgba(20, 20, 20, 0.7);
     line-height: 3em;
     padding-right: 1em;
     color: white;
@@ -375,11 +379,17 @@ nav {
     padding-top: 0px;
     text-decoration: none;
     width: 100%;
-    background-color: #4C5A61;
     position: fixed;
     top: 0px;
     left: 0px;
     z-index: 2;
+
+	animation: 200s infinite colorful;
+    -webkit-animation: 200s infinite colorful;
+}
+
+nav .wrapper {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .menu {
@@ -419,11 +429,13 @@ nav {
 
 .menu li:hover,
 .menu li a.disconnect:hover {
-    background-color: #46565E;
+    /*background-color: #46565E;*/
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .menu li a.active {
-    background-color: #445157;
+    background-color: rgba(0, 0, 0, 0.2);
+    /*background-color: #445157;*/
 }
 
 .menu li img {

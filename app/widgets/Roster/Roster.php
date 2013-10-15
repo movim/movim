@@ -63,7 +63,7 @@ class Roster extends WidgetBase
         
         if($c != null) {
             $c->setPresence($presence);
-            $html = $this->prepareRosterElement($c);
+            $html = $this->prepareRosterElement($c, $this->getCaps());
 
             if($c->groupname == null)
                 $group = t('Ungrouped');
@@ -234,6 +234,18 @@ class Roster extends WidgetBase
         return $grouphtml;
     }
 
+    private function getCaps() {
+        $capsdao = new modl\CapsDAO();
+        $caps = $capsdao->getAll();
+
+        $capsarr = array();
+        foreach($caps as $c) {
+            $capsarr[$c->node] = $c;
+        }
+
+        return $capsarr;
+    }
+
     /**
      * @brief Here we generate the roster
      * @returns 
@@ -249,13 +261,7 @@ class Roster extends WidgetBase
         
         $rd = new \modl\RosterLinkDAO();
         
-        $capsdao = new modl\CapsDAO();
-        $caps = $capsdao->getAll();
-
-        $capsarr = array();
-        foreach($caps as $c) {
-            $capsarr[$c->node] = $c;
-        }     
+        $capsarr = $this->getCaps();
         
         if(count($contacts) > 0) {
             $i = 0;

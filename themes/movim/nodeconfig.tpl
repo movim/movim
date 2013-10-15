@@ -18,8 +18,8 @@
         <?php $this->widget('Location');?>
     </div>
 
+    <?php $this->widget('Tabs');?>
     <div id="center">
-        <?php $this->widget('Tabs');?>
         <?php $this->widget('NodeConfig');?>
         <?php $this->widget('NodeAffiliations');?>
         <?php $this->widget('NodeSubscriptions');?>
