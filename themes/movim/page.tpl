@@ -42,7 +42,11 @@
         if(isset($color)) {
             echo '
             <style type="text/css">
-                body { background-color: #'.$color.'; }
+                body, nav {
+                    background-color: #'.$color.';
+                    animation: none;
+                    -webkit-animation: none;
+                }
             </style>';
         }
 
@@ -66,7 +70,9 @@
             </div>
         </noscript>
         <nav>
-            <?php $this->menu();?>	
+            <div class="wrapper">
+                <?php $this->menu();?>
+            </div>
         </nav>
         
         <!--<div id="baseline"></div>-->

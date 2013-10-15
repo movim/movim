@@ -31,14 +31,14 @@
 }
 
 #logouttab:hover {
-    background-color: #46565E;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 #logoutlist {
     top: -100%;
     transition: top 0.5s ease;
     z-index: 1;
-    background-color: #4C5A61;
+    background-color: rgba(255, 255, 255, 0.1);
     width: 10em;
 }
 
@@ -63,5 +63,5 @@
 
 #logoutlist a:hover {
     cursor: pointer; 
-    background-color: #46565E;
+    background-color: rgba(0, 0, 0, 0.1);
 }
