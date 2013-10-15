@@ -1,5 +1,5 @@
 #contactsummary {
-    background-color: #272727;
+    background-color: rgba(20, 20, 20, 0.5);
     margin: -1em;
     padding: 1em;
     line-height: 1.5em;
@@ -23,6 +23,6 @@
 #contactsummary .textbubble {
     margin: -1em;
     margin-top: 1em;
-    background-color: #171717;
+    background-color: rgba(20, 20, 20, 0.7);
     padding: 1em;
 }
