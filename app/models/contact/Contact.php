@@ -170,28 +170,33 @@ class Contact extends ModlModel {
 
     public function createThumbnails() {
         \createThumbnails(strtolower($this->jid), $this->photobin);
+        \createEmailPic(strtolower($this->jid), $this->email);
     }
 
     public function getPhoto($size = 'l', $jid = false) {
-        $jid = strtolower($jid);    
-        if($jid != false) {
-            $str = BASE_URI.'cache/'.strtolower($jid).'_'.$size.'.jpg';
-        } elseif(
-               isset($this->phototype) 
-            && isset($this->photobin) 
-            && $this->phototype != '' 
-            && $this->photobin != ''
-        ) {
-            $str = BASE_URI.'cache/'.strtolower($this->jid).'_'.$size.'.jpg';
+        if($size == 'email') {
+            $str = BASE_URI.'cache/'.strtolower($this->jid).'_email.jpg';
         } else {
-            if(isset($this->jid))
-                $out = base_convert($this->jid, 32, 8);
-            else
-                $out = base_convert(md5(openssl_random_pseudo_bytes(5)), 16, 8);
+            $jid = strtolower($jid);    
+            if($jid != false) {
+                $str = BASE_URI.'cache/'.strtolower($jid).'_'.$size.'.jpg';
+            } elseif(
+                   isset($this->phototype) 
+                && isset($this->photobin) 
+                && $this->phototype != '' 
+                && $this->photobin != ''
+            ) {
+                $str = BASE_URI.'cache/'.strtolower($this->jid).'_'.$size.'.jpg';
+            } else {
+                if(isset($this->jid))
+                    $out = base_convert($this->jid, 32, 8);
+                else
+                    $out = base_convert(md5(openssl_random_pseudo_bytes(5)), 16, 8);
 
-            if($out == false)
-                $out[4] = 1;
-            $str = BASE_URI.'themes/movim/img/default'.$out[4].'.svg';
+                if($out == false)
+                    $out[4] = 1;
+                $str = BASE_URI.'themes/movim/img/default'.$out[4].'.svg';
+            }
         }
         
         return $str;
