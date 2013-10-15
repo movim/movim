@@ -78,12 +78,13 @@ class ContactCard extends WidgetCommon
                         <label for="marital">'.t('Marital Status').'</label>
                         <span>'.$marital[$contact->marital].'</span>
                       </div>';
-         
+
+            //  <a target="_blank" href="mailto:'.$contact->email.'">'.$contact->email.'</a>
             if($this->testIsSet($contact->email)) {
                 if(filter_var($contact->email, FILTER_VALIDATE_EMAIL)) {
                     $html .= '<div class="element simple">
                                 <label for="url">'.t('Email').'</label>
-                                <a target="_blank" href="mailto:'.$contact->email.'">'.$contact->email.'</a>
+                                <img src="'.$contact->getPhoto('email').'"/>
                               </div>';
                 } else {
                     $html .= '<div class="element simple">
