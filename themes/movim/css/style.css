@@ -56,6 +56,8 @@ body {
     max-width: 1280px;
     padding-right: 200px;
     
+    background-color: #32434D;
+    
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -383,6 +385,8 @@ nav {
     top: 0px;
     left: 0px;
     z-index: 2;
+    
+    background-color: #4C5A61;
 
 	animation: 200s infinite colorful;
     -webkit-animation: 200s infinite colorful;
