@@ -38,7 +38,7 @@
     top: -100%;
     transition: top 0.5s ease;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(20, 20, 20, 0.9);
     width: 10em;
 }
 
