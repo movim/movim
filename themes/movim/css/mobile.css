@@ -40,6 +40,7 @@ body.infos {
     clear: both;
     padding-right: 0px;
     overflow-x: hidden;
+    margin-top: 3em;
 }
 
 #left {
@@ -49,12 +50,10 @@ body.infos {
     left: -100%;
     background-color: #272727;
     padding-bottom: 6em;
-    margin-top: 3em;
 }
 
 #center {
     margin: 0;
-    margin-top: 3em;
     width: 100%;
     padding: 0;
     left: 0;

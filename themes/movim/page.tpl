@@ -26,10 +26,10 @@
 
         $this->addCss('css/posts.css');
         $this->addCss('css/style.css');
-        
-        $this->addCss('css/mobile.css'); 
 
         $this->scripts();
+
+        $this->addCss('css/mobile.css'); 
     
         $user = new User();
 
