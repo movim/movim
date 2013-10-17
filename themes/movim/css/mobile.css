@@ -167,6 +167,7 @@ table#feedsubmitform {
 }
 
 #loginpage {
+    margin: 0.5em !important;
     margin-top: 20% ! important;
     background-position: center 0em !important;
 }

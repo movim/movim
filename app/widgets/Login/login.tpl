@@ -66,16 +66,17 @@
             <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
             
             <div id="warning">{$warnings}</div>
-            <div class="infos">
-                    {$c->t('Population')} {$pop} • 
-                    {$c->t('No account yet ?')}
-                    <a href="{$c->route('account')}">
-                        {$c->t('Create one !')}
-                    </a>
-            </div>
             <div class="clear"></div>
 
         </form>
+
+        <div class="infos">
+                {$c->t('Population')} {$pop} • 
+                {$c->t('No account yet ?')}
+                <a href="{$c->route('account')}">
+                    {$c->t('Create one !')}
+                </a>
+        </div>
     {/if}
 
     <div class="admin">
