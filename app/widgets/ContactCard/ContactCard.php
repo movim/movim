@@ -57,7 +57,6 @@ class ContactCard extends WidgetCommon
                         <label for="name">'.t('Nickname').'</label>
                         <span>'.$contact->name.'</span>
                       </div>';
-
             if(
                 $contact->date != '0000-00-00T00:00:00+0000' 
                 && $contact->date != '1970-01-01T00:00:00+0000'

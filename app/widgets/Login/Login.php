@@ -243,10 +243,10 @@ class Login extends WidgetBase {
 
         global $session;
 
-        if($s != false) {
+        /*if($s != false) {
             $session = $sess->get('session');
         }
-        else {
+        else {*/
             $session = array(
                     'rid' => 1,
                     'sid' => 0,
@@ -265,7 +265,7 @@ class Login extends WidgetBase {
                     'proxyport' => $serverconfig['proxyPort'],
                     'proxyuser' => $serverconfig['proxyUser'],
                     'proxypass' => $serverconfig['proxyPass']);
-        }
+        //}
 
         $sess = Session::start(APP_NAME);
 

@@ -292,8 +292,11 @@ class Contact extends ModlModel {
 
     function getAge() {
         if( $this->date != '0000-00-00T00:00:00+0000' 
-            && $this->date != '1970-01-01T00:00:00+0000')
-            return intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
+            && $this->date != '1970-01-01T00:00:00+0000') {
+            $age = intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
+            if($age != 0)
+                return $age;
+        }
     }
 }
 

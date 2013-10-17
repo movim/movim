@@ -115,6 +115,7 @@ class Profile extends WidgetCommon
                     <textarea 
                         id="status" 
                         spellcheck="false"
+                        placeholder="'.t('Your status here !').'"
                         onfocus="this.style.fontStyle=\'italic\'; this.parentNode.querySelector(\'#statussaved\').innerHTML = \'\'"
                         onblur="this.style.fontStyle=\'normal\';"
                         onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', 'encodeURIComponent(this.value)').'; this.blur(); return false;}"
