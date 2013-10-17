@@ -24,23 +24,23 @@
                         state = 0;
                         {$send}
                         return false;
-                    }/* else {
+                    } else {
                         if(state == 0 || state == 2) {
                             state = 1;
                             {$composing}
                             since = new Date().getTime();
                         }
-                    }*/
+                    }
                     "
                 onkeyup="
                     movim_textarea_autoheight(this);
-                    /*setTimeout(function()
+                    setTimeout(function()
                     {
                         if(state == 1 && since+5000 < new Date().getTime()) {
                             state = 2;
                             {$paused}
                         }
-                    },5000); */
+                    },5000); 
                     "
             ></textarea>
         </div>
