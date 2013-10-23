@@ -23,6 +23,9 @@ class Presence extends ModlModel {
     
     // Last Activity - XEP 0256
     protected $last;
+
+    // Current Jabber OpenPGP Usage - XEP-0027
+    protected $publickey;
     
     public function __construct() {
         $this->_struct = '
@@ -48,7 +51,9 @@ class Presence extends ModlModel {
             "delay" : 
                 {"type":"date"},
             "last" : 
-                {"type":"int",    "size":11 }
+                {"type":"int",    "size":11 },
+            "publickey" : 
+                {"type":"text"}
         }';
         
         parent::__construct();
@@ -97,6 +102,18 @@ class Presence extends ModlModel {
             $this->value = 4;
         } else {
             $this->value = 1;
+        }
+
+        // Specific XEP
+        if($stanza->x) {
+            foreach($stanza->children() as $name => $c) {
+                $ns = $c->getNamespaces(true);
+                switch($ns['']) {
+                    case 'jabber:x:signed' :
+                        $this->publickey = (string)$c;
+                        break;
+                }
+            }
         }
         
         if($stanza->delay) {
