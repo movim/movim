@@ -15,6 +15,8 @@ class RosterLink extends ModlModel {
     public $groupname;
     
     public $chaton;
+
+    public $publickey;
     
     public function __construct() {
         $this->_struct = '
