@@ -298,6 +298,10 @@ class Roster extends WidgetBase
         $offline = Cache::c('offlineshown');
         
         if($param == 'offlineshown') {
+            if($bool)
+                Notification::appendNotification(t('Show disconnected contacts'), 'success');
+            else
+                Notification::appendNotification(t('Hide disconnected contacts'), 'success');
             RPC::call('showRoster', $bool);
         } else 
             RPC::call('rosterToggleGroup', $param, $bool, $offline);

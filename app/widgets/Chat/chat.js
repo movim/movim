@@ -90,12 +90,22 @@ function sendMessage(n, jid)
     var text = n.value;
     
     n.value = "";
-    
     n.focus();
     
     // We escape the text to prevent XML errors
     return encodeURIComponent(text);
 
+}
+
+function sendEncryptedMessage(n, jid)
+{
+    var text = JSON.parse(sjcl.encrypt(n.dataset.publickey,n.value)).iv;
+
+    n.value = "";
+    n.focus();
+    
+    // We escape the text to prevent XML errors
+    return encodeURIComponent(text);
 }
 
 function disableSound(){

@@ -218,6 +218,18 @@ class Chat extends WidgetBase
         $evt = new Event();
         $evt->runEvent('openchat');
     }
+
+    /**
+     * Send an encrypted message
+     *
+     * @param string $to
+     * @param string $message
+     * @return void
+     */
+    function ajaxSendEncryptedMessage($to, $message, $muc = false, $ressource = false)
+    {
+        $this->ajaxSendMessage($to, $message, $muc, $ressource, true);
+    }
     
     /**
      * Send a message
@@ -226,7 +238,7 @@ class Chat extends WidgetBase
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message, $muc = false, $ressource = false)
+    function ajaxSendMessage($to, $message, $muc = false, $ressource = false, $encrypted = false)
     {        
         $m = new \modl\Message();
         
@@ -262,6 +274,7 @@ class Chat extends WidgetBase
         // We decode URL codes to send the correct message to the XMPP server
         $m = new \moxl\MessagePublish();
         $m->setTo($to)
+          ->setEncrypted($encrypted)
           ->setContent(htmlspecialchars(rawurldecode($message)));
         if($muc)
             $m->setMuc();
@@ -390,9 +403,15 @@ class Chat extends WidgetBase
         
         $html = '';
 
+        // Another filter to fix the database request
+        $jid = '';
+
         if(isset($contacts)) {
             foreach($contacts as $contact) {
-                $html .= trim($this->prepareChat($contact));
+                if($jid != $contact->jid) {
+                    $html .= trim($this->prepareChat($contact));
+                    $jid = $contact->jid;
+                }
             }
         }
         
@@ -517,9 +536,34 @@ class Chat extends WidgetBase
         if($contact->chaton == 2) {
             $tabstyle = ' style="display: none;" ';
             $panelstyle = ' style="display: block;" ';
-        } 
+        }
 
         $chatview = $this->tpl();
+
+        /*if($contact->publickey) {
+            $chatview->assign('publickey', $contact->publickey);
+            $chatview->assign(
+                'send', 
+                $this->genCallAjax(
+                    'ajaxSendEncryptedMessage', 
+                    "'".$contact->jid."'", 
+                    "sendEncryptedMessage(this, '".$contact->jid."')",
+                    "false", 
+                    "'".$contact->ressource."'"
+                )
+            );
+        } else {*/
+            $chatview->assign(
+                'send', 
+                $this->genCallAjax(
+                    'ajaxSendMessage', 
+                    "'".$contact->jid."'", 
+                    "sendMessage(this, '".$contact->jid."')",
+                    "false", 
+                    "'".$contact->ressource."'"
+                )
+            );
+        //}
         
         $chatview->assign('contact', $contact);
         $chatview->assign('tabstyle', $tabstyle);
@@ -533,16 +577,7 @@ class Chat extends WidgetBase
             'hidetalk', 
             $this->genCallAjax("ajaxHideTalk", "'".$contact->jid."'")
         );
-        $chatview->assign(
-            'send', 
-            $this->genCallAjax(
-                'ajaxSendMessage', 
-                "'".$contact->jid."'", 
-                "sendMessage(this, '".$contact->jid."')",
-                "false", 
-                "'".$contact->ressource."'"
-            )
-        );
+
         $chatview->assign(
             'composing', 
             $this->genCallAjax(

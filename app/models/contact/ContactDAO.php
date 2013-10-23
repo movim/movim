@@ -349,14 +349,13 @@ class ContactDAO extends ModlSQL {
         
         return $this->run('RosterContact');
     }
-    
+    // limit 1
     function getRosterChat() {
         $this->_sql = '
             select * from rosterlink 
             left outer join (
                 select * from presence
                 order by presence.priority desc
-                limit 1
                 ) as presence
                 on rosterlink.jid = presence.jid 
             left outer join contact
