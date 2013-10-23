@@ -20,7 +20,7 @@ function onIceCandidate(event) {
     console.log(event);
 }
 
-/*function onIceConnectionStateChanged(event) {
+function onIceConnectionStateChanged(event) {
     console.log('onIceConnectionStateChanged');
     console.log(event);
 }
@@ -42,7 +42,7 @@ function onOfferCreated(description) {
 function onPc1LocalDescriptionSet() {
   // after this function returns, pc1 will start firing icecandidate events
   //pc2.setRemoteDescription(offer, onPc2RemoteDescriptionSet, onError);
-}*/
+}
 
 function init() {
     var configuration = {"iceServers":[{"url": "stun:23.21.150.121:3478"}]};
@@ -54,7 +54,7 @@ function init() {
         pc.onsignalingstatechange = onSignalingStateChanged;
         pc.oniceconnectionstatechange = onIceConnectionStateChanged;
         
-        //pc.createOffer(onOfferCreated, onError);
+        pc.createOffer(onOfferCreated, onError);
     } catch (e) {
         console.log('Failed to create PeerConnection, exception: ' + e.message);
         alert('Cannot create RTCPeerConnection object; \
