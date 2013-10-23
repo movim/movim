@@ -1,18 +1,10 @@
-var movim_getUserMedia         = ( navigator.webkitGetUserMedia     ||
-                                   navigator.mozGetUserMedia        ||
-                                   navigator.msGetUserMedia         ||
-                                   navigator.getUserMedia           );
+var DtlsSrtpKeyAgreement = {
+   DtlsSrtpKeyAgreement: true
+};
 
-var movim_RTCPeerConnection    = ( window.webkitRTCPeerConnection   ||
-                                   window.mozRTCPeerConnection      ||
-                                   window.RTCPeerConnection         );
-
-var WEBRTC_SESSION_DESCRIPTION = ( window.mozRTCSessionDescription  ||
-                                   window.RTCSessionDescription     );
-
-var WEBRTC_ICE_CANDIDATE       = ( window.mozRTCIceCandidate        ||
-                                   window.RTCIceCandidate           );
-
+var optional = {
+   optional: [DtlsSrtpKeyAgreement]
+};
 
 function onIceCandidate(event) {
     /*if (event.candidate) {
@@ -28,7 +20,7 @@ function onIceCandidate(event) {
     console.log(event);
 }
 
-function onIceConnectionStateChanged(event) {
+/*function onIceConnectionStateChanged(event) {
     console.log('onIceConnectionStateChanged');
     console.log(event);
 }
@@ -38,14 +30,31 @@ function onSignalingStateChanged(event) {
     console.log(event);
 }
 
+function onError(err) {
+  window.alert(err.message);
+}
+
+function onOfferCreated(description) {
+  offer = description;
+  pc.setLocalDescription(offer, onPc1LocalDescriptionSet, onError);
+}
+
+function onPc1LocalDescriptionSet() {
+  // after this function returns, pc1 will start firing icecandidate events
+  //pc2.setRemoteDescription(offer, onPc2RemoteDescriptionSet, onError);
+}*/
+
 function init() {
-    var configuration = {"iceServers":[{"url": "stun:stun.l.google.com:19302"}]};
+    var configuration = {"iceServers":[{"url": "stun:23.21.150.121:3478"}]};
 
     try {
-        pc = new movim_RTCPeerConnection(configuration);
+        pc = new RTCPeerConnection(configuration, optional);
+
         pc.onicecandidate = onIceCandidate;
         pc.onsignalingstatechange = onSignalingStateChanged;
         pc.oniceconnectionstatechange = onIceConnectionStateChanged;
+        
+        //pc.createOffer(onOfferCreated, onError);
     } catch (e) {
         console.log('Failed to create PeerConnection, exception: ' + e.message);
         alert('Cannot create RTCPeerConnection object; \
@@ -53,13 +62,13 @@ function init() {
         return;
     }
     
-    if(movim_getUserMedia) {
-        if (movim_getUserMedia) {
-            movim_getUserMedia = movim_getUserMedia.bind(navigator);
-        }
+    if(getUserMedia) {
+        /*if (getUserMedia) {
+            getUserMedia = getUserMedia.bind(navigator);
+        }*/
         
         // Request the camera.
-        movim_getUserMedia(
+        getUserMedia(
         // Constraints
         {
           video: true
