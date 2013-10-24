@@ -274,7 +274,7 @@ class Chat extends WidgetBase
         // We decode URL codes to send the correct message to the XMPP server
         $m = new \moxl\MessagePublish();
         $m->setTo($to)
-          ->setEncrypted($encrypted)
+          //->setEncrypted($encrypted)
           ->setContent(htmlspecialchars(rawurldecode($message)));
         if($muc)
             $m->setMuc();

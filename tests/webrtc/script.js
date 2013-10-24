@@ -6,6 +6,11 @@ var optional = {
    optional: [DtlsSrtpKeyAgreement]
 };
 
+// Set up audio and video regardless of what devices are present.
+var sdpConstraints = {'mandatory': {
+                      'OfferToReceiveAudio': true,
+                      'OfferToReceiveVideo': true }};
+
 function onIceCandidate(event) {
     /*if (event.candidate) {
     sendMessage({type: 'candidate',
@@ -35,6 +40,7 @@ function onError(err) {
 }
 
 function onOfferCreated(description) {
+	console.log(description);
   offer = description;
   pc.setLocalDescription(offer, onPc1LocalDescriptionSet, onError);
 }
@@ -53,8 +59,6 @@ function init() {
         pc.onicecandidate = onIceCandidate;
         pc.onsignalingstatechange = onSignalingStateChanged;
         pc.oniceconnectionstatechange = onIceConnectionStateChanged;
-        
-        pc.createOffer(onOfferCreated, onError);
     } catch (e) {
         console.log('Failed to create PeerConnection, exception: ' + e.message);
         alert('Cannot create RTCPeerConnection object; \
@@ -63,9 +67,9 @@ function init() {
     }
     
     if(getUserMedia) {
-        /*if (getUserMedia) {
+        if (getUserMedia) {
             getUserMedia = getUserMedia.bind(navigator);
-        }*/
+        }
         
         // Request the camera.
         getUserMedia(
@@ -77,12 +81,17 @@ function init() {
         // Success Callback
         function(localMediaStream) {
             // Get a reference to the video element on the page.
-            //var vid = document.getElementById('camera-stream');
+            var vid = document.getElementById('camera-stream');
 
             // Create an object URL for the video stream and use this 
             // to set the video source.
-            //vid.src = window.URL.createObjectURL(localMediaStream);
+            vid.src = window.URL.createObjectURL(localMediaStream);
+            
+            console.log(localMediaStream);
+            
             pc.addStream(localMediaStream);
+            channel = pc.createDataChannel("visio");
+            pc.createOffer(onOfferCreated, onError);
         },
 
         // Error Callback
@@ -97,6 +106,7 @@ function init() {
         alert('Sorry, your browser does not support getUserMedia');
     }
 
+	
     
     //channel = pc.createDataChannel("visio");
     console.log(pc);
