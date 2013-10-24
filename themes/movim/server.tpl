@@ -17,8 +17,8 @@
         <?php $this->widget('Location');?>
     </div>
 
+    <?php $this->widget('Tabs');?>
     <div id="center">
-        <?php $this->widget('Tabs');?>
         <?php $this->widget('ServerNodes');?>
     </div>
 </div>
