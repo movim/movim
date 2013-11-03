@@ -7,7 +7,7 @@
  * @brief Prepares all the needed fixtures and fires up the main request
  * handler.
  *
- * @author Movim Project <movim@movim.eu>
+ * @author Movim Project <contact@movim.eu>
  *
  * Copyright (C)2010 Movim Project
  *
