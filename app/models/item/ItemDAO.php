@@ -56,15 +56,14 @@ class ItemDAO extends ModlSQL {
             $this->run('Item');
         }
     }
-
-    // number desc
+    
     function getServers() {
         $this->_sql = '
             select server, count(node) as number 
             from item
             where node not like :node
             group by server
-            order by jid desc';
+            order by number desc';
             
         $this->prepare(
             'Item',
