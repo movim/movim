@@ -12,7 +12,7 @@
         {/if}
         <form
             name="login"
-            id="connectform"
+            class="connectform"
             target="passwordiframe"
             method="POST"
             action="blank.php"
@@ -38,9 +38,18 @@
             </div>
             
             <input type="submit" id="submitb" name="submitb" value="submit" style="display: none;"/> 
-            
+
             <div class="clear"></div>
             
+            <p class="create">
+                <a class="button color transparent oppose icon user" href="{$c->route('account')}">
+                    {$c->t('Create one !')}
+                </a>
+                <span>{$c->t('No account yet ?')}</span>
+            </p>
+
+            <div class="clear"></div>
+        
             <ul id="loginhelp">
                 {if="$whitelist_display == true"}
                     <li id="whitelist">
@@ -66,20 +75,14 @@
             <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
             
             <div id="warning">{$warnings}</div>
+
             <div class="clear"></div>
 
         </form>
-
-        <div class="infos">
-                {$c->t('Population')} {$pop} • 
-                {$c->t('No account yet ?')}
-                <a href="{$c->route('account')}">
-                    {$c->t('Create one !')}
-                </a>
-        </div>
     {/if}
 
     <div class="admin">
+        {$c->t('Population')} {$pop} • 
         <a href="{$c->route('admin')}">
             {$c->t('Administration')}
         </a>
