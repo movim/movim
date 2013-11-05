@@ -7,6 +7,11 @@ class Explore extends WidgetCommon {
         
         $this->view->assign('contacts', $this->prepareContacts());
         $this->view->assign('servers', $this->prepareServers());
+
+        $jid = $this->user->getLogin();
+        $server = explode('@', $jid);
+        
+        $this->view->assign('myserver', Route::urlize('server', $server[1]));
     }
 
     function ajaxSearchContacts($form) {
@@ -51,15 +56,17 @@ class Explore extends WidgetCommon {
                     $cat = '';
                     break;
             }
-            
-            $html .= '
-                <li>
-                    <a href="'.Route::urlize('server', $s->server).'">'.
-                        $cat.
-                        $s->server. ' 
-                        <span class="tag">'.$s->number.'</span>
-                    </a>
-                </li>';
+
+            if(!filter_var($s->server, FILTER_VALIDATE_EMAIL)) {
+                $html .= '
+                    <li>
+                        <a href="'.Route::urlize('server', $s->server).'">'.
+                            $cat.
+                            $s->server. ' 
+                            <span class="tag">'.$s->number.'</span>
+                        </a>
+                    </li>';
+            }
         }
 
         $html .= '</ul>';
