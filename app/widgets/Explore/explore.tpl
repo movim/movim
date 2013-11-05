@@ -1,11 +1,12 @@
 <div id="serverresult" class="paddedtop">
-        <h2>{$c->t('Discussion Servers')}</h2>
-        {$servers}
-    </div>
+    <a class="button color purple oppose icon search" href="{$myserver}">{$c->t('Discover my server')}</a>
+    <h2>{$c->t('Discussion Servers')}</h2>
+    {$servers}
+</div>
 
-    <div class="paddedtopbottom">
+<div class="paddedtopbottom">
     <h2>{$c->t('Last registered')}</h2>
-    </div>
+
     <div id="contactsresult">
         {$contacts}
     </div>

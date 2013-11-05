@@ -173,6 +173,8 @@ class ServerNodes extends WidgetCommon
                 $url = '';
                 if($i->node != null)
                     $url = 'href="'.Route::urlize('node', array($i->server, $i->node)).'"';
+                elseif($i->jid != null)
+                    $url = 'href="'.Route::urlize('server', array($i->jid)).'"';
             
                 $html .= '
                     <li>
