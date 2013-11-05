@@ -186,6 +186,8 @@ class Login extends WidgetBase {
                 RPC::call('loginButtonSet', t("Come in!"));
 
                 RPC::commit();
+
+                exit;
             }
         }
     }
