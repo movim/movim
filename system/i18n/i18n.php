@@ -143,6 +143,7 @@ function load_language_auto()
     }
     
     while((list($key, $value) = each($langs)) && $langNotFound == true) {
+        $key = reset(explode('-', $key));
         if($key == 'en') {
             load_language(\system\Conf::getServerConfElement('defLang'));
             $langNotFound = false;

@@ -50,8 +50,10 @@ class Account extends WidgetBase {
                 RPC::commit();
                 exit;
             }
+
+            global $language;
             
-            $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq type="get" id="reg1"><query xmlns="jabber:iq:register"/></iq></stream:stream>');
+            $stream = simplexml_load_string('<?xml version="1.0"?><stream:stream xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client" version="1.0"><iq type="get" id="reg1" xml:lang="'.$language.'"><query xmlns="jabber:iq:register"/></iq></stream:stream>');
             $stream->addAttribute('to', $ndd['ndd']);
             if (false === fwrite($f, $stream->asXML())) {
                  \system\Logs\Logger::log('fail write to stream');
@@ -61,8 +63,9 @@ class Account extends WidgetBase {
             unset($stream);
 
             $response = stream_get_contents($f);
-            \system\Logs\Logger::log('response');
-            \system\Logs\Logger::log($response);
+            //\system\Logs\Logger::log('response');
+            //\system\Logs\Logger::log($response);
+            movim_log(simplexml_load_string($response)->asXML());
             if(!$response) {
                     RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
