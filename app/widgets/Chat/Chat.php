@@ -404,13 +404,14 @@ class Chat extends WidgetBase
         $html = '';
 
         // Another filter to fix the database request
-        $jid = '';
+        $check = array();
 
         if(isset($contacts)) {
             foreach($contacts as $contact) {
-                if($jid != $contact->jid) {
+                if(!in_array($contact->jid,$check)) {
                     $html .= trim($this->prepareChat($contact));
-                    $jid = $contact->jid;
+                    //$jid = $contact->jid;
+                    array_push($check, $contact->jid);
                 }
             }
         }
