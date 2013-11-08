@@ -1,4 +1,6 @@
 function sortRoster() {
+    cleanMulti();
+    
     roster = document.querySelector('#rosterlist');
     contacts = roster.querySelectorAll('li');
 
@@ -27,8 +29,6 @@ function sortRoster() {
     for(i = 0; i < server_error.length; i++) {
         server_error.item(i).parentNode.insertBefore(server_error.item(i), contacts.item(contacts.length))
     }
-
-    cleanMulti();
 }
 
 function cleanMulti() {
