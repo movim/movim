@@ -59,23 +59,27 @@ class Roster extends WidgetBase
         $arr = $presence->getPresence();
 
         $cd = new \modl\ContactDAO();
-        $c = $cd->getRosterItem($arr['jid']);
+        $c = $cd->getRosterItem($arr['jid'], true);
+
+        $caps = $this->getCaps();
         
         if($c != null) {
-            $c->setPresence($presence);
-            $html = $this->prepareRosterElement($c, $this->getCaps());
-
-            if($c->groupname == null)
-                $group = t('Ungrouped');
-            else
-                $group = $c->groupname;
-
-            RPC::call(
+            foreach($c as $item) {
+                RPC::call(
                 'movim_delete', 
-                'roster'.$arr['jid'].$arr['ressource'], 
+                'roster'.$item->jid.$item->ressource, 
                 $html /* this second parameter is just to bypass the RPC filter*/);
-            RPC::call('movim_append', 'group'.$group, $html);
-            
+
+                $html = $this->prepareRosterElement($item, $caps);
+
+                if($item->groupname == null)
+                    $group = t('Ungrouped');
+                else
+                    $group = $item->groupname;
+
+                RPC::call('movim_append', 'group'.$group, $html);
+            }
+
             RPC::call('sortRoster');
         }        
     }
@@ -143,6 +147,7 @@ class Roster extends WidgetBase
         $html .= '
                 id="roster'.$contact->jid.$contact->ressource.'"
                 data-jid="'.$contact->jid.'"
+                data-priority="'.$contact->value.'"
              >';
 
         $html .= '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->jid."'").'"></div>';

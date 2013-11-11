@@ -97,7 +97,7 @@
                         href="http://daringfireball.net/projects/markdown/basics"
                         target="_blank"
                     ></a><a title="{$c->t("Geolocalisation")}"
-                        onclick="setPosition(document.querySelector('#latlonpos'));"
+                        onclick="setPosition(document.querySelector('#latlonpos')); showPosition(document.querySelector('#latlonpos').value);"
                         style="float: left;"
                         class="button icon color icon alone geo merged right"></a>
                     <span id="postpublishlocation"></span>
