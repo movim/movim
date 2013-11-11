@@ -308,8 +308,14 @@ class Roster extends WidgetBase
             else
                 Notification::appendNotification(t('Hide disconnected contacts'), 'success');
             RPC::call('showRoster', $bool);
-        } else 
+        } else {
+            if($bool)
+                Notification::appendNotification(t('Hide group %s',substr($param, 5)), 'success');
+            else
+                Notification::appendNotification(t('Show group %s',substr($param, 5)), 'success');
             RPC::call('rosterToggleGroup', $param, $bool, $offline);
+
+        }
         
         RPC::call('focusContact');
         RPC::commit();
