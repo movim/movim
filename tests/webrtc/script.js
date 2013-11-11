@@ -40,14 +40,24 @@ function onError(err) {
 }
 
 function onOfferCreated(description) {
-	console.log(description);
-  offer = description;
-  pc.setLocalDescription(offer, onPc1LocalDescriptionSet, onError);
+    console.log(description);
+    offer = description;
+    pc.setLocalDescription(offer,onSetSessionDescriptionSuccess, onSetSessionDescriptionError);
+
+    sendMessage(offer);
 }
 
-function onPc1LocalDescriptionSet() {
-  // after this function returns, pc1 will start firing icecandidate events
-  //pc2.setRemoteDescription(offer, onPc2RemoteDescriptionSet, onError);
+function sendMessage(offer) {
+  var msgString = JSON.stringify(offer);
+  console.log('C->S: ' + msgString);
+}
+
+function onSetSessionDescriptionSuccess() {
+  console.log('Set session description success.');
+}
+
+function onSetSessionDescriptionError(error) {
+  console.log('Failed to set session description: ' + error.toString());
 }
 
 function init() {
@@ -75,7 +85,7 @@ function init() {
         getUserMedia(
         // Constraints
         {
-          video: true
+          video: true, audio: true
         },
 
         // Success Callback
