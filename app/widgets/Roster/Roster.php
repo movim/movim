@@ -65,7 +65,6 @@ class Roster extends WidgetBase
         
         if($c != null) {
             foreach($c as $item) {
-                movim_log($item);
                 RPC::call(
                 'movim_delete', 
                 'roster'.$item->jid.$item->ressource, 
