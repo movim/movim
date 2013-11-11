@@ -226,8 +226,6 @@ function setPosition(node) {
             function (position) {
                 var poss = position.coords.latitude +','+position.coords.longitude;
                 node.value = poss;
-                
-                showPosition(poss);
             }, 
             // next function is the error callback
             function (error) { }

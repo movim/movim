@@ -174,7 +174,7 @@ class WidgetWrapper
         foreach($widgets as $widget_name) {
             $widget = $this->load_widget($widget_name);
             // We save the registered events of the widget for the filter
-            if(isset($widget->events))
+            if(isset($widget->events)) {
                 foreach($widget->events as $key => $value) {
                     if(array_key_exists($key, $this->registered_events)) {
                         $we = $this->registered_events[$key];
@@ -184,7 +184,8 @@ class WidgetWrapper
                     } else {
                         $this->registered_events[$key] = array($widget_name);
                     }
-                } 
+                }
+            }
         }
         
         return $this->registered_events;
