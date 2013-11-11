@@ -65,6 +65,15 @@
     display: none;
 }
 
+#roster ul#rosterlist > div {
+    height: 3em;
+    overflow: hidden;
+}
+
+#roster ul#rosterlist > div.groupshown {
+    height: 100%;
+}
+
 #roster ul#rosterlist div.groupshown li:not(.offline):not(.server_error) {
     display: list-item;
 }
