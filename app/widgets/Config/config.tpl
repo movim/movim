@@ -31,13 +31,13 @@
                     </select>
                 </div>
             </div>
-            <div class="element">
+            <!--<div class="element">
                 <label>{$c->t('Enable the chatbox ?')}</label>
                 <div class="checkbox">
                     <input type="checkbox" id="chatbox" name="chatbox" {$chatbox}/>
                     <label for="chatbox"></label>
                 </div>
-            </div>
+            </div>-->
         </fieldset>
 
         <fieldset>
