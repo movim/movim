@@ -36,80 +36,61 @@ class Explore extends WidgetCommon {
         
         $html = '<ul class="list">';
 
+        $chatrooms = '';
+        $pubsubs = '';
+
         foreach($servers as $s) {
             list($type) = explode('.', $s->server);
             
             switch ($type) {
                 case 'conference':
-                    $cat = '<span class="tag green">'.t('Chatrooms').'</span>';
+                    $cat = 'chatroom';
                     break;
                 case 'muc':
-                    $cat = '<span class="tag green">'.t('Chatrooms').'</span>';                
+                    $cat = 'chatroom';            
                     break;
                 case 'discussion':
-                    $cat = '<span class="tag green">'.t('Chatrooms').'</span>';
+                    $cat = 'chatroom';
                     break;
                 case 'pubsub':
-                    $cat = '<span class="tag orange">'.t('Groups').'</span>';
+                    $cat = 'pubsub';
                     break;
                 default:
-                    $cat = '';
+                    $cat = null;
                     break;
             }
 
-            if(!filter_var($s->server, FILTER_VALIDATE_EMAIL)) {
-                $html .= '
-                    <li>
-                        <a href="'.Route::urlize('server', $s->server).'">'.
-                            $cat.
-                            $s->server. ' 
-                            <span class="tag">'.$s->number.'</span>
-                        </a>
-                    </li>';
+            if(!filter_var($s->server, FILTER_VALIDATE_EMAIL) && isset($cat)) {
+                if($cat == 'chatroom') {
+                    $chatrooms .= '
+                        <li>
+                            <a href="'.Route::urlize('server', $s->server).'">
+                                <span class="tag green">'.t('Chatrooms').'</span>'.
+                                $s->server. ' 
+                                <span class="tag">'.$s->number.'</span>
+                            </a>
+                        </li>';
+                } elseif($cat == 'pubsub') {
+                    $pubsubs .= '
+                        <li>
+                            <a href="'.Route::urlize('server', $s->server).'">
+                                <span class="tag orange">'.t('Groups').'</span>'.
+                                $s->server. ' 
+                                <span class="tag">'.$s->number.'</span>
+                            </a>
+                        </li>';
+                }
             }
         }
+
+        $html .= $pubsubs.$chatrooms;
 
         $html .= '</ul>';
         
         return $html;
-        //var_dump($nd->getServers());
     }
 
     function prepareContacts($form = false) {
-        /*if(!$form){
-            $where = array('public' => 1);
-        }
-        else{
-            $where = array(
-                'public' => 1, 
-                array(
-                    'fn%' => '%'.$form['search'].'%',
-                    '|jid%' => '%'.$form['search'].'%',
-                    '|name%' => '%'.$form['search'].'%',
-                    '|email%' => '%'.$form['search'].'%',
-                    '|nickname%' => '%'.$form['search'].'%'
-                )
-            );
-        }
-        $users_limit = 20;
-
-        $gender = getGender();
-        $marital = getMarital();
-
-        $query = Contact::query()->select()
-                       ->where($where)
-                       //s->orderby('id', true)
-                       ->limit(0, $users_limit);
-        $users = Contact::run_query($query);
-
-        $html = '
-                <div class="posthead">
-                    <!--<ul class="filters">
-                        <li class="on">'.t('Last registered').'</li>
-                    </ul>-->
-   
-                    <div class="clear"></div>
-                </div>';*/
         $html = '';
                 
         $cd = new \modl\ContactDAO();
@@ -142,34 +123,4 @@ class Explore extends WidgetCommon {
 
         return $html;
     }
-
-    /*
-    function build()
-    {
-    ?>
-        <div id="explore">
-            <!--<form name="searchform" style="margin: 1em 1.5em;" onsubmit="event.preventDefault();">
-                <div class="element" style="min-height: 0em;">
-                    <input
-                        id="addjid"
-                        class="tiny"
-                        name="search"
-                        placeholder="<?php echo t('Search a contact'); ?>"
-                        onkeypress="if(event.keyCode==13){<?php $this->callAjax("ajaxSearchContacts","movim_parse_form('searchform')"); ?>}"
-                    />
-                </div>
-                <div class="element" style="min-height: 0em; margin-top: 5px;">
-                    <a
-                        class="button icon submit"
-                        href="#"
-                        onclick="<?php $this->callAjax("ajaxSearchContacts","movim_parse_form('searchform')"); ?> "
-                        style="">
-                        <?php echo t('Search'); ?>
-                    </a>
-                </div>
-            </form>-->
-    <?php
-
-    }
-    */
 }

@@ -338,7 +338,7 @@ class ContactDAO extends ModlSQL {
         left outer join contact
         on rosterlink.jid = contact.jid
         where rosterlink.session = :session
-        order by groupname';
+        order by groupname, rosterlink.jid, presence.value';
         
         $this->prepare(
             'RosterLink', 
@@ -362,7 +362,7 @@ class ContactDAO extends ModlSQL {
                 on rosterlink.jid = contact.jid
             where rosterlink.session = :session
                 and rosterlink.chaton > 0
-            order by rosterlink.groupname, presence.value, rosterlink.jid';
+            order by rosterlink.groupname, rosterlink.jid, presence.value';
         
         $this->prepare(
             'RosterLink', 
@@ -374,22 +374,16 @@ class ContactDAO extends ModlSQL {
         return $this->run('RosterContact'); 
     }
     
-    function getRosterItem($jid) {
+    function getRosterItem($jid, $item = false) {
         $this->_sql = '
-            select * from rosterlink 
-            left outer join (
-                select * from presence
-                where session = :session
-                and jid = :jid
-                order by presence.value
-                limit 1
-                ) as presence
-                on rosterlink.jid = presence.jid 
-            left outer join contact
-                on rosterlink.jid = contact.jid
-            where rosterlink.session = :session
-                and rosterlink.jid = :jid
-            order by rosterlink.groupname, presence.value, rosterlink.jid';
+        select * from rosterlink
+        left outer join presence
+        on rosterlink.jid = presence.jid and rosterlink.session = presence.session
+        left outer join contact
+        on rosterlink.jid = contact.jid
+        where rosterlink.session = :session
+            and rosterlink.jid = :jid
+        order by groupname, rosterlink.jid, presence.value';
         
         $this->prepare(
             'RosterLink', 
@@ -399,63 +393,13 @@ class ContactDAO extends ModlSQL {
             )
         );
         
-        return $this->run('RosterContact', 'item'); 
+        if($item)
+            return $this->run('RosterContact'); 
+        else
+            return $this->run('RosterContact', 'item');
     }
     
-    function getRosterSubscribe() {
-        /*$sql = '
-        select 
-            RosterLink.jid,
-            contact.fn,
-            contact.nickname,
-            contact.name,
-            contact.phototype,
-            contact.photobin,
-            contact.loclatitude,
-            contact.loclongitude,
-            contact.localtitude,
-            contact.loccountry,
-            contact.loccountrycode,
-            contact.locregion,
-            contact.locpostalcode,
-            contact.loclocality,
-            contact.locstreet,
-            contact.locbuilding,
-            contact.loctext,
-            contact.locuri,
-            contact.loctimestamp,
-            contact.mood,
-            contact.tuneartist,
-            contact.tunelenght,
-            contact.tunerating,
-            contact.tunesource,
-            contact.tunetitle,
-            contact.tunetrack,
-            RosterLink.rostername,
-            RosterLink.group,
-            RosterLink.chaton,
-            Presence.status,
-            Presence.ressource,
-            Presence.presence,
-            Presence.delay,
-            Presence.last,
-            Presence.node,
-            Presence.ver
-            from RosterLink left outer join 
-            (
-                select * from Presence 
-                where Presence.key=\''.$this->_user.'\'
-                group by jid, node, ver
-                order by presence) as Presence
-            on Presence.jid = RosterLink.jid
-            left join contact on RosterLink.jid = contact.jid
-            where RosterLink.key=\''.$this->_user.'\'
-            and RosterLink.rosterask = \'subscribe\'
-            group by RosterLink.jid
-            order by RosterLink.groupname';
-        
-        return $this->mapper('RosterContact', $this->_db->query($sql));*/
-        
+    function getRosterSubscribe() {        
         return null;
     }
     
