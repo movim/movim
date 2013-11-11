@@ -1,8 +1,4 @@
-<div id="head">
-</div>
-
-<div id="main" style="margin-top: 0px;">
-
+<div id="main">
 	<?php $this->widget('Tabs');?>
     <div id="center" >
 		<div class="fixed_block">

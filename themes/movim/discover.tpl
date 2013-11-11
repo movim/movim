@@ -1,9 +1,7 @@
 <?php /* -*- mode: html -*- */
 ?>
-<div id="head">
-</div>
 
-<div id="main" style="margin-top: 0px;">
+<div id="main">
     <div id="left">
     </div>
 

@@ -25,9 +25,11 @@ class ControllerMain extends ControllerBase
         parent::__construct();
 
         $this->page = new TplPageBuilder();
-        $this->page->addScript('movim.js');
-        $this->page->addScript('hash.js');
-        $this->page->addScript('movimrpc.js');
+        $this->page->addScript('movim_hash.js');
+        $this->page->addScript('movim_utils.js');
+        $this->page->addScript('movim_base.js');
+        $this->page->addScript('movim_tpl.js');
+        $this->page->addScript('movim_rpc.js');
     }
 
     function main()

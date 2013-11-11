@@ -4,11 +4,7 @@
 <?php $this->widget('Poller');?>
 <?php $this->widget('Presence');?>
 <?php $this->widget('Chat');?>
-<?php $this->widget('ChatExt');?>
-
-<div id="head">
-
-</div>
+<?php //$this->widget('ChatExt');?>
 
 <div id="main">
     <div id="left">
