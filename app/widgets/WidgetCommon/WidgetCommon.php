@@ -451,7 +451,7 @@ class WidgetCommon extends WidgetBase {
     protected function prepareSubmitForm($server = '', $node = '') {  
         $view = $this->loadTemplate();
                 
-        $view->assign('toggle_position', $this->genCallAjax('ajaxShowPosition', "'poss'"));
+        $view->assign('toggle_position', $this->genCallAjax('ajaxShowPosition', "poss"));
         
         $view->assign('gallery', $this->user->getDir());
         
@@ -477,7 +477,7 @@ class WidgetCommon extends WidgetBase {
     function ajaxShowPosition($pos)
     {
         list($lat,$lon) = explode(',', $pos);    
-        
+
         $pos = json_decode(
                     file_get_contents('http://nominatim.openstreetmap.org/reverse?format=json&lat='.$lat.'&lon='.$lon.'&zoom=27&addressdetails=1')
                 );
