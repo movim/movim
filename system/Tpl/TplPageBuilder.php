@@ -38,9 +38,9 @@ class TplPageBuilder
         $this->theme = $conf->getServerConfElement('theme');
     }
 
-    function theme_path($file)
+    function view_path($file)
     {
-        return THEMES_PATH . $this->theme . '/' . $file;
+        return VIEWS_PATH . '/' . $file;
     }
 
     /**
@@ -90,18 +90,18 @@ class TplPageBuilder
     /**
      * Actually generates the page from templates.
      */
-    function build($template)
+    /*function build($template)
     {
         if (ENVIRONMENT === 'production')ob_clean();
         ob_start();
         
-        require($this->theme_path($template));
+        require($this->view_path($template));
         $outp = ob_get_clean();
         $outp = str_replace('<%scripts%>',
                             $this->printCss() . $this->printScripts(),
                             $outp);
         return $outp;
-    }
+    }*/
 
     /**
      * Sets the page's title.
