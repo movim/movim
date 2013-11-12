@@ -2,14 +2,14 @@
 
 /**
  * @file index.php
- * This file is part of MOVIM.
+ * This file is part of Movim.
  *
  * @brief Prepares all the needed fixtures and fires up the main request
  * handler.
  *
  * @author Movim Project <movim@movim.eu>
  *
- * Copyright (C)2010 Movim Project
+ * Copyright (C)2013 Movim Project
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -52,7 +52,8 @@ try {
     
     $bootstrap->boot();
 
-    $rqst = new ControllerMain();
+    //$rqst = new ControllerMain();
+    $rqst = new FrontController();
     $rqst->handle();
     
     WidgetWrapper::getInstance(false);
@@ -81,7 +82,8 @@ try {
     
     if(FAIL_SAFE) {
         $r = new Route;
-        $rqst = new ControllerMain();
+        //$rqst = new ControllerMain();
+        $rqst = new FrontController();
         $rqst->handle();
     }
 } 
