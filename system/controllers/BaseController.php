@@ -32,7 +32,8 @@ class BaseController {
             $content = new TplPageBuilder();
         }
         
-        $this->page->setContent($content->build($this->name.'.tpl'));
-        echo $this->page->build('page.tpl');
+        $built = $content->build($this->name.'.tpl');
+        //$this->page->setContent($built);
+        //echo $this->page->build('page.tpl');
     }
 }
