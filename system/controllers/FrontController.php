@@ -44,7 +44,7 @@ class FrontController extends ControllerBase
      */
     public function run_req($request) {
         $c = $this->load_controller($request);
-        
+
         if(is_callable(array($c, 'load'))) {
             $c->name = $request;
             $c->load();

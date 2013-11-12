@@ -90,7 +90,7 @@ class TplPageBuilder
     /**
      * Actually generates the page from templates.
      */
-    /*function build($template)
+    function build($template)
     {
         if (ENVIRONMENT === 'production')ob_clean();
         ob_start();
@@ -101,7 +101,7 @@ class TplPageBuilder
                             $this->printCss() . $this->printScripts(),
                             $outp);
         return $outp;
-    }*/
+    }
 
     /**
      * Sets the page's title.
