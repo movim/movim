@@ -187,7 +187,7 @@ class Bootstrap {
     private function loadDispatcher() {
         
         require_once(SYSTEM_PATH . "controllers/ControllerBase.php");
-        //require_once(SYSTEM_PATH . "controllers/ControllerMain.php");
+        require_once(SYSTEM_PATH . "controllers/ControllerMain.php");
         require_once(SYSTEM_PATH . "controllers/ControllerAjax.php");
 
         require_once(SYSTEM_PATH . "Route.php");
