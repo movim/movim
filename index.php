@@ -52,8 +52,8 @@ try {
     
     $bootstrap->boot();
 
-    //$rqst = new ControllerMain();
-    $rqst = new FrontController();
+    $rqst = new ControllerMain();
+    //$rqst = new FrontController();
     $rqst->handle();
     
     WidgetWrapper::getInstance(false);
@@ -82,8 +82,8 @@ try {
     
     if(FAIL_SAFE) {
         $r = new Route;
-        //$rqst = new ControllerMain();
-        $rqst = new FrontController();
+        $rqst = new ControllerMain();
+        //$rqst = new FrontController();
         $rqst->handle();
     }
 } 
