@@ -44,13 +44,13 @@ class Roster extends WidgetBase
         if($offline_state == true)
             $this->view->assign('offline_shown',  'offlineshown');
             
-        if($this->user->getConfig('chatbox') == 1)
+        /*if($this->user->getConfig('chatbox') == 1)
             $this->view->assign('chatbox', true);
         else
             $this->view->assign('chatbox', false);
+            * */
             
         $this->view->assign('toggle_cache', $this->genCallAjax('ajaxToggleCache', "'offlineshown'"));
-        //$this->view->assign('show_hide', $this->genCallAjax('ajaxShowHideRoster'));
         $this->view->assign('search_contact', $this->genCallAjax('ajaxSearchContact','this.value'));
     }
 
@@ -94,8 +94,6 @@ class Roster extends WidgetBase
     /**
      * @brief Force the roster refresh
      * @returns 
-     * 
-     * 
      */
     function ajaxRefreshRoster()
     {
@@ -108,8 +106,6 @@ class Roster extends WidgetBase
      * @param $contact 
      * @param $inner 
      * @returns 
-     * 
-     * 
      */
     function prepareRosterElement($contact, $caps = false)
     {
@@ -321,7 +317,7 @@ class Roster extends WidgetBase
         RPC::commit();
     }
     
-    function ajaxToggleChat()
+    /*function ajaxToggleChat()
     {
         //$bool = !currentValue
         $bool = (Cache::c('chatpop') == true) ? false : true;
@@ -331,9 +327,9 @@ class Roster extends WidgetBase
         RPC::call('movim_fill', 'chattoggle', $this->prepareChatToggle());
         
         RPC::commit();
-    }
+    }*/
     
-    function prepareChatToggle()
+    /*function prepareChatToggle()
     {
         $chatpop = Cache::c('chatpop');
         
@@ -355,7 +351,7 @@ class Roster extends WidgetBase
             </li>';
             
         return $html;
-    }
+    }*/
     
     /**
      * @brief Show/Hide the Roster

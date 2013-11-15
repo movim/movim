@@ -82,16 +82,7 @@
                         onclick="
                             movim_toggle_display('#postpreview');
                             {$post_preview}"
-                    ></a>
-
-                    <!--<a 
-                        title="Plus"
-                        href="#"
-                        id="postpublishsize"
-                        onclick="frameHeight(this, document.querySelector(\'#postpublishcontent\'));"
-                        style="float: left;"
-                        class="button color icon alone add merged"
-                    ></a>--><a 
+                    ></a><a 
                         class="button color icon alone help merged" 
                         style="float: left;"
                         href="http://daringfireball.net/projects/markdown/basics"

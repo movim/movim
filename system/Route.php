@@ -1,5 +1,5 @@
 <?php 
-class Route extends \ControllerBase {
+class Route extends \BaseController {
     public $_routes;
     
     public function __construct() {

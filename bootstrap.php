@@ -124,6 +124,8 @@ class Bootstrap {
         define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
         
+        define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
+        
         if (!defined('DOCTYPE')) {
             define('DOCTYPE','text/html');
         }
@@ -183,14 +185,15 @@ class Bootstrap {
     }
     
     private function loadDispatcher() {
-        require_once(SYSTEM_PATH . "controllers/ControllerBase.php");
-        require_once(SYSTEM_PATH . "controllers/ControllerMain.php");
-        require_once(SYSTEM_PATH . "controllers/ControllerAjax.php");
-        //require_once(SYSTEM_PATH . "controllers/FrontController.php");
+        require_once(SYSTEM_PATH . "template/TplPageBuilder.php");
+        require_once(SYSTEM_PATH . "controllers/BaseController.php");
+        require_once(SYSTEM_PATH . "controllers/AjaxController.php");
 
         require_once(SYSTEM_PATH . "Route.php");
 
-        require_once(SYSTEM_PATH . "template/TplPageBuilder.php");
+        require_once(SYSTEM_PATH . "controllers/FrontController.php");
+
+
 
         require_once(SYSTEM_PATH . "widget/WidgetBase.php");
         require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");
