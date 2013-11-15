@@ -39,9 +39,9 @@ class TplPageBuilder
      
     }
 
-    function theme_path($file)
+    function views_path($file)
     {
-        return THEMES_PATH . $this->theme . '/' . $file;
+        return VIEWS_PATH . '/' . $file;
     }
 
     /**
@@ -96,7 +96,7 @@ class TplPageBuilder
         if (ENVIRONMENT === 'production')ob_clean();
         ob_start();
         
-        require($this->theme_path($template));
+        require($this->views_path($template));
         $outp = ob_get_clean();
         $outp = str_replace('<%scripts%>',
                             $this->printCss() . $this->printScripts(),
@@ -191,7 +191,7 @@ class TplPageBuilder
                  '"></script>'."\n";
         }
 
-        $ajaxer = ControllerAjax::getInstance();
+        $ajaxer = AjaxController::getInstance();
         $out .= $ajaxer->genJs();
 
         return $out;
