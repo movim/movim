@@ -38,7 +38,7 @@ class WidgetBase
         // Put default widget init here.
         $this->external = $external;
 
-        $this->ajax = ControllerAjax::getInstance();
+        $this->ajax = AjaxController::getInstance();
         
         $this->user = new User;
 

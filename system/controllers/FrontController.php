@@ -12,21 +12,22 @@
  * See COPYING for licensing deatils.
  */
 
-class FrontController extends ControllerBase
+class FrontController extends BaseController
 {
     public function handle() {
         $r = new Route();
+
         // Note that the request is always specified by 'q'.
-        if($request = $this->fetch_get('q')) {
+        if($r->find($this->fetch_get('q'))) {
+            $request = $this->fetch_get('q');
             $this->run_req($request);
         } else {
-            $this->error404();
+            $this->run_req('notfound');
         }
-    }
+    }    
 
     private function load_controller($request) {
-        $class_name = ucfirst($request).'Controller';
-        
+        $class_name = ucfirst($request).'Controller';     
         if(file_exists(APP_PATH . 'controllers/'.$class_name.'.php')) {
             $controller_path = APP_PATH . 'controllers/'.$class_name.'.php';
         }
@@ -49,16 +50,18 @@ class FrontController extends ControllerBase
             $c->name = $request;
             $c->load();
             $c->check_session();
-
+            $c->dispatch();
+            
             // If the controller ask to display a different page
             if($request != $c->name) {
                 $new_name = $c->name;
                 $c = $this->load_controller($new_name);
                 $c->name = $new_name;
                 $c->load();
+                $c->dispatch();
             }
 
-            $c->dispatch();
+            // We display the page !
             $c->display();
         } else {
             \system\Logs\Logger::log(t("Could not call the load method on the current controller"));

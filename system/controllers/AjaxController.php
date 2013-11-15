@@ -1,22 +1,17 @@
 <?php
 
 /**
- * @file ControllerAjax.php
- * This file is part of PROJECT.
+ * @file AjaxController.php
+ * This file is part of Movim.
  * 
  * @brief Description
  *
- * @author Guillaume Pasquet <email@addre.ss>
+ * @author Timothée jaussoin
  *
- * @version 1.0
- * @date  8 November 2010
- *
- * Copyright (C)2010 PROPRIETOR
- * 
- * OTHER T&C IF ANY
+ * @date  14 November 2013
  */
 
-class ControllerAjax extends ControllerBase
+class AjaxController extends BaseController
 {
     protected $funclist = array();
     protected static $instance;
@@ -29,7 +24,7 @@ class ControllerAjax extends ControllerBase
     public static function getInstance()
     {
         if(!is_object(self::$instance)) {
-            self::$instance = new ControllerAjax();
+            self::$instance = new AjaxController();
         }
         return self::$instance;
     }
