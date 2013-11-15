@@ -52,7 +52,6 @@ try {
     
     $bootstrap->boot();
 
-    //$rqst = new ControllerMain();
     $rqst = new FrontController();
     $rqst->handle();
     
@@ -82,7 +81,6 @@ try {
     
     if(FAIL_SAFE) {
         $r = new Route;
-        //$rqst = new ControllerMain();
         $rqst = new FrontController();
         $rqst->handle();
     }
