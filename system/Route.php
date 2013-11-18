@@ -5,7 +5,7 @@ class Route extends \BaseController {
     public function __construct() {
         $this->_routes = array(
                 'account'       => array('err'),
-                'chatpop'       => false,
+                'visio'         => false,
                 'main'          => false,
                 'news'          => false,
                 'loading'       => false,
