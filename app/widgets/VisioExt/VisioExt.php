@@ -18,11 +18,18 @@
  * See COPYING for licensing information.
  */
 
-require_once(APP_PATH . "widgets/Chat/Chat.php");
+//require_once(APP_PATH . "widgets/Chat/Chat.php");
 
-class ChatExt extends WidgetBase
+class VisioExt extends WidgetBase
 {
-    function WidgetLoad()
+    function WidgetLoad() {
+        $this->addjs('visioext.js');
+    }
+
+    function build() {
+
+    }
+    /*function WidgetLoad()
     {
         $this->addjs('chatext.js');
         //if($this->user->getConfig('chatbox') == 1) {
@@ -148,6 +155,6 @@ class ChatExt extends WidgetBase
     function build()
     {
 
-    }
+    }*/
     
 }

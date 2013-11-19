@@ -91,8 +91,8 @@ class Chat extends WidgetBase
             $contact->chaton = 2;
             $rd->setChat($jid, 2);
             
-            $evt = new Event();
-            $evt->runEvent('openchat');  
+            //$evt = new Event();
+            //$evt->runEvent('openchat');  
 
             RPC::call('movim_prepend',
                            'chats',
@@ -215,8 +215,8 @@ class Chat extends WidgetBase
             RPC::commit();
         }
         
-        $evt = new Event();
-        $evt->runEvent('openchat');
+        //$evt = new Event();
+        //$evt->runEvent('openchat');
     }
 
     /**
@@ -338,8 +338,8 @@ class Chat extends WidgetBase
         
         RPC::commit();
             
-        $evt = new Event();
-        $evt->runEvent('closechat');
+        //$evt = new Event();
+        //$evt->runEvent('closechat');
     }
     
     function ajaxHideTalk($jid)
