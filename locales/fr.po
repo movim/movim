@@ -5,26 +5,501 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim Website\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-18 15:41+0200\n"
+"POT-Creation-Date: 2013-11-19 22:38+0100\n"
 "PO-Revision-Date: 2013-09-19 11:22+0000\n"
 "Last-Translator: edhelas <edhelas@gmail.com>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-10-08 18:48+0000\n"
 "X-Generator: Launchpad (build 16799)\n"
-"Language: \n"
 
-#: ../upload.php:32
-msgid "Not a picture"
-msgstr "Ce n'est pas une image"
+#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:3
+#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:2
+#: ../app/widgets/Node/Node.php:128
+#: ../app/controllers/ProfileController.php:13
+#: ../app/controllers/HelpController.php:13
+#: ../app/controllers/ServerController.php:14
+#: ../app/controllers/NodeController.php:14
+#: ../app/controllers/MainController.php:13
+#: ../app/controllers/ConfController.php:13
+#: ../app/controllers/ExploreController.php:15
+#: ../app/controllers/FriendController.php:23
+#: ../app/controllers/NewsController.php:13
+#: ../app/controllers/MediaController.php:13
+#: ../app/controllers/NodeconfigController.php:14
+msgid "Explore"
+msgstr "Explorer"
 
-#: ../upload.php:35
-msgid "Folder size limit exceeded"
-msgstr "Taille limite du dossier dépassée"
+#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:14
+#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:16
+#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:17
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:1
+#: ../app/widgets/Node/Node.php:169
+#: ../app/controllers/ProfileController.php:16
+#: ../app/controllers/HelpController.php:16
+#: ../app/controllers/ServerController.php:17
+#: ../app/controllers/NodeController.php:17
+#: ../app/controllers/MainController.php:16
+#: ../app/controllers/ConfController.php:16
+#: ../app/controllers/ExploreController.php:18
+#: ../app/controllers/FriendController.php:26
+#: ../app/controllers/NewsController.php:16
+#: ../app/controllers/MediaController.php:16
+#: ../app/controllers/NodeconfigController.php:10
+#: ../app/controllers/NodeconfigController.php:17
+msgid "Configuration"
+msgstr "Configuration"
 
-#: ../system/Logs/Logger.php:170
+#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:24
+msgid "Configure your group"
+msgstr "Configurer votre groupe"
+
+#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:30
+msgid "Delete this group"
+msgstr "Supprimer ce groupe"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:6
+msgid "Your web browser is too old to use with Movim."
+msgstr "Votre navigateur est trop vieux pour supporter Movim"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:33
+msgid "My address"
+msgstr "Mon adresse"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:37
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:71
+#: ../app/widgets/Admin/Admin.php:457
+msgid "Password"
+msgstr "Mot de passe"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:44
+#: ../app/widgets/Login/Login.php:186
+msgid "Come in!"
+msgstr "Entrez!"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:53
+msgid "Create one !"
+msgstr "Créez en un !"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:56
+msgid "No account yet ?"
+msgstr "Pas encore de compte ?"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:65
+msgid ""
+"This server accept only connection with xmpp accounts from these servers :"
+msgstr ""
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:67
+#, php-format
+msgid ""
+"If you don't have such xmpp account, you can try %sanother public Movim%s "
+"client."
+msgstr ""
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:71
+msgid "You can login using your favorite Jabber account"
+msgstr "Vous pouvez vous connecter en utilisant votre compte Jabber favori"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:74
+msgid "or with our demonstration account"
+msgstr "ou avec votre compte de démonstration"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:101
+msgid "Population"
+msgstr "Population"
+
+#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:103
+#: ../app/controllers/AdminController.php:18
+msgid "Administration"
+msgstr "Administration"
+
+#: ../cache/_chat_contact.dbe7dc3350f78dc8a0fb2487a7fd0e5e.rtpl.php:21
+msgid "Composing..."
+msgstr "Rédige..."
+
+#: ../cache/_chat_contact.dbe7dc3350f78dc8a0fb2487a7fd0e5e.rtpl.php:22
+msgid "Paused..."
+msgstr "En pause..."
+
+#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:7
+msgid "Topics"
+msgstr "Sujets"
+
+#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:15
+#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:25
+#: ../app/widgets/Notifs/Notifs.php:138
+msgid "Refresh"
+msgstr "Rafraîchir"
+
+#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:19
+#: ../app/widgets/Account/Account.php:472
+msgid "Server"
+msgstr "Serveur"
+
+#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:10
+#: ../app/widgets/Account/Account.php:489
+msgid "Search"
+msgstr "Rechercher"
+
+#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:25
+#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:54
+#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:70
+msgid "Show/Hide"
+msgstr "Afficher/Masquer"
+
+#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:28
+#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:29
+#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:19
+#: ../app/widgets/ServerNodes/ServerNodes.php:135
+#: ../app/widgets/Notifs/Notifs.php:277
+msgid "Add"
+msgstr "Ajouter"
+
+#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:33
+msgid "Enter the Jabber ID of your contact."
+msgstr "Entrez le Jabber ID de votre contact"
+
+#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:34
+msgid "Press enter to validate."
+msgstr "Appuyez sur Enter pour valider."
+
+#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:41
+msgid "JID"
+msgstr "JID"
+
+#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:7
+msgid "Loading comments ..."
+msgstr "Chargement des commentaires…"
+
+#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:8
+msgid "Get the comments"
+msgstr "Récupérer les commentaires"
+
+#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:19
+msgid "Add a comment"
+msgstr "Commenter"
+
+#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:41
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:215
+#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:64
+#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:72
+#: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:349
+msgid "Submit"
+msgstr "Soumettre"
+
+#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:1
+#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:19
+#: ../cache/blog.8db21a294557fd5b3ca5b801fc66f7c6.rtpl.php:1
+#: ../cache/blog.8db21a294557fd5b3ca5b801fc66f7c6.rtpl.php:9
+#: ../app/widgets/Wall/Wall.php:91 ../app/widgets/Wall/Wall.php:137
+#: ../app/widgets/Blog/Blog.php:38
+msgid "Feed"
+msgstr "Flux"
+
+#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:13
+#: ../app/widgets/Wall/Wall.php:85 ../app/widgets/Node/Node.php:146
+#: ../app/controllers/BlogController.php:12
+msgid "Blog"
+msgstr "Blog"
+
+#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:25
+msgid "My Posts"
+msgstr "Mes posts"
+
+#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
+msgid "Bookmarks"
+msgstr "Signets"
+
+#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:17
+#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:4
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:21
+#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:4
+msgid "Add a new URL"
+msgstr "Ajouter une nouvelle URL"
+
+#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
+msgid "Chat Room ID"
+msgstr ""
+
+#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:11
+#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:11
+#: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:151
+#: ../app/widgets/ContactCard/ContactCard.php:51
+#: ../app/widgets/Account/Account.php:289
+msgid "Name"
+msgstr "Nom"
+
+#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:14
+#: ../app/widgets/Vcard/Vcard.php:156
+#: ../app/widgets/ContactCard/ContactCard.php:57
+msgid "Nickname"
+msgstr "Pseudonyme"
+
+#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:17
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:35
+#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:25
+#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:22
+#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:45
+#: ../app/widgets/ServerNodes/ServerNodes.php:140
+#: ../app/widgets/Node/Node.php:198 ../app/widgets/Node/Node.php:220
+msgid "Close"
+msgstr "Fermer"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:6
+msgid "Feed Configuration"
+msgstr "Configuration du Flux"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:12
+msgid "General"
+msgstr "Paramètres généraux"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:14
+msgid "Language"
+msgstr "Langue"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:43
+msgid "Enable the chatbox ?"
+msgstr ""
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:52
+msgid "Appearence"
+msgstr "Apparence"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:54
+msgid "Background color"
+msgstr "Couleur d'arrière-plan"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:62
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:93
+#: ../app/widgets/Vcard/Vcard.php:350
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:84
+msgid "Font size"
+msgstr "Taille de la police"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:138
+msgid "Pattern"
+msgstr "Motif"
+
+#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:222
+msgid "This configuration is shared wherever you are connected !"
+msgstr ""
+"Cette configuration sera partagée peu importe d'où vous vous connecterez!"
+
+#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:2
+msgid "Share with"
+msgstr "Partager avec"
+
+#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:4
+msgid "your post will appear in your Movim public feed"
+msgstr "Votre post apparaîtra dans votre flux public"
+
+#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:6
+msgid "Everyone"
+msgstr "Tout le monde"
+
+#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:9
+msgid "Your contacts"
+msgstr "Vos contacts"
+
+#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:16
+#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:17
+msgid "Delete this post"
+msgstr "Supprimer ce post"
+
+#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:24
+#: ../app/widgets/ContactAction/ContactAction.php:117
+msgid "Yes"
+msgstr "Oui"
+
+#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:35
+#: ../app/widgets/ContactAction/ContactAction.php:130
+msgid "No"
+msgstr "Non"
+
+#: ../cache/news.65bf3cbc4ca337607275814dc4b9877b.rtpl.php:1
+#: ../app/controllers/ProfileController.php:12
+#: ../app/controllers/HelpController.php:12
+#: ../app/controllers/ServerController.php:13
+#: ../app/controllers/NodeController.php:13
+#: ../app/controllers/MainController.php:12
+#: ../app/controllers/ConfController.php:12
+#: ../app/controllers/ExploreController.php:14
+#: ../app/controllers/FriendController.php:22
+#: ../app/controllers/NewsController.php:12
+#: ../app/controllers/MediaController.php:12
+#: ../app/controllers/NodeconfigController.php:13
+msgid "News"
+msgstr "Actualité"
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:2
+#: ../app/widgets/Admin/Admin.php:510
+msgid "Database Settings"
+msgstr "Paramètres de la base de données"
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:8
+msgid "Modl wasn't able to connect to the database"
+msgstr "Modl n'est pas arrivé à se connecter à la base de données"
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:18
+msgid "Movim is connected to the database"
+msgstr ""
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:22
+msgid "The database need to be updated"
+msgstr ""
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:32
+#: ../app/widgets/Wall/Wall.php:102
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:38
+msgid "Movim database is up to date"
+msgstr ""
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:48
+msgid "Database Type"
+msgstr "Type de Base de données"
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:67
+#: ../app/widgets/Admin/Admin.php:451
+msgid "Username"
+msgstr "Identifiant"
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:75
+msgid "Host"
+msgstr "Hôte"
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:79
+msgid "Port"
+msgstr "Port"
+
+#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:86
+msgid "Database Name"
+msgstr "Nom de la base de données"
+
+#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:1
+#: ../app/controllers/DiscoverController.php:15
+#: ../app/controllers/AboutController.php:13
+#: ../app/controllers/LoginController.php:13
+msgid "About"
+msgstr "À Propos"
+
+#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:5
+msgid "Thanks"
+msgstr "Remerciements"
+
+#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:76
+#: ../app/widgets/Account/Account.php:298
+msgid "Software"
+msgstr "Logiciel"
+
+#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:86
+msgid "Resources"
+msgstr "Ressources"
+
+#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:92
+msgid "API"
+msgstr ""
+
+#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
+#: ../app/widgets/Account/Account.php:295
+msgid "URL"
+msgstr "URL"
+
+#: ../cache/explore.f58b95c945dc1d2a7f1a7a43a1fbc4b7.rtpl.php:2
+#, fuzzy
+msgid "Discover my server"
+msgstr "Serveurs de discussion"
+
+#: ../cache/explore.f58b95c945dc1d2a7f1a7a43a1fbc4b7.rtpl.php:3
+msgid "Discussion Servers"
+msgstr "Serveurs de discussion"
+
+#: ../cache/explore.f58b95c945dc1d2a7f1a7a43a1fbc4b7.rtpl.php:9
+#: ../app/widgets/Discover/Discover.php:50
+msgid "Last registered"
+msgstr "Dernier inscrits"
+
+#: ../cache/syndication.bd4db858eec4bd2d41ea342ef4448967.rtpl.php:36
+msgid "No public feed for this contact"
+msgstr "Il n'y a pas de flux public pour ce contact"
+
+#: ../cache/syndication.bd4db858eec4bd2d41ea342ef4448967.rtpl.php:42
+msgid "No contact specified"
+msgstr "Pas de contact spécifié"
+
+#: ../cache/visio.a1d16e3132e43428b9796c43f20e0625.rtpl.php:16
+msgid "Connection"
+msgstr "Connexion"
+
+#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:1
+msgid "Data"
+msgstr "Données"
+
+#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:4
+msgid "Cache"
+msgstr "Cache"
+
+#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:7
+msgid "Contact"
+msgstr ""
+
+#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:11
+#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:40
+#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:68
+msgid "Clear"
+msgstr "Vider"
+
+#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:17
+#: ../app/widgets/Node/Node.php:136 ../app/widgets/Node/Node.php:268
+msgid "Posts"
+msgstr "Posts"
+
+#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:45
+msgid "Messages"
+msgstr "Messages"
+
+#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:57
+msgid "What's new ?"
+msgstr "Quoi de neuf ?"
+
+#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:78
+msgid "Gallery"
+msgstr "Gallerie"
+
+#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:86
+msgid "Preview"
+msgstr "Aperçu"
+
+#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:95
+msgid "Geolocalisation"
+msgstr "Géolocalisation"
+
+#: ../system/Conf.php:70
+#, php-format
+msgid "Cannot load file '%s'"
+msgstr "Le fichier « %s » n'est pas accessible"
+
+#: ../system/widget/WidgetWrapper.php:131
+#, php-format
+msgid "Requested widget '%s' doesn't exist."
+msgstr "Le widget « %s » n'existe pas"
+
+#: ../system/Logs/Logger.php:171
 msgid "Development environment."
 msgstr ""
 
@@ -32,10 +507,25 @@ msgstr ""
 msgid "Change it in the admin panel."
 msgstr ""
 
-#: ../system/Conf.php:70
+#: ../system/Route.php:80
 #, php-format
-msgid "Cannot load file '%s'"
-msgstr "Le fichier « %s » n'est pas accessible"
+msgid "Route error, please set all the parameters for the page %s"
+msgstr ""
+"Erreur de chemin, veuillez configurer tous les paramètres de la page %s"
+
+#: ../system/Route.php:108
+#, php-format
+msgid "Route not set for the page %s"
+msgstr "Chemin non créé pour la page %s"
+
+#: ../system/controllers/FrontController.php:35
+#, php-format
+msgid "Requested controller '%s' doesn't exist."
+msgstr ""
+
+#: ../system/controllers/FrontController.php:67
+msgid "Could not call the load method on the current controller"
+msgstr ""
 
 #: ../system/Utils.php:161
 msgid "Monday"
@@ -526,23 +1016,23 @@ msgstr "faible"
 msgid "worried"
 msgstr "préoccupé"
 
-#: ../system/Utils.php:701
+#: ../system/Utils.php:706
 msgid "Not shared"
 msgstr "Non partagé"
 
-#: ../system/Utils.php:705
+#: ../system/Utils.php:710
 msgid "Shared with one contact"
 msgstr "Partagé avec un contact"
 
-#: ../system/Utils.php:709
+#: ../system/Utils.php:714
 msgid "Shared with all contacts"
 msgstr "Partagé avec tous les contacts"
 
-#: ../system/Utils.php:713
+#: ../system/Utils.php:718
 msgid "Shared with the XMPP network"
 msgstr "Partagé avec le réseau XMPP"
 
-#: ../system/Utils.php:717
+#: ../system/Utils.php:722
 msgid "Shared with the whole Internet"
 msgstr "Partagé avec tout Internet"
 
@@ -551,267 +1041,19 @@ msgstr "Partagé avec tout Internet"
 msgid "Error: %s"
 msgstr "Erreur : %s"
 
-#: ../system/Tpl/TplTheme.php:50
-#, php-format
-msgid "Couldn't load file %s"
-msgstr "Le fichier %s ne peut être chargé"
-
-#: ../system/widget/WidgetWrapper.php:131
-#, php-format
-msgid "Requested widget '%s' doesn't exist."
-msgstr "Le widget « %s » n'existe pas"
-
-#: ../system/controllers/ControllerMain.php:41
-#, php-format
-msgid "%s - Welcome to Movim"
-msgstr "%s - Bienvenue sur Movim"
-
-#: ../system/controllers/ControllerMain.php:42
-#: ../system/controllers/ControllerMain.php:67
-#: ../system/controllers/ControllerMain.php:100
-#: ../system/controllers/ControllerMain.php:128
-#: ../system/controllers/ControllerMain.php:156
-#: ../system/controllers/ControllerMain.php:184
-#: ../system/controllers/ControllerMain.php:211
-#: ../system/controllers/ControllerMain.php:235
-#: ../system/controllers/ControllerMain.php:259
-#: ../system/controllers/ControllerMain.php:278
-#: ../system/controllers/ControllerMain.php:289
-#: ../system/controllers/ControllerMain.php:300
-#: ../system/controllers/ControllerMain.php:328
-#: ../system/controllers/ControllerMain.php:368
-#: ../system/controllers/ControllerMain.php:401
-#: ../system/controllers/ControllerMain.php:422
-#: ../system/controllers/ControllerMain.php:445
-#: ../system/controllers/ControllerMain.php:475
-msgid "Home"
-msgstr "Accueil"
-
-#: ../system/controllers/ControllerMain.php:43
-#: ../system/controllers/ControllerMain.php:68
-#: ../system/controllers/ControllerMain.php:101
-#: ../system/controllers/ControllerMain.php:129
-#: ../system/controllers/ControllerMain.php:157
-#: ../system/controllers/ControllerMain.php:185
-#: ../system/controllers/ControllerMain.php:212
-#: ../system/controllers/ControllerMain.php:236
-#: ../system/controllers/ControllerMain.php:260
-#: ../system/controllers/ControllerMain.php:329
-#: ../system/controllers/ControllerMain.php:402
-#: ../system/controllers/ControllerMain.php:446
-#: ../cache/news.65bf3cbc4ca337607275814dc4b9877b.rtpl.php:1
-msgid "News"
-msgstr "Actualité"
-
-#: ../system/controllers/ControllerMain.php:44
-#: ../system/controllers/ControllerMain.php:69
-#: ../system/controllers/ControllerMain.php:102
-#: ../system/controllers/ControllerMain.php:130
-#: ../system/controllers/ControllerMain.php:158
-#: ../system/controllers/ControllerMain.php:186
-#: ../system/controllers/ControllerMain.php:213
-#: ../system/controllers/ControllerMain.php:237
-#: ../system/controllers/ControllerMain.php:261
-#: ../system/controllers/ControllerMain.php:330
-#: ../system/controllers/ControllerMain.php:403
-#: ../system/controllers/ControllerMain.php:447
-#: ../app/widgets/Node/Node.php:128
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:3
-#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:2
-msgid "Explore"
-msgstr "Explorer"
-
-#: ../system/controllers/ControllerMain.php:45
-#: ../system/controllers/ControllerMain.php:70
-#: ../system/controllers/ControllerMain.php:103
-#: ../system/controllers/ControllerMain.php:131
-#: ../system/controllers/ControllerMain.php:159
-#: ../system/controllers/ControllerMain.php:187
-#: ../system/controllers/ControllerMain.php:214
-#: ../system/controllers/ControllerMain.php:238
-#: ../system/controllers/ControllerMain.php:262
-#: ../system/controllers/ControllerMain.php:331
-#: ../system/controllers/ControllerMain.php:404
-#: ../system/controllers/ControllerMain.php:448
-#: ../app/widgets/ContactCard/ContactCard.php:45
-#: ../app/widgets/ContactCard/ContactCard.php:154
-msgid "Profile"
-msgstr "Profil"
-
-#: ../system/controllers/ControllerMain.php:46
-#: ../system/controllers/ControllerMain.php:71
-#: ../system/controllers/ControllerMain.php:104
-#: ../system/controllers/ControllerMain.php:132
-#: ../system/controllers/ControllerMain.php:160
-#: ../system/controllers/ControllerMain.php:188
-#: ../system/controllers/ControllerMain.php:215
-#: ../system/controllers/ControllerMain.php:239
-#: ../system/controllers/ControllerMain.php:263
-#: ../system/controllers/ControllerMain.php:405
-#: ../system/controllers/ControllerMain.php:449
-#: ../app/widgets/Media/Media.php:154
-msgid "Media"
-msgstr "Médias"
-
-#: ../system/controllers/ControllerMain.php:47
-#: ../system/controllers/ControllerMain.php:72
-#: ../system/controllers/ControllerMain.php:105
-#: ../system/controllers/ControllerMain.php:133
-#: ../system/controllers/ControllerMain.php:161
-#: ../system/controllers/ControllerMain.php:183
-#: ../system/controllers/ControllerMain.php:189
-#: ../system/controllers/ControllerMain.php:216
-#: ../system/controllers/ControllerMain.php:240
-#: ../system/controllers/ControllerMain.php:264
-#: ../system/controllers/ControllerMain.php:332
-#: ../system/controllers/ControllerMain.php:406
-#: ../system/controllers/ControllerMain.php:450
-#: ../app/widgets/Node/Node.php:169
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:14
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:16
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:17
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:1
-msgid "Configuration"
-msgstr "Configuration"
-
-#: ../system/controllers/ControllerMain.php:48
-#: ../system/controllers/ControllerMain.php:73
-#: ../system/controllers/ControllerMain.php:106
-#: ../system/controllers/ControllerMain.php:134
-#: ../system/controllers/ControllerMain.php:162
-#: ../system/controllers/ControllerMain.php:190
-#: ../system/controllers/ControllerMain.php:217
-#: ../system/controllers/ControllerMain.php:241
-#: ../system/controllers/ControllerMain.php:265
-#: ../system/controllers/ControllerMain.php:333
-#: ../system/controllers/ControllerMain.php:407
-#: ../system/controllers/ControllerMain.php:451
-#: ../app/widgets/Help/Help.php:29 ../app/widgets/Help/Help.php:42
-msgid "Help"
-msgstr "Aide"
-
-#: ../system/controllers/ControllerMain.php:66
-#, php-format
-msgid "%s - News"
-msgstr ""
-
-#: ../system/controllers/ControllerMain.php:234
-#, php-format
-msgid "%s - Configuration"
-msgstr "%s - Configuration"
-
-#: ../system/controllers/ControllerMain.php:258
-#, php-format
-msgid "%s - Profile"
-msgstr "%s - Profil"
-
-#: ../system/controllers/ControllerMain.php:277
-#: ../system/controllers/ControllerMain.php:288
-#, php-format
-msgid "%s - Account"
-msgstr "%s - Compte"
-
-#: ../system/controllers/ControllerMain.php:279
-msgid "Account Creation"
-msgstr "Création de compte"
-
-#: ../system/controllers/ControllerMain.php:290
-#: ../app/widgets/Node/Node.php:146 ../app/widgets/Wall/Wall.php:85
-#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:13
-msgid "Blog"
-msgstr "Blog"
-
-#: ../system/controllers/ControllerMain.php:299
-#, php-format
-msgid "%s - About"
-msgstr "%s - À propos"
-
-#: ../system/controllers/ControllerMain.php:301
-#: ../system/controllers/ControllerMain.php:369
-#: ../system/controllers/ControllerMain.php:423
-msgid "Discover"
-msgstr ""
-
-#: ../system/controllers/ControllerMain.php:302
-#: ../system/controllers/ControllerMain.php:370
-#: ../system/controllers/ControllerMain.php:424
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:1
-msgid "About"
-msgstr "À Propos"
-
-#: ../system/controllers/ControllerMain.php:327
-#, php-format
-msgid "%s - Post View"
-msgstr "%s - Publication"
-
-#: ../system/controllers/ControllerMain.php:350
-#, php-format
-msgid "%s - Loading"
-msgstr "%s - Chargement"
-
-#: ../system/controllers/ControllerMain.php:366
-#, php-format
-msgid "%s - Login to Movim"
-msgstr "%s - Connexion à Movim"
-
-#: ../system/controllers/ControllerMain.php:399
-#, php-format
-msgid "%s - Explore"
-msgstr "%s - Explorer"
-
-#: ../system/controllers/ControllerMain.php:421
-#, php-format
-msgid "%s - Discover"
-msgstr ""
-
-#: ../system/controllers/ControllerMain.php:443
-#, php-format
-msgid "%s - Help Page"
-msgstr "%s - Page d'Aide"
-
-#: ../system/controllers/ControllerMain.php:473
-#, php-format
-msgid "%s - Administration Panel"
-msgstr "%s - Panneau d'Administration"
-
-#: ../system/controllers/ControllerMain.php:476
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:100
-msgid "Administration"
-msgstr "Administration"
-
-#: ../system/controllers/FrontController.php:35
-#, php-format
-msgid "Requested controller '%s' doesn't exist."
-msgstr ""
-
-#: ../system/controllers/FrontController.php:44
-msgid "Could not call the load method on the current controller"
-msgstr ""
-
-#: ../system/Route.php:80
-#, php-format
-msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
-"Erreur de chemin, veuillez configurer tous les paramètres de la page %s"
-
-#: ../system/Route.php:108
-#, php-format
-msgid "Route not set for the page %s"
-msgstr "Chemin non créé pour la page %s"
-
-#: ../lib/Moxl/xec/action/location/LocationPublish.php:85
-msgid "Your server doesn't support location publication"
-msgstr "Votre serveur ne supporte pas la géolocalisation"
-
-#: ../lib/Moxl/xec/action/location/LocationPublish.php:90
-msgid "Your are not authorized to publish your location"
-msgstr "Vous n'êtes pas autorisé à publier votre position"
-
-#: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
+#: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
 msgid "Error"
 msgstr "Erreur"
+
+#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:63
+msgid "Item Not Found"
+msgstr "Item non trouvé"
+
+#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:68
+msgid "Feature Not Implemented"
+msgstr "Fonctionnalité non implémentée"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -842,214 +1084,20 @@ msgstr "Requête innatendue"
 msgid "The server cannot accept this action"
 msgstr "Le serveur ne peut pas accepter cette action"
 
-#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:63
-msgid "Item Not Found"
-msgstr "Item non trouvé"
+#: ../lib/Moxl/xec/action/location/LocationPublish.php:85
+msgid "Your server doesn't support location publication"
+msgstr "Votre serveur ne supporte pas la géolocalisation"
 
-#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:68
-msgid "Feature Not Implemented"
-msgstr "Fonctionnalité non implémentée"
+#: ../lib/Moxl/xec/action/location/LocationPublish.php:90
+msgid "Your are not authorized to publish your location"
+msgstr "Vous n'êtes pas autorisé à publier votre position"
 
-#: ../app/widgets/Vcard/Vcard.php:37
-msgid "Profile Updated"
-msgstr "Profil mis à jour"
-
-#: ../app/widgets/Vcard/Vcard.php:115
-msgid ""
-"It's your first time on Movim! To fill in a \n"
-"                few information about you and display them to your \n"
-"                contacts, create your virtual card by clicking the next "
-"button."
-msgstr ""
-"C'est votre première fois sur Movim ! Pour remplir \n"
-"                quelques informations à votre propos et les montrer à vos  \n"
-"                contacts, créer votre carte cirtuelle en cliquant sur le "
-"prochain bouton."
-
-#: ../app/widgets/Vcard/Vcard.php:122 ../app/widgets/Profile/Profile.php:132
-msgid "Create my vCard"
-msgstr "Créer ma vCard"
-
-#: ../app/widgets/Vcard/Vcard.php:148
-#: ../app/widgets/ContactCard/ContactCard.php:47
-msgid "General Informations"
-msgstr "Informations Générales"
-
-#: ../app/widgets/Vcard/Vcard.php:151
-#: ../app/widgets/ContactCard/ContactCard.php:51
-#: ../app/widgets/Media/Media.php:104 ../app/widgets/Account/Account.php:286
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:11
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:11
-msgid "Name"
-msgstr "Nom"
-
-#: ../app/widgets/Vcard/Vcard.php:156
-#: ../app/widgets/ContactCard/ContactCard.php:57
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:14
-msgid "Nickname"
-msgstr "Pseudonyme"
-
-#: ../app/widgets/Vcard/Vcard.php:161
-#: ../app/widgets/ContactCard/ContactCard.php:85
-#: ../app/widgets/ContactCard/ContactCard.php:90
-msgid "Email"
-msgstr "Courriel"
-
-#: ../app/widgets/Vcard/Vcard.php:166
-#: ../app/widgets/ContactCard/ContactCard.php:66
-msgid "Date of Birth"
-msgstr "Date de Naissance"
-
-#: ../app/widgets/Vcard/Vcard.php:171
-msgid "Day"
-msgstr "Jour"
-
-#: ../app/widgets/Vcard/Vcard.php:191
-msgid "Month"
-msgstr "Mois"
-
-#: ../app/widgets/Vcard/Vcard.php:210
-msgid "Year"
-msgstr "Année"
-
-#: ../app/widgets/Vcard/Vcard.php:224
-#: ../app/widgets/ContactCard/ContactCard.php:72
-msgid "Gender"
-msgstr "Sexe"
-
-#: ../app/widgets/Vcard/Vcard.php:235
-#: ../app/widgets/ContactCard/ContactCard.php:78
-msgid "Marital Status"
-msgstr "Situation familiale"
-
-#: ../app/widgets/Vcard/Vcard.php:246
-msgid "Avatar"
-msgstr "Avatar"
-
-#: ../app/widgets/Vcard/Vcard.php:257
-msgid "Webcam"
-msgstr "Caméra"
-
-#: ../app/widgets/Vcard/Vcard.php:265
-msgid "Cheese !"
-msgstr "Souriez !"
-
-#: ../app/widgets/Vcard/Vcard.php:273
-msgid "Take a webcam snapshot"
-msgstr "Prendre une photo avec votre caméra"
-
-#: ../app/widgets/Vcard/Vcard.php:277
-#: ../app/widgets/ContactCard/ContactCard.php:99
-#: ../app/widgets/ContactCard/ContactCard.php:104
-msgid "Website"
-msgstr "Site Web"
-
-#: ../app/widgets/Vcard/Vcard.php:281
-#: ../app/widgets/ContactCard/ContactCard.php:112
-msgid "About Me"
-msgstr "À propos de moi"
-
-#: ../app/widgets/Vcard/Vcard.php:289
-#: ../app/widgets/ContactCard/ContactCard.php:121
-msgid "Geographic Position"
-msgstr "Position géographique"
-
-#: ../app/widgets/Vcard/Vcard.php:291
-#: ../app/widgets/ContactCard/ContactCard.php:125
-msgid "Locality"
-msgstr "Ville"
-
-#: ../app/widgets/Vcard/Vcard.php:295
-#: ../app/widgets/ContactCard/ContactCard.php:137
-msgid "Country"
-msgstr "Pays"
-
-#: ../app/widgets/Vcard/Vcard.php:314
-msgid "Privacy Level"
-msgstr "Degré de confidentialité"
-
-#: ../app/widgets/Vcard/Vcard.php:325
-msgid ""
-"Please pay attention ! By making your profile public, all the information "
-"listed above will be available for all the Movim users and on the whole "
-"Internet."
-msgstr ""
-"Faites attention ! En activant cette option, vous rendrez votre profil "
-"public, ainsi toutes les informations précisées ci-dessus seront visibles "
-"par les utilisateurs de Movim mais également par tous les internautes."
-
-#: ../app/widgets/Vcard/Vcard.php:327
-msgid "Is this profile public ?"
-msgstr "Ce profil est-il public ?"
-
-#: ../app/widgets/Vcard/Vcard.php:339
-msgid "Submitting"
-msgstr "Soumission"
-
-#: ../app/widgets/Vcard/Vcard.php:349 ../app/widgets/Admin/Admin.php:175
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:64
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:72
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:215
-#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:41
-msgid "Submit"
-msgstr "Soumettre"
-
-#: ../app/widgets/Vcard/Vcard.php:350
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:62
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:93
-msgid "Reset"
-msgstr "Réinitialiser"
-
-#: ../app/widgets/Vcard/Vcard.php:372
-msgid "Edit my Profile"
-msgstr "Modifier mon profil"
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:41
-#, php-format
-msgid "Return to %s's list of groups"
-msgstr "Retourner à la liste des groupes de %s"
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:44
-msgid "Group deleted"
-msgstr "Groupe supprimé"
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:50
-msgid "Group configuration saved"
-msgstr "Configuration du groupe sauvegardée"
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:70
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
-#: ../app/widgets/Account/Account.php:157
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
-msgid "Validate"
-msgstr "Valider"
-
-#: ../app/widgets/Feed/Feed.php:61 ../app/widgets/Feed/Feed.php:100
-msgid ""
-"Your server doesn't support post publication, you can only read contact's "
-"feeds"
-msgstr ""
-"Votre serveur ne gère pas la publication des billets, vous ne pouvez que "
-"lire les flux de vos contacts."
-
-#: ../app/widgets/Feed/Feed.php:68
-msgid "Comment publication error"
-msgstr "Erreur à la publication du commentaire"
-
-#: ../app/widgets/Feed/Feed.php:89 ../app/widgets/Bookmark/Bookmark.php:84
-msgid "An error occured : "
-msgstr "Une erreur s'est produite : "
-
-#: ../app/widgets/Feed/Feed.php:106
-msgid "Creating your feed..."
-msgstr "Création de votre flux..."
-
-#: ../app/widgets/Feed/Feed.php:139 ../app/widgets/News/News.php:30
-#: ../app/widgets/Wall/Wall.php:111
+#: ../app/widgets/News/News.php:30 ../app/widgets/Wall/Wall.php:111
+#: ../app/widgets/Feed/Feed.php:139
 msgid "Get older posts"
 msgstr "Récupérer les anciens posts"
 
-#: ../app/widgets/Feed/Feed.php:172 ../app/widgets/News/News.php:61
+#: ../app/widgets/News/News.php:61 ../app/widgets/Feed/Feed.php:172
 #: ../app/widgets/Node/Node.php:54
 msgid "Your feed cannot be loaded."
 msgstr "Votre flux n'est pas accessible."
@@ -1066,261 +1114,24 @@ msgstr "Donner un nom sympa à votre groupe"
 msgid "My Little Pony - Fan Club"
 msgstr "Mon Petit Poney - Fan Club"
 
-#: ../app/widgets/ServerNodes/ServerNodes.php:135
-#: ../app/widgets/Notifs/Notifs.php:277
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:19
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:29
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:28
-msgid "Add"
-msgstr "Ajouter"
-
-#: ../app/widgets/ServerNodes/ServerNodes.php:140
-#: ../app/widgets/Node/Node.php:198 ../app/widgets/Node/Node.php:220
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:22
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:45
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:25
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:35
-msgid "Close"
-msgstr "Fermer"
-
 #: ../app/widgets/ServerNodes/ServerNodes.php:171
 msgid "Subscribed"
 msgstr ""
 
-#: ../app/widgets/Blog/Blog.php:30
-#: ../app/widgets/Syndication/Syndication.php:52
-#, php-format
-msgid "%s's feed"
-msgstr "Flux de %s"
-
-#: ../app/widgets/Blog/Blog.php:38 ../app/widgets/Wall/Wall.php:91
-#: ../app/widgets/Wall/Wall.php:137
-#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:1
-#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:19
-#: ../cache/blog.8db21a294557fd5b3ca5b801fc66f7c6.rtpl.php:8
-msgid "Feed"
-msgstr "Flux"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:31
-#: ../app/widgets/MediaUpload/MediaUpload.php:66
-msgid "Upload"
-msgstr "Déposer"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:35
-msgid "Please select image file"
-msgstr "Veuillez sélectionner une image"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:69
-msgid "You should select valid image files only!"
-msgstr "Seul les images sont autorisées"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:72
-msgid "An error occurred while uploading the file"
-msgstr "Une erreur est survenue pendant l'envois"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:75
-msgid ""
-"The upload has been canceled by the user or the browser dropped the "
-"connection"
-msgstr ""
-"L'envois a été annulé par l'utilisateur ou la navigateur a coupé la connexion"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid ""
-"Your file is very big. We can't accept it. Please select a smaller file"
-msgstr "Votre fichier est trop gros !"
-
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:44
-msgid "No public groups found"
-msgstr "Pas de groupes publiques trouvés"
-
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:63
-msgid "Public groups"
-msgstr "Groupes publiques"
-
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:68
-msgid "Get public groups"
-msgstr "Récupérer les groupes publiques"
-
-#: ../app/widgets/Bookmark/Bookmark.php:79
-msgid "Bookmarks updated"
-msgstr "Signets mis à jour"
-
-#: ../app/widgets/Bookmark/Bookmark.php:123
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: ../app/widgets/Bookmark/Bookmark.php:127
-#: ../app/widgets/Bookmark/Bookmark.php:180
-msgid "Empty name"
-msgstr "Nom vide"
-
-#: ../app/widgets/Bookmark/Bookmark.php:176
-msgid "Bad URL"
-msgstr "Mauvaise URL"
-
-#: ../app/widgets/Bookmark/Bookmark.php:276
-msgid "Conferences"
-msgstr "Conférences"
-
-#: ../app/widgets/Bookmark/Bookmark.php:284
-#: ../app/widgets/Explore/Explore.php:48
-msgid "Groups"
-msgstr "Groupes"
-
-#: ../app/widgets/Bookmark/Bookmark.php:292
-msgid "Links"
-msgstr "Liens"
-
-#: ../app/widgets/Presence/Presence.php:120
-msgid "Disconnect"
-msgstr ""
-
-#: ../app/widgets/Config/Config.php:54
-msgid "Configuration updated"
-msgstr "La configuration a été mise à jour"
-
-#: ../app/widgets/Connection/Connection.php:40
-msgid "Please wait "
-msgstr "Patientez s'il vous plaît "
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-msgid "Subscriptions saved"
-msgstr "Abonnements enregistrés"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:95
-msgid "Manage your subscriptions"
-msgstr "Gérer vos abonnements"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:96
-msgid "Manage the subscriptions"
-msgstr "Gérer les abonnements"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:101
-msgid "Get the subscriptions"
-msgstr "Récupérer les abonnements"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:46
-msgid "Mood"
-msgstr "Humeur"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:50
-msgid "I'm "
-msgstr "Je suis "
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:57
-msgid "Listening"
-msgstr "En écoute"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:63
-#: ../app/widgets/Media/Media.php:85
-msgid "on"
-msgstr "sur"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:97
-msgid "Last seen"
-msgstr "Dernière apparition"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:113
-msgid "Bot"
-msgstr "Robot"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:114
-msgid "Desktop"
-msgstr "Bureau"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:115
-#: ../app/widgets/ContactInfo/ContactInfo.php:116
-msgid "Phone"
-msgstr "Téléphone"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:117
-msgid "Web"
-msgstr "Web"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:118
-msgid "Registered"
-msgstr "Enregistré"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:125
-msgid "Client Informations"
-msgstr "Informations sur le client"
-
-#: ../app/widgets/ChatExt/ChatExt.php:64
-#: ../cache/_chat_contact.dbe7dc3350f78dc8a0fb2487a7fd0e5e.rtpl.php:16
-msgid "Composing..."
-msgstr "Rédige..."
-
-#: ../app/widgets/ChatExt/ChatExt.php:65
-#: ../cache/_chat_contact.dbe7dc3350f78dc8a0fb2487a7fd0e5e.rtpl.php:17
-msgid "Paused..."
-msgstr "En pause..."
-
-#: ../app/widgets/Media/Media.php:106
-msgid "Resolution"
-msgstr "Résolution"
-
-#: ../app/widgets/Media/Media.php:108
-msgid "Size"
-msgstr "Taille"
-
-#: ../app/widgets/Media/Media.php:110
-msgid "Date"
-msgstr "Date"
-
-#: ../app/widgets/Media/Media.php:112
-msgid "ISO"
-msgstr "ISO"
-
-#: ../app/widgets/Media/Media.php:114
-msgid "Camera"
-msgstr "Appareil photo"
-
-#: ../app/widgets/Media/Media.php:116
-msgid "Artist"
-msgstr "Artiste"
-
-#: ../app/widgets/Media/Media.php:119
-msgid "Original"
-msgstr "Originale"
-
-#: ../app/widgets/Media/Media.php:119
-msgid "Link"
-msgstr "Lien"
-
-#: ../app/widgets/Media/Media.php:148
-msgid "Viewer"
-msgstr "Visionneuse"
-
-#: ../app/widgets/ChatPop/ChatPop.php:40
-msgid "Connection"
-msgstr "Connexion"
-
-#: ../app/widgets/Explore/Explore.php:39 ../app/widgets/Explore/Explore.php:42
-#: ../app/widgets/Explore/Explore.php:45
-msgid "Chatrooms"
-msgstr ""
-
-#: ../app/widgets/ContactManage/ContactManage.php:30
-msgid "Contact updated"
-msgstr ""
-
-#: ../app/widgets/ContactManage/ContactManage.php:55
-msgid "Manage"
-msgstr "Gérer"
-
-#: ../app/widgets/ContactManage/ContactManage.php:67
-msgid "Alias"
-msgstr "Alias"
-
-#: ../app/widgets/ContactManage/ContactManage.php:73
-msgid "Group"
-msgstr "Groupe"
-
-#: ../app/widgets/ContactManage/ContactManage.php:76
-msgid "Save"
-msgstr "Sauvegarder"
+#: ../app/widgets/Help/Help.php:29 ../app/widgets/Help/Help.php:42
+#: ../app/controllers/ProfileController.php:17
+#: ../app/controllers/HelpController.php:17
+#: ../app/controllers/ServerController.php:18
+#: ../app/controllers/NodeController.php:18
+#: ../app/controllers/MainController.php:17
+#: ../app/controllers/ConfController.php:17
+#: ../app/controllers/ExploreController.php:19
+#: ../app/controllers/FriendController.php:27
+#: ../app/controllers/NewsController.php:17
+#: ../app/controllers/MediaController.php:17
+#: ../app/controllers/NodeconfigController.php:18
+msgid "Help"
+msgstr "Aide"
 
 #: ../app/widgets/Help/Help.php:31
 msgid "What is Movim?"
@@ -1412,277 +1223,14 @@ msgstr ""
 "directement sur le salon officiel %s ou sur la mailing-list (%s voir la page "
 "dédiée %s)."
 
-#: ../app/widgets/Discover/Discover.php:50
-#: ../cache/explore.f58b95c945dc1d2a7f1a7a43a1fbc4b7.rtpl.php:8
-msgid "Last registered"
-msgstr "Dernier inscrits"
-
-#: ../app/widgets/Roster/Roster.php:69 ../app/widgets/Roster/Roster.php:213
-msgid "Ungrouped"
-msgstr "Dégroupé"
-
-#: ../app/widgets/Roster/Roster.php:267
-#, php-format
-msgid ""
-"No contacts ? You can add one using the %s button bellow or going to the "
-"%sExplore page%s"
+#: ../app/widgets/Explore/Explore.php:68
+msgid "Chatrooms"
 msgstr ""
 
-#: ../app/widgets/Roster/Roster.php:329
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:25
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:54
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:70
-msgid "Show/Hide"
-msgstr "Afficher/Masquer"
-
-#: ../app/widgets/Roster/Roster.php:354
-msgid "Please enter a valid Jabber ID"
-msgstr "Veuillez entrer un Jabber ID valide"
-
-#: ../app/widgets/Chat/Chat.php:50
-msgid "Offline"
-msgstr "Hors ligne"
-
-#: ../app/widgets/Chat/Chat.php:137
-msgid "Message Published"
-msgstr "Message publié"
-
-#: ../app/widgets/Chat/Chat.php:176
-#, php-format
-msgid "%s needs your attention"
-msgstr "%s a besoin de votre attention"
-
-#: ../app/widgets/Chat/Chat.php:363
-msgid "Encrypted message"
-msgstr ""
-
-#: ../app/widgets/Log/Log.php:33
-msgid "Debug console"
-msgstr "Console de débogage"
-
-#: ../app/widgets/Account/Account.php:89
-msgid "Step 2 - Fill in your informations"
-msgstr "Étape 2 - Remplissez ce formulaire"
-
-#: ../app/widgets/Account/Account.php:170
-msgid "No account creation form founded on the server"
-msgstr "Pas de formulaire de création de compte trouvé sur le serveur"
-
-#: ../app/widgets/Account/Account.php:289
-msgid "Description"
-msgstr "Description"
-
-#: ../app/widgets/Account/Account.php:292
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
-msgid "URL"
-msgstr "URL"
-
-#: ../app/widgets/Account/Account.php:295
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:76
-msgid "Software"
-msgstr "Logiciel"
-
-#: ../app/widgets/Account/Account.php:385 ../app/widgets/Login/Login.php:118
-msgid "Some data are missing !"
-msgstr "Il manque des informations !"
-
-#: ../app/widgets/Account/Account.php:391
-msgid "Wrong ID"
-msgstr "Mauvais identifiant"
-
-#: ../app/widgets/Account/Account.php:397
-msgid "You entered different passwords"
-msgstr "Vous avez entré des mots de passe différents"
-
-#: ../app/widgets/Account/Account.php:403
-msgid "Invalid name"
-msgstr "Ce nom n'est pas valide."
-
-#: ../app/widgets/Account/Account.php:409
-msgid "Request not acceptable"
-msgstr "Requête non acceptable"
-
-#: ../app/widgets/Account/Account.php:415
-msgid "Username already taken"
-msgstr "Nom d'utilisateur déjà existant"
-
-#: ../app/widgets/Account/Account.php:421
-msgid "Could not connect to the XMPP server"
-msgstr "Erreur à la connexion au serveur XMPP"
-
-#: ../app/widgets/Account/Account.php:427
-msgid "Could not communicate with the XMPP server"
-msgstr "Erreur lors de la tentative de communication avec le serveur XMPP"
-
-#: ../app/widgets/Account/Account.php:433
-msgid "Unknown error"
-msgstr "Erreur indéterminée"
-
-#: ../app/widgets/Account/Account.php:445
-msgid "Create a new account"
-msgstr "Créer un nouveau compte"
-
-#: ../app/widgets/Account/Account.php:448
-msgid ""
-"Movim is a decentralized social network, before creating a new account you "
-"need to choose a server to register."
-msgstr ""
-"Movim est un réseau social décentralisé, avant de vous créer un compte vous "
-"devez choisir un serveur sur lequel vous inscrire."
-
-#: ../app/widgets/Account/Account.php:449
-msgid "Keep in mind that this server will handle all your personnal data."
-msgstr "N'oubliez pas que ce serveur gèrera toutes vos données personnelles."
-
-#: ../app/widgets/Account/Account.php:454
-msgid "Step 1 - Search the server"
-msgstr "Étape 1 - Chercher le serveur"
-
-#: ../app/widgets/Account/Account.php:457
-#, php-format
-msgid "You can%s enter your server domain name%s. "
-msgstr "Vous pouvez entrez ici le%s nom de domaine%s. "
-
-#: ../app/widgets/Account/Account.php:458
-msgid "Or you can choose a server from this list."
-msgstr "Ou choisir un des serveurs de cette liste."
-
-#: ../app/widgets/Account/Account.php:469
-#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:19
-msgid "Server"
-msgstr "Serveur"
-
-#: ../app/widgets/Account/Account.php:472
-msgid "Enter the server domain (ex: movim.eu)"
-msgstr "Entrez le nom de domaine (ex: movim.eu)"
-
-#: ../app/widgets/Account/Account.php:484
-msgid "Searching..."
-msgstr "Recherche en cours…"
-
-#: ../app/widgets/Account/Account.php:486
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:10
-msgid "Search"
-msgstr "Rechercher"
-
-#: ../app/widgets/Profile/Profile.php:42
-msgid "Saved"
-msgstr "Sauvegardé"
-
-#: ../app/widgets/Profile/Profile.php:43
-msgid "Status updated"
-msgstr "Status mis à jour"
-
-#: ../app/widgets/Profile/Profile.php:128
-msgid "No profile yet ?"
-msgstr "Pas encore de profil ?"
-
-#: ../app/widgets/ContactAction/ContactAction.php:65
-#: ../app/widgets/ContactAction/ContactAction.php:134
-msgid "Actions"
-msgstr "Actions"
-
-#: ../app/widgets/ContactAction/ContactAction.php:82
-msgid "Chat"
-msgstr "Chat"
-
-#: ../app/widgets/ContactAction/ContactAction.php:100
-msgid "Remove this contact"
-msgstr "Supprimer ce contact"
-
-#: ../app/widgets/ContactAction/ContactAction.php:117
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:24
-msgid "Yes"
-msgstr "Oui"
-
-#: ../app/widgets/ContactAction/ContactAction.php:130
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:35
-msgid "No"
-msgstr "Non"
-
-#: ../app/widgets/ContactAction/ContactAction.php:146
-msgid "Invite this user"
-msgstr "Inviter cet utilisateur"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:73
-msgid "Place"
-msgstr "Lieu"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:208
-msgid "by"
-msgstr ""
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:212
-msgid "email"
-msgstr ""
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:216
-msgid "jid"
-msgstr ""
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:413
-msgid "Show the older comments"
-msgstr "Afficher les autres commentaires"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:485
-msgid "No content"
-msgstr "Aucun contenu"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:545
-msgid "No comments"
-msgstr "Aucun commentaire"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:556
-msgid "No comments stream"
-msgstr "Pas de flux de commentaires"
-
-#: ../app/widgets/Node/Node.php:114 ../app/widgets/Node/Node.php:205
-#: ../app/widgets/Node/Node.php:216
-msgid "Unsubscribe"
-msgstr "Se désabonner"
-
-#: ../app/widgets/Node/Node.php:122 ../app/widgets/Node/Node.php:175
-#: ../app/widgets/Node/Node.php:194
-msgid "Subscribe"
-msgstr "S'abonner"
-
-#: ../app/widgets/Node/Node.php:136 ../app/widgets/Node/Node.php:268
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:17
-msgid "Posts"
-msgstr "Posts"
-
-#: ../app/widgets/Node/Node.php:164
-msgid "Get Subscription"
-msgstr "Récupérer la Souscription"
-
-#: ../app/widgets/Node/Node.php:177
-msgid "Make your membership to this group public to your friends"
-msgstr "Partagez avec vos amis votre abonnement à ce groupe"
-
-#: ../app/widgets/Node/Node.php:184
-msgid "Give a nickname to this group if you want"
-msgstr "Donner un nom à ce groupe"
-
-#: ../app/widgets/Node/Node.php:207
-msgid "Are you sure ?"
-msgstr "Êtes-vous sûr ?"
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:37
-msgid "Delete"
-msgstr "Supprimer"
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:49
-#, php-format
-msgid "%s has been removed from your public groups"
-msgstr "%s a été supprimé des groupes publiques"
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:74
-msgid "Public Groups"
-msgstr "Groupes publiques"
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:79
-msgid "Get your public groups"
-msgstr "Récupérer vos groupes publiques"
+#: ../app/widgets/Explore/Explore.php:77
+#: ../app/widgets/Bookmark/Bookmark.php:288
+msgid "Groups"
+msgstr "Groupes"
 
 #: ../app/widgets/Admin/Admin.php:52 ../app/widgets/Admin/Admin.php:57
 #: ../app/widgets/Admin/Admin.php:62 ../app/widgets/Admin/Admin.php:67
@@ -1790,8 +1338,7 @@ msgstr ""
 "Entrez ici votre URL-BOSH sous la forme : http(s)://domaine:port/chemin"
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid ""
-"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 "Si vous saisissez un serveur BOSH ouvert, vous allez pouvoir vous connecter "
 "sur de nombreux serveurs XMPP différents."
@@ -1863,54 +1410,50 @@ msgstr "Identification de l'administrateur"
 msgid "Change the default credentials admin/password"
 msgstr ""
 
-#: ../app/widgets/Admin/Admin.php:451
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:67
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:67
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:67
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:67
-msgid "Username"
-msgstr "Identifiant"
-
-#: ../app/widgets/Admin/Admin.php:457
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:71
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:71
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:71
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:37
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:71
-msgid "Password"
-msgstr "Mot de passe"
-
 #: ../app/widgets/Admin/Admin.php:461
 msgid "Retype password"
 msgstr "Ressaisir le mot de passe"
 
-#: ../app/widgets/Admin/Admin.php:510
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:2
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:2
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:2
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:2
-msgid "Database Settings"
-msgstr "Paramètres de la base de données"
+#: ../app/widgets/Roster/Roster.php:76 ../app/widgets/Roster/Roster.php:217
+msgid "Ungrouped"
+msgstr "Dégroupé"
 
-#: ../app/widgets/Location/Location.php:54
-msgid "Wrong position"
-msgstr "Mauvaise position"
+#: ../app/widgets/Roster/Roster.php:277
+#, php-format
+msgid ""
+"No contacts ? You can add one using the %s button bellow or going to the "
+"%sExplore page%s"
+msgstr ""
 
-#: ../app/widgets/Location/Location.php:63
-msgid "Location updated"
-msgstr "Position géographique mise à jour"
+#: ../app/widgets/Roster/Roster.php:303
+#, fuzzy
+msgid "Show disconnected contacts"
+msgstr "Partagé avec un contact"
 
-#: ../app/widgets/Location/Location.php:94
-msgid "Location"
-msgstr "Position"
+#: ../app/widgets/Roster/Roster.php:305
+msgid "Hide disconnected contacts"
+msgstr ""
 
-#: ../app/widgets/Location/Location.php:103
-msgid "Update my position"
-msgstr "Mettre à jour ma position"
+#: ../app/widgets/Roster/Roster.php:309
+#, fuzzy, php-format
+msgid "Hide group %s"
+msgstr "Groupes publiques"
 
-#: ../app/widgets/Location/Location.php:109
-msgid "Accept"
-msgstr "Accepter"
+#: ../app/widgets/Roster/Roster.php:311
+#, php-format
+msgid "Show group %s"
+msgstr ""
+
+#: ../app/widgets/Roster/Roster.php:374
+msgid "Please enter a valid Jabber ID"
+msgstr "Veuillez entrer un Jabber ID valide"
+
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
+#: ../app/widgets/Account/Account.php:160
+#: ../app/widgets/NodeConfig/NodeConfig.php:79
+msgid "Validate"
+msgstr "Valider"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
 msgid "Affiliations saved"
@@ -1925,23 +1468,85 @@ msgstr "Gérer vos membres"
 msgid "Get the members"
 msgstr "Récupérer les membres"
 
-#: ../app/widgets/Notifs/Notifs.php:135 ../app/widgets/Wall/Wall.php:98
+#: ../app/widgets/Wall/Wall.php:98 ../app/widgets/Notifs/Notifs.php:135
 msgid "Updating"
 msgstr "Actualisation"
 
-#: ../app/widgets/Notifs/Notifs.php:138
-#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:15
-#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:25
-msgid "Refresh"
-msgstr "Rafraîchir"
+#: ../app/widgets/Media/Media.php:85
+#: ../app/widgets/ContactInfo/ContactInfo.php:63
+msgid "on"
+msgstr "sur"
 
-#: ../app/widgets/Notifs/Notifs.php:175
-msgid "Contact request pending"
-msgstr "Demandes de contact en cours"
+#: ../app/widgets/Media/Media.php:106
+msgid "Resolution"
+msgstr "Résolution"
 
-#: ../app/widgets/Notifs/Notifs.php:263
-msgid "wants to talk with you"
-msgstr "veut discuter avec vous"
+#: ../app/widgets/Media/Media.php:108
+msgid "Size"
+msgstr "Taille"
+
+#: ../app/widgets/Media/Media.php:110
+msgid "Date"
+msgstr "Date"
+
+#: ../app/widgets/Media/Media.php:112
+msgid "ISO"
+msgstr "ISO"
+
+#: ../app/widgets/Media/Media.php:114
+msgid "Camera"
+msgstr "Appareil photo"
+
+#: ../app/widgets/Media/Media.php:116
+msgid "Artist"
+msgstr "Artiste"
+
+#: ../app/widgets/Media/Media.php:119
+msgid "Original"
+msgstr "Originale"
+
+#: ../app/widgets/Media/Media.php:119
+msgid "Link"
+msgstr "Lien"
+
+#: ../app/widgets/Media/Media.php:148
+msgid "Viewer"
+msgstr "Visionneuse"
+
+#: ../app/widgets/Media/Media.php:154
+#: ../app/controllers/ProfileController.php:15
+#: ../app/controllers/HelpController.php:15
+#: ../app/controllers/ServerController.php:16
+#: ../app/controllers/NodeController.php:16
+#: ../app/controllers/MainController.php:15
+#: ../app/controllers/ConfController.php:15
+#: ../app/controllers/ExploreController.php:17
+#: ../app/controllers/FriendController.php:25
+#: ../app/controllers/NewsController.php:15
+#: ../app/controllers/MediaController.php:9
+#: ../app/controllers/MediaController.php:15
+#: ../app/controllers/NodeconfigController.php:16
+msgid "Media"
+msgstr "Médias"
+
+#: ../app/widgets/Blog/Blog.php:30
+#: ../app/widgets/Syndication/Syndication.php:52
+#, php-format
+msgid "%s's feed"
+msgstr "Flux de %s"
+
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:44
+msgid "No public groups found"
+msgstr "Pas de groupes publiques trouvés"
+
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:63
+msgid "Public groups"
+msgstr "Groupes publiques"
+
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:68
+msgid "Get public groups"
+msgstr "Récupérer les groupes publiques"
 
 #: ../app/widgets/Login/Login.php:36
 msgid "Connecting..."
@@ -1982,6 +1587,10 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 "Erreur de domaine XMPP, votre compte n'est pas un identifiant jabber correct"
 
+#: ../app/widgets/Login/Login.php:118 ../app/widgets/Account/Account.php:388
+msgid "Some data are missing !"
+msgstr "Il manque des informations !"
+
 #: ../app/widgets/Login/Login.php:124
 msgid "Wrong password"
 msgstr "Mot de passe incorrect"
@@ -2019,293 +1628,672 @@ msgstr "Votre compte XMPP n'est pas autorisé à se connecter"
 msgid "The server takes too much time to respond"
 msgstr "Le serveur est trop lent à répondre"
 
-#: ../app/widgets/Login/Login.php:186
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:44
-msgid "Come in!"
-msgstr "Entrez!"
+#: ../app/widgets/Notifs/Notifs.php:175
+msgid "Contact request pending"
+msgstr "Demandes de contact en cours"
 
-#: ../app/widgets/Wall/Wall.php:102
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:32
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:32
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:32
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:32
-msgid "Update"
-msgstr "Mettre à jour"
+#: ../app/widgets/Notifs/Notifs.php:263
+msgid "wants to talk with you"
+msgstr "veut discuter avec vous"
+
+#: ../app/widgets/Vcard/Vcard.php:37
+msgid "Profile Updated"
+msgstr "Profil mis à jour"
+
+#: ../app/widgets/Vcard/Vcard.php:115
+msgid ""
+"It's your first time on Movim! To fill in a \n"
+"                few information about you and display them to your \n"
+"                contacts, create your virtual card by clicking the next "
+"button."
+msgstr ""
+"C'est votre première fois sur Movim ! Pour remplir \n"
+"                quelques informations à votre propos et les montrer à vos  \n"
+"                contacts, créer votre carte cirtuelle en cliquant sur le "
+"prochain bouton."
+
+#: ../app/widgets/Vcard/Vcard.php:122 ../app/widgets/Profile/Profile.php:133
+msgid "Create my vCard"
+msgstr "Créer ma vCard"
+
+#: ../app/widgets/Vcard/Vcard.php:148
+#: ../app/widgets/ContactCard/ContactCard.php:47
+msgid "General Informations"
+msgstr "Informations Générales"
+
+#: ../app/widgets/Vcard/Vcard.php:161
+#: ../app/widgets/ContactCard/ContactCard.php:85
+#: ../app/widgets/ContactCard/ContactCard.php:90
+msgid "Email"
+msgstr "Courriel"
+
+#: ../app/widgets/Vcard/Vcard.php:166
+#: ../app/widgets/ContactCard/ContactCard.php:65
+msgid "Date of Birth"
+msgstr "Date de Naissance"
+
+#: ../app/widgets/Vcard/Vcard.php:171
+msgid "Day"
+msgstr "Jour"
+
+#: ../app/widgets/Vcard/Vcard.php:191
+msgid "Month"
+msgstr "Mois"
+
+#: ../app/widgets/Vcard/Vcard.php:210
+msgid "Year"
+msgstr "Année"
+
+#: ../app/widgets/Vcard/Vcard.php:224
+#: ../app/widgets/ContactCard/ContactCard.php:71
+msgid "Gender"
+msgstr "Sexe"
+
+#: ../app/widgets/Vcard/Vcard.php:235
+#: ../app/widgets/ContactCard/ContactCard.php:77
+msgid "Marital Status"
+msgstr "Situation familiale"
+
+#: ../app/widgets/Vcard/Vcard.php:246
+msgid "Avatar"
+msgstr "Avatar"
+
+#: ../app/widgets/Vcard/Vcard.php:257
+msgid "Webcam"
+msgstr "Caméra"
+
+#: ../app/widgets/Vcard/Vcard.php:265
+msgid "Cheese !"
+msgstr "Souriez !"
+
+#: ../app/widgets/Vcard/Vcard.php:273
+msgid "Take a webcam snapshot"
+msgstr "Prendre une photo avec votre caméra"
+
+#: ../app/widgets/Vcard/Vcard.php:277
+#: ../app/widgets/ContactCard/ContactCard.php:99
+#: ../app/widgets/ContactCard/ContactCard.php:104
+msgid "Website"
+msgstr "Site Web"
+
+#: ../app/widgets/Vcard/Vcard.php:281
+#: ../app/widgets/ContactCard/ContactCard.php:112
+msgid "About Me"
+msgstr "À propos de moi"
+
+#: ../app/widgets/Vcard/Vcard.php:289
+#: ../app/widgets/ContactCard/ContactCard.php:121
+msgid "Geographic Position"
+msgstr "Position géographique"
+
+#: ../app/widgets/Vcard/Vcard.php:291
+#: ../app/widgets/ContactCard/ContactCard.php:125
+msgid "Locality"
+msgstr "Ville"
+
+#: ../app/widgets/Vcard/Vcard.php:295
+#: ../app/widgets/ContactCard/ContactCard.php:137
+msgid "Country"
+msgstr "Pays"
+
+#: ../app/widgets/Vcard/Vcard.php:314
+msgid "Privacy Level"
+msgstr "Degré de confidentialité"
+
+#: ../app/widgets/Vcard/Vcard.php:325
+msgid ""
+"Please pay attention ! By making your profile public, all the information "
+"listed above will be available for all the Movim users and on the whole "
+"Internet."
+msgstr ""
+"Faites attention ! En activant cette option, vous rendrez votre profil "
+"public, ainsi toutes les informations précisées ci-dessus seront visibles "
+"par les utilisateurs de Movim mais également par tous les internautes."
+
+#: ../app/widgets/Vcard/Vcard.php:327
+msgid "Is this profile public ?"
+msgstr "Ce profil est-il public ?"
+
+#: ../app/widgets/Vcard/Vcard.php:339
+msgid "Submitting"
+msgstr "Soumission"
+
+#: ../app/widgets/Vcard/Vcard.php:372
+msgid "Edit my Profile"
+msgstr "Modifier mon profil"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
+msgid "Subscriptions saved"
+msgstr "Abonnements enregistrés"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:95
+msgid "Manage your subscriptions"
+msgstr "Gérer vos abonnements"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:96
+msgid "Manage the subscriptions"
+msgstr "Gérer les abonnements"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:101
+msgid "Get the subscriptions"
+msgstr "Récupérer les abonnements"
+
+#: ../app/widgets/Bookmark/Bookmark.php:79
+msgid "Bookmarks updated"
+msgstr "Signets mis à jour"
+
+#: ../app/widgets/Bookmark/Bookmark.php:84 ../app/widgets/Feed/Feed.php:89
+msgid "An error occured : "
+msgstr "Une erreur s'est produite : "
+
+#: ../app/widgets/Bookmark/Bookmark.php:123
+msgid "Bad Chatroom ID"
+msgstr ""
+
+#: ../app/widgets/Bookmark/Bookmark.php:127
+#: ../app/widgets/Bookmark/Bookmark.php:180
+msgid "Empty name"
+msgstr "Nom vide"
+
+#: ../app/widgets/Bookmark/Bookmark.php:176
+msgid "Bad URL"
+msgstr "Mauvaise URL"
+
+#: ../app/widgets/Bookmark/Bookmark.php:280
+msgid "Conferences"
+msgstr "Conférences"
+
+#: ../app/widgets/Bookmark/Bookmark.php:296
+msgid "Links"
+msgstr "Liens"
+
+#: ../app/widgets/ContactManage/ContactManage.php:30
+msgid "Contact updated"
+msgstr ""
+
+#: ../app/widgets/ContactManage/ContactManage.php:55
+msgid "Manage"
+msgstr "Gérer"
+
+#: ../app/widgets/ContactManage/ContactManage.php:67
+msgid "Alias"
+msgstr "Alias"
+
+#: ../app/widgets/ContactManage/ContactManage.php:73
+msgid "Group"
+msgstr "Groupe"
+
+#: ../app/widgets/ContactManage/ContactManage.php:76
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:73
+msgid "Place"
+msgstr "Lieu"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:218
+msgid "by"
+msgstr ""
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:222
+msgid "email"
+msgstr ""
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:226
+msgid "jid"
+msgstr ""
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:423
+msgid "Show the older comments"
+msgstr "Afficher les autres commentaires"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:495
+msgid "No content"
+msgstr "Aucun contenu"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:555
+msgid "No comments"
+msgstr "Aucun commentaire"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:566
+msgid "No comments stream"
+msgstr "Pas de flux de commentaires"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:37
+msgid "Delete"
+msgstr "Supprimer"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:49
+#, php-format
+msgid "%s has been removed from your public groups"
+msgstr "%s a été supprimé des groupes publiques"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:74
+msgid "Public Groups"
+msgstr "Groupes publiques"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:79
+msgid "Get your public groups"
+msgstr "Récupérer vos groupes publiques"
+
+#: ../app/widgets/Connection/Connection.php:37
+msgid "Please wait "
+msgstr "Patientez s'il vous plaît "
+
+#: ../app/widgets/ContactAction/ContactAction.php:65
+#: ../app/widgets/ContactAction/ContactAction.php:134
+msgid "Actions"
+msgstr "Actions"
+
+#: ../app/widgets/ContactAction/ContactAction.php:82
+msgid "Chat"
+msgstr "Chat"
+
+#: ../app/widgets/ContactAction/ContactAction.php:100
+msgid "Remove this contact"
+msgstr "Supprimer ce contact"
+
+#: ../app/widgets/ContactAction/ContactAction.php:146
+msgid "Invite this user"
+msgstr "Inviter cet utilisateur"
+
+#: ../app/widgets/Presence/Presence.php:120
+msgid "Disconnect"
+msgstr ""
+
+#: ../app/widgets/ContactCard/ContactCard.php:45
+#: ../app/widgets/ContactCard/ContactCard.php:154
+#: ../app/controllers/ProfileController.php:14
+#: ../app/controllers/HelpController.php:14
+#: ../app/controllers/ServerController.php:15
+#: ../app/controllers/NodeController.php:15
+#: ../app/controllers/MainController.php:14
+#: ../app/controllers/ConfController.php:14
+#: ../app/controllers/ExploreController.php:16
+#: ../app/controllers/FriendController.php:24
+#: ../app/controllers/NewsController.php:14
+#: ../app/controllers/MediaController.php:14
+#: ../app/controllers/NodeconfigController.php:15
+msgid "Profile"
+msgstr "Profil"
+
+#: ../app/widgets/Log/Log.php:33
+msgid "Debug console"
+msgstr "Console de débogage"
+
+#: ../app/widgets/Config/Config.php:54
+msgid "Configuration updated"
+msgstr "La configuration a été mise à jour"
+
+#: ../app/widgets/Profile/Profile.php:42
+msgid "Saved"
+msgstr "Sauvegardé"
+
+#: ../app/widgets/Profile/Profile.php:43
+msgid "Status updated"
+msgstr "Status mis à jour"
+
+#: ../app/widgets/Profile/Profile.php:118
+msgid "Your status here !"
+msgstr ""
+
+#: ../app/widgets/Profile/Profile.php:129
+msgid "No profile yet ?"
+msgstr "Pas encore de profil ?"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:31
+#: ../app/widgets/MediaUpload/MediaUpload.php:66
+msgid "Upload"
+msgstr "Déposer"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:35
+msgid "Please select image file"
+msgstr "Veuillez sélectionner une image"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:69
+msgid "You should select valid image files only!"
+msgstr "Seul les images sont autorisées"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:72
+msgid "An error occurred while uploading the file"
+msgstr "Une erreur est survenue pendant l'envois"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:75
+msgid ""
+"The upload has been canceled by the user or the browser dropped the "
+"connection"
+msgstr ""
+"L'envois a été annulé par l'utilisateur ou la navigateur a coupé la connexion"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:78
+msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgstr "Votre fichier est trop gros !"
+
+#: ../app/widgets/Location/Location.php:54
+msgid "Wrong position"
+msgstr "Mauvaise position"
+
+#: ../app/widgets/Location/Location.php:63
+msgid "Location updated"
+msgstr "Position géographique mise à jour"
+
+#: ../app/widgets/Location/Location.php:94
+msgid "Location"
+msgstr "Position"
+
+#: ../app/widgets/Location/Location.php:103
+msgid "Update my position"
+msgstr "Mettre à jour ma position"
+
+#: ../app/widgets/Location/Location.php:109
+msgid "Accept"
+msgstr "Accepter"
+
+#: ../app/widgets/Chat/Chat.php:50
+msgid "Offline"
+msgstr "Hors ligne"
+
+#: ../app/widgets/Chat/Chat.php:137
+msgid "Message Published"
+msgstr "Message publié"
+
+#: ../app/widgets/Chat/Chat.php:176
+#, php-format
+msgid "%s needs your attention"
+msgstr "%s a besoin de votre attention"
+
+#: ../app/widgets/Chat/Chat.php:376
+msgid "Encrypted message"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:92
+msgid "Step 2 - Fill in your informations"
+msgstr "Étape 2 - Remplissez ce formulaire"
+
+#: ../app/widgets/Account/Account.php:173
+msgid "No account creation form founded on the server"
+msgstr "Pas de formulaire de création de compte trouvé sur le serveur"
+
+#: ../app/widgets/Account/Account.php:292
+msgid "Description"
+msgstr "Description"
+
+#: ../app/widgets/Account/Account.php:394
+msgid "Wrong ID"
+msgstr "Mauvais identifiant"
+
+#: ../app/widgets/Account/Account.php:400
+msgid "You entered different passwords"
+msgstr "Vous avez entré des mots de passe différents"
+
+#: ../app/widgets/Account/Account.php:406
+msgid "Invalid name"
+msgstr "Ce nom n'est pas valide."
+
+#: ../app/widgets/Account/Account.php:412
+msgid "Request not acceptable"
+msgstr "Requête non acceptable"
+
+#: ../app/widgets/Account/Account.php:418
+msgid "Username already taken"
+msgstr "Nom d'utilisateur déjà existant"
+
+#: ../app/widgets/Account/Account.php:424
+msgid "Could not connect to the XMPP server"
+msgstr "Erreur à la connexion au serveur XMPP"
+
+#: ../app/widgets/Account/Account.php:430
+msgid "Could not communicate with the XMPP server"
+msgstr "Erreur lors de la tentative de communication avec le serveur XMPP"
+
+#: ../app/widgets/Account/Account.php:436
+msgid "Unknown error"
+msgstr "Erreur indéterminée"
+
+#: ../app/widgets/Account/Account.php:448
+msgid "Create a new account"
+msgstr "Créer un nouveau compte"
+
+#: ../app/widgets/Account/Account.php:451
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
+msgstr ""
+"Movim est un réseau social décentralisé, avant de vous créer un compte vous "
+"devez choisir un serveur sur lequel vous inscrire."
+
+#: ../app/widgets/Account/Account.php:452
+msgid "Keep in mind that this server will handle all your personnal data."
+msgstr "N'oubliez pas que ce serveur gèrera toutes vos données personnelles."
+
+#: ../app/widgets/Account/Account.php:457
+msgid "Step 1 - Search the server"
+msgstr "Étape 1 - Chercher le serveur"
+
+#: ../app/widgets/Account/Account.php:460
+#, php-format
+msgid "You can%s enter your server domain name%s. "
+msgstr "Vous pouvez entrez ici le%s nom de domaine%s. "
+
+#: ../app/widgets/Account/Account.php:461
+msgid "Or you can choose a server from this list."
+msgstr "Ou choisir un des serveurs de cette liste."
+
+#: ../app/widgets/Account/Account.php:475
+msgid "Enter the server domain (ex: movim.eu)"
+msgstr "Entrez le nom de domaine (ex: movim.eu)"
+
+#: ../app/widgets/Account/Account.php:487
+msgid "Searching..."
+msgstr "Recherche en cours…"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:46
+msgid "Mood"
+msgstr "Humeur"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:50
+msgid "I'm "
+msgstr "Je suis "
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:57
+msgid "Listening"
+msgstr "En écoute"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:97
+msgid "Last seen"
+msgstr "Dernière apparition"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:113
+msgid "Bot"
+msgstr "Robot"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:114
+msgid "Desktop"
+msgstr "Bureau"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:115
+#: ../app/widgets/ContactInfo/ContactInfo.php:116
+msgid "Phone"
+msgstr "Téléphone"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:117
+msgid "Web"
+msgstr "Web"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:118
+msgid "Registered"
+msgstr "Enregistré"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:130
+msgid "Client Informations"
+msgstr "Informations sur le client"
+
+#: ../app/widgets/Feed/Feed.php:61 ../app/widgets/Feed/Feed.php:100
+msgid ""
+"Your server doesn't support post publication, you can only read contact's "
+"feeds"
+msgstr ""
+"Votre serveur ne gère pas la publication des billets, vous ne pouvez que "
+"lire les flux de vos contacts."
+
+#: ../app/widgets/Feed/Feed.php:68
+msgid "Comment publication error"
+msgstr "Erreur à la publication du commentaire"
+
+#: ../app/widgets/Feed/Feed.php:106
+msgid "Creating your feed..."
+msgstr "Création de votre flux..."
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:50
+#, php-format
+msgid "Return to %s's list of groups"
+msgstr "Retourner à la liste des groupes de %s"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:53
+msgid "Group deleted"
+msgstr "Groupe supprimé"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:59
+msgid "Group configuration saved"
+msgstr "Configuration du groupe sauvegardée"
+
+#: ../app/widgets/Node/Node.php:114 ../app/widgets/Node/Node.php:205
+#: ../app/widgets/Node/Node.php:216
+msgid "Unsubscribe"
+msgstr "Se désabonner"
+
+#: ../app/widgets/Node/Node.php:122 ../app/widgets/Node/Node.php:175
+#: ../app/widgets/Node/Node.php:194
+msgid "Subscribe"
+msgstr "S'abonner"
+
+#: ../app/widgets/Node/Node.php:164
+msgid "Get Subscription"
+msgstr "Récupérer la Souscription"
+
+#: ../app/widgets/Node/Node.php:177
+msgid "Make your membership to this group public to your friends"
+msgstr "Partagez avec vos amis votre abonnement à ce groupe"
+
+#: ../app/widgets/Node/Node.php:184
+msgid "Give a nickname to this group if you want"
+msgstr "Donner un nom à ce groupe"
+
+#: ../app/widgets/Node/Node.php:207
+msgid "Are you sure ?"
+msgstr "Êtes-vous sûr ?"
 
 #: ../app/models/postn/Postn.php:140
 msgid "Content not found"
 msgstr "Contenu non trouvé"
 
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:57
-msgid "What's new ?"
-msgstr "Quoi de neuf ?"
+#: ../app/controllers/ProfileController.php:9
+#, php-format
+msgid "%s - Profile"
+msgstr "%s - Profil"
 
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:78
-msgid "Gallery"
-msgstr "Gallerie"
+#: ../app/controllers/ProfileController.php:11
+#: ../app/controllers/BlogController.php:11
+#: ../app/controllers/DiscoverController.php:13
+#: ../app/controllers/HelpController.php:11
+#: ../app/controllers/NotfoundController.php:11
+#: ../app/controllers/ServerController.php:12
+#: ../app/controllers/NodeController.php:12
+#: ../app/controllers/AccountController.php:11
+#: ../app/controllers/MainController.php:11
+#: ../app/controllers/AboutController.php:11
+#: ../app/controllers/LoginController.php:11
+#: ../app/controllers/ConfController.php:11
+#: ../app/controllers/ExploreController.php:13
+#: ../app/controllers/FriendController.php:21
+#: ../app/controllers/NewsController.php:11
+#: ../app/controllers/MediaController.php:11
+#: ../app/controllers/AdminController.php:17
+#: ../app/controllers/NodeconfigController.php:12
+msgid "Home"
+msgstr "Accueil"
 
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:86
-msgid "Preview"
-msgstr "Aperçu"
+#: ../app/controllers/BlogController.php:9
+#: ../app/controllers/AccountController.php:9
+#, php-format
+msgid "%s - Account"
+msgstr "%s - Compte"
 
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:104
-msgid "Geolocalisation"
-msgstr "Géolocalisation"
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:8
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:8
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:8
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:8
-msgid "Modl wasn't able to connect to the database"
-msgstr "Modl n'est pas arrivé à se connecter à la base de données"
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:18
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:18
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:18
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:18
-msgid "Movim is connected to the database"
+#: ../app/controllers/DiscoverController.php:11
+#, php-format
+msgid "%s - Discover"
 msgstr ""
 
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:22
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:22
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:22
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:22
-msgid "The database need to be updated"
+#: ../app/controllers/DiscoverController.php:14
+#: ../app/controllers/AboutController.php:12
+#: ../app/controllers/LoginController.php:12
+msgid "Discover"
 msgstr ""
 
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:38
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:38
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:38
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:38
-msgid "Movim database is up to date"
+#: ../app/controllers/HelpController.php:9
+#, php-format
+msgid "%s - Help Page"
+msgstr "%s - Page d'Aide"
+
+#: ../app/controllers/AccountController.php:12
+msgid "Account Creation"
+msgstr "Création de compte"
+
+#: ../app/controllers/MainController.php:9
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr "%s - Bienvenue sur Movim"
+
+#: ../app/controllers/AboutController.php:9
+#, php-format
+msgid "%s - About"
+msgstr "%s - À propos"
+
+#: ../app/controllers/LoginController.php:9
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - Connexion à Movim"
+
+#: ../app/controllers/ConfController.php:9
+#, php-format
+msgid "%s - Configuration"
+msgstr "%s - Configuration"
+
+#: ../app/controllers/ExploreController.php:11
+#, php-format
+msgid "%s - Explore"
+msgstr "%s - Explorer"
+
+#: ../app/controllers/NewsController.php:9
+#, php-format
+msgid "%s - News"
 msgstr ""
 
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:48
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:48
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:48
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:48
-msgid "Database Type"
-msgstr "Type de Base de données"
+#: ../app/controllers/AdminController.php:15
+#, php-format
+msgid "%s - Administration Panel"
+msgstr "%s - Panneau d'Administration"
 
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:75
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:75
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:75
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:75
-msgid "Host"
-msgstr "Hôte"
+#: ../upload.php:32
+msgid "Not a picture"
+msgstr "Ce n'est pas une image"
 
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:79
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:79
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:79
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:79
-msgid "Port"
-msgstr "Port"
+#: ../upload.php:35
+msgid "Folder size limit exceeded"
+msgstr "Taille limite du dossier dépassée"
 
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:86
-#: ../cache/_admin_db.45fd4bae1db9954ddb9686bf80f66e70.rtpl.php:86
-#: ../cache/_admin_db.765701780569ec8d1b5af8321d30a74d.rtpl.php:86
-#: ../cache/_admin_db.5f69629531330933e7e623f7bdd816da.rtpl.php:86
-msgid "Database Name"
-msgstr "Nom de la base de données"
+#~ msgid "Couldn't load file %s"
+#~ msgstr "Le fichier %s ne peut être chargé"
 
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:4
-#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:21
-msgid "Add a new URL"
-msgstr "Ajouter une nouvelle URL"
+#~ msgid "%s - Post View"
+#~ msgstr "%s - Publication"
 
-#: ../cache/explore.f58b95c945dc1d2a7f1a7a43a1fbc4b7.rtpl.php:2
-msgid "Discussion Servers"
-msgstr "Serveurs de discussion"
-
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:24
-msgid "Configure your group"
-msgstr "Configurer votre groupe"
-
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:30
-msgid "Delete this group"
-msgstr "Supprimer ce groupe"
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:2
-msgid "Share with"
-msgstr "Partager avec"
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:4
-msgid "your post will appear in your Movim public feed"
-msgstr "Votre post apparaîtra dans votre flux public"
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:6
-msgid "Everyone"
-msgstr "Tout le monde"
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:9
-msgid "Your contacts"
-msgstr "Vos contacts"
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:16
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:17
-msgid "Delete this post"
-msgstr "Supprimer ce post"
-
-#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:7
-msgid "Topics"
-msgstr "Sujets"
-
-#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
-msgid "Bookmarks"
-msgstr "Signets"
-
-#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:17
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:4
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:6
-msgid "Your web browser is too old to use with Movim."
-msgstr "Votre navigateur est trop vieux pour supporter Movim"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:33
-msgid "My address"
-msgstr "Mon adresse"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:61
-msgid "You can login using your favorite Jabber account"
-msgstr "Vous pouvez vous connecter en utilisant votre compte Jabber favori"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:64
-msgid "or with our demonstration account"
-msgstr "ou avec votre compte de démonstration"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:84
-msgid "Population"
-msgstr "Population"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:85
-msgid "No account yet ?"
-msgstr "Pas encore de compte ?"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:88
-msgid "Create one !"
-msgstr "Créez en un !"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:6
-msgid "Feed Configuration"
-msgstr "Configuration du Flux"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:12
-msgid "General"
-msgstr "Paramètres généraux"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:14
-msgid "Language"
-msgstr "Langue"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:43
-msgid "Enable the chatbox ?"
-msgstr ""
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:52
-msgid "Appearence"
-msgstr "Apparence"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:54
-msgid "Background color"
-msgstr "Couleur d'arrière-plan"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:84
-msgid "Font size"
-msgstr "Taille de la police"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:138
-msgid "Pattern"
-msgstr "Motif"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:222
-msgid "This configuration is shared wherever you are connected !"
-msgstr ""
-"Cette configuration sera partagée peu importe d'où vous vous connecterez!"
-
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:5
-msgid "Thanks"
-msgstr "Remerciements"
-
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:86
-msgid "Resources"
-msgstr "Ressources"
-
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:92
-msgid "API"
-msgstr ""
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:1
-msgid "Data"
-msgstr "Données"
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:4
-msgid "Cache"
-msgstr "Cache"
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:7
-msgid "Contact"
-msgstr ""
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:11
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:40
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:68
-msgid "Clear"
-msgstr "Vider"
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:45
-msgid "Messages"
-msgstr "Messages"
-
-#: ../cache/syndication.bd4db858eec4bd2d41ea342ef4448967.rtpl.php:36
-msgid "No public feed for this contact"
-msgstr "Il n'y a pas de flux public pour ce contact"
-
-#: ../cache/syndication.bd4db858eec4bd2d41ea342ef4448967.rtpl.php:42
-msgid "No contact specified"
-msgstr "Pas de contact spécifié"
-
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
-msgid "Chat Room ID"
-msgstr ""
-
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:17
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:25
-msgid "My Posts"
-msgstr "Mes posts"
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:33
-msgid "Enter the Jabber ID of your contact."
-msgstr "Entrez le Jabber ID de votre contact"
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:34
-msgid "Press enter to validate."
-msgstr "Appuyez sur Enter pour valider."
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:41
-msgid "JID"
-msgstr "JID"
-
-#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:7
-msgid "Loading comments ..."
-msgstr "Chargement des commentaires…"
-
-#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:8
-msgid "Get the comments"
-msgstr "Récupérer les commentaires"
-
-#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:19
-msgid "Add a comment"
-msgstr "Commenter"
+#~ msgid "%s - Loading"
+#~ msgstr "%s - Chargement"
 
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "Le dossier racine de Movim doit être accessible en écriture."
 
-#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "La création du fichier de configuration '%s' est impossible."
 
@@ -2318,15 +2306,12 @@ msgstr "Commenter"
 #~ msgid "JID not provided."
 #~ msgstr "JID indisponible."
 
-#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Le JID '%s' n'est pas valide"
 
-#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Le journal '%s' ne peut être ouvert"
 
-#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Création de compte"
 
@@ -2342,7 +2327,6 @@ msgstr "Commenter"
 #~ msgid "Actual version : "
 #~ msgstr "Version actuelle : "
 
-#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Veuillez installer les paquets %s et %s"
 
@@ -2355,7 +2339,6 @@ msgstr "Commenter"
 #~ msgstr ""
 #~ "Activez les droits de lecture et d'écriture sur le dossier racine de Movim"
 
-#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Veuillez supprimer le dossier %s pour terminer l'installation"
 
@@ -2380,7 +2363,6 @@ msgstr "Commenter"
 #~ msgid "Database Detected"
 #~ msgstr "Base de données détectée"
 
-#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim a besoin de l'extension %s."
 
@@ -2388,16 +2370,14 @@ msgstr "Commenter"
 #~ "The following requirements were not met. Please make sure they are all "
 #~ "satisfied in order to install Movim."
 #~ msgstr ""
-#~ "Les dépendances ci-dessous ne sont pas satisfaites. Assurez-vous qu'elles le "
-#~ "soient afin d'installer Movim."
+#~ "Les dépendances ci-dessous ne sont pas satisfaites. Assurez-vous qu'elles "
+#~ "le soient afin d'installer Movim."
 
-#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr ""
 #~ "Vous pouvez maintenant accéder à votre version fraîchement installée de "
 #~ "Movim %sAllons y !%s"
 
-#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Installer le paquet %s"
 
@@ -2430,8 +2410,8 @@ msgstr "Commenter"
 
 #~ msgid "A capital letter, a digit and a special character are recommended"
 #~ msgstr ""
-#~ "Un bon mot de passe est composé d'au moins une majuscule, un chiffre et un "
-#~ "caractère spécial"
+#~ "Un bon mot de passe est composé d'au moins une majuscule, un chiffre et "
+#~ "un caractère spécial"
 
 #~ msgid "8 characters"
 #~ msgstr "8 caractères"
@@ -2452,7 +2432,6 @@ msgstr "Commenter"
 #~ "Tout d'abord remplir ce vide avec un ID de  tout nouveau compte, cette "
 #~ "adresse vous suivra sur tout le réseau Movim !"
 
-#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - Ajouter Un Compte"
 
@@ -2465,7 +2444,6 @@ msgstr "Commenter"
 #~ msgid "Client Type"
 #~ msgstr "Type de Client"
 
-#, php-format
 #~ msgid "Contacts (%s)"
 #~ msgstr "Contacts (%s)"
 
@@ -2482,9 +2460,9 @@ msgstr "Commenter"
 #~ "personal details. Its use can potentially endanger your data. Always pay "
 #~ "attention to information that you submit."
 #~ msgstr ""
-#~ "Gardez à l'esprit que Movim est encore en développement et va manipuler des "
-#~ "informations personnelles. Son utilisation peut donc les mettre en danger. "
-#~ "Faites donc toujours attention aux informations que vous envoyez."
+#~ "Gardez à l'esprit que Movim est encore en développement et va manipuler "
+#~ "des informations personnelles. Son utilisation peut donc les mettre en "
+#~ "danger. Faites donc toujours attention aux informations que vous envoyez."
 
 #~ msgid ""
 #~ "Before you enjoy your social network, a few adjustements are required."
@@ -2495,19 +2473,15 @@ msgstr "Commenter"
 #~ msgid "Link my current account"
 #~ msgstr "Lier mon compte actuel"
 
-#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "Ce serveur héberge %s comptes"
 
-#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "La connection Bosh a échoué avec l'erreur '%s'"
 
-#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "La connexion à la base de données à échoué avec l'erreur '%s'"
 
-#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "La connection XMPP à travers Bosh a échoué avec l'erreur '%s'"
 
@@ -2524,6 +2498,5 @@ msgstr "Commenter"
 #~ "Des erreurs ont été détectées. Veuillez les corriger pour terminer "
 #~ "correctement l'installation."
 
-#, php-format
 #~ msgid "Cannot load element value '%s'"
 #~ msgstr "Impossible de charger la valeur de l'élément « %s »"

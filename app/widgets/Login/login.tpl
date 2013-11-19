@@ -53,9 +53,9 @@
             <ul id="loginhelp">
                 {if="$whitelist_display == true"}
                     <li id="whitelist">
-                        <p>This server accept only connection with xmpp accounts from these servers :</p>
+                        <p>{$c->t('This server accept only connection with xmpp accounts from these servers :')}</p>
                         <p style="font-weight:bold; text-align:center; margin:0.5em;">{$whitelist}</p>
-                        <p>If you don\'t have such xmpp account, you can try <a href="http://pod.movim.eu">another public Movim</a> client.</p>
+                        <p>{$c->t("If you don't have such xmpp account, you can try %sanother public Movim%s client.", '<a href="http://pod.movim.eu">', '</a>')}</p>
                     </li>
                 {else}
                     <li id="jabber">{$c->t('You can login using your favorite Jabber account')}
