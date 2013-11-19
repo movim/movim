@@ -362,3 +362,7 @@ legend {
 .icon.loading:before{ background-image: url(../img/icons/button/loop.png); }
 .icon.user:before   { background-image: url(../img/icons/button/user.png); }
 .icon.link:before   { background-image: url(../img/icons/button/link.png); }
+.icon.call:before   { background-image: url(../img/icons/button/call.png); }
+.icon.hang-up:before{ background-image: url(../img/icons/button/hang-up.png); }
+.icon.expand:before { background-image: url(../img/icons/button/expand.png); }
+.icon.contract:before{ background-image: url(../img/icons/button/contract.png); }
