@@ -1,4 +1,48 @@
+html {
+    height: 100%;
+}
+
 body {
+    background-color: #040404 !important;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0;
+    max-width: auto !important;
+}
+
+#visio {
+    width: 100%;
+    height: 100%;
+}
+
+#visio .menu {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-top: 0.5em;
+    width: 100%;
+}
+
+#visio #camera-stream {
+    /*display: block;
+    width: auto;
+    height: 100%;*/
+    width: 100%;
+}
+
+#visio #log {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#visio #log div {
+    margin-bottom: 1em;
+}
+/*body {
     margin: 0px;
     background-color: #333;
     font-family: sans-serif;
@@ -159,3 +203,4 @@ body {
 #chatpop #chatpoplist li span.chatbutton.cross {
     background-image: url(img/cross.png);
 }
+*/

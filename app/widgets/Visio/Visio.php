@@ -3,17 +3,12 @@
 /**
  * @package Widgets
  *
- * @file ChatExt.php
- * This file is part of MOVIM.
+ * @file Visio.php
+ * This file is part of Movim.
  * 
  * @brief A jabber chat widget.
  *
- * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
- *
- * @version 1.0
- * @date 20 October 2010
- *
- * Copyright (C)2010 MOVIM project
+ * @author Timothée Jaussoin
  * 
  * See COPYING for licensing information.
  */
@@ -26,5 +21,7 @@ class Visio extends WidgetBase
 	{
     	$this->addcss('visio.css');
     	$this->addjs('visio.js');
+    	$this->addjs('adapter.js');
+    	$this->addjs('webrtc.js');
     }
 }
