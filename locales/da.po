@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-19 22:38+0100\n"
+"POT-Creation-Date: 2013-11-19 22:58+0100\n"
 "PO-Revision-Date: 2013-06-13 11:47+0000\n"
 "Last-Translator: ejvindh <ejvindh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,478 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
 "X-Generator: Launchpad (build 16700)\n"
-
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:3
-#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:2
-#: ../app/widgets/Node/Node.php:128
-#: ../app/controllers/ProfileController.php:13
-#: ../app/controllers/HelpController.php:13
-#: ../app/controllers/ServerController.php:14
-#: ../app/controllers/NodeController.php:14
-#: ../app/controllers/MainController.php:13
-#: ../app/controllers/ConfController.php:13
-#: ../app/controllers/ExploreController.php:15
-#: ../app/controllers/FriendController.php:23
-#: ../app/controllers/NewsController.php:13
-#: ../app/controllers/MediaController.php:13
-#: ../app/controllers/NodeconfigController.php:14
-msgid "Explore"
-msgstr ""
-
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:14
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:16
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:17
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:1
-#: ../app/widgets/Node/Node.php:169
-#: ../app/controllers/ProfileController.php:16
-#: ../app/controllers/HelpController.php:16
-#: ../app/controllers/ServerController.php:17
-#: ../app/controllers/NodeController.php:17
-#: ../app/controllers/MainController.php:16
-#: ../app/controllers/ConfController.php:16
-#: ../app/controllers/ExploreController.php:18
-#: ../app/controllers/FriendController.php:26
-#: ../app/controllers/NewsController.php:16
-#: ../app/controllers/MediaController.php:16
-#: ../app/controllers/NodeconfigController.php:10
-#: ../app/controllers/NodeconfigController.php:17
-msgid "Configuration"
-msgstr "Konfiguration"
-
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:24
-msgid "Configure your group"
-msgstr ""
-
-#: ../cache/nodeconfig.99479b696fc3de0ea5f71cb1e69c2496.rtpl.php:30
-msgid "Delete this group"
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:6
-msgid "Your web browser is too old to use with Movim."
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:33
-msgid "My address"
-msgstr "Min adresse"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:37
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:71
-#: ../app/widgets/Admin/Admin.php:457
-msgid "Password"
-msgstr "Adgangskode"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:44
-#: ../app/widgets/Login/Login.php:186
-msgid "Come in!"
-msgstr "Kom Ind!"
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:53
-msgid "Create one !"
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:56
-msgid "No account yet ?"
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:65
-msgid ""
-"This server accept only connection with xmpp accounts from these servers :"
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:67
-#, php-format
-msgid ""
-"If you don't have such xmpp account, you can try %sanother public Movim%s "
-"client."
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:71
-msgid "You can login using your favorite Jabber account"
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:74
-msgid "or with our demonstration account"
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:101
-msgid "Population"
-msgstr ""
-
-#: ../cache/login.6f0d61fa018b30bc3f21157833547bf6.rtpl.php:103
-#: ../app/controllers/AdminController.php:18
-msgid "Administration"
-msgstr ""
-
-#: ../cache/_chat_contact.dbe7dc3350f78dc8a0fb2487a7fd0e5e.rtpl.php:21
-msgid "Composing..."
-msgstr ""
-
-#: ../cache/_chat_contact.dbe7dc3350f78dc8a0fb2487a7fd0e5e.rtpl.php:22
-msgid "Paused..."
-msgstr ""
-
-#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:7
-msgid "Topics"
-msgstr ""
-
-#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:15
-#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:25
-#: ../app/widgets/Notifs/Notifs.php:138
-msgid "Refresh"
-msgstr ""
-
-#: ../cache/servernodes.e5e295ee5769ffd11846ead275656834.rtpl.php:19
-#: ../app/widgets/Account/Account.php:472
-msgid "Server"
-msgstr ""
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:10
-#: ../app/widgets/Account/Account.php:489
-msgid "Search"
-msgstr ""
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:25
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:54
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:70
-msgid "Show/Hide"
-msgstr ""
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:28
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:29
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:19
-#: ../app/widgets/ServerNodes/ServerNodes.php:135
-#: ../app/widgets/Notifs/Notifs.php:277
-msgid "Add"
-msgstr ""
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:33
-msgid "Enter the Jabber ID of your contact."
-msgstr ""
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:34
-msgid "Press enter to validate."
-msgstr ""
-
-#: ../cache/roster.7a4e2b74ffc34020b85d6e6b696464c0.rtpl.php:41
-msgid "JID"
-msgstr ""
-
-#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:7
-msgid "Loading comments ..."
-msgstr ""
-
-#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:8
-msgid "Get the comments"
-msgstr ""
-
-#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:19
-msgid "Add a comment"
-msgstr ""
-
-#: ../cache/_comments_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:41
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:215
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:64
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:72
-#: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:349
-msgid "Submit"
-msgstr "Indsend"
-
-#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:1
-#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:19
-#: ../cache/blog.8db21a294557fd5b3ca5b801fc66f7c6.rtpl.php:1
-#: ../cache/blog.8db21a294557fd5b3ca5b801fc66f7c6.rtpl.php:9
-#: ../app/widgets/Wall/Wall.php:91 ../app/widgets/Wall/Wall.php:137
-#: ../app/widgets/Blog/Blog.php:38
-msgid "Feed"
-msgstr "Kilde"
-
-#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:13
-#: ../app/widgets/Wall/Wall.php:85 ../app/widgets/Node/Node.php:146
-#: ../app/controllers/BlogController.php:12
-msgid "Blog"
-msgstr ""
-
-#: ../cache/feed.9695e4405b0a7aa62663ae149a8db0a2.rtpl.php:25
-msgid "My Posts"
-msgstr ""
-
-#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
-msgid "Bookmarks"
-msgstr ""
-
-#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:17
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:4
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: ../cache/bookmark.bddb98300f459398a437f6c5f33ad670.rtpl.php:21
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:4
-msgid "Add a new URL"
-msgstr ""
-
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
-msgid "Chat Room ID"
-msgstr ""
-
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:11
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:11
-#: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:151
-#: ../app/widgets/ContactCard/ContactCard.php:51
-#: ../app/widgets/Account/Account.php:289
-msgid "Name"
-msgstr "Navn"
-
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:14
-#: ../app/widgets/Vcard/Vcard.php:156
-#: ../app/widgets/ContactCard/ContactCard.php:57
-msgid "Nickname"
-msgstr "Kaldenavn"
-
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:17
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: ../cache/_bookmark_muc_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:35
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:25
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:22
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:45
-#: ../app/widgets/ServerNodes/ServerNodes.php:140
-#: ../app/widgets/Node/Node.php:198 ../app/widgets/Node/Node.php:220
-msgid "Close"
-msgstr ""
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:6
-#, fuzzy
-msgid "Feed Configuration"
-msgstr "Konfiguration"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:12
-msgid "General"
-msgstr ""
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:14
-msgid "Language"
-msgstr "Sprog"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:43
-msgid "Enable the chatbox ?"
-msgstr ""
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:52
-msgid "Appearence"
-msgstr ""
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:54
-msgid "Background color"
-msgstr ""
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:62
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:93
-#: ../app/widgets/Vcard/Vcard.php:350
-msgid "Reset"
-msgstr "Nulstil"
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:84
-msgid "Font size"
-msgstr ""
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:138
-msgid "Pattern"
-msgstr ""
-
-#: ../cache/config.7e897c92febe3ec5d20645dd026777b8.rtpl.php:222
-msgid "This configuration is shared wherever you are connected !"
-msgstr ""
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:2
-msgid "Share with"
-msgstr ""
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:4
-msgid "your post will appear in your Movim public feed"
-msgstr ""
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:6
-msgid "Everyone"
-msgstr ""
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:9
-msgid "Your contacts"
-msgstr ""
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:16
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:17
-msgid "Delete this post"
-msgstr ""
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:24
-#: ../app/widgets/ContactAction/ContactAction.php:117
-msgid "Yes"
-msgstr ""
-
-#: ../cache/_post_toolbox.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:35
-#: ../app/widgets/ContactAction/ContactAction.php:130
-msgid "No"
-msgstr ""
-
-#: ../cache/news.65bf3cbc4ca337607275814dc4b9877b.rtpl.php:1
-#: ../app/controllers/ProfileController.php:12
-#: ../app/controllers/HelpController.php:12
-#: ../app/controllers/ServerController.php:13
-#: ../app/controllers/NodeController.php:13
-#: ../app/controllers/MainController.php:12
-#: ../app/controllers/ConfController.php:12
-#: ../app/controllers/ExploreController.php:14
-#: ../app/controllers/FriendController.php:22
-#: ../app/controllers/NewsController.php:12
-#: ../app/controllers/MediaController.php:12
-#: ../app/controllers/NodeconfigController.php:13
-msgid "News"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:2
-#: ../app/widgets/Admin/Admin.php:510
-msgid "Database Settings"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:8
-msgid "Modl wasn't able to connect to the database"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:18
-msgid "Movim is connected to the database"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:22
-msgid "The database need to be updated"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:32
-#: ../app/widgets/Wall/Wall.php:102
-msgid "Update"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:38
-msgid "Movim database is up to date"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:48
-msgid "Database Type"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:67
-#: ../app/widgets/Admin/Admin.php:451
-msgid "Username"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:75
-msgid "Host"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:79
-msgid "Port"
-msgstr ""
-
-#: ../cache/_admin_db.e200c74391fb8cedf8a984bec1d28d73.rtpl.php:86
-msgid "Database Name"
-msgstr ""
-
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:1
-#: ../app/controllers/DiscoverController.php:15
-#: ../app/controllers/AboutController.php:13
-#: ../app/controllers/LoginController.php:13
-msgid "About"
-msgstr ""
-
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:5
-msgid "Thanks"
-msgstr ""
-
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:76
-#: ../app/widgets/Account/Account.php:298
-msgid "Software"
-msgstr ""
-
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:86
-msgid "Resources"
-msgstr ""
-
-#: ../cache/about.4bab64fff33bfa4a90e1d9fdfb958ad3.rtpl.php:92
-msgid "API"
-msgstr ""
-
-#: ../cache/_bookmark_url_add.bddb98300f459398a437f6c5f33ad670.rtpl.php:8
-#: ../app/widgets/Account/Account.php:295
-msgid "URL"
-msgstr ""
-
-#: ../cache/explore.f58b95c945dc1d2a7f1a7a43a1fbc4b7.rtpl.php:2
-msgid "Discover my server"
-msgstr ""
-
-#: ../cache/explore.f58b95c945dc1d2a7f1a7a43a1fbc4b7.rtpl.php:3
-msgid "Discussion Servers"
-msgstr ""
-
-#: ../cache/explore.f58b95c945dc1d2a7f1a7a43a1fbc4b7.rtpl.php:9
-#: ../app/widgets/Discover/Discover.php:50
-msgid "Last registered"
-msgstr ""
-
-#: ../cache/syndication.bd4db858eec4bd2d41ea342ef4448967.rtpl.php:36
-msgid "No public feed for this contact"
-msgstr ""
-
-#: ../cache/syndication.bd4db858eec4bd2d41ea342ef4448967.rtpl.php:42
-msgid "No contact specified"
-msgstr ""
-
-#: ../cache/visio.a1d16e3132e43428b9796c43f20e0625.rtpl.php:16
-msgid "Connection"
-msgstr ""
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:1
-msgid "Data"
-msgstr ""
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:4
-msgid "Cache"
-msgstr ""
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:7
-msgid "Contact"
-msgstr ""
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:11
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:40
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:68
-msgid "Clear"
-msgstr ""
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:17
-#: ../app/widgets/Node/Node.php:136 ../app/widgets/Node/Node.php:268
-msgid "Posts"
-msgstr ""
-
-#: ../cache/configdata.f8b2d66d81d1dc996d1cbe6e7f9864b9.rtpl.php:45
-msgid "Messages"
-msgstr ""
-
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:57
-msgid "What's new ?"
-msgstr ""
-
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:78
-msgid "Gallery"
-msgstr ""
-
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:86
-msgid "Preview"
-msgstr ""
-
-#: ../cache/_submit_form.082ad6bed0896c022b0e87c78bdf1f3d.rtpl.php:95
-msgid "Geolocalisation"
-msgstr ""
 
 #: ../system/Conf.php:70
 #, php-format
@@ -1100,6 +628,10 @@ msgstr ""
 msgid "Your feed cannot be loaded."
 msgstr ""
 
+#: ../app/widgets/Discover/Discover.php:50
+msgid "Last registered"
+msgstr ""
+
 #: ../app/widgets/ServerNodes/ServerNodes.php:117
 msgid "Create a new group"
 msgstr ""
@@ -1110,6 +642,16 @@ msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:126
 msgid "My Little Pony - Fan Club"
+msgstr ""
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:135
+#: ../app/widgets/Notifs/Notifs.php:277
+msgid "Add"
+msgstr ""
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:140
+#: ../app/widgets/Node/Node.php:198 ../app/widgets/Node/Node.php:220
+msgid "Close"
 msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:171
@@ -1220,6 +762,10 @@ msgstr ""
 #, php-format
 msgid "Couldn't create directory '%s'."
 msgstr "Kunne ikke oprette bibliotek '%s'."
+
+#: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:349
+msgid "Submit"
+msgstr "Indsend"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:504
 msgid "Compatibility Check"
@@ -1379,8 +925,20 @@ msgstr ""
 msgid "Change the default credentials admin/password"
 msgstr ""
 
+#: ../app/widgets/Admin/Admin.php:451
+msgid "Username"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:457
+msgid "Password"
+msgstr "Adgangskode"
+
 #: ../app/widgets/Admin/Admin.php:461
 msgid "Retype password"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:510
+msgid "Database Settings"
 msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:76 ../app/widgets/Roster/Roster.php:217
@@ -1436,14 +994,34 @@ msgstr ""
 msgid "Get the members"
 msgstr ""
 
+#: ../app/widgets/Wall/Wall.php:85 ../app/widgets/Node/Node.php:146
+#: ../app/controllers/BlogController.php:12
+msgid "Blog"
+msgstr ""
+
+#: ../app/widgets/Wall/Wall.php:91 ../app/widgets/Wall/Wall.php:137
+#: ../app/widgets/Blog/Blog.php:38
+msgid "Feed"
+msgstr "Kilde"
+
 #: ../app/widgets/Wall/Wall.php:98 ../app/widgets/Notifs/Notifs.php:135
 msgid "Updating"
+msgstr ""
+
+#: ../app/widgets/Wall/Wall.php:102
+msgid "Update"
 msgstr ""
 
 #: ../app/widgets/Media/Media.php:85
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
 msgid "on"
 msgstr ""
+
+#: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:151
+#: ../app/widgets/ContactCard/ContactCard.php:51
+#: ../app/widgets/Account/Account.php:289
+msgid "Name"
+msgstr "Navn"
 
 #: ../app/widgets/Media/Media.php:106
 msgid "Resolution"
@@ -1592,6 +1170,14 @@ msgstr ""
 msgid "The server takes too much time to respond"
 msgstr ""
 
+#: ../app/widgets/Login/Login.php:186
+msgid "Come in!"
+msgstr "Kom Ind!"
+
+#: ../app/widgets/Notifs/Notifs.php:138
+msgid "Refresh"
+msgstr ""
+
 #: ../app/widgets/Notifs/Notifs.php:175
 msgid "Contact request pending"
 msgstr ""
@@ -1620,6 +1206,11 @@ msgstr ""
 #: ../app/widgets/ContactCard/ContactCard.php:47
 msgid "General Informations"
 msgstr "Generelle informationer"
+
+#: ../app/widgets/Vcard/Vcard.php:156
+#: ../app/widgets/ContactCard/ContactCard.php:57
+msgid "Nickname"
+msgstr "Kaldenavn"
 
 #: ../app/widgets/Vcard/Vcard.php:161
 #: ../app/widgets/ContactCard/ContactCard.php:85
@@ -1714,6 +1305,10 @@ msgstr ""
 #: ../app/widgets/Vcard/Vcard.php:339
 msgid "Submitting"
 msgstr ""
+
+#: ../app/widgets/Vcard/Vcard.php:350
+msgid "Reset"
+msgstr "Nulstil"
 
 #: ../app/widgets/Vcard/Vcard.php:372
 msgid "Edit my Profile"
@@ -1850,6 +1445,14 @@ msgstr "Samtale"
 msgid "Remove this contact"
 msgstr "Fjern denne kontakt"
 
+#: ../app/widgets/ContactAction/ContactAction.php:117
+msgid "Yes"
+msgstr ""
+
+#: ../app/widgets/ContactAction/ContactAction.php:130
+msgid "No"
+msgstr ""
+
 #: ../app/widgets/ContactAction/ContactAction.php:146
 msgid "Invite this user"
 msgstr ""
@@ -1974,6 +1577,14 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: ../app/widgets/Account/Account.php:295
+msgid "URL"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:298
+msgid "Software"
+msgstr ""
+
 #: ../app/widgets/Account/Account.php:394
 msgid "Wrong ID"
 msgstr ""
@@ -2033,12 +1644,20 @@ msgstr ""
 msgid "Or you can choose a server from this list."
 msgstr ""
 
+#: ../app/widgets/Account/Account.php:472
+msgid "Server"
+msgstr ""
+
 #: ../app/widgets/Account/Account.php:475
 msgid "Enter the server domain (ex: movim.eu)"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:487
 msgid "Searching..."
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:489
+msgid "Search"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:46
@@ -2119,9 +1738,44 @@ msgstr ""
 msgid "Subscribe"
 msgstr ""
 
+#: ../app/widgets/Node/Node.php:128
+#: ../app/controllers/ProfileController.php:13
+#: ../app/controllers/HelpController.php:13
+#: ../app/controllers/ServerController.php:14
+#: ../app/controllers/NodeController.php:14
+#: ../app/controllers/MainController.php:13
+#: ../app/controllers/ConfController.php:13
+#: ../app/controllers/ExploreController.php:15
+#: ../app/controllers/FriendController.php:23
+#: ../app/controllers/NewsController.php:13
+#: ../app/controllers/MediaController.php:13
+#: ../app/controllers/NodeconfigController.php:14
+msgid "Explore"
+msgstr ""
+
+#: ../app/widgets/Node/Node.php:136 ../app/widgets/Node/Node.php:268
+msgid "Posts"
+msgstr ""
+
 #: ../app/widgets/Node/Node.php:164
 msgid "Get Subscription"
 msgstr ""
+
+#: ../app/widgets/Node/Node.php:169
+#: ../app/controllers/ProfileController.php:16
+#: ../app/controllers/HelpController.php:16
+#: ../app/controllers/ServerController.php:17
+#: ../app/controllers/NodeController.php:17
+#: ../app/controllers/MainController.php:16
+#: ../app/controllers/ConfController.php:16
+#: ../app/controllers/ExploreController.php:18
+#: ../app/controllers/FriendController.php:26
+#: ../app/controllers/NewsController.php:16
+#: ../app/controllers/MediaController.php:16
+#: ../app/controllers/NodeconfigController.php:10
+#: ../app/controllers/NodeconfigController.php:17
+msgid "Configuration"
+msgstr "Konfiguration"
 
 #: ../app/widgets/Node/Node.php:177
 msgid "Make your membership to this group public to your friends"
@@ -2165,6 +1819,20 @@ msgstr ""
 msgid "Home"
 msgstr "Start"
 
+#: ../app/controllers/ProfileController.php:12
+#: ../app/controllers/HelpController.php:12
+#: ../app/controllers/ServerController.php:13
+#: ../app/controllers/NodeController.php:13
+#: ../app/controllers/MainController.php:12
+#: ../app/controllers/ConfController.php:12
+#: ../app/controllers/ExploreController.php:14
+#: ../app/controllers/FriendController.php:22
+#: ../app/controllers/NewsController.php:12
+#: ../app/controllers/MediaController.php:12
+#: ../app/controllers/NodeconfigController.php:13
+msgid "News"
+msgstr ""
+
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountController.php:9
 #, php-format
@@ -2180,6 +1848,12 @@ msgstr ""
 #: ../app/controllers/AboutController.php:12
 #: ../app/controllers/LoginController.php:12
 msgid "Discover"
+msgstr ""
+
+#: ../app/controllers/DiscoverController.php:15
+#: ../app/controllers/AboutController.php:13
+#: ../app/controllers/LoginController.php:13
+msgid "About"
 msgstr ""
 
 #: ../app/controllers/HelpController.php:9
@@ -2226,6 +1900,10 @@ msgstr ""
 msgid "%s - Administration Panel"
 msgstr ""
 
+#: ../app/controllers/AdminController.php:18
+msgid "Administration"
+msgstr ""
+
 #: ../upload.php:32
 msgid "Not a picture"
 msgstr "Intet billede"
@@ -2233,6 +1911,16 @@ msgstr "Intet billede"
 #: ../upload.php:35
 msgid "Folder size limit exceeded"
 msgstr ""
+
+#~ msgid "My address"
+#~ msgstr "Min adresse"
+
+#, fuzzy
+#~ msgid "Feed Configuration"
+#~ msgstr "Konfiguration"
+
+#~ msgid "Language"
+#~ msgstr "Sprog"
 
 #~ msgid "Cannot load element value '%s'"
 #~ msgstr "Kan ikke indlæse elementværdi '%s'"
