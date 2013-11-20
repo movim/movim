@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-19 22:58+0100\n"
-"PO-Revision-Date: 2013-07-10 17:24+0000\n"
+"PO-Revision-Date: 2013-11-20 04:43+0000\n"
 "Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
 "Language-Team: Rahut <genghiskhan@gmx.ca>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+"Language: \n"
 "X-Poedit-Language: Hebrew\n"
 
 #: ../system/Conf.php:70
@@ -27,30 +27,30 @@ msgstr "לא ניתן לטעון קובץ '%s'"
 #: ../system/widget/WidgetWrapper.php:131
 #, php-format
 msgid "Requested widget '%s' doesn't exist."
-msgstr ""
+msgstr "וידג'ט מבוקש '%s' לא קיים."
 
 #: ../system/Logs/Logger.php:171
 msgid "Development environment."
-msgstr ""
+msgstr "סביבת פיתוח."
 
 #: ../system/Logs/Logger.php:171
 msgid "Change it in the admin panel."
-msgstr ""
+msgstr "שנה זאת בתוך לוח מנהל."
 
 #: ../system/Route.php:80
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
+msgstr "שגיאת ניתוב, אנא הגדר את כל הפרמטרים עבור העמוד %s"
 
 #: ../system/Route.php:108
 #, php-format
 msgid "Route not set for the page %s"
-msgstr ""
+msgstr "נתיב לא מוגדר עבור העמוד %s"
 
 #: ../system/controllers/FrontController.php:35
 #, php-format
 msgid "Requested controller '%s' doesn't exist."
-msgstr ""
+msgstr "בקר מבוקש '%s' לא קיים."
 
 #: ../system/controllers/FrontController.php:67
 msgid "Could not call the load method on the current controller"
@@ -592,7 +592,7 @@ msgstr "הממסר לא קיים"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:45
 msgid "Your server doesn't support this feature"
-msgstr "שרתך לא תומך בתכונה זו"
+msgstr "השרת שלך לא תומך בתכונה זו"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:50
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:60
@@ -617,7 +617,7 @@ msgstr "השרת לא מסוגל לקבל את פעולה זו"
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:85
 msgid "Your server doesn't support location publication"
-msgstr "שרתך לא תומך בפרסום מיקום"
+msgstr "השרת שלך לא תומך בפרסום מיקום"
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:90
 msgid "Your are not authorized to publish your location"
@@ -626,7 +626,7 @@ msgstr "אינך מורשה לפרסם את מיקומך"
 #: ../app/widgets/News/News.php:30 ../app/widgets/Wall/Wall.php:111
 #: ../app/widgets/Feed/Feed.php:139
 msgid "Get older posts"
-msgstr "השגת רשומות נושנות"
+msgstr "השג רשומות נושנות"
 
 #: ../app/widgets/News/News.php:61 ../app/widgets/Feed/Feed.php:172
 #: ../app/widgets/Node/Node.php:54
@@ -635,7 +635,7 @@ msgstr "ערוצך לא יכול להיטען."
 
 #: ../app/widgets/Discover/Discover.php:50
 msgid "Last registered"
-msgstr "נרשם לאחרונה"
+msgstr "נרשמו לאחרונה"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:117
 msgid "Create a new group"
@@ -660,9 +660,8 @@ msgid "Close"
 msgstr "סגור"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:171
-#, fuzzy
 msgid "Subscribed"
-msgstr "הירשם"
+msgstr "מנוי"
 
 #: ../app/widgets/Help/Help.php:29 ../app/widgets/Help/Help.php:42
 #: ../app/controllers/ProfileController.php:17
@@ -701,16 +700,16 @@ msgid ""
 "Thanks to these five little banners, you can quickly identitfy the level of "
 "confdentiality applied to the information you provide."
 msgstr ""
-"הודות לחמשת כרזות אלו, ביכולתך לברר במהירות את רמת החיסיון שחלה על המידע "
+"הודות לחמשת כרזות אלו, באפשרותך לברר במהירות את רמת החיסיון שחלה על המידע "
 "אותו בחרת לספק."
 
 #: ../app/widgets/Help/Help.php:49
 msgid "White, only you can see the information"
-msgstr "לבן, רק לך היכולת לראות את המידע"
+msgstr "לבן, רק לך האפשרות לראות את המידע"
 
 #: ../app/widgets/Help/Help.php:50
 msgid "Green, you have chosen some contacts who can see your information"
-msgstr "ירוק, בחרת אנשי קשר מסוימים שיכולים לראות את המידע שלך"
+msgstr "ירוק, בחרת אנשי קשר מסוימים אשר יכולים לראות את המידע שלך"
 
 # רשימת אישי־הקשר
 #: ../app/widgets/Help/Help.php:51
@@ -742,8 +741,8 @@ msgid ""
 "the one you want is on its way."
 msgstr ""
 "אף על פי שהפלטפורמה Movim מתפתחת מהר, המון (המון) תכונות חסרות. עליך להיעזר "
-"בסבלנות ;). ביכולתך להגניב הצצה %s במפות הדרכים של הגרסא הבאה %s כדי לדעת אם "
-"התכונה שרצונך בה כבר בדרך."
+"בסבלנות ;). באפשרותך להגניב הצצה %s במפות הדרכים של הגרסא הבאה %s כדי לדעת "
+"אם התכונה שרצונך בה כבר בדרך."
 
 #: ../app/widgets/Help/Help.php:61
 #, php-format
@@ -752,7 +751,7 @@ msgid ""
 "welcome (see %s Can I participate %s)"
 msgstr ""
 "נא לא לשכוח שהפלטפורמה Movim הינה פרויקט קוד פתוח, סיוע תמיד יתקבל באהדה "
-"(ראו %s האם ביכולתי להשתתף %s)"
+"(ראו %s האם באפשרותי להשתתף %s)"
 
 #: ../app/widgets/Help/Help.php:64
 msgid "I can't find the answer to my question here"
@@ -772,9 +771,8 @@ msgstr ""
 "השיחה הרשמי %s או באמצעות רשימת הדיוור שלנו (%s ראו את העמוד המוקצה לכך %s)."
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "שיחה"
+msgstr "חדרי שיחה"
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -789,7 +787,7 @@ msgstr "לא ניתן ליצור מדור '%s'."
 
 #: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:349
 msgid "Submit"
-msgstr "שליחה"
+msgstr "שלח"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:504
 msgid "Compatibility Check"
@@ -800,8 +798,7 @@ msgid ""
 "Movim requires certain external components. Please install them before you "
 "can succeed:"
 msgstr ""
-"Movim מצריכה רכיבים חיצוניים מסוימים. אנא התקן אותם לפני שתהיה באפשרותך "
-"להצליח:"
+"Movim מצריכה רכיבים חיצוניים מסוימים. אנא התקן אותם לפני שתוכל להמשיך:"
 
 #: ../app/widgets/Admin/Admin.php:189
 #, php-format
@@ -846,7 +843,7 @@ msgstr "שפה משתמטת"
 
 #: ../app/widgets/Admin/Admin.php:273
 msgid "Environment"
-msgstr ""
+msgstr "סביבה"
 
 #: ../app/widgets/Admin/Admin.php:299
 msgid "User folder size limit (in bytes)"
@@ -886,10 +883,11 @@ msgstr "תצורת Bosh"
 
 #: ../app/widgets/Admin/Admin.php:368
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
-msgstr ""
+msgstr "הזן כאן BOSH-URL בצורה זו: http(s)://domain:port/path."
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 "במידה ותזין שרת BOSH פתוח, תעמוד לרשותך היכולת להתחבר אל שרתי XMPP רבים."
 
@@ -897,12 +895,12 @@ msgstr ""
 msgid ""
 "If it is closed, you have to specify the corresponding Server on the next "
 "page."
-msgstr ""
+msgstr "במידה וזה נסגר, יהיה עליך לציין את השרת התואם בעמוד הבא."
 
 #: ../app/widgets/Admin/Admin.php:371
-#, fuzzy, php-format
+#, php-format
 msgid "If you are unsure about this config option visit the %swiki%s"
-msgstr "היה ואינך בטוח בנוגע לאפשרות תצורה זו בקר את הויקי"
+msgstr "במידה ואינך סמוך באשר לאפשרות תצורה זו ראה %sויקי%s"
 
 #: ../app/widgets/Admin/Admin.php:377
 msgid "Your Bosh URL is not reachable"
@@ -951,9 +949,8 @@ msgid "Administration Credential"
 msgstr "נתוני התחברות מנהל"
 
 #: ../app/widgets/Admin/Admin.php:445
-#, fuzzy
 msgid "Change the default credentials admin/password"
-msgstr "שנה שם משתמש/סיסמה משתמטים"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:451
 msgid "Username"
@@ -981,21 +978,21 @@ msgid ""
 "No contacts ? You can add one using the %s button bellow or going to the "
 "%sExplore page%s"
 msgstr ""
+"אין אנשי קשר ? באפשרותך להוסיף איש קשר באמצעות הלחצן %s מטה או ללכת אל "
+"%sעמוד סייר%s"
 
 #: ../app/widgets/Roster/Roster.php:303
-#, fuzzy
 msgid "Show disconnected contacts"
-msgstr "Modl לא היה מסוגל להתחבר אל מסד הנתונים"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:305
-#, fuzzy
 msgid "Hide disconnected contacts"
-msgstr "Modl לא היה מסוגל להתחבר אל מסד הנתונים"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:309
-#, fuzzy, php-format
+#, php-format
 msgid "Hide group %s"
-msgstr "קבוצות פומביות"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:311
 #, php-format
@@ -1137,13 +1134,13 @@ msgid "%sGmail accounts are also compatible%s but are not fully supported"
 msgstr "%sחשבונות Gmail מתאימים גם כן%s אך אינם נתמכים באופן מלא"
 
 #: ../app/widgets/Login/Login.php:58
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
 "and your password"
 msgstr ""
-"באפשרותך להיכנס בעזרת Facebook (צ׳אט בלבד) באמצעות %s your.id@chat.facebook."
-"com %s וסיסמתך"
+"באפשרותך להתחבר עם Facebook (צ׳אט בלבד) באמצעות "
+"%syour.id@chat.facebook.com%s וסיסמה"
 
 #: ../app/widgets/Login/Login.php:88
 msgid "Wrong username"
@@ -1205,7 +1202,7 @@ msgstr "השרת של XMPP שלך אינו מורשה"
 
 #: ../app/widgets/Login/Login.php:171
 msgid "The server takes too much time to respond"
-msgstr ""
+msgstr "לשרת לוקח יותר מדי זמן להגיב"
 
 # היכנסו פנימה!
 # היכנס/י
@@ -1237,11 +1234,13 @@ msgid ""
 "                contacts, create your virtual card by clicking the next "
 "button."
 msgstr ""
+"זוהי הפעם הראשונה שלך בתוך Movim! כדי למלות \n"
+"                מידע אודותייך ולהציגו לאנשי הקשר שלך, צור את\n"
+"                הכרטיס הוירטואלי שלך על ידי לחיצה על כפתור זה."
 
-# צור עבורי vCard
 #: ../app/widgets/Vcard/Vcard.php:122 ../app/widgets/Profile/Profile.php:133
 msgid "Create my vCard"
-msgstr "יצירת vCard"
+msgstr "צור vCard"
 
 # BUG: Information(s)
 #: ../app/widgets/Vcard/Vcard.php:148
@@ -1352,7 +1351,7 @@ msgstr "שולח כעת"
 
 #: ../app/widgets/Vcard/Vcard.php:350
 msgid "Reset"
-msgstr "איפוס"
+msgstr "אפס"
 
 # עריכת הדיוקן שלי
 # עריכת דיוקני
@@ -1386,7 +1385,7 @@ msgstr "ארעה שגיאה : "
 
 #: ../app/widgets/Bookmark/Bookmark.php:123
 msgid "Bad Chatroom ID"
-msgstr ""
+msgstr "מזהה חדר שיחה רע"
 
 #: ../app/widgets/Bookmark/Bookmark.php:127
 #: ../app/widgets/Bookmark/Bookmark.php:180
@@ -1406,9 +1405,8 @@ msgid "Links"
 msgstr "קישורים"
 
 #: ../app/widgets/ContactManage/ContactManage.php:30
-#, fuzzy
 msgid "Contact updated"
-msgstr "מצב עודכן"
+msgstr "איש קשר עודכן"
 
 #: ../app/widgets/ContactManage/ContactManage.php:55
 msgid "Manage"
@@ -1432,10 +1430,9 @@ msgstr "מיקום"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:218
 msgid "by"
-msgstr ""
+msgstr "על ידי"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:222
-#, fuzzy
 msgid "email"
 msgstr "דוא״ל"
 
@@ -1478,7 +1475,7 @@ msgstr "השג את הקבוצות הפומביות שלך"
 
 #: ../app/widgets/Connection/Connection.php:37
 msgid "Please wait "
-msgstr ""
+msgstr "אנא המתן "
 
 #: ../app/widgets/ContactAction/ContactAction.php:65
 #: ../app/widgets/ContactAction/ContactAction.php:134
@@ -1506,9 +1503,8 @@ msgid "Invite this user"
 msgstr "הזמנת משתמש זה"
 
 #: ../app/widgets/Presence/Presence.php:120
-#, fuzzy
 msgid "Disconnect"
-msgstr "התחברות"
+msgstr "התנתק"
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:154
@@ -1574,7 +1570,8 @@ msgid ""
 msgstr "ההעלאה בוטלה על ידי המשתמש או שהדפדפן השמיט את החיבור"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr "הקובץ שלך גדול מאוד. אנחנו לא יכולים לקבלו. אנא בחר קובץ קטן יותר"
 
 #: ../app/widgets/Location/Location.php:54
@@ -1612,7 +1609,7 @@ msgstr "%s רוצה את צומת ליבך"
 
 #: ../app/widgets/Chat/Chat.php:376
 msgid "Encrypted message"
-msgstr ""
+msgstr "הודעה מוצפנת"
 
 #: ../app/widgets/Account/Account.php:92
 msgid "Step 2 - Fill in your informations"
@@ -1648,7 +1645,7 @@ msgstr "שם שגוי"
 
 #: ../app/widgets/Account/Account.php:412
 msgid "Request not acceptable"
-msgstr ""
+msgstr "בקשה לא קבילה"
 
 # שם משתמש תפוס
 #: ../app/widgets/Account/Account.php:418
@@ -1681,20 +1678,20 @@ msgstr ""
 
 #: ../app/widgets/Account/Account.php:452
 msgid "Keep in mind that this server will handle all your personnal data."
-msgstr "זכור ששרת זה יטפל בכל המידע האישי שלך."
+msgstr "זכור כי שרת זה יטפל בכל המידע האישי שלך."
 
 #: ../app/widgets/Account/Account.php:457
 msgid "Step 1 - Search the server"
-msgstr "צעד 1 - חיפוש השרת"
+msgstr "צעד 1 - חיפוש שרת"
 
 #: ../app/widgets/Account/Account.php:460
 #, php-format
 msgid "You can%s enter your server domain name%s. "
-msgstr "באפשרותך%s להזין את שם המתחם של שרתך%s. "
+msgstr "באפשרותך%s להזין את שם המתחם של השרת שלך%s. "
 
 #: ../app/widgets/Account/Account.php:461
 msgid "Or you can choose a server from this list."
-msgstr "או שביכולתך לבחור שרת מרשימה זו"
+msgstr "או באפשרותך לבחור שרת מתוך רשימה זו."
 
 #: ../app/widgets/Account/Account.php:472
 msgid "Server"
@@ -1757,7 +1754,7 @@ msgstr "מידע לקוח"
 msgid ""
 "Your server doesn't support post publication, you can only read contact's "
 "feeds"
-msgstr "שרתך לא תומך בפרסום רשומות, ביכולתך לקרוא ערוצי איש קשר בלבד"
+msgstr "השרת שלך לא תומך בפרסום רשומות, באפשרותך לקרוא ערוצי איש קשר בלבד"
 
 #: ../app/widgets/Feed/Feed.php:68
 msgid "Comment publication error"
@@ -1899,9 +1896,8 @@ msgstr ""
 #: ../app/controllers/DiscoverController.php:14
 #: ../app/controllers/AboutController.php:12
 #: ../app/controllers/LoginController.php:12
-#, fuzzy
 msgid "Discover"
-msgstr "שרתי דיון"
+msgstr ""
 
 #: ../app/controllers/DiscoverController.php:15
 #: ../app/controllers/AboutController.php:13
@@ -1944,9 +1940,9 @@ msgid "%s - Explore"
 msgstr "%s - סייר"
 
 #: ../app/controllers/NewsController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - News"
-msgstr "חדשות"
+msgstr "%s - חדשות"
 
 #: ../app/controllers/AdminController.php:15
 #, php-format
@@ -1965,17 +1961,252 @@ msgstr "לא תמונה"
 msgid "Folder size limit exceeded"
 msgstr "מגבלת גודל תיקייה מוצתה"
 
+#~ msgid "Actual version : "
+#~ msgstr "גרסה ממשית : "
+
+#~ msgid "Update your PHP version or contact your server administrator"
+#~ msgstr "נא לעדכן גרסת PHP או ליצור קשר עם מנהל שרתך"
+
+#, php-format
+#~ msgid "Install %s and %s packages"
+#~ msgstr "התקנת %s וגם חבילות %s"
+
+#, php-format
+#~ msgid "Install the %s package"
+#~ msgstr "התקנת החבילה %s"
+
+#~ msgid "Movim's folder must be writable."
+#~ msgstr "על התיקייה של Movim להיות ברת כתיבה."
+
+# permissions
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr "החלת הרשאות קריאה וכתיבה על תיקיית השורש של Movim"
+
+#~ msgid "or"
+#~ msgstr "או"
+
+#, php-format
+#~ msgid "Bosh connection failed with error '%s'"
+#~ msgstr "חיבור Bosh נכשל עם שגיאה '%s'"
+
+#, php-format
+#~ msgid "XMPP connection through Bosh failed with error '%s'"
+#~ msgstr "חיבור XMPP דרך Bosh נכשל עם שגיאה '%s'"
+
+#, php-format
+#~ msgid "Couldn't create configuration file '%s'."
+#~ msgstr "לא ניתן ליצור קובץ תצורה '%s'."
+
+#, php-format
+#~ msgid "Database connection failed with error '%s'"
+#~ msgstr "חיבור מסד נתונים נכשל עם שגיאה '%s'"
+
+#~ msgid "Thank you for downloading Movim!"
+#~ msgstr "תודה לך על שהורדת את Movim!"
+
+# מתקין Movim
+# המתקין של
+#~ msgid "Movim Installer"
+#~ msgstr "אשף התקנת Movim"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "בדיקת תאימות"
+
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr "הדרישות הבאות לא סופקו. נא לוודא שכולן מסופקות בכדי להתקין את Movim."
+
+#~ msgid ""
+#~ "Some errors were detected. Please correct them for the installation to "
+#~ "proceed."
+#~ msgstr "אותרו שגיאות מסוימות. נא לתקנן למען המשך ההתקנה."
+
+#~ msgid "XMPP Connection Preferences"
+#~ msgstr "העדפות חיבור XMPP"
+
+#~ msgid "BOSH Connection Preferences"
+#~ msgstr "העדפות חיבור BOSH"
+
+#~ msgid "Proxy Preferences"
+#~ msgstr "העדפות Proxy"
+
+#~ msgid "Success !"
+#~ msgstr "הצלחה !"
+
+#~ msgid "Valid Bosh"
+#~ msgstr "‫Bosh תקף"
+
+#~ msgid "Database Detected"
+#~ msgstr "מסד נתונים אותר"
+
+#~ msgid "User not logged in."
+#~ msgstr "משתמש לא מחובר."
+
+#~ msgid "JID not provided."
+#~ msgstr "לא סופקה כתובת JID."
+
+#, php-format
+#~ msgid "jid '%s' is incorrect"
+#~ msgstr "כתובת jid ‫'%s' שגויה"
+
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "‏‏%s - יצירת חשבון"
+
+#, php-format
+#~ msgid "%s - Add An Account"
+#~ msgstr "‏‏%s - הוספת חשבון"
+
+#~ msgid "Make sure your password is safe :"
+#~ msgstr "נא לוודא שסיסמתך מוגנת :"
+
+#~ msgid "A capital letter, a digit and a special character are recommended"
+#~ msgstr "אות גדולה, ספר וגם תו מיוחד הינם מומלצים"
+
+#~ msgid "8 characters"
+#~ msgstr "8 תווים"
+
+#~ msgid "Example :"
+#~ msgstr "המחשה :"
+
+#~ msgid "Same here !"
+#~ msgstr "אותו הדבר כאן !"
+
+#~ msgid "Retype"
+#~ msgstr "הקלדה חוזרת"
+
+#~ msgid "Create"
+#~ msgstr "יצירה"
+
+# BUG: Information(s)
+#~ msgid "Add your login informations"
+#~ msgstr "נא להוסיף את נתוני התחברותך"
+
+#~ msgid "Language"
+#~ msgstr "שפה"
+
+#~ msgid "Address"
+#~ msgstr "כתובת"
+
+#~ msgid "Client Name"
+#~ msgstr "שם לקוח"
+
+#~ msgid "Client Type"
+#~ msgstr "סוג לקוח"
+
+#~ msgid "All"
+#~ msgstr "הכל"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "דפדפן הרשת שלך הינו ישן מידי בכדי לעשות שימוש עם Movim."
+
+#, php-format
+#~ msgid "This server hosts %s accounts"
+#~ msgstr "שרת זה מארח %s חשבונות"
+
+#~ msgid "Decline"
+#~ msgstr "דחיה"
+
+#~ msgid "Cancel"
+#~ msgstr "ביטול"
+
+#~ msgid "Show All"
+#~ msgstr "הצגה מוחלטת"
+
+# לכל הפחות
+#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+#~ msgstr "גרסת PHP לא תואמת. Movim מצריכה PHP 5.3 לפחות."
+
+#, php-format
+#~ msgid "Movim requires the %s extension."
+#~ msgstr "‫Movim מצריכה את ההרחבות %s."
+
+# בטרם ברצונך ליהנות
+# רשת העבודה החברתית
+#~ msgid ""
+#~ "Before you enjoy your social network, a few adjustements are required."
+#~ msgstr "לפני שיהיה ביכולתך ליהנות מן הרשת החברתית שלך, נדרשות התאמות מספר."
+
+# בכוח potentially
+# אפשרי שהשימוש בה עלול לסכן
+# handle (manage, touch)?
+#~ msgid ""
+#~ "Keep in mind that Movim is still under development and will handle many "
+#~ "personal details. Its use can potentially endanger your data. Always pay "
+#~ "attention to information that you submit."
+#~ msgstr ""
+#~ "לצומת לבך, Movim עדיין מצויה תחת פיתוח ותטפל בפרטים אישיים רבים. השימוש בה "
+#~ "עלול, באופן פוטנציאלי, לסכן את המידע שלך. יש להסב תמיד תשומת לב ולהבחין "
+#~ "במידע שנשלח על ידך."
+
+#~ msgid "Database Movim schema installed"
+#~ msgstr "סכימת מסד נתונים Movim מותקנת"
+
+# אלמנט
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "לא ניתן לטעון ערך יסוד '%s'"
+
+#, php-format
+#~ msgid "Cannot open log file '%s'"
+#~ msgstr "לא ניתן לפתוח קובץ רשומת יומן '%s'"
+
+#~ msgid ""
+#~ "Firstly fill in this blank with a brand new account ID, this address will "
+#~ "follow you on all the Movim network !"
+#~ msgstr ""
+#~ "ראשית נא למלא את חלל זה עם ID חדשה לגמרי, כתובת זו תעקוב אחריך לכל אורך רשת "
+#~ "Movim !"
+
+#~ msgid "Only alphanumerics elements are authorized"
+#~ msgstr "יסודות אלפא-נומריות בלבד מותרות"
+
+#~ msgid "Composing..."
+#~ msgstr "מלחין כעת..."
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "מטעין כעת את ערוצך ..."
+
+#, php-format
+#~ msgid "Contacts (%s)"
+#~ msgstr "אישי־קשר (%s)"
+
+#~ msgid "Follow"
+#~ msgstr "עקוב"
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "ערוץ איש־קשר נטען כעת ..."
+
+# you can replace the word instance with "server", "pod"
+#, php-format
+#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
+#~ msgstr "כעת ביכולתך לגשת אל שרת ה־Movim המבריק שלך %sזנק/י פנימה !%s"
+
+#~ msgid "Pseudo"
+#~ msgstr "שם עט"
+
+#~ msgid "Link my current account"
+#~ msgstr "קישור אל חשבוני הנוכחי"
+
+#, php-format
+#~ msgid "Please remove the %s folder in order to complete the installation"
+#~ msgstr "נא להסיר את התיקייה ‭%s‬ כדי לסיים את ההתקנה"
+
+#~ msgid "Send request"
+#~ msgstr "שלח בקשה"
+
+#~ msgid "My Posts"
+#~ msgstr "הפרסומים שלי"
+
+#~ msgid "My address"
+#~ msgstr "כתובת"
+
 #~ msgid "Configure your group"
 #~ msgstr "הגדר את קבוצתך"
 
 #~ msgid "Delete this group"
 #~ msgstr "מחק את קבוצה זו"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "דפדפן הרשת שלך הינו ישן מידי בכדי לעשות שימוש עם Movim."
-
-#~ msgid "My address"
-#~ msgstr "כתובתי"
 
 #~ msgid "Create one !"
 #~ msgstr "צור אחד !"
@@ -1991,9 +2222,6 @@ msgstr "מגבלת גודל תיקייה מוצתה"
 
 #~ msgid "Population"
 #~ msgstr "אוכלוסייה"
-
-#~ msgid "Composing..."
-#~ msgstr "מלחין כעת..."
 
 #~ msgid "Paused..."
 #~ msgstr "מושהה..."
@@ -2022,29 +2250,14 @@ msgstr "מגבלת גודל תיקייה מוצתה"
 #~ msgid "Add a comment"
 #~ msgstr "הוסף תגובה"
 
-# הרשומות שלי
-#~ msgid "My Posts"
-#~ msgstr "רשומותיי"
-
 #~ msgid "Bookmarks"
 #~ msgstr "סימניות"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "הוסף URL חדש"
 
 #~ msgid "Add a new URL"
 #~ msgstr "הוסף URL חדש"
 
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "תצורה"
-
 #~ msgid "General"
 #~ msgstr "כללי"
-
-#~ msgid "Language"
-#~ msgstr "שפה"
 
 #~ msgid "Appearence"
 #~ msgstr "מראה"
@@ -2079,10 +2292,6 @@ msgstr "מגבלת גודל תיקייה מוצתה"
 #~ msgid "Modl wasn't able to connect to the database"
 #~ msgstr "Modl לא היה מסוגל להתחבר אל מסד הנתונים"
 
-#, fuzzy
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Modl לא היה מסוגל להתחבר אל מסד הנתונים"
-
 #~ msgid "Database Type"
 #~ msgstr "טיפוס מסד נתונים"
 
@@ -2100,10 +2309,6 @@ msgstr "מגבלת גודל תיקייה מוצתה"
 
 #~ msgid "Resources"
 #~ msgstr "מקורות"
-
-#, fuzzy
-#~ msgid "Discover my server"
-#~ msgstr "שרתי דיון"
 
 #~ msgid "Discussion Servers"
 #~ msgstr "שרתי דיון"
@@ -2123,10 +2328,6 @@ msgstr "מגבלת גודל תיקייה מוצתה"
 #~ msgid "Cache"
 #~ msgstr "מטמון"
 
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "אנשי קשר"
-
 #~ msgid "Clear"
 #~ msgstr "טהר"
 
@@ -2144,10 +2345,6 @@ msgstr "מגבלת גודל תיקייה מוצתה"
 
 #~ msgid "%s - Post View"
 #~ msgstr "%s - תצוגת פרסום"
-
-# אלמנט
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "לא ניתן לטעון ערך יסוד '%s'"
 
 #~ msgid "Search a contact"
 #~ msgstr "חיפוש איש קשר"
@@ -2169,210 +2366,3 @@ msgstr "מגבלת גודל תיקייה מוצתה"
 
 #~ msgid "Loading your session..."
 #~ msgstr "טוען כעת את הסשן שלך..."
-
-#~ msgid "Actual version : "
-#~ msgstr "גרסה ממשית : "
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "נא לעדכן גרסת PHP או ליצור קשר עם מנהל שרתך"
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "התקנת %s וגם חבילות %s"
-
-#~ msgid "Install the %s package"
-#~ msgstr "התקנת החבילה %s"
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "על התיקייה של Movim להיות ברת כתיבה."
-
-# permissions
-#~ msgid "Enable read and write rights on Movim's root folder"
-#~ msgstr "החלת הרשאות קריאה וכתיבה על תיקיית השורש של Movim"
-
-#~ msgid "or"
-#~ msgstr "או"
-
-#~ msgid "Bosh connection failed with error '%s'"
-#~ msgstr "חיבור Bosh נכשל עם שגיאה '%s'"
-
-#~ msgid "XMPP connection through Bosh failed with error '%s'"
-#~ msgstr "חיבור XMPP דרך Bosh נכשל עם שגיאה '%s'"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "לא ניתן ליצור קובץ תצורה '%s'."
-
-#~ msgid "Database connection failed with error '%s'"
-#~ msgstr "חיבור מסד נתונים נכשל עם שגיאה '%s'"
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "תודה לך על שהורדת את Movim!"
-
-# מתקין Movim
-# המתקין של
-#~ msgid "Movim Installer"
-#~ msgstr "אשף התקנת Movim"
-
-#~ msgid "Compatibility Test"
-#~ msgstr "בדיקת תאימות"
-
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
-#~ msgstr ""
-#~ "הדרישות הבאות לא סופקו. נא לוודא שכולן מסופקות בכדי להתקין את Movim."
-
-#~ msgid ""
-#~ "Some errors were detected. Please correct them for the installation to "
-#~ "proceed."
-#~ msgstr "אותרו שגיאות מסוימות. נא לתקנן למען המשך ההתקנה."
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "העדפות חיבור XMPP"
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "העדפות חיבור BOSH"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "העדפות Proxy"
-
-#~ msgid "Success !"
-#~ msgstr "הצלחה !"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "‫Bosh תקף"
-
-#~ msgid "Database Detected"
-#~ msgstr "מסד נתונים אותר"
-
-#~ msgid "User not logged in."
-#~ msgstr "משתמש לא מחובר."
-
-#~ msgid "JID not provided."
-#~ msgstr "לא סופקה כתובת JID."
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "כתובת jid ‫'%s' שגויה"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "‏‏%s - יצירת חשבון"
-
-#~ msgid "%s - Add An Account"
-#~ msgstr "‏‏%s - הוספת חשבון"
-
-#~ msgid "Make sure your password is safe :"
-#~ msgstr "נא לוודא שסיסמתך מוגנת :"
-
-#~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr "אות גדולה, ספר וגם תו מיוחד הינם מומלצים"
-
-#~ msgid "8 characters"
-#~ msgstr "8 תווים"
-
-#~ msgid "Example :"
-#~ msgstr "המחשה :"
-
-#~ msgid "Same here !"
-#~ msgstr "אותו הדבר כאן !"
-
-#~ msgid "Retype"
-#~ msgstr "הקלדה חוזרת"
-
-#~ msgid "Create"
-#~ msgstr "יצירה"
-
-# BUG: Information(s)
-#~ msgid "Add your login informations"
-#~ msgstr "נא להוסיף את נתוני התחברותך"
-
-#~ msgid "Address"
-#~ msgstr "כתובת"
-
-#~ msgid "Client Name"
-#~ msgstr "שם לקוח"
-
-#~ msgid "Client Type"
-#~ msgstr "סוג לקוח"
-
-#~ msgid "All"
-#~ msgstr "הכל"
-
-#~ msgid "This server hosts %s accounts"
-#~ msgstr "שרת זה מארח %s חשבונות"
-
-#~ msgid "Decline"
-#~ msgstr "דחיה"
-
-#~ msgid "Cancel"
-#~ msgstr "ביטול"
-
-#~ msgid "Show All"
-#~ msgstr "הצגה מוחלטת"
-
-# לכל הפחות
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "גרסת PHP לא תואמת. Movim מצריכה PHP 5.3 לפחות."
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "‫Movim מצריכה את ההרחבות %s."
-
-# בטרם ברצונך ליהנות
-# רשת העבודה החברתית
-#~ msgid ""
-#~ "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "לפני שיהיה ביכולתך ליהנות מן הרשת החברתית שלך, נדרשות התאמות מספר."
-
-# בכוח potentially
-# אפשרי שהשימוש בה עלול לסכן
-# handle (manage, touch)?
-#~ msgid ""
-#~ "Keep in mind that Movim is still under development and will handle many "
-#~ "personal details. Its use can potentially endanger your data. Always pay "
-#~ "attention to information that you submit."
-#~ msgstr ""
-#~ "לצומת לבך, Movim עדיין מצויה תחת פיתוח ותטפל בפרטים אישיים רבים. השימוש "
-#~ "בה עלול, באופן פוטנציאלי, לסכן את המידע שלך. יש להסב תמיד תשומת לב "
-#~ "ולהבחין במידע שנשלח על ידך."
-
-#~ msgid "Database Movim schema installed"
-#~ msgstr "סכימת מסד נתונים Movim מותקנת"
-
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "לא ניתן לפתוח קובץ רשומת יומן '%s'"
-
-#~ msgid ""
-#~ "Firstly fill in this blank with a brand new account ID, this address will "
-#~ "follow you on all the Movim network !"
-#~ msgstr ""
-#~ "ראשית נא למלא את חלל זה עם ID חדשה לגמרי, כתובת זו תעקוב אחריך לכל אורך "
-#~ "רשת Movim !"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "יסודות אלפא-נומריות בלבד מותרות"
-
-#~ msgid "Loading your feed ..."
-#~ msgstr "מטעין כעת את ערוצך ..."
-
-#~ msgid "Contacts (%s)"
-#~ msgstr "אישי־קשר (%s)"
-
-#~ msgid "Follow"
-#~ msgstr "עקוב"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "ערוץ איש־קשר נטען כעת ..."
-
-# you can replace the word instance with "server", "pod"
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "כעת ביכולתך לגשת אל שרת ה־Movim המבריק שלך %sזנק/י פנימה !%s"
-
-#~ msgid "Pseudo"
-#~ msgstr "שם עט"
-
-#~ msgid "Link my current account"
-#~ msgstr "קישור אל חשבוני הנוכחי"
-
-#~ msgid "Please remove the %s folder in order to complete the installation"
-#~ msgstr "נא להסיר את התיקייה ‭%s‬ כדי לסיים את ההתקנה"
-
-#~ msgid "Send request"
-#~ msgstr "שלח בקשה"
