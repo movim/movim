@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-19 22:58+0100\n"
-"PO-Revision-Date: 2012-07-19 13:10+0000\n"
-"Last-Translator: millemiglia <dnieper650@gmail.com>\n"
+"PO-Revision-Date: 2013-11-19 22:07+0000\n"
+"Last-Translator: JonathanMM <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+"Language: \n"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -32,7 +32,7 @@ msgstr ""
 
 #: ../system/Logs/Logger.php:171
 msgid "Change it in the admin panel."
-msgstr ""
+msgstr "Muda isto no panhel do administrador."
 
 #: ../system/Route.php:80
 #, php-format
@@ -224,7 +224,7 @@ msgstr ""
 
 #: ../system/Utils.php:493
 msgid "angry"
-msgstr ""
+msgstr "zangado"
 
 #: ../system/Utils.php:494
 msgid "annoyed"
@@ -762,9 +762,8 @@ msgstr ""
 "chat oficial %s ou via nossa lista de email (%s veja a página específica %s)."
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -877,7 +876,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:370
@@ -1539,7 +1539,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
@@ -1921,41 +1922,16 @@ msgstr ""
 
 #: ../upload.php:32
 msgid "Not a picture"
-msgstr ""
+msgstr "Nenhuma imagem"
 
 #: ../upload.php:35
 msgid "Folder size limit exceeded"
 msgstr ""
 
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "seu navegador é muito antigo para usar com o Movim"
-
-#~ msgid "My address"
-#~ msgstr "Meu endereço"
-
-#~ msgid "Composing..."
-#~ msgstr "Escrevendo..."
-
-#~ msgid "My Posts"
-#~ msgstr "Minhas Postagens"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configuraçāo"
-
-#~ msgid "Language"
-#~ msgstr "Idioma"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "Contatos (%s)"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Não foi possível carregar o valor do elemento '%s'"
-
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Versão errada do PHP. O Movim requer no mínimo PHP 5.3."
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim requer a extensão %s."
 
@@ -1965,6 +1941,7 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Instalar Movim"
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Não foi possível criar o arquivo de configuração '%s'."
 
@@ -1975,8 +1952,8 @@ msgstr ""
 #~ "The following requirements were not met. Please make sure they are all "
 #~ "satisfied in order to install Movim."
 #~ msgstr ""
-#~ "Os seguintes requisitos não foram encontrados. Por favor, tenha certeza "
-#~ "de que todos estão satisfeitos para que a instalação prossiga."
+#~ "Os seguintes requisitos não foram encontrados. Por favor, tenha certeza de "
+#~ "que todos estão satisfeitos para que a instalação prossiga."
 
 #~ msgid "User not logged in."
 #~ msgstr "Usuário não logado."
@@ -1984,14 +1961,23 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "JID não disponível."
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "O jid '%s' está incorreto"
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Não foi possível abrir o arquivo de log '%s'."
 
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Criação da conta"
+
+#~ msgid "My address"
+#~ msgstr "Meu endereço"
+
+#~ msgid "Language"
+#~ msgstr "Idioma"
 
 #~ msgid "Decline"
 #~ msgstr "Declinar"
@@ -1999,6 +1985,7 @@ msgstr ""
 #~ msgid "Loading the contact feed ..."
 #~ msgstr "Carregando retorno do contacto"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Instalar o pacote %s"
 
@@ -2008,6 +1995,7 @@ msgstr ""
 #~ msgid "Actual version : "
 #~ msgstr "Versão atual: "
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Instalar %s e pacotes %s"
 
@@ -2028,8 +2016,8 @@ msgstr ""
 #~ "Some errors were detected. Please correct them for the installation to "
 #~ "proceed."
 #~ msgstr ""
-#~ "Alguns erros foram detectados. Por favor, corrija-os para prosseguir com "
-#~ "a instalação."
+#~ "Alguns erros foram detectados. Por favor, corrija-os para prosseguir com a "
+#~ "instalação."
 
 #~ msgid ""
 #~ "Before you enjoy your social network, a few adjustements are required."
@@ -2043,6 +2031,7 @@ msgstr ""
 #~ msgid "Proxy Preferences"
 #~ msgstr "Preferências do proxy"
 
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Por favor, remova a pasta %s para completar a instalação"
 
@@ -2066,8 +2055,7 @@ msgstr ""
 
 #~ msgid "A capital letter, a digit and a special character are recommended"
 #~ msgstr ""
-#~ "Recomenda-se o uso de uma letra maiúscula, um número e um caracter "
-#~ "especial"
+#~ "Recomenda-se o uso de uma letra maiúscula, um número e um caracter especial"
 
 #~ msgid "8 characters"
 #~ msgstr "8 caracteres"
@@ -2090,6 +2078,9 @@ msgstr ""
 #~ msgid "Add your login informations"
 #~ msgstr "Adicione suas informações de login"
 
+#~ msgid "Composing..."
+#~ msgstr "Escrevendo..."
+
 #~ msgid "Address"
 #~ msgstr "Endereço"
 
@@ -2102,8 +2093,19 @@ msgstr ""
 #~ msgid "All"
 #~ msgstr "Tudo"
 
+#~ msgid "My Posts"
+#~ msgstr "Minhas Postagens"
+
+#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - Adicionar Uma Conta"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "seu navegador é muito antigo para usar com o Movim"
+
+#, php-format
+#~ msgid "Contacts (%s)"
+#~ msgstr "Contatos (%s)"
 
 #~ msgid "Cancel"
 #~ msgstr "Cancelar"
@@ -2120,9 +2122,10 @@ msgstr ""
 #~ "attention to information that you submit."
 #~ msgstr ""
 #~ "Tenha em mente que Movim ainda está em desenvolvimento e irá lidar com "
-#~ "muitos detalhes pessoais. Seu uso pode eventualmente comprometer seus "
-#~ "dados. Sempre preste atenção às informações que você envia."
+#~ "muitos detalhes pessoais. Seu uso pode eventualmente comprometer seus dados. "
+#~ "Sempre preste atenção às informações que você envia."
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr "Agora você pode acessar Ir seu exemplo brilhante Movim %s em ! %s"
 
@@ -2139,17 +2142,25 @@ msgstr ""
 #~ msgid "Link my current account"
 #~ msgstr "Vincular a minha conta corrente"
 
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "Não foi possível carregar o valor do elemento '%s'"
+
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "A conexão Bosh falhou com erro '%s'"
 
 #~ msgid "Send request"
 #~ msgstr "Enviar pedido"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "A conexão XMPP através do Bosh falhou com erro '%s'"
 
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "Este servidor hospeda %s contas"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "A conexão com o banco de dados falhou com erro '%s'"
