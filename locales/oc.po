@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-19 22:58+0100\n"
-"PO-Revision-Date: 2013-07-16 08:02+0000\n"
-"Last-Translator: Maime <Unknown>\n"
+"PO-Revision-Date: 2013-11-20 04:44+0000\n"
+"Last-Translator: edhelas <edhelas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+"Language: \n"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -748,9 +748,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Charrador"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -866,7 +865,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:370
@@ -900,8 +900,8 @@ msgid ""
 msgstr ""
 "Si desiratz especificar una lista de servidors XMPP autorizats sus vòstre "
 "pòd Movim e interdire la connexion a tots los autres, especificatz si vos "
-"plai la lista de lor noms de domeni, separats per de las virgulas (ex: movim."
-"eu, jabber.fr)"
+"plai la lista de lor noms de domeni, separats per de las virgulas (ex: "
+"movim.eu, jabber.fr)"
 
 #: ../app/widgets/Admin/Admin.php:401
 msgid ""
@@ -1369,9 +1369,8 @@ msgid "Links"
 msgstr "Liams"
 
 #: ../app/widgets/ContactManage/ContactManage.php:30
-#, fuzzy
 msgid "Contact updated"
-msgstr "La configuracion es estada mesa a jorn"
+msgstr ""
 
 #: ../app/widgets/ContactManage/ContactManage.php:55
 msgid "Manage"
@@ -1398,9 +1397,8 @@ msgid "by"
 msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:222
-#, fuzzy
 msgid "email"
-msgstr "Adreça electronica"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:226
 msgid "jid"
@@ -1469,9 +1467,8 @@ msgid "Invite this user"
 msgstr "Convidar quel utilizaire"
 
 #: ../app/widgets/Presence/Presence.php:120
-#, fuzzy
 msgid "Disconnect"
-msgstr "Conneccion"
+msgstr ""
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:154
@@ -1537,7 +1534,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
@@ -1903,9 +1901,9 @@ msgid "%s - Explore"
 msgstr "%s - Explorar"
 
 #: ../app/controllers/NewsController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - News"
-msgstr "Novelas"
+msgstr ""
 
 #: ../app/controllers/AdminController.php:15
 #, php-format
@@ -1924,11 +1922,204 @@ msgstr "Qu'es pas un imatge"
 msgid "Folder size limit exceeded"
 msgstr ""
 
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Vòstre navigador es tròp vielh per utilizar Movim"
+#, php-format
+#~ msgid "Couldn't create configuration file '%s'."
+#~ msgstr "La creacion dau fichier de configuracion '%s' es impossibla."
+
+#~ msgid "JID not provided."
+#~ msgstr "JID indisponible."
+
+#, php-format
+#~ msgid "Cannot open log file '%s'"
+#~ msgstr "Impossible de dubrir lo jornau '%s'"
+
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Creacion de compte"
 
 #~ msgid "My address"
 #~ msgstr "Mon adreça"
+
+#~ msgid "Language"
+#~ msgstr "Lenga"
+
+#~ msgid "Decline"
+#~ msgstr "Refusar"
+
+#~ msgid "or"
+#~ msgstr "o"
+
+#~ msgid "Actual version : "
+#~ msgstr "Version actuala : "
+
+#, php-format
+#~ msgid "Install the %s package"
+#~ msgstr "Installar lo paquet %s"
+
+#~ msgid "XMPP Connection Preferences"
+#~ msgstr "Configuracion de la connexion XMPP"
+
+#~ msgid "Valid Bosh"
+#~ msgstr "Bosh valid"
+
+#~ msgid "Success !"
+#~ msgstr "Òsca !"
+
+#~ msgid "Update your PHP version or contact your server administrator"
+#~ msgstr ""
+#~ "Actualizatz vòstra version de PHP o contactatz l'administrador de vòstre "
+#~ "servidor"
+
+#~ msgid "BOSH Connection Preferences"
+#~ msgstr "Configuracion de la connexion BOSH"
+
+#~ msgid "Example :"
+#~ msgstr "Exemple :"
+
+#~ msgid "Same here !"
+#~ msgstr "Parier aicí !"
+
+#~ msgid "Retype"
+#~ msgstr "Tornar picar"
+
+#~ msgid "Create"
+#~ msgstr "Crear"
+
+#~ msgid "Composing..."
+#~ msgstr "A escriure..."
+
+#~ msgid "Show All"
+#~ msgstr "Afichar tot"
+
+#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
+#~ msgstr ""
+#~ "Avètz pas la bona version de PHP. Movim a mestièr al mens de PHP 5.3."
+
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr ""
+#~ "Activatz los drechess de lectura e d'escritura sul dorsièr raiç de Movim"
+
+#, php-format
+#~ msgid "Install %s and %s packages"
+#~ msgstr "Installatz los paquets %s e %s"
+
+#~ msgid "Movim's folder must be writable."
+#~ msgstr "Lo dorsièr Movim deu èsser accessible en escritura"
+
+#, php-format
+#~ msgid "Movim requires the %s extension."
+#~ msgstr "Movim a mestièr de l'extension %s."
+
+#~ msgid "Proxy Preferences"
+#~ msgstr "Preferéncias du Proxy"
+
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr ""
+#~ "Los elements seguents son pas disponibles. Siatz segur que sián corregits "
+#~ "per poder installar Movim."
+
+#~ msgid "Compatibility Test"
+#~ msgstr "Tèst de compatibilitat"
+
+#~ msgid "Movim Installer"
+#~ msgstr "Installar Movim"
+
+#~ msgid "User not logged in."
+#~ msgstr "Sètz pas autentificat."
+
+#, php-format
+#~ msgid "Please remove the %s folder in order to complete the installation"
+#~ msgstr "Si vos plai, suprimètz lo dorsièr %s per acabar l'installacion"
+
+#, php-format
+#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
+#~ msgstr "Ara, podètz accedir a vòstra version de Movim tota nòva %sAnem !%s"
+
+#~ msgid "Database Movim schema installed"
+#~ msgstr "L'esquèma de la banca de donadas es estat installat"
+
+#~ msgid "Database Detected"
+#~ msgstr "Banca de donadas detectada"
+
+#, php-format
+#~ msgid "jid '%s' is incorrect"
+#~ msgstr "Lo jid '%s' es incorrècte"
+
+#~ msgid "Only alphanumerics elements are authorized"
+#~ msgstr "Sols los caractèrs alfanumerics son autorizats."
+
+#~ msgid "Make sure your password is safe :"
+#~ msgstr "Asseguratz-vos que vòstre senhal es segur :"
+
+#~ msgid "Pseudo"
+#~ msgstr "Escais"
+
+#~ msgid "8 characters"
+#~ msgstr "8 caractèrs"
+
+#~ msgid "Address"
+#~ msgstr "Adreça"
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "Cargament de vòstre flux ..."
+
+#~ msgid "All"
+#~ msgstr "Tot"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Vòstre navigador es tròp vielh per utilizar Movim"
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Cargament del flux ..."
+
+#~ msgid "Follow"
+#~ msgstr "Seguir"
+
+#~ msgid "A capital letter, a digit and a special character are recommended"
+#~ msgstr ""
+#~ "Un bon senhal es compausat d'al mens una majuscula, una chifra e un caractèr "
+#~ "especial"
+
+#~ msgid ""
+#~ "Firstly fill in this blank with a brand new account ID, this address will "
+#~ "follow you on all the Movim network !"
+#~ msgstr ""
+#~ "D'en prumier, completatz quel espaci emb una identificacion de compte tota "
+#~ "novela, quela adreça vos segrà pertot sus lo malhum Movim !"
+
+#~ msgid "Client Name"
+#~ msgstr "Nom dau client"
+
+#~ msgid "Client Type"
+#~ msgstr "Tipe de Client"
+
+#~ msgid "Cancel"
+#~ msgstr "Abandonar"
+
+#~ msgid ""
+#~ "Keep in mind that Movim is still under development and will handle many "
+#~ "personal details. Its use can potentially endanger your data. Always pay "
+#~ "attention to information that you submit."
+#~ msgstr ""
+#~ "Oblidatz pas que Movim es enquera en desvelopament e vai manipular de la "
+#~ "sinformacions personalaS. Son utilizacion las pòt far córrer un dangier. "
+#~ "Fasetz totjorn 'tencion a las informacions qu'enviatz."
+
+#~ msgid ""
+#~ "Before you enjoy your social network, a few adjustements are required."
+#~ msgstr ""
+#~ "Davant d'utilizar vòstre malhum sociau, quauques ajsutaments son necessaris."
+
+#~ msgid "Thank you for downloading Movim!"
+#~ msgstr "Mercés per lo descharjament de Movim !"
+
+#~ msgid "My Posts"
+#~ msgstr "Mos pòsts"
+
+#~ msgid "Send request"
+#~ msgstr "Enviar la demanda"
 
 #~ msgid "Create one !"
 #~ msgstr "Creatz ne'n un !"
@@ -1938,9 +2129,6 @@ msgstr ""
 
 #~ msgid "Population"
 #~ msgstr "Populacion"
-
-#~ msgid "Composing..."
-#~ msgstr "A escriure..."
 
 #~ msgid "Paused..."
 #~ msgstr "En pausa..."
@@ -1957,18 +2145,8 @@ msgstr ""
 #~ msgid "Add a comment"
 #~ msgstr "Apondre un comentari"
 
-#~ msgid "My Posts"
-#~ msgstr "Mos pòsts"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configuracion"
-
 #~ msgid "General"
 #~ msgstr "Generau"
-
-#~ msgid "Language"
-#~ msgstr "Lenga"
 
 #~ msgid "Appearence"
 #~ msgstr "Aparéncia"
@@ -2017,179 +2195,3 @@ msgstr ""
 
 #~ msgid "%s - 404"
 #~ msgstr "%s - 404"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "La creacion dau fichier de configuracion '%s' es impossibla."
-
-#~ msgid "JID not provided."
-#~ msgstr "JID indisponible."
-
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Impossible de dubrir lo jornau '%s'"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Creacion de compte"
-
-#~ msgid "Decline"
-#~ msgstr "Refusar"
-
-#~ msgid "or"
-#~ msgstr "o"
-
-#~ msgid "Actual version : "
-#~ msgstr "Version actuala : "
-
-#~ msgid "Install the %s package"
-#~ msgstr "Installar lo paquet %s"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "Configuracion de la connexion XMPP"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "Bosh valid"
-
-#~ msgid "Success !"
-#~ msgstr "Òsca !"
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr ""
-#~ "Actualizatz vòstra version de PHP o contactatz l'administrador de vòstre "
-#~ "servidor"
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "Configuracion de la connexion BOSH"
-
-#~ msgid "Example :"
-#~ msgstr "Exemple :"
-
-#~ msgid "Same here !"
-#~ msgstr "Parier aicí !"
-
-#~ msgid "Retype"
-#~ msgstr "Tornar picar"
-
-#~ msgid "Create"
-#~ msgstr "Crear"
-
-#~ msgid "Show All"
-#~ msgstr "Afichar tot"
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr ""
-#~ "Avètz pas la bona version de PHP. Movim a mestièr al mens de PHP 5.3."
-
-#~ msgid "Enable read and write rights on Movim's root folder"
-#~ msgstr ""
-#~ "Activatz los drechess de lectura e d'escritura sul dorsièr raiç de Movim"
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Installatz los paquets %s e %s"
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Lo dorsièr Movim deu èsser accessible en escritura"
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim a mestièr de l'extension %s."
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "Preferéncias du Proxy"
-
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
-#~ msgstr ""
-#~ "Los elements seguents son pas disponibles. Siatz segur que sián corregits "
-#~ "per poder installar Movim."
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Tèst de compatibilitat"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Installar Movim"
-
-#~ msgid "User not logged in."
-#~ msgstr "Sètz pas autentificat."
-
-#~ msgid "Please remove the %s folder in order to complete the installation"
-#~ msgstr "Si vos plai, suprimètz lo dorsièr %s per acabar l'installacion"
-
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "Ara, podètz accedir a vòstra version de Movim tota nòva %sAnem !%s"
-
-#~ msgid "Database Movim schema installed"
-#~ msgstr "L'esquèma de la banca de donadas es estat installat"
-
-#~ msgid "Database Detected"
-#~ msgstr "Banca de donadas detectada"
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "Lo jid '%s' es incorrècte"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "Sols los caractèrs alfanumerics son autorizats."
-
-#~ msgid "Make sure your password is safe :"
-#~ msgstr "Asseguratz-vos que vòstre senhal es segur :"
-
-#~ msgid "Pseudo"
-#~ msgstr "Escais"
-
-#~ msgid "8 characters"
-#~ msgstr "8 caractèrs"
-
-#~ msgid "Address"
-#~ msgstr "Adreça"
-
-#~ msgid "Loading your feed ..."
-#~ msgstr "Cargament de vòstre flux ..."
-
-#~ msgid "All"
-#~ msgstr "Tot"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "Cargament del flux ..."
-
-#~ msgid "Follow"
-#~ msgstr "Seguir"
-
-#~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr ""
-#~ "Un bon senhal es compausat d'al mens una majuscula, una chifra e un "
-#~ "caractèr especial"
-
-#~ msgid ""
-#~ "Firstly fill in this blank with a brand new account ID, this address will "
-#~ "follow you on all the Movim network !"
-#~ msgstr ""
-#~ "D'en prumier, completatz quel espaci emb una identificacion de compte "
-#~ "tota novela, quela adreça vos segrà pertot sus lo malhum Movim !"
-
-#~ msgid "Client Name"
-#~ msgstr "Nom dau client"
-
-#~ msgid "Client Type"
-#~ msgstr "Tipe de Client"
-
-#~ msgid "Cancel"
-#~ msgstr "Abandonar"
-
-#~ msgid ""
-#~ "Keep in mind that Movim is still under development and will handle many "
-#~ "personal details. Its use can potentially endanger your data. Always pay "
-#~ "attention to information that you submit."
-#~ msgstr ""
-#~ "Oblidatz pas que Movim es enquera en desvelopament e vai manipular de la "
-#~ "sinformacions personalaS. Son utilizacion las pòt far córrer un dangier. "
-#~ "Fasetz totjorn 'tencion a las informacions qu'enviatz."
-
-#~ msgid ""
-#~ "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr ""
-#~ "Davant d'utilizar vòstre malhum sociau, quauques ajsutaments son "
-#~ "necessaris."
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Mercés per lo descharjament de Movim !"
-
-#~ msgid "Send request"
-#~ msgstr "Enviar la demanda"

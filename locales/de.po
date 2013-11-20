@@ -1,20 +1,20 @@
-# German translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
+# German translations for Movim Website package.
+# This file is distributed under the same license as the Movim Website package.
 # This file was translated from CodingTeam at <http://codingteam.net/>.
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: Movim Website\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-19 22:58+0100\n"
-"PO-Revision-Date: 2013-07-07 23:52+0000\n"
+"PO-Revision-Date: 2013-11-20 04:39+0000\n"
 "Last-Translator: edhelas <edhelas@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+"Language: \n"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -28,11 +28,11 @@ msgstr "Widget %s existiert nicht"
 
 #: ../system/Logs/Logger.php:171
 msgid "Development environment."
-msgstr ""
+msgstr "Entwicklungsumgebung"
 
 #: ../system/Logs/Logger.php:171
 msgid "Change it in the admin panel."
-msgstr ""
+msgstr "Ändern sie es im Admin-Panel."
 
 #: ../system/Route.php:80
 #, php-format
@@ -45,9 +45,9 @@ msgid "Route not set for the page %s"
 msgstr "Weiterleitung für %s nicht gesetzt"
 
 #: ../system/controllers/FrontController.php:35
-#, fuzzy, php-format
+#, php-format
 msgid "Requested controller '%s' doesn't exist."
-msgstr "Widget %s existiert nicht"
+msgstr ""
 
 #: ../system/controllers/FrontController.php:67
 msgid "Could not call the load method on the current controller"
@@ -224,7 +224,7 @@ msgstr "verliebt"
 
 #: ../system/Utils.php:493
 msgid "angry"
-msgstr ""
+msgstr "verärgert"
 
 #: ../system/Utils.php:494
 msgid "annoyed"
@@ -544,23 +544,23 @@ msgstr "besorgt"
 
 #: ../system/Utils.php:706
 msgid "Not shared"
-msgstr ""
+msgstr "Nicht geteilt"
 
 #: ../system/Utils.php:710
 msgid "Shared with one contact"
-msgstr ""
+msgstr "Mit einem Kontakt geteilt"
 
 #: ../system/Utils.php:714
 msgid "Shared with all contacts"
-msgstr ""
+msgstr "Mit allen Kontakten geteilt"
 
 #: ../system/Utils.php:718
 msgid "Shared with the XMPP network"
-msgstr ""
+msgstr "Mit dem XMPP-Netzwerk geteilt"
 
 #: ../system/Utils.php:722
 msgid "Shared with the whole Internet"
-msgstr ""
+msgstr "Mit dem gesamten Internet geteilt"
 
 #: ../system/MovimException.php:15
 #, php-format
@@ -596,11 +596,11 @@ msgstr "Sie haben nicht die nötige Berechtigung für diese Aktion"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:55
 msgid "This service is unavaiable"
-msgstr ""
+msgstr "Der Dienst ist nicht verfügbar"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:65
 msgid "The server does not exist"
-msgstr ""
+msgstr "Der Server existiert nicht"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
 msgid "Unexpected request"
@@ -762,9 +762,8 @@ msgstr ""
 "Chatraum %s oder über unsere Mailinglist (%s weitere Informationen %s)"
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -841,7 +840,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:299
 msgid "User folder size limit (in bytes)"
-msgstr ""
+msgstr "Speicherlimit des Nutzerverzeichnis (in Bytes)"
 
 #: ../app/widgets/Admin/Admin.php:304
 msgid "empty"
@@ -869,7 +868,7 @@ msgstr "Logstufe"
 
 #: ../app/widgets/Admin/Admin.php:337
 msgid "Server Timezone"
-msgstr ""
+msgstr "Server-Zeitzone"
 
 #: ../app/widgets/Admin/Admin.php:364
 msgid "Bosh Configuration"
@@ -877,17 +876,22 @@ msgstr "Bosh-Konfiguration"
 
 #: ../app/widgets/Admin/Admin.php:368
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
-msgstr ""
+msgstr "Hier die BOSH-URL in der Form eintragen: http(s)://domain:port/path."
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
+"Wenn ein offener BOSH-Server eingetragen wird, kann zu vielen XMPP-Servern "
+"verbunden werden."
 
 #: ../app/widgets/Admin/Admin.php:370
 msgid ""
 "If it is closed, you have to specify the corresponding Server on the next "
 "page."
 msgstr ""
+"Falls er geschlossen ist, muss auf der nächsten Seite ein korrespondierender "
+"Server angegeben werden."
 
 #: ../app/widgets/Admin/Admin.php:371
 #, php-format
@@ -927,19 +931,19 @@ msgstr "Liste der erlaubten XMPP-Server"
 
 #: ../app/widgets/Admin/Admin.php:417 ../app/widgets/Admin/Admin.php:429
 msgid "Information Message"
-msgstr ""
+msgstr "Informationsmeldung"
 
 #: ../app/widgets/Admin/Admin.php:421
 msgid "This message will be displayed on the login page"
-msgstr ""
+msgstr "Die Nachricht wird auf der Anmeldeseite angezeigt"
 
 #: ../app/widgets/Admin/Admin.php:424
 msgid "Leave this field blank if you don't want to show any message."
-msgstr ""
+msgstr "Das Feld leer lassen, wenn keine Nachricht angezeigt werden soll."
 
 #: ../app/widgets/Admin/Admin.php:440
 msgid "Administration Credential"
-msgstr ""
+msgstr "Administrationsbefugnis"
 
 #: ../app/widgets/Admin/Admin.php:445
 msgid "Change the default credentials admin/password"
@@ -981,9 +985,9 @@ msgid "Hide disconnected contacts"
 msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:309
-#, fuzzy, php-format
+#, php-format
 msgid "Hide group %s"
-msgstr "Öffentliche Gruppen"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:311
 #, php-format
@@ -992,7 +996,7 @@ msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:374
 msgid "Please enter a valid Jabber ID"
-msgstr ""
+msgstr "Bitte eine gültige Jabber-ID eingeben"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
@@ -1003,12 +1007,12 @@ msgstr "Bestätigen"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
 msgid "Affiliations saved"
-msgstr ""
+msgstr "Zugehörigkeiten gespeichert"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:90
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:91
 msgid "Manage your members"
-msgstr ""
+msgstr "Mitglieder verwalten"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:96
 msgid "Get the members"
@@ -1035,7 +1039,7 @@ msgstr "Aktualisieren"
 #: ../app/widgets/Media/Media.php:85
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
 msgid "on"
-msgstr ""
+msgstr "an"
 
 #: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:151
 #: ../app/widgets/ContactCard/ContactCard.php:51
@@ -1045,7 +1049,7 @@ msgstr "Name"
 
 #: ../app/widgets/Media/Media.php:106
 msgid "Resolution"
-msgstr ""
+msgstr "Auflösung"
 
 #: ../app/widgets/Media/Media.php:108
 msgid "Size"
@@ -1053,7 +1057,7 @@ msgstr "Größe"
 
 #: ../app/widgets/Media/Media.php:110
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: ../app/widgets/Media/Media.php:112
 msgid "ISO"
@@ -1061,15 +1065,15 @@ msgstr ""
 
 #: ../app/widgets/Media/Media.php:114
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #: ../app/widgets/Media/Media.php:116
 msgid "Artist"
-msgstr ""
+msgstr "Künstler"
 
 #: ../app/widgets/Media/Media.php:119
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: ../app/widgets/Media/Media.php:119
 msgid "Link"
@@ -1077,7 +1081,7 @@ msgstr ""
 
 #: ../app/widgets/Media/Media.php:148
 msgid "Viewer"
-msgstr ""
+msgstr "Betrachter"
 
 #: ../app/widgets/Media/Media.php:154
 #: ../app/controllers/ProfileController.php:15
@@ -1093,7 +1097,7 @@ msgstr ""
 #: ../app/controllers/MediaController.php:15
 #: ../app/controllers/NodeconfigController.php:16
 msgid "Media"
-msgstr ""
+msgstr "Medien"
 
 #: ../app/widgets/Blog/Blog.php:30
 #: ../app/widgets/Syndication/Syndication.php:52
@@ -1126,14 +1130,11 @@ msgstr ""
 "Funktionsumfang"
 
 #: ../app/widgets/Login/Login.php:58
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
 "and your password"
 msgstr ""
-"Sie können sich mit Ihrem Facebook-Benutzerkonto anmelden (nur "
-"Chatfunktionalität). Benutzen Sie %s your.id@chat.facebook.com %s und Ihr "
-"Passwort."
 
 #: ../app/widgets/Login/Login.php:88
 msgid "Wrong username"
@@ -1145,7 +1146,7 @@ msgstr "Ungültige Jabber-ID"
 
 #: ../app/widgets/Login/Login.php:100
 msgid "Authentication mechanism not supported by Movim"
-msgstr ""
+msgstr "Authentifikationsmechanismus von Movim nicht unterstützt"
 
 #: ../app/widgets/Login/Login.php:106
 msgid "Empty Challenge from the server"
@@ -1192,9 +1193,8 @@ msgid "Your XMPP server is unauthorized"
 msgstr "Dieser XMPP-Server ist nicht authentifiziert"
 
 #: ../app/widgets/Login/Login.php:171
-#, fuzzy
 msgid "The server takes too much time to respond"
-msgstr "Der Server antwortet nicht innerhalb der vorgesehenen Zeit."
+msgstr "Der Server braucht zu lange zum Antworten"
 
 #: ../app/widgets/Login/Login.php:186
 msgid "Come in!"
@@ -1224,8 +1224,8 @@ msgid ""
 "button."
 msgstr ""
 "Sie nutzen zum ersten Mal Movim! Um \n"
-"                einige persönliche Informationen über sich hinzuzufügen "
-"und \n"
+"                einige persönliche Informationen über sich hinzuzufügen und "
+"\n"
 "                sie Ihren Kontakten anzuzeigen, erstellen Sie eine virtuelle "
 "Visitenkarte durch Klicken auf \"weiter\""
 
@@ -1349,19 +1349,19 @@ msgstr "Profil bearbeiten"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
 msgid "Subscriptions saved"
-msgstr ""
+msgstr "Abonnements gespeichert"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:95
 msgid "Manage your subscriptions"
-msgstr ""
+msgstr "Ihre Abonnements verwalten"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:96
 msgid "Manage the subscriptions"
-msgstr ""
+msgstr "Die Abonnements verwalten"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:101
 msgid "Get the subscriptions"
-msgstr ""
+msgstr "Abonnements erhalten"
 
 #: ../app/widgets/Bookmark/Bookmark.php:79
 msgid "Bookmarks updated"
@@ -1373,7 +1373,7 @@ msgstr "Ein Fehler ist aufgetreten: "
 
 #: ../app/widgets/Bookmark/Bookmark.php:123
 msgid "Bad Chatroom ID"
-msgstr ""
+msgstr "Falsche Chatroom-ID"
 
 #: ../app/widgets/Bookmark/Bookmark.php:127
 #: ../app/widgets/Bookmark/Bookmark.php:180
@@ -1393,13 +1393,12 @@ msgid "Links"
 msgstr "Verknüpfungen"
 
 #: ../app/widgets/ContactManage/ContactManage.php:30
-#, fuzzy
 msgid "Contact updated"
-msgstr "Konfiguration wurde aktualisiert"
+msgstr ""
 
 #: ../app/widgets/ContactManage/ContactManage.php:55
 msgid "Manage"
-msgstr ""
+msgstr "Verwalten"
 
 #: ../app/widgets/ContactManage/ContactManage.php:67
 msgid "Alias"
@@ -1407,11 +1406,11 @@ msgstr "Alias"
 
 #: ../app/widgets/ContactManage/ContactManage.php:73
 msgid "Group"
-msgstr ""
+msgstr "Gruppe"
 
 #: ../app/widgets/ContactManage/ContactManage.php:76
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:73
 msgid "Place"
@@ -1422,9 +1421,8 @@ msgid "by"
 msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:222
-#, fuzzy
 msgid "email"
-msgstr "Epost"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:226
 msgid "jid"
@@ -1448,16 +1446,16 @@ msgstr "Ohne Kommentare"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:37
 msgid "Delete"
-msgstr ""
+msgstr "Entfernen"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:49
 #, php-format
 msgid "%s has been removed from your public groups"
-msgstr ""
+msgstr "%s wurde aus Ihren öffentlichen Gruppen entfernt"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:74
 msgid "Public Groups"
-msgstr ""
+msgstr "Öffentliche Gruppen"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:79
 msgid "Get your public groups"
@@ -1465,7 +1463,7 @@ msgstr ""
 
 #: ../app/widgets/Connection/Connection.php:37
 msgid "Please wait "
-msgstr ""
+msgstr "Bitte Warten "
 
 #: ../app/widgets/ContactAction/ContactAction.php:65
 #: ../app/widgets/ContactAction/ContactAction.php:134
@@ -1474,7 +1472,7 @@ msgstr "Aktionen"
 
 #: ../app/widgets/ContactAction/ContactAction.php:82
 msgid "Chat"
-msgstr "Chat"
+msgstr "Sofortnachrichten"
 
 #: ../app/widgets/ContactAction/ContactAction.php:100
 msgid "Remove this contact"
@@ -1522,11 +1520,11 @@ msgstr "Konfiguration wurde aktualisiert"
 
 #: ../app/widgets/Profile/Profile.php:42
 msgid "Saved"
-msgstr ""
+msgstr "Gespeichert"
 
 #: ../app/widgets/Profile/Profile.php:43
 msgid "Status updated"
-msgstr ""
+msgstr "Status aktualisiert"
 
 #: ../app/widgets/Profile/Profile.php:118
 msgid "Your status here !"
@@ -1562,7 +1560,8 @@ msgstr ""
 "dass der Webbrowser die Verbindung abgebrochen hat"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 "Ihre Datei ist sehr groß. Wir können sie deswegen nicht entgegennehmen. "
 "Bitte wählen Sie eine kleinere Datei"
@@ -1593,16 +1592,16 @@ msgstr "Nicht verbunden"
 
 #: ../app/widgets/Chat/Chat.php:137
 msgid "Message Published"
-msgstr ""
+msgstr "Nachricht veröffentlicht"
 
 #: ../app/widgets/Chat/Chat.php:176
 #, php-format
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%s braucht Ihre Aufmerksamkeit"
 
 #: ../app/widgets/Chat/Chat.php:376
 msgid "Encrypted message"
-msgstr ""
+msgstr "Verschlüsselte Nachricht"
 
 #: ../app/widgets/Account/Account.php:92
 msgid "Step 2 - Fill in your informations"
@@ -1615,7 +1614,7 @@ msgstr ""
 
 #: ../app/widgets/Account/Account.php:292
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: ../app/widgets/Account/Account.php:295
 msgid "URL"
@@ -1623,7 +1622,7 @@ msgstr "Internetadresse (URL)"
 
 #: ../app/widgets/Account/Account.php:298
 msgid "Software"
-msgstr ""
+msgstr "Software"
 
 #: ../app/widgets/Account/Account.php:394
 msgid "Wrong ID"
@@ -1639,7 +1638,7 @@ msgstr "Unzulässiger Name"
 
 #: ../app/widgets/Account/Account.php:412
 msgid "Request not acceptable"
-msgstr ""
+msgstr "Anfrage nicht akzeptabel"
 
 #: ../app/widgets/Account/Account.php:418
 msgid "Username already taken"
@@ -1666,10 +1665,14 @@ msgid ""
 "Movim is a decentralized social network, before creating a new account you "
 "need to choose a server to register."
 msgstr ""
+"Movim ist ein dezentrales Soziales Netzwerk, bevor ein neues Konto erstellt "
+"werden kann, muss ein Server zum Registrieren gewählt werden."
 
 #: ../app/widgets/Account/Account.php:452
 msgid "Keep in mind that this server will handle all your personnal data."
 msgstr ""
+"Behalten Sie im Hinterkopf, dass dieser Server all ihre privaten Daten "
+"handhabt."
 
 #: ../app/widgets/Account/Account.php:457
 msgid "Step 1 - Search the server"
@@ -1682,7 +1685,7 @@ msgstr ""
 
 #: ../app/widgets/Account/Account.php:461
 msgid "Or you can choose a server from this list."
-msgstr ""
+msgstr "Oder es kann ein Server aus der Liste gewählt werden."
 
 #: ../app/widgets/Account/Account.php:472
 msgid "Server"
@@ -1710,7 +1713,7 @@ msgstr "Ich bin "
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:57
 msgid "Listening"
-msgstr ""
+msgstr "Zuhören"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:97
 msgid "Last seen"
@@ -1731,11 +1734,11 @@ msgstr "Telefon"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
 msgid "Web"
-msgstr ""
+msgstr "Web"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
 msgid "Registered"
-msgstr ""
+msgstr "Registriert"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
 msgid "Client Informations"
@@ -1773,12 +1776,12 @@ msgstr "Gruppeneinstellung nicht gespeichert"
 #: ../app/widgets/Node/Node.php:114 ../app/widgets/Node/Node.php:205
 #: ../app/widgets/Node/Node.php:216
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Abonnement beenden"
 
 #: ../app/widgets/Node/Node.php:122 ../app/widgets/Node/Node.php:175
 #: ../app/widgets/Node/Node.php:194
 msgid "Subscribe"
-msgstr ""
+msgstr "Abonnieren"
 
 #: ../app/widgets/Node/Node.php:128
 #: ../app/controllers/ProfileController.php:13
@@ -1797,7 +1800,7 @@ msgstr "Durchsuchen"
 
 #: ../app/widgets/Node/Node.php:136 ../app/widgets/Node/Node.php:268
 msgid "Posts"
-msgstr ""
+msgstr "Beiträge"
 
 #: ../app/widgets/Node/Node.php:164
 msgid "Get Subscription"
@@ -1821,15 +1824,16 @@ msgstr "Einstellungen"
 
 #: ../app/widgets/Node/Node.php:177
 msgid "Make your membership to this group public to your friends"
-msgstr ""
+msgstr "Zeigen Sie Ihren Freunden, dass Sie Mitglied in dieser Gruppe sind"
 
 #: ../app/widgets/Node/Node.php:184
 msgid "Give a nickname to this group if you want"
 msgstr ""
+"Falls gewünscht, kann ein Spitzname für diese Gruppe festgelegt werden"
 
 #: ../app/widgets/Node/Node.php:207
 msgid "Are you sure ?"
-msgstr ""
+msgstr "Sind Sie sicher?"
 
 #: ../app/models/postn/Postn.php:140
 msgid "Content not found"
@@ -1873,7 +1877,7 @@ msgstr "Start"
 #: ../app/controllers/MediaController.php:12
 #: ../app/controllers/NodeconfigController.php:13
 msgid "News"
-msgstr ""
+msgstr "Neues"
 
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountController.php:9
@@ -1896,7 +1900,7 @@ msgstr ""
 #: ../app/controllers/AboutController.php:13
 #: ../app/controllers/LoginController.php:13
 msgid "About"
-msgstr ""
+msgstr "Info"
 
 #: ../app/controllers/HelpController.php:9
 #, php-format
@@ -1933,9 +1937,9 @@ msgid "%s - Explore"
 msgstr "%s - Durchsuchen"
 
 #: ../app/controllers/NewsController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - News"
-msgstr "%s - Mitteilungsansicht"
+msgstr "%s - Neuigkeiten"
 
 #: ../app/controllers/AdminController.php:15
 #, php-format
@@ -1948,154 +1952,26 @@ msgstr "Administration"
 
 #: ../upload.php:32
 msgid "Not a picture"
-msgstr "Keine Bilddatei."
+msgstr "Kein Bild"
 
 #: ../upload.php:35
 msgid "Folder size limit exceeded"
 msgstr "Größenbeschränkung des Ordners überschritten."
 
-#~ msgid "Configure your group"
-#~ msgstr "Gruppeneinstellungen festlegen"
-
-#~ msgid "Delete this group"
-#~ msgstr "Diese Gruppe löschen"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Dein Webbrowser ist zu alt für Movim."
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s – Registrieren"
 
 #~ msgid "My address"
 #~ msgstr "Adresse"
 
-#~ msgid "Create one !"
-#~ msgstr "Erstelle eins!"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Noch kein Konto?"
-
-#~ msgid "You can login using your favorite Jabber account"
-#~ msgstr "Sie können sich mit Ihrem Jabber-Benutzerkonto einloggen"
-
-#~ msgid "or with our demonstration account"
-#~ msgstr "oder mit unserem Beispiel-Account."
-
-#~ msgid "Population"
-#~ msgstr "Nutzerzahl"
-
-#~ msgid "Composing..."
-#~ msgstr "Baue Dinge zusammen..."
-
-#~ msgid "Paused..."
-#~ msgstr "Angehalten..."
-
-#~ msgid "Topics"
-#~ msgstr "Themen"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Ein-/Ausblenden"
-
-#~ msgid "JID"
-#~ msgstr "Jabber-ID"
-
-#~ msgid "Loading comments ..."
-#~ msgstr "Lade Kommentare..."
-
-#~ msgid "Get the comments"
-#~ msgstr "Lade Kommentare"
-
-#~ msgid "Add a comment"
-#~ msgstr "Einen Kommentar hinzufügen"
-
-#~ msgid "My Posts"
-#~ msgstr "Meine Beiträge"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Lesezeichen"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Eine neue URL hinzufügen"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Eine neue URL hinzufügen"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Einstellungen"
-
-#~ msgid "General"
-#~ msgstr "Allgemein"
-
 #~ msgid "Language"
 #~ msgstr "Sprache"
-
-#~ msgid "Background color"
-#~ msgstr "Hintergrundfarbe"
-
-#~ msgid "Pattern"
-#~ msgstr "Muster"
-
-#~ msgid "This configuration is shared wherever you are connected !"
-#~ msgstr ""
-#~ "Diese Konfiguration wird genutzt, egal von wo aus du dich verbindest!"
-
-#~ msgid "Share with"
-#~ msgstr "Freigeben für"
-
-#~ msgid "your post will appear in your Movim public feed"
-#~ msgstr "dein Beitrag wird im öffentlichen Movim-Feed erscheinen"
-
-#~ msgid "Everyone"
-#~ msgstr "Jeder"
-
-#~ msgid "Your contacts"
-#~ msgstr "Deine Kontakte"
-
-#~ msgid "Delete this post"
-#~ msgstr "Diesen Eintrag löschen"
-
-#~ msgid "No public feed for this contact"
-#~ msgstr "Kein öffentlicher Nachrichten-Feed von diesem Kontakt"
-
-#~ msgid "No contact specified"
-#~ msgstr "Kein Kontakt ausgewählt"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "Kontakte (%s)"
-
-#~ msgid "What's new ?"
-#~ msgstr "Was ist neu?"
-
-#~ msgid "Preview"
-#~ msgstr "Vorschau"
-
-#~ msgid "Geolocalisation"
-#~ msgstr "Geolokalisierung"
-
-#~ msgid "Couldn't load file %s"
-#~ msgstr "Konnte Datei %s nicht laden"
-
-#~ msgid "%s - Post View"
-#~ msgstr "%s - Mitteilungsansicht"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Inhalt des Elements '%s' konnte nicht geladen werden."
-
-#~ msgid "Search a contact"
-#~ msgstr "Einen Kontakt suchen"
-
-#~ msgid "%s - 404"
-#~ msgstr "%s - 404"
-
-#~ msgid "Enable Sound Notification:"
-#~ msgstr "Klangbenachrichtigung aktivieren:"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s – Registrieren"
 
 #~ msgid "Movim Installer"
 #~ msgstr "Movim Installer"
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Die Konfigurationsdatei '%s' konnte nicht erstellt werden!"
 
@@ -2108,9 +1984,11 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 #~ msgid "JID not provided."
 #~ msgstr "Die JID wurde nicht übermittelt"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Die JID '%s' ist inkorrekt."
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Die Logdatei '%s' konnte nicht geöffnet werden."
 
@@ -2126,6 +2004,7 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 #~ msgid "Actual version : "
 #~ msgstr "Aktuelle Version : "
 
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Bitte entfernen Sie den %s Ordner um die Installation abzuschließen"
 
@@ -2152,6 +2031,9 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 
 #~ msgid "BOSH Connection Preferences"
 #~ msgstr "BOSH Verbindungseinstellungen"
+
+#~ msgid "Composing..."
+#~ msgstr "Baue Dinge zusammen..."
 
 #~ msgid "Only alphanumerics elements are authorized"
 #~ msgstr "Es sind nur Buchstaben und Zahlen zugelassen."
@@ -2195,8 +2077,14 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 #~ msgid "Address"
 #~ msgstr "Adresse"
 
+#~ msgid "My Posts"
+#~ msgstr "Meine Beiträge"
+
 #~ msgid "All"
 #~ msgstr "Alle"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Dein Webbrowser ist zu alt für Movim."
 
 #~ msgid ""
 #~ "Before you enjoy your social network, a few adjustements are required."
@@ -2207,6 +2095,7 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Vielen Dank, dass du Movim heruntergeladen hast."
 
+#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - Neues Profil anlegen"
 
@@ -2219,18 +2108,25 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 #~ msgid "Add your login informations"
 #~ msgstr "Bitte ergänze deine Login-Informationen"
 
+#, php-format
+#~ msgid "Contacts (%s)"
+#~ msgstr "Kontakte (%s)"
+
 #~ msgid "Cancel"
 #~ msgstr "Abbrechen"
 
 #~ msgid "Link my current account"
 #~ msgstr "Verknüpfe mein Konto"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "%s installieren"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim benötigt die Erweiterung %s."
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "%s und %s-Pakete installieren"
 
@@ -2250,17 +2146,16 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 #~ "personal details. Its use can potentially endanger your data. Always pay "
 #~ "attention to information that you submit."
 #~ msgstr ""
-#~ "Bitte beachten Sie, dass Movim noch im Entwicklungsstadium ist.  Es "
-#~ "arbeitet mit vielen persönlichen Angaben, und könnte diese eventuell "
-#~ "gefährden. Geben Sie also immer Acht, welche Informationen Sie bei Movim "
-#~ "eingeben."
+#~ "Bitte beachten Sie, dass Movim noch im Entwicklungsstadium ist.  Es arbeitet "
+#~ "mit vielen persönlichen Angaben, und könnte diese eventuell gefährden. Geben "
+#~ "Sie also immer Acht, welche Informationen Sie bei Movim eingeben."
 
 #~ msgid ""
 #~ "The following requirements were not met. Please make sure they are all "
 #~ "satisfied in order to install Movim."
 #~ msgstr ""
-#~ "Die folgenden Voraussetzungen sind nicht erfüllt. Beheben Sie die Mängel, "
-#~ "um Movim installieren zu können."
+#~ "Die folgenden Voraussetzungen sind nicht erfüllt. Beheben Sie die Mängel, um "
+#~ "Movim installieren zu können."
 
 #~ msgid ""
 #~ "Some errors were detected. Please correct them for the installation to "
@@ -2269,6 +2164,7 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 #~ "Es wurden Fehler entdeckt. Bitte korrigieren Sie diese, damit die "
 #~ "Installation abgeschlossen werden kann."
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr ""
 #~ "Sie können jetzt Ihre nagelneuer Movim-Instanz betreten. %sAuf geht's !%s"
@@ -2279,17 +2175,131 @@ msgstr "Größenbeschränkung des Ordners überschritten."
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Falsche PHP Version. Movim benötigt mindestens PHP 5.3."
 
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "Dieser Server beherbergt %s Konten"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "Die Verbindung zu BOSH ist gescheitert. Fehler: '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "Die Datenbankverbindung schlug fehl. Fehler: '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "DIe XMPP-Verbindung über BOSH schlug fehl. Fehle: '%s'"
 
 #~ msgid "Send request"
 #~ msgstr "Anfrage absenden"
+
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "Inhalt des Elements '%s' konnte nicht geladen werden."
+
+#~ msgid "Configure your group"
+#~ msgstr "Gruppeneinstellungen festlegen"
+
+#~ msgid "Delete this group"
+#~ msgstr "Diese Gruppe löschen"
+
+#~ msgid "Create one !"
+#~ msgstr "Erstelle eins!"
+
+#~ msgid "No account yet ?"
+#~ msgstr "Noch kein Konto?"
+
+#~ msgid "You can login using your favorite Jabber account"
+#~ msgstr "Sie können sich mit Ihrem Jabber-Benutzerkonto einloggen"
+
+#~ msgid "or with our demonstration account"
+#~ msgstr "oder mit unserem Beispiel-Account."
+
+#~ msgid "Population"
+#~ msgstr "Nutzerzahl"
+
+#~ msgid "Paused..."
+#~ msgstr "Angehalten..."
+
+#~ msgid "Topics"
+#~ msgstr "Themen"
+
+#~ msgid "Show/Hide"
+#~ msgstr "Ein-/Ausblenden"
+
+#~ msgid "JID"
+#~ msgstr "Jabber-ID"
+
+#~ msgid "Loading comments ..."
+#~ msgstr "Lade Kommentare..."
+
+#~ msgid "Get the comments"
+#~ msgstr "Lade Kommentare"
+
+#~ msgid "Add a comment"
+#~ msgstr "Einen Kommentar hinzufügen"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Lesezeichen"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Eine neue URL hinzufügen"
+
+#~ msgid "General"
+#~ msgstr "Allgemein"
+
+#~ msgid "Background color"
+#~ msgstr "Hintergrundfarbe"
+
+#~ msgid "Pattern"
+#~ msgstr "Muster"
+
+#~ msgid "This configuration is shared wherever you are connected !"
+#~ msgstr ""
+#~ "Diese Konfiguration wird genutzt, egal von wo aus du dich verbindest!"
+
+#~ msgid "Share with"
+#~ msgstr "Freigeben für"
+
+#~ msgid "your post will appear in your Movim public feed"
+#~ msgstr "dein Beitrag wird im öffentlichen Movim-Feed erscheinen"
+
+#~ msgid "Everyone"
+#~ msgstr "Jeder"
+
+#~ msgid "Your contacts"
+#~ msgstr "Deine Kontakte"
+
+#~ msgid "Delete this post"
+#~ msgstr "Diesen Eintrag löschen"
+
+#~ msgid "No public feed for this contact"
+#~ msgstr "Kein öffentlicher Nachrichten-Feed von diesem Kontakt"
+
+#~ msgid "No contact specified"
+#~ msgstr "Kein Kontakt ausgewählt"
+
+#~ msgid "What's new ?"
+#~ msgstr "Was ist neu?"
+
+#~ msgid "Preview"
+#~ msgstr "Vorschau"
+
+#~ msgid "Geolocalisation"
+#~ msgstr "Geolokalisierung"
+
+#~ msgid "Couldn't load file %s"
+#~ msgstr "Konnte Datei %s nicht laden"
+
+#~ msgid "%s - Post View"
+#~ msgstr "%s - Mitteilungsansicht"
+
+#~ msgid "Search a contact"
+#~ msgstr "Einen Kontakt suchen"
+
+#~ msgid "%s - 404"
+#~ msgstr "%s - 404"
+
+#~ msgid "Enable Sound Notification:"
+#~ msgstr "Klangbenachrichtigung aktivieren:"
