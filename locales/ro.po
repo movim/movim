@@ -9,12 +9,11 @@ msgstr ""
 "PO-Revision-Date: 2011-10-26 21:35+0000\n"
 "Last-Translator: edhelas <edhelas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -748,9 +747,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -863,7 +861,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:370
@@ -1525,7 +1524,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
@@ -1912,22 +1912,20 @@ msgstr ""
 msgid "Folder size limit exceeded"
 msgstr ""
 
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Cont nou"
+
 #~ msgid "My address"
 #~ msgstr "Adresa mea"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configurare"
 
 #~ msgid "Language"
 #~ msgstr "Limba"
 
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Cont nou"
-
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Versiune de PHP nepotrivita. Movim necesita PHP 5.3 sau mai mare."
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movin necesita extensia %s."
 
@@ -1937,6 +1935,7 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Instalator Movim"
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Fisierul de configuratie '%s' nu poate fi creat"
 
@@ -1953,6 +1952,7 @@ msgstr ""
 #~ msgid "User not logged in."
 #~ msgstr "Utilizatorul nu este logat."
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Fisierul jurnal %s un a putut fi deschis."
 

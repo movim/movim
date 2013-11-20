@@ -6,20 +6,19 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-19 22:58+0100\n"
-"PO-Revision-Date: 2011-10-26 21:31+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"PO-Revision-Date: 2013-07-27 17:06+0000\n"
+"Last-Translator: Gwenn M <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
 
 #: ../system/Conf.php:70
 #, php-format
 msgid "Cannot load file '%s'"
-msgstr ""
+msgstr "Neus ket tu kargañ ar restr '%s'"
 
 #: ../system/widget/WidgetWrapper.php:131
 #, php-format
@@ -55,160 +54,160 @@ msgstr ""
 
 #: ../system/Utils.php:161
 msgid "Monday"
-msgstr ""
+msgstr "Lun"
 
 #: ../system/Utils.php:162
 msgid "Tuesday"
-msgstr ""
+msgstr "Meurzh"
 
 #: ../system/Utils.php:163
 msgid "Wednesday"
-msgstr ""
+msgstr "Merc'her"
 
 #: ../system/Utils.php:164
 msgid "Thursday"
-msgstr ""
+msgstr "Yaou"
 
 #: ../system/Utils.php:165 ../system/Utils.php:167
 msgid "Friday"
-msgstr ""
+msgstr "Gwener"
 
 #: ../system/Utils.php:166
 msgid "Saturday"
-msgstr ""
+msgstr "Sadorn"
 
 #: ../system/Utils.php:170
 msgid "January"
-msgstr ""
+msgstr "Genver"
 
 #: ../system/Utils.php:171
 msgid "February"
-msgstr ""
+msgstr "C'hwevrer"
 
 #: ../system/Utils.php:172
 msgid "March"
-msgstr ""
+msgstr "Meurzh"
 
 #: ../system/Utils.php:173
 msgid "April"
-msgstr ""
+msgstr "Ebrel"
 
 #: ../system/Utils.php:174
 msgid "May"
-msgstr ""
+msgstr "Mae"
 
 #: ../system/Utils.php:175
 msgid "June"
-msgstr ""
+msgstr "Even"
 
 #: ../system/Utils.php:176
 msgid "July"
-msgstr ""
+msgstr "Gouere"
 
 #: ../system/Utils.php:177
 msgid "August"
-msgstr ""
+msgstr "Eost"
 
 #: ../system/Utils.php:178
 msgid "September"
-msgstr ""
+msgstr "Gwengolo"
 
 #: ../system/Utils.php:179
 msgid "October"
-msgstr ""
+msgstr "Here"
 
 #: ../system/Utils.php:180
 msgid "November"
-msgstr ""
+msgstr "Du"
 
 #: ../system/Utils.php:181
 msgid "December"
-msgstr ""
+msgstr "Kerzu"
 
 #: ../system/Utils.php:187
 msgid "Today"
-msgstr ""
+msgstr "Hiziv"
 
 #: ../system/Utils.php:189
 msgid "Tomorrow"
-msgstr ""
+msgstr "Warc'hoazh"
 
 #: ../system/Utils.php:191
 msgid "Yesterday"
-msgstr ""
+msgstr "Dec'h"
 
 #: ../system/Utils.php:197
 msgid "day"
-msgstr ""
+msgstr "devezh"
 
 #: ../system/Utils.php:200
 #, php-format
 msgid " %d days ago"
-msgstr ""
+msgstr " %d devezh 'zo"
 
 #: ../system/Utils.php:219 ../system/Utils.php:456
 msgid "None"
-msgstr ""
+msgstr "Hini ebet"
 
 #: ../system/Utils.php:220
 msgid "Male"
-msgstr ""
+msgstr "Paotr"
 
 #: ../system/Utils.php:221
 msgid "Female"
-msgstr ""
+msgstr "Plac'h"
 
 #: ../system/Utils.php:222
 msgid "Other"
-msgstr ""
+msgstr "All"
 
 #: ../system/Utils.php:457
 msgid "Single"
-msgstr ""
+msgstr "E-unan"
 
 #: ../system/Utils.php:458
 msgid "In a relationship"
-msgstr ""
+msgstr "E kouplad"
 
 #: ../system/Utils.php:459
 msgid "Married"
-msgstr ""
+msgstr "Dimezet"
 
 #: ../system/Utils.php:460
 msgid "Divorced"
-msgstr ""
+msgstr "Dizimezet"
 
 #: ../system/Utils.php:461
 msgid "Widowed"
-msgstr ""
+msgstr "Intañv(ez)"
 
 #: ../system/Utils.php:462
 msgid "Cohabiting"
-msgstr ""
+msgstr "Kenlojañ"
 
 #: ../system/Utils.php:463
 msgid "Civil Union"
-msgstr ""
+msgstr "Unvaniezh keodedel"
 
 #: ../system/Utils.php:469 ../app/widgets/Chat/Chat.php:46
 msgid "Online"
-msgstr ""
+msgstr "Enlinenn"
 
 #: ../system/Utils.php:470 ../app/widgets/Chat/Chat.php:47
 msgid "Away"
-msgstr ""
+msgstr "Ezvezant"
 
 #: ../system/Utils.php:471 ../app/widgets/Chat/Chat.php:48
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "Arabat direnkañ"
 
 #: ../system/Utils.php:472 ../app/widgets/Chat/Chat.php:49
 msgid "Extended Away"
-msgstr ""
+msgstr "Ezvezant e-pad pell"
 
 #: ../system/Utils.php:473
 msgid "Logout"
-msgstr ""
+msgstr "Digennaskañ"
 
 #: ../system/Utils.php:490
 msgid "afraid"
@@ -565,7 +564,7 @@ msgstr ""
 #: ../system/MovimException.php:15
 #, php-format
 msgid "Error: %s"
-msgstr ""
+msgstr "Kudenn: %s"
 
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
@@ -621,12 +620,12 @@ msgstr ""
 #: ../app/widgets/News/News.php:30 ../app/widgets/Wall/Wall.php:111
 #: ../app/widgets/Feed/Feed.php:139
 msgid "Get older posts"
-msgstr ""
+msgstr "Kaout an embanadennoù kozhoc'h"
 
 #: ../app/widgets/News/News.php:61 ../app/widgets/Feed/Feed.php:172
 #: ../app/widgets/Node/Node.php:54
 msgid "Your feed cannot be loaded."
-msgstr ""
+msgstr "Ho gwazh n'hall ket bezañ karget"
 
 #: ../app/widgets/Discover/Discover.php:50
 msgid "Last registered"
@@ -647,7 +646,7 @@ msgstr ""
 #: ../app/widgets/ServerNodes/ServerNodes.php:135
 #: ../app/widgets/Notifs/Notifs.php:277
 msgid "Add"
-msgstr ""
+msgstr "Ouzhpennañ"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:140
 #: ../app/widgets/Node/Node.php:198 ../app/widgets/Node/Node.php:220
@@ -671,11 +670,11 @@ msgstr ""
 #: ../app/controllers/MediaController.php:17
 #: ../app/controllers/NodeconfigController.php:18
 msgid "Help"
-msgstr ""
+msgstr "Sikour"
 
 #: ../app/widgets/Help/Help.php:31
 msgid "What is Movim?"
-msgstr ""
+msgstr "Petra eo Movim?"
 
 #: ../app/widgets/Help/Help.php:33
 #, php-format
@@ -683,42 +682,48 @@ msgid ""
 "Visit the page %s What is Movim ? %s to know more about the project, its "
 "aims and understand how it works."
 msgstr ""
+"Gwelladenniñ ar bajenn %s Petra eo Movim ? %s evit gouzout hiroc'h diwar-"
+"benn ar raktres, e pal ha kompren penaos ez a en-dro."
 
 #: ../app/widgets/Help/Help.php:36
 msgid "What do the little banners refer to ?"
-msgstr ""
+msgstr "Petra dalv ar bannelioù bhan ?"
 
 #: ../app/widgets/Help/Help.php:45
 msgid ""
 "Thanks to these five little banners, you can quickly identitfy the level of "
 "confdentiality applied to the information you provide."
 msgstr ""
+"A-drugarez d'ar pemp banielig-se ez eus tu deoc'h kavout al live prevezded "
+"war an titour roet ganeoc'h"
 
 #: ../app/widgets/Help/Help.php:49
 msgid "White, only you can see the information"
-msgstr ""
+msgstr "Gwenn, n'eus nemedoc'h a c'hell gwelout an titour"
 
 #: ../app/widgets/Help/Help.php:50
 msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
+msgstr "Gwer, choazet ho peus an darempredoù a c'hell gwelet ho titouroù"
 
 #: ../app/widgets/Help/Help.php:51
 msgid "Orange, all your contact list can see your information"
-msgstr ""
+msgstr "Orañjez, tout ho darempredoù a c'hell gwelet ho titouroù"
 
 #: ../app/widgets/Help/Help.php:52
 msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
+msgstr "Ruz, an holl en ho rouedad XMPP a c'hell gwelet ho titouroù"
 
 #: ../app/widgets/Help/Help.php:53
 msgid "Black, the whole Internet can see your information"
-msgstr ""
+msgstr "Du, an internet a-bezh a c'hell gwelet ho titouroù"
 
 #: ../app/widgets/Help/Help.php:57
 msgid ""
 "Some features are missing/I can't do everything I used to do on other social "
 "networks"
 msgstr ""
+"Arc'hweladurioù a vank/N'eus ket tu din ober tout ar pezh a ran war ar "
+"rouedadoù sokial all"
 
 #: ../app/widgets/Help/Help.php:59
 #, php-format
@@ -727,6 +732,9 @@ msgid ""
 "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
 "the one you want is on its way."
 msgstr ""
+"Daoust m'eo prim emdroadur Movim, ur bern (bern) ac'hwelladurioù a vank. "
+"Bezit pasiant :). Tu o deoc'h sellet ouzh %s an handelv o tont %s evit "
+"gouzout m'eo war an hent an hini ho 'peus c'hoant."
 
 #: ../app/widgets/Help/Help.php:61
 #, php-format
@@ -734,10 +742,12 @@ msgid ""
 "Don't forget that Movim is an open source project, a helping hand is always "
 "welcome (see %s Can I participate %s)"
 msgstr ""
+"Na zisoñjit ket eo Movim ur raktres frank, un taol sikour a zo degemeret mat "
+"atav (gwelet %s Tu zo din kemer perzh %s)"
 
 #: ../app/widgets/Help/Help.php:64
 msgid "I can't find the answer to my question here"
-msgstr ""
+msgstr "N'eus ket bet tu din kavout ar respont d'am goulenn"
 
 #: ../app/widgets/Help/Help.php:66
 #, php-format
@@ -746,6 +756,8 @@ msgid ""
 "on the official chatroom %s or via our mailing-list (%s see the dedicated "
 "page %s)."
 msgstr ""
+"Kit d'ar %s Goulennoù Savet an Aliesañ %s pe goulennit war an tchat ofisiel "
+"%s pe dre hor mailing-list (%s sellit ar bajenn a-zere %s)"
 
 #: ../app/widgets/Explore/Explore.php:68
 msgid "Chatrooms"
@@ -760,11 +772,11 @@ msgstr ""
 #: ../app/widgets/Admin/Admin.php:62 ../app/widgets/Admin/Admin.php:67
 #, php-format
 msgid "Couldn't create directory '%s'."
-msgstr ""
+msgstr "Dibosupl krouiñ an teuliad '%s'."
 
 #: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:349
 msgid "Submit"
-msgstr ""
+msgstr "Kinnig"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:504
 msgid "Compatibility Check"
@@ -827,23 +839,23 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:304
 msgid "empty"
-msgstr ""
+msgstr "goullo"
 
 #: ../app/widgets/Admin/Admin.php:305
 msgid "terse"
-msgstr ""
+msgstr "taer"
 
 #: ../app/widgets/Admin/Admin.php:306
 msgid "normal"
-msgstr ""
+msgstr "normal"
 
 #: ../app/widgets/Admin/Admin.php:307
 msgid "talkative"
-msgstr ""
+msgstr "klakenn"
 
 #: ../app/widgets/Admin/Admin.php:308
 msgid "ultimate"
-msgstr ""
+msgstr "diwezhañ"
 
 #: ../app/widgets/Admin/Admin.php:315
 msgid "Log verbosity"
@@ -862,7 +874,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:370
@@ -930,7 +943,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:457
 msgid "Password"
-msgstr ""
+msgstr "Ger-tremen"
 
 #: ../app/widgets/Admin/Admin.php:461
 msgid "Retype password"
@@ -942,7 +955,7 @@ msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:76 ../app/widgets/Roster/Roster.php:217
 msgid "Ungrouped"
-msgstr ""
+msgstr "Distrollet"
 
 #: ../app/widgets/Roster/Roster.php:277
 #, php-format
@@ -1001,7 +1014,7 @@ msgstr ""
 #: ../app/widgets/Wall/Wall.php:91 ../app/widgets/Wall/Wall.php:137
 #: ../app/widgets/Blog/Blog.php:38
 msgid "Feed"
-msgstr ""
+msgstr "Gwazh"
 
 #: ../app/widgets/Wall/Wall.php:98 ../app/widgets/Notifs/Notifs.php:135
 msgid "Updating"
@@ -1020,7 +1033,7 @@ msgstr ""
 #: ../app/widgets/ContactCard/ContactCard.php:51
 #: ../app/widgets/Account/Account.php:289
 msgid "Name"
-msgstr ""
+msgstr "Anv"
 
 #: ../app/widgets/Media/Media.php:106
 msgid "Resolution"
@@ -1095,7 +1108,7 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:36
 msgid "Connecting..."
-msgstr ""
+msgstr "O kennaskañ..."
 
 #: ../app/widgets/Login/Login.php:54
 #, php-format
@@ -1111,11 +1124,11 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:88
 msgid "Wrong username"
-msgstr ""
+msgstr "Anv implijer direizh"
 
 #: ../app/widgets/Login/Login.php:94
 msgid "Invalid JID"
-msgstr ""
+msgstr "JID direizh"
 
 #: ../app/widgets/Login/Login.php:100
 msgid "Authentication mechanism not supported by Movim"
@@ -1127,39 +1140,40 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:112
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
+msgstr "Kudenn Domani XMPP, ho gont n'eo ket un ID Jabber reizh"
 
 #: ../app/widgets/Login/Login.php:118 ../app/widgets/Account/Account.php:388
 msgid "Some data are missing !"
-msgstr ""
+msgstr "Roadennoù 'zo a vank !"
 
 #: ../app/widgets/Login/Login.php:124
 msgid "Wrong password"
-msgstr ""
+msgstr "Ger-tremen direizh"
 
 #: ../app/widgets/Login/Login.php:130
 msgid "The XMPP authentification failed"
-msgstr ""
+msgstr "Ar c'hennaskañ XMPP a zo c'hwitet"
 
 #: ../app/widgets/Login/Login.php:136
 msgid "The current BOSH URL in invalid"
-msgstr ""
+msgstr "An URL BOSH a zo dreizh"
 
 #: ../app/widgets/Login/Login.php:142
 msgid "Internal server error"
-msgstr ""
+msgstr "Kudenn servijer diabarzh"
 
 #: ../app/widgets/Login/Login.php:148
 msgid "Session error"
-msgstr ""
+msgstr "Kudenn dalc'h"
 
 #: ../app/widgets/Login/Login.php:154
 msgid "Account successfully created"
-msgstr ""
+msgstr "Kont krouet gant berzh."
 
 #: ../app/widgets/Login/Login.php:160
 msgid "Movim failed to authenticate. You entered wrong data"
 msgstr ""
+"N'eo ket deuet a-benn Movim da gennaskañ. Lakaet ho peus roadennoù fall."
 
 #: ../app/widgets/Login/Login.php:166
 msgid "Your XMPP server is unauthorized"
@@ -1171,7 +1185,7 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:186
 msgid "Come in!"
-msgstr ""
+msgstr "Deuit e-barzh !"
 
 #: ../app/widgets/Notifs/Notifs.php:138
 msgid "Refresh"
@@ -1183,7 +1197,7 @@ msgstr ""
 
 #: ../app/widgets/Notifs/Notifs.php:263
 msgid "wants to talk with you"
-msgstr ""
+msgstr "en deus c'hoant komz ganeoc'h"
 
 #: ../app/widgets/Vcard/Vcard.php:37
 msgid "Profile Updated"
@@ -1199,17 +1213,17 @@ msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:122 ../app/widgets/Profile/Profile.php:133
 msgid "Create my vCard"
-msgstr ""
+msgstr "Krouiñ ma vCard"
 
 #: ../app/widgets/Vcard/Vcard.php:148
 #: ../app/widgets/ContactCard/ContactCard.php:47
 msgid "General Informations"
-msgstr ""
+msgstr "Titouroù hollek"
 
 #: ../app/widgets/Vcard/Vcard.php:156
 #: ../app/widgets/ContactCard/ContactCard.php:57
 msgid "Nickname"
-msgstr ""
+msgstr "Lezanv"
 
 #: ../app/widgets/Vcard/Vcard.php:161
 #: ../app/widgets/ContactCard/ContactCard.php:85
@@ -1220,33 +1234,33 @@ msgstr ""
 #: ../app/widgets/Vcard/Vcard.php:166
 #: ../app/widgets/ContactCard/ContactCard.php:65
 msgid "Date of Birth"
-msgstr ""
+msgstr "Devezh ganedigezh"
 
 #: ../app/widgets/Vcard/Vcard.php:171
 msgid "Day"
-msgstr ""
+msgstr "Devezh"
 
 #: ../app/widgets/Vcard/Vcard.php:191
 msgid "Month"
-msgstr ""
+msgstr "Miz"
 
 #: ../app/widgets/Vcard/Vcard.php:210
 msgid "Year"
-msgstr ""
+msgstr "Bloavezh"
 
 #: ../app/widgets/Vcard/Vcard.php:224
 #: ../app/widgets/ContactCard/ContactCard.php:71
 msgid "Gender"
-msgstr ""
+msgstr "Rev"
 
 #: ../app/widgets/Vcard/Vcard.php:235
 #: ../app/widgets/ContactCard/ContactCard.php:77
 msgid "Marital Status"
-msgstr ""
+msgstr "Statud-dimez"
 
 #: ../app/widgets/Vcard/Vcard.php:246
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: ../app/widgets/Vcard/Vcard.php:257
 msgid "Webcam"
@@ -1264,12 +1278,12 @@ msgstr ""
 #: ../app/widgets/ContactCard/ContactCard.php:99
 #: ../app/widgets/ContactCard/ContactCard.php:104
 msgid "Website"
-msgstr ""
+msgstr "Lec'hienn web"
 
 #: ../app/widgets/Vcard/Vcard.php:281
 #: ../app/widgets/ContactCard/ContactCard.php:112
 msgid "About Me"
-msgstr ""
+msgstr "Diwar ma fenn"
 
 #: ../app/widgets/Vcard/Vcard.php:289
 #: ../app/widgets/ContactCard/ContactCard.php:121
@@ -1303,15 +1317,15 @@ msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:339
 msgid "Submitting"
-msgstr ""
+msgstr "Kinngadenn"
 
 #: ../app/widgets/Vcard/Vcard.php:350
 msgid "Reset"
-msgstr ""
+msgstr "Adkregiñ"
 
 #: ../app/widgets/Vcard/Vcard.php:372
 msgid "Edit my Profile"
-msgstr ""
+msgstr "Cheñch va brofil"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
 msgid "Subscriptions saved"
@@ -1368,7 +1382,7 @@ msgstr ""
 
 #: ../app/widgets/ContactManage/ContactManage.php:67
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: ../app/widgets/ContactManage/ContactManage.php:73
 msgid "Group"
@@ -1434,27 +1448,27 @@ msgstr ""
 #: ../app/widgets/ContactAction/ContactAction.php:65
 #: ../app/widgets/ContactAction/ContactAction.php:134
 msgid "Actions"
-msgstr ""
+msgstr "Oberennoù"
 
 #: ../app/widgets/ContactAction/ContactAction.php:82
 msgid "Chat"
-msgstr ""
+msgstr "Tchat"
 
 #: ../app/widgets/ContactAction/ContactAction.php:100
 msgid "Remove this contact"
-msgstr ""
+msgstr "Tennañ an darempred"
 
 #: ../app/widgets/ContactAction/ContactAction.php:117
 msgid "Yes"
-msgstr ""
+msgstr "Ya"
 
 #: ../app/widgets/ContactAction/ContactAction.php:130
 msgid "No"
-msgstr ""
+msgstr "Nann"
 
 #: ../app/widgets/ContactAction/ContactAction.php:146
 msgid "Invite this user"
-msgstr ""
+msgstr "Pediñ an implijer-mañ"
 
 #: ../app/widgets/Presence/Presence.php:120
 msgid "Disconnect"
@@ -1474,11 +1488,11 @@ msgstr ""
 #: ../app/controllers/MediaController.php:14
 #: ../app/controllers/NodeconfigController.php:15
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: ../app/widgets/Log/Log.php:33
 msgid "Debug console"
-msgstr ""
+msgstr "Koñsolenn debug"
 
 #: ../app/widgets/Config/Config.php:54
 msgid "Configuration updated"
@@ -1498,7 +1512,7 @@ msgstr ""
 
 #: ../app/widgets/Profile/Profile.php:129
 msgid "No profile yet ?"
-msgstr ""
+msgstr "Profil ebet c'hoazh ?"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:31
 #: ../app/widgets/MediaUpload/MediaUpload.php:66
@@ -1524,7 +1538,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
@@ -1545,11 +1560,11 @@ msgstr ""
 
 #: ../app/widgets/Location/Location.php:109
 msgid "Accept"
-msgstr ""
+msgstr "Asantiñ"
 
 #: ../app/widgets/Chat/Chat.php:50
 msgid "Offline"
-msgstr ""
+msgstr "Digennasket"
 
 #: ../app/widgets/Chat/Chat.php:137
 msgid "Message Published"
@@ -1586,15 +1601,15 @@ msgstr ""
 
 #: ../app/widgets/Account/Account.php:394
 msgid "Wrong ID"
-msgstr ""
+msgstr "ID fall"
 
 #: ../app/widgets/Account/Account.php:400
 msgid "You entered different passwords"
-msgstr ""
+msgstr "Lakaet ho peus gerioù tremen disheñvel"
 
 #: ../app/widgets/Account/Account.php:406
 msgid "Invalid name"
-msgstr ""
+msgstr "Anv direizh"
 
 #: ../app/widgets/Account/Account.php:412
 msgid "Request not acceptable"
@@ -1602,23 +1617,23 @@ msgstr ""
 
 #: ../app/widgets/Account/Account.php:418
 msgid "Username already taken"
-msgstr ""
+msgstr "Kemeret eo bet an anv implijer dija"
 
 #: ../app/widgets/Account/Account.php:424
 msgid "Could not connect to the XMPP server"
-msgstr ""
+msgstr "N'eus ket bet tu kenaskañ ouzh ar servijer XMPP"
 
 #: ../app/widgets/Account/Account.php:430
 msgid "Could not communicate with the XMPP server"
-msgstr ""
+msgstr "N'eus ket bet tu eskemm gant ar servijer XMPP"
 
 #: ../app/widgets/Account/Account.php:436
 msgid "Unknown error"
-msgstr ""
+msgstr "Kudenn dianavezet"
 
 #: ../app/widgets/Account/Account.php:448
 msgid "Create a new account"
-msgstr ""
+msgstr "Kouiñ ur gont nevez"
 
 #: ../app/widgets/Account/Account.php:451
 msgid ""
@@ -1677,16 +1692,16 @@ msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:113
 msgid "Bot"
-msgstr ""
+msgstr "Robot"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:114
 msgid "Desktop"
-msgstr ""
+msgstr "Burev"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:115
 #: ../app/widgets/ContactInfo/ContactInfo.php:116
 msgid "Phone"
-msgstr ""
+msgstr "Pellgomz"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
 msgid "Web"
@@ -1698,13 +1713,15 @@ msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
 msgid "Client Informations"
-msgstr ""
+msgstr "Titouroù an arval"
 
 #: ../app/widgets/Feed/Feed.php:61 ../app/widgets/Feed/Feed.php:100
 msgid ""
 "Your server doesn't support post publication, you can only read contact's "
 "feeds"
 msgstr ""
+"N'eo ket meret an embannadennoù gant ho servijer, tu zo deoc'h lenn gwazhioù "
+"darempred hepken"
 
 #: ../app/widgets/Feed/Feed.php:68
 msgid "Comment publication error"
@@ -1774,7 +1791,7 @@ msgstr ""
 #: ../app/controllers/NodeconfigController.php:10
 #: ../app/controllers/NodeconfigController.php:17
 msgid "Configuration"
-msgstr ""
+msgstr "Kefluniadur"
 
 #: ../app/widgets/Node/Node.php:177
 msgid "Make your membership to this group public to your friends"
@@ -1795,7 +1812,7 @@ msgstr ""
 #: ../app/controllers/ProfileController.php:9
 #, php-format
 msgid "%s - Profile"
-msgstr ""
+msgstr "%s - Profil"
 
 #: ../app/controllers/ProfileController.php:11
 #: ../app/controllers/BlogController.php:11
@@ -1830,7 +1847,7 @@ msgstr "Degemer"
 #: ../app/controllers/MediaController.php:12
 #: ../app/controllers/NodeconfigController.php:13
 msgid "News"
-msgstr ""
+msgstr "Nevezadennoù"
 
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountController.php:9
@@ -1858,16 +1875,16 @@ msgstr ""
 #: ../app/controllers/HelpController.php:9
 #, php-format
 msgid "%s - Help Page"
-msgstr ""
+msgstr "%s - Pajenn sikour"
 
 #: ../app/controllers/AccountController.php:12
 msgid "Account Creation"
-msgstr ""
+msgstr "Krouadur ar gont"
 
 #: ../app/controllers/MainController.php:9
 #, php-format
 msgid "%s - Welcome to Movim"
-msgstr ""
+msgstr "%s - Degemer mat war Movim"
 
 #: ../app/controllers/AboutController.php:9
 #, php-format
@@ -1877,12 +1894,12 @@ msgstr ""
 #: ../app/controllers/LoginController.php:9
 #, php-format
 msgid "%s - Login to Movim"
-msgstr ""
+msgstr "%s - Kennaskañ da Movim"
 
 #: ../app/controllers/ConfController.php:9
 #, php-format
 msgid "%s - Configuration"
-msgstr ""
+msgstr "%s - Kefluniadur"
 
 #: ../app/controllers/ExploreController.php:11
 #, php-format
@@ -1911,5 +1928,21 @@ msgstr ""
 msgid "Folder size limit exceeded"
 msgstr ""
 
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "N'eus ket tu kargañ talvoud an elfenn '%s'"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Ho merdeer a zo re gozh evit implij Movim"
+
+#~ msgid "My address"
+#~ msgstr "Ho chomlec'h"
+
+#~ msgid "My Posts"
+#~ msgstr "Va embanadennoù"
+
 #~ msgid "Language"
-#~ msgstr "Teod"
+#~ msgstr "Yezh"
+
+#~ msgid "Composing..."
+#~ msgstr "O kompozañ"

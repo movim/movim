@@ -9,12 +9,12 @@ msgstr ""
 "PO-Revision-Date: 2013-05-11 17:33+0000\n"
 "Last-Translator: Baptiste Darthenay <baptiste+launchpad@darthenay.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+"Language: \n"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -748,9 +748,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Tujmesaĝilo"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -863,7 +862,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:370
@@ -1525,7 +1525,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
@@ -1912,19 +1913,6 @@ msgstr ""
 msgid "Folder size limit exceeded"
 msgstr ""
 
-#~ msgid "My address"
-#~ msgstr "Mia adreso"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Agordaĵoj"
-
-#~ msgid "Language"
-#~ msgstr "Lingvo"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Ne eblas ŝarĝi elementvaloro '%s'"
-
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "La Movima dosierujo devus esti skribebla."
 
@@ -1947,11 +1935,19 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "JID maldisponebla"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "JID “%s” malkorekta"
 
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Kreado de konto"
+
+#~ msgid "My address"
+#~ msgstr "Mia adreso"
+
+#~ msgid "Language"
+#~ msgstr "Lingvo"
 
 #~ msgid "Decline"
 #~ msgstr "Malakcepti"
@@ -1962,12 +1958,15 @@ msgstr ""
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Nekongrua versio de PHP. Movim necesas PHP 5.3 minimume."
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim necesas la kromaĵon %s."
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Ne povas krei agorddosieron “%s”."
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Ne povas malfermi protokolan dosieron '%s'"
 
@@ -1981,6 +1980,7 @@ msgstr ""
 #~ msgstr ""
 #~ "Ĝisdatigu vian PHP-an version aŭ kontaktu vian servilan administranton"
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Instali %s kaj %s pakaĵojn"
 
@@ -1999,6 +1999,7 @@ msgstr ""
 #~ msgid "Enable read and write rights on Movim's root folder"
 #~ msgstr "Ebligi legi kaj skribi rajtojn on la radika dosierujo de Movim"
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr "Nun, vi povas aliri vian Movim-instancon %sEk en!%s"
 
@@ -2008,8 +2009,13 @@ msgstr ""
 #~ msgid "Database Detected"
 #~ msgstr "Datumbazo trovita"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Intali la pakaĵon \"%s\""
 
 #~ msgid "BOSH Connection Preferences"
 #~ msgstr "Agordoj de BOSH-konektado"
+
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "Ne eblas ŝarĝi elementvaloro '%s'"
