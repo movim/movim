@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-19 22:58+0100\n"
-"PO-Revision-Date: 2013-06-19 10:54+0000\n"
+"PO-Revision-Date: 2013-08-04 11:03+0000\n"
 "Last-Translator: Francesco Muriana <f.muriana@hotmail.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+"Language: \n"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -764,9 +764,8 @@ msgstr ""
 "vedi la pagina dedicata %s)."
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -879,7 +878,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:370
@@ -1176,7 +1176,8 @@ msgstr "Account creato con successo"
 
 #: ../app/widgets/Login/Login.php:160
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "Movim ha fallito ad autenticarti. Devi aver inserito i dati sbagliati"
+msgstr ""
+"Movim ha fallito ad autenticarti. Devi aver inserito i dati sbagliati"
 
 #: ../app/widgets/Login/Login.php:166
 msgid "Your XMPP server is unauthorized"
@@ -1541,7 +1542,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
@@ -1930,35 +1932,17 @@ msgstr ""
 msgid "Folder size limit exceeded"
 msgstr ""
 
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Il tuo browser web è troppo vecchio per usarlo con Movim"
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Registrazione"
 
 #~ msgid "My address"
 #~ msgstr "Il mio indirizzo"
 
-#~ msgid "Composing..."
-#~ msgstr "Scrivendo..."
-
-#~ msgid "My Posts"
-#~ msgstr "I miei post"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configurazione"
-
 #~ msgid "Language"
 #~ msgstr "Lingua"
 
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "Contatti (%s)"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Impossibile caricare il valore dell'elemento '%s'"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Registrazione"
-
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim necessita l'estensione %s"
 
@@ -1971,6 +1955,7 @@ msgstr ""
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "La cartella di Movim deve avere i permessi di scrittura"
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Installa %s e i pacchetti %s"
 
@@ -1987,6 +1972,7 @@ msgstr ""
 #~ msgstr ""
 #~ "Discrepanza nella versione di PHP. Movim richiede PHP 5.3 o maggiore."
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Installa il pacchetto %s"
 
@@ -2015,6 +2001,7 @@ msgstr ""
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Grazie per aver scaricato Movim!"
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Impossibile creare il file di configurazione '%s'"
 
@@ -2022,8 +2009,8 @@ msgstr ""
 #~ "The following requirements were not met. Please make sure they are all "
 #~ "satisfied in order to install Movim."
 #~ msgstr ""
-#~ "I seguenti requisiti non sono stati riscontrati. Per favore assicurati "
-#~ "che siano soddisfatti per poter installare Movim."
+#~ "I seguenti requisiti non sono stati riscontrati. Per favore assicurati che "
+#~ "siano soddisfatti per poter installare Movim."
 
 #~ msgid "Compatibility Test"
 #~ msgstr "Test di compatibilità"
@@ -2043,6 +2030,7 @@ msgstr ""
 #~ msgid "Actual version : "
 #~ msgstr "Versione corrente "
 
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Per completare l'installazione rimuovere la cartella %s"
 
@@ -2052,6 +2040,7 @@ msgstr ""
 #~ msgid "or"
 #~ msgstr "oppure"
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr ""
 #~ "Puoi ora accedere alla tua splendente istanza Movim %sTuffati dentro!%s"
@@ -2062,6 +2051,7 @@ msgstr ""
 #~ msgid "Database Detected"
 #~ msgstr "Database Trovato"
 
+#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - Aggiungi un account"
 
@@ -2103,14 +2093,19 @@ msgstr ""
 #~ msgid "Create"
 #~ msgstr "Crea"
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Impossibile aprire il file di log '%s'"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Il jabber id  '%s' é sbagliato"
 
 #~ msgid "Address"
 #~ msgstr "Indirizzo"
+
+#~ msgid "Composing..."
+#~ msgstr "Scrivendo..."
 
 #~ msgid "Loading your feed ..."
 #~ msgstr "Caricando il tuo feed..."
@@ -2121,11 +2116,21 @@ msgstr ""
 #~ msgid "Client Type"
 #~ msgstr "Tipologia client"
 
+#~ msgid "My Posts"
+#~ msgstr "I miei post"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Il tuo browser web è troppo vecchio per usarlo con Movim"
+
 #~ msgid "Link my current account"
 #~ msgstr "Link al mio account corrente"
 
 #~ msgid "Decline"
 #~ msgstr "Rifiuta"
+
+#, php-format
+#~ msgid "Contacts (%s)"
+#~ msgstr "Contatti (%s)"
 
 #~ msgid "Cancel"
 #~ msgstr "Annulla"
@@ -2145,15 +2150,23 @@ msgstr ""
 #~ msgid "All"
 #~ msgstr "Tutti"
 
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "Questo server ospita %s account"
 
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "Impossibile caricare il valore dell'elemento '%s'"
+
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "Connessione Bosh fallita con errore '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "Connessione al database fallita con errore '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "Connessione XMPP tramite Bosh fallita con errore '%s'"
 
