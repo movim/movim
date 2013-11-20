@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-19 22:58+0100\n"
-"PO-Revision-Date: 2013-07-25 09:12+0000\n"
+"PO-Revision-Date: 2013-08-04 11:01+0000\n"
 "Last-Translator: Mohamed Touhami MAHDI <dragnucs@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+"Language: \n"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -759,9 +759,8 @@ msgstr ""
 "للمشروع %s أو في قائمة المراسلات (%s طالع صفحتها %s)."
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "المحادثة"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -874,7 +873,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:370
@@ -1536,7 +1536,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
@@ -1923,47 +1924,31 @@ msgstr "ليست صورة"
 msgid "Folder size limit exceeded"
 msgstr ""
 
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "المتصفح الذي تستخدمه أقدم من أن يُشغّل Movim!"
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - إنشاء حساب"
 
 #~ msgid "My address"
 #~ msgstr "عنوان بريدي"
 
-#~ msgid "Composing..."
-#~ msgstr "يكتب..."
-
-#~ msgid "My Posts"
-#~ msgstr "مداخلاتي"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "ضبط"
-
 #~ msgid "Language"
 #~ msgstr "اللغة"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "المعارف (%s)"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "تعذّر تحميل قيمة العنصر '%s'"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - إنشاء حساب"
 
 #~ msgid "or"
 #~ msgstr "أو"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "نضّب الحزمة %s"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "يتطلّب Movim الملحقة %s"
 
 #~ msgid "Actual version : "
 #~ msgstr "الإصدارة الفعلية: "
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "نصّب الحزمتين %s و %s"
 
@@ -1979,12 +1964,15 @@ msgstr ""
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "يجب أن يكون دليل Movim قابلا للكتابة فيه"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "تعذّر الاتصال BOSH. العطل هو '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "تعذّر الاتصال بقاعدة البيانات. العطل هو '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "تعذّر الاتصال XMPP عبر BOSH. العطل هو '%s'"
 
@@ -1994,8 +1982,7 @@ msgstr ""
 #~ "attention to information that you submit."
 #~ msgstr ""
 #~ "لاحظ أن Movim لاتزال قيد التطوير و أنها ستعالج قدرا كبيرا من البيانات "
-#~ "الشخصية، مما قد يعرّض بياناتك للانكشاف، لذا دقّق في البيانات التي تضعها "
-#~ "فيها."
+#~ "الشخصية، مما قد يعرّض بياناتك للانكشاف، لذا دقّق في البيانات التي تضعها فيها."
 
 #~ msgid ""
 #~ "Before you enjoy your social network, a few adjustements are required."
@@ -2004,6 +1991,7 @@ msgstr ""
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "شكرا لتنزيلك Movim."
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "تعذّر إنشاء ملف التضبيطات '%s'."
 
@@ -2041,6 +2029,11 @@ msgstr ""
 #~ msgid "User not logged in."
 #~ msgstr "المستخدم غير والجٍ"
 
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "تعذّر تحميل قيمة العنصر '%s'"
+
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "أزل الدليل %s لإتمام التنصيب"
 
@@ -2053,12 +2046,15 @@ msgstr ""
 #~ msgid "Valid Bosh"
 #~ msgstr "Bosh صحيح"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "معرِّف JID '%s' غير صحيح"
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "تعذّر فتح ملف السجل '%s'"
 
+#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - إضافة حساب"
 
@@ -2093,6 +2089,9 @@ msgstr ""
 #~ msgid "Create"
 #~ msgstr "أنشئ"
 
+#~ msgid "Composing..."
+#~ msgstr "يكتب..."
+
 #~ msgid "Same here !"
 #~ msgstr "و هنا كذلك"
 
@@ -2108,9 +2107,16 @@ msgstr ""
 #~ msgid "Client Type"
 #~ msgstr "نوع العميل"
 
+#~ msgid "My Posts"
+#~ msgstr "مداخلاتي"
+
 #~ msgid "All"
 #~ msgstr "الكل"
 
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "المتصفح الذي تستخدمه أقدم من أن يُشغّل Movim!"
+
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "يستضيف هذا الخادوم %s حسابات"
 
@@ -2119,6 +2125,10 @@ msgstr ""
 
 #~ msgid "Decline"
 #~ msgstr "ارفض"
+
+#, php-format
+#~ msgid "Contacts (%s)"
+#~ msgstr "المعارف (%s)"
 
 #~ msgid "Cancel"
 #~ msgstr "ألغِ"
@@ -2135,6 +2145,7 @@ msgstr ""
 #~ msgid "Follow"
 #~ msgstr "تتبّع"
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr "يمكنك الآن استخدام تنصيبة Movim الجديدة. %sهيّا%s"
 

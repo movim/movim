@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-19 22:58+0100\n"
-"PO-Revision-Date: 2013-07-07 23:51+0000\n"
+"PO-Revision-Date: 2013-11-20 04:44+0000\n"
 "Last-Translator: hailaga <hailaga@zoho.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-25 09:32+0000\n"
-"X-Generator: Launchpad (build 16700)\n"
+"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
+"Language: \n"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -736,9 +736,9 @@ msgid ""
 "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
 "the one you want is on its way."
 msgstr ""
-"Хотя Movim быстро развивается, в нём ещё много недочётов. Будьте "
-"внимательны ;). Можете посмотреть страницу %s что будет в следующих версиях "
-"%s чтобы выяснить делается ли уже что-то, что Вам хотелось бы."
+"Хотя Movim быстро развивается, в нём ещё много недочётов. Будьте внимательны "
+";). Можете посмотреть страницу %s что будет в следующих версиях %s чтобы "
+"выяснить делается ли уже что-то, что Вам хотелось бы."
 
 #: ../app/widgets/Help/Help.php:61
 #, php-format
@@ -764,9 +764,8 @@ msgstr ""
 "вопросы в чате %s или через лист рассылки (%s see the dedicated page %s)."
 
 #: ../app/widgets/Explore/Explore.php:68
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Чат"
+msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
 #: ../app/widgets/Bookmark/Bookmark.php:288
@@ -879,7 +878,8 @@ msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgid ""
+"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:370
@@ -1541,7 +1541,8 @@ msgid ""
 msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
@@ -1930,44 +1931,24 @@ msgstr ""
 msgid "Folder size limit exceeded"
 msgstr ""
 
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Ваша версия браузера устарела для использования с Movin"
-
-#~ msgid "My address"
-#~ msgstr "Мой адрес"
-
-#~ msgid "Composing..."
-#~ msgstr "Печатает..."
-
-#~ msgid "My Posts"
-#~ msgstr "Мои сообщения"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Настройки"
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - создание учётной записи"
 
 #~ msgid "Language"
 #~ msgstr "Язык"
 
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "Контакты (%s)"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Не удаётся загрузить элемент '%s'"
-
-#~ msgid "Enable Sound Notification:"
-#~ msgstr "Применено звуковое оповещение"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - создание учётной записи"
+#~ msgid "My address"
+#~ msgstr "Мой адрес"
 
 #~ msgid "Movim Installer"
 #~ msgstr "Установщик Movim"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Установите пакет %s"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim требует расширение %s."
 
@@ -1991,6 +1972,7 @@ msgstr ""
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "Папка с Movim должна быть доступна для записи."
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "установите пакеты %s и %s"
 
@@ -2001,8 +1983,8 @@ msgstr ""
 #~ "The following requirements were not met. Please make sure they are all "
 #~ "satisfied in order to install Movim."
 #~ msgstr ""
-#~ "Следующие требования не были удовлетворены. Пожалуйста, удостоверьтесь, "
-#~ "что у Вас есть разрешения на установку Movim."
+#~ "Следующие требования не были удовлетворены. Пожалуйста, удостоверьтесь, что "
+#~ "у Вас есть разрешения на установку Movim."
 
 #~ msgid "Compatibility Test"
 #~ msgstr "Тест совместимости"
@@ -2016,6 +1998,7 @@ msgstr ""
 #~ msgid "BOSH Connection Preferences"
 #~ msgstr "Настройки соединения BOSH"
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Невозможно создать файл конфигурации '%s'."
 
@@ -2028,9 +2011,11 @@ msgstr ""
 #~ msgid "User not logged in."
 #~ msgstr "Пользователь не выполнил вход."
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Невозможно открыть файл отчета '%s'"
 
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Пожалуйста, удалите папку %s для завершения установки"
 
@@ -2052,6 +2037,9 @@ msgstr ""
 #~ msgid "8 characters"
 #~ msgstr "8 символов"
 
+#~ msgid "Composing..."
+#~ msgstr "Печатает..."
+
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Благодарим Вас за загрузку Movin!"
 
@@ -2061,6 +2049,7 @@ msgstr ""
 #~ msgid "Add your login informations"
 #~ msgstr "Добавьте Вашу информацию для соединения"
 
+#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - Добавить запись"
 
@@ -2073,8 +2062,14 @@ msgstr ""
 #~ msgid "Client Type"
 #~ msgstr "Тип клиента"
 
+#~ msgid "My Posts"
+#~ msgstr "Мои сообщения"
+
 #~ msgid "All"
 #~ msgstr "Все"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Ваша версия браузера устарела для использования с Movin"
 
 #~ msgid "Decline"
 #~ msgstr "Отклонить"
@@ -2084,6 +2079,10 @@ msgstr ""
 
 #~ msgid "Link my current account"
 #~ msgstr "Соединить с моим текущим счётом"
+
+#, php-format
+#~ msgid "Contacts (%s)"
+#~ msgstr "Контакты (%s)"
 
 #~ msgid "Follow"
 #~ msgstr "Следовать"
@@ -2112,9 +2111,9 @@ msgstr ""
 #~ "personal details. Its use can potentially endanger your data. Always pay "
 #~ "attention to information that you submit."
 #~ msgstr ""
-#~ "Имейте в виду, что Movim только развивается и имеет дело с большим "
-#~ "объёмом персональной информации. Её использование потенциально угрожает "
-#~ "Вашей безопасности. Всегда будьте внимательны к информации, которую Вы "
+#~ "Имейте в виду, что Movim только развивается и имеет дело с большим объёмом "
+#~ "персональной информации. Её использование потенциально угрожает Вашей "
+#~ "безопасности. Всегда будьте внимательны к информации, которую Вы "
 #~ "предоставляете."
 
 #~ msgid "Same here !"
@@ -2126,15 +2125,16 @@ msgstr ""
 #~ msgid ""
 #~ "Before you enjoy your social network, a few adjustements are required."
 #~ msgstr ""
-#~ "Прежде чем Вы насладитесь Вашей социальной сетью требуются некоторые "
-#~ "поправки"
+#~ "Прежде чем Вы насладитесь Вашей социальной сетью требуются некоторые поправки"
 
 #~ msgid "JID not provided."
 #~ msgstr "JID не предоставлен."
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "jid '%s' некорректный"
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr "Вы имеет теперь доступ к Movin при помощи %sJump In !%s"
 
@@ -2145,17 +2145,28 @@ msgstr ""
 #~ "Оставьте пустым это поле, этот адрес позволит Вам следовать за всей сетью "
 #~ "Movin !"
 
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "На этом сервере %s аккаунтов"
 
+#, php-format
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "Не удаётся загрузить элемент '%s'"
+
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "Некорректное соединение с BOSH, ошибка '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "Неудачное соединение с базой данных, ошибка '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "XMPP соединене через BOSH неудачно, ошибка '%s'"
 
 #~ msgid "Send request"
 #~ msgstr "Отправить запрос"
+
+#~ msgid "Enable Sound Notification:"
+#~ msgstr "Применено звуковое оповещение"
