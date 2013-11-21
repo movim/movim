@@ -11,6 +11,28 @@
 	-moz-box-sizing: border-box;
 }
 
+.metadata p {
+    padding: 0 1.5em;
+    margin-bottom: 1em;
+    font-style:italic;
+}
+
+.metadata h1 {
+    line-height: 2em;
+    display: inline-block;
+    padding-right: 0;
+}
+
+.metadata span {
+    display: inline-block;
+    line-height: 2.7em;
+}
+
+.metadata span.key {
+    margin-left: 1em;
+    font-weight: bold;
+}
+
 .post:after, .posthead:after {
     content: ""; /* Important, sinon l'élément n'est pas généré. */
     display: block;
@@ -24,6 +46,7 @@
     min-height: 4em;
     clear: both;
 }
+
 
 .post .header {
     display: block;
