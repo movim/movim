@@ -20,13 +20,24 @@
 
 class Node extends WidgetCommon
 {
+    private $role;
+    
     function WidgetLoad()
     {
         $this->registerEvent('stream', 'onStream');
         $this->registerEvent('nostream', 'onStream');
+        $this->registerEvent('pubsubaffiliations', 'onPubsubAffiliations');
         $this->registerEvent('pubsubsubscribed', 'onPubsubSubscribed');
+        $this->registerEvent('pubsubmetadata', 'onPubsubMetadata');
         $this->registerEvent('pubsubsubscribederror', 'onPubsubSubscribedError');
         $this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
+
+        $this->view->assign('server', $_GET['s']);
+        $this->view->assign('node',   $_GET['n']);
+        $this->view->assign('getaffiliations', $this->genCallAjax('ajaxGetAffiliations', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+        $this->view->assign('getmetadata', $this->genCallAjax('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+        $this->view->assign('hash', md5($_GET['s'].$_GET['n']));
+        $this->view->assign('items', $this->prepareNode($_GET['s'], $_GET['n']));
     }
     
     function onPubsubSubscribed($params)
@@ -45,6 +56,29 @@ class Node extends WidgetCommon
     function onPubsubUnsubscribed($params)
     {
         $this->onPubsubSubscribed($params);
+    }
+
+    function onPubsubAffiliations($params) {
+        foreach($params[0] as $r) {
+            if($r[0] == $this->user->getLogin())
+                $this->role = $r[1];
+        }
+
+        $html = $this->prepareNode($params[1], $params[2]);
+        RPC::call('movim_fill', md5($params[1].$params[2]), $html);
+    }
+
+    function onPubsubMetadata($params) {
+        // The URL add form
+        $metadataview = $this->tpl();
+        $metadataview->assign('title',       $params[0]['title']);
+        $metadataview->assign('description', $params[0]['description']);
+        $metadataview->assign('creation', prepareDate(strtotime($params[0]['creation_date'])));
+        $metadataview->assign('creator',     $params[0]['creator']);
+
+        $html = $metadataview->draw('_node_metadata', true);
+
+        RPC::call('movim_fill', 'metadata', $html);
     }
     
     function onStream($payload) {
@@ -93,6 +127,18 @@ class Node extends WidgetCommon
         $r->setTo($server)
           ->setNode($node)
           ->setSync()
+          ->request();
+    }
+
+    function ajaxGetAffiliations($server, $node){
+        $r = new moxl\PubsubGetAffiliations();
+        $r->setTo($server)->setNode($node)
+          ->request();
+    }
+    
+    function ajaxGetMetadata($server, $node){
+        $r = new moxl\PubsubGetMetadata();
+        $r->setTo($server)->setNode($node)
           ->request();
     }
     
@@ -161,12 +207,22 @@ class Node extends WidgetCommon
                     class="button color icon yes"
                     onclick="
                         '.$this->genCallAjax('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'").'"
-                >'.t('Get Subscription').'</a>
+                >'.t('Get Subscription').'</a>';
+
+        if($this->role == 'owner') {
+            $html .= '
                 <a 
                     class="button color icon user"
                     style="float: right;"
                     href="'.Route::urlize('nodeconfig', array($serverid,$groupid)).'"
-                >'.t('Configuration').'</a>
+                >'.t('Configuration').'</a>';
+        }
+
+        $html .= '
+            </div>
+
+            <div class="metadata" id="metadata">
+
             </div>
             
             <div class="popup" id="groupsubscribe">
@@ -229,7 +285,8 @@ class Node extends WidgetCommon
         
         $html .= $title;
         
-        if($this->searchSubscription($serverid, $groupid))
+        if($this->searchSubscription($serverid, $groupid)
+        && ($this->role == 'owner' || $this->role == 'publisher'))
             $html .= $this->prepareSubmitForm($serverid, $groupid);
 
         $html .= $this->preparePosts($posts);
@@ -260,16 +317,5 @@ class Node extends WidgetCommon
                     return true;
             }
         return false;
-    }
-
-    function build()
-    {
-    ?>
-        <div class="tabelem protect red" id="node" title="<?php echo t('Posts'); ?>">
-            <div id="<?php echo md5($_GET['s'].$_GET['n']); ?>">
-                <?php echo $this->prepareNode($_GET['s'], $_GET['n']); ?>
-            </div>
-        </div>
-    <?php
     }
 }
