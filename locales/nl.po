@@ -5,34 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-19 22:58+0100\n"
+"POT-Creation-Date: 2013-11-21 09:27+0100\n"
 "PO-Revision-Date: 2013-11-20 04:39+0000\n"
 "Last-Translator: Arne <arne@wirelab.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
 "X-Generator: Launchpad (build 16831)\n"
-"Language: \n"
-
-#: ../system/Conf.php:70
-#, php-format
-msgid "Cannot load file '%s'"
-msgstr "Kan bestand %s niet laden"
-
-#: ../system/widget/WidgetWrapper.php:131
-#, php-format
-msgid "Requested widget '%s' doesn't exist."
-msgstr "Widget '%s' bestaat niet."
-
-#: ../system/Logs/Logger.php:171
-msgid "Development environment."
-msgstr ""
-
-#: ../system/Logs/Logger.php:171
-msgid "Change it in the admin panel."
-msgstr ""
 
 #: ../system/Route.php:80
 #, php-format
@@ -45,13 +27,18 @@ msgid "Route not set for the page %s"
 msgstr "Route voor pagina %s niet geplaatst"
 
 #: ../system/controllers/FrontController.php:35
-#, php-format
+#, fuzzy, php-format
 msgid "Requested controller '%s' doesn't exist."
-msgstr ""
+msgstr "Widget '%s' bestaat niet."
 
 #: ../system/controllers/FrontController.php:67
 msgid "Could not call the load method on the current controller"
 msgstr ""
+
+#: ../system/widget/WidgetWrapper.php:131
+#, php-format
+msgid "Requested widget '%s' doesn't exist."
+msgstr "Widget '%s' bestaat niet."
 
 #: ../system/Utils.php:161
 msgid "Monday"
@@ -562,75 +549,331 @@ msgstr "Gedeeld met het XMPP-netwerk"
 msgid "Shared with the whole Internet"
 msgstr "Gedeeld met het hele internet"
 
+#: ../system/Conf.php:70
+#, php-format
+msgid "Cannot load file '%s'"
+msgstr "Kan bestand %s niet laden"
+
+#: ../system/Logs/Logger.php:171
+msgid "Development environment."
+msgstr ""
+
+#: ../system/Logs/Logger.php:171
+msgid "Change it in the admin panel."
+msgstr ""
+
 #: ../system/MovimException.php:15
 #, php-format
 msgid "Error: %s"
 msgstr "Error: %s"
 
-#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
-#: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
-msgid "Error"
-msgstr "Fout"
+#: ../upload.php:32
+msgid "Not a picture"
+msgstr "Is geen plaatje"
 
-#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:63
-msgid "Item Not Found"
-msgstr "Item niet gevonden"
+#: ../upload.php:35
+msgid "Folder size limit exceeded"
+msgstr "Limiet voor map overschreden"
 
-#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:68
-msgid "Feature Not Implemented"
-msgstr "Functie niet geïmplementeerd"
+#: ../app/models/postn/Postn.php:140
+msgid "Content not found"
+msgstr "Inhoud niet gevonden"
 
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
-msgid "The node does not exist"
-msgstr "De node bestaat niet"
+#: ../app/controllers/MediaController.php:9
+#: ../app/controllers/MediaController.php:15
+#: ../app/controllers/MainController.php:15
+#: ../app/controllers/NodeconfigController.php:16
+#: ../app/controllers/NewsController.php:15
+#: ../app/controllers/ProfileController.php:15
+#: ../app/controllers/ServerController.php:16
+#: ../app/controllers/HelpController.php:15
+#: ../app/controllers/ConfController.php:15
+#: ../app/controllers/FriendController.php:25
+#: ../app/controllers/ExploreController.php:17
+#: ../app/controllers/NodeController.php:16 ../app/widgets/Media/Media.php:154
+msgid "Media"
+msgstr "Media"
 
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:45
-msgid "Your server doesn't support this feature"
-msgstr "Je browser ondersteunt deze functionaliteit niet"
+#: ../app/controllers/MediaController.php:11
+#: ../app/controllers/MainController.php:11
+#: ../app/controllers/AccountController.php:11
+#: ../app/controllers/NodeconfigController.php:12
+#: ../app/controllers/NewsController.php:11
+#: ../app/controllers/NotfoundController.php:11
+#: ../app/controllers/DiscoverController.php:13
+#: ../app/controllers/LoginController.php:11
+#: ../app/controllers/ProfileController.php:11
+#: ../app/controllers/ServerController.php:12
+#: ../app/controllers/HelpController.php:11
+#: ../app/controllers/ConfController.php:11
+#: ../app/controllers/AboutController.php:11
+#: ../app/controllers/BlogController.php:11
+#: ../app/controllers/FriendController.php:21
+#: ../app/controllers/AdminController.php:17
+#: ../app/controllers/ExploreController.php:13
+#: ../app/controllers/NodeController.php:12
+msgid "Home"
+msgstr "Home"
 
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:50
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:60
-msgid "You are not autorized to do this action"
-msgstr "Je bent niet gemachtigd deze handeling uit te voeren"
+#: ../app/controllers/MediaController.php:12
+#: ../app/controllers/MainController.php:12
+#: ../app/controllers/NodeconfigController.php:13
+#: ../app/controllers/NewsController.php:12
+#: ../app/controllers/ProfileController.php:12
+#: ../app/controllers/ServerController.php:13
+#: ../app/controllers/HelpController.php:12
+#: ../app/controllers/ConfController.php:12
+#: ../app/controllers/FriendController.php:22
+#: ../app/controllers/ExploreController.php:14
+#: ../app/controllers/NodeController.php:13
+msgid "News"
+msgstr "Nieuws"
 
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:55
-msgid "This service is unavaiable"
-msgstr "Deze dienst is niet beschikbaar"
+#: ../app/controllers/MediaController.php:13
+#: ../app/controllers/MainController.php:13
+#: ../app/controllers/NodeconfigController.php:14
+#: ../app/controllers/NewsController.php:13
+#: ../app/controllers/ProfileController.php:13
+#: ../app/controllers/ServerController.php:14
+#: ../app/controllers/HelpController.php:13
+#: ../app/controllers/ConfController.php:13
+#: ../app/controllers/FriendController.php:23
+#: ../app/controllers/ExploreController.php:15
+#: ../app/controllers/NodeController.php:14 ../app/widgets/Node/Node.php:128
+#: ../app/views/explore.tpl:17
+msgid "Explore"
+msgstr "Verkennen"
 
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:65
-msgid "The server does not exist"
-msgstr "De server bestaat niet"
+#: ../app/controllers/MediaController.php:14
+#: ../app/controllers/MainController.php:14
+#: ../app/controllers/NodeconfigController.php:15
+#: ../app/controllers/NewsController.php:14
+#: ../app/controllers/ProfileController.php:14
+#: ../app/controllers/ServerController.php:15
+#: ../app/controllers/HelpController.php:14
+#: ../app/controllers/ConfController.php:14
+#: ../app/controllers/FriendController.php:24
+#: ../app/controllers/ExploreController.php:16
+#: ../app/controllers/NodeController.php:15
+#: ../app/widgets/ContactCard/ContactCard.php:45
+#: ../app/widgets/ContactCard/ContactCard.php:154
+msgid "Profile"
+msgstr "Profiel"
 
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
-msgid "Unexpected request"
-msgstr "Onverwacht verzoek"
+#: ../app/controllers/MediaController.php:16
+#: ../app/controllers/MainController.php:16
+#: ../app/controllers/NodeconfigController.php:10
+#: ../app/controllers/NodeconfigController.php:17
+#: ../app/controllers/NewsController.php:16
+#: ../app/controllers/ProfileController.php:16
+#: ../app/controllers/ServerController.php:17
+#: ../app/controllers/HelpController.php:16
+#: ../app/controllers/ConfController.php:16
+#: ../app/controllers/FriendController.php:26
+#: ../app/controllers/ExploreController.php:18
+#: ../app/controllers/NodeController.php:17 ../app/widgets/Node/Node.php:169
+msgid "Configuration"
+msgstr "Configuratie"
 
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:75
-msgid "The server cannot accept this action"
-msgstr "De server kan deze actie niet accepteren"
+#: ../app/controllers/MediaController.php:17
+#: ../app/controllers/MainController.php:17
+#: ../app/controllers/NodeconfigController.php:18
+#: ../app/controllers/NewsController.php:17
+#: ../app/controllers/ProfileController.php:17
+#: ../app/controllers/ServerController.php:18
+#: ../app/controllers/HelpController.php:17
+#: ../app/controllers/ConfController.php:17
+#: ../app/controllers/FriendController.php:27
+#: ../app/controllers/ExploreController.php:19
+#: ../app/controllers/NodeController.php:18 ../app/widgets/Help/Help.php:29
+#: ../app/widgets/Help/Help.php:42
+msgid "Help"
+msgstr "Help"
 
-#: ../lib/Moxl/xec/action/location/LocationPublish.php:85
-msgid "Your server doesn't support location publication"
-msgstr "Je server ondersteunt geen locatie-publicatie"
+#: ../app/controllers/MainController.php:9
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr "%s - Welkom bij Movim"
 
-#: ../lib/Moxl/xec/action/location/LocationPublish.php:90
-msgid "Your are not authorized to publish your location"
-msgstr "Je bent niet gemachtigd om je locatie te publiceren"
+#: ../app/controllers/AccountController.php:9
+#: ../app/controllers/BlogController.php:9
+#, fuzzy, php-format
+msgid "%s - Account"
+msgstr "%s - account aanmaken"
 
-#: ../app/widgets/News/News.php:30 ../app/widgets/Wall/Wall.php:111
-#: ../app/widgets/Feed/Feed.php:139
-msgid "Get older posts"
-msgstr "Haal oudere berichten op"
+#: ../app/controllers/AccountController.php:12
+msgid "Account Creation"
+msgstr "Account aanmaken"
 
-#: ../app/widgets/News/News.php:61 ../app/widgets/Feed/Feed.php:172
-#: ../app/widgets/Node/Node.php:54
-msgid "Your feed cannot be loaded."
-msgstr "Jouw feed kan niet worden geladen"
+#: ../app/controllers/NewsController.php:9
+#, fuzzy, php-format
+msgid "%s - News"
+msgstr "Nieuws"
 
-#: ../app/widgets/Discover/Discover.php:50
-msgid "Last registered"
-msgstr "Laatst geregistreerd"
+#: ../app/controllers/DiscoverController.php:11
+#, php-format
+msgid "%s - Discover"
+msgstr ""
+
+#: ../app/controllers/DiscoverController.php:14
+#: ../app/controllers/LoginController.php:12
+#: ../app/controllers/AboutController.php:12
+#, fuzzy
+msgid "Discover"
+msgstr "Discussie-servers"
+
+#: ../app/controllers/DiscoverController.php:15
+#: ../app/controllers/LoginController.php:13
+#: ../app/controllers/AboutController.php:13
+#, fuzzy
+msgid "About"
+msgstr "Over Mij"
+
+#: ../app/controllers/LoginController.php:9
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - Inlogging bij Movim"
+
+#: ../app/controllers/ProfileController.php:9
+#, fuzzy, php-format
+msgid "%s - Profile"
+msgstr "Profiel"
+
+#: ../app/controllers/HelpController.php:9
+#, php-format
+msgid "%s - Help Page"
+msgstr ""
+
+#: ../app/controllers/ConfController.php:9
+#, php-format
+msgid "%s - Configuration"
+msgstr "%s - Configuratie"
+
+#: ../app/controllers/AboutController.php:9
+#, php-format
+msgid "%s - About"
+msgstr ""
+
+#: ../app/controllers/BlogController.php:12 ../app/widgets/Node/Node.php:146
+#: ../app/widgets/Wall/Wall.php:85
+msgid "Blog"
+msgstr "Blog"
+
+#: ../app/controllers/AdminController.php:15
+#, fuzzy, php-format
+msgid "%s - Administration Panel"
+msgstr "Beheer"
+
+#: ../app/controllers/AdminController.php:18
+#, fuzzy
+msgid "Administration"
+msgstr "Beheer"
+
+#: ../app/controllers/ExploreController.php:11
+#, fuzzy, php-format
+msgid "%s - Explore"
+msgstr "Verkennen"
+
+#: ../app/widgets/ContactAction/ContactAction.php:65
+#: ../app/widgets/ContactAction/ContactAction.php:134
+msgid "Actions"
+msgstr "Acties"
+
+#: ../app/widgets/ContactAction/ContactAction.php:82
+msgid "Chat"
+msgstr "Chat"
+
+#: ../app/widgets/ContactAction/ContactAction.php:100
+msgid "Remove this contact"
+msgstr "Verwijder dit contact"
+
+#: ../app/widgets/ContactAction/ContactAction.php:117
+msgid "Yes"
+msgstr "Ja"
+
+#: ../app/widgets/ContactAction/ContactAction.php:130
+msgid "No"
+msgstr "Nee"
+
+#: ../app/widgets/ContactAction/ContactAction.php:146
+msgid "Invite this user"
+msgstr "Nodig deze gebruiker uit"
+
+#: ../app/widgets/Media/Media.php:85
+#: ../app/widgets/ContactInfo/ContactInfo.php:63
+msgid "on"
+msgstr "op"
+
+#: ../app/widgets/Media/Media.php:104 ../app/widgets/Account/Account.php:289
+#: ../app/widgets/ContactCard/ContactCard.php:51
+#: ../app/widgets/Vcard/Vcard.php:151
+msgid "Name"
+msgstr "Naam"
+
+#: ../app/widgets/Media/Media.php:106
+msgid "Resolution"
+msgstr "Resolutie"
+
+#: ../app/widgets/Media/Media.php:108
+msgid "Size"
+msgstr "Grootte"
+
+#: ../app/widgets/Media/Media.php:110
+msgid "Date"
+msgstr "Datum"
+
+#: ../app/widgets/Media/Media.php:112
+msgid "ISO"
+msgstr "ISO"
+
+#: ../app/widgets/Media/Media.php:114
+msgid "Camera"
+msgstr "Camera"
+
+#: ../app/widgets/Media/Media.php:116
+msgid "Artist"
+msgstr "Artiest"
+
+#: ../app/widgets/Media/Media.php:119
+msgid "Original"
+msgstr "Origineel"
+
+#: ../app/widgets/Media/Media.php:119
+msgid "Link"
+msgstr "Link"
+
+#: ../app/widgets/Media/Media.php:148
+msgid "Viewer"
+msgstr "Viewer"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:31
+#: ../app/widgets/MediaUpload/MediaUpload.php:66
+msgid "Upload"
+msgstr "Uploaden"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:35
+msgid "Please select image file"
+msgstr "Selecteer afbeelding"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:69
+msgid "You should select valid image files only!"
+msgstr "Je kunt alleen geldige afbeeldingen selecteren!"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:72
+msgid "An error occurred while uploading the file"
+msgstr "Er is een fout opgetreden tijdens het uploaden van het bestand"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:75
+msgid ""
+"The upload has been canceled by the user or the browser dropped the "
+"connection"
+msgstr ""
+"De upload is geannuleerd door de gebruiker of de browser verbrak de "
+"verbinding"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:78
+msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgstr "Je bestand is te groot, selecteer een kleiner bestand."
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:117
 msgid "Create a new group"
@@ -655,23 +898,806 @@ msgid "Close"
 msgstr "Sluit"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:171
+#, fuzzy
 msgid "Subscribed"
+msgstr "Aanmelding opgeslagen"
+
+#: ../app/widgets/Node/Node.php:54 ../app/widgets/News/News.php:61
+#: ../app/widgets/Feed/Feed.php:172
+msgid "Your feed cannot be loaded."
+msgstr "Jouw feed kan niet worden geladen"
+
+#: ../app/widgets/Node/Node.php:114 ../app/widgets/Node/Node.php:205
+#: ../app/widgets/Node/Node.php:216
+msgid "Unsubscribe"
 msgstr ""
 
-#: ../app/widgets/Help/Help.php:29 ../app/widgets/Help/Help.php:42
-#: ../app/controllers/ProfileController.php:17
-#: ../app/controllers/HelpController.php:17
-#: ../app/controllers/ServerController.php:18
-#: ../app/controllers/NodeController.php:18
-#: ../app/controllers/MainController.php:17
-#: ../app/controllers/ConfController.php:17
-#: ../app/controllers/ExploreController.php:19
-#: ../app/controllers/FriendController.php:27
-#: ../app/controllers/NewsController.php:17
-#: ../app/controllers/MediaController.php:17
-#: ../app/controllers/NodeconfigController.php:18
-msgid "Help"
-msgstr "Help"
+#: ../app/widgets/Node/Node.php:122 ../app/widgets/Node/Node.php:175
+#: ../app/widgets/Node/Node.php:194
+msgid "Subscribe"
+msgstr ""
+
+#: ../app/widgets/Node/Node.php:136 ../app/widgets/Node/Node.php:268
+#, fuzzy
+msgid "Posts"
+msgstr "Mijn Inzendingen"
+
+#: ../app/widgets/Node/Node.php:164
+#, fuzzy
+msgid "Get Subscription"
+msgstr "Haal de aanmeldingen op"
+
+#: ../app/widgets/Node/Node.php:177
+msgid "Make your membership to this group public to your friends"
+msgstr ""
+
+#: ../app/widgets/Node/Node.php:184
+msgid "Give a nickname to this group if you want"
+msgstr ""
+
+#: ../app/widgets/Node/Node.php:207
+msgid "Are you sure ?"
+msgstr ""
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:50
+#, php-format
+msgid "Return to %s's list of groups"
+msgstr "Ga terug naar %s's lijst van groepen"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:53
+msgid "Group deleted"
+msgstr "Groep verwijderd"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:59
+msgid "Group configuration saved"
+msgstr "Groep-configuratie opgeslagen"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:79
+#: ../app/widgets/Account/Account.php:160
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
+msgid "Validate"
+msgstr "Bevestig"
+
+#: ../app/widgets/Roster/Roster.php:76 ../app/widgets/Roster/Roster.php:217
+msgid "Ungrouped"
+msgstr "Groep opgeheven"
+
+#: ../app/widgets/Roster/Roster.php:277
+#, php-format
+msgid ""
+"No contacts ? You can add one using the %s button bellow or going to the "
+"%sExplore page%s"
+msgstr ""
+
+#: ../app/widgets/Roster/Roster.php:303
+#, fuzzy
+msgid "Show disconnected contacts"
+msgstr "Gedeeld met één contact"
+
+#: ../app/widgets/Roster/Roster.php:305
+msgid "Hide disconnected contacts"
+msgstr ""
+
+#: ../app/widgets/Roster/Roster.php:309
+#, fuzzy, php-format
+msgid "Hide group %s"
+msgstr "Publieke groepen"
+
+#: ../app/widgets/Roster/Roster.php:311
+#, php-format
+msgid "Show group %s"
+msgstr ""
+
+#: ../app/widgets/Roster/Roster.php:374
+msgid "Please enter a valid Jabber ID"
+msgstr "Vul een geldig Jabber ID in"
+
+#: ../app/widgets/Admin/Admin.php:52 ../app/widgets/Admin/Admin.php:57
+#: ../app/widgets/Admin/Admin.php:62 ../app/widgets/Admin/Admin.php:67
+#, php-format
+msgid "Couldn't create directory '%s'."
+msgstr "De map %s kan niet worden aangemaakt"
+
+#: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:349
+msgid "Submit"
+msgstr "Zenden"
+
+#: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:504
+#, fuzzy
+msgid "Compatibility Check"
+msgstr "Compatibiliteit test"
+
+#: ../app/widgets/Admin/Admin.php:184
+msgid ""
+"Movim requires certain external components. Please install them before you "
+"can succeed:"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:189
+#, php-format
+msgid "Your PHP-Version: %s <br>Required: 5.3.0"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:192
+msgid "CURL-Library"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:195
+msgid "GD"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:198
+msgid "SimpleXML"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:201
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim's root directory"
+msgstr "Enable de lees en schrijfrechten in Movim`s root folder"
+
+#: ../app/widgets/Admin/Admin.php:204
+msgid "OpenSSL"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:210 ../app/widgets/Admin/Admin.php:213
+msgid "URL Rewriting support"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:507
+#, fuzzy
+msgid "General Settings"
+msgstr "Algemene informatie"
+
+#: ../app/widgets/Admin/Admin.php:229
+msgid "Theme"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:249
+msgid "Default language"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:273
+msgid "Environment"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:299
+#, fuzzy
+msgid "User folder size limit (in bytes)"
+msgstr "Limiet voor map overschreden"
+
+#: ../app/widgets/Admin/Admin.php:304
+msgid "empty"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:305
+msgid "terse"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:306
+msgid "normal"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:307
+#, fuzzy
+msgid "talkative"
+msgstr "complimenteus"
+
+#: ../app/widgets/Admin/Admin.php:308
+msgid "ultimate"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:315
+msgid "Log verbosity"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:337
+msgid "Server Timezone"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:364
+#, fuzzy
+msgid "Bosh Configuration"
+msgstr "Configuratie"
+
+#: ../app/widgets/Admin/Admin.php:368
+msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:369
+msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:370
+msgid ""
+"If it is closed, you have to specify the corresponding Server on the next "
+"page."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:371
+#, php-format
+msgid "If you are unsure about this config option visit the %swiki%s"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:377
+msgid "Your Bosh URL is not reachable"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:383
+#, fuzzy
+msgid "Bosh URL"
+msgstr "Ongeldige URL"
+
+#: ../app/widgets/Admin/Admin.php:394
+msgid "Whitelist - XMPP Server"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:398
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:401
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:406
+msgid "List of whitelisted XMPP servers"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:417 ../app/widgets/Admin/Admin.php:429
+#, fuzzy
+msgid "Information Message"
+msgstr "Informatie over verbonden computer"
+
+#: ../app/widgets/Admin/Admin.php:421
+msgid "This message will be displayed on the login page"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:424
+msgid "Leave this field blank if you don't want to show any message."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:440
+#, fuzzy
+msgid "Administration Credential"
+msgstr "Beheer"
+
+#: ../app/widgets/Admin/Admin.php:445
+msgid "Change the default credentials admin/password"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:451
+msgid "Username"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:457
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: ../app/widgets/Admin/Admin.php:461
+#, fuzzy
+msgid "Retype password"
+msgstr "Foutief wachtwoord"
+
+#: ../app/widgets/Admin/Admin.php:510
+msgid "Database Settings"
+msgstr ""
+
+#: ../app/widgets/Explore/Explore.php:68
+#, fuzzy
+msgid "Chatrooms"
+msgstr "Chat"
+
+#: ../app/widgets/Explore/Explore.php:77
+#: ../app/widgets/Bookmark/Bookmark.php:288
+msgid "Groups"
+msgstr "Groepen"
+
+#: ../app/widgets/Connection/Connection.php:37
+msgid "Please wait "
+msgstr ""
+
+#: ../app/widgets/ContactManage/ContactManage.php:30
+#, fuzzy
+msgid "Contact updated"
+msgstr "De confituratie is bijgewerkt"
+
+#: ../app/widgets/ContactManage/ContactManage.php:55
+msgid "Manage"
+msgstr "Beheren"
+
+#: ../app/widgets/ContactManage/ContactManage.php:67
+msgid "Alias"
+msgstr "Alias"
+
+#: ../app/widgets/ContactManage/ContactManage.php:73
+msgid "Group"
+msgstr "Groep"
+
+#: ../app/widgets/ContactManage/ContactManage.php:76
+msgid "Save"
+msgstr "Opslaan"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:37
+msgid "Delete"
+msgstr ""
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:44
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
+msgid "No public groups found"
+msgstr "Geen publieke groepen gevonden"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:49
+#, php-format
+msgid "%s has been removed from your public groups"
+msgstr ""
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:74
+#, fuzzy
+msgid "Public Groups"
+msgstr "Publieke groepen"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:79
+#, fuzzy
+msgid "Get your public groups"
+msgstr "Haal publieke groepen op"
+
+#: ../app/widgets/Account/Account.php:92
+msgid "Step 2 - Fill in your informations"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:173
+msgid "No account creation form founded on the server"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:292
+#, fuzzy
+msgid "Description"
+msgstr "Haal de aanmeldingen op"
+
+#: ../app/widgets/Account/Account.php:295
+msgid "URL"
+msgstr "URL"
+
+#: ../app/widgets/Account/Account.php:298
+msgid "Software"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:388 ../app/widgets/Login/Login.php:118
+msgid "Some data are missing !"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:394
+msgid "Wrong ID"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:400
+msgid "You entered different passwords"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:406
+#, fuzzy
+msgid "Invalid name"
+msgstr "Bevestig"
+
+#: ../app/widgets/Account/Account.php:412
+msgid "Request not acceptable"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:418
+msgid "Username already taken"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:424
+msgid "Could not connect to the XMPP server"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:430
+msgid "Could not communicate with the XMPP server"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:436
+msgid "Unknown error"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:448
+#, fuzzy
+msgid "Create a new account"
+msgstr "Maak een nieuwe groep aan"
+
+#: ../app/widgets/Account/Account.php:451
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:452
+msgid "Keep in mind that this server will handle all your personnal data."
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:457
+msgid "Step 1 - Search the server"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:460
+#, php-format
+msgid "You can%s enter your server domain name%s. "
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:461
+msgid "Or you can choose a server from this list."
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:472
+msgid "Server"
+msgstr "Server"
+
+#: ../app/widgets/Account/Account.php:475
+msgid "Enter the server domain (ex: movim.eu)"
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:487
+#, fuzzy
+msgid "Searching..."
+msgstr "Zoeken"
+
+#: ../app/widgets/Account/Account.php:489
+msgid "Search"
+msgstr "Zoeken"
+
+#: ../app/widgets/Chat/Chat.php:50
+msgid "Offline"
+msgstr "Offline"
+
+#: ../app/widgets/Chat/Chat.php:137
+msgid "Message Published"
+msgstr ""
+
+#: ../app/widgets/Chat/Chat.php:176
+#, php-format
+msgid "%s needs your attention"
+msgstr ""
+
+#: ../app/widgets/Chat/Chat.php:376
+msgid "Encrypted message"
+msgstr ""
+
+#: ../app/widgets/Presence/Presence.php:120
+#, fuzzy
+msgid "Disconnect"
+msgstr "Verbinding"
+
+#: ../app/widgets/Discover/Discover.php:50
+msgid "Last registered"
+msgstr "Laatst geregistreerd"
+
+#: ../app/widgets/Blog/Blog.php:30
+#: ../app/widgets/Syndication/Syndication.php:52
+#, php-format
+msgid "%s's feed"
+msgstr "%s's feed"
+
+#: ../app/widgets/Blog/Blog.php:38 ../app/widgets/Wall/Wall.php:91
+#: ../app/widgets/Wall/Wall.php:137
+msgid "Feed"
+msgstr "Feed"
+
+#: ../app/widgets/Bookmark/Bookmark.php:79
+msgid "Bookmarks updated"
+msgstr "Favoriet bijgewerkt"
+
+#: ../app/widgets/Bookmark/Bookmark.php:84 ../app/widgets/Feed/Feed.php:89
+msgid "An error occured : "
+msgstr "Er is een fout opgetreden : "
+
+#: ../app/widgets/Bookmark/Bookmark.php:123
+msgid "Bad Chatroom ID"
+msgstr ""
+
+#: ../app/widgets/Bookmark/Bookmark.php:127
+#: ../app/widgets/Bookmark/Bookmark.php:180
+msgid "Empty name"
+msgstr "Lege naam"
+
+#: ../app/widgets/Bookmark/Bookmark.php:176
+msgid "Bad URL"
+msgstr "Ongeldige URL"
+
+#: ../app/widgets/Bookmark/Bookmark.php:280
+#, fuzzy
+msgid "Conferences"
+msgstr "Conferenties"
+
+#: ../app/widgets/Bookmark/Bookmark.php:296
+msgid "Links"
+msgstr "Links"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:73
+msgid "Place"
+msgstr "Plaats"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:218
+msgid "by"
+msgstr ""
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:222
+#, fuzzy
+msgid "email"
+msgstr "E-mail"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:226
+msgid "jid"
+msgstr ""
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:423
+msgid "Show the older comments"
+msgstr "Toon eerdere reacties"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:495
+msgid "No content"
+msgstr "Geen inhoud"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:555
+msgid "No comments"
+msgstr "Geen reacties"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:566
+msgid "No comments stream"
+msgstr "Geen reacties geplaatst"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:46
+msgid "Mood"
+msgstr "Stemming"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:50
+msgid "I'm "
+msgstr "Ik ben "
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:57
+msgid "Listening"
+msgstr "Luisteren"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:97
+msgid "Last seen"
+msgstr "Laatst gezien"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:113
+msgid "Bot"
+msgstr "Bot"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:114
+msgid "Desktop"
+msgstr "Bureaublad"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:115
+#: ../app/widgets/ContactInfo/ContactInfo.php:116
+msgid "Phone"
+msgstr "Telefoon"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:117
+msgid "Web"
+msgstr "Web"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:118
+msgid "Registered"
+msgstr "Geregistreerd"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:130
+msgid "Client Informations"
+msgstr "Informatie over verbonden computer"
+
+#: ../app/widgets/Wall/Wall.php:98 ../app/widgets/Notifs/Notifs.php:135
+msgid "Updating"
+msgstr ""
+
+#: ../app/widgets/Wall/Wall.php:102
+msgid "Update"
+msgstr ""
+
+#: ../app/widgets/Wall/Wall.php:111 ../app/widgets/News/News.php:30
+#: ../app/widgets/Feed/Feed.php:139
+msgid "Get older posts"
+msgstr "Haal oudere berichten op"
+
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
+#, fuzzy
+msgid "Affiliations saved"
+msgstr "Aanmelding opgeslagen"
+
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:90
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:91
+#, fuzzy
+msgid "Manage your members"
+msgstr "Beheer je aanmeldingen"
+
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:96
+#, fuzzy
+msgid "Get the members"
+msgstr "Haal reacties op"
+
+#: ../app/widgets/Config/Config.php:54
+msgid "Configuration updated"
+msgstr "De confituratie is bijgewerkt"
+
+#: ../app/widgets/Log/Log.php:33
+msgid "Debug console"
+msgstr "Debug console"
+
+#: ../app/widgets/Location/Location.php:54
+#, fuzzy
+msgid "Wrong position"
+msgstr "Foutief wachtwoord"
+
+#: ../app/widgets/Location/Location.php:63
+#, fuzzy
+msgid "Location updated"
+msgstr "De confituratie is bijgewerkt"
+
+#: ../app/widgets/Location/Location.php:94
+msgid "Location"
+msgstr "Locatie"
+
+#: ../app/widgets/Location/Location.php:103
+msgid "Update my position"
+msgstr ""
+
+#: ../app/widgets/Location/Location.php:109
+msgid "Accept"
+msgstr "Accepteer"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
+msgid "Subscriptions saved"
+msgstr "Aanmelding opgeslagen"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:95
+msgid "Manage your subscriptions"
+msgstr "Beheer je aanmeldingen"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:96
+msgid "Manage the subscriptions"
+msgstr "Beheer de aanmeldingen"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:101
+msgid "Get the subscriptions"
+msgstr "Haal de aanmeldingen op"
+
+#: ../app/widgets/ContactCard/ContactCard.php:47
+#: ../app/widgets/Vcard/Vcard.php:148
+msgid "General Informations"
+msgstr "Algemene informatie"
+
+#: ../app/widgets/ContactCard/ContactCard.php:57
+#: ../app/widgets/Vcard/Vcard.php:156
+msgid "Nickname"
+msgstr "bijnaam"
+
+#: ../app/widgets/ContactCard/ContactCard.php:65
+#: ../app/widgets/Vcard/Vcard.php:166
+msgid "Date of Birth"
+msgstr "Geboortedatum"
+
+#: ../app/widgets/ContactCard/ContactCard.php:71
+#: ../app/widgets/Vcard/Vcard.php:224
+msgid "Gender"
+msgstr "Geslacht"
+
+#: ../app/widgets/ContactCard/ContactCard.php:77
+#: ../app/widgets/Vcard/Vcard.php:235
+msgid "Marital Status"
+msgstr "Burgerlijke staat"
+
+#: ../app/widgets/ContactCard/ContactCard.php:85
+#: ../app/widgets/ContactCard/ContactCard.php:90
+#: ../app/widgets/Vcard/Vcard.php:161
+msgid "Email"
+msgstr "E-mail"
+
+#: ../app/widgets/ContactCard/ContactCard.php:99
+#: ../app/widgets/ContactCard/ContactCard.php:104
+#: ../app/widgets/Vcard/Vcard.php:277
+msgid "Website"
+msgstr "Website"
+
+#: ../app/widgets/ContactCard/ContactCard.php:112
+#: ../app/widgets/Vcard/Vcard.php:281
+msgid "About Me"
+msgstr "Over Mij"
+
+#: ../app/widgets/ContactCard/ContactCard.php:121
+#: ../app/widgets/Vcard/Vcard.php:289
+msgid "Geographic Position"
+msgstr "Geografische Positie"
+
+#: ../app/widgets/ContactCard/ContactCard.php:125
+#: ../app/widgets/Vcard/Vcard.php:291
+msgid "Locality"
+msgstr "Plaats"
+
+#: ../app/widgets/ContactCard/ContactCard.php:137
+#: ../app/widgets/Vcard/Vcard.php:295
+msgid "Country"
+msgstr "Land"
+
+#: ../app/widgets/Vcard/Vcard.php:37
+msgid "Profile Updated"
+msgstr "Profiel bijgewerkt"
+
+#: ../app/widgets/Vcard/Vcard.php:115
+msgid ""
+"It's your first time on Movim! To fill in a \n"
+"                few information about you and display them to your \n"
+"                contacts, create your virtual card by clicking the next "
+"button."
+msgstr ""
+"Het is je eerste keer op Movim! Je kunt een virtueel visitekaartje \n"
+"                aanmaken om wat over jezelf te vertellen. \n"
+"                Klik op 'volgende' om deze aan te maken."
+
+#: ../app/widgets/Vcard/Vcard.php:122 ../app/widgets/Profile/Profile.php:133
+msgid "Create my vCard"
+msgstr "Maak mijn vCard aan"
+
+#: ../app/widgets/Vcard/Vcard.php:171
+msgid "Day"
+msgstr "Dag"
+
+#: ../app/widgets/Vcard/Vcard.php:191
+msgid "Month"
+msgstr "Maand"
+
+#: ../app/widgets/Vcard/Vcard.php:210
+msgid "Year"
+msgstr "Jaar"
+
+#: ../app/widgets/Vcard/Vcard.php:246
+msgid "Avatar"
+msgstr "Avatar"
+
+#: ../app/widgets/Vcard/Vcard.php:257
+msgid "Webcam"
+msgstr "Webcam"
+
+#: ../app/widgets/Vcard/Vcard.php:265
+msgid "Cheese !"
+msgstr "Lach !"
+
+#: ../app/widgets/Vcard/Vcard.php:273
+msgid "Take a webcam snapshot"
+msgstr "Neem een webcam-foto"
+
+#: ../app/widgets/Vcard/Vcard.php:314
+msgid "Privacy Level"
+msgstr "Privacy-Niveau"
+
+#: ../app/widgets/Vcard/Vcard.php:325
+msgid ""
+"Please pay attention ! By making your profile public, all the information "
+"listed above will be available for all the Movim users and on the whole "
+"Internet."
+msgstr ""
+"Let op! Door je profiel publiek te maken zal alle bovenstaande informatie "
+"beschikbaar zijn voor alle Movim-gebruikers and het hele internet."
+
+#: ../app/widgets/Vcard/Vcard.php:327
+msgid "Is this profile public ?"
+msgstr "Is dit profiel publiekelijk?"
+
+#: ../app/widgets/Vcard/Vcard.php:339
+msgid "Submitting"
+msgstr "Bezig met opslaan"
+
+#: ../app/widgets/Vcard/Vcard.php:350
+msgid "Reset"
+msgstr "Reset"
+
+#: ../app/widgets/Vcard/Vcard.php:372
+#, fuzzy
+msgid "Edit my Profile"
+msgstr "Bewerk mijn profiel"
 
 #: ../app/widgets/Help/Help.php:31
 msgid "What is Movim?"
@@ -763,345 +1789,6 @@ msgstr ""
 "chatroom %s of via onze mailing-list (%s zie de pagina %s over dit "
 "onderwerp)."
 
-#: ../app/widgets/Explore/Explore.php:68
-msgid "Chatrooms"
-msgstr ""
-
-#: ../app/widgets/Explore/Explore.php:77
-#: ../app/widgets/Bookmark/Bookmark.php:288
-msgid "Groups"
-msgstr "Groepen"
-
-#: ../app/widgets/Admin/Admin.php:52 ../app/widgets/Admin/Admin.php:57
-#: ../app/widgets/Admin/Admin.php:62 ../app/widgets/Admin/Admin.php:67
-#, php-format
-msgid "Couldn't create directory '%s'."
-msgstr "De map %s kan niet worden aangemaakt"
-
-#: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:349
-msgid "Submit"
-msgstr "Zenden"
-
-#: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:504
-msgid "Compatibility Check"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:184
-msgid ""
-"Movim requires certain external components. Please install them before you "
-"can succeed:"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:189
-#, php-format
-msgid "Your PHP-Version: %s <br>Required: 5.3.0"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:192
-msgid "CURL-Library"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:195
-msgid "GD"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:198
-msgid "SimpleXML"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:201
-msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:204
-msgid "OpenSSL"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:210 ../app/widgets/Admin/Admin.php:213
-msgid "URL Rewriting support"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:507
-msgid "General Settings"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:229
-msgid "Theme"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:249
-msgid "Default language"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:273
-msgid "Environment"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:299
-msgid "User folder size limit (in bytes)"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:304
-msgid "empty"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:305
-msgid "terse"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:306
-msgid "normal"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:307
-msgid "talkative"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:308
-msgid "ultimate"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:315
-msgid "Log verbosity"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:337
-msgid "Server Timezone"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:364
-msgid "Bosh Configuration"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:368
-msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:369
-msgid ""
-"If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:370
-msgid ""
-"If it is closed, you have to specify the corresponding Server on the next "
-"page."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:371
-#, php-format
-msgid "If you are unsure about this config option visit the %swiki%s"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:377
-msgid "Your Bosh URL is not reachable"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:383
-msgid "Bosh URL"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:394
-msgid "Whitelist - XMPP Server"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:398
-msgid ""
-"If you want to specify a list of authorized XMPP servers on your Movim pod "
-"and forbid the connection on all the others please put their domain name "
-"here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:401
-msgid ""
-"Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:406
-msgid "List of whitelisted XMPP servers"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:417 ../app/widgets/Admin/Admin.php:429
-msgid "Information Message"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:421
-msgid "This message will be displayed on the login page"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:424
-msgid "Leave this field blank if you don't want to show any message."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:440
-msgid "Administration Credential"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:445
-msgid "Change the default credentials admin/password"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:451
-msgid "Username"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:457
-msgid "Password"
-msgstr "Wachtwoord"
-
-#: ../app/widgets/Admin/Admin.php:461
-msgid "Retype password"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:510
-msgid "Database Settings"
-msgstr ""
-
-#: ../app/widgets/Roster/Roster.php:76 ../app/widgets/Roster/Roster.php:217
-msgid "Ungrouped"
-msgstr "Groep opgeheven"
-
-#: ../app/widgets/Roster/Roster.php:277
-#, php-format
-msgid ""
-"No contacts ? You can add one using the %s button bellow or going to the "
-"%sExplore page%s"
-msgstr ""
-
-#: ../app/widgets/Roster/Roster.php:303
-msgid "Show disconnected contacts"
-msgstr ""
-
-#: ../app/widgets/Roster/Roster.php:305
-msgid "Hide disconnected contacts"
-msgstr ""
-
-#: ../app/widgets/Roster/Roster.php:309
-#, php-format
-msgid "Hide group %s"
-msgstr ""
-
-#: ../app/widgets/Roster/Roster.php:311
-#, php-format
-msgid "Show group %s"
-msgstr ""
-
-#: ../app/widgets/Roster/Roster.php:374
-msgid "Please enter a valid Jabber ID"
-msgstr "Vul een geldig Jabber ID in"
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
-#: ../app/widgets/Account/Account.php:160
-#: ../app/widgets/NodeConfig/NodeConfig.php:79
-msgid "Validate"
-msgstr "Bevestig"
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-msgid "Affiliations saved"
-msgstr ""
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:90
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:91
-msgid "Manage your members"
-msgstr ""
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:96
-msgid "Get the members"
-msgstr ""
-
-#: ../app/widgets/Wall/Wall.php:85 ../app/widgets/Node/Node.php:146
-#: ../app/controllers/BlogController.php:12
-msgid "Blog"
-msgstr "Blog"
-
-#: ../app/widgets/Wall/Wall.php:91 ../app/widgets/Wall/Wall.php:137
-#: ../app/widgets/Blog/Blog.php:38
-msgid "Feed"
-msgstr "Feed"
-
-#: ../app/widgets/Wall/Wall.php:98 ../app/widgets/Notifs/Notifs.php:135
-msgid "Updating"
-msgstr ""
-
-#: ../app/widgets/Wall/Wall.php:102
-msgid "Update"
-msgstr ""
-
-#: ../app/widgets/Media/Media.php:85
-#: ../app/widgets/ContactInfo/ContactInfo.php:63
-msgid "on"
-msgstr "op"
-
-#: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:151
-#: ../app/widgets/ContactCard/ContactCard.php:51
-#: ../app/widgets/Account/Account.php:289
-msgid "Name"
-msgstr "Naam"
-
-#: ../app/widgets/Media/Media.php:106
-msgid "Resolution"
-msgstr "Resolutie"
-
-#: ../app/widgets/Media/Media.php:108
-msgid "Size"
-msgstr "Grootte"
-
-#: ../app/widgets/Media/Media.php:110
-msgid "Date"
-msgstr "Datum"
-
-#: ../app/widgets/Media/Media.php:112
-msgid "ISO"
-msgstr "ISO"
-
-#: ../app/widgets/Media/Media.php:114
-msgid "Camera"
-msgstr "Camera"
-
-#: ../app/widgets/Media/Media.php:116
-msgid "Artist"
-msgstr "Artiest"
-
-#: ../app/widgets/Media/Media.php:119
-msgid "Original"
-msgstr "Origineel"
-
-#: ../app/widgets/Media/Media.php:119
-msgid "Link"
-msgstr "Link"
-
-#: ../app/widgets/Media/Media.php:148
-msgid "Viewer"
-msgstr "Viewer"
-
-#: ../app/widgets/Media/Media.php:154
-#: ../app/controllers/ProfileController.php:15
-#: ../app/controllers/HelpController.php:15
-#: ../app/controllers/ServerController.php:16
-#: ../app/controllers/NodeController.php:16
-#: ../app/controllers/MainController.php:15
-#: ../app/controllers/ConfController.php:15
-#: ../app/controllers/ExploreController.php:17
-#: ../app/controllers/FriendController.php:25
-#: ../app/controllers/NewsController.php:15
-#: ../app/controllers/MediaController.php:9
-#: ../app/controllers/MediaController.php:15
-#: ../app/controllers/NodeconfigController.php:16
-msgid "Media"
-msgstr "Media"
-
-#: ../app/widgets/Blog/Blog.php:30
-#: ../app/widgets/Syndication/Syndication.php:52
-#, php-format
-msgid "%s's feed"
-msgstr "%s's feed"
-
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:44
-msgid "No public groups found"
-msgstr "Geen publieke groepen gevonden"
-
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:63
 msgid "Public groups"
 msgstr "Publieke groepen"
@@ -1111,8 +1798,9 @@ msgid "Get public groups"
 msgstr "Haal publieke groepen op"
 
 #: ../app/widgets/Login/Login.php:36
+#, fuzzy
 msgid "Connecting..."
-msgstr ""
+msgstr "Verbinding"
 
 #: ../app/widgets/Login/Login.php:54
 #, php-format
@@ -1144,10 +1832,6 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:112
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:118 ../app/widgets/Account/Account.php:388
-msgid "Some data are missing !"
 msgstr ""
 
 #: ../app/widgets/Login/Login.php:124
@@ -1202,529 +1886,6 @@ msgstr ""
 msgid "wants to talk with you"
 msgstr "wil met u praten"
 
-#: ../app/widgets/Vcard/Vcard.php:37
-msgid "Profile Updated"
-msgstr "Profiel bijgewerkt"
-
-#: ../app/widgets/Vcard/Vcard.php:115
-msgid ""
-"It's your first time on Movim! To fill in a \n"
-"                few information about you and display them to your \n"
-"                contacts, create your virtual card by clicking the next "
-"button."
-msgstr ""
-"Het is je eerste keer op Movim! Je kunt een virtueel visitekaartje \n"
-"                aanmaken om wat over jezelf te vertellen. \n"
-"                Klik op 'volgende' om deze aan te maken."
-
-#: ../app/widgets/Vcard/Vcard.php:122 ../app/widgets/Profile/Profile.php:133
-msgid "Create my vCard"
-msgstr "Maak mijn vCard aan"
-
-#: ../app/widgets/Vcard/Vcard.php:148
-#: ../app/widgets/ContactCard/ContactCard.php:47
-msgid "General Informations"
-msgstr "Algemene informatie"
-
-#: ../app/widgets/Vcard/Vcard.php:156
-#: ../app/widgets/ContactCard/ContactCard.php:57
-msgid "Nickname"
-msgstr "bijnaam"
-
-#: ../app/widgets/Vcard/Vcard.php:161
-#: ../app/widgets/ContactCard/ContactCard.php:85
-#: ../app/widgets/ContactCard/ContactCard.php:90
-msgid "Email"
-msgstr "E-mail"
-
-#: ../app/widgets/Vcard/Vcard.php:166
-#: ../app/widgets/ContactCard/ContactCard.php:65
-msgid "Date of Birth"
-msgstr "Geboortedatum"
-
-#: ../app/widgets/Vcard/Vcard.php:171
-msgid "Day"
-msgstr "Dag"
-
-#: ../app/widgets/Vcard/Vcard.php:191
-msgid "Month"
-msgstr "Maand"
-
-#: ../app/widgets/Vcard/Vcard.php:210
-msgid "Year"
-msgstr "Jaar"
-
-#: ../app/widgets/Vcard/Vcard.php:224
-#: ../app/widgets/ContactCard/ContactCard.php:71
-msgid "Gender"
-msgstr "Geslacht"
-
-#: ../app/widgets/Vcard/Vcard.php:235
-#: ../app/widgets/ContactCard/ContactCard.php:77
-msgid "Marital Status"
-msgstr "Burgerlijke staat"
-
-#: ../app/widgets/Vcard/Vcard.php:246
-msgid "Avatar"
-msgstr "Avatar"
-
-#: ../app/widgets/Vcard/Vcard.php:257
-msgid "Webcam"
-msgstr "Webcam"
-
-#: ../app/widgets/Vcard/Vcard.php:265
-msgid "Cheese !"
-msgstr "Lach !"
-
-#: ../app/widgets/Vcard/Vcard.php:273
-msgid "Take a webcam snapshot"
-msgstr "Neem een webcam-foto"
-
-#: ../app/widgets/Vcard/Vcard.php:277
-#: ../app/widgets/ContactCard/ContactCard.php:99
-#: ../app/widgets/ContactCard/ContactCard.php:104
-msgid "Website"
-msgstr "Website"
-
-#: ../app/widgets/Vcard/Vcard.php:281
-#: ../app/widgets/ContactCard/ContactCard.php:112
-msgid "About Me"
-msgstr "Over Mij"
-
-#: ../app/widgets/Vcard/Vcard.php:289
-#: ../app/widgets/ContactCard/ContactCard.php:121
-msgid "Geographic Position"
-msgstr "Geografische Positie"
-
-#: ../app/widgets/Vcard/Vcard.php:291
-#: ../app/widgets/ContactCard/ContactCard.php:125
-msgid "Locality"
-msgstr "Plaats"
-
-#: ../app/widgets/Vcard/Vcard.php:295
-#: ../app/widgets/ContactCard/ContactCard.php:137
-msgid "Country"
-msgstr "Land"
-
-#: ../app/widgets/Vcard/Vcard.php:314
-msgid "Privacy Level"
-msgstr "Privacy-Niveau"
-
-#: ../app/widgets/Vcard/Vcard.php:325
-msgid ""
-"Please pay attention ! By making your profile public, all the information "
-"listed above will be available for all the Movim users and on the whole "
-"Internet."
-msgstr ""
-"Let op! Door je profiel publiek te maken zal alle bovenstaande informatie "
-"beschikbaar zijn voor alle Movim-gebruikers and het hele internet."
-
-#: ../app/widgets/Vcard/Vcard.php:327
-msgid "Is this profile public ?"
-msgstr "Is dit profiel publiekelijk?"
-
-#: ../app/widgets/Vcard/Vcard.php:339
-msgid "Submitting"
-msgstr "Bezig met opslaan"
-
-#: ../app/widgets/Vcard/Vcard.php:350
-msgid "Reset"
-msgstr "Reset"
-
-#: ../app/widgets/Vcard/Vcard.php:372
-msgid "Edit my Profile"
-msgstr "Bewerk mijn profiel"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-msgid "Subscriptions saved"
-msgstr "Aanmelding opgeslagen"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:95
-msgid "Manage your subscriptions"
-msgstr "Beheer je aanmeldingen"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:96
-msgid "Manage the subscriptions"
-msgstr "Beheer de aanmeldingen"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:101
-msgid "Get the subscriptions"
-msgstr "Haal de aanmeldingen op"
-
-#: ../app/widgets/Bookmark/Bookmark.php:79
-msgid "Bookmarks updated"
-msgstr "Favoriet bijgewerkt"
-
-#: ../app/widgets/Bookmark/Bookmark.php:84 ../app/widgets/Feed/Feed.php:89
-msgid "An error occured : "
-msgstr "Er is een fout opgetreden : "
-
-#: ../app/widgets/Bookmark/Bookmark.php:123
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: ../app/widgets/Bookmark/Bookmark.php:127
-#: ../app/widgets/Bookmark/Bookmark.php:180
-msgid "Empty name"
-msgstr "Lege naam"
-
-#: ../app/widgets/Bookmark/Bookmark.php:176
-msgid "Bad URL"
-msgstr "Ongeldige URL"
-
-#: ../app/widgets/Bookmark/Bookmark.php:280
-msgid "Conferences"
-msgstr "Conferenties"
-
-#: ../app/widgets/Bookmark/Bookmark.php:296
-msgid "Links"
-msgstr "Links"
-
-#: ../app/widgets/ContactManage/ContactManage.php:30
-msgid "Contact updated"
-msgstr ""
-
-#: ../app/widgets/ContactManage/ContactManage.php:55
-msgid "Manage"
-msgstr "Beheren"
-
-#: ../app/widgets/ContactManage/ContactManage.php:67
-msgid "Alias"
-msgstr "Alias"
-
-#: ../app/widgets/ContactManage/ContactManage.php:73
-msgid "Group"
-msgstr "Groep"
-
-#: ../app/widgets/ContactManage/ContactManage.php:76
-msgid "Save"
-msgstr "Opslaan"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:73
-msgid "Place"
-msgstr "Plaats"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:218
-msgid "by"
-msgstr ""
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:222
-msgid "email"
-msgstr ""
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:226
-msgid "jid"
-msgstr ""
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:423
-msgid "Show the older comments"
-msgstr "Toon eerdere reacties"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:495
-msgid "No content"
-msgstr "Geen inhoud"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:555
-msgid "No comments"
-msgstr "Geen reacties"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:566
-msgid "No comments stream"
-msgstr "Geen reacties geplaatst"
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:37
-msgid "Delete"
-msgstr ""
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:49
-#, php-format
-msgid "%s has been removed from your public groups"
-msgstr ""
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:74
-msgid "Public Groups"
-msgstr ""
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:79
-msgid "Get your public groups"
-msgstr ""
-
-#: ../app/widgets/Connection/Connection.php:37
-msgid "Please wait "
-msgstr ""
-
-#: ../app/widgets/ContactAction/ContactAction.php:65
-#: ../app/widgets/ContactAction/ContactAction.php:134
-msgid "Actions"
-msgstr "Acties"
-
-#: ../app/widgets/ContactAction/ContactAction.php:82
-msgid "Chat"
-msgstr "Chat"
-
-#: ../app/widgets/ContactAction/ContactAction.php:100
-msgid "Remove this contact"
-msgstr "Verwijder dit contact"
-
-#: ../app/widgets/ContactAction/ContactAction.php:117
-msgid "Yes"
-msgstr "Ja"
-
-#: ../app/widgets/ContactAction/ContactAction.php:130
-msgid "No"
-msgstr "Nee"
-
-#: ../app/widgets/ContactAction/ContactAction.php:146
-msgid "Invite this user"
-msgstr "Nodig deze gebruiker uit"
-
-#: ../app/widgets/Presence/Presence.php:120
-msgid "Disconnect"
-msgstr ""
-
-#: ../app/widgets/ContactCard/ContactCard.php:45
-#: ../app/widgets/ContactCard/ContactCard.php:154
-#: ../app/controllers/ProfileController.php:14
-#: ../app/controllers/HelpController.php:14
-#: ../app/controllers/ServerController.php:15
-#: ../app/controllers/NodeController.php:15
-#: ../app/controllers/MainController.php:14
-#: ../app/controllers/ConfController.php:14
-#: ../app/controllers/ExploreController.php:16
-#: ../app/controllers/FriendController.php:24
-#: ../app/controllers/NewsController.php:14
-#: ../app/controllers/MediaController.php:14
-#: ../app/controllers/NodeconfigController.php:15
-msgid "Profile"
-msgstr "Profiel"
-
-#: ../app/widgets/Log/Log.php:33
-msgid "Debug console"
-msgstr "Debug console"
-
-#: ../app/widgets/Config/Config.php:54
-msgid "Configuration updated"
-msgstr "De confituratie is bijgewerkt"
-
-#: ../app/widgets/Profile/Profile.php:42
-msgid "Saved"
-msgstr ""
-
-#: ../app/widgets/Profile/Profile.php:43
-msgid "Status updated"
-msgstr ""
-
-#: ../app/widgets/Profile/Profile.php:118
-msgid "Your status here !"
-msgstr ""
-
-#: ../app/widgets/Profile/Profile.php:129
-msgid "No profile yet ?"
-msgstr ""
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:31
-#: ../app/widgets/MediaUpload/MediaUpload.php:66
-msgid "Upload"
-msgstr "Uploaden"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:35
-msgid "Please select image file"
-msgstr "Selecteer afbeelding"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:69
-msgid "You should select valid image files only!"
-msgstr "Je kunt alleen geldige afbeeldingen selecteren!"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:72
-msgid "An error occurred while uploading the file"
-msgstr "Er is een fout opgetreden tijdens het uploaden van het bestand"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:75
-msgid ""
-"The upload has been canceled by the user or the browser dropped the "
-"connection"
-msgstr ""
-"De upload is geannuleerd door de gebruiker of de browser verbrak de "
-"verbinding"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid ""
-"Your file is very big. We can't accept it. Please select a smaller file"
-msgstr "Je bestand is te groot, selecteer een kleiner bestand."
-
-#: ../app/widgets/Location/Location.php:54
-msgid "Wrong position"
-msgstr ""
-
-#: ../app/widgets/Location/Location.php:63
-msgid "Location updated"
-msgstr ""
-
-#: ../app/widgets/Location/Location.php:94
-msgid "Location"
-msgstr "Locatie"
-
-#: ../app/widgets/Location/Location.php:103
-msgid "Update my position"
-msgstr ""
-
-#: ../app/widgets/Location/Location.php:109
-msgid "Accept"
-msgstr "Accepteer"
-
-#: ../app/widgets/Chat/Chat.php:50
-msgid "Offline"
-msgstr "Offline"
-
-#: ../app/widgets/Chat/Chat.php:137
-msgid "Message Published"
-msgstr ""
-
-#: ../app/widgets/Chat/Chat.php:176
-#, php-format
-msgid "%s needs your attention"
-msgstr ""
-
-#: ../app/widgets/Chat/Chat.php:376
-msgid "Encrypted message"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:92
-msgid "Step 2 - Fill in your informations"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:173
-msgid "No account creation form founded on the server"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:292
-msgid "Description"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:295
-msgid "URL"
-msgstr "URL"
-
-#: ../app/widgets/Account/Account.php:298
-msgid "Software"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:394
-msgid "Wrong ID"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:400
-msgid "You entered different passwords"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:406
-msgid "Invalid name"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:412
-msgid "Request not acceptable"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:418
-msgid "Username already taken"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:424
-msgid "Could not connect to the XMPP server"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:430
-msgid "Could not communicate with the XMPP server"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:436
-msgid "Unknown error"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:448
-msgid "Create a new account"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:451
-msgid ""
-"Movim is a decentralized social network, before creating a new account you "
-"need to choose a server to register."
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:452
-msgid "Keep in mind that this server will handle all your personnal data."
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:457
-msgid "Step 1 - Search the server"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:460
-#, php-format
-msgid "You can%s enter your server domain name%s. "
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:461
-msgid "Or you can choose a server from this list."
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:472
-msgid "Server"
-msgstr "Server"
-
-#: ../app/widgets/Account/Account.php:475
-msgid "Enter the server domain (ex: movim.eu)"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:487
-msgid "Searching..."
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:489
-msgid "Search"
-msgstr "Zoeken"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:46
-msgid "Mood"
-msgstr "Stemming"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:50
-msgid "I'm "
-msgstr "Ik ben "
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:57
-msgid "Listening"
-msgstr "Luisteren"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:97
-msgid "Last seen"
-msgstr "Laatst gezien"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:113
-msgid "Bot"
-msgstr "Bot"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:114
-msgid "Desktop"
-msgstr "Bureaublad"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:115
-#: ../app/widgets/ContactInfo/ContactInfo.php:116
-msgid "Phone"
-msgstr "Telefoon"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:117
-msgid "Web"
-msgstr "Web"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:118
-msgid "Registered"
-msgstr "Geregistreerd"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:130
-msgid "Client Informations"
-msgstr "Informatie over verbonden computer"
-
 #: ../app/widgets/Feed/Feed.php:61 ../app/widgets/Feed/Feed.php:100
 msgid ""
 "Your server doesn't support post publication, you can only read contact's "
@@ -1741,202 +1902,94 @@ msgstr "Fout bij publiceren van reactie"
 msgid "Creating your feed..."
 msgstr "Je feed wordt gegenereerd..."
 
-#: ../app/widgets/NodeConfig/NodeConfig.php:50
-#, php-format
-msgid "Return to %s's list of groups"
-msgstr "Ga terug naar %s's lijst van groepen"
+#: ../app/widgets/Profile/Profile.php:42
+#, fuzzy
+msgid "Saved"
+msgstr "Opslaan"
 
-#: ../app/widgets/NodeConfig/NodeConfig.php:53
-msgid "Group deleted"
-msgstr "Groep verwijderd"
+#: ../app/widgets/Profile/Profile.php:43
+#, fuzzy
+msgid "Status updated"
+msgstr "Favoriet bijgewerkt"
 
-#: ../app/widgets/NodeConfig/NodeConfig.php:59
-msgid "Group configuration saved"
-msgstr "Groep-configuratie opgeslagen"
-
-#: ../app/widgets/Node/Node.php:114 ../app/widgets/Node/Node.php:205
-#: ../app/widgets/Node/Node.php:216
-msgid "Unsubscribe"
+#: ../app/widgets/Profile/Profile.php:118
+msgid "Your status here !"
 msgstr ""
 
-#: ../app/widgets/Node/Node.php:122 ../app/widgets/Node/Node.php:175
-#: ../app/widgets/Node/Node.php:194
-msgid "Subscribe"
+#: ../app/widgets/Profile/Profile.php:129
+#, fuzzy
+msgid "No profile yet ?"
+msgstr "Nog geen account?"
+
+#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:58
+#: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
+msgid "Error"
+msgstr "Fout"
+
+#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:63
+msgid "Item Not Found"
+msgstr "Item niet gevonden"
+
+#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:68
+msgid "Feature Not Implemented"
+msgstr "Functie niet geïmplementeerd"
+
+#: ../lib/Moxl/xec/action/location/LocationPublish.php:85
+msgid "Your server doesn't support location publication"
+msgstr "Je server ondersteunt geen locatie-publicatie"
+
+#: ../lib/Moxl/xec/action/location/LocationPublish.php:90
+msgid "Your are not authorized to publish your location"
+msgstr "Je bent niet gemachtigd om je locatie te publiceren"
+
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
+msgid "The node does not exist"
+msgstr "De node bestaat niet"
+
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:45
+msgid "Your server doesn't support this feature"
+msgstr "Je browser ondersteunt deze functionaliteit niet"
+
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:50
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:60
+msgid "You are not autorized to do this action"
+msgstr "Je bent niet gemachtigd deze handeling uit te voeren"
+
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:55
+msgid "This service is unavaiable"
+msgstr "Deze dienst is niet beschikbaar"
+
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:65
+msgid "The server does not exist"
+msgstr "De server bestaat niet"
+
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
+msgid "Unexpected request"
+msgstr "Onverwacht verzoek"
+
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:75
+msgid "The server cannot accept this action"
+msgstr "De server kan deze actie niet accepteren"
+
+#: ../app/views/profile.tpl:20
+#, fuzzy
+msgid "Edit my profile"
+msgstr "Bewerk mijn profiel"
+
+#: ../app/views/page.tpl:70
+msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#: ../app/widgets/Node/Node.php:128
-#: ../app/controllers/ProfileController.php:13
-#: ../app/controllers/HelpController.php:13
-#: ../app/controllers/ServerController.php:14
-#: ../app/controllers/NodeController.php:14
-#: ../app/controllers/MainController.php:13
-#: ../app/controllers/ConfController.php:13
-#: ../app/controllers/ExploreController.php:15
-#: ../app/controllers/FriendController.php:23
-#: ../app/controllers/NewsController.php:13
-#: ../app/controllers/MediaController.php:13
-#: ../app/controllers/NodeconfigController.php:14
-msgid "Explore"
-msgstr "Verkennen"
-
-#: ../app/widgets/Node/Node.php:136 ../app/widgets/Node/Node.php:268
-msgid "Posts"
-msgstr ""
-
-#: ../app/widgets/Node/Node.php:164
-msgid "Get Subscription"
-msgstr ""
-
-#: ../app/widgets/Node/Node.php:169
-#: ../app/controllers/ProfileController.php:16
-#: ../app/controllers/HelpController.php:16
-#: ../app/controllers/ServerController.php:17
-#: ../app/controllers/NodeController.php:17
-#: ../app/controllers/MainController.php:16
-#: ../app/controllers/ConfController.php:16
-#: ../app/controllers/ExploreController.php:18
-#: ../app/controllers/FriendController.php:26
-#: ../app/controllers/NewsController.php:16
-#: ../app/controllers/MediaController.php:16
-#: ../app/controllers/NodeconfigController.php:10
-#: ../app/controllers/NodeconfigController.php:17
-msgid "Configuration"
-msgstr "Configuratie"
-
-#: ../app/widgets/Node/Node.php:177
-msgid "Make your membership to this group public to your friends"
-msgstr ""
-
-#: ../app/widgets/Node/Node.php:184
-msgid "Give a nickname to this group if you want"
-msgstr ""
-
-#: ../app/widgets/Node/Node.php:207
-msgid "Are you sure ?"
-msgstr ""
-
-#: ../app/models/postn/Postn.php:140
-msgid "Content not found"
-msgstr "Inhoud niet gevonden"
-
-#: ../app/controllers/ProfileController.php:9
-#, php-format
-msgid "%s - Profile"
-msgstr ""
-
-#: ../app/controllers/ProfileController.php:11
-#: ../app/controllers/BlogController.php:11
-#: ../app/controllers/DiscoverController.php:13
-#: ../app/controllers/HelpController.php:11
-#: ../app/controllers/NotfoundController.php:11
-#: ../app/controllers/ServerController.php:12
-#: ../app/controllers/NodeController.php:12
-#: ../app/controllers/AccountController.php:11
-#: ../app/controllers/MainController.php:11
-#: ../app/controllers/AboutController.php:11
-#: ../app/controllers/LoginController.php:11
-#: ../app/controllers/ConfController.php:11
-#: ../app/controllers/ExploreController.php:13
-#: ../app/controllers/FriendController.php:21
-#: ../app/controllers/NewsController.php:11
-#: ../app/controllers/MediaController.php:11
-#: ../app/controllers/AdminController.php:17
-#: ../app/controllers/NodeconfigController.php:12
-msgid "Home"
-msgstr "Home"
-
-#: ../app/controllers/ProfileController.php:12
-#: ../app/controllers/HelpController.php:12
-#: ../app/controllers/ServerController.php:13
-#: ../app/controllers/NodeController.php:13
-#: ../app/controllers/MainController.php:12
-#: ../app/controllers/ConfController.php:12
-#: ../app/controllers/ExploreController.php:14
-#: ../app/controllers/FriendController.php:22
-#: ../app/controllers/NewsController.php:12
-#: ../app/controllers/MediaController.php:12
-#: ../app/controllers/NodeconfigController.php:13
-msgid "News"
-msgstr "Nieuws"
-
-#: ../app/controllers/BlogController.php:9
-#: ../app/controllers/AccountController.php:9
-#, php-format
-msgid "%s - Account"
-msgstr ""
-
-#: ../app/controllers/DiscoverController.php:11
-#, php-format
-msgid "%s - Discover"
-msgstr ""
-
-#: ../app/controllers/DiscoverController.php:14
-#: ../app/controllers/AboutController.php:12
-#: ../app/controllers/LoginController.php:12
-msgid "Discover"
-msgstr ""
-
-#: ../app/controllers/DiscoverController.php:15
-#: ../app/controllers/AboutController.php:13
-#: ../app/controllers/LoginController.php:13
-msgid "About"
-msgstr ""
-
-#: ../app/controllers/HelpController.php:9
-#, php-format
-msgid "%s - Help Page"
-msgstr ""
-
-#: ../app/controllers/AccountController.php:12
-msgid "Account Creation"
-msgstr "Account aanmaken"
-
-#: ../app/controllers/MainController.php:9
-#, php-format
-msgid "%s - Welcome to Movim"
-msgstr "%s - Welkom bij Movim"
-
-#: ../app/controllers/AboutController.php:9
-#, php-format
-msgid "%s - About"
-msgstr ""
-
-#: ../app/controllers/LoginController.php:9
-#, php-format
-msgid "%s - Login to Movim"
-msgstr "%s - Inlogging bij Movim"
-
-#: ../app/controllers/ConfController.php:9
-#, php-format
-msgid "%s - Configuration"
-msgstr "%s - Configuratie"
-
-#: ../app/controllers/ExploreController.php:11
-#, php-format
-msgid "%s - Explore"
-msgstr ""
-
-#: ../app/controllers/NewsController.php:9
-#, php-format
-msgid "%s - News"
-msgstr ""
-
-#: ../app/controllers/AdminController.php:15
-#, php-format
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: ../app/controllers/AdminController.php:18
-msgid "Administration"
+#: ../app/views/admin.tpl:5
+#, fuzzy
+msgid "Administration Panel"
 msgstr "Beheer"
 
-#: ../upload.php:32
-msgid "Not a picture"
-msgstr "Is geen plaatje"
-
-#: ../upload.php:35
-msgid "Folder size limit exceeded"
-msgstr "Limiet voor map overschreden"
+#: ../app/views/visio.tpl:18
+#, fuzzy
+msgid "Visio-conference"
+msgstr "Conferenties"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "PHP versie komt niet overeen. Movim vereist minimaal PHP  5.3"
@@ -1946,9 +1999,6 @@ msgstr "Limiet voor map overschreden"
 
 #~ msgid "Movim Installer"
 #~ msgstr "Movim Installer"
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Compatibiliteit test"
 
 #~ msgid ""
 #~ "The following requirements were not met. Please make sure they are all "
@@ -1963,17 +2013,11 @@ msgstr "Limiet voor map overschreden"
 #~ msgid "JID not provided."
 #~ msgstr "JID was niet gegeven"
 
-#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "jid '%s' is niet correct"
 
-#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "De log file %s kon niet geopend worden"
-
-#, php-format
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - account aanmaken"
 
 #~ msgid "My address"
 #~ msgstr "Mijn adres"
@@ -1990,9 +2034,6 @@ msgstr "Limiet voor map overschreden"
 #~ msgid "Update your PHP version or contact your server administrator"
 #~ msgstr "Update de PHR versie of neem contact op met de sever beheerder"
 
-#~ msgid "Enable read and write rights on Movim's root folder"
-#~ msgstr "Enable de lees en schrijfrechten in Movim`s root folder"
-
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Dank u voor het downloaden van Movim!"
 
@@ -2002,15 +2043,11 @@ msgstr "Limiet voor map overschreden"
 #~ "Voordat u gebruik kunt maken van uw social network, zijn er enkele "
 #~ "aanpassingen noodzakelijk."
 
-#, php-format
 #~ msgid "Cannot load element value '%s'"
 #~ msgstr "Kan elementwaarde '%s' niet laden"
 
 #~ msgid "Your web browser is too old to use with Movim."
 #~ msgstr "Je browser is te oud om met Movim te gebruiken."
-
-#~ msgid "My Posts"
-#~ msgstr "Mijn Inzendingen"
 
 #~ msgid "Composing..."
 #~ msgstr "Bezig met samenstellen..."
@@ -2023,9 +2060,6 @@ msgstr "Limiet voor map overschreden"
 
 #~ msgid "Create one !"
 #~ msgstr "Maak er een aan !"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Nog geen account?"
 
 #~ msgid "You can login using your favorite Jabber account"
 #~ msgstr "Je kan inloggen met je favoriete Jabber-account"
@@ -2056,9 +2090,6 @@ msgstr "Limiet voor map overschreden"
 
 #~ msgid "Loading comments ..."
 #~ msgstr "Reacties worden geladen ..."
-
-#~ msgid "Get the comments"
-#~ msgstr "Haal reacties op"
 
 #~ msgid "Add a comment"
 #~ msgstr "Reactie toevoegen"
@@ -2102,17 +2133,11 @@ msgstr "Limiet voor map overschreden"
 #~ msgid "Delete this post"
 #~ msgstr "Verwijder dit bericht"
 
-#~ msgid "Discussion Servers"
-#~ msgstr "Discussie-servers"
-
 #~ msgid "No public feed for this contact"
 #~ msgstr "Geen publieke feed voor dit contact"
 
 #~ msgid "No contact specified"
 #~ msgstr "Geen contact gespecificeerd"
-
-#~ msgid "Connection"
-#~ msgstr "Verbinding"
 
 #~ msgid "What's new ?"
 #~ msgstr "Wat is nieuw?"
