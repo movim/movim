@@ -281,6 +281,7 @@ legend {
     content: " ";
     padding-left: 1.1em;
     background-position: center center;
+    background-size: 12px 12px;
     background-repeat: no-repeat;
     margin-right: 0.7em;
 }
@@ -337,32 +338,32 @@ legend {
     border-radius: 0px 0.1em 0.1em 0px;
 }
 
-.icon.yes:before    { background-image: url(../img/icons/button/checkmark.png); }
-.icon.no:before     { background-image: url(../img/icons/button/close.png); }
-.icon.chat:before   { background-image: url(../img/icons/button/bubbles.png);}
-.icon.image:before  { background-image: url(../img/icons/button/image.png);}
-.icon.images:before { background-image: url(../img/icons/button/images.png);}
-.icon.add:before    { background-image: url(../img/icons/button/plus.png); }
-.icon.rm:before     { background-image: url(../img/icons/button/minus.png); }
-.icon.write:before  { background-image: url(../img/icons/button/pencil.png); }
-.icon.help:before   { background-image: url(../img/icons/button/support.png); }
-.icon.upload:before { background-image: url(../img/icons/button/upload.png); }
-.icon.search:before { background-image: url(../img/icons/button/search.png); }
-.icon.refresh:before{ background-image: url(../img/icons/button/loop.png); }
-.icon.blog:before   { background-image: url(../img/icons/button/quill.png); }
-.icon.feed:before   { background-image: url(../img/icons/button/feed.png); }
-.icon.back:before   { background-image: url(../img/icons/button/arrow-left.png); }
-.icon.next:before   { background-image: url(../img/icons/button/arrow-right.png); }
-.icon.geo:before    { background-image: url(../img/icons/button/location.png); }
-.icon.preview:before{ background-image: url(../img/icons/button/eye.png); }
-.icon.share:before  { background-image: url(../img/icons/button/share.png); }
-.icon.mail:before   { background-image: url(../img/icons/button/envelope.png); }
-.icon.tag:before    { background-image: url(../img/icons/button/tag.png); }
-.icon.users:before  { background-image: url(../img/icons/button/users.png); }
-.icon.loading:before{ background-image: url(../img/icons/button/loop.png); }
-.icon.user:before   { background-image: url(../img/icons/button/user.png); }
-.icon.link:before   { background-image: url(../img/icons/button/link.png); }
-.icon.call:before   { background-image: url(../img/icons/button/call.png); }
-.icon.hang-up:before{ background-image: url(../img/icons/button/hang-up.png); }
-.icon.expand:before { background-image: url(../img/icons/button/expand.png); }
-.icon.contract:before{ background-image: url(../img/icons/button/contract.png); }
+.icon.yes:before    { background-image: url(../img/icons/button/checkmark.svg); }
+.icon.no:before     { background-image: url(../img/icons/button/close.svg); }
+.icon.chat:before   { background-image: url(../img/icons/button/bubbles.svg);}
+.icon.image:before  { background-image: url(../img/icons/button/image.svg);}
+.icon.images:before { background-image: url(../img/icons/button/images.svg);}
+.icon.add:before    { background-image: url(../img/icons/button/plus.svg); }
+.icon.rm:before     { background-image: url(../img/icons/button/minus.svg); }
+.icon.write:before  { background-image: url(../img/icons/button/pencil.svg); }
+.icon.help:before   { background-image: url(../img/icons/button/support.svg); }
+.icon.upload:before { background-image: url(../img/icons/button/upload.svg); }
+.icon.search:before { background-image: url(../img/icons/button/search.svg); }
+.icon.refresh:before{ background-image: url(../img/icons/button/loop.svg); }
+.icon.blog:before   { background-image: url(../img/icons/button/quill.svg); }
+.icon.feed:before   { background-image: url(../img/icons/button/feed.svg); }
+.icon.back:before   { background-image: url(../img/icons/button/arrow-left.svg); }
+.icon.next:before   { background-image: url(../img/icons/button/arrow-right.svg); }
+.icon.geo:before    { background-image: url(../img/icons/button/location.svg); }
+.icon.preview:before{ background-image: url(../img/icons/button/eye.svg); }
+.icon.share:before  { background-image: url(../img/icons/button/share.svg); }
+.icon.mail:before   { background-image: url(../img/icons/button/envelope.svg); }
+.icon.tag:before    { background-image: url(../img/icons/button/tag.svg); }
+.icon.users:before  { background-image: url(../img/icons/button/users.svg); }
+.icon.loading:before{ background-image: url(../img/icons/button/loop.svg); }
+.icon.user:before   { background-image: url(../img/icons/button/user.svg); }
+.icon.link:before   { background-image: url(../img/icons/button/link.svg); }
+.icon.call:before   { background-image: url(../img/icons/button/call.svg); }
+.icon.hang-up:before{ background-image: url(../img/icons/button/hang-up.svg); }
+.icon.expand:before { background-image: url(../img/icons/button/expand.svg); }
+.icon.contract:before{ background-image: url(../img/icons/button/contract.svg); }
