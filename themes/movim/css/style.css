@@ -418,6 +418,7 @@ nav .wrapper {
     display: block;
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: 16px 16px;
     height: 0px;
     width: 0px;
     padding: 1.5em;
@@ -457,6 +458,7 @@ nav .wrapper {
     color: transparent;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
+    background-size: auto auto;
     background-position: center center;
     
     box-sizing: border-box;
@@ -465,24 +467,24 @@ nav .wrapper {
 }
 
 .menu li .discover,
-.menu li .explore   { background-image: url(../img/icons/menu/globe.png); }
-.menu li .profile   { background-image: url(../img/icons/menu/user.png); }
-.menu li .conf      { background-image: url(../img/icons/menu/settings.png); }
-.menu li .help      { background-image: url(../img/icons/menu/support.png); }
-.menu li .disconnect{ background-image: url(../img/icons/menu/exit.png); }
-.menu li .down      { background-image: url(../img/icons/menu/list.png); }
-.menu li .up        { background-image: url(../img/icons/menu/upload.png); }
-.menu li .plus      { background-image: url(../img/icons/menu/plus.png); }
-.menu li .search    { background-image: url(../img/icons/menu/search.png); }
+.menu li .explore   { background-image: url(../img/icons/menu/globe.svg); }
+.menu li .profile   { background-image: url(../img/icons/menu/user.svg); }
+.menu li .conf      { background-image: url(../img/icons/menu/settings.svg); }
+.menu li .help      { background-image: url(../img/icons/menu/support.svg); }
+.menu li .disconnect{ background-image: url(../img/icons/menu/exit.svg); }
+.menu li .down      { background-image: url(../img/icons/menu/list.svg); }
+.menu li .up        { background-image: url(../img/icons/menu/upload.svg); }
+.menu li .plus      { background-image: url(../img/icons/menu/plus.svg); }
+.menu li .search    { background-image: url(../img/icons/menu/search.svg); }
 .menu li .users, 
-.menu li .account   { background-image: url(../img/icons/menu/users.png); }
-.menu li .expand    { background-image: url(../img/icons/menu/expand.png); }
-.menu li .contract  { background-image: url(../img/icons/menu/contract.png); }
-.menu li .media     { background-image: url(../img/icons/menu/folder.png); }
-.menu li .blog      { background-image: url(../img/icons/menu/quill.png); }
-.menu li .admin     { background-image: url(../img/icons/menu/admin.png); }
-.menu li .about     { background-image: url(../img/icons/menu/info.png); }
-.menu li .news      { background-image: url(../img/icons/menu/news.png); }
+.menu li .account   { background-image: url(../img/icons/menu/users.svg); }
+.menu li .expand    { background-image: url(../img/icons/menu/expand.svg); }
+.menu li .contract  { background-image: url(../img/icons/menu/contract.svg); }
+.menu li .media     { background-image: url(../img/icons/menu/folder.svg); }
+.menu li .blog      { background-image: url(../img/icons/menu/quill.svg); }
+.menu li .admin     { background-image: url(../img/icons/menu/admin.svg); }
+.menu li .about     { background-image: url(../img/icons/menu/info.svg); }
+.menu li .news      { background-image: url(../img/icons/menu/news.svg); }
 
 ul li .tabbed {
     background-color: rgba(36, 36, 36, 1);

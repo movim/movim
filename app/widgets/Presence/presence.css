@@ -3,11 +3,11 @@
     color: #ccc;
 }
 
-#logout .online     { background-image: url(img/online.png); }
-#logout .away       { background-image: url(img/away.png); }
-#logout .dnd        { background-image: url(img/dnd.png); }
-#logout .xa         { background-image: url(img/xa.png); }
-#logout .disconnect { background-image: url(img/exit.png); text-decoration: none;}
+#logout .online     { background-image: url(img/online.svg); }
+#logout .away       { background-image: url(img/away.svg); }
+#logout .dnd        { background-image: url(img/dnd.svg); }
+#logout .xa         { background-image: url(img/xa.svg); }
+#logout .disconnect { background-image: url(img/exit.svg); text-decoration: none;}
 
 #logouttab {
 	top: 0px;
@@ -28,6 +28,7 @@
     white-space: nowrap;
     padding-left: 3em;
     padding-right: 1em;
+    background-size: 16px 16px;
 }
 
 #logouttab:hover {
@@ -51,6 +52,7 @@
     line-height: 3em;
     background-repeat: no-repeat;
     background-position: 1em center;
+    background-size: 16px 16px;
     padding-left: 3em;
     padding-right: 1em;
     margin-left: -3em;
