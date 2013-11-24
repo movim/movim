@@ -71,3 +71,12 @@
      90% { opacity: 1; visibility: visible; left: 0px; }
     100% { opacity: 0; visibility: hidden; left: -300px; }
 }
+
+@media screen and (max-width: 1024px) {
+    #notification .notif {
+        width: 100%;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+}

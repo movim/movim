@@ -156,8 +156,9 @@ table#feedsubmitform {
 }
 
 .menu li a.main, .menu li a.active.main {
-    background-image: url(../img/icons/menu/home.png);
+    background-image: url(../img/icons/menu/home.svg);
     background-position: center center;
+    background-size: 16px 16px;
 }
 
 .menu li + a.disconnect{
@@ -170,6 +171,10 @@ table#feedsubmitform {
     margin: 0.5em !important;
     margin-top: 20% ! important;
     background-position: center 0em !important;
+}
+
+#loginpage .admin {
+    display: none !important;
 }
 
 #rostermenu {
