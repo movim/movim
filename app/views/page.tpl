@@ -10,7 +10,7 @@
 	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
 	<script src="<?php echo BASE_URI; ?>app/assets/js/sjcl.js"></script>
     
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1";>
+    <meta name="viewport" content="width=device-width, user-scalable=no";>
     
     <script type="text/javascript">
         var BASE_URI = '<?php echo BASE_URI; ?>';

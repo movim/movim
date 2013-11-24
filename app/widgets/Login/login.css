@@ -15,10 +15,10 @@ body {
     margin: 0 auto;
     height: 100%;
     
-    background-image: url(img/logo.png);
+    background-image: url(img/logo.svg);
     background-repeat: no-repeat;
     background-position: center 1em;
-    background-size: auto auto;
+    background-size: 74% auto;
     padding-top: 33%;
 
     margin-top: 40%;
@@ -117,4 +117,11 @@ body {
 
 footer {
     display: none;
+}
+
+
+@media screen and (max-width: 1024px) {
+    #loginpage {
+        background-size: 80% auto;
+    }
 }
