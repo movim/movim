@@ -47,7 +47,11 @@ function movim_poll()
 		}
 	};
 
-	poller.send();
+    /*var poll = {
+        session: Session.getSession()
+    };*/
+
+	poller.send(/*JSON.stringify(poll)*/);
 }
 
 function halt_poll()

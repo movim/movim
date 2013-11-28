@@ -92,13 +92,18 @@ class RPC
      */
     public function handle_json()
     {
+        $json = file_get_contents('php://input');
+        $request = json_decode($json);
+
+        movim_log($request);
+
+        global $session;            
+        $session['rid'] = $request->session->id;
+        $session['id'] = $request->session->id;
+
         if(isset($_GET['do']) && $_GET['do'] == 'poll') {
             moxl\ping();
         } else {
-            $json = file_get_contents('php://input');
-
-            $request = json_decode($json);
-
             // Loading the widget.
             $widget_name = (string)$request->widget;
 
