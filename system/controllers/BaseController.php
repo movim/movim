@@ -13,6 +13,7 @@ class BaseController {
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_tpl.js');
+        $this->page->addScript('movim_session.js');
         $this->page->addScript('movim_rpc.js');
     }
 
