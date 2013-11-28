@@ -67,6 +67,9 @@ class Login extends WidgetBase {
         } else{
             $this->view->assign('whitelist_display', false);
         }
+
+        $sess = Session::start(APP_NAME);
+        var_dump($sess->get('session'));
     }
 
     function onMoxlError($error) {
