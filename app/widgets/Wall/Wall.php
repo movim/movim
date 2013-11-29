@@ -145,7 +145,7 @@ class Wall extends WidgetCommon
                 ?>
                     <div style="padding: 1.5em; text-align: center;">Ain't Nobody Here But Us Chickens...</div>
                     <script type="text/javascript">
-                        <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 500);'; ?>
+                        <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 50);'; ?>
                     </script>
                 <?php
                 } ?>

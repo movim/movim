@@ -4,4 +4,6 @@
     var PAGE_KEY_URI    = '{$page_key_uri}';
     var FAIL_SAFE       = '{$fail_safe}';
     var SERVER_CONF     = {$server_conf};
+    var SESSION_RID     = {$session_rid};
+    var SESSION_ID      = {$session_id};
 </script>

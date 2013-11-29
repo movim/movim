@@ -17,7 +17,7 @@ function movimRegisterPollHandler(type, func)
 function movim_poll()
 {
 	poller = rpc.make_xmlhttp();
-	poller.open('GET', BASE_URI+'jajax.php?do=poll', true);
+	poller.open('POST', BASE_URI+'jajax.php?do=poll', true);
 
 	poller.onreadystatechange = function()
 	{
@@ -48,10 +48,13 @@ function movim_poll()
 	};
 
     /*var poll = {
-        session: Session.getSession()
-    };*/
+        session: Session.getSession(true)
+    };
 
-	poller.send(/*JSON.stringify(poll)*/);
+    //console.log(JSON.stringify(poll));
+
+	poller.send(JSON.stringify(poll));*/
+    poller.send();
 }
 
 function halt_poll()
