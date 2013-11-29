@@ -96,14 +96,19 @@ class RPC
         $request = json_decode($json);
 
         movim_log($request);
-
-        global $session;            
-        $session['rid'] = $request->session->id;
-        $session['id'] = $request->session->id;
+        // We force the rid and id session number from the browser
+        if(isset($request->session->rid)
+        && isset($request->session->id)) {
+            global $session;            
+            $session['rid'] = $request->session->rid;
+            $session['id'] = $request->session->id;
+        }
 
         if(isset($_GET['do']) && $_GET['do'] == 'poll') {
             moxl\ping();
         } else {
+
+        
             // Loading the widget.
             $widget_name = (string)$request->widget;
 

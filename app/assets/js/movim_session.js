@@ -1,3 +1,9 @@
+/**
+ * Movim Session class.
+ *
+ * Implement an additional security to prevent same rid and id in the
+ * XMPP requests during the session
+ */
 var Session = {
     session: null,
     init: function() {
@@ -16,9 +22,17 @@ var Session = {
         localStorage.setItem('session', null);
     },
 
+    check: function() {
+        if(SESSION_RID != null && SESSION_RID > this.session.rid)
+            this.session.rid = SESSION_RID;
+        if(SESSION_ID != null && SESSION_ID > this.session.id)
+            this.session.id = SESSION_ID;
+    },
+
     clear: function() {
         this.session = {
-            'id'    : 0
+            'id'    : 0,
+            'rid'   : 0
         };
 
         localStorage.setItem('session', JSON.stringify(this.session));
@@ -26,7 +40,9 @@ var Session = {
 
     getSession: function() {
         this.init();
+        this.check();
         this.session.id = this.session.id+1;
+        this.session.rid = this.session.rid+1;
 
         localStorage.setItem('session', JSON.stringify(this.session));
 
@@ -35,24 +51,3 @@ var Session = {
 }
 
 Session.init();
-console.log(Session.session);
-/*
-$session = array(
-        'rid' => 1,
-        'sid' => 0,
-        'id'  => 0,
-        'url' => $serverconfig['boshUrl'],
-        'port'=> 5222,
-        'host'=> $host,
-        'domain' => $domain,
-        'ressource' => 'moxl'.substr(md5(date('c')), 3, 6),
-
-        'user'     => $user,
-        'password' => $element['pass'],
-
-        'proxyenabled' => $serverconfig['proxyEnabled'],
-        'proxyurl' => $serverconfig['proxyURL'],
-        'proxyport' => $serverconfig['proxyPort'],
-        'proxyuser' => $serverconfig['proxyUser'],
-        'proxypass' => $serverconfig['proxyPass']);
-*/

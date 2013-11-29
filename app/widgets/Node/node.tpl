@@ -6,5 +6,4 @@
 <script type="text/javascript">
     {$getaffiliations}
     {$getmetadata}
-    //setTimeout("{", 2000);
 </script>
