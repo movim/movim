@@ -33,7 +33,8 @@ class Login extends WidgetBase {
         $this->view->assign('submit_event', 
             'document.getElementById(\'submitb\').click();
             '.$submit.'
-            loginButtonSet(\''.t('Connecting...').'\', true); 
+            loginButtonSet(\''.t('Connecting...').'\', true);
+            Session.clear();
             this.onclick=null;');
             
         if(isset($_GET['err'])) {
@@ -67,9 +68,6 @@ class Login extends WidgetBase {
         } else{
             $this->view->assign('whitelist_display', false);
         }
-
-        $sess = Session::start(APP_NAME);
-        var_dump($sess->get('session'));
     }
 
     function onMoxlError($error) {

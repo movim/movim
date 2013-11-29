@@ -54,7 +54,6 @@ function MovimRPC()
         movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
 
         var json = this.generate_json();
-        console.log(json);
         movim_xmlhttp.send(json);
     };
 
