@@ -30,11 +30,14 @@ class Connection extends WidgetBase
     {
         if($value >= 10) {
             $value = floor(($value-10)/10);
-            
+
+            RPC::call('Session.rollback');
+
             if($value == 0)
                 RPC::call('movim_fill', 'countdown', '');
-            else
-                RPC::call('movim_fill', 'countdown', t('Please wait ').$value);   
+            else {
+                RPC::call('movim_fill', 'countdown', t('Please wait ').$value);
+            }
         } else
             RPC::commit();
     }

@@ -164,6 +164,7 @@ class Bootstrap {
         require_once(SYSTEM_PATH . "/i18n/i18n.php");
 
         require_once(SYSTEM_PATH . "Session.php");
+        require_once(SYSTEM_PATH . "Sessionx.php");
         require_once(SYSTEM_PATH . "Utils.php");
         require_once(SYSTEM_PATH . "UtilsPicture.php");
         require_once(SYSTEM_PATH . "Cache.php");
@@ -257,6 +258,7 @@ class Bootstrap {
         modl\loadModel('Caps');
         modl\loadModel('Item');
         modl\loadModel('Message');
+        modl\loadModel('Sessionx');
         
         $db->setConnectionArray(\System\Conf::getServerConf());
         $db->connect();

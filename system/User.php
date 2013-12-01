@@ -96,10 +96,6 @@ class User {
     {
         $pd = new modl\PresenceDAO();
         $pd->clearPresence($this->username);
-            /*if($this->isLogged()) {
-                $p = new moxl\PresenceUnavaiable();
-                $p->request();
-            }*/
             
         $sess = Session::start(APP_NAME);
         Session::dispose(APP_NAME);
