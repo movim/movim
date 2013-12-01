@@ -23,7 +23,7 @@ if(!class_exists('Session')):
 
 class Session
 {
-    protected $db;
+    //protected $db;
     protected static $instances = array();
     protected static $sid = null;
     protected $container;
