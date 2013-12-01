@@ -39,6 +39,7 @@ var Session = {
     },
 
     getSession: function() {
+        console.log('Increase '+this.session.rid);
         this.init();
         this.check();
         this.session.id = this.session.id+1;

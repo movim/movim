@@ -5,5 +5,5 @@
 </div>
 <script type="text/javascript">
     {$getaffiliations}
-    {$getmetadata}
+    <!--{$getmetadata}-->
 </script>
