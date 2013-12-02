@@ -21,7 +21,7 @@ if (!defined('DOCUMENT_ROOT')) die('Access denied');
 class Login extends WidgetBase {
 
     function WidgetLoad()
-    {       
+    {
         $this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
