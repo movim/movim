@@ -123,7 +123,7 @@ class Vcard extends WidgetBase
         <?php
             if(!$error)
                 $html .= '
-                    <script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxGetVcard').'\', 2000);</script>';
+                    <script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxGetVcard').'\', 500);</script>';
         }
         
         /*if($error == 'vcardfeaturenotimpl') {

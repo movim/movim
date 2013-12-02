@@ -92,14 +92,14 @@ class Feed extends WidgetCommon {
     function prepareHead() {
         $html = '';
         
-        global $session;
+        $session = \Sessionx::start();
 
-        if($session['config']['config'] == false) {
+        if($session->config['config'] == false) {
             $html .= 
                 '<div class="message warning" style="margin: 1.5em;">'.
                     t("Your server doesn't support post publication, you can only read contact's feeds").
                 '</div>';
-        } elseif(!isset($session['config']['feed'])) {
+        } elseif(!isset($session->config['feed'])) {
             $html .= '
                 <div id="feednotifs">
                     <div class="message info">'.
