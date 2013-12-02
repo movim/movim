@@ -119,6 +119,27 @@ class Sessionx {
         $sd->init($s);
     }
 
+    public function load() {
+        $sd = new modl\SessionxDAO();
+        $session = $sd->get(self::$_sessionid);
+
+        $this->_user        = $session->username;
+        $this->_password    = $session->password;
+        $this->_ressource   = $session->ressource;
+        $this->_rid         = $session->rid;
+        $this->_sid         = $session->sid;
+        $this->_id          = $session->id;
+        $this->_url         = $session->url;
+        $this->_port        = $session->port;
+        $this->_host        = $session->host;
+        $this->_domain      = $session->domain;
+        $this->_config      = unserialize($session->config);
+        $this->_active      = $session->active;
+        $this->_timestamp   = $session->timestamp;
+
+        self::$_instance = $this;
+    }
+
     public function __get($key) {
         $sd = new modl\SessionxDAO();
         $session = $sd->get(self::$_sessionid);
@@ -133,17 +154,22 @@ class Sessionx {
             $this->_id = $sd->getId(self::$_sessionid);
             return $this->_id;
         } else {
-            $sd = new modl\SessionxDAO();
-            $session = $sd->get(self::$_sessionid);
-            if(isset($session->config))
-                $session->config = unserialize($session->config);
+            if(in_array($key, array('url', 'port', 'host', 'domain', 'user', 'password', 'ressource'))) {
+                $key = '_'.$key;
+                return $this->$key;
+            } else {
+                $sd = new modl\SessionxDAO();
+                $session = $sd->get(self::$_sessionid);
+                if(isset($session->config))
+                    $session->config = unserialize($session->config);
 
-            if($key == 'currentid')
-                $key = 'id';
-            elseif($key == 'user')
-                $key = 'username';
+                if($key == 'currentid')
+                    $key = 'id';
+                //elseif($key == 'user')
+                //    $key = 'username';
 
-            return $session->$key;
+                return $session->$key;
+            }
         }
     }
 
