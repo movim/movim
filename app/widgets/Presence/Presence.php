@@ -78,8 +78,7 @@ class Presence extends WidgetBase
     {
         $p = new moxl\PresenceUnavaiable();
         $p->request();
-        //$user = new User();
-        //$user->desauth();
+
         RPC::call('movim_redirect', Route::urlize('disconnect')); 
         RPC::commit();
     }
@@ -92,7 +91,7 @@ class Presence extends WidgetBase
         global $session;
         
         $pd = new \modl\PresenceDAO();
-        $p = $pd->getPresence($this->user->getLogin(), $session['ressource']);
+        $p = $pd->getPresence($this->user->getLogin(), $session->ressource);
 
         if($p)
             $html = '
@@ -120,7 +119,6 @@ class Presence extends WidgetBase
                 <a onclick="'.$this->genCallAjax('ajaxLogout').';              movim_toggle_class(\'#logoutlist\', \'show\');" class="disconnect">'.t('Disconnect').'</a>
             </div>
                 ';
-        //href="'.Route::urlize('disconnect').'"
         
         return $html;
     }
