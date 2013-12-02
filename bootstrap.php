@@ -325,6 +325,7 @@ class Bootstrap {
     
     private function startingSession() {
         $s = \Sessionx::start();
+        $s->load();
         //$s->load();
         // Starting session.
         //$sess = Session::start(APP_NAME);
