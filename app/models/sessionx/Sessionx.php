@@ -4,7 +4,7 @@ namespace modl;
 
 class Sessionx extends ModlModel {
     public $session;
-    public $user;
+    public $username;
     public $password;
     public $ressource;
     public $rid;
@@ -23,7 +23,7 @@ class Sessionx extends ModlModel {
         {
             "session" : 
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "user" : 
+            "username" : 
                 {"type":"string", "size":64 },
             "password" : 
                 {"type":"string", "size":64 },
