@@ -17,7 +17,7 @@
  * See COPYING for licensing information.
  */
 class Sessionx {
-    protected static $_sid = null;
+    protected static $_sessionid = null;
     protected static $_instance;
     private         $_max_age = 86400; // 24hour
     private         $_timestamp;
@@ -25,15 +25,18 @@ class Sessionx {
     private         $_rid;
     private         $_id;
 
-    public          $user;
-    public          $ressource;
-    public          $sessionid;
-    public          $url;
-    public          $port;
-    public          $host;
-    public          $domain;
-    public          $active = false;
-    public          $config;
+    private         $_currentid;
+
+    private         $_user;
+    private         $_password;
+    private         $_ressource;
+    private         $_sid;
+    private         $_url;
+    private         $_port;
+    private         $_host;
+    private         $_domain;
+    private         $_active = false;
+    private         $_config;
     /*
      * Session generation and handling part
      */
@@ -41,9 +44,9 @@ class Sessionx {
     protected function __construct()
     {
         // Does the database exist?
-        if(self::$_sid == null) {
+        if(self::$_sessionid == null) {
             if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
-                self::$_sid = $_COOKIE['MOVIM_SESSION_ID'];
+                self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
             } else {
                 $this->regenerate();
             }
@@ -61,8 +64,8 @@ class Sessionx {
             $hash.= $hash_chars[$r];
         }
 
-        self::$_sid = $hash;
-        setcookie('MOVIM_SESSION_ID', self::$_sid, time() + $this->_max_age);
+        self::$_sessionid = $hash;
+        setcookie('MOVIM_SESSION_ID', self::$_sessionid, time() + $this->_max_age);
     }
 
     public static function start()
@@ -77,54 +80,81 @@ class Sessionx {
     /*
      * Session management part
      */
+
     private function inject() {
         $s = new modl\Sessionx();
-        $s->session     = self::$_sid;
-        $s->user        = $this->user;
-        $s->ressource   = $this->ressource;
+        $s->session     = self::$_sessionid;
+        $s->user        = $this->_user;
+        $s->password    = $this->_password;
+        $s->ressource   = $this->_ressource;
         $s->rid         = $this->_rid;
-        $s->sid         = $this->sessionid;
+        $s->sid         = $this->_sid;
         $s->id          = $this->_id;
-        $s->url         = $this->url;
-        $s->port        = $this->port;    
-        $s->host        = $this->host;    
-        $s->domain      = $this->domain;  
-        $s->config      = $this->config;  
-        $s->active      = $this->active;  
+        $s->url         = $this->_url;
+        $s->port        = $this->_port;    
+        $s->host        = $this->_host;    
+        $s->domain      = $this->_domain;  
+        $s->config      = serialize($this->_config);  
+        $s->active      = $this->_active;  
         $s->timestamp   = $this->_timestamp;
         return $s;
     }
-     
-    public function init() {
+
+    public function init($user, $pass, $host, $domain) {
+        $serverconfig = \system\Conf::getServerConf();
+        
+        $this->_url         = $serverconfig['boshUrl'];
+        $this->_port        = 5222;
+        $this->_host        = $host;
+        $this->_domain      = $domain;
+        $this->_user        = $user;
+        $this->_password    = $pass;
+        $this->_ressource   = 'moxl'.substr(md5(date('c')), 3, 6);
+        
         $this->_rid = 0;
         $this->_id  = 0;
+        
         $sd = new modl\SessionxDAO();
         $s = $this->inject();
         $sd->init($s);
     }
 
-    public function save() {
+    public function __get($key) {
+        $sd = new modl\SessionxDAO();
+        $session = $sd->get(self::$_sessionid);
 
+        if($key == 'rid') {
+            $sd = new modl\SessionxDAO();
+            $this->_rid = $sd->getRid(self::$_sessionid);
+            return $this->_rid;
+        }
+        elseif($key == 'id') {
+            $sd = new modl\SessionxDAO();
+            $this->_id = $sd->getId(self::$_sessionid);
+            return $this->_id;
+        } else {
+            $sd = new modl\SessionxDAO();
+            $session = $sd->get(self::$_sessionid);
+            if(isset($session->config))
+                $session->config = unserialize($session->config);
+
+            if($key == 'currentid')
+                $key = 'id';
+
+            return $session->$key;
+        }
+    }
+
+    public function __set($key, $value) {
+        if($key == 'config')
+            $value = serialize($value);
+        
+        $sd = new modl\SessionxDAO();
+        $sd->update(self::$_sessionid, $key, $value);
     }
 
     public function destroy() {
         $sd = new modl\SessionxDAO();
-        $sd->delete(self::$_sid);
-    }
-
-    /*
-     * rid and id specific getter, theses getter autoincrement each
-     * time the value in the database
-     */
-    public function getId() {
-        $sd = new modl\SessionxDAO();
-        $this->_id = $sd->getId(self::$_sid);
-        return $this->_id;
-    }
-     
-    public function getRid() {
-        $sd = new modl\SessionxDAO();
-        $this->_rid = $sd->getRid(self::$_sid);
-        return $this->_rid;
+        $sd->delete(self::$_sessionid);
     }
 }
