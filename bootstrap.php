@@ -324,10 +324,11 @@ class Bootstrap {
     }
     
     private function startingSession() {
-        global $session;
+        $s = \Sessionx::start();
+        //$s->load();
         // Starting session.
-        $sess = Session::start(APP_NAME);
-        $session = $sess->get('session');
+        //$sess = Session::start(APP_NAME);
+        //$session = $sess->get('session');
         
         //$this->user = new User;
 

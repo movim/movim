@@ -96,14 +96,6 @@ class RPC
         $request = json_decode($json);
 
         // We force the rid and id session number from the browser
-        /*
-        if(isset($request->session->rid)
-        && isset($request->session->id)) {
-            global $session;            
-            $session['rid'] = $request->session->rid;
-            $session['id'] = $request->session->id;
-        }*/
-
         if(isset($_GET['do']) && $_GET['do'] == 'poll') {
             moxl\ping();
         } else {

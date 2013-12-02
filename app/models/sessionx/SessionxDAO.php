@@ -7,6 +7,7 @@ class SessionxDAO extends ModlSQL {
         $this->_sql = '
             update sessionx
             set user        = :user,
+                password    = :password,
                 ressource   = :ressource,
                 rid         = :rid,
                 sid         = :sid,
@@ -25,6 +26,7 @@ class SessionxDAO extends ModlSQL {
             array(
                 'session'   => $s->session,
                 'user'      => $s->user,
+                'password'  => $s->password,
                 'ressource' => $s->ressource,
                 'rid'       => $s->rid,
                 'sid'       => $s->sid,
@@ -46,6 +48,7 @@ class SessionxDAO extends ModlSQL {
                 insert into sessionx
                 (session,
                  user,
+                 password,
                  ressource,
                  rid,
                  sid,
@@ -60,6 +63,7 @@ class SessionxDAO extends ModlSQL {
                 values
                 (:session,
                  :user,
+                 :password,
                  :ressource,
                  :rid,
                  :sid,
@@ -77,6 +81,7 @@ class SessionxDAO extends ModlSQL {
                 array(
                     'session'   => $s->session,
                     'user'      => $s->user,
+                    'password'  => $s->password,
                     'ressource' => $s->ressource,
                     'rid'       => $s->rid,
                     'sid'       => $s->sid,
@@ -93,6 +98,41 @@ class SessionxDAO extends ModlSQL {
             
             $this->run('Sessionx');
         }
+    }
+
+    function update($session, $key, $value) {
+        $this->_sql = '
+            update sessionx
+            set
+                '.$key.' = :'.$key.'
+            where 
+                session = :session';
+        
+        $this->prepare(
+            'Sessionx', 
+            array(
+                'session' => $session,
+                $key => $value
+            )
+        );
+
+        $this->run('Sessionx');
+    }
+
+    function get($session) {
+        $this->_sql = '
+            select * from sessionx
+            where 
+                session = :session';
+        
+        $this->prepare(
+            'Sessionx', 
+            array(
+                'session' => $session
+            )
+        );
+
+        return $this->run('Sessionx', 'item');
     }
 
     function getId($session) {
@@ -182,106 +222,4 @@ class SessionxDAO extends ModlSQL {
         
         return $this->run('Sessionx');
     }
-    /*function set($session, $container, $name, $value, $timestamp) {
-        $timestamp = date(DATE_ISO8601, $timestamp);
-
-        $this->_sql = '
-            update session
-            set value = :value,
-                timestamp = :timestamp
-            where session = :session
-                and container = :container
-                and name = :name';
-        
-        $this->prepare(
-            'Session', 
-            array(
-                'session'   => $session,
-                'container' => $container,
-                'name'      => $name,
-                'value'     => $value,
-                'timestamp' => $timestamp
-            )
-        );
-        
-        $this->run('Session');
-        
-        if(!$this->_effective) {
-            $this->_sql = '
-                insert into session
-                (name, value, session, container, timestamp)
-                values (:name, :value, :session, :container, :timestamp)';
-            
-            $this->prepare(
-                'Session', 
-                array(
-                    'session'   => $session,
-                    'container' => $container,
-                    'name'      => $name,
-                    'value'     => $value,
-                    'timestamp' => $timestamp
-                )
-            );
-            
-            return $this->run('Session');
-        }
-    }
-    
-    function get($session, $container, $name) {        
-        $this->_sql = '
-            select * from session
-            where 
-                session = :session
-                and container = :container
-                and name = :name';
-        
-        $this->prepare(
-            'Session', 
-            array(
-                'session' => $session,
-                'container' => $container,
-                'name' => $name
-            )
-        );
-        
-        return $this->run('Session', 'item');
-    }
-    
-    function delete($session, $container, $name) {
-        $this->_sql = '
-            delete from session
-            where 
-                session = :session
-                and container = :container
-                and name = :name';
-        
-        $this->prepare(
-            'Session', 
-            array(
-                'session' => $session,
-                'container' => $container,
-                'name' => $name
-            )
-        );
-        
-        return $this->run('Session');
-    }
-    
-    function deleteContainer($session, $container) {
-        $this->_sql = '
-            delete from session
-            where 
-                session = :session
-                and container = :container';
-        
-        $this->prepare(
-            'Session', 
-            array(
-                'session' => $session,
-                'container' => $container,
-            )
-        );
-        
-        return $this->run('Session');
-    }*/
 }

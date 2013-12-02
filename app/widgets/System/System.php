@@ -33,18 +33,5 @@ class System extends WidgetBase {
             'timezone' => $conf['timezone']
             );
         $this->view->assign('server_conf', json_encode($public_conf));
-
-        $sess = \Session::start(APP_NAME);
-        $session = $sess->get('session');
-
-        if(isset($session['rid']))
-            $this->view->assign('session_rid', $session['rid']);
-        else
-            $this->view->assign('session_rid', 'null');
-
-        if(isset($session['id']))
-            $this->view->assign('session_id', $session['id']);
-        else
-            $this->view->assign('session_id', 'null');
     }
 }
