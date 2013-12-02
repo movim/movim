@@ -35,27 +35,26 @@ function MovimRPC()
     {
         movim_xmlhttp = this.make_xmlhttp();
 	
-	if(FAIL_SAFE)
-	    var fail_safe = '?fail_safe=1';
-	else
-	    var fail_safe = '';
+        if(FAIL_SAFE)
+            var fail_safe = '?fail_safe=1';
+        else
+            var fail_safe = '';
 
-	movim_xmlhttp.open('POST', BASE_URI+'jajax.php'+fail_safe, true);
+        movim_xmlhttp.open('POST', BASE_URI+'jajax.php'+fail_safe, true);
 
         var handler = this.handle_rpc_json;
 
-	movim_xmlhttp.onreadystatechange = function()
-        {
+        movim_xmlhttp.onreadystatechange = function() {
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500)
                 movim_disconnect('internal');
-	    else if(movim_xmlhttp.readyState == 4)
-		handler(movim_xmlhttp.response);
+            else if(movim_xmlhttp.readyState == 4)
+                handler(movim_xmlhttp.response);
         };
 
-	movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
 
         var json = this.generate_json();
-	movim_xmlhttp.send(json);
+        movim_xmlhttp.send(json);
     };
 
     /**
@@ -81,7 +80,7 @@ function MovimRPC()
     {
         this.params.push(param);
     };
-
+    
     /**
      * Sets all movim call parameters at once.
      */

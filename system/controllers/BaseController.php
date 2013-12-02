@@ -13,6 +13,7 @@ class BaseController {
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_tpl.js');
+        //$this->page->addScript('movim_session.js');
         $this->page->addScript('movim_rpc.js');
     }
 
@@ -21,7 +22,7 @@ class BaseController {
      * Loads up the language, either from the User or default.
      */
     function load_language() {
-        $user = new user();
+        $user = new User();
         if($user->isLogged()) {
             try{
                 $lang = $user->getConfig('language');
