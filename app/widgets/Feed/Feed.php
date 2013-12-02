@@ -5,29 +5,6 @@ class Feed extends WidgetCommon {
     
     function WidgetLoad()
     {
-        $sess = Session::start(APP_NAME);
-
-        var_dump($sess->get('session'));
-
-        $s = Sessionx::start();
-        // We get the Server Configuration
-        $serverconfig = \system\Conf::getServerConf();
-        $s->url = $serverconfig['boshUrl'];
-        $s->port = 5222;
-        $s->host = 'movim.eu';
-        $s->domain = 'pod.mov.im';
-        $s->user = 'edhelas';
-        $s->ressource = 'moxl'.substr(md5(date('c')), 3, 6);
-        $s->init();
-        var_dump($s->getRid());
-        var_dump($s->getRid());
-        var_dump($s->getRid());
-        var_dump($s->getId());
-        var_dump($s->getId());
-        
-        var_dump($s);
-        var_dump($_COOKIE);
-        
         $this->addcss('feed.css');
         
         $this->registerEvent('opt_post', 'onStream');
@@ -115,14 +92,14 @@ class Feed extends WidgetCommon {
     function prepareHead() {
         $html = '';
         
-        global $session;
+        $session = \Sessionx::start();
 
-        if($session['config']['config'] == false) {
+        if($session->config['config'] == false) {
             $html .= 
                 '<div class="message warning" style="margin: 1.5em;">'.
                     t("Your server doesn't support post publication, you can only read contact's feeds").
                 '</div>';
-        } elseif(!isset($session['config']['feed'])) {
+        } elseif(!isset($session->config['feed'])) {
             $html .= '
                 <div id="feednotifs">
                     <div class="message info">'.

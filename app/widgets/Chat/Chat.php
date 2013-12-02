@@ -246,14 +246,14 @@ class Chat extends WidgetBase
         $m->jidto      = echapJid($to);
         $m->jidfrom    = $this->user->getLogin();
     
-        global $session;
+        $session = \Sessionx::start();
         
         $m->type    = 'chat';
-        $m->ressource = $session['ressource'];
+        $m->ressource = $session->ressource;
     
         if($muc) {
             $m->type = 'groupchat';
-            $m->ressource = $session['user'];
+            $m->ressource = $session->user;
             $m->jidfrom = $to;
         }
         

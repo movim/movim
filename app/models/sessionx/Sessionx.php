@@ -5,6 +5,7 @@ namespace modl;
 class Sessionx extends ModlModel {
     public $session;
     public $user;
+    public $password;
     public $ressource;
     public $rid;
     public $sid;
@@ -24,12 +25,14 @@ class Sessionx extends ModlModel {
                 {"type":"string", "size":128, "mandatory":true, "key":true },
             "user" : 
                 {"type":"string", "size":64 },
+            "password" : 
+                {"type":"string", "size":64 },
             "ressource" : 
                 {"type":"string", "size":64 },
             "rid" : 
                 {"type":"int",    "size":8,   "mandatory":true },
             "sid" : 
-                {"type":"int",    "size":8 },
+                {"type":"string",    "size":64 },
             "id" : 
                 {"type":"int",    "size":8,   "mandatory":true },
             "url" : 
@@ -51,21 +54,3 @@ class Sessionx extends ModlModel {
         parent::__construct();
     }
 }
-/*            $session = array(
-                    'rid' => 1,
-                    'sid' => 0,
-                    'id'  => 0,
-                    'url' => $serverconfig['boshUrl'],
-                    'port'=> 5222,
-                    'host'=> $host,
-                    'domain' => $domain,
-                    'ressource' => 'moxl'.substr(md5(date('c')), 3, 6),
-
-                    'user'     => $user,
-                    'password' => $element['pass'],
-
-                    'proxyenabled' => $serverconfig['proxyEnabled'],
-                    'proxyurl' => $serverconfig['proxyURL'],
-                    'proxyport' => $serverconfig['proxyPort'],
-                    'proxyuser' => $serverconfig['proxyUser'],
-                    'proxypass' => $serverconfig['proxyPass']);*/

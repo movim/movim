@@ -47,14 +47,7 @@ function movim_poll()
 		}
 	};
 
-    var poll = {
-        session: Session.getSession(true)
-    };
-
-    //console.log(JSON.stringify(poll));
-
-	poller.send(JSON.stringify(poll));
-    //poller.send();
+    poller.send();
 }
 
 function halt_poll()

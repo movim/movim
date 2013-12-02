@@ -25,11 +25,12 @@ class User {
     function __construct()
     {
         if($this->isLogged()) {
-            global $session;
-            $this->username = $session['user'].'@'.$session['host'];
+            $session = \Sessionx::start();
+    
+            $this->username = $session->user.'@'.$session->host;
             
-            if(isset($session['config']))
-                $this->config = $session['config'];
+            if($session->config)
+                $this->config = $session->config;
 
             $this->sizelimit = (int)\system\Conf::getServerConfElement('sizeLimit');
 
@@ -84,10 +85,10 @@ class User {
     function isLogged()
     {
         // User is not logged in if both the session vars and the members are unset.
-        global $session;
+        $session = \Sessionx::start();
 
-        if(isset($session['on']) && $session['on'])
-            return $session['on'];
+        if($session->active)
+            return $session->active;
         else
             return false;
     }
@@ -96,6 +97,9 @@ class User {
     {
         $pd = new modl\PresenceDAO();
         $pd->clearPresence($this->username);
+
+        $s = \Sessionx::start();
+        $s->destroy();
             
         $sess = Session::start(APP_NAME);
         Session::dispose(APP_NAME);
@@ -113,11 +117,8 @@ class User {
 
     function setConfig(array $config)
     {
-        global $session;
-        $session['config'] = $config;
-
-        $sess = Session::start(APP_NAME);
-        $sess->set('session', $session);
+        $session = \Sessionx::start();
+        $session->config = $config;
     }
 
     function getConfig($key = false)

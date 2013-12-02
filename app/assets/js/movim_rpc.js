@@ -80,15 +80,7 @@ function MovimRPC()
     {
         this.params.push(param);
     };
-
-    /**
-     * Set the global session
-     */
-    this.set_session = function()
-    {
-        this.session = Session.getSession();
-    };
-
+    
     /**
      * Sets all movim call parameters at once.
      */
@@ -96,7 +88,6 @@ function MovimRPC()
     {
         this.set_widget(widget);
         this.set_func(func);
-        this.set_session();
         this.params = params;
     };
 
@@ -132,7 +123,6 @@ function MovimRPC()
     this.widget = '';
     this.func = '';
     this.params = [];
-    this.session = null;
 }
 
 /**
