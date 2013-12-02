@@ -84,7 +84,7 @@ class Sessionx {
     private function inject() {
         $s = new modl\Sessionx();
         $s->session     = self::$_sessionid;
-        $s->user        = $this->_user;
+        $s->username    = $this->_user;
         $s->password    = $this->_password;
         $s->ressource   = $this->_ressource;
         $s->rid         = $this->_rid;
@@ -140,6 +140,8 @@ class Sessionx {
 
             if($key == 'currentid')
                 $key = 'id';
+            elseif($key == 'user')
+                $key = 'username';
 
             return $session->$key;
         }
@@ -148,6 +150,8 @@ class Sessionx {
     public function __set($key, $value) {
         if($key == 'config')
             $value = serialize($value);
+        elseif($key == 'user')
+            $key = 'username';
         
         $sd = new modl\SessionxDAO();
         $sd->update(self::$_sessionid, $key, $value);

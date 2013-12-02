@@ -6,7 +6,7 @@ class SessionxDAO extends ModlSQL {
     function init(Sessionx $s) {        
         $this->_sql = '
             update sessionx
-            set user        = :user,
+            set username    = :username,
                 password    = :password,
                 ressource   = :ressource,
                 rid         = :rid,
@@ -25,7 +25,7 @@ class SessionxDAO extends ModlSQL {
             'Sessionx', 
             array(
                 'session'   => $s->session,
-                'user'      => $s->user,
+                'username'  => $s->username,
                 'password'  => $s->password,
                 'ressource' => $s->ressource,
                 'rid'       => $s->rid,
@@ -47,7 +47,7 @@ class SessionxDAO extends ModlSQL {
             $this->_sql = '
                 insert into sessionx
                 (session,
-                 user,
+                 username,
                  password,
                  ressource,
                  rid,
@@ -62,7 +62,7 @@ class SessionxDAO extends ModlSQL {
                  timestamp)
                 values
                 (:session,
-                 :user,
+                 :username,
                  :password,
                  :ressource,
                  :rid,
@@ -80,7 +80,7 @@ class SessionxDAO extends ModlSQL {
                 'Sessionx', 
                 array(
                     'session'   => $s->session,
-                    'user'      => $s->user,
+                    'username'  => $s->username,
                     'password'  => $s->password,
                     'ressource' => $s->ressource,
                     'rid'       => $s->rid,
