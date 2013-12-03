@@ -222,4 +222,20 @@ class SessionxDAO extends ModlSQL {
         
         return $this->run('Sessionx');
     }
+
+    function getConnected() {
+        $this->_sql = '
+            select count(*) from sessionx';
+
+        $this->prepare(
+            'Sessionx', 
+            array(
+                
+            )
+        );
+
+        $results = $this->run(null, 'array');
+        
+        return (int)$results[0]['count(*)']; 
+    }
 }

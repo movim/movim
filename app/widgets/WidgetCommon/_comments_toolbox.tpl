@@ -3,9 +3,8 @@
     <div class="comment">
         <a 
             class="getcomments icon chat" 
-            onclick="{$getcomments} this.innerHTML = '{$c->t('Loading comments ...')}'">
-                {$c->t('Get the comments')}
-        </a>
+            onclick="{$getcomments} this.innerHTML = '{$c->t('Loading comments ...')}'"
+        >{$c->t('Get the comments')}</a>
     </div>
 </div>
 <div class="comments">
