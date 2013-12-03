@@ -201,11 +201,13 @@
 .post .getcomments:before {
     padding: 1em;
     background-color: #FC8F12;
+    content: "";
 }
 
 .post .addcomment:before {
     padding: 1em;
     background-color: #6FCC43;
+    content: "";
 }
 
 .post .avatar {
@@ -261,6 +263,11 @@
     display: inline-block;
     height: auto;
     width: auto;
+    line-height: 1.5em;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .post a.imglink img {
