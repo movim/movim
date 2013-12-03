@@ -43,13 +43,7 @@ class Roster extends WidgetBase
 
         if($offline_state == true)
             $this->view->assign('offline_shown',  'offlineshown');
-            
-        /*if($this->user->getConfig('chatbox') == 1)
-            $this->view->assign('chatbox', true);
-        else
-            $this->view->assign('chatbox', false);
-            * */
-            
+
         $this->view->assign('toggle_cache', $this->genCallAjax('ajaxToggleCache', "'offlineshown'"));
         $this->view->assign('search_contact', $this->genCallAjax('ajaxSearchContact','this.value'));
     }
