@@ -82,7 +82,7 @@
     {/if}
 
     <div class="admin">
-        {$c->t('Population')} {$pop} • 
+        {$c->t('Connected')} {$connected} • {$c->t('Population')} {$pop} • 
         <a href="{$c->route('admin')}">
             {$c->t('Administration')}
         </a>
