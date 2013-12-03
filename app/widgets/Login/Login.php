@@ -50,6 +50,11 @@ class Login extends WidgetBase {
                 $pop++;
 
         $this->view->assign('pop', $pop-2);
+
+        $sd = new modl\SessionxDAO();
+        $connected = $sd->getConnected();
+
+        $this->view->assign('connected', $connected);
         
         $this->view->assign('gmail',
             t('%sGmail accounts are also compatible%s but are not fully supported',
