@@ -150,8 +150,8 @@ class Sessionx {
             return $this->_rid;
         }
         elseif($key == 'id') {
-            $sd = new modl\SessionxDAO();
-            $this->_id = $sd->getId(self::$_sessionid);
+            //$sd = new modl\SessionxDAO();
+            //$this->_id = $sd->getId(self::$_sessionid);
             return $this->_id;
         } else {
             if(
@@ -191,9 +191,14 @@ class Sessionx {
             $value = serialize($value);
         elseif($key == 'user')
             $key = 'username';
-        
-        $sd = new modl\SessionxDAO();
-        $sd->update(self::$_sessionid, $key, $value);
+
+        if($key == 'id') {
+            $this->_id = $value;
+            self::$_instance = $this;
+        } else {
+            $sd = new modl\SessionxDAO();
+            $sd->update(self::$_sessionid, $key, $value);
+        }
     }
 
     public function destroy() {
