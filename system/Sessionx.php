@@ -154,7 +154,20 @@ class Sessionx {
             $this->_id = $sd->getId(self::$_sessionid);
             return $this->_id;
         } else {
-            if(in_array($key, array('url', 'port', 'host', 'domain', 'user', 'password', 'ressource'))) {
+            if(
+                in_array(
+                    $key,
+                    array(
+                        'url',
+                        'port',
+                        'host',
+                        'domain',
+                        'user',
+                        'config',
+                        'password',
+                        'ressource')
+                    )
+            ) {
                 $key = '_'.$key;
                 return $this->$key;
             } else {
