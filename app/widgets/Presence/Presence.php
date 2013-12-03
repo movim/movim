@@ -88,7 +88,7 @@ class Presence extends WidgetBase
         $txt = getPresences();
         $txts = getPresencesTxt();
     
-        global $session;
+        $session = \Sessionx::start();
         
         $pd = new \modl\PresenceDAO();
         $p = $pd->getPresence($this->user->getLogin(), $session->ressource);
