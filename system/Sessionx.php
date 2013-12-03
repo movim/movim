@@ -122,20 +122,22 @@ class Sessionx {
     public function load() {
         $sd = new modl\SessionxDAO();
         $session = $sd->get(self::$_sessionid);
-
-        $this->_user        = $session->username;
-        $this->_password    = $session->password;
-        $this->_ressource   = $session->ressource;
-        $this->_rid         = $session->rid;
-        $this->_sid         = $session->sid;
-        $this->_id          = $session->id;
-        $this->_url         = $session->url;
-        $this->_port        = $session->port;
-        $this->_host        = $session->host;
-        $this->_domain      = $session->domain;
-        $this->_config      = unserialize($session->config);
-        $this->_active      = $session->active;
-        $this->_timestamp   = $session->timestamp;
+        
+        if(isset($session)) {
+            $this->_user        = $session->username;
+            $this->_password    = $session->password;
+            $this->_ressource   = $session->ressource;
+            $this->_rid         = $session->rid;
+            $this->_sid         = $session->sid;
+            $this->_id          = $session->id;
+            $this->_url         = $session->url;
+            $this->_port        = $session->port;
+            $this->_host        = $session->host;
+            $this->_domain      = $session->domain;
+            $this->_config      = unserialize($session->config);
+            $this->_active      = $session->active;
+            $this->_timestamp   = $session->timestamp;
+        }
 
         self::$_instance = $this;
     }
@@ -148,11 +150,6 @@ class Sessionx {
             $sd = new modl\SessionxDAO();
             $this->_rid = $sd->getRid(self::$_sessionid);
             return $this->_rid;
-        }
-        elseif($key == 'id') {
-            //$sd = new modl\SessionxDAO();
-            //$this->_id = $sd->getId(self::$_sessionid);
-            return $this->_id;
         } else {
             if(
                 in_array(
@@ -160,6 +157,7 @@ class Sessionx {
                     array(
                         'url',
                         'port',
+                        'id',
                         'host',
                         'domain',
                         'user',
@@ -178,10 +176,11 @@ class Sessionx {
 
                 if($key == 'currentid')
                     $key = 'id';
-                //elseif($key == 'user')
-                //    $key = 'username';
 
-                return $session->$key;
+                if(isset($session))
+                    return $session->$key;
+                else
+                    return null;
             }
         }
     }
