@@ -51,11 +51,6 @@
             title="{$c->t('Show/Hide')}">
             <a class="users" href="#"></a>
         </li>
-        {if="$chatbox == true"}
-            <div id="chattoggle">
-                {$c->prepareChatToggle()}
-            </div>
-        {/if}
         <li 
             class="show_hide body_roster on_mobile"
             onclick="
