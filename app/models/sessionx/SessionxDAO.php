@@ -235,7 +235,8 @@ class SessionxDAO extends ModlSQL {
         );
 
         $results = $this->run(null, 'array');
+        $results = array_values($results[0]);
         
-        return (int)$results[0]['count(*)']; 
+        return (int)$results[0]; 
     }
 }
