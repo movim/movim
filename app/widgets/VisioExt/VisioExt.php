@@ -26,6 +26,13 @@ class VisioExt extends WidgetBase
         $this->addjs('visioext.js');
     }
 
+    function ajaxSendProposal($proposal) {
+        $p = json_decode($proposal);
+        $stj = new SDPtoJingle($p->sdp, $this->user->getLogin());
+        \movim_log(\moxl\cleanXML($stj->generate()));
+        
+    }
+
     function build() {
 
     }

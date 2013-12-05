@@ -177,14 +177,14 @@ class Contact extends ModlModel {
         if($size == 'email') {
             $str = BASE_URI.'cache/'.strtolower($this->jid).'_email.jpg';
         } else {
-            $jid = strtolower($jid);    
-            if($jid != false) {
+            $jid = strtolower($jid);
+            if($jid != false && file_exists(CACHE_PATH.$jid.'_'.$size.'.jpg')) {
                 $str = BASE_URI.'cache/'.strtolower($jid).'_'.$size.'.jpg';
             } elseif(
                    isset($this->phototype) 
                 && isset($this->photobin) 
-                && $this->phototype != '' 
-                && $this->photobin != ''
+                && (string)$this->phototype != '' 
+                && (string)$this->photobin != ''
             ) {
                 $str = BASE_URI.'cache/'.strtolower($this->jid).'_'.$size.'.jpg';
             } else {
