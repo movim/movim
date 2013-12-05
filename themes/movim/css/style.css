@@ -312,6 +312,7 @@ ul.clean li {
 #left a:link, 
 #left a:visited {
     color: #94A6B0;
+    text-decoration: none;
 }
 
 #left ul {

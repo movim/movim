@@ -272,6 +272,7 @@ legend {
     font-weight: bold;
     font-size: 0.8em;
     line-height: 2.4em;
+    font-family: helvetica, sans-serif;
     
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
