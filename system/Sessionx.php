@@ -56,15 +56,7 @@ class Sessionx {
     protected function regenerate()
     {
         // Generating the session cookie's hash.
-        $hash_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $hash = "";
-
-        for($i = 0; $i < 64; $i++) {
-            $r = mt_rand(0, strlen($hash_chars) - 1);
-            $hash.= $hash_chars[$r];
-        }
-
-        self::$_sessionid = $hash;
+        self::$_sessionid = \generateKey(64);
         setcookie('MOVIM_SESSION_ID', self::$_sessionid, time() + $this->_max_age);
     }
 
@@ -109,7 +101,7 @@ class Sessionx {
         $this->_domain      = $domain;
         $this->_user        = $user;
         $this->_password    = $pass;
-        $this->_ressource   = 'moxl'.substr(md5(date('c')), 3, 6);
+        $this->_ressource   = 'moxl'.\generateKey(6);
         
         $this->_rid = 0;
         $this->_id  = 0;
