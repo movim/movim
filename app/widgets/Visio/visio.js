@@ -23,29 +23,6 @@ window.onunload = function() {
     //self.opener.Roster_ajaxToggleChat();
 };
 
-/*function scrollAllTalks() {
-    var mes = document.querySelectorAll('.content');
-    for (var i=0; i<mes.length; i++){
-        // We add 200px to prevent smiley loading
-        mes.item(i).scrollTop = mes.item(i).scrollHeight + 200;
-    }
-}
-
-function sendMessage(n, jid)
-{
-    var text = n.value;
-    
-    n.value = "";
-    n.focus();
-    
-    // We escape the text to prevent XML errors
-    return encodeURIComponent(text);
-
-}*/
-
-
-//setInterval( scrollAllTalks, 200 );
-
 var Visio = {
     fullScreen: function() {
         var elem = document.getElementById("visio");
@@ -77,6 +54,20 @@ var Visio = {
                 + date.getHours() + ":"+date.getMinutes() + ":"+date.getSeconds() + "] "
                 + content +
             "</div>"]);
+    },
+
+    /*
+     * @brief Call a function in the main window
+     * @param Array, array[0] is the name of the function, then the params
+     */
+    call: function(args) {
+        if( self.opener && !self.opener.closed ) {
+            // The popup is open so call it
+            var func = args[0];
+            args.shift();
+            var params = args;
+            self.opener[func].apply(null, params);
+        } 
     }
 }
 
