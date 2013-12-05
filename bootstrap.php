@@ -177,6 +177,9 @@ class Bootstrap {
     private function loadCommonLibraries() {
         // XMPPtoForm lib
         require_once(LIB_PATH . "XMPPtoForm.php");
+        
+        // SDPtoJingle lib
+        require_once(LIB_PATH . "SDPtoJingle.php");
 
         // Markdown lib
         require_once(LIB_PATH . "Markdown.php");

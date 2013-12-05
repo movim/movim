@@ -690,10 +690,10 @@ function generateUUID($string = false) {
 function movim_log($log) {
     \system\Logs\Logger::log($log);
 
-    /*    openlog('movim', LOG_NDELAY, LOG_USER);
-        $errlines = explode("\n",$log);
-        foreach ($errlines as $txt) { syslog(LOG_DEBUG, $txt); } 
-        closelog();*/
+    openlog('movim', LOG_NDELAY, LOG_USER);
+    $errlines = explode("\n",$log);
+    foreach ($errlines as $txt) { syslog(LOG_DEBUG, $txt); } 
+    closelog();
 }
 
 /**
@@ -726,5 +726,22 @@ function getFlagTitle($color){
         break;
     }
     return $title;
+}
+
+/*
+ * @desc Generate a simple random key
+ * @params The size of the key
+ */
+function generateKey($size) {
+    // Generating the session cookie's hash.
+    $hash_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $hash = "";
+
+    for($i = 0; $i < $size; $i++) {
+        $r = mt_rand(0, strlen($hash_chars) - 1);
+        $hash.= $hash_chars[$r];
+    }
+
+    return $hash;
 }
 ?>
