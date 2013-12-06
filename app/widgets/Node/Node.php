@@ -21,6 +21,7 @@
 class Node extends WidgetCommon
 {
     private $role;
+    private $_feedsize = 10;
     
     function WidgetLoad()
     {
@@ -77,7 +78,6 @@ class Node extends WidgetCommon
         $metadataview->assign('creator',     $params[0]['creator']);
 
         $html = $metadataview->draw('_node_metadata', true);
-
         RPC::call('movim_fill', 'metadata', $html);
     }
     
@@ -150,148 +150,69 @@ class Node extends WidgetCommon
             $title = $node->getName();
         else
             $title = $groupid;
-        
-        if($this->searchSubscription($serverid, $groupid))
-            $button = '
-                <a
-                    href="#" 
-                    class="button color icon back"
-                    onclick="movim_toggle_display(\'#groupunsubscribe\')">
-                    '.t('Unsubscribe').'
-                </a>';
-        else
-            $button = '
-                <a 
-                    href="#" 
-                    class="button color green icon next"
-                    onclick="movim_toggle_display(\'#groupsubscribe\')">
-                    '.t('Subscribe').'
-                </a>';
-        
-        $html = '
-            <div class="breadcrumb">
-                <a href="'.Route::urlize('explore').'">
-                    '.t('Explore').'
-                </a>
-                <a href="'.Route::urlize('server', $serverid).'">
-                    '.$serverid.'
-                </a>
-                <a href="'.Route::urlize('node', array($serverid, $groupid)).'">
-                    '.$title.'
-                </a>
-                <a>'.t('Posts').'</a>
-            </div>
-            <div class="clear"></div>
-            <div class="posthead">
-                '.$button.'
-                <a 
-                    class="button color icon blog merged left" 
-                    href="'.Route::urlize('blog',array($serverid,$groupid)).'"
-                    target="_blank"
-                >
-                    '.t('Blog').'
-                </a><a 
-                    class="button color orange icon alone feed merged right" 
-                    href="'.Route::urlize('feed',array($serverid,$groupid)).'"
-                    target="_blank"
-                ></a>
-                <a
-                    href="#"
-                    onclick="'.$this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'").'
-                    this.className=\'button icon color alone orange loading\'; this.onclick=null;"
-                    class="button color blue icon alone refresh">
-                    
-                </a>
-                
-                <a 
-                    class="button color icon yes"
-                    onclick="
-                        '.$this->genCallAjax('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'").'"
-                >'.t('Get Subscription').'</a>';
 
-        if($this->role == 'owner') {
-            $html .= '
-                <a 
-                    class="button color icon user"
-                    style="float: right;"
-                    href="'.Route::urlize('nodeconfig', array($serverid,$groupid)).'"
-                >'.t('Configuration').'</a>';
-        }
-
-        $html .= '
-            </div>
-
-            <div class="metadata" id="metadata">
-
-            </div>
-            
-            <div class="popup" id="groupsubscribe">
-                <form name="groupsubscribe">
-                    <fieldset>
-                        <legend>'.t('Subscribe').'</legend>
-                        <div class="element">
-                            <label>'.t('Make your membership to this group public to your friends').'</label>                            
-                            <div class="checkbox">
-                                <input type="checkbox" name="listgroup" id="listgroup"/>
-                                <label for="listgroup"></label>
-                            </div>
-                        </div>
-                        <div class="element">
-                            <label for="grouptitle">'.t('Give a nickname to this group if you want').'</label>
-                            <input type="text" name="title" value="'.$groupid.'" id="grouptitle"/>
-                        </div>
-                    </fieldset>
-                    <div class="menu">
-                        <a 
-                            class="button tiny icon yes black merged left"
-                            onclick="
-                                '.$this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'").'
-                                this.onclick=null;"
-                        >'.t('Subscribe').'</a><a 
-                            class="button tiny icon no black merged right" 
-                            onclick="
-                                movim_toggle_display(\'#groupsubscribe\');"
-                        >'.t('Close').'</a>
-                    </div>
-                </form>
-            </div>
-            <div class="popup" id="groupunsubscribe">
-                <form name="groupunsubscribe">
-                    <fieldset>
-                        <legend>'.t('Unsubscribe').'</legend>
-                        <div class="element">
-                            <label>'.t('Are you sure ?').'</label>
-                        </div>
-                    </fieldset>
-                    <div class="menu">
-                        <a 
-                            class="button tiny icon yes black merged left"
-                            onclick="
-                                '.$this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'").' 
-                                this.onclick=null;"
-                        >'.t('Unsubscribe').'</a><a 
-                            class="button tiny icon no black merged right" 
-                            onclick="
-                                movim_toggle_display(\'#groupunsubscribe\');"
-                        >'.t('Close').'</a>
-                    </div>
-                </form>
-            </div>';
+        $nodeview = $this->tpl();
+        $nodeview->assign('title',          $title);
+        $nodeview->assign('serverid',       $serverid);
+        $nodeview->assign('groupid',        $groupid);
+        $nodeview->assign('subscribed',         $this->searchSubscription($serverid, $groupid));
         
-        $title = '';
+        $nodeview->assign('role',           $this->role);
         
-        $pd = new modl\PostnDAO();
-        $posts = $pd->getNode($serverid, $groupid, 0, 20);
-        
-        $html .= $title;
+        $nodeview->assign('refresh',        $this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'"));
+        $nodeview->assign('getsubscription',$this->genCallAjax('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'"));
+        $nodeview->assign('subscribe',      $this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'"));
+        $nodeview->assign('unsubscribe',    $this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'"));
         
         if($this->searchSubscription($serverid, $groupid)
         && ($this->role == 'owner' || $this->role == 'publisher'))
-            $html .= $this->prepareSubmitForm($serverid, $groupid);
+            $submitform = $this->prepareSubmitForm($serverid, $groupid);
+        else
+            $submitform = '';
 
-        $html .= $this->preparePosts($posts);
+        $nodeview->assign('submitform',     $submitform);
+
+        $nodeview->assign('posts',           $this->preparePostsNode($serverid, $groupid, -1));
+
+        $html = $nodeview->draw('_node_content', true);
         
         return $html;
+    }
+
+    function prepareNext($start, $html = '', $posts, $function = 'ajaxGetPostsNode', $serverid, $groupid) {
+        $next = $start + $this->_feedsize;
+        
+        $nexthtml = '';
+            
+        if(sizeof($posts) > $this->_feedsize-1 && $html != '') {
+            $nexthtml = '
+                <div class="post">
+                    <div 
+                        class="older" 
+                        onclick="'.$this->genCallAjax($function, "'".$serverid."'", "'".$groupid."'", "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
+                            t('Get older posts').'
+                    </div>
+                </div>';
+        }   
+
+        return $nexthtml;
+    }
+    
+    function preparePostsNode($serverid, $groupid, $start) {
+        $pd = new \modl\PostnDAO();
+        $pl = $pd->getNode($serverid, $groupid, $start+1, $this->_feedsize);
+
+        $html = $this->preparePosts($pl);
+
+        $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetPostsNode', $serverid, $groupid);
+        
+        return $html;
+    }
+
+    function ajaxGetPostsNode($serverid, $groupid, $start) {
+        $html = $this->preparePostsNode($serverid, $groupid, $start);        
+        RPC::call('movim_append', md5($serverid.$groupid), $html);
+        RPC::commit();
     }
     
     function searchSubscribed($server, $node) {
