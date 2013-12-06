@@ -1,17 +1,32 @@
 #chats {
     position: fixed;
     bottom: -2px;
-    right: 200px;
+    left: 0;
     padding-right: 0.5em;
     z-index: 3;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    max-width: 100%;
+    pointer-events: none;
+}
+
+#chats .filler {
+    width: 210px;
+    height: 0;
+    background-color: red;
+    display: inline-block;
 }
 
 #chats .chat {
+    white-space: normal;
     display: inline-block;
     position: relative;
     bottom: 0;
     overflow: hidden;
     margin-left: 0.5em;
+    pointer-events: auto;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.4);
 }
 
 #chats .chat .panel {
