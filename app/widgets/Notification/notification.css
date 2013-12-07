@@ -3,6 +3,8 @@
     bottom: 0px;
     left: 0px;
     z-index: 5;
+
+    pointer-events: none;
 }
 
 #notification .notif {
