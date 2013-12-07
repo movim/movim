@@ -1,7 +1,7 @@
 #chats {
     position: fixed;
     bottom: -2px;
-    left: 0;
+    right: 0;
     padding-right: 0.5em;
     z-index: 3;
     overflow-x: auto;
@@ -12,7 +12,7 @@
 }
 
 #chats .filler {
-    width: 210px;
+    width: 200px;
     height: 0;
     background-color: red;
     display: inline-block;
