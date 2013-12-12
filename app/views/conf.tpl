@@ -14,8 +14,6 @@
     </div>
             <?php $this->widget('Tabs');?>
     <div id="center">
-        <div title="<?php echo getFlagTitle("white"); ?>"  class="protect white"></div>
-
         <?php $this->widget('Config');?>
         <?php $this->widget('ConfigData');?>
         <?php $this->widget('PubsubSubscriptionConfig');?>

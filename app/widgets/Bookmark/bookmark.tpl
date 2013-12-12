@@ -10,6 +10,10 @@
     {$preparebookmark}
 </div>
 <br />
+<a class="button black alone icon gear"
+   href="{$subscriptionconfig}"
+   title="{$c->t('Configure')}"></a>
+
 <a class="button color blue icon users alone merged right" 
    style="float: right;"
    title="{$c->t('Add a new Chat Room')}"

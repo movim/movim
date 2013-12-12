@@ -34,8 +34,6 @@ class Subscription extends ModlModel {
         parent::__construct();
     }
 
-    
-
     function set($jid, $server, $node, $s) {
         $this->jid          = $jid;
         $this->server       = $server;
