@@ -30,8 +30,7 @@ class Help extends WidgetBase
                 
             <h2><?php echo t('What is Movim?'); ?></h2>
             
-            <p><?php echo t('Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works.', 
-            '<a href="http://wiki.movim.eu/whoami" target="_blank">', '</a>'); ?></p>
+            <p><?php echo t('Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works.', '<a href="http://wiki.movim.eu/whoami" target="_blank">', '</a>'); ?></p>
             
             <h2><?php echo t('What do the little banners refer to ?'); ?></h2>
             <center>    

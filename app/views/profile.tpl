@@ -14,11 +14,14 @@
         <?php $this->widget('Profile');?>
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('Notifs');?>
-        <?php $this->widget('Location');?>
     </div>
+
+    <?php $this->widget('Tabs');?>
+    
     <div id="center">
-        <h1><?php echo t('Edit my profile'); ?></h1>
-        <?php $this->widget('Vcard');?>
+        <?php $this->widget('Vcard4');?>
+        <?php $this->widget('Avatar');?>
+        <?php $this->widget('Location');?>
     </div>
 </div>
 
