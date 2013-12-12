@@ -100,19 +100,50 @@
             </div>
         </fieldset>
 
-        <a
-            onclick="
-                {$submit}
-                movim_button_save('#vcard4validate');
-                this.value = '{$c->t('Submitting')}'; 
-                this.className='button color orange icon loading merged right inactive';" 
-            class="button icon merged right color green yes" 
-            style="float: right;"
-            id="vcard4validate"
-            >{$c->t('Submit')}</a>
-        <a
-            onclick="document.querySelector('#vcard4form').reset();"
-            class="button icon no merged left color orange"
-            style="float: right;">{$c->t('Reset')}</a>
+
+        <fieldset>
+            <a
+                onclick="
+                    {$submit}
+                    movim_button_save('#vcard4validate');
+                    this.value = '{$c->t('Submitting')}'; 
+                    this.className='button color orange icon loading merged right inactive';" 
+                class="button icon merged right color green yes" 
+                style="float: right;"
+                id="vcard4validate"
+                >{$c->t('Submit')}</a>
+            <a
+                onclick="document.querySelector('#vcard4form').reset();"
+                class="button icon no merged left color orange"
+                style="float: right;">{$c->t('Reset')}</a>
+        </fieldset> 
+
+        <fieldset>
+            <legend>{$c->t('Privacy Level')}</legend>
+            <div class="element">
+                <label>{$c->t('Is this profile public ?')}</label>
+                <div class="checkbox">
+                    <input
+                        type="checkbox"
+                        id="privacy"
+                        name="privacy"
+                        {if="$me->privacy"}
+                            checked
+                        {/if}
+                        onchange="{$privacy}"/>
+                    <label for="privacy"></label>
+                </div>
+            </div>
+                <div class="element">
+                    <div class="message info">
+                        {$c->t('Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet.')}
+                    </div>
+                </div>
+            <!--<div class="element">
+                
+                
+                
+            </div>-->
+        </fieldset> 
     </form>
 </div>

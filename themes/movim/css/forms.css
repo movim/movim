@@ -21,7 +21,7 @@ legend {
     display: block;
     width: 51%;
     border-bottom: 1px solid rgb(220, 220, 220) !important;
-    line-height: 2em !important;
+    line-height: 3em !important;
 }
 
 
@@ -173,12 +173,13 @@ legend {
 
 /* Checkbox element */
 
-.element .checkbox > input[type="checkbox"] {
+.checkbox > input[type="checkbox"] {
     display: none;
 }
 
-.element .checkbox {
+.checkbox {
 	width: 6em;
+	max-width: 6em;
 
     overflow: hidden;
 	position: relative;
@@ -186,9 +187,11 @@ legend {
     height: 2em;
     border-radius: 0.1em;
     background-color: white;
+
+    border: 1px solid #DDD;
 }
 
-.element .checkbox:after {
+.checkbox:after {
 	content: 'NO';
 
     display: block;
@@ -206,7 +209,7 @@ legend {
 	font-weight: bold;
 }
 
-.element .checkbox:before {
+.checkbox:before {
 	content: 'YES';
     display: block;
     position: absolute;
@@ -221,7 +224,7 @@ legend {
 	font-weight: bold;
 }
 
-.element .checkbox > input[type="checkbox"] + label {
+.checkbox > input[type="checkbox"] + label {
 	display: block;
 	width: 3.3em;
 	height: 2em;
@@ -239,7 +242,7 @@ legend {
     background-color: white;
 }
 
-.element .checkbox > input[type="checkbox"]:checked + label {
+.checkbox > input[type="checkbox"]:checked + label {
 	left: 2.8em;
     border-right: none;
 }
@@ -371,4 +374,5 @@ legend {
 .icon.call:before   { background-image: url(../img/icons/button/call.svg); }
 .icon.hang-up:before{ background-image: url(../img/icons/button/hang-up.svg); }
 .icon.expand:before { background-image: url(../img/icons/button/expand.svg); }
+.icon.gear:before   { background-image: url(../img/icons/button/gear.svg); }
 .icon.contract:before{ background-image: url(../img/icons/button/contract.svg); }

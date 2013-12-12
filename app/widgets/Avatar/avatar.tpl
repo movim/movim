@@ -1,4 +1,5 @@
 <div class="tabelem padded" title="{$c->t('Avatar')}" id="avatar" >
+    <div class="protect orange"></div>
     <form name="avatarform" id="avatarform">
         <fieldset>
             <legend>{$c->t('Avatar')}</legend>

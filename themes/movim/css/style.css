@@ -616,19 +616,32 @@ ul.list {
 
 ul.list li {
     border-bottom: 1px solid #EEE;
+    clear: both;
 }
 
 ul.list li:last-child {
     border-bottom: 0px;
 }
 
+ul.list li.title {
+    padding: 1em 0;
+    border-bottom: 1px solid #CCC;
+    margin-top: -0.5em;
+}
+
+ul.list li.title a.action {
+    padding: 0;
+    padding-right: 1em;
+}
+
 ul.list li a {
-    padding: 0.7em;
+    padding: 1em 0em;
     display: block;
 }
 
 ul.list li a.action {
     float: right;
+    padding: 0.4em;
 }
 
 ul.list li a.action:hover {
@@ -644,10 +657,10 @@ ul.list li span.tag {
     min-width: 3em;
     border-radius: 2px;
     text-align: center;
-    line-height: 1.8em;
+    line-height: 2.2em;
     font-size: 0.8em;
     float: right;
-    margin-top: -0.3em;
+    margin-top: -0.5em;
 }
 
 ul.list li span.tag.red { background-color: #D92727; }
