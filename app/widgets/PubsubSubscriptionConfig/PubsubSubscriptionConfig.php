@@ -24,64 +24,102 @@ class PubsubSubscriptionConfig extends WidgetBase
     function WidgetLoad()
     {
         $this->registerEvent('groupsubscribedlist', 'onGroupSubscribedList');
+        $this->registerEvent('groupadded', 'onGroupAdded');
         $this->registerEvent('groupremoved', 'onGroupRemoved');
-    }
-    
-    function prepareList($list) { 
-        if(isset($list) && is_array($list[0])){
-            $html = '<ul class="list">';
-            foreach($list as $item){
-                $delete = $this->genCallAjax('ajaxDeleteFromGroupSubscribedList', "'".$item[0]."'", "'".$item[1]."'");
-                $html .= '
-                    <li id="group'.$item[0].'">
-                        <a class="action" onclick="'.$delete.'">'.t('Delete').'</a>
-                        <a href="'.Route::urlize('node', array($item[1],$item[0])).'">'.$item[2].'</a>
-                    </li>';
-            }
-            $html .= '</ul>';
-            return $html;
-        }
-        else return t('No public groups found');
-    }
-    
-    function onGroupRemoved($node) {       
-        RPC::call('movim_delete', 'group'.$node);
-        Notification::appendNotification(t('%s has been removed from your public groups', $node), 'success');
-        RPC::commit(); 
+
+        $this->view->assign(
+                    'getsubscribedlist',
+                    $this->genCallAjax('ajaxGetGroupSubscribedList')
+                    );
     }
     
     function onGroupSubscribedList($list) {
         $html = $this->prepareList($list);
-        RPC::call('movim_fill', 'listconfig', $html); 
+        RPC::call('movim_fill', 'groupsubscribedlistconfig', $html); 
     }
     
-    function ajaxDeleteFromGroupSubscribedList($node, $server){
-        $r = new moxl\PubsubSubscriptionListRemove();
-        $r->setNode($node)
-          ->setTo($server)
-          ->setFrom($this->user->getLogin())
-          ->request();
+    function prepareList($list) {
+        $configlist = $this->tpl();
+        $sd = new \modl\SubscriptionDAO();
+
+        $listhtml = '';
+        
+        //if($sd != null && $sd->getSubscribed() != null) {
+            foreach($sd->getSubscribed() as $s) {
+                if($s->name != null)
+                    $name = $s->name;
+                else
+                    $name = $s->node;
+
+                if(isset($list[$s->server.$s->node]))
+                    $checked = 'checked';
+                else
+                    $checked = '';
+
+                $switch = $this->genCallAjax(
+                            'ajaxChangeSubscribed',
+                            "'".$s->server."'",
+                            "'".$s->node."'",
+                            "this.checked",
+                            "'".$name."'");
+
+                $listhtml .= '
+                    <li>
+                        <a class="action">
+                            <div class="checkbox">
+                                <input
+                                    type="checkbox"
+                                    id="privacy'.$s->node.'"
+                                    name="privacy'.$s->node.'"
+                                    '.$checked.'
+                                    onchange="'.$switch.'"/>
+                                <label for="privacy'.$s->node.'"></label>
+                            </div>
+                        </a>
+                        <a href="'.Route::urlize('node', array($s->server, $s->node)).'">'.
+                            $name.' 
+                        </a>
+                    </li>';
+            }
+
+            $configlist->assign('list',       $listhtml);
+
+            return $configlist->draw('_pubsubsubscriptionconfig_list', true);
+        //} else return t('No public groups found');
     }
     
+    function onGroupAdded($node) {
+        Notification::appendNotification(t('%s has been added to your public groups', $node), 'success');
+        RPC::commit(); 
+    }
+    
+    function onGroupRemoved($node) {
+        Notification::appendNotification(t('%s has been removed from your public groups', $node), 'success');
+        RPC::commit(); 
+    }
+
+    function ajaxChangeSubscribed($server, $node, $state, $name) {
+        $data = array('title' => $name);
+        
+        if($state) {
+            $r = new moxl\PubsubSubscriptionListAdd();
+            $r->setNode($node)
+              ->setTo($server)
+              ->setFrom($this->user->getLogin())
+              ->setData($data)
+              ->request();
+        } else {
+            $r = new moxl\PubsubSubscriptionListRemove();
+            $r->setNode($node)
+              ->setTo($server)
+              ->setFrom($this->user->getLogin())
+              ->request();
+        }
+    }
+
     function ajaxGetGroupSubscribedList(){
         $r = new moxl\PubsubSubscriptionListGet();
         $r->request();
     }
-    
-    function build()
-    {
-        ?>
-        <div class="tabelem padded" title="<?php echo t('Public Groups'); ?>" id="groupsubscribedlistconfig">
-            <div id="listconfig">
-                <a 
-                    class="button icon yes color green" 
-                    onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList'); ?> this.style.display = 'none';">
-                    <?php echo t("Get your public groups");?>
-                </a>
-            </div>
-        </div>
-        <?php
-    }
-}
 
-?>
+}

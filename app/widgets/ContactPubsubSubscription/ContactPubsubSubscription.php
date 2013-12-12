@@ -25,10 +25,11 @@ class ContactPubsubSubscription extends WidgetBase
     {
         $this->registerEvent('groupsubscribedlist', 'onGroupSubscribedList');
         $this->registerEvent('groupsubscribedlisterror', 'onGroupSubscribedListError');
+        $this->addjs('contactpubsubsubscription.js');
     }
     
     function prepareList($list) { 
-        if(is_array($list[0])){
+        if(is_array(array_slice($list, 0, 1))){
             $html = '<ul class="list">';
             
             foreach($list as $item){
@@ -37,9 +38,9 @@ class ContactPubsubSubscription extends WidgetBase
             
             $html .= '</ul>';
             return $html;
+        } else {
+            Notification::appendNotification(t('No public groups found'), 'info');
         }
-        
-        Notification::appendNotification(t('No public groups found'), 'info');
     }
     
     function onGroupSubscribedList($list) {
@@ -49,7 +50,8 @@ class ContactPubsubSubscription extends WidgetBase
     
     function onGroupSubscribedListError($error)
     {
-        Notification::appendNotification($error, 'error');
+        //Notification::appendNotification($error, 'error');
+        RPC::call('hidePubsubSubscription');
     }
     
     function ajaxGetGroupSubscribedList($to){
@@ -60,14 +62,13 @@ class ContactPubsubSubscription extends WidgetBase
     function build()
     {
         ?>
-        <div class="tabelem padded" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistfromfriend">
-            <div style="position:relative;top:-1.5em;right:-1.5em;" class="protect red" title="<?php echo getFlagTitle('red'); ?>"></div>
-            <a 
-                class="button icon yes color green" 
-                onclick="<?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?> this.style.display = 'none'">
-                <?php echo t("Get public groups");?>
-            </a>
-            <div id="publicgroups"></div>
+        <div class="tabelem" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistfromfriend">
+            <div class="protect red" title="<?php echo getFlagTitle('red'); ?>"></div>
+            <h1><?php echo t('Public groups'); ?></h1>
+            <script type="text/javascript">
+                <?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>
+            </script>
+            <div id="publicgroups" class="paddedtop"></div>
         </div>
         <?php
     }
