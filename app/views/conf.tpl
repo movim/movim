@@ -11,7 +11,6 @@
         <?php $this->widget('Profile');?>
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('Notifs');?>
-        <?php $this->widget('Location');?>
     </div>
             <?php $this->widget('Tabs');?>
     <div id="center">
