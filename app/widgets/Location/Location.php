@@ -91,14 +91,13 @@ class Location extends WidgetBase
         $html = '';
         
         $html .= '
-            <h2>'.t('Location').'</h2>
             <div id="location">
                 <div id="mapdata" style="margin-bottom: 10px;">'.$data.'</div>
                 <div id="mapdiv" style="width: auto; height: 250px; display: none;"></div>
                 <div class="clear"></div>
                 <a 
                     class="button color green icon geo" 
-                    style="margin-top: 1em; display: block;"
+                    style="margin-top: 1em;"
                     onclick="getMyPosition(); this.style.display = \'none\';">'.
                     t('Update my position').'
                 </a>
@@ -118,6 +117,10 @@ class Location extends WidgetBase
     
     function build()
     {
-        echo $this->prepareProfileData();
+        ?>
+        <div class="tabelem padded" title="<?php echo t('Location'); ?>" id="location" >
+        <?php echo $this->prepareProfileData(); ?>
+        </div>
+        <?php
     }
 }
