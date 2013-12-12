@@ -339,6 +339,10 @@ legend {
     border-radius: 0px 0.1em 0.1em 0px;
 }
 
+.button.inactive {
+    pointer-events:none;
+}
+
 .icon.yes:before    { background-image: url(../img/icons/button/checkmark.svg); }
 .icon.no:before     { background-image: url(../img/icons/button/close.svg); }
 .icon.chat:before   { background-image: url(../img/icons/button/bubbles.svg);}
