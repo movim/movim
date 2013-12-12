@@ -28,6 +28,8 @@ class Bookmark extends WidgetBase
 
         $this->registerEvent('groupsubscribed', 'onGroupSubscribed');
         $this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
+        
+        $this->view->assign('subscriptionconfig', Route::urlize('conf', false, 'groupsubscribedlistconfig'));
 
         $this->view->assign('getbookmark',      $this->genCallAjax("ajaxGetBookmark"));
         $this->view->assign('setbookmark',      $this->genCallAjax("ajaxSetBookmark", "''"));

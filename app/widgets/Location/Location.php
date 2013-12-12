@@ -61,7 +61,6 @@ class Location extends WidgetBase
         RPC::call('movim_fill', 'mapdata', $html);
         
         Notification::appendNotification(t('Location updated'), 'success');
-        RPC::call('movim_delete', 'mapdiv');
         RPC::commit();
     }
     
@@ -92,7 +91,7 @@ class Location extends WidgetBase
         
         $html .= '
             <div id="location">
-                <div id="mapdata" style="margin-bottom: 10px;">'.$data.'</div>
+                <div id="mapdata" style="margin: 1em 0;">'.$data.'</div>
                 <div id="mapdiv" style="width: auto; height: 250px; display: none;"></div>
                 <div class="clear"></div>
                 <a 
@@ -103,13 +102,9 @@ class Location extends WidgetBase
                 </a>
                 <a 
                     id="mypossubmit" 
-                    style="display: none;" 
-                    class="button color green icon yes" 
-                    onclick="'.$submit.' hidePositionChoice();">'.t('Accept').'</a><a 
-                    style="display: none; margin-top: 1em;" 
-                    id="myposrefuse" 
-                    onclick="hidePositionChoice();"
-                    class="button tiny icon alone no merged right"></a>
+                    style="display: none; margin-top: 1em; float: right;"
+                    class="button color green icon yes merged left" 
+                    onclick="'.$submit.' hidePositionChoice();">'.t('Accept').'</a>
             </div>';
         
         return $html;
@@ -119,7 +114,14 @@ class Location extends WidgetBase
     {
         ?>
         <div class="tabelem padded" title="<?php echo t('Location'); ?>" id="location" >
-        <?php echo $this->prepareProfileData(); ?>
+            <div class="protect orange" title="<?php echo getFlagTitle($color); ?>"></div>
+            <form>
+                <fieldset>
+                    <legend><?php echo t('Location'); ?></legend>
+                    <div class="clear"></div>
+                    <?php echo $this->prepareProfileData(); ?>
+                </fieldset>
+            </form>
         </div>
         <?php
     }
