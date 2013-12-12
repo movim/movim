@@ -1,0 +1,26 @@
+#avatar img {
+    margin: 0 auto;
+}
+
+#avatar .element #runningcam,
+#avatar .element #shoot{
+    display: none;
+}
+
+#avatar .element.active #runningcam{
+    display: block;
+}
+
+#avatar .element.active #shoot{
+    display: inline-block;
+}
+
+#avatar .element.active #capture {
+    display: none;
+}   
+
+.squares, #snap{
+	height:200px;
+    box-shadow: none !important;
+    border: 0px !important;
+}
