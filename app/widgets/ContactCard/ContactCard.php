@@ -41,8 +41,8 @@ class ContactCard extends WidgetCommon
         $html = '';
 
         $html .= '
-            <form name="vcard" id="vcardform"><br />
-            <h1>'.t('Profile').'</h1><br />
+            <form name="vcard" id="vcardform">
+            <h1>'.t('Profile').'</h1>
                 <fieldset>
                     <legend>'.t('General Informations').'</legend>';
                     

@@ -32,7 +32,7 @@ function getMyPosition() {
                 s.src = 'http://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+position.coords.latitude+'&lon='+position.coords.longitude+'&zoom=27&addressdetails=1';
                 document.getElementsByTagName('head')[0].appendChild(s);
                 
-                document.querySelector("#mypossubmit").style.display = 'block';
+                document.querySelector("#mypossubmit").style.display = 'inline-block';
             }, 
             // next function is the error callback
             function (error)

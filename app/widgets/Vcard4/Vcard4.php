@@ -33,6 +33,11 @@ class Vcard4 extends WidgetBase
             'submit',
             $this->genCallAjax('ajaxVcardSubmit', "movim_form_to_json('vcard4')")
             );
+            
+        $this->view->assign(
+            'privacy',
+            $this->genCallAjax('ajaxChangePrivacy', "this.checked")
+            );
 
         // The datepicker arrays
         $days = $months = $years = array();
@@ -121,5 +126,16 @@ class Vcard4 extends WidgetBase
 
         $r = new moxl\VcardSet();
         $r->setData($vcard)->request();
+    }
+
+    function ajaxChangePrivacy($value)
+    {
+        if($value == true) {
+            \modl\Privacy::set($this->user->getLogin(), 1);
+            Notification::appendNotification(t('Your profile is now public'), 'success');
+        } else {
+            \modl\Privacy::set($this->user->getLogin(), 0);
+            Notification::appendNotification(t('Your profile is now restricted'), 'success');
+        }
     }
 }
