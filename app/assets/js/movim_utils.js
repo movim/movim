@@ -160,6 +160,24 @@ function movim_toggle_class(element, classname) {
 }
 
 /**
+ * @brief Save the current button class
+ * @param string the selector of the element
+ */
+function movim_button_save(element) {
+    var elt = document.querySelector(element);
+    elt.dataset.oldclassname = elt.className;
+}
+
+/**
+ * @brief Reset the button
+ * @param string the selector of the element
+ */
+function movim_button_reset(element) {
+    var elt = document.querySelector(element);
+    elt.className = elt.dataset.oldclassname;
+}
+
+/**
  * @brief Toggle the visibility of an element
  * @param string the selector of the element
  */

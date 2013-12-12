@@ -10,7 +10,6 @@
         <?php $this->widget('Profile');?>
         <?php $this->widget('Bookmark');?>
         <?php $this->widget('Notifs');?>
-        <?php $this->widget('Location');?>
     </div>
     <div id="center">
         <div class="protect black" title="<?php echo getFlagTitle("black"); ?>"></div>
