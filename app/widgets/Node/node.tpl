@@ -5,5 +5,5 @@
 </div>
 <script type="text/javascript">
     {$getaffiliations}
-    {$getmetadata}
+    setTimeout("{$getmetadata}", 1000);
 </script>
