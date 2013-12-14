@@ -36,6 +36,9 @@ class Login extends WidgetBase {
             loginButtonSet(\''.t('Connecting...').'\', true);
             Session.clear();
             this.onclick=null;');
+
+        $sd = new modl\SessionxDAO();
+        $sd->clean();
             
         if(isset($_GET['err'])) {
             $this->view->assign('warnings', $this->displayWarning($_GET['err'], true));
@@ -200,31 +203,6 @@ class Login extends WidgetBase {
 
     function ajaxLogin($element)
     {
-        /*
-        $sess = Session::start(APP_NAME);
-
-        var_dump($sess->get('session'));
-
-        $s = Sessionx::start();
-        // We get the Server Configuration
-        $serverconfig = \system\Conf::getServerConf();
-        $s->url = $serverconfig['boshUrl'];
-        $s->port = 5222;
-        $s->host = 'movim.eu';
-        $s->domain = 'pod.mov.im';
-        $s->user = 'edhelas';
-        $s->ressource = 'moxl'.substr(md5(date('c')), 3, 6);
-        $s->init();
-        var_dump($s->getRid());
-        var_dump($s->getRid());
-        var_dump($s->getRid());
-        var_dump($s->getId());
-        var_dump($s->getId());
-        
-        var_dump($s);
-        var_dump($_COOKIE);
-        */
-        
         // We get the Server Configuration
         $serverconfig = \system\Conf::getServerConf();
         
@@ -273,39 +251,10 @@ class Login extends WidgetBase {
 
         $this->displayWarning($warning);
 
-        /*global $session;
-
-        $session = array(
-                'rid' => 1,
-                'sid' => 0,
-                'id'  => 0,
-                'url' => $serverconfig['boshUrl'],
-                'port'=> 5222,
-                'host'=> $host,
-                'domain' => $domain,
-                'ressource' => 'moxl'.substr(md5(date('c')), 3, 6),
-
-                'user'     => $user,
-                'password' => $element['pass'],
-
-                'proxyenabled' => $serverconfig['proxyEnabled'],
-                'proxyurl' => $serverconfig['proxyURL'],
-                'proxyport' => $serverconfig['proxyPort'],
-                'proxyuser' => $serverconfig['proxyUser'],
-                'proxypass' => $serverconfig['proxyPass']);
-
-        $sess = Session::start(APP_NAME);
-
-        $sess->set('session', $session);*/
-
         // We create a new session or clear the old one
         $s = Sessionx::start();
         
         $s->init($user, $element['pass'], $host, $domain);
-
-        //global $session;
-        //$session = $s->get();
-        //\movim_log($session);
 
         // We save the loaded widgets list in the database
         $wrapper = WidgetWrapper::getInstance(false);
