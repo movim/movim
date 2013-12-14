@@ -7,7 +7,7 @@ body {
     width: 100%;
     position: relative;
     left: 0;
-    transition: left 0.5s ease;
+    /*transition: left 0.5s ease;*/
     overflow-x: hidden;
 }
 
@@ -21,6 +21,10 @@ body.infos {
 
 .on_mobile {
     display: inherit;
+}
+
+h1 {
+    padding: 0em 0.4em;
 }
 
 #right {
@@ -101,7 +105,7 @@ nav .menu li a.disconnect {
 }
 
 table#feedsubmitform {
-    margin: 0 1em;
+    margin: 0 0.5em;
 }
 
 .element {
@@ -113,15 +117,15 @@ table#feedsubmitform {
 }
 
 .posthead {
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .post {
-    padding: 1em 1em;
+    padding: 0.5em;
 }
 
 .post .avatar {
-    margin-right: 1em;
+    margin-right: 0.5em;
 }
 
 .post .postbubble {
@@ -234,6 +238,36 @@ ul.thumb li {
 #notifslist {
     margin: 0 !important;
     margin-top: 3em !important;
+}
+
+/* A default padding for some elements */
+.padded {
+    padding: 0.5em;
+}
+
+.paddedtop {
+    padding: 0.5em;
+    padding-top: 0px;
+}
+
+.paddedtopbottom {
+    padding: 0em 0.5em;
+}
+
+.spacetop {
+    padding-top: 0.5em;
+}
+
+/* Definition list */
+
+dl dt {
+    text-align: left;
+    width: 100%;
+}
+
+dl dd {
+    text-align: left;
+    width: 100%;
 }
 
 }

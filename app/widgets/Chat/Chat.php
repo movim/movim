@@ -79,20 +79,21 @@ class Chat extends WidgetBase
             $jid = $message->jidfrom;
         }
 
-        if($message->session != $message->jidfrom)
-            RPC::call('notify');
-
         $rd = new \modl\RosterLinkDAO();
 
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
+
+        if($message->session != $message->jidfrom)
+            RPC::call(
+                'notify',
+                $contact->getTrueName(),
+                $message->body,
+                $contact->getPhoto('m'));
         
         if($contact != null && $contact->chaton == 0) {
             $contact->chaton = 2;
             $rd->setChat($jid, 2);
-            
-            //$evt = new Event();
-            //$evt->runEvent('openchat');  
 
             RPC::call('movim_prepend',
                            'chats',

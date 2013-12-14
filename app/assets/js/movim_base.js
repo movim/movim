@@ -44,6 +44,12 @@ function movim_title_inc() {
 	messages_cpt++;
 }
 
+function movim_desktop_notification(title, body, image) {
+    var notification = new Notification(title, { icon: image, body: body });
+
+    notification.onshow = function() { setTimeout(notification.cancel(), 15000); }
+}
+
 /**
  * TODO : remove this function
  */

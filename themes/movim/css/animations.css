@@ -55,3 +55,22 @@
     80% { background-color: #294265; }
     100% { background-color: #3C7E91; }
 }
+
+@media screen and (max-width: 1024px) {
+.fadeDown {
+    -webkit-animation: none;
+       -moz-animation: none;
+        -ms-animation: none;
+         -o-animation: none;
+            animation: none;
+}
+
+@keyframes colorful {
+    0% { background-color: #3C7E91; }
+}
+
+@-webkit-keyframes colorful {
+    0% { background-color: #3C7E91; }
+}
+
+}

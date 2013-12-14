@@ -22,6 +22,11 @@ legend {
     width: 51%;
     border-bottom: 1px solid rgb(220, 220, 220) !important;
     line-height: 3em !important;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: text-bottom;
 }
 
 
