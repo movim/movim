@@ -64,13 +64,10 @@ function showPaused(jid) {
     paused.style.display = 'block';
 }
 
-function notify() {
+function notify(params) {
     if(document_focus == false) {
         movim_title_inc();
-        //play the notif sound
-        /*chatSoundNotif.pause();
-        chatSoundNotif.currentTime= 0;
-        chatSoundNotif.play();*/
+        movim_desktop_notification(params[0], params[1], params[2]);
     }
 
 }
