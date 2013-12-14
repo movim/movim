@@ -223,6 +223,19 @@ class SessionxDAO extends ModlSQL {
         return $this->run('Sessionx');
     }
 
+    function clean() {
+        $this->_sql = '
+            delete from sessionx
+            where timestamp < NOW() - 3600';
+        
+        $this->prepare(
+            'Sessionx', 
+            array()
+        );
+
+        $this->run('Sessionx');
+    }
+
     function getConnected() {
         $this->_sql = '
             select count(*) from sessionx';
