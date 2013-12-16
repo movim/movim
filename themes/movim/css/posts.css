@@ -3,8 +3,7 @@
 .posthead {
     display: block;
     width: 100%;
-    padding: 1em 1.5em;
-    padding-top: 0;
+    padding: 0 1em;
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -12,7 +11,7 @@
 }
 
 .metadata p {
-    padding: 0 1.5em;
+    padding: 0 1em;
     margin-bottom: 1em;
     font-style:italic;
 }
@@ -41,7 +40,7 @@
 
 .post {
     width: auto;
-    padding: 1.5em;
+    padding: 1em;
     border-bottom: 1px solid #DDD;
     min-height: 4em;
     clear: both;
@@ -66,6 +65,10 @@
     width: 92%;
     margin-left: 5em;
     position: relative;
+}
+
+.post .postbubble .header a {
+    text-decoration: none;
 }
 
 .post .postbubble.profile {
@@ -100,17 +103,20 @@
 }
 
 .post .header span {
-    font-weight: bold;
     overflow: hidden;
     padding-right: 0.5em;
     line-height: 2em;
     display: inline-block;
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .post span.title {
-    padding-left: 0px;
+    padding-left: 0;
     display: block;
-    float: left;
+    font-size: 1.5em;
+    line-height: 1.5em;
 }
 
 .post span a:hover {
@@ -162,20 +168,20 @@
 }
 
 .post span.place {
-    background: url(../img/icons/place.png) 0px 0.5em no-repeat;
+    background: url(../img/icons/place.png) 0 0.5em no-repeat;
 }
 
 .post span.recycle {
-    background: url(../img/icons/recycle.png) 0px 0.5em no-repeat;
+    background: url(../img/icons/recycle.png) 0 0.5em no-repeat;
 }
 
 .post span.group {
-    background: url(../img/icons/users.png) 0px 0.5em no-repeat;
+    background: url(../img/icons/users.png) 0 0.5em no-repeat;
 }
 
 .post .comments {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
+    /*background-color: rgba(0, 0, 0, 0.1);*/
     clear: both;
 }
 
@@ -188,11 +194,11 @@
     overflow: hidden;
 	width: auto;
 }
-
+/*
 .post .comments .comment:nth-child(2n) {
     background-color: rgba(255, 255, 255, 0.5);
 }
-
+*/
 .post .getcomments {
     background-repeat: no-repeat;
     background-position: 0.5em center;
