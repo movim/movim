@@ -59,12 +59,12 @@ class Roster extends WidgetBase
         
         if($c != null) {
             foreach($c as $item) {
+                $html = $this->prepareRosterElement($item, $caps);
+                
                 RPC::call(
                 'movim_delete', 
                 'roster'.$item->jid.$item->ressource, 
                 $html /* this second parameter is just to bypass the RPC filter*/);
-
-                $html = $this->prepareRosterElement($item, $caps);
 
                 if($item->groupname == null)
                     $group = t('Ungrouped');
