@@ -194,6 +194,5 @@
         <!--<a type="reset" value="{$c->t('Reset'); ?>" class="button icon no merged left" style="float: right;">-->
         </p>
     </form>
-    <br /><br />
     <div class="message info">{$c->t("This configuration is shared wherever you are connected !")}</div>
 </div>
