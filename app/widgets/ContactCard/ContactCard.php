@@ -151,7 +151,7 @@ class ContactCard extends WidgetCommon
         $cd = new modl\ContactDAO();
         $contact = $cd->get($_GET['f']);
         ?>
-        <div class="tabelem" title="<?php echo t('Profile'); ?>" id="contactcard" >
+        <div class="tabelem paddedtop" title="<?php echo t('Profile'); ?>" id="contactcard">
             <div style="position:relative;top:0px;right:-1.5em;" class="protect red" title="<?php echo getFlagTitle('red'); ?>"></div>
             <?php
             if(isset($contact))

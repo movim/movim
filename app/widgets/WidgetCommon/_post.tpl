@@ -15,15 +15,15 @@
             <!--{$author}-->
         </div>
         <div class="content">
-        {$content}<br />
+        {$content}
         </div>
         {$tags}
-        {$toolbox}
         {$enc}
         {$comments}
         {$place}
         {$recycle}
         {$group}
+        {$toolbox}
     </div>  
             
 </div>

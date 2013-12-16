@@ -47,6 +47,9 @@
         <form name="postpublish" id="postpublish">
             <tr>
                 <td>
+                    <input name="title" placeholder="{$c->t('Title')}"/>
+                </td>
+                <td>
                     <textarea 
                         name="content" 
                         id="postpublishcontent"

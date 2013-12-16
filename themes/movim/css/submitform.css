@@ -2,7 +2,7 @@
 
 table#feedsubmitform {
     display: block;
-    margin: 0 1.5em;
+    margin: 0 1em;
     overflow: hidden;
     padding-bottom: 0;
     border: 1px solid #DDD;
@@ -18,13 +18,30 @@ table#feedsubmitform {
     padding: 0px;
 }
 
+#feedsubmitform td input[name=title] {
+    background-color: white;
+    padding: 0.5em;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    display: block;
+    margin: 0.5em;
+    margin-bottom: 0;
+    width: 98.5%;
+}
+
+#feedsubmitform:hover td input[name=title] {
+    display: block;
+}
+
 #feedsubmitform textarea {
     width: 96%;
     border: none;
     margin: 1em;
     resize: none;
     background-color: white;
-    height: 1.1em;
+    height: 1.3em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
