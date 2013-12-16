@@ -43,7 +43,7 @@ time, mark, audio, video {
 /* Zeu CSS */
 
 body {
-    font-family:  helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-family: OpenSans-Reg, helvetica,sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
     font-size: 14px;
     line-height: 1em;
     color: #4E4E4E;
@@ -201,9 +201,9 @@ h1 {
     line-height: 2.5em;
     font-size: 1.5em;
     margin: 0px;
-    padding: 0em 1em;
+    padding: 0 0.6em;
     vertical-align: bottom;
-    font-family: sans-serif;
+    /*font-family: sans-serif;*/
 }
 
 h2 {   
@@ -225,7 +225,7 @@ h3 {
 
 p {
     text-align: justify;
-    line-height: 1.3em;
+    line-height: 1.5em;
     margin-top: 0.5em;
 }
 
@@ -257,20 +257,20 @@ ul.clean li {
 
 /* A default padding for some elements */
 .padded {
-    padding: 1.5em;
+    padding: 1em;
 }
 
 .paddedtop {
-    padding: 1.5em;
+    padding: 1em;
     padding-top: 0px;
 }
 
 .paddedtopbottom {
-    padding: 0em 1.5em;
+    padding: 0em 1em;
 }
 
 .spacetop {
-    padding-top: 1.5em;
+    padding-top: 1em;
 }
 
 /* The main parts of the page */

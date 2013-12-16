@@ -93,10 +93,11 @@ legend {
 }
 
 .element > textarea, textarea {
-	font-family: helvetica, sans-serif, Helvetica, "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-family: OpenSans-Reg;
     resize: vertical;
     background-color: white;
     overflow-y: hidden;
+    font-size: 1em;
 }
 
 /* Select input CSS */
@@ -260,7 +261,7 @@ legend {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-    padding: 0 1em;
+    padding: 0 0.7em;
     text-decoration: none;
     
     min-height: 2em;
@@ -276,11 +277,12 @@ legend {
     
     max-width: 100%;
     
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 0.8em;
-    line-height: 2.4em;
-    font-family: helvetica, sans-serif;
+    /*text-transform: uppercase;
+    font-weight: bold;*/
+    font-size: 1em;
+    line-height: 2em;
+    /*font-family: helvetica, sans-serif;*/
+    font-family: OpenSans-Reg;
     
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
@@ -288,15 +290,15 @@ legend {
 
 .icon:before {
     content: " ";
-    padding-left: 1.1em;
+    padding-left: 1em;
     background-position: center center;
-    background-size: 12px 12px;
+    background-size: 1em 1em;
     background-repeat: no-repeat;
-    margin-right: 0.7em;
+    margin-right: 0.5em;
 }
 
 .icon.alone:before {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .button:hover {
