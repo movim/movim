@@ -56,14 +56,11 @@ class ContactSummary extends WidgetCommon
         if(isset($contact->presence))
             $html .= '
                 <h1 class="'.$presencetxt[$contact->presence].'">'.$contact->getTrueName().'</h1>';
-
-            /*if($this->testIsSet($contact->name))
-                $html .= $contact->name.' ';
-            else*/
-                $html .= $contact->getTrueName().' ';
+        else
+            $html .= '<h1>'.$contact->getTrueName().'</h1>';
                 
-            if($this->testIsSet($contact->url) && filter_var($contact->url, FILTER_VALIDATE_URL)) 
-                $html .= '<br /><a target="_blank" href="'.$contact->url.'">'.$contact->url.'</a>';
+        if($this->testIsSet($contact->url) && filter_var($contact->url, FILTER_VALIDATE_URL)) 
+            $html .= '<a target="_blank" href="'.$contact->url.'">'.$contact->url.'</a>';
           
         if(isset($contact->status)) {
             $html .= '

@@ -32,10 +32,7 @@ class WidgetCommon extends WidgetBase {
         $tags = $toolbox = $place = $recycle = '';
 
         if($post->title)
-            $title = '
-                <span>
-                    '.$post->title.'
-                </span><br />';
+            $title = $post->title;
                 
         if($this->user->getLogin() == $post->aid) {
             $class = 'me ';
@@ -500,6 +497,7 @@ class WidgetCommon extends WidgetBase {
     function ajaxPublishItem($server, $node, $form)
     {
         $content = $form['content'];
+        $title   = $form['title'];
 
         list($lat,$lon) = explode(',', $form['latlonpos']);
         
@@ -521,7 +519,7 @@ class WidgetCommon extends WidgetBase {
             'text'          => (string)$pos->display_name,
             'uri'           => ''//'http://www.openstreetmap.org/'.urlencode('?lat='.(string)$pos->lat.'&lon='.(string)$pos->lon.'&zoom=10')
             );
-            
+
         if($content != '') {
             $content = Michelf\Markdown::defaultTransform($content);
 
@@ -530,10 +528,12 @@ class WidgetCommon extends WidgetBase {
               ->setTo($server)
               ->setNode($node)
               ->setLocation($geo)
+              ->setTitle($title)
               ->setContentHtml(rawurldecode($content))
               ->enableComments()
               ->request();
         }
+        
     }
     
     function onComment($parent) {        
