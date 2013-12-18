@@ -329,6 +329,7 @@ ul.clean li {
     position: relative;
     top: 0px;
     overflow: hidden;
+    min-height: 40em;
 }
 
 #right
