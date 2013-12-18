@@ -104,12 +104,26 @@ class Roster extends WidgetBase
     function prepareRosterElement($contact, $caps = false)
     {
         $type = '';
+        $jingle = $jingle_audio = $jingle_video = false;
         
         if($caps && isset($caps[$contact->node.'#'.$contact->ver])) {
-            $type = $caps[$contact->node.'#'.$contact->ver]->type;
-            $client = $caps[$contact->node.'#'.$contact->ver]->name;
+            $cap  = $caps[$contact->node.'#'.$contact->ver];
+            $type = $cap->type;
+            $client = $cap->name;
             $client = explode(' ',$client);
             $client = reset($client);
+            $features = $cap->features;
+
+            if(array_search('urn:xmpp:jingle:1', unserialize($features)) !== null) {
+                $jingle = true;
+
+                if(array_search('urn:xmpp:jingle:apps:rtp:audio', unserialize($features)) !== null) {
+                    $jingle_audio = true;
+                }
+                if(array_search('urn:xmpp:jingle:apps:rtp:video', unserialize($features)) !== null) {
+                    $jingle_video = true;
+                }
+            }
         }
         
         $html = '';
@@ -150,6 +164,9 @@ class Roster extends WidgetBase
 
         if($type == 'bot')
             $html .= '<div class="infoicon bot"></div>';
+
+        if($jingle_video == true)
+            $html .= '<div class="infoicon jingle" onclick="openPopup(\''.$contact->jid.'/'.$contact->ressource.'\')"></div>';
 
         if(($contact->tuneartist != null && $contact->tuneartist != '') ||
            ($contact->tunetitle != null && $contact->tunetitle != ''))
