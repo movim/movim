@@ -203,7 +203,6 @@ h1 {
     margin: 0px;
     padding: 0 0.6em;
     vertical-align: bottom;
-    /*font-family: sans-serif;*/
 }
 
 h2 {   
@@ -253,6 +252,7 @@ ul.clean {
 
 ul.clean li {
     list-style-type: square;
+    line-height: 2em;
 }
 
 /* A default padding for some elements */
@@ -329,7 +329,6 @@ ul.clean li {
     position: relative;
     top: 0px;
     overflow: hidden;
-    min-height: 60em;
 }
 
 #right
@@ -365,8 +364,11 @@ footer
     text-align: right;
     background-color: rgba(20, 20, 20, 0.7);
     line-height: 3em;
-    padding-right: 1em;
+    padding: 0 1em;
     color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 footer a:link, footer a:visited {
@@ -716,6 +718,9 @@ dl dd {
 /* Breadcrumb */
 .breadcrumb {
     height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .breadcrumb > a {

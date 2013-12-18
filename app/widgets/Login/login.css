@@ -128,4 +128,8 @@ footer {
     #loginhelp {
         display: none;
     }
+
+    #loginpage .connectform .create span {
+        display: none;
+    }
 }
