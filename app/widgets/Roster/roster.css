@@ -168,7 +168,8 @@
 
 #roster ul#rosterlist li:hover .chat {
     width: 3em;
-    background-image: url(img/bubbles.png);
+    background-image: url(img/bubbles.svg);
+    background-size: 1.3em 1.3em;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -206,20 +207,21 @@
 }
 
 #roster li .infoicon {
-    width: 18px;
-    height: 18px;
+    width: 1.4em;
+    height: 1.4em;
+    background-size: 1.3em 1.3em;
     background-repeat: no-repeat;
     float: right;
-    margin-top: 0.9em;
+    margin-top: 0.8em;
     margin-right: 0.2em;
 }
 
 #roster li .mobile {
-    background-image: url('img/mobile.png');
+    background-image: url('img/mobile.svg');
 }
 
 #roster li .web {
-    background-image: url('img/earth.png');
+    background-image: url('img/earth.svg');
 }
 
 #roster li .bot {
@@ -227,7 +229,15 @@
 }
 
 #roster li .tune {
-    background-image: url('img/music.png');
+    background-image: url('img/music.svg');
+}
+
+#roster li .jingle {
+    background-image: url('img/call.svg');
+}
+
+#roster li .jingle:hover {
+    cursor: pointer;
 }
 
 #rostermenu {

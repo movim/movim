@@ -23,5 +23,17 @@ class Visio extends WidgetBase
     	$this->addjs('visio.js');
     	$this->addjs('adapter.js');
     	$this->addjs('webrtc.js');
+
+        if(isset($_GET['f'])) {
+            list($jid, $ressource) = explode('/', htmlentities($_GET['f']));
+            
+            $cd = new modl\ContactDAO();
+            $contact = $cd->get($jid);
+
+            $this->view->assign('avatar',$contact->getPhoto('l'));
+            $this->view->assign('name'  ,$contact->getTrueName());
+            $this->view->assign('jid'   ,$jid);
+            $this->view->assign('ressource'   ,$ressource);
+        } 
     }
 }
