@@ -7,6 +7,7 @@
             $this->addCss('css/animations.css');
             $this->addCss('css/style.css');
             $this->addCss('css/forms.css');
+            $this->addCss('css/fonts.css');
 
             $this->addScript('movim_hash.js');
             $this->addScript('movim_utils.js');

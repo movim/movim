@@ -28,9 +28,20 @@ class VisioExt extends WidgetBase
 
     function ajaxSendProposal($proposal) {
         $p = json_decode($proposal);
-        $stj = new SDPtoJingle($p->sdp, $this->user->getLogin());
-        \movim_log(\moxl\cleanXML($stj->generate()));
+
+        $sd = Sessionx::start();
+
+        \movim_log($p->sdp);
         
+        $stj = new SDPtoJingle(
+            $p->sdp,
+            $this->user->getLogin().'/'.$sd->ressource,
+            $p->jid.'/'.$p->ressource);
+        
+        $r = new moxl\JingleSessionInitiate();
+        $r->setTo($p->jid.'/'.$p->ressource)
+          ->setOffer($stj->generate())
+          ->request();
     }
 
     function build() {
