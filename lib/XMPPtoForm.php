@@ -178,8 +178,13 @@ class XMPPtoForm{
                     $this->html .= $value.' ';
                 }
             }
+
+        $this->html .= '"';
+
+        if($s['var'] == 'username')
+            $this->html .= ' pattern="[a-z0-9_-]*" ';
             
-        $this->html .= '" 
+        $this->html .= ' 
             type="'.$type.'" 
             title="'.$s->desc.'" 
             xmpptype="'.$s['type'].'"

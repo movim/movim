@@ -534,8 +534,8 @@ ul li input[type=checkbox]:checked ~ .tabbed {
                         transparent 75%, transparent);
     
     color: #fff;
-    padding: 1em;
-
+    padding: 0.7em;
+    line-height: 1.5em;
     margin: 0.5em 0px;
     clear: both;
     
@@ -735,7 +735,7 @@ dl dd {
 }
 
 .breadcrumb > a:first-child {
-    padding-left: 1.5em;
+    padding-left: 1em;
 }
 
 .breadcrumb > a:not(:first-child):after {
