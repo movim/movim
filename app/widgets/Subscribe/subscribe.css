@@ -1,0 +1,40 @@
+#subscribe .block {
+    border: 1px solid #DDD;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    width: 48%;
+    padding: 1em;
+    display: inline-block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+#subscribe .block:hover {
+    background-color: #EEE;
+    cursor: pointer;
+    border-color: #BBB;
+}
+
+#subscribe .block h1 {
+    padding: 0;
+    line-height: 1em;
+    font-size: 1.2em;
+}
+
+#subscribe .block img.flag {
+    float: right;
+    margin-top: -1em;
+}
+
+#subscribe .block a {
+    text-decoration: none;
+    line-height: 1.5em;
+}
+
+#subscribe .block.star {
+    background-image: url('img/star.svg');
+    background-size: 3em 3em;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+}
