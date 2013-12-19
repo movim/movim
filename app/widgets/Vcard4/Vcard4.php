@@ -28,6 +28,7 @@ class Vcard4 extends WidgetBase
         $this->view->assign('desc',     trim($me->description));
         $this->view->assign('gender',   getGender());
         $this->view->assign('marital',  getMarital());
+        $this->view->assign('countries',getCountries());
         
         $this->view->assign(
             'submit',
@@ -114,6 +115,9 @@ class Vcard4 extends WidgetBase
         $c->gender  = $vcard->gender->value;
         $c->marital = $vcard->marital->value;
 
+        $c->adrlocality     = $vcard->locality->value;
+        $c->adrcountry      = $vcard->country->value;
+
         $c->email   = $vcard->email->value;
         
         $c->description     = trim($vcard->desc->value);
@@ -122,7 +126,7 @@ class Vcard4 extends WidgetBase
         $cd->set($c);
         
         $r = new moxl\Vcard4Set();
-        $r->setData($vcard)->request();
+        $r->setData($c)->request();
 
         $r = new moxl\VcardSet();
         $r->setData($vcard)->request();

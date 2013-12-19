@@ -7,12 +7,14 @@ class SDPtoJingle {
     private $iceufrag;
     private $icepwd;
 
-    function __construct($sdp, $jid = '') {
+    function __construct($sdp, $initiator, $responder) {
         $this->sdp = $sdp;
         $this->jingle = new SimpleXMLElement('<jingle></jingle>');
         $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
         $this->jingle->addAttribute('action','session-initiate');
-        $this->jingle->addAttribute('initiator',$jid);
+        $this->jingle->addAttribute('initiator',$initiator);
+        $this->jingle->addAttribute('responder',$responder);
+        $this->jingle->addAttribute('sid', generateKey(10));
     }
 
     function generate() {
@@ -25,17 +27,24 @@ class SDPtoJingle {
             switch($key) {
                 case 'm':
                     $expl = explode(' ', $line);
+
+                    /* We remove the 'application' content to prevent
+                    issues with some XMPP clients */
+                    if($expl[0] == 'application')
+                        break;
+                    
                     $content = $this->jingle->addChild('content');
                     $content->addAttribute('creator', 'initiator');
                     $content->addAttribute('name', $expl[0]);
 
                     // The description node
                     $description = $content->addChild('description');
-                    $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:11");
+                    $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
+                    $description->addAttribute('media', $expl[0]);
 
                     // The transport node
                     $transport = $content->addChild('transport');
-                    $transport->addAttribute('xmlns', "xmlns='urn:xmpp:jingle:transports:ice-udp:1");
+                    $transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
                     $transport->addAttribute('pwd', $this->icepwd);
                     $transport->addAttribute('ufrag', $this->iceufrag);
                     $m = true;
@@ -66,7 +75,7 @@ class SDPtoJingle {
                                 $candidate->addAttribute('rel-port', $expl[11]);
                         }
 
-                        $expl = explode(':', $exp[1]);
+                        $expl = explode(':', $line);
                         switch($expl[0]) {
                             // We have a new codec !
                             case 'rtpmap':
@@ -97,6 +106,6 @@ class SDPtoJingle {
 
         }
 
-        return $this->jingle->asXML();
+        return substr( $this->jingle->asXML(), strpos($this->jingle->asXML(), "\n")+1 );
     }
 }

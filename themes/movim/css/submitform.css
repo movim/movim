@@ -26,9 +26,9 @@ table#feedsubmitform {
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     display: block;
+    width: 98.5%;
     margin: 0.5em;
     margin-bottom: 0;
-    width: 98.5%;
 }
 
 #feedsubmitform:hover td input[name=title] {
@@ -36,15 +36,13 @@ table#feedsubmitform {
 }
 
 #feedsubmitform textarea {
-    width: 96%;
     border: none;
-    margin: 1em;
     resize: none;
     background-color: white;
     height: 1.3em;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    padding: 0.5em;
+    margin: 0.5em;
+    width: 98%;
 }
 
 #postpreviewcontent {
