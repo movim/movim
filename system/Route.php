@@ -4,7 +4,8 @@ class Route extends \BaseController {
     
     public function __construct() {
         $this->_routes = array(
-                'account'       => array('err'),
+                'account'       => false,
+                'accountnext'   => array('s', 'err'),
                 'visio'         => false,
                 'main'          => false,
                 'news'          => false,
