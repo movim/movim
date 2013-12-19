@@ -74,7 +74,7 @@ legend {
     min-height: 2em;
     border-radius: 0.1em;
     background-color: white;
-    margin: 0px;
+    margin: 0;
     padding: 0% 0.5em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -88,8 +88,8 @@ legend {
 }
 
 .element > *:not(label):not(img):invalid {
-    border: 1px solid red;
-    color: #B70000;
+    box-shadow: none !important;
+    color: red;
 }
 
 .element > textarea, textarea {
@@ -276,13 +276,9 @@ legend {
     display: inline-block;
     
     max-width: 100%;
-    
-    /*text-transform: uppercase;
-    font-weight: bold;*/
+
     font-size: 1em;
     line-height: 2em;
-    /*font-family: helvetica, sans-serif;*/
-    font-family: OpenSans-Reg;
     
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);

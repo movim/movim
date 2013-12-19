@@ -34,6 +34,7 @@ class Login extends WidgetBase {
             'document.getElementById(\'submitb\').click();
             '.$submit.'
             loginButtonSet(\''.t('Connecting...').'\', true);
+            localStorage.username = document.querySelector(\'#login\').value;
             Session.clear();
             this.onclick=null;');
 
