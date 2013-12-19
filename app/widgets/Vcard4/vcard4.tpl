@@ -100,6 +100,31 @@
             </div>
         </fieldset>
 
+        <fieldset>
+            <legend>{$c->t('Geographic Position')}</legend>
+                
+            <div class="element">
+                <label for="url">{$c->t('Locality')}</label>
+                <input type="text" type="locality" name ="locality" class="content" value="{$me->adrlocality}">
+            </div>
+                      
+            <div class="element">
+                <label for="country">{$c->t('Country')}</label>
+                        <div class="select">
+                            <select name="country">
+                                <option value=""></option>
+                                {loop="$countries"}
+                                    <option 
+                                    {if="$value == $me->adrcountry"}
+                                        selected 
+                                    {/if}
+                                    value="{$value}">{$value}</option>
+                                {/loop}
+                        </select>
+                </div>
+            </div>
+
+        </fieldset>
 
         <fieldset>
             <a

@@ -48,10 +48,12 @@ function onOfferCreated(description) {
 }
 
 function sendMessage(offer) {
-  var msgString = JSON.stringify(offer);
-  //Visio.log('C->S: ' + msgString);
-  Visio.log('Send the proposal.');
-  Visio.call(['VisioExt_ajaxSendProposal', msgString]);
+    offer = offer.toJSON();
+    offer.jid = VISIO_JID;
+    offer.ressource = VISIO_RESSOURCE;
+    var msgString = JSON.stringify(offer);
+    Visio.log('Send the proposal.');
+    Visio.call(['VisioExt_ajaxSendProposal', msgString]);
 }
 
 function onSetSessionDescriptionSuccess() {

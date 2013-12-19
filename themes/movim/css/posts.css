@@ -10,6 +10,12 @@
 	-moz-box-sizing: border-box;
 }
 
+.metadata {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .metadata p {
     padding: 0 1em;
     margin-bottom: 1em;
