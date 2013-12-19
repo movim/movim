@@ -7,18 +7,22 @@ body {
     width: 100%;
     font-size: 15px;
     position: relative;
-    left: 0;
+    /*left: 0;*/
     /*transition: left 0.5s ease;*/
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
 }
 
-body.roster {
-    left: -100%;
-}
+body #right #roster { display: none; }
 
-body.infos {
-    left: 100%;
-}
+body.roster #center { display: none; }
+body.roster #navtabs { display: none; }
+body.roster #left   { display: none; }
+body.roster #right #roster { display: block; }
+
+body.infos #center  { display: none; }
+body.infos #navtabs { display: none; }
+body.infos #left    { display: block; }
+body.infos #right #roster { display: none; }
 
 .on_mobile {
     display: inherit;
@@ -30,11 +34,17 @@ h1 {
 
 #right {
     width: 100%;
-    padding: 0px;
+    /*padding: 0px;
     background-image: none;
     position: absolute;
     top: 0;
-    left: 100%;
+    left: 100%;*/
+    /*display: none;*/
+    position: relative;
+}
+
+#roster ul#rosterlist {
+    margin-bottom: 0 !important;
 }
 
 #right:after {
@@ -50,11 +60,13 @@ h1 {
 
 #left {
     width: 100%;
-    position: absolute;
+    display: none;
+    /*position: absolute;
     top: 0;
     left: -100%;
     background-color: #272727;
-    padding-bottom: 6em;
+    padding-bottom: 6em;*/
+    position: relative;
 }
 
 #center {

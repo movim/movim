@@ -99,7 +99,7 @@ body {
 }
 
 #loginpage #loginhelp li {
-    height: 2.5em;
+    min-height: 2.5em;
     background-repeat: no-repeat;
     background-image: url(img/beaker.png);
     padding-left: 2.5em;
@@ -108,7 +108,7 @@ body {
 }
 
 #loginpage .connectform:hover > #loginhelp {
-    height: 9em;
+    height: 11em;
 }
 
 #loginpage #loginhelp li#jabber { background-image: url(img/jabber.png); }
@@ -126,6 +126,10 @@ footer {
     }
 
     #loginhelp {
+        display: none;
+    }
+
+    #loginpage .connectform .create span {
         display: none;
     }
 }
