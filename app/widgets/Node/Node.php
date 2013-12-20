@@ -39,6 +39,18 @@ class Node extends WidgetCommon
         $this->view->assign('getmetadata', $this->genCallAjax('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
         $this->view->assign('hash', md5($_GET['s'].$_GET['n']));
         $this->view->assign('items', $this->prepareNode($_GET['s'], $_GET['n']));
+        
+        $nd = new modl\ItemDAO();
+        $node = $nd->getItem($_GET['s'], $_GET['n']);
+        
+        if($node != null)
+            $title = $node->getName();
+        else
+            $title = $groupid;
+
+        $this->view->assign('title',          $title);
+        
+        $this->view->assign('formpublish', $this->prepareSubmitForm($_GET['s'], $_GET['n']));
     }
     
     function onPubsubSubscribed($params)
@@ -65,8 +77,9 @@ class Node extends WidgetCommon
                 $this->role = $r[1];
         }
 
-        $html = $this->prepareNode($params[1], $params[2]);
-        RPC::call('movim_fill', md5($params[1].$params[2]), $html);
+        if($this->searchSubscription($params[1], $params[2])
+        && ($this->role == 'owner' || $this->role == 'publisher'))
+            RPC::call('movim_toggle_display', '#formpublish');
     }
 
     function onPubsubMetadata($params) {
@@ -143,19 +156,10 @@ class Node extends WidgetCommon
     }
     
     function prepareNode($serverid, $groupid) {
-        $nd = new modl\ItemDAO();
-        $node = $nd->getItem($serverid, $groupid);
-        
-        if($node != null)
-            $title = $node->getName();
-        else
-            $title = $groupid;
-
         $nodeview = $this->tpl();
-        $nodeview->assign('title',          $title);
         $nodeview->assign('serverid',       $serverid);
         $nodeview->assign('groupid',        $groupid);
-        $nodeview->assign('subscribed',         $this->searchSubscription($serverid, $groupid));
+        $nodeview->assign('subscribed',     $this->searchSubscription($serverid, $groupid));
         
         $nodeview->assign('role',           $this->role);
         
@@ -163,12 +167,6 @@ class Node extends WidgetCommon
         $nodeview->assign('getsubscription',$this->genCallAjax('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'"));
         $nodeview->assign('subscribe',      $this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'"));
         $nodeview->assign('unsubscribe',    $this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'"));
-        
-        if($this->searchSubscription($serverid, $groupid)
-        && ($this->role == 'owner' || $this->role == 'publisher'))
-            $submitform = $this->prepareSubmitForm($serverid, $groupid);
-        else
-            $submitform = '';
 
         $nodeview->assign('submitform',     $submitform);
 
