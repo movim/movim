@@ -7,9 +7,6 @@
             <span class="chatbutton arrow" onclick="{$hidetalk} hideTalk(this)"></span>
             <a class="name" href="{$c->route('friend',$contact->jid)}">
                 {$contact->getTrueName()}
-                {if="$publickey"}
-                    - Encrypted
-                {/if}
             </a>
         </div>
         <div class="messages" id="messages{$contact->jid}">
