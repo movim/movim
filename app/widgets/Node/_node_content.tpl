@@ -1,17 +1,4 @@
-<div class="breadcrumb">
-    <a href="{$c->route('explore')}">
-        {$c->t('Explore')}
-    </a>
-    <a href="{$c->route('server', $serverid)}">
-        {$serverid}
-    </a>
-    <a href="{$c->route('node', array($serverid, $groupid))}">
-        {$title}
-    </a>
-    <a>{$c->t('Posts')}</a>
-</div>
-<div class="clear"></div>
-<div class="posthead">
+<div class="posthead padded">
     {if="$subscribed == true"}  
         <a
             href="#" 
@@ -56,9 +43,6 @@
         href="{$c->route('nodeconfig', array($serverid,$groupid))}"
     >{$c->t('Configuration')}</a>
     {/if}
-</div>
-<div class="metadata" id="metadata">
-
 </div>
 
 <div class="popup" id="groupsubscribe">

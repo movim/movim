@@ -496,6 +496,8 @@ class WidgetCommon extends WidgetBase {
     
     function ajaxPublishItem($server, $node, $form)
     {
+        
+        \movim_log($form);
         $content = $form['content'];
         $title   = $form['title'];
 
