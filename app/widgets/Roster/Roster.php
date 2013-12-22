@@ -334,42 +334,6 @@ class Roster extends WidgetBase
         RPC::commit();
     }
     
-    /*function ajaxToggleChat()
-    {
-        //$bool = !currentValue
-        $bool = (Cache::c('chatpop') == true) ? false : true;
-        //toggling value in cache
-        Cache::c('chatpop', $bool);
-        
-        RPC::call('movim_fill', 'chattoggle', $this->prepareChatToggle());
-        
-        RPC::commit();
-    }*/
-    
-    /*function prepareChatToggle()
-    {
-        $chatpop = Cache::c('chatpop');
-        
-        if($chatpop) {
-            $arrow = 'expand';
-            $ptoggle = 'openPopup();';
-        } else {
-            $arrow = 'contract';
-            $ptoggle = 'closePopup();';
-        }
-        
-        $call = $this->genCallAjax('ajaxToggleChat');
-        
-        $html = '
-            <li 
-                onclick="'.$call.' '.$ptoggle.'"
-                title="'.t('Show/Hide').'">
-                <a class="'.$arrow.'" href="#"></a>
-            </li>';
-            
-        return $html;
-    }*/
-    
     /**
      * @brief Show/Hide the Roster
      */

@@ -175,7 +175,7 @@ class XMPPtoForm{
             
             foreach($s->children() as $value){
                 if($value->getName() == "value"){
-                    $this->html .= $value.' ';
+                    $this->html .= $value;
                 }
             }
 
