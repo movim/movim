@@ -19,9 +19,6 @@
              <textarea 
                 rows="1"
                 id="textarea{$contact->jid}"
-             {if="$publickey"}
-                data-publickey="{$publickey}"
-             {/if}
                 onkeypress="
                     if(event.keyCode == 13) {
                         state = 0;

@@ -21,17 +21,42 @@ class Avatar extends WidgetBase
     {
         $this->registerEvent('myavatarvalid', 'onAvatarPublished');
         $this->registerEvent('myavatarinvalid', 'onAvatarNotPublished');
+        $this->registerEvent('myvcard', 'onMyAvatar');
+        
         $this->addcss('avatar.css');
         $this->addjs('avatar.js');        
         
         $cd = new \modl\ContactDAO();
         $me = $cd->get($this->user->getLogin());
-        $this->view->assign('me',       $me);
 
-        $this->view->assign(
+        if($me->photobin == "") {
+            $this->view->assign(
+                'getavatar',
+                $this->genCallAjax('ajaxGetAvatar')
+                );
+            $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
+        } else {
+            $this->view->assign('form', $this->prepareForm($me));
+        }
+    }
+    
+    function onMyAvatar($c) {
+        $html = $this->prepareForm($c);
+
+        RPC::call('movim_fill', 'avatar_form', $html);
+        RPC::commit();
+    }
+
+    function prepareForm($me) {
+        $avatarform = $this->tpl();
+
+        $avatarform->assign('me',       $me);
+        $avatarform->assign(
             'submit',
             $this->genCallAjax('ajaxAvatarSubmit', "movim_form_to_json('avatarform')")
             );
+        
+        return $avatarform->draw('_avatar_form', true);
     }
 
     function onAvatarPublished()
@@ -45,6 +70,13 @@ class Avatar extends WidgetBase
     {
         Notification::appendNotification(t('Avatar Not Updated'), 'error');
         RPC::commit();
+    }
+    
+    function ajaxGetAvatar() {
+        $r = new moxl\AvatarGet();
+        $r->setTo($this->user->getLogin())
+          ->setMe()
+          ->request();
     }
 
     function ajaxAvatarSubmit($avatar)
