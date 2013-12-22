@@ -78,8 +78,10 @@ class Node extends WidgetCommon
         }
 
         if($this->searchSubscription($params[1], $params[2])
-        && ($this->role == 'owner' || $this->role == 'publisher'))
+        && ($this->role == 'owner' || $this->role == 'publisher')) {
             RPC::call('movim_toggle_display', '#formpublish');
+            RPC::call('movim_toggle_display', '#configbutton');
+        }
     }
 
     function onPubsubMetadata($params) {

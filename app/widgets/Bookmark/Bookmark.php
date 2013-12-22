@@ -109,6 +109,7 @@ class Bookmark extends WidgetBase
                         'server'    => $s->server,
                         'title'     => $s->title,
                         'subid'     => $s->subid,
+                        'tags'      => unserialize($s->tags),
                         'node'      => $s->node));   
             }
         }

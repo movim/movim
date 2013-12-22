@@ -114,7 +114,7 @@ class Location extends WidgetBase
     {
         ?>
         <div class="tabelem padded" title="<?php echo t('Location'); ?>" id="location" >
-            <div class="protect orange" title="<?php echo getFlagTitle($color); ?>"></div>
+            <div class="protect orange" title="<?php echo getFlagTitle('orange'); ?>"></div>
             <form>
                 <fieldset>
                     <legend><?php echo t('Location'); ?></legend>
