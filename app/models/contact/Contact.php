@@ -228,6 +228,26 @@ class Contact extends ModlModel {
         $this->tunetitle  = (string)$stanza->items->item->tune->title;
         $this->tunetrack  = (string)$stanza->items->item->tune->track;
     }
+    
+    public function setVcard4($vcard) {
+        $date = strtotime($vcard->bday->date);
+        $this->date = date('Y-m-d', $date);
+         
+        $this->name    = $vcard->nickname->text;
+        $this->fn      = $vcard->fn->text;
+        $this->url     = $vcard->url->uri;
+         
+        $this->gender  = $vcard->gender->sex->text;
+        $this->marital = $vcard->marital->status->text;
+        
+        $this->adrlocality     = $vcard->adr->locality;
+        $this->adrcountry      = $vcard->adr->country;
+        $this->adrpostalcode   = $vcard->adr->code;
+        
+        $this->email   = $vcard->email->text;
+        
+        $this->description     = trim($vcard->note->text);
+    }
 
     public function getPlace() {
         $place = '';

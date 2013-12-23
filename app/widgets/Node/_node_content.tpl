@@ -36,13 +36,12 @@
         onclick="{$getsubscription}"
     >{$c->t('Get Subscription')}</a>
 
-    {if="$role == 'owner'"}  
     <a 
         class="button color icon user"
-        style="float: right;"
+        style="float: right; display: none;"
+        id="configbutton"
         href="{$c->route('nodeconfig', array($serverid,$groupid))}"
     >{$c->t('Configuration')}</a>
-    {/if}
 </div>
 
 <div class="popup" id="groupsubscribe">

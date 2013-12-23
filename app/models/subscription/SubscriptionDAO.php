@@ -8,6 +8,7 @@ class SubscriptionDAO extends ModlSQL {
             update subscription
             set subscription = :subscription,
                 timestamp = :timestamp,
+                tags = :tags,
                 subid = :subid
             where jid = :jid
                 and server = :server
@@ -21,6 +22,7 @@ class SubscriptionDAO extends ModlSQL {
                 'jid'   => $s->jid,
                 'server'=> $s->server,
                 'node'  => $s->node,
+                'tags'  => $s->tags,
                 'subid' => $s->subid
             )
         );
@@ -30,8 +32,8 @@ class SubscriptionDAO extends ModlSQL {
         if(!$this->_effective) {
             $this->_sql = '
                 insert into subscription
-                (jid, server, node, subscription, subid, timestamp)
-                values (:jid, :server, :node, :subscription, :subid, :timestamp)';
+                (jid, server, node, subscription, subid, tags, timestamp)
+                values (:jid, :server, :node, :subscription, :subid, :tags, :timestamp)';
             
             $this->prepare(
                 'Subscription', 
@@ -40,7 +42,8 @@ class SubscriptionDAO extends ModlSQL {
                     'timestamp' => $s->timestamp,
                     'jid'   => $s->jid,
                     'server'=> $s->server,
-                    'node'  =>$s->node,
+                    'node'  => $s->node,
+                    'tags'  => $s->tags,
                     'subid' => $s->subid
                 )
             );

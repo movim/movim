@@ -7,9 +7,6 @@
             <span class="chatbutton arrow" onclick="{$hidetalk} hideTalk(this)"></span>
             <a class="name" href="{$c->route('friend',$contact->jid)}">
                 {$contact->getTrueName()}
-                {if="$publickey"}
-                    - Encrypted
-                {/if}
             </a>
         </div>
         <div class="messages" id="messages{$contact->jid}">
@@ -22,9 +19,6 @@
              <textarea 
                 rows="1"
                 id="textarea{$contact->jid}"
-             {if="$publickey"}
-                data-publickey="{$publickey}"
-             {/if}
                 onkeypress="
                     if(event.keyCode == 13) {
                         state = 0;
