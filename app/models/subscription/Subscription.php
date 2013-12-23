@@ -9,6 +9,7 @@ class Subscription extends ModlModel {
     public $subscription;
     public $subid;
     public $title;
+    public $tags;
     public $timestamp;
     public $name;
     
@@ -27,6 +28,8 @@ class Subscription extends ModlModel {
                 {"type":"string", "size":128 },
             "title" : 
                 {"type":"string", "size":128 },
+            "tags" : 
+                {"type":"text" },
             "timestamp" : 
                 {"type":"date" }
         }';
@@ -41,6 +44,7 @@ class Subscription extends ModlModel {
         $this->jid          = (string)$s->attributes()->jid;
         $this->subscription = (string)$s->attributes()->subscription;
         $this->subid        = (string)$s->attributes()->subid;
+        $this->tags         = serialize(array());
         $this->timestamp    = date('Y-m-d H:i:s', rand(1111111111, 8888888888));
         
         if($this->subid = '')

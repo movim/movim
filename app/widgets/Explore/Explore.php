@@ -40,8 +40,8 @@ class Explore extends WidgetCommon {
         $pubsubs = '';
 
         foreach($servers as $s) {
-            list($type) = explode('.', $s->server);
-            
+            list($type, $server,$ext) = explode('.', $s->server);
+
             switch ($type) {
                 case 'conference':
                     $cat = 'chatroom';
@@ -56,7 +56,10 @@ class Explore extends WidgetCommon {
                     $cat = 'pubsub';
                     break;
                 default:
-                    $cat = null;
+                    if($ext == null)
+                        $cat = null;
+                    else
+                        $cat = 'pubsub';
                     break;
             }
 
