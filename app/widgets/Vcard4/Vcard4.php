@@ -21,21 +21,37 @@ class Vcard4 extends WidgetBase
     {
         $this->registerEvent('myvcard4valid', 'onMyVcard4Received');
         $this->registerEvent('myvcard4invalid', 'onMyVcard4NotReceived');
+        $this->registerEvent('myvcard', 'onMyVcard4');
         
         $cd = new \modl\ContactDAO();
         $me = $cd->get($this->user->getLogin());
-        $this->view->assign('me',       $me);
-        $this->view->assign('desc',     trim($me->description));
-        $this->view->assign('gender',   getGender());
-        $this->view->assign('marital',  getMarital());
-        $this->view->assign('countries',getCountries());
+
+        if($me == null) {
+            $this->view->assign(
+                'getvcard',
+                $this->genCallAjax('ajaxGetVcard')
+                );
+            $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
+        } else {
+            $this->view->assign('form', $this->prepareForm($me));
+        }
+    }
+    
+    function prepareForm($me) {
+        $vcardform = $this->tpl();
+
+        $vcardform->assign('me',       $me);
+        $vcardform->assign('desc',     trim($me->description));
+        $vcardform->assign('gender',   getGender());
+        $vcardform->assign('marital',  getMarital());
+        $vcardform->assign('countries',getCountries());
         
-        $this->view->assign(
+        $vcardform->assign(
             'submit',
             $this->genCallAjax('ajaxVcardSubmit', "movim_form_to_json('vcard4')")
             );
             
-        $this->view->assign(
+        $vcardform->assign(
             'privacy',
             $this->genCallAjax('ajaxChangePrivacy', "this.checked")
             );
@@ -62,26 +78,41 @@ class Vcard4 extends WidgetBase
         }
         for($i=date('o'); $i>= 1920; $i--) { array_push($years, $i); }
 
-        $this->view->assign('days',   $days);
-        $this->view->assign('months', $months);
-        $this->view->assign('years',  $years);
+        $vcardform->assign('days',   $days);
+        $vcardform->assign('months', $months);
+        $vcardform->assign('years',  $years);
+        
+        return $vcardform->draw('_vcard4_form', true);
+    }
+    
+    function onMyVcard4($c) {
+        $html = $this->prepareForm($c);
+
+        Notification::appendNotification(t('Profile Updated'), 'success');
+        
+        RPC::call('movim_fill', 'vcard_form', $html);
+        RPC::commit();
     }
 
-    function onMyVcard4Received()
-    {
+    function onMyVcard4Received() {
         RPC::call('movim_button_reset', '#vcard4validate');
         Notification::appendNotification(t('Profile Updated'), 'success');
         RPC::commit();
     }
     
-    function onMyVcard4NotReceived()
-    {
+    function onMyVcard4NotReceived() {
         Notification::appendNotification(t('Profile Not Updated'), 'error');
         RPC::commit();
     }
+    
+    function ajaxGetVcard() {
+        $r = new moxl\Vcard4Get();
+        $r->setTo($this->user->getLogin())
+          ->setMe()
+          ->request();
+    }
 
-    function ajaxVcardSubmit($vcard)
-    {
+    function ajaxVcardSubmit($vcard) {
         # Format it ISO 8601:
         if($vcard->year->value  != -1 
         && $vcard->month->value != -1 
@@ -132,8 +163,7 @@ class Vcard4 extends WidgetBase
         $r->setData($vcard)->request();
     }
 
-    function ajaxChangePrivacy($value)
-    {
+    function ajaxChangePrivacy($value) {
         if($value == true) {
             \modl\Privacy::set($this->user->getLogin(), 1);
             Notification::appendNotification(t('Your profile is now public'), 'success');
