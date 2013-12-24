@@ -215,9 +215,6 @@ class Chat extends WidgetBase
 
             RPC::commit();
         }
-        
-        //$evt = new Event();
-        //$evt->runEvent('openchat');
     }
 
     /**
@@ -318,18 +315,6 @@ class Chat extends WidgetBase
     {                
         $rd = new \modl\RosterLinkDAO();
         $contact = $rd->get(echapJid($jid));
-
-        /*foreach($contacts as $contact) {
-            if(
-                $contact->jid == echapJid($jid) 
-                && (
-                    (int)$contact->chaton == 1 
-                 || (int)$contact->chaton == 2)
-            ) {
-                $contact->chaton = 0;
-                $rd->setNow($contact);
-            }
-        }*/
         
         $contact->chaton = 0;
         $rd->setNow($contact);
@@ -338,9 +323,6 @@ class Chat extends WidgetBase
                    'chat'.echapJid($jid));
         
         RPC::commit();
-            
-        //$evt = new Event();
-        //$evt->runEvent('closechat');
     }
     
     function ajaxHideTalk($jid)
