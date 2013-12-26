@@ -2,9 +2,6 @@
     <div id="log">
     
     </div>
-	<audio autoplay="true" id="remote-audio">
-	
-	</audio>
 	<video autoplay="true" id="remote-video">
 	
 	</video>
