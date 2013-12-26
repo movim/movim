@@ -2,7 +2,13 @@
     <div id="log">
     
     </div>
-	<video autoplay="true" id="camera-stream">
+	<audio autoplay="true" id="remote-audio">
+	
+	</audio>
+	<video autoplay="true" id="remote-video">
+	
+	</video>
+	<video autoplay="true" id="local-video">
 	
 	</video>
 
