@@ -38,7 +38,7 @@ function createEmailPic($jid, $email) {
     $white = imagecolorallocate($thumb, 255, 255, 255);
     imagefill($thumb, 0, 0, $white);
 
-    $text_color = imagecolorallocate ($im, 0, 0,0);//black text
+    $text_color = imagecolorallocate ($thumb, 0, 0,0);//black text
     imagestring ($thumb, 4, 0, 0,  $email, $text_color);
     
     imagejpeg($thumb, DOCUMENT_ROOT.'/cache/'.$jid.'_email.jpg', 95);

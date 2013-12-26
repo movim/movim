@@ -142,12 +142,11 @@ class Contact extends ModlModel {
     public function set($vcard, $jid) {
         $this->jid = \echapJid($jid);
         
-        $date = strtotime((string)$vcard->vCard->BDAY);
-
-        if($date != false && $date != '' && $date != '-3600') 
-            $this->date = date(DATE_ISO8601, $date);
-        //else
-        //    $this->date = '0000-00-00';
+        
+        if(isset($vcard->vCard->BDAY))
+            $this->date = (string)$vcard->vCard->BDAY;
+        else
+            $this->date = null;
         
         $this->name = (string)$vcard->vCard->NICKNAME;
         $this->fn = (string)$vcard->vCard->FN;
@@ -230,8 +229,10 @@ class Contact extends ModlModel {
     }
     
     public function setVcard4($vcard) {
-        $date = strtotime($vcard->bday->date);
-        $this->date = date('Y-m-d', $date);
+        if(isset($vcard->bday->date))
+            $this->date    = $vcard->bday->date;
+        else
+            $this->date    = null;
          
         $this->name    = $vcard->nickname->text;
         $this->fn      = $vcard->fn->text;

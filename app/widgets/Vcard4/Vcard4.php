@@ -25,7 +25,7 @@ class Vcard4 extends WidgetBase
         
         $cd = new \modl\ContactDAO();
         $me = $cd->get($this->user->getLogin());
-
+        
         if($me == null) {
             $this->view->assign(
                 'getvcard',
@@ -135,8 +135,7 @@ class Vcard4 extends WidgetBase
         $c->jid     = $this->user->getLogin();
         
         if(isset($vcard->date->value)) {
-            $date = strtotime($vcard->date->value);
-            $c->date = date('Y-m-d', $date);
+            $c->date = $vcard->date->value;
         } 
         
         $c->name    = $vcard->name->value;
