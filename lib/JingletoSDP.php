@@ -5,8 +5,10 @@ class JingletoSDP {
     private $jingle;
     private $jid;
 
-    private $iceufrag;
-    private $icepwd;
+    private $iceufrag = false;
+    private $icepwd   = false;
+    
+    private $valid    = false;
 
     function __construct($jingle) {
         $this->jingle = $jingle;
@@ -37,12 +39,13 @@ class JingletoSDP {
                 $c .= 
                     'a=candidate:'.$candidate->attributes()->component.
                     ' '.$candidate->attributes()->foundation.
-                    ' '.$candidate->attributes()->protocol.
+                    ' '.strtoupper($candidate->attributes()->protocol).
                     ' '.$candidate->attributes()->priority.
                     ' '.$candidate->attributes()->ip.
                     ' '.$candidate->attributes()->port.
-                    ' typ '.$candidate->attributes()->type;
-            
+                    ' typ '.$candidate->attributes()->type.
+                    ' generation '.$candidate->attributes()->generation;
+
                 if($port == false)
                     $port = $candidate->attributes()->port;
                 
@@ -56,6 +59,8 @@ class JingletoSDP {
                 }
                 
                 $c .= "\n";
+                
+                $this->valid = true;
             }
             
             $this->sdp .= 
@@ -66,9 +71,17 @@ class JingletoSDP {
                 "\n".
                 'c=IN IP4 '.$ip."\n".
                 $p.
-                'a=setup:actpass'."\n".
-                $c.
-                'a=rtcp-mux'."\n";
+                //'a=setup:actpass'."\n".
+                $c;
+                //'a=rtcp-mux'."\n";
+        }
+        
+        if($this->iceufrag && $this->icepwd) {
+            $ice = 
+                'a=ice-ufrag:'.$this->iceufrag."\n".
+                'a=ice-pwd:'.$this->icepwd."\n";
+        } else {
+            $ice = '';
         }
         
         $this->sdp = 
@@ -76,11 +89,13 @@ class JingletoSDP {
             'o=Mozilla-SIPUA-29.0a1 2019 0 IN IP4 0.0.0.0'."\n".
             's=SIP Call'."\n".
             't=0 0'."\n".
-            'a=ice-ufrag:'.$this->iceufrag."\n".
-            'a=ice-pwd:'.$this->icepwd."\n".
+            $ice.
             'a=fingerprint:sha-256 D4:E6:DC:30:3F:63:0A:55:8D:65:F6:7C:F7:81:47:F8:3D:45:74:EE:74:61:CB:9A:F5:4F:60:79:F2:2D:D2:20'."\n".
             $this->sdp;
-        
-        return $this->sdp;
+            
+        if($this->valid)
+            return $this->sdp;
+        else
+            return false;
     }
 }

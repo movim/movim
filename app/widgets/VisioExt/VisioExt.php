@@ -22,17 +22,20 @@ class VisioExt extends WidgetBase
 {
     function WidgetLoad() {
         $this->addjs('visioext.js');
-        $this->registerEvent('jinglesessioninitiate', 'onSessionInitiate');
-        $this->registerEvent('jinglesessionterminate', 'onSessionTerminate');
-        $this->registerEvent('jinglesessionaccept', 'onSessionAccept');
+        $this->registerEvent('jinglesessioninitiate',   'onSessionInitiate');
+        $this->registerEvent('jinglesessionterminate',  'onSessionTerminate');
+        $this->registerEvent('jinglesessionaccept',     'onSessionAccept');
+        $this->registerEvent('jingletransportinfo',     'onTransportInfo');
     }
     
     function onSessionInitiate($jingle) {
         $jts = new \JingletoSDP($jingle);
         $sdp = $jts->generate();
         
-        RPC::call('Popup.open', (string)$jingle->attributes()->initiator);
-        RPC::call('Popup.call', 'onOffer', $sdp);
+        if($sdp) {        
+            RPC::call('Popup.open', (string)$jingle->attributes()->initiator);
+            RPC::call('Popup.call', 'onOffer', $sdp);
+        }
     }
     
     function onSessionAccept($jingle) {
@@ -42,8 +45,14 @@ class VisioExt extends WidgetBase
         RPC::call('Popup.call', 'onAccept', $sdp);        
     }
     
+    function onTransportInfo($jingle) {
+        $jts = new \JingletoSDP($jingle);
+        $sdp = $jts->generate();
+        \movim_log($sdp);        
+    }
+    
     function onSessionTerminate($jingle) {
-        //\movim_log($jingle);
+
     }
 
     function ajaxSendProposal($proposal) {
