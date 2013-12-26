@@ -16,6 +16,7 @@ var sdpConstraints = {'mandatory': {
 
 function onIceCandidate(event) {
     Visio.log('onIceCandidate');
+    console.log(event);
     Visio.log(event);
 }
 
@@ -116,6 +117,7 @@ function onAccept(offer) {
     offer = offer[0];
     
     Visio.log(offer);
+    console.log(offer);
     
     if(offer != null) {
         var desc = new RTCSessionDescription();
