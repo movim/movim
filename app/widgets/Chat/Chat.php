@@ -131,6 +131,8 @@ class Chat extends WidgetBase
             RPC::call('scrollTalk',
                            'messages'.$message->jidfrom);
         }
+        
+        RPC::commit();
     }
     
     function onMessagePublished($jid)
