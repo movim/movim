@@ -7,11 +7,11 @@ class SDPtoJingle {
     private $iceufrag;
     private $icepwd;
 
-    function __construct($sdp, $initiator, $responder) {
+    function __construct($sdp, $initiator, $responder, $action) {
         $this->sdp = $sdp;
         $this->jingle = new SimpleXMLElement('<jingle></jingle>');
         $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
-        $this->jingle->addAttribute('action','session-initiate');
+        $this->jingle->addAttribute('action',$action);
         $this->jingle->addAttribute('initiator',$initiator);
         $this->jingle->addAttribute('responder',$responder);
         $this->jingle->addAttribute('sid', generateKey(10));
@@ -59,7 +59,7 @@ class SDPtoJingle {
                             
                             $candidate = $transport->addChild('candidate');
                             
-                            $candidate->addAttribute('componenent', $candidexpl[1]);
+                            $candidate->addAttribute('component', $candidexpl[1]);
                             $candidate->addAttribute('foundation', $expl[1]);
                             $candidate->addAttribute('generation', 0);
                             $candidate->addAttribute('protocol', $expl[2]);
