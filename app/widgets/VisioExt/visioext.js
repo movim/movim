@@ -51,11 +51,13 @@ var Popup = {
     
     call: function(args) {
         if( this.win && !this.win.closed ) {
-            console.log('Calling the Popup');
             // The popup is open so call it
             var func = args[0];
             args.shift();
             var params = args;
+            
+            console.log('Calling the Popup');
+            console.log(args);
             
             this.win[func](params);
         } else {
