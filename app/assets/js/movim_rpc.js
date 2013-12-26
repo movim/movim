@@ -101,9 +101,14 @@ function MovimRPC()
             for(h = 0; h < funcalls.length; h++) {
                 var funcall = funcalls[h];
 
-                if(funcall.func) {
+                if(funcall.func != null) {
+                    var funcs = funcall.func.split('.');
+                    
                     try {
-                        window[funcall.func](funcall.params);
+                        if(funcs.length == 1)
+                            window[funcs[0]](funcall.params);
+                        else if(funcs.length == 2)
+                            window[funcs[0]][funcs[1]](funcall.params);
                     }
                     catch(err) {
                         console.log("Error caught: " + err.toString() + " - " +funcall.func);
