@@ -349,6 +349,7 @@
 }
 
 .post table#commentsubmit {
+    border: 1px solid #DDD;
     border-spacing: 0px;
     background-color: white;
     width: 100%;

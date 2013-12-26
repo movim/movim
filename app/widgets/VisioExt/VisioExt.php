@@ -18,26 +18,63 @@
  * See COPYING for licensing information.
  */
 
-//require_once(APP_PATH . "widgets/Chat/Chat.php");
-
 class VisioExt extends WidgetBase
 {
     function WidgetLoad() {
         $this->addjs('visioext.js');
+        $this->registerEvent('jinglesessioninitiate', 'onSessionInitiate');
+        $this->registerEvent('jinglesessionterminate', 'onSessionTerminate');
+        $this->registerEvent('jinglesessionaccept', 'onSessionAccept');
+    }
+    
+    function onSessionInitiate($jingle) {
+        $jts = new \JingletoSDP($jingle);
+        $sdp = $jts->generate();
+        
+        RPC::call('Popup.open', (string)$jingle->attributes()->initiator);
+        RPC::call('Popup.call', 'onOffer', $sdp);
+    }
+    
+    function onSessionAccept($jingle) {
+        $jts = new \JingletoSDP($jingle);
+        $sdp = $jts->generate();
+        
+        RPC::call('Popup.call', 'onAccept', $sdp);        
+    }
+    
+    function onSessionTerminate($jingle) {
+        //\movim_log($jingle);
     }
 
     function ajaxSendProposal($proposal) {
         $p = json_decode($proposal);
 
         $sd = Sessionx::start();
-
-        \movim_log($p->sdp);
         
         $stj = new SDPtoJingle(
             $p->sdp,
             $this->user->getLogin().'/'.$sd->ressource,
-            $p->jid.'/'.$p->ressource);
+            $p->jid.'/'.$p->ressource,
+            'session-initiate');
         
+        $r = new moxl\JingleSessionInitiate();
+        $r->setTo($p->jid.'/'.$p->ressource)
+          ->setOffer($stj->generate())
+          ->request();
+    }
+
+    function ajaxSendAcceptance($proposal) {
+        
+        $p = json_decode($proposal);
+
+        $sd = Sessionx::start();
+        
+        $stj = new SDPtoJingle(
+            $p->sdp,
+            $this->user->getLogin().'/'.$sd->ressource,
+            $p->jid.'/'.$p->ressource,
+            'session-accept');
+            
         $r = new moxl\JingleSessionInitiate();
         $r->setTo($p->jid.'/'.$p->ressource)
           ->setOffer($stj->generate())

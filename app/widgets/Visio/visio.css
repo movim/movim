@@ -21,13 +21,28 @@ body {
     position: absolute;
     bottom: 0;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     padding-top: 0.5em;
     width: 100%;
 }
 
-#visio #camera-stream {
+#visio #remote-video,
+#visio #local-video {
     width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transition: width 0.5s ease;
+}
+
+#visio #local-video.tiny {
+    width: 20%;
+    bottom: 3.5em;
+}
+
+#visio #local-video.tiny:hover {
+    width: 50%;
+    bottom: 3.5em;
 }
 
 #visio #log {
@@ -46,8 +61,17 @@ body {
     position: absolute;
     left: 50%;
     top: 50%;
+    max-width: 200px;
     margin-left: -100px;
     margin-top: -150px;
+}
+
+#visio #avatar img {
+    width: 100%;
+}
+
+#visio #avatar.tiny {
+    display: none;
 }
 
 #visio #avatar .name {

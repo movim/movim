@@ -178,8 +178,9 @@ class Bootstrap {
         // XMPPtoForm lib
         require_once(LIB_PATH . "XMPPtoForm.php");
         
-        // SDPtoJingle lib
+        // SDPtoJingle and JingletoSDP lib :)
         require_once(LIB_PATH . "SDPtoJingle.php");
+        require_once(LIB_PATH . "JingletoSDP.php");
 
         // Markdown lib
         require_once(LIB_PATH . "Markdown.php");
