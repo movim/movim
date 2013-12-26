@@ -47,6 +47,12 @@ class SDPtoJingle {
                     $transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
                     $transport->addAttribute('pwd', $this->icepwd);
                     $transport->addAttribute('ufrag', $this->iceufrag);
+                    
+                    $fingerprint = $transport->addChild('fingerprint', $this->icefingerprint);
+                    $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");
+                    $fingerprint->addAttribute('hash', $this->icefingerprinthash);
+                    $fingerprint->addAttribute('setup', 'actpass');
+
                     $m = true;
                     break;
                 case 'a':
@@ -98,7 +104,14 @@ class SDPtoJingle {
                             case 'ice-ufrag':
                                 $this->iceufrag = $expl[1];
                                 break;
-                           
+                            case 'fingerprint':
+                                array_shift($expl);
+                                $finger = implode(':', $expl);
+                                
+                                list($hash, $value) = explode(' ', $finger);
+                                $this->icefingerprint = $value;
+                                $this->icefingerprinthash = $hash;                        
+                                break;
                         }
                     }
                     break;

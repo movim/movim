@@ -35,7 +35,6 @@ class Login extends WidgetBase {
             '.$submit.'
             loginButtonSet(\''.t('Connecting...').'\', true);
             localStorage.username = document.querySelector(\'#login\').value;
-            Session.clear();
             this.onclick=null;');
 
         $sd = new modl\SessionxDAO();
