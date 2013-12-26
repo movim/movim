@@ -8,7 +8,6 @@
     <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
 	<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
 	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
-	<script src="<?php echo BASE_URI; ?>app/assets/js/sjcl.js"></script>
     
     <meta name="viewport" content="width=device-width, user-scalable=no";>
     <?php
