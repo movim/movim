@@ -4,7 +4,6 @@
 <?php $this->widget('Presence');?>
 <?php $this->widget('Chat');?>
 <?php $this->widget('VisioExt');?>
-<?php $this->widget('Ack');?>
     
 <div id="main">    
     <div id="left">

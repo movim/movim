@@ -72,6 +72,7 @@
 
         <div id="content">
             <?php $this->widget('Notification');?>
+            <?php $this->widget('Ack');?>
             <?php $this->content();?>
           
             <footer>
