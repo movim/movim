@@ -390,3 +390,28 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+.post .spoiler > * {
+    opacity: 0;
+}
+
+.post .spoiler.show > * {
+    opacity: 1;
+}
+
+.post .spoiler:before {
+    content: "Spoiler +";
+    padding: 0.5em;
+    margin: 0.5em 0;
+    color: #777;
+    border-bottom: 1px solid #BBB;
+    display: block;
+}
+
+.post .spoiler.show:before {
+    content: "Spoiler -";
+}
+
+.post .spoiler:hover {
+    cursor: pointer;
+}
