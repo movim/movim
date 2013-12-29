@@ -33,6 +33,11 @@ class WidgetCommon extends WidgetBase {
 
         if($post->title)
             $title = $post->title;
+            
+        $spoiler = false;
+            
+        if(current(explode('.', $post->jid)) == 'nsfw')
+            $spoiler = ' movim_toggle_class(this, \'show\')';
                 
         if($this->user->getLogin() == $post->aid) {
             $class = 'me ';
@@ -119,6 +124,7 @@ class WidgetCommon extends WidgetBase {
         $view->assign('id',         $post->nodeid);
         $view->assign('class',      $class);
         $view->assign('access',     $access);
+        $view->assign('spoiler',    $spoiler);
         $view->assign('flagtitle',  getFlagTitle($flagcolor));
         if(filter_var($post->jid, FILTER_VALIDATE_EMAIL))
             $view->assign('friend',     Route::urlize('friend', $post->jid));

@@ -3,6 +3,21 @@
  * 
  * This file include some useful functions used quite everywhere in Movim
  */ 
+ 
+function movim_check_string(str) {
+    if (typeof str == 'object') {
+        return str instanceof String;
+    } else {
+        return typeof str == 'string';
+    }
+}
+
+function movim_get_node(str) {
+    if(movim_check_string(str))
+        return document.querySelector(str);
+    else
+        return str;
+}
 
 /**
  * @brief Force Movim to go back to the login page
@@ -118,7 +133,7 @@ function movim_textarea_autoheight(textbox) {
  * @param string the class to check 
  */
 function movim_has_class(element,classname) {
-    var element = document.querySelector(element);
+    var element = movim_get_node(element);
     return element.className.match(new RegExp('(\\s|^)'+classname+'(\\s|$)'));
 }
 
@@ -129,7 +144,7 @@ function movim_has_class(element,classname) {
  */
 function movim_add_class(element,classname) {
     if(!movim_has_class(element,classname)) {
-        var element = document.querySelector(element);
+        var element = movim_get_node(element);
         element.className += " "+classname;
     }
 }
@@ -142,7 +157,7 @@ function movim_add_class(element,classname) {
 function movim_remove_class(element,classname) {
   if (movim_has_class(element,classname)) {
       var reg = new RegExp('(\\s|^)'+classname+'(\\s|$)');
-      var element = document.querySelector(element);
+      var element = movim_get_node(element);
       element.className=element.className.replace(reg,' ');
   }
 }
@@ -182,7 +197,7 @@ function movim_button_reset(element) {
  * @param string the selector of the element
  */
 function movim_toggle_display(element) {
-    var node = document.querySelector(element);
+    var node = movim_get_node(element);
     if(node.style.display == 'block')
         node.style.display = 'none';
     else

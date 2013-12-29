@@ -84,7 +84,7 @@ class Chat extends WidgetBase
         $rc = new \modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
 
-        if($message->session != $message->jidfrom)
+        if($contact != null && $message->session != $message->jidfrom)
             RPC::call(
                 'notify',
                 $contact->getTrueName(),

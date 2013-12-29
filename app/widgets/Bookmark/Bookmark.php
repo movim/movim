@@ -226,12 +226,21 @@ class Bookmark extends WidgetBase
         $sd = new \modl\SubscriptionDAO();
         
         if($sd != null && $sd->getSubscribed() != null) {
+            $server = null;
         
             foreach($sd->getSubscribed() as $s) {
                 if($s->name != null)
                     $name = $s->name;
                 else
                     $name = $s->node;
+                    
+                if($server != $s->server) {
+                    $subscription .= '
+                            <a href="'.Route::urlize('server', array($s->server)).'"><h3>'.
+                                $s->server.' 
+                            </h3></a>'; 
+                    $server = $s->server;
+                }
                 
                 $subscription .= '
                     <li>
@@ -280,7 +289,7 @@ class Bookmark extends WidgetBase
             
         if($conference != '') {
             $html .= '
-                <h3>'.t('Conferences').' - '.$conferencenum.'</h3>
+                <h2>'.t('Conferences').' - '.$conferencenum.'</h2>
                 <ul>'.
                     $conference.'
                 </ul>';
@@ -288,7 +297,7 @@ class Bookmark extends WidgetBase
         
         if($subscription != '') {
             $html .= '
-                <h3>'.t('Groups').' - '.$subscriptionnum.'</h3>
+                <h2>'.t('Groups').' - '.$subscriptionnum.'</h2>
                 <ul>'.
                     $subscription.'
                 </ul>';
@@ -296,7 +305,7 @@ class Bookmark extends WidgetBase
         
         if($url != '') {
             $html .= '                
-                <h3>'.t('Links').' - '.$urlnum.'</h3>
+                <h2>'.t('Links').' - '.$urlnum.'</h2>
                 <ul>'.
                     $url.'
                 </ul>';

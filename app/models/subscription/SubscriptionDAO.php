@@ -88,7 +88,9 @@ class SubscriptionDAO extends ModlSQL {
                 subscription.server, 
                 subscription.node, 
                 subscription.jid, 
-                subscription, item.name';
+                subscription, item.name
+            order by 
+                subscription.server';
         
         $this->prepare(
             'Subscription', 
