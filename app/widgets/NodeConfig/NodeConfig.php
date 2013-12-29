@@ -104,13 +104,6 @@ class NodeConfig extends WidgetBase
     }
     
     function ajaxSubmitConfig($data, $server, $node){
-        if(isset($data['pubsub#access_model'])) {
-            if($data['pubsub#access_model'] == 'open')
-                \modl\Privacy::set($server.$node, 1);
-            else
-                \modl\Privacy::set($server.$node, 0);
-        }
-        
         $r = new moxl\PubsubSetConfig();
         $r->setTo($server)
           ->setNode($node)
