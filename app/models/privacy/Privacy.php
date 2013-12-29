@@ -30,4 +30,9 @@ class Privacy extends ModlModel {
         $pd = new PrivacyDAO();
         $pd->set($p);
     }
+
+    static function get($key) {
+        $pd = new PrivacyDAO();
+        return (int)$pd->get($key)->value;
+    }
 }
