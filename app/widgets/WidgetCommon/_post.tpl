@@ -14,7 +14,11 @@
             </span>
             <!--{$author}-->
         </div>
-        <div class="content">
+        <div class="content
+            {if="$spoiler != false"}
+                spoiler
+            {/if}
+        " onclick="{$spoiler}">
         {$content}
         </div>
         {$tags}
