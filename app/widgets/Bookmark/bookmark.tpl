@@ -4,7 +4,7 @@
     }
 </script>
 
-<h2>{$c->t('Bookmarks')}</h2>
+<!--<h2>{$c->t('Bookmarks')}</h2>-->
 
 <div id="bookmarks">
     {$preparebookmark}
