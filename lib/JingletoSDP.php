@@ -15,24 +15,32 @@ class JingletoSDP {
     }
 
     function generate() {
+		//Origin
+		$username = substr($this->jingle['initiator'], 0, strpos($this->jingle['initiator'], '@'));
+		$sessid = $this->jingle['sid'];
+		
         foreach($this->jingle->children() as $content) {
             $this->icepwd = $content->transport->attributes()->pwd;
             $this->iceufrag = $content->transport->attributes()->ufrag;
             
+			//payload and candidate
             $p = $c = '';
             $priority = '';
             $port = false;
             $ip = false;
             
             foreach($content->description->children() as $payload) {
-                $p .= 
-                    'a=rtpmap'.
-                    ':'.$payload->attributes()->id.
-                    ' '.$payload->attributes()->name.
-                    '/'.$payload->attributes()->clockrate.
-                    "\n";
-                    
-                $priority .= ' '.$payload->attributes()->id;
+				//paylods without clockrate are striped out
+				if($payload->attributes()->clockrate){
+					$p .= 
+						'a=rtpmap'.
+						':'.$payload->attributes()->id.
+						' '.$payload->attributes()->name.
+						'/'.$payload->attributes()->clockrate.
+						"\n";
+						
+					$priority .= ' '.$payload->attributes()->id;
+				}
             }
                 
             foreach($content->transport->children() as $candidate) {
@@ -86,8 +94,8 @@ class JingletoSDP {
         
         $this->sdp = 
             'v=0'."\n".
-            'o=Mozilla-SIPUA-29.0a1 2019 0 IN IP4 0.0.0.0'."\n".
-            's=SIP Call'."\n".
+            'o='.$username.' '.substr(base_convert($sessid, 30, 10), 0, 6).' 0 IN IP4 0.0.0.0'."\n".
+            's=TestCall'."\n".
             't=0 0'."\n".
             $ice.
             'a=fingerprint:sha-256 D4:E6:DC:30:3F:63:0A:55:8D:65:F6:7C:F7:81:47:F8:3D:45:74:EE:74:61:CB:9A:F5:4F:60:79:F2:2D:D2:20'."\n".
