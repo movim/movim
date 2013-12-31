@@ -15,32 +15,31 @@ class JingletoSDP {
     }
 
     function generate() {
-		//Origin
+
 		$username = substr($this->jingle['initiator'], 0, strpos($this->jingle['initiator'], '@'));
 		$sessid = $this->jingle['sid'];
-		
         foreach($this->jingle->children() as $content) {
             $this->icepwd = $content->transport->attributes()->pwd;
             $this->iceufrag = $content->transport->attributes()->ufrag;
             
-			//payload and candidate
+            //payload and candidate
             $p = $c = '';
             $priority = '';
             $port = false;
             $ip = false;
             
             foreach($content->description->children() as $payload) {
-				//paylods without clockrate are striped out
-				if($payload->attributes()->clockrate){
-					$p .= 
-						'a=rtpmap'.
-						':'.$payload->attributes()->id.
-						' '.$payload->attributes()->name.
-						'/'.$payload->attributes()->clockrate.
-						"\n";
-						
-					$priority .= ' '.$payload->attributes()->id;
-				}
+                //paylods without clockrate are striped out
+                if($payload->attributes()->clockrate){
+                    $p .= 
+                        'a=rtpmap'.
+                        ':'.$payload->attributes()->id.
+                        ' '.$payload->attributes()->name.
+                        '/'.$payload->attributes()->clockrate.
+                        "\n";
+                        
+                    $priority .= ' '.$payload->attributes()->id;
+                }
             }
                 
             foreach($content->transport->children() as $candidate) {

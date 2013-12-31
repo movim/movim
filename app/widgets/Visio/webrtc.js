@@ -100,6 +100,8 @@ function onSetRemoteSessionDescriptionError(error) {
 function onOffer(offer) {
     offer = offer[0];
     
+    console.log(offer);
+    
     if(!pc)
         init(false);
     
@@ -205,4 +207,4 @@ function init(isCaller) {
     Visio.log(pc);
 }
 
-init(true);
+//init(true);
