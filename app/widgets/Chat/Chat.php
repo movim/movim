@@ -515,8 +515,8 @@ class Chat extends WidgetBase
         }
         
         $style = '';
-        $panelstyle='';
-        $tabstyle ='';
+        $panelstyle= '';
+        $tabstyle = '';
 
         if($contact->chaton == 2) {
             $tabstyle = ' style="display: none;" ';
@@ -577,9 +577,7 @@ class Chat extends WidgetBase
                 "'".$contact->jid."'"
             )
         );
-        
 
-        
         $html = $chatview->draw('_chat_contact', true);
 
         return $html;
