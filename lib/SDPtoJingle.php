@@ -19,15 +19,14 @@ class SDPtoJingle {
 
     function generate() {
         $arr = explode("\r", str_replace("\n", "", $this->sdp));
-
         $m = false;
 
         foreach($arr as $l) {
             list($key, $line) = explode('=', $l);
-            switch($key) {
+            switch(trim($key)) { /*TODO: find a cleaner solution to remove the space before keys ?*/
                 case 'm':
                     $expl = explode(' ', $line);
-
+                    
                     /* We remove the 'application' content to prevent
                     issues with some XMPP clients */
                     if($expl[0] == 'application')
@@ -73,7 +72,7 @@ class SDPtoJingle {
                             $candidate->addAttribute('ip', $expl[4]);
                             $candidate->addAttribute('port', $expl[5]);
                             $candidate->addAttribute('type', $expl[7]);
-                            $candidate->addAttribute('id', \generateKey(10));
+                            $candidate->addAttribute('id', generateKey(10));
 
                             if(isset($expl[9]))
                                 $candidate->addAttribute('rel-addr', $expl[9]);
@@ -118,7 +117,6 @@ class SDPtoJingle {
             }
 
         }
-
         return substr( $this->jingle->asXML(), strpos($this->jingle->asXML(), "\n")+1 );
     }
 }
