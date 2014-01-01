@@ -73,7 +73,6 @@ class VisioExt extends WidgetBase
     }
 
     function ajaxSendAcceptance($proposal) {
-        
         $p = json_decode($proposal);
 
         $sd = Sessionx::start();
