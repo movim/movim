@@ -66,10 +66,12 @@ function onAnswerCreated(offer) {
     sendMessage(offer, true);    
 }
 
-function sendMessage(offer, accept) {
-    offer = offer.toJSON();
+function sendMessage(msg, accept) {
+    offer = {};
+    offer.sdp = msg.sdp;
     offer.jid = VISIO_JID;
     offer.ressource = VISIO_RESSOURCE;
+    
     var msgString = JSON.stringify(offer);
     
     if(accept) {
@@ -206,5 +208,3 @@ function init(isCaller) {
 
     Visio.log(pc);
 }
-
-//init(true);

@@ -14,7 +14,8 @@
         <span class="name">{$name}</span>
     </div>
     <div class="menu">
-        <a class="button color green merged left icon call">Call</a><a
+        <a class="button color green merged left icon call" 
+           onclick="init(true);">Call</a><a
         class="button color red merged right icon hang-up">Hang Up</a>
 
         <a id="toggle-screen" class="button icon expand color blue alone"></a>
