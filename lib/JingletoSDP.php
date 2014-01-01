@@ -15,10 +15,9 @@ class JingletoSDP {
     }
 
     function generate() {
-        //Origin
-        $username = substr($this->jingle['initiator'], 0, strpos($this->jingle['initiator'], '@'));
-        $sessid = $this->jingle['sid'];
 
+		$username = substr($this->jingle['initiator'], 0, strpos($this->jingle['initiator'], '@'));
+		$sessid = $this->jingle['sid'];
         foreach($this->jingle->children() as $content) {
             $this->icepwd = $content->transport->attributes()->pwd;
             $this->iceufrag = $content->transport->attributes()->ufrag;
