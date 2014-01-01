@@ -208,5 +208,3 @@ function init(isCaller) {
 
     Visio.log(pc);
 }
-
-init(true);
