@@ -23,8 +23,11 @@ class JingletoSDP {
         foreach($this->jingle->children() as $content) {
             $this->icepwd = $content->transport->attributes()->pwd;
             $this->iceufrag = $content->transport->attributes()->ufrag;
-            $this->icefingerprint = $content->transport->fingerprint;
-            $this->icefingerprinthash = $content->transport->fingerprint->attributes()->hash;
+            
+            if($content->transport->fingerprint) {
+                $this->icefingerprint = $content->transport->fingerprint;
+                $this->icefingerprinthash = $content->transport->fingerprint->attributes()->hash;
+            }
             
             //payload and candidate
             $p = $c = '';
@@ -97,9 +100,14 @@ class JingletoSDP {
         if($this->iceufrag && $this->icepwd) {
             $ice = 
                 'a=ice-ufrag:'.$this->iceufrag."\n".
-                'a=ice-pwd:'.$this->icepwd."\n".
-                'a=fingerprint:'.$this->icefingerprinthash.' '.$this->icefingerprint."\n";
-
+                'a=ice-pwd:'.$this->icepwd."\n";
+            if($this->icefingerprint && $this->icefingerprinthash)
+                $ice .= 
+                    'a=fingerprint:'.
+                    $this->icefingerprinthash.
+                    ' '.
+                    $this->icefingerprint.
+                    "\n";
         } else {
             $ice = '';
         }
