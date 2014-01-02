@@ -26,6 +26,8 @@ class VisioExt extends WidgetBase
         $this->registerEvent('jinglesessionterminate',  'onSessionTerminate');
         $this->registerEvent('jinglesessionaccept',     'onSessionAccept');
         $this->registerEvent('jingletransportinfo',     'onTransportInfo');
+        
+        $this->registerEvent('jinglecreationsuccess',     'onCreationSuccess');
     }
     
     function onSessionInitiate($jingle) {
