@@ -38,6 +38,8 @@ class SDPtoJingle {
                     $content->addAttribute('creator', 'initiator');
                     $content->addAttribute('name', $expl[0]);
 
+                    $this->jingle->addChild('sdp', $this->sdp);
+
                     // The description node
                     $description = $content->addChild('description');
                     $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
