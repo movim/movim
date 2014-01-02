@@ -7,6 +7,8 @@ class JingletoSDP {
 
     private $iceufrag = false;
     private $icepwd   = false;
+    private $icefingerprint     = false;
+    private $icefingerprinthash = false;
     
     private $valid    = false;
 
@@ -21,6 +23,11 @@ class JingletoSDP {
         foreach($this->jingle->children() as $content) {
             $this->icepwd = $content->transport->attributes()->pwd;
             $this->iceufrag = $content->transport->attributes()->ufrag;
+            
+            if($content->transport->fingerprint) {
+                $this->icefingerprint = $content->transport->fingerprint;
+                $this->icefingerprinthash = $content->transport->fingerprint->attributes()->hash;
+            }
             
             //payload and candidate
             $p = $c = '';
@@ -50,7 +57,7 @@ class JingletoSDP {
             }
                 
             foreach($content->transport->children() as $candidate) {
-                if($candidate->getName() != "security"){
+                if($candidate->getName() == 'candidate'){
                     $c .= //http://tools.ietf.org/html/rfc5245#section-15
                         'a=candidate:'.$candidate->attributes()->foundation.
                         ' '.$candidate->attributes()->component.
@@ -67,7 +74,7 @@ class JingletoSDP {
                         $ip = $candidate->attributes()->ip;
                     
                     if($candidate->attributes()->type == 'srflx') {
-                       $c .= 
+                        $c .= 
                             ' raddr '.$candidate->attributes()->{'rel-addr'}.
                             ' rport '.$candidate->attributes()->{'rel-port'};
                     }
@@ -94,6 +101,13 @@ class JingletoSDP {
             $ice = 
                 'a=ice-ufrag:'.$this->iceufrag."\n".
                 'a=ice-pwd:'.$this->icepwd."\n";
+            if($this->icefingerprint && $this->icefingerprinthash)
+                $ice .= 
+                    'a=fingerprint:'.
+                    $this->icefingerprinthash.
+                    ' '.
+                    $this->icefingerprint.
+                    "\n";
         } else {
             $ice = '';
         }
@@ -104,7 +118,6 @@ class JingletoSDP {
             's=TestCall'."\n".
             't=0 0'."\n".
             $ice.
-            'a=fingerprint:sha-1 99:41:49:83:4a:97:0e:1f:ef:6d:f7:c9:c7:70:9d:1f:66:79:a8:07'."\n".
             $this->sdp;
             
         if($this->valid)
