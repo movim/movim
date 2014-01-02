@@ -6,6 +6,8 @@ class SDPtoJingle {
 
     private $iceufrag;
     private $icepwd;
+    private $icefingerprint;
+    private $icefingerprinthash;
 
     function __construct($sdp, $initiator, $responder, $action) {
         $this->sdp = $sdp;
@@ -64,8 +66,8 @@ class SDPtoJingle {
                             
                             $candidate = $transport->addChild('candidate');
                             
-                            $candidate->addAttribute('component', $candidexpl[1]);
-                            $candidate->addAttribute('foundation', $expl[1]);
+                            $candidate->addAttribute('foundation', $candidexpl[1]);
+                            $candidate->addAttribute('component', $expl[1]);
                             $candidate->addAttribute('generation', 0);
                             $candidate->addAttribute('protocol', $expl[2]);
                             $candidate->addAttribute('priority', $expl[3]);
