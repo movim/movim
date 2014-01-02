@@ -77,7 +77,7 @@ class JingletoSDP {
                             ' raddr '.$candidate->attributes()->{'rel-addr'}.
                             ' rport '.$candidate->attributes()->{'rel-port'};
                     }
-                    $c .= ' generation '.$candidate->attributes()->generation."\n";
+                    $c .= ' generation '.$candidate->attributes()->generation;
                     
                     $this->valid = true;
                 }
