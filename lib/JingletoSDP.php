@@ -57,7 +57,7 @@ class JingletoSDP {
             }
                 
             foreach($content->transport->children() as $candidate) {
-                if($candidate->getName() != 'security'){
+                if($candidate->getName() == 'candidate'){
                     $c .= //http://tools.ietf.org/html/rfc5245#section-15
                         'a=candidate:'.$candidate->attributes()->foundation.
                         ' '.$candidate->attributes()->component.
