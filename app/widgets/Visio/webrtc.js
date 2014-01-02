@@ -16,7 +16,6 @@ var sdpConstraints = {'mandatory': {
 
 function onIceCandidate(event) {
     Visio.log('onIceCandidate');
-    console.log(event);
     Visio.log(event);
 }
 
@@ -31,8 +30,6 @@ function onSignalingStateChanged(event) {
 }
 
 function onRemoteStreamAdded(event) {
-    console.log(event);
-    
     var vid = document.getElementById('remote-video');
     
     vid.src = window.URL.createObjectURL(event.stream);
@@ -51,7 +48,7 @@ function onError(err) {
 }
 
 function onOfferCreated(offer) {
-    Visio.log(offer);
+    //Visio.log(offer);
 
     pc.setLocalDescription(offer,onSetSessionDescriptionSuccess, onSetSessionDescriptionError);
 
@@ -59,7 +56,7 @@ function onOfferCreated(offer) {
 }
 
 function onAnswerCreated(offer) {
-    Visio.log(offer);
+    //Visio.log(offer);
 
     pc.setLocalDescription(offer,onSetSessionDescriptionSuccess, onSetSessionDescriptionError);
 
@@ -76,9 +73,11 @@ function sendMessage(msg, accept) {
     
     if(accept) {
         Visio.log('Send the acceptance.');
+        Visio.log('ACCEPTANCE ' + msg.sdp);
         Visio.call(['VisioExt_ajaxSendAcceptance', msgString]);
     } else {
         Visio.log('Send the proposal.');
+        Visio.log('PROPOSAL ' + msg.sdp);
         Visio.call(['VisioExt_ajaxSendProposal', msgString]);
     }
 }
@@ -102,8 +101,9 @@ function onSetRemoteSessionDescriptionError(error) {
 function onOffer(offer) {
     offer = offer[0];
     
-    console.log(offer);
-    
+    Visio.log('Offer received.');
+    Visio.log('OFFER ' + offer);  
+      
     if(!pc)
         init(false);
     
@@ -120,8 +120,8 @@ function onOffer(offer) {
 function onAccept(offer) {
     offer = offer[0];
     
-    Visio.log(offer);
-    console.log(offer);
+    Visio.log('Accept received.');
+    Visio.log('ACCEPT ' + offer);  
     
     if(offer != null) {
         var desc = new RTCSessionDescription();
@@ -159,7 +159,7 @@ function init(isCaller) {
         getUserMedia(
         // Constraints
         {
-          video: false, audio: true
+          video: true, audio: true
         },
 
         // Success Callback
@@ -206,5 +206,5 @@ function init(isCaller) {
         alert('Sorry, your browser does not support getUserMedia');
     }
 
-    Visio.log(pc);
+    //Visio.log(pc);
 }

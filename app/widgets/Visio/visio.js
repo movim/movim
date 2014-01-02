@@ -1,8 +1,8 @@
 function notifyOpener() {    
     //console.log(self.opener.popupWin);
     document.querySelector('#connection').style.display = 'none';
-	if(self.opener || !self.opener.popupWin) 
-        self.opener.popupWin = self;
+	if(self.opener || !self.opener.Popup.win) 
+        self.opener.Popup.win = self;
 }
 
 setInterval( notifyOpener, 200 );
