@@ -44,14 +44,13 @@ class JingletoSDP {
                 
             foreach($content->transport->children() as $candidate) {
                 $c .= 
-                    'a=candidate:'.$candidate->attributes()->component.
-                    ' '.$candidate->attributes()->foundation.
+                    'a=candidate:'.$candidate->attributes()->foundation.
+                    ' '.$candidate->attributes()->component.
                     ' '.strtoupper($candidate->attributes()->protocol).
                     ' '.$candidate->attributes()->priority.
                     ' '.$candidate->attributes()->ip.
                     ' '.$candidate->attributes()->port.
-                    ' typ '.$candidate->attributes()->type.
-                    ' generation '.$candidate->attributes()->generation;
+                    ' typ '.$candidate->attributes()->type;
 
                 if($port == false)
                     $port = $candidate->attributes()->port;
@@ -64,8 +63,7 @@ class JingletoSDP {
                         ' raddr '.$candidate->attributes()->{'rel-addr'}.
                         ' rport '.$candidate->attributes()->{'rel-port'};
                 }
-                
-                $c .= "\n";
+                $c .= ' generation '.$candidate->attributes()->generation."\n";
                 
                 $this->valid = true;
             }
@@ -97,7 +95,7 @@ class JingletoSDP {
             's=TestCall'."\n".
             't=0 0'."\n".
             $ice.
-            'a=fingerprint:sha-256 D4:E6:DC:30:3F:63:0A:55:8D:65:F6:7C:F7:81:47:F8:3D:45:74:EE:74:61:CB:9A:F5:4F:60:79:F2:2D:D2:20'."\n".
+            'a=fingerprint:sha-1 99:41:49:83:4a:97:0e:1f:ef:6d:f7:c9:c7:70:9d:1f:66:79:a8:07'."\n".
             $this->sdp;
             
         if($this->valid)
