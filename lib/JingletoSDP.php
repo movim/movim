@@ -50,29 +50,31 @@ class JingletoSDP {
             }
                 
             foreach($content->transport->children() as $candidate) {
-                $c .= //http://tools.ietf.org/html/rfc5245#section-15
-                    'a=candidate:'.$candidate->attributes()->foundation.
-                    ' '.$candidate->attributes()->component.
-                    ' '.strtoupper($candidate->attributes()->protocol).
-                    ' '.$candidate->attributes()->priority.
-                    ' '.$candidate->attributes()->ip.
-                    ' '.$candidate->attributes()->port.
-                    ' typ '.$candidate->attributes()->type;
+                if($candidate->getName() != "security"){
+                    $c .= //http://tools.ietf.org/html/rfc5245#section-15
+                        'a=candidate:'.$candidate->attributes()->foundation.
+                        ' '.$candidate->attributes()->component.
+                        ' '.strtoupper($candidate->attributes()->protocol).
+                        ' '.$candidate->attributes()->priority.
+                        ' '.$candidate->attributes()->ip.
+                        ' '.$candidate->attributes()->port.
+                        ' typ '.$candidate->attributes()->type;
 
-                if($port == false)
-                    $port = $candidate->attributes()->port;
-                
-                if($ip == false)
-                    $ip = $candidate->attributes()->ip;
-                
-                if($candidate->attributes()->type == 'srflx') {
-                   $c .= 
-                        ' raddr '.$candidate->attributes()->{'rel-addr'}.
-                        ' rport '.$candidate->attributes()->{'rel-port'};
+                    if($port == false)
+                        $port = $candidate->attributes()->port;
+                    
+                    if($ip == false)
+                        $ip = $candidate->attributes()->ip;
+                    
+                    if($candidate->attributes()->type == 'srflx') {
+                       $c .= 
+                            ' raddr '.$candidate->attributes()->{'rel-addr'}.
+                            ' rport '.$candidate->attributes()->{'rel-port'};
+                    }
+                    $c .= ' generation '.$candidate->attributes()->generation."\n";
+                    
+                    $this->valid = true;
                 }
-                $c .= ' generation '.$candidate->attributes()->generation."\n";
-                
-                $this->valid = true;
             }
             
             $this->sdp .= //http://tools.ietf.org/html/rfc4566#page-22
