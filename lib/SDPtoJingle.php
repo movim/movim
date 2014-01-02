@@ -25,7 +25,7 @@ class SDPtoJingle {
 
         foreach($arr as $l) {
             list($key, $line) = explode('=', $l);
-            switch(trim($key)) { /*TODO: find a cleaner solution to remove the space before keys ?*/
+            switch($key) {
                 case 'm':
                     $expl = explode(' ', $line);
                     

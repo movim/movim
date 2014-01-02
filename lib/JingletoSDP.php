@@ -42,11 +42,10 @@ class JingletoSDP {
                 //payloads without clockrate are striped out
                 if($payload->attributes()->clockrate){
                     $p .= 
-                        'a=rtpmap'.
+                        "\na=rtpmap".
                         ':'.$payload->attributes()->id.
                         ' '.$payload->attributes()->name.
-                        '/'.$payload->attributes()->clockrate.
-                        "\n";
+                        '/'.$payload->attributes()->clockrate;
                         
                     $priority .= ' '.$payload->attributes()->id;
                     //if (!$priority) $priority = $payload->attributes()->id;
@@ -59,7 +58,7 @@ class JingletoSDP {
             foreach($content->transport->children() as $candidate) {
                 if($candidate->getName() == 'candidate'){
                     $c .= //http://tools.ietf.org/html/rfc5245#section-15
-                        'a=candidate:'.$candidate->attributes()->foundation.
+                        "\na=candidate:".$candidate->attributes()->foundation.
                         ' '.$candidate->attributes()->component.
                         ' '.strtoupper($candidate->attributes()->protocol).
                         ' '.$candidate->attributes()->priority.
@@ -85,12 +84,11 @@ class JingletoSDP {
             }
             
             $this->sdp .= //http://tools.ietf.org/html/rfc4566#page-22
-                'm='.$content->description->attributes()->media.
+                "\nm=".$content->description->attributes()->media.
                 ' '.$port.
                 ' '.$proto.
                 $priority.
-                "\n".
-                'c=IN IP4 '.$ip."\n".
+                "\nc=IN IP4 ".$ip."\n".
                 $p.
                 //'a=setup:actpass'."\n".
                 $c;
@@ -99,24 +97,23 @@ class JingletoSDP {
         
         if($this->iceufrag && $this->icepwd) {
             $ice = 
-                'a=ice-ufrag:'.$this->iceufrag."\n".
-                'a=ice-pwd:'.$this->icepwd."\n";
+                "\na=ice-ufrag:".$this->iceufrag.
+                "\na=ice-pwd:".$this->icepwd;
             if($this->icefingerprint && $this->icefingerprinthash)
                 $ice .= 
-                    'a=fingerprint:'.
+                    "\na=fingerprint:".
                     $this->icefingerprinthash.
                     ' '.
-                    $this->icefingerprint.
-                    "\n";
+                    $this->icefingerprint;
         } else {
             $ice = '';
         }
         
         $this->sdp = 
-            'v=0'."\n".
-            'o='.$username.' '.substr(base_convert($sessid, 30, 10), 0, 6).' 0 IN IP4 0.0.0.0'."\n".
-            's=TestCall'."\n".
-            't=0 0'."\n".
+            'v=0'.
+            "\no=".$username.' '.substr(base_convert($sessid, 30, 10), 0, 6).' 0 IN IP4 0.0.0.0'.
+            "\ns=TestCall".
+            "\nt=0 0".
             $ice.
             $this->sdp;
             
