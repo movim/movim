@@ -28,8 +28,11 @@ class JingletoSDP {
             $port = false;
             $ip = false;
             
+            //$proto = "RTP/AVP ";
+            $proto = "RTP/SAVPF ";
+            
             foreach($content->description->children() as $payload) {
-                //paylods without clockrate are striped out
+                //payloads without clockrate are striped out
                 if($payload->attributes()->clockrate){
                     $p .= 
                         'a=rtpmap'.
@@ -39,39 +42,45 @@ class JingletoSDP {
                         "\n";
                         
                     $priority .= ' '.$payload->attributes()->id;
+                    //if (!$priority) $priority = $payload->attributes()->id;
                 }
+                /*elseif($payload->attributes()->required){ //this is an encryption request, not a payload
+                    $proto = "RTP/SAVP ";
+                }*/
             }
                 
             foreach($content->transport->children() as $candidate) {
-                $c .= 
-                    'a=candidate:'.$candidate->attributes()->foundation.
-                    ' '.$candidate->attributes()->component.
-                    ' '.strtoupper($candidate->attributes()->protocol).
-                    ' '.$candidate->attributes()->priority.
-                    ' '.$candidate->attributes()->ip.
-                    ' '.$candidate->attributes()->port.
-                    ' typ '.$candidate->attributes()->type;
+                if($candidate->getName() != "security"){
+                    $c .= //http://tools.ietf.org/html/rfc5245#section-15
+                        'a=candidate:'.$candidate->attributes()->foundation.
+                        ' '.$candidate->attributes()->component.
+                        ' '.strtoupper($candidate->attributes()->protocol).
+                        ' '.$candidate->attributes()->priority.
+                        ' '.$candidate->attributes()->ip.
+                        ' '.$candidate->attributes()->port.
+                        ' typ '.$candidate->attributes()->type;
 
-                if($port == false)
-                    $port = $candidate->attributes()->port;
-                
-                if($ip == false)
-                    $ip = $candidate->attributes()->ip;
-                
-                if($candidate->attributes()->type == 'srflx') {
-                   $c .= 
-                        ' raddr '.$candidate->attributes()->{'rel-addr'}.
-                        ' rport '.$candidate->attributes()->{'rel-port'};
+                    if($port == false)
+                        $port = $candidate->attributes()->port;
+                    
+                    if($ip == false)
+                        $ip = $candidate->attributes()->ip;
+                    
+                    if($candidate->attributes()->type == 'srflx') {
+                       $c .= 
+                            ' raddr '.$candidate->attributes()->{'rel-addr'}.
+                            ' rport '.$candidate->attributes()->{'rel-port'};
+                    }
+                    $c .= ' generation '.$candidate->attributes()->generation."\n";
+                    
+                    $this->valid = true;
                 }
-                $c .= ' generation '.$candidate->attributes()->generation."\n";
-                
-                $this->valid = true;
             }
             
-            $this->sdp .= 
+            $this->sdp .= //http://tools.ietf.org/html/rfc4566#page-22
                 'm='.$content->description->attributes()->media.
                 ' '.$port.
-                ' RTP/SAVPF'.
+                ' '.$proto.
                 $priority.
                 "\n".
                 'c=IN IP4 '.$ip."\n".
