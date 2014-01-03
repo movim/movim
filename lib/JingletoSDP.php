@@ -22,10 +22,8 @@ class JingletoSDP {
 		$sessid = $this->jingle['sid'];
         
         //if($this->jingle->sdp)
-            return $this->jingle->sdp;
-        /*
-        \movim_log($this->jingle->sdp);
-        
+        //    return $this->jingle->sdp;
+
         foreach($this->jingle->children() as $content) {
             $this->icepwd = $content->transport->attributes()->pwd;
             $this->iceufrag = $content->transport->attributes()->ufrag;
@@ -128,6 +126,6 @@ class JingletoSDP {
         if($this->valid)
             return $this->sdp;
         else
-            return false;*/
+            return false;
     }
 }
