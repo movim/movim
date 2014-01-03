@@ -239,7 +239,7 @@ class SDPtoJingle {
             }
         }
         
-        // We reintend properly the Jingle package
+        // We reindent properly the Jingle package
         $xml = $this->jingle->asXML();
         $doc = new \DOMDocument();
         $doc->loadXML($xml);
