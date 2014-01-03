@@ -69,7 +69,6 @@ class JingletoSDP {
                         ' '.$candidate->attributes()->ip.
                         ' '.$candidate->attributes()->port.
                         ' typ '.$candidate->attributes()->type;
-
                     if($port == false)
                         $port = $candidate->attributes()->port;
                     
@@ -81,7 +80,10 @@ class JingletoSDP {
                             ' raddr '.$candidate->attributes()->{'rel-addr'}.
                             ' rport '.$candidate->attributes()->{'rel-port'};
                     }
-                    $c .= ' generation '.$candidate->attributes()->generation;
+                    //for XMPP attributes
+                    $c .= ' generation '.$candidate->attributes()->generation.
+                        ' network '.$candidate->attributes()->network.
+                        ' id '.$candidate->attributes()->id;
                     
                     $this->valid = true;
                 }
