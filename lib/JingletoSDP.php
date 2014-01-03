@@ -1,101 +1,218 @@
 <?php 
 
 class JingletoSDP {
-    private $sdp;
+    private $sdp = '';
     private $jingle;
-    private $jid;
-
-    private $iceufrag = false;
-    private $icepwd   = false;
     
-    private $valid    = false;
-
+    private $values = array(
+        'session_id'        => 1,
+        'session_version'   => 0,
+        'nettype'           => 'IN',
+        'addrtype'          => 'IP4',
+        'unicast_address'   => '0.0.0.0'
+        );
+    
     function __construct($jingle) {
         $this->jingle = $jingle;
     }
 
     function generate() {
-        foreach($this->jingle->children() as $content) {
-            $this->icepwd = $content->transport->attributes()->pwd;
-            $this->iceufrag = $content->transport->attributes()->ufrag;
+        $username = current(explode('@', $this->jingle->attributes()->initiator));
+        $sessid   = $this->jingle->attributes()->sid;
+        $this->values['session_id']   = substr(base_convert($sessid, 30, 10), 0, 6);
+        
+        $sdp_version =
+            'v=0';
             
-            $p = $c = '';
-            $priority = '';
-            $port = false;
-            $ip = false;
+        $sdp_origin = 
+            'o='.
+            $username.' '.
+            $this->values['session_id'].' '.
+            $this->values['session_version'].' '.
+            $this->values['nettype'].' '.
+            $this->values['addrtype'].' '.
+            $this->values['unicast_address'];
+            
+        $sdp_session_name =
+            's=SIP Call'; // Use the sessid ?
+            
+        $sdp_timing =
+            't=0 0';
+            
+        $sdp_medias = '';
+            
+        foreach($this->jingle->children() as $content) {
+            $media_header_ids = array();
+            
+            $sdp_media_header = 
+                "\nm=".$content->description->attributes()->media.
+                ' 1 ';
+
+            if(isset($content->description->crypto)
+            || isset($content->transport->fingerprint)) {
+                $sdp_media_header .= 'RTP/SAVPF';
+            } else {
+                $sdp_media_header .= 'RTP/AVPF';
+            }
+
+            $sdp_media = 
+                "\nc=IN IP4 0.0.0.0".
+                "\na=rtcp:1 IN IP4 0.0.0.0";
+                
+            if(isset($content->transport->attributes()->ufrag))
+                $sdp_media .= "\na=ice-ufrag:".$content->transport->attributes()->ufrag;
+                
+            if(isset($content->transport->attributes()->pwd))
+                $sdp_media .= "\na=ice-pwd:".$content->transport->attributes()->pwd;
             
             foreach($content->description->children() as $payload) {
-                $p .= 
-                    'a=rtpmap'.
-                    ':'.$payload->attributes()->id.
-                    ' '.$payload->attributes()->name.
-                    '/'.$payload->attributes()->clockrate.
-                    "\n";
-                    
-                $priority .= ' '.$payload->attributes()->id;
-            }
-                
-            foreach($content->transport->children() as $candidate) {
-                $c .= 
-                    'a=candidate:'.$candidate->attributes()->component.
-                    ' '.$candidate->attributes()->foundation.
-                    ' '.strtoupper($candidate->attributes()->protocol).
-                    ' '.$candidate->attributes()->priority.
-                    ' '.$candidate->attributes()->ip.
-                    ' '.$candidate->attributes()->port.
-                    ' typ '.$candidate->attributes()->type.
-                    ' generation '.$candidate->attributes()->generation;
+                switch($payload->getName()) {
+                    case 'rtp-hdrext':  
+                        $sdp_media .= 
+                            "\na=extmap:".
+                            $payload->attributes()->id;      
+                            
+                        if(isset($payload->attributes()->senders))
+                            $sdp_media .= ' '.$payload->attributes()->senders;
 
-                if($port == false)
-                    $port = $candidate->attributes()->port;
-                
-                if($ip == false)
-                    $ip = $candidate->attributes()->ip;
-                
-                if($candidate->attributes()->type == 'srflx') {
-                   $c .= 
-                        ' raddr '.$candidate->attributes()->{'rel-addr'}.
-                        ' rport '.$candidate->attributes()->{'rel-port'};
+                        $sdp_media .= ' '.$payload->attributes()->uri;
+                        break;
+                        
+                    case 'rtcp-mux':
+                        $sdp_media .= 
+                            "\na=rtcp-mux"; 
+                    
+                    case 'encryption':
+                        if(isset($payload->crypto)) {
+                            $sdp_media .= 
+                                "\na=crypto:".
+                                $payload->crypto->attributes()->tag.' '.                          
+                                $payload->crypto->attributes()->{'crypto-suite'}.' '.                          
+                                $payload->crypto->attributes()->{'key-params'};
+
+                            // TODO session params ?
+                        }
+                        break;
+
+                    case 'payload-type':
+                        $sdp_media .= 
+                            "\na=rtpmap:".
+                            $payload->attributes()->id;
+
+                        array_push($media_header_ids, $payload->attributes()->id);
+
+                        if(isset($payload->attributes()->name)) {
+                            $sdp_media .= ' '.$payload->attributes()->name;
+
+                            if(isset($payload->attributes()->clockrate)) {
+                                $sdp_media .= '/'.$payload->attributes()->clockrate;
+
+                                if(isset($payload->attributes()->channels)) {
+                                    $sdp_media .= '/'.$payload->attributes()->channels;
+                                }
+                            }
+                        }
+
+                        foreach($payload->children() as $rtcpfb) {
+                            if($rtcpfb->getName() == 'rtcp-fb') {
+                                $sdp_media .= 
+                                    "\na=rtcp-fb:".
+                                    $rtcpfb->attributes()->id.' '.
+                                    $rtcpfb->attributes()->type;
+
+                                if(isset($rtcpfb->attributes()->subtype)) {
+                                    $sdp_media .= ' '.$rtcpfb->attributes()->subtype;
+                                }
+                            }
+
+                            // TODO rtcp_fb_trr_int ?
+                        }
+                        break;
+
+                    case 'fmtp':
+                        // TODO
+                        break;
+
+                    case 'source':
+                        foreach($payload->children() as $s) {
+                            $sdp_media .= 
+                                "\na=ssrc:".$payload->attributes()->id.' '.
+                                $s->attributes()->name.':'.
+                                $s->attributes()->value;
+                        }
+                        break;
                 }
                 
-                $c .= "\n";
-                
-                $this->valid = true;
+                // TODO sendrecv ?
+            }
+
+            if(isset($content->description->attributes()->ptime)) {
+                $sdp_media .= 
+                    "\na=ptime:".$content->description->attributes()->ptime;
             }
             
-            $this->sdp .= 
-                'm='.$content->description->attributes()->media.
-                ' '.$port.
-                ' RTP/SAVPF'.
-                $priority.
-                "\n".
-                'c=IN IP4 '.$ip."\n".
-                $p.
-                //'a=setup:actpass'."\n".
-                $c;
-                //'a=rtcp-mux'."\n";
+            if(isset($content->description->attributes()->maxptime)) {
+                $sdp_media .= 
+                    "\na=maxptime:".$content->description->attributes()->maxptime;
+            }
+
+            foreach($content->transport->children() as $payload) {
+                switch($payload->getName()) {
+                    case 'fingerprint':
+                        if(isset($content->transport->fingerprint->attributes()->hash)) {
+                            $sdp_media .= 
+                                "\na=fingerprint:".
+                                $content->transport->fingerprint->attributes()->hash.
+                                ' '.
+                                $content->transport->fingerprint;    
+                        }
+                        
+                        if(isset($content->transport->fingerprint->attributes()->setup)) {
+                            $sdp_media .= 
+                                "\na=setup:".
+                                $content->transport->fingerprint->attributes()->setup;                    
+                        }
+                        break;
+
+                    case 'candidate':
+                        $sdp_media .= 
+                            "\na=candidate:".
+                            $payload->attributes()->foundation.' '.
+                            $payload->attributes()->component.' '.
+                            $payload->attributes()->protocol.' '.
+                            $payload->attributes()->priority.' '.
+                            $payload->attributes()->ip.' '.
+                            $payload->attributes()->port.' '.
+                            'typ '.$payload->attributes()->type;
+
+                        if(isset($payload->attributes()->{'rel-addr'})
+                        && isset($payload->attributes()->{'rel-port'})) {
+                            $sdp_media .=
+                                ' raddr '.$payload->attributes()->{'rel-addr'}.
+                                ' rport '.$payload->attributes()->{'rel-port'};
+                        }
+
+                        if(isset($payload->attributes()->generation)) {
+                            $sdp_media .=
+                                ' generation '.$payload->attributes()->generation;
+                        }
+                        break;
+                }
+            }
+
+            $sdp_media_header = $sdp_media_header.' '.implode(' ', $media_header_ids);
+
+            $sdp_medias .=
+                $sdp_media_header.
+                $sdp_media;
         }
         
-        if($this->iceufrag && $this->icepwd) {
-            $ice = 
-                'a=ice-ufrag:'.$this->iceufrag."\n".
-                'a=ice-pwd:'.$this->icepwd."\n";
-        } else {
-            $ice = '';
-        }
+        $this->sdp .= $sdp_version;
+        $this->sdp .= "\n".$sdp_origin;
+        $this->sdp .= "\n".$sdp_session_name;
+        $this->sdp .= "\n".$sdp_timing;
+        $this->sdp .= $sdp_medias;
         
-        $this->sdp = 
-            'v=0'."\n".
-            'o=Mozilla-SIPUA-29.0a1 2019 0 IN IP4 0.0.0.0'."\n".
-            's=SIP Call'."\n".
-            't=0 0'."\n".
-            $ice.
-            'a=fingerprint:sha-256 D4:E6:DC:30:3F:63:0A:55:8D:65:F6:7C:F7:81:47:F8:3D:45:74:EE:74:61:CB:9A:F5:4F:60:79:F2:2D:D2:20'."\n".
-            $this->sdp;
-            
-        if($this->valid)
-            return $this->sdp;
-        else
-            return false;
+        return $this->sdp;
     }
 }
