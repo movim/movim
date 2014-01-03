@@ -26,6 +26,8 @@ class VisioExt extends WidgetBase
         $this->registerEvent('jinglesessionterminate',  'onSessionTerminate');
         $this->registerEvent('jinglesessionaccept',     'onSessionAccept');
         $this->registerEvent('jingletransportinfo',     'onTransportInfo');
+        
+        $this->registerEvent('jinglecreationsuccess',     'onCreationSuccess');
     }
     
     function onSessionInitiate($jingle) {
@@ -73,7 +75,6 @@ class VisioExt extends WidgetBase
     }
 
     function ajaxSendAcceptance($proposal) {
-        
         $p = json_decode($proposal);
 
         $sd = Sessionx::start();
