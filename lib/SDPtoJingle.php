@@ -3,6 +3,9 @@ class SDPtoJingle {
     private $sdp;
     private $jingle;
     
+    private $first_content     = true;
+    private $current_transport = null;
+    
     private $regex = array(
       'candidate' =>        "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d))?/i",
       'rtpmap' =>           "/^a=rtpmap:(\d+) (([^\s\/]+)\/(\d+)(\/([^\s\/]+))?)?/i",
@@ -34,46 +37,46 @@ class SDPtoJingle {
         $this->jingle->addAttribute('sid', generateKey(10));
     }
     
-    function createContent() {
-        if(!$this->jingle->content)
-            return $this->jingle->addChild('content');
-        else 
-            return $this->jingle->content;
-    }
-    function createTransport() {
-        $content = $this->createContent();
-        if(!$content->transport) {
-            $transport = $content->addChild('transport');
-            $transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
-            return $transport;
-        }
-        else 
-            return $content->transport;
-    }
+    /*
+    function createContent($new = false) {
+        if($this->current_content == null || $new) {
+            $this->current_content   = $this->jingle->addChild('content');
+            $this->current_transport = $this->current_content->addChild('transport');
+            $this->current_transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
+            return $this->current_content; 
+        } else 
+            return $this->current_content;
+    }*/
+    
+    //$this->current_content = $this->jingle->addChild('content');
 
     function generate() {
         $arr = explode("\n", $this->sdp);
+        
+        $content = $this->jingle->addChild('content');
+        $this->current_transport = $content->addChild('transport');
         
         foreach($arr as $l) {
             foreach($this->regex as $key => $r) {
                 if(preg_match($r, $l, $matches)) {
                     switch($key) { 
                         case 'media':
-                            $media = array(
-                                'media'         => $matches[1]
-                                );
+                            //$content = $this->createContent(true);
+                            
+                            if(!$this->first_content) {
+                                $content = $this->jingle->addChild('content');
+                                $this->current_transport = $content->addChild('transport'); 
+                            }
                                 
-                            $content = $this->jingle->addChild('content');
                             $content->addAttribute('creator', 'initiator'); // TODO à fixer !
-                            $content->addAttribute('name', $media['media']);
+                            $content->addAttribute('name', $matches[1]);
                             
                             // The description node
                             $description = $content->addChild('description');
                             $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
-                            $description->addAttribute('media', $media['media']);
+                            $description->addAttribute('media', $matches[1]);
                             
-                            // The transport node
-                            $transport = $this->createTransport();
+                            $this->first_content = false;  
                             break;
                             
                         case 'bandwidth':
@@ -98,15 +101,15 @@ class SDPtoJingle {
                             $payloadtype->addAttribute('clockrate', $matches[4]);
                             
                             if($channel)
-                                $payloadtype->addAttribute('channel',   $channel);
+                                $payloadtype->addAttribute('channels',   $matches[6]);
                             
                             break;
                             
                         case 'rtcp_fb':
                             if($matches[1] == '*') {
-                                $rtcpfp = $description->addChild('rtcp-fp');
+                                $rtcpfp = $description->addChild('rtcp-fb');
                             } else { 
-                                $rtcpfp = $payloadtype->addChild('rtcp-fp');
+                                $rtcpfp = $payloadtype->addChild('rtcp-fb');
                             }
                             $rtcpfp->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:rtcp-fb:0");
                             $rtcpfp->addAttribute('id',        $matches[1]);
@@ -152,7 +155,7 @@ class SDPtoJingle {
                             $rtphdrext->addAttribute('xmlns',   "urn:xmpp:jingle:apps:rtp:rtp-hdrext:0");
                             $rtphdrext->addAttribute('id',      $matches[1]);
                             $rtphdrext->addAttribute('uri',     $matches[4]);
-                            $rtphdrext->addAttribute('senders', $matches[4]);
+                            $rtphdrext->addAttribute('senders', $matches[3]);
                             break;
                             
                         // http://xmpp.org/extensions/inbox/jingle-source.html
@@ -178,36 +181,33 @@ class SDPtoJingle {
                             
                         // À appeler à la fin
                         case 'fingerprint':
-                            $transport = $this->createTransport();
-                            if(!$transport->fingerprint) {
-                                $fingerprint = $transport->addChild('fingerprint', $matches[2]);
+                            if(!$this->current_transport->fingerprint) {
+                                $fingerprint = $this->current_transport->addChild('fingerprint', $matches[2]);
                                 $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");
                                 $fingerprint->addAttribute('hash', $matches[1]);
                             }
                             break;
                             
                         case 'setup':
-                            if(!$fingerprint->attributes()->setup)
+                            if(isset($fingerprint) && !$fingerprint->attributes()->setup)
                                 $fingerprint->addAttribute('setup', $matches[1]);
                             break;
                             
                         case 'pwd': 
-                            $transport = $this->createTransport();
-                            if(!$transport->attributes()->pwd)
-                                $transport->addAttribute('pwd', $matches[1]);
+                            if(!$this->current_transport->attributes()->pwd) {
+                                $this->current_transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
+                                $this->current_transport->addAttribute('pwd', $matches[1]);
+                            }
                             break;
                             
                         case 'ufrag':
-                            $transport = $this->createTransport();
-                            if(!$transport->attributes()->ufrag)
-                                $transport->addAttribute('ufrag', $matches[1]);                            
+                            if(!$this->current_transport->attributes()->ufrag)
+                                $this->current_transport->addAttribute('ufrag', $matches[1]);                            
                             break;
                         
                         case 'candidate':
                             if(isset($match[16]))
                                 $generation = $matches[16];
-                            else
-                                $generation = 0;
                                 
                             if(isset($matches[11]) && isset($matches[13])) {
                                 $reladdr = $matches[11];
@@ -216,11 +216,12 @@ class SDPtoJingle {
                                 $reladdr = $relport = null;
                             }
                             
-                            $candidate = $transport->addChild('candidate');
+                            $candidate = $this->current_transport->addChild('candidate');
                         
                             $candidate->addAttribute('component' , $matches[2]);
                             $candidate->addAttribute('foundation', $matches[1]);
-                            $candidate->addAttribute('generation', $generation); //|| JSJAC_JINGLE_GENERATION;
+                            if(isset($match[16]))
+                                $candidate->addAttribute('generation', $match[16]); //|| JSJAC_JINGLE_GENERATION;
                             $candidate->addAttribute('id'        , generateKey(10)); //$self.util_generate_id();
                             $candidate->addAttribute('ip'        , $matches[5]);
                             $candidate->addAttribute('network'   , 0);
