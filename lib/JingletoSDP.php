@@ -94,7 +94,7 @@ class JingletoSDP {
                 ' '.$port.
                 ' '.$proto.
                 $priority.
-                "\nc=IN IP4 ".$ip."\n".
+                "\nc=IN IP4 ".$ip.
                 $p.
                 //'a=setup:actpass'."\n".
                 $c;
