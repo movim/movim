@@ -19,14 +19,17 @@ class JingletoSDP {
     function generate() {
 
 		$username = substr($this->jingle['initiator'], 0, strpos($this->jingle['initiator'], '@'));
+        $username = $username? $username : "-";
 		$sessid = $this->jingle['sid'];
         
         //if($this->jingle->sdp)
         //    return $this->jingle->sdp;
 
         foreach($this->jingle->children() as $content) {
-            $this->icepwd = $content->transport->attributes()->pwd;
-            $this->iceufrag = $content->transport->attributes()->ufrag;
+            if($content->transport){
+                $this->icepwd = $content->transport->attributes()->pwd;
+                $this->iceufrag = $content->transport->attributes()->ufrag;
+            }
             
             if($content->transport->fingerprint) {
                 $this->icefingerprint = $content->transport->fingerprint;
