@@ -755,7 +755,6 @@ function generateKey($size) {
         $r = mt_rand(0, strlen($hash_chars) - 1);
         $hash.= $hash_chars[$r];
     }
-
     return $hash;
 }
 ?>
