@@ -21,8 +21,10 @@ class JingletoSDP {
 		$username = substr($this->jingle['initiator'], 0, strpos($this->jingle['initiator'], '@'));
 		$sessid = $this->jingle['sid'];
         
-        if($this->jingle->sdp)
+        //if($this->jingle->sdp)
             return $this->jingle->sdp;
+        /*
+        \movim_log($this->jingle->sdp);
         
         foreach($this->jingle->children() as $content) {
             $this->icepwd = $content->transport->attributes()->pwd;
@@ -54,9 +56,9 @@ class JingletoSDP {
                     $priority .= ' '.$payload->attributes()->id;
                     //if (!$priority) $priority = $payload->attributes()->id;
                 }
-                /*elseif($payload->attributes()->required){ //this is an encryption request, not a payload
-                    $proto = "RTP/SAVP ";
-                }*/
+                //elseif($payload->attributes()->required){ //this is an encryption request, not a payload
+                //    $proto = "RTP/SAVP ";
+                //}
             }
                 
             foreach($content->transport->children() as $candidate) {
@@ -124,6 +126,6 @@ class JingletoSDP {
         if($this->valid)
             return $this->sdp;
         else
-            return false;
+            return false;*/
     }
 }
