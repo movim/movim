@@ -20,6 +20,10 @@ class JingletoSDP {
 
 		$username = substr($this->jingle['initiator'], 0, strpos($this->jingle['initiator'], '@'));
 		$sessid = $this->jingle['sid'];
+        
+        if($this->jingle->sdp)
+            return $this->jingle->sdp;
+        
         foreach($this->jingle->children() as $content) {
             $this->icepwd = $content->transport->attributes()->pwd;
             $this->iceufrag = $content->transport->attributes()->ufrag;
@@ -111,7 +115,7 @@ class JingletoSDP {
         
         $this->sdp = 
             'v=0'.
-            "\no=".$username.' '.substr(base_convert($sessid, 30, 10), 0, 6).' 0 IN IP4 0.0.0.0'.
+            "\no=".$username.' '.base_convert($sessid, 30, 10).' 0 IN IP4 0.0.0.0'.
             "\ns=TestCall".
             "\nt=0 0".
             $ice.
