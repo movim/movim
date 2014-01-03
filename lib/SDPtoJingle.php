@@ -2,12 +2,6 @@
 class SDPtoJingle {
     private $sdp;
     private $jingle;
-    private $jid;
-    
-    private $iceufrag;
-    private $icepwd;
-    private $icefingerprint;
-    private $icefingerprinthash;
     
     private $regex = array(
       'candidate' =>        "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d))?/i",
@@ -37,7 +31,7 @@ class SDPtoJingle {
         $this->jingle->addAttribute('action',$action);
         $this->jingle->addAttribute('initiator',$initiator);
         $this->jingle->addAttribute('responder',$responder);
-        $this->jingle->addAttribute('sid', 10/*generateKey(10)*/);
+        $this->jingle->addAttribute('sid', generateKey(10));
     }
     
     function createContent() {
