@@ -3,8 +3,11 @@ class SDPtoJingle {
     private $sdp;
     private $jingle;
     
-    private $first_content     = true;
-    private $current_transport = null;
+    private $content    = null;
+    private $transport  = null;
+
+    // Move the global fingerprint into each medias
+    private $global_fingerprint = array();
     
     private $regex = array(
       'candidate' =>        "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d))?/i",
@@ -36,47 +39,35 @@ class SDPtoJingle {
         $this->jingle->addAttribute('responder',$responder);
         $this->jingle->addAttribute('sid', generateKey(10));
     }
-    
-    /*
-    function createContent($new = false) {
-        if($this->current_content == null || $new) {
-            $this->current_content   = $this->jingle->addChild('content');
-            $this->current_transport = $this->current_content->addChild('transport');
-            $this->current_transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
-            return $this->current_content; 
-        } else 
-            return $this->current_content;
-    }*/
-    
-    //$this->current_content = $this->jingle->addChild('content');
 
     function generate() {
         $arr = explode("\n", $this->sdp);
-        
-        $content = $this->jingle->addChild('content');
-        $this->current_transport = $content->addChild('transport');
-        
+
         foreach($arr as $l) {
             foreach($this->regex as $key => $r) {
                 if(preg_match($r, $l, $matches)) {
                     switch($key) { 
                         case 'media':
-                            //$content = $this->createContent(true);
-                            
-                            if(!$this->first_content) {
-                                $content = $this->jingle->addChild('content');
-                                $this->current_transport = $content->addChild('transport'); 
-                            }
-                                
-                            $content->addAttribute('creator', 'initiator'); // TODO à fixer !
-                            $content->addAttribute('name', $matches[1]);
+                            $this->content      = $this->jingle->addChild('content');
+                            $this->transport    = $this->content->addChild('transport');
+                            $this->transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
+
+                            $this->content->addAttribute('creator', 'initiator'); // TODO à fixer !
+                            $this->content->addAttribute('name', $matches[1]);
                             
                             // The description node
-                            $description = $content->addChild('description');
+                            $description = $this->content->addChild('description');
                             $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
                             $description->addAttribute('media', $matches[1]);
+
+                            if(!empty($this->global_fingerprint)) {
+                                $fingerprint = $this->transport->addChild('fingerprint', $this->global_fingerprint['fingerprint']);
+                                $this->transport->addAttribute('pwd', $this->global_fingerprint['pwd']);
+                                $this->transport->addAttribute('ufrag', $this->global_fingerprint['ufrag']);
+                                $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");
+                                $fingerprint->addAttribute('hash', $this->global_fingerprint['hash']);
+                            }
                             
-                            $this->first_content = false;  
                             break;
                             
                         case 'bandwidth':
@@ -179,30 +170,42 @@ class SDPtoJingle {
                             $description->addAttribute('maxptime', $matches[1]);
                             break;
                             
-                        // À appeler à la fin
+                        // http://xmpp.org/extensions/xep-0320.html
                         case 'fingerprint':
-                            if(!$this->current_transport->fingerprint) {
-                                $fingerprint = $this->current_transport->addChild('fingerprint', $matches[2]);
+                            if($this->content == null) {
+                                $this->global_fingerprint['fingerprint'] = $matches[2];
+                                $this->global_fingerprint['hash']        = $matches[1];
+                            } else {
+                                $fingerprint = $this->transport->addChild('fingerprint', $matches[2]);
                                 $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");
                                 $fingerprint->addAttribute('hash', $matches[1]);
                             }
+                            
                             break;
                             
                         case 'setup':
-                            if(isset($fingerprint) && !$fingerprint->attributes()->setup)
+                            if($this->content != null) {
                                 $fingerprint->addAttribute('setup', $matches[1]);
+                            }
+                            
                             break;
                             
                         case 'pwd': 
-                            if(!$this->current_transport->attributes()->pwd) {
-                                $this->current_transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
-                                $this->current_transport->addAttribute('pwd', $matches[1]);
+                            if($this->content == null) {
+                                $this->global_fingerprint['pwd'] = $matches[1];
+                            } else {
+                                $this->transport->addAttribute('pwd', $matches[1]);
                             }
+                            
                             break;
                             
-                        case 'ufrag':
-                            if(!$this->current_transport->attributes()->ufrag)
-                                $this->current_transport->addAttribute('ufrag', $matches[1]);                            
+                        case 'ufrag':                            
+                            if($this->content == null) {
+                                $this->global_fingerprint['ufrag'] = $matches[1];
+                            } else {
+                                $this->transport->addAttribute('ufrag', $matches[1]);
+                            }
+                            
                             break;
                         
                         case 'candidate':
@@ -216,7 +219,7 @@ class SDPtoJingle {
                                 $reladdr = $relport = null;
                             }
                             
-                            $candidate = $this->current_transport->addChild('candidate');
+                            $candidate = $this->transport->addChild('candidate');
                         
                             $candidate->addAttribute('component' , $matches[2]);
                             $candidate->addAttribute('foundation', $matches[1]);

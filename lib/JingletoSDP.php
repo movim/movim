@@ -39,11 +39,23 @@ class JingletoSDP {
         $sdp_timing =
             't=0 0';
             
-        $sdp_media = '';
+        $sdp_medias = '';
             
         foreach($this->jingle->children() as $content) {
-            $sdp_media .= 
+            $media_header_ids = array();
+            
+            $sdp_media_header = 
                 "\nm=".$content->description->attributes()->media.
+                ' 1 ';
+
+            if(isset($content->description->crypto)
+            || isset($content->transport->fingerprint)) {
+                $sdp_media_header .= 'RTP/SAVPF';
+            } else {
+                $sdp_media_header .= 'RTP/AVPF';
+            }
+
+            $sdp_media = 
                 "\nc=IN IP4 0.0.0.0".
                 "\na=rtcp:1 IN IP4 0.0.0.0";
                 
@@ -86,6 +98,8 @@ class JingletoSDP {
                         $sdp_media .= 
                             "\na=rtpmap:".
                             $payload->attributes()->id;
+
+                        array_push($media_header_ids, $payload->attributes()->id);
 
                         if(isset($payload->attributes()->name)) {
                             $sdp_media .= ' '.$payload->attributes()->name;
@@ -185,13 +199,19 @@ class JingletoSDP {
                         break;
                 }
             }
+
+            $sdp_media_header = $sdp_media_header.' '.implode(' ', $media_header_ids);
+
+            $sdp_medias .=
+                $sdp_media_header.
+                $sdp_media;
         }
         
         $this->sdp .= $sdp_version;
         $this->sdp .= "\n".$sdp_origin;
         $this->sdp .= "\n".$sdp_session_name;
         $this->sdp .= "\n".$sdp_timing;
-        $this->sdp .= $sdp_media;
+        $this->sdp .= $sdp_medias;
         
         return $this->sdp;
     }
