@@ -18,6 +18,7 @@ class JingletoSDP {
 
     function generate() {
         $username = current(explode('@', $this->jingle->attributes()->initiator));
+        $username = $username? $username : "-";
         $sessid   = $this->jingle->attributes()->sid;
         $this->values['session_id']   = substr(base_convert($sessid, 30, 10), 0, 6);
         
