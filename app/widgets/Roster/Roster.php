@@ -171,7 +171,7 @@ class Roster extends WidgetBase
         if($type == 'bot')
             $html .= '<div class="infoicon bot"></div>';
 
-        if($jingle_video )
+        if($jingle_video && $jingle_ice && $jingle_audio)
             $html .= '<div class="infoicon jingle" onclick="Popup.open(\''.$contact->jid.'/'.$contact->ressource.'\')"></div>';
 
         if(($contact->tuneartist != null && $contact->tuneartist != '') ||
