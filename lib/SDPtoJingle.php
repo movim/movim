@@ -10,8 +10,8 @@ class SDPtoJingle {
     private $global_fingerprint = array();
     
     private $regex = array(
-      'candidate' =>        "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d))?/i",
-      'rtpmap' =>           "/^a=rtpmap:(\d+) (([^\s\/]+)\/(\d+)(\/([^\s\/]+))?)?/i",
+      'candidate' =>        "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d) (network) (\d) (id) ([a-zA-Z0-9]{1,45}))?/i", //à partir de generation les attr sont spécifiques à XMPP..autant l'enlever de la REGEX et les traiter à part? En théorie ils peuvent être dans n'importe quel ordre.
+      'rtpmap' =>           "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
       'fmtp' =>             "/^a=fmtp:(\d+) (.+)/i",
       'rtcp_fb' =>          "/^a=rtcp-fb:(\S+) (\S+)( (\S+))?/i",
       'rtcp_fb_trr_int' =>  "/^a=rtcp-fb:(\d+) trr-int (\d+)/i",
@@ -76,24 +76,40 @@ class SDPtoJingle {
                             $bandwidth->addAttribute('value',      $matches[2]);
                             break;
                             
-                        // http://xmpp.org/extensions/xep-0167.html#format
-                        case 'fmtp':
-                            // TODO : complete it
-                            break;
-                            
                         case 'rtpmap':
-                            if(isset($matches[6]))
-                                $channel = $matches[6];
-                            else $channel = null;
-                        
                             $payloadtype = $description->addChild('payload-type');
                             $payloadtype->addAttribute('id',        $matches[1]);
                             $payloadtype->addAttribute('name',      $matches[3]);
-                            $payloadtype->addAttribute('clockrate', $matches[4]);
+                            if(isset($matches[4]))
+                                $payloadtype->addAttribute('clockrate', $matches[5]);
                             
-                            if($channel)
-                                $payloadtype->addAttribute('channels',   $matches[6]);
+                            if(isset($matches[7]))
+                                $payloadtype->addAttribute('channels',   $matches[7]);
                             
+                            break;
+
+                            
+                        // http://xmpp.org/extensions/xep-0167.html#format
+                        case 'fmtp':
+                            /*
+                             * This work only if fmtp is added just after
+                             * the correspondant rtpmap
+                             */                            
+                            if($matches[1] == $payloadtype->attributes()->id) {
+                                $params = explode(';', $matches[2]);
+
+                                foreach($params as $value) {
+                                    $p = explode('=', trim($value));
+                                    
+                                    $parameter = $payloadtype->addChild('parameter');
+                                    if(count($p) == 1) {
+                                        $parameter->addAttribute('value', $p[0]);
+                                    } else {
+                                        $parameter->addAttribute('name', $p[0]);
+                                        $parameter->addAttribute('value', $p[1]);
+                                    }
+                                }
+                            }
                             break;
                             
                         case 'rtcp_fb':
@@ -199,7 +215,7 @@ class SDPtoJingle {
                             
                             break;
                             
-                        case 'ufrag':                            
+                        case 'ufrag':
                             if($this->content == null) {
                                 $this->global_fingerprint['ufrag'] = $matches[1];
                             } else {
@@ -209,8 +225,16 @@ class SDPtoJingle {
                             break;
                         
                         case 'candidate':
-                            if(isset($match[16]))
-                                $generation = $matches[16];
+                            $generation = "0";
+                            $network = "0";
+                            $id = generateKey(10);
+                            
+                            if($key = array_search("generation", $matches))
+                                $generation = $matches[($key+1)];
+                            if($key = array_search("network", $matches))
+                                $network = $matches[($key+1)];
+                            if($key = array_search("id", $matches))
+                                $id = $matches[($key+1)];
                                 
                             if(isset($matches[11]) && isset($matches[13])) {
                                 $reladdr = $matches[11];
@@ -223,11 +247,12 @@ class SDPtoJingle {
                         
                             $candidate->addAttribute('component' , $matches[2]);
                             $candidate->addAttribute('foundation', $matches[1]);
-                            if(isset($match[16]))
-                                $candidate->addAttribute('generation', $match[16]); //|| JSJAC_JINGLE_GENERATION;
-                            $candidate->addAttribute('id'        , generateKey(10)); //$self.util_generate_id();
+                            //if(isset($matches[16]))
+                            $candidate->addAttribute('generation', $generation); //|| JSJAC_JINGLE_GENERATION;
+                            //$candidate->addAttribute('id'        , generateKey(10)); //$self.util_generate_id();
+                            $candidate->addAttribute('id'        , $id);
                             $candidate->addAttribute('ip'        , $matches[5]);
-                            $candidate->addAttribute('network'   , 0);
+                            $candidate->addAttribute('network'   , $network);
                             $candidate->addAttribute('port'      , $matches[6]);
                             $candidate->addAttribute('priority'  , $matches[4]);
                             $candidate->addAttribute('protocol'  , $matches[3]);
