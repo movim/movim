@@ -77,16 +77,13 @@ class SDPtoJingle {
                             break;
                             
                         case 'rtpmap':
-                            if(isset($matches[6]))
-                                $channel = $matches[6];
-                            else $channel = null;
                             $payloadtype = $description->addChild('payload-type');
                             $payloadtype->addAttribute('id',        $matches[1]);
                             $payloadtype->addAttribute('name',      $matches[3]);
                             if(isset($matches[4]))
                                 $payloadtype->addAttribute('clockrate', $matches[5]);
                             
-                            if($channel)
+                            if(isset($matches[7]))
                                 $payloadtype->addAttribute('channels',   $matches[7]);
                             
                             break;
@@ -218,7 +215,7 @@ class SDPtoJingle {
                             
                             break;
                             
-                        case 'ufrag':                            
+                        case 'ufrag':
                             if($this->content == null) {
                                 $this->global_fingerprint['ufrag'] = $matches[1];
                             } else {
