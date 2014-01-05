@@ -76,24 +76,40 @@ class SDPtoJingle {
                             $bandwidth->addAttribute('value',      $matches[2]);
                             break;
                             
-                        // http://xmpp.org/extensions/xep-0167.html#format
-                        case 'fmtp':
-                            // TODO : complete it
-                            break;
-                            
                         case 'rtpmap':
-                            if(isset($matches[6]))
-                                $channel = $matches[6];
-                            else $channel = null;
                             $payloadtype = $description->addChild('payload-type');
                             $payloadtype->addAttribute('id',        $matches[1]);
                             $payloadtype->addAttribute('name',      $matches[3]);
                             if(isset($matches[4]))
                                 $payloadtype->addAttribute('clockrate', $matches[5]);
                             
-                            if($channel)
+                            if(isset($matches[7]))
                                 $payloadtype->addAttribute('channels',   $matches[7]);
                             
+                            break;
+
+                            
+                        // http://xmpp.org/extensions/xep-0167.html#format
+                        case 'fmtp':
+                            /*
+                             * This work only if fmtp is added just after
+                             * the correspondant rtpmap
+                             */                            
+                            if($matches[1] == $payloadtype->attributes()->id) {
+                                $params = explode(';', $matches[2]);
+
+                                foreach($params as $value) {
+                                    $p = explode('=', trim($value));
+                                    
+                                    $parameter = $payloadtype->addChild('parameter');
+                                    if(count($p) == 1) {
+                                        $parameter->addAttribute('value', $p[0]);
+                                    } else {
+                                        $parameter->addAttribute('name', $p[0]);
+                                        $parameter->addAttribute('value', $p[1]);
+                                    }
+                                }
+                            }
                             break;
                             
                         case 'rtcp_fb':
@@ -199,7 +215,7 @@ class SDPtoJingle {
                             
                             break;
                             
-                        case 'ufrag':                            
+                        case 'ufrag':
                             if($this->content == null) {
                                 $this->global_fingerprint['ufrag'] = $matches[1];
                             } else {

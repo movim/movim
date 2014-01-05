@@ -17,9 +17,7 @@ class JingletoSDP {
     }
 
     function generate() {
-        //$username = current(explode('@', $this->jingle->attributes()->initiator));
         $username = substr($this->jingle->attributes()->initiator, 0, strpos("@", $this->jingle->attributes()->initiator));//sinon le - marche pas
-        var_dump($this->jingle->attributes()->initiator);
         $username = $username? $username : "-";
         $sessid   = $this->jingle->attributes()->sid;
         $this->values['session_id']   = substr(base_convert($sessid, 30, 10), 0, 6);
@@ -116,25 +114,50 @@ class JingletoSDP {
                             }
                         }
 
-                        foreach($payload->children() as $rtcpfb) {
-                            if($rtcpfb->getName() == 'rtcp-fb') {
-                                $sdp_media .= 
-                                    "\na=rtcp-fb:".
-                                    $rtcpfb->attributes()->id.' '.
-                                    $rtcpfb->attributes()->type;
+                        $first_fmtp = true;
 
-                                if(isset($rtcpfb->attributes()->subtype)) {
-                                    $sdp_media .= ' '.$rtcpfb->attributes()->subtype;
-                                }
+                        foreach($payload->children() as $param) {
+                            switch($param->getName()) {
+                                case 'rtcp-fb' :
+                                    $sdp_media .= 
+                                        "\na=rtcp-fb:".
+                                        $param->attributes()->id.' '.
+                                        $param->attributes()->type;
+
+                                    if(isset($param->attributes()->subtype)) {
+                                        $sdp_media .= ' '.$param->attributes()->subtype;
+                                    }
+
+                                    break;
+
+                                // http://xmpp.org/extensions/xep-0167.html#format
+                                case 'parameter' :
+                                    if($first_fmtp) {
+                                        $sdp_media .=
+                                            "\na=fmtp:".
+                                            $payload->attributes()->id.
+                                            ' ';
+                                    } else {
+                                        $sdp_media .= '; ';
+                                    }
+
+                                    if(isset($param->attributes()->name)) {
+                                        $sdp_media .=
+                                            $param->attributes()->name.
+                                            '=';
+                                    }
+
+                                    $sdp_media .=
+                                        $param->attributes()->value;
+
+                                    $first_fmtp = false;
+                                    
+                                    break;
                             }
 
                             // TODO rtcp_fb_trr_int ?
                         }
-                        break;
-
-                    case 'fmtp':
-                        // TODO
-                        //Codec-specific parameters should be added in other attributes (for example, "a=fmtp:").
+                        
                         break;
 
                     case 'source':
