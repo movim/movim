@@ -353,6 +353,7 @@
     border-spacing: 0px;
     background-color: white;
     width: 100%;
+    border: 1px solid #DDD;
     display: none;
 }
 
@@ -380,7 +381,8 @@
 
 .post .tools {
     border-top: 1px solid #EEE;
-    padding: 0.5em 1em;
+    margin-top: 1em;
+    padding: 0.5em 0;
     position: relative;
     line-height: 1.5em;
     clear: both;
