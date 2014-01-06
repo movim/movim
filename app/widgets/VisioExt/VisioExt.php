@@ -35,7 +35,7 @@ class VisioExt extends WidgetBase
         $sdp = $jts->generate();
         
         if($sdp) {        
-            RPC::call('Popup.open', (string)$jingle->attributes()->initiator);
+            RPC::call('Popup.setJid', (string)$jingle->attributes()->initiator);
             RPC::call('Popup.call', 'onOffer', $sdp);
         }
     }
@@ -49,8 +49,7 @@ class VisioExt extends WidgetBase
     
     function onTransportInfo($jingle) {
         $jts = new \JingletoSDP($jingle);
-        $sdp = $jts->generate();
-        \movim_log($sdp);        
+        $sdp = $jts->generate();      
     }
     
     function onSessionTerminate($jingle) {

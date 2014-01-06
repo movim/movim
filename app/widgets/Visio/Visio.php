@@ -30,6 +30,9 @@ class Visio extends WidgetBase
             $cd = new modl\ContactDAO();
             $contact = $cd->get($jid);
 
+            if(!$contact)
+                $contact = new modl\Contact();
+
             $this->view->assign('avatar',$contact->getPhoto('l'));
             $this->view->assign('name'  ,$contact->getTrueName());
             $this->view->assign('jid'   ,$jid);
