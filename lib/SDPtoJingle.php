@@ -26,6 +26,7 @@ class SDPtoJingle {
       'fingerprint' =>      "/^a=fingerprint:(\S+) (\S+)/i",
       'setup' =>            "/^a=setup:(\S+)/i",
       'extmap' =>           "/^a=extmap:([^\s\/]+)(\/([^\s\/]+))? (\S+)/i",
+      'sctpmap'         =>  "/^a=sctpmap:(\d+) (\S+) (\d+)/i",
       'bandwidth' =>        "/^b=(\w+):(\d+)/i",
       'media' =>            "/^m=(audio|video|application|data)/i"
     );
@@ -197,6 +198,15 @@ class SDPtoJingle {
                                 $fingerprint->addAttribute('hash', $matches[1]);
                             }
                             
+                            break;
+
+                        //
+                        case 'sctpmap':
+                            $sctpmap = $this->transport->addChild('sctpmap');
+                            $sctpmap->addAttribute('xmlns', "urn:xmpp:jingle:transports:dtls-sctp:1");
+                            $sctpmap->addAttribute('number', $matches[1]);
+                            $sctpmap->addAttribute('protocol', $matches[2]);
+                            $sctpmap->addAttribute('streams', $matches[3]);
                             break;
                             
                         case 'setup':
