@@ -9,4 +9,5 @@ AddType application/x-web-app-manifest+json .webapp
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule (.*) index.php?query=$1 [L]
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
