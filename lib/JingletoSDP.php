@@ -199,8 +199,8 @@ class JingletoSDP {
                                 $content->transport->fingerprint->attributes()->setup;                    
                         }
                         break;
-//<sctpmap xmlns="urn:xmpp:jingle:transports:dtls-sctp:1" number="5000" protocol="webrtc-datachannel" stream="16"/>
 
+                    // http://xmpp.org/extensions/inbox/jingle-dtls.html
                     case 'sctpmap':
                         $sdp_media .=
                             "\na=sctpmap:".

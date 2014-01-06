@@ -200,7 +200,7 @@ class SDPtoJingle {
                             
                             break;
 
-                        //
+                        // http://xmpp.org/extensions/inbox/jingle-dtls.html
                         case 'sctpmap':
                             $sctpmap = $this->transport->addChild('sctpmap');
                             $sctpmap->addAttribute('xmlns', "urn:xmpp:jingle:transports:dtls-sctp:1");
