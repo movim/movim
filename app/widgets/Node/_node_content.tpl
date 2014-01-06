@@ -1,4 +1,4 @@
-<div class="posthead padded">
+<div class="posthead">
     {if="$subscribed == true"}  
         <a
             href="#" 
