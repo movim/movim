@@ -69,7 +69,7 @@ var Popup = {
     call: function(args) {
         if( this.win && !this.win.closed ) {
             // The popup is open so call it
-            this.win[func](params);
+            Popup.send(args);
         } else if(this.jid) {
             // The popup is closed so open it
             console.log('We open the Popup');

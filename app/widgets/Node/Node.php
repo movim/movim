@@ -33,24 +33,26 @@ class Node extends WidgetCommon
         $this->registerEvent('pubsubsubscribederror', 'onPubsubSubscribedError');
         $this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
 
-        $this->view->assign('server', $_GET['s']);
-        $this->view->assign('node',   $_GET['n']);
-        $this->view->assign('getaffiliations', $this->genCallAjax('ajaxGetAffiliations', "'".$_GET['s']."'", "'".$_GET['n']."'"));
-        $this->view->assign('getmetadata', $this->genCallAjax('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
-        $this->view->assign('hash', md5($_GET['s'].$_GET['n']));
-        $this->view->assign('items', $this->prepareNode($_GET['s'], $_GET['n']));
-        
-        $nd = new modl\ItemDAO();
-        $node = $nd->getItem($_GET['s'], $_GET['n']);
-        
-        if($node != null)
-            $title = $node->getName();
-        else
-            $title = $groupid;
+        if(isset($_GET['s']) && isset($_GET['n'])) {
+            $this->view->assign('server', $_GET['s']);
+            $this->view->assign('node',   $_GET['n']);
+            $this->view->assign('getaffiliations', $this->genCallAjax('ajaxGetAffiliations', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('getmetadata', $this->genCallAjax('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('hash', md5($_GET['s'].$_GET['n']));
+            $this->view->assign('items', $this->prepareNode($_GET['s'], $_GET['n']));
+            
+            $nd = new modl\ItemDAO();
+            $node = $nd->getItem($_GET['s'], $_GET['n']);
+            
+            if($node != null)
+                $title = $node->getName();
+            else
+                $title = $groupid;
 
-        $this->view->assign('title',          $title);
-        
-        $this->view->assign('formpublish', $this->prepareSubmitForm($_GET['s'], $_GET['n']));
+            $this->view->assign('title',          $title);
+            
+            $this->view->assign('formpublish', $this->prepareSubmitForm($_GET['s'], $_GET['n']));
+        }
     }
     
     function onPubsubSubscribed($params)
@@ -74,7 +76,7 @@ class Node extends WidgetCommon
     function onPubsubAffiliations($params) {
         foreach($params[0] as $r) {
             if($r[0] == $this->user->getLogin())
-                $this->role = $r[1];
+                $this->role = (string)$r[1];
         }
 
         if($this->searchSubscription($params[1], $params[2])
