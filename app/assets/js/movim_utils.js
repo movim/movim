@@ -197,7 +197,8 @@ function movim_button_reset(element) {
  * @param string the selector of the element
  */
 function movim_toggle_display(element) {
-    var node = movim_get_node(element);
+    var node = movim_get_node(element[0]);
+
     if(node.style.display == 'block')
         node.style.display = 'none';
     else
