@@ -90,7 +90,7 @@ class Chat extends WidgetBase
                 $contact->getTrueName(),
                 $message->body,
                 $contact->getPhoto('m'));
-        
+
         if($contact != null && $contact->chaton == 0) {
             $contact->chaton = 2;
             $rd->setChat($jid, 2);
@@ -106,17 +106,17 @@ class Chat extends WidgetBase
                 RPC::call('colorTalk',
                             'messages'.$contact->jid);
             }
-            
+
             RPC::call('movim_append',
                            'messages'.$contact->jid,
                            $html);
             
-            if($message->session != $message->jidfrom)
+            //if($message->session != $message->jidfrom) {
                 RPC::call('hideComposing',
                            $contact->jid); 
-            if($message->session != $message->jidfrom)
                 RPC::call('hidePaused',
-                           $contact->jid); 
+                           $contact->jid);
+            //}
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->jid);
