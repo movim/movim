@@ -113,9 +113,6 @@
     padding-right: 0.5em;
     line-height: 2em;
     display: inline-block;
-    white-space: nowrap;  
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .post span.title {

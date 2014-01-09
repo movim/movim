@@ -168,8 +168,10 @@ class Contact extends ModlModel {
     }
 
     public function createThumbnails() {
-        \createThumbnails(strtolower($this->jid), $this->photobin);
-        \createEmailPic(strtolower($this->jid), $this->email);
+        if(isset($this->photobin))
+            \createThumbnails(strtolower($this->jid), $this->photobin);
+        if(isset($this->email))
+            \createEmailPic(strtolower($this->jid), $this->email);
     }
 
     public function getPhoto($size = 'l', $jid = false) {
