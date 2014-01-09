@@ -111,12 +111,12 @@ class Chat extends WidgetBase
                            'messages'.$contact->jid,
                            $html);
             
-            if($message->session != $message->jidfrom) {
+            //if($message->session != $message->jidfrom) {
                 RPC::call('hideComposing',
                            $contact->jid); 
                 RPC::call('hidePaused',
                            $contact->jid);
-            }
+            //}
                            
             RPC::call('scrollTalk',
                            'messages'.$contact->jid);
