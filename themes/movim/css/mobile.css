@@ -145,12 +145,13 @@ table#feedsubmitform {
     margin-left: 0px;
     width: 100%;
 }
-/*
-.post .content .img {
-    max-width: 42%;
-    padding: 2px;
+
+.post .header span {
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-*/
+
 .post .older {
     margin-right: 0px;
 }
