@@ -58,10 +58,7 @@ class ContactCard extends WidgetCommon
                         <span>'.$contact->name.'</span>
                       </div>';
 
-            if(
-                $contact->date != '0000-00-00T00:00:00+0000' 
-                && $contact->date != '1970-01-01T00:00:00+0000'
-                && $this->testIsSet($contact->date))
+            if($this->testIsSet($contact->date))
             $html .= '<div class="element simple">
                         <label for="day">'.t('Date of Birth').'</label>
                         <span>'.date('j M Y',strtotime($contact->date)).'</span>
@@ -79,7 +76,6 @@ class ContactCard extends WidgetCommon
                         <span>'.$marital[$contact->marital].'</span>
                       </div>';
 
-            //  <a target="_blank" href="mailto:'.$contact->email.'">'.$contact->email.'</a>
             if($this->testIsSet($contact->email)) {
                 if(filter_var($contact->email, FILTER_VALIDATE_EMAIL)) {
                     $html .= '<div class="element simple">
