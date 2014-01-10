@@ -192,6 +192,10 @@
     clear: both;
 }
 
+#chats .chat .panel .messages .message .content {
+    white-space: pre-wrap;
+}
+
 #chats .chat .panel .messages .message img.avatar {
     float: left;
     margin-right: 0.5em;

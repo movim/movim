@@ -8,5 +8,3 @@
         <?php $this->widget('AccountNext');?>
     </div>
 </div>
-
-<?php //$this->widget('Account');?>
