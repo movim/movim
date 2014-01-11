@@ -182,9 +182,7 @@ class Contact extends ModlModel {
             if($jid != false && file_exists(CACHE_PATH.$jid.'_'.$size.'.jpg')) {
                 $str = BASE_URI.'cache/'.strtolower($jid).'_'.$size.'.jpg';
             } elseif(
-                   isset($this->phototype) 
-                && isset($this->photobin) 
-                && (string)$this->phototype != '' 
+                isset($this->photobin)
                 && (string)$this->photobin != ''
             ) {
                 $str = BASE_URI.'cache/'.strtolower($this->jid).'_'.$size.'.jpg';
