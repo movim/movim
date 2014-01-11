@@ -108,6 +108,9 @@ class Node extends WidgetCommon
 
     function ajaxGetItems($server, $node)
     {
+        $pd = new modl\PostnDAO();
+        $pd->deleteNode($server, $node);
+    
         $r = new moxl\PubsubGetItems();
         $r->setTo($server)
           ->setNode($node)

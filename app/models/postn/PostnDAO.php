@@ -173,6 +173,23 @@ class PostnDAO extends ModlSQL {
             
         return $this->run('Message');
     }
+
+    function deleteNode($jid, $node) {
+        $this->_sql = '
+            delete from postn
+            where jid = :jid
+                and node = :node';
+
+        $this->prepare(
+            'Postn',
+            array(
+                'jid' => $jid,
+                'node' => $node
+            )
+        );
+            
+        return $this->run('Message');
+    }
     
     function getNode($from, $node, $limitf = false, $limitr = false) {
         $this->_sql = '

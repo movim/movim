@@ -7,5 +7,3 @@
         <?php $this->widget('Subscribe');?>
     </div>
 </div>
-
-<?php //$this->widget('Account');?>

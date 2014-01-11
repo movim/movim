@@ -36,6 +36,10 @@
 .leaflet-container img {
 	max-width: none !important;
 	}
+
+.leaflet-popup-content img {
+	max-width: 4em !important;
+}
 /* stupid Android 2 doesn't understand "max-width: none" properly */
 .leaflet-container img.leaflet-image-layer {
 	max-width: 15000px !important;

@@ -345,7 +345,8 @@ class Chat extends WidgetBase
     
     function prepareMessage($message, $muc = false) {
         if($message->body != '') {
-            $html = '<div class="message ';
+            $html =
+                '<div class="message ';
                 if($message->session == $message->jidfrom)
                     $html.= 'me';
                    
@@ -374,7 +375,11 @@ class Chat extends WidgetBase
                         $message->ressource.'
                     </span>';
                 
-            $html.= prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).'</div>';
+            $html .=
+                    '<div class="content">'.
+                        prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).
+                    '</div>
+                </div>';
             return $html;
         } else {
             return '';

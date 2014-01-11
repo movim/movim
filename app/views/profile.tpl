@@ -4,7 +4,7 @@
 <?php $this->widget('Poller');?>
 <?php $this->widget('Presence');?>
 <?php $this->widget('Chat');?>
-<?php //$this->widget('ChatExt');?>
+<?php $this->widget('VisioExt');?>
     
 <div id="head">
 </div>
@@ -12,8 +12,8 @@
     <div id="left">
         <?php $this->widget('Connection');?>
         <?php $this->widget('Profile');?>
-        <?php $this->widget('Bookmark');?>
         <?php $this->widget('Notifs');?>
+        <?php $this->widget('Bookmark');?>
     </div>
 
     <?php $this->widget('Tabs');?>
