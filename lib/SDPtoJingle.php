@@ -1,6 +1,7 @@
 <?php
 class SDPtoJingle {
     private $sdp;
+    private $arr;
     private $jingle;
     
     private $content    = null;
@@ -11,6 +12,7 @@ class SDPtoJingle {
     
     private $regex = array(
       'candidate' =>        "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d) (network) (\d) (id) ([a-zA-Z0-9]{1,45}))?/i", //à partir de generation les attr sont spécifiques à XMPP..autant l'enlever de la REGEX et les traiter à part? En théorie ils peuvent être dans n'importe quel ordre.
+      'sess_id' =>          "/^o=(\S+) (\d+)/i",
       'rtpmap' =>           "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
       'fmtp' =>             "/^a=fmtp:(\d+) (.+)/i",
       'rtcp_fb' =>          "/^a=rtcp-fb:(\S+) (\S+)( (\S+))?/i",
@@ -30,24 +32,37 @@ class SDPtoJingle {
       'bandwidth' =>        "/^b=(\w+):(\d+)/i",
       'media' =>            "/^m=(audio|video|application|data)/i"
     );
-
+    
     function __construct($sdp, $initiator, $responder, $action) {
         $this->sdp = $sdp;
+        $this->arr = explode("\n", $this->sdp);
         $this->jingle = new SimpleXMLElement('<jingle></jingle>');
         $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
         $this->jingle->addAttribute('action',$action);
         $this->jingle->addAttribute('initiator',$initiator);
         $this->jingle->addAttribute('responder',$responder);
-        $this->jingle->addAttribute('sid', generateKey(10));
+    }
+    
+    function getSessionId(){
+        $s = Session::start('movim');
+        if($sid = $s->get('jingleSid')){
+            return $sid;
+        }
+        else{
+            $o = $this->arr[1];
+            $sid = explode(" ", $o);
+            return substr(base_convert($sid[1], 30, 10), 0, 6);
+        }
     }
 
     function generate() {
-        $arr = explode("\n", $this->sdp);
-
-        foreach($arr as $l) {
+        foreach($this->arr as $l) {
             foreach($this->regex as $key => $r) {
-                if(preg_match($r, $l, $matches)) {
+                if(preg_match($r, $l, $matches)) {                    
                     switch($key) { 
+                        case 'sess_id':
+                            $this->jingle->addAttribute('sid', $this->getSessionId());
+                            break;
                         case 'media':
                             $this->content      = $this->jingle->addChild('content');
                             $this->transport    = $this->content->addChild('transport');
