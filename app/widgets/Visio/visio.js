@@ -73,5 +73,7 @@ var Visio = {
 
 movim_add_onload(function()
 {
+    document.getElementById("call").onclick = function() { init(true); };
+    document.getElementById("hang-up").onclick = function() { terminate(); };
     document.getElementById("toggle-screen").onclick = function() { Visio.fullScreen(); };
 });
