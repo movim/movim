@@ -168,8 +168,10 @@ class Contact extends ModlModel {
     }
 
     public function createThumbnails() {
-        \createThumbnails(strtolower($this->jid), $this->photobin);
-        \createEmailPic(strtolower($this->jid), $this->email);
+        if(isset($this->photobin))
+            \createThumbnails(strtolower($this->jid), $this->photobin);
+        if(isset($this->email))
+            \createEmailPic(strtolower($this->jid), $this->email);
     }
 
     public function getPhoto($size = 'l', $jid = false) {
@@ -180,9 +182,7 @@ class Contact extends ModlModel {
             if($jid != false && file_exists(CACHE_PATH.$jid.'_'.$size.'.jpg')) {
                 $str = BASE_URI.'cache/'.strtolower($jid).'_'.$size.'.jpg';
             } elseif(
-                   isset($this->phototype) 
-                && isset($this->photobin) 
-                && (string)$this->phototype != '' 
+                isset($this->photobin)
                 && (string)$this->photobin != ''
             ) {
                 $str = BASE_URI.'cache/'.strtolower($this->jid).'_'.$size.'.jpg';
