@@ -76,7 +76,7 @@ class VisioExt extends WidgetBase
           ->setOffer($stj->generate())
           ->request();
         
-        $sid = $sjt->getSessionId();
+        $sid = $stj->getSessionId();
         $s = Session::start('movim');
         $s->set('jingleSid', $sid);    
     }
