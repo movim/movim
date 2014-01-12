@@ -17,7 +17,7 @@
 
     </div>
     
-    <div id="formpublish" style="display: none;">
+    <div id="formpublish" style="padding-bottom: 1em; display: none;">
         {$formpublish}
     </div>
     <div id="{$hash}">

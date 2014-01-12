@@ -32,9 +32,17 @@ function popUpEvent(args) {
 
 var Popup = {
     win : null,
+    jid : null,
+
+    setJid: function(jid) {
+        this.jid = jid;
+    },
+    
     open: function(jid) {
         console.log('Opening the Popup');
         var url = BASE_URI + PAGE_KEY_URI + "visio&f="+jid
+
+        this.setJid(jid);
         
         if( !this.win || this.win.closed ) {
             this.win = window.open( url, "win",  "height=480,width=640,directories=0,titlebar=0,toolbar=0,location=0,status=0, personalbar=0,menubar=0,resizable=0" );
@@ -48,21 +56,31 @@ var Popup = {
     focus: function() {
         this.win.focus();
     },
+
+    send: function(args) {
+        var func = args[0];
+        args.shift();
+        var params = args;
+        
+        console.log('Calling the Popup');
+        this.win[func](params);
+    },
     
     call: function(args) {
         if( this.win && !this.win.closed ) {
             // The popup is open so call it
-            var func = args[0];
-            args.shift();
-            var params = args;
-            
-            console.log('Calling the Popup');
-            console.log(args);
-            
-            this.win[func](params);
-        } else {
+            Popup.send(args);
+        } else if(this.jid) {
             // The popup is closed so open it
+            console.log('We open the Popup');
+            this.open(this.jid);
             
+            console.log('We wait a little');
+            setTimeout(function() {Popup.send(args); }, 1000);
         }
+    },
+    
+    hungup: function(args) {
+        console.log('Your friend just hung up');
     }
 }
