@@ -66,6 +66,10 @@ var Popup = {
         this.win[func](params);
     },
     
+    hangUp: function(args) {
+        console.log('Your friend just hung up');
+    },
+    
     call: function(args) {
         if( this.win && !this.win.closed ) {
             // The popup is open so call it

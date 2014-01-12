@@ -208,3 +208,14 @@ function init(isCaller) {
 
     //Visio.log(pc);
 }
+
+function terminate() {
+    pc.close();
+    Visio.call(['VisioExt_ajaxSendSessionTerminate']);
+    
+    // Get a reference to the video element on the page.
+    var vid = document.getElementById('local-video');
+    var avatar = document.getElementById('avatar');
+    vid.className = vid.className.replace('tiny', '');
+    avatar.className = avatar.className.replace('tiny', '');
+}
