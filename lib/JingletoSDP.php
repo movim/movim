@@ -15,12 +15,22 @@ class JingletoSDP {
     function __construct($jingle) {
         $this->jingle = $jingle;
     }
-
+    
+    function getSessionId(){
+        $s = Session::start('movim');
+        if($sid = $s->get('jingleSid')){
+            return $sid;
+        }
+        else{
+            $sessid = $this->jingle->attributes()->sid;
+            return substr(base_convert($sessid, 30, 10), 0, 6);
+        }
+    }
+    
     function generate() {
         $username = substr($this->jingle->attributes()->initiator, 0, strpos("@", $this->jingle->attributes()->initiator));//sinon le - marche pas
         $username = $username? $username : "-";
-        $sessid   = $this->jingle->attributes()->sid;
-        $this->values['session_id']   = substr(base_convert($sessid, 30, 10), 0, 6);
+        $this->values['session_id'] = $this->getSessionId();
         
         $sdp_version =
             'v=0';
