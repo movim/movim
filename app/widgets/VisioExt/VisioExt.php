@@ -43,8 +43,12 @@ class VisioExt extends WidgetBase
     function onSessionAccept($jingle) {
         $jts = new \JingletoSDP($jingle);
         $sdp = $jts->generate();
+        $sid = $jts->getSessionId();
         
-        RPC::call('Popup.call', 'onAccept', $sdp);        
+        RPC::call('Popup.call', 'onAccept', $sdp);
+        
+        $s = Session::start('movim');
+        $s->set('jingleSid', $sid);        
     }
     
     function onTransportInfo($jingle) {
@@ -53,7 +57,7 @@ class VisioExt extends WidgetBase
     }
     
     function onSessionTerminate($jingle) {
-
+        //do something when you recieve the session-terminate from jingle
     }
 
     function ajaxSendProposal($proposal) {
@@ -71,6 +75,10 @@ class VisioExt extends WidgetBase
         $r->setTo($p->jid.'/'.$p->ressource)
           ->setOffer($stj->generate())
           ->request();
+        
+        $sid = $sjt->getSessionId();
+        $s = Session::start('movim');
+        $s->set('jingleSid', $sid);    
     }
 
     function ajaxSendAcceptance($proposal) {
@@ -87,6 +95,16 @@ class VisioExt extends WidgetBase
         $r = new moxl\JingleSessionInitiate();
         $r->setTo($p->jid.'/'.$p->ressource)
           ->setOffer($stj->generate())
+          ->request();
+    }
+
+    function ajaxSendSessionTerminate() {
+        $s = Session::start('movim');
+        $jingleSid = $s->get("jingleSid");
+        
+        $r = new moxl\JingleSessionTerminate();
+        $r->setTo($p->jid.'/'.$p->ressource)
+          ->setJingleSid($jingleSid)
           ->request();
     }
 
