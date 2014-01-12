@@ -208,3 +208,7 @@ function init(isCaller) {
 
     //Visio.log(pc);
 }
+
+function terminate() {
+    pc.close();
+}

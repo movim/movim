@@ -44,21 +44,19 @@ class JingletoSDP {
             
         foreach($this->jingle->children() as $content) {
             $media_header_ids = array();
+            $media_header_first_port = null;
             
-            $sdp_media_header = 
-                "\nm=".$content->description->attributes()->media.
-                ' 1 ';
+            $sdp_media = 
+                "\nc=IN IP4 0.0.0.0";
 
             if(isset($content->description->crypto)
             || isset($content->transport->fingerprint)) {
-                $sdp_media_header .= 'RTP/SAVPF';
+                $sdp_media .= 
+                    "\na=rtcp:1 IN IP4 0.0.0.0";
             } else {
-                $sdp_media_header .= 'RTP/AVPF';
+                $sdp_media .= 
+                    "\na=rtcp:1 IN IP4 0.0.0.0";
             }
-
-            $sdp_media = 
-                "\nc=IN IP4 0.0.0.0".
-                "\na=rtcp:1 IN IP4 0.0.0.0";
                 
             if(isset($content->transport->attributes()->ufrag))
                 $sdp_media .= "\na=ice-ufrag:".$content->transport->attributes()->ufrag;
@@ -200,6 +198,20 @@ class JingletoSDP {
                         }
                         break;
 
+                    // http://xmpp.org/extensions/inbox/jingle-dtls.html
+                    case 'sctpmap':
+                        $sdp_media .=
+                            "\na=sctpmap:".
+                            $payload->attributes()->number.' '.
+                            $payload->attributes()->protocol.' '.
+                            $payload->attributes()->streams.' '
+                            ;
+
+
+                        array_push($media_header_ids, $payload->attributes()->number);
+                            
+                        break;
+
                     case 'candidate':
                         $sdp_media .= 
                             "\na=candidate:".
@@ -223,9 +235,27 @@ class JingletoSDP {
                                 ' network '.$payload->attributes()->network.
                                 ' id '.$payload->attributes()->id;
                         }
+
+                        if($media_header_first_port == null)
+                            $media_header_first_port = $payload->attributes()->port;
+                        
                         break;
                 }
             }
+
+            $sdp_media_header = 
+                "\nm=".$content->description->attributes()->media.
+                ' '.$media_header_first_port.' ';
+
+            if(isset($content->transport->sctpmap)) {
+                $sdp_media_header .= 'DTLS/SCTP';
+            } elseif(isset($content->description->crypto)
+            || isset($content->transport->fingerprint)) {
+                $sdp_media_header .= 'RTP/SAVPF';
+            } else {
+                $sdp_media_header .= 'RTP/AVPF';
+            }
+                
 
             $sdp_media_header = $sdp_media_header.' '.implode(' ', $media_header_ids);
 

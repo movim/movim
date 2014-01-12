@@ -158,11 +158,11 @@
                 <label for="privacy"></label>
             </div>
         </div>
-            <div class="element">
-                <div class="message info">
-                    {$c->t('Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet.')}
-                </div>
+        <div class="element">
+            <div class="message info">
+                {$c->t('Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet.')}
             </div>
+        </div>
         <!--<div class="element">
             
             
