@@ -78,5 +78,9 @@ var Popup = {
             console.log('We wait a little');
             setTimeout(function() {Popup.send(args); }, 1000);
         }
+    },
+    
+    hungup: function(args) {
+        console.log('Your friend just hung up');
     }
 }
