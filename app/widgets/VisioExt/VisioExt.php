@@ -98,12 +98,12 @@ class VisioExt extends WidgetBase
           ->request();
     }
 
-    function ajaxSendSessionTerminate() {
+    function ajaxSendSessionTerminate($jid, $ressource) {
         $s = Session::start('movim');
         $jingleSid = $s->get("jingleSid");
         
         $r = new moxl\JingleSessionTerminate();
-        $r->setTo($p->jid.'/'.$p->ressource)
+        $r->setTo($jid.'/'.$ressource)
           ->setJingleSid($jingleSid)
           ->request();
     }

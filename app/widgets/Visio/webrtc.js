@@ -211,11 +211,13 @@ function init(isCaller) {
 
 function terminate() {
     pc.close();
-    Visio.call(['VisioExt_ajaxSendSessionTerminate']);
+    Visio.call(['VisioExt_ajaxSendSessionTerminate'], VISIO_JID, VISIO_RESSOURCE);
     
-    // Get a reference to the video element on the page.
+    // Get a reference to the video elements on the page.
     var vid = document.getElementById('local-video');
+    var rvid = document.getElementById('remote-video');
     var avatar = document.getElementById('avatar');
-    vid.className = vid.className.replace('tiny', '');
+    vid.className = vid.className.replace('tiny', 'off');
+    rvid.className = 'off';
     avatar.className = avatar.className.replace('tiny', '');
 }
