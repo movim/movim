@@ -211,7 +211,7 @@ function init(isCaller) {
 
 function terminate() {
     pc.close();
-    Visio.call(['VisioExt_ajaxSendSessionTerminate'], VISIO_JID, VISIO_RESSOURCE);
+    Visio.call(['VisioExt_ajaxSendSessionTerminate', VISIO_JID, VISIO_RESSOURCE]);
     
     // Get a reference to the video elements on the page.
     var vid = document.getElementById('local-video');
