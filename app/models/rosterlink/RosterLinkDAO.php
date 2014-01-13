@@ -177,25 +177,6 @@ class RosterLinkDAO extends ModlSQL {
         return $this->run('RosterLink');
     }
     
-    /*function getChat($jid) {
-        $this->_sql = '
-            select *
-            from rosterlink
-            where session=:session
-            and chaton > 0
-            and jid = :jid';
-        
-        $this->prepare(
-            'RosterLink', 
-            array(
-                'session' => $this->_user,
-                'jid'     => $jid
-            )
-        );
-        
-        return $this->run('RosterLink');
-    }*/
-    
     function clearRosterLink() {
         $this->_sql = '
             delete from rosterlink
