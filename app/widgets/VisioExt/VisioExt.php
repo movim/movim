@@ -57,7 +57,8 @@ class VisioExt extends WidgetBase
     }
     
     function onSessionTerminate($jingle) {
-        //do something when you recieve the session-terminate from jingle
+        //call webrtc.js terminate()
+        RPC::call('Popup.call', 'terminate');
     }
 
     function ajaxSendProposal($proposal) {
