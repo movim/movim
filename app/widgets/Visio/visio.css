@@ -33,11 +33,19 @@ body {
     right: 0;
     bottom: 0;
     transition: width 0.5s ease;
+    display: block;
+}
+#visio #remote-video.off {
+    display: none;
 }
 
 #visio #local-video.tiny {
     width: 20%;
     bottom: 3.5em;
+}
+
+#visio #local-video.off {
+    display: none;
 }
 
 #visio #local-video.tiny:hover {
@@ -68,6 +76,7 @@ body {
 
 #visio #avatar img {
     width: 100%;
+    display: block;
 }
 
 #visio #avatar.tiny {
