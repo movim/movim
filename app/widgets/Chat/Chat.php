@@ -495,7 +495,10 @@ class Chat extends WidgetBase
             7 => 'blue');
             
         $s = base_convert($jid, 32, 8);
-        return $colors[$s[7]];
+        if(isset($s[7]))
+            return $colors[$s[7]];
+        else
+            return 'orange';
     }
     
     // Prepare Chat
