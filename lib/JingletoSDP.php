@@ -28,8 +28,12 @@ class JingletoSDP {
     }
     
     function generate() {
-        $username = substr($this->jingle->attributes()->initiator, 0, strpos("@", $this->jingle->attributes()->initiator));//sinon le - marche pas
-        $username = $username? $username : "-";
+        if($this->jingle->attributes()->initiator) {
+            $username = explode('@', (string)$this->jingle->attributes()->initiator);
+            $username = $username[0];
+        } else
+            $username = '-';
+        
         $this->values['session_id'] = $this->getSessionId();
         
         $sdp_version =
@@ -55,10 +59,10 @@ class JingletoSDP {
         foreach($this->jingle->children() as $content) {
             $media_header_ids = array();
             $media_header_first_port = null;
+            $media_header_last_ip = null;
             
-            $sdp_media = 
-                "\nc=IN IP4 0.0.0.0";
-
+            $sdp_media = '';
+            /*
             if(isset($content->description->crypto)
             || isset($content->transport->fingerprint)) {
                 $sdp_media .= 
@@ -67,6 +71,7 @@ class JingletoSDP {
                 $sdp_media .= 
                     "\na=rtcp:1 IN IP4 0.0.0.0";
             }
+            */
                 
             if(isset($content->transport->attributes()->ufrag))
                 $sdp_media .= "\na=ice-ufrag:".$content->transport->attributes()->ufrag;
@@ -248,6 +253,8 @@ class JingletoSDP {
 
                         if($media_header_first_port == null)
                             $media_header_first_port = $payload->attributes()->port;
+
+                        $media_header_last_ip = $payload->attributes()->ip;
                         
                         break;
                 }
@@ -271,6 +278,7 @@ class JingletoSDP {
 
             $sdp_medias .=
                 $sdp_media_header.
+                "\nc=IN IP4 ".$media_header_last_ip.
                 $sdp_media;
         }
         
