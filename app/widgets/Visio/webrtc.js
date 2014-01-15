@@ -16,11 +16,23 @@ var sdpConstraints = {'mandatory': {
 
 function onIceCandidate(event) {
     Visio.log('onIceCandidate');
-    Visio.log(event);
+    //Visio.log(event);
+
+    //pc.addIceCandidate(event.candidate, onIceCandidateAdded, onDomError);
 }
 
 function onIceConnectionStateChanged(event) {
     Visio.log('onIceConnectionStateChanged');
+    Visio.log(event);
+}
+
+function onSignalingStateChanged(event) {
+    Visio.log('onSignalingStateChanged');
+    Visio.log(event);
+}
+
+function onIceCandidateAdded(event) {
+    Visio.log('onIceCandateAdded');
     Visio.log(event);
 }
 
@@ -44,20 +56,16 @@ function onRemoteStreamAdded(event) {
 }
 
 function onError(err) {
-    window.alert(err.message);
+    console.log(err);
 }
 
 function onOfferCreated(offer) {
-    //Visio.log(offer);
-
     pc.setLocalDescription(offer,onSetSessionDescriptionSuccess, onSetSessionDescriptionError);
 
     sendMessage(offer);
 }
 
 function onAnswerCreated(offer) {
-    //Visio.log(offer);
-
     pc.setLocalDescription(offer,onSetSessionDescriptionSuccess, onSetSessionDescriptionError);
 
     sendMessage(offer, true);    
@@ -66,19 +74,45 @@ function onAnswerCreated(offer) {
 function sendMessage(msg, accept) {
     offer = {};
     offer.sdp = msg.sdp;
+    
     offer.jid = VISIO_JID;
     offer.ressource = VISIO_RESSOURCE;
-    
-    var msgString = JSON.stringify(offer);
-    
-    if(accept) {
-        Visio.log('Send the acceptance.');
-        Visio.log('ACCEPTANCE ' + msg.sdp);
-        Visio.call(['VisioExt_ajaxSendAcceptance', msgString]);
+        
+    if(webrtcDetectedBrowser == 'chrome') {
+        setTimeout(function() {
+            if(!accept)
+                offer.sdp = pc.localDescription.sdp;
+        
+            var msgString = JSON.stringify(offer);
+            
+            if(accept) {
+                Visio.log('Send the acceptance.');
+                //Visio.log('ACCEPTANCE ' + msg.sdp);
+                Visio.call(['VisioExt_ajaxSendAcceptance', msgString]);
+            } else {
+                Visio.log('Send the proposal.');
+                //Visio.log('PROPOSAL ' + msg.sdp);
+
+
+                Visio.call(['VisioExt_ajaxSendProposal', msgString]);      
+            }
+        }, 1000);
     } else {
-        Visio.log('Send the proposal.');
-        Visio.log('PROPOSAL ' + msg.sdp);
-        Visio.call(['VisioExt_ajaxSendProposal', msgString]);
+        var msgString = JSON.stringify(offer);
+
+        console.log(offer);
+        
+        if(accept) {
+            Visio.log('Send the acceptance.');
+            //Visio.log('ACCEPTANCE ' + msg.sdp);
+            Visio.call(['VisioExt_ajaxSendAcceptance', msgString]);
+        } else {
+            Visio.log('Send the proposal.');
+            //Visio.log('PROPOSAL ' + msg.sdp);
+
+
+            Visio.call(['VisioExt_ajaxSendProposal', msgString]);      
+        }
     }
 }
 
@@ -95,22 +129,33 @@ function onSetRemoteSessionDescriptionSuccess() {
 }
 
 function onSetRemoteSessionDescriptionError(error) {
-    Visio.log('Failed to set remote session description: ' + error.message);
+    console.log('gnap');
+    console.log(error);
+    //Visio.log('Failed to set remote session description: ' + error.message);
 }
 
 function onOffer(offer) {
     offer = offer[0];
     
     Visio.log('Offer received.');
-    Visio.log('OFFER ' + offer);  
+    //Visio.log('OFFER ' + offer);
+
+    console.log(offer);
       
     if(!pc)
         init(false);
     
     if(offer != null) {
-        var desc = new RTCSessionDescription();
-        desc.sdp = offer;
-        desc.type = 'offer';
+        var message = {};
+        message.sdp = offer;
+        message.type = 'offer';
+        console.log(message);
+        var desc = new RTCSessionDescription(message);
+        console.log(desc);
+        
+        //var desc = new RTCSessionDescription();
+        //desc.sdp = offer;
+        //desc.type = 'offer';
         
         pc.setRemoteDescription(desc,
             onSetRemoteSessionDescriptionSuccess, onSetRemoteSessionDescriptionError);  
@@ -121,12 +166,18 @@ function onAccept(offer) {
     offer = offer[0];
     
     Visio.log('Accept received.');
-    Visio.log('ACCEPT ' + offer);  
-    
+    Visio.log('ACCEPT ' + offer);
+
     if(offer != null) {
-        var desc = new RTCSessionDescription();
-        desc.sdp = offer;
-        desc.type = 'answer';
+        //Visio.log('GN0P');
+        var message = {};
+        message.sdp = offer;
+        message.type = 'anwser';
+        console.log(message);
+        var desc = new RTCSessionDescription(message);
+        console.log(desc);
+        //desc.sdp = offer;
+        //desc.type = 'answer';
         
         pc.setRemoteDescription(desc,
             onSetRemoteSessionDescriptionSuccess, onSetRemoteSessionDescriptionError);  
@@ -149,7 +200,7 @@ function init(isCaller) {
               WebRTC is not supported by this browser.');
         return;
     }
-    
+
     if(getUserMedia) {
         if (getUserMedia) {
             getUserMedia = getUserMedia.bind(navigator);
@@ -183,8 +234,6 @@ function init(isCaller) {
             
             pc.addStream(localMediaStream);
             channel = pc.createDataChannel("visio");
-            
-            console.log(pc);
             
             if(isCaller)
                 pc.createOffer(onOfferCreated, onError);
