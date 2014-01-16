@@ -272,9 +272,8 @@ class SDPtoJingle {
                         
                             $candidate->addAttribute('component' , $matches[2]);
                             $candidate->addAttribute('foundation', $matches[1]);
-                            //if(isset($matches[16]))
-                            $candidate->addAttribute('generation', $generation); //|| JSJAC_JINGLE_GENERATION;
-                            //$candidate->addAttribute('id'        , generateKey(10)); //$self.util_generate_id();
+
+                            $candidate->addAttribute('generation', $generation); 
                             $candidate->addAttribute('id'        , $id);
                             $candidate->addAttribute('ip'        , $matches[5]);
                             $candidate->addAttribute('network'   , $network);

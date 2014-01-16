@@ -1,3 +1,10 @@
+
+@media screen and (max-width: 1280px) {
+    ul.thumb li {
+        width: 25%;
+    }
+}
+
 @media screen and (max-width: 1024px) {
 
 body {

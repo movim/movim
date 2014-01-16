@@ -12,12 +12,15 @@
     <meta name="viewport" content="width=device-width, user-scalable=no";>
     <?php
         $this->addCss('css/animations.css');
+
         $this->addCss('css/fonts.css');
         $this->addCss('css/forms.css');
         $this->addCss('css/submitform.css');
 
-        $this->addCss('css/posts.css');
         $this->addCss('css/style.css');
+        $this->addCss('css/posts.css');
+
+        $this->addCss('css/template.css');
 
         $this->scripts();
 
