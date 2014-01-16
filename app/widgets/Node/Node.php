@@ -191,9 +191,9 @@ class Node extends WidgetCommon
             
         if(sizeof($posts) > $this->_feedsize-1 && $html != '') {
             $nexthtml = '
-                <div class="post">
-                    <div 
-                        class="older" 
+                <div class="block large">
+                    <div
+                        class="older"
                         onclick="'.$this->genCallAjax($function, "'".$serverid."'", "'".$groupid."'", "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
                             t('Get older posts').'
                     </div>

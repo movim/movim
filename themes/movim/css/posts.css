@@ -1,4 +1,100 @@
 /* CSS of messages (Wall, Feed, News...) */
+article img {
+    max-width: 100%;
+}
+
+article > * {
+    background-color: white;
+}
+
+article header {
+    padding-bottom: 0;
+}
+
+article header img {
+    float: left;
+    width: 4em;
+    margin-right: 1em;
+}
+
+article header span {
+    display: inline-block;
+    line-height: 1.5em;
+}
+
+article header span.date {
+    color: #777;
+}
+
+article header span.title {
+    padding-left: 0;
+    display: block;
+    font-size: 1.5em;
+    line-height: 1.5em;
+
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+article section {
+    padding: 1em;
+}
+
+article footer {
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 1em;
+}
+
+article footer:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+/* Spoiler */
+
+article .spoiler > * {
+    opacity: 0;
+}
+
+article .spoiler.show > * {
+    opacity: 1;
+}
+
+article .spoiler:before {
+    content: "Spoiler +";
+    padding: 0.5em;
+    margin: 0.5em 0;
+    color: #777;
+    border-bottom: 1px solid #BBB;
+    display: block;
+}
+
+article .spoiler.show:before {
+    content: "Spoiler -";
+}
+
+article .spoiler:hover {
+    cursor: pointer;
+}
+
+article.comment > * {
+    border-radius: 0;
+}
+
+article.comment:nth-child(odd) header,
+article.comment:nth-child(odd) section {
+    background-color: #FBFBFB;
+}
+
+article.comment header img {
+    width: 2em;
+}
+
+article.comment header span.date {
+    display: inline-block;
+}
 
 .posthead {
     display: block;
@@ -9,6 +105,78 @@
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
+
+.older {
+	text-align: center;
+	cursor: pointer;
+    border-radius: 0.1em;
+    color: white;
+    line-height: 4em;
+    background-color: #4C5A61;
+    margin-bottom: 1em;
+}
+
+.older:hover {
+    box-shadow: 0 0.3em 0em rgba(0, 0, 0, 0.2);
+}
+
+/* Comment the article */
+
+.getcomments,
+.addcomment {
+    line-height: 2.3em;
+}
+
+.getcomments:hover,
+.addcomment:hover {
+    cursor: pointer;
+}
+
+.getcomments:before,
+.addcomment:before {
+    content: "";
+    padding: 0.5em 1em;
+}
+
+.getcomments:before {
+    background-color: #FC8F12;
+}
+
+.addcomment:before {
+    background-color: #6FCC43;
+}
+
+article table#commentsubmit {
+    border: 1px solid #DDD;
+    border-spacing: 0px;
+    background-color: white;
+    width: 100%;
+    border: 1px solid #DDD;
+    display: none;
+}
+
+article table#commentsubmit td {
+    width: 100%;
+    padding: 0px;
+}
+
+article table#commentsubmit textarea {
+    border: 0px;
+    width: 100%;
+    resize: none;
+    padding: 0px;
+    height: 1.5em;
+}
+
+article table#commentsubmit .commentsubmitrow {
+    background-color: #F3F3F3;
+    display: block;
+}
+
+article table#commentsubmit .commentsubmitrow td {
+    height: rgba(0, 0, 0, 0.5);
+}
+
 
 .metadata {
     overflow: hidden;
@@ -38,12 +206,7 @@
     font-weight: bold;
 }
 
-.post:after, .posthead:after {
-    content: ""; /* Important, sinon l'élément n'est pas généré. */
-    display: block;
-    clear: both;
-}
-
+/*
 .post {
     width: auto;
     padding: 1em;
@@ -91,23 +254,20 @@
 .post:last-child {
     border-bottom: 0px;
 }
-
-.post p.summary {
-    /*margin-bottom: 1em;*/
+*/
+article p.summary {
     font-style:italic;
 }
 
-.post .enclosure {
-    border-top: 1px solid #DDD;
-    padding: 0.5em 0em 1em;
+article .enclosure {
     line-height: 1em;
-    margin-top: 1em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     clear: both;
+    padding: 1em;
 }
-
+/*
 .post .header span {
     overflow: hidden;
     padding-right: 0.5em;
@@ -130,8 +290,8 @@
     font-weight: normal;
     color: #777;
 }
-
-.post span.tag {
+*/
+article span.tag {
     font-weight: normal;
 
     margin-right: 0.5em;
@@ -141,7 +301,7 @@
     border-radius: 0.2em 0.2em 0 0;
     float: left;
 }
-
+/*
 .post span.tag:first-child {
     display: block;
 }
@@ -154,8 +314,10 @@
 .post span.delete:hover {
 	cursor: pointer;
 }
-
-.post span.place, .post span.recycle, .post span.group {
+*/
+article span.place,
+article span.recycle,
+article span.group {
     display: inline-block;
     padding-left: 2em;
     font-weight: normal;
@@ -170,21 +332,20 @@
     text-overflow: ellipsis;
 }
 
-.post span.place {
+article span.place {
     background: url(../img/icons/place.png) 0 0.5em no-repeat;
 }
 
-.post span.recycle {
+article span.recycle {
     background: url(../img/icons/recycle.png) 0 0.5em no-repeat;
 }
 
-.post span.group {
+article span.group {
     background: url(../img/icons/users.png) 0 0.5em no-repeat;
 }
-
+/*
 .post .comments {
     width: 100%;
-    /*background-color: rgba(0, 0, 0, 0.1);*/
     clear: both;
 }
 
@@ -197,11 +358,7 @@
     overflow: hidden;
 	width: auto;
 }
-/*
-.post .comments .comment:nth-child(2n) {
-    background-color: rgba(255, 255, 255, 0.5);
-}
-*/
+
 .post .getcomments {
     background-repeat: no-repeat;
     background-position: 0.5em center;
@@ -255,11 +412,11 @@
     line-height: 1em;
     display: inline;
 }
-
-.post .content i, .post .content em { font-style: italic; }
-.post .content b, .post .content strong { font-weight: bold; }
-.post .content u, .post .content a { text-decoration: underline; }
-
+*/
+article .content i, article .content em { font-style: italic; }
+article .content b, article .content strong { font-weight: bold; }
+article .content u, article .content a { text-decoration: underline; }
+/*
 .post a.imglink {
     display: inline-block;
     max-width: 100%;
@@ -267,11 +424,11 @@
     margin-top: 0.5em;
     height: 0px;
 }
-
-.post .enclosure a.imglink {
+*/
+article .enclosure a.imglink {
     display: inline-block;
     height: auto;
-    width: auto;
+    width: 100%;
     line-height: 1.5em;
 
     white-space: nowrap;
@@ -279,26 +436,27 @@
     text-overflow: ellipsis;
 }
 
-.post a.imglink img {
+article a.imglink img {
     max-height: 400px;
     width: 100%;
 }
 
-.post .enclosure a.imglink img {
+article .enclosure a.imglink img {
     max-height: 200px;
     max-width: 100%;
     width: auto;
     margin-bottom: -0.2em;
 }
 
-.post .enclosure a.imglink img.icon {
+article .enclosure a.imglink img.icon {
     max-height: 24px;
     margin-right: 0.5em;
     min-width: 16px;
     min-height: 16px;
 }
 
-.post .content img, .post .content video {
+article .content img,
+article .content video {
     max-width: 100%;
     width: auto;
     height: auto;
@@ -306,31 +464,36 @@
     margin-right: 1em;
 }
 
-.post .content img.smiley {
+article .content img.smiley {
     margin: 0px;
     padding: 0px;
     border: none;
 }
 
-.post .content p:first-child {
-    /*margin-right: 3em;*/
+article .content h1,
+article .content h2,
+article .content h3,
+article .content h4 {
+    margin-left: 0;
+    padding-left: 0;
 }
 
-.post .content h1, .post .content h2, .post .content h3, .post .content h4 {
-    margin-left: 0px;
-    padding-left: 0px;
-}
-
-.post .content h3 {
+article .content h3 {
     color: #333;
     line-height: 2em;
     font-size: 1.1em;
 }
 
-.post .content ul, .post .content ol {
+article .content ul,
+article .content ol {
     margin-left: 2em;
 }
 
+article .content ul li,
+article .content ol li{
+    line-height: 1.5em;
+}
+/*
 .post .older {
 	text-align: center;
 	min-height: 0px;
@@ -375,21 +538,19 @@
 .post table#commentsubmit .commentsubmitrow td {
     height: rgba(0, 0, 0, 0.5);
 }
-
-.post .tools {
-    border-top: 1px solid #EEE;
-    margin-top: 1em;
-    padding: 0.5em 0;
+*/
+article .tools {
+    padding: 1em;
     position: relative;
     line-height: 1.5em;
     clear: both;
 }
 
-.post .tools a:hover {
+article .tools a:hover {
     cursor: pointer;
     text-decoration: underline;
 }
-
+/*
 .post .spoiler > * {
     opacity: 0;
 }
@@ -414,3 +575,4 @@
 .post .spoiler:hover {
     cursor: pointer;
 }
+*/
