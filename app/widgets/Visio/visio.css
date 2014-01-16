@@ -15,6 +15,7 @@ body {
 #visio {
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 #visio .menu {
@@ -26,44 +27,20 @@ body {
     width: 100%;
 }
 
-#visio #remote-video,
-#visio #local-video {
-    width: 100%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    transition: width 0.5s ease;
-    display: block;
-}
-#visio #remote-video.off {
+#visio .menu #toggle-microphone, 
+#visio .menu #toggle-camera, 
+#visio .menu #hang-up {
     display: none;
 }
 
-#visio #local-video.tiny {
-    width: 20%;
-    bottom: 3.5em;
+#visio .menu #toggle-screen {
+    float: left;
+    margin-left: 0.5em;
 }
 
-#visio #local-video.off {
-    display: none;
+#visio .menu .oppose:first-child {
+    margin-right: 0.5em;
 }
-
-#visio #local-video.tiny:hover {
-    width: 50%;
-    bottom: 3.5em;
-}
-
-#visio #log {
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-#visio #log div {
-    margin-bottom: 1em;
-}
-
 
 #visio #avatar {
     position: absolute;
@@ -90,7 +67,59 @@ body {
     line-height: 1.3em;
     margin-top: 1em;
     font-size: 1.6em;
-    width: 200px;
+}
+
+#visio #remote-video,
+#visio #local-video {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#visio #log {
+    display: none;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#visio #log div {
+    margin-bottom: 1em;
+}
+/* Status calling */
+#visio.calling #remote-video,
+#visio.calling #local-video {
+    display: block;
+}
+
+#visio.calling #local-video {
+    width: 20%;
+    height: auto;
+    bottom: 3.5em;
+    transition: width 0.5s ease;
+    right: 0;
+}
+
+#visio.calling #local-video:hover {
+    width: 40%;
+}
+
+#visio.calling .menu #call {
+    display: none;
+}
+
+#visio.calling .menu #toggle-microphone, 
+#visio.calling .menu #toggle-camera, 
+#visio.calling .menu #hang-up {
+    display: inline-block;
+}
+
+#visio.calling #avatar {
+    display: none;
 }
 
 #connection {
