@@ -14,12 +14,18 @@
         <span class="name">{$name}</span>
     </div>
     <div class="menu">
-        <a id="call" class="button color green merged left icon call">
-            Call</a>
-        <a id="hang-up" class="button color red merged right icon hang-up">
-            Hang Up</a>
+        <a id="toggle-microphone" class="button color icon microphone alone merged right oppose">
+        </a><a id="toggle-camera" class="button color icon camera alone merged left oppose">
+        </a>
+        
+        <a id="call" class="button color green icon call">
+            {$c->t('Call')}
+        </a>
+        <a id="hang-up" class="button color red icon hang-up">
+            {$c->t('Hang Up')}
+        </a>
 
-        <a id="toggle-screen" class="button icon expand color blue alone"></a>
+        <a id="toggle-screen" class="button icon expand color blue alone oppose"></a>
     </div>
 </div>
 <script type="text/javascript">

@@ -379,3 +379,8 @@ legend {
 .icon.expand:before { background-image: url(../img/icons/button/expand.svg); }
 .icon.gear:before   { background-image: url(../img/icons/button/gear.svg); }
 .icon.contract:before{ background-image: url(../img/icons/button/contract.svg); }
+
+.icon.camera:before{ background-image: url(../img/icons/button/camera.svg); }
+.icon.camera-off:before{ background-image: url(../img/icons/button/camera-off.svg); }
+.icon.microphone:before{ background-image: url(../img/icons/button/microphone.svg); }
+.icon.microphone-off:before{ background-image: url(../img/icons/button/microphone-off.svg); }
