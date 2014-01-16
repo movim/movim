@@ -102,14 +102,14 @@ class Profile extends WidgetCommon
             $html .= '
                     <h1 style="text-decoration: none;">'.$me->getTrueName().'</h1>';
 
-            if($this->testIsSet($me->name))
+            /*if($this->testIsSet($me->name))
                 $html .= $me->name.' ';
             else
                 $html .= $me->getTrueName().' ';
                 
             if($this->testIsSet($me->url))
                 $html .= '<br /><a target="_blank" href="'.$me->url.'">'.$me->url.'</a>';
-                
+            */
             $html .= '
                 <div class="textbubble">
                     <textarea 

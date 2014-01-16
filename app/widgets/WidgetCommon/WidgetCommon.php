@@ -154,7 +154,8 @@ class WidgetCommon extends WidgetBase {
     }
     
     private function printTags($tags) {
-        $html = '<br />';
+        //$html = '<br />';
+        $html = '';
         
         $tags = unserialize($tags);
         foreach($tags as $t)
@@ -417,14 +418,14 @@ class WidgetCommon extends WidgetBase {
         $comcounter = 0;
         
         if($size > 3) {
-            $tmp = '<div 
+            $tmp = '<article
                         class="comment"
                         onclick="
                             com = this.parentNode.querySelectorAll(\'.comment\'); 
                             for(i = 0; i < com.length; i++) { com.item(i).style.display = \'block\';};
                             this.style.display = \'none\';">
                         <a class="getcomments icon chat">'.t('Show the older comments').'</a>
-                    </div>';
+                    </article>';
             $comcounter = $size - 3;
         }
         
@@ -434,18 +435,20 @@ class WidgetCommon extends WidgetBase {
                 $name = $comment->getContact()->getTrueName();
                                 
                 $tmp .= '
-                    <div class="comment" ';
+                    <article class="comment" ';
                 if($comcounter > 0) {
                     $tmp .= 'style="display:none;"';
                     $comcounter--;
                 }
                     
                 $tmp .='>
-                        <img class="avatar tiny" src="'.$photo.'">
-                        <span><a href="'.Route::urlize('friend', $comment->aid).'">'.$name.'</a></span>
-                        <span class="date">'.prepareDate(strtotime($comment->published)).'</span><br />
-                        <div class="content tiny">'.prepareString($comment->content).'</div>
-                    </div>';
+                        <header>
+                            <img src="'.$photo.'">
+                            <span><a href="'.Route::urlize('friend', $comment->aid).'">'.$name.'</a></span>
+                            <span class="date">'.prepareDate(strtotime($comment->published)).'</span>
+                        </header>
+                        <section>'.prepareString($comment->content).'</section>
+                    </article>';
             }
         }
         return $tmp;

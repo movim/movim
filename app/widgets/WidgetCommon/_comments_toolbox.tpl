@@ -1,20 +1,15 @@
 <div class="comments" id="{$post->nodeid}comments">
     {$comments}
-    <div class="comment">
-        <a 
-            class="getcomments icon chat" 
-            onclick="{$getcomments} this.innerHTML = '{$c->t('Loading comments ...')}'"
-        >{$c->t('Get the comments')}</a>
-    </div>
+    <a 
+        class="getcomments icon chat" 
+        onclick="{$getcomments} this.innerHTML = '{$c->t('Loading comments ...')}'"
+    >{$c->t('Get the comments')}</a>
 </div>
 <div class="comments">
-    <div 
-        class="comment"
+    <a class="addcomment icon chat"
         onclick="
-            this.parentNode.querySelector('#commentsubmit').style.display = 'table'; 
-            this.style.display ='none'">
-        <a class="addcomment icon chat">{$c->t('Add a comment')}</a>
-    </div>
+        this.parentNode.querySelector('#commentsubmit').style.display = 'table'; 
+        this.style.display ='none'">{$c->t('Add a comment')}</a>
     <table id="commentsubmit">
         <tr>
             <td>
