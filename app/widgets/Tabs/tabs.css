@@ -1,9 +1,10 @@
-#navtabs {
+ul#navtabs {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
-    color: white;
-    background-color: transparent;
+    /*color: white;
+    background-color: transparent;*/
+    text-align: center;
 }
 
 #navtabs li {
