@@ -100,6 +100,7 @@ article.comment header span.date {
     display: block;
     width: 100%;
     padding: 0 1em;
+    padding-top: 1em;
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -265,7 +266,7 @@ article .enclosure {
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     clear: both;
-    padding: 1em;
+    padding: 1em 0;
 }
 /*
 .post .header span {

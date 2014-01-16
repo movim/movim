@@ -104,11 +104,12 @@ class Explore extends WidgetCommon {
                 
         foreach($users as $user) {
             $html .= '
-                <div class="post">
-                    <a href="'.Route::urlize('friend', $user->jid).'">
-                        <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                    </a>
-                    <div class="postbubble profile">
+                <article class="block">
+                    <header>
+                        <a href="'.Route::urlize('friend', $user->jid).'">
+                            <img class="avatar" src="'.$user->getPhoto('m').'"/>
+                        </a>
+
                         <span class="name">
                             <a href="'.Route::urlize('friend', $user->jid).'">'.$user->getTrueName().'</a>
                         </span>
@@ -117,10 +118,11 @@ class Explore extends WidgetCommon {
                             $gender[$user->gender].' '.
                             $marital[$user->marital].'
                         </span>
-                        <div class="content">'.prepareString($user->description).'</div>
-                    </div>
+                    </header>
+
+                    <section class="content">'.prepareString($user->description).'</section>
                     
-                </div>
+                </article>
                 ';
         }
 
