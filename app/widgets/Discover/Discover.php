@@ -19,11 +19,11 @@ class Discover extends WidgetCommon {
                     
             foreach($users as $user) {
                 $html .= '
-                    <div class="post">
-                        <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">
-                            <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                        </a>
-                        <div class="postbubble profile">
+                    <article class="block">
+                        <header>
+                            <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">
+                                <img class="avatar" src="'.$user->getPhoto('m').'"/>
+                            </a>
                             <span class="name">
                                 <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">'.$user->getTrueName().'</a>
                             </span>
@@ -32,10 +32,10 @@ class Discover extends WidgetCommon {
                                 $gender[$user->gender].' '.
                                 $marital[$user->marital].'
                             </span>
-                            <div class="content">'.prepareString($user->description).'</div>
-                        </div>
-                        
-                    </div>
+                        </header>
+
+                        <section class="content">'.prepareString($user->description).'</section>
+                    </article>
                     ';
             }
         }
