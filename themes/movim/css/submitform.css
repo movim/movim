@@ -5,9 +5,10 @@ table#feedsubmitform {
     margin: 0 1em;
     overflow: hidden;
     padding-bottom: 0;
-    border: 1px solid #DDD;
     border-bottom: 0;
-    border-radius: 0.1em 0.1em 0em 0em;
+    border-radius: 2px 2px;
+    background-color: white;
+    border: 1px solid #DDD;
 }
 
 #feedsubmitform tbody, #feedsubmitform tr, #feedsubmitform td {

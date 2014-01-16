@@ -57,7 +57,8 @@ class VisioExt extends WidgetBase
     }
     
     function onSessionTerminate($jingle) {
-        //do something when you recieve the session-terminate from jingle
+        //call webrtc.js terminate()
+        RPC::call('Popup.call', 'terminate');
     }
 
     function ajaxSendProposal($proposal) {
@@ -98,12 +99,12 @@ class VisioExt extends WidgetBase
           ->request();
     }
 
-    function ajaxSendSessionTerminate() {
+    function ajaxSendSessionTerminate($jid, $ressource) {
         $s = Session::start('movim');
         $jingleSid = $s->get("jingleSid");
         
         $r = new moxl\JingleSessionTerminate();
-        $r->setTo($p->jid.'/'.$p->ressource)
+        $r->setTo($jid.'/'.$ressource)
           ->setJingleSid($jingleSid)
           ->request();
     }
