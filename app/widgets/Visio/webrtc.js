@@ -8,6 +8,7 @@ var optional = {
 
 var pc;
 var remoteStream;
+var localStream;
 
 // Set up audio and video regardless of what devices are present.
 var sdpConstraints = {'mandatory': {
@@ -46,8 +47,11 @@ function onRemoteStreamAdded(event) {
     
     vid.src = window.URL.createObjectURL(event.stream);
     
-    /*remoteStream = event.stream;
-    
+    remoteStream = event.stream;
+
+    console.log(remoteStream);
+    console.log(vid);
+    /*
     audioTracks = remoteStream.getAudioTracks();
 
     for (i = 0; i < audioTracks.length; i++) {
@@ -77,6 +81,8 @@ function sendMessage(msg, accept) {
     
     offer.jid = VISIO_JID;
     offer.ressource = VISIO_RESSOURCE;
+
+    document.getElementById('visio').className = 'calling';
         
     if(webrtcDetectedBrowser == 'chrome') {
         setTimeout(function() {
@@ -100,16 +106,15 @@ function sendMessage(msg, accept) {
     } else {
         var msgString = JSON.stringify(offer);
 
-        console.log(offer);
+        //console.log(offer);
         
         if(accept) {
             Visio.log('Send the acceptance.');
-            //Visio.log('ACCEPTANCE ' + msg.sdp);
+            Visio.log('ACCEPTANCE ' + msg.sdp);
             Visio.call(['VisioExt_ajaxSendAcceptance', msgString]);
         } else {
             Visio.log('Send the proposal.');
-            //Visio.log('PROPOSAL ' + msg.sdp);
-
+            Visio.log('PROPOSAL ' + msg.sdp);
 
             Visio.call(['VisioExt_ajaxSendProposal', msgString]);      
         }
@@ -117,11 +122,11 @@ function sendMessage(msg, accept) {
 }
 
 function onSetSessionDescriptionSuccess() {
-    Visio.log('Set session description success.');
+    Visio.log('Set local session description success.');
 }
 
 function onSetSessionDescriptionError(error) {
-    Visio.log('Failed to set session description: ' + error.toString());
+    Visio.log('Failed to set local session description: ' + error.toString());
 }
 
 function onSetRemoteSessionDescriptionSuccess() {
@@ -129,33 +134,34 @@ function onSetRemoteSessionDescriptionSuccess() {
 }
 
 function onSetRemoteSessionDescriptionError(error) {
-    console.log('gnap');
-    console.log(error);
-    //Visio.log('Failed to set remote session description: ' + error.message);
+    //console.log('gnap');
+    //console.log(error);
+    Visio.log('Failed to set remote session description: ' + error.message);
 }
 
 function onOffer(offer) {
     offer = offer[0];
     
     Visio.log('Offer received.');
-    //Visio.log('OFFER ' + offer);
+    Visio.log('OFFER ' + offer);
 
-    console.log(offer);
+    //console.log(offer);
       
     if(!pc)
         init(false);
     
     if(offer != null) {
+        /*
         var message = {};
         message.sdp = offer;
         message.type = 'offer';
         console.log(message);
         var desc = new RTCSessionDescription(message);
         console.log(desc);
-        
-        //var desc = new RTCSessionDescription();
-        //desc.sdp = offer;
-        //desc.type = 'offer';
+        */
+        var desc = new RTCSessionDescription();
+        desc.sdp = offer;
+        desc.type = 'offer';
         
         pc.setRemoteDescription(desc,
             onSetRemoteSessionDescriptionSuccess, onSetRemoteSessionDescriptionError);  
@@ -170,14 +176,14 @@ function onAccept(offer) {
 
     if(offer != null) {
         //Visio.log('GN0P');
-        var message = {};
+        /*var message = {};
         message.sdp = offer;
         message.type = 'anwser';
-        console.log(message);
-        var desc = new RTCSessionDescription(message);
-        console.log(desc);
-        //desc.sdp = offer;
-        //desc.type = 'answer';
+        console.log(message);*/
+        var desc = new RTCSessionDescription(/*message*/);
+        //console.log(desc);
+        desc.sdp = offer;
+        desc.type = 'answer';
         
         pc.setRemoteDescription(desc,
             onSetRemoteSessionDescriptionSuccess, onSetRemoteSessionDescriptionError);  
@@ -205,7 +211,7 @@ function init(isCaller) {
         if (getUserMedia) {
             getUserMedia = getUserMedia.bind(navigator);
         }
-        
+
         // Request the camera.
         getUserMedia(
         // Constraints
@@ -222,17 +228,10 @@ function init(isCaller) {
             // Create an object URL for the video stream and use this 
             // to set the video source.
             vid.src = window.URL.createObjectURL(localMediaStream);
-            
-            setTimeout(
-                function() { 
-                    vid.className = 'tiny';
-                    avatar.className = 'tiny';
-                }, 
-                3000);
-            
-            Visio.log(localMediaStream);
-            
-            pc.addStream(localMediaStream);
+
+            localStream = localMediaStream;
+
+            pc.addStream(localStream);
             channel = pc.createDataChannel("visio");
             
             if(isCaller)
@@ -255,18 +254,24 @@ function init(isCaller) {
         alert('Sorry, your browser does not support getUserMedia');
     }
 
+    console.log(pc);
+
     //Visio.log(pc);
 }
 
 function terminate() {
+    // We close the RTCPeerConnection
     pc.close();
+
+    // We close the local webcam and microphone
+    localStream.stop();
+    remoteStream = null;
+    
     Visio.call(['VisioExt_ajaxSendSessionTerminate', VISIO_JID, VISIO_RESSOURCE]);
     
     // Get a reference to the video elements on the page.
     var vid = document.getElementById('local-video');
     var rvid = document.getElementById('remote-video');
-    var avatar = document.getElementById('avatar');
-    vid.className = vid.className.replace('tiny', 'off');
-    rvid.className = 'off';
-    avatar.className = avatar.className.replace('tiny', '');
+
+    document.getElementById('visio').className = '';
 }
