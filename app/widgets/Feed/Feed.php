@@ -132,7 +132,7 @@ class Feed extends WidgetCommon {
             
         if(sizeof($posts) > $this->_feedsize-1 && $html != '') {
             $nexthtml = '
-                <div class="post">
+                <div class="block large">
                     <div 
                         class="older" 
                         onclick="'.$this->genCallAjax($function, "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
