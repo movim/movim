@@ -7,6 +7,8 @@ class SDPtoJingle {
     private $content    = null;
     private $transport  = null;
 
+    private $action;
+
     // Move the global fingerprint into each medias
     private $global_fingerprint = array();
     
@@ -41,6 +43,8 @@ class SDPtoJingle {
         $this->jingle->addAttribute('action',$action);
         $this->jingle->addAttribute('initiator',$initiator);
         $this->jingle->addAttribute('responder',$responder);
+
+        $this->action = $action;
     }
     
     function getSessionId(){
@@ -72,9 +76,11 @@ class SDPtoJingle {
                             $this->content->addAttribute('name', $matches[1]);
                             
                             // The description node
-                            $description = $this->content->addChild('description');
-                            $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
-                            $description->addAttribute('media', $matches[1]);
+                            if($this->action != 'transport-info') {
+                                $description = $this->content->addChild('description');
+                                $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
+                                $description->addAttribute('media', $matches[1]);
+                            }
 
                             if(!empty($this->global_fingerprint)) {
                                 $fingerprint = $this->transport->addChild('fingerprint', $this->global_fingerprint['fingerprint']);

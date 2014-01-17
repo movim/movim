@@ -15,13 +15,6 @@ var sdpConstraints = {'mandatory': {
                       'OfferToReceiveAudio': true,
                       'OfferToReceiveVideo': true }};
 
-function onIceCandidate(event) {
-    Visio.log('onIceCandidate');
-    //Visio.log(event);
-
-    //pc.addIceCandidate(event.candidate, onIceCandidateAdded, onDomError);
-}
-
 function onIceConnectionStateChanged(event) {
     Visio.log('onIceConnectionStateChanged');
     Visio.log(event);
@@ -33,7 +26,17 @@ function onSignalingStateChanged(event) {
 }
 
 function onIceCandidateAdded(event) {
-    Visio.log('onIceCandateAdded');
+    Visio.log('onIceCandidateAdded');
+    Visio.log(event);
+}
+
+function onRemoteIceCandidateAdded(event) {
+    Visio.log('onRemoteIceCandidateAdded');
+    Visio.log(event);
+}
+
+function onRemoteIceCandidateError(event) {
+    Visio.log('onRemoteIceCandidateError');
     Visio.log(event);
 }
 
@@ -73,6 +76,25 @@ function onAnswerCreated(offer) {
     pc.setLocalDescription(offer,onSetSessionDescriptionSuccess, onSetSessionDescriptionError);
 
     sendMessage(offer, true);    
+}
+
+function onIceCandidate(event) {
+    Visio.log('onIceCandidate');
+    console.log(event);
+    candidate = {};
+
+    if(event.candidate != null) {
+        candidate.sdp = event.candidate.candidate;
+        candidate.mid = event.candidate.sdpMid;
+        candidate.line = event.candidate.sdpMLineIndex;
+
+        candidate.jid = VISIO_JID;
+        candidate.ressource = VISIO_RESSOURCE;
+
+        var msgString = JSON.stringify(candidate);
+        
+        Visio.call(['VisioExt_ajaxSendCandidate', msgString]);
+    }
 }
 
 function sendMessage(msg, accept) {
@@ -115,7 +137,6 @@ function sendMessage(msg, accept) {
         } else {
             Visio.log('Send the proposal.');
             Visio.log('PROPOSAL ' + msg.sdp);
-
             Visio.call(['VisioExt_ajaxSendProposal', msgString]);      
         }
     }
@@ -151,18 +172,18 @@ function onOffer(offer) {
         init(false);
     
     if(offer != null) {
-        /*
+        
         var message = {};
         message.sdp = offer;
         message.type = 'offer';
         console.log(message);
         var desc = new RTCSessionDescription(message);
         console.log(desc);
-        */
+        /*
         var desc = new RTCSessionDescription();
         desc.sdp = offer;
         desc.type = 'offer';
-        
+        */
         pc.setRemoteDescription(desc,
             onSetRemoteSessionDescriptionSuccess, onSetRemoteSessionDescriptionError);  
     }
@@ -188,6 +209,19 @@ function onAccept(offer) {
         pc.setRemoteDescription(desc,
             onSetRemoteSessionDescriptionSuccess, onSetRemoteSessionDescriptionError);  
     }
+}
+
+function onCandidate(message) {
+    var label = {
+            'audio' : 0,
+            'video' : 1
+        };
+    
+    var candidate = new RTCIceCandidate({sdpMLineIndex: label[message[1]],
+                                         candidate: message[0]});
+
+    //console.log(candidate);
+    pc.addIceCandidate(candidate, onRemoteIceCandidateAdded, onRemoteIceCandidateError);
 }
 
 function init(isCaller) {
