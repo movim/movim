@@ -46,6 +46,10 @@ article footer {
     padding-bottom: 1em;
 }
 
+article:nth-last-child(-n+2) footer {
+    border-bottom: none;
+}
+
 article footer:after {
     content: "";
     clear: both;

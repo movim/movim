@@ -53,11 +53,11 @@ class VisioExt extends WidgetBase
     
     function onTransportInfo($jingle) {
         $jts = new \JingletoSDP($jingle);
-        $sdp = $jts->generate();      
+        
+        RPC::call('Popup.call', 'onCandidate', $jts->generate(), $jts->media);
     }
     
     function onSessionTerminate($jingle) {
-        //call webrtc.js terminate()
         RPC::call('Popup.call', 'terminate');
     }
 
@@ -106,6 +106,26 @@ class VisioExt extends WidgetBase
         $r = new moxl\JingleSessionTerminate();
         $r->setTo($jid.'/'.$ressource)
           ->setJingleSid($jingleSid)
+          ->request();
+    }
+
+    function ajaxSendCandidate($candidate) {
+        $p = json_decode($candidate);
+        $sd = Sessionx::start();
+
+        $sdp =
+            'm='.$p->mid."\n".
+            $p->sdp;
+
+        $stj = new SDPtoJingle(
+            $sdp,
+            $this->user->getLogin().'/'.$sd->ressource,
+            $p->jid.'/'.$p->ressource,
+            'transport-info');
+
+        $r = new moxl\JingleSessionInitiate();
+        $r->setTo($p->jid.'/'.$p->ressource)
+          ->setOffer($stj->generate())
           ->request();
     }
 
