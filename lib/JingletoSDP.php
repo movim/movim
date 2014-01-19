@@ -69,16 +69,6 @@ class JingletoSDP {
             $media_header_last_ip = null;
             
             $sdp_media = '';
-            /*
-            if(isset($content->description->crypto)
-            || isset($content->transport->fingerprint)) {
-                $sdp_media .= 
-                    "\na=rtcp:1 IN IP4 0.0.0.0";
-            } else {
-                $sdp_media .= 
-                    "\na=rtcp:1 IN IP4 0.0.0.0";
-            }
-            */
                 
             if(isset($content->transport->attributes()->ufrag))
                 $sdp_media .= "\na=ice-ufrag:".$content->transport->attributes()->ufrag;
@@ -254,6 +244,9 @@ class JingletoSDP {
                             $sdp_media .=
                                 ' raddr '.$payload->attributes()->{'rel-addr'}.
                                 ' rport '.$payload->attributes()->{'rel-port'};
+
+                            if($media_header_first_port == null)
+                                $media_header_first_port = $payload->attributes()->port;
                         }
                         if(isset($payload->attributes()->generation)) {
                             $sdp_media .=
@@ -261,9 +254,6 @@ class JingletoSDP {
                                 ' network '.$payload->attributes()->network.
                                 ' id '.$payload->attributes()->id;
                         }
-
-                        if($media_header_first_port == null)
-                            $media_header_first_port = $payload->attributes()->port;
 
                         $media_header_last_ip = $payload->attributes()->ip;
                         
@@ -303,20 +293,23 @@ class JingletoSDP {
                     $sdp_media_header.
                     "\nc=IN IP4 ".$media_header_last_ip.
                     $sdp_media;
+                    //"\na=sendrecv";
             } else {
                 $sdp_medias = $sdp_media;
             }
         }
 
         if($this->action != 'transport-info') {
-            $this->sdp .= $sdp_version;
+            $this->sdp .= "\n".$sdp_version;
             $this->sdp .= "\n".$sdp_origin;
             $this->sdp .= "\n".$sdp_session_name;
             $this->sdp .= "\n".$sdp_timing;
         }
         
         $this->sdp .= $sdp_medias;
+
+        //$this->sdp = (string)$this->jingle->sdp;
         
-        return $this->sdp;
+        return $this->sdp."\n";
     }
 }

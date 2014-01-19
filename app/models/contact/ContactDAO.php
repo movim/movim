@@ -25,6 +25,9 @@ class ContactDAO extends ModlSQL {
     }
     
     function set(Contact $contact) {
+        /*                
+                phototype       = :phototype,
+                photobin        = :photobin,*/
         $this->_sql = '
             update contact
             set fn      = :fn,
@@ -40,9 +43,6 @@ class ContactDAO extends ModlSQL {
                 
                 gender          = :gender,
                 marital         = :marital,
-                
-                phototype       = :phototype,
-                photobin        = :photobin,
                 
                 description     = :description,
                 
@@ -91,8 +91,8 @@ class ContactDAO extends ModlSQL {
                 'gender'   => $contact->gender,
                 'marital'  => $contact->marital,
                 
-                'phototype'  => $contact->phototype,
-                'photobin'   => $contact->photobin,
+                //'phototype'  => $contact->phototype,
+                //'photobin'   => $contact->photobin,
                 
                 'description'    => $contact->description,
                 
@@ -135,6 +135,12 @@ class ContactDAO extends ModlSQL {
         $this->run('Contact');
 
         if(!$this->_effective) {
+            /*            
+                phototype,
+                photobin,
+                :phototype,
+                :photobin,
+                * */
             $this->_sql = '
                 insert into contact
                 (
@@ -151,9 +157,6 @@ class ContactDAO extends ModlSQL {
                 
                 gender,
                 marital,
-                
-                phototype,
-                photobin,
                 
                 description,
                 
@@ -198,9 +201,6 @@ class ContactDAO extends ModlSQL {
                     
                     :gender,
                     :marital,
-                    
-                    :phototype,
-                    :photobin,
                     
                     :description,
                     
@@ -250,8 +250,8 @@ class ContactDAO extends ModlSQL {
                     'gender'   => $contact->gender,
                     'marital'  => $contact->marital,
                     
-                    'phototype'  => $contact->phototype,
-                    'photobin'   => $contact->photobin,
+                    //'phototype'  => $contact->phototype,
+                    //'photobin'   => $contact->photobin,
                     
                     'description'    => $contact->description,
                     

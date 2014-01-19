@@ -29,7 +29,8 @@ class Avatar extends WidgetBase
         $cd = new \modl\ContactDAO();
         $me = $cd->get($this->user->getLogin());
 
-        if($me->photobin == "") {
+        $p = new Picture;
+        if(!$p->get($this->user->getLogin())) {
             $this->view->assign(
                 'getavatar',
                 $this->genCallAjax('ajaxGetAvatar')
@@ -49,6 +50,11 @@ class Avatar extends WidgetBase
 
     function prepareForm($me) {
         $avatarform = $this->tpl();
+
+        $p = new Picture;
+        $p->get($this->user->getLogin());
+
+        $avatarform->assign('photobin', $p->toBase64());
 
         $avatarform->assign('me',       $me);
         $avatarform->assign(
@@ -87,7 +93,7 @@ class Avatar extends WidgetBase
         if($c == null)
             $c = new modl\Contact();
             
-        $c->phototype       = $avatar->phototype->value;
+        //$c->phototype       = $avatar->phototype->value;
         $c->photobin        = $avatar->photobin->value;
 
         $c->createThumbnails();

@@ -52,8 +52,8 @@ function onRemoteStreamAdded(event) {
     
     remoteStream = event.stream;
 
-    console.log(remoteStream);
-    console.log(vid);
+    //console.log(remoteStream);
+    //console.log(vid);
     /*
     audioTracks = remoteStream.getAudioTracks();
 
@@ -80,9 +80,8 @@ function onAnswerCreated(offer) {
 
 function onIceCandidate(event) {
     Visio.log('onIceCandidate');
-    console.log(event);
     candidate = {};
-
+/*
     if(event.candidate != null) {
         candidate.sdp = event.candidate.candidate;
         candidate.mid = event.candidate.sdpMid;
@@ -93,8 +92,9 @@ function onIceCandidate(event) {
 
         var msgString = JSON.stringify(candidate);
         
-        Visio.call(['VisioExt_ajaxSendCandidate', msgString]);
+        //Visio.call(['VisioExt_ajaxSendCandidate', msgString]);
     }
+*/
 }
 
 function sendMessage(msg, accept) {
@@ -115,12 +115,13 @@ function sendMessage(msg, accept) {
             
             if(accept) {
                 Visio.log('Send the acceptance.');
-                //Visio.log('ACCEPTANCE ' + msg.sdp);
+                Visio.log('ACCEPTANCE ' + msg.sdp);
                 Visio.call(['VisioExt_ajaxSendAcceptance', msgString]);
             } else {
                 Visio.log('Send the proposal.');
-                //Visio.log('PROPOSAL ' + msg.sdp);
+                Visio.log('PROPOSAL ' + msg.sdp);
 
+                console.log(msg.sdp);
 
                 Visio.call(['VisioExt_ajaxSendProposal', msgString]);      
             }
@@ -128,8 +129,6 @@ function sendMessage(msg, accept) {
     } else {
         var msgString = JSON.stringify(offer);
 
-        //console.log(offer);
-        
         if(accept) {
             Visio.log('Send the acceptance.');
             Visio.log('ACCEPTANCE ' + msg.sdp);
@@ -137,6 +136,7 @@ function sendMessage(msg, accept) {
         } else {
             Visio.log('Send the proposal.');
             Visio.log('PROPOSAL ' + msg.sdp);
+            
             Visio.call(['VisioExt_ajaxSendProposal', msgString]);      
         }
     }
@@ -156,7 +156,7 @@ function onSetRemoteSessionDescriptionSuccess() {
 
 function onSetRemoteSessionDescriptionError(error) {
     //console.log('gnap');
-    //console.log(error);
+    console.log(error);
     Visio.log('Failed to set remote session description: ' + error.message);
 }
 
@@ -166,7 +166,7 @@ function onOffer(offer) {
     Visio.log('Offer received.');
     Visio.log('OFFER ' + offer);
 
-    //console.log(offer);
+    console.log(offer);
       
     if(!pc)
         init(false);
@@ -289,8 +289,6 @@ function init(isCaller) {
     }
 
     console.log(pc);
-
-    //Visio.log(pc);
 }
 
 function terminate() {
