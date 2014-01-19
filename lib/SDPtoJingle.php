@@ -113,10 +113,8 @@ class SDPtoJingle {
                             
                         // http://xmpp.org/extensions/xep-0167.html#format
                         case 'fmtp':
-                            /*
-                             * This work only if fmtp is added just after
-                             * the correspondant rtpmap
-                             */                            
+                            // This work only if fmtp is added just after
+                            // the correspondant rtpmap
                             if($matches[1] == $payloadtype->attributes()->id) {
                                 $params = explode(';', $matches[2]);
 
@@ -184,7 +182,8 @@ class SDPtoJingle {
                             $rtphdrext->addAttribute('xmlns',   "urn:xmpp:jingle:apps:rtp:rtp-hdrext:0");
                             $rtphdrext->addAttribute('id',      $matches[1]);
                             $rtphdrext->addAttribute('uri',     $matches[4]);
-                            $rtphdrext->addAttribute('senders', $matches[3]);
+                            if(isset($matches[3]) && $matches[3] != '')
+                                $rtphdrext->addAttribute('senders', $matches[3]);
                             break;
                             
                         // http://xmpp.org/extensions/inbox/jingle-source.html
@@ -297,6 +296,8 @@ class SDPtoJingle {
                 }
             }
         }
+
+        //$this->jingle->addChild('sdp', $this->sdp);
         
         // We reindent properly the Jingle package
         $xml = $this->jingle->asXML();

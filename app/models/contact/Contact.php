@@ -84,10 +84,6 @@ class Contact extends ModlModel {
                 {"type":"string", "size":1 },
             "marital" : 
                 {"type":"string", "size":20 },
-            "phototype" : 
-                {"type":"string", "size":128 },
-            "photobin" : 
-                {"type":"text"},
             "description" : 
                 {"type":"text"},
             "mood" : 
@@ -135,6 +131,13 @@ class Contact extends ModlModel {
             "loctimestamp" : 
                 {"type":"date",   "size":11 }
         }';
+
+        /*
+         *             "phototype" : 
+                {"type":"string", "size":128 },
+            "photobin" : 
+                {"type":"text"},
+        */
         
         parent::__construct();
     }
@@ -161,44 +164,56 @@ class Contact extends ModlModel {
         $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
         $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
         
-        $this->phototype = (string)$vcard->vCard->PHOTO->TYPE;
+        //$this->phototype = (string)$vcard->vCard->PHOTO->TYPE;
         $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
         
         $this->description = (string)$vcard->vCard->DESC;
     }
 
     public function createThumbnails() {
-        if(isset($this->photobin))
-            \createThumbnails(strtolower($this->jid), $this->photobin);
+        $p = new \Picture;
+        $p->fromBase64($this->photobin);
+        $p->set($this->jid);
+        
         if(isset($this->email))
             \createEmailPic(strtolower($this->jid), $this->email);
     }
 
     public function getPhoto($size = 'l', $jid = false) {
         if($size == 'email') {
-            $str = BASE_URI.'cache/'.strtolower($this->jid).'_email.jpg';
+            return BASE_URI.'cache/'.strtolower($this->jid).'_email.jpg';
         } else {
             $jid = strtolower($jid);
-            if($jid != false && file_exists(CACHE_PATH.$jid.'_'.$size.'.jpg')) {
-                $str = BASE_URI.'cache/'.strtolower($jid).'_'.$size.'.jpg';
-            } elseif(
-                isset($this->photobin)
-                && (string)$this->photobin != ''
-            ) {
-                $str = BASE_URI.'cache/'.strtolower($this->jid).'_'.$size.'.jpg';
-            } else {
-                if(isset($this->jid))
+
+            $sizes = array(
+                'l'     => 200,
+                'm'     => 120,
+                's'     => 50,
+                'xs'    => 28,
+                'xxs'   => 24
+            );
+
+            $p = new \Picture;
+
+            if(isset($this->jid)) {
+                if($p->get($this->jid, $sizes[$size])) {
+                    return $p->get($this->jid, $sizes[$size]);
+                } else {
                     $out = base_convert($this->jid, 32, 8);
-                else
-                    $out = base_convert(md5(openssl_random_pseudo_bytes(5)), 16, 8);
+                    
+                    if($out == false)
+                        $out[4] = 1;
+    
+                    return BASE_URI.'/themes/movim/img/default'.$out[4].'.svg';
+                }
+            } else {
+                $out = base_convert(md5(openssl_random_pseudo_bytes(5)), 16, 8);
 
                 if($out == false)
                     $out[4] = 1;
-                $str = BASE_URI.'themes/movim/img/default'.$out[4].'.svg';
+                return BASE_URI.'/themes/movim/img/default'.$out[4].'.svg';
             }
         }
-        
-        return $str;
     }
     
     public function setLocation($stanza) {
