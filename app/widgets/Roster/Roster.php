@@ -274,7 +274,6 @@ class Roster extends WidgetBase
     {
         $contactdao = new \modl\ContactDAO();
         $contacts = $contactdao->getRoster();
-
         $html = '';
         
         $rd = new \modl\RosterLinkDAO();
@@ -296,7 +295,24 @@ class Roster extends WidgetBase
                     '<br /><a class="button color green icon users" href="'.Route::urlize('explore').'">', '</a>').'
                 </span>';
         }
+        /*
+        $roster = array();
 
+        foreach($contacts as $c) {
+            if(!isset($roster[$c->groupname])) {
+                $roster[$c->groupname] = array();
+            }
+            
+            if(!isset($roster[$c->groupname][$c->jid])) {
+                $roster[$c->groupname][$c->jid] = $c->toArray();
+            } else {
+                array_push($roster[$c->groupname][$c->jid], $c->toArray());
+            }
+        }
+
+        //var_dump($roster);
+        $html = json_encode($roster);
+        */
         return $html;
     }
 
