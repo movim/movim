@@ -364,7 +364,7 @@ class Chat extends WidgetBase
             
             
             $c = new \modl\Contact();
-                    
+
             $html .= '">
                 <img class="avatar" src="'.$c->getPhoto('xs', $message->jidfrom).'" />
                 <span class="date">'.date('H:i', strtotime($message->published)).'</span>';
