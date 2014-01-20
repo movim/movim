@@ -172,7 +172,7 @@ class Contact extends ModlModel {
 
     public function createThumbnails() {
         $p = new \Picture;
-        $p->fromBase64($this->photobin);
+        //$p->fromBase($this->photobin);
         $p->set($this->jid);
         
         if(isset($this->email))
