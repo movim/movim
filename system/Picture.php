@@ -4,7 +4,7 @@ class Picture {
     private $_path = CACHE_PATH;
     private $_uri  = CACHE_URI;
     private $_key;
-    private $_bin;
+    private $_bin  = false;
 
     /**
      * @desc Load a bin picture from a path
@@ -18,15 +18,19 @@ class Picture {
     /**
      * @desc Load a bin picture from a base64
      */
-    public function fromBase64($base) {
-        $this->_bin = base64_decode($base);
+    public function fromBase($base) {
+        //if(isset($base))
+        //    $this->_bin = (string)base64_decode((string)$base);
     }
 
     /**
      * @desc Convert to a base64
      */
-    public function toBase64() {
-        return base64_encode($this->_bin);
+    public function toBase() {
+        if($this->_bin)
+            return base64_encode($this->_bin);
+        else
+            return false;
     }
 
     /**
@@ -70,16 +74,24 @@ class Picture {
      * @desc Save a picture (original size)
      * @param $key The key of the picture
      */
-    public function set($key) {
+    public function set($key, $base = false) {
         $this->_key = $key;
         $path = $this->_path.md5($this->_key).'.jpg';
 
         if(file_exists($path))
             unlink($path);
-        
-        $source = imagecreatefromstring($this->_bin);
-        imagejpeg($source, $path, 95);
-        imagedestroy($source);
+
+
+        if($base != false)
+            $data = base64_decode($base);
+        else
+            $data = $this->_bin;
+
+        if($data) {
+            $source = imagecreatefromstring($data);
+            imagejpeg($source, $path, 95);
+            imagedestroy($source);
+        }
     }
 
     /**

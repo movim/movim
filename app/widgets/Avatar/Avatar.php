@@ -54,7 +54,7 @@ class Avatar extends WidgetBase
         $p = new Picture;
         $p->get($this->user->getLogin());
 
-        $avatarform->assign('photobin', $p->toBase64());
+        $avatarform->assign('photobin', $p->toBase());
 
         $avatarform->assign('me',       $me);
         $avatarform->assign(
