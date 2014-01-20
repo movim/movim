@@ -18,9 +18,10 @@ class Picture {
     /**
      * @desc Load a bin picture from a base64
      */
-    public function fromBase($base) {
-        //if(isset($base))
-        //    $this->_bin = (string)base64_decode((string)$base);
+    public function fromBase($base = false) {
+        if($base) {
+            $this->_bin = (string)base64_decode((string)$base);
+        }
     }
 
     /**
@@ -74,21 +75,28 @@ class Picture {
      * @desc Save a picture (original size)
      * @param $key The key of the picture
      */
-    public function set($key, $base = false) {
+    public function set($key) {
         $this->_key = $key;
         $path = $this->_path.md5($this->_key).'.jpg';
 
-        if(file_exists($path))
+        // If the file exist we replace it
+        if(file_exists($path)) {
             unlink($path);
 
+            // And destroy all the thumbnails
+            foreach(
+                glob(
+                    $this->_path.
+                    md5($key).
+                    '*.jpg',
+                    GLOB_NOSORT
+                    ) as $path_thumb) {
+                unlink($path_thumb);
+            }
+        }
 
-        if($base != false)
-            $data = base64_decode($base);
-        else
-            $data = $this->_bin;
-
-        if($data) {
-            $source = imagecreatefromstring($data);
+        if($this->_bin) {
+            $source = imagecreatefromstring($this->_bin);
             imagejpeg($source, $path, 95);
             imagedestroy($source);
         }

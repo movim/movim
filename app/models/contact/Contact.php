@@ -19,7 +19,6 @@ class Contact extends ModlModel {
     protected $gender;
     protected $marital;
     
-    protected $phototype;
     protected $photobin;
     
     protected $description;
@@ -132,13 +131,6 @@ class Contact extends ModlModel {
                 {"type":"date",   "size":11 }
         }';
 
-        /*
-         *             "phototype" : 
-                {"type":"string", "size":128 },
-            "photobin" : 
-                {"type":"text"},
-        */
-        
         parent::__construct();
     }
     
@@ -164,7 +156,6 @@ class Contact extends ModlModel {
         $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
         $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
         
-        //$this->phototype = (string)$vcard->vCard->PHOTO->TYPE;
         $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
         
         $this->description = (string)$vcard->vCard->DESC;
@@ -172,7 +163,7 @@ class Contact extends ModlModel {
 
     public function createThumbnails() {
         $p = new \Picture;
-        //$p->fromBase($this->photobin);
+        $p->fromBase($this->photobin);
         $p->set($this->jid);
         
         if(isset($this->email))
@@ -183,7 +174,10 @@ class Contact extends ModlModel {
         if($size == 'email') {
             return BASE_URI.'cache/'.strtolower($this->jid).'_email.jpg';
         } else {
-            $jid = strtolower($jid);
+            if($jid)
+                $jid = strtolower($jid);
+            else
+                $jid = $this->jid;
 
             $sizes = array(
                 'l'     => 200,
@@ -195,11 +189,11 @@ class Contact extends ModlModel {
 
             $p = new \Picture;
 
-            if(isset($this->jid)) {
-                if($p->get($this->jid, $sizes[$size])) {
-                    return $p->get($this->jid, $sizes[$size]);
+            if(isset($jid)) {
+                if($p->get($jid, $sizes[$size])) {
+                    return $p->get($jid, $sizes[$size]);
                 } else {
-                    $out = base_convert($this->jid, 32, 8);
+                    $out = base_convert($jid, 32, 8);
                     
                     if($out == false)
                         $out[4] = 1;
