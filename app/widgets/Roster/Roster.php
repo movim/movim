@@ -46,6 +46,8 @@ class Roster extends WidgetBase
 
         $this->view->assign('toggle_cache', $this->genCallAjax('ajaxToggleCache', "'offlineshown'"));
         $this->view->assign('search_contact', $this->genCallAjax('ajaxSearchContact','this.value'));
+        
+        $this->view->assign('rosterlist', $this->prepareRoster());
     }
 
     function onPresence($presence)
@@ -55,8 +57,24 @@ class Roster extends WidgetBase
         $cd = new \modl\ContactDAO();
         $c = $cd->getRosterItem($arr['jid'], true);
 
-        $caps = $this->getCaps();
-        
+        if($c != null) {
+            $html = $this->prepareContact($c);
+
+            if($c[0]->groupname == null)
+                $group = t('Ungrouped');
+            else
+                $group = $c[0]->groupname;
+
+            RPC::call(
+            'movim_delete', 
+            $arr['jid'], 
+            $html /* this second parameter is just to bypass the RPC filter)*/);
+
+            RPC::call('movim_append', 'group'.$group, $html);
+        }
+
+        //$caps = $this->getCaps();
+        /*
         if($c != null) {
             foreach($c as $item) {
                 $html = $this->prepareRosterElement($item, $caps);
@@ -64,7 +82,7 @@ class Roster extends WidgetBase
                 RPC::call(
                 'movim_delete', 
                 'roster'.$item->jid.$item->ressource, 
-                $html /* this second parameter is just to bypass the RPC filter*/);
+                $html  this second parameter is just to bypass the RPC filter);
 
                 if($item->groupname == null)
                     $group = t('Ungrouped');
@@ -75,14 +93,14 @@ class Roster extends WidgetBase
             }
 
             RPC::call('sortRoster');
-        }        
+        }        */
     }
 
     function onRoster($jid)
     {
         $html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', $html);
-        RPC::call('sortRoster');
+        //RPC::call('sortRoster');
     }
 
     /**
@@ -93,6 +111,59 @@ class Roster extends WidgetBase
     {
         $r = new moxl\RosterGetList();
         $r->request();
+    }
+
+    /**
+     * @brief Generate the HTML for a roster contact
+     * @param $contact 
+     * @returns 
+     */
+    function prepareContact($contact)
+    {
+        $arr = array();
+        $jid = false;
+
+        $presencestxt = getPresencesTxt();
+        
+        foreach($contact as $c) {
+            /*
+            if(!isset($roster[$c->groupname]->contacts[$c->jid])) {
+                $roster[$c->groupname]->contacts[$c->jid] = array();
+            }
+            */
+            // We add some basic information
+            $arr[$c->ressource]             = $c->toArray();
+            $arr[$c->ressource]['avatar']   = $c->getPhoto('s');
+            $arr[$c->ressource]['name']     = $c->getTrueName();
+
+            // Some data relative to the presence
+            if($c->last != null && $c->last > 60)
+                $arr[$c->ressource]['inactive'] = 'inactive';
+            else
+                $arr[$c->ressource]['inactive'] = '';
+
+            if($c->value && $c->value < 5) {
+                $arr[$c->ressource]['presencetxt'] = $presencestxt[$c->value];
+
+                //if(isset($client))
+                //    $html .= ' client '.strtolower($client);
+            } elseif($c->value == 6)
+                $arr[$c->ressource]['presencetxt'] = 'server_error';
+            else
+                $arr[$c->ressource]['presencetxt'] = 'offline';
+
+            // An action to open the chat widget
+            $arr[$c->ressource]['openchat']
+                = $this->genCallWidget("Chat","ajaxOpenTalk", "'".$c->jid."'");
+
+            $jid = $c->jid;
+        }
+
+        $contactview = $this->tpl();
+        $contactview->assign('jid',           $jid);
+        $contactview->assign('contact',       $arr);
+
+        return $contactview->draw('_roster_contact', true);
     }
 
     /**
@@ -272,14 +343,14 @@ class Roster extends WidgetBase
      */
     function prepareRoster()
     {
+        
         $contactdao = new \modl\ContactDAO();
         $contacts = $contactdao->getRoster();
-        $html = '';
-        
-        $rd = new \modl\RosterLinkDAO();
+
+        //$rd = new \modl\RosterLinkDAO();
         
         $capsarr = $this->getCaps();
-        
+        /*
         if(count($contacts) > 0) {
             $i = 0;
             
@@ -295,25 +366,59 @@ class Roster extends WidgetBase
                     '<br /><a class="button color green icon users" href="'.Route::urlize('explore').'">', '</a>').'
                 </span>';
         }
-        /*
+        */
         $roster = array();
+
+        $presencestxt = getPresencesTxt();
+
+        $currentjid = false;
+        $currentarr = array();
 
         foreach($contacts as $c) {
             if(!isset($roster[$c->groupname])) {
-                $roster[$c->groupname] = array();
+                $roster[$c->groupname] = new stdClass;
+                $roster[$c->groupname]->contacts = array();
+                $roster[$c->groupname]->html = '';
+
+                if($c->groupname == '')
+                    $roster[$c->groupname]->name = t('Ungrouped');
+                else
+                    $roster[$c->groupname]->name = $c->groupname;
+
+                $roster[$c->groupname]->shown = '';
+                // get the current showing state of the group and the offline contacts
+                $state = Cache::c('group'.$name);
+
+                if($state == false)
+                    $roster[$c->groupname]->shown = 'groupshown';
+
+                $roster[$c->groupname]->toggle =
+                    $this->genCallAjax('ajaxToggleCache', "'group".$c->groupname."'");
             }
-            
-            if(!isset($roster[$c->groupname][$c->jid])) {
-                $roster[$c->groupname][$c->jid] = $c->toArray();
+
+            // TODO Fix this stuff
+            if($c->jid == $currentjid) {
+                array_push($currentarr, $c);
+                $currenthtml = $this->prepareContact($currentarr);
             } else {
-                array_push($roster[$c->groupname][$c->jid], $c->toArray());
+                $currentarr = array();
+                $currenthtml = '';
+                array_push($currentarr, $c);
+                $currenthtml = $this->prepareContact($currentarr);
             }
+
+            $roster[$c->groupname]->html .= $currenthtml;
+
+            $currentjid = $c->jid;
         }
 
-        //var_dump($roster);
-        $html = json_encode($roster);
-        */
-        return $html;
+        $listview = $this->tpl();
+        $listview->assign('roster',       $roster);
+
+        return $listview->draw('_roster_list', true);
+        
+        //return $roster;
+        //return $html;
     }
 
     /**

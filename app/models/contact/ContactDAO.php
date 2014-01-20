@@ -25,9 +25,6 @@ class ContactDAO extends ModlSQL {
     }
     
     function set(Contact $contact) {
-        /*                
-                phototype       = :phototype,
-                photobin        = :photobin,*/
         $this->_sql = '
             update contact
             set fn      = :fn,
@@ -91,9 +88,6 @@ class ContactDAO extends ModlSQL {
                 'gender'   => $contact->gender,
                 'marital'  => $contact->marital,
                 
-                //'phototype'  => $contact->phototype,
-                //'photobin'   => $contact->photobin,
-                
                 'description'    => $contact->description,
                 
                 // User Mood (contain serialized array) - XEP 0107
@@ -135,12 +129,6 @@ class ContactDAO extends ModlSQL {
         $this->run('Contact');
 
         if(!$this->_effective) {
-            /*            
-                phototype,
-                photobin,
-                :phototype,
-                :photobin,
-                * */
             $this->_sql = '
                 insert into contact
                 (
@@ -249,9 +237,6 @@ class ContactDAO extends ModlSQL {
                     
                     'gender'   => $contact->gender,
                     'marital'  => $contact->marital,
-                    
-                    //'phototype'  => $contact->phototype,
-                    //'photobin'   => $contact->photobin,
                     
                     'description'    => $contact->description,
                     

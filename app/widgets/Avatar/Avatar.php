@@ -87,6 +87,7 @@ class Avatar extends WidgetBase
 
     function ajaxAvatarSubmit($avatar)
     {
+        /*
         $cd = new \modl\ContactDAO();
         $c = $cd->get($this->user->getLogin());
 
@@ -98,7 +99,11 @@ class Avatar extends WidgetBase
 
         $c->createThumbnails();
 
-        $cd->set($c);
+        $cd->set($c);*/
+
+        $p = new \Picture;
+        $p->fromBase((string)$avatar->photobin->value);
+        $p->set($this->user->getLogin());
         
         $r = new moxl\AvatarSet();
         $r->setData($avatar->photobin->value)->request();
