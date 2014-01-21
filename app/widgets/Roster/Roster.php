@@ -58,7 +58,7 @@ class Roster extends WidgetBase
         $c = $cd->getRosterItem($arr['jid'], true);
 
         if($c != null) {
-            $html = $this->prepareContact($c);
+            $html = $this->prepareContact($c, $this->getCaps());
 
             if($c[0]->groupname == null)
                 $group = t('Ungrouped');
@@ -118,7 +118,7 @@ class Roster extends WidgetBase
      * @param $contact 
      * @returns 
      */
-    function prepareContact($contact)
+    function prepareContact($contact, $caps)
     {
         $arr = array();
         $jid = false;
@@ -126,11 +126,6 @@ class Roster extends WidgetBase
         $presencestxt = getPresencesTxt();
         
         foreach($contact as $c) {
-            /*
-            if(!isset($roster[$c->groupname]->contacts[$c->jid])) {
-                $roster[$c->groupname]->contacts[$c->jid] = array();
-            }
-            */
             // We add some basic information
             $arr[$c->ressource]             = $c->toArray();
             $arr[$c->ressource]['avatar']   = $c->getPhoto('s');
@@ -145,8 +140,6 @@ class Roster extends WidgetBase
             if($c->value && $c->value < 5) {
                 $arr[$c->ressource]['presencetxt'] = $presencestxt[$c->value];
 
-                //if(isset($client))
-                //    $html .= ' client '.strtolower($client);
             } elseif($c->value == 6)
                 $arr[$c->ressource]['presencetxt'] = 'server_error';
             else
@@ -157,6 +150,39 @@ class Roster extends WidgetBase
                 = $this->genCallWidget("Chat","ajaxOpenTalk", "'".$c->jid."'");
 
             $jid = $c->jid;
+
+            // About the entity capability
+            if($caps && isset($caps[$c->node.'#'.$c->ver])) {
+                $cap  = $caps[$c->node.'#'.$c->ver];
+                $arr[$c->ressource]['type'] = $cap->type;
+                
+                $client = $cap->name;
+                $client = explode(' ',$client);
+                $arr[$c->ressource]['client'] = strtolower(reset($client));
+
+                // Jingle support
+                $features = $cap->features;
+                $features = unserialize($features);
+                if(array_search('urn:xmpp:jingle:1', $features) !== null) {
+                    
+                    if(array_search('urn:xmpp:jingle:apps:rtp:audio', $features) !== null
+                    && array_search('urn:xmpp:jingle:apps:rtp:video', $features) !== null
+                    && (  array_search('urn:xmpp:jingle:transports:ice-udp:0', $features)
+                       || array_search('urn:xmpp:jingle:transports:ice-udp:1', $features))
+                    ){
+                        $arr[$c->ressource]['jingle'] = true;
+                    } else {
+                        $arr[$c->ressource]['jingle'] = false;
+                    }
+                }
+            }
+
+            // Tune
+            $arr[$c->ressource]['tune'] = false;
+            
+            if(($c->tuneartist != null && $c->tuneartist != '') ||
+               ($c->tunetitle  != null && $c->tunetitle  != ''))
+                $arr[$c->ressource]['tune'] = true;;
         }
 
         $contactview = $this->tpl();
@@ -371,8 +397,8 @@ class Roster extends WidgetBase
 
         $presencestxt = getPresencesTxt();
 
-        $currentjid = false;
-        $currentarr = array();
+        $currentjid     = false;
+        $currentarr     = array();
 
         foreach($contacts as $c) {
             if(!isset($roster[$c->groupname])) {
@@ -396,20 +422,18 @@ class Roster extends WidgetBase
                     $this->genCallAjax('ajaxToggleCache', "'group".$c->groupname."'");
             }
 
-            // TODO Fix this stuff
             if($c->jid == $currentjid) {
                 array_push($currentarr, $c);
-                $currenthtml = $this->prepareContact($currentarr);
+                $currenthtml = $this->prepareContact($currentarr, $capsarr);
             } else {
                 $currentarr = array();
                 $currenthtml = '';
                 array_push($currentarr, $c);
-                $currenthtml = $this->prepareContact($currentarr);
+                $currenthtml = $this->prepareContact($currentarr, $capsarr);
+                $roster[$c->groupname]->html .= $currenthtml;
             }
 
-            $roster[$c->groupname]->html .= $currenthtml;
-
-            $currentjid = $c->jid;
+            $currentjid   = $c->jid;
         }
 
         $listview = $this->tpl();

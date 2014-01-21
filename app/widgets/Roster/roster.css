@@ -213,6 +213,42 @@
     opacity: 0.5;
 }
 
+/* Icons */
+
+#roster ul#rosterlist ul.contact li .infoicon {
+    width: 1.4em;
+    height: 1.4em;
+    background-size: 1.3em 1.3em;
+    background-repeat: no-repeat;
+    float: right;
+    margin-top: 0.8em;
+    margin-right: 0.2em;
+}
+
+#roster ul#rosterlist ul.contact li .mobile {
+    background-image: url('img/mobile.svg');
+}
+
+#roster ul#rosterlist ul.contact li .web {
+    background-image: url('img/earth.svg');
+}
+
+#roster ul#rosterlist ul.contact li .bot {
+    background-image: url('img/robot.png');
+}
+
+#roster ul#rosterlist ul.contact li .tune {
+    background-image: url('img/music.svg');
+}
+
+#roster ul#rosterlist ul.contact li .jingle {
+    background-image: url('img/call.svg');
+}
+
+#roster ul#rosterlist ul.contact li .jingle:hover {
+    cursor: pointer;
+}
+
 /*
 #roster ul#rosterlist ul.contact li:not(:first-child) {
     display: none;
