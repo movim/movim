@@ -1,4 +1,7 @@
-<li id="{$jid}">
+<li
+    id="{$jid}"
+    title="{$jid}_{$name}"
+    class="{$presence}">
     <ul class="contact">
         {loop="contact"}
             <li
