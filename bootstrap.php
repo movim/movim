@@ -115,6 +115,7 @@ class Bootstrap {
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
         define('BASE_URI',      $this->getBaseUri());
+        define('CACHE_URI',     $this->getBaseUri() . 'cache/');
         
         define('THEMES_PATH',   DOCUMENT_ROOT . '/themes/');
         define('USERS_PATH',    DOCUMENT_ROOT . '/users/');
@@ -173,6 +174,7 @@ class Bootstrap {
         require_once(SYSTEM_PATH . "MovimException.php");
         require_once(SYSTEM_PATH . "RPC.php");
         require_once(SYSTEM_PATH . "User.php");
+        require_once(SYSTEM_PATH . "Picture.php");
     }
     
     private function loadCommonLibraries() {

@@ -7,6 +7,8 @@ class SDPtoJingle {
     private $content    = null;
     private $transport  = null;
 
+    private $action;
+
     // Move the global fingerprint into each medias
     private $global_fingerprint = array();
     
@@ -41,6 +43,8 @@ class SDPtoJingle {
         $this->jingle->addAttribute('action',$action);
         $this->jingle->addAttribute('initiator',$initiator);
         $this->jingle->addAttribute('responder',$responder);
+
+        $this->action = $action;
     }
     
     function getSessionId(){
@@ -72,9 +76,11 @@ class SDPtoJingle {
                             $this->content->addAttribute('name', $matches[1]);
                             
                             // The description node
-                            $description = $this->content->addChild('description');
-                            $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
-                            $description->addAttribute('media', $matches[1]);
+                            if($this->action != 'transport-info') {
+                                $description = $this->content->addChild('description');
+                                $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
+                                $description->addAttribute('media', $matches[1]);
+                            }
 
                             if(!empty($this->global_fingerprint)) {
                                 $fingerprint = $this->transport->addChild('fingerprint', $this->global_fingerprint['fingerprint']);
@@ -107,10 +113,8 @@ class SDPtoJingle {
                             
                         // http://xmpp.org/extensions/xep-0167.html#format
                         case 'fmtp':
-                            /*
-                             * This work only if fmtp is added just after
-                             * the correspondant rtpmap
-                             */                            
+                            // This work only if fmtp is added just after
+                            // the correspondant rtpmap
                             if($matches[1] == $payloadtype->attributes()->id) {
                                 $params = explode(';', $matches[2]);
 
@@ -178,7 +182,8 @@ class SDPtoJingle {
                             $rtphdrext->addAttribute('xmlns',   "urn:xmpp:jingle:apps:rtp:rtp-hdrext:0");
                             $rtphdrext->addAttribute('id',      $matches[1]);
                             $rtphdrext->addAttribute('uri',     $matches[4]);
-                            $rtphdrext->addAttribute('senders', $matches[3]);
+                            if(isset($matches[3]) && $matches[3] != '')
+                                $rtphdrext->addAttribute('senders', $matches[3]);
                             break;
                             
                         // http://xmpp.org/extensions/inbox/jingle-source.html
@@ -291,6 +296,8 @@ class SDPtoJingle {
                 }
             }
         }
+
+        //$this->jingle->addChild('sdp', $this->sdp);
         
         // We reindent properly the Jingle package
         $xml = $this->jingle->asXML();

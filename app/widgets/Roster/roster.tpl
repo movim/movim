@@ -9,9 +9,9 @@
         onclick="focusContact();" 
         placeholder="{$c->t('Search');}"/>
     <ul id="rosterlist" class="{$offline_shown}">
-        {$c->prepareRoster()}
+        {$rosterlist}
     </ul>
-    <script type="text/javascript">sortRoster();</script>
+    <script type="text/javascript">//sortRoster();</script>
 </div>
 
 <div id="rostermenu" class="menubar">
