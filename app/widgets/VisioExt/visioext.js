@@ -39,12 +39,13 @@ var Popup = {
     },
     
     open: function(jid) {
-        console.log('Opening the Popup');
+        console.log('Popup already opened');
         var url = BASE_URI + PAGE_KEY_URI + "visio&f="+jid
 
         this.setJid(jid);
         
         if( !this.win || this.win.closed ) {
+            console.log('Opening the Popup');
             this.win = window.open( url, "win",  "height=480,width=640,directories=0,titlebar=0,toolbar=0,location=0,status=0, personalbar=0,menubar=0,resizable=0" );
         } else this.win.focus();
     },

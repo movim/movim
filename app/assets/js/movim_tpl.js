@@ -62,5 +62,6 @@ function movim_fill(params)
 function movim_delete(params)
 {
     target = document.getElementById(params[0]);
-    target.parentNode.removeChild(target);
+    if(target)
+        target.parentNode.removeChild(target);
 }

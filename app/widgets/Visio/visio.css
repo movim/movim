@@ -80,7 +80,6 @@ body {
 }
 
 #visio #log {
-    display: none;
     color: white;
     position: absolute;
     top: 0;

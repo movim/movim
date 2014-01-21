@@ -107,7 +107,7 @@ class Wall extends WidgetCommon
             $html .= $htmlmessages;
             if(count($pl) > 9)
                 $html .= '
-                    <div class="post">
+                    <div class="block large">
                         <div class="older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").';  this.parentNode.style.display = \'none\'">'.t('Get older posts').'</div>
                     </div>';
         }
@@ -150,7 +150,7 @@ class Wall extends WidgetCommon
                 <?php
                 } ?>
             </div>
-           </div>
+       </div>
         <?php
     }
 }

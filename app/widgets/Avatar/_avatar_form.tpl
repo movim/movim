@@ -3,13 +3,12 @@
         <legend>{$c->t('Avatar')}</legend>
         <div class="element">
             <label for="avatar">{$c->t('Avatar')}</label>
-                <img id="vCardPhotoPreview" src="data:'.$me->phototype.';base64,{$me->photobin}">
+                <img id="vCardPhotoPreview" src="data:image/jpeg;base64,{$photobin}">
             <br /><span id="picturesize" class="clean"></span><br /><br />
             
             <input type="file" onchange="vCardImageLoad(this.files);">
 
-            <input type="hidden" name="phototype"  value="{$me->phototype}"/>
-            <input type="hidden" name="photobin"  value="{$me->photobin}"/>
+            <input type="hidden" name="photobin"  value="{$photobin}"/>
         </div>
 
         <div class="element" id="camdiv">

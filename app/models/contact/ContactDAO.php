@@ -41,9 +41,6 @@ class ContactDAO extends ModlSQL {
                 gender          = :gender,
                 marital         = :marital,
                 
-                phototype       = :phototype,
-                photobin        = :photobin,
-                
                 description     = :description,
                 
                 mood            = :mood,
@@ -90,9 +87,6 @@ class ContactDAO extends ModlSQL {
                 
                 'gender'   => $contact->gender,
                 'marital'  => $contact->marital,
-                
-                'phototype'  => $contact->phototype,
-                'photobin'   => $contact->photobin,
                 
                 'description'    => $contact->description,
                 
@@ -152,9 +146,6 @@ class ContactDAO extends ModlSQL {
                 gender,
                 marital,
                 
-                phototype,
-                photobin,
-                
                 description,
                 
                 mood,
@@ -198,9 +189,6 @@ class ContactDAO extends ModlSQL {
                     
                     :gender,
                     :marital,
-                    
-                    :phototype,
-                    :photobin,
                     
                     :description,
                     
@@ -249,9 +237,6 @@ class ContactDAO extends ModlSQL {
                     
                     'gender'   => $contact->gender,
                     'marital'  => $contact->marital,
-                    
-                    'phototype'  => $contact->phototype,
-                    'photobin'   => $contact->photobin,
                     
                     'description'    => $contact->description,
                     
