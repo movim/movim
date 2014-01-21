@@ -249,6 +249,15 @@
     cursor: pointer;
 }
 
+/* Search */
+#roster.search ul#rosterlist div > li {
+    display: none;
+}
+
+#roster.search ul#rosterlist div > li.found {
+    display: list-item;
+}
+
 /*
 #roster ul#rosterlist ul.contact li:not(:first-child) {
     display: none;
