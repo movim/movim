@@ -44,7 +44,7 @@ class Presence extends WidgetBase
     {
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
-
+var_dump($presence);
         if($show == "boot") $show = $presence['show'];
         Cache::c(
             'presence', 

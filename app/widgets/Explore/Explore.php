@@ -121,7 +121,8 @@ class Explore extends WidgetCommon {
                     </header>
 
                     <section class="content">'.prepareString($user->description).'</section>
-                    
+
+                    <footer></footer>
                 </article>
                 ';
         }

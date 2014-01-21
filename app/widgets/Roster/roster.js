@@ -1,3 +1,4 @@
+/*
 function sortRoster() {
     cleanMulti();
     
@@ -49,7 +50,7 @@ function cleanMulti() {
         i++;
     }
 }
-
+*/
 function showRoster(boolOffline) {
     if(boolOffline == '1')
         document.querySelector('ul#rosterlist').className = 'offlineshown';
