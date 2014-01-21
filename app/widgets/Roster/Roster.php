@@ -71,36 +71,15 @@ class Roster extends WidgetBase
             $html /* this second parameter is just to bypass the RPC filter)*/);
 
             RPC::call('movim_append', 'group'.$group, $html);
-        }
-
-        //$caps = $this->getCaps();
-        /*
-        if($c != null) {
-            foreach($c as $item) {
-                $html = $this->prepareRosterElement($item, $caps);
-                
-                RPC::call(
-                'movim_delete', 
-                'roster'.$item->jid.$item->ressource, 
-                $html  this second parameter is just to bypass the RPC filter);
-
-                if($item->groupname == null)
-                    $group = t('Ungrouped');
-                else
-                    $group = $item->groupname;
-
-                RPC::call('movim_append', 'group'.$group, $html);
-            }
-
             RPC::call('sortRoster');
-        }        */
+        }
     }
 
     function onRoster($jid)
     {
         $html = $this->prepareRoster();
         RPC::call('movim_fill', 'rosterlist', $html);
-        //RPC::call('sortRoster');
+        RPC::call('sortRoster');
     }
 
     /**
@@ -123,6 +102,10 @@ class Roster extends WidgetBase
         $arr = array();
         $jid = false;
 
+        // The global presence
+        $presence = false;
+        $name     = false;
+
         $presencestxt = getPresencesTxt();
         
         foreach($contact as $c) {
@@ -139,11 +122,15 @@ class Roster extends WidgetBase
 
             if($c->value && $c->value < 5) {
                 $arr[$c->ressource]['presencetxt'] = $presencestxt[$c->value];
-
             } elseif($c->value == 6)
                 $arr[$c->ressource]['presencetxt'] = 'server_error';
             else
                 $arr[$c->ressource]['presencetxt'] = 'offline';
+
+            if($presence == false) {
+                $presence = $arr[$c->ressource]['presencetxt'];
+                $name     = strtolower($arr[$c->ressource]['name']);
+            }
 
             // An action to open the chat widget
             $arr[$c->ressource]['openchat']
@@ -187,6 +174,8 @@ class Roster extends WidgetBase
 
         $contactview = $this->tpl();
         $contactview->assign('jid',           $jid);
+        $contactview->assign('name',          $name);
+        $contactview->assign('presence',      $presence);
         $contactview->assign('contact',       $arr);
 
         return $contactview->draw('_roster_contact', true);
@@ -198,6 +187,7 @@ class Roster extends WidgetBase
      * @param $inner 
      * @returns 
      */
+    /*
     function prepareRosterElement($contact, $caps = false)
     {
         $type = '';
@@ -304,15 +294,14 @@ class Roster extends WidgetBase
 
         return $html;
     }
-    
+    */
     /**
      * @brief Create the HTML for a roster group and add the title
      * @param $contacts 
      * @param $i 
      * @returns html
-     * 
-     * 
      */
+    /*
     private function prepareRosterGroup($contacts, &$i, $caps)
     {
         $j = $i;
@@ -347,7 +336,7 @@ class Roster extends WidgetBase
             </div>';
         
         return $grouphtml;
-    }
+    }*/
 
     private function getCaps() {
         $capsdao = new modl\CapsDAO();
@@ -373,26 +362,8 @@ class Roster extends WidgetBase
         $contactdao = new \modl\ContactDAO();
         $contacts = $contactdao->getRoster();
 
-        //$rd = new \modl\RosterLinkDAO();
-        
         $capsarr = $this->getCaps();
-        /*
-        if(count($contacts) > 0) {
-            $i = 0;
-            
-            while($i < count($contacts))
-                $html .= $this->prepareRosterGroup($contacts, $i, $capsarr);
 
-        } else {
-            $html .= '<script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxRefreshRoster').'\', 1500);</script>';
-            $html .= '
-                <span class="nocontacts">'.
-                    t('No contacts ? You can add one using the %s button bellow or going to the %sExplore page%s',
-                    '+', 
-                    '<br /><a class="button color green icon users" href="'.Route::urlize('explore').'">', '</a>').'
-                </span>';
-        }
-        */
         $roster = array();
 
         $presencestxt = getPresencesTxt();
@@ -401,22 +372,24 @@ class Roster extends WidgetBase
         $currentarr     = array();
 
         foreach($contacts as $c) {
+            if($c->groupname == '')
+                $c->groupname = t('Ungrouped');
+            
             if(!isset($roster[$c->groupname])) {
                 $roster[$c->groupname] = new stdClass;
                 $roster[$c->groupname]->contacts = array();
                 $roster[$c->groupname]->html = '';
 
-                if($c->groupname == '')
-                    $roster[$c->groupname]->name = t('Ungrouped');
-                else
-                    $roster[$c->groupname]->name = $c->groupname;
+                $roster[$c->groupname]->name = $c->groupname;
 
                 $roster[$c->groupname]->shown = '';
                 // get the current showing state of the group and the offline contacts
-                $state = Cache::c('group'.$name);
+                $state = Cache::c('group'.$c->groupname);
 
                 if($state == false)
                     $roster[$c->groupname]->shown = 'groupshown';
+                else
+                    $roster[$c->groupname]->shown = '';
 
                 $roster[$c->groupname]->toggle =
                     $this->genCallAjax('ajaxToggleCache', "'group".$c->groupname."'");
@@ -437,20 +410,16 @@ class Roster extends WidgetBase
         }
 
         $listview = $this->tpl();
+        $listview->assign('refresh',      $this->genCallAjax('ajaxRefreshRoster'));
         $listview->assign('roster',       $roster);
 
         return $listview->draw('_roster_list', true);
-        
-        //return $roster;
-        //return $html;
     }
 
     /**
      * @brief Toggling boolean variables in the Cache
      * @param $param
      * @returns 
-     * 
-     * 
      */
     function ajaxToggleCache($param){
         //$bool = !currentValue

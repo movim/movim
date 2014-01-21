@@ -1,7 +1,5 @@
-/*
 function sortRoster() {
-    cleanMulti();
-    
+
     roster = document.querySelector('#rosterlist');
     contacts = roster.querySelectorAll('li');
 
@@ -32,25 +30,6 @@ function sortRoster() {
     }
 }
 
-function cleanMulti() {
-    roster = document.querySelector('#rosterlist');
-    contacts = roster.querySelectorAll('li');
-    
-    var i = 0;
-    var id = '';
-
-    while(i < contacts.length) {
-        if(contacts.item(i).className != 'offline'
-        && contacts.item(i).className != 'server_error')
-            contacts.item(i).style.display = 'list-item';
-        if(id == contacts.item(i).dataset.jid)
-            contacts.item(i).style.display = 'none';
-        
-        id = contacts.item(i).dataset.jid;
-        i++;
-    }
-}
-*/
 function showRoster(boolOffline) {
     if(boolOffline == '1')
         document.querySelector('ul#rosterlist').className = 'offlineshown';
@@ -73,7 +52,41 @@ function incomingPresence(val) {
     sortRoster();
 }
 
+movim_add_onload(function()
+{
+    var search      = document.querySelector('#rostersearch');
+    var roster      = document.querySelector('#roster');
+    var rosterlist  = document.querySelector('#rosterlist');
+
+    search.onblur  = function() { roster.className = ''; };
+    search.onkeyup = function(event) {
+        if(search.value.length > 0) {
+            roster.className = 'search';
+            rosterlist.className = 'offlineshown';
+        } else {
+            roster.className = '';
+            rosterlist.className = '';
+        }
+
+        // We clear the old search
+        var selector_clear = '#rosterlist div > li';
+        var li = document.querySelectorAll(selector_clear);
+
+        for(i = 0; i < li.length; i++) {
+            li.item(i).className = '';
+        }
+
+        // We select the interesting li
+        var selector = '#rosterlist div > li[title*=\'' + search.value + '\']';
+        var li = document.querySelectorAll(selector);
+
+        for(i = 0; i < li.length; i++) {
+            li.item(i).className = 'found';
+        }
+    };
+});
 /*ROSTER SEARCH*/
+/*
 function focusContact(){
 	rosterlist = document.querySelector('#rosterlist');
 	focused = rosterlist.querySelector('.focused');
@@ -237,13 +250,13 @@ function rosterSearch(e){
 	if(e.keyCode==8 || (e.keyCode>47 && e.keyCode<91) || (e.keyCode>95 && e.keyCode<106) || e.keyCode==46){
 		focusflag = false;
 		for(i = 0; i < parents.length; i++){
-            /*hide all contacts that doesn't match*/
+            // hide all contacts that doesn't match
 			if(names[i].innerHTML.toLowerCase().lastIndexOf(request.toLowerCase()) == -1){
 				parents[i].style.display = "none";
 			}
             else{
 				parents[i].style.display = "list-item";
-                /*replace the old focused by the new one if there is an old one*/
+                // replace the old focused by the new one if there is an old one
 				if(!focusflag){
 					giveFocusTo(parents[i]);
 					focusflag = true;
@@ -303,7 +316,7 @@ function rosterInArray(thing, array){
     }
     return false;
 }
-
+*/
 function rosterToggleGroup(h){
     group = document.getElementById(h[0]);
     
@@ -312,3 +325,4 @@ function rosterToggleGroup(h){
     else
         group.className = '';
 }
+
