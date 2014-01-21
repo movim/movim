@@ -32,6 +32,7 @@
 </div>
 -->
 <article class="block" id="{$id}">
+    <div class="{$access}" title="{$flagtitle}"></div>
     <header>
         <a href="{$friend}">
             {$avatar}
