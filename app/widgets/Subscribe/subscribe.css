@@ -1,3 +1,4 @@
+/*
 #subscribe .block {
     border: 1px solid #DDD;
     margin-right: 1em;
@@ -9,32 +10,37 @@
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
-
-#subscribe .block:hover {
+*/
+#subscribe .server:hover {
     background-color: #EEE;
     cursor: pointer;
     border-color: #BBB;
 }
 
-#subscribe .block h1 {
+#subscribe .server h1 {
     padding: 0;
     line-height: 1em;
     font-size: 1.2em;
 }
 
-#subscribe .block img.flag {
+#subscribe .server img.flag {
     float: right;
     margin-top: -1em;
 }
 
-#subscribe .block a {
+#subscribe .server a {
     text-decoration: none;
     line-height: 1.5em;
 }
 
-#subscribe .block.star {
+#subscribe .server.star {
     background-image: url('img/star.svg');
     background-size: 3em 3em;
     background-position: 100% 100%;
     background-repeat: no-repeat;
+}
+
+#subscribe .server {
+    border: 1px solid #DDD;
+    padding: 1em;
 }
