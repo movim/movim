@@ -25,10 +25,16 @@ class Subscribe extends WidgetBase {
         $this->addcss('subscribe.css');
         $this->addjs('subscribe.js');
 
-        $xml = simplexml_load_string(file_get_contents('http://movim.eu/server-vcards.xml'));
-        $xml = (array)$xml->children();
+        $xml = requestURL('http://movim.eu/server-vcards.xml', 1);
+        if($xml) {
+            $xml = simplexml_load_string($xml);
+            
+            $xml = (array)$xml->children();
 
-        $this->view->assign('servers', $xml['vcard']);
+            $this->view->assign('servers', $xml['vcard']);
+        } else {
+            $this->view->assign('servers', false);
+        }
     }
 
     function flagPath($country) {
