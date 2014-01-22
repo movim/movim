@@ -3,11 +3,11 @@
 
     <p class="paddedtop">{$c->t('Movim is a decentralized social network, before creating a new account you need to choose a server to register.')}</p>
 
-    <div class="paddedtop">
-        {loop="$servers"}
-        <div
-            class="block {if="$value->checked"}star{/if}"
-            onclick="movim_redirect('{$c->route('accountnext', array($value->fn->text, false))}')">
+    {loop="$servers"}
+    <div
+        class="block {if="$value->checked"}star{/if}"
+        onclick="movim_redirect('{$c->route('accountnext', array($value->fn->text, false))}')">
+        <div class="server">
             <h1>{$value->fn->text}</h1>
 
             <img
@@ -21,9 +21,11 @@
                 {$value->url->uri}
             </a>
         </div>
-        {/loop}
+    </div>
+    {/loop}
 
-        <div class="block">
+    <div class="block">
+        <div class="server">
             <h1>{$c->t('Your server here ?')}</h1>
 
             <p>
