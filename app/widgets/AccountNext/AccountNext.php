@@ -25,8 +25,16 @@ class AccountNext extends WidgetBase {
         $this->addcss('accountnext.css');
         $this->addjs('accountnext.js');
 
-        $xml = simplexml_load_string(file_get_contents('http://movim.eu/server-vcards.xml'));
-        $xml = (array)$xml->children();
+        $xml = requestURL('http://movim.eu/server-vcards.xml', 1);
+        
+        if($xml) {
+            $xml = simplexml_load_string($xml);
+            $xml = (array)$xml->children();
+
+            $this->view->assign('servers', $xml['vcard']);
+        } else {
+            $this->view->assign('servers', false);
+        }
 
         $this->view->assign(
                     'getsubscriptionform',
@@ -34,8 +42,6 @@ class AccountNext extends WidgetBase {
                     );
                     
         $this->view->assign('ndd', $_GET['s']);
-
-        $this->view->assign('servers', $xml['vcard']);
     }
 
     function ajaxDiscoverServer($ndd) {

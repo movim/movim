@@ -757,4 +757,31 @@ function generateKey($size) {
     }
     return $hash;
 }
+
+/*
+ * @desc Request a simple url
+ */
+function requestURL($url, $timeout = 10) {
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, $timeout);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+
+    $rs = array();
+
+    $content = curl_exec($ch);
+
+    $rs['content'] = $content;
+    $rs['errno'] = curl_errno($ch);
+    $rs['errmsg'] = curl_error($ch);
+    $rs['header'] = curl_getinfo($ch);
+
+    if($rs['errno'] == 0) {
+        return $rs['content'];
+    } else {
+        return false;
+    }
+}
 ?>
