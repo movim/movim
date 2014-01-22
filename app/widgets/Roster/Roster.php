@@ -138,6 +138,10 @@ class Roster extends WidgetBase
 
             $jid = $c->jid;
 
+            $arr[$c->ressource]['type']   = '';
+            $arr[$c->ressource]['client'] = '';
+            $arr[$c->ressource]['jingle'] = false;
+
             // About the entity capability
             if($caps && isset($caps[$c->node.'#'.$c->ver])) {
                 $cap  = $caps[$c->node.'#'.$c->ver];
@@ -150,17 +154,13 @@ class Roster extends WidgetBase
                 // Jingle support
                 $features = $cap->features;
                 $features = unserialize($features);
-                if(array_search('urn:xmpp:jingle:1', $features) !== null) {
-                    
-                    if(array_search('urn:xmpp:jingle:apps:rtp:audio', $features) !== null
-                    && array_search('urn:xmpp:jingle:apps:rtp:video', $features) !== null
-                    && (  array_search('urn:xmpp:jingle:transports:ice-udp:0', $features)
-                       || array_search('urn:xmpp:jingle:transports:ice-udp:1', $features))
-                    ){
-                        $arr[$c->ressource]['jingle'] = true;
-                    } else {
-                        $arr[$c->ressource]['jingle'] = false;
-                    }
+                if(array_search('urn:xmpp:jingle:1', $features) !== null
+                && array_search('urn:xmpp:jingle:apps:rtp:audio', $features) !== null
+                && array_search('urn:xmpp:jingle:apps:rtp:video', $features) !== null
+                && (  array_search('urn:xmpp:jingle:transports:ice-udp:0', $features)
+                   || array_search('urn:xmpp:jingle:transports:ice-udp:1', $features))
+                ){
+                    $arr[$c->ressource]['jingle'] = true;
                 }
             }
 
