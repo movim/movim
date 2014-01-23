@@ -57,15 +57,21 @@ movim_add_onload(function()
     var search      = document.querySelector('#rostersearch');
     var roster      = document.querySelector('#roster');
     var rosterlist  = document.querySelector('#rosterlist');
+    
+    var roster_classback      = document.querySelector('#roster').className;
+    var rosterlist_classback  = document.querySelector('#rosterlist').className;   
 
-    search.onblur  = function() { roster.className = ''; };
+    search.onblur  = function() {
+        roster.className = roster_classback;
+        rosterlist.className = rosterlist_classback;
+    };
     search.onkeyup = function(event) {
         if(search.value.length > 0) {
             roster.className = 'search';
             rosterlist.className = 'offlineshown';
         } else {
-            roster.className = '';
-            rosterlist.className = '';
+            roster.className = roster_classback;
+            rosterlist.className = rosterlist_classback;
         }
 
         // We clear the old search
