@@ -94,6 +94,14 @@ class WidgetBase
     {
         echo $this->draw();
     }
+
+    /*
+     * @desc Preload some sourcecode for the draw method
+     */
+    function display()
+    {
+
+    }
     
     /**
      * Return the template's HTML code 
@@ -102,6 +110,7 @@ class WidgetBase
      */
     function draw()
     {
+        $this->display();
         return trim($this->view->draw(strtolower($this->name), true));
     }
     

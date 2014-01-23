@@ -26,7 +26,10 @@ class NodeConfig extends WidgetBase
         $this->registerEvent('pubsubconfig', 'onConfigForm');
         $this->registerEvent('pubsubconfigsubmited', 'onGroupConfig');
         $this->registerEvent('deletionsuccess', 'onGroupDeleted');
-        
+    }
+
+    function display()
+    {
         if(isset($_GET['s']) && isset($_GET['n'])) {
             $nd = new modl\ItemDAO();
             $node = $nd->getItem($_GET['s'], $_GET['n']);
