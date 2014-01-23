@@ -30,7 +30,10 @@ class Chat extends WidgetBase
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('attention', 'onAttention');
         $this->registerEvent('presence', 'onPresence');
+    }
 
+    function display()
+    {
         $this->view->assign('chats', $this->prepareChats());
     }
     

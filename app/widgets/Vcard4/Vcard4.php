@@ -22,7 +22,10 @@ class Vcard4 extends WidgetBase
         $this->registerEvent('myvcard4valid', 'onMyVcard4Received');
         $this->registerEvent('myvcard4invalid', 'onMyVcard4NotReceived');
         $this->registerEvent('myvcard', 'onMyVcard4');
-        
+    }
+
+    function display()
+    {
         $cd = new \modl\ContactDAO();
         $me = $cd->get($this->user->getLogin());
         

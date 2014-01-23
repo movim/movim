@@ -4,7 +4,10 @@ class Explore extends WidgetCommon {
     function WidgetLoad()
     {
         $this->addcss('explore.css');
-        
+    }
+
+    function display()
+    {
         $this->view->assign('contacts', $this->prepareContacts());
         $this->view->assign('servers', $this->prepareServers());
 

@@ -26,7 +26,10 @@ class PubsubSubscriptionConfig extends WidgetBase
         $this->registerEvent('groupsubscribedlist', 'onGroupSubscribedList');
         $this->registerEvent('groupadded', 'onGroupAdded');
         $this->registerEvent('groupremoved', 'onGroupRemoved');
+    }
 
+    function display()
+    {
         $this->view->assign(
                     'getsubscribedlist',
                     $this->genCallAjax('ajaxGetGroupSubscribedList')
