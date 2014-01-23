@@ -32,7 +32,10 @@ class Node extends WidgetCommon
         $this->registerEvent('pubsubmetadata', 'onPubsubMetadata');
         $this->registerEvent('pubsubsubscribederror', 'onPubsubSubscribedError');
         $this->registerEvent('pubsubunsubscribed', 'onPubsubUnsubscribed');
+    }
 
+    function display()
+    {
         if(isset($_GET['s']) && isset($_GET['n'])) {
             $this->view->assign('server', $_GET['s']);
             $this->view->assign('node',   $_GET['n']);

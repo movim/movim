@@ -26,7 +26,10 @@ class Login extends WidgetBase {
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
         $this->registerEvent('moxlerror', 'onMoxlError');
-        
+    }
+
+    function display()
+    {
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
         $this->view->assign('submit', $submit);
         $this->view->assign('conf',   \system\Conf::getServerConf($submit));

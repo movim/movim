@@ -26,7 +26,10 @@ class ServerNodes extends WidgetCommon
         $this->registerEvent('discoerror', 'onDiscoError');
         $this->registerEvent('creationsuccess', 'onCreationSuccess');
         $this->registerEvent('creationerror', 'onCreationError');
+    }
 
+    function display()
+    {
         if($_GET['s'] != null) {
             $this->view->assign('server', $this->prepareServer($_GET['s']));
             $this->view->assign('get_nodes', $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"));
