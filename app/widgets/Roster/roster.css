@@ -250,11 +250,11 @@
 }
 
 /* Search */
-#roster.search ul#rosterlist div > li {
+#roster.search ul#rosterlist.offlineshown div.groupshown > li {
     display: none;
 }
 
-#roster.search ul#rosterlist div > li.found {
+#roster.search ul#rosterlist.offlineshown div.groupshown > li.found {
     display: list-item;
 }
 
