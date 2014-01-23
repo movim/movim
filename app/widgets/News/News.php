@@ -8,9 +8,13 @@ class News extends WidgetCommon {
     {
         $this->registerEvent('opt_post', 'onStream');
         $this->registerEvent('stream', 'onStream');
-        
+    }
+
+    function display()
+    {        
         $this->view->assign('news', $this->prepareNews(-1));
     }
+    
     /**
      * @todo nexthtml not always set... Add comments...
      */
