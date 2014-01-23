@@ -24,7 +24,10 @@ class Feed extends WidgetCommon {
         $this->registerEvent('nodecreationerror', 'onNodeCreationError');
         
         $this->registerEvent('config', 'onConfig');
-        
+    }
+
+    function display()
+    {
         $this->view->assign('blog_url', Route::urlize('blog', array($this->user->getLogin(), 'urn:xmpp:microblog:0')));
         $this->view->assign('feed_url', Route::urlize('feed',array($this->user->getLogin(), 'urn:xmpp:microblog:0')));
         $this->view->assign('friend_url', Route::urlize('friend',$this->user->getLogin()));
