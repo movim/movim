@@ -31,7 +31,10 @@ class Roster extends WidgetBase
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
         $this->registerEvent('presence', 'onPresence');
-        
+    }
+
+    function display()
+    {
         $this->view->assign('offline_shown',  '');
         $offline_state = Cache::c('offlineshown');
 
