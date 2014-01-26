@@ -64,6 +64,10 @@ class JingletoSDP {
         $sdp_medias = '';
             
         foreach($this->jingle->children() as $content) {
+
+            if($content->getName() != 'content')
+                break;
+                
             $media_header_ids = array();
             $media_header_first_port = null;
             $media_header_last_ip = null;
@@ -140,7 +144,6 @@ class JingletoSDP {
                                         }
 
                                         break;
-
                                     // http://xmpp.org/extensions/xep-0167.html#format
                                     case 'parameter' :
                                         if($first_fmtp) {

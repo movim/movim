@@ -80,7 +80,7 @@ class Picture {
         $path = $this->_path.md5($this->_key).'.jpg';
 
         // If the file exist we replace it
-        if(file_exists($path)) {
+        if(file_exists($path) && $this->_bin) {
             unlink($path);
 
             // And destroy all the thumbnails
