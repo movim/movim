@@ -61,7 +61,7 @@ movim_add_onload(function()
     var roster_classback      = document.querySelector('#roster').className;
     var rosterlist_classback  = document.querySelector('#rosterlist').className;   
 
-    search.onblur  = function() {
+    roster.onblur  = function() {
         roster.className = roster_classback;
         rosterlist.className = rosterlist_classback;
     };
