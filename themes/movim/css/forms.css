@@ -380,6 +380,10 @@ legend {
 .icon.gear:before   { background-image: url(../img/icons/button/gear.svg); }
 .icon.contract:before{ background-image: url(../img/icons/button/contract.svg); }
 
+.icon.skype:before{ background-image: url(../img/icons/button/skype.svg); }
+.icon.twitter:before{ background-image: url(../img/icons/button/twitter.svg); }
+.icon.yahoo:before{ background-image: url(../img/icons/button/yahoo.svg); }
+
 .icon.camera:before{ background-image: url(../img/icons/button/camera.svg); }
 .icon.camera-off:before{ background-image: url(../img/icons/button/camera-off.svg); }
 .icon.microphone:before{ background-image: url(../img/icons/button/microphone.svg); }

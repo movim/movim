@@ -152,6 +152,10 @@ class Vcard4 extends WidgetBase
         $c->adrcountry      = $vcard->country->value;
 
         $c->email   = $vcard->email->value;
+
+        $c->twitter = $vcard->twitter->value;
+        $c->skype   = $vcard->skype->value;
+        $c->yahoo   = $vcard->yahoo->value;
         
         $c->description     = trim($vcard->desc->value);
             
