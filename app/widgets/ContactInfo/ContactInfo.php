@@ -130,6 +130,39 @@ class ContactInfo extends WidgetCommon
                     $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
                 }
             }
+
+            // Accounts
+            if($c->twitter && $c->twitter != '') {
+                $html .= '
+                    <br />
+                    <br />
+                    <a
+                        class="button color blue icon twitter"
+                        target="_blank"
+                        href="https://twitter.com/'.$c->twitter.'">@'.$c->twitter.'</a>';
+            }
+            
+            if($c->skype && $c->skype != '') {
+                $html .= '
+                    <br />
+                    <br />
+                    <a
+                        class="button color green icon skype"
+                        target="_blank"
+                        href="callto://'.$c->skype.'">'.$c->skype.'</a>';
+            }
+            
+            if($c->yahoo && $c->yahoo != '') {
+                $html .= '
+                    <br />
+                    <br />
+                    <a
+                        class="button color purple icon yahoo"
+                        target="_blank"
+                        href="ymsgr:sendIM?'.$c->yahoo.'">'.$c->yahoo.'</a>';
+            }
+
+            $html .= '<div class="clear"></div>';
         }
         
         return $html;

@@ -164,7 +164,7 @@ class Notifs extends WidgetCommon
             }           
             
             // Contact request pending
-            $cd = new \modl\ContactDAO();
+            /*$cd = new \modl\ContactDAO();
             $subscribes = $cd->getRosterSubscribe();
             
             if(sizeof($subscribes) != 0) {
@@ -188,7 +188,7 @@ class Notifs extends WidgetCommon
                 }
             
             }
-            
+            */
             
         $html .= '
                 </ul>

@@ -68,7 +68,10 @@ class ContactDAO extends ModlSQL {
                 locbuilding     = :locbuilding,
                 loctext         = :loctext,
                 locuri          = :locuri,
-                loctimestamp    = :loctimestamp
+                loctimestamp    = :loctimestamp,
+                twitter         = :twitter,
+                skype           = :skype,
+                yahoo           = :yahoo
             where contact.jid = :jid';
         
         $this->prepare(
@@ -121,6 +124,10 @@ class ContactDAO extends ModlSQL {
                 'loctext'           => $contact->loctext,
                 'locuri'            => $contact->locuri,
                 'loctimestamp'      => $contact->loctimestamp,
+                
+                'twitter'           => $contact->twitter,
+                'skype'             => $contact->skype,
+                'yahoo'             => $contact->yahoo,
                 
                 'jid'  => $contact->jid
             )
@@ -218,6 +225,11 @@ class ContactDAO extends ModlSQL {
                     :loctext,
                     :locuri,
                     :loctimestamp,
+
+                    :twitter,
+                    :skype,
+                    :yahoo,
+                    
                     :jid)';
                     
                 
@@ -271,6 +283,10 @@ class ContactDAO extends ModlSQL {
                     'loctext'           => $contact->loctext,
                     'locuri'            => $contact->locuri,
                     'loctimestamp'      => $contact->loctimestamp,
+                                    
+                    'twitter'           => $contact->twitter,
+                    'skype'             => $contact->skype,
+                    'yahoo'             => $contact->yahoo,
                     
                     'jid'  => $contact->jid
                 )
@@ -383,11 +399,29 @@ class ContactDAO extends ModlSQL {
         else
             return $this->run('RosterContact', 'item');
     }
-    
-    function getRosterSubscribe() {        
-        return null;
+
+    function getMe($item = false) {
+        $this->_sql = '
+            select * from contact
+            left outer join presence on contact.jid = presence.jid
+            where contact.jid = :jid
+            and presence.session = :session';
+        
+        $this->prepare(
+            'RosterLink', 
+            array(
+                'session' => $this->_user,
+                'jid' => $this->_user
+            )
+        );
+        
+        if($item)
+            return $this->run('RosterContact'); 
+        else
+            return $this->run('RosterContact', 'item');
+
     }
-    
+
     function getStatistics() {
         $this->_sql = '
             select 
