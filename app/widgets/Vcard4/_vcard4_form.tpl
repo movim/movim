@@ -104,7 +104,7 @@
             
         <div class="element">
             <label for="url">{$c->t('Locality')}</label>
-            <input type="text" type="locality" name ="locality" class="content" value="{$me->adrlocality}">
+            <input type="text" type="locality" name ="locality" class="content" value="{$me->adrlocality}" placeholder="{$c->t('Locality')}">
         </div>
                   
         <div class="element">
@@ -123,6 +123,25 @@
             </div>
         </div>
 
+    </fieldset>
+
+    <fieldset>
+        <legend>{$c->t('Accounts')}</legend>
+        
+        <div class="element">
+            <label for="twitter">{$c->t('Twitter')}</label>
+            <input type="text" name="twitter" class="content" value="{$me->twitter}" placeholder="{$c->t('Nickname')}">
+        </div>
+        
+        <div class="element">
+            <label for="skype">{$c->t('Skype')}</label>
+            <input type="text" name="skype" class="content" value="{$me->skype}" placeholder="{$c->t('Nickname')}">
+        </div>
+        
+        <div class="element">
+            <label for="skype">{$c->t('Yahoo')}</label>
+            <input type="email" name="yahoo" class="content" value="{$me->yahoo}" placeholder="{$c->t('Yahoo Account')}">
+        </div>
     </fieldset>
 
     <fieldset>

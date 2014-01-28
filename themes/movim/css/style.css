@@ -309,8 +309,8 @@ ul.clean li {
     overflow: hidden;
 }
 
-#left a:link, 
-#left a:visited {
+#left a:not(.button):link, 
+#left a:not(.button):visited {
     color: #94A6B0;
     text-decoration: none;
 }
