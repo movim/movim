@@ -57,6 +57,11 @@ class Contact extends ModlModel {
     protected $loctext;
     protected $locuri;
     protected $loctimestamp;
+
+    // Accounts
+    protected $twitter;
+    protected $skype;
+    protected $yahoo;
     
     public function __construct() {
         $this->_struct = '
@@ -128,7 +133,13 @@ class Contact extends ModlModel {
             "locuri" : 
                 {"type":"string", "size":128 },
             "loctimestamp" : 
-                {"type":"date",   "size":11 }
+                {"type":"date",   "size":11 },
+            "twitter" : 
+                {"type":"string", "size":128 },
+            "skype" : 
+                {"type":"string", "size":128 },
+            "yahoo" : 
+                {"type":"string", "size":128 }
         }';
 
         parent::__construct();
@@ -253,8 +264,24 @@ class Contact extends ModlModel {
         $this->adrlocality     = $vcard->adr->locality;
         $this->adrcountry      = $vcard->adr->country;
         $this->adrpostalcode   = $vcard->adr->code;
-        
-        $this->email   = $vcard->email->text;
+
+        foreach($vcard->impp->children() as $c) {
+            list($key, $value) = explode(':', (string)$c);
+
+            switch($key) {
+                case 'twitter' :
+                    $this->twitter = $value;
+                    break;
+                case 'skype' :
+                    $this->skype = $value;
+                    break;
+                case 'ymsgr' :
+                    $this->yahoo = $value;
+                    break;
+            }
+        }
+
+        $this->email           = $vcard->email->text;
         
         $this->description     = trim($vcard->note->text);
     }

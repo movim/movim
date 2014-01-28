@@ -27,7 +27,7 @@ class Feed extends WidgetCommon {
     }
 
     function display()
-    {
+    {       
         $this->view->assign('blog_url', Route::urlize('blog', array($this->user->getLogin(), 'urn:xmpp:microblog:0')));
         $this->view->assign('feed_url', Route::urlize('feed',array($this->user->getLogin(), 'urn:xmpp:microblog:0')));
         $this->view->assign('friend_url', Route::urlize('friend',$this->user->getLogin()));
