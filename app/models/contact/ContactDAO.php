@@ -181,6 +181,11 @@ class ContactDAO extends ModlSQL {
                 loctext,
                 locuri,
                 loctimestamp,
+
+                twitter,
+                skype,
+                yahoo,
+                
                 jid)
                 values (
                     :fn,

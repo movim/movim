@@ -77,7 +77,7 @@ class ContactInfo extends WidgetCommon
                     
                     $img = $json->album->image[2]->{'#text'};
                     $url = $json->album->url;
-                    if(isset($img)) {
+                    if(isset($img) && $img != '') {
                         $img = '
                             <br />
                             <br />
