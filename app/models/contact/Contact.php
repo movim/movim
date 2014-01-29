@@ -270,7 +270,7 @@ class Contact extends ModlModel {
 
             switch($key) {
                 case 'twitter' :
-                    $this->twitter = $value;
+                    $this->twitter = str_replace('@', '', $value);
                     break;
                 case 'skype' :
                     $this->skype = $value;
