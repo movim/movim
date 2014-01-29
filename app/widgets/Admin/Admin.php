@@ -163,12 +163,12 @@ class Admin extends WidgetBase {
     
     private function prepareAdminComp()
     {
-            
+            // setTimeout(function() {location.reload(false)}, 3000);
         if($this->testDir(DOCUMENT_ROOT))
             $this->createDirs();
             
         $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
-            ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 3000);";
+            ."this.className='button color orange icon loading'; location.reload(true);";
 
         $this->_validatebutton = '
             <div class="clear"></div>
