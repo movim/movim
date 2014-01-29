@@ -30,12 +30,13 @@
         onclick="{$refresh}
         this.className='button icon color alone orange loading'; this.onclick=null;"
         class="button color blue icon alone refresh"></a>
-    
+
+    <!--
     <a 
         class="button color icon yes"
         onclick="{$getsubscription}"
     >{$c->t('Get Subscription')}</a>
-
+    -->
     <a 
         class="button color icon user"
         style="float: right; display: none;"
