@@ -37,6 +37,7 @@ class Avatar extends WidgetBase
                 );
             $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
         } else {
+            $this->view->assign('getavatar', '');
             $this->view->assign('form', $this->prepareForm($me));
         }
     }
