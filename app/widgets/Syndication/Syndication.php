@@ -63,13 +63,16 @@ class Syndication extends WidgetBase
     
     function prepareTitle($title) {
         if($title == null)
-            return trim(substr(strip_tags($title), 0, 40)).'...';
+            return '...';
         else
-            return $this->prepareContent($title);     
+            return $this->prepareContent($title, true);     
     }
     
-    function prepareContent($content) {
-        return cleanHTMLTags(prepareString($content));
+    function prepareContent($content, $title = false) {
+        if($title)
+            return cleanHTMLTags($content);
+        else
+            return trim(cleanHTMLTags(prepareString($content)));
     }
 
     function generateUUID($content) {
