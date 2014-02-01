@@ -169,6 +169,7 @@ class WidgetCommon extends WidgetBase {
         $links = unserialize($links);
 
         foreach($links as $l) {
+            /*
             if(isset($l['rel'])
                 && $l['rel'] == 'enclosure'
                 && $l['type'] != 'text/html') {
@@ -210,6 +211,35 @@ class WidgetCommon extends WidgetBase {
                             <img class="icon" src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>'.$url['scheme'].'://'.$url['host'].$url['path'].'
                         </a><br />';
                 }
+            }
+            */
+
+            switch($l['rel']) {
+                case 'enclosure' :
+                    if(in_array($l['type'], array('image/jpeg', 'image/png', 'image/jpg'))) {
+                        $enc .= '
+                            <a href="'.$l['href'].'" class="imglink" target="_blank">
+                                <img src="'.$l['href'].'"/>
+                            </a>';
+                    } elseif(in_array($l['type'], array('audio/mpeg', 'audio/ogg'))) {
+                        $enc .= '
+                            <audio controls>
+                                <source src="'.$l['href'].'" type="'.$l['type'].'">
+                            </audio> ';
+                    } else {
+                        $enc .= '
+                            <a href="'.$l['href'].'" target="_blank">
+                                '.$l['href'].'
+                            </a>';
+                    }
+                    break;
+                case 'alternate' :
+                    $url = parse_url($l['href']);
+                    $enc .= '
+                        <a href="'.$l['href'].'" class="imglink" target="_blank">
+                            <img class="icon" src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>'.$url['scheme'].'://'.$url['host'].$url['path'].'
+                        </a>';
+                    break;
             }
         }
 
