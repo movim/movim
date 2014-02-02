@@ -237,7 +237,7 @@ class WidgetCommon extends WidgetBase {
                     $url = parse_url($l['href']);
                     $enc .= '
                         <a href="'.$l['href'].'" class="imglink" target="_blank">
-                            <img class="icon" src="https://duckduckgo.com/i/'.$url['host'].'.ico"/>'.$url['scheme'].'://'.$url['host'].$url['path'].'
+                            <img class="icon" src="http://g.etfv.co/'.$l['href'].'"/>'.$url['scheme'].'://'.$url['host'].$url['path'].'
                         </a>';
                     break;
             }
