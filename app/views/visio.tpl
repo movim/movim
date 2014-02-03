@@ -2,6 +2,7 @@
 ?><!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no";>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
             <?php
             $this->addCss('css/animations.css');
