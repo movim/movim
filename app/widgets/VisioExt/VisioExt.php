@@ -58,6 +58,47 @@ class VisioExt extends WidgetBase
     }
     
     function onSessionTerminate($jingle) {
+        $message = '';
+        
+        switch($jingle->reason->children()->getName()) {
+            case 'success':
+                $message = t('Hung up');
+                break;
+                
+            case 'busy':
+                $message = t('Your contact is busy');
+                break;
+                
+            case 'decline':
+                $message = t('Declined');
+                break;
+                
+            case 'unsupported-transports':
+
+                break;
+                
+            case 'failed-transport':
+
+                break;
+                
+            case 'unsupported-applications':
+
+                break;
+                
+            case 'failed-application':
+                $message = t('Remote application incompatible');
+                break;
+                
+            case 'incompatible-parameters':
+
+                break;
+
+            default:
+                $message = t('Unknown error');
+                break;
+        }
+                
+        RPC::call('Popup.call', 'movim_fill', 'status', $message);
         RPC::call('Popup.call', 'terminate');
     }
 
@@ -99,14 +140,18 @@ class VisioExt extends WidgetBase
           ->request();
     }
 
-    function ajaxSendSessionTerminate($jid, $ressource) {
+    function ajaxSendSessionTerminate($jid, $ressource, $reason = null) {
         $s = Session::start('movim');
         $jingleSid = $s->get("jingleSid");
         
         $r = new moxl\JingleSessionTerminate();
-        $r->setTo($jid.'/'.$ressource)
-          ->setJingleSid($jingleSid)
-          ->request();
+        $r->setTo($jid.'/'.$ressource);
+        $r->setJingleSid($jingleSid);
+
+        if(isset($reason))
+            $r->setReason($reason);
+
+        $r->request();
     }
 
     function ajaxSendCandidate($candidate) {

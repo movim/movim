@@ -211,60 +211,12 @@ article table#commentsubmit .commentsubmitrow td {
     font-weight: bold;
 }
 
-/*
-.post {
-    width: auto;
-    padding: 1em;
-    border-bottom: 1px solid #DDD;
-    min-height: 4em;
-    clear: both;
-}
-
-
-.post .header {
-    display: block;
-    overflow: auto;
-    overflow-y: hidden;
-}
-
-.post .content {
-    line-height: 1.3em;
-    padding: 0em;
-    padding-bottom: 1em;
-    word-wrap: break-word;
-    overflow: hidden;
-}
-
-.post .postbubble {
-    width: 92%;
-    margin-left: 5em;
-    position: relative;
-}
-
-.post .postbubble .header a {
-    text-decoration: none;
-}
-
-.post .postbubble.profile {
-    padding-top: 0.5em;
-}
-
-.post .postbubble.profile .content {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 2em;
-}
-
-.post:last-child {
-    border-bottom: 0px;
-}
-*/
 article p.summary {
     font-style:italic;
 }
 
-article .enclosure {
+/* Enclosures */
+article .enclosures {
     line-height: 1em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -272,30 +224,48 @@ article .enclosure {
     clear: both;
     padding: 1em 0;
 }
-/*
-.post .header span {
-    overflow: hidden;
-    padding-right: 0.5em;
+
+article .enclosures .enclosure,
+article .enclosures .alternate {
     line-height: 2em;
-    display: inline-block;
-}
-
-.post span.title {
-    padding-left: 0;
     display: block;
-    font-size: 1.5em;
-    line-height: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.post span a:hover {
-    text-decoration: underline;
+article .enclosures .alternate img,
+article .enclosures .enclosure:before {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-size: 16px 16px;
+    margin-bottom: -0.2em;
+    margin-right: 0.5em;
 }
 
-.post span.date, .post span.asv {
-    font-weight: normal;
-    color: #777;
+article .enclosures .enclosure:before {
+    content: '';
+    background-image: url(../img/icons/gray/file.svg);
 }
-*/
+
+article .enclosures .enclosure[type='application/x-bittorrent']:before {
+    background-image: url(../img/icons/gray/file-xml.svg);
+}
+
+article .enclosures .enclosure[type='image/jpeg']:before,
+article .enclosures .enclosure[type='image/png']:before,
+article .enclosures .enclosure[type='image/jpg']:before {
+    content: none;
+}
+
+article .enclosures .enclosure[type='image/jpeg'] img,
+article .enclosures .enclosure[type='image/png']  img
+article .enclosures .enclosure[type='image/jpg']  img{
+    max-height: 15em;
+}
+
+/* Others usefull elements */
 article span.tag {
     font-weight: normal;
 
@@ -306,159 +276,44 @@ article span.tag {
     border-radius: 0.2em 0.2em 0 0;
     float: left;
 }
-/*
-.post span.tag:first-child {
-    display: block;
-}
 
-.post span.delete {
-    font-weight: normal;
-    margin-left: 1em;
-}
-
-.post span.delete:hover {
-	cursor: pointer;
-}
-*/
 article span.place,
 article span.recycle,
 article span.group {
     display: inline-block;
     padding-left: 2em;
+    
     font-weight: normal;
-    margin-top: 0.5em;
     float: right;
     margin-left: 1em;
     padding-right: 0.5em;
     line-height: 2em;
     max-width: 300px;
+
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: 0 0.5em;
+    
     white-space: nowrap;  
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 article span.place {
-    background: url(../img/icons/place.png) 0 0.5em no-repeat;
+    background-image: url(../img/icons/gray/earth.svg);
 }
 
 article span.recycle {
-    background: url(../img/icons/recycle.png) 0 0.5em no-repeat;
+    background-image: url(../img/icons/gray/loop.svg);
 }
 
 article span.group {
-    background: url(../img/icons/users.png) 0 0.5em no-repeat;
-}
-/*
-.post .comments {
-    width: 100%;
-    clear: both;
+    background-image: url(../img/icons/gray/users.svg);
 }
 
-.post .comments:hover {
-    cursor: pointer;
-}
-
-.post .comments .comment {
-    line-height: 2em;
-    overflow: hidden;
-	width: auto;
-}
-
-.post .getcomments {
-    background-repeat: no-repeat;
-    background-position: 0.5em center;
-}
-
-.post .getcomments:before {
-    padding: 1em;
-    background-color: #FC8F12;
-    content: "";
-}
-
-.post .addcomment:before {
-    padding: 1em;
-    background-color: #6FCC43;
-    content: "";
-}
-
-.post .avatar {
-	width: 4em;
-	height: 4em;
-	margin-left: 0px;
-	display: block;
-	float: left;
-    border-radius: 0.1em;
-}
-
-.post .avatar.tiny {
-    width: 2em;
-    margin-right: 1em;
-    height: 2em;
-}
-
-.post .content.tiny {
-    margin: 0px;
-    padding: 0px;
-    margin-right: 0.5em;
-    margin-left: 3em;
-    margin-bottom: 0.5em;
-}
-
-.post .author {
-    float: right;
-    font-weight: normal;
-    padding: 0.5em 1em;
-    margin-bottom: 0.5em;
-}
-
-.post .author span {
-    font-weight: bold;
-    padding-right: 0;
-    line-height: 1em;
-    display: inline;
-}
-*/
 article .content i, article .content em { font-style: italic; }
 article .content b, article .content strong { font-weight: bold; }
 article .content u, article .content a { text-decoration: underline; }
-/*
-.post a.imglink {
-    display: inline-block;
-    max-width: 100%;
-    margin-right: 0.5em;
-    margin-top: 0.5em;
-    height: 0px;
-}
-*/
-article .enclosure a.imglink {
-    display: inline-block;
-    height: auto;
-    width: 100%;
-    line-height: 1.5em;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-article a.imglink img {
-    max-height: 400px;
-    width: 100%;
-}
-
-article .enclosure a.imglink img {
-    max-height: 200px;
-    max-width: 100%;
-    width: auto;
-    margin-bottom: -0.2em;
-}
-
-article .enclosure a.imglink img.icon {
-    max-height: 24px;
-    margin-right: 0.5em;
-    min-width: 16px;
-    min-height: 16px;
-}
 
 article .content img,
 article .content video {
@@ -498,52 +353,7 @@ article .content ul li,
 article .content ol li{
     line-height: 1.5em;
 }
-/*
-.post .older {
-	text-align: center;
-	min-height: 0px;
-	cursor: pointer;
-    border-radius: 0.1em;
-    color: white;
-    line-height: 4em;
-    background-color: #4C5A61;
-}
 
-.post .older:hover {
-    box-shadow: 0 0.3em 0em rgba(0, 0, 0, 0.2);
-}
-
-.post table#commentsubmit {
-    border: 1px solid #DDD;
-    border-spacing: 0px;
-    background-color: white;
-    width: 100%;
-    border: 1px solid #DDD;
-    display: none;
-}
-
-.post table#commentsubmit td {
-    width: 100%;
-    padding: 0px;
-}
-
-.post table#commentsubmit textarea {
-    border: 0px;
-    width: 100%;
-    resize: none;
-    padding: 0px;
-    height: 1.5em;
-}
-
-.post table#commentsubmit .commentsubmitrow {
-    background-color: #F3F3F3;
-    display: block;
-}
-
-.post table#commentsubmit .commentsubmitrow td {
-    height: rgba(0, 0, 0, 0.5);
-}
-*/
 article .tools {
     padding: 1em;
     position: relative;
@@ -555,29 +365,3 @@ article .tools a:hover {
     cursor: pointer;
     text-decoration: underline;
 }
-/*
-.post .spoiler > * {
-    opacity: 0;
-}
-
-.post .spoiler.show > * {
-    opacity: 1;
-}
-
-.post .spoiler:before {
-    content: "Spoiler +";
-    padding: 0.5em;
-    margin: 0.5em 0;
-    color: #777;
-    border-bottom: 1px solid #BBB;
-    display: block;
-}
-
-.post .spoiler.show:before {
-    content: "Spoiler -";
-}
-
-.post .spoiler:hover {
-    cursor: pointer;
-}
-*/
