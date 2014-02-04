@@ -50,9 +50,12 @@ class WidgetCommon extends WidgetBase {
                 $flagcolor='orange';
                 $access .= 'protect orange';
             }
-                
+
             $avatar = $post->getContact()->getPhoto('m');
-        } else 
+        // A little hack which display a colored avatar for the Groups
+        } elseif(!filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->node != '') {
+            $avatar = $post->getContact()->getPhoto('m', $post->node);
+        } else
             $avatar = $post->getContact()->getPhoto('m');
             
         if(!filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->node != '')
@@ -99,7 +102,7 @@ class WidgetCommon extends WidgetBase {
                 
         if(isset($enc) && $enc != '') {
             $enc = '
-                <div class="enclosure">'.
+                <div class="enclosures">'.
                     $enc.
                 '
                     <div class="clear"></div>
@@ -218,26 +221,40 @@ class WidgetCommon extends WidgetBase {
                 case 'enclosure' :
                     if(in_array($l['type'], array('image/jpeg', 'image/png', 'image/jpg'))) {
                         $enc .= '
-                            <a href="'.$l['href'].'" class="imglink" target="_blank">
-                                <img src="'.$l['href'].'"/>
+                            <a
+                                href="'.$l['href'].'"
+                                class="enclosure"
+                                type="'.$l['type'].'"
+                                target="_blank"><img
+                                    src="'.$l['href'].'"/>
                             </a>';
-                    } elseif(in_array($l['type'], array('audio/mpeg', 'audio/ogg'))) {
+                    /*} elseif(in_array($l['type'], array('audio/mpeg', 'audio/ogg'))) {
                         $enc .= '
                             <audio controls>
                                 <source src="'.$l['href'].'" type="'.$l['type'].'">
                             </audio> ';
-                    } else {
+                    }*/} else {
                         $enc .= '
-                            <a href="'.$l['href'].'" target="_blank">
-                                '.$l['href'].'
+                            <a
+                                href="'.$l['href'].'"
+                                class="enclosure"
+                                type="'.$l['type'].'"
+                                target="_blank">'.$l['href'].'
                             </a>';
                     }
                     break;
                 case 'alternate' :
                     $url = parse_url($l['href']);
+
+                    if(!isset($url['host']))
+                        $url['host'] = '';
+                    
                     $enc .= '
-                        <a href="'.$l['href'].'" class="imglink" target="_blank">
-                            <img class="icon" src="http://g.etfv.co/'.$l['href'].'"/>'.$url['scheme'].'://'.$url['host'].$url['path'].'
+                        <a
+                            href="'.$l['href'].'"
+                            class="alternate"
+                            target="_blank"><img
+                                src="http://g.etfv.co/'.$l['href'].'"/>'.$url['scheme'].'://'.$url['host'].$url['path'].'
                         </a>';
                     break;
             }
