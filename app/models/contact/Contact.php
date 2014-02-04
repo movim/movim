@@ -207,9 +207,9 @@ class Contact extends ModlModel {
                     $out = base_convert($jid, 32, 8);
                     
                     if($out == false)
-                        $out[4] = 1;
+                        $out[3] = 1;
     
-                    return BASE_URI.'/themes/movim/img/default'.$out[4].'.svg';
+                    return BASE_URI.'/themes/movim/img/default'.$out[3].'.svg';
                 }
             } else {
                 $out = base_convert(md5(openssl_random_pseudo_bytes(5)), 16, 8);

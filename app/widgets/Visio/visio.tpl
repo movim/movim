@@ -12,6 +12,7 @@
     <div id="avatar">
         <img src="{$avatar}"/>
         <span class="name">{$name}</span>
+        <div id="status"></div>
     </div>
     <div class="menu">
         <a id="toggle-microphone" class="button color icon microphone alone merged right oppose">
