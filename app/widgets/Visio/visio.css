@@ -48,7 +48,7 @@ body {
     top: 50%;
     max-width: 200px;
     margin-left: -100px;
-    margin-top: -150px;
+    margin-top: -160px;
 }
 
 #visio #avatar img {
@@ -69,6 +69,13 @@ body {
     font-size: 1.6em;
 }
 
+#visio #avatar #status {
+    color: white;
+    text-align: center;
+    margin-top: 1em;
+    line-height: 1.5em;
+}
+
 #visio #remote-video,
 #visio #local-video {
     position: absolute;
@@ -84,7 +91,6 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
 }
 
 #visio #log div {
