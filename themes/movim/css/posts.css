@@ -215,7 +215,8 @@ article p.summary {
     font-style:italic;
 }
 
-article .enclosure {
+/* Enclosures */
+article .enclosures {
     line-height: 1em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -224,6 +225,47 @@ article .enclosure {
     padding: 1em 0;
 }
 
+article .enclosures .enclosure,
+article .enclosures .alternate {
+    line-height: 2em;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+article .enclosures .alternate img,
+article .enclosures .enclosure:before {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-size: 16px 16px;
+    margin-bottom: -0.2em;
+    margin-right: 0.5em;
+}
+
+article .enclosures .enclosure:before {
+    content: '';
+    background-image: url(../img/icons/gray/file.svg);
+}
+
+article .enclosures .enclosure[type='application/x-bittorrent']:before {
+    background-image: url(../img/icons/gray/file-xml.svg);
+}
+
+article .enclosures .enclosure[type='image/jpeg']:before,
+article .enclosures .enclosure[type='image/png']:before,
+article .enclosures .enclosure[type='image/jpg']:before {
+    content: none;
+}
+
+article .enclosures .enclosure[type='image/jpeg'] img,
+article .enclosures .enclosure[type='image/png']  img
+article .enclosures .enclosure[type='image/jpg']  img{
+    max-height: 15em;
+}
+
+/* Others usefull elements */
 article span.tag {
     font-weight: normal;
 
@@ -240,63 +282,38 @@ article span.recycle,
 article span.group {
     display: inline-block;
     padding-left: 2em;
+    
     font-weight: normal;
-    margin-top: 0.5em;
     float: right;
     margin-left: 1em;
     padding-right: 0.5em;
     line-height: 2em;
     max-width: 300px;
+
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: 0 0.5em;
+    
     white-space: nowrap;  
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 article span.place {
-    background: url(../img/icons/place.png) 0 0.5em no-repeat;
+    background-image: url(../img/icons/gray/earth.svg);
 }
 
 article span.recycle {
-    background: url(../img/icons/recycle.png) 0 0.5em no-repeat;
+    background-image: url(../img/icons/gray/loop.svg);
 }
 
 article span.group {
-    background: url(../img/icons/users.png) 0 0.5em no-repeat;
+    background-image: url(../img/icons/gray/users.svg);
 }
 
 article .content i, article .content em { font-style: italic; }
 article .content b, article .content strong { font-weight: bold; }
 article .content u, article .content a { text-decoration: underline; }
-
-article .enclosure a {
-    display: inline-block;
-    height: auto;
-    width: 100%;
-    line-height: 1.5em;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-article a.imglink img {
-    max-height: 400px;
-    width: 100%;
-}
-
-article .enclosure a.imglink img {
-    max-height: 200px;
-    max-width: 100%;
-    width: auto;
-    margin-bottom: -0.2em;
-}
-
-article .enclosure a.imglink img.icon {
-    max-height: 24px;
-    margin-right: 0.5em;
-    min-width: 16px;
-    min-height: 16px;
-}
 
 article .content img,
 article .content video {

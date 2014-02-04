@@ -97,6 +97,10 @@ function onIceCandidate(event) {
 */
 }
 
+function sendTerminate(reason) {
+    Visio.call(['VisioExt_ajaxSendSessionTerminate', VISIO_JID, VISIO_RESSOURCE, reason]);
+}
+
 function sendMessage(msg, accept) {
     offer = {};
     offer.sdp = msg.sdp;
@@ -148,6 +152,7 @@ function onSetSessionDescriptionSuccess() {
 
 function onSetSessionDescriptionError(error) {
     Visio.log('Failed to set local session description: ' + error.toString());
+    sendTerminate('failed-application');
 }
 
 function onSetRemoteSessionDescriptionSuccess() {
@@ -155,9 +160,8 @@ function onSetRemoteSessionDescriptionSuccess() {
 }
 
 function onSetRemoteSessionDescriptionError(error) {
-    //console.log('gnap');
-    console.log(error);
     Visio.log('Failed to set remote session description: ' + error.message);
+    sendTerminate('failed-application');
 }
 
 function onOffer(offer) {
@@ -165,8 +169,6 @@ function onOffer(offer) {
     
     Visio.log('Offer received.');
     Visio.log('OFFER ' + offer);
-
-    console.log(offer);
       
     if(!pc)
         init(false);
@@ -176,14 +178,9 @@ function onOffer(offer) {
         var message = {};
         message.sdp = offer;
         message.type = 'offer';
-        console.log(message);
+
         var desc = new RTCSessionDescription(message);
-        console.log(desc);
-        /*
-        var desc = new RTCSessionDescription();
-        desc.sdp = offer;
-        desc.type = 'offer';
-        */
+
         pc.setRemoteDescription(desc,
             onSetRemoteSessionDescriptionSuccess, onSetRemoteSessionDescriptionError);  
     }
@@ -196,13 +193,7 @@ function onAccept(offer) {
     Visio.log('ACCEPT ' + offer);
 
     if(offer != null) {
-        //Visio.log('GN0P');
-        /*var message = {};
-        message.sdp = offer;
-        message.type = 'anwser';
-        console.log(message);*/
-        var desc = new RTCSessionDescription(/*message*/);
-        //console.log(desc);
+        var desc = new RTCSessionDescription();
         desc.sdp = offer;
         desc.type = 'answer';
         
@@ -220,7 +211,6 @@ function onCandidate(message) {
     var candidate = new RTCIceCandidate({sdpMLineIndex: label[message[1]],
                                          candidate: message[0]});
 
-    //console.log(candidate);
     pc.addIceCandidate(candidate, onRemoteIceCandidateAdded, onRemoteIceCandidateError);
 }
 
@@ -272,14 +262,13 @@ function init(isCaller) {
                 pc.createOffer(onOfferCreated, onError);
             else
                 pc.createAnswer(onAnswerCreated, onError);
-            
-            //pc.createOffer(onOfferCreated, onError);
         },
 
         // Error Callback
         function(err) {
             // Log the error to the console.
             Visio.log('The following error occurred when trying to use getUserMedia: ' + err);
+            sendTerminate('decline');
         }
 
 
@@ -287,19 +276,18 @@ function init(isCaller) {
     } else {
         alert('Sorry, your browser does not support getUserMedia');
     }
-
-    console.log(pc);
 }
 
 function terminate() {
     // We close the RTCPeerConnection
-    pc.close();
+    console.log(pc);
+    if(pc != null && pc.signalingState != 'closed')
+        pc.close();
 
     // We close the local webcam and microphone
-    localStream.stop();
+    if(localStream != null)
+        localStream.stop();
     remoteStream = null;
-    
-    Visio.call(['VisioExt_ajaxSendSessionTerminate', VISIO_JID, VISIO_RESSOURCE]);
     
     // Get a reference to the video elements on the page.
     var vid = document.getElementById('local-video');
