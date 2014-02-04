@@ -245,6 +245,10 @@ class WidgetCommon extends WidgetBase {
                     break;
                 case 'alternate' :
                     $url = parse_url($l['href']);
+
+                    if(!isset($url['host']))
+                        $url['host'] = '';
+                    
                     $enc .= '
                         <a
                             href="'.$l['href'].'"
