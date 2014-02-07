@@ -101,6 +101,21 @@ class SubscriptionDAO extends ModlSQL {
         
         return $this->run('Subscription');
     }
+
+    function delete() {
+        $this->_sql = '
+            delete from subscription
+            where jid = :jid';
+        
+        $this->prepare(
+            'Subscription', 
+            array(
+                'jid' => $this->_user
+            )
+        );
+        
+        return $this->run('Subscription');
+    }
     
     function deleteNode($server, $node) {
         $this->_sql = '
