@@ -60,7 +60,10 @@ class Bookmark extends WidgetBase
     function onBookmark($arr)
     {
         $i = 0;
-        foreach($arr as $b) {
+
+        $sd = new \modl\SubscriptionDAO();
+
+        /*foreach($arr as $b) {
             if($b['type'] == 'subscription') {
                 $su = new \modl\Subscription();
                 $su->jid    = $this->user->getLogin();
@@ -70,13 +73,12 @@ class Bookmark extends WidgetBase
                 $su->subid  = $b['subid'];
                 $su->timestamp      = date('Y-m-d H:i:s', rand(1111111111, 8888888888));
             
-                $sd = new \modl\SubscriptionDAO();
                 $sd->set($su);
                 
                 unset($arr[$i]);
             }
             $i++;
-        }
+        }*/
         
         Cache::c('bookmark', $arr);
         $html = $this->prepareBookmark($arr);
@@ -92,7 +94,8 @@ class Bookmark extends WidgetBase
     function ajaxGetBookmark() 
     {
         $b = new moxl\BookmarkGet();
-        $b->request();
+        $b->setTo($this->user->getLogin())
+          ->request();
     }
     
     function ajaxSetBookmark($arr = null) 
