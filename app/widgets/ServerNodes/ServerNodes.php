@@ -46,7 +46,7 @@ class ServerNodes extends WidgetCommon
         
         list($type) = explode('.', $server);
         
-        if($type == 'pubsub') {
+        if(!in_array($type, array('conference', 'muc', 'discussion', 'chat'))) {
             $head = '
                 <a 
                     class="button icon add color green" 
