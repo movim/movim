@@ -55,6 +55,9 @@ class Explore extends WidgetCommon {
                 case 'discussion':
                     $cat = 'chatroom';
                     break;
+                case 'chat':
+                    $cat = 'chatroom';
+                    break;
                 case 'pubsub':
                     $cat = 'pubsub';
                     break;
