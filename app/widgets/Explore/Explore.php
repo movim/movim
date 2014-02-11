@@ -43,7 +43,7 @@ class Explore extends WidgetCommon {
         $pubsubs = '';
 
         foreach($servers as $s) {
-            list($type, $server,$ext) = explode('.', $s->server);
+            list($type, $server ,$ext) = explode('.', $s->server);
 
             switch ($type) {
                 case 'conference':
@@ -103,34 +103,38 @@ class Explore extends WidgetCommon {
         $html = '';
                 
         $cd = new \modl\ContactDAO();
-        $users = array_reverse($cd->getAllPublic());
-        
+        $users = $cd->getAllPublic();
+
         $gender = getGender();
         $marital = getMarital();
-                
-        foreach($users as $user) {
-            $html .= '
-                <article class="block">
-                    <header>
-                        <a href="'.Route::urlize('friend', $user->jid).'">
-                            <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                        </a>
 
-                        <span class="name">
-                            <a href="'.Route::urlize('friend', $user->jid).'">'.$user->getTrueName().'</a>
-                        </span>
-                        <span class="asv">'.
-                            $user->getAge().' '.
-                            $gender[$user->gender].' '.
-                            $marital[$user->marital].'
-                        </span>
-                    </header>
+        if($users) {
+            $users = array_reverse($users);
+            
+            foreach($users as $user) {
+                $html .= '
+                    <article class="block">
+                        <header>
+                            <a href="'.Route::urlize('friend', $user->jid).'">
+                                <img class="avatar" src="'.$user->getPhoto('m').'"/>
+                            </a>
 
-                    <section class="content">'.prepareString($user->description).'</section>
+                            <span class="name">
+                                <a href="'.Route::urlize('friend', $user->jid).'">'.$user->getTrueName().'</a>
+                            </span>
+                            <span class="asv">'.
+                                $user->getAge().' '.
+                                $gender[$user->gender].' '.
+                                $marital[$user->marital].'
+                            </span>
+                        </header>
 
-                    <footer></footer>
-                </article>
-                ';
+                        <section class="content">'.prepareString($user->description).'</section>
+
+                        <footer></footer>
+                    </article>
+                    ';
+            }
         }
 
         return $html;
