@@ -17,6 +17,8 @@
         $this->addCss('css/forms.css');
         $this->addCss('css/submitform.css');
 
+        $this->addCss('css/nav.css');
+
         $this->addCss('css/style.css');
         $this->addCss('css/posts.css');
 
