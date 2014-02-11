@@ -1,3 +1,7 @@
+/* We hide all the mobiles elements */
+.on_mobile {
+    display: none !important;
+}
 
 @media screen and (max-width: 1280px) {
     ul.thumb li {
@@ -7,6 +11,14 @@
 
 @media screen and (max-width: 1024px) {
 
+.on_mobile {
+    display: inherit !important;
+}
+
+.on_desktop {
+    display: none !important;
+}
+
 body {
     background-image: none;
     margin: 0px;
@@ -14,9 +26,6 @@ body {
     width: 100%;
     font-size: 15px;
     position: relative;
-    /*left: 0;*/
-    /*transition: left 0.5s ease;*/
-    /*overflow-x: hidden;*/
 }
 
 body #right #roster { display: none; }
@@ -31,22 +40,12 @@ body.infos #navtabs { display: none; }
 body.infos #left    { display: block; }
 body.infos #right #roster { display: none; }
 
-.on_mobile {
-    display: inherit;
-}
-
 h1 {
     padding: 0em 0.4em;
 }
 
 #right {
     width: 100%;
-    /*padding: 0px;
-    background-image: none;
-    position: absolute;
-    top: 0;
-    left: 100%;*/
-    /*display: none;*/
     position: relative;
 }
 
@@ -68,11 +67,6 @@ h1 {
 #left {
     width: 100%;
     display: none;
-    /*position: absolute;
-    top: 0;
-    left: -100%;
-    background-color: #272727;
-    padding-bottom: 6em;*/
     position: relative;
 }
 
@@ -92,38 +86,12 @@ h1 {
     display: none;
 }
 
-nav {
-    position: fixed;
-    z-index: 3;
-}
-
-nav .menu {
-    width: 100%;
-    position: relative;
-    background-image: none;
-}
-
-nav .menu li a,
-nav .menu li a.main,
-nav .menu li a.main.active {
-    opacity: 1;
-    width: 0;
-    height: 0;
-    display: block;
-    overflow: hidden;
-}
-
 /* A little hack for iOS devices */
+/*
 span.mobile {
     display: none !important;
 }
-
-nav .menu li a.disconnect {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-}
-
+*/
 table#feedsubmitform {
     margin: 0 0.5em;
 }
@@ -169,27 +137,6 @@ table#feedsubmitform {
 
 .post .postbubble:before {
     display: none;
-}
-
-.menu li a:not(.button), .menu li a:hover,
-.menu li a.active, .menu li a.active:hover,
-.menu li label, .menu li label:hover {
-    width: 0px;
-    color: transparent;
-    white-space: nowrap;
-    background-position: center center;
-}
-
-.menu li a.main, .menu li a.active.main {
-    background-image: url(../img/icons/menu/home.svg);
-    background-position: center center;
-    background-size: 16px 16px;
-}
-
-.menu li + a.disconnect{
-    position: absolute;
-    top: 3px;
-    right: 0px;
 }
 
 #loginpage {
@@ -280,7 +227,6 @@ ul.thumb li {
 }
 
 /* Definition list */
-
 dl dt {
     text-align: left;
     width: 100%;

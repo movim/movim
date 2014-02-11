@@ -123,13 +123,14 @@ class TplPageBuilder
     /**
      * Adds a link to the menu with the displayed label.
      */
-    function menuAddLink($label, $href, $active = false)
+    function menuAddLink($label, $href, $active = false, $mobile = false)
     {
         $this->menu[] = array(
             'type' => 'link',
             'label' => $label,
             'href' => $href,
-            'active' => $active
+            'active' => $active,
+            'mobile' => $mobile
             );
     }
 
@@ -153,6 +154,10 @@ class TplPageBuilder
                     class="'.$link['href'].'' ;
                 if($link['active'] == true) {
                     echo ' active ';
+                }
+                // If we display only the link on desktop
+                if($link['mobile'] == true) {
+                    echo ' on_desktop ';
                 }
                 echo '"';
                 echo "><span class=\"mobile\">".$link['label'] . "</span></a></li>\n";
