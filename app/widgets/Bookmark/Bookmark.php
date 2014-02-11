@@ -61,7 +61,7 @@ class Bookmark extends WidgetBase
     {
         $i = 0;
 
-        $sd = new \modl\SubscriptionDAO();
+        //$sd = new \modl\SubscriptionDAO();
 
         /*foreach($arr as $b) {
             if($b['type'] == 'subscription') {
@@ -80,7 +80,7 @@ class Bookmark extends WidgetBase
             $i++;
         }*/
         
-        Cache::c('bookmark', $arr);
+        array_push($arr, Cache::c('bookmark'));
         $html = $this->prepareBookmark($arr);
         RPC::call('movim_fill', 'bookmarks', $html);
         Notification::appendNotification(t('Bookmarks updated'), 'info');

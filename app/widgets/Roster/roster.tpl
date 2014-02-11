@@ -34,6 +34,25 @@
             title="{$c->t('Show/Hide')}">
             <a class="about" href="#"></a>
         </li>
+
+        <li class="on_mobile">
+            <a class="conf" title="{$c->t('Configuration')}" href="{$c->route('conf')}">
+            </a>
+        </li>
+        <li class="on_mobile">
+            <a class="help" title="{$c->t('Help')}" href="{$c->route('help')}">
+            </a>
+        </li>
+
+        <li 
+            class="show_hide body_roster on_mobile"
+            onclick="
+                movim_remove_class('body', 'infos'),
+                movim_toggle_class('body', 'roster')"
+            title="{$c->t('Show/Hide')}">
+            <a class="down" href="#"></a>
+        </li>
+
         <li title="{$c->t('Add')}">
             <label class="plus" for="addc"></label>
             <input type="checkbox" id="addc"/>
@@ -56,18 +75,12 @@
                 />
             </div>
         </li>
+
         <li 
             onclick="{$toggle_cache}"
             title="{$c->t('Show/Hide')}">
             <a class="users" href="#"></a>
         </li>
-        <li 
-            class="show_hide body_roster on_mobile"
-            onclick="
-                movim_remove_class('body', 'infos'),
-                movim_toggle_class('body', 'roster')"
-            title="{$c->t('Show/Hide')}">
-            <a class="down" href="#"></a>
-        </li>
+
     </ul>
 </div>
