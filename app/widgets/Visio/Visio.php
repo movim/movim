@@ -23,6 +23,7 @@ class Visio extends WidgetBase
     	$this->addjs('visio.js');
     	$this->addjs('adapter.js');
     	$this->addjs('webrtc.js');
+    	$this->addjs('turn.js');
 
         if(isset($_GET['f'])) {
             list($jid, $ressource) = explode('/', htmlentities($_GET['f']));
