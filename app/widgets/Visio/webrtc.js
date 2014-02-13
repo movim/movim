@@ -177,7 +177,7 @@ function onOffer(offer) {
     Visio.log('OFFER ' + offer);
       
     if(!pc)
-        preInit(false);
+        init(false);
     
     if(offer != null) {
         
