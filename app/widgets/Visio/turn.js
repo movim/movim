@@ -27,7 +27,7 @@ function maybeRequestTurn() {
 }
 
 function onTurnResult() {
-  if (xmlhttp.status === 200) {
+  if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
     var turnServer = JSON.parse(xmlhttp.responseText);
     for (i = 0; i < turnServer.uris.length; i++) {
       // Create a turnUri using the polyfill (adapter.js).
