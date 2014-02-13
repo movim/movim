@@ -43,9 +43,11 @@ function onTurnResult() {
       }
     }
   } else {
-    messageError('No TURN server; unlikely that media will traverse networks.  '
-                 + 'If this persists please report it to '
-                 + 'discuss-webrtc@googlegroups.com.');
+    console.log(
+        'Error: Status ' 
+        + xmlhttp.status
+        + ', State '
+        + xmlhttp.readyState);
   }
   // If TURN request failed, continue the call with default STUN.
   turnDone = true;
