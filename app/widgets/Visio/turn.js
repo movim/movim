@@ -1,11 +1,7 @@
 var turnUrl = 'https://computeengineondemand.appspot.com/turn?username=93773443&key=4080218913';
 var turnDone = false;
 
-var caller = false;
-
-function maybeRequestTurn(isCaller) {
-  caller = isCaller;
-    
+function maybeRequestTurn() {    
   if (turnUrl == '') {
     turnDone = true;
   }
@@ -51,5 +47,4 @@ function onTurnResult() {
   }
   // If TURN request failed, continue the call with default STUN.
   turnDone = true;
-  init(caller);
 }
