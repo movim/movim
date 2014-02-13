@@ -10,6 +10,9 @@ var pc;
 var remoteStream;
 var localStream;
 
+// The RTCPeerConnection configuration
+var configuration = {"iceServers":[{"url": "stun:stun.services.mozilla.com"}]};
+
 // Set up audio and video regardless of what devices are present.
 var sdpConstraints = {'mandatory': {
                       'OfferToReceiveAudio': true,
@@ -80,8 +83,11 @@ function onAnswerCreated(offer) {
 
 function onIceCandidate(event) {
     Visio.log('onIceCandidate');
+
+    console.log('CANDIDATE');
+    console.log(event);
     candidate = {};
-/*
+
     if(event.candidate != null) {
         candidate.sdp = event.candidate.candidate;
         candidate.mid = event.candidate.sdpMid;
@@ -92,9 +98,9 @@ function onIceCandidate(event) {
 
         var msgString = JSON.stringify(candidate);
         
-        //Visio.call(['VisioExt_ajaxSendCandidate', msgString]);
+        Visio.call(['VisioExt_ajaxSendCandidate', msgString]);
     }
-*/
+
 }
 
 function sendTerminate(reason) {
@@ -171,7 +177,7 @@ function onOffer(offer) {
     Visio.log('OFFER ' + offer);
       
     if(!pc)
-        init(false);
+        preInit(false);
     
     if(offer != null) {
         
@@ -214,11 +220,19 @@ function onCandidate(message) {
     pc.addIceCandidate(candidate, onRemoteIceCandidateAdded, onRemoteIceCandidateError);
 }
 
-function init(isCaller) {
-    var configuration = {"iceServers":[{"url": "stun:23.21.150.121:3478"}]};
+function preInit(isCaller) {
+    // We try to grab TURN servers, init() is called here
+    maybeRequestTurn(isCaller);
+}
 
+function init(isCaller) {
     try {
+        console.log(configuration);
         pc = new RTCPeerConnection(configuration, optional);
+
+        console.log('Created RTCPeerConnnection with:\n' +
+                    '  config: \'' + JSON.stringify(configuration) + '\';\n' +
+                    '  constraints: \'' + JSON.stringify(optional) + '\'.');
 
         pc.onicecandidate = onIceCandidate;
         pc.onsignalingstatechange = onSignalingStateChanged;
@@ -230,6 +244,8 @@ function init(isCaller) {
               WebRTC is not supported by this browser.');
         return;
     }
+
+    console.log(pc);
 
     if(getUserMedia) {
         if (getUserMedia) {
