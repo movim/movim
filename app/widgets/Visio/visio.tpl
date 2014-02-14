@@ -32,6 +32,7 @@
 <script type="text/javascript">
     VISIO_JID = '{$jid}';
     VISIO_RESSOURCE = '{$ressource}';
+    VISIO_TURN_LIST = {$turn_list};
 </script>
 <div id="connection">
 	{$c->t('Connection')}...
