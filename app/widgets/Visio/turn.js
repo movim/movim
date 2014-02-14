@@ -20,10 +20,19 @@ function maybeRequestTurn() {
   }
 
   // No TURN server. Get one from computeengineondemand.appspot.com.
-  xmlhttp = new XMLHttpRequest();
+  /*xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = onTurnResult;
   xmlhttp.open('GET', turnUrl, true);
-  xmlhttp.send();
+  xmlhttp.send();*/
+
+    for (i = 0; i < VISIO_TURN_LIST.uris.length; i++) {
+      var iceServer = createIceServer(VISIO_TURN_LIST.uris[i],
+                                      VISIO_TURN_LIST.username,
+                                      VISIO_TURN_LIST.password);
+      if (iceServer !== null) {
+        configuration.iceServers.push(iceServer);
+      }
+    }
 }
 
 function onTurnResult() {
