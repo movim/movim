@@ -27,6 +27,10 @@ class Visio extends WidgetBase
 
         if(isset($_GET['f'])) {
             list($jid, $ressource) = explode('/', htmlentities($_GET['f']));
+
+            $json = requestURL('https://computeengineondemand.appspot.com/turn?username=93773443&key=4080218913', 1);
+            //var_dump($json);
+            $this->view->assign('turn_list'   , $json);
             
             $cd = new modl\ContactDAO();
             $contact = $cd->get($jid);
