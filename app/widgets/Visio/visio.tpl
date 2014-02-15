@@ -5,7 +5,7 @@
 	<video autoplay="true" id="remote-video">
 	
 	</video>
-	<video autoplay="true" id="local-video">
+	<video autoplay="true" id="local-video" muted="true">
 	
 	</video>
 
