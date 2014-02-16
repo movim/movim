@@ -59,7 +59,7 @@ class Bookmark extends WidgetBase
     
     function onBookmark($arr)
     {
-        $i = 0;
+        //$i = 0;
 
         //$sd = new \modl\SubscriptionDAO();
 
@@ -79,8 +79,10 @@ class Bookmark extends WidgetBase
             }
             $i++;
         }*/
-        
-        array_push($arr, Cache::c('bookmark'));
+
+        Cache::c('bookmark', $arr);
+        //array_push($arr, Cache::c('bookmark'));
+
         $html = $this->prepareBookmark($arr);
         RPC::call('movim_fill', 'bookmarks', $html);
         Notification::appendNotification(t('Bookmarks updated'), 'info');
