@@ -139,7 +139,7 @@ var Visio = {
 movim_add_onload(function()
 {
     maybeRequestTurn();
-    document.getElementById("call").onclick = function() { init(true); };
+    document.getElementById("call").onclick = function() { init(true); answer(true); };
     document.getElementById("hang-up").onclick = function() { sendTerminate('success'); terminate(); };
     document.getElementById("toggle-screen").onclick = function() { Visio.fullScreen(); };
     document.getElementById("toggle-camera").onclick = function() { Visio.toggleVideoMute(); };
