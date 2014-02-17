@@ -175,20 +175,20 @@ function onOffer(offer) {
     
     Visio.log('Offer received.');
     Visio.log('OFFER ' + offer);
-      
-    if(!pc)
-        init(false);
+
+    init(false);
     
     if(offer != null) {
         
         var message = {};
         message.sdp = offer;
         message.type = 'offer';
-
+        
         var desc = new RTCSessionDescription(message);
-
+        
         pc.setRemoteDescription(desc,
             onSetRemoteSessionDescriptionSuccess, onSetRemoteSessionDescriptionError);  
+        answer(false);
     }
 }
 
@@ -244,9 +244,9 @@ function init(isCaller) {
               WebRTC is not supported by this browser.');
         return;
     }
+}
 
-    console.log(pc);
-
+function answer(isCaller) {
     if(getUserMedia) {
         if (getUserMedia) {
             getUserMedia = getUserMedia.bind(navigator);
@@ -296,7 +296,6 @@ function init(isCaller) {
 
 function terminate() {
     // We close the RTCPeerConnection
-    console.log(pc);
     if(pc != null && pc.signalingState != 'closed')
         pc.close();
 

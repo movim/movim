@@ -303,7 +303,7 @@ class JingletoSDP {
         }
 
         if($this->action != 'transport-info') {
-            $this->sdp .= "\r\n".$sdp_version;
+            $this->sdp .= /*"\r\n".*/$sdp_version;
             $this->sdp .= "\r\n".$sdp_origin;
             $this->sdp .= "\r\n".$sdp_session_name;
             $this->sdp .= "\r\n".$sdp_timing;
