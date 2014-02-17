@@ -139,9 +139,9 @@ var Visio = {
 movim_add_onload(function()
 {
     maybeRequestTurn();
-    document.getElementById("call").onclick = function() { init(true); };
-    document.getElementById("hang-up").onclick = function() { sendTerminate('success'); terminate(); };
-    document.getElementById("toggle-screen").onclick = function() { Visio.fullScreen(); };
-    document.getElementById("toggle-camera").onclick = function() { Visio.toggleVideoMute(); };
-    document.getElementById("toggle-microphone").onclick = function() { Visio.toggleAudioMute(); };
+    document.getElementById("call")addEventListener('load', function() { init(true); }, false);
+    document.getElementById("hang-up").addEventListener('load', function() { sendTerminate('success'); terminate(); }, false);
+    document.getElementById("toggle-screen").addEventListener('load', function() { Visio.fullScreen(); }, false);
+    document.getElementById("toggle-camera").addEventListener('load', function() { Visio.toggleVideoMute(); }, false);
+    document.getElementById("toggle-microphone").addEventListener('load', function() { Visio.toggleAudioMute(); }, false);
 });

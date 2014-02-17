@@ -31,7 +31,7 @@
                 {if="$value.jingle"}
                 <div
                     class="infoicon jingle"
-                    onclick="Popup.open('{$value.jid}/{$value.ressource}')">
+                    onclick="Popup.close(); Popup.open('{$value.jid}/{$value.ressource}')">
                 </div>
                 {/if}
 
