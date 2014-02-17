@@ -62,7 +62,7 @@ class SDPtoJingle {
     function generate() {
         foreach($this->arr as $l) {
             foreach($this->regex as $key => $r) {
-                if(preg_match($r, $l, $matches)) {                    
+                if(preg_match($r, $l, $matches)) {
                     switch($key) { 
                         case 'sess_id':
                             $this->jingle->addAttribute('sid', $this->getSessionId());
