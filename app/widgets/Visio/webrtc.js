@@ -245,8 +245,6 @@ function init(isCaller) {
         return;
     }
 
-    console.log(pc);
-
     if(getUserMedia) {
         if (getUserMedia) {
             getUserMedia = getUserMedia.bind(navigator);
@@ -296,7 +294,6 @@ function init(isCaller) {
 
 function terminate() {
     // We close the RTCPeerConnection
-    console.log(pc);
     if(pc != null && pc.signalingState != 'closed')
         pc.close();
 
