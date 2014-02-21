@@ -181,7 +181,7 @@ function onOffer(offer) {
     if(offer != null) {
         
         var message = {};
-        message.sdp = offer;
+        message.sdp = offer+"\n";
         message.type = 'offer';
         
         var desc = new RTCSessionDescription(message);
