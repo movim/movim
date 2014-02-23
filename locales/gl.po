@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
-"PO-Revision-Date: 2011-10-26 21:33+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"PO-Revision-Date: 2014-02-23 22:50+0000\n"
+"Last-Translator: Daniel-san <inad9300@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -311,9 +311,8 @@ msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -412,9 +411,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Configuración"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -486,9 +484,8 @@ msgid "Password"
 msgstr "Contrasinal"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "Contrasinal incorrecta"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
 msgid "Database Settings"
@@ -796,9 +793,8 @@ msgid "Is this profile public ?"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:337
-#, fuzzy
 msgid "Submitting"
-msgstr "Enviar"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:348
 msgid "Reset"
@@ -949,9 +945,8 @@ msgid "Invite this user"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Contrasinal incorrecta"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
 msgid "Location updated"
@@ -1015,9 +1010,8 @@ msgid "Your feed cannot be loaded."
 msgstr ""
 
 #: ../app/widgets/Config/Config.php:54
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Configuración"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:72
 msgid "Avatar Updated"
@@ -1061,9 +1055,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:62
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Configuración"
+msgstr ""
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:151
@@ -1291,9 +1284,9 @@ msgstr ""
 #: ../app/controllers/AccountController.php:9
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountnextController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "Creación de Conta %s"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:12
 #: ../app/controllers/AccountnextController.php:12
@@ -1317,15 +1310,14 @@ msgstr ""
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "Creación de Conta %s"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
-msgstr "Creación dunha Conta"
+msgstr ""
 
 #: ../app/controllers/NewsController.php:9
 #, php-format
@@ -1345,7 +1337,7 @@ msgstr "%s - Benvindo ao MOVIM"
 #: ../system/Conf.php:70
 #, php-format
 msgid "Cannot load file '%s'"
-msgstr ""
+msgstr "Non pode cargarse o arquivo '%s'"
 
 #: ../system/MovimException.php:15
 #, php-format
@@ -1355,68 +1347,68 @@ msgstr ""
 #: ../system/Route.php:81
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
+msgstr "Erro de ruta, por favor, coloque todos os parámetros para a páxina %s"
 
 #: ../system/Route.php:111
 #, php-format
 msgid "Route not set for the page %s"
-msgstr ""
+msgstr "Ruta non establecida para a páxina %s"
 
 #: ../system/Logs/Logger.php:171
 msgid "Development environment."
-msgstr ""
+msgstr "Entorno de desenvolvemento."
 
 #: ../system/Logs/Logger.php:171
 msgid "Change it in the admin panel."
-msgstr ""
+msgstr "Cámbiao no panel de administrador."
 
 #: ../system/Utils.php:158
 msgid "Monday"
-msgstr ""
+msgstr "Luns"
 
 #: ../system/Utils.php:159
 msgid "Tuesday"
-msgstr ""
+msgstr "Martes"
 
 #: ../system/Utils.php:160
 msgid "Wednesday"
-msgstr ""
+msgstr "Mércores"
 
 #: ../system/Utils.php:161
 msgid "Thursday"
-msgstr ""
+msgstr "Xoves"
 
 #: ../system/Utils.php:162 ../system/Utils.php:164
 msgid "Friday"
-msgstr ""
+msgstr "Venres"
 
 #: ../system/Utils.php:163
 msgid "Saturday"
-msgstr ""
+msgstr "Sábado"
 
 #: ../system/Utils.php:172
 msgid "January"
-msgstr ""
+msgstr "Xaneiro"
 
 #: ../system/Utils.php:173
 msgid "February"
-msgstr ""
+msgstr "Febreiro"
 
 #: ../system/Utils.php:174
 msgid "March"
-msgstr ""
+msgstr "Marzo"
 
 #: ../system/Utils.php:175
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 #: ../system/Utils.php:176
 msgid "May"
-msgstr ""
+msgstr "Maio"
 
 #: ../system/Utils.php:177
 msgid "June"
-msgstr ""
+msgstr "Xuño"
 
 #: ../system/Utils.php:178
 msgid "July"
@@ -1866,16 +1858,16 @@ msgstr ""
 #: ../system/widget/WidgetWrapper.php:131
 #, php-format
 msgid "Requested widget '%s' doesn't exist."
-msgstr ""
+msgstr "O widget solicitado '%s' non existe."
 
 #: ../system/controllers/FrontController.php:35
 #, php-format
 msgid "Requested controller '%s' doesn't exist."
-msgstr ""
+msgstr "O controlador solicitado '%s' non existe."
 
 #: ../system/controllers/FrontController.php:67
 msgid "Could not call the load method on the current controller"
-msgstr ""
+msgstr "Non é posible chamar ao método de carga no controlador actual"
 
 #: ../app/views/admin.tpl:5
 msgid "Administration Panel"
@@ -1893,43 +1885,14 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
+#~ msgid "%s - Account Creation"
+#~ msgstr "Creación de Conta %s"
+
 #~ msgid "My address"
 #~ msgstr "Meu Enderezo"
 
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Configuración"
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "Configuración"
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "Creación de Conta %s"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "Creación de Conta %s"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Configuración"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configuración"
-
 #~ msgid "Language"
 #~ msgstr "Linguaxe"
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Chat"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "Configuración"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Incompatibilidade de versión PHP. Movim require PHP mínimo 5.3."

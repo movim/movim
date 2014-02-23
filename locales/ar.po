@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
-"PO-Revision-Date: 2013-08-04 11:01+0000\n"
-"Last-Translator: Mohamed Touhami MAHDI <dragnucs@gmail.com>\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"PO-Revision-Date: 2014-02-23 22:48+0000\n"
+"Last-Translator: Nour eddin <noureddin95@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -27,9 +27,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:88
-#, fuzzy
 msgid "Error"
-msgstr "خطأ: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -53,9 +52,8 @@ msgid "The server does not exist"
 msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
-#, fuzzy
 msgid "Unexpected request"
-msgstr "أرسل طلبًا"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:75
 msgid "The server cannot accept this action"
@@ -70,9 +68,8 @@ msgid "Feature Not Implemented"
 msgstr ""
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:85
-#, fuzzy
 msgid "Your server doesn't support location publication"
-msgstr "خادومك لا يدعم نشر المداخلات، يمكنك و حسبُ مطالعة تلقيمات معارفك"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:90
 msgid "Your are not authorized to publish your location"
@@ -104,9 +101,8 @@ msgstr ""
 
 #: ../app/widgets/Media/Media.php:85
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
-#, fuzzy
 msgid "on"
-msgstr "لا شيء"
+msgstr ""
 
 #: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:149
 #: ../app/widgets/ContactCard/ContactCard.php:51
@@ -167,9 +163,8 @@ msgid "Media"
 msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:54
-#, fuzzy
 msgid "Create a new group"
-msgstr "أنشئ حسابًا جديدًا"
+msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:61
 msgid "Give a friendly name to your group"
@@ -260,9 +255,8 @@ msgid "Bad URL"
 msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:300
-#, fuzzy
 msgid "Conferences"
-msgstr "خيارات الوسيط"
+msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:308
 #: ../app/widgets/Explore/Explore.php:86
@@ -301,14 +295,12 @@ msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:94 ../app/widgets/Vcard4/Vcard4.php:102
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "الملف الشخصي"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "الملف الشخصي"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
 msgid "Your profile is now public"
@@ -319,9 +311,8 @@ msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "المحادثة"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -339,9 +330,8 @@ msgid "Submit"
 msgstr "أودِع"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "اختبار التوافقية"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:184
 msgid "Movim requires certain external components. Please install them before you can succeed:"
@@ -365,9 +355,8 @@ msgid "SimpleXML"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:201
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr "فعّل صلاحيات القراءة و الكتابة على دليل Movim الجذر"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:204
 msgid "OpenSSL"
@@ -378,9 +367,8 @@ msgid "URL Rewriting support"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
-#, fuzzy
 msgid "General Settings"
-msgstr "معلومات عامة"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
@@ -423,9 +411,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "ضبط"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -469,9 +456,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
-#, fuzzy
 msgid "Information Message"
-msgstr "بيانات العميل"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:422
 msgid "This message will be displayed on the login page"
@@ -490,23 +476,20 @@ msgid "Change the default credentials admin/password"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:452
-#, fuzzy
 msgid "Username"
-msgstr "اسم مستخدم غير صحيح"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:458
 msgid "Password"
 msgstr "كلمة السّر"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "كلمة السر غير صحيحة"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
-#, fuzzy
 msgid "Database Settings"
-msgstr "تمّ التماس قاعدة البيانات"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:46
 msgid "Mood"
@@ -538,14 +521,12 @@ msgid "Phone"
 msgstr "هاتف"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
-#, fuzzy
 msgid "Web"
-msgstr "موقع الوِب"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
-#, fuzzy
 msgid "Registered"
-msgstr "أمس"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
 msgid "Client Informations"
@@ -555,9 +536,8 @@ msgstr "بيانات العميل"
 #: ../app/widgets/NodeConfig/NodeConfig.php:82
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
 #: ../app/widgets/Account/Account.php:160
-#, fuzzy
 msgid "Validate"
-msgstr "اسم غير صالح"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
 msgid "Subscriptions saved"
@@ -821,7 +801,6 @@ msgid "Reset"
 msgstr "تصفير"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
 msgstr "حرر ملفي الشخصي"
 
@@ -966,9 +945,8 @@ msgid "Invite this user"
 msgstr "ادعُ هذا الشخص"
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "كلمة السر غير صحيحة"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
 msgid "Location updated"
@@ -984,9 +962,8 @@ msgstr "اقبل"
 
 #: ../app/widgets/Location/Location.php:116
 #: ../app/widgets/Location/Location.php:120
-#, fuzzy
 msgid "Location"
-msgstr "إجراءات"
+msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:31
 #: ../app/widgets/MediaUpload/MediaUpload.php:66
@@ -1033,19 +1010,16 @@ msgid "Your feed cannot be loaded."
 msgstr "تعذّر تنزيل تلقيمتك"
 
 #: ../app/widgets/Config/Config.php:54
-#, fuzzy
 msgid "Configuration updated"
-msgstr "ضبط"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "الملف الشخصي"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "الملف الشخصي"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1064,9 +1038,8 @@ msgid "Your contact is busy"
 msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:73
-#, fuzzy
 msgid "Declined"
-msgstr "ارفض"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:89
 msgid "Remote application incompatible"
@@ -1082,9 +1055,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:62
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "ضبط"
+msgstr ""
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:151
@@ -1124,9 +1096,8 @@ msgid "Comment publication error"
 msgstr ""
 
 #: ../app/widgets/Feed/Feed.php:109
-#, fuzzy
 msgid "Creating your feed..."
-msgstr "يجري تنزيل تلقيمتك..."
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:92
 msgid "Step 2 - Fill in your informations"
@@ -1178,14 +1149,12 @@ msgid "Enter the server domain (ex: movim.eu)"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:487
-#, fuzzy
 msgid "Searching..."
-msgstr "يجري الاتصال..."
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:489
-#, fuzzy
 msgid "Search"
-msgstr "مارس"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:78
 msgid "Place"
@@ -1304,21 +1273,20 @@ msgstr ""
 #: ../app/controllers/LoginController.php:13
 #: ../app/controllers/AboutController.php:13
 #: ../app/controllers/DiscoverController.php:15
-#, fuzzy
 msgid "About"
-msgstr "عنّي"
+msgstr ""
 
 #: ../app/controllers/AboutController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - إضافة حساب"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:9
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountnextController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - إضافة حساب"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:12
 #: ../app/controllers/AccountnextController.php:12
@@ -1342,15 +1310,14 @@ msgstr "%s - صفحة المساعدة"
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "%s - إنشاء حساب"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
-msgstr "إنشاء الحساب"
+msgstr ""
 
 #: ../app/controllers/NewsController.php:9
 #, php-format
@@ -1370,7 +1337,7 @@ msgstr "%s - MOVIM مرحبا بكم في"
 #: ../system/Conf.php:70
 #, php-format
 msgid "Cannot load file '%s'"
-msgstr "تعذّر تحميل الملف '%s'"
+msgstr "لا يمكن تحميل الملف '%s'"
 
 #: ../system/MovimException.php:15
 #, php-format
@@ -1380,20 +1347,20 @@ msgstr "خطأ: %s"
 #: ../system/Route.php:81
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
+msgstr "خطأ في الطريق، برجاء ضبط المعاملات لهذه الصفحة %s"
 
 #: ../system/Route.php:111
 #, php-format
 msgid "Route not set for the page %s"
-msgstr ""
+msgstr "الطريق غير مضبوط لهذه الصفحة %s"
 
 #: ../system/Logs/Logger.php:171
 msgid "Development environment."
-msgstr ""
+msgstr "بيئة التطوير."
 
 #: ../system/Logs/Logger.php:171
 msgid "Change it in the admin panel."
-msgstr ""
+msgstr "غيّره في لوحة الإدارة."
 
 #: ../system/Utils.php:158
 msgid "Monday"
@@ -1597,9 +1564,8 @@ msgid "confused"
 msgstr ""
 
 #: ../system/Utils.php:519
-#, fuzzy
 msgid "contemplative"
-msgstr "مبدع"
+msgstr ""
 
 #: ../system/Utils.php:520
 msgid "contented"
@@ -1626,9 +1592,8 @@ msgid "dejected"
 msgstr ""
 
 #: ../system/Utils.php:526
-#, fuzzy
 msgid "depressed"
-msgstr "العنوان"
+msgstr ""
 
 #: ../system/Utils.php:527
 msgid "disappointed"
@@ -1691,9 +1656,8 @@ msgid "hopeful"
 msgstr ""
 
 #: ../system/Utils.php:542
-#, fuzzy
 msgid "hot"
-msgstr "روبوت"
+msgstr ""
 
 #: ../system/Utils.php:543
 msgid "humbled"
@@ -1704,9 +1668,8 @@ msgid "humiliated"
 msgstr ""
 
 #: ../system/Utils.php:545
-#, fuzzy
 msgid "hungry"
-msgstr "غاضب"
+msgstr ""
 
 #: ../system/Utils.php:546
 msgid "hurt"
@@ -1869,14 +1832,12 @@ msgid "weak"
 msgstr ""
 
 #: ../system/Utils.php:587
-#, fuzzy
 msgid "worried"
-msgstr "متزوّج"
+msgstr ""
 
 #: ../system/Utils.php:720
-#, fuzzy
 msgid "Not shared"
-msgstr "ليست صورة"
+msgstr ""
 
 #: ../system/Utils.php:724
 msgid "Shared with one contact"
@@ -1897,16 +1858,16 @@ msgstr ""
 #: ../system/widget/WidgetWrapper.php:131
 #, php-format
 msgid "Requested widget '%s' doesn't exist."
-msgstr ""
+msgstr "الأداة المطلوبة '%s' غير موجودة."
 
 #: ../system/controllers/FrontController.php:35
 #, php-format
 msgid "Requested controller '%s' doesn't exist."
-msgstr ""
+msgstr "المتحكِّم المطلوب '%s' غير موجود."
 
 #: ../system/controllers/FrontController.php:67
 msgid "Could not call the load method on the current controller"
-msgstr ""
+msgstr "تعذّر طلب دالة التحميل للمتحكِّم الحالي"
 
 #: ../app/views/admin.tpl:5
 msgid "Administration Panel"
@@ -1924,109 +1885,14 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#, fuzzy
-#~ msgid "My Posts"
-#~ msgstr "مداخلاتي"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "المتصفح الذي تستخدمه أقدم من أن يُشغّل Movim!"
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - إنشاء حساب"
 
 #~ msgid "My address"
 #~ msgstr "عنوان بريدي"
 
-#, fuzzy
-#~ msgid "Create one !"
-#~ msgstr "أنشئ حسابًا جديدًا"
-
-#, fuzzy
-#~ msgid "No account yet ?"
-#~ msgstr "لا ملف شخصي إلى الآن؟"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "يجري الاتصال..."
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "إجراءات"
-
-#, fuzzy
-#~ msgid "Loading comments ..."
-#~ msgstr "يجري تنزيل تلقيمة المعرفة..."
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - إضافة حساب"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - إضافة حساب"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "ضبط"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "ضبط"
-
-#, fuzzy
-#~ msgid "General"
-#~ msgstr "معلومات عامة"
-
 #~ msgid "Language"
 #~ msgstr "اللغة"
-
-#~ msgid "Composing..."
-#~ msgstr "يكتب..."
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "المحادثة"
-
-#, fuzzy
-#~ msgid "Shared"
-#~ msgstr "ليست صورة"
-
-#, fuzzy
-#~ msgid "Geolocalisation"
-#~ msgstr "إجراءات"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "يجري الاتصال..."
-
-#, fuzzy
-#~ msgid "Database Type"
-#~ msgstr "تمّ التماس قاعدة البيانات"
-
-#, fuzzy
-#~ msgid "Database Name"
-#~ msgstr "تمّ التماس قاعدة البيانات"
-
-#, fuzzy
-#~ msgid "created"
-#~ msgstr "مبدع"
-
-#, fuzzy
-#~ msgid "Your contacts"
-#~ msgstr "المعارف (%s)"
-
-#, fuzzy
-#~ msgid "Posts"
-#~ msgstr "مداخلاتي"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "المعارف (%s)"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "أزّل هذه المعرفة"
-
-#, fuzzy
-#~ msgid "Edit my profile"
-#~ msgstr "حرر ملفي الشخصي"
 
 #~ msgid "or"
 #~ msgstr "أو"
@@ -2045,6 +1911,9 @@ msgstr ""
 
 #~ msgid "Update your PHP version or contact your server administrator"
 #~ msgstr "رقِّ إصدارة PHP أو اتصل بمدير الخادوم"
+
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr "فعّل صلاحيات القراءة و الكتابة على دليل Movim الجذر"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "إصدارة PHP غير مطابقة. يتطلّب Movim الإصدارة 5.3 أو ما تزيد عليها."
@@ -2073,11 +1942,17 @@ msgstr ""
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "تعذّر إنشاء ملف التضبيطات '%s'."
 
+#~ msgid "Compatibility Test"
+#~ msgstr "اختبار التوافقية"
+
 #~ msgid "Movim Installer"
 #~ msgstr "مُنصِّب Movim"
 
 #~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "المتطلبات التالية غير متوفرة. اعمل على توفيرها قبل تنصيب Movim."
+
+#~ msgid "Proxy Preferences"
+#~ msgstr "خيارات الوسيط"
 
 #~ msgid "Some errors were detected. Please correct them for the installation to proceed."
 #~ msgstr "التُمست بعض الأعطال. تداركها لمواصلة التنصيب."
@@ -2106,6 +1981,9 @@ msgstr ""
 #~ msgid "Database Movim schema installed"
 #~ msgstr "تم توليد هيكل قاعدة البيانات لأجل Movim"
 
+#~ msgid "Database Detected"
+#~ msgstr "تمّ التماس قاعدة البيانات"
+
 #~ msgid "Valid Bosh"
 #~ msgstr "Bosh صحيح"
 
@@ -2114,6 +1992,9 @@ msgstr ""
 
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "تعذّر فتح ملف السجل '%s'"
+
+#~ msgid "%s - Add An Account"
+#~ msgstr "%s - إضافة حساب"
 
 #~ msgid "Only alphanumerics elements are authorized"
 #~ msgstr "المحارف الرقمية و الأحرف وحدها المسموح بها"
@@ -2142,17 +2023,32 @@ msgstr ""
 #~ msgid "Create"
 #~ msgstr "أنشئ"
 
+#~ msgid "Composing..."
+#~ msgstr "يكتب..."
+
 #~ msgid "Same here !"
 #~ msgstr "و هنا كذلك"
 
 #~ msgid "Client Name"
 #~ msgstr "اسم العميل"
 
+#~ msgid "Address"
+#~ msgstr "العنوان"
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "يجري تنزيل تلقيمتك..."
+
 #~ msgid "Client Type"
 #~ msgstr "نوع العميل"
 
+#~ msgid "My Posts"
+#~ msgstr "مداخلاتي"
+
 #~ msgid "All"
 #~ msgstr "الكل"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "المتصفح الذي تستخدمه أقدم من أن يُشغّل Movim!"
 
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "يستضيف هذا الخادوم %s حسابات"
@@ -2160,8 +2056,20 @@ msgstr ""
 #~ msgid "Link my current account"
 #~ msgstr "اربط بحسابي الحالي"
 
+#~ msgid "Decline"
+#~ msgstr "ارفض"
+
+#~ msgid "Contacts (%s)"
+#~ msgstr "المعارف (%s)"
+
 #~ msgid "Cancel"
 #~ msgstr "ألغِ"
+
+#~ msgid "Send request"
+#~ msgstr "أرسل طلبًا"
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "يجري تنزيل تلقيمة المعرفة..."
 
 #~ msgid "Show All"
 #~ msgstr "أظهر الكُل"
