@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
-"PO-Revision-Date: 2013-11-20 04:44+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"PO-Revision-Date: 2013-12-12 23:44+0000\n"
+"Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -22,7 +22,7 @@ msgstr "Qu'es pas un imatge"
 
 #: ../upload.php:35
 msgid "Folder size limit exceeded"
-msgstr ""
+msgstr "Talha limita del dorsièr depassada"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
@@ -45,16 +45,15 @@ msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:55
 msgid "This service is unavaiable"
-msgstr ""
+msgstr "Aqueste servici es pas disponible"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:65
 msgid "The server does not exist"
-msgstr ""
+msgstr "Lo servidor existís pas"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
-#, fuzzy
 msgid "Unexpected request"
-msgstr "Enviar la demanda"
+msgstr "Requèsta inesperada"
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:75
 msgid "The server cannot accept this action"
@@ -62,7 +61,7 @@ msgstr ""
 
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:93
 msgid "Item Not Found"
-msgstr ""
+msgstr "Element pas trobat"
 
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:98
 msgid "Feature Not Implemented"
@@ -78,12 +77,11 @@ msgstr ""
 
 #: ../app/models/postn/Postn.php:140
 msgid "Content not found"
-msgstr ""
+msgstr "Contengut pas trobat"
 
 #: ../app/widgets/ContactManage/ContactManage.php:30
-#, fuzzy
 msgid "Contact updated"
-msgstr "La configuracion es estada mesa a jorn"
+msgstr "Contacte mes a jorn"
 
 #: ../app/widgets/ContactManage/ContactManage.php:55
 msgid "Manage"
@@ -99,13 +97,12 @@ msgstr "Grop"
 
 #: ../app/widgets/ContactManage/ContactManage.php:76
 msgid "Save"
-msgstr ""
+msgstr "Enregistrar"
 
 #: ../app/widgets/Media/Media.php:85
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
-#, fuzzy
 msgid "on"
-msgstr "P'un piau"
+msgstr "lo"
 
 #: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:149
 #: ../app/widgets/ContactCard/ContactCard.php:51
@@ -131,7 +128,7 @@ msgstr "ISO"
 
 #: ../app/widgets/Media/Media.php:114
 msgid "Camera"
-msgstr "Camera"
+msgstr "Camèra"
 
 #: ../app/widgets/Media/Media.php:116
 msgid "Artist"
@@ -139,11 +136,11 @@ msgstr "Artista"
 
 #: ../app/widgets/Media/Media.php:119
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: ../app/widgets/Media/Media.php:119
 msgid "Link"
-msgstr "Liam"
+msgstr "Ligam"
 
 #: ../app/widgets/Media/Media.php:148
 msgid "Viewer"
@@ -163,19 +160,19 @@ msgstr "Visionadoira"
 #: ../app/controllers/NewsController.php:15
 #: ../app/controllers/MainController.php:15
 msgid "Media"
-msgstr ""
+msgstr "Mèdia"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:54
 msgid "Create a new group"
-msgstr "Crear un grop noveu"
+msgstr "Crear un grop novèl"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:61
 msgid "Give a friendly name to your group"
-msgstr ""
+msgstr "Donar un nom sympa a vòstre grop"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:63
 msgid "My Little Pony - Fan Club"
-msgstr ""
+msgstr "Mon Pichon Poni - Fan Club"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:72
 #: ../app/widgets/Notifs/Notifs.php:277
@@ -184,31 +181,31 @@ msgstr "Apondre"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:77
 msgid "Close"
-msgstr "Barrar"
+msgstr "Tampar"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:108
 msgid "Subscribed"
-msgstr ""
+msgstr "Abonat"
 
 #: ../app/widgets/AccountError/AccountError.php:32
 #: ../app/widgets/Login/Login.php:130 ../app/widgets/Account/Account.php:388
 msgid "Some data are missing !"
-msgstr "Manca de las informacions !"
+msgstr "Manca d'informacions !"
 
 #: ../app/widgets/AccountError/AccountError.php:38
 #: ../app/widgets/Account/Account.php:394
 msgid "Wrong ID"
-msgstr "Meschant identificant"
+msgstr "Marrit identificant"
 
 #: ../app/widgets/AccountError/AccountError.php:44
 #: ../app/widgets/Account/Account.php:400
 msgid "You entered different passwords"
-msgstr "Avetz picat daus senhaus diferents"
+msgstr "Avetz picat dos senhaus diferents"
 
 #: ../app/widgets/AccountError/AccountError.php:50
 #: ../app/widgets/Account/Account.php:406
 msgid "Invalid name"
-msgstr "Queu nom es pas valid"
+msgstr "Lo nom es pas valid"
 
 #: ../app/widgets/AccountError/AccountError.php:56
 #: ../app/widgets/Account/Account.php:412
@@ -218,17 +215,17 @@ msgstr ""
 #: ../app/widgets/AccountError/AccountError.php:62
 #: ../app/widgets/Account/Account.php:418
 msgid "Username already taken"
-msgstr "Nom d'utilizaire desjà existent"
+msgstr "Nom d'utilizaire ja existent"
 
 #: ../app/widgets/AccountError/AccountError.php:68
 #: ../app/widgets/Account/Account.php:424
 msgid "Could not connect to the XMPP server"
-msgstr "Error a la connexion au servidor XMPP"
+msgstr "Error a la connexion al servidor XMPP"
 
 #: ../app/widgets/AccountError/AccountError.php:74
 #: ../app/widgets/Account/Account.php:430
 msgid "Could not communicate with the XMPP server"
-msgstr "Impossible de comunicar emb lo servidor XMPP"
+msgstr "Impossible de comunicar amb lo servidor XMPP"
 
 #: ../app/widgets/AccountError/AccountError.php:80
 #: ../app/widgets/VisioExt/VisioExt.php:97
@@ -238,11 +235,11 @@ msgstr "Error desconeguda"
 
 #: ../app/widgets/Bookmark/Bookmark.php:88
 msgid "Bookmarks updated"
-msgstr ""
+msgstr "Signets meses a jorn"
 
 #: ../app/widgets/Bookmark/Bookmark.php:93 ../app/widgets/Feed/Feed.php:92
 msgid "An error occured : "
-msgstr "Una error s'es producha : "
+msgstr "Una error s'es produsida : "
 
 #: ../app/widgets/Bookmark/Bookmark.php:134
 msgid "Bad Chatroom ID"
@@ -251,26 +248,24 @@ msgstr ""
 #: ../app/widgets/Bookmark/Bookmark.php:138
 #: ../app/widgets/Bookmark/Bookmark.php:191
 msgid "Empty name"
-msgstr ""
+msgstr "Nom void"
 
 #: ../app/widgets/Bookmark/Bookmark.php:187
-#, fuzzy
 msgid "Bad URL"
-msgstr "URL Bosh"
+msgstr "Marrida URL"
 
 #: ../app/widgets/Bookmark/Bookmark.php:300
-#, fuzzy
 msgid "Conferences"
 msgstr "Conferéncias"
 
 #: ../app/widgets/Bookmark/Bookmark.php:308
 #: ../app/widgets/Explore/Explore.php:86
 msgid "Groups"
-msgstr "Grops"
+msgstr "Gropes"
 
 #: ../app/widgets/Bookmark/Bookmark.php:316
 msgid "Links"
-msgstr "Liams"
+msgstr "Ligams"
 
 #: ../app/widgets/Roster/Roster.php:67 ../app/widgets/Roster/Roster.php:379
 msgid "Ungrouped"
@@ -278,21 +273,21 @@ msgstr "Pas agropat"
 
 #: ../app/widgets/Roster/Roster.php:437
 msgid "Show disconnected contacts"
-msgstr ""
+msgstr "Contactes desconnectats afichats"
 
 #: ../app/widgets/Roster/Roster.php:439
 msgid "Hide disconnected contacts"
-msgstr ""
+msgstr "Contactes desconnectats amagats"
 
 #: ../app/widgets/Roster/Roster.php:443
 #, php-format
 msgid "Hide group %s"
-msgstr ""
+msgstr "Grop %s amagat"
 
 #: ../app/widgets/Roster/Roster.php:445
 #, php-format
 msgid "Show group %s"
-msgstr ""
+msgstr "Grop %s afichat"
 
 #: ../app/widgets/Roster/Roster.php:472
 msgid "Please enter a valid Jabber ID"
@@ -304,23 +299,20 @@ msgid "Profile Updated"
 msgstr "Perfil mes a jorn"
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Perfil mes a jorn"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
-#, fuzzy
 msgid "Your profile is now public"
-msgstr "Es lo perfil public ?"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:178
 msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Charrador"
+msgstr "Salons de discussion"
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -331,19 +323,19 @@ msgstr ""
 #: ../app/widgets/Admin/Admin.php:62 ../app/widgets/Admin/Admin.php:67
 #, php-format
 msgid "Couldn't create directory '%s'."
-msgstr "La creacion dau repertòri '%s' es impossibla."
+msgstr "La creacion del repertòri '%s' es impossibla."
 
 #: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:347
 msgid "Submit"
-msgstr "Sometre"
+msgstr "Validar"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
 msgid "Compatibility Check"
-msgstr "Verificacion de la compatibilitat dau servidor"
+msgstr "Verificacion de la compatibilitat del servidor"
 
 #: ../app/widgets/Admin/Admin.php:184
 msgid "Movim requires certain external components. Please install them before you can succeed:"
-msgstr "Per poder foncionar correctament, Movim a mestier de certans compausants. Installatz-los, si vos plai, davant de poder contunhar :"
+msgstr "Per poder foncionar corrèctament, Movim a besonh de certans components. Installatz-los, se vos plai, abans de poder contunhar :"
 
 #: ../app/widgets/Admin/Admin.php:189
 #, php-format
@@ -352,7 +344,7 @@ msgstr "Vòstra version de PHP: %s <br>Requesida: 5.3.0"
 
 #: ../app/widgets/Admin/Admin.php:192
 msgid "CURL-Library"
-msgstr "Biblioteca CURL"
+msgstr "Bibliotèca CURL"
 
 #: ../app/widgets/Admin/Admin.php:195
 msgid "GD"
@@ -364,15 +356,15 @@ msgstr "SimpleXML"
 
 #: ../app/widgets/Admin/Admin.php:201
 msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr "Movim a pas los drechs de lectura nimai d'escritura dins son dorsier raiç"
+msgstr "Movim a pas los dreches de lectura nimai d'escritura dins son dorsier raiç"
 
 #: ../app/widgets/Admin/Admin.php:204
 msgid "OpenSSL"
-msgstr ""
+msgstr "OpenSSL"
 
 #: ../app/widgets/Admin/Admin.php:210 ../app/widgets/Admin/Admin.php:213
 msgid "URL Rewriting support"
-msgstr ""
+msgstr "Gestion de la reescritura d'URL"
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
 msgid "General Settings"
@@ -380,7 +372,7 @@ msgstr "Configuracion generala"
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
-msgstr "Tema"
+msgstr "Tèma"
 
 #: ../app/widgets/Admin/Admin.php:249
 msgid "Default language"
@@ -388,7 +380,7 @@ msgstr "Lenga per defaut"
 
 #: ../app/widgets/Admin/Admin.php:273
 msgid "Environment"
-msgstr ""
+msgstr "Environament"
 
 #: ../app/widgets/Admin/Admin.php:299
 msgid "User folder size limit (in bytes)"
@@ -396,7 +388,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:304
 msgid "empty"
-msgstr "voide"
+msgstr "void"
 
 #: ../app/widgets/Admin/Admin.php:305
 msgid "terse"
@@ -404,7 +396,7 @@ msgstr "concís"
 
 #: ../app/widgets/Admin/Admin.php:306
 msgid "normal"
-msgstr "normau"
+msgstr "normal"
 
 #: ../app/widgets/Admin/Admin.php:307
 msgid "talkative"
@@ -416,7 +408,7 @@ msgstr "complet"
 
 #: ../app/widgets/Admin/Admin.php:337
 msgid "Server Timezone"
-msgstr ""
+msgstr "Fus orari del servidor"
 
 #: ../app/widgets/Admin/Admin.php:365
 msgid "Bosh Configuration"
@@ -449,7 +441,7 @@ msgstr "URL Bosh"
 
 #: ../app/widgets/Admin/Admin.php:395
 msgid "Whitelist - XMPP Server"
-msgstr "Servidros XMPP - Lista blancha"
+msgstr "Servidors XMPP - Lista blancha"
 
 #: ../app/widgets/Admin/Admin.php:399
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -457,11 +449,11 @@ msgstr "Si desiratz especificar una lista de servidors XMPP autorizats sus vòst
 
 #: ../app/widgets/Admin/Admin.php:402
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr "Laissatz queu champ voide si desiratz autorizar la connexion a tots los comptes XMPP."
+msgstr "Daissatz aqueste champ void se desiratz autorizar la connexion a totes los comptes XMPP."
 
 #: ../app/widgets/Admin/Admin.php:407
 msgid "List of whitelisted XMPP servers"
-msgstr "Lista blancha daus servidors XMPP"
+msgstr "Lista blancha dels servidors XMPP"
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
 msgid "Information Message"
@@ -472,14 +464,12 @@ msgid "This message will be displayed on the login page"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:425
-#, fuzzy
 msgid "Leave this field blank if you don't want to show any message."
-msgstr "Laissatz queu champ voide si desiratz autorizar la connexion a tots los comptes XMPP."
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:441
-#, fuzzy
 msgid "Administration Credential"
-msgstr "Administracion"
+msgstr "Identificacion de l'administrator"
 
 #: ../app/widgets/Admin/Admin.php:446
 msgid "Change the default credentials admin/password"
@@ -491,15 +481,15 @@ msgstr "Nom d'utilizaire"
 
 #: ../app/widgets/Admin/Admin.php:458
 msgid "Password"
-msgstr "Senhau"
+msgstr "Senhal"
 
 #: ../app/widgets/Admin/Admin.php:462
 msgid "Retype password"
-msgstr "Tornar picar lo senhau"
+msgstr "Tornar picar lo senhal"
 
 #: ../app/widgets/Admin/Admin.php:511
 msgid "Database Settings"
-msgstr "Parametres de la banca de donadas"
+msgstr "Paramètres de la banca de donadas"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:46
 msgid "Mood"
@@ -507,15 +497,15 @@ msgstr "Umor"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:50
 msgid "I'm "
-msgstr "Sei "
+msgstr "Soi "
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:57
 msgid "Listening"
-msgstr ""
+msgstr "En escota"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:97
 msgid "Last seen"
-msgstr "Darriera visita"
+msgstr "Darrièra visita"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:113
 msgid "Bot"
@@ -523,7 +513,7 @@ msgstr "Robòt"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:114
 msgid "Desktop"
-msgstr "Bureu"
+msgstr "Burèu"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:115
 #: ../app/widgets/ContactInfo/ContactInfo.php:116
@@ -531,18 +521,16 @@ msgid "Phone"
 msgstr "Telefòn"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
-#, fuzzy
 msgid "Web"
-msgstr "Sit web"
+msgstr "Internet"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
 msgid "Registered"
 msgstr "Enregistrat"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
-#, fuzzy
 msgid "Client Informations"
-msgstr "Informacions Generalas"
+msgstr "Informacions sul client"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
 #: ../app/widgets/NodeConfig/NodeConfig.php:82
@@ -552,26 +540,24 @@ msgid "Validate"
 msgstr "Validar"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-#, fuzzy
 msgid "Subscriptions saved"
-msgstr "Descripcion"
+msgstr "Abonaments enregistrats"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:95
 msgid "Manage your subscriptions"
-msgstr ""
+msgstr "Gerir vòstres abonaments"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:96
 msgid "Manage the subscriptions"
-msgstr ""
+msgstr "Gerir los abonaments"
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:101
-#, fuzzy
 msgid "Get the subscriptions"
-msgstr "Descripcion"
+msgstr "Recuperar los abonaments"
 
 #: ../app/widgets/Connection/Connection.php:37
 msgid "Please wait "
-msgstr ""
+msgstr "Pacientatz, se vos plai "
 
 #: ../app/widgets/Chat/Chat.php:49 ../system/Utils.php:483
 msgid "Online"
@@ -583,34 +569,32 @@ msgstr "Absent(a)"
 
 #: ../app/widgets/Chat/Chat.php:51 ../system/Utils.php:485
 msgid "Do Not Disturb"
-msgstr "De derenjar pas"
+msgstr "De derengar pas"
 
 #: ../app/widgets/Chat/Chat.php:52 ../system/Utils.php:486
 msgid "Extended Away"
-msgstr "Abséncia lonja"
+msgstr "Abséncia longa"
 
 #: ../app/widgets/Chat/Chat.php:53
 msgid "Offline"
-msgstr "Fòra linha"
+msgstr "Desconnectat"
 
 #: ../app/widgets/Chat/Chat.php:143
-#, fuzzy
 msgid "Message Published"
-msgstr "Messatges"
+msgstr "Messatge publicat"
 
 #: ../app/widgets/Chat/Chat.php:182
 #, php-format
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%s a besonh de vòstre atencion"
 
 #: ../app/widgets/Chat/Chat.php:365
 msgid "Encrypted message"
-msgstr ""
+msgstr "Messatge chifrat"
 
 #: ../app/widgets/Presence/Presence.php:119
-#, fuzzy
 msgid "Disconnect"
-msgstr "Conneccion"
+msgstr "Se desconnectar"
 
 #: ../app/widgets/Log/Log.php:33
 msgid "Debug console"
@@ -618,15 +602,15 @@ msgstr "Consòla de desbugatge"
 
 #: ../app/widgets/Notifs/Notifs.php:135 ../app/widgets/Wall/Wall.php:98
 msgid "Updating"
-msgstr "Actualizacion"
+msgstr "Mesa a jorn"
 
 #: ../app/widgets/Notifs/Notifs.php:138
 msgid "Refresh"
-msgstr "Actualizar"
+msgstr "Metre a jorn"
 
 #: ../app/widgets/Notifs/Notifs.php:263
 msgid "wants to talk with you"
-msgstr "vòu charra emb vosautres"
+msgstr "vòl charrar amb vos"
 
 #: ../app/widgets/Help/Help.php:29 ../app/widgets/Help/Help.php:41
 #: ../app/controllers/ProfileController.php:17
@@ -645,7 +629,7 @@ msgstr "Ajuda"
 
 #: ../app/widgets/Help/Help.php:31
 msgid "What is Movim?"
-msgstr ""
+msgstr "Qu'es aquò Movim ?"
 
 #: ../app/widgets/Help/Help.php:33
 #, php-format
@@ -719,7 +703,7 @@ msgstr "Informacions Generalas"
 #: ../app/widgets/Vcard/Vcard.php:154
 #: ../app/widgets/ContactCard/ContactCard.php:57
 msgid "Nickname"
-msgstr "Chafre"
+msgstr "Escais"
 
 #: ../app/widgets/Vcard/Vcard.php:159
 #: ../app/widgets/ContactCard/ContactCard.php:82
@@ -752,7 +736,7 @@ msgstr "Sèxe"
 #: ../app/widgets/Vcard/Vcard.php:233
 #: ../app/widgets/ContactCard/ContactCard.php:75
 msgid "Marital Status"
-msgstr "Situacion familhala"
+msgstr "Situacion familiala"
 
 #: ../app/widgets/Vcard/Vcard.php:244
 msgid "Avatar"
@@ -760,21 +744,21 @@ msgstr "Avatar"
 
 #: ../app/widgets/Vcard/Vcard.php:255
 msgid "Webcam"
-msgstr ""
+msgstr "Webcam"
 
 #: ../app/widgets/Vcard/Vcard.php:263
 msgid "Cheese !"
-msgstr ""
+msgstr "Sorissètz !"
 
 #: ../app/widgets/Vcard/Vcard.php:271
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "Prene una fòto amb vòstre aparelh fòto"
 
 #: ../app/widgets/Vcard/Vcard.php:275
 #: ../app/widgets/ContactCard/ContactCard.php:96
 #: ../app/widgets/ContactCard/ContactCard.php:101
 msgid "Website"
-msgstr "Sit web"
+msgstr "Site web"
 
 #: ../app/widgets/Vcard/Vcard.php:279
 #: ../app/widgets/ContactCard/ContactCard.php:109
@@ -798,7 +782,7 @@ msgstr "País"
 
 #: ../app/widgets/Vcard/Vcard.php:312
 msgid "Privacy Level"
-msgstr "Niveu de confidencialitat"
+msgstr "Nivèl de confidencialitat"
 
 #: ../app/widgets/Vcard/Vcard.php:323
 msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
@@ -817,7 +801,6 @@ msgid "Reset"
 msgstr "Reïnicializar"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
 msgstr "Modificar mon perfil"
 
@@ -825,12 +808,12 @@ msgstr "Modificar mon perfil"
 #: ../app/widgets/Syndication/Syndication.php:52
 #, php-format
 msgid "%s's feed"
-msgstr "Fiau de %s"
+msgstr "Flux de %s"
 
 #: ../app/widgets/Blog/Blog.php:38 ../app/widgets/Wall/Wall.php:91
 #: ../app/widgets/Wall/Wall.php:137
 msgid "Feed"
-msgstr "Fiau"
+msgstr "Flux"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:95
 #, php-format
@@ -844,7 +827,7 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:39
 msgid "Connecting..."
-msgstr "Connexion en cors..."
+msgstr "Connexion..."
 
 #: ../app/widgets/Login/Login.php:66
 #, php-format
@@ -858,7 +841,7 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:100
 msgid "Wrong username"
-msgstr "Nom d'utilizaire incorrecte"
+msgstr "Nom d'utilizaire incorrècte"
 
 #: ../app/widgets/Login/Login.php:106
 msgid "Invalid JID"
@@ -878,11 +861,11 @@ msgstr ""
 
 #: ../app/widgets/Login/Login.php:136
 msgid "Wrong password"
-msgstr "Meschant senhau"
+msgstr "Marrit senhal"
 
 #: ../app/widgets/Login/Login.php:142
 msgid "The XMPP authentification failed"
-msgstr "L'autentificacion au servidor XMPP se faguet pas"
+msgstr "Autentificacion al servidor XMPP impossibla"
 
 #: ../app/widgets/Login/Login.php:148
 msgid "The current BOSH URL in invalid"
@@ -890,15 +873,15 @@ msgstr "L'URL Bosh balhada es pas valida"
 
 #: ../app/widgets/Login/Login.php:154
 msgid "Internal server error"
-msgstr "Error interna dau servidor"
+msgstr "Error intèrna del servidor"
 
 #: ../app/widgets/Login/Login.php:160
 msgid "Session error"
-msgstr "Error de session"
+msgstr "Error de sesilha"
 
 #: ../app/widgets/Login/Login.php:166
 msgid "Account successfully created"
-msgstr "Compte creat emb succès"
+msgstr "Compte creat amb succès"
 
 #: ../app/widgets/Login/Login.php:172
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -918,23 +901,23 @@ msgstr "'Chabatz d'entrar !"
 
 #: ../app/widgets/Profile/Profile.php:42
 msgid "Saved"
-msgstr ""
+msgstr "Enregistrat"
 
 #: ../app/widgets/Profile/Profile.php:43
 msgid "Status updated"
-msgstr ""
+msgstr "Estatut mes a jorn"
 
 #: ../app/widgets/Profile/Profile.php:118
 msgid "Your status here !"
-msgstr ""
+msgstr "Vòstre estatut aicí !"
 
 #: ../app/widgets/Profile/Profile.php:129
 msgid "No profile yet ?"
-msgstr "Pas enquera de perfil ?"
+msgstr "Pas encara de perfil ?"
 
 #: ../app/widgets/Discover/Discover.php:52
 msgid "Last registered"
-msgstr "Darriers marcats"
+msgstr "Darrièrs marcats"
 
 #: ../app/widgets/ContactAction/ContactAction.php:65
 #: ../app/widgets/ContactAction/ContactAction.php:134
@@ -943,11 +926,11 @@ msgstr "Accions"
 
 #: ../app/widgets/ContactAction/ContactAction.php:82
 msgid "Chat"
-msgstr "Charrador"
+msgstr "Messatjariá instantanèa (chat)"
 
 #: ../app/widgets/ContactAction/ContactAction.php:100
 msgid "Remove this contact"
-msgstr "Suprimir queu contacte"
+msgstr "Suprimir aqueste contacte"
 
 #: ../app/widgets/ContactAction/ContactAction.php:117
 msgid "Yes"
@@ -959,21 +942,19 @@ msgstr "Non"
 
 #: ../app/widgets/ContactAction/ContactAction.php:146
 msgid "Invite this user"
-msgstr "Convidar quel utilizaire"
+msgstr "Convidar aquel utilizaire"
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Meschant senhau"
+msgstr "Marrida posicion"
 
 #: ../app/widgets/Location/Location.php:63
-#, fuzzy
 msgid "Location updated"
-msgstr "La configuracion es estada mesa a jorn"
+msgstr "Posicion geografica mesa a jorn"
 
 #: ../app/widgets/Location/Location.php:101
 msgid "Update my position"
-msgstr ""
+msgstr "Metre a jorn ma posicion"
 
 #: ../app/widgets/Location/Location.php:107
 msgid "Accept"
@@ -982,24 +963,24 @@ msgstr "Acceptar"
 #: ../app/widgets/Location/Location.php:116
 #: ../app/widgets/Location/Location.php:120
 msgid "Location"
-msgstr "Luòc"
+msgstr "Emplaçament"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:31
 #: ../app/widgets/MediaUpload/MediaUpload.php:66
 msgid "Upload"
-msgstr ""
+msgstr "Mandar"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:35
 msgid "Please select image file"
-msgstr ""
+msgstr "Seleccionatz un imatge"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:69
 msgid "You should select valid image files only!"
-msgstr ""
+msgstr "Sols los imatges son autorizats"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:72
 msgid "An error occurred while uploading the file"
-msgstr ""
+msgstr "Una error s'es produsida pendent lo mandadís"
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:75
 msgid "The upload has been canceled by the user or the browser dropped the connection"
@@ -1011,12 +992,12 @@ msgstr ""
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
 msgid "No public groups found"
-msgstr ""
+msgstr "Pas de gropes publics trobats"
 
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:65
 #: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:67
 msgid "Public groups"
-msgstr ""
+msgstr "Gropes publics"
 
 #: ../app/widgets/News/News.php:34 ../app/widgets/Wall/Wall.php:111
 #: ../app/widgets/Feed/Feed.php:142 ../app/widgets/Node/Node.php:201
@@ -1026,21 +1007,19 @@ msgstr "Recuperar los ancians pòsts"
 #: ../app/widgets/News/News.php:65 ../app/widgets/Feed/Feed.php:175
 #: ../app/widgets/Node/Node.php:108
 msgid "Your feed cannot be loaded."
-msgstr "Vòstre fiau es pas accessible."
+msgstr "Vòstre fial es pas accessible."
 
 #: ../app/widgets/Config/Config.php:54
 msgid "Configuration updated"
 msgstr "La configuracion es estada mesa a jorn"
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Perfil mes a jorn"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Perfil mes a jorn"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1048,21 +1027,19 @@ msgstr "Blòg"
 
 #: ../app/widgets/Wall/Wall.php:102
 msgid "Update"
-msgstr "Actualizar"
+msgstr "Metre a jorn"
 
 #: ../app/widgets/VisioExt/VisioExt.php:65
 msgid "Hung up"
 msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:69
-#, fuzzy
 msgid "Your contact is busy"
-msgstr "P'un comentari"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:73
-#, fuzzy
 msgid "Declined"
-msgstr "Refusar"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:89
 msgid "Remote application incompatible"
@@ -1075,12 +1052,11 @@ msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:56
 msgid "Group deleted"
-msgstr ""
+msgstr "Grop suprimit"
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:62
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "La configuracion es estada mesa a jorn"
+msgstr "Configuracion del grop salvada"
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:151
@@ -1100,16 +1076,16 @@ msgstr "Perfil"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
 msgid "Affiliations saved"
-msgstr ""
+msgstr "Afiliacions salvadas"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:90
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:91
 msgid "Manage your members"
-msgstr ""
+msgstr "Gerir vòstres membres"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:96
 msgid "Get the members"
-msgstr ""
+msgstr "Recuperar los membres"
 
 #: ../app/widgets/Feed/Feed.php:64 ../app/widgets/Feed/Feed.php:103
 msgid "Your server doesn't support post publication, you can only read contact's feeds"
@@ -1121,11 +1097,11 @@ msgstr ""
 
 #: ../app/widgets/Feed/Feed.php:109
 msgid "Creating your feed..."
-msgstr "Creacion de vòstre fiau..."
+msgstr "Creacion de vòstre fial..."
 
 #: ../app/widgets/Account/Account.php:92
 msgid "Step 2 - Fill in your informations"
-msgstr "Etapa 2 - Emplir lo formulari"
+msgstr "Etapa 2 - Emplenar lo formulari"
 
 #: ../app/widgets/Account/Account.php:292
 msgid "Description"
@@ -1133,15 +1109,15 @@ msgstr "Descripcion"
 
 #: ../app/widgets/Account/Account.php:295
 msgid "URL"
-msgstr "URL"
+msgstr "Adreça Internet"
 
 #: ../app/widgets/Account/Account.php:298
 msgid "Software"
-msgstr "Logiciaus"
+msgstr "Logicials"
 
 #: ../app/widgets/Account/Account.php:448
 msgid "Create a new account"
-msgstr "Crear un noveu compte"
+msgstr "Crear un compte novèl"
 
 #: ../app/widgets/Account/Account.php:451
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -1153,7 +1129,7 @@ msgstr ""
 
 #: ../app/widgets/Account/Account.php:457
 msgid "Step 1 - Search the server"
-msgstr "Etapa 1 - Cherchar lo servidor"
+msgstr "Etapa 1 - Cerchar lo servidor"
 
 #: ../app/widgets/Account/Account.php:460
 #, php-format
@@ -1174,11 +1150,11 @@ msgstr "Picatz lo nom de domeni (ex: movim.eu)"
 
 #: ../app/widgets/Account/Account.php:487
 msgid "Searching..."
-msgstr "Rechercha en cors..."
+msgstr "Recèrca en cors..."
 
 #: ../app/widgets/Account/Account.php:489
 msgid "Search"
-msgstr "Cherchar"
+msgstr "Recercar"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:78
 msgid "Place"
@@ -1186,34 +1162,31 @@ msgstr "Luòc"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:269
 msgid "by"
-msgstr ""
+msgstr "per"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:273
-#, fuzzy
 msgid "email"
-msgstr "Adreça electronica"
+msgstr "E-mail"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:277
 msgid "jid"
-msgstr ""
+msgstr "jid"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:474
 msgid "Show the older comments"
-msgstr ""
+msgstr "Afichar los autres comentaris"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:548
-#, fuzzy
 msgid "No content"
-msgstr "P'un comentari"
+msgstr "Pas cap de contengut"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:613
 msgid "No comments"
-msgstr "P'un comentari"
+msgstr "Pas cap de comentari"
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:624
-#, fuzzy
 msgid "No comments stream"
-msgstr "P'un comentari"
+msgstr "Pas de flux de comentaris"
 
 #: ../app/controllers/ProfileController.php:9
 #, php-format
@@ -1241,7 +1214,7 @@ msgstr "%s - Perfil"
 #: ../app/controllers/AdminController.php:14
 #: ../app/controllers/MainController.php:11
 msgid "Home"
-msgstr "Acuelh"
+msgstr "Dorsièr personal"
 
 #: ../app/controllers/ProfileController.php:12
 #: ../app/controllers/MediaController.php:12
@@ -1255,7 +1228,7 @@ msgstr "Acuelh"
 #: ../app/controllers/NewsController.php:12
 #: ../app/controllers/MainController.php:12
 msgid "News"
-msgstr "Novelas"
+msgstr "Actualitats"
 
 #: ../app/controllers/ProfileController.php:13
 #: ../app/controllers/MediaController.php:13
@@ -1289,13 +1262,13 @@ msgstr "Configuracion"
 #: ../app/controllers/LoginController.php:9
 #, php-format
 msgid "%s - Login to Movim"
-msgstr "%s - Dubrir una session MOVIM"
+msgstr "%s - Dobrir una sesilha MOVIM"
 
 #: ../app/controllers/LoginController.php:12
 #: ../app/controllers/AboutController.php:12
 #: ../app/controllers/DiscoverController.php:14
 msgid "Discover"
-msgstr ""
+msgstr "Descobrir"
 
 #: ../app/controllers/LoginController.php:13
 #: ../app/controllers/AboutController.php:13
@@ -1304,9 +1277,9 @@ msgid "About"
 msgstr "A prepaus"
 
 #: ../app/controllers/AboutController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - Compte"
+msgstr "%s - A prepaus"
 
 #: ../app/controllers/AccountController.php:9
 #: ../app/controllers/BlogController.php:9
@@ -1337,30 +1310,29 @@ msgstr "%s - Pagina d'Ajuda"
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "Administracion"
+msgstr "%s - Panèl d'Administracion"
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
 msgstr "Administracion"
 
 #: ../app/controllers/NewsController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - News"
-msgstr "Novelas"
+msgstr "%s - Actualitats"
 
 #: ../app/controllers/DiscoverController.php:11
 #, php-format
 msgid "%s - Discover"
-msgstr ""
+msgstr "%s - Descobrir"
 
 #: ../app/controllers/MainController.php:9
 #, php-format
 msgid "%s - Welcome to Movim"
-msgstr "%s - Benvengut a MOVIM"
+msgstr "%s - Benvengut sus MOVIM"
 
 #: ../system/Conf.php:70
 #, php-format
@@ -1370,7 +1342,7 @@ msgstr "Lo fichier '%s' es pas accessible"
 #: ../system/MovimException.php:15
 #, php-format
 msgid "Error: %s"
-msgstr "Error : %s"
+msgstr "Error : %s"
 
 #: ../system/Route.php:81
 #, php-format
@@ -1384,11 +1356,11 @@ msgstr ""
 
 #: ../system/Logs/Logger.php:171
 msgid "Development environment."
-msgstr ""
+msgstr "Environament de desvolopament"
 
 #: ../system/Logs/Logger.php:171
 msgid "Change it in the admin panel."
-msgstr ""
+msgstr "Cambiatz-lo dins lo panèl d'administracion"
 
 #: ../system/Utils.php:158
 msgid "Monday"
@@ -1400,7 +1372,7 @@ msgstr "Dimars"
 
 #: ../system/Utils.php:160
 msgid "Wednesday"
-msgstr "Dimecres"
+msgstr "Dimècres"
 
 #: ../system/Utils.php:161
 msgid "Thursday"
@@ -1412,15 +1384,15 @@ msgstr "Divendres"
 
 #: ../system/Utils.php:163
 msgid "Saturday"
-msgstr "Dissabde"
+msgstr "Dissabte"
 
 #: ../system/Utils.php:172
 msgid "January"
-msgstr "Genier"
+msgstr "Genièr"
 
 #: ../system/Utils.php:173
 msgid "February"
-msgstr "Feurier"
+msgstr "Febrièr"
 
 #: ../system/Utils.php:174
 msgid "March"
@@ -1428,7 +1400,7 @@ msgstr "Març"
 
 #: ../system/Utils.php:175
 msgid "April"
-msgstr "Abriu"
+msgstr "Abril"
 
 #: ../system/Utils.php:176
 msgid "May"
@@ -1444,7 +1416,7 @@ msgstr "Julhet"
 
 #: ../system/Utils.php:179
 msgid "August"
-msgstr "Aust"
+msgstr "Agost"
 
 #: ../system/Utils.php:180
 msgid "September"
@@ -1452,7 +1424,7 @@ msgstr "Setembre"
 
 #: ../system/Utils.php:181
 msgid "October"
-msgstr "Octòbre"
+msgstr "Octobre"
 
 #: ../system/Utils.php:182
 msgid "November"
@@ -1464,7 +1436,7 @@ msgstr "Decembre"
 
 #: ../system/Utils.php:201
 msgid "Today"
-msgstr "Uei"
+msgstr "Uèi"
 
 #: ../system/Utils.php:203
 msgid "Tomorrow"
@@ -1472,7 +1444,7 @@ msgstr "Deman"
 
 #: ../system/Utils.php:205
 msgid "Yesterday"
-msgstr "Ier"
+msgstr "Ièr"
 
 #: ../system/Utils.php:211
 msgid "day"
@@ -1485,7 +1457,7 @@ msgstr " i a %d jorns"
 
 #: ../system/Utils.php:233 ../system/Utils.php:470
 msgid "None"
-msgstr "P'un piau"
+msgstr "Pas cap"
 
 #: ../system/Utils.php:234
 msgid "Male"
@@ -1505,7 +1477,7 @@ msgstr "Celibatari(ària)"
 
 #: ../system/Utils.php:472
 msgid "In a relationship"
-msgstr ""
+msgstr "En parelh"
 
 #: ../system/Utils.php:473
 msgid "Married"
@@ -1517,7 +1489,7 @@ msgstr "Divorciat(ada)"
 
 #: ../system/Utils.php:475
 msgid "Widowed"
-msgstr "Veuve(a)"
+msgstr "Veuse(a)"
 
 #: ../system/Utils.php:476
 msgid "Cohabiting"
@@ -1525,11 +1497,11 @@ msgstr "Associat"
 
 #: ../system/Utils.php:477
 msgid "Civil Union"
-msgstr ""
+msgstr "Union civila"
 
 #: ../system/Utils.php:487
 msgid "Logout"
-msgstr "Barrar la session"
+msgstr "Se desconnectar"
 
 #: ../system/Utils.php:504
 msgid "afraid"
@@ -1537,7 +1509,7 @@ msgstr ""
 
 #: ../system/Utils.php:505
 msgid "amazed"
-msgstr ""
+msgstr "estonat(ada)"
 
 #: ../system/Utils.php:506
 msgid "amorous"
@@ -1545,7 +1517,7 @@ msgstr "Amorós/osa"
 
 #: ../system/Utils.php:507
 msgid "angry"
-msgstr ""
+msgstr "en colèra"
 
 #: ../system/Utils.php:508
 msgid "annoyed"
@@ -1556,29 +1528,28 @@ msgid "anxious"
 msgstr ""
 
 #: ../system/Utils.php:510
-#, fuzzy
 msgid "aroused"
-msgstr "Amorós/osa"
+msgstr "estimulat(ada)"
 
 #: ../system/Utils.php:511
 msgid "ashamed"
-msgstr ""
+msgstr "vergonhós(osa)"
 
 #: ../system/Utils.php:512
 msgid "bored"
-msgstr ""
+msgstr "alassat(ada)"
 
 #: ../system/Utils.php:513
 msgid "brave"
-msgstr ""
+msgstr "coratjós(osa)"
 
 #: ../system/Utils.php:514
 msgid "calm"
-msgstr ""
+msgstr "calm(a)"
 
 #: ../system/Utils.php:515
 msgid "cautious"
-msgstr ""
+msgstr "prudent(a)"
 
 #: ../system/Utils.php:516
 msgid "cold"
@@ -1590,16 +1561,15 @@ msgstr "Fisançós/osa"
 
 #: ../system/Utils.php:518
 msgid "confused"
-msgstr ""
+msgstr "perplèxe(a)"
 
 #: ../system/Utils.php:519
-#, fuzzy
 msgid "contemplative"
-msgstr "platussaire"
+msgstr "contemplatiu(va)"
 
 #: ../system/Utils.php:520
 msgid "contented"
-msgstr ""
+msgstr "satisfach(a)"
 
 #: ../system/Utils.php:521
 msgid "cranky"
@@ -1610,26 +1580,24 @@ msgid "crazy"
 msgstr "Franc fadard(a)"
 
 #: ../system/Utils.php:523
-#, fuzzy
 msgid "creative"
-msgstr "Crear"
+msgstr "creatiu(va)"
 
 #: ../system/Utils.php:524
 msgid "curious"
-msgstr ""
+msgstr "curiós(osa)"
 
 #: ../system/Utils.php:525
 msgid "dejected"
 msgstr ""
 
 #: ../system/Utils.php:526
-#, fuzzy
 msgid "depressed"
-msgstr "Adreça"
+msgstr "deprimit(ida)"
 
 #: ../system/Utils.php:527
 msgid "disappointed"
-msgstr ""
+msgstr "decebut(uda)"
 
 #: ../system/Utils.php:528
 msgid "disgusted"
@@ -1641,7 +1609,7 @@ msgstr ""
 
 #: ../system/Utils.php:530
 msgid "distracted"
-msgstr ""
+msgstr "distrach(a)"
 
 #: ../system/Utils.php:531
 msgid "embarrassed"
@@ -1657,15 +1625,15 @@ msgstr "Excitat/ada"
 
 #: ../system/Utils.php:534
 msgid "flirtatious"
-msgstr ""
+msgstr "seductor"
 
 #: ../system/Utils.php:535
 msgid "frustrated"
-msgstr ""
+msgstr "frustrat(ada)"
 
 #: ../system/Utils.php:536
 msgid "grateful"
-msgstr ""
+msgstr "reconeissent"
 
 #: ../system/Utils.php:537
 msgid "grieving"
@@ -1673,31 +1641,31 @@ msgstr ""
 
 #: ../system/Utils.php:538
 msgid "grumpy"
-msgstr ""
+msgstr "romegós"
 
 #: ../system/Utils.php:539
 msgid "guilty"
-msgstr ""
+msgstr "copable"
 
 #: ../system/Utils.php:540
 msgid "happy"
-msgstr "Aürós/osa"
+msgstr "Urós/osa"
 
 #: ../system/Utils.php:541
 msgid "hopeful"
-msgstr ""
+msgstr "optimista"
 
 #: ../system/Utils.php:542
 msgid "hot"
-msgstr "Chaud(a)"
+msgstr "Caud(a)"
 
 #: ../system/Utils.php:543
 msgid "humbled"
-msgstr ""
+msgstr "esmougut"
 
 #: ../system/Utils.php:544
 msgid "humiliated"
-msgstr ""
+msgstr "umiliat"
 
 #: ../system/Utils.php:545
 msgid "hungry"
@@ -1709,7 +1677,7 @@ msgstr ""
 
 #: ../system/Utils.php:547
 msgid "impressed"
-msgstr ""
+msgstr "impressionat"
 
 #: ../system/Utils.php:548
 msgid "in awe"
@@ -1717,16 +1685,15 @@ msgstr ""
 
 #: ../system/Utils.php:549
 msgid "in love"
-msgstr ""
+msgstr "amorós"
 
 #: ../system/Utils.php:551
-#, fuzzy
 msgid "interested"
-msgstr "Enregistrat"
+msgstr "interessat"
 
 #: ../system/Utils.php:552
 msgid "intoxicated"
-msgstr ""
+msgstr "intoxicat"
 
 #: ../system/Utils.php:553
 msgid "invincible"
@@ -1734,39 +1701,39 @@ msgstr ""
 
 #: ../system/Utils.php:554
 msgid "jealous"
-msgstr ""
+msgstr "gelós"
 
 #: ../system/Utils.php:555
 msgid "lonely"
-msgstr ""
+msgstr "sol"
 
 #: ../system/Utils.php:556
 msgid "lost"
-msgstr ""
+msgstr "perdut"
 
 #: ../system/Utils.php:557
 msgid "lucky"
-msgstr ""
+msgstr "astruc"
 
 #: ../system/Utils.php:558
 msgid "mean"
-msgstr ""
+msgstr "missant"
 
 #: ../system/Utils.php:559
 msgid "moody"
-msgstr ""
+msgstr "ronhós"
 
 #: ../system/Utils.php:560
 msgid "nervous"
-msgstr ""
+msgstr "nerviós"
 
 #: ../system/Utils.php:561
 msgid "neutral"
-msgstr ""
+msgstr "neutre"
 
 #: ../system/Utils.php:562
 msgid "offended"
-msgstr ""
+msgstr "ofensat"
 
 #: ../system/Utils.php:563
 msgid "outraged"
@@ -1774,11 +1741,11 @@ msgstr ""
 
 #: ../system/Utils.php:564
 msgid "playful"
-msgstr ""
+msgstr "jogaire"
 
 #: ../system/Utils.php:565
 msgid "proud"
-msgstr ""
+msgstr "fièr"
 
 #: ../system/Utils.php:566
 msgid "relaxed"
@@ -1794,23 +1761,23 @@ msgstr ""
 
 #: ../system/Utils.php:569
 msgid "restless"
-msgstr ""
+msgstr "impacient"
 
 #: ../system/Utils.php:570
 msgid "sad"
-msgstr ""
+msgstr "triste"
 
 #: ../system/Utils.php:571
 msgid "sarcastic"
-msgstr ""
+msgstr "sarcastic"
 
 #: ../system/Utils.php:572
 msgid "satisfied"
-msgstr ""
+msgstr "satisfach"
 
 #: ../system/Utils.php:573
 msgid "serious"
-msgstr ""
+msgstr "seriós"
 
 #: ../system/Utils.php:574
 msgid "shocked"
@@ -1818,35 +1785,35 @@ msgstr ""
 
 #: ../system/Utils.php:575
 msgid "shy"
-msgstr ""
+msgstr "timid"
 
 #: ../system/Utils.php:576
 msgid "sick"
-msgstr "malaude"
+msgstr "malaut"
 
 #: ../system/Utils.php:577
 msgid "sleepy"
-msgstr ""
+msgstr "endormit"
 
 #: ../system/Utils.php:578
 msgid "spontaneous"
-msgstr ""
+msgstr "espontanèu"
 
 #: ../system/Utils.php:579
 msgid "stressed"
-msgstr ""
+msgstr "estressat"
 
 #: ../system/Utils.php:580
 msgid "strong"
-msgstr ""
+msgstr "fòrt"
 
 #: ../system/Utils.php:581
 msgid "surprised"
-msgstr ""
+msgstr "susprés"
 
 #: ../system/Utils.php:582
 msgid "thankful"
-msgstr ""
+msgstr "reconeissent"
 
 #: ../system/Utils.php:583
 msgid "thirsty"
@@ -1854,47 +1821,44 @@ msgstr ""
 
 #: ../system/Utils.php:584
 msgid "tired"
-msgstr ""
+msgstr "alassat"
 
 #: ../system/Utils.php:585
 msgid "undefined"
-msgstr "pas definit(ida)"
+msgstr "pas definit"
 
 #: ../system/Utils.php:586
 msgid "weak"
-msgstr ""
+msgstr "feble"
 
 #: ../system/Utils.php:587
-#, fuzzy
 msgid "worried"
-msgstr "Maridat(ada)"
+msgstr "preocupat"
 
 #: ../system/Utils.php:720
 msgid "Not shared"
 msgstr "Pas partejat"
 
 #: ../system/Utils.php:724
-#, fuzzy
 msgid "Shared with one contact"
-msgstr "Cherchar un contacte"
+msgstr "Partejat amb un contacte"
 
 #: ../system/Utils.php:728
-#, fuzzy
 msgid "Shared with all contacts"
-msgstr "Cherchar un contacte"
+msgstr "Partejat amb totes los contactes"
 
 #: ../system/Utils.php:732
 msgid "Shared with the XMPP network"
-msgstr ""
+msgstr "Partejat amb la ret XMPP"
 
 #: ../system/Utils.php:736
 msgid "Shared with the whole Internet"
-msgstr ""
+msgstr "Partejat amb tot Internet"
 
 #: ../system/widget/WidgetWrapper.php:131
 #, php-format
 msgid "Requested widget '%s' doesn't exist."
-msgstr ""
+msgstr "Lo widget « %s » existís pas"
 
 #: ../system/controllers/FrontController.php:35
 #, php-format
@@ -1906,14 +1870,12 @@ msgid "Could not call the load method on the current controller"
 msgstr ""
 
 #: ../app/views/admin.tpl:5
-#, fuzzy
 msgid "Administration Panel"
-msgstr "Administracion"
+msgstr "Panèl d'Administracion"
 
 #: ../app/views/visio.tpl:20
-#, fuzzy
 msgid "Visio-conference"
-msgstr "Conferéncias"
+msgstr "Visioconferéncia"
 
 #: ../app/views/adminlogin.tpl:4
 msgid "Login"
@@ -1922,180 +1884,6 @@ msgstr ""
 #: ../app/views/page.tpl:67
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
-
-#, fuzzy
-#~ msgid "My Posts"
-#~ msgstr "Mos pòsts"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Vòstre navigador es tròp vielh per utilizar Movim"
-
-#~ msgid "My address"
-#~ msgstr "Mon adreça"
-
-#~ msgid "Create one !"
-#~ msgstr "Creatz ne'n un !"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Pas enquera de compte ?"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Connexion en cors..."
-
-#~ msgid "Population"
-#~ msgstr "Populacion"
-
-#, fuzzy
-#~ msgid "Loading comments ..."
-#~ msgstr "Cargament de vòstre flux ..."
-
-#, fuzzy
-#~ msgid "Get the comments"
-#~ msgstr "P'un comentari"
-
-#~ msgid "Add a comment"
-#~ msgstr "Apondre un comentari"
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - Compte"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - Compte"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Afichar/Escondre"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Configuracion"
-
-#, fuzzy
-#~ msgid "Get Subscription"
-#~ msgstr "Descripcion"
-
-#~ msgid "Data"
-#~ msgstr "Donadas"
-
-#~ msgid "Thanks"
-#~ msgstr "Mercés"
-
-#~ msgid "Resources"
-#~ msgstr "Ressorsas"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configuracion"
-
-#~ msgid "General"
-#~ msgstr "Generau"
-
-#~ msgid "Language"
-#~ msgstr "Lenga"
-
-#~ msgid "Appearence"
-#~ msgstr "Aparéncia"
-
-#~ msgid "Pattern"
-#~ msgstr "Motiu"
-
-#~ msgid "Composing..."
-#~ msgstr "A escriure..."
-
-#~ msgid "Paused..."
-#~ msgstr "En pausa..."
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Charrador"
-
-#, fuzzy
-#~ msgid "Shared"
-#~ msgstr "Pas partejat"
-
-#~ msgid "What's new ?"
-#~ msgstr "Que de nuòu ?"
-
-#~ msgid "Preview"
-#~ msgstr "Previsualizacion"
-
-#~ msgid "Geolocalisation"
-#~ msgstr "Geolocalisacion"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "Connexion en cors..."
-
-#, fuzzy
-#~ msgid "Database Type"
-#~ msgstr "Parametres de la banca de donadas"
-
-#~ msgid "Host"
-#~ msgstr "Òste"
-
-#~ msgid "Port"
-#~ msgstr "Pòrt"
-
-#, fuzzy
-#~ msgid "Database Name"
-#~ msgstr "Parametres de la banca de donadas"
-
-#~ msgid "Topics"
-#~ msgstr "Rubricas"
-
-#, fuzzy
-#~ msgid "created"
-#~ msgstr "Crear"
-
-#, fuzzy
-#~ msgid "Share with"
-#~ msgstr "Cherchar un contacte"
-
-#~ msgid "Everyone"
-#~ msgstr "Tot lo monde"
-
-#, fuzzy
-#~ msgid "Your contacts"
-#~ msgstr "P'un comentari"
-
-#, fuzzy
-#~ msgid "Posts"
-#~ msgstr "Mos pòsts"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "La configuracion es estada mesa a jorn"
-
-#, fuzzy
-#~ msgid "Messages"
-#~ msgstr "Messatges"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "Suprimir queu contacte"
-
-#, fuzzy
-#~ msgid "No contact specified"
-#~ msgstr "P'un comentari"
-
-#, fuzzy
-#~ msgid "Public Groups"
-#~ msgstr "Grops"
-
-#~ msgid "Log verbosity"
-#~ msgstr "Niveu de jornalizacion"
-
-#~ msgid "Delete"
-#~ msgstr "Suprimir"
-
-#, fuzzy
-#~ msgid "Edit my profile"
-#~ msgstr "Modificar mon perfil"
 
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "La creacion dau fichier de configuracion '%s' es impossibla."
@@ -2108,6 +1896,15 @@ msgstr ""
 
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Creacion de compte"
+
+#~ msgid "My address"
+#~ msgstr "Mon adreça"
+
+#~ msgid "Language"
+#~ msgstr "Lenga"
+
+#~ msgid "Decline"
+#~ msgstr "Refusar"
 
 #~ msgid "or"
 #~ msgstr "o"
@@ -2141,6 +1938,12 @@ msgstr ""
 
 #~ msgid "Retype"
 #~ msgstr "Tornar picar"
+
+#~ msgid "Create"
+#~ msgstr "Crear"
+
+#~ msgid "Composing..."
+#~ msgstr "A escriure..."
 
 #~ msgid "Show All"
 #~ msgstr "Afichar tot"
@@ -2202,8 +2005,17 @@ msgstr ""
 #~ msgid "8 characters"
 #~ msgstr "8 caractèrs"
 
+#~ msgid "Address"
+#~ msgstr "Adreça"
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "Cargament de vòstre flux ..."
+
 #~ msgid "All"
 #~ msgstr "Tot"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Vòstre navigador es tròp vielh per utilizar Movim"
 
 #~ msgid "Loading the contact feed ..."
 #~ msgstr "Cargament del flux ..."
@@ -2235,8 +2047,23 @@ msgstr ""
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Mercés per lo descharjament de Movim !"
 
-#~ msgid "%s - Post View"
-#~ msgstr "%s - Visda daus pòsts"
+#~ msgid "My Posts"
+#~ msgstr "Mos pòsts"
 
-#~ msgid "%s - 404"
-#~ msgstr "%s - 404"
+#~ msgid "Send request"
+#~ msgstr "Enviar la demanda"
+
+#~ msgid "Delete"
+#~ msgstr "Suprimir"
+
+#~ msgid "Log verbosity"
+#~ msgstr "Nivèl de jornalizacion"
+
+#~ msgid "Public Groups"
+#~ msgstr "Gropes publics"
+
+#~ msgid "Get public groups"
+#~ msgstr "Recuperar los gropes publics"
+
+#~ msgid "Edit my profile"
+#~ msgstr "Editar mon perfil"
