@@ -112,9 +112,7 @@ class Vcard extends WidgetBase
         if($me == null) { 
         ?>
             <div class="message info">
-                <?php echo t("It's your first time on Movim! To fill in a 
-                few information about you and display them to your 
-                contacts, create your virtual card by clicking the next button."); ?>
+                <?php echo t("It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."); ?>
             </div>
             
             <!--<a 
