@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
 "PO-Revision-Date: 2013-05-11 17:33+0000\n"
 "Last-Translator: Baptiste Darthenay <baptiste+launchpad@darthenay.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -27,9 +27,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:88
-#, fuzzy
 msgid "Error"
-msgstr "Eraro: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -102,9 +101,8 @@ msgstr ""
 
 #: ../app/widgets/Media/Media.php:85
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
-#, fuzzy
 msgid "on"
-msgstr "Neniu"
+msgstr ""
 
 #: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:149
 #: ../app/widgets/ContactCard/ContactCard.php:51
@@ -257,9 +255,8 @@ msgid "Bad URL"
 msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:300
-#, fuzzy
 msgid "Conferences"
-msgstr "Agordo de prokura servilo"
+msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:308
 #: ../app/widgets/Explore/Explore.php:86
@@ -298,14 +295,12 @@ msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:94 ../app/widgets/Vcard4/Vcard4.php:102
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Profilo"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Profilo"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
 msgid "Your profile is now public"
@@ -316,9 +311,8 @@ msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Tujmesaĝilo"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -336,9 +330,8 @@ msgid "Submit"
 msgstr "Sendi"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "Kongrueca testo"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:184
 msgid "Movim requires certain external components. Please install them before you can succeed:"
@@ -362,9 +355,8 @@ msgid "SimpleXML"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:201
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr "Ebligi legi kaj skribi rajtojn on la radika dosierujo de Movim"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:204
 msgid "OpenSSL"
@@ -375,9 +367,8 @@ msgid "URL Rewriting support"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
-#, fuzzy
 msgid "General Settings"
-msgstr "Generalaj informoj"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
@@ -420,9 +411,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -466,9 +456,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
-#, fuzzy
 msgid "Information Message"
-msgstr "Generalaj informoj"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:422
 msgid "This message will be displayed on the login page"
@@ -495,14 +484,12 @@ msgid "Password"
 msgstr "Pasvorto"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "Malkorekta pasvorto"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
-#, fuzzy
 msgid "Database Settings"
-msgstr "Datumbazo trovita"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:46
 msgid "Mood"
@@ -534,27 +521,23 @@ msgid "Phone"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
-#, fuzzy
 msgid "Web"
-msgstr "Retpaĝaro"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
-#, fuzzy
 msgid "Registered"
-msgstr "Hieraŭ"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
-#, fuzzy
 msgid "Client Informations"
-msgstr "Generalaj informoj"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
 #: ../app/widgets/NodeConfig/NodeConfig.php:82
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
 #: ../app/widgets/Account/Account.php:160
-#, fuzzy
 msgid "Validate"
-msgstr "Nevalida uzantnomo"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
 msgid "Subscriptions saved"
@@ -593,9 +576,8 @@ msgid "Extended Away"
 msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:53
-#, fuzzy
 msgid "Offline"
-msgstr "Enrete"
+msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:143
 msgid "Message Published"
@@ -735,9 +717,8 @@ msgid "Date of Birth"
 msgstr "Naskiĝdato"
 
 #: ../app/widgets/Vcard/Vcard.php:169
-#, fuzzy
 msgid "Day"
-msgstr "Majo"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:189
 msgid "Month"
@@ -812,18 +793,16 @@ msgid "Is this profile public ?"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:337
-#, fuzzy
 msgid "Submitting"
-msgstr "Sendi"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:348
 msgid "Reset"
 msgstr "Nuligi"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
-msgstr "%s - Profilo"
+msgstr ""
 
 #: ../app/widgets/Blog/Blog.php:30
 #: ../app/widgets/Syndication/Syndication.php:52
@@ -865,9 +844,8 @@ msgid "Wrong username"
 msgstr ""
 
 #: ../app/widgets/Login/Login.php:106
-#, fuzzy
 msgid "Invalid JID"
-msgstr "Nevalida uzantnomo"
+msgstr ""
 
 #: ../app/widgets/Login/Login.php:112
 msgid "Authentication mechanism not supported by Movim"
@@ -959,18 +937,16 @@ msgid "Yes"
 msgstr ""
 
 #: ../app/widgets/ContactAction/ContactAction.php:130
-#, fuzzy
 msgid "No"
-msgstr "Neniu"
+msgstr ""
 
 #: ../app/widgets/ContactAction/ContactAction.php:146
 msgid "Invite this user"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Malkorekta pasvorto"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
 msgid "Location updated"
@@ -1034,19 +1010,16 @@ msgid "Your feed cannot be loaded."
 msgstr ""
 
 #: ../app/widgets/Config/Config.php:54
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Profilo"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Profilo"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1065,9 +1038,8 @@ msgid "Your contact is busy"
 msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:73
-#, fuzzy
 msgid "Declined"
-msgstr "Malakcepti"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:89
 msgid "Remote application incompatible"
@@ -1083,9 +1055,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:62
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:151
@@ -1178,14 +1149,12 @@ msgid "Enter the server domain (ex: movim.eu)"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:487
-#, fuzzy
 msgid "Searching..."
-msgstr "Konektante..."
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:489
-#, fuzzy
 msgid "Search"
-msgstr "Marto"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:78
 msgid "Place"
@@ -1315,9 +1284,9 @@ msgstr ""
 #: ../app/controllers/AccountController.php:9
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountnextController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Kreado de konto"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:12
 #: ../app/controllers/AccountnextController.php:12
@@ -1341,15 +1310,14 @@ msgstr "%s - Helppaĝo"
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "%s - Kreado de konto"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
-msgstr "Kreado de konto"
+msgstr ""
 
 #: ../app/controllers/NewsController.php:9
 #, php-format
@@ -1864,9 +1832,8 @@ msgid "weak"
 msgstr ""
 
 #: ../system/Utils.php:587
-#, fuzzy
 msgid "worried"
-msgstr "Edz(in)iĝinta"
+msgstr ""
 
 #: ../system/Utils.php:720
 msgid "Not shared"
@@ -1918,73 +1885,14 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#~ msgid "My address"
-#~ msgstr "Mia adreso"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Konektante..."
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "Agordaĵoj"
-
-#, fuzzy
-#~ msgid "Loading comments ..."
-#~ msgstr "Ŝarĝante la kontakta fluo…"
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - Kreado de konto"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - Kreado de konto"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Agordaĵoj"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Agordaĵoj"
-
-#, fuzzy
-#~ msgid "General"
-#~ msgstr "Generalaj informoj"
-
-#~ msgid "Language"
-#~ msgstr "Lingvo"
-
-#, fuzzy
-#~ msgid "Composing..."
-#~ msgstr "Konektante..."
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Tujmesaĝilo"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "Konektante..."
-
-#, fuzzy
-#~ msgid "Database Type"
-#~ msgstr "Datumbazo trovita"
-
-#, fuzzy
-#~ msgid "Database Name"
-#~ msgstr "Datumbazo trovita"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "Forigi tiun kontakton"
-
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "La Movima dosierujo devus esti skribebla."
 
 #~ msgid "Movim Installer"
 #~ msgstr "Movima instalilo"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "Kongrueca testo"
 
 #~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "La sekvaj elementoj ne estis trovita. Bonvolu kontroli ke ĉiuj estas disponeblaj por instali Movim-on."
@@ -1997,6 +1905,21 @@ msgstr ""
 
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "JID “%s” malkorekta"
+
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Kreado de konto"
+
+#~ msgid "My address"
+#~ msgstr "Mia adreso"
+
+#~ msgid "Language"
+#~ msgstr "Lingvo"
+
+#~ msgid "Decline"
+#~ msgstr "Malakcepti"
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Ŝarĝante la kontakta fluo…"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Nekongrua versio de PHP. Movim necesas PHP 5.3 minimume."
@@ -2028,14 +1951,23 @@ msgstr ""
 #~ msgid "Success !"
 #~ msgstr "Sukseso!"
 
+#~ msgid "Proxy Preferences"
+#~ msgstr "Agordo de prokura servilo"
+
 #~ msgid "XMPP Connection Preferences"
 #~ msgstr "Agordoj de XMPP-konektado"
+
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr "Ebligi legi kaj skribi rajtojn on la radika dosierujo de Movim"
 
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr "Nun, vi povas aliri vian Movim-instancon %sEk en!%s"
 
 #~ msgid "Database Movim schema installed"
 #~ msgstr "Skemo de Movim-datumbazo instalita"
+
+#~ msgid "Database Detected"
+#~ msgstr "Datumbazo trovita"
 
 #~ msgid "Install the %s package"
 #~ msgstr "Intali la pakaĵon \"%s\""

@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim Website\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
-"PO-Revision-Date: 2013-12-12 23:43+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"PO-Revision-Date: 2014-02-23 22:59+0000\n"
+"Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-19 21:17+0000\n"
-"X-Generator: Launchpad (build 16872)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -299,18 +299,16 @@ msgid "Profile Updated"
 msgstr "Profil mis à jour"
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Profil mis à jour"
+msgstr "Profil non mis à jour"
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
-#, fuzzy
 msgid "Your profile is now public"
-msgstr "Ce profil est-il public ?"
+msgstr "Votre profil est maintenant public"
 
 #: ../app/widgets/Vcard4/Vcard4.php:178
 msgid "Your profile is now restricted"
-msgstr ""
+msgstr "Votre profil est maintenant restreint"
 
 #: ../app/widgets/Explore/Explore.php:77
 msgid "Chatrooms"
@@ -690,12 +688,8 @@ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your questi
 msgstr "Allez jeter un oeil %s à la Foire aux Questions %s ou venez nous la poser directement sur le salon officiel %s ou sur la mailing-list (%s voir la page dédiée %s)."
 
 #: ../app/widgets/Vcard/Vcard.php:115
-#, fuzzy
 msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
 msgstr ""
-"C'est votre première fois sur Movim ! Pour remplir\n"
-"                quelques informations à votre propos et les montrer à vos  \n"
-"                contacts, créer votre carte cirtuelle en cliquant sur le prochain bouton."
 
 #: ../app/widgets/Vcard/Vcard.php:120 ../app/widgets/Profile/Profile.php:133
 msgid "Create my vCard"
@@ -822,9 +816,9 @@ msgid "Feed"
 msgstr "Flux"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:95
-#, fuzzy, php-format
+#, php-format
 msgid "%s has been added to your public groups"
-msgstr "%s a été supprimé de vos groupes publics"
+msgstr "%s a été ajouté à vos groupes publiques"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:100
 #, php-format
@@ -1020,14 +1014,12 @@ msgid "Configuration updated"
 msgstr "La configuration a été mise à jour"
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Statut mis à jour"
+msgstr "Avatar mis à jour"
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Statut mis à jour"
+msgstr "Avatar non mis à jour"
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1039,20 +1031,19 @@ msgstr "Mettre à jour"
 
 #: ../app/widgets/VisioExt/VisioExt.php:65
 msgid "Hung up"
-msgstr ""
+msgstr "Raccrocher"
 
 #: ../app/widgets/VisioExt/VisioExt.php:69
 msgid "Your contact is busy"
-msgstr ""
+msgstr "Votre correspondant est occupé"
 
 #: ../app/widgets/VisioExt/VisioExt.php:73
-#, fuzzy
 msgid "Declined"
-msgstr "Refuser"
+msgstr "Refusé"
 
 #: ../app/widgets/VisioExt/VisioExt.php:89
 msgid "Remote application incompatible"
-msgstr ""
+msgstr "L'application distance n'est pas compatible"
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:53
 #, php-format
@@ -1888,187 +1879,11 @@ msgstr "Visio-conférence"
 
 #: ../app/views/adminlogin.tpl:4
 msgid "Login"
-msgstr ""
+msgstr "Connexion"
 
 #: ../app/views/page.tpl:67
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Javascript est désactivé sur votre navigateur."
-
-#~ msgid "My Posts"
-#~ msgstr "Mes posts"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Votre navigateur est trop vieux pour supporter Movim"
-
-#~ msgid "My address"
-#~ msgstr "Mon adresse"
-
-#, fuzzy
-#~ msgid "Create one !"
-#~ msgstr "Créer un groupe"
-
-#, fuzzy
-#~ msgid "No account yet ?"
-#~ msgstr "Pas encore de profil ?"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Connexion…"
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "Position"
-
-#, fuzzy
-#~ msgid "Loading comments ..."
-#~ msgstr "Chargement de votre flux ..."
-
-#, fuzzy
-#~ msgid "Get the comments"
-#~ msgstr "Récupérer les membres"
-
-#, fuzzy
-#~ msgid "Add a comment"
-#~ msgstr "Aucun commentaire"
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - Compte"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - Compte"
-
-#, fuzzy
-#~ msgid "Press enter to validate."
-#~ msgstr "Veuillez entrer un Jabber ID valide"
-
-#, fuzzy
-#~ msgid "Bookmarks"
-#~ msgstr "Signets mis à jour"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Configuration"
-
-#, fuzzy
-#~ msgid "Unsubscribe"
-#~ msgstr "Abonné"
-
-#, fuzzy
-#~ msgid "Subscribe"
-#~ msgstr "Abonné"
-
-#, fuzzy
-#~ msgid "Get Subscription"
-#~ msgstr "Récupérer les abonnements"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configuration"
-
-#, fuzzy
-#~ msgid "General"
-#~ msgstr "Configuration générale"
-
-#~ msgid "Language"
-#~ msgstr "Langue"
-
-#~ msgid "Composing..."
-#~ msgstr "Rédige..."
-
-#, fuzzy
-#~ msgid "Paused..."
-#~ msgstr "stimulé(e)"
-
-#, fuzzy
-#~ msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
-#~ msgstr "Pas de contact ? Vous pouvez en ajouter un en utilisant le bouton %s ci-dessous ou en visitant la page %sExplorer%s"
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Mauvais ID de Salon de discussion"
-
-#, fuzzy
-#~ msgid "Shared"
-#~ msgstr "Non partagé"
-
-#, fuzzy
-#~ msgid "Geolocalisation"
-#~ msgstr "Position"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "Connexion…"
-
-#, fuzzy
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Contacts déconnectés affichés"
-
-#, fuzzy
-#~ msgid "Database Type"
-#~ msgstr "Paramètres de la base de données"
-
-#, fuzzy
-#~ msgid "Database Name"
-#~ msgstr "Paramètres de la base de données"
-
-#, fuzzy
-#~ msgid "Discover my server"
-#~ msgstr "Découvrir"
-
-#, fuzzy
-#~ msgid "Discussion Servers"
-#~ msgstr "Découvrir"
-
-#, fuzzy
-#~ msgid "created"
-#~ msgstr "créatif(ve)"
-
-#, fuzzy
-#~ msgid "Share with"
-#~ msgstr "Partagé avec un contact"
-
-#, fuzzy
-#~ msgid "Your contacts"
-#~ msgstr "Aucun contenu"
-
-#, fuzzy
-#~ msgid "Posts"
-#~ msgstr "Mes posts"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "Contacts (%s)"
-
-#, fuzzy
-#~ msgid "Messages"
-#~ msgstr "Message publié"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "Supprimer ce contact"
-
-#~ msgid "Public Groups"
-#~ msgstr "Groupes publics"
-
-#~ msgid "Log verbosity"
-#~ msgstr "Niveau de journalisation"
-
-#~ msgid "Get public groups"
-#~ msgstr "Récupérer les groupes publics"
-
-#~ msgid "Contact request pending"
-#~ msgstr "Demandes de contact en cours"
-
-#~ msgid "Delete"
-#~ msgstr "Supprimer"
-
-#~ msgid "Get your public groups"
-#~ msgstr "Récupérer vos groupes publics"
-
-#~ msgid "Edit my profile"
-#~ msgstr "Éditer mon profil"
 
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "Le dossier racine de Movim doit être accessible en écriture."
@@ -2093,6 +1908,15 @@ msgstr "Javascript est désactivé sur votre navigateur."
 
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Création de compte"
+
+#~ msgid "My address"
+#~ msgstr "Mon adresse"
+
+#~ msgid "Language"
+#~ msgstr "Langue"
+
+#~ msgid "Decline"
+#~ msgstr "Refuser"
 
 #~ msgid "Loading the contact feed ..."
 #~ msgstr "Chargement du flux ..."
@@ -2123,6 +1947,15 @@ msgstr "Javascript est désactivé sur votre navigateur."
 
 #~ msgid "Success !"
 #~ msgstr "Bravo !"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Votre navigateur est trop vieux pour supporter Movim"
+
+#~ msgid "Composing..."
+#~ msgstr "Rédige..."
+
+#~ msgid "Loading your feed ..."
+#~ msgstr "Chargement de votre flux ..."
 
 #~ msgid "Show All"
 #~ msgstr "Tout afficher"
@@ -2184,6 +2017,9 @@ msgstr "Javascript est désactivé sur votre navigateur."
 #~ msgid "Address"
 #~ msgstr "Adresse"
 
+#~ msgid "My Posts"
+#~ msgstr "Mes posts"
+
 #~ msgid "All"
 #~ msgstr "Tous"
 
@@ -2201,6 +2037,9 @@ msgstr "Javascript est désactivé sur votre navigateur."
 
 #~ msgid "Client Type"
 #~ msgstr "Type de Client"
+
+#~ msgid "Contacts (%s)"
+#~ msgstr "Contacts (%s)"
 
 #~ msgid "Cancel"
 #~ msgstr "Annuler"
@@ -2240,3 +2079,36 @@ msgstr "Javascript est désactivé sur votre navigateur."
 
 #~ msgid "Cannot load element value '%s'"
 #~ msgstr "Impossible de charger la valeur de l'élément « %s »"
+
+#~ msgid "Delete"
+#~ msgstr "Supprimer"
+
+#~ msgid "Log verbosity"
+#~ msgstr "Niveau de journalisation"
+
+#~ msgid "Contact request pending"
+#~ msgstr "Demandes de contact en cours"
+
+#~ msgid ""
+#~ "It's your first time on Movim! To fill in a \n"
+#~ "                few information about you and display them to your \n"
+#~ "                contacts, create your virtual card by clicking the next button."
+#~ msgstr ""
+#~ "C'est votre première fois sur Movim ! Pour remplir\n"
+#~ "                quelques informations à votre propos et les montrer à vos  \n"
+#~ "                contacts, créer votre carte cirtuelle en cliquant sur le prochain bouton."
+
+#~ msgid "Public Groups"
+#~ msgstr "Groupes publics"
+
+#~ msgid "Get your public groups"
+#~ msgstr "Récupérer vos groupes publics"
+
+#~ msgid "Get public groups"
+#~ msgstr "Récupérer les groupes publics"
+
+#~ msgid "No contacts ? You can add one using the %s button bellow or going to the %sExplore page%s"
+#~ msgstr "Pas de contact ? Vous pouvez en ajouter un en utilisant le bouton %s ci-dessous ou en visitant la page %sExplorer%s"
+
+#~ msgid "Edit my profile"
+#~ msgstr "Éditer mon profil"

@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
-"PO-Revision-Date: 2013-11-20 04:43+0000\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"PO-Revision-Date: 2014-01-09 09:37+0000\n"
 "Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
 "Language-Team: Rahut <genghiskhan@gmx.ca>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 "X-Poedit-Language: Hebrew\n"
 
 #: ../upload.php:32
@@ -102,12 +102,10 @@ msgstr "קבוצה"
 msgid "Save"
 msgstr "שמור"
 
-# אין
 #: ../app/widgets/Media/Media.php:85
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
-#, fuzzy
 msgid "on"
-msgstr "ללא"
+msgstr ""
 
 #: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:149
 #: ../app/widgets/ContactCard/ContactCard.php:51
@@ -261,7 +259,6 @@ msgid "Bad URL"
 msgstr "URL רע"
 
 #: ../app/widgets/Bookmark/Bookmark.php:300
-#, fuzzy
 msgid "Conferences"
 msgstr "ועידות"
 
@@ -279,23 +276,22 @@ msgid "Ungrouped"
 msgstr "ללא קבוצה"
 
 #: ../app/widgets/Roster/Roster.php:437
-#, fuzzy
 msgid "Show disconnected contacts"
-msgstr "שותף עם איש קשר אחד"
+msgstr "הצג אנשי קשר לא מחוברים"
 
 #: ../app/widgets/Roster/Roster.php:439
 msgid "Hide disconnected contacts"
-msgstr ""
+msgstr "הסתר אנשי קשר לא מחוברים"
 
 #: ../app/widgets/Roster/Roster.php:443
-#, fuzzy, php-format
+#, php-format
 msgid "Hide group %s"
-msgstr "קבוצות פומביות"
+msgstr "הסתר את קבוצה %s"
 
 #: ../app/widgets/Roster/Roster.php:445
 #, php-format
 msgid "Show group %s"
-msgstr ""
+msgstr "הצג את קבוצה %s"
 
 #: ../app/widgets/Roster/Roster.php:472
 msgid "Please enter a valid Jabber ID"
@@ -307,14 +303,12 @@ msgid "Profile Updated"
 msgstr "דיוקן עודכן"
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "דיוקן עודכן"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
-#, fuzzy
 msgid "Your profile is now public"
-msgstr "האם דיוקן זה הינו פומבי ?"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:178
 msgid "Your profile is now restricted"
@@ -374,7 +368,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:210 ../app/widgets/Admin/Admin.php:213
 msgid "URL Rewriting support"
-msgstr ""
+msgstr "תמיכת שכתוב URL"
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
 msgid "General Settings"
@@ -483,7 +477,7 @@ msgstr "נתוני התחברות מנהל"
 
 #: ../app/widgets/Admin/Admin.php:446
 msgid "Change the default credentials admin/password"
-msgstr ""
+msgstr "שנה נתוני התחברות מנהל/סיסמה"
 
 #: ../app/widgets/Admin/Admin.php:452
 msgid "Username"
@@ -704,12 +698,8 @@ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your questi
 msgstr "עברו אל %s שאלות ותשובות נפוצות %s או לחלופין ניתן לגשת ולשאול את שאלתך בחדר השיחה הרשמי %s או באמצעות רשימת הדיוור שלנו (%s ראו את העמוד המוקצה לכך %s)."
 
 #: ../app/widgets/Vcard/Vcard.php:115
-#, fuzzy
 msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
 msgstr ""
-"זוהי הפעם הראשונה שלך בתוך Movim! כדי למלות \n"
-"                מידע אודותייך ולהציגו לאנשי הקשר שלך, צור את\n"
-"                הכרטיס הוירטואלי שלך על ידי לחיצה על כפתור זה."
 
 #: ../app/widgets/Vcard/Vcard.php:120 ../app/widgets/Profile/Profile.php:133
 msgid "Create my vCard"
@@ -824,7 +814,6 @@ msgstr "אפס"
 # עריכת הדיוקן שלי
 # עריכת דיוקני
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
 msgstr "עריכת דיוקן"
 
@@ -841,9 +830,9 @@ msgid "Feed"
 msgstr "ערוץ"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:95
-#, fuzzy, php-format
+#, php-format
 msgid "%s has been added to your public groups"
-msgstr "%s הוסר/ה מן הקבוצות הפומביות שלך"
+msgstr ""
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:100
 #, php-format
@@ -938,7 +927,7 @@ msgstr "מצב עודכן"
 
 #: ../app/widgets/Profile/Profile.php:118
 msgid "Your status here !"
-msgstr ""
+msgstr "המצב שלך כאן !"
 
 #: ../app/widgets/Profile/Profile.php:129
 msgid "No profile yet ?"
@@ -1043,14 +1032,12 @@ msgid "Configuration updated"
 msgstr "תצורה עודכנה"
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "מצב עודכן"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "מצב עודכן"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1065,14 +1052,12 @@ msgid "Hung up"
 msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:69
-#, fuzzy
 msgid "Your contact is busy"
-msgstr "אנשי הקשר שלך"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:73
-#, fuzzy
 msgid "Declined"
-msgstr "דחיה"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:89
 msgid "Remote application incompatible"
@@ -1300,9 +1285,8 @@ msgstr "‏‏%s - התחברות אל Movim"
 #: ../app/controllers/LoginController.php:12
 #: ../app/controllers/AboutController.php:12
 #: ../app/controllers/DiscoverController.php:14
-#, fuzzy
 msgid "Discover"
-msgstr "התנתק"
+msgstr "גלה"
 
 #: ../app/controllers/LoginController.php:13
 #: ../app/controllers/AboutController.php:13
@@ -1344,7 +1328,7 @@ msgstr "‏‏%s - עמוד עזרה"
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
 msgstr "%s - לוח ניהול"
 
@@ -1361,7 +1345,7 @@ msgstr "%s - חדשות"
 #: ../app/controllers/DiscoverController.php:11
 #, php-format
 msgid "%s - Discover"
-msgstr ""
+msgstr "%s - לגלות"
 
 #: ../app/controllers/MainController.php:9
 #, php-format
@@ -1616,9 +1600,8 @@ msgid "crazy"
 msgstr "מטורף"
 
 #: ../system/Utils.php:523
-#, fuzzy
 msgid "creative"
-msgstr "צור מחדש"
+msgstr ""
 
 #: ../system/Utils.php:524
 msgid "curious"
@@ -1907,14 +1890,12 @@ msgid "Could not call the load method on the current controller"
 msgstr ""
 
 #: ../app/views/admin.tpl:5
-#, fuzzy
 msgid "Administration Panel"
-msgstr "%s - לוח ניהול"
+msgstr "לוח ניהול"
 
 #: ../app/views/visio.tpl:20
-#, fuzzy
 msgid "Visio-conference"
-msgstr "ועידות"
+msgstr ""
 
 #: ../app/views/adminlogin.tpl:4
 msgid "Login"
@@ -1922,261 +1903,7 @@ msgstr ""
 
 #: ../app/views/page.tpl:67
 msgid "You don't have javascript enabled.  Good luck with that."
-msgstr ""
-
-#~ msgid "My Posts"
-#~ msgstr "הפרסומים שלי"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "דפדפן הרשת שלך הינו ישן מידי בכדי לעשות שימוש עם Movim."
-
-#~ msgid "My address"
-#~ msgstr "כתובת"
-
-#~ msgid "Create one !"
-#~ msgstr "צור אחד !"
-
-#~ msgid "No account yet ?"
-#~ msgstr "אין חשבון עדיין ?"
-
-#~ msgid "You can login using your favorite Jabber account"
-#~ msgstr "באפשרותך להכנס באמצעות חשבון Jabber המועדף עליך"
-
-#~ msgid "or with our demonstration account"
-#~ msgstr "או בעזרת חשבון הדגמה שלנו"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "התחברות"
-
-#~ msgid "Population"
-#~ msgstr "אוכלוסייה"
-
-#~ msgid "Loading comments ..."
-#~ msgstr "טוען כעת תגובות ..."
-
-#~ msgid "Get the comments"
-#~ msgstr "השג את התגובות"
-
-#~ msgid "Add a comment"
-#~ msgstr "הוסף תגובה"
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - חשבון"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - חשבון"
-
-#~ msgid "Show/Hide"
-#~ msgstr "הצג/הסתר"
-
-#~ msgid "Enter the Jabber ID of your contact."
-#~ msgstr "הזן מזהה Jabber של איש הקשר שלך."
-
-#~ msgid "Press enter to validate."
-#~ msgstr "לחצ Enter כדי לתת תוקף"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Bookmarks"
-#~ msgstr "סימניות"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "תצורה"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "הוסף URL חדש"
-
-#~ msgid "Add a new URL"
-#~ msgstr "הוסף URL חדש"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "בטל הרשמה"
-
-#~ msgid "Subscribe"
-#~ msgstr "הירשם"
-
-#~ msgid "Get Subscription"
-#~ msgstr "השג הרשמה"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "הפוך את חברותך לקבוצה זו פומבית לחבריך"
-
-#~ msgid "Give a nickname to this group if you want"
-#~ msgstr "הענק שם כינוי לקבוצה זו באם תרצה"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "האם אתה בטוח ?"
-
-#~ msgid "Data"
-#~ msgstr "נתונים"
-
-#~ msgid "Thanks"
-#~ msgstr "תודות"
-
-#~ msgid "Resources"
-#~ msgstr "מקורות"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "תצורה"
-
-#~ msgid "General"
-#~ msgstr "כללי"
-
-#~ msgid "Language"
-#~ msgstr "שפה"
-
-#~ msgid "Appearence"
-#~ msgstr "מראה"
-
-#~ msgid "Background color"
-#~ msgstr "צבע רקע"
-
-#~ msgid "Font size"
-#~ msgstr "מידת גופן"
-
-#~ msgid "Pattern"
-#~ msgstr "תבנית"
-
-#~ msgid "This configuration is shared wherever you are connected !"
-#~ msgstr "תצורה זו הינה משותפת בכל מקום בו הינך מחובר !"
-
-#~ msgid "Composing..."
-#~ msgstr "מלחין כעת..."
-
-#~ msgid "Paused..."
-#~ msgstr "מושהה..."
-
-#, fuzzy
-#~ msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
-#~ msgstr "אין אנשי קשר ? באפשרותך להוסיף איש קשר באמצעות הלחצן %s מטה או ללכת אל %sעמוד סייר%s"
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "מזהה חדר שיחה רע"
-
-#, fuzzy
-#~ msgid "Shared"
-#~ msgstr "לא שותף"
-
-#~ msgid "What's new ?"
-#~ msgstr "מה חדש ?"
-
-#~ msgid "Preview"
-#~ msgstr "תצוגה מקדימה"
-
-#, fuzzy
-#~ msgid "Geolocalisation"
-#~ msgstr "מיקום"
-
-#~ msgid "Connection"
-#~ msgstr "התחברות"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl לא היה מסוגל להתחבר אל מסד הנתונים"
-
-#, fuzzy
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Modl לא היה מסוגל להתחבר אל מסד הנתונים"
-
-#~ msgid "Database Type"
-#~ msgstr "טיפוס מסד נתונים"
-
-#~ msgid "Host"
-#~ msgstr "מארח"
-
-#~ msgid "Port"
-#~ msgstr "פורט"
-
-#~ msgid "Database Name"
-#~ msgstr "שם מסד נתונים"
-
-#, fuzzy
-#~ msgid "Discover my server"
-#~ msgstr "התנתק"
-
-#~ msgid "Discussion Servers"
-#~ msgstr "שרתי דיון"
-
-#~ msgid "Topics"
-#~ msgstr "נושאים"
-
-#, fuzzy
-#~ msgid "created"
-#~ msgstr "צור מחדש"
-
-#~ msgid "Share with"
-#~ msgstr "שתף עם"
-
-#~ msgid "your post will appear in your Movim public feed"
-#~ msgstr "הפרסום שלך יופיע בתוך ערוץ Movim הפומבי שלך"
-
-#~ msgid "Everyone"
-#~ msgstr "כל אחד"
-
-#~ msgid "Your contacts"
-#~ msgstr "אנשי הקשר שלך"
-
-#~ msgid "Delete this post"
-#~ msgstr "מחק את פרסום זה"
-
-#~ msgid "Posts"
-#~ msgstr "פרסומים"
-
-#~ msgid "Cache"
-#~ msgstr "מטמון"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "אישי־קשר (%s)"
-
-#~ msgid "Clear"
-#~ msgstr "טהר"
-
-#~ msgid "Messages"
-#~ msgstr "הודעות"
-
-#~ msgid "No public feed for this contact"
-#~ msgstr "אין ערוץ פומבי עבור איש קשר זה"
-
-#~ msgid "No contact specified"
-#~ msgstr "לא צוין איש קשר"
-
-#~ msgid "Configure your group"
-#~ msgstr "הגדר את קבוצתך"
-
-#~ msgid "Delete this group"
-#~ msgstr "מחק את קבוצה זו"
-
-#~ msgid "Public Groups"
-#~ msgstr "קבוצות פומביות"
-
-#~ msgid "Log verbosity"
-#~ msgstr "גיבוב רשומת יומן"
-
-#~ msgid "Get public groups"
-#~ msgstr "השג קבוצות פומביות"
-
-#~ msgid "Contact request pending"
-#~ msgstr "בקשת איש קשר ממתינה"
-
-#~ msgid "Delete"
-#~ msgstr "מחק"
-
-#~ msgid "Get your public groups"
-#~ msgstr "השג את הקבוצות הפומביות שלך"
-
-# עריכת הדיוקן שלי
-# עריכת דיוקני
-#, fuzzy
-#~ msgid "Edit my profile"
-#~ msgstr "עריכת דיוקן"
+msgstr "אין לך Javascript מאופשר.  עליך לאפשר Javascript בכדי להשתמש באתר זה."
 
 #~ msgid "Actual version : "
 #~ msgstr "גרסה ממשית : "
@@ -2287,6 +2014,9 @@ msgstr ""
 #~ msgid "Add your login informations"
 #~ msgstr "נא להוסיף את נתוני התחברותך"
 
+#~ msgid "Language"
+#~ msgstr "שפה"
+
 #~ msgid "Address"
 #~ msgstr "כתובת"
 
@@ -2299,8 +2029,14 @@ msgstr ""
 #~ msgid "All"
 #~ msgstr "הכל"
 
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "דפדפן הרשת שלך הינו ישן מידי בכדי לעשות שימוש עם Movim."
+
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "שרת זה מארח %s חשבונות"
+
+#~ msgid "Decline"
+#~ msgstr "דחיה"
 
 #~ msgid "Cancel"
 #~ msgstr "ביטול"
@@ -2342,8 +2078,14 @@ msgstr ""
 #~ msgid "Only alphanumerics elements are authorized"
 #~ msgstr "יסודות אלפא-נומריות בלבד מותרות"
 
+#~ msgid "Composing..."
+#~ msgstr "מלחין כעת..."
+
 #~ msgid "Loading your feed ..."
 #~ msgstr "מטעין כעת את ערוצך ..."
+
+#~ msgid "Contacts (%s)"
+#~ msgstr "אישי־קשר (%s)"
 
 #~ msgid "Follow"
 #~ msgstr "עקוב"
@@ -2367,26 +2109,41 @@ msgstr ""
 #~ msgid "Send request"
 #~ msgstr "שלח בקשה"
 
-#~ msgid "Couldn't load file %s"
-#~ msgstr "לא היתה אפשרות לטעון את הקובץ %s"
+#~ msgid "My Posts"
+#~ msgstr "הפרסומים שלי"
 
-#~ msgid "%s - Post View"
-#~ msgstr "%s - תצוגת פרסום"
+#~ msgid "Get public groups"
+#~ msgstr "השג קבוצות פומביות"
 
-#~ msgid "Search a contact"
-#~ msgstr "חיפוש איש קשר"
+#~ msgid "Delete"
+#~ msgstr "מחק"
 
-#~ msgid "Recreate the database"
-#~ msgstr "צור מחדש את מסד הנתונים"
+#~ msgid "Public Groups"
+#~ msgstr "קבוצות פומביות"
 
-#~ msgid "This button will clear and recreate the Movim database."
-#~ msgstr "לחצן זה יצור מחדש את מסד הנתונים של Movim."
+#~ msgid "Get your public groups"
+#~ msgstr "השג את הקבוצות הפומביות שלך"
 
-#~ msgid "Post"
-#~ msgstr "פרסום"
+#~ msgid "Log verbosity"
+#~ msgstr "גיבוב רשומת יומן"
 
-#~ msgid "Enable Sound Notification:"
-#~ msgstr "אפשר התראות קול:"
+#~ msgid "Contact request pending"
+#~ msgstr "בקשת איש קשר ממתינה"
 
-#~ msgid "Loading your session..."
-#~ msgstr "טוען כעת את הסשן שלך..."
+#~ msgid ""
+#~ "It's your first time on Movim! To fill in a \n"
+#~ "                few information about you and display them to your \n"
+#~ "                contacts, create your virtual card by clicking the next button."
+#~ msgstr ""
+#~ "זוהי הפעם הראשונה שלך בתוך Movim! כדי למלות \n"
+#~ "                מידע אודותייך ולהציגו לאנשי הקשר שלך, צור את\n"
+#~ "                הכרטיס הוירטואלי שלך על ידי לחיצה על כפתור זה."
+
+#~ msgid "No contacts ? You can add one using the %s button bellow or going to the %sExplore page%s"
+#~ msgstr "אין אנשי קשר ? באפשרותך להוסיף איש קשר באמצעות הלחצן %s מטה או ללכת אל %sעמוד סייר%s"
+
+#~ msgid "My address"
+#~ msgstr "כתובת"
+
+#~ msgid "Edit my profile"
+#~ msgstr "ערוך את הדיוקן שלי"

@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
-"PO-Revision-Date: 2013-11-20 04:38+0000\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"PO-Revision-Date: 2013-12-12 23:42+0000\n"
 "Last-Translator: Ignacio Daniel Rostagno <ignaciorostagno@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -255,7 +255,6 @@ msgid "Bad URL"
 msgstr "URL inválida"
 
 #: ../app/widgets/Bookmark/Bookmark.php:300
-#, fuzzy
 msgid "Conferences"
 msgstr "Conferencias"
 
@@ -273,18 +272,17 @@ msgid "Ungrouped"
 msgstr "Sin grupo"
 
 #: ../app/widgets/Roster/Roster.php:437
-#, fuzzy
 msgid "Show disconnected contacts"
-msgstr "Compartir con un contacto"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:439
 msgid "Hide disconnected contacts"
 msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:443
-#, fuzzy, php-format
+#, php-format
 msgid "Hide group %s"
-msgstr "Grupos públicos"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:445
 #, php-format
@@ -301,23 +299,20 @@ msgid "Profile Updated"
 msgstr "Perfil actualizado"
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Perfil actualizado"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
-#, fuzzy
 msgid "Your profile is now public"
-msgstr "¿ Es público este perfil ?"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:178
 msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "ID de la Chatroom incorrecto"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -598,9 +593,8 @@ msgid "Encrypted message"
 msgstr ""
 
 #: ../app/widgets/Presence/Presence.php:119
-#, fuzzy
 msgid "Disconnect"
-msgstr "Descubrir"
+msgstr ""
 
 #: ../app/widgets/Log/Log.php:33
 msgid "Debug console"
@@ -694,12 +688,8 @@ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your questi
 msgstr "Diríjase a las %s Preguntas más Frecuentes %s o venga a hacer su pregunta en el chat oficial %s o a través de nuestra lista de correo (%s ver la página dedicada %s)."
 
 #: ../app/widgets/Vcard/Vcard.php:115
-#, fuzzy
 msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
 msgstr ""
-"Esta es tu primera vez en Movim!  \n"
-"                                                                    Para empezar, cuenta algo sobre ti y comparte con tus contactos,\n"
-"                                                                    crea tu tarjeta virtual haciendo click en el siguiente botón."
 
 #: ../app/widgets/Vcard/Vcard.php:120 ../app/widgets/Profile/Profile.php:133
 msgid "Create my vCard"
@@ -811,7 +801,6 @@ msgid "Reset"
 msgstr "Reiniciar"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
 msgstr "Editar mi perfil"
 
@@ -827,9 +816,9 @@ msgid "Feed"
 msgstr "Canal"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:95
-#, fuzzy, php-format
+#, php-format
 msgid "%s has been added to your public groups"
-msgstr "%s ha sido eliminado de tus grupos públicos"
+msgstr ""
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:100
 #, php-format
@@ -1025,14 +1014,12 @@ msgid "Configuration updated"
 msgstr "Configuración actualizada"
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Actualizar estado"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Actualizar estado"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1047,14 +1034,12 @@ msgid "Hung up"
 msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:69
-#, fuzzy
 msgid "Your contact is busy"
-msgstr "Tus contactos"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:73
-#, fuzzy
 msgid "Declined"
-msgstr "Rechazar"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:89
 msgid "Remote application incompatible"
@@ -1180,9 +1165,8 @@ msgid "by"
 msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:273
-#, fuzzy
 msgid "email"
-msgstr "Correo electrónico"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:277
 msgid "jid"
@@ -1326,7 +1310,7 @@ msgstr "%s -  Página de Ayuda"
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
 msgstr "%s - Panel de administración"
 
@@ -1886,14 +1870,12 @@ msgid "Could not call the load method on the current controller"
 msgstr "No se pudo cargar metodo en el controlador"
 
 #: ../app/views/admin.tpl:5
-#, fuzzy
 msgid "Administration Panel"
-msgstr "%s - Panel de administración"
+msgstr ""
 
 #: ../app/views/visio.tpl:20
-#, fuzzy
 msgid "Visio-conference"
-msgstr "Conferencias"
+msgstr ""
 
 #: ../app/views/adminlogin.tpl:4
 msgid "Login"
@@ -1903,256 +1885,14 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#~ msgid "My Posts"
-#~ msgstr "Mis entradas"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Tu navegador web es demasiado antiguo para usar Movim"
-
-#~ msgid "My address"
-#~ msgstr "Mi dirección"
-
-#~ msgid "Create one !"
-#~ msgstr "¡ Créate una !"
-
-#~ msgid "No account yet ?"
-#~ msgstr "¿ Aún no tienes cuenta ?"
-
-#~ msgid "You can login using your favorite Jabber account"
-#~ msgstr "Puedes conectarte usando tu cuenta favorita de Jabber"
-
-#~ msgid "or with our demonstration account"
-#~ msgstr "o con una cuenta de prueba"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Conexión"
-
-#~ msgid "Population"
-#~ msgstr "Población"
-
-#~ msgid "Loading comments ..."
-#~ msgstr "Cargando comentarios ..."
-
-#~ msgid "Get the comments"
-#~ msgstr "Obtener comentarios"
-
-#~ msgid "Add a comment"
-#~ msgstr "Añadir un comentario"
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - Cuenta"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - Cuenta"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Mostrar/Ocultar"
-
-#~ msgid "Enter the Jabber ID of your contact."
-#~ msgstr "Ingresa el ID Jabber de su contacto."
-
-#~ msgid "Press enter to validate."
-#~ msgstr "Presiona enter para validar."
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Marcadores"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Configuración"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Añadir nueva URL"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Añadir nueva URL"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Desuscribirse"
-
-#~ msgid "Subscribe"
-#~ msgstr "Suscribirse"
-
-#~ msgid "Get Subscription"
-#~ msgstr "Obtener suscripción"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Hacer pública su membresía de este grupo a sus amigos"
-
-#~ msgid "Give a nickname to this group if you want"
-#~ msgstr "Dale un apodo a este grupo si quieres"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "¿Estás seguro?"
-
-#~ msgid "Data"
-#~ msgstr "Datos"
-
-#~ msgid "Thanks"
-#~ msgstr "Gracias"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configuración"
-
-#~ msgid "General"
-#~ msgstr "General"
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Crear cuenta"
 
 #~ msgid "Language"
 #~ msgstr "Idioma"
 
-#~ msgid "Appearence"
-#~ msgstr "Apariencia"
-
-#~ msgid "Background color"
-#~ msgstr "Color de fondo"
-
-#~ msgid "Font size"
-#~ msgstr "Tamaño de la tipografía"
-
-#~ msgid "Pattern"
-#~ msgstr "Patrón"
-
-#~ msgid "This configuration is shared wherever you are connected !"
-#~ msgstr "¡ Esta configuración es compartida dondequiera que te conectes !"
-
-#~ msgid "Composing..."
-#~ msgstr "Componiendo..."
-
-#~ msgid "Paused..."
-#~ msgstr "Pausado..."
-
-#, fuzzy
-#~ msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
-#~ msgstr "Sin contactos? Puedes añadir contactos usando el botón %s o buscar con el %sExplorador de paginas%s"
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "ID de la Chatroom incorrecto"
-
-#, fuzzy
-#~ msgid "Shared"
-#~ msgstr "No compartido"
-
-#~ msgid "What's new ?"
-#~ msgstr "¿Qué hay de nuevo?"
-
-#~ msgid "Preview"
-#~ msgstr "Vista previa"
-
-#~ msgid "Geolocalisation"
-#~ msgstr "Geolocalización"
-
-#~ msgid "Connection"
-#~ msgstr "Conexión"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl no se puede conectar a la base de datos"
-
-#, fuzzy
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Modl no se puede conectar a la base de datos"
-
-#~ msgid "Database Type"
-#~ msgstr "Tipo de base de datos"
-
-#~ msgid "Host"
-#~ msgstr "Servidor"
-
-#~ msgid "Port"
-#~ msgstr "Puerto"
-
-#~ msgid "Database Name"
-#~ msgstr "Nombre de la Base de Datos"
-
-#, fuzzy
-#~ msgid "Discover my server"
-#~ msgstr "Descubrir"
-
-#~ msgid "Discussion Servers"
-#~ msgstr "Servidores de discusión"
-
-#~ msgid "Topics"
-#~ msgstr "Temas"
-
-#, fuzzy
-#~ msgid "created"
-#~ msgstr "Recrear"
-
-#~ msgid "Share with"
-#~ msgstr "Compartir con"
-
-#~ msgid "your post will appear in your Movim public feed"
-#~ msgstr "tu publicación aparecerá en tu feed público de Movim"
-
-#~ msgid "Everyone"
-#~ msgstr "Todo el mundo"
-
-#~ msgid "Your contacts"
-#~ msgstr "Tus contactos"
-
-#~ msgid "Delete this post"
-#~ msgstr "Eliminar esta publicación"
-
-#~ msgid "Posts"
-#~ msgstr "Entradas"
-
-#~ msgid "Cache"
-#~ msgstr "Caché"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "Contactos (%s)"
-
-#~ msgid "Clear"
-#~ msgstr "Limpiar"
-
-#~ msgid "Messages"
-#~ msgstr "Mensajes"
-
-#~ msgid "No public feed for this contact"
-#~ msgstr "No fuente publico por este contacto"
-
-#~ msgid "No contact specified"
-#~ msgstr "Ningún contacto especificado"
-
-#~ msgid "Configure your group"
-#~ msgstr "Configura tu grupo"
-
-#~ msgid "Delete this group"
-#~ msgstr "Borrar este grupo"
-
-#~ msgid "Public Groups"
-#~ msgstr "Grupos públicos"
-
-#~ msgid "Log verbosity"
-#~ msgstr "Detalle de registro"
-
-#~ msgid "Get public groups"
-#~ msgstr "Obtener grupos públicos"
-
-#~ msgid "Contact request pending"
-#~ msgstr "Peticiones de contactos pendientes"
-
-#~ msgid "Delete"
-#~ msgstr "Borrar"
-
-#~ msgid "Get your public groups"
-#~ msgstr "Obtener tus grupos públicos"
-
-#, fuzzy
-#~ msgid "Edit my profile"
-#~ msgstr "Editar mi perfil"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Crear cuenta"
+#~ msgid "My address"
+#~ msgstr "Mi dirección"
 
 #~ msgid "Movim Installer"
 #~ msgstr "Programa de instalación Movim"
@@ -2192,6 +1932,12 @@ msgstr ""
 
 #~ msgid "Valid Bosh"
 #~ msgstr "Bosh válido"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Tu navegador web es demasiado antiguo para usar Movim"
+
+#~ msgid "Composing..."
+#~ msgstr "Componiendo..."
 
 #~ msgid "Loading your feed ..."
 #~ msgstr "Cargando tu canal"
@@ -2244,6 +1990,9 @@ msgstr ""
 #~ msgid "Client Type"
 #~ msgstr "Tipo de Cliente"
 
+#~ msgid "My Posts"
+#~ msgstr "Mis entradas"
+
 #~ msgid "All"
 #~ msgstr "Todos"
 
@@ -2279,6 +2028,9 @@ msgstr ""
 
 #~ msgid "Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !"
 #~ msgstr "En primer lugar rellene el espacio en blanco con una identificación de marca nueva cuenta, esta dirección le siga en toda la red Movim!"
+
+#~ msgid "Contacts (%s)"
+#~ msgstr "Contactos (%s)"
 
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim requiere la extensión %s"
@@ -2325,35 +2077,38 @@ msgstr ""
 #~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "Los siguientes requisitos no están disponibles. Por favor, asegure su disponibilidad para poder instalar Movim."
 
+#~ msgid "Decline"
+#~ msgstr "Rechazar"
+
 #~ msgid "Send request"
 #~ msgstr "Enviar solicitud"
 
-#~ msgid "Couldn't load file %s"
-#~ msgstr "No se pudo cargar el archivo %s"
+#~ msgid "Get public groups"
+#~ msgstr "Obtener grupos públicos"
 
-#~ msgid "%s - Post View"
-#~ msgstr "%s - Ver entradas"
+#~ msgid "Delete"
+#~ msgstr "Borrar"
 
-#~ msgid "Specified property %s doesn't exist in %s"
-#~ msgstr "La propiedad %s no existe en %s"
+#~ msgid "Public Groups"
+#~ msgstr "Grupos públicos"
 
-#~ msgid "Specified property %s is not set in %s"
-#~ msgstr "La propiedad %s no ha sido fijada en %s"
+#~ msgid "Get your public groups"
+#~ msgstr "Obtener tus grupos públicos"
 
-#~ msgid "Search a contact"
-#~ msgstr "Buscar un contacto"
+#~ msgid "Log verbosity"
+#~ msgstr "Detalle de registro"
 
-#~ msgid "Recreate the database"
-#~ msgstr "Recrear la base de datos"
+#~ msgid "Contact request pending"
+#~ msgstr "Peticiones de contactos pendientes"
 
-#~ msgid "This button will clear and recreate the Movim database."
-#~ msgstr "Este botón limpiará y recreará la base de datos de Movim"
+#~ msgid ""
+#~ "It's your first time on Movim! To fill in a \n"
+#~ "                few information about you and display them to your \n"
+#~ "                contacts, create your virtual card by clicking the next button."
+#~ msgstr ""
+#~ "Esta es tu primera vez en Movim!  \n"
+#~ "                                                                    Para empezar, cuenta algo sobre ti y comparte con tus contactos,\n"
+#~ "                                                                    crea tu tarjeta virtual haciendo click en el siguiente botón."
 
-#~ msgid "Post"
-#~ msgstr "Artículo"
-
-#~ msgid "%s - 404"
-#~ msgstr "%s - 404"
-
-#~ msgid "Enable Sound Notification:"
-#~ msgstr "Activar notificación de sonido"
+#~ msgid "No contacts ? You can add one using the %s button bellow or going to the %sExplore page%s"
+#~ msgstr "Sin contactos? Puedes añadir contactos usando el botón %s o buscar con el %sExplorador de paginas%s"

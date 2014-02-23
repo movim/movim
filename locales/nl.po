@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
-"PO-Revision-Date: 2013-11-20 04:39+0000\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"PO-Revision-Date: 2013-12-12 23:43+0000\n"
 "Last-Translator: Arne <arne@wirelab.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -80,9 +80,8 @@ msgid "Content not found"
 msgstr "Inhoud niet gevonden"
 
 #: ../app/widgets/ContactManage/ContactManage.php:30
-#, fuzzy
 msgid "Contact updated"
-msgstr "De confituratie is bijgewerkt"
+msgstr ""
 
 #: ../app/widgets/ContactManage/ContactManage.php:55
 msgid "Manage"
@@ -185,9 +184,8 @@ msgid "Close"
 msgstr "Sluit"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:108
-#, fuzzy
 msgid "Subscribed"
-msgstr "Aanmelding opgeslagen"
+msgstr ""
 
 #: ../app/widgets/AccountError/AccountError.php:32
 #: ../app/widgets/Login/Login.php:130 ../app/widgets/Account/Account.php:388
@@ -206,9 +204,8 @@ msgstr ""
 
 #: ../app/widgets/AccountError/AccountError.php:50
 #: ../app/widgets/Account/Account.php:406
-#, fuzzy
 msgid "Invalid name"
-msgstr "Bevestig"
+msgstr ""
 
 #: ../app/widgets/AccountError/AccountError.php:56
 #: ../app/widgets/Account/Account.php:412
@@ -258,7 +255,6 @@ msgid "Bad URL"
 msgstr "Ongeldige URL"
 
 #: ../app/widgets/Bookmark/Bookmark.php:300
-#, fuzzy
 msgid "Conferences"
 msgstr "Conferenties"
 
@@ -276,18 +272,17 @@ msgid "Ungrouped"
 msgstr "Groep opgeheven"
 
 #: ../app/widgets/Roster/Roster.php:437
-#, fuzzy
 msgid "Show disconnected contacts"
-msgstr "Gedeeld met één contact"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:439
 msgid "Hide disconnected contacts"
 msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:443
-#, fuzzy, php-format
+#, php-format
 msgid "Hide group %s"
-msgstr "Publieke groepen"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:445
 #, php-format
@@ -304,23 +299,20 @@ msgid "Profile Updated"
 msgstr "Profiel bijgewerkt"
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Profiel bijgewerkt"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
-#, fuzzy
 msgid "Your profile is now public"
-msgstr "Is dit profiel publiekelijk?"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:178
 msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -338,9 +330,8 @@ msgid "Submit"
 msgstr "Zenden"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "Compatibiliteit test"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:184
 msgid "Movim requires certain external components. Please install them before you can succeed:"
@@ -364,9 +355,8 @@ msgid "SimpleXML"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:201
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr "Enable de lees en schrijfrechten in Movim`s root folder"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:204
 msgid "OpenSSL"
@@ -377,9 +367,8 @@ msgid "URL Rewriting support"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
-#, fuzzy
 msgid "General Settings"
-msgstr "Algemene informatie"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
@@ -394,9 +383,8 @@ msgid "Environment"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:299
-#, fuzzy
 msgid "User folder size limit (in bytes)"
-msgstr "Limiet voor map overschreden"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:304
 msgid "empty"
@@ -411,9 +399,8 @@ msgid "normal"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:307
-#, fuzzy
 msgid "talkative"
-msgstr "complimenteus"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:308
 msgid "ultimate"
@@ -424,9 +411,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Configuratie"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -450,9 +436,8 @@ msgid "Your Bosh URL is not reachable"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:384
-#, fuzzy
 msgid "Bosh URL"
-msgstr "Ongeldige URL"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:395
 msgid "Whitelist - XMPP Server"
@@ -471,9 +456,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
-#, fuzzy
 msgid "Information Message"
-msgstr "Informatie over verbonden computer"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:422
 msgid "This message will be displayed on the login page"
@@ -484,9 +468,8 @@ msgid "Leave this field blank if you don't want to show any message."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:441
-#, fuzzy
 msgid "Administration Credential"
-msgstr "Beheer"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:446
 msgid "Change the default credentials admin/password"
@@ -501,9 +484,8 @@ msgid "Password"
 msgstr "Wachtwoord"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "Foutief wachtwoord"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
 msgid "Database Settings"
@@ -611,9 +593,8 @@ msgid "Encrypted message"
 msgstr ""
 
 #: ../app/widgets/Presence/Presence.php:119
-#, fuzzy
 msgid "Disconnect"
-msgstr "Verbinding"
+msgstr ""
 
 #: ../app/widgets/Log/Log.php:33
 msgid "Debug console"
@@ -707,12 +688,8 @@ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your questi
 msgstr "Bezoek de %s naar de Veelgestelde Vragen %s of stel de vraag in de officiële chatroom %s of via onze mailing-list (%s zie de pagina %s over dit onderwerp)."
 
 #: ../app/widgets/Vcard/Vcard.php:115
-#, fuzzy
 msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
 msgstr ""
-"Het is je eerste keer op Movim! Je kunt een virtueel visitekaartje \n"
-"                aanmaken om wat over jezelf te vertellen. \n"
-"                Klik op 'volgende' om deze aan te maken."
 
 #: ../app/widgets/Vcard/Vcard.php:120 ../app/widgets/Profile/Profile.php:133
 msgid "Create my vCard"
@@ -824,7 +801,6 @@ msgid "Reset"
 msgstr "Reset"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
 msgstr "Bewerk mijn profiel"
 
@@ -840,9 +816,9 @@ msgid "Feed"
 msgstr "Feed"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:95
-#, fuzzy, php-format
+#, php-format
 msgid "%s has been added to your public groups"
-msgstr "Haal publieke groepen op"
+msgstr ""
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:100
 #, php-format
@@ -850,9 +826,8 @@ msgid "%s has been removed from your public groups"
 msgstr ""
 
 #: ../app/widgets/Login/Login.php:39
-#, fuzzy
 msgid "Connecting..."
-msgstr "Verbinding"
+msgstr ""
 
 #: ../app/widgets/Login/Login.php:66
 #, php-format
@@ -925,23 +900,20 @@ msgid "Come in!"
 msgstr "Kom in!"
 
 #: ../app/widgets/Profile/Profile.php:42
-#, fuzzy
 msgid "Saved"
-msgstr "Opslaan"
+msgstr ""
 
 #: ../app/widgets/Profile/Profile.php:43
-#, fuzzy
 msgid "Status updated"
-msgstr "Favoriet bijgewerkt"
+msgstr ""
 
 #: ../app/widgets/Profile/Profile.php:118
 msgid "Your status here !"
 msgstr ""
 
 #: ../app/widgets/Profile/Profile.php:129
-#, fuzzy
 msgid "No profile yet ?"
-msgstr "Nog geen account?"
+msgstr ""
 
 #: ../app/widgets/Discover/Discover.php:52
 msgid "Last registered"
@@ -973,14 +945,12 @@ msgid "Invite this user"
 msgstr "Nodig deze gebruiker uit"
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Foutief wachtwoord"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
-#, fuzzy
 msgid "Location updated"
-msgstr "De confituratie is bijgewerkt"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:101
 msgid "Update my position"
@@ -1044,14 +1014,12 @@ msgid "Configuration updated"
 msgstr "De confituratie is bijgewerkt"
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Favoriet bijgewerkt"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Favoriet bijgewerkt"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1066,14 +1034,12 @@ msgid "Hung up"
 msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:69
-#, fuzzy
 msgid "Your contact is busy"
-msgstr "Jouw contacten"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:73
-#, fuzzy
 msgid "Declined"
-msgstr "Weigeren"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:89
 msgid "Remote application incompatible"
@@ -1109,20 +1075,17 @@ msgid "Profile"
 msgstr "Profiel"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-#, fuzzy
 msgid "Affiliations saved"
-msgstr "Aanmelding opgeslagen"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:90
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:91
-#, fuzzy
 msgid "Manage your members"
-msgstr "Beheer je aanmeldingen"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:96
-#, fuzzy
 msgid "Get the members"
-msgstr "Haal reacties op"
+msgstr ""
 
 #: ../app/widgets/Feed/Feed.php:64 ../app/widgets/Feed/Feed.php:103
 msgid "Your server doesn't support post publication, you can only read contact's feeds"
@@ -1141,9 +1104,8 @@ msgid "Step 2 - Fill in your informations"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:292
-#, fuzzy
 msgid "Description"
-msgstr "Haal de aanmeldingen op"
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:295
 msgid "URL"
@@ -1154,9 +1116,8 @@ msgid "Software"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:448
-#, fuzzy
 msgid "Create a new account"
-msgstr "Maak een nieuwe groep aan"
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:451
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -1188,9 +1149,8 @@ msgid "Enter the server domain (ex: movim.eu)"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:487
-#, fuzzy
 msgid "Searching..."
-msgstr "Zoeken"
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:489
 msgid "Search"
@@ -1205,9 +1165,8 @@ msgid "by"
 msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:273
-#, fuzzy
 msgid "email"
-msgstr "E-mail"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:277
 msgid "jid"
@@ -1230,9 +1189,9 @@ msgid "No comments stream"
 msgstr "Geen reacties geplaatst"
 
 #: ../app/controllers/ProfileController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Profile"
-msgstr "Profiel"
+msgstr ""
 
 #: ../app/controllers/ProfileController.php:11
 #: ../app/controllers/LoginController.php:11
@@ -1308,16 +1267,14 @@ msgstr "%s - Inlogging bij Movim"
 #: ../app/controllers/LoginController.php:12
 #: ../app/controllers/AboutController.php:12
 #: ../app/controllers/DiscoverController.php:14
-#, fuzzy
 msgid "Discover"
-msgstr "Discussie-servers"
+msgstr ""
 
 #: ../app/controllers/LoginController.php:13
 #: ../app/controllers/AboutController.php:13
 #: ../app/controllers/DiscoverController.php:15
-#, fuzzy
 msgid "About"
-msgstr "Over Mij"
+msgstr ""
 
 #: ../app/controllers/AboutController.php:9
 #, php-format
@@ -1327,9 +1284,9 @@ msgstr ""
 #: ../app/controllers/AccountController.php:9
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountnextController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - account aanmaken"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:12
 #: ../app/controllers/AccountnextController.php:12
@@ -1342,9 +1299,9 @@ msgid "%s - Configuration"
 msgstr "%s - Configuratie"
 
 #: ../app/controllers/ExploreController.php:11
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Explore"
-msgstr "Verkennen"
+msgstr ""
 
 #: ../app/controllers/HelpController.php:9
 #, php-format
@@ -1353,20 +1310,19 @@ msgstr ""
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "Beheer"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
 msgstr "Beheer"
 
 #: ../app/controllers/NewsController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - News"
-msgstr "Nieuws"
+msgstr ""
 
 #: ../app/controllers/DiscoverController.php:11
 #, php-format
@@ -1905,23 +1861,21 @@ msgid "Requested widget '%s' doesn't exist."
 msgstr "Widget '%s' bestaat niet."
 
 #: ../system/controllers/FrontController.php:35
-#, fuzzy, php-format
+#, php-format
 msgid "Requested controller '%s' doesn't exist."
-msgstr "Widget '%s' bestaat niet."
+msgstr ""
 
 #: ../system/controllers/FrontController.php:67
 msgid "Could not call the load method on the current controller"
 msgstr ""
 
 #: ../app/views/admin.tpl:5
-#, fuzzy
 msgid "Administration Panel"
-msgstr "Beheer"
+msgstr ""
 
 #: ../app/views/visio.tpl:20
-#, fuzzy
 msgid "Visio-conference"
-msgstr "Conferenties"
+msgstr ""
 
 #: ../app/views/adminlogin.tpl:4
 msgid "Login"
@@ -1931,213 +1885,6 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#, fuzzy
-#~ msgid "My Posts"
-#~ msgstr "Mijn Inzendingen"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Je browser is te oud om met Movim te gebruiken."
-
-#~ msgid "My address"
-#~ msgstr "Mijn adres"
-
-#~ msgid "Create one !"
-#~ msgstr "Maak er een aan !"
-
-#, fuzzy
-#~ msgid "No account yet ?"
-#~ msgstr "Nog geen account?"
-
-#~ msgid "You can login using your favorite Jabber account"
-#~ msgstr "Je kan inloggen met je favoriete Jabber-account"
-
-#~ msgid "or with our demonstration account"
-#~ msgstr "or met een demonstratie-account"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Verbinding"
-
-#~ msgid "Population"
-#~ msgstr "Bevolking"
-
-#~ msgid "Loading comments ..."
-#~ msgstr "Reacties worden geladen ..."
-
-#, fuzzy
-#~ msgid "Get the comments"
-#~ msgstr "Haal reacties op"
-
-#~ msgid "Add a comment"
-#~ msgstr "Reactie toevoegen"
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - account aanmaken"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - account aanmaken"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Tonen/Verbergen"
-
-#~ msgid "Enter the Jabber ID of your contact."
-#~ msgstr "Plaats de Jabber ID van je contact."
-
-#~ msgid "Press enter to validate."
-#~ msgstr "Druk enter om te valideren"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Favorieten"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Configuratie"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Voeg een nieuwe URL toe"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Voeg een nieuwe URL toe"
-
-#, fuzzy
-#~ msgid "Unsubscribe"
-#~ msgstr "Aanmelding opgeslagen"
-
-#, fuzzy
-#~ msgid "Subscribe"
-#~ msgstr "Aanmelding opgeslagen"
-
-#, fuzzy
-#~ msgid "Get Subscription"
-#~ msgstr "Haal de aanmeldingen op"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configuratie"
-
-#~ msgid "General"
-#~ msgstr "Algemeen"
-
-#~ msgid "Language"
-#~ msgstr "Taal"
-
-#~ msgid "Appearence"
-#~ msgstr "Uiterlijk"
-
-#~ msgid "Background color"
-#~ msgstr "Achtergrondkleur"
-
-#~ msgid "Font size"
-#~ msgstr "Lettergrootte"
-
-#~ msgid "Pattern"
-#~ msgstr "Patroon"
-
-#~ msgid "This configuration is shared wherever you are connected !"
-#~ msgstr "Deze configuratie is gedeeld waar je ook  verbonden bent !"
-
-#~ msgid "Composing..."
-#~ msgstr "Bezig met samenstellen..."
-
-#~ msgid "Paused..."
-#~ msgstr "Gepauzeerd..."
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Chat"
-
-#, fuzzy
-#~ msgid "Shared"
-#~ msgstr "Niet gedeeld"
-
-#~ msgid "What's new ?"
-#~ msgstr "Wat is nieuw?"
-
-#~ msgid "Preview"
-#~ msgstr "Voorbeeld"
-
-#~ msgid "Geolocalisation"
-#~ msgstr "Geolocalisatie"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "Verbinding"
-
-#, fuzzy
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Gedeeld met één contact"
-
-#, fuzzy
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Gedeeld met één contact"
-
-#, fuzzy
-#~ msgid "Discover my server"
-#~ msgstr "Discussie-servers"
-
-#, fuzzy
-#~ msgid "Discussion Servers"
-#~ msgstr "Discussie-servers"
-
-#~ msgid "Topics"
-#~ msgstr "Onderwerpen"
-
-#, fuzzy
-#~ msgid "created"
-#~ msgstr "creatief"
-
-#~ msgid "Share with"
-#~ msgstr "Deel met"
-
-#~ msgid "your post will appear in your Movim public feed"
-#~ msgstr "Je bericht zal zichtbaar zijn in je publieke Movim feed"
-
-#~ msgid "Everyone"
-#~ msgstr "Iedereen"
-
-#~ msgid "Your contacts"
-#~ msgstr "Jouw contacten"
-
-#~ msgid "Delete this post"
-#~ msgstr "Verwijder dit bericht"
-
-#, fuzzy
-#~ msgid "Posts"
-#~ msgstr "Mijn Inzendingen"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "De confituratie is bijgewerkt"
-
-#~ msgid "No public feed for this contact"
-#~ msgstr "Geen publieke feed voor dit contact"
-
-#~ msgid "No contact specified"
-#~ msgstr "Geen contact gespecificeerd"
-
-#~ msgid "Configure your group"
-#~ msgstr "Configureer jouw groep"
-
-#~ msgid "Delete this group"
-#~ msgstr "Verwijder deze groep"
-
-#, fuzzy
-#~ msgid "Public Groups"
-#~ msgstr "Publieke groepen"
-
-#~ msgid "Get public groups"
-#~ msgstr "Haal publieke groepen op"
-
-#, fuzzy
-#~ msgid "Edit my profile"
-#~ msgstr "Bewerk mijn profiel"
-
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "PHP versie komt niet overeen. Movim vereist minimaal PHP  5.3"
 
@@ -2146,6 +1893,9 @@ msgstr ""
 
 #~ msgid "Movim Installer"
 #~ msgstr "Movim Installer"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "Compatibiliteit test"
 
 #~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "De volgende eisen konden niet worden gerespecteerd. Wees zeker dat ze voldoen om Movim te instaleren"
@@ -2162,11 +1912,26 @@ msgstr ""
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "De log file %s kon niet geopend worden"
 
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - account aanmaken"
+
+#~ msgid "My address"
+#~ msgstr "Mijn adres"
+
+#~ msgid "Language"
+#~ msgstr "Taal"
+
+#~ msgid "Decline"
+#~ msgstr "Weigeren"
+
 #~ msgid "Loading the contact feed ..."
 #~ msgstr "Laad de gebruiker feed"
 
 #~ msgid "Update your PHP version or contact your server administrator"
 #~ msgstr "Update de PHR versie of neem contact op met de sever beheerder"
+
+#~ msgid "Enable read and write rights on Movim's root folder"
+#~ msgstr "Enable de lees en schrijfrechten in Movim`s root folder"
 
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Dank u voor het downloaden van Movim!"
@@ -2177,20 +1942,23 @@ msgstr ""
 #~ msgid "Cannot load element value '%s'"
 #~ msgstr "Kan elementwaarde '%s' niet laden"
 
-#~ msgid "Couldn't load file %s"
-#~ msgstr "Kan bestand %s niet laden"
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Je browser is te oud om met Movim te gebruiken."
 
-#~ msgid "Specified property %s doesn't exist in %s"
-#~ msgstr "De eigenschap %s bestaat niet in %s"
+#~ msgid "My Posts"
+#~ msgstr "Mijn Inzendingen"
 
-#~ msgid "Specified property %s is not set in %s"
-#~ msgstr "Gespecificeerde eigenschap %s is niet geplaatst in %s"
+#~ msgid "Composing..."
+#~ msgstr "Bezig met samenstellen..."
 
-#~ msgid "Search a contact"
-#~ msgstr "Contactpersoon opzoeken"
+#~ msgid ""
+#~ "It's your first time on Movim! To fill in a \n"
+#~ "                few information about you and display them to your \n"
+#~ "                contacts, create your virtual card by clicking the next button."
+#~ msgstr ""
+#~ "Het is je eerste keer op Movim! Je kunt een virtueel visitekaartje \n"
+#~ "                aanmaken om wat over jezelf te vertellen. \n"
+#~ "                Klik op 'volgende' om deze aan te maken."
 
-#~ msgid "Enable Sound Notification:"
-#~ msgstr "Schakel geluidsnotificaties in"
-
-#~ msgid "Loading your session..."
-#~ msgstr "Je sessie wordt geladen..."
+#~ msgid "Get public groups"
+#~ msgstr "Haal publieke groepen op"

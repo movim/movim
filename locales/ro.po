@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
 "PO-Revision-Date: 2011-10-26 21:35+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -27,9 +27,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:88
-#, fuzzy
 msgid "Error"
-msgstr "Eroare: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -296,14 +295,12 @@ msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:94 ../app/widgets/Vcard4/Vcard4.php:102
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
 msgid "Your profile is now public"
@@ -314,9 +311,8 @@ msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -334,9 +330,8 @@ msgid "Submit"
 msgstr "Inregistrare"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "Test de compatibilitate"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:184
 msgid "Movim requires certain external components. Please install them before you can succeed:"
@@ -372,9 +367,8 @@ msgid "URL Rewriting support"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
-#, fuzzy
 msgid "General Settings"
-msgstr "Informatii generale"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
@@ -417,9 +411,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Configurare"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -463,9 +456,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
-#, fuzzy
 msgid "Information Message"
-msgstr "Informatii generale"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:422
 msgid "This message will be displayed on the login page"
@@ -492,9 +484,8 @@ msgid "Password"
 msgstr "Parola"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "Parola gresita"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
 msgid "Database Settings"
@@ -530,18 +521,16 @@ msgid "Phone"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
-#, fuzzy
 msgid "Web"
-msgstr "Website"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
 msgid "Registered"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
-#, fuzzy
 msgid "Client Informations"
-msgstr "Informatii generale"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
 #: ../app/widgets/NodeConfig/NodeConfig.php:82
@@ -571,9 +560,8 @@ msgid "Please wait "
 msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:49 ../system/Utils.php:483
-#, fuzzy
 msgid "Online"
-msgstr "Respinge"
+msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:50 ../system/Utils.php:484
 msgid "Away"
@@ -805,18 +793,16 @@ msgid "Is this profile public ?"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:337
-#, fuzzy
 msgid "Submitting"
-msgstr "Inregistrare"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:348
 msgid "Reset"
 msgstr "Reinitializeaza"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Blog/Blog.php:30
 #: ../app/widgets/Syndication/Syndication.php:52
@@ -959,9 +945,8 @@ msgid "Invite this user"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Parola gresita"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
 msgid "Location updated"
@@ -1025,19 +1010,16 @@ msgid "Your feed cannot be loaded."
 msgstr ""
 
 #: ../app/widgets/Config/Config.php:54
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Configurare"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1073,9 +1055,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:62
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Configurare"
+msgstr ""
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:151
@@ -1208,9 +1189,9 @@ msgid "No comments stream"
 msgstr ""
 
 #: ../app/controllers/ProfileController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Profile"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/controllers/ProfileController.php:11
 #: ../app/controllers/LoginController.php:11
@@ -1303,9 +1284,9 @@ msgstr ""
 #: ../app/controllers/AccountController.php:9
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountnextController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Cont nou"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:12
 #: ../app/controllers/AccountnextController.php:12
@@ -1329,15 +1310,14 @@ msgstr ""
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "%s - Cont nou"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
-msgstr "Cont nou"
+msgstr ""
 
 #: ../app/controllers/NewsController.php:9
 #, php-format
@@ -1905,51 +1885,14 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Cont nou"
+
 #~ msgid "My address"
 #~ msgstr "Adresa mea"
 
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Configurare"
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "Configurare"
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - Cont nou"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - Cont nou"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Configurare"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Configurare"
-
-#, fuzzy
-#~ msgid "General"
-#~ msgstr "Informatii generale"
-
 #~ msgid "Language"
 #~ msgstr "Limba"
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Chat"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "Configurare"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "Sterge acest contact"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Versiune de PHP nepotrivita. Movim necesita PHP 5.3 sau mai mare."
@@ -1966,6 +1909,9 @@ msgstr ""
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Fisierul de configuratie '%s' nu poate fi creat"
 
+#~ msgid "Compatibility Test"
+#~ msgstr "Test de compatibilitate"
+
 #~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "Urmatoarele cerinte nu sunt satisfacute. Asigura-te ca sunt satisfacute toate inainte sa instalezi Movim."
 
@@ -1974,3 +1920,6 @@ msgstr ""
 
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Fisierul jurnal %s un a putut fi deschis."
+
+#~ msgid "Decline"
+#~ msgstr "Respinge"
