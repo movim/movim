@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
 "PO-Revision-Date: 2013-07-27 17:06+0000\n"
 "Last-Translator: Gwenn M <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -27,9 +27,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:88
-#, fuzzy
 msgid "Error"
-msgstr "Kudenn: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -69,9 +68,8 @@ msgid "Feature Not Implemented"
 msgstr ""
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:85
-#, fuzzy
 msgid "Your server doesn't support location publication"
-msgstr "N'eo ket meret an embannadennoù gant ho servijer, tu zo deoc'h lenn gwazhioù darempred hepken"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/location/LocationPublish.php:90
 msgid "Your are not authorized to publish your location"
@@ -103,9 +101,8 @@ msgstr ""
 
 #: ../app/widgets/Media/Media.php:85
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
-#, fuzzy
 msgid "on"
-msgstr "Hini ebet"
+msgstr ""
 
 #: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:149
 #: ../app/widgets/ContactCard/ContactCard.php:51
@@ -166,9 +163,8 @@ msgid "Media"
 msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:54
-#, fuzzy
 msgid "Create a new group"
-msgstr "Kouiñ ur gont nevez"
+msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:61
 msgid "Give a friendly name to your group"
@@ -299,14 +295,12 @@ msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:94 ../app/widgets/Vcard4/Vcard4.php:102
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
 msgid "Your profile is now public"
@@ -317,9 +311,8 @@ msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Tchat"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -374,9 +367,8 @@ msgid "URL Rewriting support"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
-#, fuzzy
 msgid "General Settings"
-msgstr "Titouroù hollek"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
@@ -419,9 +411,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -465,9 +456,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
-#, fuzzy
 msgid "Information Message"
-msgstr "Titouroù an arval"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:422
 msgid "This message will be displayed on the login page"
@@ -486,18 +476,16 @@ msgid "Change the default credentials admin/password"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:452
-#, fuzzy
 msgid "Username"
-msgstr "Anv implijer direizh"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:458
 msgid "Password"
 msgstr "Ger-tremen"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "Ger-tremen direizh"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
 msgid "Database Settings"
@@ -533,14 +521,12 @@ msgid "Phone"
 msgstr "Pellgomz"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
-#, fuzzy
 msgid "Web"
-msgstr "Lec'hienn web"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
-#, fuzzy
 msgid "Registered"
-msgstr "Dec'h"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
 msgid "Client Informations"
@@ -550,9 +536,8 @@ msgstr "Titouroù an arval"
 #: ../app/widgets/NodeConfig/NodeConfig.php:82
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
 #: ../app/widgets/Account/Account.php:160
-#, fuzzy
 msgid "Validate"
-msgstr "Anv direizh"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
 msgid "Subscriptions saved"
@@ -816,7 +801,6 @@ msgid "Reset"
 msgstr "Adkregiñ"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
 msgstr "Cheñch va brofil"
 
@@ -961,9 +945,8 @@ msgid "Invite this user"
 msgstr "Pediñ an implijer-mañ"
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Ger-tremen direizh"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
 msgid "Location updated"
@@ -979,9 +962,8 @@ msgstr "Asantiñ"
 
 #: ../app/widgets/Location/Location.php:116
 #: ../app/widgets/Location/Location.php:120
-#, fuzzy
 msgid "Location"
-msgstr "Oberennoù"
+msgstr ""
 
 #: ../app/widgets/MediaUpload/MediaUpload.php:31
 #: ../app/widgets/MediaUpload/MediaUpload.php:66
@@ -1028,19 +1010,16 @@ msgid "Your feed cannot be loaded."
 msgstr "Ho gwazh n'hall ket bezañ karget"
 
 #: ../app/widgets/Config/Config.php:54
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1076,9 +1055,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:62
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:151
@@ -1171,14 +1149,12 @@ msgid "Enter the server domain (ex: movim.eu)"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:487
-#, fuzzy
 msgid "Searching..."
-msgstr "O kennaskañ..."
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:489
-#, fuzzy
 msgid "Search"
-msgstr "Meurzh"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:78
 msgid "Place"
@@ -1297,9 +1273,8 @@ msgstr ""
 #: ../app/controllers/LoginController.php:13
 #: ../app/controllers/AboutController.php:13
 #: ../app/controllers/DiscoverController.php:15
-#, fuzzy
 msgid "About"
-msgstr "Diwar ma fenn"
+msgstr ""
 
 #: ../app/controllers/AboutController.php:9
 #, php-format
@@ -1335,20 +1310,19 @@ msgstr "%s - Pajenn sikour"
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "%s - Kefluniadur"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
-msgstr "Krouadur ar gont"
+msgstr ""
 
 #: ../app/controllers/NewsController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - News"
-msgstr "Nevezadennoù"
+msgstr ""
 
 #: ../app/controllers/DiscoverController.php:11
 #, php-format
@@ -1590,9 +1564,8 @@ msgid "confused"
 msgstr ""
 
 #: ../system/Utils.php:519
-#, fuzzy
 msgid "contemplative"
-msgstr "klakenn"
+msgstr ""
 
 #: ../system/Utils.php:520
 msgid "contented"
@@ -1683,9 +1656,8 @@ msgid "hopeful"
 msgstr ""
 
 #: ../system/Utils.php:542
-#, fuzzy
 msgid "hot"
-msgstr "Robot"
+msgstr ""
 
 #: ../system/Utils.php:543
 msgid "humbled"
@@ -1860,9 +1832,8 @@ msgid "weak"
 msgstr ""
 
 #: ../system/Utils.php:587
-#, fuzzy
 msgid "worried"
-msgstr "Dimezet"
+msgstr ""
 
 #: ../system/Utils.php:720
 msgid "Not shared"
@@ -1914,9 +1885,8 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#, fuzzy
-#~ msgid "My Posts"
-#~ msgstr "Va embanadennoù"
+#~ msgid "Cannot load element value '%s'"
+#~ msgstr "N'eus ket tu kargañ talvoud an elfenn '%s'"
 
 #~ msgid "Your web browser is too old to use with Movim."
 #~ msgstr "Ho merdeer a zo re gozh evit implij Movim"
@@ -1924,63 +1894,11 @@ msgstr ""
 #~ msgid "My address"
 #~ msgstr "Ho chomlec'h"
 
-#, fuzzy
-#~ msgid "Create one !"
-#~ msgstr "Kouiñ ur gont nevez"
-
-#, fuzzy
-#~ msgid "No account yet ?"
-#~ msgstr "Profil ebet c'hoazh ?"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "O kennaskañ..."
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "Oberennoù"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Kefluniadur"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Kefluniadur"
-
-#, fuzzy
-#~ msgid "General"
-#~ msgstr "Titouroù hollek"
+#~ msgid "My Posts"
+#~ msgstr "Va embanadennoù"
 
 #~ msgid "Language"
 #~ msgstr "Yezh"
 
 #~ msgid "Composing..."
 #~ msgstr "O kompozañ"
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Tchat"
-
-#, fuzzy
-#~ msgid "Geolocalisation"
-#~ msgstr "Oberennoù"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "O kennaskañ..."
-
-#, fuzzy
-#~ msgid "Posts"
-#~ msgstr "Va embanadennoù"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "Tennañ an darempred"
-
-#, fuzzy
-#~ msgid "Edit my profile"
-#~ msgstr "Cheñch va brofil"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "N'eus ket tu kargañ talvoud an elfenn '%s'"
