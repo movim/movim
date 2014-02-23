@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
 "PO-Revision-Date: 2012-07-19 11:30+0000\n"
 "Last-Translator: Vincent <vincent@influence-pc.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -27,9 +27,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:88
-#, fuzzy
 msgid "Error"
-msgstr "Feil %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -296,14 +295,12 @@ msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:94 ../app/widgets/Vcard4/Vcard4.php:102
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
 msgid "Your profile is now public"
@@ -314,9 +311,8 @@ msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Chat"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -334,9 +330,8 @@ msgid "Submit"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "Kompatibilitet Test"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:184
 msgid "Movim requires certain external components. Please install them before you can succeed:"
@@ -372,9 +367,8 @@ msgid "URL Rewriting support"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
-#, fuzzy
 msgid "General Settings"
-msgstr "Generell informasjon"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
@@ -462,9 +456,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
-#, fuzzy
 msgid "Information Message"
-msgstr "Generell informasjon"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:422
 msgid "This message will be displayed on the login page"
@@ -491,9 +484,8 @@ msgid "Password"
 msgstr "Passord"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "Feil passord"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
 msgid "Database Settings"
@@ -529,18 +521,16 @@ msgid "Phone"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
-#, fuzzy
 msgid "Web"
-msgstr "Nettside"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
 msgid "Registered"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
-#, fuzzy
 msgid "Client Informations"
-msgstr "Generell informasjon"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
 #: ../app/widgets/NodeConfig/NodeConfig.php:82
@@ -570,9 +560,8 @@ msgid "Please wait "
 msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:49 ../system/Utils.php:483
-#, fuzzy
 msgid "Online"
-msgstr "Avslå"
+msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:50 ../system/Utils.php:484
 msgid "Away"
@@ -812,9 +801,8 @@ msgid "Reset"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Blog/Blog.php:30
 #: ../app/widgets/Syndication/Syndication.php:52
@@ -957,9 +945,8 @@ msgid "Invite this user"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Feil passord"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
 msgid "Location updated"
@@ -1027,14 +1014,12 @@ msgid "Configuration updated"
 msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1204,9 +1189,9 @@ msgid "No comments stream"
 msgstr ""
 
 #: ../app/controllers/ProfileController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Profile"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/controllers/ProfileController.php:11
 #: ../app/controllers/LoginController.php:11
@@ -1288,9 +1273,8 @@ msgstr ""
 #: ../app/controllers/LoginController.php:13
 #: ../app/controllers/AboutController.php:13
 #: ../app/controllers/DiscoverController.php:15
-#, fuzzy
 msgid "About"
-msgstr "Om meg"
+msgstr ""
 
 #: ../app/controllers/AboutController.php:9
 #, php-format
@@ -1904,23 +1888,17 @@ msgstr ""
 #~ msgid "My address"
 #~ msgstr "Min adresse"
 
-#, fuzzy
-#~ msgid "General"
-#~ msgstr "Generell informasjon"
-
 #~ msgid "Language"
 #~ msgstr "Språk"
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Chat"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "Fjern denne kontakten"
 
 #~ msgid "User not logged in."
 #~ msgstr "Bruker ikke logget inn"
 
+#~ msgid "Decline"
+#~ msgstr "Avslå"
+
 #~ msgid "or"
 #~ msgstr "eller"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "Kompatibilitet Test"

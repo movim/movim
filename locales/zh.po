@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
 "PO-Revision-Date: 2011-12-18 14:01+0000\n"
-"Last-Translator: edhelas <edhelas@gmail.com>\n"
+"Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -27,9 +27,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:88
-#, fuzzy
 msgid "Error"
-msgstr "错误: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -312,9 +311,8 @@ msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "聊天"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -332,9 +330,8 @@ msgid "Submit"
 msgstr "提交"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "兼容性测试"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:184
 msgid "Movim requires certain external components. Please install them before you can succeed:"
@@ -414,9 +411,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "配置"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -488,9 +484,8 @@ msgid "Password"
 msgstr "密码"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "错误密码"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
 msgid "Database Settings"
@@ -526,9 +521,8 @@ msgid "Phone"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
-#, fuzzy
 msgid "Web"
-msgstr "你的网站"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
 msgid "Registered"
@@ -799,9 +793,8 @@ msgid "Is this profile public ?"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:337
-#, fuzzy
 msgid "Submitting"
-msgstr "提交"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:348
 msgid "Reset"
@@ -952,9 +945,8 @@ msgid "Invite this user"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "错误密码"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
 msgid "Location updated"
@@ -1018,9 +1010,8 @@ msgid "Your feed cannot be loaded."
 msgstr ""
 
 #: ../app/widgets/Config/Config.php:54
-#, fuzzy
 msgid "Configuration updated"
-msgstr "配置"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:72
 msgid "Avatar Updated"
@@ -1064,9 +1055,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:62
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "配置"
+msgstr ""
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:151
@@ -1294,9 +1284,9 @@ msgstr ""
 #: ../app/controllers/AccountController.php:9
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountnextController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - 建立帐号"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:12
 #: ../app/controllers/AccountnextController.php:12
@@ -1320,15 +1310,14 @@ msgstr ""
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "%s - 建立帐号"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
-msgstr "建立帐号"
+msgstr ""
 
 #: ../app/controllers/NewsController.php:9
 #, php-format
@@ -1896,43 +1885,14 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#~ msgid "My address"
-#~ msgstr "我的识别符"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "配置"
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "配置"
-
-#, fuzzy
-#~ msgid "Accounts"
+#~ msgid "%s - Account Creation"
 #~ msgstr "%s - 建立帐号"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - 建立帐号"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "配置"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "配置"
 
 #~ msgid "Language"
 #~ msgstr "语言"
 
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "聊天"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "配置"
+#~ msgid "My address"
+#~ msgstr "我的识别符"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "PHP 版本不符。 Movim 需要 PHP 5.3以上的版本。"
@@ -1948,6 +1908,9 @@ msgstr ""
 
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "不能建立配置文件  '%s'。"
+
+#~ msgid "Compatibility Test"
+#~ msgstr "兼容性测试"
 
 #~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "没有达到符合安装 Movim的软件要求。请检查后再安装。"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
 "PO-Revision-Date: 2013-11-20 13:33+0000\n"
 "Last-Translator: Muhammad Rizvi <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -82,9 +82,8 @@ msgid "Content not found"
 msgstr "Konten tidak ditemukan"
 
 #: ../app/widgets/ContactManage/ContactManage.php:30
-#, fuzzy
 msgid "Contact updated"
-msgstr "Konfigurasi diperbarui"
+msgstr ""
 
 #: ../app/widgets/ContactManage/ContactManage.php:55
 msgid "Manage"
@@ -187,9 +186,8 @@ msgid "Close"
 msgstr "Tutup"
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:108
-#, fuzzy
 msgid "Subscribed"
-msgstr "Langganan disimpan"
+msgstr ""
 
 #: ../app/widgets/AccountError/AccountError.php:32
 #: ../app/widgets/Login/Login.php:130 ../app/widgets/Account/Account.php:388
@@ -208,9 +206,8 @@ msgstr ""
 
 #: ../app/widgets/AccountError/AccountError.php:50
 #: ../app/widgets/Account/Account.php:406
-#, fuzzy
 msgid "Invalid name"
-msgstr "Validasi"
+msgstr ""
 
 #: ../app/widgets/AccountError/AccountError.php:56
 #: ../app/widgets/Account/Account.php:412
@@ -260,7 +257,6 @@ msgid "Bad URL"
 msgstr "URL Salah"
 
 #: ../app/widgets/Bookmark/Bookmark.php:300
-#, fuzzy
 msgid "Conferences"
 msgstr "Konferensi"
 
@@ -278,18 +274,17 @@ msgid "Ungrouped"
 msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:437
-#, fuzzy
 msgid "Show disconnected contacts"
-msgstr "Dibagikan ke satu kontak"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:439
 msgid "Hide disconnected contacts"
 msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:443
-#, fuzzy, php-format
+#, php-format
 msgid "Hide group %s"
-msgstr "Grup publik"
+msgstr ""
 
 #: ../app/widgets/Roster/Roster.php:445
 #, php-format
@@ -306,23 +301,20 @@ msgid "Profile Updated"
 msgstr "Profil di Perbarui"
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Profil di Perbarui"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
-#, fuzzy
 msgid "Your profile is now public"
-msgstr "Apakah ini profil publik ?"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:178
 msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "ID Chatroom Salah"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -377,9 +369,8 @@ msgid "URL Rewriting support"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
-#, fuzzy
 msgid "General Settings"
-msgstr "Informasi Umum"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
@@ -394,9 +385,8 @@ msgid "Environment"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:299
-#, fuzzy
 msgid "User folder size limit (in bytes)"
-msgstr "Melampaui batas ukuran folder"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:304
 msgid "empty"
@@ -411,9 +401,8 @@ msgid "normal"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:307
-#, fuzzy
 msgid "talkative"
-msgstr "merenung"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:308
 msgid "ultimate"
@@ -424,9 +413,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Konfigurasi"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -450,9 +438,8 @@ msgid "Your Bosh URL is not reachable"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:384
-#, fuzzy
 msgid "Bosh URL"
-msgstr "URL Salah"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:395
 msgid "Whitelist - XMPP Server"
@@ -471,9 +458,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
-#, fuzzy
 msgid "Information Message"
-msgstr "Informasi Klien"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:422
 msgid "This message will be displayed on the login page"
@@ -484,9 +470,8 @@ msgid "Leave this field blank if you don't want to show any message."
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:441
-#, fuzzy
 msgid "Administration Credential"
-msgstr "Administrasi"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:446
 msgid "Change the default credentials admin/password"
@@ -501,9 +486,8 @@ msgid "Password"
 msgstr "Kata sandi"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "Kata sandi"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
 msgid "Database Settings"
@@ -594,9 +578,8 @@ msgid "Extended Away"
 msgstr "Menjauh Lama"
 
 #: ../app/widgets/Chat/Chat.php:53
-#, fuzzy
 msgid "Offline"
-msgstr "Tersedia"
+msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:143
 msgid "Message Published"
@@ -707,12 +690,8 @@ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your questi
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:115
-#, fuzzy
 msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
 msgstr ""
-"Ini adalah pertama kalinya kamu di Movim! Untuk mengisi \n"
-"                beberapa informasi tentang dirimu dan menampilkannya kepada \n"
-"                kontakmu, buat kartu virtualmu dengan mengklik tombol berikut."
 
 #: ../app/widgets/Vcard/Vcard.php:120 ../app/widgets/Profile/Profile.php:133
 msgid "Create my vCard"
@@ -824,7 +803,6 @@ msgid "Reset"
 msgstr "Atur ulang"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
 msgstr "Edit Profil ku"
 
@@ -840,9 +818,9 @@ msgid "Feed"
 msgstr "Tautan"
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:95
-#, fuzzy, php-format
+#, php-format
 msgid "%s has been added to your public groups"
-msgstr "Dapatkan grup publik"
+msgstr ""
 
 #: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:100
 #, php-format
@@ -884,9 +862,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: ../app/widgets/Login/Login.php:136
-#, fuzzy
 msgid "Wrong password"
-msgstr "Kata sandi"
+msgstr ""
 
 #: ../app/widgets/Login/Login.php:142
 msgid "The XMPP authentification failed"
@@ -925,14 +902,12 @@ msgid "Come in!"
 msgstr "Ayo masuk!"
 
 #: ../app/widgets/Profile/Profile.php:42
-#, fuzzy
 msgid "Saved"
-msgstr "Simpan"
+msgstr ""
 
 #: ../app/widgets/Profile/Profile.php:43
-#, fuzzy
 msgid "Status updated"
-msgstr "Bookmark diperbarui"
+msgstr ""
 
 #: ../app/widgets/Profile/Profile.php:118
 msgid "Your status here !"
@@ -972,14 +947,12 @@ msgid "Invite this user"
 msgstr "Undang user ini"
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Posisi Geografis"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
-#, fuzzy
 msgid "Location updated"
-msgstr "Konfigurasi diperbarui"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:101
 msgid "Update my position"
@@ -1043,14 +1016,12 @@ msgid "Configuration updated"
 msgstr "Konfigurasi diperbarui"
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Bookmark diperbarui"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Bookmark diperbarui"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1065,9 +1036,8 @@ msgid "Hung up"
 msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:69
-#, fuzzy
 msgid "Your contact is busy"
-msgstr "puas"
+msgstr ""
 
 #: ../app/widgets/VisioExt/VisioExt.php:73
 msgid "Declined"
@@ -1107,20 +1077,17 @@ msgid "Profile"
 msgstr "Profil"
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-#, fuzzy
 msgid "Affiliations saved"
-msgstr "Langganan disimpan"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:90
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:91
-#, fuzzy
 msgid "Manage your members"
-msgstr "Atur langganan mu"
+msgstr ""
 
 #: ../app/widgets/NodeAffiliations/NodeAffiliations.php:96
-#, fuzzy
 msgid "Get the members"
-msgstr "Dapatkan langganan"
+msgstr ""
 
 #: ../app/widgets/Feed/Feed.php:64 ../app/widgets/Feed/Feed.php:103
 msgid "Your server doesn't support post publication, you can only read contact's feeds"
@@ -1139,23 +1106,20 @@ msgid "Step 2 - Fill in your informations"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:292
-#, fuzzy
 msgid "Description"
-msgstr "Dapatkan langganan"
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:295
-#, fuzzy
 msgid "URL"
-msgstr "URL Salah"
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:298
 msgid "Software"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:448
-#, fuzzy
 msgid "Create a new account"
-msgstr "Buat grup baru"
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:451
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -1187,9 +1151,8 @@ msgid "Enter the server domain (ex: movim.eu)"
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:487
-#, fuzzy
 msgid "Searching..."
-msgstr "Cari"
+msgstr ""
 
 #: ../app/widgets/Account/Account.php:489
 msgid "Search"
@@ -1204,9 +1167,8 @@ msgid "by"
 msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:273
-#, fuzzy
 msgid "email"
-msgstr "Email"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:277
 msgid "jid"
@@ -1217,9 +1179,8 @@ msgid "Show the older comments"
 msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:548
-#, fuzzy
 msgid "No content"
-msgstr "puas"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:613
 msgid "No comments"
@@ -1230,9 +1191,9 @@ msgid "No comments stream"
 msgstr ""
 
 #: ../app/controllers/ProfileController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Profile"
-msgstr "Profil"
+msgstr ""
 
 #: ../app/controllers/ProfileController.php:11
 #: ../app/controllers/LoginController.php:11
@@ -1314,9 +1275,8 @@ msgstr ""
 #: ../app/controllers/LoginController.php:13
 #: ../app/controllers/AboutController.php:13
 #: ../app/controllers/DiscoverController.php:15
-#, fuzzy
 msgid "About"
-msgstr "Tentang Saya"
+msgstr ""
 
 #: ../app/controllers/AboutController.php:9
 #, php-format
@@ -1336,14 +1296,14 @@ msgid "Account Creation"
 msgstr ""
 
 #: ../app/controllers/ConfController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Configuration"
-msgstr "Konfigurasi"
+msgstr ""
 
 #: ../app/controllers/ExploreController.php:11
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Explore"
-msgstr "Jelajahi"
+msgstr ""
 
 #: ../app/controllers/HelpController.php:9
 #, php-format
@@ -1352,20 +1312,19 @@ msgstr ""
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "Administrasi"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
 msgstr "Administrasi"
 
 #: ../app/controllers/NewsController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - News"
-msgstr "Berita"
+msgstr ""
 
 #: ../app/controllers/DiscoverController.php:11
 #, php-format
@@ -1904,23 +1863,21 @@ msgid "Requested widget '%s' doesn't exist."
 msgstr "Widget yang diminta '%s' tidak tersedia."
 
 #: ../system/controllers/FrontController.php:35
-#, fuzzy, php-format
+#, php-format
 msgid "Requested controller '%s' doesn't exist."
-msgstr "Widget yang diminta '%s' tidak tersedia."
+msgstr ""
 
 #: ../system/controllers/FrontController.php:67
 msgid "Could not call the load method on the current controller"
 msgstr ""
 
 #: ../app/views/admin.tpl:5
-#, fuzzy
 msgid "Administration Panel"
-msgstr "Administrasi"
+msgstr ""
 
 #: ../app/views/visio.tpl:20
-#, fuzzy
 msgid "Visio-conference"
-msgstr "Konferensi"
+msgstr ""
 
 #: ../app/views/adminlogin.tpl:4
 msgid "Login"
@@ -1930,113 +1887,14 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#, fuzzy
-#~ msgid "Create one !"
-#~ msgstr "Buat grup baru"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Lokasi"
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "Lokasi"
-
-#, fuzzy
-#~ msgid "Get the comments"
-#~ msgstr "Dapatkan langganan"
-
-#, fuzzy
-#~ msgid "Add a comment"
-#~ msgstr "Dapatkan langganan"
-
-#, fuzzy
-#~ msgid "Bookmarks"
-#~ msgstr "Bookmark diperbarui"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Konfigurasi"
-
-#, fuzzy
-#~ msgid "Unsubscribe"
-#~ msgstr "Langganan disimpan"
-
-#, fuzzy
-#~ msgid "Subscribe"
-#~ msgstr "Langganan disimpan"
-
-#, fuzzy
-#~ msgid "Get Subscription"
-#~ msgstr "Dapatkan langganan"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Konfigurasi"
-
-#, fuzzy
-#~ msgid "General"
-#~ msgstr "Informasi Umum"
-
-#, fuzzy
-#~ msgid "Paused..."
-#~ msgstr "terangsang"
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "ID Chatroom Salah"
-
-#, fuzzy
-#~ msgid "Shared"
-#~ msgstr "Tidak dibagikan"
-
-#, fuzzy
-#~ msgid "Geolocalisation"
-#~ msgstr "Lokasi"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "Lokasi"
-
-#, fuzzy
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Dibagikan ke satu kontak"
-
-#, fuzzy
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Dibagikan ke satu kontak"
-
-#, fuzzy
-#~ msgid "created"
-#~ msgstr "kreatif"
-
-#, fuzzy
-#~ msgid "Share with"
-#~ msgstr "Dibagikan ke satu kontak"
-
-#, fuzzy
-#~ msgid "Your contacts"
-#~ msgstr "puas"
-
-#, fuzzy
-#~ msgid "Contact"
-#~ msgstr "Konfigurasi diperbarui"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "Hapus kontak ini"
-
-#, fuzzy
-#~ msgid "No contact specified"
-#~ msgstr "puas"
-
-#, fuzzy
-#~ msgid "Public Groups"
-#~ msgstr "Grup publik"
+#~ msgid ""
+#~ "It's your first time on Movim! To fill in a \n"
+#~ "                few information about you and display them to your \n"
+#~ "                contacts, create your virtual card by clicking the next button."
+#~ msgstr ""
+#~ "Ini adalah pertama kalinya kamu di Movim! Untuk mengisi \n"
+#~ "                beberapa informasi tentang dirimu dan menampilkannya kepada \n"
+#~ "                kontakmu, buat kartu virtualmu dengan mengklik tombol berikut."
 
 #~ msgid "Get public groups"
 #~ msgstr "Dapatkan grup publik"
-
-#, fuzzy
-#~ msgid "Edit my profile"
-#~ msgstr "Edit Profil ku"
