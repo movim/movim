@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
 "PO-Revision-Date: 2013-10-19 23:41+0000\n"
 "Last-Translator: landais <Unknown>\n"
 "Language-Team: Ido <io@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -103,9 +103,8 @@ msgstr ""
 
 #: ../app/widgets/Media/Media.php:85
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
-#, fuzzy
 msgid "on"
-msgstr "Nula"
+msgstr ""
 
 #: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:149
 #: ../app/widgets/ContactCard/ContactCard.php:51
@@ -386,9 +385,8 @@ msgid "Environment"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:299
-#, fuzzy
 msgid "User folder size limit (in bytes)"
-msgstr "Kapacalimito di dosiero transpasata"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:304
 msgid "empty"
@@ -529,9 +527,8 @@ msgid "Web"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
-#, fuzzy
 msgid "Registered"
-msgstr "Hiere"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
 msgid "Client Informations"
@@ -581,9 +578,8 @@ msgid "Extended Away"
 msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:53
-#, fuzzy
 msgid "Offline"
-msgstr "Konektita"
+msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:143
 msgid "Message Published"
@@ -723,9 +719,8 @@ msgid "Date of Birth"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:169
-#, fuzzy
 msgid "Day"
-msgstr "Mayo"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:189
 msgid "Month"
@@ -944,9 +939,8 @@ msgid "Yes"
 msgstr ""
 
 #: ../app/widgets/ContactAction/ContactAction.php:130
-#, fuzzy
 msgid "No"
-msgstr "Nula"
+msgstr ""
 
 #: ../app/widgets/ContactAction/ContactAction.php:146
 msgid "Invite this user"
@@ -1161,9 +1155,8 @@ msgid "Searching..."
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:489
-#, fuzzy
 msgid "Search"
-msgstr "Marto"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:78
 msgid "Place"
@@ -1537,9 +1530,8 @@ msgid "anxious"
 msgstr "anxioza"
 
 #: ../system/Utils.php:510
-#, fuzzy
 msgid "aroused"
-msgstr "amoranta"
+msgstr ""
 
 #: ../system/Utils.php:511
 msgid "ashamed"
@@ -1558,9 +1550,8 @@ msgid "calm"
 msgstr ""
 
 #: ../system/Utils.php:515
-#, fuzzy
 msgid "cautious"
-msgstr "anxioza"
+msgstr ""
 
 #: ../system/Utils.php:516
 msgid "cold"
@@ -1627,9 +1618,8 @@ msgid "embarrassed"
 msgstr ""
 
 #: ../system/Utils.php:532
-#, fuzzy
 msgid "envious"
-msgstr "anxioza"
+msgstr ""
 
 #: ../system/Utils.php:533
 msgid "excited"
@@ -1680,9 +1670,8 @@ msgid "humiliated"
 msgstr ""
 
 #: ../system/Utils.php:545
-#, fuzzy
 msgid "hungry"
-msgstr "iracanta"
+msgstr ""
 
 #: ../system/Utils.php:546
 msgid "hurt"
@@ -1845,14 +1834,12 @@ msgid "weak"
 msgstr ""
 
 #: ../system/Utils.php:587
-#, fuzzy
 msgid "worried"
-msgstr "Mariajinta"
+msgstr ""
 
 #: ../system/Utils.php:720
-#, fuzzy
 msgid "Not shared"
-msgstr "ne imajo"
+msgstr ""
 
 #: ../system/Utils.php:724
 msgid "Shared with one contact"
@@ -1899,11 +1886,3 @@ msgstr ""
 #: ../app/views/page.tpl:67
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Paused..."
-#~ msgstr "amoranta"
-
-#, fuzzy
-#~ msgid "Shared"
-#~ msgstr "ne imajo"

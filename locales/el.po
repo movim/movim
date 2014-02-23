@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-23 23:32+0100\n"
-"PO-Revision-Date: 2013-11-19 22:48+0000\n"
+"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"PO-Revision-Date: 2013-12-07 17:27+0000\n"
 "Last-Translator: aitolos <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-20 22:24+0000\n"
-"X-Generator: Launchpad (build 16831)\n"
+"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
+"X-Generator: Launchpad (build 16926)\n"
 
 #: ../upload.php:32
 msgid "Not a picture"
@@ -27,9 +27,8 @@ msgstr ""
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
 #: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
 #: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:88
-#, fuzzy
 msgid "Error"
-msgstr "Σφάλμα: %s"
+msgstr ""
 
 #: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 msgid "The node does not exist"
@@ -164,9 +163,8 @@ msgid "Media"
 msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:54
-#, fuzzy
 msgid "Create a new group"
-msgstr "Δημιουργία νέου λογαριασμού"
+msgstr ""
 
 #: ../app/widgets/ServerNodes/ServerNodes.php:61
 msgid "Give a friendly name to your group"
@@ -257,9 +255,8 @@ msgid "Bad URL"
 msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:300
-#, fuzzy
 msgid "Conferences"
-msgstr "Προτιμήσεις proxy"
+msgstr ""
 
 #: ../app/widgets/Bookmark/Bookmark.php:308
 #: ../app/widgets/Explore/Explore.php:86
@@ -298,14 +295,12 @@ msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:94 ../app/widgets/Vcard4/Vcard4.php:102
 #: ../app/widgets/Vcard/Vcard.php:37
-#, fuzzy
 msgid "Profile Updated"
-msgstr "Προφίλ"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:107
-#, fuzzy
 msgid "Profile Not Updated"
-msgstr "Προφίλ"
+msgstr ""
 
 #: ../app/widgets/Vcard4/Vcard4.php:175
 msgid "Your profile is now public"
@@ -316,9 +311,8 @@ msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../app/widgets/Explore/Explore.php:77
-#, fuzzy
 msgid "Chatrooms"
-msgstr "Συνομιλία"
+msgstr ""
 
 #: ../app/widgets/AccountNext/AccountNext.php:142
 #: ../app/widgets/Account/Account.php:173
@@ -336,9 +330,8 @@ msgid "Submit"
 msgstr "Υποβολή"
 
 #: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
-#, fuzzy
 msgid "Compatibility Check"
-msgstr "Δοκιμασία συμβατότητας"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:184
 msgid "Movim requires certain external components. Please install them before you can succeed:"
@@ -374,9 +367,8 @@ msgid "URL Rewriting support"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
-#, fuzzy
 msgid "General Settings"
-msgstr "Γενικές πληροφορίες"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:229
 msgid "Theme"
@@ -396,7 +388,7 @@ msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:304
 msgid "empty"
-msgstr ""
+msgstr "κενό"
 
 #: ../app/widgets/Admin/Admin.php:305
 msgid "terse"
@@ -404,7 +396,7 @@ msgstr "λιτός"
 
 #: ../app/widgets/Admin/Admin.php:306
 msgid "normal"
-msgstr ""
+msgstr "κανονικό"
 
 #: ../app/widgets/Admin/Admin.php:307
 msgid "talkative"
@@ -419,9 +411,8 @@ msgid "Server Timezone"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:365
-#, fuzzy
 msgid "Bosh Configuration"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:369
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
@@ -465,9 +456,8 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
-#, fuzzy
 msgid "Information Message"
-msgstr "Γενικές πληροφορίες"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:422
 msgid "This message will be displayed on the login page"
@@ -486,23 +476,20 @@ msgid "Change the default credentials admin/password"
 msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:452
-#, fuzzy
 msgid "Username"
-msgstr "Λάθος όνομα χρήστη"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:458
 msgid "Password"
-msgstr "Κωδικός πρόσβασης"
+msgstr "Συνθηματικό"
 
 #: ../app/widgets/Admin/Admin.php:462
-#, fuzzy
 msgid "Retype password"
-msgstr "Λανθασμένος κωδικός"
+msgstr ""
 
 #: ../app/widgets/Admin/Admin.php:511
-#, fuzzy
 msgid "Database Settings"
-msgstr "Εντοπίστηκε βάση δεδομένων"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:46
 msgid "Mood"
@@ -534,18 +521,16 @@ msgid "Phone"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:117
-#, fuzzy
 msgid "Web"
-msgstr "Ιστότοπος"
+msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:118
 msgid "Registered"
 msgstr ""
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:130
-#, fuzzy
 msgid "Client Informations"
-msgstr "Γενικές πληροφορίες"
+msgstr ""
 
 #: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
 #: ../app/widgets/NodeConfig/NodeConfig.php:82
@@ -575,21 +560,20 @@ msgid "Please wait "
 msgstr ""
 
 #: ../app/widgets/Chat/Chat.php:49 ../system/Utils.php:483
-#, fuzzy
 msgid "Online"
-msgstr "Απόρριψη"
+msgstr "Συνδεδεμένος"
 
 #: ../app/widgets/Chat/Chat.php:50 ../system/Utils.php:484
 msgid "Away"
-msgstr "Μακριά"
+msgstr "Απών"
 
 #: ../app/widgets/Chat/Chat.php:51 ../system/Utils.php:485
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "Μην Ενοχλείτε"
 
 #: ../app/widgets/Chat/Chat.php:52 ../system/Utils.php:486
 msgid "Extended Away"
-msgstr ""
+msgstr "Παρατεταμένη απουσία"
 
 #: ../app/widgets/Chat/Chat.php:53
 msgid "Offline"
@@ -733,9 +717,8 @@ msgid "Date of Birth"
 msgstr "Ημερομ. γεννήσεως"
 
 #: ../app/widgets/Vcard/Vcard.php:169
-#, fuzzy
 msgid "Day"
-msgstr "Μάιος"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:189
 msgid "Month"
@@ -810,18 +793,16 @@ msgid "Is this profile public ?"
 msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:337
-#, fuzzy
 msgid "Submitting"
-msgstr "Υποβολή"
+msgstr ""
 
 #: ../app/widgets/Vcard/Vcard.php:348
 msgid "Reset"
 msgstr "Επαναφορά"
 
 #: ../app/widgets/Vcard/Vcard.php:370
-#, fuzzy
 msgid "Edit my Profile"
-msgstr "%s - Προφίλ"
+msgstr ""
 
 #: ../app/widgets/Blog/Blog.php:30
 #: ../app/widgets/Syndication/Syndication.php:52
@@ -845,9 +826,8 @@ msgid "%s has been removed from your public groups"
 msgstr ""
 
 #: ../app/widgets/Login/Login.php:39
-#, fuzzy
 msgid "Connecting..."
-msgstr "Συνθέτοντας..."
+msgstr ""
 
 #: ../app/widgets/Login/Login.php:66
 #, php-format
@@ -965,9 +945,8 @@ msgid "Invite this user"
 msgstr ""
 
 #: ../app/widgets/Location/Location.php:54
-#, fuzzy
 msgid "Wrong position"
-msgstr "Λανθασμένος κωδικός"
+msgstr ""
 
 #: ../app/widgets/Location/Location.php:63
 msgid "Location updated"
@@ -1031,19 +1010,16 @@ msgid "Your feed cannot be loaded."
 msgstr ""
 
 #: ../app/widgets/Config/Config.php:54
-#, fuzzy
 msgid "Configuration updated"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:72
-#, fuzzy
 msgid "Avatar Updated"
-msgstr "Προφίλ"
+msgstr ""
 
 #: ../app/widgets/Avatar/Avatar.php:78
-#, fuzzy
 msgid "Avatar Not Updated"
-msgstr "Προφίλ"
+msgstr ""
 
 #: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
 msgid "Blog"
@@ -1079,9 +1055,8 @@ msgid "Group deleted"
 msgstr ""
 
 #: ../app/widgets/NodeConfig/NodeConfig.php:62
-#, fuzzy
 msgid "Group configuration saved"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: ../app/widgets/ContactCard/ContactCard.php:45
 #: ../app/widgets/ContactCard/ContactCard.php:151
@@ -1178,9 +1153,8 @@ msgid "Searching..."
 msgstr ""
 
 #: ../app/widgets/Account/Account.php:489
-#, fuzzy
 msgid "Search"
-msgstr "Μάρτιος"
+msgstr ""
 
 #: ../app/widgets/WidgetCommon/WidgetCommon.php:78
 msgid "Place"
@@ -1303,16 +1277,16 @@ msgid "About"
 msgstr ""
 
 #: ../app/controllers/AboutController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - About"
-msgstr "%s - Προσθέστε λογαριασμό"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:9
 #: ../app/controllers/BlogController.php:9
 #: ../app/controllers/AccountnextController.php:9
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Προσθέστε λογαριασμό"
+msgstr ""
 
 #: ../app/controllers/AccountController.php:12
 #: ../app/controllers/AccountnextController.php:12
@@ -1336,15 +1310,14 @@ msgstr "%s - Σελίδα βοήθειας"
 
 #: ../app/controllers/AdminloginController.php:9
 #: ../app/controllers/AdminController.php:12
-#, fuzzy, php-format
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "%s - Δημιουργία Λογαριασμού"
+msgstr ""
 
 #: ../app/controllers/AdminloginController.php:12
 #: ../app/controllers/AdminController.php:15
-#, fuzzy
 msgid "Administration"
-msgstr "Δημιουργία Λογαριασμού"
+msgstr ""
 
 #: ../app/controllers/NewsController.php:9
 #, php-format
@@ -1471,12 +1444,11 @@ msgstr "Αύριο"
 
 #: ../system/Utils.php:205
 msgid "Yesterday"
-msgstr ""
+msgstr "Χθες"
 
 #: ../system/Utils.php:211
-#, fuzzy
 msgid "day"
-msgstr "Σήμερα"
+msgstr "ημέρα"
 
 #: ../system/Utils.php:214
 #, php-format
@@ -1485,35 +1457,35 @@ msgstr " %d ημέρες πριν"
 
 #: ../system/Utils.php:233 ../system/Utils.php:470
 msgid "None"
-msgstr ""
+msgstr "Κανένα"
 
 #: ../system/Utils.php:234
 msgid "Male"
-msgstr ""
+msgstr "Άνδρας"
 
 #: ../system/Utils.php:235
 msgid "Female"
-msgstr ""
+msgstr "Γυναίκα"
 
 #: ../system/Utils.php:236
 msgid "Other"
-msgstr ""
+msgstr "Άλλο"
 
 #: ../system/Utils.php:471
 msgid "Single"
-msgstr ""
+msgstr "Μόνος/η"
 
 #: ../system/Utils.php:472
 msgid "In a relationship"
-msgstr ""
+msgstr "Σε σχέση"
 
 #: ../system/Utils.php:473
 msgid "Married"
-msgstr ""
+msgstr "Παντρεμένος/η"
 
 #: ../system/Utils.php:474
 msgid "Divorced"
-msgstr ""
+msgstr "Διαζευγμένος/η"
 
 #: ../system/Utils.php:475
 msgid "Widowed"
@@ -1592,9 +1564,8 @@ msgid "confused"
 msgstr ""
 
 #: ../system/Utils.php:519
-#, fuzzy
 msgid "contemplative"
-msgstr "ομιλητικός"
+msgstr ""
 
 #: ../system/Utils.php:520
 msgid "contented"
@@ -1609,9 +1580,8 @@ msgid "crazy"
 msgstr ""
 
 #: ../system/Utils.php:523
-#, fuzzy
 msgid "creative"
-msgstr "Δημιούργησε"
+msgstr ""
 
 #: ../system/Utils.php:524
 msgid "curious"
@@ -1915,79 +1885,6 @@ msgstr ""
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Ο περιηγητης σας είναι αρκετά παλιός για να χρησιμοποιηθεί με Movim"
-
-#~ msgid "My address"
-#~ msgstr "Η διεύθυνσή μου"
-
-#, fuzzy
-#~ msgid "Create one !"
-#~ msgstr "Δημιουργία νέου λογαριασμού"
-
-#, fuzzy
-#~ msgid "Connected"
-#~ msgstr "Συνθέτοντας..."
-
-#, fuzzy
-#~ msgid "Population"
-#~ msgstr "Ρύθμιση"
-
-#, fuzzy
-#~ msgid "Loading comments ..."
-#~ msgstr "Φορτώνεται το contact feed ..."
-
-#, fuzzy
-#~ msgid "Accounts"
-#~ msgstr "%s - Προσθέστε λογαριασμό"
-
-#, fuzzy
-#~ msgid "Yahoo Account"
-#~ msgstr "%s - Προσθέστε λογαριασμό"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Ρύθμιση"
-
-#, fuzzy
-#~ msgid "Feed Configuration"
-#~ msgstr "Ρύθμιση"
-
-#, fuzzy
-#~ msgid "General"
-#~ msgstr "Γενικές πληροφορίες"
-
-#~ msgid "Language"
-#~ msgstr "Γλώσσα"
-
-#, fuzzy
-#~ msgid "Composing..."
-#~ msgstr "Συνθέτοντας..."
-
-#, fuzzy
-#~ msgid "Chat Room ID"
-#~ msgstr "Συνομιλία"
-
-#, fuzzy
-#~ msgid "Connection"
-#~ msgstr "Συνθέτοντας..."
-
-#, fuzzy
-#~ msgid "Database Type"
-#~ msgstr "Εντοπίστηκε βάση δεδομένων"
-
-#, fuzzy
-#~ msgid "Database Name"
-#~ msgstr "Εντοπίστηκε βάση δεδομένων"
-
-#, fuzzy
-#~ msgid "created"
-#~ msgstr "Δημιούργησε"
-
-#, fuzzy
-#~ msgid "No public feed for this contact"
-#~ msgstr "Διαγραφή αυτής της επαφής"
-
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση 5.3 της PHP."
 
@@ -2003,6 +1900,9 @@ msgstr ""
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Αδύνατη η δημιουργία του αρχείου ρύθμισης '%s'."
 
+#~ msgid "Compatibility Test"
+#~ msgstr "Δοκιμασία συμβατότητας"
+
 #~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "Οι ακόλουθες προϋποθέσεις δεν καλύπτονταν. Παρακαλώ βεβαιωθείτε πως καλύπτονται όλες, για να μπορέσετε να προχωρήσετε στην εγκατάσταση του Movim."
 
@@ -2017,6 +1917,21 @@ msgstr ""
 
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Αδύνατο να ανοίξει το αρχείο καταγραφής '%s'"
+
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Δημιουργία Λογαριασμού"
+
+#~ msgid "My address"
+#~ msgstr "Η διεύθυνσή μου"
+
+#~ msgid "Language"
+#~ msgstr "Γλώσσα"
+
+#~ msgid "Decline"
+#~ msgstr "Απόρριψη"
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Φορτώνεται το contact feed ..."
 
 #~ msgid "BOSH Connection Preferences"
 #~ msgstr "Επιλογές σύνδεσης BOSH"
@@ -2036,6 +1951,12 @@ msgstr ""
 #~ msgid "Retype"
 #~ msgstr "Επαναπληκτρολόγηση"
 
+#~ msgid "Create"
+#~ msgstr "Δημιούργησε"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Ο περιηγητης σας είναι αρκετά παλιός για να χρησιμοποιηθεί με Movim"
+
 #~ msgid "Actual version : "
 #~ msgstr "Τρέχουσα έκδοση "
 
@@ -2054,6 +1975,9 @@ msgstr ""
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Ευχαριστούμε που κατεβάσατε το Movim!"
 
+#~ msgid "Proxy Preferences"
+#~ msgstr "Προτιμήσεις proxy"
+
 #~ msgid "XMPP Connection Preferences"
 #~ msgstr "Προτιμήσεις σύνδεσης XMPP"
 
@@ -2063,11 +1987,20 @@ msgstr ""
 #~ msgid "Valid Bosh"
 #~ msgstr "Εγκυρο bosh"
 
+#~ msgid "Database Detected"
+#~ msgstr "Εντοπίστηκε βάση δεδομένων"
+
 #~ msgid "Make sure your password is safe :"
 #~ msgstr "Σιγουρευτείτε εαν ο κωδικός σας είναι ασφαλής"
 
 #~ msgid "A capital letter, a digit and a special character are recommended"
 #~ msgstr "Προτείνεται ένα κεφαλαίο γράμμα, ένα ψηφίο και ένας ειδικός χαρακτήρας"
 
+#~ msgid "%s - Add An Account"
+#~ msgstr "%s - Προσθέστε λογαριασμό"
+
 #~ msgid "8 characters"
 #~ msgstr "8 χαρακτήρες"
+
+#~ msgid "Composing..."
+#~ msgstr "Συνθέτοντας..."
