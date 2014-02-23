@@ -2,7 +2,7 @@
 
 touch files.list
 
-find ../ -name '*.php' > files.list
-find ../ -name '*.tpl' >> files.list
+find ../ -name '*.php' | grep -v 'cache' > files.list
+find ../ -name '*.tpl' | grep -v 'cache' >> files.list
 
-xgettext -kt -o messages.pot -L PHP -f files.list
+xgettext -e --no-wrap -kt -o messages.pot -L PHP -f files.list 
