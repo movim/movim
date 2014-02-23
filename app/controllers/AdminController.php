@@ -17,6 +17,6 @@ class AdminController extends BaseController {
             $this->name = 'adminlogin';
         }
 
-        session_write_close();
+        //session_write_close();
     }
 }

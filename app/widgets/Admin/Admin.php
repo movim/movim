@@ -307,7 +307,7 @@ class Admin extends WidgetBase {
             6 => t('talkative'),
             7 => t('ultimate'),
         );
-        
+        /*
         $default_log = 4;
         
         $html .= '
@@ -329,7 +329,7 @@ class Admin extends WidgetBase {
         $html .= '          </select>
                         </div>
                     </div>';
-                    
+        */
         $timezones = getTimezoneList();
                     
         $html .= '
@@ -338,9 +338,10 @@ class Admin extends WidgetBase {
                         <div class="select">
                             <select id="timezone" name="timezone">';
                                 foreach($timezones as $key => $value) {
-                                    if($this->_conf['timezone'] == $key)
+
+                                    if($this->_conf['timezone'] == $key) {
                                         $sel = 'selected="selected"';
-                                    else
+                                    } else
                                         $sel = '';
                                         
                                 $html .= '
