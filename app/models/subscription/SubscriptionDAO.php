@@ -18,7 +18,7 @@ class SubscriptionDAO extends ModlSQL {
             'Subscription', 
             array(                
                 'subscription' => $s->subscription,
-                'timestamp' => $s->timestamp,
+                'timestamp' => date(DATE_ISO8601),
                 'jid'   => $s->jid,
                 'server'=> $s->server,
                 'node'  => $s->node,
@@ -39,7 +39,7 @@ class SubscriptionDAO extends ModlSQL {
                 'Subscription', 
                 array(
                     'subscription' => $s->subscription,
-                    'timestamp' => $s->timestamp,
+                    'timestamp' => date(DATE_ISO8601),
                     'jid'   => $s->jid,
                     'server'=> $s->server,
                     'node'  => $s->node,
