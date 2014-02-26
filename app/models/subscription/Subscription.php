@@ -45,7 +45,7 @@ class Subscription extends ModlModel {
         $this->subscription = (string)$s->attributes()->subscription;
         $this->subid        = (string)$s->attributes()->subid;
         $this->tags         = serialize(array());
-        $this->timestamp    = date('Y-m-d H:i:s', rand(1111111111, 8888888888));
+        //$this->timestamp    = date('Y-m-d H:i:s', rand(1111111111, 8888888888));
         
         if($this->subid = '')
             $this->subid = 'default';
