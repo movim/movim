@@ -104,15 +104,17 @@ class SessionxDAO extends ModlSQL {
         $this->_sql = '
             update sessionx
             set
-                '.$key.' = :'.$key.'
+                '.$key.'  = :'.$key.',
+                timestamp = :timestamp
             where 
                 session = :session';
         
         $this->prepare(
             'Sessionx', 
             array(
-                'session' => $session,
-                $key => $value
+                'session'   => $session,
+                $key        => $value,
+                'timestamp' => date(DATE_ISO8601)
             )
         );
 
@@ -154,15 +156,17 @@ class SessionxDAO extends ModlSQL {
         $this->_sql = '
             update sessionx
             set
-                id = :id
+                id          = :id,
+                timestamp   = :timestamp
             where 
                 session = :session';
         
         $this->prepare(
             'Sessionx', 
             array(
-                'session' => $session,
-                'id' => $value+1
+                'session'   => $session,
+                'id'        => $value+1,
+                'timestamp' => date(DATE_ISO8601)
             )
         );
 
@@ -190,7 +194,8 @@ class SessionxDAO extends ModlSQL {
         $this->_sql = '
             update sessionx
             set
-                rid = :rid
+                rid         = :rid,
+                timestamp   = :timestamp
             where 
                 session = :session';
         
@@ -198,7 +203,8 @@ class SessionxDAO extends ModlSQL {
             'Sessionx', 
             array(
                 'session' => $session,
-                'rid' => $value+1
+                'rid' => $value+1,
+                'timestamp' => date(DATE_ISO8601)
             )
         );
 
@@ -226,11 +232,13 @@ class SessionxDAO extends ModlSQL {
     function clean() {
         $this->_sql = '
             delete from sessionx
-            where timestamp < NOW() - 3600';
+            where timestamp < :timestamp';
         
         $this->prepare(
             'Sessionx', 
-            array()
+            array(
+                'timestamp' => date(DATE_ISO8601, time() - 3600)
+            )
         );
 
         $this->run('Sessionx');
