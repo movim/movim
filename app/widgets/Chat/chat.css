@@ -163,6 +163,7 @@
 #chats .chat .panel .text {
     overflow: hidden;
     border: 1px solid #888;
+    min-height: 2.2em;
 }
 
 #chats .chat .panel .text textarea {
