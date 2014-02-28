@@ -266,6 +266,7 @@ class Bootstrap {
         modl\loadModel('Item');
         modl\loadModel('Message');
         modl\loadModel('Sessionx');
+        modl\loadModel('Conference');
         
         $db->setConnectionArray(\System\Conf::getServerConf());
         $db->connect();

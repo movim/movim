@@ -178,7 +178,7 @@ class Node extends WidgetCommon
         $nodeview->assign('subscribe',      $this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'"));
         $nodeview->assign('unsubscribe',    $this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'"));
 
-        $nodeview->assign('submitform',     $submitform);
+        $nodeview->assign('submitform',     '');
 
         $nodeview->assign('posts',           $this->preparePostsNode($serverid, $groupid, -1));
 
