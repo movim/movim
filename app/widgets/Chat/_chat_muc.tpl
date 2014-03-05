@@ -3,25 +3,16 @@
      id="chat{$jid}">
     <div class="panel" {$panelstyle}>
         <div class="head" >
-            
             <a class="name">
-                {$jid}
+                {$conference->name} - {$jid}
             </a>
             <span 
                 class="chatbutton arrow" 
                 onclick="{$toggle} hideTalk(this); scrollAllTalks()">
             </span>
         </div>
-        <div class="list">
-            <ul>
-            {loop="muclist"}
-                {if="$value->presence < 5"}
-                    <li class="{$c->colorNameMuc($value->ressource)}">
-                        {$value->ressource}
-                    </li>
-                {/if}
-            {/loop}
-            </ul>
+        <div class="list" id="list{$jid}">
+            {$muclist}
         </div>
         <div class="messages" id="messages{$jid}">
             {$messageshtml}
@@ -47,7 +38,7 @@
         {$tabstyle} 
         onclick="{$toggle} showTalk(this); scrollAllTalks();">
         <div class="name">
-            {$jid}
+            {$conference->name}
         </div>
     </div>
 

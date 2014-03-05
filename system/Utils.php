@@ -705,7 +705,7 @@ function movim_log($log) {
     \system\Logs\Logger::log($log);
 
     openlog('movim', LOG_NDELAY, LOG_USER);
-    $errlines = explode("\n",serialize($log));
+    $errlines = explode("\n", serialize($log));
     foreach ($errlines as $txt) { syslog(LOG_DEBUG, $txt); } 
     closelog();
 }

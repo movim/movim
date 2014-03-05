@@ -18,10 +18,10 @@
    style="float: right;"
    title="{$c->t('Add a new Chat Room')}"
    onclick="movim_toggle_display('#bookmarkmucadd')"></a>
-<a class="button color icon link alone merged" 
+<!--<a class="button color icon link alone merged" 
    style="float: right;"
    title="{$c->t('Add a new URL')}"
-   onclick="movim_toggle_display('#bookmarkurladd')"></a>
+   onclick="movim_toggle_display('#bookmarkurladd')"></a>-->
 <a class="button black icon alone refresh merged left" 
    style="float: right;"
    title="{$c->t('Refresh')}"
