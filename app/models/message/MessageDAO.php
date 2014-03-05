@@ -71,6 +71,23 @@ class MessageDAO extends ModlSQL {
             
         return $this->run('Message');
     }
+
+    function deleteContact($jid) {
+        $this->_sql = '
+            delete from message 
+            where jidfrom = :jidfrom
+               or jidto   = :jidto';
+
+        $this->prepare(
+            'Message',
+            array(
+                'jidfrom'   => $jid,
+                'jidto'     => $jid
+            )
+        );
+            
+        return $this->run('Message');
+    }
     
     function clearMessage() {
         $this->_sql = '

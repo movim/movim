@@ -8,7 +8,9 @@ function scrollAllTalks() {
 
 function scrollTalk(params) {
     var messages = document.getElementById(params);
-    messages.scrollTop = messages.scrollHeight;
+    if(messages != null) {
+        messages.scrollTop = messages.scrollHeight;
+    }
 }
 
 //Loads the Notification sound.

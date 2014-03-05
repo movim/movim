@@ -20,6 +20,8 @@
 
 class Bookmark extends WidgetBase
 {
+    private $_list_server;
+    
     function WidgetLoad()
     {
         $this->addcss('bookmark.css');
@@ -36,54 +38,89 @@ class Bookmark extends WidgetBase
 
         $this->view->assign('getbookmark',      $this->genCallAjax("ajaxGetBookmark"));
         $this->view->assign('setbookmark',      $this->genCallAjax("ajaxSetBookmark", "''"));
-        $this->view->assign('preparebookmark',  $this->prepareBookmark(Cache::c('bookmark')));
+        
+        $this->view->assign('preparebookmark',  $this->prepareBookmark());
+    }
+
+    function prepareBookmark() {
+        $cd = new \modl\ConferenceDAO();
+        $sd = new \modl\SubscriptionDAO();
+        
+        // The URL add form
+        $listview = $this->tpl();
+        $listview->assign('conferences', $cd->getAll());
+        $listview->assign('subscriptions', $sd->getSubscribed());
+
+        $html = '';
+
+        // The URL add form
+        $urlview = $this->tpl();
+        $urlview->assign(
+            'submit', 
+            $this->genCallAjax(
+                'ajaxBookmarkUrlAdd', 
+                "movim_parse_form('bookmarkurladd')")
+        );
+        $html .= $urlview->draw('_bookmark_url_add', true);
+        
+        // The MUC add form
+        $mucview = $this->tpl();
+        $mucview->assign(
+            'submit', 
+            $this->genCallAjax(
+                'ajaxBookmarkMucAdd', 
+                "movim_parse_form('bookmarkmucadd')")
+        );
+        $html .= $mucview->draw('_bookmark_muc_add', true);
+
+        $html .= $listview->draw('_bookmark_list', true);
+        return $html;
+    }
+
+    function checkNewServer($node) {
+        $r = false;
+        
+        if($this->_list_server != $node->server)
+            $r = true;
+
+        $this->_list_server = $node->server;
+        return $r;
+    }
+
+    function getMucRemove($node) {
+        return $this->genCallAjax(
+            'ajaxBookmarkMucRemove',
+            "'".$node->conference."'"
+            );
+    }
+    
+    function getMucJoin($node) {
+        return $this->genCallAjax(
+            'ajaxBookmarkMucJoin',
+            "'".$node->conference."'",
+            "'".$node->nick."'"
+            );
     }
     
     function onGroupSubscribed()
     {
-        $arr = Cache::c('bookmark');
-
-        $html = $this->prepareBookmark($arr);     
+        $html = $this->prepareBookmark();     
         RPC::call('movim_fill', 'bookmarks', $html);   
         RPC::call('setBookmark');   
     }
     
     function onGroupUnsubscribed()
     {
-        $arr = Cache::c('bookmark');
-        
-        $html = $this->prepareBookmark($arr);  
+        $html = $this->prepareBookmark();  
         RPC::call('movim_fill', 'bookmarks', $html);   
         RPC::call('setBookmark');        
     }
     
-    function onBookmark($arr)
+    function onBookmark()
     {
-        //$i = 0;
+        //Cache::c('bookmark', $arr);
 
-        //$sd = new \modl\SubscriptionDAO();
-
-        /*foreach($arr as $b) {
-            if($b['type'] == 'subscription') {
-                $su = new \modl\Subscription();
-                $su->jid    = $this->user->getLogin();
-                $su->server = $b['server'];
-                $su->node   = $b['node'];
-                $su->subscription   = 'subscribed';
-                $su->subid  = $b['subid'];
-                $su->timestamp      = date('Y-m-d H:i:s', rand(1111111111, 8888888888));
-            
-                $sd->set($su);
-                
-                unset($arr[$i]);
-            }
-            $i++;
-        }*/
-
-        Cache::c('bookmark', $arr);
-        //array_push($arr, Cache::c('bookmark'));
-
-        $html = $this->prepareBookmark($arr);
+        $html = $this->prepareBookmark();
         RPC::call('movim_fill', 'bookmarks', $html);
         Notification::appendNotification(t('Bookmarks updated'), 'info');
     }
@@ -100,30 +137,42 @@ class Bookmark extends WidgetBase
           ->request();
     }
     
-    function ajaxSetBookmark($arr = null) 
-    {            
-        if($arr == null || $arr == '')
-            $arr = Cache::c('bookmark');
-        if($arr == null)
-            $arr = array();
+    function ajaxSetBookmark($item = false) 
+    {
+        $arr = array();
+
+        if($item) {
+            array_push($arr, $item);
+        }
         
         $sd = new \modl\SubscriptionDAO();
+        $cd = new \modl\ConferenceDAO();
 
-        if($sd != null) {
-            foreach($sd->getSubscribed() as $s) {
-                array_push($arr,
-                    array(
-                        'type'      => 'subscription',
-                        'server'    => $s->server,
-                        'title'     => $s->title,
-                        'subid'     => $s->subid,
-                        'tags'      => unserialize($s->tags),
-                        'node'      => $s->node));   
-            }
+        foreach($sd->getSubscribed() as $s) {
+            array_push($arr,
+                array(
+                    'type'      => 'subscription',
+                    'server'    => $s->server,
+                    'title'     => $s->title,
+                    'subid'     => $s->subid,
+                    'tags'      => unserialize($s->tags),
+                    'node'      => $s->node));   
         }
+
+        foreach($cd->getAll() as $c) {
+            array_push($arr,
+                array(
+                    'type'      => 'conference',
+                    'name'      => $c->name,
+                    'autojoin'  => $c->autojoin,
+                    'nick'      => $c->nick,
+                    'jid'       => $c->conference)); 
+        }
+
         
         $b = new moxl\BookmarkSet();
         $b->setArr($arr)
+          ->setTo($this->user->getLogin())
           ->request();
     }
     
@@ -139,36 +188,24 @@ class Bookmark extends WidgetBase
             RPC::call('movim_fill', 'bookmarkmucadderror', $html);
             RPC::commit();            
         } else {
-        
-            $bookmarks = Cache::c('bookmark');        
-                    
-            if($bookmarks == null)
-                $bookmarks = array();
-            
-            array_push($bookmarks,
-                array(
+            $item = array(
                     'type'      => 'conference',
                     'name'      => $form['name'],
                     'autojoin'  => $form['autojoin'],
                     'nick'      => $form['nick'],
-                    'jid'       => $form['jid']));   
+                    'jid'       => $form['jid']);   
             
-            $this->ajaxSetBookmark($bookmarks);
+            $this->ajaxSetBookmark($item);
         }
     }
     
     // Remove a MUC
     function ajaxBookmarkMucRemove($jid)
     {
-        $arr = Cache::c('bookmark');
-        foreach($arr as $key => $b) {
-            if($b['type'] == 'conference' && $b['jid'] == $jid)
-                unset($arr[$key]);
-        }
-
-        $b = new moxl\BookmarkSet();
-        $b->setArr($arr)
-          ->request();
+        $cd = new \modl\ConferenceDAO();
+        $cd->deleteNode($jid);
+        
+        $this->ajaxSetBookmark();
     }
     
     // Join a MUC 
@@ -179,7 +216,7 @@ class Bookmark extends WidgetBase
           ->setNickname($nickname)
           ->request();
     }
-    
+    /*
     // Add a new URL
     function ajaxBookmarkUrlAdd($form) 
     {
@@ -341,4 +378,5 @@ class Bookmark extends WidgetBase
         
         return $html;
     }
+    */
 }
