@@ -15,6 +15,12 @@
     {/if}
     <li>
         
-        <a href="{$c->route('node', array($value->server, $value->node))}">{$value->name}</a>
+        <a href="{$c->route('node', array($value->server, $value->node))}">
+        {if="$value->name"}
+            {$value->name}
+        {else}
+            {$value->node}
+        {/if}
+        </a>
     </li>
 {/loop}
