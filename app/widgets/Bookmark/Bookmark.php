@@ -27,6 +27,8 @@ class Bookmark extends WidgetBase
         $this->addcss('bookmark.css');
         $this->registerEvent('bookmark', 'onBookmark');
         $this->registerEvent('bookmarkerror', 'onBookmarkError');
+        
+        //$this->registerEvent('mucrole', 'onMucRole');
 
         $this->registerEvent('groupsubscribed', 'onGroupSubscribed');
         $this->registerEvent('groupunsubscribed', 'onGroupUnsubscribed');
@@ -118,13 +120,16 @@ class Bookmark extends WidgetBase
     
     function onBookmark()
     {
-        //Cache::c('bookmark', $arr);
-
         $html = $this->prepareBookmark();
         RPC::call('movim_fill', 'bookmarks', $html);
         Notification::appendNotification(t('Bookmarks updated'), 'info');
     }
-    
+    /*
+    function onMucRole($arr)
+    {
+
+    }
+    */
     function onBookmarkError($error)
     {
         Notification::appendNotification(t('An error occured : ').$error, 'error');

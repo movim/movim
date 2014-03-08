@@ -3,8 +3,8 @@
 namespace modl;
 
 class SessionDAO extends ModlSQL {
-    function set($session, $container, $name, $value, $timestamp) {
-        $timestamp = date(DATE_ISO8601, $timestamp);
+    function set($session, $container, $name, $value) {
+        $timestamp = date(DATE_ISO8601);
 
         $this->_sql = '
             update session
@@ -48,7 +48,7 @@ class SessionDAO extends ModlSQL {
         }
     }
     
-    function get($session, $container, $name) {        
+    function get($session, $container, $name) {
         $this->_sql = '
             select * from session
             where 
