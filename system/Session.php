@@ -97,7 +97,7 @@ class Session
         $value = base64_encode(serialize($value));
         
         $sd = new modl\SessionDAO();
-        $sd->set(self::$sid, $this->container, $varname, $value, time());
+        $sd->set(self::$sid, $this->container, $varname, $value);
 
         return $value;
     }
