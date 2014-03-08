@@ -193,7 +193,7 @@
     clear: both;
 }
 
-#chats .chat .panel .messages .message .content {
+#chats .chat .panel .messages .message .content:not(.html) {
     white-space: pre-wrap;
 }
 
@@ -293,6 +293,10 @@
 #chats .muc .list ul li {
     line-height: 1.5em;
     padding: 0 0.5em;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #chats .muc .panel:after {
