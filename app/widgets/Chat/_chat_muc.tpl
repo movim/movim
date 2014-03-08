@@ -6,6 +6,7 @@
             <a class="name">
                 {$conference->name} - {$jid}
             </a>
+            <span class="chatbutton cross" onclick="{$exitmuc}"></span>
             <span 
                 class="chatbutton arrow" 
                 onclick="{$toggle} hideTalk(this); scrollAllTalks()">
