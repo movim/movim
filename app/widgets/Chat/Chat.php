@@ -356,8 +356,14 @@ class Chat extends WidgetBase
                 '<div class="message ';
                 if($message->session == $message->jidfrom)
                     $html.= 'me';
-                   
-            $content = $message->body;
+
+            if(isset($message->html)) {
+                $type = 'html';
+                $content = $message->html;
+            } else {
+                $type = '';
+                $content = prepareString(htmlentities($message->body, ENT_COMPAT, "UTF-8"));
+            }
                     
             if(preg_match("#^/me#", $message->body)) {
                 $html .= ' own ';
@@ -383,8 +389,8 @@ class Chat extends WidgetBase
                     </span>';
                 
             $html .=
-                    '<div class="content">'.
-                        prepareString(htmlentities($content, ENT_COMPAT, "UTF-8")).
+                    '<div class="content '.$type.'">'.
+                        $content.
                     '</div>
                 </div>';
             return $html;
@@ -536,8 +542,8 @@ class Chat extends WidgetBase
                         ));
         
         $sess = \Session::start(APP_NAME);
-        $state = $sess->get('muc'.$jid);
-
+        $state = $sess->get(md5('muc'.$jid));
+        
         $mucview->assign('conference', $conference); 
         $mucview->assign('muclist', $this->prepareMucList($jid)); 
         
@@ -567,12 +573,14 @@ class Chat extends WidgetBase
     
     function ajaxToggleMuc($jid)
     {
+        $hash = md5('muc'.$jid);
+        
         $sess = \Session::start(APP_NAME);
-        $state = $sess->get('muc'.$jid);
+        $state = $sess->get($hash);
         if($state == 1)
-            $sess->set('muc'.$jid, 0);
+            $sess->set($hash, 0);
         else
-            $sess->set('muc'.$jid, 1);
+            $sess->set($hash, 1);
     }
     
     function colorNameMuc($ressource)
