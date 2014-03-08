@@ -25,6 +25,7 @@ class Notification extends WidgetCommon
         $this->addcss('notification.css');
         $this->addjs('notification.js');
         $this->registerEvent('pubsuberror', 'onPubsubError');
+        $this->registerEvent('moxlerror', 'onMoxlError');
     }
     
     static function appendNotification($message, $type = 'info')
@@ -41,6 +42,10 @@ class Notification extends WidgetCommon
 
     function onPubsubError($error) {
         Notification::appendNotification($error, 'error');
+    }
+
+    function onMoxlError($arr) {
+        Notification::appendNotification($arr[1], 'error');
     }
     
     function build()

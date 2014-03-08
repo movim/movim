@@ -15,6 +15,7 @@ class MessageDAO extends ModlSQL {
             subject,
             thread,
             body,
+            html,
             published,
             delivered)
             values(
@@ -26,6 +27,7 @@ class MessageDAO extends ModlSQL {
                 :subject,
                 :thread,
                 :body,
+                :html,
                 :published,
                 :delivered
                 )';
@@ -41,8 +43,9 @@ class MessageDAO extends ModlSQL {
                 'subject'   => $message->subject,
                 'thread'    => $message->thread,
                 'body'      => $message->body,
+                'html'      => $message->html,
                 'published' => $message->published,
-                'delivered' =>$message->delivered
+                'delivered' => $message->delivered
             )
         );
             
