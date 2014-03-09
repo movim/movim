@@ -127,6 +127,12 @@ table#feedsubmitform {
     text-overflow: ellipsis;
 }
 
+.metadata {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .post .older {
     margin-right: 0px;
 }

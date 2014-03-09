@@ -5,5 +5,4 @@
         var paused = new Date().getTime();
     </script>
     {$chats}
-    <div class="filler"></div>
 </div>
