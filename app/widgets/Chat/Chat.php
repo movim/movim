@@ -68,8 +68,12 @@ class Chat extends WidgetBase
                        'messages'.$arr['jid']);
     }
 
-    function onPresenceMuc() {
-        Notification::appendNotification(t('Connected to the chatroom'), 'success');
+    function onPresenceMuc($toggle) {
+        if($toggle)
+            Notification::appendNotification(t('Connected to the chatroom'), 'success');
+        else
+            Notification::appendNotification(t('Disconnected to the chatroom'), 'success');
+            
         RPC::call('movim_fill', 'chats', $this->prepareChats());
         RPC::call('scrollAllTalks');
     }
@@ -346,6 +350,20 @@ class Chat extends WidgetBase
                    'messages'.$contact->jid);
         RPC::commit();
     }
+
+    /**
+     * Exit a muc
+     *
+     * @param $jid
+     * @return void
+     */
+    function ajaxExitMuc($jid, $ressource)
+    {
+        $pu = new \moxl\PresenceUnavaiable();
+        $pu->setTo($jid)
+           ->setRessource($ressource)
+           ->request();
+    }
     
     function prepareMessage($message, $muc = false) {
         if($message->body != '' || $message->subject != '') {
@@ -421,9 +439,14 @@ class Chat extends WidgetBase
 
         // And we show the subscribed conferences
         $cd = new \modl\ConferenceDAO();
-        foreach($cd->getConnected() as $c) {
-            $html .= trim($this->prepareMuc($c));
+        $cs = $cd->getConnected();
+        if($cs) {
+            foreach($cs as $c) {
+                $html .= trim($this->prepareMuc($c));
+            }
         }
+
+        $html .= '<div class="filler"></div>';
         
         return $html;
     }
@@ -540,6 +563,13 @@ class Chat extends WidgetBase
                                 "sendMessage(this, '".$jid."')",
                                 "true"
                         ));
+
+        $session = \Sessionx::start();
+                        
+        $mucview->assign(
+            'exitmuc', 
+            $this->genCallAjax("ajaxExitMuc", "'".$jid."'", "'".$session->username."'")
+        );
         
         $sess = \Session::start(APP_NAME);
         $state = $sess->get(md5('muc'.$jid));
