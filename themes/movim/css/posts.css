@@ -182,13 +182,6 @@ article table#commentsubmit .commentsubmitrow td {
     height: rgba(0, 0, 0, 0.5);
 }
 
-
-.metadata {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 .metadata p {
     padding: 0 1em;
     margin-bottom: 1em;
@@ -199,6 +192,9 @@ article table#commentsubmit .commentsubmitrow td {
     line-height: 2em;
     display: inline-block;
     padding-right: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .metadata span {
