@@ -35,66 +35,30 @@ class Explore extends WidgetCommon {
     function prepareServers() {
         $nd = new \modl\ItemDAO();
         
-        $servers = $nd->getServers();
-        
-        $html = '<ul class="list">';
+        $groups = $nd->getGroupServers();
+        $chatrooms = $nd->getConferenceServers();
 
-        $chatrooms = '';
-        $pubsubs = '';
+        // A little filter
+        $i = 0;
+        foreach($chatrooms as $c) {
+            if(filter_var($c->server, FILTER_VALIDATE_EMAIL))
+                unset($chatrooms[$i]);
 
-        foreach($servers as $s) {
-            list($type, $server ,$ext) = explode('.', $s->server);
+            if(count(explode('.', $c->server)) < 3)
+                unset($chatrooms[$i]);
 
-            switch ($type) {
-                case 'conference':
-                    $cat = 'chatroom';
-                    break;
-                case 'muc':
-                    $cat = 'chatroom';            
-                    break;
-                case 'discussion':
-                    $cat = 'chatroom';
-                    break;
-                case 'chat':
-                    $cat = 'chatroom';
-                    break;
-                case 'pubsub':
-                    $cat = 'pubsub';
-                    break;
-                default:
-                    if($ext == null)
-                        $cat = null;
-                    else
-                        $cat = 'pubsub';
-                    break;
-            }
-
-            if(!filter_var($s->server, FILTER_VALIDATE_EMAIL) && isset($cat)) {
-                if($cat == 'chatroom') {
-                    $chatrooms .= '
-                        <li>
-                            <a href="'.Route::urlize('server', $s->server).'">
-                                <span class="tag green">'.t('Chatrooms').'</span>'.
-                                $s->server. ' 
-                                <span class="tag">'.$s->number.'</span>
-                            </a>
-                        </li>';
-                } elseif($cat == 'pubsub') {
-                    $pubsubs .= '
-                        <li>
-                            <a href="'.Route::urlize('server', $s->server).'">
-                                <span class="tag orange">'.t('Groups').'</span>'.
-                                $s->server. ' 
-                                <span class="tag">'.$s->number.'</span>
-                            </a>
-                        </li>';
-                }
-            }
+            $i++;
         }
+        
+        $html = '';
 
-        $html .= $pubsubs.$chatrooms;
-
-        $html .= '</ul>';
+        $groupsview = $this->tpl();
+        $groupsview->assign('groups', $groups);
+        $html .= $groupsview->draw('_explore_groups', true);
+        
+        $chatroomsview = $this->tpl();
+        $chatroomsview->assign('chatrooms', $chatrooms);
+        $html .= $chatroomsview->draw('_explore_chatrooms', true);
         
         return $html;
     }
