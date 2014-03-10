@@ -108,10 +108,13 @@ class ServerNodes extends WidgetCommon
                     $tags .= '<span class="tag green">'.t('Subscribed').'</span>';
                     
                 $url = '';
-                if($i->node != null)
+                if($i->node != null) {
                     $url = 'href="'.Route::urlize('node', array($i->server, $i->node)).'"';
-                elseif($i->jid != null)
+                } elseif($i->jid != null && !filter_var($i->jid, FILTER_VALIDATE_EMAIL)) {
                     $url = 'href="'.Route::urlize('server', array($i->jid)).'"';
+                } else {
+                    $tags .= '<span class="tag">'.$i->jid.'</span>';
+                }
             
                 $html .= '
                     <li>
