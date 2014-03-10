@@ -480,6 +480,7 @@ ul.list {
 ul.list li {
     border-bottom: 1px solid #EEE;
     clear: both;
+    padding: 0 0.5em;
 }
 
 ul.list li:last-child {
