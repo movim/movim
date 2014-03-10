@@ -75,6 +75,48 @@ class ItemDAO extends ModlSQL {
         return $this->run('Server'); 
     }
     
+    function getConferenceServers() {
+        $this->_sql = '
+            select server, count(node) as number 
+            from item
+            where node not like :node
+            and node = :name
+            group by server
+            order by number desc';
+            
+        $this->prepare(
+            'Item',
+            array(
+                'node' => 'urn:xmpp:microblog:0:comments%',
+                // It's a hack to affect an empty string
+                'name' => ''
+            )
+        );
+            
+        return $this->run('Server'); 
+    }
+    
+    function getGroupServers() {
+        $this->_sql = '
+            select server, count(node) as number 
+            from item
+            where node not like :node
+            and node != :name
+            group by server
+            order by number desc';
+            
+        $this->prepare(
+            'Item',
+            array(
+                'node' => 'urn:xmpp:microblog:0:comments%',
+                // Little hack here too
+                'name' => ''
+            )
+        );
+            
+        return $this->run('Server'); 
+    }
+    
     function getItems($server) {
         
         $this->_sql = '
