@@ -17,7 +17,7 @@
 
 class ContactInfo extends WidgetCommon
 {    
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('tune', 'onTune');    
     }

@@ -21,7 +21,7 @@
 class NodeAffiliations extends WidgetBase
 {
 
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('pubsubaffiliations', 'onGroupMemberList');
         $this->registerEvent('pubsubaffiliationssubmited', 'onSubmit');

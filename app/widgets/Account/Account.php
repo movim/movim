@@ -20,7 +20,7 @@
  
 class Account extends WidgetBase {
     
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('account.css');
         $this->addjs('account.js');

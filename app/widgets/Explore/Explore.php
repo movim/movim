@@ -1,7 +1,7 @@
 <?php
 
 class Explore extends WidgetCommon {
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('explore.css');
     }

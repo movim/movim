@@ -20,7 +20,7 @@
 
 class Chat extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('chat.css');
         $this->addjs('chat.js');

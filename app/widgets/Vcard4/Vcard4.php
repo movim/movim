@@ -17,7 +17,7 @@
 
 class Vcard4 extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('myvcard4valid', 'onMyVcard4Received');
         $this->registerEvent('myvcard4invalid', 'onMyVcard4NotReceived');

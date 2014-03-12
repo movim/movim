@@ -20,7 +20,7 @@
  
 class Subscribe extends WidgetBase {
     
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('subscribe.css');
         $this->addjs('subscribe.js');
