@@ -20,7 +20,7 @@
 
 class Config extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         $this->addjs('color/jscolor.js');
         $this->registerEvent('config', 'onConfig');

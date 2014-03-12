@@ -72,7 +72,7 @@ class WidgetBase
                 
         $this->name = get_class($this);
 
-        $this->WidgetLoad();
+        $this->load();
     }
     
     function t() {
@@ -83,7 +83,7 @@ class WidgetBase
         return call_user_func_array('Route::urlize',func_get_args());
     }
 
-    function WidgetLoad()
+    function load()
     {
     }
 

@@ -4,7 +4,7 @@ if (!defined('DOCUMENT_ROOT')) die('Access denied');
 class News extends WidgetCommon {
     private $_feedsize = 20;
     
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('opt_post', 'onStream');
         $this->registerEvent('stream', 'onStream');

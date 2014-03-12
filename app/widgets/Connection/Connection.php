@@ -15,7 +15,7 @@
 
 class Connection extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('connection.css');
         $this->registerEvent('connection', 'onConnection');

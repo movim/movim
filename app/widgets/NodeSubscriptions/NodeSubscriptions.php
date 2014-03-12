@@ -21,7 +21,7 @@
 class NodeSubscriptions extends WidgetBase
 {
 
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('pubsubsubscriptions', 'onSubscriptionsList');
         $this->registerEvent('pubsubsubscriptionsssubmited', 'onSubmit');

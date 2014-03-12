@@ -16,7 +16,7 @@
  */
  
 class AdminLogin extends WidgetBase {  
-    function WidgetLoad()
+    function load()
     {
 
 
