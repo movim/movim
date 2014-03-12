@@ -19,7 +19,7 @@
 
 class Syndication extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         ob_clean();
         header("Content-Type: application/atom+xml; charset=UTF-8");

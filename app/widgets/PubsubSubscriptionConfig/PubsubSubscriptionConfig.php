@@ -21,7 +21,7 @@
 class PubsubSubscriptionConfig extends WidgetBase
 {
 
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('groupsubscribedlist', 'onGroupSubscribedList');
         $this->registerEvent('groupadded', 'onGroupAdded');

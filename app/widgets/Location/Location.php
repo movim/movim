@@ -20,7 +20,7 @@
 
 class Location extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         $this->addjs('location.js');
 		$this->registerEvent('locationpublished', 'onLocationPublished');

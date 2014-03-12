@@ -20,7 +20,7 @@
 
 class VisioExt extends WidgetBase
 {
-    function WidgetLoad() {
+    function load() {
         $this->addjs('visioext.js');
         $this->registerEvent('jinglesessioninitiate',   'onSessionInitiate');
         $this->registerEvent('jinglesessionterminate',  'onSessionTerminate');

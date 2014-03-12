@@ -171,7 +171,7 @@ The basic template of a Movim widget is as follows:
 @verbatim
 class MyWidget extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('incomemessage', 'onIncomingMessage');
     }
@@ -195,10 +195,10 @@ class MyWidget extends WidgetBase
 @end cartouche
 
 Note that the constructor must not be shadowed. Instead the parent class
-provides a @code{WidgetLoad()} function that is called right at the end of the
+provides a @code{load()} function that is called right at the end of the
 parent constructor.
 
-Event handlers must be defined into @code{WidgetLoad()}.
+Event handlers must be defined into @code{load()}.
 
 The @code{build()} function is called when the widget is being written onto the
 interface. That's typically where you should put your HTML code.
@@ -214,7 +214,7 @@ An event handler is a public method that only takes one parameter:
 @code{$data}, which usually is an array that contains the data returned by the
 XMPP server.
 
-Your handlers must be registered in @code{WidgetLoad()} using the method:
+Your handlers must be registered in @code{load()} using the method:
 
 @cartouche
 @verbatim

@@ -20,7 +20,7 @@
 
 class Help extends WidgetBase
 {
-    function WidgetLoad() {
+    function load() {
     }
     
     function build()

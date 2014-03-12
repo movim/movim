@@ -17,7 +17,7 @@
 
 class Visio extends WidgetBase
 {
-	function WidgetLoad()
+	function load()
 	{
     	$this->addcss('visio.css');
     	$this->addjs('visio.js');

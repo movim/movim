@@ -19,7 +19,7 @@
  */
 
 class Media extends WidgetBase {
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('media.css');
         $this->addjs('media.js');
