@@ -12,7 +12,7 @@
 
 class System extends WidgetBase {
 
-    function WidgetLoad()
+    function load()
     {
         $this->view->assign('base_uri',     BASE_URI);
         $this->view->assign('error_uri',    substr_replace(Route::urlize('disconnect', 'err'), '', -3));

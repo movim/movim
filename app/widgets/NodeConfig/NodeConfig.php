@@ -21,7 +21,7 @@
 class NodeConfig extends WidgetBase
 {
 
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('pubsubconfig', 'onConfigForm');
         $this->registerEvent('pubsubconfigsubmited', 'onGroupConfig');

@@ -3,7 +3,7 @@
 class Feed extends WidgetCommon {
     private $_feedsize = 10;
     
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('feed.css');
         

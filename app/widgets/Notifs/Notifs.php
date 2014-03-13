@@ -20,7 +20,7 @@
 
 class Notifs extends WidgetCommon
 {
-    function WidgetLoad()
+    function load()
     {
     	$this->addcss('notifs.css');
     	$this->addjs('notifs.js');

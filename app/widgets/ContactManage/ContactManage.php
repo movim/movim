@@ -20,7 +20,7 @@
 
 class ContactManage extends WidgetCommon
 {
-    function WidgetLoad() {
+    function load() {
         $this->registerEvent('rosterupdateditem', 'onRoster');
     }
 

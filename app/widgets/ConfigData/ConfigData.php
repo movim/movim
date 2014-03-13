@@ -20,7 +20,7 @@
 
 class ConfigData extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('configdata.css');
         

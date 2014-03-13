@@ -20,7 +20,7 @@
  
 class AccountError extends WidgetBase {
     
-    function WidgetLoad()
+    function load()
     {
         $warning = '';
         
