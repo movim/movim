@@ -21,7 +21,7 @@
 class ContactSummary extends WidgetCommon
 {
 
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('contactsummary.css');
         $this->registerEvent('vcard', 'onVcard');

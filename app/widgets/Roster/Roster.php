@@ -22,7 +22,7 @@ class Roster extends WidgetBase
 {
     private $grouphtml;
 
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('roster.css');
         $this->addjs('roster.js');

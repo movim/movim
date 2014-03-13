@@ -23,7 +23,7 @@ class Profile extends WidgetCommon
 
     private static $status;
 
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('profile.css');
         $this->addjs('profile.js');

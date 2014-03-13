@@ -22,7 +22,7 @@ class Admin extends WidgetBase {
     private $_conf;
     private $_validatebutton;
     
-    function WidgetLoad()
+    function load()
     {
         $this->addjs('admin.js');
         $this->_conf = \system\Conf::getServerConf();
