@@ -21,7 +21,7 @@
 class ContactPubsubSubscription extends WidgetBase
 {
 
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('groupsubscribedlist', 'onGroupSubscribedList');
         $this->registerEvent('groupsubscribedlisterror', 'onGroupSubscribedListError');

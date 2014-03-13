@@ -20,7 +20,7 @@
 
 class ServerNodes extends WidgetCommon
 {
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('discoitems', 'onDiscoItems');
         $this->registerEvent('discoerror', 'onDiscoError');

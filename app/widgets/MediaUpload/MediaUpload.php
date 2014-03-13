@@ -19,7 +19,7 @@
  */
 
 class MediaUpload extends WidgetBase {
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('mediaupload.css');
     }

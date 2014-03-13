@@ -21,7 +21,7 @@
 class Presence extends WidgetBase
 {
     
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('presence.css');
         $this->registerEvent('mypresence', 'onMyPresence');

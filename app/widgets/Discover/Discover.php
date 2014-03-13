@@ -1,7 +1,7 @@
 <?php
 
 class Discover extends WidgetCommon {
-    function WidgetLoad()
+    function load()
     {
 
     }

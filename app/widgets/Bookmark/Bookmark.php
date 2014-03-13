@@ -22,7 +22,7 @@ class Bookmark extends WidgetBase
 {
     private $_list_server;
     
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('bookmark.css');
         $this->registerEvent('bookmark', 'onBookmark');

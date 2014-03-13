@@ -18,7 +18,7 @@
  */
  
 class Ack extends WidgetBase {
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('ack', 'onAckRequest');
         

@@ -17,7 +17,7 @@
 
 class Avatar extends WidgetBase
 {
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('myavatarvalid', 'onAvatarPublished');
         $this->registerEvent('myavatarinvalid', 'onAvatarNotPublished');

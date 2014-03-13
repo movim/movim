@@ -21,7 +21,7 @@
 class ContactCard extends WidgetCommon
 {
 
-    function WidgetLoad()
+    function load()
     {
     	$this->addcss('contactcard.css');
 		$this->registerEvent('vcard', 'onVcard');

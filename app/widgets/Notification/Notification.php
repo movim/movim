@@ -20,7 +20,7 @@
 
 class Notification extends WidgetCommon
 {
-    function WidgetLoad()
+    function load()
     {
         $this->addcss('notification.css');
         $this->addjs('notification.js');

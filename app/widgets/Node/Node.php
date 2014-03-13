@@ -23,7 +23,7 @@ class Node extends WidgetCommon
     private $role;
     private $_feedsize = 10;
     
-    function WidgetLoad()
+    function load()
     {
         $this->registerEvent('stream', 'onStream');
         $this->registerEvent('nostream', 'onStream');
