@@ -166,8 +166,13 @@ class Contact extends ModlModel {
         $this->adrlocality = (string)$vcard->vCard->ADR->LOCALITY;
         $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
         $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
-        
-        $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
+
+        if(filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
+            $this->photobin = base64_encode(
+                requestUrl((string)$vcard->vCard->PHOTO, 1));
+        } else {
+            $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
+        }
         
         $this->description = (string)$vcard->vCard->DESC;
     }
