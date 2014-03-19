@@ -58,8 +58,11 @@ class ContactManage extends WidgetCommon
                 <form name="manage">';
                 
             $ghtml = '';
-            foreach($groups as $g)
-                $ghtml .= '<option value="'.$g.'"/>';
+
+            if(is_array($groups)) {
+                foreach($groups as $g)
+                    $ghtml .= '<option value="'.$g.'"/>';
+            }
                 
             $html .= '
                     <input type="hidden" name="jid" value="'.$jid.'"/>
