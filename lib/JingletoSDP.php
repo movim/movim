@@ -31,7 +31,7 @@ class JingletoSDP {
         $this->action = (string)$this->jingle->attributes()->action;
     }
     
-    /*function getSessionId(){
+    function getSessionId(){
         $s = Session::start('movim');
         if($sid = $s->get('jingleSid')){
             return $sid;
@@ -40,7 +40,7 @@ class JingletoSDP {
             $sessid = $this->jingle->attributes()->sid;
             return substr(base_convert($sessid, 30, 10), 0, 6);
         }
-    }*/
+    }
     
     function generate() {
         if($this->jingle->attributes()->initiator) {
@@ -49,7 +49,7 @@ class JingletoSDP {
         } else
             $username = '-';
         
-        //$this->values['session_id'] = $this->getSessionId();
+        $this->values['session_id'] = $this->getSessionId();
         
         $sdp_version =
             'v=0';
