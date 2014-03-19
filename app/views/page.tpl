@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
 	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     
-    <meta name="viewport" content="width=device-width, user-scalable=no";>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <?php
         $this->addCss('css/animations.css');
 
