@@ -131,12 +131,17 @@ class RosterLinkDAO extends ModlSQL {
         );
         
         $results = $this->run('RosterLink');
-        $arr = array();
-        
-        foreach($results as $r)
-            array_push($arr, $r->groupname);
+
+        if(is_array($results)) {
+            $arr = array();
             
-        return $arr;
+            foreach($results as $r)
+                array_push($arr, $r->groupname);
+                
+            return $arr;
+        } else {
+            return false;
+        }
     }
     
     function getRoster($to = null) {
