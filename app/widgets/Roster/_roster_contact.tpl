@@ -40,6 +40,7 @@
                     <img
                         class="avatar"
                         src="{$value.avatar}"
+                        alt="avatar"
                     />{$value.name}
                     <span class="ressource">{$value.ressource}</span>
                 </a>
