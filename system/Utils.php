@@ -84,6 +84,8 @@ function prepareString($string) {
         );
     
     //$string = str_replace('<a ', '<a target="_blank" ', $string);
+
+
     
     //replace begin by www
     $string = preg_replace_callback(
@@ -100,13 +102,35 @@ function prepareString($string) {
     //replace  begin by http - https (before www)
     $string = preg_replace_callback(
             '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\'])((?:https?):\/\/([^<> \n\r]+)))/ix', function ($match) {
-                //print '<br />preg[2]';\system\Debug::dump($match);
                 if (isset($match[2]) && strlen($match[2])>0) {
                     return stripslashes($match[1].'<a href=\"'.$match[2].'\" target=\"_blank\">'.$match[3].'</a>');
                 } else {
                     return $match[0];
                 }
             }, ' ' . $string
+    );
+
+    // Twitter hashtags
+    $string = preg_replace_callback(
+        "/#[a-zA-Z0-9_-]*/", function ($match) {
+        /*
+         foreach($val_hashtag[0] as $hashtag){
+            $twitt = str_replace($hashtag,
+               '<a href="http://search.twitter.com/search?q='.urlencode($hashtag).
+               '" target="_blank">'.$hashtag.'</a>',$twitt);
+         }*/
+         
+        }, ' ' . $string
+    );
+
+    $string = preg_replace_callback(
+        "/@[a-zA-Z0-9_-]*/", function ($match) {
+            /*
+         foreach($val_at[0] as $at){
+            $twitt = str_replace($at,'<a href="http://twitter.com/'.str_replace("@","",$at).
+            '" target="_blank">'.$at.'</a>',$twitt);
+         }*/
+      }, ' ' . $string
     );
 
     //remove all scripts
@@ -129,7 +153,7 @@ function prepareString($string) {
     $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';
 
     foreach($smileys as $key => $value) {
-        $replace = ' <img class="smiley" src="'.$path.$value.'">';
+        $replace = ' <img class="smiley" alt="smiley" src="'.$path.$value.'">';
         $string = preg_replace('/(^|[ ])('.$key.')/',  $replace, $string);
     }
     

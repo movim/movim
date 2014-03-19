@@ -299,35 +299,39 @@ class Chat extends WidgetBase {
                 $message->body = $message->subject;
             }
             
-            $html='<div class="message ';
-            if($message->session == $message->jidfrom) {
-                $html .= 'me';
-            }
-            
-            if(isset($message->html)) {
-                $type = 'html';
-                $content = $message->html;
-            } else {
-                $type='';
-                $content = prepareString(
-                    htmlentities($message->body, ENT_COMPAT, "UTF-8"));
-            }
-            if(preg_match("#^/me#", $message->body)) {
-                $html .= ' own ';
-                $content = '** ' . substr($message->body, 4);
-            }
-            if(preg_match("#^\?OTR:#", $message->body)) {
-                $html .= ' crypt ';
-                $content = t('Encrypted message');
-            }
-            
-            $c = new \modl\Contact();
+            $html='
+                <div class="message ';
+                if($message->session == $message->jidfrom) {
+                    $html .= 'me';
+                }
+                
+                if(isset($message->html)) {
+                    $type = 'html';
+                    $content = $message->html;
+                } else {
+                    $type='';
+                    $content = prepareString(
+                        htmlentities($message->body, ENT_COMPAT, "UTF-8"));
+                }
+                if(preg_match("#^/me#", $message->body)) {
+                    $html .= ' own ';
+                    $content = '** ' . substr($message->body, 4);
+                }
+                if(preg_match("#^\?OTR:#", $message->body)) {
+                    $html .= ' crypt ';
+                    $content = t('Encrypted message');
+                }
+                
+                $c = new \modl\Contact();
             $html .= '">
-                <img class="avatar" src="' . $c->getPhoto('xs', $message->jidfrom) . '" />
+                <img class="avatar" src="' . $c->getPhoto('xs', $message->jidfrom) . '" alt="avatar"/>
                 <span class="date">' . date('H:i', strtotime($message->published)) . '</span>';
+                
             if($muc != false) {
                 $html.='
-                    <span class="ressource ' . $this->colorNameMuc($message->ressource) . '">' . $message->ressource . '
+                    <span
+                        class="ressource ' . $this->colorNameMuc($message->ressource) . '">' .
+                        $message->ressource . '
                     </span>';
             }
             $html .= '<div class="content ' . $type . '">' . $content . '</div>
