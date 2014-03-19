@@ -27,7 +27,7 @@ class Feed extends WidgetCommon {
     }
 
     function display()
-    {       
+    {
         $this->view->assign('blog_url', Route::urlize('blog', array($this->user->getLogin(), 'urn:xmpp:microblog:0')));
         $this->view->assign('feed_url', Route::urlize('feed',array($this->user->getLogin(), 'urn:xmpp:microblog:0')));
         $this->view->assign('friend_url', Route::urlize('friend',$this->user->getLogin()));
@@ -99,7 +99,7 @@ class Feed extends WidgetCommon {
 
         if($session->config['config'] == false) {
             $html .= 
-                '<div class="message warning" style="margin: 1.5em;">'.
+                '<div class="message warning" style="margin: 0 1em;">'.
                     t("Your server doesn't support post publication, you can only read contact's feeds").
                 '</div>';
         } elseif(!isset($session->config['feed'])) {
@@ -128,7 +128,6 @@ class Feed extends WidgetCommon {
     
     function prepareNext($start, $html = '', $posts, $function = 'ajaxGetFeed') {
          // We ask for the HTML of all the posts
-        
         $next = $start + $this->_feedsize;
         
         $nexthtml = '';
