@@ -99,7 +99,7 @@ class Feed extends WidgetCommon {
 
         if($session->config['config'] == false) {
             $html .= 
-                '<div class="message warning" style="margin: 0 1em;">'.
+                '<div class="message warning">'.
                     t("Your server doesn't support post publication, you can only read contact's feeds").
                 '</div>';
         } elseif(!isset($session->config['feed'])) {
