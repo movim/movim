@@ -95,7 +95,7 @@ class Profile extends WidgetCommon
             // My avatar
             $html .= '
             <a href="'.Route::urlize('friend',$this->user->getLogin()).'">
-                <img src="'.$me->getPhoto('l').'"/>
+                <img src="'.$me->getPhoto('l').'" alt="avatar"/>
             </a>';
                 
             // Contact general infos

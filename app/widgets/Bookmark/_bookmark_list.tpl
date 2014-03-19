@@ -1,10 +1,12 @@
 <h2>{$c->t('Conferences')}</h2>
-{loop="conferences"}
-    <li>
-        <a href="#" onclick="{$c->getMucJoin($value)}">{$value->name}</a>
-        <a href="#" onclick="{$c->getMucRemove($value)}">X</a>
-    </li>
-{/loop}
+<ul>
+    {loop="conferences"}
+        <li>
+            <a href="#" onclick="{$c->getMucJoin($value)}">{$value->name}</a>
+            <a href="#" onclick="{$c->getMucRemove($value)}">X</a>
+        </li>
+    {/loop}
+</ul>
 
 <h2>{$c->t('Groups')}</h2>
 {loop="subscriptions"}
