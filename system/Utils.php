@@ -112,24 +112,24 @@ function prepareString($string) {
 
     // Twitter hashtags
     $string = preg_replace_callback(
-        "/#[a-zA-Z0-9_-]*/", function ($match) {
-        /*
-         foreach($val_hashtag[0] as $hashtag){
-            $twitt = str_replace($hashtag,
-               '<a href="http://search.twitter.com/search?q='.urlencode($hashtag).
-               '" target="_blank">'.$hashtag.'</a>',$twitt);
-         }*/
-         
+        "/ #[a-zA-Z0-9_-]*/", function ($match) {
+            return
+                ' <a class="twitter hastag" href="http://twitter.com/search?q='.
+                    urlencode(trim($match[0])).
+                    '&src=hash" target="_blank">'.
+                    trim($match[0]).
+                '</a>';
         }, ' ' . $string
     );
 
     $string = preg_replace_callback(
-        "/@[a-zA-Z0-9_-]*/", function ($match) {
-            /*
-         foreach($val_at[0] as $at){
-            $twitt = str_replace($at,'<a href="http://twitter.com/'.str_replace("@","",$at).
-            '" target="_blank">'.$at.'</a>',$twitt);
-         }*/
+        "/ @[a-zA-Z0-9_-]*/", function ($match) {
+            return
+                ' <a class="twitter at" href="http://twitter.com/'.
+                    trim($match[0]).
+                    '" target="_blank">'.
+                    trim($match[0]).
+                '</a>';
       }, ' ' . $string
     );
 
