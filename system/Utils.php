@@ -82,11 +82,7 @@ function prepareString($string) {
             ':lol:'         => 'trollol.png',
             ':genius:'      => 'genius.png',
         );
-    
-    //$string = str_replace('<a ', '<a target="_blank" ', $string);
 
-
-    
     //replace begin by www
     $string = preg_replace_callback(
             '/(^|\s|>)(www.[^<> \n\r]+)/ix', function ($match) {
@@ -160,6 +156,20 @@ function prepareString($string) {
     return trim($string);
 }
 
+/**
+ * Fix self-closing tags
+ */
+function fixSelfClosing($string) {
+    return preg_replace_callback('/<([^\s<]+)\/>/',
+        function($match) {
+            return '<'.$match[1].'></'.$match[1].'>';
+        }
+        , $string);
+}
+
+/**
+ * Remove the content, body and html tags
+ */
 function cleanHTMLTags($string) {
     return str_replace(
         array(
