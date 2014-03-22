@@ -263,7 +263,7 @@ class Login extends WidgetBase {
         $wrapper = WidgetWrapper::getInstance(false);
 
         $sess = Session::start(APP_NAME);
-        $sess->set('registered_events', $wrapper->register_events());
+        $sess->set('registered_events', $wrapper->registerEvents());
 
         // BOSH + XMPP connexion test
         $warning = moxl\login();

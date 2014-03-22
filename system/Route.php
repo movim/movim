@@ -29,14 +29,14 @@ class Route extends \BaseController {
             );
 
         if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
-            $q = $this->fetch_get('query');
+            $q = $this->fetchGet('query');
             //load data in $_GET variable
             if (!$this->find($q)) {
                 $this->error404();
                 exit;
             }
         } else {
-            $q = $this->fetch_get('q');
+            $q = $this->fetchGet('q');
             if(empty($q))
                 $_GET['q'] = 'main';
         }

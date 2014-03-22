@@ -7,13 +7,12 @@ class BaseController {
     protected $page;
 
     function __construct() {
-        $this->load_language();
+        $this->loadLanguage();
         $this->page = new TplPageBuilder();
         $this->page->addScript('movim_hash.js');
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_tpl.js');
-        //$this->page->addScript('movim_session.js');
         $this->page->addScript('movim_rpc.js');
     }
 
@@ -21,23 +20,23 @@ class BaseController {
     /**
      * Loads up the language, either from the User or default.
      */
-    function load_language() {
+    function loadLanguage() {
         $user = new User();
         if($user->isLogged()) {
             try{
                 $lang = $user->getConfig('language');
-                load_language($lang);
+                loadLanguage($lang);
             }
             catch(MovimException $e) {
                 // Load default language.
-                load_language(\system\Conf::getServerConfElement('defLang'));
+                loadLanguage(\system\Conf::getServerConfElement('defLang'));
             }
         }
         else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-            load_language_auto();
+            loadLanguageAuto();
         }
         else {
-            load_language(\system\Conf::getServerConfElement('defLang'));
+            loadLanguage(\system\Conf::getServerConfElement('defLang'));
         }
     }
 
@@ -47,7 +46,7 @@ class BaseController {
      * @param name is the desired variable's name.
      * @return the value of the requested variable, or FALSE.
      */
-    protected function fetch_get($name)
+    protected function fetchGet($name)
     {
         if(isset($_GET[$name])) {
             return htmlentities($_GET[$name]);
@@ -62,7 +61,7 @@ class BaseController {
      * @param name is the desired variable's name.
      * @return the value of the requested variable, or FALSE.
      */
-    protected function fetch_post($name)
+    protected function fetchPost($name)
     {
         if(isset($_POST[$name])) {
             return htmlentities($_POST[$name]);
@@ -71,7 +70,7 @@ class BaseController {
         }
     }
 
-    function check_session() {
+    function checkSession() {
         if($this->session_only) {
             $user = new User();
 
