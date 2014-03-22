@@ -41,8 +41,6 @@ class Media extends WidgetBase {
     
     function ajaxDeleteItem($name)
     {
-        unlink($this->user->userdir.'thumb_'.$name);
-        unlink($this->user->userdir.'medium_'.$name);
         unlink($this->user->userdir.$name);
         
         $this->ajaxRefreshMedia();
@@ -52,17 +50,18 @@ class Media extends WidgetBase {
     {
         $html = '<ul class="thumb">';
 
-        foreach($this->user->getDir() as $key => $value) {
+        foreach($this->user->getDir() as $file) {
+            $p = new \Picture;
             $html .= 
-                    '<li style="background-image: url('.$value['thumb'].');">
-                        <a href="'.Route::urlize('media', $key).'">
+                    '<li style="background-image: url('.$p->get($this->user->userdir.$file, 300).');">
+                        <a href="'.Route::urlize('media', $file).'">
                         </a>
                             <div 
                                 class="remove" 
                                 onclick="'.
                                     $this->genCallAjax(
                                         'ajaxDeleteItem', 
-                                        "'".$key."'"
+                                        "'".$file."'"
                                     ).'">
                                 x
                             </div>
@@ -95,7 +94,6 @@ class Media extends WidgetBase {
         if(file_exists($this->user->userdir.$f) && getimagesize($this->user->userdir.$f) != 0) {
         
             $er = @exif_read_data($this->user->userdir.$f);
-            
 
             $exif = '';
                 
@@ -120,7 +118,7 @@ class Media extends WidgetBase {
                 
             $html = '
                 <div class="viewer">
-                    <img src="'.$this->user->useruri.'medium_'.$f.'"/>
+                    <img src="'.$this->user->useruri.$f.'" style="max-width: '.$er['COMPUTED']['Width'].'px"/>
                     
                     <div class="exif">
                         <ul>
