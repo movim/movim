@@ -47,13 +47,13 @@ class Bootstrap {
         $this->setContants();
         //Check if vital system need is OK
         $this->checkSystem();
-        
 
         $this->setBrowserSupport();
         
         $this->loadSystem();
         $this->loadCommonLibraries();
         $this->loadDispatcher();
+        $this->loadHelpers();
         
         $this->setTimezone();
         
@@ -126,6 +126,7 @@ class Bootstrap {
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
         
         define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
+        define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
         
         if (!defined('DOCTYPE')) {
             define('DOCTYPE','text/html');
@@ -191,6 +192,12 @@ class Bootstrap {
         // The template lib
         require_once(LIB_PATH . 'RainTPL.php');
     }
+
+    private function loadHelpers() {
+        foreach(glob(HELPERS_PATH."*Helper.php") as $file) {
+            require $file;
+        }
+    }
     
     private function loadDispatcher() {
         require_once(SYSTEM_PATH . "template/TplPageBuilder.php");
@@ -200,8 +207,6 @@ class Bootstrap {
         require_once(SYSTEM_PATH . "Route.php");
 
         require_once(SYSTEM_PATH . "controllers/FrontController.php");
-
-
 
         require_once(SYSTEM_PATH . "widget/WidgetBase.php");
         require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");
