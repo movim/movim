@@ -52,6 +52,13 @@ class Media extends WidgetBase {
 
         foreach($this->user->getDir() as $file) {
             $p = new \Picture;
+
+            // Just to prevent issue when you update from an old Movim version
+            if($p->get($this->user->userdir.$file, 300) == false) {
+                    $p->fromPath($this->user->userdir.$file);
+                    $p->set($this->user->userdir.$file);
+            }
+            
             $html .= 
                     '<li style="background-image: url('.$p->get($this->user->userdir.$file, 300).');">
                         <a href="'.Route::urlize('media', $file).'">
