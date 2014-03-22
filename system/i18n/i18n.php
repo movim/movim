@@ -65,7 +65,7 @@ function t($string)
     return $lstring;
 }
 
-function get_quoted_string($string)
+function getQuotedString($string)
 {
     $matches = array();
     preg_match('#"(.+)"#', $string, $matches);
@@ -77,7 +77,7 @@ function get_quoted_string($string)
 /**
  * Parses a .po file.
  */
-function parse_lang_file($pofile)
+function parseLangFile($pofile)
 {
     if(!file_exists($pofile)) {
         return false;
@@ -103,14 +103,14 @@ function parse_lang_file($pofile)
                 $trans_string[$msgid] = $msgstr;
             }
             $last_token = "msgid";
-            $msgid = get_quoted_string($line);
+            $msgid = getQuotedString($line);
         }
         else if(preg_match('#^msgstr#', $line)) {
             $last_token = "msgstr";
-            $msgstr = get_quoted_string($line);
+            $msgstr = getQuotedString($line);
         }
         else {
-            $last_token .= get_quoted_string($line);
+            $last_token .= getQuotedString($line);
         }
     }
     if($last_token == "msgstr") {
@@ -125,7 +125,7 @@ function parse_lang_file($pofile)
 /**
  * Auto-detects and loads the language.
  */
-function load_language_auto()
+function loadLanguageAuto()
 {
     $langs = array();
     $langNotFound = true;
@@ -146,10 +146,10 @@ function load_language_auto()
         $exploded = explode('-', $key);
         $key = reset($exploded);
         if($key == 'en') {
-            load_language(\system\Conf::getServerConfElement('defLang'));
+            loadLanguage(\system\Conf::getServerConfElement('defLang'));
             $langNotFound = false;
         } elseif(file_exists(DOCUMENT_ROOT . '/locales/' . $key . '.po')) {
-            load_language($key);
+            loadLanguage($key);
             $langNotFound = false;
         }
     }
@@ -158,7 +158,7 @@ function load_language_auto()
 /**
  * Loads the given language.
  */
-function load_language($lang)
+function loadLanguage($lang)
 {
     global $translations;
     global $language;
@@ -172,7 +172,7 @@ function load_language($lang)
         // And we set our gloabl $translations
         require_once(DOCUMENT_ROOT . '/cache/locales/' . $lang . '.php');
     } else
-        $translations = parse_lang_file(DOCUMENT_ROOT . '/locales/' . $lang . '.po');
+        $translations = parseLangFile(DOCUMENT_ROOT . '/locales/' . $lang . '.po');
 
     $language = $lang;
 
@@ -195,7 +195,7 @@ function load_extra_lang($directory)
         $directory .= '/';
     }
 
-    $trans = parse_lang_file($directory . $language . '.po');
+    $trans = parseLangFile($directory . $language . '.po');
 
     if(!$trans) {
         return false;
