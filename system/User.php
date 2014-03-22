@@ -1,9 +1,18 @@
-<?Php
+<?php
 
 /**
- * \class User
- * \brief Handles the user's login and user.
+ * @file User.php
+ * This file is part of Movim.
  *
+ * @brief Handles the user's login and user.
+ *
+ * @author Jaussoin Timothée
+ *
+ * @date 2014
+ *
+ * Copyright (C)2014 Movim
+ *
+ * See COPYING for licensing information.
  */
 class User {
     private $xmppSession;

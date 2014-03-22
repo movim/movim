@@ -8,7 +8,6 @@ class Conf
     public static $conf_files = array();
 
     /* Return the general configuration */
-
     static function getServerConf() {
         $conf_file = DOCUMENT_ROOT . self::$conf_path . "/conf.php";
         return self::getConf('server', $conf_file);
@@ -51,7 +50,6 @@ class Conf
     }
 
     /* Return the element of the general configuration */
-
     static function getServerConfElement($element) {
         $conf = self::getServerConf();
         if(!isset($conf[$element])) {
@@ -63,8 +61,7 @@ class Conf
         }
     }
 
-    /* Actually reads the XML file if it exists */
-
+    /* Actually reads the PHP file if it exists */
     static function readConfFile($file_path) {
         if(!file_exists($file_path)) {
             throw new MovimException(t("Cannot load file '%s'", $file_path));
