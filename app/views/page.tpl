@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
     
-    <link rel="shortcut icon" href="<?php $this->link_file('img/favicon.ico');?>" />
+    <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
 	<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
 	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     

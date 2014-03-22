@@ -18,15 +18,15 @@ class FrontController extends BaseController
         $r = new Route();
 
         // Note that the request is always specified by 'q'.
-        if($r->find($this->fetch_get('q'))) {
-            $request = $this->fetch_get('q');
-            $this->run_req($request);
+        if($r->find($this->fetchGet('q'))) {
+            $request = $this->fetchGet('q');
+            $this->runRequest($request);
         } else {
-            $this->run_req('notfound');
+            $this->runRequest('notfound');
         }
     }    
 
-    private function load_controller($request) {
+    private function loadController($request) {
         $class_name = ucfirst($request).'Controller';     
         if(file_exists(APP_PATH . 'controllers/'.$class_name.'.php')) {
             $controller_path = APP_PATH . 'controllers/'.$class_name.'.php';
@@ -43,19 +43,19 @@ class FrontController extends BaseController
     /*
      * Here we load, instanciate and execute the correct controller
      */
-    public function run_req($request) {
-        $c = $this->load_controller($request);
+    public function runRequest($request) {
+        $c = $this->loadController($request);
 
         if(is_callable(array($c, 'load'))) {
             $c->name = $request;
             $c->load();
-            $c->check_session();
+            $c->checkSession();
             $c->dispatch();
             
             // If the controller ask to display a different page
             if($request != $c->name) {
                 $new_name = $c->name;
-                $c = $this->load_controller($new_name);
+                $c = $this->loadController($new_name);
                 $c->name = $new_name;
                 $c->load();
                 $c->dispatch();
