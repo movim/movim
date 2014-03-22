@@ -56,7 +56,7 @@ class User {
         $sum = 0;
 
         foreach($this->getDir() as $s)
-            $sum = $sum + filesize($s['dir']);
+            $sum = $sum + filesize($this->userdir.$s);
         
         return $sum;
     }
@@ -72,16 +72,17 @@ class User {
                 if(
                     $s != '.' && 
                     $s != '..' && 
-                    substr($s, 0, 6) != 'thumb_' &&
-                    substr($s, 0, 7) != 'medium_' && 
+                    //substr($s, 0, 6) != 'thumb_' &&
+                    //substr($s, 0, 7) != 'medium_' && 
                     $s != 'index.html') {
                     
-                    $file = array(
+                    /*$file = array(
                         'uri'       => $this->useruri.$s,
                         'dir'       => $this->userdir.$s,
                         'thumb'    => $this->useruri.'thumb_'.$s,
                         'medium'   => $this->useruri.'medium_'.$s);
-                    $dir[$s] = $file;
+                    $dir[$s] = $file;*/
+                    array_push($dir, $s);
                 }
             }
         
