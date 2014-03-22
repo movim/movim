@@ -88,20 +88,6 @@ class Avatar extends WidgetBase
 
     function ajaxAvatarSubmit($avatar)
     {
-        /*
-        $cd = new \modl\ContactDAO();
-        $c = $cd->get($this->user->getLogin());
-
-        if($c == null)
-            $c = new modl\Contact();
-            
-        //$c->phototype       = $avatar->phototype->value;
-        $c->photobin        = $avatar->photobin->value;
-
-        $c->createThumbnails();
-
-        $cd->set($c);*/
-
         $p = new \Picture;
         $p->fromBase((string)$avatar->photobin->value);
         $p->set($this->user->getLogin());

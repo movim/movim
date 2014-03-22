@@ -49,7 +49,7 @@ class TplPageBuilder
      * @param file is the path to the file relative to the theme's root
      * @param return optionally returns the link instead of printing it if set to true
      */
-    function link_file($file, $return = false)
+    function linkFile($file, $return = false)
     {
         $path = BASE_URI . 'themes/' . $this->theme . '/' . $file;
 
@@ -63,31 +63,13 @@ class TplPageBuilder
     /**
      * Inserts the link tag for a css file.
      */
-    function theme_css($file)
+    function themeCss($file)
     {
         echo '<link rel="stylesheet" href="'
-            . $this->link_file($file, true) .
+            . $this->linkFile($file, true) .
             "\" type=\"text/css\" />\n";
     }
-
-    /**
-     * Inserts the link tag for a theme picture
-     */
-    function theme_img($src, $alt)
-    {
-        $size = getimagesize($this->link_file($src, true));
-        $outp = '<img src="'
-            . $this->link_file($src, true) . '" '
-            . $size["3"];
-
-        if(!empty($alt)) {
-            $outp .=' alt="'.$alt.'"';
-        }
-        $outp .='>';
-
-        return $outp;
-    }
-
+    
     /**
      * Actually generates the page from templates.
      */
@@ -178,7 +160,7 @@ class TplPageBuilder
      */
     function addCss($file)
     {
-        $this->css[] = $this->link_file($file, true);
+        $this->css[] = $this->linkFile($file, true);
     }
 
     function scripts()
@@ -239,7 +221,7 @@ class TplPageBuilder
     function widget($name, $register = true)
     {
         $widgets = WidgetWrapper::getInstance($register);
-        $widgets->run_widget($name, 'build');
+        $widgets->runWidget($name, 'build');
     }
     
     function displayFooterDebug()
