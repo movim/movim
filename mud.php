@@ -46,7 +46,7 @@ function comploc() {
     
     $langs = load_lang_array();
     foreach($langs as $key => $value) {
-        $langarr = parse_lang_file(DOCUMENT_ROOT . '/locales/' . $key . '.po');
+        $langarr = parseLangFile(DOCUMENT_ROOT . '/locales/' . $key . '.po');
         
         $out = '<?php global $translations;
         $translations = array(';

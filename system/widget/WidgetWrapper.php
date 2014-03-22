@@ -118,7 +118,7 @@ class WidgetWrapper
     /**
      * Loads a widget and returns it.
      */
-    public function load_widget($widget_name)
+    public function loadWidget($widget_name)
     {
         // Attempting to load the user's widgets in priority
         $widget_path = "";
@@ -145,13 +145,13 @@ class WidgetWrapper
      *   be passed along to the method.
      * @return what the widget's method returns.
      */
-    function run_widget($widget_name, $method, array $params = NULL)
+    function runWidget($widget_name, $method, array $params = NULL)
     {
         if($this->register_widgets &&
            !in_array($widget_name, $this->loaded_widgets))
             $this->loaded_widgets[] = $widget_name;
 
-        $widget = $this->load_widget($widget_name);
+        $widget = $this->loadWidget($widget_name);
 
         if(!is_array($params))
             $params = array();
@@ -169,10 +169,10 @@ class WidgetWrapper
      * 
      * @return the registered events
      */
-    function register_events() {
+    function registerEvents() {
         $widgets = $this->get_all_widgets();
         foreach($widgets as $widget_name) {
-            $widget = $this->load_widget($widget_name);
+            $widget = $this->loadWidget($widget_name);
             // We save the registered events of the widget for the filter
             if(isset($widget->events)) {
                 foreach($widget->events as $key => $value) {
@@ -211,14 +211,14 @@ class WidgetWrapper
 
         if(isset($widgets) && is_array($widgets))
             foreach($widgets as $widget)
-                $this->run_widget($widget, $method, $params);
+                $this->runWidget($widget, $method, $params);
     }
     /*
     function iterateAll($method, array $params = NULL) {
         $widgets = $this->get_all_widgets();
         $isevent = array();
         foreach($widgets as $widget) {
-            if($this->run_widget($widget, $method, $params))
+            if($this->runWidget($widget, $method, $params))
                 $isevent[$widget] = true;
         }
             

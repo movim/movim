@@ -74,6 +74,7 @@
 
 #viewer .viewer img {
     width: 100%;
+    margin: 0 auto;
     height: auto;
     display: block;
 }
@@ -96,15 +97,13 @@
     float: left;
     overflow: hidden;
     white-space: nowrap;
+    line-height: 1.3em;
     text-overflow: ellipsis;
 }
 
 #viewer .viewer .exif span {
     font-weight: bold;
-    display: inline-block;
-    text-align: right;
     margin-right: 1em;
-    width: 5em;
 }
 
 #media .size {
