@@ -505,8 +505,7 @@ class WidgetCommon extends WidgetBase {
         $view = $this->loadTemplate();
                 
         $view->assign('toggle_position', $this->genCallAjax('ajaxShowPosition', "poss"));
-        
-        $view->assign('gallery', $this->user->getDir());
+        $view->assign('gallery', $this->prepareGallery());
         
         $view->assign(
             'publish_item', 
@@ -525,6 +524,22 @@ class WidgetCommon extends WidgetBase {
         $html = $view->draw('_submit_form', true);
                 
         return $html;
+    }
+
+    private function prepareGallery() {
+        $arr = array();
+        $p = new \Picture;
+
+        foreach($this->user->getDir() as $pic) {
+            array_push($arr,
+                array(
+                    'thumb' => $p->get($this->user->userdir.$pic, 300),
+                    'uri'   => $p->get($this->user->userdir.$pic)
+                    )
+                );
+        }
+
+        return $arr;
     }
     
     function ajaxShowPosition($pos)
