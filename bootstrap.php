@@ -27,23 +27,7 @@ function __autoload($className)
 }
 */
 require 'vendor/autoload.php';
-//use Modl\Loader;
-//use Monolog\Logger;
-//use Monolog\Logger;
-//use Monolog\Handler\StreamHandler;
 
-//use Modl\Modl;
-
-//use Psr\Log\LoggerInterface;
-
-//$l = new Psr\Log\NullLogger;
-//$m = new Modl\Modl;
-// create a log channel
-//$log = new Logger('name');
-//$m = Modl::getInstance;
-//$m = new Modl\Loader;
-//print_r(get_declared_classes());
-//$m = new Modl;
 /**
  * Error Handler...
  */
