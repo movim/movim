@@ -131,6 +131,7 @@ class Bootstrap {
         define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');
         define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
+        define('LOG_PATH',    DOCUMENT_ROOT . '/log/');
         
         define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
