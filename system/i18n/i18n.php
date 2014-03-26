@@ -146,7 +146,7 @@ function loadLanguageAuto()
         $exploded = explode('-', $key);
         $key = reset($exploded);
         if($key == 'en') {
-            loadLanguage(\system\Conf::getServerConfElement('defLang'));
+            loadLanguage(Conf::getServerConfElement('defLang'));
             $langNotFound = false;
         } elseif(file_exists(DOCUMENT_ROOT . '/locales/' . $key . '.po')) {
             loadLanguage($key);
