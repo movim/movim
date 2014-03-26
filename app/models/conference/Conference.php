@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Conference extends ModlModel {    
+class Conference extends Model {    
     public $jid;
     public $conference;
     public $name;

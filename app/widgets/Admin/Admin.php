@@ -25,7 +25,7 @@ class Admin extends WidgetBase {
     function load()
     {
         $this->addjs('admin.js');
-        $this->_conf = \system\Conf::getServerConf();
+        $this->_conf = Conf::getServerConf();
     }
     
     private function isValid($what)

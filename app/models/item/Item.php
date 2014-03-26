@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Item extends ModlModel {
+class Item extends Model {
     public $server;
     public $jid;
     public $name;
@@ -49,7 +49,7 @@ class Item extends ModlModel {
     }
 }
 
-class Server extends ModlModel {
+class Server extends Model {
     public $server;
     public $number;
 }
