@@ -41,15 +41,7 @@ define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-
-// create a log channel
-$log = new Logger('name');
-$log->pushHandler(new StreamHandler(DOCUMENT_ROOT.'/log/your.log', Logger::WARNING));
-
-// add records to the log
-$log->addWarning('Foo');
-$log->addError('Bar');
+use Monolog\Handler\SyslogHandler;
 
 try {
     if((isset($_GET['q']) && $_GET['q'] == 'admin') ||
@@ -72,7 +64,10 @@ try {
     
 } catch (Exception $e) {
     //manage errors
-    \system\Logs\Logger::displayDebugCSS();
+    //\system\Logs\Logger::displayDebugCSS();
+    $log = new Logger('movim');
+    $log->pushHandler(new SyslogHandler('movim'));
+    $log->addInfo($e->getMessage());
     
     if (ENVIRONMENT === 'development' && !FAIL_SAFE) {
         ?>
