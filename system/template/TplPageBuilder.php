@@ -34,7 +34,7 @@ class TplPageBuilder
     function __construct(&$user = NULL)
     {
         $this->user = $user;
-        $conf = new \system\Conf();
+        $conf = new Conf();
         $this->theme = $conf->getServerConfElement('theme');
      
     }
@@ -226,7 +226,7 @@ class TplPageBuilder
     
     function displayFooterDebug()
     {
-        \system\Logs\Logger::displayFooterDebug();
+        //\system\Logs\Logger::displayFooterDebug();
     }
 }
 

@@ -1,0 +1,6 @@
+{
+    "require": {
+        "monolog/monolog": "1.8.*",
+        "movim/modl": "dev-master"
+    }
+}

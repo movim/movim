@@ -1,8 +1,8 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
-class Presence extends ModlModel {
+class Presence extends Model {
     protected $id;
     
     protected $session;

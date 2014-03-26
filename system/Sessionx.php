@@ -93,7 +93,7 @@ class Sessionx {
     }
 
     public function init($user, $pass, $host, $domain) {
-        $serverconfig = \system\Conf::getServerConf();
+        $serverconfig = Conf::getServerConf();
         
         $this->_url         = $serverconfig['boshUrl'];
         $this->_port        = 5222;

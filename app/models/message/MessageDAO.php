@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class MessageDAO extends ModlSQL {  
+class MessageDAO extends SQL {  
     function set(Message $message) {
         $this->_sql = '
             insert into message

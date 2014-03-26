@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class ConferenceDAO extends ModlSQL {
+class ConferenceDAO extends SQL {
     function set(Conference $c) {
         $this->_sql = '
             update conference

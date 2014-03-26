@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class PrivacyDAO extends ModlSQL {    
+class PrivacyDAO extends SQL {    
     function set(Privacy $p) {        
         $this->_sql = '
             update privacy

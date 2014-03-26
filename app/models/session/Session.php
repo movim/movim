@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Session extends ModlModel {    
+class Session extends Model {    
     public $name;
     public $value;
     public $session;

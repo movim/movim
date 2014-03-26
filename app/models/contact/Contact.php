@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Contact extends ModlModel {
+class Contact extends Model {
     protected $jid;
     
     protected $fn;
@@ -270,19 +270,21 @@ class Contact extends ModlModel {
         $this->adrcountry      = $vcard->adr->country;
         $this->adrpostalcode   = $vcard->adr->code;
 
-        foreach($vcard->impp->children() as $c) {
-            list($key, $value) = explode(':', (string)$c);
+        if(isset($vcard->impp)) {
+            foreach($vcard->impp->children() as $c) {
+                list($key, $value) = explode(':', (string)$c);
 
-            switch($key) {
-                case 'twitter' :
-                    $this->twitter = str_replace('@', '', $value);
-                    break;
-                case 'skype' :
-                    $this->skype = $value;
-                    break;
-                case 'ymsgr' :
-                    $this->yahoo = $value;
-                    break;
+                switch($key) {
+                    case 'twitter' :
+                        $this->twitter = str_replace('@', '', $value);
+                        break;
+                    case 'skype' :
+                        $this->skype = $value;
+                        break;
+                    case 'ymsgr' :
+                        $this->yahoo = $value;
+                        break;
+                }
             }
         }
 
