@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class SubscriptionDAO extends ModlSQL {
+class SubscriptionDAO extends SQL {
     function set(Subscription $s) {
         $this->_sql = '
             update subscription

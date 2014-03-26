@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class SessionxDAO extends ModlSQL {
+class SessionxDAO extends SQL {
     function init(Sessionx $s) {        
         $this->_sql = '
             update sessionx

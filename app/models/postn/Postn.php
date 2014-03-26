@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Postn extends ModlModel {
+class Postn extends Model {
     public $session;
 
     public $jid;       // Where the post is comming from (jid or server)

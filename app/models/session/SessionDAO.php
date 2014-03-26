@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class SessionDAO extends ModlSQL {
+class SessionDAO extends SQL {
     function set($session, $container, $name, $value) {
         $timestamp = date(DATE_ISO8601);
 

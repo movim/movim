@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class ContactDAO extends ModlSQL {
+class ContactDAO extends SQL {
     function __construct() {
         parent::__construct();
     }

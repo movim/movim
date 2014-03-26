@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class PostnDAO extends ModlSQL {  
+class PostnDAO extends SQL {  
     function set(Postn $post) {
         $this->_sql = '
             update postn

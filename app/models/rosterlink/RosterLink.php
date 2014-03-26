@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class RosterLink extends ModlModel {    
+class RosterLink extends Model {    
     public $session;
     public $jid;
     
