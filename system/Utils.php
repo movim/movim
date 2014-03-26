@@ -370,7 +370,7 @@ function generateUUID($string = false) {
 
 
 function movim_log($log) {
-    \system\Logs\Logger::log($log);
+    //\system\Logs\Logger::log($log);
 
     openlog('movim', LOG_NDELAY, LOG_USER);
     $errlines = explode("\n", $log);
