@@ -1,31 +1,6 @@
 <?php
 if (!defined('DOCUMENT_ROOT')) die('Access denied');
 
-/**
- * First thing, define autoloader
- * @param string $className
- * @return boolean
- */
-/*
-function __autoload($className)
-{
-    $className = ltrim($className, '\\');
-    $fileName  = DOCUMENT_ROOT;
-    $namespace = '';
-    if ($lastNsPos = strrpos($className, '\\')) {
-        $namespace = substr($className, 0, $lastNsPos);
-        $className = substr($className, $lastNsPos + 1);
-        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
-    }
-    $fileName .= '/'.str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-    if (file_exists($fileName)) {
-        require_once( $fileName);
-        return true;
-    } else  {
-        return false;
-    }
-}
-*/
 require 'vendor/autoload.php';
 
 /**
@@ -33,7 +8,6 @@ require 'vendor/autoload.php';
  */
 function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcontext=null ) 
 {
-    //\system\Logs\Logger::addLog( $errstr,$errno,'system',$errfile,$errline);
     return false;
 }
 
@@ -131,7 +105,7 @@ class Bootstrap {
         define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');
         define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
-        define('LOG_PATH',    DOCUMENT_ROOT . '/log/');
+        define('LOG_PATH',      DOCUMENT_ROOT . '/log/');
         
         define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
