@@ -26,6 +26,26 @@ class Admin extends WidgetBase {
     {
         $this->addjs('admin.js');
         $this->_conf = Conf::getServerConf();
+
+        $this->saveConfig($_POST);
+        $_POST = null;
+    }
+
+    private function saveConfig($form) {
+        if($form['pass'] != '' && $form['repass'] != ''
+        && $form['pass'] == $form['repass']) {
+            unset($form['repass']);
+            $form['pass'] = sha1($form['pass']);
+        } else {
+            $form['pass'] = $this->_conf['pass'];
+        }
+        
+        foreach($this->_conf as $key => $value) {
+            if(isset($form[$key]))
+                $this->_conf[$key] = $form[$key];
+        }
+
+        Conf::saveConfFile($this->_conf);
     }
     
     private function isValid($what)
@@ -42,32 +62,6 @@ class Admin extends WidgetBase {
     
     private function testFile($file) {
         return (file_exists($file) && is_writable($file));
-    }
-
-    /*
-     * Create the dirs
-     */
-    function createDirs(){
-        if(!file_exists(DOCUMENT_ROOT.'/cache') && !@mkdir(DOCUMENT_ROOT.'/cache')) {
-            echo t("Couldn't create directory '%s'.", 'cache');
-            return false;
-        }
-        
-        if(!file_exists(DOCUMENT_ROOT.'/log') && !@mkdir(DOCUMENT_ROOT.'/log')) {
-            echo t("Couldn't create directory '%s'.", 'log');
-            return false;
-        }
-        
-        if(!file_exists(DOCUMENT_ROOT.'/config') && !@mkdir(DOCUMENT_ROOT.'/config')) {
-            echo t("Couldn't create directory '%s'.", 'config');
-            return false;
-        }
-        
-        if(!file_exists(DOCUMENT_ROOT.'/users') && !@mkdir(DOCUMENT_ROOT.'/users')) {
-            echo t("Couldn't create directory '%s'.", 'users');
-            return false;
-        } else
-            touch(DOCUMENT_ROOT.'/users/index.html');
     }
     
     private function listThemes()
@@ -89,71 +83,14 @@ class Admin extends WidgetBase {
     
     private function listLangs()
     {
-        $dir = opendir(DOCUMENT_ROOT.'/locales');
-        $langs = array('en' => 'English');
-        $languages = get_lang_list();
-
-        while($lang = readdir($dir)) {
-            if(!preg_match('/\.po$/', $lang)) {
-                continue;
-            }
-
-            $lang = substr($lang, 0, strlen($lang) - 3);
-            $langs[$lang] = $languages[$lang];
-        }
-
-        return $langs;
+        return load_lang_array();
     }
     
-    function testBosh($url) {
-        $ch = curl_init($url);
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        
-        // We put a short timeout
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5); 
-
-        // Fire !
-        $rs = array();
-
-        $rs['content'] = curl_exec($ch);
-        $rs['errno'] = curl_errno($ch);
-        $rs['errmsg'] = curl_error($ch);
-        $rs['header'] = curl_getinfo($ch);
-        
-        if($rs['content'] != false && $rs['content'] != '') {
-            return true;
-        }
-
-        elseif($rs['errno'] != 0 || $rs['content'] == '') {
-            return false;
-        }
-        curl_close($ch);
-    }
-    
-    public function ajaxAdminSubmit($form)
+    function testBosh($url)
     {
-        if($form['pass'] != '' && $form['repass'] != ''
-        && $form['pass'] == $form['repass']) {
-            unset($form['repass']);
-            $form['pass'] = sha1($form['pass']);
-        } else {
-            $form['pass'] = $this->_conf['pass'];
-        }
-        
-        foreach($this->_conf as $key => $value) {
-            if(isset($form[$key]))
-                $this->_conf[$key] = $form[$key];
-        }
-
-        \system\Conf::saveConfFile($this->_conf);
+        return requestURL($url, 2);
     }
-    
+
     public function ajaxUpdateDatabase()
     {
         $md = \modl\Modl::getInstance();
@@ -161,18 +98,11 @@ class Admin extends WidgetBase {
         RPC::call('movim_reload_this');
     }
     
-    private function prepareAdminComp()
-    {
-            // setTimeout(function() {location.reload(false)}, 3000);
-        if($this->testDir(DOCUMENT_ROOT))
-            $this->createDirs();
-            
-        $submit = $this->genCallAjax('ajaxAdminSubmit', "movim_parse_form('admin')")
-            ."this.className='button color orange icon loading'; location.reload(true);";
-
+    function prepareAdminComp()
+    {            
         $this->_validatebutton = '
             <div class="clear"></div>
-            <a class="button icon yes color green" style="float: right;" onclick="'.$submit.'">'.t('Submit').'</a>';
+            <input type="submit" class="button icon yes color green" style="float: right;" value="'.t('Submit').'"/>';
         
         $html = '
             <fieldset>
@@ -229,7 +159,6 @@ class Admin extends WidgetBase {
                         <label for="movim" >'.t('Theme').'</label>
                             <div class="select">
                                 <select id="theme" name="theme">';
-
                                     foreach($this->listThemes() as $key => $value) {
                                         if((string)$this->_conf['theme'] == $key)
                                             $sel = 'selected="selected"';
@@ -249,7 +178,6 @@ class Admin extends WidgetBase {
                         <label for="da">'.t('Default language').'</label>
                             <div class="select">
                                 <select id="defLang" name="defLang">';
-                                    
                                     foreach($this->listLangs() as $key => $value) {
                                         if((string)$this->_conf['defLang'] == $key)
                                             $sel = 'selected="selected"';
@@ -287,13 +215,7 @@ class Admin extends WidgetBase {
         $html .= '              </select>
                             </div>
                         </div>';
-        /*                
-        $html .= '
-                    <div class="element">
-                            <label for="maxUsers">'.t('Maximum population').'</label>
-                            <input type="text" name="maxUsers" id="maxUsers" value="'.$this->_conf['maxUsers'].'" />
-                    </div>';
-        */
+
         $html .= '
                     <div class="element">
                             <label for="sizeLimit">'.t('User folder size limit (in bytes)').'</label>
@@ -496,22 +418,5 @@ class Admin extends WidgetBase {
         $html = $dbview->draw('_admin_db', true);
 
         return $html;
-    }
-
-    function build()
-    {
-    ?>
-    <form name="admin" id="adminform">
-        <div id="admincomp" class="tabelem padded" title="<?php echo t("Compatibility Check"); ?>">
-            <?php echo $this->prepareAdminComp(); ?>
-        </div>
-        <div id="admingen" class="tabelem padded" title="<?php echo t('General Settings'); ?>">
-			<?php echo $this->prepareAdminGen(); ?>
-        </div>
-        <div id="admindb" class="tabelem padded" title="<?php echo t("Database Settings") ?>">
-			<?php echo $this->prepareAdminDB(); ?>
-        </div>
-    </form>
-    <?php 
     }
 }
