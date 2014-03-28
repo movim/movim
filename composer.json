@@ -1,6 +1,7 @@
 {
     "require": {
         "monolog/monolog": "1.8.*",
+        "rain/raintpl": "dev-master",
         "movim/modl": "dev-master"
     }
 }
