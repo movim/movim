@@ -44,7 +44,7 @@ function comploc() {
         echo "Folder already exist, don't re-create it\n";
     
     
-    $langs = load_lang_array();
+    $langs = loadLangArray();
     foreach($langs as $key => $value) {
         $langarr = parseLangFile(DOCUMENT_ROOT . '/locales/' . $key . '.po');
         
