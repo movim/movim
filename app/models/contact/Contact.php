@@ -149,7 +149,8 @@ class Contact extends Model {
         $this->jid = \echapJid($jid);
         
         
-        if(isset($vcard->vCard->BDAY))
+        if(isset($vcard->vCard->BDAY)
+        && (string)$vcard->vCard->BDAY != '')
             $this->date = (string)$vcard->vCard->BDAY;
         else
             $this->date = null;
