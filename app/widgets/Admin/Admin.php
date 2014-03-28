@@ -83,7 +83,7 @@ class Admin extends WidgetBase {
     
     private function listLangs()
     {
-        return load_lang_array();
+        return loadLangArray();
     }
     
     function testBosh($url)

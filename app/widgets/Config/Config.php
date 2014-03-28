@@ -26,7 +26,7 @@ class Config extends WidgetBase
         $this->registerEvent('config', 'onConfig');
 
         /* We load the user configuration */
-        $this->view->assign('languages', load_lang_array());
+        $this->view->assign('languages', loadLangArray());
         $this->view->assign('me',        $this->user->getLogin());
         $this->view->assign('conf',      $this->user->getConfig('language'));
         $this->view->assign('color',     $this->user->getConfig('color'));
