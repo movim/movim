@@ -15,6 +15,8 @@
  * See COPYING for licensing information.
  */
 
+use \Michelf\Markdown;
+
 class WidgetCommon extends WidgetBase {
     private function loadTemplate() {
         $view = new RainTPL;
@@ -557,7 +559,7 @@ class WidgetCommon extends WidgetBase {
     function ajaxPostPreview($content)
     {
         if($content != '') {
-            $content = Michelf\Markdown::defaultTransform($content);
+            $content = Markdown::defaultTransform($content);
             RPC::call('movim_fill', 'postpreviewcontent' , $content);
         } else
             RPC::call('movim_fill', 'postpreviewcontent' , t('No content'));
@@ -594,7 +596,7 @@ class WidgetCommon extends WidgetBase {
             );
 
         if($content != '') {
-            $content = Michelf\Markdown::defaultTransform($content);
+            $content = Markdown::defaultTransform($content);
 
             $p = new moxl\PubsubPostPublish();
             $p->setFrom($this->user->getLogin())

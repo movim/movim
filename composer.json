@@ -2,6 +2,7 @@
     "require": {
         "monolog/monolog": "1.8.*",
         "rain/raintpl": "dev-master",
+        "michelf/php-markdown": "1.4.*@dev",
         "movim/modl": "dev-master"
     }
 }
