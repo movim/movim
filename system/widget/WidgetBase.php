@@ -67,7 +67,8 @@ class WidgetBase
         $config = array(
             'tpl_dir'       => $this->respath('', true),
             'cache_dir'     => CACHE_PATH,
-            'tpl_ext'       => 'tpl'
+            'tpl_ext'       => 'tpl',
+            'auto_escape'   => false
         );
 
         // We load the template engine
@@ -124,7 +125,8 @@ class WidgetBase
         $config = array(
             'tpl_dir'       => APP_PATH.'widgets/'.$this->name.'/',
             'cache_dir'     => CACHE_PATH,
-            'tpl_ext'       => 'tpl'
+            'tpl_ext'       => 'tpl',
+            'auto_escape'   => false
         );
 
         $view = new Tpl;
