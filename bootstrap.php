@@ -173,12 +173,6 @@ class Bootstrap {
         // SDPtoJingle and JingletoSDP lib :)
         require_once(LIB_PATH . "SDPtoJingle.php");
         require_once(LIB_PATH . "JingletoSDP.php");
-
-        // Markdown lib
-        require_once(LIB_PATH . "Markdown.php");
-        
-        // The template lib
-        //require_once(LIB_PATH . 'RainTPL.php');
     }
 
     private function loadHelpers() {
