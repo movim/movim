@@ -12,6 +12,9 @@
  * See COPYING for licensing deatils.
  */
 
+use Monolog\Logger;
+use Monolog\Handler\SyslogHandler;
+
 class FrontController extends BaseController
 {
     public function handle() {
@@ -32,7 +35,9 @@ class FrontController extends BaseController
             $controller_path = APP_PATH . 'controllers/'.$class_name.'.php';
         }
         else {
-            \system\Logs\Logger::log(t("Requested controller '%s' doesn't exist.", $class_name));
+            $log = new Logger('movim');
+            $log->pushHandler(new SyslogHandler('movim'));
+            $log->addError(t("Requested controller '%s' doesn't exist.", $class_name));
             exit;
         }
 
@@ -64,7 +69,9 @@ class FrontController extends BaseController
             // We display the page !
             $c->display();
         } else {
-            \system\Logs\Logger::log(t("Could not call the load method on the current controller"));
+            $log = new Logger('movim');
+            $log->pushHandler(new SyslogHandler('movim'));
+            $log->addError(t("Could not call the load method on the current controller"));
         }
     }
 }

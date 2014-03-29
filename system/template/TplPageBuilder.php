@@ -75,14 +75,15 @@ class TplPageBuilder
      */
     function build($template)
     {
-        if (ENVIRONMENT === 'production')ob_clean();
+        if (ENVIRONMENT === 'production') ob_clean();
         ob_start();
-        
+
         require($this->views_path($template));
         $outp = ob_get_clean();
         $outp = str_replace('<%scripts%>',
                             $this->printCss() . $this->printScripts(),
                             $outp);
+
         return $outp;
     }
 

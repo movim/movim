@@ -16,6 +16,8 @@
  * See COPYING for licensing information.
  */
 
+use Rain\Tpl;
+
 class WidgetBase
 {
     protected $js = array(); /*< Contains javascripts. */
@@ -61,12 +63,16 @@ class WidgetBase
                 $this->ajax->defun(get_class($this), $method->name, $params);
             }
         }
-        
+
+        $config = array(
+            'tpl_dir'       => $this->respath('', true),
+            'cache_dir'     => CACHE_PATH,
+            'tpl_ext'       => 'tpl'
+        );
+
         // We load the template engine
-        $this->view = new RainTPL;
-        $this->view->configure('tpl_dir',      $this->respath('', true));
-        $this->view->configure('cache_dir',    CACHE_PATH);
-        $this->view->configure('tpl_ext',      'tpl');
+        $this->view = new Tpl;
+        $this->view->objectConfigure($config);
 
         $this->view->assign('c', $this);
                 
@@ -115,11 +121,14 @@ class WidgetBase
     }
     
     protected function tpl() {
-        $view = new RainTPL;
-                
-        $view->configure('tpl_dir', APP_PATH.'widgets/'.$this->name.'/'); 
-        $view->configure('cache_dir',    CACHE_PATH);
-        $view->configure('tpl_ext',      'tpl'); 
+        $config = array(
+            'tpl_dir'       => APP_PATH.'widgets/'.$this->name.'/',
+            'cache_dir'     => CACHE_PATH,
+            'tpl_ext'       => 'tpl'
+        );
+
+        $view = new Tpl;
+        $view->objectConfigure($config);
         $view->assign('c', $this);
         
         return $view;
