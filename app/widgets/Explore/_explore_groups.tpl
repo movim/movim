@@ -1,4 +1,4 @@
-{loop="groups"}
+{loop="$groups"}
     <li class="block">
         <a href="{$c->route('server', $value->server)}">
             <span class="tag orange">{$c->t('Groups')}</span>

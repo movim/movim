@@ -13,16 +13,24 @@
  * Copyright (C)2010 MOVIM Project
  *
  * See COPYING for licensing information.
+ *
  */
 
+use Rain\Tpl;
 use \Michelf\Markdown;
 
 class WidgetCommon extends WidgetBase {
     private function loadTemplate() {
-        $view = new RainTPL;
-        $view->configure('tpl_dir', APP_PATH.'widgets/WidgetCommon/'); 
-        $view->configure('cache_dir',    CACHE_PATH);
-        $view->configure('tpl_ext',      'tpl'); 
+        $config = array(
+            'tpl_dir'       => APP_PATH.'widgets/WidgetCommon/',
+            'cache_dir'     => CACHE_PATH,
+            'tpl_ext'       => 'tpl',
+            'auto_escape'   => false
+        );
+
+        // We load the template engine
+        $view = new Tpl;
+        $view->objectConfigure($config);
         $view->assign('c', $this);
         
         return $view;

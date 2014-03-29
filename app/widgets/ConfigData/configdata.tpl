@@ -17,7 +17,7 @@
             <legend>{$c->t('Posts')} - {$stats.post}</legend>
             <div class="clear"></div>
             <ul class="stats">
-                {loop="pstats"}
+                {loop="$pstats"}
                     <li style="height: {$c->formatHeight($value.count)}%;">
                         <span class="date">
                             {$c->formatDate($value.month, $value.year)}
@@ -41,7 +41,7 @@
             <legend>{$c->t('Messages')} - {$stats.message}</legend>
             <div class="clear"></div>
             <ul class="stats">
-                {loop="mstats"}
+                {loop="$mstats"}
                     <li style="height: {$c->formatHeight($value.count)}%">
                         <span class="date">
                             {$c->formatDate($value.month, $value.year)}
