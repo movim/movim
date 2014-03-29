@@ -415,6 +415,7 @@ class Admin extends WidgetBase {
         $dbview->assign('conf', $this->_conf);
         $dbview->assign('supported_db', $md->getSupportedDatabases());
         $dbview->assign('errors', $errors);
+
         $html = $dbview->draw('_admin_db', true);
 
         return $html;
