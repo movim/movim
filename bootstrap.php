@@ -3,11 +3,17 @@ if (!defined('DOCUMENT_ROOT')) die('Access denied');
 
 require 'vendor/autoload.php';
 
+use Monolog\Logger;
+use Monolog\Handler\SyslogHandler;
+
 /**
  * Error Handler...
  */
 function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcontext=null ) 
 {
+    $log = new Logger('movim');
+    $log->pushHandler(new SyslogHandler('movim'));
+    $log->addError($errstr);
     return false;
 }
 
@@ -172,7 +178,7 @@ class Bootstrap {
         require_once(LIB_PATH . "Markdown.php");
         
         // The template lib
-        require_once(LIB_PATH . 'RainTPL.php');
+        //require_once(LIB_PATH . 'RainTPL.php');
     }
 
     private function loadHelpers() {
