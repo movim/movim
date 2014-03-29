@@ -29,14 +29,14 @@ class BaseController {
             }
             catch(MovimException $e) {
                 // Load default language.
-                loadLanguage(\system\Conf::getServerConfElement('defLang'));
+                loadLanguage(Conf::getServerConfElement('defLang'));
             }
         }
         else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             loadLanguageAuto();
         }
         else {
-            loadLanguage(\system\Conf::getServerConfElement('defLang'));
+            loadLanguage(Conf::getServerConfElement('defLang'));
         }
     }
 
@@ -87,7 +87,7 @@ class BaseController {
         } else {
             $content = new TplPageBuilder();
         }
-        
+
         if($this->raw) {
 			echo $content->build($this->name.'.tpl');
 			exit;
