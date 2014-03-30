@@ -16,6 +16,10 @@
  * All rights reserved.
  */
 
+use Monolog\Logger;
+use Monolog\Handler\SyslogHandler;
+use Monolog\Handler\StreamHandler;
+
 /**
  * Return the list of gender
  */
@@ -369,13 +373,15 @@ function generateUUID($string = false) {
 }
 
 
-function movim_log($log) {
-    \system\Logs\Logger::log($log);
-
-    openlog('movim', LOG_NDELAY, LOG_USER);
-    $errlines = explode("\n", $log);
-    foreach ($errlines as $txt) { syslog(LOG_DEBUG, $txt); } 
-    closelog();
+function movim_log($logs) {
+    $log = new Logger('movim');
+    $log->pushHandler(new SyslogHandler('movim'));
+    
+    $log->pushHandler(new StreamHandler(LOG_PATH.'/logger.log', Logger::DEBUG));
+    if(is_array($logs))
+        $log->addInfo('', $logs);
+    else
+        $log->addInfo($logs);        
 }
 
 /**

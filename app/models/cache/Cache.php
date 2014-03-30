@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Cache extends ModlModel{
+class Cache extends Model{
     public $session;
     public $name;
     public $data;

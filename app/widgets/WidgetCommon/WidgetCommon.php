@@ -13,14 +13,24 @@
  * Copyright (C)2010 MOVIM Project
  *
  * See COPYING for licensing information.
+ *
  */
+
+use Rain\Tpl;
+use \Michelf\Markdown;
 
 class WidgetCommon extends WidgetBase {
     private function loadTemplate() {
-        $view = new RainTPL;
-        $view->configure('tpl_dir', APP_PATH.'widgets/WidgetCommon/'); 
-        $view->configure('cache_dir',    CACHE_PATH);
-        $view->configure('tpl_ext',      'tpl'); 
+        $config = array(
+            'tpl_dir'       => APP_PATH.'widgets/WidgetCommon/',
+            'cache_dir'     => CACHE_PATH,
+            'tpl_ext'       => 'tpl',
+            'auto_escape'   => false
+        );
+
+        // We load the template engine
+        $view = new Tpl;
+        $view->objectConfigure($config);
         $view->assign('c', $this);
         
         return $view;
@@ -557,7 +567,7 @@ class WidgetCommon extends WidgetBase {
     function ajaxPostPreview($content)
     {
         if($content != '') {
-            $content = Michelf\Markdown::defaultTransform($content);
+            $content = Markdown::defaultTransform($content);
             RPC::call('movim_fill', 'postpreviewcontent' , $content);
         } else
             RPC::call('movim_fill', 'postpreviewcontent' , t('No content'));
@@ -594,7 +604,7 @@ class WidgetCommon extends WidgetBase {
             );
 
         if($content != '') {
-            $content = Michelf\Markdown::defaultTransform($content);
+            $content = Markdown::defaultTransform($content);
 
             $p = new moxl\PubsubPostPublish();
             $p->setFrom($this->user->getLogin())

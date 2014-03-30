@@ -1,4 +1,4 @@
-{loop="chatrooms"}
+{loop="$chatrooms"}
     <li class="block">
         <a href="{$c->route('server', $value->server)}">
             <span class="tag green">{$c->t('Chatrooms')}</span>

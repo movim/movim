@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class RosterLinkDAO extends ModlSQL {
+class RosterLinkDAO extends SQL {
     function set(RosterLink $r) { 
         $this->_sql = '
             insert into rosterlink

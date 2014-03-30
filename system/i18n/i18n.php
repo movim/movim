@@ -146,7 +146,7 @@ function loadLanguageAuto()
         $exploded = explode('-', $key);
         $key = reset($exploded);
         if($key == 'en') {
-            loadLanguage(\system\Conf::getServerConfElement('defLang'));
+            loadLanguage(Conf::getServerConfElement('defLang'));
             $langNotFound = false;
         } elseif(file_exists(DOCUMENT_ROOT . '/locales/' . $key . '.po')) {
             loadLanguage($key);
@@ -183,7 +183,7 @@ function loadLanguage($lang)
  * Loads a .po file and adds the translations to the existing ones.
  * Conflicting translation strings will be rejected.
  */
-function load_extra_lang($directory)
+function loadExtraLang($directory)
 {
     global $translations;
     global $language;
@@ -217,7 +217,7 @@ function load_extra_lang($directory)
  *
  */
 
-function load_lang_array() {
+function loadLangArray() {
     $lang_list = get_lang_list();
     $dir = scandir(DOCUMENT_ROOT . '/locales/');
     $po = array();

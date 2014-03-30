@@ -34,7 +34,7 @@ class TplPageBuilder
     function __construct(&$user = NULL)
     {
         $this->user = $user;
-        $conf = new \system\Conf();
+        $conf = new Conf();
         $this->theme = $conf->getServerConfElement('theme');
      
     }
@@ -75,14 +75,15 @@ class TplPageBuilder
      */
     function build($template)
     {
-        if (ENVIRONMENT === 'production')ob_clean();
+        if (ENVIRONMENT === 'production') ob_clean();
         ob_start();
-        
+
         require($this->views_path($template));
         $outp = ob_get_clean();
         $outp = str_replace('<%scripts%>',
                             $this->printCss() . $this->printScripts(),
                             $outp);
+
         return $outp;
     }
 
@@ -226,7 +227,7 @@ class TplPageBuilder
     
     function displayFooterDebug()
     {
-        \system\Logs\Logger::displayFooterDebug();
+        //\system\Logs\Logger::displayFooterDebug();
     }
 }
 

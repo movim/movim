@@ -1,6 +1,6 @@
 <h2>{$c->t('Conferences')}</h2>
 <ul>
-    {loop="conferences"}
+    {loop="$conferences"}
         <li>
             <a href="#" onclick="{$c->getMucJoin($value)}">{$value->name}</a>
             <a href="#" onclick="{$c->getMucRemove($value)}">X</a>
@@ -9,7 +9,7 @@
 </ul>
 
 <h2>{$c->t('Groups')}</h2>
-{loop="subscriptions"}
+{loop="$subscriptions"}
     {if="$c->checkNewServer($value)"}
         <a href="{$c->route('server', $value->server)}">
             <h3>{$value->server}</h3>

@@ -11,7 +11,7 @@ class AdminloginController extends BaseController {
         $this->page->menuAddLink(t('Home'), 'main');
         $this->page->menuAddLink(t('Administration'), 'admin', true);
         
-        $conf = \system\Conf::getServerConf();
+        $conf = Conf::getServerConf();
         
         if($conf['user'] == $_POST['username'] 
         && $conf['pass'] == sha1($_POST['password'])) {

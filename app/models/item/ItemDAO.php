@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class ItemDAO extends ModlSQL { 
+class ItemDAO extends SQL { 
     function set(Item $item) {
         $this->_sql = '
             update item

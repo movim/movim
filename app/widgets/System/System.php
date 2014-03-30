@@ -27,7 +27,7 @@ class System extends WidgetBase {
             $this->view->assign('fail_safe',    '');
 
         // And we load some public values of the system configuration
-        $conf = \system\Conf::getServerConf();
+        $conf = Conf::getServerConf();
         $public_conf = array(
             'bosh_url' => $conf['boshUrl'],
             'timezone' => $conf['timezone']

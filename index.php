@@ -40,6 +40,9 @@
 define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
+use Monolog\Logger;
+use Monolog\Handler\SyslogHandler;
+
 try {
     if((isset($_GET['q']) && $_GET['q'] == 'admin') ||
        (isset($_GET['query']) && $_GET['query'] == 'admin')
@@ -61,7 +64,10 @@ try {
     
 } catch (Exception $e) {
     //manage errors
-    \system\Logs\Logger::displayDebugCSS();
+    //\system\Logs\Logger::displayDebugCSS();
+    $log = new Logger('movim');
+    $log->pushHandler(new SyslogHandler('movim'));
+    $log->addInfo($e->getMessage());
     
     if (ENVIRONMENT === 'development' && !FAIL_SAFE) {
         ?>
@@ -87,4 +93,4 @@ try {
 } 
 
 //display only if not already done and if there is something to display
-\system\Logs\Logger::displayFooterDebug();
+//\system\Logs\Logger::displayFooterDebug();

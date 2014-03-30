@@ -1,5 +1,5 @@
 <?php
-namespace system;
+//namespace system;
 if (!defined('DOCUMENT_ROOT')) die('Access denied');
 
 class Conf
