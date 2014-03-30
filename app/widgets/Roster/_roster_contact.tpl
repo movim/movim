@@ -3,7 +3,7 @@
     title="{$jid}_{$name}"
     class="{$presence}">
     <ul class="contact">
-        {loop="contact"}
+        {loop="$contact"}
             <li
                 title="{$value.jid}{if="$value.status != ''"} - {$value.status}{/if}"
                 class="{$value.presencetxt} {$value.inactive} {if="$value.client"}client {$value.client}{/if}">

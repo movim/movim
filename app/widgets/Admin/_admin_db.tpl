@@ -13,10 +13,10 @@
         <div class="message success">
             {$c->t('Movim is connected to the database')}
         </div>
-        {if="$infos != null"} 
+        {if="null !== $infos"} 
             <p>{$c->t('The database need to be updated')}</p>
             <div class="message warning">
-                {loop="infos"}
+                {loop="$infos"}
                     <p>{$value}</p>
                 {/loop}
                 
@@ -37,7 +37,7 @@
         <label for="logLevel">{$c->t('Database Type')}</label>
         <div class="select">
             <select id="dbType" name="dbType">
-                {loop="supported_db"}
+                {loop="$supported_db"}
                     <option value="{$key}"
                         {if="$key == $conf.dbType"}
                             selected="selected"
@@ -71,5 +71,5 @@
         <label for="dbName">{$c->t('Database Name')}</label>
         <input type="text" name="dbName" id="dbName" value="{$conf.dbName}" />
     </div>
+    {$validatebutton}
 </fieldset>
-{$validatebutton}

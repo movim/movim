@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class CacheDAO extends ModlSQL {
+class CacheDAO extends SQL {
     function get($session, $key) {
         $this->_sql = '
             select * from cache

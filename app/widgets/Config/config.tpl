@@ -13,7 +13,7 @@
                 <div class="select">
                     <select name="language" id="language">
                         <option value="en">English (default)</option>
-                            {loop="languages"}
+                            {loop="$languages"}
                                 {if="$key == $conf"}
                                     <option 
                                         value="{$key}" 

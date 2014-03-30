@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Subscription extends ModlModel {    
+class Subscription extends Model {    
     public $jid;
     public $server;
     public $node;
