@@ -1,8 +1,8 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
-class PresenceDAO extends ModlSQL {
+class PresenceDAO extends SQL {
     function __construct() {
         parent::__construct();
     }

@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Privacy extends ModlModel {    
+class Privacy extends Model {    
     public $pkey;
     public $value;
     protected $hash;

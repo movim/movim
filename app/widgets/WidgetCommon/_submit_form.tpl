@@ -24,7 +24,7 @@
 
 <div class="popup post" id="galleryselect" style="padding: 0;">
     <ul class="thumb">
-    {loop="gallery"}
+    {loop="$gallery"}
         <li style="background-image: url({$value.thumb});">
             <a 
                 href="#" 

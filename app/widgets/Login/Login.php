@@ -32,7 +32,7 @@ class Login extends WidgetBase {
     {
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
         $this->view->assign('submit', $submit);
-        $this->view->assign('conf',   \system\Conf::getServerConf($submit));
+        $this->view->assign('conf',   Conf::getServerConf($submit));
         $this->view->assign('submit_event', 
             'document.getElementById(\'submitb\').click();
             '.$submit.'
@@ -70,7 +70,7 @@ class Login extends WidgetBase {
             t('You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password',
                 '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
         
-        $conf = \system\Conf::getServerConf();
+        $conf = Conf::getServerConf();
         $whitelist = $conf['xmppWhiteList'];
         
         if(isset($whitelist) && $whitelist!=''){
@@ -207,7 +207,7 @@ class Login extends WidgetBase {
     function ajaxLogin($element)
     {
         // We get the Server Configuration
-        $serverconfig = \system\Conf::getServerConf();
+        $serverconfig = Conf::getServerConf();
         
         $warning = false;
 

@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Message extends ModlModel {
+class Message extends Model {
     public $session;
     public $jidto;
     public $jidfrom;

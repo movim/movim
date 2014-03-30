@@ -1,36 +1,19 @@
 <?php
 if (!defined('DOCUMENT_ROOT')) die('Access denied');
 
-/**
- * First thing, define autoloader
- * @param string $className
- * @return boolean
- */
-function __autoload($className)
-{
-    $className = ltrim($className, '\\');
-    $fileName  = DOCUMENT_ROOT;
-    $namespace = '';
-    if ($lastNsPos = strrpos($className, '\\')) {
-        $namespace = substr($className, 0, $lastNsPos);
-        $className = substr($className, $lastNsPos + 1);
-        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
-    }
-    $fileName .= '/'.str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-    if (file_exists($fileName)) {
-        require_once( $fileName);
-        return true;
-    } else  {
-        return false;
-    }
-}
+require 'vendor/autoload.php';
+
+use Monolog\Logger;
+use Monolog\Handler\SyslogHandler;
 
 /**
  * Error Handler...
  */
 function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcontext=null ) 
 {
-    \system\Logs\Logger::addLog( $errstr,$errno,'system',$errfile,$errline);
+    $log = new Logger('movim');
+    $log->pushHandler(new SyslogHandler('movim'));
+    $log->addError($errstr);
     return false;
 }
 
@@ -39,12 +22,16 @@ function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcont
  */
 class Bootstrap {
     function boot() {
+        //define all needed constants
+        $this->setContants();
+
+        require_once(SYSTEM_PATH . "Conf.php");
+        
         mb_internal_encoding("UTF-8");
 
         //First thing to do, define error management (in case of error forward)
         $this->setLogs();
-        //define all needed constants
-        $this->setContants();
+        
         //Check if vital system need is OK
         $this->checkSystem();
 
@@ -124,6 +111,7 @@ class Bootstrap {
         define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');
         define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
+        define('LOG_PATH',      DOCUMENT_ROOT . '/log/');
         
         define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
@@ -185,12 +173,6 @@ class Bootstrap {
         // SDPtoJingle and JingletoSDP lib :)
         require_once(LIB_PATH . "SDPtoJingle.php");
         require_once(LIB_PATH . "JingletoSDP.php");
-
-        // Markdown lib
-        require_once(LIB_PATH . "Markdown.php");
-        
-        // The template lib
-        require_once(LIB_PATH . 'RainTPL.php');
     }
 
     private function loadHelpers() {
@@ -217,7 +199,7 @@ class Bootstrap {
     
     private function setLogs() {
         try {
-            define('ENVIRONMENT',\system\Conf::getServerConfElement('environment'));
+            define('ENVIRONMENT', Conf::getServerConfElement('environment'));
         } catch (Exception $e) {
             define('ENVIRONMENT','development');//default environment is production
         }
@@ -247,33 +229,31 @@ class Bootstrap {
     
     private function setTimezone() {
         // We set the default timezone to the server timezone
-        $conf = \system\Conf::getServerConf();
+        $conf = Conf::getServerConf();
         if(isset($conf['timezone']))
             date_default_timezone_set($conf['timezone']);
     }
     
     private function loadModl() {
         // We load Movim Data Layer
-        require_once(LIB_PATH . 'Modl/loader.php');
-
-        $db = modl\Modl::getInstance();
+        $db = Modl\Modl::getInstance();
         $db->setModelsPath(APP_PATH.'models');
         
-        modl\loadModel('Presence');
-        modl\loadModel('Contact');
-        modl\loadModel('Privacy');
-        modl\loadModel('RosterLink');
-        modl\loadModel('Session');
-        modl\loadModel('Cache');
-        modl\loadModel('Postn');
-        modl\loadModel('Subscription');
-        modl\loadModel('Caps');
-        modl\loadModel('Item');
-        modl\loadModel('Message');
-        modl\loadModel('Sessionx');
-        modl\loadModel('Conference');
+        Modl\Utils::loadModel('Presence');
+        Modl\Utils::loadModel('Contact');
+        Modl\Utils::loadModel('Privacy');
+        Modl\Utils::loadModel('RosterLink');
+        Modl\Utils::loadModel('Session');
+        Modl\Utils::loadModel('Cache');
+        Modl\Utils::loadModel('Postn');
+        Modl\Utils::loadModel('Subscription');
+        Modl\Utils::loadModel('Caps');
+        Modl\Utils::loadModel('Item');
+        Modl\Utils::loadModel('Message');
+        Modl\Utils::loadModel('Sessionx');
+        Modl\Utils::loadModel('Conference');
         
-        $db->setConnectionArray(\System\Conf::getServerConf());
+        $db->setConnectionArray(Conf::getServerConf());
         $db->connect();
 
         return true;
@@ -339,15 +319,5 @@ class Bootstrap {
     private function startingSession() {
         $s = \Sessionx::start();
         $s->load();
-        //$s->load();
-        // Starting session.
-        //$sess = Session::start(APP_NAME);
-        //$session = $sess->get('session');
-        
-        //$this->user = new User;
-
-        /*$db = modl\Modl::getInstance();
-        $u = new User();
-        $db->setUser($u->getLogin());*/
     }
 }
