@@ -16,8 +16,13 @@
  *
  */
 
-use Rain\Tpl;
+use \Rain\Tpl;
 use \Michelf\Markdown;
+
+use Moxl\Xec\Action\Pubsub\PostPublish;
+use Moxl\Xec\Action\Pubsub\PostDelete;
+use Moxl\Xec\Action\Microblog\CommentPublish;
+use Moxl\Xec\Action\Microblog\CommentsGet;
 
 class WidgetCommon extends WidgetBase {
     private function loadTemplate() {
@@ -423,7 +428,7 @@ class WidgetCommon extends WidgetBase {
         } else {
             $html = '';
 
-            $pd = new \modl\PostnDAO();
+            $pd = new \Modl\PostnDAO();
             $comments = $pd->getComments($posts);
 
             foreach($posts as $post) {
@@ -577,8 +582,6 @@ class WidgetCommon extends WidgetBase {
     
     function ajaxPublishItem($server, $node, $form)
     {
-        
-        \movim_log($form);
         $content = $form['content'];
         $title   = $form['title'];
 
@@ -606,7 +609,7 @@ class WidgetCommon extends WidgetBase {
         if($content != '') {
             $content = Markdown::defaultTransform($content);
 
-            $p = new moxl\PubsubPostPublish();
+            $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($server)
               ->setNode($node)
@@ -620,10 +623,10 @@ class WidgetCommon extends WidgetBase {
     }
     
     function onComment($parent) {        
-        $p = new \modl\ContactPostn();
+        $p = new \Modl\ContactPostn();
         $p->nodeid = $parent;
         
-        $pd = new \modl\PostnDAO();
+        $pd = new \Modl\PostnDAO();
         $comments = $pd->getComments($p);
 
         $html = $this->prepareComments($comments);
@@ -653,7 +656,7 @@ class WidgetCommon extends WidgetBase {
     }
     
     function ajaxGetComments($jid, $id) {
-        $c = new moxl\MicroblogCommentsGet();
+        $c = new CommentsGet;
         $c->setTo($jid)
           ->setId($id)
           ->request();
@@ -661,7 +664,7 @@ class WidgetCommon extends WidgetBase {
     
     function ajaxPublishComment($to, $id, $content) {
         if($content != '') {
-            $p = new moxl\MicroblogCommentPublish();
+            $p = new CommentPublish;
             $p->setTo($to)
               ->setFrom($this->user->getLogin())
               ->setParentId($id)
@@ -671,7 +674,7 @@ class WidgetCommon extends WidgetBase {
     }
     
     function ajaxDeletePost($to, $node, $id) {
-        $p = new moxl\PubsubPostDelete();
+        $p = new PostDelete;
         $p->setTo($to)
           ->setNode($node)
           ->setId($id)
@@ -679,14 +682,14 @@ class WidgetCommon extends WidgetBase {
     }
     
     function ajaxPrivacyPost($nodeid, $privacy) {
-        $pd = new \modl\PrivacyDAO();
+        $pd = new \Modl\PrivacyDAO();
         
         $p = $pd->get($nodeid);
 
         if($privacy == 'orange') {
-            \modl\Privacy::set($nodeid, 0);
+            \Modl\Privacy::set($nodeid, 0);
         } elseif($privacy == 'black') {
-            \modl\Privacy::set($nodeid, 1);
+            \Modl\Privacy::set($nodeid, 1);
         }
 
         RPC::call('movim_change_class', $nodeid , 'protect '.$privacy, getFlagTitle($privacy));

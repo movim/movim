@@ -11,8 +11,8 @@
         </div>
         <div class="messages" id="messages{$contact->jid}">
             {$messageshtml}
-            <div style="display: none;" class="message composing" id="composing{$contact->jid}">{$c->t('Composing...')}</div>
-            <div style="display: none;" class="message composing" id="paused{$contact->jid}">{$c->t('Paused...')}</div>                        
+            <div style="display: none;" class="message composing" id="composing{$contact->jid}">{$c->t('Composing…')}</div>
+            <div style="display: none;" class="message composing" id="paused{$contact->jid}">{$c->t('Paused…')}</div>                        
         </div>
         
         <div class="text">

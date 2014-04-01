@@ -18,9 +18,10 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Vcard\Get;
+
 class ContactSummary extends WidgetCommon
 {
-
     function load()
     {
         $this->addcss('contactsummary.css');
@@ -35,7 +36,7 @@ class ContactSummary extends WidgetCommon
     
     function ajaxRefreshVcard($jid)
     {
-        $r = new moxl\VcardGet();
+        $r = new Get;
         $r->setTo($jid)->request();
     }
     
@@ -74,18 +75,14 @@ class ContactSummary extends WidgetCommon
     
     function build()
     {
-        $cd = new modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         
         if($_GET['f'] == $this->user->getLogin()) {
             $contact = $cd->get($this->user->getLogin());
-        } /*else {
-            $contact = $cd->getRosterItem($_GET['f']);
-            $refresh = true;
-        }*/
+        }
         
         if(!isset($contact)) {
             $contact = $cd->get($_GET['f']);
-            //$refresh = false;
         }
         ?>
         <div id="contactsummary">

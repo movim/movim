@@ -18,6 +18,8 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Roster\UpdateItem;
+
 class ContactManage extends WidgetCommon
 {
     function load() {
@@ -32,7 +34,7 @@ class ContactManage extends WidgetCommon
     }
     
     public function ajaxContactManage($form) {
-        $rd = new \moxl\RosterUpdateItem();
+        $rd = new UpdateItem;
         $rd->setTo(echapJid($form['jid']))
            ->setFrom($this->user->getLogin())
            ->setName(htmlspecialchars($form['alias']))
@@ -41,7 +43,7 @@ class ContactManage extends WidgetCommon
     }
     
     private function prepareContactManage($jid) {
-        $rd = new \modl\RosterLinkDAO();
+        $rd = new \Modl\RosterLinkDAO();
         
         $groups = $rd->getGroups();
         $rl = $rd->get($jid);
