@@ -1,5 +1,4 @@
 <?php
-if (!defined('DOCUMENT_ROOT')) die('Access denied');
 /**
  * @package Widgets
  *
@@ -40,7 +39,7 @@ class Login extends WidgetBase {
             localStorage.username = document.querySelector(\'#login\').value;
             this.onclick=null;');
 
-        $sd = new modl\SessionxDAO();
+        $sd = new \Modl\SessionxDAO();
         $sd->clean();
             
         if(isset($_GET['err'])) {
@@ -57,7 +56,7 @@ class Login extends WidgetBase {
 
         $this->view->assign('pop', $pop-2);
 
-        $sd = new modl\SessionxDAO();
+        $sd = new \Modl\SessionxDAO();
         $connected = $sd->getConnected();
 
         $this->view->assign('connected', $connected);
@@ -266,7 +265,7 @@ class Login extends WidgetBase {
         $sess->set('registered_events', $wrapper->registerEvents());
 
         // BOSH + XMPP connexion test
-        $warning = moxl\login();
+        $warning = \Moxl\API::login();
         
         if($warning != 'OK') {
             RPC::call('movim_redirect', Route::urlize('login', $warning));        

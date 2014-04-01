@@ -18,6 +18,9 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Vcard\Get;
+use Moxl\Xec\Action\Vcard\Set;
+
 class Vcard extends WidgetBase
 {
     function load()
@@ -86,22 +89,22 @@ class Vcard extends WidgetBase
         $c->description     = trim($vcard->desc->value);
 
         if($vcard->privacy->value == true)
-            \modl\Privacy::set($c->jid, 1);
+            \Modl\Privacy::set($c->jid, 1);
         else
-            \modl\Privacy::set($c->jid, 0);
+            \Modl\Privacy::set($c->jid, 0);
             
         $cd = new modl\ContactDAO();
         $cd->set($c);
         
         $c->createThumbnails();
         
-        $r = new moxl\VcardSet();
+        $r = new Set;
         $r->setData($vcard)->request();
     }
     
     function prepareInfos($error = false) {
                 
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
 
         $me = $cd->get($this->user->getLogin());
 
@@ -123,16 +126,6 @@ class Vcard extends WidgetBase
                 $html .= '
                     <script type="text/javascript">setTimeout(\''.$this->genCallAjax('ajaxGetVcard').'\', 500);</script>';
         }
-        
-        /*if($error == 'vcardfeaturenotimpl') {
-            $html .= '
-                <div class="message error">'.t("Profile not updated : Your server does not support the vCard feature").'</div>';
-        }
-        
-        if($error == 'vcardbadrequest') {
-            $html .= '
-                <div class="message error">'.t("Profile not updated : Request error").'</div>';
-        }*/
 
         if($me->privacy == '1')
             $color = 'black';
@@ -358,7 +351,7 @@ class Vcard extends WidgetBase
     
     function ajaxGetVcard()
     {
-        $r = new moxl\VcardGet();
+        $r = new Get;
         $r->setTo($this->user->getLogin())
           ->setMe()
           ->request();

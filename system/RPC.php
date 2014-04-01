@@ -97,7 +97,7 @@ class RPC
 
         // We force the rid and id session number from the browser
         if(isset($_GET['do']) && $_GET['do'] == 'poll') {
-            moxl\ping();
+            \Moxl\API::ping();
         } else {
             // Loading the widget.
             $widget_name = (string)$request->widget;

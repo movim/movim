@@ -15,6 +15,9 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Vcard4\Get;
+use Moxl\Xec\Action\Vcard4\Set;
+
 class Vcard4 extends WidgetBase
 {
     function load()
@@ -26,7 +29,7 @@ class Vcard4 extends WidgetBase
 
     function display()
     {
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         $me = $cd->get($this->user->getLogin());
         
         if($me == null) {
@@ -109,7 +112,7 @@ class Vcard4 extends WidgetBase
     }
     
     function ajaxGetVcard() {
-        $r = new moxl\Vcard4Get();
+        $r = new Get;
         $r->setTo($this->user->getLogin())
           ->setMe()
           ->request();
@@ -129,11 +132,11 @@ class Vcard4 extends WidgetBase
         unset($vcard->month->value);
         unset($vcard->day->value);
 
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         $c = $cd->get($this->user->getLogin());
 
         if($c == null)
-            $c = new modl\Contact();
+            $c = new \Modl\Contact();
             
         $c->jid     = $this->user->getLogin();
         
@@ -159,13 +162,13 @@ class Vcard4 extends WidgetBase
         
         $c->description     = trim($vcard->desc->value);
             
-        $cd = new modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         $cd->set($c);
         
-        $r = new moxl\Vcard4Set();
+        $r = new Set;
         $r->setData($c)->request();
 
-        $r = new moxl\VcardSet();
+        $r = new Moxl\Xec\Action\Vcard\Set;
         $r->setData($vcard)->request();
     }
 
