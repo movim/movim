@@ -18,6 +18,8 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Location\Publish;
+
 class Location extends WidgetBase
 {
     function load()
@@ -46,7 +48,7 @@ class Location extends WidgetBase
                 'uri'           => ''//'http://www.openstreetmap.org/'.urlencode('?lat='.(string)$pos->lat.'&lon='.(string)$pos->lon.'&zoom=10')
                 );
 
-            $p = new moxl\LocationPublish();
+            $p = new Publish;
             $p->setTo($this->user->getLogin())
               ->setGeo($geo)
               ->request();
@@ -77,7 +79,7 @@ class Location extends WidgetBase
     {
         $submit = $this->genCallAjax('ajaxLocationPublish', "getMyPositionData()");
         
-        $cd = new modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         $c = $cd->get($this->user->getLogin());
 
         if($c->loctimestamp) {

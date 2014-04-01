@@ -18,6 +18,13 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Pubsub\GetItems;
+use Moxl\Xec\Action\Pubsub\Subscribe;
+use Moxl\Xec\Action\Pubsub\Unsubscribe;
+use Moxl\Xec\Action\Pubsub\GetAffiliations;
+use Moxl\Xec\Action\Pubsub\GetMetadata;
+use Moxl\Xec\Action\Pubsub\GetSubscriptions;
+
 class Node extends WidgetCommon
 {
     private $role;
@@ -111,10 +118,10 @@ class Node extends WidgetCommon
 
     function ajaxGetItems($server, $node)
     {
-        $pd = new modl\PostnDAO();
+        $pd = new \Modl\PostnDAO();
         $pd->deleteNode($server, $node);
     
-        $r = new moxl\PubsubGetItems();
+        $r = new GetItems;
         $r->setTo($server)
           ->setNode($node)
           ->request();
@@ -122,7 +129,7 @@ class Node extends WidgetCommon
     
     function ajaxSubscribe($data, $server, $node)
     {
-        $g = new moxl\PusubSubscribe();
+        $g = new Subscribe;
         $g->setTo($server)
           ->setNode($node)
           ->setFrom($this->user->getLogin())
@@ -132,10 +139,10 @@ class Node extends WidgetCommon
     
     function ajaxUnsubscribe($server, $node)
     {
-        $sd = new \modl\SubscriptionDAO();
+        $sd = new \Modl\SubscriptionDAO();
 
         foreach($sd->get($server, $node) as $s) {
-            $g = new moxl\PubsubUnsubscribe();
+            $g = new Unsubscribe;
             $g->setTo($server)
               ->setNode($node)
               ->setSubid($s->subid)
@@ -146,7 +153,7 @@ class Node extends WidgetCommon
     
     function ajaxGetSubscriptions($server, $node)
     {
-        $r = new moxl\PubsubGetSubscriptions();
+        $r = new GetSubscriptions;
         $r->setTo($server)
           ->setNode($node)
           ->setSync()
@@ -154,13 +161,13 @@ class Node extends WidgetCommon
     }
 
     function ajaxGetAffiliations($server, $node){
-        $r = new moxl\PubsubGetAffiliations();
+        $r = new GetAffiliations;
         $r->setTo($server)->setNode($node)
           ->request();
     }
     
     function ajaxGetMetadata($server, $node){
-        $r = new moxl\PubsubGetMetadata();
+        $r = new GetMetadata;
         $r->setTo($server)->setNode($node)
           ->request();
     }
@@ -207,7 +214,7 @@ class Node extends WidgetCommon
     }
     
     function preparePostsNode($serverid, $groupid, $start) {
-        $pd = new \modl\PostnDAO();
+        $pd = new \Modl\PostnDAO();
         $pl = $pd->getNode($serverid, $groupid, $start+1, $this->_feedsize);
 
         $html = $this->preparePosts($pl);
@@ -237,7 +244,7 @@ class Node extends WidgetCommon
     }
     
     function searchSubscription($server, $node) {
-        $sd = new \modl\SubscriptionDAO();
+        $sd = new \Modl\SubscriptionDAO();
         $subs = $sd->get($server, $node);
         
         if($subs != null)

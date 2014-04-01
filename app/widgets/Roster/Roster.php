@@ -18,6 +18,8 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Roster\GetList;
+
 class Roster extends WidgetBase
 {
     private $grouphtml;
@@ -57,7 +59,7 @@ class Roster extends WidgetBase
     {
         $arr = $presence->getPresence();
 
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         $c = $cd->getRosterItem($arr['jid'], true);
 
         if($c != null) {
@@ -91,7 +93,7 @@ class Roster extends WidgetBase
      */
     function ajaxRefreshRoster()
     {
-        $r = new moxl\RosterGetList();
+        $r = new GetList;
         $r->request();
     }
 
@@ -184,165 +186,8 @@ class Roster extends WidgetBase
         return $contactview->draw('_roster_contact', true);
     }
 
-    /**
-     * @brief Generate the HTML for a roster contact
-     * @param $contact 
-     * @param $inner 
-     * @returns 
-     */
-    /*
-    function prepareRosterElement($contact, $caps = false)
-    {
-        $type = '';
-        $jingle = $jingle_audio = $jingle_video = $jingle_ice = false;
-        
-        if($caps && isset($caps[$contact->node.'#'.$contact->ver])) {
-            $cap  = $caps[$contact->node.'#'.$contact->ver];
-            $type = $cap->type;
-            $client = $cap->name;
-            $client = explode(' ',$client);
-            $client = reset($client);
-            $features = $cap->features;
-
-            $features = unserialize($features);
-
-            if(array_search('urn:xmpp:jingle:1', $features) !== null) {
-                $jingle = true;
-
-                if(array_search('urn:xmpp:jingle:apps:rtp:audio', $features) !== null) {
-                    $jingle_audio = true;
-                }
-                if(array_search('urn:xmpp:jingle:apps:rtp:video', $features) !== null) {
-                    $jingle_video = true;
-                }
-                if(array_search('urn:xmpp:jingle:transports:ice-udp:0', $features)
-                || array_search('urn:xmpp:jingle:transports:ice-udp:1', $features)) {
-                    $jingle_ice = true;
-                }
-            }
-        }
-        
-        $html = '';
-        $html .= '<li
-                class="';
-                    if(isset($_GET['f']) && $contact->jid == $_GET['f'])
-                        $html .= 'active ';
-                        
-                    if($contact->last != null && $contact->last > 60)
-                        $html .= 'inactive ';
-
-                    if($contact->value && $contact->value < 5) {
-                        $presencestxt = getPresencesTxt();
-                        $html.= $presencestxt[$contact->value];
-
-                        if(isset($client))
-                            $html .= ' client '.strtolower($client);
-                    } elseif($contact->value == 6)
-                        $html .= 'server_error';
-                    else
-                        $html .= 'offline';
-
-        $html .= '"';
-
-        $html .= '
-                id="roster'.$contact->jid.$contact->ressource.'"
-                data-jid="'.$contact->jid.'"
-                data-priority="'.$contact->value.'"
-             >';
-
-        $html .= '<div class="chat on" onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$contact->jid."'").'"></div>';
-
-        if($type == 'handheld')
-            $html .= '<div class="infoicon mobile"></div>';
-            
-        if($type == 'web')
-            $html .= '<div class="infoicon web"></div>';
-
-        if($type == 'bot')
-            $html .= '<div class="infoicon bot"></div>';
-
-        if($jingle_video && $jingle_ice && $jingle_audio)
-            $html .= '<div class="infoicon jingle" onclick="Popup.open(\''.$contact->jid.'/'.$contact->ressource.'\')"></div>';
-
-        if(($contact->tuneartist != null && $contact->tuneartist != '') ||
-           ($contact->tunetitle != null && $contact->tunetitle != ''))
-            $html .= '<div class="infoicon tune"></div>';
-        
-        $html .= '<a
-                    title="'.$contact->jid;
-                    if($contact->status != '')
-                        $html .= ' - '.htmlentities($contact->status, ENT_QUOTES, 'UTF-8');
-                    if($contact->ressource != '')
-                        $html .= ' ('.$contact->ressource.')';
-
-        $html .= '"';
-        $html .= ' href="'.Route::urlize('friend', $contact->jid).'"
-                 >
-                <img
-                    class="avatar"
-                    src="'.$contact->getPhoto('s').'"
-                    />'.
-                    $contact->getTrueName();
-            $html .= '<br /><span class="ressource">';
-                    if($contact->status != '')
-                        $html .= htmlentities($contact->status, ENT_QUOTES, 'UTF-8') . ' - ';
-                        if($contact->rosterask == 'subscribe')
-                            $html .= " #";
-                        if($contact->ressource != '')
-                            $html .= ' '.$contact->ressource.'';
-            $html .= '</span>
-                 </a>';
-        
-        $html .= '</li>';
-
-        return $html;
-    }
-    */
-    /**
-     * @brief Create the HTML for a roster group and add the title
-     * @param $contacts 
-     * @param $i 
-     * @returns html
-     */
-    /*
-    private function prepareRosterGroup($contacts, &$i, $caps)
-    {
-        $j = $i;
-        // We get the current name of the group
-        $currentgroup = $contacts[$i]->groupname;
-
-        // We grab all the contacts of the group 
-        $grouphtml = '';
-        while(isset($contacts[$i]) && $contacts[$i]->groupname == $currentgroup) {              
-            $grouphtml .= $this->prepareRosterElement($contacts[$i], $caps);
-            $i++;
-        } 
-        
-        // And we add the title at the head of the group 
-        if($currentgroup == '')
-            $currentgroup = t('Ungrouped');
-            
-        $groupshown = '';
-        // get the current showing state of the group and the offline contacts
-        $groupState = Cache::c('group'.$currentgroup);
-
-        if($groupState == false)
-            $groupshown = 'groupshown';
-            
-        $count = $i-$j;
-        
-        $grouphtml = '
-            <div id="group'.$currentgroup.'" class="'.$groupshown.'">
-                <h1 onclick="'.$this->genCallAjax('ajaxToggleCache', "'group".$currentgroup."'").'">'.
-                    $currentgroup.' - '.$count.'
-                </h1>'.$grouphtml.'
-            </div>';
-        
-        return $grouphtml;
-    }*/
-
     private function getCaps() {
-        $capsdao = new modl\CapsDAO();
+        $capsdao = new \Modl\CapsDAO();
         $caps = $capsdao->getAll();
 
         $capsarr = array();
@@ -357,12 +202,11 @@ class Roster extends WidgetBase
      * @brief Here we generate the roster
      * @returns 
      * 
-     * 
      */
     function prepareRoster()
     {
         
-        $contactdao = new \modl\ContactDAO();
+        $contactdao = new \Modl\ContactDAO();
         $contacts = $contactdao->getRoster();
 
         $capsarr = $this->getCaps();

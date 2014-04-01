@@ -145,7 +145,7 @@ class ContactCard extends WidgetCommon
 
     function build()
     {
-        $cd = new modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         $contact = $cd->get($_GET['f']);
         ?>
         <div class="tabelem paddedtop" title="<?php echo t('Profile'); ?>" id="contactcard">

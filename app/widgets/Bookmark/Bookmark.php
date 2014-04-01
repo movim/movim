@@ -18,6 +18,10 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Bookmark\Get;
+use Moxl\Xec\Action\Bookmark\Set;
+use Moxl\Xec\Action\Presence\Muc;
+
 class Bookmark extends WidgetBase
 {
     private $_list_server;
@@ -137,7 +141,7 @@ class Bookmark extends WidgetBase
     
     function ajaxGetBookmark() 
     {
-        $b = new moxl\BookmarkGet();
+        $b = new Get;
         $b->setTo($this->user->getLogin())
           ->request();
     }
@@ -175,7 +179,7 @@ class Bookmark extends WidgetBase
         }
 
         
-        $b = new moxl\BookmarkSet();
+        $b = new Set;
         $b->setArr($arr)
           ->setTo($this->user->getLogin())
           ->request();
@@ -216,7 +220,7 @@ class Bookmark extends WidgetBase
     // Join a MUC 
     function ajaxBookmarkMucJoin($jid, $nickname)
     {
-        $p = new moxl\PresenceMuc();
+        $p = new Muc;
         $p->setTo($jid)
           ->setNickname($nickname)
           ->request();
