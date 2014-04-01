@@ -16,6 +16,8 @@
  *
  * See COPYING for licensing information.
  */
+
+use Moxl\Xec\Action\Ack\Send;
  
 class Ack extends WidgetBase {
     function load()
@@ -35,7 +37,7 @@ class Ack extends WidgetBase {
     }
     
     function ajaxAckRequest($to, $id) {       
-        $ack = new \moxl\AckSend();
+        $ack = new Send;
         $ack->setTo($to)
             ->setId($id)
             ->request();

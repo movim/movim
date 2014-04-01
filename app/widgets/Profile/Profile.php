@@ -18,9 +18,13 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Presence\Chat;
+use Moxl\Xec\Action\Presence\Away;
+use Moxl\Xec\Action\Presence\DND;
+use Moxl\Xec\Action\Presence\XA;
+
 class Profile extends WidgetCommon
 {
-
     private static $status;
 
     function load()
@@ -58,23 +62,23 @@ class Profile extends WidgetCommon
         
         switch($presence['show']) {
             case 'chat':
-                $p = new moxl\PresenceChat();
+                $p = new Chat;
                 $p->setStatus($status)->request();
                 break;
             case 'away':
-                $p = new moxl\PresenceAway();
+                $p = new Away;
                 $p->setStatus($status)->request();
                 break;
             case 'dnd':
-                $p = new moxl\PresenceDND();
+                $p = new DND;
                 $p->setStatus($status)->request();
                 break;
             case 'xa':
-                $p = new moxl\PresenceXA();
+                $p = new XA;
                 $p->setStatus($status)->request();
                 break;
             default :
-                $p = new moxl\PresenceChat();
+                $p = new Chat;
                 $p->setStatus($status)->request();
                 break;
         }
@@ -101,15 +105,7 @@ class Profile extends WidgetCommon
             // Contact general infos
             $html .= '
                     <h1 style="text-decoration: none;">'.$me->getTrueName().'</h1>';
-
-            /*if($this->testIsSet($me->name))
-                $html .= $me->name.' ';
-            else
-                $html .= $me->getTrueName().' ';
-                
-            if($this->testIsSet($me->url))
-                $html .= '<br /><a target="_blank" href="'.$me->url.'">'.$me->url.'</a>';
-            */
+                    
             $html .= '
                 <div class="textbubble">
                     <textarea 
@@ -139,7 +135,6 @@ class Profile extends WidgetCommon
     function build()
     {
     ?>
-    
         <div id="profile">
             <?php 
                 echo $this->prepareVcard();

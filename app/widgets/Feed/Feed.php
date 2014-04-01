@@ -1,5 +1,9 @@
 <?php
 
+use Moxl\Xec\Action\Storage\Set;
+use Moxl\Xec\Action\Microblog\CommentCreateNode;
+use Moxl\Xec\Action\Microblog\CreateNode;
+
 class Feed extends WidgetCommon {
     private $_feedsize = 10;
     
@@ -45,7 +49,7 @@ class Feed extends WidgetCommon {
         $config = $this->user->getConfig();
         $config['feed'] = 'created';
         
-        $s = new moxl\StorageSet();
+        $s = new Set;
         $s->setXmlns('movim:prefs')
           ->setData(serialize($config))
           ->request();
@@ -55,7 +59,7 @@ class Feed extends WidgetCommon {
         $config = $this->user->getConfig();
         $config['feed'] = 'error';
         
-        $s = new moxl\StorageSet();
+        $s = new Set;
         $s->setXmlns('movim:prefs')
           ->setData(serialize($config))
           ->request();
@@ -82,7 +86,7 @@ class Feed extends WidgetCommon {
     }  
     
     function ajaxCreateCommentNode($parentid) {
-        $n = new moxl\MicroblogCommentCreateNode();
+        $n = new CommentCreateNode;
         $n->setTo($this->user->getLogin())
           ->setParentId($parentid)
           ->request();
@@ -149,7 +153,7 @@ class Feed extends WidgetCommon {
     }
     
     function prepareFeed($start) {
-        $pd = new \modl\PostnDAO();
+        $pd = new \Modl\PostnDAO();
         $pl = $pd->getFeed($start+1, $this->_feedsize);
         
         $html = $this->preparePosts($pl);
@@ -180,7 +184,7 @@ class Feed extends WidgetCommon {
     
     function ajaxCreateNode()
     {
-        $p = new moxl\MicroblogCreateNode();
+        $p = new CreateNode;
         $p->setTo($this->user->getLogin())
           ->request();
     }

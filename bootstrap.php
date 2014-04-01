@@ -261,7 +261,7 @@ class Bootstrap {
     
     private function loadMoxl() {
         // We load Movim XMPP Library
-        require_once(LIB_PATH . 'Moxl/loader.php');
+        //require_once(LIB_PATH . 'Moxl/loader.php');
     }
     
     private function setBrowserSupport() {

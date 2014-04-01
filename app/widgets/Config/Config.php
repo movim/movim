@@ -18,6 +18,9 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Storage\Get;
+use Moxl\Xec\Action\Storage\Set;
+
 class Config extends WidgetBase
 {
     function load()
@@ -59,14 +62,14 @@ class Config extends WidgetBase
         if(isset($config))
             $data = array_merge($config, $data);
 
-        $s = new moxl\StorageSet();
+        $s = new Set;
         $s->setXmlns('movim:prefs')
           ->setData(serialize($data))
           ->request();
     }
 
     function ajaxGet() {
-        $s = new moxl\StorageGet();
+        $s = new Get;
         $s->setXmlns('movim:prefs')
           ->request();
     }

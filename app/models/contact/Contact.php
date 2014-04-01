@@ -154,6 +154,8 @@ class Contact extends Model {
             $this->date = (string)$vcard->vCard->BDAY;
         else
             $this->date = null;
+
+        $this->date = date(DATE_ISO8601, strtotime($this->date));
         
         $this->name = (string)$vcard->vCard->NICKNAME;
         $this->fn = (string)$vcard->vCard->FN;

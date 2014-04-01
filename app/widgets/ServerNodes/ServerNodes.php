@@ -18,6 +18,9 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Pubsub\DiscoItems;
+use Moxl\Xec\Action\Group\Create;
+
 class ServerNodes extends WidgetCommon
 {
     function load()
@@ -90,7 +93,7 @@ class ServerNodes extends WidgetCommon
     }
     
     function prepareServer($server) {
-        $nd = new \modl\ItemDAO();
+        $nd = new \Modl\ItemDAO();
         $items = $nd->getItems($server);
         
         if($items == null)
@@ -148,10 +151,10 @@ class ServerNodes extends WidgetCommon
 
     function ajaxGetNodes($server)
     {
-        $nd = new modl\ItemDAO();
+        $nd = new \Modl\ItemDAO();
         $nd->deleteItems($server);
         
-        $r = new moxl\PubsubDiscoItems();
+        $r = new DiscoItems;
         $r->setTo($server)->request();
     }
     
@@ -160,7 +163,7 @@ class ServerNodes extends WidgetCommon
         //make a uri of the title
         $uri = stringToUri($data['title']);
         
-        $r = new moxl\GroupCreate();
+        $r = new Create;
         $r->setTo($data['server'])->setNode($uri)->setData($data['title'])
           ->request();
     }
