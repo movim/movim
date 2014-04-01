@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Pubsub;
 
 class Unsubscribe extends Errors
 {
@@ -37,7 +37,7 @@ class Unsubscribe extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubUnsubscribe($this->_to, $this->_from, $this->_node, $this->_subid);
+        Pubsub::unsubscribe($this->_to, $this->_from, $this->_node, $this->_subid);
     }
     
     public function setTo($to)

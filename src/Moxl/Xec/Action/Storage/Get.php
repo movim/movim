@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Storage;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Storage;
 
 class Get extends Action
 {
@@ -34,7 +34,7 @@ class Get extends Action
     public function request() 
     {
         $this->store();
-        Stanza\storageGet($this->_xmlns);
+        Storage::get($this->_xmlns);
     }
     
     public function setXmlns($xmlns)

@@ -13,15 +13,15 @@ class PubsubAtom {
     public $geo = false;
     public $comments = false;
     
-    public function __construct() {
+    public static function __construct() {
         $this->id = md5(openssl_random_pseudo_bytes(5));
     }
 
-    public function enableComments() {
+    public static function enableComments() {
         $this->comments = true;
     }
     
-    public function __toString() {
+    public static function __toString() {
         $xml = '
             <entry xmlns="http://www.w3.org/2005/Atom">
                 <title>'.$this->title.'</title>

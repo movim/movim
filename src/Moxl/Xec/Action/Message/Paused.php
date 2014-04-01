@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Message;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Message;
 
 class Paused extends Action
 {
@@ -35,7 +35,7 @@ class Paused extends Action
     public function request() 
     {
         $this->store();
-        Stanza\messagePaused($this->_to);
+        Message::paused($this->_to);
     }
     
     public function setTo($to)

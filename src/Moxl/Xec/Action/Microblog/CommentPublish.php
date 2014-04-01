@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Microblog;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Microblog;
 
 class CommentPublish extends Action
 {
@@ -42,7 +42,7 @@ class CommentPublish extends Action
     public function request() 
     {       
         $this->store();        
-        Stanza\postPublish($this->_to, $this->_node, $this->_atom);
+        Microblog::postPublish($this->_to, $this->_node, $this->_atom);
     }
     
     public function setTo($to)

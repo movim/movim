@@ -4,7 +4,7 @@ namespace Moxl\Xec\Action\PubsubSubscription;
 
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza;
+use Moxl\Stanza\PubsubSubscription;
 
 class ListGetFriends extends Errors
 {
@@ -13,7 +13,7 @@ class ListGetFriends extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubSubscriptionListGetFriends($this->_to);
+        PubsubSubscription::listGetFriends($this->_to);
     }
     
     public function setTo($to)

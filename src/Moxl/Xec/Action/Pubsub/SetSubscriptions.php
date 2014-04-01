@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Pubsub;
 
 class SetSubscriptions extends Errors
 {
@@ -36,7 +36,7 @@ class SetSubscriptions extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubSetSubscriptions($this->_to, $this->_node, $this->_data);
+        Pubsub::setSubscriptions($this->_to, $this->_node, $this->_data);
     }
     
     public function setTo($to)

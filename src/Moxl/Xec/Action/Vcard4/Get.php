@@ -24,7 +24,7 @@
 namespace Moxl\Xec\Action\Vcard4;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Vcard4;
 
 class Get extends Action
 {
@@ -34,7 +34,7 @@ class Get extends Action
     public function request() 
     {
         $this->store();
-        Stanza\vcard4Get($this->_to);
+        Vcard4::get($this->_to);
     }
     
     public function setTo($to)

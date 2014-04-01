@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Roster;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Roster;
 
 class UpdateItem extends Action
 {
@@ -37,7 +37,7 @@ class UpdateItem extends Action
     public function request() 
     {
         $this->store();
-        Stanza\rosterUpdate($this->_to, $this->_name, $this->_group);
+        Roster::update($this->_to, $this->_name, $this->_group);
     }
     
     public function setTo($to)

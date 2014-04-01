@@ -4,7 +4,7 @@ namespace Moxl\Xec\Action\PubsubSubscription;
 
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza;
+use Moxl\Stanza\PubsubSubscription;
 
 class ListGet extends Errors
 {
@@ -12,7 +12,7 @@ class ListGet extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubSubscriptionListGet();
+        PubsubSubscription::listGet();
     }
     
     public function handle($stanza) {

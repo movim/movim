@@ -4,22 +4,24 @@
 
 namespace Moxl\Stanza;
 
-function enableCarbons() {
-    $xml = '
-        <enable xmlns="urn:xmpp:carbons:2"/>
-        ';
+class Carbons {
+    static function enable() {
+        $xml = '
+            <enable xmlns="urn:xmpp:carbons:2"/>
+            ';
 
-    $xml = \Moxl\iqWrapper($xml, false, 'set');
+        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
 
-    \Moxl\request($xml);
-}
+        \Moxl\API::request($xml);
+    }
 
-function disableCarbons() {
-    $xml = '
-        <disable xmlns="urn:xmpp:carbons:2"/>
-        ';
+    static function disable() {
+        $xml = '
+            <disable xmlns="urn:xmpp:carbons:2"/>
+            ';
 
-    $xml = \Moxl\iqWrapper($xml, false, 'set');
+        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
 
-    \Moxl\request($xml);
+        \Moxl\API::request($xml);
+    }
 }

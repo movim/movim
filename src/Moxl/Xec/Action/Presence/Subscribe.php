@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Presence;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Presence;
 
 class Subscribe extends Action
 {
@@ -35,7 +35,7 @@ class Subscribe extends Action
     public function request() 
     {
         $this->store();
-        Stanza\presenceSubscribe($this->_to, $this->_status);
+        Presence::subscribe($this->_to, $this->_status);
     }
     
     public function setTo($to)

@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Pubsub;
 
 class GetMetadata extends Errors
 {
@@ -35,7 +35,7 @@ class GetMetadata extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubGetMetadata($this->_to, $this->_node);
+        Pubsub::getMetadata($this->_to, $this->_node);
     }
     
     public function setTo($to)

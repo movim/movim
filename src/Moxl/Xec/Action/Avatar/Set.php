@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Avatar;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Avatar;
 
 class Set extends Action
 {
@@ -34,7 +34,7 @@ class Set extends Action
     public function request() 
     {
         $this->store();
-        Stanza\avatarSet($this->_data);
+        Avatar::set($this->_data);
     }
     
     public function setData($data)

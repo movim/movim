@@ -35,7 +35,7 @@ class Set extends Action
     public function request() 
     {
         $this->store();
-        Stanza\bookmarkSet($this->_arr);
+        Bookmark::set($this->_arr);
     }
     
     public function setArr($arr)

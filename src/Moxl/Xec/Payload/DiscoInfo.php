@@ -24,9 +24,9 @@
  * 
  */
 
-namespace Moxl;
+namespace Moxl\Xec\Payload;
 
-use Moxl\Stanza;
+use Moxl\Stanza\Disco;
 
 class DiscoInfo extends Payload
 {
@@ -35,6 +35,6 @@ class DiscoInfo extends Payload
         $to = current(explode('/',(string)$parent->attributes()->to));
         $id = (string)$parent->attributes()->id;
 
-        Stanza\discoAnswer($jid, $id);
+        Disco::answer($jid, $id);
     }
 }

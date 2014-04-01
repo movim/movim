@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Jingle;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Jingle;
 
 class SessionTerminate extends Action
 {
@@ -36,7 +36,7 @@ class SessionTerminate extends Action
     public function request() 
     {
         $this->store();
-        Stanza\jingleSessionTerminate($this->_to, $this->_jingleSid, $this->_reason);
+        Jingle::sessionTerminate($this->_to, $this->_jingleSid, $this->_reason);
     }
     
     public function setTo($to)

@@ -24,7 +24,7 @@
  * 
  */
 
-namespace Moxl;
+namespace Moxl\Xec\Payload;
 
 use Moxl\Xec\Action\Version\Send;
 use Moxl\Stanza;

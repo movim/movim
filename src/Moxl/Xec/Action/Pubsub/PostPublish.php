@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Pubsub;
 
 class PostPublish extends Errors
 {
@@ -44,7 +44,7 @@ class PostPublish extends Errors
 
         $this->store();
 
-        Stanza\postPublish($this->_to, $this->_node, $this->_atom);
+        Pubsub::postPublish($this->_to, $this->_node, $this->_atom);
     }
     
     public function setTo($to)

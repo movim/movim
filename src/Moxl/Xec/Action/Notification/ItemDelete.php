@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Notification;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Notification;
 
 class ItemDelete extends Action
 {
@@ -35,7 +35,7 @@ class ItemDelete extends Action
     public function request() 
     {
         $this->store();
-        Stanza\notificationItemDelete($this->_to, $this->_id);
+        Notification::itemDelete($this->_to, $this->_id);
     }
     
     public function setTo($to)

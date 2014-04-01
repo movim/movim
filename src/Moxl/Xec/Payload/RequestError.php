@@ -24,7 +24,7 @@
  * 
  */
 
-namespace Moxl;
+namespace Moxl\Xec\Payload;
 
 class RequestError
 {

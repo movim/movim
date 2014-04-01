@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Jingle;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Jingle;
 
 class SessionInitiate extends Action
 {
@@ -35,7 +35,7 @@ class SessionInitiate extends Action
     public function request() 
     {
         $this->store();
-        Stanza\jingleSessionInitiate($this->_to, $this->_offer);
+        Jingle::sessionInitiate($this->_to, $this->_offer);
     }
     
     public function setTo($to)

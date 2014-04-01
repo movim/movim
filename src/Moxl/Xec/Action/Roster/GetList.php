@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Roster;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Roster;
 
 class GetList extends Action
 {
@@ -34,7 +34,7 @@ class GetList extends Action
     public function request() 
     {
         $this->store();
-        Stanza\rosterGet();
+        Roster::get();
     }
         
     public function setFrom($from)

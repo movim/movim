@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Avatar;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Avatar;
 
 class Get extends Action
 {
@@ -35,7 +35,7 @@ class Get extends Action
     public function request() 
     {
         $this->store();
-        Stanza\avatarGet($this->_to);
+        Avatar::get($this->_to);
     }
     
     public function setTo($to)

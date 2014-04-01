@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Notification;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Notification;
 
 class Get extends Action
 {
@@ -34,7 +34,7 @@ class Get extends Action
     public function request() 
     {
         $this->store();
-        Stanza\notificationGet($this->_to);
+        Notification::get($this->_to);
     }
     
     public function setTo($to)

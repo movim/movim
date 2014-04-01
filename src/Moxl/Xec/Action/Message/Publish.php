@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Message;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Message;
 
 class Publish extends Action
 {
@@ -38,11 +38,11 @@ class Publish extends Action
     {
         $this->store();
         if($this->_muc)
-            Stanza\messageMuc($this->_to, $this->_content);
+            Message::muc($this->_to, $this->_content);
         elseif($this->_encrypted)
-            Stanza\messageEncrypted($this->_to, $this->_content);
+            Message::encrypted($this->_to, $this->_content);
         else
-            Stanza\message($this->_to, $this->_content);
+            Message::message($this->_to, $this->_content);
     }
     
     public function setTo($to)

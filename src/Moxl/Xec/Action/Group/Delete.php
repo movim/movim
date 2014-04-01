@@ -26,7 +26,7 @@ namespace Moxl\Xec\Action\Group;
 
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza;
+use Moxl\Stanza\Group;
 
 class Delete extends Errors
 {
@@ -36,7 +36,7 @@ class Delete extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\groupDelete($this->_to, $this->_node);
+        Group::delete($this->_to, $this->_node);
     }
     
     public function setTo($to)

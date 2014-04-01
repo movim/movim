@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Disco;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Disco;
 
 class Request extends Action
 {
@@ -35,7 +35,7 @@ class Request extends Action
     public function request() 
     {
         $this->store();
-        Stanza\discoRequest($this->_to, $this->_node);
+        Disco::request($this->_to, $this->_node);
     }
     
     public function setNode($node)

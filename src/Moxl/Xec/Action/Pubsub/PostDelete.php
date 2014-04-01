@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Pubsub;
 
 class PostDelete extends Action
 {
@@ -36,7 +36,7 @@ class PostDelete extends Action
     public function request() 
     {
         $this->store();
-        Stanza\pubsubPostDelete($this->_to, $this->_node, $this->_id);
+        Pubsub::postDelete($this->_to, $this->_node, $this->_id);
     }
     
     public function setTo($to)

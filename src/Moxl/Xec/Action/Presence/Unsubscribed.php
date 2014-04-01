@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Presence;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Presence;
 
 class Unsubscribed extends Action
 {
@@ -34,7 +34,7 @@ class Unsubscribed extends Action
     public function request() 
     {
         $this->store();
-        Stanza\presenceUnsubscribed($this->_to);
+        Presence::unsubscribed($this->_to);
     }
     
     public function setTo($to)

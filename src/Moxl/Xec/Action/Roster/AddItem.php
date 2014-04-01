@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Roster;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Roster;
 
 class AddItem extends Action
 {
@@ -35,7 +35,7 @@ class AddItem extends Action
     public function request() 
     {
         $this->store();
-        Stanza\rosterAdd($this->_to, '', '');
+        Roster::add($this->_to, '', '');
     }
     
     public function setTo($to)

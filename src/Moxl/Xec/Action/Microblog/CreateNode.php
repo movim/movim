@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Microblog;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Microblog;
 
 class CreateNode extends Action
 {
@@ -34,7 +34,7 @@ class CreateNode extends Action
     public function request() 
     {
         $this->store();
-        Stanza\microblogNodeCreate($this->_to);
+        Microblog::nodeCreate($this->_to);
     }
     
     public function setTo($to)

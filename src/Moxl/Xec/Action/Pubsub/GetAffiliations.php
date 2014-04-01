@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Pubsub;
 
 class GetAffiliations extends Errors
 {
@@ -35,7 +35,7 @@ class GetAffiliations extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubGetAffiliations($this->_to, $this->_node);
+        Pubsub::getAffiliations($this->_to, $this->_node);
     }
     
     public function setTo($to)

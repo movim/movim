@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Bookmark;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Bookmark;
 
 class Get extends Action
 {
@@ -34,7 +34,7 @@ class Get extends Action
     public function request() 
     {
         $this->store();
-        Stanza\bookmarkGet();
+        Bookmark::get();
     }
 
     public function setTo($to)

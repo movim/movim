@@ -4,7 +4,7 @@ namespace Moxl\Xec\Action\PubsubSubscription;
 
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza;
+use Moxl\Stanza\PubsubSubscription;
 
 class ListRemove extends Errors
 {
@@ -15,7 +15,7 @@ class ListRemove extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubSubscriptionListRemove($this->_to, $this->_from, $this->_node);
+        PubsubSubscription::listRemove($this->_to, $this->_from, $this->_node);
     }
     
     public function setTo($to)

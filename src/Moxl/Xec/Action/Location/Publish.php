@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Location;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Location;
 
 class Publish extends Action
 {
@@ -35,7 +35,7 @@ class Publish extends Action
     public function request() 
     {
         $this->store();
-        Stanza\locationPublish($this->_to, $this->_geo);
+        Location::publish($this->_to, $this->_geo);
     }
     
     public function setTo($to)

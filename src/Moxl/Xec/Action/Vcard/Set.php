@@ -24,7 +24,7 @@
 namespace Moxl\Xec\Action\Vcard;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Vcard;
 
 class Set extends Action
 {
@@ -33,7 +33,7 @@ class Set extends Action
     public function request() 
     {
         $this->store();
-        Stanza\vcardSet($this->_data);
+        Vcard::set($this->_data);
     }
     
     public function setData($data)

@@ -26,7 +26,7 @@ namespace Moxl\Xec\Action\Group;
 
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza;
+use Moxl\Stanza\Group;
 
 class Create extends Errors
 {
@@ -37,7 +37,7 @@ class Create extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\groupCreate($this->_to, $this->_node);
+        Group::create($this->_to, $this->_node);
     }
     
     public function setTo($to)

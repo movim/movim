@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Microblog;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Microblog;
 
 class CommentsGet extends Action
 {
@@ -35,7 +35,7 @@ class CommentsGet extends Action
     public function request() 
     {
         $this->store();
-        Stanza\microblogCommentsGet($this->_to, $this->_id);
+        Microblog::commentsGet($this->_to, $this->_id);
     }
     
     public function setTo($to)

@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Version;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Version;
 
 class Send extends Action
 {
@@ -38,7 +38,7 @@ class Send extends Action
     public function request() 
     {
         $this->store();
-        Stanza\versionSend($this->_to, $this->_id, $this->_name, $this->_version, $this->_os);
+        Version::send($this->_to, $this->_id, $this->_name, $this->_version, $this->_os);
     }
     
     public function setTo($to)

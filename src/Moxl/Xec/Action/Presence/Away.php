@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Presence;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Presence;
 
 class Away extends Action
 {
@@ -34,7 +34,7 @@ class Away extends Action
     public function request() 
     {
         $this->store();
-        Stanza\presenceAway($this->_status);
+        Presence::away($this->_status);
     }
     
     public function setStatus($status)

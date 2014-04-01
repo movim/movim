@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Presence;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Presence;
 
 class DND extends Action
 {
@@ -34,7 +34,7 @@ class DND extends Action
     public function request() 
     {
         $this->store();
-        Stanza\presenceDND($this->_status);
+        Presence::DND($this->_status);
     }
 
     public function setStatus($status)

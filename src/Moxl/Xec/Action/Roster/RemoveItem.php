@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Roster;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Roster;
 
 class RemoveItem extends Action
 {
@@ -35,7 +35,7 @@ class RemoveItem extends Action
     public function request() 
     {
         $this->store();
-        Stanza\rosterRemove($this->_to);
+        Roster::remove($this->_to);
     }
     
     public function setTo($to)

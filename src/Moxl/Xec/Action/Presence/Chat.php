@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Presence;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Presence;
 
 class Chat extends Action
 {
@@ -34,7 +34,7 @@ class Chat extends Action
     public function request() 
     {
         $this->store();
-        Stanza\presenceChat($this->_status);
+        Presence::chat($this->_status);
     }
 
     public function setStatus($status)

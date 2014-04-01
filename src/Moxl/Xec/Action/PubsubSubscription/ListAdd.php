@@ -4,7 +4,7 @@ namespace Moxl\Xec\Action\PubsubSubscription;
 
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza;
+use Moxl\Stanza\PubsubSubscription;
 
 class ListAdd extends Errors
 {
@@ -16,7 +16,7 @@ class ListAdd extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubSubscriptionListAdd($this->_to, $this->_from, $this->_node, $this->_data['title']);
+        PubsubSubscription::listAdd($this->_to, $this->_from, $this->_node, $this->_data['title']);
     }
     
     public function setTo($to)

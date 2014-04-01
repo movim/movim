@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Pubsub;
 
 class SetConfig extends Errors
 {
@@ -36,7 +36,7 @@ class SetConfig extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubSetConfig($this->_to, $this->_node, $this->_data);
+        Pubsub::setConfig($this->_to, $this->_node, $this->_data);
     }
     
     public function setTo($to)

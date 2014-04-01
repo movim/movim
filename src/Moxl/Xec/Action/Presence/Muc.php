@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Presence;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Presence;
 
 class Muc extends Action
 {
@@ -40,7 +40,7 @@ class Muc extends Action
         $md = new \modl\MessageDAO();
         $md->deleteContact($this->_to);
         
-        Stanza\presenceMuc($this->_to, $this->_nickname);
+        Presence::muc($this->_to, $this->_nickname);
     }
 
     public function setTo($to)

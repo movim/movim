@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Ack;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Ack;
 
 class Send extends Action
 {
@@ -35,7 +35,7 @@ class Send extends Action
     public function request() 
     {
         $this->store();
-        Stanza\ackSend($this->_to, $this->_id);
+        Ack::send($this->_to, $this->_id);
     }
     
     public function setTo($to)

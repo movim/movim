@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Message;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Message;
 
 class Composing extends Action
 {
@@ -35,7 +35,7 @@ class Composing extends Action
     public function request() 
     {
         $this->store();
-        Stanza\messageComposing($this->_to);
+        Message::composing($this->_to);
     }
     
     public function setTo($to)

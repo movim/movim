@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Pubsub;
 
 class GetItems extends Errors
 {
@@ -35,7 +35,7 @@ class GetItems extends Errors
     public function request() 
     {
         $this->store();
-        Stanza\pubsubGetItems($this->_to, $this->_node);
+        Pubsub::getItems($this->_to, $this->_node);
     }
     
     public function setTo($to)
