@@ -35,7 +35,7 @@ class Visio extends WidgetBase
             //var_dump($json);
             $this->view->assign('turn_list'   , $json);
             
-            $cd = new modl\ContactDAO();
+            $cd = new \Modl\ContactDAO();
             $contact = $cd->get($jid);
 
             if(!$contact)

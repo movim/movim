@@ -30,7 +30,7 @@ class ContactInfo extends WidgetCommon
 
     function prepareContactInfo($from = false)
     {
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         if($from != $this->user->getLogin())
             $c = $cd->getRosterItem($from);
         else
@@ -105,7 +105,7 @@ class ContactInfo extends WidgetCommon
                 && $c->ver) {                
                 $node = $c->node.'#'.$c->ver;
 
-                $cad = new \modl\CapsDAO();
+                $cad = new \Modl\CapsDAO();
                 $caps = $cad->get($node);
 
                 $clienttype = 

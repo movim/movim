@@ -18,6 +18,9 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Pubsub\GetSubscriptions;
+use Moxl\Xec\Action\Pubsub\SetSubscriptions;
+
 class NodeSubscriptions extends WidgetBase
 {
 
@@ -73,7 +76,7 @@ class NodeSubscriptions extends WidgetBase
     }
     
     function ajaxChangeSubscriptions($server, $node, $data){
-        $r = new moxl\PubsubSetSubscriptions();
+        $r = new SetSubscriptions;
         $r->setNode($node)
           ->setTo($server)
           ->setData($data)
@@ -81,7 +84,7 @@ class NodeSubscriptions extends WidgetBase
     }
     
     function ajaxGetSubscriptions($server, $node){
-        $r = new moxl\PubsubGetSubscriptions();
+        $r = new GetSubscriptions;
         $r->setTo($server)
           ->setNode($node)
           ->request();

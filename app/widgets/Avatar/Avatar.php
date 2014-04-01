@@ -15,6 +15,9 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Avatar\Get;
+use Moxl\Xec\Action\Avatar\Set;
+
 class Avatar extends WidgetBase
 {
     function load()
@@ -80,7 +83,7 @@ class Avatar extends WidgetBase
     }
     
     function ajaxGetAvatar() {
-        $r = new moxl\AvatarGet();
+        $r = new Get;
         $r->setTo($this->user->getLogin())
           ->setMe()
           ->request();
@@ -92,7 +95,7 @@ class Avatar extends WidgetBase
         $p->fromBase((string)$avatar->photobin->value);
         $p->set($this->user->getLogin());
         
-        $r = new moxl\AvatarSet();
+        $r = new Set;
         $r->setData($avatar->photobin->value)->request();
     }
 }

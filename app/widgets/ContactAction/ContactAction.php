@@ -15,6 +15,11 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Roster\AddItem;
+use Moxl\Xec\Action\Roster\RemoveItem;
+use Moxl\Xec\Action\Presence\Subscribe;
+use Moxl\Xec\Action\Presence\Unsubscribe;
+
 class ContactAction extends WidgetCommon
 {
     /**
@@ -24,27 +29,27 @@ class ContactAction extends WidgetCommon
      * @returns 
      */
     function ajaxAddContact($jid) {
-        $r = new moxl\RosterAddItem();
+        $r = new AddItem;
         $r->setTo($jid)
           ->setFrom($this->user->getLogin())
           ->request();
     }
     
     function ajaxSubscribeContact($jid) {
-        $p = new moxl\PresenceSubscribe();
+        $p = new Subscribe;
         $p->setTo($jid)
           ->request();
     }
     
     
     function ajaxRemoveContact($jid) {         
-        $r = new moxl\RosterRemoveItem();
+        $r = new RemoveItem;
         $r->setTo($jid)
           ->request();
     }
     
     function ajaxUnsubscribeContact($jid) {         
-        $p = new moxl\PresenceUnsubscribe();
+        $p = new Unsubscribe;
         $p->setTo($jid)
           ->request();
     }

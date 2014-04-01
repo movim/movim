@@ -18,6 +18,9 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Pubsub\GetConfig;
+use Moxl\Xec\Action\Pubsub\SetConfig;
+
 class NodeConfig extends WidgetBase
 {
 
@@ -90,24 +93,24 @@ class NodeConfig extends WidgetBase
     }
     
     function ajaxGroupConfig($server, $node){
-        $r = new moxl\PubsubGetConfig();
+        $r = new GetConfig;
         $r->setTo($server)
           ->setNode($node)
           ->request();
     }
     
     function ajaxGroupDelete($server, $node){
-        $nd = new modl\ItemDAO();
+        $nd = new \Modl\ItemDAO();
         $nd->deleteItem($server, $node);
         
-        $r = new moxl\GroupDelete();
+        $r = new \Moxl\GroupDelete();
         $r->setTo($server)
           ->setNode($node)
           ->request();
     }
     
     function ajaxSubmitConfig($data, $server, $node){
-        $r = new moxl\PubsubSetConfig();
+        $r = new SetConfig;
         $r->setTo($server)
           ->setNode($node)
           ->setData($data)
