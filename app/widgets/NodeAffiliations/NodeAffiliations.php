@@ -18,9 +18,11 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Pubsub\GetAffiliations;
+use Moxl\Xec\Action\Pubsub\SetAffiliations;
+
 class NodeAffiliations extends WidgetBase
 {
-
     function load()
     {
         $this->registerEvent('pubsubaffiliations', 'onGroupMemberList');
@@ -71,13 +73,13 @@ class NodeAffiliations extends WidgetBase
     }
     
     function ajaxChangeAffiliation($server, $node, $data){
-        $r = new moxl\PubsubSetAffiliations();
+        $r = new SetAffiliations;
         $r->setNode($node)->setTo($server)->setData($data)
           ->request();
     }
     
     function ajaxGetGroupMemberList($server, $node){
-        $r = new moxl\PubsubGetAffiliations();
+        $r = new GetAffiliations;
         $r->setTo($server)->setNode($node)
         ->request();
     }

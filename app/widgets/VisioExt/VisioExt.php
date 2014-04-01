@@ -18,6 +18,9 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Jingle\SessionInitiate;
+use Moxl\Xec\Action\Jingle\SessionTerminate;
+
 class VisioExt extends WidgetBase
 {
     function load() {
@@ -113,7 +116,7 @@ class VisioExt extends WidgetBase
             $p->jid.'/'.$p->ressource,
             'session-initiate');
         
-        $r = new moxl\JingleSessionInitiate();
+        $r = new SessionInitiate;
         $r->setTo($p->jid.'/'.$p->ressource)
           ->setOffer($stj->generate())
           ->request();
@@ -134,7 +137,7 @@ class VisioExt extends WidgetBase
             $p->jid.'/'.$p->ressource,
             'session-accept');
             
-        $r = new moxl\JingleSessionInitiate();
+        $r = new SessionInitiate;
         $r->setTo($p->jid.'/'.$p->ressource)
           ->setOffer($stj->generate())
           ->request();
@@ -144,7 +147,7 @@ class VisioExt extends WidgetBase
         $s = Session::start('movim');
         $jingleSid = $s->get("jingleSid");
         
-        $r = new moxl\JingleSessionTerminate();
+        $r = new SessionTerminate;
         $r->setTo($jid.'/'.$ressource);
         $r->setJingleSid($jingleSid);
 
@@ -168,7 +171,7 @@ class VisioExt extends WidgetBase
             $p->jid.'/'.$p->ressource,
             'transport-info');
 
-        $r = new moxl\JingleSessionInitiate();
+        $r = new SessionInitiate;
         $r->setTo($p->jid.'/'.$p->ressource)
           ->setOffer($stj->generate())
           ->request();

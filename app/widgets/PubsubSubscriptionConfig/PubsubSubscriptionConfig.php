@@ -18,6 +18,10 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\PubsubSubscription\ListGet;
+use Moxl\Xec\Action\PubsubSubscription\ListAdd;
+use Moxl\Xec\Action\PubsubSubscription\ListRemove;
+
 class PubsubSubscriptionConfig extends WidgetBase
 {
 
@@ -43,7 +47,7 @@ class PubsubSubscriptionConfig extends WidgetBase
     
     function prepareList($list) {
         $configlist = $this->tpl();
-        $sd = new \modl\SubscriptionDAO();
+        $sd = new \Modl\SubscriptionDAO();
 
         $listhtml = '';
         
@@ -105,14 +109,14 @@ class PubsubSubscriptionConfig extends WidgetBase
         $data = array('title' => $name);
         
         if($state) {
-            $r = new moxl\PubsubSubscriptionListAdd();
+            $r = new ListAdd;
             $r->setNode($node)
               ->setTo($server)
               ->setFrom($this->user->getLogin())
               ->setData($data)
               ->request();
         } else {
-            $r = new moxl\PubsubSubscriptionListRemove();
+            $r = new ListRemove;
             $r->setNode($node)
               ->setTo($server)
               ->setFrom($this->user->getLogin())
@@ -121,7 +125,7 @@ class PubsubSubscriptionConfig extends WidgetBase
     }
 
     function ajaxGetGroupSubscribedList(){
-        $r = new moxl\PubsubSubscriptionListGet();
+        $r = new ListGet;
         $r->request();
     }
 

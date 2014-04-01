@@ -17,6 +17,11 @@
  * 
  * See COPYING for licensing information.
  */
+use Moxl\Xec\Action\Message\Composing;
+use Moxl\Xec\Action\Message\Paused;
+use Moxl\Xec\Action\Message\Publish;
+use Moxl\Xec\Action\Presence\Unavaiable;
+ 
 class Chat extends WidgetBase {
 
     function load() {
@@ -112,7 +117,7 @@ class Chat extends WidgetBase {
 
         // Muc case
         elseif($message->ressource != '') {
-            $html=$this->prepareMessage($message, true);
+            $html = $this->prepareMessage($message, true);
             RPC::call('movim_append', 'messages' . $message->jidfrom, $html);
             RPC::call('scrollTalk', 'messages' . $message->jidfrom);
         }
@@ -124,7 +129,7 @@ class Chat extends WidgetBase {
     }
 
     function onComposing($jid) {
-        $rd=new \modl\RosterLinkDAO();
+        $rd = new \Modl\RosterLinkDAO();
         
         $contact = $rd->get(echapJid($jid));
         
@@ -135,7 +140,7 @@ class Chat extends WidgetBase {
     }
 
     function onPaused($jid) {
-        $rd=new \modl\RosterLinkDAO();
+        $rd=new \Modl\RosterLinkDAO();
         
         $contact=$rd->get(echapJid($jid));
         
@@ -146,9 +151,9 @@ class Chat extends WidgetBase {
     }
 
     function onAttention($jid) {
-        $rc=new \modl\ContactDAO();
-        $contact=$rc->getRosterItem(echapJid($jid));
-        $html='
+        $rc = new \Modl\ContactDAO();
+        $contact = $rc->getRosterItem(echapJid($jid));
+        $html = '
             <div style="font-weight: bold; color: black;" class="message" >
                 <span class="date">' . date('G:i', time()) . '</span>' . t('%s needs your attention', $contact->getTrueName()) . '
             </div>';
@@ -162,12 +167,12 @@ class Chat extends WidgetBase {
      * @return void
      */
     function ajaxOpenTalk($jid) {
-        $rc = new \modl\ContactDAO();
+        $rc = new \Modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
         
-        if(isset($contact) && $contact->chaton == 0&& !in_array($contact->presence, array(5, 6))) {
+        if(isset($contact) && $contact->chaton == 0 && !in_array($contact->presence, array(5, 6))) {
             $contact->chaton = 2;
-            $rd = new \modl\RosterLinkDAO();
+            $rd = new \Modl\RosterLinkDAO();
             $rd->setChat(echapJid($jid), 2);
             RPC::call('movim_prepend', 'chats', $this->prepareChat($contact));
             RPC::call('scrollAllTalks');
@@ -192,7 +197,7 @@ class Chat extends WidgetBase {
      * @return void
      */
     function ajaxSendMessage($to, $message, $muc=false, $ressource=false, $encrypted=false) {
-        $m=new \modl\Message();
+        $m=new \Modl\Message();
         $m->session = $this->user->getLogin();
         $m->jidto   = echapJid($to);
         $m->jidfrom = $this->user->getLogin();
@@ -212,7 +217,7 @@ class Chat extends WidgetBase {
         $m->published = date('Y-m-d H:i:s');
         $m->delivered = date('Y-m-d H:i:s');
         
-        $md=new \modl\MessageDAO();
+        $md=new \Modl\MessageDAO();
         $md->set($m);
         
         $evt=new Event();
@@ -223,7 +228,7 @@ class Chat extends WidgetBase {
         }
 
         // We decode URL codes to send the correct message to the XMPP server
-        $m = new \moxl\MessagePublish();
+        $m = new Publish;
         $m->setTo($to);
         $m->setContent(htmlspecialchars(rawurldecode($message)));
 
@@ -241,7 +246,7 @@ class Chat extends WidgetBase {
      * @return void
      */
     function ajaxSendComposing($to) {
-        $mc=new \moxl\MessageComposing();
+        $mc = new Composing;
         $mc->setTo($to)->request();
     }
     /**
@@ -251,7 +256,7 @@ class Chat extends WidgetBase {
      * @return void
      */
     function ajaxSendPaused($to) {
-        $mp=new \moxl\MessagePaused();
+        $mp=new Paused;
         $mp->setTo($to)->request();
     }
     /**
@@ -261,7 +266,7 @@ class Chat extends WidgetBase {
      * @return void
      */
     function ajaxCloseTalk($jid) {
-        $rd=new \modl\RosterLinkDAO();
+        $rd = new \Modl\RosterLinkDAO();
         $contact = $rd->get(echapJid($jid));
         $contact->chaton = 0;
         $rd->setNow($contact);
@@ -270,7 +275,7 @@ class Chat extends WidgetBase {
     }
 
     function ajaxHideTalk($jid) {
-        $rd = new \modl\RosterLinkDAO();
+        $rd = new \Modl\RosterLinkDAO();
         $contact = $rd->get(echapJid($jid));
         
         if($contact->chaton == 1) {
@@ -289,7 +294,7 @@ class Chat extends WidgetBase {
      * @return void
      */
     function ajaxExitMuc($jid, $ressource) {
-        $pu = new \moxl\ PresenceUnavaiable();
+        $pu = new Unavaiable;
         $pu->setTo($jid)->setRessource($ressource)->request();
     }
 
@@ -361,7 +366,7 @@ class Chat extends WidgetBase {
         }
 
         // And we show the subscribed conferences
-        $cd = new \modl\ConferenceDAO();
+        $cd = new \Modl\ConferenceDAO();
         $cs = $cd->getConnected();
         
         if($cs) {
@@ -376,7 +381,7 @@ class Chat extends WidgetBase {
 
     // Prepare Chat
     function prepareChat($contact) {
-        $md = new \modl\MessageDAO();
+        $md = new \Modl\MessageDAO();
         $messages = $md->getContact(echapJid($contact->jid), 0, 10);
         $messageshtml = '';
         if($messages != null) {
@@ -428,7 +433,7 @@ class Chat extends WidgetBase {
         $jid = $conference->conference;
 
         // Zeu messages
-        $md = new \modl\MessageDAO();
+        $md = new \Modl\MessageDAO();
         
         $messages = $md->getContact($jid, 0, 10);
         $messageshtml = '';

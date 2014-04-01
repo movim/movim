@@ -1,5 +1,4 @@
 <?php
-if (!defined('DOCUMENT_ROOT')) die('Access denied');
 
 class News extends WidgetCommon {
     private $_feedsize = 20;
@@ -40,7 +39,7 @@ class News extends WidgetCommon {
     }
     
     function prepareNews($start) {
-        $pd = new \modl\PostnDAO();
+        $pd = new \Modl\PostnDAO();
         $pl = $pd->getNews($start+1, $this->_feedsize);
 
         $html = $this->preparePosts($pl);

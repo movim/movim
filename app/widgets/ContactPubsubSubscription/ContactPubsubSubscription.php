@@ -18,6 +18,8 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\PubsubSubscription\ListGetFriends;
+
 class ContactPubsubSubscription extends WidgetBase
 {
 
@@ -55,7 +57,7 @@ class ContactPubsubSubscription extends WidgetBase
     }
     
     function ajaxGetGroupSubscribedList($to){
-        $r = new moxl\PubsubSubscriptionListGetFriends();
+        $r = new ListGetFriends;
         $r->setTo($to)->request();
     }
     

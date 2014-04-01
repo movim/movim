@@ -18,6 +18,8 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Pubsub\GetItems;
+
 class Wall extends WidgetCommon
 {
 
@@ -57,10 +59,10 @@ class Wall extends WidgetCommon
         if(!$from)
             $from = $_GET['f'];
         
-        $pd = new \modl\PostnDAO();
+        $pd = new \Modl\PostnDAO();
         $pl = $pd->getNode($from, 'urn:xmpp:microblog:0', $start+1, 10);
         
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO();
         $c = $cd->getRosterItem($from);
         
         // We ask for the HTML of all the posts
@@ -121,7 +123,7 @@ class Wall extends WidgetCommon
     }
 
     function ajaxWall($jid) {
-        $r = new moxl\PubsubGetItems();
+        $r = new GetItems;
         $r->setTo($jid)
           ->setNode('urn:xmpp:microblog:0')
           ->request();

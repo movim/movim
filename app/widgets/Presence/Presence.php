@@ -18,6 +18,12 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Presence\Chat;
+use Moxl\Xec\Action\Presence\Away;
+use Moxl\Xec\Action\Presence\DND;
+use Moxl\Xec\Action\Presence\XA;
+use Moxl\Xec\Action\Presence\Unavaiable;
+
 class Presence extends WidgetBase
 {
     
@@ -56,19 +62,19 @@ class Presence extends WidgetBase
         
         switch($show) {
             case 'chat':
-                $p = new moxl\PresenceChat();
+                $p = new Chat;
                 $p->setStatus($presence['status'])->request();
                 break;
             case 'away':
-                $p = new moxl\PresenceAway();
+                $p = new Away;
                 $p->setStatus($presence['status'])->request();
                 break;
             case 'dnd':
-                $p = new moxl\PresenceDND();
+                $p = new DND;
                 $p->setStatus($presence['status'])->request();
                 break;
             case 'xa':
-                $p = new moxl\PresenceXA();
+                $p = new XA;
                 $p->setStatus($presence['status'])->request();
                 break;
         }
@@ -76,7 +82,7 @@ class Presence extends WidgetBase
     
     function ajaxLogout()
     {
-        $p = new moxl\PresenceUnavaiable();
+        $p = new Unavaiable;
         $p->setType('terminate')
           ->request();
 
@@ -91,7 +97,7 @@ class Presence extends WidgetBase
     
         $session = \Sessionx::start();
         
-        $pd = new \modl\PresenceDAO();
+        $pd = new \Modl\PresenceDAO();
         $p = $pd->getPresence($this->user->getLogin(), $session->ressource);
 
         if($p)
