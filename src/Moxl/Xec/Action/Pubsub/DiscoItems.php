@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Pubsub;
+use Moxl\Stanza\Disco;
 
 class DiscoItems extends Errors
 {
@@ -34,7 +34,7 @@ class DiscoItems extends Errors
     public function request() 
     {
         $this->store();
-        Pubsub::discoItems($this->_to);
+        Disco::items($this->_to);
     }
     
     public function setTo($to)
