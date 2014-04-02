@@ -37,7 +37,7 @@ class Roster {
                 <group>'.$group.'</group>
             </item>';
         
-        $xml = rosterBuilder($xml, false, 'set');
+        $xml = self::builder($xml, false, 'set');
         \Moxl\API::request($xml);
     }
 
@@ -55,7 +55,7 @@ class Roster {
         $xml = '
             <item jid="'.$to.'" subscription="remove"/>';
             
-        $xml = rosterBuilder($xml, false, 'set');
+        $xml = self::builder($xml, false, 'set');
         \Moxl\API::request($xml);
     }
 
