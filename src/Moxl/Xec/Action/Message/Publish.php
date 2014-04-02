@@ -26,6 +26,7 @@ namespace Moxl\Xec\Action\Message;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
+use Moxl\Stanza\Muc;
 
 class Publish extends Action
 {
@@ -38,7 +39,7 @@ class Publish extends Action
     {
         $this->store();
         if($this->_muc)
-            Message::muc($this->_to, $this->_content);
+            Muc::message($this->_to, $this->_content);
         elseif($this->_encrypted)
             Message::encrypted($this->_to, $this->_content);
         else
