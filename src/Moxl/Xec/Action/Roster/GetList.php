@@ -54,13 +54,15 @@ class GetList extends Action
         foreach($stanza->query->item as $item) {
             // We search if the contact exist in the database 
             $found = false;
-            
-            foreach($data as $cd) {
-                if($cd->jid == (string)$item->attributes()->jid) {
-                    $found = $cd;
-                    break;
+
+            if($data) {
+                foreach($data as $cd) {
+                    if($cd->jid == (string)$item->attributes()->jid) {
+                        $found = $cd;
+                        break;
+                    }
                 }
-            } 
+            }
             
             // If not found, we create it
             if($found == false) {
