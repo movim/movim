@@ -45,8 +45,6 @@ class Bootstrap {
         $this->setTimezone();
         
         $loadmodlsuccess = $this->loadModl();
-
-        $this->loadMoxl();
         
         if($loadmodlsuccess) {
             $this->startingSession();
@@ -257,11 +255,6 @@ class Bootstrap {
         $db->connect();
 
         return true;
-    }
-    
-    private function loadMoxl() {
-        // We load Movim XMPP Library
-        //require_once(LIB_PATH . 'Moxl/loader.php');
     }
     
     private function setBrowserSupport() {
