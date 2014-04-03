@@ -38,9 +38,7 @@ class Handler {
      */
     static public function handle($array)
     {
-        // We get the cached instances
-        $sess = \Session::start(APP_NAME);
-        $_instances = $sess->get('xecinstances');
+        $_instances = 'empty';
 
         $user = new \User();
         
@@ -65,6 +63,12 @@ class Handler {
             if($child->getName() == 'message') {
                 $id = (string)$child->attributes()->id;
                 $element = 'message';
+            }
+
+            if($id != '' && $_instances == 'empty') {
+                // We get the cached instances
+                $sess = \Session::start(APP_NAME);
+                $_instances = $sess->get('xecinstances');
             }
 
             if(
@@ -217,7 +221,7 @@ class Handler {
     }
     
     static public function handleError($number, $message) {
-        $payload_class = new RequestError();
+        $payload_class = new Payload\RequestError();
         $payload_class->handle($number, $message);
     }
 

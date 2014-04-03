@@ -34,7 +34,6 @@ class Composing extends Action
     
     public function request() 
     {
-        $this->store();
         Message::composing($this->_to);
     }
     

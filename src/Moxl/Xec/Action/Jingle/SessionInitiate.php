@@ -52,21 +52,9 @@ class SessionInitiate extends Action
     
     public function handle($stanza) {
         
-        /*if($stanza["type"] == "result"){
-            $evt = new \Event();
-            $evt->runEvent('jinglesessionaccept', array($this->_to, $this->_node, $this->_data)); 
-        }*/    
-        /*    //add to bookmark
-            $sub = new \modl\Subscription();
-            $sub->set(current(explode($stanza["to"], "/")), $this->_to, $this->_node, $stanza);
-            
-            $sd = new \modl\SubscriptionDAO();
-            $sd->set($sub);
-        }*/
     }
     
     public function error($error) {
-        //$evt = new \Event();
-        //$evt->runEvent('creationerror', $this->_node); 
+
     }
 }

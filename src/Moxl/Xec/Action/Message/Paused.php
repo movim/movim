@@ -34,7 +34,6 @@ class Paused extends Action
     
     public function request() 
     {
-        $this->store();
         Message::paused($this->_to);
     }
     

@@ -37,7 +37,7 @@ class Send extends Action
     
     public function request() 
     {
-        $this->store();
+        //$this->store();
         Version::send($this->_to, $this->_id, $this->_name, $this->_version, $this->_os);
     }
     
