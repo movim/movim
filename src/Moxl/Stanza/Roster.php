@@ -43,7 +43,7 @@ class Roster {
 
     static function update($to, $name, $group)
     {
-        $xml = rosterAdd($to, $name, $group);
+        $xml = self::add($to, $name, $group);
         \Moxl\API::request($xml);
     }
 
