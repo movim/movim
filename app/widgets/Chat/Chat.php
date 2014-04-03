@@ -107,11 +107,11 @@ class Chat extends WidgetBase {
             }
             RPC::call('movim_append', 'messages' . $contact->jid, $html);
 
-            //if($message->session != $message->jidfrom) {
-            RPC::call('hideComposing', $contact->jid);
-            RPC::call('hidePaused', $contact->jid);
-
-            //}
+            if($message->session != $message->jidfrom) {
+                RPC::call('hideComposing', $contact->jid);
+                RPC::call('hidePaused', $contact->jid);
+            }
+            
             RPC::call('scrollTalk', 'messages' . $contact->jid);
         }
 
@@ -197,6 +197,9 @@ class Chat extends WidgetBase {
      * @return void
      */
     function ajaxSendMessage($to, $message, $muc=false, $ressource=false, $encrypted=false) {
+        if($message == '')
+            return;
+        
         $m=new \Modl\Message();
         $m->session = $this->user->getLogin();
         $m->jidto   = echapJid($to);
@@ -217,14 +220,14 @@ class Chat extends WidgetBase {
         $m->published = date('Y-m-d H:i:s');
         $m->delivered = date('Y-m-d H:i:s');
         
-        $md=new \Modl\MessageDAO();
+        $md = new \Modl\MessageDAO();
         $md->set($m);
         
-        $evt=new Event();
+        $evt = new Event();
         $evt->runEvent('message', $m);
 
         if($ressource!=false) {
-            $to=$to . '/' . $ressource;
+            $to = $to . '/' . $ressource;
         }
 
         // We decode URL codes to send the correct message to the XMPP server

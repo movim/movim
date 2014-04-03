@@ -16,7 +16,7 @@
 	</generator>
 	
 	<id>urn:uuid:{$uuid}</id>
-	{loop="messages"}
+	{loop="$messages"}
 	<entry>
 		<title>{$c->prepareTitle($value->title)}</title>
 		<id>urn:uuid:{$c->generateUUID($value->content)}</id>
