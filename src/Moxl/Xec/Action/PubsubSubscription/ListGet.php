@@ -32,6 +32,7 @@ class ListGet extends Errors
     }
 
     public function errorItemNotFound($stanza) {
+        parent::errorItemNotFound($stanza);
         $evt = new \Event();
         $evt->runEvent('groupsubscribedlist', array()); 
     }

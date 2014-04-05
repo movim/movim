@@ -26,6 +26,7 @@ namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
+use Moxl\Xec\Action\Pubsub\Errors;
 
 class GetConfig extends Errors
 {

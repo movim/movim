@@ -111,7 +111,7 @@ class Handler {
                         if(method_exists($action, $errorid))
                             $action->$errorid($errorid, $message);
                         // We also call a global error handler
-                        if(method_exists($action, 'error'))
+                        elseif(method_exists($action, 'error'))
                             $action->error($errorid, $message);
                     } else {
                         // We launch the object handle

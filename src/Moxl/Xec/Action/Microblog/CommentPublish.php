@@ -27,8 +27,9 @@ namespace Moxl\Xec\Action\Microblog;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Microblog;
 use Moxl\Stanza\PubsubAtom;
+use Moxl\Xec\Action\Pubsub\Errors;
 
-class CommentPublish extends Action
+class CommentPublish extends Errors
 {
     private $_to;
     private $_node;

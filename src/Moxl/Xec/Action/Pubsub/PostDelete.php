@@ -26,8 +26,9 @@ namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
+use Moxl\Xec\Action\Pubsub\Errors;
 
-class PostDelete extends Action
+class PostDelete extends Errors
 {
     private $_to;
     private $_id;
