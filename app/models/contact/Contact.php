@@ -265,9 +265,11 @@ class Contact extends Model {
         $this->name    = $vcard->nickname->text;
         $this->fn      = $vcard->fn->text;
         $this->url     = $vcard->url->uri;
-         
-        $this->gender  = $vcard->gender->sex->text;
-        $this->marital = $vcard->marital->status->text;
+
+        if(isset($vcard->gender))
+            $this->gender  = $vcard->gender->sex->text;
+        if(isset($vcard->marital))
+            $this->marital = $vcard->marital->status->text;
         
         $this->adrlocality     = $vcard->adr->locality;
         $this->adrcountry      = $vcard->adr->country;
