@@ -26,6 +26,8 @@ namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
+use Moxl\Stanza\PubsubAtom;
+use Moxl\Action\Microblog\CommentCreateNode;
 
 class PostPublish extends Errors
 {
@@ -34,7 +36,7 @@ class PostPublish extends Errors
     private $_atom;
     
     public function __construct() {
-        $this->_atom = new PubsubAtom();
+        $this->_atom = new PubsubAtom;
     }
     
     public function request() 
@@ -127,7 +129,7 @@ class PostPublish extends Errors
         $pd->set($p);
 
         if($this->_atom->comments) {
-            $mc = new \moxl\MicroblogCommentCreateNode();
+            $mc = new CommentCreateNode;
             $mc->setTo($this->_to)
                ->setParentId($p->nodeid)
                ->request();

@@ -26,6 +26,7 @@ namespace Moxl\Xec\Action\Microblog;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Microblog;
+use Moxl\Stanza\PubsubAtom;
 
 class CommentPublish extends Action
 {
@@ -36,7 +37,7 @@ class CommentPublish extends Action
     private $_atom;
     
     public function __construct() {
-        $this->_atom = new PubsubAtom();
+        $this->_atom = new PubsubAtom;
     }
     
     public function request() 

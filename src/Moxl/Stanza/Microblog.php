@@ -3,7 +3,7 @@
 namespace Moxl\Stanza;
 
 class Microblog {
-    static function postPublish($to, $id, $content, $name)
+    static function postPublish($to, $id, $content, $name = '')
     {
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub">
