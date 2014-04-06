@@ -90,6 +90,7 @@ article.comment > * {
 article.comment:nth-child(odd) header,
 article.comment:nth-child(odd) section {
     background-color: #FBFBFB;
+    line-height: 1.5em;
 }
 
 article.comment header img {
