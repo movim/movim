@@ -312,5 +312,9 @@ class Bootstrap {
     private function startingSession() {
         $s = \Sessionx::start();
         $s->load();
+
+        $user = new User;
+        $db = modl\Modl::getInstance();
+        $db->setUser($user->getLogin());
     }
 }

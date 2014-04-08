@@ -33,9 +33,8 @@ class User {
      */
     function __construct()
     {
-        if($this->isLogged()) {
-            $session = \Sessionx::start();
-    
+        $session = \Sessionx::start();
+        if($session->active) {   
             $this->username = $session->user.'@'.$session->host;
             
             if($session->config)
