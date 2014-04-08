@@ -33,7 +33,7 @@ class Conf
             'theme'     => 'movim',
             'defLang'   => 'en',
             'maxUsers'  => -1,
-            'logLevel'  => 7,
+            'logLevel'  => 'empty',
             'timezone'  => 'Etc/GMT',
             'dbType'    => 'mysql',
             'dbUsername'=> 'username',
