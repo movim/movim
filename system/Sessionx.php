@@ -135,9 +135,6 @@ class Sessionx {
     }
 
     public function __get($key) {
-        $sd = new modl\SessionxDAO();
-        $session = $sd->get(self::$_sessionid);
-
         if($key == 'rid') {
             $sd = new modl\SessionxDAO();
             $this->_rid = $sd->getRid(self::$_sessionid);

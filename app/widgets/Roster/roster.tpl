@@ -1,15 +1,4 @@
 <div id="roster" class="{$roster_show}">
-<!--
-    <input 
-        type="text" 
-        name="search" 
-        id="request" 
-       
-        autocomplete="off" 
-        onkeyup="rosterSearch(event);" 
-        onclick="focusContact();" 
-        placeholder="{$c->t('Search');}"/>
--->
     <input 
         type="text" 
         name="search" 
