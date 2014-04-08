@@ -135,12 +135,18 @@ class Utils {
 
     public static function log($message, $priority = '') 
     {
-        $log = new Logger('moxl');
-        $handler = new SyslogHandler('moxl');
-        
-        $log->pushHandler($handler, Logger::DEBUG);
+        if(LOG_LEVEL != null && LOG_LEVEL > 0) {
+            $log = new Logger('moxl');
 
-        $errlines = explode("\n",$message);
-        foreach ($errlines as $txt) { $log->addDebug($txt); } 
+            $handler = new SyslogHandler('moxl');
+            
+            if(LOG_LEVEL > 1)
+                $log->pushHandler(new StreamHandler(LOG_PATH.'/xmpp.log', Logger::DEBUG));
+            
+            $log->pushHandler($handler, Logger::DEBUG);
+
+            $errlines = explode("\n",$message);
+            foreach ($errlines as $txt) { $log->addDebug($txt); }
+        }
     }
 }
