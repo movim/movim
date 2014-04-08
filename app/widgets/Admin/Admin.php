@@ -221,7 +221,7 @@ class Admin extends WidgetBase {
                             <label for="sizeLimit">'.t('User folder size limit (in bytes)').'</label>
                             <input type="text" name="sizeLimit" id="sizeLimit" value="'.$this->_conf['sizeLimit'].'" />
                     </div>';
-                        
+        /*
         $logopts = array(
             0 => t('empty'),
             2 => t('terse'),
@@ -229,9 +229,15 @@ class Admin extends WidgetBase {
             6 => t('talkative'),
             7 => t('ultimate'),
         );
-        /*
-        $default_log = 4;
         
+        $default_log = 4;
+        */
+
+        $logopts = array(
+            0 => t('Empty'),
+            1 => t('Syslog'),
+            2 => t('Syslog and Files')
+        );
         $html .= '
                     <div class="element">
                         <label for="logLevel">'.t("Log verbosity").'</label>
@@ -251,7 +257,8 @@ class Admin extends WidgetBase {
         $html .= '          </select>
                         </div>
                     </div>';
-        */
+        
+        
         $timezones = getTimezoneList();
                     
         $html .= '
