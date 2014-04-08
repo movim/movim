@@ -223,6 +223,8 @@ class Bootstrap {
             ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
         }
         set_error_handler('systemErrorHandler', E_ALL);
+
+        define('LOG_LEVEL', (int)Conf::getServerConfElement('logLevel'));
     }
     
     private function setTimezone() {
