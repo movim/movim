@@ -37,7 +37,7 @@ class ContactSummary extends WidgetCommon
     function ajaxRefreshVcard($jid)
     {
         $r = new Get;
-        $r->setTo($jid)->request();
+        $r->setTo(echapJid($jid))->request();
     }
     
     function prepareContactSummary($contact)
