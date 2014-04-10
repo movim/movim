@@ -119,11 +119,12 @@ class Notifs extends WidgetCommon
 
     function ajaxSubscribed($jid) {
         $p = new Subscribed;
-        $p->setTo($jid)
+        $p->setTo(echapJid($jid))
           ->request();
     }
     
     function ajaxRefuse($jid) {
+        $jid = echapJid($jid);
         $p = new Unsubscribed;
         $p->setTo($jid)
           ->request();
@@ -139,13 +140,15 @@ class Notifs extends WidgetCommon
     }
 
     function ajaxAddRoster($jid) {
+        $jid = echapJid($jid);
         $r = new AddItem;
         $r->setTo($jid)
           ->setFrom($this->user->getLogin())
           ->request();
     }
     
-    function ajaxSubscribe($jid) { 
+    function ajaxSubscribe($jid) {
+        $jid = echapJid($jid);
         $p = new Subscribe;
         $p->setTo($jid)
           ->request();      
@@ -194,14 +197,5 @@ class Notifs extends WidgetCommon
             </li>';
             
         return $html;
-    }
-    
-    function build()
-    {
-        ?>
-        <div id="notifs">
-            <?php echo $this->prepareNotifs(); ?>
-        </div>
-        <?php
     }
 }
