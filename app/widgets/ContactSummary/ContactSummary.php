@@ -44,7 +44,7 @@ class ContactSummary extends WidgetCommon
     {
         $gender = getGender();
         $marital = getMarital();
-        
+
         // Contact avatar
         $html = '
             <img class="avatar" src="'.$contact->getPhoto('l').'"/>
@@ -80,10 +80,10 @@ class ContactSummary extends WidgetCommon
         if($_GET['f'] == $this->user->getLogin()) {
             $contact = $cd->get($this->user->getLogin());
         }
-        
+
         if(!isset($contact)) {
             $contact = $cd->get($_GET['f']);
-        }
+        } 
         ?>
         <div id="contactsummary">
         <?php
@@ -91,6 +91,7 @@ class ContactSummary extends WidgetCommon
             echo $this->prepareContactSummary($contact);
         } else {
             $contact = new modl\Contact();
+            $contact->jid = $_GET['f'];
             echo $this->prepareContactSummary($contact);
             ?>
             <script type="text/javascript">

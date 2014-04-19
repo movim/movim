@@ -297,8 +297,6 @@ class SDPtoJingle {
             }
         }
 
-        //$this->jingle->addChild('sdp', $this->sdp);
-        
         // We reindent properly the Jingle package
         $xml = $this->jingle->asXML();
         $doc = new \DOMDocument();
