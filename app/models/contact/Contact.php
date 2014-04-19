@@ -3,7 +3,7 @@
 namespace modl;
 
 class Contact extends Model {
-    protected $jid;
+    public $jid;
     
     protected $fn;
     protected $name;
@@ -147,7 +147,6 @@ class Contact extends Model {
     
     public function set($vcard, $jid) {
         $this->jid = \echapJid($jid);
-        
         
         if(isset($vcard->vCard->BDAY)
         && (string)$vcard->vCard->BDAY != '')
