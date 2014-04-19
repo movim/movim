@@ -169,7 +169,7 @@ function loadLanguage($lang)
 
     // Here we load the compiled language file
     if(file_exists(DOCUMENT_ROOT . '/cache/locales/' . $lang . '.php')) {
-        // And we set our gloabl $translations
+        // And we set our global $translations
         require_once(DOCUMENT_ROOT . '/cache/locales/' . $lang . '.php');
     } else
         $translations = parseLangFile(DOCUMENT_ROOT . '/locales/' . $lang . '.po');
