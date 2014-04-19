@@ -177,7 +177,8 @@ class Admin extends WidgetBase {
                     <div class="element">
                         <label for="da">'.t('Default language').'</label>
                             <div class="select">
-                                <select id="defLang" name="defLang">';
+                                <select id="defLang" name="defLang">
+                                    <option value="en">English (default)</option>';
                                     foreach($this->listLangs() as $key => $value) {
                                         if((string)$this->_conf['defLang'] == $key)
                                             $sel = 'selected="selected"';
