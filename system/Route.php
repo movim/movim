@@ -1,6 +1,7 @@
 <?php 
 class Route extends \BaseController {
     public $_routes;
+    private $_page;
     
     public function __construct() {
         $this->_routes = array(
@@ -27,38 +28,18 @@ class Route extends \BaseController {
                 'node'          => array('s', 'n'),
                 'server'        => array('s'),
             );
-
-        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
-            $q = $this->fetchGet('query');
-            //load data in $_GET variable
-            if (!$this->find($q)) {
-                $this->error404();
-                exit;
-            }
-        } else {
-            $q = $this->fetchGet('q');
-            if(empty($q))
-                $_GET['q'] = 'main';
-        }
     }
     
-    public function find($q) {
-        // We decompose the URL
-        $request = explode('/', $q);
-                
-        if(empty($q)) {
-            $_GET['q'] = 'main';
-            return true;
-        } elseif (isset($this->_routes[$request[0]])) {
-            // And we search a pattern for the current page
-            $route = $this->_routes[$request[0]];
-            
-            
-            $_GET['q'] = $request[0];
+    public function find() {
+        if(isset($_SERVER['HTTP_MOD_REWRITE']) || $_SERVER['HTTP_MOD_REWRITE']) {
+            $request = explode('/', $this->fetchGet('query'));
+            $this->_page = $request[0];
             array_shift($request);
-            // If we find it we see if it's a simple page (with no GET)
-            //check if something else to get...
-            if(count($request) ) {
+
+            if(isset($this->_routes[$this->_page]))
+                $route = $this->_routes[$this->_page];
+            
+            if(count($request) && $route) {
                 $i = 0;
                 foreach($route as $key) {
                     if (isset($request[$i])) {
@@ -67,9 +48,17 @@ class Route extends \BaseController {
                     $i++;
                 }
             }
-            return true;
-        } else
-            return false;
+        } else {
+            $this->_page = $this->fetchGet('q');
+        }
+
+        if(empty($this->_page))
+            $this->_page = 'main';
+
+        if(!isset($this->_routes[$this->_page]))
+            $this->_page = 'notfound';
+
+        return $this->_page;
     }
     
     public static function urlize($page, $params = false, $tab = false) {

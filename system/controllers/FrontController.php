@@ -18,15 +18,16 @@ use Monolog\Handler\SyslogHandler;
 class FrontController extends BaseController
 {
     public function handle() {
-        $r = new Route();
+        $r = new Route;
 
         // Note that the request is always specified by 'q'.
-        if($r->find($this->fetchGet('q'))) {
+        /*if($r->find($this->fetchGet('q'))) {
             $request = $this->fetchGet('q');
             $this->runRequest($request);
         } else {
             $this->runRequest('notfound');
-        }
+        }*/
+        $this->runRequest($r->find());
     }    
 
     private function loadController($request) {
