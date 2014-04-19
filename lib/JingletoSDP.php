@@ -318,8 +318,6 @@ class JingletoSDP {
         }
         
         $this->sdp .= $sdp_medias;
-
-        //$this->sdp = (string)$this->jingle->sdp;
         
         return $this->sdp."\r\n";
     }
