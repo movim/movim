@@ -59,12 +59,6 @@ class Presence extends Model {
         parent::__construct();
     }
     
-    // Validation
-    /*
-    public $_validates = array(
-        'presence_of' => array('key', 'jid', 'presence')
-        );  
-    */
     public function setPresence($stanza) {
         $jid = explode('/',(string)$stanza->attributes()->from);
         
@@ -155,4 +149,10 @@ class Presence extends Model {
         return $arr;
     }
 
+    public function isChatroom() {
+        if(filter_var($this->jid, FILTER_VALIDATE_EMAIL))
+            return false;
+        else
+            return true;
+    }
 }

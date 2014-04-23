@@ -7,11 +7,14 @@ class News extends WidgetCommon {
     {
         $this->registerEvent('opt_post', 'onStream');
         $this->registerEvent('stream', 'onStream');
+        $this->addcss('news.css');
     }
 
     function display()
-    {        
+    {
         $this->view->assign('news', $this->prepareNews(-1));
+
+        //Cache::c('since', date(DATE_ISO8601));
     }
     
     /**
@@ -44,6 +47,8 @@ class News extends WidgetCommon {
 
         $html = $this->preparePosts($pl);
 
+        Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
+
         $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetNews');
         
         return $html;
@@ -54,8 +59,8 @@ class News extends WidgetCommon {
         RPC::call('movim_append', 'newsposts', $html);
         RPC::commit();
     }
-        
-    function onStream($payload) {
+
+    function ajaxRefresh() {
         $html = $this->prepareNews(-1);
         
         if($html == '') 
@@ -64,7 +69,28 @@ class News extends WidgetCommon {
                     t("Your feed cannot be loaded.").'
                 </div>';
 
+        RPC::call('movim_fill', 'refresh', '');
         RPC::call('movim_fill', 'newsposts', $html);
+        RPC::call('movim_posts_unread', 0);
+
+        RPC::commit();
+    }
+        
+    function onStream($payload) {
+        $pd = new \Modl\PostnDAO();
+        $count = $pd->getCountSince(Cache::c('since'));
+
+        if($count > 0) {
+            $html = '
+                <a class="button color green icon refresh"
+                   onclick="'.$this->genCallAjax('ajaxRefresh').'"
+                >'.
+                    t("%s new items", $count).' - '.t('Refresh').'
+                </a>';
+                
+            RPC::call('movim_fill', 'refresh', $html);
+            RPC::call('movim_posts_unread', $count);
+        }
 
         RPC::commit();
     }
