@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Bookmark;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza;
+use Moxl\Stanza\Bookmark;
 
 class Set extends Action
 {
