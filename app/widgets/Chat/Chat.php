@@ -42,7 +42,7 @@ class Chat extends WidgetBase {
 
     function onPresence($presence) {
         $arr = $presence->getPresence();
-        
+
         $txt = array(
             1 => t('Online'),
             2 => t('Away'),
@@ -51,14 +51,17 @@ class Chat extends WidgetBase {
             5 => t('Offline'),
             6 => t('Error'));
             
-        $html='
-            <div class="message presence">
-                <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$arr['presence']] . ' - ' . $arr['ressource'], ENT_COMPAT, "UTF-8")) . '
-            </div>';
-            
-        RPC::call('movim_append', 'messages' . $arr['jid'], $html);
-        RPC::call('movim_fill', 'list' . $arr['jid'], $this->prepareMucList($arr['jid']));
-        RPC::call('scrollTalk', 'messages' . $arr['jid']);
+        if($presence->isChatroom())
+            RPC::call('movim_fill', 'list' . $arr['jid'], $this->prepareMucList($arr['jid']));
+        else {
+            $html='
+                <div class="message presence">
+                    <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$arr['presence']] . ' - ' . $arr['ressource'], ENT_COMPAT, "UTF-8")) . '
+                </div>';
+                
+            RPC::call('movim_append', 'messages' . $arr['jid'], $html);
+            RPC::call('scrollTalk', 'messages' . $arr['jid']);
+        }
     }
 
     function onPresenceMuc($toggle) {

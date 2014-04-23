@@ -32,16 +32,29 @@ function movim_onload()
  */
 var document_focus = true;
 var document_title = document.title;
-var messages_cpt = 1;
+var messages_cpt = 0;
+var posts_cpt = 0;
 document.onblur = function() { document_focus = false; }
-document.onfocus = function() { document_focus = true; document.title = document_title; messages_cpt = 1; }
+document.onfocus = function() { document_focus = true; messages_cpt = 0; movim_show_cpt(); }
+
+function movim_show_cpt() {
+    if(messages_cpt == 0 && posts_cpt == 0)
+        document.title = document_title;
+    else
+        document.title = '(' + messages_cpt + '/' + posts_cpt + ') ' + document_title;
+}
 
 /**
  * @brief Increment the counter of the title
  */
 function movim_title_inc() {
-	document.title='[' + messages_cpt + '] ' + document_title ;
 	messages_cpt++;
+	movim_show_cpt();
+}
+
+function movim_posts_unread(params) {
+    posts_cpt = params[0];
+    movim_show_cpt();
 }
 
 function movim_desktop_notification(title, body, image) {
