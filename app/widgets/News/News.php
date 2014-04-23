@@ -90,8 +90,8 @@ class News extends WidgetCommon {
                 
             RPC::call('movim_fill', 'refresh', $html);
             RPC::call('movim_posts_unread', $count);
-        }
 
-        RPC::commit();
+            RPC::commit();
+        }
     }
 }

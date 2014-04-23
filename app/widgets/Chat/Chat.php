@@ -54,13 +54,17 @@ class Chat extends WidgetBase {
         if($presence->isChatroom())
             RPC::call('movim_fill', 'list' . $arr['jid'], $this->prepareMucList($arr['jid']));
         else {
-            $html='
-                <div class="message presence">
-                    <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$arr['presence']] . ' - ' . $arr['ressource'], ENT_COMPAT, "UTF-8")) . '
-                </div>';
-                
-            RPC::call('movim_append', 'messages' . $arr['jid'], $html);
-            RPC::call('scrollTalk', 'messages' . $arr['jid']);
+            $rc = new \modl\ContactDAO;
+            $contact = $rc->getRosterItem(echapJid($arr['jid']));
+            if($contact->chaton > 0 ) {
+                $html='
+                    <div class="message presence">
+                        <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$arr['presence']] . ' - ' . $arr['ressource'], ENT_COMPAT, "UTF-8")) . '
+                    </div>';
+                    
+                RPC::call('movim_append', 'messages' . $arr['jid'], $html);
+                RPC::call('scrollTalk', 'messages' . $arr['jid']);
+            }
         }
     }
 
@@ -87,7 +91,7 @@ class Chat extends WidgetBase {
         $rd = new \modl\RosterLinkDAO();
         $rc = new \modl\ContactDAO();
         
-        $contact=$rc->getRosterItem(echapJid($jid));
+        $contact = $rc->getRosterItem(echapJid($jid));
         
         if($contact!=null && $message->session != $message->jidfrom) {
             RPC::call(
