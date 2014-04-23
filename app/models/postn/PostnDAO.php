@@ -355,4 +355,56 @@ class PostnDAO extends SQL {
         
         return $this->run(null, 'array'); 
     }
+
+    function getCountSince($date) {
+        $this->_sql = '
+            select count(*) from postn
+            left outer join subscription on 
+            postn.session = subscription.jid and 
+            postn.jid = subscription.server and
+            postn.node = subscription.node
+            where postn.session = :session
+                    and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                    and postn.node not like \'urn:xmpp:inbox\'
+            and subscription is not null
+            and published > :published';
+        
+        $this->prepare(
+            'Postn', 
+            array(
+                'session' => $this->_user,
+                'published' => $date
+            )
+        );
+        
+        $arr = $this->run(null, 'array');
+        if(is_array($arr))
+            return $arr[0]['count'];
+    }
+
+    function getLastDate() {
+        $this->_sql = '
+            select published from postn
+            left outer join subscription on 
+            postn.session = subscription.jid and 
+            postn.jid = subscription.server and
+            postn.node = subscription.node
+            where postn.session = :session
+                    and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                    and postn.node not like \'urn:xmpp:inbox\'
+            and subscription is not null
+            order by postn.published desc
+            limit 1 offset 0';
+        
+        $this->prepare(
+            'Postn', 
+            array(
+                'session' => $this->_user
+            )
+        );
+        
+        $arr = $this->run(null, 'array');
+        if(is_array($arr))
+            return $arr[0]['published'];
+    }
 }
