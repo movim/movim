@@ -20,6 +20,7 @@
 
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
+use Moxl\Xec\Action\Group\Delete;
 
 class NodeConfig extends WidgetBase
 {
@@ -103,7 +104,7 @@ class NodeConfig extends WidgetBase
         $nd = new \Modl\ItemDAO();
         $nd->deleteItem($server, $node);
         
-        $r = new \Moxl\GroupDelete();
+        $r = new Delete;
         $r->setTo($server)
           ->setNode($node)
           ->request();

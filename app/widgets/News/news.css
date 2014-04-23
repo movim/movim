@@ -1,0 +1,10 @@
+#newsposts #refresh:not(:empty) {
+    padding: 1em;
+    padding-bottom: 0;
+}
+
+#newsposts #refresh a.button {
+    width: 100%;
+    text-align: center;
+    line-height: 2.5em;
+}
