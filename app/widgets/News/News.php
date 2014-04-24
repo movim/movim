@@ -88,9 +88,9 @@ class News extends WidgetCommon {
                     t("%s new items", $count).' - '.t('Refresh').'
                 </a>';
                 
-            RPC::call('movim_fill', 'refresh', $html);
             RPC::call('movim_posts_unread', $count);
-
+            RPC::call('movim_fill', 'refresh', $html);
+            
             RPC::commit();
         }
     }
