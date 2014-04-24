@@ -27,7 +27,7 @@ namespace Moxl\Xec\Action\Pubsub;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
-use Moxl\Action\Microblog\CommentCreateNode;
+use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\Errors;
 
 class PostPublish extends Errors
