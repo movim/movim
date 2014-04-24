@@ -223,6 +223,13 @@ class Postn extends Model {
         else
             return false;
     }
+
+    public function isMicroblog() {
+        if($this->node == "urn:xmpp:microblog:0")
+            return true;
+        else
+            return false;
+    }
 }
 
 class ContactPostn extends Postn {
