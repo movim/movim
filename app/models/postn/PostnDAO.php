@@ -378,8 +378,10 @@ class PostnDAO extends SQL {
         );
         
         $arr = $this->run(null, 'array');
-        if(is_array($arr))
-            return $arr[0]['count'];
+        if(is_array($arr) && isset($arr[0])) {
+            $arr = array_values($arr[0]);
+            return (int)$arr[0];
+        }
     }
 
     function getLastDate() {
@@ -404,7 +406,7 @@ class PostnDAO extends SQL {
         );
         
         $arr = $this->run(null, 'array');
-        if(is_array($arr))
+        if(is_array($arr) && isset($arr[0]))
             return $arr[0]['published'];
     }
 }
