@@ -26,7 +26,7 @@ class Wall extends WidgetCommon
     function load()
     {
         $this->addjs('wall.js');
-        $this->registerEvent('post', 'onStream');
+        $this->registerEvent('postmicroblog', 'onStream');
         $this->registerEvent('stream', 'onStream');
         $this->registerEvent('comment', 'onComment');
         $this->registerEvent('nocomment', 'onNoComment');
