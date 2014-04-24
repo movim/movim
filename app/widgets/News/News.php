@@ -13,8 +13,6 @@ class News extends WidgetCommon {
     function display()
     {
         $this->view->assign('news', $this->prepareNews(-1));
-
-        //Cache::c('since', date(DATE_ISO8601));
     }
     
     /**
