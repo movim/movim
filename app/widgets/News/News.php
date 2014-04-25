@@ -5,7 +5,7 @@ class News extends WidgetCommon {
     
     function load()
     {
-        $this->registerEvent('opt_post', 'onStream');
+        $this->registerEvent('post', 'onStream');
         $this->registerEvent('stream', 'onStream');
         $this->addcss('news.css');
     }
