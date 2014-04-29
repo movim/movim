@@ -140,9 +140,7 @@ class API {
                         return 'errormechanism';
 
                     $decoded = base64_decode((string)$xmle->challenge);
-                    \movim_log($decoded);
                     $arr = explode(',', $decoded);
-                    \movim_log($arr);
 
                     //pbkdf2($session['password'], $decoded['s'], $decoded['i']);
 

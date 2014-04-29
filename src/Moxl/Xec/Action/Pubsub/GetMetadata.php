@@ -56,7 +56,6 @@ class GetMetadata extends Errors
         
         $tab = array();
 
-        \movim_log($stanza);
         foreach($stanza->query->x->children() as $i) {
             $explode = explode('#', (string)$i->attributes()->var);
             $key = end($explode);

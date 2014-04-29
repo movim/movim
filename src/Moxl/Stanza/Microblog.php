@@ -3,30 +3,6 @@
 namespace Moxl\Stanza;
 
 class Microblog {
-    static function postPublish($to, $id, $content, $name = '')
-    {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <publish node="urn:xmpp:microblog:0">
-                <item id="'.$id.'">
-                    <entry xmlns="http://www.w3.org/2005/Atom">
-                        <author>
-                            <name>'.$name.'</name>
-                            <uri>xmpp:'.$to.'</uri>
-                        </author>
-                        
-                        <link rel="replies" title="comments" href="xmpp:'.$to.'?;node=urn:xmpp:microblog:0:comments/'.$id.'"/>
-                        <content type="text">'.$content.'</content>
-                        <published>'.date(DATE_ISO8601).'</published>  
-                        <updated>'.date(DATE_ISO8601).'</updated>
-                    </entry>
-                </item>
-                </publish>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        \Moxl\API::request($xml);
-    }
-
     static function nodeCreate($to) {
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub">
@@ -200,28 +176,6 @@ class Microblog {
                 <items node="urn:xmpp:microblog:0:comments/'.$id.'"></items>
             </pubsub>';
         $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml);
-    }
-
-    static function commentPublish($to, $parentid, $content, $name, $from) {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <publish node="urn:xmpp:microblog:0:comments/'.$parentid.'">
-                <item id="'.sha1(date(DATE_ISO8601).$to.$jid.$content).'">
-                    <entry xmlns="http://www.w3.org/2005/Atom">
-                        <author>
-                            <name>'.$name.'</name>
-                            <uri>xmpp:'.$from.'</uri>
-                        </author>
-
-                        <content type="text">'.$content.'</content>
-                        <published>'.date('c').'</published>
-                        <updated>'.date('c').'</updated>
-                    </entry>
-                </item>
-                </publish>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
         \Moxl\API::request($xml);
     }
 }

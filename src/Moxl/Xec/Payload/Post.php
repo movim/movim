@@ -51,7 +51,6 @@ class Post extends Payload
                 $evt->runEvent('post', array('from' => $from, 'node' => $p->node));
                 if($p->isMicroblog())
                     $evt->runEvent('postmicroblog', array('from' => $from, 'node' => $p->node));
-                $evt->runEvent('opt_post');
             }
         } elseif($stanza->retract) {
             $pd = new \modl\PostnDAO();

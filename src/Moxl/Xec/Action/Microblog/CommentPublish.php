@@ -25,7 +25,7 @@
 namespace Moxl\Xec\Action\Microblog;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Microblog;
+use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
 use Moxl\Xec\Action\Pubsub\Errors;
 
@@ -43,8 +43,8 @@ class CommentPublish extends Errors
     
     public function request() 
     {       
-        $this->store();        
-        Microblog::postPublish($this->_to, $this->_node, $this->_atom);
+        $this->store();   
+        Pubsub::postPublish($this->_to, $this->_node, $this->_atom);
     }
     
     public function setTo($to)
