@@ -63,9 +63,6 @@ class Account extends WidgetBase {
             unset($stream);
 
             $response = stream_get_contents($f);
-            //\system\Logs\Logger::log('response');
-            //\system\Logs\Logger::log($response);
-            movim_log(simplexml_load_string($response)->asXML());
             if(!$response) {
                     RPC::call('movim_reload', Route::urlize('account', 'xmppcomm'));
                     RPC::commit();
