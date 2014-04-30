@@ -496,6 +496,7 @@ ul.list li.title {
 ul.list li.title a.action {
     padding: 0;
     padding-right: 1em;
+    line-height: 1em;
 }
 
 ul.list li a {
@@ -506,6 +507,7 @@ ul.list li a {
 ul.list li a.action {
     float: right;
     padding: 0.4em;
+    line-height: 2em;
 }
 
 ul.list li a.action:hover {
