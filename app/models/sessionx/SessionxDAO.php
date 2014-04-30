@@ -244,6 +244,18 @@ class SessionxDAO extends SQL {
         $this->run('Sessionx');
     }
 
+    function getAll() {
+        $this->_sql = '
+            select * from sessionx';
+        
+        $this->prepare(
+            'Sessionx', 
+            array()
+        );
+
+        return $this->run('Sessionx');        
+    }
+
     function getConnected() {
         $this->_sql = '
             select count(*) from sessionx';
