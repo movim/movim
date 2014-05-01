@@ -35,6 +35,7 @@ class Sessionx {
     private         $_port;
     private         $_host;
     private         $_domain;
+    private         $_start;
     private         $_active = false;
     private         $_config;
     /*
@@ -88,6 +89,7 @@ class Sessionx {
         $s->domain      = $this->_domain;  
         $s->config      = serialize($this->_config);  
         $s->active      = $this->_active;  
+        $s->start       = $this->_start;
         $s->timestamp   = $this->_timestamp;
         return $s;
     }
@@ -102,6 +104,7 @@ class Sessionx {
         $this->_user        = $user;
         $this->_password    = $pass;
         $this->_ressource   = 'moxl'.\generateKey(6);
+        $this->_start       = date(DATE_ISO8601);
         
         $this->_rid = 0;
         $this->_id  = 0;
@@ -128,6 +131,7 @@ class Sessionx {
             $this->_domain      = $session->domain;
             $this->_config      = unserialize($session->config);
             $this->_active      = $session->active;
+            $this->_start       = $session->start;
             $this->_timestamp   = $session->timestamp;
         }
 
@@ -152,6 +156,7 @@ class Sessionx {
                         'user',
                         'config',
                         'password',
+                        'start',
                         'ressource')
                     )
             ) {

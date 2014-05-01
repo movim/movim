@@ -6,7 +6,9 @@
         </li>
         {loop="$sessions"}
             <li>
-                <a class="action">{$c->getTime($value->rid)}</a>
+                {if="isset($value->start)"}
+                <a class="action">{$c->getTime($value->start)}</a>
+                {/if}
                 <a>{$value->username}@{$value->host}</a>
             </li>
         {/loop}

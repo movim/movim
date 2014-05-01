@@ -18,6 +18,7 @@ class SessionxDAO extends SQL {
                 domain      = :domain,
                 config      = :config,
                 active      = :active,
+                start       = :start,
                 timestamp   = :timestamp
             where session = :session';
         
@@ -37,6 +38,7 @@ class SessionxDAO extends SQL {
                 'domain'    => $s->domain,
                 'config'    => $s->config,
                 'active'    => $s->active,
+                'start'     => $s->start,
                 'timestamp' => $s->timestamp
                 )
         );
@@ -59,6 +61,7 @@ class SessionxDAO extends SQL {
                  domain,
                  config,
                  active,
+                 start,
                  timestamp)
                 values
                 (:session,
@@ -74,6 +77,7 @@ class SessionxDAO extends SQL {
                  :domain,
                  :config,
                  :active,
+                 :start,
                  :timestamp)';
             
             $this->prepare(
@@ -92,6 +96,7 @@ class SessionxDAO extends SQL {
                     'domain'    => $s->domain,
                     'config'    => $s->config,
                     'active'    => $s->active,
+                    'start'     => $s->start,
                     'timestamp' => $s->timestamp
                 )
             );
