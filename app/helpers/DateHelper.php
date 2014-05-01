@@ -34,6 +34,11 @@ function getMonths() {
         12 => t('December'));
 }
 
+function getTimezoneCorrection() {
+    $timezones = getTimezoneList();
+    return $timezones[date_default_timezone_get()];
+}
+
 /**
  * Return a human-readable date 
  *
@@ -46,6 +51,10 @@ function prepareDate($time, $hours = true) {
     $moty = getMonths();
 
     $today = strtotime(date('M j, Y'));
+
+    // We fix the timezone
+    $time = $time + 3600*(int)getTimezoneCorrection();
+
     $reldays = ($time - $today)/86400;
 
     if ($reldays >= 0 && $reldays < 1) {
