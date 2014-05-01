@@ -23,8 +23,7 @@ class Statistics extends WidgetBase {
         $this->view->assign('sessions',      $sd->getAll());
     }
 
-    function getTime($rid) {
-        $seconds = $rid*30;
-        return prepareDate(time() - $seconds, true);
+    function getTime($date) {
+        return prepareDate(strtotime($date));
     }
 }
