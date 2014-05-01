@@ -16,6 +16,7 @@ class Sessionx extends Model {
     public $domain;
     public $config;
     public $active;
+    public $start;
     public $timestamp;
     
     public function __construct() {
@@ -47,6 +48,8 @@ class Sessionx extends Model {
                 {"type":"text" },
             "active" : 
                 {"type":"int",    "size":4 },
+            "start" : 
+                {"type":"date" },
             "timestamp" : 
                 {"type":"date" }
         }';
