@@ -45,7 +45,7 @@ function getTimezoneCorrection() {
  * @param timestamp $string
  * @return string
  */
-function prepareDate($time, $hours = true) {
+function prepareDate($time, $hours = true) {    
     $dotw = getDays();
         
     $moty = getMonths();
@@ -81,7 +81,7 @@ function prepareDate($time, $hours = true) {
     }
     if($hours)
         $date .= ' - '. date('H:i', $time);
-    
+        
     if($time)
         return $date;
 }
