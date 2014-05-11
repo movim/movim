@@ -76,7 +76,14 @@ function prepareString($string) {
                 }
             }, ' ' . $string
     );
-
+    
+    // We remove all the style attributes
+    $string = preg_replace_callback(
+        '/(<[^>]+) style=".*?"/i', function($match) {
+            return $match[1];
+        }, $string    
+    );
+    
     // Twitter hashtags
     $string = preg_replace_callback(
         "/ #[a-zA-Z0-9_-]*/", function ($match) {
