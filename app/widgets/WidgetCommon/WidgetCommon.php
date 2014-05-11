@@ -53,7 +53,7 @@ class WidgetCommon extends WidgetBase {
             
         if(current(explode('.', $post->jid)) == 'nsfw')
             $spoiler = ' movim_toggle_class(this, \'show\')';
-                
+            
         if($this->user->getLogin() == $post->aid) {
             $class = 'me ';
 
@@ -67,6 +67,8 @@ class WidgetCommon extends WidgetBase {
             }
 
             $avatar = $post->getContact()->getPhoto('m');
+        } elseif(isset($post->aid)) {
+            $avatar = $post->getContact()->getPhoto('m', $post->aid);
         // A little hack which display a colored avatar for the Groups
         } elseif(!filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->node != '') {
             $avatar = $post->getContact()->getPhoto('m', $post->node);
