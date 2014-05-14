@@ -43,43 +43,20 @@ class GetList extends Action
         return $this;
     }
     
-    public function handle($stanza) {        
+    public function handle($stanza) {
         $evt = new \Event();
-        
-        // We get all our contact
-        
+
         $rd = new \modl\RosterLinkDAO();
-        $data = $rd->getRoster($this->_from);
+        $list = array();
         
         foreach($stanza->query->item as $item) {
-            // We search if the contact exist in the database 
-            $found = false;
-
-            if($data) {
-                foreach($data as $cd) {
-                    if($cd->jid == (string)$item->attributes()->jid) {
-                        $found = $cd;
-                        break;
-                    }
-                }
-            }
-            
-            // If not found, we create it
-            if($found == false) {
-                $r = new \modl\RosterLink();
-            } else {
-                $r = $found;
-            }
-            
-            $item->key = $this->_from;
+            $r = new \modl\RosterLink();
             $r->set($item);
-            
-            if($found == false) {
-                $rd->set($r);
-            } else {
-                $rd->update($r);
-            }
+            array_push($list, $r);
         }
+        
+        $rd->clearRosterLink();
+        $rd->setList($list);
         
         $evt->runEvent('roster');
     }
