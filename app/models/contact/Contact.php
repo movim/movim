@@ -197,17 +197,17 @@ class Contact extends Model {
             else
                 $jid = $this->jid;
 
-            $sizes = array(
-                'l'     => 200,
-                'm'     => 120,
-                's'     => 50,
-                'xs'    => 28,
-                'xxs'   => 24
-            );
-
-            $p = new \Picture;
-
             if(isset($jid)) {
+                $sizes = array(
+                    'l'     => 200,
+                    'm'     => 120,
+                    's'     => 50,
+                    'xs'    => 28,
+                    'xxs'   => 24
+                );
+
+                $p = new \Picture;
+                
                 if($p->get($jid, $sizes[$size])) {
                     return $p->get($jid, $sizes[$size]);
                 } else {
