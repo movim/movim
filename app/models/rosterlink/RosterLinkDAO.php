@@ -43,6 +43,64 @@ class RosterLinkDAO extends SQL {
         return $this->run('RosterLink');
     }
     
+    function setList($arr) {
+        $this->_sql = '
+            insert into rosterlink
+            (
+                session, 
+                jid, 
+                rostername, 
+                rosterask, 
+                rostersubscription,
+                realname,
+                groupname,
+                chaton)
+                values
+            ';     
+               
+        $i = 0;
+        $params = array();
+            
+        foreach($arr as $r) {
+            $this->_sql .= "
+                (
+                :session_$i, 
+                :jid_$i, 
+                :rostername_$i, 
+                :rosterask_$i, 
+                :rostersubscription_$i,
+                :realname_$i,
+                :groupname_$i,
+                :chaton_$i
+                ),";
+        
+            $params = array_merge(
+                $params,
+                array(
+                    "session_$i"       => $this->_user,
+                    "jid_$i"           => $r->jid,
+                    "rostername_$i"    => $r->rostername,
+                    "rosterask_$i"     => $r->rosterask,
+                    "rostersubscription_$i"     => $r->rostersubscription,
+                    "realname_$i"      => $r->realname,
+                    "groupname_$i"     => $r->groupname,
+                    "chaton_$i"        => $r->chaton
+                )
+            );
+            
+            $i++;
+        }
+        
+        $this->_sql = substr($this->_sql, 0, -1);
+        
+        $this->prepare(
+            'RosterLink',
+            $params
+        );
+        
+        return $this->run('RosterLink');
+    }
+    
     function update(RosterLink $r) {  
         $this->_sql = '
             update rosterlink
