@@ -16,6 +16,10 @@ class System extends WidgetBase {
     {
         $this->view->assign('base_uri',     BASE_URI);
         $this->view->assign('error_uri',    substr_replace(Route::urlize('disconnect', 'err'), '', -3));
+
+        $r = new Route;
+        $this->view->assign('current_page', $r->find());
+        
         if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE'])
             $this->view->assign('page_key_uri', '?q=');
         else
