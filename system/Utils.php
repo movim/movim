@@ -25,10 +25,10 @@ use Monolog\Handler\StreamHandler;
  */
 function getGender() {
     return array('N' => t('None'),
-                    'M' => t('Male'),
-                    'F' => t('Female'),
-                    'O' => t('Other')
-                    );
+                 'M' => t('Male'),
+                 'F' => t('Female'),
+                 'O' => t('Other')
+                );
 }
 
 /**

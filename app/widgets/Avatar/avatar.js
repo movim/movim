@@ -74,20 +74,20 @@ function errorCallback(error){
 
 
 function snapshot() {
-	if (localMediaStream) {
-		canvas = document.querySelector("canvas");
+    if (localMediaStream) {
+        canvas = document.querySelector("canvas");
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-		ctx = canvas.getContext('2d');
-		video = document.getElementById("runningcam");
-		
-		ctx.drawImage(video,0,0, canvas.width, canvas.height);
-		// "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.
-		var img = new Image();
-            img.src = canvas.toDataURL('image/png');
+        ctx = canvas.getContext('2d');
+        video = document.getElementById("runningcam");
 
-            img.onload = function() {
-                vCardImageResize(this);
-            }
-	}
+        ctx.drawImage(video,0,0, canvas.width, canvas.height);
+        // "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.
+        var img = new Image();
+        img.src = canvas.toDataURL('image/png');
+
+        img.onload = function() {
+            vCardImageResize(this);
+        }
+    }
 }

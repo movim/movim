@@ -95,9 +95,10 @@ class RPC
         $json = file_get_contents('php://input');
         $request = json_decode($json);
 
-        // We force the rid and id session number from the browser
         if(isset($_GET['do']) && $_GET['do'] == 'poll') {
             \Moxl\API::ping();
+        } elseif((string)$request->widget == 'lazy') {
+            $l = new Lazy($request->params[0], $request->params[1]);
         } else {
             // Loading the widget.
             $widget_name = (string)$request->widget;
