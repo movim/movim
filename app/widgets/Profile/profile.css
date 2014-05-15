@@ -1,4 +1,4 @@
-#profile {
+#profile_widget {
     background-color: rgba(20, 20, 20, 0.5);
     margin: -1em;
     padding: 1em;
@@ -6,14 +6,14 @@
     padding-bottom: 0em;
 }
 
-#profile h1 {
+#profile_widget h1 {
     color: white;
     line-height: 1.5em;
     padding: 0px;
     margin: 0.5em 0em;
 }
 
-#profile img {
+#profile_widget img {
     width: 200px;
     height: 200px;
     display: block;
@@ -21,14 +21,14 @@
     margin-bottom: 1em;
 }
 
-#profile .textbubble {
+#profile_widget .textbubble {
     margin: 0em -1em;
     margin-top: 1em;
     background-color: rgba(20, 20, 20, 0.7);
     padding: 1em;
 }
 
-#profile .textbubble textarea {
+#profile_widget .textbubble textarea {
     background-color: transparent;
     border: 1px solid transparent;
     border-bottom: 1px solid #333;
@@ -40,10 +40,10 @@
     padding: 0px;
 }
 
-#profile .textbubble textarea:hover {
+#profile_widget .textbubble textarea:hover {
     border-color: white;
 }
 
-#profile textarea#status {
+#profile_widget textarea#status {
     overflow: hidden;
 }

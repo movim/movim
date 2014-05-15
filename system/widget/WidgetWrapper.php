@@ -101,7 +101,7 @@ class WidgetWrapper
     /**
      * Retrieves the list of loaded widgets.
      */
-    function get_loaded_widgets()
+    function getLoadedWidgets()
     {
         if(count($this->loaded_widgets) > 0) {
             return $this->loaded_widgets;
@@ -110,7 +110,7 @@ class WidgetWrapper
         }
     }
     
-    function get_all_widgets()
+    function getAllWidgets()
     {
         return $this->all_widgets;
     }
@@ -170,7 +170,7 @@ class WidgetWrapper
      * @return the registered events
      */
     function registerEvents() {
-        $widgets = $this->get_all_widgets();
+        $widgets = $this->getAllWidgets();
         foreach($widgets as $widget_name) {
             $widget = $this->loadWidget($widget_name);
             // We save the registered events of the widget for the filter
@@ -207,7 +207,7 @@ class WidgetWrapper
                array_key_exists($fct, $this->registered_events))
                 $widgets = $this->registered_events[$fct];
         } else
-            $widgets = $this->get_loaded_widgets();
+            $widgets = $this->getLoadedWidgets();
 
         if(isset($widgets) && is_array($widgets))
             foreach($widgets as $widget)
@@ -215,7 +215,7 @@ class WidgetWrapper
     }
     /*
     function iterateAll($method, array $params = NULL) {
-        $widgets = $this->get_all_widgets();
+        $widgets = $this->getAllWidgets();
         $isevent = array();
         foreach($widgets as $widget) {
             if($this->runWidget($widget, $method, $params))

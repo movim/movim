@@ -1,5 +1,4 @@
 <div id="loginpage" class="fadeDown">
-
     {if="!BROWSER_COMP"}
         <div class="message warning">
             {$c->t('Your web browser is too old to use with Movim.')}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-24 00:18+0100\n"
+"POT-Creation-Date: 2014-05-15 15:35+0200\n"
 "PO-Revision-Date: 2014-01-09 09:37+0000\n"
 "Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
 "Language-Team: Rahut <genghiskhan@gmx.ca>\n"
@@ -19,481 +19,1331 @@ msgstr ""
 "X-Generator: Launchpad (build 16926)\n"
 "X-Poedit-Language: Hebrew\n"
 
-#: ../upload.php:32
-msgid "Not a picture"
-msgstr "לא תמונה"
-
-#: ../upload.php:35
-msgid "Folder size limit exceeded"
-msgstr "מגבלת גודל תיקייה מוצתה"
-
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
-#: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
-#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:88
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Bookmark/Get.php:119
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:37
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/PostDelete.php:74
+#: ../app/widgets/Chat/Chat.php:52
 msgid "Error"
 msgstr "שגיאה"
 
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
-msgid "The node does not exist"
-msgstr "הממסר לא קיים"
-
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:45
-msgid "Your server doesn't support this feature"
-msgstr "השרת שלך לא תומך בתכונה זו"
-
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:50
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:60
-msgid "You are not autorized to do this action"
-msgstr "אינך מורשה לקיים את פעולה זו"
-
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:55
-msgid "This service is unavaiable"
-msgstr "שרות זה אינו זמין"
-
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:65
-msgid "The server does not exist"
-msgstr "השרת לא קיים"
-
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
-msgid "Unexpected request"
-msgstr "בקשה לא צפוה"
-
-#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:75
-msgid "The server cannot accept this action"
-msgstr "השרת לא מסוגל לקבל את פעולה זו"
-
-#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:93
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Bookmark/Get.php:124
 msgid "Item Not Found"
 msgstr "פריט לא נמצא"
 
-#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:98
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Bookmark/Get.php:129
 msgid "Feature Not Implemented"
 msgstr "תכונה לא מיושמת"
 
-#: ../lib/Moxl/xec/action/location/LocationPublish.php:85
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Location/Publish.php:88
 msgid "Your server doesn't support location publication"
 msgstr "השרת שלך לא תומך בפרסום מיקום"
 
-#: ../lib/Moxl/xec/action/location/LocationPublish.php:90
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Location/Publish.php:93
 msgid "Your are not authorized to publish your location"
 msgstr "אינך מורשה לפרסם את מיקומך"
+
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:42
+msgid "The node does not exist"
+msgstr "הממסר לא קיים"
+
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:47
+msgid "Your server doesn't support this feature"
+msgstr "השרת שלך לא תומך בתכונה זו"
+
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:52
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:62
+msgid "You are not autorized to do this action"
+msgstr "אינך מורשה לקיים את פעולה זו"
+
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:57
+msgid "This service is unavaiable"
+msgstr "שרות זה אינו זמין"
+
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:67
+msgid "The server does not exist"
+msgstr "השרת לא קיים"
+
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:72
+msgid "Unexpected request"
+msgstr "בקשה לא צפוה"
+
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:77
+msgid "The server cannot accept this action"
+msgstr "השרת לא מסוגל לקבל את פעולה זו"
+
+#: ../system/Route.php:70
+#, php-format
+msgid "Route error, please set all the parameters for the page %s"
+msgstr "שגיאת ניתוב, אנא הגדר את כל הפרמטרים עבור העמוד %s"
+
+#: ../system/Route.php:100
+#, php-format
+msgid "Route not set for the page %s"
+msgstr "נתיב לא מוגדר עבור העמוד %s"
+
+#: ../system/controllers/FrontController.php:33
+#, php-format
+msgid "Requested controller '%s' doesn't exist."
+msgstr "בקר מבוקש '%s' לא קיים."
+
+#: ../system/controllers/FrontController.php:67
+msgid "Could not call the load method on the current controller"
+msgstr ""
+
+#: ../system/widget/WidgetWrapper.php:131
+#, php-format
+msgid "Requested widget '%s' doesn't exist."
+msgstr "וידג'ט מבוקש '%s' לא קיים."
+
+# אין
+#: ../system/Utils.php:27 ../system/Utils.php:239
+msgid "None"
+msgstr "ללא"
+
+#: ../system/Utils.php:28
+msgid "Male"
+msgstr "זכר"
+
+#: ../system/Utils.php:29
+msgid "Female"
+msgstr "נקבה"
+
+#: ../system/Utils.php:30
+msgid "Other"
+msgstr "אחר"
+
+#: ../system/Utils.php:240
+msgid "Single"
+msgstr "רווק/ה"
+
+#: ../system/Utils.php:241
+msgid "In a relationship"
+msgstr "במערכת יחסים"
+
+#: ../system/Utils.php:242
+msgid "Married"
+msgstr "נישואים"
+
+#: ../system/Utils.php:243
+msgid "Divorced"
+msgstr "גרוש/ה"
+
+#: ../system/Utils.php:244
+msgid "Widowed"
+msgstr "אלמן/ה"
+
+#: ../system/Utils.php:245
+msgid "Cohabiting"
+msgstr "חיים במשותף"
+
+# שותפות אזרחית
+#: ../system/Utils.php:246
+msgid "Civil Union"
+msgstr "נישואים אזרחיים"
+
+#: ../system/Utils.php:252 ../app/widgets/Chat/Chat.php:47
+msgid "Online"
+msgstr "מקוון"
+
+#: ../system/Utils.php:253 ../app/widgets/Chat/Chat.php:48
+msgid "Away"
+msgstr "נעדר"
+
+#: ../system/Utils.php:254 ../app/widgets/Chat/Chat.php:49
+msgid "Do Not Disturb"
+msgstr "נא לא להפריע"
+
+#: ../system/Utils.php:255 ../app/widgets/Chat/Chat.php:50
+msgid "Extended Away"
+msgstr "לא זמין"
+
+#: ../system/Utils.php:256
+msgid "Logout"
+msgstr "התנתק"
+
+#: ../system/Utils.php:273
+msgid "afraid"
+msgstr "מפחד"
+
+#: ../system/Utils.php:274
+msgid "amazed"
+msgstr "נדהם"
+
+#: ../system/Utils.php:275
+msgid "amorous"
+msgstr "חושק"
+
+#: ../system/Utils.php:276
+msgid "angry"
+msgstr "כועס"
+
+#: ../system/Utils.php:277
+msgid "annoyed"
+msgstr "נרגז"
+
+#: ../system/Utils.php:278
+msgid "anxious"
+msgstr "חרד"
+
+#: ../system/Utils.php:279
+msgid "aroused"
+msgstr "מרוגש"
+
+#: ../system/Utils.php:280
+msgid "ashamed"
+msgstr "מתבייש"
+
+#: ../system/Utils.php:281
+msgid "bored"
+msgstr "משועמם"
+
+#: ../system/Utils.php:282
+msgid "brave"
+msgstr "אמיץ"
+
+#: ../system/Utils.php:283
+msgid "calm"
+msgstr "רגוע"
+
+#: ../system/Utils.php:284
+msgid "cautious"
+msgstr "זהיר"
+
+#: ../system/Utils.php:285
+msgid "cold"
+msgstr "קר"
+
+#: ../system/Utils.php:286
+msgid "confident"
+msgstr "סמוך"
+
+#: ../system/Utils.php:287
+msgid "confused"
+msgstr "מבולבל"
+
+#: ../system/Utils.php:288
+msgid "contemplative"
+msgstr "ספקולטיבי"
+
+#: ../system/Utils.php:289
+msgid "contented"
+msgstr "מסופק"
+
+#: ../system/Utils.php:290
+msgid "cranky"
+msgstr "נרגז"
+
+#: ../system/Utils.php:291
+msgid "crazy"
+msgstr "מטורף"
+
+#: ../system/Utils.php:292
+msgid "creative"
+msgstr ""
+
+#: ../system/Utils.php:293
+msgid "curious"
+msgstr "סקרן"
+
+#: ../system/Utils.php:294
+msgid "dejected"
+msgstr "מיואש"
+
+#: ../system/Utils.php:295
+msgid "depressed"
+msgstr "מדוכא"
+
+#: ../system/Utils.php:296
+msgid "disappointed"
+msgstr "מאוכזב"
+
+#: ../system/Utils.php:297
+msgid "disgusted"
+msgstr "נגעל"
+
+#: ../system/Utils.php:298
+msgid "dismayed"
+msgstr "נחרד"
+
+#: ../system/Utils.php:299
+msgid "distracted"
+msgstr "טרוד"
+
+#: ../system/Utils.php:300
+msgid "embarrassed"
+msgstr "נבוך"
+
+#: ../system/Utils.php:301
+msgid "envious"
+msgstr "מקנא"
+
+#: ../system/Utils.php:302
+msgid "excited"
+msgstr "נרגש"
+
+#: ../system/Utils.php:303
+msgid "flirtatious"
+msgstr "פלרטטני"
+
+#: ../system/Utils.php:304
+msgid "frustrated"
+msgstr "מתוסכל"
+
+#: ../system/Utils.php:305
+msgid "grateful"
+msgstr "נעים"
+
+#: ../system/Utils.php:306
+msgid "grieving"
+msgstr "מתאבל"
+
+#: ../system/Utils.php:307
+msgid "grumpy"
+msgstr "זועף"
+
+#: ../system/Utils.php:308
+msgid "guilty"
+msgstr "אשם"
+
+#: ../system/Utils.php:309
+msgid "happy"
+msgstr "שמח"
+
+#: ../system/Utils.php:310
+msgid "hopeful"
+msgstr "אופטימי"
+
+#: ../system/Utils.php:311
+msgid "hot"
+msgstr "לוהט"
+
+#: ../system/Utils.php:312
+msgid "humbled"
+msgstr "מוכנע"
+
+#: ../system/Utils.php:313
+msgid "humiliated"
+msgstr "מושפל"
+
+#: ../system/Utils.php:314
+msgid "hungry"
+msgstr "רעב"
+
+#: ../system/Utils.php:315
+msgid "hurt"
+msgstr "פגוע"
+
+#: ../system/Utils.php:316
+msgid "impressed"
+msgstr "מתפעל"
+
+#: ../system/Utils.php:317
+msgid "in awe"
+msgstr "מפוחד"
+
+#: ../system/Utils.php:318
+msgid "in love"
+msgstr "מאוהב"
+
+#: ../system/Utils.php:320
+msgid "interested"
+msgstr "מתעניין"
+
+#: ../system/Utils.php:321
+msgid "intoxicated"
+msgstr "שיכור"
+
+#: ../system/Utils.php:322
+msgid "invincible"
+msgstr "בלתי מנוצח"
+
+#: ../system/Utils.php:323
+msgid "jealous"
+msgstr "מקנא"
+
+#: ../system/Utils.php:324
+msgid "lonely"
+msgstr "בודד"
+
+#: ../system/Utils.php:325
+msgid "lost"
+msgstr "אבוד"
+
+#: ../system/Utils.php:326
+msgid "lucky"
+msgstr "בר מזל"
+
+#: ../system/Utils.php:327
+msgid "mean"
+msgstr "דל"
+
+#: ../system/Utils.php:328
+msgid "moody"
+msgstr "מדוכדך"
+
+#: ../system/Utils.php:329
+msgid "nervous"
+msgstr "עצבני"
+
+#: ../system/Utils.php:330
+msgid "neutral"
+msgstr "אדיש"
+
+#: ../system/Utils.php:331
+msgid "offended"
+msgstr "נעלב"
+
+#: ../system/Utils.php:332
+msgid "outraged"
+msgstr "מזועזע"
+
+#: ../system/Utils.php:333
+msgid "playful"
+msgstr "שובב"
+
+#: ../system/Utils.php:334
+msgid "proud"
+msgstr "יהיר"
+
+#: ../system/Utils.php:335
+msgid "relaxed"
+msgstr "רגוע"
+
+#: ../system/Utils.php:336
+msgid "relieved"
+msgstr "משוחרר"
+
+#: ../system/Utils.php:337
+msgid "remorseful"
+msgstr "מתייסר"
+
+#: ../system/Utils.php:338
+msgid "restless"
+msgstr "חסר מנוחה"
+
+#: ../system/Utils.php:339
+msgid "sad"
+msgstr "עצוב"
+
+#: ../system/Utils.php:340
+msgid "sarcastic"
+msgstr "עוקצני"
+
+#: ../system/Utils.php:341
+msgid "satisfied"
+msgstr "מרוצה"
+
+#: ../system/Utils.php:342
+msgid "serious"
+msgstr "רציני"
+
+#: ../system/Utils.php:343
+msgid "shocked"
+msgstr "הלום"
+
+#: ../system/Utils.php:344
+msgid "shy"
+msgstr "ביישן"
+
+#: ../system/Utils.php:345
+msgid "sick"
+msgstr "חולה"
+
+#: ../system/Utils.php:346
+msgid "sleepy"
+msgstr "ישנוני"
+
+#: ../system/Utils.php:347
+msgid "spontaneous"
+msgstr "ספונטני"
+
+#: ../system/Utils.php:348
+msgid "stressed"
+msgstr "לחוץ"
+
+#: ../system/Utils.php:349
+msgid "strong"
+msgstr "חזק"
+
+#: ../system/Utils.php:350
+msgid "surprised"
+msgstr "מופתע"
+
+#: ../system/Utils.php:351
+msgid "thankful"
+msgstr "אסיר תודה"
+
+#: ../system/Utils.php:352
+msgid "thirsty"
+msgstr "צמא"
+
+#: ../system/Utils.php:353
+msgid "tired"
+msgstr "עייף"
+
+#: ../system/Utils.php:354
+msgid "undefined"
+msgstr "מעורפל"
+
+#: ../system/Utils.php:355
+msgid "weak"
+msgstr "חלש"
+
+#: ../system/Utils.php:356
+msgid "worried"
+msgstr "מודאג"
+
+#: ../system/Utils.php:394
+msgid "Not shared"
+msgstr "לא שותף"
+
+#: ../system/Utils.php:398
+msgid "Shared with one contact"
+msgstr "שותף עם איש קשר אחד"
+
+#: ../system/Utils.php:402
+msgid "Shared with all contacts"
+msgstr "שותף עם כל אנשי הקשר"
+
+#: ../system/Utils.php:406
+msgid "Shared with the XMPP network"
+msgstr "שותף עם רשת התקשורת XMPP"
+
+#: ../system/Utils.php:410
+msgid "Shared with the whole Internet"
+msgstr "שותף עם כל המרשתת"
+
+#: ../system/Conf.php:67
+#, php-format
+msgid "Cannot load file '%s'"
+msgstr "לא ניתן לטעון קובץ '%s'"
+
+#: ../system/MovimException.php:15
+#, php-format
+msgid "Error: %s"
+msgstr "שגיאה: %s"
+
+#: ../upload.php:25
+msgid "Not a picture"
+msgstr "לא תמונה"
+
+#: ../upload.php:28
+msgid "Folder size limit exceeded"
+msgstr "מגבלת גודל תיקייה מוצתה"
 
 #: ../app/models/postn/Postn.php:140
 msgid "Content not found"
 msgstr "תוכן לא נמצא"
 
-#: ../app/widgets/ContactManage/ContactManage.php:30
-msgid "Contact updated"
-msgstr "איש קשר עודכן"
+#: ../app/controllers/MediaController.php:9
+#: ../app/controllers/MediaController.php:15
+#: ../app/controllers/MainController.php:15
+#: ../app/controllers/NodeconfigController.php:16
+#: ../app/controllers/NewsController.php:15
+#: ../app/controllers/ProfileController.php:15
+#: ../app/controllers/ServerController.php:16
+#: ../app/controllers/HelpController.php:15
+#: ../app/controllers/ConfController.php:15
+#: ../app/controllers/FriendController.php:25
+#: ../app/controllers/ExploreController.php:17
+#: ../app/controllers/NodeController.php:16 ../app/widgets/Media/Media.php:159
+msgid "Media"
+msgstr "מדיה"
 
-#: ../app/widgets/ContactManage/ContactManage.php:55
-msgid "Manage"
-msgstr "נהל"
+#: ../app/controllers/MediaController.php:11
+#: ../app/controllers/AccountnextController.php:11
+#: ../app/controllers/MainController.php:11
+#: ../app/controllers/AccountController.php:11
+#: ../app/controllers/NodeconfigController.php:12
+#: ../app/controllers/NewsController.php:11
+#: ../app/controllers/NotfoundController.php:11
+#: ../app/controllers/DiscoverController.php:13
+#: ../app/controllers/LoginController.php:11
+#: ../app/controllers/ProfileController.php:11
+#: ../app/controllers/ServerController.php:12
+#: ../app/controllers/HelpController.php:11
+#: ../app/controllers/ConfController.php:11
+#: ../app/controllers/AboutController.php:11
+#: ../app/controllers/AdminloginController.php:11
+#: ../app/controllers/BlogController.php:11
+#: ../app/controllers/FriendController.php:21
+#: ../app/controllers/AdminController.php:14
+#: ../app/controllers/ExploreController.php:13
+#: ../app/controllers/NodeController.php:12
+msgid "Home"
+msgstr "בית"
 
-#: ../app/widgets/ContactManage/ContactManage.php:67
-msgid "Alias"
-msgstr "כינוי"
+#: ../app/controllers/MediaController.php:12
+#: ../app/controllers/MainController.php:12
+#: ../app/controllers/NodeconfigController.php:13
+#: ../app/controllers/NewsController.php:12
+#: ../app/controllers/ProfileController.php:12
+#: ../app/controllers/ServerController.php:13
+#: ../app/controllers/HelpController.php:12
+#: ../app/controllers/ConfController.php:12
+#: ../app/controllers/FriendController.php:22
+#: ../app/controllers/ExploreController.php:14
+#: ../app/controllers/NodeController.php:13
+msgid "News"
+msgstr "חדשות"
 
-#: ../app/widgets/ContactManage/ContactManage.php:73
-msgid "Group"
-msgstr "קבוצה"
+#: ../app/controllers/MediaController.php:13
+#: ../app/controllers/MainController.php:13
+#: ../app/controllers/NodeconfigController.php:14
+#: ../app/controllers/NewsController.php:13
+#: ../app/controllers/ProfileController.php:13
+#: ../app/controllers/ServerController.php:14
+#: ../app/controllers/HelpController.php:13
+#: ../app/controllers/ConfController.php:13
+#: ../app/controllers/FriendController.php:23
+#: ../app/controllers/ExploreController.php:15
+#: ../app/controllers/NodeController.php:14 ../app/views/explore.tpl:16
+msgid "Explore"
+msgstr "סייר"
 
-#: ../app/widgets/ContactManage/ContactManage.php:76
-msgid "Save"
-msgstr "שמור"
+#: ../app/controllers/MediaController.php:14
+#: ../app/controllers/MainController.php:14
+#: ../app/controllers/NodeconfigController.php:15
+#: ../app/controllers/NewsController.php:14
+#: ../app/controllers/ProfileController.php:14
+#: ../app/controllers/ServerController.php:15
+#: ../app/controllers/HelpController.php:14
+#: ../app/controllers/ConfController.php:14
+#: ../app/controllers/FriendController.php:24
+#: ../app/controllers/ExploreController.php:16
+#: ../app/controllers/NodeController.php:15
+#: ../app/widgets/ContactCard/ContactCard.php:45
+#: ../app/widgets/ContactCard/ContactCard.php:151
+msgid "Profile"
+msgstr "דיוקן"
 
-#: ../app/widgets/Media/Media.php:85
+#: ../app/controllers/MediaController.php:16
+#: ../app/controllers/MainController.php:16
+#: ../app/controllers/NodeconfigController.php:10
+#: ../app/controllers/NodeconfigController.php:17
+#: ../app/controllers/NewsController.php:16
+#: ../app/controllers/ProfileController.php:16
+#: ../app/controllers/ServerController.php:17
+#: ../app/controllers/HelpController.php:16
+#: ../app/controllers/ConfController.php:16
+#: ../app/controllers/FriendController.php:26
+#: ../app/controllers/ExploreController.php:18
+#: ../app/controllers/NodeController.php:17
+msgid "Configuration"
+msgstr "תצורה"
+
+#: ../app/controllers/MediaController.php:17
+#: ../app/controllers/MainController.php:17
+#: ../app/controllers/NodeconfigController.php:18
+#: ../app/controllers/NewsController.php:17
+#: ../app/controllers/ProfileController.php:17
+#: ../app/controllers/ServerController.php:18
+#: ../app/controllers/HelpController.php:17
+#: ../app/controllers/ConfController.php:17
+#: ../app/controllers/FriendController.php:27
+#: ../app/controllers/ExploreController.php:19
+#: ../app/controllers/NodeController.php:18 ../app/widgets/Help/Help.php:29
+#: ../app/widgets/Help/Help.php:41
+msgid "Help"
+msgstr "עזרה"
+
+#: ../app/controllers/AccountnextController.php:9
+#: ../app/controllers/AccountController.php:9
+#: ../app/controllers/BlogController.php:9
+#, php-format
+msgid "%s - Account"
+msgstr "%s - חשבון"
+
+#: ../app/controllers/AccountnextController.php:12
+#: ../app/controllers/AccountController.php:12
+msgid "Account Creation"
+msgstr "יצירת חשבון"
+
+#: ../app/controllers/MainController.php:9
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr "‏‏%s - ברוך בואך אל Movim"
+
+#: ../app/controllers/NewsController.php:9
+#, php-format
+msgid "%s - News"
+msgstr "%s - חדשות"
+
+#: ../app/controllers/DiscoverController.php:11
+#, php-format
+msgid "%s - Discover"
+msgstr "%s - לגלות"
+
+#: ../app/controllers/DiscoverController.php:14
+#: ../app/controllers/LoginController.php:12
+#: ../app/controllers/AboutController.php:12
+msgid "Discover"
+msgstr "גלה"
+
+#: ../app/controllers/DiscoverController.php:15
+#: ../app/controllers/LoginController.php:13
+#: ../app/controllers/AboutController.php:13
+msgid "About"
+msgstr "אודות"
+
+#: ../app/controllers/LoginController.php:9
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "‏‏%s - התחברות אל Movim"
+
+#: ../app/controllers/ProfileController.php:9
+#, php-format
+msgid "%s - Profile"
+msgstr "‏‏%s - דיוקן"
+
+#: ../app/controllers/HelpController.php:9
+#, php-format
+msgid "%s - Help Page"
+msgstr "‏‏%s - עמוד עזרה"
+
+#: ../app/controllers/ConfController.php:9
+#, php-format
+msgid "%s - Configuration"
+msgstr "‏‏%s - תצורה"
+
+#: ../app/controllers/AboutController.php:9
+#, php-format
+msgid "%s - About"
+msgstr "%s - אודות"
+
+#: ../app/controllers/AdminloginController.php:9
+#: ../app/controllers/AdminController.php:12
+#, php-format
+msgid "%s - Administration Panel"
+msgstr "%s - לוח ניהול"
+
+#: ../app/controllers/AdminloginController.php:12
+#: ../app/controllers/AdminController.php:15
+msgid "Administration"
+msgstr "ניהול"
+
+#: ../app/controllers/BlogController.php:12 ../app/widgets/Wall/Wall.php:87
+msgid "Blog"
+msgstr "בלוג"
+
+#: ../app/controllers/ExploreController.php:11
+#, php-format
+msgid "%s - Explore"
+msgstr "%s - סייר"
+
+#: ../app/widgets/ContactAction/ContactAction.php:70
+#: ../app/widgets/ContactAction/ContactAction.php:139
+msgid "Actions"
+msgstr "פעולות"
+
+#: ../app/widgets/ContactAction/ContactAction.php:87
+msgid "Chat"
+msgstr "שיחה"
+
+#: ../app/widgets/ContactAction/ContactAction.php:105
+msgid "Remove this contact"
+msgstr "הסר את איש קשר זה"
+
+#: ../app/widgets/ContactAction/ContactAction.php:122
+msgid "Yes"
+msgstr "כן"
+
+#: ../app/widgets/ContactAction/ContactAction.php:135
+msgid "No"
+msgstr "לא"
+
+#: ../app/widgets/ContactAction/ContactAction.php:151
+msgid "Invite this user"
+msgstr "הזמנת משתמש זה"
+
+#: ../app/widgets/Media/Media.php:91
 #: ../app/widgets/ContactInfo/ContactInfo.php:63
 msgid "on"
 msgstr ""
 
-#: ../app/widgets/Media/Media.php:104 ../app/widgets/Vcard/Vcard.php:149
+#: ../app/widgets/Media/Media.php:109 ../app/widgets/Account/Account.php:286
 #: ../app/widgets/ContactCard/ContactCard.php:51
-#: ../app/widgets/Account/Account.php:289
+#: ../app/widgets/Vcard/Vcard.php:142
 msgid "Name"
 msgstr "שם"
 
-#: ../app/widgets/Media/Media.php:106
+#: ../app/widgets/Media/Media.php:111
 msgid "Resolution"
 msgstr "אבחנה (רזולוציה)"
 
-#: ../app/widgets/Media/Media.php:108
+#: ../app/widgets/Media/Media.php:113
 msgid "Size"
 msgstr "גודל"
 
-#: ../app/widgets/Media/Media.php:110
+#: ../app/widgets/Media/Media.php:115
 msgid "Date"
 msgstr "תאריך"
 
-#: ../app/widgets/Media/Media.php:112
+#: ../app/widgets/Media/Media.php:117
 msgid "ISO"
 msgstr ""
 
-#: ../app/widgets/Media/Media.php:114
+#: ../app/widgets/Media/Media.php:119
 msgid "Camera"
 msgstr "מצלמה"
 
-#: ../app/widgets/Media/Media.php:116
+#: ../app/widgets/Media/Media.php:121
 msgid "Artist"
 msgstr "אמן"
 
-#: ../app/widgets/Media/Media.php:119
+#: ../app/widgets/Media/Media.php:124
 msgid "Original"
 msgstr "מקורית"
 
-#: ../app/widgets/Media/Media.php:119
+#: ../app/widgets/Media/Media.php:124
 msgid "Link"
 msgstr "קישור"
 
-#: ../app/widgets/Media/Media.php:148
+#: ../app/widgets/Media/Media.php:153
 msgid "Viewer"
 msgstr "צופה"
 
-#: ../app/widgets/Media/Media.php:154
-#: ../app/controllers/ProfileController.php:15
-#: ../app/controllers/MediaController.php:9
-#: ../app/controllers/MediaController.php:15
-#: ../app/controllers/ConfController.php:15
-#: ../app/controllers/NodeconfigController.php:16
-#: ../app/controllers/ExploreController.php:17
-#: ../app/controllers/NodeController.php:16
-#: ../app/controllers/FriendController.php:25
-#: ../app/controllers/HelpController.php:15
-#: ../app/controllers/ServerController.php:16
-#: ../app/controllers/NewsController.php:15
-#: ../app/controllers/MainController.php:15
-msgid "Media"
-msgstr "מדיה"
+#: ../app/widgets/VisioExt/VisioExt.php:68
+msgid "Hung up"
+msgstr ""
 
-#: ../app/widgets/ServerNodes/ServerNodes.php:54
+#: ../app/widgets/VisioExt/VisioExt.php:72
+msgid "Your contact is busy"
+msgstr ""
+
+#: ../app/widgets/VisioExt/VisioExt.php:76
+msgid "Declined"
+msgstr ""
+
+#: ../app/widgets/VisioExt/VisioExt.php:92
+msgid "Remote application incompatible"
+msgstr ""
+
+#: ../app/widgets/VisioExt/VisioExt.php:100
+#: ../app/widgets/AccountError/AccountError.php:80
+#: ../app/widgets/Account/Account.php:433
+msgid "Unknown error"
+msgstr "שגיאה לא ידועה"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:31
+#: ../app/widgets/MediaUpload/MediaUpload.php:66
+msgid "Upload"
+msgstr "העלאה"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:35
+msgid "Please select image file"
+msgstr "אנא בחר קובץ תמונה"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:69
+msgid "You should select valid image files only!"
+msgstr "עליך לבחור קבצי תמונה ברי תוקף בלבד!"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:72
+msgid "An error occurred while uploading the file"
+msgstr "אירעה שגיאה בעת העלאת הקובץ"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:75
+msgid "The upload has been canceled by the user or the browser dropped the connection"
+msgstr "ההעלאה בוטלה על ידי המשתמש או שהדפדפן השמיט את החיבור"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:78
+msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgstr "הקובץ שלך גדול מאוד. אנחנו לא יכולים לקבלו. אנא בחר קובץ קטן יותר"
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:57
 msgid "Create a new group"
 msgstr "צור קבוצה חדשה"
 
-#: ../app/widgets/ServerNodes/ServerNodes.php:61
+#: ../app/widgets/ServerNodes/ServerNodes.php:64
 msgid "Give a friendly name to your group"
 msgstr "הקנה שם ידידותי לקבוצתך"
 
-#: ../app/widgets/ServerNodes/ServerNodes.php:63
+#: ../app/widgets/ServerNodes/ServerNodes.php:66
 msgid "My Little Pony - Fan Club"
 msgstr "אין כמו אבא שבעולם - מועדון מעריצים"
 
-#: ../app/widgets/ServerNodes/ServerNodes.php:72
-#: ../app/widgets/Notifs/Notifs.php:277
+#: ../app/widgets/ServerNodes/ServerNodes.php:75
+#: ../app/widgets/Notifs/Notifs.php:189
 msgid "Add"
 msgstr "הוסף"
 
-#: ../app/widgets/ServerNodes/ServerNodes.php:77
+#: ../app/widgets/ServerNodes/ServerNodes.php:80
 msgid "Close"
 msgstr "סגור"
 
-#: ../app/widgets/ServerNodes/ServerNodes.php:108
+#: ../app/widgets/ServerNodes/ServerNodes.php:111
 msgid "Subscribed"
 msgstr "מנוי"
 
+#: ../app/widgets/Node/Node.php:115 ../app/widgets/News/News.php:67
+#: ../app/widgets/Feed/Feed.php:178
+msgid "Your feed cannot be loaded."
+msgstr "ערוצך לא יכול להיטען."
+
+#: ../app/widgets/Node/Node.php:208 ../app/widgets/Wall/Wall.php:113
+#: ../app/widgets/News/News.php:34 ../app/widgets/Feed/Feed.php:145
+msgid "Get older posts"
+msgstr "השג רשומות נושנות"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:57
+#, php-format
+msgid "Return to %s's list of groups"
+msgstr ""
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:60
+msgid "Group deleted"
+msgstr "קבוצה נמחקה"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:66
+msgid "Group configuration saved"
+msgstr "תצורת קבוצה נשמרה"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:86
+#: ../app/widgets/Account/Account.php:157
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:59
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:62
+msgid "Validate"
+msgstr "מתן תוקף"
+
 #: ../app/widgets/AccountError/AccountError.php:32
-#: ../app/widgets/Login/Login.php:130 ../app/widgets/Account/Account.php:388
+#: ../app/widgets/Account/Account.php:385 ../app/widgets/Login/Login.php:129
 msgid "Some data are missing !"
 msgstr "חסר מידע מסוים !"
 
 #: ../app/widgets/AccountError/AccountError.php:38
-#: ../app/widgets/Account/Account.php:394
+#: ../app/widgets/Account/Account.php:391
 msgid "Wrong ID"
 msgstr "‏ID שגויה"
 
 #: ../app/widgets/AccountError/AccountError.php:44
-#: ../app/widgets/Account/Account.php:400
+#: ../app/widgets/Account/Account.php:397
 msgid "You entered different passwords"
 msgstr "הזנת סיסמאות שונות"
 
 #: ../app/widgets/AccountError/AccountError.php:50
-#: ../app/widgets/Account/Account.php:406
+#: ../app/widgets/Account/Account.php:403
 msgid "Invalid name"
 msgstr "שם שגוי"
 
 #: ../app/widgets/AccountError/AccountError.php:56
-#: ../app/widgets/Account/Account.php:412
+#: ../app/widgets/Account/Account.php:409
 msgid "Request not acceptable"
 msgstr "בקשה לא קבילה"
 
 # שם משתמש תפוס
 #: ../app/widgets/AccountError/AccountError.php:62
-#: ../app/widgets/Account/Account.php:418
+#: ../app/widgets/Account/Account.php:415
 msgid "Username already taken"
 msgstr "שם משתמש כבר בשימוש"
 
 #: ../app/widgets/AccountError/AccountError.php:68
-#: ../app/widgets/Account/Account.php:424
+#: ../app/widgets/Account/Account.php:421
 msgid "Could not connect to the XMPP server"
 msgstr "לא ניתן להתחבר אל שרת XMPP"
 
 #: ../app/widgets/AccountError/AccountError.php:74
-#: ../app/widgets/Account/Account.php:430
+#: ../app/widgets/Account/Account.php:427
 msgid "Could not communicate with the XMPP server"
 msgstr "לא ניתן לתקשר עם שרת XMPP"
 
-#: ../app/widgets/AccountError/AccountError.php:80
-#: ../app/widgets/VisioExt/VisioExt.php:97
-#: ../app/widgets/Account/Account.php:436
-msgid "Unknown error"
-msgstr "שגיאה לא ידועה"
-
-#: ../app/widgets/Bookmark/Bookmark.php:88
-msgid "Bookmarks updated"
-msgstr "סימניות עודכנו"
-
-#: ../app/widgets/Bookmark/Bookmark.php:93 ../app/widgets/Feed/Feed.php:92
-msgid "An error occured : "
-msgstr "ארעה שגיאה : "
-
-#: ../app/widgets/Bookmark/Bookmark.php:134
-msgid "Bad Chatroom ID"
-msgstr "מזהה חדר שיחה רע"
-
-#: ../app/widgets/Bookmark/Bookmark.php:138
-#: ../app/widgets/Bookmark/Bookmark.php:191
-msgid "Empty name"
-msgstr "שם ריק"
-
-#: ../app/widgets/Bookmark/Bookmark.php:187
-msgid "Bad URL"
-msgstr "URL רע"
-
-#: ../app/widgets/Bookmark/Bookmark.php:300
-msgid "Conferences"
-msgstr "ועידות"
-
-#: ../app/widgets/Bookmark/Bookmark.php:308
-#: ../app/widgets/Explore/Explore.php:86
-msgid "Groups"
-msgstr "קבוצות"
-
-#: ../app/widgets/Bookmark/Bookmark.php:316
-msgid "Links"
-msgstr "קישורים"
-
-#: ../app/widgets/Roster/Roster.php:67 ../app/widgets/Roster/Roster.php:379
+#: ../app/widgets/Roster/Roster.php:69 ../app/widgets/Roster/Roster.php:223
 msgid "Ungrouped"
 msgstr "ללא קבוצה"
 
-#: ../app/widgets/Roster/Roster.php:437
+#: ../app/widgets/Roster/Roster.php:281
 msgid "Show disconnected contacts"
 msgstr "הצג אנשי קשר לא מחוברים"
 
-#: ../app/widgets/Roster/Roster.php:439
+#: ../app/widgets/Roster/Roster.php:283
 msgid "Hide disconnected contacts"
 msgstr "הסתר אנשי קשר לא מחוברים"
 
-#: ../app/widgets/Roster/Roster.php:443
+#: ../app/widgets/Roster/Roster.php:287
 #, php-format
 msgid "Hide group %s"
 msgstr "הסתר את קבוצה %s"
 
-#: ../app/widgets/Roster/Roster.php:445
+#: ../app/widgets/Roster/Roster.php:289
 #, php-format
 msgid "Show group %s"
 msgstr "הצג את קבוצה %s"
 
-#: ../app/widgets/Roster/Roster.php:472
+#: ../app/widgets/Roster/Roster.php:316
 msgid "Please enter a valid Jabber ID"
 msgstr "אנא הזן מזהה Jabber תקף"
 
-#: ../app/widgets/Vcard4/Vcard4.php:94 ../app/widgets/Vcard4/Vcard4.php:102
-#: ../app/widgets/Vcard/Vcard.php:37
-msgid "Profile Updated"
-msgstr "דיוקן עודכן"
-
-#: ../app/widgets/Vcard4/Vcard4.php:107
-msgid "Profile Not Updated"
+#: ../app/widgets/Avatar/Avatar.php:75
+msgid "Avatar Updated"
 msgstr ""
 
-#: ../app/widgets/Vcard4/Vcard4.php:175
-msgid "Your profile is now public"
+#: ../app/widgets/Avatar/Avatar.php:81
+msgid "Avatar Not Updated"
 msgstr ""
 
-#: ../app/widgets/Vcard4/Vcard4.php:178
-msgid "Your profile is now restricted"
-msgstr ""
-
-#: ../app/widgets/Explore/Explore.php:77
-msgid "Chatrooms"
-msgstr "חדרי שיחה"
-
-#: ../app/widgets/AccountNext/AccountNext.php:142
-#: ../app/widgets/Account/Account.php:173
-msgid "No account creation form founded on the server"
-msgstr "לא נמצאה תבנית יצירת חשבון על השרת"
-
-#: ../app/widgets/Admin/Admin.php:52 ../app/widgets/Admin/Admin.php:57
-#: ../app/widgets/Admin/Admin.php:62 ../app/widgets/Admin/Admin.php:67
-#, php-format
-msgid "Couldn't create directory '%s'."
-msgstr "לא ניתן ליצור מדור '%s'."
-
-#: ../app/widgets/Admin/Admin.php:175 ../app/widgets/Vcard/Vcard.php:347
+#: ../app/widgets/Admin/Admin.php:105 ../app/widgets/Vcard/Vcard.php:340
 msgid "Submit"
 msgstr "שלח"
 
-#: ../app/widgets/Admin/Admin.php:179 ../app/widgets/Admin/Admin.php:505
+#: ../app/widgets/Admin/Admin.php:109
 msgid "Compatibility Check"
 msgstr "בדיקת תאימות"
 
-#: ../app/widgets/Admin/Admin.php:184
+#: ../app/widgets/Admin/Admin.php:114
 msgid "Movim requires certain external components. Please install them before you can succeed:"
 msgstr "Movim מצריכה רכיבים חיצוניים מסוימים. אנא התקן אותם לפני שתוכל להמשיך:"
 
-#: ../app/widgets/Admin/Admin.php:189
+#: ../app/widgets/Admin/Admin.php:119
 #, php-format
 msgid "Your PHP-Version: %s <br>Required: 5.3.0"
 msgstr "גרסת PHP-שברשותך: %s <br>נדרשת: 5.3.0"
 
-#: ../app/widgets/Admin/Admin.php:192
+#: ../app/widgets/Admin/Admin.php:122
 msgid "CURL-Library"
 msgstr "ספריית-CURL"
 
-#: ../app/widgets/Admin/Admin.php:195
+#: ../app/widgets/Admin/Admin.php:125
 msgid "GD"
 msgstr "GD"
 
-#: ../app/widgets/Admin/Admin.php:198
+#: ../app/widgets/Admin/Admin.php:128
 msgid "SimpleXML"
 msgstr "XML פשוט"
 
-#: ../app/widgets/Admin/Admin.php:201
+#: ../app/widgets/Admin/Admin.php:131
 msgid "Read and write rights for the webserver in Movim's root directory"
 msgstr "הרשאות קריאה וכתיבה עבור שרת הרשת במדור השורש (root) של Movim"
 
-#: ../app/widgets/Admin/Admin.php:204
+#: ../app/widgets/Admin/Admin.php:134
 msgid "OpenSSL"
 msgstr ""
 
-#: ../app/widgets/Admin/Admin.php:210 ../app/widgets/Admin/Admin.php:213
+#: ../app/widgets/Admin/Admin.php:140 ../app/widgets/Admin/Admin.php:143
 msgid "URL Rewriting support"
 msgstr "תמיכת שכתוב URL"
 
-#: ../app/widgets/Admin/Admin.php:227 ../app/widgets/Admin/Admin.php:508
+#: ../app/widgets/Admin/Admin.php:157
 msgid "General Settings"
 msgstr "הגדרות כלליות"
 
-#: ../app/widgets/Admin/Admin.php:229
+#: ../app/widgets/Admin/Admin.php:159
 msgid "Theme"
 msgstr "מוטיב"
 
-#: ../app/widgets/Admin/Admin.php:249
+#: ../app/widgets/Admin/Admin.php:178
 msgid "Default language"
 msgstr "שפה משתמטת"
 
-#: ../app/widgets/Admin/Admin.php:273
+#: ../app/widgets/Admin/Admin.php:202
 msgid "Environment"
 msgstr "סביבה"
 
-#: ../app/widgets/Admin/Admin.php:299
+#: ../app/widgets/Admin/Admin.php:222
 msgid "User folder size limit (in bytes)"
 msgstr "מגבלת גודל תיקיית משתמש (בתים)"
 
-#: ../app/widgets/Admin/Admin.php:304
-msgid "empty"
+#: ../app/widgets/Admin/Admin.php:238
+#, fuzzy
+msgid "Empty"
 msgstr "ריק"
 
-#: ../app/widgets/Admin/Admin.php:305
-msgid "terse"
-msgstr "תמציתי"
+#: ../app/widgets/Admin/Admin.php:239
+msgid "Syslog"
+msgstr ""
 
-#: ../app/widgets/Admin/Admin.php:306
-msgid "normal"
-msgstr "רגיל"
+#: ../app/widgets/Admin/Admin.php:240
+msgid "Syslog and Files"
+msgstr ""
 
-#: ../app/widgets/Admin/Admin.php:307
-msgid "talkative"
-msgstr "פטפטני"
+#: ../app/widgets/Admin/Admin.php:244
+msgid "Log verbosity"
+msgstr "גיבוב רשומת יומן"
 
-#: ../app/widgets/Admin/Admin.php:308
-msgid "ultimate"
-msgstr "מוחלט"
-
-#: ../app/widgets/Admin/Admin.php:337
+#: ../app/widgets/Admin/Admin.php:267
 msgid "Server Timezone"
 msgstr "אזור זמן שרת"
 
-#: ../app/widgets/Admin/Admin.php:365
+#: ../app/widgets/Admin/Admin.php:295
 msgid "Bosh Configuration"
 msgstr "תצורת Bosh"
 
-#: ../app/widgets/Admin/Admin.php:369
+#: ../app/widgets/Admin/Admin.php:299
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr "הזן כאן BOSH-URL בצורה זו: http(s)://domain:port/path."
 
-#: ../app/widgets/Admin/Admin.php:370
+#: ../app/widgets/Admin/Admin.php:300
 msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
 msgstr "במידה ותזין שרת BOSH פתוח, תעמוד לרשותך היכולת להתחבר אל שרתי XMPP רבים."
 
-#: ../app/widgets/Admin/Admin.php:371
+#: ../app/widgets/Admin/Admin.php:301
 msgid "If it is closed, you have to specify the corresponding Server on the next page."
 msgstr "במידה וזה נסגר, יהיה עליך לציין את השרת התואם בעמוד הבא."
 
-#: ../app/widgets/Admin/Admin.php:372
+#: ../app/widgets/Admin/Admin.php:302
 #, php-format
 msgid "If you are unsure about this config option visit the %swiki%s"
 msgstr "במידה ואינך סמוך באשר לאפשרות תצורה זו ראה %sויקי%s"
 
-#: ../app/widgets/Admin/Admin.php:378
+#: ../app/widgets/Admin/Admin.php:308
 msgid "Your Bosh URL is not reachable"
 msgstr "כתובת Bosh URL אינה ברת השגה"
 
-#: ../app/widgets/Admin/Admin.php:384
+#: ../app/widgets/Admin/Admin.php:314
 msgid "Bosh URL"
 msgstr "Bosh URL"
 
-#: ../app/widgets/Admin/Admin.php:395
+#: ../app/widgets/Admin/Admin.php:325
 msgid "Whitelist - XMPP Server"
 msgstr "רשימה לבנה - שרת XMPP"
 
-#: ../app/widgets/Admin/Admin.php:399
+#: ../app/widgets/Admin/Admin.php:329
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "אם ברצונך לציין רשימה של שרתי XMPP מורשים בשרת Movim שלך ולאסור את החיבור בכל האחרים אנא השם כאן את שם המתחם שלהם, עם פסיק (דוגמא: movim.eu,jabber.fr)"
 
-#: ../app/widgets/Admin/Admin.php:402
+#: ../app/widgets/Admin/Admin.php:332
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "השאר את שדה זה ריק אם ברצונך להתיר גישה אל כל החשבונות של XMPP."
 
-#: ../app/widgets/Admin/Admin.php:407
+#: ../app/widgets/Admin/Admin.php:337
 msgid "List of whitelisted XMPP servers"
 msgstr "רשימה של שרתי XMPP שמצויים תחת רשימה לבנה"
 
-#: ../app/widgets/Admin/Admin.php:418 ../app/widgets/Admin/Admin.php:430
+#: ../app/widgets/Admin/Admin.php:348 ../app/widgets/Admin/Admin.php:360
 msgid "Information Message"
 msgstr "הודעת מידע"
 
-#: ../app/widgets/Admin/Admin.php:422
+#: ../app/widgets/Admin/Admin.php:352
 msgid "This message will be displayed on the login page"
 msgstr "הודעה זו תוצג בעמוד הכניסה"
 
-#: ../app/widgets/Admin/Admin.php:425
+#: ../app/widgets/Admin/Admin.php:355
 msgid "Leave this field blank if you don't want to show any message."
 msgstr "השאר את שדה זה ריק אם אין ברצונך להציג כל הודעה שהיא."
 
-#: ../app/widgets/Admin/Admin.php:441
+#: ../app/widgets/Admin/Admin.php:371
 msgid "Administration Credential"
 msgstr "נתוני התחברות מנהל"
 
-#: ../app/widgets/Admin/Admin.php:446
+#: ../app/widgets/Admin/Admin.php:376
 msgid "Change the default credentials admin/password"
 msgstr "שנה נתוני התחברות מנהל/סיסמה"
 
-#: ../app/widgets/Admin/Admin.php:452
+#: ../app/widgets/Admin/Admin.php:382
 msgid "Username"
 msgstr "שם משתמש"
 
-#: ../app/widgets/Admin/Admin.php:458
+#: ../app/widgets/Admin/Admin.php:388
 msgid "Password"
 msgstr "סיסמה"
 
-#: ../app/widgets/Admin/Admin.php:462
+#: ../app/widgets/Admin/Admin.php:392
 msgid "Retype password"
 msgstr "הקלד סיסמה מחדש"
 
-#: ../app/widgets/Admin/Admin.php:511
-msgid "Database Settings"
-msgstr "הגדרות מסד נתונים"
+#: ../app/widgets/Connection/Connection.php:37
+msgid "Please wait "
+msgstr "אנא המתן "
+
+#: ../app/widgets/Vcard4/Vcard4.php:97 ../app/widgets/Vcard4/Vcard4.php:105
+#: ../app/widgets/Vcard/Vcard.php:40
+msgid "Profile Updated"
+msgstr "דיוקן עודכן"
+
+#: ../app/widgets/Vcard4/Vcard4.php:110
+msgid "Profile Not Updated"
+msgstr ""
+
+#: ../app/widgets/Vcard4/Vcard4.php:178
+msgid "Your profile is now public"
+msgstr ""
+
+#: ../app/widgets/Vcard4/Vcard4.php:181
+msgid "Your profile is now restricted"
+msgstr ""
+
+#: ../app/widgets/ContactManage/ContactManage.php:32
+msgid "Contact updated"
+msgstr "איש קשר עודכן"
+
+#: ../app/widgets/ContactManage/ContactManage.php:57
+msgid "Manage"
+msgstr "נהל"
+
+#: ../app/widgets/ContactManage/ContactManage.php:72
+msgid "Alias"
+msgstr "כינוי"
+
+#: ../app/widgets/ContactManage/ContactManage.php:78
+msgid "Group"
+msgstr "קבוצה"
+
+#: ../app/widgets/ContactManage/ContactManage.php:81
+msgid "Save"
+msgstr "שמור"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:99
+#, php-format
+msgid "%s has been added to your public groups"
+msgstr ""
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:104
+#, php-format
+msgid "%s has been removed from your public groups"
+msgstr "%s הוסר/ה מן הקבוצות הפומביות שלך"
+
+#: ../app/widgets/Account/Account.php:89
+msgid "Step 2 - Fill in your informations"
+msgstr "צעד 2 - הוספת המידע שלך"
+
+#: ../app/widgets/Account/Account.php:170
+#: ../app/widgets/AccountNext/AccountNext.php:142
+msgid "No account creation form founded on the server"
+msgstr "לא נמצאה תבנית יצירת חשבון על השרת"
+
+#: ../app/widgets/Account/Account.php:289
+msgid "Description"
+msgstr "תיאור"
+
+#: ../app/widgets/Account/Account.php:292
+msgid "URL"
+msgstr "‏URL"
+
+#: ../app/widgets/Account/Account.php:295
+msgid "Software"
+msgstr "תוכנה"
+
+#: ../app/widgets/Account/Account.php:445
+msgid "Create a new account"
+msgstr "יצירת חשבון חדש"
+
+#: ../app/widgets/Account/Account.php:448
+msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgstr "Movim הינה רשת חברתית מבוזרת (א-ריכוזית), טרם יצירת חשבון חדש עליך לבחור שרת להירשם אליו."
+
+#: ../app/widgets/Account/Account.php:449
+msgid "Keep in mind that this server will handle all your personnal data."
+msgstr "זכור כי שרת זה יטפל בכל המידע האישי שלך."
+
+#: ../app/widgets/Account/Account.php:454
+msgid "Step 1 - Search the server"
+msgstr "צעד 1 - חיפוש שרת"
+
+#: ../app/widgets/Account/Account.php:457
+#, php-format
+msgid "You can%s enter your server domain name%s. "
+msgstr "באפשרותך%s להזין את שם המתחם של השרת שלך%s. "
+
+#: ../app/widgets/Account/Account.php:458
+msgid "Or you can choose a server from this list."
+msgstr "או באפשרותך לבחור שרת מתוך רשימה זו."
+
+#: ../app/widgets/Account/Account.php:469
+msgid "Server"
+msgstr "שרת"
+
+#: ../app/widgets/Account/Account.php:472
+msgid "Enter the server domain (ex: movim.eu)"
+msgstr "הזן מתחם שרת (דוגמא: movim.eu)"
+
+#: ../app/widgets/Account/Account.php:484
+msgid "Searching..."
+msgstr "מחפש כעת..."
+
+#: ../app/widgets/Account/Account.php:486
+msgid "Search"
+msgstr "חיפוש"
+
+#: ../app/widgets/Chat/Chat.php:51
+msgid "Offline"
+msgstr "לא מקוון"
+
+#: ../app/widgets/Chat/Chat.php:73
+msgid "Connected to the chatroom"
+msgstr ""
+
+#: ../app/widgets/Chat/Chat.php:75
+msgid "Disconnected to the chatroom"
+msgstr ""
+
+#: ../app/widgets/Chat/Chat.php:135
+msgid "Message Published"
+msgstr "הודעה פורסמה"
+
+#: ../app/widgets/Chat/Chat.php:165
+#, php-format
+msgid "%s needs your attention"
+msgstr "%s רוצה את צומת ליבך"
+
+#: ../app/widgets/Chat/Chat.php:337
+msgid "Encrypted message"
+msgstr "הודעה מוצפנת"
+
+#: ../app/widgets/Presence/Presence.php:126
+msgid "Disconnect"
+msgstr "התנתק"
+
+#: ../app/widgets/Discover/Discover.php:52
+msgid "Last registered"
+msgstr "נרשמו לאחרונה"
+
+#: ../app/widgets/Blog/Blog.php:30
+#: ../app/widgets/Syndication/Syndication.php:54
+#, php-format
+msgid "%s's feed"
+msgstr "הערוץ של %s"
+
+# הזנה
+#: ../app/widgets/Blog/Blog.php:38 ../app/widgets/Wall/Wall.php:93
+#: ../app/widgets/Wall/Wall.php:139
+msgid "Feed"
+msgstr "ערוץ"
+
+#: ../app/widgets/Bookmark/Bookmark.php:129
+msgid "Bookmarks updated"
+msgstr "סימניות עודכנו"
+
+#: ../app/widgets/Bookmark/Bookmark.php:139 ../app/widgets/Feed/Feed.php:96
+msgid "An error occured : "
+msgstr "ארעה שגיאה : "
+
+#: ../app/widgets/Bookmark/Bookmark.php:192
+msgid "Bad Chatroom ID"
+msgstr "מזהה חדר שיחה רע"
+
+#: ../app/widgets/Bookmark/Bookmark.php:196
+msgid "Empty name"
+msgstr "שם ריק"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:95
+msgid "Place"
+msgstr "מיקום"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:286
+msgid "by"
+msgstr "על ידי"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:290
+msgid "email"
+msgstr "דוא״ל"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:294
+msgid "jid"
+msgstr ""
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:491
+msgid "Show the older comments"
+msgstr "הצג את התגובות הישנות יותר"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:580
+msgid "No content"
+msgstr "אין איש קשר"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:643
+msgid "No comments"
+msgstr "אין תגובות"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:654
+msgid "No comments stream"
+msgstr "אין זרם תגובות"
 
 #: ../app/widgets/ContactInfo/ContactInfo.php:46
 msgid "Mood"
@@ -536,101 +1386,191 @@ msgstr "רשום"
 msgid "Client Informations"
 msgstr "מידע לקוח"
 
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:59
-#: ../app/widgets/NodeConfig/NodeConfig.php:82
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:57
-#: ../app/widgets/Account/Account.php:160
-msgid "Validate"
-msgstr "מתן תוקף"
+#: ../app/widgets/Wall/Wall.php:100 ../app/widgets/Notifs/Notifs.php:51
+msgid "Updating"
+msgstr "מעדכן כעת"
 
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:65
-msgid "Subscriptions saved"
-msgstr "הרשמות נשמרו"
+#: ../app/widgets/Wall/Wall.php:104
+msgid "Update"
+msgstr "עדכן"
 
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:95
-msgid "Manage your subscriptions"
-msgstr "נהל את ההרשמות שלך"
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:65
+msgid "Affiliations saved"
+msgstr "סינופים נשמרו"
 
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:96
-msgid "Manage the subscriptions"
-msgstr "נהל את ההרשמות"
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:92
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:93
+msgid "Manage your members"
+msgstr "נהל את חבריך"
 
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:101
-msgid "Get the subscriptions"
-msgstr "השג את ההרשמות"
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:98
+msgid "Get the members"
+msgstr "השג את החברים"
 
-#: ../app/widgets/Connection/Connection.php:37
-msgid "Please wait "
-msgstr "אנא המתן "
-
-#: ../app/widgets/Chat/Chat.php:49 ../system/Utils.php:483
-msgid "Online"
-msgstr "מקוון"
-
-#: ../app/widgets/Chat/Chat.php:50 ../system/Utils.php:484
-msgid "Away"
-msgstr "נעדר"
-
-#: ../app/widgets/Chat/Chat.php:51 ../system/Utils.php:485
-msgid "Do Not Disturb"
-msgstr "נא לא להפריע"
-
-#: ../app/widgets/Chat/Chat.php:52 ../system/Utils.php:486
-msgid "Extended Away"
-msgstr "לא זמין"
-
-#: ../app/widgets/Chat/Chat.php:53
-msgid "Offline"
-msgstr "לא מקוון"
-
-#: ../app/widgets/Chat/Chat.php:143
-msgid "Message Published"
-msgstr "הודעה פורסמה"
-
-#: ../app/widgets/Chat/Chat.php:182
-#, php-format
-msgid "%s needs your attention"
-msgstr "%s רוצה את צומת ליבך"
-
-#: ../app/widgets/Chat/Chat.php:365
-msgid "Encrypted message"
-msgstr "הודעה מוצפנת"
-
-#: ../app/widgets/Presence/Presence.php:119
-msgid "Disconnect"
-msgstr "התנתק"
+#: ../app/widgets/Config/Config.php:57
+msgid "Configuration updated"
+msgstr "תצורה עודכנה"
 
 #: ../app/widgets/Log/Log.php:33
 msgid "Debug console"
 msgstr "מסוף ניפוי שגיאות"
 
-#: ../app/widgets/Notifs/Notifs.php:135 ../app/widgets/Wall/Wall.php:98
-msgid "Updating"
-msgstr "מעדכן כעת"
+#: ../app/widgets/Location/Location.php:56
+msgid "Wrong position"
+msgstr "מיקום שגוי"
 
-#: ../app/widgets/Notifs/Notifs.php:138
-msgid "Refresh"
-msgstr "רענן"
+#: ../app/widgets/Location/Location.php:65
+msgid "Location updated"
+msgstr "מיקום עודכן"
 
-# עמך
-#: ../app/widgets/Notifs/Notifs.php:263
-msgid "wants to talk with you"
-msgstr "רוצה לדבר איתך"
+#: ../app/widgets/Location/Location.php:103
+msgid "Update my position"
+msgstr "עדכן את מיקומי"
 
-#: ../app/widgets/Help/Help.php:29 ../app/widgets/Help/Help.php:41
-#: ../app/controllers/ProfileController.php:17
-#: ../app/controllers/MediaController.php:17
-#: ../app/controllers/ConfController.php:17
-#: ../app/controllers/NodeconfigController.php:18
-#: ../app/controllers/ExploreController.php:19
-#: ../app/controllers/NodeController.php:18
-#: ../app/controllers/FriendController.php:27
-#: ../app/controllers/HelpController.php:17
-#: ../app/controllers/ServerController.php:18
-#: ../app/controllers/NewsController.php:17
-#: ../app/controllers/MainController.php:17
-msgid "Help"
-msgstr "עזרה"
+#: ../app/widgets/Location/Location.php:109
+msgid "Accept"
+msgstr "קבלה"
+
+#: ../app/widgets/Location/Location.php:118
+#: ../app/widgets/Location/Location.php:122
+msgid "Location"
+msgstr "מיקום"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:68
+msgid "Subscriptions saved"
+msgstr "הרשמות נשמרו"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:98
+msgid "Manage your subscriptions"
+msgstr "נהל את ההרשמות שלך"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:99
+msgid "Manage the subscriptions"
+msgstr "נהל את ההרשמות"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:104
+msgid "Get the subscriptions"
+msgstr "השג את ההרשמות"
+
+# BUG: Information(s)
+#: ../app/widgets/ContactCard/ContactCard.php:47
+#: ../app/widgets/Vcard/Vcard.php:139
+msgid "General Informations"
+msgstr "מידע כללי"
+
+#: ../app/widgets/ContactCard/ContactCard.php:57
+#: ../app/widgets/Vcard/Vcard.php:147
+msgid "Nickname"
+msgstr "שם כינוי"
+
+#: ../app/widgets/ContactCard/ContactCard.php:63
+#: ../app/widgets/Vcard/Vcard.php:157
+msgid "Date of Birth"
+msgstr "תאריך לידה"
+
+#: ../app/widgets/ContactCard/ContactCard.php:69
+#: ../app/widgets/Vcard/Vcard.php:215
+msgid "Gender"
+msgstr "מין"
+
+#: ../app/widgets/ContactCard/ContactCard.php:75
+#: ../app/widgets/Vcard/Vcard.php:226
+msgid "Marital Status"
+msgstr "מצב משפחתי"
+
+#: ../app/widgets/ContactCard/ContactCard.php:82
+#: ../app/widgets/ContactCard/ContactCard.php:87
+#: ../app/widgets/Vcard/Vcard.php:152
+msgid "Email"
+msgstr "דוא״ל"
+
+#: ../app/widgets/ContactCard/ContactCard.php:96
+#: ../app/widgets/ContactCard/ContactCard.php:101
+#: ../app/widgets/Vcard/Vcard.php:268
+msgid "Website"
+msgstr "אתר רשת"
+
+#: ../app/widgets/ContactCard/ContactCard.php:109
+#: ../app/widgets/Vcard/Vcard.php:272
+msgid "About Me"
+msgstr "אודותיי"
+
+#: ../app/widgets/ContactCard/ContactCard.php:118
+#: ../app/widgets/Vcard/Vcard.php:280
+msgid "Geographic Position"
+msgstr "מיקום גאוגרפי"
+
+#: ../app/widgets/ContactCard/ContactCard.php:122
+#: ../app/widgets/Vcard/Vcard.php:282
+msgid "Locality"
+msgstr "מקומיות"
+
+#: ../app/widgets/ContactCard/ContactCard.php:134
+#: ../app/widgets/Vcard/Vcard.php:286
+msgid "Country"
+msgstr "ארץ"
+
+#: ../app/widgets/Vcard/Vcard.php:118
+msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
+msgstr ""
+
+#: ../app/widgets/Vcard/Vcard.php:123 ../app/widgets/Profile/Profile.php:129
+msgid "Create my vCard"
+msgstr "צור vCard"
+
+#: ../app/widgets/Vcard/Vcard.php:162
+msgid "Day"
+msgstr "יום"
+
+#: ../app/widgets/Vcard/Vcard.php:182
+msgid "Month"
+msgstr "חודש"
+
+#: ../app/widgets/Vcard/Vcard.php:201
+msgid "Year"
+msgstr "שנה"
+
+#: ../app/widgets/Vcard/Vcard.php:237
+msgid "Avatar"
+msgstr "אווטאר"
+
+#: ../app/widgets/Vcard/Vcard.php:248
+msgid "Webcam"
+msgstr "מצלמת רשת"
+
+#: ../app/widgets/Vcard/Vcard.php:256
+msgid "Cheese !"
+msgstr "חייכו !"
+
+#: ../app/widgets/Vcard/Vcard.php:264
+msgid "Take a webcam snapshot"
+msgstr "קח תצלום בזק מתוך מצלמת רשת"
+
+#: ../app/widgets/Vcard/Vcard.php:305
+msgid "Privacy Level"
+msgstr "רמת פרטיות"
+
+#: ../app/widgets/Vcard/Vcard.php:316
+msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+msgstr "לצומת לבך ! בהופכך את דיוקנך לפומבי, כל המידע שמנוי מעלה יהיה זמין לכל המשתמשים של Movim וגם בכל המרשתת."
+
+#: ../app/widgets/Vcard/Vcard.php:318
+msgid "Is this profile public ?"
+msgstr "האם דיוקן זה הינו פומבי ?"
+
+#: ../app/widgets/Vcard/Vcard.php:330
+msgid "Submitting"
+msgstr "שולח כעת"
+
+#: ../app/widgets/Vcard/Vcard.php:341
+msgid "Reset"
+msgstr "אפס"
+
+# עריכת הדיוקן שלי
+# עריכת דיוקני
+#: ../app/widgets/Vcard/Vcard.php:363
+msgid "Edit my Profile"
+msgstr "עריכת דיוקן"
 
 #: ../app/widgets/Help/Help.php:31
 msgid "What is Movim?"
@@ -697,1197 +1637,231 @@ msgstr "אין ביכולתי למצוא את התשובה לשאלתי כאן"
 msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
 msgstr "עברו אל %s שאלות ותשובות נפוצות %s או לחלופין ניתן לגשת ולשאול את שאלתך בחדר השיחה הרשמי %s או באמצעות רשימת הדיוור שלנו (%s ראו את העמוד המוקצה לכך %s)."
 
-#: ../app/widgets/Vcard/Vcard.php:115
-msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
-msgstr ""
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:44
+msgid "No public groups found"
+msgstr "לא נמצאו קבוצות פומביות"
 
-#: ../app/widgets/Vcard/Vcard.php:120 ../app/widgets/Profile/Profile.php:133
-msgid "Create my vCard"
-msgstr "צור vCard"
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:67
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:69
+msgid "Public groups"
+msgstr "קבוצות פומביות"
 
-# BUG: Information(s)
-#: ../app/widgets/Vcard/Vcard.php:146
-#: ../app/widgets/ContactCard/ContactCard.php:47
-msgid "General Informations"
-msgstr "מידע כללי"
-
-#: ../app/widgets/Vcard/Vcard.php:154
-#: ../app/widgets/ContactCard/ContactCard.php:57
-msgid "Nickname"
-msgstr "שם כינוי"
-
-#: ../app/widgets/Vcard/Vcard.php:159
-#: ../app/widgets/ContactCard/ContactCard.php:82
-#: ../app/widgets/ContactCard/ContactCard.php:87
-msgid "Email"
-msgstr "דוא״ל"
-
-#: ../app/widgets/Vcard/Vcard.php:164
-#: ../app/widgets/ContactCard/ContactCard.php:63
-msgid "Date of Birth"
-msgstr "תאריך לידה"
-
-#: ../app/widgets/Vcard/Vcard.php:169
-msgid "Day"
-msgstr "יום"
-
-#: ../app/widgets/Vcard/Vcard.php:189
-msgid "Month"
-msgstr "חודש"
-
-#: ../app/widgets/Vcard/Vcard.php:208
-msgid "Year"
-msgstr "שנה"
-
-#: ../app/widgets/Vcard/Vcard.php:222
-#: ../app/widgets/ContactCard/ContactCard.php:69
-msgid "Gender"
-msgstr "מין"
-
-#: ../app/widgets/Vcard/Vcard.php:233
-#: ../app/widgets/ContactCard/ContactCard.php:75
-msgid "Marital Status"
-msgstr "מצב משפחתי"
-
-#: ../app/widgets/Vcard/Vcard.php:244
-msgid "Avatar"
-msgstr "אווטאר"
-
-#: ../app/widgets/Vcard/Vcard.php:255
-msgid "Webcam"
-msgstr "מצלמת רשת"
-
-#: ../app/widgets/Vcard/Vcard.php:263
-msgid "Cheese !"
-msgstr "חייכו !"
-
-#: ../app/widgets/Vcard/Vcard.php:271
-msgid "Take a webcam snapshot"
-msgstr "קח תצלום בזק מתוך מצלמת רשת"
-
-#: ../app/widgets/Vcard/Vcard.php:275
-#: ../app/widgets/ContactCard/ContactCard.php:96
-#: ../app/widgets/ContactCard/ContactCard.php:101
-msgid "Website"
-msgstr "אתר רשת"
-
-#: ../app/widgets/Vcard/Vcard.php:279
-#: ../app/widgets/ContactCard/ContactCard.php:109
-msgid "About Me"
-msgstr "אודותיי"
-
-#: ../app/widgets/Vcard/Vcard.php:287
-#: ../app/widgets/ContactCard/ContactCard.php:118
-msgid "Geographic Position"
-msgstr "מיקום גאוגרפי"
-
-#: ../app/widgets/Vcard/Vcard.php:289
-#: ../app/widgets/ContactCard/ContactCard.php:122
-msgid "Locality"
-msgstr "מקומיות"
-
-#: ../app/widgets/Vcard/Vcard.php:293
-#: ../app/widgets/ContactCard/ContactCard.php:134
-msgid "Country"
-msgstr "ארץ"
-
-#: ../app/widgets/Vcard/Vcard.php:312
-msgid "Privacy Level"
-msgstr "רמת פרטיות"
-
-#: ../app/widgets/Vcard/Vcard.php:323
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
-msgstr "לצומת לבך ! בהופכך את דיוקנך לפומבי, כל המידע שמנוי מעלה יהיה זמין לכל המשתמשים של Movim וגם בכל המרשתת."
-
-#: ../app/widgets/Vcard/Vcard.php:325
-msgid "Is this profile public ?"
-msgstr "האם דיוקן זה הינו פומבי ?"
-
-#: ../app/widgets/Vcard/Vcard.php:337
-msgid "Submitting"
-msgstr "שולח כעת"
-
-#: ../app/widgets/Vcard/Vcard.php:348
-msgid "Reset"
-msgstr "אפס"
-
-# עריכת הדיוקן שלי
-# עריכת דיוקני
-#: ../app/widgets/Vcard/Vcard.php:370
-msgid "Edit my Profile"
-msgstr "עריכת דיוקן"
-
-#: ../app/widgets/Blog/Blog.php:30
-#: ../app/widgets/Syndication/Syndication.php:52
-#, php-format
-msgid "%s's feed"
-msgstr "הערוץ של %s"
-
-# הזנה
-#: ../app/widgets/Blog/Blog.php:38 ../app/widgets/Wall/Wall.php:91
-#: ../app/widgets/Wall/Wall.php:137
-msgid "Feed"
-msgstr "ערוץ"
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:95
-#, php-format
-msgid "%s has been added to your public groups"
-msgstr ""
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:100
-#, php-format
-msgid "%s has been removed from your public groups"
-msgstr "%s הוסר/ה מן הקבוצות הפומביות שלך"
-
-#: ../app/widgets/Login/Login.php:39
+#: ../app/widgets/Login/Login.php:38
 msgid "Connecting..."
 msgstr "מתחבר כעת..."
 
-#: ../app/widgets/Login/Login.php:66
+#: ../app/widgets/Login/Login.php:65
 #, php-format
 msgid "%sGmail accounts are also compatible%s but are not fully supported"
 msgstr "%sחשבונות Gmail מתאימים גם כן%s אך אינם נתמכים באופן מלא"
 
-#: ../app/widgets/Login/Login.php:70
+#: ../app/widgets/Login/Login.php:69
 #, php-format
 msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
 msgstr "באפשרותך להתחבר עם Facebook (צ׳אט בלבד) באמצעות %syour.id@chat.facebook.com%s וסיסמה"
 
-#: ../app/widgets/Login/Login.php:100
+#: ../app/widgets/Login/Login.php:99
 msgid "Wrong username"
 msgstr "שם משתמש שגוי"
 
 # כתובת JID שגויה
-#: ../app/widgets/Login/Login.php:106
+#: ../app/widgets/Login/Login.php:105
 msgid "Invalid JID"
 msgstr "‫JID שגויה"
 
-#: ../app/widgets/Login/Login.php:112
+#: ../app/widgets/Login/Login.php:111
 msgid "Authentication mechanism not supported by Movim"
 msgstr "מנגנון אימות לא נתמך על ידי Movim"
 
-#: ../app/widgets/Login/Login.php:118
+#: ../app/widgets/Login/Login.php:117
 msgid "Empty Challenge from the server"
 msgstr "רוקן הזמנה מן השרת"
 
-#: ../app/widgets/Login/Login.php:124
+#: ../app/widgets/Login/Login.php:123
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "שגיאת מתחם XMPP, חשבונך אינו כתובת JID תקינה"
 
-#: ../app/widgets/Login/Login.php:136
+#: ../app/widgets/Login/Login.php:135
 msgid "Wrong password"
 msgstr "סיסמה שגויה"
 
 # typo: authentication
-#: ../app/widgets/Login/Login.php:142
+#: ../app/widgets/Login/Login.php:141
 msgid "The XMPP authentification failed"
 msgstr "אימות XMPP נכשל"
 
-#: ../app/widgets/Login/Login.php:148
+#: ../app/widgets/Login/Login.php:147
 msgid "The current BOSH URL in invalid"
 msgstr "כתובת BOSH URL נוכחית הינה שגויה"
 
-#: ../app/widgets/Login/Login.php:154
+#: ../app/widgets/Login/Login.php:153
 msgid "Internal server error"
 msgstr "שגיאת שרת פנימית"
 
-#: ../app/widgets/Login/Login.php:160
+#: ../app/widgets/Login/Login.php:159
 msgid "Session error"
 msgstr "שגיאת סשן"
 
-#: ../app/widgets/Login/Login.php:166
+#: ../app/widgets/Login/Login.php:165
 msgid "Account successfully created"
 msgstr "חשבון נוצר בהצלחה"
 
-#: ../app/widgets/Login/Login.php:172
+#: ../app/widgets/Login/Login.php:171
 msgid "Movim failed to authenticate. You entered wrong data"
 msgstr "‫Movim נכשלה לאמת. הזנת מידע שגוי"
 
-#: ../app/widgets/Login/Login.php:178
+#: ../app/widgets/Login/Login.php:177
 msgid "Your XMPP server is unauthorized"
 msgstr "השרת של XMPP שלך אינו מורשה"
 
-#: ../app/widgets/Login/Login.php:183
+#: ../app/widgets/Login/Login.php:182
 msgid "The server takes too much time to respond"
 msgstr "לשרת לוקח יותר מדי זמן להגיב"
 
 # היכנסו פנימה!
 # היכנס/י
-#: ../app/widgets/Login/Login.php:198
+#: ../app/widgets/Login/Login.php:197
 msgid "Come in!"
 msgstr "כניסה!"
 
-#: ../app/widgets/Profile/Profile.php:42
-msgid "Saved"
-msgstr "נשמר"
+#: ../app/widgets/Notifs/Notifs.php:54 ../app/widgets/News/News.php:86
+msgid "Refresh"
+msgstr "רענן"
 
-#: ../app/widgets/Profile/Profile.php:43
-msgid "Status updated"
-msgstr "מצב עודכן"
+# עמך
+#: ../app/widgets/Notifs/Notifs.php:175
+msgid "wants to talk with you"
+msgstr "רוצה לדבר איתך"
 
-#: ../app/widgets/Profile/Profile.php:118
-msgid "Your status here !"
-msgstr "המצב שלך כאן !"
-
-#: ../app/widgets/Profile/Profile.php:129
-msgid "No profile yet ?"
-msgstr "אין דיוקן עדיין ?"
-
-#: ../app/widgets/Discover/Discover.php:52
-msgid "Last registered"
-msgstr "נרשמו לאחרונה"
-
-#: ../app/widgets/ContactAction/ContactAction.php:65
-#: ../app/widgets/ContactAction/ContactAction.php:134
-msgid "Actions"
-msgstr "פעולות"
-
-#: ../app/widgets/ContactAction/ContactAction.php:82
-msgid "Chat"
-msgstr "שיחה"
-
-#: ../app/widgets/ContactAction/ContactAction.php:100
-msgid "Remove this contact"
-msgstr "הסר את איש קשר זה"
-
-#: ../app/widgets/ContactAction/ContactAction.php:117
-msgid "Yes"
-msgstr "כן"
-
-#: ../app/widgets/ContactAction/ContactAction.php:130
-msgid "No"
-msgstr "לא"
-
-#: ../app/widgets/ContactAction/ContactAction.php:146
-msgid "Invite this user"
-msgstr "הזמנת משתמש זה"
-
-#: ../app/widgets/Location/Location.php:54
-msgid "Wrong position"
-msgstr "מיקום שגוי"
-
-#: ../app/widgets/Location/Location.php:63
-msgid "Location updated"
-msgstr "מיקום עודכן"
-
-#: ../app/widgets/Location/Location.php:101
-msgid "Update my position"
-msgstr "עדכן את מיקומי"
-
-#: ../app/widgets/Location/Location.php:107
-msgid "Accept"
-msgstr "קבלה"
-
-#: ../app/widgets/Location/Location.php:116
-#: ../app/widgets/Location/Location.php:120
-msgid "Location"
-msgstr "מיקום"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:31
-#: ../app/widgets/MediaUpload/MediaUpload.php:66
-msgid "Upload"
-msgstr "העלאה"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:35
-msgid "Please select image file"
-msgstr "אנא בחר קובץ תמונה"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:69
-msgid "You should select valid image files only!"
-msgstr "עליך לבחור קבצי תמונה ברי תוקף בלבד!"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:72
-msgid "An error occurred while uploading the file"
-msgstr "אירעה שגיאה בעת העלאת הקובץ"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:75
-msgid "The upload has been canceled by the user or the browser dropped the connection"
-msgstr "ההעלאה בוטלה על ידי המשתמש או שהדפדפן השמיט את החיבור"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
-msgstr "הקובץ שלך גדול מאוד. אנחנו לא יכולים לקבלו. אנא בחר קובץ קטן יותר"
-
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:42
-msgid "No public groups found"
-msgstr "לא נמצאו קבוצות פומביות"
-
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:65
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:67
-msgid "Public groups"
-msgstr "קבוצות פומביות"
-
-#: ../app/widgets/News/News.php:34 ../app/widgets/Wall/Wall.php:111
-#: ../app/widgets/Feed/Feed.php:142 ../app/widgets/Node/Node.php:201
-msgid "Get older posts"
-msgstr "השג רשומות נושנות"
-
-#: ../app/widgets/News/News.php:65 ../app/widgets/Feed/Feed.php:175
-#: ../app/widgets/Node/Node.php:108
-msgid "Your feed cannot be loaded."
-msgstr "ערוצך לא יכול להיטען."
-
-#: ../app/widgets/Config/Config.php:54
-msgid "Configuration updated"
-msgstr "תצורה עודכנה"
-
-#: ../app/widgets/Avatar/Avatar.php:72
-msgid "Avatar Updated"
-msgstr ""
-
-#: ../app/widgets/Avatar/Avatar.php:78
-msgid "Avatar Not Updated"
-msgstr ""
-
-#: ../app/widgets/Wall/Wall.php:85 ../app/controllers/BlogController.php:12
-msgid "Blog"
-msgstr "בלוג"
-
-#: ../app/widgets/Wall/Wall.php:102
-msgid "Update"
-msgstr "עדכן"
-
-#: ../app/widgets/VisioExt/VisioExt.php:65
-msgid "Hung up"
-msgstr ""
-
-#: ../app/widgets/VisioExt/VisioExt.php:69
-msgid "Your contact is busy"
-msgstr ""
-
-#: ../app/widgets/VisioExt/VisioExt.php:73
-msgid "Declined"
-msgstr ""
-
-#: ../app/widgets/VisioExt/VisioExt.php:89
-msgid "Remote application incompatible"
-msgstr ""
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:53
+#: ../app/widgets/News/News.php:86
 #, php-format
-msgid "Return to %s's list of groups"
+msgid "%s new items"
 msgstr ""
 
-#: ../app/widgets/NodeConfig/NodeConfig.php:56
-msgid "Group deleted"
-msgstr "קבוצה נמחקה"
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:62
-msgid "Group configuration saved"
-msgstr "תצורת קבוצה נשמרה"
-
-#: ../app/widgets/ContactCard/ContactCard.php:45
-#: ../app/widgets/ContactCard/ContactCard.php:151
-#: ../app/controllers/ProfileController.php:14
-#: ../app/controllers/MediaController.php:14
-#: ../app/controllers/ConfController.php:14
-#: ../app/controllers/NodeconfigController.php:15
-#: ../app/controllers/ExploreController.php:16
-#: ../app/controllers/NodeController.php:15
-#: ../app/controllers/FriendController.php:24
-#: ../app/controllers/HelpController.php:14
-#: ../app/controllers/ServerController.php:15
-#: ../app/controllers/NewsController.php:14
-#: ../app/controllers/MainController.php:14
-msgid "Profile"
-msgstr "דיוקן"
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:63
-msgid "Affiliations saved"
-msgstr "סינופים נשמרו"
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:90
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:91
-msgid "Manage your members"
-msgstr "נהל את חבריך"
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:96
-msgid "Get the members"
-msgstr "השג את החברים"
-
-#: ../app/widgets/Feed/Feed.php:64 ../app/widgets/Feed/Feed.php:103
+#: ../app/widgets/Feed/Feed.php:68 ../app/widgets/Feed/Feed.php:107
 msgid "Your server doesn't support post publication, you can only read contact's feeds"
 msgstr "השרת שלך לא תומך בפרסום רשומות, באפשרותך לקרוא ערוצי איש קשר בלבד"
 
-#: ../app/widgets/Feed/Feed.php:71
+#: ../app/widgets/Feed/Feed.php:75
 msgid "Comment publication error"
 msgstr "שגיאת פרסום תגובה"
 
-#: ../app/widgets/Feed/Feed.php:109
+#: ../app/widgets/Feed/Feed.php:113
 msgid "Creating your feed..."
 msgstr "יוצר כעת את ערוצך..."
 
-#: ../app/widgets/Account/Account.php:92
-msgid "Step 2 - Fill in your informations"
-msgstr "צעד 2 - הוספת המידע שלך"
+#: ../app/widgets/Profile/Profile.php:46
+msgid "Saved"
+msgstr "נשמר"
 
-#: ../app/widgets/Account/Account.php:292
-msgid "Description"
-msgstr "תיאור"
+#: ../app/widgets/Profile/Profile.php:47
+msgid "Status updated"
+msgstr "מצב עודכן"
 
-#: ../app/widgets/Account/Account.php:295
-msgid "URL"
-msgstr "‏URL"
+#: ../app/widgets/Profile/Profile.php:114
+msgid "Your status here !"
+msgstr "המצב שלך כאן !"
 
-#: ../app/widgets/Account/Account.php:298
-msgid "Software"
-msgstr "תוכנה"
+#: ../app/widgets/Profile/Profile.php:125
+msgid "No profile yet ?"
+msgstr "אין דיוקן עדיין ?"
 
-#: ../app/widgets/Account/Account.php:448
-msgid "Create a new account"
-msgstr "יצירת חשבון חדש"
-
-#: ../app/widgets/Account/Account.php:451
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr "Movim הינה רשת חברתית מבוזרת (א-ריכוזית), טרם יצירת חשבון חדש עליך לבחור שרת להירשם אליו."
-
-#: ../app/widgets/Account/Account.php:452
-msgid "Keep in mind that this server will handle all your personnal data."
-msgstr "זכור כי שרת זה יטפל בכל המידע האישי שלך."
-
-#: ../app/widgets/Account/Account.php:457
-msgid "Step 1 - Search the server"
-msgstr "צעד 1 - חיפוש שרת"
-
-#: ../app/widgets/Account/Account.php:460
-#, php-format
-msgid "You can%s enter your server domain name%s. "
-msgstr "באפשרותך%s להזין את שם המתחם של השרת שלך%s. "
-
-#: ../app/widgets/Account/Account.php:461
-msgid "Or you can choose a server from this list."
-msgstr "או באפשרותך לבחור שרת מתוך רשימה זו."
-
-#: ../app/widgets/Account/Account.php:472
-msgid "Server"
-msgstr "שרת"
-
-#: ../app/widgets/Account/Account.php:475
-msgid "Enter the server domain (ex: movim.eu)"
-msgstr "הזן מתחם שרת (דוגמא: movim.eu)"
-
-#: ../app/widgets/Account/Account.php:487
-msgid "Searching..."
-msgstr "מחפש כעת..."
-
-#: ../app/widgets/Account/Account.php:489
-msgid "Search"
-msgstr "חיפוש"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:78
-msgid "Place"
-msgstr "מיקום"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:269
-msgid "by"
-msgstr "על ידי"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:273
-msgid "email"
-msgstr "דוא״ל"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:277
-msgid "jid"
-msgstr ""
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:474
-msgid "Show the older comments"
-msgstr "הצג את התגובות הישנות יותר"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:548
-msgid "No content"
-msgstr "אין איש קשר"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:613
-msgid "No comments"
-msgstr "אין תגובות"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:624
-msgid "No comments stream"
-msgstr "אין זרם תגובות"
-
-#: ../app/controllers/ProfileController.php:9
-#, php-format
-msgid "%s - Profile"
-msgstr "‏‏%s - דיוקן"
-
-#: ../app/controllers/ProfileController.php:11
-#: ../app/controllers/LoginController.php:11
-#: ../app/controllers/NotfoundController.php:11
-#: ../app/controllers/AboutController.php:11
-#: ../app/controllers/AccountController.php:11
-#: ../app/controllers/MediaController.php:11
-#: ../app/controllers/ConfController.php:11
-#: ../app/controllers/NodeconfigController.php:12
-#: ../app/controllers/ExploreController.php:13
-#: ../app/controllers/BlogController.php:11
-#: ../app/controllers/NodeController.php:12
-#: ../app/controllers/FriendController.php:21
-#: ../app/controllers/HelpController.php:11
-#: ../app/controllers/ServerController.php:12
-#: ../app/controllers/AdminloginController.php:11
-#: ../app/controllers/NewsController.php:11
-#: ../app/controllers/DiscoverController.php:13
-#: ../app/controllers/AccountnextController.php:11
-#: ../app/controllers/AdminController.php:14
-#: ../app/controllers/MainController.php:11
-msgid "Home"
-msgstr "בית"
-
-#: ../app/controllers/ProfileController.php:12
-#: ../app/controllers/MediaController.php:12
-#: ../app/controllers/ConfController.php:12
-#: ../app/controllers/NodeconfigController.php:13
-#: ../app/controllers/ExploreController.php:14
-#: ../app/controllers/NodeController.php:13
-#: ../app/controllers/FriendController.php:22
-#: ../app/controllers/HelpController.php:12
-#: ../app/controllers/ServerController.php:13
-#: ../app/controllers/NewsController.php:12
-#: ../app/controllers/MainController.php:12
-msgid "News"
-msgstr "חדשות"
-
-#: ../app/controllers/ProfileController.php:13
-#: ../app/controllers/MediaController.php:13
-#: ../app/controllers/ConfController.php:13
-#: ../app/controllers/NodeconfigController.php:14
-#: ../app/controllers/ExploreController.php:15
-#: ../app/controllers/NodeController.php:14
-#: ../app/controllers/FriendController.php:23
-#: ../app/controllers/HelpController.php:13
-#: ../app/controllers/ServerController.php:14
-#: ../app/controllers/NewsController.php:13
-#: ../app/controllers/MainController.php:13 ../app/views/explore.tpl:16
-msgid "Explore"
-msgstr "סייר"
-
-#: ../app/controllers/ProfileController.php:16
-#: ../app/controllers/MediaController.php:16
-#: ../app/controllers/ConfController.php:16
-#: ../app/controllers/NodeconfigController.php:10
-#: ../app/controllers/NodeconfigController.php:17
-#: ../app/controllers/ExploreController.php:18
-#: ../app/controllers/NodeController.php:17
-#: ../app/controllers/FriendController.php:26
-#: ../app/controllers/HelpController.php:16
-#: ../app/controllers/ServerController.php:17
-#: ../app/controllers/NewsController.php:16
-#: ../app/controllers/MainController.php:16
-msgid "Configuration"
-msgstr "תצורה"
-
-#: ../app/controllers/LoginController.php:9
-#, php-format
-msgid "%s - Login to Movim"
-msgstr "‏‏%s - התחברות אל Movim"
-
-#: ../app/controllers/LoginController.php:12
-#: ../app/controllers/AboutController.php:12
-#: ../app/controllers/DiscoverController.php:14
-msgid "Discover"
-msgstr "גלה"
-
-#: ../app/controllers/LoginController.php:13
-#: ../app/controllers/AboutController.php:13
-#: ../app/controllers/DiscoverController.php:15
-msgid "About"
-msgstr "אודות"
-
-#: ../app/controllers/AboutController.php:9
-#, php-format
-msgid "%s - About"
-msgstr "%s - אודות"
-
-#: ../app/controllers/AccountController.php:9
-#: ../app/controllers/BlogController.php:9
-#: ../app/controllers/AccountnextController.php:9
-#, php-format
-msgid "%s - Account"
-msgstr "%s - חשבון"
-
-#: ../app/controllers/AccountController.php:12
-#: ../app/controllers/AccountnextController.php:12
-msgid "Account Creation"
-msgstr "יצירת חשבון"
-
-#: ../app/controllers/ConfController.php:9
-#, php-format
-msgid "%s - Configuration"
-msgstr "‏‏%s - תצורה"
-
-#: ../app/controllers/ExploreController.php:11
-#, php-format
-msgid "%s - Explore"
-msgstr "%s - סייר"
-
-#: ../app/controllers/HelpController.php:9
-#, php-format
-msgid "%s - Help Page"
-msgstr "‏‏%s - עמוד עזרה"
-
-#: ../app/controllers/AdminloginController.php:9
-#: ../app/controllers/AdminController.php:12
-#, php-format
-msgid "%s - Administration Panel"
-msgstr "%s - לוח ניהול"
-
-#: ../app/controllers/AdminloginController.php:12
-#: ../app/controllers/AdminController.php:15
-msgid "Administration"
-msgstr "ניהול"
-
-#: ../app/controllers/NewsController.php:9
-#, php-format
-msgid "%s - News"
-msgstr "%s - חדשות"
-
-#: ../app/controllers/DiscoverController.php:11
-#, php-format
-msgid "%s - Discover"
-msgstr "%s - לגלות"
-
-#: ../app/controllers/MainController.php:9
-#, php-format
-msgid "%s - Welcome to Movim"
-msgstr "‏‏%s - ברוך בואך אל Movim"
-
-#: ../system/Conf.php:70
-#, php-format
-msgid "Cannot load file '%s'"
-msgstr "לא ניתן לטעון קובץ '%s'"
-
-#: ../system/MovimException.php:15
-#, php-format
-msgid "Error: %s"
-msgstr "שגיאה: %s"
-
-#: ../system/Route.php:81
-#, php-format
-msgid "Route error, please set all the parameters for the page %s"
-msgstr "שגיאת ניתוב, אנא הגדר את כל הפרמטרים עבור העמוד %s"
-
-#: ../system/Route.php:111
-#, php-format
-msgid "Route not set for the page %s"
-msgstr "נתיב לא מוגדר עבור העמוד %s"
-
-#: ../system/Logs/Logger.php:171
-msgid "Development environment."
-msgstr "סביבת פיתוח."
-
-#: ../system/Logs/Logger.php:171
-msgid "Change it in the admin panel."
-msgstr "שנה זאת בתוך לוח מנהל."
-
-#: ../system/Utils.php:158
+#: ../app/helpers/DateHelper.php:9
 msgid "Monday"
 msgstr "יום שני"
 
-#: ../system/Utils.php:159
+#: ../app/helpers/DateHelper.php:10
 msgid "Tuesday"
 msgstr "יום שלישי"
 
-#: ../system/Utils.php:160
+#: ../app/helpers/DateHelper.php:11
 msgid "Wednesday"
 msgstr "יום רביעי"
 
-#: ../system/Utils.php:161
+#: ../app/helpers/DateHelper.php:12
 msgid "Thursday"
 msgstr "יום חמישי"
 
-#: ../system/Utils.php:162 ../system/Utils.php:164
+#: ../app/helpers/DateHelper.php:13 ../app/helpers/DateHelper.php:15
 msgid "Friday"
 msgstr "יום שישי"
 
-#: ../system/Utils.php:163
+#: ../app/helpers/DateHelper.php:14
 msgid "Saturday"
 msgstr "יום שבת"
 
-#: ../system/Utils.php:172
+#: ../app/helpers/DateHelper.php:23
 msgid "January"
 msgstr "ינואר"
 
-#: ../system/Utils.php:173
+#: ../app/helpers/DateHelper.php:24
 msgid "February"
 msgstr "פברואר"
 
-#: ../system/Utils.php:174
+#: ../app/helpers/DateHelper.php:25
 msgid "March"
 msgstr "מרץ"
 
-#: ../system/Utils.php:175
+#: ../app/helpers/DateHelper.php:26
 msgid "April"
 msgstr "אפריל"
 
-#: ../system/Utils.php:176
+#: ../app/helpers/DateHelper.php:27
 msgid "May"
 msgstr "מאי"
 
-#: ../system/Utils.php:177
+#: ../app/helpers/DateHelper.php:28
 msgid "June"
 msgstr "יוני"
 
-#: ../system/Utils.php:178
+#: ../app/helpers/DateHelper.php:29
 msgid "July"
 msgstr "יולי"
 
-#: ../system/Utils.php:179
+#: ../app/helpers/DateHelper.php:30
 msgid "August"
 msgstr "אוגוסט"
 
-#: ../system/Utils.php:180
+#: ../app/helpers/DateHelper.php:31
 msgid "September"
 msgstr "ספטמבר"
 
-#: ../system/Utils.php:181
+#: ../app/helpers/DateHelper.php:32
 msgid "October"
 msgstr "אוקטובר"
 
-#: ../system/Utils.php:182
+#: ../app/helpers/DateHelper.php:33
 msgid "November"
 msgstr "נובמבר"
 
-#: ../system/Utils.php:183
+#: ../app/helpers/DateHelper.php:34
 msgid "December"
 msgstr "דצמבר"
 
-#: ../system/Utils.php:201
+#: ../app/helpers/DateHelper.php:61
 msgid "Today"
 msgstr "היום"
 
-#: ../system/Utils.php:203
+#: ../app/helpers/DateHelper.php:63
 msgid "Tomorrow"
 msgstr "מחר"
 
-#: ../system/Utils.php:205
+#: ../app/helpers/DateHelper.php:65
 msgid "Yesterday"
 msgstr "אתמול"
 
-#: ../system/Utils.php:211
+#: ../app/helpers/DateHelper.php:71
 msgid "day"
 msgstr "יום"
 
-#: ../system/Utils.php:214
+#: ../app/helpers/DateHelper.php:74
 #, php-format
 msgid " %d days ago"
 msgstr " לפני %d ימים"
 
-# אין
-#: ../system/Utils.php:233 ../system/Utils.php:470
-msgid "None"
-msgstr "ללא"
-
-#: ../system/Utils.php:234
-msgid "Male"
-msgstr "זכר"
-
-#: ../system/Utils.php:235
-msgid "Female"
-msgstr "נקבה"
-
-#: ../system/Utils.php:236
-msgid "Other"
-msgstr "אחר"
-
-#: ../system/Utils.php:471
-msgid "Single"
-msgstr "רווק/ה"
-
-#: ../system/Utils.php:472
-msgid "In a relationship"
-msgstr "במערכת יחסים"
-
-#: ../system/Utils.php:473
-msgid "Married"
-msgstr "נישואים"
-
-#: ../system/Utils.php:474
-msgid "Divorced"
-msgstr "גרוש/ה"
-
-#: ../system/Utils.php:475
-msgid "Widowed"
-msgstr "אלמן/ה"
-
-#: ../system/Utils.php:476
-msgid "Cohabiting"
-msgstr "חיים במשותף"
-
-# שותפות אזרחית
-#: ../system/Utils.php:477
-msgid "Civil Union"
-msgstr "נישואים אזרחיים"
-
-#: ../system/Utils.php:487
-msgid "Logout"
-msgstr "התנתק"
-
-#: ../system/Utils.php:504
-msgid "afraid"
-msgstr "מפחד"
-
-#: ../system/Utils.php:505
-msgid "amazed"
-msgstr "נדהם"
-
-#: ../system/Utils.php:506
-msgid "amorous"
-msgstr "חושק"
-
-#: ../system/Utils.php:507
-msgid "angry"
-msgstr "כועס"
-
-#: ../system/Utils.php:508
-msgid "annoyed"
-msgstr "נרגז"
-
-#: ../system/Utils.php:509
-msgid "anxious"
-msgstr "חרד"
-
-#: ../system/Utils.php:510
-msgid "aroused"
-msgstr "מרוגש"
-
-#: ../system/Utils.php:511
-msgid "ashamed"
-msgstr "מתבייש"
-
-#: ../system/Utils.php:512
-msgid "bored"
-msgstr "משועמם"
-
-#: ../system/Utils.php:513
-msgid "brave"
-msgstr "אמיץ"
-
-#: ../system/Utils.php:514
-msgid "calm"
-msgstr "רגוע"
-
-#: ../system/Utils.php:515
-msgid "cautious"
-msgstr "זהיר"
-
-#: ../system/Utils.php:516
-msgid "cold"
-msgstr "קר"
-
-#: ../system/Utils.php:517
-msgid "confident"
-msgstr "סמוך"
-
-#: ../system/Utils.php:518
-msgid "confused"
-msgstr "מבולבל"
-
-#: ../system/Utils.php:519
-msgid "contemplative"
-msgstr "ספקולטיבי"
-
-#: ../system/Utils.php:520
-msgid "contented"
-msgstr "מסופק"
-
-#: ../system/Utils.php:521
-msgid "cranky"
-msgstr "נרגז"
-
-#: ../system/Utils.php:522
-msgid "crazy"
-msgstr "מטורף"
-
-#: ../system/Utils.php:523
-msgid "creative"
-msgstr ""
-
-#: ../system/Utils.php:524
-msgid "curious"
-msgstr "סקרן"
-
-#: ../system/Utils.php:525
-msgid "dejected"
-msgstr "מיואש"
-
-#: ../system/Utils.php:526
-msgid "depressed"
-msgstr "מדוכא"
-
-#: ../system/Utils.php:527
-msgid "disappointed"
-msgstr "מאוכזב"
-
-#: ../system/Utils.php:528
-msgid "disgusted"
-msgstr "נגעל"
-
-#: ../system/Utils.php:529
-msgid "dismayed"
-msgstr "נחרד"
-
-#: ../system/Utils.php:530
-msgid "distracted"
-msgstr "טרוד"
-
-#: ../system/Utils.php:531
-msgid "embarrassed"
-msgstr "נבוך"
-
-#: ../system/Utils.php:532
-msgid "envious"
-msgstr "מקנא"
-
-#: ../system/Utils.php:533
-msgid "excited"
-msgstr "נרגש"
-
-#: ../system/Utils.php:534
-msgid "flirtatious"
-msgstr "פלרטטני"
-
-#: ../system/Utils.php:535
-msgid "frustrated"
-msgstr "מתוסכל"
-
-#: ../system/Utils.php:536
-msgid "grateful"
-msgstr "נעים"
-
-#: ../system/Utils.php:537
-msgid "grieving"
-msgstr "מתאבל"
-
-#: ../system/Utils.php:538
-msgid "grumpy"
-msgstr "זועף"
-
-#: ../system/Utils.php:539
-msgid "guilty"
-msgstr "אשם"
-
-#: ../system/Utils.php:540
-msgid "happy"
-msgstr "שמח"
-
-#: ../system/Utils.php:541
-msgid "hopeful"
-msgstr "אופטימי"
-
-#: ../system/Utils.php:542
-msgid "hot"
-msgstr "לוהט"
-
-#: ../system/Utils.php:543
-msgid "humbled"
-msgstr "מוכנע"
-
-#: ../system/Utils.php:544
-msgid "humiliated"
-msgstr "מושפל"
-
-#: ../system/Utils.php:545
-msgid "hungry"
-msgstr "רעב"
-
-#: ../system/Utils.php:546
-msgid "hurt"
-msgstr "פגוע"
-
-#: ../system/Utils.php:547
-msgid "impressed"
-msgstr "מתפעל"
-
-#: ../system/Utils.php:548
-msgid "in awe"
-msgstr "מפוחד"
-
-#: ../system/Utils.php:549
-msgid "in love"
-msgstr "מאוהב"
-
-#: ../system/Utils.php:551
-msgid "interested"
-msgstr "מתעניין"
-
-#: ../system/Utils.php:552
-msgid "intoxicated"
-msgstr "שיכור"
-
-#: ../system/Utils.php:553
-msgid "invincible"
-msgstr "בלתי מנוצח"
-
-#: ../system/Utils.php:554
-msgid "jealous"
-msgstr "מקנא"
-
-#: ../system/Utils.php:555
-msgid "lonely"
-msgstr "בודד"
-
-#: ../system/Utils.php:556
-msgid "lost"
-msgstr "אבוד"
-
-#: ../system/Utils.php:557
-msgid "lucky"
-msgstr "בר מזל"
-
-#: ../system/Utils.php:558
-msgid "mean"
-msgstr "דל"
-
-#: ../system/Utils.php:559
-msgid "moody"
-msgstr "מדוכדך"
-
-#: ../system/Utils.php:560
-msgid "nervous"
-msgstr "עצבני"
-
-#: ../system/Utils.php:561
-msgid "neutral"
-msgstr "אדיש"
-
-#: ../system/Utils.php:562
-msgid "offended"
-msgstr "נעלב"
-
-#: ../system/Utils.php:563
-msgid "outraged"
-msgstr "מזועזע"
-
-#: ../system/Utils.php:564
-msgid "playful"
-msgstr "שובב"
-
-#: ../system/Utils.php:565
-msgid "proud"
-msgstr "יהיר"
-
-#: ../system/Utils.php:566
-msgid "relaxed"
-msgstr "רגוע"
-
-#: ../system/Utils.php:567
-msgid "relieved"
-msgstr "משוחרר"
-
-#: ../system/Utils.php:568
-msgid "remorseful"
-msgstr "מתייסר"
-
-#: ../system/Utils.php:569
-msgid "restless"
-msgstr "חסר מנוחה"
-
-#: ../system/Utils.php:570
-msgid "sad"
-msgstr "עצוב"
-
-#: ../system/Utils.php:571
-msgid "sarcastic"
-msgstr "עוקצני"
-
-#: ../system/Utils.php:572
-msgid "satisfied"
-msgstr "מרוצה"
-
-#: ../system/Utils.php:573
-msgid "serious"
-msgstr "רציני"
-
-#: ../system/Utils.php:574
-msgid "shocked"
-msgstr "הלום"
-
-#: ../system/Utils.php:575
-msgid "shy"
-msgstr "ביישן"
-
-#: ../system/Utils.php:576
-msgid "sick"
-msgstr "חולה"
-
-#: ../system/Utils.php:577
-msgid "sleepy"
-msgstr "ישנוני"
-
-#: ../system/Utils.php:578
-msgid "spontaneous"
-msgstr "ספונטני"
-
-#: ../system/Utils.php:579
-msgid "stressed"
-msgstr "לחוץ"
-
-#: ../system/Utils.php:580
-msgid "strong"
-msgstr "חזק"
-
-#: ../system/Utils.php:581
-msgid "surprised"
-msgstr "מופתע"
-
-#: ../system/Utils.php:582
-msgid "thankful"
-msgstr "אסיר תודה"
-
-#: ../system/Utils.php:583
-msgid "thirsty"
-msgstr "צמא"
-
-#: ../system/Utils.php:584
-msgid "tired"
-msgstr "עייף"
-
-#: ../system/Utils.php:585
-msgid "undefined"
-msgstr "מעורפל"
-
-#: ../system/Utils.php:586
-msgid "weak"
-msgstr "חלש"
-
-#: ../system/Utils.php:587
-msgid "worried"
-msgstr "מודאג"
-
-#: ../system/Utils.php:720
-msgid "Not shared"
-msgstr "לא שותף"
-
-#: ../system/Utils.php:724
-msgid "Shared with one contact"
-msgstr "שותף עם איש קשר אחד"
-
-#: ../system/Utils.php:728
-msgid "Shared with all contacts"
-msgstr "שותף עם כל אנשי הקשר"
-
-#: ../system/Utils.php:732
-msgid "Shared with the XMPP network"
-msgstr "שותף עם רשת התקשורת XMPP"
-
-#: ../system/Utils.php:736
-msgid "Shared with the whole Internet"
-msgstr "שותף עם כל המרשתת"
-
-#: ../system/widget/WidgetWrapper.php:131
-#, php-format
-msgid "Requested widget '%s' doesn't exist."
-msgstr "וידג'ט מבוקש '%s' לא קיים."
-
-#: ../system/controllers/FrontController.php:35
-#, php-format
-msgid "Requested controller '%s' doesn't exist."
-msgstr "בקר מבוקש '%s' לא קיים."
-
-#: ../system/controllers/FrontController.php:67
-msgid "Could not call the load method on the current controller"
-msgstr ""
+#: ../app/views/page.tpl:67
+msgid "You don't have javascript enabled.  Good luck with that."
+msgstr "אין לך Javascript מאופשר.  עליך לאפשר Javascript בכדי להשתמש באתר זה."
 
 #: ../app/views/admin.tpl:5
 msgid "Administration Panel"
@@ -1901,9 +1875,44 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: ../app/views/page.tpl:67
-msgid "You don't have javascript enabled.  Good luck with that."
-msgstr "אין לך Javascript מאופשר.  עליך לאפשר Javascript בכדי להשתמש באתר זה."
+#~ msgid "Bad URL"
+#~ msgstr "URL רע"
+
+#~ msgid "Conferences"
+#~ msgstr "ועידות"
+
+#~ msgid "Groups"
+#~ msgstr "קבוצות"
+
+#~ msgid "Links"
+#~ msgstr "קישורים"
+
+#~ msgid "Chatrooms"
+#~ msgstr "חדרי שיחה"
+
+#~ msgid "Couldn't create directory '%s'."
+#~ msgstr "לא ניתן ליצור מדור '%s'."
+
+#~ msgid "terse"
+#~ msgstr "תמציתי"
+
+#~ msgid "normal"
+#~ msgstr "רגיל"
+
+#~ msgid "talkative"
+#~ msgstr "פטפטני"
+
+#~ msgid "ultimate"
+#~ msgstr "מוחלט"
+
+#~ msgid "Database Settings"
+#~ msgstr "הגדרות מסד נתונים"
+
+#~ msgid "Development environment."
+#~ msgstr "סביבת פיתוח."
+
+#~ msgid "Change it in the admin panel."
+#~ msgstr "שנה זאת בתוך לוח מנהל."
 
 #~ msgid "Actual version : "
 #~ msgstr "גרסה ממשית : "
@@ -2123,9 +2132,6 @@ msgstr "אין לך Javascript מאופשר.  עליך לאפשר Javascript ב�
 
 #~ msgid "Get your public groups"
 #~ msgstr "השג את הקבוצות הפומביות שלך"
-
-#~ msgid "Log verbosity"
-#~ msgstr "גיבוב רשומת יומן"
 
 #~ msgid "Contact request pending"
 #~ msgstr "בקשת איש קשר ממתינה"
