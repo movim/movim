@@ -131,15 +131,4 @@ class Profile extends WidgetCommon
         
         return $html;
     }
-    
-    function build()
-    {
-    ?>
-        <div id="profile">
-            <?php 
-                echo $this->prepareVcard();
-            ?>
-        </div>
-    <?php
-    }
 }

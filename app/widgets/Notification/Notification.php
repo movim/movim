@@ -36,7 +36,7 @@ class Notification extends WidgetCommon
                 $message.'
             </div>';
 
-        RPC::call('removeDiff', 'notification', $html);
+        RPC::call('removeDiff', 'notification_widget', $html);
         RPC::commit();
     }
 
@@ -46,14 +46,5 @@ class Notification extends WidgetCommon
 
     function onMoxlError($arr) {
         Notification::appendNotification($arr[1], 'error');
-    }
-    
-    function build()
-    {
-        ?>
-        <div id="notification">
-            
-        </div>
-        <?php
     }
 }
