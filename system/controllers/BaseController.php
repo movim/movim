@@ -1,9 +1,9 @@
 <?php
 
 class BaseController {
-    public $name = 'main';   // The name of the current page
+    public $name = 'main';          // The name of the current page
     protected $session_only = false;// The page is protected by a session ?
-    protected $raw = false;			// Display only the content ?
+    protected $raw = false;         // Display only the content ?
     protected $page;
 
     function __construct() {
@@ -90,12 +90,12 @@ class BaseController {
         }
 
         if($this->raw) {
-			echo $content->build($this->name.'.tpl');
-			exit;
+            echo $content->build($this->name.'.tpl');
+            exit;
         } else {
-			$built = $content->build($this->name.'.tpl');
-			$this->page->setContent($built);
-			echo $this->page->build('page.tpl');
-		}
+            $built = $content->build($this->name.'.tpl');
+            $this->page->setContent($built);
+            echo $this->page->build('page.tpl');
+        }
     }
 }

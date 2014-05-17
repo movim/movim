@@ -1,1 +1,4 @@
-{$c->prepareVcard()}
+<div id="profile_widget">
+    {$c->prepareVcard()}
+</div>
+
