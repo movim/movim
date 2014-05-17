@@ -27,6 +27,7 @@ class WidgetBase
     protected $user;
     protected $name;
     protected $pure;    // To render the widget without the container
+    protected $translations = array(); // Set translations in the controller
     public $events;
 
     /**
@@ -79,6 +80,12 @@ class WidgetBase
         return call_user_func_array('t',func_get_args());
     }
     
+    function __($key) {
+        if(array_key_exists($key, $this->translations)) {
+            return $this->t($this->translations[$key]);
+        }
+    }
+    
     function route() {
         return call_user_func_array('Route::urlize',func_get_args());
     }
@@ -90,13 +97,7 @@ class WidgetBase
      */
     function build()
     {
-        if($this->pure)
-            echo $this->draw();
-        else
-            echo '
-                <div id="'.strtolower($this->name).'_widget">'.
-                    $this->draw().'
-                </div>';
+        return $this->draw();
     }
 
     /*

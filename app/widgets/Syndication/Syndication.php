@@ -23,8 +23,6 @@ class Syndication extends WidgetBase
     {
         ob_clean();
         header("Content-Type: application/atom+xml; charset=UTF-8");
-        
-        $this->pure = true;
 
         $from = $_GET['f'];
         $node = $_GET['n'];
