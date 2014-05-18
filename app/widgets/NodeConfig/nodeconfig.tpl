@@ -1,6 +1,6 @@
 <div class="breadcrumb">
     <a href="{$c->route('explore')}">
-        {$c->t('Explore')}
+        {$c->__('page.explore')}
     </a>
     <a href="{$c->route('server', $server)}">
         {$server}
@@ -8,22 +8,22 @@
     <a href="{$c->route('node', array($server, $node))}">
         {$name}
     </a>
-    <a>{$c->t('Configuration')}</a>
+    <a>{$c->__('page.configuration')}</a>
 </div>
 <div class="tabelem" title="{$c->t('Configuration')}" id="groupconfig">
-    <h1>{$c->t('Configuration')}</h1>
+    <h1>{$c->__('page.configuration')}</h1>
     
     <div id="groupconfiguration" class="paddedtop">
         <div id="handlingmessages"></div>
         <a 
             class="button color green icon write" 
             onclick="{$group_config} this.style.display = 'none'">
-            {$c->t('Configure your group')}
+            {$c->__('group.config')}
         </a>
         <a 
             class="button color red icon no" 
             onclick="{$group_delete} this.style.display = 'none'">
-            {$c->t('Delete this group')}
+            {$c->__('group.delete')}
         </a>
     </div>
 </div>

@@ -23,11 +23,17 @@ use Moxl\Xec\Action\Pubsub\SetSubscriptions;
 
 class NodeSubscriptions extends WidgetBase
 {
-
-    function load()
-    {
+    function load() {
         $this->registerEvent('pubsubsubscriptions', 'onSubscriptionsList');
         $this->registerEvent('pubsubsubscriptionsssubmited', 'onSubmit');
+    }
+    
+    function display() {
+        $this->view->assign('pepfilter', !filter_var($_GET['s'], FILTER_VALIDATE_EMAIL));
+        $this->view->assign('getsubscriptions', 
+            $this->genCallAjax('ajaxGetSubscriptions', 
+                "'".$_GET['s']."'", 
+                "'".$_GET['n']."'"));
     }
     
     function prepareList($list) { //0:data 1:server 2:node
@@ -59,8 +65,8 @@ class NodeSubscriptions extends WidgetBase
                 class="button color green icon yes" 
                 style="float: right;"
                 onclick="'.$ok.'">
-                '.t('Validate').'
-            </a></form>';
+                '.__('button.validate').'
+            </a></form><div class="clear"></div>';
         return $html;
     }
     
@@ -88,27 +94,6 @@ class NodeSubscriptions extends WidgetBase
         $r->setTo($server)
           ->setNode($node)
           ->request();
-    }
-    
-    function build()
-    {
-        // A little filter to hide the widget if we load a PEP node
-        if(!filter_var($_GET['s'], FILTER_VALIDATE_EMAIL)) {
-        ?>
-        <div id="subscriptions" class="tabelem" title="<?php echo t('Manage your subscriptions'); ?>">
-            <h1><?php echo t('Manage the subscriptions'); ?></h1>
-            <div class="posthead">
-                <a 
-                    class="button icon users color green" 
-                    onclick="<?php echo $this->genCallAjax('ajaxGetSubscriptions', "'".$_GET['s']."'", "'".$_GET['n']."'"); ?> this.parentNode.style.display = 'none'">
-                        <?php echo t("Get the subscriptions");?>
-                </a>
-            </div>
-            
-            <div id="subscriptionslist" class="paddedtop"></div>
-        </div>
-        <?php
-        }
     }
 }
 

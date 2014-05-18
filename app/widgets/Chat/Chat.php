@@ -43,13 +43,7 @@ class Chat extends WidgetBase {
     function onPresence($presence) {
         $arr = $presence->getPresence();
 
-        $txt = array(
-            1 => t('Online'),
-            2 => t('Away'),
-            3 => t('Do Not Disturb'),
-            4 => t('Extended Away'),
-            5 => t('Offline'),
-            6 => t('Error'));
+        $txt = getPresences();
             
         if($presence->isChatroom())
             RPC::call('movim_fill', 'list' . $arr['jid'], $this->prepareMucList($arr['jid']));
@@ -132,7 +126,7 @@ class Chat extends WidgetBase {
     }
 
     function onMessagePublished($jid) {
-        Notification::appendNotification(t('Message Published'), 'success');
+        Notification::appendNotification($this->__('message.published'), 'success');
     }
 
     function onComposing($jid) {
@@ -162,7 +156,9 @@ class Chat extends WidgetBase {
         $contact = $rc->getRosterItem(echapJid($jid));
         $html = '
             <div style="font-weight: bold; color: black;" class="message" >
-                <span class="date">' . date('G:i', time()) . '</span>' . t('%s needs your attention', $contact->getTrueName()) . '
+                <span class="date">' . 
+                    date('G:i', time()) . '</span>' . 
+                    $this->__('chat.attention', $contact->getTrueName()) . '
             </div>';
         RPC::call('movim_append', 'messages' . $jid, $html);
         RPC::call('scrollTalk', 'messages' . $jid);
@@ -334,7 +330,7 @@ class Chat extends WidgetBase {
                 }
                 if(preg_match("#^\?OTR:#", $message->body)) {
                     $html .= ' crypt ';
-                    $content = t('Encrypted message');
+                    $content = $this->__('message.encrypted');
                 }
                 
                 $c = new \modl\Contact();

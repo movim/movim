@@ -24,10 +24,24 @@ use Monolog\Handler\StreamHandler;
  * Return the list of gender
  */
 function getGender() {
-    return array('N' => t('None'),
-                 'M' => t('Male'),
-                 'F' => t('Female'),
-                 'O' => t('Other')
+    return array('N' => __('gender.none'),
+                 'M' => __('gender.male'),
+                 'F' => __('gender.female'),
+                 'O' => __('gender.other')
+                );
+}
+
+/** 
+ * Return the list of client types
+ */
+function getClientTypes() {
+    return array(
+                'bot'           => __('client.bot'),
+                'pc'            => __('client.desktop'),
+                'phone'         => __('client.phone'),
+                'handheld'      => __('client.phone'),
+                'web'           => __('client.web'),
+                'registered'    => __('client.registered')
                 );
 }
 
@@ -236,25 +250,28 @@ function getCountries() {
  * Return the list of marital status
  */
 function getMarital() {
-    return array('none' => t('None'),
-                    'single' => t('Single'),
-                    'relationship' => t('In a relationship'),
-                    'married' => t('Married'),
-                    'divorced' => t('Divorced'),
-                    'widowed' => t('Widowed'),
-                    'cohabiting' => t('Cohabiting'),
-                    'union' => t('Civil Union')
-                    );                      
+    return array(
+            'none'          => __('marital.none'),
+            'single'        => __('marital.single'),
+            'relationship'  => __('marital.relationship'),
+            'married'       => __('marital.married'),
+            'divorced'      => __('marital.divorced'),
+            'widowed'       => __('marital.widowed'),
+            'cohabiting'    => __('marital.cohabiting'),
+            'union'         => __('marital.union')
+        );                      
 }
 
 function getPresences() {
     return array(
-                1 => t('Online'),
-                2 => t('Away'),
-                3 => t('Do Not Disturb'),
-                4 => t('Extended Away'),
-                5 => t('Logout')
-            );
+            1 => __('presence.online'),
+            2 => __('presence.away'),
+            3 => __('presence.dnd'),
+            4 => __('presence.xa'),
+            5 => __('presence.offline'),
+            6 => __('presence.error')
+        );
+
 }
 
 function getPresencesTxt() {
@@ -385,29 +402,29 @@ function movim_log($logs) {
 }
 
 /**
- * Return a small help to recognize flag color
+ * @desc Return a small help to recognize flag color
  * */
 function getFlagTitle($color){
-    $title="";
+    $title = '';
     switch($color){
         case 'white':
-        $title=t('Not shared');
-    break;
+            $title = __('flag.white');
+        break;
         
         case 'green':
-            $title=t('Shared with one contact');
+            $title = __('flag.green');
         break;
 
         case 'orange':
-            $title=t('Shared with all contacts');
+            $title = __('flag.orange');
         break;
 
         case 'red':
-            $title=t('Shared with the XMPP network');
+            $title = __('flag.red');
         break;
 
         case 'black':
-            $title=t('Shared with the whole Internet');
+            $title = __('flag.black');
         break;
 
         default:

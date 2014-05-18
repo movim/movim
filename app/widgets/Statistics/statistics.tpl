@@ -1,8 +1,8 @@
-<div id="statistics" class="tabelem padded" title="{$c->t("Statistics")}">
+<div id="statistics" class="tabelem padded" title="{$c->__("statistics.title")}">
     <ul class="list">
         <li class="title">
-            <a class="action">{$c->t('Since')}</a>
-            {$c->t('Sessions')} - {$sessions|count}
+            <a class="action">{$c->__('statistics.since')}</a>
+            {$c->__('statistics.sessions')} - {$sessions|count}
         </li>
         {loop="$sessions"}
             <li>

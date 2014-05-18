@@ -6,8 +6,8 @@ class NotfoundController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(APP_TITLE. ' - 404');
+        $this->page->setTitle(__('title.not_found', APP_TITLE));
         
-        $this->page->menuAddLink(t('Home'), 'main');
+        $this->page->menuAddLink(__('page.home'), 'main');
     }
 }

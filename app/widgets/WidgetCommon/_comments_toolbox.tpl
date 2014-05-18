@@ -2,14 +2,14 @@
     {$comments}
     <a 
         class="getcomments icon chat" 
-        onclick="{$getcomments} this.innerHTML = '{$c->t('Loading comments ...')}'"
-    >{$c->t('Get the comments')}</a>
+        onclick="{$getcomments} this.innerHTML = '{$c->__('post.comments_loading')}'"
+    >{$c->__('post.comments_get')}</a>
 </div>
 <div class="comments">
     <a class="addcomment icon chat"
         onclick="
         this.parentNode.querySelector('#commentsubmit').style.display = 'table'; 
-        this.style.display ='none'">{$c->t('Add a comment')}</a>
+        this.style.display ='none'">{$c->__('post.comment_add')}</a>
     <table id="commentsubmit">
         <tr>
             <td>
@@ -29,7 +29,7 @@
                             }"
                     class="button color green icon yes"
                 >
-                    {$c->t("Submit")}
+                    {$c->__('button.submit')}
                 </a>
             </td>
         </tr>

@@ -31,7 +31,7 @@ class Route extends \BaseController {
     }
     
     public function find() {
-        if(isset($_SERVER['HTTP_MOD_REWRITE']) || $_SERVER['HTTP_MOD_REWRITE']) {
+        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
             $request = explode('/', $this->fetchGet('query'));
             $this->_page = $request[0];
             array_shift($request);

@@ -99,44 +99,19 @@ class Presence extends WidgetBase
         
         $pd = new \Modl\PresenceDAO();
         $p = $pd->getPresence($this->user->getLogin(), $session->ressource);
+       
+        $presencetpl = $this->tpl();
+        $presencetpl->assign('p', $p);
+        $presencetpl->assign('txt', $txt);
+        $presencetpl->assign('txts', $txts);
+        $presencetpl->assign('callchat',    $this->genCallAjax('ajaxSetStatus', "'chat'"));
+        $presencetpl->assign('callaway',    $this->genCallAjax('ajaxSetStatus', "'away'"));
+        $presencetpl->assign('calldnd',     $this->genCallAjax('ajaxSetStatus', "'dnd'"));
+        $presencetpl->assign('callxa',      $this->genCallAjax('ajaxSetStatus', "'xa'"));
+        $presencetpl->assign('calllogout',  $this->genCallAjax('ajaxLogout'));
+        $html = $presencetpl->draw('_presence_list', true);
 
-        if($p)
-            $html = '
-                <div 
-                    id="logouttab" 
-                    class="'.$txts[$p->value].'"
-                    onclick="movim_toggle_class(\'#logoutlist\', \'show\');">'.
-                    $txt[$p->value].'
-                </div>';
-        else
-            $html = '
-                <div 
-                    id="logouttab" 
-                    class="'.$txts[1].'"
-                    onclick="movim_toggle_class(\'#logoutlist\', \'show\');">'.
-                    $txt[1].'
-                </div>';
-                
-        $html .= '
-            <div id="logoutlist">
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'chat'").'; movim_toggle_class(\'#logoutlist\', \'show\');" class="online">'.$txt[1].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'away'").'; movim_toggle_class(\'#logoutlist\', \'show\');" class="away">'.$txt[2].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'dnd'").';  movim_toggle_class(\'#logoutlist\', \'show\');" class="dnd">'.$txt[3].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxSetStatus', "'xa'").';   movim_toggle_class(\'#logoutlist\', \'show\');" class="xa">'.$txt[4].'</a>
-                <a onclick="'.$this->genCallAjax('ajaxLogout').';              movim_toggle_class(\'#logoutlist\', \'show\');" class="disconnect">'.t('Disconnect').'</a>
-            </div>
-                ';
-        
         return $html;
-    }
-
-    function build()
-    {
-        ?>
-        <div id="logout">
-            <?php echo $this->preparePresence(); ?>
-        </div>
-        <?php
     }
 }
 

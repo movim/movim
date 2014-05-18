@@ -220,7 +220,7 @@ class Roster extends WidgetBase
 
         foreach($contacts as $c) {
             if($c->groupname == '')
-                $c->groupname = t('Ungrouped');
+                $c->groupname = $this->__('roster.ungrouped');
             
             if(!isset($roster[$c->groupname])) {
                 $roster[$c->groupname] = new stdClass;
@@ -278,15 +278,15 @@ class Roster extends WidgetBase
         
         if($param == 'offlineshown') {
             if($bool)
-                Notification::appendNotification(t('Show disconnected contacts'), 'success');
+                Notification::appendNotification($this->__('roster.show_disconnected'), 'success');
             else
-                Notification::appendNotification(t('Hide disconnected contacts'), 'success');
+                Notification::appendNotification($this->__('roster.hide_disconnected'), 'success');
             RPC::call('showRoster', $bool);
         } else {
             if($bool)
-                Notification::appendNotification(t('Hide group %s',substr($param, 5)), 'success');
+                Notification::appendNotification($this->__('roster.hide_group',substr($param, 5)), 'success');
             else
-                Notification::appendNotification(t('Show group %s',substr($param, 5)), 'success');
+                Notification::appendNotification($this->__('roster.show_group',substr($param, 5)), 'success');
             RPC::call('rosterToggleGroup', $param, $bool, $offline);
 
         }
@@ -313,7 +313,7 @@ class Roster extends WidgetBase
             RPC::call('movim_redirect', Route::urlize('friend', $jid));
             RPC::commit();
         } else 
-            Notification::appendNotification(t('Please enter a valid Jabber ID'), 'info');
+            Notification::appendNotification($this->__('roster.jid_error'), 'info');
     }
 }
 

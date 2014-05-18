@@ -1,10 +1,10 @@
 {if="empty($roster)"}
     <script type="text/javascript">setTimeout('{$refresh}', 1500);</script>
     <span class="nocontacts">
-        {$c->t('No contacts ? You can add one using the + button bellow or going to the Explore page')}
+        {$c->__('roster.no_contacts')}
         <br />
         <br />
-        <a class="button color green icon users" href="{$c->route('explore')}">{$c->t('Explore')}</a>
+        <a class="button color green icon users" href="{$c->route('explore')}">{$c->__('page.explore')}</a>
     </span>
 {else}
     {loop="$roster"}
