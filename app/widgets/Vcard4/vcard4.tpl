@@ -1,4 +1,4 @@
-<div class="tabelem padded" title="{$c->t('Data')}" id="vcard4" >
+<div class="tabelem padded" title="{$c->__('Data')}" id="vcard4" >
     {if="isset($me) && $me == null"}
         <script type="text/javascript">setTimeout('{$getvcard}', 500);</script>
     {/if}

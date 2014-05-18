@@ -28,6 +28,30 @@ class ContactSummary extends WidgetCommon
         $this->registerEvent('vcard', 'onVcard');
     }
     
+    function display()
+    {
+        $cd = new \Modl\ContactDAO();
+        
+        if($_GET['f'] == $this->user->getLogin()) {
+            $contact = $cd->get($this->user->getLogin());
+        }
+
+        if(!isset($contact)) {
+            $contact = $cd->get($_GET['f']);
+        }
+        
+        if(isset($contact)) {
+            $this->view->assign('contact', $contact);
+            $this->view->assign('refresh', false);
+        } else {
+            $contact = new modl\Contact();
+            $contact->jid = $_GET['f'];
+            $this->view->assign('contact', $contact);
+            
+            $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'"));
+        }
+    }
+    
     function onVcard($contact)
     {
         $html = $this->prepareContactSummary($contact);
@@ -53,7 +77,6 @@ class ContactSummary extends WidgetCommon
         $presencetxt = getPresencesTxt();
             
         // Contact general infos
-        
         if(isset($contact->presence))
             $html .= '
                 <h1 class="'.$presencetxt[$contact->presence].'">'.$contact->getTrueName().'</h1>';
@@ -71,34 +94,5 @@ class ContactSummary extends WidgetCommon
         }
 
         return $html;
-    }
-    
-    function build()
-    {
-        $cd = new \Modl\ContactDAO();
-        
-        if($_GET['f'] == $this->user->getLogin()) {
-            $contact = $cd->get($this->user->getLogin());
-        }
-
-        if(!isset($contact)) {
-            $contact = $cd->get($_GET['f']);
-        } 
-        ?>
-        <div id="contactsummary">
-        <?php
-        if($contact != null) {
-            echo $this->prepareContactSummary($contact);
-        } else {
-            $contact = new modl\Contact();
-            $contact->jid = $_GET['f'];
-            echo $this->prepareContactSummary($contact);
-            ?>
-            <script type="text/javascript">
-                setTimeout("<?php $this->callAjax('ajaxRefreshVcard', "'".$_GET['f']."'");?>", 1000);
-            </script>
-        <?php } ?>
-        </div>
-        <?php
     }
 }

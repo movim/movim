@@ -41,7 +41,7 @@
                 localStorage.username = document.querySelector('#username').value+'@'+'{$ndd}';
                 {$submitdata}"
         >
-            {$c->t('Validate')}
+            {$c->__('button.validate')}
         </a>
     </fieldset>
 </form>

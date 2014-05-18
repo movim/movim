@@ -29,55 +29,55 @@ class AccountError extends WidgetBase {
             case 'datamissing':
                 $warning = '
                         <div class="message warning">
-                            '.t('Some data are missing !').'
+                            '.$this->__('error.data_missing').'
                         </div> ';
                 break;
             case 'jiderror':
                 $warning = '
                         <div class="message warning">
-                            '.t('Wrong ID').'
+                            '.$this->__('error.jid_error').'
                         </div> ';
                 break;
             case 'passworddiff':
                 $warning = '
                         <div class="message info">
-                            '.t('You entered different passwords').'
+                            '.$this->__('error.password_diff').'
                         </div> ';
                 break;
             case 'nameerr':
                 $warning = '
                         <div class="message warning">
-                            '.t('Invalid name').'
+                            '.$this->__('error.name_error').'
                         </div> ';
                 break;
             case 'notacceptable':
                 $warning = '
                         <div class="message error">
-                            '.t('Request not acceptable').'
+                            '.$this->__('error.not_acceptable').'
                         </div> ';
                 break;
             case 'userconflict':
                 $warning = '
                         <div class="message warning">
-                            '.t('Username already taken').'
+                            '.$this->__('error.user_conflict').'
                         </div> ';
                 break;
             case 'xmppconnect':
                 $warning = '
                         <div class="message error">
-                            '.t('Could not connect to the XMPP server').'
+                            '.$this->__('error.xmpp_connect').'
                         </div> ';
                 break;
             case 'xmppcomm':
                 $warning = '
                         <div class="message error">
-                            '.t('Could not communicate with the XMPP server').'
+                            '.$this->__('error.xmpp_communicate').'
                         </div> ';
                 break;
             case 'unknown':
                 $warning = '
                         <div class="message error">
-                            '.t('Unknown error').'
+                            '.$this->__('error.unknown').'
                         </div> ';
                 break;
         }

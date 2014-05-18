@@ -96,12 +96,12 @@ class PubsubSubscriptionConfig extends WidgetBase
     }
     
     function onGroupAdded($node) {
-        Notification::appendNotification(t('%s has been added to your public groups', $node), 'success');
+        Notification::appendNotification($this->__('public_groups.added', $node), 'success');
         RPC::commit(); 
     }
     
     function onGroupRemoved($node) {
-        Notification::appendNotification(t('%s has been removed from your public groups', $node), 'success');
+        Notification::appendNotification($this->__('public_groups.removed', $node), 'success');
         RPC::commit(); 
     }
 

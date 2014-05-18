@@ -28,8 +28,8 @@
 	{/loop}
 </feed>
     {else}
-        {$c->t('No public feed for this contact')}
+        {$c->__('feed.no')}
     {/if}
 {else}
-    {$c->t('No contact specified')}
+    {$c->__('feed.no_contact')}
 {/if}

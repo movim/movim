@@ -65,14 +65,14 @@ class Feed extends WidgetCommon {
           ->request();
         
         Notification::appendNotification(
-            t("Your server doesn't support post publication, you can only read contact's feeds"), 
+            $this->__('feed.no_support'), 
             'error');
     }
     
     function onCommentPublishError() {
         $html =
             '<div class="message error">'.
-                t("Comment publication error").'
+                __('post.comment_error').'
              </div>';
         RPC::call('movim_fill', 'feednotifs', $html);
     }
@@ -93,7 +93,7 @@ class Feed extends WidgetCommon {
     }
     
     function onPostPublishError($error) {
-        Notification::appendNotification(t('An error occured : ').$error, 'error');
+        Notification::appendNotification($this->__('feed.error').$error, 'error');
     }
     
     function prepareHead() {
@@ -104,13 +104,13 @@ class Feed extends WidgetCommon {
         if($session->config['config'] == false) {
             $html .= 
                 '<div class="message warning">'.
-                    t("Your server doesn't support post publication, you can only read contact's feeds").
+                    $this->__('feed.no_support').
                 '</div>';
         } elseif(!isset($session->config['feed'])) {
             $html .= '
                 <div id="feednotifs">
                     <div class="message info">'.
-                     t("Creating your feed...").
+                     $this->__('feed.creating').
                     '</div>
                 </div>
                 <script type="text/javascript">'.
@@ -142,7 +142,7 @@ class Feed extends WidgetCommon {
                     <div 
                         class="older" 
                         onclick="'.$this->genCallAjax($function, "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
-                            t('Get older posts').'
+                            __('post.older').'
                     </div>
                 </div>';
         } else {
@@ -175,7 +175,7 @@ class Feed extends WidgetCommon {
         if($html == '') 
             $html = '
                 <div class="message info" style="margin: 1.5em; margin-top: 0em;">'.
-                    t("Your feed cannot be loaded.").'
+                    __("post.no_load").'
                 </div>';
 
         RPC::call('movim_fill', 'feedcontent', $html);

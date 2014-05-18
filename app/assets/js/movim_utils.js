@@ -202,10 +202,13 @@ function movim_toggle_display(element) {
     else
         var node = movim_get_node(element);
 
-    if(node.style.display == 'block')
-        node.style.display = 'none';
-    else
-        node.style.display = 'block';
+    if(node != null) {
+        if(node.style.display == 'block')
+            node.style.display = 'none';
+        else
+            node.style.display = 'block';
+    }
+
 }
 
 window.addEventListener('load', function () {

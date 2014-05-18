@@ -12,27 +12,57 @@ if($argsize == 1) {
 "Welcome to Mud - Movim Unified Doer
 
 Here some requests you can do with me :
+- getloc    grab all the translations in Movim and generate a global locale file
 - comploc   compile the current locales to a simple PHP array to boost Movim execution
         ";
     
 } elseif($argsize == 2) {
     switch ($argv[1]) {
+        case 'getloc':
+            getloc();
+            break;
         case 'comploc':
             comploc();
             break;
-        /*case 1:
-            echo "i égal 1";
-            break;
-        case 2:
-            echo "i égal 2";
-            break;*/
     }
+}
+
+function getloc() {
+    echo "Locales grabber\n";
+    
+    // We look for all the ini files
+    $inifiles = glob(WIDGETS_PATH.'*/*.ini');
+    array_push($inifiles, LOCALES_PATH . 'locales.ini');
+    
+    $locales = CACHE_PATH.'locales.php';
+    $pot     = CACHE_PATH.'messages.pot';
+    
+    // We create the cache file
+    $out = "<?php\n";
+    
+    foreach($inifiles as $ini) {
+        $keys = parse_ini_file($ini);
+        foreach($keys as $key => $value) {
+            $out .= "t(\"$value\");\n";
+        }
+    }
+    
+    $fp = fopen($locales, 'w');
+    fwrite($fp, $out);
+    fclose($fp);
+    
+    echo "File $locales created\n";
+    
+    // And we run gettext on it    
+    exec("xgettext -e --no-wrap -kt -o $pot -L PHP $locales ");
+    
+    echo "File $pot created\n";
 }
 
 function comploc() {
     echo "Locales compiler\n";
     
-    $folder = DOCUMENT_ROOT.'/cache/locales/';
+    $folder = CACHE_PATH.'/locales/';
     
     if(!file_exists($folder)) {
         $bool = mkdir($folder);
@@ -60,6 +90,8 @@ function comploc() {
         $fp = fopen($folder.$key.'.php', 'w');
         fwrite($fp, $out);
         fclose($fp);
+        
+        echo "- $key compiled\n";
     }
 }
 

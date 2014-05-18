@@ -1,20 +1,15 @@
 <?php
 
-//doc
-//    classname:    PageBuilder
-//    scope:        PUBLIC
-//
-///doc
-
 /**
- * \class PageBuilder
- * \brief Templating engine for Movim
+ * @file TplPageBuilder.php
+ * This file is part of Movim.
+ * 
+ * @brief This class is the templating engine for movim. It also handles themes.
  *
- * This class is the templating engine for movim. It determines what page to
- * load based on the context and fills in placeholder values ('%' delimited).
+ * @author Timothée jaussoin
  *
- * It also handles themes.
  */
+
 class TplPageBuilder
 {
     //    internal variables
@@ -39,7 +34,7 @@ class TplPageBuilder
      
     }
 
-    function views_path($file)
+    function viewsPath($file)
     {
         return VIEWS_PATH . '/' . $file;
     }
@@ -78,7 +73,7 @@ class TplPageBuilder
         if (ENVIRONMENT === 'production') ob_clean();
         ob_start();
 
-        require($this->views_path($template));
+        require($this->viewsPath($template));
         $outp = ob_get_clean();
         $outp = str_replace('<%scripts%>',
                             $this->printCss() . $this->printScripts(),
@@ -222,7 +217,7 @@ class TplPageBuilder
     function widget($name, $register = true)
     {
         $widgets = WidgetWrapper::getInstance($register);
-        $widgets->runWidget($name, 'build');
+        echo $widgets->runWidget($name, 'build');
     }
     
     function displayFooterDebug()

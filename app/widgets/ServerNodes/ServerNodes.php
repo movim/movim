@@ -61,9 +61,9 @@ class ServerNodes extends WidgetCommon
                 <div class="popup" id="groupCreation">
                     <form name="groupCreation">
                         <fieldset>
-                            <legend>'.t('Give a friendly name to your group').'</legend>
+                            <legend>'.$this->__('friendly.label').'</legend>
                             <div class="element large mini">
-                                <input name="title" placeholder="'.t('My Little Pony - Fan Club').'"/>
+                                <input name="title" placeholder="'.$this->__('friendly.example').'"/>
                             </div>
                             <input type="hidden" name="server" value="'.$server.'"/>
                         </fieldset>
@@ -72,12 +72,12 @@ class ServerNodes extends WidgetCommon
                                 class="button color icon yes blue merged left"
                                 onclick="'.$submit.'"
                             >'.
-                                    t('Add').'
+                                    __('button.add').'
                             </a><a 
                                 class="button icon no black merged right" 
                                 onclick="movim_toggle_display(\'#groupCreation\')"
                             >'.
-                                    t('Close').'
+                                    __('button.close').'
                             </a>
                         </div>
                     </form>
@@ -108,7 +108,7 @@ class ServerNodes extends WidgetCommon
                     $tags .= '<span class="tag">'.$i->num.'</span>';
             
                 if($i->subscription == 'subscribed')
-                    $tags .= '<span class="tag green">'.t('Subscribed').'</span>';
+                    $tags .= '<span class="tag green">'.$this->__('subscribed').'</span>';
                     
                 $url = '';
                 if($i->node != null) {
