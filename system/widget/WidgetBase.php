@@ -62,6 +62,11 @@ class WidgetBase
             'tpl_ext'       => 'tpl',
             'auto_escape'   => false
         );
+        
+
+        if(file_exists($this->respath('locales.ini', true))) {
+            $this->translations = parse_ini_file($this->respath('locales.ini', true));
+        }
 
         // We load the template engine
         $this->view = new Tpl;
@@ -80,10 +85,20 @@ class WidgetBase
         return call_user_func_array('t',func_get_args());
     }
     
-    function __($key) {
-        if(array_key_exists($key, $this->translations)) {
-            return $this->t($this->translations[$key]);
+    function __() {
+        $args = func_get_args();
+        if(array_key_exists($args[0], $this->translations)) {
+            $args[0] = $this->translations[$args[0]];
+            return call_user_func_array(array(&$this, 't'), $args);
+        } 
+        
+        global $translationshash;
+        
+        if(array_key_exists($args[0], $translationshash)) {
+            return call_user_func_array('__', $args);
         }
+        
+        return $args[0];
     }
     
     function route() {

@@ -1,16 +1,3 @@
-/*
-#subscribe .block {
-    border: 1px solid #DDD;
-    margin-right: 1em;
-    margin-bottom: 1em;
-    width: 48%;
-    padding: 1em;
-    display: inline-block;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-}
-*/
 #subscribe .server:hover {
     background-color: #EEE;
     cursor: pointer;
@@ -35,7 +22,7 @@
 
 #subscribe .server.star {
     background-image: url('img/star.svg');
-    background-size: 3em 3em;
+    background-size: 2.5em 2.5em;
     background-position: 100% 100%;
     background-repeat: no-repeat;
 }

@@ -126,7 +126,7 @@ class Bookmark extends WidgetBase
     {
         $html = $this->prepareBookmark();
         RPC::call('movim_fill', 'bookmarks', $html);
-        Notification::appendNotification(t('Bookmarks updated'), 'info');
+        Notification::appendNotification($this->__('bookmarks.updated'), 'info');
     }
     /*
     function onMucRole($arr)
@@ -136,7 +136,7 @@ class Bookmark extends WidgetBase
     */
     function onBookmarkError($error)
     {
-        Notification::appendNotification(t('An error occured : ').$error, 'error');
+        Notification::appendNotification($this->__('bookmarks.error').$error, 'error');
     }
     
     function ajaxGetBookmark() 
@@ -189,11 +189,11 @@ class Bookmark extends WidgetBase
     function ajaxBookmarkMucAdd($form) 
     {
         if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
-            $html = '<div class="message error">'.t('Bad Chatroom ID').'</div>' ;
+            $html = '<div class="message error">'.$this->__('chatroom.bad_id').'</div>' ;
             RPC::call('movim_fill', 'bookmarkmucadderror', $html);
             RPC::commit();
         } elseif(trim($form['name']) == '') {
-            $html = '<div class="message error">'.t('Empty name').'</div>' ;
+            $html = '<div class="message error">'.$this->__('chatroom.empty_name').'</div>' ;
             RPC::call('movim_fill', 'bookmarkmucadderror', $html);
             RPC::commit();            
         } else {
@@ -266,126 +266,5 @@ class Bookmark extends WidgetBase
         $b = new moxl\BookmarkSet();
         $b->setArr($arr)
           ->request();
-    }
-    
-    function prepareBookmark($bookmarks)
-    {
-        $html = '';
-        $url = '';
-        $conference = '';
-        $subscription = '';
-        
-        $urlnum = $conferencenum = $subscriptionnum = 0;
-
-        $sd = new \modl\SubscriptionDAO();
-        
-        if($sd != null && $sd->getSubscribed() != null) {
-            $server = null;
-        
-            foreach($sd->getSubscribed() as $s) {
-                if($s->name != null)
-                    $name = $s->name;
-                else
-                    $name = $s->node;
-                    
-                if($server != $s->server) {
-                    $subscription .= '
-                            <a href="'.Route::urlize('server', array($s->server)).'"><h3>'.
-                                $s->server.' 
-                            </h3></a>'; 
-                    $server = $s->server;
-                }
-                
-                $subscription .= '
-                    <li>
-                        <a href="'.Route::urlize('node', array($s->server, $s->node)).'">'.
-                            $name.' 
-                        </a>
-                    </li>';
-                    
-                $subscriptionnum++;
-            }
-        }
-        
-        if($bookmarks == null)
-            $bookmarks = array();
-        
-        foreach($bookmarks as $b) {
-            switch ($b['type']) {
-            case 'conference':
-                $remove = $this->genCallAjax('ajaxBookmarkMucRemove', "'".$b['jid']."'");
-                $join   = $this->genCallAjax(
-                            'ajaxBookmarkMucJoin',   
-                            "'".$b['jid']."'",
-                            "'".$b['nick']."'");
-                $conference .= '
-                    <li>
-                        <a href="#" onclick="'.$join.'">'.$b['name'].'</a>
-                        <a href="#" onclick="'.$remove.'">X</a>
-                    </li>';
-                
-                $conferencenum++;
-                break;
-            case 'url':
-                $remove = $this->genCallAjax('ajaxBookmarkUrlRemove', "'".$b['url']."'");
-                $url .= '
-                    <li>
-                        <a target="_blank" href="'.$b['url'].'">'.
-                            $b['name'].'
-                        </a>
-                        <a href="#" onclick="'.$remove.'">X</a>
-                    </li>';
-                    
-                $urlnum++;
-                break;
-            }
-        }
-            
-        if($conference != '') {
-            $html .= '
-                <h2>'.t('Conferences').' - '.$conferencenum.'</h2>
-                <ul>'.
-                    $conference.'
-                </ul>';
-        }
-        
-        if($subscription != '') {
-            $html .= '
-                <h2>'.t('Groups').' - '.$subscriptionnum.'</h2>
-                <ul>'.
-                    $subscription.'
-                </ul>';
-        }
-        
-        if($url != '') {
-            $html .= '                
-                <h2>'.t('Links').' - '.$urlnum.'</h2>
-                <ul>'.
-                    $url.'
-                </ul>';
-        }
-          
-        // The URL add form
-        $urlview = $this->tpl();
-        $urlview->assign(
-            'submit', 
-            $this->genCallAjax(
-                'ajaxBookmarkUrlAdd', 
-                "movim_parse_form('bookmarkurladd')")
-        );
-        $html .= $urlview->draw('_bookmark_url_add', true);
-        
-        // The MUC add form
-        $mucview = $this->tpl();
-        $mucview->assign(
-            'submit', 
-            $this->genCallAjax(
-                'ajaxBookmarkMucAdd', 
-                "movim_parse_form('bookmarkmucadd')")
-        );
-        $html .= $mucview->draw('_bookmark_muc_add', true);
-        
-        return $html;
-    }
-    */
+    }*/
 }

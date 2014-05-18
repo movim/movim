@@ -22,7 +22,6 @@ class Syndication extends WidgetBase
     function load()
     {
         ob_clean();
-        header("Content-Type: application/atom+xml; charset=UTF-8");
 
         $from = $_GET['f'];
         $node = $_GET['n'];
@@ -38,6 +37,7 @@ class Syndication extends WidgetBase
         }
         
         if(isset($messages[0])) {
+            header("Content-Type: application/atom+xml; charset=UTF-8");
             // Title and logo
             // For a Pubsub feed
             if(isset($from) && isset($node) && $node != 'urn:xmpp:microblog:0') {

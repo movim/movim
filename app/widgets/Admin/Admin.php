@@ -102,45 +102,48 @@ class Admin extends WidgetBase {
     {            
         $this->_validatebutton = '
             <div class="clear"></div>
-            <input type="submit" class="button icon yes color green" style="float: right;" value="'.t('Submit').'"/>';
+            <input 
+                type="submit" 
+                class="button icon yes color green oppose" 
+                value="'.__('button.submit').'"/>';
         
         $html = '
             <fieldset>
-                <legend>'.t("Compatibility Check").'</legend>
-                    <div class="clear"></div>';
+                <legend>'.$this->__('admin.compatibility').'</legend>
+                <div class="clear"></div>';
 
                 $html .= 
                     '<p>'.
-                        t('Movim requires certain external components. Please install them before you can succeed:').
+                        $this->__('compatibility.info').
                     '</p><br />';
                     
                 $html .= '                
                     <div class="'.$this->isValid((version_compare(PHP_VERSION, '5.3.0') >= 0)).'">
-                        '.t('Your PHP-Version: %s <br>Required: 5.3.0', PHP_VERSION).'
+                        '.$this->__('compatibility.php', PHP_VERSION).'
                     </div>
                     <div class="'.$this->isValid(extension_loaded('curl')).'">
-                        '.t('CURL-Library').'
+                        '.$this->__('compatibility.curl').'
                     </div>
                     <div class="'.$this->isValid(extension_loaded('gd')).'">
-                        '.t('GD').'
+                        '.$this->__('compatibility.gd').'
                     </div>
                     <div class="'.$this->isValid(extension_loaded('SimpleXml')).'">
-                        '.t('SimpleXML').'
+                        '.$this->__('compatibility.simplexml').'
                     </div>
                     <div class="'.$this->isValid($this->testDir(DOCUMENT_ROOT)).'">
-                        '.t('Read and write rights for the webserver in Movim\'s root directory').'
+                        '.$this->__('compatibility.rights').'
                     </div>
                     <div class="'.$this->isValid(extension_loaded('OpenSSL')).'">
-                        '.t('OpenSSL').'
+                        '.$this->__('compatibility.openssl').'
                     </div>
                     
             </fieldset>
 
             <fieldset>
-                <legend>'.t('URL Rewriting support').'</legend>
+                <legend>'.$this->__('compatibility.rewrite').'</legend>
                     <div class="clear"></div>
                     <div class="'.$this->isValid($_SERVER['HTTP_MOD_REWRITE']).'">
-                        '.t('URL Rewriting support').'
+                        '.$this->__('compatibility.rewrite').'
                     </div>';
             
         $html .= '
@@ -154,9 +157,9 @@ class Admin extends WidgetBase {
         
         $html .= '
             <fieldset>
-                    <legend>'.t('General Settings').'</legend>
+                    <legend>'.$this->__('admin.general').'</legend>
                     <div class="element">
-                        <label for="movim" >'.t('Theme').'</label>
+                        <label for="movim" >'.$this->__('general.theme').'</label>
                             <div class="select">
                                 <select id="theme" name="theme">';
                                     foreach($this->listThemes() as $key => $value) {
@@ -175,7 +178,7 @@ class Admin extends WidgetBase {
         
         $html .= '
                     <div class="element">
-                        <label for="da">'.t('Default language').'</label>
+                        <label for="da">'.$this->__('general.language').'</label>
                             <div class="select">
                                 <select id="defLang" name="defLang">
                                     <option value="en">English (default)</option>';
@@ -199,7 +202,7 @@ class Admin extends WidgetBase {
                         
         $html .= '
                     <div class="element">
-                        <label for="da">'.t('Environment').'</label>
+                        <label for="da">'.$this->__('general.environment').'</label>
                             <div class="select">
                                 <select id="environment" name="environment">';
                                     
@@ -219,29 +222,19 @@ class Admin extends WidgetBase {
 
         $html .= '
                     <div class="element">
-                            <label for="sizeLimit">'.t('User folder size limit (in bytes)').'</label>
+                            <label for="sizeLimit">'.$this->__('general.limit').'</label>
                             <input type="text" name="sizeLimit" id="sizeLimit" value="'.$this->_conf['sizeLimit'].'" />
                     </div>';
-        /*
-        $logopts = array(
-            0 => t('empty'),
-            2 => t('terse'),
-            4 => t('normal'),
-            6 => t('talkative'),
-            7 => t('ultimate'),
-        );
-        
-        $default_log = 4;
-        */
 
         $logopts = array(
             0 => t('Empty'),
             1 => t('Syslog'),
             2 => t('Syslog and Files')
         );
+        
         $html .= '
                     <div class="element">
-                        <label for="logLevel">'.t("Log verbosity").'</label>
+                        <label for="logLevel">'.$this->__('general.log_verbosity').'</label>
                         <div class="select">
                             <select id="logLevel" name="logLevel">';
                                 foreach($logopts as $lognum => $text) {
@@ -264,7 +257,7 @@ class Admin extends WidgetBase {
                     
         $html .= '
                     <div class="element">
-                        <label for="timezone">'.t("Server Timezone").'</label>
+                        <label for="timezone">'.$this->__('general.timezone').'</label>
                         <div class="select">
                             <select id="timezone" name="timezone">';
                                 foreach($timezones as $key => $value) {
@@ -292,26 +285,26 @@ class Admin extends WidgetBase {
                 
         $html .= '
             <fieldset>
-                <legend>'.t("Bosh Configuration").'</legend>
+                <legend>'.$this->__('bosh.title').'</legend>
                     <div class="clear"></div>';
                     
         $html .= '<p>'.
-                    t("Enter here the BOSH-URL in the form: http(s)://domain:port/path.").' '.
-                    t('If you enter an open BOSH-Server, you can connect to many XMPP-Servers.').' '.
-                    t('If it is closed, you have to specify the corresponding Server on the next page.').' '.
-                    t('If you are unsure about this config option visit the %swiki%s', '<a href="http://wiki.movim.eu/install">', '</a>');
+                    $this->__('bosh.info1').' '.
+                    $this->__('bosh.info2').' '.
+                    $this->__('bosh.info3').' '.
+                    $this->__('bosh.info4', '<a href="http://wiki.movim.eu/install">', '</a>');
                 '</p>';
                     
         if(!$this->testBosh($this->_conf['boshUrl'])) {
             $html .= '
                 <div class="message error">'.
-                    t('Your Bosh URL is not reachable').'
+                    t('bosh.not_recheable').'
                 </div>';
         }
                     
         $html .= '
                     <div class="element">
-                        <label for="boshUrl">'.t("Bosh URL").'</label>
+                        <label for="boshUrl">'.$this->__('bosh.label').'</label>
                         <input type="text" id="boshUrl" name="boshUrl" value="'.$this->_conf['boshUrl'].'"/>
                     </div>';
                     
@@ -322,19 +315,16 @@ class Admin extends WidgetBase {
         
         $html .= '
             <fieldset>
-                <legend>'.t("Whitelist - XMPP Server").'</legend>
+                <legend>'.$this->__('whitelist.title').'</legend>
                     <div class="clear"></div>';                    
         
-        $html .= '<p>'.
-                    t("If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)").
-                '</p>'.
-                '<p>'.
-                    t("Leave this field blank if you allow the access to all the XMPP accounts.").
-                '</p>';
+        $html .= 
+            '<p>'.$this->__('whitelist.info1').'</p>'.
+            '<p>'.$this->__('whitelist.info2').'</p>';
                 
         $html .= '
                     <div class="element large">
-                            <label for="xmppWhiteList">'.t("List of whitelisted XMPP servers").'</label>
+                            <label for="xmppWhiteList">'.$this->__('whitelist.label').'</label>
                             <input type="text" name="xmppWhiteList" id="xmppWhiteList" value="'.$this->_conf['xmppWhiteList'].'" />
                     </div>';
 
@@ -345,19 +335,19 @@ class Admin extends WidgetBase {
             
         $html .= '
             <fieldset>
-                <legend>'.t("Information Message").'</legend>
+                <legend>'.$this->__('information.title').'</legend>
                     <div class="clear"></div>';                    
         
         $html .= '<p>'.
-                    t("This message will be displayed on the login page").
+                    $this->__('information.info1').
                 '</p>'.
                 '<p>'.
-                    t("Leave this field blank if you don't want to show any message.").
+                    $this->__('information.info2').
                 '</p>';
                 
         $html .= '
                     <div class="element large">
-                            <label for="info">'.t("Information Message").'</label>
+                            <label for="info">'.$this->__('information.label').'</label>
                             <textarea type="text" name="info" id="info" />'.$this->_conf['info'].'</textarea>
                     </div>';
 
@@ -368,28 +358,28 @@ class Admin extends WidgetBase {
             
         $html .= '
             <fieldset>
-                <legend>'.t("Administration Credential").'</legend>';
+                <legend>'.$this->__('credentials.title').'</legend>';
                     
         if($this->_conf['user'] == 'admin' || $this->_conf['pass'] == sha1('password')) {
             $html .= '
                 <div class="message error">'.
-                    t('Change the default credentials admin/password').'
+                    $this->__('credentials.info').'
                 </div>';
         }
             
         $html .= '
                     <div class="element" >
-                        <label for="username">'.t("Username").'</label>
+                        <label for="username">'.$this->__('credentials.username').'</label>
                         <input type="text" id="user" name="user" value="'.$this->_conf['user'].'"/>
                     </div>
                     <div class="clear"></div>
                     
                     <div class="element">
-                        <label for="pass">'.t("Password").'</label>
+                        <label for="pass">'.$this->__('credentials.password').'</label>
                         <input type="password" id="pass" name="pass" value=""/>
                     </div>                            
                     <div class="element">
-                        <label for="repass">'.t("Retype password").'</label>
+                        <label for="repass">'.$this->__('credentials.re_password').'</label>
                         <input type="password" id="repass" name="repass" value=""/>
                     </div>    ';
 

@@ -19,9 +19,10 @@ class ContactInfo extends WidgetCommon
 {    
     function load()
     {
+    	$this->addcss('contactinfo.css');
         $this->registerEvent('tune', 'onTune');    
     }
-    
+
     function onTune($from)
     {
         $html = $this->prepareContactInfo($from);     
@@ -43,24 +44,24 @@ class ContactInfo extends WidgetCommon
             if($c->mood) {
                 $moodarray = getMood();
                 
-                $html .= '<h2>'.t('Mood').'</h2>';
+                $html .= '<h2>'.$this->__('mood.title').'</h2>';
                 $mood = '';
                 foreach(unserialize($c->mood) as $m)
                     $mood .= $moodarray[$m].',';
-                $html .= t("I'm ").substr($mood, 0, -1).'<br />';
+                $html .= $this->__('mood.im').substr($mood, 0, -1).'<br />';
             }
             
             // Tune
             if($c->tuneartist || $c->tunetitle) {
                 $album = $artist = $title = $img = '';
                 
-                $html .= '<h2>'.t('Listening').'</h2>';
+                $html .= '<h2>'.$this->__('listen.title').'</h2>';
                 if($c->tuneartist)
                     $artist = $c->tuneartist. ' - ';
                 if($c->tunetitle)
                     $title = $c->tunetitle;
                 if($c->tunesource)
-                    $album = t('on').' '.$c->tunesource;
+                    $album = $this->__('listen.on').' '.$c->tunesource;
                     
                 if($c->tunesource) {
                     $l = str_replace(
@@ -79,8 +80,6 @@ class ContactInfo extends WidgetCommon
                     $url = $json->album->url;
                     if(isset($img) && $img != '') {
                         $img = '
-                            <br />
-                            <br />
                             <a href="'.$url.'" target="_blank">
                                 <img src="'.$img.'"/>
                             </a>';
@@ -94,7 +93,7 @@ class ContactInfo extends WidgetCommon
             if($c->delay != null 
                 && $c->delay 
                 && $c->delay != '0000-00-00 00:00:00') {
-                $html .= '<h2>'.t('Last seen').'</h2>';
+                $html .= '<h2>'.$this->__('last.title').'</h2>';
                 $html .= prepareDate(strtotime($c->delay)).'<br />';
             }
 
@@ -108,15 +107,7 @@ class ContactInfo extends WidgetCommon
                 $cad = new \Modl\CapsDAO();
                 $caps = $cad->get($node);
 
-                $clienttype = 
-                    array(
-                        'bot' => t('Bot'),
-                        'pc' => t('Desktop'),
-                        'phone' => t('Phone'),
-                        'handheld' => t('Phone'),
-                        'web' => t('Web'),
-                        'registered' => t('Registered')
-                        );
+                $clienttype = getClientTypes();
                         
                 if(isset($caps) && $caps->name != '' && $caps->type != '' ) {
                     $cinfos = '';
@@ -127,15 +118,13 @@ class ContactInfo extends WidgetCommon
                     
                     $cinfos .=  $caps->name.$type.'<br />';
                     
-                    $html .='<h2>'.t('Client Informations').'</h2>' . $cinfos;
+                    $html .='<h2>'.$this->__('client.title').'</h2>' . $cinfos;
                 }
             }
 
             // Accounts
             if($c->twitter && $c->twitter != '') {
                 $html .= '
-                    <br />
-                    <br />
                     <a
                         class="button color blue icon twitter"
                         target="_blank"
@@ -144,8 +133,6 @@ class ContactInfo extends WidgetCommon
             
             if($c->skype && $c->skype != '') {
                 $html .= '
-                    <br />
-                    <br />
                     <a
                         class="button color green icon skype"
                         target="_blank"
@@ -154,8 +141,6 @@ class ContactInfo extends WidgetCommon
             
             if($c->yahoo && $c->yahoo != '') {
                 $html .= '
-                    <br />
-                    <br />
                     <a
                         class="button color purple icon yahoo"
                         target="_blank"
@@ -166,13 +151,5 @@ class ContactInfo extends WidgetCommon
         }
         
         return $html;
-    }
-    
-    function build() {
-        ?>
-        <div id="contactinfo">
-            <?php echo $this->prepareContactInfo($_GET['f']); ?>
-        </div>  
-        <?php
     }
 }

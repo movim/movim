@@ -9,10 +9,10 @@ class AdminController extends BaseController {
         session_start();
         
         if(isset($_SESSION['admin']) && $_SESSION['admin'] == true) {            
-            $this->page->setTitle(t('%s - Administration Panel', APP_TITLE));
+            $this->page->setTitle(__('title.administration', APP_TITLE));
 
-            $this->page->menuAddLink(t('Home'), 'main');
-            $this->page->menuAddLink(t('Administration'), 'admin', true);
+            $this->page->menuAddLink(__('page.home'), 'main');
+            $this->page->menuAddLink(__('page.administration'), 'admin', true);
         } else {
             $this->name = 'adminlogin';
         }

@@ -6,13 +6,13 @@
  */
 function getDays() {
     return array(
-        1 => t('Monday'),
-        2 => t('Tuesday'),
-        3 => t('Wednesday'),
-        4 => t('Thursday'),
-        5 => t('Friday'),
-        6 => t('Saturday'),
-        7 => t('Friday'));
+        1 => __('day.monday'),
+        2 => __('day.tuesday'),
+        3 => __('day.wednesday'),
+        4 => __('day.thursday'),
+        5 => __('day.friday'),
+        6 => __('day.saturday'),
+        7 => __('day.sunday'));
 }
 /**
  * Return a human-readable year
@@ -20,18 +20,18 @@ function getDays() {
  */
 function getMonths() {
     return array(
-        1 => t('January'),
-        2 => t('February'),
-        3 => t('March'),
-        4 => t('April'),
-        5 => t('May'),
-        6 => t('June'),
-        7 => t('July'),
-        8 => t('August'),
-        9 => t('September'),
-        10 => t('October'),
-        11 => t('November'),
-        12 => t('December'));
+        1 => __('month.january'),
+        2 => __('month.february'),
+        3 => __('month.march'),
+        4 => __('month.april'),
+        5 => __('month.may'),
+        6 => __('month.june'),
+        7 => __('month.july'),
+        8 => __('month.august'),
+        9 => __('month.september'),
+        10 => __('month.october'),
+        11 => __('month.november'),
+        12 => __('month.december'));
 }
 
 function getTimezoneCorrection() {
@@ -58,20 +58,20 @@ function prepareDate($time, $hours = true) {
     $reldays = ($time - $today)/86400;
 
     if ($reldays >= 0 && $reldays < 1) {
-        $date = t('Today');
+        $date = __('date.today');
     } else if ($reldays >= 1 && $reldays < 2) {
-        $date = t('Tomorrow');
+        $date = __('date.tomorrow');
     } else if ($reldays >= -1 && $reldays < 0) {
-        $date = t('Yesterday');
+        $date = __('date.yesterday');
     } else {
 
         if (abs($reldays) < 7) {
             if ($reldays > 0) {
                 $reldays = floor($reldays);
-                $date = 'In ' . $reldays . ' '.t('day') . ($reldays != 1 ? 's' : '');
+                $date = 'In ' . $reldays . ' '.__('date.day') . ($reldays != 1 ? 's' : '');
             } else {
                 $reldays = abs(floor($reldays));
-                $date = t(' %d days ago', $reldays);
+                $date = __('date.ago', $reldays);
             }
         } else {
             $date = $dotw[date('N',$time ? $time : time())] .', '.date('j',$time ? $time : time()).' '.$moty[date('n',$time ? $time : time())] ;

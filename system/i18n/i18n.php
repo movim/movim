@@ -30,7 +30,8 @@
 require_once('languages.php');
 
 $language = "";
-$translations = array();
+$hash = array();
+$translationshash = array();
 
 /**
  * Translates strings into the given langage.
@@ -61,8 +62,20 @@ function t($string)
         $args[0] = $lstring; // Replacing with the translated string.
         $lstring = call_user_func_array("sprintf", $args);
     }
-
+    
     return $lstring;
+}
+
+function __() {
+    global $translationshash;
+    
+    $args = func_get_args();
+    if(array_key_exists($args[0], $translationshash)) {
+        $args[0] = $translationshash[$args[0]];
+        return call_user_func_array('t', $args);
+    } else {
+        return $args[0];
+    }
 }
 
 function getQuotedString($string)
@@ -148,7 +161,7 @@ function loadLanguageAuto()
         if($key == 'en') {
             loadLanguage(Conf::getServerConfElement('defLang'));
             $langNotFound = false;
-        } elseif(file_exists(DOCUMENT_ROOT . '/locales/' . $key . '.po')) {
+        } elseif(file_exists(LOCALES_PATH . $key . '.po')) {
             loadLanguage($key);
             $langNotFound = false;
         }
@@ -162,17 +175,22 @@ function loadLanguage($lang)
 {
     global $translations;
     global $language;
+    global $translationshash;
 
     if($lang == $language) {
         return true;
     }
 
     // Here we load the compiled language file
-    if(file_exists(DOCUMENT_ROOT . '/cache/locales/' . $lang . '.php')) {
+    if(file_exists(CACHE_PATH . '/locales/' . $lang . '.php')) {
         // And we set our global $translations
-        require_once(DOCUMENT_ROOT . '/cache/locales/' . $lang . '.php');
+        require_once(CACHE_PATH . '/locales/' . $lang . '.php');
     } else
-        $translations = parseLangFile(DOCUMENT_ROOT . '/locales/' . $lang . '.po');
+        $translations = parseLangFile(LOCALES_PATH . $lang . '.po');
+        
+    if(file_exists(LOCALES_PATH . 'locales.ini')) {
+        $translationshash = parse_ini_file(LOCALES_PATH . 'locales.ini');
+    }
 
     $language = $lang;
 
@@ -219,7 +237,7 @@ function loadExtraLang($directory)
 
 function loadLangArray() {
     $lang_list = get_lang_list();
-    $dir = scandir(DOCUMENT_ROOT . '/locales/');
+    $dir = scandir(LOCALES_PATH);
     $po = array();
     foreach($dir as $files) {
         $explode = explode('.', $files);

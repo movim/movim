@@ -20,5 +20,5 @@ function MovimLazy()
     };
 }
 
-var lazy = new MovimLazy();
+//var lazy = new MovimLazy();
 //movim_add_onload(function() { lazy.init() });

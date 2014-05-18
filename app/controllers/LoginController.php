@@ -6,10 +6,10 @@ class LoginController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(t('%s - Login to Movim', APP_TITLE));
+        $this->page->setTitle(__('title.login', APP_TITLE));
         
-        $this->page->menuAddLink(t('Home'), 'main', true);
-        $this->page->menuAddLink(t('Discover'), 'discover');
-        $this->page->menuAddLink(t('About'), 'about');
+        $this->page->menuAddLink(__('page.home'), 'main', true);
+        $this->page->menuAddLink(__('page.discover'), 'discover');
+        $this->page->menuAddLink(__('page.about'), 'about');
     }
 }

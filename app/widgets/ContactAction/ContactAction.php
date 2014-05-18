@@ -67,7 +67,7 @@ class ContactAction extends WidgetCommon
             
                 $presences = getPresences();
                 
-                $html .='<h2>'.t('Actions').'</h2>';
+                $html .='<h2>'.$this->__('title').'</h2>';
                 
                 $ptoc = array(
                     1 => 'green',
@@ -75,7 +75,7 @@ class ContactAction extends WidgetCommon
                     3 => 'red', 
                     4 => 'purple'
                         );
-                
+
                 if(isset($c->presence) && !in_array($c->presence, array(5, 6))) {
                     $html .= '
                         <a
@@ -84,7 +84,7 @@ class ContactAction extends WidgetCommon
                             id="friendchat"
                             onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$c->jid."'").'"
                         >
-                            '.$presences[$c->presence].' - '.t('Chat').'
+                            '.$presences[$c->presence].' - '.$this->__('chat').'
                         </a>';
                 }
             }
@@ -119,7 +119,7 @@ class ContactAction extends WidgetCommon
                     $this->genCallAjax("ajaxUnsubscribeContact", "'".$_GET['f']."'").
                 'this.className=\'button color green icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
-                '.t('Yes').'
+                '.__('button.yes').'
             </a>
 
             <a
@@ -132,11 +132,11 @@ class ContactAction extends WidgetCommon
                     this.style.display = \'none\'
                 "
             >
-                '.t('No').'
+                '.__('button.no').'
             </a>';
         } elseif($_GET['f'] != $this->user->getLogin()) {
                             
-            $html .='<h2>'.t('Actions').'</h2>';
+            $html .='<h2>'.$this->__('actions').'</h2>';
             
             $html .='
             <a
@@ -148,7 +148,7 @@ class ContactAction extends WidgetCommon
                 $this->genCallAjax("ajaxSubscribeContact", "'".$_GET['f']."'").
                 'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 3000);"
             >
-                '.t('Invite this user').'
+                '.$this->__('invite').'
             </a>';
         }
         

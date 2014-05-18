@@ -1,4 +1,4 @@
-<div class="tabelem" title="{$c->t('Feed')}" id="blog" >
+<div class="tabelem" title="{$c->__('page.feed')}" id="blog" >
     <h1>{$title}</h1>
     <div class="posthead">
         <a 
@@ -6,7 +6,7 @@
             href="{$feed}"
             target="_blank"
         >
-            {$c->t('Feed')} (Atom)
+            {$c->__('page.feed')} (Atom)
         </a>
     </div>
 

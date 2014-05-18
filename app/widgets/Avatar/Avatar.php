@@ -72,13 +72,13 @@ class Avatar extends WidgetBase
     function onAvatarPublished()
     {
         RPC::call('movim_button_reset', '#avatarvalidate');
-        Notification::appendNotification(t('Avatar Updated'), 'success');
+        Notification::appendNotification($this->__('avatar.updated'), 'success');
         RPC::commit();
     }
     
     function onAvatarNotPublished()
     {
-        Notification::appendNotification(t('Avatar Not Updated'), 'error');
+        Notification::appendNotification($this->__('avatar.not_updated'), 'error');
         RPC::commit();
     }
     

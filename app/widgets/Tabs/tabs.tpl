@@ -1,3 +1,1 @@
-<ul id="navtabs">
-
-</ul>
+<ul id="navtabs"></ul>

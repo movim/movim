@@ -44,16 +44,8 @@ class Notifs extends WidgetCommon
               
         $html = '
             <div id="notifslist">
-                <!--<a 
-                    class="button icon color green refresh" 
-                    style="margin: 0.5em;"
-                    onclick="'.$this->genCallAjax("ajaxGetNotifications").';
-                            this.innerHTML = \''.t('Updating').'\'; 
-                            this.className= \'button color orange icon loading\';
-                            this.onclick=null;">
-                    '.t('Refresh').'
-                </a>-->
                 <ul>';
+                
             // XMPP notifications
             $notifs = Cache::c('activenotifs');
 
@@ -62,49 +54,11 @@ class Notifs extends WidgetCommon
             
             
             if(sizeof($notifs) != 0) {
-                $notifsnum += sizeof($notifs);
-                
-                /*$html .= '
-                <li class="title">'.
-                    t('Notifications').'
-                    <span class="num">'.sizeof($notifs).'</span>
-                </li>';*/
-                
                 foreach($notifs as $n => $val) {
                     if($val == 'sub')
                         $html .= $this->prepareNotifInvitation($n);
-                    //else
-                    //    $html .= $val;
                 }
-            
-            }           
-            
-            // Contact request pending
-            /*$cd = new \modl\ContactDAO();
-            $subscribes = $cd->getRosterSubscribe();
-            
-            if(sizeof($subscribes) != 0) {
-                $notifsnum += sizeof($subscribes);
-                
-                $html .= '
-                <li class="title">'.
-                    t('Contact request pending').'
-                    <span class="num">'.sizeof($subscribes).'</span>
-                </li>';
-                
-                foreach($subscribes as $s) {
-                    $html .= '
-                        <li>
-                            <a href="'.Route::urlize('friend', $s->jid).'">
-                            <img class="avatar" src="'.$s->getPhoto('s').'" />
-                            '.
-                                $s->getTrueName().'
-                            </a>
-                        </li>';
-                }
-            
             }
-            */
             
         $html .= '
                 </ul>
@@ -172,7 +126,7 @@ class Notifs extends WidgetCommon
         $html .= '
             <li>
                 <form id="acceptcontact">
-                    <p>'.$from.' '.t('wants to talk with you'). '</p>
+                    <p>' . $this->__('wants_to_talk', $from) . '</p>
            
                         <a 
                             class="button color green icon add merged left " 

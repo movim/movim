@@ -92,7 +92,7 @@ class WidgetCommon extends WidgetBase {
                     <a 
                         target="_blank" 
                         href="http://www.openstreetmap.org/?lat='.$post->lat.'&lon='.$post->lon.'&zoom=10"
-                    >'.t('Place').'</a>
+                    >'.__('post.place').'</a>
                 </span>';
 
         if(filter_var($post->jid, FILTER_VALIDATE_EMAIL) && $post->jid != '')
@@ -174,7 +174,6 @@ class WidgetCommon extends WidgetBase {
     }
     
     private function printTags($tags) {
-        //$html = '<br />';
         $html = '';
         
         $tags = unserialize($tags);
@@ -283,15 +282,15 @@ class WidgetCommon extends WidgetBase {
     private function prepareAuthor($post) {
         $html = $content = '';
         if($post->aname != null) {
-            $content .= ' <span>'.t('by').'</span> '.$post->aname;
+            $content .= ' <span>'.__('post.by').'</span> '.$post->aname;
         }
 
         if($post->aemail != null) {
-            $content .= ' <span>'.t('email').'</span> '.$post->aemail;
+            $content .= ' <span>'.__('post.email').'</span> '.$post->aemail;
         }
 
         if($post->aid != null) {
-            $content .= ' <span>'.t('jid').'</span> '.$post->aid;
+            $content .= ' <span>'.__('post.jid').'</span> '.$post->aid;
         }
         
         if($content .= '')
@@ -488,7 +487,7 @@ class WidgetCommon extends WidgetBase {
                             com = this.parentNode.querySelectorAll(\'.comment\'); 
                             for(i = 0; i < com.length; i++) { com.item(i).style.display = \'block\';};
                             this.style.display = \'none\';">
-                        <a class="getcomments icon chat">'.t('Show the older comments').'</a>
+                        <a class="getcomments icon chat">'.__('post.comments_older').'</a>
                     </article>';
             $comcounter = $size - 3;
         }
@@ -577,7 +576,7 @@ class WidgetCommon extends WidgetBase {
             $content = Markdown::defaultTransform($content);
             RPC::call('movim_fill', 'postpreviewcontent' , $content);
         } else
-            RPC::call('movim_fill', 'postpreviewcontent' , t('No content'));
+            RPC::call('movim_fill', 'postpreviewcontent' , __('post.empty'));
 
         RPC::commit();
     }
@@ -640,7 +639,7 @@ class WidgetCommon extends WidgetBase {
             <div class="comment">
                 <a 
                     class="getcomments icon chat" >'.
-                    t('No comments').
+                    __('post.no_comments').
                 '</a>
             </div>';
         RPC::call('movim_fill', $parent.'comments', $html);
@@ -651,7 +650,7 @@ class WidgetCommon extends WidgetBase {
             <div class="comment">
                 <a 
                     class="getcomments icon chat" >'.
-                    t('No comments stream').
+                    __('post.no_comments_stream').
                 '</a>
             </div>';
         RPC::call('movim_fill', $parent.'comments', $html);
