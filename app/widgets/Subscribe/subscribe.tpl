@@ -1,13 +1,13 @@
 <div id="subscribe">
-    <h1>{$c->t('Create a new account')}</h1>
+    <h1>{$c->__('subscribe.title')}</h1>
 
-    <p class="paddedtop">{$c->t('Movim is a decentralized social network, before creating a new account you need to choose a server to register.')}</p>
+    <p class="paddedtop">{$c->__('subscribe.info')}</p>
 
     {loop="$servers"}
     <div
-        class="block {if="$value->checked"}star{/if}"
+        class="block"
         onclick="movim_redirect('{$c->route('accountnext', array($value->fn->text, false))}')">
-        <div class="server">
+        <div class="server {if="$value->checked"}star{/if}">
             <h1>{$value->fn->text}</h1>
 
             <img
@@ -26,10 +26,10 @@
 
     <div class="block">
         <div class="server">
-            <h1>{$c->t('Your server here ?')}</h1>
+            <h1>{$c->__('subscribe.server_question')}</h1>
 
             <p>
-                {$c->t('Contact us to add yours to the officially supported servers list')} • <a href="http://movim.eu/">http://movim.eu/</a>
+                {$c->__('subscribe.server_contact')} • <a href="http://movim.eu/">http://movim.eu/</a>
             </p>
         </div>
     </div>

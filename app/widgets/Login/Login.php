@@ -35,7 +35,7 @@ class Login extends WidgetBase {
         $this->view->assign('submit_event', 
             'document.getElementById(\'submitb\').click();
             '.$submit.'
-            loginButtonSet(\''.t('Connecting...').'\', true);
+            loginButtonSet(\''.$this->__('button.connecting').'\', true);
             localStorage.username = document.querySelector(\'#login\').value;
             this.onclick=null;');
 
@@ -62,11 +62,11 @@ class Login extends WidgetBase {
         $this->view->assign('connected', $connected);
         
         $this->view->assign('gmail',
-            t('%sGmail accounts are also compatible%s but are not fully supported',
+            $this->__('account.gmail',
                 '<a href="#" onclick="fillExample(\'your.id@gmail.com \', \'\');">', '</a>'));
                 
         $this->view->assign('facebook',
-            t('You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password',
+            $this->__('account.facebook',
                 '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
         
         $conf = Conf::getServerConf();
@@ -96,90 +96,90 @@ class Login extends WidgetBase {
                 case 'noaccount':
                     $warning = '
                             <div class="message warning">
-                                '.t('Wrong username').'
+                                '.$this->__('error.username').'
                             </div> ';
                     break;
                 case 'invalidjid':
                     $warning = '
                             <div class="message warning">
-                                '.t('Invalid JID').'
+                                '.$this->__('error.jid').'
                             </div> ';
                     break;
                 case 'errormechanism':
                     $warning = '
                             <div class="message error">
-                                '.t('Authentication mechanism not supported by Movim').'
+                                '.$this->__('error.mechanism').'
                             </div> ';
                     break;
                 case 'errorchallenge':
                     $warning = '
                             <div class="message error">
-                                '.t('Empty Challenge from the server').'
+                                '.$this->__('error.empty_challenge').'
                             </div> ';
                     break;
                 case 'dnsdomain':
                     $warning = '
                             <div class="message error">
-                                '.t('XMPP Domain error, your account is not a correct Jabber ID').'
+                                '.$this->__('error.dns').'
                             </div> ';
                     break;
                 case 'datamissing':
                     $warning = '
                             <div class="message error">
-                                '.t('Some data are missing !').'
+                                '.$this->__('error.data_missings').'
                             </div> ';
                     break;
                 case 'wrongpass':
                     $warning = '
                             <div class="message warning">
-                                '.t('Wrong password').'
+                                '.$this->__('error.wrong_password').'
                             </div> ';
                     break;
                 case 'failauth':
                     $warning = '
                             <div class="message warning">
-                                '.t('The XMPP authentification failed').'
+                                '.$this->__('error.fail_auth').'
                             </div> ';
                     break;
                 case 'bosherror':
                     $warning = '
                             <div class="message error">
-                                '.t('The current BOSH URL in invalid').'
+                                '.$this->__('error.bosh_invalid').'
                             </div> ';
                     break;
                 case 'internal':
                     $warning = '
                             <div class="message error">
-                                '.t('Internal server error').'
+                                '.$this->__('error.internal').'
                             </div> ';
                     break;
                 case 'session':
                     $warning = '
                             <div class="message error">
-                                '.t('Session error').'
+                                '.$this->__('error.session').'
                             </div> ';
                     break;
                 case 'acccreated':
                     $warning = '
                             <div class="message success">
-                                '.t('Account successfully created').'
+                                '.$this->__('error.account_created').'
                             </div> ';
                     break;
                 case 'wrongaccount':
                     $warning = '
                             <div class="message error">
-                                '.t('Movim failed to authenticate. You entered wrong data').'
+                                '.$this->__('error.wrong_account').'
                             </div> ';
                     break;
                 case 'serverunauthorized':
                     $warning = '
                             <div class="message warning">
-                                '.t('Your XMPP server is unauthorized').'
+                                '.$this->__('error.xmpp_unauthorized').'
                             </div>';
                 case 'mecerror':
                     $warning = '
                             <div class="message warning">
-                                '.t('The server takes too much time to respond').'
+                                '.$this->__('error.mec_error').'
                             </div>';
                     break;
                 default: 
@@ -194,7 +194,7 @@ class Login extends WidgetBase {
                 return $warning;
             else {
                 RPC::call('movim_fill', 'warning', $warning);
-                RPC::call('loginButtonSet', t("Come in!"));
+                RPC::call('loginButtonSet', $this->__("button.come_in"));
 
                 RPC::commit();
 

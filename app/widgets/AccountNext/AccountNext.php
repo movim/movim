@@ -35,7 +35,7 @@ class AccountNext extends WidgetBase {
         } else {
             $this->view->assign('servers', false);
         }
-
+        
         $this->view->assign(
                     'getsubscriptionform',
                     $this->genCallAjax('ajaxDiscoverServer', "'".$_GET['s']."'")
@@ -139,7 +139,7 @@ class AccountNext extends WidgetBase {
             } else {
                 $html = '
                     <div class="message warning">
-                        '.t('No account creation form founded on the server').'
+                        '.$this->__('create.notfound').'
                     </div>';
             }
 

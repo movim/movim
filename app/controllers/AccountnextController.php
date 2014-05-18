@@ -6,9 +6,9 @@ class AccountnextController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(t('%s - Account', APP_TITLE));
+        $this->page->setTitle(__('title.account', APP_TITLE));
         
-        $this->page->menuAddLink(t('Home'), 'main');
-        $this->page->menuAddLink(t('Account Creation'), 'account', true);
+        $this->page->menuAddLink(__('page.home'), 'main');
+        $this->page->menuAddLink(__('page.account_creation'), 'account', true);
     }
 }

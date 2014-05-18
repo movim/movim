@@ -53,7 +53,7 @@ class Location extends WidgetBase
               ->setGeo($geo)
               ->request();
         } else {
-            Notification::appendNotification(t('Wrong position'), 'error');
+            Notification::appendNotification($this->__('wrong_postition'), 'error');
         }
     }
     
@@ -62,7 +62,7 @@ class Location extends WidgetBase
         $html = $me->getPlace();
         RPC::call('movim_fill', 'mapdata', $html);
         
-        Notification::appendNotification(t('Location updated'), 'success');
+        Notification::appendNotification($this->__('updated'), 'success');
         RPC::commit();
     }
     
@@ -110,21 +110,5 @@ class Location extends WidgetBase
             </div>';
         
         return $html;
-    }
-    
-    function build()
-    {
-        ?>
-        <div class="tabelem padded" title="<?php echo t('Location'); ?>" id="location" >
-            <div class="protect orange" title="<?php echo getFlagTitle('orange'); ?>"></div>
-            <form>
-                <fieldset>
-                    <legend><?php echo t('Location'); ?></legend>
-                    <div class="clear"></div>
-                    <?php echo $this->prepareProfileData(); ?>
-                </fieldset>
-            </form>
-        </div>
-        <?php
     }
 }

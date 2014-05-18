@@ -1,11 +1,11 @@
 <form method="post" class="paddedtop">
     <fieldset>
         <div class="element">
-            <label for="username">{$c->t('Username')}</label>
+            <label for="username">{$c->__('input.username')}</label>
             <input type="text" name="username" class="content">
         </div>
         <div class="element">
-            <label for="password">{$c->t('Password')}</label>
+            <label for="password">{$c->__('input.password')}</label>
             <input type="password" name="password" class="content">
         </div>
         
@@ -14,6 +14,6 @@
             type="submit" 
             
             name="submit" 
-            value="{$c->t('Submit')}" />
+            value="{$c->__('button.submit')}" />
     </fieldset>
 </form>

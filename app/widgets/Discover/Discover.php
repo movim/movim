@@ -44,19 +44,4 @@ class Discover extends WidgetCommon {
 
         return $html;
     }
-
-    function build()
-    {
-    ?>
-        <div id="discover">
-            <h1><?php echo t('Last registered'); ?></h1>
-            <div class="paddedtopbottom">
-            </div>
-            <div id="contactsresult">
-                <?php echo $this->prepareContacts(); ?>
-            </div>
-        </div>
-    <?php
-
-    }
 }

@@ -8,10 +8,10 @@ class DiscoverController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(t('%s - Discover', APP_TITLE));
+        $this->page->setTitle(__('title.discover', APP_TITLE));
         
-        $this->page->menuAddLink(t('Home'), 'main');
-        $this->page->menuAddLink(t('Discover'), 'discover', true);
-        $this->page->menuAddLink(t('About'), 'about');
+        $this->page->menuAddLink(__('page.home'), 'main');
+        $this->page->menuAddLink(__('page.discover'), 'discover', true);
+        $this->page->menuAddLink(__('page.about'), 'about');
     }
 }
