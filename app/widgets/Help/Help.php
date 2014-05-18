@@ -29,7 +29,7 @@ class Help extends WidgetBase
         $this->view->assign('missing_info1', 
             $this->__(
                 'missing.info1', 
-                '<a href="http://wiki.movim.eu/dev:roadmaps" target="_blank">', 
+                '<a href="http://wiki.movim.eu/en:dev:roadmaps" target="_blank">', 
                 '</a>'));
         $this->view->assign('missing_info2', 
             $this->__(
@@ -42,7 +42,7 @@ class Help extends WidgetBase
                 '<a href="http://wiki.movim.eu/whoami#faq" target="_blank">', 
                 '</a>', 
                 '<a href="xmpp:movim@conference.movim.eu" target="_blank">movim@conference.movim.eu</a>', 
-                '<a href="http://wiki.movim.eu/mailing_list" target="_blank">', 
+                '<a href="http://wiki.movim.eu/en:mailing_list" target="_blank">', 
                 '</a>'));
     }
 }
