@@ -34,19 +34,10 @@ class Connection extends WidgetBase
             if($value == 0)
                 RPC::call('movim_fill', 'countdown', '');
             else {
-                RPC::call('movim_fill', 'countdown', t('Please wait ').$value);
+                RPC::call('movim_fill', 'countdown', $this->__('please_wait') . ' ' . $value);
             }
         } else
             RPC::commit();
-    }
-
-    function build()
-    {
-    ?>
-        <div id="connection">
-            <span id="countdown"></span>
-        </div>
-    <?php
     }
 }
 
