@@ -29,8 +29,16 @@ class ListGetFriends extends Errors
             $sub = array((string)$i->subscription["node"], (string)$i->subscription["server"], (string)$i->subscription->title);
             array_push($tab, $sub);
         }
-        
-        $evt->runEvent('groupsubscribedlist', $tab); 
+    
+        if(count($tab) == 0)
+            $evt->runEvent('groupsubscribedlisterror', ''); 
+        else
+            $evt->runEvent('groupsubscribedlist', $tab); 
+    }
+
+    public function errorFeatureNotImplemented($error) {
+        $evt = new \Event();
+        $evt->runEvent('groupsubscribedlisterror', $error); 
     }
 
     public function errorItemNotFound($error) {
@@ -38,3 +46,5 @@ class ListGetFriends extends Errors
         $evt->runEvent('groupsubscribedlisterror', $error); 
     }
 }
+
+
