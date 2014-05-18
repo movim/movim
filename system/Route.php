@@ -31,7 +31,7 @@ class Route extends \BaseController {
     }
     
     public function find() {
-        if(isset($_SERVER['HTTP_MOD_REWRITE']) || $_SERVER['HTTP_MOD_REWRITE']) {
+        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
             $request = explode('/', $this->fetchGet('query'));
             $this->_page = $request[0];
             array_shift($request);
@@ -73,7 +73,7 @@ class Route extends \BaseController {
                     $tab = '#'.$tab;
                 //We construct a classic URL if the rewriting is disabled
                 if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE']) {
-                    $uri = BASE_URI.'?q='.$page;
+                    $uri = '?q='.$page;
                     
                     if($params != false && is_array($params)) {
                         $i = 0;
@@ -87,7 +87,7 @@ class Route extends \BaseController {
                 } 
                 // Here we got a beautiful rewriten URL !
                 else {
-                    $uri = BASE_URI.$page;
+                    $uri = $page;
                     if($params != false && is_array($params))
                         foreach($params as $value)
                             $uri .= '/'.$value;

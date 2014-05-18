@@ -1,4 +1,4 @@
-#notification {
+#notification_widget {
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -7,7 +7,7 @@
     pointer-events: none;
 }
 
-#notification .notif {
+#notification_widget .notif {
     background-color: rgba(0, 0, 0, 0.8);
     width: 20em;
     max-width: 100%;
@@ -25,19 +25,19 @@
     background-image: url(img/success.png);
 }
 
-#notification .notif.error {
+#notification_widget .notif.error {
     background-image: url(img/error.png);
 }
 
-#notification .notif.warning {
+#notification_widget .notif.warning {
     background-image: url(img/warning.png);
 }
 
-#notification .notif.info {
+#notification_widget .notif.info {
     background-image: url(img/info.png);
 }
 
-#notification .notif:hover {
+#notification_widget .notif:hover {
     opacity: 0.4;
 }
 
@@ -75,7 +75,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-    #notification .notif {
+    #notification_widget .notif {
         width: 100%;
         box-sizing: border-box;
         -webkit-box-sizing: border-box;

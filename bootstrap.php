@@ -113,6 +113,7 @@ class Bootstrap {
         
         define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
+        define('WIDGETS_PATH',  DOCUMENT_ROOT . '/app/widgets/');
         
         if (!defined('DOCTYPE')) {
             define('DOCTYPE','text/html');
@@ -139,7 +140,7 @@ class Bootstrap {
 
         if($path == "") {
             $uri .= $_SERVER['HTTP_HOST'] ;
-        } else {
+        } elseif(isset($_SERVER['HTTP_HOST'])) {
             $uri .= str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
         }
 
@@ -171,6 +172,9 @@ class Bootstrap {
         // SDPtoJingle and JingletoSDP lib :)
         require_once(LIB_PATH . "SDPtoJingle.php");
         require_once(LIB_PATH . "JingletoSDP.php");
+        
+        // The Lazy page loader
+        require_once(LIB_PATH . "Lazy.php");
     }
 
     private function loadHelpers() {

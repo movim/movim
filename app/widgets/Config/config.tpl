@@ -1,15 +1,15 @@
-<div class="tabelem padded" title="{$c->t('Configuration')}" id="config" >
+<div class="tabelem padded" title="{$c->__('page.configuration')}" id="config" >
     <a 
         class="button color orange icon user"
         href="{$c->route('nodeconfig', array($me,'urn:xmpp:microblog:0'))}" 
         style="float: right;">
-        {$c->t('Feed Configuration')}
+        {$c->__('config.feed_configuration')}
     </a>
     <form enctype="multipart/form-data" method="post" action="index.php" name="general">
         <fieldset>
-            <legend>{$c->t('General')}</legend>
+            <legend>{$c->__('config.general')}</legend>
             <div class="element">
-                <label for="language">{$c->t('Language')}</label>
+                <label for="language">{$c->__('config.language')}</label>
                 <div class="select">
                     <select name="language" id="language">
                         <option value="en">English (default)</option>
@@ -30,19 +30,12 @@
                     </select>
                 </div>
             </div>
-            <!--<div class="element">
-                <label>{$c->t('Enable the chatbox ?')}</label>
-                <div class="checkbox">
-                    <input type="checkbox" id="chatbox" name="chatbox" {$chatbox}/>
-                    <label for="chatbox"></label>
-                </div>
-            </div>-->
         </fieldset>
 
         <fieldset>
-            <legend>{$c->t('Appearence')}</legend>
+            <legend>{$c->__('config.appearence')}</legend>
             <div class="element">
-                <label for="color">{$c->t('Background color')}</label>                        
+                <label for="color">{$c->__('config.background_color')}</label> 
                 <a 
                     type="button" 
                     onclick="
@@ -50,7 +43,7 @@
                         document.body.style.backgroundColor = '#32434D';"
                     style="width: 45%; float: right;" 
                     class="button icon color purple back">
-                    {$c->t('Reset')}
+                    {$c->__('button.reset')}
                 </a>
                 <input 
                     style="box-shadow: none; width: 50%; float: left;"
@@ -67,7 +60,7 @@
             </div>
             
             <div class="element">
-                <label for="size">{$c->t('Font size')}</label>
+                <label for="size">{$c->__('config.font_size')}</label>
                 <a 
                     type="button" 
                     onclick="
@@ -76,7 +69,7 @@
                         slide.onchange();"
                     style="width: 30%; float: right;" 
                     class="button icon color purple back">
-                    {$c->t('Reset')}
+                    {$c->__('button.reset')}
                 </a>
                 <span>
                     12
@@ -112,7 +105,7 @@
             </div>
             
             <div class="element large">
-                <label for="pattern">{$c->t('Pattern')}</label>
+                <label for="pattern">{$c->__('button.reset')}</label>
                 
                 <input type="radio" name="pattern" id="argyle" value="argyle"/>
                 <label for="argyle"><span></span>
@@ -189,10 +182,9 @@
             type="button" 
             class="button icon yes color green" 
             style="float: right;">
-            {$c->t('Submit')}
+            {$c->__('button.submit')}
         </a>
-        <!--<a type="reset" value="{$c->t('Reset'); ?>" class="button icon no merged left" style="float: right;">-->
-        </p>
+        <div class="clear"></div>
     </form>
-    <div class="message info">{$c->t("This configuration is shared wherever you are connected !")}</div>
+    <div class="message info">{$c->__('config.info')}</div>
 </div>
