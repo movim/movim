@@ -1,20 +1,20 @@
-<div class="tabelem padded" title="{$c->t('Data')}" id="configdata" >
+<div class="tabelem padded" title="{$c->__('title')}" id="configdata" >
     <form enctype="multipart/form-data" method="post" action="index.php" name="general">
         <fieldset>
-            <legend>{$c->t('Cache')}</legend>
+            <legend>{$c->__('title.cache')}</legend>
             <div class="clear"></div>
             <div class="element thin">
-                <label for="name">{$c->t('Contact')} - {$stats.rosterlink}</label><br />
+                <label for="name">{$c->__('title.contacts')} - {$stats.rosterlink}</label><br />
                 <a 
                     type="button" 
                     class="button icon color red back"
-                    onclick="{$clearrosterlink}">{$c->t('Clear')}</a>
+                    onclick="{$clearrosterlink}">{$c->__('button.clear')}</a>
             </div>
         </fieldset>
 
     
         <fieldset>
-            <legend>{$c->t('Posts')} - {$stats.post}</legend>
+            <legend>{$c->__('title.posts')} - {$stats.post}</legend>
             <div class="clear"></div>
             <ul class="stats">
                 {loop="$pstats"}
@@ -33,12 +33,12 @@
                     type="button" 
                     name="email" 
                     class="button icon color red back"
-                    onclick="{$clearpost}">{$c->t('Clear')}</a>
+                    onclick="{$clearpost}">{$c->__('button.clear')}</a>
             </div>
         </fieldset>
         
         <fieldset>
-            <legend>{$c->t('Messages')} - {$stats.message}</legend>
+            <legend>{$c->__('title.messages')} - {$stats.message}</legend>
             <div class="clear"></div>
             <ul class="stats">
                 {loop="$mstats"}
@@ -57,7 +57,7 @@
                     type="button" 
                     name="email" 
                     class="button icon color red back"
-                    onclick="{$clearmessage}">{$c->t('Clear')}</a>
+                    onclick="{$clearmessage}">{$c->__('button.clear')}</a>
             </div>
         </fieldset>
     </form>

@@ -26,6 +26,12 @@ class ContactCard extends WidgetCommon
     	$this->addcss('contactcard.css');
 		$this->registerEvent('vcard', 'onVcard');
     }
+    
+    function display()
+    {
+        $cd = new \Modl\ContactDAO();
+        $this->view->assign('contact', $cd->get($_GET['f']));
+    }
 
     function onVcard($contact)
     {
@@ -119,7 +125,7 @@ class ContactCard extends WidgetCommon
                             
                 if($this->testIsSet($contact->adrlocality)) {
                     $locality = '<div class="element simple">
-                                <label for="desc">'.t('Locality').'</label>
+                                <label for="adrlocality">'.t('Locality').'</label>
                                 <span>'.$contact->adrlocality;
                     if($contact->adrpostalcode != 0)
                         $locality .= ' ('.$contact->adrpostalcode.')';
@@ -131,7 +137,7 @@ class ContactCard extends WidgetCommon
                             
                 if($this->testIsSet($contact->adrcountry))
                 $html .= '<div class="element simple">
-                            <label for="desc">'.t('Country').'</label>
+                            <label for="adrcountry">'.t('Country').'</label>
                             <span>'.$contact->adrcountry.'</span>
                           </div>';
             }
@@ -141,20 +147,5 @@ class ContactCard extends WidgetCommon
                 </form>';
         
         return $html;
-    }
-
-    function build()
-    {
-        $cd = new \Modl\ContactDAO();
-        $contact = $cd->get($_GET['f']);
-        ?>
-        <div class="tabelem paddedtop" title="<?php echo t('Profile'); ?>" id="contactcard">
-            <div style="position:relative;top:0px;right:-1.5em;" class="protect red" title="<?php echo getFlagTitle('red'); ?>"></div>
-            <?php
-            if(isset($contact))
-                echo $this->prepareContactCard($contact);
-            ?>
-        </div>
-        <?php
     }
 }

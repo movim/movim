@@ -54,7 +54,7 @@ class NodeConfig extends WidgetBase
     function onGroupDeleted($server) {
         $html = '
             <a href="'.Route::urlize('server', $server).'">
-                '.t("Return to %s's list of groups", $server).'
+                '.$this->__('group.delete_return', $server).'
             </a><br /><br />';
             
         Notification::appendNotification(t('Group deleted'), 'success');
@@ -63,7 +63,7 @@ class NodeConfig extends WidgetBase
     }
     
     function onGroupConfig($stanza) { 
-        Notification::appendNotification(t('Group configuration saved'), 'success');
+        Notification::appendNotification($this->__('group.config_saved'), 'success');
         RPC::commit();        
     }
     
@@ -83,7 +83,7 @@ class NodeConfig extends WidgetBase
                             this.style.display = \'none\'
                             "
                     >
-                        '.t('Validate').'
+                        '.__('button.validate').'
                 </a>
                 <br />
                 <br />

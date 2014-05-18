@@ -35,6 +35,10 @@ class Wall extends WidgetCommon
         $this->registerEvent('nostreamautorized', 'onNoStreamAutorized');
     }
     
+    function display() {
+        $this->view->assign('refresh', $this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"'));
+    }
+    
     function onNoStream() {
         $html = '<div style="padding: 1.5em; text-align: center;">Ain\'t Nobody Here But Us Chickens...</div>';
         RPC::call('movim_fill', 'wall', $html);
@@ -71,47 +75,16 @@ class Wall extends WidgetCommon
 
         $next = $start + 10;
         
-        $html = '';
-        
         if(count($pl) > 0 && $htmlmessages != false) {
-            if($start == -1) {
-                $html .= $this->printMap($pl, $c);
-                
-                $html .= '
-                        <div class="posthead spacetop">
-                                <a 
-                                    class="button color icon blog merged left" 
-                                    href="'.Route::urlize('blog',array($from, 'urn:xmpp:microblog:0')).'"
-                                    target="_blank"
-                                >
-                                    '.t('Blog').'
-                                </a><a 
-                                    class="button color orange icon feed merged right" 
-                                    href="'.Route::urlize('feed',array($from, 'urn:xmpp:microblog:0')).'"
-                                    target="_blank"
-                                >
-                                    '.t('Feed').' (Atom)
-                                </a>
-                                
-                                <a 
-                                    class="button color icon refresh" 
-                                    href="#"
-                                    onclick="'.$this->genCallAjax('ajaxWall', "'".$from."'").'
-                                        this.innerHTML = \''.t('Updating').'\'; 
-                                        this.className= \'button color orange icon merged right loading\';
-                                        this.onclick = \'return false;\'";
-                                >
-                                    '.t('Update').'
-                                </a>
-                        </div>';
-            }
-            
-            $html .= $htmlmessages;
-            if(count($pl) > 9)
-                $html .= '
-                    <div class="block large">
-                        <div class="older" onclick="'.$this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'").';  this.parentNode.style.display = \'none\'">'.t('Get older posts').'</div>
-                    </div>';
+            $wallhead = $this->tpl();
+            $wallhead->assign('start', $start);
+            $wallhead->assign('from', $from);
+            $wallhead->assign('posts', $htmlmessages);
+            $wallhead->assign('pl', $pl);
+            $wallhead->assign('map', $this->printMap($pl, $c));
+            $wallhead->assign('refresh', $this->genCallAjax('ajaxWall', "'".$from."'"));
+            $wallhead->assign('older', $this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'"));
+            $html = $wallhead->draw('_wall_head', true);
         }
         
         return $html;
@@ -131,29 +104,6 @@ class Wall extends WidgetCommon
     
     function ajaxSubscribe($jid) {
         $this->xmpp->subscribeNode($jid);
-    }
-
-    function build()
-    {
-        ?>
-        <div class="tabelem" id="wall" title="<?php echo t('Feed');?>" >
-            <div class="protect orange" title="<?php echo getFlagTitle("orange");?>"></div>
-            <div id="<?php echo stringToUri($_GET['f'].'urn:xmpp:microblog:0'); ?>">
-            <?php 
-                $wall = $this->prepareFeed(-1);
-                if($wall)
-                    echo $wall;
-                else {
-                ?>
-                    <div style="padding: 1.5em; text-align: center;">Ain't Nobody Here But Us Chickens...</div>
-                    <script type="text/javascript">
-                        <?php echo 'setTimeout(\''.$this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"').'\', 50);'; ?>
-                    </script>
-                <?php
-                } ?>
-            </div>
-       </div>
-        <?php
     }
 }
 

@@ -31,7 +31,7 @@ class News extends WidgetCommon {
                     <div 
                         class="older" 
                         onclick="'.$this->genCallAjax($function, "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
-                            t('Get older posts').'
+                            __('post.older').'
                     </div>
                 </div>';
         }   
@@ -64,7 +64,7 @@ class News extends WidgetCommon {
         if($html == '') 
             $html = '
                 <div class="message info" style="margin: 1.5em; margin-top: 0em;">'.
-                    t("Your feed cannot be loaded.").'
+                    __('post.no_load').'
                 </div>';
 
         RPC::call('movim_fill', 'refresh', '');
@@ -83,7 +83,7 @@ class News extends WidgetCommon {
                 <a class="button color green icon refresh"
                    onclick="'.$this->genCallAjax('ajaxRefresh').'"
                 >'.
-                    t("%s new items", $count).' - '.t('Refresh').'
+                    __('post.new_items', $count).' - '.__t('button.refresh').'
                 </a>';
                 
             RPC::call('movim_posts_unread', $count);

@@ -1,4 +1,4 @@
-<h2>{$c->t('Conferences')}</h2>
+<h2>{$c->__('title.conferences')}</h2>
 <ul>
     {loop="$conferences"}
         <li>
@@ -8,7 +8,7 @@
     {/loop}
 </ul>
 
-<h2>{$c->t('Groups')}</h2>
+<h2>{$c->__('title.groups')}</h2>
 {loop="$subscriptions"}
     {if="$c->checkNewServer($value)"}
         <a href="{$c->route('server', $value->server)}">

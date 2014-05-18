@@ -1,8 +1,8 @@
 <form name="avatarform" id="avatarform">
     <fieldset>
-        <legend>{$c->t('Avatar')}</legend>
+        <legend>{$c->__('page.avatar')}</legend>
         <div class="element">
-            <label for="avatar">{$c->t('Avatar')}</label>
+            <label for="avatar">{$c->__('page.avatar')}</label>
                 <img id="vCardPhotoPreview" src="data:image/jpeg;base64,{$photobin}">
             <br /><span id="picturesize" class="clean"></span><br /><br />
             
@@ -12,7 +12,7 @@
         </div>
 
         <div class="element" id="camdiv">
-            <label for="url">{$c->t('Webcam')}</label>
+            <label for="url">{$c->__('avatar.webcam')}</label>
             <video id="runningcam" class="squares" autoplay></video>
             <canvas style="display:none;"></canvas>
             
@@ -20,7 +20,7 @@
                 id="shoot" 
                 class="button icon preview color green" 
                 onclick="return false;">
-                {$c->t("Cheese !")}
+                {$c->__('avatar.cheese')}
             </a>
             <a
                 id="capture" 
@@ -28,7 +28,7 @@
                 onclick="
                     showVideo();
                     return false;">
-                {$c->t("Take a webcam snapshot")}
+                {$c->__('avatar.snapshot')}
             </a>
         </div>
     </fieldset>
@@ -42,5 +42,5 @@
         class="button icon color green yes"
         id="avatarvalidate"
         style="float: right;"
-        >{$c->t('Submit')}</a>
+        >{$c->__('button.submit')}</a>
 </form>

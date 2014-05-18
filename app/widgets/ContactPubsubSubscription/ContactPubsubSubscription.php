@@ -22,7 +22,6 @@ use Moxl\Xec\Action\PubsubSubscription\ListGetFriends;
 
 class ContactPubsubSubscription extends WidgetBase
 {
-
     function load()
     {
         $this->registerEvent('groupsubscribedlist', 'onGroupSubscribedList');
@@ -30,7 +29,13 @@ class ContactPubsubSubscription extends WidgetBase
         $this->addjs('contactpubsubsubscription.js');
     }
     
-    function prepareList($list) { 
+    function display()
+    {
+        $this->view->assign('refresh', $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"));
+    }
+    
+    function prepareList($list) 
+    { 
         if(is_array(array_slice($list, 0, 1))){
             $html = '<ul class="list">';
             
@@ -41,11 +46,12 @@ class ContactPubsubSubscription extends WidgetBase
             $html .= '</ul>';
             return $html;
         } else {
-            Notification::appendNotification(t('No public groups found'), 'info');
+            Notification::appendNotification($this->__('not_found'), 'info');
         }
     }
     
-    function onGroupSubscribedList($list) {
+    function onGroupSubscribedList($list) 
+    {
         $html = $this->prepareList($list);
         RPC::call('movim_fill', 'publicgroups', $html); 
     }
@@ -56,23 +62,10 @@ class ContactPubsubSubscription extends WidgetBase
         RPC::call('hidePubsubSubscription');
     }
     
-    function ajaxGetGroupSubscribedList($to){
+    function ajaxGetGroupSubscribedList($to)
+    {
         $r = new ListGetFriends;
         $r->setTo($to)->request();
-    }
-    
-    function build()
-    {
-        ?>
-        <div class="tabelem" title="<?php echo t('Public groups'); ?>" id="groupsubscribedlistfromfriend">
-            <div class="protect red" title="<?php echo getFlagTitle('red'); ?>"></div>
-            <h1><?php echo t('Public groups'); ?></h1>
-            <script type="text/javascript">
-                <?php echo $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"); ?>
-            </script>
-            <div id="publicgroups" class="paddedtop"></div>
-        </div>
-        <?php
     }
 }
 

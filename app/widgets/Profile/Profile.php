@@ -43,8 +43,8 @@ class Profile extends WidgetCommon
     
     function onMyPresence()
     {
-        RPC::call('movim_fill', 'statussaved', '✔ '.t('Saved')); 
-        Notification::appendNotification(t('Status updated'), 'success');
+        RPC::call('movim_fill', 'statussaved', '✔ '.$this->__('status.saved')); 
+        Notification::appendNotification($this->__('status.updated'), 'success');
     }
     
     function ajaxSetStatus($status)
@@ -111,7 +111,7 @@ class Profile extends WidgetCommon
                     <textarea 
                         id="status" 
                         spellcheck="false"
-                        placeholder="'.t('Your status here !').'"
+                        placeholder="'.$this->__('status.here').'"
                         onfocus="this.style.fontStyle=\'italic\'; this.parentNode.querySelector(\'#statussaved\').innerHTML = \'\'"
                         onblur="this.style.fontStyle=\'normal\';"
                         onkeypress="if(event.keyCode == 13) {'.$this->genCallAjax('ajaxSetStatus', 'encodeURIComponent(this.value)').'; this.blur(); return false;}"
@@ -130,16 +130,5 @@ class Profile extends WidgetCommon
         }
         
         return $html;
-    }
-    
-    function build()
-    {
-    ?>
-        <div id="profile">
-            <?php 
-                echo $this->prepareVcard();
-            ?>
-        </div>
-    <?php
     }
 }

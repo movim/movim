@@ -1,3 +1,7 @@
 #contactcard h1 {
     padding: 0;
 }
+
+#contactcard .protect {
+    margin-right: -1em;
+}
