@@ -18,7 +18,7 @@
         <a 
             class="button color icon no" 
             onclick="movim_toggle_display('#postpreview');"
-        >{$c->t('Close')}</a>
+        >{$c->__('button.close')}</a>
     </div>
 </div>
 
@@ -47,14 +47,14 @@
         <form name="postpublish" id="postpublish">
             <tr>
                 <td>
-                    <input name="title" placeholder="{$c->t('Title')}"/>
+                    <input name="title" placeholder="{$c->__('post.title')}"/>
                 </td>
                 <td>
                     <textarea 
                         name="content" 
                         id="postpublishcontent"
                         onkeyup="movim_textarea_autoheight(this);" 
-                        placeholder="{$c->t("What's new ?")}" ></textarea>
+                        placeholder="{$c->__('post.whats_new')}" ></textarea>
                 </td>
             </tr>
             <tr id="feedsubmitrow">
@@ -68,12 +68,12 @@
                                 document.querySelector('#postpublish').reset();
                                 movim_textarea_autoheight(document.querySelector('#postpublishcontent'));"
                         class="button icon color green icon yes">
-                        {$c->t("Submit")}
+                        {$c->__('button.submit')}
                     </a>
                     <a 
                         class="button icon color alone merged left images"
                         style="float: left;"
-                        title="{$c->t('Gallery')}"
+                        title="{$c->__('page.gallery')}"
                         onclick="
                             movim_toggle_display('#galleryselect');
                             "
@@ -81,7 +81,7 @@
                     <a 
                         class="button icon color alone merged left preview"
                         style="float: left;"
-                        title="{$c->t('Preview')}"
+                        title="{$c->__('page.preview')}"
                         onclick="
                             movim_toggle_display('#postpreview');
                             {$post_preview}"
@@ -90,7 +90,7 @@
                         style="float: left;"
                         href="http://daringfireball.net/projects/markdown/basics"
                         target="_blank"
-                    ></a><a title="{$c->t("Geolocalisation")}"
+                    ></a><a title="{$c->__('post.geolocalisation')}"
                         onclick="setPosition(document.querySelector('#latlonpos')); showPosition(document.querySelector('#latlonpos').value);"
                         style="float: left;"
                         class="button icon color icon alone geo merged right"></a>

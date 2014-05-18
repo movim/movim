@@ -64,7 +64,7 @@
                 nav {display:none;} #content {display: none;}
             </style>
             <div class="warning" style="width: 500px; margin: 0 auto;">
-            <?php echo t("You don't have javascript enabled.  Good luck with that."); ?>
+            <?php echo __('global.no_js'); ?>
             </div>
         </noscript>
         <nav>
