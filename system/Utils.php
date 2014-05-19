@@ -301,10 +301,10 @@ function getMood() {
         'cautious'      => __('mood.cautious'), // Taking care or caution; tentative.
         'cold'          => __('mood.cold'), // Feeling the sensation of coldness, especially to the point of discomfort.
         'confident'     => __('mood.confident'), // Feeling very sure of or positive about something, especially about one's own capabilities.
-        'condused'      => __('mood.confused'), // Chaotic, jumbled or muddled.
+        'confused'      => __('mood.confused'), // Chaotic, jumbled or muddled.
         'contemplative' => __('mood.contemplative'), // Feeling introspective or thoughtful.
         'contented'     => __('mood.contented'), // Pleased at the satisfaction of a want or desire; satisfied.
-        'cranzy'        => __('mood.cranky'), // Grouchy, irritable; easily upset.
+        'cranky'        => __('mood.cranky'), // Grouchy, irritable; easily upset.
         'crazy'         => __('mood.crazy'), // Feeling out of control; feeling overly excited or enthusiastic.
         'creative'      => __('mood.creative'), // Feeling original, expressive, or imaginative.
         'curious'       => __('mood.curious'), // Inquisitive; tending to ask questions, investigate, or explore.
@@ -331,9 +331,9 @@ function getMood() {
         'hungry'        => __('mood.hungry'), // Having a physical need for food.
         'hurt'          => __('mood.hurt'), // Wounded, injured, or pained, whether physically or emotionally.
         'impressed'     => __('mood.impressed'), // Favourably affected by something or someone.
-        'in_awe'        => __('mood.in awe'), // Feeling amazement at something or someone; or feeling a combination of fear and reverence.
-        'in_love'       => __('mood.in love'), // Feeling strong affection, care, liking, or attraction..
-        'indignant'     => ('indignant'), // Showing anger or indignation, especially at something unjust or wrong.
+        'in_awe'        => __('mood.in_awe'), // Feeling amazement at something or someone; or feeling a combination of fear and reverence.
+        'in_love'       => __('mood.in_love'), // Feeling strong affection, care, liking, or attraction..
+        'indignant'     => __('mood.indignant'), // Showing anger or indignation, especially at something unjust or wrong.
         'interested'    => __('mood.interested'), // Showing great attention to something or someone; having or showing interest.
         'intoxicated'   => __('mood.intoxicated'), // Under the influence of alcohol; drunk.
         'invincible'    => __('mood.invincible'), // Feeling as if one cannot be defeated, overcome or denied.
