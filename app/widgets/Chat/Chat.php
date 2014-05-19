@@ -50,7 +50,7 @@ class Chat extends WidgetBase {
         else {
             $rc = new \modl\ContactDAO;
             $contact = $rc->getRosterItem(echapJid($arr['jid']));
-            if($contact->chaton > 0 ) {
+            if(isset($contact) && $contact->chaton > 0 ) {
                 $html='
                     <div class="message presence">
                         <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$arr['presence']] . ' - ' . $arr['ressource'], ENT_COMPAT, "UTF-8")) . '
