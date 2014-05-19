@@ -87,7 +87,7 @@ class Route extends \BaseController {
                 } 
                 // Here we got a beautiful rewriten URL !
                 else {
-                    $uri = $page;
+                    $uri = BASE_URI . $page;
                     if($params != false && is_array($params))
                         foreach($params as $value)
                             $uri .= '/'.$value;
