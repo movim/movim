@@ -75,6 +75,8 @@ class Wall extends WidgetCommon
 
         $next = $start + 10;
         
+        $html = '';
+        
         if(count($pl) > 0 && $htmlmessages != false) {
             $wallhead = $this->tpl();
             $wallhead->assign('start', $start);

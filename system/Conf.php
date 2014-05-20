@@ -64,7 +64,7 @@ class Conf
     /* Actually reads the PHP file if it exists */
     static function readConfFile($file_path) {
         if(!file_exists($file_path)) {
-            throw new MovimException(t("Cannot load file '%s'", $file_path));
+            throw new MovimException(__("error.cannot_load_file", $file_path));
         }
 
         require($file_path);

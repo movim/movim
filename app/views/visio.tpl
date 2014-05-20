@@ -17,7 +17,7 @@
             $this->addScript('movim_rpc.js');
             $this->scripts();
         ?>
-        <title><?php echo t('Visio-conference');?></title>
+        <title><?php echo __('page.visio');?></title>
     </head>
     <body>
         <?php $this->widget('Visio', false);?>
