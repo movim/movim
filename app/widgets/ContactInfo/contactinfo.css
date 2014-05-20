@@ -1,4 +1,5 @@
 #contactinfo a {
+    display: inline-block;
     margin-top: 1em;
 }
 

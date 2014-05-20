@@ -4,14 +4,14 @@
             href="#" 
             class="button color icon back"
             onclick="movim_toggle_display('#groupunsubscribe')">
-            {$c->t('Unsubscribe')}
+            {$c->__('node.unsubscribe')}
         </a>
     {else}
         <a 
             href="#" 
             class="button color green icon next"
             onclick="movim_toggle_display('#groupsubscribe')">
-            {$c->t('Subscribe')}
+            {$c->__('node.subscribe')}
         </a>
     {/if}
     <a 
@@ -19,7 +19,7 @@
         href="{$c->route('blog',array($serverid,$groupid))}"
         target="_blank"
     >
-        {$c->t('Blog')}
+        {$c->__('page.blog')}
     </a><a 
         class="button color orange icon alone feed merged right" 
         href="{$c->route('feed',array($serverid,$groupid))}"
@@ -42,22 +42,22 @@
         style="float: right; display: none;"
         id="configbutton"
         href="{$c->route('nodeconfig', array($serverid,$groupid))}"
-    >{$c->t('Configuration')}</a>
+    >{$c->__('page.configuration')}</a>
 </div>
 
 <div class="popup" id="groupsubscribe">
     <form name="groupsubscribe">
         <fieldset>
-            <legend>{$c->t('Subscribe')}</legend>
+            <legend>{$c->__('node.subscribe')}</legend>
             <div class="element">
-                <label>{$c->t('Make your membership to this group public to your friends')}</label>                            
+                <label>{$c->__('node.share_label')}</label>                            
                 <div class="checkbox">
                     <input type="checkbox" name="listgroup" id="listgroup"/>
                     <label for="listgroup"></label>
                 </div>
             </div>
             <div class="element">
-                <label for="grouptitle">{$c->t('Give a nickname to this group if you want')}</label>
+                <label for="grouptitle">{$c->__('node.nickname_label')}</label>
                 <input type="text" name="title" value="{$groupid}" id="grouptitle"/>
             </div>
         </fieldset>
@@ -67,11 +67,11 @@
                 onclick="
                     {$subscribe}
                     this.onclick=null;"
-            >{$c->t('Subscribe')}</a><a 
+            >{$c->__('node.subscribe')}</a><a 
                 class="button tiny icon no black merged right" 
                 onclick="
                     movim_toggle_display('#groupsubscribe');"
-            >{$c->t('Close')}</a>
+            >{$c->__('button.close')}</a>
         </div>
     </form>
 </div>
@@ -79,9 +79,9 @@
 <div class="popup" id="groupunsubscribe">
     <form name="groupunsubscribe">
         <fieldset>
-            <legend>{$c->t('Unsubscribe')}</legend>
+            <legend>{$c->__('node.unsubscribe')}</legend>
             <div class="element">
-                <label>{$c->t('Are you sure ?')}</label>
+                <label>{$c->__('node.sure')}</label>
             </div>
         </fieldset>
         <div class="menu">
@@ -90,11 +90,11 @@
                 onclick="
                     {$unsubscribe}
                     this.onclick=null;"
-            >{$c->t('Unsubscribe')}</a><a 
+            >{$c->__('node.unsubscribe')}</a><a 
                 class="button tiny icon no black merged right" 
                 onclick="
                     movim_toggle_display('#groupunsubscribe');"
-            >{$c->t('Close')}</a>
+            >{$c->__('button.close')}</a>
         </div>
     </form>
 </div>
