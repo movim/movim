@@ -1,5 +1,5 @@
 <div class="tabelem padded" title="{$c->__('page.about')}" id="about">
-    <p>Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under 
+    <p>{$c->__('info')}
         <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.
     </p>
     <h2>{$c->__('title.thanks')}</h2>

@@ -1,7 +1,7 @@
-<div class="tabelem protect red" id="node" title="{$c->t('Posts')}">
+<div class="tabelem protect red" id="node" title="{$c->__('page.posts')}">
     <div class="breadcrumb">
         <a href="{$c->route('explore')}">
-            {$c->t('Explore')}
+            {$c->__('page.explore')}
         </a>
         <a href="{$c->route('server', $server)}">
             {$server}
@@ -9,7 +9,7 @@
         <a href="{$c->route('node', array($server, $node))}">
             {$title}
         </a>
-        <a>{$c->t('Posts')}</a>
+        <a>{$c->__('page.posts')}</a>
     </div>
     <div class="clear"></div>
     

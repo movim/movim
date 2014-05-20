@@ -13,7 +13,7 @@
     </div>
     <div id="center">
         <div class="protect black" title="<?php echo getFlagTitle("black"); ?>"></div>
-        <h1><?php echo t('Explore'); ?></h1>
+        <h1><?php echo __('page.explore'); ?></h1>
         <?php $this->widget('Explore');?>
     </div>
 </div>

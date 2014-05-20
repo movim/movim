@@ -67,7 +67,7 @@ class Route extends \BaseController {
         
         if(isset($routes[$page])) {        
             if($params != false && count($routes[$page]) != count($params)) 
-                \system\Logs\Logger::log(t('Route error, please set all the parameters for the page %s', $page));
+                \system\Logs\Logger::log(__('error.route', $page));
             else {
                 if($tab != false)
                     $tab = '#'.$tab;
@@ -87,7 +87,7 @@ class Route extends \BaseController {
                 } 
                 // Here we got a beautiful rewriten URL !
                 else {
-                    $uri = $page;
+                    $uri = BASE_URI . $page;
                     if($params != false && is_array($params))
                         foreach($params as $value)
                             $uri .= '/'.$value;
