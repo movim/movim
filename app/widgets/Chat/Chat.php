@@ -72,6 +72,14 @@ class Chat extends WidgetBase {
         RPC::call('movim_fill', 'chats', $this->prepareChats());
         RPC::call('scrollAllTalks');
     }
+    
+    private function checkEncrypted($message) {
+        if(preg_match("#^\?OTR:#", $message->body)) {
+            $message->body = $this->__('message.encrypted');
+        }
+        
+        return $message;
+    } 
 
     function onMessage($message) {
         if($message->session == $message->jidfrom) {
@@ -86,6 +94,8 @@ class Chat extends WidgetBase {
         $rc = new \modl\ContactDAO();
         
         $contact = $rc->getRosterItem(echapJid($jid));
+        
+        $message = $this->checkEncrypted($message);
         
         if($contact!=null && $message->session != $message->jidfrom) {
             RPC::call(
@@ -310,6 +320,8 @@ class Chat extends WidgetBase {
                 $message->body = $message->subject;
             }
             
+            $message = $this->checkEncrypted($message);
+            
             $html='
                 <div class="message ';
                 if($message->session == $message->jidfrom) {
@@ -327,10 +339,6 @@ class Chat extends WidgetBase {
                 if(preg_match("#^/me#", $message->body)) {
                     $html .= ' own ';
                     $content = '** ' . substr($message->body, 4);
-                }
-                if(preg_match("#^\?OTR:#", $message->body)) {
-                    $html .= ' crypt ';
-                    $content = $this->__('message.encrypted');
                 }
                 
                 $c = new \modl\Contact();
