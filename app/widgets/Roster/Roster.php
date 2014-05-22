@@ -218,42 +218,44 @@ class Roster extends WidgetBase
         $currentjid     = false;
         $currentarr     = array();
 
-        foreach($contacts as $c) {
-            if($c->groupname == '')
-                $c->groupname = $this->__('roster.ungrouped');
-            
-            if(!isset($roster[$c->groupname])) {
-                $roster[$c->groupname] = new stdClass;
-                $roster[$c->groupname]->contacts = array();
-                $roster[$c->groupname]->html = '';
+        if(isset($contacts)) {
+            foreach($contacts as $c) {
+                if($c->groupname == '')
+                    $c->groupname = $this->__('roster.ungrouped');
+                
+                if(!isset($roster[$c->groupname])) {
+                    $roster[$c->groupname] = new stdClass;
+                    $roster[$c->groupname]->contacts = array();
+                    $roster[$c->groupname]->html = '';
 
-                $roster[$c->groupname]->name = $c->groupname;
+                    $roster[$c->groupname]->name = $c->groupname;
 
-                $roster[$c->groupname]->shown = '';
-                // get the current showing state of the group and the offline contacts
-                $state = Cache::c('group'.$c->groupname);
-
-                if($state == false)
-                    $roster[$c->groupname]->shown = 'groupshown';
-                else
                     $roster[$c->groupname]->shown = '';
+                    // get the current showing state of the group and the offline contacts
+                    $state = Cache::c('group'.$c->groupname);
 
-                $roster[$c->groupname]->toggle =
-                    $this->genCallAjax('ajaxToggleCache', "'group".$c->groupname."'");
+                    if($state == false)
+                        $roster[$c->groupname]->shown = 'groupshown';
+                    else
+                        $roster[$c->groupname]->shown = '';
+
+                    $roster[$c->groupname]->toggle =
+                        $this->genCallAjax('ajaxToggleCache', "'group".$c->groupname."'");
+                }
+
+                if($c->jid == $currentjid) {
+                    array_push($currentarr, $c);
+                    $currenthtml = $this->prepareContact($currentarr, $capsarr);
+                } else {
+                    $currentarr = array();
+                    $currenthtml = '';
+                    array_push($currentarr, $c);
+                    $currenthtml = $this->prepareContact($currentarr, $capsarr);
+                    $roster[$c->groupname]->html .= $currenthtml;
+                }
+
+                $currentjid   = $c->jid;
             }
-
-            if($c->jid == $currentjid) {
-                array_push($currentarr, $c);
-                $currenthtml = $this->prepareContact($currentarr, $capsarr);
-            } else {
-                $currentarr = array();
-                $currenthtml = '';
-                array_push($currentarr, $c);
-                $currenthtml = $this->prepareContact($currentarr, $capsarr);
-                $roster[$c->groupname]->html .= $currenthtml;
-            }
-
-            $currentjid   = $c->jid;
         }
 
         $listview = $this->tpl();
