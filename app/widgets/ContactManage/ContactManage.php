@@ -36,7 +36,7 @@ class ContactManage extends WidgetCommon
     public function onRoster($jid)
     {
         $html = $this->prepareContactManage($jid);
-        Notification::appendNotification(t('Contact updated'));
+        Notification::appendNotification($this->__('contact.updated'));
         RPC::call('movim_fill', 'contactmanage', $html);
     }
     
