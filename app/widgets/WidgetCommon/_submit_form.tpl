@@ -89,6 +89,7 @@
                         class="button color icon alone help merged" 
                         style="float: left;"
                         href="http://daringfireball.net/projects/markdown/basics"
+                        title="{$c->__('page.help')}"
                         target="_blank"
                     ></a><a title="{$c->__('post.geolocalisation')}"
                         onclick="setPosition(document.querySelector('#latlonpos')); showPosition(document.querySelector('#latlonpos').value);"
