@@ -73,13 +73,13 @@ class ContactCard extends WidgetCommon
             if($contact->gender != 'N' && $this->testIsSet($contact->gender))
             $html .= '<div class="element simple">
                         <label for="gender">'.t('Gender').'</label>
-                        <span>'.$gender[$contact->gender].'</span>
+                        <span>'.$gender[(string)$contact->gender].'</span>
                       </div>';
        
             if($contact->marital != 'none' && $this->testIsSet($contact->marital))               
             $html .= '<div class="element simple">
                         <label for="marital">'.t('Marital Status').'</label>
-                        <span>'.$marital[$contact->marital].'</span>
+                        <span>'.$marital[(string)$contact->marital].'</span>
                       </div>';
 
             if($this->testIsSet($contact->email)) {

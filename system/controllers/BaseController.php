@@ -24,11 +24,10 @@ class BaseController {
     function loadLanguage() {
         $user = new User();
         if($user->isLogged()) {
-            try{
-                $lang = $user->getConfig('language');
+            $lang = $user->getConfig('language');
+            if(isset($lang)) {
                 loadLanguage($lang);
-            }
-            catch(MovimException $e) {
+            } else {
                 // Load default language.
                 loadLanguage(Conf::getServerConfElement('defLang'));
             }
