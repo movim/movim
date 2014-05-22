@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-15 15:35+0200\n"
+"POT-Creation-Date: 2014-05-17 12:07+0200\n"
 "PO-Revision-Date: 2013-12-12 23:44+0000\n"
 "Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,57 +16,1428 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
 "X-Generator: Launchpad (build 16926)\n"
 
+#: ../upload.php:25
+msgid "Not a picture"
+msgstr "Qu'es pas un imatge"
+
+#: ../upload.php:28
+msgid "Folder size limit exceeded"
+msgstr "Talha limita del dorsièr depassada"
+
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:35
+#: ../lib/Moxl/xec/action/pubsub/PubsubPostDelete.php:70
+#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:116
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Bookmark/Get.php:119
-#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:37
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/PostDelete.php:74
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:37
 #: ../app/widgets/Chat/Chat.php:52
 msgid "Error"
 msgstr "Error"
 
-#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Bookmark/Get.php:124
-msgid "Item Not Found"
-msgstr "Element pas trobat"
-
-#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Bookmark/Get.php:129
-msgid "Feature Not Implemented"
-msgstr "Foncionalitat pas implementada"
-
-#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Location/Publish.php:88
-msgid "Your server doesn't support location publication"
-msgstr ""
-
-#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Location/Publish.php:93
-msgid "Your are not authorized to publish your location"
-msgstr ""
-
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:40
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:42
 msgid "The node does not exist"
 msgstr ""
 
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:45
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:47
 msgid "Your server doesn't support this feature"
 msgstr ""
 
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:50
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:60
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:52
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:62
 msgid "You are not autorized to do this action"
 msgstr ""
 
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:55
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:57
 msgid "This service is unavaiable"
 msgstr "Aqueste servici es pas disponible"
 
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:65
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:67
 msgid "The server does not exist"
 msgstr "Lo servidor existís pas"
 
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:70
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:72
 msgid "Unexpected request"
 msgstr "Requèsta inesperada"
 
+#: ../lib/Moxl/xec/action/pubsub/PubsubErrors.php:75
 #: ../vendor/movim/moxl/src/Moxl/Xec/Action/Pubsub/Errors.php:77
 msgid "The server cannot accept this action"
 msgstr ""
+
+#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:121
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Bookmark/Get.php:124
+msgid "Item Not Found"
+msgstr "Element pas trobat"
+
+#: ../lib/Moxl/xec/action/bookmark/BookmarkGet.php:126
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Bookmark/Get.php:129
+msgid "Feature Not Implemented"
+msgstr "Foncionalitat pas implementada"
+
+#: ../lib/Moxl/xec/action/location/LocationPublish.php:85
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Location/Publish.php:88
+msgid "Your server doesn't support location publication"
+msgstr ""
+
+#: ../lib/Moxl/xec/action/location/LocationPublish.php:90
+#: ../vendor/movim/moxl/src/Moxl/Xec/Action/Location/Publish.php:93
+msgid "Your are not authorized to publish your location"
+msgstr ""
+
+#: ../app/helpers/DateHelper.php:9
+msgid "Monday"
+msgstr "Diluns"
+
+#: ../app/helpers/DateHelper.php:10
+msgid "Tuesday"
+msgstr "Dimars"
+
+#: ../app/helpers/DateHelper.php:11
+msgid "Wednesday"
+msgstr "Dimècres"
+
+#: ../app/helpers/DateHelper.php:12
+msgid "Thursday"
+msgstr "Dijòus"
+
+#: ../app/helpers/DateHelper.php:13 ../app/helpers/DateHelper.php:15
+msgid "Friday"
+msgstr "Divendres"
+
+#: ../app/helpers/DateHelper.php:14
+msgid "Saturday"
+msgstr "Dissabte"
+
+#: ../app/helpers/DateHelper.php:23
+msgid "January"
+msgstr "Genièr"
+
+#: ../app/helpers/DateHelper.php:24
+msgid "February"
+msgstr "Febrièr"
+
+#: ../app/helpers/DateHelper.php:25
+msgid "March"
+msgstr "Març"
+
+#: ../app/helpers/DateHelper.php:26
+msgid "April"
+msgstr "Abril"
+
+#: ../app/helpers/DateHelper.php:27
+msgid "May"
+msgstr "Mai"
+
+#: ../app/helpers/DateHelper.php:28
+msgid "June"
+msgstr "Junh"
+
+#: ../app/helpers/DateHelper.php:29
+msgid "July"
+msgstr "Julhet"
+
+#: ../app/helpers/DateHelper.php:30
+msgid "August"
+msgstr "Agost"
+
+#: ../app/helpers/DateHelper.php:31
+msgid "September"
+msgstr "Setembre"
+
+#: ../app/helpers/DateHelper.php:32
+msgid "October"
+msgstr "Octobre"
+
+#: ../app/helpers/DateHelper.php:33
+msgid "November"
+msgstr "Novembre"
+
+#: ../app/helpers/DateHelper.php:34
+msgid "December"
+msgstr "Decembre"
+
+#: ../app/helpers/DateHelper.php:61
+msgid "Today"
+msgstr "Uèi"
+
+#: ../app/helpers/DateHelper.php:63
+msgid "Tomorrow"
+msgstr "Deman"
+
+#: ../app/helpers/DateHelper.php:65
+msgid "Yesterday"
+msgstr "Ièr"
+
+#: ../app/helpers/DateHelper.php:71
+msgid "day"
+msgstr "jorn"
+
+#: ../app/helpers/DateHelper.php:74
+#, php-format
+msgid " %d days ago"
+msgstr " i a %d jorns"
+
+#: ../app/models/postn/Postn.php:140
+msgid "Content not found"
+msgstr "Contengut pas trobat"
+
+#: ../app/widgets/ContactManage/ContactManage.php:32
+msgid "Contact updated"
+msgstr "Contacte mes a jorn"
+
+#: ../app/widgets/ContactManage/ContactManage.php:57
+msgid "Manage"
+msgstr "Gerir"
+
+#: ../app/widgets/ContactManage/ContactManage.php:72
+msgid "Alias"
+msgstr "Aliàs"
+
+#: ../app/widgets/ContactManage/ContactManage.php:78
+msgid "Group"
+msgstr "Grop"
+
+#: ../app/widgets/ContactManage/ContactManage.php:81
+msgid "Save"
+msgstr "Enregistrar"
+
+#: ../app/widgets/Media/Media.php:91
+#: ../app/widgets/ContactInfo/ContactInfo.php:63
+msgid "on"
+msgstr "lo"
+
+#: ../app/widgets/Media/Media.php:109 ../app/widgets/Vcard/Vcard.php:142
+#: ../app/widgets/ContactCard/ContactCard.php:51
+#: ../app/widgets/Account/Account.php:286
+msgid "Name"
+msgstr "Nom"
+
+#: ../app/widgets/Media/Media.php:111
+msgid "Resolution"
+msgstr "Resolucion"
+
+#: ../app/widgets/Media/Media.php:113
+msgid "Size"
+msgstr "Talha"
+
+#: ../app/widgets/Media/Media.php:115
+msgid "Date"
+msgstr "Data"
+
+#: ../app/widgets/Media/Media.php:117
+msgid "ISO"
+msgstr "ISO"
+
+#: ../app/widgets/Media/Media.php:119
+msgid "Camera"
+msgstr "Camèra"
+
+#: ../app/widgets/Media/Media.php:121
+msgid "Artist"
+msgstr "Artista"
+
+#: ../app/widgets/Media/Media.php:124
+msgid "Original"
+msgstr "Original"
+
+#: ../app/widgets/Media/Media.php:124
+msgid "Link"
+msgstr "Ligam"
+
+#: ../app/widgets/Media/Media.php:153
+msgid "Viewer"
+msgstr "Visionadoira"
+
+#: ../app/widgets/Media/Media.php:159
+#: ../app/controllers/ProfileController.php:15
+#: ../app/controllers/MediaController.php:9
+#: ../app/controllers/MediaController.php:15
+#: ../app/controllers/ConfController.php:15
+#: ../app/controllers/NodeconfigController.php:16
+#: ../app/controllers/ExploreController.php:17
+#: ../app/controllers/NodeController.php:16
+#: ../app/controllers/FriendController.php:25
+#: ../app/controllers/HelpController.php:15
+#: ../app/controllers/ServerController.php:16
+#: ../app/controllers/NewsController.php:15
+#: ../app/controllers/MainController.php:15
+msgid "Media"
+msgstr "Mèdia"
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:57
+msgid "Create a new group"
+msgstr "Crear un grop novèl"
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:64
+msgid "Give a friendly name to your group"
+msgstr "Donar un nom sympa a vòstre grop"
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:66
+msgid "My Little Pony - Fan Club"
+msgstr "Mon Pichon Poni - Fan Club"
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:75
+#: ../app/widgets/Notifs/Notifs.php:189
+msgid "Add"
+msgstr "Apondre"
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:80
+msgid "Close"
+msgstr "Tampar"
+
+#: ../app/widgets/ServerNodes/ServerNodes.php:111
+msgid "Subscribed"
+msgstr "Abonat"
+
+#: ../app/widgets/AccountError/AccountError.php:32
+#: ../app/widgets/Login/Login.php:129 ../app/widgets/Account/Account.php:385
+msgid "Some data are missing !"
+msgstr "Manca d'informacions !"
+
+#: ../app/widgets/AccountError/AccountError.php:38
+#: ../app/widgets/Account/Account.php:391
+msgid "Wrong ID"
+msgstr "Marrit identificant"
+
+#: ../app/widgets/AccountError/AccountError.php:44
+#: ../app/widgets/Account/Account.php:397
+msgid "You entered different passwords"
+msgstr "Avetz picat dos senhaus diferents"
+
+#: ../app/widgets/AccountError/AccountError.php:50
+#: ../app/widgets/Account/Account.php:403
+msgid "Invalid name"
+msgstr "Lo nom es pas valid"
+
+#: ../app/widgets/AccountError/AccountError.php:56
+#: ../app/widgets/Account/Account.php:409
+msgid "Request not acceptable"
+msgstr ""
+
+#: ../app/widgets/AccountError/AccountError.php:62
+#: ../app/widgets/Account/Account.php:415
+msgid "Username already taken"
+msgstr "Nom d'utilizaire ja existent"
+
+#: ../app/widgets/AccountError/AccountError.php:68
+#: ../app/widgets/Account/Account.php:421
+msgid "Could not connect to the XMPP server"
+msgstr "Error a la connexion al servidor XMPP"
+
+#: ../app/widgets/AccountError/AccountError.php:74
+#: ../app/widgets/Account/Account.php:427
+msgid "Could not communicate with the XMPP server"
+msgstr "Impossible de comunicar amb lo servidor XMPP"
+
+#: ../app/widgets/AccountError/AccountError.php:80
+#: ../app/widgets/VisioExt/VisioExt.php:100
+#: ../app/widgets/Account/Account.php:433
+msgid "Unknown error"
+msgstr "Error desconeguda"
+
+#: ../app/widgets/Bookmark/Bookmark.php:129
+msgid "Bookmarks updated"
+msgstr "Signets meses a jorn"
+
+#: ../app/widgets/Bookmark/Bookmark.php:139 ../app/widgets/Feed/Feed.php:96
+msgid "An error occured : "
+msgstr "Una error s'es produsida : "
+
+#: ../app/widgets/Bookmark/Bookmark.php:192
+msgid "Bad Chatroom ID"
+msgstr ""
+
+#: ../app/widgets/Bookmark/Bookmark.php:196
+msgid "Empty name"
+msgstr "Nom void"
+
+#: ../app/widgets/Roster/Roster.php:69 ../app/widgets/Roster/Roster.php:223
+msgid "Ungrouped"
+msgstr "Pas agropat"
+
+#: ../app/widgets/Roster/Roster.php:281
+msgid "Show disconnected contacts"
+msgstr "Contactes desconnectats afichats"
+
+#: ../app/widgets/Roster/Roster.php:283
+msgid "Hide disconnected contacts"
+msgstr "Contactes desconnectats amagats"
+
+#: ../app/widgets/Roster/Roster.php:287
+#, php-format
+msgid "Hide group %s"
+msgstr "Grop %s amagat"
+
+#: ../app/widgets/Roster/Roster.php:289
+#, php-format
+msgid "Show group %s"
+msgstr "Grop %s afichat"
+
+#: ../app/widgets/Roster/Roster.php:316
+msgid "Please enter a valid Jabber ID"
+msgstr ""
+
+#: ../app/widgets/Vcard4/Vcard4.php:97 ../app/widgets/Vcard4/Vcard4.php:105
+#: ../app/widgets/Vcard/Vcard.php:40
+msgid "Profile Updated"
+msgstr "Perfil mes a jorn"
+
+#: ../app/widgets/Vcard4/Vcard4.php:110
+msgid "Profile Not Updated"
+msgstr ""
+
+#: ../app/widgets/Vcard4/Vcard4.php:178
+msgid "Your profile is now public"
+msgstr ""
+
+#: ../app/widgets/Vcard4/Vcard4.php:181
+msgid "Your profile is now restricted"
+msgstr ""
+
+#: ../app/widgets/AccountNext/AccountNext.php:142
+#: ../app/widgets/Account/Account.php:170
+msgid "No account creation form founded on the server"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:105 ../app/widgets/Vcard/Vcard.php:340
+msgid "Submit"
+msgstr "Validar"
+
+#: ../app/widgets/Admin/Admin.php:109
+msgid "Compatibility Check"
+msgstr "Verificacion de la compatibilitat del servidor"
+
+#: ../app/widgets/Admin/Admin.php:114
+msgid "Movim requires certain external components. Please install them before you can succeed:"
+msgstr "Per poder foncionar corrèctament, Movim a besonh de certans components. Installatz-los, se vos plai, abans de poder contunhar :"
+
+#: ../app/widgets/Admin/Admin.php:119
+#, php-format
+msgid "Your PHP-Version: %s <br>Required: 5.3.0"
+msgstr "Vòstra version de PHP: %s <br>Requesida: 5.3.0"
+
+#: ../app/widgets/Admin/Admin.php:122
+msgid "CURL-Library"
+msgstr "Bibliotèca CURL"
+
+#: ../app/widgets/Admin/Admin.php:125
+msgid "GD"
+msgstr "GD"
+
+#: ../app/widgets/Admin/Admin.php:128
+msgid "SimpleXML"
+msgstr "SimpleXML"
+
+#: ../app/widgets/Admin/Admin.php:131
+msgid "Read and write rights for the webserver in Movim's root directory"
+msgstr "Movim a pas los dreches de lectura nimai d'escritura dins son dorsier raiç"
+
+#: ../app/widgets/Admin/Admin.php:134
+msgid "OpenSSL"
+msgstr "OpenSSL"
+
+#: ../app/widgets/Admin/Admin.php:140 ../app/widgets/Admin/Admin.php:143
+msgid "URL Rewriting support"
+msgstr "Gestion de la reescritura d'URL"
+
+#: ../app/widgets/Admin/Admin.php:157
+msgid "General Settings"
+msgstr "Configuracion generala"
+
+#: ../app/widgets/Admin/Admin.php:159
+msgid "Theme"
+msgstr "Tèma"
+
+#: ../app/widgets/Admin/Admin.php:178
+msgid "Default language"
+msgstr "Lenga per defaut"
+
+#: ../app/widgets/Admin/Admin.php:202
+msgid "Environment"
+msgstr "Environament"
+
+#: ../app/widgets/Admin/Admin.php:222
+msgid "User folder size limit (in bytes)"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:238
+#, fuzzy
+msgid "Empty"
+msgstr "void"
+
+#: ../app/widgets/Admin/Admin.php:239
+msgid "Syslog"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:240
+msgid "Syslog and Files"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:244
+msgid "Log verbosity"
+msgstr "Nivèl de jornalizacion"
+
+#: ../app/widgets/Admin/Admin.php:267
+msgid "Server Timezone"
+msgstr "Fus orari del servidor"
+
+#: ../app/widgets/Admin/Admin.php:295
+msgid "Bosh Configuration"
+msgstr "Configuracion Bosh"
+
+#: ../app/widgets/Admin/Admin.php:299
+msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:300
+msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:301
+msgid "If it is closed, you have to specify the corresponding Server on the next page."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:302
+#, php-format
+msgid "If you are unsure about this config option visit the %swiki%s"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:308
+msgid "Your Bosh URL is not reachable"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:314
+msgid "Bosh URL"
+msgstr "URL Bosh"
+
+#: ../app/widgets/Admin/Admin.php:325
+msgid "Whitelist - XMPP Server"
+msgstr "Servidors XMPP - Lista blancha"
+
+#: ../app/widgets/Admin/Admin.php:329
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+msgstr "Si desiratz especificar una lista de servidors XMPP autorizats sus vòstre pòd Movim e interdire la connexion a tots los autres, especificatz si vos plai la lista de lor noms de domeni, separats per de las virgulas (ex: movim.eu, jabber.fr)"
+
+#: ../app/widgets/Admin/Admin.php:332
+msgid "Leave this field blank if you allow the access to all the XMPP accounts."
+msgstr "Daissatz aqueste champ void se desiratz autorizar la connexion a totes los comptes XMPP."
+
+#: ../app/widgets/Admin/Admin.php:337
+msgid "List of whitelisted XMPP servers"
+msgstr "Lista blancha dels servidors XMPP"
+
+#: ../app/widgets/Admin/Admin.php:348 ../app/widgets/Admin/Admin.php:360
+msgid "Information Message"
+msgstr "Messatge d'informacion"
+
+#: ../app/widgets/Admin/Admin.php:352
+msgid "This message will be displayed on the login page"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:355
+msgid "Leave this field blank if you don't want to show any message."
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:371
+msgid "Administration Credential"
+msgstr "Identificacion de l'administrator"
+
+#: ../app/widgets/Admin/Admin.php:376
+msgid "Change the default credentials admin/password"
+msgstr ""
+
+#: ../app/widgets/Admin/Admin.php:382
+msgid "Username"
+msgstr "Nom d'utilizaire"
+
+#: ../app/widgets/Admin/Admin.php:388
+msgid "Password"
+msgstr "Senhal"
+
+#: ../app/widgets/Admin/Admin.php:392
+msgid "Retype password"
+msgstr "Tornar picar lo senhal"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:46
+msgid "Mood"
+msgstr "Umor"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:50
+msgid "I'm "
+msgstr "Soi "
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:57
+msgid "Listening"
+msgstr "En escota"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:97
+msgid "Last seen"
+msgstr "Darrièra visita"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:113
+msgid "Bot"
+msgstr "Robòt"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:114
+msgid "Desktop"
+msgstr "Burèu"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:115
+#: ../app/widgets/ContactInfo/ContactInfo.php:116
+msgid "Phone"
+msgstr "Telefòn"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:117
+msgid "Web"
+msgstr "Internet"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:118
+msgid "Registered"
+msgstr "Enregistrat"
+
+#: ../app/widgets/ContactInfo/ContactInfo.php:130
+msgid "Client Informations"
+msgstr "Informacions sul client"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:62
+#: ../app/widgets/NodeConfig/NodeConfig.php:86
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:59
+#: ../app/widgets/Account/Account.php:157
+msgid "Validate"
+msgstr "Validar"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:68
+msgid "Subscriptions saved"
+msgstr "Abonaments enregistrats"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:98
+msgid "Manage your subscriptions"
+msgstr "Gerir vòstres abonaments"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:99
+msgid "Manage the subscriptions"
+msgstr "Gerir los abonaments"
+
+#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:104
+msgid "Get the subscriptions"
+msgstr "Recuperar los abonaments"
+
+#: ../app/widgets/Connection/Connection.php:37
+msgid "Please wait "
+msgstr "Pacientatz, se vos plai "
+
+#: ../app/widgets/Chat/Chat.php:47 ../system/Utils.php:252
+msgid "Online"
+msgstr "En linha"
+
+#: ../app/widgets/Chat/Chat.php:48 ../system/Utils.php:253
+msgid "Away"
+msgstr "Absent(a)"
+
+#: ../app/widgets/Chat/Chat.php:49 ../system/Utils.php:254
+msgid "Do Not Disturb"
+msgstr "De derengar pas"
+
+#: ../app/widgets/Chat/Chat.php:50 ../system/Utils.php:255
+msgid "Extended Away"
+msgstr "Abséncia longa"
+
+#: ../app/widgets/Chat/Chat.php:51
+msgid "Offline"
+msgstr "Desconnectat"
+
+#: ../app/widgets/Chat/Chat.php:73
+msgid "Connected to the chatroom"
+msgstr ""
+
+#: ../app/widgets/Chat/Chat.php:75
+msgid "Disconnected to the chatroom"
+msgstr ""
+
+#: ../app/widgets/Chat/Chat.php:135
+msgid "Message Published"
+msgstr "Messatge publicat"
+
+#: ../app/widgets/Chat/Chat.php:165
+#, php-format
+msgid "%s needs your attention"
+msgstr "%s a besonh de vòstre atencion"
+
+#: ../app/widgets/Chat/Chat.php:337
+msgid "Encrypted message"
+msgstr "Messatge chifrat"
+
+#: ../app/widgets/Presence/Presence.php:126
+msgid "Disconnect"
+msgstr "Se desconnectar"
+
+#: ../app/widgets/Log/Log.php:33
+msgid "Debug console"
+msgstr "Consòla de desbugatge"
+
+#: ../app/widgets/Notifs/Notifs.php:51 ../app/widgets/Wall/Wall.php:100
+msgid "Updating"
+msgstr "Mesa a jorn"
+
+#: ../app/widgets/Notifs/Notifs.php:54 ../app/widgets/News/News.php:86
+msgid "Refresh"
+msgstr "Metre a jorn"
+
+#: ../app/widgets/Notifs/Notifs.php:175
+msgid "wants to talk with you"
+msgstr "vòl charrar amb vos"
+
+#: ../app/widgets/Help/Help.php:29 ../app/widgets/Help/Help.php:41
+#: ../app/controllers/ProfileController.php:17
+#: ../app/controllers/MediaController.php:17
+#: ../app/controllers/ConfController.php:17
+#: ../app/controllers/NodeconfigController.php:18
+#: ../app/controllers/ExploreController.php:19
+#: ../app/controllers/NodeController.php:18
+#: ../app/controllers/FriendController.php:27
+#: ../app/controllers/HelpController.php:17
+#: ../app/controllers/ServerController.php:18
+#: ../app/controllers/NewsController.php:17
+#: ../app/controllers/MainController.php:17
+msgid "Help"
+msgstr "Ajuda"
+
+#: ../app/widgets/Help/Help.php:31
+msgid "What is Movim?"
+msgstr "Qu'es aquò Movim ?"
+
+#: ../app/widgets/Help/Help.php:33
+#, php-format
+msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:35
+msgid "What do the little banners refer to ?"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:44
+msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:48
+msgid "White, only you can see the information"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:49
+msgid "Green, you have chosen some contacts who can see your information"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:50
+msgid "Orange, all your contact list can see your information"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:51
+msgid "Red, everybody in the XMPP network can see your information"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:52
+msgid "Black, the whole Internet can see your information"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:56
+msgid "Some features are missing/I can't do everything I used to do on other social networks"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:58
+#, php-format
+msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:60
+#, php-format
+msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:63
+msgid "I can't find the answer to my question here"
+msgstr ""
+
+#: ../app/widgets/Help/Help.php:65
+#, php-format
+msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
+msgstr ""
+
+#: ../app/widgets/Vcard/Vcard.php:118
+msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
+msgstr ""
+
+#: ../app/widgets/Vcard/Vcard.php:123 ../app/widgets/Profile/Profile.php:129
+msgid "Create my vCard"
+msgstr "Crear ma vCard"
+
+#: ../app/widgets/Vcard/Vcard.php:139
+#: ../app/widgets/ContactCard/ContactCard.php:47
+msgid "General Informations"
+msgstr "Informacions Generalas"
+
+#: ../app/widgets/Vcard/Vcard.php:147
+#: ../app/widgets/ContactCard/ContactCard.php:57
+msgid "Nickname"
+msgstr "Escais"
+
+#: ../app/widgets/Vcard/Vcard.php:152
+#: ../app/widgets/ContactCard/ContactCard.php:82
+#: ../app/widgets/ContactCard/ContactCard.php:87
+msgid "Email"
+msgstr "Adreça electronica"
+
+#: ../app/widgets/Vcard/Vcard.php:157
+#: ../app/widgets/ContactCard/ContactCard.php:63
+msgid "Date of Birth"
+msgstr "Data de Naissença"
+
+#: ../app/widgets/Vcard/Vcard.php:162
+msgid "Day"
+msgstr "Jorn"
+
+#: ../app/widgets/Vcard/Vcard.php:182
+msgid "Month"
+msgstr "Mes"
+
+#: ../app/widgets/Vcard/Vcard.php:201
+msgid "Year"
+msgstr "Annada"
+
+#: ../app/widgets/Vcard/Vcard.php:215
+#: ../app/widgets/ContactCard/ContactCard.php:69
+msgid "Gender"
+msgstr "Sèxe"
+
+#: ../app/widgets/Vcard/Vcard.php:226
+#: ../app/widgets/ContactCard/ContactCard.php:75
+msgid "Marital Status"
+msgstr "Situacion familiala"
+
+#: ../app/widgets/Vcard/Vcard.php:237
+msgid "Avatar"
+msgstr "Avatar"
+
+#: ../app/widgets/Vcard/Vcard.php:248
+msgid "Webcam"
+msgstr "Webcam"
+
+#: ../app/widgets/Vcard/Vcard.php:256
+msgid "Cheese !"
+msgstr "Sorissètz !"
+
+#: ../app/widgets/Vcard/Vcard.php:264
+msgid "Take a webcam snapshot"
+msgstr "Prene una fòto amb vòstre aparelh fòto"
+
+#: ../app/widgets/Vcard/Vcard.php:268
+#: ../app/widgets/ContactCard/ContactCard.php:96
+#: ../app/widgets/ContactCard/ContactCard.php:101
+msgid "Website"
+msgstr "Site web"
+
+#: ../app/widgets/Vcard/Vcard.php:272
+#: ../app/widgets/ContactCard/ContactCard.php:109
+msgid "About Me"
+msgstr "A prepaus de ieu"
+
+#: ../app/widgets/Vcard/Vcard.php:280
+#: ../app/widgets/ContactCard/ContactCard.php:118
+msgid "Geographic Position"
+msgstr "Posicion geografica"
+
+#: ../app/widgets/Vcard/Vcard.php:282
+#: ../app/widgets/ContactCard/ContactCard.php:122
+msgid "Locality"
+msgstr "Localitat"
+
+#: ../app/widgets/Vcard/Vcard.php:286
+#: ../app/widgets/ContactCard/ContactCard.php:134
+msgid "Country"
+msgstr "País"
+
+#: ../app/widgets/Vcard/Vcard.php:305
+msgid "Privacy Level"
+msgstr "Nivèl de confidencialitat"
+
+#: ../app/widgets/Vcard/Vcard.php:316
+msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+msgstr ""
+
+#: ../app/widgets/Vcard/Vcard.php:318
+msgid "Is this profile public ?"
+msgstr "Es lo perfil public ?"
+
+#: ../app/widgets/Vcard/Vcard.php:330
+msgid "Submitting"
+msgstr "Somission en cors"
+
+#: ../app/widgets/Vcard/Vcard.php:341
+msgid "Reset"
+msgstr "Reïnicializar"
+
+#: ../app/widgets/Vcard/Vcard.php:363
+msgid "Edit my Profile"
+msgstr "Modificar mon perfil"
+
+#: ../app/widgets/ConfigData/ConfigData.php:28
+msgid "Data"
+msgstr ""
+
+#: ../app/widgets/ConfigData/ConfigData.php:29
+msgid "Cache"
+msgstr ""
+
+#: ../app/widgets/Blog/Blog.php:30
+#: ../app/widgets/Syndication/Syndication.php:52
+#, php-format
+msgid "%s's feed"
+msgstr "Flux de %s"
+
+#: ../app/widgets/Blog/Blog.php:38 ../app/widgets/Wall/Wall.php:93
+#: ../app/widgets/Wall/Wall.php:139
+msgid "Feed"
+msgstr "Flux"
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:99
+#, php-format
+msgid "%s has been added to your public groups"
+msgstr ""
+
+#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:104
+#, php-format
+msgid "%s has been removed from your public groups"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:38
+msgid "Connecting..."
+msgstr "Connexion..."
+
+#: ../app/widgets/Login/Login.php:65
+#, php-format
+msgid "%sGmail accounts are also compatible%s but are not fully supported"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:69
+#, php-format
+msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:99
+msgid "Wrong username"
+msgstr "Nom d'utilizaire incorrècte"
+
+#: ../app/widgets/Login/Login.php:105
+msgid "Invalid JID"
+msgstr "Identificant Jabber invalid"
+
+#: ../app/widgets/Login/Login.php:111
+msgid "Authentication mechanism not supported by Movim"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:117
+msgid "Empty Challenge from the server"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:123
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:135
+msgid "Wrong password"
+msgstr "Marrit senhal"
+
+#: ../app/widgets/Login/Login.php:141
+msgid "The XMPP authentification failed"
+msgstr "Autentificacion al servidor XMPP impossibla"
+
+#: ../app/widgets/Login/Login.php:147
+msgid "The current BOSH URL in invalid"
+msgstr "L'URL Bosh balhada es pas valida"
+
+#: ../app/widgets/Login/Login.php:153
+msgid "Internal server error"
+msgstr "Error intèrna del servidor"
+
+#: ../app/widgets/Login/Login.php:159
+msgid "Session error"
+msgstr "Error de sesilha"
+
+#: ../app/widgets/Login/Login.php:165
+msgid "Account successfully created"
+msgstr "Compte creat amb succès"
+
+#: ../app/widgets/Login/Login.php:171
+msgid "Movim failed to authenticate. You entered wrong data"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:177
+msgid "Your XMPP server is unauthorized"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:182
+msgid "The server takes too much time to respond"
+msgstr ""
+
+#: ../app/widgets/Login/Login.php:197
+msgid "Come in!"
+msgstr "'Chabatz d'entrar !"
+
+#: ../app/widgets/Profile/Profile.php:46
+msgid "Saved"
+msgstr "Enregistrat"
+
+#: ../app/widgets/Profile/Profile.php:47
+msgid "Status updated"
+msgstr "Estatut mes a jorn"
+
+#: ../app/widgets/Profile/Profile.php:114
+msgid "Your status here !"
+msgstr "Vòstre estatut aicí !"
+
+#: ../app/widgets/Profile/Profile.php:125
+msgid "No profile yet ?"
+msgstr "Pas encara de perfil ?"
+
+#: ../app/widgets/Discover/Discover.php:52
+msgid "Last registered"
+msgstr "Darrièrs marcats"
+
+#: ../app/widgets/ContactAction/ContactAction.php:70
+#: ../app/widgets/ContactAction/ContactAction.php:139
+msgid "Actions"
+msgstr "Accions"
+
+#: ../app/widgets/ContactAction/ContactAction.php:87
+msgid "Chat"
+msgstr "Messatjariá instantanèa (chat)"
+
+#: ../app/widgets/ContactAction/ContactAction.php:105
+msgid "Remove this contact"
+msgstr "Suprimir aqueste contacte"
+
+#: ../app/widgets/ContactAction/ContactAction.php:122
+msgid "Yes"
+msgstr "Òc"
+
+#: ../app/widgets/ContactAction/ContactAction.php:135
+msgid "No"
+msgstr "Non"
+
+#: ../app/widgets/ContactAction/ContactAction.php:151
+msgid "Invite this user"
+msgstr "Convidar aquel utilizaire"
+
+#: ../app/widgets/Location/Location.php:56
+msgid "Wrong position"
+msgstr "Marrida posicion"
+
+#: ../app/widgets/Location/Location.php:65
+msgid "Location updated"
+msgstr "Posicion geografica mesa a jorn"
+
+#: ../app/widgets/Location/Location.php:103
+msgid "Update my position"
+msgstr "Metre a jorn ma posicion"
+
+#: ../app/widgets/Location/Location.php:109
+msgid "Accept"
+msgstr "Acceptar"
+
+#: ../app/widgets/Location/Location.php:118
+#: ../app/widgets/Location/Location.php:122
+msgid "Location"
+msgstr "Emplaçament"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:31
+#: ../app/widgets/MediaUpload/MediaUpload.php:66
+msgid "Upload"
+msgstr "Mandar"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:35
+msgid "Please select image file"
+msgstr "Seleccionatz un imatge"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:69
+msgid "You should select valid image files only!"
+msgstr "Sols los imatges son autorizats"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:72
+msgid "An error occurred while uploading the file"
+msgstr "Una error s'es produsida pendent lo mandadís"
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:75
+msgid "The upload has been canceled by the user or the browser dropped the connection"
+msgstr ""
+
+#: ../app/widgets/MediaUpload/MediaUpload.php:78
+msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgstr ""
+
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:44
+msgid "No public groups found"
+msgstr "Pas de gropes publics trobats"
+
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:67
+#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:69
+msgid "Public groups"
+msgstr "Gropes publics"
+
+#: ../app/widgets/News/News.php:34 ../app/widgets/Wall/Wall.php:113
+#: ../app/widgets/Feed/Feed.php:145 ../app/widgets/Node/Node.php:208
+msgid "Get older posts"
+msgstr "Recuperar los ancians pòsts"
+
+#: ../app/widgets/News/News.php:67 ../app/widgets/Feed/Feed.php:178
+#: ../app/widgets/Node/Node.php:115
+msgid "Your feed cannot be loaded."
+msgstr "Vòstre fial es pas accessible."
+
+#: ../app/widgets/News/News.php:86
+#, php-format
+msgid "%s new items"
+msgstr ""
+
+#: ../app/widgets/Config/Config.php:57
+msgid "Configuration updated"
+msgstr "La configuracion es estada mesa a jorn"
+
+#: ../app/widgets/Avatar/Avatar.php:75
+msgid "Avatar Updated"
+msgstr ""
+
+#: ../app/widgets/Avatar/Avatar.php:81
+msgid "Avatar Not Updated"
+msgstr ""
+
+#: ../app/widgets/Wall/Wall.php:87 ../app/controllers/BlogController.php:12
+msgid "Blog"
+msgstr "Blòg"
+
+#: ../app/widgets/Wall/Wall.php:104
+msgid "Update"
+msgstr "Metre a jorn"
+
+#: ../app/widgets/VisioExt/VisioExt.php:68
+msgid "Hung up"
+msgstr ""
+
+#: ../app/widgets/VisioExt/VisioExt.php:72
+msgid "Your contact is busy"
+msgstr ""
+
+#: ../app/widgets/VisioExt/VisioExt.php:76
+msgid "Declined"
+msgstr ""
+
+#: ../app/widgets/VisioExt/VisioExt.php:92
+msgid "Remote application incompatible"
+msgstr ""
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:57
+#, php-format
+msgid "Return to %s's list of groups"
+msgstr ""
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:60
+msgid "Group deleted"
+msgstr "Grop suprimit"
+
+#: ../app/widgets/NodeConfig/NodeConfig.php:66
+msgid "Group configuration saved"
+msgstr "Configuracion del grop salvada"
+
+#: ../app/widgets/ContactCard/ContactCard.php:45
+#: ../app/widgets/ContactCard/ContactCard.php:151
+#: ../app/controllers/ProfileController.php:14
+#: ../app/controllers/MediaController.php:14
+#: ../app/controllers/ConfController.php:14
+#: ../app/controllers/NodeconfigController.php:15
+#: ../app/controllers/ExploreController.php:16
+#: ../app/controllers/NodeController.php:15
+#: ../app/controllers/FriendController.php:24
+#: ../app/controllers/HelpController.php:14
+#: ../app/controllers/ServerController.php:15
+#: ../app/controllers/NewsController.php:14
+#: ../app/controllers/MainController.php:14
+msgid "Profile"
+msgstr "Perfil"
+
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:65
+msgid "Affiliations saved"
+msgstr "Afiliacions salvadas"
+
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:92
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:93
+msgid "Manage your members"
+msgstr "Gerir vòstres membres"
+
+#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:98
+msgid "Get the members"
+msgstr "Recuperar los membres"
+
+#: ../app/widgets/Feed/Feed.php:68 ../app/widgets/Feed/Feed.php:107
+msgid "Your server doesn't support post publication, you can only read contact's feeds"
+msgstr ""
+
+#: ../app/widgets/Feed/Feed.php:75
+msgid "Comment publication error"
+msgstr ""
+
+#: ../app/widgets/Feed/Feed.php:113
+msgid "Creating your feed..."
+msgstr "Creacion de vòstre fial..."
+
+#: ../app/widgets/Account/Account.php:89
+msgid "Step 2 - Fill in your informations"
+msgstr "Etapa 2 - Emplenar lo formulari"
+
+#: ../app/widgets/Account/Account.php:289
+msgid "Description"
+msgstr "Descripcion"
+
+#: ../app/widgets/Account/Account.php:292
+msgid "URL"
+msgstr "Adreça Internet"
+
+#: ../app/widgets/Account/Account.php:295
+msgid "Software"
+msgstr "Logicials"
+
+#: ../app/widgets/Account/Account.php:445
+msgid "Create a new account"
+msgstr "Crear un compte novèl"
+
+#: ../app/widgets/Account/Account.php:448
+msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:449
+msgid "Keep in mind that this server will handle all your personnal data."
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:454
+msgid "Step 1 - Search the server"
+msgstr "Etapa 1 - Cerchar lo servidor"
+
+#: ../app/widgets/Account/Account.php:457
+#, php-format
+msgid "You can%s enter your server domain name%s. "
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:458
+msgid "Or you can choose a server from this list."
+msgstr ""
+
+#: ../app/widgets/Account/Account.php:469
+msgid "Server"
+msgstr "Servidor"
+
+#: ../app/widgets/Account/Account.php:472
+msgid "Enter the server domain (ex: movim.eu)"
+msgstr "Picatz lo nom de domeni (ex: movim.eu)"
+
+#: ../app/widgets/Account/Account.php:484
+msgid "Searching..."
+msgstr "Recèrca en cors..."
+
+#: ../app/widgets/Account/Account.php:486
+msgid "Search"
+msgstr "Recercar"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:95
+msgid "Place"
+msgstr "Luòc"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:286
+msgid "by"
+msgstr "per"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:290
+msgid "email"
+msgstr "E-mail"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:294
+msgid "jid"
+msgstr "jid"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:491
+msgid "Show the older comments"
+msgstr "Afichar los autres comentaris"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:580
+msgid "No content"
+msgstr "Pas cap de contengut"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:643
+msgid "No comments"
+msgstr "Pas cap de comentari"
+
+#: ../app/widgets/WidgetCommon/WidgetCommon.php:654
+msgid "No comments stream"
+msgstr "Pas de flux de comentaris"
+
+#: ../app/controllers/ProfileController.php:9
+#, php-format
+msgid "%s - Profile"
+msgstr "%s - Perfil"
+
+#: ../app/controllers/ProfileController.php:11
+#: ../app/controllers/LoginController.php:11
+#: ../app/controllers/NotfoundController.php:11
+#: ../app/controllers/AboutController.php:11
+#: ../app/controllers/AccountController.php:11
+#: ../app/controllers/MediaController.php:11
+#: ../app/controllers/ConfController.php:11
+#: ../app/controllers/NodeconfigController.php:12
+#: ../app/controllers/ExploreController.php:13
+#: ../app/controllers/BlogController.php:11
+#: ../app/controllers/NodeController.php:12
+#: ../app/controllers/FriendController.php:21
+#: ../app/controllers/HelpController.php:11
+#: ../app/controllers/ServerController.php:12
+#: ../app/controllers/AdminloginController.php:11
+#: ../app/controllers/NewsController.php:11
+#: ../app/controllers/DiscoverController.php:13
+#: ../app/controllers/AccountnextController.php:11
+#: ../app/controllers/AdminController.php:14
+#: ../app/controllers/MainController.php:11
+msgid "Home"
+msgstr "Dorsièr personal"
+
+#: ../app/controllers/ProfileController.php:12
+#: ../app/controllers/MediaController.php:12
+#: ../app/controllers/ConfController.php:12
+#: ../app/controllers/NodeconfigController.php:13
+#: ../app/controllers/ExploreController.php:14
+#: ../app/controllers/NodeController.php:13
+#: ../app/controllers/FriendController.php:22
+#: ../app/controllers/HelpController.php:12
+#: ../app/controllers/ServerController.php:13
+#: ../app/controllers/NewsController.php:12
+#: ../app/controllers/MainController.php:12
+msgid "News"
+msgstr "Actualitats"
+
+#: ../app/controllers/ProfileController.php:13
+#: ../app/controllers/MediaController.php:13
+#: ../app/controllers/ConfController.php:13
+#: ../app/controllers/NodeconfigController.php:14
+#: ../app/controllers/ExploreController.php:15
+#: ../app/controllers/NodeController.php:14
+#: ../app/controllers/FriendController.php:23
+#: ../app/controllers/HelpController.php:13
+#: ../app/controllers/ServerController.php:14
+#: ../app/controllers/NewsController.php:13
+#: ../app/controllers/MainController.php:13 ../app/views/explore.tpl:16
+msgid "Explore"
+msgstr "Explorar"
+
+#: ../app/controllers/ProfileController.php:16
+#: ../app/controllers/MediaController.php:16
+#: ../app/controllers/ConfController.php:16
+#: ../app/controllers/NodeconfigController.php:10
+#: ../app/controllers/NodeconfigController.php:17
+#: ../app/controllers/ExploreController.php:18
+#: ../app/controllers/NodeController.php:17
+#: ../app/controllers/FriendController.php:26
+#: ../app/controllers/HelpController.php:16
+#: ../app/controllers/ServerController.php:17
+#: ../app/controllers/NewsController.php:16
+#: ../app/controllers/MainController.php:16
+msgid "Configuration"
+msgstr "Configuracion"
+
+#: ../app/controllers/LoginController.php:9
+#, php-format
+msgid "%s - Login to Movim"
+msgstr "%s - Dobrir una sesilha MOVIM"
+
+#: ../app/controllers/LoginController.php:12
+#: ../app/controllers/AboutController.php:12
+#: ../app/controllers/DiscoverController.php:14
+msgid "Discover"
+msgstr "Descobrir"
+
+#: ../app/controllers/LoginController.php:13
+#: ../app/controllers/AboutController.php:13
+#: ../app/controllers/DiscoverController.php:15
+msgid "About"
+msgstr "A prepaus"
+
+#: ../app/controllers/AboutController.php:9
+#, php-format
+msgid "%s - About"
+msgstr "%s - A prepaus"
+
+#: ../app/controllers/AccountController.php:9
+#: ../app/controllers/BlogController.php:9
+#: ../app/controllers/AccountnextController.php:9
+#, php-format
+msgid "%s - Account"
+msgstr "%s - Compte"
+
+#: ../app/controllers/AccountController.php:12
+#: ../app/controllers/AccountnextController.php:12
+msgid "Account Creation"
+msgstr "Creacion de compte"
+
+#: ../app/controllers/ConfController.php:9
+#, php-format
+msgid "%s - Configuration"
+msgstr "%s - Configuracion"
+
+#: ../app/controllers/ExploreController.php:11
+#, php-format
+msgid "%s - Explore"
+msgstr "%s - Explorar"
+
+#: ../app/controllers/HelpController.php:9
+#, php-format
+msgid "%s - Help Page"
+msgstr "%s - Pagina d'Ajuda"
+
+#: ../app/controllers/AdminloginController.php:9
+#: ../app/controllers/AdminController.php:12
+#, php-format
+msgid "%s - Administration Panel"
+msgstr "%s - Panèl d'Administracion"
+
+#: ../app/controllers/AdminloginController.php:12
+#: ../app/controllers/AdminController.php:15
+msgid "Administration"
+msgstr "Administracion"
+
+#: ../app/controllers/NewsController.php:9
+#, php-format
+msgid "%s - News"
+msgstr "%s - Actualitats"
+
+#: ../app/controllers/DiscoverController.php:11
+#, php-format
+msgid "%s - Discover"
+msgstr "%s - Descobrir"
+
+#: ../app/controllers/MainController.php:9
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr "%s - Benvengut sus MOVIM"
+
+#: ../system/Conf.php:67
+#, php-format
+msgid "Cannot load file '%s'"
+msgstr "Lo fichier '%s' es pas accessible"
+
+#: ../system/MovimException.php:15
+#, php-format
+msgid "Error: %s"
+msgstr "Error : %s"
 
 #: ../system/Route.php:70
 #, php-format
@@ -77,20 +1448,6 @@ msgstr ""
 #, php-format
 msgid "Route not set for the page %s"
 msgstr ""
-
-#: ../system/controllers/FrontController.php:33
-#, php-format
-msgid "Requested controller '%s' doesn't exist."
-msgstr ""
-
-#: ../system/controllers/FrontController.php:67
-msgid "Could not call the load method on the current controller"
-msgstr ""
-
-#: ../system/widget/WidgetWrapper.php:131
-#, php-format
-msgid "Requested widget '%s' doesn't exist."
-msgstr "Lo widget « %s » existís pas"
 
 #: ../system/Utils.php:27 ../system/Utils.php:239
 msgid "None"
@@ -135,22 +1492,6 @@ msgstr "Associat"
 #: ../system/Utils.php:246
 msgid "Civil Union"
 msgstr "Union civila"
-
-#: ../system/Utils.php:252 ../app/widgets/Chat/Chat.php:47
-msgid "Online"
-msgstr "En linha"
-
-#: ../system/Utils.php:253 ../app/widgets/Chat/Chat.php:48
-msgid "Away"
-msgstr "Absent(a)"
-
-#: ../system/Utils.php:254 ../app/widgets/Chat/Chat.php:49
-msgid "Do Not Disturb"
-msgstr "De derengar pas"
-
-#: ../system/Utils.php:255 ../app/widgets/Chat/Chat.php:50
-msgid "Extended Away"
-msgstr "Abséncia longa"
 
 #: ../system/Utils.php:256
 msgid "Logout"
@@ -508,1339 +1849,18 @@ msgstr "Partejat amb la ret XMPP"
 msgid "Shared with the whole Internet"
 msgstr "Partejat amb tot Internet"
 
-#: ../system/Conf.php:67
+#: ../system/widget/WidgetWrapper.php:131
 #, php-format
-msgid "Cannot load file '%s'"
-msgstr "Lo fichier '%s' es pas accessible"
+msgid "Requested widget '%s' doesn't exist."
+msgstr "Lo widget « %s » existís pas"
 
-#: ../system/MovimException.php:15
+#: ../system/controllers/FrontController.php:33
 #, php-format
-msgid "Error: %s"
-msgstr "Error : %s"
-
-#: ../upload.php:25
-msgid "Not a picture"
-msgstr "Qu'es pas un imatge"
-
-#: ../upload.php:28
-msgid "Folder size limit exceeded"
-msgstr "Talha limita del dorsièr depassada"
-
-#: ../app/models/postn/Postn.php:140
-msgid "Content not found"
-msgstr "Contengut pas trobat"
-
-#: ../app/controllers/MediaController.php:9
-#: ../app/controllers/MediaController.php:15
-#: ../app/controllers/MainController.php:15
-#: ../app/controllers/NodeconfigController.php:16
-#: ../app/controllers/NewsController.php:15
-#: ../app/controllers/ProfileController.php:15
-#: ../app/controllers/ServerController.php:16
-#: ../app/controllers/HelpController.php:15
-#: ../app/controllers/ConfController.php:15
-#: ../app/controllers/FriendController.php:25
-#: ../app/controllers/ExploreController.php:17
-#: ../app/controllers/NodeController.php:16 ../app/widgets/Media/Media.php:159
-msgid "Media"
-msgstr "Mèdia"
-
-#: ../app/controllers/MediaController.php:11
-#: ../app/controllers/AccountnextController.php:11
-#: ../app/controllers/MainController.php:11
-#: ../app/controllers/AccountController.php:11
-#: ../app/controllers/NodeconfigController.php:12
-#: ../app/controllers/NewsController.php:11
-#: ../app/controllers/NotfoundController.php:11
-#: ../app/controllers/DiscoverController.php:13
-#: ../app/controllers/LoginController.php:11
-#: ../app/controllers/ProfileController.php:11
-#: ../app/controllers/ServerController.php:12
-#: ../app/controllers/HelpController.php:11
-#: ../app/controllers/ConfController.php:11
-#: ../app/controllers/AboutController.php:11
-#: ../app/controllers/AdminloginController.php:11
-#: ../app/controllers/BlogController.php:11
-#: ../app/controllers/FriendController.php:21
-#: ../app/controllers/AdminController.php:14
-#: ../app/controllers/ExploreController.php:13
-#: ../app/controllers/NodeController.php:12
-msgid "Home"
-msgstr "Dorsièr personal"
-
-#: ../app/controllers/MediaController.php:12
-#: ../app/controllers/MainController.php:12
-#: ../app/controllers/NodeconfigController.php:13
-#: ../app/controllers/NewsController.php:12
-#: ../app/controllers/ProfileController.php:12
-#: ../app/controllers/ServerController.php:13
-#: ../app/controllers/HelpController.php:12
-#: ../app/controllers/ConfController.php:12
-#: ../app/controllers/FriendController.php:22
-#: ../app/controllers/ExploreController.php:14
-#: ../app/controllers/NodeController.php:13
-msgid "News"
-msgstr "Actualitats"
-
-#: ../app/controllers/MediaController.php:13
-#: ../app/controllers/MainController.php:13
-#: ../app/controllers/NodeconfigController.php:14
-#: ../app/controllers/NewsController.php:13
-#: ../app/controllers/ProfileController.php:13
-#: ../app/controllers/ServerController.php:14
-#: ../app/controllers/HelpController.php:13
-#: ../app/controllers/ConfController.php:13
-#: ../app/controllers/FriendController.php:23
-#: ../app/controllers/ExploreController.php:15
-#: ../app/controllers/NodeController.php:14 ../app/views/explore.tpl:16
-msgid "Explore"
-msgstr "Explorar"
-
-#: ../app/controllers/MediaController.php:14
-#: ../app/controllers/MainController.php:14
-#: ../app/controllers/NodeconfigController.php:15
-#: ../app/controllers/NewsController.php:14
-#: ../app/controllers/ProfileController.php:14
-#: ../app/controllers/ServerController.php:15
-#: ../app/controllers/HelpController.php:14
-#: ../app/controllers/ConfController.php:14
-#: ../app/controllers/FriendController.php:24
-#: ../app/controllers/ExploreController.php:16
-#: ../app/controllers/NodeController.php:15
-#: ../app/widgets/ContactCard/ContactCard.php:45
-#: ../app/widgets/ContactCard/ContactCard.php:151
-msgid "Profile"
-msgstr "Perfil"
-
-#: ../app/controllers/MediaController.php:16
-#: ../app/controllers/MainController.php:16
-#: ../app/controllers/NodeconfigController.php:10
-#: ../app/controllers/NodeconfigController.php:17
-#: ../app/controllers/NewsController.php:16
-#: ../app/controllers/ProfileController.php:16
-#: ../app/controllers/ServerController.php:17
-#: ../app/controllers/HelpController.php:16
-#: ../app/controllers/ConfController.php:16
-#: ../app/controllers/FriendController.php:26
-#: ../app/controllers/ExploreController.php:18
-#: ../app/controllers/NodeController.php:17
-msgid "Configuration"
-msgstr "Configuracion"
-
-#: ../app/controllers/MediaController.php:17
-#: ../app/controllers/MainController.php:17
-#: ../app/controllers/NodeconfigController.php:18
-#: ../app/controllers/NewsController.php:17
-#: ../app/controllers/ProfileController.php:17
-#: ../app/controllers/ServerController.php:18
-#: ../app/controllers/HelpController.php:17
-#: ../app/controllers/ConfController.php:17
-#: ../app/controllers/FriendController.php:27
-#: ../app/controllers/ExploreController.php:19
-#: ../app/controllers/NodeController.php:18 ../app/widgets/Help/Help.php:29
-#: ../app/widgets/Help/Help.php:41
-msgid "Help"
-msgstr "Ajuda"
-
-#: ../app/controllers/AccountnextController.php:9
-#: ../app/controllers/AccountController.php:9
-#: ../app/controllers/BlogController.php:9
-#, php-format
-msgid "%s - Account"
-msgstr "%s - Compte"
-
-#: ../app/controllers/AccountnextController.php:12
-#: ../app/controllers/AccountController.php:12
-msgid "Account Creation"
-msgstr "Creacion de compte"
-
-#: ../app/controllers/MainController.php:9
-#, php-format
-msgid "%s - Welcome to Movim"
-msgstr "%s - Benvengut sus MOVIM"
-
-#: ../app/controllers/NewsController.php:9
-#, php-format
-msgid "%s - News"
-msgstr "%s - Actualitats"
-
-#: ../app/controllers/DiscoverController.php:11
-#, php-format
-msgid "%s - Discover"
-msgstr "%s - Descobrir"
-
-#: ../app/controllers/DiscoverController.php:14
-#: ../app/controllers/LoginController.php:12
-#: ../app/controllers/AboutController.php:12
-msgid "Discover"
-msgstr "Descobrir"
-
-#: ../app/controllers/DiscoverController.php:15
-#: ../app/controllers/LoginController.php:13
-#: ../app/controllers/AboutController.php:13
-msgid "About"
-msgstr "A prepaus"
-
-#: ../app/controllers/LoginController.php:9
-#, php-format
-msgid "%s - Login to Movim"
-msgstr "%s - Dobrir una sesilha MOVIM"
-
-#: ../app/controllers/ProfileController.php:9
-#, php-format
-msgid "%s - Profile"
-msgstr "%s - Perfil"
-
-#: ../app/controllers/HelpController.php:9
-#, php-format
-msgid "%s - Help Page"
-msgstr "%s - Pagina d'Ajuda"
-
-#: ../app/controllers/ConfController.php:9
-#, php-format
-msgid "%s - Configuration"
-msgstr "%s - Configuracion"
-
-#: ../app/controllers/AboutController.php:9
-#, php-format
-msgid "%s - About"
-msgstr "%s - A prepaus"
-
-#: ../app/controllers/AdminloginController.php:9
-#: ../app/controllers/AdminController.php:12
-#, php-format
-msgid "%s - Administration Panel"
-msgstr "%s - Panèl d'Administracion"
-
-#: ../app/controllers/AdminloginController.php:12
-#: ../app/controllers/AdminController.php:15
-msgid "Administration"
-msgstr "Administracion"
-
-#: ../app/controllers/BlogController.php:12 ../app/widgets/Wall/Wall.php:87
-msgid "Blog"
-msgstr "Blòg"
-
-#: ../app/controllers/ExploreController.php:11
-#, php-format
-msgid "%s - Explore"
-msgstr "%s - Explorar"
-
-#: ../app/widgets/ContactAction/ContactAction.php:70
-#: ../app/widgets/ContactAction/ContactAction.php:139
-msgid "Actions"
-msgstr "Accions"
-
-#: ../app/widgets/ContactAction/ContactAction.php:87
-msgid "Chat"
-msgstr "Messatjariá instantanèa (chat)"
-
-#: ../app/widgets/ContactAction/ContactAction.php:105
-msgid "Remove this contact"
-msgstr "Suprimir aqueste contacte"
-
-#: ../app/widgets/ContactAction/ContactAction.php:122
-msgid "Yes"
-msgstr "Òc"
-
-#: ../app/widgets/ContactAction/ContactAction.php:135
-msgid "No"
-msgstr "Non"
-
-#: ../app/widgets/ContactAction/ContactAction.php:151
-msgid "Invite this user"
-msgstr "Convidar aquel utilizaire"
-
-#: ../app/widgets/Media/Media.php:91
-#: ../app/widgets/ContactInfo/ContactInfo.php:63
-msgid "on"
-msgstr "lo"
-
-#: ../app/widgets/Media/Media.php:109 ../app/widgets/Account/Account.php:286
-#: ../app/widgets/ContactCard/ContactCard.php:51
-#: ../app/widgets/Vcard/Vcard.php:142
-msgid "Name"
-msgstr "Nom"
-
-#: ../app/widgets/Media/Media.php:111
-msgid "Resolution"
-msgstr "Resolucion"
-
-#: ../app/widgets/Media/Media.php:113
-msgid "Size"
-msgstr "Talha"
-
-#: ../app/widgets/Media/Media.php:115
-msgid "Date"
-msgstr "Data"
-
-#: ../app/widgets/Media/Media.php:117
-msgid "ISO"
-msgstr "ISO"
-
-#: ../app/widgets/Media/Media.php:119
-msgid "Camera"
-msgstr "Camèra"
-
-#: ../app/widgets/Media/Media.php:121
-msgid "Artist"
-msgstr "Artista"
-
-#: ../app/widgets/Media/Media.php:124
-msgid "Original"
-msgstr "Original"
-
-#: ../app/widgets/Media/Media.php:124
-msgid "Link"
-msgstr "Ligam"
-
-#: ../app/widgets/Media/Media.php:153
-msgid "Viewer"
-msgstr "Visionadoira"
-
-#: ../app/widgets/VisioExt/VisioExt.php:68
-msgid "Hung up"
+msgid "Requested controller '%s' doesn't exist."
 msgstr ""
 
-#: ../app/widgets/VisioExt/VisioExt.php:72
-msgid "Your contact is busy"
-msgstr ""
-
-#: ../app/widgets/VisioExt/VisioExt.php:76
-msgid "Declined"
-msgstr ""
-
-#: ../app/widgets/VisioExt/VisioExt.php:92
-msgid "Remote application incompatible"
-msgstr ""
-
-#: ../app/widgets/VisioExt/VisioExt.php:100
-#: ../app/widgets/AccountError/AccountError.php:80
-#: ../app/widgets/Account/Account.php:433
-msgid "Unknown error"
-msgstr "Error desconeguda"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:31
-#: ../app/widgets/MediaUpload/MediaUpload.php:66
-msgid "Upload"
-msgstr "Mandar"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:35
-msgid "Please select image file"
-msgstr "Seleccionatz un imatge"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:69
-msgid "You should select valid image files only!"
-msgstr "Sols los imatges son autorizats"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:72
-msgid "An error occurred while uploading the file"
-msgstr "Una error s'es produsida pendent lo mandadís"
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:75
-msgid "The upload has been canceled by the user or the browser dropped the connection"
-msgstr ""
-
-#: ../app/widgets/MediaUpload/MediaUpload.php:78
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
-msgstr ""
-
-#: ../app/widgets/ServerNodes/ServerNodes.php:57
-msgid "Create a new group"
-msgstr "Crear un grop novèl"
-
-#: ../app/widgets/ServerNodes/ServerNodes.php:64
-msgid "Give a friendly name to your group"
-msgstr "Donar un nom sympa a vòstre grop"
-
-#: ../app/widgets/ServerNodes/ServerNodes.php:66
-msgid "My Little Pony - Fan Club"
-msgstr "Mon Pichon Poni - Fan Club"
-
-#: ../app/widgets/ServerNodes/ServerNodes.php:75
-#: ../app/widgets/Notifs/Notifs.php:189
-msgid "Add"
-msgstr "Apondre"
-
-#: ../app/widgets/ServerNodes/ServerNodes.php:80
-msgid "Close"
-msgstr "Tampar"
-
-#: ../app/widgets/ServerNodes/ServerNodes.php:111
-msgid "Subscribed"
-msgstr "Abonat"
-
-#: ../app/widgets/Node/Node.php:115 ../app/widgets/News/News.php:67
-#: ../app/widgets/Feed/Feed.php:178
-msgid "Your feed cannot be loaded."
-msgstr "Vòstre fial es pas accessible."
-
-#: ../app/widgets/Node/Node.php:208 ../app/widgets/Wall/Wall.php:113
-#: ../app/widgets/News/News.php:34 ../app/widgets/Feed/Feed.php:145
-msgid "Get older posts"
-msgstr "Recuperar los ancians pòsts"
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:57
-#, php-format
-msgid "Return to %s's list of groups"
-msgstr ""
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:60
-msgid "Group deleted"
-msgstr "Grop suprimit"
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:66
-msgid "Group configuration saved"
-msgstr "Configuracion del grop salvada"
-
-#: ../app/widgets/NodeConfig/NodeConfig.php:86
-#: ../app/widgets/Account/Account.php:157
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:59
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:62
-msgid "Validate"
-msgstr "Validar"
-
-#: ../app/widgets/AccountError/AccountError.php:32
-#: ../app/widgets/Account/Account.php:385 ../app/widgets/Login/Login.php:129
-msgid "Some data are missing !"
-msgstr "Manca d'informacions !"
-
-#: ../app/widgets/AccountError/AccountError.php:38
-#: ../app/widgets/Account/Account.php:391
-msgid "Wrong ID"
-msgstr "Marrit identificant"
-
-#: ../app/widgets/AccountError/AccountError.php:44
-#: ../app/widgets/Account/Account.php:397
-msgid "You entered different passwords"
-msgstr "Avetz picat dos senhaus diferents"
-
-#: ../app/widgets/AccountError/AccountError.php:50
-#: ../app/widgets/Account/Account.php:403
-msgid "Invalid name"
-msgstr "Lo nom es pas valid"
-
-#: ../app/widgets/AccountError/AccountError.php:56
-#: ../app/widgets/Account/Account.php:409
-msgid "Request not acceptable"
-msgstr ""
-
-#: ../app/widgets/AccountError/AccountError.php:62
-#: ../app/widgets/Account/Account.php:415
-msgid "Username already taken"
-msgstr "Nom d'utilizaire ja existent"
-
-#: ../app/widgets/AccountError/AccountError.php:68
-#: ../app/widgets/Account/Account.php:421
-msgid "Could not connect to the XMPP server"
-msgstr "Error a la connexion al servidor XMPP"
-
-#: ../app/widgets/AccountError/AccountError.php:74
-#: ../app/widgets/Account/Account.php:427
-msgid "Could not communicate with the XMPP server"
-msgstr "Impossible de comunicar amb lo servidor XMPP"
-
-#: ../app/widgets/Roster/Roster.php:69 ../app/widgets/Roster/Roster.php:223
-msgid "Ungrouped"
-msgstr "Pas agropat"
-
-#: ../app/widgets/Roster/Roster.php:281
-msgid "Show disconnected contacts"
-msgstr "Contactes desconnectats afichats"
-
-#: ../app/widgets/Roster/Roster.php:283
-msgid "Hide disconnected contacts"
-msgstr "Contactes desconnectats amagats"
-
-#: ../app/widgets/Roster/Roster.php:287
-#, php-format
-msgid "Hide group %s"
-msgstr "Grop %s amagat"
-
-#: ../app/widgets/Roster/Roster.php:289
-#, php-format
-msgid "Show group %s"
-msgstr "Grop %s afichat"
-
-#: ../app/widgets/Roster/Roster.php:316
-msgid "Please enter a valid Jabber ID"
-msgstr ""
-
-#: ../app/widgets/Avatar/Avatar.php:75
-msgid "Avatar Updated"
-msgstr ""
-
-#: ../app/widgets/Avatar/Avatar.php:81
-msgid "Avatar Not Updated"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:105 ../app/widgets/Vcard/Vcard.php:340
-msgid "Submit"
-msgstr "Validar"
-
-#: ../app/widgets/Admin/Admin.php:109
-msgid "Compatibility Check"
-msgstr "Verificacion de la compatibilitat del servidor"
-
-#: ../app/widgets/Admin/Admin.php:114
-msgid "Movim requires certain external components. Please install them before you can succeed:"
-msgstr "Per poder foncionar corrèctament, Movim a besonh de certans components. Installatz-los, se vos plai, abans de poder contunhar :"
-
-#: ../app/widgets/Admin/Admin.php:119
-#, php-format
-msgid "Your PHP-Version: %s <br>Required: 5.3.0"
-msgstr "Vòstra version de PHP: %s <br>Requesida: 5.3.0"
-
-#: ../app/widgets/Admin/Admin.php:122
-msgid "CURL-Library"
-msgstr "Bibliotèca CURL"
-
-#: ../app/widgets/Admin/Admin.php:125
-msgid "GD"
-msgstr "GD"
-
-#: ../app/widgets/Admin/Admin.php:128
-msgid "SimpleXML"
-msgstr "SimpleXML"
-
-#: ../app/widgets/Admin/Admin.php:131
-msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr "Movim a pas los dreches de lectura nimai d'escritura dins son dorsier raiç"
-
-#: ../app/widgets/Admin/Admin.php:134
-msgid "OpenSSL"
-msgstr "OpenSSL"
-
-#: ../app/widgets/Admin/Admin.php:140 ../app/widgets/Admin/Admin.php:143
-msgid "URL Rewriting support"
-msgstr "Gestion de la reescritura d'URL"
-
-#: ../app/widgets/Admin/Admin.php:157
-msgid "General Settings"
-msgstr "Configuracion generala"
-
-#: ../app/widgets/Admin/Admin.php:159
-msgid "Theme"
-msgstr "Tèma"
-
-#: ../app/widgets/Admin/Admin.php:178
-msgid "Default language"
-msgstr "Lenga per defaut"
-
-#: ../app/widgets/Admin/Admin.php:202
-msgid "Environment"
-msgstr "Environament"
-
-#: ../app/widgets/Admin/Admin.php:222
-msgid "User folder size limit (in bytes)"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:238
-#, fuzzy
-msgid "Empty"
-msgstr "void"
-
-#: ../app/widgets/Admin/Admin.php:239
-msgid "Syslog"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:240
-msgid "Syslog and Files"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:244
-msgid "Log verbosity"
-msgstr "Nivèl de jornalizacion"
-
-#: ../app/widgets/Admin/Admin.php:267
-msgid "Server Timezone"
-msgstr "Fus orari del servidor"
-
-#: ../app/widgets/Admin/Admin.php:295
-msgid "Bosh Configuration"
-msgstr "Configuracion Bosh"
-
-#: ../app/widgets/Admin/Admin.php:299
-msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:300
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:301
-msgid "If it is closed, you have to specify the corresponding Server on the next page."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:302
-#, php-format
-msgid "If you are unsure about this config option visit the %swiki%s"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:308
-msgid "Your Bosh URL is not reachable"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:314
-msgid "Bosh URL"
-msgstr "URL Bosh"
-
-#: ../app/widgets/Admin/Admin.php:325
-msgid "Whitelist - XMPP Server"
-msgstr "Servidors XMPP - Lista blancha"
-
-#: ../app/widgets/Admin/Admin.php:329
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Si desiratz especificar una lista de servidors XMPP autorizats sus vòstre pòd Movim e interdire la connexion a tots los autres, especificatz si vos plai la lista de lor noms de domeni, separats per de las virgulas (ex: movim.eu, jabber.fr)"
-
-#: ../app/widgets/Admin/Admin.php:332
-msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr "Daissatz aqueste champ void se desiratz autorizar la connexion a totes los comptes XMPP."
-
-#: ../app/widgets/Admin/Admin.php:337
-msgid "List of whitelisted XMPP servers"
-msgstr "Lista blancha dels servidors XMPP"
-
-#: ../app/widgets/Admin/Admin.php:348 ../app/widgets/Admin/Admin.php:360
-msgid "Information Message"
-msgstr "Messatge d'informacion"
-
-#: ../app/widgets/Admin/Admin.php:352
-msgid "This message will be displayed on the login page"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:355
-msgid "Leave this field blank if you don't want to show any message."
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:371
-msgid "Administration Credential"
-msgstr "Identificacion de l'administrator"
-
-#: ../app/widgets/Admin/Admin.php:376
-msgid "Change the default credentials admin/password"
-msgstr ""
-
-#: ../app/widgets/Admin/Admin.php:382
-msgid "Username"
-msgstr "Nom d'utilizaire"
-
-#: ../app/widgets/Admin/Admin.php:388
-msgid "Password"
-msgstr "Senhal"
-
-#: ../app/widgets/Admin/Admin.php:392
-msgid "Retype password"
-msgstr "Tornar picar lo senhal"
-
-#: ../app/widgets/Connection/Connection.php:37
-msgid "Please wait "
-msgstr "Pacientatz, se vos plai "
-
-#: ../app/widgets/Vcard4/Vcard4.php:97 ../app/widgets/Vcard4/Vcard4.php:105
-#: ../app/widgets/Vcard/Vcard.php:40
-msgid "Profile Updated"
-msgstr "Perfil mes a jorn"
-
-#: ../app/widgets/Vcard4/Vcard4.php:110
-msgid "Profile Not Updated"
-msgstr ""
-
-#: ../app/widgets/Vcard4/Vcard4.php:178
-msgid "Your profile is now public"
-msgstr ""
-
-#: ../app/widgets/Vcard4/Vcard4.php:181
-msgid "Your profile is now restricted"
-msgstr ""
-
-#: ../app/widgets/ContactManage/ContactManage.php:32
-msgid "Contact updated"
-msgstr "Contacte mes a jorn"
-
-#: ../app/widgets/ContactManage/ContactManage.php:57
-msgid "Manage"
-msgstr "Gerir"
-
-#: ../app/widgets/ContactManage/ContactManage.php:72
-msgid "Alias"
-msgstr "Aliàs"
-
-#: ../app/widgets/ContactManage/ContactManage.php:78
-msgid "Group"
-msgstr "Grop"
-
-#: ../app/widgets/ContactManage/ContactManage.php:81
-msgid "Save"
-msgstr "Enregistrar"
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:99
-#, php-format
-msgid "%s has been added to your public groups"
-msgstr ""
-
-#: ../app/widgets/PubsubSubscriptionConfig/PubsubSubscriptionConfig.php:104
-#, php-format
-msgid "%s has been removed from your public groups"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:89
-msgid "Step 2 - Fill in your informations"
-msgstr "Etapa 2 - Emplenar lo formulari"
-
-#: ../app/widgets/Account/Account.php:170
-#: ../app/widgets/AccountNext/AccountNext.php:142
-msgid "No account creation form founded on the server"
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:289
-msgid "Description"
-msgstr "Descripcion"
-
-#: ../app/widgets/Account/Account.php:292
-msgid "URL"
-msgstr "Adreça Internet"
-
-#: ../app/widgets/Account/Account.php:295
-msgid "Software"
-msgstr "Logicials"
-
-#: ../app/widgets/Account/Account.php:445
-msgid "Create a new account"
-msgstr "Crear un compte novèl"
-
-#: ../app/widgets/Account/Account.php:448
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:449
-msgid "Keep in mind that this server will handle all your personnal data."
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:454
-msgid "Step 1 - Search the server"
-msgstr "Etapa 1 - Cerchar lo servidor"
-
-#: ../app/widgets/Account/Account.php:457
-#, php-format
-msgid "You can%s enter your server domain name%s. "
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:458
-msgid "Or you can choose a server from this list."
-msgstr ""
-
-#: ../app/widgets/Account/Account.php:469
-msgid "Server"
-msgstr "Servidor"
-
-#: ../app/widgets/Account/Account.php:472
-msgid "Enter the server domain (ex: movim.eu)"
-msgstr "Picatz lo nom de domeni (ex: movim.eu)"
-
-#: ../app/widgets/Account/Account.php:484
-msgid "Searching..."
-msgstr "Recèrca en cors..."
-
-#: ../app/widgets/Account/Account.php:486
-msgid "Search"
-msgstr "Recercar"
-
-#: ../app/widgets/Chat/Chat.php:51
-msgid "Offline"
-msgstr "Desconnectat"
-
-#: ../app/widgets/Chat/Chat.php:73
-msgid "Connected to the chatroom"
-msgstr ""
-
-#: ../app/widgets/Chat/Chat.php:75
-msgid "Disconnected to the chatroom"
-msgstr ""
-
-#: ../app/widgets/Chat/Chat.php:135
-msgid "Message Published"
-msgstr "Messatge publicat"
-
-#: ../app/widgets/Chat/Chat.php:165
-#, php-format
-msgid "%s needs your attention"
-msgstr "%s a besonh de vòstre atencion"
-
-#: ../app/widgets/Chat/Chat.php:337
-msgid "Encrypted message"
-msgstr "Messatge chifrat"
-
-#: ../app/widgets/Presence/Presence.php:126
-msgid "Disconnect"
-msgstr "Se desconnectar"
-
-#: ../app/widgets/Discover/Discover.php:52
-msgid "Last registered"
-msgstr "Darrièrs marcats"
-
-#: ../app/widgets/Blog/Blog.php:30
-#: ../app/widgets/Syndication/Syndication.php:54
-#, php-format
-msgid "%s's feed"
-msgstr "Flux de %s"
-
-#: ../app/widgets/Blog/Blog.php:38 ../app/widgets/Wall/Wall.php:93
-#: ../app/widgets/Wall/Wall.php:139
-msgid "Feed"
-msgstr "Flux"
-
-#: ../app/widgets/Bookmark/Bookmark.php:129
-msgid "Bookmarks updated"
-msgstr "Signets meses a jorn"
-
-#: ../app/widgets/Bookmark/Bookmark.php:139 ../app/widgets/Feed/Feed.php:96
-msgid "An error occured : "
-msgstr "Una error s'es produsida : "
-
-#: ../app/widgets/Bookmark/Bookmark.php:192
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: ../app/widgets/Bookmark/Bookmark.php:196
-msgid "Empty name"
-msgstr "Nom void"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:95
-msgid "Place"
-msgstr "Luòc"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:286
-msgid "by"
-msgstr "per"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:290
-msgid "email"
-msgstr "E-mail"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:294
-msgid "jid"
-msgstr "jid"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:491
-msgid "Show the older comments"
-msgstr "Afichar los autres comentaris"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:580
-msgid "No content"
-msgstr "Pas cap de contengut"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:643
-msgid "No comments"
-msgstr "Pas cap de comentari"
-
-#: ../app/widgets/WidgetCommon/WidgetCommon.php:654
-msgid "No comments stream"
-msgstr "Pas de flux de comentaris"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:46
-msgid "Mood"
-msgstr "Umor"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:50
-msgid "I'm "
-msgstr "Soi "
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:57
-msgid "Listening"
-msgstr "En escota"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:97
-msgid "Last seen"
-msgstr "Darrièra visita"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:113
-msgid "Bot"
-msgstr "Robòt"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:114
-msgid "Desktop"
-msgstr "Burèu"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:115
-#: ../app/widgets/ContactInfo/ContactInfo.php:116
-msgid "Phone"
-msgstr "Telefòn"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:117
-msgid "Web"
-msgstr "Internet"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:118
-msgid "Registered"
-msgstr "Enregistrat"
-
-#: ../app/widgets/ContactInfo/ContactInfo.php:130
-msgid "Client Informations"
-msgstr "Informacions sul client"
-
-#: ../app/widgets/Wall/Wall.php:100 ../app/widgets/Notifs/Notifs.php:51
-msgid "Updating"
-msgstr "Mesa a jorn"
-
-#: ../app/widgets/Wall/Wall.php:104
-msgid "Update"
-msgstr "Metre a jorn"
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:65
-msgid "Affiliations saved"
-msgstr "Afiliacions salvadas"
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:92
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:93
-msgid "Manage your members"
-msgstr "Gerir vòstres membres"
-
-#: ../app/widgets/NodeAffiliations/NodeAffiliations.php:98
-msgid "Get the members"
-msgstr "Recuperar los membres"
-
-#: ../app/widgets/Config/Config.php:57
-msgid "Configuration updated"
-msgstr "La configuracion es estada mesa a jorn"
-
-#: ../app/widgets/Log/Log.php:33
-msgid "Debug console"
-msgstr "Consòla de desbugatge"
-
-#: ../app/widgets/Location/Location.php:56
-msgid "Wrong position"
-msgstr "Marrida posicion"
-
-#: ../app/widgets/Location/Location.php:65
-msgid "Location updated"
-msgstr "Posicion geografica mesa a jorn"
-
-#: ../app/widgets/Location/Location.php:103
-msgid "Update my position"
-msgstr "Metre a jorn ma posicion"
-
-#: ../app/widgets/Location/Location.php:109
-msgid "Accept"
-msgstr "Acceptar"
-
-#: ../app/widgets/Location/Location.php:118
-#: ../app/widgets/Location/Location.php:122
-msgid "Location"
-msgstr "Emplaçament"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:68
-msgid "Subscriptions saved"
-msgstr "Abonaments enregistrats"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:98
-msgid "Manage your subscriptions"
-msgstr "Gerir vòstres abonaments"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:99
-msgid "Manage the subscriptions"
-msgstr "Gerir los abonaments"
-
-#: ../app/widgets/NodeSubscriptions/NodeSubscriptions.php:104
-msgid "Get the subscriptions"
-msgstr "Recuperar los abonaments"
-
-#: ../app/widgets/ContactCard/ContactCard.php:47
-#: ../app/widgets/Vcard/Vcard.php:139
-msgid "General Informations"
-msgstr "Informacions Generalas"
-
-#: ../app/widgets/ContactCard/ContactCard.php:57
-#: ../app/widgets/Vcard/Vcard.php:147
-msgid "Nickname"
-msgstr "Escais"
-
-#: ../app/widgets/ContactCard/ContactCard.php:63
-#: ../app/widgets/Vcard/Vcard.php:157
-msgid "Date of Birth"
-msgstr "Data de Naissença"
-
-#: ../app/widgets/ContactCard/ContactCard.php:69
-#: ../app/widgets/Vcard/Vcard.php:215
-msgid "Gender"
-msgstr "Sèxe"
-
-#: ../app/widgets/ContactCard/ContactCard.php:75
-#: ../app/widgets/Vcard/Vcard.php:226
-msgid "Marital Status"
-msgstr "Situacion familiala"
-
-#: ../app/widgets/ContactCard/ContactCard.php:82
-#: ../app/widgets/ContactCard/ContactCard.php:87
-#: ../app/widgets/Vcard/Vcard.php:152
-msgid "Email"
-msgstr "Adreça electronica"
-
-#: ../app/widgets/ContactCard/ContactCard.php:96
-#: ../app/widgets/ContactCard/ContactCard.php:101
-#: ../app/widgets/Vcard/Vcard.php:268
-msgid "Website"
-msgstr "Site web"
-
-#: ../app/widgets/ContactCard/ContactCard.php:109
-#: ../app/widgets/Vcard/Vcard.php:272
-msgid "About Me"
-msgstr "A prepaus de ieu"
-
-#: ../app/widgets/ContactCard/ContactCard.php:118
-#: ../app/widgets/Vcard/Vcard.php:280
-msgid "Geographic Position"
-msgstr "Posicion geografica"
-
-#: ../app/widgets/ContactCard/ContactCard.php:122
-#: ../app/widgets/Vcard/Vcard.php:282
-msgid "Locality"
-msgstr "Localitat"
-
-#: ../app/widgets/ContactCard/ContactCard.php:134
-#: ../app/widgets/Vcard/Vcard.php:286
-msgid "Country"
-msgstr "País"
-
-#: ../app/widgets/Vcard/Vcard.php:118
-msgid "It's your first time on Movim! To fill in a few information about you and display them to your contacts, create your virtual card by clicking the next button."
-msgstr ""
-
-#: ../app/widgets/Vcard/Vcard.php:123 ../app/widgets/Profile/Profile.php:129
-msgid "Create my vCard"
-msgstr "Crear ma vCard"
-
-#: ../app/widgets/Vcard/Vcard.php:162
-msgid "Day"
-msgstr "Jorn"
-
-#: ../app/widgets/Vcard/Vcard.php:182
-msgid "Month"
-msgstr "Mes"
-
-#: ../app/widgets/Vcard/Vcard.php:201
-msgid "Year"
-msgstr "Annada"
-
-#: ../app/widgets/Vcard/Vcard.php:237
-msgid "Avatar"
-msgstr "Avatar"
-
-#: ../app/widgets/Vcard/Vcard.php:248
-msgid "Webcam"
-msgstr "Webcam"
-
-#: ../app/widgets/Vcard/Vcard.php:256
-msgid "Cheese !"
-msgstr "Sorissètz !"
-
-#: ../app/widgets/Vcard/Vcard.php:264
-msgid "Take a webcam snapshot"
-msgstr "Prene una fòto amb vòstre aparelh fòto"
-
-#: ../app/widgets/Vcard/Vcard.php:305
-msgid "Privacy Level"
-msgstr "Nivèl de confidencialitat"
-
-#: ../app/widgets/Vcard/Vcard.php:316
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
-msgstr ""
-
-#: ../app/widgets/Vcard/Vcard.php:318
-msgid "Is this profile public ?"
-msgstr "Es lo perfil public ?"
-
-#: ../app/widgets/Vcard/Vcard.php:330
-msgid "Submitting"
-msgstr "Somission en cors"
-
-#: ../app/widgets/Vcard/Vcard.php:341
-msgid "Reset"
-msgstr "Reïnicializar"
-
-#: ../app/widgets/Vcard/Vcard.php:363
-msgid "Edit my Profile"
-msgstr "Modificar mon perfil"
-
-#: ../app/widgets/Help/Help.php:31
-msgid "What is Movim?"
-msgstr "Qu'es aquò Movim ?"
-
-#: ../app/widgets/Help/Help.php:33
-#, php-format
-msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:35
-msgid "What do the little banners refer to ?"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:44
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:48
-msgid "White, only you can see the information"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:49
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:50
-msgid "Orange, all your contact list can see your information"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:51
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:52
-msgid "Black, the whole Internet can see your information"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:56
-msgid "Some features are missing/I can't do everything I used to do on other social networks"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:58
-#, php-format
-msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:60
-#, php-format
-msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:63
-msgid "I can't find the answer to my question here"
-msgstr ""
-
-#: ../app/widgets/Help/Help.php:65
-#, php-format
-msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
-msgstr ""
-
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:44
-msgid "No public groups found"
-msgstr "Pas de gropes publics trobats"
-
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:67
-#: ../app/widgets/ContactPubsubSubscription/ContactPubsubSubscription.php:69
-msgid "Public groups"
-msgstr "Gropes publics"
-
-#: ../app/widgets/Login/Login.php:38
-msgid "Connecting..."
-msgstr "Connexion..."
-
-#: ../app/widgets/Login/Login.php:65
-#, php-format
-msgid "%sGmail accounts are also compatible%s but are not fully supported"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:69
-#, php-format
-msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:99
-msgid "Wrong username"
-msgstr "Nom d'utilizaire incorrècte"
-
-#: ../app/widgets/Login/Login.php:105
-msgid "Invalid JID"
-msgstr "Identificant Jabber invalid"
-
-#: ../app/widgets/Login/Login.php:111
-msgid "Authentication mechanism not supported by Movim"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:117
-msgid "Empty Challenge from the server"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:123
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:135
-msgid "Wrong password"
-msgstr "Marrit senhal"
-
-#: ../app/widgets/Login/Login.php:141
-msgid "The XMPP authentification failed"
-msgstr "Autentificacion al servidor XMPP impossibla"
-
-#: ../app/widgets/Login/Login.php:147
-msgid "The current BOSH URL in invalid"
-msgstr "L'URL Bosh balhada es pas valida"
-
-#: ../app/widgets/Login/Login.php:153
-msgid "Internal server error"
-msgstr "Error intèrna del servidor"
-
-#: ../app/widgets/Login/Login.php:159
-msgid "Session error"
-msgstr "Error de sesilha"
-
-#: ../app/widgets/Login/Login.php:165
-msgid "Account successfully created"
-msgstr "Compte creat amb succès"
-
-#: ../app/widgets/Login/Login.php:171
-msgid "Movim failed to authenticate. You entered wrong data"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:177
-msgid "Your XMPP server is unauthorized"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:182
-msgid "The server takes too much time to respond"
-msgstr ""
-
-#: ../app/widgets/Login/Login.php:197
-msgid "Come in!"
-msgstr "'Chabatz d'entrar !"
-
-#: ../app/widgets/Notifs/Notifs.php:54 ../app/widgets/News/News.php:86
-msgid "Refresh"
-msgstr "Metre a jorn"
-
-#: ../app/widgets/Notifs/Notifs.php:175
-msgid "wants to talk with you"
-msgstr "vòl charrar amb vos"
-
-#: ../app/widgets/News/News.php:86
-#, php-format
-msgid "%s new items"
-msgstr ""
-
-#: ../app/widgets/Feed/Feed.php:68 ../app/widgets/Feed/Feed.php:107
-msgid "Your server doesn't support post publication, you can only read contact's feeds"
-msgstr ""
-
-#: ../app/widgets/Feed/Feed.php:75
-msgid "Comment publication error"
-msgstr ""
-
-#: ../app/widgets/Feed/Feed.php:113
-msgid "Creating your feed..."
-msgstr "Creacion de vòstre fial..."
-
-#: ../app/widgets/Profile/Profile.php:46
-msgid "Saved"
-msgstr "Enregistrat"
-
-#: ../app/widgets/Profile/Profile.php:47
-msgid "Status updated"
-msgstr "Estatut mes a jorn"
-
-#: ../app/widgets/Profile/Profile.php:114
-msgid "Your status here !"
-msgstr "Vòstre estatut aicí !"
-
-#: ../app/widgets/Profile/Profile.php:125
-msgid "No profile yet ?"
-msgstr "Pas encara de perfil ?"
-
-#: ../app/helpers/DateHelper.php:9
-msgid "Monday"
-msgstr "Diluns"
-
-#: ../app/helpers/DateHelper.php:10
-msgid "Tuesday"
-msgstr "Dimars"
-
-#: ../app/helpers/DateHelper.php:11
-msgid "Wednesday"
-msgstr "Dimècres"
-
-#: ../app/helpers/DateHelper.php:12
-msgid "Thursday"
-msgstr "Dijòus"
-
-#: ../app/helpers/DateHelper.php:13 ../app/helpers/DateHelper.php:15
-msgid "Friday"
-msgstr "Divendres"
-
-#: ../app/helpers/DateHelper.php:14
-msgid "Saturday"
-msgstr "Dissabte"
-
-#: ../app/helpers/DateHelper.php:23
-msgid "January"
-msgstr "Genièr"
-
-#: ../app/helpers/DateHelper.php:24
-msgid "February"
-msgstr "Febrièr"
-
-#: ../app/helpers/DateHelper.php:25
-msgid "March"
-msgstr "Març"
-
-#: ../app/helpers/DateHelper.php:26
-msgid "April"
-msgstr "Abril"
-
-#: ../app/helpers/DateHelper.php:27
-msgid "May"
-msgstr "Mai"
-
-#: ../app/helpers/DateHelper.php:28
-msgid "June"
-msgstr "Junh"
-
-#: ../app/helpers/DateHelper.php:29
-msgid "July"
-msgstr "Julhet"
-
-#: ../app/helpers/DateHelper.php:30
-msgid "August"
-msgstr "Agost"
-
-#: ../app/helpers/DateHelper.php:31
-msgid "September"
-msgstr "Setembre"
-
-#: ../app/helpers/DateHelper.php:32
-msgid "October"
-msgstr "Octobre"
-
-#: ../app/helpers/DateHelper.php:33
-msgid "November"
-msgstr "Novembre"
-
-#: ../app/helpers/DateHelper.php:34
-msgid "December"
-msgstr "Decembre"
-
-#: ../app/helpers/DateHelper.php:61
-msgid "Today"
-msgstr "Uèi"
-
-#: ../app/helpers/DateHelper.php:63
-msgid "Tomorrow"
-msgstr "Deman"
-
-#: ../app/helpers/DateHelper.php:65
-msgid "Yesterday"
-msgstr "Ièr"
-
-#: ../app/helpers/DateHelper.php:71
-msgid "day"
-msgstr "jorn"
-
-#: ../app/helpers/DateHelper.php:74
-#, php-format
-msgid " %d days ago"
-msgstr " i a %d jorns"
-
-#: ../app/views/page.tpl:67
-msgid "You don't have javascript enabled.  Good luck with that."
+#: ../system/controllers/FrontController.php:67
+msgid "Could not call the load method on the current controller"
 msgstr ""
 
 #: ../app/views/admin.tpl:5
@@ -1853,6 +1873,10 @@ msgstr "Visioconferéncia"
 
 #: ../app/views/adminlogin.tpl:4
 msgid "Login"
+msgstr ""
+
+#: ../app/views/page.tpl:67
+msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
 #~ msgid "Bad URL"

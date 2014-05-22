@@ -298,7 +298,7 @@ class Admin extends WidgetBase {
         if(!$this->testBosh($this->_conf['boshUrl'])) {
             $html .= '
                 <div class="message error">'.
-                    t('bosh.not_recheable').'
+                    $this->__('bosh.not_recheable').'
                 </div>';
         }
                     
