@@ -40,9 +40,8 @@ class Admin extends WidgetBase {
             $form['pass'] = $this->_conf['pass'];
         }
         
-        foreach($this->_conf as $key => $value) {
-            if(isset($form[$key]))
-                $this->_conf[$key] = $form[$key];
+        foreach($form as $key => $value) {
+            $this->_conf[$key] = $value;
         }
 
         Conf::saveConfFile($this->_conf);
@@ -336,15 +335,27 @@ class Admin extends WidgetBase {
         $html .= '
             <fieldset>
                 <legend>'.$this->__('information.title').'</legend>
-                    <div class="clear"></div>';                    
-        
+                    <div class="clear"></div>';
+
+        if($this->_conf['description'] == '')
+            $description = __('global.description');
+        else
+            $description = $this->_conf['description'];
+                
+        $html .= '
+                    <div class="element large">
+                            <label for="description">'.$this->__('information.description').'</label>
+                            <textarea type="text" name="description" id="description" />'.$description.'</textarea>
+                    </div>
+                    <div class="clear"></div>';
+
         $html .= '<p>'.
                     $this->__('information.info1').
                 '</p>'.
                 '<p>'.
                     $this->__('information.info2').
                 '</p>';
-                
+                    
         $html .= '
                     <div class="element large">
                             <label for="info">'.$this->__('information.label').'</label>
