@@ -11,6 +11,10 @@
     clear: left;
 }
 
+.block h1 {
+    padding: 0;
+}
+
 .block.large {
     width: 100%;
     clear: both;
