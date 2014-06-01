@@ -7,6 +7,7 @@
 		<div class="moving_block" >
 			<?php $this->widget('Admin');?>
 			<?php $this->widget('Statistics');?>
+			<?php $this->widget('Api');?>
 		</div>
     </div>
 </div>

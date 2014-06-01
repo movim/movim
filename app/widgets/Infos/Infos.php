@@ -35,13 +35,21 @@ class Infos extends WidgetBase
 
         $sd = new \Modl\SessionxDAO();
 
+        // We see if we have the url rewriting
+        $rewrite = false;
+        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
+            $rewrite = true;
+        } 
+
         $infos = array(
                 'url'           => BASE_URI,
                 'language'      => $conf['defLang'],
                 'whitelist'     => $conf['xmppWhiteList'],
                 'timezone'      => $conf['timezone'],
                 'description'   => $conf['description'],
-                'phpversion'    => phpversion(),
+                'unregister'    => $conf['unregister'],
+                'php_version'   => phpversion(),
+                'rewrite'       => $rewrite,
                 'version'       => APP_VERSION,
                 'population'    => $pop,
                 'connected'     => $sd->getConnected()

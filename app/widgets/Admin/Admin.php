@@ -27,8 +27,10 @@ class Admin extends WidgetBase {
         $this->addjs('admin.js');
         $this->_conf = Conf::getServerConf();
 
-        $this->saveConfig($_POST);
-        $_POST = null;
+        if(isset($_POST)) {
+            $this->saveConfig($_POST);
+            $_POST = null;
+        }
     }
 
     private function saveConfig($form) {
@@ -151,9 +153,7 @@ class Admin extends WidgetBase {
         return $html;
     }
     
-    function prepareAdminGen() {
-        $html = '';
-        
+    function prepareAdminGen() {        
         $html .= '
             <fieldset>
                     <legend>'.$this->__('admin.general').'</legend>

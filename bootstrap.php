@@ -115,7 +115,7 @@ class Bootstrap {
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
         define('WIDGETS_PATH',  DOCUMENT_ROOT . '/app/widgets/');
         
-        define('MOVIM_API',     'http://localhost/api/movim_api/public/');
+        define('MOVIM_API',     'https://api.movim.eu/');
         
         if (!defined('DOCTYPE')) {
             define('DOCTYPE','text/html');
