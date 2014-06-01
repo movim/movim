@@ -31,7 +31,7 @@ class Pods extends WidgetBase
         $json = json_decode($json);
         
         if(is_object($json) && $json->status == 200) {
-            $this->view->assign('pods', $json->pods);
+            $this->view->assign('pods', $json);
         }
     }
 }
