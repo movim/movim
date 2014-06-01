@@ -9,7 +9,7 @@
                 {if="isset($value->start)"}
                 <a class="action">{$c->getTime($value->start)}</a>
                 {/if}
-                <a>{$value->username}@{$value->host}</a>
+                <a>{$value->username}@{$value->host} - {$value->domain}</a>
             </li>
         {/loop}
     </ul>

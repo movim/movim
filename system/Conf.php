@@ -29,24 +29,26 @@ class Conf
     
     static function getDefault() {
         return array(
-            'environment' => 'development',//allow "production" and "development" for the moment
-            'theme'     => 'movim',
-            'defLang'   => 'en',
-            'maxUsers'  => -1,
-            'logLevel'  => 'empty',
-            'timezone'  => 'Etc/GMT',
-            'dbType'    => 'mysql',
-            'dbUsername'=> 'username',
-            'dbPassword'=> 'password',
-            'dbHost'    => 'localhost',
-            'dbPort'    => '3306',
-            'dbName'    => 'movim',
-            'boshUrl'   => 'http://localhost:5280/http-bind',
+            'environment'   => 'development',//allow "production" and "development" for the moment
+            'description'   => __('global.description'),
+            'theme'         => 'movim',
+            'defLang'       => 'en',
+            'maxUsers'      => -1,
+            'logLevel'      => 'empty',
+            'timezone'      => 'Etc/GMT',
+            'dbType'        => 'mysql',
+            'dbUsername'    => 'username',
+            'dbPassword'    => 'password',
+            'dbHost'        => 'localhost',
+            'dbPort'        => '3306',
+            'dbName'        => 'movim',
+            'boshUrl'       => 'http://localhost:5280/http-bind',
             'xmppWhiteList' => '',
-            'info'      => '',
-            'user'      => 'admin',
-            'pass'      => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
-            'sizeLimit' => 20240001);
+            'info'          => '',
+            'unregister'    => false,
+            'user'          => 'admin',
+            'pass'          => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
+            'sizeLimit'     => 20240001);
     }
 
     /* Return the element of the general configuration */

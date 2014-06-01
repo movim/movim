@@ -10,6 +10,7 @@ class LoginController extends BaseController {
         
         $this->page->menuAddLink(__('page.home'), 'main', true);
         $this->page->menuAddLink(__('page.discover'), 'discover');
+        $this->page->menuAddLink(__('page.pods'), 'pods');
         $this->page->menuAddLink(__('page.about'), 'about');
     }
 }
