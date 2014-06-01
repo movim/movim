@@ -54,7 +54,7 @@ class Config extends WidgetBase
     {
         $this->user->setConfig($data);
         RPC::call('movim_reload_this');
-        Notification::appendNotification(t('Configuration updated'));
+        Notification::appendNotification($this->__('config.updated'));
     }
 
     function ajaxSubmit($data) {

@@ -45,6 +45,7 @@ class Conf
             'boshUrl'       => 'http://localhost:5280/http-bind',
             'xmppWhiteList' => '',
             'info'          => '',
+            'unregister'    => false,
             'user'          => 'admin',
             'pass'          => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
             'sizeLimit'     => 20240001);

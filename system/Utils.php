@@ -452,13 +452,23 @@ function generateKey($size) {
 /*
  * @desc Request a simple url
  */
-function requestURL($url, $timeout = 10) {
+function requestURL($url, $timeout = 10, $post = false) {
     $ch = curl_init($url);
 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, $timeout);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+
+    if(is_array($post)) {
+        $params = '';
+        
+        foreach($post as $key => $value) {
+            $params .= $key . '=' . $value .'&';
+        }
+        curl_setopt ($ch, CURLOPT_POST, 1);
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $params);
+    }
 
     $rs = array();
 
