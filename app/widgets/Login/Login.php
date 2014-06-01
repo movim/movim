@@ -17,8 +17,8 @@
  * See COPYING for licensing information.
  */
 
-class Login extends WidgetBase {
-
+class Login extends WidgetBase
+{
     function load()
     {
         $this->addcss('login.css');
@@ -30,8 +30,12 @@ class Login extends WidgetBase {
     function display()
     {
         $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
+        
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        
         $this->view->assign('submit', $submit);
-        $this->view->assign('conf',   Conf::getServerConf($submit));
+        $this->view->assign('info',   $config->info);
         $this->view->assign('submit_event', 
             'document.getElementById(\'submitb\').click();
             '.$submit.'
@@ -68,9 +72,10 @@ class Login extends WidgetBase {
         $this->view->assign('facebook',
             $this->__('account.facebook',
                 '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
-        
-        $conf = Conf::getServerConf();
-        $whitelist = $conf['xmppWhiteList'];
+
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        $whitelist = $config->xmppwhitelist;
         
         if(isset($whitelist) && $whitelist!=''){
             $this->view->assign('whitelist', $whitelist);
@@ -206,7 +211,8 @@ class Login extends WidgetBase {
     function ajaxLogin($element)
     {
         // We get the Server Configuration
-        $serverconfig = Conf::getServerConf();
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
         
         $warning = false;
 
@@ -227,12 +233,12 @@ class Login extends WidgetBase {
         
         // Check whitelisted server
         if(
-            $serverconfig['xmppWhiteList'] != '' &&!
+            $config->xmppwhitelist != '' &&!
             in_array(
                 end(
                     explode('@', $element['login'])
                     ), 
-                explode(',',$serverconfig['xmppWhiteList'])
+                explode(',',$config->xmppwhitelist)
                 )
             )
             $warning = 'serverunauthorized';

@@ -9,7 +9,7 @@ use Monolog\Handler\SyslogHandler;
 /**
  * Error Handler...
  */
-function systemErrorHandler ( $errno , $errstr , $errfile ,  $errline , $errcontext=null ) 
+function systemErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = null) 
 {
     $log = new Logger('movim');
     $log->pushHandler(new SyslogHandler('movim'));
@@ -42,10 +42,10 @@ class Bootstrap {
         $this->loadDispatcher();
         $this->loadHelpers();
         
-        $this->setTimezone();
-        
         $loadmodlsuccess = $this->loadModl();
-        
+
+        $this->setTimezone();
+
         if($loadmodlsuccess) {
             $this->startingSession();
         } else {
@@ -115,7 +115,7 @@ class Bootstrap {
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
         define('WIDGETS_PATH',  DOCUMENT_ROOT . '/app/widgets/');
         
-        define('MOVIM_API',     'https://api.movim.eu/');
+        define('MOVIM_API',     'http://localhost/api/public/');
         
         if (!defined('DOCTYPE')) {
             define('DOCTYPE','text/html');
@@ -202,11 +202,15 @@ class Bootstrap {
     }
     
     private function setLogs() {
+        /*$cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        
         try {
-            define('ENVIRONMENT', Conf::getServerConfElement('environment'));
+            define('ENVIRONMENT', $config->environment);
         } catch (Exception $e) {
             define('ENVIRONMENT','development');//default environment is production
-        }
+        }*/
+        define('ENVIRONMENT','development');//default environment is production
         /**
          * LOG_MANAGEMENT: define where logs are saved, prefer error_log, or log_folder if you use mutual server.
          * 'error_log'  : save in file defined on your file server
@@ -219,7 +223,7 @@ class Bootstrap {
             ini_set('log_errors', 1);
             ini_set('display_errors', 0);
             ini_set('error_reporting', E_ALL );
-            
+        
         } else {
             ini_set('log_errors', 1);
             ini_set('display_errors', 0);
@@ -230,14 +234,15 @@ class Bootstrap {
         }
         set_error_handler('systemErrorHandler', E_ALL);
 
-        define('LOG_LEVEL', (int)Conf::getServerConfElement('logLevel'));
+        define('LOG_LEVEL', 1);
     }
     
     private function setTimezone() {
         // We set the default timezone to the server timezone
-        $conf = Conf::getServerConf();
-        if(isset($conf['timezone']))
-            date_default_timezone_set($conf['timezone']);
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
+        date_default_timezone_set($config->timezone);
     }
     
     private function loadModl() {
@@ -245,6 +250,7 @@ class Bootstrap {
         $db = Modl\Modl::getInstance();
         $db->setModelsPath(APP_PATH.'models');
         
+        Modl\Utils::loadModel('Config');
         Modl\Utils::loadModel('Presence');
         Modl\Utils::loadModel('Contact');
         Modl\Utils::loadModel('Privacy');
@@ -258,8 +264,14 @@ class Bootstrap {
         Modl\Utils::loadModel('Message');
         Modl\Utils::loadModel('Sessionx');
         Modl\Utils::loadModel('Conference');
+
+        if(file_exists(DOCUMENT_ROOT.'/config/db.ini')) {
+            $conf = parse_ini_file(DOCUMENT_ROOT.'/config/db.ini');
+        } else {
+            echo 'Cannot find config/db.ini file';
+        }
         
-        $db->setConnectionArray(Conf::getServerConf());
+        $db->setConnectionArray($conf);
         $db->connect();
 
         return true;

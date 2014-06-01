@@ -1,6 +1,6 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
 class Postn extends Model {
     public $session;

@@ -34,16 +34,17 @@ class Api extends WidgetBase {
         $json = requestURL(MOVIM_API.'status', 1, array('uri' => BASE_URI));
         $json = json_decode($json);
 
-        $conf = Conf::getServerConf();
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
 
         if(isset($json)) {
             $this->view->assign('json', $json);
             if($json->status == 200) {
                 $this->view->assign('unregister', $this->genCallAjax('ajaxUnregister'));
-                $this->view->assign('unregister_status', $conf['unregister']);
+                $this->view->assign('unregister_status', $config->unregister);
             } else {
-                $conf['unregister'] = false;
-                Conf::saveConfFile($conf);
+                $config->unregister = false;
+                $cd->set($config);
                 $this->view->assign('register', $this->genCallAjax('ajaxRegister'));
             }
         } else {
@@ -74,12 +75,12 @@ class Api extends WidgetBase {
 
     function ajaxUnregister()
     {
-        $conf = Conf::getServerConf();
-        $conf['unregister'] = !$conf['unregister'];
-        Conf::saveConfFile($conf);
-
-        sleep(2);
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
         
+        $config->unregister = !$config->unregister;
+        $cd->set($config);
+
         RPC::call('movim_reload_this');
         RPC::commit();
     }
