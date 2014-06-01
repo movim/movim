@@ -63,8 +63,6 @@ try {
     WidgetWrapper::destroyInstance();
     
 } catch (Exception $e) {
-    //manage errors
-    //\system\Logs\Logger::displayDebugCSS();
     $log = new Logger('movim');
     $log->pushHandler(new SyslogHandler('movim'));
     $log->addInfo($e->getMessage());
@@ -91,6 +89,3 @@ try {
         $rqst->handle();
     }
 } 
-
-//display only if not already done and if there is something to display
-//\system\Logs\Logger::displayFooterDebug();

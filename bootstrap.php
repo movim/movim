@@ -115,7 +115,7 @@ class Bootstrap {
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
         define('WIDGETS_PATH',  DOCUMENT_ROOT . '/app/widgets/');
         
-        define('MOVIM_API',     'http://localhost/api/public/');
+        define('MOVIM_API',     'https://api.movim.eu/');
         
         if (!defined('DOCTYPE')) {
             define('DOCTYPE','text/html');
@@ -268,7 +268,7 @@ class Bootstrap {
         if(file_exists(DOCUMENT_ROOT.'/config/db.ini')) {
             $conf = parse_ini_file(DOCUMENT_ROOT.'/config/db.ini');
         } else {
-            echo 'Cannot find config/db.ini file';
+            throw new MovimException('Cannot find config/db.ini file');
         }
         
         $db->setConnectionArray($conf);
