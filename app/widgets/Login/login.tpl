@@ -4,9 +4,9 @@
             {$c->__('error.too_old')}
         </div>
     {else}
-        {if="isset($conf.info) && $conf.info != ''"}
+        {if="isset($info) && $info != ''"}
             <div class="message warning">
-                {$conf.info}
+                {$info}
             </div>
         {/if}
         <form

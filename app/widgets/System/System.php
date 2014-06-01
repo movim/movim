@@ -31,10 +31,12 @@ class System extends WidgetBase {
             $this->view->assign('fail_safe',    '');
 
         // And we load some public values of the system configuration
-        $conf = Conf::getServerConf();
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        
         $public_conf = array(
-            'bosh_url' => $conf['boshUrl'],
-            'timezone' => $conf['timezone']
+            'bosh_url' => $config->boshurl,
+            'timezone' => $config->timezone
             );
         $this->view->assign('server_conf', json_encode($public_conf));
     }
