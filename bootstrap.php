@@ -265,8 +265,8 @@ class Bootstrap {
         Modl\Utils::loadModel('Sessionx');
         Modl\Utils::loadModel('Conference');
 
-        if(file_exists(DOCUMENT_ROOT.'/config/db.ini')) {
-            $conf = parse_ini_file(DOCUMENT_ROOT.'/config/db.ini');
+        if(file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
+            require DOCUMENT_ROOT.'/config/db.inc.php';
         } else {
             throw new MovimException('Cannot find config/db.ini file');
         }
