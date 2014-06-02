@@ -21,6 +21,13 @@ class AdminDB extends WidgetBase
 
     }
 
+    public function ajaxUpdateDatabase()
+    {
+        $md = \modl\Modl::getInstance();
+        $md->check(true);
+        RPC::call('movim_reload_this');
+    }
+
     function display()
     {
         $md = \modl\Modl::getInstance();
@@ -37,14 +44,13 @@ class AdminDB extends WidgetBase
             $errors = $e->getMessage();
         }
 
-        if(file_exists(DOCUMENT_ROOT.'/config/db.ini')) {
-            $conf = parse_ini_file(DOCUMENT_ROOT.'/config/db.ini');
+        if(file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
+            require DOCUMENT_ROOT.'/config/db.inc.php';
         }
 
         $supported = $md->getSupportedDatabases();
         
         $this->view->assign('connected', $md->_connected);
-        $this->view->assign('validatebutton', $this->_validatebutton);
         $this->view->assign('conf', $conf);
         $this->view->assign('dbtype', $supported[$conf['type']]);
         $this->view->assign('errors', $errors);
