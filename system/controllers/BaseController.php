@@ -23,20 +23,24 @@ class BaseController {
      */
     function loadLanguage() {
         $user = new User();
+
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        
         if($user->isLogged()) {
             $lang = $user->getConfig('language');
             if(isset($lang)) {
                 loadLanguage($lang);
             } else {
                 // Load default language.
-                loadLanguage(Conf::getServerConfElement('defLang'));
+                loadLanguage($config->locale);
             }
         }
         else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             loadLanguageAuto();
         }
         else {
-            loadLanguage(Conf::getServerConfElement('defLang'));
+            loadLanguage($config->locale);
         }
     }
 

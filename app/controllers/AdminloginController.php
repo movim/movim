@@ -1,20 +1,24 @@
 <?php
 
-class AdminloginController extends BaseController {
-    function load() {
+class AdminloginController extends BaseController
+{
+    function load()
+    {
         $this->session_only = false;
     }
 
-    function dispatch() {
+    function dispatch()
+    {
         $this->page->setTitle(__('title.administration', APP_TITLE));
 
         $this->page->menuAddLink(__('page.home'), 'main');
         $this->page->menuAddLink(__('page.administration'), 'admin', true);
         
-        $conf = Conf::getServerConf();
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
         
-        if($conf['user'] == $_POST['username'] 
-        && $conf['pass'] == sha1($_POST['password'])) {
+        if($config->user == $_POST['username'] 
+        && $config->pass == sha1($_POST['password'])) {
             $_SESSION['admin'] = true;
             $this->name = 'admin';
         }

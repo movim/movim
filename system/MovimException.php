@@ -12,7 +12,7 @@ class MovimException extends Exception
 	 * Forces to add a message.
 	 */
 	public function __construct($message, $code = 0) {
-		parent::__construct(__('error.error', $message), $code);
+		parent::__construct('Error: ' . $message, $code);
 	}
 
 	/**
