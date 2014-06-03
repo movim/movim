@@ -45,6 +45,7 @@ class Bootstrap {
         $loadmodlsuccess = $this->loadModl();
 
         $this->setTimezone();
+        $this->setLogLevel();
 
         if($loadmodlsuccess) {
             $this->startingSession();
@@ -233,8 +234,6 @@ class Bootstrap {
             ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
         }
         set_error_handler('systemErrorHandler', E_ALL);
-
-        define('LOG_LEVEL', 1);
     }
     
     private function setTimezone() {
@@ -244,7 +243,15 @@ class Bootstrap {
 
         date_default_timezone_set($config->timezone);
     }
-    
+
+    private function setLogLevel() {
+        // We set the default timezone to the server timezone
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
+        define('LOG_LEVEL', (int)$config->loglevel);
+    }
+
     private function loadModl() {
         // We load Movim Data Layer
         $db = Modl\Modl::getInstance();
