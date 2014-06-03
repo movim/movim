@@ -70,7 +70,7 @@ function __() {
     global $translationshash;
     
     $args = func_get_args();
-    if(array_key_exists($args[0], $translationshash)) {
+    if(is_array($translationshash) && array_key_exists($args[0], $translationshash)) {
         $args[0] = $translationshash[$args[0]];
         return call_user_func_array('t', $args);
     } else {
@@ -158,8 +158,12 @@ function loadLanguageAuto()
     while((list($key, $value) = each($langs)) && $langNotFound == true) {
         $exploded = explode('-', $key);
         $key = reset($exploded);
+
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        
         if($key == 'en') {
-            loadLanguage(Conf::getServerConfElement('defLang'));
+            loadLanguage($config->locale);
             $langNotFound = false;
         } elseif(file_exists(LOCALES_PATH . $key . '.po')) {
             loadLanguage($key);

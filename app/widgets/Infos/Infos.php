@@ -31,7 +31,8 @@ class Infos extends WidgetBase
         $pop = $pop-2;
 
         // We get the global configuration
-        $conf = Conf::getServerConf();
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
 
         $sd = new \Modl\SessionxDAO();
 
@@ -43,11 +44,11 @@ class Infos extends WidgetBase
 
         $infos = array(
                 'url'           => BASE_URI,
-                'language'      => $conf['defLang'],
-                'whitelist'     => $conf['xmppWhiteList'],
-                'timezone'      => $conf['timezone'],
-                'description'   => $conf['description'],
-                'unregister'    => $conf['unregister'],
+                'language'      => $config->locale,
+                'whitelist'     => $config->xmppwhitelist,
+                'timezone'      => $config->timezone,
+                'description'   => $config->description,
+                'unregister'    => $config->unregister,
                 'php_version'   => phpversion(),
                 'rewrite'       => $rewrite,
                 'version'       => APP_VERSION,

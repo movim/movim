@@ -1,11 +1,13 @@
 <?php /* -*- mode: html -*- */
+    $cd = new \Modl\ConfigDAO();
+    $config = $cd->get();
 ?><!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
 
-    <meta name="description" content="<?php echo Conf::getServerConfElement('description'); ?>" />
+    <meta name="description" content="<?php echo $config->description; ?>" />
     
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
 	<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />

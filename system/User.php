@@ -40,7 +40,10 @@ class User {
             if($session->config)
                 $this->config = $session->config;
 
-            $this->sizelimit = (int)Conf::getServerConfElement('sizeLimit');
+            $cd = new \Modl\ConfigDAO();
+            $config = $cd->get();
+        
+            $this->sizelimit = (int)$config->sizelimit;
 
             $this->userdir = DOCUMENT_ROOT.'/users/'.$this->username.'/';
             $this->useruri = BASE_URI.'users/'.$this->username.'/';

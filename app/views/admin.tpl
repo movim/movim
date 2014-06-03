@@ -5,7 +5,9 @@
 			<h1><?php echo __('page.administration'); ?></h1>
 		</div>
 		<div class="moving_block" >
-			<?php $this->widget('Admin');?>
+			<?php $this->widget('AdminMain');?>
+			<?php $this->widget('AdminDB');?>
+			<?php $this->widget('AdminTest');?>
 			<?php $this->widget('Statistics');?>
 			<?php $this->widget('Api');?>
 		</div>

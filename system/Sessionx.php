@@ -95,9 +95,10 @@ class Sessionx {
     }
 
     public function init($user, $pass, $host, $domain) {
-        $serverconfig = Conf::getServerConf();
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
         
-        $this->_url         = $serverconfig['boshUrl'];
+        $this->_url         = $config->boshurl;
         $this->_port        = 5222;
         $this->_host        = $host;
         $this->_domain      = $domain;
