@@ -72,12 +72,12 @@ class Utils {
         return implode(',', $return);
     }
 
-    public static function generateNonce() {
+    public static function generateNonce($binary = true) {
         $str = '';
         mt_srand((double) microtime()*10000000);
         for($i=0; $i<32; $i++)
             $str .= chr(mt_rand(0, 255));
-        return $str;
+        return $binary ? $str : base64_encode($str);
     }
 
     public static function getSupportedServices() {

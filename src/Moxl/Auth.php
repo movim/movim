@@ -211,6 +211,114 @@ class Auth {
             return 'OK';
     }
 
+    static function saltSHA1($str, $salt, $i)
+    {
+        $int1 = "\0\0\0\1";
+        $ui = hash_hmac('sha1', $str, $salt . $int1);
+        $result = $ui;
+        for ($k = 1; $k < $i; $k++)
+        {
+            $ui =  hash_hmac('sha1', $str, $ui, true);
+            $result = $result ^ $ui;
+        }
+        return $result;
+    }
+
+
+    static function mechanismSCRAMSHA1() {
+            $session = \Sessionx::start();
+
+            $gs2_header         = 'n,,';
+            $cnonce             = Utils::generateNonce(false);
+            $first_message_bare = 'n='.$session->user.',r='.$cnonce;
+            
+            $response = base64_encode($gs2_header.$first_message_bare);
+
+            $xml = API::boshWrapper(
+                    '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
+                        '.$response.'
+                    </auth>');
+
+            $r = new Request($xml);
+            $xml = $r->fire();
+
+            $xmle = new \SimpleXMLElement($xml['content']);
+            if($xmle->failure)
+                return 'errormechanism';
+
+            $challenge = base64_decode((string)$xmle->challenge);
+            \movim_log('CHALLENGE');
+            \movim_log($challenge);
+
+        Utils::log("/// CHALLENGE");
+
+            // it contains users iteration count i and the user salt
+            // also server will append it's own nonce to the one we specified
+            $decoded = Utils::explodeData($challenge);
+            
+            // r=,s=,i=
+            $nonce = $decoded['r'];
+            \movim_log('NONCE');
+            \movim_log($nonce);
+            
+            $salt = base64_decode($decoded['s']);
+            $iteration = intval($decoded['i']);
+
+            $channel_binding    = 'c=' . base64_encode($gs2_header);
+            $final_message      = $channel_binding . ',r=' . $nonce;
+
+            $salted_password = hash_pbkdf2('sha1', $session->password, $salt, $iteration);//Auth::saltSHA1($session->password, $salt, $iteration);
+            $client_key = hash_hmac('sha1', $salted_password, "Client Key", true);
+            $stored_key = hash('sha1', $client_key, true);
+
+            $auth_message =
+                $first_message_bare .
+                ',' .
+                $challenge .
+                ',' .
+                $final_message;
+
+            \movim_log('AUTH MESSAGE');
+            \movim_log($auth_message);
+            
+            $client_signature = hash_hmac('sha1', $stored_key, $auth_message, true);
+            $client_proof = $client_key ^ $client_signature;
+
+            $proof = ',p=' . base64_encode($client_proof);
+
+            \movim_log($final_message.$proof);
+
+            $response = base64_encode($final_message.$proof);
+
+            /*
+            // SaltedPassword  := Hi(Normalize(password), salt, i)
+            $salted = hash_pbkdf2('sha1' , $session->password , $salt , $iterations);
+            // ClientKey       := HMAC(SaltedPassword, "Client Key")
+            $client_key = hash_hmac('sha1', $salted, "Client Key", true);
+            // StoredKey       := H(ClientKey)
+            $stored_key = hash('sha1', $client_key, true);
+            // AuthMessage     := client-first-message-bare + "," + server-first-message + "," + client-final-message-without-proof
+            $auth_message = $response . ',' . $challenge . ',' . '';
+            // ClientSignature := HMAC(StoredKey, AuthMessage)
+            $signature = hash_hmac('sha1', $stored_key, $auth_message, true);
+            // ClientProof     := ClientKey XOR ClientSignature
+            $client_proof = $client_key ^ $signature;
+            
+            $proof = 'c=biws,r='.$nonce.',p='.base64_encode($client_proof);
+            $response = base64_encode($proof);
+            */
+
+            
+            
+            $xml = API::boshWrapper(
+                    '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl">'.$response.'</response>', false);
+
+            $r = new Request($xml);
+            $xml = $r->fire();
+
+            $xmle = new \SimpleXMLElement($xml['content']);
+    }
+
     static function restartRequest() {
         $session = \Sessionx::start();
         
