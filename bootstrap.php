@@ -275,7 +275,7 @@ class Bootstrap {
         if(file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
             require DOCUMENT_ROOT.'/config/db.inc.php';
         } else {
-            throw new MovimException('Cannot find config/db.ini file');
+            throw new MovimException('Cannot find config/db.inc.php file');
         }
         
         $db->setConnectionArray($conf);
