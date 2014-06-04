@@ -77,7 +77,8 @@ class API {
             // We search the presence of a restartlogic attribute
             
             $restart = @$xmle->xpath('@xmpp:restartlogic');
-            $restart = (array)$restart[0];
+            if(is_array($restart) && isset($restart[0]))
+                $restart = (array)$restart[0];
 
             if(isset($restart['@attributes'])
             && $restart['@attributes']['restartlogic'] == true) {

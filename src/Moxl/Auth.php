@@ -2,6 +2,8 @@
 
 namespace Moxl;
 
+require 'Auth/SASL2.php';
+
 class Auth {
     static function encryptPassword($data, $user, $pass) {
         foreach(array('realm', 'cnonce', 'digest-uri') as $key)
@@ -82,7 +84,7 @@ class Auth {
 
     static function mechanismChoice($mec) {
         $mechanism = array(
-                        //'SCRAM-SHA-1',
+                        'SCRAM-SHA-1',
                         'DIGEST-MD5',
                         'CRAM-MD5',
                         'PLAIN');
@@ -199,6 +201,64 @@ class Auth {
 
             $xml = API::boshWrapper(
                     '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl">'.$response.'</response>', false);
+
+            $r = new Request($xml);
+            $xml = $r->fire();
+
+            $xmle = new \SimpleXMLElement($xml['content']);
+
+        if(!$xmle->success)
+            return 'failauth';
+        else
+            return 'OK';
+    }
+
+    static function saltSHA1($str, $salt, $i)
+    {
+        $int1 = "\0\0\0\1";
+        $ui = hash_hmac('sha1', $str, $salt . $int1);
+        $result = $ui;
+        for ($k = 1; $k < $i; $k++)
+        {
+            $ui =  hash_hmac('sha1', $str, $ui, true);
+            $result = $result ^ $ui;
+        }
+        return $result;
+    }
+
+
+    static function mechanismSCRAMSHA1() {
+            $f = new \Auth_SASL2;
+            $fa = $f->factory('SCRAM-SHA1');
+
+            $session = \Sessionx::start();
+
+        Utils::log("/// INITIAL MESSAGE");
+
+            $response = base64_encode($fa->getResponse($session->user, $session->password));
+
+            $xml = API::boshWrapper(
+                    '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
+                        '.$response.'
+                    </auth>');
+
+            $r = new Request($xml);
+            $xml = $r->fire();
+
+            $xmle = new \SimpleXMLElement($xml['content']);
+            if($xmle->failure)
+                return 'errormechanism';
+
+            $challenge = base64_decode((string)$xmle->challenge);
+
+        Utils::log("/// SECOND MESSAGE - PROOF");
+
+            $response = base64_encode($fa->getResponse($session->user, $session->password, $challenge));
+            
+            $xml = API::boshWrapper(
+                    '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl">
+                        '.$response.'
+                    </response>', false);
 
             $r = new Request($xml);
             $xml = $r->fire();
