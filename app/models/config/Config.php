@@ -14,8 +14,8 @@ class Config extends Model {
     public $xmppwhitelist;
     public $info;
     public $unregister;
-    public $user;
-    public $pass;
+    public $username;
+    public $password;
     public $sizelimit;
     
     public function __construct() {
@@ -43,9 +43,9 @@ class Config extends Model {
                 {"type":"text" },
             "unregister" : 
                 {"type":"int", "size":1 },
-            "user" : 
+            "username" : 
                 {"type":"string", "size":32, "mandatory":true },
-            "pass" : 
+            "password" : 
                 {"type":"string", "size":64, "mandatory":true  },
             "sizelimit" : 
                 {"type":"int", "size":16 }
@@ -64,8 +64,8 @@ class Config extends Model {
         $this->xmppwhitelist    = '';
         $this->info             = '';
         $this->unregister       = false;
-        $this->user             = 'admin';
-        $this->pass             = sha1('password');
+        $this->username         = 'admin';
+        $this->password         = sha1('password');
         $this->sizelimit        = 20240001;
     }
 }
