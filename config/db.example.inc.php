@@ -1,6 +1,6 @@
 <?php
 # This is the database configuration of Movim
-# You need to copy an rename this file to 'db.ini' and complete the values
+# You need to copy an rename this file to 'db.inc.php' and complete the values
 $conf = array(
     # The type can be 'pgsql' or 'mysql'
     'type'        => 'mysql',
