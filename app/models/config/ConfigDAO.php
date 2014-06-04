@@ -17,8 +17,8 @@ class ConfigDAO extends SQL {
                 xmppwhitelist = :xmppwhitelist,
                 info          = :info,
                 unregister    = :unregister,
-                user          = :user,
-                pass          = :pass,
+                username      = :username,
+                password      = :password,
                 sizelimit     = :sizelimit';
         
         $this->prepare(
@@ -35,8 +35,8 @@ class ConfigDAO extends SQL {
                 'xmppwhitelist'=> $c->xmppwhitelist,
                 'info'         => $c->info,
                 'unregister'   => $c->unregister,
-                'user'         => $c->user,
-                'pass'         => $c->pass,
+                'username'     => $c->username,
+                'password'     => $c->password,
                 'sizelimit'    => $c->sizelimit
             )
         );
@@ -45,7 +45,17 @@ class ConfigDAO extends SQL {
         
         if(!$this->_effective) {
             $this->_sql = '
-                truncate table config;
+                truncate table config;';
+
+            $this->prepare(
+                'Config', 
+                array(
+                )
+            );
+            
+            $this->run('Config');
+            
+            $this->_sql = '
                 insert into config
                 (
                     environment,
@@ -59,8 +69,8 @@ class ConfigDAO extends SQL {
                     xmppwhitelist,
                     info,
                     unregister,
-                    user,
-                    pass,
+                    username,
+                    password,
                     sizelimit
                 )
                 values
@@ -76,8 +86,8 @@ class ConfigDAO extends SQL {
                     :xmppwhitelist,
                     :info,
                     :unregister,
-                    :user,
-                    :pass,
+                    :username,
+                    :password,
                     :sizelimit
                 )
                 ';
@@ -96,8 +106,8 @@ class ConfigDAO extends SQL {
                     'xmppwhitelist'=> $c->xmppwhitelist,
                     'info'         => $c->info,
                     'unregister'   => $c->unregister,
-                    'user'         => $c->user,
-                    'pass'         => $c->pass,
+                    'username'     => $c->username,
+                    'password'     => $c->password,
                     'sizelimit'    => $c->sizelimit
                 )
             );
