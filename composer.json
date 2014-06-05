@@ -20,6 +20,7 @@
     },
     "require": {
         "php": ">=5.3.0",
-        "monolog/monolog": "1.8.*"
+        "monolog/monolog": "1.8.*",
+        "movim/sasl2": "dev-master"
     }
 }
