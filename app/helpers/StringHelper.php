@@ -121,8 +121,9 @@ function prepareString($string) {
     );
    
     // We add some smileys...
-    $conf = new Conf();
-    $theme = $conf->getServerConfElement('theme');
+    $cd = new \Modl\ConfigDAO();
+    $config = $cd->get();
+    $theme = $config->theme;
     
     $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';
 

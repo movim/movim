@@ -24,8 +24,6 @@ class Bootstrap {
     function boot() {
         //define all needed constants
         $this->setContants();
-
-        require_once(SYSTEM_PATH . "Conf.php");
         
         mb_internal_encoding("UTF-8");
 

@@ -41,7 +41,7 @@ class Route extends \BaseController {
             if(isset($this->_routes[$this->_page]))
                 $route = $this->_routes[$this->_page];
             
-            if(count($request) && $route) {
+            if(count($request) && isset($route)) {
                 $i = 0;
                 foreach($route as $key) {
                     if (isset($request[$i])) {
