@@ -149,7 +149,7 @@
 
         <div class="element" >
             <label for="username">{$c->__('credentials.username')}</label>
-            <input type="text" id="username" name="username" value="{$conf->user}"/>
+            <input type="text" id="username" name="username" value="{$conf->username}"/>
         </div>
         <div class="clear"></div>
         
