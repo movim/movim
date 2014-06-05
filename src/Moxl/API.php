@@ -122,34 +122,6 @@ class API {
 
             if($return != 'OK')
                 return $return;
-            
-            /*if(in_array('SCRAM-SHA-1', $mec)) {
-                Utils::log("/// MECANISM CHOICE DIGEST-MD5");
-                    $response = base64_encode(
-                                    'n,,n='.$session['user'].',r=d2fc512490a15036460b5489401439d6da5407fa');
-
-                    $xml = boshWrapper(
-                            '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
-                                '.$response.'
-                            </auth>');
-
-                    $r = new MoxlRequest($xml);
-                    $xml = $r->fire();
-
-                    $xmle = new \SimpleXMLElement($xml['content']);
-                    if($xmle->failure)
-                        return 'errormechanism';
-
-                    $decoded = base64_decode((string)$xmle->challenge);
-                    $arr = explode(',', $decoded);
-
-                    //pbkdf2($session['password'], $decoded['s'], $decoded['i']);
-
-                    //$response = base64_encode(
-                    //                'c=biws, '.$arr[1].',p=d2fc512490a15036460b5489401439d6da5407fa');
-
-                exit;
-            } else*/
 
         Utils::log("/// START THE SESSION");
 

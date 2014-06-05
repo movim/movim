@@ -1,6 +1,6 @@
 {
     "name": "movim/moxl",
-    "version": "1.0.0-alpha1",
+    "version": "1.1.0",
     "description": "Moxl (for Movim XMPP Library) is a light PHP XMPP library built to use only BOSH HTTP request",
     "keywords": ["xmpp", "php", "dao", "bosh"],
     "homepage": "http://github.com/edhelas/moxl",
