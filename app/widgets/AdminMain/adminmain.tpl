@@ -84,9 +84,7 @@
             
             <p>
                 {$c->__('bosh.info1')}<br />
-                {$c->__('bosh.info2')}<br />
-                {$c->__('bosh.info3')}<br />
-                {$c->__('bosh.info4', '<a href="http://wiki.movim.eu/install">', '</a>')}
+                {$bosh_info4}
             </p>
             
             {if="!$c->testBosh($conf->boshurl)"}
@@ -99,6 +97,22 @@
                 <label for="boshurl">{$c->__('bosh.label')}</label>
                 <input type="text" id="boshurl" name="boshurl" value="{$conf->boshurl}"/>
             </div>
+
+            {if="isset($boshs)"}
+                <div class="element simple">
+                    <label for="boshurl">
+                        {$c->__('bosh.publics')} -
+                        <a target="_blank" href="https://api.movim.eu/">Movim API</a>
+                    </label>
+
+                    <dl>
+                        {loop="$boshs->boshs"}
+                            <dt>{$value->name}</dt>
+                            <dd>{$value->url}</dd>
+                        {/loop}
+                    </dl>
+                </div>
+            {/if}
     </fieldset>
 
 
