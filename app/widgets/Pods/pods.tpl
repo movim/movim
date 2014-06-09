@@ -9,9 +9,15 @@
         <section class="content">{$value->description}</section>
         <footer>
             <img
-            title="{$value->language}" 
-            alt="{$value->language}" 
-            src="{$c->flagPath($value->language)}"/>
+            title="{$value->geo_country}" 
+            alt="{$value->geo_country}" 
+            src="{$c->flagPath($value->geo_country)}"/>
+             • 
+            <span>{$c->countryName($value->geo_country)}</span>
+            {if="$value->geo_city != ''"}
+                 • <span>{$value->geo_city}</span>
+            {/if}
+             • 
             <span>{$value->connected} • {$value->population}</span>
         </footer>
     </article>
