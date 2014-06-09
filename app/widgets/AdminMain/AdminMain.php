@@ -25,12 +25,12 @@ class AdminMain extends WidgetBase
         $config = $cd->get();
 
         if(isset($form)) {
-            if($form['pass'] != '' && $form['repass'] != ''
-            && $form['pass'] == $form['repass']) {
+            if($form['password'] != '' && $form['repassword'] != ''
+            && $form['password'] == $form['repassword']) {
                 unset($form['repass']);
-                $form['pass'] = sha1($form['pass']);
+                $form['password'] = sha1($form['password']);
             } else {
-                $form['pass'] = $config->pass;
+                $form['password'] = $config->password;
             }
 
             foreach($form as $key => $value) {

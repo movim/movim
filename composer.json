@@ -4,6 +4,7 @@
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "1.4.*@dev",
         "movim/modl": "dev-master",
-	"movim/moxl": "dev-master"
+        "movim/sasl2": "dev-master",
+        "movim/moxl": "dev-master"
     }
 }
