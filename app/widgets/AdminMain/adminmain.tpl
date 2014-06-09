@@ -154,8 +154,8 @@
         <div class="clear"></div>
         
         <div class="element">
-            <label for="pass">{$c->__('credentials.password')}</label>
-            <input type="password" id="password" name="pass" value=""/>
+            <label for="password">{$c->__('credentials.password')}</label>
+            <input type="password" id="password" name="password" value=""/>
         </div>                            
         <div class="element">
             <label for="repassword">{$c->__('credentials.re_password')}</label>
