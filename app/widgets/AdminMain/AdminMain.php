@@ -27,11 +27,12 @@ class AdminMain extends WidgetBase
         if(isset($form)) {
             if($form['password'] != '' && $form['repassword'] != ''
             && $form['password'] == $form['repassword']) {
-                unset($form['repass']);
                 $form['password'] = sha1($form['password']);
             } else {
                 $form['password'] = $config->password;
             }
+
+            unset($form['repassword']);
 
             foreach($form as $key => $value) {
                 $config->$key = $value;
@@ -68,6 +69,16 @@ class AdminMain extends WidgetBase
                 'development' => 'Development',
                 'production'  => 'Production')
         );
+
+        $this->view->assign('bosh_info4',
+            $this->__('bosh.info4', '<a href="http://wiki.movim.eu/en:install">', '</a>'));
+
+        $json = requestURL(MOVIM_API.'boshs', 1);
+        $json = json_decode($json);
+
+        if(isset($json)) {
+            $this->view->assign('boshs', $json);
+        }
         
         $this->view->assign('timezones', getTimezoneList());
         $this->view->assign('langs', loadLangArray());
