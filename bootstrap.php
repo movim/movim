@@ -24,8 +24,6 @@ class Bootstrap {
     function boot() {
         //define all needed constants
         $this->setContants();
-
-        require_once(SYSTEM_PATH . "Conf.php");
         
         mb_internal_encoding("UTF-8");
 
@@ -275,7 +273,7 @@ class Bootstrap {
         if(file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
             require DOCUMENT_ROOT.'/config/db.inc.php';
         } else {
-            throw new MovimException('Cannot find config/db.ini file');
+            throw new MovimException('Cannot find config/db.inc.php file');
         }
         
         $db->setConnectionArray($conf);

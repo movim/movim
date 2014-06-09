@@ -149,17 +149,17 @@
 
         <div class="element" >
             <label for="username">{$c->__('credentials.username')}</label>
-            <input type="text" id="user" name="user" value="{$conf->user}"/>
+            <input type="text" id="username" name="username" value="{$conf->username}"/>
         </div>
         <div class="clear"></div>
         
         <div class="element">
-            <label for="pass">{$c->__('credentials.password')}</label>
-            <input type="password" id="pass" name="pass" value=""/>
+            <label for="password">{$c->__('credentials.password')}</label>
+            <input type="password" id="password" name="password" value=""/>
         </div>                            
         <div class="element">
-            <label for="repass">{$c->__('credentials.re_password')}</label>
-            <input type="password" id="repass" name="repass" value=""/>
+            <label for="repassword">{$c->__('credentials.re_password')}</label>
+            <input type="password" id="repassword" name="repassword" value=""/>
         </div>
     </fieldset>
 

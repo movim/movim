@@ -2,13 +2,6 @@
 
 class Event
 {
-    private $conf;
-
-    function __construct()
-    {
-        $this->conf = new Conf();
-    }
-
     function runEvent($type, $event = false)
     {
         global $polling;

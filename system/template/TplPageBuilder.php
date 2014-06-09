@@ -29,8 +29,10 @@ class TplPageBuilder
     function __construct(&$user = NULL)
     {
         $this->user = $user;
-        $conf = new Conf();
-        $this->theme = $conf->getServerConfElement('theme');
+
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        $this->theme = $config->theme;
      
     }
 
