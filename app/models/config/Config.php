@@ -36,7 +36,7 @@ class Config extends Model {
             "timezone" : 
                 {"type":"string", "size":16, "mandatory":true  },
             "boshurl" : 
-                {"type":"string", "size":32, "mandatory":true  },
+                {"type":"string", "size":128, "mandatory":true  },
             "xmppwhitelist" : 
                 {"type":"text" },
             "info" : 

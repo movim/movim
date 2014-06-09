@@ -512,6 +512,7 @@ function requestURL($url, $timeout = 10, $post = false) {
     curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
 
     if(is_array($post)) {
         $params = '';
