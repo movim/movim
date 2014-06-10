@@ -44,7 +44,7 @@ class AdminMain extends WidgetBase
 
     public function testBosh($url)
     {
-        return requestURL($url, 2);
+        return requestURL($url, 1);
     }
 
     public function date()
