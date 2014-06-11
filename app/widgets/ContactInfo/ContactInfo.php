@@ -74,7 +74,7 @@ class ContactInfo extends WidgetCommon
                             '&format=json'
                         );
                     
-                    $json = json_decode(file_get_contents($l));
+                    $json = json_decode(requestURL($l, 2));
                     
                     $img = $json->album->image[2]->{'#text'};
                     $url = $json->album->url;
@@ -121,6 +121,8 @@ class ContactInfo extends WidgetCommon
                     $html .='<h2>'.$this->__('client.title').'</h2>' . $cinfos;
                 }
             }
+
+            $html .= '<div class="clear"></div>';
 
             // Accounts
             if($c->twitter && $c->twitter != '') {
