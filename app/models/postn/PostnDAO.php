@@ -409,4 +409,26 @@ class PostnDAO extends SQL {
         if(is_array($arr) && isset($arr[0]))
             return $arr[0]['published'];
     }
+
+    function exist($id) {
+        $this->_sql = '
+            select count(*) from postn
+            where postn.session = :session
+                    and postn.nodeid = :nodeid
+            ';
+        
+        $this->prepare(
+            'Postn', 
+            array(
+                'session'   => $this->_user,
+                'nodeid'    => $id
+            )
+        );
+
+        $arr = $this->run(null, 'array');
+        if(is_array($arr) && isset($arr[0])) {
+            $arr = array_values($arr[0]);
+            return (bool)$arr[0];
+        }
+    }
 }
