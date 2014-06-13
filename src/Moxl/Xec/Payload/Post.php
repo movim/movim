@@ -26,6 +26,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Moxl\Xec\Action\Pubsub\GetItem;
+
 class Post extends Payload
 {
     public function handle($stanza, $parent = false) {  
@@ -64,6 +66,22 @@ class Post extends Payload
                     'node' => $stanza->attributes()->node
                 )
             );
+        } elseif($stanza->item && isset($stanza->item->attributes()->id)
+            && !filter_var($from, FILTER_VALIDATE_EMAIL)) {
+            // In this case we only get the header, so we request the full content
+                
+            $p = new \modl\PostnDAO();
+
+            $id = (string)$stanza->item->attributes()->id;
+            $here = $p->exist($id);
+
+            if(!$here) {
+                $d = new GetItem;
+                $d->setTo($from)
+                  ->setNode((string)$stanza->attributes()->node)
+                  ->setId($id)
+                  ->request();
+            }
         }
     }
 }

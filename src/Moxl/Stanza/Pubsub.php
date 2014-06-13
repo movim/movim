@@ -80,6 +80,18 @@ class Pubsub {
         \Moxl\API::request($xml);
     }
 
+    static function getItem($to, $node, $id)
+    {
+        $xml = '
+            <pubsub xmlns="http://jabber.org/protocol/pubsub">
+                <items node="'.$node.'">
+                    <item id="'.$id.'"/>
+                </items>
+            </pubsub>';
+        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        \Moxl\API::request($xml);        
+    }
+
     static function postPublish($to, $node, $atom)
     {
         $xml = '
