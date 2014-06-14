@@ -289,7 +289,9 @@ class Login extends WidgetBase
     {
         $s = new moxl\StorageGet();
         $s->setXmlns('movim:prefs')
-          ->request();        $evt = new \Event();
+          ->request();
+
+        $evt = new \Event();
         $evt->runEvent('nostream');
     }
 }

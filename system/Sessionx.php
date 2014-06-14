@@ -107,7 +107,7 @@ class Sessionx {
         $this->_ressource   = 'moxl'.\generateKey(6);
         $this->_start       = date(DATE_ISO8601);
         
-        $this->_rid = 0;
+        $this->_rid = rand(1, 2048);
         $this->_id  = 0;
         
         $sd = new modl\SessionxDAO();
