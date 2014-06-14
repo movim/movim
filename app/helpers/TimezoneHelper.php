@@ -5,40 +5,51 @@
  */
  function getTimezoneList()
  {
-    return array(
-        'Etc/GMT+12' => -12.00,
-        'Etc/GMT+11' => -11.00,
-        'Etc/GMT+10' => -10.00,
-        'Etc/GMT+9' => -9.00,
-        'Etc/GMT+8' => -8.00,
-        'Etc/GMT+7' => -7.00,
-        'Etc/GMT+6' => -6.00,
-        'Etc/GMT+5' => -5.00,
-        'America/Caracas' => -4.30,
-        'Etc/GMT+4' => -4.00,
-        'America/St_Johns' => -3.30,
-        'Etc/GMT+3' => -3.00,
-        'Etc/GMT+2' => -2.00,
-        'Etc/GMT+1' => -1.00,
-        'Etc/GMT' => 0,
-        'Etc/GMT-1' => 1.00,
-        'Etc/GMT-2' => 2.00,
-        'Etc/GMT-3' => 3.00,
-        'Asia/Tehran' => 3.30,
-        'Etc/GMT-4' => 4.00,
-        'Etc/GMT-5' => 5.00,
-        'Asia/Kolkata' => 5.30,
-        'Asia/Katmandu' => 5.45,
-        'Etc/GMT-6' => 6.00,
-        'Asia/Rangoon' => 6.30,
-        'Etc/GMT-7' => 7.00,
-        'Etc/GMT-8' => 8.00,
-        'Etc/GMT-9' => 9.00,
-        'Australia/Darwin' => 9.30,
-        'Etc/GMT-10' => 10.00,
-        'Etc/GMT-11' => 11.00,
-        'Etc/GMT-12' => 12.00,
-        'Etc/GMT-13' => 13.00);
+    static $regions = array(
+        DateTimeZone::AFRICA,
+        DateTimeZone::AMERICA,
+        DateTimeZone::ANTARCTICA,
+        DateTimeZone::ASIA,
+        DateTimeZone::ATLANTIC,
+        DateTimeZone::AUSTRALIA,
+        DateTimeZone::EUROPE,
+        DateTimeZone::INDIAN,
+        DateTimeZone::PACIFIC,
+    );
+
+    $timezones = array();
+    foreach( $regions as $region )
+    {
+        $timezones = array_merge( $timezones, DateTimeZone::listIdentifiers( $region ) );
+    }
+
+    $timezone_offsets = array();
+    foreach( $timezones as $timezone )
+    {
+        $tz = new DateTimeZone($timezone);
+        $timezone_offsets[$timezone] = $tz->getOffset(new DateTime);
+    }
+
+    // sort timezone by timezone name
+    ksort($timezone_offsets);
+
+    $timezone_list = array();
+    foreach( $timezone_offsets as $timezone => $offset )
+    {
+        $offset_prefix = $offset < 0 ? '-' : '+';
+        $offset_formatted = gmdate( 'H:i', abs($offset) );
+
+        $pretty_offset = "UTC${offset_prefix}${offset_formatted}";
+        
+        $t = new DateTimeZone($timezone);
+        $c = new DateTime(null, $t);
+        $current_time = $c->format('G:i');
+        $split = explode("/", $timezone);
+
+        $timezone_list[$timezone] = "$split[1] ($split[0]) - $current_time (${pretty_offset})";
+    }
+
+    return $timezone_list;
  }
  
 

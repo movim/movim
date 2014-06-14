@@ -49,7 +49,9 @@ class AdminMain extends WidgetBase
 
     public function date()
     {
-        return date('l jS \of F Y h:i:s A');
+        //return date('l jS \of F Y h:i:s A');
+        #return date('F j, Y G:i:s');
+        return prepareDate(time());
     }
 
     function display()

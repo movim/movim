@@ -67,7 +67,7 @@
                         {if="$conf->timezone == $key"}
                             selected="selected"
                         {/if}>
-                            {$key} ({$value|number_format:2})
+                            {$value}
                         </option>
                     {/loop}
                 </select>
