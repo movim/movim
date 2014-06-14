@@ -8,6 +8,6 @@ class DisconnectController extends BaseController {
     function dispatch() {        
         $user = new User();
         $user->desauth();
-        $this->name = 'login';
+        $this->redirect('login');
     }
 }
