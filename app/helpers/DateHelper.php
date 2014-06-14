@@ -57,18 +57,18 @@ function prepareDate($time, $hours = true) {
 
     $reldays = ($time - $today)/86400;
 
-    if ($reldays >= 0 && $reldays < 1) {
+    if ($reldays >= 0 && $reldays < 1) { //$reldays == 0 ?
         $date = __('date.today');
-    } else if ($reldays >= 1 && $reldays < 2) {
+    } else if ($reldays >= 1 && $reldays < 2) { //$reldays == 1 ?
         $date = __('date.tomorrow');
-    } else if ($reldays >= -1 && $reldays < 0) {
+    } else if ($reldays >= -1 && $reldays < 0) { //$reldays == -1 ?
         $date = __('date.yesterday');
     } else {
 
         if (abs($reldays) < 7) {
-            if ($reldays > 0) {
+            if ($reldays > 0) { //=> $reldays > 1
                 $reldays = floor($reldays);
-                $date = 'In ' . $reldays . ' '.__('date.day') . ($reldays != 1 ? 's' : '');
+                $date = 'In ' . $reldays . ' '.__('date.day') . ($reldays != 1 ? 's' : ''); //you always have s
             } else {
                 $reldays = abs(floor($reldays));
                 $date = __('date.ago', $reldays);
