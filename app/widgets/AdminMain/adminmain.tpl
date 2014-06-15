@@ -73,7 +73,7 @@
                 </select>
             </div>
             <br /><br />
-            <span class="dTimezone">{$c->date()}</span>
+            <span class="dTimezone">{$c->date($conf->timezone)}</span>
         </div>
     </fieldset>
         

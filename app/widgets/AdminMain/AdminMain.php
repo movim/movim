@@ -47,11 +47,12 @@ class AdminMain extends WidgetBase
         return requestURL($url, 1);
     }
 
-    public function date()
+    public function date($timezone)
     {
-        //return date('l jS \of F Y h:i:s A');
-        #return date('F j, Y G:i:s');
-        return prepareDate(time());
+        $t = new DateTimeZone($timezone);
+        $c = new DateTime(null, $t);
+        $current_time = $c->format('D M j Y G:i:s');
+        return $current_time;
     }
 
     function display()
