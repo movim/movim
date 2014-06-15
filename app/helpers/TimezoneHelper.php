@@ -41,17 +41,15 @@
 
         $pretty_offset = "UTC${offset_prefix}${offset_formatted}";
         
-        $t = new DateTimeZone($timezone);
-        $c = new DateTime(null, $t);
-        $current_time = $c->format('G:i');
         $split = explode("/", $timezone);
 
-        $timezone_list[$timezone] = "$split[1] ($split[0]) - $current_time (${pretty_offset})";
+        $timezone_list[$timezone] = "$split[1]/$split[0] (${pretty_offset})";
     }
-
+    
+    asort($timezone_list);
+    
     return $timezone_list;
  }
- 
 
 /*
  * Get the user local timezone
