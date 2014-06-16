@@ -64,9 +64,9 @@ class Chat extends WidgetBase {
 
     function onPresenceMuc($toggle) {
         if($toggle) {
-            Notification::appendNotification(t('Connected to the chatroom'), 'success');
+            Notification::appendNotification($this->__('Connected to the chatroom'), 'success');
         } else {
-            Notification::appendNotification(t('Disconnected to the chatroom'), 'success');
+            Notification::appendNotification($this->__('Disconnected to the chatroom'), 'success');
         }
         
         RPC::call('movim_fill', 'chats', $this->prepareChats());
