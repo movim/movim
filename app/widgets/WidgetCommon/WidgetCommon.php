@@ -130,6 +130,8 @@ class WidgetCommon extends WidgetBase {
         $author = $this->prepareAuthor($post);
 
         $content = $post->contentcleaned;
+        if(!isset($content))
+            $content = $post->content;
         
         if($post->node == 'urn:xmpp:microblog:0')
             $comments = $this->printComments($post, $comments, $public);
