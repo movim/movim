@@ -68,9 +68,9 @@ class Route extends \BaseController {
         $routes = $r->_routes;
         
         if(isset($routes[$page])) {        
-            if($params != false && count($routes[$page]) != count($params)) 
-                \system\Logs\Logger::log(__('error.route', $page));
-            else {
+            if($params != false && count($routes[$page]) != count($params)) {
+                throw new Exception(__('error.route', $page));
+            } else {
                 if($tab != false)
                     $tab = '#'.$tab;
                 //We construct a classic URL if the rewriting is disabled
@@ -98,7 +98,8 @@ class Route extends \BaseController {
                 }
                 return $uri.$tab;
             }
-        } else
-            \system\Logs\Logger::log(t('Route not set for the page %s', $page));
+        } else {
+            throw new Exception(__('Route not set for the page %s', $page));
+        }
     }
 }
