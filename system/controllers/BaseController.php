@@ -84,6 +84,11 @@ class BaseController {
         }
     }
 
+    function redirect($page) {
+        $url = Route::urlize($page, array($this->fetchGet('err')));
+        header('Location: '. $url);
+    }
+
     function display() {
         if($this->session_only) {
             $user = new User();
