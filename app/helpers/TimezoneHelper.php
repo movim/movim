@@ -3,9 +3,18 @@
 /*
  * Get the timezone list
  */
- function getTimezoneList()
+function getTimezoneList()
+{
+    require_once(HELPERS_PATH.'TimezoneList.php');
+    return $timezones;
+}
+
+/*
+ * Generate the timezone list
+ */
+ function generateTimezoneList()
  {
-    static $regions = array(
+    $regions = array(
         DateTimeZone::AFRICA,
         DateTimeZone::AMERICA,
         DateTimeZone::ANTARCTICA,
