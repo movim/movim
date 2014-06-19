@@ -25,7 +25,7 @@ class System extends WidgetBase {
         else
             $this->view->assign('page_key_uri', '');
 
-        if(FAIL_SAFE)
+        if(FAIL_SAFE != null)
             $this->view->assign('fail_safe',    FAIL_SAFE);
         else
             $this->view->assign('fail_safe',    '');

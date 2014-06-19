@@ -5,9 +5,9 @@ class DisconnectController extends BaseController {
         $this->session_only = false;
     }
 
-    function dispatch() {        
+    function dispatch() {
         $user = new User();
         $user->desauth();
-        $this->name = 'login';
+        $this->redirect('main');
     }
 }
