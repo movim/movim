@@ -5,22 +5,23 @@ namespace Modl;
 class Postn extends Model {
     public $session;
 
-    public $jid;       // Where the post is comming from (jid or server)
-    public $node;       // microblog or pubsub
-    public $nodeid;     // the ID if the item
-    
-    public $aname;      // author name
-    public $aid;        // author id
-    public $aemail;     // author email
-    
-    public $title;      //
-    public $content;    // the content
+    public $jid;            // Where the post is comming from (jid or server)
+    public $node;           // microblog or pubsub
+    public $nodeid;         // the ID if the item
+        
+    public $aname;          // author name
+    public $aid;            // author id
+    public $aemail;         // author email
+        
+    public $title;          //
+    public $content;        // The content
+    public $contentcleaned; // The cleanned content
     
     public $commentplace;
     
-    public $published;  //
-    public $updated;    //
-    public $delay;      //
+    public $published;      //
+    public $updated;        //
+    public $delay;          //
 
     public $tags;
 
@@ -55,6 +56,8 @@ class Postn extends Model {
             "title" : 
                 {"type":"text" },
             "content" : 
+                {"type":"text" },
+            "contentcleaned" : 
                 {"type":"text" },
             "commentplace" : 
                 {"type":"string", "size":128 },
@@ -183,6 +186,7 @@ class Postn extends Model {
             $this->commentplace = $this->jid;
             
         $this->content = trim($content);
+        $this->contentcleaned = prepareString(html_entity_decode($this->content));
         
         if($entry->entry->geoloc) {
             if($entry->entry->geoloc->lat != 0)
