@@ -5,6 +5,7 @@
  */
 function getTimezoneList()
 {
+    global $timezones;
     require_once(HELPERS_PATH.'TimezoneList.php');
     return $timezones;
 }

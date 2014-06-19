@@ -6,26 +6,27 @@ class PostnDAO extends SQL {
     function set(Postn $post) {
         $this->_sql = '
             update postn
-                set aname = :aname,
-                    aid = :aid,
-                    aemail = :aemail,
+                set aname           = :aname,
+                    aid             = :aid,
+                    aemail          = :aemail,
                     
-                    title = :title,
-                    content = :content,
+                    title           = :title,
+                    content         = :content,
+                    contentcleaned  = :contentcleaned,
                     
-                    commentplace = :commentplace,
+                    commentplace    = :commentplace,
                     
-                    published = :published,
-                    updated = :updated,
-                    delay = :delay,
+                    published       = :published,
+                    updated         = :updated,
+                    delay           = :delay,
                     
-                    lat = :lat,
-                    lon = :lon,
+                    lat             = :lat,
+                    lon             = :lon,
                     
-                    links = :links,
-                    tags = :tags,
+                    links           = :links,
+                    tags            = :tags,
                     
-                    hash = :hash
+                    hash            = :hash
                     
                 where session = :session
                     and jid = :jid
@@ -35,31 +36,32 @@ class PostnDAO extends SQL {
         $this->prepare(
             'Postn', 
             array(
-                'aname'     => $post->aname,
-                'aid'       => $post->aid,
-                'aemail'    => $post->aemail,
+                'aname'             => $post->aname,
+                'aid'               => $post->aid,
+                'aemail'            => $post->aemail,
+                        
+                'title'             => $post->title,
+                'content'           => $post->content,
+                'contentcleaned'    => $post->contentcleaned,
                 
-                'title'     => $post->title,
-                'content'   => $post->content,
+                'commentplace'      => $post->commentplace,
                 
-                'commentplace' => $post->commentplace,
-                
-                'published' => $post->published,
-                'updated'   => $post->updated,
-                'delay'     => $post->delay,
-                
-                'lat'       => $post->lat,
-                'lon'       => $post->lon,
-                
-                'links'     => $post->links,
-                'tags'      => $post->tags,
-                
-                'hash'      => $post->hash,
-                
-                'session'   => $post->session,
-                'jid'       => $post->jid,
-                'node'      => $post->node,
-                'nodeid'    => $post->nodeid
+                'published'         => $post->published,
+                'updated'           => $post->updated,
+                'delay'             => $post->delay,
+                        
+                'lat'               => $post->lat,
+                'lon'               => $post->lon,
+                        
+                'links'             => $post->links,
+                'tags'              => $post->tags,
+                        
+                'hash'              => $post->hash,
+                        
+                'session'           => $post->session,
+                'jid'               => $post->jid,
+                'node'              => $post->node,
+                'nodeid'            => $post->nodeid
             )
         );
         
@@ -81,6 +83,7 @@ class PostnDAO extends SQL {
                 
                 title,
                 content,
+                contentcleaned,
                 
                 commentplace,
                 
@@ -108,6 +111,7 @@ class PostnDAO extends SQL {
                     
                     :title,
                     :content,
+                    :contentcleaned,
                     
                     :commentplace,
                     
@@ -127,31 +131,32 @@ class PostnDAO extends SQL {
             $this->prepare(
                 'Postn', 
                 array(
-                    'aname'     => $post->aname,
-                    'aid'       => $post->aid,
-                    'aemail'       => $post->aemail,
+                    'aname'             => $post->aname,
+                    'aid'               => $post->aid,
+                    'aemail'            => $post->aemail,
                     
-                    'title'     => $post->title,
-                    'content'   => $post->content,
+                    'title'             => $post->title,
+                    'content'           => $post->content,
+                    'contentcleaned'    => $post->contentcleaned,
                     
-                    'commentplace' => $post->commentplace,
+                    'commentplace'      => $post->commentplace,
                     
-                    'published' => $post->published,
-                    'updated'   => $post->updated,
-                    'delay'     => $post->delay,
-                    
-                    'lat'       => $post->lat,
-                    'lon'       => $post->lon,
-                    
-                    'links'     => $post->links,
-                    'tags'      => $post->tags,
-                    
-                    'hash'      => $post->hash,
-                    
-                    'session'   => $post->session,
-                    'jid'       => $post->jid,
-                    'node'      => $post->node,
-                    'nodeid'    => $post->nodeid
+                    'published'         => $post->published,
+                    'updated'           => $post->updated,
+                    'delay'             => $post->delay,
+                            
+                    'lat'               => $post->lat,
+                    'lon'               => $post->lon,
+                            
+                    'links'             => $post->links,
+                    'tags'              => $post->tags,
+                            
+                    'hash'              => $post->hash,
+                            
+                    'session'           => $post->session,
+                    'jid'               => $post->jid,
+                    'node'              => $post->node,
+                    'nodeid'            => $post->nodeid
                 )
             );
             
