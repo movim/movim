@@ -24,6 +24,9 @@ Here some requests you can do with me :
         case 'comploc':
             comploc();
             break;
+        case 'comptz':
+            comptz();
+            break;
     }
 }
 
@@ -93,6 +96,25 @@ function comploc() {
         
         echo "- $key compiled\n";
     }
+}
+
+function comptz() {
+    $file = HELPERS_PATH.'TimezoneList.php';
+    $tz = generateTimezoneList();
+
+    $out = '<?php global $timezones;
+    $timezones = array(';
+    
+    foreach($tz as $key => $value)
+        $out .= '"'.$key.'" => "'. $value . '",'."\n";
+        
+    $out .= ');';
+    
+    $fp = fopen($file, 'w');
+    fwrite($fp, $out);
+    fclose($fp);
+    
+    echo "- Timezones compiled in $file\n";
 }
 
 echo "\n";
