@@ -272,7 +272,7 @@ class FormtoXMPP{
                 break;
         }
         foreach($this->inputs as $key => $value) {
-            if($value == '' && $this->stream->getName() == "stream") {
+            if($value === '' && $this->stream->getName() == "stream") {
                 RPC::call('movim_reload', Route::urlize('account','datamissing'));
                 RPC::commit();
                  exit;
@@ -298,9 +298,9 @@ class FormtoXMPP{
                            
             } else{
                 $field = $node->addChild('field');
-                if($value == 'true')
+                if($value == 'true' || $value == 1)
                     $value = '1';
-                if($value == 'false')
+                if($value == 'false' || $value == 0)
                     $value = '0';
                     
                 $field->addChild('value', trim($value));
