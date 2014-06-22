@@ -38,50 +38,41 @@ function getTimezoneCorrection() {
     $timezones = getTimezoneList();
     return $timezones[date_default_timezone_get()];
 }
-
 /**
  * Return a human-readable date 
  *
  * @param timestamp $string
  * @return string
  */
-function prepareDate($time, $hours = true) {    
-    $dotw = getDays();
-        
-    $moty = getMonths();
-
-    $today = strtotime(date('M j, Y'));
-
-    // We fix the timezone
-    $time = $time + 3600*(int)getTimezoneCorrection();
-
-    $reldays = ($time - $today)/86400;
-
-    if ($reldays >= 0 && $reldays < 1) { //$reldays == 0 ?
-        $date = __('date.today');
-    } else if ($reldays >= 1 && $reldays < 2) { //$reldays == 1 ?
-        $date = __('date.tomorrow');
-    } else if ($reldays >= -1 && $reldays < 0) { //$reldays == -1 ?
-        $date = __('date.yesterday');
-    } else {
-
-        if (abs($reldays) < 7) {
-            if ($reldays > 0) { //=> $reldays > 1
-                $reldays = floor($reldays);
-                $date = 'In ' . $reldays . ' '.__('date.day') . ($reldays != 1 ? 's' : ''); //you always have s
-            } else {
-                $reldays = abs(floor($reldays));
-                $date = __('date.ago', $reldays);
-            }
-        } else {
-            $date = $dotw[date('N',$time ? $time : time())] .', '.date('j',$time ? $time : time()).' '.$moty[date('n',$time ? $time : time())] ;
-            if (abs($reldays) > 182)
-                $date .= date(', Y',$time ? $time : time());
+function prepareDate($time, $hours = true) {
+    $t = $time ? $time : time();
+    
+    $reldays = ((time() - $t)-(time()%86400))/86400;
+    // if $time is within a week
+    if($reldays < 7 && $reldays >= -1){
+        //if $time is today or yesterday
+        if($reldays < 0) { 
+            $date = __('date.tomorrow');
+        } else if ($reldays <= 0) { 
+            $date = __('date.today');
+        } else if ($reldays <= 1) {
+            $date = __('date.yesterday');
         }
+        //else print date "ago"
+        else {
+            $date = __('date.ago', ceil($reldays));
+        }
+    } 
+    //else print full date
+    else {
+        $date = __('day.'.strtolower(date('l', $t))) .', '.date('j', $t).' '.__('month.'.strtolower(date('F', $t))) ;
+        //if over 6months print year
+        if (abs($reldays) > 182)
+            $date .= date(', Y', $t);
     }
+    //if $hours option print the time
     if($hours)
         $date .= ' - '. date('H:i', $time);
-        
-    if($time)
-        return $date;
+    return $date;
+
 }
