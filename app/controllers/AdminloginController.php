@@ -11,7 +11,7 @@ class AdminloginController extends BaseController
     {
         $this->page->setTitle(__('title.administration', APP_TITLE));
 
-        $this->page->menuAddLink(__('page.home'), 'main');
+        $this->page->menuAddLink(__('page.home'), 'root');
         $this->page->menuAddLink(__('page.administration'), 'admin', true);
         
         $cd = new \Modl\ConfigDAO();

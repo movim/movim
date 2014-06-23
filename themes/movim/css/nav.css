@@ -48,7 +48,7 @@ nav .wrapper {
     background-position: 1em center;
 }
 
-.menu li a.main, .menu li a.main.active {
+.menu li a.root, .menu li a.root.active {
 	width: 200px;
     color: transparent;
     background-image: url(../img/logo.svg);
