@@ -40,7 +40,7 @@ legend {
     display: block;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     
     overflow-y: hidden;
 }
@@ -58,6 +58,22 @@ legend {
     min-height: 0;
 }
 
+/*.element > *:not(label):not(img):not(span):not(a):not(dl) {*/
+.element > input,
+.element > textarea {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #DDD;
+    min-height: 2em;
+    border-radius: 0.1em;
+    background-color: white;
+    margin: 0;
+    padding: 0% 0.5em;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
 .element.mini > input {
     min-height: 2em;
     margin-bottom: 0.5em;
@@ -69,19 +85,6 @@ legend {
     font-weight: bold;
 }
 
-.element > *:not(label):not(img):not(span):not(a):not(dl) {
-    display: inline-block;
-    width: 100%;
-    border: 1px solid #DDD;
-    min-height: 2em;
-    border-radius: 0.1em;
-    background-color: white;
-    margin: 0;
-    padding: 0% 0.5em;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-}
 
 .element > *:not(label):not(img):focus {
     border: 1px solid gray;
@@ -154,7 +157,7 @@ legend {
     margin-right: 2%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 .element input[type="radio"] + label:hover {
@@ -172,7 +175,7 @@ legend {
     border-radius: 0.1em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 .element input[type="radio"]:checked + label .preview {
@@ -186,11 +189,11 @@ legend {
 }
 
 .checkbox {
-	width: 6em;
-	max-width: 6em;
+    width: 6em;
+    max-width: 6em;
 
     overflow: hidden;
-	position: relative;
+    position: relative;
 
     height: 2em;
     border-radius: 0.1em;
@@ -200,7 +203,7 @@ legend {
 }
 
 .checkbox:after {
-	content: 'NO';
+    content: 'NO';
 
     display: block;
     position: absolute;
@@ -214,11 +217,11 @@ legend {
     color: white;
     background-color: #D92727;
 
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .checkbox:before {
-	content: 'YES';
+    content: 'YES';
     display: block;
     position: absolute;
     left: 0px;
@@ -229,21 +232,21 @@ legend {
     background-color: #333;
     text-align: center;
     color: white;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .checkbox > input[type="checkbox"] + label {
-	display: block;
-	width: 3.3em;
-	height: 2em;
+    display: block;
+    width: 3.3em;
+    height: 2em;
     
     transition: left 0.5s ease;
 
-	cursor: pointer;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
     
     border-left: none;
 
@@ -251,7 +254,7 @@ legend {
 }
 
 .checkbox > input[type="checkbox"]:checked + label {
-	left: 2.8em;
+    left: 2.8em;
     border-right: none;
 }
 
@@ -262,7 +265,7 @@ legend {
     border: 1px solid transparent;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     padding: 0 0.7em;
     text-decoration: none;
     

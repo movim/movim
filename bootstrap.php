@@ -239,8 +239,7 @@ class Bootstrap {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
         
-        //date_default_timezone_set($config->timezone);
-        date_default_timezone_set(date_default_timezone_get());
+        date_default_timezone_set($config->timezone);
     }
 
     private function setLogLevel() {
