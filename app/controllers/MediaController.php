@@ -8,7 +8,7 @@ class MediaController extends BaseController {
     function dispatch() {
         $this->page->setTitle(__('title.media', APP_TITLE));
         
-        $this->page->menuAddLink(__('page.home'), 'main');
+        $this->page->menuAddLink(__('page.home'), 'root');
         $this->page->menuAddLink(__('page.news'), 'news');
         $this->page->menuAddLink(__('page.explore'), 'explore');
         $this->page->menuAddLink(__('page.profile'), 'profile');

@@ -58,9 +58,9 @@ legend {
     min-height: 0;
 }
 
-/*.element > *:not(label):not(img):not(span):not(a):not(dl) {*/
 .element > input,
-.element > textarea {
+.element > textarea,
+.element > .select {
     display: inline-block;
     width: 100%;
     border: 1px solid #DDD;
