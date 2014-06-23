@@ -59,9 +59,11 @@ class Wall extends WidgetCommon
     }
 
     function prepareFeed($start, $from = false) {
-        
-        if(!$from)
+        if(!$from && isset($_GET['f'])) {
             $from = $_GET['f'];
+        } else {
+            return '';
+        }
         
         $pd = new \Modl\PostnDAO();
         $pl = $pd->getNode($from, 'urn:xmpp:microblog:0', $start+1, 10);

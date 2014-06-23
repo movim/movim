@@ -14,7 +14,7 @@
         {$c->__('button.refresh')}
     </a>
 </div>
-<div id="servernodes" class="tabelem paddedtop" title="{$c->__('page.server')}">
+<div id="servernodes" class="tabelem padded" title="{$c->__('page.server')}">
     <div id="newGroupForm"></div>
     <div id="servernodeslist">
         {$server}

@@ -8,7 +8,7 @@ class MainController extends BaseController {
     function dispatch() {
         $this->page->setTitle(__('title.main', APP_TITLE));
         
-        $this->page->menuAddLink(__('page.home'), 'main', true);
+        $this->page->menuAddLink(__('page.home'), 'root', true);
         $this->page->menuAddLink(__('page.news'), 'news');
         $this->page->menuAddLink(__('page.explore'), 'explore');
         $this->page->menuAddLink(__('page.profile'), 'profile');
