@@ -33,12 +33,13 @@ class AdminMain extends WidgetBase
             }
 
             unset($form['repassword']);
-
             foreach($form as $key => $value) {
                 $config->$key = $value;
             }
-
             $cd->set($config);
+            
+            //set timezone
+            date_default_timezone_set($form['timezone']);
         }
     }
 

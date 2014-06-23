@@ -136,7 +136,8 @@ class ServerNodes extends WidgetCommon
     
     function onCreationSuccess($items)
     {        
-        $html = '<a href="
+        $html = '
+            <a href="
             '.Route::urlize('node', array($items[0], $items[1])).'
             ">'.$items[2].'</a>';
 

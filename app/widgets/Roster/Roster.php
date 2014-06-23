@@ -55,8 +55,9 @@ class Roster extends WidgetBase
         $this->view->assign('rosterlist', $this->prepareRoster());
     }
 
-    function onPresence($presence)
+    function onPresence($packet)
     {
+        $presence = $packet->content;
         $arr = $presence->getPresence();
 
         $cd = new \Modl\ContactDAO();
