@@ -66,6 +66,9 @@ class Route extends \BaseController {
     public static function urlize($page, $params = false, $tab = false) {
         $r = new Route();
         $routes = $r->_routes;
+
+        if($page === 'root')
+            return BASE_URI;
         
         if(isset($routes[$page])) {        
             if($params != false && count($routes[$page]) != count($params)) {

@@ -9,7 +9,7 @@ class NodeconfigController extends BaseController {
         if(isset($_GET['s']) && $_GET['s'] != "" ) {
             $this->page->setTitle(__('title.node_configuration', APP_TITLE));
             
-            $this->page->menuAddLink(__('page.home'), 'main');
+            $this->page->menuAddLink(__('page.home'), 'root');
             $this->page->menuAddLink(__('page.news'), 'news');
             $this->page->menuAddLink(__('page.explore'), 'explore');
             $this->page->menuAddLink(__('page.profile'), 'profile');

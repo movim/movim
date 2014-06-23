@@ -32,6 +32,7 @@ class Node extends WidgetCommon
     
     function load()
     {
+        $this->registerEvent('post', 'onStream');
         $this->registerEvent('stream', 'onStream');
         $this->registerEvent('nostream', 'onStream');
         $this->registerEvent('pubsubaffiliations', 'onPubsubAffiliations');
@@ -99,10 +100,14 @@ class Node extends WidgetCommon
     function onPubsubMetadata($params) {
         // The URL add form
         $metadataview = $this->tpl();
-        $metadataview->assign('title',       $params[0]['title']);
-        $metadataview->assign('description', $params[0]['description']);
-        $metadataview->assign('creation', prepareDate(strtotime($params[0]['creation_date'])));
-        $metadataview->assign('creator',     $params[0]['creator']);
+        if(isset($params[0]['title']))
+            $metadataview->assign('title',       $params[0]['title']);
+        if(isset($params[0]['description']))
+            $metadataview->assign('description', $params[0]['description']);
+        if(isset($params[0]['creation_date']))
+            $metadataview->assign('creation', prepareDate(strtotime($params[0]['creation_date'])));
+        if(isset($params[0]['creator']))
+            $metadataview->assign('creator',     $params[0]['creator']);
 
         $html = $metadataview->draw('_node_metadata', true);
         RPC::call('movim_fill', 'metadata', $html);

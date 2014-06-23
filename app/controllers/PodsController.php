@@ -10,7 +10,7 @@ class PodsController extends BaseController {
     function dispatch() {
         $this->page->setTitle(__('title.discover', APP_TITLE));
         
-        $this->page->menuAddLink(__('page.home'), 'main');
+        $this->page->menuAddLink(__('page.home'), 'root');
         $this->page->menuAddLink(__('page.discover'), 'discover');
         $this->page->menuAddLink(__('page.pods'), 'pods', true);
         $this->page->menuAddLink(__('page.about'), 'about');

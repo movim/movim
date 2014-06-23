@@ -18,7 +18,7 @@ class FriendController extends BaseController {
                 $name = $_GET['f'];
             
             $this->page->setTitle(APP_TITLE.' - '.$name);
-            $this->page->menuAddLink(__('page.home'), 'main');
+            $this->page->menuAddLink(__('page.home'), 'root');
             $this->page->menuAddLink(__('page.news'), 'news');
             $this->page->menuAddLink(__('page.explore'), 'explore');
             $this->page->menuAddLink(__('page.profile'), 'profile');
