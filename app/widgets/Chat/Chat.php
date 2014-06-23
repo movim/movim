@@ -40,7 +40,8 @@ class Chat extends WidgetBase {
         $this->view->assign('chats', $this->prepareChats());
     }
 
-    function onPresence($presence) {
+    function onPresence($packet) {
+        $presence = $packet->content;
         $arr = $presence->getPresence();
 
         $txt = getPresences();
@@ -161,7 +162,8 @@ class Chat extends WidgetBase {
         }
     }
 
-    function onAttention($jid) {
+    function onAttention($packet) {
+        $jid = $packet->from;
         $rc = new \Modl\ContactDAO();
         $contact = $rc->getRosterItem(echapJid($jid));
         $html = '
