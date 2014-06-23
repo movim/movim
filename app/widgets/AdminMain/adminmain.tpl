@@ -120,12 +120,10 @@
         <legend>{$c->__('whitelist.title')}</legend>
         <div class="clear"></div>                
 
-        <p>{$c->__('whitelist.info1')}</p>
-        <p>{$c->__('whitelist.info2')}</p>
-        
-
         <div class="element large">
             <label for="xmppwhiteiist">{$c->__('whitelist.label')}</label>
+            <p>{$c->__('whitelist.info1')}</p>
+            <p>{$c->__('whitelist.info2')}</p>
             <input type="text" name="xmppwhitelist" id="xmppwhitelist" value="{$conf->xmppwhitelist}" />
         </div>
     </fieldset>
@@ -141,12 +139,10 @@
         </div>
         <div class="clear"></div>
 
-        <p>{$c->__('information.info1')}</p>
-        <p>{$c->__('information.info2')}</p>
-            
-
         <div class="element large">
             <label for="info">{$c->__('information.label')}</label>
+            <p>{$c->__('information.info1')}</p>
+            <p>{$c->__('information.info2')}</p>
             <textarea type="text" name="info" id="info" />{$conf->info}</textarea>
         </div>
     </fieldset>
