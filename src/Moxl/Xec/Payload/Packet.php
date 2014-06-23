@@ -1,8 +1,8 @@
 <?php
 /*
- * @file Attention.php
+ * @file Packet.php
  * 
- * @brief Handle incoming attention
+ * @brief A clean container for the payloads events
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
@@ -26,9 +26,8 @@
 
 namespace Moxl\Xec\Payload;
 
-class Attention extends Payload
+class Packet
 {
-    public function handle($stanza, $parent = false) {
-        $this->deliver();
-    }
+    public $from;
+    public $content;
 }

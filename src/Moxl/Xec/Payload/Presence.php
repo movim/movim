@@ -44,7 +44,8 @@ class Presence extends Payload
             $pd = new \modl\PresenceDAO();
             $pd->set($p);
 
-            $evt->runEvent('presence', $p);
+            $this->pack($p);
+            $this->deliver();
         }
     }
 }

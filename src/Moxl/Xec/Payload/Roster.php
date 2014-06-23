@@ -30,8 +30,7 @@ class Roster extends Payload
 {
     public function handle($stanza, $parent = false) {
         if((string)$parent->attributes()->type == 'set') 
-        {
-            $evt = new \Event();            
+        {           
             $rd = new \modl\RosterLinkDAO();
             
             $jid = current(explode('/',(string)$parent->query->item->attributes()->jid));
@@ -57,7 +56,7 @@ class Roster extends Payload
                 $rd->set($r);
             }
             
-            $evt->runEvent('roster');
+            $this->deliver();
         }
     }
 }

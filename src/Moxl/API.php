@@ -297,22 +297,7 @@ class API {
                 header(':', true,'500');
 
                 exit;
-            } elseif($xml->attributes()
-                  && $xml->attributes()->type == 'terminate'
-                  && isset($xml->attributes()->condition)) {
-                Utils::log(
-                "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
-                ."Session terminated\n"
-                .(string)$xml->attributes()->condition
-                ."!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                
-                $sess = \Session::start(APP_NAME);
-                $sess->dispose(APP_NAME);
-
-                header(':', true,'500');
-
-                exit;
-            } else {
+            } else { 
                 $xmle = new \SimpleXMLIterator($callback['content']);
 
                 if($xmle instanceof \SimpleXMLIterator) {    

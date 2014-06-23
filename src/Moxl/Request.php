@@ -105,11 +105,11 @@ class Request {
         // Little hack to fix a return error on the Squid proxy Daemon
         curl_setopt($ch, CURLOPT_HTTPHEADER,
                             array(
-                                'Expect:'/*,
-                                'User-Agent: Moxl',
+                                'Expect:',
+                                /*'User-Agent: Moxl',
                                 'Connection: close',
                                 'Content-Type: text/xml; charset=utf-8',
-                                'Content-length: '.strlen($this->_xml)*/)); 
+                                'Content-length: '.strlen($this->_xml))*/)); 
 
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, trim($this->_xml));

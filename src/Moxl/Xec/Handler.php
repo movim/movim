@@ -207,6 +207,7 @@ class Handler {
                 
                 if(class_exists($classname)) {
                     $payload_class = new $classname();
+                    $payload_class->prepare($s, $sparent);
                     $payload_class->handle($s, $sparent);
                 } else {
                    Utils::log('Handler : Payload class "'.$hashToClass[$hash].'" not found'); 

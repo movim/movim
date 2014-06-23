@@ -24,8 +24,12 @@
 
 namespace Moxl\Xec\Payload;
 
+use Moxl\Xec\Payload\Packet;
+use Moxl\Utils;
+
 abstract class Payload
 {
+    protected $packet;
     /**
      * Constructor of class Payload.
      *
@@ -33,7 +37,46 @@ abstract class Payload
      */
     final public function __construct()
     {
+        $this->packet = new Packet;
+    }
 
+    /**
+     * Prepare the packet
+     *
+     * @return void
+     */
+    final public function prepare($stanza, $parent = false)
+    {
+        if($parent === false) {
+            $this->packet->from = current(explode('/',(string)$stanza->attributes()->from));
+        } else {
+            $this->packet->from = current(explode('/',(string)$parent->attributes()->from));
+        }
+    }
+
+    /**
+     * Deliver the packet
+     *
+     * @return void
+     */
+    final public function deliver() {
+        $class = strtolower(get_class($this));
+        $pos = strrpos($class, '\\');
+        $key = substr($class, $pos + 1);
+
+        Utils::log('Payload : Event "'.$key.'" from "'.$this->packet->from.'" fired');
+
+        $evt = new \Event();
+        $evt->runEvent($key, $this->packet);
+    }
+
+    /**
+     * Set the content of the packet
+     *
+     * @return void
+     */
+    final public function pack($content) {
+        $this->packet->content = $content;
     }
     
     abstract public function handle($stanza, $parent = false);

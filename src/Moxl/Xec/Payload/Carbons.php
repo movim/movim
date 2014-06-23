@@ -36,8 +36,6 @@ class Carbons extends Payload
 
         $evt = new \Event();
 
-        
-
         if($stanza->composing) {
             if($parent->attributes()->from == $jid[0])
                 $evt->runEvent('composing', $to);

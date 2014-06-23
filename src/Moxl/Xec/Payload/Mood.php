@@ -29,7 +29,6 @@ namespace Moxl\Xec\Payload;
 class Mood extends Payload
 {
     public function handle($stanza, $parent = false) {
-        $to = current(explode('/',(string)$parent->attributes()->to));
         $from = current(explode('/',(string)$parent->attributes()->from));
 
         if(isset($stanza->items->item->mood) && $stanza->items->item->mood->count() > 0) {
