@@ -75,7 +75,7 @@ class Chat extends WidgetBase {
     }
     
     private function checkEncrypted($message) {
-        if(preg_match("#^\?OTR:#", $message->body)) {
+        if(preg_match("#^\?OTR#", $message->body)) {
             $message->body = $this->__('message.encrypted');
         }
         
