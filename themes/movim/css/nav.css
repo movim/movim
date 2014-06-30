@@ -115,15 +115,15 @@ ul li input[type=checkbox]:checked ~ .tabbed {
 
 @media screen and (max-width: 1280px) {    
     nav .menu li a,
-    nav .menu li a.main,
-    nav .menu li a.main.active {
+    nav .menu li a.root,
+    nav .menu li a.root.active {
         color: transparent;
         width: 0;
         padding-left: 3em;
         padding-right: 0;
     }
 
-    .menu li a.main, .menu li a.active.main {
+    .menu li a.main, .menu li a.active.root {
         background-image: url(../img/icons/menu/home.svg);
         background-size: 16px 16px;
     }
