@@ -12,5 +12,10 @@ class LoginController extends BaseController {
         $this->page->menuAddLink(__('page.discover'), 'discover');
         $this->page->menuAddLink(__('page.pods'), 'pods');
         $this->page->menuAddLink(__('page.about'), 'about');
+
+        $user = new User();
+        if($user->isLogged())
+            $this->redirect('root');
+        
     }
 }
