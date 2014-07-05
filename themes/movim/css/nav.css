@@ -123,7 +123,7 @@ ul li input[type=checkbox]:checked ~ .tabbed {
         padding-right: 0;
     }
 
-    .menu li a.main, .menu li a.active.root {
+    .menu li a.root, .menu li a.active.root {
         background-image: url(../img/icons/menu/home.svg);
         background-size: 16px 16px;
     }

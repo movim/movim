@@ -10,16 +10,8 @@
             </div>
         {/if}
         <form
-            name="login"
-            class="connectform"
-            target="passwordiframe"
-            method="POST"
-            action="blank.php"
-            onkeypress="
-                if(event.keyCode == 13) {
-                    {$submit_event}
-                }"
-            >
+            data-action="{$submit}"
+            name="login">
             <div class="element">
                 <input type="email" name="login" id="login" autofocus required
                     placeholder="{$c->__('form.username')}"/>
@@ -28,18 +20,18 @@
                 <input type="password" name="pass" id="pass" required
                     placeholder="{$c->__('form.password')}"/>
             </div>
-            <div class="element login">
-                <a
-                    class="button color green icon yes"
-                    onclick="{$submit_event}"
-                    id="submit"
-                    name="submit">{$c->__('button.come_in')}</a>
+            <div class="element">
+                <input
+                    type="submit"
+                    data-loading="{$c->__('button.connecting')}"
+                    value="{$c->__('button.come_in')}"
+                    class="button color green icon yes"/> 
             </div>
-            
-            <input type="submit" id="submitb" name="submitb" value="submit" style="display: none;"/> 
-
             <div class="clear"></div>
-            
+
+            <div id="warning">{$warnings}</div>
+            <div class="clear"></div>
+
             <p class="create">
                 <a class="button color transparent oppose icon user" href="{$c->route('account')}">
                     {$c->__('form.create_one')}
@@ -70,13 +62,6 @@
                     </li>
                 {/if}
             </ul>
-            
-            <iframe id="passwordiframe" name="passwordiframe" style="display: none;"></iframe>
-            
-            <div id="warning">{$warnings}</div>
-
-            <div class="clear"></div>
-
         </form>
     {/if}
 
