@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
-
+    
     <meta name="description" content="<?php echo $config->description; ?>" />
     
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />

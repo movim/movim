@@ -36,12 +36,6 @@ class Login extends WidgetBase
         
         $this->view->assign('submit', $submit);
         $this->view->assign('info',   $config->info);
-        $this->view->assign('submit_event', 
-            'document.getElementById(\'submitb\').click();
-            '.$submit.'
-            loginButtonSet(\''.$this->__('button.connecting').'\', true);
-            localStorage.username = document.querySelector(\'#login\').value;
-            this.onclick=null;');
 
         $sd = new \Modl\SessionxDAO();
         $sd->clean();
@@ -280,7 +274,7 @@ class Login extends WidgetBase
             $pd = new modl\PresenceDAO();
             $pd->clearPresence($element['login']);
         
-            RPC::call('movim_redirect', Route::urlize('root'));            
+            RPC::call('movim_reload', Route::urlize('root'));            
             RPC::commit();
         }
     }
