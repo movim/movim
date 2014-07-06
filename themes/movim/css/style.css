@@ -529,6 +529,28 @@ ul.list li span.tag {
     margin-top: -0.5em;
 }
 
+ul.list li span.content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block; 
+}
+
+ul.list li span.tag.desc {
+    color: gray;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: white;
+}
+
+ul.list li img {
+    float: left;
+    margin-right: 1em;
+    margin-top: 0.5em;
+}
+
 ul.list li span.tag.red { background-color: #D92727; }
 ul.list li span.tag.blue { background-color: #0DB8B5; }
 ul.list li span.tag.green { background-color: #6FCC43; }
@@ -677,6 +699,18 @@ dl dd {
 
 .popup .element label {
     color: white;
+}
+
+/* Placeholder */
+.placeholder {
+    text-align: center;
+    font-size: 1.2em;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.placeholder p {
+    text-align: center;
 }
 
 

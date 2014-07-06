@@ -243,6 +243,10 @@ dl dd {
     width: 100%;
 }
 
+ul.list li span.tag.desc {
+    display: none;
+}
+
 }
 
 @media screen and (max-width: 640px) {

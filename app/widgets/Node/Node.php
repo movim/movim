@@ -47,10 +47,11 @@ class Node extends WidgetCommon
         if(isset($_GET['s']) && isset($_GET['n'])) {
             $this->view->assign('server', $_GET['s']);
             $this->view->assign('node',   $_GET['n']);
-            $this->view->assign('getaffiliations', $this->genCallAjax('ajaxGetAffiliations', "'".$_GET['s']."'", "'".$_GET['n']."'"));
-            $this->view->assign('getmetadata', $this->genCallAjax('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
-            $this->view->assign('hash', md5($_GET['s'].$_GET['n']));
-            $this->view->assign('items', $this->prepareNode($_GET['s'], $_GET['n']));
+            $this->view->assign('getaffiliations',  $this->genCallAjax('ajaxGetAffiliations', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('getmetadata',      $this->genCallAjax('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('hash',             md5($_GET['s'].$_GET['n']));
+            $this->view->assign('items',            $this->prepareNode($_GET['s'], $_GET['n']));
+            $this->view->assign('metadata',         $this->prepareMetadata($_GET['s'], $_GET['n']));
             
             $nd = new modl\ItemDAO();
             $node = $nd->getItem($_GET['s'], $_GET['n']);
@@ -98,18 +99,7 @@ class Node extends WidgetCommon
     }
 
     function onPubsubMetadata($params) {
-        // The URL add form
-        $metadataview = $this->tpl();
-        if(isset($params[0]['title']))
-            $metadataview->assign('title',       $params[0]['title']);
-        if(isset($params[0]['description']))
-            $metadataview->assign('description', $params[0]['description']);
-        if(isset($params[0]['creation_date']))
-            $metadataview->assign('creation', prepareDate(strtotime($params[0]['creation_date'])));
-        if(isset($params[0]['creator']))
-            $metadataview->assign('creator',     $params[0]['creator']);
-
-        $html = $metadataview->draw('_node_metadata', true);
+        $html = $this->prepareMetadata($params[0], $params[1]);
         RPC::call('movim_fill', 'metadata', $html);
     }
     
@@ -192,7 +182,7 @@ class Node extends WidgetCommon
 
         $nodeview->assign('submitform',     '');
 
-        $nodeview->assign('posts',           $this->preparePostsNode($serverid, $groupid, -1));
+        $nodeview->assign('posts',          $this->preparePostsNode($serverid, $groupid, -1));
 
         $html = $nodeview->draw('_node_content', true);
         
@@ -217,12 +207,33 @@ class Node extends WidgetCommon
 
         return $nexthtml;
     }
+
+    function prepareMetadata($server, $node) {
+        $nd = new modl\ItemDAO();
+        $node = $nd->getItem($server, $node);
+
+        $metadataview = $this->tpl();
+        if(isset($node->name))
+            $metadataview->assign('title',       $node->name);
+        else
+            $metadataview->assign('title',       $node->node);
+        $metadataview->assign('description', $node->description);
+        $metadataview->assign('creation',    prepareDate(strtotime($node->created)));
+        $metadataview->assign('creator',     $node->creator);
+
+        return $metadataview->draw('_node_metadata', true);
+    }
     
     function preparePostsNode($serverid, $groupid, $start) {
         $pd = new \Modl\PostnDAO();
         $pl = $pd->getNode($serverid, $groupid, $start+1, $this->_feedsize);
 
-        $html = $this->preparePosts($pl);
+        if(isset($pl)) {
+            $html = $this->preparePosts($pl);
+        } else {
+            $view = $this->tpl();
+            $html = $view->draw('_node_empty', true);
+        }
 
         $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetPostsNode', $serverid, $groupid);
         
