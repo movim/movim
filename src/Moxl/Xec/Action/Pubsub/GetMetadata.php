@@ -56,14 +56,13 @@ class GetMetadata extends Errors
         
         $tab = array();
 
-        foreach($stanza->query->x->children() as $i) {
-            $explode = explode('#', (string)$i->attributes()->var);
-            $key = end($explode);
-            $tab[$key] = (string)$i->value;
-        }
+        $nd = new \modl\ItemDAO();
 
-        unset($tab['FORM_TYPE']);
+        $n = new \modl\Item();
+        $n->setMetadata($stanza->query->x, $this->_to, $this->_node);
 
-        $evt->runEvent('pubsubmetadata', array($tab, $this->_to,$this->_node)); 
+        $nd->set($n);
+
+        $evt->runEvent('pubsubmetadata', array($this->_to, $this->_node)); 
     }
 }
