@@ -588,30 +588,34 @@ class WidgetCommon extends WidgetBase {
         $content = $form['content'];
         $title   = $form['title'];
 
-        list($lat,$lon) = explode(',', $form['latlonpos']);
-        
-        $pos = json_decode(
-                    file_get_contents('http://nominatim.openstreetmap.org/reverse?format=json&lat='.$lat.'&lon='.$lon.'&zoom=27&addressdetails=1')
+        $geo = false;
+
+        if(isset($form['latlonpos']) && $form['latlonpos'] != '') {
+            list($lat,$lon) = explode(',', $form['latlonpos']);
+            
+            $pos = json_decode(
+                        file_get_contents('http://nominatim.openstreetmap.org/reverse?format=json&lat='.$lat.'&lon='.$lon.'&zoom=27&addressdetails=1')
+                    );
+                    
+            $geo = array(
+                'latitude'      => (string)$pos->lat,
+                'longitude'     => (string)$pos->lon,
+                'altitude'      => (string)$pos->alt,
+                'country'       => (string)$pos->address->country,
+                'countrycode'   => (string)$pos->address->country_code,
+                'region'        => (string)$pos->address->county,
+                'postalcode'    => (string)$pos->address->postcode,
+                'locality'      => (string)$pos->address->city,
+                'street'        => (string)$pos->address->path,
+                'building'      => (string)$pos->address->building,
+                'text'          => (string)$pos->display_name,
+                'uri'           => ''//'http://www.openstreetmap.org/'.urlencode('?lat='.(string)$pos->lat.'&lon='.(string)$pos->lon.'&zoom=10')
                 );
-                
-        $geo = array(
-            'latitude'      => (string)$pos->lat,
-            'longitude'     => (string)$pos->lon,
-            'altitude'      => (string)$pos->alt,
-            'country'       => (string)$pos->address->country,
-            'countrycode'   => (string)$pos->address->country_code,
-            'region'        => (string)$pos->address->county,
-            'postalcode'    => (string)$pos->address->postcode,
-            'locality'      => (string)$pos->address->city,
-            'street'        => (string)$pos->address->path,
-            'building'      => (string)$pos->address->building,
-            'text'          => (string)$pos->display_name,
-            'uri'           => ''//'http://www.openstreetmap.org/'.urlencode('?lat='.(string)$pos->lat.'&lon='.(string)$pos->lon.'&zoom=10')
-            );
+        }
 
         if($content != '') {
             $content = Markdown::defaultTransform($content);
-
+            
             $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($server)

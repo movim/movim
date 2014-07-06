@@ -60,30 +60,29 @@ class Explore extends WidgetCommon {
         $html = '';
         $cd = new \modl\ContactDAO();
         $users = $cd->getAllPublic();
+        
         $gender = getGender();
         $marital = getMarital();
+
         if($users) {
             $users = array_reverse($users);
             foreach($users as $user) {
-                $html .= '
-                    <article class="block">
-                        <header>
-                            <a href="' . Route::urlize('friend', $user->jid) . '">
-                                <img class="avatar" src="' . $user->getPhoto('m') . '"/>
-                            </a>
+                $g = $m = null;
 
-                            <span class="name">
-                                <a href="' . Route::urlize('friend', $user->jid) . '">' . $user->getTrueName() . '</a>
-                            </span>
-                            <span class="asv">' . $user->getAge() . ' ' . $gender[$user->gender] . ' ' . $marital[$user->marital] . '
-                            </span>
-                        </header>
+                if($user->gender != null && $user->gender != 'N') {
+                    $g = $gender[$user->gender];
+                }
 
-                        <section class="content">' . prepareString($user->description) . '</section>
+                if($user->marital != null && $user->marital != 'none') {
+                    $m = $marital[$user->marital];
+                }
+                
+                $userview = $this->tpl();
+                $userview->assign('user', $user);
+                $userview->assign('gender', $g);
+                $userview->assign('marital', $m);
+                $html .= $userview->draw('_explore_user', true);
 
-                        <footer></footer>
-                    </article>
-                    ';
             }
         }
         return $html;
