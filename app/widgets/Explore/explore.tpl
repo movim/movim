@@ -1,4 +1,4 @@
-<div id="serverresult" class="paddedtop">
+<div id="serverresult" class="padded">
     <a class="button color purple oppose icon search" href="{$myserver}">{$c->__('discover_my_server')}</a>
     <h2>{$c->__('discussion_servers')}</h2>
     <ul class="list">
@@ -8,10 +8,12 @@
 
 <div class="clear"></div>
 
-<div class="paddedtopbottom">
+<div class="padded">
     <h2>{$c->__('last_registered')}</h2>
 
-    <div id="contactsresult">
+    <ul class="list">
         {$contacts}
-    </div>
+    </ul>
+
+    <div class="clear"></div>
 </div>

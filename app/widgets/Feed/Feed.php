@@ -155,10 +155,14 @@ class Feed extends WidgetCommon {
     function prepareFeed($start) {
         $pd = new \Modl\PostnDAO();
         $pl = $pd->getFeed($start+1, $this->_feedsize);
-        
-        $html = $this->preparePosts($pl);
 
-        $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetFeed');
+        if(isset($pl)) {
+            $html = $this->preparePosts($pl);
+            $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetFeed');
+        } else {
+            $view = $this->tpl();
+            $html = $view->draw('_feed_empty', true);
+        }
         
         return $html;
     }

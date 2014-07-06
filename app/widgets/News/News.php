@@ -43,11 +43,14 @@ class News extends WidgetCommon {
         $pd = new \Modl\PostnDAO();
         $pl = $pd->getNews($start+1, $this->_feedsize);
 
-        $html = $this->preparePosts($pl);
-
-        Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
-
-        $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetNews');
+        if(isset($pl)) {
+            $html = $this->preparePosts($pl);
+            Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
+            $html .= $this->prepareNext($start, $html, $pl, 'ajaxGetNews');
+        } else {
+            $view = $this->tpl();
+            $html = $view->draw('_news_empty', true);
+        }
         
         return $html;
     }
