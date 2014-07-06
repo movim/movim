@@ -10,7 +10,7 @@
         {if="$marital"}
             <span class="tag yellow">{$marital}</span>
         {/if}
-        <span class="tag desc">{$user->description|strip_tags}</span>
         <span class="content">{$user->getTrueName()}</span>
+        <span class="desc">{$user->description|strip_tags}</span>
     </a>
 </li>
