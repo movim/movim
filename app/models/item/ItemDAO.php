@@ -7,7 +7,10 @@ class ItemDAO extends SQL {
         $this->_sql = '
             update item
             set name   = :name,
-                updated = :updated
+                creator = :creator,
+                created = :created,
+                updated = :updated,
+                description = :description
             where server = :server
                 and jid  = :jid
                 and node = :node';
@@ -15,11 +18,14 @@ class ItemDAO extends SQL {
         $this->prepare(
             'Item', 
             array(
-                'name'   => $item->name,
-                'updated'=> $item->updated,
-                'server' => $item->server,
-                'jid'    => $item->jid,
-                'node'   => $item->node
+                'name'          => $item->name,
+                'created'       => $item->created,
+                'updated'       => $item->updated,
+                'server'        => $item->server,
+                'jid'           => $item->jid,
+                'node'          => $item->node,
+                'creator'       => $item->creator,
+                'description'   => $item->description
             )
         );
         
@@ -29,27 +35,36 @@ class ItemDAO extends SQL {
             $this->_sql = '
                 insert into item
                 (server,
+                creator,
                 node,
                 jid,
                 name,
-                updated
+                created,
+                updated,
+                description
                 )
                 values(
                     :server,
+                    :creator,
                     :node,
                     :jid,
                     :name,
-                    :updated
+                    :created,
+                    :updated,
+                    :description
                     )';
             
             $this->prepare(
                 'Item', 
                 array(
-                    'name'   => $item->name,
-                    'updated'=> $item->updated,
-                    'server' => $item->server,
-                    'jid'    => $item->jid,
-                    'node'   => $item->node
+                    'name'          => $item->name,
+                    'creator'       => $item->creator,
+                    'created'       => $item->created,
+                    'updated'       => $item->updated,
+                    'server'        => $item->server,
+                    'jid'           => $item->jid,
+                    'node'          => $item->node,
+                    'description'   => $item->description
                 )
             );
             
@@ -139,6 +154,29 @@ class ItemDAO extends SQL {
                 // Dirty hack, using node param to inject the session key
                 'node' => $this->_user,
                 'server' => $server
+            )
+        );
+            
+        return $this->run('Item'); 
+    }
+
+    function getUpdatedItems($limitf = false, $limitr = false) {
+        $this->_sql = '
+            select * from item natural join (
+                select distinct node, max(updated) as num from postn
+                where node != :node
+                group by node
+                order by node) as post
+                order by num desc
+            ';
+
+        if($limitr) 
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+            
+        $this->prepare(
+            'Item',
+            array(
+                'node' => 'urn:xmpp:microblog:0:comments%'
             )
         );
             

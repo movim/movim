@@ -14,7 +14,7 @@
     <div class="clear"></div>
     
     <div class="metadata" id="metadata">
-
+        {$metadata}
     </div>
     
     <div id="formpublish" style="padding-bottom: 1em; display: none;">
