@@ -6,7 +6,7 @@
         <li class="block">
             <a href="{$c->route('node', array($value->server, $value->node))}">
                 <span class="tag gray">{$c->__('post.updated')} {$value->num|strtotime|prepareDate}</span>
-                <span class="tag desc">{$value->description}</span>
+
                 <span class="content">
                 {if="isset($value->name)"}
                     {$value->name}
@@ -15,6 +15,7 @@
                 {/if}
                 - {$value->server}
                 </span>
+                <span class="desc">{$value->description}</span>
             </a>
         </li>
     {/loop}
