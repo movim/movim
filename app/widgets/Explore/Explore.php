@@ -49,9 +49,9 @@ class Explore extends WidgetCommon {
         $groupsview->assign('groups', $groups);
         $html .= $groupsview->draw('_explore_groups', true);
         
-        $chatroomsview = $this->tpl();
-        $chatroomsview->assign('chatrooms', $chatrooms);
-        $html .= $chatroomsview->draw('_explore_chatrooms', true);
+        //$chatroomsview = $this->tpl();
+        //$chatroomsview->assign('chatrooms', $chatrooms);
+        //$html .= $chatroomsview->draw('_explore_chatrooms', true);
         
         return $html;
     }
