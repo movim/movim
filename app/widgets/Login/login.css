@@ -37,14 +37,14 @@ body {
     color: white;
 }
 
-#loginpage .connectform {
-    box-shadow: 0px 0.1em 0px rgba(0, 0, 0, 0.2);
+#loginpage form {
+    box-shadow: 0 0.1em 0px rgba(0, 0, 0, 0.2);
     padding: 0.5em;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 0.1em;
 }
 
-#loginpage .connectform .create span {
+#loginpage form .create span {
     color: white;
     padding: 0 1em;
     line-height: 2em;
@@ -53,33 +53,32 @@ body {
     float: right;
 }
 
-#loginpage .connectform .element {
+#loginpage form .element {
     display: block;
     margin: 0 auto;
-    padding: 0px;
+    padding: 0;
     width: 100%;
-    min-height: 2.5em;
+    min-height: 0;
 }
 
-#loginpage .connectform .element.login {
+#loginpage form > .element:not(:first-child) {
+    padding-top: 0.5em;
+}
+/*
+#loginpage form .element.login {
     min-height: 0em;
 }
-
-#loginpage .connectform .element input {
-    margin: 0px;
-    border: 0px;
+*/
+#loginpage form .element input:not([type=submit]) {
+    margin: 0;
+    border: 0;
     box-shadow: none;
     color: black;
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-#loginpage .connectform a[name=submit] {
-    display: block; 
-    text-align: center;
-}
-
-.connectform a[name=submit]:before {
-    color: white;
+#loginpage form .element input[type=submit] {
+    border-color: transparent;
 }
 
 #loginpage .infos {
@@ -93,7 +92,7 @@ body {
     color: white;
     line-height: 1.2em;
     text-align: justify;
-    transition: height 1s ease;
+    transition: height 0.5s ease;
     height: 0em;
     overflow: hidden;
 }
@@ -107,8 +106,8 @@ body {
     margin: 0.5em 0em;
 }
 
-#loginpage .connectform:hover > #loginhelp {
-    height: 11em;
+#loginpage form:hover > #loginhelp {
+    height: 11.5em;
 }
 
 #loginpage #loginhelp li#jabber { background-image: url(img/jabber.png); }
@@ -119,17 +118,14 @@ footer {
     display: none;
 }
 
-
 @media screen and (max-width: 1024px) {
     #loginpage {
         background-size: 80% auto;
     }
 
-    #loginhelp {
-        display: none;
-    }
-
-    #loginpage .connectform .create span {
+    #loginhelp,
+    #loginpage form .create span {
         display: none;
     }
 }
+
