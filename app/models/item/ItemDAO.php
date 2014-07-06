@@ -164,8 +164,7 @@ class ItemDAO extends SQL {
         $this->_sql = '
             select * from item natural join (
                 select distinct node, max(updated) as num from postn
-                where node != :node
-                and node != :microblog
+                where node not like :node
                 group by node
                 order by node) as post
                 order by num desc
@@ -177,8 +176,7 @@ class ItemDAO extends SQL {
         $this->prepare(
             'Item',
             array(
-                'node'      => 'urn:xmpp:microblog:0:comments%',
-                'microblog' => 'urn:xmpp:microblog:0'
+                'node'      => 'urn:xmpp:microblog%'
             )
         );
             

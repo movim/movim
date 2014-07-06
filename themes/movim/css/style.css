@@ -538,7 +538,7 @@ ul.list li span.content {
 
 ul.list li span.tag.desc {
     color: gray;
-    max-width: 70%;
+    max-width: 45%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
