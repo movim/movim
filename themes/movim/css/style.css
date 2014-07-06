@@ -481,6 +481,10 @@ ul.list li {
     border-bottom: 1px solid #EEE;
     clear: both;
     padding: 0 0.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 3em;
 }
 
 ul.list li:last-child {
@@ -501,7 +505,22 @@ ul.list li.title a.action {
 
 ul.list li a {
     padding: 1em 0em;
+    text-decoration: none;
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 3em;
+}
+
+ul.list li a span.content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    float: left;
+    white-space: nowrap;
+    max-width: 40%;
+    text-decoration: underline;
 }
 
 ul.list li a.action {
@@ -529,28 +548,33 @@ ul.list li span.tag {
     margin-top: -0.5em;
 }
 
-ul.list li span.content {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: block; 
-}
-
-ul.list li span.tag.desc {
-    color: gray;
-    max-width: 45%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    background-color: white;
-}
-
 ul.list li img {
     float: left;
     margin-right: 1em;
     margin-top: 0.5em;
     max-height: 2em;
 }
+
+ul.list li span.desc {
+    margin-left: 1em;
+    height: 1.2em;
+    font-size: 0.9em;
+    display: inline-block;
+    color: gray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    width:  30%;
+}
+/*
+ul.list li span.desc:before  {
+    background: linear-gradient(to right, rgba(255,255,255,0), white);
+    display: block;
+    height: 2em;
+    content : " ";
+    width: 100%;
+    position: absolute;
+}*/
 
 ul.list li span.tag.red { background-color: #D92727; }
 ul.list li span.tag.blue { background-color: #0DB8B5; }
