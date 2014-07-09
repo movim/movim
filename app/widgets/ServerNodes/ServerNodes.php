@@ -120,9 +120,9 @@ class ServerNodes extends WidgetCommon
                 }
             
                 $html .= '
-                    <li>
+                    <li class="block">
                         <a '.$url.'>'.
-                            $i->getName().
+                            '<span class="content">'.$i->getName().'</span>'.
                             $tags.'
                         </a>
                     </li>';
