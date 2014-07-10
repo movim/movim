@@ -32,6 +32,10 @@
     width: 100%;
 }
 
+.block:nth-of-type(even) {
+    padding-right: 0.5em;
+}
+
 }
 
 @media screen and (max-width: 1024px) {
