@@ -1,4 +1,8 @@
 /* CSS of messages (Wall, Feed, News...) */
+article {
+    overflow: hidden;
+}
+
 article img {
     max-width: 100%;
 }
