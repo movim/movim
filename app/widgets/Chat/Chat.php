@@ -24,6 +24,8 @@ use Moxl\Xec\Action\Presence\Unavaiable;
  
 class Chat extends WidgetBase {
 
+    private $_encrypted = false;
+
     function load() {
         $this->addcss('chat.css');
         $this->addjs('chat.js');
@@ -76,6 +78,7 @@ class Chat extends WidgetBase {
     
     private function checkEncrypted($message) {
         if(preg_match("#^\?OTR#", $message->body)) {
+            $this->_encrypted = true;
             $message->body = $this->__('message.encrypted');
         }
         
@@ -98,13 +101,17 @@ class Chat extends WidgetBase {
         
         $message = $this->checkEncrypted($message);
         
-        if($contact!=null && $message->session != $message->jidfrom) {
+        if($contact != null
+        && $message->session != $message->jidfrom
+        && $this->_encrypted == false) {
             RPC::call(
                 'notify',
                 $contact->getTrueName(),
                 $message->body,
                 $contact->getPhoto('m'));
         }
+
+        $this->_encrypted = false;
         
         if($contact != null && $contact->chaton == 0) {
             $contact->chaton = 2;
