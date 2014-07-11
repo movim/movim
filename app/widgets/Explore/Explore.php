@@ -2,25 +2,19 @@
 class Explore extends WidgetCommon {
 
     function load() {
-        $this->addcss('explore.css');
+
     }
 
     function display() {
-        $this->view->assign('contacts', $this->prepareContacts());
         $this->view->assign('servers', $this->prepareServers());
+        
         $jid = $this->user->getLogin();
         $server = explode('@', $jid);
         $this->view->assign('myserver', Route::urlize('server', $server[1]));
-    }
 
-    function ajaxSearchContacts($form) {
-        $html = $this->prepareContacts($form);
-        RPC::call('movim_fill', 'contactsresult', $html);
-        RPC::commit();
-    }
-
-    function colorSearch($search, $text) {
-        return str_replace($search, '<span style="background-color: yellow;">' . $search . '</span>', $text);
+        $cd = new \modl\ContactDAO();
+        $users = $cd->getAllPublic();
+        $this->view->assign('users', array_reverse($users));
     }
 
     // A little filter
@@ -53,38 +47,6 @@ class Explore extends WidgetCommon {
         //$chatroomsview->assign('chatrooms', $chatrooms);
         //$html .= $chatroomsview->draw('_explore_chatrooms', true);
         
-        return $html;
-    }
-
-    function prepareContacts($form=false) {
-        $html = '';
-        $cd = new \modl\ContactDAO();
-        $users = $cd->getAllPublic();
-        
-        $gender = getGender();
-        $marital = getMarital();
-
-        if($users) {
-            $users = array_reverse($users);
-            foreach($users as $user) {
-                $g = $m = null;
-
-                if($user->gender != null && $user->gender != 'N') {
-                    $g = $gender[$user->gender];
-                }
-
-                if($user->marital != null && $user->marital != 'none') {
-                    $m = $marital[$user->marital];
-                }
-                
-                $userview = $this->tpl();
-                $userview->assign('user', $user);
-                $userview->assign('gender', $g);
-                $userview->assign('marital', $m);
-                $html .= $userview->draw('_explore_user', true);
-
-            }
-        }
         return $html;
     }
 }
