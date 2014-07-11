@@ -6,42 +6,10 @@ class Discover extends WidgetCommon {
 
     }
 
-    function prepareContacts() {
-        $html = '';
-                
+    function display()
+    {
         $cd = new \modl\ContactDAO();
         $users = $cd->getAllPublic();
-        if(isset($users)) {
-            $users = array_reverse($users);
-            
-            $gender = getGender();
-            $marital = getMarital();
-                    
-            foreach($users as $user) {
-                $html .= '
-                    <article class="block">
-                        <header>
-                            <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">
-                                <img class="avatar" src="'.$user->getPhoto('m').'"/>
-                            </a>
-                            <span class="name">
-                                <a href="'.Route::urlize('blog', array($user->jid, 'urn:xmpp:microblog:0')).'">'.$user->getTrueName().'</a>
-                            </span>
-                            <span class="asv">'.
-                                $user->getAge().' '.
-                                $gender[$user->gender].' '.
-                                $marital[$user->marital].'
-                            </span>
-                        </header>
-
-                        <section class="content">'.prepareString($user->description).'</section>
-
-                        <footer></footer>
-                    </article>
-                    ';
-            }
-        }
-
-        return $html;
+        $this->view->assign('users', array_reverse($users));
     }
 }
