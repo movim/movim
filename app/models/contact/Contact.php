@@ -366,6 +366,22 @@ class Contact extends Model {
                 return $age;
         }
     }
+
+    function getGender() {
+        $gender = getGender();
+
+        if($this->gender != null && $this->gender != 'N') {
+            return $gender[$this->gender];
+        }
+    }
+
+    function getMarital() {
+        $marital = getMarital();
+        
+        if($this->marital != null && $this->marital != 'none') {
+            return $marital[$this->marital];
+        }
+    }
 }
 
 class RosterContact extends Contact {
