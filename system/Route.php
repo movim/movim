@@ -78,7 +78,7 @@ class Route extends \BaseController {
                     $tab = '#'.$tab;
                 //We construct a classic URL if the rewriting is disabled
                 if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE']) {
-                    $uri = '?q='.$page;
+                    $uri = BASE_URI . '?q='.$page;
                     
                     if($params != false && is_array($params)) {
                         $i = 0;
