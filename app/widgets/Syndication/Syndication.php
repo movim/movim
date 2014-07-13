@@ -55,8 +55,8 @@ class Syndication extends WidgetBase
             
             $this->view->assign('date', date('c'));
             $this->view->assign('name', $messages[0]->getContact()->getTrueName());
-            $this->view->assign('uri',  Route::urlize('blog',array($from, $node)));
-            $this->view->assign('link', '<link rel="self" href="'.Route::urlize('feed',array($from, $node)).'"/>');
+            $this->view->assign('uri',  htmlentities(Route::urlize('blog',array($from, $node))));
+            $this->view->assign('link', '<link rel="self" href="'.htmlentities(Route::urlize('feed',array($from, $node))).'"/>');
             $this->view->assign('uuid', generateUUID($from.$node));
         }
     }
