@@ -1,20 +1,21 @@
-# Finnish translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+# Kazakh translation for movim
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the movim package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: movim\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-07-15 18:26+0200\n"
-"PO-Revision-Date: 2012-07-19 13:34+0000\n"
-"Last-Translator: Sampo Harjula <sahtor@sahtor.net>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2014-04-04 12:56+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Kazakh <kk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-07-16 07:12+0000\n"
 "X-Generator: Launchpad (build 17112)\n"
-"Language: \n"
 
 #: /var/www/movim/cache/locales.php:2
 msgid "Thanks"
@@ -48,19 +49,19 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:9 /var/www/movim/cache/locales.php:175
 msgid "Some data are missing !"
-msgstr "Joitain tietoja puuttuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:10
 msgid "Wrong ID"
-msgstr "Väärä ID"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:11
 msgid "You entered different passwords"
-msgstr "Syötit eri salasanat"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:12
 msgid "Invalid name"
-msgstr "Virheellinen nimi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:13
 msgid "Request not acceptable"
@@ -68,23 +69,23 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:14
 msgid "Username already taken"
-msgstr "Käyttäjänimi on jo käytössä"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:15
 msgid "Could not connect to the XMPP server"
-msgstr "Ei voitu luoda yhteyttä XMPP serveriin"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:16
 msgid "Could not communicate with the XMPP server"
-msgstr "Ongelmia yhteydessä XMPP serveriin"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:17
 msgid "Unknown error"
-msgstr "Tuntematon virhe"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:18 /var/www/movim/cache/locales.php:259
 msgid "Create a new account"
-msgstr "Luo uusi tili"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:19
 msgid "No account creation form found on the server"
@@ -130,7 +131,7 @@ msgstr ""
 #: /var/www/movim/cache/locales.php:29 /var/www/movim/cache/locales.php:49
 #: /var/www/movim/cache/locales.php:191 /var/www/movim/cache/locales.php:354
 msgid "Password"
-msgstr "Salasana"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:30
 msgid "Host"
@@ -353,12 +354,12 @@ msgstr ""
 #: /var/www/movim/cache/locales.php:198 /var/www/movim/cache/locales.php:237
 #: /var/www/movim/cache/locales.php:271
 msgid "Name"
-msgstr "Nimi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:86 /var/www/movim/cache/locales.php:118
 #: /var/www/movim/cache/locales.php:272
 msgid "Nickname"
-msgstr "Lempinimi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:87
 msgid "Do you want do join automaticaly this Chat Room ?"
@@ -411,7 +412,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:99
 msgid "Language"
-msgstr "Kieli"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:100
 msgid "Appearence"
@@ -463,31 +464,31 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:112 /var/www/movim/cache/locales.php:114
 msgid "Actions"
-msgstr "Toimenpiteet"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:113
 msgid "Chat"
-msgstr "Chat"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:115
 msgid "Invite this user"
-msgstr "Kutsu tämä tkäyttäjä"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:116 /var/www/movim/cache/locales.php:270
 msgid "General Informations"
-msgstr "Perustiedot"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:119 /var/www/movim/cache/locales.php:274
 msgid "Date of Birth"
-msgstr "Syntymäaika"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:120 /var/www/movim/cache/locales.php:275
 msgid "Gender"
-msgstr "Sukupuoli"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:121 /var/www/movim/cache/locales.php:276
 msgid "Marital Status"
-msgstr "Siviilisääty"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:122 /var/www/movim/cache/locales.php:273
 msgid "Email"
@@ -495,11 +496,11 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:123 /var/www/movim/cache/locales.php:277
 msgid "Website"
-msgstr "Nettisivu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:124 /var/www/movim/cache/locales.php:278
 msgid "About Me"
-msgstr "Tietoja minusta"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:125 /var/www/movim/cache/locales.php:279
 msgid "Geographic Position"
@@ -531,7 +532,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:133
 msgid "Client Informations"
-msgstr "Asiakastiedot"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:134
 msgid "Manage"
@@ -539,7 +540,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:135
 msgid "Alias"
-msgstr "Alias"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:136
 msgid "Group"
@@ -575,14 +576,13 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:146
 msgid "My Posts"
-msgstr "Minun postaukset"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:147
 msgid ""
 "Your server doesn't support post publication, you can only read contact's "
 "feeds"
 msgstr ""
-"Palvelimesi ei tue postauksen julakisua, voit vain lukea kontaktisi syötteet"
 
 #: /var/www/movim/cache/locales.php:149
 msgid "Creating your feed..."
@@ -600,7 +600,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:152
 msgid "What is Movim?"
-msgstr "Mikä Movim on?"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:153
 #, php-format
@@ -608,48 +608,42 @@ msgid ""
 "Visit the page %s What is Movim ? %s to know more about the project, its "
 "aims and understand how it works."
 msgstr ""
-"Vieraile %s Mikä Movim on? %s sivulla saadaksesi tietoa projektista, "
-"tavoitteista ja ymmärtääksesi sen toimintaa."
 
 #: /var/www/movim/cache/locales.php:154
 msgid "What do the little banners refer to ?"
-msgstr "Mitä nämä pienet bannerit ovat?"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:155
 msgid ""
 "Thanks to these five little banners, you can quickly identitfy the level of "
 "confdentiality applied to the information you provide."
 msgstr ""
-"Kiitos näiden viiden pienen bannerin, näet yksityisyyden tason jakamallesi "
-"tiedolle."
 
 #: /var/www/movim/cache/locales.php:156
 msgid "White, only you can see the information"
-msgstr "Valkoinen, vain sinä voit tähdä tämän"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:157
 msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Vihreä, olet valinnut joitakin kontakteja jotka voivat nähdä tämän"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:158
 msgid "Orange, all your contact list can see your information"
-msgstr "Oranssi, kaikki jotka ovat kontaktilistallasi voivat nähdä tämän"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:159
 msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Punainen, vain ne jotka ovat XMPP verkossa voivat nähdä tämän"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:160
 msgid "Black, the whole Internet can see your information"
-msgstr "Musta, avoinna kaikille internet käyttäjille"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:161
 msgid ""
 "Some features are missing/I can't do everything I used to do on other social "
 "networks"
 msgstr ""
-"Joitain ominaisuuksia puuttuu / en voi tehdä kaikkea mitä muissa "
-"sosiaalisissa verkoissa"
 
 #: /var/www/movim/cache/locales.php:162
 #, php-format
@@ -668,7 +662,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:164
 msgid "I can't find the answer to my question here"
-msgstr "En löydä täältä vastausta kysymykselleni"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:165
 #, php-format
@@ -696,11 +690,11 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:170
 msgid "Wrong username"
-msgstr "Väärä käyttäjänimi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:171
 msgid "Invalid JID"
-msgstr "Väärä JID"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:172
 msgid "Authentication mechanism not supported by Movim"
@@ -712,15 +706,15 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:174
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr "XMPP domain -virhe, käyttäjätilisi ei ollut oikea Jabber ID"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:176
 msgid "Wrong password"
-msgstr "Väärä salasana"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:177
 msgid "The XMPP authentification failed"
-msgstr "XMPP autentikointi epäonnistui"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:178
 msgid "The current BOSH URL is invalid"
@@ -728,19 +722,19 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:179
 msgid "Internal server error"
-msgstr "Sisäinen palvelinvirhe"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:180
 msgid "Session error"
-msgstr "Istuntovirhe"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:181
 msgid "Account successfully created"
-msgstr "Käyttäjätili luotiin onnistuneesti"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:182
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "Movim ei pystynyt todentamaan, annoit väärät tiedot"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:183
 msgid "Your XMPP server is unauthorized"
@@ -752,7 +746,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:185
 msgid "Your web browser is too old to use with Movim."
-msgstr "Selaimesi on liian vanha Movimille, lataa uudempi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:186
 #, php-format
@@ -776,7 +770,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:190
 msgid "My address"
-msgstr "Oma osoite"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:192
 msgid "Create one !"
@@ -977,7 +971,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:240
 msgid "Ungrouped"
-msgstr "Ryhmittämätön"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:241
 msgid "Show disconnected contacts"
@@ -1126,7 +1120,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:289 /var/www/movim/cache/locales.php:310
 msgid "Feed"
-msgstr "Syöte"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:290 /var/www/movim/cache/locales.php:306
 msgid "Blog"
@@ -1148,7 +1142,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:294
 msgid "Home"
-msgstr "Etusivu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:295
 msgid "Discover"
@@ -1160,7 +1154,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:297
 msgid "Account Creation"
-msgstr "Käyttäjätilin luominen"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:298
 msgid "News"
@@ -1168,11 +1162,11 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:299
 msgid "Avatar"
-msgstr "Avatar"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:300
 msgid "Configuration"
-msgstr "Asetukset"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:301
 msgid "Server"
@@ -1188,7 +1182,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:304
 msgid "Profile"
-msgstr "Profiili"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:305
 msgid "Media"
@@ -1204,7 +1198,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:309
 msgid "Help"
-msgstr "Ohje"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:312
 msgid "Gallery"
@@ -1225,12 +1219,12 @@ msgstr ""
 #: /var/www/movim/cache/locales.php:316
 #, php-format
 msgid "Error: %s"
-msgstr "Virhe: %s"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:317
 #, php-format
 msgid "Cannot load file '%s'"
-msgstr "Ei voi ladata tiedostoa '%s'"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:318
 #, php-format
@@ -1260,7 +1254,7 @@ msgstr ""
 #: /var/www/movim/cache/locales.php:323
 #, php-format
 msgid "%s - Configuration"
-msgstr "%s - Konfigurointi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:324
 #, php-format
@@ -1275,17 +1269,17 @@ msgstr ""
 #: /var/www/movim/cache/locales.php:326
 #, php-format
 msgid "%s - Help Page"
-msgstr "%s - Ohjesivu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:327
 #, php-format
 msgid "%s - Login to Movim"
-msgstr "%s - Kirjaudu Movimiin"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:328
 #, php-format
 msgid "%s - Welcome to Movim"
-msgstr "%s - Tervetuloa käyttämään Movimia"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:329
 #, php-format
@@ -1315,7 +1309,7 @@ msgstr ""
 #: /var/www/movim/cache/locales.php:334
 #, php-format
 msgid "%s - Profile"
-msgstr "%s - Profiili"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:335
 #, php-format
@@ -1332,7 +1326,7 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:338
 msgid "Add"
-msgstr "Lisää uusi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:339
 msgid "Close"
@@ -1348,11 +1342,11 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:342
 msgid "Submit"
-msgstr "Lähetä"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:343
 msgid "Reset"
-msgstr "Nollaa"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:344
 msgid "Register"
@@ -1376,47 +1370,47 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:349
 msgid "Come in!"
-msgstr "Tule sisään!"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:350
 msgid "Connecting..."
-msgstr "Yhdistetään..."
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:351
 msgid "Yes"
-msgstr "Kyllä"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:352
 msgid "No"
-msgstr "Ei"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:355
 msgid "Day"
-msgstr "Päivä"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:356
 msgid "Monday"
-msgstr "Maanantai"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:357
 msgid "Tuesday"
-msgstr "Tiistai"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:358
 msgid "Wednesday"
-msgstr "Keskiviikko"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:359
 msgid "Thursday"
-msgstr "Torstai"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:360
 msgid "Friday"
-msgstr "Perjantai"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:361
 msgid "Saturday"
-msgstr "Launtai"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:362
 msgid "Sunday"
@@ -1424,31 +1418,31 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:363 /var/www/movim/cache/locales.php:372
 msgid "None"
-msgstr "Ei mitään"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:364
 msgid "Male"
-msgstr "Mies"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:365
 msgid "Female"
-msgstr "Nainen"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:366
 msgid "Other"
-msgstr "Muu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:367
 msgid "Bot"
-msgstr "Botti"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:368
 msgid "Desktop"
-msgstr "Työpöytä"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:369
 msgid "Phone"
-msgstr "Puhelin"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:370
 msgid "Web"
@@ -1460,31 +1454,31 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:373
 msgid "Single"
-msgstr "Sinkku"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:374
 msgid "In a relationship"
-msgstr "Parisuhteessa"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:375
 msgid "Married"
-msgstr "Naimisissa"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:376
 msgid "Divorced"
-msgstr "Eronnut"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:377
 msgid "Widowed"
-msgstr "Leski"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:378
 msgid "Cohabiting"
-msgstr "Avoliitossa"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:379
 msgid "Civil Union"
-msgstr "Rekisteröity parisuhde"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:380
 msgid "Not shared"
@@ -1508,23 +1502,23 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:385
 msgid "Online"
-msgstr "Paikalla"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:386
 msgid "Away"
-msgstr "Poissa"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:387
 msgid "Do Not Disturb"
-msgstr "Älä häiritse"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:388
 msgid "Extended Away"
-msgstr "Laajennettu poissaolo"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:389
 msgid "Offline"
-msgstr "Poissa verkosta"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:390
 msgid "Error"
@@ -1868,80 +1862,80 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:475
 msgid "Month"
-msgstr "Kuukausi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:476
 msgid "January"
-msgstr "Tammikuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:477
 msgid "February"
-msgstr "Helmikuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:478
 msgid "March"
-msgstr "Maaliskuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:479
 msgid "April"
-msgstr "Huhtikuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:480
 msgid "May"
-msgstr "Toukokuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:481
 msgid "June"
-msgstr "Kesäkuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:482
 msgid "July"
-msgstr "Heinäkuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:483
 msgid "August"
-msgstr "Elokuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:484
 msgid "September"
-msgstr "Syyskuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:485
 msgid "October"
-msgstr "Lokakuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:486
 msgid "November"
-msgstr "Marraskuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:487
 msgid "December"
-msgstr "Joulukuu"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:488
 msgid "Year"
-msgstr "Vuosi"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:489
 msgid "Today"
-msgstr "Tänään"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:490
 msgid "Tomorrow"
-msgstr "Huomenna"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:491
 msgid "Yesterday"
-msgstr "Eilen"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:492
 #, php-format
 msgid " %d days ago"
-msgstr " %d päivää sitten"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:493
 msgid "day"
-msgstr "päivä"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:494
 msgid "Title"
@@ -1981,11 +1975,11 @@ msgstr ""
 
 #: /var/www/movim/cache/locales.php:503
 msgid "Your feed cannot be loaded."
-msgstr "Syötettäsi ei voitu ladata"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:504
 msgid "Get older posts"
-msgstr "Hae vanhat postaukset"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:505
 #, php-format
@@ -2035,303 +2029,3 @@ msgstr ""
 #: /var/www/movim/cache/locales.php:516
 msgid "The API is not reachable, try again later"
 msgstr ""
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "PHP versio ei yhteensopiva. Movim vaatii vähintään PHP 5.3:n"
-
-#, php-format
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim vaatii %s laajennuksen."
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Movim -kansioon täytyy olla kirjoitusoikeudet"
-
-#, php-format
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Ei voitu luoda asetustiedostoa '%s'"
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Yhteensopivuustesti"
-
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
-#~ msgstr ""
-#~ "Seuraavia vaatimuksia ei voitu täyttää. Varmista että kaikki vaatimukset "
-#~ "täytetty että voit asentaa Movimin."
-
-#~ msgid "User not logged in."
-#~ msgstr "Käyttäjä ei ole kirjautunut sisään."
-
-#~ msgid "JID not provided."
-#~ msgstr "JID ei määritetty."
-
-#, php-format
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "jid '%s' on väärin"
-
-#, php-format
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Ei voi avata lokitiedostoa '%s'"
-
-#, php-format
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Tilin luominen"
-
-#~ msgid "Remove this contact"
-#~ msgstr "Poista tämä kontakti"
-
-#~ msgid "Debug console"
-#~ msgstr "Debug konsoli"
-
-#~ msgid "Logout"
-#~ msgstr "Kirjaudu ulos"
-
-#~ msgid "wants to talk with you"
-#~ msgstr "haluaa jutella kanssasi"
-
-#~ msgid "Accept"
-#~ msgstr "Hyväksy"
-
-#~ msgid "Decline"
-#~ msgstr "Hylkää"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "Ladataan kontaktit-feediä"
-
-#, php-format
-#~ msgid "Install the %s package"
-#~ msgstr "Asenna %s paketti"
-
-#~ msgid "or"
-#~ msgstr "tai"
-
-#~ msgid "Actual version : "
-#~ msgstr "Nykyinen versio: "
-
-#, php-format
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Asenna %s ja %s paketit"
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Päivitä PHP versiosi tai ota yhteys palvelimen ylläpitäjään"
-
-#~ msgid "Enable read and write rights on Movim's root folder"
-#~ msgstr "kirjoitus- ja lukuoikeudet Movim-juurihakemistoon"
-
-#~ msgid ""
-#~ "Keep in mind that Movim is still under development and will handle many "
-#~ "personal details. Its use can potentially endanger your data. Always pay "
-#~ "attention to information that you submit."
-#~ msgstr ""
-#~ "Muista että Movim on yhä työn alla ja ylläpitää henkilökohtaisia tietoja. "
-#~ "Käyttö vielä tässä vaiheessa voi joissain tapauksissa vaarantaa "
-#~ "yksityisyyden. Ole huolellinen jakaessasi tietoja."
-
-#~ msgid ""
-#~ "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr ""
-#~ "Ennen kuin voit nauttia sosiaalisesta verkosta, tarvitaan vielä vähän "
-#~ "säätämistä"
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Kiitos että latasit Movimin!"
-
-#, php-format
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "Kansiota '%s' ei voitu luoda"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Movin asennusohjelma"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "Välityspalvelimen asetukset"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "XMPP yhteysasetukset"
-
-#~ msgid "ultimate"
-#~ msgstr "äärimmäinen"
-
-#~ msgid "normal"
-#~ msgstr "normaali"
-
-#~ msgid "terse"
-#~ msgstr "ytimekäs"
-
-#~ msgid "empty"
-#~ msgstr "tyhjä"
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "BOSH yhteysasetukset"
-
-#~ msgid "Success !"
-#~ msgstr "Onnistui!"
-
-#~ msgid "Database Detected"
-#~ msgstr "Tietokanta tunnistettu"
-
-#, php-format
-#~ msgid "Please remove the %s folder in order to complete the installation"
-#~ msgstr "Poista %s kansio että voit saattaa asennuksen loppuun"
-
-#~ msgid "Database Movim schema installed"
-#~ msgstr "Movim tietokantamalli asennettu"
-
-#, php-format
-#~ msgid "%s - Add An Account"
-#~ msgstr "%s - Lisää käyttäjätili"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "vain numeeriset elementit on hyväksytty"
-
-#~ msgid ""
-#~ "Firstly fill in this blank with a brand new account ID, this address will "
-#~ "follow you on all the Movim network !"
-#~ msgstr ""
-#~ "Ensiksi anna uusi tilin ID-tunniste, tämä tunniste on sinun käytössä koko "
-#~ "Movim verkossa."
-
-#~ msgid "Make sure your password is safe :"
-#~ msgstr "Pidä huolta että salasanasi on turvallinen:"
-
-#~ msgid "Example :"
-#~ msgstr "Esimerkki:"
-
-#~ msgid "Same here !"
-#~ msgstr "Sama täällä!"
-
-#~ msgid "Pseudo"
-#~ msgstr "Pseudo"
-
-#~ msgid "Create"
-#~ msgstr "Luo"
-
-#~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr ""
-#~ "Suositellaan käyttämään iso kirjainta, numeroa ja/tai erikoismerkkiä."
-
-#~ msgid "8 characters"
-#~ msgstr "8 merkkiä"
-
-#~ msgid "Retype"
-#~ msgstr "Kirjoita uudelleen"
-
-#~ msgid "Add your login informations"
-#~ msgstr "Lisää kirjautumistiedot"
-
-#~ msgid "Composing..."
-#~ msgstr "Lähetetään"
-
-#~ msgid "Address"
-#~ msgstr "Osoite"
-
-#~ msgid "Loading your feed ..."
-#~ msgstr "Ladataan sinun syötteitä ..."
-
-#~ msgid "Client Type"
-#~ msgstr "Asiakasohjelma"
-
-#~ msgid "All"
-#~ msgstr "Kaikki"
-
-#~ msgid "talkative"
-#~ msgstr "puhelias"
-
-#, php-format
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "Voi nyt mennä uudenkarheaan Movim instanssiisi %s hyppää sisään %s"
-
-#~ msgid "Client Name"
-#~ msgstr "Asiakkaan nimi"
-
-#~ msgid "The current BOSH URL in invalid"
-#~ msgstr "Nykyinen BOSH url on epäkelpo"
-
-#, php-format
-#~ msgid ""
-#~ "Although Movim is evolving fast, many (many) features are missing. Be "
-#~ "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
-#~ "the one you want is on its way."
-#~ msgstr ""
-#~ "Vaikka Movim kehittyy nopeasti, useat ominaisuudet saattavat vielä olla "
-#~ "puutteellisia. Ole kärsivällinen ;) Voit katsoa jo etukäteen %s tulevien "
-#~ "versioiden ominaisuuksia %s."
-
-#, php-format
-#~ msgid ""
-#~ "Don't forget that Movim is an open source project, a helping hand is always "
-#~ "welcome (see %s Can I participate %s)"
-#~ msgstr ""
-#~ "Movim on avoimen lähdekoodin projekti, auttavat kädet ovat aina "
-#~ "tervetulleita (katso %s Miten voin osallistua %s)"
-
-#, php-format
-#~ msgid "Contacts (%s)"
-#~ msgstr "Kontaktit (%s)"
-
-#~ msgid "Cancel"
-#~ msgstr "Peruuta"
-
-#~ msgid "No profile yet ?"
-#~ msgstr "Ei vielä käyttäjätunnusta?"
-
-#~ msgid "Link my current account"
-#~ msgstr "Yhdistä nykyiseen käyttäjätiliin"
-
-#~ msgid "Create my vCard"
-#~ msgstr "Luo vCard"
-
-#~ msgid "Show All"
-#~ msgstr "Näytä kaikki"
-
-#~ msgid "Edit my Profile"
-#~ msgstr "Muokkaa profiiliani"
-
-#~ msgid "Follow"
-#~ msgstr "Seuraa"
-
-#~ msgid "Submitting"
-#~ msgstr "Lähetetään"
-
-#, php-format
-#~ msgid ""
-#~ "Go to the %s to the Frequently Asked Questions %s or come ask your question "
-#~ "on the official chatroom %s or via our mailing-list (%s see the dedicated "
-#~ "page %s)."
-#~ msgstr ""
-#~ "Vieräile %s Usein Kysytyissä Kysymyksissä (FAQ/UKK) %s tai kysy meidän "
-#~ "virallisessa chatissa tai %s tai meidän postituslistalla (%s katso sivu%s)."
-
-#~ msgid ""
-#~ "Some errors were detected. Please correct them for the installation to "
-#~ "proceed."
-#~ msgstr ""
-#~ "Joitain virheitä huomattiin, ole hyvä ja korjaa virheet että voidaan jatkaa "
-#~ "asentamista."
-
-#, php-format
-#~ msgid "This server hosts %s accounts"
-#~ msgstr "Tämä palvelin ylläpitää %s käyttäjätiliä"
-
-#, php-format
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Ei voi ladata elementin arvoa '%s'"
-
-#, php-format
-#~ msgid "XMPP connection through Bosh failed with error '%s'"
-#~ msgstr "XMPP yhteys Boshin kautta epäonnistui, virhekoodi '%s'"
-
-#, php-format
-#~ msgid "Database connection failed with error '%s'"
-#~ msgstr "Yhteys tietokantaan epäonnistui, virhekoodi '%s'"
-
-#~ msgid "Send request"
-#~ msgstr "Lähetä pyyntö"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "Validi Bosh-yhteys"
-
-#, php-format
-#~ msgid "Bosh connection failed with error '%s'"
-#~ msgstr "Bosh yhteys epäonnistui, virhekoodi '%s'"
