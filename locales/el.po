@@ -5,1956 +5,2036 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-28 22:54+0200\n"
+"POT-Creation-Date: 2014-07-15 18:26+0200\n"
 "PO-Revision-Date: 2013-12-07 17:27+0000\n"
 "Last-Translator: aitolos <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-02-23 23:12+0000\n"
-"X-Generator: Launchpad (build 16926)\n"
+"X-Launchpad-Export-Date: 2014-07-16 07:12+0000\n"
+"X-Generator: Launchpad (build 17112)\n"
+"Language: \n"
 
-#: ../cache/locales.php:2
+#: /var/www/movim/cache/locales.php:2
 msgid "Thanks"
 msgstr ""
 
-#: ../cache/locales.php:3
+#: /var/www/movim/cache/locales.php:3
 msgid "Developers"
 msgstr ""
 
-#: ../cache/locales.php:4
+#: /var/www/movim/cache/locales.php:4
 msgid "Translators"
 msgstr ""
 
-#: ../cache/locales.php:5
+#: /var/www/movim/cache/locales.php:5
 msgid "Software"
 msgstr ""
 
-#: ../cache/locales.php:6
+#: /var/www/movim/cache/locales.php:6
 msgid "Resources"
 msgstr ""
 
-#: ../cache/locales.php:7
+#: /var/www/movim/cache/locales.php:7 /var/www/movim/cache/locales.php:69
 msgid "API"
 msgstr ""
 
-#: ../cache/locales.php:8
-msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
+#: /var/www/movim/cache/locales.php:8
+msgid ""
+"Movim is an XMPP-based communication platform. All the project, except the "
+"following software and resources, is under"
 msgstr ""
 
-#: ../cache/locales.php:9 ../cache/locales.php:163
+#: /var/www/movim/cache/locales.php:9 /var/www/movim/cache/locales.php:175
 msgid "Some data are missing !"
 msgstr "Μερικά δεδομένα λείπουν"
 
-#: ../cache/locales.php:10
+#: /var/www/movim/cache/locales.php:10
 msgid "Wrong ID"
 msgstr "Λάθος ID"
 
-#: ../cache/locales.php:11
+#: /var/www/movim/cache/locales.php:11
 msgid "You entered different passwords"
 msgstr "Εισάγατε διαφορετικούς κωδικούς"
 
-#: ../cache/locales.php:12
+#: /var/www/movim/cache/locales.php:12
 msgid "Invalid name"
 msgstr ""
 
-#: ../cache/locales.php:13
+#: /var/www/movim/cache/locales.php:13
 msgid "Request not acceptable"
 msgstr ""
 
-#: ../cache/locales.php:14
+#: /var/www/movim/cache/locales.php:14
 msgid "Username already taken"
 msgstr "Αυτό το όνομα χρήστη χρησιμοποιείται ήδη"
 
-#: ../cache/locales.php:15
+#: /var/www/movim/cache/locales.php:15
 msgid "Could not connect to the XMPP server"
 msgstr "Δεν είναι εφικτή η σύνδεση στον διακομιστή  XMPP"
 
-#: ../cache/locales.php:16
+#: /var/www/movim/cache/locales.php:16
 msgid "Could not communicate with the XMPP server"
 msgstr "Δεν είναι εφικτή η επικοινωνία με τον διακομιστή  XMPP"
 
-#: ../cache/locales.php:17
+#: /var/www/movim/cache/locales.php:17
 msgid "Unknown error"
 msgstr ""
 
-#: ../cache/locales.php:18 ../cache/locales.php:243
+#: /var/www/movim/cache/locales.php:18 /var/www/movim/cache/locales.php:259
 msgid "Create a new account"
 msgstr "Δημιουργία νέου λογαριασμού"
 
-#: ../cache/locales.php:19
+#: /var/www/movim/cache/locales.php:19
 msgid "No account creation form found on the server"
 msgstr ""
 
-#: ../cache/locales.php:20 ../cache/locales.php:122
+#: /var/www/movim/cache/locales.php:20 /var/www/movim/cache/locales.php:131
 msgid "on"
 msgstr ""
 
-#: ../cache/locales.php:21
+#: /var/www/movim/cache/locales.php:21
 msgid "Loading"
 msgstr ""
 
-#: ../cache/locales.php:22
-#, fuzzy
-msgid "Compatibility Check"
-msgstr "Δοκιμασία συμβατότητας"
-
-#: ../cache/locales.php:23
-#, fuzzy
-msgid "General Settings"
-msgstr "Γενικές πληροφορίες"
-
-#: ../cache/locales.php:24
-msgid "Theme"
+#: /var/www/movim/cache/locales.php:22
+msgid "Database Settings"
 msgstr ""
 
-#: ../cache/locales.php:25
-msgid "Default language"
+#: /var/www/movim/cache/locales.php:23
+msgid "Modl wasn't able to connect to the database"
 msgstr ""
 
-#: ../cache/locales.php:26
-msgid "Environment"
+#: /var/www/movim/cache/locales.php:24
+msgid "Movim is connected to the database"
 msgstr ""
 
-#: ../cache/locales.php:27
-msgid "Log verbosity"
+#: /var/www/movim/cache/locales.php:25
+msgid "The database need to be updated"
 msgstr ""
 
-#: ../cache/locales.php:28
-msgid "Server Timezone"
+#: /var/www/movim/cache/locales.php:26
+msgid "Movim database is up to date"
 msgstr ""
 
-#: ../cache/locales.php:29
-msgid "User folder size limit (in bytes)"
+#: /var/www/movim/cache/locales.php:27
+msgid "Database Type"
 msgstr ""
 
-#: ../cache/locales.php:30
-#, fuzzy
-msgid "Bosh Configuration"
-msgstr "Ρύθμιση"
-
-#: ../cache/locales.php:31
-msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
-msgstr ""
-
-#: ../cache/locales.php:32
-msgid "If you enter an open BOSH-Server, you can connect to many XMPP-Servers."
-msgstr ""
-
-#: ../cache/locales.php:33
-msgid "If it is closed, you have to specify the corresponding Server on the next page."
-msgstr ""
-
-#: ../cache/locales.php:34
-#, php-format
-msgid "If you are unsure about this config option visit the %swiki%s"
-msgstr ""
-
-#: ../cache/locales.php:35
-msgid "Your Bosh URL is not reachable"
-msgstr ""
-
-#: ../cache/locales.php:36
-msgid "Bosh URL"
-msgstr ""
-
-#: ../cache/locales.php:37
-msgid "Administration Credential"
-msgstr ""
-
-#: ../cache/locales.php:38
-msgid "Change the default credentials admin/password"
-msgstr ""
-
-#: ../cache/locales.php:39 ../cache/locales.php:65 ../cache/locales.php:335
-#, fuzzy
+#: /var/www/movim/cache/locales.php:28 /var/www/movim/cache/locales.php:48
+#: /var/www/movim/cache/locales.php:353
 msgid "Username"
-msgstr "Λάθος όνομα χρήστη"
+msgstr ""
 
-#: ../cache/locales.php:40 ../cache/locales.php:66 ../cache/locales.php:179
-#: ../cache/locales.php:336
+#: /var/www/movim/cache/locales.php:29 /var/www/movim/cache/locales.php:49
+#: /var/www/movim/cache/locales.php:191 /var/www/movim/cache/locales.php:354
 msgid "Password"
 msgstr "Συνθηματικό"
 
-#: ../cache/locales.php:41
-#, fuzzy
-msgid "Retype password"
-msgstr "Λανθασμένος κωδικός"
+#: /var/www/movim/cache/locales.php:30
+msgid "Host"
+msgstr ""
 
-#: ../cache/locales.php:42
+#: /var/www/movim/cache/locales.php:31
+msgid "Port"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:32
+msgid "Database Name"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:33
+msgid "General Settings"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:34
+msgid "Theme"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:35
+msgid "Default language"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:36
+msgid "Environment"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:37
+msgid "Log verbosity"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:38
+msgid "Server Timezone"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:39
+msgid "User folder size limit (in bytes)"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:40
+msgid "Bosh Configuration"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:41
+msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:42
+#, php-format
+msgid "If you are unsure about this config option visit the %swiki%s."
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:43
+msgid "Your Bosh URL is not reachable"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:44
+msgid "Bosh URL"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:45
+msgid "Public BOSH"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:46
+msgid "Administration Credential"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:47
+msgid "Change the default credentials admin/password"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:50
+msgid "Retype password"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:51
 msgid "Whitelist - XMPP Server"
 msgstr ""
 
-#: ../cache/locales.php:43
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+#: /var/www/movim/cache/locales.php:52
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
 msgstr ""
 
-#: ../cache/locales.php:44
-msgid "Leave this field blank if you allow the access to all the XMPP accounts."
+#: /var/www/movim/cache/locales.php:53
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr ""
 
-#: ../cache/locales.php:45
+#: /var/www/movim/cache/locales.php:54
 msgid "List of whitelisted XMPP servers"
 msgstr ""
 
-#: ../cache/locales.php:46 ../cache/locales.php:49
-#, fuzzy
+#: /var/www/movim/cache/locales.php:55 /var/www/movim/cache/locales.php:59
 msgid "Information Message"
-msgstr "Γενικές πληροφορίες"
-
-#: ../cache/locales.php:47
-msgid "This message will be displayed on the login page"
 msgstr ""
 
-#: ../cache/locales.php:48
-msgid "Leave this field blank if you don't want to show any message."
-msgstr ""
-
-#: ../cache/locales.php:50
+#: /var/www/movim/cache/locales.php:56
 msgid "Description"
 msgstr ""
 
-#: ../cache/locales.php:51
-msgid "Movim requires certain external components. Please install them before you can succeed:"
+#: /var/www/movim/cache/locales.php:57
+msgid "This message will be displayed on the login page"
 msgstr ""
 
-#: ../cache/locales.php:52
+#: /var/www/movim/cache/locales.php:58
+msgid "Leave this field blank if you don't want to show any message."
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:60
+msgid "Compatibility Check"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:61
+msgid ""
+"Movim requires certain external components. Please install them before you "
+"can succeed:"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:62
 #, php-format
 msgid "Your PHP-Version: %s <br>Required: 5.3.0"
 msgstr ""
 
-#: ../cache/locales.php:53
+#: /var/www/movim/cache/locales.php:63
 msgid "CURL-Library"
 msgstr ""
 
-#: ../cache/locales.php:54
+#: /var/www/movim/cache/locales.php:64
 msgid "GD"
 msgstr ""
 
-#: ../cache/locales.php:55
+#: /var/www/movim/cache/locales.php:65
 msgid "SimpleXML"
 msgstr ""
 
-#: ../cache/locales.php:56
+#: /var/www/movim/cache/locales.php:66
 msgid "Read and write rights for the webserver in Movim's root directory"
 msgstr ""
 
-#: ../cache/locales.php:57
+#: /var/www/movim/cache/locales.php:67
 msgid "OpenSSL"
 msgstr ""
 
-#: ../cache/locales.php:58
+#: /var/www/movim/cache/locales.php:68
 msgid "URL Rewriting support"
 msgstr ""
 
-#: ../cache/locales.php:59
-#, fuzzy
-msgid "Database Settings"
-msgstr "Εντοπίστηκε βάση δεδομένων"
-
-#: ../cache/locales.php:60
-msgid "Modl wasn't able to connect to the database"
+#: /var/www/movim/cache/locales.php:70
+#, php-format
+msgid ""
+"Here you can register your pod on the official %sMovim API%s and be listed "
+"on %sthe pods page%s."
 msgstr ""
 
-#: ../cache/locales.php:61
-msgid "Movim is connected to the database"
+#: /var/www/movim/cache/locales.php:71
+msgid "Your pod is not registered on the API"
 msgstr ""
 
-#: ../cache/locales.php:62
-msgid "The database need to be updated"
+#: /var/www/movim/cache/locales.php:72
+msgid "Your pod is registered on the API"
 msgstr ""
 
-#: ../cache/locales.php:63
-msgid "Movim database is up to date"
+#: /var/www/movim/cache/locales.php:73
+msgid "Your pod is not yet validated"
 msgstr ""
 
-#: ../cache/locales.php:64
-#, fuzzy
-msgid "Database Type"
-msgstr "Εντοπίστηκε βάση δεδομένων"
-
-#: ../cache/locales.php:67
-msgid "Host"
+#: /var/www/movim/cache/locales.php:74
+msgid "Your pod is validated"
 msgstr ""
 
-#: ../cache/locales.php:68
-msgid "Port"
+#: /var/www/movim/cache/locales.php:75
+msgid ""
+"You asked to be removed from the API, this request will be processed in a "
+"couple of hours"
 msgstr ""
 
-#: ../cache/locales.php:69
-#, fuzzy
-msgid "Database Name"
-msgstr "Εντοπίστηκε βάση δεδομένων"
-
-#: ../cache/locales.php:70
+#: /var/www/movim/cache/locales.php:76
 msgid "Webcam"
 msgstr ""
 
-#: ../cache/locales.php:71
+#: /var/www/movim/cache/locales.php:77
 msgid "Cheese !"
 msgstr ""
 
-#: ../cache/locales.php:72
+#: /var/www/movim/cache/locales.php:78
 msgid "Take a webcam snapshot"
 msgstr ""
 
-#: ../cache/locales.php:73
-#, fuzzy
+#: /var/www/movim/cache/locales.php:79
 msgid "Avatar Updated"
-msgstr "Avatar"
+msgstr ""
 
-#: ../cache/locales.php:74
+#: /var/www/movim/cache/locales.php:80
 msgid "Avatar Not Updated"
 msgstr ""
 
-#: ../cache/locales.php:75
-#, fuzzy
+#: /var/www/movim/cache/locales.php:81
 msgid "Conferences"
-msgstr "Προτιμήσεις proxy"
+msgstr ""
 
-#: ../cache/locales.php:76 ../cache/locales.php:135
+#: /var/www/movim/cache/locales.php:82 /var/www/movim/cache/locales.php:144
 msgid "Groups"
 msgstr ""
 
-#: ../cache/locales.php:77
+#: /var/www/movim/cache/locales.php:83
 msgid "Add a new Chat Room"
 msgstr ""
 
-#: ../cache/locales.php:78
+#: /var/www/movim/cache/locales.php:84
 msgid "Chat Room ID"
 msgstr ""
 
-#: ../cache/locales.php:79 ../cache/locales.php:108 ../cache/locales.php:186
-#: ../cache/locales.php:221 ../cache/locales.php:255
+#: /var/www/movim/cache/locales.php:85 /var/www/movim/cache/locales.php:117
+#: /var/www/movim/cache/locales.php:198 /var/www/movim/cache/locales.php:237
+#: /var/www/movim/cache/locales.php:271
 msgid "Name"
 msgstr "Όνομα"
 
-#: ../cache/locales.php:80 ../cache/locales.php:109 ../cache/locales.php:256
+#: /var/www/movim/cache/locales.php:86 /var/www/movim/cache/locales.php:118
+#: /var/www/movim/cache/locales.php:272
 msgid "Nickname"
 msgstr "Ψευδώνυμο"
 
-#: ../cache/locales.php:81
+#: /var/www/movim/cache/locales.php:87
 msgid "Do you want do join automaticaly this Chat Room ?"
 msgstr ""
 
-#: ../cache/locales.php:82
+#: /var/www/movim/cache/locales.php:88
 msgid "Bad Chatroom ID"
 msgstr ""
 
-#: ../cache/locales.php:83
-#, fuzzy
+#: /var/www/movim/cache/locales.php:89
 msgid "Empty name"
-msgstr "κενό"
+msgstr ""
 
-#: ../cache/locales.php:84
+#: /var/www/movim/cache/locales.php:90
 msgid "Bookmarks updated"
 msgstr ""
 
-#: ../cache/locales.php:85 ../cache/locales.php:139
+#: /var/www/movim/cache/locales.php:91 /var/www/movim/cache/locales.php:148
 msgid "An error occured : "
 msgstr ""
 
-#: ../cache/locales.php:86
+#: /var/www/movim/cache/locales.php:92
 msgid "Message Published"
 msgstr ""
 
-#: ../cache/locales.php:87
+#: /var/www/movim/cache/locales.php:93
 msgid "Encrypted message"
 msgstr ""
 
-#: ../cache/locales.php:88
+#: /var/www/movim/cache/locales.php:94
 #, php-format
 msgid "%s needs your attention"
 msgstr ""
 
-#: ../cache/locales.php:89
-#, fuzzy
-msgid "Feed Configuration"
-msgstr "Ρύθμιση"
+#: /var/www/movim/cache/locales.php:95
+msgid "Connected to the chatroom"
+msgstr ""
 
-#: ../cache/locales.php:90
+#: /var/www/movim/cache/locales.php:96
+msgid "Disconnected to the chatroom"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:97
+msgid "Feed Configuration"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:98
 msgid "General"
 msgstr ""
 
-#: ../cache/locales.php:91
+#: /var/www/movim/cache/locales.php:99
 msgid "Language"
 msgstr "Γλώσσα"
 
-#: ../cache/locales.php:92
+#: /var/www/movim/cache/locales.php:100
 msgid "Appearence"
 msgstr ""
 
-#: ../cache/locales.php:93
+#: /var/www/movim/cache/locales.php:101
 msgid "Background color"
 msgstr ""
 
-#: ../cache/locales.php:94
+#: /var/www/movim/cache/locales.php:102
 msgid "Font size"
 msgstr ""
 
-#: ../cache/locales.php:95
+#: /var/www/movim/cache/locales.php:103
 msgid "Pattern"
 msgstr ""
 
-#: ../cache/locales.php:96
+#: /var/www/movim/cache/locales.php:104
 msgid "This configuration is shared wherever you are connected !"
 msgstr ""
 
-#: ../cache/locales.php:97 ../cache/locales.php:249
+#: /var/www/movim/cache/locales.php:105
+msgid "Configuration updated"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:106 /var/www/movim/cache/locales.php:265
 msgid "Data"
 msgstr ""
 
-#: ../cache/locales.php:98
+#: /var/www/movim/cache/locales.php:107
 msgid "Cache"
 msgstr ""
 
-#: ../cache/locales.php:99
+#: /var/www/movim/cache/locales.php:108
 msgid "Contacts"
 msgstr ""
 
-#: ../cache/locales.php:100 ../cache/locales.php:295
+#: /var/www/movim/cache/locales.php:109 /var/www/movim/cache/locales.php:311
 msgid "Posts"
 msgstr ""
 
-#: ../cache/locales.php:101
+#: /var/www/movim/cache/locales.php:110
 msgid "Messages"
 msgstr ""
 
-#: ../cache/locales.php:102
+#: /var/www/movim/cache/locales.php:111
 msgid "Please wait"
 msgstr ""
 
-#: ../cache/locales.php:103 ../cache/locales.php:105
+#: /var/www/movim/cache/locales.php:112 /var/www/movim/cache/locales.php:114
 msgid "Actions"
 msgstr ""
 
-#: ../cache/locales.php:104
+#: /var/www/movim/cache/locales.php:113
 msgid "Chat"
 msgstr "Συνομιλία"
 
-#: ../cache/locales.php:106
+#: /var/www/movim/cache/locales.php:115
 msgid "Invite this user"
 msgstr ""
 
-#: ../cache/locales.php:107 ../cache/locales.php:254
+#: /var/www/movim/cache/locales.php:116 /var/www/movim/cache/locales.php:270
 msgid "General Informations"
 msgstr "Γενικές πληροφορίες"
 
-#: ../cache/locales.php:110 ../cache/locales.php:258
+#: /var/www/movim/cache/locales.php:119 /var/www/movim/cache/locales.php:274
 msgid "Date of Birth"
 msgstr "Ημερομ. γεννήσεως"
 
-#: ../cache/locales.php:111 ../cache/locales.php:259
+#: /var/www/movim/cache/locales.php:120 /var/www/movim/cache/locales.php:275
 msgid "Gender"
 msgstr ""
 
-#: ../cache/locales.php:112 ../cache/locales.php:260
+#: /var/www/movim/cache/locales.php:121 /var/www/movim/cache/locales.php:276
 msgid "Marital Status"
 msgstr ""
 
-#: ../cache/locales.php:113 ../cache/locales.php:257
+#: /var/www/movim/cache/locales.php:122 /var/www/movim/cache/locales.php:273
 msgid "Email"
 msgstr ""
 
-#: ../cache/locales.php:114 ../cache/locales.php:261
+#: /var/www/movim/cache/locales.php:123 /var/www/movim/cache/locales.php:277
 msgid "Website"
 msgstr "Ιστότοπος"
 
-#: ../cache/locales.php:115 ../cache/locales.php:262
+#: /var/www/movim/cache/locales.php:124 /var/www/movim/cache/locales.php:278
 msgid "About Me"
 msgstr ""
 
-#: ../cache/locales.php:116 ../cache/locales.php:263
+#: /var/www/movim/cache/locales.php:125 /var/www/movim/cache/locales.php:279
 msgid "Geographic Position"
 msgstr ""
 
-#: ../cache/locales.php:117 ../cache/locales.php:264
+#: /var/www/movim/cache/locales.php:126 /var/www/movim/cache/locales.php:280
 msgid "Locality"
 msgstr ""
 
-#: ../cache/locales.php:118 ../cache/locales.php:265
+#: /var/www/movim/cache/locales.php:127 /var/www/movim/cache/locales.php:281
 msgid "Country"
 msgstr ""
 
-#: ../cache/locales.php:119
+#: /var/www/movim/cache/locales.php:128
 msgid "Mood"
 msgstr ""
 
-#: ../cache/locales.php:120
+#: /var/www/movim/cache/locales.php:129
 msgid "I'm "
 msgstr ""
 
-#: ../cache/locales.php:121
+#: /var/www/movim/cache/locales.php:130
 msgid "Listening"
 msgstr ""
 
-#: ../cache/locales.php:123
+#: /var/www/movim/cache/locales.php:132
 msgid "Last seen"
 msgstr ""
 
-#: ../cache/locales.php:124
-#, fuzzy
+#: /var/www/movim/cache/locales.php:133
 msgid "Client Informations"
-msgstr "Γενικές πληροφορίες"
+msgstr ""
 
-#: ../cache/locales.php:125
+#: /var/www/movim/cache/locales.php:134
 msgid "Manage"
 msgstr ""
 
-#: ../cache/locales.php:126
+#: /var/www/movim/cache/locales.php:135
 msgid "Alias"
 msgstr "Ψευδώνυμο"
 
-#: ../cache/locales.php:127
+#: /var/www/movim/cache/locales.php:136
 msgid "Group"
 msgstr ""
 
-#: ../cache/locales.php:128
+#: /var/www/movim/cache/locales.php:137
 msgid "Contact updated"
 msgstr ""
 
-#: ../cache/locales.php:129
+#: /var/www/movim/cache/locales.php:138
 msgid "Public groups"
 msgstr ""
 
-#: ../cache/locales.php:130
+#: /var/www/movim/cache/locales.php:139
 msgid "No public groups found"
 msgstr ""
 
-#: ../cache/locales.php:131 ../cache/locales.php:134
+#: /var/www/movim/cache/locales.php:140 /var/www/movim/cache/locales.php:143
 msgid "Last registered"
 msgstr ""
 
-#: ../cache/locales.php:132
+#: /var/www/movim/cache/locales.php:141
 msgid "Discover my server"
 msgstr ""
 
-#: ../cache/locales.php:133
+#: /var/www/movim/cache/locales.php:142
 msgid "Discussion Servers"
 msgstr ""
 
-#: ../cache/locales.php:136
-#, fuzzy
+#: /var/www/movim/cache/locales.php:145
 msgid "Chatrooms"
-msgstr "Συνομιλία"
+msgstr ""
 
-#: ../cache/locales.php:137
+#: /var/www/movim/cache/locales.php:146
 msgid "My Posts"
 msgstr ""
 
-#: ../cache/locales.php:138
-msgid "Your server doesn't support post publication, you can only read contact's feeds"
+#: /var/www/movim/cache/locales.php:147
+msgid ""
+"Your server doesn't support post publication, you can only read contact's "
+"feeds"
 msgstr ""
 
-#: ../cache/locales.php:140
+#: /var/www/movim/cache/locales.php:149
 msgid "Creating your feed..."
 msgstr ""
 
-#: ../cache/locales.php:141
+#: /var/www/movim/cache/locales.php:150
+msgid "Hi!"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:151
+msgid ""
+"This is your newsfeed, here you will see the posts published by you and your "
+"contacts."
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:152
 msgid "What is Movim?"
 msgstr ""
 
-#: ../cache/locales.php:142
+#: /var/www/movim/cache/locales.php:153
 #, php-format
-msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
+msgid ""
+"Visit the page %s What is Movim ? %s to know more about the project, its "
+"aims and understand how it works."
 msgstr ""
 
-#: ../cache/locales.php:143
+#: /var/www/movim/cache/locales.php:154
 msgid "What do the little banners refer to ?"
 msgstr ""
 
-#: ../cache/locales.php:144
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#: /var/www/movim/cache/locales.php:155
+msgid ""
+"Thanks to these five little banners, you can quickly identitfy the level of "
+"confdentiality applied to the information you provide."
 msgstr ""
 
-#: ../cache/locales.php:145
+#: /var/www/movim/cache/locales.php:156
 msgid "White, only you can see the information"
 msgstr ""
 
-#: ../cache/locales.php:146
+#: /var/www/movim/cache/locales.php:157
 msgid "Green, you have chosen some contacts who can see your information"
 msgstr ""
 
-#: ../cache/locales.php:147
+#: /var/www/movim/cache/locales.php:158
 msgid "Orange, all your contact list can see your information"
 msgstr ""
 
-#: ../cache/locales.php:148
+#: /var/www/movim/cache/locales.php:159
 msgid "Red, everybody in the XMPP network can see your information"
 msgstr ""
 
-#: ../cache/locales.php:149
+#: /var/www/movim/cache/locales.php:160
 msgid "Black, the whole Internet can see your information"
 msgstr ""
 
-#: ../cache/locales.php:150
-msgid "Some features are missing/I can't do everything I used to do on other social networks"
+#: /var/www/movim/cache/locales.php:161
+msgid ""
+"Some features are missing/I can't do everything I used to do on other social "
+"networks"
 msgstr ""
 
-#: ../cache/locales.php:151
+#: /var/www/movim/cache/locales.php:162
 #, php-format
-msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %sat next versions's roadmaps%s to know if the one you want is on its way."
+msgid ""
+"Although Movim is evolving fast, many (many) features are missing. Be "
+"patient ;). You can have a look %sat next versions's roadmaps%s to know if "
+"the one you want is on its way."
 msgstr ""
 
-#: ../cache/locales.php:152
+#: /var/www/movim/cache/locales.php:163
 #, php-format
-msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %sCan I participate%s)"
+msgid ""
+"Don't forget that Movim is an open source project, a helping hand is always "
+"welcome (see %sCan I participate%s)"
 msgstr ""
 
-#: ../cache/locales.php:153
+#: /var/www/movim/cache/locales.php:164
 msgid "I can't find the answer to my question here"
 msgstr "Δεν βρίσκω απάντηση εδώ"
 
-#: ../cache/locales.php:154
+#: /var/www/movim/cache/locales.php:165
 #, php-format
-msgid "Go to the %sto the Frequently Asked Questions%s or come ask your question on the official chatroom %s or via our mailing-list (%ssee the dedicated page%s)."
+msgid ""
+"Go to the %sto the Frequently Asked Questions%s or come ask your question on "
+"the official chatroom %s or via our mailing-list (%ssee the dedicated "
+"page%s)."
 msgstr ""
 
-#: ../cache/locales.php:155
+#: /var/www/movim/cache/locales.php:166
+msgid "What's Hot"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:167
 msgid "Location"
 msgstr ""
 
-#: ../cache/locales.php:156
-#, fuzzy
+#: /var/www/movim/cache/locales.php:168
 msgid "Wrong position"
-msgstr "Λανθασμένος κωδικός"
+msgstr ""
 
-#: ../cache/locales.php:157
+#: /var/www/movim/cache/locales.php:169
 msgid "Location updated"
 msgstr ""
 
-#: ../cache/locales.php:158
+#: /var/www/movim/cache/locales.php:170
 msgid "Wrong username"
 msgstr "Λάθος όνομα χρήστη"
 
-#: ../cache/locales.php:159
+#: /var/www/movim/cache/locales.php:171
 msgid "Invalid JID"
 msgstr ""
 
-#: ../cache/locales.php:160
+#: /var/www/movim/cache/locales.php:172
 msgid "Authentication mechanism not supported by Movim"
 msgstr ""
 
-#: ../cache/locales.php:161
+#: /var/www/movim/cache/locales.php:173
 msgid "Empty Challenge from the server"
 msgstr ""
 
-#: ../cache/locales.php:162
+#: /var/www/movim/cache/locales.php:174
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
-#: ../cache/locales.php:164
+#: /var/www/movim/cache/locales.php:176
 msgid "Wrong password"
 msgstr "Λανθασμένος κωδικός"
 
-#: ../cache/locales.php:165
+#: /var/www/movim/cache/locales.php:177
 msgid "The XMPP authentification failed"
 msgstr ""
 
-#: ../cache/locales.php:166
+#: /var/www/movim/cache/locales.php:178
 msgid "The current BOSH URL is invalid"
 msgstr ""
 
-#: ../cache/locales.php:167
+#: /var/www/movim/cache/locales.php:179
 msgid "Internal server error"
 msgstr ""
 
-#: ../cache/locales.php:168
+#: /var/www/movim/cache/locales.php:180
 msgid "Session error"
 msgstr ""
 
-#: ../cache/locales.php:169
+#: /var/www/movim/cache/locales.php:181
 msgid "Account successfully created"
 msgstr "Ο λογαριασμός δημιουργήθηκε επιτυχώς"
 
-#: ../cache/locales.php:170
+#: /var/www/movim/cache/locales.php:182
 msgid "Movim failed to authenticate. You entered wrong data"
 msgstr ""
 
-#: ../cache/locales.php:171
+#: /var/www/movim/cache/locales.php:183
 msgid "Your XMPP server is unauthorized"
 msgstr ""
 
-#: ../cache/locales.php:172
+#: /var/www/movim/cache/locales.php:184
 msgid "The server takes too much time to respond"
 msgstr ""
 
-#: ../cache/locales.php:173
+#: /var/www/movim/cache/locales.php:185
 msgid "Your web browser is too old to use with Movim."
 msgstr "Ο περιηγητης σας είναι αρκετά παλιός για να χρησιμοποιηθεί με Movim"
 
-#: ../cache/locales.php:174
+#: /var/www/movim/cache/locales.php:186
 #, php-format
-msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
+msgid ""
+"You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
+"and your password"
 msgstr ""
 
-#: ../cache/locales.php:175
+#: /var/www/movim/cache/locales.php:187
 #, php-format
 msgid "%sGmail accounts are also compatible%s but are not fully supported"
 msgstr ""
 
-#: ../cache/locales.php:176
+#: /var/www/movim/cache/locales.php:188
 msgid "You can login using your favorite Jabber account"
 msgstr ""
 
-#: ../cache/locales.php:177
+#: /var/www/movim/cache/locales.php:189
 msgid "or with our demonstration account"
 msgstr ""
 
-#: ../cache/locales.php:178
+#: /var/www/movim/cache/locales.php:190
 msgid "My address"
 msgstr "Η διεύθυνσή μου"
 
-#: ../cache/locales.php:180
-#, fuzzy
+#: /var/www/movim/cache/locales.php:192
 msgid "Create one !"
-msgstr "Δημιούργησε"
+msgstr ""
 
-#: ../cache/locales.php:181
+#: /var/www/movim/cache/locales.php:193
 msgid "No account yet ?"
 msgstr ""
 
-#: ../cache/locales.php:182
-msgid "This server accept only connection with xmpp accounts from these servers :"
+#: /var/www/movim/cache/locales.php:194
+msgid ""
+"This server accept only connection with xmpp accounts from these servers :"
 msgstr ""
 
-#: ../cache/locales.php:183
+#: /var/www/movim/cache/locales.php:195
 #, php-format
-msgid "If you don't have such xmpp account, you can try %sanother public Movim%s client."
+msgid ""
+"If you don't have such xmpp account, you can try %sanother public Movim%s "
+"client."
 msgstr ""
 
-#: ../cache/locales.php:184
+#: /var/www/movim/cache/locales.php:196
 msgid "Connected"
 msgstr ""
 
-#: ../cache/locales.php:185
-#, fuzzy
+#: /var/www/movim/cache/locales.php:197
 msgid "Population"
-msgstr "Ρύθμιση"
+msgstr ""
 
-#: ../cache/locales.php:187
+#: /var/www/movim/cache/locales.php:199
 msgid "Resolution"
 msgstr ""
 
-#: ../cache/locales.php:188
+#: /var/www/movim/cache/locales.php:200
 msgid "Size"
 msgstr ""
 
-#: ../cache/locales.php:189
+#: /var/www/movim/cache/locales.php:201
 msgid "Date"
 msgstr ""
 
-#: ../cache/locales.php:190
+#: /var/www/movim/cache/locales.php:202
 msgid "ISO"
 msgstr ""
 
-#: ../cache/locales.php:191
+#: /var/www/movim/cache/locales.php:203
 msgid "Camera"
 msgstr ""
 
-#: ../cache/locales.php:192
+#: /var/www/movim/cache/locales.php:204
 msgid "Artist"
 msgstr ""
 
-#: ../cache/locales.php:193
+#: /var/www/movim/cache/locales.php:205
 msgid "Original"
 msgstr ""
 
-#: ../cache/locales.php:194
+#: /var/www/movim/cache/locales.php:206
 msgid "Link"
 msgstr ""
 
-#: ../cache/locales.php:195
+#: /var/www/movim/cache/locales.php:207
 msgid "Please select image file"
 msgstr ""
 
-#: ../cache/locales.php:196
+#: /var/www/movim/cache/locales.php:208
 msgid "You should select valid image files only!"
 msgstr ""
 
-#: ../cache/locales.php:197
+#: /var/www/movim/cache/locales.php:209
 msgid "An error occurred while uploading the file"
 msgstr ""
 
-#: ../cache/locales.php:198
-msgid "The upload has been canceled by the user or the browser dropped the connection"
+#: /var/www/movim/cache/locales.php:210
+msgid ""
+"The upload has been canceled by the user or the browser dropped the "
+"connection"
 msgstr ""
 
-#: ../cache/locales.php:199
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+#: /var/www/movim/cache/locales.php:211
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
-#: ../cache/locales.php:200
+#: /var/www/movim/cache/locales.php:212
+msgid "Hello"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:213
+msgid ""
+"Welcome on your group feed, here you will see all the posts published in the "
+"groups you have subscribed."
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:214
 msgid "Subscribe"
 msgstr ""
 
-#: ../cache/locales.php:201
+#: /var/www/movim/cache/locales.php:215
 msgid "Unsubscribe"
 msgstr ""
 
-#: ../cache/locales.php:202
+#: /var/www/movim/cache/locales.php:216
 msgid "Make your membership to this group public to your friends"
 msgstr ""
 
-#: ../cache/locales.php:203
+#: /var/www/movim/cache/locales.php:217
 msgid "Give a nickname to this group if you want"
 msgstr ""
 
-#: ../cache/locales.php:204
+#: /var/www/movim/cache/locales.php:218
 msgid "Are you sure ?"
 msgstr ""
 
-#: ../cache/locales.php:205
+#: /var/www/movim/cache/locales.php:219
+msgid "Oops!"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:220
+msgid "I cannot find any posts here. Try to push the refresh button."
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:221
 msgid "Manage your members"
 msgstr ""
 
-#: ../cache/locales.php:206
+#: /var/www/movim/cache/locales.php:222
 msgid "Get the members"
 msgstr ""
 
-#: ../cache/locales.php:207
+#: /var/www/movim/cache/locales.php:223
 msgid "Affiliations saved"
 msgstr ""
 
-#: ../cache/locales.php:208
+#: /var/www/movim/cache/locales.php:224
 msgid "Configure your group"
 msgstr ""
 
-#: ../cache/locales.php:209
-#, fuzzy
+#: /var/www/movim/cache/locales.php:225
 msgid "Group configuration saved"
-msgstr "Ρύθμιση"
+msgstr ""
 
-#: ../cache/locales.php:210
+#: /var/www/movim/cache/locales.php:226
 msgid "Delete this group"
 msgstr ""
 
-#: ../cache/locales.php:211
+#: /var/www/movim/cache/locales.php:227
 #, php-format
 msgid "Return to %s's list of groups"
 msgstr ""
 
-#: ../cache/locales.php:212
+#: /var/www/movim/cache/locales.php:228
 msgid "Manage your subscriptions"
 msgstr ""
 
-#: ../cache/locales.php:213
+#: /var/www/movim/cache/locales.php:229
 msgid "Manage the subscriptions"
 msgstr ""
 
-#: ../cache/locales.php:214
+#: /var/www/movim/cache/locales.php:230
 msgid "Get the subscriptions"
 msgstr ""
 
-#: ../cache/locales.php:215
-#, fuzzy, php-format
+#: /var/www/movim/cache/locales.php:231
+#, php-format
 msgid "%s wants to talk with you"
-msgstr "θέλει να μιλήσει μαζί σου"
+msgstr ""
 
-#: ../cache/locales.php:216
+#: /var/www/movim/cache/locales.php:232
 msgid "Disconnect"
 msgstr ""
 
-#: ../cache/locales.php:217
+#: /var/www/movim/cache/locales.php:233
 msgid "Status updated"
 msgstr ""
 
-#: ../cache/locales.php:218
+#: /var/www/movim/cache/locales.php:234
 msgid "Saved"
 msgstr ""
 
-#: ../cache/locales.php:219
+#: /var/www/movim/cache/locales.php:235
 msgid "Your status here !"
 msgstr ""
 
-#: ../cache/locales.php:220
+#: /var/www/movim/cache/locales.php:236
 msgid "Shared"
 msgstr ""
 
-#: ../cache/locales.php:222
+#: /var/www/movim/cache/locales.php:238
 #, php-format
 msgid "%s has been added to your public groups"
 msgstr ""
 
-#: ../cache/locales.php:223
+#: /var/www/movim/cache/locales.php:239
 #, php-format
 msgid "%s has been removed from your public groups"
 msgstr ""
 
-#: ../cache/locales.php:224
+#: /var/www/movim/cache/locales.php:240
 msgid "Ungrouped"
 msgstr ""
 
-#: ../cache/locales.php:225
+#: /var/www/movim/cache/locales.php:241
 msgid "Show disconnected contacts"
 msgstr ""
 
-#: ../cache/locales.php:226
+#: /var/www/movim/cache/locales.php:242
 msgid "Hide disconnected contacts"
 msgstr ""
 
-#: ../cache/locales.php:227
+#: /var/www/movim/cache/locales.php:243
 #, php-format
 msgid "Show group %s"
 msgstr ""
 
-#: ../cache/locales.php:228
+#: /var/www/movim/cache/locales.php:244
 #, php-format
 msgid "Hide group %s"
 msgstr ""
 
-#: ../cache/locales.php:229
+#: /var/www/movim/cache/locales.php:245
 msgid "Please enter a valid Jabber ID"
 msgstr ""
 
-#: ../cache/locales.php:230
-msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
+#: /var/www/movim/cache/locales.php:246
+msgid ""
+"No contacts ? You can add one using the + button bellow or going to the "
+"Explore page"
 msgstr ""
 
-#: ../cache/locales.php:231
-#, fuzzy
+#: /var/www/movim/cache/locales.php:247
 msgid "Search"
-msgstr "Μάρτιος"
+msgstr ""
 
-#: ../cache/locales.php:232
+#: /var/www/movim/cache/locales.php:248
 msgid "Show/Hide"
 msgstr ""
 
-#: ../cache/locales.php:233
+#: /var/www/movim/cache/locales.php:249
 msgid "Enter the Jabber ID of your contact."
 msgstr ""
 
-#: ../cache/locales.php:234
+#: /var/www/movim/cache/locales.php:250
 msgid "Press enter to validate."
 msgstr ""
 
-#: ../cache/locales.php:235
+#: /var/www/movim/cache/locales.php:251
 msgid "JID"
 msgstr ""
 
-#: ../cache/locales.php:236
+#: /var/www/movim/cache/locales.php:252
 msgid "Give a friendly name to your group"
 msgstr ""
 
-#: ../cache/locales.php:237
+#: /var/www/movim/cache/locales.php:253
 msgid "My Little Pony - Fan Club"
 msgstr ""
 
-#: ../cache/locales.php:238
+#: /var/www/movim/cache/locales.php:254
 msgid "Subscribed"
 msgstr ""
 
-#: ../cache/locales.php:239
+#: /var/www/movim/cache/locales.php:255
 msgid "Topics"
 msgstr ""
 
-#: ../cache/locales.php:240
+#: /var/www/movim/cache/locales.php:256
 msgid "Statistics"
 msgstr ""
 
-#: ../cache/locales.php:241
+#: /var/www/movim/cache/locales.php:257
 msgid "Since"
 msgstr ""
 
-#: ../cache/locales.php:242
+#: /var/www/movim/cache/locales.php:258
 msgid "Sessions"
 msgstr ""
 
-#: ../cache/locales.php:244
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#: /var/www/movim/cache/locales.php:260
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
 msgstr ""
 
-#: ../cache/locales.php:245
+#: /var/www/movim/cache/locales.php:261
 msgid "Your server here ?"
 msgstr ""
 
-#: ../cache/locales.php:246
+#: /var/www/movim/cache/locales.php:262
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr ""
 
-#: ../cache/locales.php:247
-#, fuzzy
+#: /var/www/movim/cache/locales.php:263
 msgid "No public feed for this contact"
-msgstr "Διαγραφή αυτής της επαφής"
+msgstr ""
 
-#: ../cache/locales.php:248
+#: /var/www/movim/cache/locales.php:264
 msgid "No contact specified"
 msgstr ""
 
-#: ../cache/locales.php:250
-#, fuzzy
+#: /var/www/movim/cache/locales.php:266
 msgid "Profile Updated"
-msgstr "Προφίλ"
+msgstr ""
 
-#: ../cache/locales.php:251
+#: /var/www/movim/cache/locales.php:267
 msgid "Profile Not Updated"
 msgstr ""
 
-#: ../cache/locales.php:252
+#: /var/www/movim/cache/locales.php:268
 msgid "Your profile is now public"
 msgstr ""
 
-#: ../cache/locales.php:253
+#: /var/www/movim/cache/locales.php:269
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: ../cache/locales.php:266
+#: /var/www/movim/cache/locales.php:282
 msgid "Accounts"
 msgstr ""
 
-#: ../cache/locales.php:267
+#: /var/www/movim/cache/locales.php:283
 msgid "Twitter"
 msgstr ""
 
-#: ../cache/locales.php:268
+#: /var/www/movim/cache/locales.php:284
 msgid "Skype"
 msgstr ""
 
-#: ../cache/locales.php:269
+#: /var/www/movim/cache/locales.php:285
 msgid "Yahoo"
 msgstr ""
 
-#: ../cache/locales.php:270
+#: /var/www/movim/cache/locales.php:286
 msgid "Privacy Level"
 msgstr ""
 
-#: ../cache/locales.php:271
+#: /var/www/movim/cache/locales.php:287
 msgid "Is this profile public ?"
 msgstr ""
 
-#: ../cache/locales.php:272
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+#: /var/www/movim/cache/locales.php:288
+msgid ""
+"Please pay attention ! By making your profile public, all the information "
+"listed above will be available for all the Movim users and on the whole "
+"Internet."
 msgstr ""
 
-#: ../cache/locales.php:273 ../cache/locales.php:294
+#: /var/www/movim/cache/locales.php:289 /var/www/movim/cache/locales.php:310
 msgid "Feed"
 msgstr "Feed"
 
-#: ../cache/locales.php:274 ../cache/locales.php:290
+#: /var/www/movim/cache/locales.php:290 /var/www/movim/cache/locales.php:306
 msgid "Blog"
 msgstr ""
 
-#: ../cache/locales.php:275
+#: /var/www/movim/cache/locales.php:291
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
-#: ../cache/locales.php:276
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+#: /var/www/movim/cache/locales.php:292
+msgid ""
+"Movim is a kickass distributed social networking platform that protect your "
+"privacy an comes with a set of awesome features."
 msgstr ""
 
-#: ../cache/locales.php:277
-#, fuzzy
+#: /var/www/movim/cache/locales.php:293
 msgid "Administration"
-msgstr "Δημιουργία Λογαριασμού"
+msgstr ""
 
-#: ../cache/locales.php:278
+#: /var/www/movim/cache/locales.php:294
 msgid "Home"
 msgstr "Αρχική Σελίδα"
 
-#: ../cache/locales.php:279
+#: /var/www/movim/cache/locales.php:295
 msgid "Discover"
 msgstr ""
 
-#: ../cache/locales.php:280
+#: /var/www/movim/cache/locales.php:296
 msgid "Explore"
 msgstr ""
 
-#: ../cache/locales.php:281
+#: /var/www/movim/cache/locales.php:297
 msgid "Account Creation"
 msgstr "Δημιουργία Λογαριασμού"
 
-#: ../cache/locales.php:282
+#: /var/www/movim/cache/locales.php:298
 msgid "News"
 msgstr ""
 
-#: ../cache/locales.php:283
+#: /var/www/movim/cache/locales.php:299
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../cache/locales.php:284
+#: /var/www/movim/cache/locales.php:300
 msgid "Configuration"
 msgstr "Ρύθμιση"
 
-#: ../cache/locales.php:285
+#: /var/www/movim/cache/locales.php:301
 msgid "Server"
 msgstr ""
 
-#: ../cache/locales.php:286
+#: /var/www/movim/cache/locales.php:302
 msgid "Public Groups"
 msgstr ""
 
-#: ../cache/locales.php:287
+#: /var/www/movim/cache/locales.php:303
 msgid "Viewer"
 msgstr ""
 
-#: ../cache/locales.php:288
+#: /var/www/movim/cache/locales.php:304
 msgid "Profile"
 msgstr "Προφίλ"
 
-#: ../cache/locales.php:289
+#: /var/www/movim/cache/locales.php:305
 msgid "Media"
 msgstr ""
 
-#: ../cache/locales.php:291
+#: /var/www/movim/cache/locales.php:307
 msgid "About"
 msgstr ""
 
-#: ../cache/locales.php:292
+#: /var/www/movim/cache/locales.php:308
 msgid "Login"
 msgstr ""
 
-#: ../cache/locales.php:293
+#: /var/www/movim/cache/locales.php:309
 msgid "Help"
 msgstr ""
 
-#: ../cache/locales.php:296
+#: /var/www/movim/cache/locales.php:312
 msgid "Gallery"
 msgstr ""
 
-#: ../cache/locales.php:297
+#: /var/www/movim/cache/locales.php:313
 msgid "Preview"
 msgstr ""
 
-#: ../cache/locales.php:298
+#: /var/www/movim/cache/locales.php:314
 msgid "Visio-conference"
 msgstr ""
 
-#: ../cache/locales.php:299
+#: /var/www/movim/cache/locales.php:315
 msgid "Pods"
 msgstr ""
 
-#: ../cache/locales.php:300
+#: /var/www/movim/cache/locales.php:316
 #, php-format
 msgid "Error: %s"
 msgstr "Σφάλμα: %s"
 
-#: ../cache/locales.php:301
+#: /var/www/movim/cache/locales.php:317
 #, php-format
 msgid "Cannot load file '%s'"
 msgstr "Αδύνατη η φόρτωση του αρχείου '%s'"
 
-#: ../cache/locales.php:302
+#: /var/www/movim/cache/locales.php:318
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
 msgstr ""
 
-#: ../cache/locales.php:303
-#, fuzzy, php-format
+#: /var/www/movim/cache/locales.php:319
+#, php-format
 msgid "%s - About"
-msgstr "%s - Προσθέστε λογαριασμό"
+msgstr ""
 
-#: ../cache/locales.php:304
-#, fuzzy, php-format
+#: /var/www/movim/cache/locales.php:320
+#, php-format
 msgid "%s - Account"
-msgstr "%s - Προσθέστε λογαριασμό"
+msgstr ""
 
-#: ../cache/locales.php:305
-#, fuzzy, php-format
+#: /var/www/movim/cache/locales.php:321
+#, php-format
 msgid "%s - Administration Panel"
-msgstr "%s - Δημιουργία Λογαριασμού"
+msgstr ""
 
-#: ../cache/locales.php:306
-#, fuzzy, php-format
+#: /var/www/movim/cache/locales.php:322
+#, php-format
 msgid "%s - Blog"
-msgstr "%s - Σελίδα βοήθειας"
+msgstr ""
 
-#: ../cache/locales.php:307
+#: /var/www/movim/cache/locales.php:323
 #, php-format
 msgid "%s - Configuration"
 msgstr "%s - Ρύθμιση"
 
-#: ../cache/locales.php:308
+#: /var/www/movim/cache/locales.php:324
 #, php-format
 msgid "%s - Discover"
 msgstr ""
 
-#: ../cache/locales.php:309
+#: /var/www/movim/cache/locales.php:325
 #, php-format
 msgid "%s - Explore"
 msgstr ""
 
-#: ../cache/locales.php:310
+#: /var/www/movim/cache/locales.php:326
 #, php-format
 msgid "%s - Help Page"
 msgstr "%s - Σελίδα βοήθειας"
 
-#: ../cache/locales.php:311
+#: /var/www/movim/cache/locales.php:327
 #, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - Είσοδος στο Movim"
 
-#: ../cache/locales.php:312
+#: /var/www/movim/cache/locales.php:328
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Καλωσήλθατε στο Movim"
 
-#: ../cache/locales.php:313
+#: /var/www/movim/cache/locales.php:329
 #, php-format
 msgid "%s - Media"
 msgstr ""
 
-#: ../cache/locales.php:314
+#: /var/www/movim/cache/locales.php:330
 #, php-format
 msgid "%s - News"
 msgstr ""
 
-#: ../cache/locales.php:315
-#, fuzzy, php-format
+#: /var/www/movim/cache/locales.php:331
+#, php-format
 msgid "%s - Group Configuration"
-msgstr "%s - Ρύθμιση"
+msgstr ""
 
-#: ../cache/locales.php:316
-#, fuzzy, php-format
+#: /var/www/movim/cache/locales.php:332
+#, php-format
 msgid "%s - Group"
-msgstr "%s - Προφίλ"
+msgstr ""
 
-#: ../cache/locales.php:317
+#: /var/www/movim/cache/locales.php:333
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
-#: ../cache/locales.php:318
+#: /var/www/movim/cache/locales.php:334
 #, php-format
 msgid "%s - Profile"
 msgstr "%s - Προφίλ"
 
-#: ../cache/locales.php:319
-#, fuzzy, php-format
+#: /var/www/movim/cache/locales.php:335
+#, php-format
 msgid "%s - Server"
-msgstr "%s - Προφίλ"
+msgstr ""
 
-#: ../cache/locales.php:320
+#: /var/www/movim/cache/locales.php:336
 msgid "Validate"
 msgstr ""
 
-#: ../cache/locales.php:321
+#: /var/www/movim/cache/locales.php:337
 msgid "Refresh"
 msgstr ""
 
-#: ../cache/locales.php:322
+#: /var/www/movim/cache/locales.php:338
 msgid "Add"
 msgstr ""
 
-#: ../cache/locales.php:323
+#: /var/www/movim/cache/locales.php:339
 msgid "Close"
 msgstr ""
 
-#: ../cache/locales.php:324
+#: /var/www/movim/cache/locales.php:340
 msgid "Update"
 msgstr ""
 
-#: ../cache/locales.php:325
+#: /var/www/movim/cache/locales.php:341
 msgid "Updating"
 msgstr ""
 
-#: ../cache/locales.php:326
+#: /var/www/movim/cache/locales.php:342
 msgid "Submit"
 msgstr "Υποβολή"
 
-#: ../cache/locales.php:327
+#: /var/www/movim/cache/locales.php:343
 msgid "Reset"
 msgstr "Επαναφορά"
 
-#: ../cache/locales.php:328
+#: /var/www/movim/cache/locales.php:344
+msgid "Register"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:345
+msgid "Unregister"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:346
 msgid "Save"
 msgstr ""
 
-#: ../cache/locales.php:329
+#: /var/www/movim/cache/locales.php:347
 msgid "Clear"
 msgstr ""
 
-#: ../cache/locales.php:330
+#: /var/www/movim/cache/locales.php:348
 msgid "Upload"
 msgstr ""
 
-#: ../cache/locales.php:331
+#: /var/www/movim/cache/locales.php:349
 msgid "Come in!"
 msgstr "Έλα μέσα!"
 
-#: ../cache/locales.php:332
-#, fuzzy
+#: /var/www/movim/cache/locales.php:350
 msgid "Connecting..."
-msgstr "Συνθέτοντας..."
+msgstr ""
 
-#: ../cache/locales.php:333
+#: /var/www/movim/cache/locales.php:351
 msgid "Yes"
 msgstr ""
 
-#: ../cache/locales.php:334
-#, fuzzy
+#: /var/www/movim/cache/locales.php:352
 msgid "No"
-msgstr "Κανένα"
+msgstr ""
 
-#: ../cache/locales.php:337
-#, fuzzy
+#: /var/www/movim/cache/locales.php:355
 msgid "Day"
-msgstr "Μάιος"
+msgstr ""
 
-#: ../cache/locales.php:338
+#: /var/www/movim/cache/locales.php:356
 msgid "Monday"
 msgstr "Δευτέρα"
 
-#: ../cache/locales.php:339
+#: /var/www/movim/cache/locales.php:357
 msgid "Tuesday"
 msgstr "Τρίτη"
 
-#: ../cache/locales.php:340
+#: /var/www/movim/cache/locales.php:358
 msgid "Wednesday"
 msgstr "Τετάρτη"
 
-#: ../cache/locales.php:341
+#: /var/www/movim/cache/locales.php:359
 msgid "Thursday"
 msgstr "Πέμπτη"
 
-#: ../cache/locales.php:342
+#: /var/www/movim/cache/locales.php:360
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: ../cache/locales.php:343
+#: /var/www/movim/cache/locales.php:361
 msgid "Saturday"
 msgstr "Σάββατο"
 
-#: ../cache/locales.php:344
-#, fuzzy
+#: /var/www/movim/cache/locales.php:362
 msgid "Sunday"
-msgstr "Δευτέρα"
+msgstr ""
 
-#: ../cache/locales.php:345 ../cache/locales.php:354
+#: /var/www/movim/cache/locales.php:363 /var/www/movim/cache/locales.php:372
 msgid "None"
 msgstr "Κανένα"
 
-#: ../cache/locales.php:346
+#: /var/www/movim/cache/locales.php:364
 msgid "Male"
 msgstr "Άνδρας"
 
-#: ../cache/locales.php:347
+#: /var/www/movim/cache/locales.php:365
 msgid "Female"
 msgstr "Γυναίκα"
 
-#: ../cache/locales.php:348
+#: /var/www/movim/cache/locales.php:366
 msgid "Other"
 msgstr "Άλλο"
 
-#: ../cache/locales.php:349
+#: /var/www/movim/cache/locales.php:367
 msgid "Bot"
 msgstr ""
 
-#: ../cache/locales.php:350
+#: /var/www/movim/cache/locales.php:368
 msgid "Desktop"
 msgstr ""
 
-#: ../cache/locales.php:351
+#: /var/www/movim/cache/locales.php:369
 msgid "Phone"
 msgstr ""
 
-#: ../cache/locales.php:352
-#, fuzzy
+#: /var/www/movim/cache/locales.php:370
 msgid "Web"
-msgstr "Ιστότοπος"
+msgstr ""
 
-#: ../cache/locales.php:353
-#, fuzzy
+#: /var/www/movim/cache/locales.php:371
 msgid "Registered"
-msgstr "Χθες"
+msgstr ""
 
-#: ../cache/locales.php:355
+#: /var/www/movim/cache/locales.php:373
 msgid "Single"
 msgstr "Μόνος/η"
 
-#: ../cache/locales.php:356
+#: /var/www/movim/cache/locales.php:374
 msgid "In a relationship"
 msgstr "Σε σχέση"
 
-#: ../cache/locales.php:357
+#: /var/www/movim/cache/locales.php:375
 msgid "Married"
 msgstr "Παντρεμένος/η"
 
-#: ../cache/locales.php:358
+#: /var/www/movim/cache/locales.php:376
 msgid "Divorced"
 msgstr "Διαζευγμένος/η"
 
-#: ../cache/locales.php:359
+#: /var/www/movim/cache/locales.php:377
 msgid "Widowed"
 msgstr ""
 
-#: ../cache/locales.php:360
+#: /var/www/movim/cache/locales.php:378
 msgid "Cohabiting"
 msgstr ""
 
-#: ../cache/locales.php:361
+#: /var/www/movim/cache/locales.php:379
 msgid "Civil Union"
 msgstr ""
 
-#: ../cache/locales.php:362
+#: /var/www/movim/cache/locales.php:380
 msgid "Not shared"
 msgstr ""
 
-#: ../cache/locales.php:363
+#: /var/www/movim/cache/locales.php:381
 msgid "Shared with one contact"
 msgstr ""
 
-#: ../cache/locales.php:364
+#: /var/www/movim/cache/locales.php:382
 msgid "Shared with all contacts"
 msgstr ""
 
-#: ../cache/locales.php:365
+#: /var/www/movim/cache/locales.php:383
 msgid "Shared with the XMPP network"
 msgstr ""
 
-#: ../cache/locales.php:366
+#: /var/www/movim/cache/locales.php:384
 msgid "Shared with the whole Internet"
 msgstr ""
 
-#: ../cache/locales.php:367
+#: /var/www/movim/cache/locales.php:385
 msgid "Online"
 msgstr "Συνδεδεμένος"
 
-#: ../cache/locales.php:368
+#: /var/www/movim/cache/locales.php:386
 msgid "Away"
 msgstr "Απών"
 
-#: ../cache/locales.php:369
+#: /var/www/movim/cache/locales.php:387
 msgid "Do Not Disturb"
 msgstr "Μην Ενοχλείτε"
 
-#: ../cache/locales.php:370
+#: /var/www/movim/cache/locales.php:388
 msgid "Extended Away"
 msgstr "Παρατεταμένη απουσία"
 
-#: ../cache/locales.php:371
-#, fuzzy
+#: /var/www/movim/cache/locales.php:389
 msgid "Offline"
-msgstr "Συνδεδεμένος"
+msgstr ""
 
-#: ../cache/locales.php:372
+#: /var/www/movim/cache/locales.php:390
 msgid "Error"
 msgstr ""
 
-#: ../cache/locales.php:373
+#: /var/www/movim/cache/locales.php:391
 msgid "afraid"
 msgstr ""
 
-#: ../cache/locales.php:374
+#: /var/www/movim/cache/locales.php:392
 msgid "amazed"
 msgstr ""
 
-#: ../cache/locales.php:375
+#: /var/www/movim/cache/locales.php:393
 msgid "amorous"
 msgstr ""
 
-#: ../cache/locales.php:376
+#: /var/www/movim/cache/locales.php:394
 msgid "angry"
 msgstr ""
 
-#: ../cache/locales.php:377
+#: /var/www/movim/cache/locales.php:395
 msgid "annoyed"
 msgstr ""
 
-#: ../cache/locales.php:378
+#: /var/www/movim/cache/locales.php:396
 msgid "anxious"
 msgstr ""
 
-#: ../cache/locales.php:379
+#: /var/www/movim/cache/locales.php:397
 msgid "aroused"
 msgstr ""
 
-#: ../cache/locales.php:380
+#: /var/www/movim/cache/locales.php:398
 msgid "ashamed"
 msgstr ""
 
-#: ../cache/locales.php:381
+#: /var/www/movim/cache/locales.php:399
 msgid "bored"
 msgstr ""
 
-#: ../cache/locales.php:382
+#: /var/www/movim/cache/locales.php:400
 msgid "brave"
 msgstr ""
 
-#: ../cache/locales.php:383
+#: /var/www/movim/cache/locales.php:401
 msgid "calm"
 msgstr ""
 
-#: ../cache/locales.php:384
+#: /var/www/movim/cache/locales.php:402
 msgid "cautious"
 msgstr ""
 
-#: ../cache/locales.php:385
+#: /var/www/movim/cache/locales.php:403
 msgid "cold"
 msgstr ""
 
-#: ../cache/locales.php:386
+#: /var/www/movim/cache/locales.php:404
 msgid "confident"
 msgstr ""
 
-#: ../cache/locales.php:387
+#: /var/www/movim/cache/locales.php:405
 msgid "confused"
 msgstr ""
 
-#: ../cache/locales.php:388
-#, fuzzy
+#: /var/www/movim/cache/locales.php:406
 msgid "contemplative"
-msgstr "ομιλητικός"
+msgstr ""
 
-#: ../cache/locales.php:389
+#: /var/www/movim/cache/locales.php:407
 msgid "contented"
 msgstr ""
 
-#: ../cache/locales.php:390
+#: /var/www/movim/cache/locales.php:408
 msgid "cranky"
 msgstr ""
 
-#: ../cache/locales.php:391
+#: /var/www/movim/cache/locales.php:409
 msgid "crazy"
 msgstr ""
 
-#: ../cache/locales.php:392
-#, fuzzy
+#: /var/www/movim/cache/locales.php:410
 msgid "creative"
-msgstr "Δημιούργησε"
+msgstr ""
 
-#: ../cache/locales.php:393
+#: /var/www/movim/cache/locales.php:411
 msgid "curious"
 msgstr ""
 
-#: ../cache/locales.php:394
+#: /var/www/movim/cache/locales.php:412
 msgid "dejected"
 msgstr ""
 
-#: ../cache/locales.php:395
+#: /var/www/movim/cache/locales.php:413
 msgid "depressed"
 msgstr ""
 
-#: ../cache/locales.php:396
+#: /var/www/movim/cache/locales.php:414
 msgid "disappointed"
 msgstr ""
 
-#: ../cache/locales.php:397
+#: /var/www/movim/cache/locales.php:415
 msgid "disgusted"
 msgstr ""
 
-#: ../cache/locales.php:398
+#: /var/www/movim/cache/locales.php:416
 msgid "dismayed"
 msgstr ""
 
-#: ../cache/locales.php:399
+#: /var/www/movim/cache/locales.php:417
 msgid "distracted"
 msgstr ""
 
-#: ../cache/locales.php:400
+#: /var/www/movim/cache/locales.php:418
 msgid "embarrassed"
 msgstr ""
 
-#: ../cache/locales.php:401
+#: /var/www/movim/cache/locales.php:419
 msgid "envious"
 msgstr ""
 
-#: ../cache/locales.php:402
+#: /var/www/movim/cache/locales.php:420
 msgid "excited"
 msgstr ""
 
-#: ../cache/locales.php:403
+#: /var/www/movim/cache/locales.php:421
 msgid "flirtatious"
 msgstr ""
 
-#: ../cache/locales.php:404
+#: /var/www/movim/cache/locales.php:422
 msgid "frustated"
 msgstr ""
 
-#: ../cache/locales.php:405
+#: /var/www/movim/cache/locales.php:423
 msgid "grateful"
 msgstr ""
 
-#: ../cache/locales.php:406
+#: /var/www/movim/cache/locales.php:424
 msgid "grieving"
 msgstr ""
 
-#: ../cache/locales.php:407
+#: /var/www/movim/cache/locales.php:425
 msgid "grumpy"
 msgstr ""
 
-#: ../cache/locales.php:408
+#: /var/www/movim/cache/locales.php:426
 msgid "guilty"
 msgstr ""
 
-#: ../cache/locales.php:409
+#: /var/www/movim/cache/locales.php:427
 msgid "happy"
 msgstr ""
 
-#: ../cache/locales.php:410
+#: /var/www/movim/cache/locales.php:428
 msgid "hopeful"
 msgstr ""
 
-#: ../cache/locales.php:411
+#: /var/www/movim/cache/locales.php:429
 msgid "hot"
 msgstr ""
 
-#: ../cache/locales.php:412
+#: /var/www/movim/cache/locales.php:430
 msgid "humbled"
 msgstr ""
 
-#: ../cache/locales.php:413
+#: /var/www/movim/cache/locales.php:431
 msgid "humiliated"
 msgstr ""
 
-#: ../cache/locales.php:414
+#: /var/www/movim/cache/locales.php:432
 msgid "hungry"
 msgstr ""
 
-#: ../cache/locales.php:415
+#: /var/www/movim/cache/locales.php:433
 msgid "hurt"
 msgstr ""
 
-#: ../cache/locales.php:416
+#: /var/www/movim/cache/locales.php:434
 msgid "impressed"
 msgstr ""
 
-#: ../cache/locales.php:417
+#: /var/www/movim/cache/locales.php:435
 msgid "in awe"
 msgstr ""
 
-#: ../cache/locales.php:418
+#: /var/www/movim/cache/locales.php:436
 msgid "in love"
 msgstr ""
 
-#: ../cache/locales.php:419
+#: /var/www/movim/cache/locales.php:437
 msgid "indignant"
 msgstr ""
 
-#: ../cache/locales.php:420
+#: /var/www/movim/cache/locales.php:438
 msgid "interested"
 msgstr ""
 
-#: ../cache/locales.php:421
+#: /var/www/movim/cache/locales.php:439
 msgid "intoxicated"
 msgstr ""
 
-#: ../cache/locales.php:422
+#: /var/www/movim/cache/locales.php:440
 msgid "invincible"
 msgstr ""
 
-#: ../cache/locales.php:423
+#: /var/www/movim/cache/locales.php:441
 msgid "jealous"
 msgstr ""
 
-#: ../cache/locales.php:424
+#: /var/www/movim/cache/locales.php:442
 msgid "lonely"
 msgstr ""
 
-#: ../cache/locales.php:425
+#: /var/www/movim/cache/locales.php:443
 msgid "lost"
 msgstr ""
 
-#: ../cache/locales.php:426
+#: /var/www/movim/cache/locales.php:444
 msgid "lucky"
 msgstr ""
 
-#: ../cache/locales.php:427
+#: /var/www/movim/cache/locales.php:445
 msgid "mean"
 msgstr ""
 
-#: ../cache/locales.php:428
+#: /var/www/movim/cache/locales.php:446
 msgid "moody"
 msgstr ""
 
-#: ../cache/locales.php:429
+#: /var/www/movim/cache/locales.php:447
 msgid "nervous"
 msgstr ""
 
-#: ../cache/locales.php:430
+#: /var/www/movim/cache/locales.php:448
 msgid "neutral"
 msgstr ""
 
-#: ../cache/locales.php:431
+#: /var/www/movim/cache/locales.php:449
 msgid "offended"
 msgstr ""
 
-#: ../cache/locales.php:432
+#: /var/www/movim/cache/locales.php:450
 msgid "outraged"
 msgstr ""
 
-#: ../cache/locales.php:433
+#: /var/www/movim/cache/locales.php:451
 msgid "playful"
 msgstr ""
 
-#: ../cache/locales.php:434
+#: /var/www/movim/cache/locales.php:452
 msgid "proud"
 msgstr ""
 
-#: ../cache/locales.php:435
+#: /var/www/movim/cache/locales.php:453
 msgid "relaxed"
 msgstr ""
 
-#: ../cache/locales.php:436
+#: /var/www/movim/cache/locales.php:454
 msgid "relieved"
 msgstr ""
 
-#: ../cache/locales.php:437
+#: /var/www/movim/cache/locales.php:455
 msgid "remorseful"
 msgstr ""
 
-#: ../cache/locales.php:438
+#: /var/www/movim/cache/locales.php:456
 msgid "restless"
 msgstr ""
 
-#: ../cache/locales.php:439
+#: /var/www/movim/cache/locales.php:457
 msgid "sad"
 msgstr ""
 
-#: ../cache/locales.php:440
+#: /var/www/movim/cache/locales.php:458
 msgid "sarcastic"
 msgstr ""
 
-#: ../cache/locales.php:441
+#: /var/www/movim/cache/locales.php:459
 msgid "satisfied"
 msgstr ""
 
-#: ../cache/locales.php:442
+#: /var/www/movim/cache/locales.php:460
 msgid "serious"
 msgstr ""
 
-#: ../cache/locales.php:443
+#: /var/www/movim/cache/locales.php:461
 msgid "shocked"
 msgstr ""
 
-#: ../cache/locales.php:444
+#: /var/www/movim/cache/locales.php:462
 msgid "shy"
 msgstr ""
 
-#: ../cache/locales.php:445
+#: /var/www/movim/cache/locales.php:463
 msgid "sick"
 msgstr ""
 
-#: ../cache/locales.php:446
+#: /var/www/movim/cache/locales.php:464
 msgid "sleepy"
 msgstr ""
 
-#: ../cache/locales.php:447
+#: /var/www/movim/cache/locales.php:465
 msgid "spontaneous"
 msgstr ""
 
-#: ../cache/locales.php:448
+#: /var/www/movim/cache/locales.php:466
 msgid "stressed"
 msgstr ""
 
-#: ../cache/locales.php:449
+#: /var/www/movim/cache/locales.php:467
 msgid "strong"
 msgstr ""
 
-#: ../cache/locales.php:450
+#: /var/www/movim/cache/locales.php:468
 msgid "surprised"
 msgstr ""
 
-#: ../cache/locales.php:451
+#: /var/www/movim/cache/locales.php:469
 msgid "thankful"
 msgstr ""
 
-#: ../cache/locales.php:452
+#: /var/www/movim/cache/locales.php:470
 msgid "thirsty"
 msgstr ""
 
-#: ../cache/locales.php:453
+#: /var/www/movim/cache/locales.php:471
 msgid "tired"
 msgstr ""
 
-#: ../cache/locales.php:454
+#: /var/www/movim/cache/locales.php:472
 msgid "undefined"
 msgstr ""
 
-#: ../cache/locales.php:455
+#: /var/www/movim/cache/locales.php:473
 msgid "weak"
 msgstr ""
 
-#: ../cache/locales.php:456
-#, fuzzy
+#: /var/www/movim/cache/locales.php:474
 msgid "worried"
-msgstr "Παντρεμένος/η"
+msgstr ""
 
-#: ../cache/locales.php:457
+#: /var/www/movim/cache/locales.php:475
 msgid "Month"
 msgstr ""
 
-#: ../cache/locales.php:458
+#: /var/www/movim/cache/locales.php:476
 msgid "January"
 msgstr "Ιανουάριος"
 
-#: ../cache/locales.php:459
+#: /var/www/movim/cache/locales.php:477
 msgid "February"
 msgstr "Φεβρουάριος"
 
-#: ../cache/locales.php:460
+#: /var/www/movim/cache/locales.php:478
 msgid "March"
 msgstr "Μάρτιος"
 
-#: ../cache/locales.php:461
+#: /var/www/movim/cache/locales.php:479
 msgid "April"
 msgstr "Απρίλιος"
 
-#: ../cache/locales.php:462
+#: /var/www/movim/cache/locales.php:480
 msgid "May"
 msgstr "Μάιος"
 
-#: ../cache/locales.php:463
+#: /var/www/movim/cache/locales.php:481
 msgid "June"
 msgstr "Ιούνιος"
 
-#: ../cache/locales.php:464
+#: /var/www/movim/cache/locales.php:482
 msgid "July"
 msgstr "Ιούλιος"
 
-#: ../cache/locales.php:465
+#: /var/www/movim/cache/locales.php:483
 msgid "August"
 msgstr "Αύγουστος"
 
-#: ../cache/locales.php:466
+#: /var/www/movim/cache/locales.php:484
 msgid "September"
 msgstr "Σεπτέμβριος"
 
-#: ../cache/locales.php:467
+#: /var/www/movim/cache/locales.php:485
 msgid "October"
 msgstr "Οκτώβριος"
 
-#: ../cache/locales.php:468
+#: /var/www/movim/cache/locales.php:486
 msgid "November"
 msgstr "Νοέμβριος"
 
-#: ../cache/locales.php:469
+#: /var/www/movim/cache/locales.php:487
 msgid "December"
 msgstr "Δεκέμβριος"
 
-#: ../cache/locales.php:470
+#: /var/www/movim/cache/locales.php:488
 msgid "Year"
 msgstr ""
 
-#: ../cache/locales.php:471
+#: /var/www/movim/cache/locales.php:489
 msgid "Today"
 msgstr "Σήμερα"
 
-#: ../cache/locales.php:472
+#: /var/www/movim/cache/locales.php:490
 msgid "Tomorrow"
 msgstr "Αύριο"
 
-#: ../cache/locales.php:473
+#: /var/www/movim/cache/locales.php:491
 msgid "Yesterday"
 msgstr "Χθες"
 
-#: ../cache/locales.php:474
+#: /var/www/movim/cache/locales.php:492
 #, php-format
 msgid " %d days ago"
 msgstr " %d ημέρες πριν"
 
-#: ../cache/locales.php:475
+#: /var/www/movim/cache/locales.php:493
 msgid "day"
 msgstr "ημέρα"
 
-#: ../cache/locales.php:476
+#: /var/www/movim/cache/locales.php:494
 msgid "Title"
 msgstr ""
 
-#: ../cache/locales.php:477
+#: /var/www/movim/cache/locales.php:495
 msgid "What's new ?"
 msgstr ""
 
-#: ../cache/locales.php:478
+#: /var/www/movim/cache/locales.php:496
 msgid "Place"
 msgstr ""
 
-#: ../cache/locales.php:479
+#: /var/www/movim/cache/locales.php:497
 msgid "by"
 msgstr ""
 
-#: ../cache/locales.php:480
+#: /var/www/movim/cache/locales.php:498
 msgid "Geolocalisation"
 msgstr ""
 
-#: ../cache/locales.php:481
+#: /var/www/movim/cache/locales.php:499
 msgid "email"
 msgstr ""
 
-#: ../cache/locales.php:482
+#: /var/www/movim/cache/locales.php:500
 msgid "No content"
 msgstr ""
 
-#: ../cache/locales.php:483
+#: /var/www/movim/cache/locales.php:501
 msgid "No comments"
 msgstr ""
 
-#: ../cache/locales.php:484
+#: /var/www/movim/cache/locales.php:502
 msgid "No comments stream"
 msgstr ""
 
-#: ../cache/locales.php:485
+#: /var/www/movim/cache/locales.php:503
 msgid "Your feed cannot be loaded."
 msgstr ""
 
-#: ../cache/locales.php:486
+#: /var/www/movim/cache/locales.php:504
 msgid "Get older posts"
 msgstr ""
 
-#: ../cache/locales.php:487
+#: /var/www/movim/cache/locales.php:505
 #, php-format
 msgid "%s new items"
 msgstr ""
 
-#: ../cache/locales.php:488
+#: /var/www/movim/cache/locales.php:506
 msgid "Comment publication error"
 msgstr ""
 
-#: ../cache/locales.php:489
+#: /var/www/movim/cache/locales.php:507
 msgid "Show the older comments"
 msgstr ""
 
-#: ../cache/locales.php:490
-#, fuzzy
+#: /var/www/movim/cache/locales.php:508
 msgid "Loading comments ..."
-msgstr "Φορτώνεται το contact feed ..."
+msgstr ""
 
-#: ../cache/locales.php:491
+#: /var/www/movim/cache/locales.php:509
 msgid "Get the comments"
 msgstr ""
 
-#: ../cache/locales.php:492
+#: /var/www/movim/cache/locales.php:510
 msgid "Add a comment"
 msgstr ""
 
-#: ../cache/locales.php:493
+#: /var/www/movim/cache/locales.php:511
 msgid "Share with"
 msgstr ""
 
-#: ../cache/locales.php:494
+#: /var/www/movim/cache/locales.php:512
 msgid "Everyone"
 msgstr ""
 
-#: ../cache/locales.php:495
+#: /var/www/movim/cache/locales.php:513
 msgid "Your contacts"
 msgstr ""
 
-#: ../cache/locales.php:496
+#: /var/www/movim/cache/locales.php:514
 msgid "Delete this post"
 msgstr ""
 
-#~ msgid "Debug console"
-#~ msgstr "Κονσόλα αποσφαλμάτωσης"
+#: /var/www/movim/cache/locales.php:515
+msgid "Updated"
+msgstr ""
 
-#~ msgid "Accept"
-#~ msgstr "Αποδοχή"
-
-#~ msgid "Logout"
-#~ msgstr "Αποσύνδεση"
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "Αδύνατη η δημιουργία του φακέλλου '%s'."
-
-#~ msgid "terse"
-#~ msgstr "λιτός"
-
-#~ msgid "normal"
-#~ msgstr "κανονικό"
+#: /var/www/movim/cache/locales.php:516
+msgid "The API is not reachable, try again later"
+msgstr ""
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση 5.3 της PHP."
+#~ msgstr ""
+#~ "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση 5.3 "
+#~ "της PHP."
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Το Movim απαιτεί την %s επέκταση."
 
@@ -1964,11 +2044,23 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Πρόγραμμα εγκατάστασης του Movim"
 
+#, php-format
+#~ msgid "Couldn't create directory '%s'."
+#~ msgstr "Αδύνατη η δημιουργία του φακέλλου '%s'."
+
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "Αδύνατη η δημιουργία του αρχείου ρύθμισης '%s'."
 
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "Οι ακόλουθες προϋποθέσεις δεν καλύπτονταν. Παρακαλώ βεβαιωθείτε πως καλύπτονται όλες, για να μπορέσετε να προχωρήσετε στην εγκατάσταση του Movim."
+#~ msgid "Compatibility Test"
+#~ msgstr "Δοκιμασία συμβατότητας"
+
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr ""
+#~ "Οι ακόλουθες προϋποθέσεις δεν καλύπτονταν. Παρακαλώ βεβαιωθείτε πως "
+#~ "καλύπτονται όλες, για να μπορέσετε να προχωρήσετε στην εγκατάσταση του Movim."
 
 #~ msgid "User not logged in."
 #~ msgstr "Χρήστης μη συνδεδεμένος."
@@ -1976,14 +2068,38 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "Δεν παρέχονται JID (Jabber Identif. Codes)"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Ο jid '%s' είναι λανθασμένος"
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Αδύνατο να ανοίξει το αρχείο καταγραφής '%s'"
 
+#, php-format
+#~ msgid "%s - Account Creation"
+#~ msgstr "%s - Δημιουργία Λογαριασμού"
+
+#~ msgid "Remove this contact"
+#~ msgstr "Διαγραφή αυτής της επαφής"
+
+#~ msgid "Debug console"
+#~ msgstr "Κονσόλα αποσφαλμάτωσης"
+
+#~ msgid "Logout"
+#~ msgstr "Αποσύνδεση"
+
+#~ msgid "wants to talk with you"
+#~ msgstr "θέλει να μιλήσει μαζί σου"
+
+#~ msgid "Accept"
+#~ msgstr "Αποδοχή"
+
 #~ msgid "Decline"
 #~ msgstr "Απόρριψη"
+
+#~ msgid "Loading the contact feed ..."
+#~ msgstr "Φορτώνεται το contact feed ..."
 
 #~ msgid "BOSH Connection Preferences"
 #~ msgstr "Επιλογές σύνδεσης BOSH"
@@ -2003,38 +2119,76 @@ msgstr ""
 #~ msgid "Retype"
 #~ msgstr "Επαναπληκτρολόγηση"
 
+#~ msgid "Create"
+#~ msgstr "Δημιούργησε"
+
 #~ msgid "Actual version : "
 #~ msgstr "Τρέχουσα έκδοση "
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Εγκαταστήστε το %s πακέτο"
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Εγκατασταση %s και %s πακέτα"
 
 #~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Κάντε αναβάθμιση του PHP ή επικοινωνήστε με τον διαχειρηστή του εξυπηρετητή"
+#~ msgstr ""
+#~ "Κάντε αναβάθμιση του PHP ή επικοινωνήστε με τον διαχειρηστή του εξυπηρετητή"
 
-#~ msgid "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "Πριν απολαύσετε το κοινωνικό σας δίκτυο, απαιτούνται ορισμένες προσαρμογές."
+#~ msgid ""
+#~ "Before you enjoy your social network, a few adjustements are required."
+#~ msgstr ""
+#~ "Πριν απολαύσετε το κοινωνικό σας δίκτυο, απαιτούνται ορισμένες προσαρμογές."
 
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Ευχαριστούμε που κατεβάσατε το Movim!"
 
+#~ msgid "Proxy Preferences"
+#~ msgstr "Προτιμήσεις proxy"
+
 #~ msgid "XMPP Connection Preferences"
 #~ msgstr "Προτιμήσεις σύνδεσης XMPP"
 
-#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
-#~ msgstr "Εντοπίστηκαν μερικά σφάλματα. Παρακαλούμε διορθώστε τα για να συνεχίστεί η εγκατάσταση"
+#~ msgid "talkative"
+#~ msgstr "ομιλητικός"
+
+#~ msgid "terse"
+#~ msgstr "λιτός"
+
+#~ msgid ""
+#~ "Some errors were detected. Please correct them for the installation to "
+#~ "proceed."
+#~ msgstr ""
+#~ "Εντοπίστηκαν μερικά σφάλματα. Παρακαλούμε διορθώστε τα για να συνεχίστεί η "
+#~ "εγκατάσταση"
 
 #~ msgid "Valid Bosh"
 #~ msgstr "Εγκυρο bosh"
+
+#~ msgid "Database Detected"
+#~ msgstr "Εντοπίστηκε βάση δεδομένων"
 
 #~ msgid "Make sure your password is safe :"
 #~ msgstr "Σιγουρευτείτε εαν ο κωδικός σας είναι ασφαλής"
 
 #~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr "Προτείνεται ένα κεφαλαίο γράμμα, ένα ψηφίο και ένας ειδικός χαρακτήρας"
+#~ msgstr ""
+#~ "Προτείνεται ένα κεφαλαίο γράμμα, ένα ψηφίο και ένας ειδικός χαρακτήρας"
+
+#, php-format
+#~ msgid "%s - Add An Account"
+#~ msgstr "%s - Προσθέστε λογαριασμό"
 
 #~ msgid "8 characters"
 #~ msgstr "8 χαρακτήρες"
+
+#~ msgid "Composing..."
+#~ msgstr "Συνθέτοντας..."
+
+#~ msgid "normal"
+#~ msgstr "κανονικό"
+
+#~ msgid "empty"
+#~ msgstr "κενό"
