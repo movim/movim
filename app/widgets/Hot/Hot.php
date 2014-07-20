@@ -3,7 +3,6 @@ class Hot extends WidgetCommon
 {
     function load()
     {
-        //$this->addcss('explore.css');
     }
 
     function display()

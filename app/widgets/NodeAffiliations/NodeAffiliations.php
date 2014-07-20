@@ -67,10 +67,9 @@ class NodeAffiliations extends WidgetBase
             <hr />
             <br />
             <a 
-                class="button color green icon yes" 
-                style="float: right;"
+                class="button color green oppose" 
                 onclick="'.$ok.'">
-                '.__('button.validate').'
+                <i class="fa fa-check"></i> '.__('button.validate').'
             </a></form><div class="clear"></div>';
         return $html;
     }

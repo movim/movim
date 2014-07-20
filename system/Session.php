@@ -19,8 +19,6 @@
  * See COPYING for licensing information.
  */
 
-if(!class_exists('Session')):
-
 class Session
 {
     //protected $db;
@@ -139,7 +137,5 @@ class Session
     
     }
 }
-
-endif;
 
 ?>

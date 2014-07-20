@@ -1,5 +1,5 @@
 <div id="discover">
-    <h1>{$c->__('last')}</h1>
+    <h1 class="paddedtopbottom">{$c->__('last')}</h1>
 
     <ul class="list paddedtop">
     {loop="$users"}

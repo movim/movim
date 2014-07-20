@@ -1,10 +1,10 @@
 <h1>{$title}</h1>
 {if="isset($creation)"}
-    <span class="key">{$c->t('created')}</span>
+    <span class="key"><i class="fa fa-clock-o"></i> </span>
     <span>{$creation}</span>
 {/if}
 {if="isset($creator)"}
-    <span class="key">{$c->t('by')}</span>
+    <span class="key"><i class="fa fa-user"></i> </span>
     <span>{$creator}</span>
 {/if}
 

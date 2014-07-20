@@ -12,7 +12,6 @@
         <input 
             class="button color green oppose" 
             type="submit" 
-            
             name="submit" 
             value="{$c->__('button.submit')}" />
     </fieldset>

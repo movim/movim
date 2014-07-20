@@ -199,8 +199,8 @@ class Node extends WidgetCommon
                 <div class="block large">
                     <div
                         class="older"
-                        onclick="'.$this->genCallAjax($function, "'".$serverid."'", "'".$groupid."'", "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
-                            t('Get older posts').'
+                        onclick="'.$this->genCallAjax($function, "'".$serverid."'", "'".$groupid."'", "'".$next."'").'; this.parentNode.style.display = \'none\'">
+                        <i class="fa fa-history"></i> '. __('post.older') .'
                     </div>
                 </div>';
         }   

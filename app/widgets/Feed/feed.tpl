@@ -3,27 +3,25 @@
     {$c->prepareHead()}
     </div>
 
-    <div class="posthead">
-                    
+    <div class="posthead paddedbottom">
         <a 
-            class="button color merged left icon blog" 
+            class="button color merged left" 
             href="{$blog_url}"
             target="_blank">
-            {$c->__('page.blog')}
+            <i class="fa fa-pencil"></i> {$c->__('page.blog')}
         </a><a 
-            class="button color orange merged right icon feed" 
+            class="button color orange merged right" 
             href="{$feed_url}"
             target="_blank">
-            {$c->__('page.feed')} (Atom)
+            <i class="fa fa-rss"></i> {$c->__('page.feed')} (Atom)
         </a>
 
         <a 
-            class="button color purple icon user oppose" 
+            class="button color purple oppose" 
             href="{$friend_url}">
-            {$c->__('my_posts')}
+            <i class="fa fa-user"></i> {$c->__('my_posts')}
         </a>
     </div>
-    
     
     <div id="feedcontent">
         <div id="feedposts">

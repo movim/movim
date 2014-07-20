@@ -25,7 +25,7 @@
                     type="submit"
                     data-loading="{$c->__('button.connecting')}"
                     value="{$c->__('button.come_in')}"
-                    class="button color green icon yes"/> 
+                    class="button color green"/> 
             </div>
             <div class="clear"></div>
 
@@ -33,8 +33,8 @@
             <div class="clear"></div>
 
             <p class="create">
-                <a class="button color transparent oppose icon user" href="{$c->route('account')}">
-                    {$c->__('form.create_one')}
+                <a class="button color transparent oppose" href="{$c->route('account')}">
+                    <i class="fa fa-user"></i> {$c->__('form.create_one')}
                 </a>
                 <span>{$c->__('form.no_account')}</span>
             </p>

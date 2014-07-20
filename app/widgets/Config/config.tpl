@@ -1,15 +1,14 @@
 <div class="tabelem padded" title="{$c->__('page.configuration')}" id="config" >
     <a 
-        class="button color orange icon user"
-        href="{$c->route('nodeconfig', array($me,'urn:xmpp:microblog:0'))}" 
-        style="float: right;">
-        {$c->__('config.feed_configuration')}
+        class="button color orange oppose"
+        href="{$c->route('nodeconfig', array($me,'urn:xmpp:microblog:0'))}" >
+        <i class="fa fa-user"></i> {$c->__('config.feed_configuration')}
     </a>
     <form enctype="multipart/form-data" method="post" action="index.php" name="general">
         <fieldset>
-            <legend>{$c->__('config.general')}</legend>
+            <legend><i class="fa fa-sliders"></i> {$c->__('config.general')}</legend>
             <div class="element">
-                <label for="language">{$c->__('config.language')}</label>
+                <label for="language"><i class="fa fa-language"></i> {$c->__('config.language')}</label>
                 <div class="select">
                     <select name="language" id="language">
                         <option value="en">English (default)</option>
@@ -35,7 +34,7 @@
         <fieldset>
             <legend>{$c->__('config.appearence')}</legend>
             <div class="element">
-                <label for="color">{$c->__('config.background_color')}</label> 
+                <label for="color"><i class="fa fa-adjust"></i> {$c->__('config.background_color')}</label> 
                 <a 
                     type="button" 
                     onclick="
@@ -60,7 +59,7 @@
             </div>
             
             <div class="element">
-                <label for="size">{$c->__('config.font_size')}</label>
+                <label for="size"><i class="fa fa-font"></i> {$c->__('config.font_size')}</label>
                 <a 
                     type="button" 
                     onclick="
@@ -104,69 +103,6 @@
                 </span>
             </div>
             
-            <div class="element large">
-                <label for="pattern">{$c->__('button.reset')}</label>
-                
-                <input type="radio" name="pattern" id="argyle" value="argyle"/>
-                <label for="argyle"><span></span>
-                    <div class="preview argyle"
-                        style="background-color: #6d695c;"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="default" value="default"/>
-                <label for="default"><span></span>
-                    <div class="preview default"
-                        style="background-color: #082D50;;"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="tableclothe" value="tableclothe"/>
-                <label for="tableclothe"><span></span>
-                    <div class="preview tableclothe"
-                        style="background-color: rgba(200, 0, 0, 1);"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="blueprint" value="blueprint"/>
-                <label for="blueprint"><span></span>
-                    <div class="preview blueprint"
-                        style="background-color:#269;"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="cicada" value="cicada"/>
-                <label for="cicada"><span></span>
-                    <div class="preview cicada"
-                        style="background-color: #026873;"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="stripes" value="stripes"/>
-                <label for="stripes"><span></span>
-                    <div class="preview stripes"
-                        style="background-color: orange;"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="stars" value="stars"/>
-                <label for="stars"><span></span>
-                    <div class="preview stars"
-                        style="background-color:black; background-size: 100px 100px;"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="paper" value="paper"/>
-                <label for="paper"><span></span>
-                    <div class="preview paper"
-                        style="background-color: #23343E;"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="tartan" value="tartan"/>
-                <label for="tartan"><span></span>
-                    <div class="preview tartan"
-                        style="background-color: hsl(2, 57%, 40%);"></div>
-                </label>
-                
-                <input type="radio" name="pattern" id="empty" value=""/>
-                <label for="empty"><span></span>
-                    <div class="preview empty"
-                        style="background-color: white;"></div>
-                </label>
-            </div>
         </fieldset>
         <br />
         
@@ -180,9 +116,8 @@
         <a 
             onclick="{$submit}" 
             type="button" 
-            class="button icon yes color green" 
-            style="float: right;">
-            {$c->__('button.submit')}
+            class="button color green oppose" >
+            <i class="fa fa-check"></i> {$c->__('button.submit')}
         </a>
         <div class="clear"></div>
     </form>

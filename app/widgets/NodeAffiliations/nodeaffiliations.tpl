@@ -1,11 +1,11 @@
 {if="$pepfilter"}
 <div class="tabelem" title="{$c->__('affiliations.title')}" id="groupmemberlist">
-    <h1>{$c->__('affiliations.title')}</h1>
-    <div class="posthead">
+    <h1 class="paddedtopbottom"><i class="fa fa-key"></i> {$c->__('affiliations.title')}</h1>
+    <div class="posthead paddedtopbottom">
         <a 
-            class="button icon users color green" 
+            class="button color green" 
             onclick="{$getaffiliations} this.parentNode.style.display = 'none'">
-                {$c->__('affiliations.get')}
+            <i class="fa fa-key"></i> {$c->__('affiliations.get')}
         </a>
     </div>
     
