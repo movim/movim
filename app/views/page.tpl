@@ -14,6 +14,7 @@
 	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     
     <meta name="viewport" content="width=device-width, user-scalable=no">
+
     <?php
         $this->addCss('css/animations.css');
 
@@ -34,11 +35,7 @@
     
         $user = new User();
 
-        $color = $user->getConfig('color');    
-        $pattern = $user->getConfig('pattern');
-        
-        if(!isset($pattern))
-            $pattern = 'empty';
+        $color = $user->getConfig('color');
         
         if(isset($color)) {
             echo '
@@ -60,9 +57,9 @@
         }
     ?>
     <?php $this->widget('System');?>
-
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
-    <body class="<?php echo $pattern; ?>">
+    <body>
         <noscript>
             <style type="text/css">
                 nav {display:none;} #content {display: none;}

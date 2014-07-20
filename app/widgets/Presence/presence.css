@@ -18,11 +18,14 @@
     background-position: 1em center;
     color: white;
     width: 7em;
+
+    transition: background 1s;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #logouttab, #logoutlist {
     position: fixed;
-    right: 200px;
+    right: 15rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -32,7 +35,7 @@
 }
 
 #logouttab:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 #logoutlist {

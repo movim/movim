@@ -1,6 +1,6 @@
 <form name="vcard4" id="vcard4form">
     <fieldset>
-        <legend>{$c->__('page.profile')}</legend>
+        <legend><i class="fa fa-user"></i> {$c->__('page.profile')}</legend>
         <div class="element">
             <label for="fn">{$c->__('vcard.name')}</label>
             <input type="text" name="fn" class="content" value="{$me->fn}">
@@ -100,7 +100,7 @@
     </fieldset>
 
     <fieldset>
-        <legend>{$c->__('vcard.position_title')}</legend>
+        <legend><i class="fa fa-compass"></i> {$c->__('vcard.position_title')}</legend>
             
         <div class="element">
             <label for="url">{$c->__('vcard.locality')}</label>
@@ -126,20 +126,20 @@
     </fieldset>
 
     <fieldset>
-        <legend>{$c->__('vcard.accounts_title')}</legend>
+        <legend><i class="fa fa-circle-thin"></i> {$c->__('vcard.accounts_title')}</legend>
         
         <div class="element">
-            <label for="twitter">{$c->__('vcard.twitter')}</label>
+            <label for="twitter"><i class="fa fa-twitter"></i> {$c->__('vcard.twitter')}</label>
             <input type="text" name="twitter" class="content" value="{$me->twitter}" placeholder="{$c->__('Nickname')}">
         </div>
         
         <div class="element">
-            <label for="skype">{$c->__('vcard.skype')}</label>
+            <label for="skype"><i class="fa fa-skype"></i> {$c->__('vcard.skype')}</label>
             <input type="text" name="skype" class="content" value="{$me->skype}" placeholder="{$c->__('Nickname')}">
         </div>
         
         <div class="element">
-            <label for="skype">{$c->__('vcard.yahoo')}</label>
+            <label for="skype"><i class="fa fa-yahoo"></i> {$c->__('vcard.yahoo')}</label>
             <input type="email" name="yahoo" class="content" value="{$me->yahoo}" placeholder="{$c->__('Yahoo Account')}">
         </div>
     </fieldset>
@@ -151,18 +151,20 @@
                 movim_button_save('#vcard4validate');
                 this.value = '{$c->__('Submitting')}'; 
                 this.className='button color orange icon loading merged right inactive';" 
-            class="button icon merged right color green yes" 
-            style="float: right;"
+            class="button merged right color green oppose" 
             id="vcard4validate"
-            >{$c->__('Submit')}</a>
+            >
+            <i class="fa fa-check"></i> {$c->__('Submit')}
+        </a>
         <a
             onclick="document.querySelector('#vcard4form').reset();"
-            class="button icon no merged left color orange"
-            style="float: right;">{$c->__('Reset')}</a>
+            class="button merged left color orange oppose">
+            <i class="fa fa-eraser"></i> {$c->__('Reset')}
+        </a>
     </fieldset> 
 
     <fieldset>
-        <legend>{$c->__('vcard.privacy_title')}</legend>
+        <legend><i class="fa fa-lock"></i> {$c->__('vcard.privacy_title')}</legend>
         <div class="element">
             <label>{$c->__('vcard.privacy_question')}</label>
             <div class="checkbox">

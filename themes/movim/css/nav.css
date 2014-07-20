@@ -37,11 +37,13 @@ nav .wrapper {
 
 .menu li a, .menu li label {
     display: inline-block;
-    line-height: 0em;
+    line-height: 0;
     padding: 1.5em;
     text-indent: 2em;
     color: white;
     text-decoration: none;
+
+    transition: background 1s;
 
     background-repeat: no-repeat;
     background-size: 16px 16px;
@@ -49,22 +51,27 @@ nav .wrapper {
 }
 
 .menu li a.root, .menu li a.root.active {
-	width: 200px;
+	width: 12rem;
     color: transparent;
     background-image: url(../img/logo.svg);
     background-size: auto auto;
     background-position: center center;
     padding-left: 0;
     padding-right: 0;
+
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .menu li a:hover, .menu li label:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
 .menu li a.active {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .menu li .discover,

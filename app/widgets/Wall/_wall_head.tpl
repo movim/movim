@@ -1,6 +1,6 @@
 {if="$start == -1"}
     {$map}
-    <div class="posthead spacetop">
+    <div class="posthead paddedbottom">
         <a 
             class="button color icon blog merged left" 
             href="{$c->route('blog',array($from, 'urn:xmpp:microblog:0'))}"
@@ -35,7 +35,7 @@
         <div 
             class="older" 
             onclick="{$older} this.parentNode.style.display = 'none'">
-            {$c->__('post.older')}
+            <i class="fa fa-history"></i> {$c->__('post.older')}
         </div>
     </div>
 {/if}

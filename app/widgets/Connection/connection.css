@@ -6,8 +6,6 @@
     vertical-align: middle;
 
     text-overflow: ellipsis;
-    margin: -1em;
-    padding-bottom: 1em;
 }
 
 #connection span#countdown {

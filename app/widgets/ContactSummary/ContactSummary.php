@@ -33,11 +33,11 @@ class ContactSummary extends WidgetCommon
         $cd = new \Modl\ContactDAO();
         
         if($_GET['f'] == $this->user->getLogin()) {
-            $contact = $cd->get($this->user->getLogin());
+            $contact = $cd->getRosterItem($this->user->getLogin());
         }
 
         if(!isset($contact)) {
-            $contact = $cd->get($_GET['f']);
+            $contact = $cd->getRosterItem($_GET['f']);
         }
         
         if(isset($contact)) {
@@ -66,29 +66,26 @@ class ContactSummary extends WidgetCommon
     
     function prepareContactSummary($contact)
     {
-        $gender = getGender();
-        $marital = getMarital();
-
         // Contact avatar
         $html = '
-            <img class="avatar" src="'.$contact->getPhoto('l').'"/>
+            <a
+                class="avatar"
+                style="background-image: url('.$contact->getPhoto('l').');"
+                href="'.Route::urlize('friend',$contact->jid).'">
+            </a>
             ';
             
         $presencetxt = getPresencesTxt();
             
         // Contact general infos
-        if(isset($contact->presence))
-            $html .= '
-                <h1 class="'.$presencetxt[$contact->presence].'">'.$contact->getTrueName().'</h1>';
-        else
-            $html .= '<h1>'.$contact->getTrueName().'</h1>';
+        $html .= '<h1 class="paddedbottom">'.$contact->getTrueName().'</h1>';
                 
         if($this->testIsSet($contact->url) && filter_var($contact->url, FILTER_VALIDATE_URL)) 
-            $html .= '<a target="_blank" href="'.$contact->url.'">'.$contact->url.'</a>';
+            $html .= '<a target="_blank" class="paddedtop" href="'.$contact->url.'">'.$contact->url.'</a>';
           
-        if(isset($contact->status)) {
+        if($contact->status) {
             $html .= '
-                <div class="textbubble">
+                <div class="paddedbottom">
                     '.prepareString($contact->status).'
                 </div>'; 
         }

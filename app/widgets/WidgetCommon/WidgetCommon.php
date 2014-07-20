@@ -489,7 +489,11 @@ class WidgetCommon extends WidgetBase {
                             com = this.parentNode.querySelectorAll(\'.comment\'); 
                             for(i = 0; i < com.length; i++) { com.item(i).style.display = \'block\';};
                             this.style.display = \'none\';">
-                        <a class="getcomments icon chat">'.__('post.comments_older').'</a>
+                        <div class="comments">
+                            <a class="getcomments">
+                                <i class="fa fa-history"></i> '.__('post.comments_older').'
+                            </a>
+                        </div>
                     </article>';
             $comcounter = $size - 3;
         }
@@ -644,8 +648,8 @@ class WidgetCommon extends WidgetBase {
         $html = '
             <div class="comment">
                 <a 
-                    class="getcomments icon chat" >'.
-                    __('post.no_comments').
+                    class="getcomments" >
+                    <i class="fa fa-comments-o"></i> '.__('post.no_comments').
                 '</a>
             </div>';
         RPC::call('movim_fill', $parent.'comments', $html);
@@ -655,8 +659,8 @@ class WidgetCommon extends WidgetBase {
         $html = '
             <div class="comment">
                 <a 
-                    class="getcomments icon chat" >'.
-                    __('post.no_comments_stream').
+                    class="getcomments" >
+                    <i class="fa fa-comments-o"></i> '.__('post.no_comments_stream').
                 '</a>
             </div>';
         RPC::call('movim_fill', $parent.'comments', $html);

@@ -1,35 +1,37 @@
-<div class="posthead">
+<div class="posthead paddedtopbottom">
     {if="$subscribed == true"}  
         <a
             href="#" 
-            class="button color icon back"
+            class="button color"
             onclick="movim_toggle_display('#groupunsubscribe')">
-            {$c->__('node.unsubscribe')}
+            <i class="fa fa-arrow-left"></i> {$c->__('node.unsubscribe')}
         </a>
     {else}
         <a 
             href="#" 
-            class="button color green icon next"
+            class="button color green"
             onclick="movim_toggle_display('#groupsubscribe')">
-            {$c->__('node.subscribe')}
+            <i class="fa fa-arrow-right"></i> {$c->__('node.subscribe')}
         </a>
     {/if}
     <a 
-        class="button color icon blog merged left" 
+        class="button color merged left" 
         href="{$c->route('blog',array($serverid,$groupid))}"
         target="_blank"
     >
-        {$c->__('page.blog')}
+        <i class="fa fa-pencil"></i> {$c->__('page.blog')}
     </a><a 
-        class="button color orange icon alone feed merged right" 
+        class="button color orange alone merged right" 
         href="{$c->route('feed',array($serverid,$groupid))}"
         target="_blank"
-    ></a>
+    ><i class="fa fa-rss"></i></a>
     <a
         href="#"
         onclick="{$refresh}
         this.className='button icon color alone orange loading'; this.onclick=null;"
-        class="button color blue icon alone refresh"></a>
+        class="button color blue alone">
+        <i class="fa fa-refresh"></i>
+    </a>
 
     <!--
     <a 
@@ -38,11 +40,11 @@
     >{$c->t('Get Subscription')}</a>
     -->
     <a 
-        class="button color icon user"
-        style="float: right; display: none;"
+        class="button color oppose"
+        style="display: none;"
         id="configbutton"
         href="{$c->route('nodeconfig', array($serverid,$groupid))}"
-    >{$c->__('page.configuration')}</a>
+    ><i class="fa fa-user"></i> {$c->__('page.configuration')}</a>
 </div>
 
 <div class="popup" id="groupsubscribe">

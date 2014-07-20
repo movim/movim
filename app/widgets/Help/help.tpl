@@ -1,4 +1,5 @@
 <div class="tabelem paddedtop" title="{$c->__('page.help')}" id="help">
+<h1><i class="fa fa-life-ring"></i> {$c->__('page.help')}</h1>
     
 <h2>{$c->__('what.title')}</h2>
 

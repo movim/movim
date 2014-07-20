@@ -64,7 +64,6 @@ class ContactAction extends WidgetCommon
         if(isset($c)) {            
             // Chat button
             if($c->jid != $this->user->getLogin()) {
-            
                 $presences = getPresences();
                 
                 $html .='<h2>'.$this->__('title').'</h2>';
@@ -74,27 +73,25 @@ class ContactAction extends WidgetCommon
                     2 => 'yellow',
                     3 => 'red', 
                     4 => 'purple'
-                        );
+                );
 
-                if(isset($c->presence) && !in_array($c->presence, array(5, 6))) {
+                if($c->value && !in_array((int)$c->value, array(5, 6))) {
                     $html .= '
                         <a
-                            class="button color '.$ptoc[$c->presence].' icon chat"
-                            style="float: left;"
+                            class="button color '.$ptoc[(int)$c->value].'"
                             id="friendchat"
                             onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$c->jid."'").'"
                         >
-                            '.$presences[$c->presence].' - '.$this->__('chat').'
+                            <i class="fa fa-comment"></i> '.$presences[(int)$c->value].' - '.$this->__('chat').'
                         </a>';
                 }
             }
             
-            $html .= '<div style="clear: both;"></div>';
+            $html .= '<div style="clear: both;"></div><br />';
             
             $html .='
             <a
-                class="button icon rm black"
-                style="margin: 1em 0px; display: block;"
+                class="button black"
                 id="friendremoveask"
                 onclick="
                     document.querySelector(\'#friendremoveyes\').style.display = \'block\';
@@ -102,16 +99,16 @@ class ContactAction extends WidgetCommon
                     this.style.display = \'none\'
                 "
             >
-                '.t('Remove this contact').'
+                <i class="fa fa-minus"></i> '.t('Remove this contact').'
             </a>
 
             <a
-                class="button color green icon yes merged left';
+                class="button color green merged left';
             if(!isset($c->presence) || $c->presence == 5)
                 $html .=' left';
             $html .= '"
                 id="friendremoveyes"
-                style="margin: 1em 0px; float: left; display: none;"
+                style="float: left; display: none;"
                 onclick="
                     setTimeout(function() {'.
                         $this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'").
@@ -119,12 +116,12 @@ class ContactAction extends WidgetCommon
                     $this->genCallAjax("ajaxUnsubscribeContact", "'".$_GET['f']."'").
                 'this.className=\'button color green icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
-                '.__('button.yes').'
+                <i class="fa fa-check"></i> '.__('button.yes').'
             </a>
 
             <a
-                class="button color red icon no merged right"
-                style="margin: 1em 0px; float: left; display: none;"
+                class="button color red merged right"
+                style="float: left; display: none;"
                 id="friendremoveno"
                 onclick="
                     document.querySelector(\'#friendremoveask\').style.display = \'block\';
@@ -132,15 +129,14 @@ class ContactAction extends WidgetCommon
                     this.style.display = \'none\'
                 "
             >
-                '.__('button.no').'
+                <i class="fa fa-times"></i> '.__('button.no').'
             </a>';
         } elseif($_GET['f'] != $this->user->getLogin()) {
-                            
             $html .='<h2>'.$this->__('actions').'</h2>';
             
             $html .='
             <a
-                class="button color purple icon add"
+                class="button color purple"
                 onclick="
                     setTimeout(function() {'.
                         $this->genCallAjax("ajaxAddContact", "'".$_GET['f']."'").
@@ -148,14 +144,10 @@ class ContactAction extends WidgetCommon
                 $this->genCallAjax("ajaxSubscribeContact", "'".$_GET['f']."'").
                 'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 3000);"
             >
-                '.$this->__('invite').'
+                <i class="fa fa-plus"></i> '.$this->__('invite').'
             </a>';
         }
         
         return $html;
-    }
-    
-    function build() {
-        echo $this->prepareContactInfo();
     }
 }

@@ -28,6 +28,8 @@
     
     <a 
         name="submit" 
-        class="button black icon yes" 
-        onclick="{$submit} this.style.display = 'none';">{$c->__('button.save')}</a>
+        class="button black" 
+        onclick="{$submit} this.style.display = 'none';">
+        <i class="fa fa-check"></i> {$c->__('button.save')}
+    </a>
 </form>

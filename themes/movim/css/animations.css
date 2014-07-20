@@ -8,6 +8,20 @@
             animation: fadeIn 1s ease-in-out, dropDown 1s ease-in-out;
 }
 
+@keyframes dropRight{
+    0%{
+        transform: translateX(10em);
+        opacity:0;
+    }
+    50%{
+        opacity:1;
+    }
+    100%{
+        transform: translateX(0);
+        opacity:1;
+    }
+}
+
 @-webkit-keyframes fadeIn {
     from { opacity: 0; }
       to { opacity: 1; }
@@ -55,6 +69,8 @@
     80% { background-color: #294265; }
     100% { background-color: #3C7E91; }
 }
+
+
 
 @media screen and (max-width: 1024px) {
 .fadeDown {

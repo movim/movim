@@ -1,4 +1,4 @@
-<h2>{$c->__('title.conferences')}</h2>
+<h2><i class="fa fa-users"></i> {$c->__('title.conferences')}</h2>
 <ul>
     {loop="$conferences"}
         <li>
@@ -8,11 +8,11 @@
     {/loop}
 </ul>
 
-<h2>{$c->__('title.groups')}</h2>
+<h2><i class="fa fa-bookmark-o"></i> {$c->__('title.groups')}</h2>
 {loop="$subscriptions"}
     {if="$c->checkNewServer($value)"}
         <a href="{$c->route('server', $value->server)}">
-            <h3>{$value->server}</h3>
+            <h3><i class="fa fa-sitemap"></i> {$value->server}</h3>
         </a>
     {/if}
     <li>

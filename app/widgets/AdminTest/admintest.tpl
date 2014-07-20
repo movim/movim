@@ -1,4 +1,4 @@
-<div id="admincomp" class="tabelem padded" title="{$c->__('admin.compatibility')}">
+<div id="admincomp" class="tabelem paddedtop" title="{$c->__('admin.compatibility')}">
     <fieldset>
         <legend>{$c->__('admin.compatibility')}</legend>
         <div class="clear"></div>
