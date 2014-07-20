@@ -1,6 +1,6 @@
 <div id="serverresult" class="padded">
     <a class="button color purple oppose icon search" href="{$myserver}">{$c->__('discover_my_server')}</a>
-    <h2>{$c->__('discussion_servers')}</h2>
+    <h2><i class="fa fa-comments-o"></i> {$c->__('discussion_servers')}</h2>
     <ul class="list">
         {$servers}
     </ul>
@@ -9,7 +9,7 @@
 <div class="clear"></div>
 
 <div class="padded">
-    <h2>{$c->__('last_registered')}</h2>
+    <h2><i class="fa fa-clock-o"></i> {$c->__('last_registered')}</h2>
 
     <ul class="list">
     {loop="$users"}

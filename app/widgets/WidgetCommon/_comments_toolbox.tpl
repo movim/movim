@@ -1,15 +1,19 @@
 <div class="comments" id="{$post->nodeid}comments">
     {$comments}
     <a 
-        class="getcomments icon chat" 
-        onclick="{$getcomments} this.innerHTML = '{$c->__('post.comments_loading')}'"
-    >{$c->__('post.comments_get')}</a>
+        class="getcomments" 
+        onclick="{$getcomments} this.innerHTML = '<i class=\'fa fa-clock-o\'></i> {$c->__('post.comments_loading')}'"
+    >
+        <i class="fa fa-comments-o"></i> {$c->__('post.comments_get')}
+    </a>
 </div>
 <div class="comments">
-    <a class="addcomment icon chat"
+    <a class="addcomment"
         onclick="
         this.parentNode.querySelector('#commentsubmit').style.display = 'table'; 
-        this.style.display ='none'">{$c->__('post.comment_add')}</a>
+        this.style.display ='none'">
+        <i class="fa fa-comment-o"></i> {$c->__('post.comment_add')}
+    </a>
     <table id="commentsubmit">
         <tr>
             <td>
@@ -27,9 +31,9 @@
                                 {$publishcomment}
                                 document.getElementById('{$post->nodeid}commentcontent').value = '';
                             }"
-                    class="button color green icon yes"
+                    class="button color green"
                 >
-                    {$c->__('button.submit')}
+                    <i class="fa fa-check"></i> {$c->__('button.submit')}
                 </a>
             </td>
         </tr>

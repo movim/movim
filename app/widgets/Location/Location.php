@@ -97,16 +97,17 @@ class Location extends WidgetBase
                 <div id="mapdiv" style="width: auto; height: 250px; display: none;"></div>
                 <div class="clear"></div>
                 <a 
-                    class="button color green icon geo" 
+                    class="button color green" 
                     style="margin-top: 1em;"
-                    onclick="getMyPosition(); this.style.display = \'none\';">'.
-                    t('Update my position').'
+                    onclick="getMyPosition(); this.style.display = \'none\';">
+                    <i class="fa fa-compass"></i> '.t('Update my position').'
                 </a>
                 <a 
                     id="mypossubmit" 
                     style="display: none; margin-top: 1em; float: right;"
-                    class="button color green icon yes merged left" 
-                    onclick="'.$submit.' hidePositionChoice();">'.t('Accept').'</a>
+                    class="button color green merged left" 
+                    onclick="'.$submit.' hidePositionChoice();">
+                    <i class="fa fa-check"></i> '.t('Accept').'</a>
             </div>';
         
         return $html;

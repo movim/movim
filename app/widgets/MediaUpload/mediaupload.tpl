@@ -3,7 +3,7 @@
         <form id="upload_form" enctype="multipart/form-data" method="post" action="upload.php">
             <fieldset>
                 <div class="element">
-                    <label for="image_file">{$c->__('upload.info')}</label>
+                    <label for="image_file"><i class="fa fa-file-image-o"></i> {$c->__('upload.info')}</label>
                     <input type="file" name="image_file" id="image_file" onchange="fileSelected();" />
                 </div>
 
@@ -34,8 +34,8 @@
             </fieldset>
 
             <div class="clear"></div>
-            <a id="uploadbutton" class="button icon color green upload" onclick="startUploading()" />
-                {$c->__('button.upload')}
+            <a id="uploadbutton" class="button color green" onclick="startUploading()" />
+                <i class="fa fa-upload"></i> {$c->__('button.upload')}
             </a>
                 
             <div class="message info" id="error">

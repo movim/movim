@@ -1,4 +1,4 @@
-<div id="api" class="tabelem padded" title="{$c->__("api.title")}">
+<div id="api" class="tabelem paddedtop" title="{$c->__("api.title")}">
     <p>{$infos}</p>
 
     {if="isset($json)"}
@@ -7,7 +7,7 @@
                 {$c->__('api.registered')}
                 {if="!$unregister_status"}
                     <a class="button color red oppose" onclick="{$unregister}">
-                        {$c->__('button.unregister')}
+                        <i class="fa fa-sign-out"></i> {$c->__('button.unregister')}
                     </a>
                 {/if}
                 <div class="clear"></div>
@@ -24,7 +24,7 @@
             {if="$unregister_status"}
                 <div class="message info">{$c->__('api.unregister')}
                     <a class="button color orange oppose" onclick="{$unregister}">
-                        {$c->__('button.reset')}
+                        <i class="fa fa-sign-out"></i> {$c->__('button.reset')}
                     </a>
                     <div class="clear"></div>
                 </div>
@@ -32,7 +32,9 @@
         {else}
             <div class="message info">
                 {$c->__('api.register')}
-                <a class="button color green oppose" onclick="{$register}">{$c->__('button.register')}</a>
+                <a class="button color green oppose" onclick="{$register}">
+                    <i class="fa fa-sign-in"></i> {$c->__('button.register')}
+                </a>
                 <div class="clear"></div>
             </div>
         {/if}
