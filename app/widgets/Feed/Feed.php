@@ -141,8 +141,8 @@ class Feed extends WidgetCommon {
                 <div class="block large">
                     <div 
                         class="older" 
-                        onclick="'.$this->genCallAjax($function, "'".$next."'").'; this.parentNode.style.display = \'none\'">'.
-                            __('post.older').'
+                        onclick="'.$this->genCallAjax($function, "'".$next."'").'; this.parentNode.style.display = \'none\'">
+                        <i class="fa fa-history"></i> '. __('post.older').'
                     </div>
                 </div>';
         } else {

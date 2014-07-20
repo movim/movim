@@ -52,9 +52,9 @@ class ServerNodes extends WidgetCommon
         if(!in_array($type, array('conference', 'muc', 'discussion', 'chat'))) {
             $head = '
                 <a 
-                    class="button icon add color green" 
+                    class="button color green" 
                     onclick="movim_toggle_display(\'#groupCreation\')">
-                    '.t("Create a new group").'
+                    <i class="fa fa-plus"></i> '.t("Create a new group").'
                 </a>';
                 
             $html = '

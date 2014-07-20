@@ -114,20 +114,8 @@
     text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
 }
 
-#roster ul#rosterlist h1 {
-    padding: 1em;
-    color: #777;
-    line-height: 1em;
-    font-size: 1em;
-
-    text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
-}
-
-#roster ul#rosterlist h1:hover {
-    cursor: pointer;
-}
-
 #roster ul#rosterlist h1:before {
+    cursor: pointer;
     content: "+";
     width: 20px;
     padding-right: 5px;
@@ -141,9 +129,6 @@
 
 #roster ul#rosterlist ul.contact li img {
     max-height: 3em;
-}
-
-#roster ul#rosterlist ul.contact li img {
     float: left;
     width: 3em;
     height: 3em;
@@ -260,11 +245,11 @@
 
 #rostermenu {
     position: fixed;
-    bottom: 0px;
-    right: 0px;
+    bottom: 0;
+    right: 0;
     display: block;
     background-color: rgba(36, 36, 36, 1);
-    width: 200px;
+    width: 15rem;
     pointer-events: auto;
     z-index: 3;
 }

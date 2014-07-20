@@ -67,34 +67,34 @@
                         onclick="{$publish_item}
                                 document.querySelector('#postpublish').reset();
                                 movim_textarea_autoheight(document.querySelector('#postpublishcontent'));"
-                        class="button icon color green icon yes">
-                        {$c->__('button.submit')}
+                        class="button color green">
+                        <i class="fa fa-envelope"></i> {$c->__('button.submit')}
                     </a>
                     <a 
-                        class="button icon color alone merged left images"
+                        class="button color alone merged left images"
                         style="float: left;"
                         title="{$c->__('page.gallery')}"
                         onclick="
                             movim_toggle_display('#galleryselect');
                             "
-                    ></a>
+                    ><i class="fa fa-picture-o"></i></a>
                     <a 
-                        class="button icon color alone merged left preview"
+                        class="button color alone merged left"
                         style="float: left;"
                         title="{$c->__('page.preview')}"
                         onclick="
                             movim_toggle_display('#postpreview');
                             {$post_preview}"
-                    ></a><a 
-                        class="button color icon alone help merged" 
+                    ><i class="fa fa-eye"></i></a><a 
+                        class="button color alone merged" 
                         style="float: left;"
                         href="http://daringfireball.net/projects/markdown/basics"
                         title="{$c->__('page.help')}"
                         target="_blank"
-                    ></a><a title="{$c->__('post.geolocalisation')}"
+                    ><i class="fa fa-life-ring"></i></a><a title="{$c->__('post.geolocalisation')}"
                         onclick="setPosition(document.querySelector('#latlonpos')); showPosition(document.querySelector('#latlonpos').value);"
                         style="float: left;"
-                        class="button icon color icon alone geo merged right"></a>
+                        class="button color alone merged right"><i class="fa fa-location-arrow"></i></a>
                     <span id="postpublishlocation"></span>
 
                 </td>

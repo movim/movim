@@ -1,4 +1,4 @@
-<div id="statistics" class="tabelem padded" title="{$c->__("statistics.title")}">
+<div id="statistics" class="tabelem paddedtop" title="{$c->__("statistics.title")}">
     <ul class="list">
         <li class="title">
             <a class="action">{$c->__('statistics.since')}</a>

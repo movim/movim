@@ -14,6 +14,7 @@
 	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     
     <meta name="viewport" content="width=device-width, user-scalable=no">
+
     <?php
         $this->addCss('css/animations.css');
 
@@ -30,15 +31,13 @@
 
         $this->scripts();
 
-        $this->addCss('css/mobile.css'); 
+        $this->addCss('css/mobile.css');
+         
+        $this->addCss('css/font-awesome.css'); 
     
         $user = new User();
 
-        $color = $user->getConfig('color');    
-        $pattern = $user->getConfig('pattern');
-        
-        if(!isset($pattern))
-            $pattern = 'empty';
+        $color = $user->getConfig('color');
         
         if(isset($color)) {
             echo '
@@ -60,9 +59,8 @@
         }
     ?>
     <?php $this->widget('System');?>
-
   </head>
-    <body class="<?php echo $pattern; ?>">
+    <body>
         <noscript>
             <style type="text/css">
                 nav {display:none;} #content {display: none;}

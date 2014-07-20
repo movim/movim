@@ -128,25 +128,31 @@ class ContactInfo extends WidgetCommon
             if($c->twitter && $c->twitter != '') {
                 $html .= '
                     <a
-                        class="button color blue icon twitter"
+                        class="button color blue"
                         target="_blank"
-                        href="https://twitter.com/'.$c->twitter.'">@'.$c->twitter.'</a>';
+                        href="https://twitter.com/'.$c->twitter.'">
+                        <i class="fa fa-twitter"></i> @'.$c->twitter.'
+                    </a>';
             }
             
             if($c->skype && $c->skype != '') {
                 $html .= '
                     <a
-                        class="button color green icon skype"
+                        class="button color green"
                         target="_blank"
-                        href="callto://'.$c->skype.'">'.$c->skype.'</a>';
+                        href="callto://'.$c->skype.'">
+                        <i class="fa fa-skype"></i> '.$c->skype.'
+                    </a>';
             }
             
             if($c->yahoo && $c->yahoo != '') {
                 $html .= '
                     <a
-                        class="button color purple icon yahoo"
+                        class="button color purple"
                         target="_blank"
-                        href="ymsgr:sendIM?'.$c->yahoo.'">'.$c->yahoo.'</a>';
+                        href="ymsgr:sendIM?'.$c->yahoo.'">
+                        <i class="fa fa-yahoo"></i> '.$c->yahoo.'
+                    </a>';
             }
 
             $html .= '<div class="clear"></div>';

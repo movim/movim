@@ -11,6 +11,7 @@
         <?php $this->widget('ContactSummary');?>
         <?php $this->widget('ContactInfo');?>
         <?php $this->widget('ContactAction');?>
+        <div class="clear"></div>
         <?php $this->widget('ContactManage');?>
     </div>
 
