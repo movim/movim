@@ -31,9 +31,9 @@ class ContactSummary extends WidgetCommon
     function display()
     {
         $cd = new \Modl\ContactDAO();
-        
+
         if($_GET['f'] == $this->user->getLogin()) {
-            $contact = $cd->getRosterItem($this->user->getLogin());
+            $contact = $cd->get($this->user->getLogin());
         }
 
         if(!isset($contact)) {
@@ -81,7 +81,7 @@ class ContactSummary extends WidgetCommon
         $html .= '<h1 class="paddedbottom">'.$contact->getTrueName().'</h1>';
                 
         if($this->testIsSet($contact->url) && filter_var($contact->url, FILTER_VALIDATE_URL)) 
-            $html .= '<a target="_blank" class="paddedtop" href="'.$contact->url.'">'.$contact->url.'</a>';
+            $html .= '<a target="_blank" class="paddedtopbottom url" href="'.$contact->url.'">'.$contact->url.'</a>';
           
         if($contact->status) {
             $html .= '

@@ -16,3 +16,15 @@
     display: block;
     background-size: 100%;
 }
+
+#contactsummary a.url {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}

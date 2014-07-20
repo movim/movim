@@ -28,7 +28,7 @@
     <a
         href="#"
         onclick="{$refresh}
-        this.className='button icon color alone orange loading'; this.onclick=null;"
+        this.className='button color alone orange'; this.onclick=null;"
         class="button color blue alone">
         <i class="fa fa-refresh"></i>
     </a>
