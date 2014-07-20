@@ -7,5 +7,6 @@
 
     <div id="center">
         <?php $this->widget('Discover');?>
+        <div class="spacetop clear"></div>
     </div>
 </div>
