@@ -10,5 +10,6 @@
                 setTimeout('{$refresh}', 50);
             </script>
         {/if}
+        <div class="spacetop clear"></div>
     </div>
 </div>

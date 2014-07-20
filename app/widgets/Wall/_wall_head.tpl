@@ -2,28 +2,27 @@
     {$map}
     <div class="posthead paddedbottom">
         <a 
-            class="button color icon blog merged left" 
+            class="button color merged left" 
             href="{$c->route('blog',array($from, 'urn:xmpp:microblog:0'))}"
             target="_blank"
         >
-            {$c->__('blog.title')}
+            <i class="fa fa-pencil"></i> {$c->__('blog.title')}
         </a><a 
-            class="button color orange icon feed merged right" 
+            class="button color orange merged right" 
             href="{$c->route('feed',array($from, 'urn:xmpp:microblog:0'))}"
             target="_blank"
         >
-            {$c->__('feed.title')} (Atom)
+            <i class="fa fa-rss"></i> {$c->__('feed.title')} (Atom)
         </a>
         
         <a 
-            class="button color icon refresh" 
+            class="button color blue alone" 
             href="#"
             onclick="{$refresh}
-                this.innerHTML = '{$c->__('Updating')}'; 
-                this.className= 'button color orange icon merged right loading';
+                this.className= 'button color orange alone';
                 this.onclick = 'return false;'";
         >
-            {$c->__('button.update')}
+            <i class="fa fa-refresh"></i>
         </a>
     </div>
 {/if}

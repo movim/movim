@@ -31,7 +31,9 @@
 
         $this->scripts();
 
-        $this->addCss('css/mobile.css'); 
+        $this->addCss('css/mobile.css');
+         
+        $this->addCss('css/font-awesome.css'); 
     
         $user = new User();
 
@@ -57,7 +59,6 @@
         }
     ?>
     <?php $this->widget('System');?>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
     <body>
         <noscript>
