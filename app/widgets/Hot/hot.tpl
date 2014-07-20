@@ -1,5 +1,5 @@
 <div class="paddedtop">
-    <h2>{$c->__('explore.hot')}</h2>
+    <h2><i class="fa fa-paper-plane-o"></i> {$c->__('explore.hot')}</h2>
 
     <ul class="list">
     {loop="$nodes"}

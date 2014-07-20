@@ -12,23 +12,23 @@
         </div>
 
         <div class="element" id="camdiv">
-            <label for="url">{$c->__('avatar.webcam')}</label>
+            <label for="url"><i class="fa fa-camera"></i> {$c->__('avatar.webcam')}</label>
             <video id="runningcam" class="squares" autoplay></video>
             <canvas style="display:none;"></canvas>
             
             <a 
                 id="shoot" 
-                class="button icon preview color green" 
+                class="button color green" 
                 onclick="return false;">
-                {$c->__('avatar.cheese')}
+                <i class="fa fa-smile-o"></i> {$c->__('avatar.cheese')}
             </a>
             <a
                 id="capture" 
-                class="button icon image color purple" 
+                class="button color purple" 
                 onclick="
                     showVideo();
                     return false;">
-                {$c->__('avatar.snapshot')}
+                <i class="fa fa-smile-o"></i> {$c->__('avatar.snapshot')}
             </a>
         </div>
     </fieldset>
@@ -39,8 +39,7 @@
             movim_button_save('#avatarvalidate');
             this.value = '{$c->t('Submitting')}'; 
             this.className='button color orange icon loading inactive';" 
-        class="button icon color green yes"
+        class="button color green oppose"
         id="avatarvalidate"
-        style="float: right;"
-        >{$c->__('button.submit')}</a>
+        ><i class="fa fa-check"></i> {$c->__('button.submit')}</a>
 </form>

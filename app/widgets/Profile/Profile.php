@@ -98,13 +98,15 @@ class Profile extends WidgetCommon
 
             // My avatar
             $html .= '
-            <a href="'.Route::urlize('friend',$this->user->getLogin()).'">
-                <img src="'.$me->getPhoto('l').'" alt="avatar"/>
+            <a
+                class="avatar"
+                style="background-image: url('.$me->getPhoto('l').');"
+                href="'.Route::urlize('friend',$this->user->getLogin()).'">
             </a>';
                 
             // Contact general infos
             $html .= '
-                    <h1 style="text-decoration: none;">'.$me->getTrueName().'</h1>';
+                    <h1 class="padded" style="text-decoration: none;">'.$me->getTrueName().'</h1>';
                     
             $html .= '
                 <div class="textbubble">

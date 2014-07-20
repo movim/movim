@@ -53,8 +53,7 @@ body {
 
     margin: 0 auto;
     width: 100%;
-    /*max-width: 1280px;*/
-    padding-right: 200px;
+    padding-right: 15rem;
     
     background-color: #32434D;
     
@@ -63,75 +62,6 @@ body {
 	-moz-box-sizing: border-box;
     
     background-attachment:fixed;
-}
-
-/* Background pattern */
-.default {
-    background-image: radial-gradient(center
-     45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
-    background-image: -moz-radial-gradient(center
-     45deg, ellipse, rgba(255,255,255, 0.6) 0%, rgba(255,255,255,0) 100%);
-    background-image: -webkit-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
-    background-image: -o-radial-gradient(50% 50%, ellipse, rgba(255,255,255, 0.6), rgba(255,255,255,0) );
-    
-    background-repeat: no-repeat;
-}
-
-.argyle {
-    background-image: url(../img/back/argyle.png);
-}
-
-.paper {
-    background-image: url(../img/back/paper.png);
-}
-
-.carbon {
-    background-size:16px 16px;
-}
-
-.blueprint {
-    background-image: 
-    linear-gradient(rgba(255,255,255,.5) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(255,255,255,.5) 2px, transparent 2px),
-    linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px);
-    background-image: 
-    -webkit-linear-gradient(rgba(255,255,255,.5) 2px, transparent 2px),
-    -webkit-linear-gradient(left, rgba(255,255,255,.5) 2px, transparent 2px),
-    -webkit-linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px),
-    -webkit-linear-gradient(left, rgba(255,255,255,.2) 1px, transparent 1px);
-    background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
-    background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
-}
-
-.tableclothe {
-    background-image: url(../img/back/tableclothe.png);
-}
-.cicada {
-    background-image: url(../img/back/cicada.png);
-}
-
-.stripes {
-    background-image: url(../img/back/stripes.png);
-}
-
-.stars {
-    background-image:
-    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-    background-image:
-    -webkit-radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-    -webkit-radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-    -webkit-radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-    -webkit-radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
-    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-}
-
-.tartan {
-    background-image: url(../img/back/tartan.png);
 }
 
 /* A simple clear element*/
@@ -196,7 +126,6 @@ h1 {
     line-height: 2.5em;
     font-size: 1.5em;
     margin: 0px;
-    padding: 0 0.6em;
     vertical-align: bottom;
 }
 
@@ -252,20 +181,34 @@ ul.clean li {
 
 /* A default padding for some elements */
 .padded {
-    padding: 1em;
+    padding: 1rem;
 }
 
 .paddedtop {
-    padding: 1em;
-    padding-top: 0px;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.paddedbottom {
+    padding: 1rem;
+    padding-bottom: 0;
 }
 
 .paddedtopbottom {
-    padding: 0em 1em;
+    padding: 0em 1rem;
 }
 
 .spacetop {
-    padding-top: 1em;
+    padding-top: 1rem;
+}
+
+/* Font awesome */
+.fa {
+    margin-right: 0.25em;
+}
+
+.button.alone .fa {
+    margin-right: 0;
 }
 
 /* The main parts of the page */
@@ -297,10 +240,9 @@ ul.clean li {
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     float: left;
-    padding: 1em;
-    width: 200px;
+    width: 12rem;
     color: white;
-    top: 0px;
+    top: 0;
     overflow: hidden;
 }
 
@@ -330,16 +272,15 @@ ul.clean li {
 #right
 {
     display: block;
-    width: 200px;
+    width: 15rem;
     position: fixed;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     padding-top: 0em;
     height: 100%;
     overflow: hidden;
     pointer-events:none;
     z-index: 2;
-    background-image: url(../img/paper.png);
 }
 
 #right:after {
@@ -348,8 +289,8 @@ ul.clean li {
     content: "";
     display: block;
     position: absolute;
-    top: 0em;
-    left: 0em;
+    top: 0;
+    left: 0;
     width: 0.7em;
     height: 100%;
 }
@@ -425,32 +366,6 @@ ul.clean li {
     background-image: url(../img/config_on.png);
     background-position: -1px -1px;
     cursor: pointer;
-}
-
-/* Filters */
-
-.filters {
-	float: right;
-    margin: 0px;
-    padding: 0px;
-    /*font-size: 1.2em;*/
-    margin-right: 1.5em;
-}
-
-.filters li {
-	display: inline-block;
-    padding: 0em 1.5em;
-    line-height: 2em;
-}
-
-.filters li:hover {
-    color: #333;
-	cursor: pointer;
-}
-
-.filters li.on {
-    font-weight: bold;
-    color: #333;
 }
 
 /* Table */
@@ -566,15 +481,6 @@ ul.list li span.desc {
     text-decoration: none;
     width:  30%;
 }
-/*
-ul.list li span.desc:before  {
-    background: linear-gradient(to right, rgba(255,255,255,0), white);
-    display: block;
-    height: 2em;
-    content : " ";
-    width: 100%;
-    position: absolute;
-}*/
 
 ul.list li span.tag.red { background-color: #D92727; }
 ul.list li span.tag.blue { background-color: #0DB8B5; }

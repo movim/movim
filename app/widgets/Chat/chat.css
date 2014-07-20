@@ -12,7 +12,7 @@
 }
 
 #chats .filler {
-    width: 200px;
+    width: 15rem;
     height: 0;
     background-color: red;
     display: inline-block;

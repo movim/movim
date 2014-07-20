@@ -7,7 +7,7 @@ article img {
     max-width: 100%;
 }
 
-article > * {
+article:not(.comment) > *:not(footer) {
     background-color: white;
 }
 
@@ -46,12 +46,15 @@ article section {
 }
 
 article footer {
-    border-bottom: 1px solid #DDD;
-    padding-bottom: 1em;
+    border-bottom: 1px solid #D4D4D4;
+    border-left: 1px solid #F1F1F1;
+    border-right: 1px solid #EEE;
+    border-top: 1px solid #F2F2F2;
+    background-color: #F5F7FA;
 }
 
-article:nth-last-child(-n+2) footer {
-    border-bottom: none;
+article footer .comments {
+    padding: 0.5em;
 }
 
 article footer:after {
@@ -90,12 +93,12 @@ article .spoiler:hover {
 article.comment > * {
     border-radius: 0;
 }
-
+/*
 article.comment:nth-child(odd) header,
 article.comment:nth-child(odd) section {
-    background-color: #FBFBFB;
+    background-color: #F5F7FA;
     line-height: 1.5em;
-}
+}*/
 
 article.comment header img {
     width: 2em;
@@ -108,9 +111,7 @@ article.comment header span.date {
 .posthead {
     display: block;
     width: 100%;
-    padding: 0 1em;
-    padding-top: 1em;
-    
+
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -134,26 +135,12 @@ article.comment header span.date {
 
 .getcomments,
 .addcomment {
-    line-height: 2.3em;
+    line-height: 1.7em;
 }
 
 .getcomments:hover,
 .addcomment:hover {
     cursor: pointer;
-}
-
-.getcomments:before,
-.addcomment:before {
-    content: "";
-    padding: 0.5em 1em;
-}
-
-.getcomments:before {
-    background-color: #FC8F12;
-}
-
-.addcomment:before {
-    background-color: #6FCC43;
 }
 
 article table#commentsubmit {
@@ -179,7 +166,7 @@ article table#commentsubmit textarea {
 }
 
 article table#commentsubmit .commentsubmitrow {
-    background-color: #F3F3F3;
+    background-color: #F5F7FA;
     display: block;
 }
 
@@ -188,8 +175,6 @@ article table#commentsubmit .commentsubmitrow td {
 }
 
 .metadata p {
-    padding: 0 1em;
-    margin-bottom: 1em;
     font-style:italic;
 }
 
@@ -223,7 +208,7 @@ article .enclosures {
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
     clear: both;
-    padding: 1em 0;
+    padding: 0.5em;
 }
 
 article .enclosures .enclosure,
@@ -288,12 +273,12 @@ article span.group {
     float: right;
     margin-left: 1em;
     padding-right: 0.5em;
-    line-height: 2em;
+    line-height: 3em;
     max-width: 300px;
 
     background-size: 16px 16px;
     background-repeat: no-repeat;
-    background-position: 0 0.5em;
+    background-position: 0 1em;
     
     white-space: nowrap;  
     overflow: hidden;

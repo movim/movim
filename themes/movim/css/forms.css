@@ -298,7 +298,7 @@ legend {
     margin-right: 0.5em;
 }
 
-.icon.alone:before {
+.button.alone:before {
     margin-right: 0;
 }
 
@@ -318,6 +318,7 @@ legend {
 
 .button.black {
     border: 1px solid #555;
+    color: white;
 }
 
 .button.color {

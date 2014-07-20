@@ -13,7 +13,7 @@
     </div>
     <div id="center">
         <div class="protect black" title="<?php echo getFlagTitle("black"); ?>"></div>
-        <h1><?php echo __('page.explore'); ?></h1>
+        <h1 class="paddedtopbottom"><i class="fa fa-globe"></i> <?php echo __('page.explore'); ?></h1>
         <?php $this->widget('Hot');?>
         <div class="clear"></div>
         <?php $this->widget('Explore');?>

@@ -1,10 +1,10 @@
 <div class="tabelem protect red" id="node" title="{$c->__('page.posts')}">
     <div class="breadcrumb">
         <a href="{$c->route('explore')}">
-            {$c->__('page.explore')}
+            <i class="fa fa-globe"></i> {$c->__('page.explore')}
         </a>
         <a href="{$c->route('server', $server)}">
-            {$server}
+            <i class="fa fa-sitemap"></i> {$server}
         </a>
         <a href="{$c->route('node', array($server, $node))}">
             {$title}
@@ -13,10 +13,10 @@
     </div>
     <div class="clear"></div>
     
-    <div class="metadata" id="metadata">
+    <div class="metadata paddedtopbottom" id="metadata">
         {$metadata}
     </div>
-    
+    <br />
     <div id="formpublish" style="padding-bottom: 1em; display: none;">
         {$formpublish}
     </div>
