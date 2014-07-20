@@ -1,6 +1,6 @@
-<div id="admindb" class="tabelem padded" title="{$c->__('db.legend')}">
+<div id="admindb" class="tabelem paddedtop" title="{$c->__('db.legend')}">
     <fieldset>
-        <legend>{$c->__('')}</legend>
+        <legend>{$c->__('db.legend')}</legend>
         <div class="clear"></div>  
         
         {if="!$connected"}

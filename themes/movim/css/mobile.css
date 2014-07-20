@@ -21,8 +21,8 @@
 
 body {
     background-image: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     width: 100%;
     font-size: 16px;
     position: relative;
@@ -59,7 +59,7 @@ h1 {
 
 #main {
     clear: both;
-    padding-right: 0px;
+    padding-right: 0;
     overflow-x: hidden;
     margin-top: 3em;
 }
@@ -93,7 +93,7 @@ span.mobile {
 }
 */
 table#feedsubmitform {
-    margin: 0 0.5em;
+    margin: 0 0.5rem;
 }
 
 .element {
@@ -105,15 +105,15 @@ table#feedsubmitform {
 }
 
 .posthead {
-    padding: 0.5em;
+    padding: 0.5rem;
 }
 
 .post {
-    padding: 0.5em;
+    padding: 0.5rem;
 }
 
 .post .avatar {
-    margin-right: 0.5em;
+    margin-right: 0.5rem;
 }
 
 .post .postbubble {
@@ -146,7 +146,7 @@ table#feedsubmitform {
 }
 
 #loginpage {
-    margin: 0.5em !important;
+    margin: 0.5rem !important;
     margin-top: 20% ! important;
     background-position: center 0em !important;
 }
@@ -161,7 +161,7 @@ table#feedsubmitform {
 
 #logouttab, #logoutlist {
     right: 0px !important;
-    width: 3em !important;
+    width: 3rem !important;
 }
 
 ul.thumb li {
@@ -169,7 +169,7 @@ ul.thumb li {
 }
 
 #notifslist, #notifstab {
-    top: 3em !important;
+    top: 3rem !important;
 }
 
 #notifslist, #logoutlist {
@@ -187,7 +187,7 @@ ul.thumb li {
 }
 
 #roster input[name=search] {
-    top: 3em !important;
+    top: 3rem !important;
 }
 
 .popup {
@@ -211,25 +211,30 @@ ul.thumb li {
 
 #notifslist {
     margin: 0 !important;
-    margin-top: 3em !important;
+    margin-top: 3rem !important;
 }
 
 /* A default padding for some elements */
 .padded {
-    padding: 0.5em;
+    padding: 0.5rem;
 }
 
 .paddedtop {
-    padding: 0.5em;
-    padding-top: 0px;
+    padding: 0.5rem;
+    padding-top: 0;
+}
+
+.paddedbottom {
+    padding: 0.5rem;
+    padding-bottom: 0;
 }
 
 .paddedtopbottom {
-    padding: 0em 0.5em;
+    padding: 0rem 0.5rem;
 }
 
 .spacetop {
-    padding-top: 0.5em;
+    padding-top: 0.5rem;
 }
 
 /* Definition list */
@@ -245,6 +250,10 @@ dl dd {
 
 ul.list li span.tag.desc {
     display: none;
+}
+
+legend {
+    width: 100%;
 }
 
 }

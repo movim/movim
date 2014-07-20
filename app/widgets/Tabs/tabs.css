@@ -1,9 +1,7 @@
-ul#navtabs {
+#navtabs {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
-    /*color: white;
-    background-color: transparent;*/
     text-align: center;
 }
 
@@ -13,6 +11,8 @@ ul#navtabs {
 
     padding: 0em 2em;
     white-space: nowrap;
+
+    transition: background 0.5s;
 }
 #navtabs li a{
     display: block; 
@@ -20,10 +20,6 @@ ul#navtabs {
     width:100%;
     color: white;
     text-decoration: none;
-}
-
-.tabs {
-    clear: both;
 }
 
 #navtabs li:hover {
@@ -42,10 +38,6 @@ ul#navtabs {
     position: relative;
 }
 
-.moving_block{
-    /*position: absolute;
-    top: 0px;*/
-}
 .fixed_block{ 
     background-color: white; 
     width: 880px;

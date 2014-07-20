@@ -1,5 +1,5 @@
 <form name="admin" id="adminform" action="#" method="post">
-    <div id="admingen" class="tabelem padded" title="{$c->__('admin.general')}">
+    <div id="admingen" class="tabelem paddedtop" title="{$c->__('admin.general')}">
     <fieldset>
         <legend>{$c->__('admin.general')}</legend>
 
@@ -175,7 +175,7 @@
 
     <input 
     type="submit" 
-    class="button icon yes color green oppose" 
+    class="button color green oppose" 
     value="{$c->__('button.submit')}"/>
     <div class="clear"></div>
     </div>

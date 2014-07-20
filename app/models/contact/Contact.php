@@ -199,7 +199,7 @@ class Contact extends Model {
 
             if(isset($jid)) {
                 $sizes = array(
-                    'l'     => 200,
+                    'l'     => 210,
                     'm'     => 120,
                     's'     => 50,
                     'xs'    => 28,

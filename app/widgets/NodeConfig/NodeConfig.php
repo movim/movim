@@ -75,15 +75,14 @@ class NodeConfig extends WidgetBase
                 '
                 <hr /><br />
                 <a
-                        class="button color green icon yes" 
-                        style="float: right;"
+                        class="button color green oppose" 
                         onclick="
                             '.$submit.'
                             this.onclick=null;
                             this.style.display = \'none\'
                             "
                     >
-                        '.__('button.validate').'
+                        <i class="fa fa-check"></i> '.__('button.validate').'
                 </a>
                 <br />
                 <br />
