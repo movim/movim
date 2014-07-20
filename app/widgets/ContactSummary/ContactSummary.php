@@ -39,6 +39,10 @@ class ContactSummary extends WidgetCommon
         if(!isset($contact)) {
             $contact = $cd->getRosterItem($_GET['f']);
         }
+
+        if(!isset($contact)) {
+            $contact = $cd->get($_GET['f']);
+        }
         
         if(isset($contact)) {
             $this->view->assign('contact', $contact);
