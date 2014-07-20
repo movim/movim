@@ -7,5 +7,6 @@
 
     <div id="center">
         <?php $this->widget('Pods');?>
+        <div class="spacetop clear"></div>
     </div>
 </div>

@@ -1,14 +1,16 @@
 <div class="tabelem" title="{$c->__('page.feed')}" id="blog" >
-    <h1>{$title}</h1>
-    <div class="posthead">
+    <h1 class="paddedtopbottom">{$title}</h1>
+    <div class="posthead paddedtopbottom">
         <a 
-            class="button color orange icon feed merged left" 
+            class="button color orange merged left" 
             href="{$feed}"
             target="_blank"
         >
-            {$c->__('page.feed')} (Atom)
+            <i class="fa fa-rss"></i> {$c->__('page.feed')} (Atom)
         </a>
     </div>
 
     {$posts}
+
+    <div class="spacetop clear"></div>
 </div>
