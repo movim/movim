@@ -7,7 +7,7 @@
             </span>
         </header>
         <section class="content">{$value->description}</section>
-        <footer>
+        <footer class="padded">
             <img
             title="{$value->geo_country}" 
             alt="{$value->geo_country}" 
