@@ -1,7 +1,7 @@
 <div id="subscribe">
-    <h1>{$c->__('subscribe.title')}</h1>
+    <h1 class="paddedtopbottom">{$c->__('subscribe.title')}</h1>
 
-    <p class="paddedtop">{$c->__('subscribe.info')}</p>
+    <p class="paddedtopbottom">{$c->__('subscribe.info')}</p>
 
     {loop="$servers"}
     <div

@@ -3,10 +3,6 @@
 }
 
 #notifslist {
-    transition: right 0.5s ease;
-    background-color: #242424;
-    margin: 0em -1em;
-    margin-top: 1em;
     clear: both;
 }
 
@@ -14,14 +10,6 @@
     overflow: hidden;
     line-height: 3em;
     list-style-type: none;
-}
-
-#notifslist li:nth-child(2n) {
-    background-color: rgba(255, 255, 255, 0.03);
-}
-
-#notifslist li:hover {
-    background-color: black;
 }
 
 #notifslist li a:not(.button) {
@@ -32,21 +20,4 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding: 0em 1em;
-}
-
-#notifslist li img {
-    float: left;
-    width: 3em;
-    height: 3em;
-    margin-right: 1em;
-}
-
-#notifslist #acceptcontact {
-    padding: 0.5em;
-    padding-bottom: 0;
-}
-
-#notifslist #acceptcontact p {
-    padding-bottom: 1em;
 }
