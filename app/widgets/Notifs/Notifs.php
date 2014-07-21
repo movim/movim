@@ -127,25 +127,25 @@ class Notifs extends WidgetCommon
             <li>
                 <form id="acceptcontact">
                     <p>' . $this->__('wants_to_talk', $from) . '</p>
-           
-                        <a 
-                            class="button color green icon add merged left " 
-                            id="notifsvalidate" 
-                            onclick="
-                                '.$this->genCallAjax("ajaxAddRoster", "'".$from."'").'
-                                setTimeout(function() {'.
-                                    $this->genCallAjax("ajaxSubscribed", "'".$from."'").
-                                '}, 1000);
-                                setTimeout(function() {'.
-                                    $this->genCallAjax("ajaxSubscribe", "'".$from."'").
-                                '}, 2000);
-                            ">'.
-                            t("Add").'
-                        </a><a 
-                            class="button color red alone icon no merged right" 
-                            onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").'">
-                        </a>
-       
+                    <div class="clear spacetop"></div>
+                    <a 
+                        class="button color green merged left " 
+                        id="notifsvalidate" 
+                        onclick="
+                            '.$this->genCallAjax("ajaxAddRoster", "'".$from."'").'
+                            setTimeout(function() {'.
+                                $this->genCallAjax("ajaxSubscribed", "'".$from."'").
+                            '}, 1000);
+                            setTimeout(function() {'.
+                                $this->genCallAjax("ajaxSubscribe", "'".$from."'").
+                            '}, 2000);
+                        ">
+                        <i class="fa fa-plus"></i> '.t("Add").'
+                    </a><a 
+                        class="button color red alone merged right" 
+                        onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").'">
+                        <i class="fa fa-times"></i> 
+                    </a>
                 </form>
                 <div class="clear"></div>
             </li>';
