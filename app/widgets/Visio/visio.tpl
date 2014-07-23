@@ -1,6 +1,6 @@
 <div id="visio">
     <div id="log">
-    
+        
     </div>
 	<video autoplay="true" id="remote-video">
 	
@@ -15,18 +15,20 @@
         <div id="status"></div>
     </div>
     <div class="menu">
-        <a id="toggle-microphone" class="button color icon microphone alone merged right oppose">
-        </a><a id="toggle-camera" class="button color icon camera alone merged left oppose">
+        <a id="toggle-microphone" class="button color alone merged right oppose">
+            <i class="fa fa-microphone"></i> 
+        </a><a id="toggle-camera" class="button color alone merged left oppose">
+            <i class="fa fa-video-camera"></i> 
         </a>
         
-        <a id="call" class="button color green icon call">
-            {$c->t('Call')}
+        <a id="call" class="button color green">
+            <i class="fa fa-play"></i> {$c->__('visio.call')}
         </a>
         <a id="hang-up" class="button color red icon hang-up">
-            {$c->t('Hang Up')}
+            <i class="fa fa-stop"></i> {$c->__('visio.hang_up')}
         </a>
 
-        <a id="toggle-screen" class="button icon expand color blue alone oppose"></a>
+        <a id="toggle-screen" class="button color blue alone oppose"><i class="fa fa-expand"></i></a>
     </div>
 </div>
 <script type="text/javascript">
@@ -35,5 +37,5 @@
     VISIO_TURN_LIST = {$turn_list};
 </script>
 <div id="connection">
-	{$c->t('Connection')}...
+	{$c->__('visio.connection')}...
 </div>
