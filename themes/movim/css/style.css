@@ -181,25 +181,25 @@ ul.clean li {
 
 /* A default padding for some elements */
 .padded {
-    padding: 1rem;
+    padding: 1em;
 }
 
 .paddedtop {
-    padding: 1rem;
+    padding: 1em;
     padding-top: 0;
 }
 
 .paddedbottom {
-    padding: 1rem;
+    padding: 1em;
     padding-bottom: 0;
 }
 
 .paddedtopbottom {
-    padding: 0em 1rem;
+    padding: 0em 1em;
 }
 
 .spacetop {
-    padding-top: 1rem;
+    padding-top: 1em;
 }
 
 /* Font awesome */
