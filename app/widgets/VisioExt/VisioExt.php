@@ -36,8 +36,16 @@ class VisioExt extends WidgetBase
     function onSessionInitiate($jingle) {
         $jts = new \JingletoSDP($jingle);
         $sdp = $jts->generate();
+
+        $cd = new \Modl\ContactDAO();
+        $contact = $cd->get(cleanJid((string)$jingle->attributes()->initiator));
         
-        if($sdp) {        
+        if($sdp) {
+            RPC::call(
+                'movim_desktop_notification_arr',
+                $contact->getTrueName(),
+                $this->__('visio.calling'),
+                $contact->getPhoto('m'));
             RPC::call('Popup.setJid', (string)$jingle->attributes()->initiator);
             RPC::call('Popup.call', 'onOffer', $sdp);
         }
@@ -65,15 +73,15 @@ class VisioExt extends WidgetBase
         
         switch($jingle->reason->children()->getName()) {
             case 'success':
-                $message = t('Hung up');
+                $message = $this->__('visio.hung_up');
                 break;
                 
             case 'busy':
-                $message = t('Your contact is busy');
+                $message = $this->__('visio.busy');
                 break;
                 
             case 'decline':
-                $message = t('Declined');
+                $message = $this->__('visio.declined');
                 break;
                 
             case 'unsupported-transports':
@@ -89,7 +97,7 @@ class VisioExt extends WidgetBase
                 break;
                 
             case 'failed-application':
-                $message = t('Remote application incompatible');
+                $message = $this->__('visio.remote_incompatible');
                 break;
                 
             case 'incompatible-parameters':
@@ -97,12 +105,12 @@ class VisioExt extends WidgetBase
                 break;
 
             default:
-                $message = t('Unknown error');
+                $message = $this->__('visio.unknown_error');
                 break;
         }
-                
-        RPC::call('Popup.call', 'movim_fill', 'status', $message);
+
         RPC::call('Popup.call', 'terminate');
+        RPC::call('Popup.call', 'movim_fill', 'status', $message);
     }
 
     function ajaxSendProposal($proposal) {
