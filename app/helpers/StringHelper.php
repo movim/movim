@@ -196,6 +196,14 @@ function echapJid($jid)
     return str_replace(' ', '\40', $jid);
 }
 
+/*
+ * Clean the ressource of a jid
+ */
+function cleanJid($jid)
+{
+    return reset(explode('/', $jid));
+}
+
 /**
  * Return a URIfied string
  * @param string
