@@ -298,7 +298,7 @@ class FormtoXMPP{
                            
             } else{
                 $field = $node->addChild('field');
-                \movim_log(serialize($value));
+
                 if($value == 'true' || $value === 1)
                     $value = '1';
                 if($value == 'false' || $value === 0)

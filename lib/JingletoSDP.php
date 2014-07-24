@@ -71,16 +71,25 @@ class JingletoSDP {
         
         $sdp_medias = '';
             
-        foreach($this->jingle->children() as $content) {
-
-            if($content->getName() != 'content')
-                break;
-                
+        foreach($this->jingle->children() as $content) {              
             $media_header_ids = array();
             $media_header_first_port = null;
             $media_header_last_ip = null;
             
             $sdp_media = '';
+
+            // http://xmpp.org/extensions/xep-0338.html
+            if((string)$content->getName() == 'group') {
+                $sdp_media .=
+                    "\r\na=group:".
+                    (string)$content->attributes()->semantics;
+                foreach($content->children() as $content) {
+                    $sdp_media .= " ".(string)$content->attributes()->name;
+                }
+            }
+            
+            if($content->getName() != 'content')
+                break;
                 
             if(isset($content->transport->attributes()->ufrag))
                 $sdp_media .= "\r\na=ice-ufrag:".$content->transport->attributes()->ufrag;
@@ -115,6 +124,13 @@ class JingletoSDP {
                                     $payload->crypto->attributes()->{'key-params'};
 
                                 // TODO session params ?
+                            }
+
+                            if(isset($payload->{'zrtp-hash'})) {
+                                $sdp_media .= 
+                                    "\r\na=zrtp-hash:".
+                                    $payload->{'zrtp-hash'}->attributes()->version.' '.                          
+                                    (string)$payload->{'zrtp-hash'};
                             }
                             break;
 
