@@ -27,12 +27,12 @@ var Visio = {
     
     fullScreen: function() {
         var elem = document.getElementById("visio");
-        var toggle = document.getElementById("toggle-screen");
+        var toggle = document.querySelector("#toggle-screen i");
         
         if(!document.fullscreenElement
         && !document.mozFullScreenElement
         && !document.webkitFullscreenElement) {  // current working methods
-            toggle.className = toggle.className.replace('expand', 'contract');
+            toggle.className = toggle.className.replace('expand', 'compress');
             
             if (document.documentElement.requestFullscreen) {            
               document.documentElement.requestFullscreen();
@@ -42,7 +42,7 @@ var Visio = {
               document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
             }
         } else {
-            toggle.className = toggle.className.replace('contract', 'expand');
+            toggle.className = toggle.className.replace('compress', 'expand');
             
             if (document.cancelFullScreen) {
               document.cancelFullScreen();

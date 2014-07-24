@@ -6,9 +6,9 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
             <?php
             $this->addCss('css/animations.css');
-            $this->addCss('css/style.css');
             $this->addCss('css/forms.css');
             $this->addCss('css/fonts.css');
+            $this->addCss('css/style.css');
 
             $this->addScript('movim_hash.js');
             $this->addScript('movim_utils.js');
@@ -16,6 +16,8 @@
             $this->addScript('movim_tpl.js');
             $this->addScript('movim_rpc.js');
             $this->scripts();
+
+            $this->addCss('css/font-awesome.css'); 
         ?>
         <title><?php echo __('page.visio');?></title>
     </head>
