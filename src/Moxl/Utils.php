@@ -102,6 +102,7 @@ class Utils {
             'urn:xmpp:jingle:apps:rtp:audio',
             'urn:xmpp:jingle:apps:rtp:video',
             'urn:ietf:rfc:3264',
+            'urn:ietf:rfc:5888',
             'urn:xmpp:jingle:transports:ice-udp:0',
             'urn:xmpp:jingle:transports:ice-udp:1',
             'urn:xmpp:jingle:apps:rtp:rtcp-fb:0',
