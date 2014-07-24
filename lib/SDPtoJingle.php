@@ -13,26 +13,27 @@ class SDPtoJingle {
     private $global_fingerprint = array();
     
     private $regex = array(
-      'candidate' =>        "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d) (network) (\d) (id) ([a-zA-Z0-9]{1,45}))?/i", //à partir de generation les attr sont spécifiques à XMPP..autant l'enlever de la REGEX et les traiter à part? En théorie ils peuvent être dans n'importe quel ordre.
-      'sess_id' =>          "/^o=(\S+) (\d+)/i",
-      'rtpmap' =>           "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
-      'fmtp' =>             "/^a=fmtp:(\d+) (.+)/i",
-      'rtcp_fb' =>          "/^a=rtcp-fb:(\S+) (\S+)( (\S+))?/i",
-      'rtcp_fb_trr_int' =>  "/^a=rtcp-fb:(\d+) trr-int (\d+)/i",
-      'pwd' =>              "/^a=ice-pwd:(\S+)/i",
-      'ufrag' =>            "/^a=ice-ufrag:(\S+)/i",
-      'ptime' =>            "/^a=ptime:(\d+)/i",
-      'maxptime' =>         "/^a=maxptime:(\d+)/i",
-      'ssrc' =>             "/^a=ssrc:(\d+) (\w+)(:(\S+))?( (\w+))?/i",
-      'rtcp_mux' =>         "/^a=rtcp-mux/i",
-      'crypto' =>           "/^a=crypto:(\d{1,9}) (\w+) (\S+)( (\S+))?/i",
-      'zrtp_hash' =>        "/^a=zrtp-hash:(\S+) (\w+)/i",
-      'fingerprint' =>      "/^a=fingerprint:(\S+) (\S+)/i",
-      'setup' =>            "/^a=setup:(\S+)/i",
-      'extmap' =>           "/^a=extmap:([^\s\/]+)(\/([^\s\/]+))? (\S+)/i",
-      'sctpmap'         =>  "/^a=sctpmap:(\d+) (\S+) (\d+)/i",
-      'bandwidth' =>        "/^b=(\w+):(\d+)/i",
-      'media' =>            "/^m=(audio|video|application|data)/i"
+      'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d) (network) (\d) (id) ([a-zA-Z0-9]{1,45}))?/i", //à partir de generation les attr sont spécifiques à XMPP..autant l'enlever de la REGEX et les traiter à part? En théorie ils peuvent être dans n'importe quel ordre.
+      'sess_id'         => "/^o=(\S+) (\d+)/i",
+      'group'           => "/^a=group:(\S+) (.+)/i",
+      'rtpmap'          => "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
+      'fmtp'            => "/^a=fmtp:(\d+) (.+)/i",
+      'rtcp_fb'         => "/^a=rtcp-fb:(\S+) (\S+)( (\S+))?/i",
+      'rtcp_fb_trr_int' => "/^a=rtcp-fb:(\d+) trr-int (\d+)/i",
+      'pwd'             => "/^a=ice-pwd:(\S+)/i",
+      'ufrag'           => "/^a=ice-ufrag:(\S+)/i",
+      'ptime'           => "/^a=ptime:(\d+)/i",
+      'maxptime'        => "/^a=maxptime:(\d+)/i",
+      'ssrc'            => "/^a=ssrc:(\d+) (\w+)(:(\S+))?( (\w+))?/i",
+      'rtcp_mux'        => "/^a=rtcp-mux/i",
+      'crypto'          => "/^a=crypto:(\d{1,9}) (\w+) (\S+)( (\S+))?/i",
+      'zrtp_hash'       => "/^a=zrtp-hash:(\S+) (\w+)/i",
+      'fingerprint'     => "/^a=fingerprint:(\S+) (\S+)/i",
+      'setup'           => "/^a=setup:(\S+)/i",
+      'extmap'          => "/^a=extmap:([^\s\/]+)(\/([^\s\/]+))? (\S+)/i",
+      'sctpmap'         => "/^a=sctpmap:(\d+) (\S+) (\d+)/i",
+      'bandwidth'       => "/^b=(\w+):(\d+)/i",
+      'media'           => "/^m=(audio|video|application|data)/i"
     );
     
     function __construct($sdp, $initiator, $responder, $action) {
@@ -166,8 +167,8 @@ class SDPtoJingle {
                             break;
                         
                         // http://xmpp.org/extensions/xep-0262.html
-                        case 'zrtp-hash':
-                            $zrtphash     = $encryption->addChild('zrtp-hash', $matches[2]);
+                        case 'zrtp_hash':
+                            $zrtphash   = $encryption->addChild('zrtp-hash', $matches[2]);
                             $zrtphash->addAttribute('xmlns',   "urn:xmpp:jingle:apps:rtp:zrtp:1");
                             $zrtphash->addAttribute('version',   $matches[1]);
                             break;
@@ -205,6 +206,20 @@ class SDPtoJingle {
                             
                         case 'maxptime':
                             $description->addAttribute('maxptime', $matches[1]);
+                            break;
+
+                        // http://xmpp.org/extensions/xep-0338.html
+                        case 'group':
+                            $group = $this->jingle->addChild('group');
+                            $group->addAttribute('xmlns',   "urn:xmpp:jingle:apps:grouping:0");
+                            $group->addAttribute('semantics', $matches[1]);
+
+                            $params = explode(' ', $matches[2]);
+
+                            foreach($params as $value) {
+                                $content = $group->addChild('content');
+                                $content->addAttribute('name', trim($value));
+                            }
                             break;
                             
                         // http://xmpp.org/extensions/xep-0320.html
