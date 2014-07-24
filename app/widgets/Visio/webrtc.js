@@ -110,6 +110,8 @@ function sendTerminate(reason) {
 function sendMessage(msg, accept) {
     offer = {};
     offer.sdp = msg.sdp;
+
+    console.log(msg.sdp);
     
     offer.jid = VISIO_JID;
     offer.ressource = VISIO_RESSOURCE;
