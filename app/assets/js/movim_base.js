@@ -57,6 +57,10 @@ function movim_posts_unread(params) {
     movim_show_cpt();
 }
 
+function movim_desktop_notification_arr(arr) {
+    movim_desktop_notification(arr[0], arr[1], arr[2]);
+}
+
 function movim_desktop_notification(title, body, image) {
     var notification = new Notification(title, { icon: image, body: body });
 

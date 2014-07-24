@@ -288,7 +288,7 @@ legend {
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
 }
-
+/*
 .icon:before {
     content: " ";
     padding-left: 1em;
@@ -297,7 +297,7 @@ legend {
     background-repeat: no-repeat;
     margin-right: 0.5em;
 }
-
+*/
 .button.alone:before {
     margin-right: 0;
 }
@@ -353,8 +353,9 @@ legend {
 
 .button.inactive {
     pointer-events:none;
+    opacity: 0.5;
 }
-
+/*
 .icon.yes:before    { background-image: url(../img/icons/button/checkmark.svg); }
 .icon.no:before     { background-image: url(../img/icons/button/close.svg); }
 .icon.chat:before   { background-image: url(../img/icons/button/bubbles.svg);}
@@ -394,3 +395,4 @@ legend {
 .icon.camera-off:before{ background-image: url(../img/icons/button/camera-off.svg); }
 .icon.microphone:before{ background-image: url(../img/icons/button/microphone.svg); }
 .icon.microphone-off:before{ background-image: url(../img/icons/button/microphone-off.svg); }
+*/
