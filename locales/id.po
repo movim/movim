@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-15 18:26+0200\n"
+"POT-Creation-Date: 2014-08-03 23:49+0200\n"
 "PO-Revision-Date: 2014-06-01 23:08+0000\n"
 "Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-16 07:12+0000\n"
-"X-Generator: Launchpad (build 17112)\n"
+"X-Launchpad-Export-Date: 2014-08-04 21:24+0000\n"
+"X-Generator: Launchpad (build 17147)\n"
 "Language: id\n"
 
 #: /var/www/movim/cache/locales.php:2
@@ -80,7 +80,7 @@ msgstr ""
 msgid "Could not communicate with the XMPP server"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:17
+#: /var/www/movim/cache/locales.php:17 /var/www/movim/cache/locales.php:296
 msgid "Unknown error"
 msgstr ""
 
@@ -125,12 +125,12 @@ msgid "Database Type"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:28 /var/www/movim/cache/locales.php:48
-#: /var/www/movim/cache/locales.php:353
+#: /var/www/movim/cache/locales.php:362
 msgid "Username"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:29 /var/www/movim/cache/locales.php:49
-#: /var/www/movim/cache/locales.php:191 /var/www/movim/cache/locales.php:354
+#: /var/www/movim/cache/locales.php:191 /var/www/movim/cache/locales.php:363
 msgid "Password"
 msgstr "Kata sandi"
 
@@ -400,7 +400,7 @@ msgid "Connected to the chatroom"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:96
-msgid "Disconnected to the chatroom"
+msgid "Disconnected from the chatroom"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:97
@@ -451,7 +451,7 @@ msgstr ""
 msgid "Contacts"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:109 /var/www/movim/cache/locales.php:311
+#: /var/www/movim/cache/locales.php:109 /var/www/movim/cache/locales.php:320
 msgid "Posts"
 msgstr ""
 
@@ -1129,915 +1129,947 @@ msgstr ""
 "tercantum di atas akan tersedia untuk semua pengguna Movim dan seluruh "
 "Internet."
 
-#: /var/www/movim/cache/locales.php:289 /var/www/movim/cache/locales.php:310
-msgid "Feed"
-msgstr "Tautan"
+#: /var/www/movim/cache/locales.php:289
+msgid "Call"
+msgstr ""
 
-#: /var/www/movim/cache/locales.php:290 /var/www/movim/cache/locales.php:306
-msgid "Blog"
-msgstr "Blog"
+#: /var/www/movim/cache/locales.php:290
+msgid "Hang up"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:291
-msgid "You don't have javascript enabled.  Good luck with that."
+msgid "Connection"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:292
+msgid "Hung up"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:293
+msgid "Your contact is busy"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:294
+msgid "Declined"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:295
+msgid "Remote application incompatible"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:297
+msgid "Is calling you"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:298 /var/www/movim/cache/locales.php:319
+msgid "Feed"
+msgstr "Tautan"
+
+#: /var/www/movim/cache/locales.php:299 /var/www/movim/cache/locales.php:315
+msgid "Blog"
+msgstr "Blog"
+
+#: /var/www/movim/cache/locales.php:300
+msgid "You don't have javascript enabled.  Good luck with that."
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:301
 msgid ""
 "Movim is a kickass distributed social networking platform that protect your "
 "privacy an comes with a set of awesome features."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:293
+#: /var/www/movim/cache/locales.php:302
 msgid "Administration"
 msgstr "Administrasi"
 
-#: /var/www/movim/cache/locales.php:294
+#: /var/www/movim/cache/locales.php:303
 msgid "Home"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:295
+#: /var/www/movim/cache/locales.php:304
 msgid "Discover"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:296
+#: /var/www/movim/cache/locales.php:305
 msgid "Explore"
 msgstr "Jelajahi"
 
-#: /var/www/movim/cache/locales.php:297
+#: /var/www/movim/cache/locales.php:306
 msgid "Account Creation"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:298
+#: /var/www/movim/cache/locales.php:307
 msgid "News"
 msgstr "Berita"
 
-#: /var/www/movim/cache/locales.php:299
+#: /var/www/movim/cache/locales.php:308
 msgid "Avatar"
 msgstr "Avatar"
 
-#: /var/www/movim/cache/locales.php:300
+#: /var/www/movim/cache/locales.php:309
 msgid "Configuration"
 msgstr "Konfigurasi"
 
-#: /var/www/movim/cache/locales.php:301
+#: /var/www/movim/cache/locales.php:310
 msgid "Server"
 msgstr "Server"
 
-#: /var/www/movim/cache/locales.php:302
+#: /var/www/movim/cache/locales.php:311
 msgid "Public Groups"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:303
+#: /var/www/movim/cache/locales.php:312
 msgid "Viewer"
 msgstr "Penilik"
 
-#: /var/www/movim/cache/locales.php:304
+#: /var/www/movim/cache/locales.php:313
 msgid "Profile"
 msgstr "Profil"
 
-#: /var/www/movim/cache/locales.php:305
+#: /var/www/movim/cache/locales.php:314
 msgid "Media"
 msgstr "Media"
 
-#: /var/www/movim/cache/locales.php:307
+#: /var/www/movim/cache/locales.php:316
 msgid "About"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:308
+#: /var/www/movim/cache/locales.php:317
 msgid "Login"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:309
+#: /var/www/movim/cache/locales.php:318
 msgid "Help"
 msgstr "Bantuan"
 
-#: /var/www/movim/cache/locales.php:312
+#: /var/www/movim/cache/locales.php:321
 msgid "Gallery"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:313
+#: /var/www/movim/cache/locales.php:322
 msgid "Preview"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:314
+#: /var/www/movim/cache/locales.php:323
 msgid "Visio-conference"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:315
-msgid "Pods"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:316
-#, php-format
-msgid "Error: %s"
-msgstr "Kesalahan: %s"
-
-#: /var/www/movim/cache/locales.php:317
-#, php-format
-msgid "Cannot load file '%s'"
-msgstr "Tidak dapat memuat berkas '%s'"
-
-#: /var/www/movim/cache/locales.php:318
-#, php-format
-msgid "Route error, please set all the parameters for the page %s"
-msgstr "Kesalahan rute, harap atur semua parameter untuk halaman %s"
-
-#: /var/www/movim/cache/locales.php:319
-#, php-format
-msgid "%s - About"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:320
-#, php-format
-msgid "%s - Account"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:321
-#, php-format
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:322
-#, php-format
-msgid "%s - Blog"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:323
-#, php-format
-msgid "%s - Configuration"
-msgstr ""
-
 #: /var/www/movim/cache/locales.php:324
-#, php-format
-msgid "%s - Discover"
+msgid "Pods"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:325
 #, php-format
-msgid "%s - Explore"
-msgstr ""
+msgid "Error: %s"
+msgstr "Kesalahan: %s"
 
 #: /var/www/movim/cache/locales.php:326
 #, php-format
-msgid "%s - Help Page"
-msgstr ""
+msgid "Cannot load file '%s'"
+msgstr "Tidak dapat memuat berkas '%s'"
 
 #: /var/www/movim/cache/locales.php:327
 #, php-format
-msgid "%s - Login to Movim"
-msgstr ""
+msgid "Route error, please set all the parameters for the page %s"
+msgstr "Kesalahan rute, harap atur semua parameter untuk halaman %s"
 
 #: /var/www/movim/cache/locales.php:328
 #, php-format
-msgid "%s - Welcome to Movim"
+msgid "%s - About"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:329
 #, php-format
-msgid "%s - Media"
+msgid "%s - Account"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:330
 #, php-format
-msgid "%s - News"
+msgid "%s - Administration Panel"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:331
 #, php-format
-msgid "%s - Group Configuration"
+msgid "%s - Blog"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:332
 #, php-format
-msgid "%s - Group"
+msgid "%s - Configuration"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:333
 #, php-format
-msgid "%s - 404"
+msgid "%s - Discover"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:334
 #, php-format
-msgid "%s - Profile"
+msgid "%s - Explore"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:335
 #, php-format
-msgid "%s - Server"
+msgid "%s - Help Page"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:336
-msgid "Validate"
-msgstr "Validasi"
+#, php-format
+msgid "%s - Login to Movim"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:337
-msgid "Refresh"
-msgstr "Perbarui"
+#, php-format
+msgid "%s - Welcome to Movim"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:338
-msgid "Add"
-msgstr "Tambah"
+#, php-format
+msgid "%s - Media"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:339
-msgid "Close"
-msgstr "Tutup"
+#, php-format
+msgid "%s - News"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:340
-msgid "Update"
+#, php-format
+msgid "%s - Group Configuration"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:341
-msgid "Updating"
+#, php-format
+msgid "%s - Group"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:342
-msgid "Submit"
-msgstr "Kirim"
+#, php-format
+msgid "%s - 404"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:343
-msgid "Reset"
-msgstr "Atur ulang"
+#, php-format
+msgid "%s - Profile"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:344
-msgid "Register"
+#, php-format
+msgid "%s - Server"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:345
-msgid "Unregister"
-msgstr ""
+msgid "Validate"
+msgstr "Validasi"
 
 #: /var/www/movim/cache/locales.php:346
-msgid "Save"
-msgstr "Simpan"
+msgid "Refresh"
+msgstr "Perbarui"
 
 #: /var/www/movim/cache/locales.php:347
-msgid "Clear"
-msgstr ""
+msgid "Add"
+msgstr "Tambah"
 
 #: /var/www/movim/cache/locales.php:348
-msgid "Upload"
-msgstr "Unggah"
+msgid "Close"
+msgstr "Tutup"
 
 #: /var/www/movim/cache/locales.php:349
-msgid "Come in!"
-msgstr "Ayo masuk!"
+msgid "Update"
+msgstr ""
 
 #: /var/www/movim/cache/locales.php:350
-msgid "Connecting..."
+msgid "Updating"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:351
+msgid "Submit"
+msgstr "Kirim"
+
+#: /var/www/movim/cache/locales.php:352
+msgid "Reset"
+msgstr "Atur ulang"
+
+#: /var/www/movim/cache/locales.php:353
+msgid "Register"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:354
+msgid "Unregister"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:355
+msgid "Save"
+msgstr "Simpan"
+
+#: /var/www/movim/cache/locales.php:356
+msgid "Clear"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:357
+msgid "Upload"
+msgstr "Unggah"
+
+#: /var/www/movim/cache/locales.php:358
+msgid "Come in!"
+msgstr "Ayo masuk!"
+
+#: /var/www/movim/cache/locales.php:359
+msgid "Connecting..."
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:360
 msgid "Yes"
 msgstr "Ya"
 
-#: /var/www/movim/cache/locales.php:352
+#: /var/www/movim/cache/locales.php:361
 msgid "No"
 msgstr "Tidak"
 
-#: /var/www/movim/cache/locales.php:355
+#: /var/www/movim/cache/locales.php:364
 msgid "Day"
 msgstr "Hari"
 
-#: /var/www/movim/cache/locales.php:356
+#: /var/www/movim/cache/locales.php:365
 msgid "Monday"
 msgstr "Senin"
 
-#: /var/www/movim/cache/locales.php:357
+#: /var/www/movim/cache/locales.php:366
 msgid "Tuesday"
 msgstr "Selasa"
 
-#: /var/www/movim/cache/locales.php:358
+#: /var/www/movim/cache/locales.php:367
 msgid "Wednesday"
 msgstr "Rabu"
 
-#: /var/www/movim/cache/locales.php:359
+#: /var/www/movim/cache/locales.php:368
 msgid "Thursday"
 msgstr "Kamis"
 
-#: /var/www/movim/cache/locales.php:360
+#: /var/www/movim/cache/locales.php:369
 msgid "Friday"
 msgstr "Jumat"
 
-#: /var/www/movim/cache/locales.php:361
+#: /var/www/movim/cache/locales.php:370
 msgid "Saturday"
 msgstr "Sabtu"
 
-#: /var/www/movim/cache/locales.php:362
+#: /var/www/movim/cache/locales.php:371
 msgid "Sunday"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:363 /var/www/movim/cache/locales.php:372
+#: /var/www/movim/cache/locales.php:372 /var/www/movim/cache/locales.php:381
 msgid "None"
 msgstr "Nihil"
 
-#: /var/www/movim/cache/locales.php:364
+#: /var/www/movim/cache/locales.php:373
 msgid "Male"
 msgstr "Pria"
 
-#: /var/www/movim/cache/locales.php:365
+#: /var/www/movim/cache/locales.php:374
 msgid "Female"
 msgstr "Wanita"
 
-#: /var/www/movim/cache/locales.php:366
+#: /var/www/movim/cache/locales.php:375
 msgid "Other"
 msgstr "Lainnya"
 
-#: /var/www/movim/cache/locales.php:367
+#: /var/www/movim/cache/locales.php:376
 msgid "Bot"
 msgstr "Bot"
 
-#: /var/www/movim/cache/locales.php:368
+#: /var/www/movim/cache/locales.php:377
 msgid "Desktop"
 msgstr "Desktop"
 
-#: /var/www/movim/cache/locales.php:369
+#: /var/www/movim/cache/locales.php:378
 msgid "Phone"
 msgstr "Telepon"
 
-#: /var/www/movim/cache/locales.php:370
+#: /var/www/movim/cache/locales.php:379
 msgid "Web"
 msgstr "Web"
 
-#: /var/www/movim/cache/locales.php:371
+#: /var/www/movim/cache/locales.php:380
 msgid "Registered"
 msgstr "Terdaftar"
 
-#: /var/www/movim/cache/locales.php:373
+#: /var/www/movim/cache/locales.php:382
 msgid "Single"
 msgstr "Lajang"
 
-#: /var/www/movim/cache/locales.php:374
+#: /var/www/movim/cache/locales.php:383
 msgid "In a relationship"
 msgstr "Sedang berhubungan"
 
-#: /var/www/movim/cache/locales.php:375
+#: /var/www/movim/cache/locales.php:384
 msgid "Married"
 msgstr "Menikah"
 
-#: /var/www/movim/cache/locales.php:376
+#: /var/www/movim/cache/locales.php:385
 msgid "Divorced"
 msgstr "Bercerai"
 
-#: /var/www/movim/cache/locales.php:377
+#: /var/www/movim/cache/locales.php:386
 msgid "Widowed"
 msgstr "Janda"
 
-#: /var/www/movim/cache/locales.php:378
+#: /var/www/movim/cache/locales.php:387
 msgid "Cohabiting"
 msgstr "Tinggal bersama"
 
-#: /var/www/movim/cache/locales.php:379
+#: /var/www/movim/cache/locales.php:388
 msgid "Civil Union"
 msgstr "Hubungan sejenis"
 
-#: /var/www/movim/cache/locales.php:380
+#: /var/www/movim/cache/locales.php:389
 msgid "Not shared"
 msgstr "Tidak dibagikan"
 
-#: /var/www/movim/cache/locales.php:381
+#: /var/www/movim/cache/locales.php:390
 msgid "Shared with one contact"
 msgstr "Dibagikan ke satu kontak"
 
-#: /var/www/movim/cache/locales.php:382
+#: /var/www/movim/cache/locales.php:391
 msgid "Shared with all contacts"
 msgstr "Dibagikan ke seluruh kontak"
 
-#: /var/www/movim/cache/locales.php:383
+#: /var/www/movim/cache/locales.php:392
 msgid "Shared with the XMPP network"
 msgstr "Dibagikan ke jaringan XMPP"
 
-#: /var/www/movim/cache/locales.php:384
+#: /var/www/movim/cache/locales.php:393
 msgid "Shared with the whole Internet"
 msgstr "Dibagikan ke seluruh Internet"
 
-#: /var/www/movim/cache/locales.php:385
+#: /var/www/movim/cache/locales.php:394
 msgid "Online"
 msgstr "Tersedia"
 
-#: /var/www/movim/cache/locales.php:386
+#: /var/www/movim/cache/locales.php:395
 msgid "Away"
 msgstr "Jauh"
 
-#: /var/www/movim/cache/locales.php:387
+#: /var/www/movim/cache/locales.php:396
 msgid "Do Not Disturb"
 msgstr "Jangan Diganggu"
 
-#: /var/www/movim/cache/locales.php:388
+#: /var/www/movim/cache/locales.php:397
 msgid "Extended Away"
 msgstr "Menjauh Lama"
 
-#: /var/www/movim/cache/locales.php:389
+#: /var/www/movim/cache/locales.php:398
 msgid "Offline"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:390
+#: /var/www/movim/cache/locales.php:399
 msgid "Error"
 msgstr "Kesalahan"
 
-#: /var/www/movim/cache/locales.php:391
+#: /var/www/movim/cache/locales.php:400
 msgid "afraid"
 msgstr "takut"
 
-#: /var/www/movim/cache/locales.php:392
+#: /var/www/movim/cache/locales.php:401
 msgid "amazed"
 msgstr "kagum"
 
-#: /var/www/movim/cache/locales.php:393
+#: /var/www/movim/cache/locales.php:402
 msgid "amorous"
 msgstr "mudah jatuh cinta"
 
-#: /var/www/movim/cache/locales.php:394
+#: /var/www/movim/cache/locales.php:403
 msgid "angry"
 msgstr "marah"
 
-#: /var/www/movim/cache/locales.php:395
+#: /var/www/movim/cache/locales.php:404
 msgid "annoyed"
 msgstr "kesal"
 
-#: /var/www/movim/cache/locales.php:396
+#: /var/www/movim/cache/locales.php:405
 msgid "anxious"
 msgstr "risau"
 
-#: /var/www/movim/cache/locales.php:397
+#: /var/www/movim/cache/locales.php:406
 msgid "aroused"
 msgstr "terangsang"
 
-#: /var/www/movim/cache/locales.php:398
+#: /var/www/movim/cache/locales.php:407
 msgid "ashamed"
 msgstr "malu"
 
-#: /var/www/movim/cache/locales.php:399
+#: /var/www/movim/cache/locales.php:408
 msgid "bored"
 msgstr "bosan"
 
-#: /var/www/movim/cache/locales.php:400
+#: /var/www/movim/cache/locales.php:409
 msgid "brave"
 msgstr "berani"
 
-#: /var/www/movim/cache/locales.php:401
+#: /var/www/movim/cache/locales.php:410
 msgid "calm"
 msgstr "tenang"
 
-#: /var/www/movim/cache/locales.php:402
+#: /var/www/movim/cache/locales.php:411
 msgid "cautious"
 msgstr "hati-hati"
 
-#: /var/www/movim/cache/locales.php:403
+#: /var/www/movim/cache/locales.php:412
 msgid "cold"
 msgstr "dingin"
 
-#: /var/www/movim/cache/locales.php:404
+#: /var/www/movim/cache/locales.php:413
 msgid "confident"
 msgstr "yakin"
 
-#: /var/www/movim/cache/locales.php:405
+#: /var/www/movim/cache/locales.php:414
 msgid "confused"
 msgstr "bingung"
 
-#: /var/www/movim/cache/locales.php:406
+#: /var/www/movim/cache/locales.php:415
 msgid "contemplative"
 msgstr "merenung"
 
-#: /var/www/movim/cache/locales.php:407
+#: /var/www/movim/cache/locales.php:416
 msgid "contented"
 msgstr "puas"
 
-#: /var/www/movim/cache/locales.php:408
+#: /var/www/movim/cache/locales.php:417
 msgid "cranky"
 msgstr "jengkel"
 
-#: /var/www/movim/cache/locales.php:409
+#: /var/www/movim/cache/locales.php:418
 msgid "crazy"
 msgstr "gila"
 
-#: /var/www/movim/cache/locales.php:410
+#: /var/www/movim/cache/locales.php:419
 msgid "creative"
 msgstr "kreatif"
 
-#: /var/www/movim/cache/locales.php:411
+#: /var/www/movim/cache/locales.php:420
 msgid "curious"
 msgstr "penasaran"
 
-#: /var/www/movim/cache/locales.php:412
+#: /var/www/movim/cache/locales.php:421
 msgid "dejected"
 msgstr "gundah"
 
-#: /var/www/movim/cache/locales.php:413
+#: /var/www/movim/cache/locales.php:422
 msgid "depressed"
 msgstr "murung"
 
-#: /var/www/movim/cache/locales.php:414
+#: /var/www/movim/cache/locales.php:423
 msgid "disappointed"
 msgstr "kecewa"
 
-#: /var/www/movim/cache/locales.php:415
+#: /var/www/movim/cache/locales.php:424
 msgid "disgusted"
 msgstr "jijik"
 
-#: /var/www/movim/cache/locales.php:416
+#: /var/www/movim/cache/locales.php:425
 msgid "dismayed"
 msgstr "cemas"
 
-#: /var/www/movim/cache/locales.php:417
+#: /var/www/movim/cache/locales.php:426
 msgid "distracted"
 msgstr "bingung"
 
-#: /var/www/movim/cache/locales.php:418
+#: /var/www/movim/cache/locales.php:427
 msgid "embarrassed"
 msgstr "tersipu"
 
-#: /var/www/movim/cache/locales.php:419
+#: /var/www/movim/cache/locales.php:428
 msgid "envious"
 msgstr "iri"
 
-#: /var/www/movim/cache/locales.php:420
+#: /var/www/movim/cache/locales.php:429
 msgid "excited"
 msgstr "gembira"
 
-#: /var/www/movim/cache/locales.php:421
+#: /var/www/movim/cache/locales.php:430
 msgid "flirtatious"
 msgstr "genit"
 
-#: /var/www/movim/cache/locales.php:422
+#: /var/www/movim/cache/locales.php:431
 msgid "frustated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:423
+#: /var/www/movim/cache/locales.php:432
 msgid "grateful"
 msgstr "bersyukur"
 
-#: /var/www/movim/cache/locales.php:424
+#: /var/www/movim/cache/locales.php:433
 msgid "grieving"
 msgstr "kecil hati"
 
-#: /var/www/movim/cache/locales.php:425
+#: /var/www/movim/cache/locales.php:434
 msgid "grumpy"
 msgstr "galak"
 
-#: /var/www/movim/cache/locales.php:426
+#: /var/www/movim/cache/locales.php:435
 msgid "guilty"
 msgstr "bersalah"
 
-#: /var/www/movim/cache/locales.php:427
+#: /var/www/movim/cache/locales.php:436
 msgid "happy"
 msgstr "bahagia"
 
-#: /var/www/movim/cache/locales.php:428
+#: /var/www/movim/cache/locales.php:437
 msgid "hopeful"
 msgstr "penuh harapan"
 
-#: /var/www/movim/cache/locales.php:429
+#: /var/www/movim/cache/locales.php:438
 msgid "hot"
 msgstr "panas"
 
-#: /var/www/movim/cache/locales.php:430
+#: /var/www/movim/cache/locales.php:439
 msgid "humbled"
 msgstr "merendahkan"
 
-#: /var/www/movim/cache/locales.php:431
+#: /var/www/movim/cache/locales.php:440
 msgid "humiliated"
 msgstr "terhina"
 
-#: /var/www/movim/cache/locales.php:432
+#: /var/www/movim/cache/locales.php:441
 msgid "hungry"
 msgstr "lapar"
 
-#: /var/www/movim/cache/locales.php:433
+#: /var/www/movim/cache/locales.php:442
 msgid "hurt"
 msgstr "tersakiti"
 
-#: /var/www/movim/cache/locales.php:434
+#: /var/www/movim/cache/locales.php:443
 msgid "impressed"
 msgstr "terkesan"
 
-#: /var/www/movim/cache/locales.php:435
+#: /var/www/movim/cache/locales.php:444
 msgid "in awe"
 msgstr "kagum"
 
-#: /var/www/movim/cache/locales.php:436
+#: /var/www/movim/cache/locales.php:445
 msgid "in love"
 msgstr "jatuh cinta"
 
-#: /var/www/movim/cache/locales.php:437
+#: /var/www/movim/cache/locales.php:446
 msgid "indignant"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:438
+#: /var/www/movim/cache/locales.php:447
 msgid "interested"
 msgstr "tertarik"
 
-#: /var/www/movim/cache/locales.php:439
+#: /var/www/movim/cache/locales.php:448
 msgid "intoxicated"
 msgstr "mabuk"
 
-#: /var/www/movim/cache/locales.php:440
+#: /var/www/movim/cache/locales.php:449
 msgid "invincible"
 msgstr "tak terkalahkan"
 
-#: /var/www/movim/cache/locales.php:441
+#: /var/www/movim/cache/locales.php:450
 msgid "jealous"
 msgstr "cemburu"
 
-#: /var/www/movim/cache/locales.php:442
+#: /var/www/movim/cache/locales.php:451
 msgid "lonely"
 msgstr "kesepian"
 
-#: /var/www/movim/cache/locales.php:443
+#: /var/www/movim/cache/locales.php:452
 msgid "lost"
 msgstr "tersesat"
 
-#: /var/www/movim/cache/locales.php:444
+#: /var/www/movim/cache/locales.php:453
 msgid "lucky"
 msgstr "beruntung"
 
-#: /var/www/movim/cache/locales.php:445
+#: /var/www/movim/cache/locales.php:454
 msgid "mean"
 msgstr "jahat"
 
-#: /var/www/movim/cache/locales.php:446
+#: /var/www/movim/cache/locales.php:455
 msgid "moody"
 msgstr "murung"
 
-#: /var/www/movim/cache/locales.php:447
+#: /var/www/movim/cache/locales.php:456
 msgid "nervous"
 msgstr "gugup"
 
-#: /var/www/movim/cache/locales.php:448
+#: /var/www/movim/cache/locales.php:457
 msgid "neutral"
 msgstr "netral"
 
-#: /var/www/movim/cache/locales.php:449
+#: /var/www/movim/cache/locales.php:458
 msgid "offended"
 msgstr "tersinggung"
 
-#: /var/www/movim/cache/locales.php:450
+#: /var/www/movim/cache/locales.php:459
 msgid "outraged"
 msgstr "marah"
 
-#: /var/www/movim/cache/locales.php:451
+#: /var/www/movim/cache/locales.php:460
 msgid "playful"
 msgstr "humoris"
 
-#: /var/www/movim/cache/locales.php:452
+#: /var/www/movim/cache/locales.php:461
 msgid "proud"
 msgstr "bangga"
 
-#: /var/www/movim/cache/locales.php:453
+#: /var/www/movim/cache/locales.php:462
 msgid "relaxed"
 msgstr "santai"
 
-#: /var/www/movim/cache/locales.php:454
+#: /var/www/movim/cache/locales.php:463
 msgid "relieved"
 msgstr "lega"
 
-#: /var/www/movim/cache/locales.php:455
+#: /var/www/movim/cache/locales.php:464
 msgid "remorseful"
 msgstr "menyesal"
 
-#: /var/www/movim/cache/locales.php:456
+#: /var/www/movim/cache/locales.php:465
 msgid "restless"
 msgstr "gelisah"
 
-#: /var/www/movim/cache/locales.php:457
+#: /var/www/movim/cache/locales.php:466
 msgid "sad"
 msgstr "sedih"
 
-#: /var/www/movim/cache/locales.php:458
+#: /var/www/movim/cache/locales.php:467
 msgid "sarcastic"
 msgstr "sarkastik"
 
-#: /var/www/movim/cache/locales.php:459
+#: /var/www/movim/cache/locales.php:468
 msgid "satisfied"
 msgstr "puas"
 
-#: /var/www/movim/cache/locales.php:460
+#: /var/www/movim/cache/locales.php:469
 msgid "serious"
 msgstr "serius"
 
-#: /var/www/movim/cache/locales.php:461
+#: /var/www/movim/cache/locales.php:470
 msgid "shocked"
 msgstr "kaget"
 
-#: /var/www/movim/cache/locales.php:462
+#: /var/www/movim/cache/locales.php:471
 msgid "shy"
 msgstr "malu"
 
-#: /var/www/movim/cache/locales.php:463
+#: /var/www/movim/cache/locales.php:472
 msgid "sick"
 msgstr "sakit"
 
-#: /var/www/movim/cache/locales.php:464
+#: /var/www/movim/cache/locales.php:473
 msgid "sleepy"
 msgstr "mengantuk"
 
-#: /var/www/movim/cache/locales.php:465
+#: /var/www/movim/cache/locales.php:474
 msgid "spontaneous"
 msgstr "spontan"
 
-#: /var/www/movim/cache/locales.php:466
+#: /var/www/movim/cache/locales.php:475
 msgid "stressed"
 msgstr "stress"
 
-#: /var/www/movim/cache/locales.php:467
+#: /var/www/movim/cache/locales.php:476
 msgid "strong"
 msgstr "kuat"
 
-#: /var/www/movim/cache/locales.php:468
+#: /var/www/movim/cache/locales.php:477
 msgid "surprised"
 msgstr "tercengang"
 
-#: /var/www/movim/cache/locales.php:469
+#: /var/www/movim/cache/locales.php:478
 msgid "thankful"
 msgstr "berterima kasih"
 
-#: /var/www/movim/cache/locales.php:470
+#: /var/www/movim/cache/locales.php:479
 msgid "thirsty"
 msgstr "haus"
 
-#: /var/www/movim/cache/locales.php:471
+#: /var/www/movim/cache/locales.php:480
 msgid "tired"
 msgstr "lelah"
 
-#: /var/www/movim/cache/locales.php:472
+#: /var/www/movim/cache/locales.php:481
 msgid "undefined"
 msgstr "tak terdefinisi"
 
-#: /var/www/movim/cache/locales.php:473
+#: /var/www/movim/cache/locales.php:482
 msgid "weak"
 msgstr "lemah"
 
-#: /var/www/movim/cache/locales.php:474
+#: /var/www/movim/cache/locales.php:483
 msgid "worried"
 msgstr "khawatir"
 
-#: /var/www/movim/cache/locales.php:475
+#: /var/www/movim/cache/locales.php:484
 msgid "Month"
 msgstr "Bulan"
 
-#: /var/www/movim/cache/locales.php:476
+#: /var/www/movim/cache/locales.php:485
 msgid "January"
 msgstr "Januari"
 
-#: /var/www/movim/cache/locales.php:477
+#: /var/www/movim/cache/locales.php:486
 msgid "February"
 msgstr "Februari"
 
-#: /var/www/movim/cache/locales.php:478
+#: /var/www/movim/cache/locales.php:487
 msgid "March"
 msgstr "Maret"
 
-#: /var/www/movim/cache/locales.php:479
+#: /var/www/movim/cache/locales.php:488
 msgid "April"
 msgstr "April"
 
-#: /var/www/movim/cache/locales.php:480
+#: /var/www/movim/cache/locales.php:489
 msgid "May"
 msgstr "Mei"
 
-#: /var/www/movim/cache/locales.php:481
+#: /var/www/movim/cache/locales.php:490
 msgid "June"
 msgstr "Juni"
 
-#: /var/www/movim/cache/locales.php:482
+#: /var/www/movim/cache/locales.php:491
 msgid "July"
 msgstr "Juli"
 
-#: /var/www/movim/cache/locales.php:483
+#: /var/www/movim/cache/locales.php:492
 msgid "August"
 msgstr "Agustus"
 
-#: /var/www/movim/cache/locales.php:484
+#: /var/www/movim/cache/locales.php:493
 msgid "September"
 msgstr "September"
 
-#: /var/www/movim/cache/locales.php:485
+#: /var/www/movim/cache/locales.php:494
 msgid "October"
 msgstr "Oktober"
 
-#: /var/www/movim/cache/locales.php:486
+#: /var/www/movim/cache/locales.php:495
 msgid "November"
 msgstr "November"
 
-#: /var/www/movim/cache/locales.php:487
+#: /var/www/movim/cache/locales.php:496
 msgid "December"
 msgstr "Desember"
 
-#: /var/www/movim/cache/locales.php:488
+#: /var/www/movim/cache/locales.php:497
 msgid "Year"
 msgstr "Tahun"
 
-#: /var/www/movim/cache/locales.php:489
+#: /var/www/movim/cache/locales.php:498
 msgid "Today"
 msgstr "Hari Ini"
 
-#: /var/www/movim/cache/locales.php:490
+#: /var/www/movim/cache/locales.php:499
 msgid "Tomorrow"
 msgstr "Besok"
 
-#: /var/www/movim/cache/locales.php:491
+#: /var/www/movim/cache/locales.php:500
 msgid "Yesterday"
 msgstr "Kemarin"
 
-#: /var/www/movim/cache/locales.php:492
+#: /var/www/movim/cache/locales.php:501
 #, php-format
 msgid " %d days ago"
 msgstr " %d hari lalu"
 
-#: /var/www/movim/cache/locales.php:493
+#: /var/www/movim/cache/locales.php:502
 msgid "day"
 msgstr "hari"
 
-#: /var/www/movim/cache/locales.php:494
+#: /var/www/movim/cache/locales.php:503
 msgid "Title"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:495
+#: /var/www/movim/cache/locales.php:504
 msgid "What's new ?"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:496
+#: /var/www/movim/cache/locales.php:505
 msgid "Place"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:497
+#: /var/www/movim/cache/locales.php:506
 msgid "by"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:498
+#: /var/www/movim/cache/locales.php:507
 msgid "Geolocalisation"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:499
+#: /var/www/movim/cache/locales.php:508
 msgid "email"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:500
+#: /var/www/movim/cache/locales.php:509
 msgid "No content"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:501
+#: /var/www/movim/cache/locales.php:510
 msgid "No comments"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:502
+#: /var/www/movim/cache/locales.php:511
 msgid "No comments stream"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:503
+#: /var/www/movim/cache/locales.php:512
 msgid "Your feed cannot be loaded."
 msgstr "Feed mu tidak dapat dimuat."
 
-#: /var/www/movim/cache/locales.php:504
+#: /var/www/movim/cache/locales.php:513
 msgid "Get older posts"
 msgstr "Tampilkan posting lawas"
 
-#: /var/www/movim/cache/locales.php:505
+#: /var/www/movim/cache/locales.php:514
 #, php-format
 msgid "%s new items"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:506
+#: /var/www/movim/cache/locales.php:515
 msgid "Comment publication error"
 msgstr "Kesalahan publikasikan komentar"
 
-#: /var/www/movim/cache/locales.php:507
+#: /var/www/movim/cache/locales.php:516
 msgid "Show the older comments"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:508
+#: /var/www/movim/cache/locales.php:517
 msgid "Loading comments ..."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:509
+#: /var/www/movim/cache/locales.php:518
 msgid "Get the comments"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:510
+#: /var/www/movim/cache/locales.php:519
 msgid "Add a comment"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:511
+#: /var/www/movim/cache/locales.php:520
 msgid "Share with"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:512
+#: /var/www/movim/cache/locales.php:521
 msgid "Everyone"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:513
+#: /var/www/movim/cache/locales.php:522
 msgid "Your contacts"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:514
+#: /var/www/movim/cache/locales.php:523
 msgid "Delete this post"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:515
+#: /var/www/movim/cache/locales.php:524
 msgid "Updated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:516
+#: /var/www/movim/cache/locales.php:525
 msgid "The API is not reachable, try again later"
 msgstr ""
 
