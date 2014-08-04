@@ -5,15 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim Website\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-15 18:26+0200\n"
+"POT-Creation-Date: 2014-08-03 23:49+0200\n"
 "PO-Revision-Date: 2014-07-15 18:32+0000\n"
 "Last-Translator: Strubbl <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-16 07:12+0000\n"
-"X-Generator: Launchpad (build 17112)\n"
+"X-Launchpad-Export-Date: 2014-08-04 21:24+0000\n"
+"X-Generator: Launchpad (build 17147)\n"
 "Language: \n"
 
 #: /var/www/movim/cache/locales.php:2
@@ -80,7 +80,7 @@ msgstr "Eine Verbindung zum XMPP-Server war nicht möglich"
 msgid "Could not communicate with the XMPP server"
 msgstr "Konnte nicht mit dem XMPP-Server kommunizieren."
 
-#: /var/www/movim/cache/locales.php:17
+#: /var/www/movim/cache/locales.php:17 /var/www/movim/cache/locales.php:296
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
@@ -125,12 +125,12 @@ msgid "Database Type"
 msgstr "Datenbanktyp"
 
 #: /var/www/movim/cache/locales.php:28 /var/www/movim/cache/locales.php:48
-#: /var/www/movim/cache/locales.php:353
+#: /var/www/movim/cache/locales.php:362
 msgid "Username"
 msgstr "Nutzername"
 
 #: /var/www/movim/cache/locales.php:29 /var/www/movim/cache/locales.php:49
-#: /var/www/movim/cache/locales.php:191 /var/www/movim/cache/locales.php:354
+#: /var/www/movim/cache/locales.php:191 /var/www/movim/cache/locales.php:363
 msgid "Password"
 msgstr "Passwort"
 
@@ -406,7 +406,7 @@ msgid "Connected to the chatroom"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:96
-msgid "Disconnected to the chatroom"
+msgid "Disconnected from the chatroom"
 msgstr ""
 
 #: /var/www/movim/cache/locales.php:97
@@ -458,7 +458,7 @@ msgstr "Cache"
 msgid "Contacts"
 msgstr "Kontakte"
 
-#: /var/www/movim/cache/locales.php:109 /var/www/movim/cache/locales.php:311
+#: /var/www/movim/cache/locales.php:109 /var/www/movim/cache/locales.php:320
 msgid "Posts"
 msgstr "Beiträge"
 
@@ -1162,915 +1162,947 @@ msgstr ""
 "Achtung! Durch das Öffentlichmachen des Profils werden alle obenstehenden "
 "Information verfügbar für alle Movimnutzer und  das gesamte Internet."
 
-#: /var/www/movim/cache/locales.php:289 /var/www/movim/cache/locales.php:310
+#: /var/www/movim/cache/locales.php:289
+msgid "Call"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:290
+msgid "Hang up"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:291
+msgid "Connection"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:292
+msgid "Hung up"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:293
+msgid "Your contact is busy"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:294
+msgid "Declined"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:295
+msgid "Remote application incompatible"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:297
+msgid "Is calling you"
+msgstr ""
+
+#: /var/www/movim/cache/locales.php:298 /var/www/movim/cache/locales.php:319
 msgid "Feed"
 msgstr "Feed"
 
-#: /var/www/movim/cache/locales.php:290 /var/www/movim/cache/locales.php:306
+#: /var/www/movim/cache/locales.php:299 /var/www/movim/cache/locales.php:315
 msgid "Blog"
 msgstr "Blog"
 
-#: /var/www/movim/cache/locales.php:291
+#: /var/www/movim/cache/locales.php:300
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Javaskript ist deaktiviert. Viel Erfolg damit!"
 
-#: /var/www/movim/cache/locales.php:292
+#: /var/www/movim/cache/locales.php:301
 msgid ""
 "Movim is a kickass distributed social networking platform that protect your "
 "privacy an comes with a set of awesome features."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:293
+#: /var/www/movim/cache/locales.php:302
 msgid "Administration"
 msgstr "Systemverwaltung"
 
-#: /var/www/movim/cache/locales.php:294
+#: /var/www/movim/cache/locales.php:303
 msgid "Home"
 msgstr "Hauptansicht"
 
-#: /var/www/movim/cache/locales.php:295
+#: /var/www/movim/cache/locales.php:304
 msgid "Discover"
 msgstr "Entdecken"
 
-#: /var/www/movim/cache/locales.php:296
+#: /var/www/movim/cache/locales.php:305
 msgid "Explore"
 msgstr "Durchsuchen"
 
-#: /var/www/movim/cache/locales.php:297
+#: /var/www/movim/cache/locales.php:306
 msgid "Account Creation"
 msgstr "Registrieren"
 
-#: /var/www/movim/cache/locales.php:298
+#: /var/www/movim/cache/locales.php:307
 msgid "News"
 msgstr "Neuigkeiten"
 
-#: /var/www/movim/cache/locales.php:299
+#: /var/www/movim/cache/locales.php:308
 msgid "Avatar"
 msgstr "Benutzerbild"
 
-#: /var/www/movim/cache/locales.php:300
+#: /var/www/movim/cache/locales.php:309
 msgid "Configuration"
 msgstr "Einstellungen"
 
-#: /var/www/movim/cache/locales.php:301
+#: /var/www/movim/cache/locales.php:310
 msgid "Server"
 msgstr "Server"
 
-#: /var/www/movim/cache/locales.php:302
+#: /var/www/movim/cache/locales.php:311
 msgid "Public Groups"
 msgstr "Öffentliche Gruppen"
 
-#: /var/www/movim/cache/locales.php:303
+#: /var/www/movim/cache/locales.php:312
 msgid "Viewer"
 msgstr "Betrachter"
 
-#: /var/www/movim/cache/locales.php:304
+#: /var/www/movim/cache/locales.php:313
 msgid "Profile"
 msgstr "Profil"
 
-#: /var/www/movim/cache/locales.php:305
+#: /var/www/movim/cache/locales.php:314
 msgid "Media"
 msgstr "Medien"
 
-#: /var/www/movim/cache/locales.php:307
+#: /var/www/movim/cache/locales.php:316
 msgid "About"
 msgstr "Info"
 
-#: /var/www/movim/cache/locales.php:308
+#: /var/www/movim/cache/locales.php:317
 msgid "Login"
 msgstr "Anmelden"
 
-#: /var/www/movim/cache/locales.php:309
+#: /var/www/movim/cache/locales.php:318
 msgid "Help"
 msgstr "Hilfe"
 
-#: /var/www/movim/cache/locales.php:312
+#: /var/www/movim/cache/locales.php:321
 msgid "Gallery"
 msgstr "Galerie"
 
-#: /var/www/movim/cache/locales.php:313
+#: /var/www/movim/cache/locales.php:322
 msgid "Preview"
 msgstr "Vorschau"
 
-#: /var/www/movim/cache/locales.php:314
+#: /var/www/movim/cache/locales.php:323
 msgid "Visio-conference"
 msgstr "Videokonferenz"
 
-#: /var/www/movim/cache/locales.php:315
+#: /var/www/movim/cache/locales.php:324
 msgid "Pods"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:316
+#: /var/www/movim/cache/locales.php:325
 #, php-format
 msgid "Error: %s"
 msgstr "Fehler: %s"
 
-#: /var/www/movim/cache/locales.php:317
+#: /var/www/movim/cache/locales.php:326
 #, php-format
 msgid "Cannot load file '%s'"
 msgstr "Die Datei '%s' kann nicht geladen werden."
 
-#: /var/www/movim/cache/locales.php:318
+#: /var/www/movim/cache/locales.php:327
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
 msgstr "Fehler bei der Weiterleitung. Setzen Sie alle Parameter für %s"
 
-#: /var/www/movim/cache/locales.php:319
+#: /var/www/movim/cache/locales.php:328
 #, php-format
 msgid "%s - About"
 msgstr "%s - Info"
 
-#: /var/www/movim/cache/locales.php:320
+#: /var/www/movim/cache/locales.php:329
 #, php-format
 msgid "%s - Account"
 msgstr "%s - Benutzerkonto"
 
-#: /var/www/movim/cache/locales.php:321
+#: /var/www/movim/cache/locales.php:330
 #, php-format
 msgid "%s - Administration Panel"
 msgstr "%s - Systemverwaltung"
 
-#: /var/www/movim/cache/locales.php:322
+#: /var/www/movim/cache/locales.php:331
 #, php-format
 msgid "%s - Blog"
 msgstr "%s - Blog"
 
-#: /var/www/movim/cache/locales.php:323
+#: /var/www/movim/cache/locales.php:332
 #, php-format
 msgid "%s - Configuration"
 msgstr "%s – Einstellungen"
 
-#: /var/www/movim/cache/locales.php:324
+#: /var/www/movim/cache/locales.php:333
 #, php-format
 msgid "%s - Discover"
 msgstr "%s - Entdecken"
 
-#: /var/www/movim/cache/locales.php:325
+#: /var/www/movim/cache/locales.php:334
 #, php-format
 msgid "%s - Explore"
 msgstr "%s - Durchsuchen"
 
-#: /var/www/movim/cache/locales.php:326
+#: /var/www/movim/cache/locales.php:335
 #, php-format
 msgid "%s - Help Page"
 msgstr "%s - Hilfeseite"
 
-#: /var/www/movim/cache/locales.php:327
+#: /var/www/movim/cache/locales.php:336
 #, php-format
 msgid "%s - Login to Movim"
 msgstr "%s – Anmelden"
 
-#: /var/www/movim/cache/locales.php:328
+#: /var/www/movim/cache/locales.php:337
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s – Willkommen bei Movim"
 
-#: /var/www/movim/cache/locales.php:329
+#: /var/www/movim/cache/locales.php:338
 #, php-format
 msgid "%s - Media"
 msgstr "%s - Medien"
 
-#: /var/www/movim/cache/locales.php:330
+#: /var/www/movim/cache/locales.php:339
 #, php-format
 msgid "%s - News"
 msgstr "%s - Neuigkeiten"
 
-#: /var/www/movim/cache/locales.php:331
+#: /var/www/movim/cache/locales.php:340
 #, php-format
 msgid "%s - Group Configuration"
 msgstr "%s - Gruppenkonfiguration"
 
-#: /var/www/movim/cache/locales.php:332
+#: /var/www/movim/cache/locales.php:341
 #, php-format
 msgid "%s - Group"
 msgstr "%s - Gruppe"
 
-#: /var/www/movim/cache/locales.php:333
+#: /var/www/movim/cache/locales.php:342
 #, php-format
 msgid "%s - 404"
 msgstr "%s - 404"
 
-#: /var/www/movim/cache/locales.php:334
+#: /var/www/movim/cache/locales.php:343
 #, php-format
 msgid "%s - Profile"
 msgstr "%s - Profil"
 
-#: /var/www/movim/cache/locales.php:335
+#: /var/www/movim/cache/locales.php:344
 #, php-format
 msgid "%s - Server"
 msgstr "%s - Server"
 
-#: /var/www/movim/cache/locales.php:336
+#: /var/www/movim/cache/locales.php:345
 msgid "Validate"
 msgstr "Bestätigen"
 
-#: /var/www/movim/cache/locales.php:337
+#: /var/www/movim/cache/locales.php:346
 msgid "Refresh"
 msgstr "Aktualisieren"
 
-#: /var/www/movim/cache/locales.php:338
+#: /var/www/movim/cache/locales.php:347
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: /var/www/movim/cache/locales.php:339
+#: /var/www/movim/cache/locales.php:348
 msgid "Close"
 msgstr "Schließen"
 
-#: /var/www/movim/cache/locales.php:340
+#: /var/www/movim/cache/locales.php:349
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: /var/www/movim/cache/locales.php:341
+#: /var/www/movim/cache/locales.php:350
 msgid "Updating"
 msgstr "Aktualisierung läuft"
 
-#: /var/www/movim/cache/locales.php:342
+#: /var/www/movim/cache/locales.php:351
 msgid "Submit"
 msgstr "Absenden"
 
-#: /var/www/movim/cache/locales.php:343
+#: /var/www/movim/cache/locales.php:352
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: /var/www/movim/cache/locales.php:344
+#: /var/www/movim/cache/locales.php:353
 msgid "Register"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:345
+#: /var/www/movim/cache/locales.php:354
 msgid "Unregister"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:346
+#: /var/www/movim/cache/locales.php:355
 msgid "Save"
 msgstr "Speichern"
 
-#: /var/www/movim/cache/locales.php:347
+#: /var/www/movim/cache/locales.php:356
 msgid "Clear"
 msgstr "Leeren"
 
-#: /var/www/movim/cache/locales.php:348
+#: /var/www/movim/cache/locales.php:357
 msgid "Upload"
 msgstr "Hochladen"
 
-#: /var/www/movim/cache/locales.php:349
+#: /var/www/movim/cache/locales.php:358
 msgid "Come in!"
 msgstr "Komm herein!"
 
-#: /var/www/movim/cache/locales.php:350
+#: /var/www/movim/cache/locales.php:359
 msgid "Connecting..."
 msgstr "Verbindung wird aufgebaut ..."
 
-#: /var/www/movim/cache/locales.php:351
+#: /var/www/movim/cache/locales.php:360
 msgid "Yes"
 msgstr "Ja"
 
-#: /var/www/movim/cache/locales.php:352
+#: /var/www/movim/cache/locales.php:361
 msgid "No"
 msgstr "Nein"
 
-#: /var/www/movim/cache/locales.php:355
+#: /var/www/movim/cache/locales.php:364
 msgid "Day"
 msgstr "Tag"
 
-#: /var/www/movim/cache/locales.php:356
+#: /var/www/movim/cache/locales.php:365
 msgid "Monday"
 msgstr "Montag"
 
-#: /var/www/movim/cache/locales.php:357
+#: /var/www/movim/cache/locales.php:366
 msgid "Tuesday"
 msgstr "Dienstag"
 
-#: /var/www/movim/cache/locales.php:358
+#: /var/www/movim/cache/locales.php:367
 msgid "Wednesday"
 msgstr "Mittwoch"
 
-#: /var/www/movim/cache/locales.php:359
+#: /var/www/movim/cache/locales.php:368
 msgid "Thursday"
 msgstr "Donnerstag"
 
-#: /var/www/movim/cache/locales.php:360
+#: /var/www/movim/cache/locales.php:369
 msgid "Friday"
 msgstr "Freitag"
 
-#: /var/www/movim/cache/locales.php:361
+#: /var/www/movim/cache/locales.php:370
 msgid "Saturday"
 msgstr "Samstag"
 
-#: /var/www/movim/cache/locales.php:362
+#: /var/www/movim/cache/locales.php:371
 msgid "Sunday"
 msgstr "Sonntag"
 
-#: /var/www/movim/cache/locales.php:363 /var/www/movim/cache/locales.php:372
+#: /var/www/movim/cache/locales.php:372 /var/www/movim/cache/locales.php:381
 msgid "None"
 msgstr "Nichts"
 
-#: /var/www/movim/cache/locales.php:364
+#: /var/www/movim/cache/locales.php:373
 msgid "Male"
 msgstr "Männlich"
 
-#: /var/www/movim/cache/locales.php:365
+#: /var/www/movim/cache/locales.php:374
 msgid "Female"
 msgstr "Weiblich"
 
-#: /var/www/movim/cache/locales.php:366
+#: /var/www/movim/cache/locales.php:375
 msgid "Other"
 msgstr "Sonstige"
 
-#: /var/www/movim/cache/locales.php:367
+#: /var/www/movim/cache/locales.php:376
 msgid "Bot"
 msgstr "Bot"
 
-#: /var/www/movim/cache/locales.php:368
+#: /var/www/movim/cache/locales.php:377
 msgid "Desktop"
 msgstr "Schreibtisch"
 
-#: /var/www/movim/cache/locales.php:369
+#: /var/www/movim/cache/locales.php:378
 msgid "Phone"
 msgstr "Telefon"
 
-#: /var/www/movim/cache/locales.php:370
+#: /var/www/movim/cache/locales.php:379
 msgid "Web"
 msgstr "Web"
 
-#: /var/www/movim/cache/locales.php:371
+#: /var/www/movim/cache/locales.php:380
 msgid "Registered"
 msgstr "Registriert"
 
-#: /var/www/movim/cache/locales.php:373
+#: /var/www/movim/cache/locales.php:382
 msgid "Single"
 msgstr "Single"
 
-#: /var/www/movim/cache/locales.php:374
+#: /var/www/movim/cache/locales.php:383
 msgid "In a relationship"
 msgstr "In einer Beziehung"
 
-#: /var/www/movim/cache/locales.php:375
+#: /var/www/movim/cache/locales.php:384
 msgid "Married"
 msgstr "Verheiratet"
 
-#: /var/www/movim/cache/locales.php:376
+#: /var/www/movim/cache/locales.php:385
 msgid "Divorced"
 msgstr "Geschieden"
 
-#: /var/www/movim/cache/locales.php:377
+#: /var/www/movim/cache/locales.php:386
 msgid "Widowed"
 msgstr "Verwitwet"
 
-#: /var/www/movim/cache/locales.php:378
+#: /var/www/movim/cache/locales.php:387
 msgid "Cohabiting"
 msgstr "Wilde Ehe"
 
-#: /var/www/movim/cache/locales.php:379
+#: /var/www/movim/cache/locales.php:388
 msgid "Civil Union"
 msgstr "Eingetragene Lebenspartnerschaft"
 
-#: /var/www/movim/cache/locales.php:380
+#: /var/www/movim/cache/locales.php:389
 msgid "Not shared"
 msgstr "Nicht geteilt"
 
-#: /var/www/movim/cache/locales.php:381
+#: /var/www/movim/cache/locales.php:390
 msgid "Shared with one contact"
 msgstr "Mit einem Kontakt geteilt"
 
-#: /var/www/movim/cache/locales.php:382
+#: /var/www/movim/cache/locales.php:391
 msgid "Shared with all contacts"
 msgstr "Mit allen Kontakten geteilt"
 
-#: /var/www/movim/cache/locales.php:383
+#: /var/www/movim/cache/locales.php:392
 msgid "Shared with the XMPP network"
 msgstr "Mit dem XMPP-Netzwerk geteilt"
 
-#: /var/www/movim/cache/locales.php:384
+#: /var/www/movim/cache/locales.php:393
 msgid "Shared with the whole Internet"
 msgstr "Mit dem gesamten Internet geteilt"
 
-#: /var/www/movim/cache/locales.php:385
+#: /var/www/movim/cache/locales.php:394
 msgid "Online"
 msgstr "Verbunden"
 
-#: /var/www/movim/cache/locales.php:386
+#: /var/www/movim/cache/locales.php:395
 msgid "Away"
 msgstr "Abwesend"
 
-#: /var/www/movim/cache/locales.php:387
+#: /var/www/movim/cache/locales.php:396
 msgid "Do Not Disturb"
 msgstr "Bitte nicht stören"
 
-#: /var/www/movim/cache/locales.php:388
+#: /var/www/movim/cache/locales.php:397
 msgid "Extended Away"
 msgstr "Länger abwesend"
 
-#: /var/www/movim/cache/locales.php:389
+#: /var/www/movim/cache/locales.php:398
 msgid "Offline"
 msgstr "Nicht verbunden"
 
-#: /var/www/movim/cache/locales.php:390
+#: /var/www/movim/cache/locales.php:399
 msgid "Error"
 msgstr "Fehler"
 
-#: /var/www/movim/cache/locales.php:391
+#: /var/www/movim/cache/locales.php:400
 msgid "afraid"
 msgstr "verängstigt"
 
-#: /var/www/movim/cache/locales.php:392
+#: /var/www/movim/cache/locales.php:401
 msgid "amazed"
 msgstr "begeistert"
 
-#: /var/www/movim/cache/locales.php:393
+#: /var/www/movim/cache/locales.php:402
 msgid "amorous"
 msgstr "verliebt"
 
-#: /var/www/movim/cache/locales.php:394
+#: /var/www/movim/cache/locales.php:403
 msgid "angry"
 msgstr "wütend"
 
-#: /var/www/movim/cache/locales.php:395
+#: /var/www/movim/cache/locales.php:404
 msgid "annoyed"
 msgstr "verärgert"
 
-#: /var/www/movim/cache/locales.php:396
+#: /var/www/movim/cache/locales.php:405
 msgid "anxious"
 msgstr "besorgt"
 
-#: /var/www/movim/cache/locales.php:397
+#: /var/www/movim/cache/locales.php:406
 msgid "aroused"
 msgstr "aufgeregt"
 
-#: /var/www/movim/cache/locales.php:398
+#: /var/www/movim/cache/locales.php:407
 msgid "ashamed"
 msgstr "beschämt"
 
-#: /var/www/movim/cache/locales.php:399
+#: /var/www/movim/cache/locales.php:408
 msgid "bored"
 msgstr "gelangweilt"
 
-#: /var/www/movim/cache/locales.php:400
+#: /var/www/movim/cache/locales.php:409
 msgid "brave"
 msgstr "tapfer"
 
-#: /var/www/movim/cache/locales.php:401
+#: /var/www/movim/cache/locales.php:410
 msgid "calm"
 msgstr "ruhig"
 
-#: /var/www/movim/cache/locales.php:402
+#: /var/www/movim/cache/locales.php:411
 msgid "cautious"
 msgstr "vorsichtig"
 
-#: /var/www/movim/cache/locales.php:403
+#: /var/www/movim/cache/locales.php:412
 msgid "cold"
 msgstr "kalt"
 
-#: /var/www/movim/cache/locales.php:404
+#: /var/www/movim/cache/locales.php:413
 msgid "confident"
 msgstr "zuversichtlich"
 
-#: /var/www/movim/cache/locales.php:405
+#: /var/www/movim/cache/locales.php:414
 msgid "confused"
 msgstr "verwirrt"
 
-#: /var/www/movim/cache/locales.php:406
+#: /var/www/movim/cache/locales.php:415
 msgid "contemplative"
 msgstr "nachdenklich"
 
-#: /var/www/movim/cache/locales.php:407
+#: /var/www/movim/cache/locales.php:416
 msgid "contented"
 msgstr "glücklich"
 
-#: /var/www/movim/cache/locales.php:408
+#: /var/www/movim/cache/locales.php:417
 msgid "cranky"
 msgstr "reizbar"
 
-#: /var/www/movim/cache/locales.php:409
+#: /var/www/movim/cache/locales.php:418
 msgid "crazy"
 msgstr "verrückt"
 
-#: /var/www/movim/cache/locales.php:410
+#: /var/www/movim/cache/locales.php:419
 msgid "creative"
 msgstr "kreativ"
 
-#: /var/www/movim/cache/locales.php:411
+#: /var/www/movim/cache/locales.php:420
 msgid "curious"
 msgstr "neugierig"
 
-#: /var/www/movim/cache/locales.php:412
+#: /var/www/movim/cache/locales.php:421
 msgid "dejected"
 msgstr "niedergeschlagen"
 
-#: /var/www/movim/cache/locales.php:413
+#: /var/www/movim/cache/locales.php:422
 msgid "depressed"
 msgstr "bedrückt"
 
-#: /var/www/movim/cache/locales.php:414
+#: /var/www/movim/cache/locales.php:423
 msgid "disappointed"
 msgstr "enttäuscht"
 
-#: /var/www/movim/cache/locales.php:415
+#: /var/www/movim/cache/locales.php:424
 msgid "disgusted"
 msgstr "angewidert"
 
-#: /var/www/movim/cache/locales.php:416
+#: /var/www/movim/cache/locales.php:425
 msgid "dismayed"
 msgstr "bestürzt"
 
-#: /var/www/movim/cache/locales.php:417
+#: /var/www/movim/cache/locales.php:426
 msgid "distracted"
 msgstr "abgelenkt"
 
-#: /var/www/movim/cache/locales.php:418
+#: /var/www/movim/cache/locales.php:427
 msgid "embarrassed"
 msgstr "verlegen"
 
-#: /var/www/movim/cache/locales.php:419
+#: /var/www/movim/cache/locales.php:428
 msgid "envious"
 msgstr "neidisch"
 
-#: /var/www/movim/cache/locales.php:420
+#: /var/www/movim/cache/locales.php:429
 msgid "excited"
 msgstr "begeistert"
 
-#: /var/www/movim/cache/locales.php:421
+#: /var/www/movim/cache/locales.php:430
 msgid "flirtatious"
 msgstr "kokett"
 
-#: /var/www/movim/cache/locales.php:422
+#: /var/www/movim/cache/locales.php:431
 msgid "frustated"
 msgstr "frustriert"
 
-#: /var/www/movim/cache/locales.php:423
+#: /var/www/movim/cache/locales.php:432
 msgid "grateful"
 msgstr "dankbar"
 
-#: /var/www/movim/cache/locales.php:424
+#: /var/www/movim/cache/locales.php:433
 msgid "grieving"
 msgstr "trauernd"
 
-#: /var/www/movim/cache/locales.php:425
+#: /var/www/movim/cache/locales.php:434
 msgid "grumpy"
 msgstr "missmutig"
 
-#: /var/www/movim/cache/locales.php:426
+#: /var/www/movim/cache/locales.php:435
 msgid "guilty"
 msgstr "schuldbewusst"
 
-#: /var/www/movim/cache/locales.php:427
+#: /var/www/movim/cache/locales.php:436
 msgid "happy"
 msgstr "fröhlich"
 
-#: /var/www/movim/cache/locales.php:428
+#: /var/www/movim/cache/locales.php:437
 msgid "hopeful"
 msgstr "hoffnungsvoll"
 
-#: /var/www/movim/cache/locales.php:429
+#: /var/www/movim/cache/locales.php:438
 msgid "hot"
 msgstr "heiß"
 
-#: /var/www/movim/cache/locales.php:430
+#: /var/www/movim/cache/locales.php:439
 msgid "humbled"
 msgstr "geehrt"
 
-#: /var/www/movim/cache/locales.php:431
+#: /var/www/movim/cache/locales.php:440
 msgid "humiliated"
 msgstr "gedemütigt"
 
-#: /var/www/movim/cache/locales.php:432
+#: /var/www/movim/cache/locales.php:441
 msgid "hungry"
 msgstr "hungrig"
 
-#: /var/www/movim/cache/locales.php:433
+#: /var/www/movim/cache/locales.php:442
 msgid "hurt"
 msgstr "verletzt"
 
-#: /var/www/movim/cache/locales.php:434
+#: /var/www/movim/cache/locales.php:443
 msgid "impressed"
 msgstr "beeindruckt"
 
-#: /var/www/movim/cache/locales.php:435
+#: /var/www/movim/cache/locales.php:444
 msgid "in awe"
 msgstr "bewundernd"
 
-#: /var/www/movim/cache/locales.php:436
+#: /var/www/movim/cache/locales.php:445
 msgid "in love"
 msgstr "verliebt"
 
-#: /var/www/movim/cache/locales.php:437
+#: /var/www/movim/cache/locales.php:446
 msgid "indignant"
 msgstr "empört"
 
-#: /var/www/movim/cache/locales.php:438
+#: /var/www/movim/cache/locales.php:447
 msgid "interested"
 msgstr "interessiert"
 
-#: /var/www/movim/cache/locales.php:439
+#: /var/www/movim/cache/locales.php:448
 msgid "intoxicated"
 msgstr "berauscht"
 
-#: /var/www/movim/cache/locales.php:440
+#: /var/www/movim/cache/locales.php:449
 msgid "invincible"
 msgstr "unbesiegbar"
 
-#: /var/www/movim/cache/locales.php:441
+#: /var/www/movim/cache/locales.php:450
 msgid "jealous"
 msgstr "eifersüchtig"
 
-#: /var/www/movim/cache/locales.php:442
+#: /var/www/movim/cache/locales.php:451
 msgid "lonely"
 msgstr "einsam"
 
-#: /var/www/movim/cache/locales.php:443
+#: /var/www/movim/cache/locales.php:452
 msgid "lost"
 msgstr "verloren"
 
-#: /var/www/movim/cache/locales.php:444
+#: /var/www/movim/cache/locales.php:453
 msgid "lucky"
 msgstr "Glück gehabt"
 
-#: /var/www/movim/cache/locales.php:445
+#: /var/www/movim/cache/locales.php:454
 msgid "mean"
 msgstr "gemein"
 
-#: /var/www/movim/cache/locales.php:446
+#: /var/www/movim/cache/locales.php:455
 msgid "moody"
 msgstr "mürrisch"
 
-#: /var/www/movim/cache/locales.php:447
+#: /var/www/movim/cache/locales.php:456
 msgid "nervous"
 msgstr "nervös"
 
-#: /var/www/movim/cache/locales.php:448
+#: /var/www/movim/cache/locales.php:457
 msgid "neutral"
 msgstr "gleichgültig"
 
-#: /var/www/movim/cache/locales.php:449
+#: /var/www/movim/cache/locales.php:458
 msgid "offended"
 msgstr "beleidigt"
 
-#: /var/www/movim/cache/locales.php:450
+#: /var/www/movim/cache/locales.php:459
 msgid "outraged"
 msgstr "empört"
 
-#: /var/www/movim/cache/locales.php:451
+#: /var/www/movim/cache/locales.php:460
 msgid "playful"
 msgstr "verspielt"
 
-#: /var/www/movim/cache/locales.php:452
+#: /var/www/movim/cache/locales.php:461
 msgid "proud"
 msgstr "stolz"
 
-#: /var/www/movim/cache/locales.php:453
+#: /var/www/movim/cache/locales.php:462
 msgid "relaxed"
 msgstr "entspannt"
 
-#: /var/www/movim/cache/locales.php:454
+#: /var/www/movim/cache/locales.php:463
 msgid "relieved"
 msgstr "erleichtert"
 
-#: /var/www/movim/cache/locales.php:455
+#: /var/www/movim/cache/locales.php:464
 msgid "remorseful"
 msgstr "reumütig"
 
-#: /var/www/movim/cache/locales.php:456
+#: /var/www/movim/cache/locales.php:465
 msgid "restless"
 msgstr "ruhelos"
 
-#: /var/www/movim/cache/locales.php:457
+#: /var/www/movim/cache/locales.php:466
 msgid "sad"
 msgstr "betrübt"
 
-#: /var/www/movim/cache/locales.php:458
+#: /var/www/movim/cache/locales.php:467
 msgid "sarcastic"
 msgstr "sarkastisch"
 
-#: /var/www/movim/cache/locales.php:459
+#: /var/www/movim/cache/locales.php:468
 msgid "satisfied"
 msgstr "zufrieden"
 
-#: /var/www/movim/cache/locales.php:460
+#: /var/www/movim/cache/locales.php:469
 msgid "serious"
 msgstr "ernst"
 
-#: /var/www/movim/cache/locales.php:461
+#: /var/www/movim/cache/locales.php:470
 msgid "shocked"
 msgstr "schockiert"
 
-#: /var/www/movim/cache/locales.php:462
+#: /var/www/movim/cache/locales.php:471
 msgid "shy"
 msgstr "schüchtern"
 
-#: /var/www/movim/cache/locales.php:463
+#: /var/www/movim/cache/locales.php:472
 msgid "sick"
 msgstr "krank"
 
-#: /var/www/movim/cache/locales.php:464
+#: /var/www/movim/cache/locales.php:473
 msgid "sleepy"
 msgstr "schläfrig"
 
-#: /var/www/movim/cache/locales.php:465
+#: /var/www/movim/cache/locales.php:474
 msgid "spontaneous"
 msgstr "spontan"
 
-#: /var/www/movim/cache/locales.php:466
+#: /var/www/movim/cache/locales.php:475
 msgid "stressed"
 msgstr "gestresst"
 
-#: /var/www/movim/cache/locales.php:467
+#: /var/www/movim/cache/locales.php:476
 msgid "strong"
 msgstr "stark"
 
-#: /var/www/movim/cache/locales.php:468
+#: /var/www/movim/cache/locales.php:477
 msgid "surprised"
 msgstr "überrascht"
 
-#: /var/www/movim/cache/locales.php:469
+#: /var/www/movim/cache/locales.php:478
 msgid "thankful"
 msgstr "dankbar"
 
-#: /var/www/movim/cache/locales.php:470
+#: /var/www/movim/cache/locales.php:479
 msgid "thirsty"
 msgstr "durstig"
 
-#: /var/www/movim/cache/locales.php:471
+#: /var/www/movim/cache/locales.php:480
 msgid "tired"
 msgstr "müde"
 
-#: /var/www/movim/cache/locales.php:472
+#: /var/www/movim/cache/locales.php:481
 msgid "undefined"
 msgstr "unbestimmt"
 
-#: /var/www/movim/cache/locales.php:473
+#: /var/www/movim/cache/locales.php:482
 msgid "weak"
 msgstr "schwach"
 
-#: /var/www/movim/cache/locales.php:474
+#: /var/www/movim/cache/locales.php:483
 msgid "worried"
 msgstr "besorgt"
 
-#: /var/www/movim/cache/locales.php:475
+#: /var/www/movim/cache/locales.php:484
 msgid "Month"
 msgstr "Monat"
 
-#: /var/www/movim/cache/locales.php:476
+#: /var/www/movim/cache/locales.php:485
 msgid "January"
 msgstr "Januar"
 
-#: /var/www/movim/cache/locales.php:477
+#: /var/www/movim/cache/locales.php:486
 msgid "February"
 msgstr "Februar"
 
-#: /var/www/movim/cache/locales.php:478
+#: /var/www/movim/cache/locales.php:487
 msgid "March"
 msgstr "März"
 
-#: /var/www/movim/cache/locales.php:479
+#: /var/www/movim/cache/locales.php:488
 msgid "April"
 msgstr "April"
 
-#: /var/www/movim/cache/locales.php:480
+#: /var/www/movim/cache/locales.php:489
 msgid "May"
 msgstr "Mai"
 
-#: /var/www/movim/cache/locales.php:481
+#: /var/www/movim/cache/locales.php:490
 msgid "June"
 msgstr "Juni"
 
-#: /var/www/movim/cache/locales.php:482
+#: /var/www/movim/cache/locales.php:491
 msgid "July"
 msgstr "Juli"
 
-#: /var/www/movim/cache/locales.php:483
+#: /var/www/movim/cache/locales.php:492
 msgid "August"
 msgstr "August"
 
-#: /var/www/movim/cache/locales.php:484
+#: /var/www/movim/cache/locales.php:493
 msgid "September"
 msgstr "September"
 
-#: /var/www/movim/cache/locales.php:485
+#: /var/www/movim/cache/locales.php:494
 msgid "October"
 msgstr "Oktober"
 
-#: /var/www/movim/cache/locales.php:486
+#: /var/www/movim/cache/locales.php:495
 msgid "November"
 msgstr "November"
 
-#: /var/www/movim/cache/locales.php:487
+#: /var/www/movim/cache/locales.php:496
 msgid "December"
 msgstr "Dezember"
 
-#: /var/www/movim/cache/locales.php:488
+#: /var/www/movim/cache/locales.php:497
 msgid "Year"
 msgstr "Jahr"
 
-#: /var/www/movim/cache/locales.php:489
+#: /var/www/movim/cache/locales.php:498
 msgid "Today"
 msgstr "Heute"
 
-#: /var/www/movim/cache/locales.php:490
+#: /var/www/movim/cache/locales.php:499
 msgid "Tomorrow"
 msgstr "Morgen"
 
-#: /var/www/movim/cache/locales.php:491
+#: /var/www/movim/cache/locales.php:500
 msgid "Yesterday"
 msgstr "Gestern"
 
-#: /var/www/movim/cache/locales.php:492
+#: /var/www/movim/cache/locales.php:501
 #, php-format
 msgid " %d days ago"
 msgstr " vor %d Tagen"
 
-#: /var/www/movim/cache/locales.php:493
+#: /var/www/movim/cache/locales.php:502
 msgid "day"
 msgstr "Tag"
 
-#: /var/www/movim/cache/locales.php:494
+#: /var/www/movim/cache/locales.php:503
 msgid "Title"
 msgstr "Titel"
 
-#: /var/www/movim/cache/locales.php:495
+#: /var/www/movim/cache/locales.php:504
 msgid "What's new ?"
 msgstr "Was gibt's neues?"
 
-#: /var/www/movim/cache/locales.php:496
+#: /var/www/movim/cache/locales.php:505
 msgid "Place"
 msgstr "Ort"
 
-#: /var/www/movim/cache/locales.php:497
+#: /var/www/movim/cache/locales.php:506
 msgid "by"
 msgstr "von"
 
-#: /var/www/movim/cache/locales.php:498
+#: /var/www/movim/cache/locales.php:507
 msgid "Geolocalisation"
 msgstr "Geolokalisation"
 
-#: /var/www/movim/cache/locales.php:499
+#: /var/www/movim/cache/locales.php:508
 msgid "email"
 msgstr "E-Mail"
 
-#: /var/www/movim/cache/locales.php:500
+#: /var/www/movim/cache/locales.php:509
 msgid "No content"
 msgstr "Ohne Inhalt"
 
-#: /var/www/movim/cache/locales.php:501
+#: /var/www/movim/cache/locales.php:510
 msgid "No comments"
 msgstr "Ohne Kommentare"
 
-#: /var/www/movim/cache/locales.php:502
+#: /var/www/movim/cache/locales.php:511
 msgid "No comments stream"
 msgstr "Keine Kommentarquelle"
 
-#: /var/www/movim/cache/locales.php:503
+#: /var/www/movim/cache/locales.php:512
 msgid "Your feed cannot be loaded."
 msgstr "Ihr Feed kann nicht geladen werden."
 
-#: /var/www/movim/cache/locales.php:504
+#: /var/www/movim/cache/locales.php:513
 msgid "Get older posts"
 msgstr "Ältere Beiträge"
 
-#: /var/www/movim/cache/locales.php:505
+#: /var/www/movim/cache/locales.php:514
 #, php-format
 msgid "%s new items"
 msgstr "%s neue Einträge"
 
-#: /var/www/movim/cache/locales.php:506
+#: /var/www/movim/cache/locales.php:515
 msgid "Comment publication error"
 msgstr "Fehler beim Veröffentlichen des Kommentars"
 
-#: /var/www/movim/cache/locales.php:507
+#: /var/www/movim/cache/locales.php:516
 msgid "Show the older comments"
 msgstr "Ältere Kommentare anzeigen"
 
-#: /var/www/movim/cache/locales.php:508
+#: /var/www/movim/cache/locales.php:517
 msgid "Loading comments ..."
 msgstr "Lade Kommentare …"
 
-#: /var/www/movim/cache/locales.php:509
+#: /var/www/movim/cache/locales.php:518
 msgid "Get the comments"
 msgstr "Erhalte die Kommentare"
 
-#: /var/www/movim/cache/locales.php:510
+#: /var/www/movim/cache/locales.php:519
 msgid "Add a comment"
 msgstr "Einen Kommentar hinzufügen"
 
-#: /var/www/movim/cache/locales.php:511
+#: /var/www/movim/cache/locales.php:520
 msgid "Share with"
 msgstr "Teilen mit"
 
-#: /var/www/movim/cache/locales.php:512
+#: /var/www/movim/cache/locales.php:521
 msgid "Everyone"
 msgstr "Jeder"
 
-#: /var/www/movim/cache/locales.php:513
+#: /var/www/movim/cache/locales.php:522
 msgid "Your contacts"
 msgstr "Ihre Kontakte"
 
-#: /var/www/movim/cache/locales.php:514
+#: /var/www/movim/cache/locales.php:523
 msgid "Delete this post"
 msgstr "Diesen Eintrag löschen"
 
-#: /var/www/movim/cache/locales.php:515
+#: /var/www/movim/cache/locales.php:524
 msgid "Updated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:516
+#: /var/www/movim/cache/locales.php:525
 msgid "The API is not reachable, try again later"
 msgstr ""
 
