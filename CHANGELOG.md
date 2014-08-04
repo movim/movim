@@ -31,6 +31,7 @@ v0.8.0 (trunk)
  * Split the Profile form in 3 littles forms (general, avatar and localisation)
  * Rewrite the Explore page
  * Move from XML to JSON for the browser-server requests
+ * Update the locales
 
 v0.7.2
 ---------------------------
