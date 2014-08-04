@@ -4,6 +4,15 @@ AddType application/x-web-app-manifest+json .webapp
     # Tell PHP that the mod_rewrite module is ENABLED.
     SetEnv HTTP_MOD_REWRITE 1
 
+    # If you have troubles or use VirtualDocumentRoot
+    # uncomment this and set it to the path where your Movim installation is
+    # i.e.:
+    # Friendica url: http://example.com
+    # RewriteBase /
+    # Friendica url: http://some.example.com/movim
+    # RewriteBase /movim/
+
+    RewriteBase /movim/
     RewriteEngine On
 
     RewriteCond %{REQUEST_FILENAME} !-f
