@@ -33,11 +33,11 @@ class Presence extends Model {
             "id" : 
                 {"type":"string", "size":128, "mandatory":true },
             "session" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "mandatory":true, "key":true },
             "jid" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "mandatory":true, "key":true },
             "ressource" : 
-                {"type":"string", "size":128, "key":true },
+                {"type":"string", "size":64, "key":true },
             "value" : 
                 {"type":"int",    "size":11, "mandatory":true },
             "priority" : 
