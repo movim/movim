@@ -112,6 +112,7 @@ class Picture {
         $thumb = imagecreatetruecolor($size, $size);
         $white = imagecolorallocate($thumb, 255, 255, 255);
         imagefill($thumb, 0, 0, $white);
+        imageinterlace($thumb, true);
         
         $source = imagecreatefromstring($this->_bin);
         
