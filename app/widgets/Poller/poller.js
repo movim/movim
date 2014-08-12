@@ -1,4 +1,5 @@
 var empty_count = 0;
+var poller = rpc.make_xmlhttp();
 
 /**
  * Attach a callback function to an event.

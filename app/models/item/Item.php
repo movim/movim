@@ -20,7 +20,7 @@ class Item extends Model {
             "server" : 
                 {"type":"string", "size":64, "mandatory":true, "key":true },
             "jid" : 
-                {"type":"string", "size":64, "mandatory":true, "key":true },
+                {"type":"string", "size":128, "mandatory":true, "key":true },
             "node" : 
                 {"type":"string", "size":128, "mandatory":true, "key":true },
             "creator" : 
