@@ -33,6 +33,10 @@ function MovimRPC()
      */
     this.commit = function()
     {
+        if(typeof(halt_poll) === "function") { 
+            halt_poll();
+        }
+        
         movim_xmlhttp = this.make_xmlhttp();
 	
         if(FAIL_SAFE)
@@ -55,6 +59,10 @@ function MovimRPC()
 
         var json = this.generate_json();
         movim_xmlhttp.send(json);
+        
+        if(typeof(movim_poll) === "function") { 
+            movim_poll();
+        }
     };
 
     /**
