@@ -97,9 +97,9 @@ class RPC
 
         if(isset($_GET['do']) && $_GET['do'] == 'poll') {
             \Moxl\API::ping();
-        } elseif((string)$request->widget == 'lazy') {
+        } /*elseif((string)$request->widget == 'lazy') {
             $l = new Lazy($request->params[0], $request->params[1]);
-        } else {
+        }*/ else {
             // Loading the widget.
             $widget_name = (string)$request->widget;
 
