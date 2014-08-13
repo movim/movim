@@ -6,7 +6,7 @@
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
             <li class="block">
                 <a href="{$c->route('node', array($value->server, $value->node))}">
-                    <span class="tag gray">{$c->__('post.updated')} {$value->num|strtotime|prepareDate}</span>
+                    <span class="tag gray on_desktop">{$c->__('post.updated')} {$value->num|strtotime|prepareDate}</span>
 
                     <span class="content">
                     {if="isset($value->name)"}
@@ -16,7 +16,7 @@
                     {/if}
                     - {$value->server}
                     </span>
-                    <span class="desc">{$value->description}</span>
+                    <span class="desc on_desktop">{$value->description}</span>
                 </a>
             </li>
             {/if}

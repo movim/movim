@@ -101,7 +101,8 @@
 #roster ul#rosterlist li.client.gajim a     { background-image: url(img/clients/gajim.png); }
 #roster ul#rosterlist li.client.telepathy a { background-image: url(img/clients/empathy.png); }
 #roster ul#rosterlist li.client.xabber a    { background-image: url(img/clients/xabber.png); }
-#roster ul#rosterlist li.client.psi a       { background-image: url(img/clients/psi.png); }
+#roster ul#rosterlist li.client.psi a,
+#roster ul#rosterlist li.client.psi+ a       { background-image: url(img/clients/psi.png); }
 
 /* The list */
 
