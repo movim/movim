@@ -17,13 +17,13 @@
             <img class="avatar" src="{$value->getPhoto('xs')}"/>
             <a href="{$c->route('friend', $value->jid)}">
                 {if="$value->getAge()"}
-                    <span class="tag blue">{$value->getAge()}</span>
+                    <span class="tag blue on_desktop">{$value->getAge()}</span>
                 {/if}
                 {if="$value->getGender()"}
-                    <span class="tag green">{$value->getGender()}</span>
+                    <span class="tag green on_desktop">{$value->getGender()}</span>
                 {/if}
                 {if="$value->getMarital()"}
-                    <span class="tag yellow">{$value->getMarital()}</span>
+                    <span class="tag yellow on_desktop">{$value->getMarital()}</span>
                 {/if}
                 <span class="content">{$value->getTrueName()}</span>
                 <span class="desc">{$value->description|strip_tags}</span>
