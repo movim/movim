@@ -33,9 +33,9 @@ function MovimRPC()
      */
     this.commit = function()
     {
-        if(typeof(halt_poll) === "function") { 
+        /*if(typeof(halt_poll) === "function") { 
             halt_poll();
-        }
+        }*/
         
         movim_xmlhttp = this.make_xmlhttp();
 	
@@ -51,18 +51,19 @@ function MovimRPC()
         movim_xmlhttp.onreadystatechange = function() {
             if(movim_xmlhttp.readyState == 4 && movim_xmlhttp.status == 500)
                 movim_disconnect('internal');
-            else if(movim_xmlhttp.readyState == 4)
+            else if(movim_xmlhttp.readyState == 4) {
                 handler(movim_xmlhttp.response);
+            }
         };
 
-        movim_xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        movim_xmlhttp.setRequestHeader("Content-Type", "application/json; charset=utf-8");
 
         var json = this.generate_json();
         movim_xmlhttp.send(json);
-        
-        if(typeof(movim_poll) === "function") { 
+
+        /*if(typeof(movim_poll) === "function") { 
             movim_poll();
-        }
+        }*/
     };
 
     /**
