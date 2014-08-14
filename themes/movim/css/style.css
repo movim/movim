@@ -429,7 +429,6 @@ ul.list li a {
 }
 
 ul.list li a span.content {
-    overflow: hidden;
     text-overflow: ellipsis;
     display: block;
     float: left;

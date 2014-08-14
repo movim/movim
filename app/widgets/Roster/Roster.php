@@ -155,7 +155,7 @@ class Roster extends WidgetBase
                 
                 $client = $cap->name;
                 $client = explode(' ',$client);
-                $arr[$c->ressource]['client'] = strtolower(reset($client));
+                $arr[$c->ressource]['client'] = strtolower(preg_replace('/[^a-zA-Z0-9_ \-()\/%-&]/s', '', reset($client)));
 
                 // Jingle support
                 $features = $cap->features;
