@@ -230,3 +230,21 @@ function sizeToCleanSize($size)
     $power = $size > 0 ? floor(log($size, 1024)) : 0;
     return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
 }
+
+/**
+ * Return a colored string in the console
+ * @param string
+ * @param color
+ * @return string
+ */
+function colorize($string, $color) {
+    $colors = array(
+        'red'       => 31,
+        'blue'      => 34,
+        'yellow'    => 33,
+        'green'     => 32,
+        'white'     => 37
+    );
+
+    return "\033[".$colors[$color]."m".$string."\033[0m";
+}
