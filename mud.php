@@ -9,11 +9,14 @@ $bootstrap->boot();
 $argsize = count($argv);
 if($argsize == 1) {
     echo 
-"Welcome to Mud - Movim Unified Doer
+colorize("Welcome to Mud - Movim Unified Doer
 
-Here some requests you can do with me :
-- getloc    grab all the translations in Movim and generate a global locale file
-- comploc   compile the current locales to a simple PHP array to boost Movim execution
+Here some requests you can do with me :", 'green')."
+- ".colorize("getloc", 'yellow')."    grab all the translations in Movim and generate a global locale file
+- ".colorize("comploc", 'yellow')."   compile the current locales to a simple PHP array to boost Movim execution
+- ".colorize("comptz", 'yellow')."    compile the timezones
+- ".colorize("db", 'yellow')."        create/update the database
+- ".colorize("config", 'yellow')."    set the configuration of Movim (separated by commas and colons) eg. info:Test,description:Hop
         ";
     
 } elseif($argsize == 2) {
@@ -27,11 +30,64 @@ Here some requests you can do with me :
         case 'comptz':
             comptz();
             break;
+        case 'config':
+            echo colorize("You need to pass an argument", 'red');
+            break;
+        case 'db':
+            $md = Modl\Modl::getInstance();
+            $infos = $md->check();  
+
+            if($infos == null) {
+                echo colorize("Nothing to do\n", 'green');
+            } else {
+                foreach($infos as $i) {
+                    echo colorize("The database need to be updated\n", 'green');
+                    echo colorize($i."\n", 'blue');
+                }
+            }
+            break;
+    }
+} elseif($argsize == 3) {
+    switch ($argv[1]) {
+        case 'config':
+            config($argv[2]);
+            break;
+        case 'db':
+            if($argv[2] == 'set') {
+                $md = Modl\Modl::getInstance();
+                $md->check(true);  
+                echo colorize("Database updated\n", 'green');
+            }
+            break;
+    }
+}
+
+function config($values) {
+    echo colorize("Movim configuration setter\n", 'green');
+
+    $cd = new \Modl\ConfigDAO();
+    $config = $cd->get();
+
+    $values = explode(',', $values);
+    foreach($values as $value) {
+        list($key, $value) = explode(':', $value);
+        if(property_exists($config, $key)) {
+            $old = $config->$key;
+            $config->$key = $value;
+            
+            $cd->set($config);
+            echo colorize("The configuration key ", 'yellow').
+                colorize($key, 'red').
+                colorize(" has been updated from ", 'yellow').
+                colorize($old, 'blue').
+                colorize(" to ", 'yellow').
+                colorize($value, 'blue')."\n"; 
+        }
     }
 }
 
 function getloc() {
-    echo "Locales grabber\n";
+    echo colorize("Locales grabber\n", 'green');
     
     // We look for all the ini files
     $inifiles = glob(WIDGETS_PATH.'*/*.ini');
@@ -63,18 +119,18 @@ function getloc() {
 }
 
 function comploc() {
-    echo "Locales compiler\n";
+    echo colorize("Locales compiler\n", 'green');
     
     $folder = CACHE_PATH.'/locales/';
     
     if(!file_exists($folder)) {
         $bool = mkdir($folder);
         if(!$bool) {
-            echo "The locales cache folder can't be created";
+            echo colorize("The locales cache folder can't be created", 'red');
             exit;
         }
     } else
-        echo "Folder already exist, don't re-create it\n";
+        echo colorize("Folder already exist, don't re-create it\n", 'red');
     
     
     $langs = loadLangArray();
