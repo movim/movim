@@ -45,7 +45,7 @@ class Config extends WidgetBase
                 'ajaxSubmit', 
                 "movim_parse_form('general')"
             )
-                . "this.className='button color orange oppose'; 
+                . "this.className='button color orange inactive oppose'; 
                     this.onclick=null;"
         );
     }

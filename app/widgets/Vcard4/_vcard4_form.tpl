@@ -150,7 +150,7 @@
                 {$submit}
                 movim_button_save('#vcard4validate');
                 this.value = '{$c->__('Submitting')}'; 
-                this.className='button color orange icon loading merged right inactive';" 
+                this.className='button color orange oppose merged right inactive';" 
             class="button merged right color green oppose" 
             id="vcard4validate"
             >
