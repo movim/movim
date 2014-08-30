@@ -141,9 +141,13 @@ class API {
         $session->password = 'hidden';
 
         // We get the general configuration
-
-        $s = new Xec\Action\Storage\Get();
+        $s = new Xec\Action\Storage\Get;
         $s->setXmlns('movim:prefs')
+          ->request();
+
+        // We get the server capabilities
+        $c = new Xec\Action\Disco\Request;
+        $c->setTo($session->host)
           ->request();
           
         // http://xmpp.org/extensions/xep-0280.html

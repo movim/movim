@@ -1,8 +1,8 @@
 <?php
 /*
- * Set.php
+ * ConfigurePersistentStorage.php - http://xmpp.org/extensions/xep-0223.html
  * 
- * Copyright 2013 edhelas <edhelas@edhelas-laptop>
+ * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,45 +21,48 @@
  * 
  * 
  */
- 
-namespace Moxl\Xec\Action\Vcard4;
+
+namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Vcard4;
+use Moxl\Stanza\Pubsub;
 
-class Set extends Action
+class ConfigurePersistentStorage extends Action
 {
-    private $_data;
+    private $_to;
+    private $_node;
     
     public function request() 
     {
         $this->store();
-        Vcard4::set($this->_data);
+        Pubsub::configurePersistentStorage($this->_to, $this->_node);
     }
     
-    public function setData($data)
+    public function setTo($to)
     {
-        $this->_data = $data;
+        $this->_to = $to;
+        return $this;
+    }
+    
+    public function setNode($node)
+    {
+        $this->_node = $node;
         return $this;
     }
     
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        $evt->runEvent('myvcard4valid', $stanza);
-    }
-    
-    public function errorFeatureNotImplemented($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myvcard4invalid', 'vcardfeaturenotimpl');
-    }
-    
-    public function errorBadRequest($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myvcard4invalid', 'vcardbadrequest');
+        $this->pack($this->_node);
+        $this->deliver();
     }
 
-    public function errorNotAllowed($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myvcard4invalid', 'vcardfeaturenotimpl');
+    public function errorFeatureNotImplemented($stanza) {
+        $this->pack($this->_node);
+        $this->deliver();
     }
+
+    public function errorItemNotFound($error) {
+        $this->pack($this->_node);
+        $this->deliver();
+    }
+
 }

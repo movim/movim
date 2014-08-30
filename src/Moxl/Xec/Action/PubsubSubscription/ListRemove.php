@@ -36,7 +36,7 @@ class ListRemove extends Errors
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         if($stanza["type"] == "result"){
             $evt = new \Event();    
             $evt->runEvent('groupremoved', $this->_node);

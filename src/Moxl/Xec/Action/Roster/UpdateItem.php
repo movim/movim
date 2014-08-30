@@ -64,7 +64,7 @@ class UpdateItem extends Action
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $r = new \modl\RosterLink();
         
         $r->session = $this->_from;

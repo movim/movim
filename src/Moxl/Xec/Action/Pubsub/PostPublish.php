@@ -104,7 +104,7 @@ class PostPublish extends Errors
         return $this;
     }
     
-    public function handle($stanza) {       
+    public function handle($stanza, $parent = false) {       
         $evt = new \Event();
         
         $p = new \modl\Postn();

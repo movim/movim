@@ -29,6 +29,7 @@ use Moxl\Utils;
 
 abstract class Payload
 {
+    protected $method;
     protected $packet;
     /**
      * Constructor of class Payload.
@@ -64,10 +65,22 @@ abstract class Payload
         $pos = strrpos($class, '\\');
         $key = substr($class, $pos + 1);
 
-        Utils::log('Payload : Event "'.$key.'" from "'.$this->packet->from.'" fired');
+        if($this->method)
+            $key = $key . '_' . $this->method;
+
+        Utils::log('Package : Event "'.$key.'" from "'.$this->packet->from.'" fired');
 
         $evt = new \Event();
         $evt->runEvent($key, $this->packet);
+    }
+
+    /**
+     * Set a specific method for the packet to specialize the key
+     *
+     * @return void
+     */
+    final public function method($method) {
+        $this->method = strtolower($method);
     }
 
     /**

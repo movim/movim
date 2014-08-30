@@ -25,8 +25,9 @@
 namespace Moxl\Xec;
 
 use Moxl\Utils;
+use Moxl\Xec\Payload\Payload;
 
-abstract class Action
+abstract class Action extends Payload
 {    
     final public function store() 
     {
@@ -66,5 +67,4 @@ abstract class Action
     }
     
     abstract public function request();
-    abstract public function handle($stanza);
 }

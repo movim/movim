@@ -108,13 +108,16 @@ class Handler {
                         /* If the action has defined a special handler
                          * for this error
                          */
-                        if(method_exists($action, $errorid))
+                        if(method_exists($action, $errorid)) {
+                            $action->method($errorid);
                             $action->$errorid($errorid, $message);
+                        }
                         // We also call a global error handler
                         elseif(method_exists($action, 'error'))
                             $action->error($errorid, $message);
                     } else {
                         // We launch the object handle
+                        $action->method('handle');
                         $action->handle($child);
                     }
                     // We clean the object from the cache

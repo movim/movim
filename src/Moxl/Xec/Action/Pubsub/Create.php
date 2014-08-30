@@ -1,6 +1,6 @@
 <?php
 /*
- * PingServer.php
+ * Create.php
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
@@ -22,20 +22,22 @@
  * 
  */
 
-namespace Moxl\Xec\Action\Ack;
+namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Ack;
+use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Stanza\Pubsub;
 
-class Send extends Action
+class Create extends Errors
 {
     private $_to;
-    private $_id;
+    private $_node;
+    private $_data;
     
     public function request() 
     {
         $this->store();
-        Ack::send($this->_to, $this->_id);
+        Pubsub::create($this->_to, $this->_node);
     }
     
     public function setTo($to)
@@ -44,13 +46,34 @@ class Send extends Action
         return $this;
     }
     
-    public function setId($id)
+    public function setNode($node)
     {
-        $this->_id = $id;
+        $this->_node = $node;
+        return $this;
+    }
+    
+    public function setData($data)
+    {
+        $this->_data = $data;
         return $this;
     }
     
     public function handle($stanza, $parent = false) {
-        
+        if($stanza["type"] == "result"){
+            $evt = new \Event();
+            $evt->runEvent('creationsuccess', array($this->_to, $this->_node, $this->_data)); 
+            
+            //add to bookmark
+            $sub = new \modl\Subscription();
+            $sub->set(current(explode($stanza["to"], "/")), $this->_to, $this->_node, $stanza);
+            
+            $sd = new \modl\SubscriptionDAO();
+            $sd->set($sub);
+        }
+    }
+    
+    public function error($error) {
+        $evt = new \Event();
+        $evt->runEvent('creationerror', $this->_node); 
     }
 }

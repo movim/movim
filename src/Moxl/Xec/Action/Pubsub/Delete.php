@@ -1,8 +1,8 @@
 <?php
 /*
- * Set.php
+ * Delete.php
  * 
- * Copyright 2013 edhelas <edhelas@edhelas-laptop>
+ * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,45 +21,44 @@
  * 
  * 
  */
- 
-namespace Moxl\Xec\Action\Vcard4;
+
+namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Vcard4;
+use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Stanza\Pubsub;
 
-class Set extends Action
+class Delete extends Errors
 {
-    private $_data;
+    private $_to;
+    private $_node;
     
     public function request() 
     {
         $this->store();
-        Vcard4::set($this->_data);
+        Pubsub::delete($this->_to, $this->_node);
     }
     
-    public function setData($data)
+    public function setTo($to)
     {
-        $this->_data = $data;
+        $this->_to = $to;
+        return $this;
+    }
+    
+    public function setNode($node)
+    {
+        $this->_node = $node;
         return $this;
     }
     
     public function handle($stanza, $parent = false) {
         $evt = new \Event();
-        $evt->runEvent('myvcard4valid', $stanza);
-    }
-    
-    public function errorFeatureNotImplemented($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myvcard4invalid', 'vcardfeaturenotimpl');
-    }
-    
-    public function errorBadRequest($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myvcard4invalid', 'vcardbadrequest');
-    }
-
-    public function errorNotAllowed($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myvcard4invalid', 'vcardfeaturenotimpl');
+        if($stanza["type"] == "result"){
+            $evt->runEvent('deletionsuccess', $this->_to); 
+            
+            //delete from bookmark
+            $sd = new \modl\SubscriptionDAO();
+            $sd->deleteNode($this->_to, $this->_node);
+        }
     }
 }

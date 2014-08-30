@@ -50,7 +50,7 @@ class Get extends Action
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         if($stanza->attributes()->from)
             $jid = current(explode('/',(string)$stanza->attributes()->from));
         else

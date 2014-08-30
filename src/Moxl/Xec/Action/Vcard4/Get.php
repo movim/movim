@@ -49,7 +49,7 @@ class Get extends Action
         return $this;
     }
 
-    public function handle($stanza) {           
+    public function handle($stanza, $parent = false) {           
         $cd = new \modl\ContactDAO();
         
         $c = $cd->get($this->_to);

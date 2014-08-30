@@ -55,7 +55,7 @@ class Muc extends Action
         return $this;
     }  
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $p = new \modl\Presence();
         $p->setPresence($stanza);
         

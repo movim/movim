@@ -43,7 +43,7 @@ class Get extends Action
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         if($stanza->query->data) {
             $data = unserialize(trim((string)$stanza->query->data));
             

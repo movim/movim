@@ -65,7 +65,7 @@ class Subscribe extends Errors
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $jid = $this->_from;
         $server = $this->_to;
         $node = $this->_node;

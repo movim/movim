@@ -50,9 +50,13 @@ class Request extends Action
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $c = new \modl\Caps();
-        $c->set($stanza, $this->_node);
+
+        if(isset($this->_node))
+            $c->set($stanza, $this->_node);
+        else
+            $c->set($stanza, $this->_to);
         
         if(
             $c->node != ''

@@ -65,7 +65,7 @@ class Unsubscribe extends Errors
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $sd = new \modl\SubscriptionDAO();
         // , $this->_subid
         $sd->deleteNode($this->_to, $this->_node);
@@ -75,6 +75,6 @@ class Unsubscribe extends Errors
     }
     
     public function error($stanza) {
-        $this->handle($stanza);
+        $this->handle($stanza, $parent = false);
     }
 }

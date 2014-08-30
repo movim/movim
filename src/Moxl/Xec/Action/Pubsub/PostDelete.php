@@ -58,7 +58,7 @@ class PostDelete extends Errors
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $pd = new \modl\PostnDAO();
         $pd->delete($this->_id);
 

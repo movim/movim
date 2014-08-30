@@ -50,7 +50,7 @@ class Unsubscribe extends Action
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         var_dump('Presence Unsubscribe');
     }
     

@@ -50,7 +50,7 @@ class RemoveItem extends Action
         return $this;
     }
     
-    public function handle($stanza) 
+    public function handle($stanza, $parent = false) 
     {        
         $rd = new \modl\RosterLinkDAO();
         $rd->delete($this->_to);
@@ -60,7 +60,7 @@ class RemoveItem extends Action
     }
 
     public function errorItemNotFound($stanza) {
-        $this->handle($stanza);
+        $this->handle($stanza, $parent = false);
     }
     
     public function errorServiceUnavailable() 

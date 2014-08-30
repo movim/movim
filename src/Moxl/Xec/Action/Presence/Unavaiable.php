@@ -65,7 +65,7 @@ class Unavaiable extends Action
     } 
 
     // Fixme ? For the moment this method is used only for the MUC requests
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $cd = new \modl\ConferenceDAO();
         $conf = $cd->get($this->_to);
         $conf->status = 0;

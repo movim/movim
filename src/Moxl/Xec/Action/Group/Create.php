@@ -58,7 +58,7 @@ class Create extends Errors
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         if($stanza["type"] == "result"){
             $evt = new \Event();
             $evt->runEvent('creationsuccess', array($this->_to, $this->_node, $this->_data)); 

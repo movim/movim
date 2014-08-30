@@ -50,7 +50,7 @@ class Publish extends Action
         return $this;
     }
         
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $evt = new \Event();
         
         $from = current(explode('/',(string)$stanza->attributes()->from));

@@ -24,11 +24,17 @@ class Disco {
         \Moxl\API::request($xml);
     }
 
-    static function request($to, $node)
+    static function request($to, $node = false)
     {
+        $xml_node = '';
+
+        if($node != false)
+            $xml_node = 'node="'.$node.'"';
+        
         $xml = '
             <query xmlns="http://jabber.org/protocol/disco#info"
-                node="'.$node.'"/>';
+                '.$xml_node.'/>';
+
         $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
         \Moxl\API::request($xml); 
     }

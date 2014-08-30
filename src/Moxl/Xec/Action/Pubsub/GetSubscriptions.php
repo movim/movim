@@ -59,7 +59,7 @@ class GetSubscriptions extends Errors
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $jid = current(explode('/',(string)$stanza->attributes()->to));
         $server = $this->_to;
         $node = $this->_node;

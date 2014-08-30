@@ -50,7 +50,7 @@ class Set extends Action
         return $this;
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         $evt = new \Event();
         $evt->runEvent('config', unserialize($this->_data));
     }

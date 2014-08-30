@@ -71,7 +71,7 @@ class Get extends Action
         }
     }
     
-    public function handle($stanza) {
+    public function handle($stanza, $parent = false) {
         if($stanza->pubsub->items->item->storage) {
             $sd = new \modl\SubscriptionDAO();
             $cd = new \modl\ConferenceDAO();
