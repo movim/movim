@@ -32,22 +32,13 @@ class CapsDAO extends SQL {
     
     function set(Caps $caps) {
         $this->_sql = '
-            insert into caps
-            (
-            node,
-            category,
-            type,
-            name,
-            features
-            )
-            values(
-                :node,
-                :category,
-                :type,
-                :name,
-                :features
-                )';
-        
+            update caps
+            set category = :category,
+                type     = :type,
+                name     = :name,
+                features = :features
+            where node = :node';
+
         $this->prepare(
             'Caps', 
             array(
@@ -58,7 +49,39 @@ class CapsDAO extends SQL {
                 'features'  => $caps->features,
             )
         );
+
+        $this->run('Caps');
         
-        return $this->run('Caps');
+        if(!$this->_effective) {
+            $this->_sql = '
+                insert into caps
+                (
+                node,
+                category,
+                type,
+                name,
+                features
+                )
+                values(
+                    :node,
+                    :category,
+                    :type,
+                    :name,
+                    :features
+                    )';
+            
+            $this->prepare(
+                'Caps', 
+                array(
+                    'node'      => $caps->node,
+                    'category'  => $caps->category,
+                    'type'      => $caps->type,
+                    'name'      => $caps->name,
+                    'features'  => $caps->features,
+                )
+            );
+            
+            return $this->run('Caps');
+        }
     }
 }
