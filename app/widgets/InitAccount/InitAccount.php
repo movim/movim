@@ -8,6 +8,8 @@ class InitAccount extends WidgetCommon {
     function load()
     {
         $this->registerEvent('configurepersistentstorage_handle', 'onConfigured');
+        $this->registerEvent('nodecreated', 'onNodeCreated');
+        $this->registerEvent('nodecreationerror', 'onNodeCreationError');
     }
 
     function onConfigured($packet)
@@ -19,6 +21,31 @@ class InitAccount extends WidgetCommon {
         $s->setXmlns('movim:prefs')
           ->setData(serialize($config))
           ->request();
+    }
+    
+    function onNodeCreated() {
+        $config = $this->user->getConfig();
+        $config['feed'] = 'created';
+        
+        $s = new Set;
+        $s->setXmlns('movim:prefs')
+          ->setData(serialize($config))
+          ->request();
+    }
+
+    // TODO : do we really need this handler ?
+    function onNodeCreationError() {
+        $config = $this->user->getConfig();
+        $config['feed'] = 'error';
+        
+        $s = new Set;
+        $s->setXmlns('movim:prefs')
+          ->setData(serialize($config))
+          ->request();
+        
+        Notification::appendNotification(
+            $this->__('feed.no_support'), 
+            'error');
     }
 
     private function createPersistentStorage($node)
@@ -97,6 +124,9 @@ class InitAccount extends WidgetCommon {
             } elseif(!isset($config['urn:xmpp:pubsub:subscription'])) {
                 $this->view->assign('create_pubsubsubscription',  $this->genCallAjax('ajaxCreatePubsubSubscription'));
                 $creating = 5;
+            } elseif(!isset($config['feed'])) {
+                $this->view->assign('create_microblog',  $this->genCallAjax('ajaxCreateMicroblog'));
+                $creating = 6;
             }
 
             if($creating != false) {

@@ -16,12 +16,18 @@
     {if="isset($create_pubsubsubscription)"}
         setTimeout('{$create_pubsubsubscription}', 2000);
     {/if}
-    
     </script>
 
     {if="$creating"}
         <div class="spacetop"></div>
-        <div class="message info">{$c->__('pubsub.creating')} - {$c->__('step.step', $creating)}</div>
+        <div class="message info">{$c->__('pubsub.creating')} - {$c->__('step.step', $creating)}/6</div>
+    {/if}
+
+    {if="isset($create_microblog)"}
+        <script type="text/javascript">
+            setTimeout('{$create_microblog}', 2000);
+        </script>
+        <div class="message info">{$c->__('pubsub.creating_feed')} </div>
     {/if}
     
     {if="$no_pubsub"}
