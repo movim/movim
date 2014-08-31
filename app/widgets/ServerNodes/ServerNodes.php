@@ -44,6 +44,35 @@ class ServerNodes extends WidgetCommon
         RPC::call('movim_fill', 'servernodeshead', '');
     }
     
+    function onCreationSuccess($items)
+    {        
+        RPC::call('movim_redirect', Route::urlize('node', array($items[0], $items[1])));        
+    }
+    
+    function onCreationError($error) {
+        RPC::call('movim_fill', 'servernodes', '');
+        RPC::commit();
+    }
+
+    function ajaxGetNodes($server)
+    {
+        $nd = new \Modl\ItemDAO();
+        $nd->deleteItems($server);
+        
+        $r = new DiscoItems;
+        $r->setTo($server)->request();
+    }
+    
+    function ajaxCreateGroup($data)
+    {
+        //make a uri of the title
+        $uri = stringToUri($data['title']);
+        
+        $r = new Create;
+        $r->setTo($data['server'])->setNode($uri)->setData($data['title'])
+          ->request();
+    }
+    
     function onDiscoItems($server) {
         $submit = $this->genCallAjax('ajaxCreateGroup', "movim_parse_form('groupCreation')");
         
@@ -132,40 +161,5 @@ class ServerNodes extends WidgetCommon
         $html .= '</ul>';
         
         return $html;
-    }
-    
-    function onCreationSuccess($items)
-    {        
-        $html = '
-            <a href="
-            '.Route::urlize('node', array($items[0], $items[1])).'
-            ">'.$items[2].'</a>';
-
-        RPC::call('movim_fill', 'servernodes', $html);
-        RPC::commit();
-    }
-    
-    function onCreationError($error) {
-        RPC::call('movim_fill', 'servernodes', '');
-        RPC::commit();
-    }
-
-    function ajaxGetNodes($server)
-    {
-        $nd = new \Modl\ItemDAO();
-        $nd->deleteItems($server);
-        
-        $r = new DiscoItems;
-        $r->setTo($server)->request();
-    }
-    
-    function ajaxCreateGroup($data)
-    {
-        //make a uri of the title
-        $uri = stringToUri($data['title']);
-        
-        $r = new Create;
-        $r->setTo($data['server'])->setNode($uri)->setData($data['title'])
-          ->request();
     }
 }
