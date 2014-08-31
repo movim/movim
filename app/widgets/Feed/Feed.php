@@ -24,9 +24,6 @@ class Feed extends WidgetCommon {
         $this->registerEvent('postpublished', 'onPostPublished');
         $this->registerEvent('postpublisherror', 'onPostPublishError');
         
-        $this->registerEvent('nodecreated', 'onNodeCreated');
-        $this->registerEvent('nodecreationerror', 'onNodeCreationError');
-        
         $this->registerEvent('config', 'onConfig');
     }
 
@@ -43,30 +40,6 @@ class Feed extends WidgetCommon {
     {
         $this->user->setConfig($data);
         RPC::call('movim_fill', 'feedhead', $this->prepareHead());
-    }
-    
-    function onNodeCreated() {
-        $config = $this->user->getConfig();
-        $config['feed'] = 'created';
-        
-        $s = new Set;
-        $s->setXmlns('movim:prefs')
-          ->setData(serialize($config))
-          ->request();
-    }
-    
-    function onNodeCreationError() {
-        $config = $this->user->getConfig();
-        $config['feed'] = 'error';
-        
-        $s = new Set;
-        $s->setXmlns('movim:prefs')
-          ->setData(serialize($config))
-          ->request();
-        
-        Notification::appendNotification(
-            $this->__('feed.no_support'), 
-            'error');
     }
     
     function onCommentPublishError() {
@@ -97,35 +70,14 @@ class Feed extends WidgetCommon {
     }
     
     function prepareHead() {
-        $html = '';
-        
-        $session = \Sessionx::start();
-
-        if($session->config['config'] == false) {
-            $html .= 
-                '<div class="message warning">'.
-                    $this->__('feed.no_support').
-                '</div>';
-        } elseif(!isset($session->config['feed'])) {
-            $html .= '
-                <div id="feednotifs">
-                    <div class="message info">'.
-                     $this->__('feed.creating').
-                    '</div>
-                </div>
-                <script type="text/javascript">'.
-                        $this->genCallAjax('ajaxCreateNode').
-                '</script>';
-        } else {
-            $html .= '
-                <script type="text/javascript">
-                    function createCommentNode(parentid) {'.
-                        $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]').
-                '}
-                </script>
-                '.$this->prepareSubmitForm($this->user->getLogin(), 'urn:xmpp:microblog:0').'
-                <div id="feednotifs"></div>';
-        }
+        $html = '
+            <script type="text/javascript">
+                function createCommentNode(parentid) {'.
+                    $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]').
+            '   }
+            </script>
+            '.$this->prepareSubmitForm($this->user->getLogin(), 'urn:xmpp:microblog:0').'
+            <div id="feednotifs"></div>';
         
         return $html;
     }
@@ -184,12 +136,5 @@ class Feed extends WidgetCommon {
 
         RPC::call('movim_fill', 'feedcontent', $html);
         RPC::commit();
-    }
-    
-    function ajaxCreateNode()
-    {
-        $p = new CreateNode;
-        $p->setTo($this->user->getLogin())
-          ->request();
     }
 }

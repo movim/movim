@@ -40,3 +40,8 @@
 #profile_widget textarea#status {
     overflow: hidden;
 }
+
+#profile_widget .not_yet {
+    padding: 1em;
+    text-align: center;
+}
