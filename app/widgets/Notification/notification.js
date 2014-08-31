@@ -11,11 +11,15 @@ function removeDiff(params) {
     if(target) {
         for(i = 0; i < nodes.length; i++) {
             var n = nodes[i];
-            target.appendChild(n);
-            setTimeout(function() {
-                n.parentNode.removeChild(n);
-                },
-                6000);
+
+            // The notification is already here ?
+            if(document.getElementById(params[2]) == null) {
+                target.appendChild(n);
+                setTimeout(function() {
+                    n.parentNode.removeChild(n);
+                    },
+                    6000);
+            }
         }
     }
 }

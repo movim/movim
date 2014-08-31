@@ -124,11 +124,14 @@ class Profile extends WidgetCommon
                 ';
         } else {
             $html .= '
+                <div class="not_yet">
                     '.t('No profile yet ?').'<br /><br />
                     <a 
                         class="button color green icon add" 
                         style="color: white;"
-                        href="'.Route::urlize('profile').'">'.t("Create my vCard").'</a>';
+                        href="'.Route::urlize('profile').'">'.t("Create my vCard").'</a>
+                </div>';
+
         }
         
         return $html;
