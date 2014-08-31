@@ -38,6 +38,7 @@ class CommentPublish extends Errors
     private $_atom;
     
     public function __construct() {
+        parent::__construct();
         $this->_atom = new PubsubAtom;
     }
     
