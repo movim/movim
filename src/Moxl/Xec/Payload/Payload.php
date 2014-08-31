@@ -36,7 +36,7 @@ abstract class Payload
      *
      * @return void
      */
-    final public function __construct()
+    public function __construct()
     {
         $this->packet = new Packet;
     }

@@ -3,29 +3,6 @@
 namespace Moxl\Stanza;
 
 class Bookmark {
-    static function nodeCreate($to) {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <create node="storage:bookmarks"/>
-                <configure>
-                    <x xmlns="jabber:x:data" type="submit">
-                        <field var="FORM_TYPE" type="hidden">
-                            <value>http://jabber.org/protocol/pubsub#publish-options</value>
-                        </field>
-                        <field var="pubsub#persist_items">
-                            <value>true</value>
-                        </field>
-                        <field var="pubsub#access_model">
-                            <value>whitelist</value>
-                        </field>
-                    </x>
-                </configure>
-            </pubsub>';
-            
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        \Moxl\API::request($xml);
-    }
-    
     static function get()
     {  
         $xml = '

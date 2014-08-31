@@ -73,6 +73,10 @@ class Unsubscribe extends Errors
         $evt = new \Event();
         $evt->runEvent('pubsubunsubscribed', array($this->_to, $this->_node)); 
     }
+
+    public function errorItemNotFound($error) {
+        $this->handle($stanza, $parent = false);
+    }
     
     public function error($stanza) {
         $this->handle($stanza, $parent = false);

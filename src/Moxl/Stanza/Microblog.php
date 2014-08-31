@@ -90,70 +90,70 @@ class Microblog {
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub">
                 <create node="urn:xmpp:microblog:0:comments/'.$parentid.'"/>
-                    <configure>
-                        <x xmlns="jabber:x:data" type="submit">
-                            <field var="FORM_TYPE" type="hidden">
-                                <value>http://jabber.org/protocol/pubsub#node_config</value>
-                            </field>
+                <configure>
+                    <x xmlns="jabber:x:data" type="submit">
+                        <field var="FORM_TYPE" type="hidden">
+                            <value>http://jabber.org/protocol/pubsub#node_config</value>
+                        </field>
 
-                            <field var="pubsub#deliver_notifications">
-                                <value>true</value>
-                            </field>
+                        <field var="pubsub#deliver_notifications">
+                            <value>true</value>
+                        </field>
 
-                            <field var="pubsub#deliver_payloads">
-                                <value>true</value>
-                            </field>
+                        <field var="pubsub#deliver_payloads">
+                            <value>true</value>
+                        </field>
 
-                            <field var="pubsub#persist_items">
-                                <value>true</value>
-                            </field>
+                        <field var="pubsub#persist_items">
+                            <value>true</value>
+                        </field>
 
-                            <field var="pubsub#max_items">
-                                <value>100</value>
-                            </field>
+                        <field var="pubsub#max_items">
+                            <value>100</value>
+                        </field>
 
-                            <field var="pubsub#item_expire">
-                                <value>604800</value>
-                            </field>
+                        <field var="pubsub#item_expire">
+                            <value>604800</value>
+                        </field>
 
-                            <field var="pubsub#access_model">
-                                <value>open</value>
-                            </field>
+                        <field var="pubsub#access_model">
+                            <value>open</value>
+                        </field>
 
-                            <field var="pubsub#publish_model">
-                                <value>open</value>
-                            </field>
+                        <field var="pubsub#publish_model">
+                            <value>open</value>
+                        </field>
 
-                            <field var="pubsub#notify_delete">
-                                <value>true</value>
-                            </field>
+                        <field var="pubsub#notify_delete">
+                            <value>true</value>
+                        </field>
 
-                            <field var="pubsub#notify_retract">
-                                <value>true</value>
-                            </field>
-                            
-                            <field var="pubsub#subscribe">
-                                <value>true</value>
-                            </field>
+                        <field var="pubsub#notify_retract">
+                            <value>true</value>
+                        </field>
+                        
+                        <field var="pubsub#subscribe">
+                            <value>true</value>
+                        </field>
 
-                            <field var="pubsub#send_last_published_item">
-                                <value>on_sub_and_presence</value>
-                            </field>
+                        <field var="pubsub#send_last_published_item">
+                            <value>on_sub_and_presence</value>
+                        </field>
 
 
-                            <field var="pubsub#notify_sub">
-                                <value>true</value>
-                            </field>
+                        <field var="pubsub#notify_sub">
+                            <value>true</value>
+                        </field>
 
-                            <field var="pubsub#type">
-                                <value>http://www.w3.org/2005/Atom</value>
-                            </field>
+                        <field var="pubsub#type">
+                            <value>http://www.w3.org/2005/Atom</value>
+                        </field>
 
-                            <field var="pubsub#body_xslt">
-                                <value>http://jabxslt.jabberstudio.org/atom_body.xslt</value>
-                            </field>
-                        </x>
-                    </configure>
+                        <field var="pubsub#body_xslt">
+                            <value>http://jabxslt.jabberstudio.org/atom_body.xslt</value>
+                        </field>
+                    </x>
+                </configure>
             </pubsub>';
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
         \Moxl\API::request($xml);
