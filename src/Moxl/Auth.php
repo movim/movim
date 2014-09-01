@@ -10,7 +10,8 @@ class Auth {
                         'SCRAM-SHA-1',
                         'DIGEST-MD5',
                         'CRAM-MD5',
-                        'PLAIN'
+                        'PLAIN',
+                        'ANONYMOUS'
                         );
         
         $mecchoice = false;
@@ -45,6 +46,26 @@ class Auth {
 
         if(!$xmle->success)
             return 'wrongaccount';
+        else
+            return 'OK';
+    }
+
+    static function mechanismANONYMOUS() {
+        $s = new SASL2;
+        $fa = $s->factory('ANONYMOUS');
+
+        $session = \Sessionx::start();
+
+        $xml = API::boshWrapper(
+                '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="ANONYMOUS"/>', false);
+
+        $r = new Request($xml);
+        $xml = $r->fire();
+
+        $xmle = new \SimpleXMLElement($xml['content']);
+
+        if(!$xmle->success)
+            return 'failauth';
         else
             return 'OK';
     }
@@ -199,7 +220,7 @@ class Auth {
         else
             return 'OK';
     }
-
+    
     static function restartRequest() {
         $session = \Sessionx::start();
         
@@ -238,6 +259,7 @@ class Auth {
             return 'failauth';
         elseif($xmle->iq->bind->jid) {
             list($jid, $ressource) = explode('/', (string)$xmle->iq->bind->jid);
+            list($session->username, $session->host) = explode('@',$jid);
             if($ressource)
                 $session->ressource = $ressource;
         }

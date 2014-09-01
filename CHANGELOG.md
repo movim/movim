@@ -6,6 +6,7 @@ v1.1.1
  * The Actions now inherit from the Payloads to gain Package system support
  * The Roster is now refreshed on each connection
  * We get the server Caps during the connection
+ * Add anonymous login support
 
 v1.1.0
 ---------------------------
