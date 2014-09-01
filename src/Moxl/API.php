@@ -140,23 +140,37 @@ class API {
         $session->active = true;
         $session->password = 'hidden';
 
+        Utils::log("/// REFRESH GENERAL CONFIGURATION");
+
         // We get the general configuration
         $s = new Xec\Action\Storage\Get;
         $s->setXmlns('movim:prefs')
           ->request();
 
+        Utils::log("/// REFRESH SERVER CAPS");
+
         // We get the server capabilities
         $c = new Xec\Action\Disco\Request;
         $c->setTo($session->host)
           ->request();
+
+        Utils::log("/// ENABLE CARBON");
           
         // http://xmpp.org/extensions/xep-0280.html
         \Moxl\Stanza\Carbons::enable();
+
+        Utils::log("/// REFRESH BOOKMARKS");
 
         // We refresh the bookmarks
         $b = new \Moxl\Xec\Action\Bookmark\Get;
         $b->setTo($session->user.'@'.$session->host)
           ->request();
+
+        Utils::log("/// REFRESH ROSTER");
+
+        // We refresh the roster
+        $r = new \Moxl\Xec\Action\Roster\GetList;
+        $r->request();
 
         // We grab the precedente presence from the Cache and send it !
         $presence = \Cache::c('presence');
