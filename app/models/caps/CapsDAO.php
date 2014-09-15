@@ -19,6 +19,21 @@ class CapsDAO extends SQL {
         return $this->run('Caps', 'item');
     }
     
+    function getClients() {
+        $this->_sql = '
+            select * from caps
+            where category = :category';
+        
+        $this->prepare(
+            'Caps',
+            array(
+                'category' => 'client'
+            )
+        );
+        
+        return $this->run('Caps');
+    }
+    
     function getAll() {
         $this->_sql = '
             select * from caps';
