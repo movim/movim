@@ -1,7 +1,16 @@
 Movim Changelog
 ================
 
-v0.8.0 (trunk)
+v0.8.1 (trunk)
+---------------------------
+ * Add a Caps support table
+ * Fix some Jingle issues
+ * New Mud actions to create/update the database and change the administration configuration
+ * New InitAccount widget to create persistent PEP node on the first login
+ * Clean the Feed widget
+ * Fix various CSS bugs
+
+v0.8.0
 ---------------------------
 
  * Refactor the whole Movim sourcecode + clean old code
