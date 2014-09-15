@@ -373,7 +373,8 @@ table thead {
     font-weight: bold;
 }
 
-table thead tr td {
+table thead tr td,
+table thead tr th {
     text-align: center;
     line-height: 2em;
 }
