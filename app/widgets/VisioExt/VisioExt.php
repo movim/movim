@@ -39,6 +39,9 @@ class VisioExt extends WidgetBase
 
         $cd = new \Modl\ContactDAO();
         $contact = $cd->get(cleanJid((string)$jingle->attributes()->initiator));
+
+        if(!isset($contact))
+            $contact = new Modl\Contact;
         
         if($sdp) {
             RPC::call(

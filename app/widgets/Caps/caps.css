@@ -5,6 +5,10 @@
     overflow: auto;
 }
 
+#caps_widget table tr:not(:first-child):hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 #caps_widget table td.chat {
     background-color: green;
 }
