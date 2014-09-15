@@ -5,7 +5,10 @@
     <div id="left">
     </div>
 
+    <?php $this->widget('Tabs');?>
+
     <div id="center">
         <?php $this->widget('About');?>
+        <?php $this->widget('Caps');?>
     </div>
 </div>
