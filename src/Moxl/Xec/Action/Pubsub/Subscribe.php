@@ -27,6 +27,7 @@ namespace Moxl\Xec\Action\Pubsub;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action\PubsubSubscription\ListAdd;
 
 class Subscribe extends Errors
 {
@@ -80,7 +81,7 @@ class Subscribe extends Errors
 
         //add the group to the public list (if checked)
         if($this->_data['listgroup'] == true){
-            $add = new \moxl\PubsubSubscriptionListAdd();
+            $add = new ListAdd();
             $add->setTo($this->_to)
               ->setNode($this->_node)
               ->setFrom($this->_from)
