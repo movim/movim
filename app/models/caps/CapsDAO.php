@@ -34,6 +34,21 @@ class CapsDAO extends SQL {
         return $this->run('Caps');
     }
     
+    function getServers() {
+        $this->_sql = '
+            select * from caps
+            where category = :category';
+        
+        $this->prepare(
+            'Caps',
+            array(
+                'category' => 'server'
+            )
+        );
+        
+        return $this->run('Caps');
+    }
+    
     function getAll() {
         $this->_sql = '
             select * from caps';
