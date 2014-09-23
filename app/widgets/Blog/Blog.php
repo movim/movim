@@ -3,6 +3,15 @@
 class Blog extends WidgetCommon {
     function load()
     {
+        
+    }
+
+    function display()
+    {
+        if(!isset($_GET['f']) || !isset($_GET['n'])) {
+            return;
+        }
+        
         $from = $_GET['f'];
         $node = $_GET['n'];
         

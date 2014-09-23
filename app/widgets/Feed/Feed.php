@@ -70,14 +70,23 @@ class Feed extends WidgetCommon {
     }
     
     function prepareHead() {
-        $html = '
-            <script type="text/javascript">
-                function createCommentNode(parentid) {'.
-                    $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]').
-            '   }
-            </script>
-            '.$this->prepareSubmitForm($this->user->getLogin(), 'urn:xmpp:microblog:0').'
-            <div id="feednotifs"></div>';
+        $session = \Sessionx::start();
+
+        $cd = new Modl\CapsDAO;
+        $caps = $cd->get($session->host);
+
+        if(isset($caps) && in_array('http://jabber.org/protocol/pubsub#config-node', unserialize($caps->features))) {
+            $html = '
+                <script type="text/javascript">
+                    function createCommentNode(parentid) {'.
+                        $this->genCallAjax('ajaxCreateCommentNode', 'parentid[0]').
+                '   }
+                </script>
+                '.$this->prepareSubmitForm($this->user->getLogin(), 'urn:xmpp:microblog:0').'
+                <div id="feednotifs"></div>';
+        } else {
+            $html = '';
+        }
         
         return $html;
     }
