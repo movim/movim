@@ -21,7 +21,16 @@ class Syndication extends WidgetBase
 {
     function load()
     {
+
+    }
+
+    function display()
+    {
         ob_clean();
+
+        if(!isset($_GET['f']) || !isset($_GET['n'])) {
+            return;
+        }
 
         $from = $_GET['f'];
         $node = $_GET['n'];
@@ -61,25 +70,29 @@ class Syndication extends WidgetBase
         }
     }
     
-    function prepareTitle($title) {
+    function prepareTitle($title)
+    {
         if($title == null)
             return '...';
         else
             return $this->prepareContent($title, true);     
     }
     
-    function prepareContent($content, $title = false) {
+    function prepareContent($content, $title = false)
+    {
         if($title)
             return cleanHTMLTags($content);
         else
             return trim(cleanHTMLTags(prepareString($content)));
     }
 
-    function generateUUID($content) {
+    function generateUUID($content)
+    {
         return generateUUID(serialize($content));
     }
 
-    function prepareUpdated($date) {
+    function prepareUpdated($date)
+    {
         return date('c', strtotime($date));
     }
 }

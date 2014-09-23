@@ -131,7 +131,11 @@ class InitAccount extends WidgetCommon {
 
             if($creating != false) {
                 $this->view->assign('creating', $creating);
+            } else {
+                $this->view->assign('creating', false);
             }
+
+            $this->view->assign('no_pubsub', false);
         } else {
             $this->view->assign('no_pubsub', true);
         }
