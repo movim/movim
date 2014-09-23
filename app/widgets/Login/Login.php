@@ -268,15 +268,44 @@ class Login extends WidgetBase
         $warning = \Moxl\API::login();
         
         if($warning != 'OK') {
-            RPC::call('movim_redirect', Route::urlize('login', $warning));        
+            RPC::call('movim_redirect', Route::urlize('login', $warning));
             RPC::commit();
         } else {
             $pd = new modl\PresenceDAO();
             $pd->clearPresence($element['login']);
         
-            RPC::call('movim_reload', Route::urlize('root'));            
+            RPC::call('movim_remember_session', $element['login']);
+            RPC::call('movim_reload', Route::urlize('root'));
             RPC::commit();
         }
+    }
+
+    function ajaxGetRememberedSession($sessions)
+    {
+        $sessions = json_decode($sessions);
+
+        $sessions_grabbed = array();
+
+        $cd = new \Modl\ContactDAO;
+        
+        foreach($sessions as $s) {
+            $c = $cd->get($s);
+
+            if($c != null) {
+                array_push($sessions_grabbed, $c);
+            } else {
+                $c = new \Modl\Contact;
+                $c->jid = $s;
+                array_push($sessions_grabbed, $c);
+            }
+        }
+
+        $sessionshtml = $this->tpl();
+        $sessionshtml->assign('sessions', $sessions_grabbed);
+        $sessionshtml->assign('empty', new \Modl\Contact);
+
+        RPC::call('movim_fill', 'sessions', $sessionshtml->draw('_login_sessions', true));
+        RPC::commit();
     }
 
     function ajaxGetConfig()
