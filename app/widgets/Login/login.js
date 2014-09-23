@@ -17,12 +17,14 @@ Storage.prototype.getObject = function(key) {
  */
 function rememberSession(jid) {
     if(localStorage['previousSessions'] == null) {
-        localStorage.setObject('previousSessions', new Array());
+        localStorage.setObject('previousSessions', new Object());
     }
 
     var s = localStorage.getObject('previousSessions');
-    s.push(jid);
-    localStorage.setObject('previousSessions', s);
+    if(s.indexOf(jid) == -1) {
+        s.push(jid);
+        localStorage.setObject('previousSessions', s);
+    }
 }
 
 /**
@@ -32,6 +34,7 @@ function rememberSession(jid) {
 function chooseSession(jid) {
     movim_remove_class('#loginpage', 'choose');
     document.querySelector('#login').value = jid;
+    document.querySelector('#pass').focus();
 }
 
 /**
