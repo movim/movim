@@ -4,6 +4,9 @@
             {$c->__('error.too_old')}
         </div>
     {else}
+        <div id="sessions">
+
+        </div>
         {if="isset($info) && $info != ''"}
             <div class="message warning">
                 {$info}
@@ -33,6 +36,9 @@
             <div class="clear"></div>
 
             <p class="create">
+                <a id="return_sessions" class="button color transparent alone" href="#" onclick="backToChoose()">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
                 <a class="button color transparent oppose" href="{$c->route('account')}">
                     <i class="fa fa-user"></i> {$c->__('form.create_one')}
                 </a>
