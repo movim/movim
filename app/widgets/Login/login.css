@@ -38,6 +38,7 @@ body {
 }
 
 #loginpage form {
+    transition: background-color 0.5s ease;
     box-shadow: 0 0.1em 0px rgba(0, 0, 0, 0.2);
     padding: 0.5em;
     background-color: rgba(255, 255, 255, 0.2);
@@ -113,6 +114,65 @@ body {
 #loginpage #loginhelp li#jabber { background-image: url(img/jabber.png); }
 #loginpage #loginhelp li#gmail { background-image: url(img/envelope.png); }
 #loginpage #loginhelp li#facebook { background-image: url(img/facebook.png); }
+
+/* Sessions */
+#loginpage #sessions {
+    display: none;
+}
+
+#loginpage #sessions ul {
+    list-style-type: none;
+}
+
+#loginpage #sessions ul li {
+    box-shadow: 0 0.1em 0px rgba(0, 0, 0, 0.2);
+    padding: 0.5em;
+    transition: background-color 0.5s ease;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.1em;
+    height: 3em;
+    margin-bottom: 0.5em;
+}
+
+#loginpage #sessions ul li a.button {
+    margin-top: 0.3em;
+}
+
+#loginpage #sessions ul li:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+#loginpage #sessions ul li img {
+    height: 3em;
+    float: left;
+}
+
+#loginpage #sessions ul li span {
+    color: white;
+    line-height: 2.8em;
+    padding: 1em;
+}
+
+/* States */
+#loginpage.choose #loginhelp,
+#loginpage.choose form .element {
+    display: none;
+}
+
+#loginpage.choose form {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+#loginpage.choose #sessions {
+    display: block;
+    height: 100%;
+}
+
+#loginpage.choose #return_sessions {
+    display: none;
+}
 
 footer {
     display: none;
