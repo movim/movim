@@ -35,13 +35,18 @@ class AccountNext extends WidgetBase {
         } else {
             $this->view->assign('servers', false);
         }
-        
-        $this->view->assign(
-                    'getsubscriptionform',
-                    $this->genCallAjax('ajaxDiscoverServer', "'".$_GET['s']."'")
-                    );
-                    
-        $this->view->assign('ndd', $_GET['s']);
+
+        if(isset($_GET['s'])) {
+            $this->view->assign(
+                        'getsubscriptionform',
+                        $this->genCallAjax('ajaxDiscoverServer', "'".$_GET['s']."'")
+                        );
+                        
+            $this->view->assign('ndd', $_GET['s']);
+        } else {
+            $this->view->assign('getsubscriptionform','');
+            $this->view->assign('ndd', '');
+        }
     }
 
     function ajaxDiscoverServer($ndd) {

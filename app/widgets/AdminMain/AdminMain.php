@@ -25,7 +25,8 @@ class AdminMain extends WidgetBase
         $config = $cd->get();
 
         if(isset($form)) {
-            if($form['password'] != '' && $form['repassword'] != ''
+            if(isset($form['password'])
+            && $form['password'] != '' && $form['repassword'] != ''
             && $form['password'] == $form['repassword']) {
                 $form['password'] = sha1($form['password']);
             } else {
@@ -39,7 +40,9 @@ class AdminMain extends WidgetBase
             $cd->set($config);
             
             //set timezone
-            date_default_timezone_set($form['timezone']);
+            if(isset($form['timezone'])) {
+                date_default_timezone_set($form['timezone']);
+            }
         }
     }
 
