@@ -14,8 +14,8 @@ class LoginController extends BaseController {
         $this->page->menuAddLink(__('page.about'), 'about');
 
         $user = new User();
-        if($user->isLogged())
+        if($user->isLogged()) {
             $this->redirect('root');
-        
+        }
     }
 }
