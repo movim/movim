@@ -10,5 +10,9 @@ class BlogController extends BaseController {
         
         $this->page->menuAddLink(__('page.home'), 'root');
         $this->page->menuAddLink(__('page.blog'), 'blog', true);
+
+        if(!\Modl\Privacy::get($_GET['f'])) {
+            $this->redirect('root');
+        }
     }
 }
