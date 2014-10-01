@@ -48,7 +48,7 @@ class Statistics extends WidgetBase {
             }
         }
 
-        $this->renderTimeLineChart($days, "Monthly Subscriptions", "monthly.png");
+        $this->renderTimeLineChart($days, $this->__('statistics.monthly_sub'), "monthly.png");
 
         $sum = 0;
         foreach($days as $key => $value) {
@@ -56,11 +56,11 @@ class Statistics extends WidgetBase {
             $days[$key] = $sum;
         }
         
-        $this->renderTimeLineChart($days, "Monthly Subscriptions Cumulated", "monthly_cumulated.png");
+        $this->renderTimeLineChart($days, $this->__('statistics.monthly_sub_cum'), "monthly_cumulated.png");
     }
 
     private function renderTimeLineChart($data, $title, $filename) {
-        $chart = new Libchart\View\Chart\LineChart(700, 450);
+        $chart = new Libchart\View\Chart\LineChart(750, 450);
 
         $dataSet = new Libchart\Model\XYDataSet();
 
