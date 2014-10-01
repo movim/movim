@@ -62,6 +62,10 @@ class Contact extends Model {
     protected $twitter;
     protected $skype;
     protected $yahoo;
+
+    // Datetime
+    public $created;
+    public $updated;
     
     public function __construct() {
         $this->_struct = '
@@ -139,7 +143,11 @@ class Contact extends Model {
             "skype" : 
                 {"type":"string", "size":128 },
             "yahoo" : 
-                {"type":"string", "size":128 }
+                {"type":"string", "size":128 },
+            "created" : 
+                {"type":"date" },
+            "updated" : 
+                {"type":"date" }
         }';
 
         parent::__construct();
