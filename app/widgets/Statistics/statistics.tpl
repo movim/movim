@@ -14,7 +14,7 @@
         {/loop}
     </ul>
 
-    <h1>Subscriptions</h1>
+    <h1><i class="fa fa-line-chart"></i> {$c->__('statistics.subscriptions')}</h1>
     <img src="{$cache_path}monthly.png">
     <img src="{$cache_path}monthly_cumulated.png">
 </div>
