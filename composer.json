@@ -1,6 +1,7 @@
 {
     "require": {
         "monolog/monolog": "1.8.*",
+        "libchart/libchart": "dev-default",
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "1.4.*@dev",
         "movim/modl": "dev-master",
