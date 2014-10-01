@@ -25,6 +25,10 @@ class ContactDAO extends SQL {
     }
     
     function set(Contact $contact) {
+        if(!isset($contact->created)) {
+            $contact->created = date(DATE_ISO8601);
+        }
+        
         $this->_sql = '
             update contact
             set fn      = :fn,
@@ -71,7 +75,8 @@ class ContactDAO extends SQL {
                 loctimestamp    = :loctimestamp,
                 twitter         = :twitter,
                 skype           = :skype,
-                yahoo           = :yahoo
+                yahoo           = :yahoo,
+                updated         = :updated
             where contact.jid = :jid';
         
         $this->prepare(
@@ -128,6 +133,9 @@ class ContactDAO extends SQL {
                 'twitter'           => $contact->twitter,
                 'skype'             => $contact->skype,
                 'yahoo'             => $contact->yahoo,
+
+                'created'           => $contact->created,
+                'updated'           => date(DATE_ISO8601),
                 
                 'jid'  => $contact->jid
             )
@@ -185,6 +193,8 @@ class ContactDAO extends SQL {
                 twitter,
                 skype,
                 yahoo,
+
+                created,
                 
                 jid)
                 values (
@@ -234,6 +244,8 @@ class ContactDAO extends SQL {
                     :twitter,
                     :skype,
                     :yahoo,
+
+                    :created,
                     
                     :jid)';
                     
@@ -292,6 +304,8 @@ class ContactDAO extends SQL {
                     'twitter'           => $contact->twitter,
                     'skype'             => $contact->skype,
                     'yahoo'             => $contact->yahoo,
+
+                    'created'           => date(DATE_ISO8601),
                     
                     'jid'  => $contact->jid
                 )

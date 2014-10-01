@@ -13,4 +13,8 @@
             </li>
         {/loop}
     </ul>
+
+    <h1>Subscriptions</h1>
+    <img src="{$cache_path}monthly.png">
+    <img src="{$cache_path}monthly_cumulated.png">
 </div>
