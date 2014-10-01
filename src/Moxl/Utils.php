@@ -93,6 +93,7 @@ class Utils {
             'urn:xmpp:vcard4+notify',
             'urn:xmpp:avatar:data',
             'urn:xmpp:avatar:data+notify',
+            'urn:xmpp:receipts',
             'jabber:iq:version',
             
             'http://jabber.org/protocol/xhtml-im',
@@ -106,12 +107,15 @@ class Utils {
             'urn:xmpp:jingle:apps:rtp:video',
             'urn:ietf:rfc:3264',
             'urn:ietf:rfc:5888',
+            'urn:xmpp:jingle:apps:dtls:0',
+            'urn:ietf:rfc:5576',
             'urn:xmpp:jingle:transports:ice-udp:0',
             'urn:xmpp:jingle:transports:ice-udp:1',
             'urn:xmpp:jingle:apps:rtp:rtcp-fb:0',
             
             'http://jabber.org/protocol/muc',
             'http://jabber.org/protocol/chatstates',
+            'http://jabber.org/protocol/httpbind',
             'http://jabber.org/protocol/caps',
             'http://jabber.org/protocol/disco#info',
             'http://jabber.org/protocol/disco#items',
