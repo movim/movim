@@ -5,7 +5,7 @@
         <a href="{$friend}">
             {$avatar}
         </a>
-        <span class="title">{$title}</span>
+        <span class="title" title="{$title}">{$title}</span>
         <span class="contact">{$contact}</span>
         <span class="date">{$date}</span>
     </header>
