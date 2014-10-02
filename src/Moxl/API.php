@@ -265,8 +265,8 @@ class API {
 
     static function cacheSplit($r) 
     {
-        $tohandle = array_slice($r, 0, 4);
-        $tocache  = array_slice($r, 5);
+        $tohandle = array_slice($r, 0, 2);
+        $tocache  = array_slice($r, 3);
         
         $tocaches = array();
         foreach($tocache as $value) {
@@ -339,7 +339,7 @@ class API {
                     for( $xmle->rewind(); $xmle->valid(); $xmle->next() ) 
                         array_push($r, $xmle->current());
 
-                    if(count($r) > 5) 
+                    if(count($r) > 3) 
                         $r = self::cacheSplit($r);
                     
                     Xec\Handler::handle($r);

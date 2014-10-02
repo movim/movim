@@ -94,16 +94,17 @@ class Utils {
             'urn:xmpp:avatar:data',
             'urn:xmpp:avatar:data+notify',
             'urn:xmpp:receipts',
+            'urn:xmpp:carbons:2',
+            'urn:xmpp:avatar:data',
             'jabber:iq:version',
             'jabber:iq:last',
-            
-            'http://jabber.org/protocol/xhtml-im',
-            'urn:xmpp:avatar:data',
-            
+            'vcard-temp',
+            'jabber:x:data',
+
+            // Jingle
             'http://jabber.org/protocol/jingle',
             'urn:xmpp:jingle:1',
             'urn:xmpp:jingle:apps:rtp:1',
-            //'urn:xmpp:jingle:transports:raw-udp:1',
             'urn:xmpp:jingle:apps:rtp:audio',
             'urn:xmpp:jingle:apps:rtp:video',
             'urn:ietf:rfc:3264',
@@ -115,6 +116,11 @@ class Utils {
             'urn:xmpp:jingle:apps:rtp:rtcp-fb:0',
             
             'http://jabber.org/protocol/muc',
+            'http://jabber.org/protocol/nick',
+            'http://jabber.org/protocol/nick+notify',
+            'http://jabber.org/protocol/mood',
+            'http://jabber.org/protocol/mood+notify',
+            'http://jabber.org/protocol/xhtml-im',
             'http://jabber.org/protocol/chatstates',
             'http://jabber.org/protocol/httpbind',
             'http://jabber.org/protocol/caps',
