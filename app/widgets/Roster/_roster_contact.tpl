@@ -5,7 +5,7 @@
     <ul class="contact">
         {loop="$contact"}
             <li
-                title="{$value.jid}{if="$value.status != ''"} - {$value.status}{/if}"
+                title="{$value.jid}{if="$value.status != ''"} - {$value.status}{/if} - {$value.ressource}"
                 class="{$value.presencetxt} {$value.inactive} {if="$value.client"}client {$value.client}{/if}">
                 <div
                     class="chat on"
@@ -42,7 +42,7 @@
                         src="{$value.avatar}"
                         alt="avatar"
                     />{$value.name}
-                    <span class="ressource">{$value.ressource}</span>
+                    <span class="ressource">{if="$value.status != ''"}{$value.status} -{/if} {$value.ressource}</span>
                 </a>
             </li>
         {/loop}
