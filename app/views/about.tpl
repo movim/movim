@@ -10,5 +10,6 @@
     <div id="center">
         <?php $this->widget('About');?>
         <?php $this->widget('Caps');?>
+        <?php $this->widget('Search');?>
     </div>
 </div>
