@@ -26,7 +26,7 @@
                     <span class="tag yellow on_desktop">{$value->getMarital()}</span>
                 {/if}
                 <span class="content">{$value->getTrueName()}</span>
-                <span class="desc">{$value->description|strip_tags}</span>
+                <span class="desc on_desktop">{$value->description|strip_tags}</span>
             </a>
         </li>
     {/loop}

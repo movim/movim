@@ -151,7 +151,12 @@ body {
 #loginpage #sessions ul li span {
     color: white;
     line-height: 2.8em;
-    padding: 1em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-indent: 0.5em;
+    width: 65%;
+    display: inline-block;
+    overflow: hidden;
 }
 
 /* States */
