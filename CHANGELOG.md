@@ -3,12 +3,16 @@ Movim Changelog
 
 v0.8.1 (trunk)
 ---------------------------
+ * Add charts in the Statistics
  * Add a Caps support table
  * Fix some Jingle issues
  * New Mud actions to create/update the database and change the administration configuration
  * New InitAccount widget to create persistent PEP node on the first login
  * Clean the Feed widget
- * Fix various CSS bugs
+ * Fix various CSS bugs + fix mobile UI
+ * Add title attribute to some truncated texts
+ * Add a new fancy login system
+ * Show the status in the Roster
 
 v0.8.0
 ---------------------------
