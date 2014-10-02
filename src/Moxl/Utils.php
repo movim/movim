@@ -95,6 +95,7 @@ class Utils {
             'urn:xmpp:avatar:data+notify',
             'urn:xmpp:receipts',
             'jabber:iq:version',
+            'jabber:iq:last',
             
             'http://jabber.org/protocol/xhtml-im',
             'urn:xmpp:avatar:data',
