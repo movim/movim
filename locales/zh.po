@@ -5,2064 +5,1978 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-03 23:49+0200\n"
+"POT-Creation-Date: 2014-07-16 09:14+0200\n"
 "PO-Revision-Date: 2014-06-01 23:06+0000\n"
 "Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-08-04 21:24+0000\n"
 "X-Generator: Launchpad (build 17147)\n"
-"Language: \n"
 
-#: /var/www/movim/cache/locales.php:2
+#: ../cache/locales.php:2
 msgid "Thanks"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:3
+#: ../cache/locales.php:3
 msgid "Developers"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:4
+#: ../cache/locales.php:4
 msgid "Translators"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:5
+#: ../cache/locales.php:5
 msgid "Software"
 msgstr "软件"
 
-#: /var/www/movim/cache/locales.php:6
+#: ../cache/locales.php:6
 msgid "Resources"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:7 /var/www/movim/cache/locales.php:69
+#: ../cache/locales.php:7 ../cache/locales.php:69
 msgid "API"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:8
-msgid ""
-"Movim is an XMPP-based communication platform. All the project, except the "
-"following software and resources, is under"
+#: ../cache/locales.php:8
+msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:9 /var/www/movim/cache/locales.php:175
+#: ../cache/locales.php:9 ../cache/locales.php:175
 msgid "Some data are missing !"
 msgstr "部分数据丢失"
 
-#: /var/www/movim/cache/locales.php:10
+#: ../cache/locales.php:10
 msgid "Wrong ID"
 msgstr "ID错误"
 
-#: /var/www/movim/cache/locales.php:11
+#: ../cache/locales.php:11
 msgid "You entered different passwords"
 msgstr "您输入了不同的密码"
 
-#: /var/www/movim/cache/locales.php:12
+#: ../cache/locales.php:12
 msgid "Invalid name"
 msgstr "用户名无效"
 
-#: /var/www/movim/cache/locales.php:13
+#: ../cache/locales.php:13
 msgid "Request not acceptable"
 msgstr "请求不被接受"
 
-#: /var/www/movim/cache/locales.php:14
+#: ../cache/locales.php:14
 msgid "Username already taken"
 msgstr "用户名已注册"
 
-#: /var/www/movim/cache/locales.php:15
+#: ../cache/locales.php:15
 msgid "Could not connect to the XMPP server"
 msgstr "不能链接到XMPP服务器"
 
-#: /var/www/movim/cache/locales.php:16
+#: ../cache/locales.php:16
 msgid "Could not communicate with the XMPP server"
 msgstr "不能和XMPP服务器交流"
 
-#: /var/www/movim/cache/locales.php:17 /var/www/movim/cache/locales.php:296
+#: ../cache/locales.php:17
 msgid "Unknown error"
 msgstr "未知错误"
 
-#: /var/www/movim/cache/locales.php:18 /var/www/movim/cache/locales.php:259
+#: ../cache/locales.php:18 ../cache/locales.php:259
 msgid "Create a new account"
 msgstr "建立一个新账户"
 
-#: /var/www/movim/cache/locales.php:19
+#: ../cache/locales.php:19
 msgid "No account creation form found on the server"
 msgstr "在服务器上没有找到建立账户的表格"
 
-#: /var/www/movim/cache/locales.php:20 /var/www/movim/cache/locales.php:131
+#: ../cache/locales.php:20 ../cache/locales.php:131
 msgid "on"
 msgstr "在线"
 
-#: /var/www/movim/cache/locales.php:21
+#: ../cache/locales.php:21
 msgid "Loading"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:22
+#: ../cache/locales.php:22
 msgid "Database Settings"
 msgstr "数据设置"
 
-#: /var/www/movim/cache/locales.php:23
+#: ../cache/locales.php:23
 msgid "Modl wasn't able to connect to the database"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:24
+#: ../cache/locales.php:24
 msgid "Movim is connected to the database"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:25
+#: ../cache/locales.php:25
 msgid "The database need to be updated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:26
+#: ../cache/locales.php:26
 msgid "Movim database is up to date"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:27
+#: ../cache/locales.php:27
 msgid "Database Type"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:28 /var/www/movim/cache/locales.php:48
-#: /var/www/movim/cache/locales.php:362
+#: ../cache/locales.php:28 ../cache/locales.php:48 ../cache/locales.php:353
 msgid "Username"
 msgstr "用户名"
 
-#: /var/www/movim/cache/locales.php:29 /var/www/movim/cache/locales.php:49
-#: /var/www/movim/cache/locales.php:191 /var/www/movim/cache/locales.php:363
+#: ../cache/locales.php:29 ../cache/locales.php:49 ../cache/locales.php:191
+#: ../cache/locales.php:354
 msgid "Password"
 msgstr "密码"
 
-#: /var/www/movim/cache/locales.php:30
+#: ../cache/locales.php:30
 msgid "Host"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:31
+#: ../cache/locales.php:31
 msgid "Port"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:32
+#: ../cache/locales.php:32
 msgid "Database Name"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:33
+#: ../cache/locales.php:33
 msgid "General Settings"
 msgstr "一般设置"
 
-#: /var/www/movim/cache/locales.php:34
+#: ../cache/locales.php:34
 msgid "Theme"
 msgstr "主题"
 
-#: /var/www/movim/cache/locales.php:35
+#: ../cache/locales.php:35
 msgid "Default language"
 msgstr "默认语言"
 
-#: /var/www/movim/cache/locales.php:36
+#: ../cache/locales.php:36
 msgid "Environment"
 msgstr "环境"
 
-#: /var/www/movim/cache/locales.php:37
+#: ../cache/locales.php:37
 msgid "Log verbosity"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:38
+#: ../cache/locales.php:38
 msgid "Server Timezone"
 msgstr "服务器时区"
 
-#: /var/www/movim/cache/locales.php:39
+#: ../cache/locales.php:39
 msgid "User folder size limit (in bytes)"
 msgstr "用户文件夹大小限制(以字节为单位)"
 
-#: /var/www/movim/cache/locales.php:40
+#: ../cache/locales.php:40
 msgid "Bosh Configuration"
 msgstr "配置空"
 
-#: /var/www/movim/cache/locales.php:41
+#: ../cache/locales.php:41
 msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
 msgstr "请在这里输入域名，格式如下;http(s)://domain:port/path."
 
-#: /var/www/movim/cache/locales.php:42
+#: ../cache/locales.php:42
 #, php-format
 msgid "If you are unsure about this config option visit the %swiki%s."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:43
+#: ../cache/locales.php:43
 msgid "Your Bosh URL is not reachable"
 msgstr "不可访问Bosh URL"
 
-#: /var/www/movim/cache/locales.php:44
+#: ../cache/locales.php:44
 msgid "Bosh URL"
 msgstr "空 URL"
 
-#: /var/www/movim/cache/locales.php:45
+#: ../cache/locales.php:45
 msgid "Public BOSH"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:46
+#: ../cache/locales.php:46
 msgid "Administration Credential"
 msgstr "管理证书"
 
-#: /var/www/movim/cache/locales.php:47
+#: ../cache/locales.php:47
 msgid "Change the default credentials admin/password"
 msgstr "更改默认密码"
 
-#: /var/www/movim/cache/locales.php:50
+#: ../cache/locales.php:50
 msgid "Retype password"
 msgstr "重新输入密码"
 
-#: /var/www/movim/cache/locales.php:51
+#: ../cache/locales.php:51
 msgid "Whitelist - XMPP Server"
 msgstr "白名单——XMPP服务器"
 
-#: /var/www/movim/cache/locales.php:52
-msgid ""
-"If you want to specify a list of authorized XMPP servers on your Movim pod "
-"and forbid the connection on all the others please put their domain name "
-"here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
-"如果你想在你的Movim夹指定授权的XMPP服务器列表并且禁止所有其他的连接，请在自己的域名这里，用逗号（例：movim.eu，jabber.fr）"
+#: ../cache/locales.php:52
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+msgstr "如果你想在你的Movim夹指定授权的XMPP服务器列表并且禁止所有其他的连接，请在自己的域名这里，用逗号（例：movim.eu，jabber.fr）"
 
-#: /var/www/movim/cache/locales.php:53
-msgid ""
-"Leave this field blank if you allow the access to all the XMPP accounts."
+#: ../cache/locales.php:53
+msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "如果你允许访问所有的XMPP账户，请将此字段留空，"
 
-#: /var/www/movim/cache/locales.php:54
+#: ../cache/locales.php:54
 msgid "List of whitelisted XMPP servers"
 msgstr "XMPP服务器的白名单清单"
 
-#: /var/www/movim/cache/locales.php:55 /var/www/movim/cache/locales.php:59
+#: ../cache/locales.php:55 ../cache/locales.php:59
 msgid "Information Message"
 msgstr "资讯信息"
 
-#: /var/www/movim/cache/locales.php:56
+#: ../cache/locales.php:56
 msgid "Description"
 msgstr "描述"
 
-#: /var/www/movim/cache/locales.php:57
+#: ../cache/locales.php:57
 msgid "This message will be displayed on the login page"
 msgstr "这条信息将显示在登录页面"
 
-#: /var/www/movim/cache/locales.php:58
+#: ../cache/locales.php:58
 msgid "Leave this field blank if you don't want to show any message."
 msgstr "如果您不想展示任何信息，请留空此这里"
 
-#: /var/www/movim/cache/locales.php:60
+#: ../cache/locales.php:60
 msgid "Compatibility Check"
 msgstr "检测兼容性"
 
-#: /var/www/movim/cache/locales.php:61
-msgid ""
-"Movim requires certain external components. Please install them before you "
-"can succeed:"
+#: ../cache/locales.php:61
+msgid "Movim requires certain external components. Please install them before you can succeed:"
 msgstr "成功"
 
-#: /var/www/movim/cache/locales.php:62
+#: ../cache/locales.php:62
 #, php-format
 msgid "Your PHP-Version: %s <br>Required: 5.3.0"
 msgstr "您的PHP版本: %s <br>要求: 5.3.0"
 
-#: /var/www/movim/cache/locales.php:63
+#: ../cache/locales.php:63
 msgid "CURL-Library"
 msgstr "CU-图书馆"
 
-#: /var/www/movim/cache/locales.php:64
+#: ../cache/locales.php:64
 msgid "GD"
 msgstr "GD"
 
-#: /var/www/movim/cache/locales.php:65
+#: ../cache/locales.php:65
 msgid "SimpleXML"
 msgstr "简单的XML"
 
-#: /var/www/movim/cache/locales.php:66
+#: ../cache/locales.php:66
 msgid "Read and write rights for the webserver in Movim's root directory"
 msgstr "阅读和写Movim的根目录写的web服务器权限"
 
-#: /var/www/movim/cache/locales.php:67
+#: ../cache/locales.php:67
 msgid "OpenSSL"
 msgstr "打开SSL"
 
-#: /var/www/movim/cache/locales.php:68
+#: ../cache/locales.php:68
 msgid "URL Rewriting support"
 msgstr "URL支持重写"
 
-#: /var/www/movim/cache/locales.php:70
+#: ../cache/locales.php:70
 #, php-format
-msgid ""
-"Here you can register your pod on the official %sMovim API%s and be listed "
-"on %sthe pods page%s."
+msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:71
+#: ../cache/locales.php:71
 msgid "Your pod is not registered on the API"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:72
+#: ../cache/locales.php:72
 msgid "Your pod is registered on the API"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:73
+#: ../cache/locales.php:73
 msgid "Your pod is not yet validated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:74
+#: ../cache/locales.php:74
 msgid "Your pod is validated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:75
-msgid ""
-"You asked to be removed from the API, this request will be processed in a "
-"couple of hours"
+#: ../cache/locales.php:75
+msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:76
+#: ../cache/locales.php:76
 msgid "Webcam"
 msgstr "摄像头"
 
-#: /var/www/movim/cache/locales.php:77
+#: ../cache/locales.php:77
 msgid "Cheese !"
 msgstr "奶酪"
 
-#: /var/www/movim/cache/locales.php:78
+#: ../cache/locales.php:78
 msgid "Take a webcam snapshot"
 msgstr "进行摄像头快照"
 
-#: /var/www/movim/cache/locales.php:79
+#: ../cache/locales.php:79
 msgid "Avatar Updated"
 msgstr "Avata更新了"
 
-#: /var/www/movim/cache/locales.php:80
+#: ../cache/locales.php:80
 msgid "Avatar Not Updated"
 msgstr "Avatar没有更新"
 
-#: /var/www/movim/cache/locales.php:81
+#: ../cache/locales.php:81
 msgid "Conferences"
 msgstr "会议"
 
-#: /var/www/movim/cache/locales.php:82 /var/www/movim/cache/locales.php:144
+#: ../cache/locales.php:82 ../cache/locales.php:144
 msgid "Groups"
 msgstr "分组"
 
-#: /var/www/movim/cache/locales.php:83
+#: ../cache/locales.php:83
 msgid "Add a new Chat Room"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:84
+#: ../cache/locales.php:84
 msgid "Chat Room ID"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:85 /var/www/movim/cache/locales.php:117
-#: /var/www/movim/cache/locales.php:198 /var/www/movim/cache/locales.php:237
-#: /var/www/movim/cache/locales.php:271
+#: ../cache/locales.php:85 ../cache/locales.php:117 ../cache/locales.php:198
+#: ../cache/locales.php:237 ../cache/locales.php:271
 msgid "Name"
 msgstr "姓名"
 
-#: /var/www/movim/cache/locales.php:86 /var/www/movim/cache/locales.php:118
-#: /var/www/movim/cache/locales.php:272
+#: ../cache/locales.php:86 ../cache/locales.php:118 ../cache/locales.php:272
 msgid "Nickname"
 msgstr "昵称"
 
-#: /var/www/movim/cache/locales.php:87
+#: ../cache/locales.php:87
 msgid "Do you want do join automaticaly this Chat Room ?"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:88
+#: ../cache/locales.php:88
 msgid "Bad Chatroom ID"
 msgstr "无效的聊天室ID"
 
-#: /var/www/movim/cache/locales.php:89
+#: ../cache/locales.php:89
 msgid "Empty name"
 msgstr "用户名为空"
 
-#: /var/www/movim/cache/locales.php:90
+#: ../cache/locales.php:90
 msgid "Bookmarks updated"
 msgstr "更新书签"
 
-#: /var/www/movim/cache/locales.php:91 /var/www/movim/cache/locales.php:148
+#: ../cache/locales.php:91 ../cache/locales.php:148
 msgid "An error occured : "
 msgstr "发生一个错误： "
 
-#: /var/www/movim/cache/locales.php:92
+#: ../cache/locales.php:92
 msgid "Message Published"
 msgstr "消息发布"
 
-#: /var/www/movim/cache/locales.php:93
+#: ../cache/locales.php:93
 msgid "Encrypted message"
 msgstr "加密消息"
 
-#: /var/www/movim/cache/locales.php:94
+#: ../cache/locales.php:94
 #, php-format
 msgid "%s needs your attention"
 msgstr "%s需要您的注意"
 
-#: /var/www/movim/cache/locales.php:95
+#: ../cache/locales.php:95
 msgid "Connected to the chatroom"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:96
-msgid "Disconnected from the chatroom"
+#: ../cache/locales.php:96
+msgid "Disconnected to the chatroom"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:97
+#: ../cache/locales.php:97
 msgid "Feed Configuration"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:98
+#: ../cache/locales.php:98
 msgid "General"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:99
+#: ../cache/locales.php:99
 msgid "Language"
 msgstr "语言"
 
-#: /var/www/movim/cache/locales.php:100
+#: ../cache/locales.php:100
 msgid "Appearence"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:101
+#: ../cache/locales.php:101
 msgid "Background color"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:102
+#: ../cache/locales.php:102
 msgid "Font size"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:103
+#: ../cache/locales.php:103
 msgid "Pattern"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:104
+#: ../cache/locales.php:104
 msgid "This configuration is shared wherever you are connected !"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:105
+#: ../cache/locales.php:105
 msgid "Configuration updated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:106 /var/www/movim/cache/locales.php:265
+#: ../cache/locales.php:106 ../cache/locales.php:265
 msgid "Data"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:107
+#: ../cache/locales.php:107
 msgid "Cache"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:108
+#: ../cache/locales.php:108
 msgid "Contacts"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:109 /var/www/movim/cache/locales.php:320
+#: ../cache/locales.php:109 ../cache/locales.php:311
 msgid "Posts"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:110
+#: ../cache/locales.php:110
 msgid "Messages"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:111
+#: ../cache/locales.php:111
 msgid "Please wait"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:112 /var/www/movim/cache/locales.php:114
+#: ../cache/locales.php:112 ../cache/locales.php:114
 msgid "Actions"
 msgstr "操作"
 
-#: /var/www/movim/cache/locales.php:113
+#: ../cache/locales.php:113
 msgid "Chat"
 msgstr "聊天"
 
-#: /var/www/movim/cache/locales.php:115
+#: ../cache/locales.php:115
 msgid "Invite this user"
 msgstr "邀请用户"
 
-#: /var/www/movim/cache/locales.php:116 /var/www/movim/cache/locales.php:270
+#: ../cache/locales.php:116 ../cache/locales.php:270
 msgid "General Informations"
 msgstr "一般信息"
 
-#: /var/www/movim/cache/locales.php:119 /var/www/movim/cache/locales.php:274
+#: ../cache/locales.php:119 ../cache/locales.php:274
 msgid "Date of Birth"
 msgstr "出生日期"
 
-#: /var/www/movim/cache/locales.php:120 /var/www/movim/cache/locales.php:275
+#: ../cache/locales.php:120 ../cache/locales.php:275
 msgid "Gender"
 msgstr "性别"
 
-#: /var/www/movim/cache/locales.php:121 /var/www/movim/cache/locales.php:276
+#: ../cache/locales.php:121 ../cache/locales.php:276
 msgid "Marital Status"
 msgstr "婚姻状况"
 
-#: /var/www/movim/cache/locales.php:122 /var/www/movim/cache/locales.php:273
+#: ../cache/locales.php:122 ../cache/locales.php:273
 msgid "Email"
 msgstr "邮件"
 
-#: /var/www/movim/cache/locales.php:123 /var/www/movim/cache/locales.php:277
+#: ../cache/locales.php:123 ../cache/locales.php:277
 msgid "Website"
 msgstr "你的网站"
 
-#: /var/www/movim/cache/locales.php:124 /var/www/movim/cache/locales.php:278
+#: ../cache/locales.php:124 ../cache/locales.php:278
 msgid "About Me"
 msgstr "关于自己"
 
-#: /var/www/movim/cache/locales.php:125 /var/www/movim/cache/locales.php:279
+#: ../cache/locales.php:125 ../cache/locales.php:279
 msgid "Geographic Position"
 msgstr "地理位置"
 
-#: /var/www/movim/cache/locales.php:126 /var/www/movim/cache/locales.php:280
+#: ../cache/locales.php:126 ../cache/locales.php:280
 msgid "Locality"
 msgstr "地点"
 
-#: /var/www/movim/cache/locales.php:127 /var/www/movim/cache/locales.php:281
+#: ../cache/locales.php:127 ../cache/locales.php:281
 msgid "Country"
 msgstr "国家"
 
-#: /var/www/movim/cache/locales.php:128
+#: ../cache/locales.php:128
 msgid "Mood"
 msgstr "心情"
 
-#: /var/www/movim/cache/locales.php:129
+#: ../cache/locales.php:129
 msgid "I'm "
 msgstr "我是 "
 
-#: /var/www/movim/cache/locales.php:130
+#: ../cache/locales.php:130
 msgid "Listening"
 msgstr "听"
 
-#: /var/www/movim/cache/locales.php:132
+#: ../cache/locales.php:132
 msgid "Last seen"
 msgstr "最后一次访问"
 
-#: /var/www/movim/cache/locales.php:133
+#: ../cache/locales.php:133
 msgid "Client Informations"
 msgstr "客户信息"
 
-#: /var/www/movim/cache/locales.php:134
+#: ../cache/locales.php:134
 msgid "Manage"
 msgstr "管理"
 
-#: /var/www/movim/cache/locales.php:135
+#: ../cache/locales.php:135
 msgid "Alias"
 msgstr "别名"
 
-#: /var/www/movim/cache/locales.php:136
+#: ../cache/locales.php:136
 msgid "Group"
 msgstr "分组"
 
-#: /var/www/movim/cache/locales.php:137
+#: ../cache/locales.php:137
 msgid "Contact updated"
 msgstr "更新联系人"
 
-#: /var/www/movim/cache/locales.php:138
+#: ../cache/locales.php:138
 msgid "Public groups"
 msgstr "公开的用户组"
 
-#: /var/www/movim/cache/locales.php:139
+#: ../cache/locales.php:139
 msgid "No public groups found"
 msgstr "没有找到公开的用户组"
 
-#: /var/www/movim/cache/locales.php:140 /var/www/movim/cache/locales.php:143
+#: ../cache/locales.php:140 ../cache/locales.php:143
 msgid "Last registered"
 msgstr "最近注册的"
 
-#: /var/www/movim/cache/locales.php:141
+#: ../cache/locales.php:141
 msgid "Discover my server"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:142
+#: ../cache/locales.php:142
 msgid "Discussion Servers"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:145
+#: ../cache/locales.php:145
 msgid "Chatrooms"
 msgstr "聊天室"
 
-#: /var/www/movim/cache/locales.php:146
+#: ../cache/locales.php:146
 msgid "My Posts"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:147
-msgid ""
-"Your server doesn't support post publication, you can only read contact's "
-"feeds"
+#: ../cache/locales.php:147
+msgid "Your server doesn't support post publication, you can only read contact's feeds"
 msgstr "您的服务器不支持该版本，您只能读取联系人的feeds"
 
-#: /var/www/movim/cache/locales.php:149
+#: ../cache/locales.php:149
 msgid "Creating your feed..."
 msgstr "创建你的feed"
 
-#: /var/www/movim/cache/locales.php:150
+#: ../cache/locales.php:150
 msgid "Hi!"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:151
-msgid ""
-"This is your newsfeed, here you will see the posts published by you and your "
-"contacts."
+#: ../cache/locales.php:151
+msgid "This is your newsfeed, here you will see the posts published by you and your contacts."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:152
+#: ../cache/locales.php:152
 msgid "What is Movim?"
 msgstr "什么是Movim'"
 
-#: /var/www/movim/cache/locales.php:153
+#: ../cache/locales.php:153
 #, php-format
-msgid ""
-"Visit the page %s What is Movim ? %s to know more about the project, its "
-"aims and understand how it works."
+msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
 msgstr "访问页面 %s什么是Movim？ %s 了解更多，关于这个程序的目的和怎样运行"
 
-#: /var/www/movim/cache/locales.php:154
+#: ../cache/locales.php:154
 msgid "What do the little banners refer to ?"
 msgstr "这些小横幅与什么相关"
 
-#: /var/www/movim/cache/locales.php:155
-msgid ""
-"Thanks to these five little banners, you can quickly identitfy the level of "
-"confdentiality applied to the information you provide."
+#: ../cache/locales.php:155
+msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
 msgstr "根据这五个小横幅，您可以快速设置个人信息的私密等级"
 
-#: /var/www/movim/cache/locales.php:156
+#: ../cache/locales.php:156
 msgid "White, only you can see the information"
 msgstr "白色，仅自己可见"
 
-#: /var/www/movim/cache/locales.php:157
+#: ../cache/locales.php:157
 msgid "Green, you have chosen some contacts who can see your information"
 msgstr "绿色，指定联系人可见"
 
-#: /var/www/movim/cache/locales.php:158
+#: ../cache/locales.php:158
 msgid "Orange, all your contact list can see your information"
 msgstr "橙色，对所有联系人可见"
 
-#: /var/www/movim/cache/locales.php:159
+#: ../cache/locales.php:159
 msgid "Red, everybody in the XMPP network can see your information"
 msgstr "红色，XMPP上的用户能看见您的信息"
 
-#: /var/www/movim/cache/locales.php:160
+#: ../cache/locales.php:160
 msgid "Black, the whole Internet can see your information"
 msgstr "黑色，整个互联网可以看见您的信息"
 
-#: /var/www/movim/cache/locales.php:161
-msgid ""
-"Some features are missing/I can't do everything I used to do on other social "
-"networks"
+#: ../cache/locales.php:161
+msgid "Some features are missing/I can't do everything I used to do on other social networks"
 msgstr "特色正在消失/对我没用，我更喜欢其他的社交网站。"
 
-#: /var/www/movim/cache/locales.php:162
+#: ../cache/locales.php:162
 #, php-format
-msgid ""
-"Although Movim is evolving fast, many (many) features are missing. Be "
-"patient ;). You can have a look %sat next versions's roadmaps%s to know if "
-"the one you want is on its way."
+msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %sat next versions's roadmaps%s to know if the one you want is on its way."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:163
+#: ../cache/locales.php:163
 #, php-format
-msgid ""
-"Don't forget that Movim is an open source project, a helping hand is always "
-"welcome (see %sCan I participate%s)"
+msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %sCan I participate%s)"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:164
+#: ../cache/locales.php:164
 msgid "I can't find the answer to my question here"
 msgstr "在这里找不到我的问题的答案"
 
-#: /var/www/movim/cache/locales.php:165
+#: ../cache/locales.php:165
 #, php-format
-msgid ""
-"Go to the %sto the Frequently Asked Questions%s or come ask your question on "
-"the official chatroom %s or via our mailing-list (%ssee the dedicated "
-"page%s)."
+msgid "Go to the %sto the Frequently Asked Questions%s or come ask your question on the official chatroom %s or via our mailing-list (%ssee the dedicated page%s)."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:166
+#: ../cache/locales.php:166
 msgid "What's Hot"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:167
+#: ../cache/locales.php:167
 msgid "Location"
 msgstr "位置"
 
-#: /var/www/movim/cache/locales.php:168
+#: ../cache/locales.php:168
 msgid "Wrong position"
 msgstr "错误位置"
 
-#: /var/www/movim/cache/locales.php:169
+#: ../cache/locales.php:169
 msgid "Location updated"
 msgstr "位置已更新"
 
-#: /var/www/movim/cache/locales.php:170
+#: ../cache/locales.php:170
 msgid "Wrong username"
 msgstr "错误的用户名"
 
-#: /var/www/movim/cache/locales.php:171
+#: ../cache/locales.php:171
 msgid "Invalid JID"
 msgstr "无效的JID"
 
-#: /var/www/movim/cache/locales.php:172
+#: ../cache/locales.php:172
 msgid "Authentication mechanism not supported by Movim"
 msgstr "Movim暂不支持此认证机制"
 
-#: /var/www/movim/cache/locales.php:173
+#: ../cache/locales.php:173
 msgid "Empty Challenge from the server"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:174
+#: ../cache/locales.php:174
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP域错误，您的账户不能连接到Jabber ID"
 
-#: /var/www/movim/cache/locales.php:176
+#: ../cache/locales.php:176
 msgid "Wrong password"
 msgstr "错误密码"
 
-#: /var/www/movim/cache/locales.php:177
+#: ../cache/locales.php:177
 msgid "The XMPP authentification failed"
 msgstr "XMPP鉴别错误"
 
-#: /var/www/movim/cache/locales.php:178
+#: ../cache/locales.php:178
 msgid "The current BOSH URL is invalid"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:179
+#: ../cache/locales.php:179
 msgid "Internal server error"
 msgstr "Internal服务器错误"
 
-#: /var/www/movim/cache/locales.php:180
+#: ../cache/locales.php:180
 msgid "Session error"
 msgstr "Session错误"
 
-#: /var/www/movim/cache/locales.php:181
+#: ../cache/locales.php:181
 msgid "Account successfully created"
 msgstr "创建账户成功"
 
-#: /var/www/movim/cache/locales.php:182
+#: ../cache/locales.php:182
 msgid "Movim failed to authenticate. You entered wrong data"
 msgstr "您输入的数据有误，Movim不能认证"
 
-#: /var/www/movim/cache/locales.php:183
+#: ../cache/locales.php:183
 msgid "Your XMPP server is unauthorized"
 msgstr "你的XPMM服务没有被授权"
 
-#: /var/www/movim/cache/locales.php:184
+#: ../cache/locales.php:184
 msgid "The server takes too much time to respond"
 msgstr "服务器未响应"
 
-#: /var/www/movim/cache/locales.php:185
+#: ../cache/locales.php:185
 msgid "Your web browser is too old to use with Movim."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:186
+#: ../cache/locales.php:186
 #, php-format
-msgid ""
-"You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
-"and your password"
+msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
 msgstr "你可以使用Facebook（只能聊天）注册用%s你的@chat.facebook.com%s 和你的密码"
 
-#: /var/www/movim/cache/locales.php:187
+#: ../cache/locales.php:187
 #, php-format
 msgid "%sGmail accounts are also compatible%s but are not fully supported"
 msgstr "%sGmail 账户可用%s，但是部分功能不支持"
 
-#: /var/www/movim/cache/locales.php:188
+#: ../cache/locales.php:188
 msgid "You can login using your favorite Jabber account"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:189
+#: ../cache/locales.php:189
 msgid "or with our demonstration account"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:190
+#: ../cache/locales.php:190
 msgid "My address"
 msgstr "我的识别符"
 
-#: /var/www/movim/cache/locales.php:192
+#: ../cache/locales.php:192
 msgid "Create one !"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:193
+#: ../cache/locales.php:193
 msgid "No account yet ?"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:194
-msgid ""
-"This server accept only connection with xmpp accounts from these servers :"
+#: ../cache/locales.php:194
+msgid "This server accept only connection with xmpp accounts from these servers :"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:195
+#: ../cache/locales.php:195
 #, php-format
-msgid ""
-"If you don't have such xmpp account, you can try %sanother public Movim%s "
-"client."
+msgid "If you don't have such xmpp account, you can try %sanother public Movim%s client."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:196
+#: ../cache/locales.php:196
 msgid "Connected"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:197
+#: ../cache/locales.php:197
 msgid "Population"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:199
+#: ../cache/locales.php:199
 msgid "Resolution"
 msgstr "分辨率"
 
-#: /var/www/movim/cache/locales.php:200
+#: ../cache/locales.php:200
 msgid "Size"
 msgstr "尺寸"
 
-#: /var/www/movim/cache/locales.php:201
+#: ../cache/locales.php:201
 msgid "Date"
 msgstr "日期"
 
-#: /var/www/movim/cache/locales.php:202
+#: ../cache/locales.php:202
 msgid "ISO"
 msgstr "ISO"
 
-#: /var/www/movim/cache/locales.php:203
+#: ../cache/locales.php:203
 msgid "Camera"
 msgstr "相机"
 
-#: /var/www/movim/cache/locales.php:204
+#: ../cache/locales.php:204
 msgid "Artist"
 msgstr "艺术家"
 
-#: /var/www/movim/cache/locales.php:205
+#: ../cache/locales.php:205
 msgid "Original"
 msgstr "原创"
 
-#: /var/www/movim/cache/locales.php:206
+#: ../cache/locales.php:206
 msgid "Link"
 msgstr "连接"
 
-#: /var/www/movim/cache/locales.php:207
+#: ../cache/locales.php:207
 msgid "Please select image file"
 msgstr "请选择图像文件"
 
-#: /var/www/movim/cache/locales.php:208
+#: ../cache/locales.php:208
 msgid "You should select valid image files only!"
 msgstr "请您选择有效的图像文件"
 
-#: /var/www/movim/cache/locales.php:209
+#: ../cache/locales.php:209
 msgid "An error occurred while uploading the file"
 msgstr "在上载文件时发生错误"
 
-#: /var/www/movim/cache/locales.php:210
-msgid ""
-"The upload has been canceled by the user or the browser dropped the "
-"connection"
+#: ../cache/locales.php:210
+msgid "The upload has been canceled by the user or the browser dropped the connection"
 msgstr "联系"
 
-#: /var/www/movim/cache/locales.php:211
-msgid ""
-"Your file is very big. We can't accept it. Please select a smaller file"
+#: ../cache/locales.php:211
+msgid "Your file is very big. We can't accept it. Please select a smaller file"
 msgstr "您的文件太大，我们不能接受。请选择一个更小的文件"
 
-#: /var/www/movim/cache/locales.php:212
+#: ../cache/locales.php:212
 msgid "Hello"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:213
-msgid ""
-"Welcome on your group feed, here you will see all the posts published in the "
-"groups you have subscribed."
+#: ../cache/locales.php:213
+msgid "Welcome on your group feed, here you will see all the posts published in the groups you have subscribed."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:214
+#: ../cache/locales.php:214
 msgid "Subscribe"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:215
+#: ../cache/locales.php:215
 msgid "Unsubscribe"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:216
+#: ../cache/locales.php:216
 msgid "Make your membership to this group public to your friends"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:217
+#: ../cache/locales.php:217
 msgid "Give a nickname to this group if you want"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:218
+#: ../cache/locales.php:218
 msgid "Are you sure ?"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:219
+#: ../cache/locales.php:219
 msgid "Oops!"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:220
+#: ../cache/locales.php:220
 msgid "I cannot find any posts here. Try to push the refresh button."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:221
+#: ../cache/locales.php:221
 msgid "Manage your members"
 msgstr "管理你的成员"
 
-#: /var/www/movim/cache/locales.php:222
+#: ../cache/locales.php:222
 msgid "Get the members"
 msgstr "添加成员"
 
-#: /var/www/movim/cache/locales.php:223
+#: ../cache/locales.php:223
 msgid "Affiliations saved"
 msgstr "保存设置"
 
-#: /var/www/movim/cache/locales.php:224
+#: ../cache/locales.php:224
 msgid "Configure your group"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:225
+#: ../cache/locales.php:225
 msgid "Group configuration saved"
 msgstr "保存分组结构"
 
-#: /var/www/movim/cache/locales.php:226
+#: ../cache/locales.php:226
 msgid "Delete this group"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:227
+#: ../cache/locales.php:227
 #, php-format
 msgid "Return to %s's list of groups"
 msgstr "返回%s's分组列表"
 
-#: /var/www/movim/cache/locales.php:228
+#: ../cache/locales.php:228
 msgid "Manage your subscriptions"
 msgstr "管理您的订阅"
 
-#: /var/www/movim/cache/locales.php:229
+#: ../cache/locales.php:229
 msgid "Manage the subscriptions"
 msgstr "管理此订阅"
 
-#: /var/www/movim/cache/locales.php:230
+#: ../cache/locales.php:230
 msgid "Get the subscriptions"
 msgstr "增加此订阅"
 
-#: /var/www/movim/cache/locales.php:231
+#: ../cache/locales.php:231
 #, php-format
 msgid "%s wants to talk with you"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:232
+#: ../cache/locales.php:232
 msgid "Disconnect"
 msgstr "断开"
 
-#: /var/www/movim/cache/locales.php:233
+#: ../cache/locales.php:233
 msgid "Status updated"
 msgstr "更新状态"
 
-#: /var/www/movim/cache/locales.php:234
+#: ../cache/locales.php:234
 msgid "Saved"
 msgstr "保存"
 
-#: /var/www/movim/cache/locales.php:235
+#: ../cache/locales.php:235
 msgid "Your status here !"
 msgstr "状态栏"
 
-#: /var/www/movim/cache/locales.php:236
+#: ../cache/locales.php:236
 msgid "Shared"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:238
+#: ../cache/locales.php:238
 #, php-format
 msgid "%s has been added to your public groups"
 msgstr "%s已经添加到了您的公共分组"
 
-#: /var/www/movim/cache/locales.php:239
+#: ../cache/locales.php:239
 #, php-format
 msgid "%s has been removed from your public groups"
 msgstr "%s 已经从您分组移除"
 
-#: /var/www/movim/cache/locales.php:240
+#: ../cache/locales.php:240
 msgid "Ungrouped"
 msgstr "未分组"
 
-#: /var/www/movim/cache/locales.php:241
+#: ../cache/locales.php:241
 msgid "Show disconnected contacts"
 msgstr "显示未联系的联系人"
 
-#: /var/www/movim/cache/locales.php:242
+#: ../cache/locales.php:242
 msgid "Hide disconnected contacts"
 msgstr "隐藏未联系的联系人"
 
-#: /var/www/movim/cache/locales.php:243
+#: ../cache/locales.php:243
 #, php-format
 msgid "Show group %s"
 msgstr "显示分组 %s"
 
-#: /var/www/movim/cache/locales.php:244
+#: ../cache/locales.php:244
 #, php-format
 msgid "Hide group %s"
 msgstr "隐藏分组 %s"
 
-#: /var/www/movim/cache/locales.php:245
+#: ../cache/locales.php:245
 msgid "Please enter a valid Jabber ID"
 msgstr "请输入有效的Jabber ID"
 
-#: /var/www/movim/cache/locales.php:246
-msgid ""
-"No contacts ? You can add one using the + button bellow or going to the "
-"Explore page"
+#: ../cache/locales.php:246
+msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:247
+#: ../cache/locales.php:247
 msgid "Search"
 msgstr "搜索"
 
-#: /var/www/movim/cache/locales.php:248
+#: ../cache/locales.php:248
 msgid "Show/Hide"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:249
+#: ../cache/locales.php:249
 msgid "Enter the Jabber ID of your contact."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:250
+#: ../cache/locales.php:250
 msgid "Press enter to validate."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:251
+#: ../cache/locales.php:251
 msgid "JID"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:252
+#: ../cache/locales.php:252
 msgid "Give a friendly name to your group"
 msgstr "给您的分组命名"
 
-#: /var/www/movim/cache/locales.php:253
+#: ../cache/locales.php:253
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony - Fan Club"
 
-#: /var/www/movim/cache/locales.php:254
+#: ../cache/locales.php:254
 msgid "Subscribed"
 msgstr "订阅"
 
-#: /var/www/movim/cache/locales.php:255
+#: ../cache/locales.php:255
 msgid "Topics"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:256
+#: ../cache/locales.php:256
 msgid "Statistics"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:257
+#: ../cache/locales.php:257
 msgid "Since"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:258
+#: ../cache/locales.php:258
 msgid "Sessions"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:260
-msgid ""
-"Movim is a decentralized social network, before creating a new account you "
-"need to choose a server to register."
+#: ../cache/locales.php:260
+msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
 msgstr "Movim 是一个分散式管理的社交网络，在建立一个新账户之前，你需要选择一个服务器注册。"
 
-#: /var/www/movim/cache/locales.php:261
+#: ../cache/locales.php:261
 msgid "Your server here ?"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:262
+#: ../cache/locales.php:262
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:263
+#: ../cache/locales.php:263
 msgid "No public feed for this contact"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:264
+#: ../cache/locales.php:264
 msgid "No contact specified"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:266
+#: ../cache/locales.php:266
 msgid "Profile Updated"
 msgstr "更新简介"
 
-#: /var/www/movim/cache/locales.php:267
+#: ../cache/locales.php:267
 msgid "Profile Not Updated"
 msgstr "未更新简介"
 
-#: /var/www/movim/cache/locales.php:268
+#: ../cache/locales.php:268
 msgid "Your profile is now public"
 msgstr "你的简介现在是公开的"
 
-#: /var/www/movim/cache/locales.php:269
+#: ../cache/locales.php:269
 msgid "Your profile is now restricted"
 msgstr "现在您的简介是保密的"
 
-#: /var/www/movim/cache/locales.php:282
+#: ../cache/locales.php:282
 msgid "Accounts"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:283
+#: ../cache/locales.php:283
 msgid "Twitter"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:284
+#: ../cache/locales.php:284
 msgid "Skype"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:285
+#: ../cache/locales.php:285
 msgid "Yahoo"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:286
+#: ../cache/locales.php:286
 msgid "Privacy Level"
 msgstr "隐私等级"
 
-#: /var/www/movim/cache/locales.php:287
+#: ../cache/locales.php:287
 msgid "Is this profile public ?"
 msgstr "这是公开的简介吗"
 
-#: /var/www/movim/cache/locales.php:288
-msgid ""
-"Please pay attention ! By making your profile public, all the information "
-"listed above will be available for all the Movim users and on the whole "
-"Internet."
+#: ../cache/locales.php:288
+msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
 msgstr "请注意！公开您的简介，上面列出的所有信息将对Movim的所有用户和整个互联网公开"
 
-#: /var/www/movim/cache/locales.php:289
-msgid "Call"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:290
-msgid "Hang up"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:291
-msgid "Connection"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:292
-msgid "Hung up"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:293
-msgid "Your contact is busy"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:294
-msgid "Declined"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:295
-msgid "Remote application incompatible"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:297
-msgid "Is calling you"
-msgstr ""
-
-#: /var/www/movim/cache/locales.php:298 /var/www/movim/cache/locales.php:319
+#: ../cache/locales.php:289 ../cache/locales.php:310
 msgid "Feed"
 msgstr "Feed"
 
-#: /var/www/movim/cache/locales.php:299 /var/www/movim/cache/locales.php:315
+#: ../cache/locales.php:290 ../cache/locales.php:306
 msgid "Blog"
 msgstr "博客"
 
-#: /var/www/movim/cache/locales.php:300
+#: ../cache/locales.php:291
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "你没有javascript权限，别再挣扎了"
 
-#: /var/www/movim/cache/locales.php:301
-msgid ""
-"Movim is a kickass distributed social networking platform that protect your "
-"privacy an comes with a set of awesome features."
+#: ../cache/locales.php:292
+msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:302
+#: ../cache/locales.php:293
 msgid "Administration"
 msgstr "管理"
 
-#: /var/www/movim/cache/locales.php:303
+#: ../cache/locales.php:294
 msgid "Home"
 msgstr "主页"
 
-#: /var/www/movim/cache/locales.php:304
+#: ../cache/locales.php:295
 msgid "Discover"
 msgstr "发现"
 
-#: /var/www/movim/cache/locales.php:305
+#: ../cache/locales.php:296
 msgid "Explore"
 msgstr "开发"
 
-#: /var/www/movim/cache/locales.php:306
+#: ../cache/locales.php:297
 msgid "Account Creation"
 msgstr "建立帐号"
 
-#: /var/www/movim/cache/locales.php:307
+#: ../cache/locales.php:298
 msgid "News"
 msgstr "新闻"
 
-#: /var/www/movim/cache/locales.php:308
+#: ../cache/locales.php:299
 msgid "Avatar"
 msgstr "Avatar"
 
-#: /var/www/movim/cache/locales.php:309
+#: ../cache/locales.php:300
 msgid "Configuration"
 msgstr "配置"
 
-#: /var/www/movim/cache/locales.php:310
+#: ../cache/locales.php:301
 msgid "Server"
 msgstr "服务器"
 
-#: /var/www/movim/cache/locales.php:311
+#: ../cache/locales.php:302
 msgid "Public Groups"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:312
+#: ../cache/locales.php:303
 msgid "Viewer"
 msgstr "游客"
 
-#: /var/www/movim/cache/locales.php:313
+#: ../cache/locales.php:304
 msgid "Profile"
 msgstr "简介"
 
-#: /var/www/movim/cache/locales.php:314
+#: ../cache/locales.php:305
 msgid "Media"
 msgstr "媒体"
 
-#: /var/www/movim/cache/locales.php:316
+#: ../cache/locales.php:307
 msgid "About"
 msgstr "关于"
 
-#: /var/www/movim/cache/locales.php:317
+#: ../cache/locales.php:308
 msgid "Login"
 msgstr "注册"
 
-#: /var/www/movim/cache/locales.php:318
+#: ../cache/locales.php:309
 msgid "Help"
 msgstr "帮助"
 
-#: /var/www/movim/cache/locales.php:321
+#: ../cache/locales.php:312
 msgid "Gallery"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:322
+#: ../cache/locales.php:313
 msgid "Preview"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:323
+#: ../cache/locales.php:314
 msgid "Visio-conference"
 msgstr "视频"
 
-#: /var/www/movim/cache/locales.php:324
+#: ../cache/locales.php:315
 msgid "Pods"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:325
+#: ../cache/locales.php:316
 #, php-format
 msgid "Error: %s"
 msgstr "错误: %s"
 
-#: /var/www/movim/cache/locales.php:326
+#: ../cache/locales.php:317
 #, php-format
 msgid "Cannot load file '%s'"
 msgstr "不能加载文件 '%s'"
 
-#: /var/www/movim/cache/locales.php:327
+#: ../cache/locales.php:318
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
 msgstr "路径错误，请设置所有的参数%s"
 
-#: /var/www/movim/cache/locales.php:328
+#: ../cache/locales.php:319
 #, php-format
 msgid "%s - About"
 msgstr "%s - 关于"
 
-#: /var/www/movim/cache/locales.php:329
+#: ../cache/locales.php:320
 #, php-format
 msgid "%s - Account"
 msgstr "%s -账户"
 
-#: /var/www/movim/cache/locales.php:330
+#: ../cache/locales.php:321
 #, php-format
 msgid "%s - Administration Panel"
 msgstr "%s - 管理员板块"
 
-#: /var/www/movim/cache/locales.php:331
+#: ../cache/locales.php:322
 #, php-format
 msgid "%s - Blog"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:332
+#: ../cache/locales.php:323
 #, php-format
 msgid "%s - Configuration"
 msgstr "%s - 配置"
 
-#: /var/www/movim/cache/locales.php:333
+#: ../cache/locales.php:324
 #, php-format
 msgid "%s - Discover"
 msgstr "%s - 发现"
 
-#: /var/www/movim/cache/locales.php:334
+#: ../cache/locales.php:325
 #, php-format
 msgid "%s - Explore"
 msgstr "%s -开发"
 
-#: /var/www/movim/cache/locales.php:335
+#: ../cache/locales.php:326
 #, php-format
 msgid "%s - Help Page"
 msgstr "%s - 帮助"
 
-#: /var/www/movim/cache/locales.php:336
+#: ../cache/locales.php:327
 #, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - 登录 Movim"
 
-#: /var/www/movim/cache/locales.php:337
+#: ../cache/locales.php:328
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - 欢迎来到 MOVIM"
 
-#: /var/www/movim/cache/locales.php:338
+#: ../cache/locales.php:329
 #, php-format
 msgid "%s - Media"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:339
+#: ../cache/locales.php:330
 #, php-format
 msgid "%s - News"
 msgstr "%s - 新闻"
 
-#: /var/www/movim/cache/locales.php:340
+#: ../cache/locales.php:331
 #, php-format
 msgid "%s - Group Configuration"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:341
+#: ../cache/locales.php:332
 #, php-format
 msgid "%s - Group"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:342
+#: ../cache/locales.php:333
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:343
+#: ../cache/locales.php:334
 #, php-format
 msgid "%s - Profile"
 msgstr "%s - 简介"
 
-#: /var/www/movim/cache/locales.php:344
+#: ../cache/locales.php:335
 #, php-format
 msgid "%s - Server"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:345
+#: ../cache/locales.php:336
 msgid "Validate"
 msgstr "验证"
 
-#: /var/www/movim/cache/locales.php:346
+#: ../cache/locales.php:337
 msgid "Refresh"
 msgstr "刷新"
 
-#: /var/www/movim/cache/locales.php:347
+#: ../cache/locales.php:338
 msgid "Add"
 msgstr "添加"
 
-#: /var/www/movim/cache/locales.php:348
+#: ../cache/locales.php:339
 msgid "Close"
 msgstr "关闭"
 
-#: /var/www/movim/cache/locales.php:349
+#: ../cache/locales.php:340
 msgid "Update"
 msgstr "更新"
 
-#: /var/www/movim/cache/locales.php:350
+#: ../cache/locales.php:341
 msgid "Updating"
 msgstr "更新"
 
-#: /var/www/movim/cache/locales.php:351
+#: ../cache/locales.php:342
 msgid "Submit"
 msgstr "提交"
 
-#: /var/www/movim/cache/locales.php:352
+#: ../cache/locales.php:343
 msgid "Reset"
 msgstr "重置"
 
-#: /var/www/movim/cache/locales.php:353
+#: ../cache/locales.php:344
 msgid "Register"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:354
+#: ../cache/locales.php:345
 msgid "Unregister"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:355
+#: ../cache/locales.php:346
 msgid "Save"
 msgstr "保存"
 
-#: /var/www/movim/cache/locales.php:356
+#: ../cache/locales.php:347
 msgid "Clear"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:357
+#: ../cache/locales.php:348
 msgid "Upload"
 msgstr "上传"
 
-#: /var/www/movim/cache/locales.php:358
+#: ../cache/locales.php:349
 msgid "Come in!"
 msgstr "登录"
 
-#: /var/www/movim/cache/locales.php:359
+#: ../cache/locales.php:350
 msgid "Connecting..."
 msgstr "联系中"
 
-#: /var/www/movim/cache/locales.php:360
+#: ../cache/locales.php:351
 msgid "Yes"
 msgstr "是"
 
-#: /var/www/movim/cache/locales.php:361
+#: ../cache/locales.php:352
 msgid "No"
 msgstr "否"
 
-#: /var/www/movim/cache/locales.php:364
+#: ../cache/locales.php:355
 msgid "Day"
 msgstr "天"
 
-#: /var/www/movim/cache/locales.php:365
+#: ../cache/locales.php:356
 msgid "Monday"
 msgstr "星期一"
 
-#: /var/www/movim/cache/locales.php:366
+#: ../cache/locales.php:357
 msgid "Tuesday"
 msgstr "星期二"
 
-#: /var/www/movim/cache/locales.php:367
+#: ../cache/locales.php:358
 msgid "Wednesday"
 msgstr "星期三"
 
-#: /var/www/movim/cache/locales.php:368
+#: ../cache/locales.php:359
 msgid "Thursday"
 msgstr "星期四"
 
-#: /var/www/movim/cache/locales.php:369
+#: ../cache/locales.php:360
 msgid "Friday"
 msgstr "星期五"
 
-#: /var/www/movim/cache/locales.php:370
+#: ../cache/locales.php:361
 msgid "Saturday"
 msgstr "星期六"
 
-#: /var/www/movim/cache/locales.php:371
+#: ../cache/locales.php:362
 msgid "Sunday"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:372 /var/www/movim/cache/locales.php:381
+#: ../cache/locales.php:363 ../cache/locales.php:372
 msgid "None"
 msgstr "无"
 
-#: /var/www/movim/cache/locales.php:373
+#: ../cache/locales.php:364
 msgid "Male"
 msgstr "男性"
 
-#: /var/www/movim/cache/locales.php:374
+#: ../cache/locales.php:365
 msgid "Female"
 msgstr "女性"
 
-#: /var/www/movim/cache/locales.php:375
+#: ../cache/locales.php:366
 msgid "Other"
 msgstr "其他"
 
-#: /var/www/movim/cache/locales.php:376
+#: ../cache/locales.php:367
 msgid "Bot"
 msgstr "Bot"
 
-#: /var/www/movim/cache/locales.php:377
+#: ../cache/locales.php:368
 msgid "Desktop"
 msgstr "桌面"
 
-#: /var/www/movim/cache/locales.php:378
+#: ../cache/locales.php:369
 msgid "Phone"
 msgstr "电话"
 
-#: /var/www/movim/cache/locales.php:379
+#: ../cache/locales.php:370
 msgid "Web"
 msgstr "网站"
 
-#: /var/www/movim/cache/locales.php:380
+#: ../cache/locales.php:371
 msgid "Registered"
 msgstr "已注册"
 
-#: /var/www/movim/cache/locales.php:382
+#: ../cache/locales.php:373
 msgid "Single"
 msgstr "单身"
 
-#: /var/www/movim/cache/locales.php:383
+#: ../cache/locales.php:374
 msgid "In a relationship"
 msgstr "热恋中"
 
-#: /var/www/movim/cache/locales.php:384
+#: ../cache/locales.php:375
 msgid "Married"
 msgstr "已婚"
 
-#: /var/www/movim/cache/locales.php:385
+#: ../cache/locales.php:376
 msgid "Divorced"
 msgstr "离异"
 
-#: /var/www/movim/cache/locales.php:386
+#: ../cache/locales.php:377
 msgid "Widowed"
 msgstr "丧偶"
 
-#: /var/www/movim/cache/locales.php:387
+#: ../cache/locales.php:378
 msgid "Cohabiting"
 msgstr "同居"
 
-#: /var/www/movim/cache/locales.php:388
+#: ../cache/locales.php:379
 msgid "Civil Union"
 msgstr "伴侣关系"
 
-#: /var/www/movim/cache/locales.php:389
+#: ../cache/locales.php:380
 msgid "Not shared"
 msgstr "私密"
 
-#: /var/www/movim/cache/locales.php:390
+#: ../cache/locales.php:381
 msgid "Shared with one contact"
 msgstr "与一个联系人共享"
 
-#: /var/www/movim/cache/locales.php:391
+#: ../cache/locales.php:382
 msgid "Shared with all contacts"
 msgstr "与所有联系人共享"
 
-#: /var/www/movim/cache/locales.php:392
+#: ../cache/locales.php:383
 msgid "Shared with the XMPP network"
 msgstr "在XMPP网络共享"
 
-#: /var/www/movim/cache/locales.php:393
+#: ../cache/locales.php:384
 msgid "Shared with the whole Internet"
 msgstr "完全公开"
 
-#: /var/www/movim/cache/locales.php:394
+#: ../cache/locales.php:385
 msgid "Online"
 msgstr "在线"
 
-#: /var/www/movim/cache/locales.php:395
+#: ../cache/locales.php:386
 msgid "Away"
 msgstr "离开"
 
-#: /var/www/movim/cache/locales.php:396
+#: ../cache/locales.php:387
 msgid "Do Not Disturb"
 msgstr "请勿打扰"
 
-#: /var/www/movim/cache/locales.php:397
+#: ../cache/locales.php:388
 msgid "Extended Away"
 msgstr "扩展"
 
-#: /var/www/movim/cache/locales.php:398
+#: ../cache/locales.php:389
 msgid "Offline"
 msgstr "离线"
 
-#: /var/www/movim/cache/locales.php:399
+#: ../cache/locales.php:390
 msgid "Error"
 msgstr "错误"
 
-#: /var/www/movim/cache/locales.php:400
+#: ../cache/locales.php:391
 msgid "afraid"
 msgstr "害怕"
 
-#: /var/www/movim/cache/locales.php:401
+#: ../cache/locales.php:392
 msgid "amazed"
 msgstr "吃惊"
 
-#: /var/www/movim/cache/locales.php:402
+#: ../cache/locales.php:393
 msgid "amorous"
 msgstr "色"
 
-#: /var/www/movim/cache/locales.php:403
+#: ../cache/locales.php:394
 msgid "angry"
 msgstr "生气"
 
-#: /var/www/movim/cache/locales.php:404
+#: ../cache/locales.php:395
 msgid "annoyed"
 msgstr "恼怒"
 
-#: /var/www/movim/cache/locales.php:405
+#: ../cache/locales.php:396
 msgid "anxious"
 msgstr "焦虑"
 
-#: /var/www/movim/cache/locales.php:406
+#: ../cache/locales.php:397
 msgid "aroused"
 msgstr "亢奋"
 
-#: /var/www/movim/cache/locales.php:407
+#: ../cache/locales.php:398
 msgid "ashamed"
 msgstr "惭愧"
 
-#: /var/www/movim/cache/locales.php:408
+#: ../cache/locales.php:399
 msgid "bored"
 msgstr "无聊"
 
-#: /var/www/movim/cache/locales.php:409
+#: ../cache/locales.php:400
 msgid "brave"
 msgstr "勇敢"
 
-#: /var/www/movim/cache/locales.php:410
+#: ../cache/locales.php:401
 msgid "calm"
 msgstr "平静"
 
-#: /var/www/movim/cache/locales.php:411
+#: ../cache/locales.php:402
 msgid "cautious"
 msgstr "小心"
 
-#: /var/www/movim/cache/locales.php:412
+#: ../cache/locales.php:403
 msgid "cold"
 msgstr "冷"
 
-#: /var/www/movim/cache/locales.php:413
+#: ../cache/locales.php:404
 msgid "confident"
 msgstr "自信"
 
-#: /var/www/movim/cache/locales.php:414
+#: ../cache/locales.php:405
 msgid "confused"
 msgstr "迷惑"
 
-#: /var/www/movim/cache/locales.php:415
+#: ../cache/locales.php:406
 msgid "contemplative"
 msgstr "沉思"
 
-#: /var/www/movim/cache/locales.php:416
+#: ../cache/locales.php:407
 msgid "contented"
 msgstr "满意"
 
-#: /var/www/movim/cache/locales.php:417
+#: ../cache/locales.php:408
 msgid "cranky"
 msgstr "古怪"
 
-#: /var/www/movim/cache/locales.php:418
+#: ../cache/locales.php:409
 msgid "crazy"
 msgstr "疯狂"
 
-#: /var/www/movim/cache/locales.php:419
+#: ../cache/locales.php:410
 msgid "creative"
 msgstr "创意"
 
-#: /var/www/movim/cache/locales.php:420
+#: ../cache/locales.php:411
 msgid "curious"
 msgstr "好奇"
 
-#: /var/www/movim/cache/locales.php:421
+#: ../cache/locales.php:412
 msgid "dejected"
 msgstr "沮丧"
 
-#: /var/www/movim/cache/locales.php:422
+#: ../cache/locales.php:413
 msgid "depressed"
 msgstr "郁闷"
 
-#: /var/www/movim/cache/locales.php:423
+#: ../cache/locales.php:414
 msgid "disappointed"
 msgstr "失望"
 
-#: /var/www/movim/cache/locales.php:424
+#: ../cache/locales.php:415
 msgid "disgusted"
 msgstr "讨厌"
 
-#: /var/www/movim/cache/locales.php:425
+#: ../cache/locales.php:416
 msgid "dismayed"
 msgstr "灰心"
 
-#: /var/www/movim/cache/locales.php:426
+#: ../cache/locales.php:417
 msgid "distracted"
 msgstr "烦躁"
 
-#: /var/www/movim/cache/locales.php:427
+#: ../cache/locales.php:418
 msgid "embarrassed"
 msgstr "尴尬"
 
-#: /var/www/movim/cache/locales.php:428
+#: ../cache/locales.php:419
 msgid "envious"
 msgstr "羡慕"
 
-#: /var/www/movim/cache/locales.php:429
+#: ../cache/locales.php:420
 msgid "excited"
 msgstr "兴奋"
 
-#: /var/www/movim/cache/locales.php:430
+#: ../cache/locales.php:421
 msgid "flirtatious"
 msgstr "挑逗"
 
-#: /var/www/movim/cache/locales.php:431
+#: ../cache/locales.php:422
 msgid "frustated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:432
+#: ../cache/locales.php:423
 msgid "grateful"
 msgstr "感谢"
 
-#: /var/www/movim/cache/locales.php:433
+#: ../cache/locales.php:424
 msgid "grieving"
 msgstr "伤心"
 
-#: /var/www/movim/cache/locales.php:434
+#: ../cache/locales.php:425
 msgid "grumpy"
 msgstr "暴躁"
 
-#: /var/www/movim/cache/locales.php:435
+#: ../cache/locales.php:426
 msgid "guilty"
 msgstr "内疚"
 
-#: /var/www/movim/cache/locales.php:436
+#: ../cache/locales.php:427
 msgid "happy"
 msgstr "幸福"
 
-#: /var/www/movim/cache/locales.php:437
+#: ../cache/locales.php:428
 msgid "hopeful"
 msgstr "希望"
 
-#: /var/www/movim/cache/locales.php:438
+#: ../cache/locales.php:429
 msgid "hot"
 msgstr "热"
 
-#: /var/www/movim/cache/locales.php:439
+#: ../cache/locales.php:430
 msgid "humbled"
 msgstr "贬低"
 
-#: /var/www/movim/cache/locales.php:440
+#: ../cache/locales.php:431
 msgid "humiliated"
 msgstr "丢脸"
 
-#: /var/www/movim/cache/locales.php:441
+#: ../cache/locales.php:432
 msgid "hungry"
 msgstr "饿"
 
-#: /var/www/movim/cache/locales.php:442
+#: ../cache/locales.php:433
 msgid "hurt"
 msgstr "痛苦"
 
-#: /var/www/movim/cache/locales.php:443
+#: ../cache/locales.php:434
 msgid "impressed"
 msgstr "感动"
 
-#: /var/www/movim/cache/locales.php:444
+#: ../cache/locales.php:435
 msgid "in awe"
 msgstr "佩服"
 
-#: /var/www/movim/cache/locales.php:445
+#: ../cache/locales.php:436
 msgid "in love"
 msgstr "示爱"
 
-#: /var/www/movim/cache/locales.php:446
+#: ../cache/locales.php:437
 msgid "indignant"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:447
+#: ../cache/locales.php:438
 msgid "interested"
 msgstr "有趣"
 
-#: /var/www/movim/cache/locales.php:448
+#: ../cache/locales.php:439
 msgid "intoxicated"
 msgstr "中毒"
 
-#: /var/www/movim/cache/locales.php:449
+#: ../cache/locales.php:440
 msgid "invincible"
 msgstr "无敌的"
 
-#: /var/www/movim/cache/locales.php:450
+#: ../cache/locales.php:441
 msgid "jealous"
 msgstr "妒忌"
 
-#: /var/www/movim/cache/locales.php:451
+#: ../cache/locales.php:442
 msgid "lonely"
 msgstr "孤独"
 
-#: /var/www/movim/cache/locales.php:452
+#: ../cache/locales.php:443
 msgid "lost"
 msgstr "迷惑"
 
-#: /var/www/movim/cache/locales.php:453
+#: ../cache/locales.php:444
 msgid "lucky"
 msgstr "好运"
 
-#: /var/www/movim/cache/locales.php:454
+#: ../cache/locales.php:445
 msgid "mean"
 msgstr "吝啬"
 
-#: /var/www/movim/cache/locales.php:455
+#: ../cache/locales.php:446
 msgid "moody"
 msgstr "易怒的"
 
-#: /var/www/movim/cache/locales.php:456
+#: ../cache/locales.php:447
 msgid "nervous"
 msgstr "紧张"
 
-#: /var/www/movim/cache/locales.php:457
+#: ../cache/locales.php:448
 msgid "neutral"
 msgstr "中立"
 
-#: /var/www/movim/cache/locales.php:458
+#: ../cache/locales.php:449
 msgid "offended"
 msgstr "生气"
 
-#: /var/www/movim/cache/locales.php:459
+#: ../cache/locales.php:450
 msgid "outraged"
 msgstr "愤怒"
 
-#: /var/www/movim/cache/locales.php:460
+#: ../cache/locales.php:451
 msgid "playful"
 msgstr "幽默"
 
-#: /var/www/movim/cache/locales.php:461
+#: ../cache/locales.php:452
 msgid "proud"
 msgstr "自豪"
 
-#: /var/www/movim/cache/locales.php:462
+#: ../cache/locales.php:453
 msgid "relaxed"
 msgstr "宽慰"
 
-#: /var/www/movim/cache/locales.php:463
+#: ../cache/locales.php:454
 msgid "relieved"
 msgstr "放松"
 
-#: /var/www/movim/cache/locales.php:464
+#: ../cache/locales.php:455
 msgid "remorseful"
 msgstr "悔恨"
 
-#: /var/www/movim/cache/locales.php:465
+#: ../cache/locales.php:456
 msgid "restless"
 msgstr "不安"
 
-#: /var/www/movim/cache/locales.php:466
+#: ../cache/locales.php:457
 msgid "sad"
 msgstr "悲伤"
 
-#: /var/www/movim/cache/locales.php:467
+#: ../cache/locales.php:458
 msgid "sarcastic"
 msgstr "讽刺"
 
-#: /var/www/movim/cache/locales.php:468
+#: ../cache/locales.php:459
 msgid "satisfied"
 msgstr "满意"
 
-#: /var/www/movim/cache/locales.php:469
+#: ../cache/locales.php:460
 msgid "serious"
 msgstr "严肃"
 
-#: /var/www/movim/cache/locales.php:470
+#: ../cache/locales.php:461
 msgid "shocked"
 msgstr "惊讶"
 
-#: /var/www/movim/cache/locales.php:471
+#: ../cache/locales.php:462
 msgid "shy"
 msgstr "害羞"
 
-#: /var/www/movim/cache/locales.php:472
+#: ../cache/locales.php:463
 msgid "sick"
 msgstr "生病"
 
-#: /var/www/movim/cache/locales.php:473
+#: ../cache/locales.php:464
 msgid "sleepy"
 msgstr "困"
 
-#: /var/www/movim/cache/locales.php:474
+#: ../cache/locales.php:465
 msgid "spontaneous"
 msgstr "随意"
 
-#: /var/www/movim/cache/locales.php:475
+#: ../cache/locales.php:466
 msgid "stressed"
 msgstr "紧张"
 
-#: /var/www/movim/cache/locales.php:476
+#: ../cache/locales.php:467
 msgid "strong"
 msgstr "得意"
 
-#: /var/www/movim/cache/locales.php:477
+#: ../cache/locales.php:468
 msgid "surprised"
 msgstr "惊喜"
 
-#: /var/www/movim/cache/locales.php:478
+#: ../cache/locales.php:469
 msgid "thankful"
 msgstr "感谢"
 
-#: /var/www/movim/cache/locales.php:479
+#: ../cache/locales.php:470
 msgid "thirsty"
 msgstr "口渴"
 
-#: /var/www/movim/cache/locales.php:480
+#: ../cache/locales.php:471
 msgid "tired"
 msgstr "疲劳"
 
-#: /var/www/movim/cache/locales.php:481
+#: ../cache/locales.php:472
 msgid "undefined"
 msgstr "未定义"
 
-#: /var/www/movim/cache/locales.php:482
+#: ../cache/locales.php:473
 msgid "weak"
 msgstr "虚弱"
 
-#: /var/www/movim/cache/locales.php:483
+#: ../cache/locales.php:474
 msgid "worried"
 msgstr "担心"
 
-#: /var/www/movim/cache/locales.php:484
+#: ../cache/locales.php:475
 msgid "Month"
 msgstr "月"
 
-#: /var/www/movim/cache/locales.php:485
+#: ../cache/locales.php:476
 msgid "January"
 msgstr "一月"
 
-#: /var/www/movim/cache/locales.php:486
+#: ../cache/locales.php:477
 msgid "February"
 msgstr "二月"
 
-#: /var/www/movim/cache/locales.php:487
+#: ../cache/locales.php:478
 msgid "March"
 msgstr "三月"
 
-#: /var/www/movim/cache/locales.php:488
+#: ../cache/locales.php:479
 msgid "April"
 msgstr "四月"
 
-#: /var/www/movim/cache/locales.php:489
+#: ../cache/locales.php:480
 msgid "May"
 msgstr "五月"
 
-#: /var/www/movim/cache/locales.php:490
+#: ../cache/locales.php:481
 msgid "June"
 msgstr "六月"
 
-#: /var/www/movim/cache/locales.php:491
+#: ../cache/locales.php:482
 msgid "July"
 msgstr "七月"
 
-#: /var/www/movim/cache/locales.php:492
+#: ../cache/locales.php:483
 msgid "August"
 msgstr "八月"
 
-#: /var/www/movim/cache/locales.php:493
+#: ../cache/locales.php:484
 msgid "September"
 msgstr "九月"
 
-#: /var/www/movim/cache/locales.php:494
+#: ../cache/locales.php:485
 msgid "October"
 msgstr "十月"
 
-#: /var/www/movim/cache/locales.php:495
+#: ../cache/locales.php:486
 msgid "November"
 msgstr "十一月"
 
-#: /var/www/movim/cache/locales.php:496
+#: ../cache/locales.php:487
 msgid "December"
 msgstr "十二月"
 
-#: /var/www/movim/cache/locales.php:497
+#: ../cache/locales.php:488
 msgid "Year"
 msgstr "年"
 
-#: /var/www/movim/cache/locales.php:498
+#: ../cache/locales.php:489
 msgid "Today"
 msgstr "今天"
 
-#: /var/www/movim/cache/locales.php:499
+#: ../cache/locales.php:490
 msgid "Tomorrow"
 msgstr "明天"
 
-#: /var/www/movim/cache/locales.php:500
+#: ../cache/locales.php:491
 msgid "Yesterday"
 msgstr "昨天"
 
-#: /var/www/movim/cache/locales.php:501
+#: ../cache/locales.php:492
 #, php-format
 msgid " %d days ago"
 msgstr " %d 天以前"
 
-#: /var/www/movim/cache/locales.php:502
+#: ../cache/locales.php:493
 msgid "day"
 msgstr "日期"
 
-#: /var/www/movim/cache/locales.php:503
+#: ../cache/locales.php:494
 msgid "Title"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:504
+#: ../cache/locales.php:495
 msgid "What's new ?"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:505
+#: ../cache/locales.php:496
 msgid "Place"
 msgstr "地点"
 
-#: /var/www/movim/cache/locales.php:506
+#: ../cache/locales.php:497
 msgid "by"
 msgstr "通过"
 
-#: /var/www/movim/cache/locales.php:507
+#: ../cache/locales.php:498
 msgid "Geolocalisation"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:508
+#: ../cache/locales.php:499
 msgid "email"
 msgstr "邮件"
 
-#: /var/www/movim/cache/locales.php:509
+#: ../cache/locales.php:500
 msgid "No content"
 msgstr "没有内容"
 
-#: /var/www/movim/cache/locales.php:510
+#: ../cache/locales.php:501
 msgid "No comments"
 msgstr "没有评论"
 
-#: /var/www/movim/cache/locales.php:511
+#: ../cache/locales.php:502
 msgid "No comments stream"
 msgstr "没有评论集"
 
-#: /var/www/movim/cache/locales.php:512
+#: ../cache/locales.php:503
 msgid "Your feed cannot be loaded."
 msgstr "不能加载到您的feed"
 
-#: /var/www/movim/cache/locales.php:513
+#: ../cache/locales.php:504
 msgid "Get older posts"
 msgstr "查看以前公告"
 
-#: /var/www/movim/cache/locales.php:514
+#: ../cache/locales.php:505
 #, php-format
 msgid "%s new items"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:515
+#: ../cache/locales.php:506
 msgid "Comment publication error"
 msgstr "发表评论失败"
 
-#: /var/www/movim/cache/locales.php:516
+#: ../cache/locales.php:507
 msgid "Show the older comments"
 msgstr "显示以前的评论"
 
-#: /var/www/movim/cache/locales.php:517
+#: ../cache/locales.php:508
 msgid "Loading comments ..."
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:518
+#: ../cache/locales.php:509
 msgid "Get the comments"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:519
+#: ../cache/locales.php:510
 msgid "Add a comment"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:520
+#: ../cache/locales.php:511
 msgid "Share with"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:521
+#: ../cache/locales.php:512
 msgid "Everyone"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:522
+#: ../cache/locales.php:513
 msgid "Your contacts"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:523
+#: ../cache/locales.php:514
 msgid "Delete this post"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:524
+#: ../cache/locales.php:515
 msgid "Updated"
 msgstr ""
 
-#: /var/www/movim/cache/locales.php:525
+#: ../cache/locales.php:516
 msgid "The API is not reachable, try again later"
 msgstr ""
 
-#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - 建立帐号"
 
@@ -2075,7 +1989,6 @@ msgstr ""
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "PHP 版本不符。 Movim 需要 PHP 5.3以上的版本。"
 
-#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim 需要 %s 扩展名。"
 
@@ -2085,20 +1998,16 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Movim 安装程序。"
 
-#, php-format
 #~ msgid "Couldn't create directory '%s'."
 #~ msgstr "不能建立目录 '%s'。"
 
-#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "不能建立配置文件  '%s'。"
 
 #~ msgid "Compatibility Test"
 #~ msgstr "兼容性测试"
 
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
+#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "没有达到符合安装 Movim的软件要求。请检查后再安装。"
 
 #~ msgid "User not logged in."
@@ -2107,7 +2016,6 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "还未提供JID。"
 
-#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "JID %s 是不正确"
 
@@ -2138,17 +2046,10 @@ msgstr ""
 #~ msgid "wants to talk with you"
 #~ msgstr "想和你谈谈"
 
-#, php-format
-#~ msgid ""
-#~ "Although Movim is evolving fast, many (many) features are missing. Be "
-#~ "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
-#~ "the one you want is on its way."
+#~ msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
 #~ msgstr "即使Movim正在快速发展，很多特色仍然在丢失。请耐心地期待我们，您可以查看%s版本的路线图%s以了解我们是否在往您设想的方向发展"
 
-#, php-format
-#~ msgid ""
-#~ "Don't forget that Movim is an open source project, a helping hand is always "
-#~ "welcome (see %s Can I participate %s)"
+#~ msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
 #~ msgstr "不要忘了Movim是一个开放性的程序，我们期待您的参与（see %s 我能加入吗 %s"
 
 #~ msgid "The current BOSH URL in invalid"
@@ -2163,9 +2064,5 @@ msgstr ""
 #~ msgid "Accept"
 #~ msgstr "接收"
 
-#, php-format
-#~ msgid ""
-#~ "Go to the %s to the Frequently Asked Questions %s or come ask your question "
-#~ "on the official chatroom %s or via our mailing-list (%s see the dedicated "
-#~ "page %s)."
+#~ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
 #~ msgstr "转到%s到的常见问题解答%s或来问你的问题官方聊天室%s或通过我们的邮件列表（%s看看专用页%s）。"
