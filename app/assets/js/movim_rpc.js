@@ -33,10 +33,6 @@ function MovimRPC()
      */
     this.commit = function()
     {
-        /*if(typeof(halt_poll) === "function") { 
-            halt_poll();
-        }*/
-        
         movim_xmlhttp = this.make_xmlhttp();
 	
         if(FAIL_SAFE)
@@ -60,10 +56,6 @@ function MovimRPC()
 
         var json = this.generate_json();
         movim_xmlhttp.send(json);
-
-        /*if(typeof(movim_poll) === "function") { 
-            movim_poll();
-        }*/
     };
 
     /**
@@ -110,18 +102,18 @@ function MovimRPC()
             for(h = 0; h < funcalls.length; h++) {
                 var funcall = funcalls[h];
 
-                if(funcall.func != null) {
+                if(funcall.func != null && eval("typeof " + funcall.func) == "function") {
                     var funcs = funcall.func.split('.');
                     
-                    //try {
+                    try {
                         if(funcs.length == 1)
                             window[funcs[0]](funcall.params);
                         else if(funcs.length == 2)
                             window[funcs[0]][funcs[1]](funcall.params);
-                    /*}
+                    }
                     catch(err) {
                         console.log("Error caught: " + err.toString() + " - " +funcall.func);
-                    }*/
+                    }
                 }
             }
         }
