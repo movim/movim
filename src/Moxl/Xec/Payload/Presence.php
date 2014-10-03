@@ -29,8 +29,6 @@ namespace Moxl\Xec\Payload;
 class Presence extends Payload
 {
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        
         // Subscribe request
         if((string)$stanza->attributes()->type == 'subscribe') {
             $notifs = \Cache::c('activenotifs');
