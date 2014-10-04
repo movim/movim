@@ -34,7 +34,8 @@ class Presence extends Payload
             $notifs = \Cache::c('activenotifs');
             $notifs[(string)$stanza->attributes()->from] = 'sub';
             \Cache::c('activenotifs', $notifs);
-            
+
+            $evt = new \Event;
             $evt->runEvent('subscribe', (string)$stanza->attributes()->from);
         } else {    
             $p = new \modl\Presence();
