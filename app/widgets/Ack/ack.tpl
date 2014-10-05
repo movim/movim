@@ -8,7 +8,7 @@
     function discoInfoRequest(arg) {
         var to = arg[0];
         var id = arg[1];
-        {$discoinfo}
+        //{$discoinfo}
     }
     
     function capsRequest(arg) {

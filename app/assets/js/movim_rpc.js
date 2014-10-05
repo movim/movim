@@ -7,6 +7,7 @@
  * This also includes functions to make arrays etc.
  */
 var movim_xmlhttp;
+var movim_xmlhttp_hash = {};
  
 function MovimRPC()
 {
@@ -16,12 +17,22 @@ function MovimRPC()
      */
     this.make_xmlhttp = function()
     {
-	    if (window.XMLHttpRequest) {// code for real browsers
-		    return new XMLHttpRequest();
-	    } else {// code for IE6, IE5
-		    return new ActiveXObject("Microsoft.XMLHTTP");
-	    }
+        if (window.XMLHttpRequest) {// code for real browsers
+            return new XMLHttpRequest();
+        } else {// code for IE6, IE5
+            return new ActiveXObject("Microsoft.XMLHTTP");
+        }
     };
+
+    this.startRequest = function(key)
+    {
+        movim_xmlhttp_hash[this.key] = 1;
+    }
+
+    this.endRequest = function(key)
+    {
+        delete movim_xmlhttp_hash[this.key];
+    }
 
     /**
      * Sends data to the movim server through ajax.
@@ -34,13 +45,18 @@ function MovimRPC()
     this.commit = function()
     {
         movim_xmlhttp = this.make_xmlhttp();
-	
+
         if(FAIL_SAFE)
             var fail_safe = '?fail_safe=1';
         else
             var fail_safe = '';
 
         movim_xmlhttp.open('POST', BASE_URI+'jajax.php'+fail_safe, true);
+
+        movim_xmlhttp = this.set_key(movim_xmlhttp);
+
+        movim_xmlhttp.addEventListener('loadstart', this.startRequest, false);
+        movim_xmlhttp.addEventListener('loadend', this.endRequest, false);
 
         var handler = this.handle_rpc_json;
 
@@ -56,6 +72,15 @@ function MovimRPC()
 
         var json = this.generate_json();
         movim_xmlhttp.send(json);
+    };
+
+    /**
+     * Attach a key to the object
+     */
+    this.set_key = function(movim_xmlhttp)
+    {
+        movim_xmlhttp.key = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+        return movim_xmlhttp;
     };
 
     /**
