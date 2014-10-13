@@ -16,15 +16,16 @@ class PresenceDAO extends SQL {
 
         $this->_sql = '
             update presence
-            set value = :value,
-                priority = :priority,
-                status = :status,
-                node = :node,
-                ver = :ver,
-                delay = :delay,
-                last = :last,
-                publickey = :publickey
-            where id = :id';
+            set value       = :value,
+                priority    = :priority,
+                status      = :status,
+                node        = :node,
+                ver         = :ver,
+                delay       = :delay,
+                last        = :last,
+                publickey   = :publickey,
+                muc         = :muc
+            where id        = :id';
         
         $this->prepare(
             'Presence', 
@@ -37,6 +38,7 @@ class PresenceDAO extends SQL {
                 'delay'     => $presence->delay,
                 'last'      => $presence->last,
                 'publickey' => $presence->publickey,
+                'muc'       => $presence->muc,
                 'id'        => $id
             )
         );
@@ -46,7 +48,7 @@ class PresenceDAO extends SQL {
         if(!$this->_effective) {
             $this->_sql = '
                 insert into presence
-                (id,session, jid, ressource, value, priority, status, node, ver, delay,last,publickey)
+                (id,session, jid, ressource, value, priority, status, node, ver, delay, last, publickey, muc)
                 values(
                     :id,
                     :session,
@@ -59,13 +61,14 @@ class PresenceDAO extends SQL {
                     :ver,
                     :delay,
                     :last,
-                    :publickey)';
+                    :publickey,
+                    :muc)';
             
             $this->prepare(
                 'Presence', 
                 array(
                     'id'        => $id,
-                    'session'      => $presence->session,
+                    'session'   => $presence->session,
                     'jid'       => $presence->jid,
                     'ressource' => $presence->ressource,
                     'value'     => $presence->value,
@@ -75,7 +78,8 @@ class PresenceDAO extends SQL {
                     'ver'       => $presence->ver,
                     'delay'     => $presence->delay,
                     'last'      => $presence->last,
-                    'publickey'      => $presence->publickey
+                    'publickey' => $presence->publickey,
+                    'muc'       => $presence->muc
                 )
             );
             
