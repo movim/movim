@@ -57,11 +57,7 @@ class Roster extends WidgetBase
 
     function onPresence($packet)
     {
-        $presence = $packet->content;
-        $arr = $presence->getPresence();
-
-        $cd = new \Modl\ContactDAO();
-        $c = $cd->getRosterItem($arr['jid'], true);
+        $c = $packet->content;
 
         if($c != null) {
             $html = $this->prepareContact($c, $this->getCaps());
@@ -73,7 +69,7 @@ class Roster extends WidgetBase
 
             RPC::call(
             'movim_delete', 
-            $arr['jid'], 
+            $c[0]->jid, 
             $html /* this second parameter is just to bypass the RPC filter)*/);
 
             RPC::call('movim_append', 'group'.$group, $html);
