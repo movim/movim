@@ -27,6 +27,8 @@ class Presence extends Model {
     // Current Jabber OpenPGP Usage - XEP-0027
     protected $publickey;
     protected $muc;
+    protected $mucaffiliation;
+    protected $mucrole;
     
     public function __construct() {
         $this->_struct = '
@@ -56,7 +58,11 @@ class Presence extends Model {
             "publickey" : 
                 {"type":"text"},
             "muc" : 
-                {"type":"int",    "size":1 }
+                {"type":"int",    "size":1 },
+            "mucaffiliation" : 
+                {"type":"string", "size":32 },
+            "mucrole" : 
+                {"type":"string", "size":32 }
         }';
         
         parent::__construct();
@@ -110,7 +116,10 @@ class Presence extends Model {
                         $this->publickey = (string)$c;
                         break;
                     case 'http://jabber.org/protocol/muc#user' :
-                        $this->muc = true;
+                        //\movim_log(serialize($c));
+                        $this->muc          = true;
+                        $this->mucrole         = (string)$c->item->attributes()->role;
+                        $this->mucaffiliation  = (string)$c->item->attributes()->affiliation;
                         break;
                 }
             }
