@@ -13,6 +13,8 @@ v0.8.1 (trunk)
  * Add title attribute to some truncated texts
  * Add a new fancy login system
  * Show the status in the Roster
+ * Optimize the Presence handling
+ * Improve the MUC presence handling
 
 v0.8.0
 ---------------------------
