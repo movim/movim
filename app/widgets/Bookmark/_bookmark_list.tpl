@@ -2,10 +2,18 @@
 <ul>
     {loop="$conferences"}
         <li>
+            <a href="#" onclick="{$c->getMucRemove($value)}" class="button oppose color transparent alone"><i class="fa fa-times oppose"></i></a>
             <a href="#" onclick="{$c->getMucJoin($value)}">{$value->name}</a>
-            <a href="#" onclick="{$c->getMucRemove($value)}">X</a>
         </li>
     {/loop}
+
+    <br />
+    <a class="button black oppose" 
+       title="{$c->t('Add a new Chat Room')}"
+       onclick="movim_toggle_display('#bookmarkmucadd')">
+        <i class="fa fa-plus"></i> {$c->__('button.add')}
+    </a>
+    <br />
 </ul>
 
 <h2><i class="fa fa-bookmark-o"></i> {$c->__('title.groups')}</h2>
@@ -16,7 +24,6 @@
         </a>
     {/if}
     <li>
-        
         <a href="{$c->route('node', array($value->server, $value->node))}">
         {if="$value->name"}
             {$value->name}
