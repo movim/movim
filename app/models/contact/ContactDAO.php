@@ -76,6 +76,7 @@ class ContactDAO extends SQL {
                 twitter         = :twitter,
                 skype           = :skype,
                 yahoo           = :yahoo,
+                created         = :created,
                 updated         = :updated
             where contact.jid = :jid';
         
