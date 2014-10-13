@@ -404,6 +404,7 @@ class RosterContact extends Contact {
     protected $chaton;
     protected $last;
     protected $publickey;
+    protected $muc;
     protected $rosterask;
     protected $node;
     protected $ver;
@@ -437,7 +438,9 @@ class RosterContact extends Contact {
             'last' : 
                 {'type':'int',    'size':11 },
             'publickey' : 
-                {'type':'text'}
+                {'type':'text'},
+            'muc' : 
+                {'type':'int',    'size':1 }
         }";
     }
     
@@ -449,5 +452,6 @@ class RosterContact extends Contact {
         $this->delay     = $p->delay;
         $this->last      = $p->last;
         $this->publickey = $p->publickey;
+        $this->muc       = $p->muc;
     }
 }
