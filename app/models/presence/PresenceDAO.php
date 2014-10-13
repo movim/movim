@@ -24,7 +24,9 @@ class PresenceDAO extends SQL {
                 delay       = :delay,
                 last        = :last,
                 publickey   = :publickey,
-                muc         = :muc
+                muc         = :muc,
+                mucaffiliation = :mucaffiliation,
+                mucrole     = :mucrole
             where id        = :id';
         
         $this->prepare(
@@ -39,6 +41,8 @@ class PresenceDAO extends SQL {
                 'last'      => $presence->last,
                 'publickey' => $presence->publickey,
                 'muc'       => $presence->muc,
+                'mucaffiliation' => $presence->mucaffiliation,
+                'mucrole'   => $presence->mucrole,
                 'id'        => $id
             )
         );
@@ -48,7 +52,21 @@ class PresenceDAO extends SQL {
         if(!$this->_effective) {
             $this->_sql = '
                 insert into presence
-                (id,session, jid, ressource, value, priority, status, node, ver, delay, last, publickey, muc)
+                (id,
+                session,
+                jid,
+                ressource,
+                value,
+                priority,
+                status,
+                node,
+                ver,
+                delay,
+                last,
+                publickey,
+                muc,
+                mucaffiliation,
+                mucrole)
                 values(
                     :id,
                     :session,
@@ -62,7 +80,9 @@ class PresenceDAO extends SQL {
                     :delay,
                     :last,
                     :publickey,
-                    :muc)';
+                    :muc,
+                    :mucaffiliation,
+                    :mucrole)';
             
             $this->prepare(
                 'Presence', 
@@ -79,7 +99,9 @@ class PresenceDAO extends SQL {
                     'delay'     => $presence->delay,
                     'last'      => $presence->last,
                     'publickey' => $presence->publickey,
-                    'muc'       => $presence->muc
+                    'muc'       => $presence->muc,
+                    'mucaffiliation' => $presence->mucaffiliation,
+                    'mucrole'   => $presence->mucrole
                 )
             );
             
@@ -123,7 +145,8 @@ class PresenceDAO extends SQL {
             select * from presence
             where 
                 session = :session
-                and jid = :jid';
+                and jid = :jid
+            order by mucaffiliation desc';
         
         $this->prepare(
             'Presence', 
@@ -146,6 +169,24 @@ class PresenceDAO extends SQL {
             'Presence', 
             array(
                 'session' => $session
+            )
+        );
+        
+        return $this->run('Presence');
+    }
+    
+    function clearMuc($muc) {
+        $this->_sql = '
+            delete from presence
+            where 
+                session = :session
+                and jid = :jid';
+        
+        $this->prepare(
+            'Presence', 
+            array(
+                'session' => $this->_user,
+                'jid'     => $muc
             )
         );
         

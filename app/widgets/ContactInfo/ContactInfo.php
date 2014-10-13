@@ -44,7 +44,7 @@ class ContactInfo extends WidgetCommon
             if($c->mood) {
                 $moodarray = getMood();
                 
-                $html .= '<h2>'.$this->__('mood.title').'</h2>';
+                $html .= '<h2><i class="fa fa-smile-o"></i> '.$this->__('mood.title').'</h2>';
                 $mood = '';
                 foreach(unserialize($c->mood) as $m)
                     $mood .= $moodarray[$m].',';
@@ -55,7 +55,7 @@ class ContactInfo extends WidgetCommon
             if($c->tuneartist || $c->tunetitle) {
                 $album = $artist = $title = $img = '';
                 
-                $html .= '<h2>'.$this->__('listen.title').'</h2>';
+                $html .= '<h2><i class="fa fa-music"></i> '.$this->__('listen.title').'</h2>';
                 if($c->tuneartist)
                     $artist = $c->tuneartist. ' - ';
                 if($c->tunetitle)
@@ -93,7 +93,7 @@ class ContactInfo extends WidgetCommon
             if($c->delay != null 
                 && $c->delay 
                 && $c->delay != '0000-00-00 00:00:00') {
-                $html .= '<h2>'.$this->__('last.title').'</h2>';
+                $html .= '<h2><i class="fa fa-clock-o"></i> '.$this->__('last.title').'</h2>';
                 $html .= prepareDate(strtotime($c->delay)).'<br />';
             }
 
@@ -118,7 +118,7 @@ class ContactInfo extends WidgetCommon
                     
                     $cinfos .=  $caps->name.$type.'<br />';
                     
-                    $html .='<h2>'.$this->__('client.title').'</h2>' . $cinfos;
+                    $html .='<h2><i class="fa fa-info-circle"></i> '.$this->__('client.title').'</h2>' . $cinfos;
                 }
             }
 

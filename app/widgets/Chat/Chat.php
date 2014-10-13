@@ -35,7 +35,8 @@ class Chat extends WidgetBase {
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('attention', 'onAttention');
         $this->registerEvent('presence', 'onPresence');
-        $this->registerEvent('presencemuc', 'onPresenceMuc');
+        $this->registerEvent('muc_presence', 'onPresenceMuc');
+        $this->registerEvent('presence_muc', 'onPresenceMucUser'); // New event key system, different key than before !
     }
 
     function display() {
@@ -47,22 +48,23 @@ class Chat extends WidgetBase {
         $contact = $content[0];
 
         $txt = getPresences();
-            
-        if($contact->muc) {
-            RPC::call('movim_fill', 'list' . $contact->jid, $this->prepareMucList($contact->jid));
-        } else {
-            /*$rc = new \modl\ContactDAO;
-            $contact = $rc->getRosterItem(echapJid($arr['jid']));*/
-            if(isset($contact) && $contact->chaton > 0 ) {
-                $html='
-                    <div class="message presence">
-                        <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$contact->value] . ' - ' . $contact->ressource, ENT_COMPAT, "UTF-8")) . '
-                    </div>';
-                    
-                RPC::call('movim_append', 'messages' . $contact->jid, $html);
-                RPC::call('scrollTalk', 'messages' . $contact->jid);
-            }
+
+        /*$rc = new \modl\ContactDAO;
+        $contact = $rc->getRosterItem(echapJid($arr['jid']));*/
+        if(isset($contact) && $contact->chaton > 0 ) {
+            $html='
+                <div class="message presence">
+                    <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$contact->value] . ' - ' . $contact->ressource, ENT_COMPAT, "UTF-8")) . '
+                </div>';
+                
+            RPC::call('movim_append', 'messages' . $contact->jid, $html);
+            RPC::call('scrollTalk', 'messages' . $contact->jid);
         }
+    }
+
+    function onPresenceMucUser($packet) {
+        $presence = $packet->content;
+        RPC::call('movim_fill', 'list' . $presence->jid, $this->prepareMucList($presence->jid));
     }
 
     function onPresenceMuc($toggle) {

@@ -440,18 +440,24 @@ class RosterContact extends Contact {
             'publickey' : 
                 {'type':'text'},
             'muc' : 
-                {'type':'int',    'size':1 }
+                {'type':'int',    'size':1 },
+            'mucaffiliation' : 
+                {'type':'string', 'size':32 },
+            'mucrole' : 
+                {'type':'string', 'size':32 }
         }";
     }
     
     // This method is only use on the connection
     public function setPresence($p) {
-        $this->ressource = $p->ressource;
-        $this->value     = $p->value;
-        $this->status    = $p->status;
-        $this->delay     = $p->delay;
-        $this->last      = $p->last;
-        $this->publickey = $p->publickey;
-        $this->muc       = $p->muc;
+        $this->ressource        = $p->ressource;
+        $this->value            = $p->value;
+        $this->status           = $p->status;
+        $this->delay            = $p->delay;
+        $this->last             = $p->last;
+        $this->publickey        = $p->publickey;
+        $this->muc              = $p->muc;
+        $this->mucaffiliation   = $p->mucaffiliation;
+        $this->mucrole          = $p->mucrole;
     }
 }

@@ -163,7 +163,7 @@
 #chats .chat .panel .text {
     overflow: hidden;
     border: 1px solid #888;
-    min-height: 2.2em;
+    min-height: 2.4em;
 }
 
 #chats .chat .panel .text textarea {
@@ -279,7 +279,6 @@
     border-right: 1px solid #888;
     overflow-y: auto;
     overflow-x: hidden;
-    
 }
 
 #chats .muc .panel .messages .message span.ressource {
