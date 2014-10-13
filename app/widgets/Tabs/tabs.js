@@ -7,15 +7,13 @@ function createTabs() {
     // We create the list
     var html = '';
     for (var i=0; i<tabs.length; i++){
-	//if(document.URL.search(tabs[i].id)>-1)
-	if(window.location.hash == '#'+tabs[i].id)
-	    current = tabs[i].id;
-	    
+        if(window.location.hash == '#'+tabs[i].id)
+            current = tabs[i].id;
+        
         html += '<li class="' + tabs[i].id + '" onclick="changeTab(this, \'' + tabs[i].id + '\');">';
         html += '    <a href="#" onclick="actDifferent(event);">' + tabs[i].title + '</a>';
         html += '</li>';
     }
-	
     
     // We show the first tab
     tabs[0].style.display = "block";
@@ -24,14 +22,14 @@ function createTabs() {
     document.querySelector('#navtabs').innerHTML = html;
     
     if(current != null){
-	tab = current;	
-	menuTab = document.querySelector('li.'+current);	
+        tab = current;	
+        menuTab = document.querySelector('li.'+current);	
     }
     
     //if no tab is active, activate the first one
     else {
-	tab = document.querySelector('.tabelem').id;	
-	menuTab = document.querySelector('li.'+tab);	
+        tab = document.querySelector('.tabelem').id;	
+        menuTab = document.querySelector('li.'+tab);	
     }
     changeTab(menuTab, tab);
 }
@@ -52,7 +50,7 @@ function changeTab(current, n){
     
     // We add the "on" class to the selected li
     current.className += ' on';
-	
+
     // We hide all the div
     var tabs = document.querySelectorAll('.tabelem');
     for (var i=0; i<tabs.length; i++){
@@ -61,8 +59,10 @@ function changeTab(current, n){
     // We show the selected div
     var tabOn = document.querySelector('#'+n);
     tabOn.style.display = "block";
-    window.location.hash = n;
-    
+
+    var baseUrl = window.location.href.split('#')[0];
+    window.location.replace(baseUrl + '#' + n);
+        
     scroll(0,0);
 }
 
