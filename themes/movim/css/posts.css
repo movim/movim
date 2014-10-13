@@ -239,6 +239,10 @@ article .enclosures .enclosure[type='application/x-bittorrent']:before {
     background-image: url(../img/icons/gray/file-xml.svg);
 }
 
+article .enclosures .enclosure[type='text/html']:before {
+    background-image: url(../img/icons/gray/link.svg);
+}
+
 article .enclosures .enclosure[type='image/jpeg']:before,
 article .enclosures .enclosure[type='image/png']:before,
 article .enclosures .enclosure[type='image/jpg']:before {
