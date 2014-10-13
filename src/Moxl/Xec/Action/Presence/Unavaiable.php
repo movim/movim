@@ -74,8 +74,11 @@ class Unavaiable extends Action
         // We clear all the old messages
         $md = new \modl\MessageDAO();
         $md->deleteContact($this->_to);
+
+        $md = new \modl\PresenceDAO();
+        $md->clearMuc($this->_to);
         
         $evt = new \Event();
-        $evt->runEvent('presencemuc', false);
+        $evt->runEvent('muc_presence', false);
     }
 }

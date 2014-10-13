@@ -68,7 +68,7 @@ class Muc extends Action
         $cd->set($conf);
 
         $evt = new \Event();
-        $evt->runEvent('presencemuc', $p);
+        $evt->runEvent('muc_presence', $p);
     }
 
     public function errorNotAcceptable($stanza, $message) {
