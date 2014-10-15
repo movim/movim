@@ -30,6 +30,11 @@ article header span.date {
     color: #777;
 }
 
+article header span.email {
+    direction: rtl;
+    unicode-bidi: bidi-override; 
+}
+
 article header span.title {
     padding-left: 0;
     display: block;
@@ -301,7 +306,7 @@ article span.group {
     background-image: url(../img/icons/gray/users.svg);
 }
 
-article .content i, article .content em { font-style: italic; }
+article .content i:not(.fa), article .content em { font-style: italic; }
 article .content b, article .content strong { font-weight: bold; }
 article .content u, article .content a { text-decoration: underline; }
 
@@ -332,16 +337,45 @@ article .content h3 {
     color: #333;
     line-height: 2em;
     font-size: 1.1em;
+    font-weight: bold;
+}
+
+article .content h4 {
+    line-height: 2em;
+    font-weight: bold;
 }
 
 article .content ul,
 article .content ol {
+    margin: 1em 0;
     margin-left: 2em;
 }
 
 article .content ul li,
 article .content ol li{
     line-height: 1.5em;
+}
+
+article .content p {
+    margin: 1em 0;
+}
+
+article .content figure {
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+article .content figcaption {
+    font-weight: bold;
+    text-align: right;
+}
+
+article .content pre {
+    /*padding: 1em 0em;*/
+    line-height: 1.3em;
+    font-family: monospace;
 }
 
 article .tools {
