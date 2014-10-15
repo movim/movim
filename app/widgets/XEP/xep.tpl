@@ -30,10 +30,13 @@
                                 <img class="avatar" src="{$a->getPhoto('m')}"/>
                                 
                                 <i class="fa fa-envelope"></i> <span class="email">{$value->email|strrev}</span>
+
+                                {if="isset($value->jid)"}
                                 <br/><i class="fa fa-comment"></i> <span class="email">{$value->jid|strrev}</span>
+                                {/if}
 
                                 {if="isset($value->uri)"}
-                                <br/><i class="fa fa-globe"></i> {$value->uri}
+                                <br/><i class="fa fa-globe"></i> <a target="_blank" href="{$value->uri}">{$value->uri}</a>
                                 {/if}
                             </dd>
                         </di>
