@@ -19,7 +19,7 @@ class Route extends \BaseController {
                 'media'         => array('f'),
                 'conf'          => false,
                 'help'          => false,
-                'about'         => false,
+                'about'         => array('x'),
                 'login'         => array('err'),
                 'pods'          => false,
                 'disconnect'    => array('err'),
