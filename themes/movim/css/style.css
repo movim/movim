@@ -152,10 +152,6 @@ p {
     margin-top: 0.5em;
 }
 
-pre {
-    padding: 1em 0em;
-}
-
 code, code span, .post code span {
     font-size: 0.9em;
     font-family: monospace;
@@ -369,7 +365,8 @@ ul.clean li {
 }
 
 /* Table */
-table thead {
+table thead,
+table tr th {
     font-weight: bold;
 }
 
@@ -511,7 +508,8 @@ ul.thumb li a {
 
 /* Definition list */
 
-dl > * {
+dl dt,
+dl dd {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -519,6 +517,12 @@ dl > * {
     display: inline-block;
     line-height: 2em;
     vertical-align: middle;
+}
+
+dl di {
+    border-bottom: 1px solid #DDD;
+    display: block;
+    padding: 1em 0;
 }
 
 dl dt {
