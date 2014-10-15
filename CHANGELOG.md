@@ -15,6 +15,8 @@ v0.8.1 (trunk)
  * Show the status in the Roster
  * Optimize the Presence handling
  * Improve the MUC presence handling
+ * Improve the posts CSS
+ * Add a fancy XEP visualisator
 
 v0.8.0
 ---------------------------
