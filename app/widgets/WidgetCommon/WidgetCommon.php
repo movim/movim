@@ -138,7 +138,8 @@ class WidgetCommon extends WidgetBase {
         else
             $comments = '';
         
-        if($this->user->getLogin() == $post->aid) 
+        if($this->user->getLogin() == $post->aid
+        || ($this->user->getLogin() == $post->jid && $post->node == 'urn:xmpp:microblog:0') ) 
             $toolbox = $this->getToolbox($post);
             
         $view = $this->loadTemplate();
