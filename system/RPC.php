@@ -60,14 +60,6 @@ class RPC
         return true;
     }
 
-    public static function cdata($text)
-    {
-        $args = func_get_args();
-        return '<![CDATA['.
-            $text.
-            ']]>';
-    }
-
     /**
      * Sends outgoing requests.
      */
