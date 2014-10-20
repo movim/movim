@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim Website\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-20 22:22+0200\n"
-"PO-Revision-Date: 2014-08-04 21:18+0000\n"
+"PO-Revision-Date: 2014-10-20 20:43+0000\n"
 "Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-04 21:24+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-10-20 20:48+0000\n"
+"X-Generator: Launchpad (build 17203)\n"
 
 #: ../cache/locales.php:2
 msgid "Thanks"
@@ -383,7 +383,6 @@ msgid "Connected to the chatroom"
 msgstr "Connecté au salon"
 
 #: ../cache/locales.php:96
-#, fuzzy
 msgid "Disconnected from the chatroom"
 msgstr "Déconnecté du salon"
 
@@ -636,28 +635,24 @@ msgid "What's Hot"
 msgstr "Quoi de neuf"
 
 #: ../cache/locales.php:165
-#, fuzzy
 msgid "Creating your location node"
-msgstr "Création de votre flux…"
+msgstr "Création de l'espace de stockage pour votre localisation"
 
 #: ../cache/locales.php:166
-#, fuzzy
 msgid "Creating your bookmark node"
-msgstr "Création de votre flux…"
+msgstr "Création de votre liste de favoris"
 
 #: ../cache/locales.php:167
-#, fuzzy
 msgid "Creating your profile node"
-msgstr "Création de votre flux…"
+msgstr "Création de l'espace de stockage pour votre profil"
 
 #: ../cache/locales.php:168
-#, fuzzy
 msgid "Creating your avatar node"
-msgstr "Création de votre flux…"
+msgstr "Création de l'espace de stockage pour votre avatar"
 
 #: ../cache/locales.php:169
 msgid "Movim is currently configuring your account, please wait..."
-msgstr ""
+msgstr "Movim est entrain de configurer votre compte, veuillez patienter..."
 
 #: ../cache/locales.php:170
 msgid "Your server doesn't support post publication, you can only read contact's feeds"
@@ -770,9 +765,8 @@ msgid "No account yet ?"
 msgstr "Pas encore de compte ?"
 
 #: ../cache/locales.php:199
-#, fuzzy
 msgid "Login with an another account"
-msgstr "ou avec notre compte de démonstration"
+msgstr "Se connecter avec un autre compte"
 
 #: ../cache/locales.php:200
 msgid "This server accept only connection with xmpp accounts from these servers :"
@@ -1034,19 +1028,16 @@ msgid "Sessions"
 msgstr "Sessions"
 
 #: ../cache/locales.php:265
-#, fuzzy
 msgid "Subscriptions"
-msgstr "Description"
+msgstr "Souscriptions"
 
 #: ../cache/locales.php:266
-#, fuzzy
 msgid "Monthly Subscriptions"
-msgstr "Gérer les abonnements"
+msgstr "Souscriptions par mois"
 
 #: ../cache/locales.php:267
-#, fuzzy
 msgid "Monthly Subscriptions Cumulated"
-msgstr "Gérer les abonnements"
+msgstr "Souscriptions par mois cumulés"
 
 #: ../cache/locales.php:269
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -1153,32 +1144,28 @@ msgid "Blog"
 msgstr "Blog"
 
 #: ../cache/locales.php:309
-#, fuzzy
 msgid "Original page"
-msgstr "Originale"
+msgstr "Page d'origine"
 
 #: ../cache/locales.php:310
 msgid "Authors"
-msgstr ""
+msgstr "Auteurs"
 
 #: ../cache/locales.php:311
-#, fuzzy
 msgid "Revisions"
-msgstr "Sessions"
+msgstr "Révisions"
 
 #: ../cache/locales.php:312
-#, fuzzy
 msgid "Abstract"
-msgstr "distrait(e)"
+msgstr "Résumé"
 
 #: ../cache/locales.php:313
-#, fuzzy
 msgid "Status"
-msgstr "Statistiques"
+msgstr "Status"
 
 #: ../cache/locales.php:314
 msgid "Type"
-msgstr ""
+msgstr "Catégorie"
 
 #: ../cache/locales.php:315
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1438,12 +1425,12 @@ msgstr "Non"
 
 #: ../cache/locales.php:377
 msgid "Return"
-msgstr ""
+msgstr "Retour"
 
 #: ../cache/locales.php:378
 #, php-format
 msgid "Step %s"
-msgstr ""
+msgstr "Étape %s"
 
 #: ../cache/locales.php:381
 msgid "Day"
