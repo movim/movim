@@ -41,7 +41,7 @@ $client_xmpp->on("disconnect", function($headers = false) use ($client_xmpp) {
 });
 
 $client_xmpp->on("message", function($message) use ($client_local, $logger){
-    $logger->notice("XMPP : Got message");
+    $logger->notice("XMPP : Got message {$message->getData()}");
 
     $obj = new \StdClass;
     $obj->func = 'message';
@@ -81,17 +81,28 @@ $client_local->on("message", function($message) use ($client_local, $client_xmpp
     if($message->getData() != '') {
         $rpc = new RPC();
         $rpc->handle_json($message->getData());
-        $logger->notice("LOOP : Got message");
+        $logger->notice("LOOP : Got message {$message->getData()}");
+
+        $xml = \Moxl\API::commit();
+        \Moxl\API::clear();
+
+        if(!empty($xml)) {
+            $logger->notice("LOOP : Send to XMPP {$xml}");
+        
+            $client_xmpp->send($xml);
+        }
 
         $obj = new \StdClass;
         $obj->func = 'message';
         $obj->body = RPC::commit();
         RPC::clear();
 
-        $client_local->send(json_encode($obj));
+        if(!empty($obj->body)) {
+            $logger->notice("LOOP : Send to local {$obj->body}");
+            
+            $client_local->send(json_encode($obj));
+        }
     }
-
-    //$client_xmpp->send($message->getData());
 });
 
 $client_local->open();

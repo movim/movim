@@ -97,20 +97,22 @@ class Behaviour implements MessageComponentInterface {
     }
 
     public function onClose(ConnectionInterface $conn) {
-        $session_size = count($this->sessions[$conn->sid]);
+        if(count($this->sessions) > 0) {
+            $session_size = count($this->sessions[$conn->sid]);
+            
+            // The connection is closed, remove it, as we can no longer send it messages
+            if($conn === $this->sessions[$conn->sid]['linker']) {
+                foreach($this->sessions[$conn->sid] as $key => $client) {
+                    $client->close();
+                }
 
-        // The connection is closed, remove it, as we can no longer send it messages
-        if($conn === $this->sessions[$conn->sid]['linker']) {
-            foreach($this->sessions[$conn->sid] as $key => $client) {
-                $client->close();
+                unset($this->sessions[$conn->sid]);
+            } else {
+                unset($this->sessions[$conn->sid][$conn->resourceId]);
             }
 
-            unset($this->sessions[$conn->sid]);
-        } else {
-            unset($this->sessions[$conn->sid][$conn->resourceId]);
+            echo "{$conn->resourceId} disconnected - session size {$session_size}\n";
         }
-
-        echo "{$conn->resourceId} disconnected - session size {$session_size}\n";
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e) {
