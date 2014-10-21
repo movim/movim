@@ -86,9 +86,6 @@
                 © <a href="http://www.movim.eu">Movim</a> • 2008 - 2014 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
             </footer>
         </div>
-        <script type="text/javascript">
-            movim_onload();
-        </script>
         <?php 
             $this->displayFooterDebug();
         ?>

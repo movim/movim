@@ -146,8 +146,9 @@ class Bootstrap {
         }
 
         $uri = str_replace('jajax.php', '', $uri);
-        
-        return $uri;
+
+        return 'http://localhost/0.9/';
+        //return $uri;
     }
     
     private function loadSystem() {
