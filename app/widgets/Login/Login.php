@@ -265,7 +265,8 @@ class Login extends WidgetBase
         $sess->set('registered_events', $wrapper->registerEvents());
 
         // BOSH + XMPP connexion test
-        $warning = \Moxl\API::login();
+        \Moxl\Stanza\Login::streamInit($host);
+        /*$warning = \Moxl\API::login();
         
         if($warning != 'OK') {
             RPC::call('movim_redirect', Route::urlize('login', $warning));
@@ -277,7 +278,7 @@ class Login extends WidgetBase
             RPC::call('movim_remember_session', $element['login']);
             RPC::call('movim_reload', Route::urlize('root'));
             RPC::commit();
-        }
+        }*/
     }
 
     function ajaxGetRememberedSession($sessions)

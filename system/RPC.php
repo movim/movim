@@ -66,8 +66,8 @@ class RPC
     public static function commit()
     {
         // Cleaning rubbish.
-        ob_clean();
-        ob_start();
+        //ob_clean();
+        //ob_start();
 
         // Just in case (warning)
         if(!is_array(self::$funcalls)) {
