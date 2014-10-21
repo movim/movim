@@ -74,17 +74,27 @@ class RPC
             self::$funcalls = array('ping');
         }
         
-        header('Content-Type: application/json');
-        printf('%s', json_encode(self::$funcalls));
-        
+        //header('Content-Type: application/json');
+        //printf('%s', json_encode(self::$funcalls));
+        return self::$funcalls;
+    }
+
+    public static function clear()
+    {
+        self::$funcalls = array();
     }
 
     /**
      * Handles incoming requests.
      */
-    public function handle_json()
+    public function handle_json($content = false)
     {
-        $json = file_get_contents('php://input');
+        if($content && $content != '') {
+            $json = $content;
+        } else {
+            $json = file_get_contents('php://input');
+        }
+        
         $request = json_decode($json);
 
         if(isset($_GET['do']) && $_GET['do'] == 'poll') {

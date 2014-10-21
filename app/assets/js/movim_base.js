@@ -23,7 +23,7 @@ function movim_onload()
 {
     for(var i = 0; i < onloaders.length; i++) {
         if(typeof(onloaders[i]) === "function")
-    	    onloaders[i]();
+            onloaders[i]();
     }
 }
 
