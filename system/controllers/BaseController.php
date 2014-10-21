@@ -14,7 +14,7 @@ class BaseController {
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_tpl.js');
         $this->page->addScript('movim_rpc.js');
-        $this->page->addScript('movim_lazy.js');
+        $this->page->addScript('movim_websocket.js');
     }
 
 
