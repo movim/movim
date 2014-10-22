@@ -43,7 +43,16 @@ class Presence extends Payload
             $pd = new \modl\PresenceDAO();
             $pd->set($p);
 
-            $this->pack($p);
+            if($p->muc) {
+                $this->method('muc');
+                $this->pack($p);
+            } else {
+                $cd = new \Modl\ContactDAO();
+                $c = $cd->getRosterItem($p->jid, true);
+
+                $this->pack($c);
+            }
+            
             $this->deliver();
         }
     }

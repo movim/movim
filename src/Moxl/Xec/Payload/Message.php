@@ -46,8 +46,9 @@ class Message extends Payload
             $m->session     = $to;
             $m->jidto      = $to;
             $m->jidfrom    = $jid[0];
-            
-            $m->ressource = $jid[1];
+
+            if(isset($jid[1]))
+                $m->ressource = $jid[1];
             
             $m->type    = (string)$stanza->attributes()->type;
             

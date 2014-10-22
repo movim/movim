@@ -3,6 +3,8 @@
 namespace Moxl;
 
 class API {
+    protected static $xml = '';
+    
     static function boshWrapper($xml, $type = false)
     {
         $session = \Sessionx::start();
@@ -209,7 +211,8 @@ class API {
      */
     static function request($xml, $type = false)
     {
-        $session = \Sessionx::start();
+        self::$xml .= $xml;
+        /*$session = \Sessionx::start();
 
         if($session->active == true) {
             $sess = \Session::start(APP_NAME);
@@ -235,7 +238,23 @@ class API {
                 ."!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             header(':', true,'400');
             exit;
-        }
+        }*/
+    }
+
+    /*
+     *  Return the stacked XML and clear it
+     */
+    static function commit()
+    {
+        return self::$xml;
+    }
+    
+    /*
+     *  Clear the stacked XML
+     */
+    static function clear()
+    {
+        self::$xml = '';
     }
 
     /*
