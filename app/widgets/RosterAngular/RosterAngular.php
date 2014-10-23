@@ -20,24 +20,26 @@
 
 use Moxl\Xec\Action\Roster\GetList;
 
-class Roster extends WidgetBase
+class RosterAngular extends WidgetBase
 {
     private $grouphtml;
 
     function load()
     {
         $this->addcss('roster.css');
+        $this->addjs('angular.js');
+        $this->addjs('angular-filters.js');
         $this->addjs('roster.js');
-        //$this->registerEvent('roster', 'onRoster');
-        //$this->registerEvent('rosterupdateditem', 'onRoster');
-        //$this->registerEvent('contactadd', 'onRoster');
-        //$this->registerEvent('contactremove', 'onRoster');
-        //$this->registerEvent('presence', 'onPresence');
+        $this->registerEvent('roster', 'onRoster');
+        /*$this->registerEvent('rosterupdateditem', 'onRoster');
+        $this->registerEvent('contactadd', 'onRoster');
+        $this->registerEvent('contactremove', 'onRoster');
+        $this->registerEvent('presence', 'onPresence');*/
     }
 
     function display()
     {
-        $this->view->assign('offline_shown',  '');
+        /*$this->view->assign('offline_shown',  '');
         $offline_state = Cache::c('offlineshown');
 
         $bool = Cache::c('rostershow');
@@ -52,7 +54,7 @@ class Roster extends WidgetBase
         $this->view->assign('toggle_cache', $this->genCallAjax('ajaxToggleCache', "'offlineshown'"));
         $this->view->assign('search_contact', $this->genCallAjax('ajaxSearchContact','this.value'));
         
-        $this->view->assign('rosterlist', $this->prepareRoster());
+        $this->view->assign('rosterlist', $this->prepareRoster());*/
     }
 
     function onPresence($packet)
@@ -70,7 +72,7 @@ class Roster extends WidgetBase
             RPC::call(
             'movim_delete', 
             $c[0]->jid, 
-            $html /* this second parameter is just to bypass the RPC filter)*/);
+            $html /* this second parameter is just to bypass the RPC filter */);
 
             RPC::call('movim_append', 'group'.$group, $html);
             RPC::call('sortRoster');
@@ -79,9 +81,11 @@ class Roster extends WidgetBase
 
     function onRoster($jid)
     {
-        $html = $this->prepareRoster();
-        RPC::call('movim_fill', 'rosterlist', $html);
-        RPC::call('sortRoster');
+        //$html = $this->prepareRoster();
+        $contactsArray = $this->prepareRosterAngular();
+        //RPC::call('movim_fill', 'rosterlist', $html);
+        //RPC::call('sortRoster');
+        RPC::call('getContacts', $contactsArray);
     }
 
     /**
@@ -205,12 +209,9 @@ class Roster extends WidgetBase
         
         $contactdao = new \Modl\ContactDAO();
         $contacts = $contactdao->getRoster();
-
         $capsarr = $this->getCaps();
 
         $roster = array();
-
-        $presencestxt = getPresencesTxt();
 
         $currentjid     = false;
         $currentarr     = array();
@@ -221,6 +222,7 @@ class Roster extends WidgetBase
                     $c->groupname = $this->__('roster.ungrouped');
                 
                 if(!isset($roster[$c->groupname])) {
+                    /*create new group in roster*/
                     $roster[$c->groupname] = new stdClass;
                     $roster[$c->groupname]->contacts = array();
                     $roster[$c->groupname]->html = '';
@@ -314,6 +316,25 @@ class Roster extends WidgetBase
         } else 
             Notification::appendNotification($this->__('roster.jid_error'), 'info');
     }
+    
+    
+
+/*=========*/
+    function prepareRosterAngular(){
+            $contactdao = new \Modl\ContactDAO();
+            $contacts = $contactdao->getRoster();
+            $groups = array();
+            
+            foreach($contacts as &$contact){
+                $contact = $contact->toArray();
+                if($contact['groupname'])
+                movim_log($contact['groupname']);
+            } 
+            
+            return json_encode($contacts);
+    }
+
 }
+
 
 ?>
