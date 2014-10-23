@@ -1,0 +1,310 @@
+#roster {
+    background-color: rgba(36, 36, 36, 1);
+    position: relative;
+    transition: right 0.5s ease;
+    right: 0em;
+    pointer-events: auto;
+    height: 100%;
+}
+
+#roster span.nocontacts {
+    color: white;
+    margin: 1.5em;
+    margin-top: 3em;
+    display: inline-block;
+    line-height: 1.7em;
+    text-align: center;
+}
+
+#roster:hover {
+    overflow: auto;
+}
+
+#roster input[name=search],
+#rostermenu input[name=searchjid] {
+    height: 3em;
+    padding: 0em 0.5em;
+    width: 100%;    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+#roster input[name=search] {
+    background-image: url(img/search.png);
+    background-repeat: no-repeat;
+    padding-left: 3em;
+    background-position: 1em center;
+    background-color: white;
+}
+
+#rostermenu input[name=searchjid]:invalid {
+    color: red;
+}
+
+#roster ul#rosterlist {
+    list-style-type: none;
+    background-color: rgba(36, 36, 36, 1);
+    margin-bottom: 3em;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+/* Display/hide the elements */
+#roster.hide {
+    right: -100%;
+    overflow: hidden;
+}
+
+#roster ul#rosterlist li .chat.on:hover {
+    cursor: pointer;
+}
+
+#roster ul#rosterlist div ul.contact li {
+    display: none;
+}
+
+#roster ul#rosterlist > div {
+    height: 3em;
+    overflow: hidden;
+}
+
+#roster ul#rosterlist > div.groupshown {
+    height: 100%;
+}
+
+#roster ul#rosterlist div ul.contact li:first-child:not(.offline):not(.server_error) {
+    display: list-item;
+}
+
+#roster ul#rosterlist.offlineshown div.groupshown li {
+    display: list-item;
+}
+/*
+#roster ul#rosterlist.offlineshown div.groupshown li:not(:first-child),
+#roster ul#rosterlist.offlineshown div li:not(:first-child),
+#roster ul#rosterlist div.groupshown li:not(:first-child),
+#roster ul#rosterlist div li:not(:first-child) {
+    display: none;
+}
+* */
+
+/* Show some clients icons, Xabber style */
+#roster ul#rosterlist li.client a {
+    background-repeat: no-repeat;
+    background-position: 95% center;
+}
+
+#roster ul#rosterlist li.client.adium a     { background-image: url(img/clients/adium.png); }
+#roster ul#rosterlist li.client.pidgin a    { background-image: url(img/clients/pidgin.png); }
+#roster ul#rosterlist li.client.gajim a     { background-image: url(img/clients/gajim.png); }
+#roster ul#rosterlist li.client.telepathy a { background-image: url(img/clients/empathy.png); }
+#roster ul#rosterlist li.client.xabber a    { background-image: url(img/clients/xabber.png); }
+#roster ul#rosterlist li.client.psi a,
+#roster ul#rosterlist li.client.psi+ a       { background-image: url(img/clients/psi.png); }
+
+/* The list */
+
+#roster ul#rosterlist h1 {
+    padding: 1em;
+    color: #777;
+    line-height: 1em;
+    font-size: 1em;
+
+    text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
+}
+
+#roster ul#rosterlist h1:before {
+    cursor: pointer;
+    content: "+";
+    width: 20px;
+    padding-right: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+#roster ul#rosterlist div.groupshown h1:before {
+    content: "-";
+}
+
+#roster ul#rosterlist ul.contact li img {
+    max-height: 3em;
+    float: left;
+    width: 3em;
+    height: 3em;
+    margin-right: 0.5em;
+    margin-top: -0.5em;
+}
+
+#roster ul#rosterlist ul.contact li a {
+    display: block;
+    white-space: nowrap;
+    width: auto;
+    overflow: hidden;
+    color: #BBB;
+    font-size: 1em;
+    padding-top: 0.5em;
+    text-overflow: ellipsis;
+    vertical-align: text-bottom;
+    text-decoration: none;
+
+    text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
+}
+
+#roster ul#rosterlist ul.contact li a span.ressource {
+    display: block;
+    font-size: 0.8em;
+    color: #777;
+}
+
+/* Chat button */
+#roster ul#rosterlist ul.contact li .chat {
+    width: 0.5em;
+    height: 3em;
+    float: right;
+    background-color: #DDD;
+    transition: width 0.5s ease;
+}
+
+#roster ul#rosterlist ul.contact li:hover .chat {
+    width: 3em;
+    background-image: url(img/bubbles.svg);
+    background-size: 1.3em 1.3em;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#roster ul#rosterlist ul.contact li .chat.on:hover {
+    cursor: pointer;
+}
+
+#roster ul#rosterlist ul.contact li.online .chat {
+    background-color: #6FCC43;
+}
+
+#roster ul#rosterlist ul.contact li.away .chat {
+    background-color: #FFE433;
+}
+
+#roster ul#rosterlist ul.contact li.dnd .chat {
+    background-color: #D92727;
+}
+
+#roster ul#rosterlist ul.contact li.xa .chat {
+    background-color: #442178;
+}
+
+#roster ul#rosterlist ul.contact li.inactive {
+    opacity: 0.5;
+}
+
+/* Icons */
+
+#roster ul#rosterlist ul.contact li .infoicon {
+    width: 1.4em;
+    height: 1.4em;
+    background-size: 1.3em 1.3em;
+    background-repeat: no-repeat;
+    float: right;
+    margin-top: 0.8em;
+    margin-right: 0.2em;
+}
+
+#roster ul#rosterlist ul.contact li .mobile {
+    background-image: url('img/mobile.svg');
+}
+
+#roster ul#rosterlist ul.contact li .web {
+    background-image: url('img/earth.svg');
+}
+
+#roster ul#rosterlist ul.contact li .bot {
+    background-image: url('img/robot.png');
+}
+
+#roster ul#rosterlist ul.contact li .tune {
+    background-image: url('img/music.svg');
+}
+
+#roster ul#rosterlist ul.contact li .jingle {
+    background-image: url('img/call.svg');
+}
+
+#roster ul#rosterlist ul.contact li .jingle:hover {
+    cursor: pointer;
+}
+
+/* Search */
+#roster.search ul#rosterlist.offlineshown div.groupshown > li {
+    display: none;
+}
+
+#roster.search ul#rosterlist.offlineshown div.groupshown > li.found {
+    display: list-item;
+}
+
+#rostermenu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: block;
+    background-color: rgba(36, 36, 36, 1);
+    width: 15rem;
+    pointer-events: auto;
+    z-index: 3;
+}
+
+
+#rostermenu li:nth-last-child(-n+3) {
+    float: right;
+}
+
+#rostermenu li.show_hide {
+    position: relative;
+    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+#rostermenu li.show_hide:before {
+    content: "";
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg); 
+    -webkit-transform:rotate(45deg);
+    background-color: #0DB8B5;
+    display: block;
+    position: absolute;
+    top: 1.25em;
+    width: 0.5em;
+    height: 0.5em;
+}
+
+#rostermenu li.body_roster {
+    border-right: 0.5em solid #0DB8B5;
+}
+
+#rostermenu li.body_roster:before {
+    background-color: #0DB8B5;
+    right: -0.25em;
+}
+
+#rostermenu li.body_infos {
+    border-left: 0.5em solid #6FCC43;
+}
+
+#rostermenu li.body_infos:before {
+    background-color: #6FCC43;
+    left: -0.25em;
+}
+
+#rostermenu div#chattoggle {
+    display: inline-block;
+}
+
+#rostermenu .message {
+    color: white;
+    padding: 0.5em;
+}
+
