@@ -82,10 +82,11 @@ class RosterAngular extends WidgetBase
     function onRoster($jid)
     {
         //$html = $this->prepareRoster();
-        $contactsArray = $this->prepareRosterAngular();
+        $results = $this->prepareRosterAngular();
         //RPC::call('movim_fill', 'rosterlist', $html);
         //RPC::call('sortRoster');
-        RPC::call('getContacts', $contactsArray);
+        RPC::call('getContacts', $results['contacts']);
+        RPC::call('getGroups', $results['groups']);
     }
 
     /**
@@ -269,7 +270,7 @@ class RosterAngular extends WidgetBase
      * @param $param
      * @returns 
      */
-    function ajaxToggleCache($param){
+    /*function ajaxToggleCache($param){
         //$bool = !currentValue
         $bool = (Cache::c($param) == true) ? false : true;
         //toggling value in cache
@@ -294,7 +295,7 @@ class RosterAngular extends WidgetBase
         
         RPC::call('focusContact');
         RPC::commit();
-    }
+    }*/
     
     /**
      * @brief Show/Hide the Roster
@@ -323,15 +324,17 @@ class RosterAngular extends WidgetBase
     function prepareRosterAngular(){
             $contactdao = new \Modl\ContactDAO();
             $contacts = $contactdao->getRoster();
-            $groups = array();
             
-            foreach($contacts as &$contact){
+            foreach($contacts as &$contact)
                 $contact = $contact->toArray();
-                if($contact['groupname'])
-                movim_log($contact['groupname']);
-            } 
+                
+            $rd = new \Modl\RosterLinkDAO();
+            $groups = $rd->getGroups();
+            $groups = array_flip($groups);
             
-            return json_encode($contacts);
+            $result['contacts'] = json_encode($contacts);
+            $result['groups'] = json_encode($groups);
+            return $result;
     }
 
 }

@@ -3,9 +3,20 @@
     
     app.controller("RosterController", function($scope){
         $scope.contacts = [];
+        $scope.groups = [];
         
-        $scope.getContacts = function(contactsList){
-            $scope.contacts = contactsList;
+        $scope.getContacts = function(list){
+            $scope.contacts = list;
+            $scope.$apply();
+        };
+        
+        $scope.getGroups = function(list){
+            for (i in list){
+                if(localStorage.getItem("rosterGroup_"+i) == null)
+                    list[i] = "true";
+                else list[i] = localStorage.getItem("rosterGroup_"+i);
+            }
+            $scope.groups = list;
             $scope.$apply();
         };
     });
@@ -13,6 +24,10 @@
 
 function getContacts(tab){
     angular.element(roster).scope().getContacts(JSON.parse(tab));
+}
+
+function getGroups(tab){
+    angular.element(roster).scope().getGroups(JSON.parse(tab));
 }
 
 function sortRoster() {
@@ -47,18 +62,22 @@ function sortRoster() {
     }
 }
 
-function showRoster(boolOffline) {
-    if(boolOffline == '1')
+function showHideOffline() {
+    if(localStorage.getItem("rosterShow_offline") != "true" ){
         document.querySelector('ul#rosterlist').className = 'offlineshown';
-    else
+        localStorage.setItem("rosterShow_offline", "true");
+    }
+    else{
         document.querySelector('ul#rosterlist').className = '';
+        localStorage.setItem("rosterShow_offline", "false");
+    }
 }
 
-function showHideRoster(hide) {
+function showHideRoster() {
     if(hide == '1')
         document.querySelector('#roster').className = 'hide';
     else
-        document.querySelector('#roster').className = '';        
+        document.querySelector('#roster').className = '';
 }
 
 function incomingPresence(val) {
