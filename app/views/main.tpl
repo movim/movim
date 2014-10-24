@@ -1,6 +1,5 @@
 <?php /* -*- mode: html -*- */
 ?>
-<?php $this->widget('Poller');?>
 <?php $this->widget('Presence');?>
 <?php $this->widget('Chat');?>
 <?php $this->widget('VisioExt');?>

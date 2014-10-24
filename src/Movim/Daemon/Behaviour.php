@@ -18,6 +18,10 @@ class Behaviour implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg) {
         $msg = json_decode($msg);
 
+        if(!isset($msg->func)) {
+            return;
+        }
+        
         switch ($msg->func) {
             // The browser ask for a new session
             case 'ask':
@@ -59,6 +63,15 @@ class Behaviour implements MessageComponentInterface {
                     $this->sessions[$from->sid]['linker'] = $from;
                 }
 
+                $obj = new \StdClass;
+                $obj->func = 'registered';
+
+                foreach($this->sessions[$from->sid] as $key => $client) {
+                    if($from !== $client) {
+                        $client->send(json_encode($obj));
+                    }
+                }
+
                 $session_size = count($this->sessions[$from->sid]);
                 echo "{$from->sid} : {$from->resourceId} linker registered - session size {$session_size}\n";
                 break;
@@ -75,7 +88,7 @@ class Behaviour implements MessageComponentInterface {
             
                 // A message from the linker to the clients
                 if($from === $this->sessions[$from->sid]['linker']) {
-                    echo "{$from->sid} : {$msg->body} got from the linker\n";
+                    //echo "{$from->sid} : {$msg->body} got from the linker\n";
                     foreach($this->sessions[$from->sid] as $key => $client) {
                         if($from !== $client) {
                             //The sender is not the receiver, send to each client connected
@@ -86,7 +99,7 @@ class Behaviour implements MessageComponentInterface {
                     }
                 // A message from the browser to the linker
                 } else {
-                    echo "{$from->sid} : {$msg->body} sent to the linker\n";
+                    //echo "{$from->sid} : {$msg->body} sent to the linker\n";
                     $this->sessions[$from->sid]['linker']->send((string)$msg->body);
                 }
                 break;
@@ -101,17 +114,17 @@ class Behaviour implements MessageComponentInterface {
             $session_size = count($this->sessions[$conn->sid]);
             
             // The connection is closed, remove it, as we can no longer send it messages
-            if($conn === $this->sessions[$conn->sid]['linker']) {
+            if(array_key_exists('linker', $this->sessions[$conn->sid])
+            && $conn->resourceId == $this->sessions[$conn->sid]['linker']->resourceId) {
                 foreach($this->sessions[$conn->sid] as $key => $client) {
                     $client->close();
                 }
-
+                echo "{$conn->resourceId} linker disconnected - session size {$session_size}\n";
                 unset($this->sessions[$conn->sid]);
             } else {
+                echo "{$conn->resourceId} disconnected - session size {$session_size}\n";
                 unset($this->sessions[$conn->sid][$conn->resourceId]);
             }
-
-            echo "{$conn->resourceId} disconnected - session size {$session_size}\n";
         }
     }
 

@@ -1,8 +1,10 @@
 <div id="contactsummary">
     {$c->prepareContactSummary($contact)}
-    {if="$refresh"}
-        <script type="text/javascript">
-            setTimeout("{$refresh}", 1000);
-        </script>
-    {/if}
+    
+    <script type="text/javascript">
+        movim_add_onload(function()
+        {
+            {$refresh}
+        });
+    </script>
 </div>

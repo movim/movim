@@ -34,13 +34,14 @@ class Session
     protected function __construct($name)
     {
         // Does the database exist?
-        if(self::$sid == null) {
+        /*if(self::$sid == null) {
             if(isset($_COOKIE['PHPFASTSESSID'])) {
                 self::$sid = $_COOKIE['PHPFASTSESSID'];
             } else {
                 $this->regenerate();
             }
-        }
+        }*/
+        self::$sid = SESSION_ID;
 
         $this->container = $name;
     }

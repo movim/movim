@@ -12,10 +12,12 @@
         "michelf/php-markdown": "1.4.*@dev",
         "movim/modl": "dev-master",
         "movim/sasl2": "dev-master",
-        "movim/moxl": "dev-master",
+        "movim/moxl": "dev-ws",
 
         "cboden/ratchet": "0.3.*",
         "devristo/phpws": "dev-master",
-        "react/child-process": "0.5.*@dev"
+        "react/child-process": "0.5.*@dev",
+        "ratchet/pawl": "dev-master",
+        "react/socket-client": "0.4.*@dev"
     }
 }

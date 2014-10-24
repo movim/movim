@@ -41,7 +41,13 @@ MovimWebsocket.prototype.init = function() {
 
         if(obj.id) {
             localStorage.movimSession = obj.id;
+            console.log('GNAP');
+            document.cookie = 'MOVIM_SESSION_ID=' + obj.id;
             this.register();
+        }
+
+        if(obj.func == 'registered') {
+            movim_onload();
         }
 
         websocket.handle(e.data);

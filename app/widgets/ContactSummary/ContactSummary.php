@@ -51,9 +51,9 @@ class ContactSummary extends WidgetCommon
             $contact = new modl\Contact();
             $contact->jid = $_GET['f'];
             $this->view->assign('contact', $contact);
-            
-            $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'"));
         }
+
+        $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'"));
     }
     
     function onVcard($contact)
