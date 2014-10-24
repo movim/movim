@@ -25,6 +25,16 @@ class Login extends WidgetBase
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
         $this->registerEvent('moxlerror', 'onMoxlError');
+        $this->registerEvent('start', 'onStart');
+    }
+
+    function onStart($session)
+    {
+        //$pd = new modl\PresenceDAO();
+        //$pd->clearPresence($element['login']);
+    
+        //RPC::call('movim_remember_session', $element['login']);
+        RPC::call('movim_reload', Route::urlize('root'));
     }
 
     function display()
@@ -265,7 +275,7 @@ class Login extends WidgetBase
         $sess->set('registered_events', $wrapper->registerEvents());
 
         // BOSH + XMPP connexion test
-        \Moxl\Stanza\Login::streamInit($host);
+        \Moxl\Stanza\Stream::init($host);
         /*$warning = \Moxl\API::login();
         
         if($warning != 'OK') {

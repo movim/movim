@@ -25,6 +25,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    {$getaffiliations}
-    setTimeout("{$getmetadata}", 1000);
+    movim_add_onload(function()
+    {
+        {$getaffiliations}
+        {$getmetadata}
+    });
 </script>

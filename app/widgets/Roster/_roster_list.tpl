@@ -1,5 +1,9 @@
 {if="empty($roster)"}
-    <script type="text/javascript">setTimeout('{$refresh}', 1500);</script>
+    <script type="text/javascript">
+        movim_add_onload(function() {
+            {$refresh}
+        });
+    </script>
     <span class="nocontacts">
         {$c->__('roster.no_contacts')}
         <br />
