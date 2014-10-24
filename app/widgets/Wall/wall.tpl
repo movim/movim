@@ -7,7 +7,9 @@
         {else}
             <div style="padding: 1.5em; text-align: center;">Ain't Nobody Here But Us Chickens...</div>
             <script type="text/javascript">
-                setTimeout('{$refresh}', 50);
+                movim_add_onload(function() {
+                    {$refresh}
+                });
             </script>
         {/if}
         <div class="spacetop clear"></div>

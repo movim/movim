@@ -23,6 +23,7 @@ use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\DND;
 use Moxl\Xec\Action\Presence\XA;
 use Moxl\Xec\Action\Presence\Unavaiable;
+use Moxl\Stanza\Stream;
 
 class Presence extends WidgetBase
 {
@@ -85,6 +86,8 @@ class Presence extends WidgetBase
         $p = new Unavaiable;
         $p->setType('terminate')
           ->request();
+
+        Stream::end();
 
         RPC::call('movim_redirect', Route::urlize('disconnect')); 
         RPC::commit();

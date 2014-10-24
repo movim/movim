@@ -101,6 +101,8 @@ class Bootstrap {
         define('BASE_URI',      $this->getBaseUri());
         define('CACHE_URI',     $this->getBaseUri() . 'cache/');
         
+        define('SESSION_ID',    getenv('sid'));
+        
         define('THEMES_PATH',   DOCUMENT_ROOT . '/themes/');
         define('USERS_PATH',    DOCUMENT_ROOT . '/users/');
         define('APP_PATH',      DOCUMENT_ROOT . '/app/');
@@ -248,7 +250,8 @@ class Bootstrap {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        define('LOG_LEVEL', (int)$config->loglevel);
+        //define('LOG_LEVEL', (int)$config->loglevel);
+        define('LOG_LEVEL', 2);
     }
 
     private function loadModl() {
