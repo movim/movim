@@ -8,12 +8,15 @@
         placeholder="{$c->__('roster.search');}"/>
         
     <ul id="rosterlist" class="{$offline_shown}">
-        <li ng-repeat="(key, value) in contacts | groupBy: 'groupname'" >
+        <div ng-repeat="(key, value) in contacts | groupBy: 'groupname'" id="group{{key}}">
+            <!--TODO: add 
+                class="groupshown|"
+            -->
             <h1>{{key}}</h1>
                 <ul><li ng-repeat="contact in value">
                      {{contact.rostername}}
                 </li></ul>
-        </li>
+        </div>
         
     </ul>
 </div>
@@ -71,7 +74,7 @@
         </li>
 
         <li 
-            onclick="{$toggle_cache}"
+            onclick="showHideOffline()"
             title="{$c->t('Show/Hide')}">
             <a class="users" href="#"></a>
         </li>
