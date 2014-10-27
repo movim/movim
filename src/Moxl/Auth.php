@@ -34,20 +34,11 @@ class Auth {
         
         $response = base64_encode($p->getResponse($session->user, $session->password));
 
-        $xml = API::boshWrapper(
-                '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="PLAIN" client-uses-full-bind-result="true">'.
+        $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="PLAIN" client-uses-full-bind-result="true">'.
                     $response.
-                '</auth>', false);
+                '</auth>';
 
-        $r = new Request($xml);
-        $xml = $r->fire();
-
-        $xmle = new \SimpleXMLElement($xml['content']);
-
-        if(!$xmle->success)
-            return 'wrongaccount';
-        else
-            return 'OK';
+        API::request($xml);
     }
 
     static function mechanismANONYMOUS() {
@@ -73,66 +64,12 @@ class Auth {
     static function mechanismDIGESTMD5() {
         $session = \Sessionx::start();
         
-        $xml = API::boshWrapper(
-                '<auth 
+        $xml =  '<auth 
                     client-uses-full-bind-result="true"
                     xmlns="urn:ietf:params:xml:ns:xmpp-sasl" 
-                    mechanism="DIGEST-MD5"/>', false);
+                    mechanism="DIGEST-MD5"/>';
 
-        $r = new Request($xml);
-        $xml = $r->fire();
-
-        $xmle = new \SimpleXMLElement($xml['content']);
-        if($xmle->failure)
-            return 'errormechanism';
-
-        $decoded = base64_decode((string)$xmle->challenge);
-
-        if($decoded) {
-            $s = new SASL2;
-            $d = $s->factory('digest-md5');
-
-            $response = $d->getResponse(
-                $session->user,
-                $session->password,
-                $decoded,
-                $session->host,
-                'xmpp');
-            $response = base64_encode($response);
-        } else
-            return 'errorchallenge';
-
-        Utils::log("/// CHALLENGE");
-
-            $xml = API::boshWrapper(
-                    '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl">
-                        '.$response.'
-                    </response>', false);
-
-            $r = new Request($xml);
-            $xml = $r->fire();
-
-            $xmle = new \SimpleXMLElement($xml['content']);
-            if($xmle->failure)
-                return 'wrongaccount';
-
-        if($xmle->success)
-            return 'OK';
-
-        Utils::log("/// RESPONSE");
-
-            $xml = API::boshWrapper(
-                    '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl"/>', false);
-
-            $r = new Request($xml);
-            $xml = $r->fire();
-
-            $xmle = new \SimpleXMLElement($xml['content']);
-
-        if(!$xmle->success)
-            return 'failauth';
-        else
-            return 'OK';
+        API::request($xml);
     }
 
     static function mechanismCRAMMD5() {
@@ -187,38 +124,14 @@ class Auth {
 
             $response = base64_encode($fa->getResponse($session->user, $session->password));
 
-            $xml = API::boshWrapper(
-                    '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
+            $sess = \Session::start();
+            $sess->set('saslfa', $fa);
+
+            $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
                         '.$response.'
-                    </auth>');
+                    </auth>';
 
-            $r = new Request($xml);
-            $xml = $r->fire();
-
-            $xmle = new \SimpleXMLElement($xml['content']);
-            if($xmle->failure)
-                return 'errormechanism';
-
-            $challenge = base64_decode((string)$xmle->challenge);
-
-        Utils::log("/// SECOND MESSAGE - PROOF");
-
-            $response = base64_encode($fa->getResponse($session->user, $session->password, $challenge));
-            
-            $xml = API::boshWrapper(
-                    '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl">
-                        '.$response.'
-                    </response>', false);
-
-            $r = new Request($xml);
-            $xml = $r->fire();
-
-            $xmle = new \SimpleXMLElement($xml['content']);
-
-        if(!$xmle->success)
-            return 'failauth';
-        else
-            return 'OK';
+            API::request($xml);
     }
     
     static function restartRequest() {

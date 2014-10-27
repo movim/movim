@@ -35,9 +35,11 @@ class API {
 
         global $language;
 
+        $id = $session->id;
+
         return '
             <iq
-                id="'.$session->id.'"
+                id="'.$id.'"
                 from="'.$session->user.'@'.$session->host.'/'.$session->ressource.'"
                 xml:lang="'.$language.'"
                 xmlns="jabber:client"
@@ -212,33 +214,6 @@ class API {
     static function request($xml, $type = false)
     {
         self::$xml .= $xml;
-        /*$session = \Sessionx::start();
-
-        if($session->active == true) {
-            $sess = \Session::start(APP_NAME);
-            $cached = $sess->get('moxlcache');
-            
-            if(!empty($cached)) {
-                $r = self::cacheLoad($cached);
-                $r = self::cacheSplit($r);
-
-                Xec\Handler::handle($r);
-                $evt = new \Event();
-                $evt->runEvent('incomingemptybody', 'ping');
-                $evt->runEvent('connection', count($cached));
-            } else {
-                $xml = self::boshWrapper($xml, $type);
-
-                self::launch($xml, true);
-            }
-        } else {
-            Utils::log(
-                "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
-                ."Session unstarted, please login\n"
-                ."!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            header(':', true,'400');
-            exit;
-        }*/
     }
 
     /*
@@ -246,7 +221,7 @@ class API {
      */
     static function commit()
     {
-        return self::$xml;
+        return preg_replace("/[\t\r\n]/", '', trim(self::$xml));
     }
     
     /*
