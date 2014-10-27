@@ -116,8 +116,13 @@ class Behaviour implements MessageComponentInterface {
             // The connection is closed, remove it, as we can no longer send it messages
             if(array_key_exists('linker', $this->sessions[$conn->sid])
             && $conn->resourceId == $this->sessions[$conn->sid]['linker']->resourceId) {
+                //echo serialize(array_keys($this->sessions[$conn->sid]));
+                $obj = new \StdClass;
+                $obj->func = 'disconnected';
+
                 foreach($this->sessions[$conn->sid] as $key => $client) {
-                    $client->close();
+                    $client->send(json_encode($obj));
+                    echo "{$client->resourceId} disconnected to login\n";
                 }
                 echo "{$conn->resourceId} linker disconnected - session size {$session_size}\n";
                 unset($this->sessions[$conn->sid]);
