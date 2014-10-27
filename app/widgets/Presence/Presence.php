@@ -24,6 +24,7 @@ use Moxl\Xec\Action\Presence\DND;
 use Moxl\Xec\Action\Presence\XA;
 use Moxl\Xec\Action\Presence\Unavaiable;
 use Moxl\Stanza\Stream;
+use Moxl\Xec\Action\Storage\Get;
 
 class Presence extends WidgetBase
 {
@@ -31,6 +32,7 @@ class Presence extends WidgetBase
     function load()
     {
         $this->addcss('presence.css');
+        $this->addjs('presence.js');
         $this->registerEvent('mypresence', 'onMyPresence');
     }
     
@@ -83,14 +85,41 @@ class Presence extends WidgetBase
     
     function ajaxLogout()
     {
+        $session = \Sessionx::start();
         $p = new Unavaiable;
         $p->setType('terminate')
+          ->setRessource($session->ressource)
+          ->setTo($this->user->getLogin())
           ->request();
 
         Stream::end();
 
-        RPC::call('movim_redirect', Route::urlize('disconnect')); 
-        RPC::commit();
+        //RPC::call('movim_redirect', Route::urlize('disconnect')); 
+        //RPC::commit();
+    }
+
+    function ajaxConfigGet() {
+        $s = new Get;
+        $s->setXmlns('movim:prefs')
+          ->request();
+    }
+
+    // We get the server capabilities
+    function ajaxServerCapsGet()
+    {
+        $session = \Sessionx::start();
+        $c = new \Moxl\Xec\Action\Disco\Request;
+        $c->setTo($session->host)
+          ->request();
+    }
+
+        // We refresh the bookmarks
+    function ajaxBookmarksGet()
+    {
+        $session = \Sessionx::start();
+        $b = new \Moxl\Xec\Action\Bookmark\Get;
+        $b->setTo($session->user.'@'.$session->host)
+          ->request();
     }
     
     function preparePresence()

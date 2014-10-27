@@ -25,16 +25,18 @@ class Login extends WidgetBase
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
         $this->registerEvent('moxlerror', 'onMoxlError');
-        $this->registerEvent('start', 'onStart');
+        $this->registerEvent('start_handle', 'onStart');
     }
 
-    function onStart($session)
+    function onStart($packet)
     {
-        //$pd = new modl\PresenceDAO();
-        //$pd->clearPresence($element['login']);
-    
-        //RPC::call('movim_remember_session', $element['login']);
-        RPC::call('movim_reload', Route::urlize('root'));
+        $pd = new \Modl\PresenceDAO();
+        $pd->clearPresence($this->user->getLogin());
+
+        // http://xmpp.org/extensions/xep-0280.html
+        \Moxl\Stanza\Carbons::enable();
+
+        RPC::call('postLogin', $this->user->getLogin(), Route::urlize('root'));
     }
 
     function display()
@@ -317,15 +319,5 @@ class Login extends WidgetBase
 
         RPC::call('movim_fill', 'sessions', $sessionshtml->draw('_login_sessions', true));
         RPC::commit();
-    }
-
-    function ajaxGetConfig()
-    {
-        $s = new moxl\StorageGet();
-        $s->setXmlns('movim:prefs')
-          ->request();
-
-        $evt = new \Event();
-        $evt->runEvent('nostream');
     }
 }

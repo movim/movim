@@ -25,7 +25,11 @@ function movim_get_node(str) {
  */
 function movim_disconnect(error)
 {
-    window.location.replace(ERROR_URI + error);
+    if(error == null) {
+        window.location.replace(ERROR_URI);
+    } else {
+        window.location.replace(ERROR_URI + error);
+    }
 }
 
 /**

@@ -44,27 +44,11 @@ class Sessionx {
 
     protected function __construct()
     {
-        // Does the database exist?
-        /*if(self::$_sessionid == null) {
-            if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
-                self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
-            } else {
-                $this->regenerate();
-            }
-        }*/
-
         if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
             self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
         } else {
             self::$_sessionid = SESSION_ID;
         }
-    }
-
-    protected function regenerate()
-    {
-        // Generating the session cookie's hash.
-        //self::$_sessionid = \generateKey(64);
-        //setcookie('MOVIM_SESSION_ID', self::$_sessionid, time() + $this->_max_age);
     }
 
     public static function start()

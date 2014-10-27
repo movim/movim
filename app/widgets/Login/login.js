@@ -67,6 +67,15 @@ function backToChoose() {
     movim_add_class('#loginpage', 'choose');
 }
 
+/**
+ * @brief Post login requests
+ */
+function postLogin(params) {
+    rememberSession(params[0]);
+    localStorage.postStart = 1;
+    movim_reload(params[1]);
+}
+
 movim_add_onload(function()
 {
     if(localStorage.username != null)
