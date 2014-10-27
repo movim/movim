@@ -26,6 +26,7 @@ class Login extends WidgetBase
         $this->registerEvent('config', 'onConfig');
         $this->registerEvent('moxlerror', 'onMoxlError');
         $this->registerEvent('start_handle', 'onStart');
+        $this->registerEvent('saslfailure', 'onSASLFailure');
     }
 
     function onStart($packet)
@@ -98,6 +99,27 @@ class Login extends WidgetBase
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
+    }
+
+    function onSASLFailure($packet)
+    {
+        switch($packet->content) {
+            case 'not-authorized':
+                $title = $this->__('error.fail_auth');
+                $warning = $this->__('error.wrong_account');
+                break;
+            case 'invalid-mechanism':
+                $title = $this->__('error.fail_auth');
+                $warning = $this->__('error.mechanism');
+                break;
+            case 'malformed-request':
+                $title = $this->__('error.fail_auth');
+                $warning = $this->__('error.mechanism');
+                break;
+        }
+
+        RPC::call('websocket.unregister');
+        RPC::call('movim_desktop_notification_arr', $title, $warning);
     }
 
     private function displayWarning($warning, $htmlonly = false)
@@ -276,21 +298,7 @@ class Login extends WidgetBase
         $sess = Session::start(APP_NAME);
         $sess->set('registered_events', $wrapper->registerEvents());
 
-        // BOSH + XMPP connexion test
         \Moxl\Stanza\Stream::init($host);
-        /*$warning = \Moxl\API::login();
-        
-        if($warning != 'OK') {
-            RPC::call('movim_redirect', Route::urlize('login', $warning));
-            RPC::commit();
-        } else {
-            $pd = new modl\PresenceDAO();
-            $pd->clearPresence($element['login']);
-        
-            RPC::call('movim_remember_session', $element['login']);
-            RPC::call('movim_reload', Route::urlize('root'));
-            RPC::commit();
-        }*/
     }
 
     function ajaxGetRememberedSession($sessions)

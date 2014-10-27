@@ -6,6 +6,7 @@ use Ratchet\ConnectionInterface;
 
 class Behaviour implements MessageComponentInterface {
     protected $sessions = array(); // Store the sessions
+    protected $process;
 
     public function __construct() {
         echo "Movim daemon launched\n";
@@ -47,12 +48,18 @@ class Behaviour implements MessageComponentInterface {
                     $from->send(json_encode('session linked'));
                     
                     $loop = \React\EventLoop\Factory::create();
-                    $process = new \React\ChildProcess\Process('php linker.php', null, array('sid' => $from->sid));
-                    $process->start($loop);
+                    $this->process = new \React\ChildProcess\Process('php linker.php', null, array('sid' => $from->sid));
+                    $this->process->start($loop);
                 }
 
                 $session_size = count($this->sessions[$from->sid]);
                 echo "{$from->sid} : {$from->resourceId} registered - session size {$session_size}\n";
+                break;
+
+            case 'unregister':
+                if(array_key_exists('linker', $this->sessions[$from->sid])) {
+                    $this->process->terminate();
+                }
                 break;
 
             // A linker ask to be linked to a session
@@ -116,7 +123,6 @@ class Behaviour implements MessageComponentInterface {
             // The connection is closed, remove it, as we can no longer send it messages
             if(array_key_exists('linker', $this->sessions[$conn->sid])
             && $conn->resourceId == $this->sessions[$conn->sid]['linker']->resourceId) {
-                //echo serialize(array_keys($this->sessions[$conn->sid]));
                 $obj = new \StdClass;
                 $obj->func = 'disconnected';
 

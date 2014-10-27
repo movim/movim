@@ -10,6 +10,9 @@ WebSocket.prototype.link = function(body) {
 WebSocket.prototype.register = function() {
     this.send(JSON.stringify({'func' : 'register', 'sid' : localStorage.movimSession}));
 };
+WebSocket.prototype.unregister = function() {
+    this.send(JSON.stringify({'func' : 'unregister'}));
+};
 
 /**
  * @brief Definition of the MovimWebsocket object
@@ -94,6 +97,10 @@ MovimWebsocket.prototype.handle = function(json) {
             }
         }
     }
+}
+
+MovimWebsocket.prototype.unregister = function() {
+    this.connection.unregister();
 }
 
 // And we start it
