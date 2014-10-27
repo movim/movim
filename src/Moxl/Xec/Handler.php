@@ -31,12 +31,24 @@ use Moxl\Utils;
 
 class Handler {
 
+    static public function handleStanza($xml)
+    {
+        libxml_use_internal_errors(true);
+
+        $xml_string = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $xml);
+        $xml = simplexml_load_string($xml_string);
+
+        if($xml !== false) {
+            self::handle($xml);
+        }
+    }
+
     /**
      * Constructor of class Handler.
      *
      * @return void
      */
-    static public function handle($array)
+    static public function handle($child)
     {
         $_instances = 'empty';
 
@@ -44,98 +56,91 @@ class Handler {
         
         $db = \Modl\Modl::getInstance();
         $db->setUser($user->getLogin());
+    
+        $id = '';
+        $element = '';
         
-        foreach($array as $child) {
-            $id = '';
-            $element = '';
+        // Id verification in the returned stanza
+        if($child->getName() == 'iq') {
+            $id = (string)$child->attributes()->id;
+            $element = 'iq';
+        }
+
+        if($child->getName() == 'presence') {
+            $id = (string)$child->attributes()->id;
+            $element = 'presence';
+        }
+
+        if($child->getName() == 'message') {
+            $id = (string)$child->attributes()->id;
+            $element = 'message';
+        }
+
+        $sess = \Session::start();
+
+        if(
+            ($id != '' &&
+            $sess->get($id) == false) ||
+            $id == ''
+          ) {
+            Utils::log("Handler : Memory instance not found for {$id}");
+            Utils::log('Handler : Not an XMPP ACK');
+
+            Handler::handleNode($child);
             
-            // Id verification in the returned stanza
-            if($child->getName() == 'iq') {
-                $id = (string)$child->attributes()->id;
-                $element = 'iq';
+            foreach($child->children() as $s1) {
+                Handler::handleNode($s1, $child);  
+                foreach($s1->children() as $s2) 
+                    Handler::handleNode($s2, $child);  
             }
+        } elseif(
+            $id != '' &&
+            $sess->get($id) != false
+        ) {
+            // We search an existent instance
+            Utils::log("Handler : Memory instance found for {$id}");
+            $instance = $sess->get($id);
+            
+            $action = unserialize($instance->object);
 
-            if($child->getName() == 'presence') {
-                $id = (string)$child->attributes()->id;
-                $element = 'presence';
-            }
+            $error = false;
+            
+            // Handle specific query error
+            if($child->query->error)
+                $error = $child->query->error;
+            elseif($child->error)
+                $error = $child->error;
 
-            if($child->getName() == 'message') {
-                $id = (string)$child->attributes()->id;
-                $element = 'message';
-            }
+            // XMPP returned an error
+            if($error) {
+                $errors = $error->children();
 
-            if($id != '' && $_instances == 'empty') {
-                // We get the cached instances
-                $sess = \Session::start(APP_NAME);
-                $_instances = $sess->get('xecinstances');
-            }
+                $errorid = Handler::formatError($errors->getName());
 
-            if(
-                $id != '' && 
-                $_instances != false && 
-                array_key_exists($id, $_instances)
-              ) {
-                // We search an existent instance
-                if(!array_key_exists($id, $_instances))
-                    Utils::log('Handler : Memory instance not found');
-                else {
-                    $instance = $_instances[$id];
-                    
-                    $action = unserialize($instance['object']);
-        
-                    $error = false;
-                    
-                    // Handle specific query error
-                    if($child->query->error)
-                        $error = $child->query->error;
-                    elseif($child->error)
-                        $error = $child->error;
-        
-                    // XMPP returned an error
-                    if($error) {
-                        $errors = $error->children();
+                $message = false;
 
-                        $errorid = Handler::formatError($errors->getName());
+                if($error->text)
+                    $message = (string)$error->text;
 
-                        $message = false;
+                Utils::log('Handler : '.$id.' - '.$errorid);
 
-                        if($error->text)
-                            $message = (string)$error->text;
-
-                        Utils::log('Handler : '.$id.' - '.$errorid);
-
-                        /* If the action has defined a special handler
-                         * for this error
-                         */
-                        if(method_exists($action, $errorid)) {
-                            $action->method($errorid);
-                            $action->$errorid($errorid, $message);
-                        }
-                        // We also call a global error handler
-                        elseif(method_exists($action, 'error'))
-                            $action->error($errorid, $message);
-                    } else {
-                        // We launch the object handle
-                        $action->method('handle');
-                        $action->handle($child);
-                    }
-                    // We clean the object from the cache
-                    unset($_instances[$id]);
-                    
-                    $sess->set('xecinstances', $_instances);
+                /* If the action has defined a special handler
+                 * for this error
+                 */
+                if(method_exists($action, $errorid)) {
+                    $action->method($errorid);
+                    $action->$errorid($errorid, $message);
                 }
-            } else {                                
-                Utils::log('Handler : Not an XMPP ACK');
-
-                Handler::handleNode($child);
-                
-                foreach($child->children() as $s1) {
-                    Handler::handleNode($s1, $child);  
-                    foreach($s1->children() as $s2) 
-                        Handler::handleNode($s2, $child);  
-                }
+                // We also call a global error handler
+                elseif(method_exists($action, 'error'))
+                    $action->error($errorid, $message);
+            } else {
+                // We launch the object handle
+                $action->method('handle');
+                $action->handle($child);
             }
+            // We clean the object from the cache
+            $sess->remove($id);
         }
     }
     
@@ -193,7 +198,13 @@ class Handler {
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
-            '201fa54dd93e3403611830213f5f9fbc' => 'Carbons'
+            '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',
+            
+            'f728271d924a04b0355379b28c3183a1' => 'SASL',
+            'abae1d63bb4295636badcce1bee02290' => 'SASLChallenge',
+            '53936dd4e1d64e1eeec6dfc95c431964' => 'SASLSuccess',
+            'de175adc9063997df5b79817576ff659' => 'SASLFailure',
+            '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',
         );
 
     }

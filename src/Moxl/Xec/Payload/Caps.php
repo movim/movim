@@ -26,7 +26,7 @@
 
 namespace Moxl\Xec\Payload;
 
-//use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Disco\Request;
 
 class Caps extends Payload
 {
@@ -38,8 +38,10 @@ class Caps extends Payload
         $c = $cd->get($node);
 
         if(!$c) {
-            $this->pack(array($to, $node));
-            $this->deliver();
+            $d = new Request;
+            $d->setTo($to)
+              ->setNode($node)
+              ->request();
         }
     }
 }

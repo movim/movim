@@ -31,8 +31,8 @@ abstract class Action extends Payload
 {    
     final public function store() 
     {
-        $sess = \Session::start(APP_NAME);
-        $_instances = $sess->get('xecinstances');
+        $sess = \Session::start();
+        //$_instances = $sess->get('xecinstances');
         
         // Set a new Id for the Iq request
         $session = \Sessionx::start();
@@ -41,13 +41,14 @@ abstract class Action extends Payload
         $id = $session->id = \generateKey(6);
         
         // We serialize the current object
-        $_instances[$id]['type']   = get_class($this);
-        $_instances[$id]['object'] = serialize($this);
-        $_instances[$id]['time']   = time();
+        $obj = new \StdClass;
+        $obj->type   = get_class($this);
+        $obj->object = serialize($this);
+        $obj->time   = time();
         
-        $_instances = $this->clean($_instances);
+        //$_instances = $this->clean($_instances);
         
-        $sess->set('xecinstances', $_instances);
+        $sess->set($id, $obj);
     }
     
     /*
