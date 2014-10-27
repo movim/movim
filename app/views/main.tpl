@@ -3,7 +3,7 @@
 <?php $this->widget('Presence');?>
 <?php $this->widget('Chat');?>
 <?php $this->widget('VisioExt');?>
-    
+
 <div id="main">    
     <div id="left">
         <?php $this->widget('Profile');?>
@@ -12,7 +12,7 @@
     </div>
 
     <div id="center">
-        <?php $this->widget('InitAccount');?>
+        <?php //$this->widget('InitAccount');?>
         <?php $this->widget('Feed');?>
     </div>
 

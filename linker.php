@@ -39,7 +39,7 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
             \Moxl\API::clear();
 
             if(!empty($xml)) {
-                //$logger->notice("LOOP : Send to XMPP {$xml}");
+                $logger->notice("LOOP : Send to XMPP {$xml}");
             
                 $conn2->send(trim($xml));
             }
@@ -55,22 +55,19 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
         }
     });
     
-    $conn2->on('message', function($msg) use ($conn1, $logger, $conn2) {
-        //$logger->notice("XMPP : Got message from XMPP {$msg}");
+    $conn2->on('message', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("XMPP : Got message from XMPP {$msg}");
+
+        if($msg == '</stream:stream>') {
+            $conn2->close();
+            $conn1->close();
+            $loop->stop();
+        }
 
         \Moxl\API::clear();
         \RPC::clear();
 
         \Moxl\Xec\Handler::handleStanza($msg);
-
-        $obj = new \StdClass;
-        $obj->func = 'message';
-        $obj->body = \RPC::commit();
-        \RPC::clear();
-
-        if(!empty($obj->body)) {
-            $conn1->send(json_encode($obj));
-        }
 
         $xml = \Moxl\API::commit();
         \Moxl\API::clear();
@@ -80,14 +77,19 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
         
             $conn2->send(trim($xml));
         }
+
+        $obj = new \StdClass;
+        $obj->func = 'message';
+        $obj->body = \RPC::commit();
+        \RPC::clear();
+
+        if(!empty($obj->body)) {
+            $conn1->send(json_encode($obj));
+        }
     });
     
     $conn2->on('error', function($msg) use ($logger) {
         $logger->notice("XMPP : Got error {$msg}");
-    });
-    
-    $conn2->on('close', function($msg) use ($logger, $loop) {
-        $loop->stop();
     });
 
     $obj = new \StdClass;

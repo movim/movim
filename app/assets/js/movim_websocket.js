@@ -50,6 +50,10 @@ MovimWebsocket.prototype.init = function() {
             movim_onload();
         }
 
+        if(obj.func == 'disconnected') {
+            movim_disconnect();
+        }
+
         websocket.handle(e.data);
     };
 };

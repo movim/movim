@@ -22,55 +22,29 @@
 class Session
 {
     //protected $db;
-    protected static $instances = array();
+    protected static $instance;
     protected static $sid = null;
-    protected $container;
-    protected $max_age = 86400; // 24hours
+    protected $values = array();
 
     /**
      * Loads and immediately closes the session variables for the namespace
      * $name.
      */
-    protected function __construct($name)
+    protected function __construct()
     {
-        // Does the database exist?
-        /*if(self::$sid == null) {
-            if(isset($_COOKIE['PHPFASTSESSID'])) {
-                self::$sid = $_COOKIE['PHPFASTSESSID'];
-            } else {
-                $this->regenerate();
-            }
-        }*/
-        self::$sid = SESSION_ID;
 
-        $this->container = $name;
-    }
-
-    protected function regenerate()
-    {
-        // Generating the session cookie's hash.
-        $hash_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $hash = "";
-
-        for($i = 0; $i < 64; $i++) {
-            $r = mt_rand(0, strlen($hash_chars) - 1);
-            $hash.= $hash_chars[$r];
-        }
-
-        self::$sid = $hash;
-        setcookie('PHPFASTSESSID', self::$sid, time() + $this->max_age);
     }
 
     /**
      * Gets a session handle.
      */
-    public static function start($name)
+    public static function start($name = false)
     {
-        if(!isset(self::$instances[$name])) {
-            self::$instances[$name] = new self($name);
+        if(!isset(self::$instance)) {
+            self::$instance = new self();
         }
 
-        return self::$instances[$name];
+        return self::$instance;
     }
 
     /**
@@ -78,11 +52,8 @@ class Session
      */
     public function get($varname)
     {
-        $sd = new modl\SessionDAO();
-        $data = $sd->get(self::$sid, $this->container, $varname);
-
-        if($data) {
-            return unserialize(base64_decode($data->value));
+        if(array_key_exists($varname, $this->values)) {
+            return unserialize(base64_decode($this->values[$varname]));
         } else {
             return false;
         }
@@ -94,9 +65,7 @@ class Session
     public function set($varname, $value)
     {
         $value = base64_encode(serialize($value));
-        
-        $sd = new modl\SessionDAO();
-        $sd->set(self::$sid, $this->container, $varname, $value);
+        $this->values[$varname] = $value;
 
         return $value;
     }
@@ -106,17 +75,7 @@ class Session
      */
     public function remove($varname)
     {
-        $sd = new modl\SessionDAO();
-        $sd->delete(self::$sid, $this->container, $varname);
-    }
-    
-    /**
-     * Deletes all variables of the session.
-     */    
-    public function delete_container()
-    {
-        $sd = new modl\SessionDAO();
-        $sd->deleteContainer(self::$sid, $this->container);
+        unset($this->values[$varname]);
     }
 
     /**
@@ -124,18 +83,12 @@ class Session
      */
     public static function dispose($name)
     {
-        if(isset(self::$instances[$name])) {
-            self::$instances[$name]->delete_container();
-            unset(self::$instances[$name]);
+        if(isset(self::$instance)) {
+            self::$instance = null;
             return true;
         } else {
             return false;
         }
-    }
-    
-    public static function clear()
-    {
-    
     }
 }
 
