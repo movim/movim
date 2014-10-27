@@ -34,8 +34,6 @@ class SASLChallenge extends Payload
         $sess = \Session::start();
         $session = \Sessionx::start();
 
-        \movim_log(base64_decode((string)$stanza));
-
         $s = new SASL2;
 
         switch($sess->get('mecchoice')) {
@@ -49,6 +47,8 @@ class SASLChallenge extends Payload
                 
                 $xml = '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl">'.$response.'</response>';
                 \Moxl\API::request($xml);
+
+                break;
 
             case 'DIGESTMD5' :
                 $decoded = base64_decode((string)$stanza);
