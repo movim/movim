@@ -8,14 +8,25 @@
         placeholder="{$c->__('roster.search');}"/>
         
     <ul id="rosterlist" class="{$offline_shown}">
-        <div ng-repeat="(key, value) in contacts | groupBy: 'groupname'" id="group{{key}}">
-            <!--TODO: add 
-                class="groupshown|"
-            -->
+        <div ng-repeat="(key, value) in contacts | groupBy: 'groupname'" 
+            id="group{{key}}" 
+            ng-class="{groupshown: rosterCtrl.groupIsShown(key) == 'true'}">
             <h1>{{key}}</h1>
-                <ul><li ng-repeat="contact in value">
-                     {{contact.rostername}}
-                </li></ul>
+                <ul class="contact">
+                    <li ng-repeat="contact in value" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="{client {{contact.rosterview.client}}: contact.rosterview.client}">
+                        
+                        <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" >
+                        </div>
+                        <a href="{{contact.rosterview.friendpage}}">
+                            <img
+                                class="avatar"
+                                src="{{contact.rosterview.avatar}}"
+                                alt="avatar"
+                            />{{contact.rosterview.name}}
+                            <span class="ressource">{if="$value.status != ''"}{$value.status} -{/if} {$value.ressource}</span>
+                        </a>
+                    </li>
+                </ul>
         </div>
         
     </ul>

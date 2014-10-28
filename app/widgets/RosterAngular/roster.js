@@ -19,7 +19,32 @@
             $scope.groups = list;
             $scope.$apply();
         };
+        
+        this.postChatAction = function(c){
+            eval(c.rosterview.openchat);
+        };
+        
+        this.groupIsShown = function(grp){
+            if(typeof $scope.groups[grp] != "undefined"){
+                return $scope.groups[grp];
+            }
+            else return $scope.groups["ungrouped"];
+        };
+        
+        this.getJidStatusRessource = function(c){
+            lititle = c.jid;
+            if(c.status != '') lititle+= " - "+c.status;
+            lititle += " - "+c.ressource;
+            return lititle;
+        };
+        
+        this.getPresenceInactiveClient = function(c){
+            liclass = c.rosterview.presencetxt+" "+contact.rosterview.inactive;
+            if(c.client) liclass += " client "+c.client;
+            return liclass;
+        };
     });
+    
 })();
 
 function getContacts(tab){
