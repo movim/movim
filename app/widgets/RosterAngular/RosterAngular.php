@@ -31,10 +31,10 @@ class RosterAngular extends WidgetBase
         $this->addjs('angular-filters.js');
         $this->addjs('roster.js');
         $this->registerEvent('roster', 'onRoster');
-        /*$this->registerEvent('rosterupdateditem', 'onRoster');
+        $this->registerEvent('rosterupdateditem', 'onRoster');
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
-        $this->registerEvent('presence', 'onPresence');*/
+        /*$this->registerEvent('presence', 'onPresence');*/
     }
 
     function display()
@@ -223,7 +223,7 @@ class RosterAngular extends WidgetBase
                     $c->groupname = $this->__('roster.ungrouped');
                 
                 if(!isset($roster[$c->groupname])) {
-                    /*create new group in roster*/
+                    // create new group in roster
                     $roster[$c->groupname] = new stdClass;
                     $roster[$c->groupname]->contacts = array();
                     $roster[$c->groupname]->html = '';
@@ -243,16 +243,13 @@ class RosterAngular extends WidgetBase
                         $this->genCallAjax('ajaxToggleCache', "'group".$c->groupname."'");
                 }
 
-                if($c->jid == $currentjid) {
-                    array_push($currentarr, $c);
-                    $currenthtml = $this->prepareContact($currentarr, $capsarr);
-                } else {
-                    $currentarr = array();
-                    $currenthtml = '';
-                    array_push($currentarr, $c);
-                    $currenthtml = $this->prepareContact($currentarr, $capsarr);
+                if($c->jid != $currentjid && !empty($samejid)) {
+                    $currenthtml = $this->prepareContact($samejid, $capsarr);
                     $roster[$c->groupname]->html .= $currenthtml;
+                    
+                    $samejid = array();
                 }
+                array_push($samejid, $c);
 
                 $currentjid   = $c->jid;
             }
@@ -322,19 +319,118 @@ class RosterAngular extends WidgetBase
 
 /*=========*/
     function prepareRosterAngular(){
-            $contactdao = new \Modl\ContactDAO();
-            $contacts = $contactdao->getRoster();
-            
-            foreach($contacts as &$contact)
-                $contact = $contact->toArray();
+        //Contacts
+        $contactdao = new \Modl\ContactDAO();
+        $contacts = $contactdao->getRoster();
+        
+        $capsarr = $this->getCaps();
+        
+        if(isset($contacts)) {
+            foreach($contacts as &$c) {
+                if($c->groupname == '')
+                    $c->groupname = $this->__('roster.ungrouped');
                 
-            $rd = new \Modl\RosterLinkDAO();
-            $groups = $rd->getGroups();
-            $groups = array_flip($groups);
+                $ac = $c->toArray();
+                $this->prepareContactAngular($ac, $c, $capsarr);
+                $c = $ac;
+            }
+        }
+        $result['contacts'] = json_encode($contacts);
+        
+        //Groups
+        $rd = new \Modl\RosterLinkDAO();
+        $groups = $rd->getGroups();
+        if(!in_array("ungrouped"))$groups[] = "ungrouped";
+        $groups = array_flip($groups);
+        $result['groups'] = json_encode($groups);
+        
+        return $result;
+    }
+    
+    function prepareContactAngular(&$c, $oc, $caps){
+        $arr = array();
+        $jid = false;
+
+        // The global presence
+        $presence = false;
+        $name     = false;
+
+        $presencestxt = getPresencesTxt();
+        
+            // We add some basic information
+            //WUT ?? $c->rosterview             = $c->toArray();
+            $c['rosterview']   = array();
+            $c['rosterview']['avatar']   = $oc->getPhoto('s');
+            $c['rosterview']['name']     = $oc->getTrueName();
+            $c['rosterview']['friendpage']     = $this->route('friend', $oc->jid);
             
-            $result['contacts'] = json_encode($contacts);
-            $result['groups'] = json_encode($groups);
-            return $result;
+            //movim_log(serialize($c));
+
+            // Some data relative to the presence
+            if($oc->last != null && $oc->last > 60)
+                $c['rosterview']['inactive'] = 'inactive';
+            else
+                $c['rosterview']['inactive'] = '';
+
+            if($c->value && $c->value < 5) {
+                $c['rosterview']['presencetxt'] = $presencestxt[$oc->value];
+            } elseif($c->value == 6)
+                $c['rosterview']['presencetxt'] = 'server_error';
+            else
+                $c['rosterview']['presencetxt'] = 'offline';
+
+            if($presence == false) {
+                $presence = $c['rosterview']['presencetxt'];
+                $name     = strtolower($c['rosterview']['name']);
+            }
+
+            // An action to open the chat widget
+            $c['rosterview']['openchat']
+                = $this->genCallWidget("Chat","ajaxOpenTalk", "'".$oc->jid."'");
+
+            /*$jid = $c->jid;*/
+
+            $c['rosterview']['type']   = '';
+            $c['rosterview']['client'] = '';
+            $c['rosterview']['jingle'] = false;
+
+            // About the entity capability
+            if($caps && isset($caps[$oc->node.'#'.$oc->ver])) {
+                $cap  = $caps[$oc->node.'#'.$oc->ver];
+                $c['rosterview']['type'] = $cap->type;
+                
+                $client = $cap->name;
+                $client = explode(' ',$client);
+                $c['rosterview']['client'] = strtolower(preg_replace('/[^a-zA-Z0-9_ \-()\/%-&]/s', '', reset($client)));
+
+                // Jingle support
+                $features = $cap->features;
+                $features = unserialize($features);
+                if(array_search('urn:xmpp:jingle:1', $features) !== null
+                && array_search('urn:xmpp:jingle:apps:rtp:audio', $features) !== null
+                && array_search('urn:xmpp:jingle:apps:rtp:video', $features) !== null
+                && (  array_search('urn:xmpp:jingle:transports:ice-udp:0', $features)
+                   || array_search('urn:xmpp:jingle:transports:ice-udp:1', $features))
+                ){
+                    $c['rosterview']['jingle'] = true;
+                }
+            }
+
+            // Tune
+            $c['rosterview']['tune'] = false;
+            
+            if(($oc->tuneartist != null && $oc->tuneartist != '') ||
+               ($oc->tunetitle  != null && $oc->tunetitle  != ''))
+                $c['rosterview']['tune'] = true;;
+        
+
+        /*$contactview = $this->tpl();
+        $contactview->assign('jid',           $jid);
+        $contactview->assign('name',          $name);
+        $contactview->assign('presence',      $presence);
+        $contactview->assign('contact',       $arr);
+
+        return $contactview->draw('_roster_contact', true);*/
     }
 
 }
