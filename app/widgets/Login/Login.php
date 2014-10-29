@@ -90,6 +90,10 @@ class Login extends WidgetBase
         } else{
             $this->view->assign('whitelist_display', false);
         }
+
+        $user = new User();
+        $color = $user->getConfig('color');
+        $this->view->assign('color', $color);
     }
 
     function onMoxlError($error) {
@@ -103,18 +107,26 @@ class Login extends WidgetBase
 
     function onSASLFailure($packet)
     {
+        $title = $this->__('error.fail_auth');
+
         switch($packet->content) {
             case 'not-authorized':
-                $title = $this->__('error.fail_auth');
                 $warning = $this->__('error.wrong_account');
                 break;
             case 'invalid-mechanism':
-                $title = $this->__('error.fail_auth');
                 $warning = $this->__('error.mechanism');
                 break;
             case 'malformed-request':
-                $title = $this->__('error.fail_auth');
                 $warning = $this->__('error.mechanism');
+                break;
+            case 'bad-protocol':
+                $warning = $this->__('error.fail_auth');
+                break;
+            case 'bad-auth':
+                $warning = $this->__('error.wrong_account');
+                break;
+            default :
+                $warning = $this->__('error.fail_auth');
                 break;
         }
 

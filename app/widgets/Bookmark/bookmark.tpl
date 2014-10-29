@@ -6,12 +6,12 @@
 
 <!--<h2>{$c->t('Bookmarks')}</h2>-->
 
-<div id="bookmarks" class="paddedtop">
+<div id="bookmarks">
     {$preparebookmark}
 </div>
 
 <div class="padded">
-    <a class="button black alone"
+    <a class="button color orange alone"
        href="{$subscriptionconfig}"
        title="{$c->t('Configure')}">
         <i class="fa fa-gear"></i> 
@@ -21,7 +21,7 @@
        style="float: right;"
        title="{$c->t('Add a new URL')}"
        onclick="movim_toggle_display('#bookmarkurladd')"></a>-->
-    <a class="button black alone oppose" 
+    <a class="button color blue alone oppose" 
        title="{$c->t('Refresh')}"
        onclick="{$getbookmark}">
         <i class="fa fa-refresh"></i> 

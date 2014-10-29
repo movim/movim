@@ -18,16 +18,11 @@ nav {
     -webkit-animation: 200s infinite colorful;
 }
 
-nav .wrapper {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 .menu {
-    width: 100%;
-    margin: 0px auto;
-    list-style-type: none;
     height: 3em;
     overflow: hidden;
+    margin: 0 auto;
+    list-style-type: none;
 }
 
 .menu li {
@@ -35,6 +30,33 @@ nav .wrapper {
     float: left;
 }
 
+.menu li a, .menu li label {
+    padding: 1em;
+    line-height: 1em;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.menu li a.root {
+    width: 12rem;
+    color: transparent;
+    background: url(../img/logo.svg) no-repeat center center;
+    height: 3em;
+    padding: 0;
+    display: block;
+}
+
+.menu li a:not(.active):hover, .menu li label:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.menu li a.active {
+    opacity: 1;  
+}
 .menu li a, .menu li label {
     display: inline-block;
     line-height: 0;
@@ -48,30 +70,7 @@ nav .wrapper {
     background-repeat: no-repeat;
     background-size: 16px 16px;
     background-position: 1em center;
-}
-
-.menu li a.root, .menu li a.root.active {
-	width: 12rem;
-    color: transparent;
-    background-image: url(../img/logo.svg);
-    background-size: auto auto;
-    background-position: center center;
-    padding-left: 0;
-    padding-right: 0;
-
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.menu li a:hover, .menu li label:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
-
-.menu li a.active {
-    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.5;
 }
 
 .menu li .discover,
@@ -140,3 +139,4 @@ ul li input[type=checkbox]:checked ~ .tabbed {
         z-index: 3;
     }
 }
+

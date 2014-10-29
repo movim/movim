@@ -1,7 +1,3 @@
-#main {
-    
-}
-
 #center {
     position: relative;
 }
@@ -11,12 +7,20 @@
     color: white;
 }
 
+#navtabs,
+#navtabs li.on a {
+    border-color: #333;
+}
+
 #navtabs li.on {
-    background-color: #111;
 }
 
 #navtabs li.on a {
     color: white;
+}
+
+#navtabs li:hover a {
+    border-color: #353535;
 }
 
 #media .breadcrumb {
@@ -59,11 +63,7 @@
     color: #DDD;
 }
 
-#navtabs li:hover {
-    background-color: #111;
-}
-
-#main, #center {
+#center {
     background-color: #222;
     color: white;
 }

@@ -4,11 +4,13 @@
  * This file define the websocket behaviour and handle its connection
  */ 
 
-WebSocket.prototype.link = function(body) {
-    this.send(JSON.stringify({'func' : 'link'}));
-};
 WebSocket.prototype.register = function() {
-    this.send(JSON.stringify({'func' : 'register', 'sid' : localStorage.movimSession}));
+    this.send(JSON.stringify(
+        {
+            'func'      : 'register',
+            'sid'       : localStorage.movimSession,
+            'baseuri'   : BASE_URI
+        }));
 };
 WebSocket.prototype.unregister = function() {
     this.send(JSON.stringify({'func' : 'unregister'}));
