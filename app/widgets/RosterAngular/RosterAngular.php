@@ -372,7 +372,7 @@ class RosterAngular extends WidgetBase
             else
                 $c['rosterview']['inactive'] = '';
 
-            if($c->value && $c->value < 5) {
+            if($oc->value && $oc->value < 5) {
                 $c['rosterview']['presencetxt'] = $presencestxt[$oc->value];
             } elseif($c->value == 6)
                 $c['rosterview']['presencetxt'] = 'server_error';
