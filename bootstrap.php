@@ -47,6 +47,7 @@ class Bootstrap {
 
         if($loadmodlsuccess) {
             $this->startingSession();
+            $this->loadLanguage();
         } else {
             throw new Exception('Error loading Modl');
         }
@@ -149,8 +150,13 @@ class Bootstrap {
 
         $uri = str_replace('jajax.php', '', $uri);
 
-        return 'http://localhost/0.9/';
-        //return $uri;
+        if(getenv('baseuri') != null
+        && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)
+        && sizeof(getenv('baseuri')) < 32) {
+            return getenv('baseuri');
+        } else {
+            return $uri;
+        }
     }
     
     private function loadSystem() {
@@ -201,6 +207,32 @@ class Bootstrap {
 
         require_once(APP_PATH . "widgets/WidgetCommon/WidgetCommon.php");
         require_once(APP_PATH . "widgets/Notification/Notification.php");
+    }
+
+    /**
+     * Loads up the language, either from the User or default.
+     */
+    function loadLanguage() {
+        $user = new User();
+
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        
+        if($user->isLogged()) {
+            $lang = $user->getConfig('language');
+            if(isset($lang)) {
+                loadLanguage($lang);
+            } else {
+                // Load default language.
+                loadLanguage($config->locale);
+            }
+        }
+        else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            loadLanguageAuto();
+        }
+        else {
+            loadLanguage($config->locale);
+        }
     }
     
     private function setLogs() {

@@ -42,7 +42,7 @@
         if(isset($color)) {
             echo '
             <style type="text/css">
-                body, nav {
+                nav {
                     background-color: #'.$color.';
                     animation: none;
                     -webkit-animation: none;

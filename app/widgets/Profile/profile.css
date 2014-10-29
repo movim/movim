@@ -1,47 +1,41 @@
 #profile_widget {
-    background-color: rgba(20, 20, 20, 0.5);
-    line-height: 1.5em;
-}
-
-#profile_widget h1 {
-    color: white;
-    line-height: 1.5em;
-}
-
-#profile_widget a.avatar {
+    position: relative;
     width: 100%;
-    padding-bottom: 100%;
-    display: block;
-    background-size: 100%;
+    border-bottom: 1px solid #D4D4D4;
 }
 
-#profile_widget .textbubble {
-    margin-top: 1em;
-    background-color: rgba(20, 20, 20, 0.7);
-    padding: 1em;
+#profile_widget .card {
+    padding: 1em 0.5em;
+    box-sizing: border-box;
 }
 
-#profile_widget .textbubble textarea {
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-bottom: 1px solid #333;
-    font-size: 0.9em;
-    width: 100%;
-    resize: none;
-    color: white;
-    text-align: center;
-    padding: 0px;
+#profile_widget .card img {
+    width: 3em;
+    border-radius: 2em;
+    float: left;
+    margin-right: 0.75em;
 }
 
-#profile_widget .textbubble textarea:hover {
-    border-color: white;
+#profile_widget .card h1 {
+    line-height: 1.5em;
+    color: #242424;
+    margin-top: -0.2em;
+    font-size: 1.2em;
 }
 
-#profile_widget textarea#status {
-    overflow: hidden;
+#profile_widget .card i {
+    float: right;
+    font-size: 1.2em;
+    margin-top: -1.2em;
+    opacity: 0.5;
+}
+
+#profile_widget .card i:hover {
+    opacity: 1;
 }
 
 #profile_widget .not_yet {
     padding: 1em;
     text-align: center;
 }
+

@@ -3,35 +3,37 @@
     margin: 0px;
     padding: 0px;
     text-align: center;
+    border-bottom: 1px solid #DCDCDC;
+    overflow: hidden;
+    background-color: white;
 }
 
 #navtabs li {
     display: inline-block;
     cursor: pointer;
 
-    padding: 0em 2em;
     white-space: nowrap;
+    font-weight: bold;
+
+    padding: 0em 1em;
 
     transition: background 0.5s;
 }
-#navtabs li a{
+#navtabs li a {
     display: block; 
     line-height: 3em;
+    padding: 0em 1em;
     width:100%;
-    color: white;
     text-decoration: none;
+    color: #888;
 }
 
-#navtabs li:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-#navtabs li.on {
-    background-color: white;
+#navtabs li:hover a {
+    border-bottom: 2px solid #EEE;
 }
 
 #navtabs li.on a {
-    color: #445157;    
+    border-bottom: 2px solid #DCDCDC;
 }
 
 .tabelem{
