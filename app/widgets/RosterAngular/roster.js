@@ -24,11 +24,23 @@
             eval(c.rosterview.openchat);
         };
         
+        this.postJingleAction = function(c){
+            Popup.close(); 
+            Popup.open(c.jid+"/"+c.ressource);
+        };
+        
         this.groupIsShown = function(grp){
             if(typeof $scope.groups[grp] != "undefined"){
                 return $scope.groups[grp];
             }
             else return $scope.groups["ungrouped"];
+        };
+        
+        this.getContactClient = function(c){
+            liclass = "";
+            if(c.rosterview.client)
+                liclass = "client "+c.rosterview.client;
+            return liclass;
         };
         
         this.getJidStatusRessource = function(c){
