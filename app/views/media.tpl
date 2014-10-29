@@ -7,8 +7,8 @@
 <div id="main">
     <div id="left">
         <?php $this->widget('Profile');?>
-        <?php $this->widget('Bookmark');?>
         <?php $this->widget('Notifs');?>
+        <?php $this->widget('Bookmark');?>
     </div>
 
     <div id="center">

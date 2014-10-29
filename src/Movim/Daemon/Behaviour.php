@@ -48,7 +48,14 @@ class Behaviour implements MessageComponentInterface {
                     $from->send(json_encode('session linked'));
                     
                     $loop = \React\EventLoop\Factory::create();
-                    $this->process = new \React\ChildProcess\Process('php linker.php', null, array('sid' => $from->sid));
+                    $this->process = new \React\ChildProcess\Process(
+                                            'php linker.php',
+                                            null,
+                                            array(
+                                                'sid'       => $from->sid,
+                                                'baseuri'   => $msg->baseuri
+                                            )
+                                        );
                     $this->process->start($loop);
                 }
 

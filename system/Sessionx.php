@@ -147,8 +147,7 @@ class Sessionx {
                         'user',
                         'config',
                         'password',
-                        'start',
-                        'ressource')
+                        'start')
                     )
             ) {
                 $key = '_'.$key;

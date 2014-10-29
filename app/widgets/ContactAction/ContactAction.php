@@ -91,7 +91,7 @@ class ContactAction extends WidgetCommon
             
             $html .='
             <a
-                class="button black"
+                class="button color black"
                 id="friendremoveask"
                 onclick="
                     document.querySelector(\'#friendremoveyes\').style.display = \'block\';
