@@ -31,9 +31,28 @@ class Notification extends WidgetCommon
     static function appendNotification($message, $type = 'info')
     {
         $id = md5($message.$type);
+
+        switch($type) {
+            case 'success':
+                $icon = 'fa-check-circle';
+                break;
+            case 'info':
+                $icon = 'fa-info-circle';
+                break;
+            case 'warning':
+                $icon = 'fa-warning';
+                break;
+            case 'error':
+                $icon = 'fa-times-circle';
+                break;
+            default:
+                $icon = 'fa-info-circle';
+                break;
+        }
+        
         $html = '
-            <div class="notif notificationAnim '.$type.'" id="'.$id.'">'.
-                $message.'
+            <div class="notif notificationAnim '.$type.'" id="'.$id.'">
+                <i class="fa '.$icon.'"></i> '.$message.'
             </div>';
 
         RPC::call('removeDiff', 'notification_widget', $html, $id);

@@ -29,6 +29,8 @@
 
         $this->addCss('css/template.css');
 
+        $this->widget('System');
+
         $this->scripts();
 
         $this->addCss('css/mobile.css');
@@ -58,7 +60,6 @@
             </style>';
         }
     ?>
-    <?php $this->widget('System');?>
   </head>
     <body>
         <noscript>

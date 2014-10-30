@@ -140,7 +140,7 @@ class TplPageBuilder
                     echo ' on_desktop ';
                 }
                 echo '"';
-                echo "><span class=\"mobile\">".$link['label'] . "</span></a></li>\n";
+                echo "><span class=\"on_desktop\">".$link['label'] . "</span></a></li>\n";
             } else {
                 echo $link['html'];
             }

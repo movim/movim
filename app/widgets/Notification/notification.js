@@ -1,19 +1,15 @@
-function removeDiff(params) {
-    if(params.length < 2) {
-        return;
-    }
-    
+function removeDiff(id, html, id2) {    
     var wrapper= document.createElement('div');
-    wrapper.innerHTML = params[1];
+    wrapper.innerHTML = html;
     var nodes = wrapper.childNodes;
 
-    target = document.getElementById(params[0]);
+    target = document.getElementById(id);
     if(target) {
         for(i = 0; i < nodes.length; i++) {
             var n = nodes[i];
 
             // The notification is already here ?
-            if(document.getElementById(params[2]) == null) {
+            if(document.getElementById(id2) == null) {
                 target.appendChild(n);
                 setTimeout(function() {
                     n.parentNode.removeChild(n);

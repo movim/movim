@@ -54,14 +54,16 @@ class Wall extends WidgetCommon
     
     function onStream($payload) {
         $html = $this->prepareFeed(-1, $payload['from']);
-
-        RPC::call('movim_fill', stringToUri($payload['from'].$payload['node']), $html);
+        if($html != '') {
+            RPC::call('movim_fill', stringToUri($payload['from'].$payload['node']), $html);
+        }
+        RPC::commit();
     }
 
     function prepareFeed($start, $from = false) {
         if(!$from && isset($_GET['f'])) {
             $from = $_GET['f'];
-        } else {
+        } elseif(!$from) {
             return '';
         }
         

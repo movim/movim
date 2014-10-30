@@ -52,13 +52,9 @@ function movim_title_inc() {
 	movim_show_cpt();
 }
 
-function movim_posts_unread(params) {
-    posts_cpt = params[0];
+function movim_posts_unread(cpt) {
+    posts_cpt = cpt;
     movim_show_cpt();
-}
-
-function movim_desktop_notification_arr(arr) {
-    movim_desktop_notification(arr[0], arr[1], arr[2]);
 }
 
 function movim_desktop_notification(title, body, image) {
@@ -70,8 +66,8 @@ function movim_desktop_notification(title, body, image) {
 /**
  * TODO : remove this function
  */
-function movim_change_class(params) {
-    var node = document.getElementById(params[0]);
+function movim_change_class(element, classname, title) {
+    var node = document.getElementById(element);
     var tmp;
     for (var i = 0; i < node.childNodes.length; i++) {
         tmp=node.childNodes[i];
@@ -82,8 +78,8 @@ function movim_change_class(params) {
         }
     }      
 
-    privacy.className = params[1];
-    privacy.title = params[2];
+    privacy.className = classname;
+    privacy.title = title;
 }
 
 /**

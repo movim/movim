@@ -1,6 +1,6 @@
 function scrollAllTalks() {
     var mes = document.querySelectorAll('.messages');
-    for (var i=0; i<mes.length; i++){
+    for (var i = 0; i<mes.length; i++){
         // We add 200px to prevent smiley loading
         mes.item(i).scrollTop = mes.item(i).scrollHeight + 200;
     }
@@ -66,10 +66,10 @@ function showPaused(jid) {
     paused.style.display = 'block';
 }
 
-function notify(params) {
+function notify(title, body, image) {
     if(document_focus == false) {
         movim_title_inc();
-        movim_desktop_notification(params[0], params[1], params[2]);
+        movim_desktop_notification(title, body, image);
     }
 
 }

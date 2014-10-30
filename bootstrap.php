@@ -99,6 +99,7 @@ class Bootstrap {
         define('APP_TITLE',     'Movim');
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
+        define('BASE_HOST',     $_SERVER['HTTP_HOST']);
         define('BASE_URI',      $this->getBaseUri());
         define('CACHE_URI',     $this->getBaseUri() . 'cache/');
         
@@ -147,8 +148,6 @@ class Bootstrap {
         } elseif(isset($_SERVER['HTTP_HOST'])) {
             $uri .= str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
         }
-
-        $uri = str_replace('jajax.php', '', $uri);
 
         if(getenv('baseuri') != null
         && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)
