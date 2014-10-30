@@ -34,7 +34,7 @@ class Auth {
         
         $response = base64_encode($p->getResponse($session->user, $session->password));
 
-        $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="PLAIN" client-uses-full-bind-result="true">'.
+        $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="PLAIN">'.
                     $response.
                 '</auth>';
 
@@ -42,28 +42,17 @@ class Auth {
     }
 
     static function mechanismANONYMOUS() {
+        $session = \Sessionx::start();
+        
         $s = new SASL2;
         $fa = $s->factory('ANONYMOUS');
 
-        $session = \Sessionx::start();
+        $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="ANONYMOUS"/>';
 
-        $xml = API::boshWrapper(
-                '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="ANONYMOUS"/>', false);
-
-        $r = new Request($xml);
-        $xml = $r->fire();
-
-        $xmle = new \SimpleXMLElement($xml['content']);
-
-        if(!$xmle->success)
-            return 'failauth';
-        else
-            return 'OK';
+        API::request($xml);
     }
 
     static function mechanismDIGESTMD5() {
-        $session = \Sessionx::start();
-        
         $xml =  '<auth 
                     client-uses-full-bind-result="true"
                     xmlns="urn:ietf:params:xml:ns:xmpp-sasl" 
@@ -73,111 +62,31 @@ class Auth {
     }
 
     static function mechanismCRAMMD5() {
-            $xml = API::boshWrapper(
-                    '<auth 
-                        client-uses-full-bind-result="true"
-                        xmlns="urn:ietf:params:xml:ns:xmpp-sasl" 
-                        mechanism="CRAM-MD5"/>', false);
+        $xml =  '<auth 
+                    client-uses-full-bind-result="true"
+                    xmlns="urn:ietf:params:xml:ns:xmpp-sasl" 
+                    mechanism="CRAM-MD5"/>';
 
-            $r = new Request($xml);
-            $xml = $r->fire();
-
-            $xmle = new \SimpleXMLElement($xml['content']);
-            if($xmle->failure)
-                return 'errormechanism';
-
-            $decoded = base64_decode((string)$xmle->challenge);
-
-            if($decoded) {
-                $s = new SASL2;
-                $c = $s->factory('cram-md5');
-
-                $session = \Sessionx::start();
-                $response = $c->getResponse($session->user, $session->pass, $decoded);
-                $response = base64_encode($response);
-            } else
-                return 'errorchallenge';
-
-        Utils::log("/// CHALLENGE");
-
-            $xml = API::boshWrapper(
-                    '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl">'.$response.'</response>', false);
-
-            $r = new Request($xml);
-            $xml = $r->fire();
-
-            $xmle = new \SimpleXMLElement($xml['content']);
-
-        if(!$xmle->success)
-            return 'failauth';
-        else
-            return 'OK';
+        API::request($xml);
     }
 
     static function mechanismSCRAMSHA1() {
-            $s = new SASL2;
-            $fa = $s->factory('SCRAM-SHA1');
+        $s = new SASL2;
+        $fa = $s->factory('SCRAM-SHA1');
 
-            $session = \Sessionx::start();
+        $session = \Sessionx::start();
 
         Utils::log("/// INITIAL MESSAGE");
 
-            $response = base64_encode($fa->getResponse($session->user, $session->password));
+        $response = base64_encode($fa->getResponse($session->user, $session->password));
 
-            $sess = \Session::start();
-            $sess->set('saslfa', $fa);
+        $sess = \Session::start();
+        $sess->set('saslfa', $fa);
 
-            $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
-                        '.$response.'
-                    </auth>';
+        $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
+                    '.$response.'
+                </auth>';
 
-            API::request($xml);
+        API::request($xml);
     }
-    
-    static function restartRequest() {
-        $session = \Sessionx::start();
-        
-        $xml =
-            '<body
-                rid="'.$session->rid.'"
-                sid="'.$session->sid.'"
-                to="'.$session->host.'"
-                xml:lang="en"
-                xmpp:restart="true"
-                xmlns="http://jabber.org/protocol/httpbind"
-                xmlns:xmpp="urn:xmpp:xbosh"/>';
-
-        $r = new Request($xml);
-        $xml = $r->fire();
-
-        return $xml;
-    }
-
-    static function ressourceRequest() {
-        $session = \Sessionx::start();
-        
-        $xml = API::boshWrapper(
-            '<iq type="set" id="'.$session->id.'">
-                <bind xmlns="urn:ietf:params:xml:ns:xmpp-bind">
-                    <resource>'.$session->ressource.'</resource>
-                </bind>
-            </iq>', false, true);
-
-        $r = new Request($xml);
-        $xml = $r->fire();
-
-        $xmle = new \SimpleXMLElement($xml['content']);
-
-        if($xmle->head || (string)$xmle->attributes()->type == 'terminate')
-            return 'failauth';
-        elseif($xmle->iq->bind->jid) {
-            list($jid, $ressource) = explode('/', (string)$xmle->iq->bind->jid);
-            list($session->username, $session->host) = explode('@',$jid);
-            if($ressource)
-                $session->ressource = $ressource;
-        }
-
-        return 'OK';
-    }
-
 }

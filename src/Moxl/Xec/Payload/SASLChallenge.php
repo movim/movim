@@ -77,6 +77,25 @@ class SASLChallenge extends Payload
                 \Moxl\API::request($xml);
 
                 break;
+
+            case 'CRAMMD5' :
+                $decoded = base64_decode((string)$stanza);
+
+                $s = new SASL2;
+                $c = $s->factory('cram-md5');
+
+                $session = \Sessionx::start();
+                
+                $response = $c->getResponse($session->user, $session->pass, $decoded);
+                $response = base64_encode($response);
+
+                \Moxl\Utils::log("/// CHALLENGE");
+
+                $xml = '<response xmlns="urn:ietf:params:xml:ns:xmpp-sasl">'.$response.'</response>';
+
+                \Moxl\API::request($xml);
+
+                break;
         }
     }
 }

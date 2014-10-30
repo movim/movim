@@ -45,8 +45,9 @@ class Bind extends Action
     }
     
     public function handle($stanza, $parent = false) {
-        //$session = \Sessionx::start();
-        list($jid, $ressource) = explode('/', (string)$stanza->jid);
+        $session = \Sessionx::start();
+        list($jid, $ressource) = explode('/', (string)$stanza->bind->jid);
+
         list($session->username, $session->host) = explode('@',$jid);
         if($ressource)
             $session->ressource = $ressource;

@@ -37,7 +37,7 @@ class Caps extends Payload
         $cd = new \modl\CapsDAO();
         $c = $cd->get($node);
 
-        if(!$c) {
+        if(!$c && $parent->getName() != 'streamfeatures') {
             $d = new Request;
             $d->setTo($to)
               ->setNode($node)
