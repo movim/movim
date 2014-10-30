@@ -70,10 +70,10 @@ function backToChoose() {
 /**
  * @brief Post login requests
  */
-function postLogin(params) {
-    rememberSession(params[0]);
+function postLogin(jid, url) {
+    rememberSession(jid);
     localStorage.postStart = 1;
-    movim_reload(params[1]);
+    movim_reload(url);
 }
 
 movim_add_onload(function()

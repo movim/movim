@@ -11,45 +11,33 @@
  */
 
 // movim_append(div, text)
-function movim_append(params)
+function movim_append(id, html)
 {
-    if(params.length < 2) {
-        return;
-    }
-
-    target = document.getElementById(params[0]);
+    target = document.getElementById(id);
     if(target) {
-        target.insertAdjacentHTML('beforeend', params[1]);
+        target.insertAdjacentHTML('beforeend', html);
     }
 }
 // movim_prepend(div, text)
-function movim_prepend(params)
+function movim_prepend(id, html)
 {
-    if(params.length < 2) {
-        return;
-    }
-
-    target = document.getElementById(params[0]);
+    target = document.getElementById(id);
     if(target) {
-        target.insertAdjacentHTML('afterbegin', params[1]);
+        target.insertAdjacentHTML('afterbegin', html);
     }
 }
 // movim_fill(div, text)
-function movim_fill(params)
+function movim_fill(id, html)
 {
-    if(params.length < 2) {
-        return;
-    }
-
-    target = document.getElementById(params[0]);
+    target = document.getElementById(id);
     if(target) {
-        target.innerHTML = params[1];
+        target.innerHTML = html;
     }
 }
 // movim_delete(div)
-function movim_delete(params)
+function movim_delete(id)
 {
-    target = document.getElementById(params[0]);
+    target = document.getElementById(id);
     if(target)
         target.parentNode.removeChild(target);
 }

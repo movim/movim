@@ -25,7 +25,7 @@ function MovimWebsocket() {
 }
 
 MovimWebsocket.prototype.init = function() {
-    this.connection = new WebSocket('ws://localhost:8080');
+    this.connection = new WebSocket('ws://' + BASE_HOST + ':8080');
 
     this.connection.onopen = function(e) {
         console.log("Connection established!");
@@ -41,7 +41,7 @@ MovimWebsocket.prototype.init = function() {
     };
 
     this.connection.onmessage = function(e) {
-        console.log(e.data);
+        //console.log(e.data);
         var obj = JSON.parse(e.data);
 
         if(obj.id) {
@@ -78,23 +78,17 @@ MovimWebsocket.prototype.send = function(widget, func, params) {
 };
 
 MovimWebsocket.prototype.handle = function(json) {
-    var funcalls = eval(json);
+    var funcalls = JSON.parse(json);
     
     if(funcalls != null) {
         for(h = 0; h < funcalls.length; h++) {
             var funcall = funcalls[h];
 
-            if(funcall.func != null && eval("typeof " + funcall.func) == "function") {
-                var funcs = funcall.func.split('.');
-                
+            if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
                 try {
-                    if(funcs.length == 1)
-                        window[funcs[0]](funcall.params);
-                    else if(funcs.length == 2)
-                        window[funcs[0]][funcs[1]](funcall.params);
-                }
-                catch(err) {
-                    console.log("Error caught: " + err.toString() + " - " +funcall.func);
+                    window[funcall.func].apply(null, funcall.params);
+                } catch(err) {
+                    console.log("Error caught: " + err.toString() + " - " + funcall.func + ":" + JSON.stringify(funcall.params));
                 }
             }
         }

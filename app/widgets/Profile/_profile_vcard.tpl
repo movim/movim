@@ -7,6 +7,7 @@
         <a href="{$c->route('profile')}">
             <i class="fa fa-pencil"></i>
         </a>
+        <div class="clear"></div>
     </div>
 {else}
     <div class="not_yet">

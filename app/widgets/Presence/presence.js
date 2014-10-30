@@ -17,11 +17,11 @@ function setPresenceActions() {
     };
 
     document.querySelector('#presence_widget #tab').onclick = function(event) {
-        movim_toggle_display('#presence_widget #list');
+        movim_toggle_class('#presence_widget', 'unfolded');
     };
 
     document.querySelector('#presence_widget #list .tab').onclick = function(event) {
-        movim_toggle_display('#presence_widget #list');
+        movim_toggle_class('#presence_widget', 'unfolded');
     };
 }
 

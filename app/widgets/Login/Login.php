@@ -131,7 +131,7 @@ class Login extends WidgetBase
         }
 
         RPC::call('websocket.unregister');
-        RPC::call('movim_desktop_notification_arr', $title, $warning);
+        RPC::call('movim_desktop_notification', $title, $warning);
     }
 
     private function displayWarning($warning, $htmlonly = false)
