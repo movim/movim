@@ -5,8 +5,8 @@
         <img class="avatar" src="{$contact->getPhoto('s')}"/>
         <span class="bubble"></span>
         <span class="arrow"><i class="fa fa-caret-down"></i></span>
-        <span class="name">{$contact->getTrueName()}</span>
-        <span class="status">{$p->status}</span>
+        <span class="name on_desktop">{$contact->getTrueName()}</span><br />
+        <span class="status on_desktop">{$p->status}</span>
     </div>
 {else}
     <div 
@@ -14,7 +14,8 @@
         class="{$txts[1]}">
         <img class="avatar" src="{$contact->getPhoto('s')}"/>
         <span class="arrow"><i class="fa fa-caret-down"></i></span>
-        <span class="name">{$contact->getTrueName()}</span>
+        <span class="name on_desktop">{$contact->getTrueName()}</span><br />
+        <span class="status on_desktop"></span>
     </div>
 {/if}
 
