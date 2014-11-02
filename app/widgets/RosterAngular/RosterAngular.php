@@ -295,16 +295,6 @@ class RosterAngular extends WidgetBase
     }*/
     
     /**
-     * @brief Show/Hide the Roster
-     */
-    function ajaxShowHideRoster() {
-        $bool = (Cache::c('rostershow') == true) ? false : true;
-        Cache::c('rostershow', $bool);
-        RPC::call('showHideRoster', $bool);
-        RPC::commit();
-    }
-    
-    /**
      *  @brief Search for a contact to add
      */
     function ajaxSearchContact($jid) {
@@ -351,86 +341,68 @@ class RosterAngular extends WidgetBase
         $arr = array();
         $jid = false;
 
-        // The global presence
-        $presence = false;
-        $name     = false;
-
         $presencestxt = getPresencesTxt();
         
-            // We add some basic information
-            //WUT ?? $c->rosterview             = $c->toArray();
-            $c['rosterview']   = array();
-            $c['rosterview']['avatar']   = $oc->getPhoto('s');
-            $c['rosterview']['name']     = $oc->getTrueName();
-            $c['rosterview']['friendpage']     = $this->route('friend', $oc->jid);
-            
-            //movim_log(serialize($c));
+        // We add some basic information
+        $c['rosterview']   = array();
+        $c['rosterview']['avatar']   = $oc->getPhoto('s');
+        $c['rosterview']['name']     = $oc->getTrueName();
+        $c['rosterview']['friendpage']     = $this->route('friend', $oc->jid);
 
-            // Some data relative to the presence
-            if($oc->last != null && $oc->last > 60)
-                $c['rosterview']['inactive'] = 'inactive';
-            else
-                $c['rosterview']['inactive'] = '';
+        // Some data relative to the presence
+        if($oc->last != null && $oc->last > 60)
+            $c['rosterview']['inactive'] = 'inactive';
+        else
+            $c['rosterview']['inactive'] = '';
 
-            if($oc->value && $oc->value < 5) {
-                $c['rosterview']['presencetxt'] = $presencestxt[$oc->value];
-            } elseif($c->value == 6)
+        if($oc->value && $oc->value != 5){
+            if($oc->value && $oc->value == 6) {
                 $c['rosterview']['presencetxt'] = 'server_error';
-            else
-                $c['rosterview']['presencetxt'] = 'offline';
-
-            if($presence == false) {
-                $presence = $c['rosterview']['presencetxt'];
-                $name     = strtolower($c['rosterview']['name']);
+            } else {
+                $c['rosterview']['presencetxt'] = $presencestxt[$oc->value];
             }
+            $c['value'] = intval($c['value']);
+        } else {
+            $c['rosterview']['presencetxt'] = 'offline';
+            $c['value'] = 5;
+        }
 
-            // An action to open the chat widget
-            $c['rosterview']['openchat']
-                = $this->genCallWidget("Chat","ajaxOpenTalk", "'".$oc->jid."'");
+        // An action to open the chat widget
+        $c['rosterview']['openchat']
+            = $this->genCallWidget("Chat","ajaxOpenTalk", "'".$oc->jid."'");
 
-            /*$jid = $c->jid;*/
+        $c['rosterview']['type']   = '';
+        $c['rosterview']['client'] = '';
+        $c['rosterview']['jingle'] = false;
 
-            $c['rosterview']['type']   = '';
-            $c['rosterview']['client'] = '';
-            $c['rosterview']['jingle'] = false;
-
-            // About the entity capability
-            if($caps && isset($caps[$oc->node.'#'.$oc->ver])) {
-                $cap  = $caps[$oc->node.'#'.$oc->ver];
-                $c['rosterview']['type'] = $cap->type;
-                
-                $client = $cap->name;
-                $client = explode(' ',$client);
-                $c['rosterview']['client'] = strtolower(preg_replace('/[^a-zA-Z0-9_ \-()\/%-&]/s', '', reset($client)));
-
-                // Jingle support
-                $features = $cap->features;
-                $features = unserialize($features);
-                if(array_search('urn:xmpp:jingle:1', $features) !== null
-                && array_search('urn:xmpp:jingle:apps:rtp:audio', $features) !== null
-                && array_search('urn:xmpp:jingle:apps:rtp:video', $features) !== null
-                && (  array_search('urn:xmpp:jingle:transports:ice-udp:0', $features)
-                   || array_search('urn:xmpp:jingle:transports:ice-udp:1', $features))
-                ){
-                    $c['rosterview']['jingle'] = true;
-                }
-            }
-
-            // Tune
-            $c['rosterview']['tune'] = false;
+        // About the entity capability
+        if($caps && isset($caps[$oc->node.'#'.$oc->ver])) {
+            $cap  = $caps[$oc->node.'#'.$oc->ver];
+            $c['rosterview']['type'] = $cap->type;
             
-            if(($oc->tuneartist != null && $oc->tuneartist != '') ||
-               ($oc->tunetitle  != null && $oc->tunetitle  != ''))
-                $c['rosterview']['tune'] = true;;
+            $client = $cap->name;
+            $client = explode(' ',$client);
+            $c['rosterview']['client'] = strtolower(preg_replace('/[^a-zA-Z0-9_ \-()\/%-&]/s', '', reset($client)));
+
+            // Jingle support
+            $features = $cap->features;
+            $features = unserialize($features);
+            if(array_search('urn:xmpp:jingle:1', $features) !== null
+            && array_search('urn:xmpp:jingle:apps:rtp:audio', $features) !== null
+            && array_search('urn:xmpp:jingle:apps:rtp:video', $features) !== null
+            && (  array_search('urn:xmpp:jingle:transports:ice-udp:0', $features)
+               || array_search('urn:xmpp:jingle:transports:ice-udp:1', $features))
+            ){
+                $c['rosterview']['jingle'] = true;
+            }
+        }
+
+        // Tune
+        $c['rosterview']['tune'] = false;
         
-
-        /*$contactview = $this->tpl();
-        $contactview->assign('jid',           $jid);
-        $contactview->assign('name',          $name);
-        $contactview->assign('presence',      $presence);
-        $contactview->assign('contact',       $arr);
-
-        return $contactview->draw('_roster_contact', true);*/
+        if(($oc->tuneartist != null && $oc->tuneartist != '') 
+            || ($oc->tunetitle  != null && $oc->tunetitle  != ''))
+            $c['rosterview']['tune'] = true;
     }
 
 }
