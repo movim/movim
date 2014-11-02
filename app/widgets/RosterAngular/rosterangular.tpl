@@ -8,42 +8,39 @@
         placeholder="{$c->__('roster.search');}"/>
         
     <ul id="rosterlist" class="{$offline_shown}">
-        <div ng-repeat="(key, value) in contacts | groupBy: 'groupname'" 
-            id="group{{key}}" 
-            ng-class="{groupshown: rosterCtrl.groupIsShown(key) == 'true'}">
-            <h1>{{key}}</h1>
+        <div ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}">
+            <h1>{{group.agroup}}</h1>
+            <li ng-repeat="myjid in group.agroupitems" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" >
                 <ul class="contact">
-                    <li ng-repeat="contact in value" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)">
+                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)">
                         
-                        <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" >
-                        </div>
-                        
+                        <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" ></div>
                         <div ng-if="contact.rosterview.type == 'handheld'" class="infoicon mobile"></div>
-                        
                         <div ng-if="contact.rosterview.type == 'web'" class="infoicon web"></div>
-                        
                         <div ng-if="contact.rosterview.type == 'bot'" class="infoicon bot"></div>
-
                         <div ng-if="contact.rosterview.tune" class="infoicon tune"></div>
-                        
                         <div
                             ng-if="contact.rosterview.jingle"
                             class="infoicon jingle"
                             ng-click="rosterCtrl.postJingleAction(contact)">
                         </div>
-                
+
                         <a href="{{contact.rosterview.friendpage}}">
                             <img
                                 class="avatar"
                                 src="{{contact.rosterview.avatar}}"
                                 alt="avatar"
-                            />{{contact.rosterview.name}}
-                            <span class="ressource"><span ng-if="contact.status != ''">{{contact.status}} -</span> {{contact.ressource}}</span>
+                            />
+                            {{contact.rosterview.name}}
+                            <span class="ressource">
+                                <span ng-if="contact.status != ''">{{contact.status}} -</span>
+                                 {{contact.ressource}}
+                            </span>
                         </a>
                     </li>
                 </ul>
+            </li>
         </div>
-        
     </ul>
 </div>
 
