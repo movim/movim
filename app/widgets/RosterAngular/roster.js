@@ -4,9 +4,39 @@
     app.controller("RosterController", function($scope){
         $scope.contacts = [];
         $scope.groups = [];
+        $scope.lookupgroups = [];
+        $scope.lookupjid = [];
+        $scope.lookupressource = [];
         
         $scope.getContacts = function(list){
-            $scope.contacts = list;
+            for(i=0; i<list.length; i++){
+                if(!(list[i].groupname in $scope.lookupgroups)){
+                    l = $scope.contacts.length;
+                    $scope.contacts.push({
+                        'agroup': list[i].groupname, 
+                        'agroupitems': []
+                    });
+                    $scope.lookupgroups[list[i].groupname] = $scope.contacts[l];
+                }
+                if(!(list[i].jid in $scope.lookupjid)){
+                    l = $scope.lookupgroups[list[i].groupname].agroupitems.length;
+                    $scope.lookupgroups[list[i].groupname].agroupitems.push({
+                        'ajid':     list[i].jid, 
+                        'aval':     list[i].value,
+                        'ajiditems': []
+                    });
+                    $scope.lookupjid[list[i].jid] = $scope.lookupgroups[list[i].groupname].agroupitems[l];
+                }
+                if(!(list[i].jid+"/"+list[i].ressource in $scope.lookupressource)){
+                    l = $scope.lookupjid[list[i].jid].ajiditems.length;
+                    $scope.lookupjid[list[i].jid].ajiditems.push(list[i]);
+                    $scope.lookupressource[list[i].jid+"/"+list[i].ressource] = $scope.lookupjid[list[i].jid].ajiditems[l];
+                }
+            }
+            /*Sort jid by presence*/
+            for(i=0; i<$scope.contacts.length; i++){
+                $scope.contacts[i].agroupitems.sort(function(a, b){return a.aval - b.aval;});
+            }
             $scope.$apply();
         };
         
@@ -56,7 +86,6 @@
             return liclass;
         };
     });
-    
 })();
 
 function getContacts(tab){
@@ -67,7 +96,7 @@ function getGroups(tab){
     angular.element(roster).scope().getGroups(JSON.parse(tab));
 }
 
-function sortRoster() {
+/*function sortRoster() {
 
     roster = document.querySelector('#rosterlist');
     contacts = roster.querySelectorAll('li');
@@ -97,7 +126,7 @@ function sortRoster() {
     for(i = 0; i < server_error.length; i++) {
         server_error.item(i).parentNode.insertBefore(server_error.item(i), contacts.item(contacts.length))
     }
-}
+}*/
 
 function showHideOffline() {
     if(localStorage.getItem("rosterShow_offline") != "true" ){
@@ -108,13 +137,6 @@ function showHideOffline() {
         document.querySelector('ul#rosterlist').className = '';
         localStorage.setItem("rosterShow_offline", "false");
     }
-}
-
-function showHideRoster() {
-    if(hide == '1')
-        document.querySelector('#roster').className = 'hide';
-    else
-        document.querySelector('#roster').className = '';
 }
 
 function incomingPresence(val) {
