@@ -44,10 +44,14 @@ class Sessionx {
 
     protected function __construct()
     {
-        if(isset($_COOKIE['PHPSESSID'])) {
-            self::$_sessionid = $_COOKIE['PHPSESSID'];
-        } else {
+        if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
+            self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
+        } elseif(SESSION_ID) {
             self::$_sessionid = SESSION_ID;
+        } else {
+            $key = generateKey(64); 
+            setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/');
+            self::$_sessionid = $key;
         }
     }
 
