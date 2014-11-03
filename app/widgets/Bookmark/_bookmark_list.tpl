@@ -2,7 +2,7 @@
     <li><h2><i class="fa fa-users"></i> {$c->__('title.conferences')}</h2></li>
     {loop="$conferences"}
         <li>
-            <!--<a href="#" onclick="{$c->getMucRemove($value)}" class="button oppose color transparent alone"><i class="fa fa-times oppose"></i></a>-->
+            <a href="#" onclick="{$c->getMucRemove($value)}" class="cross"><i class="fa fa-times oppose"></i></a>
             <a href="#" onclick="{$c->getMucJoin($value)}">{$value->name}</a>
         </li>
     {/loop}

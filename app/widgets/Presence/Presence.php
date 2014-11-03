@@ -36,14 +36,13 @@ class Presence extends WidgetBase
         $this->registerEvent('mypresence', 'onMyPresence');
     }
     
-    function onMyPresence()
+    function onMyPresence($packet)
     {
         $html = $this->preparePresence();
         RPC::call('movim_fill', 'presence_widget', $html);
         Notification::appendNotification($this->__('status.updated'), 'success');
         RPC::call('setPresenceActions');
         RPC::call('movim_toggle_class', '#presence_widget', 'unfolded');
-        RPC::commit();
     }
 
     function onPostDisconnect($data)
