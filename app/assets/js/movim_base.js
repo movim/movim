@@ -64,7 +64,7 @@ function movim_desktop_notification_arr(arr) {
 function movim_desktop_notification(title, body, image) {
     var notification = new Notification(title, { icon: image, body: body });
 
-    notification.onshow = function() { setTimeout(notification.cancel(), 15000); }
+    //notification.onshow = function() { setTimeout(notification.cancel(), 15000); }
 }
 
 /**
