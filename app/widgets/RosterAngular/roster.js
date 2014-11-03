@@ -54,9 +54,9 @@
         
         $scope.updatePresence = function(list){
             for(i=0; i<list.length; i++){
-                console.log(list[i].jid+"/"+list[i].ressource);
-                $scope.lookupressource[list[i].jid+"/"+list[i].ressource].value = list[i].value;
-                $scope.lookupressource[list[i].jid+"/"+list[i].ressource].rosterview.presencetxt = list[i].rosterview.presencetxt;
+                resid = list[i].jid+"/"+list[i].ressource;
+                $scope.lookupressource[""+resid].value = list[i].value;
+                $scope.lookupressource[""+resid].rosterview.presencetxt = list[i].rosterview.presencetxt;
             }
             $scope.$apply();
         };
