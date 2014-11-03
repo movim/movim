@@ -58,16 +58,18 @@
 #presence_widget span.status {
     white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #presence_widget span.status {
     font-weight: normal;
     font-size: 0.8em;
     color: #DDD;
+    display: block;
 }
 
 #presence_widget #list {
-    width: 15rem;
+    width: 14.4rem;
     background-color: white;
     display: none;
     z-index: 6;

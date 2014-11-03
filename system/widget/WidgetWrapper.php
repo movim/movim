@@ -92,7 +92,7 @@ class WidgetWrapper
     protected function destroy()
     {
         if($this->register_widgets && count($this->loaded_widgets) > 0) {
-            $sess = Session::start(APP_NAME);
+            $sess = Session::start();
             $sess->set('loaded_widgets', $this->loaded_widgets);
             $this->register_widgets = false;
         }

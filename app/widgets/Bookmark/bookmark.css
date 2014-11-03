@@ -5,3 +5,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+#bookmarks li .cross {
+    float: right;
+    opacity: 0.3;
+}
+
+#bookmarks li:hover .cross {
+    opacity: 1;
+}

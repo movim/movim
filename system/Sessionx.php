@@ -44,8 +44,8 @@ class Sessionx {
 
     protected function __construct()
     {
-        if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
-            self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
+        if(isset($_COOKIE['PHPSESSID'])) {
+            self::$_sessionid = $_COOKIE['PHPSESSID'];
         } else {
             self::$_sessionid = SESSION_ID;
         }

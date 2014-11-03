@@ -7,16 +7,14 @@ require_once(DOCUMENT_ROOT.'/bootstrap.php');
 $bootstrap = new Bootstrap();
 $booted = $bootstrap->boot();
 
-set_time_limit(200);
-
-$polling = true;
-
 $loop = React\EventLoop\Factory::create();
 
 $dnsResolverFactory = new React\Dns\Resolver\Factory();
 $dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);
 
 $connector = new Ratchet\Client\Factory($loop);
+
+//setcookie('PHPENV', getenv('sid'), time()+3600);
 /*
 $connector_xmpp = new React\SocketClient\Connector($loop, $dns);
 $secure_connector_xmpp = new React\SocketClient\SecureConnector($connector_xmpp, $loop);
@@ -81,6 +79,8 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
         $obj = new \StdClass;
         $obj->func = 'message';
         $obj->body = \RPC::commit();
+        $out = json_encode($obj->body);
+        $logger->notice("XMPP : Send to LOOP {$out}");
         \RPC::clear();
 
         if(!empty($obj->body)) {

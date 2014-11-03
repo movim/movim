@@ -29,19 +29,10 @@ MovimWebsocket.prototype.init = function() {
 
     this.connection.onopen = function(e) {
         console.log("Connection established!");
-
-        if(localStorage.movimSession === undefined) {
-            this.send(JSON.stringify({'func' : 'ask'}));
-        } else {
-            this.register();
-        }
-
-        // And we launch the Javascript
         movim_onload();
     };
 
     this.connection.onmessage = function(e) {
-        //console.log(e.data);
         var obj = JSON.parse(e.data);
 
         if(obj.id) {
@@ -79,7 +70,6 @@ MovimWebsocket.prototype.send = function(widget, func, params) {
 
 MovimWebsocket.prototype.handle = function(json) {
     var funcalls = JSON.parse(json);
-    
     if(funcalls != null) {
         for(h = 0; h < funcalls.length; h++) {
             var funcall = funcalls[h];
@@ -90,13 +80,27 @@ MovimWebsocket.prototype.handle = function(json) {
                 } catch(err) {
                     console.log("Error caught: " + err.toString() + " - " + funcall.func + ":" + JSON.stringify(funcall.params));
                 }
+            } else if(funcall.func != null) {
+                var funcs  = funcall.func.split('.');
+                var called = funcs[0];
+                if(typeof window[called] == 'object') {
+                    window[funcs[0]][funcs[1]].apply(null, funcall.params);
+                }
             }
         }
     }
 }
 
 MovimWebsocket.prototype.unregister = function() {
+    //console.log(this);
+    //if(this.connection != null)
     this.connection.unregister();
+    //websocket.unregister();
+}
+
+function remoteUnregister()
+{
+    websocket.unregister();
 }
 
 // And we start it

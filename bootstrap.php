@@ -295,7 +295,7 @@ class Bootstrap {
         Modl\Utils::loadModel('Contact');
         Modl\Utils::loadModel('Privacy');
         Modl\Utils::loadModel('RosterLink');
-        Modl\Utils::loadModel('Session');
+        //Modl\Utils::loadModel('Session');
         Modl\Utils::loadModel('Cache');
         Modl\Utils::loadModel('Postn');
         Modl\Utils::loadModel('Subscription');
@@ -353,7 +353,7 @@ class Bootstrap {
                     $compatible = true;
             break;
             case 'IE':
-                if($browser_version > 9.0)
+                if($browser_version > 10.0)
                     $compatible = true;
             break;
             case 'Safari': // Also Chrome-Chromium
@@ -361,7 +361,7 @@ class Bootstrap {
                     $compatible = true;
             break;
             case 'Opera':
-                if($browser_version > 9.0)
+                if($browser_version > 12.1)
                     $compatible = true;
             break;
         }
