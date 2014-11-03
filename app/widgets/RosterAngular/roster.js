@@ -80,7 +80,20 @@
             }
             else return $scope.groups["ungrouped"];
         };
+        this.offlineIsShown = function(){
+            if(localStorage.getItem("rosterShow_offline") == "true")
+                return "offlineshown";
+            else
+                return "";
+        };
         
+        this.getContactClient = function(c){
+            liclass = "";
+            if(c.rosterview.client)
+                liclass = "client "+c.rosterview.client;
+            return liclass;
+        };
+
         this.getContactClient = function(c){
             liclass = "";
             if(c.rosterview.client)

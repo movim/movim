@@ -34,7 +34,7 @@ class RosterAngular extends WidgetBase
         $this->registerEvent('rosterupdateditem', 'onRoster');
         $this->registerEvent('contactadd', 'onRoster');
         $this->registerEvent('contactremove', 'onRoster');
-        /*$this->registerEvent('presence', 'onPresence');*/
+        $this->registerEvent('presence', 'onPresence');
     }
 
     function display()
@@ -61,11 +61,12 @@ class RosterAngular extends WidgetBase
     {
         $c = $packet->content;
 
+        $ac = $c->toArray();
         if($c != null) {
-            $html = $this->prepareContact($c, $this->getCaps());
+            $this->prepareContactAngular($ac, $c, $this->getCaps());
 
             if($c[0]->groupname == null)
-                $group = t('Ungrouped');
+                $group = $this->__('roster.ungrouped');
             else
                 $group = $c[0]->groupname;
 
