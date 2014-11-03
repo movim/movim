@@ -1,19 +1,25 @@
 function postStart() {
     if(localStorage.postStart == 1) {
+        Presence_ajaxSetPresence();
         Presence_ajaxConfigGet();
         Presence_ajaxServerCapsGet();
         Presence_ajaxBookmarksGet();
-        Presence_ajaxSetPresence();
         localStorage.postStart = 0;
     }
 }
 
 function setPresenceActions() {
-    document.querySelector('#presence_widget textarea.status').onkeypress = function(event) {
+    var textarea = document.querySelector('#presence_widget textarea.status');
+
+    textarea.onkeypress = function(event) {
         if(event.keyCode == 13) {
             Presence_ajaxSetStatus(this.value);
             this.blur();
         }
+    };
+
+    textarea.onfocus = function(event) {
+        movim_textarea_autoheight(this);
     };
 
     document.querySelector('#presence_widget #tab').onclick = function(event) {

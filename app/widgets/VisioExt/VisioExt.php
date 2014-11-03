@@ -26,11 +26,11 @@ class VisioExt extends WidgetBase
     function load() {
         $this->addjs('visioext.js');
         $this->registerEvent('jinglesessioninitiate',   'onSessionInitiate');
-        $this->registerEvent('jinglesessionterminate',  'onSessionTerminate');
+        /*$this->registerEvent('jinglesessionterminate',  'onSessionTerminate');
         $this->registerEvent('jinglesessionaccept',     'onSessionAccept');
         $this->registerEvent('jingletransportinfo',     'onTransportInfo');
         
-        $this->registerEvent('jinglecreationsuccess',     'onCreationSuccess');
+        $this->registerEvent('jinglecreationsuccess',     'onCreationSuccess');*/
     }
     
     function onSessionInitiate($jingle) {
@@ -45,15 +45,16 @@ class VisioExt extends WidgetBase
         
         if($sdp) {
             RPC::call(
-                'movim_desktop_notification_arr',
+                'movim_desktop_notification',
                 $contact->getTrueName(),
                 $this->__('visio.calling'),
                 $contact->getPhoto('m'));
-            RPC::call('Popup.setJid', (string)$jingle->attributes()->initiator);
-            RPC::call('Popup.call', 'onOffer', $sdp);
+            RPC::call('remoteSetJid', (string)$jingle->attributes()->initiator);
+            RPC::call('remoteCall', 'onOffer', $sdp);
+            RPC::commit();
         }
     }
-    
+    /*
     function onSessionAccept($jingle) {
         $jts = new \JingletoSDP($jingle);
         $sdp = $jts->generate();
@@ -186,9 +187,9 @@ class VisioExt extends WidgetBase
         $r->setTo($p->jid.'/'.$p->ressource)
           ->setOffer($stj->generate())
           ->request();
-    }
+    }*/
 
     function build() {
 
-    }    
+    }
 }

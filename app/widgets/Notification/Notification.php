@@ -56,7 +56,6 @@ class Notification extends WidgetCommon
             </div>';
 
         RPC::call('removeDiff', 'notification_widget', $html, $id);
-        RPC::commit();
     }
 
     function onPubsubError($error) {

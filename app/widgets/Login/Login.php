@@ -130,7 +130,7 @@ class Login extends WidgetBase
                 break;
         }
 
-        RPC::call('websocket.unregister');
+        RPC::call('remoteUnregister');
         RPC::call('movim_desktop_notification', $title, $warning);
     }
 

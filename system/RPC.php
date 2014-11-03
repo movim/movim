@@ -27,11 +27,11 @@ class RPC
         $args = func_get_args();
         array_shift($args);
 
-        $args = array_map(
+        /*$args = array_map(
             function($string) {
                 return preg_replace("/[\t\r\n]/", '', trim($string));
             },
-            $args);
+            $args);*/
 
         if(self::filter($funcname, $args)) {
             $funcall = array(
