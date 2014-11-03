@@ -62,15 +62,17 @@ class RosterAngular extends WidgetBase
     function onPresence($packet)
     {
         $contacts = $packet->content;
-        foreach($contacts as &$c) {
-            if($c->groupname == '')
-                $c->groupname = $this->__('roster.ungrouped');
-            
-            $ac = $c->toArray();
-            $this->prepareContactAngular($ac, $c, $capsarr);
-            $c = $ac;
+        if($contacts != null){
+            foreach($contacts as &$c) {
+                if($c->groupname == '')
+                    $c->groupname = $this->__('roster.ungrouped');
+                
+                $ac = $c->toArray();
+                $this->prepareContactAngular($ac, $c, $capsarr);
+                $c = $ac;
+            }
+            RPC::call('updatePresence', json_encode($contacts));
         }
-        RPC::call('updatePresence', json_encode($contacts));
     }
 
     function onRoster()
