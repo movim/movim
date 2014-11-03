@@ -1,16 +1,10 @@
 <div id="roster" class="{$roster_show}" ng-controller="RosterController as rosterCtrl">
-    <input 
-        type="text" 
-        name="search" 
-        id="rostersearch" 
-       
-        autocomplete="off" 
-        placeholder="{$c->__('roster.search');}"/>
+    <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
         
     <ul id="rosterlist" class="{$offline_shown}">
         <div ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}">
-            <h1>{{group.agroup}}</h1>
-            <li ng-repeat="myjid in group.agroupitems" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" >
+            <h1 ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</h1>
+            <li ng-repeat="myjid in group.agroupitems" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-show="groups[group.agroup] == 'true'">
                 <ul class="contact">
                     <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)">
                         

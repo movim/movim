@@ -8,7 +8,7 @@
         $scope.lookupjid = [];
         $scope.lookupressource = [];
         
-        $scope.getContacts = function(list){
+        $scope.initContacts = function(list){
             for(i=0; i<list.length; i++){
                 if(!(list[i].groupname in $scope.lookupgroups)){
                     l = $scope.contacts.length;
@@ -40,16 +40,31 @@
             $scope.$apply();
         };
         
-        $scope.getGroups = function(list){
+        $scope.initGroups = function(list){
             for (i in list){
-                if(localStorage.getItem("rosterGroup_"+i) == null)
-                    list[i] = "true";
+                if(localStorage.getItem("rosterGroup_"+i) == null){
+                    list[i] = true;
+                    localStorage.setItem("rosterGroup_"+i, true);
+                }
                 else list[i] = localStorage.getItem("rosterGroup_"+i);
             }
             $scope.groups = list;
             $scope.$apply();
         };
-        
+
+        this.showHideGroup = function(g){
+            ls = localStorage.getItem("rosterGroup_"+g);
+            if(ls == null){
+                ls = localStorage.getItem("rosterGroup_ungrouped");
+                g = "ungrouped";
+            }
+
+            ls = ls == 'true' ? 'false' : 'true';
+
+            localStorage.setItem("rosterGroup_"+g, ls);
+            $scope.groups[g] = ls;
+        };
+
         this.postChatAction = function(c){
             eval(c.rosterview.openchat);
         };
@@ -58,7 +73,7 @@
             Popup.close(); 
             Popup.open(c.jid+"/"+c.ressource);
         };
-        
+
         this.groupIsShown = function(grp){
             if(typeof $scope.groups[grp] != "undefined"){
                 return $scope.groups[grp];
@@ -88,45 +103,13 @@
     });
 })();
 
-function getContacts(tab){
-    angular.element(roster).scope().getContacts(JSON.parse(tab));
+function initContacts(tab){
+    angular.element(roster).scope().initContacts(JSON.parse(tab));
 }
 
-function getGroups(tab){
-    angular.element(roster).scope().getGroups(JSON.parse(tab));
+function initGroups(tab){
+    angular.element(roster).scope().initGroups(JSON.parse(tab));
 }
-
-/*function sortRoster() {
-
-    roster = document.querySelector('#rosterlist');
-    contacts = roster.querySelectorAll('li');
-
-    online = roster.querySelectorAll('.online');
-    for(i = 0; i < online.length; i++) {
-        online.item(i).parentNode.insertBefore(online.item(i), contacts.item(contacts.length))
-    }
-    away = roster.querySelectorAll('.away');
-    for(i = 0; i < away.length; i++) {
-        away.item(i).parentNode.insertBefore(away.item(i), contacts.item(contacts.length))
-    }
-    dnd = roster.querySelectorAll('.dnd');
-    for(i = 0; i < dnd.length; i++) {
-        dnd.item(i).parentNode.insertBefore(dnd.item(i), contacts.item(contacts.length))
-    }
-    xa = roster.querySelectorAll('.xa');
-    for(i = 0; i < xa.length; i++) {
-        xa.item(i).parentNode.insertBefore(xa.item(i), contacts.item(contacts.length))
-    }
-    offline = roster.querySelectorAll('.offline');
-    for(i = 0; i < offline.length; i++) {
-        offline.item(i).parentNode.insertBefore(offline.item(i), contacts.item(contacts.length))
-    }
-
-    server_error = roster.querySelectorAll('.server_error');
-    for(i = 0; i < server_error.length; i++) {
-        server_error.item(i).parentNode.insertBefore(server_error.item(i), contacts.item(contacts.length))
-    }
-}*/
 
 function showHideOffline() {
     if(localStorage.getItem("rosterShow_offline") != "true" ){
@@ -418,12 +401,4 @@ function rosterInArray(thing, array){
     return false;
 }
 */
-function rosterToggleGroup(h){
-    group = document.getElementById(h[0]);
-    
-    if(group.className == '')
-        group.className = 'groupshown';
-    else
-        group.className = '';
-}
 
