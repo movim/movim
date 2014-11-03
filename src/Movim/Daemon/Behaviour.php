@@ -6,7 +6,7 @@ use Ratchet\ConnectionInterface;
 
 class Behaviour implements MessageComponentInterface {
     protected $sessions = array(); // Store the sessions
-    protected $process;
+    //protected $process;
     protected $baseuri;
 
     public function __construct($baseuri) {
@@ -17,14 +17,14 @@ class Behaviour implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
         $cookies = $conn->WebSocket->request->getCookies();
 
-        if(array_key_exists('PHPSESSID', $cookies)) {
-            $sid = $cookies['PHPSESSID'];
+        if(array_key_exists('MOVIM_SESSION_ID', $cookies)) {
+            $sid = $cookies['MOVIM_SESSION_ID'];
             $this->sessions[$sid][$conn->resourceId] = $conn;
 
             // If a linker doesn't exist for the current session
             if(!array_key_exists('linker', $this->sessions[$sid])) {
                 $loop = \React\EventLoop\Factory::create();
-                $this->process = new \React\ChildProcess\Process(
+                $this->sessions[$sid]['process'] = new \React\ChildProcess\Process(
                                         'php linker.php',
                                         null,
                                         array(
@@ -32,10 +32,10 @@ class Behaviour implements MessageComponentInterface {
                                             'baseuri'   => $this->baseuri
                                         )
                                     );
-                $this->process->start($loop);
+                $this->sessions[$sid]['process']->start($loop);
             }
             
-            echo "{$cookies['PHPSESSID']} : {$conn->resourceId} connected\n";
+            echo "{$cookies['MOVIM_SESSION_ID']} : {$conn->resourceId} connected\n";
         } else {
             //var_dump(get_class_methods($conn->WebSocket->request));
             //var_dump($conn->WebSocket->request->getBody());
@@ -51,31 +51,17 @@ class Behaviour implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg) {
         $msg = json_decode($msg);
 
+        $sid = $this->getSid($from);
+
         if(!isset($msg->func)) {
             return;
         }
         
         switch ($msg->func) {
             // The browser ask for a new session
-            case 'ask':
-                $id = $this->generateId();
-
-                $obj = new \StdClass;
-                $obj->id = $id;
-                $from->send(json_encode($obj));
-                break;
-
-            case 'unregister':
-                $cookies = $from->WebSocket->request->getCookies();
-
-                if(array_key_exists('PHPSESSID', $cookies)) {
-                    $sid = $cookies['PHPSESSID'];
-                } else {
-                    $sid = $from->sid;
-                }
-            
+            case 'unregister':            
                 if(array_key_exists('linker', $this->sessions[$sid])) {
-                    $this->process->terminate();
+                    $this->sessions[$sid]['process']->terminate();
                 }
                 break;
 
@@ -91,7 +77,7 @@ class Behaviour implements MessageComponentInterface {
                 $obj->func = 'registered';
 
                 foreach($this->sessions[$from->sid] as $key => $client) {
-                    if($from !== $client) {
+                    if($from !== $client && $key != 'process') {
                         $client->send(json_encode($obj));
                     }
                 }
@@ -101,15 +87,7 @@ class Behaviour implements MessageComponentInterface {
                 break;
 
             // A message is received !
-            case 'message':
-                $cookies = $from->WebSocket->request->getCookies();
-
-                if(array_key_exists('PHPSESSID', $cookies)) {
-                    $sid = $cookies['PHPSESSID'];
-                } else {
-                    $sid = $from->sid;
-                }
-            
+            case 'message':            
                 // Forbid any incoming messages if the session is not linked to XMPP
                 if(!array_key_exists('linker', $this->sessions[$sid])) {
                     //$from->send(json_encode('linker not connected'));
@@ -122,7 +100,7 @@ class Behaviour implements MessageComponentInterface {
                 if($from === $this->sessions[$sid]['linker']) {
                     //echo "{$from->sid} : {$msg->body} got from the linker\n";
                     foreach($this->sessions[$sid] as $key => $client) {
-                        if($from !== $client) {
+                        if($from !== $client && $key != 'process') {
                             //The sender is not the receiver, send to each client connected
                             if(isset($msg->body)) {
                                 $client->send($msg->body);
@@ -143,31 +121,29 @@ class Behaviour implements MessageComponentInterface {
 
     public function onClose(ConnectionInterface $conn) {
         if(count($this->sessions) > 0) {
-            $cookies = $conn->WebSocket->request->getCookies();
+            $sid = $this->getSid($conn);
 
-            if(array_key_exists('PHPSESSID', $cookies)) {
-                $sid = $cookies['PHPSESSID'];
-            } else {
-                $sid = $conn->sid;
-            }
-            
-            $session_size = count($this->sessions[$sid]);
-            
-            // The connection is closed, remove it, as we can no longer send it messages
-            if(array_key_exists('linker', $this->sessions[$sid])
-            && $conn->resourceId == $this->sessions[$sid]['linker']->resourceId) {
-                $obj = new \StdClass;
-                $obj->func = 'disconnected';
+            if(array_key_exists($sid, $this->sessions)) {
+                $session_size = count($this->sessions[$sid]);
+                
+                // The connection is closed, remove it, as we can no longer send it messages
+                if(array_key_exists('linker', $this->sessions[$sid])
+                && $conn->resourceId == $this->sessions[$sid]['linker']->resourceId) {
+                    $obj = new \StdClass;
+                    $obj->func = 'disconnected';
 
-                foreach($this->sessions[$conn->sid] as $key => $client) {
-                    $client->send(json_encode($obj));
-                    echo "{$client->resourceId} disconnected to login\n";
+                    foreach($this->sessions[$conn->sid] as $key => $client) {
+                        if($key != 'process') {
+                            $client->send(json_encode($obj));
+                            echo "{$client->resourceId} disconnected to login\n";
+                        }
+                    }
+                    echo "{$conn->resourceId} linker disconnected - session size {$session_size}\n";
+                    unset($this->sessions[$sid]);
+                } else {
+                    echo "{$conn->resourceId} disconnected - session size {$session_size}\n";
+                    unset($this->sessions[$sid][$conn->resourceId]);
                 }
-                echo "{$conn->resourceId} linker disconnected - session size {$session_size}\n";
-                unset($this->sessions[$sid]);
-            } else {
-                echo "{$conn->resourceId} disconnected - session size {$session_size}\n";
-                unset($this->sessions[$sid][$conn->resourceId]);
             }
         }
     }
@@ -178,16 +154,17 @@ class Behaviour implements MessageComponentInterface {
         $conn->close();
     }
 
-    private function generateId() {
-        // Generating the session cookie's hash.
-        $hash_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $hash = "";
+    private function getSid(ConnectionInterface $conn) {
+        $cookies = $conn->WebSocket->request->getCookies();
 
-        for($i = 0; $i < 16; $i++) {
-            $r = mt_rand(0, strlen($hash_chars) - 1);
-            $hash.= $hash_chars[$r];
+        if(array_key_exists('MOVIM_SESSION_ID', $cookies)) {
+            $sid = $cookies['MOVIM_SESSION_ID'];
+        } elseif(isset($conn->sid)) {
+            $sid = $conn->sid;
+        } else {
+            $sid = null;
         }
 
-        return $hash;
+        return $sid;
     }
 }
