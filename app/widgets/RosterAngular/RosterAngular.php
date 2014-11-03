@@ -39,6 +39,8 @@ class RosterAngular extends WidgetBase
 
     function display()
     {
+        //$cd = new \Modl\ContactDAO();
+        //var_dump(json_encode($cd->getRosterItem('edhelas@jappix.com', true)));
         /*$this->view->assign('offline_shown',  '');
         $offline_state = Cache::c('offlineshown');
 
@@ -59,28 +61,19 @@ class RosterAngular extends WidgetBase
 
     function onPresence($packet)
     {
-        $c = $packet->content;
-
-        $ac = $c->toArray();
-        if($c != null) {
-            $this->prepareContactAngular($ac, $c, $this->getCaps());
-
-            if($c[0]->groupname == null)
-                $group = $this->__('roster.ungrouped');
-            else
-                $group = $c[0]->groupname;
-
-            RPC::call(
-            'movim_delete', 
-            $c[0]->jid, 
-            $html /* this second parameter is just to bypass the RPC filter */);
-
-            RPC::call('movim_append', 'group'.$group, $html);
-            RPC::call('sortRoster');
+        $contacts = $packet->content;
+        foreach($contacts as &$c) {
+            if($c->groupname == '')
+                $c->groupname = $this->__('roster.ungrouped');
+            
+            $ac = $c->toArray();
+            $this->prepareContactAngular($ac, $c, $capsarr);
+            $c = $ac;
         }
+        RPC::call('updatePresence', json_encode($contacts));
     }
 
-    function onRoster($jid)
+    function onRoster()
     {
         $results = $this->prepareRosterAngular();
         RPC::call('initContacts', $results['contacts']);

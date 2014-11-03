@@ -51,6 +51,15 @@
             $scope.groups = list;
             $scope.$apply();
         };
+        
+        $scope.updatePresence = function(list){
+            for(i=0; i<list.length; i++){
+                console.log(list[i].jid+"/"+list[i].ressource);
+                $scope.lookupressource[list[i].jid+"/"+list[i].ressource].value = list[i].value;
+                $scope.lookupressource[list[i].jid+"/"+list[i].ressource].rosterview.presencetxt = list[i].rosterview.presencetxt;
+            }
+            $scope.$apply();
+        };
 
         this.showHideGroup = function(g){
             ls = localStorage.getItem("rosterGroup_"+g);
@@ -122,6 +131,10 @@ function initContacts(tab){
 
 function initGroups(tab){
     angular.element(roster).scope().initGroups(JSON.parse(tab));
+}
+
+function updatePresence(tab){
+    angular.element(roster).scope().updatePresence(JSON.parse(tab));
 }
 
 function showHideOffline() {
