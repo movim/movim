@@ -95,6 +95,8 @@
             $scope.$apply();
         };
 
+
+
         this.showHideGroup = function(g){
             ls = localStorage.getItem("rosterGroup_"+g);
             if(ls == null){
@@ -203,7 +205,7 @@ movim_add_onload(function()
         roster.className = roster_classback;
         rosterlist.className = rosterlist_classback;
     };
-    search.onkeyup = function(event) {
+    /*search.onkeyup = function(event) {
         if(search.value.length > 0) {
             roster.className = 'search';
             rosterlist.className = 'offlineshown';
@@ -227,7 +229,7 @@ movim_add_onload(function()
         for(i = 0; i < li.length; i++) {
             li.item(i).className = 'found';
         }
-    };
+    };*/
 });
 /*ROSTER SEARCH*/
 /*

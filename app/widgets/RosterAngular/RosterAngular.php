@@ -31,7 +31,7 @@ class RosterAngular extends WidgetBase
         $this->addjs('angular-filters.js');
         $this->addjs('roster.js');
         $this->registerEvent('roster', 'onRoster');
-        //$this->registerEvent('rosterupdateditem', 'onRoster');
+        $this->registerEvent('rosterupdateditem', 'onRoster');
         $this->registerEvent('presence', 'onPresence');
     }
 
@@ -66,7 +66,7 @@ class RosterAngular extends WidgetBase
                     $c->groupname = $this->__('roster.ungrouped');
                 
                 $ac = $c->toArray();
-                $this->prepareContactAngular($ac, $c, $capsarr);
+                $this->prepareContactAngular($ac, $c, $this->getCaps());
                 $c = $ac;
             }
             RPC::call('updatePresence', json_encode($contacts));
