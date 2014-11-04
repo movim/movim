@@ -37,7 +37,7 @@
                     $scope.lookupressource[list[i].jid + "/" + list[i].ressource] = $scope.lookupjid[list[i].jid].ajiditems[l];
                 }
             }
-            /* Sort jid by presence and update dictionary*/
+            /* Sort jid by presence in each group and update jid dictionary */
             for(i=0; i<$scope.contacts.length; i++){
                 $scope.contacts[i].agroupitems.sort(function(a, b){return a.aval - b.aval;});
                 for(j=0; j<$scope.contacts[i].agroupitems.length; j++){
@@ -61,6 +61,7 @@
         };
 
         $scope.updatePresence = function(list){
+            /* New group */
             if(!(list[0].groupname in $scope.lookupgroups)){
                 l = $scope.contacts.length;
                 $scope.contacts.push({
@@ -69,6 +70,7 @@
                 });
                 $scope.lookupgroups[list[0].groupname] = $scope.contacts[l];
             }
+            /* New jid */
             if(!(list[0].jid in $scope.lookupjid)){
                 l = $scope.lookupgroups[list[0].groupname].agroupitems.length;
                 $scope.lookupgroups[list[0].groupname].agroupitems.push({
@@ -78,14 +80,21 @@
                 });
                 $scope.lookupjid[list[0].jid] = $scope.lookupgroups[list[0].groupname].agroupitems[l];
             }
+
+            /* Replace the ajiditems by the new list of ressource */
             $scope.lookupjid[list[0].jid].ajiditems = list;
+            /* Update the value of the global presence */
             $scope.lookupjid[list[0].jid].aval = list[0].value;
+            /* Update the ressources dictionary */
             for(i=0; i<list.length; i++){
                 resid = list[i].jid + "/" + list[i].ressource;
                 $scope.lookupressource[resid] = $scope.lookupjid[list[0].jid].ajiditems[i];
             }
 
-            /* Sort jid by presence and update dictionary*/
+             /*
+             * Sort jid array of the concerned group by global presence of each jid
+             * and update jids dictionary
+             **/
             $scope.lookupgroups[list[0].groupname].agroupitems.sort(function(a, b){return a.aval - b.aval;});
             for(j=0; j<$scope.lookupgroups[list[0].groupname].agroupitems.length; j++){
                 jid = $scope.lookupgroups[list[0].groupname].agroupitems[j].jid;
@@ -131,7 +140,13 @@
             else
                 return "";
         };
-        
+        this.getContactTitle = function(c){
+            title = c.jid;
+            if(c.status != "") title += " - "c.status;
+            title += " - "c.ressource;
+            return title;
+        };
+
         this.getContactClient = function(c){
             liclass = "";
             if(c.rosterview.client)
@@ -205,7 +220,7 @@ movim_add_onload(function()
         roster.className = roster_classback;
         rosterlist.className = rosterlist_classback;
     };
-    /*search.onkeyup = function(event) {
+    search.onkeyup = function(event) {
         if(search.value.length > 0) {
             roster.className = 'search';
             rosterlist.className = 'offlineshown';
@@ -229,7 +244,7 @@ movim_add_onload(function()
         for(i = 0; i < li.length; i++) {
             li.item(i).className = 'found';
         }
-    };*/
+    };
 });
 /*ROSTER SEARCH*/
 /*
