@@ -1,15 +1,17 @@
 (function(){
-    var app = angular.module("rosterAngular", ['angular.filter']);
+    var app = angular.module("rosterAngular", []);
     
     app.controller("RosterController", function($scope){
         $scope.contacts = [];
         $scope.groups = [];
-        $scope.lookupgroups = [];
-        $scope.lookupjid = [];
-        $scope.lookupressource = [];
+        /* Dictionnaries */
+        $scope.lookupgroups = {};
+        $scope.lookupjid = {};
+        $scope.lookupressource = {};
         
         $scope.initContacts = function(list){
             for(i=0; i<list.length; i++){
+                /* New group */
                 if(!(list[i].groupname in $scope.lookupgroups)){
                     l = $scope.contacts.length;
                     $scope.contacts.push({
@@ -18,6 +20,7 @@
                     });
                     $scope.lookupgroups[list[i].groupname] = $scope.contacts[l];
                 }
+                /* New jid */
                 if(!(list[i].jid in $scope.lookupjid)){
                     l = $scope.lookupgroups[list[i].groupname].agroupitems.length;
                     $scope.lookupgroups[list[i].groupname].agroupitems.push({
@@ -27,19 +30,24 @@
                     });
                     $scope.lookupjid[list[i].jid] = $scope.lookupgroups[list[i].groupname].agroupitems[l];
                 }
+                /* New ressource */
                 if(!(list[i].jid+"/"+list[i].ressource in $scope.lookupressource)){
                     l = $scope.lookupjid[list[i].jid].ajiditems.length;
                     $scope.lookupjid[list[i].jid].ajiditems.push(list[i]);
-                    $scope.lookupressource[list[i].jid+"/"+list[i].ressource] = $scope.lookupjid[list[i].jid].ajiditems[l];
+                    $scope.lookupressource[list[i].jid + "/" + list[i].ressource] = $scope.lookupjid[list[i].jid].ajiditems[l];
                 }
             }
-            /*Sort jid by presence*/
+            /* Sort jid by presence and update dictionary*/
             for(i=0; i<$scope.contacts.length; i++){
                 $scope.contacts[i].agroupitems.sort(function(a, b){return a.aval - b.aval;});
+                for(j=0; j<$scope.contacts[i].agroupitems.length; j++){
+                    jid = $scope.contacts[i].agroupitems[j].jid;
+                    $scope.lookupjid[jid] = $scope.contacts[i].agroupitems[j];
+                }
             }
             $scope.$apply();
         };
-        
+
         $scope.initGroups = function(list){
             for (i in list){
                 if(localStorage.getItem("rosterGroup_"+i) == null){
@@ -51,13 +59,39 @@
             $scope.groups = list;
             $scope.$apply();
         };
-        
+
         $scope.updatePresence = function(list){
-            for(i=0; i<list.length; i++){
-                resid = list[i].jid+"/"+list[i].ressource;
-                $scope.lookupressource[""+resid].value = list[i].value;
-                $scope.lookupressource[""+resid].rosterview.presencetxt = list[i].rosterview.presencetxt;
+            if(!(list[0].groupname in $scope.lookupgroups)){
+                l = $scope.contacts.length;
+                $scope.contacts.push({
+                    'agroup': list[0].groupname,
+                    'agroupitems': []
+                });
+                $scope.lookupgroups[list[0].groupname] = $scope.contacts[l];
             }
+            if(!(list[0].jid in $scope.lookupjid)){
+                l = $scope.lookupgroups[list[0].groupname].agroupitems.length;
+                $scope.lookupgroups[list[0].groupname].agroupitems.push({
+                    'ajid':     list[0].jid,
+                    'aval':     list[0].value,
+                    'ajiditems': []
+                });
+                $scope.lookupjid[list[0].jid] = $scope.lookupgroups[list[0].groupname].agroupitems[l];
+            }
+            $scope.lookupjid[list[0].jid].ajiditems = list;
+            $scope.lookupjid[list[0].jid].aval = list[0].value;
+            for(i=0; i<list.length; i++){
+                resid = list[i].jid + "/" + list[i].ressource;
+                $scope.lookupressource[resid] = $scope.lookupjid[list[0].jid].ajiditems[i];
+            }
+
+            /* Sort jid by presence and update dictionary*/
+            $scope.lookupgroups[list[0].groupname].agroupitems.sort(function(a, b){return a.aval - b.aval;});
+            for(j=0; j<$scope.lookupgroups[list[0].groupname].agroupitems.length; j++){
+                jid = $scope.lookupgroups[list[0].groupname].agroupitems[j].jid;
+                $scope.lookupjid[jid] = $scope.lookupgroups[list[0].groupname].agroupitems[j];
+            }
+
             $scope.$apply();
         };
 

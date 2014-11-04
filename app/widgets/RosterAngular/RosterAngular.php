@@ -31,9 +31,7 @@ class RosterAngular extends WidgetBase
         $this->addjs('angular-filters.js');
         $this->addjs('roster.js');
         $this->registerEvent('roster', 'onRoster');
-        $this->registerEvent('rosterupdateditem', 'onRoster');
-        $this->registerEvent('contactadd', 'onRoster');
-        $this->registerEvent('contactremove', 'onRoster');
+        //$this->registerEvent('rosterupdateditem', 'onRoster');
         $this->registerEvent('presence', 'onPresence');
     }
 
