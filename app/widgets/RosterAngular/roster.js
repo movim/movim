@@ -142,8 +142,8 @@
         };
         this.getContactTitle = function(c){
             title = c.jid;
-            if(c.status != "") title += " - "c.status;
-            title += " - "c.ressource;
+            if(c.status != "") title += " - " + c.status;
+            title += " - " + c.ressource;
             return title;
         };
 
@@ -220,7 +220,7 @@ movim_add_onload(function()
         roster.className = roster_classback;
         rosterlist.className = rosterlist_classback;
     };
-    search.onkeyup = function(event) {
+    /*search.onkeyup = function(event) {
         if(search.value.length > 0) {
             roster.className = 'search';
             rosterlist.className = 'offlineshown';
@@ -239,12 +239,13 @@ movim_add_onload(function()
 
         // We select the interesting li
         var selector = '#rosterlist div > li[title*=\'' + search.value + '\']';
+        console.log(selector);
         var li = document.querySelectorAll(selector);
 
         for(i = 0; i < li.length; i++) {
             li.item(i).className = 'found';
         }
-    };
+    };*/
 });
 /*ROSTER SEARCH*/
 /*
