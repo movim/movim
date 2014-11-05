@@ -26,6 +26,7 @@ class Config extends WidgetBase
     function load()
     {
         $this->addjs('color/jscolor.js');
+        $this->addjs('config.js');
         $this->registerEvent('config', 'onConfig');
 
         /* We load the user configuration */
