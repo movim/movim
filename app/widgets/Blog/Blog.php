@@ -44,7 +44,7 @@ class Blog extends WidgetCommon {
             $this->view->assign('name', $messages[0]->getContact()->getTrueName());
             $this->view->assign('feed', Route::urlize('feed',array($from, $node)));
         } else {
-            $this->view->assign('title', t('Feed'));
+            $this->view->assign('title', $this->__('page.feed'));
         }
         
         $this->view->assign('posts', $this->preparePosts($messages, true));

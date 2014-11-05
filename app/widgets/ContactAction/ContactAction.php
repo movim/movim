@@ -66,7 +66,7 @@ class ContactAction extends WidgetCommon
             if($c->jid != $this->user->getLogin()) {
                 $presences = getPresences();
                 
-                $html .='<h2>'.$this->__('title').'</h2>';
+                $html .='<h2>'.$this->__('action.title').'</h2>';
                 
                 $ptoc = array(
                     1 => 'green',
@@ -82,7 +82,7 @@ class ContactAction extends WidgetCommon
                             id="friendchat"
                             onclick="'.$this->genCallWidget("Chat","ajaxOpenTalk", "'".$c->jid."'").'"
                         >
-                            <i class="fa fa-comment"></i> '.$presences[(int)$c->value].' - '.$this->__('chat').'
+                            <i class="fa fa-comment"></i> '.$presences[(int)$c->value].' - '.$this->__('action.chat').'
                         </a>';
                 }
             }
@@ -99,7 +99,7 @@ class ContactAction extends WidgetCommon
                     this.style.display = \'none\'
                 "
             >
-                <i class="fa fa-minus"></i> '.t('Remove this contact').'
+                <i class="fa fa-minus"></i> '.$this->__('action.remove').'
             </a>
 
             <a
@@ -132,7 +132,7 @@ class ContactAction extends WidgetCommon
                 <i class="fa fa-times"></i> '.__('button.no').'
             </a>';
         } elseif($_GET['f'] != $this->user->getLogin()) {
-            $html .='<h2>'.$this->__('actions').'</h2>';
+            $html .='<h2>'.$this->__('action.actions').'</h2>';
             
             $html .='
             <a
@@ -144,7 +144,7 @@ class ContactAction extends WidgetCommon
                 $this->genCallAjax("ajaxSubscribeContact", "'".$_GET['f']."'").
                 'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 3000);"
             >
-                <i class="fa fa-plus"></i> '.$this->__('invite').'
+                <i class="fa fa-plus"></i> '.$this->__('action.invite').'
             </a>';
         }
         

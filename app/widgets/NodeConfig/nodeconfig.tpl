@@ -10,7 +10,7 @@
     </a>
     <a>{$c->__('page.configuration')}</a>
 </div>
-<div class="tabelem" title="{$c->t('Configuration')}" id="groupconfig">
+<div class="tabelem" title="{$c->__('page.configuration')}" id="groupconfig">
     <h1 class="paddedtopbottom"><i class="fa fa-sliders"></i> {$c->__('page.configuration')}</h1>
     
     <div id="groupconfiguration" class="paddedtop">
