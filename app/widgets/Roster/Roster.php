@@ -63,7 +63,7 @@ class Roster extends WidgetBase
             $html = $this->prepareContact($c, $this->getCaps());
 
             if($c[0]->groupname == null)
-                $group = t('Ungrouped');
+                $group = $this->__('roster.ungrouped');
             else
                 $group = $c[0]->groupname;
 

@@ -67,9 +67,9 @@ class AdminMain extends WidgetBase
         $this->view->assign('conf', $cd->get());
         $this->view->assign('logs',
             array(
-                0 => t('Empty'),
-                1 => t('Syslog'),
-                2 => t('Syslog and Files'))
+                0 => $this->__('log.empty'),
+                1 => $this->__('log.syslog'),
+                2 => $this->__('log.syslog_files'))
         );
         $this->view->assign('envs',
             array(

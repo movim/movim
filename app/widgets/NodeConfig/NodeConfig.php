@@ -57,7 +57,7 @@ class NodeConfig extends WidgetBase
                 '.$this->__('group.delete_return', $server).'
             </a><br /><br />';
             
-        Notification::appendNotification(t('Group deleted'), 'success');
+        Notification::appendNotification($this->__('group.deleted'), 'success');
         RPC::call('movim_fill', 'handlingmessages', $html);
         RPC::commit();        
     }
