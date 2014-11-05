@@ -2,10 +2,17 @@
     <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
         
     <ul id="rosterlist" class="{{rosterCtrl.offlineIsShown()}}">
-        <div ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}">
+        <span ng-hide="contacts.length" class="nocontacts">
+            {$c->__('roster.no_contacts')}
+            <br />
+            <br />
+            <a class="button color green icon users" href="{$c->route('explore')}">{$c->__('page.explore')}</a>
+        </span>
+
+        <div ng-show="contacts.length" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}">
             <h1 ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</h1>
             <li ng-repeat="myjid in group.agroupitems" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
-                <!-- Rostersearch look this way http://www.bennadel.com/blog/2487-filter-vs-nghide-with-ngrepeat-in-angularjs.htm -->
+                <!-- Rostersearch look this way for an angularJS solution http://www.bennadel.com/blog/2487-filter-vs-nghide-with-ngrepeat-in-angularjs.htm -->
                 <ul class="contact">
                     <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)" >
                         <!-- add title to li so search works again-->
@@ -39,7 +46,7 @@
     </ul>
 </div>
 
-<div id="rostermenu" class="menubar">
+<div id="rostermenu" class="menubar" ng-controller="RosterMenuController as rosterMenuCtrl">
     <ul class="menu">
         <li 
             class="show_hide body_infos on_mobile"
@@ -81,14 +88,10 @@
                     class="tiny" 
                     type="email"
                     title="{$c->__('roster.jid')}"
-                    placeholder="user@server.tld" 
-                    
+                    placeholder="user@server.tld"
+                    ng-keypress="rosterMenuCtrl.checkoutAddJid(event=$event)"
                 />
-                <!--onkeypress="
-                        if(event.keyCode == 13) {
-                            {$search_contact}
-                            return false;
-                        }"-->
+
             </div>
         </li>
 
