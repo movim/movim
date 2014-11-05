@@ -4,10 +4,10 @@
     <ul id="rosterlist" class="{{rosterCtrl.offlineIsShown()}}">
         <div ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}">
             <h1 ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</h1>
-            <li ng-repeat="myjid in group.agroupitems" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" >
+            <li ng-repeat="myjid in group.agroupitems" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
                 <!-- Rostersearch look this way http://www.bennadel.com/blog/2487-filter-vs-nghide-with-ngrepeat-in-angularjs.htm -->
                 <ul class="contact">
-                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)" ng-attr-title="{{rosterCtrl.getContactTitle(contact)}}">
+                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)" >
                         <!-- add title to li so search works again-->
                         <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" ></div>
                         <div ng-if="contact.rosterview.type == 'handheld'" class="infoicon mobile"></div>
