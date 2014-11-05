@@ -103,38 +103,6 @@ class RosterAngular extends WidgetBase
 
         return $capsarr;
     }
-
-    /**
-     * @brief Toggling boolean variables in the Cache
-     * @param $param
-     * @returns 
-     */
-    /*function ajaxToggleCache($param){
-        //$bool = !currentValue
-        $bool = (Cache::c($param) == true) ? false : true;
-        //toggling value in cache
-        Cache::c($param, $bool);
-        //$offline = new value of wether offline are shown or not
-        $offline = Cache::c('offlineshown');
-        
-        if($param == 'offlineshown') {
-            if($bool)
-                Notification::appendNotification($this->__('roster.show_disconnected'), 'success');
-            else
-                Notification::appendNotification($this->__('roster.hide_disconnected'), 'success');
-            RPC::call('showRoster', $bool);
-        } else {
-            if($bool)
-                Notification::appendNotification($this->__('roster.hide_group',substr($param, 5)), 'success');
-            else
-                Notification::appendNotification($this->__('roster.show_group',substr($param, 5)), 'success');
-            RPC::call('rosterToggleGroup', $param, $bool, $offline);
-
-        }
-        
-        RPC::call('focusContact');
-        RPC::commit();
-    }*/
     
     /**
      *  @brief Search for a contact to add
