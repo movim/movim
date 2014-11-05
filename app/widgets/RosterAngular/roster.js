@@ -1,10 +1,18 @@
 (function(){
     var app = angular.module("rosterAngular", []);
-    
+
+    app.controller("RosterMenuController", function(){
+
+        this.checkoutAddJid = function(event){
+            if(event.key == "Enter")
+                RosterAngular_ajaxSearchContact(event.target.value);
+        };
+    });
+
     app.controller("RosterController", function($scope){
         $scope.contacts = [];
         $scope.groups = [];
-        /* Dictionnaries */
+        /* Dictionaries */
         $scope.lookupgroups = {};
         $scope.lookupjid = {};
         $scope.lookupressource = {};
@@ -141,9 +149,11 @@
                 return "";
         };
         this.getContactTitle = function(c){
+            status = c.status || "";
+            ressource = c.ressource || "";
             title = c.jid;
-            if(c.status != "") title += " - " + c.status;
-            title += " - " + c.ressource;
+            if(status != "") title += " - " + status;
+            if(ressource != "") title += " - " + ressource;
             return title;
         };
 
@@ -209,12 +219,14 @@ function incomingPresence(val) {
 
 movim_add_onload(function()
 {
+    RosterAngular_ajaxRefreshRoster();
+
     var search      = document.querySelector('#rostersearch');
     var roster      = document.querySelector('#roster');
     var rosterlist  = document.querySelector('#rosterlist');
     
     var roster_classback      = document.querySelector('#roster').className;
-    var rosterlist_classback  = document.querySelector('#rosterlist').className;   
+    var rosterlist_classback  = document.querySelector('#rosterlist').className;
 
     roster.onblur  = function() {
         roster.className = roster_classback;
@@ -245,6 +257,7 @@ movim_add_onload(function()
             li.item(i).className = 'found';
         }
     };
+
 });
 /*ROSTER SEARCH*/
 /*
