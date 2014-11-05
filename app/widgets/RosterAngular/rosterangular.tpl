@@ -97,7 +97,7 @@
 
         <li 
             onclick="showHideOffline()"
-            title="{$c->t('Show/Hide')}">
+            title="{$c->__('roster.show_hide')}">
             <a class="users" href="#"></a>
         </li>
 
