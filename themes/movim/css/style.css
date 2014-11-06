@@ -294,17 +294,15 @@ ul.clean li {
 {
     clear: both;
     text-align: right;
-    background-color: rgba(20, 20, 20, 0.7);
     line-height: 3em;
     padding: 0 1em;
-    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 #content > footer a:link, #content > footer a:visited {
-    color: #BBB;
+    color: #888;
 }
 
 /* Warning */

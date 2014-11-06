@@ -81,8 +81,8 @@ movim_add_onload(function()
     if(localStorage.username != null)
         document.querySelector('#login').value = localStorage.username;
 
+    // The form submission event
     form = document.querySelector('form[name="login"]');
-    
     form.onsubmit = function(e) {
         e.preventDefault();
 
@@ -96,6 +96,17 @@ movim_add_onload(function()
         rememberSession(localStorage.username);
     };
 
+    // We hide the Websocket error
+    document.querySelector('#loginpage #warning .websocket').style.display = 'none';
+
+    // We enable the form
+    var inputs = document.querySelectorAll('#loginpage input[disabled]');
+    for (var i = 0; i < inputs.length; i++)
+    {
+        inputs[i].disabled = false;
+    }
+
+    // We get the previous sessions
     Login_ajaxGetRememberedSession(localStorage.getItem('previousSessions'));
 
     if(localStorage.getItem('previousSessions') != null) {
