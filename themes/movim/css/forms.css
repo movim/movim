@@ -351,8 +351,12 @@ legend {
     border-radius: 0px 0.1em 0.1em 0px;
 }
 
-.button.inactive {
+.button.inactive, input[disabled] {
     pointer-events:none;
+    opacity: 0.5;
+}
+
+.button[disabled] {
     opacity: 0.5;
 }
 /*
