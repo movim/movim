@@ -9,9 +9,6 @@
         <div class="{$c->valid($c->version())}">
             {$c->__('compatibility.php', PHP_VERSION)}
         </div>
-        <div class="{$c->valid(extension_loaded('curl'))}">
-            {$c->__('compatibility.curl')}
-        </div>
         <div class="{$c->valid(extension_loaded('gd'))}">
             {$c->__('compatibility.gd')}
         </div>
