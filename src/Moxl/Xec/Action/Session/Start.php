@@ -51,7 +51,7 @@ class Start extends Action
 
         $session->active = true;
         $session->password = 'hidden';
-
+        
         $this->pack($session);
 
         $this->deliver();

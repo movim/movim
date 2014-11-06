@@ -188,6 +188,8 @@ class Handler {
             
             'd8ea912a151202700bb399c9e04d205f' => 'Caps',
             
+            '40ed26a65a25ab8bf809dd998d541d95' => 'PingPong',
+            
             'cb52f989717d25441018703ea1bc9819' => 'Attention',
 
             '54c22c37d17c78ee657ea3d40547a970' => 'Version',

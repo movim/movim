@@ -1,8 +1,10 @@
 <?php
 /*
- * SessionInitiate.php
+ * @file Ping.php
  * 
- * Copyright 2013 edhelas <edhelas@edhelas-laptop>
+ * @brief Handle incoming Ping and Pong them
+ * 
+ * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,47 +24,16 @@
  * 
  */
 
-namespace Moxl\Xec\Action\Jingle;
+namespace Moxl\Xec\Payload;
 
-use Moxl\Xec\Action;
-use Moxl\Stanza\Jingle;
+use Moxl\Stanza\Ping;
 
-class SessionInitiate extends Action
+class PingPong extends Payload
 {
-    private $_to;
-    private $_offer;
-    
-    public function request() 
-    {
-        $this->store();
-        Jingle::sessionInitiate($this->_to, $this->_offer);
-    }
-    
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-    
-    public function setOffer($offer)
-    {
-        $this->_offer = $offer;
-        return $this;
-    }
-    
     public function handle($stanza, $parent = false) {
-        
-    }
-
-    public function errorItemNotFound($stanza) {
-        $this->deliver();
-    }
-
-    public function errorUnexpectedRequest($stanza) {
-        $this->deliver();
-    }
-    
-    public function error($error) {
-
+        //$node = $stanza->attributes()->node.'#'.$stanza->attributes()->ver;
+        $to = (string)$parent->attributes()->from;
+        $id = (string)$parent->attributes()->id;
+        Ping::pong($to, $id);
     }
 }

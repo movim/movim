@@ -26,6 +26,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Moxl\Xec\Action\Ack\Send;
+
 class Jingle extends Payload
 {
     public function handle($stanza, $parent = false) {      
@@ -38,6 +40,11 @@ class Jingle extends Payload
         $evt = new \Event();
 
         $evt->runEvent('ack', array($from, $id));
+
+        /*$ack = new Send;
+        $ack->setTo($to)
+            ->setId($id)
+            ->request();*/
         
         switch($action) {
             case 'session-initiate' :

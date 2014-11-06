@@ -100,6 +100,7 @@ class Utils {
             'jabber:iq:last',
             'vcard-temp',
             'jabber:x:data',
+            'urn:xmpp:ping',
 
             // Jingle
             'http://jabber.org/protocol/jingle',

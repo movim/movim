@@ -1,6 +1,6 @@
 <?php
 /*
- * @file Post.php
+ * @file Caps.php
  * 
  * @brief Handle incoming Entity Capabilities (XEP 0115 Entity Capabilities)
  * 
