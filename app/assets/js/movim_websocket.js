@@ -92,10 +92,7 @@ MovimWebsocket.prototype.handle = function(json) {
 }
 
 MovimWebsocket.prototype.unregister = function() {
-    //console.log(this);
-    //if(this.connection != null)
     this.connection.unregister();
-    //websocket.unregister();
 }
 
 function remoteUnregister()
