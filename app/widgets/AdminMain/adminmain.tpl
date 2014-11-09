@@ -1,7 +1,7 @@
 <form name="admin" id="adminform" action="#" method="post">
     <div id="admingen" class="tabelem paddedtop" title="{$c->__('admin.general')}">
     <fieldset>
-        <legend>{$c->__('admin.general')}</legend>
+        <legend><i class="fa fa-wrench"></i> {$c->__('admin.general')}</legend>
 
         <div class="element">
             <label for="da">{$c->__('general.language')}</label>
@@ -79,58 +79,62 @@
         
 
     <fieldset>
-        <legend>{$c->__('bosh.title')}</legend>
-            <div class="clear"></div>
-            
-            <p>
-                {$c->__('bosh.info1')}<br />
-                {$bosh_info4}
-            </p>
-            
-            {if="!$c->testBosh($conf->boshurl)"}
-                <div class="message error">
-                    {$c->__('bosh.not_recheable')}
-                </div>
-            {/if}
-
-            <div class="element">
-                <label for="boshurl">{$c->__('bosh.label')}</label>
-                <input type="text" id="boshurl" name="boshurl" value="{$conf->boshurl}"/>
+        <legend><i class="fa fa-code"></i> {$c->__('websocket.title')}</legend>
+        <div class="clear"></div>
+        
+        <p>
+            {$c->__('websocket.info')}: <code>ws(s)://domain:port</code>
+        </p>
+        
+        <!--{if="!$c->testBosh($conf->boshurl)"}
+            <div class="message error">
+                {$c->__('bosh.not_recheable')}
             </div>
+        {/if}-->
 
-            {if="isset($boshs)"}
-                <div class="element simple">
-                    <label for="boshurl">
-                        {$c->__('bosh.publics')} -
-                        <a target="_blank" href="https://api.movim.eu/">Movim API</a>
-                    </label>
+        <div class="element">
+            <label for="websocketurl"></label>
+            <input type="text" id="websocketurl" name="websocketurl" placeholder="{$c->__('websocket.label')}" value="{$conf->websocketurl}"/>
+        </div>
 
-                    <dl>
-                        {loop="$boshs->boshs"}
-                            <dt>{$value->name}</dt>
-                            <dd>{$value->url}</dd>
-                        {/loop}
-                    </dl>
-                </div>
-            {/if}
-    </fieldset>
+        {if="isset($websockets)"}
+            <div class="element simple">
+                <label for="websocketurl">
+                    {$c->__('websocket.publics')} -
+                    <a target="_blank" href="https://api.movim.eu/">Movim API</a>
+                </label>
 
-
-    <fieldset>
-        <legend>{$c->__('whitelist.title')}</legend>
-        <div class="clear"></div>                
-
-        <div class="element large">
-            <label for="xmppwhiteiist">{$c->__('whitelist.label')}</label>
-            <p>{$c->__('whitelist.info1')}</p>
-            <p>{$c->__('whitelist.info2')}</p>
-            <input type="text" name="xmppwhitelist" id="xmppwhitelist" value="{$conf->xmppwhitelist}" />
+                <dl>
+                    {loop="$websockets->websockets"}
+                        <dt>{$value->name}</dt>
+                        <dd>{$value->url}</dd>
+                    {/loop}
+                </dl>
+            </div>
+        {/if}
+        
+        <div class="message info block">
+            <i class="fa fa-exclamation-triangle"></i> {$c->__('websocket.save_info')}
         </div>
     </fieldset>
 
 
     <fieldset>
-        <legend>{$c->__('information.title')}</legend>
+        <legend><i class="fa fa-check-square-o"></i> {$c->__('whitelist.title')}</legend>
+        <div class="clear"></div>                
+
+        <div class="element">
+            <label for="xmppwhitelist">{$c->__('whitelist.label')}</label>
+            <p>{$c->__('whitelist.info1')}</p>
+            <p>{$c->__('whitelist.info2')}</p>
+            <br />
+            <input type="text" name="xmppwhitelist" id="xmppwhitelist" placeholder="{$c->__('whitelist.label')}" value="{$conf->xmppwhitelist}" />
+        </div>
+    </fieldset>
+
+
+    <fieldset>
+        <legend><i class="fa fa-comment"></i> {$c->__('information.title')}</legend>
         <div class="clear"></div>
 
         <div class="element large">
@@ -149,7 +153,7 @@
 
 
     <fieldset>
-        <legend>{$c->__('credentials.title')}</legend>
+        <legend><i class="fa fa-user"></i> {$c->__('credentials.title')}</legend>
             
         {if="$conf->user == 'admin' || $conf->pass == sha1('password')"}
             <div class="message error">

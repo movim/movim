@@ -28,6 +28,11 @@ class AdminDB extends WidgetBase
         RPC::call('movim_reload_this');
     }
 
+    public function hidePassword($pass)
+    {
+        return str_repeat('*', strlen($pass));
+    }
+
     function display()
     {
         $md = \modl\Modl::getInstance();

@@ -22,14 +22,6 @@ class AdminTest extends WidgetBase
         $this->addcss('admintest.css');
     }
 
-    public function valid($what)
-    {
-        if($what)
-            return "message success";
-        else
-            return "message error";
-    }
-
     public function version()
     {
         return (version_compare(PHP_VERSION, '5.3.0') >= 0);

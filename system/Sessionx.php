@@ -49,7 +49,7 @@ class Sessionx {
         } elseif(SESSION_ID) {
             self::$_sessionid = SESSION_ID;
         } else {
-            $key = generateKey(64); 
+            $key = generateKey(32); 
             setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/');
             self::$_sessionid = $key;
         }
@@ -92,7 +92,7 @@ class Sessionx {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
         
-        $this->_url         = $config->boshurl;
+        $this->_url         = $config->websocketurl;
         $this->_port        = 5222;
         $this->_host        = $host;
         $this->_domain      = $domain;
