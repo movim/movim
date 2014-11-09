@@ -90,5 +90,6 @@
         <?php 
             $this->displayFooterDebug();
         ?>
+        <script type="text/javascript">movim_onload();</script>
     </body>
 </html>

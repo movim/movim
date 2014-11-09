@@ -31,7 +31,7 @@ function setPresenceActions() {
     };
 }
 
-movim_add_onload(function()
+MovimWebsocket.attach(function()
 {
     setPresenceActions();
     postStart();

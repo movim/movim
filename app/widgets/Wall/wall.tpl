@@ -7,7 +7,7 @@
         {else}
             <div style="padding: 1.5em; text-align: center;">Ain't Nobody Here But Us Chickens...</div>
             <script type="text/javascript">
-                movim_add_onload(function() {
+                MovimWebsocket.attach(function() {
                     {$refresh}
                 });
             </script>

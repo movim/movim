@@ -4,7 +4,6 @@
  * Some basic functions essential for Movim
  */ 
 
-var movimPollHandlers = new Array();
 var onloaders = new Array();
 
 /**
