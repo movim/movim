@@ -99,7 +99,9 @@ class Bootstrap {
         define('APP_TITLE',     'Movim');
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
-        define('BASE_HOST',     $_SERVER['HTTP_HOST']);
+        if(isset($_SERVER['HTTP_HOST'])) {
+            define('BASE_HOST',     $_SERVER['HTTP_HOST']);
+        }
         define('BASE_URI',      $this->getBaseUri());
         define('CACHE_URI',     $this->getBaseUri() . 'cache/');
         

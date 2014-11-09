@@ -81,11 +81,13 @@ a:link, a:visited {
     position: absolute;
     top: 0em;
     right: 0em;
-    width: 3em;
-    height: 3em;
+    width: 2.6em;
+    height: 2.6em;
+    margin: 0.2em;
     background-size: 2em 2em;
     background-repeat: no-repeat;
     background-position: center center;
+    border-radius: 0.2em;
 }
 
 .protect.white:after { 
@@ -526,6 +528,9 @@ dl dt {
     text-align: right;
     font-weight: bold;
     width: 25%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 dl dd {

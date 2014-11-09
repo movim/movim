@@ -10,7 +10,7 @@ class Config extends Model {
     public $maxusers;
     public $loglevel;
     public $timezone;
-    public $boshurl;
+    public $websocketurl;
     public $xmppwhitelist;
     public $info;
     public $unregister;
@@ -35,7 +35,7 @@ class Config extends Model {
                 {"type":"string", "size":16, "mandatory":true  },
             "timezone" : 
                 {"type":"string", "size":16, "mandatory":true  },
-            "boshurl" : 
+            "websocketurl" : 
                 {"type":"string", "size":128, "mandatory":true  },
             "xmppwhitelist" : 
                 {"type":"text" },
@@ -60,7 +60,7 @@ class Config extends Model {
         $this->maxusers         = -1;
         $this->loglevel         = 'empty';
         $this->timezone         = 'Etc/GMT';
-        $this->boshurl          = 'http://localhost:5280/http-bind';
+        $this->websocketurl     = 'ws://localhost:5280';
         $this->xmppwhitelist    = '';
         $this->info             = '';
         $this->unregister       = false;
