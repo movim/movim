@@ -2,7 +2,7 @@
     <div class="protect red" title="{function="getFlagTitle("red")"}"></div>
     <h1 class="paddedtopbottom">{$c->__('title')}</h1>
     <script type="text/javascript">
-        movim_add_onload(function() {
+        MovimWebsocket.attach(function() {
             {$refresh}
         });
     </script>

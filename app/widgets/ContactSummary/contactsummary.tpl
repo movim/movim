@@ -2,7 +2,7 @@
     {$c->prepareContactSummary($contact)}
     
     <script type="text/javascript">
-        movim_add_onload(function()
+        MovimWebsocket.attach(function()
         {
             {$refresh}
         });

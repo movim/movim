@@ -25,7 +25,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    movim_add_onload(function()
+    MovimWebsocket.attach(function()
     {
         {$getaffiliations}
         {$getmetadata}

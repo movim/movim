@@ -76,7 +76,7 @@ function postLogin(jid, url) {
     movim_reload(url);
 }
 
-movim_add_onload(function()
+MovimWebsocket.attach(function()
 {
     if(localStorage.username != null)
         document.querySelector('#login').value = localStorage.username;

@@ -90,6 +90,14 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
     
     $conn2->on('error', function($msg) use ($logger) {
         $logger->notice("XMPP : Got error {$msg}");
+        $conn1->close();
+        $loop->stop();
+    });
+    
+    $conn2->on('close', function($msg) use ($logger) {
+        $logger->notice("XMPP : Got close {$msg}");
+        $conn1->close();
+        $loop->stop();
     });
 
     $obj = new \StdClass;
