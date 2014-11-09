@@ -1,4 +1,39 @@
 <div id="admincomp" class="tabelem paddedtop" title="{$c->__('admin.compatibility')}">
+    <figure class="block">
+        <div id="webserver">
+
+        </div>
+        <div id="movim-daemon" class="link vertical disabled"><i class="fa fa-cog"></i></div>
+        <div id="movim-browser" class="link horizontal success"><i class="fa fa-globe"></i></div>
+        <div id="browser-daemon" class="link horizontal error"><i class="fa fa-plug"></i></div>
+        <div id="daemon-xmpp" class="link horizontal success"><i class="fa fa-code"></i></div>
+        <div id="movim-database" class="link vertical {if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
+            <i class="fa fa-database"></i>
+        </div>
+        <div id="movim-api" class="link horizontal error"><i class="fa fa-puzzle-piece"></i></div>
+        <div id="browser">
+            Browser
+        </div>
+        <div id="movim">
+            Movim Core
+        </div>
+        <div id="daemon">
+            Movim Daemon
+        </div>
+        <div id="database" class="{if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
+            Database
+        </div>
+        <div id="api">
+            API
+        </div>
+        <div id="xmpp">
+            XMPP
+        </div>
+    </figure>
+    <div class="block">
+
+    </div>
+    
     <fieldset>
         <legend>{$c->__('admin.compatibility')}</legend>
         <div class="clear"></div>

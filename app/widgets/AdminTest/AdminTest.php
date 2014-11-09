@@ -18,7 +18,8 @@
 class AdminTest extends WidgetBase
 {
     function load() {
-
+        $this->addjs('admintest.js');
+        $this->addcss('admintest.css');
     }
 
     public function valid($what)
@@ -46,6 +47,11 @@ class AdminTest extends WidgetBase
 
     function display()
     {
+        $md = \modl\Modl::getInstance();
+        $supported = $md->getSupportedDatabases();
 
+        $this->view->assign('dbconnected', $md->_connected);
+        $this->view->assign('dbtype', $supported[$conf['type']]);
+        $this->view->assign('dbinfos', sizeof($md->check()));
     }
 }
