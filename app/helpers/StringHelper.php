@@ -239,10 +239,13 @@ function sizeToCleanSize($size)
  */
 function colorize($string, $color) {
     $colors = array(
+        'black'     => 30,
         'red'       => 31,
-        'blue'      => 34,
-        'yellow'    => 33,
         'green'     => 32,
+        'yellow'    => 33,
+        'blue'      => 34,
+        'purple'    => 35,
+        'turquoise' => 36,
         'white'     => 37
     );
 

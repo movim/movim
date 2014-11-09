@@ -19,6 +19,12 @@
 
     transition: background 0.5s;
 }
+
+#navtabs li.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 #navtabs li a {
     display: block; 
     line-height: 3em;
@@ -26,6 +32,7 @@
     width:100%;
     text-decoration: none;
     color: #555;
+    border-bottom: 2px solid transparent;
 }
 
 #navtabs li:hover a {

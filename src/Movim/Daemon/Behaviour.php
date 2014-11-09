@@ -9,8 +9,10 @@ class Behaviour implements MessageComponentInterface {
     //protected $process;
     protected $baseuri;
 
-    public function __construct($baseuri) {
-        echo "Movim daemon launched - Base URI : {$baseuri}\n";
+    public function __construct($baseuri, $port) {
+        echo colorize("Movim daemon launched\n", 'green');
+        echo colorize("Base URI :", 'green')." {$baseuri}\n";
+        echo colorize("WebSocket URL :", 'green')." http(s)://[your host adress]:{$port}\n";
         $this->baseuri = $baseuri;
     }
 
@@ -35,16 +37,7 @@ class Behaviour implements MessageComponentInterface {
                 $this->sessions[$sid]['process']->start($loop);
             }
             
-            echo "{$cookies['MOVIM_SESSION_ID']} : {$conn->resourceId} connected\n";
-        } else {
-            //var_dump(get_class_methods($conn->WebSocket->request));
-            //var_dump($conn->WebSocket->request->getBody());
-            //var_dump($conn->WebSocket->request->getHeaders());
-            //var_dump($conn->WebSocket->request->getParams());
-            //var_dump($conn->WebSocket->request->getCookies());
-            //var_dump($conn->WebSocket->request->getUrl());
-            //var_dump($conn->WebSocket->request->getState());
-            //var_dump($conn->WebSocket->request->getHeaderLines());
+            echo colorize($cookies['MOVIM_SESSION_ID'], 'yellow'). " : ".colorize($conn->resourceId." connected\n", 'green');
         }
     }
 
@@ -83,7 +76,7 @@ class Behaviour implements MessageComponentInterface {
                 }
 
                 $session_size = count($this->sessions[$from->sid]);
-                echo "{$from->sid} : {$from->resourceId} linker registered - session size {$session_size}\n";
+                echo colorize($from->sid, 'yellow')." : ".colorize($from->resourceId.' linker registered', 'green')." - session size {$session_size}\n";
                 break;
 
             // A message is received !
@@ -138,10 +131,12 @@ class Behaviour implements MessageComponentInterface {
                             echo "{$client->resourceId} disconnected to login\n";
                         }
                     }
-                    echo "{$conn->resourceId} linker disconnected - session size {$session_size}\n";
+                    echo colorize($sid, 'yellow')." : ".
+                         colorize($conn->resourceId.' linker disconnected', 'red')." - session size {$session_size}\n";
                     unset($this->sessions[$sid]);
                 } else {
-                    echo "{$conn->resourceId} disconnected - session size {$session_size}\n";
+                    echo colorize($sid, 'yellow')." : ".
+                         colorize($conn->resourceId.' disconnected', 'red')." - session size {$session_size}\n";
                     unset($this->sessions[$sid][$conn->resourceId]);
                 }
             }

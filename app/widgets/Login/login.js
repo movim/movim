@@ -113,3 +113,7 @@ MovimWebsocket.attach(function()
         movim_add_class('#loginpage', 'choose');
     }
 });
+
+movim_add_onload(function() {
+    //MovimWebsocket.unregister();
+});
