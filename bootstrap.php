@@ -283,8 +283,8 @@ class Bootstrap {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        //define('LOG_LEVEL', (int)$config->loglevel);
-        define('LOG_LEVEL', 2);
+        define('LOG_LEVEL', (int)$config->loglevel);
+        //define('LOG_LEVEL', 2);
     }
 
     private function loadModl() {
