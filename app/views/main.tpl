@@ -19,5 +19,7 @@
 </div>
 
 <div id="right">
-    <?php $this->widget('Roster');?>
+    <?php 
+        $this->widget('Roster');
+    ?>
 </div>
