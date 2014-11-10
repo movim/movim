@@ -2,7 +2,7 @@
     $cd = new \Modl\ConfigDAO();
     $config = $cd->get();
 ?><!DOCTYPE html>
-<html>
+<html ng-app="roster">
   <head>
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
@@ -10,8 +10,8 @@
     <meta name="description" content="<?php echo $config->description; ?>" />
     
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
-	<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
-	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
+    <link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
+    <script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     
     <meta name="viewport" content="width=device-width, user-scalable=no">
 

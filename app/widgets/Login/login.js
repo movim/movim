@@ -3,14 +3,6 @@ function fillExample(login, pass) {
     document.querySelector('#pass').value = pass;
 }
 
-Storage.prototype.setObject = function(key, value) {
-    this.setItem(key, JSON.stringify(value));
-}
-
-Storage.prototype.getObject = function(key) {
-    return JSON.parse(this.getItem(key));
-}
-
 /**
  * @brief Save a jid in the local storage
  * @param The jid to remember
