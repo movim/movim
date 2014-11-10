@@ -16,7 +16,7 @@
     text-align: center;
 }
 
-#roster:hover {
+#roster/*:hover*/ {
     overflow: auto;
 }
 

@@ -212,6 +212,24 @@ function movim_toggle_display(element) {
 
 }
 
+/**
+ * @brief Set object in localStorage
+ * @param key string
+ * @param value the object
+ */
+Storage.prototype.setObject = function(key, value) {
+    this.setItem(key, JSON.stringify(value));
+}
+
+/**
+ * @brief Get object in localStorage
+ * @param key
+ */
+Storage.prototype.getObject = function(key) {
+    return JSON.parse(this.getItem(key));
+}
+
+
 window.addEventListener('load', function () {
   Notification.requestPermission(function (status) {
     // This allows to use Notification.permission with Chrome/Safari
