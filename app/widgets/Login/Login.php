@@ -25,6 +25,19 @@ class Login extends WidgetBase
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
         $this->registerEvent('moxlerror', 'onMoxlError');
+        $this->registerEvent('session_start_handle', 'onStart');
+        $this->registerEvent('saslfailure', 'onSASLFailure');
+    }
+
+    function onStart($packet)
+    {
+        $pd = new \Modl\PresenceDAO();
+        $pd->clearPresence($this->user->getLogin());
+
+        // http://xmpp.org/extensions/xep-0280.html
+        \Moxl\Stanza\Carbons::enable();
+
+        RPC::call('postLogin', $this->user->getLogin(), Route::urlize('root'));
     }
 
     function display()
@@ -77,6 +90,10 @@ class Login extends WidgetBase
         } else{
             $this->view->assign('whitelist_display', false);
         }
+
+        $user = new User();
+        $color = $user->getConfig('color');
+        $this->view->assign('color', $color);
     }
 
     function onMoxlError($error) {
@@ -86,6 +103,35 @@ class Login extends WidgetBase
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
+    }
+
+    function onSASLFailure($packet)
+    {
+        $title = $this->__('error.fail_auth');
+
+        switch($packet->content) {
+            case 'not-authorized':
+                $warning = $this->__('error.wrong_account');
+                break;
+            case 'invalid-mechanism':
+                $warning = $this->__('error.mechanism');
+                break;
+            case 'malformed-request':
+                $warning = $this->__('error.mechanism');
+                break;
+            case 'bad-protocol':
+                $warning = $this->__('error.fail_auth');
+                break;
+            case 'bad-auth':
+                $warning = $this->__('error.wrong_account');
+                break;
+            default :
+                $warning = $this->__('error.fail_auth');
+                break;
+        }
+
+        RPC::call('remoteUnregister');
+        RPC::call('movim_desktop_notification', $title, $warning);
     }
 
     private function displayWarning($warning, $htmlonly = false)
@@ -264,20 +310,7 @@ class Login extends WidgetBase
         $sess = Session::start(APP_NAME);
         $sess->set('registered_events', $wrapper->registerEvents());
 
-        // BOSH + XMPP connexion test
-        $warning = \Moxl\API::login();
-        
-        if($warning != 'OK') {
-            RPC::call('movim_redirect', Route::urlize('login', $warning));
-            RPC::commit();
-        } else {
-            $pd = new modl\PresenceDAO();
-            $pd->clearPresence($element['login']);
-        
-            RPC::call('movim_remember_session', $element['login']);
-            RPC::call('movim_reload', Route::urlize('root'));
-            RPC::commit();
-        }
+        \Moxl\Stanza\Stream::init($host);
     }
 
     function ajaxGetRememberedSession($sessions)
@@ -306,15 +339,5 @@ class Login extends WidgetBase
 
         RPC::call('movim_fill', 'sessions', $sessionshtml->draw('_login_sessions', true));
         RPC::commit();
-    }
-
-    function ajaxGetConfig()
-    {
-        $s = new moxl\StorageGet();
-        $s->setXmlns('movim:prefs')
-          ->request();
-
-        $evt = new \Event();
-        $evt->runEvent('nostream');
     }
 }

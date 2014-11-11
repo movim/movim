@@ -1,17 +1,14 @@
 <?php
-if (!defined('DOCUMENT_ROOT')) die('Access denied');
 /**
  * @file RPC.php
- * This file is part of PROJECT.
+ * This file is part of Movim
  *
- * @brief Description
+ * @brief Handle incoming requests and call the widgets
  *
- * @author Etenil <etenil@etenilsrealm.nl>
+ * @author Jaussoin Timothée
  *
  * @version 1.0
- * @date 20 February 2011
- *
- * Copyright (C)2011 Etenil
+ * @date 28 october 2014
  *
  * All rights reserved.
  */
@@ -29,8 +26,12 @@ class RPC
 
         $args = func_get_args();
         array_shift($args);
-        
-        $args = array_map('trim', $args);
+
+        /*$args = array_map(
+            function($string) {
+                return preg_replace("/[\t\r\n]/", '', trim($string));
+            },
+            $args);*/
 
         if(self::filter($funcname, $args)) {
             $funcall = array(
@@ -60,65 +61,46 @@ class RPC
         return true;
     }
 
-    public static function cdata($text)
-    {
-        $args = func_get_args();
-        return '<![CDATA['.
-            $text.
-            ']]>';
-    }
-
     /**
      * Sends outgoing requests.
      */
     public static function commit()
     {
-        // Cleaning rubbish.
-        ob_clean();
-        ob_start();
+        return self::$funcalls;
+    }
 
-        // Just in case (warning)
-        if(!is_array(self::$funcalls)) {
-            self::$funcalls = array('ping');
-        }
-        
-        header('Content-Type: application/json');
-        printf('%s', json_encode(self::$funcalls));
-        
+    public static function clear()
+    {
+        self::$funcalls = array();
     }
 
     /**
      * Handles incoming requests.
      */
-    public function handle_json()
-    {
-        $json = file_get_contents('php://input');
+    public function handle_json($json)
+    {        
         $request = json_decode($json);
 
-        if(isset($_GET['do']) && $_GET['do'] == 'poll') {
-            \Moxl\API::ping();
-        } /*elseif((string)$request->widget == 'lazy') {
-            $l = new Lazy($request->params[0], $request->params[1]);
-        }*/ else {
-            // Loading the widget.
-            $widget_name = (string)$request->widget;
+        // Loading the widget.
+        $widget_name = (string)$request->widget;
 
-            // Preparing the parameters and calling the function.
-            $params = (array)$request->params;
+        // Preparing the parameters and calling the function.
+        $params = (array)$request->params;
 
-            $result = array();
-            
+        $result = array();
 
-            foreach($params as $p) {
-                if(is_object($p) && isset($p->container))
-                    array_push($result, (array)$p->container);
-                else
-                    array_push($result, $p);
-            }
+        $bc = new Bootstrap;
+        $bc->loadLanguage();
 
-            $widgets = WidgetWrapper::getInstance(false);
-            $widgets->runWidget($widget_name, (string)$request->func, $result);
+        foreach($params as $p) {
+            if(is_object($p) && isset($p->container))
+                array_push($result, (array)$p->container);
+            else
+                array_push($result, $p);
         }
+
+        $widgets = WidgetWrapper::getInstance(false);
+        $widgets->runWidget($widget_name, (string)$request->func, $result);
     }
 }
 

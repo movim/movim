@@ -1,6 +1,8 @@
 <span id="{$idhash}"></span>
 <article class="block" id="{$id}">
-    <div class="{$access}" title="{$flagtitle}"></div>
+    {if="$access"}
+        <div class="{$access}" title="{$flagtitle}"></div>
+    {/if}
     <header>
         <a href="{$friend}">
             {$avatar}

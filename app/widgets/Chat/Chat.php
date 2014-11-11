@@ -109,7 +109,7 @@ class Chat extends WidgetBase {
             RPC::call(
                 'notify',
                 $contact->getTrueName(),
-                $message->body,
+                trim($message->body),
                 $contact->getPhoto('m'));
         }
 

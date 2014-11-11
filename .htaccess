@@ -2,7 +2,7 @@ Options -Indexes
 AddType application/x-web-app-manifest+json .webapp
 <IfModule mod_rewrite.c>
     # Tell PHP that the mod_rewrite module is ENABLED.
-    SetEnv HTTP_MOD_REWRITE 1
+    #SetEnv HTTP_MOD_REWRITE 1
 
     # If you have troubles or use VirtualDocumentRoot
     # uncomment this and set it to the path where your Movim installation is
@@ -13,10 +13,10 @@ AddType application/x-web-app-manifest+json .webapp
     # RewriteBase /movim/
 
     RewriteBase /movim/
-    RewriteEngine On
+    #RewriteEngine On
 
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule (.*) index.php?query=$1 [L]
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    #RewriteCond %{REQUEST_FILENAME} !-f
+    #RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteRule (.*) index.php?query=$1 [L]
+    #RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>

@@ -29,6 +29,7 @@
                     <div class="clear"></div>
                 </div>
             {/if}
+            <script type="text/javascript">AdminTest.enableAPI();</script>
         {else}
             <div class="message info">
                 {$c->__('api.register')}

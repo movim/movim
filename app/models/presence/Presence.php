@@ -116,7 +116,6 @@ class Presence extends Model {
                         $this->publickey = (string)$c;
                         break;
                     case 'http://jabber.org/protocol/muc#user' :
-                        //\movim_log(serialize($c));
                         $this->muc          = true;
                         $this->mucrole         = (string)$c->item->attributes()->role;
                         $this->mucaffiliation  = (string)$c->item->attributes()->affiliation;

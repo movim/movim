@@ -47,6 +47,7 @@ class Bootstrap {
 
         if($loadmodlsuccess) {
             $this->startingSession();
+            $this->loadLanguage();
         } else {
             throw new Exception('Error loading Modl');
         }
@@ -98,8 +99,13 @@ class Bootstrap {
         define('APP_TITLE',     'Movim');
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
+        if(isset($_SERVER['HTTP_HOST'])) {
+            define('BASE_HOST',     $_SERVER['HTTP_HOST']);
+        }
         define('BASE_URI',      $this->getBaseUri());
         define('CACHE_URI',     $this->getBaseUri() . 'cache/');
+        
+        define('SESSION_ID',    getenv('sid'));
         
         define('THEMES_PATH',   DOCUMENT_ROOT . '/themes/');
         define('USERS_PATH',    DOCUMENT_ROOT . '/users/');
@@ -145,9 +151,13 @@ class Bootstrap {
             $uri .= str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
         }
 
-        $uri = str_replace('jajax.php', '', $uri);
-        
-        return $uri;
+        if(getenv('baseuri') != null
+        && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)
+        && sizeof(getenv('baseuri')) < 32) {
+            return getenv('baseuri');
+        } else {
+            return $uri;
+        }
     }
     
     private function loadSystem() {
@@ -199,6 +209,32 @@ class Bootstrap {
         require_once(APP_PATH . "widgets/WidgetCommon/WidgetCommon.php");
         require_once(APP_PATH . "widgets/Notification/Notification.php");
     }
+
+    /**
+     * Loads up the language, either from the User or default.
+     */
+    function loadLanguage() {
+        $user = new User();
+
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        
+        if($user->isLogged()) {
+            $lang = $user->getConfig('language');
+            if(isset($lang)) {
+                loadLanguage($lang);
+            } else {
+                // Load default language.
+                loadLanguage($config->locale);
+            }
+        }
+        else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            loadLanguageAuto();
+        }
+        else {
+            loadLanguage($config->locale);
+        }
+    }
     
     private function setLogs() {
         /*$cd = new \Modl\ConfigDAO();
@@ -248,6 +284,7 @@ class Bootstrap {
         $config = $cd->get();
 
         define('LOG_LEVEL', (int)$config->loglevel);
+        //define('LOG_LEVEL', 2);
     }
 
     private function loadModl() {
@@ -260,7 +297,7 @@ class Bootstrap {
         Modl\Utils::loadModel('Contact');
         Modl\Utils::loadModel('Privacy');
         Modl\Utils::loadModel('RosterLink');
-        Modl\Utils::loadModel('Session');
+        //Modl\Utils::loadModel('Session');
         Modl\Utils::loadModel('Cache');
         Modl\Utils::loadModel('Postn');
         Modl\Utils::loadModel('Subscription');
@@ -318,7 +355,7 @@ class Bootstrap {
                     $compatible = true;
             break;
             case 'IE':
-                if($browser_version > 9.0)
+                if($browser_version > 10.0)
                     $compatible = true;
             break;
             case 'Safari': // Also Chrome-Chromium
@@ -326,7 +363,7 @@ class Bootstrap {
                     $compatible = true;
             break;
             case 'Opera':
-                if($browser_version > 9.0)
+                if($browser_version > 12.1)
                     $compatible = true;
             break;
         }

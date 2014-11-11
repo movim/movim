@@ -4,7 +4,6 @@
  * Some basic functions essential for Movim
  */ 
 
-var movimPollHandlers = new Array();
 var onloaders = new Array();
 
 /**
@@ -23,7 +22,7 @@ function movim_onload()
 {
     for(var i = 0; i < onloaders.length; i++) {
         if(typeof(onloaders[i]) === "function")
-    	    onloaders[i]();
+            onloaders[i]();
     }
 }
 
@@ -52,26 +51,21 @@ function movim_title_inc() {
 	movim_show_cpt();
 }
 
-function movim_posts_unread(params) {
-    posts_cpt = params[0];
+function movim_posts_unread(cpt) {
+    posts_cpt = cpt;
     movim_show_cpt();
-}
-
-function movim_desktop_notification_arr(arr) {
-    movim_desktop_notification(arr[0], arr[1], arr[2]);
 }
 
 function movim_desktop_notification(title, body, image) {
     var notification = new Notification(title, { icon: image, body: body });
-
-    //notification.onshow = function() { setTimeout(notification.cancel(), 15000); }
+    notification.onshow = function() { setTimeout(this.cancel(), 15000); }
 }
 
 /**
  * TODO : remove this function
  */
-function movim_change_class(params) {
-    var node = document.getElementById(params[0]);
+function movim_change_class(element, classname, title) {
+    var node = document.getElementById(element);
     var tmp;
     for (var i = 0; i < node.childNodes.length; i++) {
         tmp=node.childNodes[i];
@@ -82,8 +76,8 @@ function movim_change_class(params) {
         }
     }      
 
-    privacy.className = params[1];
-    privacy.title = params[2];
+    privacy.className = classname;
+    privacy.title = title;
 }
 
 /**

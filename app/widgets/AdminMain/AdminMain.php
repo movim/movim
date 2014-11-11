@@ -67,9 +67,9 @@ class AdminMain extends WidgetBase
         $this->view->assign('conf', $cd->get());
         $this->view->assign('logs',
             array(
-                0 => t('Empty'),
-                1 => t('Syslog'),
-                2 => t('Syslog and Files'))
+                0 => $this->__('log.empty'),
+                1 => $this->__('log.syslog'),
+                2 => $this->__('log.syslog_files'))
         );
         $this->view->assign('envs',
             array(
@@ -80,11 +80,11 @@ class AdminMain extends WidgetBase
         $this->view->assign('bosh_info4',
             $this->__('bosh.info4', '<a href="http://wiki.movim.eu/en:install">', '</a>'));
 
-        $json = requestURL(MOVIM_API.'boshs', 1);
+        $json = requestURL(MOVIM_API.'websockets', 1);
         $json = json_decode($json);
 
-        if(isset($json)) {
-            $this->view->assign('boshs', $json);
+        if(isset($json) && $json->status != 404) {
+            $this->view->assign('websockets', $json);
         }
         
         $this->view->assign('timezones', getTimezoneList());
