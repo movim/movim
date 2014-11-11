@@ -25,7 +25,7 @@ class Login extends WidgetBase
         $this->addjs('login.js');
         $this->registerEvent('config', 'onConfig');
         $this->registerEvent('moxlerror', 'onMoxlError');
-        $this->registerEvent('start_handle', 'onStart');
+        $this->registerEvent('session_start_handle', 'onStart');
         $this->registerEvent('saslfailure', 'onSASLFailure');
     }
 

@@ -95,9 +95,9 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
     });
     
     $conn2->on('close', function($msg) use ($logger) {
-        $logger->notice("XMPP : Got close {$msg}");
-        $conn1->close();
-        $loop->stop();
+        $logger->notice("XMPP : Got close");
+        if(isset($conn1)) $conn1->close();
+        if(isset($loop)) $loop->stop();
     });
 
     $obj = new \StdClass;

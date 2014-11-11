@@ -28,8 +28,8 @@ class Visio extends WidgetBase
     	$this->addjs('turn.js');
 
         $this->registerEvent('jinglesessioninitiate',   'onSessionInitiate');
-        $this->registerEvent('sessioninitiate_erroritemnotfound',   'onInitiationError');
-        $this->registerEvent('sessioninitiate_errorunexpectedrequest',   'onInitiationError');
+        $this->registerEvent('jingle_sessioninitiate_erroritemnotfound',   'onInitiationError');
+        $this->registerEvent('jingle_sessioninitiate_errorunexpectedrequest',   'onInitiationError');
         $this->registerEvent('jinglesessionterminate',  'onSessionTerminate');
         $this->registerEvent('jinglesessionaccept',     'onSessionAccept');
         $this->registerEvent('jingletransportinfo',     'onTransportInfo');
