@@ -74,8 +74,7 @@ class UpdateItem extends Action
         
         $rd = new \modl\RosterLinkDAO();
         $rd->update($r);
-        
-        $evt = new \Event();
-        $evt->runEvent('rosterupdateditem', $this->_to);
+
+        $this->deliver();
     }
 }

@@ -61,10 +61,15 @@ abstract class Payload
      * @return void
      */
     final public function deliver() {
-        $class = strtolower(get_class($this));
-        $pos = strrpos($class, '\\');
-        $key = substr($class, $pos + 1);
-
+        $action_ns = 'Moxl\Xec\Action';
+        if(get_parent_class($this) == $action_ns) {
+            $class = str_replace(array($action_ns, '\\'), array('', '_'), get_class($this));
+            $key = strtolower(substr($class, 1));
+        } else {
+            $class = strtolower(get_class($this));
+            $pos = strrpos($class, '\\');
+            $key = substr($class, $pos + 1);
+        }
         if($this->method)
             $key = $key . '_' . $this->method;
 

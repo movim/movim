@@ -53,7 +53,6 @@ class Start extends Action
         $session->password = 'hidden';
         
         $this->pack($session);
-
         $this->deliver();
     }
 }

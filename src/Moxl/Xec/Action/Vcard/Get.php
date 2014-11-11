@@ -72,11 +72,13 @@ class Get extends Action
             
             $c->createThumbnails();
             
-            if(!$jid || $this->_to == $jid)
-                $evt->runEvent('myvcard');
-                
-            $evt->runEvent('vcard', $c);
-            $evt->runEvent('roster');
+            /*if(!$jid || $this->_to == $jid)
+                $evt->runEvent('myvcard');*/
+
+            $this->pack($c);
+            $this->deliver();
+            //$evt->runEvent('vcard', $c);
+            //$evt->runEvent('roster');
         }
     }
     

@@ -66,7 +66,6 @@ class Unavaiable extends Action
 
     // Fixme ? For the moment this method is used only for the MUC requests
     public function handle($stanza, $parent = false) {
-        /*
         $cd = new \modl\ConferenceDAO();
         $conf = $cd->get($this->_to);
         $conf->status = 0;
@@ -80,6 +79,6 @@ class Unavaiable extends Action
         $md->clearMuc($this->_to);
         
         $evt = new \Event();
-        $evt->runEvent('muc_presence', false);*/
+        $evt->runEvent('muc_presence', false);
     }
 }

@@ -58,7 +58,7 @@ class GetList extends Action
         $rd->clearRosterLink();
         $rd->setList($list);
         
-        $evt->runEvent('roster');
+        $this->deliver();
     }
     
     public function load($key) {}

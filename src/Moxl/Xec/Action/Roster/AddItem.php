@@ -60,13 +60,11 @@ class AddItem extends Action
         $rd = new \modl\RosterLinkDAO();
         $rd->setNow($r);
 
-        $evt = new \Event();
-        $evt->runEvent('roster');
+        $this->deliver();
     }
     
     public function errorServiceUnavailable() 
     {
-        var_dump('Handle the Error !');
     }
     
     public function load($key) {}
