@@ -2,7 +2,6 @@
     var app = angular.module("roster", []);
 
     app.controller("RosterMenuController", function(){
-
         this.checkoutAddJid = function(event){
             if(event.key == "Enter")
                 Roster_ajaxSearchContact(event.target.value);
@@ -10,8 +9,8 @@
     });
 
     app.controller("RosterController", function($scope){
-        $scope.contacts = localStorage.getObject('rosterContacts') || [];
-        $scope.groups = localStorage.getObject('rosterGroups') || [];
+        $scope.contacts = /*localStorage.getObject('rosterContacts') ||*/ [];
+        $scope.groups = /*localStorage.getObject('rosterGroups') ||*/ [];
 
         /* Dictionaries */
         $scope.lookupgroups = {};
@@ -19,7 +18,7 @@
         $scope.lookupressource = {};
         
         $scope.initContacts = function(list){
-            $scope.contacts = [];
+            //$scope.contacts = [];
             for(i=0; i<list.length; i++){
                 /* New group */
                 if(!(list[i].groupname in $scope.lookupgroups)){
@@ -61,7 +60,7 @@
         };
 
         $scope.initGroups = function(list){
-            $scope.groups = [];
+            //$scope.groups = [];
             for (i in list){
                 if(localStorage.getItem("rosterGroup_"+i) == null){
                     list[i] = true;

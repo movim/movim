@@ -29,8 +29,10 @@ class Roster extends WidgetBase
         $this->addcss('roster.css');
         $this->addjs('angular.js');
         $this->addjs('roster.js');
-        $this->registerEvent('roster', 'onRoster');
-        $this->registerEvent('rosterupdateditem', 'onRoster');
+        $this->registerEvent('roster_getlist_handle', 'onRoster');
+        $this->registerEvent('roster_additem_handle', 'onRoster');
+        $this->registerEvent('roster_removeitem_handle', 'onRoster');
+        $this->registerEvent('roster_updateitem_handle', 'onRoster');
         $this->registerEvent('presence', 'onPresence');
     }
 
@@ -116,6 +118,8 @@ class Roster extends WidgetBase
         $contacts = $contactdao->getRoster();
         
         $capsarr = $this->getCaps();
+
+        $result = array();
         
         if(isset($contacts)) {
             foreach($contacts as &$c) {
@@ -132,7 +136,7 @@ class Roster extends WidgetBase
         //Groups
         $rd = new \Modl\RosterLinkDAO();
         $groups = $rd->getGroups();
-        if(!in_array("ungrouped"))$groups[] = "ungrouped";
+        if(!in_array("ungrouped", $groups)) $groups[] = "ungrouped";
         $groups = array_flip($groups);
         $result['groups'] = json_encode($groups);
         
