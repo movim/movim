@@ -25,7 +25,7 @@ class ContactSummary extends WidgetCommon
     function load()
     {
         $this->addcss('contactsummary.css');
-        $this->registerEvent('vcard', 'onVcard');
+        $this->registerEvent('vcard_get_handle', 'onVcard');
     }
     
     function display()
@@ -51,13 +51,14 @@ class ContactSummary extends WidgetCommon
             $contact = new modl\Contact();
             $contact->jid = $_GET['f'];
             $this->view->assign('contact', $contact);
-            
-            $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'"));
         }
+
+        $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'"));
     }
     
-    function onVcard($contact)
+    function onVcard($packet)
     {
+        $contact = $packet->content;
         $html = $this->prepareContactSummary($contact);
         RPC::call('movim_fill', 'contactsummary', $html);
     }

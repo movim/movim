@@ -2,7 +2,7 @@
     $cd = new \Modl\ConfigDAO();
     $config = $cd->get();
 ?><!DOCTYPE html>
-<html ng-app="rosterAngular">
+<html ng-app="roster">
   <head>
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
@@ -29,6 +29,8 @@
 
         $this->addCss('css/template.css');
 
+        $this->widget('System');
+
         $this->scripts();
 
         $this->addCss('css/mobile.css');
@@ -42,7 +44,7 @@
         if(isset($color)) {
             echo '
             <style type="text/css">
-                body, nav {
+                nav {
                     background-color: #'.$color.';
                     animation: none;
                     -webkit-animation: none;
@@ -58,7 +60,6 @@
             </style>';
         }
     ?>
-    <?php $this->widget('System');?>
   </head>
     <body>
         <noscript>
@@ -86,11 +87,9 @@
                 © <a href="http://www.movim.eu">Movim</a> • 2008 - 2014 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
             </footer>
         </div>
-        <script type="text/javascript">
-            movim_onload();
-        </script>
         <?php 
             $this->displayFooterDebug();
         ?>
+        <script type="text/javascript">movim_onload();</script>
     </body>
 </html>

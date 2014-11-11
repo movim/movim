@@ -46,6 +46,7 @@ h1 {
 
 #right {
     width: 100%;
+    top: 0;
     position: relative;
 }
 

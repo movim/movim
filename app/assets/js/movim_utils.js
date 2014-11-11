@@ -25,7 +25,11 @@ function movim_get_node(str) {
  */
 function movim_disconnect(error)
 {
-    window.location.replace(ERROR_URI + error);
+    if(error == null) {
+        window.location.replace(ERROR_URI);
+    } else {
+        window.location.replace(ERROR_URI + error);
+    }
 }
 
 /**
@@ -197,10 +201,7 @@ function movim_button_reset(element) {
  * @param string the selector of the element
  */
 function movim_toggle_display(element) {
-    if (element.constructor === Array)
-        var node = movim_get_node(element[0]);
-    else
-        var node = movim_get_node(element);
+    var node = movim_get_node(element);
 
     if(node != null) {
         if(node.style.display == 'block')
@@ -210,6 +211,24 @@ function movim_toggle_display(element) {
     }
 
 }
+
+/**
+ * @brief Set object in localStorage
+ * @param key string
+ * @param value the object
+ */
+Storage.prototype.setObject = function(key, value) {
+    this.setItem(key, JSON.stringify(value));
+}
+
+/**
+ * @brief Get object in localStorage
+ * @param key
+ */
+Storage.prototype.getObject = function(key) {
+    return JSON.parse(this.getItem(key));
+}
+
 
 window.addEventListener('load', function () {
   Notification.requestPermission(function (status) {

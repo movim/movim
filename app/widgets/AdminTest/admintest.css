@@ -1,0 +1,112 @@
+figure {
+    width: 100%;
+    height: 40em;
+    position: relative;
+}
+
+figure div {
+    display: block;
+    width: 20%;
+    margin-top: -2.5em;
+    margin-left: -10%;
+    background-color: #EEE;
+    border-radius: 0.2em;
+    text-align: center;
+    position: absolute;
+    line-height: 5em;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+figure div#webserver {
+    width: 50%;
+    height: 30em;
+    border: 0.5em solid gray;
+    width: 26%;
+    border-radius: 0.2em;
+    height: 22em;
+    border: 0.5em dashed #F5F5F5;
+    left: 46%;
+    background-color: transparent;
+    top: 10%;
+}
+
+figure div#movim_block { left: 50%; top: 50%; }
+figure div#database_block { left: 50%; top: 85%; }
+figure div#xmpp_block { left: 85%; top: 15%; }
+figure div#browser_block { left: 15%; top: 15%; line-height: 19em; }
+figure div#daemon_block { left: 50%; top: 15%; }
+figure div#api_block { left: 85%; top: 50%; }
+
+figure div.link {
+    width: 0;
+    height: 0;
+    border-radius: 1em;
+    padding: 0.25em;
+    line-height: 0em;
+    overflow: initial;
+}
+
+figure div.link i {
+    background-color: white;
+    margin-top: -0.75em;
+    padding: 0.25em;
+    border-radius: 2em;
+    font-size: 2em;
+}
+
+figure div.disabled    { background-color: rgba(0, 0, 0, 0.1); color: white;}
+figure div.success     { background-color: #6FCC43; color: white; }
+figure div.warning     { background-color: #FC8F12; color: white; }
+figure div.error       { background-color: #D92727; color: white; } 
+
+figure div.link.disabled    { color: #CCC; }
+figure div.link.success     { color: #6FCC43; }
+figure div.link.warning     { color: #FC8F12; }
+figure div.link.error       { color: #D92727; } 
+
+figure div.link.horizontal {
+    width: 35%;
+}
+
+figure div.link.vertical {
+    height: 35%;
+}
+
+figure div.link.vertical i {
+    top: 50%;
+    position: absolute;
+    margin-left: -0.75em;
+}
+
+figure div.link#movim-daemon {
+    left: 60%;
+    top: 20%;
+}
+
+figure div.link#movim-database {
+    left: 60%;
+    top: 55%;
+}
+
+figure div.link#movim-browser {
+    left: 25%;
+    top: 55%;
+}
+
+figure div.link#browser-daemon {
+    left: 25%;
+    top: 20%;
+}
+
+figure div.link#daemon-xmpp {
+    left: 60%;
+    top: 20%;
+}
+
+figure div.link#movim-api {
+    left: 60%;
+    top: 55%;
+}

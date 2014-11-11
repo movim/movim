@@ -3,14 +3,6 @@ function fillExample(login, pass) {
     document.querySelector('#pass').value = pass;
 }
 
-Storage.prototype.setObject = function(key, value) {
-    this.setItem(key, JSON.stringify(value));
-}
-
-Storage.prototype.getObject = function(key) {
-    return JSON.parse(this.getItem(key));
-}
-
 /**
  * @brief Save a jid in the local storage
  * @param The jid to remember
@@ -67,13 +59,22 @@ function backToChoose() {
     movim_add_class('#loginpage', 'choose');
 }
 
-movim_add_onload(function()
+/**
+ * @brief Post login requests
+ */
+function postLogin(jid, url) {
+    rememberSession(jid);
+    localStorage.postStart = 1;
+    movim_reload(url);
+}
+
+MovimWebsocket.attach(function()
 {
     if(localStorage.username != null)
         document.querySelector('#login').value = localStorage.username;
 
+    // The form submission event
     form = document.querySelector('form[name="login"]');
-    
     form.onsubmit = function(e) {
         e.preventDefault();
 
@@ -87,9 +88,24 @@ movim_add_onload(function()
         rememberSession(localStorage.username);
     };
 
+    // We hide the Websocket error
+    document.querySelector('#loginpage #warning .websocket').style.display = 'none';
+
+    // We enable the form
+    var inputs = document.querySelectorAll('#loginpage input[disabled]');
+    for (var i = 0; i < inputs.length; i++)
+    {
+        inputs[i].disabled = false;
+    }
+
+    // We get the previous sessions
     Login_ajaxGetRememberedSession(localStorage.getItem('previousSessions'));
 
     if(localStorage.getItem('previousSessions') != null) {
         movim_add_class('#loginpage', 'choose');
     }
+});
+
+movim_add_onload(function() {
+    //MovimWebsocket.unregister();
 });

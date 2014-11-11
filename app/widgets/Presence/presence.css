@@ -1,72 +1,146 @@
-#logout {
-    font-size: 1em;
-    color: #ccc;
-}
-
-#logout .online     { background-image: url(img/online.svg); }
-#logout .away       { background-image: url(img/away.svg); }
-#logout .dnd        { background-image: url(img/dnd.svg); }
-#logout .xa         { background-image: url(img/xa.svg); }
-#logout .disconnect { background-image: url(img/exit.svg); text-decoration: none;}
-
-#logouttab {
-	top: 0px;
-	cursor: pointer;
-    z-index: 5;
-    line-height: 3em;
-    background-repeat: no-repeat;
-    background-position: 1em center;
-    color: white;
-    width: 7em;
-
-    transition: background 1s;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-#logouttab, #logoutlist {
+#presence_widget {
+    max-width: 15rem;
     position: fixed;
-    right: 15rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding-left: 3em;
-    padding-right: 1em;
-    background-size: 16px 16px;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    padding: 0.3em;
+    box-sizing: border-box;
 }
 
-#logouttab:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+#presence_widget img.avatar {
+    width: 2em;
+    float: left;
+    border-radius: 3em;
+    position: relative;
+    margin-right: 1em;
 }
 
-#logoutlist {
-    top: -100%;
-    transition: top 0.5s ease;
-    z-index: 1;
-    background-color: rgba(20, 20, 20, 0.9);
-    width: 10em;
+#presence_widget span.bubble {
+    left: 1.4em;
+    top: 1.4em;
+    width: 0.9em;
+    height: 0.9em;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    border-radius: 2em;
+    display: inline-block;
+    position: absolute;
 }
 
-#logoutlist.show {
-    top: 3em;
-}
+#presence_widget .online span.bubble { background-color: #6FCC43; }
+#presence_widget .away   span.bubble { background-color: #FFE433; }
+#presence_widget .dnd    span.bubble { background-color: #D92727; }
+#presence_widget .xa     span.bubble { background-color: #442178; }
 
-#logoutlist a {
-    display: block;
-    line-height: 3em;
-    background-repeat: no-repeat;
-    background-position: 1em center;
-    background-size: 16px 16px;
-    padding-left: 3em;
-    padding-right: 1em;
-    margin-left: -3em;
-    margin-right: -1em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+#presence_widget #tab {
     color: white;
+    height: 2.5em;
+    padding: 0.2em;
+    width: 14.4rem;
+    box-sizing: border-box;
+    float: right;
+    position: relative;
 }
 
-#logoutlist a:hover {
-    cursor: pointer; 
-    background-color: rgba(0, 0, 0, 0.1);
+#presence_widget #tab:hover {
+    cursor: pointer;
+    border-radius: 0.05em;
+    background-color: rgba(255, 255, 255, 0.2);
 }
+
+#presence_widget span.arrow {
+    float: right;
+    padding-right: 0.5em;
+    line-height: 2em;
+}
+
+#presence_widget span.name,
+#presence_widget span.status {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#presence_widget span.status {
+    font-weight: normal;
+    font-size: 0.8em;
+    color: #DDD;
+    display: block;
+}
+
+#presence_widget #list {
+    width: 14.4rem;
+    background-color: white;
+    display: none;
+    z-index: 6;
+}
+
+#presence_widget #list .tab {
+    padding: 0.2em;
+}
+
+#presence_widget #list .tab span.name {
+    line-height: 2em;
+}
+
+#presence_widget #list .tab:hover {
+    cursor: pointer;
+    border-radius: 0.1em;
+}
+
+#presence_widget.unfolded #tab {
+    display: none;
+}
+
+#presence_widget.unfolded #list {
+    display: block;
+    border-radius: 0.1em;
+    box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.4);
+}
+
+#presence_widget textarea.status {
+    margin: 0.5em 0;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border: 0;
+    width: 100%;
+    border-bottom: 1px solid #D4D4D4;
+    height: 2.7em;
+    resize: none;
+}
+
+@media screen and (max-width: 1024px) {
+    #presence_widget #tab {
+        width: auto;
+    }
+}
+
+#presence_widget #list a {
+    position: relative;
+    clear: both;
+    display: block;
+    font-weight: normal;
+    line-height: 2.8em;
+    padding: 0 1em;
+}
+
+#presence_widget #list a:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#presence_widget #list a i {
+    float: right;
+    line-height: 2.8em;
+    margin: 0;
+}
+
+#presence_widget #list span.bubble {
+    box-shadow: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    float: right;
+    margin-top: 1em;
+    position: initial;
+}
+

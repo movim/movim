@@ -53,7 +53,7 @@ class Location extends WidgetBase
               ->setGeo($geo)
               ->request();
         } else {
-            Notification::appendNotification($this->__('wrong_postition'), 'error');
+            Notification::appendNotification($this->__('location.wrong_postition'), 'error');
         }
     }
     
@@ -62,7 +62,7 @@ class Location extends WidgetBase
         $html = $me->getPlace();
         RPC::call('movim_fill', 'mapdata', $html);
         
-        Notification::appendNotification($this->__('updated'), 'success');
+        Notification::appendNotification($this->__('location.updated'), 'success');
         RPC::commit();
     }
     
@@ -100,14 +100,14 @@ class Location extends WidgetBase
                     class="button color green" 
                     style="margin-top: 1em;"
                     onclick="getMyPosition(); this.style.display = \'none\';">
-                    <i class="fa fa-compass"></i> '.t('Update my position').'
+                    <i class="fa fa-compass"></i> '.$this->__('location.update').'
                 </a>
                 <a 
                     id="mypossubmit" 
                     style="display: none; margin-top: 1em; float: right;"
                     class="button color green merged left" 
                     onclick="'.$submit.' hidePositionChoice();">
-                    <i class="fa fa-check"></i> '.t('Accept').'</a>
+                    <i class="fa fa-check"></i> '.$this->__('button.accept').'</a>
             </div>';
         
         return $html;

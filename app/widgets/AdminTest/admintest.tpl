@@ -1,36 +1,87 @@
-<div id="admincomp" class="tabelem paddedtop" title="{$c->__('admin.compatibility')}">
-    <fieldset>
-        <legend>{$c->__('admin.compatibility')}</legend>
-        <div class="clear"></div>
+<div id="admincomp" class="tabelem" title="{$c->__('admin.compatibility')}">
+    <div class="block">
+        <figure>
+            <div id="webserver">
+
+            </div>
+            <div id="movim-daemon" class="link vertical disabled"><i class="fa fa-cog"></i></div>
+            <div id="movim-browser" class="link horizontal success"><i class="fa fa-globe"></i></div>
+            <div id="browser-daemon" class="link horizontal error"><i class="fa fa-plug"></i></div>
+            <div id="daemon-xmpp" class="link horizontal success"><i class="fa fa-code"></i></div>
+            <div id="movim-database" class="link vertical {if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
+                <i class="fa fa-database"></i>
+            </div>
+            <div id="movim-api" class="link horizontal disabled"><i class="fa fa-puzzle-piece"></i></div>
+            <div id="browser_block">
+                Browser
+            </div>
+            <div id="movim_block">
+                Movim Core
+            </div>
+            <div id="daemon_block">
+                Movim Daemon
+            </div>
+            <div id="database_block" class="{if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
+                Database
+            </div>
+            <div id="api_block">
+                API
+            </div>
+            <div id="xmpp_block">
+                XMPP
+            </div>
+        </figure>
+    </div>
+
+    <div class="block">
         <p>
             {$c->__('compatibility.info')}
-        </p><br />
-           
-        <div class="{$c->valid($c->version())}">
-            {$c->__('compatibility.php', PHP_VERSION)}
-        </div>
-        <div class="{$c->valid(extension_loaded('curl'))}">
-            {$c->__('compatibility.curl')}
-        </div>
-        <div class="{$c->valid(extension_loaded('gd'))}">
-            {$c->__('compatibility.gd')}
-        </div>
-        <div class="{$c->valid(extension_loaded('SimpleXml'))}">
-            {$c->__('compatibility.simplexml')}
-        </div>
-        <div class="{$c->valid($c->testDir(DOCUMENT_ROOT))}">
-            {$c->__('compatibility.rights')}
-        </div>
-        <div class="{$c->valid(extension_loaded('OpenSSL'))}">
-            {$c->__('compatibility.openssl')}
-        </div>
-    </fieldset>
-
-    <fieldset>
-        <legend>{$c->__('compatibility.rewrite')}</legend>
-            <div class="clear"></div>
-            <div class="{$c->valid($_SERVER['HTTP_MOD_REWRITE'])}">
-                {$c->__('compatibility.rewrite')}
+        </p>
+        
+        {if="$dbconnected"}
+            {if="$dbinfos > 0"}
+                <div class="message warning">
+                    <i class="fa fa-refresh"></i> The database need to be updated, go to the database panel to fix this
+                </div>
+            {else}
+                <script type="text/javascript">AdminTest.databaseOK = true</script>
+            {/if}
+        {else}
+            <div class="message error">
+                <i class="fa fa-database"></i> Database connection error, check if database configuration exist in the <code>config/</code> folder and fill it with proper values
             </div>
-    </fieldset>
+        {/if}
+
+        <div id="websocket_error" class="message error">
+            <i class="fa fa-plug"></i> WebSocket connection error, check if the Movim Daemon is running and is reacheable 
+        </div>
+
+        {if="!$c->version()"}
+            <div class="message error">
+                <i class="fa fa-code"></i> {$c->__('compatibility.php', PHP_VERSION)}
+            </div>
+            <script type="text/javascript">AdminTest.disableMovim()</script>
+        {/if}
+
+        {if="!extension_loaded('gd')"}
+            <div class="message error">
+                <i class="fa fa-file-image-o"></i> {$c->__('compatibility.gd')}
+            </div>
+            <script type="text/javascript">AdminTest.disableMovim()</script>
+        {/if}
+
+        {if="!$c->testDir(DOCUMENT_ROOT)"}
+            <div class="message error">
+                <i class="fa fa-folder"></i> {$c->__('compatibility.rights')}
+            </div>
+            <script type="text/javascript">AdminTest.disableMovim()</script>
+        {/if}
+
+        {if="!$_SERVER['HTTP_MOD_REWRITE']"}
+            <div class="message info">
+                <i class="fa fa-pencil"></i> {$c->__('compatibility.rewrite')}
+            </div>
+        {/if}
+    </div>
+
 </div>
