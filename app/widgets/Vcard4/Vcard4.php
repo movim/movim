@@ -31,12 +31,13 @@ class Vcard4 extends WidgetBase
     {
         $cd = new \Modl\ContactDAO();
         $me = $cd->get($this->user->getLogin());
+
+        $this->view->assign(
+            'getvcard',
+            $this->genCallAjax('ajaxGetVcard')
+            );
         
         if($me == null) {
-            $this->view->assign(
-                'getvcard',
-                $this->genCallAjax('ajaxGetVcard')
-                );
             $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
         } else {
             $this->view->assign('form', $this->prepareForm($me));
