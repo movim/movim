@@ -28,7 +28,7 @@
     
     <a 
         name="submit" 
-        class="button black" 
+        class="button color green" 
         onclick="{$submit} this.style.display = 'none';">
         <i class="fa fa-check"></i> {$c->__('button.save')}
     </a>
