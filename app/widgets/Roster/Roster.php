@@ -30,10 +30,10 @@ class Roster extends WidgetBase
         $this->addjs('angular.js');
         $this->addjs('roster.js');
         $this->registerEvent('roster_getlist_handle', 'onRoster');
-        $this->registerEvent('roster_additem_handle', 'onRoster');
-        $this->registerEvent('roster_removeitem_handle', 'onRoster');
-        $this->registerEvent('roster_updateitem_handle', 'onRoster');
-        $this->registerEvent('presence', 'onPresence');
+        $this->registerEvent('roster_additem_handle', 'onUpdate');
+        $this->registerEvent('roster_removeitem_handle', 'onDelete');
+        $this->registerEvent('roster_updateitem_handle', 'onUpdate');
+        $this->registerEvent('presence', 'onUpdate');
     }
 
     function display()
@@ -41,7 +41,15 @@ class Roster extends WidgetBase
 
     }
 
-    function onPresence($packet)
+    function onDelete($packet)
+    {
+        $jid = $packet->content;
+        if($jid != null){
+            RPC::call('deleteContact', $jid);
+        }
+    }
+
+    function onUpdate($packet)
     {
         $contacts = $packet->content;
         if($contacts != null){
@@ -53,8 +61,9 @@ class Roster extends WidgetBase
                 $this->prepareContact($ac, $c, $this->getCaps());
                 $c = $ac;
             }
-            RPC::call('updatePresence', json_encode($contacts));
+            RPC::call('updateContact', json_encode($contacts));
         }
+        else movim_log("NULL !");
     }
 
     function onRoster()
