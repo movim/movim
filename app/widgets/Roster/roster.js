@@ -205,6 +205,29 @@ function updatePresence(tab){
     angular.element(roster).scope().updatePresence(JSON.parse(tab));
 }
 
+function locationOf(element, array, comparer, start, end) {
+    if (array.length === 0)
+        return -1;
+
+    start = start || 0;
+    end = end || array.length;
+    var pivot = (start + end) >> 1;  // should be faster than the above calculation
+
+    var c = comparer(element, array[pivot]);
+    if (end - start <= 1) return c == -1 ? pivot - 1 : pivot;
+
+    switch (c) {
+        case -1: return locationOf(element, array, comparer, start, pivot);
+        case 0: return pivot;
+        case 1: return locationOf(element, array, comparer, pivot, end);
+    };
+};
+
+// sample for objects like {lastName: 'Miller', ...}
+var groupnameCompare = function (a, b) {
+    return a.agroup.localeCompare(b.agroup);
+};
+
 function showHideOffline() {
     if(localStorage.getItem("rosterShow_offline") != "true" ){
         document.querySelector('ul#rosterlist').className = 'offlineshown';
