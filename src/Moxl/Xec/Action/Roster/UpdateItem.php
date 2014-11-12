@@ -75,6 +75,10 @@ class UpdateItem extends Action
         $rd = new \modl\RosterLinkDAO();
         $rd->update($r);
 
+        $cd = new \Modl\ContactDAO();
+        $c = $cd->getRosterItem($this->_to, true);
+
+        $this->pack($c);
         $this->deliver();
     }
 }

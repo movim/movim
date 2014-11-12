@@ -60,6 +60,9 @@ class AddItem extends Action
         $rd = new \modl\RosterLinkDAO();
         $rd->setNow($r);
 
+        $cd = new \Modl\ContactDAO();
+        $c = $cd->getRosterItem($this->_to, true);
+
         $this->deliver();
     }
     

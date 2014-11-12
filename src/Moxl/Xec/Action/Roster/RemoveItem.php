@@ -55,6 +55,7 @@ class RemoveItem extends Action
         $rd = new \modl\RosterLinkDAO();
         $rd->delete($this->_to);
 
+        $this->pack($this->_to);
         $this->deliver();
     }
 
