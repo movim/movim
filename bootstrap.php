@@ -284,7 +284,6 @@ class Bootstrap {
         $config = $cd->get();
 
         define('LOG_LEVEL', (int)$config->loglevel);
-        //define('LOG_LEVEL', 2);
     }
 
     private function loadModl() {
@@ -297,7 +296,6 @@ class Bootstrap {
         Modl\Utils::loadModel('Contact');
         Modl\Utils::loadModel('Privacy');
         Modl\Utils::loadModel('RosterLink');
-        //Modl\Utils::loadModel('Session');
         Modl\Utils::loadModel('Cache');
         Modl\Utils::loadModel('Postn');
         Modl\Utils::loadModel('Subscription');
