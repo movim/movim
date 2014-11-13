@@ -42,8 +42,12 @@ class AdminTest extends WidgetBase
         $md = \modl\Modl::getInstance();
         $supported = $md->getSupportedDatabases();
 
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
         $this->view->assign('dbconnected', $md->_connected);
         $this->view->assign('dbtype', $supported[$conf['type']]);
         $this->view->assign('dbinfos', sizeof($md->check()));
+        $this->view->assign('websocketurl', $config->websocketurl);
     }
 }

@@ -204,6 +204,21 @@ function cleanJid($jid)
     return reset(explode('/', $jid));
 }
 
+/*
+ *  Explode JID
+ */
+function explodeJid($jid)
+{
+    list($jid, $resource) = explode('/', $jid);
+    list($username, $server) = explode('@', $jid);
+
+    return array(
+        'username'  => $username,
+        'server'    => $server,
+        'ressource' => $resource
+        );
+}
+
 /**
  * Return a URIfied string
  * @param string

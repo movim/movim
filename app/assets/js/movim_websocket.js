@@ -22,7 +22,6 @@ WebSocket.prototype.unregister = function() {
  */
 
 var MovimWebsocket = {
-
     launchAttached : function() {
         for(var i = 0; i < this.attached.length; i++) {
             this.attached[i]();
@@ -43,7 +42,6 @@ var MovimWebsocket = {
 
             if(obj.id) {
                 localStorage.movimSession = obj.id;
-                console.log('GNAP');
                 document.cookie = 'MOVIM_SESSION_ID=' + obj.id;
                 this.register();
             }
@@ -85,7 +83,7 @@ var MovimWebsocket = {
         if(funcalls != null) {
             for(h = 0; h < funcalls.length; h++) {
                 var funcall = funcalls[h];
-
+                //console.log(funcall);
                 if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
                     try {
                         window[funcall.func].apply(null, funcall.params);
