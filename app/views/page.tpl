@@ -57,6 +57,9 @@
             echo '
             <style type="text/css">
                 body { font-size: '.$size.'px; }
+                @media screen and (max-width: 1024px) {
+                    body { font-size: '.floor($size*1.15).'px; }
+                }
             </style>';
         }
     ?>
