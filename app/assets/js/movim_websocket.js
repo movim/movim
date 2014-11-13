@@ -22,7 +22,6 @@ WebSocket.prototype.unregister = function() {
  */
 
 var MovimWebsocket = {
-
     launchAttached : function() {
         for(var i = 0; i < this.attached.length; i++) {
             this.attached[i]();
