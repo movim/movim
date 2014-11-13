@@ -7,7 +7,7 @@
             <div id="movim-daemon" class="link vertical disabled"><i class="fa fa-cog"></i></div>
             <div id="movim-browser" class="link horizontal success"><i class="fa fa-globe"></i></div>
             <div id="browser-daemon" class="link horizontal error"><i class="fa fa-plug"></i></div>
-            <div id="daemon-xmpp" class="link horizontal success"><i class="fa fa-code"></i></div>
+            <div id="daemon-xmpp" class="link horizontal error"><i class="fa fa-code"></i></div>
             <div id="movim-database" class="link vertical {if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
                 <i class="fa fa-database"></i>
             </div>
@@ -55,6 +55,10 @@
         <div id="websocket_error" class="message error">
             <i class="fa fa-plug"></i> WebSocket connection error, check if the Movim Daemon is running and is reacheable 
         </div>
+        
+        <div id="xmpp_websocket_error" class="message error">
+            <i class="fa fa-plug"></i> XMPP Websocket connection error, please check the validity of the URL given in the General Configuration. <code>{$websocketurl}</code>
+        </div>
 
         {if="!$c->version()"}
             <div class="message error">
@@ -83,5 +87,5 @@
             </div>
         {/if}
     </div>
-
+    <script type="text/javascript">AdminTest.testXMPPWebsocket('{$websocketurl}');</script>
 </div>
