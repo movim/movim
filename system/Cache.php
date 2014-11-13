@@ -66,7 +66,7 @@ class Cache
             if(isset($content) && $content != "") {
                 return $content;
             } else {
-                return false; // FALSE is better for testing.
+                return null;
             }
         }
 
