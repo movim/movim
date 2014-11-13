@@ -63,7 +63,6 @@ class Roster extends WidgetBase
             }
             RPC::call('updateContact', json_encode($contacts));
         }
-        else movim_log("NULL !");
     }
 
     function onRoster()

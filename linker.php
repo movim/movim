@@ -14,13 +14,16 @@ $dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);
 
 $connector = new Ratchet\Client\Factory($loop);
 
+$cd = new \Modl\ConfigDAO();
+$config = $cd->get();
+
 //setcookie('PHPENV', getenv('sid'), time()+3600);
 /*
 $connector_xmpp = new React\SocketClient\Connector($loop, $dns);
 $secure_connector_xmpp = new React\SocketClient\SecureConnector($connector_xmpp, $loop);
 * $secure_connector_xmpp->create('movim.eu', 5222)*/
 
-React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:5290/', ['xmpp'])])->then(function($conns) use ($loop) {
+React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector($config->websocketurl, ['xmpp'])])->then(function($conns) use ($loop) {
     list($conn1, $conn2) = $conns;
 
     $logger = new \Zend\Log\Logger();
@@ -31,7 +34,7 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
         if($msg != '') {
             $rpc = new RPC();
             $rpc->handle_json($msg);
-            //$logger->notice("LOOP : Got message {$msg}");
+            $logger->notice("LOOP : Got message {$msg}");
 
             $xml = \Moxl\API::commit();
             \Moxl\API::clear();
@@ -51,6 +54,18 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
                 $conn1->send(json_encode($obj));
             }
         }
+    });
+
+    $conn1->on('error', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("LOOP : Got error {$msg}");
+        $conn2->close();
+        $loop->stop();
+    });
+    
+    $conn1->on('close', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("LOOP : Got close");
+        if($conn2 != null) $conn2->close();
+        if($loop  != null) $loop->stop();
     });
     
     $conn2->on('message', function($msg) use ($conn1, $logger, $conn2, $loop) {
@@ -88,16 +103,16 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector('ws://movim.eu:
         }
     });
     
-    $conn2->on('error', function($msg) use ($logger) {
+    $conn2->on('error', function($msg) use ($conn1, $logger, $conn2, $loop) {
         $logger->notice("XMPP : Got error {$msg}");
         $conn1->close();
         $loop->stop();
     });
     
-    $conn2->on('close', function($msg) use ($logger) {
+    $conn2->on('close', function($msg) use ($conn1, $logger, $conn2, $loop) {
         $logger->notice("XMPP : Got close");
-        if(isset($conn1)) $conn1->close();
-        if(isset($loop)) $loop->stop();
+        if($conn1 != null) $conn1->close();
+        if($loop  != null) $loop->stop();
     });
 
     $obj = new \StdClass;
