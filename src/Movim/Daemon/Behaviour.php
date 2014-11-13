@@ -6,7 +6,6 @@ use Ratchet\ConnectionInterface;
 
 class Behaviour implements MessageComponentInterface {
     protected $sessions = array(); // Store the sessions
-    //protected $process;
     protected $baseuri;
 
     public function __construct($baseuri, $port) {
@@ -52,9 +51,9 @@ class Behaviour implements MessageComponentInterface {
         
         switch ($msg->func) {
             // The browser ask for a new session
-            case 'unregister':            
+            case 'unregister':
                 if(array_key_exists('linker', $this->sessions[$sid])) {
-                    $this->sessions[$sid]['process']->terminate();
+                    $this->sessions[$sid]['linker']->close();
                 }
                 break;
 

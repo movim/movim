@@ -9,10 +9,10 @@
             <a class="button color green icon users" href="{$c->route('explore')}">{$c->__('page.explore')}</a>
         </span>
 
-        <div ng-show="contacts.length" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}">
+        <div ng-show="contacts.length" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}" ng-hide="group.tombstone">
             <h1 ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</h1>
             <!--ng-hide="myjid.tombstone == 'true'" -->
-            <li ng-repeat="myjid in group.agroupitems" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
+            <li ng-repeat="myjid in group.agroupitems" ng-hide="myjid.tombstone" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
                 <!-- Rostersearch look this way for an angularJS solution http://www.bennadel.com/blog/2487-filter-vs-nghide-with-ngrepeat-in-angularjs.htm -->
                 <ul class="contact">
                     <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)" >
