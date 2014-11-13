@@ -43,7 +43,6 @@ var MovimWebsocket = {
 
             if(obj.id) {
                 localStorage.movimSession = obj.id;
-                console.log('GNAP');
                 document.cookie = 'MOVIM_SESSION_ID=' + obj.id;
                 this.register();
             }
