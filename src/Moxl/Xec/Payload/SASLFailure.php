@@ -29,6 +29,9 @@ namespace Moxl\Xec\Payload;
 class SASLFailure extends Payload
 {
     public function handle($stanza, $parent = false) {
+        $session = \Sessionx::start();
+        $session->destroy();
+        
         $this->pack($stanza->children()->getName());
         $this->deliver();
     }
