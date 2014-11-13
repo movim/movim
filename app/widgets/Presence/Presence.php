@@ -63,7 +63,7 @@ class Presence extends WidgetBase
             $show = 'chat';
 
         if($presence == null|| !isset($presence['status']) || $presence['status'] == '')
-            $presence = 'Online with Movim';
+            $status = 'Online with Movim';
 
         Cache::c(
             'presence', 
