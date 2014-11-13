@@ -34,7 +34,7 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector($config->websoc
         if($msg != '') {
             $rpc = new RPC();
             $rpc->handle_json($msg);
-            //$logger->notice("LOOP : Got message {$msg}");
+            $logger->notice("LOOP : Got message {$msg}");
 
             $xml = \Moxl\API::commit();
             \Moxl\API::clear();
@@ -54,6 +54,18 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector($config->websoc
                 $conn1->send(json_encode($obj));
             }
         }
+    });
+
+    $conn1->on('error', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("LOOP : Got error {$msg}");
+        $conn2->close();
+        $loop->stop();
+    });
+    
+    $conn1->on('close', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("LOOP : Got close");
+        if($conn2 != null) $conn2->close();
+        if($loop  != null) $loop->stop();
     });
     
     $conn2->on('message', function($msg) use ($conn1, $logger, $conn2, $loop) {
@@ -91,13 +103,13 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector($config->websoc
         }
     });
     
-    $conn2->on('error', function($msg) use ($logger) {
+    $conn2->on('error', function($msg) use ($conn1, $logger, $conn2, $loop) {
         $logger->notice("XMPP : Got error {$msg}");
         $conn1->close();
         $loop->stop();
     });
     
-    $conn2->on('close', function($msg) use ($logger) {
+    $conn2->on('close', function($msg) use ($conn1, $logger, $conn2, $loop) {
         $logger->notice("XMPP : Got close");
         if($conn1 != null) $conn1->close();
         if($loop  != null) $loop->stop();
