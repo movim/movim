@@ -6,6 +6,7 @@
     pointer-events: auto;
     height: 100%;
 }
+
 #roster:after {
     content: "";
     display: block;

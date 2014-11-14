@@ -97,7 +97,7 @@ $scope.list.push(list);
                 /* A known jid has been moved to a new group */
                 if (list[0].jid in $scope.lookupjid){
                     /* Create the group and put the jid in it */
-                    $scope.contacts.push({
+                    el = {
                         'agroup': list[0].groupname,
                         'agroupitems': [{
                             'ajid':     list[0].jid,
@@ -106,11 +106,13 @@ $scope.list.push(list);
                             'tombstone': false,
                         }],
                         'tombstone': false,
-                    });
+                    }
+                    pushInPlace(el, $scope.contacts, groupnameCompare);
                     
                     /* Kill jid from old location or whole group if it's the only jid */
-                    if($scope.lookupgroups[$scope.lookupjid[list[0].jid].ajiditems[0].groupname].agroupitems.length == 1)
-                        $scope.lookupgroups[$scope.lookupjid[list[0].jid].ajiditems[0].groupname].tombstone = true;
+                    oldgroupname = $scope.lookupjid[list[0].jid].ajiditems[0].groupname;
+                    if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
+                        $scope.lookupgroups[oldgroupname].tombstone = true;
                     else
                         $scope.lookupjid[list[0].jid].tombstone = true;
                     
@@ -145,8 +147,12 @@ $scope.list.push(list);
             }
             /* Known jid in another existing group */
             else if(!($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname)){
-                /* Kill jid from old location */
-                $scope.lookupjid[list[0].jid].tombstone = true;
+                /* Kill jid from old location or whole group if it's the only jid */
+                oldgroupname = $scope.lookupjid[list[0].jid].ajiditems[0].groupname;
+                if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
+                    $scope.lookupgroups[oldgroupname].tombstone = true;
+                else
+                    $scope.lookupjid[list[0].jid].tombstone = true;
                 
                 /* Add to new group */
                 l = $scope.lookupgroups[list[0].groupname].agroupitems.length;
@@ -259,6 +265,7 @@ $scope.list.push(list);
     });
 })();
 
+/* Functions to call angular inner functions */
 function initContacts(tab){
     angular.element(roster).scope().initContacts(JSON.parse(tab));
 }
@@ -275,17 +282,23 @@ function deleteContact(jid){
     angular.element(roster).scope().deleteContact(jid);
 }
 
+function pushInPlace(element, array, comparer, start, end){
+    index = locationOf(element, array, comparer, start, end);
+    return array.splice(index, 0, element);
+};
+
 function locationOf(element, array, comparer, start, end) {
     if (array.length === 0)
         return -1;
 
     start = start || 0;
     end = end || array.length;
-    var pivot = (start + end) >> 1;  // should be faster than the above calculation
-
+    var pivot = (start + end) >> 1;  // >>1 = /2
     var c = comparer(element, array[pivot]);
-    if (end - start <= 1) return c == -1 ? pivot - 1 : pivot;
-
+    if (end - start <= 1){ 
+        return (c == -1 && pivot > 0) ? pivot - 1 : pivot;
+    }
+    
     switch (c) {
         case -1: return locationOf(element, array, comparer, start, pivot);
         case 0: return pivot;
@@ -293,11 +306,21 @@ function locationOf(element, array, comparer, start, end) {
     };
 };
 
-// sample for objects like {lastName: 'Miller', ...}
-var groupnameCompare = function (a, b) {
+/* Object comparison functions */
+var groupnameCompare = function(a, b) {
+    console.log(a.agroup+" vs "+b.agroup);
     return a.agroup.localeCompare(b.agroup);
 };
 
+var jidPresenceCompare = function(a, b) {
+    return a.value - b.aval;
+};
+
+var jidCompare = function(a, b) {
+    return a.jid.localeCompare(b.ajid);
+};
+
+/* Old functions still in use */
 function showHideOffline() {
     if(localStorage.getItem("rosterShow_offline") != "true" ){
         document.querySelector('ul#rosterlist').className = 'offlineshown';
