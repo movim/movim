@@ -16,7 +16,7 @@
     text-align: center;
 }
 
-#roster/*:hover*/ {
+#roster:hover {
     overflow: auto;
 }
 
@@ -27,7 +27,7 @@
     width: 100%;    
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 #roster input[name=search] {
@@ -54,7 +54,7 @@
     margin-bottom: 3em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 /* Display/hide the elements */
@@ -280,7 +280,7 @@
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 #rostermenu li.show_hide:before {
