@@ -6,6 +6,11 @@
     pointer-events: auto;
     height: 100%;
 }
+#roster:after {
+    content: "";
+    display: block;
+    height: 3em;
+}
 
 #roster span.nocontacts {
     color: white;
@@ -16,7 +21,7 @@
     text-align: center;
 }
 
-#roster:hover {
+#roster/*:hover */{
     overflow: auto;
 }
 
