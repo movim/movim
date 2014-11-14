@@ -71,6 +71,7 @@ $scope.list = [];
 
         $scope.initGroups = function(list){
             //$scope.groups = [];
+            console.log(list);
             for (i in list){
                 if(localStorage.getItem("rosterGroup_"+i) == null){
                     list[i] = true;
@@ -194,11 +195,11 @@ $scope.list.push(list);
         this.showHideGroup = function(g){
             ls = localStorage.getItem("rosterGroup_"+g);
             if(ls == null){
-                ls = localStorage.getItem("rosterGroup_ungrouped");
-                g = "ungrouped";
+                ls = localStorage.getItem("rosterGroup_Ungrouped");
+                g = "Ungrouped";
             }
 
-            ls = ls == 'true' ? 'false' : 'true';
+            ls = (ls == 'true' || ls == true) ? 'false' : 'true';
 
             localStorage.setItem("rosterGroup_"+g, ls);
             $scope.groups[g] = ls;
@@ -217,7 +218,7 @@ $scope.list.push(list);
             if(typeof $scope.groups[grp] != "undefined"){
                 return $scope.groups[grp];
             }
-            else return $scope.groups["ungrouped"];
+            else return $scope.groups["Ungrouped"];
         };
 
         this.offlineIsShown = function(){
@@ -271,6 +272,7 @@ function initContacts(tab){
 }
 
 function initGroups(tab){
+    console.log(JSON.parse(tab));
     angular.element(roster).scope().initGroups(JSON.parse(tab));
 }
 
@@ -282,6 +284,7 @@ function deleteContact(jid){
     angular.element(roster).scope().deleteContact(jid);
 }
 
+/* === Keeping arrays sorted === */
 function pushInPlace(element, array, comparer, start, end){
     index = locationOf(element, array, comparer, start, end);
     return array.splice(index, 0, element);
@@ -308,7 +311,7 @@ function locationOf(element, array, comparer, start, end) {
 
 /* Object comparison functions */
 var groupnameCompare = function(a, b) {
-    console.log(a.agroup+" vs "+b.agroup);
+    //console.log(a.agroup+" vs "+b.agroup);
     return a.agroup.localeCompare(b.agroup);
 };
 
@@ -320,7 +323,9 @@ var jidCompare = function(a, b) {
     return a.jid.localeCompare(b.ajid);
 };
 
-/* Old functions still in use */
+
+
+/* === Old functions still in use === */
 function showHideOffline() {
     if(localStorage.getItem("rosterShow_offline") != "true" ){
         document.querySelector('ul#rosterlist').className = 'offlineshown';
