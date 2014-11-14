@@ -9,7 +9,7 @@
             <a class="button color green icon users" href="{$c->route('explore')}">{$c->__('page.explore')}</a>
         </span>
 
-        <div ng-show="contacts.length" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}" ng-hide="group.tombstone">
+        <div ng-show="contacts.length && !group.tombstone" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup) == 'true'}" >
             <h1 ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</h1>
             <!--ng-hide="myjid.tombstone == 'true'" -->
             <li ng-repeat="myjid in group.agroupitems" ng-hide="myjid.tombstone" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
