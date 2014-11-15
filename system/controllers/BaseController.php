@@ -15,6 +15,7 @@ class BaseController {
         $this->page->addScript('movim_tpl.js');
         $this->page->addScript('movim_rpc.js');
         $this->page->addScript('movim_websocket.js');
+        $this->page->addScript('pako_inflate.js');
     }
 
     /**
