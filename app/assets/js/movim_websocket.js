@@ -38,7 +38,10 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            var obj = JSON.parse(e.data);
+            console.log(e.data.length);
+            data = pako.ungzip(base64_decode(e.data), { to: 'string' });
+            console.log(data.length);
+            var obj = JSON.parse(data);
 
             if(obj.id) {
                 localStorage.movimSession = obj.id;
@@ -53,8 +56,8 @@ var MovimWebsocket = {
             if(obj.func == 'disconnected') {
                 movim_disconnect();
             }
-
-            MovimWebsocket.handle(e.data);
+            
+            MovimWebsocket.handle(data);
         };
     },
 
