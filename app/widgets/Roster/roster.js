@@ -18,7 +18,6 @@ $scope.list = [];
         /* Dictionaries */
         $scope.lookupgroups = {};
         $scope.lookupjid = {};
-        $scope.lookupressource = {};
 
         $scope.initContacts = function(list){
             //$scope.contacts = [];
@@ -49,10 +48,8 @@ $scope.list = [];
                     $scope.lookupjid[list[i].jid] = $scope.lookupgroups[list[i].groupname].agroupitems[l];
                 }
                 /* New ressource */
-                if(!(list[i].jid+"/"+list[i].ressource in $scope.lookupressource)){
-                    l = $scope.lookupjid[list[i].jid].ajiditems.length;
+                if(!$scope.isInJidItems(list[i].jid, list[i].ressource)){
                     $scope.lookupjid[list[i].jid].ajiditems.push(list[i]);
-                    $scope.lookupressource[list[i].jid + "/" + list[i].ressource] = $scope.lookupjid[list[i].jid].ajiditems[l];
                 }
             }
             /* Sort jid by presence in each group and update jid dictionary */
@@ -173,11 +170,6 @@ $scope.list.push(list);
             $scope.lookupjid[list[0].jid].ajiditems = list;
             /* Update the value of the global presence */
             $scope.lookupjid[list[0].jid].aval = list[0].value;
-            /* Update the ressources dictionary */
-            for(i=0; i<list.length; i++){
-                resid = list[i].jid + "/" + list[i].ressource;
-                $scope.lookupressource[resid] = $scope.lookupjid[list[0].jid].ajiditems[i];
-            }
 
              /*
              * Sort jid array of the concerned group by global presence of each jid
@@ -263,6 +255,16 @@ $scope.list.push(list);
             if(c.client) liclass += " client "+c.client;
             return liclass;
         };
+        
+        /* === Removing Ressource lookup === */
+        $scope.isInJidItems = function(jid, ressource){
+            l = $scope.lookupjid[jid].ajiditems.length;
+            for(i=0; i<l; i++){
+                if($scope.lookupjid[jid].ajiditems[i].ressource == ressource)
+                    return true;
+            }
+            return false;
+        }
     });
 })();
 
@@ -286,8 +288,14 @@ function deleteContact(jid){
 
 /* === Keeping arrays sorted === */
 function pushInPlace(element, array, comparer, start, end){
+    dico = array === $scope.contacts ? $scope.lookupgroups : $scope.lookupjid;
+    
     index = locationOf(element, array, comparer, start, end);
-    return array.splice(index, 0, element);
+    array.splice(index, 0, element);
+    
+    for(i=index; i<array.length; i++){
+        dico[array[i].agroup] = array[i];
+    }
 };
 
 function locationOf(element, array, comparer, start, end) {
