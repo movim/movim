@@ -86,6 +86,9 @@ MovimWebsocket.attach(function()
 
         localStorage.username = document.querySelector('#login').value;
         rememberSession(localStorage.username);
+
+        // A fallback security
+        setTimeout("MovimWebsocket.unregister()", 15000);
     };
 
     // We hide the Websocket error

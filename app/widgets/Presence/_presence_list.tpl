@@ -31,8 +31,8 @@
         spellcheck="false"
         placeholder="{$c->__('status.here')}"
         onload="movim_textarea_autoheight(this);"
-        onkeyup="movim_textarea_autoheight(this);">{$p->status}</textarea>
-    
+        onkeyup="movim_textarea_autoheight(this);">{if="isset($p)"}{$p->status}{/if}</textarea>
+
     <a onclick="{$callchat} movim_toggle_class('#logoutlist', 'show');" class="online"><span class="bubble"></span>{$txt[1]}</a>
     <a onclick="{$callaway} movim_toggle_class('#logoutlist', 'show');" class="away"><span class="bubble"></span>{$txt[2]}</a>
     <a onclick="{$calldnd}  movim_toggle_class('#logoutlist', 'show');" class="dnd"><span class="bubble"></span>{$txt[3]}</a>
