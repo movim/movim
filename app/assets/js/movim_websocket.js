@@ -38,9 +38,7 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            console.log(e.data.length);
             data = pako.ungzip(base64_decode(e.data), { to: 'string' });
-            console.log(data.length);
             var obj = JSON.parse(data);
 
             if(obj.id) {
@@ -113,6 +111,11 @@ function remoteUnregister()
 {
     MovimWebsocket.unregister();
 }
+
+window.onbeforeunload = function() {
+    MovimWebsocket.connection.onclose = function () {}; // disable onclose handler first
+    MovimWebsocket.connection.close()
+};
 
 // And we start it
 MovimWebsocket.init();
