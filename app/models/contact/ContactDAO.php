@@ -353,7 +353,20 @@ class ContactDAO extends SQL {
     }
     function getRoster() {
         $this->_sql = '
-        select * from rosterlink
+        select
+            contact.jid,
+            contact.fn,
+            contact.name,
+            contact.nickname,
+            contact.tuneartist,
+            contact.tunetitle,
+            rosterlink.rostername,
+            rosterlink.groupname,
+            presence.status,
+            presence.ressource,
+            presence.value,
+            presence.delay
+        from rosterlink
         left outer join presence
         on rosterlink.jid = presence.jid and rosterlink.session = presence.session
         left outer join contact
@@ -397,7 +410,20 @@ class ContactDAO extends SQL {
     
     function getRosterItem($jid, $item = false) {
         $this->_sql = '
-        select * from rosterlink
+        select
+            contact.jid,
+            contact.fn,
+            contact.name,
+            contact.nickname,
+            contact.tuneartist,
+            contact.tunetitle,
+            rosterlink.rostername,
+            rosterlink.groupname,
+            presence.status,
+            presence.ressource,
+            presence.value,
+            presence.delay
+        from rosterlink
         left outer join presence
         on rosterlink.jid = presence.jid and rosterlink.session = presence.session
         left outer join contact
