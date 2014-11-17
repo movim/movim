@@ -11,8 +11,8 @@
 
     /* Controller for Rosterlist */
     app.controller("RosterController", function($scope){
-        $scope.contacts = /*localStorage.getObject('rosterContacts') ||*/ [];
-        $scope.groups = /*localStorage.getObject('rosterGroups') ||*/ [];
+        $scope.contacts = [];
+        $scope.groups = [];
 $scope.list = [];
 
         /* Dictionaries */
@@ -20,58 +20,58 @@ $scope.list = [];
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
-            //$scope.contacts = [];
 //$scope.list = list;
-            for(var i=0; i<list.length; i++){
+            for(var i = 0; i<list.length; i++){
                 /* New group */
                 if(!(list[i].groupname in $scope.lookupgroups)){
-                    l = $scope.contacts.length;
-                    $scope.contacts.push({
+                    el = {
                         'agroup': list[i].groupname,
                         'agroupitems': [],
                         'tombstone': false,
-                    });
-                    $scope.lookupgroups[list[i].groupname] = $scope.contacts[l];
+                    };
+                    $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
                     
                     /* Create a reference in the localstorage for toggling */
                     localStorage.setItem("rosterGroup_"+list[0].groupname, true);
                 }
                 /* New jid */
                 if(!(list[i].jid in $scope.lookupjid)){
-                    l = $scope.lookupgroups[list[i].groupname].agroupitems.length;
-                    $scope.lookupgroups[list[i].groupname].agroupitems.push({
+                    el = {
                         'ajid':     list[i].jid,
                         'aval':     list[i].value,
                         'ajiditems': [],
                         'tombstone': false,
-                    });
-                    $scope.lookupjid[list[i].jid] = $scope.lookupgroups[list[i].groupname].agroupitems[l];
+                    };
+                    $scope.pushInPlace(el, $scope.lookupgroups[list[i].groupname].agroupitems, jidAvalCompare);
                 }
-                /* New ressource */
+                /* New ressource (can't just push the whole set of same jid because there is no set) */
                 if(!$scope.isInJidItems(list[i].jid, list[i].ressource)){
-                    $scope.lookupjid[list[i].jid].ajiditems.push(list[i]);
+                    $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, ressourceCompare);                    
                 }
             }
-            
             /* Sort jid by presence in each group and update jid dictionary */
-            for(i=0; i<$scope.contacts.length; i++){
-                $scope.contacts[i].agroupitems.sort(function(a, b){return a.aval - b.aval;});
-                for(var j=0; j<$scope.contacts[i].agroupitems.length; j++){
+            for(var i = 0; i < $scope.contacts.length; i++){
+                //$scope.contacts[i].agroupitems.sort(function(a, b){return a.aval - b.aval;});
+                for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
                     jid = $scope.contacts[i].agroupitems[j].jid;
                     $scope.lookupjid[jid] = $scope.contacts[i].agroupitems[j];
                 }
             }
             
-            /* Sort groups alphabetically */
-            $scope.contacts.sort(function(a, b){return a.agroup.localeCompare(b.agroup);});
-            
             $scope.$apply();
         };
-
+        
+        $scope.isInJidItems = function(jid, ressource){
+            l = $scope.lookupjid[jid].ajiditems.length;
+            for(var i = 0; i < l; i++){
+                if($scope.lookupjid[jid].ajiditems[i].ressource == ressource)
+                    return true;
+            }
+            return false;
+        }
+        
         $scope.initGroups = function(list){
-            //$scope.groups = [];
-            //console.log(list);
-            for(i in list){
+            for (i in list){
                 if(localStorage.getItem("rosterGroup_"+i) == null){
                     list[i] = true;
                     localStorage.setItem("rosterGroup_"+i, true);
@@ -89,22 +89,30 @@ $scope.list = [];
             $scope.$apply();
         };
         
-        $scope.isInJidItems = function(jid, ressource){
-            l = $scope.lookupjid[jid].ajiditems.length;
-            for(var i=0; i<l; i++){
-                if($scope.lookupjid[jid].ajiditems[i].ressource == ressource)
-                    return true;
+        $scope.pushInPlace = function(element, array, comparer){
+            if(array === $scope.contacts){
+                dico = $scope.lookupgroups;
+                key = "agroup";
+            } else {
+                dico = $scope.lookupjid;
+                key = "ajid";
+            }    
+            /* Put element in the right place inside array */
+            index = locationOf(element, array, comparer); 
+            /*if(comparer == ressourceCompare)
+                console.log("index = "+index);*/
+            array.splice(index, 0, element);
+            /* Update dictionnary from the appropriate index */
+            for(var i=index; i<array.length; i++){
+                dico[(array[i][key])] = array[i];
             }
-            return false;
-        }
-        
+        };
+
         $scope.updateContact = function(list){
-            console.log("updateContact");
-            console.log($scope);
-            //$scope.list.push(list);
+$scope.list.push(list);
             /* New group */
             if(!(list[0].groupname in $scope.lookupgroups)) {
-                //l = $scope.contacts.length;
+                l = $scope.contacts.length;
                 /* A known jid has been moved to a new group */
                 if (list[0].jid in $scope.lookupjid){
                     /* Create the group and put the jid in it */
@@ -117,7 +125,7 @@ $scope.list = [];
                             'tombstone': false,
                         }],
                         'tombstone': false,
-                    };
+                    }
                     pushInPlace(el, $scope.contacts, groupnameCompare);
                     
                     /* Kill jid from old location or whole group if it's the only jid */
@@ -127,21 +135,17 @@ $scope.list = [];
                     else
                         $scope.lookupjid[list[0].jid].tombstone = true;
                     
-                    /* Update jid dictionary */
+                    /* Update dictionaries */
+                    $scope.lookupgroups[list[0].groupname] = $scope.contacts[l];
                     $scope.lookupjid[list[0].jid] = $scope.lookupgroups[list[0].groupname].agroupitems[0];
                 }
                 /* An unknown jid in an unknown group */
                 else {
-                    el = {
-                        'agroup': list[0].groupname,
-                        'agroupitems': [],
-                    };
-                    pushInPlace(el, $scope.contacts, groupnameCompare);
-                    /*$scope.contacts.push({
+                    $scope.contacts.push({
                         'agroup': list[0].groupname,
                         'agroupitems': [],
                     });
-                    $scope.lookupgroups[list[0].groupname] = $scope.contacts[l];*/
+                    $scope.lookupgroups[list[0].groupname] = $scope.contacts[l];
                 }
                 
                 /* Create a reference in the localstorage for toggling */
@@ -150,21 +154,14 @@ $scope.list = [];
             
             /* New jid */
             if(!(list[0].jid in $scope.lookupjid)){
-                //l = $scope.lookupgroups[list[0].groupname].agroupitems.length;
-                el = {
-                    'ajid':     list[0].jid,
-                    'aval':     list[0].value,
-                    'ajiditems': list,
-                    'tombstone': false,
-                };
-                pushInPlace(el, $scope.lookupgroups[list[0].groupname].agroupitems, jidCompare);
-                /*$scope.lookupgroups[list[0].groupname].agroupitems.push({
+                l = $scope.lookupgroups[list[0].groupname].agroupitems.length;
+                $scope.lookupgroups[list[0].groupname].agroupitems.push({
                     'ajid':     list[0].jid,
                     'aval':     list[0].value,
                     'ajiditems': [],
                     'tombstone': false,
                 });
-                $scope.lookupjid[list[0].jid] = $scope.lookupgroups[list[0].groupname].agroupitems[l];*/
+                $scope.lookupjid[list[0].jid] = $scope.lookupgroups[list[0].groupname].agroupitems[l];
             }
             /* Known jid in another existing group */
             else if(!($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname)){
@@ -176,44 +173,33 @@ $scope.list = [];
                     $scope.lookupjid[list[0].jid].tombstone = true;
                 
                 /* Add to new group */
-                //l = $scope.lookupgroups[list[0].groupname].agroupitems.length;
-                el = {
+                l = $scope.lookupgroups[list[0].groupname].agroupitems.length;
+                $scope.lookupgroups[list[0].groupname].agroupitems.push({
                     'ajid':     list[0].jid,
                     'aval':     list[0].value,
                     'ajiditems': list,
                     'tombstone': false,
-                };
-                pushInPlace(el, $scope.lookupgroups[list[0].groupname].agroupitems, jidCompare);
-                /*$scope.lookupgroups[list[0].groupname].agroupitems.push({
-                    'ajid':     list[0].jid,
-                    'aval':     list[0].value,
-                    'ajiditems': list,
-                    'tombstone': false,
-                });*/
+                });
                 
                 /* Update JID dictionary */
-                //$scope.lookupjid[list[0].jid] = $scope.lookupgroups[list[0].groupname].agroupitems[l];
+                $scope.lookupjid[list[0].jid] = $scope.lookupgroups[list[0].groupname].agroupitems[l];
+                
             }
 
-            /* 
-             * THESE HAS TO BE DONE IN ANY CASE
-             * {
-             * Replace the ajiditems by the new list of ressource 
-             * $scope.lookupjid[list[0].jid].ajiditems = list;
-             * Update the value of the global presence 
-             * $scope.lookupjid[list[0].jid].aval = list[0].value;
-             * }
-            */
+            /* Replace the ajiditems by the new list of ressource */
+            $scope.lookupjid[list[0].jid].ajiditems = list;
+            /* Update the value of the global presence */
+            $scope.lookupjid[list[0].jid].aval = list[0].value;
 
              /*
              * Sort jid array of the concerned group by global presence of each jid
              * and update jids dictionary
              **/
-            /*$scope.lookupgroups[list[0].groupname].agroupitems.sort(function(a, b){return a.aval - b.aval;});
-            for(j=0; j<$scope.lookupgroups[list[0].groupname].agroupitems.length; j++){
+            $scope.lookupgroups[list[0].groupname].agroupitems.sort(function(a, b){return a.aval - b.aval;});
+            for(var j = 0; j < $scope.lookupgroups[list[0].groupname].agroupitems.length; j++){
                 jid = $scope.lookupgroups[list[0].groupname].agroupitems[j].jid;
                 $scope.lookupjid[jid] = $scope.lookupgroups[list[0].groupname].agroupitems[j];
-            }*/
+            }
 
             $scope.$apply();
         };
@@ -237,7 +223,7 @@ $scope.list = [];
         
         this.postJingleAction = function(c){
             Popup.close(); 
-            Popup.open(c.jid+"/"+c.ressource);
+            Popup.open(c.jid + "/" + c.ressource);
         };
 
         this.groupIsShown = function(grp){
@@ -266,27 +252,27 @@ $scope.list = [];
         this.getContactClient = function(c){
             liclass = "";
             if(c.rosterview.client)
-                liclass = "client "+c.rosterview.client;
+                liclass = "client " + c.rosterview.client;
             return liclass;
         };
 
         this.getContactClient = function(c){
             liclass = "";
             if(c.rosterview.client)
-                liclass = "client "+c.rosterview.client;
+                liclass = "client " + c.rosterview.client;
             return liclass;
         };
         
         this.getJidStatusRessource = function(c){
             lititle = c.jid;
-            if(c.status != '') lititle+= " - "+c.status;
-            lititle += " - "+c.ressource;
+            if(c.status != '') lititle += " - " + c.status;
+            lititle += " - " + c.ressource;
             return lititle;
         };
         
         this.getPresenceInactiveClient = function(c){
-            liclass = c.rosterview.presencetxt+" "+contact.rosterview.inactive;
-            if(c.client) liclass += " client "+c.client;
+            liclass = c.rosterview.presencetxt + " " + contact.rosterview.inactive;
+            if(c.client) liclass += " client " + c.client;
             return liclass;
         };
     });
@@ -298,7 +284,6 @@ function initContacts(tab){
 }
 
 function initGroups(tab){
-    //console.log(JSON.parse(tab));
     angular.element(roster).scope().initGroups(JSON.parse(tab));
 }
 
@@ -310,35 +295,18 @@ function deleteContact(jid){
     angular.element(roster).scope().deleteContact(jid);
 }
 
-/* === Keeping arrays sorted === */
-function pushInPlace(element, array, comparer, start, end){
-    if(array === $scope.contacts){
-        dico = $scope.lookupgroups;
-        key = "agroup";
-    } else{
-        dico = $scope.lookupjid;
-        key = "ajid";
-    }     
-    /*Put element in the right place inside array*/
-    index = locationOf(element, array, comparer, start, end);
-    array.splice(index, 0, element);
-    
-    /*Update dictionnary from the appropriate index*/
-    for(var i=index; i<array.length; i++){
-        dico[array[i][key]] = array[i];
-    }
-};
-
 function locationOf(element, array, comparer, start, end) {
     if (array.length === 0)
-        return -1;
-
+        return 0;
     start = start || 0;
     end = end || array.length;
     var pivot = (start + end) >> 1;  // >>1 = /2
     var c = comparer(element, array[pivot]);
-    if (end - start <= 1){ 
-        return (c == -1 && pivot > 0) ? pivot - 1 : pivot;
+    /*if(comparer == ressourceCompare){
+        console.log(c);
+    }*/
+    if ((end - start) <= 1){
+        return (c == -1 && pivot > 0) ? pivot : pivot+1;
     }
     
     switch (c) {
@@ -354,15 +322,21 @@ var groupnameCompare = function(a, b) {
     return a.agroup.localeCompare(b.agroup);
 };
 
-var jidPresenceCompare = function(a, b) {
-    return a.value - b.aval;
+var ressourceCompare = function(a, b) {
+    n = a.value - b.value;
+    //console.log(a.value+" vs "+b.value);
+    return n ? n < 0 ? -1 : 1 : 0;
 };
 
 var jidCompare = function(a, b) {
+    //console.log(a.jid+" vs "+b.ajid);
     return a.jid.localeCompare(b.ajid);
 };
 
-
+var jidAvalCompare = function(a, b) {
+    n = a.aval - b.aval;
+    return n ? n < 0 ? -1 : 1 : 0;
+};
 
 /* === Old functions still in use === */
 function showHideOffline() {
