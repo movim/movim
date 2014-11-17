@@ -70,7 +70,7 @@ class Behaviour implements MessageComponentInterface {
 
                 foreach($this->sessions[$from->sid] as $key => $client) {
                     if($from !== $client && $key != 'process') {
-                        $client->send(json_encode($obj));
+                        $this->send($client, json_encode($obj));
                     }
                 }
 
@@ -95,7 +95,7 @@ class Behaviour implements MessageComponentInterface {
                         if($from !== $client && $key != 'process') {
                             //The sender is not the receiver, send to each client connected
                             if(isset($msg->body)) {
-                                $client->send($msg->body);
+                                $this->send($client, $msg->body);
                             }
                         }
                     }
@@ -106,7 +106,7 @@ class Behaviour implements MessageComponentInterface {
                 }
                 break;
             default:
-                $from->send('no function specified');
+                $this->send($from, 'no function specified');
                 break;
         }
     }
@@ -126,7 +126,7 @@ class Behaviour implements MessageComponentInterface {
 
                     foreach($this->sessions[$conn->sid] as $key => $client) {
                         if($key != 'process') {
-                            $client->send(json_encode($obj));
+                            $this->send($client, json_encode($obj));
                             echo "{$client->resourceId} disconnected to login\n";
                         }
                     }
@@ -146,6 +146,10 @@ class Behaviour implements MessageComponentInterface {
         echo "An error has occurred: {$e->getMessage()}\n";
 
         $conn->close();
+    }
+
+    private function send($client, $message) {
+        $client->send(base64_encode(gzcompress($message, 9)));
     }
 
     private function getSid(ConnectionInterface $conn) {

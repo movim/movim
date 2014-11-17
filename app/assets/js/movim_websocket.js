@@ -38,7 +38,8 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            var obj = JSON.parse(e.data);
+            data = pako.ungzip(base64_decode(e.data), { to: 'string' });
+            var obj = JSON.parse(data);
 
             if(obj.id) {
                 localStorage.movimSession = obj.id;
@@ -53,8 +54,8 @@ var MovimWebsocket = {
             if(obj.func == 'disconnected') {
                 movim_disconnect();
             }
-
-            MovimWebsocket.handle(e.data);
+            
+            MovimWebsocket.handle(data);
         };
     },
 
@@ -110,6 +111,11 @@ function remoteUnregister()
 {
     MovimWebsocket.unregister();
 }
+
+window.onbeforeunload = function() {
+    MovimWebsocket.connection.onclose = function () {}; // disable onclose handler first
+    MovimWebsocket.connection.close()
+};
 
 // And we start it
 MovimWebsocket.init();
