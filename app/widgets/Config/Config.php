@@ -54,7 +54,7 @@ class Config extends WidgetBase
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
-        RPC::call('movim_reload_this');
+        //RPC::call('movim_reload_this');
         Notification::appendNotification($this->__('config.updated'));
     }
 

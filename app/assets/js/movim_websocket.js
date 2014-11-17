@@ -84,7 +84,7 @@ var MovimWebsocket = {
         if(funcalls != null) {
             for(h = 0; h < funcalls.length; h++) {
                 var funcall = funcalls[h];
-                console.log(funcall);
+                //console.log(funcall);
                 if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
                     try {
                         window[funcall.func].apply(null, funcall.params);
