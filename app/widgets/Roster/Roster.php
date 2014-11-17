@@ -38,7 +38,6 @@ class Roster extends WidgetBase
 
     function display()
     {
-
     }
 
     function onDelete($packet)
@@ -57,7 +56,7 @@ class Roster extends WidgetBase
                 if($c->groupname == '')
                     $c->groupname = $this->__('roster.ungrouped');
                 
-                $ac = $c->toArray();
+                $ac = $c->toRoster();
                 $this->prepareContact($ac, $c, $this->getCaps());
                 $c = $ac;
             }
@@ -134,7 +133,7 @@ class Roster extends WidgetBase
                 if($c->groupname == '')
                     $c->groupname = $this->__('roster.ungrouped');
                 
-                $ac = $c->toArray();
+                $ac = $c->toRoster();
                 $this->prepareContact($ac, $c, $capsarr);
                 $c = $ac;
             }

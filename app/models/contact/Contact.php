@@ -392,6 +392,17 @@ class Contact extends Model {
             return $marital[$this->marital];
         }
     }
+
+    function toRoster() {
+        return array(
+            'jid'        => $this->jid,
+            'rostername' => $this->rostername,
+            'groupname'  => $this->groupname,
+            'status'     => $this->status,
+            'ressource'  => $this->ressource,
+            'value'      => $this->value
+            );
+    }
 }
 
 class RosterContact extends Contact {

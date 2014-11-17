@@ -94,12 +94,12 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector($config->websoc
         $obj = new \StdClass;
         $obj->func = 'message';
         $obj->body = \RPC::commit();
-        $out = json_encode($obj->body);
-        $logger->notice("XMPP : Send to LOOP {$out}");
         \RPC::clear();
 
         if(!empty($obj->body)) {
-            $conn1->send(json_encode($obj));
+            $out = json_encode($obj->body);
+            $logger->notice("XMPP : Send to LOOP {$out}");
+            $conn1->send($out);
         }
     });
     
