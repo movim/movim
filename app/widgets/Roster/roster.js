@@ -37,8 +37,8 @@ $scope.list = [];
                 /* New jid */
                 if(!(list[i].jid in $scope.lookupjid)){
                     el = {
-                        'ajid':     list[i].jid,
-                        'aval':     list[i].value,
+                        'ajid': list[i].jid,
+                        'aval': list[i].value,
                         'ajiditems': [],
                         'tombstone': false,
                     };
@@ -46,7 +46,7 @@ $scope.list = [];
                 }
                 /* New ressource (can't just push the whole set of same jid because there is no set) */
                 if(!$scope.isInJidItems(list[i].jid, list[i].ressource)){
-                    $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, ressourceCompare);                    
+                    $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, ressourceCompare);
                 }
             }
             /* Sort jid by presence in each group and update jid dictionary */
@@ -99,8 +99,10 @@ $scope.list = [];
             }    
             /* Put element in the right place inside array */
             index = locationOf(element, array, comparer); 
-            /*if(comparer == ressourceCompare)
-                console.log("index = "+index);*/
+            if(comparer == groupnameCompare){
+                console.log(element.agroup);
+                console.log("index = "+index);
+            }
             array.splice(index, 0, element);
             /* Update dictionnary from the appropriate index */
             for(var i=index; i<array.length; i++){
@@ -302,11 +304,13 @@ function locationOf(element, array, comparer, start, end) {
     end = end || array.length;
     var pivot = (start + end) >> 1;  // >>1 = /2
     var c = comparer(element, array[pivot]);
-    /*if(comparer == ressourceCompare){
+    if(comparer == groupnameCompare){
         console.log(c);
-    }*/
+        console.log(pivot);
+    }
     if ((end - start) <= 1){
-        return (c == -1 && pivot > 0) ? pivot : pivot+1;
+        console.log("end of dicho");
+        return (c == -1) ? pivot : pivot+1;
     }
     
     switch (c) {
@@ -318,7 +322,7 @@ function locationOf(element, array, comparer, start, end) {
 
 /* Object comparison functions */
 var groupnameCompare = function(a, b) {
-    //console.log(a.agroup+" vs "+b.agroup);
+    console.log(a.agroup+" vs "+b.agroup);
     return a.agroup.localeCompare(b.agroup);
 };
 
