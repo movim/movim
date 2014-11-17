@@ -30,10 +30,10 @@ class Roster extends WidgetBase
         $this->addjs('angular.js');
         $this->addjs('roster.js');
         $this->registerEvent('roster_getlist_handle', 'onRoster');
-        $this->registerEvent('roster_additem_handle', 'onUpdate');
+        /*$this->registerEvent('roster_additem_handle', 'onUpdate');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
-        $this->registerEvent('presence', 'onUpdate');
+        $this->registerEvent('presence', 'onUpdate');*/
     }
 
     function display()
