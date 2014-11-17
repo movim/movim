@@ -49,7 +49,7 @@ class Notifs extends WidgetCommon
             // XMPP notifications
             $notifs = Cache::c('activenotifs');
 
-            if($notifs == false)
+            if($notifs == null)
                 $notifs = array();
             
             
