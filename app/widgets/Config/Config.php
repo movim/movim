@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
 
-use Moxl\Xec\Action\Storage\Get;
+//use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\Storage\Set;
 
 class Config extends WidgetBase
@@ -69,9 +69,9 @@ class Config extends WidgetBase
           ->request();
     }
 
-    function ajaxGet() {
+    /*function ajaxGet() {
         $s = new Get;
         $s->setXmlns('movim:prefs')
           ->request();
-    }
+    }*/
 }
