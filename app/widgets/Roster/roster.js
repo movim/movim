@@ -14,8 +14,8 @@
         $scope.contacts = [];
         $scope.groups = [];
 
-        this.ressourcesCount = 0;
-        $scope.presenceCount = 0;
+        //this.ressourcesCount = 0;
+        //$scope.presenceCount = 0;
         
         /* Dictionaries */
         $scope.lookupgroups = {};
@@ -48,7 +48,7 @@
                 }
                 /* New ressource (can't just push the whole set of same jid because there is no set) */
                 if(!$scope.isInJidItems(list[i].jid, list[i].ressource)){
-                    this.ressourcesCount ++;
+                    //this.ressourcesCount ++;
                     $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, ressourceCompare);
                 }
             }
@@ -118,7 +118,6 @@
         };
 
         $scope.updateContact = function(list){
-            $scope.presenceCount ++;
             if($scope.contacts === null) $scope.contacts = [];
             /* Group change */
             if((list[0].jid in $scope.lookupjid) 
@@ -259,12 +258,12 @@ window.onunload = window.onbeforeunload = function(e){
 
 /* Functions to call angular inner functions */
 function initContacts(tab){
-        console.log(localStorage.getObject("rosterLoaded"));
+    //console.log(localStorage.getObject("rosterLoaded"));
         
         
-    if(localStorage.getObject("rosterLoaded") === null){
+    /*if(localStorage.getObject("rosterLoaded") === null){
         localStorage.setObject("rosterLoaded", false);
-    }
+    }*/
         
     if(tab.length == 0)
         angular.element(roster).scope().contacts = null;

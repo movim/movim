@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
 
-use Moxl\Xec\Action\Storage\Get;
+//use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\Storage\Set;
 
 class Config extends WidgetBase
@@ -54,7 +54,7 @@ class Config extends WidgetBase
     function onConfig(array $data)
     {
         $this->user->setConfig($data);
-        RPC::call('movim_reload_this');
+        //RPC::call('movim_reload_this');
         Notification::appendNotification($this->__('config.updated'));
     }
 
@@ -69,9 +69,9 @@ class Config extends WidgetBase
           ->request();
     }
 
-    function ajaxGet() {
+    /*function ajaxGet() {
         $s = new Get;
         $s->setXmlns('movim:prefs')
           ->request();
-    }
+    }*/
 }
