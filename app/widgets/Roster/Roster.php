@@ -68,7 +68,7 @@ class Roster extends WidgetBase
     function onRoster()
     {
         $results = $this->prepareRoster();
-
+        
         RPC::call('initContacts', $results['contacts']);
         RPC::call('initGroups', $results['groups']);
     }
