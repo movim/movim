@@ -11,15 +11,14 @@
 
     /* Controller for Rosterlist */
     app.controller("RosterController", function($scope){
-        $scope.contacts = [];
+        $scope.contacts = localStorage.getObject('rosterContacts') || [];
         $scope.groups = [];
         
         /* Dictionaries */
-        $scope.lookupgroups = {};
-        $scope.lookupjid = {};
+        $scope.lookupgroups = localStorage.getObject('lookupgroups') || {};
+        $scope.lookupjid = localStorage.getObject('lookupjid') || {};
 
         $scope.initContacts = function(list){
-            console.log("initContacts");
             for(var i = 0; i < list.length; i++){
                 /* New group */
                 if(!(list[i].groupname in $scope.lookupgroups)){
@@ -112,7 +111,6 @@
         };
 
         $scope.updateContact = function(list){
-            console.log("updateContact");
             if($scope.contacts === null) $scope.contacts = [];
             /* Group change */
             if((list[0].jid in $scope.lookupjid) 
@@ -235,21 +233,10 @@ window.onunload = window.onbeforeunload = function(e){
 
 /* Functions to call angular inner functions */
 function initContacts(tab){
-    console.log("HELLO");
     if(tab.length == 0)
         angular.element(roster).scope().contacts = null;
-    else{
-        console.log(localStorage.getObject("rosterContacts"));
-        if(localStorage.getObject("rosterContacts") !== null){
-            angular.element(roster).scope().contacts = localStorage.getObject('rosterContacts');
-            angular.element(roster).scope().lookupjid = localStorage.getObject('lookupjid');
-            angular.element(roster).scope().lookupgroups = localStorage.getObject('lookupgroups');
-            
-            //console.log(angular.element(roster).scope().lookupjid);
-        }
-        else{
-            angular.element(roster).scope().initContacts(JSON.parse(tab));
-        }
+    else if(localStorage.getObject("rosterContacts") === null){
+        angular.element(roster).scope().initContacts(JSON.parse(tab));
     }
 }
 
