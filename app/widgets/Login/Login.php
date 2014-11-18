@@ -17,6 +17,8 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Storage\Get;
+
 class Login extends WidgetBase
 {
     function load()
@@ -36,6 +38,10 @@ class Login extends WidgetBase
 
         // http://xmpp.org/extensions/xep-0280.html
         \Moxl\Stanza\Carbons::enable();
+
+        $s = new Get;
+        $s->setXmlns('movim:prefs')
+          ->request();
 
         RPC::call('postLogin', $this->user->getLogin(), Route::urlize('root'));
     }
