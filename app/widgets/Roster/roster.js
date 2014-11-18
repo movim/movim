@@ -14,12 +14,16 @@
         $scope.contacts = [];
         $scope.groups = [];
 
+        //this.ressourcesCount = 0;
+        //$scope.presenceCount = 0;
+        
         /* Dictionaries */
         $scope.lookupgroups = {};
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
-            for(var i = 0; i<list.length; i++){
+            console.log("initContacts");
+            for(var i = 0; i < list.length; i++){
                 /* New group */
                 if(!(list[i].groupname in $scope.lookupgroups)){
                     el = {
@@ -44,11 +48,24 @@
                 }
                 /* New ressource (can't just push the whole set of same jid because there is no set) */
                 if(!$scope.isInJidItems(list[i].jid, list[i].ressource)){
+                    //this.ressourcesCount ++;
                     $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, ressourceCompare);
                 }
             }
-            
+            /*console.log("LOADED");
+            if(this.ressourcesCount == $scope.lookup.length)
+                localStorage.setObject("rosterLoaded", true);*/
             $scope.$apply();
+        };
+        
+        /* $scope.isInGroupItems is only for debugging purpose */
+        $scope.isInGroupItems = function(group, jid){
+            l = $scope.lookupgroups[group].agroupitems.length;
+            for(var i = 0; i < l; i++){
+                if($scope.lookupgroups[group].agroupitems[i].ajid == jid)
+                    return i;
+            }
+            return false;
         };
         
         $scope.isInJidItems = function(jid, ressource){
@@ -58,7 +75,7 @@
                     return true;
             }
             return false;
-        }
+        };
         
         $scope.initGroups = function(list){
             for (var i in list){
@@ -95,23 +112,25 @@
             
             /* Update dictionnary from the appropriate index */
             for(var i=index; i<array.length; i++){
-                dico[(array[i][key])] = array[i];
+                dico[array[i][key]] = array[i];
+                //if(comparer == groupnameCompare){
             }
         };
 
         $scope.updateContact = function(list){
-            /* New group */
-            if(!(list[0].groupname in $scope.lookupgroups)) {
-                /* Moving to new group */
-                if(list[0].jid in $scope.lookupjid){
-                    /* Kill jid from old location or whole group if it's the only jid */
-                    oldgroupname = $scope.lookupjid[list[0].jid].ajiditems[0].groupname;
-                    if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
-                        $scope.lookupgroups[oldgroupname].tombstone = true;
-                    else
-                        $scope.lookupjid[list[0].jid].tombstone = true;
-                }
-                
+            if($scope.contacts === null) $scope.contacts = [];
+            /* Group change */
+            if((list[0].jid in $scope.lookupjid) 
+                && !($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname)){
+                /* Kill jid from old location or whole group if it's the only jid */
+                oldgroupname = $scope.lookupjid[list[0].jid].ajiditems[0].groupname;
+                if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
+                    $scope.lookupgroups[oldgroupname].tombstone = true;
+                else
+                    $scope.lookupjid[list[0].jid].tombstone = true;                
+            }
+            /* New group is not in the list */
+            if(!(list[0].groupname in $scope.lookupgroups)) {                    
                 /* Create group */
                 el = {
                     'agroup': list[0].groupname,
@@ -122,26 +141,27 @@
                 /* Reference in the localstorage for toggling */
                 localStorage.setItem("rosterGroup_"+list[0].groupname, true);
             }
-            
-            // Moving from existing group 
-            if(!($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname)){
-                /* Kill jid from old location or whole group if it's the only jid */
-                oldgroupname = $scope.lookupjid[list[0].jid].ajiditems[0].groupname;
-                if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
-                    $scope.lookupgroups[oldgroupname].tombstone = true;
-                else
-                    $scope.lookupjid[list[0].jid].tombstone = true;
+                
+            /* Jid is in the list */
+            //if(var gi = isInGroupItems(list[0].groupname, list[0].jid) !=== false){
+            if(list[0].jid in $scope.lookupjid){
+                //$scope.lookupgroups[list[0].groupname].agroupitems[gi].ajiditems = list
+                //var gi = $scope.isInGroupItems(list[0].groupname, list[0].jid);
+                //console.log($scope.lookupgroups[list[0].groupname].agroupitems[gi].ajiditems);
+                $scope.lookupjid[list[0].jid].aval = list[0].value;
+                $scope.lookupjid[list[0].jid].ajiditems = list;
+                $scope.lookupgroups[list[0].groupname].agroupitems.sort(jidAvalCompare);
+                //console.log($scope.lookupgroups[list[0].groupname].agroupitems[gi].ajiditems);
             }
-            
-            /* Create jid */
-            el = {
-                'ajid':     list[0].jid,
-                'aval':     list[0].value,
-                'ajiditems': list,
-                'tombstone': false,
-            };
-            $scope.pushInPlace(el, $scope.lookupgroups[list[0].groupname].agroupitems, jidAvalCompare);
-
+            else{
+                el = {
+                    'ajid':     list[0].jid,
+                    'aval':     list[0].value,
+                    'ajiditems': list,
+                    'tombstone': false,
+                };
+                $scope.pushInPlace(el, $scope.lookupgroups[list[0].groupname].agroupitems, jidAvalCompare);
+            }
             $scope.$apply();
         };
 
@@ -219,9 +239,48 @@
     });
 })();
 
+window.onunload = window.onbeforeunload = function(e){
+    
+    /*console.log(localStorage.getObject("rosterLoaded"));
+    if(localStorage.getObject("rosterLoaded") === true){
+        //console.log("target it");
+        //console.log(e);
+        localStorage.setObject('rosterContacts', angular.element(roster).scope().contacts);
+        localStorage.setObject('lookupjid', angular.element(roster).scope().lookupjid);
+        localStorage.setObject('lookupgroups', angular.element(roster).scope().lookupgroups);
+    }
+    else{
+        console.log("NOPE");
+    }*/
+    //return "poet pouet la";
+};
+
+
 /* Functions to call angular inner functions */
 function initContacts(tab){
-    angular.element(roster).scope().initContacts(JSON.parse(tab));
+    //console.log(localStorage.getObject("rosterLoaded"));
+        
+        
+    /*if(localStorage.getObject("rosterLoaded") === null){
+        localStorage.setObject("rosterLoaded", false);
+    }*/
+        
+    if(tab.length == 0)
+        angular.element(roster).scope().contacts = null;
+    else{
+        /*console.log("rosterLoaded");
+        console.log(localStorage.getObject("rosterLoaded"));
+        if(localStorage.getObject("rosterLoaded") === true){
+            
+            angular.element(roster).scope().contacts = localStorage.getObject('rosterContacts');
+            angular.element(roster).scope().lookupjid = localStorage.getObject('lookupjid');
+            console.log(angular.element(roster).scope().lookupjid);
+            angular.element(roster).scope().lookupgroups = localStorage.getObject('lookupgroups');
+        }
+        else{*/
+            angular.element(roster).scope().initContacts(JSON.parse(tab));
+        //}
+    }
 }
 
 function initGroups(tab){
