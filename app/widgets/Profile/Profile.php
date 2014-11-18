@@ -32,7 +32,6 @@ class Profile extends WidgetCommon
         $this->addcss('profile.css');
         $this->addjs('profile.js');
         $this->registerEvent('myvcard', 'onMyVcardReceived');
-        $this->registerEvent('mypresence', 'onMyPresence');
     }
     
     function onMyVcardReceived($vcard = false)
