@@ -13,6 +13,8 @@
 }
 
 #notification_widget .notif {
+    transition: background-color 0.3s ease;
+    
     background-color: #323232;
     border-radius: 0.1em;
     margin-top: 1em;
@@ -21,10 +23,13 @@
     color: white;
     padding: 0.7em 1.3em;
     opacity: 1;
-
-    pointer-events: none;
     
     line-height: 1.5em;
+}
+
+#notification_widget .notif:hover {
+    background-color: #151515;
+    cursor: pointer;
 }
 
 .notificationAnim {
