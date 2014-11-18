@@ -42,7 +42,7 @@ class Presence extends WidgetBase
         RPC::call('movim_fill', 'presence_widget', $html);
         Notification::appendNotification($this->__('status.updated'), 'success');
         RPC::call('setPresenceActions');
-        RPC::call('movim_toggle_class', '#presence_widget', 'unfolded');
+        RPC::call('movim_remove_class', '#presence_widget', 'unfolded');
     }
 
     function onPostDisconnect($data)
