@@ -1,6 +1,5 @@
-<div id="roster" ng-controller="RosterController as rosterCtrl">
-    <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
-        
+<input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
+<div id="roster" ng-controller="RosterController as rosterCtrl">        
     <ul id="rosterlist" class="{{rosterCtrl.offlineIsShown()}}">
         <span ng-hide="contacts != null" class="nocontacts">
             {$c->__('roster.no_contacts')}
