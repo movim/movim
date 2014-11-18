@@ -275,9 +275,8 @@ ul.clean li {
     right: 0;
     padding-top: 0em;
     height: 100%;
-    overflow: hidden;
-    pointer-events:none;
     z-index: 2;
+    background-color: rgba(36, 36, 36, 1);
 }
 
 #right:after {

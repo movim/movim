@@ -128,7 +128,7 @@ class WidgetWrapper
         }
         else {
             throw new MovimException(
-                t("Requested widget '%s' doesn't exist.", $widget_name));
+                __('error.widget_load_error', $widget_name));
         }
 
         require_once($widget_path);

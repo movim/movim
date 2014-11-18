@@ -1,5 +1,4 @@
 #roster {
-    background-color: rgba(36, 36, 36, 1);
     position: relative;
     transition: right 0.5s ease;
     right: 0em;
@@ -26,7 +25,7 @@
     overflow: auto;
 }
 
-#roster input[name=search],
+#right input[name=search],
 #rostermenu input[name=searchjid] {
     height: 3em;
     padding: 0em 0.5em;
@@ -36,13 +35,12 @@
     -moz-box-sizing: border-box;
 }
 
-#roster input[name=search] {
+#right input[name=search] {
     background-image: url(img/search.png);
     background-repeat: no-repeat;
     padding-left: 2em;
     color: white;
     background-position: 0.5em center;
-    /*background-color: white;*/
     background-color: #454545;
     height: 2em;
     width: calc(100% - 1em);
@@ -57,8 +55,8 @@
 #roster ul#rosterlist {
     list-style-type: none;
     background-color: rgba(36, 36, 36, 1);
-    margin-bottom: 3em;
     margin-top: -0.5em;
+    padding-bottom: 6em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
