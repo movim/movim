@@ -354,7 +354,7 @@ class ContactDAO extends SQL {
     function getRoster() {
         $this->_sql = '
         select
-            contact.jid,
+            rosterlink.jid,
             contact.fn,
             contact.name,
             contact.nickname,
@@ -414,7 +414,7 @@ class ContactDAO extends SQL {
     function getRosterItem($jid, $item = false) {
         $this->_sql = '
         select
-            contact.jid,
+            rosterlink.jid,
             contact.fn,
             contact.name,
             contact.nickname,
