@@ -58,7 +58,7 @@ class Syndication extends WidgetBase
                     $this->view->assign('title', $n->nodeid);
             // Fir a simple contact
             } else {
-                $this->view->assign('title', t("%s's feed",$messages[0]->getContact()->getTrueName()));
+                $this->view->assign('title', $this->__('feed.title', $messages[0]->getContact()->getTrueName()));
                 $this->view->assign('logo', $messages[0]->getContact()->getPhoto('l'));
             }
             
