@@ -51,9 +51,9 @@ class Get extends Action
             if(is_array($data)) {
                 $data = array_merge($data, array('config' => true));
                 $user->setConfig($data);
-                
-                $evt = new \Event();
-                $evt->runEvent('config', $data);
+
+                $this->pack($data);
+                $this->deliver();
             }
             else {
                 $user->setConfig(array('config' => true)); 
@@ -64,5 +64,6 @@ class Get extends Action
     public function errorFeatureNotImplemented($stanza) {
         $user = new \User();
         $user->setConfig(array('config' => false));
+        $this->deliver();
     }
 }
