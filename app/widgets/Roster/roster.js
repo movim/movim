@@ -19,7 +19,7 @@
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
-            //if($scope.contacts.length == 0){
+            if($scope.contacts.length == 0){
                 for(var i = 0; i < list.length; i++){
                     /* New group */
                     if(!(list[i].groupname in $scope.lookupgroups)){
@@ -48,16 +48,19 @@
                         $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, ressourceCompare);
                     }
                 }
-            //}
+            }
             /* Rebound from cache */
-            /*else{
+            else{
                 for(var i = 0; i < $scope.contacts.length; i++){
-                    $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
-                    for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
-                        $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
+                    if(!$scope.contacts[i].tombstone){
+                        $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
+                        for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
+                            if(!$scope.contacts[i].agroupitems[j].tombstone)
+                                $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
+                        }
                     }
                 }
-            }*/
+            }
             
             $scope.$apply();
         };
@@ -133,9 +136,12 @@
                     $scope.lookupgroups[oldgroupname].tombstone = true;
                 else
                     $scope.lookupjid[list[0].jid].tombstone = true;
+                
+                console.log("Groupchange: "+oldgroupname+"["+$scope.lookupgroups[oldgroupname].agroupitems.length+"] => "+list[0].groupname);
             }
             /* New group is not in the list */
             if(!(list[0].groupname in $scope.lookupgroups)) {
+                console.log("Creation of new group: "+list[0].groupname);
                 /* Create group */
                 el = {
                     'agroup': list[0].groupname,
@@ -147,8 +153,10 @@
                 localStorage.setItem("rosterGroup_"+list[0].groupname, true);
             }
                 
-            /* Jid is in the list */
-            if(list[0].jid in $scope.lookupjid){
+            /* Jid is in the list and no group change */
+            if(list[0].jid in $scope.lookupjid 
+                && ($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname)){
+                console.log("Change value of "+list[0].jid+" in "+list[0].groupname+" group.");
                 //$scope.lookupgroups[list[0].groupname].agroupitems[gi].ajiditems = list
                 //var gi = $scope.isInGroupItems(list[0].groupname, list[0].jid);
                 $scope.lookupjid[list[0].jid].aval = list[0].value;
@@ -156,6 +164,7 @@
                 $scope.lookupgroups[list[0].groupname].agroupitems.sort(jidAvalCompare);
             }
             else{
+                console.log("Push "+list[0].jid+"("+list[0].value+") in "+list[0].groupname+" group.");
                 el = {
                     'ajid':     list[0].jid,
                     'aval':     list[0].value,
