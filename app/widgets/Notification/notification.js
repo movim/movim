@@ -7,6 +7,9 @@ function removeDiff(id, html, id2) {
 
         for(i = 0; i < nodes.length; i++) {
             var n = nodes[i];
+            n.onclick = function() {
+                this.parentNode.removeChild(this);
+            };
             setTimeout(function() {
                 if(n.parentNode) n.parentNode.removeChild(n);
                 },
