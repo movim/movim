@@ -55,8 +55,8 @@
 #roster ul#rosterlist {
     list-style-type: none;
     background-color: rgba(36, 36, 36, 1);
-    margin-bottom: 6em;
     margin-top: -0.5em;
+    padding-bottom: 6em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
