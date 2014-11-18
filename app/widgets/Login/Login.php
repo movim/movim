@@ -25,9 +25,9 @@ class Login extends WidgetBase
     {
         $this->addcss('login.css');
         $this->addjs('login.js');
-        $this->registerEvent('config', 'onConfig');
         $this->registerEvent('moxlerror', 'onMoxlError');
         $this->registerEvent('session_start_handle', 'onStart');
+        $this->registerEvent('storage_get_handle', 'onConfig');
         $this->registerEvent('saslfailure', 'onSASLFailure');
     }
 
@@ -42,7 +42,10 @@ class Login extends WidgetBase
         $s = new Get;
         $s->setXmlns('movim:prefs')
           ->request();
+    }
 
+    function onConfig($packet)
+    {
         RPC::call('postLogin', $this->user->getLogin(), Route::urlize('root'));
     }
 
@@ -104,11 +107,6 @@ class Login extends WidgetBase
 
     function onMoxlError($error) {
         RPC::call('movim_redirect', Route::urlize('disconnect', $error[1]));
-    }
-
-    function onConfig(array $data)
-    {
-        $this->user->setConfig($data);
     }
 
     function onSASLFailure($packet)
