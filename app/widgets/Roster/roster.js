@@ -13,9 +13,6 @@
     app.controller("RosterController", function($scope){
         $scope.contacts = [];
         $scope.groups = [];
-
-        //this.ressourcesCount = 0;
-        //$scope.presenceCount = 0;
         
         /* Dictionaries */
         $scope.lookupgroups = {};
@@ -48,13 +45,10 @@
                 }
                 /* New ressource (can't just push the whole set of same jid because there is no set) */
                 if(!$scope.isInJidItems(list[i].jid, list[i].ressource)){
-                    //this.ressourcesCount ++;
                     $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, ressourceCompare);
                 }
             }
-            /*console.log("LOADED");
-            if(this.ressourcesCount == $scope.lookup.length)
-                localStorage.setObject("rosterLoaded", true);*/
+            
             $scope.$apply();
         };
         
@@ -118,6 +112,7 @@
         };
 
         $scope.updateContact = function(list){
+            console.log("updateContact");
             if($scope.contacts === null) $scope.contacts = [];
             /* Group change */
             if((list[0].jid in $scope.lookupjid) 
@@ -127,10 +122,10 @@
                 if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
                     $scope.lookupgroups[oldgroupname].tombstone = true;
                 else
-                    $scope.lookupjid[list[0].jid].tombstone = true;                
+                    $scope.lookupjid[list[0].jid].tombstone = true;
             }
             /* New group is not in the list */
-            if(!(list[0].groupname in $scope.lookupgroups)) {                    
+            if(!(list[0].groupname in $scope.lookupgroups)) {
                 /* Create group */
                 el = {
                     'agroup': list[0].groupname,
@@ -143,7 +138,6 @@
             }
                 
             /* Jid is in the list */
-            //if(var gi = isInGroupItems(list[0].groupname, list[0].jid) !=== false){
             if(list[0].jid in $scope.lookupjid){
                 //$scope.lookupgroups[list[0].groupname].agroupitems[gi].ajiditems = list
                 //var gi = $scope.isInGroupItems(list[0].groupname, list[0].jid);
@@ -216,13 +210,6 @@
                 liclass = "client " + c.rosterview.client;
             return liclass;
         };
-
-        this.getContactClient = function(c){
-            liclass = "";
-            if(c.rosterview.client)
-                liclass = "client " + c.rosterview.client;
-            return liclass;
-        };
         
         this.getJidStatusRessource = function(c){
             lititle = c.jid;
@@ -240,46 +227,29 @@
 })();
 
 window.onunload = window.onbeforeunload = function(e){
-    
-    /*console.log(localStorage.getObject("rosterLoaded"));
-    if(localStorage.getObject("rosterLoaded") === true){
-        //console.log("target it");
-        //console.log(e);
-        localStorage.setObject('rosterContacts', angular.element(roster).scope().contacts);
-        localStorage.setObject('lookupjid', angular.element(roster).scope().lookupjid);
-        localStorage.setObject('lookupgroups', angular.element(roster).scope().lookupgroups);
-    }
-    else{
-        console.log("NOPE");
-    }*/
-    //return "poet pouet la";
+    localStorage.setObject('rosterContacts', angular.element(roster).scope().contacts);
+    localStorage.setObject('lookupjid', angular.element(roster).scope().lookupjid);
+    localStorage.setObject('lookupgroups', angular.element(roster).scope().lookupgroups);
 };
 
 
 /* Functions to call angular inner functions */
 function initContacts(tab){
-    //console.log(localStorage.getObject("rosterLoaded"));
-        
-        
-    /*if(localStorage.getObject("rosterLoaded") === null){
-        localStorage.setObject("rosterLoaded", false);
-    }*/
-        
+    console.log("HELLO");
     if(tab.length == 0)
         angular.element(roster).scope().contacts = null;
     else{
-        /*console.log("rosterLoaded");
-        console.log(localStorage.getObject("rosterLoaded"));
-        if(localStorage.getObject("rosterLoaded") === true){
-            
+        console.log(localStorage.getObject("rosterContacts"));
+        if(localStorage.getObject("rosterContacts") !== null){
             angular.element(roster).scope().contacts = localStorage.getObject('rosterContacts');
             angular.element(roster).scope().lookupjid = localStorage.getObject('lookupjid');
-            console.log(angular.element(roster).scope().lookupjid);
             angular.element(roster).scope().lookupgroups = localStorage.getObject('lookupgroups');
+            
+            //console.log(angular.element(roster).scope().lookupjid);
         }
-        else{*/
+        else{
             angular.element(roster).scope().initContacts(JSON.parse(tab));
-        //}
+        }
     }
 }
 
