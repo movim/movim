@@ -58,6 +58,7 @@
     list-style-type: none;
     background-color: rgba(36, 36, 36, 1);
     margin-bottom: 3em;
+    margin-top: -0.5em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

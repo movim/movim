@@ -362,10 +362,13 @@ class ContactDAO extends SQL {
             contact.tunetitle,
             rosterlink.rostername,
             rosterlink.groupname,
+            rosterlink.chaton,
             presence.status,
             presence.ressource,
             presence.value,
-            presence.delay
+            presence.delay,
+            presence.node,
+            presence.ver
         from rosterlink
         left outer join presence
         on rosterlink.jid = presence.jid and rosterlink.session = presence.session
@@ -419,10 +422,13 @@ class ContactDAO extends SQL {
             contact.tunetitle,
             rosterlink.rostername,
             rosterlink.groupname,
+            rosterlink.chaton,
             presence.status,
             presence.ressource,
             presence.value,
-            presence.delay
+            presence.delay,
+            presence.node,
+            presence.ver
         from rosterlink
         left outer join presence
         on rosterlink.jid = presence.jid and rosterlink.session = presence.session
