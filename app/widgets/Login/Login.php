@@ -18,6 +18,7 @@
  */
 
 use Moxl\Xec\Action\Storage\Get;
+use Moxl\Xec\Action\Roster\GetList;
 
 class Login extends WidgetBase
 {
@@ -27,8 +28,9 @@ class Login extends WidgetBase
         $this->addjs('login.js');
         $this->registerEvent('moxlerror', 'onMoxlError');
         $this->registerEvent('session_start_handle', 'onStart');
-        $this->registerEvent('storage_get_handle', 'onConfig');
         $this->registerEvent('saslfailure', 'onSASLFailure');
+        $this->registerEvent('storage_get_handle', 'onConfig');
+        $this->registerEvent('storage_get_errorfeaturenotimplemented', 'onConfig');
     }
 
     function onStart($packet)
@@ -39,6 +41,11 @@ class Login extends WidgetBase
         // http://xmpp.org/extensions/xep-0280.html
         \Moxl\Stanza\Carbons::enable();
 
+        // We refresh the roster
+        $r = new GetList;
+        $r->request();
+
+        // We get the configuration
         $s = new Get;
         $s->setXmlns('movim:prefs')
           ->request();
