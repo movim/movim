@@ -306,7 +306,7 @@ class Contact extends Model {
     }
 
     public function getPlace() {
-        $place = '';
+        $place = null;
         
         if($this->loctext != '')
             $place .= $this->loctext.' '; 

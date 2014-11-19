@@ -71,30 +71,8 @@ class ContactSummary extends WidgetCommon
     
     function prepareContactSummary($contact)
     {
-        // Contact avatar
-        $html = '
-            <a
-                class="avatar"
-                style="background-image: url('.$contact->getPhoto('l').');"
-                href="'.Route::urlize('friend',$contact->jid).'">
-            </a>
-            ';
-            
-        $presencetxt = getPresencesTxt();
-            
-        // Contact general infos
-        $html .= '<h1 class="paddedbottom">'.$contact->getTrueName().'</h1>';
-                
-        if($this->testIsSet($contact->url) && filter_var($contact->url, FILTER_VALIDATE_URL)) 
-            $html .= '<a target="_blank" class="paddedtopbottom url" href="'.$contact->url.'">'.$contact->url.'</a>';
-          
-        if($contact->status) {
-            $html .= '
-                <div class="paddedbottom">
-                    '.prepareString($contact->status).'
-                </div>'; 
-        }
-
-        return $html;
+        $csc = $this->tpl();
+        $csc->assign('contact', $contact);
+        return $csc->draw('_contactsummary_content', true);
     }
 }

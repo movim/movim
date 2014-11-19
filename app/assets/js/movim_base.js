@@ -58,7 +58,7 @@ function movim_posts_unread(cpt) {
 
 function movim_desktop_notification(title, body, image) {
     var notification = new Notification(title, { icon: image, body: body });
-    notification.onshow = function() { setTimeout(this.cancel(), 15000); }
+    //notification.onshow = function() { setTimeout(this.cancel(), 15000); }
 }
 
 /**
