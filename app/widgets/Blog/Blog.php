@@ -36,7 +36,7 @@ class Blog extends WidgetCommon {
                     $this->view->assign('title', $n->nodeid);
             // For a simple contact
             } else {
-                $this->view->assign('title', t("%s's feed",$messages[0]->getContact()->getTrueName()));
+                $this->view->assign('title', $this->__('blog.title',$messages[0]->getContact()->getTrueName()));
                 $this->view->assign('logo', $messages[0]->getContact()->getPhoto('l'));
             }
             

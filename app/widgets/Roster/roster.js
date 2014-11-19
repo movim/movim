@@ -11,15 +11,15 @@
 
     /* Controller for Rosterlist */
     app.controller("RosterController", function($scope){
-        $scope.contacts = [];
+        $scope.contacts = localStorage.getObject('rosterContacts') || [];
         $scope.groups = [];
-
+        
         /* Dictionaries */
-        $scope.lookupgroups = {};
-        $scope.lookupjid = {};
+        $scope.lookupgroups = localStorage.getObject('lookupgroups') || {};
+        $scope.lookupjid = localStorage.getObject('lookupjid') || {};
 
         $scope.initContacts = function(list){
-            for(var i = 0; i<list.length; i++){
+            for(var i = 0; i < list.length; i++){
                 /* New group */
                 if(!(list[i].groupname in $scope.lookupgroups)){
                     el = {
@@ -111,6 +111,7 @@
         };
 
         $scope.updateContact = function(list){
+            if($scope.contacts === null) $scope.contacts = [];
             /* Group change */
             if((list[0].jid in $scope.lookupjid) 
                 && !($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname)){
@@ -119,10 +120,10 @@
                 if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
                     $scope.lookupgroups[oldgroupname].tombstone = true;
                 else
-                    $scope.lookupjid[list[0].jid].tombstone = true;                
+                    $scope.lookupjid[list[0].jid].tombstone = true;
             }
             /* New group is not in the list */
-            if(!(list[0].groupname in $scope.lookupgroups)) {                    
+            if(!(list[0].groupname in $scope.lookupgroups)) {
                 /* Create group */
                 el = {
                     'agroup': list[0].groupname,
@@ -135,14 +136,13 @@
             }
                 
             /* Jid is in the list */
-            //if(var gi = isInGroupItems(list[0].groupname, list[0].jid) !=== false){
             if(list[0].jid in $scope.lookupjid){
                 //$scope.lookupgroups[list[0].groupname].agroupitems[gi].ajiditems = list
                 //var gi = $scope.isInGroupItems(list[0].groupname, list[0].jid);
                 //console.log($scope.lookupgroups[list[0].groupname].agroupitems[gi].ajiditems);
                 $scope.lookupjid[list[0].jid].aval = list[0].value;
                 $scope.lookupjid[list[0].jid].ajiditems = list;
-                $scope.lookupgroups[list[0].groupname].agroupitems.sort(function(a, b){return a.aval - b.aval;});
+                $scope.lookupgroups[list[0].groupname].agroupitems.sort(jidAvalCompare);
                 //console.log($scope.lookupgroups[list[0].groupname].agroupitems[gi].ajiditems);
             }
             else{
@@ -208,13 +208,6 @@
                 liclass = "client " + c.rosterview.client;
             return liclass;
         };
-
-        this.getContactClient = function(c){
-            liclass = "";
-            if(c.rosterview.client)
-                liclass = "client " + c.rosterview.client;
-            return liclass;
-        };
         
         this.getJidStatusRessource = function(c){
             lititle = c.jid;
@@ -231,9 +224,20 @@
     });
 })();
 
+window.onunload = window.onbeforeunload = function(e){
+    localStorage.setObject('rosterContacts', angular.element(roster).scope().contacts);
+    localStorage.setObject('lookupjid', angular.element(roster).scope().lookupjid);
+    localStorage.setObject('lookupgroups', angular.element(roster).scope().lookupgroups);
+};
+
+
 /* Functions to call angular inner functions */
 function initContacts(tab){
-    angular.element(roster).scope().initContacts(JSON.parse(tab));
+    if(tab.length == 0)
+        angular.element(roster).scope().contacts = null;
+    else if(localStorage.getObject("rosterContacts") === null){
+        angular.element(roster).scope().initContacts(JSON.parse(tab));
+    }
 }
 
 function initGroups(tab){
