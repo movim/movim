@@ -1,5 +1,5 @@
 <span id="{$idhash}"></span>
-<article class="block" id="{$id}">
+<article class="block" id="{$id}" {if="$post->getPlace()"}data-lat="{$post->lat}" data-lon="{$post->lon}"{/if}>
     {if="$access"}
         <div class="{$access}" title="{$flagtitle}"></div>
     {/if}

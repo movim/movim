@@ -144,6 +144,7 @@ class WidgetCommon extends WidgetBase {
             
         $view = $this->loadTemplate();
         $view->assign('idhash',     md5($post->nodeid));
+        $view->assign('post',       $post);
         $view->assign('id',         $post->nodeid);
         $view->assign('class',      $class);
         $view->assign('access',     $access);
