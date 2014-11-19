@@ -107,7 +107,7 @@ class Node extends WidgetCommon
         $html = $this->prepareNode($payload['from'], $payload['node']);
 
         if($html == '') 
-            $html = t("Your feed cannot be loaded.");
+            $html = __('post.no_load');
         RPC::call('movim_fill', md5($payload['from'].$payload['node']), $html);
     }
 
