@@ -74,7 +74,7 @@ class Media extends WidgetBase {
                                         'ajaxDeleteItem', 
                                         "'".$file."'"
                                     ).'">
-                                x
+                                <i class="fa fa-times"></i>
                             </div>
                     </li>
                     '; 
