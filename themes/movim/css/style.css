@@ -1,6 +1,6 @@
 /*@font-face {  
-	font-family: "OpenSans";  
-	src: url(../fonts/OpenSans-Light.ttf) format("truetype");  
+    font-family: "OpenSans";  
+    src: url(../fonts/OpenSans-Light.ttf) format("truetype");  
 } */
 
 /* We reset the CSS */
@@ -56,7 +56,7 @@ body {
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     
     background-attachment:fixed;
 }
@@ -229,7 +229,7 @@ ul.clean li {
 {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     position: relative;
     float: left;
     width: 12rem;
@@ -274,7 +274,8 @@ ul.clean li {
     top: 3em;
     right: 0;
     padding-top: 0em;
-    height: 100%;
+    /*height: 100%;*/
+    height: calc(100% - 3em);
     z-index: 2;
     background-color: rgba(36, 36, 36, 1);
 }
@@ -510,7 +511,7 @@ dl dt,
 dl dd {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     padding: 0 1em;
     display: inline-block;
     line-height: 2em;
@@ -594,7 +595,7 @@ dl dd {
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 .popup:after {
@@ -619,7 +620,7 @@ dl dd {
     padding-left: 0.5em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     height: 3em;
 }
 
