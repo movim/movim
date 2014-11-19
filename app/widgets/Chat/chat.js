@@ -1,33 +1,42 @@
-function scrollAllTalks() {
-    var mes = document.querySelectorAll('.messages');
-    for (var i = 0; i<mes.length; i++){
-        // We add 200px to prevent smiley loading
-        mes.item(i).scrollTop = mes.item(i).scrollHeight + 200;
-    }
-}
-
-function scrollTalk(params) {
-    var messages = document.getElementById(params);
-    if(messages != null) {
-        messages.scrollTop = messages.scrollHeight;
-    }
-}
-
 //Loads the Notification sound.
 /*var chatSoundNotif = document.createElement('audio');
 chatSoundNotif.setAttribute('src', './system/Widget/widgets/Chat/sound/notif.ogg');
 chatSoundNotif.load();
-chatSoundNotif.volume = 1;*/
+chatSoundNotif.volume = 1;
+this.querySelector('textarea').focus()
+
+function disableSound(){
+	chatSoundNotif.volume = 0;
+}
+
+* */
+
+var Chats = {
+    message: function(jid, html) {
+        movim_append('messages' + jid, html);
+        Chats.scroll(jid);
+    },
+    scroll: function(jid) {
+        var messages = document.getElementById('messages' + jid);
+        if(messages != null) messages.scrollTop = messages.scrollHeight;
+    },
+
+    scrollAll: function() {
+        var mes = document.querySelectorAll('.messages');
+        for (var i = 0; i<mes.length; i++){
+            mes.item(i).scrollTop = mes.item(i).scrollHeight + 200;
+        }
+    },
+    unread: function(jid) {
+        chat = document.getElementById('chat' + jid);
+        chat.querySelector('.tab').className = 'tab alert';
+    },
+}
 
 movim_add_onload(function()
 {
-    scrollAllTalks();
+    Chats.scrollAll();
 });
-
-function colorTalk(params) {
-    messages = document.getElementById(params);
-    tabstyle = messages.parentNode.parentNode.querySelector('.tab').className = 'tab alert';
-}
 
 function showTalk(n) {
     panel = n.parentNode.querySelector('.panel');
@@ -71,7 +80,6 @@ function notify(title, body, image) {
         movim_title_inc();
         movim_desktop_notification(title, body, image);
     }
-
 }
 
 function hideComposing(jid) {
@@ -87,26 +95,9 @@ function hidePaused(jid) {
 function sendMessage(n, jid)
 {
     var text = n.value;
-    
     n.value = "";
     n.focus();
-    
     // We escape the text to prevent XML errors
     return encodeURIComponent(text);
 
-}
-
-function sendEncryptedMessage(n, jid)
-{
-    var text = JSON.parse(sjcl.encrypt(n.dataset.publickey,n.value)).iv;
-
-    n.value = "";
-    n.focus();
-    
-    // We escape the text to prevent XML errors
-    return encodeURIComponent(text);
-}
-
-function disableSound(){
-	chatSoundNotif.volume = 0;
 }
