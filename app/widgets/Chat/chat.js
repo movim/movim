@@ -31,6 +31,13 @@ var Chats = {
         chat = document.getElementById('chat' + jid);
         chat.querySelector('.tab').className = 'tab alert';
     },
+    sendMessage: function(n, jid)
+    {
+        var text = n.value;
+        n.value = "";
+        n.focus();
+        return encodeURIComponent(text);
+    },
 }
 
 movim_add_onload(function()
@@ -90,14 +97,4 @@ function hideComposing(jid) {
 function hidePaused(jid) {
     var paused = document.getElementById('paused' + jid);
     paused.style.display = 'none';
-}
-
-function sendMessage(n, jid)
-{
-    var text = n.value;
-    n.value = "";
-    n.focus();
-    // We escape the text to prevent XML errors
-    return encodeURIComponent(text);
-
 }
