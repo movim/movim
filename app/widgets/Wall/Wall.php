@@ -56,6 +56,8 @@ class Wall extends WidgetCommon
         $html = $this->prepareFeed(-1, $payload['from']);
         if($html != '') {
             RPC::call('movim_fill', stringToUri($payload['from'].$payload['node']), $html);
+            RPC::call('MovimMap.init');
+            RPC::call('MovimMap.refresh');
         }
         RPC::commit();
     }
@@ -87,7 +89,7 @@ class Wall extends WidgetCommon
             $wallhead->assign('from', $from);
             $wallhead->assign('posts', $htmlmessages);
             $wallhead->assign('pl', $pl);
-            $wallhead->assign('map', $this->printMap($pl, $c));
+            //$wallhead->assign('map', $this->printMap($pl, $c));
             $wallhead->assign('refresh', $this->genCallAjax('ajaxWall', "'".$from."'"));
             $wallhead->assign('older', $this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'"));
             $html = $wallhead->draw('_wall_head', true);
@@ -98,6 +100,7 @@ class Wall extends WidgetCommon
     
     function ajaxGetFeed($start, $from) {
         RPC::call('movim_append', 'wall', $this->prepareFeed($start, $from));
+        RPC::call('MovimMap.refresh');
         RPC::commit();
     }
 

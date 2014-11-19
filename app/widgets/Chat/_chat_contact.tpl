@@ -1,5 +1,4 @@
-<div class="chat" 
-     onclick="this.querySelector('textarea').focus()"
+<div class="chat"
      id="chat{$contact->jid}">
     <div class="panel" {$panelstyle}>
         <div class="head" >
@@ -42,6 +41,7 @@
                         }
                     },5000); 
                     "
+                placeholder="{$c->__('chat.placeholder')}"
             ></textarea>
         </div>
     </div>
