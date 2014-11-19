@@ -41,6 +41,7 @@
                         }
                     },5000); 
                     "
+                placeholder="{$c->__('chat.placeholder')}"
             ></textarea>
         </div>
     </div>
