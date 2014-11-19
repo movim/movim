@@ -57,8 +57,11 @@
                         for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
                             if(!$scope.contacts[i].agroupitems[j].tombstone)
                                 $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
-                        }
+                            else
+                                $scope.contacts[i].agroupitems.splice(j, 1);                        }
                     }
+                    else
+                        $scope.contacts.splice(i, 1);
                 }
             }
             
@@ -137,7 +140,7 @@
                 else
                     $scope.lookupjid[list[0].jid].tombstone = true;
                 
-                console.log("Groupchange: "+oldgroupname+"["+$scope.lookupgroups[oldgroupname].agroupitems.length+"] => "+list[0].groupname);
+                console.log("Removed jid from oldgroup : "+oldgroupname+"["+$scope.lookupgroups[oldgroupname].agroupitems.length+"] => "+list[0].groupname);
             }
             /* New group is not in the list */
             if(!(list[0].groupname in $scope.lookupgroups)) {
@@ -152,6 +155,12 @@
                 /* Reference in the localstorage for toggling */
                 localStorage.setItem("rosterGroup_"+list[0].groupname, true);
             }
+            /* New Group has been killed before */
+            /*else if($scope.lookupgroups[list[0].groupname].tombstone) {
+                console.log("Tombstone is true for "+list[0].groupname);
+                $scope.lookupgroups[list[0].groupname].tombstone = false;
+                $scope.lookupgroups[list[0].groupname].agroupitems = [];
+            }*/
                 
             /* Jid is in the list and no group change */
             if(list[0].jid in $scope.lookupjid 
