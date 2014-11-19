@@ -431,7 +431,7 @@ class Chat extends WidgetBase {
             $this->genCallAjax(
                 'ajaxSendMessage',
                 "'" . $contact->jid . "'",
-                "sendMessage(this, '" . $contact->jid . "')",
+                "Chats.sendMessage(this, '" . $contact->jid . "')",
                 "false",
                 "'" . $contact->ressource . "'"));
                 
@@ -479,7 +479,7 @@ class Chat extends WidgetBase {
             $this->genCallAjax(
                 'ajaxSendMessage',
                 "'" . $jid . "'",
-                 "sendMessage(this, '" . $jid . "')", "true"));
+                 "Chats.sendMessage(this, '" . $jid . "')", "true"));
         
         $session = \Sessionx::start();
         $mucview->assign('exitmuc', $this->genCallAjax("ajaxExitMuc", "'" . $jid . "'", "'" . $session->username . "'"));
