@@ -1,7 +1,7 @@
 function postStart() {
     if(localStorage.postStart == 1) {
         Presence_ajaxSetPresence();
-        Presence_ajaxConfigGet();
+        //Presence_ajaxConfigGet();
         Presence_ajaxServerCapsGet();
         Presence_ajaxBookmarksGet();
         localStorage.postStart = 0;

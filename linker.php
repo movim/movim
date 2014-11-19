@@ -85,12 +85,6 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector($config->websoc
         $xml = \Moxl\API::commit();
         \Moxl\API::clear();
 
-        if(!empty($xml)) {
-            $logger->notice("XMPP : Send to XMPP {$xml}");
-        
-            $conn2->send(trim($xml));
-        }
-
         $obj = new \StdClass;
         $obj->func = 'message';
         $obj->body = \RPC::commit();
@@ -100,6 +94,12 @@ React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector($config->websoc
 
         if(!empty($obj->body)) {
             $conn1->send(json_encode($obj));
+        }
+
+        if(!empty($xml)) {
+            $logger->notice("XMPP : Send to XMPP {$xml}");
+        
+            $conn2->send(trim($xml));
         }
     });
     
