@@ -89,7 +89,6 @@ class Wall extends WidgetCommon
             $wallhead->assign('from', $from);
             $wallhead->assign('posts', $htmlmessages);
             $wallhead->assign('pl', $pl);
-            //$wallhead->assign('map', $this->printMap($pl, $c));
             $wallhead->assign('refresh', $this->genCallAjax('ajaxWall', "'".$from."'"));
             $wallhead->assign('older', $this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'"));
             $html = $wallhead->draw('_wall_head', true);
