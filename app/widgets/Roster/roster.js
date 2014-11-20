@@ -14,6 +14,10 @@
         $scope.contacts = localStorage.getObject('rosterContacts') || [];
         $scope.groups = [];
         
+        /*this.lsRoster = localStorage.getObject(localStorage.getItem("username") + "_Roster");
+        this.lsGroupState = lsRoster ? lsRoster["groupState"] : null;
+        this.lsCache = localStorage.getObject(localStorage.getItem("username") + "_cache")["Roster"];*/
+        
         /* Dictionaries */
         $scope.lookupgroups = {};
         $scope.lookupjid = {};
@@ -23,6 +27,7 @@
                 for(var i = 0; i < list.length; i++){
                     /* New group */
                     if(!(list[i].groupname in $scope.lookupgroups)){
+                        console.log("New group: "+list[i].groupname);
                         el = {
                             'agroup': list[i].groupname,
                             'agroupitems': [],
@@ -31,7 +36,7 @@
                         $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
                         
                         /* Create a reference in the localstorage for toggling */
-                        localStorage.setItem("rosterGroup_"+list[0].groupname, true);
+                        localStorage.setObject("rosterGroup_"+list[0].groupname, true);
                     }
                     /* New jid */
                     if(!(list[i].jid in $scope.lookupjid)){
@@ -68,23 +73,26 @@
             $scope.$apply();
         };
         
-        $scope.isInJidItems = function(jid, ressource){
-            l = $scope.lookupjid[jid].ajiditems.length;
-            for(var i = 0; i < l; i++){
-                if($scope.lookupjid[jid].ajiditems[i].ressource == ressource)
-                    return true;
-            }
-            return false;
-        };
-        
         $scope.initGroups = function(list){
-            for (var i in list){
-                if(localStorage.getItem("rosterGroup_"+i) == null){
-                    list[i] = true;
-                    localStorage.setItem("rosterGroup_"+i, true);
+            /*if(this.lsRoster === null){
+                for (var i in list){
+                    if(localStorage.getObject("rosterGroup_"+i) === null){
+                        list[i] = true;
+                        localStorage.setObject("rosterGroup_"+i, true);
+                    }
+                    else list[i] = localStorage.getObject("rosterGroup_"+i);
                 }
-                else list[i] = localStorage.getItem("rosterGroup_"+i);
             }
+            else{*/
+            for (var i in list){
+                if(localStorage.getObject("rosterGroup_"+i) === null){
+                    list[i] = true;
+                    localStorage.setObject("rosterGroup_"+i, true);
+                }
+                else list[i] = localStorage.getObject("rosterGroup_"+i);
+            }
+            
+            console.log(list);
             $scope.groups = list;
             
             $scope.$apply();
@@ -94,6 +102,15 @@
             $scope.lookupjid[jid].tombstone = true;
             
             $scope.$apply();
+        };
+        
+        $scope.isInJidItems = function(jid, ressource){
+            l = $scope.lookupjid[jid].ajiditems.length;
+            for(var i = 0; i < l; i++){
+                if($scope.lookupjid[jid].ajiditems[i].ressource == ressource)
+                    return true;
+            }
+            return false;
         };
         
         $scope.pushInPlace = function(element, array, comparer){
@@ -129,6 +146,8 @@
             }
             /* New group is not in the list */
             if(!(list[0].groupname in $scope.lookupgroups)) {
+                
+                console.log("New group: "+list[0].groupname);
                 /* Create group */
                 el = {
                     'agroup': list[0].groupname,
@@ -137,12 +156,13 @@
                 };
                 $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
                 /* Reference in the localstorage for toggling */
-                localStorage.setItem("rosterGroup_"+list[0].groupname, true);
+                localStorage.setObject("rosterGroup_"+list[0].groupname, true);
             }
                 
             /* Jid is in the list and no group change */
             if(list[0].jid in $scope.lookupjid 
-                && ($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname)){
+                && ($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname))
+            {
                 $scope.lookupjid[list[0].jid].aval = list[0].value;
                 $scope.lookupjid[list[0].jid].ajiditems = list;
                 $scope.lookupgroups[list[0].groupname].agroupitems.sort(jidAvalCompare);
@@ -160,15 +180,15 @@
         };
 
         this.showHideGroup = function(g){
-            ls = localStorage.getItem("rosterGroup_"+g);
-            if(ls == null){
-                ls = localStorage.getItem("rosterGroup_Ungrouped");
+            ls = localStorage.getObject("rosterGroup_"+g);
+            if(ls === null){
+                ls = localStorage.getObject("rosterGroup_Ungrouped");
                 g = "Ungrouped";
             }
 
-            ls = (ls == 'true' || ls == true) ? 'false' : 'true';
+            ls = !ls;
 
-            localStorage.setItem("rosterGroup_"+g, ls);
+            localStorage.setObject("rosterGroup_"+g, ls);
             $scope.groups[g] = ls;
         };
 
@@ -189,7 +209,7 @@
         };
 
         this.offlineIsShown = function(){
-            if(localStorage.getItem("rosterShow_offline") == "true")
+            if(localStorage.getObject("rosterShow_offline"))
                 return "offlineshown";
             else
                 return "";
@@ -278,21 +298,24 @@ var ressourceCompare = function(a, b) {
     n = a.value - b.value;
     return n ? n < 0 ? -1 : 1 : 0;
 };
-
+/* Presence + alphabetical comparison */
 var jidAvalCompare = function(a, b) {
     n = a.aval - b.aval;
+    if(n == 0 && a.ajiditems.length > 0){ /* if the array is empty keep the 0 value */
+        n = a.ajiditems[0].rosterview.name.localeCompare(b.ajiditems[0].rosterview.name);
+    }
     return n ? n < 0 ? -1 : 1 : 0;
 };
 
 /* === Old functions still in use === */
 function showHideOffline() {
-    if(localStorage.getItem("rosterShow_offline") != "true" ){
+    if(!localStorage.getObject("rosterShow_offline")){
         document.querySelector('ul#rosterlist').className = 'offlineshown';
-        localStorage.setItem("rosterShow_offline", "true");
+        localStorage.setObject("rosterShow_offline", true);
     }
     else{
         document.querySelector('ul#rosterlist').className = '';
-        localStorage.setItem("rosterShow_offline", "false");
+        localStorage.setObject("rosterShow_offline", false);
     }
 }
 
