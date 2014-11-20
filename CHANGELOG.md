@@ -6,6 +6,7 @@ v1.2
  * Large refactoring to move from de BOSH connection system to Websockets
  * SASL authentication is now part of the Action/Payload system
  * Clean a lot of BOSH related sourcecode
+ * Move a lot of Payloads and Actions to the Package system
 
 v1.1.1
 ---------------------------
