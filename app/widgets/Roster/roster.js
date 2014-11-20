@@ -15,8 +15,8 @@
         $scope.groups = [];
         
         this.lsRoster = localStorage.getObject(localStorage.getItem("username") + "_Roster");
-        this.lsGroupState = lsRoster ? lsRoster["groupState"] : null;
-        this.lsCache = localStorage.getObject(localStorage.getItem("username") + "_cache")["Roster"];
+        this.lsGroupState = this.lsRoster ? this.lsRoster["groupState"] : null;
+        this.lsCache = localStorage.getObject(localStorage.getItem("username") + "_cache")? localStorage.getObject(localStorage.getItem("username") + "_cache")["Roster"] : null;
         
         /* Dictionaries */
         $scope.lookupgroups = {};
@@ -73,6 +73,17 @@
         };
         
         $scope.initGroups = function(list){
+            /*if(this.lsRoster === null){
+                for (var i in list){
+                    if(localStorage.getObject("rosterGroup_"+i) === null){
+                        list[i] = true;
+                        localStorage.setObject("rosterGroup_"+i, true);
+                    }
+                    else list[i] = localStorage.getObject("rosterGroup_"+i);
+                }
+            }
+            else{*/
+            console.log(list);
             for (var i in list){
                 if(localStorage.getObject("rosterGroup_"+i) === null){
                     list[i] = true;
@@ -81,8 +92,6 @@
                 else list[i] = localStorage.getObject("rosterGroup_"+i);
             }
             
-            if(this.lsRoster === null)
-                this.lsRoster = list;
             $scope.groups = list;
             
             $scope.$apply();
