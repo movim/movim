@@ -3,17 +3,14 @@
 /**
  * @package Widgets
  *
- * @file Roster.php
+ * @file ContactSummary.php
  * This file is part of MOVIM.
  *
- * @brief The Roster widget
+ * @brief Contact Summary widget
  *
- * @author Jaussoin Timothée <edhelas@gmail.com>
+ * @author Jaussoin Timothée <edhelas@movim.eu>
  *
- * @version 1.0
- * @date 30 August 2010
- *
- * Copyright (C)2010 MOVIM project
+ * Copyright (C)2014 MOVIM project
  *
  * See COPYING for licensing information.
  */
@@ -31,14 +28,7 @@ class ContactSummary extends WidgetCommon
     function display()
     {
         $cd = new \Modl\ContactDAO();
-
-        if($_GET['f'] == $this->user->getLogin()) {
-            $contact = $cd->get($this->user->getLogin());
-        }
-
-        if(!isset($contact)) {
-            $contact = $cd->getRosterItem($_GET['f']);
-        }
+        $contact = $cd->getRosterItem($_GET['f']);
 
         if(!isset($contact)) {
             $contact = $cd->get($_GET['f']);
@@ -46,9 +36,8 @@ class ContactSummary extends WidgetCommon
         
         if(isset($contact)) {
             $this->view->assign('contact', $contact);
-            $this->view->assign('refresh', false);
         } else {
-            $contact = new modl\Contact();
+            $contact = new \Modl\Contact();
             $contact->jid = $_GET['f'];
             $this->view->assign('contact', $contact);
         }
@@ -59,7 +48,16 @@ class ContactSummary extends WidgetCommon
     function onVcard($packet)
     {
         $contact = $packet->content;
-        $html = $this->prepareContactSummary($contact);
+
+        // We try to get more informations on the contact
+        $cd = new \Modl\ContactDAO();
+        $contact_roster = $cd->getRosterItem($contact->jid);
+
+        if(!isset($contact_roster)) {
+            $contact_roster = $contact;
+        }
+        
+        $html = $this->prepareContactSummary($contact_roster);
         RPC::call('movim_fill', 'contactsummary', $html);
     }
     
