@@ -14,9 +14,9 @@
         $scope.contacts = localStorage.getObject('rosterContacts') || [];
         $scope.groups = [];
         
-        /*this.lsRoster = localStorage.getObject(localStorage.getItem("username") + "_Roster");
+        this.lsRoster = localStorage.getObject(localStorage.getItem("username") + "_Roster");
         this.lsGroupState = lsRoster ? lsRoster["groupState"] : null;
-        this.lsCache = localStorage.getObject(localStorage.getItem("username") + "_cache")["Roster"];*/
+        this.lsCache = localStorage.getObject(localStorage.getItem("username") + "_cache")["Roster"];
         
         /* Dictionaries */
         $scope.lookupgroups = {};
@@ -27,7 +27,6 @@
                 for(var i = 0; i < list.length; i++){
                     /* New group */
                     if(!(list[i].groupname in $scope.lookupgroups)){
-                        console.log("New group: "+list[i].groupname);
                         el = {
                             'agroup': list[i].groupname,
                             'agroupitems': [],
@@ -74,16 +73,6 @@
         };
         
         $scope.initGroups = function(list){
-            /*if(this.lsRoster === null){
-                for (var i in list){
-                    if(localStorage.getObject("rosterGroup_"+i) === null){
-                        list[i] = true;
-                        localStorage.setObject("rosterGroup_"+i, true);
-                    }
-                    else list[i] = localStorage.getObject("rosterGroup_"+i);
-                }
-            }
-            else{*/
             for (var i in list){
                 if(localStorage.getObject("rosterGroup_"+i) === null){
                     list[i] = true;
@@ -92,7 +81,8 @@
                 else list[i] = localStorage.getObject("rosterGroup_"+i);
             }
             
-            console.log(list);
+            if(this.lsRoster === null)
+                this.lsRoster = list;
             $scope.groups = list;
             
             $scope.$apply();
@@ -146,8 +136,6 @@
             }
             /* New group is not in the list */
             if(!(list[0].groupname in $scope.lookupgroups)) {
-                
-                console.log("New group: "+list[0].groupname);
                 /* Create group */
                 el = {
                     'agroup': list[0].groupname,
