@@ -55,6 +55,13 @@ class Sessionx {
         }
     }
 
+    public function refreshCookie()
+    {
+        if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
+            setcookie("MOVIM_SESSION_ID", $_COOKIE['MOVIM_SESSION_ID'], time()+$this->_max_age, '/');
+        }
+    }
+
     public static function start()
     {
         if(!isset(self::$_instance)) {
@@ -67,7 +74,6 @@ class Sessionx {
     /*
      * Session management part
      */
-
     private function inject() {
         $s = new modl\Sessionx();
         $s->session     = self::$_sessionid;
