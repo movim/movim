@@ -14,9 +14,11 @@
         $scope.contacts = localStorage.getObject('rosterContacts') || [];
         $scope.groups = [];
         
-        /*this.lsRoster = localStorage.getObject(localStorage.getItem("username") + "_Roster");
-        this.lsGroupState = lsRoster ? lsRoster["groupState"] : null;
-        this.lsCache = localStorage.getObject(localStorage.getItem("username") + "_cache")["Roster"];*/
+        $scope.lsJid = localStorage.getItem("username").replace("@", "at");
+        $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
+        $scope.lsGroupState = "groupState" in $scope.lsRoster ? $scope.lsRoster.groupState : {};
+        $scope.lsCache = localStorage.getObject($scope.lsJid + "_cache") && ("Roster" in localStorage.getObject($scope.lsJid + "_cache")) ? 
+                        localStorage.getObject($scope.lsJid + "_cache")["Roster"] : {};
         
         /* Dictionaries */
         $scope.lookupgroups = {};
@@ -27,7 +29,6 @@
                 for(var i = 0; i < list.length; i++){
                     /* New group */
                     if(!(list[i].groupname in $scope.lookupgroups)){
-                        console.log("New group: "+list[i].groupname);
                         el = {
                             'agroup': list[i].groupname,
                             'agroupitems': [],
@@ -36,7 +37,7 @@
                         $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
                         
                         /* Create a reference in the localstorage for toggling */
-                        localStorage.setObject("rosterGroup_"+list[0].groupname, true);
+                        $scope.lsGroupState["rosterGroup_"+list[0].groupname] = true;
                     }
                     /* New jid */
                     if(!(list[i].jid in $scope.lookupjid)){
@@ -74,27 +75,15 @@
         };
         
         $scope.initGroups = function(list){
-            /*if(this.lsRoster === null){
-                for (var i in list){
-                    if(localStorage.getObject("rosterGroup_"+i) === null){
-                        list[i] = true;
-                        localStorage.setObject("rosterGroup_"+i, true);
-                    }
-                    else list[i] = localStorage.getObject("rosterGroup_"+i);
-                }
-            }
-            else{*/
-            for (var i in list){
-                if(localStorage.getObject("rosterGroup_"+i) === null){
+            for(var i in list){
+                if(!("rosterGroup_"+i in $scope.lsGroupState)){
                     list[i] = true;
-                    localStorage.setObject("rosterGroup_"+i, true);
+                    $scope.lsGroupState["rosterGroup_"+i] = true;
                 }
-                else list[i] = localStorage.getObject("rosterGroup_"+i);
+                else list[i] = $scope.lsGroupState["rosterGroup_"+i];
             }
             
-            console.log(list);
             $scope.groups = list;
-            
             $scope.$apply();
         };
 
@@ -146,8 +135,6 @@
             }
             /* New group is not in the list */
             if(!(list[0].groupname in $scope.lookupgroups)) {
-                
-                console.log("New group: "+list[0].groupname);
                 /* Create group */
                 el = {
                     'agroup': list[0].groupname,
@@ -156,7 +143,7 @@
                 };
                 $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
                 /* Reference in the localstorage for toggling */
-                localStorage.setObject("rosterGroup_"+list[0].groupname, true);
+                $scope.lsGroupState["rosterGroup_"+list[0].groupname] = true;
             }
                 
             /* Jid is in the list and no group change */
@@ -180,15 +167,15 @@
         };
 
         this.showHideGroup = function(g){
-            ls = localStorage.getObject("rosterGroup_"+g);
+            ls = $scope.lsGroupState["rosterGroup_"+g];
             if(ls === null){
-                ls = localStorage.getObject("rosterGroup_Ungrouped");
+                ls = $scope.lsGroupState.rosterGroup_Ungrouped;
                 g = "Ungrouped";
             }
 
             ls = !ls;
 
-            localStorage.setObject("rosterGroup_"+g, ls);
+            $scope.lsGroupState["rosterGroup_"+g] = ls;
             $scope.groups[g] = ls;
         };
 
@@ -209,7 +196,7 @@
         };
 
         this.offlineIsShown = function(){
-            if(localStorage.getObject("rosterShow_offline"))
+            if($scope.lsGroupState.rosterShow_offline)
                 return "offlineshown";
             else
                 return "";
@@ -247,9 +234,22 @@
 })();
 
 window.onunload = window.onbeforeunload = function(e){
-    localStorage.setObject('rosterContacts', angular.element(roster).scope().contacts);
+    var lsjid = angular.element(roster).scope().lsJid;
+    
+    /* Cache Roster list in jid_cache.Roster */
+    if(localStorage.getObject(lsjid + "_cache") === null)
+        localStorage.setObject(lsjid + "_cache", {"Roster": angular.element(roster).scope().contacts});
+    else{
+        var nv = localStorage.getObject(lsjid + "_cache").Roster = angular.element(roster).scope().contacts;
+        localStorage.setObject(lsjid + "_cache", nv);
+    }
+    
+    
+    /* Move this to disconnection moment ?? */
+    /* Keep group states in jid_Roster.groupStates */
+    angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
+    localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
 };
-
 
 /* Functions to call angular inner functions */
 function initContacts(tab){
@@ -270,7 +270,9 @@ function updateContact(tab){
 function deleteContact(jid){
     angular.element(roster).scope().deleteContact(jid);
 }
- /* === PushInPlace subfunctions === */
+ 
+
+/* === PushInPlace subfunctions === */
 function locationOf(element, array, comparer, start, end) {
     if (array.length === 0)
         return 0;
@@ -307,6 +309,7 @@ var jidAvalCompare = function(a, b) {
     return n ? n < 0 ? -1 : 1 : 0;
 };
 
+
 /* === Old functions still in use === */
 function showHideOffline() {
     if(!localStorage.getObject("rosterShow_offline")){
@@ -319,13 +322,11 @@ function showHideOffline() {
     }
 }
 
-MovimWebsocket.attach(function()
-{
+MovimWebsocket.attach(function(){
     Roster_ajaxGetRoster();
 });
 
-movim_add_onload(function()
-{    
+movim_add_onload(function(){    
     var search      = document.querySelector('#rostersearch');
     var roster      = document.querySelector('#roster');
     var rosterlist  = document.querySelector('#rosterlist');
