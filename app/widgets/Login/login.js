@@ -89,7 +89,7 @@ MovimWebsocket.attach(function()
 
         // A fallback security
         setTimeout("MovimWebsocket.unregister()", 15000);
-    };
+    }
 
     // We hide the Websocket error
     document.querySelector('#loginpage #warning .websocket').style.display = 'none';
@@ -111,4 +111,11 @@ MovimWebsocket.attach(function()
 
 movim_add_onload(function() {
     //MovimWebsocket.unregister();
+    
+    /* Dump cache variables  in localStorage */
+    for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+        var cache = localStorage.key(i);
+        if(cache.indexOf("_cache", 6) !== -1)
+            localStorage.removeItem(cache);
+    }
 });

@@ -11,14 +11,14 @@
 
     /* Controller for Rosterlist */
     app.controller("RosterController", function($scope){
-        $scope.contacts = localStorage.getObject('rosterContacts') || [];
-        $scope.groups = [];
-        
+        /* Cache variables */
         $scope.lsJid = localStorage.getItem("username").replace("@", "at");
         $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
         $scope.lsGroupState = "groupState" in $scope.lsRoster ? $scope.lsRoster.groupState : {};
-        $scope.lsCache = localStorage.getObject($scope.lsJid + "_cache") && ("Roster" in localStorage.getObject($scope.lsJid + "_cache")) ? 
-                        localStorage.getObject($scope.lsJid + "_cache")["Roster"] : {};
+        
+        this.cache = localStorage.getObject($scope.lsJid + '_cache');
+        $scope.contacts = this.cache && ("Roster" in this.cache) && ("contactsList" in this.cache.Roster) ? localStorage.getObject($scope.lsJid + '_cache').Roster.contactsList : [];
+        $scope.groups = [];
         
         /* Dictionaries */
         $scope.lookupgroups = {};
@@ -26,6 +26,7 @@
 
         $scope.initContacts = function(list){
             if($scope.contacts.length == 0){
+                console.log("NO cache");
                 for(var i = 0; i < list.length; i++){
                     /* New group */
                     if(!(list[i].groupname in $scope.lookupgroups)){
@@ -57,6 +58,7 @@
             }
             /* Rebound from cache */
             else{
+                console.log("cache");
                 for(var i = 0; i < $scope.contacts.length; i++){
                     if(!$scope.contacts[i].tombstone){
                         $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
@@ -238,9 +240,10 @@ window.onunload = window.onbeforeunload = function(e){
     
     /* Cache Roster list in jid_cache.Roster */
     if(localStorage.getObject(lsjid + "_cache") === null)
-        localStorage.setObject(lsjid + "_cache", {"Roster": angular.element(roster).scope().contacts});
+        localStorage.setObject(lsjid + "_cache", {"Roster": {"contactsList": angular.element(roster).scope().contacts}});
     else{
-        var nv = localStorage.getObject(lsjid + "_cache").Roster = angular.element(roster).scope().contacts;
+        var nv = localStorage.getObject(lsjid + "_cache");
+        nv.Roster = {"contactsList": angular.element(roster).scope().contacts};
         localStorage.setObject(lsjid + "_cache", nv);
     }
     
