@@ -26,7 +26,6 @@
 
         $scope.initContacts = function(list){
             if($scope.contacts.length == 0){
-                console.log("NO cache");
                 for(var i = 0; i < list.length; i++){
                     /* New group */
                     if(!(list[i].groupname in $scope.lookupgroups)){
@@ -58,7 +57,6 @@
             }
             /* Rebound from cache */
             else{
-                console.log("cache");
                 for(var i = 0; i < $scope.contacts.length; i++){
                     if(!$scope.contacts[i].tombstone){
                         $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
