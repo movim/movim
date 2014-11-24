@@ -18,15 +18,8 @@
 class AdminTest extends WidgetBase
 {
     function load() {
-
-    }
-
-    public function valid($what)
-    {
-        if($what)
-            return "message success";
-        else
-            return "message error";
+        $this->addjs('admintest.js');
+        $this->addcss('admintest.css');
     }
 
     public function version()
@@ -46,6 +39,15 @@ class AdminTest extends WidgetBase
 
     function display()
     {
+        $md = \modl\Modl::getInstance();
+        $supported = $md->getSupportedDatabases();
 
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
+        $this->view->assign('dbconnected', $md->_connected);
+        $this->view->assign('dbtype', $supported[$conf['type']]);
+        $this->view->assign('dbinfos', sizeof($md->check()));
+        $this->view->assign('websocketurl', $config->websocketurl);
     }
 }

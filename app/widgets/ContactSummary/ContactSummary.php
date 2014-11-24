@@ -3,17 +3,14 @@
 /**
  * @package Widgets
  *
- * @file Roster.php
+ * @file ContactSummary.php
  * This file is part of MOVIM.
  *
- * @brief The Roster widget
+ * @brief Contact Summary widget
  *
- * @author Jaussoin Timothée <edhelas@gmail.com>
+ * @author Jaussoin Timothée <edhelas@movim.eu>
  *
- * @version 1.0
- * @date 30 August 2010
- *
- * Copyright (C)2010 MOVIM project
+ * Copyright (C)2014 MOVIM project
  *
  * See COPYING for licensing information.
  */
@@ -25,20 +22,13 @@ class ContactSummary extends WidgetCommon
     function load()
     {
         $this->addcss('contactsummary.css');
-        $this->registerEvent('vcard', 'onVcard');
+        $this->registerEvent('vcard_get_handle', 'onVcard');
     }
     
     function display()
     {
         $cd = new \Modl\ContactDAO();
-
-        if($_GET['f'] == $this->user->getLogin()) {
-            $contact = $cd->get($this->user->getLogin());
-        }
-
-        if(!isset($contact)) {
-            $contact = $cd->getRosterItem($_GET['f']);
-        }
+        $contact = $cd->getRosterItem($_GET['f']);
 
         if(!isset($contact)) {
             $contact = $cd->get($_GET['f']);
@@ -46,19 +36,28 @@ class ContactSummary extends WidgetCommon
         
         if(isset($contact)) {
             $this->view->assign('contact', $contact);
-            $this->view->assign('refresh', false);
         } else {
-            $contact = new modl\Contact();
+            $contact = new \Modl\Contact();
             $contact->jid = $_GET['f'];
             $this->view->assign('contact', $contact);
-            
-            $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'"));
         }
+
+        $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'"));
     }
     
-    function onVcard($contact)
+    function onVcard($packet)
     {
-        $html = $this->prepareContactSummary($contact);
+        $contact = $packet->content;
+
+        // We try to get more informations on the contact
+        $cd = new \Modl\ContactDAO();
+        $contact_roster = $cd->getRosterItem($contact->jid);
+
+        if(!isset($contact_roster)) {
+            $contact_roster = $contact;
+        }
+        
+        $html = $this->prepareContactSummary($contact_roster);
         RPC::call('movim_fill', 'contactsummary', $html);
     }
     
@@ -70,30 +69,8 @@ class ContactSummary extends WidgetCommon
     
     function prepareContactSummary($contact)
     {
-        // Contact avatar
-        $html = '
-            <a
-                class="avatar"
-                style="background-image: url('.$contact->getPhoto('l').');"
-                href="'.Route::urlize('friend',$contact->jid).'">
-            </a>
-            ';
-            
-        $presencetxt = getPresencesTxt();
-            
-        // Contact general infos
-        $html .= '<h1 class="paddedbottom">'.$contact->getTrueName().'</h1>';
-                
-        if($this->testIsSet($contact->url) && filter_var($contact->url, FILTER_VALIDATE_URL)) 
-            $html .= '<a target="_blank" class="paddedtopbottom url" href="'.$contact->url.'">'.$contact->url.'</a>';
-          
-        if($contact->status) {
-            $html .= '
-                <div class="paddedbottom">
-                    '.prepareString($contact->status).'
-                </div>'; 
-        }
-
-        return $html;
+        $csc = $this->tpl();
+        $csc->assign('contact', $contact);
+        return $csc->draw('_contactsummary_content', true);
     }
 }

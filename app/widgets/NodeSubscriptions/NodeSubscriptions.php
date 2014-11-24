@@ -70,7 +70,7 @@ class NodeSubscriptions extends WidgetBase
     }
     
     function onSubmit($stanza) {
-        Notification::appendNotification(t('Subscriptions saved'), 'success');
+        Notification::appendNotification($this->__('subscriptions.saved'), 'success');
         RPC::commit();        
     }
     

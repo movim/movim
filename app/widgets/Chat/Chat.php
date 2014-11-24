@@ -49,16 +49,13 @@ class Chat extends WidgetBase {
 
         $txt = getPresences();
 
-        /*$rc = new \modl\ContactDAO;
-        $contact = $rc->getRosterItem(echapJid($arr['jid']));*/
         if(isset($contact) && $contact->chaton > 0 ) {
-            $html='
+            $html = '
                 <div class="message presence">
                     <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$contact->value] . ' - ' . $contact->ressource, ENT_COMPAT, "UTF-8")) . '
                 </div>';
                 
-            RPC::call('movim_append', 'messages' . $contact->jid, $html);
-            RPC::call('scrollTalk', 'messages' . $contact->jid);
+            RPC::call('Chats.message', $contact->jid, $html);
         }
     }
 
@@ -75,7 +72,7 @@ class Chat extends WidgetBase {
         }
         
         RPC::call('movim_fill', 'chats', $this->prepareChats());
-        RPC::call('scrollAllTalks');
+        RPC::call('Chats.scrollAll');
     }
     
     private function checkEncrypted($message) {
@@ -109,7 +106,7 @@ class Chat extends WidgetBase {
             RPC::call(
                 'notify',
                 $contact->getTrueName(),
-                $message->body,
+                trim($message->body),
                 $contact->getPhoto('m'));
         }
 
@@ -120,27 +117,25 @@ class Chat extends WidgetBase {
             $rd->setChat($jid, 2);
             
             RPC::call('movim_prepend', 'chats', $this->prepareChat($contact));
-            RPC::call('scrollAllTalks');
+            RPC::call('Chats.scrollAll');
         } elseif($contact != null && $message->body != '') {
             $html = $this->prepareMessage($message);
             if($contact->chaton == 1) {
-                RPC::call('colorTalk', 'messages' . $contact->jid);
+                RPC::call('Chats.unread', $contact->jid);
             }
-            RPC::call('movim_append', 'messages' . $contact->jid, $html);
 
             //if($message->session != $message->jidfrom) {
                 RPC::call('hideComposing', $contact->jid);
                 RPC::call('hidePaused', $contact->jid);
             //}
             
-            RPC::call('scrollTalk', 'messages' . $contact->jid);
+            RPC::call('Chats.message', $contact->jid, $html);
         }
 
         // Muc case
         elseif($message->ressource != '') {
             $html = $this->prepareMessage($message, true);
-            RPC::call('movim_append', 'messages' . $message->jidfrom, $html);
-            RPC::call('scrollTalk', 'messages' . $message->jidfrom);
+            RPC::call('Chats.message', $message->jidfrom, $html);
         }
         RPC::commit();
     }
@@ -156,7 +151,7 @@ class Chat extends WidgetBase {
         
         if(isset($contact) && in_array($contact->chaton, array(1, 2))) {
             RPC::call('showComposing', $contact->jid);
-            RPC::call('scrollTalk', 'messages' . $contact->jid);
+            RPC::call('Chats.scroll', $contact->jid);
         }
     }
 
@@ -167,7 +162,7 @@ class Chat extends WidgetBase {
         
         if(in_array($contact->chaton, array(1, 2))) {
             RPC::call('showPaused', $contact->jid);
-            RPC::call('scrollTalk', 'messages' . $contact->jid);
+            RPC::call('Chats.scroll', $contact->jid);
         }
     }
 
@@ -182,7 +177,7 @@ class Chat extends WidgetBase {
                     $this->__('chat.attention', $contact->getTrueName()) . '
             </div>';
         RPC::call('movim_append', 'messages' . $jid, $html);
-        RPC::call('scrollTalk', 'messages' . $jid);
+        RPC::call('Chats.scroll', $jid);
     }
     /**
      * Open a new talk
@@ -199,7 +194,7 @@ class Chat extends WidgetBase {
             $rd = new \Modl\RosterLinkDAO();
             $rd->setChat(echapJid($jid), 2);
             RPC::call('movim_prepend', 'chats', $this->prepareChat($contact));
-            RPC::call('scrollAllTalks');
+            RPC::call('Chats.scrollAll');
             RPC::commit();
         }
     }
@@ -311,7 +306,7 @@ class Chat extends WidgetBase {
             $contact->chaton = 1;
         }
         $rd->setNow($contact);
-        RPC::call('scrollTalk', 'messages' . $contact->jid);
+        RPC::call('Chats.scroll', $contact->jid);
         RPC::commit();
     }
     /**
@@ -436,7 +431,7 @@ class Chat extends WidgetBase {
             $this->genCallAjax(
                 'ajaxSendMessage',
                 "'" . $contact->jid . "'",
-                "sendMessage(this, '" . $contact->jid . "')",
+                "Chats.sendMessage(this, '" . $contact->jid . "')",
                 "false",
                 "'" . $contact->ressource . "'"));
                 
@@ -449,9 +444,7 @@ class Chat extends WidgetBase {
         $chatview->assign('composing', $this->genCallAjax('ajaxSendComposing', "'" . $contact->jid . "'"));
         $chatview->assign('paused', $this->genCallAjax('ajaxSendPaused', "'" . $contact->jid . "'"));
         
-        $html=$chatview->draw('_chat_contact', true);
-        
-        return $html;
+        return $chatview->draw('_chat_contact', true);
     }
 
     function prepareMuc($conference) {
@@ -486,7 +479,7 @@ class Chat extends WidgetBase {
             $this->genCallAjax(
                 'ajaxSendMessage',
                 "'" . $jid . "'",
-                 "sendMessage(this, '" . $jid . "')", "true"));
+                 "Chats.sendMessage(this, '" . $jid . "')", "true"));
         
         $session = \Sessionx::start();
         $mucview->assign('exitmuc', $this->genCallAjax("ajaxExitMuc", "'" . $jid . "'", "'" . $session->username . "'"));

@@ -85,8 +85,8 @@ class News extends WidgetCommon {
             $html = '
                 <a class="button color green icon refresh"
                    onclick="'.$this->genCallAjax('ajaxRefresh').'"
-                >'.
-                    __('post.new_items', $count).' - '.__('button.refresh').'
+                >
+                    <i class="fa fa-refresh"></i> '.__('post.new_items', $count).' - '.__('button.refresh').'
                 </a>';
                 
             RPC::call('movim_posts_unread', $count);

@@ -19,6 +19,7 @@ article header img {
     float: left;
     width: 4em;
     margin-right: 1em;
+    border-radius: 0.2em;
 }
 
 article header span {
@@ -55,7 +56,7 @@ article footer {
     border-left: 1px solid #F1F1F1;
     border-right: 1px solid #EEE;
     border-top: 1px solid #F2F2F2;
-    background-color: #F5F7FA;
+    background-color: #F2F2F2;
 }
 
 article footer .comments {

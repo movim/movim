@@ -2,7 +2,12 @@ body {
     width: 100%;
     margin: 0 auto;
     max-width: 28em;
-    padding-right: 0px;
+    padding-right: 0;
+
+    animation: 200s infinite colorful;
+    -webkit-animation: 200s infinite colorful;
+    
+    background-color: #32434D;
 }
 
 #content {

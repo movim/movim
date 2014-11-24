@@ -1,23 +1,26 @@
-#contactsummary {
-    background-color: rgba(20, 20, 20, 0.5);
+#contactsummary_widget {
     line-height: 1.5em;
     padding-bottom: 1rem;
 }
 
-#contactsummary h1 {
-    color: white;
+#contactsummary_widget h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 0.5em;
     line-height: 1.5em;
 }
 
-
-#contactsummary a.avatar {
-    width: 100%;
-    padding-bottom: 100%;
+#contactsummary_widget a.avatar {
+    width: 92%;
+    padding-bottom: 92%;
+    box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.25), 0 0.1em 0.5em rgba(0, 0, 0, 0.20);
     display: block;
+    margin: 4%;
     background-size: 100%;
+    border-radius: 0.5em;
 }
 
-#contactsummary a.url {
+#contactsummary_widget a.url {
     width: 100%;
     display: block;
     white-space: nowrap;
@@ -26,5 +29,9 @@
 
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+#contactsummary_widget .status {
+    text-align: center;
 }

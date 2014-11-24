@@ -2,7 +2,7 @@
     $cd = new \Modl\ConfigDAO();
     $config = $cd->get();
 ?><!DOCTYPE html>
-<html>
+<html ng-app="roster">
   <head>
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
@@ -10,8 +10,8 @@
     <meta name="description" content="<?php echo $config->description; ?>" />
     
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
-	<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
-	<script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
+    <link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
+    <script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
@@ -29,6 +29,8 @@
 
         $this->addCss('css/template.css');
 
+        $this->widget('System');
+
         $this->scripts();
 
         $this->addCss('css/mobile.css');
@@ -42,7 +44,7 @@
         if(isset($color)) {
             echo '
             <style type="text/css">
-                body, nav {
+                nav {
                     background-color: #'.$color.';
                     animation: none;
                     -webkit-animation: none;
@@ -55,10 +57,12 @@
             echo '
             <style type="text/css">
                 body { font-size: '.$size.'px; }
+                @media screen and (max-width: 1024px) {
+                    body { font-size: '.floor($size*1.15).'px; }
+                }
             </style>';
         }
     ?>
-    <?php $this->widget('System');?>
   </head>
     <body>
         <noscript>
@@ -89,5 +93,6 @@
         <?php 
             $this->displayFooterDebug();
         ?>
+        <script type="text/javascript">movim_onload();</script>
     </body>
 </html>
