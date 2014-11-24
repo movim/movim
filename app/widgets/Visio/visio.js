@@ -8,6 +8,9 @@ setInterval( notifyOpener, 200 );
 
 self.focus();
 
+VISIO_JID = '';
+VISIO_RESSOURCE = '';
+
 /**
  * When an error occured
  */
@@ -26,14 +29,13 @@ var Visio = {
     isVideoMuted: false,
     
     fullScreen: function() {
-        var elem = document.getElementById("visio");
         var toggle = document.querySelector("#toggle-screen i");
         
-        if(!document.fullscreenElement
-        && !document.mozFullScreenElement
-        && !document.webkitFullscreenElement) {  // current working methods
-            toggle.className = toggle.className.replace('expand', 'compress');
-            
+        if(document.fullscreenElement == null
+        && document.mozFullScreenElement == null
+        && document.webkitFullscreenElement == null) {  // current working methods
+            toggle.className = toggle.className.replace('fa-expand', 'fa-compress');
+
             if (document.documentElement.requestFullscreen) {            
               document.documentElement.requestFullscreen();
             } else if (document.documentElement.mozRequestFullScreen) {
@@ -42,7 +44,7 @@ var Visio = {
               document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
             }
         } else {
-            toggle.className = toggle.className.replace('compress', 'expand');
+            toggle.className = toggle.className.replace('fa-compress', 'fa-expand');
             
             if (document.cancelFullScreen) {
               document.cancelFullScreen();
@@ -56,84 +58,89 @@ var Visio = {
 
     log: function(content) {
         var date = new Date();
-        movim_prepend([
+        movim_prepend(
             "log",
             "<div>["
                 + date.getHours() + ":"+date.getMinutes() + ":"+date.getSeconds() + "] "
                 + content +
-            "</div>"]);
-    },
-
-    /*
-     * @brief Call a function in the main window
-     * @param Array, array[0] is the name of the function, then the params
-     */
-    call: function(args) {
-        if( self.opener && !self.opener.closed ) {
-            // The popup is open so call it
-            var func = args[0];
-            args.shift();
-            var params = args;
-            self.opener[func].apply(null, params);
-        } 
+            "</div>");
     },
 
     toggleVideoMute: function() {
-      videoTracks = localStream.getVideoTracks();
-      var camera = document.getElementById("toggle-camera");
+        videoTracks = localStream.getVideoTracks();
+        var camera = document.getElementById("toggle-camera");
 
-      if (videoTracks.length === 0) {
-        console.log('No local video available.');
-        return;
-      }
-
-      if (this.isVideoMuted) {
-        for (i = 0; i < videoTracks.length; i++) {
-          videoTracks[i].enabled = true;
-        }
-        
-        camera.className = camera.className.replace('camera-off', 'camera');
-        console.log('Video unmuted.');
-      } else {
-        for (i = 0; i < videoTracks.length; i++) {
-          videoTracks[i].enabled = false;
+        if (videoTracks.length === 0) {
+            console.log('No local video available.');
+            return;
         }
 
-        camera.className = camera.className.replace('camera', 'camera-off');
-        console.log('Video muted.');
-      }
+        if (this.isVideoMuted) {
+            for (i = 0; i < videoTracks.length; i++) {
+                videoTracks[i].enabled = true;
+            }
 
-      this.isVideoMuted = !this.isVideoMuted;
+            camera.className = camera.className.replace('camera-off', 'camera');
+            console.log('Video unmuted.');
+        } else {
+            for (i = 0; i < videoTracks.length; i++) {
+                videoTracks[i].enabled = false;
+            }
+
+            camera.className = camera.className.replace('camera', 'camera-off');
+                console.log('Video muted.');
+        }
+
+        this.isVideoMuted = !this.isVideoMuted;
     },
 
     toggleAudioMute: function() {
-      audioTracks = localStream.getAudioTracks();
-      var micro = document.getElementById("toggle-microphone");
+        audioTracks = localStream.getAudioTracks();
+        var micro = document.getElementById("toggle-microphone");
 
-      if (audioTracks.length === 0) {
-        console.log('No local audio available.');
-        return;
-      }
-
-      if (this.isAudioMuted) {
-        for (i = 0; i < audioTracks.length; i++) {
-          audioTracks[i].enabled = true;
-        }
-        
-        micro.className = micro.className.replace('microphone-off', 'microphone');
-        console.log('Video unmuted.');
-      } else {
-        for (i = 0; i < audioTracks.length; i++) {
-          audioTracks[i].enabled = false;
+        if (audioTracks.length === 0) {
+            console.log('No local audio available.');
+            return;
         }
 
-        micro.className = micro.className.replace('microphone', 'microphone-off');
-        console.log('Video muted.');
-      }
+        if (this.isAudioMuted) {
+            for (i = 0; i < audioTracks.length; i++) {
+                audioTracks[i].enabled = true;
+            }
 
-      this.isAudioMuted = !this.isAudioMuted;
+            micro.className = micro.className.replace('microphone-off', 'microphone');
+            console.log('Video unmuted.');
+        } else {
+            for (i = 0; i < audioTracks.length; i++) {
+                audioTracks[i].enabled = false;
+            }
+
+            micro.className = micro.className.replace('microphone', 'microphone-off');
+            console.log('Video muted.');
+        }
+
+        this.isAudioMuted = !this.isAudioMuted;
+    },
+
+    readStack: function() {
+        if(self.opener.popup.stack != null) {
+            var stack = self.opener.popup.stack;
+
+            if(stack.jid != null) {
+                jid = stack.jid.split('/');
+                VISIO_JID       = jid[0]; 
+                VISIO_RESSOURCE = jid[1];
+
+                delete stack.jid;
+            }
+
+            for(var call in stack) {
+                console.log('Call function ' + call);
+                window[call].call(null, stack[call]);
+                delete stack[call];
+            }
+        }
     }
-
 }
 
 movim_add_onload(function()
@@ -144,4 +151,7 @@ movim_add_onload(function()
     document.getElementById("toggle-screen").addEventListener('click', function() { Visio.fullScreen(); }, false);
     document.getElementById("toggle-camera").addEventListener('click', function() { Visio.toggleVideoMute(); }, false);
     document.getElementById("toggle-microphone").addEventListener('click', function() { Visio.toggleAudioMute(); }, false);
+
+    Visio.readStack();
+    Visio_ajaxGetContact(VISIO_JID);
 });

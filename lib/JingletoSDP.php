@@ -10,7 +10,7 @@ class JingletoSDP {
     public $media;
     
     private $values = array(
-        'session_id'        => 1,
+        'session_sdp_id'    => 1,
         'session_version'   => 0,
         'nettype'           => 'IN',
         'addrtype'          => 'IP4',
@@ -23,25 +23,27 @@ class JingletoSDP {
         if(isset($this->jingle->attributes()->sid)) {
             $sid = (string)$this->jingle->attributes()->sid;
 
-            $sid = substr(base_convert($sid, 30, 10), 0, 6);
+            //$sid = substr(base_convert($sid, 30, 10), 0, 6);
             
-            $s = Session::start('movim');
+            $s = Session::start();
             $s->set('jingleSid', $sid);
-            $this->values['session_id'] = $sid;
+            //$this->values['session_id'] = $sid;
         }
 
         $this->action = (string)$this->jingle->attributes()->action;
     }
     
     function getSessionId(){
-        $s = Session::start('movim');
-        if($sid = $s->get('jingleSid')){
+        $s = Session::start();
+        /*if($sid = $s->get('jingleSid')){
             return $sid;
         }
         else{
             $sessid = $this->jingle->attributes()->sid;
             return substr(base_convert($sessid, 30, 10), 0, 6);
-        }
+        }*/
+
+        return substr(base_convert($s->get('jingleSid'), 30, 10), 0, 6);
     }
     
     function generate() {
@@ -51,7 +53,7 @@ class JingletoSDP {
         } else
             $username = '-';
         
-        $this->values['session_id'] = $this->getSessionId();
+        $this->values['session_sdp_id'] = $this->getSessionId();
         
         $sdp_version =
             'v=0';
@@ -59,7 +61,7 @@ class JingletoSDP {
         $sdp_origin = 
             'o='.
             $username.' '.
-            $this->values['session_id'].' '.
+            $this->values['session_sdp_id'].' '.
             $this->values['session_version'].' '.
             $this->values['nettype'].' '.
             $this->values['addrtype'].' '.
@@ -200,14 +202,14 @@ class JingletoSDP {
                             
                             break;
 
-                        case 'source':
+                        /*case 'source':
                             foreach($payload->children() as $s) {
                                 $sdp_media .= 
                                     "\r\na=ssrc:".$payload->attributes()->id.' '.
                                     $s->attributes()->name.':'.
                                     $s->attributes()->value;
                             }
-                            break;
+                            break;*/
                     }
                     // TODO sendrecv ?
                 }

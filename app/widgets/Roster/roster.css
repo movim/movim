@@ -1,10 +1,11 @@
 #roster {
-    background-color: rgba(36, 36, 36, 1);
     position: relative;
     transition: right 0.5s ease;
     right: 0em;
     pointer-events: auto;
-    height: 100%;
+    /*height: 100%;*/
+    height: calc(100% - 6em);
+    overflow: hidden;
 }
 
 #roster span.nocontacts {
@@ -20,22 +21,27 @@
     overflow: auto;
 }
 
-#roster input[name=search],
+#right input[name=search],
 #rostermenu input[name=searchjid] {
     height: 3em;
     padding: 0em 0.5em;
     width: 100%;    
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
-#roster input[name=search] {
+#right input[name=search] {
     background-image: url(img/search.png);
     background-repeat: no-repeat;
-    padding-left: 3em;
-    background-position: 1em center;
-    background-color: white;
+    padding-left: 2em;
+    color: white;
+    background-position: 0.5em center;
+    background-color: #454545;
+    height: 2em;
+    width: calc(100% - 1em);
+    margin: 0.5em;
+    border-radius: 0.2em;
 }
 
 #rostermenu input[name=searchjid]:invalid {
@@ -45,10 +51,11 @@
 #roster ul#rosterlist {
     list-style-type: none;
     background-color: rgba(36, 36, 36, 1);
-    margin-bottom: 3em;
+    margin-top: -0.5em;
+    /*padding-bottom: 6em;*/
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 /* Display/hide the elements */
@@ -63,6 +70,7 @@
 
 #roster ul#rosterlist div ul.contact li {
     display: none;
+    position: relative;
 }
 
 #roster ul#rosterlist > div {
@@ -107,34 +115,34 @@
 /* The list */
 
 #roster ul#rosterlist h1 {
-    padding: 1em;
-    color: #777;
+    margin-top: 0.5em;
+    padding: 0.75em;
+    text-indent: 0.25em;
+    color: #BBB;
     line-height: 1em;
     font-size: 1em;
-
-    text-shadow: 0px -0.1em 0px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0.5;
 }
 
-#roster ul#rosterlist h1:before {
+#roster ul#rosterlist h1:hover {
     cursor: pointer;
-    content: "+";
-    width: 20px;
-    padding-right: 5px;
-    display: inline-block;
-    text-align: center;
 }
 
-#roster ul#rosterlist div.groupshown h1:before {
-    content: "-";
+#roster ul#rosterlist div.groupshown h1 {
+    opacity: 1;
 }
 
 #roster ul#rosterlist ul.contact li img {
     max-height: 3em;
     float: left;
-    width: 3em;
-    height: 3em;
-    margin-right: 0.5em;
-    margin-top: -0.5em;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0 0.75em;
+    position: relative;
+    top: -0.2em;
+    border-radius: 2em;
 }
 
 #roster ul#rosterlist ul.contact li a {
@@ -160,17 +168,25 @@
 
 /* Chat button */
 #roster ul#rosterlist ul.contact li .chat {
-    width: 0.5em;
-    height: 3em;
-    float: right;
+    width: 0.9em;
+    height: 0.9em;
+    left: 2.4em;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    top: 2em;
+    position: absolute;
+    z-index: 2;
+    border-radius: 2em;
     background-color: #DDD;
-    transition: width 0.5s ease;
+    transition: width 0.5s ease, height 0.5s ease, top 0.5s ease, left 0.5s ease;
 }
 
 #roster ul#rosterlist ul.contact li:hover .chat {
-    width: 3em;
+    width: 2.5em;
+    height: 2.5em;
+    top: 0.3em;
+    left: 0.75em;
     background-image: url(img/bubbles.svg);
-    background-size: 1.3em 1.3em;
+    background-size: 1.4em;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -265,7 +281,7 @@
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 #rostermenu li.show_hide:before {

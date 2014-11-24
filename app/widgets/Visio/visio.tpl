@@ -10,9 +10,7 @@
 	</video>
 
     <div id="avatar">
-        <img src="{$avatar}"/>
-        <span class="name">{$name}</span>
-        <div id="status"></div>
+
     </div>
     <div class="menu">
         <a id="toggle-microphone" class="button color alone merged right oppose">
@@ -22,7 +20,7 @@
         </a>
         
         <a id="call" class="button color green">
-            <i class="fa fa-play"></i> {$c->__('visio.call')}
+            <i class="fa fa-phone"></i> {$c->__('visio.call')}
         </a>
         <a id="hang-up" class="button color red icon hang-up">
             <i class="fa fa-stop"></i> {$c->__('visio.hang_up')}
@@ -32,8 +30,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    VISIO_JID = '{$jid}';
-    VISIO_RESSOURCE = '{$ressource}';
     VISIO_TURN_LIST = {$turn_list};
 </script>
 <div id="connection">

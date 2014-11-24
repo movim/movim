@@ -33,13 +33,10 @@
 
         <fieldset>
             <legend>{$c->__('config.appearence')}</legend>
-            <div class="element">
+            <div class="element" id="nav_color">
                 <label for="color"><i class="fa fa-adjust"></i> {$c->__('config.background_color')}</label> 
                 <a 
-                    type="button" 
-                    onclick="
-                        document.querySelector('input[name=color]').value = '32434D';
-                        document.body.style.backgroundColor = '#32434D';"
+                    type="button"
                     style="width: 45%; float: right;" 
                     class="button icon color purple back">
                     {$c->__('button.reset')}
@@ -48,7 +45,6 @@
                     style="box-shadow: none; width: 50%; float: left;"
                     name="color"
                     class="color" 
-                    onchange="document.body.style.backgroundColor = '#'+this.value;"
                     value="
                     {if="isset($color)"}
                         {$color}
@@ -58,14 +54,10 @@
                     ">
             </div>
             
-            <div class="element">
+            <div class="element" id="font_size">
                 <label for="size"><i class="fa fa-font"></i> {$c->__('config.font_size')}</label>
                 <a 
-                    type="button" 
-                    onclick="
-                        var slide = document.querySelector('input[name=size]')
-                        slide.value = 14;
-                        slide.onchange();"
+                    type="button"
                     style="width: 30%; float: right;" 
                     class="button icon color purple back">
                     {$c->__('button.reset')}
@@ -87,10 +79,7 @@
                         " 
                         name="size"
                         style="width: 45%;"
-                        onchange="
-                            document.body.style.fontSize = this.value+'px';
-                            document.querySelector('#currentsize').innerHTML = this.value+'px'";
-                             />
+                    />
                     16
                 </span>
                 <span id="currentsize">

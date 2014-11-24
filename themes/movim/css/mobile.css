@@ -24,16 +24,18 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-size: 16px;
     position: relative;
 }
 
-body #right #roster { display: none; }
+body #right #roster,
+body #right input[name=search] { display: none; }
 
-body.roster #center { display: none; }
-body.roster #navtabs { display: none; }
-body.roster #left   { display: none; }
-body.roster #right #roster { display: block; }
+body.roster #center,
+body.roster #navtabs,
+body.roster #left { display: none; }
+
+body.roster #right #roster,
+body.roster #right input[name=search]  { display: block; }
 
 body.infos #center  { display: none; }
 body.infos #navtabs { display: none; }
@@ -46,7 +48,9 @@ h1 {
 
 #right {
     width: 100%;
+    top: 0;
     position: relative;
+    height: 100%;
 }
 
 #roster ul#rosterlist {

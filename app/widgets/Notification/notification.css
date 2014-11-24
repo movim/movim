@@ -10,43 +10,27 @@
 	-moz-box-sizing: border-box;
 
     padding: 1em;
-
-    pointer-events: none;
 }
 
 #notification_widget .notif {
-    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease;
+    
+    background-color: #323232;
+    border-radius: 0.1em;
     margin-top: 1em;
     width: 100%;
     
     color: white;
-    padding: 0.7em;
-    padding-left: 3em;
+    padding: 0.7em 1.3em;
     opacity: 1;
     
     line-height: 1.5em;
-    
-    background-repeat: no-repeat;
-    background-position: 1em center;    
-    background-image: url(img/success.png);
-}
-
-#notification_widget .notif.error {
-    background-image: url(img/error.png);
-}
-
-#notification_widget .notif.warning {
-    background-image: url(img/warning.png);
-}
-
-#notification_widget .notif.info {
-    background-image: url(img/info.png);
 }
 
 #notification_widget .notif:hover {
-    opacity: 0.4;
+    background-color: #151515;
+    cursor: pointer;
 }
-
 
 .notificationAnim {
     opacity: 0;
@@ -60,24 +44,24 @@
 }
 
 @-webkit-keyframes fadeOut {
-      0% { opacity: 0; visibility: visible; left: 0px; }
-      5% { opacity: 1; visibility: visible; left: 0px; }
-     90% { opacity: 1; visibility: visible; left: 0px; }
-    100% { opacity: 0; visibility: hidden; left: -300px; }
+      0% { opacity: 0; visibility: visible; }
+      5% { opacity: 1; visibility: visible; }
+     90% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
 }
 
 @-moz-keyframes fadeOut {
-      0% { opacity: 0; visibility: visible; left: 0px; }
-      5% { opacity: 1; visibility: visible; left: 0px; }
-     90% { opacity: 1; visibility: visible; left: 0px; }
-    100% { opacity: 0; visibility: hidden; left: -300px; }
+      0% { opacity: 0; visibility: visible; }
+      5% { opacity: 1; visibility: visible; }
+     90% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
 }
 
 @-ms-keyframes fadeOut {
-      0% { opacity: 0; visibility: visible; left: 0px; }
-      5% { opacity: 1; visibility: visible; left: 0px; }
-     90% { opacity: 1; visibility: visible; left: 0px; }
-    100% { opacity: 0; visibility: hidden; left: -300px; }
+      0% { opacity: 0; visibility: visible; }
+      5% { opacity: 1; visibility: visible; }
+     90% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
 }
 
 @media screen and (max-width: 1024px) {

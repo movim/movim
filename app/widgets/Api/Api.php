@@ -69,7 +69,7 @@ class Api extends WidgetBase {
 
         if(isset($json) && $json->status == 200) {
             RPC::call('movim_reload_this');
-            Notification::appendNotification(t('Configuration updated'));
+            Notification::appendNotification($this->__('api.conf_updated'));
         }
     }
 

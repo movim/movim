@@ -92,7 +92,7 @@ class WidgetWrapper
     protected function destroy()
     {
         if($this->register_widgets && count($this->loaded_widgets) > 0) {
-            $sess = Session::start(APP_NAME);
+            $sess = Session::start();
             $sess->set('loaded_widgets', $this->loaded_widgets);
             $this->register_widgets = false;
         }
@@ -128,7 +128,7 @@ class WidgetWrapper
         }
         else {
             throw new MovimException(
-                t("Requested widget '%s' doesn't exist.", $widget_name));
+                __('error.widget_load_error', $widget_name));
         }
 
         require_once($widget_path);
