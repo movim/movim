@@ -56,7 +56,9 @@ class Get extends Action
                 $this->deliver();
             }
             else {
-                $user->setConfig(array('config' => true)); 
+                $user->setConfig(array('config' => true));
+                $this->pack();
+                $this->deliver();
             }
         }
     }
