@@ -27,6 +27,7 @@
     margin-left: 0.5em;
     pointer-events: auto;
     box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.4);
+    border-radius: 0.2em 0.2em 0 0;
 }
 
 #chats .chat .panel {
@@ -129,6 +130,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 #chats .chat .panel .head:hover {

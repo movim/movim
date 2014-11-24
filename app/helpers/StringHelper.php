@@ -204,6 +204,21 @@ function cleanJid($jid)
     return reset(explode('/', $jid));
 }
 
+/*
+ *  Explode JID
+ */
+function explodeJid($jid)
+{
+    list($jid, $resource) = explode('/', $jid);
+    list($username, $server) = explode('@', $jid);
+
+    return array(
+        'username'  => $username,
+        'server'    => $server,
+        'ressource' => $resource
+        );
+}
+
 /**
  * Return a URIfied string
  * @param string
@@ -239,10 +254,13 @@ function sizeToCleanSize($size)
  */
 function colorize($string, $color) {
     $colors = array(
+        'black'     => 30,
         'red'       => 31,
-        'blue'      => 34,
-        'yellow'    => 33,
         'green'     => 32,
+        'yellow'    => 33,
+        'blue'      => 34,
+        'purple'    => 35,
+        'turquoise' => 36,
         'white'     => 37
     );
 

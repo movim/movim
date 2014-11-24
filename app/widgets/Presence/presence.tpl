@@ -1,3 +1,3 @@
-<div id="logout">
+<div id="presence_widget">
     {$c->preparePresence()}
 </div>

@@ -36,7 +36,7 @@ class Blog extends WidgetCommon {
                     $this->view->assign('title', $n->nodeid);
             // For a simple contact
             } else {
-                $this->view->assign('title', t("%s's feed",$messages[0]->getContact()->getTrueName()));
+                $this->view->assign('title', $this->__('blog.title',$messages[0]->getContact()->getTrueName()));
                 $this->view->assign('logo', $messages[0]->getContact()->getPhoto('l'));
             }
             
@@ -44,7 +44,7 @@ class Blog extends WidgetCommon {
             $this->view->assign('name', $messages[0]->getContact()->getTrueName());
             $this->view->assign('feed', Route::urlize('feed',array($from, $node)));
         } else {
-            $this->view->assign('title', t('Feed'));
+            $this->view->assign('title', $this->__('page.feed'));
         }
         
         $this->view->assign('posts', $this->preparePosts($messages, true));

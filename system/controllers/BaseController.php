@@ -7,41 +7,16 @@ class BaseController {
     protected $page;
 
     function __construct() {
-        $this->loadLanguage();
+        //this->loadLanguage();
         $this->page = new TplPageBuilder();
         $this->page->addScript('movim_hash.js');
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_tpl.js');
         $this->page->addScript('movim_rpc.js');
-        $this->page->addScript('movim_lazy.js');
-    }
-
-
-    /**
-     * Loads up the language, either from the User or default.
-     */
-    function loadLanguage() {
-        $user = new User();
-
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-        
-        if($user->isLogged()) {
-            $lang = $user->getConfig('language');
-            if(isset($lang)) {
-                loadLanguage($lang);
-            } else {
-                // Load default language.
-                loadLanguage($config->locale);
-            }
-        }
-        else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-            loadLanguageAuto();
-        }
-        else {
-            loadLanguage($config->locale);
-        }
+        $this->page->addScript('movim_websocket.js');
+        $this->page->addScript('movim_map.js');
+        $this->page->addScript('pako_inflate.js');
     }
 
     /**

@@ -12,7 +12,7 @@
             </div>    
         {else}
             <div class="message success">
-                {$c->__('db.connect_success')}
+                <i class="fa fa-plug"></i> {$c->__('db.connect_success')}
             </div>
             {if="null !== $infos"} 
                 <p>{$c->__('db.update')}</p>
@@ -21,14 +21,14 @@
                         <p>{$value}</p>
                     {/loop}
                     
-                    <a class="button color green icon refresh" 
+                    <a class="button color green" 
                         onclick="{$db_update}"
-                        style="float: right;">{$c->__('button.update')}</a>
+                        style="float: right;"><i class="fa fa-refresh"></i> {$c->__('button.update')}</a>
                     <div class="clear"></div>
                 </div>
             {else}
                 <div class="message success">
-                    {$c->__('db.up_to_date')}
+                    <i class="fa fa-refresh"></i> {$c->__('db.up_to_date')}
                 </div>
             {/if}
         {/if}
@@ -44,7 +44,7 @@
         </div>
         <div class="element">
             <label for="dbPassword">{$c->__('db.password')}</label>
-            <span>Password</span>
+            <span>{$c->hidePassword($conf.password)}</span>
         </div>
         <div class="element">
             <label for="dbHost">{$c->__('db.host')}</label>
