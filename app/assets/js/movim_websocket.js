@@ -57,6 +57,11 @@ var MovimWebsocket = {
             
             MovimWebsocket.handle(data);
         };
+
+        this.connection.onerror = function(e) {
+            console.log("Connection error!");
+            console.log(e.data);
+        };
     },
 
     send : function(widget, func, params) {
