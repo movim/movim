@@ -44,7 +44,7 @@ class AjaxController extends BaseController
 
             $buffer .= "function " . $funcdef['object'] . '_'
                 . $funcdef['funcname'] . "(${parlist}) {";
-            $buffer .= "movim_ajaxSend('".$funcdef['object']."', '".$funcdef['funcname']."', [${parlist}]);}\n";
+            $buffer .= "MovimWebsocket.send('".$funcdef['object']."', '".$funcdef['funcname']."', [${parlist}]);}\n";
 
         }
         return $buffer . "</script>\n";

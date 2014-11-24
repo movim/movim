@@ -44,6 +44,9 @@ class FrontController extends BaseController
     public function runRequest($request) {
         $c = $this->loadController($request);
 
+        $sess = Sessionx::start();
+        $sess->refreshCookie();
+
         if(is_callable(array($c, 'load'))) {
             $c->name = $request;
             $c->load();

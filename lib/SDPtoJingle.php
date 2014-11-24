@@ -49,7 +49,7 @@ class SDPtoJingle {
     }
     
     function getSessionId(){
-        $s = Session::start('movim');
+        $s = Session::start();
         if($sid = $s->get('jingleSid')){
             return $sid;
         }

@@ -140,7 +140,7 @@ class Postn extends Model {
             } else
                 $content = (string)$entry->entry->content;
         } elseif($summary == '')
-            $content = t('Content not found');
+            $content = __('');
         else
             $content = '';
         

@@ -6,3 +6,7 @@
 #contactinfo a:first-child {
     margin-top: 2em;
 }
+
+#contactinfo img {
+    width: 100%;
+}

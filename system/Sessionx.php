@@ -44,21 +44,22 @@ class Sessionx {
 
     protected function __construct()
     {
-        // Does the database exist?
-        if(self::$_sessionid == null) {
-            if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
-                self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
-            } else {
-                $this->regenerate();
-            }
+        if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
+            self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
+        } elseif(SESSION_ID) {
+            self::$_sessionid = SESSION_ID;
+        } else {
+            $key = generateKey(32); 
+            setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/');
+            self::$_sessionid = $key;
         }
     }
 
-    protected function regenerate()
+    public function refreshCookie()
     {
-        // Generating the session cookie's hash.
-        self::$_sessionid = \generateKey(64);
-        setcookie('MOVIM_SESSION_ID', self::$_sessionid, time() + $this->_max_age);
+        if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
+            setcookie("MOVIM_SESSION_ID", $_COOKIE['MOVIM_SESSION_ID'], time()+$this->_max_age, '/');
+        }
     }
 
     public static function start()
@@ -73,7 +74,6 @@ class Sessionx {
     /*
      * Session management part
      */
-
     private function inject() {
         $s = new modl\Sessionx();
         $s->session     = self::$_sessionid;
@@ -98,7 +98,7 @@ class Sessionx {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
         
-        $this->_url         = $config->boshurl;
+        $this->_url         = $config->websocketurl;
         $this->_port        = 5222;
         $this->_host        = $host;
         $this->_domain      = $domain;
@@ -157,8 +157,7 @@ class Sessionx {
                         'user',
                         'config',
                         'password',
-                        'start',
-                        'ressource')
+                        'start')
                     )
             ) {
                 $key = '_'.$key;
