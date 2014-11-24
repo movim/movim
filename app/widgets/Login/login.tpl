@@ -16,23 +16,30 @@
             data-action="{$submit}"
             name="login">
             <div class="element">
-                <input type="email" name="login" id="login" autofocus required
+                <input type="email" name="login" id="login" autofocus required disabled
                     placeholder="{$c->__('form.username')}"/>
             </div>
             <div class="element">
-                <input type="password" name="pass" id="pass" required
+                <input type="password" name="pass" id="pass" required disabled
                     placeholder="{$c->__('form.password')}"/>
             </div>
             <div class="element">
                 <input
                     type="submit"
+                    disabled
                     data-loading="{$c->__('button.connecting')}"
                     value="{$c->__('button.come_in')}"
                     class="button color green"/> 
             </div>
             <div class="clear"></div>
 
-            <div id="warning">{$warnings}</div>
+            <div id="warning">
+                {$warnings}
+                <div class="message error websocket">
+                    {$c->__('error.websocket')}
+                </div>
+
+            </div>
             <div class="clear"></div>
 
             <p class="create">

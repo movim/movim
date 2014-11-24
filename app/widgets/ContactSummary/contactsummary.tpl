@@ -1,8 +1,11 @@
-<div id="contactsummary">
+<div id="contactsummary_widget">
     {$c->prepareContactSummary($contact)}
-    {if="$refresh"}
-        <script type="text/javascript">
-            setTimeout("{$refresh}", 1000);
-        </script>
-    {/if}
+    
+    <script type="text/javascript">
+        MovimWebsocket.attach(function()
+        {
+            {$refresh}
+            MovimMap.addContact();
+        });
+    </script>
 </div>

@@ -25,6 +25,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    {$getaffiliations}
-    setTimeout("{$getmetadata}", 1000);
+    MovimWebsocket.attach(function()
+    {
+        {$getaffiliations}
+        {$getmetadata}
+    });
 </script>

@@ -74,7 +74,7 @@ class Media extends WidgetBase {
                                         'ajaxDeleteItem', 
                                         "'".$file."'"
                                     ).'">
-                                x
+                                <i class="fa fa-times"></i>
                             </div>
                     </li>
                     '; 
@@ -92,7 +92,7 @@ class Media extends WidgetBase {
         $html = 
             $this->listFiles().'                
             <span class="size"
-                title="'.sizeToCleanSize($this->user->dirSize()).' '.t('on').' '.sizeToCleanSize($this->user->sizelimit).'"
+                title="'.sizeToCleanSize($this->user->dirSize()).' '.$this->__('media.on').' '.sizeToCleanSize($this->user->sizelimit).'"
             >'.
                 $percent.'%
             </span>';

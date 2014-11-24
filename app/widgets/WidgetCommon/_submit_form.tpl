@@ -39,7 +39,7 @@
         <a 
             class="button color icon no" 
             onclick="movim_toggle_display('#galleryselect');"
-        >{$c->t('Close')}</a>  
+        >{$c->__('button.close')}</a>  
     </div>  
 </div>
 <table id="feedsubmitform">

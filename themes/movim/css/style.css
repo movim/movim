@@ -1,6 +1,6 @@
 /*@font-face {  
-	font-family: "OpenSans";  
-	src: url(../fonts/OpenSans-Light.ttf) format("truetype");  
+    font-family: "OpenSans";  
+    src: url(../fonts/OpenSans-Light.ttf) format("truetype");  
 } */
 
 /* We reset the CSS */
@@ -48,18 +48,15 @@ body {
     line-height: 1em;
     color: #4E4E4E;
 
-	animation: 200s infinite colorful;
-    -webkit-animation: 200s infinite colorful;
-
     margin: 0 auto;
     width: 100%;
     padding-right: 15rem;
     
-    background-color: #32434D;
+    background-color: white;
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     
     background-attachment:fixed;
 }
@@ -84,11 +81,13 @@ a:link, a:visited {
     position: absolute;
     top: 0em;
     right: 0em;
-    width: 3em;
-    height: 3em;
+    width: 2.6em;
+    height: 2.6em;
+    margin: 0.2em;
     background-size: 2em 2em;
     background-repeat: no-repeat;
     background-position: center center;
+    border-radius: 0.2em;
 }
 
 .protect.white:after { 
@@ -142,7 +141,7 @@ h2.post-title {
 }
 
 h3 {
-    color: #BBB;
+    color: #555;
     line-height: 2em;
 }
 
@@ -216,11 +215,7 @@ ul.clean li {
 }
 
 #main {  
-    /*background-color: #383735;*/
-    background-color: rgba(20, 20, 20, 0.7);
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 #main:after {
@@ -234,26 +229,32 @@ ul.clean li {
 {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: relative;
     float: left;
     width: 12rem;
-    color: white;
     top: 0;
-    overflow: hidden;
+}
+
+#left:before {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.05), transparent);
+    pointer-events:none;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1em;
+    height: 100%;
 }
 
 #left a:not(.button):link, 
 #left a:not(.button):visited {
-    color: #94A6B0;
     text-decoration: none;
 }
 
 #left ul {
     list-style-type: none;
-}
-
-#left h2 {
-    margin-top: 1em;
 }
 
 #center
@@ -270,24 +271,24 @@ ul.clean li {
     display: block;
     width: 15rem;
     position: fixed;
-    top: 0;
+    top: 3em;
     right: 0;
     padding-top: 0em;
-    height: 100%;
-    overflow: hidden;
-    pointer-events:none;
+    /*height: 100%;*/
+    height: calc(100% - 3em);
     z-index: 2;
+    background-color: rgba(36, 36, 36, 1);
 }
 
 #right:after {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent);
     pointer-events:none;
     content: "";
     display: block;
     position: absolute;
     top: 0;
     left: 0;
-    width: 0.7em;
+    width: 1em;
     height: 100%;
 }
 
@@ -295,17 +296,15 @@ ul.clean li {
 {
     clear: both;
     text-align: right;
-    background-color: rgba(20, 20, 20, 0.7);
     line-height: 3em;
     padding: 0 1em;
-    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 #content > footer a:link, #content > footer a:visited {
-    color: #BBB;
+    color: #888;
 }
 
 /* Warning */
@@ -317,7 +316,7 @@ ul.clean li {
 .message.logs {
     border-radius: 0.1em;
     background-size: 10em 10em;
-    background-image: linear-gradient(135deg, rgba(255,255, 255, 0.05) 25%, transparent 25%,
+    /*background-image: linear-gradient(135deg, rgba(255,255, 255, 0.05) 25%, transparent 25%,
                         transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
                         transparent 75%, transparent);
     background-image: -moz-linear-gradient(top left, rgba(255,255, 255, 0.05) 25%, transparent 25%,
@@ -328,7 +327,7 @@ ul.clean li {
                         transparent 75%, transparent);
     background-image: -o-linear-gradient(top left, rgba(255,255, 255, 0.05) 25%, transparent 25%,
                         transparent 50%, rgba(255,255, 255, 0.05) 50%, rgba(255,255, 255, 0.05) 75%,
-                        transparent 75%, transparent);
+                        transparent 75%, transparent);*/
     
     color: #fff;
     padding: 0.7em;
@@ -336,8 +335,8 @@ ul.clean li {
     margin: 0.5em 0px;
     clear: both;
     
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+    /*text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);*/
 }
 
 .message.warning { background-color: #FC8F12; }
@@ -512,7 +511,7 @@ dl dt,
 dl dd {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     padding: 0 1em;
     display: inline-block;
     line-height: 2em;
@@ -529,6 +528,9 @@ dl dt {
     text-align: right;
     font-weight: bold;
     width: 25%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 dl dd {
@@ -593,7 +595,7 @@ dl dd {
     
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 .popup:after {
@@ -618,7 +620,7 @@ dl dd {
     padding-left: 0.5em;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     height: 3em;
 }
 
