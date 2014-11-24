@@ -67,38 +67,6 @@ class ContactManage extends WidgetCommon
             $form->assign('rl', $rl);
             $form->assign('groups', $groups);
             $html = $form->draw('_contact_manage_form', true);
-        
-            /*
-            $submit = ;
-            
-            $html .= '<h2>'.t('Manage').'</h2>';
-            
-            $html .= '
-                <form name="manage">';
-                
-            $ghtml = '';
-
-            if(is_array($groups)) {
-                foreach($groups as $g)
-                    $ghtml .= '<option value="'.$g.'"/>';
-            }
-                
-            $html .= '
-                    <input type="hidden" name="jid" value="'.$jid.'"/>
-                    <div class="element large mini">
-                        <input name="alias" id="alias" class="tiny" placeholder="'.t('Alias').'" value="'.$rl->rostername.'"/>
-                    </div>
-                    <div class="element large mini">
-                        <datalist id="group" style="display: none;">
-                            '.$ghtml.'
-                        </datalist>
-                        <input name="group" list="group" id="alias" class="tiny" placeholder="'.t('Group').'" value="'.$rl->groupname.'"/>
-                    </div>
-                    
-                    <a name="submit" class="button black icon yes" onclick="'.$submit.' this.style.display = \'none\';">'.t('Save').'</a>';
-                
-            $html .= '
-                </form>';*/
         }
         
         return $html;

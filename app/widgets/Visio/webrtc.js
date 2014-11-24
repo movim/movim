@@ -98,13 +98,13 @@ function onIceCandidate(event) {
 
         var msgString = JSON.stringify(candidate);
         
-        Visio.call(['VisioExt_ajaxSendCandidate', msgString]);
+        Visio_ajaxSendCandidate(msgString);
     }
 
 }
 
 function sendTerminate(reason) {
-    Visio.call(['VisioExt_ajaxSendSessionTerminate', VISIO_JID, VISIO_RESSOURCE, reason]);
+    Visio_ajaxSendSessionTerminate(VISIO_JID, VISIO_RESSOURCE, reason);
 }
 
 function sendMessage(msg, accept) {
@@ -126,14 +126,14 @@ function sendMessage(msg, accept) {
             if(accept) {
                 Visio.log('Send the acceptance.');
                 Visio.log('ACCEPTANCE ' + msg.sdp);
-                Visio.call(['VisioExt_ajaxSendAcceptance', msgString]);
+                Visio_ajaxSendAcceptance(msgString);
             } else {
                 Visio.log('Send the proposal.');
                 Visio.log('PROPOSAL ' + msg.sdp);
 
                 console.log(msg.sdp);
 
-                Visio.call(['VisioExt_ajaxSendProposal', msgString]);      
+                Visio_ajaxSendProposal(msgString);      
             }
         }, 1000);
     } else {
@@ -142,12 +142,12 @@ function sendMessage(msg, accept) {
         if(accept) {
             Visio.log('Send the acceptance.');
             Visio.log('ACCEPTANCE ' + msg.sdp);
-            Visio.call(['VisioExt_ajaxSendAcceptance', msgString]);
+            Visio_ajaxSendAcceptance(msgString);
         } else {
             Visio.log('Send the proposal.');
             Visio.log('PROPOSAL ' + msg.sdp);
             
-            Visio.call(['VisioExt_ajaxSendProposal', msgString]);      
+            Visio_ajaxSendProposal(msgString);      
         }
     }
 }
@@ -171,8 +171,7 @@ function onSetRemoteSessionDescriptionError(error) {
 }
 
 function onOffer(offer) {
-    offer = offer[0];
-    
+    console.log(offer);
     Visio.log('Offer received.');
     Visio.log('OFFER ' + offer);
 
@@ -192,9 +191,7 @@ function onOffer(offer) {
     }
 }
 
-function onAccept(offer) {
-    offer = offer[0];
-    
+function onAccept(offer) {  
     Visio.log('Accept received.');
     Visio.log('ACCEPT ' + offer);
 
@@ -208,14 +205,14 @@ function onAccept(offer) {
     }
 }
 
-function onCandidate(message) {
+function onCandidate(sdp, media) {
     var label = {
             'audio' : 0,
             'video' : 1
         };
     
-    var candidate = new RTCIceCandidate({sdpMLineIndex: label[message[1]],
-                                         candidate: message[0]});
+    var candidate = new RTCIceCandidate({sdpMLineIndex: label[media],
+                                         candidate: sdp});
 
     pc.addIceCandidate(candidate, onRemoteIceCandidateAdded, onRemoteIceCandidateError);
 }

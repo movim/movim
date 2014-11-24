@@ -1,5 +1,4 @@
-<div class="chat" 
-     onclick="this.querySelector('textarea').focus()"
+<div class="chat"
      id="chat{$contact->jid}">
     <div class="panel" {$panelstyle}>
         <div class="head" >
@@ -11,8 +10,8 @@
         </div>
         <div class="messages" id="messages{$contact->jid}">
             {$messageshtml}
-            <div style="display: none;" class="message composing" id="composing{$contact->jid}">{$c->t('Composing…')}</div>
-            <div style="display: none;" class="message composing" id="paused{$contact->jid}">{$c->t('Paused…')}</div>                        
+            <div style="display: none;" class="message composing" id="composing{$contact->jid}">{$c->__('message.composing')}</div>
+            <div style="display: none;" class="message composing" id="paused{$contact->jid}">{$c->__('message.paused')}</div>                        
         </div>
         
         <div class="text">
@@ -42,6 +41,7 @@
                         }
                     },5000); 
                     "
+                placeholder="{$c->__('chat.placeholder')}"
             ></textarea>
         </div>
     </div>

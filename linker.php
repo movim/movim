@@ -7,94 +7,126 @@ require_once(DOCUMENT_ROOT.'/bootstrap.php');
 $bootstrap = new Bootstrap();
 $booted = $bootstrap->boot();
 
-set_time_limit(200);
-
-$polling = true;
-
 $loop = React\EventLoop\Factory::create();
 
-$logger = new \Zend\Log\Logger();
-$writer = new \Zend\Log\Writer\Syslog(array('application' => 'movim'));
-$logger->addWriter($writer);
+$dnsResolverFactory = new React\Dns\Resolver\Factory();
+$dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);
 
-$client_xmpp = new \Devristo\Phpws\Client\WebSocket("ws://movim.eu:5290/", $loop, $logger);
-$client_local = new \Devristo\Phpws\Client\WebSocket("ws://127.0.0.1:8080/", $loop, $logger);
+$connector = new Ratchet\Client\Factory($loop);
 
-// CLIENT 1
+$cd = new \Modl\ConfigDAO();
+$config = $cd->get();
 
-$client_xmpp->on("request", function($headers) use ($logger){
-    $logger->notice("XMPP : Request object created!");
-});
+//setcookie('PHPENV', getenv('sid'), time()+3600);
+/*
+$connector_xmpp = new React\SocketClient\Connector($loop, $dns);
+$secure_connector_xmpp = new React\SocketClient\SecureConnector($connector_xmpp, $loop);
+* $secure_connector_xmpp->create('movim.eu', 5222)*/
 
-$client_xmpp->on("handshake", function() use ($logger) {
-    $logger->notice("XMPP : Handshake received!");
-});
+React\Promise\all([$connector('ws://127.0.0.1:8080'), $connector($config->websocketurl, ['xmpp'])])->then(function($conns) use ($loop) {
+    list($conn1, $conn2) = $conns;
 
-$client_xmpp->on("connect", function($headers = false) use ($client_xmpp, $logger) {
-    $logger->notice("XMPP : Connected");
-});
+    $logger = new \Zend\Log\Logger();
+    $writer = new \Zend\Log\Writer\Syslog(array('application' => 'movim_daemon'));
+    $logger->addWriter($writer);
 
-$client_xmpp->on("disconnect", function($headers = false) use ($client_xmpp) {
-    $logger->notice("XMPP : Disconnected");
+    $conn1->on('message', function($msg) use ($conn1, $logger, $conn2) {
+        if($msg != '') {
+            $rpc = new RPC();
+            $rpc->handle_json($msg);
+            $logger->notice("LOOP : Got message {$msg}");
 
-    $client_local->close();
-});
+            $xml = \Moxl\API::commit();
+            \Moxl\API::clear();
 
-$client_xmpp->on("message", function($message) use ($client_local, $logger){
-    $logger->notice("XMPP : Got message");
+            if(!empty($xml)) {
+                $logger->notice("LOOP : Send to XMPP {$xml}");
+            
+                $conn2->send(trim($xml));
+            }
 
-    $obj = new \StdClass;
-    $obj->func = 'message';
-    $obj->body = $message->getData();
+            $obj = new \StdClass;
+            $obj->func = 'message';
+            $obj->body = RPC::commit();
+            RPC::clear();
+
+            if(!empty($obj->body)) {
+                $conn1->send(json_encode($obj));
+            }
+        }
+    });
+
+    $conn1->on('error', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("LOOP : Got error {$msg}");
+        $conn2->close();
+        $loop->stop();
+    });
     
-    $client_local->send(json_encode($obj));
-});
+    $conn1->on('close', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("LOOP : Got close");
+        if($conn2 != null) $conn2->close();
+        if($loop  != null) $loop->stop();
+    });
+    
+    $conn2->on('message', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("XMPP : Got message from XMPP {$msg}");
 
-// CLIENT 2
+        if($msg == '</stream:stream>') {
+            $conn2->close();
+            $conn1->close();
+            $loop->stop();
+        }
 
-$client_local->on("request", function($headers) use ($logger){
-    $logger->notice("LOOP : Request object created!");
-});
+        \Moxl\API::clear();
+        \RPC::clear();
 
-$client_local->on("handshake", function() use ($logger) {
-    $logger->notice("LOOP : Handshake received!");
-});
+        \Moxl\Xec\Handler::handleStanza($msg);
 
-$client_local->on("connect", function($headers = false) use ($client_local, $logger) {
-    $logger->notice("LOOP : Connected!");
+        $xml = \Moxl\API::commit();
+        \Moxl\API::clear();
+
+        $obj = new \StdClass;
+        $obj->func = 'message';
+        $obj->body = \RPC::commit();
+        $out = json_encode($obj->body);
+        $logger->notice("XMPP : Send to LOOP {$out}");
+        \RPC::clear();
+
+        if(!empty($obj->body)) {
+            $conn1->send(json_encode($obj));
+        }
+
+        if(!empty($xml)) {
+            $logger->notice("XMPP : Send to XMPP {$xml}");
+        
+            $conn2->send(trim($xml));
+        }
+    });
+    
+    $conn2->on('error', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("XMPP : Got error {$msg}");
+        $conn1->close();
+        $loop->stop();
+    });
+    
+    $conn2->on('close', function($msg) use ($conn1, $logger, $conn2, $loop) {
+        $logger->notice("XMPP : Got close");
+        if($conn1 != null) $conn1->close();
+        if($loop  != null) $loop->stop();
+    });
 
     $obj = new \StdClass;
     $obj->func = 'register_linker';
     $obj->sid  = getenv('sid');
 
-    $client_local->send(json_encode($obj));
+    $conn1->send(json_encode($obj));
+
+}, function($e) {
+    $logger = new \Zend\Log\Logger();
+    $writer = new \Zend\Log\Writer\Syslog(array('application' => 'movim_daemon'));
+    $logger->addWriter($writer);
+    
+    $logger->notice("LOOP : Error {$e->getMessage()}");
 });
-
-$client_local->on("disconnect", function($headers = false) use ($client_local) {
-    $logger->notice("LOOP : Disconnected");
-
-    $client_xmpp->close();
-});
-
-$client_local->on("message", function($message) use ($client_local, $client_xmpp, $logger){
-
-    if($message->getData() != '') {
-        $rpc = new RPC();
-        $rpc->handle_json($message->getData());
-        $logger->notice("LOOP : Got message");
-
-        $obj = new \StdClass;
-        $obj->func = 'message';
-        $obj->body = RPC::commit();
-        RPC::clear();
-
-        $client_local->send(json_encode($obj));
-    }
-
-    //$client_xmpp->send($message->getData());
-});
-
-$client_local->open();
-$client_xmpp->open();
 
 $loop->run();

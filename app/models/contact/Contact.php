@@ -306,7 +306,7 @@ class Contact extends Model {
     }
 
     public function getPlace() {
-        $place = '';
+        $place = null;
         
         if($this->loctext != '')
             $place .= $this->loctext.' '; 
@@ -391,6 +391,17 @@ class Contact extends Model {
         if($this->marital != null && $this->marital != 'none') {
             return $marital[$this->marital];
         }
+    }
+
+    function toRoster() {
+        return array(
+            'jid'        => $this->jid,
+            'rostername' => $this->rostername,
+            'groupname'  => $this->groupname,
+            'status'     => $this->status,
+            'ressource'  => $this->ressource,
+            'value'      => $this->value
+            );
     }
 }
 
