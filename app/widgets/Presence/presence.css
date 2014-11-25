@@ -59,6 +59,8 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    width: calc(100% - 6em);
+    display: inline-block;
 }
 
 #presence_widget span.status {
