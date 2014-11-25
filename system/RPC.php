@@ -77,10 +77,8 @@ class RPC
     /**
      * Handles incoming requests.
      */
-    public function handle_json($json)
-    {        
-        $request = json_decode($json);
-
+    public function handle_json($request)
+    {
         // Loading the widget.
         $widget_name = (string)$request->widget;
 
