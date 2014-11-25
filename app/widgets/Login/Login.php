@@ -65,9 +65,6 @@ class Login extends WidgetBase
         
         $this->view->assign('submit', $submit);
         $this->view->assign('info',   $config->info);
-
-        $sd = new \Modl\SessionxDAO();
-        $sd->clean();
             
         if(isset($_GET['err'])) {
             $this->view->assign('warnings', $this->displayWarning($_GET['err'], true));
