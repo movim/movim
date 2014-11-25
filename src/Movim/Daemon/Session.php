@@ -5,7 +5,7 @@ use Ratchet\ConnectionInterface;
 
 class Session {
     protected $clients;
-    protected $timestamp;
+    public $timestamp;
     protected $sid;
     protected $baseuri;
     public $process;
@@ -19,6 +19,8 @@ class Session {
         
         $this->clients = new \SplObjectStorage;
         $this->register($loop, $this);
+
+        $this->timestamp = time();
     }
 
     public function attach(ConnectionInterface $conn)
@@ -78,6 +80,14 @@ class Session {
         });
     }
 
+    public function killLinker()
+    {
+        if(isset($this->process)) {
+            $this->process->terminate();
+            $this->process = null;
+        }
+    }
+
     public function closeAll()
     {
         foreach ($this->clients as $client) {
@@ -87,11 +97,13 @@ class Session {
     
     public function messageIn(ConnectionInterface $from, $msg)
     {
+        $this->timestamp = time();
         $this->process->stdin->write($msg."\n");
     }
 
     public function messageOut($msg)
     {
+        $this->timestamp = time();
         if(!empty($msg)) {
             foreach ($this->clients as $client) {
                 $client->send($msg);
