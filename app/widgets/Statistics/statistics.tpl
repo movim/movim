@@ -17,4 +17,10 @@
     <h1><i class="fa fa-line-chart"></i> {$c->__('statistics.subscriptions')}</h1>
     <img src="{$cache_path}monthly.png">
     <img src="{$cache_path}monthly_cumulated.png">
+
+    <script type="text/javascript">
+        MovimWebsocket.attach(function() {
+            MovimWebsocket.connection.admin("{$hash}");
+        });
+    </script>
 </div>

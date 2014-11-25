@@ -17,10 +17,22 @@
 
 use Modl\SessionxDAO;
  
-class Statistics extends WidgetBase {
-    function load() {
+class Statistics extends WidgetBase
+{
+    function load()
+    {
+        $this->addjs('statistics.js');
+    }
+
+    function display()
+    {
         $sd = new SessionxDAO;
         $this->view->assign('sessions',      $sd->getAll());
+
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
+        $this->view->assign('hash',          $config->password);
 
         $tmp = array();
 
@@ -59,7 +71,8 @@ class Statistics extends WidgetBase {
         $this->renderTimeLineChart($days, $this->__('statistics.monthly_sub_cum'), "monthly_cumulated.png");
     }
 
-    private function renderTimeLineChart($data, $title, $filename) {
+    private function renderTimeLineChart($data, $title, $filename)
+    {
         $chart = new Libchart\View\Chart\LineChart(750, 450);
 
         $dataSet = new Libchart\Model\XYDataSet();
@@ -76,7 +89,14 @@ class Statistics extends WidgetBase {
         $this->view->assign('cache_path',      BASE_URI.'cache/');
     }
 
-    function getTime($date) {
+    public function ajaxGetSessions($hashs)
+    {
+        $sd = new SessionxDAO;
+        $sessions = $sd->getAll();
+    }
+
+    function getTime($date)
+    {
         return prepareDate(strtotime($date));
     }
 }
