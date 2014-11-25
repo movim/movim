@@ -70,7 +70,11 @@ function config($values) {
 
     $values = explode(',', $values);
     foreach($values as $value) {
-        list($key, $value) = explode(':', $value);
+        $exp = explode(':', $value);
+        $key = $exp[0];
+        array_shift($exp);
+        $value = implode(':', $exp);
+
         if(property_exists($config, $key)) {
             $old = $config->$key;
             $config->$key = $value;

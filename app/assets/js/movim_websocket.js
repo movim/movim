@@ -16,6 +16,10 @@ WebSocket.prototype.unregister = function() {
     this.send(JSON.stringify({'func' : 'unregister'}));
 };
 
+WebSocket.prototype.admin = function(key) {
+    this.send(JSON.stringify({'func' : 'admin', 'key' : key}));
+};
+
 /**
  * @brief Definition of the MovimWebsocket object
  * @param string error 
@@ -39,6 +43,7 @@ var MovimWebsocket = {
 
         this.connection.onmessage = function(e) {
             data = pako.ungzip(base64_decode(e.data), { to: 'string' });
+
             var obj = JSON.parse(data);
 
             if(obj.id) {
@@ -56,6 +61,20 @@ var MovimWebsocket = {
             }
             
             MovimWebsocket.handle(data);
+        };
+
+        this.connection.onclose = function(e) {
+            console.log("Connection closed by the server or session closed");
+            if(e.code == 1006 || e.code == 1000) {
+                movim_disconnect();
+            }
+        };
+
+        this.connection.onerror = function(e) {
+            console.log("Connection error!");
+            console.log(e);
+            // We prevent the onclose launch
+            this.onclose = null;
         };
     },
 
