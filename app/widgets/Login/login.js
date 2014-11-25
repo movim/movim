@@ -88,7 +88,7 @@ MovimWebsocket.attach(function()
         rememberSession(localStorage.username);
 
         // A fallback security
-        setTimeout("MovimWebsocket.unregister()", 15000);
+        setTimeout("MovimWebsocket.unregister()", 10000);
     }
 
     // We hide the Websocket error
@@ -109,9 +109,7 @@ MovimWebsocket.attach(function()
     }
 });
 
-movim_add_onload(function() {
-    //MovimWebsocket.unregister();
-    
+movim_add_onload(function() {    
     /* Dump cache variables  in localStorage */
     for ( var i = 0, len = localStorage.length; i < len; ++i ) {
         var cache = localStorage.key(i);

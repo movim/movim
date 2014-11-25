@@ -143,7 +143,8 @@ class Roster extends WidgetBase
         //Groups
         $rd = new \Modl\RosterLinkDAO();
         $groups = $rd->getGroups();
-        if(!in_array("Ungrouped", $groups)) $groups[] = "Ungrouped";
+        if(is_array($groups) && !in_array("Ungrouped", $groups)) $groups[] = "Ungrouped";
+        else $groups = array();
 
         $groups = array_flip($groups);
         $result['groups'] = json_encode($groups);
