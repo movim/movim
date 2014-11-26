@@ -46,7 +46,7 @@ class Session {
 
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
-                                        'php linker.php',
+                                        'exec php linker.php',
                                         null,
                                         array(
                                             'sid'       => $this->sid,
