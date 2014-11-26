@@ -21,6 +21,9 @@ class Core implements MessageComponentInterface {
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
 
+        $sd = new \Modl\SessionxDAO();
+        $sd->clear();
+
         $this->registerCleaner();
     }
     
