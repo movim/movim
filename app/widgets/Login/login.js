@@ -88,7 +88,7 @@ MovimWebsocket.attach(function()
         rememberSession(localStorage.username);
 
         // A fallback security
-        setTimeout("MovimWebsocket.unregister()", 10000);
+        setTimeout("MovimWebsocket.unregister()", 7000);
     }
 
     // We hide the Websocket error
