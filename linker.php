@@ -62,7 +62,7 @@ $config = $cd->get();
     });
 
     $conn->on('close', function($msg) use ($conn, $loop) {
-        //$loop->stop();
+        $loop->stop();
     });
 
     $stdin->on('data', function ($data) use ($conn, $loop) {
