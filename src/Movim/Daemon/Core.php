@@ -10,7 +10,7 @@ class Core implements MessageComponentInterface {
     public $loop;
     public $baseuri;
 
-    private $cleanerdelay = 3; // in minutes
+    private $cleanerdelay = 15; // in minutes
 
     public function __construct($loop, $baseuri, $port)
     {
