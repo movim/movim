@@ -248,6 +248,18 @@ class SessionxDAO extends SQL {
 
         $this->run('Sessionx');
     }*/
+    function clear() {
+        $this->_sql = '
+            truncate table sessionx';
+        
+        $this->prepare(
+            'Sessionx', 
+            array(
+            )
+        );
+
+        $this->run('Sessionx');
+    }
 
     function getAll() {
         $this->_sql = '
