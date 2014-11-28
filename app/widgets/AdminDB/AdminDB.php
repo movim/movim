@@ -41,7 +41,7 @@ class AdminDB extends WidgetBase
         $errors = '';
 
         $this->view->assign('infos', $infos); 
-        $this->view->assign('db_update', $this->genCallAjax('ajaxUpdateDatabase')
+        $this->view->assign('db_update', $this->call('ajaxUpdateDatabase')
             ."this.className='button color orange icon loading'; setTimeout(function() {location.reload(false)}, 1000);");
         try {
             $md->connect();

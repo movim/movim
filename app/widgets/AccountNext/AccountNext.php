@@ -39,7 +39,7 @@ class AccountNext extends WidgetBase {
         if(isset($_GET['s'])) {
             $this->view->assign(
                         'getsubscriptionform',
-                        $this->genCallAjax('ajaxDiscoverServer', "'".$_GET['s']."'")
+                        $this->call('ajaxDiscoverServer', "'".$_GET['s']."'")
                         );
                         
             $this->view->assign('ndd', $_GET['s']);
@@ -132,7 +132,7 @@ class AccountNext extends WidgetBase {
 
                 $formview->assign(
                     'submitdata',
-                    $this->genCallAjax('ajaxSubmitData', "movim_form_to_json('data')"));
+                    $this->call('ajaxSubmitData', "movim_form_to_json('data')"));
                 
                 $html = $formview->draw('_accountnext_form', true);
 

@@ -46,8 +46,8 @@ class NodeConfig extends WidgetBase
             $this->view->assign('server', $_GET['s']);
             $this->view->assign('node', $_GET['n']);
             $this->view->assign('name', $title);
-            $this->view->assign('group_config', $this->genCallAjax('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"));
-            $this->view->assign('group_delete', $this->genCallAjax('ajaxGroupDelete', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('group_config', $this->call('ajaxGroupConfig', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('group_delete', $this->call('ajaxGroupDelete', "'".$_GET['s']."'", "'".$_GET['n']."'"));
         }
     }
     
@@ -68,7 +68,7 @@ class NodeConfig extends WidgetBase
     }
     
     function onConfigForm($form) {
-        $submit = $this->genCallAjax('ajaxSubmitConfig', "movim_parse_form('config')", "'".$form[1]."'", "'".$form[2]."'");
+        $submit = $this->call('ajaxSubmitConfig', "movim_parse_form('config')", "'".$form[1]."'", "'".$form[2]."'");
         $html = '
             <form name="config">'.
                 $form[0].

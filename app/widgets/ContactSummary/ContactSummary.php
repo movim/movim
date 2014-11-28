@@ -42,7 +42,7 @@ class ContactSummary extends WidgetCommon
             $this->view->assign('contact', $contact);
         }
 
-        $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshVcard', "'".$_GET['f']."'"));
+        $this->view->assign('refresh', $this->call('ajaxRefreshVcard', "'".$_GET['f']."'"));
     }
     
     function onVcard($packet)

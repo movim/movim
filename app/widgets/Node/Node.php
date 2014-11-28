@@ -47,8 +47,8 @@ class Node extends WidgetCommon
         if(isset($_GET['s']) && isset($_GET['n'])) {
             $this->view->assign('server', $_GET['s']);
             $this->view->assign('node',   $_GET['n']);
-            $this->view->assign('getaffiliations',  $this->genCallAjax('ajaxGetAffiliations', "'".$_GET['s']."'", "'".$_GET['n']."'"));
-            $this->view->assign('getmetadata',      $this->genCallAjax('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('getaffiliations',  $this->call('ajaxGetAffiliations', "'".$_GET['s']."'", "'".$_GET['n']."'"));
+            $this->view->assign('getmetadata',      $this->call('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
             $this->view->assign('hash',             md5($_GET['s'].$_GET['n']));
             $this->view->assign('items',            $this->prepareNode($_GET['s'], $_GET['n']));
             $this->view->assign('metadata',         $this->prepareMetadata($_GET['s'], $_GET['n']));
@@ -175,10 +175,10 @@ class Node extends WidgetCommon
         
         $nodeview->assign('role',           $this->role);
         
-        $nodeview->assign('refresh',        $this->genCallAjax('ajaxGetItems', "'".$serverid."'", "'".$groupid."'"));
-        $nodeview->assign('getsubscription',$this->genCallAjax('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'"));
-        $nodeview->assign('subscribe',      $this->genCallAjax('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'"));
-        $nodeview->assign('unsubscribe',    $this->genCallAjax('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'"));
+        $nodeview->assign('refresh',        $this->call('ajaxGetItems', "'".$serverid."'", "'".$groupid."'"));
+        $nodeview->assign('getsubscription',$this->call('ajaxGetSubscriptions', "'".$serverid."'", "'".$groupid."'"));
+        $nodeview->assign('subscribe',      $this->call('ajaxSubscribe', "movim_parse_form('groupsubscribe')", "'".$serverid."'", "'".$groupid."'"));
+        $nodeview->assign('unsubscribe',    $this->call('ajaxUnsubscribe', "'".$serverid."'", "'".$groupid."'"));
 
         $nodeview->assign('submitform',     '');
 
@@ -199,7 +199,7 @@ class Node extends WidgetCommon
                 <div class="block large">
                     <div
                         class="older"
-                        onclick="'.$this->genCallAjax($function, "'".$serverid."'", "'".$groupid."'", "'".$next."'").'; this.parentNode.style.display = \'none\'">
+                        onclick="'.$this->call($function, "'".$serverid."'", "'".$groupid."'", "'".$next."'").'; this.parentNode.style.display = \'none\'">
                         <i class="fa fa-history"></i> '. __('post.older') .'
                     </div>
                 </div>';

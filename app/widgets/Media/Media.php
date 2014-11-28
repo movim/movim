@@ -33,7 +33,7 @@ class Media extends WidgetBase {
     }
     
     function display() {
-        $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshMedia'));
+        $this->view->assign('refresh', $this->call('ajaxRefreshMedia'));
     }
     
     function ajaxRefreshMedia()
@@ -75,7 +75,7 @@ class Media extends WidgetBase {
                             <div 
                                 class="remove" 
                                 onclick="'.
-                                    $this->genCallAjax(
+                                    $this->call(
                                         'ajaxDeleteItem', 
                                         "'".$file."'"
                                     ).'">
