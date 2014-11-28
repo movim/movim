@@ -1,11 +1,3 @@
-#bookmarks li {
-    line-height: 2em;
-    padding: 0 1em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 #bookmarks li .cross {
     float: right;
     opacity: 0.3;

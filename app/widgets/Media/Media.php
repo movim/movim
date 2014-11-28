@@ -52,6 +52,11 @@ class Media extends WidgetBase {
     
     function listFiles()
     {
+        if(empty($this->user->getDir())) {
+            $mediaempty = $this->tpl();
+            return $mediaempty->draw('_media_empty', true);
+        }
+        
         $html = '<ul class="thumb">';
 
         foreach($this->user->getDir() as $file) {
