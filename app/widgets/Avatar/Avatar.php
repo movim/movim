@@ -36,7 +36,7 @@ class Avatar extends WidgetBase
         if(!$p->get($this->user->getLogin())) {
             $this->view->assign(
                 'getavatar',
-                $this->genCallAjax('ajaxGetAvatar')
+                $this->call('ajaxGetAvatar')
                 );
             $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
         } else {
@@ -63,7 +63,7 @@ class Avatar extends WidgetBase
         $avatarform->assign('me',       $me);
         $avatarform->assign(
             'submit',
-            $this->genCallAjax('ajaxAvatarSubmit', "movim_form_to_json('avatarform')")
+            $this->call('ajaxAvatarSubmit', "movim_form_to_json('avatarform')")
             );
         
         return $avatarform->draw('_avatar_form', true);

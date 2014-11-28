@@ -195,18 +195,18 @@ class Notifs extends WidgetCommon
                         class="button color green merged left " 
                         id="notifsvalidate" 
                         onclick="
-                            '.$this->genCallAjax("ajaxAddRoster", "'".$from."'").'
+                            '.$this->call("ajaxAddRoster", "'".$from."'").'
                             setTimeout(function() {'.
-                                $this->genCallAjax("ajaxSubscribed", "'".$from."'").
+                                $this->call("ajaxSubscribed", "'".$from."'").
                             '}, 1000);
                             setTimeout(function() {'.
-                                $this->genCallAjax("ajaxSubscribe", "'".$from."'").
+                                $this->call("ajaxSubscribe", "'".$from."'").
                             '}, 2000);
                         ">
                         <i class="fa fa-plus"></i> '.t("Add").'
                     </a><a 
                         class="button color red alone merged right" 
-                        onclick="'.$this->genCallAjax("ajaxRefuse", "'".$from."'").'">
+                        onclick="'.$this->call("ajaxRefuse", "'".$from."'").'">
                         <i class="fa fa-times"></i> 
                     </a>
                 </form>

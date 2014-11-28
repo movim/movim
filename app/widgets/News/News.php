@@ -30,7 +30,7 @@ class News extends WidgetCommon {
                 <div class="block large">
                     <div 
                         class="older" 
-                        onclick="'.$this->genCallAjax($function, "'".$next."'").'; this.parentNode.style.display = \'none\'">
+                        onclick="'.$this->call($function, "'".$next."'").'; this.parentNode.style.display = \'none\'">
                         <i class="fa fa-history"></i> '.__('post.older').'
                     </div>
                 </div>';
@@ -84,7 +84,7 @@ class News extends WidgetCommon {
         if($count > 0) {
             $html = '
                 <a class="button color green icon refresh"
-                   onclick="'.$this->genCallAjax('ajaxRefresh').'"
+                   onclick="'.$this->call('ajaxRefresh').'"
                 >
                     <i class="fa fa-refresh"></i> '.__('post.new_items', $count).' - '.__('button.refresh').'
                 </a>';
