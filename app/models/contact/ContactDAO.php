@@ -368,7 +368,8 @@ class ContactDAO extends SQL {
             presence.value,
             presence.delay,
             presence.node,
-            presence.ver
+            presence.ver,
+            presence.last
         from rosterlink
         left outer join presence
         on rosterlink.jid = presence.jid and rosterlink.session = presence.session
@@ -428,7 +429,8 @@ class ContactDAO extends SQL {
             presence.value,
             presence.delay,
             presence.node,
-            presence.ver
+            presence.ver,
+            presence.last
         from rosterlink
         left outer join presence
         on rosterlink.jid = presence.jid and rosterlink.session = presence.session
