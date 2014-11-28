@@ -40,7 +40,7 @@ var MovimMap = {
         
         var profile = document.querySelector('#contactsummary_widget .profile');
 
-        if(profile.dataset != null) {
+        if(profile.dataset != null && profile.dataset.lat != null) {
             var popup = "<img style='float: left; margin-right: 1em;' src='" + profile.dataset.avatar + "'/>" +
                         "<div style='padding: 0.5em;'>" + profile.dataset.date + '</div>';
             

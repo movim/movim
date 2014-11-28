@@ -26,6 +26,9 @@ WebSocket.prototype.admin = function(key) {
  */
 
 var MovimWebsocket = {
+    connection: null,
+    attached: null,
+    
     launchAttached : function() {
         for(var i = 0; i < this.attached.length; i++) {
             this.attached[i]();
@@ -72,7 +75,6 @@ var MovimWebsocket = {
 
         this.connection.onerror = function(e) {
             console.log("Connection error!");
-            console.log(e);
             // We prevent the onclose launch
             this.onclose = null;
         };
