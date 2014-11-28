@@ -7,6 +7,12 @@ use React\Socket\Server as Reactor;
 
 require dirname(__FILE__) . '/vendor/autoload.php';
 
+define('DOCUMENT_ROOT', dirname(__FILE__));
+require_once(DOCUMENT_ROOT.'/bootstrap.php');
+
+$bootstrap = new Bootstrap();
+$booted = $bootstrap->boot();
+
 $argsize = count($argv);
 if($argsize == 1) {
     echo colorize("Please specify a base uri eg.", "red"). colorize(" http://myhost.com/movim/\n", 'yellow');
@@ -17,12 +23,6 @@ if($argsize == 2) {
     echo colorize("Please specify a port eg.", "red"). colorize(" 8080\n", 'yellow');
     exit;
 }
-
-define('DOCUMENT_ROOT', dirname(__FILE__));
-require_once(DOCUMENT_ROOT.'/bootstrap.php');
-
-$bootstrap = new Bootstrap();
-$booted = $bootstrap->boot();
 
 $loop = \React\EventLoop\Factory::create();
 $core = new Core($loop, $argv[1], $argv[2]);

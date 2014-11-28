@@ -110,22 +110,22 @@ class InitAccount extends WidgetCommon {
 
             // Need to keep this structure to create progressively the nodes
             if(!isset($config['storage:bookmarks'])) {
-                $this->view->assign('create_bookmark',  $this->genCallAjax('ajaxCreateBookmark'));
+                $this->view->assign('create_bookmark',  $this->call('ajaxCreateBookmark'));
                 $creating = 1;
             } elseif(!isset($config['urn:xmpp:vcard4'])) {
-                $this->view->assign('create_vcard4',    $this->genCallAjax('ajaxCreateVcard4'));
+                $this->view->assign('create_vcard4',    $this->call('ajaxCreateVcard4'));
                 $creating = 2;
             } elseif(!isset($config['urn:xmpp:avatar:data'])) {
-                $this->view->assign('create_avatar',    $this->genCallAjax('ajaxCreateAvatar'));
+                $this->view->assign('create_avatar',    $this->call('ajaxCreateAvatar'));
                 $creating = 3;
             } elseif(!isset($config['http://jabber.org/protocol/geoloc'])) {
-                $this->view->assign('create_location',  $this->genCallAjax('ajaxCreateLocation'));
+                $this->view->assign('create_location',  $this->call('ajaxCreateLocation'));
                 $creating = 4;
             } elseif(!isset($config['urn:xmpp:pubsub:subscription'])) {
-                $this->view->assign('create_pubsubsubscription',  $this->genCallAjax('ajaxCreatePubsubSubscription'));
+                $this->view->assign('create_pubsubsubscription',  $this->call('ajaxCreatePubsubSubscription'));
                 $creating = 5;
             } elseif(!isset($config['feed'])) {
-                $this->view->assign('create_microblog',  $this->genCallAjax('ajaxCreateMicroblog'));
+                $this->view->assign('create_microblog',  $this->call('ajaxCreateMicroblog'));
                 $creating = 6;
             }
 
