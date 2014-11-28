@@ -1,4 +1,4 @@
-#notifslist {
+/*#notifslist {
     clear: both;
 }
 
@@ -16,4 +16,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+*/
+
+#notifs_widget li:not(:first-child) {
+    margin-bottom: 0.5em;
+}
+
+#notifs_widget li img {
+    max-height: 2em;
+    float: left;
+    margin-right: 0.5em;
+    border-radius: 1em;
 }

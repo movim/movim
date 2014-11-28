@@ -15,7 +15,8 @@
 #navtabs li.on {
 }
 
-#navtabs li.on a {
+#navtabs li.on a,
+#media h1 {
     color: white;
 }
 
@@ -56,11 +57,6 @@
 #media ul.thumb li:hover div.remove:hover {
     background-color: black;
     cursor: pointer;
-}
-
-#media a:link, #media a:visited,
-#viewer a:link, #viewer a:visited {
-    color: #DDD;
 }
 
 #center {

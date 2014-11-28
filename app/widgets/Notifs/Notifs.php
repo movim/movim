@@ -26,19 +26,82 @@ class Notifs extends WidgetCommon
 {
     function load()
     {
-    	$this->addcss('notifs.css');
-    	$this->addjs('notifs.js');
+        $this->addcss('notifs.css');
+        $this->addjs('notifs.js');
         $this->registerEvent('notification', 'onNotification');
         $this->registerEvent('notificationdelete', 'onNotificationDelete');
         $this->registerEvent('notifications', 'displayNotifications');
         $this->registerEvent('nonotification', 'onNoNotification');
     }
-    
+
     /*
      * Create the list of notifications
      * @return string
      */  
     function prepareNotifs()
+    {
+        $cd = new \Modl\ContactDAO();
+        $contacts = $cd->getRosterFrom();
+
+        $invitations = array();
+        foreach(\Cache::c('activenotifs') as $key => $value) {
+            array_push($invitations, $cd->get($key));
+        }
+
+        $nft = $this->tpl();
+        $nft->assign('invitations', $invitations);
+        $nft->assign('contacts', $contacts);
+        return $nft->draw('_notifs_from', true);
+    }
+
+    function ajaxAccept($jid) {
+        $jid = echapJid($jid);
+        
+        $r = new AddItem;
+        $r->setTo($jid)
+          ->setFrom($this->user->getLogin())
+          ->request();
+
+        $p = new Subscribe;
+        $p->setTo($jid)
+          ->request();
+
+        $p = new Subscribed;
+        $p->setTo(echapJid($jid))
+          ->request();
+          
+        $notifs = Cache::c('activenotifs');
+
+        unset($notifs[$jid]);
+        
+        Cache::c('activenotifs', $notifs);
+        
+        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
+    }
+
+    function ajaxRefuse($jid) {
+        $jid = echapJid($jid);
+        $p = new Unsubscribed;
+        $p->setTo($jid)
+          ->request();
+        
+        $notifs = Cache::c('activenotifs');
+
+        unset($notifs[$jid]);
+        
+        Cache::c('activenotifs', $notifs);
+        
+        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
+    }
+    
+    /*function ajaxSubscribe($jid) {
+        $jid = echapJid($jid);
+
+        
+        RPC::commit();
+    }*/
+    /*function prepareNotifs()
+     *     {$c->prepareNotifs()}
     {
         $notifsnum = 0;
               
@@ -116,13 +179,13 @@ class Notifs extends WidgetCommon
         RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
         
         RPC::commit();
-    }
+    }*/
 
     /*
      * Prepare a notification for incoming invitation
      * @return string
      */  
-    function prepareNotifInvitation($from) {
+    /*function prepareNotifInvitation($from) {
         $html .= '
             <li>
                 <form id="acceptcontact">
@@ -151,5 +214,5 @@ class Notifs extends WidgetCommon
             </li>';
             
         return $html;
-    }
+    }*/
 }
