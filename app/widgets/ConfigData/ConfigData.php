@@ -36,9 +36,9 @@ class ConfigData extends WidgetBase
         $this->view->assign('stats',            $stats[0]);
         $this->view->assign('pstats',           $pstats);
         $this->view->assign('mstats',           $mstats);
-        $this->view->assign('clearrosterlink',  $this->genCallAjax('ajaxClearRosterLink'));
-        $this->view->assign('clearmessage',     $this->genCallAjax('ajaxClearMessage'));
-        $this->view->assign('clearpost',        $this->genCallAjax('ajaxClearPost'));
+        $this->view->assign('clearrosterlink',  $this->call('ajaxClearRosterLink'));
+        $this->view->assign('clearmessage',     $this->call('ajaxClearMessage'));
+        $this->view->assign('clearpost',        $this->call('ajaxClearPost'));
     }
     
     function formatDate($month, $year) {

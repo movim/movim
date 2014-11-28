@@ -35,7 +35,7 @@ class ServerNodes extends WidgetCommon
     {
         if($_GET['s'] != null) {
             $this->view->assign('server', $this->prepareServer($_GET['s']));
-            $this->view->assign('get_nodes', $this->genCallAjax('ajaxGetNodes', "'".$_GET['s']."'"));
+            $this->view->assign('get_nodes', $this->call('ajaxGetNodes', "'".$_GET['s']."'"));
         }
     }
     
@@ -74,7 +74,7 @@ class ServerNodes extends WidgetCommon
     }
     
     function onDiscoItems($server) {
-        $submit = $this->genCallAjax('ajaxCreateGroup', "movim_parse_form('groupCreation')");
+        $submit = $this->call('ajaxCreateGroup', "movim_parse_form('groupCreation')");
         
         list($type) = explode('.', $server);
         

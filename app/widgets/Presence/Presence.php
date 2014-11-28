@@ -161,11 +161,11 @@ class Presence extends WidgetBase
         $presencetpl->assign('p', $p);
         $presencetpl->assign('txt', $txt);
         $presencetpl->assign('txts', $txts);
-        $presencetpl->assign('callchat',    $this->genCallAjax('ajaxSetPresence', "'chat'"));
-        $presencetpl->assign('callaway',    $this->genCallAjax('ajaxSetPresence', "'away'"));
-        $presencetpl->assign('calldnd',     $this->genCallAjax('ajaxSetPresence', "'dnd'"));
-        $presencetpl->assign('callxa',      $this->genCallAjax('ajaxSetPresence', "'xa'"));
-        $presencetpl->assign('calllogout',  $this->genCallAjax('ajaxLogout'));
+        $presencetpl->assign('callchat',    $this->call('ajaxSetPresence', "'chat'"));
+        $presencetpl->assign('callaway',    $this->call('ajaxSetPresence', "'away'"));
+        $presencetpl->assign('calldnd',     $this->call('ajaxSetPresence', "'dnd'"));
+        $presencetpl->assign('callxa',      $this->call('ajaxSetPresence', "'xa'"));
+        $presencetpl->assign('calllogout',  $this->call('ajaxLogout'));
         $html = $presencetpl->draw('_presence_list', true);
 
         return $html;

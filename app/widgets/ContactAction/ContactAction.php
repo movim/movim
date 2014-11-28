@@ -111,9 +111,9 @@ class ContactAction extends WidgetCommon
                 style="float: left; display: none;"
                 onclick="
                     setTimeout(function() {'.
-                        $this->genCallAjax("ajaxRemoveContact", "'".$_GET['f']."'").
+                        $this->call("ajaxRemoveContact", "'".$_GET['f']."'").
                     '}, 1500);'.
-                    $this->genCallAjax("ajaxUnsubscribeContact", "'".$_GET['f']."'").
+                    $this->call("ajaxUnsubscribeContact", "'".$_GET['f']."'").
                 'this.className=\'button color green icon loading merged left\'; setTimeout(function() {location.reload(false)}, 2000);"
             >
                 <i class="fa fa-check"></i> '.__('button.yes').'
@@ -139,9 +139,9 @@ class ContactAction extends WidgetCommon
                 class="button color purple"
                 onclick="
                     setTimeout(function() {'.
-                        $this->genCallAjax("ajaxAddContact", "'".$_GET['f']."'").
+                        $this->call("ajaxAddContact", "'".$_GET['f']."'").
                     '}, 1500);'.
-                $this->genCallAjax("ajaxSubscribeContact", "'".$_GET['f']."'").
+                $this->call("ajaxSubscribeContact", "'".$_GET['f']."'").
                 'this.className=\'button color purple icon loading merged left\'; setTimeout(function() {location.reload(false)}, 3000);"
             >
                 <i class="fa fa-plus"></i> '.$this->__('action.invite').'

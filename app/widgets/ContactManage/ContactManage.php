@@ -61,7 +61,7 @@ class ContactManage extends WidgetCommon
         if(isset($rl)) {
             $form = $this->tpl();
             $form->assign('submit', 
-                $this->genCallAjax(
+                $this->call(
                     'ajaxContactManage', 
                     "movim_parse_form('manage')"));
             $form->assign('rl', $rl);

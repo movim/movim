@@ -95,6 +95,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
             \RPC::clear();
 
             if(!empty($msg)) {
+                //fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
                 echo base64_encode(gzcompress($msg, 9))."END";
             }
         }

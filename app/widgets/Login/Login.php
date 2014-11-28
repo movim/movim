@@ -58,7 +58,7 @@ class Login extends WidgetBase
 
     function display()
     {
-        $submit = $this->genCallAjax('ajaxLogin', "movim_parse_form('login')");
+        $submit = $this->call('ajaxLogin', "movim_parse_form('login')");
         
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
