@@ -33,7 +33,7 @@ class Media extends WidgetBase {
     }
     
     function display() {
-        $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshMedia'));
+        $this->view->assign('refresh', $this->call('ajaxRefreshMedia'));
     }
     
     function ajaxRefreshMedia()
@@ -52,6 +52,11 @@ class Media extends WidgetBase {
     
     function listFiles()
     {
+        if(empty($this->user->getDir())) {
+            $mediaempty = $this->tpl();
+            return $mediaempty->draw('_media_empty', true);
+        }
+        
         $html = '<ul class="thumb">';
 
         foreach($this->user->getDir() as $file) {
@@ -70,7 +75,7 @@ class Media extends WidgetBase {
                             <div 
                                 class="remove" 
                                 onclick="'.
-                                    $this->genCallAjax(
+                                    $this->call(
                                         'ajaxDeleteItem', 
                                         "'".$file."'"
                                     ).'">

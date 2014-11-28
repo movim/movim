@@ -176,7 +176,8 @@ class WidgetWrapper
             // We save the registered events of the widget for the filter
             if(isset($widget->events)) {
                 foreach($widget->events as $key => $value) {
-                    if(array_key_exists($key, $this->registered_events)) {
+                    if(is_array($this->registered_events)
+                    && array_key_exists($key, $this->registered_events)) {
                         $we = $this->registered_events[$key];
                         array_push($we, $widget_name);
                         $we = array_unique($we);

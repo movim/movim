@@ -15,6 +15,8 @@
         <a 
             class="button color green icon add" 
             style="color: white;"
-            href="{$c->route('profile')}">{$c->__('profile.create')}</a>
+            href="{$c->route('profile')}">
+            <i class="fa fa-user"></i> {$c->__('profile.create')}
+        </a>
     </div>
 {/if}

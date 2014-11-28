@@ -34,7 +34,7 @@ class Vcard4 extends WidgetBase
 
         $this->view->assign(
             'getvcard',
-            $this->genCallAjax('ajaxGetVcard')
+            $this->call('ajaxGetVcard')
             );
         
         if($me == null) {
@@ -55,12 +55,12 @@ class Vcard4 extends WidgetBase
         
         $vcardform->assign(
             'submit',
-            $this->genCallAjax('ajaxVcardSubmit', "movim_form_to_json('vcard4')")
+            $this->call('ajaxVcardSubmit', "movim_form_to_json('vcard4')")
             );
             
         $vcardform->assign(
             'privacy',
-            $this->genCallAjax('ajaxChangePrivacy', "this.checked")
+            $this->call('ajaxChangePrivacy', "this.checked")
             );
 
         // The datepicker arrays

@@ -35,6 +35,16 @@
         </li>
     {/loop}
     </ul>
+    {if="$gallery == null"}
+        <div class="placeholder paddedtop">
+            <h1>{$c->__('error.whoops')}</h1>
+            <p>
+                {$c->__('error.media_not_found')}<br />
+                {$c->__('error.media_ask_upload')}<br /><br />
+                <a class="button color green" href="{$c->route('media')}"><i class="fa fa-folder-open"></i> {$c->__('page.media')}</a>
+            </p>
+        </div>
+    {/if}
     <div class="menu">
         <a 
             class="button color icon no" 

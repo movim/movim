@@ -257,6 +257,14 @@ ul.clean li {
     list-style-type: none;
 }
 
+#left ul li {
+    line-height: 2em;
+    padding: 0 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 #center
 {
     background-color: white;
@@ -624,7 +632,14 @@ dl dd {
     height: 3em;
 }
 
-.popup span, .popup p, .popup pre, .popup h2, .popup h3, .popup a {
+.popup span,
+.popup p,
+.popup pre,
+.popup h1,
+.popup h2,
+.popup h3,
+.popup i,
+.popup a {
     color: white;
 }
 

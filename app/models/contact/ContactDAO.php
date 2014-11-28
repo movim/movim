@@ -368,7 +368,8 @@ class ContactDAO extends SQL {
             presence.value,
             presence.delay,
             presence.node,
-            presence.ver
+            presence.ver,
+            presence.last
         from rosterlink
         left outer join presence
         on rosterlink.jid = presence.jid and rosterlink.session = presence.session
@@ -386,7 +387,7 @@ class ContactDAO extends SQL {
         
         return $this->run('RosterContact');
     }
-    // limit 1
+
     function getRosterChat() {
         $this->_sql = '
             select * from rosterlink 
@@ -411,6 +412,25 @@ class ContactDAO extends SQL {
         return $this->run('RosterContact'); 
     }
     
+    function getRosterFrom() {
+        $this->_sql = '
+            select * from rosterlink 
+            left outer join contact
+                on rosterlink.jid = contact.jid
+            where rosterlink.session = :session
+              and rosterlink.rostersubscription = :rostersubscription';
+        
+        $this->prepare(
+            'RosterLink', 
+            array(
+                'session'            => $this->_user,
+                'rostersubscription' => 'from'
+            )
+        );
+        
+        return $this->run('RosterContact'); 
+    }
+    
     function getRosterItem($jid, $item = false) {
         $this->_sql = '
         select
@@ -428,7 +448,8 @@ class ContactDAO extends SQL {
             presence.value,
             presence.delay,
             presence.node,
-            presence.ver
+            presence.ver,
+            presence.last
         from rosterlink
         left outer join presence
         on rosterlink.jid = presence.jid and rosterlink.session = presence.session
