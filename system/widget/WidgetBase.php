@@ -175,14 +175,6 @@ class WidgetBase
     }
 
     /**
-     * Generates and print an ajax call.
-     */
-    protected function callAjax($funcname)
-    {
-        echo $this->makeCall(func_get_args());
-    }
-
-    /**
      * Calls an the ajax function of another widget.
      */
     protected function callWidget($widgetname, $funcname)
