@@ -51,6 +51,7 @@ class Subscribe extends Action
     }
     
     public function handle($stanza, $parent = false) {
-        var_dump('Handle Subscribe');
+        $this->pack($this->_to);
+        $this->deliver();
     }
 }
