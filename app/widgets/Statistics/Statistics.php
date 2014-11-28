@@ -21,7 +21,6 @@ class Statistics extends WidgetBase
 {
     function load()
     {
-        $this->addjs('statistics.js');
     }
 
     function display()

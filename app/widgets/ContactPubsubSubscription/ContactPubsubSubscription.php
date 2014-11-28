@@ -31,7 +31,7 @@ class ContactPubsubSubscription extends WidgetBase
     
     function display()
     {
-        $this->view->assign('refresh', $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"));
+        $this->view->assign('refresh', $this->call('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"));
     }
     
     function prepareList($list) 

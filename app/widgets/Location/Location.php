@@ -77,7 +77,7 @@ class Location extends WidgetBase
     
     function prepareProfileData()
     {
-        $submit = $this->genCallAjax('ajaxLocationPublish', "getMyPositionData()");
+        $submit = $this->call('ajaxLocationPublish', "getMyPositionData()");
         
         $cd = new \Modl\ContactDAO();
         $c = $cd->get($this->user->getLogin());

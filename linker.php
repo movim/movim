@@ -19,9 +19,7 @@ $stdin = new React\Stream\Stream(STDIN, $loop);
 $cd = new \Modl\ConfigDAO();
 $config = $cd->get();
 
-\React\Promise\all(array($connector($config->websocketurl, ['xmpp'])))->then(function($conn) use ($stdin, $loop) {
-    $conn = reset($conn);
-
+$connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$stdin, $loop) {
     fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
     
     $conn->on('message', function($message) use ($conn, $loop) {
@@ -65,6 +63,7 @@ $config = $cd->get();
         $loop->stop();
     });
 
+    $stdin->removeAllListeners('data');
     $stdin->on('data', function ($data) use ($conn, $loop) {
         $messages = explode("\n", trim($data));
         foreach ($messages as $message) {
@@ -96,6 +95,7 @@ $config = $cd->get();
             \RPC::clear();
 
             if(!empty($msg)) {
+                //fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
                 echo base64_encode(gzcompress($msg, 9))."END";
             }
         }
@@ -106,6 +106,35 @@ $config = $cd->get();
     $obj->func = 'registered';
 
     echo base64_encode(gzcompress(json_encode($obj), 9))."END";
+});
+
+// Fallback event, when the WebSocket is not enabled,
+// we still handle browser to Movim requests
+$stdin->on('data', function ($data) use ($loop) {
+    $messages = explode("\n", trim($data));
+    foreach ($messages as $message) {
+        //fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
+        
+        $msg = json_decode($message);
+
+        if($msg->func == 'message' && $msg->body != '') {
+            $msg = $msg->body;
+        } elseif($msg->func == 'unregister') {
+            $loop->stop();
+        } else {
+            return;
+        }
+        
+        $rpc = new \RPC();
+        $rpc->handle_json($msg);
+
+        $msg = json_encode(\RPC::commit());
+        \RPC::clear();
+
+        if(!empty($msg)) {
+            echo base64_encode(gzcompress($msg, 9))."END";
+        }
+    }
 });
 
 $loop->run();

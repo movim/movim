@@ -1,3 +1,3 @@
-<div class="paddedbottom" id="notifs">
+<div id="notifs_widget">
     {$c->prepareNotifs()}
 </div>
