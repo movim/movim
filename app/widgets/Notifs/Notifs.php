@@ -32,6 +32,18 @@ class Notifs extends WidgetCommon
         $this->registerEvent('notificationdelete', 'onNotificationDelete');
         $this->registerEvent('notifications', 'displayNotifications');
         $this->registerEvent('nonotification', 'onNoNotification');
+        
+        $this->registerEvent('subscribe', 'onNotifs');
+        $this->registerEvent('roster_additem_handle', 'onNotifs');
+        $this->registerEvent('presence_subscribe_handle', 'onNotifs');
+        $this->registerEvent('presence_subscribed_handle', 'onNotifs');
+        //$this->registerEvent('presence_unsubscribed_handle', 'onNotifs');
+    }
+
+    function onNotifs($packet = false)
+    {
+        $html = $this->prepareNotifs();
+        RPC::call('movim_fill', 'notifs_widget', $html);
     }
 
     /*
@@ -67,152 +79,39 @@ class Notifs extends WidgetCommon
           ->request();
 
         $p = new Subscribed;
-        $p->setTo(echapJid($jid))
+        $p->setTo($jid)
           ->request();
-          
+
+        // TODO : move in Moxl
         $notifs = Cache::c('activenotifs');
 
         unset($notifs[$jid]);
         
         Cache::c('activenotifs', $notifs);
-        
-        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
     }
 
     function ajaxRefuse($jid) {
         $jid = echapJid($jid);
+        
         $p = new Unsubscribed;
         $p->setTo($jid)
           ->request();
-        
+
+        // TODO : move in Moxl
         $notifs = Cache::c('activenotifs');
 
         unset($notifs[$jid]);
         
         Cache::c('activenotifs', $notifs);
-        
-        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
-    }
-    
-    /*function ajaxSubscribe($jid) {
-        $jid = echapJid($jid);
 
-        
-        RPC::commit();
-    }*/
-    /*function prepareNotifs()
-     *     {$c->prepareNotifs()}
-    {
-        $notifsnum = 0;
-              
-        $html = '
-            <div id="notifslist">
-                <ul>';
-                
-            // XMPP notifications
-            $notifs = Cache::c('activenotifs');
-
-            if($notifs == null)
-                $notifs = array();
-            
-            
-            if(sizeof($notifs) != 0) {
-                foreach($notifs as $n => $val) {
-                    if($val == 'sub')
-                        $html .= $this->prepareNotifInvitation($n);
-                }
-            }
-            
-        $html .= '
-                </ul>
-            </div>';
-            
-        $notifsnew = '';
-        if($notifsnum > 0)
-            $notifsnew = 'class="red"';
-            
-        return $html;
+        $this->onNotifs();
     }
 
-    function ajaxSubscribed($jid) {
-        $p = new Subscribed;
-        $p->setTo(echapJid($jid))
-          ->request();
-    }
-    
-    function ajaxRefuse($jid) {
-        $jid = echapJid($jid);
-        $p = new Unsubscribed;
-        $p->setTo($jid)
-          ->request();
-        
-        $notifs = Cache::c('activenotifs');
-        unset($notifs[$jid]);
-        
-        Cache::c('activenotifs', $notifs);
-        
-        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
-
-        RPC::commit();
+    function genCallAccept($jid) {
+        return $this->call('ajaxAccept', "'".$jid."'");
     }
 
-    function ajaxAddRoster($jid) {
-        $jid = echapJid($jid);
-        $r = new AddItem;
-        $r->setTo($jid)
-          ->setFrom($this->user->getLogin())
-          ->request();
+    function genCallRefuse($jid) {
+        return $this->call('ajaxRefuse', "'".$jid."'");
     }
-    
-    function ajaxSubscribe($jid) {
-        $jid = echapJid($jid);
-        $p = new Subscribe;
-        $p->setTo($jid)
-          ->request();      
-          
-        $notifs = Cache::c('activenotifs');
-
-   	    unset($notifs[$jid]);
-   	    
-	    Cache::c('activenotifs', $notifs);
-        
-        RPC::call('movim_fill', 'notifs', $this->prepareNotifs());
-        
-        RPC::commit();
-    }*/
-
-    /*
-     * Prepare a notification for incoming invitation
-     * @return string
-     */  
-    /*function prepareNotifInvitation($from) {
-        $html .= '
-            <li>
-                <form id="acceptcontact">
-                    <p>' . $this->__('wants_to_talk', $from) . '</p>
-                    <div class="clear spacetop"></div>
-                    <a 
-                        class="button color green merged left " 
-                        id="notifsvalidate" 
-                        onclick="
-                            '.$this->call("ajaxAddRoster", "'".$from."'").'
-                            setTimeout(function() {'.
-                                $this->call("ajaxSubscribed", "'".$from."'").
-                            '}, 1000);
-                            setTimeout(function() {'.
-                                $this->call("ajaxSubscribe", "'".$from."'").
-                            '}, 2000);
-                        ">
-                        <i class="fa fa-plus"></i> '.t("Add").'
-                    </a><a 
-                        class="button color red alone merged right" 
-                        onclick="'.$this->call("ajaxRefuse", "'".$from."'").'">
-                        <i class="fa fa-times"></i> 
-                    </a>
-                </form>
-                <div class="clear"></div>
-            </li>';
-            
-        return $html;
-    }*/
 }
