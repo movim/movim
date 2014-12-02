@@ -3,7 +3,8 @@
     <script type="text/javascript">
         MovimWebsocket.attach(function() {
             {$getavatar}
-        });</script>
+        });
+    </script>
     <div id="avatar_form">
         {$form}
     </div>
