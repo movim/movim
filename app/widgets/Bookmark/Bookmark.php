@@ -203,7 +203,7 @@ class Bookmark extends WidgetBase
                     'autojoin'  => $form['autojoin'],
                     'nick'      => $form['nick'],
                     'jid'       => $form['jid']);   
-            
+            movim_log(serialize($item));
             $this->ajaxSetBookmark($item);
         }
     }

@@ -1,4 +1,4 @@
-<div class="placeholder paddedtop">
+<div class="placeholder paddedtop icon media">
     <h1>{$c->__('error.whoops')}</h1>
     <p class="paddedtop">
         {$c->__('error.media_not_found')}

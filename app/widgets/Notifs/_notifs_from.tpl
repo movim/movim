@@ -5,6 +5,7 @@
     </li>
     {/if}
     {loop="$invitations"}
+        {if="isset($value)"}
         <li>
             <a href="{$c->route('friend', $value->jid)}">
                 <img src="{$value->getPhoto('xs')}"/> {$value->getTrueName()}
@@ -19,26 +20,6 @@
                 <i class="fa fa-plus oppose"></i> {$c->__('button.add')}
             </a>
         </li>
+        {/if}
     {/loop}
 </ul>
-
-<!--<ul>
-    {loop="$contacts"}
-        <li>
-            <img src="{$value->getPhoto('xs')}"/> {$value->getTrueName()}
-        </li>
-    {/loop}
-</ul>
-                            '.$this->call("ajaxAddRoster", "'".$from."'").'
-                            setTimeout(function() {'.
-                                $this->call("ajaxSubscribed", "'".$from."'").
-                            '}, 1000);
-                            setTimeout(function() {'.
-                                $this->call("ajaxSubscribe", "'".$from."'").
-                            '}, 2000);
-                        ">
-                        <i class="fa fa-plus"></i> '.t("Add").'
-                    </a><a 
-                        class="button color red alone merged right" 
-                        onclick="'.$this->call("ajaxRefuse", "'".$from."'").'">
--->

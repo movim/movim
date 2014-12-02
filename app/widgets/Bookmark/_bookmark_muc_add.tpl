@@ -5,7 +5,7 @@
             
             <div id="bookmarkmucadderror"></div>
             <div class="element large mini">
-                <input name="jid" placeholder="{$c->__('chatroom.id')}"/>
+                <input name="jid" placeholder="{$c->__('chatroom.id')} (chatroom@server.com)"/>
             </div>
             <div class="element large mini">
                 <input name="name" placeholder="{$c->__('chatroom.name')}"/>
@@ -13,6 +13,7 @@
             <div class="element large mini">
                 <input name="nick" placeholder="{$c->__('chatroom.nickname')}"/>
             </div>
+            <!--
             <div class="element large mini">
                 <label>{$c->__('chatroom.autojoin_label')}</label>
                 <div class="checkbox">
@@ -20,18 +21,19 @@
                     <label for="autojoin"></label>
                 </div>
             </div>
+            -->
         </fieldset>
         <div class="menu">
             <a 
-                class="button icon yes black merged left"
+                class="button color green merged left"
                 onclick="{$submit}"
             >
-                {$c->__('button.add')}
+                <i class="fa fa-plus"></i> {$c->__('button.add')}
             </a><a 
-                class="button icon no black merged right" 
+                class="button black merged right" 
                 onclick="movim_toggle_display('#bookmarkmucadd')"
             >
-                {$c->__('button.close')}
+                <i class="fa fa-times"></i> {$c->__('button.close')}
             </a>
         </div>
     </form>

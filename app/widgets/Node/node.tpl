@@ -27,6 +27,7 @@
 <script type="text/javascript">
     MovimWebsocket.attach(function()
     {
+        {$refresh}
         {$getaffiliations}
         {$getmetadata}
     });
