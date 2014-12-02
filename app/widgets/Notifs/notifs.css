@@ -1,24 +1,3 @@
-/*#notifslist {
-    clear: both;
-}
-
-#notifslist li {
-    overflow: hidden;
-    line-height: 3em;
-    list-style-type: none;
-}
-
-#notifslist li a:not(.button) {
-    display: block;
-}
-
-#notifslist li.title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-*/
-
 #notifs_widget li:not(:first-child) {
     margin-bottom: 0.5em;
 }

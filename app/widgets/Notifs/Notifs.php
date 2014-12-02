@@ -56,11 +56,16 @@ class Notifs extends WidgetCommon
         $contacts = $cd->getRosterFrom();
 
         $invitations = array();
-        foreach(\Cache::c('activenotifs') as $key => $value) {
-            array_push($invitations, $cd->get($key));
+
+        $notifs = \Cache::c('activenotifs');
+        if(is_array($notifs)) {
+            foreach($notifs as $key => $value) {
+                array_push($invitations, $cd->get($key));
+            }
         }
 
         $nft = $this->tpl();
+
         $nft->assign('invitations', $invitations);
         $nft->assign('contacts', $contacts);
         return $nft->draw('_notifs_from', true);

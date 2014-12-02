@@ -220,6 +220,26 @@ class PostnDAO extends SQL {
         
         return $this->run('ContactPostn');
     }
+
+    function getItem($id) {
+        $this->_sql = '
+            select *, postn.aid, privacy.value as privacy from postn
+            left outer join contact on postn.aid = contact.jid
+            left outer join privacy on postn.nodeid = privacy.pkey
+            where postn.session  = :session
+                and postn.nodeid = :nodeid
+            order by postn.published desc';
+        
+        $this->prepare(
+            'Postn', 
+            array(
+                'session' => $this->_user,
+                'nodeid' => $id
+            )
+        );
+        
+        return $this->run('ContactPostn', 'item');
+    }
     
     function getAllPosts($jid, $limitf = false, $limitr = false) {
         $this->_sql = '

@@ -7,12 +7,14 @@ class ContactDAO extends SQL {
         parent::__construct();
     }
     
-    function get($jid) {            
+    function get($jid = null) {            
         $this->_sql = '
             select *, privacy.value as privacy from contact 
             left outer join privacy 
                 on contact.jid = privacy.pkey 
             where jid = :jid';
+
+        if($jid == null) $jid = $this->_user;
         
         $this->prepare(
             'Contact', 

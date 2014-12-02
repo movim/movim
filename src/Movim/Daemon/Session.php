@@ -98,7 +98,7 @@ class Session {
     public function messageIn(ConnectionInterface $from, $msg)
     {
         $this->timestamp = time();
-        $this->process->stdin->write($msg."\n");
+        $this->process->stdin->write($msg."END");
     }
 
     public function messageOut($msg)

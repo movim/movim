@@ -11,6 +11,18 @@
     clear: left;
 }
 
+.block.third {
+    width: 33.33%;
+}
+
+.block.third:nth-child(3) {
+    float: right;
+}
+
+.block.third:nth-child(2) {
+    float: none;
+}
+
 .block h1 {
     padding: 0;
 }
@@ -28,6 +40,7 @@
 }
 
 @media screen and (max-width: 1400px) {
+.block.third,
 .block {
     width: 100%;
 }
@@ -39,6 +52,7 @@
 }
 
 @media screen and (max-width: 1024px) {
+.block.third,
 .block {
     width: 100%;
     padding: 0.5rem;
