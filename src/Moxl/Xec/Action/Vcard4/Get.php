@@ -66,11 +66,8 @@ class Get extends Action
 
         $cd->set($c);
 
-        $evt = new \Event();
-        if($this->_me)
-            $evt->runEvent('myvcard', $c);
-        else
-            $evt->runEvent('vcard', $c);
+        $this->pack($c);
+        $this->deliver();
     }
     
     public function errorItemNotFound($error) {
