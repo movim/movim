@@ -47,6 +47,7 @@ class Node extends WidgetCommon
         if(isset($_GET['s']) && isset($_GET['n'])) {
             $this->view->assign('server', $_GET['s']);
             $this->view->assign('node',   $_GET['n']);
+            $this->view->assign('refresh',          $this->call('ajaxGetItems', "'".$_GET['s']."'", "'".$_GET['n']."'"));
             $this->view->assign('getaffiliations',  $this->call('ajaxGetAffiliations', "'".$_GET['s']."'", "'".$_GET['n']."'"));
             $this->view->assign('getmetadata',      $this->call('ajaxGetMetadata', "'".$_GET['s']."'", "'".$_GET['n']."'"));
             $this->view->assign('hash',             md5($_GET['s'].$_GET['n']));

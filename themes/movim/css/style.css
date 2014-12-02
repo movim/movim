@@ -122,10 +122,14 @@ hr {
 
 h1 {
     color: #183C67;
-    line-height: 2.5em;
+    line-height: 1.5em;
     font-size: 1.5em;
     margin: 0px;
     vertical-align: bottom;
+}
+
+div > h1 {
+    line-height: 2.5em;
 }
 
 h2 {   
@@ -210,12 +214,46 @@ ul.clean li {
 
 #content {
     width: 100%;
-    position: relative;
+    /*position: relative;*/
     margin-top: 3em;
 }
 
+#container {
+    height: calc(100% - 3em);
+    position: absolute;
+    width: calc(100% - 15rem);
+    background-color: white;
+}
+
+#container > div {
+    display: block;
+    max-height: 100%;
+    float: left;
+    box-sizing: border-box;
+    position: relative;
+    overflow-y: auto;
+}
+
+#container > div:first-child {
+    overflow: hidden;
+    height: 100%;
+}
+
+#container > div:hover {
+    overflow-y: auto;
+}
+
+#container > div:nth-child(2) {
+    width: calc(30% - 6rem);
+    height: 100%;
+}
+
+#container > div:nth-child(3) {
+    width: calc(70% - 6rem);
+}
+
 #main {  
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: white;
 }
 
 #main:after {
@@ -234,6 +272,7 @@ ul.clean li {
     float: left;
     width: 12rem;
     top: 0;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 #left:before {
@@ -282,7 +321,7 @@ ul.clean li {
     top: 3em;
     right: 0;
     padding-top: 0em;
-    /*height: 100%;*/
+    padding-top: 0.5em;
     height: calc(100% - 3em);
     z-index: 2;
     background-color: rgba(36, 36, 36, 1);
@@ -665,4 +704,16 @@ dl dd {
     text-align: center;
 }
 
+.placeholder.icon {
+    background-image: url(../img/icons/placeholder/chat.png);
+    background-size: 35%;
+    padding-top: 10em;
+    background-repeat: no-repeat;
+    background-position: center 1em;
+}
 
+.placeholder.icon.newspaper { background-image: url(../img/icons/placeholder/newspaper.png); }
+.placeholder.icon.media     { background-image: url(../img/icons/placeholder/media.png); }
+.placeholder.icon.explore   { background-image: url(../img/icons/placeholder/explore.png); }
+.placeholder.icon.plane     { background-image: url(../img/icons/placeholder/plane.png); }
+.placeholder.icon.file      { background-image: url(../img/icons/placeholder/file.png); }

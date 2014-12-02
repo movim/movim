@@ -22,20 +22,16 @@ class Vcard4 extends WidgetBase
 {
     function load()
     {
-        $this->registerEvent('myvcard4valid', 'onMyVcard4Received');
-        $this->registerEvent('myvcard4invalid', 'onMyVcard4NotReceived');
-        $this->registerEvent('myvcard', 'onMyVcard4');
+        $this->registerEvent('vcard4_get_handle', 'onMyVcard4');
+        $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
     }
 
     function display()
     {
         $cd = new \Modl\ContactDAO();
-        $me = $cd->get($this->user->getLogin());
+        $me = $cd->get();
 
-        $this->view->assign(
-            'getvcard',
-            $this->call('ajaxGetVcard')
-            );
+        $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
         
         if($me == null) {
             $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
@@ -92,7 +88,8 @@ class Vcard4 extends WidgetBase
         return $vcardform->draw('_vcard4_form', true);
     }
     
-    function onMyVcard4($c) {
+    function onMyVcard4($packet) {
+        $c = $packet->content;
         $html = $this->prepareForm($c);
 
         Notification::appendNotification($this->__('vcard.updated'), 'success');
