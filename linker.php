@@ -24,7 +24,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
     
     $conn->on('message', function($message) use ($conn, $loop) {
         if($message != '') {
-            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            //fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             if($message == '</stream:stream>') {
                 $conn->close();
