@@ -40,7 +40,7 @@
     background-color: #454545;
     height: 2em;
     width: calc(100% - 1em);
-    margin: 0.5em;
+    margin: 0 0.5em;
     border-radius: 0.2em;
 }
 

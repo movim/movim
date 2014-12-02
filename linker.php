@@ -64,40 +64,47 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
     });
 
     $stdin->removeAllListeners('data');
-    $stdin->on('data', function ($data) use ($conn, $loop) {
-        $messages = explode("\n", trim($data));
-        foreach ($messages as $message) {
-            //fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
-            
-            $msg = json_decode($message);
+    $stdin->on('data', function ($data) use ($conn, $loop, &$buffer) {
+        // A little bit of signalisation to use properly the buffer
+        if(substr($data, -3) == "END") {
+            $messages = explode("END", $buffer . substr($data, 0, -3));
+            $buffer = '';
 
-            if($msg->func == 'message' && $msg->body != '') {
-                $msg = $msg->body;
-            } elseif($msg->func == 'unregister') {
-                $conn->close();
-                $loop->stop();
-            } else {
-                return;
+            foreach ($messages as $message) {
+                //fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
+                
+                $msg = json_decode($message);
+
+                if($msg->func == 'message' && $msg->body != '') {
+                    $msg = $msg->body;
+                } elseif($msg->func == 'unregister') {
+                    $conn->close();
+                    $loop->stop();
+                } else {
+                    return;
+                }
+                
+                $rpc = new \RPC();
+                $rpc->handle_json($msg);
+
+                $xml = \Moxl\API::commit();
+                \Moxl\API::clear();
+                
+                if(!empty($xml)) {
+                    //fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                    $conn->send(trim($xml));
+                }
+
+                $msg = json_encode(\RPC::commit());
+                \RPC::clear();
+
+                if(!empty($msg)) {
+                    //fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
+                    echo base64_encode(gzcompress($msg, 9))."END";
+                }
             }
-            
-            $rpc = new \RPC();
-            $rpc->handle_json($msg);
-
-            $xml = \Moxl\API::commit();
-            \Moxl\API::clear();
-            
-            if(!empty($xml)) {
-                //fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-                $conn->send(trim($xml));
-            }
-
-            $msg = json_encode(\RPC::commit());
-            \RPC::clear();
-
-            if(!empty($msg)) {
-                //fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
-                echo base64_encode(gzcompress($msg, 9))."END";
-            }
+        } else {
+            $buffer .= $data;
         }
     });
 
@@ -117,10 +124,12 @@ $stdin->on('data', function ($data) use ($loop) {
         
         $msg = json_decode($message);
 
-        if($msg->func == 'message' && $msg->body != '') {
-            $msg = $msg->body;
-        } elseif($msg->func == 'unregister') {
-            $loop->stop();
+        if(isset($msg)) {
+            if($msg->func == 'message' && $msg->body != '') {
+                $msg = $msg->body;
+            } elseif($msg->func == 'unregister') {
+                $loop->stop();
+            }
         } else {
             return;
         }
