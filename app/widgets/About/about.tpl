@@ -4,7 +4,7 @@
     <p>{$c->__('info')}
         <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.
     </p>
-    <h2>{$c->__('title.thanks')}</h2>
+    <h2><i class="fa fa-users"></i> {$c->__('title.thanks')}</h2>
     <dl>
         <dt>{$c->__('title.developers')}</dt><dd><a href="http://edhelas.mov.im/">Jaussoin Timothée aka edhelas</a></dd>
         <dt></dt><dd><a href="https://launchpad.net/~nodpounod">Ho Christine aka nodpounod</a></dd>
@@ -77,8 +77,8 @@
     
     <h2><i class="fa fa-rocket"></i> {$c->__('title.software')}</h2>
     <dl>
-       <dt>Database Library</dt><dd>Modl - Movim DB Layer <a href="https://launchpad.net/modl">launchpad.net/modl</a> under AGPLv3</dd>
-       <dt>XMPP Library</dt><dd>Moxl - Movim XMPP Library <a href="https://launchpad.net/moxl">launchpad.net/moxl</a> under AGPLv3</dd>
+       <dt>Database Library</dt><dd>Modl - Movim DB Layer - <i class="fa fa-github"></i> <a href="https://github.com/edhelas/modl">GitHub Modl</a> under AGPLv3</dd>
+       <dt>XMPP Library</dt><dd>Moxl - Movim XMPP Library - <i class="fa fa-github"></i> <a href="https://github.com/edhelas/moxl">GitHub Moxl</a> under AGPLv3</dd>
     </dl>
     <br />
     <dl>
@@ -87,9 +87,9 @@
     </dl>
     <h2><i class="fa fa-html5"></i> {$c->__('title.resources')}</h2>
     <dl>
-       <dt>Icons</dt><dd>Famfamfam <a href="http://www.famfamfam.com/">www.famfamfam.com</a> under CC BY 3.0</dd>
-       <dt></dt><dd>Icomoon <a href="http://keyamoon.com/">by Keyamoon</a> under CC BY 3.0</dd>
+       <dt>Icons</dt><dd>Icomoon <a href="http://keyamoon.com/">by Keyamoon</a> under CC BY 3.0</dd>
        <dt></dt><dd>FontAwesome <a href="http://fortawesome.github.io/">by Dave Gandy</a> under CC BY 3.0</dd>
+       <dt></dt><dd>Boyan Kostov <a href="http://boyankostov.com/">boyankostov.com</a> <a href="https://www.iconfinder.com/iconsets/flatified">Free for commercial use</a></dd>
     </dl>
 
     <h2><i class="fa fa-code"></i> {$c->__('title.api')}</h2>

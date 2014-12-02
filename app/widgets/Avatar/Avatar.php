@@ -22,37 +22,37 @@ class Avatar extends WidgetBase
 {
     function load()
     {
-        $this->registerEvent('myavatarvalid', 'onAvatarPublished');
-        $this->registerEvent('myavatarinvalid', 'onAvatarNotPublished');
-        $this->registerEvent('myvcard', 'onMyAvatar');
-        
         $this->addcss('avatar.css');
-        $this->addjs('avatar.js');        
+        $this->addjs('avatar.js');
         
-        $cd = new \modl\ContactDAO();
-        $me = $cd->get($this->user->getLogin());
-
-        $p = new Picture;
-        if(!$p->get($this->user->getLogin())) {
-            $this->view->assign(
-                'getavatar',
-                $this->call('ajaxGetAvatar')
-                );
-            $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
-        } else {
-            $this->view->assign('getavatar', '');
-            $this->view->assign('form', $this->prepareForm($me));
-        }
+        $this->registerEvent('avatar_get_handle', 'onMyAvatar');
+        $this->registerEvent('avatar_set_handle', 'onMyAvatar');
+        $this->registerEvent('avatar_set_errorfeaturenotimplemented', 'onMyAvatarError');
+        $this->registerEvent('avatar_set_errorbadrequest', 'onMyAvatarError');
+        $this->registerEvent('avatar_set_errornotallowed', 'onMyAvatarError');
     }
     
-    function onMyAvatar($c) {
-        $html = $this->prepareForm($c);
+    function onMyAvatar($me)
+    {
+        $me = $packet->content;
+        $html = $this->prepareForm($me);
 
         RPC::call('movim_fill', 'avatar_form', $html);
-        RPC::commit();
+        Notification::appendNotification($this->__('avatar.updated'), 'success');
     }
 
-    function prepareForm($me) {
+    function onMyAvatarError()
+    {
+        $cd = new \modl\ContactDAO();
+        $me = $cd->get();
+        $html = $this->prepareForm($me);
+
+        RPC::call('movim_fill', 'avatar_form', $html);
+        Notification::appendNotification($this->__('avatar.not_updated'), 'error');
+    }
+
+    function prepareForm($me)
+    {
         $avatarform = $this->tpl();
 
         $p = new Picture;
@@ -69,20 +69,8 @@ class Avatar extends WidgetBase
         return $avatarform->draw('_avatar_form', true);
     }
 
-    function onAvatarPublished()
+    function ajaxGetAvatar()
     {
-        RPC::call('movim_button_reset', '#avatarvalidate');
-        Notification::appendNotification($this->__('avatar.updated'), 'success');
-        RPC::commit();
-    }
-    
-    function onAvatarNotPublished()
-    {
-        Notification::appendNotification($this->__('avatar.not_updated'), 'error');
-        RPC::commit();
-    }
-    
-    function ajaxGetAvatar() {
         $r = new Get;
         $r->setTo($this->user->getLogin())
           ->setMe()
@@ -97,5 +85,23 @@ class Avatar extends WidgetBase
         
         $r = new Set;
         $r->setData($avatar->photobin->value)->request();
+    }
+
+    function display()
+    {
+        $cd = new \modl\ContactDAO();
+        $me = $cd->get();
+
+        $p = new Picture;
+        if(!$p->get($this->user->getLogin())) {
+            $this->view->assign(
+                'getavatar',
+                $this->call('ajaxGetAvatar')
+                );
+            $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
+        } else {
+            $this->view->assign('getavatar', '');
+            $this->view->assign('form', $this->prepareForm($me));
+        }
     }
 }

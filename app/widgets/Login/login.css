@@ -151,6 +151,7 @@ body {
 #loginpage #sessions ul li img {
     height: 3em;
     float: left;
+    border-radius: 0.2em;
 }
 
 #loginpage #sessions ul li span {

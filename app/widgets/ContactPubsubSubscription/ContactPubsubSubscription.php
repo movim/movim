@@ -40,7 +40,9 @@ class ContactPubsubSubscription extends WidgetBase
             $html = '<ul class="list">';
             
             foreach($list as $item){
-                $html .= '<li><a href="'.Route::urlize('node', array($item[1], $item[0])).'">'.$item[2].'</a></li>';
+                if(is_array($item)) {
+                    $html .= '<li><a href="'.Route::urlize('node', array($item['server'], $item['node'])).'">'.$item['title'].'</a></li>';
+                }
             }
             
             $html .= '</ul>';
