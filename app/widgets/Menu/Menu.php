@@ -54,6 +54,7 @@ class Menu extends WidgetCommon
             RPC::call('movim_append', 'menu_widget', $html);
         } else {
             RPC::call('movim_fill', 'menu_widget', $html);
+            RPC::call('movim_posts_unread', 0);
         }
         RPC::call('Menu.refresh');
     }

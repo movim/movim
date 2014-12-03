@@ -707,7 +707,7 @@ dl dd {
 .placeholder.icon {
     background-image: url(../img/icons/placeholder/chat.png);
     background-size: 35%;
-    padding-top: 10em;
+    padding-top: 12em;
     background-repeat: no-repeat;
     background-position: center 1em;
 }
@@ -717,3 +717,4 @@ dl dd {
 .placeholder.icon.explore   { background-image: url(../img/icons/placeholder/explore.png); }
 .placeholder.icon.plane     { background-image: url(../img/icons/placeholder/plane.png); }
 .placeholder.icon.file      { background-image: url(../img/icons/placeholder/file.png); }
+.placeholder.icon.clipboard { background-image: url(../img/icons/placeholder/clipboard.png); }
