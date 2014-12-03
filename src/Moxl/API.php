@@ -19,10 +19,16 @@ class API {
 
         $id = $session->id;
 
+        if(isset($session->user)) {
+            $fromxml = 'from="'.$session->user.'@'.$session->host.'/'.$session->ressource.'"';
+        } else {
+            $fromxml = '';
+        }
+
         return '
             <iq
                 id="'.$id.'"
-                from="'.$session->user.'@'.$session->host.'/'.$session->ressource.'"
+                '.$fromxml.'
                 xml:lang="'.$language.'"
                 xmlns="jabber:client"
                 '.$toxml.'

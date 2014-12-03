@@ -1,6 +1,8 @@
 <?php
 /*
- * Request.php
+ * @file Set.php
+ * 
+ * @brief Register on the server
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
@@ -22,51 +24,45 @@
  * 
  */
 
-namespace Moxl\Xec\Action\Disco;
+namespace Moxl\Xec\Action\Register;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Disco;
+use Moxl\Stanza\Register;
 
-class Request extends Action
+class Set extends Action
 {
-    private $_node;
     private $_to;
+    private $_data;
     
     public function request() 
     {
         $this->store();
-        Disco::request($this->_to, $this->_node);
-    }
-    
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
+        Register::set($this->_to, $this->_data);
     }
     
     public function setTo($to)
     {
-        $this->_to = echapJid($to);
+        $this->_to = $to;
+        return $this;
+    }
+    
+    public function setData($data)
+    {
+        $this->_data = $data;
         return $this;
     }
     
     public function handle($stanza, $parent = false) {
-        $c = new \modl\Caps();
+        $this->pack($this->_data);
+        $this->deliver();
+    }
 
-        if(isset($this->_node))
-            $c->set($stanza, $this->_node);
-        else
-            $c->set($stanza, $this->_to);
-        
-        if(
-            $c->node != ''
-         && $c->category != ''
-         && $c->type != ''
-         && $c->name != '') {
-            $cd = new \modl\CapsDAO();
-            $cd->set($c);
-            $this->pack($c);
-            $this->deliver();
-        }
+    public function errorConflict($id, $message = false) {
+        $this->pack($message);
+        $this->deliver();
+    }
+
+    public function errorNotAcceptable($id, $message = false) {
+        $this->deliver();
     }
 }

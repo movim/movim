@@ -132,7 +132,7 @@ class Handler {
                     $action->$errorid($errorid, $message);
                 }
                 // We also call a global error handler
-                elseif(method_exists($action, 'error'))
+                if(method_exists($action, 'error'))
                     $action->error($errorid, $message);
             } else {
                 // We launch the object handle
@@ -201,6 +201,8 @@ class Handler {
 
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
             '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',
+
+            //'1ad670e043c710f0ce8e6472114fb4be' => 'Register',
             
             'f728271d924a04b0355379b28c3183a1' => 'SASL',
             'abae1d63bb4295636badcce1bee02290' => 'SASLChallenge',

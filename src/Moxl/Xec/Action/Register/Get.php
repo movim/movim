@@ -1,6 +1,8 @@
 <?php
 /*
- * Request.php
+ * @file Get.php
+ * 
+ * @brief Get the registering form
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
@@ -22,51 +24,35 @@
  * 
  */
 
-namespace Moxl\Xec\Action\Disco;
+namespace Moxl\Xec\Action\Register;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Disco;
+use Moxl\Stanza\Register;
 
-class Request extends Action
+class Get extends Action
 {
-    private $_node;
     private $_to;
     
     public function request() 
     {
         $this->store();
-        Disco::request($this->_to, $this->_node);
-    }
-    
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
+        Register::get($this->_to);
     }
     
     public function setTo($to)
     {
-        $this->_to = echapJid($to);
+        $this->_to = $to;
         return $this;
     }
     
-    public function handle($stanza, $parent = false) {
-        $c = new \modl\Caps();
+    public function handle($stanza, $parent = false)
+    {
+        $this->pack($stanza->query);
+        $this->deliver();
+    }
 
-        if(isset($this->_node))
-            $c->set($stanza, $this->_node);
-        else
-            $c->set($stanza, $this->_to);
-        
-        if(
-            $c->node != ''
-         && $c->category != ''
-         && $c->type != ''
-         && $c->name != '') {
-            $cd = new \modl\CapsDAO();
-            $cd->set($c);
-            $this->pack($c);
-            $this->deliver();
-        }
+    public function errorServiceUnavailable()
+    {
+        $this->deliver();
     }
 }

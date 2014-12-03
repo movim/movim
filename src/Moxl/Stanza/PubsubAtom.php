@@ -38,7 +38,7 @@ class PubsubAtom {
                         href="xmpp:'.$this->jid.'?;node=urn:xmpp:microblog:0:comments/'.$this->id.'"/>';
                         
         if($this->geo) {
-			$xml .= '
+            $xml .= '
                     <geoloc xmlns="http://jabber.org/protocol/geoloc">
                         <lat>'.$this->geo['latitude'].'</lat>
                         <lon>'.$this->geo['longitude'].'</lon>
@@ -54,26 +54,26 @@ class PubsubAtom {
                         <uri>'.$this->geo['uri'].'</uri>
                         <timestamp>'.date('c').'</timestamp>
                     </geoloc>';
-		}
-                
+        }
+
         if($this->contenthtml)
-			$xml .= '
-				<content type="html">
-					<html xmlns="http://jabber.org/protocol/xhtml-im">
-						<body xmlns="http://www.w3.org/1999/xhtml">
-							'.$this->contenthtml.'
-						</body>
-					</html>
-				</content>';
+            $xml .= '
+                <content type="html">
+                    <html xmlns="http://jabber.org/protocol/xhtml-im">
+                        <body xmlns="http://www.w3.org/1999/xhtml">
+                            '.$this->contenthtml.'
+                        </body>
+                    </html>
+                </content>';
         else
-			$xml .= '
+            $xml .= '
                 <content type="text">'.$this->content.'</content>';
 
-		$xml .= '
+        $xml .= '
                 <published>'.date(DATE_ISO8601).'</published>  
                 <updated>'.date(DATE_ISO8601).'</updated>
             </entry>';
-            
+
         return $xml;
     }
 }

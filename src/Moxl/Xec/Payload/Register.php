@@ -1,10 +1,10 @@
 <?php
 /*
- * @file SASL.php
+ * @file Register.php
  * 
- * @brief Handle incoming SASL proposal
+ * @brief Incoming register disco
  * 
- * Copyright 2014 edhelas <edhelas@edhelas-laptop>
+ * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,34 +28,15 @@ namespace Moxl\Xec\Payload;
 
 use Moxl\Xec\Action\Register\Get;
 
-class SASL extends Payload
+class Register extends Payload
 {
-    public function handle($stanza, $parent = false) {        
-        $mec = (array)$stanza->mechanism;
-
+    public function handle($stanza, $parent = false) {
         $sessx = \Sessionx::start();
         $user = $sessx->user;
         
-        if(isset($user)) {
-            if(!is_array($mec)) {
-                $mec = array($mec);
-            }
-
-            $mecchoice = str_replace('-', '', \Moxl\Auth::mechanismChoice($mec));
-
-            $sess = \Session::start();
-            $sess->set('mecchoice', $mecchoice);
-
-            \Moxl\Utils::log("/// MECANISM CHOICE ".$mecchoice);
-
-            if(method_exists('\Moxl\Auth','mechanism'.$mecchoice)) {
-                call_user_func('Moxl\Auth::mechanism'.$mecchoice);
-            } else {
-                \Moxl\Utils::log("/// MECANISM CHOICE NOT FOUND");
-            }
-        } else {
-            $g = new Get;
-            $g->request();
+        if(!isset($user)) {
+            $r = new Get;
+            $r->request();
         }
     }
 }
