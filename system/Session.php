@@ -32,7 +32,6 @@ class Session
      */
     protected function __construct()
     {
-
     }
 
     /**

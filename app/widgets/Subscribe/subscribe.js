@@ -1,0 +1,4 @@
+MovimWebsocket.attach(function()
+{
+    remoteUnregister();
+});
