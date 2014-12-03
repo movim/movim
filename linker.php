@@ -19,6 +19,10 @@ $stdin = new React\Stream\Stream(STDIN, $loop);
 $cd = new \Modl\ConfigDAO();
 $config = $cd->get();
 
+// We load and register all the widgets
+$wrapper = WidgetWrapper::getInstance();
+$wrapper->registerAll(true);
+
 $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$stdin, $loop) {
     fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
     
