@@ -109,7 +109,7 @@ MovimWebsocket.attach(function()
     }
 });
 
-movim_add_onload(function() {    
+movim_add_onload(function() {
     /* Dump cache variables  in localStorage */
     for ( var i = 0, len = localStorage.length; i < len; ++i ) {
         var cache = localStorage.key(i);

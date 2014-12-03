@@ -138,7 +138,7 @@ class Login extends WidgetBase
                 break;
         }
 
-        RPC::call('remoteUnregister');
+        RPC::call('remoteUnregisterReload');
         RPC::call('movim_desktop_notification', $title, $warning);
     }
 
@@ -309,14 +309,13 @@ class Login extends WidgetBase
 
         // We create a new session or clear the old one
         $s = Sessionx::start();
-        
         $s->init($user, $element['pass'], $host, $domain);
 
         // We save the loaded widgets list in the database
-        $wrapper = WidgetWrapper::getInstance(false);
+        /*$wrapper = WidgetWrapper::getInstance(false);
 
         $sess = Session::start(APP_NAME);
-        $sess->set('registered_events', $wrapper->registerEvents());
+        $sess->set('registered_events', $wrapper->registerEvents());*/
 
         \Moxl\Stanza\Stream::init($host);
     }
