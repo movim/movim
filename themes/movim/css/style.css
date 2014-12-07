@@ -240,14 +240,14 @@ ul.clean li {
     height: 100%;
 }
 
-#container > div:hover {
-    overflow-y: auto;
-}
-
 #container > div:nth-child(2) {
     width: calc(30% - 6rem);
     height: 100%;
     overflow: hidden;
+}
+
+#container > div:hover {
+    overflow-y: auto;
 }
 
 #container > div:nth-child(3) {
