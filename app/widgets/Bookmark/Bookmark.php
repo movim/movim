@@ -42,8 +42,8 @@ class Bookmark extends WidgetBase
     {        
         $this->view->assign('subscriptionconfig', Route::urlize('conf', false, 'groupsubscribedlistconfig'));
 
-        $this->view->assign('getbookmark',      $this->genCallAjax("ajaxGetBookmark"));
-        $this->view->assign('setbookmark',      $this->genCallAjax("ajaxSetBookmark", "''"));
+        $this->view->assign('getbookmark',      $this->call("ajaxGetBookmark"));
+        $this->view->assign('setbookmark',      $this->call("ajaxSetBookmark", "''"));
         
         $this->view->assign('preparebookmark',  $this->prepareBookmark());
     }
@@ -63,7 +63,7 @@ class Bookmark extends WidgetBase
         $urlview = $this->tpl();
         $urlview->assign(
             'submit', 
-            $this->genCallAjax(
+            $this->call(
                 'ajaxBookmarkUrlAdd', 
                 "movim_parse_form('bookmarkurladd')")
         );
@@ -73,7 +73,7 @@ class Bookmark extends WidgetBase
         $mucview = $this->tpl();
         $mucview->assign(
             'submit', 
-            $this->genCallAjax(
+            $this->call(
                 'ajaxBookmarkMucAdd', 
                 "movim_parse_form('bookmarkmucadd')")
         );
@@ -94,14 +94,14 @@ class Bookmark extends WidgetBase
     }
 
     function getMucRemove($node) {
-        return $this->genCallAjax(
+        return $this->call(
             'ajaxBookmarkMucRemove',
             "'".$node->conference."'"
             );
     }
     
     function getMucJoin($node) {
-        return $this->genCallAjax(
+        return $this->call(
             'ajaxBookmarkMucJoin',
             "'".$node->conference."'",
             "'".$node->nick."'"
@@ -203,7 +203,7 @@ class Bookmark extends WidgetBase
                     'autojoin'  => $form['autojoin'],
                     'nick'      => $form['nick'],
                     'jid'       => $form['jid']);   
-            
+            movim_log(serialize($item));
             $this->ajaxSetBookmark($item);
         }
     }

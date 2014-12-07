@@ -2,7 +2,8 @@
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
-use Movim\Daemon\Behaviour;
+use Movim\Daemon\Core;
+use React\Socket\Server as Reactor;
 
 require dirname(__FILE__) . '/vendor/autoload.php';
 
@@ -23,15 +24,13 @@ if($argsize == 2) {
     exit;
 }
 
-$server = new Behaviour($argv[1], $argv[2]);
+$loop = \React\EventLoop\Factory::create();
+$core = new Core($loop, $argv[1], $argv[2]);
+$app  = new HttpServer(new WsServer($core));
 
-$server = IoServer::factory(
-    new HttpServer(
-        new WsServer(
-            $server
-        )
-    ),
-    $argv[2]
-);
+$socket = new Reactor($loop);
+$socket->listen($argv[2], '0.0.0.0');
+
+$server = new IoServer($app, $socket, $loop);
 
 $server->run();

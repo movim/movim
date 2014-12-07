@@ -308,21 +308,21 @@ class WidgetCommon extends WidgetBase {
         
         $view->assign(
             'privacy_post_orange', 
-            $this->genCallAjax(
+            $this->call(
                 'ajaxPrivacyPost', 
                 "'".$post->nodeid."'",
                 "'orange'"));
                 
         $view->assign(
             'privacy_post_black', 
-            $this->genCallAjax(
+            $this->call(
                 'ajaxPrivacyPost', 
                 "'".$post->nodeid."'",
                 "'black'"));
                 
         $view->assign(
             'delete_post', 
-            $this->genCallAjax(
+            $this->call(
                 'ajaxDeletePost', 
                 "'".$post->jid."'",
                 "'".$post->node."'",
@@ -338,14 +338,14 @@ class WidgetCommon extends WidgetBase {
         $view->assign('post',       $post);
         $view->assign('comments',   $this->prepareComments($comments));
         $view->assign('getcomments',
-            $this->genCallAjax(
+            $this->call(
                 'ajaxGetComments', 
                 "'".$post->commentplace."'", 
                 "'".$post->nodeid."'")
             );
             
         $view->assign('publishcomment',
-            $this->genCallAjax(
+            $this->call(
                 'ajaxPublishComment', 
                 "'".$post->commentplace."'", 
                 "'".$post->nodeid."'", 
@@ -464,12 +464,12 @@ class WidgetCommon extends WidgetBase {
     protected function prepareSubmitForm($server = '', $node = '') {  
         $view = $this->loadTemplate();
                 
-        $view->assign('toggle_position', $this->genCallAjax('ajaxShowPosition', "poss"));
+        $view->assign('toggle_position', $this->call('ajaxShowPosition', "poss"));
         $view->assign('gallery', $this->prepareGallery());
         
         $view->assign(
             'publish_item', 
-            $this->genCallAjax(
+            $this->call(
                 'ajaxPublishItem', 
                 "'".$server."'", 
                 "'".$node."'",
@@ -477,7 +477,7 @@ class WidgetCommon extends WidgetBase {
                 
         $view->assign(
             'post_preview',
-            $this->genCallAjax(
+            $this->call(
                 'ajaxPostPreview', 
                 "document.querySelector('#postpublishcontent').value"));
                 

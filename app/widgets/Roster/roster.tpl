@@ -5,7 +5,7 @@
             {$c->__('roster.no_contacts')}
             <br />
             <br />
-            <a class="button color green icon users" href="{$c->route('explore')}">{$c->__('page.explore')}</a>
+            <a class="button color green" href="{$c->route('explore')}"><i class="fa fa-compass"></i> {$c->__('page.explore')}</a>
         </span>
 
         <div ng-show="contacts != null && !group.tombstone" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup)}" >

@@ -39,7 +39,7 @@ var AdminTest = {
     },
 
     testXMPPWebsocket : function(url) {
-        this.connection = new WebSocket(url);
+        this.connection = new WebSocket(url, 'xmpp');
 
         this.connection.onopen = function(e) {
             movim_remove_class('figure #daemon-xmpp', 'error');
