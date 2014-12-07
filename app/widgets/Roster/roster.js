@@ -11,10 +11,10 @@
 
     /* Controller for Rosterlist */
     app.controller("RosterController", function($scope){
-        /* Cache variables 
+        /* Cache variables */ 
         $scope.lsJid = localStorage.getItem("username").replace("@", "at");
-        $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};*/
-        $scope.lsGroupState = /*"groupState" in $scope.lsRoster ? $scope.lsRoster.groupState : */{};
+        $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
+        $scope.lsGroupState = "groupState" in $scope.lsRoster ? $scope.lsRoster.groupState : {};
         
         //this.cache = localStorage.getObject($scope.lsJid + '_cache');
         $scope.contacts = /*this.cache && ("Roster" in this.cache) && ("contactsList" in this.cache.Roster) ? localStorage.getObject($scope.lsJid + '_cache').Roster.contactsList : */[];
@@ -132,11 +132,15 @@
                 oldgroupname = $scope.lookupjid[list[0].jid].ajiditems[0].groupname;
                 if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
                     $scope.lookupgroups[oldgroupname].tombstone = true;
-                else
+                else{
                     $scope.lookupjid[list[0].jid].tombstone = true;
+                    
+                    console.log("Tombstone TRUE for " + list[0].jid);
+                }
             }
             /* New group is not in the list */
             if(!(list[0].groupname in $scope.lookupgroups)) {
+                console.log("New groupname" + list[0].groupname);
                 /* Create group */
                 el = {
                     'agroup': list[0].groupname,
@@ -235,24 +239,24 @@
     });
 })();
 
-/*window.onunload = window.onbeforeunload = function(e){
+window.onunload = window.onbeforeunload = function(e){
     var lsjid = angular.element(roster).scope().lsJid;
     
     // Cache Roster list in jid_cache.Roster 
-    if(localStorage.getObject(lsjid + "_cache") === null)
+    /*if(localStorage.getObject(lsjid + "_cache") === null)
         localStorage.setObject(lsjid + "_cache", {"Roster": {"contactsList": angular.element(roster).scope().contacts}});
     else{
         var nv = localStorage.getObject(lsjid + "_cache");
         nv.Roster = {"contactsList": angular.element(roster).scope().contacts};
         localStorage.setObject(lsjid + "_cache", nv);
     }
-    
+    */
     
     // Move this to disconnection moment ?? 
     // Keep group states in jid_Roster.groupStates 
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
-};*/
+};
 
 /* Functions to call angular inner functions */
 function initContacts(tab){
