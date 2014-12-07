@@ -24,7 +24,7 @@ class ContactManage extends WidgetCommon
 {
     function load() 
     {
-        $this->registerEvent('rosterupdateditem', 'onRoster');
+        $this->registerEvent('roster_updateitem_handle', 'onRoster');
     }
     
     function display()
@@ -33,9 +33,11 @@ class ContactManage extends WidgetCommon
         $this->view->assign('contact', $this->prepareContactManage($_GET['f']));
     }
 
-    public function onRoster($jid)
+    public function onRoster($packet)
     {
-        $html = $this->prepareContactManage($jid);
+        $contact = $packet->content[0];
+        
+        $html = $this->prepareContactManage($contact->jid);
         Notification::appendNotification($this->__('contact.updated'));
         RPC::call('movim_fill', 'contactmanage', $html);
     }

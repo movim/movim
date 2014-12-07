@@ -128,7 +128,8 @@ h1 {
     vertical-align: bottom;
 }
 
-div > h1 {
+div > h1,
+h1.padded {
     line-height: 2.5em;
 }
 
@@ -246,6 +247,7 @@ ul.clean li {
 #container > div:nth-child(2) {
     width: calc(30% - 6rem);
     height: 100%;
+    overflow: hidden;
 }
 
 #container > div:nth-child(3) {
