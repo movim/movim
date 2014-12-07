@@ -12,7 +12,7 @@
     </div>
 
     <div id="center">
-        <?php //$this->widget('InitAccount');?>
+        <?php $this->widget('Init');?>
         <?php $this->widget('Feed');?>
     </div>
 
