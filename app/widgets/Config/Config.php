@@ -42,7 +42,7 @@ class Config extends WidgetBase
             $this->view->assign('chatbox', '');
         
         $this->view->assign('submit',    
-            $this->genCallAjax(
+            $this->call(
                 'ajaxSubmit', 
                 "movim_parse_form('general')"
             )
