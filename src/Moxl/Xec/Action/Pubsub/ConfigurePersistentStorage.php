@@ -55,7 +55,7 @@ class ConfigurePersistentStorage extends Action
         $this->deliver();
     }
 
-    public function errorFeatureNotImplemented($stanza) {
+    public function errorFeatureNotImplemented($error) {
         $this->pack($this->_node);
         $this->deliver();
     }
