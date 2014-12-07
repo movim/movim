@@ -366,7 +366,7 @@ call. Another variant of the function exists that does this:
 
 @cartouche
 @verbatim
-WidgetBase::genCallAjax($funcname, $callback, $target, ...)
+WidgetBase::call($funcname, $callback, $target, ...)
 @end verbatim
 @end cartouche
 

@@ -175,28 +175,20 @@ class WidgetBase
     }
 
     /**
-     * Generates and print an ajax call.
-     */
-    protected function callAjax($funcname)
-    {
-        echo $this->makeCallAjax(func_get_args());
-    }
-
-    /**
      * Calls an the ajax function of another widget.
      */
     protected function callWidget($widgetname, $funcname)
     {
         $params = func_get_args();
-        echo $this->makeCallAjax(array_slice($params, 1), $widgetname);
+        echo $this->makeCall(array_slice($params, 1), $widgetname);
     }
 
     /**
      * Returns the javascript ajax call.
      */
-    protected function genCallAjax($funcname)
+    protected function call($funcname)
     {
-        return $this->makeCallAjax(func_get_args());
+        return $this->makeCall(func_get_args());
     }
 
     /**
@@ -205,10 +197,10 @@ class WidgetBase
     protected function genCallWidget($widgetname, $funcname)
     {
         $params = func_get_args();
-        return $this->makeCallAjax(array_slice($params, 1), $widgetname);
+        return $this->makeCall(array_slice($params, 1), $widgetname);
     }
 
-    protected function makeCallAjax($params, $widget=false)
+    protected function makeCall($params, $widget=false)
     {
         if(!$widget) {
             $widget = $this->name;

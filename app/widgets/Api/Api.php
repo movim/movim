@@ -40,12 +40,12 @@ class Api extends WidgetBase {
         if(isset($json)) {
             $this->view->assign('json', $json);
             if($json->status == 200) {
-                $this->view->assign('unregister', $this->genCallAjax('ajaxUnregister'));
+                $this->view->assign('unregister', $this->call('ajaxUnregister'));
                 $this->view->assign('unregister_status', $config->unregister);
             } else {
                 $config->unregister = false;
                 $cd->set($config);
-                $this->view->assign('register', $this->genCallAjax('ajaxRegister'));
+                $this->view->assign('register', $this->call('ajaxRegister'));
             }
         } else {
             $this->view->assign('json', null);

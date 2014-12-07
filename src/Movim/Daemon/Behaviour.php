@@ -105,6 +105,22 @@ class Behaviour implements MessageComponentInterface {
                     $this->sessions[$sid]['linker']->send((string)$msg->body);
                 }
                 break;
+            case 'admin':
+                $cd = new \Modl\ConfigDAO();
+                $config = $cd->get();
+                
+                if(!isset($msg->key) && $config->password != $msg->key) {
+                    return;
+                }
+                
+                $obj = new \StdClass;
+                $obj->func = 'Statistics.daemonSessions';
+                $obj->params = array(array_keys($this->sessions));
+
+                $out = $obj;
+
+                $this->send($from, json_encode(array($out)));
+                break;
             default:
                 $this->send($from, 'no function specified');
                 break;

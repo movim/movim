@@ -32,7 +32,7 @@ class NodeAffiliations extends WidgetBase
     function display() {
         $this->view->assign('pepfilter', !filter_var($_GET['s'], FILTER_VALIDATE_EMAIL));
         $this->view->assign('getaffiliations', 
-            $this->genCallAjax('ajaxGetGroupMemberList',
+            $this->call('ajaxGetGroupMemberList',
                 "'".$_GET['s']."'", 
                 "'".$_GET['n']."'"));
     }
@@ -58,7 +58,7 @@ class NodeAffiliations extends WidgetBase
                 </div>';
         }
         
-        $ok = $this->genCallAjax(
+        $ok = $this->call(
                 'ajaxChangeAffiliation', 
                 "'".$list[1]."'", 
                 "'".$list[2]."'", 

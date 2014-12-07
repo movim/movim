@@ -220,6 +220,37 @@ class Postn extends Model {
         return $contentimg;
     }
 
+    public function getAttachements()
+    {
+        $attachements = null;
+        
+        if(isset($this->links)) {
+            $attachements = array('pictures' => array(), 'files' => array(), 'links' => array());
+            
+            $links = unserialize($this->links);
+            foreach($links as $l) {
+                switch($l['rel']) {
+                    case 'enclosure' :
+                        if(in_array($l['type'], array('image/jpeg', 'image/png', 'image/jpg'))) {
+                            array_push($attachements['pictures'], $l);
+                        } else {
+                            array_push($attachements['files'], $l);
+                        }
+                        break;
+                    case 'alternate' :
+                        array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
+                        break;
+                }
+            }
+        }
+
+        if(empty($attachements['pictures'])) unset($attachements['pictures']);
+        if(empty($attachements['files']))    unset($attachements['files']);
+        if(empty($attachements['links']))    unset($attachements['links']);
+
+        return $attachements;
+    }
+
     public function getPlace() {
         if(isset($this->lat, $this->lon) && $this->lat != '' && $this->lon != '') {
             return true;

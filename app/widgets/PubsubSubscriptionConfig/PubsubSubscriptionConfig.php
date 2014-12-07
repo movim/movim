@@ -36,7 +36,7 @@ class PubsubSubscriptionConfig extends WidgetBase
     {
         $this->view->assign(
                     'getsubscribedlist',
-                    $this->genCallAjax('ajaxGetGroupSubscribedList')
+                    $this->call('ajaxGetGroupSubscribedList')
                     );
     }
     
@@ -63,7 +63,7 @@ class PubsubSubscriptionConfig extends WidgetBase
                 else
                     $checked = '';
 
-                $switch = $this->genCallAjax(
+                $switch = $this->call(
                             'ajaxChangeSubscribed',
                             "'".$s->server."'",
                             "'".$s->node."'",
