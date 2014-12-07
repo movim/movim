@@ -14,7 +14,6 @@
                 <!-- Rostersearch look this way for an angularJS solution http://www.bennadel.com/blog/2487-filter-vs-nghide-with-ngrepeat-in-angularjs.htm -->
                 <ul class="contact">
                     <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)" >
-                        <!-- add title to li so search works again-->
                         <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" ></div>
                         <div ng-if="contact.rosterview.type == 'handheld'" class="infoicon mobile"></div>
                         <div ng-if="contact.rosterview.type == 'web'" class="infoicon web"></div>
