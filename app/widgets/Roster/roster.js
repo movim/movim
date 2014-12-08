@@ -2,11 +2,26 @@
     var app = angular.module("roster", []);
 
     /* Controller for Rostermenu */
-    app.controller("RosterMenuController", function(){
+    app.controller("RosterMenuController", function($scope){
+        $scope.lsJid = localStorage.getItem("username").replace("@", "at");
+        $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
+        $scope.lsOfflineShown = "offlineShown" in $scope.lsRoster ? $scope.lsRoster.offlineShown : false;
+        
         this.checkoutAddJid = function(event){
             if(event.key == "Enter")
                 Roster_ajaxSearchContact(event.target.value);
         };
+        
+        this.showHideOffline = function() {
+            if(!$scope.lsOfflineShown){
+                document.querySelector('ul#rosterlist').className = 'offlineshown';
+                $scope.lsOfflineShown = true;
+            }
+            else{
+                document.querySelector('ul#rosterlist').className = '';
+                $scope.lsOfflineShown = false;
+            }
+        }
     });
 
     /* Controller for Rosterlist */
@@ -202,7 +217,7 @@
         };
 
         this.offlineIsShown = function(){
-            if($scope.lsGroupState.rosterShow_offline)
+            if("offlineShown" in $scope.lsRoster && $scope.lsRoster.offlineShown)
                 return "offlineshown";
             else
                 return "";
@@ -252,6 +267,7 @@ window.onunload = window.onbeforeunload = function(e){
     // Move this to disconnection moment ?? 
     // Keep group states in jid_Roster.groupStates 
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
+    angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
 };
 
@@ -315,17 +331,6 @@ var jidAvalCompare = function(a, b) {
 
 
 /* === Old functions still in use === */
-function showHideOffline() {
-    if(!localStorage.getObject("rosterShow_offline")){
-        document.querySelector('ul#rosterlist').className = 'offlineshown';
-        localStorage.setObject("rosterShow_offline", true);
-    }
-    else{
-        document.querySelector('ul#rosterlist').className = '';
-        localStorage.setObject("rosterShow_offline", false);
-    }
-}
-
 MovimWebsocket.attach(function(){
     Roster_ajaxGetRoster();
 });
