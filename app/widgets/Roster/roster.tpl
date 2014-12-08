@@ -94,7 +94,7 @@
         </li>
 
         <li 
-            onclick="showHideOffline()"
+            ng-click="rosterMenuCtrl.showHideOffline()"
             title="{$c->__('roster.show_hide')}">
             <a class="users" href="#"></a>
         </li>
