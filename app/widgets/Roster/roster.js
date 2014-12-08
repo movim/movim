@@ -209,7 +209,7 @@
         };
 
         this.getContactTitle = function(c){
-            title = c.rosterview.name + " - " + c.jid;
+            title = c.rosterview.name.toLowerCase() + " - " + c.jid;
             if(c.status) title += " - " + c.status;
             return title;
         };
@@ -306,24 +306,10 @@ var ressourceCompare = function(a, b) {
 };
 /* Presence + alphabetical comparison */
 var jidAvalCompare = function(a, b) {
-      
-if(a.ajid=="christine.ho@etu.univ-nantes.fr"){
-    console.log("jidAvalCompare");
-    console.log(a.aval);
-    console.log(b.ajid);
-    console.log(b.aval);
-}
     n = a.aval - b.aval;
     if(n == 0){
         n = a.atruename.localeCompare(b.atruename);
-if(a.ajid == "christine.ho@etu.univ-nantes.fr"){
-    console.log("name a "+a.atruename);
-    console.log("name b "+b.atruename);
-}
     }
-    
-    if(a.ajid=="christine.ho@etu.univ-nantes.fr")
-    console.log(n ? n < 0 ? -1 : 1 : 0);
     return n ? n < 0 ? -1 : 1 : 0;
 };
 
@@ -374,7 +360,7 @@ movim_add_onload(function(){
         }
 
         // We select the interesting li
-        var selector = '#rosterlist div > li[title*=\'' + search.value + '\']';
+        var selector = '#rosterlist div > li[title*="' + search.value.toLowerCase() + '"]';
         var li = document.querySelectorAll(selector);
 
         for(i = 0; i < li.length; i++) {
