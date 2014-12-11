@@ -148,23 +148,23 @@ class Handler {
         $name = $s->getName();
         $ns = $s->getNamespaces();
 
-		$node = false;
-		
-		if($s->items && $s->items->attributes()->node)
-			$node = (string)$s->items->attributes()->node;
+        $node = false;
+        
+        if($s->items && $s->items->attributes()->node)
+            $node = (string)$s->items->attributes()->node;
         
         if(is_array($ns))
             $ns = current($ns);
- 
+
         if($node != false) {
             $hash = md5($name.$ns.$node);
             Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"'); 
             Handler::searchPayload($hash, $s, $sparent);
         } else {      
-			$hash = md5($name.$ns);
-			Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . ' ", "'.$hash.'"'); 
-			$more = Handler::searchPayload($hash, $s, $sparent);
-		}
+            $hash = md5($name.$ns);
+            Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . ' ", "'.$hash.'"'); 
+            $more = Handler::searchPayload($hash, $s, $sparent);
+        }
 
     }
 
@@ -217,12 +217,11 @@ class Handler {
         $base = __DIR__.'/';
         
         $hashToClass = self::getHashToClass();
-        
         if(isset($hashToClass[$hash])) {
             if(file_exists($base.'Payload/'.$hashToClass[$hash].'.php')) {
                 require_once($base.'Payload/'.$hashToClass[$hash].'.php');
                 $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
-                
+
                 if(class_exists($classname)) {
                     $payload_class = new $classname();
                     $payload_class->prepare($s, $sparent);

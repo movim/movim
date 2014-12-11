@@ -37,7 +37,7 @@ class Presence extends Payload
 
             $evt = new \Event;
             $evt->runEvent('subscribe', (string)$stanza->attributes()->from);
-        } else {    
+        } else {
             $p = new \modl\Presence();
             $p->setPresence($stanza);
             $pd = new \modl\PresenceDAO();
@@ -52,7 +52,7 @@ class Presence extends Payload
 
                 $this->pack($c);
             }
-            
+
             $this->deliver();
         }
     }
