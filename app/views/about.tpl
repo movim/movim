@@ -10,6 +10,5 @@
     <div id="center">
         <?php $this->widget('About');?>
         <?php $this->widget('Caps');?>
-        <?php $this->widget('XEP');?>
     </div>
 </div>
