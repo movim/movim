@@ -9,12 +9,12 @@ msgstr ""
 "PO-Revision-Date: 2013-07-27 17:06+0000\n"
 "Last-Translator: Gwenn M <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-04 21:24+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-12-08 10:12+0000\n"
+"X-Generator: Launchpad (build 17274)\n"
+"Language: \n"
 
 #: ../cache/locales.php:2
 msgid "Thanks"
@@ -41,7 +41,9 @@ msgid "API"
 msgstr ""
 
 #: ../cache/locales.php:8
-msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
+msgid ""
+"Movim is an XMPP-based communication platform. All the project, except the "
+"following software and resources, is under"
 msgstr ""
 
 #: ../cache/locales.php:9 ../cache/locales.php:190
@@ -170,9 +172,8 @@ msgid "User folder size limit (in bytes)"
 msgstr ""
 
 #: ../cache/locales.php:40
-#, fuzzy
 msgid "WebSocket Configuration"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: ../cache/locales.php:41
 msgid "Enter here a valid WebSocket URI in the form"
@@ -183,7 +184,8 @@ msgid "WebSocket URI"
 msgstr ""
 
 #: ../cache/locales.php:43
-msgid "If you change the URI, please restart the daemon to reload the configuration"
+msgid ""
+"If you change the URI, please restart the daemon to reload the configuration"
 msgstr ""
 
 #: ../cache/locales.php:44
@@ -207,11 +209,15 @@ msgid "Whitelist - XMPP Server"
 msgstr ""
 
 #: ../cache/locales.php:51
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
 msgstr ""
 
 #: ../cache/locales.php:52
-msgid "Leave this field blank if you allow the access to all the XMPP accounts."
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr ""
 
 #: ../cache/locales.php:53
@@ -235,9 +241,8 @@ msgid "Leave this field blank if you don't want to show any message."
 msgstr ""
 
 #: ../cache/locales.php:59
-#, fuzzy
 msgid "Empty"
-msgstr "goullo"
+msgstr ""
 
 #: ../cache/locales.php:60
 msgid "Syslog"
@@ -252,7 +257,8 @@ msgid "General Overview"
 msgstr ""
 
 #: ../cache/locales.php:63
-msgid "Movim has found some issues or things that need to be fixed or improved"
+msgid ""
+"Movim has found some issues or things that need to be fixed or improved"
 msgstr ""
 
 #: ../cache/locales.php:64
@@ -278,7 +284,9 @@ msgstr ""
 
 #: ../cache/locales.php:70
 #, php-format
-msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
+msgid ""
+"Here you can register your pod on the official %sMovim API%s and be listed "
+"on %sthe pods page%s."
 msgstr ""
 
 #: ../cache/locales.php:71
@@ -298,7 +306,9 @@ msgid "Your pod is validated"
 msgstr ""
 
 #: ../cache/locales.php:75
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
+msgid ""
+"You asked to be removed from the API, this request will be processed in a "
+"couple of hours"
 msgstr ""
 
 #: ../cache/locales.php:76 ../cache/locales.php:114
@@ -376,9 +386,8 @@ msgid "An error occured : "
 msgstr ""
 
 #: ../cache/locales.php:94
-#, fuzzy
 msgid "Configure"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: ../cache/locales.php:95
 msgid "Add a new URL"
@@ -598,7 +607,9 @@ msgid "Hi!"
 msgstr ""
 
 #: ../cache/locales.php:158
-msgid "This is your newsfeed, here you will see the posts published by you and your contacts."
+msgid ""
+"This is your newsfeed, here you will see the posts published by you and your "
+"contacts."
 msgstr ""
 
 #: ../cache/locales.php:159
@@ -610,8 +621,12 @@ msgid "What do the little banners refer to ?"
 msgstr "Petra dalv ar bannelioù bhan ?"
 
 #: ../cache/locales.php:161
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "A-drugarez d'ar pemp banielig-se ez eus tu deoc'h kavout al live prevezded war an titour roet ganeoc'h"
+msgid ""
+"Thanks to these five little banners, you can quickly identitfy the level of "
+"confdentiality applied to the information you provide."
+msgstr ""
+"A-drugarez d'ar pemp banielig-se ez eus tu deoc'h kavout al live prevezded "
+"war an titour roet ganeoc'h"
 
 #: ../cache/locales.php:162
 msgid "White, only you can see the information"
@@ -674,17 +689,20 @@ msgid "Creating your profile node"
 msgstr ""
 
 #: ../cache/locales.php:177
-#, fuzzy
 msgid "Creating your avatar node"
-msgstr "Krouiñ ma vCard"
+msgstr ""
 
 #: ../cache/locales.php:178
 msgid "Movim is currently configuring your account, please wait..."
 msgstr ""
 
 #: ../cache/locales.php:179
-msgid "Your server doesn't support post publication, you can only read contact's feeds"
-msgstr "N'eo ket meret an embannadennoù gant ho servijer, tu zo deoc'h lenn gwazhioù darempred hepken"
+msgid ""
+"Your server doesn't support post publication, you can only read contact's "
+"feeds"
+msgstr ""
+"N'eo ket meret an embannadennoù gant ho servijer, tu zo deoc'h lenn gwazhioù "
+"darempred hepken"
 
 #: ../cache/locales.php:180
 msgid "Creating your feed..."
@@ -752,7 +770,8 @@ msgstr "Kont krouet gant berzh."
 
 #: ../cache/locales.php:197
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "N'eo ket deuet a-benn Movim da gennaskañ. Lakaet ho peus roadennoù fall."
+msgstr ""
+"N'eo ket deuet a-benn Movim da gennaskañ. Lakaet ho peus roadennoù fall."
 
 #: ../cache/locales.php:198
 msgid "Your XMPP server is unauthorized"
@@ -767,12 +786,16 @@ msgid "Your web browser is too old to use with Movim."
 msgstr "Ho merdeer a zo re gozh evit implij Movim"
 
 #: ../cache/locales.php:201
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgid ""
+"Movim cannot talk with the server, please try again later (Websocket "
+"connection error)"
 msgstr ""
 
 #: ../cache/locales.php:202
 #, php-format
-msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
+msgid ""
+"You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
+"and your password"
 msgstr ""
 
 #: ../cache/locales.php:203
@@ -805,12 +828,15 @@ msgid "Login with an another account"
 msgstr ""
 
 #: ../cache/locales.php:211
-msgid "This server accept only connection with xmpp accounts from these servers :"
+msgid ""
+"This server accept only connection with xmpp accounts from these servers :"
 msgstr ""
 
 #: ../cache/locales.php:212
 #, php-format
-msgid "If you don't have such xmpp account, you can try %sanother public Movim%s client."
+msgid ""
+"If you don't have such xmpp account, you can try %sanother public Movim%s "
+"client."
 msgstr ""
 
 #: ../cache/locales.php:213
@@ -866,11 +892,14 @@ msgid "An error occurred while uploading the file"
 msgstr ""
 
 #: ../cache/locales.php:228
-msgid "The upload has been canceled by the user or the browser dropped the connection"
+msgid ""
+"The upload has been canceled by the user or the browser dropped the "
+"connection"
 msgstr ""
 
 #: ../cache/locales.php:229
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
 #: ../cache/locales.php:230 ../cache/locales.php:232
@@ -878,11 +907,15 @@ msgid "Hello"
 msgstr ""
 
 #: ../cache/locales.php:231
-msgid "Welcome on your news feed, here you will see all the posts published in the groups you have subscribed."
+msgid ""
+"Welcome on your news feed, here you will see all the posts published in the "
+"groups you have subscribed."
 msgstr ""
 
 #: ../cache/locales.php:233
-msgid "Welcome on your group feed, here you will see all the posts published in the groups you have subscribed."
+msgid ""
+"Welcome on your group feed, here you will see all the posts published in the "
+"groups you have subscribed."
 msgstr ""
 
 #: ../cache/locales.php:234
@@ -959,9 +992,8 @@ msgid "Get the subscriptions"
 msgstr ""
 
 #: ../cache/locales.php:252
-#, fuzzy
 msgid "Subscriptions saved"
-msgstr "Oberennoù"
+msgstr ""
 
 #: ../cache/locales.php:253
 msgid "Pending Invitations"
@@ -973,9 +1005,8 @@ msgid "%s wants to talk with you"
 msgstr ""
 
 #: ../cache/locales.php:255
-#, fuzzy
 msgid "News Feed"
-msgstr "Gwazh"
+msgstr ""
 
 #: ../cache/locales.php:256
 msgid "Discover and register to the groups you are interested in"
@@ -994,14 +1025,12 @@ msgid "Status updated"
 msgstr ""
 
 #: ../cache/locales.php:260
-#, fuzzy
 msgid "No profile yet?"
-msgstr "Profil ebet c'hoazh ?"
+msgstr ""
 
 #: ../cache/locales.php:261
-#, fuzzy
 msgid "Create my profile"
-msgstr "Cheñch va brofil"
+msgstr ""
 
 #: ../cache/locales.php:262
 msgid "Shared"
@@ -1044,7 +1073,9 @@ msgid "Please enter a valid Jabber ID"
 msgstr ""
 
 #: ../cache/locales.php:272
-msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
+msgid ""
+"No contacts ? You can add one using the + button bellow or going to the "
+"Explore page"
 msgstr ""
 
 #: ../cache/locales.php:273
@@ -1096,9 +1127,8 @@ msgid "Sessions"
 msgstr ""
 
 #: ../cache/locales.php:285
-#, fuzzy
 msgid "Subscriptions"
-msgstr "Oberennoù"
+msgstr ""
 
 #: ../cache/locales.php:286
 msgid "Monthly Subscriptions"
@@ -1109,7 +1139,9 @@ msgid "Monthly Subscriptions Cumulated"
 msgstr ""
 
 #: ../cache/locales.php:289
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
 msgstr ""
 
 #: ../cache/locales.php:290
@@ -1169,7 +1201,10 @@ msgid "Is this profile public ?"
 msgstr ""
 
 #: ../cache/locales.php:318
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+msgid ""
+"Please pay attention ! By making your profile public, all the information "
+"listed above will be available for all the Movim users and on the whole "
+"Internet."
 msgstr ""
 
 #: ../cache/locales.php:319
@@ -1181,9 +1216,8 @@ msgid "Hang up"
 msgstr ""
 
 #: ../cache/locales.php:321
-#, fuzzy
 msgid "Connection"
-msgstr "O kennaskañ..."
+msgstr ""
 
 #: ../cache/locales.php:322 ../cache/locales.php:328
 msgid "Hung up"
@@ -1230,9 +1264,8 @@ msgid "Abstract"
 msgstr ""
 
 #: ../cache/locales.php:340
-#, fuzzy
 msgid "Status"
-msgstr "Statud-dimez"
+msgstr ""
 
 #: ../cache/locales.php:341
 msgid "Type"
@@ -1243,7 +1276,9 @@ msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
 #: ../cache/locales.php:343
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgid ""
+"Movim is a kickass distributed social networking platform that protect your "
+"privacy an comes with a set of awesome features."
 msgstr ""
 
 #: ../cache/locales.php:344
@@ -2178,38 +2213,79 @@ msgstr ""
 msgid "The API is not reachable, try again later"
 msgstr ""
 
-#~ msgid "What is Movim?"
-#~ msgstr "Petra eo Movim?"
-
-#~ msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
-#~ msgstr "Gwelladenniñ ar bajenn %s Petra eo Movim ? %s evit gouzout hiroc'h diwar-benn ar raktres, e pal ha kompren penaos ez a en-dro."
-
-#~ msgid "Some features are missing/I can't do everything I used to do on other social networks"
-#~ msgstr "Arc'hweladurioù a vank/N'eus ket tu din ober tout ar pezh a ran war ar rouedadoù sokial all"
-
-#~ msgid "I can't find the answer to my question here"
-#~ msgstr "N'eus ket bet tu din kavout ar respont d'am goulenn"
-
+#, php-format
 #~ msgid "Cannot load element value '%s'"
 #~ msgstr "N'eus ket tu kargañ talvoud an elfenn '%s'"
 
 #~ msgid "Logout"
 #~ msgstr "Digennaskañ"
 
-#~ msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
-#~ msgstr "Daoust m'eo prim emdroadur Movim, ur bern (bern) ac'hwelladurioù a vank. Bezit pasiant :). Tu o deoc'h sellet ouzh %s an handelv o tont %s evit gouzout m'eo war an hent an hini ho 'peus c'hoant."
+#~ msgid "Create my vCard"
+#~ msgstr "Krouiñ ma vCard"
 
-#~ msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
-#~ msgstr "Na zisoñjit ket eo Movim ur raktres frank, un taol sikour a zo degemeret mat atav (gwelet %s Tu zo din kemer perzh %s)"
+#~ msgid "Edit my Profile"
+#~ msgstr "Cheñch va brofil"
 
-#~ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
-#~ msgstr "Kit d'ar %s Goulennoù Savet an Aliesañ %s pe goulennit war an tchat ofisiel %s pe dre hor mailing-list (%s sellit ar bajenn a-zere %s)"
+#~ msgid "What is Movim?"
+#~ msgstr "Petra eo Movim?"
+
+#, php-format
+#~ msgid ""
+#~ "Visit the page %s What is Movim ? %s to know more about the project, its "
+#~ "aims and understand how it works."
+#~ msgstr ""
+#~ "Gwelladenniñ ar bajenn %s Petra eo Movim ? %s evit gouzout hiroc'h diwar-"
+#~ "benn ar raktres, e pal ha kompren penaos ez a en-dro."
+
+#~ msgid ""
+#~ "Some features are missing/I can't do everything I used to do on other social "
+#~ "networks"
+#~ msgstr ""
+#~ "Arc'hweladurioù a vank/N'eus ket tu din ober tout ar pezh a ran war ar "
+#~ "rouedadoù sokial all"
+
+#, php-format
+#~ msgid ""
+#~ "Although Movim is evolving fast, many (many) features are missing. Be "
+#~ "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
+#~ "the one you want is on its way."
+#~ msgstr ""
+#~ "Daoust m'eo prim emdroadur Movim, ur bern (bern) ac'hwelladurioù a vank. "
+#~ "Bezit pasiant :). Tu o deoc'h sellet ouzh %s an handelv o tont %s evit "
+#~ "gouzout m'eo war an hent an hini ho 'peus c'hoant."
+
+#, php-format
+#~ msgid ""
+#~ "Don't forget that Movim is an open source project, a helping hand is always "
+#~ "welcome (see %s Can I participate %s)"
+#~ msgstr ""
+#~ "Na zisoñjit ket eo Movim ur raktres frank, un taol sikour a zo degemeret mat "
+#~ "atav (gwelet %s Tu zo din kemer perzh %s)"
+
+#~ msgid "I can't find the answer to my question here"
+#~ msgstr "N'eus ket bet tu din kavout ar respont d'am goulenn"
+
+#, php-format
+#~ msgid ""
+#~ "Go to the %s to the Frequently Asked Questions %s or come ask your question "
+#~ "on the official chatroom %s or via our mailing-list (%s see the dedicated "
+#~ "page %s)."
+#~ msgstr ""
+#~ "Kit d'ar %s Goulennoù Savet an Aliesañ %s pe goulennit war an tchat ofisiel "
+#~ "%s pe dre hor mailing-list (%s sellit ar bajenn a-zere %s)"
 
 #~ msgid "Debug console"
 #~ msgstr "Koñsolenn debug"
 
+#~ msgid "No profile yet ?"
+#~ msgstr "Profil ebet c'hoazh ?"
+
+#, php-format
 #~ msgid "Couldn't create directory '%s'."
 #~ msgstr "Dibosupl krouiñ an teuliad '%s'."
+
+#~ msgid "empty"
+#~ msgstr "goullo"
 
 #~ msgid "terse"
 #~ msgstr "taer"
