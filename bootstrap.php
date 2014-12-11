@@ -21,7 +21,7 @@ function systemErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = n
  * Manage boot order
  */
 class Bootstrap {
-    function boot() {
+    function boot($light = false) {
         //define all needed constants
         $this->setContants();
         
@@ -33,7 +33,7 @@ class Bootstrap {
         //Check if vital system need is OK
         $this->checkSystem();
 
-        $this->setBrowserSupport();
+        if(!$light) $this->setBrowserSupport();
         
         $this->loadSystem();
         $this->loadCommonLibraries();

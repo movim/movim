@@ -22,26 +22,6 @@ class Caps extends WidgetBase
     
     function load() {
         $this->addcss('caps.css');
-        
-        $cd = new \modl\CapsDAO();
-        $clients = $cd->getClients();
-
-        foreach($clients as $c) {
-            if(!isset($this->_table[$c->name])) {
-                $this->_table[$c->name] = array();
-            }
-            
-            $features = unserialize($c->features);
-            foreach($features as $f) {
-                if(!in_array($f, $this->_table[$c->name])) {
-                    array_push($this->_table[$c->name], (string)$f);
-                }
-            }
-        }
-
-        ksort($this->_table);
-
-        $this->_nslist = getXepNamespace();
     }
 
     function isImplemented($client, $key) {
@@ -64,6 +44,26 @@ class Caps extends WidgetBase
 
     function display()
     {
+        $cd = new \modl\CapsDAO();
+        $clients = $cd->getClients();
+
+        foreach($clients as $c) {
+            if(!isset($this->_table[$c->name])) {
+                $this->_table[$c->name] = array();
+            }
+            
+            $features = unserialize($c->features);
+            foreach($features as $f) {
+                if(!in_array($f, $this->_table[$c->name])) {
+                    array_push($this->_table[$c->name], (string)$f);
+                }
+            }
+        }
+
+        ksort($this->_table);
+
+        $this->_nslist = getXepNamespace();
+
         $this->view->assign('table', $this->_table);
         $this->view->assign('nslist', $this->_nslist);
     }
