@@ -57,11 +57,11 @@ try {
 
     $rqst = new FrontController();
     $rqst->handle();
-    
+
     WidgetWrapper::getInstance(false);
     // Closing stuff
     WidgetWrapper::destroyInstance();
-    
+
 } catch (Exception $e) {
     $log = new Logger('movim');
     $log->pushHandler(new SyslogHandler('movim'));
