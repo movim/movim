@@ -79,10 +79,10 @@
     </div>
 
 </div>
-    <ul class="thin simple admin">
+<ul class="thin simple admin">
     <li>{$c->__('connected')} {$connected} • {$c->__('population')} {$pop} •
-    <a href="{$c->route('admin')}">
-        {$c->__('page.administration')}
-    </a>
+        <a href="{$c->route('admin')}">
+            {$c->__('page.administration')}
+        </a>
     </li>
 </ul>

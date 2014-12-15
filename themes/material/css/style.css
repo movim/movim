@@ -382,12 +382,11 @@ header.big p {
 .dialog > section {
     margin: 0 3rem;
     height: calc(100% - 8rem);
-    overflow-y: hidden;
+    overflow-y: auto;
     position: relative;
 }
 
 .dialog > section:hover {
-    overflow-y: auto;
 }
 
 .dialog > section > ul li {
@@ -398,7 +397,7 @@ header.big p {
 }
 
 .dialog > section > ul li .icon {
-    left: 0;
+    left: 1rem;
 }
 
 .dialog .actions {
@@ -476,6 +475,39 @@ header.big p {
         max-width: 90%;
         margin-left: -45%;
     }
+}
+
+/* Definition list */
+
+dl dt,
+dl dd {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0 1rem;
+    display: inline-block;
+    line-height: 2rem;
+    vertical-align: middle;
+}
+
+dl di {
+    border-bottom: 1px solid #DDD;
+    display: block;
+    padding: 1em 0;
+}
+
+dl dt {
+    text-align: right;
+    font-weight: bold;
+    width: 25%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+dl dd {
+    text-align: left;
+    width: 74%;
 }
 
 /* Padded */
