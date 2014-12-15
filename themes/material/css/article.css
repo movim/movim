@@ -1,0 +1,32 @@
+/* Article */
+
+article {
+    padding-bottom: 2rem;
+    overflow: hidden;
+}
+
+article header {
+    position: relative;
+}
+
+article header h1 {
+    font-size: 4rem;
+    line-height: 12rem;
+}
+
+article section {
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: 500;
+    padding: 0 2rem;
+    text-align: justify;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+}
+
+article section p {
+    margin-bottom: 1rem;
+}

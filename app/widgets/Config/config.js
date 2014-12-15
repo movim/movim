@@ -1,6 +1,6 @@
 var Config = {
     load : function() {
-        document.querySelector('form #nav_color a[type=button]').onclick = function() {
+        /*document.querySelector('form #nav_color a[type=button]').onclick = function() {
             document.querySelector('input[name=color]').value = '32434D';
         }
 
@@ -17,7 +17,7 @@ var Config = {
         document.querySelector('form #font_size input[name=size]').onchange = function() {
             document.body.style.fontSize = this.value+'px';
             document.querySelector('#currentsize').innerHTML = this.value+'px';
-        }
+        }*/
     }
 }
 

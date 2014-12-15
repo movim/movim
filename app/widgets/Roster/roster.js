@@ -209,6 +209,7 @@
         };
 
         this.getContactTitle = function(c){
+            console.log(c);
             title = c.rosterview.name + " - " + c.jid;
             if(c.status) title += " - " + c.status;
             return title;
