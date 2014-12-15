@@ -268,6 +268,10 @@ span.icon {
     background-size: cover;
 }
 
+span.icon img {
+    width: 100%;
+}
+
 li.oppose span.icon {
     left: auto;
     right: 2rem;
@@ -449,7 +453,7 @@ header.big p {
 
 .toast {
     background-color: #323232;
-    border-radius: 10rem;
+    border-radius: 2rem;
     left: 50%;
     bottom: 3rem;
     margin-left: -20rem;

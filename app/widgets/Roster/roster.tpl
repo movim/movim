@@ -12,7 +12,8 @@
             <br />
             <a class="button color green" href="{$c->route('explore')}"><i class="fa fa-compass"></i> {$c->__('page.explore')}</a>
         </span>
-
+        
+        <li class="subheader search">Results **FIXME**</li>
         <div ng-show="contacts != null && !group.tombstone" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup)}" >
             <li class="subheader" ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</li>
             <li ng-repeat="myjid in group.agroupitems" ng-hide="myjid.tombstone" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
@@ -103,7 +104,7 @@
         </li>
 
         <li 
-            onclick="showHideOffline()"
+            ng-click="rosterMenuCtrl.showHideOffline()"
             title="{$c->__('roster.show_hide')}">
             <a class="users" href="#"></a>
         </li>

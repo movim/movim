@@ -32,7 +32,7 @@ class Presence extends WidgetBase
     function load()
     {
         //$this->addcss('presence.css');
-        //$this->addjs('presence.js');
+        $this->addjs('presence.js');
         $this->registerEvent('mypresence', 'onMyPresence');
     }
     
@@ -53,6 +53,7 @@ class Presence extends WidgetBase
 
     private function setPresence($show = false, $status = false)
     {
+        Dialog::fill('');
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
 
@@ -141,10 +142,30 @@ class Presence extends WidgetBase
 
     function ajaxOpenDialog()
     {
-        Dialog::fill($this->preparePresence());
+        Dialog::fill($this->preparePresenceList());
+        RPC::call('setPresenceActions');
+    }
+
+    function preparePresence()
+    {
+        $cd = new \Modl\ContactDAO();
+        $pd = new \Modl\PresenceDAO();
+        
+        $session = \Sessionx::start();
+        $presence = $pd->getPresence($this->user->getLogin(), $session->ressource);
+
+        $presencetpl = $this->tpl();
+        
+        $presencetpl->assign('me', $cd->get());
+        $presencetpl->assign('presence', $presence);
+        $presencetpl->assign('dialog',      $this->call('ajaxOpenDialog'));
+
+        $html = $presencetpl->draw('_presence', true);
+
+        return $html;
     }
     
-    function preparePresence()
+    function preparePresenceList()
     {
         $txt = getPresences();
         $txts = getPresencesTxt();
@@ -179,15 +200,7 @@ class Presence extends WidgetBase
 
     function display()
     {
-        $cd = new \Modl\ContactDAO();
-        $pd = new \Modl\PresenceDAO();
-        
-        $session = \Sessionx::start();
-        $presence = $pd->getPresence($this->user->getLogin(), $session->ressource);
-        
-        $this->view->assign('me', $cd->get());
-        $this->view->assign('presence', $presence);
-        $this->view->assign('dialog',      $this->call('ajaxOpenDialog'));
+        $this->view->assign('presence', $this->preparePresence());
     }
 }
 

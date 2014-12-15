@@ -266,15 +266,17 @@
 }
 */
 /* Search */
-/*
+
+#roster ul li.subheader.search,
 #roster.search ul#rosterlist.offlineshown div.groupshown > li {
     display: none;
 }
 
+#roster.search ul li.subheader.search,
 #roster.search ul#rosterlist.offlineshown div.groupshown > li.found {
     display: list-item;
 }
-
+/*
 #rostermenu {
     position: fixed;
     bottom: 0;

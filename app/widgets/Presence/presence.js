@@ -9,26 +9,29 @@ function postStart() {
 }
 
 function setPresenceActions() {
-    var textarea = document.querySelector('#presence_widget textarea.status');
+    var textarea = document.querySelector('textarea.status');
 
-    textarea.onkeypress = function(event) {
-        if(event.keyCode == 13) {
-            Presence_ajaxSetStatus(this.value);
-            this.blur();
-        }
-    };
+    if(textarea != null) {
+        textarea.onkeypress = function(event) {
+            if(event.keyCode == 13) {
+                Presence_ajaxSetStatus(this.value);
+                this.blur();
+            }
+        };
 
-    textarea.onfocus = function(event) {
-        movim_textarea_autoheight(this);
-    };
+        textarea.onfocus = function(event) {
+            movim_textarea_autoheight(this);
+        };
+    }
 
+    /*
     document.querySelector('#presence_widget #tab').onclick = function(event) {
         movim_toggle_class('#presence_widget', 'unfolded');
     };
 
     document.querySelector('#presence_widget #list .tab').onclick = function(event) {
         movim_toggle_class('#presence_widget', 'unfolded');
-    };
+    };*/
 }
 
 MovimWebsocket.attach(function()

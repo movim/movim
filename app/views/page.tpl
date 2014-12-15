@@ -87,7 +87,7 @@
         </noscript>
         <div id="snackbar" class="snackbar"></div>
         <?php $this->widget('Dialog');?>
-
+        <?php $this->widget('Notification');?>
         <?php $this->content();?>
 
         <!--
@@ -101,7 +101,6 @@
 
         <!--
         <div id="content">
-            <?php $this->widget('Notification');?>
             <?php //$this->widget('Ack');?>
             <?php //$this->content();?>
           
