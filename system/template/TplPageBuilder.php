@@ -72,7 +72,7 @@ class TplPageBuilder
      */
     function build($template)
     {
-        if (ENVIRONMENT === 'production') ob_clean();
+        //if (ENVIRONMENT === 'production') ob_clean();
         ob_start();
 
         require($this->viewsPath($template));
@@ -158,7 +158,7 @@ class TplPageBuilder
      */
     function addCss($file)
     {
-        $this->css[] = $this->linkFile($file, true);
+        $this->css[] = $this->linkFile('css/' . $file, true);
     }
 
     function scripts()

@@ -1,23 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Menu.php
- * This file is part of Movim.
- *
- * @brief General Menu
- *
- * @author Jaussoin Timothée <edhelas_at_movim_dot_com>
- *
- * @version 1.0
- * @date 1 december 2014
- *
- * Copyright (C)2014 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 class Menu extends WidgetCommon
 {
     private $_paging = 15;
@@ -27,7 +9,7 @@ class Menu extends WidgetCommon
         $this->registerEvent('post', 'onStream');
         $this->registerEvent('stream', 'onStream');
         
-        $this->addcss('menu.css');
+        //$this->addcss('menu.css');
         $this->addjs('menu.js');
     }
 

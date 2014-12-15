@@ -22,7 +22,7 @@ class Post extends WidgetCommon
 {
     function load()
     {
-        $this->addcss('post.css');
+        //$this->addcss('post.css');
     }
 
     function ajaxGetPost($id)

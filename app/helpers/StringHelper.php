@@ -266,3 +266,39 @@ function colorize($string, $color) {
 
     return "\033[".$colors[$color]."m".$string."\033[0m";
 }
+
+
+/**
+ * Return a color generated from the string
+ * @param string
+ * @return string
+ */
+function stringToColor($string) {
+    $colors = array(
+        0 => 'red',
+        1 => 'purple',
+        2 => 'indigo',
+        3 => 'blue',
+        4 => 'green',
+        5 => 'orange',
+        6 => 'yellow',
+        7 => 'brown');
+        
+    $s = base_convert(sha1($string), 16, 8);
+    
+    if(isset($s[5])) {
+        return $colors[(int) $s[5]];
+    } else {
+        return 'orange';
+    }
+}
+
+/**
+ * Return the first letter of a string
+ * @param string
+ * @return string
+ */
+function firstLetterCapitalize($string) {
+    return strtoupper(substr($string, 0, 1));
+}
+

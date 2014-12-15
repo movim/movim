@@ -41,3 +41,27 @@ function movim_delete(id)
     if(target)
         target.parentNode.removeChild(target);
 }
+
+var MovimTpl = {
+    init : function() {
+        if(document.getElementById('back') != null)
+            document.getElementById('back').style.display = 'none';
+    },
+    showPanel : function() {
+        movim_add_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('back').style.display = '';
+    },
+    hidePanel : function() {
+        movim_remove_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
+        document.getElementById('menu').style.display = '';
+        document.getElementById('back').style.display = 'none';
+    },
+    showMenu : function() {
+        movim_add_class('body > nav', 'active');
+    }
+}
+
+movim_add_onload(function() {
+    MovimTpl.init();
+});

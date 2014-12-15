@@ -22,7 +22,7 @@ class Tabs extends WidgetBase
 {
     function load()
     {
-        $this->addcss('tabs.css');
+        //$this->addcss('tabs.css');
         $this->addjs('tabs.js');
     }
 }
