@@ -1,6 +1,9 @@
 function removeDiff(id, html, id2) {
     target = document.getElementById(id);
+    
     if(target) {
+        target.innerHTML = html;
+        /*
         target.insertAdjacentHTML('beforeend', html);
 
         var nodes = target.childNodes;
@@ -14,6 +17,12 @@ function removeDiff(id, html, id2) {
                 if(n.parentNode) n.parentNode.removeChild(n);
                 },
                 6000);
-        }
+        }*/
     }
+    
+    setTimeout(function() {
+        target = document.getElementById(id);
+        target.innerHTML = '';
+        },
+        3000);
 }

@@ -5,6 +5,7 @@
 <?php //$this->widget('VisioExt');?>
 
 <nav class="color dark">
+    <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
 </nav>
 

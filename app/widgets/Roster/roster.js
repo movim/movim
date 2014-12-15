@@ -2,11 +2,26 @@
     var app = angular.module("roster", []);
 
     /* Controller for Rostermenu */
-    app.controller("RosterMenuController", function(){
+    app.controller("RosterMenuController", function($scope){
+        $scope.lsJid = localStorage.getItem("username").replace("@", "at");
+        $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
+        $scope.lsOfflineShown = "offlineShown" in $scope.lsRoster ? $scope.lsRoster.offlineShown : false;
+        
         this.checkoutAddJid = function(event){
             if(event.key == "Enter")
                 Roster_ajaxSearchContact(event.target.value);
         };
+        
+        this.showHideOffline = function() {
+            if(!$scope.lsOfflineShown){
+                document.querySelector('ul#rosterlist').className = 'offlineshown';
+                $scope.lsOfflineShown = true;
+            }
+            else{
+                document.querySelector('ul#rosterlist').className = '';
+                $scope.lsOfflineShown = false;
+            }
+        }
     });
 
     /* Controller for Rosterlist */
@@ -202,15 +217,14 @@
         };
 
         this.offlineIsShown = function(){
-            if($scope.lsGroupState.rosterShow_offline)
+            if("offlineShown" in $scope.lsRoster && $scope.lsRoster.offlineShown)
                 return "offlineshown";
             else
                 return "";
         };
 
         this.getContactTitle = function(c){
-            console.log(c);
-            title = c.rosterview.name + " - " + c.jid;
+            title = c.rosterview.name.toLowerCase() + " - " + c.jid;
             if(c.status) title += " - " + c.status;
             return title;
         };
@@ -253,6 +267,7 @@ window.onunload = window.onbeforeunload = function(e){
     // Move this to disconnection moment ?? 
     // Keep group states in jid_Roster.groupStates 
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
+    angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
 };
 
@@ -307,40 +322,15 @@ var ressourceCompare = function(a, b) {
 };
 /* Presence + alphabetical comparison */
 var jidAvalCompare = function(a, b) {
-      
-if(a.ajid=="christine.ho@etu.univ-nantes.fr"){
-    console.log("jidAvalCompare");
-    console.log(a.aval);
-    console.log(b.ajid);
-    console.log(b.aval);
-}
     n = a.aval - b.aval;
     if(n == 0){
         n = a.atruename.localeCompare(b.atruename);
-if(a.ajid == "christine.ho@etu.univ-nantes.fr"){
-    console.log("name a "+a.atruename);
-    console.log("name b "+b.atruename);
-}
     }
-    
-    if(a.ajid=="christine.ho@etu.univ-nantes.fr")
-    console.log(n ? n < 0 ? -1 : 1 : 0);
     return n ? n < 0 ? -1 : 1 : 0;
 };
 
 
 /* === Old functions still in use === */
-function showHideOffline() {
-    if(!localStorage.getObject("rosterShow_offline")){
-        document.querySelector('ul#rosterlist').className = 'offlineshown';
-        localStorage.setObject("rosterShow_offline", true);
-    }
-    else{
-        document.querySelector('ul#rosterlist').className = '';
-        localStorage.setObject("rosterShow_offline", false);
-    }
-}
-
 MovimWebsocket.attach(function(){
     Roster_ajaxGetRoster();
 });
@@ -367,7 +357,7 @@ movim_add_onload(function(){
         }
 
         // We clear the old search
-        var selector_clear = '#rosterlist div > li';
+        var selector_clear = '#rosterlist div > li:not(.subheader)';
         var li = document.querySelectorAll(selector_clear);
 
         for(i = 0; i < li.length; i++) {
@@ -375,7 +365,7 @@ movim_add_onload(function(){
         }
 
         // We select the interesting li
-        var selector = '#rosterlist div > li[title*=\'' + search.value + '\']';
+        var selector = '#rosterlist div > li[title*="' + search.value.toLowerCase() + '"]:not(.subheader)';
         var li = document.querySelectorAll(selector);
 
         for(i = 0; i < li.length; i++) {
