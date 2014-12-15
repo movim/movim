@@ -2,7 +2,7 @@
     <ul class="active">
         <li class="subheader">Status **Fixme**</li>
         <li>
-            <span class="icon"><i class="md md-thumbs-up-down"></i></span>
+            <span class="icon"><i class="md md-mode-edit"></i></span>
             <form>
                 <div>
                     <textarea 
@@ -11,6 +11,7 @@
                         placeholder="{$c->__('status.here')}"
                         onload="movim_textarea_autoheight(this);"
                         onkeyup="movim_textarea_autoheight(this);">{if="isset($p)"}{$p->status}{/if}</textarea>
+                    <label>{$c->__('status.here')}</label>
                 </div>
             </form>        
         </li>

@@ -1,4 +1,3 @@
-
 {if="isset($attachements.pictures)"}
     <header
         class="big"
@@ -6,7 +5,6 @@
             background-image: url('{$attachements['pictures'][0]['href']}');">
     </header>
 {/if}
-
 
 <article>
     <header>
@@ -30,7 +28,7 @@
             {if="isset($attachements.links)"}
                 {loop="$attachements.links"}
                     <li>
-                        <span class="icon"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
+                        <span class="icon small"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
                         <a href="{$value.href}" class="alternate" target="_blank">
                             <span>{$value.href}</span>
                         </a>

@@ -94,11 +94,11 @@
     height: 100%;
 }
 
-#roster ul#rosterlist > div > li >ul.contact > li:first-child:not(.offline):not(.server_error) {
+#roster ul#rosterlist > div > li > ul.contact > li:first-child:not(.offline):not(.server_error) {
     display: list-item;
 }
 
-#roster ul#rosterlist.offlineshown > div.groupshown > li {
+#roster ul#rosterlist.offlineshown > div.groupshown > li > ul.contact > li {
     display: list-item;
 }
 /*

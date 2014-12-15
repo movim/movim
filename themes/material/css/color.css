@@ -28,9 +28,9 @@
 .bubble.color.blue  , .icon.color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
 .bubble.color.green , .icon.color.green    { color: white; background-color: #689F38; border-color: #689F38 }
 .bubble.color.orange, .icon.color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
-.bubble.color.yellow, .icon.color.yellow   { color: white; background-color: #FFEB3B; border-color: #FFEB3B }
+.bubble.color.yellow, .icon.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
 .bubble.color.brown , .icon.color.brown    { color: white; background-color: #795548; border-color: #795548 }
-.bubble.color.brown , .icon.color.brown    { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
+.bubble.color.gray  , .icon.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
 
 label.red   , .icon.red      { color: #F44336; }
 label.purple, .icon.purple   { color: #9C27B0; }
