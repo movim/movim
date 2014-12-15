@@ -1,23 +1,28 @@
 <div id="menu_refresh"></div>
 {if="$items"}
-    <ul>
+    <ul class="thick active divided">
         {loop="$items"}
-            <li class="padded" data-id="{$value->nodeid}">
-                <span class="tag">{$value->node}</span>
+            <li class="condensed" data-id="{$value->nodeid}">
                 {if="current(explode('.', $value->jid)) == 'nsfw'"}
-                    <span class="tag">NSFW</span>
+                    <span class="icon bubble color red">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </span>
+                {else}
+                    <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
                 {/if}
-                <h1>{$value->title}</h1>
-                <span class="date">{$value->published|strtotime|prepareDate}</span>
+
+                <span>{$value->title}</span><span class="info">{$value->published|strtotime|prepareDate}</span>
+                <p class="wrap">{$value->node}</p>
             </li>
         {/loop}
 
-        <li class="older" onclick="{$history} this.parentNode.removeChild(this);">
-            <i class="fa fa-history"></i> {$c->__('post.older')}
+        <li onclick="{$history} this.parentNode.removeChild(this);">
+            <span class="icon"><i class="md md-history"></i></span>
+            {$c->__('post.older')}
         </li>
     </ul>
 {elseif="$page == 0"}
-    <div class="placeholder padded">
+    <div>
         <h1>{$c->__('menu.empty_title')}</h1>
         <p>{$c->__('menu.empty')}</p>
     </div>

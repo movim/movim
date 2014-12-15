@@ -1,49 +1,55 @@
+
+{if="isset($attachements.pictures)"}
+    <header
+        class="big"
+        style="
+            background-image: url('{$attachements['pictures'][0]['href']}');">
+    </header>
+{/if}
+
+
 <article>
-    {if="isset($attachements.pictures)"}
-        <div
-            class="picture"
-            style="background-image: url('{$attachements['pictures'][0]['href']}');"
-        >
-        </div>
-    {/if}
-    <header class="paddedbottom">
-        <h1>{$post->title}</h1>
-        <span>
-            <i class="fa fa-sitemap"></i>
-            <a href="{$c->route('node', array($post->jid, $post->node))}">
-                {$post->node}
-            </a>
-        </span>
-         - 
-        <span class="date">
-            <i class="fa fa-clock-o"></i>
-            {$post->published|strtotime|prepareDate}
-        </span>
+    <header>
+        <ul class="thick">
+            <li class="condensed">
+                <a href="{$c->route('node', array($post->jid, $post->node))}">
+                    <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
+                </a>
+                <span>{$post->title}</span>
+                <p>{$post->published|strtotime|prepareDate}</p>
+            </li>
+        </ul>
     </header>
 
-    <section class="content padded">
+    <section>
         {$post->contentcleaned}
     </section>
 
     <footer>
-        <div class="enclosures">
+        <ul class="thin">
             {if="isset($attachements.links)"}
                 {loop="$attachements.links"}
-                    <a href="{$value.href}" class="alternate" target="_blank">
-                        <img src="http://g.etfv.co/{$value.href}"/>{$value.href}
-                    </a>
+                    <li>
+                        <span class="icon"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
+                        <a href="{$value.href}" class="alternate" target="_blank">
+                            <span>{$value.href}</span>
+                        </a>
+                    </li>
                 {/loop}
             {/if}
             {if="isset($attachements.files)"}
                 {loop="$attachements.files"}
-                    <a
-                        href="{$value.href}"
-                        class="enclosure"
-                        type="{$value.type}"
-                        target="_blank">{$value.href}
-                    </a>
+                    <li>
+                        <a
+                            href="{$value.href}"
+                            class="enclosure"
+                            type="{$value.type}"
+                            target="_blank">
+                            <span>{$value.href}</span>
+                        </a>
+                    </li>
                 {/loop}
             {/if}
-        </div>
+        </ul>
     </footer>
 </article>

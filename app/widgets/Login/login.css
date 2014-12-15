@@ -1,4 +1,30 @@
-body {
+body main {
+    background-color: #32434D;
+}
+
+#loginpage {
+    background-color: white;
+    border-radius: 0.25rem;
+    /*animation: 200s infinite colorful;
+    -webkit-animation: 200s infinite colorful;
+    
+    background-color: #32434D;*/
+    max-width: 50rem;
+    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
+    margin-top: 3%;
+}
+
+#loginpage form {
+    margin: 2rem;
+}
+
+ul.admin {
+    color: white;
+    max-width: 50rem;
+    text-align: center;
+}
+
+/*body {
     width: 100%;
     margin: 0 auto;
     max-width: 28em;
@@ -69,12 +95,14 @@ body {
 
 #loginpage form > .element:not(:first-child) {
     padding-top: 0.5em;
-}
+}*/
 /*
 #loginpage form .element.login {
     min-height: 0em;
 }
 */
+
+/*
 #loginpage form .element input:not([type=submit]) {
     margin: 0;
     border: 0;
@@ -119,8 +147,9 @@ body {
 #loginpage #loginhelp li#jabber { background-image: url(img/jabber.png); }
 #loginpage #loginhelp li#gmail { background-image: url(img/envelope.png); }
 #loginpage #loginhelp li#facebook { background-image: url(img/facebook.png); }
-
+*/
 /* Sessions */
+/*
 #loginpage #sessions {
     display: none;
 }
@@ -164,10 +193,13 @@ body {
     display: inline-block;
     overflow: hidden;
 }
-
+*/
 /* States */
+
+#loginpage #sessions,
 #loginpage.choose #loginhelp,
-#loginpage.choose form .element {
+#loginpage.choose form div,
+#loginpage.choose form input {
     display: none;
 }
 
@@ -188,7 +220,7 @@ body {
 footer {
     display: none;
 }
-
+/*
 @media screen and (max-width: 1024px) {
     #loginpage {
         background-size: 80% auto;
@@ -199,4 +231,4 @@ footer {
         display: none;
     }
 }
-
+*/

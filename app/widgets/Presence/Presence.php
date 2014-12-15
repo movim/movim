@@ -31,8 +31,8 @@ class Presence extends WidgetBase
     
     function load()
     {
-        $this->addcss('presence.css');
-        $this->addjs('presence.js');
+        //$this->addcss('presence.css');
+        //$this->addjs('presence.js');
         $this->registerEvent('mypresence', 'onMyPresence');
     }
     
@@ -138,6 +138,11 @@ class Presence extends WidgetBase
         $b->setTo($session->user.'@'.$session->host)
           ->request();
     }
+
+    function ajaxOpenDialog()
+    {
+        Dialog::fill($this->preparePresence());
+    }
     
     function preparePresence()
     {
@@ -165,6 +170,7 @@ class Presence extends WidgetBase
         $presencetpl->assign('callaway',    $this->call('ajaxSetPresence', "'away'"));
         $presencetpl->assign('calldnd',     $this->call('ajaxSetPresence', "'dnd'"));
         $presencetpl->assign('callxa',      $this->call('ajaxSetPresence', "'xa'"));
+
         $presencetpl->assign('calllogout',  $this->call('ajaxLogout'));
         $html = $presencetpl->draw('_presence_list', true);
 
@@ -173,6 +179,15 @@ class Presence extends WidgetBase
 
     function display()
     {
+        $cd = new \Modl\ContactDAO();
+        $pd = new \Modl\PresenceDAO();
+        
+        $session = \Sessionx::start();
+        $presence = $pd->getPresence($this->user->getLogin(), $session->ressource);
+        
+        $this->view->assign('me', $cd->get());
+        $this->view->assign('presence', $presence);
+        $this->view->assign('dialog',      $this->call('ajaxOpenDialog'));
     }
 }
 

@@ -1,0 +1,509 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+input, select, option,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    list-style-type: none;
+}
+
+html {
+    font-size: 8px;
+}
+
+body {
+    font-family: 'OpenSans', sans-serif;
+    background-color: black;
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+body > * {
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+body > script {
+    display: none;
+}
+
+a, a.link, a.visited {
+    text-decoration: none;
+}
+
+/* Titles */
+
+h1 { /* Display 1 */
+    font-size: 4.25rem;
+    line-height: 7rem;
+}
+
+h2 { /* Headline */
+    font-size: 3rem;
+    line-height: 7rem;
+}
+
+h3 { /* Title */
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h4, input { /* Headline */
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+.snackbar, /* Body 1 */
+.toast {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+label, span.info { /* Caption */
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+/* Navigation bar */
+
+body > nav {
+    background-color: #fefefe;
+    width: 7rem;
+    max-width: 95%;
+    transition: width 0.3s ease;
+    z-index: 2;
+    position: relative;
+}
+
+body > nav:before {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent);
+    pointer-events:none;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1rem;
+    height: 100%;
+}
+
+body > nav header {
+    padding: 0.5rem;
+}
+
+body > nav.active {
+    width: 45rem;
+    box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
+}
+
+body > div.dialog:not(:empty) ~ main,
+body > div.dialog:not(:empty) ~ nav,
+body > nav.active + main {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+body > nav li { /* Little hack for the navbar */
+    overflow: hidden;
+}
+
+@media screen and (min-width: 1024px) {
+    body > nav:hover {
+        width: 45rem;
+        box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
+    }
+
+    body > nav:hover + main {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+body > nav.active:before,
+body > nav:hover:before {
+    display: none;
+}
+
+/* Main */
+
+main {
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: white;
+    transition: opacity 0.2s ease;
+}
+
+nav + main {
+    width: calc(100% - 7rem);
+}
+
+main > header {
+    position: relative;
+    min-height: 7rem;
+    padding-left: 9rem;
+    overflow: hidden;
+    color: white;
+    z-index: 2;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+main > header ul {
+    float: right;
+}
+
+main > header ul li {
+    float: left;
+    height: 7rem;
+    line-height: 7rem;
+    width: 7rem;
+    padding: 0;
+    font-size: 4rem;
+}
+
+main section {
+    height: 100%;
+    position: relative;
+}
+
+main header + section {
+    height: calc(100% - 7rem);
+}
+
+main section > div {
+    overflow-y: auto;
+    display: block;
+    float: left;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+main section > div:not(:last-child) {
+    border-right: 1px solid gray;
+}
+
+main section > div > * {
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+/* Two blocks*/
+main section > div:first-child:nth-last-child(2) {
+    width: 25%;
+}
+main section > div:first-child:nth-last-child(2) ~ div {
+    width: 75%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: right 0.2s ease;
+}
+
+@media screen and (max-width: 1024px) {
+    /* Two blocks*/
+    main section > div:first-child:nth-last-child(2) {
+        width: 100%;
+    }
+    main section > div:first-child:nth-last-child(2) ~ div {
+        background-color: white;
+        width: 100%;
+        right: -100%;
+    }
+
+    main section > div:first-child:nth-last-child(2) ~ div.enabled {
+        right: 0;
+    }
+
+    main,
+    nav + main {
+        width: 100%;
+    }
+
+    body > nav {
+        width: 0;
+    }
+}
+
+main footer {
+    font-size: 2rem;
+}
+
+/* Icon */
+span.icon {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    font-size: 3rem;
+    line-height: 5rem;
+    top: 50%;
+    left: 2rem;
+    text-align: center;
+    margin-top: -2.5rem;
+    background-size: cover;
+}
+
+li.oppose span.icon {
+    left: auto;
+    right: 2rem;
+}
+
+span.icon.bubble {
+    border-radius: 5rem;
+    overflow: hidden;
+    color: white;
+    font-size: 0;
+}
+
+span.icon.bubble:first-letter,
+span.icon.bubble i {
+    font-size: 3rem;
+    line-height: 5rem;
+}
+
+span.icon.small {
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    margin-top: -1.5rem;
+}
+
+span.icon.large {
+    width: 7rem;
+    height: 7rem;
+    line-height: 7rem;
+    margin-top: -3.5rem;
+}
+
+span.icon.small.bubble:first-letter,
+span.icon.small.bubble i {
+    font-size: 2rem;
+    line-height: 0;
+    vertical-align: text-top;
+}
+
+/* Card */
+
+.card {
+    padding: 2rem;
+}
+
+.card > * {
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+@media screen and (max-width: 1024px) {
+    .card {
+        padding: 1rem;
+    }
+}
+
+/* Header */
+
+header .icon:hover {
+    cursor: pointer;
+}
+
+header.big {
+    background-size: cover, cover;
+    background-position: center center;
+    height: 20rem;
+    max-height: 20rem;
+    width: 100%;
+    max-width: 100%;
+    color: white;
+    position: relative;
+}
+
+header.big p {
+    color: white;
+}
+/*
+@media screen and (max-width: 1024px) {
+    header.big {
+        min-height: 25rem;
+    }
+}
+*/
+/* Dialog */
+
+.dialog:empty {
+    display: none;
+}
+
+.dialog {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    background-color: white;
+    height: 70%;
+    max-height: 70%;
+    width: 40rem;
+    margin-left: -20rem;
+    
+    box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
+    border-radius: 0.25rem;
+    z-index: 3;
+    box-sizing: border-box;
+    
+    padding-top: 3rem;
+}
+
+.dialog > section {
+    margin: 0 3rem;
+    height: calc(100% - 8rem);
+    overflow-y: hidden;
+    position: relative;
+}
+
+.dialog > section:hover {
+    overflow-y: auto;
+}
+
+.dialog > section > ul li {
+    padding-left: 7rem;
+}
+.dialog > section > ul li.subheader {
+    padding-left: 0;
+}
+
+.dialog > section > ul li .icon {
+    left: 0;
+}
+
+.dialog .actions {
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    bottom: 0;
+    padding: 0.5rem 2rem;
+    position: absolute;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+@media screen and (max-width: 600px) {
+    .dialog {
+        width: 90%;
+        height: 80%;
+        min-height: 0;
+        min-width: 0;
+        max-height: 90%;
+        margin-left: -45%;
+        margin-top: 0;
+        top: 10%;
+    }
+}
+
+/* Snackbar - Toast */
+
+.snackbar,
+.toast {
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23), 0px 3px 10px rgba(0, 0, 0, 0.16);
+    position: fixed;
+    z-index: 4;
+    min-height: 6rem;
+    max-height: 11rem;
+    height: auto;
+    color: white;
+    box-sizing: border-box;
+    padding: 2rem 3rem;
+    width: 40rem;
+    pointer-events: none;
+    transition: opacity 0.2s ease, bottom 0.4s ease;
+}
+
+.snackbar {
+    background-color: #333333;
+    bottom: 3rem;
+    left: 3rem;
+    border-radius: 0.25rem;
+    opacity: 1;
+}
+
+.toast {
+    background-color: #323232;
+    border-radius: 10rem;
+    left: 50%;
+    bottom: 3rem;
+    margin-left: -20rem;
+}
+
+.snackbar:empty,
+.toast:empty {
+    opacity: 0;
+}
+
+@media screen and (max-width: 34rem) {
+    .snackbar {
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+    }
+
+    .toast {
+        max-width: 90%;
+        margin-left: -45%;
+    }
+}
+
+/* Padded */
+
+@media screen and (max-width: 800px) {
+    .padded {
+        padding-left: 2rem;
+        box-sizing: border-box;
+    }
+}
+
+/* Divided */
+
+*.divided > *:not(:last-child) {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+/* Display/hide */
+
+.on_mobile {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+
+.on_mobile {
+    display: inherit;
+}
+
+.on_desktop {
+    display: none;
+}
+
+}
