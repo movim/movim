@@ -38,15 +38,11 @@
                             ng-click="rosterCtrl.postJingleAction(contact)">
                         </div>
 
-                        <a href="{{contact.rosterview.friendpage}}">
-                            {{contact.rosterview.name}}
-                        </a>
-                            <p class="wrap">
-                                <span ng-if="contact.status != ''">{{contact.status}} -</span>
-                                 {{contact.ressource}}
-                            </p>
-
-                        </a>
+                        {{contact.rosterview.name}}
+                        <p class="wrap">
+                            <span ng-if="contact.status != ''">{{contact.status}} -</span>
+                             {{contact.ressource}}
+                        </p>
                     </li>
                 </ul>
             </li>

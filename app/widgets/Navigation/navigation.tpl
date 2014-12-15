@@ -27,8 +27,7 @@
             <span class="icon">
                 <i class="md md-help"></i>
             </span>
-                <span>{$c->__('page.help')}</span>
-
+            <span>{$c->__('page.help')}</span>
         </li>
     </a>
     <a class="classic" href="{$c->route('conf')}">
@@ -36,8 +35,7 @@
             <span class="icon">
                 <i class="md md-settings"></i>
             </span>
-                <span>{$c->__('page.configuration')}</span>
-            </a>
+            <span>{$c->__('page.configuration')}</span>
         </li>
     </a>
 </ul>

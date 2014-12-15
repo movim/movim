@@ -13,7 +13,7 @@
     <section>
         <?php $this->widget('Roster');?>
         <div>
-            <?php $this->widget('Post');?>
+            <?php $this->widget('Contact');?>
         </div>
     </section>
 </main>
