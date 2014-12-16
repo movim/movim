@@ -49,13 +49,13 @@ var MovimTpl = {
     },
     showPanel : function() {
         movim_add_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
-        document.getElementById('menu').style.display = 'none';
-        document.getElementById('back').style.display = '';
     },
     hidePanel : function() {
-        movim_remove_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
-        document.getElementById('menu').style.display = '';
-        document.getElementById('back').style.display = 'none';
+        Header_ajaxReset(CURRENT_PAGE);
+        var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
+        document.querySelector(selector + ' div').innerHTML = '';
+
+        movim_remove_class(selector, 'enabled');
     },
     showMenu : function() {
         movim_add_class('body > nav', 'active');

@@ -299,6 +299,6 @@ function stringToColor($string) {
  * @return string
  */
 function firstLetterCapitalize($string) {
-    return strtoupper(substr($string, 0, 1));
+    return ucfirst(strtolower(substr($string, 0, 2)));
 }
 

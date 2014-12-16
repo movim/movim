@@ -171,6 +171,8 @@ main > header {
     color: white;
     z-index: 2;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 main > header ul {
@@ -180,6 +182,7 @@ main > header ul {
 main > header ul li {
     float: left;
     height: 7rem;
+    min-width: 0;
     line-height: 7rem;
     width: 7rem;
     padding: 0;
@@ -198,6 +201,7 @@ main header + section {
 main section > div {
     overflow-y: auto;
     display: block;
+    position: relative;
     float: left;
     height: 100%;
     width: 100%;
@@ -282,9 +286,9 @@ span.icon.bubble {
     overflow: hidden;
     color: white;
     font-size: 0;
+    font-size: 2.5rem;
 }
 
-span.icon.bubble:first-letter,
 span.icon.bubble i {
     font-size: 3rem;
     line-height: 5rem;
@@ -309,6 +313,14 @@ span.icon.small.bubble i {
     font-size: 2rem;
     line-height: 0;
     vertical-align: text-top;
+}
+
+main > header ul li span.icon {
+    left: 1rem;
+}
+
+main ul li .control > i {
+    margin-left: 0;
 }
 
 /* Card */
@@ -337,8 +349,8 @@ header .icon:hover {
 header.big {
     background-size: cover, cover;
     background-position: center center;
-    height: 20rem;
-    max-height: 20rem;
+    height: 25rem;
+    max-height: 25rem;
     width: 100%;
     max-width: 100%;
     color: white;
@@ -389,14 +401,17 @@ header.big p {
 .dialog > section:hover {
 }
 
-.dialog > section > ul li {
+.dialog > section ul li {
+    padding-right: 0;
     padding-left: 7rem;
 }
-.dialog > section > ul li.subheader {
+
+.dialog > section ul li.subheader,
+.dialog > section ul.simple li {
     padding-left: 0;
 }
 
-.dialog > section > ul li .icon {
+.dialog > section ul li .icon {
     left: 1rem;
 }
 

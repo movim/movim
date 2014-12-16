@@ -383,7 +383,6 @@ var Roster = {
         while(i < items.length -1)
         {
             items[i].onclick = function(e) {
-                MovimTpl.showPanel();
                 Contact_ajaxGetContact(this.id);
                 Roster.reset(items);
                 movim_add_class(this, 'active');
@@ -396,6 +395,10 @@ var Roster = {
         for(i = 0; i < list.length; i++) {
             movim_remove_class(list[i], 'active');
         }
+    },
+
+    setFound : function(jid) {
+        document.querySelector('input[name=searchjid]').value = jid;
     }
 }
 
