@@ -12,15 +12,14 @@
 
 class TplPageBuilder
 {
-    //    internal variables
     private $theme = 'movim';
+    private $_view = '';
     private $title = '';
     private $menu = array();
     private $content = '';
     private $user;
     private $css = array();
     private $scripts = array();
-    private $polling = true;
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
@@ -70,8 +69,10 @@ class TplPageBuilder
     /**
      * Actually generates the page from templates.
      */
-    function build($template)
+    function build($view)
     {
+        $this->_view = $view;
+        $template = $this->_view.'.tpl';
         //if (ENVIRONMENT === 'production') ob_clean();
         ob_start();
 
@@ -199,15 +200,6 @@ class TplPageBuilder
         $this->content .= $data;
     }
 
-    function addContent($data, $append = true)
-    {
-        if($append) {
-            $this->content .= $data;
-        } else {
-            $this->content = $data . $this->content;
-        }
-    }
-
     function content()
     {
         echo $this->content;
@@ -216,9 +208,11 @@ class TplPageBuilder
     /**
      * Loads up a widget and prints it at the current place.
      */
-    function widget($name, $register = true)
+    function widget($name)
     {
-        $widgets = WidgetWrapper::getInstance($register);
+        $widgets = WidgetWrapper::getInstance();
+        $widgets->setView($this->_view);
+
         echo $widgets->runWidget($name, 'build');
     }
     

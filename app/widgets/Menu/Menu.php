@@ -8,8 +8,7 @@ class Menu extends WidgetCommon
     {
         $this->registerEvent('post', 'onStream');
         $this->registerEvent('stream', 'onStream');
-        
-        //$this->addcss('menu.css');
+
         $this->addjs('menu.js');
     }
 

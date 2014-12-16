@@ -28,14 +28,17 @@
                             />
                         </span>
                         <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" ></div>
-                        <div ng-if="contact.rosterview.type == 'handheld'" class="infoicon mobile"></div>
-                        <div ng-if="contact.rosterview.type == 'web'" class="infoicon web"></div>
-                        <div ng-if="contact.rosterview.type == 'bot'" class="infoicon bot"></div>
-                        <div ng-if="contact.rosterview.tune" class="infoicon tune"></div>
                         <div
                             ng-if="contact.rosterview.jingle"
                             class="infoicon jingle"
                             ng-click="rosterCtrl.postJingleAction(contact)">
+                        </div>
+
+                        <div class="control">
+                            <i ng-if="contact.rosterview.type == 'handheld'" class="md md-smartphone"></i>
+                            <i ng-if="contact.rosterview.type == 'web'" class="md md-language"></i>
+                            <i ng-if="contact.rosterview.type == 'bot'" class="md md-memory"></i>
+                            <i ng-if="contact.rosterview.tune" class="md md-play-arrow"></i>
                         </div>
 
                         {{contact.rosterview.name}}
