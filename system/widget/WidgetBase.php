@@ -28,15 +28,19 @@ class WidgetBase
     protected $name;
     protected $pure;    // To render the widget without the container
     protected $translations = array(); // Set translations in the controller
+    protected $_view;
     public $events;
 
     /**
      * Initialises Widget stuff.
      */
-    function __construct($light = false)
+    function __construct($light = false, $view = null)
     {
+        if($view != null) $this->_view = $view;
+
         $this->load();
-        
+        $this->name = get_class($this);
+
         // If light loading enabled, we stop here
         if($light)
             return;
@@ -78,12 +82,10 @@ class WidgetBase
         $this->view->objectConfigure($config);
 
         $this->view->assign('c', $this);
-                
-        $this->name = get_class($this);
         
         $this->pure = false;
     }
-    
+
     function t() {
         return call_user_func_array('t',func_get_args());
     }

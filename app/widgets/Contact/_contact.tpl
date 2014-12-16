@@ -8,7 +8,7 @@
     <ul>
         {if="$contact->delay != null"}
         <li class="condensed block">
-            <span class="icon bubble color brown"><i class="md md-restore"></i></span>
+            <span class="icon brown"><i class="md md-restore"></i></span>
             <span>{$c->__('last.title')}</span>
             <p>{$contact->delay}</p>
         </li>
@@ -16,7 +16,7 @@
 
         {if="$contact->fn != null"}
         <li class="condensed block">
-            <span class="icon bubble color green">{$contact->fn|firstLetterCapitalize}</span>
+            <span class="icon gray">{$contact->fn|firstLetterCapitalize}</span>
             <span>{$c->__('general.name')}</span>
             <p>{$contact->fn}</p>
         </li>
@@ -24,7 +24,7 @@
         
         {if="$contact->nickname != null"}
         <li class="condensed block">
-            <span class="icon bubble color indigo">{$contact->nickname|firstLetterCapitalize}</span>
+            <span class="icon gray">{$contact->nickname|firstLetterCapitalize}</span>
             <span>{$c->__('general.nickname')}</span>
             <p>{$contact->nickname}</p>
         </li>
@@ -32,7 +32,7 @@
         
         {if="strtotime($contact->date) != 0"}
         <li class="condensed block">
-            <span class="icon bubble color red"><i class="md md-cake"></i></span>
+            <span class="icon gray"><i class="md md-cake"></i></span>
             <span>{$c->__('general.date_of_birth')}</span>
             <p>{$contact->date|strtotime|prepareDate:false}</p>
         </li>
@@ -40,7 +40,7 @@
 
         {if="$contact->url != null"}
         <li class="condensed block">
-            <span class="icon bubble color blue"><i class="md md-link"></i></span>
+            <span class="icon gray"><i class="md md-link"></i></span>
             <span>{$c->__('general.website')}</span>
             <p class="wrap"><a href="{$contact->url}" target="_blank">{$contact->url}</a></p>
         </li>
@@ -48,39 +48,39 @@
 
         {if="$contact->email != null"}
         <li class="condensed block">
-            <span class="icon bubble color orange"><i class="md md-mail"></i></span>
+            <span class="icon gray"><i class="md md-mail"></i></span>
             <span>{$c->__('general.email')}</span>
             <p><img src="{$contact->getPhoto('email')}"/></p>
         </li>
         {/if}
 
-        {if="$contact->marital != null && $contact->marital != 'none'"}
+        {if="$contact->getMarital() != null"}
         <li class="condensed block">
-            <span class="icon bubble color green"><i class="md md-people"></i></span>
+            <span class="icon gray"><i class="md md-people"></i></span>
             <span>{$c->__('general.marital')}</span>
-            <p>{$marital[$contact->marital]}</p>
+            <p>{$contact->getMarital()}</p>
         </li>
         {/if}
 
-        {if="$contact->gender != null && $contact->gender != 'N'"}
+        {if="$contact->getGender() != null"}
         <li class="condensed block">
-            <span class="icon bubble color red"><i class="md md-face-unlock"></i></span>
+            <span class="icon gray"><i class="md md-face-unlock"></i></span>
             <span>{$c->__('general.gender')}</span>
-            <p>{$gender[$contact->gender]}</p>
+            <p>{$contact->getGender()}</p>
         </li>
         {/if}
 
         {if="$contactr->delay != null"}
         <li class="condensed block">
-            <span class="icon bubble color gray"><i class="md md-av-timer"></i></span>
+            <span class="icon gray"><i class="md md-av-timer"></i></span>
             <span>{$c->__('last.title')}</span>
             <p>{$contactr->delay|strtotime|prepareDate}</p>
         </li>
         {/if}
 
-        {if="$contact->description != null"}
+        {if="$contact->description != null && trim($contact->description) != ''"}
         <li class="condensed block">
-            <span class="icon bubble color indigo"><i class="md md-format-align-justify"></i></span>
+            <span class="icon gray"><i class="md md-format-align-justify"></i></span>
             <span>{$c->__('general.about')}</span>
             <p>{$contact->description}</p>
         </li>
@@ -89,7 +89,7 @@
         {if="$contact->mood != null"}
         {$moods = unserialize($contact->mood)}
         <li class="condensed block">
-            <span class="icon bubble color purple"><i class="md md-mood"></i></span>
+            <span class="icon gray"><i class="md md-mood"></i></span>
             <span>{$c->__('mood.title')}</span>
             <p>{loop="$moods"}
                 {$mood[$value]}
@@ -102,11 +102,12 @@
     <div class="clear"></div>
     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
     <ul>
+        <li class="subheader"></li>
         <li class="subheader">{$c->__('position.legend')}</li>
 
         {if="$contact->adrlocality != null"}
         <li class="condensed block">
-            <span class="icon bubble color yellow"><i class="md md-location-city"></i></span>
+            <span class="icon gray"><i class="md md-location-city"></i></span>
             <span>{$c->__('position.locality')}</span>
             <p>
                 {$contact->adrlocality}
@@ -115,7 +116,7 @@
         {/if}
         {if="$contact->adrcountry != null"}
         <li class="condensed block">
-            <span class="icon bubble color orange"><i class="md md-place"></i></span>
+            <span class="icon gray"><i class="md md-place"></i></span>
             <span>{$c->__('position.country')}</span>
             <p>
                 {$contact->adrcountry}
@@ -132,7 +133,7 @@
 
         {if="$contact->twitter != null"}
         <li class="condensed block">
-            <span class="icon bubble color blue"></span>
+            <span class="icon gray">T</span>
             <span>Twitter</span>
             <p>
                 <a
@@ -145,7 +146,7 @@
         {/if}
         {if="$contact->skype != null"}
         <li class="condensed block">
-            <span class="icon bubble color green"></span>
+            <span class="icon gray">S</span>
             <span>Skype</span>
             <p>
                 <a
@@ -158,7 +159,7 @@
         {/if}
         {if="$contact->yahoo != null"}
         <li class="condensed block">
-            <span class="icon bubble color green"></span>
+            <span class="icon gray">Y</span>
             <span>Yahoo!</span>
             <p>
                 <a
@@ -179,3 +180,7 @@
         </li>
     </ul>
 {/if}
+
+<a class="button action color red">
+    <i class="md md-chat"></i>
+</a>
