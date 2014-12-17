@@ -1,5 +1,3 @@
-<header
-    id="presence_widget"
-    class="big">
+<ul id="presence_widget" class="active oppose">
     {$presence}
-</header>
+</ul>

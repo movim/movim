@@ -1,4 +1,11 @@
 <ul class="active divided">
+    <li>
+        <div class="on_mobile control">
+            <i onclick="movim_remove_class('body > nav', 'active')" class="md md-arrow-back"></i>
+        </div>
+        <span class="icon bubble"><i class="md md-camera-roll"></i></span>
+        Movim
+    </li>
     <a class="classic" href="{$c->route('root')}">
         <li>
             <span class="icon"><i class="md md-speaker-notes"></i></span>
@@ -20,29 +27,12 @@
             <span>{$c->__('page.chats')}</span>
         </li>
     </a>
+    <!--
     <a class="classic" href="{$c->route('media')}">
         <li>
             <span class="icon"><i class="md md-photo"></i></span>
             <span class="counter"></span>
             <span>{$c->__('page.media')}</span>
         </li>
-    </a>
-</ul>
-<ul class="oppose active">
-    <a class="classic" href="{$c->route('help')}">
-        <li>
-            <span class="icon">
-                <i class="md md-help"></i>
-            </span>
-            <span>{$c->__('page.help')}</span>
-        </li>
-    </a>
-    <a class="classic" href="{$c->route('conf')}">
-        <li>
-            <span class="icon">
-                <i class="md md-settings"></i>
-            </span>
-            <span>{$c->__('page.configuration')}</span>
-        </li>
-    </a>
+    </a>-->
 </ul>
