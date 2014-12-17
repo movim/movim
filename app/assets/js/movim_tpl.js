@@ -53,7 +53,11 @@ var MovimTpl = {
     hidePanel : function() {
         Header_ajaxReset(CURRENT_PAGE);
         var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
-        document.querySelector(selector + ' div').innerHTML = '';
+        var inner = document.querySelector(selector + ' div');
+
+        // Clear the right panel
+        if(inner != null) inner.innerHTML = '';
+        else document.querySelector(selector).innerHTML = '';
 
         movim_remove_class(selector, 'enabled');
     },

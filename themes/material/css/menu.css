@@ -3,19 +3,14 @@
 body > nav > ul span.icon {
     left: 1rem;
 }
-/*
-body > nav > ul.thick > li {
-    line-height: 3rem;
+
+body > nav > ul > li:first-child {
+    height: 7rem;
+    line-height: 7rem;
 }
-*/
-body > nav:not(.active):not(:hover) > ul span.counter {
-    /*position: absolute;
-    top: calc(50% - 0.5rem);
-    right: 5rem;
-    font-size: 1.5rem;
-    font-weight: 700rem;
-    min-width: 2rem;
-    margin-top: 0;*/
+
+body > nav > ul > li:first-child div.control {
+    line-height: 7rem;
 }
 
 body > nav > ul a {
@@ -45,5 +40,6 @@ ul.oppose {
     position: absolute;
     bottom: 0;
     width: 100%;
+    min-width: 10rem;
 }
 
