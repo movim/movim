@@ -88,11 +88,11 @@ MovimWebsocket.attach(function()
         rememberSession(localStorage.username);
 
         // A fallback security
-        setTimeout("MovimWebsocket.unregister()", 15000);
+        setTimeout("MovimWebsocket.unregister()", 7000);
     }
 
     // We hide the Websocket error
-    document.querySelector('#loginpage #warning .websocket').style.display = 'none';
+    document.querySelector('#error_websocket').style.display = 'none';
 
     // We enable the form
     var inputs = document.querySelectorAll('#loginpage input[disabled]');
@@ -110,8 +110,6 @@ MovimWebsocket.attach(function()
 });
 
 movim_add_onload(function() {
-    //MovimWebsocket.unregister();
-    
     /* Dump cache variables  in localStorage */
     for ( var i = 0, len = localStorage.length; i < len; ++i ) {
         var cache = localStorage.key(i);

@@ -30,7 +30,7 @@ class Ack extends WidgetBase {
     function display()
     {
         $this->view->assign('ack', 
-                            $this->genCallAjax(
+                            $this->call(
                                 "ajaxAckRequest", 'to', 'id')
                         );
     }

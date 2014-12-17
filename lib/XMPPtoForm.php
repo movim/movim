@@ -139,8 +139,8 @@ class XMPPtoForm{
             <input 
                 id="'.$s['var'].'" 
                 name="'.$s['var'].'" 
-                xmpptype="'.$s['type'].'"
-                xmpplabel="'.$s['label'].'"
+                type="'.$s['type'].'"
+                label="'.$s['label'].'"
                 type="checkbox" '.$s->required;
             if($s->value == "true" || $s->value == "1")
                 $this->html .= ' checked';
@@ -154,8 +154,8 @@ class XMPPtoForm{
             <textarea 
                 id="'.$s["var"].'" 
                 name="'.$s["var"].'" 
-                xmpptype="'.$s['type'].'"
-                xmpplabel="'.$s['label'].'"
+                type="'.$s['type'].'"
+                label="'.$s['label'].'"
                 required="'.$s->required.'">';
                 
         foreach($s->children() as $value){
@@ -187,8 +187,8 @@ class XMPPtoForm{
         $this->html .= ' 
             type="'.$type.'" 
             title="'.$s->desc.'" 
-            xmpptype="'.$s['type'].'"
-            xmpplabel="'.$s['label'].'"
+            type="'.$s['type'].'"
+            label="'.$s['label'].'"
             '.$multiple.' '.$req.'/>';
     }
     
@@ -202,8 +202,8 @@ class XMPPtoForm{
             <label for="'.$s["var"].'">'.$s["label"].'</label>
             <div class="select">
                 <select 
-                    xmpptype="'.$s['type'].'"
-                    xmpplabel="'.$s['label'].'"
+                    type="'.$s['type'].'"
+                    label="'.$s['label'].'"
                     id="'.$s["var"].'" 
                     name="'.$s['var'].'" '.$multiple.' '.$s->required.'>';
         

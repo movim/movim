@@ -1,0 +1,56 @@
+/* Article */
+
+article {
+    padding-bottom: 2rem;
+    overflow: hidden;
+}
+
+article header {
+    position: relative;
+}
+
+article header h1 {
+    font-size: 4rem;
+    line-height: 12rem;
+}
+
+article section {
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: 500;
+    padding: 0 2rem;
+    text-align: justify;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+}
+
+article section p {
+    margin-bottom: 1rem;
+}
+
+article section content ul li {
+    line-height: 3rem;
+    padding-left: 2rem;
+    list-style-type: circle;
+    list-style-position: inside;
+    min-height: 4rem;
+}
+
+article section content strong,
+article section content b {
+    font-weight: 700;
+}
+
+article section content code,
+article section content pre {
+    font-family: monospace;
+}
+
+article section content cite,
+article section content blockquote {
+    padding-left: 4rem;
+    font-style: italic;
+}

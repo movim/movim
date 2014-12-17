@@ -234,7 +234,7 @@ class SessionxDAO extends SQL {
         return $this->run('Sessionx');
     }
 
-    function clean() {
+    /*function clean() {
         $this->_sql = '
             delete from sessionx
             where timestamp < :timestamp';
@@ -243,6 +243,18 @@ class SessionxDAO extends SQL {
             'Sessionx', 
             array(
                 'timestamp' => date(DATE_ISO8601, time() - 3600)
+            )
+        );
+
+        $this->run('Sessionx');
+    }*/
+    function clear() {
+        $this->_sql = '
+            truncate table sessionx';
+        
+        $this->prepare(
+            'Sessionx', 
+            array(
             )
         );
 

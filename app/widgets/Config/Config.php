@@ -27,34 +27,46 @@ class Config extends WidgetBase
     {
         $this->addjs('color/jscolor.js');
         $this->addjs('config.js');
-        $this->registerEvent('config', 'onConfig');
+        $this->registerEvent('storage_set_handle', 'onConfig');
+    }
+
+    function prepareConfigForm()
+    {
+        $view = $this->tpl();
 
         /* We load the user configuration */
-        $this->view->assign('languages', loadLangArray());
-        $this->view->assign('me',        $this->user->getLogin());
-        $this->view->assign('conf',      $this->user->getConfig('language'));
-        $this->view->assign('color',     $this->user->getConfig('color'));
-        $this->view->assign('size',      $this->user->getConfig('size'));
+        $view->assign('languages', loadLangArray());
+        $view->assign('me',        $this->user->getLogin());
+        $view->assign('conf',      $this->user->getConfig('language'));
+        $view->assign('color',     $this->user->getConfig('color'));
+        $view->assign('size',      $this->user->getConfig('size'));
 
         if($this->user->getConfig('chatbox'))
-            $this->view->assign('chatbox', 'checked');
+            $view->assign('chatbox', 'checked');
         else
-            $this->view->assign('chatbox', '');
+            $view->assign('chatbox', '');
         
-        $this->view->assign('submit',    
-            $this->genCallAjax(
+        $view->assign('submit',    
+            $this->call(
                 'ajaxSubmit', 
                 "movim_parse_form('general')"
             )
                 . "this.className='button color orange inactive oppose'; 
                     this.onclick=null;"
         );
+        
+        return $view->draw('_config_form', true);
     }
     
-    function onConfig(array $data)
+    function onConfig($package)
     {
+        $data = (array)$package->content;
         $this->user->setConfig($data);
-        //RPC::call('movim_reload_this');
+
+        $html = $this->prepareConfigForm();
+
+        RPC::call('movim_fill', 'config_widget', $html);
+        RPC::call('Config.load');
         Notification::appendNotification($this->__('config.updated'));
     }
 
@@ -74,4 +86,8 @@ class Config extends WidgetBase
         $s->setXmlns('movim:prefs')
           ->request();
     }*/
+    function display()
+    {
+        $this->view->assign('form', $this->prepareConfigForm());
+    }
 }

@@ -1,5 +1,4 @@
 {if="$start == -1"}
-    {$map}
     <div style="height: 13em;" id="postsmap"></div>
     <div class="posthead paddedbottom">
         <a 

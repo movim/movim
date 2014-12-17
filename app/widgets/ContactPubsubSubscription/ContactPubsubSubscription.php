@@ -31,7 +31,7 @@ class ContactPubsubSubscription extends WidgetBase
     
     function display()
     {
-        $this->view->assign('refresh', $this->genCallAjax('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"));
+        $this->view->assign('refresh', $this->call('ajaxGetGroupSubscribedList', "'".$_GET['f']."'"));
     }
     
     function prepareList($list) 
@@ -40,7 +40,9 @@ class ContactPubsubSubscription extends WidgetBase
             $html = '<ul class="list">';
             
             foreach($list as $item){
-                $html .= '<li><a href="'.Route::urlize('node', array($item[1], $item[0])).'">'.$item[2].'</a></li>';
+                if(is_array($item)) {
+                    $html .= '<li><a href="'.Route::urlize('node', array($item[1], $item[0])).'">'.$item[2].'</a></li>';
+                }
             }
             
             $html .= '</ul>';

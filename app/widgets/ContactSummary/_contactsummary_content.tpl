@@ -7,7 +7,7 @@
     {/if}>
     <a
         class="avatar"
-        style="background-image: url({$contact->getPhoto('l')}"
+        style="background-image: url({$contact->getPhoto('l')});"
         href="{$c->route('friend',$contact->jid)}">
     </a>
     <h1 class="paddedbottom">{$contact->getTrueName()}</h1>

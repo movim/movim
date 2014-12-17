@@ -31,7 +31,7 @@ class NodeSubscriptions extends WidgetBase
     function display() {
         $this->view->assign('pepfilter', !filter_var($_GET['s'], FILTER_VALIDATE_EMAIL));
         $this->view->assign('getsubscriptions', 
-            $this->genCallAjax('ajaxGetSubscriptions', 
+            $this->call('ajaxGetSubscriptions', 
                 "'".$_GET['s']."'", 
                 "'".$_GET['n']."'"));
     }
@@ -57,7 +57,7 @@ class NodeSubscriptions extends WidgetBase
                 </div>';
         }
         
-        $ok = $this->genCallAjax('ajaxChangeSubscriptions', "'".$list['to']."'", "'".$list['node']."'", "movim_parse_form('subscriptionsManaging')");
+        $ok = $this->call('ajaxChangeSubscriptions', "'".$list['to']."'", "'".$list['node']."'", "movim_parse_form('subscriptionsManaging')");
         $html .= '
             <hr />
             <br />

@@ -2,18 +2,15 @@
 
 class Event
 {
-    function runEvent($type, $event = false)
+    function runEvent($key, $data = null)
     {
         $widgets = WidgetWrapper::getInstance(false);
-
-        $widgets->iterate('runEvents', array(
-                              array(
-                                  'type' => $type,
-                                  'data' => $event,
-                                  )));
-
-        // Outputting any RPC calls.
-        RPC::commit();
+        $widgets->iterate($key, $data);
+        /*
+        $widgets->iterate(array(
+                            'type' => $type,
+                            'data' => $event,
+                          ));*/
     }
 }
 
