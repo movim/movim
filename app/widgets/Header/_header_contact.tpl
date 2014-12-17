@@ -1,5 +1,5 @@
 <header id="header">
-    <ul>
+    <ul class="active">
         <li onclick="Roster_ajaxDisplaySearch()">
             <span class="icon">
                 <i class="md md-person-add"></i>

@@ -1,9 +1,17 @@
 <?php
 
+use Moxl\Xec\Action\Roster\UpdateItem;
+
 class Contact extends WidgetCommon
 {
     function load()
     {
+        $this->registerEvent('roster_updateitem_handle', 'onContactEdited');
+    }
+
+    public function onContactEdited($packet)
+    {
+        Notification::appendNotification($this->__('edit.updated'));
     }
 
     function ajaxGetContact($jid)
@@ -14,6 +22,45 @@ class Contact extends WidgetCommon
         Header::fill($header);
         RPC::call('movim_fill', 'contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
+    }
+
+    function ajaxEditSubmit($form)
+    {
+        $rd = new UpdateItem;
+        $rd->setTo(echapJid($form['jid']))
+           ->setFrom($this->user->getLogin())
+           ->setName(htmlspecialchars($form['alias']))
+           ->setGroup(htmlspecialchars($form['group']))
+           ->request();
+    }
+
+    function ajaxEditContact($jid)
+    {
+        $rd = new \Modl\RosterLinkDAO();
+        $groups = $rd->getGroups();
+        $rl     = $rd->get($jid);
+
+        $view = $this->tpl();
+
+        if(isset($rl)) {
+            $view->assign('submit', 
+                $this->call(
+                    'ajaxEditSubmit', 
+                    "movim_parse_form('manage')"));
+            $view->assign('contact', $rl);
+            $view->assign('groups', $groups);
+        }
+
+        Dialog::fill($view->draw('_contact_edit', true));
+    }
+
+    function ajaxDeleteContact($jid)
+    {
+        $view = $this->tpl();
+
+        $view->assign('jid', $jid);
+
+        Dialog::fill($view->draw('_contact_delete', true));
     }
 
     function prepareHeader($jid)
@@ -27,6 +74,14 @@ class Contact extends WidgetCommon
 
         if(isset($cr)) {
             $view->assign('contactr', $cr);
+            $view->assign('edit', 
+                $this->call(
+                    'ajaxEditContact', 
+                    "'".$cr->jid."'"));
+            $view->assign('delete', 
+                $this->call(
+                    'ajaxDeleteContact', 
+                    "'".$cr->jid."'"));
         } else {
             $view->assign('contactr', null);
             $c  = $cd->get($jid);
