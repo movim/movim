@@ -1,0 +1,24 @@
+.block {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    float: left;
+    clear: left;
+}
+
+.block:nth-of-type(even) {
+    float: right;
+    clear: right;
+    padding-right: 1rem;
+}
+
+.block.large {
+    width: 100%;
+    clear: both;
+}
+
+@media screen and (max-width: 1024px) {
+    .block {
+        width: 100%;
+    }
+}

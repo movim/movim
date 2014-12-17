@@ -91,6 +91,33 @@ class Roster extends WidgetBase
         $r->request();
     }
 
+    /**
+     * @brief Display the search contact form
+     */
+    function ajaxDisplaySearch()
+    {
+        $view = $this->tpl();
+        $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
+        Dialog::fill($view->draw('_roster_search', true));
+    }
+
+    /**
+     * @brief Return the found jid
+     */
+    function ajaxDisplayFound($jid)
+    {
+        if($jid != '') {
+            $cd = new \Modl\ContactDAO();
+            $contacts = $cd->searchJid($jid);
+
+            $view = $this->tpl();
+            $view->assign('contacts', $contacts);
+            $html = $view->draw('_roster_search_results', true);
+
+            RPC::call('movim_fill', 'search_results', $html);
+        }
+    }
+
     private function getCaps() {
         $capsdao = new \Modl\CapsDAO();
         $caps = $capsdao->getAll();
@@ -143,7 +170,8 @@ class Roster extends WidgetBase
         //Groups
         $rd = new \Modl\RosterLinkDAO();
         $groups = $rd->getGroups();
-        if(!in_array("Ungrouped", $groups)) $groups[] = "Ungrouped";
+        if(is_array($groups) && !in_array("Ungrouped", $groups)) $groups[] = "Ungrouped";
+        else $groups = array();
 
         $groups = array_flip($groups);
         $result['groups'] = json_encode($groups);

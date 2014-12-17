@@ -1,4 +1,5 @@
 function createTabs() {
+    
     // We search all the div with "tab" class
     var tabs = document.querySelectorAll('.tabelem');
     
@@ -16,7 +17,7 @@ function createTabs() {
     }
     
     // We show the first tab
-    tabs[0].style.display = "block";
+    tabs[0].style.display = "inline-block";
 
     // We insert the list
     document.querySelector('#navtabs').innerHTML = html;
@@ -31,13 +32,14 @@ function createTabs() {
         tab = document.querySelector('.tabelem').id;	
         menuTab = document.querySelector('li.'+tab);	
     }
+
     changeTab(menuTab, tab);
 }
 
 movim_add_onload(function()
 {
     createTabs();
-    scroll(0,0);
+    //scroll(0,0);
 });
 
 function changeTab(current, n){
@@ -45,11 +47,11 @@ function changeTab(current, n){
     var navtabs = document.querySelectorAll('#navtabs li');
     // We clean the class of the li
     for (var j=0; j<navtabs.length; j++) {
-        navtabs[j].className = navtabs[j].className.split(" on")[0];
+        navtabs[j].className = navtabs[j].className.split(" active")[0];
     }
     
     // We add the "on" class to the selected li
-    current.className += ' on';
+    current.className += ' active';
 
     // We hide all the div
     var tabs = document.querySelectorAll('.tabelem');
@@ -59,14 +61,14 @@ function changeTab(current, n){
     // We show the selected div
     var tabOn = document.querySelector('#'+n);
     tabOn.style.display = "block";
-
-    var baseUrl = window.location.href.split('#')[0];
+    /*var baseUrl = window.location.href.split('#')[0];
     window.location.replace(baseUrl + '#' + n);
-        
-    scroll(0,0);
+    /*  */  
+    //scroll(0,0);
 }
 
 function actDifferent(e){
     e.preventDefault();
     return false;
 }	
+

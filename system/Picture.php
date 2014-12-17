@@ -97,8 +97,10 @@ class Picture {
 
         if($this->_bin) {
             $source = imagecreatefromstring($this->_bin);
-            imagejpeg($source, $path, 95);
-            imagedestroy($source);
+            if($source != false) {
+                imagejpeg($source, $path, 95);
+                imagedestroy($source);
+            }
         }
     }
 

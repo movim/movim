@@ -1,14 +1,20 @@
-<ul>
+<ul class="active">
+    <li class="subheader">Accounts **FIXME**</li>
 {loop="$sessions"}
-    <li>
-        <img onclick="chooseSession('{$value->jid}')" src="{$value->getPhoto('m')}"/>
+    <li onclick="chooseSession('{$value->jid}')">
+        <div class="control">
+            <i onclick="removeSession('{$value->jid}')" class="fa fa-times"></i>
+        </div>
+        <span class="icon bubble">
+            <img src="{$value->getPhoto('s')}"/>
+        </span>
         <span onclick="chooseSession('{$value->jid}')">{$value->getTrueName()}</span>
-        <a class="button oppose color alone transparent" onclick="removeSession('{$value->jid}')"><i class="fa fa-times"></i></a>
     </li>
 {/loop}
-
     <li>
-        <img onclick="chooseSession('')" src="{$empty->getPhoto('m')}"/>
+        <span class="icon bubble color green">
+            <i class="md md-face-unlock"></i>
+        </span>
         <span onclick="chooseSession('')">{$c->__('form.another_account')}</span>
     </li>
 </ul>

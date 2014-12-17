@@ -1,0 +1,38 @@
+/* Grid */
+ul.grid li {
+    background-size: cover;
+    width: calc(25% - 0.2em);
+    background-color: red;
+    padding: 0;
+    padding-bottom: 25%;
+    float: left;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-sizing: border-box;
+    margin: 0.1em;
+}
+
+ul.grid nav {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    ul.grid li {
+        width: calc(33.33% - 0.2em);
+        padding-bottom: 33.33%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    ul.grid li {
+        width: calc(50% - 0.2em);
+        padding-bottom: 50%;
+    }
+}

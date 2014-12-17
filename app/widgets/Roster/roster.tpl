@@ -1,50 +1,58 @@
-<input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
 <div id="roster" ng-controller="RosterController as rosterCtrl">        
-    <ul id="rosterlist" class="{{rosterCtrl.offlineIsShown()}}">
+    <form>
+        <div>
+            <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
+            <label for="search">{$c->__('roster.search')}</label>
+        </div>
+    </form>
+    <ul id="rosterlist" class="{{rosterCtrl.offlineIsShown()}} active">
         <span ng-hide="contacts != null" class="nocontacts">
             {$c->__('roster.no_contacts')}
             <br />
             <br />
-            <a class="button color green icon users" href="{$c->route('explore')}">{$c->__('page.explore')}</a>
+            <a class="button color green" href="{$c->route('explore')}"><i class="fa fa-compass"></i> {$c->__('page.explore')}</a>
         </span>
-
+        
+        <li class="subheader search">Results **FIXME**</li>
         <div ng-show="contacts != null && !group.tombstone" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup)}" >
-            <h1 ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</h1>
+            <li class="subheader" ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</li>
             <li ng-repeat="myjid in group.agroupitems" ng-hide="myjid.tombstone" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
                 <!-- Rostersearch look this way for an angularJS solution http://www.bennadel.com/blog/2487-filter-vs-nghide-with-ngrepeat-in-angularjs.htm -->
                 <ul class="contact">
-                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)" >
-                        <!-- add title to li so search works again-->
+                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}} condensed" ng-class="rosterCtrl.getContactClient(contact)" >
+                        <span class="icon bubble">
+                            <img
+                                class="avatar"
+                                src="{{contact.rosterview.avatar}}"
+                                alt="avatar"
+                            />
+                        </span>
                         <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" ></div>
-                        <div ng-if="contact.rosterview.type == 'handheld'" class="infoicon mobile"></div>
-                        <div ng-if="contact.rosterview.type == 'web'" class="infoicon web"></div>
-                        <div ng-if="contact.rosterview.type == 'bot'" class="infoicon bot"></div>
-                        <div ng-if="contact.rosterview.tune" class="infoicon tune"></div>
                         <div
                             ng-if="contact.rosterview.jingle"
                             class="infoicon jingle"
                             ng-click="rosterCtrl.postJingleAction(contact)">
                         </div>
 
-                        <a href="{{contact.rosterview.friendpage}}">
-                            <img
-                                class="avatar"
-                                src="{{contact.rosterview.avatar}}"
-                                alt="avatar"
-                            />
-                            {{contact.rosterview.name}}
-                            <span class="ressource">
-                                <span ng-if="contact.status != ''">{{contact.status}} -</span>
-                                 {{contact.ressource}}
-                            </span>
-                        </a>
+                        <div class="control">
+                            <i ng-if="contact.rosterview.type == 'handheld'" class="md md-smartphone"></i>
+                            <i ng-if="contact.rosterview.type == 'web'" class="md md-language"></i>
+                            <i ng-if="contact.rosterview.type == 'bot'" class="md md-memory"></i>
+                            <i ng-if="contact.rosterview.tune" class="md md-play-arrow"></i>
+                        </div>
+
+                        {{contact.rosterview.name}}
+                        <p class="wrap">
+                            <span ng-if="contact.status != ''">{{contact.status}} -</span>
+                             {{contact.ressource}}
+                        </p>
                     </li>
                 </ul>
             </li>
         </div>
     </ul>
 </div>
-
+<!--
 <div id="rostermenu" class="menubar" ng-controller="RosterMenuController as rosterMenuCtrl">
     <ul class="menu">
         <li 
@@ -95,10 +103,11 @@
         </li>
 
         <li 
-            onclick="showHideOffline()"
+            ng-click="rosterMenuCtrl.showHideOffline()"
             title="{$c->__('roster.show_hide')}">
             <a class="users" href="#"></a>
         </li>
 
     </ul>
 </div>
+-->

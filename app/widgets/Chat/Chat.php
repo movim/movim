@@ -428,7 +428,7 @@ class Chat extends WidgetBase {
         $chatview = $this->tpl();
         $chatview->assign(
             'send',
-            $this->genCallAjax(
+            $this->call(
                 'ajaxSendMessage',
                 "'" . $contact->jid . "'",
                 "Chats.sendMessage(this, '" . $contact->jid . "')",
@@ -439,10 +439,10 @@ class Chat extends WidgetBase {
         $chatview->assign('tabstyle', $tabstyle);
         $chatview->assign('panelstyle', $panelstyle);
         $chatview->assign('messageshtml', $messageshtml);
-        $chatview->assign('closetalk', $this->genCallAjax("ajaxCloseTalk", "'" . $contact->jid . "'"));
-        $chatview->assign('hidetalk', $this->genCallAjax("ajaxHideTalk", "'" . $contact->jid . "'"));
-        $chatview->assign('composing', $this->genCallAjax('ajaxSendComposing', "'" . $contact->jid . "'"));
-        $chatview->assign('paused', $this->genCallAjax('ajaxSendPaused', "'" . $contact->jid . "'"));
+        $chatview->assign('closetalk', $this->call("ajaxCloseTalk", "'" . $contact->jid . "'"));
+        $chatview->assign('hidetalk', $this->call("ajaxHideTalk", "'" . $contact->jid . "'"));
+        $chatview->assign('composing', $this->call('ajaxSendComposing', "'" . $contact->jid . "'"));
+        $chatview->assign('paused', $this->call('ajaxSendPaused', "'" . $contact->jid . "'"));
         
         return $chatview->draw('_chat_contact', true);
     }
@@ -473,16 +473,16 @@ class Chat extends WidgetBase {
         $mucview = $this->tpl();
         $mucview->assign('jid', $jid);
         $mucview->assign('messageshtml', $messageshtml);
-        $mucview->assign('toggle', $this->genCallAjax("ajaxToggleMuc", "'" . $jid . "'"));
+        $mucview->assign('toggle', $this->call("ajaxToggleMuc", "'" . $jid . "'"));
         $mucview->assign(
             'sendmessage',
-            $this->genCallAjax(
+            $this->call(
                 'ajaxSendMessage',
                 "'" . $jid . "'",
                  "Chats.sendMessage(this, '" . $jid . "')", "true"));
         
         $session = \Sessionx::start();
-        $mucview->assign('exitmuc', $this->genCallAjax("ajaxExitMuc", "'" . $jid . "'", "'" . $session->username . "'"));
+        $mucview->assign('exitmuc', $this->call("ajaxExitMuc", "'" . $jid . "'", "'" . $session->username . "'"));
         $sess = \Session::start(APP_NAME);
         $state = $sess->get(md5('muc' . $jid));
         $mucview->assign('conference', $conference);

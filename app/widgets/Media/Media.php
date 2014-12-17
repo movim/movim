@@ -24,7 +24,9 @@ class Media extends WidgetBase {
         $this->addcss('media.css');
         $this->addjs('media.js');
         
-        if(!is_dir($this->user->userdir) && $this->user->userdir != '') {
+        if(isset($this->user)
+        && !is_dir($this->user->userdir)
+        && $this->user->userdir != '') {
             mkdir($this->user->userdir);
             touch($this->user->userdir.'index.html');
         }
@@ -33,7 +35,7 @@ class Media extends WidgetBase {
     }
     
     function display() {
-        $this->view->assign('refresh', $this->genCallAjax('ajaxRefreshMedia'));
+        $this->view->assign('refresh', $this->call('ajaxRefreshMedia'));
     }
     
     function ajaxRefreshMedia()
@@ -52,6 +54,11 @@ class Media extends WidgetBase {
     
     function listFiles()
     {
+        if(empty($this->user->getDir())) {
+            $mediaempty = $this->tpl();
+            return $mediaempty->draw('_media_empty', true);
+        }
+        
         $html = '<ul class="thumb">';
 
         foreach($this->user->getDir() as $file) {
@@ -70,7 +77,7 @@ class Media extends WidgetBase {
                             <div 
                                 class="remove" 
                                 onclick="'.
-                                    $this->genCallAjax(
+                                    $this->call(
                                         'ajaxDeleteItem', 
                                         "'".$file."'"
                                     ).'">

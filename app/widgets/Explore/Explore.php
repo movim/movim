@@ -1,6 +1,6 @@
 <?php
-class Explore extends WidgetCommon {
 
+class Explore extends WidgetCommon {
     function load() {
 
     }

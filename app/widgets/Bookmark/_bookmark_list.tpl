@@ -19,7 +19,7 @@
 <div class="clear"></div>
 
 <ul>
-    <li><h2><i class="fa fa-bookmark-o"></i> {$c->__('title.groups')}</h2></li>
+    <li><h2><i class="fa fa-bookmark"></i> {$c->__('title.groups')}</h2></li>
     {loop="$subscriptions"}
         {if="$c->checkNewServer($value)"}
             <li>
