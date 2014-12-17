@@ -20,6 +20,11 @@
 
 use Moxl\Xec\Action\Roster\GetList;
 
+use Moxl\Xec\Action\Roster\AddItem;
+use Moxl\Xec\Action\Roster\RemoveItem;
+use Moxl\Xec\Action\Presence\Subscribe;
+use Moxl\Xec\Action\Presence\Unsubscribe;
+
 class Roster extends WidgetBase
 {
     private $grouphtml;
@@ -30,10 +35,10 @@ class Roster extends WidgetBase
         $this->addjs('angular.js');
         $this->addjs('roster.js');
         $this->registerEvent('roster_getlist_handle', 'onRoster');
-        $this->registerEvent('roster_additem_handle', 'onUpdate');
+        $this->registerEvent('roster_additem_handle', 'onAdd');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
-        $this->registerEvent('presence', 'onUpdate');
+        $this->registerEvent('presence', 'onPresence');
     }
 
     function display()
@@ -46,9 +51,10 @@ class Roster extends WidgetBase
         if($jid != null){
             RPC::call('deleteContact', $jid);
         }
+        Notification::appendNotification($this->__('roster.deleted'), 'info');
     }
 
-    function onUpdate($packet)
+    function onPresence($packet)
     {
         $contacts = $packet->content;
         if($contacts != null){
@@ -62,6 +68,18 @@ class Roster extends WidgetBase
             }
             RPC::call('updateContact', json_encode($contacts));
         }
+    }
+
+    function onAdd($packet)
+    {
+        $this->onPresence($packet);
+        Notification::appendNotification($this->__('roster.added'), 'info');
+    }
+
+    function onUpdate($packet)
+    {
+        $this->onPresence($packet);
+        Notification::appendNotification($this->__('roster.updated'), 'info');
     }
 
     function onRoster()
@@ -94,10 +112,17 @@ class Roster extends WidgetBase
     /**
      * @brief Display the search contact form
      */
-    function ajaxDisplaySearch()
+    function ajaxDisplaySearch($jid = null)
     {
         $view = $this->tpl();
+
+        $view->assign('jid', $jid);
+        $view->assign('add', 
+            $this->call(
+                'ajaxAdd', 
+                "movim_parse_form('add')"));
         $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
+
         Dialog::fill($view->draw('_roster_search', true));
     }
 
@@ -116,6 +141,37 @@ class Roster extends WidgetBase
 
             RPC::call('movim_fill', 'search_results', $html);
         }
+    }
+
+    /**
+     * @brief Add a contact to the roster and subscribe
+     */
+    function ajaxAdd($form)
+    {
+        $jid = $form['searchjid'];
+
+        $r = new AddItem;
+        $r->setTo($jid)
+          ->setFrom($this->user->getLogin())
+          ->request();
+
+        $p = new Subscribe;
+        $p->setTo($jid)
+          ->request();
+    }
+
+    /**
+     * @brief Remove a contact to the roster and unsubscribe
+     */
+    function ajaxDelete($jid)
+    {    
+        $r = new RemoveItem;
+        $r->setTo($jid)
+          ->request();
+
+        $p = new Unsubscribe;
+        $p->setTo($jid)
+          ->request();
     }
 
     private function getCaps() {

@@ -8,7 +8,7 @@
     <section>
         <?php $this->widget('Roster');?>
         <div>
-            <?php $this->widget('Contact');?>
+            <?php $this->widget('Chat');?>
         </div>
     </section>
 </main>

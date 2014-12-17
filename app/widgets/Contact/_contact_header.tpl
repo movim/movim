@@ -1,10 +1,15 @@
 <span id="back" class="on_mobile icon" onclick="MovimTpl.hidePanel()"><i class="md md-arrow-back"></i></span>
 <span class="on_desktop icon" onclick="MovimTpl.hidePanel()"><i class="md md-person"></i></span>
 {if="$contactr != null"}
-    <ul>
-        <li>
+    <ul class="active">
+        <li onclick="{$edit}">
             <span class="icon">
-                <i class="md md-star"></i>
+                <i class="md md-edit"></i>
+            </span>
+        </li>
+        <li onclick="{$delete}">
+            <span class="icon">
+                <i class="md md-delete"></i>
             </span>
         </li>
     </ul>
@@ -12,7 +17,7 @@
 {else}
     {if="$contact != null"}
         <ul>
-            <li>
+            <li onclick="Roster_ajaxDisplaySearch('{$jid}')">
                 <span class="icon">
                     <i class="md md-person-add"></i>
                 </span>
@@ -21,7 +26,7 @@
         <h2>{$contact->getTrueName()}</h2>
     {else}
         <ul>
-            <li>
+            <li onclick="Roster_ajaxDisplaySearch('{$jid}')">
                 <span class="icon">
                     <i class="md md-person-add"></i>
                 </span>
