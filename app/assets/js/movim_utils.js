@@ -79,8 +79,8 @@ function movim_parse_form(formname) {
             data.set(form.elements[i].name,
                      form.elements[i].value);
         }
-	}
-	return data;
+    }
+    return data;
 }
 
 /**

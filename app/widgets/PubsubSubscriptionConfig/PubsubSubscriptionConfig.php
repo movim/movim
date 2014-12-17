@@ -36,7 +36,7 @@ class PubsubSubscriptionConfig extends WidgetBase
     {
         $this->view->assign(
                     'getsubscribedlist',
-                    $this->genCallAjax('ajaxGetGroupSubscribedList')
+                    $this->call('ajaxGetGroupSubscribedList')
                     );
     }
     
@@ -63,7 +63,7 @@ class PubsubSubscriptionConfig extends WidgetBase
                 else
                     $checked = '';
 
-                $switch = $this->genCallAjax(
+                $switch = $this->call(
                             'ajaxChangeSubscribed',
                             "'".$s->server."'",
                             "'".$s->node."'",
@@ -72,8 +72,12 @@ class PubsubSubscriptionConfig extends WidgetBase
 
                 $listhtml .= '
                     <li>
-                        <a class="action">
-                            <div class="checkbox">
+                        <span class="icon bubble color '.stringToColor($s->node).'">
+                            '.firstLetterCapitalize($s->node).'
+                        </span>
+                        <form>
+                            <div class="control">
+                                <div class="checkbox">
                                 <input
                                     type="checkbox"
                                     id="privacy'.$s->node.'"
@@ -81,8 +85,9 @@ class PubsubSubscriptionConfig extends WidgetBase
                                     '.$checked.'
                                     onchange="'.$switch.'"/>
                                 <label for="privacy'.$s->node.'"></label>
+                                </div>
                             </div>
-                        </a>
+                        </form>
                         <a href="'.Route::urlize('node', array($s->server, $s->node)).'">'.
                             $name.' 
                         </a>

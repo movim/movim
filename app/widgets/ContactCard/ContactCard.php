@@ -48,7 +48,7 @@ class ContactCard extends WidgetCommon
 
         $html .= '
             <form name="vcard" id="vcardform">
-            <h1>'.$this->__('Profile').'</h1>
+            <h1 class="padded">'.$this->__('Profile').'</h1>
                 <fieldset>
                     <legend>'.$this->__('general.legend').'</legend>';
                     

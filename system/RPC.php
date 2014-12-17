@@ -77,29 +77,34 @@ class RPC
     /**
      * Handles incoming requests.
      */
-    public function handle_json($json)
-    {        
-        $request = json_decode($json);
-
+    public function handle_json($request)
+    {
         // Loading the widget.
-        $widget_name = (string)$request->widget;
-
-        // Preparing the parameters and calling the function.
-        $params = (array)$request->params;
+        if(isset($request->widget)) {
+            $widget_name = (string)$request->widget;
+        } else {
+            return;
+        }
 
         $result = array();
 
         $bc = new Bootstrap;
         $bc->loadLanguage();
 
-        foreach($params as $p) {
-            if(is_object($p) && isset($p->container))
-                array_push($result, (array)$p->container);
-            else
-                array_push($result, $p);
-        }
+        // Preparing the parameters and calling the function.
+        if(isset($request->params)) {
+            $params = (array)$request->params;
 
-        $widgets = WidgetWrapper::getInstance(false);
+            foreach($params as $p) {
+                if(is_object($p) && isset($p->container))
+                    array_push($result, (array)$p->container);
+                else
+                    array_push($result, $p);
+            }
+        }
+        
+        $widgets = WidgetWrapper::getInstance();
+
         $widgets->runWidget($widget_name, (string)$request->func, $result);
     }
 }

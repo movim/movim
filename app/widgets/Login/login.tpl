@@ -15,46 +15,28 @@
         <form
             data-action="{$submit}"
             name="login">
-            <div class="element">
+            <div>
                 <input type="email" name="login" id="login" autofocus required disabled
                     placeholder="{$c->__('form.username')}"/>
+                <label for="login">{$c->__('form.username')}</label>
             </div>
-            <div class="element">
+            <div>
                 <input type="password" name="pass" id="pass" required disabled
                     placeholder="{$c->__('form.password')}"/>
+                <label for="pass">{$c->__('form.password')}</label>
             </div>
-            <div class="element">
-                <input
-                    type="submit"
-                    disabled
-                    data-loading="{$c->__('button.connecting')}"
-                    value="{$c->__('button.come_in')}"
-                    class="button color green"/> 
-            </div>
-            <div class="clear"></div>
-
-            <div id="warning">
-                {$warnings}
-                <div class="message error websocket">
-                    {$c->__('error.websocket')}
-                </div>
-
-            </div>
-            <div class="clear"></div>
-
-            <p class="create">
-                <a id="return_sessions" class="button color transparent alone" href="#" onclick="backToChoose()">
-                    <i class="fa fa-chevron-left"></i>
-                </a>
-                <a class="button color transparent oppose" href="{$c->route('account')}">
-                    <i class="fa fa-user"></i> {$c->__('form.create_one')}
-                </a>
-                <span>{$c->__('form.no_account')}</span>
-            </p>
-
-            <div class="clear"></div>
+            
+            <input
+                type="submit"
+                disabled
+                data-loading="{$c->__('button.connecting')}"
+                value="{$c->__('button.come_in')}"
+                class="button flat"/> 
+            <!--<div class="clear"></div>-->
+            <!--
+            <div class="clear"></div>-->
         
-            <ul id="loginhelp">
+            <!--<ul id="loginhelp">
                 {if="$whitelist_display == true"}
                     <li id="whitelist">
                         <p>{$c->__('whitelist.info')}</p>
@@ -74,14 +56,33 @@
                         {$facebook}
                     </li>
                 {/if}
-            </ul>
+            </ul>-->
         </form>
-    {/if}
 
-    <div class="admin">
-        {$c->__('connected')} {$connected} • {$c->__('population')} {$pop} • 
+        <ul class="">
+            <li>
+                <span class="icon">
+                    <a id="return_sessions" class="" href="#" onclick="backToChoose()">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                </span>
+                <span>{$c->__('form.no_account')}
+                    <a class="" href="{$c->route('account')}">
+                        {$c->__('form.create_one')}
+                    </a>
+                </span>
+            </li>
+        </ul>
+    {/if}
+    <div id="error_websocket" class="snackbar">
+        {$c->__('error.websocket')}
+    </div>
+
+</div>
+<ul class="thin simple admin">
+    <li>{$c->__('connected')} {$connected} • {$c->__('population')} {$pop} •
         <a href="{$c->route('admin')}">
             {$c->__('page.administration')}
         </a>
-    </div>
-</div>
+    </li>
+</ul>

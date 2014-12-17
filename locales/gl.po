@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-20 22:22+0200\n"
+"POT-Creation-Date: 2014-12-02 15:26+0100\n"
 "PO-Revision-Date: 2014-06-01 23:06+0000\n"
 "Last-Translator: Daniel-san <inad9300@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-04 21:24+0000\n"
-"X-Generator: Launchpad (build 17147)\n"
+"X-Launchpad-Export-Date: 2014-12-08 10:12+0000\n"
+"X-Generator: Launchpad (build 17274)\n"
+"Language: \n"
 
 #: ../cache/locales.php:2
 msgid "Thanks"
@@ -41,10 +41,12 @@ msgid "API"
 msgstr ""
 
 #: ../cache/locales.php:8
-msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
+msgid ""
+"Movim is an XMPP-based communication platform. All the project, except the "
+"following software and resources, is under"
 msgstr ""
 
-#: ../cache/locales.php:9 ../cache/locales.php:180
+#: ../cache/locales.php:9 ../cache/locales.php:190
 msgid "Some data are missing !"
 msgstr ""
 
@@ -76,11 +78,11 @@ msgstr ""
 msgid "Could not communicate with the XMPP server"
 msgstr ""
 
-#: ../cache/locales.php:17 ../cache/locales.php:305
+#: ../cache/locales.php:17 ../cache/locales.php:326 ../cache/locales.php:332
 msgid "Unknown error"
 msgstr ""
 
-#: ../cache/locales.php:18 ../cache/locales.php:268
+#: ../cache/locales.php:18 ../cache/locales.php:288
 msgid "Create a new account"
 msgstr ""
 
@@ -88,7 +90,7 @@ msgstr ""
 msgid "No account creation form found on the server"
 msgstr ""
 
-#: ../cache/locales.php:20 ../cache/locales.php:131
+#: ../cache/locales.php:20 ../cache/locales.php:140 ../cache/locales.php:224
 msgid "on"
 msgstr ""
 
@@ -97,7 +99,7 @@ msgid "Loading"
 msgstr ""
 
 #: ../cache/locales.php:22
-msgid "Database Settings"
+msgid "Database"
 msgstr ""
 
 #: ../cache/locales.php:23
@@ -120,12 +122,12 @@ msgstr ""
 msgid "Database Type"
 msgstr ""
 
-#: ../cache/locales.php:28 ../cache/locales.php:48 ../cache/locales.php:379
+#: ../cache/locales.php:28 ../cache/locales.php:47 ../cache/locales.php:412
 msgid "Username"
 msgstr ""
 
-#: ../cache/locales.php:29 ../cache/locales.php:49 ../cache/locales.php:196
-#: ../cache/locales.php:380
+#: ../cache/locales.php:29 ../cache/locales.php:48 ../cache/locales.php:207
+#: ../cache/locales.php:413
 msgid "Password"
 msgstr "Contrasinal"
 
@@ -170,114 +172,121 @@ msgid "User folder size limit (in bytes)"
 msgstr ""
 
 #: ../cache/locales.php:40
-msgid "Bosh Configuration"
+msgid "WebSocket Configuration"
 msgstr ""
 
 #: ../cache/locales.php:41
-msgid "Enter here the BOSH-URL in the form: http(s)://domain:port/path."
+msgid "Enter here a valid WebSocket URI in the form"
 msgstr ""
 
 #: ../cache/locales.php:42
-#, php-format
-msgid "If you are unsure about this config option visit the %swiki%s."
+msgid "WebSocket URI"
 msgstr ""
 
 #: ../cache/locales.php:43
-msgid "Your Bosh URL is not reachable"
+msgid ""
+"If you change the URI, please restart the daemon to reload the configuration"
 msgstr ""
 
 #: ../cache/locales.php:44
-msgid "Bosh URL"
+msgid "Public WebSockets"
 msgstr ""
 
 #: ../cache/locales.php:45
-msgid "Public BOSH"
-msgstr ""
-
-#: ../cache/locales.php:46
 msgid "Administration Credential"
 msgstr ""
 
-#: ../cache/locales.php:47
+#: ../cache/locales.php:46
 msgid "Change the default credentials admin/password"
 msgstr ""
 
-#: ../cache/locales.php:50
+#: ../cache/locales.php:49
 msgid "Retype password"
 msgstr ""
 
-#: ../cache/locales.php:51
+#: ../cache/locales.php:50
 msgid "Whitelist - XMPP Server"
 msgstr ""
 
+#: ../cache/locales.php:51
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
+msgstr ""
+
 #: ../cache/locales.php:52
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr ""
 
 #: ../cache/locales.php:53
-msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
-
-#: ../cache/locales.php:54
 msgid "List of whitelisted XMPP servers"
 msgstr ""
 
-#: ../cache/locales.php:55 ../cache/locales.php:59
+#: ../cache/locales.php:54 ../cache/locales.php:58
 msgid "Information Message"
 msgstr ""
 
-#: ../cache/locales.php:56
+#: ../cache/locales.php:55
 msgid "Description"
 msgstr ""
 
-#: ../cache/locales.php:57
+#: ../cache/locales.php:56
 msgid "This message will be displayed on the login page"
 msgstr ""
 
-#: ../cache/locales.php:58
+#: ../cache/locales.php:57
 msgid "Leave this field blank if you don't want to show any message."
 msgstr ""
 
+#: ../cache/locales.php:59
+msgid "Empty"
+msgstr ""
+
 #: ../cache/locales.php:60
-msgid "Compatibility Check"
+msgid "Syslog"
 msgstr ""
 
 #: ../cache/locales.php:61
-msgid "Movim requires certain external components. Please install them before you can succeed:"
+msgid "Syslog and files"
 msgstr ""
 
 #: ../cache/locales.php:62
-#, php-format
-msgid "Your PHP-Version: %s <br>Required: 5.3.0"
+msgid "General Overview"
 msgstr ""
 
 #: ../cache/locales.php:63
-msgid "CURL-Library"
+msgid ""
+"Movim has found some issues or things that need to be fixed or improved"
 msgstr ""
 
 #: ../cache/locales.php:64
-msgid "GD"
+#, php-format
+msgid "Update your PHP-Version: %s <br>Required: 5.3.0"
 msgstr ""
 
 #: ../cache/locales.php:65
-msgid "SimpleXML"
+msgid "Install the php5-curl library"
 msgstr ""
 
 #: ../cache/locales.php:66
-msgid "Read and write rights for the webserver in Movim's root directory"
+msgid "Install the php5-gd library"
 msgstr ""
 
 #: ../cache/locales.php:67
-msgid "OpenSSL"
+msgid "Read and write rights for the webserver in Movim's root directory"
 msgstr ""
 
 #: ../cache/locales.php:68
-msgid "URL Rewriting support"
+msgid "The URL Rewriting support is currently disabled"
 msgstr ""
 
 #: ../cache/locales.php:70
 #, php-format
-msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
+msgid ""
+"Here you can register your pod on the official %sMovim API%s and be listed "
+"on %sthe pods page%s."
 msgstr ""
 
 #: ../cache/locales.php:71
@@ -297,1791 +306,1913 @@ msgid "Your pod is validated"
 msgstr ""
 
 #: ../cache/locales.php:75
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
+msgid ""
+"You asked to be removed from the API, this request will be processed in a "
+"couple of hours"
 msgstr ""
 
-#: ../cache/locales.php:76
-msgid "Webcam"
+#: ../cache/locales.php:76 ../cache/locales.php:114
+msgid "Configuration updated"
 msgstr ""
 
 #: ../cache/locales.php:77
-msgid "Cheese !"
+msgid "Webcam"
 msgstr ""
 
 #: ../cache/locales.php:78
-msgid "Take a webcam snapshot"
+msgid "Cheese !"
 msgstr ""
 
 #: ../cache/locales.php:79
-msgid "Avatar Updated"
+msgid "Take a webcam snapshot"
 msgstr ""
 
 #: ../cache/locales.php:80
-msgid "Avatar Not Updated"
+msgid "Avatar Updated"
 msgstr ""
 
 #: ../cache/locales.php:81
-msgid "Conferences"
+msgid "Avatar Not Updated"
 msgstr ""
 
-#: ../cache/locales.php:82 ../cache/locales.php:144
-msgid "Groups"
+#: ../cache/locales.php:82 ../cache/locales.php:292
+#, php-format
+msgid "%s's feed"
 msgstr ""
 
 #: ../cache/locales.php:83
+msgid "Conferences"
+msgstr ""
+
+#: ../cache/locales.php:84 ../cache/locales.php:153
+msgid "Groups"
+msgstr ""
+
+#: ../cache/locales.php:85
 msgid "Add a new Chat Room"
 msgstr ""
 
-#: ../cache/locales.php:84
+#: ../cache/locales.php:86
 msgid "Chat Room ID"
 msgstr ""
 
-#: ../cache/locales.php:85 ../cache/locales.php:117 ../cache/locales.php:204
-#: ../cache/locales.php:243 ../cache/locales.php:280
+#: ../cache/locales.php:87 ../cache/locales.php:97 ../cache/locales.php:126
+#: ../cache/locales.php:215 ../cache/locales.php:263 ../cache/locales.php:301
 msgid "Name"
 msgstr ""
 
-#: ../cache/locales.php:86 ../cache/locales.php:118 ../cache/locales.php:281
+#: ../cache/locales.php:88 ../cache/locales.php:127 ../cache/locales.php:302
 msgid "Nickname"
 msgstr ""
 
-#: ../cache/locales.php:87
+#: ../cache/locales.php:89
 msgid "Do you want do join automaticaly this Chat Room ?"
 msgstr ""
 
-#: ../cache/locales.php:88
+#: ../cache/locales.php:90
 msgid "Bad Chatroom ID"
 msgstr ""
 
-#: ../cache/locales.php:89
+#: ../cache/locales.php:91
 msgid "Empty name"
 msgstr ""
 
-#: ../cache/locales.php:90
+#: ../cache/locales.php:92
 msgid "Bookmarks updated"
 msgstr ""
 
-#: ../cache/locales.php:91 ../cache/locales.php:147
+#: ../cache/locales.php:93 ../cache/locales.php:156
 msgid "An error occured : "
 msgstr ""
 
-#: ../cache/locales.php:92
+#: ../cache/locales.php:94
+msgid "Configure"
+msgstr ""
+
+#: ../cache/locales.php:95
+msgid "Add a new URL"
+msgstr ""
+
+#: ../cache/locales.php:96
+msgid "URL"
+msgstr ""
+
+#: ../cache/locales.php:98
 msgid "Message Published"
 msgstr ""
 
-#: ../cache/locales.php:93
+#: ../cache/locales.php:99
 msgid "Encrypted message"
 msgstr ""
 
-#: ../cache/locales.php:94
+#: ../cache/locales.php:100
+msgid "Composing..."
+msgstr ""
+
+#: ../cache/locales.php:101
+msgid "Paused..."
+msgstr ""
+
+#: ../cache/locales.php:102
 #, php-format
 msgid "%s needs your attention"
 msgstr ""
 
-#: ../cache/locales.php:95
-msgid "Connected to the chatroom"
-msgstr ""
-
-#: ../cache/locales.php:96
-msgid "Disconnected from the chatroom"
-msgstr ""
-
-#: ../cache/locales.php:97
-msgid "Feed Configuration"
-msgstr ""
-
-#: ../cache/locales.php:98
-msgid "General"
-msgstr ""
-
-#: ../cache/locales.php:99
-msgid "Language"
-msgstr "Linguaxe"
-
-#: ../cache/locales.php:100
-msgid "Appearence"
-msgstr ""
-
-#: ../cache/locales.php:101
-msgid "Background color"
-msgstr ""
-
-#: ../cache/locales.php:102
-msgid "Font size"
-msgstr ""
-
 #: ../cache/locales.php:103
-msgid "Pattern"
+msgid "Your message here..."
 msgstr ""
 
 #: ../cache/locales.php:104
-msgid "This configuration is shared wherever you are connected !"
+msgid "Connected to the chatroom"
 msgstr ""
 
 #: ../cache/locales.php:105
-msgid "Configuration updated"
+msgid "Disconnected from the chatroom"
 msgstr ""
 
-#: ../cache/locales.php:106 ../cache/locales.php:274
-msgid "Data"
+#: ../cache/locales.php:106
+msgid "Feed Configuration"
 msgstr ""
 
 #: ../cache/locales.php:107
-msgid "Cache"
+msgid "General"
 msgstr ""
 
 #: ../cache/locales.php:108
-msgid "Contacts"
-msgstr ""
+msgid "Language"
+msgstr "Linguaxe"
 
-#: ../cache/locales.php:109 ../cache/locales.php:335
-msgid "Posts"
+#: ../cache/locales.php:109
+msgid "Appearence"
 msgstr ""
 
 #: ../cache/locales.php:110
-msgid "Messages"
+msgid "Background color"
 msgstr ""
 
 #: ../cache/locales.php:111
-msgid "Please wait"
+msgid "Font size"
 msgstr ""
 
-#: ../cache/locales.php:112 ../cache/locales.php:114
-msgid "Actions"
+#: ../cache/locales.php:112
+msgid "Pattern"
 msgstr ""
 
 #: ../cache/locales.php:113
+msgid "This configuration is shared wherever you are connected !"
+msgstr ""
+
+#: ../cache/locales.php:115 ../cache/locales.php:295
+msgid "Data"
+msgstr ""
+
+#: ../cache/locales.php:116
+msgid "Cache"
+msgstr ""
+
+#: ../cache/locales.php:117
+msgid "Contacts"
+msgstr ""
+
+#: ../cache/locales.php:118 ../cache/locales.php:362
+msgid "Posts"
+msgstr ""
+
+#: ../cache/locales.php:119
+msgid "Messages"
+msgstr ""
+
+#: ../cache/locales.php:120 ../cache/locales.php:122
+msgid "Actions"
+msgstr ""
+
+#: ../cache/locales.php:121
 msgid "Chat"
 msgstr "Chat"
 
-#: ../cache/locales.php:115
+#: ../cache/locales.php:123
 msgid "Invite this user"
 msgstr ""
 
-#: ../cache/locales.php:116 ../cache/locales.php:279
+#: ../cache/locales.php:124
+msgid "Remove this contact"
+msgstr ""
+
+#: ../cache/locales.php:125 ../cache/locales.php:300
 msgid "General Informations"
 msgstr ""
 
-#: ../cache/locales.php:119 ../cache/locales.php:283
+#: ../cache/locales.php:128 ../cache/locales.php:304
 msgid "Date of Birth"
 msgstr ""
 
-#: ../cache/locales.php:120 ../cache/locales.php:284
+#: ../cache/locales.php:129 ../cache/locales.php:305
 msgid "Gender"
 msgstr ""
 
-#: ../cache/locales.php:121 ../cache/locales.php:285
+#: ../cache/locales.php:130 ../cache/locales.php:306
 msgid "Marital Status"
 msgstr ""
 
-#: ../cache/locales.php:122 ../cache/locales.php:282
+#: ../cache/locales.php:131 ../cache/locales.php:303
 msgid "Email"
 msgstr ""
 
-#: ../cache/locales.php:123 ../cache/locales.php:286
+#: ../cache/locales.php:132 ../cache/locales.php:307
 msgid "Website"
 msgstr ""
 
-#: ../cache/locales.php:124 ../cache/locales.php:287
+#: ../cache/locales.php:133 ../cache/locales.php:308
 msgid "About Me"
 msgstr ""
 
-#: ../cache/locales.php:125 ../cache/locales.php:288
+#: ../cache/locales.php:134 ../cache/locales.php:309
 msgid "Geographic Position"
 msgstr ""
 
-#: ../cache/locales.php:126 ../cache/locales.php:289
+#: ../cache/locales.php:135 ../cache/locales.php:310
 msgid "Locality"
 msgstr ""
 
-#: ../cache/locales.php:127 ../cache/locales.php:290
+#: ../cache/locales.php:136 ../cache/locales.php:311
 msgid "Country"
 msgstr ""
 
-#: ../cache/locales.php:128
+#: ../cache/locales.php:137
 msgid "Mood"
 msgstr ""
 
-#: ../cache/locales.php:129
+#: ../cache/locales.php:138
 msgid "I'm "
 msgstr ""
 
-#: ../cache/locales.php:130
+#: ../cache/locales.php:139
 msgid "Listening"
 msgstr ""
 
-#: ../cache/locales.php:132
+#: ../cache/locales.php:141
 msgid "Last seen"
 msgstr ""
 
-#: ../cache/locales.php:133
+#: ../cache/locales.php:142
 msgid "Client Informations"
 msgstr ""
 
-#: ../cache/locales.php:134
+#: ../cache/locales.php:143
 msgid "Manage"
 msgstr ""
 
-#: ../cache/locales.php:135
+#: ../cache/locales.php:144
 msgid "Alias"
 msgstr ""
 
-#: ../cache/locales.php:136
+#: ../cache/locales.php:145
 msgid "Group"
 msgstr ""
 
-#: ../cache/locales.php:137
+#: ../cache/locales.php:146
 msgid "Contact updated"
 msgstr ""
 
-#: ../cache/locales.php:138
+#: ../cache/locales.php:147
 msgid "Public groups"
 msgstr ""
 
-#: ../cache/locales.php:139
+#: ../cache/locales.php:148
 msgid "No public groups found"
 msgstr ""
 
-#: ../cache/locales.php:140 ../cache/locales.php:143
+#: ../cache/locales.php:149 ../cache/locales.php:152
 msgid "Last registered"
 msgstr ""
 
-#: ../cache/locales.php:141
+#: ../cache/locales.php:150
 msgid "Discover my server"
 msgstr ""
 
-#: ../cache/locales.php:142
+#: ../cache/locales.php:151
 msgid "Discussion Servers"
 msgstr ""
 
-#: ../cache/locales.php:145
+#: ../cache/locales.php:154
 msgid "Chatrooms"
 msgstr ""
 
-#: ../cache/locales.php:146
+#: ../cache/locales.php:155
 msgid "My Posts"
 msgstr ""
 
-#: ../cache/locales.php:148
+#: ../cache/locales.php:157
 msgid "Hi!"
 msgstr ""
 
-#: ../cache/locales.php:149
-msgid "This is your newsfeed, here you will see the posts published by you and your contacts."
-msgstr ""
-
-#: ../cache/locales.php:150
-msgid "What is Movim?"
-msgstr ""
-
-#: ../cache/locales.php:151
-#, php-format
-msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
-msgstr ""
-
-#: ../cache/locales.php:152
-msgid "What do the little banners refer to ?"
-msgstr ""
-
-#: ../cache/locales.php:153
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr ""
-
-#: ../cache/locales.php:154
-msgid "White, only you can see the information"
-msgstr ""
-
-#: ../cache/locales.php:155
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
-
-#: ../cache/locales.php:156
-msgid "Orange, all your contact list can see your information"
-msgstr ""
-
-#: ../cache/locales.php:157
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
-
 #: ../cache/locales.php:158
-msgid "Black, the whole Internet can see your information"
+msgid ""
+"This is your newsfeed, here you will see the posts published by you and your "
+"contacts."
 msgstr ""
 
 #: ../cache/locales.php:159
-msgid "Some features are missing/I can't do everything I used to do on other social networks"
+msgid "Frequently Asked Questions"
 msgstr ""
 
 #: ../cache/locales.php:160
-#, php-format
-msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %sat next versions's roadmaps%s to know if the one you want is on its way."
+msgid "What do the little banners refer to ?"
 msgstr ""
 
 #: ../cache/locales.php:161
-#, php-format
-msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %sCan I participate%s)"
+msgid ""
+"Thanks to these five little banners, you can quickly identitfy the level of "
+"confdentiality applied to the information you provide."
 msgstr ""
 
 #: ../cache/locales.php:162
-msgid "I can't find the answer to my question here"
+msgid "White, only you can see the information"
 msgstr ""
 
 #: ../cache/locales.php:163
-#, php-format
-msgid "Go to the %sto the Frequently Asked Questions%s or come ask your question on the official chatroom %s or via our mailing-list (%ssee the dedicated page%s)."
+msgid "Green, you have chosen some contacts who can see your information"
 msgstr ""
 
 #: ../cache/locales.php:164
-msgid "What's Hot"
+msgid "Orange, all your contact list can see your information"
 msgstr ""
 
 #: ../cache/locales.php:165
-msgid "Creating your location node"
+msgid "Red, everybody in the XMPP network can see your information"
 msgstr ""
 
 #: ../cache/locales.php:166
-msgid "Creating your bookmark node"
+msgid "Black, the whole Internet can see your information"
 msgstr ""
 
 #: ../cache/locales.php:167
-msgid "Creating your profile node"
+msgid "Looking for some documentation ?"
 msgstr ""
 
 #: ../cache/locales.php:168
-msgid "Creating your avatar node"
+msgid "Read the Wiki"
 msgstr ""
 
 #: ../cache/locales.php:169
-msgid "Movim is currently configuring your account, please wait..."
+msgid "Talk with us by email ?"
 msgstr ""
 
 #: ../cache/locales.php:170
-msgid "Your server doesn't support post publication, you can only read contact's feeds"
+msgid "Join the Mailing List"
 msgstr ""
 
 #: ../cache/locales.php:171
-msgid "Creating your feed..."
+msgid "Chat with the team ?"
 msgstr ""
 
 #: ../cache/locales.php:172
-msgid "Location"
+msgid "Join the Chatroom"
 msgstr ""
 
 #: ../cache/locales.php:173
-msgid "Wrong position"
+msgid "What's Hot"
 msgstr ""
 
 #: ../cache/locales.php:174
-msgid "Location updated"
+msgid "Creating your location node"
 msgstr ""
 
 #: ../cache/locales.php:175
-msgid "Wrong username"
+msgid "Creating your bookmark node"
 msgstr ""
 
 #: ../cache/locales.php:176
-msgid "Invalid JID"
+msgid "Creating your profile node"
 msgstr ""
 
 #: ../cache/locales.php:177
-msgid "Authentication mechanism not supported by Movim"
+msgid "Creating your avatar node"
 msgstr ""
 
 #: ../cache/locales.php:178
-msgid "Empty Challenge from the server"
+msgid "Movim is currently configuring your account, please wait..."
 msgstr ""
 
 #: ../cache/locales.php:179
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
+msgid ""
+"Your server doesn't support post publication, you can only read contact's "
+"feeds"
+msgstr ""
+
+#: ../cache/locales.php:180
+msgid "Creating your feed..."
 msgstr ""
 
 #: ../cache/locales.php:181
-msgid "Wrong password"
-msgstr "Contrasinal incorrecta"
+msgid "Location"
+msgstr ""
 
 #: ../cache/locales.php:182
-msgid "The XMPP authentification failed"
+msgid "Wrong position"
 msgstr ""
 
 #: ../cache/locales.php:183
-msgid "The current BOSH URL is invalid"
+msgid "Location updated"
 msgstr ""
 
 #: ../cache/locales.php:184
-msgid "Internal server error"
+msgid "Update my position"
 msgstr ""
 
 #: ../cache/locales.php:185
-msgid "Session error"
+msgid "Wrong username"
 msgstr ""
 
 #: ../cache/locales.php:186
-msgid "Account successfully created"
+msgid "Invalid JID"
 msgstr ""
 
 #: ../cache/locales.php:187
-msgid "Movim failed to authenticate. You entered wrong data"
+msgid "Authentication mechanism not supported by Movim"
 msgstr ""
 
 #: ../cache/locales.php:188
-msgid "Your XMPP server is unauthorized"
+msgid "Empty Challenge from the server"
 msgstr ""
 
 #: ../cache/locales.php:189
-msgid "The server takes too much time to respond"
-msgstr ""
-
-#: ../cache/locales.php:190
-msgid "Your web browser is too old to use with Movim."
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: ../cache/locales.php:191
-#, php-format
-msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
-msgstr ""
+msgid "Wrong password"
+msgstr "Contrasinal incorrecta"
 
 #: ../cache/locales.php:192
+msgid "The XMPP authentification failed"
+msgstr ""
+
+#: ../cache/locales.php:193
+msgid "The current BOSH URL is invalid"
+msgstr ""
+
+#: ../cache/locales.php:194
+msgid "Internal server error"
+msgstr ""
+
+#: ../cache/locales.php:195
+msgid "Session error"
+msgstr ""
+
+#: ../cache/locales.php:196
+msgid "Account successfully created"
+msgstr ""
+
+#: ../cache/locales.php:197
+msgid "Movim failed to authenticate. You entered wrong data"
+msgstr ""
+
+#: ../cache/locales.php:198
+msgid "Your XMPP server is unauthorized"
+msgstr ""
+
+#: ../cache/locales.php:199
+msgid "The server takes too much time to respond"
+msgstr ""
+
+#: ../cache/locales.php:200
+msgid "Your web browser is too old to use with Movim."
+msgstr ""
+
+#: ../cache/locales.php:201
+msgid ""
+"Movim cannot talk with the server, please try again later (Websocket "
+"connection error)"
+msgstr ""
+
+#: ../cache/locales.php:202
+#, php-format
+msgid ""
+"You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
+"and your password"
+msgstr ""
+
+#: ../cache/locales.php:203
 #, php-format
 msgid "%sGmail accounts are also compatible%s but are not fully supported"
 msgstr ""
 
-#: ../cache/locales.php:193
+#: ../cache/locales.php:204
 msgid "You can login using your favorite Jabber account"
 msgstr ""
 
-#: ../cache/locales.php:194
+#: ../cache/locales.php:205
 msgid "or with our demonstration account"
 msgstr ""
 
-#: ../cache/locales.php:195
+#: ../cache/locales.php:206
 msgid "My address"
 msgstr "Meu Enderezo"
 
-#: ../cache/locales.php:197
+#: ../cache/locales.php:208
 msgid "Create one !"
 msgstr ""
 
-#: ../cache/locales.php:198
+#: ../cache/locales.php:209
 msgid "No account yet ?"
 msgstr ""
 
-#: ../cache/locales.php:199
+#: ../cache/locales.php:210
 msgid "Login with an another account"
 msgstr ""
 
-#: ../cache/locales.php:200
-msgid "This server accept only connection with xmpp accounts from these servers :"
-msgstr ""
-
-#: ../cache/locales.php:201
-#, php-format
-msgid "If you don't have such xmpp account, you can try %sanother public Movim%s client."
-msgstr ""
-
-#: ../cache/locales.php:202
-msgid "Connected"
-msgstr ""
-
-#: ../cache/locales.php:203
-msgid "Population"
-msgstr ""
-
-#: ../cache/locales.php:205
-msgid "Resolution"
-msgstr ""
-
-#: ../cache/locales.php:206
-msgid "Size"
-msgstr ""
-
-#: ../cache/locales.php:207
-msgid "Date"
-msgstr ""
-
-#: ../cache/locales.php:208
-msgid "ISO"
-msgstr ""
-
-#: ../cache/locales.php:209
-msgid "Camera"
-msgstr ""
-
-#: ../cache/locales.php:210
-msgid "Artist"
-msgstr ""
-
 #: ../cache/locales.php:211
-msgid "Original"
+msgid ""
+"This server accept only connection with xmpp accounts from these servers :"
 msgstr ""
 
 #: ../cache/locales.php:212
-msgid "Link"
+#, php-format
+msgid ""
+"If you don't have such xmpp account, you can try %sanother public Movim%s "
+"client."
 msgstr ""
 
 #: ../cache/locales.php:213
-msgid "Please select image file"
+msgid "Connected"
 msgstr ""
 
 #: ../cache/locales.php:214
-msgid "You should select valid image files only!"
-msgstr ""
-
-#: ../cache/locales.php:215
-msgid "An error occurred while uploading the file"
+msgid "Population"
 msgstr ""
 
 #: ../cache/locales.php:216
-msgid "The upload has been canceled by the user or the browser dropped the connection"
+msgid "Resolution"
 msgstr ""
 
 #: ../cache/locales.php:217
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgid "Size"
 msgstr ""
 
 #: ../cache/locales.php:218
-msgid "Hello"
+msgid "Date"
 msgstr ""
 
 #: ../cache/locales.php:219
-msgid "Welcome on your group feed, here you will see all the posts published in the groups you have subscribed."
+msgid "ISO"
 msgstr ""
 
 #: ../cache/locales.php:220
-msgid "Subscribe"
+msgid "Camera"
 msgstr ""
 
 #: ../cache/locales.php:221
-msgid "Unsubscribe"
+msgid "Artist"
 msgstr ""
 
 #: ../cache/locales.php:222
-msgid "Make your membership to this group public to your friends"
+msgid "Original"
 msgstr ""
 
 #: ../cache/locales.php:223
-msgid "Give a nickname to this group if you want"
-msgstr ""
-
-#: ../cache/locales.php:224
-msgid "Are you sure ?"
+msgid "Link"
 msgstr ""
 
 #: ../cache/locales.php:225
-msgid "Oops!"
+msgid "Please select image file"
 msgstr ""
 
 #: ../cache/locales.php:226
-msgid "I cannot find any posts here. Try to push the refresh button."
+msgid "You should select valid image files only!"
 msgstr ""
 
 #: ../cache/locales.php:227
-msgid "Manage your members"
+msgid "An error occurred while uploading the file"
 msgstr ""
 
 #: ../cache/locales.php:228
-msgid "Get the members"
+msgid ""
+"The upload has been canceled by the user or the browser dropped the "
+"connection"
 msgstr ""
 
 #: ../cache/locales.php:229
-msgid "Affiliations saved"
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
 msgstr ""
 
-#: ../cache/locales.php:230
-msgid "Configure your group"
+#: ../cache/locales.php:230 ../cache/locales.php:232
+msgid "Hello"
 msgstr ""
 
 #: ../cache/locales.php:231
-msgid "Group configuration saved"
-msgstr ""
-
-#: ../cache/locales.php:232
-msgid "Delete this group"
+msgid ""
+"Welcome on your news feed, here you will see all the posts published in the "
+"groups you have subscribed."
 msgstr ""
 
 #: ../cache/locales.php:233
+msgid ""
+"Welcome on your group feed, here you will see all the posts published in the "
+"groups you have subscribed."
+msgstr ""
+
+#: ../cache/locales.php:234
+msgid "Subscribe"
+msgstr ""
+
+#: ../cache/locales.php:235
+msgid "Unsubscribe"
+msgstr ""
+
+#: ../cache/locales.php:236
+msgid "Make your membership to this group public to your friends"
+msgstr ""
+
+#: ../cache/locales.php:237
+msgid "Give a nickname to this group if you want"
+msgstr ""
+
+#: ../cache/locales.php:238
+msgid "Are you sure ?"
+msgstr ""
+
+#: ../cache/locales.php:239
+msgid "Oops!"
+msgstr ""
+
+#: ../cache/locales.php:240
+msgid "I cannot find any posts here. Try to push the refresh button."
+msgstr ""
+
+#: ../cache/locales.php:241
+msgid "Manage your members"
+msgstr ""
+
+#: ../cache/locales.php:242
+msgid "Get the members"
+msgstr ""
+
+#: ../cache/locales.php:243
+msgid "Affiliations saved"
+msgstr ""
+
+#: ../cache/locales.php:244
+msgid "Configure your group"
+msgstr ""
+
+#: ../cache/locales.php:245
+msgid "Group configuration saved"
+msgstr ""
+
+#: ../cache/locales.php:246
+msgid "Delete this group"
+msgstr ""
+
+#: ../cache/locales.php:247
+msgid "Group deleted"
+msgstr ""
+
+#: ../cache/locales.php:248
 #, php-format
 msgid "Return to %s's list of groups"
 msgstr ""
 
-#: ../cache/locales.php:234
+#: ../cache/locales.php:249
 msgid "Manage your subscriptions"
 msgstr ""
 
-#: ../cache/locales.php:235
+#: ../cache/locales.php:250
 msgid "Manage the subscriptions"
 msgstr ""
 
-#: ../cache/locales.php:236
+#: ../cache/locales.php:251
 msgid "Get the subscriptions"
 msgstr ""
 
-#: ../cache/locales.php:237
+#: ../cache/locales.php:252
+msgid "Subscriptions saved"
+msgstr ""
+
+#: ../cache/locales.php:253
+msgid "Pending Invitations"
+msgstr ""
+
+#: ../cache/locales.php:254
 #, php-format
 msgid "%s wants to talk with you"
 msgstr ""
 
-#: ../cache/locales.php:238
+#: ../cache/locales.php:255
+msgid "News Feed"
+msgstr ""
+
+#: ../cache/locales.php:256
+msgid "Discover and register to the groups you are interested in"
+msgstr ""
+
+#: ../cache/locales.php:257
 msgid "Disconnect"
 msgstr ""
 
-#: ../cache/locales.php:239
-msgid "Status updated"
-msgstr ""
-
-#: ../cache/locales.php:240
-msgid "Saved"
-msgstr ""
-
-#: ../cache/locales.php:241
+#: ../cache/locales.php:258
 msgid "Your status here !"
 msgstr ""
 
-#: ../cache/locales.php:242
+#: ../cache/locales.php:259
+msgid "Status updated"
+msgstr ""
+
+#: ../cache/locales.php:260
+msgid "No profile yet?"
+msgstr ""
+
+#: ../cache/locales.php:261
+msgid "Create my profile"
+msgstr ""
+
+#: ../cache/locales.php:262
 msgid "Shared"
 msgstr ""
 
-#: ../cache/locales.php:244
+#: ../cache/locales.php:264
 #, php-format
 msgid "%s has been added to your public groups"
 msgstr ""
 
-#: ../cache/locales.php:245
+#: ../cache/locales.php:265
 #, php-format
 msgid "%s has been removed from your public groups"
 msgstr ""
 
-#: ../cache/locales.php:246
+#: ../cache/locales.php:266
 msgid "Ungrouped"
 msgstr ""
 
-#: ../cache/locales.php:247
+#: ../cache/locales.php:267
 msgid "Show disconnected contacts"
 msgstr ""
 
-#: ../cache/locales.php:248
+#: ../cache/locales.php:268
 msgid "Hide disconnected contacts"
 msgstr ""
 
-#: ../cache/locales.php:249
+#: ../cache/locales.php:269
 #, php-format
 msgid "Show group %s"
 msgstr ""
 
-#: ../cache/locales.php:250
+#: ../cache/locales.php:270
 #, php-format
 msgid "Hide group %s"
 msgstr ""
 
-#: ../cache/locales.php:251
+#: ../cache/locales.php:271
 msgid "Please enter a valid Jabber ID"
 msgstr ""
 
-#: ../cache/locales.php:252
-msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
-msgstr ""
-
-#: ../cache/locales.php:253
-msgid "Search"
-msgstr ""
-
-#: ../cache/locales.php:254
-msgid "Show/Hide"
-msgstr ""
-
-#: ../cache/locales.php:255
-msgid "Enter the Jabber ID of your contact."
-msgstr ""
-
-#: ../cache/locales.php:256
-msgid "Press enter to validate."
-msgstr ""
-
-#: ../cache/locales.php:257
-msgid "JID"
-msgstr ""
-
-#: ../cache/locales.php:258
-msgid "Give a friendly name to your group"
-msgstr ""
-
-#: ../cache/locales.php:259
-msgid "My Little Pony - Fan Club"
-msgstr ""
-
-#: ../cache/locales.php:260
-msgid "Subscribed"
-msgstr ""
-
-#: ../cache/locales.php:261
-msgid "Topics"
-msgstr ""
-
-#: ../cache/locales.php:262
-msgid "Statistics"
-msgstr ""
-
-#: ../cache/locales.php:263
-msgid "Since"
-msgstr ""
-
-#: ../cache/locales.php:264
-msgid "Sessions"
-msgstr ""
-
-#: ../cache/locales.php:265
-msgid "Subscriptions"
-msgstr ""
-
-#: ../cache/locales.php:266
-msgid "Monthly Subscriptions"
-msgstr ""
-
-#: ../cache/locales.php:267
-msgid "Monthly Subscriptions Cumulated"
-msgstr ""
-
-#: ../cache/locales.php:269
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr ""
-
-#: ../cache/locales.php:270
-msgid "Your server here ?"
-msgstr ""
-
-#: ../cache/locales.php:271
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr ""
-
 #: ../cache/locales.php:272
-msgid "No public feed for this contact"
+msgid ""
+"No contacts ? You can add one using the + button bellow or going to the "
+"Explore page"
 msgstr ""
 
 #: ../cache/locales.php:273
-msgid "No contact specified"
+msgid "Search"
+msgstr ""
+
+#: ../cache/locales.php:274
+msgid "Show/Hide"
 msgstr ""
 
 #: ../cache/locales.php:275
-msgid "Profile Updated"
+msgid "Enter the Jabber ID of your contact."
 msgstr ""
 
 #: ../cache/locales.php:276
-msgid "Profile Not Updated"
+msgid "Press enter to validate."
 msgstr ""
 
 #: ../cache/locales.php:277
-msgid "Your profile is now public"
+msgid "JID"
 msgstr ""
 
 #: ../cache/locales.php:278
-msgid "Your profile is now restricted"
+msgid "Give a friendly name to your group"
+msgstr ""
+
+#: ../cache/locales.php:279
+msgid "My Little Pony - Fan Club"
+msgstr ""
+
+#: ../cache/locales.php:280
+msgid "Subscribed"
+msgstr ""
+
+#: ../cache/locales.php:281
+msgid "Topics"
+msgstr ""
+
+#: ../cache/locales.php:282
+msgid "Statistics"
+msgstr ""
+
+#: ../cache/locales.php:283
+msgid "Since"
+msgstr ""
+
+#: ../cache/locales.php:284
+msgid "Sessions"
+msgstr ""
+
+#: ../cache/locales.php:285
+msgid "Subscriptions"
+msgstr ""
+
+#: ../cache/locales.php:286
+msgid "Monthly Subscriptions"
+msgstr ""
+
+#: ../cache/locales.php:287
+msgid "Monthly Subscriptions Cumulated"
+msgstr ""
+
+#: ../cache/locales.php:289
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
+msgstr ""
+
+#: ../cache/locales.php:290
+msgid "Your server here ?"
 msgstr ""
 
 #: ../cache/locales.php:291
-msgid "Accounts"
-msgstr ""
-
-#: ../cache/locales.php:292
-msgid "Twitter"
+msgid "Contact us to add yours to the officially supported servers list"
 msgstr ""
 
 #: ../cache/locales.php:293
-msgid "Skype"
+msgid "No public feed for this contact"
 msgstr ""
 
 #: ../cache/locales.php:294
-msgid "Yahoo"
-msgstr ""
-
-#: ../cache/locales.php:295
-msgid "Privacy Level"
+msgid "No contact specified"
 msgstr ""
 
 #: ../cache/locales.php:296
-msgid "Is this profile public ?"
+msgid "Profile Updated"
 msgstr ""
 
 #: ../cache/locales.php:297
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+msgid "Profile Not Updated"
 msgstr ""
 
 #: ../cache/locales.php:298
-msgid "Call"
+msgid "Your profile is now public"
 msgstr ""
 
 #: ../cache/locales.php:299
-msgid "Hang up"
-msgstr ""
-
-#: ../cache/locales.php:300
-#, fuzzy
-msgid "Connection"
-msgstr "Configuración"
-
-#: ../cache/locales.php:301
-msgid "Hung up"
-msgstr ""
-
-#: ../cache/locales.php:302
-msgid "Your contact is busy"
-msgstr ""
-
-#: ../cache/locales.php:303
-msgid "Declined"
-msgstr ""
-
-#: ../cache/locales.php:304
-msgid "Remote application incompatible"
-msgstr ""
-
-#: ../cache/locales.php:306
-msgid "Is calling you"
-msgstr ""
-
-#: ../cache/locales.php:307 ../cache/locales.php:334
-msgid "Feed"
-msgstr ""
-
-#: ../cache/locales.php:308 ../cache/locales.php:330
-msgid "Blog"
-msgstr ""
-
-#: ../cache/locales.php:309
-msgid "Original page"
-msgstr ""
-
-#: ../cache/locales.php:310
-msgid "Authors"
-msgstr ""
-
-#: ../cache/locales.php:311
-msgid "Revisions"
+msgid "Your profile is now restricted"
 msgstr ""
 
 #: ../cache/locales.php:312
-msgid "Abstract"
+msgid "Accounts"
 msgstr ""
 
 #: ../cache/locales.php:313
-msgid "Status"
+msgid "Twitter"
 msgstr ""
 
 #: ../cache/locales.php:314
-msgid "Type"
+msgid "Skype"
 msgstr ""
 
 #: ../cache/locales.php:315
-msgid "You don't have javascript enabled.  Good luck with that."
+msgid "Yahoo"
 msgstr ""
 
 #: ../cache/locales.php:316
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgid "Privacy Level"
 msgstr ""
 
 #: ../cache/locales.php:317
-msgid "Administration"
+msgid "Is this profile public ?"
 msgstr ""
 
 #: ../cache/locales.php:318
-msgid "Home"
-msgstr "Inicio"
+msgid ""
+"Please pay attention ! By making your profile public, all the information "
+"listed above will be available for all the Movim users and on the whole "
+"Internet."
+msgstr ""
 
 #: ../cache/locales.php:319
-msgid "Discover"
+msgid "Call"
 msgstr ""
 
 #: ../cache/locales.php:320
-msgid "Explore"
+msgid "Hang up"
 msgstr ""
 
 #: ../cache/locales.php:321
-msgid "Account Creation"
-msgstr "Creación dunha Conta"
-
-#: ../cache/locales.php:322
-msgid "News"
+msgid "Connection"
 msgstr ""
 
-#: ../cache/locales.php:323
-msgid "Avatar"
+#: ../cache/locales.php:322 ../cache/locales.php:328
+msgid "Hung up"
 msgstr ""
 
-#: ../cache/locales.php:324
-msgid "Configuration"
-msgstr "Configuración"
-
-#: ../cache/locales.php:325
-msgid "Server"
+#: ../cache/locales.php:323 ../cache/locales.php:329
+msgid "Your contact is busy"
 msgstr ""
 
-#: ../cache/locales.php:326
-msgid "Public Groups"
+#: ../cache/locales.php:324 ../cache/locales.php:330
+msgid "Declined"
 msgstr ""
 
-#: ../cache/locales.php:327
-msgid "Viewer"
+#: ../cache/locales.php:325 ../cache/locales.php:331
+msgid "Remote application incompatible"
 msgstr ""
 
-#: ../cache/locales.php:328
-msgid "Profile"
+#: ../cache/locales.php:327 ../cache/locales.php:333
+msgid "Is calling you"
 msgstr ""
 
-#: ../cache/locales.php:329
-msgid "Media"
+#: ../cache/locales.php:334 ../cache/locales.php:361
+msgid "Feed"
 msgstr ""
 
-#: ../cache/locales.php:331
-msgid "About"
-msgstr ""
-
-#: ../cache/locales.php:332
-msgid "Login"
-msgstr ""
-
-#: ../cache/locales.php:333
-msgid "Help"
+#: ../cache/locales.php:335 ../cache/locales.php:357
+msgid "Blog"
 msgstr ""
 
 #: ../cache/locales.php:336
-msgid "Gallery"
+msgid "Original page"
 msgstr ""
 
 #: ../cache/locales.php:337
-msgid "Preview"
+msgid "Authors"
 msgstr ""
 
 #: ../cache/locales.php:338
-msgid "Visio-conference"
+msgid "Revisions"
 msgstr ""
 
 #: ../cache/locales.php:339
-msgid "Pods"
+msgid "Abstract"
 msgstr ""
 
 #: ../cache/locales.php:340
+msgid "Status"
+msgstr ""
+
+#: ../cache/locales.php:341
+msgid "Type"
+msgstr ""
+
+#: ../cache/locales.php:342
+msgid "You don't have javascript enabled.  Good luck with that."
+msgstr ""
+
+#: ../cache/locales.php:343
+msgid ""
+"Movim is a kickass distributed social networking platform that protect your "
+"privacy an comes with a set of awesome features."
+msgstr ""
+
+#: ../cache/locales.php:344
+msgid "Administration"
+msgstr ""
+
+#: ../cache/locales.php:345
+msgid "Home"
+msgstr "Inicio"
+
+#: ../cache/locales.php:346
+msgid "Discover"
+msgstr ""
+
+#: ../cache/locales.php:347
+msgid "Explore"
+msgstr ""
+
+#: ../cache/locales.php:348
+msgid "Account Creation"
+msgstr "Creación dunha Conta"
+
+#: ../cache/locales.php:349
+msgid "News"
+msgstr ""
+
+#: ../cache/locales.php:350
+msgid "Avatar"
+msgstr ""
+
+#: ../cache/locales.php:351
+msgid "Configuration"
+msgstr "Configuración"
+
+#: ../cache/locales.php:352
+msgid "Server"
+msgstr ""
+
+#: ../cache/locales.php:353
+msgid "Public Groups"
+msgstr ""
+
+#: ../cache/locales.php:354
+msgid "Viewer"
+msgstr ""
+
+#: ../cache/locales.php:355
+msgid "Profile"
+msgstr ""
+
+#: ../cache/locales.php:356
+msgid "Media"
+msgstr ""
+
+#: ../cache/locales.php:358
+msgid "About"
+msgstr ""
+
+#: ../cache/locales.php:359
+msgid "Login"
+msgstr ""
+
+#: ../cache/locales.php:360
+msgid "Help"
+msgstr ""
+
+#: ../cache/locales.php:363
+msgid "Gallery"
+msgstr ""
+
+#: ../cache/locales.php:364
+msgid "Preview"
+msgstr ""
+
+#: ../cache/locales.php:365
+msgid "Visio-conference"
+msgstr ""
+
+#: ../cache/locales.php:366
+msgid "Pods"
+msgstr ""
+
+#: ../cache/locales.php:367
 #, php-format
 msgid "Error: %s"
 msgstr ""
 
-#: ../cache/locales.php:341
+#: ../cache/locales.php:368
 #, php-format
 msgid "Cannot load file '%s'"
 msgstr "Non pode cargarse o arquivo '%s'"
 
-#: ../cache/locales.php:342
+#: ../cache/locales.php:369
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
-msgstr "Erro de ruta, por favor, coloque todos os parámetros para a páxina %s"
+msgstr ""
+"Erro de ruta, por favor, coloque todos os parámetros para a páxina %s"
 
-#: ../cache/locales.php:343
+#: ../cache/locales.php:370
+#, php-format
+msgid "Requested widget '%s' doesn't exist."
+msgstr ""
+
+#: ../cache/locales.php:371
+msgid "Whoops!"
+msgstr ""
+
+#: ../cache/locales.php:372
+msgid "It seem that you don't have any pictures here?"
+msgstr ""
+
+#: ../cache/locales.php:373
+msgid "You can try to upload a couple by going to the Media page"
+msgstr ""
+
+#: ../cache/locales.php:374
 #, php-format
 msgid "%s - About"
 msgstr ""
 
-#: ../cache/locales.php:344
+#: ../cache/locales.php:375
 #, php-format
 msgid "%s - Account"
 msgstr ""
 
-#: ../cache/locales.php:345
+#: ../cache/locales.php:376
 #, php-format
 msgid "%s - Administration Panel"
 msgstr ""
 
-#: ../cache/locales.php:346
+#: ../cache/locales.php:377
 #, php-format
 msgid "%s - Blog"
 msgstr ""
 
-#: ../cache/locales.php:347
+#: ../cache/locales.php:378
 #, php-format
 msgid "%s - Configuration"
 msgstr "Configuración de %s"
 
-#: ../cache/locales.php:348
+#: ../cache/locales.php:379
 #, php-format
 msgid "%s - Discover"
 msgstr ""
 
-#: ../cache/locales.php:349
+#: ../cache/locales.php:380
 #, php-format
 msgid "%s - Explore"
 msgstr ""
 
-#: ../cache/locales.php:350
+#: ../cache/locales.php:381
 #, php-format
 msgid "%s - Help Page"
 msgstr ""
 
-#: ../cache/locales.php:351
+#: ../cache/locales.php:382
 #, php-format
 msgid "%s - Login to Movim"
 msgstr "%s - Iniciar a MOVIM"
 
-#: ../cache/locales.php:352
+#: ../cache/locales.php:383
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr "%s - Benvindo ao MOVIM"
 
-#: ../cache/locales.php:353
+#: ../cache/locales.php:384
 #, php-format
 msgid "%s - Media"
 msgstr ""
 
-#: ../cache/locales.php:354
+#: ../cache/locales.php:385
 #, php-format
 msgid "%s - News"
 msgstr ""
 
-#: ../cache/locales.php:355
+#: ../cache/locales.php:386
 #, php-format
 msgid "%s - Group Configuration"
 msgstr ""
 
-#: ../cache/locales.php:356
+#: ../cache/locales.php:387
 #, php-format
 msgid "%s - Group"
 msgstr ""
 
-#: ../cache/locales.php:357
+#: ../cache/locales.php:388
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
-#: ../cache/locales.php:358
+#: ../cache/locales.php:389
 #, php-format
 msgid "%s - Profile"
 msgstr ""
 
-#: ../cache/locales.php:359
+#: ../cache/locales.php:390
 #, php-format
 msgid "%s - Server"
 msgstr ""
 
-#: ../cache/locales.php:360
+#: ../cache/locales.php:391
 msgid "Validate"
 msgstr ""
 
-#: ../cache/locales.php:361
+#: ../cache/locales.php:392
 msgid "Refresh"
 msgstr ""
 
-#: ../cache/locales.php:362
+#: ../cache/locales.php:393
 msgid "Add"
 msgstr ""
 
-#: ../cache/locales.php:363
+#: ../cache/locales.php:394
 msgid "Close"
 msgstr ""
 
-#: ../cache/locales.php:364
+#: ../cache/locales.php:395
 msgid "Update"
 msgstr ""
 
-#: ../cache/locales.php:365
+#: ../cache/locales.php:396
 msgid "Updating"
 msgstr ""
 
-#: ../cache/locales.php:366
+#: ../cache/locales.php:397
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../cache/locales.php:367
+#: ../cache/locales.php:398
+msgid "Submitting"
+msgstr ""
+
+#: ../cache/locales.php:399
 msgid "Reset"
 msgstr "Restablecer"
 
-#: ../cache/locales.php:368
+#: ../cache/locales.php:400
 msgid "Register"
 msgstr ""
 
-#: ../cache/locales.php:369
+#: ../cache/locales.php:401
 msgid "Unregister"
 msgstr ""
 
-#: ../cache/locales.php:370
+#: ../cache/locales.php:402
 msgid "Save"
 msgstr ""
 
-#: ../cache/locales.php:371
+#: ../cache/locales.php:403
 msgid "Clear"
 msgstr ""
 
-#: ../cache/locales.php:372
+#: ../cache/locales.php:404
 msgid "Upload"
 msgstr ""
 
-#: ../cache/locales.php:373
+#: ../cache/locales.php:405
 msgid "Come in!"
 msgstr "Entra!"
 
-#: ../cache/locales.php:374
+#: ../cache/locales.php:406
 msgid "Connecting..."
 msgstr ""
 
-#: ../cache/locales.php:375
+#: ../cache/locales.php:407
 msgid "Yes"
 msgstr ""
 
-#: ../cache/locales.php:376
+#: ../cache/locales.php:408
 msgid "No"
 msgstr ""
 
-#: ../cache/locales.php:377
+#: ../cache/locales.php:409
 msgid "Return"
 msgstr ""
 
-#: ../cache/locales.php:378
+#: ../cache/locales.php:410
+msgid "Accept"
+msgstr ""
+
+#: ../cache/locales.php:411
 #, php-format
 msgid "Step %s"
 msgstr ""
 
-#: ../cache/locales.php:381
+#: ../cache/locales.php:414
 msgid "Day"
 msgstr ""
 
-#: ../cache/locales.php:382
+#: ../cache/locales.php:415
 msgid "Monday"
 msgstr "Luns"
 
-#: ../cache/locales.php:383
+#: ../cache/locales.php:416
 msgid "Tuesday"
 msgstr "Martes"
 
-#: ../cache/locales.php:384
+#: ../cache/locales.php:417
 msgid "Wednesday"
 msgstr "Mércores"
 
-#: ../cache/locales.php:385
+#: ../cache/locales.php:418
 msgid "Thursday"
 msgstr "Xoves"
 
-#: ../cache/locales.php:386
+#: ../cache/locales.php:419
 msgid "Friday"
 msgstr "Venres"
 
-#: ../cache/locales.php:387
+#: ../cache/locales.php:420
 msgid "Saturday"
 msgstr "Sábado"
 
-#: ../cache/locales.php:388
+#: ../cache/locales.php:421
 msgid "Sunday"
 msgstr ""
 
-#: ../cache/locales.php:389 ../cache/locales.php:398
+#: ../cache/locales.php:422 ../cache/locales.php:431
 msgid "None"
 msgstr ""
 
-#: ../cache/locales.php:390
+#: ../cache/locales.php:423
 msgid "Male"
 msgstr ""
 
-#: ../cache/locales.php:391
+#: ../cache/locales.php:424
 msgid "Female"
 msgstr ""
 
-#: ../cache/locales.php:392
+#: ../cache/locales.php:425
 msgid "Other"
 msgstr ""
 
-#: ../cache/locales.php:393
+#: ../cache/locales.php:426
 msgid "Bot"
 msgstr ""
 
-#: ../cache/locales.php:394
+#: ../cache/locales.php:427
 msgid "Desktop"
 msgstr ""
 
-#: ../cache/locales.php:395
+#: ../cache/locales.php:428
 msgid "Phone"
 msgstr ""
 
-#: ../cache/locales.php:396
+#: ../cache/locales.php:429
 msgid "Web"
 msgstr ""
 
-#: ../cache/locales.php:397
+#: ../cache/locales.php:430
 msgid "Registered"
 msgstr ""
 
-#: ../cache/locales.php:399
+#: ../cache/locales.php:432
 msgid "Single"
 msgstr ""
 
-#: ../cache/locales.php:400
+#: ../cache/locales.php:433
 msgid "In a relationship"
 msgstr ""
 
-#: ../cache/locales.php:401
+#: ../cache/locales.php:434
 msgid "Married"
 msgstr ""
 
-#: ../cache/locales.php:402
+#: ../cache/locales.php:435
 msgid "Divorced"
 msgstr ""
 
-#: ../cache/locales.php:403
+#: ../cache/locales.php:436
 msgid "Widowed"
 msgstr ""
 
-#: ../cache/locales.php:404
+#: ../cache/locales.php:437
 msgid "Cohabiting"
 msgstr ""
 
-#: ../cache/locales.php:405
+#: ../cache/locales.php:438
 msgid "Civil Union"
 msgstr ""
 
-#: ../cache/locales.php:406
+#: ../cache/locales.php:439
 msgid "Not shared"
 msgstr ""
 
-#: ../cache/locales.php:407
+#: ../cache/locales.php:440
 msgid "Shared with one contact"
 msgstr ""
 
-#: ../cache/locales.php:408
+#: ../cache/locales.php:441
 msgid "Shared with all contacts"
 msgstr ""
 
-#: ../cache/locales.php:409
+#: ../cache/locales.php:442
 msgid "Shared with the XMPP network"
 msgstr ""
 
-#: ../cache/locales.php:410
+#: ../cache/locales.php:443
 msgid "Shared with the whole Internet"
 msgstr ""
 
-#: ../cache/locales.php:411
+#: ../cache/locales.php:444
 msgid "Online"
 msgstr ""
 
-#: ../cache/locales.php:412
+#: ../cache/locales.php:445
 msgid "Away"
 msgstr "Fóra"
 
-#: ../cache/locales.php:413
+#: ../cache/locales.php:446
 msgid "Do Not Disturb"
 msgstr ""
 
-#: ../cache/locales.php:414
+#: ../cache/locales.php:447
 msgid "Extended Away"
 msgstr ""
 
-#: ../cache/locales.php:415
+#: ../cache/locales.php:448
 msgid "Offline"
 msgstr ""
 
-#: ../cache/locales.php:416
+#: ../cache/locales.php:449
 msgid "Error"
 msgstr ""
 
-#: ../cache/locales.php:417
+#: ../cache/locales.php:450
 msgid "afraid"
 msgstr ""
 
-#: ../cache/locales.php:418
+#: ../cache/locales.php:451
 msgid "amazed"
 msgstr ""
 
-#: ../cache/locales.php:419
+#: ../cache/locales.php:452
 msgid "amorous"
 msgstr ""
 
-#: ../cache/locales.php:420
+#: ../cache/locales.php:453
 msgid "angry"
 msgstr ""
 
-#: ../cache/locales.php:421
+#: ../cache/locales.php:454
 msgid "annoyed"
 msgstr ""
 
-#: ../cache/locales.php:422
+#: ../cache/locales.php:455
 msgid "anxious"
 msgstr ""
 
-#: ../cache/locales.php:423
+#: ../cache/locales.php:456
 msgid "aroused"
 msgstr ""
 
-#: ../cache/locales.php:424
+#: ../cache/locales.php:457
 msgid "ashamed"
 msgstr ""
 
-#: ../cache/locales.php:425
+#: ../cache/locales.php:458
 msgid "bored"
 msgstr ""
 
-#: ../cache/locales.php:426
+#: ../cache/locales.php:459
 msgid "brave"
 msgstr ""
 
-#: ../cache/locales.php:427
+#: ../cache/locales.php:460
 msgid "calm"
 msgstr ""
 
-#: ../cache/locales.php:428
+#: ../cache/locales.php:461
 msgid "cautious"
 msgstr ""
 
-#: ../cache/locales.php:429
+#: ../cache/locales.php:462
 msgid "cold"
 msgstr ""
 
-#: ../cache/locales.php:430
+#: ../cache/locales.php:463
 msgid "confident"
 msgstr ""
 
-#: ../cache/locales.php:431
+#: ../cache/locales.php:464
 msgid "confused"
 msgstr ""
 
-#: ../cache/locales.php:432
+#: ../cache/locales.php:465
 msgid "contemplative"
 msgstr ""
 
-#: ../cache/locales.php:433
+#: ../cache/locales.php:466
 msgid "contented"
 msgstr ""
 
-#: ../cache/locales.php:434
+#: ../cache/locales.php:467
 msgid "cranky"
 msgstr ""
 
-#: ../cache/locales.php:435
+#: ../cache/locales.php:468
 msgid "crazy"
 msgstr ""
 
-#: ../cache/locales.php:436
+#: ../cache/locales.php:469
 msgid "creative"
 msgstr ""
 
-#: ../cache/locales.php:437
+#: ../cache/locales.php:470
 msgid "curious"
 msgstr ""
 
-#: ../cache/locales.php:438
+#: ../cache/locales.php:471
 msgid "dejected"
 msgstr ""
 
-#: ../cache/locales.php:439
+#: ../cache/locales.php:472
 msgid "depressed"
 msgstr ""
 
-#: ../cache/locales.php:440
+#: ../cache/locales.php:473
 msgid "disappointed"
 msgstr ""
 
-#: ../cache/locales.php:441
+#: ../cache/locales.php:474
 msgid "disgusted"
 msgstr ""
 
-#: ../cache/locales.php:442
+#: ../cache/locales.php:475
 msgid "dismayed"
 msgstr ""
 
-#: ../cache/locales.php:443
+#: ../cache/locales.php:476
 msgid "distracted"
 msgstr ""
 
-#: ../cache/locales.php:444
+#: ../cache/locales.php:477
 msgid "embarrassed"
 msgstr ""
 
-#: ../cache/locales.php:445
+#: ../cache/locales.php:478
 msgid "envious"
 msgstr ""
 
-#: ../cache/locales.php:446
+#: ../cache/locales.php:479
 msgid "excited"
 msgstr ""
 
-#: ../cache/locales.php:447
+#: ../cache/locales.php:480
 msgid "flirtatious"
 msgstr ""
 
-#: ../cache/locales.php:448
+#: ../cache/locales.php:481
 msgid "frustated"
 msgstr ""
 
-#: ../cache/locales.php:449
+#: ../cache/locales.php:482
 msgid "grateful"
 msgstr ""
 
-#: ../cache/locales.php:450
+#: ../cache/locales.php:483
 msgid "grieving"
 msgstr ""
 
-#: ../cache/locales.php:451
+#: ../cache/locales.php:484
 msgid "grumpy"
 msgstr ""
 
-#: ../cache/locales.php:452
+#: ../cache/locales.php:485
 msgid "guilty"
 msgstr ""
 
-#: ../cache/locales.php:453
+#: ../cache/locales.php:486
 msgid "happy"
 msgstr ""
 
-#: ../cache/locales.php:454
+#: ../cache/locales.php:487
 msgid "hopeful"
 msgstr ""
 
-#: ../cache/locales.php:455
+#: ../cache/locales.php:488
 msgid "hot"
 msgstr ""
 
-#: ../cache/locales.php:456
+#: ../cache/locales.php:489
 msgid "humbled"
 msgstr ""
 
-#: ../cache/locales.php:457
+#: ../cache/locales.php:490
 msgid "humiliated"
 msgstr ""
 
-#: ../cache/locales.php:458
+#: ../cache/locales.php:491
 msgid "hungry"
 msgstr ""
 
-#: ../cache/locales.php:459
+#: ../cache/locales.php:492
 msgid "hurt"
 msgstr ""
 
-#: ../cache/locales.php:460
+#: ../cache/locales.php:493
 msgid "impressed"
 msgstr ""
 
-#: ../cache/locales.php:461
+#: ../cache/locales.php:494
 msgid "in awe"
 msgstr ""
 
-#: ../cache/locales.php:462
+#: ../cache/locales.php:495
 msgid "in love"
 msgstr ""
 
-#: ../cache/locales.php:463
+#: ../cache/locales.php:496
 msgid "indignant"
 msgstr ""
 
-#: ../cache/locales.php:464
+#: ../cache/locales.php:497
 msgid "interested"
 msgstr ""
 
-#: ../cache/locales.php:465
+#: ../cache/locales.php:498
 msgid "intoxicated"
 msgstr ""
 
-#: ../cache/locales.php:466
+#: ../cache/locales.php:499
 msgid "invincible"
 msgstr ""
 
-#: ../cache/locales.php:467
+#: ../cache/locales.php:500
 msgid "jealous"
 msgstr ""
 
-#: ../cache/locales.php:468
+#: ../cache/locales.php:501
 msgid "lonely"
 msgstr ""
 
-#: ../cache/locales.php:469
+#: ../cache/locales.php:502
 msgid "lost"
 msgstr ""
 
-#: ../cache/locales.php:470
+#: ../cache/locales.php:503
 msgid "lucky"
 msgstr ""
 
-#: ../cache/locales.php:471
+#: ../cache/locales.php:504
 msgid "mean"
 msgstr ""
 
-#: ../cache/locales.php:472
+#: ../cache/locales.php:505
 msgid "moody"
 msgstr ""
 
-#: ../cache/locales.php:473
+#: ../cache/locales.php:506
 msgid "nervous"
 msgstr ""
 
-#: ../cache/locales.php:474
+#: ../cache/locales.php:507
 msgid "neutral"
 msgstr ""
 
-#: ../cache/locales.php:475
+#: ../cache/locales.php:508
 msgid "offended"
 msgstr ""
 
-#: ../cache/locales.php:476
+#: ../cache/locales.php:509
 msgid "outraged"
 msgstr ""
 
-#: ../cache/locales.php:477
+#: ../cache/locales.php:510
 msgid "playful"
 msgstr ""
 
-#: ../cache/locales.php:478
+#: ../cache/locales.php:511
 msgid "proud"
 msgstr ""
 
-#: ../cache/locales.php:479
+#: ../cache/locales.php:512
 msgid "relaxed"
 msgstr ""
 
-#: ../cache/locales.php:480
+#: ../cache/locales.php:513
 msgid "relieved"
 msgstr ""
 
-#: ../cache/locales.php:481
+#: ../cache/locales.php:514
 msgid "remorseful"
 msgstr ""
 
-#: ../cache/locales.php:482
+#: ../cache/locales.php:515
 msgid "restless"
 msgstr ""
 
-#: ../cache/locales.php:483
+#: ../cache/locales.php:516
 msgid "sad"
 msgstr ""
 
-#: ../cache/locales.php:484
+#: ../cache/locales.php:517
 msgid "sarcastic"
 msgstr ""
 
-#: ../cache/locales.php:485
+#: ../cache/locales.php:518
 msgid "satisfied"
 msgstr ""
 
-#: ../cache/locales.php:486
+#: ../cache/locales.php:519
 msgid "serious"
 msgstr ""
 
-#: ../cache/locales.php:487
+#: ../cache/locales.php:520
 msgid "shocked"
 msgstr ""
 
-#: ../cache/locales.php:488
+#: ../cache/locales.php:521
 msgid "shy"
 msgstr ""
 
-#: ../cache/locales.php:489
+#: ../cache/locales.php:522
 msgid "sick"
 msgstr ""
 
-#: ../cache/locales.php:490
+#: ../cache/locales.php:523
 msgid "sleepy"
 msgstr ""
 
-#: ../cache/locales.php:491
+#: ../cache/locales.php:524
 msgid "spontaneous"
 msgstr ""
 
-#: ../cache/locales.php:492
+#: ../cache/locales.php:525
 msgid "stressed"
 msgstr ""
 
-#: ../cache/locales.php:493
+#: ../cache/locales.php:526
 msgid "strong"
 msgstr ""
 
-#: ../cache/locales.php:494
+#: ../cache/locales.php:527
 msgid "surprised"
 msgstr ""
 
-#: ../cache/locales.php:495
+#: ../cache/locales.php:528
 msgid "thankful"
 msgstr ""
 
-#: ../cache/locales.php:496
+#: ../cache/locales.php:529
 msgid "thirsty"
 msgstr ""
 
-#: ../cache/locales.php:497
+#: ../cache/locales.php:530
 msgid "tired"
 msgstr ""
 
-#: ../cache/locales.php:498
+#: ../cache/locales.php:531
 msgid "undefined"
 msgstr ""
 
-#: ../cache/locales.php:499
+#: ../cache/locales.php:532
 msgid "weak"
 msgstr ""
 
-#: ../cache/locales.php:500
+#: ../cache/locales.php:533
 msgid "worried"
 msgstr ""
 
-#: ../cache/locales.php:501
+#: ../cache/locales.php:534
 msgid "Month"
 msgstr ""
 
-#: ../cache/locales.php:502
+#: ../cache/locales.php:535
 msgid "January"
 msgstr "Xaneiro"
 
-#: ../cache/locales.php:503
+#: ../cache/locales.php:536
 msgid "February"
 msgstr "Febreiro"
 
-#: ../cache/locales.php:504
+#: ../cache/locales.php:537
 msgid "March"
 msgstr "Marzo"
 
-#: ../cache/locales.php:505
+#: ../cache/locales.php:538
 msgid "April"
 msgstr "Abril"
 
-#: ../cache/locales.php:506
+#: ../cache/locales.php:539
 msgid "May"
 msgstr "Maio"
 
-#: ../cache/locales.php:507
+#: ../cache/locales.php:540
 msgid "June"
 msgstr "Xuño"
 
-#: ../cache/locales.php:508
+#: ../cache/locales.php:541
 msgid "July"
 msgstr ""
 
-#: ../cache/locales.php:509
+#: ../cache/locales.php:542
 msgid "August"
 msgstr ""
 
-#: ../cache/locales.php:510
+#: ../cache/locales.php:543
 msgid "September"
 msgstr ""
 
-#: ../cache/locales.php:511
+#: ../cache/locales.php:544
 msgid "October"
 msgstr ""
 
-#: ../cache/locales.php:512
+#: ../cache/locales.php:545
 msgid "November"
 msgstr ""
 
-#: ../cache/locales.php:513
+#: ../cache/locales.php:546
 msgid "December"
 msgstr ""
 
-#: ../cache/locales.php:514
+#: ../cache/locales.php:547
 msgid "Year"
 msgstr ""
 
-#: ../cache/locales.php:515
+#: ../cache/locales.php:548
 msgid "Today"
 msgstr ""
 
-#: ../cache/locales.php:516
+#: ../cache/locales.php:549
 msgid "Tomorrow"
 msgstr ""
 
-#: ../cache/locales.php:517
+#: ../cache/locales.php:550
 msgid "Yesterday"
 msgstr ""
 
-#: ../cache/locales.php:518
+#: ../cache/locales.php:551
 #, php-format
 msgid " %d days ago"
 msgstr ""
 
-#: ../cache/locales.php:519
+#: ../cache/locales.php:552
 msgid "day"
 msgstr ""
 
-#: ../cache/locales.php:520
+#: ../cache/locales.php:553
 msgid "Title"
 msgstr ""
 
-#: ../cache/locales.php:521
+#: ../cache/locales.php:554
 msgid "What's new ?"
 msgstr ""
 
-#: ../cache/locales.php:522
+#: ../cache/locales.php:555
 msgid "Place"
 msgstr ""
 
-#: ../cache/locales.php:523
+#: ../cache/locales.php:556
 msgid "by"
 msgstr ""
 
-#: ../cache/locales.php:524
+#: ../cache/locales.php:557
 msgid "Geolocalisation"
 msgstr ""
 
-#: ../cache/locales.php:525
+#: ../cache/locales.php:558
 msgid "email"
 msgstr ""
 
-#: ../cache/locales.php:526
+#: ../cache/locales.php:559
 msgid "No content"
 msgstr ""
 
-#: ../cache/locales.php:527
+#: ../cache/locales.php:560
 msgid "No comments"
 msgstr ""
 
-#: ../cache/locales.php:528
+#: ../cache/locales.php:561
 msgid "No comments stream"
 msgstr ""
 
-#: ../cache/locales.php:529
+#: ../cache/locales.php:562
 msgid "Your feed cannot be loaded."
 msgstr ""
 
-#: ../cache/locales.php:530
+#: ../cache/locales.php:563
 msgid "Get older posts"
 msgstr ""
 
-#: ../cache/locales.php:531
+#: ../cache/locales.php:564
 #, php-format
 msgid "%s new items"
 msgstr ""
 
-#: ../cache/locales.php:532
+#: ../cache/locales.php:565
 msgid "Comment publication error"
 msgstr ""
 
-#: ../cache/locales.php:533
+#: ../cache/locales.php:566
 msgid "Show the older comments"
 msgstr ""
 
-#: ../cache/locales.php:534
+#: ../cache/locales.php:567
 msgid "Loading comments ..."
 msgstr ""
 
-#: ../cache/locales.php:535
+#: ../cache/locales.php:568
 msgid "Get the comments"
 msgstr ""
 
-#: ../cache/locales.php:536
+#: ../cache/locales.php:569
 msgid "Add a comment"
 msgstr ""
 
-#: ../cache/locales.php:537
+#: ../cache/locales.php:570
 msgid "Share with"
 msgstr ""
 
-#: ../cache/locales.php:538
+#: ../cache/locales.php:571
 msgid "Everyone"
 msgstr ""
 
-#: ../cache/locales.php:539
+#: ../cache/locales.php:572
 msgid "Your contacts"
 msgstr ""
 
-#: ../cache/locales.php:540
+#: ../cache/locales.php:573
 msgid "Delete this post"
 msgstr ""
 
-#: ../cache/locales.php:541
+#: ../cache/locales.php:574
 msgid "Updated"
 msgstr ""
 
-#: ../cache/locales.php:542
+#: ../cache/locales.php:575
+msgid "Content not found"
+msgstr ""
+
+#: ../cache/locales.php:576
 msgid "The API is not reachable, try again later"
 msgstr ""
 
 #~ msgid "Logout"
 #~ msgstr "Saír"
 
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "Creación de Conta %s"
 
@@ -2091,6 +2222,7 @@ msgstr ""
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "Incompatibilidade de versión PHP. Movim require PHP mínimo 5.3."
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim require a extensión %s."
 

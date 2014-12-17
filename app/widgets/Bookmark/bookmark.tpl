@@ -19,9 +19,9 @@
        style="float: right;"
        title="{$c->__('url.add')}"
        onclick="movim_toggle_display('#bookmarkurladd')"></a>-->
-    <a class="button color blue alone oppose" 
+    <!--<a class="button color blue alone oppose" 
        title="{$c->__('button.refresh')}"
        onclick="{$getbookmark}">
         <i class="fa fa-refresh"></i> 
-    </a>
+    </a>-->
 </div>

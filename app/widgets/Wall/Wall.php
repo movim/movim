@@ -36,7 +36,7 @@ class Wall extends WidgetCommon
     }
     
     function display() {
-        $this->view->assign('refresh', $this->genCallAjax('ajaxWall', '"'.$_GET['f'].'"'));
+        $this->view->assign('refresh', $this->call('ajaxWall', '"'.$_GET['f'].'"'));
     }
     
     function onNoStream() {
@@ -89,8 +89,8 @@ class Wall extends WidgetCommon
             $wallhead->assign('from', $from);
             $wallhead->assign('posts', $htmlmessages);
             $wallhead->assign('pl', $pl);
-            $wallhead->assign('refresh', $this->genCallAjax('ajaxWall', "'".$from."'"));
-            $wallhead->assign('older', $this->genCallAjax('ajaxGetFeed', "'".$next."'", "'".$from."'"));
+            $wallhead->assign('refresh', $this->call('ajaxWall', "'".$from."'"));
+            $wallhead->assign('older', $this->call('ajaxGetFeed', "'".$next."'", "'".$from."'"));
             $html = $wallhead->draw('_wall_head', true);
         }
         
