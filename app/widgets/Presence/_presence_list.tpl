@@ -1,6 +1,6 @@
 <section>
-    <ul class="active">
-        <li class="subheader">Status **Fixme**</li>
+    <ul class="active thin">
+        <li class="subheader">{$c->__('status.status')}</li>
         <li>
             <span class="icon"><i class="md md-mode-edit"></i></span>
             <form>
@@ -15,38 +15,32 @@
                 </div>
             </form>        
         </li>
-        <li class="subheader">Presence **Fixme**</li>
-        <li>
-            <a onclick="{$callchat} movim_toggle_class('#logoutlist', 'show');" class="online">
-                <span class="icon bubble color small green"></span>
-                {$txt[1]}
-            </a>
+        <li class="subheader">{$c->__('status.presence')}</li>
+        <li onclick="{$callchat}">
+            <span class="icon bubble color small green"></span>
+            {$txt[1]}
         </li>
-        <li>
-            <a onclick="{$callaway} movim_toggle_class('#logoutlist', 'show');" class="away">
-                <span class="icon bubble color small orange"></span>
-                {$txt[2]}
-            </a>
+        <li onclick="{$callaway}">
+            <span class="icon bubble color small orange"></span>
+            {$txt[2]}
         </li>
-        <li>
-            <a onclick="{$calldnd}  movim_toggle_class('#logoutlist', 'show');" class="dnd">
-                <span class="icon bubble color small red"></span>
-                {$txt[3]}
-            </a>
+        <li onclick="{$calldnd}">
+            <span class="icon bubble color small red"></span>
+            {$txt[3]}
         </li>
-        <li>
-            <a onclick="{$callxa} movim_toggle_class('#logoutlist', 'show');" class="xa">
-                <span class="icon bubble color small purple"></span>
-                {$txt[4]}
-            </a>
+        <li onclick="{$callxa}" >
+            <span class="icon bubble color small purple"></span>
+            {$txt[4]}
+        </li>
+        <li class="subheader">{$c->__('status.disconnect')}</li>
+        <li onclick="{$calllogout}">
+            <span class="icon"><i class="md md-exit-to-app"></i></span>
+            {$c->__('status.disconnect')}
         </li>
     </ul>
 </section>
 <div class="actions">
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
-    </a>
-    <a onclick="{$calllogout} movim_toggle_class('#logoutlist', 'show');" class="button flat">
-        {$c->__('disconnect')}
     </a>
 </div>

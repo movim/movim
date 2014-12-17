@@ -77,7 +77,21 @@ h4, input { /* Headline */
     line-height: 3rem;
 }
 
-.snackbar, /* Body 1 */
+h4 {
+    font-weight: 400;
+}
+
+h4.gray {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+article section content ul li, /* Body 1 */
+article section content p {
+    font-size: 1.75rem;
+    font-weight: 400;
+}
+
+.snackbar, /* Body 2 */
 .toast {
     font-size: 1.75rem;
     font-weight: 500;
@@ -378,7 +392,7 @@ header.big p {
     top: 15%;
     left: 50%;
     background-color: white;
-    height: 70%;
+    height: initial;
     max-height: 70%;
     width: 40rem;
     margin-left: -20rem;
@@ -387,13 +401,16 @@ header.big p {
     border-radius: 0.25rem;
     z-index: 3;
     box-sizing: border-box;
+
+    height: 100%;
     
     padding-top: 3rem;
+    padding-bottom: 8rem;
 }
 
 .dialog > section {
     margin: 0 3rem;
-    height: calc(100% - 8rem);
+    height: 100%;
     overflow-y: auto;
     position: relative;
 }
@@ -424,6 +441,10 @@ header.big p {
     padding: 0.5rem 2rem;
     position: absolute;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.dialog .actions.no_bar {
+    border-top: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -467,7 +488,7 @@ header.big p {
 
 .toast {
     background-color: #323232;
-    border-radius: 2rem;
+    border-radius: 5rem;
     left: 50%;
     bottom: 3rem;
     margin-left: -20rem;

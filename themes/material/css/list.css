@@ -168,6 +168,8 @@ ul li div.bubble {
     display: inline-block;
     border-color: transparent;
     font-size: 1.75rem;
+    background-color: #E5E5E5;
+    border-color: #E5E5E5;
 }
 
 ul li div.bubble:after {
