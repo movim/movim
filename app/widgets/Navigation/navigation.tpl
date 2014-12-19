@@ -3,7 +3,7 @@
         <div class="on_mobile control">
             <i onclick="movim_remove_class('body > nav', 'active')" class="md md-arrow-back"></i>
         </div>
-        <span class="icon bubble"><i class="md md-camera-roll"></i></span>
+        <span class="icon bubble"><i class="md md-cloud-queue"></i></span>
         Movim
     </li>
     <a class="classic" href="{$c->route('root')}">

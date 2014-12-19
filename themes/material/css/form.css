@@ -24,6 +24,7 @@ form > div > textarea {
     resize: none;
     font-size: 2rem;
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 form > div > input,
@@ -35,6 +36,8 @@ form > div > textarea {
     background-color: transparent;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     margin-bottom: 1px;
+
+    overflow: hidden; /* Fixme */
 }
 
 form > div > input:focus,

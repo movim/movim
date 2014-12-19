@@ -1,6 +1,6 @@
 <section>
+    <h3>{$c->__('roster.search')}</h3>
     <ul class="simple">
-        <li class="subheader">{$c->__('roster.search')}</li>
         <li>
             <form name="add">
                 <div>
@@ -23,7 +23,7 @@
 
     </div>
 </section>
-<div class="actions">
+<div>
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
     </a>

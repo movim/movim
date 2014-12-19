@@ -120,7 +120,11 @@ ul li > div.control + p {
     padding-right: 6rem;
 }
 
-ul li form > div.control {
+ul li > form {
+    max-width: 90%;
+}
+
+ul li > form > div.control {
     float: right;
     min-height: 0;
     padding-top: 2rem;
@@ -132,6 +136,7 @@ ul.thin li form > div.control {
 
 ul li span.info {
     float: right;
+    margin-left: 1rem;
 }
 
 /* Counter */

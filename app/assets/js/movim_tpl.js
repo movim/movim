@@ -61,6 +61,13 @@ var MovimTpl = {
 
         movim_remove_class(selector, 'enabled');
     },
+    scrollPanel : function() { // On for panel that are .contained
+        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
+
+        if(selector != null) {
+            selector.scrollTop = selector.scrollHeight;
+        }
+    },
     showMenu : function() {
         movim_add_class('body > nav', 'active');
     }
