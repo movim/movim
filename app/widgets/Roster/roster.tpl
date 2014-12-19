@@ -5,7 +5,11 @@
             <label for="search">{$c->__('roster.search')}</label>
         </div>
     </form>
-    <ul id="rosterlist" class="{{rosterCtrl.offlineIsShown()}} active">
+    <ul id="rosterlist" class="offlineshown active">
+    <!--
+    Also this means we can remove:
+        rosterCtrl.offlineIsShown() from roster.js
+    -->
         <span ng-hide="contacts != null" class="nocontacts">
             {$c->__('roster.no_contacts')}
             <br />
@@ -27,7 +31,14 @@
                                 alt="avatar"
                             />
                         </span>
-                        <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" ></div>
+                        <div class="chat on"></div>
+                        <!--
+                        MOVE IT TO CONTACT PAGE BOTTOM RIGHT BUTTON:
+                        ng-click="rosterCtrl.postChatAction(contact)"
+                            Also this means we can remove:
+                            - postChatAction() from roster.js
+                            - c.rosterview.openchat from the contact object sent from php
+                        -->
                         <div
                             ng-if="contact.rosterview.jingle"
                             class="infoicon jingle"

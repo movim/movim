@@ -180,7 +180,6 @@
 }*/
 
 /* Chat button */
-/*
 #roster ul#rosterlist ul.contact li .chat {
     width: 0.9em;
     height: 0.9em;
@@ -194,7 +193,7 @@
     transition: width 0.5s ease, height 0.5s ease, top 0.5s ease, left 0.5s ease;
 }
 
-#roster ul#rosterlist ul.contact li:hover .chat {
+/*#roster ul#rosterlist ul.contact li:hover .chat {
     width: 2.5em;
     height: 2.5em;
     top: 0.3em;
@@ -207,7 +206,7 @@
 
 #roster ul#rosterlist ul.contact li .chat.on:hover {
     cursor: pointer;
-}
+}*/
 
 #roster ul#rosterlist ul.contact li.online .chat {
     background-color: #6FCC43;
@@ -228,7 +227,7 @@
 #roster ul#rosterlist ul.contact li.inactive {
     opacity: 0.5;
 }
-*/
+
 /* Icons */
 /*
 #roster ul#rosterlist ul.contact li .infoicon {
