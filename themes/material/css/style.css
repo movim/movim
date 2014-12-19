@@ -243,6 +243,19 @@ main section > div:first-child:nth-last-child(2) ~ div {
     transition: right 0.2s ease;
 }
 
+main section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
+    height: calc(100% - 9rem);
+    overflow-y: scroll;
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+}
+
+main section > div > div.contained > * {
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
 @media screen and (max-width: 1024px) {
     /* Two blocks*/
     main section > div:first-child:nth-last-child(2) {
@@ -405,7 +418,7 @@ header.big p {
     height: 100%;
     
     padding-top: 3rem;
-    padding-bottom: 8rem;
+    padding-bottom: 7rem;
 }
 
 .dialog > section {
@@ -432,21 +445,6 @@ header.big p {
     left: 1rem;
 }
 
-.dialog .actions {
-    background-color: white;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: right;
-    bottom: 0;
-    padding: 0.5rem 2rem;
-    position: absolute;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.dialog .actions.no_bar {
-    border-top: none;
-}
-
 @media screen and (max-width: 600px) {
     .dialog {
         width: 90%;
@@ -459,6 +457,52 @@ header.big p {
         top: 10%;
     }
 }
+
+/* Actions bar */
+
+.actions {
+    margin-bottom: 7rem;
+}
+
+
+.actions > div:last-child {
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    bottom: 0;
+    padding: 0.5rem 2rem;
+    position: relative;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.actions > div.no_bar:last-child {
+    border-top: none;
+}
+
+.actions.fixed > div:last-child {
+    position: fixed;
+    min-height: 7rem;
+    max-width: calc(100% - 5rem);
+    width: 100%;
+    padding: 0;
+}
+
+main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last-child  {
+    max-width: calc(75% - 5rem);
+}
+
+.actions.fixed > div:last-child > * { /* Little hack to fake the 100% width that overflow the parent */
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) { /* Known bug, on some intermediary resolution, the content is cropped */
+    main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last-child {
+        max-width: 100%;
+    }
+}
+
 
 /* Snackbar - Toast */
 
