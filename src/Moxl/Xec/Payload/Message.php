@@ -69,7 +69,8 @@ class Message extends Payload
             $md = new \modl\MessageDAO();
             $md->set($m);
                     
-            $evt->runEvent('message', $m);
+            $this->pack($m);
+            $this->deliver();
         }
     }
 }
