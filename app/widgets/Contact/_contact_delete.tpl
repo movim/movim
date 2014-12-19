@@ -3,7 +3,7 @@
     <br />
     <h4 class="gray">{$c->__('delete.text')}</h4>
 </section>
-<div class="actions no_bar">
+<div class="no_bar">
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.cancel')}
     </a>

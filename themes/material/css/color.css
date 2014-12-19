@@ -139,6 +139,10 @@ body.green .oppose .bubble,
 body.green ul li span.counter,
 body.green main > header { background-color: #689F38; color: white; border-color: #689F38; }
 
+/* 200 */
+body.green .oppose .bubble a,
+body.green main > header a { color: #DCEDC8; }
+
 body.green .tabs,
 body.green .button,
 body.green input[type=button],

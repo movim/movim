@@ -1,5 +1,5 @@
 <section>
-    <h2>{$c->__('edit.title')}</h2>
+    <h3>{$c->__('edit.title')}</h3>
     <form name="manage">
         <div>
             <input 
@@ -30,7 +30,7 @@
         <input type="hidden" name="jid" value="{$contact->jid}"/>
     </form>
 </section>
-<div class="actions">
+<div>
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
     </a>

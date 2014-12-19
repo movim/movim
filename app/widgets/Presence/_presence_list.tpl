@@ -15,7 +15,6 @@
                 </div>
             </form>        
         </li>
-        <li class="subheader">{$c->__('status.presence')}</li>
         <li onclick="{$callchat}">
             <span class="icon bubble color small green"></span>
             {$txt[1]}
@@ -39,7 +38,7 @@
         </li>
     </ul>
 </section>
-<div class="actions">
+<div>
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
     </a>
