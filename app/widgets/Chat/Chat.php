@@ -14,6 +14,11 @@ class Chat extends WidgetCommon
     {
         $message = $packet->content;
 
+        \movim_log('HOP');
+        \movim_log('SESSION '.$message->session);
+        \movim_log('TO '.$message->jidto);
+        \movim_log('FROM '.$message->jidfrom);
+
         // If the message is from me
         if($message->session == $message->jidto) {
             $from = $message->jidfrom;

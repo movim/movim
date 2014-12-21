@@ -23,7 +23,14 @@
             <li ng-repeat="myjid in group.agroupitems" ng-hide="myjid.tombstone" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
                 <!-- Rostersearch look this way for an angularJS solution http://www.bennadel.com/blog/2487-filter-vs-nghide-with-ngrepeat-in-angularjs.htm -->
                 <ul class="contact active">
-                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}} condensed" ng-class="rosterCtrl.getContactClient(contact)" >
+                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="{condensed: contact.status != '' && contact.status != null }" ng-class="rosterCtrl.getContactClient(contact)" >
+                        <div class="control">
+                            <i ng-if="contact.rosterview.type == 'handheld'" class="md md-smartphone"></i>
+                            <i ng-if="contact.rosterview.type == 'web'" class="md md-language"></i>
+                            <i ng-if="contact.rosterview.type == 'bot'" class="md md-memory"></i>
+                            <i ng-if="contact.rosterview.tune" class="md md-play-arrow"></i>
+                        </div>
+
                         <span class="icon bubble">
                             <img
                                 class="avatar"
@@ -45,17 +52,9 @@
                             ng-click="rosterCtrl.postJingleAction(contact)">
                         </div>
 
-                        <div class="control">
-                            <i ng-if="contact.rosterview.type == 'handheld'" class="md md-smartphone"></i>
-                            <i ng-if="contact.rosterview.type == 'web'" class="md md-language"></i>
-                            <i ng-if="contact.rosterview.type == 'bot'" class="md md-memory"></i>
-                            <i ng-if="contact.rosterview.tune" class="md md-play-arrow"></i>
-                        </div>
-
                         {{contact.rosterview.name}}
                         <p class="wrap">
-                            <span ng-if="contact.status != ''">{{contact.status}} -</span>
-                             {{contact.ressource}}
+                            <span ng-if="contact.status != ''">{{contact.status}}</span>
                         </p>
                     </li>
                 </ul>

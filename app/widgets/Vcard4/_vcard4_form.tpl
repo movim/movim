@@ -4,6 +4,8 @@
         <span class="icon bubble color blue">
             <i class="md md-security"></i>
         </span>
+
+        <span>{$c->__('vcard.privacy_question')}</span>
         <form>
             <div class="control">
                 <div class="checkbox">
@@ -19,8 +21,7 @@
                 </div>
             </div>
         </form>
-        <span>{$c->__('vcard.privacy_question')}</span>
-        <p>{$c->__('vcard.privacy_info')}</p>
+        <p>{$c->__('vcard.privacy_info')}</p>        
     </li>
 </ul>
 
