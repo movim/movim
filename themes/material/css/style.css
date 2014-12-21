@@ -20,6 +20,13 @@ time, mark, audio, video {
     list-style-type: none;
 }
 
+* {
+ -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+:focus {
+    outline: 0;
+}
+
 html {
     font-size: 8px;
 }
@@ -131,7 +138,6 @@ body > nav header {
 
 body > nav.active {
     width: 45rem;
-    box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
 }
 
 body > div.dialog:not(:empty) ~ main,

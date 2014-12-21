@@ -116,21 +116,21 @@ ul.thick li > div.control.bottom {
     bottom: 2rem;
 }
 
+ul li > div.control + form,
 ul li > div.control + p {
     padding-right: 6rem;
 }
 
-ul li > form {
-    max-width: 90%;
-}
-
-ul li > form > div.control {
+ul li div.control {
     float: right;
     min-height: 0;
+}
+
+ul li div.control.padded {
     padding-top: 2rem;
 }
 
-ul.thin li form > div.control {
+ul.thin li div.control {
     padding-top: 1.5rem;
 }
 

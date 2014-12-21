@@ -1,5 +1,5 @@
 <ul class="active">
-    <li class="subheader">Accounts **FIXME**</li>
+    <li class="subheader">{$c->__('account.title')}</li>
 {loop="$sessions"}
     <li onclick="chooseSession('{$value->jid}')">
         <div class="control">
