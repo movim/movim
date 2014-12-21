@@ -2,26 +2,37 @@ body main {
     background-color: #32434D;
 }
 
-#loginpage {
+#login_widget {
+    background-image: url(img/logo.svg);
+    background-repeat: no-repeat;
+    background-position: center 5rem;
+    background-size: 80% auto;
+    width: 50rem;
+    max-width: calc(100% - 2rem);
+    padding-top: 20rem;
+}
+
+#login_widget > div {
     background-color: white;
     border-radius: 0.25rem;
-    /*animation: 200s infinite colorful;
-    -webkit-animation: 200s infinite colorful;
-    
-    background-color: #32434D;*/
-    max-width: 50rem;
     box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
-    margin-top: 3%;
 }
 
-#loginpage form {
+#login_widget > div:not(.choose) form {
     margin: 2rem;
+    margin-top: 0;
 }
 
-ul.admin {
+#login_widget > ul {
     color: white;
     max-width: 50rem;
     text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    #login_widget > ul {
+        display: none;
+    }
 }
 
 /*body {
@@ -196,24 +207,24 @@ ul.admin {
 */
 /* States */
 
-#loginpage #sessions,
-#loginpage.choose #loginhelp,
-#loginpage.choose form div,
-#loginpage.choose form input {
+#login_widget > div #sessions,
+#login_widget > div.choose #loginhelp,
+#login_widget > div.choose form div,
+#login_widget > div.choose form input {
     display: none;
 }
 
-#loginpage.choose form {
+#login_widget > div.choose form {
     box-shadow: none;
     background-color: transparent;
 }
 
-#loginpage.choose #sessions {
+#login_widget > div.choose #sessions {
     display: block;
     height: 100%;
 }
 
-#loginpage.choose #return_sessions {
+#login_widget > div.choose #return_sessions {
     display: none;
 }
 

@@ -98,7 +98,7 @@
     display: list-item;
 }
 
-#roster ul#rosterlist.offlineshown > div.groupshown > li > ul.contact > li {
+#roster ul#rosterlist.offlineshown > div.groupshown > li > ul.contact > li:first-child {
     display: list-item;
 }
 /*
@@ -181,16 +181,14 @@
 
 /* Chat button */
 #roster ul#rosterlist ul.contact li .chat {
-    width: 0.9em;
-    height: 0.9em;
-    left: 2.4em;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
-    top: 2em;
+    width: 2rem;
+    height: 2rem;
+    left: 5.5rem;
+    top: 4rem;
     position: absolute;
-    z-index: 2;
+
     border-radius: 2em;
     background-color: #DDD;
-    transition: width 0.5s ease, height 0.5s ease, top 0.5s ease, left 0.5s ease;
 }
 
 /*#roster ul#rosterlist ul.contact li:hover .chat {
@@ -207,22 +205,6 @@
 #roster ul#rosterlist ul.contact li .chat.on:hover {
     cursor: pointer;
 }*/
-
-#roster ul#rosterlist ul.contact li.online .chat {
-    background-color: #6FCC43;
-}
-
-#roster ul#rosterlist ul.contact li.away .chat {
-    background-color: #FFE433;
-}
-
-#roster ul#rosterlist ul.contact li.dnd .chat {
-    background-color: #D92727;
-}
-
-#roster ul#rosterlist ul.contact li.xa .chat {
-    background-color: #442178;
-}
 
 #roster ul#rosterlist ul.contact li.inactive {
     opacity: 0.5;

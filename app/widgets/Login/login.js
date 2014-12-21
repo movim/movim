@@ -24,7 +24,7 @@ function rememberSession(jid) {
  * @param The jid to choose
  */
 function chooseSession(jid) {
-    movim_remove_class('#loginpage', 'choose');
+    movim_remove_class('#login_widget > div', 'choose');
     document.querySelector('#login').value = jid;
     
     if(jid != '') {
@@ -44,7 +44,7 @@ function removeSession(jid) {
 
     if(s.length == 0) {
         localStorage.removeItem('previousSessions');
-        movim_remove_class('#loginpage', 'choose');
+        movim_remove_class('#login_widget > div', 'choose');
     } else {
         localStorage.setObject('previousSessions', s);
     }
@@ -56,7 +56,7 @@ function removeSession(jid) {
  * @brief Back to the choosing panel
  */
 function backToChoose() {
-    movim_add_class('#loginpage', 'choose');
+    movim_add_class('#login_widget > div', 'choose');
 }
 
 /**
@@ -95,7 +95,7 @@ MovimWebsocket.attach(function()
     document.querySelector('#error_websocket').style.display = 'none';
 
     // We enable the form
-    var inputs = document.querySelectorAll('#loginpage input[disabled]');
+    var inputs = document.querySelectorAll('#login_widget > div input[disabled]');
     for (var i = 0; i < inputs.length; i++)
     {
         inputs[i].disabled = false;
@@ -105,7 +105,7 @@ MovimWebsocket.attach(function()
     Login_ajaxGetRememberedSession(localStorage.getItem('previousSessions'));
 
     if(localStorage.getItem('previousSessions') != null) {
-        movim_add_class('#loginpage', 'choose');
+        movim_add_class('#login_widget > div', 'choose');
     }
 });
 
