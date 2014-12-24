@@ -62,7 +62,12 @@ class Chats extends WidgetCommon
         $cd = new \Modl\ContactDAO;
 
         foreach($chats as $jid => $value) {
-            $chats[$jid] = $cd->get($jid);
+            $cr = $cd->getRosterItem($jid);
+            if(isset($cr)) {
+                $chats[$jid] = $cr;
+            } else {
+                $chats[$jid] = $cd->get($jid);
+            }
         }
 
         $view->assign('chats', array_reverse($chats));

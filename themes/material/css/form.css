@@ -52,7 +52,7 @@ form > div > .select select {
     background-color: transparent;
 }
 
-form > div > input,
+form > div > input:not([type=submit]),
 form > div > textarea {
     display: block;
     padding: 1rem 0;
@@ -67,6 +67,7 @@ form > div > textarea {
 
 form > div > input:focus,
 form > div > textarea:focus {
+    border-bottom-width: 2px;
     margin-bottom: calc(1rem - 1px);
 }
 
@@ -192,10 +193,13 @@ input[type=button] {
     line-height: 4.5rem;
     height: 4.5rem;
     margin: 0.75rem 0.5rem;
+    
     border-radius: 0.25rem;
     background-color: white;
     color: black;
     padding: 0 1rem;
+
+    border: 0;
 
     transition: background 0.3s ease;
 

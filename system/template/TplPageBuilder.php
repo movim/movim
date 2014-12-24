@@ -14,6 +14,7 @@ class TplPageBuilder
 {
     private $theme = 'movim';
     private $_view = '';
+    private $_color = 'green';
     private $title = '';
     private $menu = array();
     private $content = '';
@@ -99,6 +100,22 @@ class TplPageBuilder
     function title()
     {
         echo $this->title;
+    }
+    
+    /**
+     * Sets the page's color.
+     */
+    function setColor($color)
+    {
+        $this->_color = $color;
+    }
+
+    /**
+     * Displays the current color.
+     */
+    function color()
+    {
+        echo $this->_color;
     }
 
     /**
