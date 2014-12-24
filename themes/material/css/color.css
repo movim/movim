@@ -63,7 +63,7 @@ label.orange, .icon.orange   { color: #FF9800; }
 label.yellow, .icon.yellow   { color: #FFEB3B; }
 label.brown , .icon.brown    { color: #795548; }
 label.gray  , .icon.gray     { color: #9E9E9E; }
-
+/*
 form input:focus,
 form textarea:focus {
     border-bottom: 2px solid #2196F3;
@@ -85,7 +85,7 @@ form input:focus:valid {
 }
 form input:focus:valid + label {
     color: #4CAF50;
-}
+}*/
 
 /* Global color palette */
 
@@ -234,6 +234,10 @@ body.blue input[type=button].color,
 body.blue ul li span.counter,
 body.blue .oppose .bubble,
 body.blue main > header { background-color: #2196F3; color: white; border-color: #2196F3; }
+
+/* 200 */
+body.blue .oppose .bubble a,
+body.blue main > header a { color: #90caf9; }
 
 body.blue .tabs,
 body.blue .button,

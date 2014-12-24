@@ -41,6 +41,10 @@ body main {
     margin-top: 2rem;
 }
 
+#login_widget form > div:last-child {
+    min-height: 0;
+}
+
 ul.admin {
     position: relative;
     text-align: center;

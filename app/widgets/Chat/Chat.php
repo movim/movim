@@ -9,6 +9,8 @@ class Chat extends WidgetCommon
         $this->addjs('chat.js');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('composing', 'onComposing');
+        $this->registerEvent('paused', 'onPaused');
     }
 
     function onMessage($packet)
@@ -23,6 +25,40 @@ class Chat extends WidgetCommon
         }
 
         RPC::call('movim_fill', $from.'_messages', $this->prepareMessages($from));
+        RPC::call('MovimTpl.scrollPanel');
+    }
+
+    function onComposing($array)
+    {
+        list($from, $to) = $array;
+        $myself = false;
+
+        if($from == $this->user->getLogin()) {
+            // If the message is from me
+            $myself = true;
+            $jid = $to;
+        } else {
+            $jid = $from;
+        }
+        
+        RPC::call('movim_fill', $jid.'_messages', $this->prepareMessages($jid, 'composing', $myself));
+        RPC::call('MovimTpl.scrollPanel');
+    }
+
+    function onPaused($array)
+    {
+        list($from, $to) = $array;
+        $myself = false;
+
+        if($from == $this->user->getLogin()) {
+            // If the message is from me
+            $myself = true;
+            $jid = $to;
+        } else {
+            $jid = $from;
+        }
+        
+        RPC::call('movim_fill', $jid.'_messages', $this->prepareMessages($jid, 'paused', $myself));
         RPC::call('MovimTpl.scrollPanel');
     }
 
@@ -110,8 +146,16 @@ class Chat extends WidgetCommon
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
+
+        $cr = $cd->getRosterItem($jid);
+        if(isset($cr)) {
+            $contact = $cr;
+        } else {
+            $contact = $cd->get($jid);
+        }
         
-        $view->assign('contact', $cd->get($jid));
+        $view->assign('contact', $contact);
+        $view->assign('presences', getPresences());
         $view->assign('jid', $jid);
 
         return $view->draw('_chat_header', true);
@@ -136,10 +180,10 @@ class Chat extends WidgetCommon
         return $view->draw('_chat', true);
     }
 
-    function prepareMessages($jid)
+    function prepareMessages($jid, $status = false, $myself = false)
     {
         $md = new \Modl\MessageDAO();
-        $messages = $md->getContact(echapJid($jid), 0, 10);
+        $messages = $md->getContact(echapJid($jid), 0, 15);
         $messages = array_reverse($messages);
         
         $cd = new \Modl\ContactDAO;
@@ -149,6 +193,9 @@ class Chat extends WidgetCommon
         $view->assign('contact', $cd->get($jid));
         $view->assign('me', $cd->get());
         $view->assign('messages', $messages);
+
+        $view->assign('status', $status);
+        $view->assign('myself', $myself);
 
         return $view->draw('_chat_messages', true);
     }
