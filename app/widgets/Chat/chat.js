@@ -1,8 +1,8 @@
-var Chats = {
+var Chat = {
+    /*
     message: function(jid, html) {
         movim_append('messages' + jid, html);
-        Chats.scroll(jid);
-    },
+    },*/
     addSmiley: function(smiley) {
 
     },

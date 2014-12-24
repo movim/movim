@@ -1,18 +1,15 @@
+{if="!BROWSER_COMP"}
+    <div class="message warning">
+        {$c->__('error.too_old')}
+    </div>
+{else}
 <div id="login_widget">
-    <div class="fadeDown">
-        {if="!BROWSER_COMP"}
-            <div class="message warning">
-                {$c->__('error.too_old')}
-            </div>
-        {else}
-            <div id="sessions">
+    <div id="sessions" class="dialog actions"></div>
 
-            </div>
-            {if="isset($info) && $info != ''"}
-                <div class="message warning">
-                    {$info}
-                </div>
-            {/if}
+    <div class="dialog">
+        <section>
+            <span class="info">{$c->__('connected')} {$connected} • {$c->__('population')} {$pop}</span>
+            <h3>{$c->__('page.login')}</h3>
             <form
                 data-action="{$submit}"
                 name="login">
@@ -26,47 +23,27 @@
                         placeholder="{$c->__('form.password')}"/>
                     <label for="pass">{$c->__('form.password')}</label>
                 </div>
-                
-                <input
-                    type="submit"
-                    disabled
-                    data-loading="{$c->__('button.connecting')}"
-                    value="{$c->__('button.come_in')}"
-                    class="button flat"/> 
-                <!--<div class="clear"></div>-->
-                <!--
-                <div class="clear"></div>-->
-            
-                <!--<ul id="loginhelp">
-                    {if="$whitelist_display == true"}
-                        <li id="whitelist">
-                            <p>{$c->__('whitelist.info')}</p>
-                            <p style="font-weight:bold; text-align:center; margin:0.5em;">{$whitelist}</p>
-                            <p>{$c->__('whitelist.info2', '<a href="http://pod.movim.eu">', '</a>')}</p>
-                        </li>
-                    {else}
-                        <li id="jabber">{$c->__('account.jabber')}
-                            <a href="#" onclick="fillExample('demonstration@movim.eu', 'demonstration');">
-                                {$c->__('account.demo')}
+                <div>
+                    <ul class="simple thin">
+                        <li>
+                            <div class="control">
+                                <input
+                                    type="submit"
+                                    disabled
+                                    data-loading="{$c->__('button.connecting')}"
+                                    value="{$c->__('button.come_in')}"
+                                    class="button flat"/> 
+                            </div>
+                            <a id="return_sessions" class="button flat" href="#" onclick="Login.backToChoose()">
+                                {$c->__('account.title')}
                             </a>
                         </li>
-                        <li id="gmail">
-                            {$gmail}
-                        </li>
-                        <li id="facebook">
-                            {$facebook}
-                        </li>
-                    {/if}
-                </ul>-->
+                    </ul>
+                </div>
             </form>
 
-            <ul class="">
-                <li>
-                    <span class="icon">
-                        <a id="return_sessions" class="" href="#" onclick="backToChoose()">
-                            <i class="fa fa-chevron-left"></i>
-                        </a>
-                    </span>
+            <ul class="thin simple">
+                <li class="new_account">
                     <span>{$c->__('form.no_account')}
                         <a class="" href="{$c->route('account')}">
                             {$c->__('form.create_one')}
@@ -74,18 +51,44 @@
                     </span>
                 </li>
             </ul>
-        {/if}
-        <div id="error_websocket" class="snackbar">
-            {$c->__('error.websocket')}
-        </div>
-
+        </section>
     </div>
-    <ul class="thin simple">
-        <li>{$c->__('connected')} {$connected} • {$c->__('population')} {$pop} •
-            <a href="{$c->route('admin')}">
-                {$c->__('page.administration')}
-            </a>
-        </li>
-    </ul>
-
 </div>
+
+{if="isset($info) && $info != ''"}
+    <div class="message warning">
+        {$info}
+    </div>
+{/if}
+<div id="error_websocket" class="snackbar">
+    {$c->__('error.websocket')}
+</div>
+
+{/if}
+
+
+            <!--<div class="clear"></div>-->
+            <!--
+            <div class="clear"></div>-->
+        
+            <!--<ul id="loginhelp">
+                {if="$whitelist_display == true"}
+                    <li id="whitelist">
+                        <p>{$c->__('whitelist.info')}</p>
+                        <p style="font-weight:bold; text-align:center; margin:0.5em;">{$whitelist}</p>
+                        <p>{$c->__('whitelist.info2', '<a href="http://pod.movim.eu">', '</a>')}</p>
+                    </li>
+                {else}
+                    <li id="jabber">{$c->__('account.jabber')}
+                        <a href="#" onclick="fillExample('demonstration@movim.eu', 'demonstration');">
+                            {$c->__('account.demo')}
+                        </a>
+                    </li>
+                    <li id="gmail">
+                        {$gmail}
+                    </li>
+                    <li id="facebook">
+                        {$facebook}
+                    </li>
+                {/if}
+            </ul>-->

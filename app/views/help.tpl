@@ -4,11 +4,7 @@
 </nav>
 
 <main>
-    <header>
-        <span id="menu" class="on_mobile icon" onclick="MovimTpl.showMenu()"><i class="md md-menu"></i></span>
-        <span class="on_desktop icon"><i class="md md-help"></i></span>
-        <h2>Help **FIXME**</h2>
-    </header>
+    <?php $this->widget('Header'); ?>
     <section>
         <div>
             <?php $this->widget('Tabs');?>
