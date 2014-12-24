@@ -1,9 +1,6 @@
-<?php /* -*- mode: html -*- */
-?>
-<div id="main">
-    <div id="left">
-    </div>
-    <div id="center">
+<main>
+    <?php $this->widget('Header'); ?>
+    <section>
         <?php $this->widget('Subscribe');?>
-    </div>
-</div>
+    </section>
+</main>

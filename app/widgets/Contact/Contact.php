@@ -54,6 +54,14 @@ class Contact extends WidgetCommon
         Dialog::fill($view->draw('_contact_edit', true));
     }
 
+    function ajaxChat($jid)
+    {
+        $c = new Chats;
+        $c->ajaxOpen($jid);
+        
+        RPC::call('movim_redirect', $this->route('chat'));
+    }
+
     function ajaxDeleteContact($jid)
     {
         $view = $this->tpl();
@@ -124,10 +132,22 @@ class Contact extends WidgetCommon
 
             $view->assign('contact', $c);
             $view->assign('contactr', $cr);
+
+            $view->assign('chat', 
+                $this->call(
+                    'ajaxChat', 
+                    "'".$c->jid."'"));
+
             return $view->draw('_contact', true);
         } elseif(isset($cr)) {
             $view->assign('contact', null);
             $view->assign('contactr', $cr);
+
+            $view->assign('chat', 
+                $this->call(
+                    'ajaxChat', 
+                    "'".$cr->jid."'"));
+            
             return $view->draw('_contact', true);
         } else {
             return $this->prepareEmpty($jid);

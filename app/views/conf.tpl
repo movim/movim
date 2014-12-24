@@ -10,7 +10,7 @@
             <?php $this->widget('Tabs');?>
             <?php $this->widget('Vcard4');?>
             <?php $this->widget('Config');?>
-            <?php $this->widget('ConfigData');?>
+            <?php //$this->widget('ConfigData');?>
             <?php $this->widget('PubsubSubscriptionConfig');?>
         </div>
     </section>

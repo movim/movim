@@ -2,7 +2,7 @@
 <span class="on_desktop icon" onclick="MovimTpl.hidePanel()"><i class="md md-person"></i></span>
 
 <ul class="active">
-    <li onclick="{$close}">
+    <li onclick="Chats_ajaxClose('{$jid}'); MovimTpl.hidePanel();">
         <span class="icon">
             <i class="md md-close"></i>
         </span>

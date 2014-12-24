@@ -6,7 +6,7 @@
 <main>
     <?php $this->widget('Header'); ?>
     <section>
-        <?php $this->widget('Roster');?>
+        <?php $this->widget('Chats');?>
         <?php $this->widget('Chat');?>
     </section>
 </main>

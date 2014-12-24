@@ -172,6 +172,10 @@
         {/if}
     </ul>
     {/if}
+
+    <a onclick="{$chat}" class="button action color red">
+        <i class="md md-chat"></i>
+    </a>
 {else}
     <ul class="thick">
         <li>
@@ -180,7 +184,3 @@
         </li>
     </ul>
 {/if}
-
-<a class="button action color red">
-    <i class="md md-chat"></i>
-</a>

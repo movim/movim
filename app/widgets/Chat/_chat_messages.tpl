@@ -1,4 +1,4 @@
-<ul class="thick">
+<ul class="middle">
     {loop="$messages"}
         <li {if="$value->jidfrom == $jid"}class="oppose"{/if}>
             <span class="icon bubble">

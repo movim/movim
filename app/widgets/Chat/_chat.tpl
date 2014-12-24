@@ -1,16 +1,16 @@
-<div id="{$jid}_discussion" class="actions fixed contained">
-    <div id="{$jid}_messages">
+<div id="{$jid}_discussion" class="actions scroll fixed contained">
+    <section id="{$jid}_messages">
         {$messages}
-    </div>
+    </section>
     <div>
         <ul>
             <li>
                 <span class="icon gray">
                     <i class="md md-create"></i>
                 </span>
-                <div class="control" onclick="{$smiley}">
+                <!--<div class="control" onclick="{$smiley}">
                     <i class="md md-mood"></i>
-                </div>
+                </div>-->
                 <form>
                     <div>
                          <textarea 
