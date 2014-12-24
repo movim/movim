@@ -44,6 +44,10 @@ body {
     clear: both;
 }
 
+.clear.padded {
+    height: 2rem;
+}
+
 body > * {
     display: block;
     height: 100%;
@@ -209,16 +213,16 @@ main > header ul li {
     font-size: 4rem;
 }
 
-main section {
+main > section {
     height: 100%;
     position: relative;
 }
 
-main header + section {
+main > header + section {
     height: calc(100% - 7rem);
 }
 
-main section > div {
+main > section > div {
     overflow-y: auto;
     display: block;
     position: relative;
@@ -228,20 +232,20 @@ main section > div {
     box-sizing: border-box;
 }
 
-main section > div:not(:last-child) {
+main > section > div:not(:last-child) {
     border-right: 1px solid gray;
 }
 
-main section > div > * {
+main > section > div > * {
     max-width: 100rem;
     margin: 0 auto;
 }
 
 /* Two blocks*/
-main section > div:first-child:nth-last-child(2) {
+main > section > div:first-child:nth-last-child(2) {
     width: 25%;
 }
-main section > div:first-child:nth-last-child(2) ~ div {
+main > section > div:first-child:nth-last-child(2) ~ div {
     width: 75%;
     position: absolute;
     top: 0;
@@ -249,7 +253,7 @@ main section > div:first-child:nth-last-child(2) ~ div {
     transition: right 0.2s ease;
 }
 
-main section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
+main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
     height: calc(100% - 9rem);
     overflow-y: scroll;
     position: absolute;
@@ -257,23 +261,24 @@ main section > div > div.contained { /* Specific behaviour when the scroll need 
     width: 100%;
 }
 
-main section > div > div.contained > * {
+main > section > div > div.contained > * {
     max-width: 100rem;
     margin: 0 auto;
 }
 
 @media screen and (max-width: 1024px) {
     /* Two blocks*/
-    main section > div:first-child:nth-last-child(2) {
+    main > section > div:first-child:nth-last-child(2) {
         width: 100%;
     }
-    main section > div:first-child:nth-last-child(2) ~ div {
+    main > section > div:first-child:nth-last-child(2) ~ div {
         background-color: white;
         width: 100%;
         right: -100%;
+        z-index: 1;
     }
 
-    main section > div:first-child:nth-last-child(2) ~ div.enabled {
+    main > section > div:first-child:nth-last-child(2) ~ div.enabled {
         right: 0;
     }
 
@@ -402,55 +407,64 @@ header.big p {
 */
 /* Dialog */
 
-.dialog:empty {
-    display: none;
-}
-
 .dialog {
     position: fixed;
-    top: 15%;
+    top: 5%;
     left: 50%;
     background-color: white;
     height: initial;
-    max-height: 70%;
-    width: 40rem;
-    margin-left: -20rem;
+    max-height: 90%;
+    width: 45rem;
+    margin-left: -22.5rem;
+
+    overflow: hidden;
     
     box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
     border-radius: 0.25rem;
     z-index: 3;
     box-sizing: border-box;
+}
 
-    height: 100%;
-    
-    padding-top: 3rem;
-    padding-bottom: 7rem;
+.dialog:empty {
+    display: none;
+}
+
+.dialog.scroll {
+    height: 90%;
 }
 
 .dialog > section {
-    margin: 0 3rem;
     height: 100%;
     overflow-y: auto;
     position: relative;
 }
 
-.dialog > section:hover {
+.dialog > section > *:first-child {
+    margin-top: 2rem;
 }
 
-.dialog > section ul li {
+.dialog > section > *:last-child {
+    margin-bottom: 2rem;
+}
+
+.dialog > section > *:not(ul) {
+    padding: 0 2rem;
+}
+/*
+.dialog > div > section ul li {
     padding-right: 0;
     padding-left: 7rem;
 }
 
-.dialog > section ul li.subheader,
-.dialog > section ul.simple li {
+.dialog > div > section ul li.subheader,
+.dialog > div > section ul.simple li {
     padding-left: 0;
 }
 
-.dialog > section ul li .icon {
+.dialog > div > section ul li .icon {
     left: 1rem;
 }
-
+*/
 @media screen and (max-width: 600px) {
     .dialog {
         width: 90%;
@@ -467,9 +481,8 @@ header.big p {
 /* Actions bar */
 
 .actions {
-    margin-bottom: 7rem;
+    padding-bottom: 7rem;
 }
-
 
 .actions > div:last-child {
     background-color: white;
@@ -478,7 +491,7 @@ header.big p {
     text-align: right;
     bottom: 0;
     padding: 0.5rem 2rem;
-    position: relative;
+    position: absolute;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -492,6 +505,10 @@ header.big p {
     max-width: calc(100% - 5rem);
     width: 100%;
     padding: 0;
+}
+
+.actions.scroll > section {
+    margin-bottom: 10rem;
 }
 
 main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last-child  {
@@ -562,6 +579,35 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
         margin-left: -45%;
     }
 }
+
+
+/* Placeholder */
+
+.placeholder {
+    text-align: center;
+    font-size: 1.2em;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.placeholder p {
+    text-align: center;
+}
+
+.placeholder.icon {
+    background-image: url(../img/icons/placeholder/chat.png);
+    background-size: 35%;
+    padding-top: 12em;
+    background-repeat: no-repeat;
+    background-position: center 1em;
+}
+
+.placeholder.icon.newspaper { background-image: url(../img/icons/placeholder/newspaper.png); }
+.placeholder.icon.media     { background-image: url(../img/icons/placeholder/media.png); }
+.placeholder.icon.explore   { background-image: url(../img/icons/placeholder/explore.png); }
+.placeholder.icon.plane     { background-image: url(../img/icons/placeholder/plane.png); }
+.placeholder.icon.file      { background-image: url(../img/icons/placeholder/file.png); }
+.placeholder.icon.clipboard { background-image: url(../img/icons/placeholder/clipboard.png); }
 
 /* Definition list */
 

@@ -21,6 +21,24 @@
     color: white;
 }
 
+/* Animations */
+
+@keyframes colorful {
+    0% { background-color: #9E9E9E; }
+    10% { background-color: #607D8B; }
+    20% { background-color: #F44336; }
+    30% { background-color: #9C27B0; }
+    40% { background-color: #3F51B5; }
+    50% { background-color: #2196F3; }
+    60% { background-color: #689F38; }
+    70% { background-color: #FF9800; }
+    80% { background-color: #FDD835; }
+    90% { background-color: #795548; }
+    100% { background-color: #9E9E9E; }
+}
+
+/* Elements */
+
 .bubble.color       , .icon.color          { color: white; background-color: #607D8B; border-color: #607D8B }
 #roster ul#rosterlist ul.contact li.dnd .chat,
 .bubble.color.red   , .icon.color.red      { color: white; background-color: #F44336; border-color: #F44336 }
@@ -77,6 +95,10 @@ body.indigo input[type=button].color,
 body.indigo ul li span.counter,
 body.indigo .oppose .bubble,
 body.indigo main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
+
+/* 200 */
+body.indigo .oppose .bubble a,
+body.indigo main > header a { color: #9fa8da; }
 
 body.indigo .tabs,
 body.indigo .button,

@@ -30,6 +30,13 @@ ul.simple > li span.icon {
     display: none;
 }
 
+ul.middle > li {
+    min-height: 7rem;
+    line-height: 5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
 ul.thin > li {
     min-height: 5rem;
     line-height: 5rem;
@@ -87,7 +94,8 @@ ul li span {
     white-space: nowrap;
 }
 
-ul > li > div.control {
+ul > li > div.control,
+ul > li > form > div.control {
     float: right;
     text-align: right;
     min-width: 5rem;
@@ -95,12 +103,16 @@ ul > li > div.control {
     line-height: 6rem;
 }
 
+ul > li > form > div.control {
+    margin-top: 1.5rem;
+}
+
 ul.thin > li > div.control {
-    line-height: 5rem;
+    line-height: 3rem;
 }
 
 ul.thick > li > div.control {
-    line-height: 7rem;
+    line-height: 5rem;
 }
 
 ul li > div.control > * {
@@ -111,7 +123,7 @@ ul li > div.control.bottom {
     top: auto;
     bottom: 0;
 }
-
+/*
 ul.thick li > div.control.bottom {
     bottom: 2rem;
 }
@@ -120,20 +132,16 @@ ul li > div.control + form,
 ul li > div.control + p {
     padding-right: 6rem;
 }
-
-ul li div.control {
+*/
+ul li > div.control {
     float: right;
     min-height: 0;
 }
-
+/*
 ul li div.control.padded {
     padding-top: 2rem;
 }
-
-ul.thin li div.control {
-    padding-top: 1.5rem;
-}
-
+*/
 ul li span.info {
     float: right;
     margin-left: 1rem;

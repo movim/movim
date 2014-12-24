@@ -1,6 +1,6 @@
 /* Form */
 
-form > div:not(.clear) {
+form > div:not(.clear):not(.control) {
     min-height: 9rem;
     position: relative;
     box-sizing: border-box;
@@ -24,7 +24,32 @@ form > div > textarea {
     resize: none;
     font-size: 2rem;
     font-family: sans-serif;
+    line-height: 3rem;
     box-sizing: border-box;
+}
+
+form > div > .select {
+    font-size: 2rem;
+    margin-top: 4.2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding-bottom: 1rem;
+    overflow: hidden;
+}
+
+
+form > div > .select:before {
+    font-family: "Material Design Iconic Font";
+    content: "\f295";
+    display: block;
+    font-size: 4rem;
+    margin-bottom: -4rem;
+    float: right;
+    color: #B8B8B8;
+}
+
+form > div > .select select {
+    width: calc(100% + 3rem);
+    background-color: transparent;
 }
 
 form > div > input,
@@ -35,14 +60,14 @@ form > div > textarea {
     width: 100%;
     background-color: transparent;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    margin-bottom: 1px;
+    margin-bottom: 1rem;
 
     overflow: hidden; /* Fixme */
 }
 
 form > div > input:focus,
 form > div > textarea:focus {
-    margin-bottom: 0;
+    margin-bottom: calc(1rem - 1px);
 }
 
 form > div > input:required {
@@ -146,6 +171,15 @@ form > div .radio > input[type="radio"]:checked + label:hover {
 
 /* Button */
 
+.button.oppose {
+    float: right;
+}
+
+.button.inactive {
+    opacity: 0.5;
+    pointer-events:none;
+}
+
 .button,
 input[type=button] {
     min-width: 8rem;
@@ -172,6 +206,7 @@ input[type=button] {
 input[type=button].flat {
     box-shadow: none;
     background-color: transparent;
+    border: 0;
 }
 
 .button:hover,

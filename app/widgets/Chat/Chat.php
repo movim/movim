@@ -7,17 +7,13 @@ class Chat extends WidgetCommon
     function load()
     {
         $this->addjs('chat.js');
+        $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
     }
 
     function onMessage($packet)
     {
         $message = $packet->content;
-
-        \movim_log('HOP');
-        \movim_log('SESSION '.$message->session);
-        \movim_log('TO '.$message->jidto);
-        \movim_log('FROM '.$message->jidfrom);
 
         // If the message is from me
         if($message->session == $message->jidto) {
@@ -133,7 +129,7 @@ class Chat extends WidgetCommon
             $this->call(
                 'ajaxSendMessage',
                 "'" . $jid . "'",
-                "Chats.sendMessage(this, '" . $jid . "')")
+                "Chat.sendMessage(this, '" . $jid . "')")
             );
         $view->assign('smiley', $this->call('ajaxSmiley'));
 
