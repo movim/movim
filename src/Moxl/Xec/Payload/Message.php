@@ -35,11 +35,11 @@ class Message extends Payload
         $evt = new \Event();
 
         if($stanza->composing)
-            $evt->runEvent('composing', $jid[0]);
+            $evt->runEvent('composing', array($jid[0], $to));
         if($stanza->paused)
-            $evt->runEvent('paused', $jid[0]);
+            $evt->runEvent('paused', array($jid[0], $to));
         if($stanza->gone)
-            $evt->runEvent('gone', $jid[0]);
+            $evt->runEvent('gone', array($jid[0], $to));
         if($stanza->body || $stanza->subject) {
             $m = new \modl\Message();
 

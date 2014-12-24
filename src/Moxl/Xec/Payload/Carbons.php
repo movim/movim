@@ -37,24 +37,15 @@ class Carbons extends Payload
         $evt = new \Event();
 
         if($stanza->composing) {
-            if($parent->attributes()->from == $jid[0])
-                $evt->runEvent('composing', $to);
-            else
-                $evt->runEvent('composing', $jid[0]);
+            $evt->runEvent('composing', array($jid[0], $to));
         }
         
         if($stanza->paused) {
-            if($parent->attributes()->from == $jid[0])
-                $evt->runEvent('paused', $to);
-            else
-                $evt->runEvent('paused', $jid[0]);
+            $evt->runEvent('paused', array($jid[0], $to));
         }
         
         if($stanza->gone) {
-            if($parent->attributes()->from == $jid[0])
-                $evt->runEvent('gone', $to);
-            else
-                $evt->runEvent('gone', $jid[0]);
+            $evt->runEvent('gone', array($jid[0], $to));
         }
         
         if($stanza->body || $stanza->subject) {
@@ -80,7 +71,8 @@ class Carbons extends Payload
             $md = new \modl\MessageDAO();
             $md->set($m);
                     
-            $evt->runEvent('message', $m);
+            $this->pack($m);
+            $this->deliver();
         }
     }
 }
