@@ -22,8 +22,14 @@
         </li>
     </ul>
 {elseif="$page == 0"}
-    <div>
-        <h1>{$c->__('menu.empty_title')}</h1>
-        <p>{$c->__('menu.empty')}</p>
-    </div>
+    <br/>
+    <ul>
+        <li class="condensed">
+            <span class="icon bubble color orange">
+                <i class="md md-format-align-left"></i>
+            </span>
+            <span>{$c->__('menu.empty_title')}</span>
+            <p>{$c->__('menu.empty')}</p>
+        </li>
+    </ul>
 {/if}

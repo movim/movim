@@ -1,45 +1,46 @@
 <form name="avatarform" id="avatarform">
-    <fieldset>
-        <legend>{$c->__('page.avatar')}</legend>
-        <div class="element">
-            <label for="avatar">{$c->__('page.avatar')}</label>
-                <img id="vCardPhotoPreview" src="data:image/jpeg;base64,{$photobin}">
-            <br /><span id="picturesize" class="clean"></span><br /><br />
-            
-            <input type="file" onchange="vCardImageLoad(this.files);">
+    <h3>{$c->__('page.avatar')}</h3>
+    <div class="block">        
+        <input type="file" onchange="vCardImageLoad(this.files);">
+        <label for="avatar">{$c->__('page.avatar')}</label>
+        <input type="hidden" name="photobin"  value="{$photobin}"/>
+    </div>
 
-            <input type="hidden" name="photobin"  value="{$photobin}"/>
-        </div>
+    <div class="block" id="result">
+        <img id="vCardPhotoPreview" src="data:image/jpeg;base64,{$photobin}">
+        <span id="picturesize" class="clean"></span>
+    </div>
 
-        <div class="element" id="camdiv">
-            <label for="url"><i class="fa fa-camera"></i> {$c->__('avatar.webcam')}</label>
-            <video id="runningcam" class="squares" autoplay></video>
-            <canvas style="display:none;"></canvas>
-            
-            <a 
-                id="shoot" 
-                class="button color green" 
-                onclick="return false;">
-                <i class="fa fa-smile-o"></i> {$c->__('avatar.cheese')}
-            </a>
-            <a
-                id="capture" 
-                class="button color purple" 
-                onclick="
-                    showVideo();
-                    return false;">
-                <i class="fa fa-smile-o"></i> {$c->__('avatar.snapshot')}
-            </a>
-        </div>
-    </fieldset>
+    <div id="camdiv" class="block">
+        <video id="runningcam" class="squares" autoplay></video>
+        <canvas style="display:none;"></canvas>
+        
+        <a 
+            id="shoot" 
+            class="button flat oppose" 
+            onclick="return false;">
+            {$c->__('avatar.cheese')}
+        </a>
+        <a
+            id="capture" 
+            class="button flat" 
+            onclick="
+                showVideo();
+                return false;">
+            {$c->__('avatar.snapshot')}
+        </a>
+        <label for="url">{$c->__('avatar.webcam')}</label>
+    </div>
+
+    <div class="clear"></div>
 
     <a
         onclick="
             {$submit}
             movim_button_save('#avatarvalidate');
             this.value = '{$c->__('button.submitting')}'; 
-            this.className='button color orange inactive oppose';" 
-        class="button color green oppose"
+            this.className='button color inactive oppose';" 
+        class="button color oppose"
         id="avatarvalidate"
-        ><i class="fa fa-check"></i> {$c->__('button.submit')}</a>
+        >{$c->__('button.submit')}</a>
 </form>
