@@ -1,9 +1,13 @@
 <ul class="middle">
     {loop="$messages"}
         <li {if="$value->jidfrom == $jid"}class="oppose"{/if}>
-            <span class="icon bubble">
+            <span class="icon bubble {if="$contact == null"}color {$value->ressource|stringToColor}{/if}">
                 {if="$value->jidfrom == $jid"}
-                    <img src="{$contact->getPhoto('s')}">
+                    {if="$contact != null"}
+                        <img src="{$contact->getPhoto('s')}">
+                    {else}
+                        {$value->ressource|firstLetterCapitalize}
+                    {/if}
                 {else}
                     <img src="{$me->getPhoto('s')}">
                 {/if}

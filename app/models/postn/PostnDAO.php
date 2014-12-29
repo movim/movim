@@ -241,7 +241,7 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn', 'item');
     }
     
-    function getAllPosts($jid, $limitf = false, $limitr = false) {
+    function getAllPosts($jid = false, $limitf = false, $limitr = false) {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
@@ -251,6 +251,9 @@ class PostnDAO extends SQL {
 
         if($limitr) 
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+
+        if($jid == false)
+            $jid = $this->_user;
         
         $this->prepare(
             'Postn', 

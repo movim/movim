@@ -1,7 +1,7 @@
 /* Form */
 
 form > div:not(.clear):not(.control) {
-    min-height: 9rem;
+    min-height: 9.5rem;
     position: relative;
     box-sizing: border-box;
 }
@@ -22,29 +22,24 @@ form > div > label {
 form > div > textarea {
     border: none;
     resize: none;
-    font-size: 2rem;
     font-family: sans-serif;
     line-height: 3rem;
     box-sizing: border-box;
 }
 
 form > div > .select {
-    font-size: 2rem;
-    margin-top: 4.2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    padding-bottom: 1rem;
-    overflow: hidden;
+    position: relative;
 }
 
-
-form > div > .select:before {
+form > div > .select:after {
     font-family: "Material Design Iconic Font";
     content: "\f295";
     display: block;
     font-size: 4rem;
-    margin-bottom: -4rem;
-    float: right;
     color: #B8B8B8;
+    position: absolute;
+    right: 0;
+    bottom: 0.25rem;
 }
 
 form > div > .select select {
@@ -52,6 +47,33 @@ form > div > .select select {
     background-color: transparent;
 }
 
+main > header form > div:not(.clear):not(.control) {
+    min-height: 0;
+}
+
+main > header form > div:not(.clear):not(.control) > .select {
+    margin-top: 1.5rem;
+    padding-top: 0.4rem;
+    width: calc(25% - 9rem);
+}
+
+@media screen and (max-width: 1024px) {
+    main > header form > div:not(.clear):not(.control) > .select {
+        width: calc(100% - 1rem);
+    }
+}
+
+main > header form > div:not(.clear):not(.control) > .select option {
+    background-color: white;
+    color: initial;
+}
+
+main > header form > div:not(.clear):not(.control) > .select:after,
+main > header form > div:not(.clear):not(.control) > .select select {
+    color: white;
+}
+
+form > div > .select,
 form > div > input:not([type=submit]),
 form > div > textarea {
     display: block;
