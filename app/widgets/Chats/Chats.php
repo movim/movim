@@ -1,5 +1,7 @@
 <?php
 
+use Moxl\Xec\Action\Presence\Muc;
+
 class Chats extends WidgetCommon
 {
     function load()
@@ -53,6 +55,15 @@ class Chats extends WidgetCommon
         RPC::call('Chats.refresh');
     }
 
+    // Join a MUC 
+    function ajaxBookmarkMucJoin($jid, $nickname)
+    {
+        $p = new Muc;
+        $p->setTo($jid)
+          ->setNickname($nickname)
+          ->request();
+    }
+
     function prepareChats()
     {
         $chats = Cache::c('chats');
@@ -60,7 +71,8 @@ class Chats extends WidgetCommon
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
-
+        $cod = new \modl\ConferenceDAO();
+        
         foreach($chats as $jid => $value) {
             $cr = $cd->getRosterItem($jid);
             if(isset($cr)) {
@@ -69,10 +81,18 @@ class Chats extends WidgetCommon
                 $chats[$jid] = $cd->get($jid);
             }
         }
-
+        
+        $view->assign('conferences', $cod->getAll());
         $view->assign('chats', array_reverse($chats));
         
         return $view->draw('_chats', true);
+    }
+
+    function prepareChatrooms()
+    {
+
+
+        return $view->draw('_chatrooms', true);
     }
 
     function display()

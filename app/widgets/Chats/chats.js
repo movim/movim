@@ -1,6 +1,6 @@
 var Chats = {
     refresh: function() {
-        var items = document.querySelectorAll('ul#chats_widget_list li');
+        var items = document.querySelectorAll('ul#chats_widget_list li:not(.subheader)');
         var i = 0;
         while(i < items.length)
         {

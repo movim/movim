@@ -83,7 +83,7 @@ h3 { /* Title */
     font-weight: 700;
 }
 
-h4, input { /* Headline */
+h4, input, textarea, select { /* Headline */
     font-size: 2rem;
     line-height: 3rem;
 }

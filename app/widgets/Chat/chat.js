@@ -13,4 +13,11 @@ var Chat = {
         n.focus();
         return encodeURIComponent(text);
     },
+    notify : function(title, body, image)
+    {
+        if(document_focus == false) {
+            movim_title_inc();
+            movim_desktop_notification(title, body, image);
+        }
+    }
 }

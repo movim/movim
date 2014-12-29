@@ -72,14 +72,14 @@ form input:focus + label,
 form textarea:focus + label {
     color: #2196F3;
 }
-
+*/
 form input:focus:invalid {
-    border-bottom: 2px solid #F44336;
+    border-bottom-color: #F44336;
 }
 form input:focus:invalid + label {
     color: #F44336;
 }
-
+/*
 form input:focus:valid {
     border-bottom: 2px solid #4CAF50;
 }
@@ -93,11 +93,9 @@ form input:focus:valid + label {
 body.indigo .button.color,
 body.indigo input[type=button].color,
 body.indigo ul li span.counter,
-body.indigo .oppose .bubble,
 body.indigo main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
 
 /* 200 */
-body.indigo .oppose .bubble a,
 body.indigo main > header a { color: #9fa8da; }
 
 body.indigo .tabs,
@@ -129,7 +127,6 @@ body.indigo form textarea:focus:not(:invalid) {
 body.gray .button.color,
 body.gray input[type=button].color,
 body.gray ul li span.counter,
-body.gray .oppose .bubble,
 body.gray main > header { background-color: #9E9E9E; color: white; border-color: #9E9E9E; }
 
 body.gray .tabs,
@@ -161,12 +158,10 @@ body.gray form textarea:focus:not(:invalid) {
 
 body.green .button.color,
 body.green input[type=button].color,
-body.green .oppose .bubble,
 body.green ul li span.counter,
 body.green main > header { background-color: #689F38; color: white; border-color: #689F38; }
 
 /* 200 */
-body.green .oppose .bubble a,
 body.green main > header a { color: #DCEDC8; }
 
 body.green .tabs,
@@ -199,7 +194,6 @@ body.green form textarea:focus:not(:invalid) {
 body.orange .button.color, 
 body.orange input[type=button].color,
 body.orange ul li span.counter,
-body.orange .oppose .bubble,
 body.orange main > header { background-color: #FB8C00; color: white; border-color: #FB8C00; }
 
 body.orange .tabs,
@@ -232,11 +226,9 @@ body.orange form textarea:focus:not(:invalid) {
 body.blue .button.color, 
 body.blue input[type=button].color,
 body.blue ul li span.counter,
-body.blue .oppose .bubble,
 body.blue main > header { background-color: #2196F3; color: white; border-color: #2196F3; }
 
 /* 200 */
-body.blue .oppose .bubble a,
 body.blue main > header a { color: #90caf9; }
 
 body.blue .tabs,
@@ -269,7 +261,6 @@ body.blue form textarea:focus:not(:invalid) {
 body.red .button.color, 
 body.red input[type=button].color,
 body.red ul li span.counter,
-body.red .oppose .bubble,
 body.red main > header { background-color: #DB4336; color: white; border-color: #DB4336; }
 
 body.red .tabs,
