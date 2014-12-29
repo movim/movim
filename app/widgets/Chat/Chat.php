@@ -24,7 +24,7 @@ class Chat extends WidgetCommon
             $from = $message->jidto;
         }
 
-        RPC::call('movim_fill', $from.'_messages', $this->prepareMessages($from));
+        RPC::call('movim_fill', $from.'_messages', $this->prepareMessages($from));        
         RPC::call('MovimTpl.scrollPanel');
     }
 
@@ -188,9 +188,18 @@ class Chat extends WidgetCommon
         
         $cd = new \Modl\ContactDAO;
         $view = $this->tpl();
+
+        $contact = $cd->get($jid);
+        if($contact != null) {
+            RPC::call(
+                'Chat.notify',
+                $contact->getTrueName(),
+                trim($messages[0]->body),
+                $contact->getPhoto('m'));
+        }
         
         $view->assign('jid', $jid);
-        $view->assign('contact', $cd->get($jid));
+        $view->assign('contact', $contact);
         $view->assign('me', $cd->get());
         $view->assign('messages', $messages);
 

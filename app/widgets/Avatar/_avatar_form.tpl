@@ -39,7 +39,7 @@
             {$submit}
             movim_button_save('#avatarvalidate');
             this.value = '{$c->__('button.submitting')}'; 
-            this.className='button color inactive oppose';" 
+            this.className='button inactive oppose';" 
         class="button color oppose"
         id="avatarvalidate"
         >{$c->__('button.submit')}</a>

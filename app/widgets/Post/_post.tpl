@@ -13,7 +13,11 @@
                 <a href="{$c->route('node', array($post->jid, $post->node))}">
                     <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
                 </a>
-                <span>{$post->title}</span>
+                {if="$post->title != null"}
+                    <span>{$post->title}</span>
+                {else}
+                    <span>{$c->__('post.default_title')}</span>
+                {/if}
                 <p>{$post->published|strtotime|prepareDate}</p>
             </li>
         </ul>

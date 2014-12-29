@@ -284,10 +284,10 @@ function stringToColor($string) {
         6 => 'yellow',
         7 => 'brown');
         
-    $s = base_convert(sha1($string), 16, 8);
+    $s = base_convert(sha1($string), 12, 8);
     
-    if(isset($s[5])) {
-        return $colors[(int) $s[5]];
+    if(isset($s[4])) {
+        return $colors[(int) $s[4]];
     } else {
         return 'orange';
     }
@@ -299,6 +299,6 @@ function stringToColor($string) {
  * @return string
  */
 function firstLetterCapitalize($string) {
-    return ucfirst(strtolower(substr($string, 0, 2)));
+    return ucfirst(strtolower(mb_substr($string, 0, 2)));
 }
 
