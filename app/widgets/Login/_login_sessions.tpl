@@ -7,7 +7,7 @@
             <div class="control">
                 <i onclick="Login.removeSession('{$value->jid}')" class="fa fa-times"></i>
             </div>
-            <span class="icon bubble">
+            <span onclick="Login.choose('{$value->jid}')" class="icon bubble">
                 <img src="{$value->getPhoto('s')}"/>
             </span>
             <span onclick="Login.choose('{$value->jid}')">{$value->getTrueName()}</span>

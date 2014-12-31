@@ -25,6 +25,8 @@ class Chats extends WidgetCommon
         $chats = Cache::c('chats');
         if(!array_key_exists($from, $chats)) {
             $this->ajaxOpen($from);
+        } else {
+            RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
         }
     }
 
@@ -67,11 +69,13 @@ class Chats extends WidgetCommon
     function prepareChats()
     {
         $chats = Cache::c('chats');
+        $messages = array();
         
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
         $cod = new \modl\ConferenceDAO();
+        $md = new \modl\MessageDAO();
         
         foreach($chats as $jid => $value) {
             $cr = $cd->getRosterItem($jid);
@@ -80,18 +84,22 @@ class Chats extends WidgetCommon
             } else {
                 $chats[$jid] = $cd->get($jid);
             }
+
+            $m = $md->getContact($jid, 0, 1);
+            if(isset($m)) {
+                $messages[$jid] = $m[0];
+            }
         }
         
         $view->assign('conferences', $cod->getAll());
         $view->assign('chats', array_reverse($chats));
+        $view->assign('messages', $messages);
         
         return $view->draw('_chats', true);
     }
 
     function prepareChatrooms()
     {
-
-
         return $view->draw('_chatrooms', true);
     }
 

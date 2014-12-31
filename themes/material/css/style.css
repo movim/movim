@@ -250,7 +250,8 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     position: absolute;
     top: 0;
     right: 0;
-    transition: right 0.2s ease;
+    /*transition: right 0.2s ease;*/
+    transition: transform .5s ease;
 }
 
 main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
@@ -274,12 +275,14 @@ main > section > div > div.contained > * {
     main > section > div:first-child:nth-last-child(2) ~ div {
         background-color: white;
         width: 100%;
-        right: -100%;
+        /*right: -100%;*/
+        transform: translateX(100%);
         z-index: 1;
     }
 
     main > section > div:first-child:nth-last-child(2) ~ div.enabled {
-        right: 0;
+        /*right: 0;*/
+        transform: translateX(0);
     }
 
     main,
