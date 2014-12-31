@@ -55,11 +55,11 @@ var MovimTpl = {
         var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
         var inner = document.querySelector(selector + ' div');
 
-        // Clear the right panel
-        if(inner != null) inner.innerHTML = '';
-        else document.querySelector(selector).innerHTML = '';
-
         movim_remove_class(selector, 'enabled');
+
+        // Clear the right panel
+        //if(inner != null) inner.innerHTML = '';
+        //else document.querySelector(selector).innerHTML = '';
     },
     scrollPanel : function() { // On for panel that are .contained
         var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
