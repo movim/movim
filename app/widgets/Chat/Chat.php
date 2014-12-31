@@ -190,7 +190,7 @@ class Chat extends WidgetCommon
         $view = $this->tpl();
 
         $contact = $cd->get($jid);
-        if($contact != null) {
+        if($contact != null && $status != null) {
             RPC::call(
                 'Chat.notify',
                 $contact->getTrueName(),
