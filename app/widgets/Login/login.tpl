@@ -8,7 +8,7 @@
 
     <div class="dialog">
         <section>
-            <span class="info">{$c->__('connected')} {$connected} • {$c->__('population')} {$pop}</span>
+            <span class="info">{$c->__('connected')} {$connected} / {$pop}</span>
             <h3>{$c->__('page.login')}</h3>
             <form
                 data-action="{$submit}"

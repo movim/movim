@@ -27,6 +27,7 @@ class Chats extends WidgetCommon
             $this->ajaxOpen($from);
         } else {
             RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
+            RPC::call('Chats.refresh');
         }
     }
 
@@ -39,7 +40,6 @@ class Chats extends WidgetCommon
         Cache::c('chats', $chats);
 
         RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
-
         RPC::call('Chats.refresh');
     }
 

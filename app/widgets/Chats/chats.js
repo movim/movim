@@ -13,7 +13,9 @@ var Chats = {
             i++;
         }
 
-        items[0].click();
+        if(window.innerWidth > 1024) {
+            items[0].click();
+        }
     },
 
     reset: function(list) {

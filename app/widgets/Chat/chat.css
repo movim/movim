@@ -1,0 +1,23 @@
+#chat_widget .chat_box {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 75%;
+    max-width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+#chat_widget .chat_box ul {
+    margin: 0 auto;
+    max-width: 100rem;
+}
+
+#chat_widget section {
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+    #chat_widget .chat_box {
+        width: 100%;
+    }
+}

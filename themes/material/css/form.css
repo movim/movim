@@ -51,16 +51,10 @@ main > header form > div:not(.clear):not(.control) {
     min-height: 0;
 }
 
+main > header form > div:not(.clear):not(.control) > input,
 main > header form > div:not(.clear):not(.control) > .select {
     margin-top: 1.5rem;
     padding-top: 0.4rem;
-    width: calc(25% - 9rem);
-}
-
-@media screen and (max-width: 1024px) {
-    main > header form > div:not(.clear):not(.control) > .select {
-        width: calc(100% - 1rem);
-    }
 }
 
 main > header form > div:not(.clear):not(.control) > .select option {
@@ -68,6 +62,7 @@ main > header form > div:not(.clear):not(.control) > .select option {
     color: initial;
 }
 
+main > header form > div:not(.clear):not(.control) > input,
 main > header form > div:not(.clear):not(.control) > .select:after,
 main > header form > div:not(.clear):not(.control) > .select select {
     color: white;
