@@ -1,10 +1,10 @@
 <div id="roster" ng-controller="RosterController as rosterCtrl">        
-    <form>
+    <!--<form>
         <div>
             <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
             <label for="search">{$c->__('roster.search')}</label>
         </div>
-    </form>
+    </form>-->
     <ul id="rosterlist" class="offlineshown active">
     <!--
     Also this means we can remove:
@@ -46,11 +46,11 @@
                             - postChatAction() from roster.js
                             - c.rosterview.openchat from the contact object sent from php
                         -->
-                        <div
+                        <!--<div
                             ng-if="contact.rosterview.jingle"
                             class="infoicon jingle"
                             ng-click="rosterCtrl.postJingleAction(contact)">
-                        </div>
+                        </div>-->
 
                         {{contact.rosterview.name}}
                         <p class="wrap">
