@@ -350,7 +350,7 @@ var Roster = {
             roster.className = roster_classback;
             rosterlist.className = rosterlist_classback;
         };
-        search.onkeyup = function(event) {
+        search.oninput = function(event) {
             if(search.value.length > 0) {
                 roster.className = 'search';
                 rosterlist.className = 'offlineshown';
@@ -386,6 +386,7 @@ var Roster = {
                 Contact_ajaxGetContact(this.id);
                 Roster.reset(items);
                 movim_add_class(this, 'active');
+                document.querySelector('#roster').className = '';
             }
             i++;
         }

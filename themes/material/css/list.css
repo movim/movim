@@ -183,6 +183,8 @@ ul li div.bubble {
     font-size: 1.75rem;
     background-color: #E5E5E5;
     border-color: #E5E5E5;
+
+    word-break: break-all;
 }
 
 ul li div.bubble:after {

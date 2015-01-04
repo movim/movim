@@ -182,11 +182,11 @@ main {
     top: 0;
     background-color: white;
     transition: opacity 0.2s ease;
-    transform: translateZ(0);
 }
 
 nav + main {
     width: calc(100% - 7rem);
+    transform: translateZ(0);
 }
 
 main > header {
@@ -445,6 +445,7 @@ header.big p {
     border-radius: 0.25rem;
     z-index: 3;
     box-sizing: border-box;
+    transform: translateX(0);
 }
 
 .dialog:empty {

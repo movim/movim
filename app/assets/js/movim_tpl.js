@@ -61,6 +61,13 @@ var MovimTpl = {
         //if(inner != null) inner.innerHTML = '';
         //else document.querySelector(selector).innerHTML = '';
     },
+    isPanel : function() {
+        if(movim_has_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled')) {
+            return true;
+        } else {
+            return false;
+        }
+    },
     scrollPanel : function() { // On for panel that are .contained
         var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
 
