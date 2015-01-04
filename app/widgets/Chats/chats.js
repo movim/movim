@@ -5,7 +5,7 @@ var Chats = {
         while(i < items.length)
         {
             items[i].onclick = function(e) {
-                MovimTpl.showPanel();
+                
                 Chat_ajaxGet(this.dataset.jid);
                 Chats.reset(items);
                 movim_add_class(this, 'active');
@@ -13,7 +13,7 @@ var Chats = {
             i++;
         }
 
-        if(window.innerWidth > 1024) {
+        if(window.innerWidth > 1024 && !MovimTpl.isPanel()) {
             items[0].click();
         }
     },

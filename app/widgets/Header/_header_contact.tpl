@@ -10,7 +10,7 @@
 <!--<h2>{$c->__('page.contacts')}</h2>-->
 
 <form>
-    <div>
+    <div onclick="Roster.init();">
         <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
         <!--<label for="search">{$c->__('roster.search')}</label>-->
     </div>

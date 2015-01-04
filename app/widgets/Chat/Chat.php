@@ -85,6 +85,7 @@ class Chat extends WidgetCommon
         Header::fill($header);
         RPC::call('movim_fill', 'chat_widget', $html);
         RPC::call('MovimTpl.scrollPanel');
+        RPC::call('MovimTpl.showPanel');
     }
 
     /**
