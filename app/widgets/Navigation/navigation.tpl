@@ -23,7 +23,7 @@
     <a class="classic" href="{$c->route('chat')}">
         <li>
             <span class="icon"><i class="md md-forum"></i></span>
-            <span class="counter"></span>
+            <span data-key="chat" class="counter"></span>
             <span>{$c->__('page.chats')}</span>
         </li>
     </a>
