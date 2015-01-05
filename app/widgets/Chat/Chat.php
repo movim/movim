@@ -186,19 +186,22 @@ class Chat extends WidgetCommon
     {
         $md = new \Modl\MessageDAO();
         $messages = $md->getContact(echapJid($jid), 0, 15);
-        $messages = array_reverse($messages);
         
         $cd = new \Modl\ContactDAO;
         $view = $this->tpl();
 
         $contact = $cd->get($jid);
-        if($contact != null && $status != null) {
+        if($contact != null && $status == null
+        && $messages[0]->jidfrom == $jid
+        && !preg_match('#^\?OTR#', $messages[0]->body)) {
             RPC::call(
                 'Chat.notify',
                 $contact->getTrueName(),
                 trim($messages[0]->body),
                 $contact->getPhoto('m'));
         }
+
+        $messages = array_reverse($messages);
         
         $view->assign('jid', $jid);
         $view->assign('contact', $contact);
