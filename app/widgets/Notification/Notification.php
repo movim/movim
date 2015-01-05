@@ -22,7 +22,7 @@ class Notification extends WidgetCommon
 {
     function load()
     {
-        $this->addcss('notification.css');
+        //$this->addcss('notification.css');
         $this->addjs('notification.js');
         $this->registerEvent('pubsuberror', 'onPubsubError');
         $this->registerEvent('moxlerror', 'onMoxlError');
@@ -50,12 +50,13 @@ class Notification extends WidgetCommon
                 break;
         }
         
-        $html = '
+        /*$html = '
             <div class="notif notificationAnim '.$type.'" id="'.$id.'">
                 <i class="fa '.$icon.'"></i> '.$message.'
-            </div>';
+            </div>';*/
+        $html = $message;
 
-        RPC::call('removeDiff', 'notification_widget', $html, $id);
+        RPC::call('removeDiff', 'toast', $html, $id);
     }
 
     function onPubsubError($error) {

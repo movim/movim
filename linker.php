@@ -4,31 +4,48 @@ require __DIR__ . '/vendor/autoload.php';
 define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
+gc_enable();
+
 $bootstrap = new Bootstrap();
 $booted = $bootstrap->boot();
 
+//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." booted : ".\sizeToCleanSize(memory_get_usage())."\n");
+
 $loop = React\EventLoop\Factory::create();
 
-$dnsResolverFactory = new React\Dns\Resolver\Factory();
-$dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);
+//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." loop : ".\sizeToCleanSize(memory_get_usage())."\n");
+
+/*$dnsResolverFactory = new React\Dns\Resolver\Factory();
+$dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);*/
 
 $connector = new Ratchet\Client\Factory($loop);
 
+//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." connector : ".\sizeToCleanSize(memory_get_usage())."\n");
+
 $stdin = new React\Stream\Stream(STDIN, $loop);
+
+//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." stdin : ".\sizeToCleanSize(memory_get_usage())."\n");
 
 $cd = new \Modl\ConfigDAO();
 $config = $cd->get();
+
+//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." config : ".\sizeToCleanSize(memory_get_usage())."\n");
+
+fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets before : ".\sizeToCleanSize(memory_get_usage())."\n");
 
 // We load and register all the widgets
 $wrapper = WidgetWrapper::getInstance();
 $wrapper->registerAll(true);
 
+fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
+
 $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$stdin, $loop) {
     fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
+    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
     
     $conn->on('message', function($message) use ($conn, $loop) {
         if($message != '') {
-            //fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             if($message == '</stream:stream>') {
                 $conn->close();
@@ -38,10 +55,16 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
             \Moxl\API::clear();
             \RPC::clear();
 
+            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." before handle : ".\sizeToCleanSize(memory_get_usage())."\n");
+
             \Moxl\Xec\Handler::handleStanza($message);
+
+            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." after handle : ".\sizeToCleanSize(memory_get_usage())."\n");
 
             $xml = \Moxl\API::commit();
             \Moxl\API::clear();
+
+            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." after commit : ".\sizeToCleanSize(memory_get_usage())."\n");
 
             $msg = \RPC::commit();
             \RPC::clear();
@@ -53,7 +76,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
             }
 
             if(!empty($xml)) {
-                //fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                 $conn->send(trim($xml));
             }
         }
@@ -95,7 +118,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
                 \Moxl\API::clear();
                 
                 if(!empty($xml)) {
-                    //fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                    fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                     $conn->send(trim($xml));
                 }
 

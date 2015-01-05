@@ -1,8 +1,8 @@
 <div id="subscribe">
-    <h1 class="paddedtopbottom">{$c->__('create.title')} {$c->__('on')} {$host}</h1>
+    <h1>{$c->__('create.title')} {$c->__('on')} {$host}</h1>
 
-    <div id="subscription_form" class="paddedtopbottom">
-        {$c->__('loading')}
+    <div id="subscription_form">
+        <h4>{$c->__('loading')}</h4>
     </div>
 
     <script type="text/javascript">

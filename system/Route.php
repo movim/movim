@@ -15,6 +15,8 @@ class Route extends \BaseController {
                 'explore'       => false,
                 'discover'      => false,
                 'profile'       => false,
+                'contact'       => false,
+                'chat'          => false,
                 'infos'         => false,
                 'media'         => array('f'),
                 'conf'          => false,

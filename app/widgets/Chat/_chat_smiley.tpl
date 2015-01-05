@@ -1,0 +1,26 @@
+<section>
+    <h3>{$c->__('chat.smileys')}</h3>
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+    </table>
+</section>
+<div>
+    <a onclick="Dialog.clear()" class="button flat">
+        {$c->__('button.close')}
+    </a>
+</div>

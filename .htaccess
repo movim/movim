@@ -12,7 +12,7 @@ AddType application/x-web-app-manifest+json .webapp
     # Movim url: http://some.example.com/movim
     # RewriteBase /movim/
 
-    RewriteBase /movim/
+    #RewriteBase /0.9/
     #RewriteEngine On
 
     #RewriteCond %{REQUEST_FILENAME} !-f

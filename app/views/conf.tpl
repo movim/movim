@@ -1,23 +1,18 @@
-<?php /* -*- mode: html -*- */
-?>
-<?php $this->widget('Presence');?>
-<?php $this->widget('Chat');?>
-<?php $this->widget('VisioExt');?>
+<nav class="color dark">
+    <?php $this->widget('Presence');?>
+    <?php $this->widget('Navigation');?>
+</nav>
 
-<div id="main">
-    <div id="left">
-        <?php $this->widget('Profile');?>
-        <?php $this->widget('Notifs');?>
-        <?php $this->widget('Bookmark');?>
-    </div>
+<main>
+    <?php $this->widget('Header'); ?>
+    <section>
+        <div>
             <?php $this->widget('Tabs');?>
-    <div id="center">
-        <?php $this->widget('Config');?>
-        <?php $this->widget('ConfigData');?>
-        <?php $this->widget('PubsubSubscriptionConfig');?>
-    </div>
-</div>
-
-<div id="right">
-    <?php $this->widget('Roster');?>
-</div>
+            <?php $this->widget('Vcard4');?>
+            <?php $this->widget('Avatar');?>
+            <?php $this->widget('Config');?>
+            <?php //$this->widget('ConfigData');?>
+            <?php $this->widget('PubsubSubscriptionConfig');?>
+        </div>
+    </section>
+</main>

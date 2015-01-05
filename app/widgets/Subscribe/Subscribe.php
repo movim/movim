@@ -24,7 +24,17 @@ class Subscribe extends WidgetBase {
     {
         $this->addcss('subscribe.css');
         $this->addjs('subscribe.js');
+    }
 
+    function flagPath($country) {
+        return BASE_URI.'themes/movim/img/flags/'.strtolower($country).'.png';
+    }
+
+    function accountNext($server) {
+        return Route::urlize('accountnext', array($server));
+    }
+
+    function display() {
         $xml = requestURL('http://movim.eu/server-vcards.xml', 1);
         if($xml) {
             $xml = simplexml_load_string($xml);
@@ -35,13 +45,5 @@ class Subscribe extends WidgetBase {
         } else {
             $this->view->assign('servers', false);
         }
-    }
-
-    function flagPath($country) {
-        return BASE_URI.'themes/movim/img/flags/'.strtolower($country).'.png';
-    }
-
-    function accountNext($server) {
-        return Route::urlize('accountnext', array($server));
     }
 }

@@ -1,4 +1,82 @@
-body {
+body main {
+    background-color: #32434D;
+
+    background-image: url(img/logo.svg);
+    background-repeat: no-repeat;
+    background-position: center 90%;
+    background-size: 30rem auto;
+
+    animation: 60s infinite colorful;
+}
+
+@media screen and (max-width: 600px) {
+    body main {
+        background-image: none;
+    }
+
+}
+
+#login_widget li.new_account {
+    text-align: center;
+}
+
+#login_widget > div {
+    display: none;
+}
+
+#login_widget.choose > div:first-child {
+    display: initial;
+}
+
+#login_widget:not(.choose) > div:last-child {
+    display: initial;
+}
+
+#login_widget span.info {
+    float: right;
+    margin-top: 2.5rem;
+}
+
+#login_widget span.info + h3 {
+    margin-top: 2rem;
+}
+
+#login_widget form > div:last-child {
+    min-height: 0;
+}
+
+ul.admin {
+    position: relative;
+    text-align: center;
+    color: white;
+    max-width: 45rem;
+}
+
+/*
+#login_widget > div {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
+}
+
+#login_widget > div:not(.choose) form {
+    margin: 2rem;
+    margin-top: 0;
+}
+
+#login_widget > ul {
+    color: white;
+    max-width: 50rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    #login_widget > ul {
+        display: none;
+    }
+}*/
+
+/*body {
     width: 100%;
     margin: 0 auto;
     max-width: 28em;
@@ -69,12 +147,14 @@ body {
 
 #loginpage form > .element:not(:first-child) {
     padding-top: 0.5em;
-}
+}*/
 /*
 #loginpage form .element.login {
     min-height: 0em;
 }
 */
+
+/*
 #loginpage form .element input:not([type=submit]) {
     margin: 0;
     border: 0;
@@ -119,8 +199,9 @@ body {
 #loginpage #loginhelp li#jabber { background-image: url(img/jabber.png); }
 #loginpage #loginhelp li#gmail { background-image: url(img/envelope.png); }
 #loginpage #loginhelp li#facebook { background-image: url(img/facebook.png); }
-
+*/
 /* Sessions */
+/*
 #loginpage #sessions {
     display: none;
 }
@@ -164,31 +245,34 @@ body {
     display: inline-block;
     overflow: hidden;
 }
-
+*/
 /* States */
-#loginpage.choose #loginhelp,
-#loginpage.choose form .element {
+/*
+#login_widget > div #sessions,
+#login_widget > div.choose #loginhelp,
+#login_widget > div.choose form div,
+#login_widget > div.choose form input {
     display: none;
 }
 
-#loginpage.choose form {
+#login_widget > div.choose form {
     box-shadow: none;
     background-color: transparent;
 }
 
-#loginpage.choose #sessions {
+#login_widget > div.choose #sessions {
     display: block;
     height: 100%;
 }
 
-#loginpage.choose #return_sessions {
+#login_widget > div.choose #return_sessions {
     display: none;
 }
 
 footer {
     display: none;
-}
-
+}*/
+/*
 @media screen and (max-width: 1024px) {
     #loginpage {
         background-size: 80% auto;
@@ -199,4 +283,4 @@ footer {
         display: none;
     }
 }
-
+*/

@@ -23,22 +23,6 @@ class ConfigData extends WidgetBase
     function load()
     {
         $this->addcss('configdata.css');
-        
-        $cd = new \modl\ContactDAO();
-        $stats = $cd->getStatistics();
-
-        $pd = new \modl\PostnDAO();
-        $pstats = array_slice($pd->getStatistics(), 0, 10);
-
-        $md = new \modl\MessageDAO();
-        $mstats = array_slice($md->getStatistics(), 0, 10);
-
-        $this->view->assign('stats',            $stats[0]);
-        $this->view->assign('pstats',           $pstats);
-        $this->view->assign('mstats',           $mstats);
-        $this->view->assign('clearrosterlink',  $this->call('ajaxClearRosterLink'));
-        $this->view->assign('clearmessage',     $this->call('ajaxClearMessage'));
-        $this->view->assign('clearpost',        $this->call('ajaxClearPost'));
     }
     
     function formatDate($month, $year) {
@@ -73,5 +57,23 @@ class ConfigData extends WidgetBase
     function refresh() {
         RPC::call('movim_reload_this');
         RPC::commit();
+    }
+
+    function display() {
+        $cd = new \modl\ContactDAO();
+        $stats = $cd->getStatistics();
+
+        $pd = new \modl\PostnDAO();
+        $pstats = array_slice($pd->getStatistics(), 0, 7);
+
+        $md = new \modl\MessageDAO();
+        $mstats = array_slice($md->getStatistics(), 0, 7);
+
+        $this->view->assign('stats',            $stats[0]);
+        $this->view->assign('pstats',           $pstats);
+        $this->view->assign('mstats',           $mstats);
+        $this->view->assign('clearrosterlink',  $this->call('ajaxClearRosterLink'));
+        $this->view->assign('clearmessage',     $this->call('ajaxClearMessage'));
+        $this->view->assign('clearpost',        $this->call('ajaxClearPost'));
     }
 }
