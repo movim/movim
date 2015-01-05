@@ -28,10 +28,12 @@ class Notifs extends WidgetCommon
     {
         $this->addcss('notifs.css');
         $this->addjs('notifs.js');
+
+        /* TODO remove Moxl Notification (inbox) actions
         $this->registerEvent('notification', 'onNotification');
         $this->registerEvent('notificationdelete', 'onNotificationDelete');
         $this->registerEvent('notifications', 'displayNotifications');
-        $this->registerEvent('nonotification', 'onNoNotification');
+        $this->registerEvent('nonotification', 'onNoNotification');*/
         
         $this->registerEvent('subscribe', 'onNotifs');
         $this->registerEvent('roster_additem_handle', 'onNotifs');

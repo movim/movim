@@ -267,7 +267,7 @@ window.onunload = window.onbeforeunload = function(e){
     // Move this to disconnection moment ?? 
     // Keep group states in jid_Roster.groupStates 
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
-    angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
+    //angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
 };
 
@@ -277,6 +277,8 @@ function initContacts(tab){
         angular.element(roster).scope().contacts = null;
     else
         angular.element(roster).scope().initContacts(JSON.parse(tab));
+
+    Roster.refresh();
 }
 
 function initGroups(tab){
@@ -335,41 +337,77 @@ MovimWebsocket.attach(function(){
     Roster_ajaxGetRoster();
 });
 
-movim_add_onload(function(){    
-    var search      = document.querySelector('#rostersearch');
-    var roster      = document.querySelector('#roster');
-    var rosterlist  = document.querySelector('#rosterlist');
-    
-    var roster_classback      = document.querySelector('#roster').className;
-    var rosterlist_classback  = document.querySelector('#rosterlist').className;
+var Roster = {
+    init : function() {
+        var search      = document.querySelector('#rostersearch');
+        var roster      = document.querySelector('#roster');
+        var rosterlist  = document.querySelector('#rosterlist');
+        
+        var roster_classback      = document.querySelector('#roster').className;
+        var rosterlist_classback  = document.querySelector('#rosterlist').className;
 
-    roster.onblur  = function() {
-        roster.className = roster_classback;
-        rosterlist.className = rosterlist_classback;
-    };
-    search.onkeyup = function(event) {
-        if(search.value.length > 0) {
-            roster.className = 'search';
-            rosterlist.className = 'offlineshown';
-        } else {
+        roster.onblur  = function() {
             roster.className = roster_classback;
             rosterlist.className = rosterlist_classback;
+        };
+        search.oninput = function(event) {
+            if(search.value.length > 0) {
+                roster.className = 'search';
+                rosterlist.className = 'offlineshown';
+            } else {
+                roster.className = roster_classback;
+                rosterlist.className = rosterlist_classback;
+            }
+
+            // We clear the old search
+            var selector_clear = '#rosterlist div > li:not(.subheader)';
+            var li = document.querySelectorAll(selector_clear);
+
+            for(i = 0; i < li.length; i++) {
+                li.item(i).className = '';
+            }
+
+            // We select the interesting li
+            var selector = '#rosterlist div > li[title*="' + search.value.toLowerCase() + '"]:not(.subheader)';
+            var li = document.querySelectorAll(selector);
+
+            for(i = 0; i < li.length; i++) {
+                li.item(i).className = 'found';
+            }
+        };
+    },
+    refresh: function() {
+        var items = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
+
+        var i = 0;
+        while(i < items.length -1)
+        {
+            items[i].onclick = function(e) {
+                Contact_ajaxGetContact(this.id);
+                Roster.reset(items);
+                movim_add_class(this, 'active');
+                document.querySelector('#roster').className = '';
+            }
+            i++;
         }
+    },
 
-        // We clear the old search
-        var selector_clear = '#rosterlist div > li';
-        var li = document.querySelectorAll(selector_clear);
-
-        for(i = 0; i < li.length; i++) {
-            li.item(i).className = '';
+    reset: function(list) {
+        for(i = 0; i < list.length; i++) {
+            movim_remove_class(list[i], 'active');
         }
+    },
 
-        // We select the interesting li
-        var selector = '#rosterlist div > li[title*="' + search.value.toLowerCase() + '"]';
-        var li = document.querySelectorAll(selector);
+    setFound : function(jid) {
+        document.querySelector('input[name=searchjid]').value = jid;
+    }
+}
 
-        for(i = 0; i < li.length; i++) {
-            li.item(i).className = 'found';
-        }
-    };
+MovimWebsocket.attach(function() {
+    Roster.refresh();
+});
+
+
+movim_add_onload(function(){    
+    Roster.init();
 });

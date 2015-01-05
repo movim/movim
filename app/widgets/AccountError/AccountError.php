@@ -22,6 +22,10 @@ class AccountError extends WidgetBase {
     
     function load()
     {
+    }
+
+    function display()
+    {
         $warning = '';
         
         if(isset($_GET['err']))

@@ -328,6 +328,24 @@ class ContactDAO extends SQL {
         return $this->run('Contact');
     }
     
+    function searchJid($search) {       
+        $this->_sql = 
+            'select *, privacy.value as privacy from contact
+            left outer join privacy 
+                on contact.jid = privacy.pkey
+            where jid like :jid
+            and privacy.value = 1
+            order by jid';
+        
+        $this->prepare(
+            'Contact',
+            array(
+                'jid' => '%'.$search.'%'
+                )
+        );
+        return $this->run('Contact');
+    }
+    
     function getAllPublic() {       
         $this->_sql = 
             'select *, privacy.value as privacy from contact 
