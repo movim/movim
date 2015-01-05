@@ -34,7 +34,7 @@
                         <span class="icon bubble">
                             <img
                                 class="avatar"
-                                src="{{contact.rosterview.avatar}}"
+                                ng-attr-src="{{contact.rosterview.avatar}}"
                                 alt="avatar"
                             />
                         </span>

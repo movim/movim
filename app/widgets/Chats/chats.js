@@ -5,12 +5,17 @@ var Chats = {
         while(i < items.length)
         {
             items[i].onclick = function(e) {
-                
                 Chat_ajaxGet(this.dataset.jid);
                 Chats.reset(items);
                 movim_add_class(this, 'active');
             }
             i++;
+            items[i].onmousedown = function(e) {
+                if(e.which == 2) {
+                    Chats_ajaxClose(this.dataset.jid);
+                    MovimTpl.hidePanel();
+                }
+            }
         }
 
         if(window.innerWidth > 1024 && !MovimTpl.isPanel()) {
