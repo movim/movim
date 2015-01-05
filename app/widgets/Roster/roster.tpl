@@ -1,49 +1,68 @@
-<input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
 <div id="roster" ng-controller="RosterController as rosterCtrl">        
-    <ul id="rosterlist" class="{{rosterCtrl.offlineIsShown()}}">
+    <!--<form>
+        <div>
+            <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
+            <label for="search">{$c->__('roster.search')}</label>
+        </div>
+    </form>-->
+    <ul id="rosterlist" class="offlineshown active">
+    <!--
+    Also this means we can remove:
+        rosterCtrl.offlineIsShown() from roster.js
+    -->
         <span ng-hide="contacts != null" class="nocontacts">
             {$c->__('roster.no_contacts')}
             <br />
             <br />
             <a class="button color green" href="{$c->route('explore')}"><i class="fa fa-compass"></i> {$c->__('page.explore')}</a>
         </span>
-
+        
+        <li class="subheader search">{$c->__('roster.results')}</li>
         <div ng-show="contacts != null && !group.tombstone" ng-repeat="group in contacts" id="group{{group.agroup}}" ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup)}" >
-            <h1 ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</h1>
+            <li class="subheader" ng-click="rosterCtrl.showHideGroup(group.agroup)">{{group.agroup}}</li>
             <li ng-repeat="myjid in group.agroupitems" ng-hide="myjid.tombstone" id="{{myjid.ajid}}" class="{{myjid.ajiditems[0].rosterview.presencetxt}}" ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems[0])}}">
                 <!-- Rostersearch look this way for an angularJS solution http://www.bennadel.com/blog/2487-filter-vs-nghide-with-ngrepeat-in-angularjs.htm -->
-                <ul class="contact">
-                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="rosterCtrl.getContactClient(contact)" >
-                        <div class="chat on" ng-click="rosterCtrl.postChatAction(contact)" ></div>
-                        <div ng-if="contact.rosterview.type == 'handheld'" class="infoicon mobile"></div>
-                        <div ng-if="contact.rosterview.type == 'web'" class="infoicon web"></div>
-                        <div ng-if="contact.rosterview.type == 'bot'" class="infoicon bot"></div>
-                        <div ng-if="contact.rosterview.tune" class="infoicon tune"></div>
-                        <div
+                <ul class="contact active">
+                    <li ng-repeat="contact in myjid.ajiditems" class="{{contact.rosterview.presencetxt}} {{contact.rosterview.inactive}}" ng-class="{condensed: contact.status != '' && contact.status != null }" ng-class="rosterCtrl.getContactClient(contact)" >
+                        <div class="control">
+                            <i ng-if="contact.rosterview.type == 'handheld'" class="md md-smartphone"></i>
+                            <i ng-if="contact.rosterview.type == 'web'" class="md md-language"></i>
+                            <i ng-if="contact.rosterview.type == 'bot'" class="md md-memory"></i>
+                            <i ng-if="contact.rosterview.tune" class="md md-play-arrow"></i>
+                        </div>
+
+                        <span class="icon bubble">
+                            <img
+                                class="avatar"
+                                ng-src="{{::contact.rosterview.avatar}}"
+                                alt="avatar"
+                            />
+                        </span>
+                        <div class="chat on"></div>
+                        <!--
+                        MOVE IT TO CONTACT PAGE BOTTOM RIGHT BUTTON:
+                        ng-click="rosterCtrl.postChatAction(contact)"
+                            Also this means we can remove:
+                            - postChatAction() from roster.js
+                            - c.rosterview.openchat from the contact object sent from php
+                        -->
+                        <!--<div
                             ng-if="contact.rosterview.jingle"
                             class="infoicon jingle"
                             ng-click="rosterCtrl.postJingleAction(contact)">
-                        </div>
+                        </div>-->
 
-                        <a href="{{contact.rosterview.friendpage}}">
-                            <img
-                                class="avatar"
-                                src="{{contact.rosterview.avatar}}"
-                                alt="avatar"
-                            />
-                            {{contact.rosterview.name}}
-                            <span class="ressource">
-                                <span ng-if="contact.status != ''">{{contact.status}} -</span>
-                                 {{contact.ressource}}
-                            </span>
-                        </a>
+                        {{contact.rosterview.name}}
+                        <p class="wrap">
+                            <span ng-if="contact.status != ''">{{contact.status}}</span>
+                        </p>
                     </li>
                 </ul>
             </li>
         </div>
     </ul>
 </div>
-
+<!--
 <div id="rostermenu" class="menubar" ng-controller="RosterMenuController as rosterMenuCtrl">
     <ul class="menu">
         <li 
@@ -101,3 +120,4 @@
 
     </ul>
 </div>
+-->

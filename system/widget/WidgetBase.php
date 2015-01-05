@@ -28,13 +28,23 @@ class WidgetBase
     protected $name;
     protected $pure;    // To render the widget without the container
     protected $translations = array(); // Set translations in the controller
+    protected $_view;
     public $events;
 
     /**
      * Initialises Widget stuff.
      */
-    function __construct()
+    function __construct($light = false, $view = null)
     {
+        if($view != null) $this->_view = $view;
+
+        $this->load();
+        $this->name = get_class($this);
+
+        // If light loading enabled, we stop here
+        if($light)
+            return;
+        
         // Put default widget init here.
         $this->ajax = AjaxController::getInstance();
         
@@ -62,7 +72,6 @@ class WidgetBase
             'tpl_ext'       => 'tpl',
             'auto_escape'   => false
         );
-        
 
         if(file_exists($this->respath('locales.ini', true))) {
             $this->translations = parse_ini_file($this->respath('locales.ini', true));
@@ -73,14 +82,10 @@ class WidgetBase
         $this->view->objectConfigure($config);
 
         $this->view->assign('c', $this);
-                
-        $this->name = get_class($this);
         
         $this->pure = false;
-
-        $this->load();
     }
-    
+
     function t() {
         return call_user_func_array('t',func_get_args());
     }
@@ -254,22 +259,6 @@ class WidgetBase
             $this->events[$type] = array($function);
         } else {
             $this->events[$type][] = $function;
-        }
-    }
-
-    /**
-     * Runs all events of a given type.
-     */
-    public function runEvents($proto)
-    {
-        if(is_array($this->events) && array_key_exists($proto['type'], $this->events)) {
-            $returns = array();
-
-            foreach($this->events[$proto['type']] as $handler) {
-                $returns[] = call_user_func(array($this, $handler), $proto['data']);
-            }
-
-            return $returns;
         }
     }
 }

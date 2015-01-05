@@ -1,0 +1,265 @@
+/* Form */
+
+form > div:not(.clear):not(.control) {
+    min-height: 9.5rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+li > form > div:not(.control) { /* If we put the form in a list */
+    min-height: 0;
+    line-height: 3rem;
+    padding-top: 0rem;
+    top: -1.5rem;
+}
+
+form > div > label {
+    display: block;
+    position: absolute;
+    top: 2rem;
+}
+
+form > div > textarea {
+    border: none;
+    resize: none;
+    font-family: sans-serif;
+    line-height: 3rem;
+    box-sizing: border-box;
+}
+
+form > div > .select {
+    position: relative;
+}
+
+form > div > .select:after {
+    font-family: "Material Design Iconic Font";
+    content: "\f295";
+    display: block;
+    font-size: 4rem;
+    color: #B8B8B8;
+    position: absolute;
+    right: 0;
+    bottom: 0.25rem;
+}
+
+form > div > .select select {
+    width: calc(100% + 3rem);
+    background-color: transparent;
+}
+
+main > header form > div:not(.clear):not(.control) {
+    min-height: 0;
+}
+
+main > header form > div:not(.clear):not(.control) > input,
+main > header form > div:not(.clear):not(.control) > .select {
+    margin-top: 1.5rem;
+    padding-top: 0.4rem;
+}
+
+main > header form > div:not(.clear):not(.control) > .select option {
+    background-color: white;
+    color: initial;
+}
+
+main > header form > div:not(.clear):not(.control) > input,
+main > header form > div:not(.clear):not(.control) > .select:after,
+main > header form > div:not(.clear):not(.control) > .select select {
+    color: white;
+}
+
+form > div > .select,
+form > div > input:not([type=submit]),
+form > div > textarea {
+    display: block;
+    padding: 1rem 0;
+    padding-top: 5rem;
+    width: 100%;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    margin-bottom: 1rem;
+
+    overflow: hidden; /* Fixme */
+}
+
+form > div > input:focus,
+form > div > textarea:focus {
+    border-bottom-width: 2px;
+    margin-bottom: calc(1rem - 1px);
+}
+
+form > div > input:required {
+    box-shadow: none;
+}
+
+/* Placing the checkbox and radio */
+
+form > div:not(.control) .checkbox {
+    margin-top: 5.5rem;
+}
+
+form > div .radio {
+    padding-top: 5.5rem;
+}
+
+/* Checkbox element */
+
+form > div .checkbox > input[type="checkbox"],
+form > div .radio > input[type="radio"] {
+    display: none;
+}
+
+form > div .checkbox {
+    position: relative;
+    height: 2.25rem;
+    border-radius: 2rem;
+    margin-left: 1rem;
+    width: 5rem;
+    background-color: #939393;
+}
+
+form > div .checkbox:before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 2.25rem;
+    border-radius: 2rem 0 0 2rem;
+    width: 2.7rem;
+    background-color: #77C1BA;
+}
+
+form > div .checkbox > input[type="checkbox"] + label {
+    display: block;
+    background-color: #FAFAFA;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+    top: -0.35rem;
+    left: 0;
+    position: relative;
+
+    transition: left 0.3s ease, box-shadow 0.1s ease;
+}
+
+form > div .checkbox > input[type="checkbox"] + label:hover {
+    cursor: pointer;
+    box-shadow: 0  0 0 1.5rem rgba(0, 0, 0, 0.1), 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+form > div .checkbox > input[type="checkbox"]:checked + label {
+    background-color: #009587;
+    left: 1.3em;
+}
+
+form > div .checkbox > input[type="checkbox"]:checked + label:hover {
+    box-shadow: 0  0 0 1.5rem rgba(0, 0, 0, 0.1), 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+/* Radio */
+
+form > div .radio > input[type="radio"] + label {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: gray;
+    transition: box-shadow 0.1s ease;
+}
+
+form > div .radio > input[type="radio"] + label:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0  0 0 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+form > div .radio > input[type="radio"]:checked + label {
+    background-color: blue;
+    background-color: #009688;
+    border-color: #009688;
+    box-shadow: inset 0 0 0 0.4rem white;
+
+}
+
+form > div .radio > input[type="radio"]:checked + label:hover {
+    box-shadow: inset 0 0 0rem 0.4rem white, 0 0 0 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Button */
+
+.button.oppose {
+    float: right;
+}
+
+.button.inactive {
+    opacity: 0.5;
+    pointer-events:none;
+}
+
+.button,
+input[type=button] {
+    min-width: 8rem;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    height: 4.5rem;
+    margin: 0.75rem 0.5rem;
+    
+    border-radius: 0.25rem;
+    background-color: white;
+    color: black;
+    padding: 0 1rem;
+
+    border: 0;
+
+    transition: background 0.3s ease;
+
+    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
+}
+
+.button.flat,
+input[type=button].flat {
+    box-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.button:hover,
+input[type=button]:hover {
+    cursor: pointer;
+}
+
+.button.flat:hover,
+input[type=button].flat:hover {
+    background-color: rgba(153, 153, 153, 0.2);
+}
+
+.button:focus,
+input[type=button]:focus {
+    border: 0;
+}
+
+.button.flat:focus,
+input[type=button].flat:focus {
+    background-color: rgba(153, 153, 153, 0.4);
+}
+
+.button.action {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    border-radius: 10rem;
+    width: 3rem;
+    min-height: 0rem;
+    line-height: 6rem;
+    padding: 1rem;
+    height: 8rem;
+    z-index: 1;
+    font-size: 3rem;
+}

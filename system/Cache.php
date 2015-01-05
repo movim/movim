@@ -34,7 +34,7 @@ class Cache
     // Helper function to access cache.
     public static function c()
     {
-        $cache = Cache::create();
+        $cache = self::create();
 
         return call_user_func_array(array($cache, 'handle'), func_get_args());
     }

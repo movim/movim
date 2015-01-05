@@ -95,10 +95,11 @@ class XMPPtoForm{
 
     private function outGeneric($s){
         $this->html .= '
+            <input id="'.$s.'" name="generic_'.$s.'" type="'.$s.'" required/>
             <label for="'.$s.'">'.
                 $s.'
             </label>
-            <input id="'.$s.'" name="generic_'.$s.'" type="'.$s.'" required/>';
+            ';
     }
     private function outTitle($s){
         $this->html .= '
@@ -123,18 +124,7 @@ class XMPPtoForm{
         $this->fieldset ++;
     }
 
-    private function outCheckbox($s){        
-        $this->html .= '
-            <label for="'.$s['var'].'">';
-                if($s['label']==null){
-                    $this->html .= $s['var'];
-                }
-                else{
-                    $this->html .= $s['label'];
-                }
-        $this->html .= '
-            </label>';
-            
+    private function outCheckbox($s){
         $this->html .= '
             <input 
                 id="'.$s['var'].'" 
@@ -145,18 +135,28 @@ class XMPPtoForm{
             if($s->value == "true" || $s->value == "1")
                 $this->html .= ' checked';
         $this->html .= '/>';
-        
+
+        $this->html .= '
+            <label for="'.$s['var'].'">';
+                if($s['label']==null){
+                    $this->html .= $s['var'];
+                }
+                else{
+                    $this->html .= $s['label'];
+                }
+        $this->html .= '
+            </label>';
     }
     
     private function outTextarea($s){
         $this->html .= '
-            <label for="'.$s["var"].'">'.$s["label"].'</label>
             <textarea 
                 id="'.$s["var"].'" 
                 name="'.$s["var"].'" 
                 type="'.$s['type'].'"
                 label="'.$s['label'].'"
-                required="'.$s->required.'">';
+                required="'.$s->required.'">
+            <label for="'.$s["var"].'">'.$s["label"].'</label>';
                 
         foreach($s->children() as $value){
             if($value->getName() == "value"){
@@ -170,7 +170,6 @@ class XMPPtoForm{
         if($s->required)
             $req = 'required';
         $this->html .= '
-            <label for="'.$s["var"].'">'.$s["label"].'</label>
             <input id="'.$s["var"].'" name="'.$s["var"].'" value="';
             
             foreach($s->children() as $value){
@@ -189,7 +188,8 @@ class XMPPtoForm{
             title="'.$s->desc.'" 
             type="'.$s['type'].'"
             label="'.$s['label'].'"
-            '.$multiple.' '.$req.'/>';
+            '.$multiple.' '.$req.'/>
+            <label for="'.$s["var"].'">'.$s["label"].'</label>';
     }
     
     private function outHiddeninput($s){
@@ -199,7 +199,6 @@ class XMPPtoForm{
     
     private function outList($s, $multiple){
         $this->html .= '
-            <label for="'.$s["var"].'">'.$s["label"].'</label>
             <div class="select">
                 <select 
                     type="'.$s['type'].'"
@@ -229,7 +228,8 @@ class XMPPtoForm{
         
         $this->html .= '
                 </select>
-            </div>';
+            </div>
+            <label for="'.$s["var"].'">'.$s["label"].'</label>';
     }
 }
 
