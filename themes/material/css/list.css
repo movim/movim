@@ -119,10 +119,6 @@ ul li > div.control > * {
     margin-left: 2rem;
 }
 
-ul li > div.control.bottom {
-    top: auto;
-    bottom: 0;
-}
 /*
 ul.thick li > div.control.bottom {
     bottom: 2rem;
@@ -154,10 +150,6 @@ ul li span.counter:empty {
 }
 
 ul li span.counter {
-    /*float: right;
-    margin-top: 1.5rem;
-     *
-     */
     position: absolute;
     right: 1rem;
     top: calc(50% - 1.5rem);
@@ -166,6 +158,10 @@ ul li span.counter {
     padding: 0.5rem;
     text-align: center;
     min-width: 2rem;
+}
+
+ul li span.counter.bottom {
+    top: calc(50%);
 }
 
 /* Bubble */

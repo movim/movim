@@ -166,6 +166,14 @@ body > nav li { /* Little hack for the navbar */
         opacity: 0.5;
         pointer-events: none;
     }
+
+    body > nav:not(:hover) li span.counter {
+        left: 3.5rem;
+        top: calc(50% - 1.25rem);
+        right: auto;
+        font-size: 1.75rem;
+        padding: 0.25rem;
+    }
 }
 
 body > nav.active:before,
@@ -561,11 +569,16 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     max-height: 11rem;
     height: auto;
     color: white;
-    box-sizing: border-box;
     padding: 2rem 3rem;
+    box-sizing: border-box;
     width: 40rem;
     pointer-events: none;
     transition: opacity 0.2s ease, bottom 0.4s ease;
+}
+
+.snackbar p,
+.toast p {
+    color: white;
 }
 
 .snackbar {
@@ -574,6 +587,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     left: 3rem;
     border-radius: 0.25rem;
     opacity: 1;
+    padding: 2rem 1rem;
 }
 
 .toast {
@@ -592,8 +606,9 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 @media screen and (max-width: 34rem) {
     .snackbar {
         width: 100%;
-        bottom: 0;
+        top: 0;
         left: 0;
+        bottom: auto;
         border-radius: 0;
     }
 

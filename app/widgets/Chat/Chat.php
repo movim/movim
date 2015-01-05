@@ -18,9 +18,17 @@ class Chat extends WidgetCommon
     {
         $message = $packet->content;
 
-        // If the message is from me
         if($message->session == $message->jidto) {
             $from = $message->jidfrom;
+
+            $cd = new \Modl\ContactDAO;
+            $contact = $cd->get($from);
+            
+            if($contact != null
+            && !preg_match('#^\?OTR#', $message->body)) {
+                Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $contact->getPhoto('s'), 4);
+            }
+        // If the message is from me
         } else {
             $from = $message->jidto;
         }
@@ -191,15 +199,6 @@ class Chat extends WidgetCommon
         $view = $this->tpl();
 
         $contact = $cd->get($jid);
-        if($contact != null && $status == null
-        && $messages[0]->jidfrom == $jid
-        && !preg_match('#^\?OTR#', $messages[0]->body)) {
-            RPC::call(
-                'Chat.notify',
-                $contact->getTrueName(),
-                trim($messages[0]->body),
-                $contact->getPhoto('m'));
-        }
 
         $messages = array_reverse($messages);
         

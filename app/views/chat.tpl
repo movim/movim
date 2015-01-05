@@ -1,6 +1,7 @@
 <nav class="color dark">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
+    <?php $this->widget('Notification');?>
 </nav>
 
 <main>
