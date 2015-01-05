@@ -7,15 +7,18 @@ var Chats = {
             items[i].onclick = function(e) {
                 Chat_ajaxGet(this.dataset.jid);
                 Chats.reset(items);
+                Notification_ajaxClear('chat|' + this.dataset.jid);
                 movim_add_class(this, 'active');
             }
-            i++;
+
             items[i].onmousedown = function(e) {
                 if(e.which == 2) {
                     Chats_ajaxClose(this.dataset.jid);
                     MovimTpl.hidePanel();
                 }
             }
+
+            i++;
         }
 
         if(window.innerWidth > 1024 && !MovimTpl.isPanel()) {

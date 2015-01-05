@@ -40,7 +40,7 @@ class Presence extends WidgetBase
     {
         $html = $this->preparePresence();
         RPC::call('movim_fill', 'presence_widget', $html);
-        Notification::appendNotification($this->__('status.updated'), 'success');
+        Notification::append(null, $this->__('status.updated'));
         RPC::call('setPresenceActions');
         RPC::call('movim_remove_class', '#presence_widget', 'unfolded');
     }

@@ -26,7 +26,7 @@ class Chats extends WidgetCommon
         if(!array_key_exists($from, $chats)) {
             $this->ajaxOpen($from);
         } else {
-            RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
+            //RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
             RPC::call('Chats.refresh');
         }
     }
