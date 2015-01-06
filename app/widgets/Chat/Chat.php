@@ -225,12 +225,21 @@ class Chat extends WidgetCommon
         $view = $this->tpl();
 
         $contact = $cd->get($jid);
+        if($contact == null) {
+            $contact = new \Modl\Contact;
+            $contact->jid = $jid;
+        }      
+        
+        $me = $cd->get();
+        if($me == null) {
+            $me = new \Modl\Contact;
+        }      
 
         $messages = array_reverse($messages);
         
         $view->assign('jid', $jid);
         $view->assign('contact', $contact);
-        $view->assign('me', $cd->get());
+        $view->assign('me', $me);
         $view->assign('messages', $messages);
 
         $view->assign('status', $status);
