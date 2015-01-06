@@ -40,7 +40,7 @@ class Presence extends WidgetBase
     {
         $html = $this->preparePresence();
         RPC::call('movim_fill', 'presence_widget', $html);
-        Notification::appendNotification($this->__('status.updated'), 'success');
+        Notification::append(null, $this->__('status.updated'));
         RPC::call('setPresenceActions');
         RPC::call('movim_remove_class', '#presence_widget', 'unfolded');
     }
@@ -156,7 +156,12 @@ class Presence extends WidgetBase
 
         $presencetpl = $this->tpl();
         
-        $presencetpl->assign('me', $cd->get());
+        $contact = $cd->get();
+        if($contact == null) {
+            $contact = new \Modl\Contact;
+        }
+        
+        $presencetpl->assign('me', $contact);
         $presencetpl->assign('presence', $presence);
         $presencetpl->assign('dialog',      $this->call('ajaxOpenDialog'));
 

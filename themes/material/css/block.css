@@ -9,7 +9,10 @@
 .block:nth-of-type(even) {
     float: right;
     clear: right;
-    padding-right: 1rem;
+}
+
+.block:nth-of-type(even):not(li) {
+    padding-left: 2rem;
 }
 
 .block.large {
@@ -20,5 +23,10 @@
 @media screen and (max-width: 1024px) {
     .block {
         width: 100%;
+        padding-right: 2rem;
+    }
+
+    .block:nth-of-type(even):not(li) {
+        padding-left: 0;
     }
 }
