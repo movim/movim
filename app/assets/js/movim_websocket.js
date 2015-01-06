@@ -42,14 +42,16 @@ var MovimWebsocket = {
 
             var obj = JSON.parse(data);
 
-            if(obj.func == 'registered') {
-                MovimWebsocket.launchAttached();
+            if(obj != null) {
+                if(obj.func == 'registered') {
+                    MovimWebsocket.launchAttached();
+                }
+
+                if(obj.func == 'disconnected') {
+                    movim_disconnect();
+                }
             }
 
-            if(obj.func == 'disconnected') {
-                movim_disconnect();
-            }
-            
             MovimWebsocket.handle(data);
         };
 

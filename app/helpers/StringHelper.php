@@ -86,7 +86,7 @@ function prepareString($string) {
     
     // Twitter hashtags
     $string = preg_replace_callback(
-        "/ #[a-zA-Z0-9_-]*/", function ($match) {
+        "/ #[a-zA-Z0-9_-]{3,}/", function ($match) {
             return
                 ' <a class="twitter hastag" href="http://twitter.com/search?q='.
                     urlencode(trim($match[0])).
@@ -97,7 +97,7 @@ function prepareString($string) {
     );
 
     $string = preg_replace_callback(
-        "/ @[a-zA-Z0-9_-]*/", function ($match) {
+        "/ @[a-zA-Z0-9_-]{3,}/", function ($match) {
             return
                 ' <a class="twitter at" href="http://twitter.com/'.
                     trim($match[0]).
