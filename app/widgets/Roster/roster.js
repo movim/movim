@@ -267,7 +267,7 @@ window.onunload = window.onbeforeunload = function(e){
     // Move this to disconnection moment ?? 
     // Keep group states in jid_Roster.groupStates 
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
-    angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
+    //angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
 };
 
