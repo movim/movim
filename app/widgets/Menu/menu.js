@@ -23,5 +23,6 @@ var Menu = {
 }
 
 MovimWebsocket.attach(function() {
+    Notification_ajaxClear('news');
     Menu.refresh();
 });
