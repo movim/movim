@@ -33,8 +33,7 @@ class Post extends Payload
     public function handle($stanza, $parent = false) {  
         $from   = (string)$parent->attributes()->from;
         
-        if($stanza->item && isset($stanza->item->entry)) {           
-            
+        if($stanza->item && isset($stanza->item->entry)) {
             if($parent->delay)
                 $delay = date('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp));
             else
@@ -44,15 +43,14 @@ class Post extends Payload
             $p->set($stanza, $from, $delay);
             
             // We limit the very old posts (2 months old)
-            if(strtotime($p->published) > mktime(0, 0, 0, date("m")-2, date("d"),   date("Y"))) {
-                
+            if(strtotime($p->published) > mktime(0, 0, 0, date("m")-2, date("d"), date("Y"))) {
                 $pd = new \modl\PostnDAO();
                 $pd->set($p);
+
+                $this->pack($p);
+                $this->deliver();
                 
-                $evt = new \Event();
-                $evt->runEvent('post', array('from' => $from, 'node' => $p->node));
-                if($p->isMicroblog())
-                    $evt->runEvent('postmicroblog', array('from' => $from, 'node' => $p->node));
+                //$evt->runEvent('post', array('from' => $from, 'node' => $p->node));
             }
         } elseif($stanza->retract) {
             $pd = new \modl\PostnDAO();
