@@ -6,7 +6,7 @@ class Menu extends WidgetCommon
     
     function load()
     {
-        $this->registerEvent('post', 'onStream');
+        $this->registerEvent('post', 'onPost');
         $this->registerEvent('stream', 'onStream');
 
         $this->addjs('menu.js');
@@ -25,6 +25,32 @@ class Menu extends WidgetCommon
             RPC::call('movim_posts_unread', $count);
             RPC::call('movim_fill', 'menu_refresh', $view->draw('_menu_refresh', true));
         }
+    }
+
+    function onPost($packet)
+    {
+        $post = $packet->content;
+        if($post->isMicroblog()) {
+            $cd = new \Modl\ContactDAO;
+            $contact = $cd->get($post->jid);
+
+            if($post->title == null) {
+                $title = __('post.default_title');
+            } else {
+                $title = $post->title;
+            }
+
+            Notification::append('news', $contact->getTrueName(), $title, $contact->getPhoto('s'), 2);
+        } else {
+            Notification::append('news', $post->title, $post->node, null, 2);
+        }/*
+
+                if($p->isMicroblog()) {
+                    $evt = new \Event();
+                    $evt->runEvent('postmicroblog', array('from' => $from, 'node' => $p->node));
+                }*/
+
+        $this->onStream();
     }
 
     function ajaxGetAll($page = 0)
