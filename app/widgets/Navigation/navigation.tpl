@@ -9,7 +9,7 @@
     <a class="classic" href="{$c->route('root')}">
         <li>
             <span class="icon"><i class="md md-speaker-notes"></i></span>
-            <span class="counter"></span>
+            <span data-key="news" class="counter"></span>
             <span>{$c->__('page.news')}</span>
         </li>
     </a>

@@ -23,7 +23,16 @@ class ContactDAO extends SQL {
             )
         );
         
-        return $this->run('Contact', 'item');
+        $contact = $this->run('Contact', 'item');
+
+        // If we cannot find the contact
+        if($contact == null) {
+            $contact = new Contact;
+            $contact->jid = $jid;
+            return $contact;
+        } 
+
+        return $contact;
     }
     
     function set(Contact $contact) {

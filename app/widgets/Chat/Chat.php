@@ -1,5 +1,7 @@
 <?php
 
+use Moxl\Xec\Action\Message\Composing;
+use Moxl\Xec\Action\Message\Paused;
 use Moxl\Xec\Action\Message\Publish;
 
 class Chat extends WidgetCommon
@@ -151,6 +153,27 @@ class Chat extends WidgetCommon
         $m->request();
     }
 
+    /**
+     * Send a "composing" message
+     * 
+     * @param string $to
+     * @return void
+     */
+    function ajaxSendComposing($to) {
+        $mc = new Composing;
+        $mc->setTo($to)->request();
+    }
+    /**
+     * Send a "paused" message
+     * 
+     * @param string $to
+     * @return void
+     */
+    function ajaxSendPaused($to) {
+        $mp=new Paused;
+        $mp->setTo($to)->request();
+    }
+
     function prepareHeader($jid)
     {
         $view = $this->tpl();
@@ -177,6 +200,9 @@ class Chat extends WidgetCommon
         
         $view->assign('jid', $jid);
         $view->assign('messages', $this->prepareMessages($jid));
+
+        $view->assign('composing', $this->call('ajaxSendComposing', "'" . $jid . "'"));
+        $view->assign('paused', $this->call('ajaxSendPaused', "'" . $jid . "'"));
 
         $view->assign(
             'send',
