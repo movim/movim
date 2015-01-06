@@ -155,8 +155,13 @@ class Presence extends WidgetBase
         $presence = $pd->getPresence($this->user->getLogin(), $session->ressource);
 
         $presencetpl = $this->tpl();
-        
-        $presencetpl->assign('me', $cd->get());
+
+        $contact = $cd->get();
+        if($contact == null) {
+            $contact = new \Modl\Contact;
+        }
+
+        $presencetpl->assign('me', $contact);
         $presencetpl->assign('presence', $presence);
         $presencetpl->assign('dialog',      $this->call('ajaxOpenDialog'));
 
