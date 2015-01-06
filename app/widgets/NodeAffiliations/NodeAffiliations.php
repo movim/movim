@@ -75,7 +75,7 @@ class NodeAffiliations extends WidgetBase
     }
     
     function onSubmit($stanza) {
-        Notification::appendNotification($this->__('affiliations.saved'), 'success');
+        Notification::append(null, $this->__('affiliations.saved'));
         RPC::commit();        
     }
     

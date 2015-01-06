@@ -53,7 +53,7 @@ class Location extends WidgetBase
               ->setGeo($geo)
               ->request();
         } else {
-            Notification::appendNotification($this->__('location.wrong_postition'), 'error');
+            Notification::append(null, $this->__('location.wrong_postition'));
         }
     }
     
@@ -62,13 +62,13 @@ class Location extends WidgetBase
         $html = $me->getPlace();
         RPC::call('movim_fill', 'mapdata', $html);
         
-        Notification::appendNotification($this->__('location.updated'), 'success');
+        Notification::append(null, $this->__('location.updated'));
         RPC::commit();
     }
     
     function onLocationPublishError($error)
     {
-        Notification::appendNotification($error, 'error');
+        Notification::append(null, $error);
 
         RPC::call('movim_delete', 'mapdiv');
         RPC::call('movim_delete', 'mapdata');

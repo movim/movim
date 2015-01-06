@@ -67,7 +67,7 @@ class Config extends WidgetBase
 
         RPC::call('movim_fill', 'config_widget', $html);
         RPC::call('Config.load');
-        Notification::appendNotification($this->__('config.updated'));
+        Notification::append(null, $this->__('config.updated'));
     }
 
     function ajaxSubmit($data) {
