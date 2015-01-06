@@ -21,3 +21,5 @@ var Chat = {
         }
     }
 }
+
+var state = 0;

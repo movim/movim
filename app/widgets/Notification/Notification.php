@@ -50,8 +50,11 @@ class Notification extends WidgetCommon
 
         RPC::call('Notification.counter', $key, $notifs[$key]);
 
-        $n = new Notification;
-        RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture), $time);
+        if($notifs[$key] < 5) {
+            $n = new Notification;
+            RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture), $time);
+            RPC::call('Notification.desktop', $title, $body, $picture);
+        }
 
         $session->set('notifs', $notifs);
     }

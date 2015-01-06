@@ -18,6 +18,7 @@ class Menu extends WidgetCommon
         $count = $pd->getCountSince(Cache::c('since'));
 
         if($count > 0) {
+            Notification::append('news', 'Actu');
             $view = $this->tpl();
             $view->assign('count', $count);
             $view->assign('refresh', $this->call('ajaxGetMenuList', "''", "''", 0));
