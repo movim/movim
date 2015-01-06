@@ -33,7 +33,9 @@ class Notification extends WidgetCommon
 
         if($notifs == null) $notifs = array();
 
-        $first = reset(explode('|', $key));
+        $explode = explode('|', $key);
+        $first = reset($explode);
+        
         if(array_key_exists($first, $notifs)) {
             $notifs[$first]++;
         } else {
@@ -50,11 +52,9 @@ class Notification extends WidgetCommon
 
         RPC::call('Notification.counter', $key, $notifs[$key]);
 
-        if($notifs[$key] < 5) {
-            $n = new Notification;
-            RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture), $time);
-            RPC::call('Notification.desktop', $title, $body, $picture);
-        }
+        $n = new Notification;
+        RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture), $time);
+        RPC::call('Notification.desktop', $title, $body, $picture);
 
         $session->set('notifs', $notifs);
     }
@@ -70,7 +70,9 @@ class Notification extends WidgetCommon
 
             RPC::call('Notification.counter', $key, '');
 
-            $first = reset(explode('|', $key));
+            $explode = explode('|', $key);
+            $first = reset($explode);
+
             if(array_key_exists($first, $notifs)) {
                 $notifs[$first] = $notifs[$first] - $counter;
 
