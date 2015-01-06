@@ -197,7 +197,7 @@ function echapJid($jid)
 }
 
 /*
- * Clean the ressource of a jid
+ * Clean the resource of a jid
  */
 function cleanJid($jid)
 {
@@ -215,7 +215,7 @@ function explodeJid($jid)
     return array(
         'username'  => $username,
         'server'    => $server,
-        'ressource' => $resource
+        'resource' => $resource
         );
 }
 
