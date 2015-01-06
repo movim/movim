@@ -282,13 +282,3 @@ function base64_decode(data) {
 
     return dec.replace(/\0+$/, '');
 }
-
-
-window.addEventListener('load', function () {
-  Notification.requestPermission(function (status) {
-    // This allows to use Notification.permission with Chrome/Safari
-    if (Notification.permission !== status) {
-      Notification.permission = status;
-    }
-  });
-});

@@ -1,7 +1,7 @@
 /* Form */
 
-form > div:not(.clear) {
-    min-height: 9rem;
+form > div:not(.clear):not(.control) {
+    min-height: 9.5rem;
     position: relative;
     box-sizing: border-box;
 }
@@ -22,11 +22,54 @@ form > div > label {
 form > div > textarea {
     border: none;
     resize: none;
-    font-size: 2rem;
     font-family: sans-serif;
+    line-height: 3rem;
+    box-sizing: border-box;
 }
 
-form > div > input,
+form > div > .select {
+    position: relative;
+}
+
+form > div > .select:after {
+    font-family: "Material Design Iconic Font";
+    content: "\f295";
+    display: block;
+    font-size: 4rem;
+    color: #B8B8B8;
+    position: absolute;
+    right: 0;
+    bottom: 0.25rem;
+}
+
+form > div > .select select {
+    width: calc(100% + 3rem);
+    background-color: transparent;
+}
+
+main > header form > div:not(.clear):not(.control) {
+    min-height: 0;
+}
+
+main > header form > div:not(.clear):not(.control) > input,
+main > header form > div:not(.clear):not(.control) > .select {
+    margin-top: 1.5rem;
+    padding-top: 0.4rem;
+}
+
+main > header form > div:not(.clear):not(.control) > .select option {
+    background-color: white;
+    color: initial;
+}
+
+main > header form > div:not(.clear):not(.control) > input,
+main > header form > div:not(.clear):not(.control) > .select:after,
+main > header form > div:not(.clear):not(.control) > .select select {
+    color: white;
+}
+
+form > div > .select,
+form > div > input:not([type=submit]),
 form > div > textarea {
     display: block;
     padding: 1rem 0;
@@ -34,12 +77,15 @@ form > div > textarea {
     width: 100%;
     background-color: transparent;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    margin-bottom: 1px;
+    margin-bottom: 1rem;
+
+    overflow: hidden; /* Fixme */
 }
 
 form > div > input:focus,
 form > div > textarea:focus {
-    margin-bottom: 0;
+    border-bottom-width: 2px;
+    margin-bottom: calc(1rem - 1px);
 }
 
 form > div > input:required {
@@ -143,6 +189,15 @@ form > div .radio > input[type="radio"]:checked + label:hover {
 
 /* Button */
 
+.button.oppose {
+    float: right;
+}
+
+.button.inactive {
+    opacity: 0.5;
+    pointer-events:none;
+}
+
 .button,
 input[type=button] {
     min-width: 8rem;
@@ -155,10 +210,13 @@ input[type=button] {
     line-height: 4.5rem;
     height: 4.5rem;
     margin: 0.75rem 0.5rem;
+    
     border-radius: 0.25rem;
     background-color: white;
     color: black;
     padding: 0 1rem;
+
+    border: 0;
 
     transition: background 0.3s ease;
 
@@ -169,6 +227,7 @@ input[type=button] {
 input[type=button].flat {
     box-shadow: none;
     background-color: transparent;
+    border: 0;
 }
 
 .button:hover,

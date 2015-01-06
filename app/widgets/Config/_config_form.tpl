@@ -4,8 +4,9 @@
     <i class="fa fa-user"></i> {$c->__('config.feed_configuration')}
 </a>-->
 <form enctype="multipart/form-data" method="post" action="index.php" name="general">
+    <br/>
     <h3>{$c->__('config.general')}</h3>
-    <div class="block large">
+    <div class="block">
         <div class="select">
             <select name="language" id="language">
                 <option value="en">English (default)</option>
@@ -95,11 +96,11 @@
 <!--<input value="{$c->t('Submit'); ?>" onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;">
     <input type="reset" value="{$c->t('Reset'); ?>" class="button icon no merged left" style="float: right;">-->
 
-    <div class="clear"></div>
+    <div class="clear padded"></div>
     <a 
         onclick="{$submit}" 
-        class="button color" >
-        {$c->__('button.submit')}
+        class="button color oppose" >
+        {$c->__('button.save')}
     </a>
     <div class="clear"></div>
 </form>
