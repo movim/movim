@@ -5,7 +5,7 @@
             <label for="search">{$c->__('roster.search')}</label>
         </div>
     </form>-->
-    <ul id="rosterlist" class="offlineshown active">
+    <ul id="rosterlist" class="offlineshown active all">
     <!--
     Also this means we can remove:
         rosterCtrl.offlineIsShown() from roster.js

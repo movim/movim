@@ -59,8 +59,9 @@ ul li.subheader {
     font-weight: 600;
 }
 
-ul.active li:hover,
-ul.active li.active {
+ul.active li:hover:not(.subheader),
+ul.active.all li:hover,
+ul.active li.active:not(.subheader) {
     background-color: rgba(0, 0, 0, 0.05);
     cursor: pointer;
 }
