@@ -183,9 +183,6 @@ class Bootstrap {
         // SDPtoJingle and JingletoSDP lib :)
         require_once(LIB_PATH . "SDPtoJingle.php");
         require_once(LIB_PATH . "JingletoSDP.php");
-        
-        // The Lazy page loader
-        require_once(LIB_PATH . "Lazy.php");
     }
 
     private function loadHelpers() {
