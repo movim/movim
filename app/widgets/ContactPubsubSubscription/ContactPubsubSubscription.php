@@ -48,7 +48,7 @@ class ContactPubsubSubscription extends WidgetBase
             $html .= '</ul>';
             return $html;
         } else {
-            Notification::appendNotification($this->__('not_found'), 'info');
+            Notification::append(null, $this->__('not_found'));
         }
     }
     

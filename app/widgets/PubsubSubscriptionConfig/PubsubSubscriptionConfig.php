@@ -101,11 +101,11 @@ class PubsubSubscriptionConfig extends WidgetBase
     }
     
     function onGroupAdded($node) {
-        Notification::appendNotification($this->__('public_groups.added', $node), 'success');
+        Notification::append(null, $this->__('public_groups.added', $node));
     }
     
     function onGroupRemoved($node) {
-        Notification::appendNotification($this->__('public_groups.removed', $node), 'success');
+        Notification::append(null, $this->__('public_groups.removed', $node));
     }
 
     function ajaxChangeSubscribed($server, $node, $state, $name) {
