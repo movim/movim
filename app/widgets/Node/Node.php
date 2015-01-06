@@ -32,9 +32,9 @@ class Node extends WidgetCommon
     
     function load()
     {
-        $this->registerEvent('post', 'onStream');
+        /*$this->registerEvent('post', 'onStream');
         $this->registerEvent('stream', 'onStream');
-        $this->registerEvent('nostream', 'onStream');
+        $this->registerEvent('nostream', 'onStream');*/
         $this->registerEvent('pubsubaffiliations', 'onPubsubAffiliations');
         $this->registerEvent('pubsubsubscribed', 'onPubsubSubscribed');
         $this->registerEvent('pubsubmetadata', 'onPubsubMetadata');
@@ -104,13 +104,13 @@ class Node extends WidgetCommon
         RPC::call('movim_fill', 'metadata', $html);
     }
     
-    function onStream($payload) {
+    /*function onStream($payload) {
         $html = $this->prepareNode($payload['from'], $payload['node']);
 
         if($html == '') 
             $html = __('post.no_load');
         RPC::call('movim_fill', md5($payload['from'].$payload['node']), $html);
-    }
+    }*/
 
     function ajaxGetItems($server, $node)
     {
