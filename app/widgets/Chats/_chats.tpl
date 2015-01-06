@@ -1,5 +1,8 @@
 {loop="$chats"}
-    <li data-jid="{$value->jid}" {if="isset($messages[$value->jid])"}class="condensed"{/if}>
+    <li
+        data-jid="{$value->jid}"
+        {if="isset($messages[$value->jid])"}class="condensed"{/if}
+        title="{$value->jid}">
         <span data-key="chat|{$value->jid}" class="counter bottom"></span>
         <span class="icon bubble">
             <img src="{$value->getPhoto('s')}">
