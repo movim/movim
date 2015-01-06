@@ -9,7 +9,7 @@ class Presence extends Model {
     protected $jid;
     
     // General presence informations
-    protected $ressource;
+    protected $resource;
     protected $value;
     protected $priority;
     protected $status;
@@ -39,7 +39,7 @@ class Presence extends Model {
                 {"type":"string", "size":64, "mandatory":true, "key":true },
             "jid" : 
                 {"type":"string", "size":64, "mandatory":true, "key":true },
-            "ressource" : 
+            "resource" : 
                 {"type":"string", "size":64, "key":true },
             "value" : 
                 {"type":"int",    "size":11, "mandatory":true },
@@ -79,9 +79,9 @@ class Presence extends Model {
         $this->session = $to;
         $this->jid = $jid[0];
         if(isset($jid[1]))
-            $this->ressource = $jid[1];
+            $this->resource = $jid[1];
         else
-            $this->ressource = 'default';
+            $this->resource = 'default';
             
         $this->status = (string)$stanza->status;
         
@@ -152,7 +152,7 @@ class Presence extends Model {
     
         $arr = array();
         $arr['jid'] = $this->jid;
-        $arr['ressource'] = $this->ressource;
+        $arr['resource'] = $this->resource;
         $arr['presence'] = $this->value;
         $arr['presence_txt'] = $txt[$this->value];
         $arr['priority'] = $this->priority;

@@ -19,13 +19,13 @@ use Moxl\Xec\Action\Jingle\SessionTerminate;
 
 class Visio extends WidgetBase
 {
-	function load()
-	{
-    	$this->addcss('visio.css');
-    	$this->addjs('visio.js');
-    	$this->addjs('adapter.js');
-    	$this->addjs('webrtc.js');
-    	$this->addjs('turn.js');
+    function load()
+    {
+        $this->addcss('visio.css');
+        $this->addjs('visio.js');
+        $this->addjs('adapter.js');
+        $this->addjs('webrtc.js');
+        $this->addjs('turn.js');
 
         $this->registerEvent('jinglesessioninitiate',   'onSessionInitiate');
         $this->registerEvent('jingle_sessioninitiate_erroritemnotfound',   'onInitiationError');
@@ -132,12 +132,12 @@ class Visio extends WidgetBase
         
         $stj = new SDPtoJingle(
             $p->sdp,
-            $this->user->getLogin().'/'.$sd->ressource,
-            $p->jid.'/'.$p->ressource,
+            $this->user->getLogin().'/'.$sd->resource,
+            $p->jid.'/'.$p->resource,
             'session-initiate');
         
         $r = new SessionInitiate;
-        $r->setTo($p->jid.'/'.$p->ressource)
+        $r->setTo($p->jid.'/'.$p->resource)
           ->setOffer($stj->generate())
           ->request();
         
@@ -153,22 +153,22 @@ class Visio extends WidgetBase
         
         $stj = new SDPtoJingle(
             $p->sdp,
-            $this->user->getLogin().'/'.$sd->ressource,
-            $p->jid.'/'.$p->ressource,
+            $this->user->getLogin().'/'.$sd->resource,
+            $p->jid.'/'.$p->resource,
             'session-accept');
             
         $r = new SessionInitiate;
-        $r->setTo($p->jid.'/'.$p->ressource)
+        $r->setTo($p->jid.'/'.$p->resource)
           ->setOffer($stj->generate())
           ->request();
     }
 
-    function ajaxSendSessionTerminate($jid, $ressource, $reason = null) {
+    function ajaxSendSessionTerminate($jid, $resource, $reason = null) {
         $s = Session::start();
         $jingleSid = $s->get("jingleSid");
         
         $r = new SessionTerminate;
-        $r->setTo($jid.'/'.$ressource);
+        $r->setTo($jid.'/'.$resource);
         $r->setJingleSid($jingleSid);
 
         if(isset($reason))
@@ -187,12 +187,12 @@ class Visio extends WidgetBase
 
         $stj = new SDPtoJingle(
             $sdp,
-            $this->user->getLogin().'/'.$sd->ressource,
-            $p->jid.'/'.$p->ressource,
+            $this->user->getLogin().'/'.$sd->resource,
+            $p->jid.'/'.$p->resource,
             'transport-info');
 
         $r = new SessionInitiate;
-        $r->setTo($p->jid.'/'.$p->ressource)
+        $r->setTo($p->jid.'/'.$p->resource)
           ->setOffer($stj->generate())
           ->request();
     }
@@ -211,7 +211,7 @@ class Visio extends WidgetBase
     function display()
     {
         //if(isset($_GET['f'])) {
-        //    list($jid, $ressource) = explode('/', htmlentities($_GET['f']));
+        //    list($jid, $resource) = explode('/', htmlentities($_GET['f']));
 
         $json = requestURL('https://computeengineondemand.appspot.com/turn?username=93773443&key=4080218913', 1);
         $this->view->assign('turn_list'   , $json);
@@ -225,7 +225,7 @@ class Visio extends WidgetBase
             $this->view->assign('avatar',$contact->getPhoto('l'));
             $this->view->assign('name'  ,$contact->getTrueName());
             $this->view->assign('jid'   ,$jid);
-            $this->view->assign('ressource'   ,$ressource);
+            $this->view->assign('resource'   ,$resource);
         }*/
     }
 }
