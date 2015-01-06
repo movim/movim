@@ -51,7 +51,6 @@
                             class="infoicon jingle"
                             ng-click="rosterCtrl.postJingleAction(contact)">
                         </div>-->
-
                         {{contact.rosterview.name}}
                         <p class="wrap">
                             <span ng-if="contact.status != ''">{{contact.status}}</span>
