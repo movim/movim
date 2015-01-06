@@ -1,6 +1,6 @@
 <?php
 /*
- * Unavaiable.php
+ * Unavailable.php
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
