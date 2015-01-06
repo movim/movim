@@ -11,7 +11,7 @@ class Contact extends WidgetCommon
 
     public function onContactEdited($packet)
     {
-        Notification::appendNotification($this->__('edit.updated'));
+        Notification::append(null, $this->__('edit.updated'));
     }
 
     function ajaxGetContact($jid)
