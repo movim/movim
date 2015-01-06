@@ -28,6 +28,41 @@
         </div>
         <label for="language">{$c->__('config.language')}</label>
     </div>
+
+    <div class="clear"></div>
+    <br />
+    <!--
+    <h3>{$c->__('config.notifications')}</h3>
+
+    <div class="block">
+        <div class="checkbox">
+            <input
+                type="checkbox"
+                id="privacy"
+                name="privacy"
+                {if="$me->privacy"}
+                    checked
+                {/if}
+                onchange="{$privacy}">
+            <label for="privacy"></label>
+        </div>
+        <label for="language">{$c->__('notifications.message')}</label>
+    </div>
+
+    <div class="block">
+        <div class="checkbox">
+            <input
+                type="checkbox"
+                id="privacy"
+                name="privacy"
+                {if="$me->privacy"}
+                    checked
+                {/if}
+                onchange="{$privacy}">
+            <label for="privacy"></label>
+        </div>
+        <label for="language">{$c->__('notifications.desktop')}</label>
+    </div>-->
     <!--
     <h3>{$c->__('config.appearence')}</h3>-->
 

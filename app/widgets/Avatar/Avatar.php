@@ -38,7 +38,7 @@ class Avatar extends WidgetBase
         $html = $this->prepareForm($me);
 
         RPC::call('movim_fill', 'avatar_form', $html);
-        Notification::appendNotification($this->__('avatar.updated'), 'success');
+        Notification::append(null, $this->__('avatar.updated'));
     }
 
     function onMyAvatarError()
@@ -48,7 +48,7 @@ class Avatar extends WidgetBase
         $html = $this->prepareForm($me);
 
         RPC::call('movim_fill', 'avatar_form', $html);
-        Notification::appendNotification($this->__('avatar.not_updated'), 'error');
+        Notification::append(null, $this->__('avatar.not_updated'));
     }
 
     function prepareForm($me)

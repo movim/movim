@@ -30,6 +30,17 @@
 var DesktopNotification = Notification;
 
 var Notification = {
+    inhibed : false,
+    inhibit : function(sec) {
+        Notification.inhibed = true;
+
+        if(sec == null) sec = 5;
+
+        setTimeout(function() {
+                Notification.inhibed = false;
+            },
+            sec*1000);
+    },
     refresh : function(keys) {
         var counters = document.querySelectorAll('.counter');
         for(i = 0; i < counters.length; i++) {
@@ -66,6 +77,8 @@ var Notification = {
             3000);
     },
     snackbar : function(html, time) {
+        if(Notification.inhibed == true) return;
+
         target = document.getElementById('snackbar');
         
         if(target) {
@@ -79,6 +92,8 @@ var Notification = {
             time*1000);
     },
     desktop : function(title, body, picture) {
+        if(Notification.inhibed == true) return;
+
         var notification = new DesktopNotification(title, { icon: picture, body: body });
     }
 }

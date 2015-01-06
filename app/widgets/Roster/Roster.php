@@ -59,7 +59,7 @@ class Roster extends WidgetBase
         $contacts = $packet->content;
         if($contacts != null){
             /*
-            if(is_array($contacts)) {
+            if(is_array($contacts) && $contacts[0]->value < 5) {
                 $presences = getPresences();
                 Notification::append(
                     'presence',
@@ -68,7 +68,6 @@ class Roster extends WidgetBase
                     $contacts[0]->getPhoto('s'), 2);
             }
             */
-
             foreach($contacts as &$c) {
                 if($c->groupname == '')
                     $c->groupname = $this->__('roster.ungrouped');
