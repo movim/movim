@@ -27,7 +27,7 @@ namespace Moxl\Xec\Action\Presence;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
 
-class Unavaiable extends Action
+class Unavailable extends Action
 {
     private $_status;
     private $_to;
@@ -37,7 +37,7 @@ class Unavaiable extends Action
     public function request() 
     {
         $this->store();
-        Presence::unavaiable($this->_to.'/'.$this->_ressource, $this->_status, $this->_type);
+        Presence::unavailable($this->_to.'/'.$this->_ressource, $this->_status, $this->_type);
     }
 
     public function setStatus($status)
