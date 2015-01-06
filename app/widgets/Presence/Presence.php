@@ -22,7 +22,7 @@ use Moxl\Xec\Action\Presence\Chat;
 use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\DND;
 use Moxl\Xec\Action\Presence\XA;
-use Moxl\Xec\Action\Presence\Unavaiable;
+use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Storage\Get;
 
@@ -107,7 +107,7 @@ class Presence extends WidgetBase
     function ajaxLogout()
     {
         $session = \Sessionx::start();
-        $p = new Unavaiable;
+        $p = new Unavailable;
         $p->setType('terminate')
           ->setRessource($session->ressource)
           ->setTo($this->user->getLogin())
