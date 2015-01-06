@@ -6,8 +6,12 @@
 <main>
     <?php $this->widget('Header'); ?>
     <section>
-        <?php $this->widget('Roster');?>
         <div>
+            <?php $this->widget('Notifs');?>
+            <?php $this->widget('Roster');?>
+        </div>
+        <div>
+            <?php $this->widget('Tabs');?>
             <?php $this->widget('Contact');?>
         </div>
     </section>

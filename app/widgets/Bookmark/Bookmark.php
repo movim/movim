@@ -126,7 +126,7 @@ class Bookmark extends WidgetBase
     {
         $html = $this->prepareBookmark();
         RPC::call('movim_fill', 'bookmarks', $html);
-        Notification::appendNotification($this->__('bookmarks.updated'), 'info');
+        Notification::append(null, $this->__('bookmarks.updated'));
     }
     /*
     function onMucRole($arr)
@@ -136,7 +136,7 @@ class Bookmark extends WidgetBase
     */
     function onBookmarkError($error)
     {
-        Notification::appendNotification($this->__('bookmarks.error').$error, 'error');
+        Notification::append(null, $this->__('bookmarks.error').$error);
     }
     
     function ajaxGetBookmark() 
@@ -203,7 +203,6 @@ class Bookmark extends WidgetBase
                     'autojoin'  => $form['autojoin'],
                     'nick'      => $form['nick'],
                     'jid'       => $form['jid']);   
-            movim_log(serialize($item));
             $this->ajaxSetBookmark($item);
         }
     }

@@ -76,7 +76,7 @@
         }*/
     ?>
     </head>
-    <body class="green">
+    <body class="<?php $this->color();?>">
         <noscript>
             <style type="text/css">
                 nav {display:none;} #content {display: none;}

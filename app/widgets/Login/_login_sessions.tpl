@@ -1,20 +1,23 @@
-<ul class="active">
-    <li class="subheader">Accounts **FIXME**</li>
-{loop="$sessions"}
-    <li onclick="chooseSession('{$value->jid}')">
-        <div class="control">
-            <i onclick="removeSession('{$value->jid}')" class="fa fa-times"></i>
-        </div>
-        <span class="icon bubble">
-            <img src="{$value->getPhoto('s')}"/>
-        </span>
-        <span onclick="chooseSession('{$value->jid}')">{$value->getTrueName()}</span>
-    </li>
-{/loop}
-    <li>
-        <span class="icon bubble color green">
-            <i class="md md-face-unlock"></i>
-        </span>
-        <span onclick="chooseSession('')">{$c->__('form.another_account')}</span>
-    </li>
-</ul>
+<section>
+    <h3>{$c->__('account.title')}</h3>
+    <br />
+    <ul class="active">
+        {loop="$sessions"}
+        <li>
+            <div class="control">
+                <i onclick="Login.removeSession('{$value->jid}')" class="fa fa-times"></i>
+            </div>
+            <span onclick="Login.choose('{$value->jid}')" class="icon bubble">
+                <img src="{$value->getPhoto('s')}"/>
+            </span>
+            <span onclick="Login.choose('{$value->jid}')">{$value->getTrueName()}</span>
+        </li>
+        {/loop}
+    </ul>
+</section>
+<div>
+    <a class="button flat" href="{$c->route('admin')}">
+        <i class="md md-pages"></i>
+    </a>
+    <span class="button flat" onclick="Login.choose('')">{$c->__('form.another_account')}</span>
+</div>

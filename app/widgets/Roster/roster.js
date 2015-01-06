@@ -1,7 +1,7 @@
 (function(){
     var app = angular.module("roster", []);
 
-    /* Controller for Rostermenu */
+    /* Controller for Rostermenu 
     app.controller("RosterMenuController", function($scope){
         $scope.lsJid = localStorage.getItem("username").replace("@", "at");
         $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
@@ -22,7 +22,7 @@
                 $scope.lsOfflineShown = false;
             }
         }
-    });
+    });*/
 
     /* Controller for Rosterlist */
     app.controller("RosterController", function($scope){
@@ -267,7 +267,7 @@ window.onunload = window.onbeforeunload = function(e){
     // Move this to disconnection moment ?? 
     // Keep group states in jid_Roster.groupStates 
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
-    angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
+    //angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
 };
 
@@ -350,7 +350,7 @@ var Roster = {
             roster.className = roster_classback;
             rosterlist.className = rosterlist_classback;
         };
-        search.onkeyup = function(event) {
+        search.oninput = function(event) {
             if(search.value.length > 0) {
                 roster.className = 'search';
                 rosterlist.className = 'offlineshown';
@@ -386,6 +386,7 @@ var Roster = {
                 Contact_ajaxGetContact(this.id);
                 Roster.reset(items);
                 movim_add_class(this, 'active');
+                document.querySelector('#roster').className = '';
             }
             i++;
         }

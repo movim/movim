@@ -21,13 +21,35 @@
     color: white;
 }
 
+/* Animations */
+
+@keyframes colorful {
+    0% { background-color: #9E9E9E; }
+    10% { background-color: #607D8B; }
+    20% { background-color: #F44336; }
+    30% { background-color: #9C27B0; }
+    40% { background-color: #3F51B5; }
+    50% { background-color: #2196F3; }
+    60% { background-color: #689F38; }
+    70% { background-color: #FF9800; }
+    80% { background-color: #FDD835; }
+    90% { background-color: #795548; }
+    100% { background-color: #9E9E9E; }
+}
+
+/* Elements */
+
 .bubble.color       , .icon.color          { color: white; background-color: #607D8B; border-color: #607D8B }
+#roster ul#rosterlist ul.contact li.dnd .chat,
 .bubble.color.red   , .icon.color.red      { color: white; background-color: #F44336; border-color: #F44336 }
+#roster ul#rosterlist ul.contact li.xa .chat,
 .bubble.color.purple, .icon.color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
 .bubble.color.indigo, .icon.color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
 .bubble.color.blue  , .icon.color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
+#roster ul#rosterlist ul.contact li.online .chat,
 .bubble.color.green , .icon.color.green    { color: white; background-color: #689F38; border-color: #689F38 }
 .bubble.color.orange, .icon.color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
+#roster ul#rosterlist ul.contact li.away .chat,
 .bubble.color.yellow, .icon.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
 .bubble.color.brown , .icon.color.brown    { color: white; background-color: #795548; border-color: #795548 }
 .bubble.color.gray  , .icon.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
@@ -41,7 +63,7 @@ label.orange, .icon.orange   { color: #FF9800; }
 label.yellow, .icon.yellow   { color: #FFEB3B; }
 label.brown , .icon.brown    { color: #795548; }
 label.gray  , .icon.gray     { color: #9E9E9E; }
-
+/*
 form input:focus,
 form textarea:focus {
     border-bottom: 2px solid #2196F3;
@@ -50,20 +72,20 @@ form input:focus + label,
 form textarea:focus + label {
     color: #2196F3;
 }
-
+*/
 form input:focus:invalid {
-    border-bottom: 2px solid #F44336;
+    border-bottom-color: #F44336;
 }
 form input:focus:invalid + label {
     color: #F44336;
 }
-
+/*
 form input:focus:valid {
     border-bottom: 2px solid #4CAF50;
 }
 form input:focus:valid + label {
     color: #4CAF50;
-}
+}*/
 
 /* Global color palette */
 
@@ -71,8 +93,10 @@ form input:focus:valid + label {
 body.indigo .button.color,
 body.indigo input[type=button].color,
 body.indigo ul li span.counter,
-body.indigo .oppose:not(:last-child) .bubble,
 body.indigo main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
+
+/* 200 */
+body.indigo main > header a { color: #9fa8da; }
 
 body.indigo .tabs,
 body.indigo .button,
@@ -103,7 +127,6 @@ body.indigo form textarea:focus:not(:invalid) {
 body.gray .button.color,
 body.gray input[type=button].color,
 body.gray ul li span.counter,
-body.gray .oppose:not(:last-child) .bubble,
 body.gray main > header { background-color: #9E9E9E; color: white; border-color: #9E9E9E; }
 
 body.gray .tabs,
@@ -135,9 +158,11 @@ body.gray form textarea:focus:not(:invalid) {
 
 body.green .button.color,
 body.green input[type=button].color,
-body.green .oppose:not(:last-child) .bubble,
 body.green ul li span.counter,
 body.green main > header { background-color: #689F38; color: white; border-color: #689F38; }
+
+/* 200 */
+body.green main > header a { color: #DCEDC8; }
 
 body.green .tabs,
 body.green .button,
@@ -169,7 +194,6 @@ body.green form textarea:focus:not(:invalid) {
 body.orange .button.color, 
 body.orange input[type=button].color,
 body.orange ul li span.counter,
-body.orange .oppose:not(:last-child) .bubble,
 body.orange main > header { background-color: #FB8C00; color: white; border-color: #FB8C00; }
 
 body.orange .tabs,
@@ -202,8 +226,10 @@ body.orange form textarea:focus:not(:invalid) {
 body.blue .button.color, 
 body.blue input[type=button].color,
 body.blue ul li span.counter,
-body.blue .oppose:not(:last-child) .bubble,
 body.blue main > header { background-color: #2196F3; color: white; border-color: #2196F3; }
+
+/* 200 */
+body.blue main > header a { color: #90caf9; }
 
 body.blue .tabs,
 body.blue .button,
@@ -235,7 +261,6 @@ body.blue form textarea:focus:not(:invalid) {
 body.red .button.color, 
 body.red input[type=button].color,
 body.red ul li span.counter,
-body.red .oppose:not(:last-child) .bubble,
 body.red main > header { background-color: #DB4336; color: white; border-color: #DB4336; }
 
 body.red .tabs,

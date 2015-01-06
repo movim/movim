@@ -105,8 +105,8 @@ class User {
         $s = \Sessionx::start();
         $s->destroy();
             
-        $sess = Session::start(APP_NAME);
-        Session::dispose(APP_NAME);
+        $sess = Session::start();
+        Session::dispose();
     }
 
     function getLogin()
