@@ -85,6 +85,7 @@ ul li p {
     color: rgba(0, 0, 0, 0.60);
     overflow: hidden;
     text-overflow: ellipsis;
+    max-height: 8rem;
 }
 
 ul li p.wrap {
