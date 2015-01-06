@@ -1,8 +1,9 @@
-<?php /* -*- mode: html -*- */
-?>
+<?php $this->widget('Notification'); ?>
+<?php $this->widget('Presence'); ?>
 <main>
     <section>
-    <div>    <?php $this->widget('Login'); ?>
+    <div>
+        <?php $this->widget('Login'); ?>
     </div>
     </section>
 

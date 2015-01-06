@@ -38,8 +38,8 @@ class Config extends WidgetBase
         $view->assign('languages', loadLangArray());
         $view->assign('me',        $this->user->getLogin());
         $view->assign('conf',      $this->user->getConfig('language'));
-        $view->assign('color',     $this->user->getConfig('color'));
-        $view->assign('size',      $this->user->getConfig('size'));
+        //$view->assign('color',     $this->user->getConfig('color'));
+        //$view->assign('size',      $this->user->getConfig('size'));
 
         if($this->user->getConfig('chatbox'))
             $view->assign('chatbox', 'checked');

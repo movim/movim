@@ -1,7 +1,7 @@
 (function(){
     var app = angular.module("roster", []);
 
-    /* Controller for Rostermenu */
+    /* Controller for Rostermenu 
     app.controller("RosterMenuController", function($scope){
         $scope.lsJid = localStorage.getItem("username").replace("@", "at");
         $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
@@ -22,7 +22,7 @@
                 $scope.lsOfflineShown = false;
             }
         }
-    });
+    });*/
 
     /* Controller for Rosterlist */
     app.controller("RosterController", function($scope){
