@@ -51,7 +51,7 @@ class Roster extends WidgetBase
         if($jid != null){
             RPC::call('deleteContact', $jid);
         }
-        Notification::appendNotification($this->__('roster.deleted'), 'info');
+        Notification::append(null, $this->__('roster.deleted'));
     }
 
     function onPresence($packet)
@@ -83,13 +83,13 @@ class Roster extends WidgetBase
     function onAdd($packet)
     {
         $this->onPresence($packet);
-        Notification::appendNotification($this->__('roster.added'), 'info');
+        Notification::append(null, $this->__('roster.added'));
     }
 
     function onUpdate($packet)
     {
         $this->onPresence($packet);
-        Notification::appendNotification($this->__('roster.updated'), 'info');
+        Notification::append(null, $this->__('roster.updated'));
     }
 
     function onRoster()
@@ -204,7 +204,7 @@ class Roster extends WidgetBase
             RPC::call('movim_redirect', Route::urlize('friend', $jid));
             RPC::commit();
         } else 
-            Notification::appendNotification($this->__('roster.jid_error'), 'info');
+            Notification::append(null, $this->__('roster.jid_error'));
     }
 
     /**
