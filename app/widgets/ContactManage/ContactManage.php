@@ -38,7 +38,7 @@ class ContactManage extends WidgetCommon
         $contact = $packet->content[0];
         
         $html = $this->prepareContactManage($contact->jid);
-        Notification::appendNotification($this->__('contact.updated'));
+        Notification::append(null, $this->__('contact.updated'));
         RPC::call('movim_fill', 'contactmanage', $html);
     }
     
