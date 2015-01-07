@@ -105,7 +105,7 @@ class Chat extends WidgetCommon
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message, $muc = false, $ressource = false) {
+    function ajaxSendMessage($to, $message, $muc = false, $resource = false) {
         if($message == '')
             return;
         
@@ -117,11 +117,11 @@ class Chat extends WidgetCommon
         $session    = \Sessionx::start();
         
         $m->type    = 'chat';
-        $m->ressource = $session->ressource;
+        $m->resource = $session->resource;
         
         if($muc) {
             $m->type        = 'groupchat';
-            $m->ressource   = $session->user;
+            $m->resource   = $session->user;
             $m->jidfrom     = $to;
         }
         
@@ -137,8 +137,8 @@ class Chat extends WidgetCommon
         $packet->content = $m;
         $this->onMessage($packet, true);
 
-        if($ressource != false) {
-            $to = $to . '/' . $ressource;
+        if($resource != false) {
+            $to = $to . '/' . $resource;
         }
 
         // We decode URL codes to send the correct message to the XMPP server

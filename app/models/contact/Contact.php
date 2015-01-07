@@ -399,7 +399,7 @@ class Contact extends Model {
             'rostername' => $this->rostername,
             'groupname'  => $this->groupname,
             'status'     => $this->status,
-            'ressource'  => $this->ressource,
+            'resource'  => $this->resource,
             'value'      => $this->value
             );
     }
@@ -409,7 +409,7 @@ class RosterContact extends Contact {
     protected $rostername;
     protected $groupname;
     protected $status;
-    protected $ressource;
+    protected $resource;
     protected $value;
     protected $delay;
     protected $chaton;
@@ -432,7 +432,7 @@ class RosterContact extends Contact {
                 {'type':'string', 'size':128 },
             'groupname' : 
                 {'type':'string', 'size':128 },
-            'ressource' : 
+            'resource' : 
                 {'type':'string', 'size':128, 'key':true },
             'value' : 
                 {'type':'int',    'size':11, 'mandatory':true },
@@ -461,7 +461,7 @@ class RosterContact extends Contact {
     
     // This method is only use on the connection
     public function setPresence($p) {
-        $this->ressource        = $p->ressource;
+        $this->resource         = $p->resource;
         $this->value            = $p->value;
         $this->status           = $p->status;
         $this->delay            = $p->delay;
