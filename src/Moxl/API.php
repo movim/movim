@@ -20,7 +20,7 @@ class API {
         $id = $session->id;
 
         if(isset($session->user)) {
-            $fromxml = 'from="'.$session->user.'@'.$session->host.'/'.$session->ressource.'"';
+            $fromxml = 'from="'.$session->user.'@'.$session->host.'/'.$session->resource.'"';
         } else {
             $fromxml = '';
         }
