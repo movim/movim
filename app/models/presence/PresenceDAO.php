@@ -90,7 +90,7 @@ class PresenceDAO extends SQL {
                     'id'        => $id,
                     'session'   => $presence->session,
                     'jid'       => $presence->jid,
-                    'resource' => $presence->resource,
+                    'resource'  => $presence->resource,
                     'value'     => $presence->value,
                     'priority'  => $presence->priority,
                     'status'    => $presence->status,
