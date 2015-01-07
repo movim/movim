@@ -115,7 +115,8 @@ class Menu extends WidgetCommon
         $html = $view->draw('_menu_list', true);
 
         if($page > 0) {
-            RPC::call('movim_append', 'menu_widget', $html);
+            //RPC::call('movim_append', 'menu_widget', $html);
+            RPC::call('movim_append', 'menu_wrapper', $html);
         } else {
             RPC::call('movim_fill', 'menu_widget', $html);
             RPC::call('movim_posts_unread', 0);
@@ -128,7 +129,8 @@ class Menu extends WidgetCommon
         $html = $this->prepareMenuList($server, $node, $page);
 
         if($page > 0) {
-            RPC::call('movim_append', 'menu_widget', $html);
+            //RPC::call('movim_append', 'menu_widget', $html);
+            RPC::call('movim_append', 'menu_wrapper', $html);
         } else {
             RPC::call('movim_fill', 'menu_widget', $html);
             RPC::call('movim_posts_unread', 0);
