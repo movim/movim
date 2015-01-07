@@ -31,7 +31,7 @@ class Presence {
             <presence
                 '.$toxml.'
                 xmlns="jabber:client"
-                from="'.$session->user.'@'.$session->host.'/'.$session->ressource.'" '.$typexml.'
+                from="'.$session->user.'@'.$session->host.'/'.$session->resource.'" '.$typexml.'
                 id="'.$session->id.'">
                 '.$statusxml.'
                 '.$showxml.'
@@ -56,7 +56,7 @@ class Presence {
     /*
      * Subscribe to someone presence
      */
-    static function unavaiable($to = false, $status = false, $type = false)
+    static function unavailable($to = false, $status = false, $type = false)
     {
         $xml = self::maker($to, $status, false, false, 'unavailable');
         \Moxl\API::request($xml, $type);
@@ -110,7 +110,7 @@ class Presence {
         
         $xml = '
             <presence
-                from="'.$session->user.'@'.$session->host.'/'.$session->ressource.'" 
+                from="'.$session->user.'@'.$session->host.'/'.$session->resource.'" 
                 id="'.$session->id.'"
                 to="'.$to.'/'.$nickname.'">
                 <x xmlns="http://jabber.org/protocol/muc"/>
