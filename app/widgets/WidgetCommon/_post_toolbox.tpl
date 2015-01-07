@@ -1,7 +1,6 @@
 <div class="tools">
     {$c->__("post.share")} : 
     <a
-        title="{$c->t("your post will appear in your Movim public feed")}"
         onclick="{$privacy_post_black}" >
         {$c->__('post.share_everyone')}</a>,
     <a
@@ -13,7 +12,7 @@
             this.parentNode.querySelector('#deleteyes').style.display = 'inline';
             this.parentNode.querySelector('#deleteno').style.display = 'inline';
             " 
-        title="{$c->t("Delete this post")}">
+        title="{$c->__('post.delete')}">
         {$c->__('post.delete')}
     </a>
     <a
@@ -28,8 +27,7 @@
         onclick="
             this.parentNode.querySelector('#deleteyes').style.display = 'none';
             this.style.display = 'none';
-            "
-        onclick="">
+            ">
         ✘ {$c->__('button.no')}
     </a>
 </div>
