@@ -5,8 +5,6 @@ class Notification extends WidgetCommon
     function load()
     {
         $this->addjs('notification.js');
-        /*$this->registerEvent('pubsuberror', 'onPubsubError');
-        $this->registerEvent('moxlerror', 'onMoxlError');*/
     }
 
     /**
@@ -30,6 +28,9 @@ class Notification extends WidgetCommon
         
         $session = Session::start();
         $notifs = $session->get('notifs');
+
+        $notifs_key = $session->get('notifs_key');
+        if($notifs_key != null && $key == $notifs_key) return;
 
         if($notifs == null) $notifs = array();
 
@@ -59,6 +60,12 @@ class Notification extends WidgetCommon
         $session->set('notifs', $notifs);
     }
 
+    /**
+     * @brief Clear the counter of a key
+     *
+     * @param string $key The key to group the notifications
+     * @return void
+     */  
     function ajaxClear($key)
     {
         $session = Session::start();
@@ -88,11 +95,27 @@ class Notification extends WidgetCommon
         $session->set('notifs', $notifs);
     }
 
+    /**
+     * @brief Get akk the keys
+     * @return void
+     */  
     function ajaxGet()
     {
         $session = Session::start();
         $notifs = $session->get('notifs');
         if($notifs != null) RPC::call('Notification.refresh', $notifs);
+    }
+
+    /**
+     * @brief Set the current used key (to prevent notifications on current view)
+     *
+     * @param string $key
+     * @return void
+     */  
+    function ajaxCurrent($key)
+    {
+        $session = Session::start();
+        $session->set('notifs_key', $key);
     }
 
     function prepareSnackbar($title, $body = false, $picture = false)
