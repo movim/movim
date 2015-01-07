@@ -73,7 +73,7 @@
                 <td>
                     <input type="hidden" id="latlonpos" name="latlonpos"/>
                     <a 
-                        title="{$c->t("Submit")}"
+                        title="{$c->__('button.submit')}"
                         href="#" 
                         id="feedmessagesubmit" 
                         onclick="{$publish_item}
