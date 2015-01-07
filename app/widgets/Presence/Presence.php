@@ -152,7 +152,6 @@ class Presence extends WidgetBase
         $pd = new \Modl\PresenceDAO();
         
         $session = \Sessionx::start();
-        var_dump($session);
         $presence = $pd->getPresence($this->user->getLogin(), $session->resource);
 
         $presencetpl = $this->tpl();
