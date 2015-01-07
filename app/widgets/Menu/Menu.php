@@ -7,50 +7,46 @@ class Menu extends WidgetCommon
     function load()
     {
         $this->registerEvent('post', 'onPost');
-        $this->registerEvent('stream', 'onStream');
+        //$this->registerEvent('stream', 'onStream');
 
         $this->addjs('menu.js');
     }
 
-    function onStream()
+    function onStream($count)
+    {
+        $view = $this->tpl();
+        $view->assign('count', $count);
+        $view->assign('refresh', $this->call('ajaxGetMenuList', "''", "''", 0));
+
+        RPC::call('movim_posts_unread', $count);
+        RPC::call('movim_fill', 'menu_refresh', $view->draw('_menu_refresh', true));
+    }
+
+    function onPost($packet)
     {
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(Cache::c('since'));
 
         if($count > 0) {
-            $view = $this->tpl();
-            $view->assign('count', $count);
-            $view->assign('refresh', $this->call('ajaxGetMenuList', "''", "''", 0));
+            $post = $packet->content;
+            if($post->isMicroblog()) {
+                $cd = new \Modl\ContactDAO;
+                $contact = $cd->get($post->jid);
 
-            RPC::call('movim_posts_unread', $count);
-            RPC::call('movim_fill', 'menu_refresh', $view->draw('_menu_refresh', true));
-        }
-    }
+                if($post->title == null) {
+                    $title = __('post.default_title');
+                } else {
+                    $title = $post->title;
+                }
 
-    function onPost($packet)
-    {
-        $post = $packet->content;
-        if($post->isMicroblog()) {
-            $cd = new \Modl\ContactDAO;
-            $contact = $cd->get($post->jid);
-
-            if($post->title == null) {
-                $title = __('post.default_title');
+                Notification::append('news', $contact->getTrueName(), $title, $contact->getPhoto('s'), 2);
             } else {
-                $title = $post->title;
+                Notification::append('news', $post->title, $post->node, null, 2);
             }
 
-            Notification::append('news', $contact->getTrueName(), $title, $contact->getPhoto('s'), 2);
-        } else {
-            Notification::append('news', $post->title, $post->node, null, 2);
-        }/*
+            $this->onStream($count);
+        }
 
-                if($p->isMicroblog()) {
-                    $evt = new \Event();
-                    $evt->runEvent('postmicroblog', array('from' => $from, 'node' => $p->node));
-                }*/
-
-        $this->onStream();
     }
 
     function ajaxGetAll($page = 0)
