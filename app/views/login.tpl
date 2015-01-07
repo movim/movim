@@ -1,5 +1,5 @@
-<?php $this->widget('Notification'); ?>
-<?php $this->widget('Presence'); ?>
+<?php //$this->widget('Notification'); ?>
+<?php //$this->widget('Presence'); ?>
 <main>
     <section>
     <div>

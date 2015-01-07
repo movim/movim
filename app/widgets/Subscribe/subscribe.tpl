@@ -1,7 +1,10 @@
 <div id="subscribe">
-    <h1 class="paddedtopbottom">{$c->__('subscribe.title')}</h1>
-
-    <h4>{$c->__('subscribe.info')}</h4>
+    <ul class="simple thick">
+        <li class="condensed">
+            <span>{$c->__('subscribe.title')}</span>
+            <p>{$c->__('subscribe.info')}</p>
+        </li>
+    </ul>
 
     <ul class="thick active">
         {loop="$servers"}
