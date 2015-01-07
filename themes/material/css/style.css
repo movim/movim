@@ -119,10 +119,10 @@ body > nav {
     background-color: #fefefe;
     width: 7rem;
     max-width: 95%;
-    transition: width 0.3s ease;
+    -webkit-transition: width 0.5s ease;
+    transition: width 0.5s ease;
     z-index: 2;
     position: relative;
-    transform: translate3d(0,0,0);
 }
 
 body > nav:before {
@@ -154,6 +154,23 @@ body > nav.active + main {
 
 body > nav li { /* Little hack for the navbar */
     overflow: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+    body > nav:not(.active) {
+        width: 45rem;
+        -webkit-transition: -webkit-transform .3s ease-in-out;
+        transition: transform .3s ease-in-out;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+
+    body > nav.active {
+        -webkit-transition: -webkit-transform .3s ease-in-out;
+        transition: transform .3s ease-in-out;
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -189,11 +206,13 @@ main {
     right: 0;
     top: 0;
     background-color: white;
-    transition: opacity 0.2s ease;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 nav + main {
     width: calc(100% - 7rem);
+    -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
 
@@ -278,7 +297,8 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     top: 0;
     right: 0;
     /*transition: right 0.2s ease;*/
-    transition: transform .5s ease;
+    -webkit-transition: -webkit-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
 }
 
 main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
@@ -302,12 +322,14 @@ main > section > div > div.contained > * {
     main > section > div:first-child:nth-last-child(2) ~ div {
         background-color: white;
         width: 100%;
+        -webkit-transform: translateX(100%);
         transform: translateX(100%);
         z-index: 1;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.23), 0 0 10px rgba(0, 0, 0, 0.16);
     }
 
     main > section > div:first-child:nth-last-child(2) ~ div.enabled {
+        -webkit-transform: translateX(0);
         transform: translateX(0);
     }
 
@@ -466,6 +488,7 @@ header.big p {
     border-radius: 0.25rem;
     z-index: 3;
     box-sizing: border-box;
+    -webkit-transform: translateX(0);
     transform: translateX(0);
 }
 
