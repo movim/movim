@@ -382,6 +382,20 @@ span.icon.small.bubble i {
     vertical-align: text-top;
 }
 
+main > header > a span.icon:hover,
+main > header > span.icon:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+main > header > a > span.icon,
+main > header > span.icon {
+    line-height: 7rem;
+    width: 8rem;
+    height: 7rem;
+    margin-top: -3.5rem;
+    left: 0;
+}
+
 main > header ul li span.icon {
     left: 1rem;
 }
