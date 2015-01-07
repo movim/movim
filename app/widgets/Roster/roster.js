@@ -66,9 +66,9 @@
                         };
                         $scope.pushInPlace(el, $scope.lookupgroups[list[i].groupname].agroupitems, jidAvalCompare);
                     }
-                    /* New ressource (can't just push the whole set of same jid because there is no set) */
-                    if(!$scope.isInJidItems(list[i].jid, list[i].ressource)){
-                        $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, ressourceCompare);
+                    /* New resource (can't just push the whole set of same jid because there is no set) */
+                    if(!$scope.isInJidItems(list[i].jid, list[i].resource)){
+                        $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, resourceCompare);
                     }
                 }
             //}
@@ -111,10 +111,10 @@
             $scope.$apply();
         };
         
-        $scope.isInJidItems = function(jid, ressource){
+        $scope.isInJidItems = function(jid, resource){
             l = $scope.lookupjid[jid].ajiditems.length;
             for(var i = 0; i < l; i++){
-                if($scope.lookupjid[jid].ajiditems[i].ressource == ressource)
+                if($scope.lookupjid[jid].ajiditems[i].resource == resource)
                     return true;
             }
             return false;
@@ -206,7 +206,7 @@
         
         this.postJingleAction = function(c){
             Popup.close(); 
-            Popup.open(c.jid + "/" + c.ressource);
+            Popup.open(c.jid + "/" + c.resource);
         };
 
         this.groupIsShown = function(grp){
@@ -236,10 +236,10 @@
             return liclass;
         };
         
-        this.getJidStatusRessource = function(c){
+        this.getJidStatusResource = function(c){
             lititle = c.jid;
             if(c.status != '') lititle += " - " + c.status;
-            lititle += " - " + c.ressource;
+            lititle += " - " + c.resource;
             return lititle;
         };
         
@@ -318,7 +318,7 @@ var groupnameCompare = function(a, b) {
     return a.agroup.localeCompare(b.agroup);
 };
 
-var ressourceCompare = function(a, b) {
+var resourceCompare = function(a, b) {
     n = a.value - b.value;
     return n ? n < 0 ? -1 : 1 : 0;
 };
