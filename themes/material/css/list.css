@@ -81,7 +81,6 @@ ul.thick li.condensed p {
 ul li p {
     display: block;
     font-size: 1.75rem;
-    text-align: justify;
     color: rgba(0, 0, 0, 0.60);
     overflow: hidden;
     text-overflow: ellipsis;
