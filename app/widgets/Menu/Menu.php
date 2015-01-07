@@ -44,7 +44,6 @@ class Menu extends WidgetCommon
 
             $this->onStream($count);
         }
-
     }
 
     function ajaxGetAll($page = 0)
