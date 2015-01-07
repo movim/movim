@@ -6,7 +6,7 @@ class Sessionx extends Model {
     public $session;
     public $username;
     public $password;
-    public $ressource;
+    public $resource;
     public $rid;
     public $sid;
     public $id;
@@ -28,7 +28,7 @@ class Sessionx extends Model {
                 {"type":"string", "size":64 },
             "password" : 
                 {"type":"string", "size":64 },
-            "ressource" : 
+            "resource" : 
                 {"type":"string", "size":64 },
             "rid" : 
                 {"type":"int",    "size":8,   "mandatory":true },

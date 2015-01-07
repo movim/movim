@@ -7,7 +7,7 @@ class Message extends Model {
     public $jidto;
     public $jidfrom;
     
-    public $ressource;
+    public $resource;
     
     public $type;
 
@@ -28,7 +28,7 @@ class Message extends Model {
                 {"type":"string", "size":128, "mandatory":true },
             "jidfrom" : 
                 {"type":"string", "size":128, "mandatory":true },
-            "ressource" : 
+            "resource" : 
                 {"type":"string", "size":128 },
             "type" : 
                 {"type":"string", "size":20 },

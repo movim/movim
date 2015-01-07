@@ -109,7 +109,7 @@ class Presence extends WidgetBase
         $session = \Sessionx::start();
         $p = new Unavailable;
         $p->setType('terminate')
-          ->setRessource($session->ressource)
+          ->setResource($session->resource)
           ->setTo($this->user->getLogin())
           ->request();
 
@@ -152,7 +152,8 @@ class Presence extends WidgetBase
         $pd = new \Modl\PresenceDAO();
         
         $session = \Sessionx::start();
-        $presence = $pd->getPresence($this->user->getLogin(), $session->ressource);
+        var_dump($session);
+        $presence = $pd->getPresence($this->user->getLogin(), $session->resource);
 
         $presencetpl = $this->tpl();
         
@@ -178,7 +179,7 @@ class Presence extends WidgetBase
         $session = \Sessionx::start();
         
         $pd = new \Modl\PresenceDAO();
-        $p = $pd->getPresence($this->user->getLogin(), $session->ressource);
+        $p = $pd->getPresence($this->user->getLogin(), $session->resource);
 
         $cd = new \Modl\ContactDAO();
         $contact = $cd->get($this->user->getLogin());
