@@ -1,62 +1,72 @@
 <div id="admindb" class="tabelem paddedtop" title="{$c->__('db.legend')}">
-    <fieldset>
-        <legend>{$c->__('db.legend')}</legend>
-        <div class="clear"></div>  
-        
-        {if="!$connected"}
-            <div class="message error">
-                {$c->__('db.connect_error')}
-            </div>
-            <div class="message error">
-                {$errors}
-            </div>    
-        {else}
-            <div class="message success">
-                <i class="fa fa-plug"></i> {$c->__('db.connect_success')}
-            </div>
-            {if="null !== $infos"} 
-                <p>{$c->__('db.update')}</p>
-                <div class="message warning">
-                    {loop="$infos"}
-                        <p>{$value}</p>
-                    {/loop}
-                    
-                    <a class="button color green" 
-                        onclick="{$db_update}"
-                        style="float: right;"><i class="fa fa-refresh"></i> {$c->__('button.update')}</a>
-                    <div class="clear"></div>
-                </div>
+    <form>
+        <ul>
+            <li class="subheader">{$c->__('db.legend')}</li>
+
+            {if="!$connected"}
+                <li class="block large condensed">
+                    <span class="icon bubble color red">
+                        <i class="fa fa-plug"></i>
+                    </span>
+                    <span>{$c->__('db.connect_error')}</span>
+                    <p>{$errors}</p>
+                </li> 
             {else}
-                <div class="message success">
-                    <i class="fa fa-refresh"></i> {$c->__('db.up_to_date')}
-                </div>
+                <li class="block large">
+                    <span class="icon bubble color green">
+                        <i class="fa fa-plug"></i>
+                    </span>
+                    <span>{$c->__('db.connect_success')}</span>
+                </li>
+                {if="null !== $infos"}
+                    <li class="block large condensed">
+                        <span class="icon bubble color orange">
+                            <i class="fa fa-refresh"></i>
+                        </span>
+                        <span>{$c->__('db.update')}</span>
+                        <div class="control">
+                            <a class="button oppose" 
+                                onclick="{$db_update}"> {$c->__('button.update')}</a>
+                        </div>
+                        {loop="$infos"}
+                            <p>{$value}</p>
+                        {/loop}
+                    </li>
+                {else}
+                    <li class="block large">
+                        <span class="icon bubble color green">
+                            <i class="fa fa-refresh"></i> 
+                        </span>
+                        <span>{$c->__('db.up_to_date')}</span>
+                    </li>
+                {/if}
             {/if}
-        {/if}
+        </ul> 
         
         <div class="clear"></div>  
-        <div class="element">
+        <div class="block">
+            <input value="{$dbtype}" disabled/>
             <label for="logLevel">{$c->__('db.type')}</label>
-            <span>{$dbtype}</span>
         </div>
-        <div class="element">
+        <div class="block">
+            <input value="{$conf.username}" disabled/>
             <label for="dbUsername">{$c->__('db.username')}</label>
-            <span>{$conf.username}</span>
         </div>
-        <div class="element">
+        <div class="block">
+            <input value="{$c->hidePassword($conf.password)}" disabled/>
             <label for="dbPassword">{$c->__('db.password')}</label>
-            <span>{$c->hidePassword($conf.password)}</span>
         </div>
-        <div class="element">
+        <div class="block">
+            <input value="{$conf.host}" disabled/>
             <label for="dbHost">{$c->__('db.host')}</label>
-            <span>{$conf.host}</span>
         </div>
-        <div class="element">
+        <div class="block">
+            <input value="{$conf.port}" disabled/>
             <label for="dbPort">{$c->__('db.port')}</label>
-            <span>{$conf.port}</span>
         </div>
-        <div class="element">
+        <div class="block">
+            <input value="{$conf.database}" disabled/>
             <label for="dbName">{$c->__('db.name')}</label>
-            <span>{$conf.database}</span>
         </div>
-    </fieldset>
+    </form>
 </div>

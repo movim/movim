@@ -263,6 +263,9 @@ body.red input[type=button].color,
 body.red ul li span.counter,
 body.red main > header { background-color: #DB4336; color: white; border-color: #DB4336; }
 
+/* 200 */
+body.red main > header a { color: #EF9A9A; }
+
 body.red .tabs,
 body.red .button,
 body.red input[type=button],

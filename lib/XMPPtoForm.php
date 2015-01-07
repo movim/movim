@@ -103,12 +103,20 @@ class XMPPtoForm{
     }
     private function outTitle($s){
         $this->html .= '
-            <h2>'.$s.'</h2>';
+            <ul class="thin simple">
+                <li>
+                    <span>'.$s.'</span>
+                </li>
+            </ul>';
     }
     
     private function outP($s){
         $this->html .= '
-            <p>'.$s.'</p>';
+            <ul class="thin simple">
+                <li>
+                    <p>'.$s.'</p>
+                </li>
+            </ul>';
     }
     
     private function outUrl($s) {
