@@ -55,7 +55,7 @@ class Config extends Model {
 
         $this->environment      = 'development';
         $this->description      = __('global.description');
-        $this->theme            = 'movim';
+        $this->theme            = 'material';
         $this->locale           = 'en';
         $this->maxusers         = -1;
         $this->loglevel         = 'empty';
