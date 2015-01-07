@@ -35,22 +35,22 @@ class Bind extends Action
     public function request() 
     {
         $this->store();
-        Stream::bindSet($this->_ressource);
+        Stream::bindSet($this->_resource);
     }
     
-    public function setRessource($ressource)
+    public function setResource($resource)
     {
-        $this->_ressource = $ressource;
+        $this->_resource = $resource;
         return $this;
     }
     
     public function handle($stanza, $parent = false) {
         $session = \Sessionx::start();
-        list($jid, $ressource) = explode('/', (string)$stanza->bind->jid);
+        list($jid, $resource) = explode('/', (string)$stanza->bind->jid);
 
         list($session->username, $session->host) = explode('@',$jid);
-        if($ressource)
-            $session->ressource = $ressource;
+        if($resource)
+            $session->resource = $resource;
 
         $ss = new Start;
         $ss->setTo($session->host)

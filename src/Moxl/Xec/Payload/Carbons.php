@@ -55,7 +55,7 @@ class Carbons extends Payload
             $m->jidto      = $to;
             $m->jidfrom    = $jid[0];
             
-            $m->ressource = $jid[1];
+            $m->resource = $jid[1];
             
             $m->type    = (string)$stanza->attributes()->type;
             

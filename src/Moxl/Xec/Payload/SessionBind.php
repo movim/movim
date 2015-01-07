@@ -35,7 +35,7 @@ class SessionBind extends Payload
         $session = \Sessionx::start();
         //if($stanza->required) {
             $ss = new Bind;
-            $ss->setRessource($session->ressource)
+            $ss->setResource($session->resource)
                ->request();
         //}
     }

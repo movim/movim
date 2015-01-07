@@ -48,7 +48,7 @@ class Message extends Payload
             $m->jidfrom    = $jid[0];
 
             if(isset($jid[1]))
-                $m->ressource = $jid[1];
+                $m->resource = $jid[1];
             
             $m->type    = (string)$stanza->attributes()->type;
             

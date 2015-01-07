@@ -15,11 +15,11 @@ class Stream {
         \Moxl\API::request($xml);
     }
 
-    static function bindSet($ressource)
+    static function bindSet($resource)
     {
         $xml = '
             <bind xmlns="urn:ietf:params:xml:ns:xmpp-bind">
-                <resource>'.$ressource.'</resource>
+                <resource>'.$resource.'</resource>
             </bind>';
         $xml = \Moxl\API::iqWrapper($xml, false, 'set');
         \Moxl\API::request($xml);
