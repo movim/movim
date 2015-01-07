@@ -1,6 +1,6 @@
 <?php
 /*
- * Unavaiable.php
+ * Unavailable.php
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
@@ -27,17 +27,17 @@ namespace Moxl\Xec\Action\Presence;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
 
-class Unavaiable extends Action
+class Unavailable extends Action
 {
     private $_status;
     private $_to;
     private $_type;
-    private $_ressource;
+    private $_resource;
 
     public function request() 
     {
         $this->store();
-        Presence::unavaiable($this->_to.'/'.$this->_ressource, $this->_status, $this->_type);
+        Presence::unavailable($this->_to.'/'.$this->_resource, $this->_status, $this->_type);
     }
 
     public function setStatus($status)
@@ -52,9 +52,9 @@ class Unavaiable extends Action
         return $this;
     }
     
-    public function setRessource($ressource)
+    public function setResource($resource)
     {
-        $this->_ressource = $ressource;
+        $this->_resource = $resource;
         return $this;
     }
     
