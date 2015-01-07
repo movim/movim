@@ -72,9 +72,12 @@ class GetItem extends Errors
                 
                 $pd = new \modl\PostnDAO();
                 $pd->set($p);
+
+                $this->pack($p);
+                $evt->runEvent('post', $this->packet);
             }
-            
-            $evt->runEvent('stream', array('from' => $from, 'node' => $node));
+
+            //$evt->runEvent('stream', array('from' => $from, 'node' => $node));
         } else {
             $evt->runEvent('nostream', array('from' => $from, 'node' => $node));   
         }
