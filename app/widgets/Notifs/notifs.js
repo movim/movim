@@ -21,14 +21,16 @@ var Notifs = {
         
         /* Should the list of pending invitations show? */
         var invitShown = document.querySelector('#notifs_widget li.subheader');
-        var ls = localStorage.getObject(Notifs.lswidget);
-        if(ls === null){
-            localStorage.setObject(Notifs.lswidget, {"invitShown": true});
-            Notifs.ls = localStorage.getObject(Notifs.lswidget);
-            document.querySelector('#notifs_widget').className += " groupshown";
-        }
-        invitShown.onclick = function(e) {
-            Notifs.showHide(e.target);
+        if(invitShown){
+            var ls = localStorage.getObject(Notifs.lswidget);
+            if(ls === null){
+                localStorage.setObject(Notifs.lswidget, {"invitShown": true});
+                Notifs.ls = localStorage.getObject(Notifs.lswidget);
+                document.querySelector('#notifs_widget').className += " groupshown";
+            }
+            invitShown.onclick = function(e) {
+                Notifs.showHide(e.target);
+            }
         }
     },
 

@@ -82,6 +82,15 @@ form > div > textarea {
     overflow: hidden; /* Fixme */
 }
 
+/* Webkit hack */
+form > div > input:not([type=submit]):-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px white inset; 
+}
+form > div > input:not([type=submit]):-webkit-autofill:focus {
+    -webkit-box-shadow: 0;
+    -webkit-text-fill-color: #333;
+}
+
 form > div > input:focus,
 form > div > textarea:focus {
     border-bottom-width: 2px;

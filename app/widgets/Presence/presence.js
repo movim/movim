@@ -26,15 +26,6 @@ function setPresenceActions() {
             movim_textarea_autoheight(this);
         };
     }
-
-    /*
-    document.querySelector('#presence_widget #tab').onclick = function(event) {
-        movim_toggle_class('#presence_widget', 'unfolded');
-    };
-
-    document.querySelector('#presence_widget #list .tab').onclick = function(event) {
-        movim_toggle_class('#presence_widget', 'unfolded');
-    };*/
 }
 
 MovimWebsocket.attach(function()
