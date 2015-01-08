@@ -19,7 +19,7 @@
                     <label for="login">{$c->__('form.username')}</label>
                 </div>
                 <div>
-                    <input type="password" name="pass" id="pass" required disabled
+                    <input type="password" name="pass" id="pass" autocomplete="off" required disabled
                         placeholder="{$c->__('form.password')}"/>
                     <label for="pass">{$c->__('form.password')}</label>
                 </div>
