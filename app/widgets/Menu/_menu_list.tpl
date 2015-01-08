@@ -5,7 +5,13 @@
     {/if}
     
     {loop="$items"}
-        <li class="condensed" data-id="{$value->nodeid}">
+        <li class="condensed" data-id="{$value->nodeid}"
+            {if="$value->title != null"}
+                title="{$value->title}"
+            {else}
+                title="{$c->__('menu.contact_post')}"
+            {/if}
+        >
             {if="current(explode('.', $value->jid)) == 'nsfw'"}
                 <span class="icon bubble color red">
                     <i class="md md-warning"></i>

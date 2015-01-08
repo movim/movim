@@ -3,6 +3,8 @@
 }*/
 
 var Notifs = {
+    lswidget : localStorage.getItem('username').replace('@', 'at') + '_Notifs',
+    
     refresh : function() {
         var items = document.querySelectorAll('#notifs_widget li:not(.subheader)');
         var i = 0;
@@ -16,13 +18,37 @@ var Notifs = {
             }
             i++;
         }
+        
+        /* Should the list of pending invitations show? */
+        var invitShown = document.querySelector('#notifs_widget li.subheader');
+        var ls = localStorage.getObject(Notifs.lswidget);
+        if(ls === null){
+            localStorage.setObject(Notifs.lswidget, {"invitShown": true});
+            Notifs.ls = localStorage.getObject(Notifs.lswidget);
+            document.querySelector('#notifs_widget').className += " groupshown";
+        }
+        invitShown.onclick = function(e) {
+            Notifs.showHide(e.target);
+        }
     },
 
     reset: function(list) {
         for(i = 0; i < list.length; i++) {
             movim_remove_class(list[i], 'active');
         }
-    }
+    },
+    
+    showHide : function(e){
+        state = localStorage.getObject(Notifs.lswidget).invitShown;
+        parent = document.querySelector('#notifs_widget');
+        
+        if(state === true)
+            parent.className = parent.className.replace(" groupshown", "");
+        else
+            parent.className += " groupshown";
+            
+        localStorage.setObject(Notifs.lswidget, {"invitShown": !state});
+    },
 }
 
 MovimWebsocket.attach(function() {
