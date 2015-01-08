@@ -1,5 +1,6 @@
 #notifs_widget li:not(:first-child) {
     margin-bottom: 0.5em;
+    display: list-item;
 }
 
 #notifs_widget li img {
@@ -9,11 +10,6 @@
     border-radius: 1em;
 }
 
-#notifs_widget.groupshown {
-    height: auto;
-}
-
-#notifs_widget{
-    height: 0;
-    overflow: hidden;
+#notifs_widget.groupshown li:not(:first-child){
+    display: none;
 }
