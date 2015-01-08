@@ -67,15 +67,16 @@ main > header form > div:not(.clear):not(.control) > .select:after,
 main > header form > div:not(.clear):not(.control) > .select select {
     color: white;
 }
-    /* Placeholders to mimic FF */
-    ::-webkit-input-placeholder { /* WebKit browsers */
-        color:    #fff;
-        opacity: 0.5;
-    }
-    :-ms-input-placeholder { /* Internet Explorer 10+ */
-        color:    #fff;
-        opacity: 0.5;
-    }
+
+/* Placeholders to mimic FF */
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+    opacity: 0.5;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+    opacity: 0.5;
+}
 
 form > div > .select,
 form > div > input:not([type=submit]),
