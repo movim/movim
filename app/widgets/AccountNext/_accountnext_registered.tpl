@@ -1,9 +1,9 @@
 <div class="placeholder icon clipboard">
-    {$c->__('create.successfull')}
+    <h4>{$c->__('create.successfull')}</h4>
 
-    <h1 id="username">username@server.com</h1>
+    <h2 id="username">username@server.com</h2>
 
-    <a class="button color green" href="{$c->route('login')}">
-        <i class="fa fa-home"></i> {$c->__('page.login')}
+    <a class="button color" href="{$c->route('login')}">
+        {$c->__('page.login')}
     </a>
 </div>

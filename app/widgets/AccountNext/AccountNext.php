@@ -8,6 +8,7 @@ class AccountNext extends WidgetBase {
     function load()
     {
         $this->addjs('accountnext.js');
+        $this->addcss('accountnext.css');
         
         $this->registerEvent('register_get_handle', 'onForm');
         $this->registerEvent('register_set_handle', 'onRegistered');
