@@ -77,6 +77,13 @@ var MovimTpl = {
     },
     showMenu : function() {
         movim_add_class('body > nav', 'active');
+    },
+    triggerMenu : function() {
+        if(movim_has_class('body > nav', 'active')) {
+            movim_remove_class('body > nav', 'active');
+        } else {
+            movim_add_class('body > nav', 'active');
+        }
     }
 }
 
