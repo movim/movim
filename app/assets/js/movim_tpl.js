@@ -75,14 +75,16 @@ var MovimTpl = {
             selector.scrollTop = selector.scrollHeight;
         }
     },
-    showMenu : function() {
-        movim_add_class('body > nav', 'active');
+    toggleMenu : function() {
+        movim_toggle_class('body > nav', 'active');
     },
-    triggerMenu : function() {
+    back : function() {
         if(movim_has_class('body > nav', 'active')) {
-            movim_remove_class('body > nav', 'active');
+            movim_toggle_class('body > nav', 'active');
+        } else if(MovimTpl.isPanel()) {
+            MovimTpl.hidePanel();
         } else {
-            movim_add_class('body > nav', 'active');
+            window.history.back();
         }
     }
 }
