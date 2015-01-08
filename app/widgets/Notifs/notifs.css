@@ -8,3 +8,12 @@
     margin-right: 0.5em;
     border-radius: 1em;
 }
+
+#notifs_widget.groupshown {
+    height: auto;
+}
+
+#notifs_widget{
+    height: 5rem;
+    overflow: hidden;
+}
