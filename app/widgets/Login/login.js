@@ -49,6 +49,7 @@ var Login = {
     choose : function(jid) {
         movim_remove_class('#login_widget', 'choose');
         document.querySelector('#login').value = jid;
+        document.querySelector('#pass').value = "";
         
         if(jid != '') {
             document.querySelector('#pass').focus();
