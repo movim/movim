@@ -100,6 +100,7 @@ var Notification = {
 
 MovimWebsocket.attach(function() {
     Notification_ajaxGet();
+    Notification_ajaxCurrent('');
 });
 
 /**
