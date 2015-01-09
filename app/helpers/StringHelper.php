@@ -284,7 +284,7 @@ function stringToColor($string) {
         6 => 'yellow',
         7 => 'brown');
         
-    $s = base_convert(sha1($string), 12, 8);
+    $s = base_convert(sha1($string), 15, 8);
     
     if(isset($s[4])) {
         return $colors[(int) $s[4]];

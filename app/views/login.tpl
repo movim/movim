@@ -1,4 +1,3 @@
-<?php $this->widget('Notification'); ?>
 <?php $this->widget('Presence'); ?>
 <main>
     <section>
