@@ -311,12 +311,6 @@ class Login extends WidgetBase
         $s = Sessionx::start();
         $s->init($user, $element['pass'], $host, $domain);
 
-        // We save the loaded widgets list in the database
-        /*$wrapper = WidgetWrapper::getInstance(false);
-
-        $sess = Session::start(APP_NAME);
-        $sess->set('registered_events', $wrapper->registerEvents());*/
-
         \Moxl\Stanza\Stream::init($host);
     }
 

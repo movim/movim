@@ -7,7 +7,6 @@
             </li>
         </ul>
     </div>
-
     <script type="text/javascript">
         MovimWebsocket.attach(function()
         {
