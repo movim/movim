@@ -208,7 +208,7 @@ class Roster extends WidgetBase
     }
 
     /**
-     * @brief Get data from to database to pass it on to angular in JSON
+     * @brief Get data from database to pass it on to angular in JSON
      * @param
      * @returns $result: a json for the contacts and one for the groups
      */
@@ -230,6 +230,7 @@ class Roster extends WidgetBase
                 $this->prepareContact($ac, $c, $capsarr);
                 $c = $ac;
             }
+            
         }
         $result['contacts'] = json_encode($contacts);
         

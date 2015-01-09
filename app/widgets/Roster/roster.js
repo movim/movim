@@ -1,29 +1,6 @@
 (function(){
     var app = angular.module("roster", []);
 
-    /* Controller for Rostermenu 
-    app.controller("RosterMenuController", function($scope){
-        $scope.lsJid = localStorage.getItem("username").replace("@", "at");
-        $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
-        $scope.lsOfflineShown = "offlineShown" in $scope.lsRoster ? $scope.lsRoster.offlineShown : false;
-        
-        this.checkoutAddJid = function(event){
-            if(event.key == "Enter")
-                Roster_ajaxSearchContact(event.target.value);
-        };
-        
-        this.showHideOffline = function() {
-            if(!$scope.lsOfflineShown){
-                document.querySelector('ul#rosterlist').className = 'offlineshown';
-                $scope.lsOfflineShown = true;
-            }
-            else{
-                document.querySelector('ul#rosterlist').className = '';
-                $scope.lsOfflineShown = false;
-            }
-        }
-    });*/
-
     /* Controller for Rosterlist */
     app.controller("RosterController", function($scope){
         /* Cache variables */ 
@@ -53,7 +30,7 @@
                         $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
                         
                         /* Create a reference in the localstorage for toggling */
-                        $scope.lsGroupState["rosterGroup_"+list[0].groupname] = true;
+                        $scope.lsGroupState["rosterGroup_" + list[0].groupname] = true;
                     }
                     /* New jid */
                     if(!(list[i].jid in $scope.lookupjid)){
@@ -96,9 +73,9 @@
             for(var i in list){
                 if(!("rosterGroup_"+i in $scope.lsGroupState)){
                     list[i] = true;
-                    $scope.lsGroupState["rosterGroup_"+i] = true;
+                    $scope.lsGroupState["rosterGroup_" + i] = true;
                 }
-                else list[i] = $scope.lsGroupState["rosterGroup_"+i];
+                else list[i] = $scope.lsGroupState["rosterGroup_" + i];
             }
             
             $scope.groups = list;
@@ -162,7 +139,7 @@
                 };
                 $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
                 /* Reference in the localstorage for toggling */
-                $scope.lsGroupState["rosterGroup_"+list[0].groupname] = true;
+                $scope.lsGroupState["rosterGroup_" + list[0].groupname] = true;
             }
                 
             /* Jid is in the list and no group change */
@@ -188,7 +165,7 @@
         };
 
         this.showHideGroup = function(g){
-            ls = $scope.lsGroupState["rosterGroup_"+g];
+            ls = $scope.lsGroupState["rosterGroup_" + g];
             if(ls === null){
                 ls = $scope.lsGroupState.rosterGroup_Ungrouped;
                 g = "Ungrouped";
@@ -196,7 +173,7 @@
 
             ls = !ls;
 
-            $scope.lsGroupState["rosterGroup_"+g] = ls;
+            $scope.lsGroupState["rosterGroup_" + g] = ls;
             $scope.groups[g] = ls;
         };
 
@@ -214,13 +191,6 @@
                 return $scope.groups[grp];
             }
             else return $scope.groups["Ungrouped"];
-        };
-
-        this.offlineIsShown = function(){
-            if("offlineShown" in $scope.lsRoster && $scope.lsRoster.offlineShown)
-                return "offlineshown";
-            else
-                return "";
         };
 
         this.getContactTitle = function(c){
