@@ -208,7 +208,7 @@ class Roster extends WidgetBase
     }
 
     /**
-     * @brief Get data from to database to pass it on to angular in JSON
+     * @brief Get data from database to pass it on to angular in JSON
      * @param
      * @returns $result: a json for the contacts and one for the groups
      */
@@ -221,17 +221,63 @@ class Roster extends WidgetBase
 
         $result = array();
         
+        $farray = array(); //final array
         if(isset($contacts)) {
+            $groupname = '';
+            $jid = '';
+            $garray = array(); //group array
+            $garray['agroupitems'] = array(); //group array of jids
+            $jarray = array(); //jid array
+            $jarray['ajiditems'] = array(); //jid array of resources
+            $rvalue = 10; //bigger than any value
+            
             foreach($contacts as &$c) {
-                if($c->groupname == '')
+                if($groupname == '' || $c->groupname == ''){
                     $c->groupname = $this->__('roster.ungrouped');
+                    $groupname = $c->groupname;
+                }
                 
                 $ac = $c->toRoster();
                 $this->prepareContact($ac, $c, $capsarr);
-                $c = $ac;
+                
+                $jid = $jid == '' ? $ac['jid'] : $jid;
+                
+                /*jid has changed*/
+                if($jid != $ac['jid']){
+                    movim_log("!=");
+                    //pack up resources in a jid array
+                    $jarray['ajid'] = $jid;
+                    $jarray['atruename'] = $ac['rosterview']['name'];
+                    $jarray['aval'] = $rvalue;
+                    $jarray['tombstone'] = false;
+                    array_push($garray['agroupitems'], $jarray);
+                    $rvalue = 10; /*re init*/
+                    
+                    /*groupname has changed*/
+                    if($ac['groupname'] != $groupname){
+                        //push this group in final array
+                        $garray['agroup'] = $groupname;
+                        $garray['tombstone'] = false;
+                        array_push($farray, $garray);
+                        
+                        //next group
+                        $groupname = $ac['groupname'];
+                        $garray = array();
+                        $garray['agroupitems'] = array();
+                    }
+                
+                    //next jid
+                    $jid = $ac['jid'];
+                    $jarray = array();
+                    $jarray['ajiditems'] = array();
+                }
+                if($rvalue > $ac['value'])
+                    $rvalue = $ac['value'];
+                array_push($jarray['ajiditems'], $ac);
             }
         }
-        $result['contacts'] = json_encode($contacts);
+        $result['contacts'] = json_encode($farray);
+        
         
         //Groups
         $rd = new \Modl\RosterLinkDAO();
