@@ -244,7 +244,6 @@ class Roster extends WidgetBase
                 
                 /*jid has changed*/
                 if($jid != $ac['jid']){
-                    movim_log("!=");
                     //pack up resources in a jid array
                     $jarray['ajid'] = $jid;
                     $jarray['atruename'] = $ac['rosterview']['name'];
