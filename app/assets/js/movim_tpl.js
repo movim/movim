@@ -79,8 +79,13 @@ var MovimTpl = {
         movim_toggle_class('body > nav', 'active');
     },
     back : function() {
-        if(movim_has_class('body > nav', 'active')) {
+        // If a dialog box is shown
+        if(Dialog.filled()) {
+            Dialog.clear();
+        // If the menu is shown
+        } else if(movim_has_class('body > nav', 'active')) {
             movim_toggle_class('body > nav', 'active');
+        // If the panel is shown
         } else if(MovimTpl.isPanel()) {
             MovimTpl.hidePanel();
         } else {
