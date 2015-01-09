@@ -1,36 +1,13 @@
-/*function removeDiff(id, html, id2) {
-    target = document.getElementById(id);
-    
-    if(target) {
-        target.innerHTML = html;*/
-        /*
-        target.insertAdjacentHTML('beforeend', html);
-
-        var nodes = target.childNodes;
-
-        for(i = 0; i < nodes.length; i++) {
-            var n = nodes[i];
-            n.onclick = function() {
-                this.parentNode.removeChild(this);
-            };
-            setTimeout(function() {
-                if(n.parentNode) n.parentNode.removeChild(n);
-                },
-                6000);
-        }*/
-/*    }
-    
-    setTimeout(function() {
-        target = document.getElementById(id);
-        target.innerHTML = '';
-        },
-        3000);
-}*/
-
 var DesktopNotification = Notification;
 
 var Notification = {
     inhibed : false,
+    tab_counter1 : 0,
+    tab_counter2 : 0,
+    tab_counter1_key : 'chat',
+    tab_counter2_key : 'news',
+    document_title : document.title,
+
     inhibit : function(sec) {
         Notification.inhibed = true;
 
@@ -42,6 +19,7 @@ var Notification = {
             sec*1000);
     },
     refresh : function(keys) {
+        console.log(keys);
         var counters = document.querySelectorAll('.counter');
         for(i = 0; i < counters.length; i++) {
             var n = counters[i];
@@ -50,6 +28,14 @@ var Notification = {
                 n.innerHTML = keys[n.dataset.key];
             }
         }
+
+        for(var key in keys) {
+            var counter = keys[key];
+            Notification.setTab(key, counter);
+        }
+
+        Notification.document_title = document.title;
+        Notification.displayTab();
     },
     counter : function(key, counter) {
         var counters = document.querySelectorAll('.counter');
@@ -57,10 +43,28 @@ var Notification = {
             var n = counters[i];
             if(n.dataset.key != null
             && n.dataset.key == key) {
-                //setTimeout(function() {
-                    n.innerHTML = counter;
-                //}, 2000);
+                n.innerHTML = counter;
             }
+        }
+
+        Notification.setTab(key, counter);
+        Notification.displayTab();
+    },
+    setTab : function(key, counter) {
+        if(counter == '') counter = 0;
+
+        if(Notification.tab_counter1_key == key) {
+            Notification.tab_counter1 = counter;
+        }
+        if(Notification.tab_counter2_key == key) {
+            Notification.tab_counter2 = counter;
+        }
+    },
+    displayTab : function() {
+        if(Notification.tab_counter1 == 0 && Notification.tab_counter2 == 0) {
+            document.title = Notification.document_title;
+        } else {
+            document.title = '(' + Notification.tab_counter1 + '/' + Notification.tab_counter2 + ') ' + Notification.document_title;
         }
     },
     toast : function(html) {
@@ -103,47 +107,12 @@ MovimWebsocket.attach(function() {
     Notification_ajaxCurrent('');
 });
 
-/**
- * Set a global var for widgets to see if document is focused
- */
-var document_focus = true;
-var document_title = document.title;
-var messages_cpt = 0;
-var posts_cpt = 0;
-document.onblur = function() { document_focus = false; }
-document.onfocus = function() { document_focus = true; messages_cpt = 0; movim_show_cpt(); }
-
-function movim_show_cpt() {
-    if(messages_cpt == 0 && posts_cpt == 0)
-        document.title = document_title;
-    else
-        document.title = '(' + messages_cpt + '/' + posts_cpt + ') ' + document_title;
-}
-
-/**
- * @brief Increment the counter of the title
- */
-function movim_title_inc() {
-	messages_cpt++;
-	movim_show_cpt();
-}
-
-function movim_posts_unread(cpt) {
-    posts_cpt = cpt;
-    movim_show_cpt();
-}
-
-function movim_desktop_notification(title, body, image) {
-    var notification = new Notification(title, { icon: image, body: body });
-    //notification.onshow = function() { setTimeout(this.cancel(), 15000); }
-}
-
 /*
 window.addEventListener('load', function () {
-  Notification.requestPermission(function (status) {
+    DesktopNotification.requestPermission(function (status) {
     // This allows to use Notification.permission with Chrome/Safari
-    if (Notification.permission !== status) {
-      Notification.permission = status;
+    if(DesktopNotification.permission !== status) {
+        DesktopNotification.permission = status;
     }
   });
 });

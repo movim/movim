@@ -57,6 +57,36 @@ class Chats extends WidgetCommon
         RPC::call('Chats.refresh');
     }
 
+    /**
+     * @brief Display the add chat form
+     */
+    function ajaxAdd()
+    {
+        $view = $this->tpl();
+
+        $cd = new \Modl\ContactDAO;
+        $contacts = $cd->getRosterSimple();
+        $view->assign('contacts', $contacts);
+
+        Dialog::fill($view->draw('_chats_add', true), true);
+    }
+
+    /**
+     * @brief Display the add room form
+     */
+    function ajaxAddRoom()
+    {
+        $view = $this->tpl();
+
+        /*$view->assign('add', 
+            $this->call(
+                'ajaxAdd', 
+                "movim_parse_form('add')"));
+        $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));*/
+
+        Dialog::fill($view->draw('_chats_add_room', true));
+    }
+
     // Join a MUC 
     function ajaxBookmarkMucJoin($jid, $nickname)
     {
