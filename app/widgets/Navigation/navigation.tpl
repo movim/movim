@@ -1,7 +1,7 @@
 <ul class="active divided">
     <li>
         <div class="on_mobile control">
-            <i onclick="movim_remove_class('body > nav', 'active')" class="md md-arrow-back"></i>
+            <i onclick="MovimTpl.toggleMenu()" class="md md-arrow-back"></i>
         </div>
         <span class="icon bubble"><i class="md md-cloud-queue"></i></span>
         Movim

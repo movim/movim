@@ -380,6 +380,7 @@ class ContactDAO extends SQL {
         
         return $this->run('RosterLink');
     }
+    
     function getRoster() {
         $this->_sql = '
         select
@@ -406,6 +407,35 @@ class ContactDAO extends SQL {
         on rosterlink.jid = contact.jid
         where rosterlink.session = :session
         order by groupname, rosterlink.jid, presence.value';
+        
+        $this->prepare(
+            'RosterLink', 
+            array(
+                'session' => $this->_user
+            )
+        );
+        
+        return $this->run('RosterContact');
+    }
+
+    // Get the roster without the presences
+    function getRosterSimple() {
+        $this->_sql = '
+        select
+            rosterlink.jid,
+            contact.fn,
+            contact.name,
+            contact.nickname,
+            contact.tuneartist,
+            contact.tunetitle,
+            rosterlink.rostername,
+            rosterlink.groupname,
+            rosterlink.chaton
+        from rosterlink
+        left outer join contact
+        on rosterlink.jid = contact.jid
+        where rosterlink.session = :session
+        order by groupname, rosterlink.jid';
         
         $this->prepare(
             'RosterLink', 
