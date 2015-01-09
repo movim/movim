@@ -17,55 +17,20 @@
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
-            //if($scope.contacts.length == 0){
-                //console.log("NO cache");
-                for(var i = 0; i < list.length; i++){
-                    /* New group */
-                    if(!(list[i].groupname in $scope.lookupgroups)){
-                        el = {
-                            'agroup': list[i].groupname,
-                            'agroupitems': [],
-                            'tombstone': false,
-                        };
-                        $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
-                        
-                        /* Create a reference in the localstorage for toggling */
-                        $scope.lsGroupState["rosterGroup_" + list[0].groupname] = true;
-                    }
-                    /* New jid */
-                    if(!(list[i].jid in $scope.lookupjid)){
-                        el = {
-                            'ajid': list[i].jid,
-                            'atruename': list[i].rosterview.name,
-                            'aval': list[i].value,
-                            'ajiditems': [],
-                            'tombstone': false,
-                        };
-                        $scope.pushInPlace(el, $scope.lookupgroups[list[i].groupname].agroupitems, jidAvalCompare);
-                    }
-                    /* New resource (can't just push the whole set of same jid because there is no set) */
-                    if(!$scope.isInJidItems(list[i].jid, list[i].resource)){
-                        $scope.pushInPlace(list[i], $scope.lookupjid[list[i].jid].ajiditems, resourceCompare);
-                    }
+            /* Sort groups alphabetically */
+            list.sort(groupnameCompare);
+            
+            $scope.contacts = list;
+            /* Populate dictionaries */
+            for(var i = 0; i < $scope.contacts.length; i++){
+                $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
+                /* Sort jid by presence and alphabetically */
+                $scope.contacts[i].agroupitems.sort(jidAvalCompare);
+                
+                for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
+                    $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
                 }
-            //}
-            /* Rebound from cache */
-            /*else{
-                console.log("cache");
-                for(var i = 0; i < $scope.contacts.length; i++){
-                    if(!$scope.contacts[i].tombstone){
-                        $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
-                        for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
-                            if(!$scope.contacts[i].agroupitems[j].tombstone)
-                                $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
-                            else // Cleanup tombstoned jid
-                                $scope.contacts[i].agroupitems.splice(j, 1);
-                        }
-                    }
-                    else // Cleanup tombstoned groups 
-                        $scope.contacts.splice(i, 1);
-                }
-            }*/
+            }
             $scope.$apply();
         };
         
@@ -88,14 +53,16 @@
             $scope.$apply();
         };
         
-        $scope.isInJidItems = function(jid, resource){
+        /*NOT USED ANYMORE??
+         * 
+         * $scope.isInJidItems = function(jid, resource){
             l = $scope.lookupjid[jid].ajiditems.length;
             for(var i = 0; i < l; i++){
                 if($scope.lookupjid[jid].ajiditems[i].resource == resource)
                     return true;
             }
             return false;
-        };
+        };*/
         
         $scope.pushInPlace = function(element, array, comparer){
             if(array === $scope.contacts){
