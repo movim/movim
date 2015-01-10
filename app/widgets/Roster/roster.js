@@ -25,9 +25,7 @@
             for(var i = 0; i < $scope.contacts.length; i++){
                 $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
                 /* Sort jid by presence and alphabetically */
-                console.log($scope.contacts[i].agroupitems);
                 $scope.contacts[i].agroupitems.sort(jidAvalCompare);
-                console.log($scope.contacts[i].agroupitems);
                 
                 for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
                     $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
@@ -77,49 +75,47 @@
         $scope.updateContact = function(list){
             if($scope.contacts === null) $scope.contacts = [];
             /* Group change */
-            if((list[0].jid in $scope.lookupjid) 
-                && !($scope.lookupjid[list[0].jid].ajiditems.groupname == list[0].groupname)){
+            if((list.jid in $scope.lookupjid) 
+                && !($scope.lookupjid[list.jid].ajiditems.groupname == list.groupname)){
                 /* Kill jid from old location or whole group if it's the only jid */
-                oldgroupname = $scope.lookupjid[list[0].jid].ajiditems.groupname;
+                oldgroupname = $scope.lookupjid[list.jid].ajiditems.groupname;
                 if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
                     $scope.lookupgroups[oldgroupname].tombstone = true;
                 else{
-                    $scope.lookupjid[list[0].jid].tombstone = true;
+                    $scope.lookupjid[list.jid].tombstone = true;
                 }
             }
             /* New group is not in the list */
-            if(!(list[0].groupname in $scope.lookupgroups)) {
+            if(!(list.groupname in $scope.lookupgroups)) {
                 /* Create group */
                 el = {
-                    'agroup': list[0].groupname,
+                    'agroup': list.groupname,
                     'agroupitems': [],
                     'tombstone': false,
                 };
                 $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
                 /* Reference in the localstorage for toggling */
-                $scope.lsGroupState["rosterGroup_" + list[0].groupname] = true;
+                $scope.lsGroupState["rosterGroup_" + list.groupname] = true;
             }
                 
             /* Jid is in the list and no group change */
-            if(list[0].jid in $scope.lookupjid 
-                && ($scope.lookupjid[list[0].jid].ajiditems.groupname == list[0].groupname))
+            if(list.jid in $scope.lookupjid 
+                && ($scope.lookupjid[list.jid].ajiditems.groupname == list.groupname))
             {
-                $scope.lookupjid[list[0].jid].aval = list[0].value;
-                $scope.lookupjid[list[0].jid].atruename = list[0].rosterview.name;
-                //$scope.lookupjid[list[0].jid].ajiditems = list;
-                $scope.lookupjid[list[0].jid].ajiditems = list[0];
-                $scope.lookupgroups[list[0].groupname].agroupitems.sort(jidAvalCompare);
+                $scope.lookupjid[list.jid].aval = list.value;
+                $scope.lookupjid[list.jid].atruename = list.rosterview.name;
+                $scope.lookupjid[list.jid].ajiditems = list;
+                $scope.lookupgroups[list.groupname].agroupitems.sort(jidAvalCompare);
             }
             else{
                 el = {
-                    'ajid':     list[0].jid,
-                    'atruename':     list[0].rosterview.name,
-                    'aval':     list[0].value,
-                    //'ajiditems': list,
-                    'ajiditems': list[0],
+                    'ajid':     list.jid,
+                    'atruename':     list.rosterview.name,
+                    'aval':     list.value,
+                    'ajiditems': list,
                     'tombstone': false,
                 };
-                $scope.pushInPlace(el, $scope.lookupgroups[list[0].groupname].agroupitems, jidAvalCompare);
+                $scope.pushInPlace(el, $scope.lookupgroups[list.groupname].agroupitems, jidAvalCompare);
             }
             $scope.$apply();
         };
@@ -137,10 +133,10 @@
             $scope.groups[g] = ls;
         };
         
-        this.postJingleAction = function(c){
+        /*this.postJingleAction = function(c){
             Popup.close(); 
             Popup.open(c.jid + "/" + c.resource);
-        };
+        };*/
 
         this.groupIsShown = function(grp){
             if(typeof $scope.groups[grp] != "undefined"){
@@ -244,10 +240,6 @@ var groupnameCompare = function(a, b) {
     return a.agroup.localeCompare(b.agroup);
 };
 
-var resourceCompare = function(a, b) {
-    n = a.value - b.value;
-    return n ? n < 0 ? -1 : 1 : 0;
-};
 /* Presence + alphabetical comparison */
 var jidAvalCompare = function(a, b) {
     n = a.aval - b.aval;
