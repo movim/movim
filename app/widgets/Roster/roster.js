@@ -53,17 +53,6 @@
             $scope.$apply();
         };
         
-        /*NOT USED ANYMORE??
-         * 
-         * $scope.isInJidItems = function(jid, resource){
-            l = $scope.lookupjid[jid].ajiditems.length;
-            for(var i = 0; i < l; i++){
-                if($scope.lookupjid[jid].ajiditems[i].resource == resource)
-                    return true;
-            }
-            return false;
-        };*/
-        
         $scope.pushInPlace = function(element, array, comparer){
             if(array === $scope.contacts){
                 dico = $scope.lookupgroups;
@@ -87,9 +76,9 @@
             if($scope.contacts === null) $scope.contacts = [];
             /* Group change */
             if((list[0].jid in $scope.lookupjid) 
-                && !($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname)){
+                && !($scope.lookupjid[list[0].jid].ajiditems.groupname == list[0].groupname)){
                 /* Kill jid from old location or whole group if it's the only jid */
-                oldgroupname = $scope.lookupjid[list[0].jid].ajiditems[0].groupname;
+                oldgroupname = $scope.lookupjid[list[0].jid].ajiditems.groupname;
                 if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
                     $scope.lookupgroups[oldgroupname].tombstone = true;
                 else{
@@ -111,11 +100,12 @@
                 
             /* Jid is in the list and no group change */
             if(list[0].jid in $scope.lookupjid 
-                && ($scope.lookupjid[list[0].jid].ajiditems[0].groupname == list[0].groupname))
+                && ($scope.lookupjid[list[0].jid].ajiditems.groupname == list[0].groupname))
             {
                 $scope.lookupjid[list[0].jid].aval = list[0].value;
                 $scope.lookupjid[list[0].jid].atruename = list[0].rosterview.name;
-                $scope.lookupjid[list[0].jid].ajiditems = list;
+                //$scope.lookupjid[list[0].jid].ajiditems = list;
+                $scope.lookupjid[list[0].jid].ajiditems = list[0];
                 $scope.lookupgroups[list[0].groupname].agroupitems.sort(jidAvalCompare);
             }
             else{
@@ -123,7 +113,8 @@
                     'ajid':     list[0].jid,
                     'atruename':     list[0].rosterview.name,
                     'aval':     list[0].value,
-                    'ajiditems': list,
+                    //'ajiditems': list,
+                    'ajiditems': list[0],
                     'tombstone': false,
                 };
                 $scope.pushInPlace(el, $scope.lookupgroups[list[0].groupname].agroupitems, jidAvalCompare);
