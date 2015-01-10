@@ -25,6 +25,8 @@ var Chats = {
         }
 
         if(window.innerWidth > 1024 && !MovimTpl.isPanel()) {
+            Notification.notifs_key = 'chat|' + items[0].dataset.jid;
+            Notification_ajaxCurrent(Notification.notifs_key);
             items[0].click();
         }
     },

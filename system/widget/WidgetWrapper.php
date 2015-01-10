@@ -148,17 +148,30 @@ class WidgetWrapper
      * Calls a particular function with the given parameters on
      * all loaded widgets.
      *
-     * @param $method is the method to be called on all widgets.
-     * @param $params is an array of parameters passed to the method.
+     * @param $key is the key of the incoming event
+     * @param $data is the Packet that is sent as a parameter
      */
-    function iterate($key, $data/*$method, array $params = NULL*/)
+    function iterate($key, $data)
     {
         if(array_key_exists($key, $this->_events)) {
             foreach($this->_events[$key] as $widget_name) {
                 $widget = new $widget_name;
                 if(array_key_exists($key, $widget->events)) {
                     foreach($widget->events[$key] as $method) {
-                        $widget->{$method}($data);
+                        /*
+                         * We check if the method need to be called if the
+                         * session notifs_key is set to a specific value
+                         */
+                        if(is_array($widget->filters)
+                        && array_key_exists($method, $widget->filters)) {
+                            $session = Session::start();
+                            $notifs_key = $session->get('notifs_key');
+                            if($notifs_key == $widget->filters[$method]) {
+                                $widget->{$method}($data);
+                            }
+                        } else {
+                            $widget->{$method}($data);
+                        }
                     }
                 }
                 $widget = null;

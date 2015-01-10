@@ -7,6 +7,7 @@ var Notification = {
     tab_counter1_key : 'chat',
     tab_counter2_key : 'news',
     document_title : document.title,
+    notifs_key : '',
 
     inhibit : function(sec) {
         Notification.inhibed = true;
@@ -104,7 +105,7 @@ var Notification = {
 
 MovimWebsocket.attach(function() {
     Notification_ajaxGet();
-    Notification_ajaxCurrent('');
+    Notification_ajaxCurrent(Notification.notifs_key);
 });
 
 /*
