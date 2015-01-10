@@ -25,7 +25,9 @@
             for(var i = 0; i < $scope.contacts.length; i++){
                 $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
                 /* Sort jid by presence and alphabetically */
+                console.log($scope.contacts[i].agroupitems);
                 $scope.contacts[i].agroupitems.sort(jidAvalCompare);
+                console.log($scope.contacts[i].agroupitems);
                 
                 for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
                     $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
