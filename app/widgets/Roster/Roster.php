@@ -38,7 +38,7 @@ class Roster extends WidgetBase
         $this->registerEvent('roster_additem_handle', 'onAdd');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
-        $this->registerEvent('presence', 'onPresence');
+        $this->registerEvent('presence', 'onPresence', 'contacts');
     }
 
     function display()
@@ -244,7 +244,6 @@ class Roster extends WidgetBase
                 
                 /*jid has changed*/
                 if($jid != $ac['jid']){
-                    movim_log("!=");
                     //pack up resources in a jid array
                     $jarray['ajid'] = $jid;
                     $jarray['atruename'] = $ac['rosterview']['name'];
