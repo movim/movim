@@ -134,10 +134,6 @@
             $scope.lsGroupState["rosterGroup_" + g] = ls;
             $scope.groups[g] = ls;
         };
-
-        this.postChatAction = function(c){
-            eval(c.rosterview.openchat);
-        };
         
         this.postJingleAction = function(c){
             Popup.close(); 
@@ -270,9 +266,6 @@ var Roster = {
         var search      = document.querySelector('#rostersearch');
         var roster      = document.querySelector('#roster');
         var rosterlist  = document.querySelector('#rosterlist');
-        
-        var roster_classback      = document.querySelector('#roster').className;
-        var rosterlist_classback  = document.querySelector('#rosterlist').className;
 
         roster.onblur  = function() {
             roster.className = roster_classback;
@@ -280,11 +273,11 @@ var Roster = {
         };
         search.oninput = function(event) {
             if(search.value.length > 0) {
-                roster.className = 'search';
-                rosterlist.className = 'offlineshown';
+                movim_add_class(roster, 'search');
+                movim_add_class(rosterlist, 'offlineshown');
             } else {
-                roster.className = roster_classback;
-                rosterlist.className = rosterlist_classback;
+                movim_remove_class(roster, 'search');
+                movim_remove_class(rosterlist, 'offlineshown');
             }
 
             // We clear the old search
@@ -292,7 +285,7 @@ var Roster = {
             var li = document.querySelectorAll(selector_clear);
 
             for(i = 0; i < li.length; i++) {
-                li.item(i).className = '';
+                movim_remove_class(li.item(i), 'found');
             }
 
             // We select the interesting li
@@ -300,7 +293,7 @@ var Roster = {
             var li = document.querySelectorAll(selector);
 
             for(i = 0; i < li.length; i++) {
-                li.item(i).className = 'found';
+                movim_add_class(li.item(i), 'found');
             }
         };
     },
@@ -332,6 +325,7 @@ var Roster = {
 }
 
 MovimWebsocket.attach(function() {
+    Notification.notifs_key = 'contacts';
     Roster.refresh();
 });
 
