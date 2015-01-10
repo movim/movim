@@ -229,7 +229,7 @@ class Roster extends WidgetBase
             $garray['agroupitems'] = array(); //group array of jids
             $jarray = array(); //jid array
             $jarray['ajiditems'] = array(); //jid array of resources
-            $rvalue = 10; //bigger than any value
+            //$rvalue = 10; //bigger than any value
             
             foreach($contacts as &$c) {
                 if($groupname == '' || $c->groupname == ''){
@@ -247,10 +247,10 @@ class Roster extends WidgetBase
                     //pack up resources in a jid array
                     $jarray['ajid'] = $jid;
                     $jarray['atruename'] = $ac['rosterview']['name'];
-                    $jarray['aval'] = $rvalue;
+                    $jarray['aval'] = $jarray['ajiditems']['value'];
                     $jarray['tombstone'] = false;
                     array_push($garray['agroupitems'], $jarray);
-                    $rvalue = 10; /*re init*/
+                    //$rvalue = 10; /*re init*/
                     
                     /*groupname has changed*/
                     if($ac['groupname'] != $groupname){
@@ -270,9 +270,10 @@ class Roster extends WidgetBase
                     $jarray = array();
                     $jarray['ajiditems'] = array();
                 }
-                if($rvalue > $ac['value'])
-                    $rvalue = $ac['value'];
-                array_push($jarray['ajiditems'], $ac);
+                //if($rvalue > $ac['value'])
+                    //$rvalue = $ac['value'];
+                if(empty($jarray['ajiditems']))
+                    $jarray['ajiditems'] = $ac;
             }
         }
         $result['contacts'] = json_encode($farray);

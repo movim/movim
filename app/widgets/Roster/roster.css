@@ -2,11 +2,6 @@
     padding: 0 2rem;
 }
 
-#roster ul#rosterlist > div > li:not(.subheader) {
-    padding-left: 0;
-    padding-right: 0;
-}
-
 /*#roster {
     position: relative;
     transition: right 0.5s ease;
@@ -80,7 +75,7 @@
     min-height: 0;
 }
 
-#roster ul#rosterlist > div > li > ul.contact > li {
+#roster ul#rosterlist > div > li {
     display: none;
     position: relative;
 }
@@ -94,11 +89,11 @@
     height: 100%;
 }
 
-#roster ul#rosterlist > div > li > ul.contact > li:first-child:not(.offline):not(.server_error) {
+#roster ul#rosterlist > div > li:not(.offline):not(.server_error) {
     display: list-item;
 }
 
-#roster ul#rosterlist.offlineshown > div.groupshown > li > ul.contact > li:first-child {
+#roster ul#rosterlist.offlineshown > div.groupshown > li {
     display: list-item;
 }
 /*
@@ -180,7 +175,7 @@
 }*/
 
 /* Chat button */
-#roster ul#rosterlist ul.contact li .chat {
+#roster ul#rosterlist li .chat {
     width: 2rem;
     height: 2rem;
     left: 5.5rem;
@@ -206,7 +201,7 @@
     cursor: pointer;
 }*/
 
-#roster ul#rosterlist ul.contact li.inactive {
+#roster ul#rosterlist li.inactive {
     opacity: 0.5;
 }
 
