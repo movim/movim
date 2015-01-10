@@ -341,6 +341,7 @@ var Roster = {
 }
 
 MovimWebsocket.attach(function() {
+    Notification.notifs_key = 'contacts';
     Roster.refresh();
 });
 
