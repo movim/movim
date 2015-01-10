@@ -517,28 +517,14 @@ header.big p {
 .dialog > section > *:not(ul) {
     padding: 0 2rem;
 }
-/*
-.dialog > div > section ul li {
-    padding-right: 0;
-    padding-left: 7rem;
-}
 
-.dialog > div > section ul li.subheader,
-.dialog > div > section ul.simple li {
-    padding-left: 0;
-}
-
-.dialog > div > section ul li .icon {
-    left: 1rem;
-}
-*/
 @media screen and (max-width: 600px) {
     .dialog {
         width: 90%;
         height: 80%;
         min-height: 0;
         min-width: 0;
-        max-height: 90%;
+        max-height: 80%;
         margin-left: -45%;
         margin-top: 0;
         top: 10%;
