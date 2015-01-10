@@ -38,7 +38,7 @@ class Roster extends WidgetBase
         $this->registerEvent('roster_additem_handle', 'onAdd');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
-        $this->registerEvent('presence', 'onPresence');
+        $this->registerEvent('presence', 'onPresence', 'contacts');
     }
 
     function display()
@@ -327,10 +327,6 @@ class Roster extends WidgetBase
             $c['rosterview']['presencetxt'] = 'offline';
             $c['value'] = 5;
         }
-
-        // An action to open the chat widget
-        $c['rosterview']['openchat']
-            = $this->genCallWidget("Chat","ajaxOpenTalk", "'".$oc->jid."'");
 
         $c['rosterview']['type']   = '';
         $c['rosterview']['client'] = '';

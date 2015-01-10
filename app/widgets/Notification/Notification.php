@@ -128,44 +128,4 @@ class Notification extends WidgetCommon
 
         return $view->draw('_notification', true);
     }
-    
-    /*
-    static function appendNotification($message, $type = 'info')
-    {
-        $id = md5($message.$type);
-
-        switch($type) {
-            case 'success':
-                $icon = 'fa-check-circle';
-                break;
-            case 'info':
-                $icon = 'fa-info-circle';
-                break;
-            case 'warning':
-                $icon = 'fa-warning';
-                break;
-            case 'error':
-                $icon = 'fa-times-circle';
-                break;
-            default:
-                $icon = 'fa-info-circle';
-                break;
-        }*/
-        
-        /*$html = '
-            <div class="notif notificationAnim '.$type.'" id="'.$id.'">
-                <i class="fa '.$icon.'"></i> '.$message.'
-            </div>';*/
-    /*    $html = $message;
-
-        RPC::call('removeDiff', 'toast', $html, $id);
-    }
-
-    function onPubsubError($error) {
-        Notification::appendNotification($error, 'error');
-    }
-
-    function onMoxlError($arr) {
-        Notification::appendNotification($arr[1], 'error');
-    }*/
 }

@@ -30,6 +30,7 @@ class WidgetBase
     protected $translations = array(); // Set translations in the controller
     protected $_view;
     public $events;
+    public $filters;
 
     /**
      * Initialises Widget stuff.
@@ -152,7 +153,7 @@ class WidgetBase
     }
 
     /**
-     * Returns the path to the specified widget file.
+     * @brief Returns the path to the specified widget file.
      * @param file is the file's name to make up the path for.
      * @param fspath is optional, returns the OS path if true, the URL by default.
      */
@@ -180,7 +181,7 @@ class WidgetBase
     }
 
     /**
-     * Calls an the ajax function of another widget.
+     * @brief Calls an the ajax function of another widget.
      */
     protected function callWidget($widgetname, $funcname)
     {
@@ -189,7 +190,7 @@ class WidgetBase
     }
 
     /**
-     * Returns the javascript ajax call.
+     * @brief Returns the javascript ajax call.
      */
     protected function call($funcname)
     {
@@ -197,7 +198,7 @@ class WidgetBase
     }
 
     /**
-     * Returns the javascript call to another widget's ajax function.
+     * @brief Returns the javascript call to another widget's ajax function.
      */
     protected function genCallWidget($widgetname, $funcname)
     {
@@ -218,7 +219,7 @@ class WidgetBase
     }
 
     /**
-     * Adds a javascript file to this widget.
+     * @brief Adds a javascript file to this widget.
      */
     protected function addjs($filename)
     {
@@ -226,7 +227,7 @@ class WidgetBase
     }
 
     /**
-     * returns the list of javascript files to be loaded for the widget.
+     * @brief returns the list of javascript files to be loaded for the widget.
      */
     public function loadjs()
     {
@@ -234,7 +235,7 @@ class WidgetBase
     }
 
     /**
-     * Adds a javascript file to this widget.
+     * @brief Adds a javascript file to this widget.
      */
     protected function addcss($filename)
     {
@@ -242,7 +243,7 @@ class WidgetBase
     }
     
     /**
-     * returns the list of javascript files to be loaded for the widget.
+     * @brief returns the list of javascript files to be loaded for the widget.
      */
     public function loadcss()
     {
@@ -250,15 +251,25 @@ class WidgetBase
     }
 
     /**
-     * Registers an event handler.
+     * @brief Registers an event handler.
+     * @param $type The event key
+     * @param $function The function to call
+     * @param $filter Only call this function if the session notif_key is good
      */
-    protected function registerEvent($type, $function)
+    protected function registerEvent($type, $function, $filter = null)
     {
         if(!is_array($this->events)
         || !array_key_exists($type, $this->events)) {
             $this->events[$type] = array($function);
         } else {
             $this->events[$type][] = $function;
+        }
+
+        if($filter != null) {
+            if(!is_array($this->filters)) {
+                $this->filters = array();
+            }
+            $this->filters[$function] = $filter;
         }
     }
 }
