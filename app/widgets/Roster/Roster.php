@@ -68,15 +68,16 @@ class Roster extends WidgetBase
                     $contacts[0]->getPhoto('s'), 2);
             }
             */
-            foreach($contacts as &$c) {
-                if($c->groupname == '')
-                    $c->groupname = $this->__('roster.ungrouped');
-                
-                $ac = $c->toRoster();
-                $this->prepareContact($ac, $c, $this->getCaps());
-                $c = $ac;
-            }
-            RPC::call('updateContact', json_encode($contacts));
+            $c = $contacts[0];
+            
+            if($c->groupname == '')
+                $c->groupname = $this->__('roster.ungrouped');
+            
+            $ac = $c->toRoster();
+            $this->prepareContact($ac, $c, $this->getCaps());
+            $c = $ac;
+            
+            RPC::call('updateContact', json_encode($c));
         }
     }
 
@@ -273,7 +274,6 @@ class Roster extends WidgetBase
             }
         }
         $result['contacts'] = json_encode($farray);
-        
         
         //Groups
         $rd = new \Modl\RosterLinkDAO();
