@@ -166,7 +166,10 @@ class WidgetWrapper
                         && array_key_exists($method, $widget->filters)) {
                             $session = Session::start();
                             $notifs_key = $session->get('notifs_key');
-                            if($notifs_key == $widget->filters[$method]) {
+
+                            $explode = explode('|', $notifs_key);
+                            $key = reset($explode);
+                            if($key == $widget->filters[$method]) {
                                 $widget->{$method}($data);
                             }
                         } else {
