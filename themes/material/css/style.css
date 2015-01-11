@@ -655,7 +655,6 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
     .toast {
         max-width: 90%;
-        margin-left: -45%;
     }
 }
 
