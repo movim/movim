@@ -1,6 +1,8 @@
 <?php
 
 use Moxl\Xec\Action\Presence\Muc;
+use Moxl\Xec\Action\Bookmark\Get;
+use Moxl\Xec\Action\Bookmark\Set;
 
 class Chats extends WidgetCommon
 {
@@ -9,6 +11,7 @@ class Chats extends WidgetCommon
         $this->addjs('chats.js');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('presence', 'onPresence', 'chat');
     }
 
@@ -46,6 +49,14 @@ class Chats extends WidgetCommon
         }
     }
 
+    function onBookmark()
+    {
+        RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
+        Notification::append(null, $this->__('bookmarks.updated'));
+        RPC::call('Chats.refresh');
+        RPC::call('MovimTpl.hidePanel');
+    }
+
     function ajaxOpen($jid)
     {
         $chats = Cache::c('chats');
@@ -71,6 +82,7 @@ class Chats extends WidgetCommon
         RPC::call('movim_delete', $jid);
 
         RPC::call('Chats.refresh');
+        RPC::call('MovimTpl.hidePanel');
     }
 
     /**
@@ -94,21 +106,103 @@ class Chats extends WidgetCommon
     {
         $view = $this->tpl();
 
-        /*$view->assign('add', 
-            $this->call(
-                'ajaxAdd', 
-                "movim_parse_form('add')"));
-        $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));*/
+        $cd = new \Modl\ContactDAO;
+        $view->assign('me', $cd->get());
 
         Dialog::fill($view->draw('_chats_add_room', true));
     }
 
-    // Join a MUC 
-    function ajaxBookmarkMucJoin($jid, $nickname)
+    /**
+     * @brief Display the remove room confirmation
+     */
+    function ajaxRemoveRoomConfirmation($room)
+    {
+        $view = $this->tpl();
+
+        $view->assign('room', $room);
+
+        Dialog::fill($view->draw('_chats_remove_room', true));
+    }
+
+    /**
+     * @brief Remove a room
+     */
+    function ajaxRemoveRoom($room)
+    {
+        $cd = new \modl\ConferenceDAO();
+        $cd->deleteNode($room);
+        
+        $this->setBookmark();
+    }
+
+    /**
+     * @brief Join a chatroom
+     */
+    function ajaxChatroomJoin($jid, $nickname)
     {
         $p = new Muc;
         $p->setTo($jid)
           ->setNickname($nickname)
+          ->request();
+    }
+
+    /**
+     * @brief Display the add room form
+     */
+    function ajaxChatroomAdd($form) 
+    {
+        if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
+            Notification::append(null, $this->__('chatrooms.bad_id'));
+        } elseif(trim($form['name']) == '') {
+            Notification::append(null, $this->__('chatrooms.empty_name'));
+        } else {
+            $item = array(
+                    'type'      => 'conference',
+                    'name'      => $form['name'],
+                    'autojoin'  => $form['autojoin'],
+                    'nick'      => $form['nick'],
+                    'jid'       => $form['jid']);   
+            $this->setBookmark($item);
+            RPC::call('Dialog.clear');
+        }
+    }
+    
+    private function setBookmark($item = false) 
+    {
+        $arr = array();
+
+        if($item) {
+            array_push($arr, $item);
+        }
+        
+        $sd = new \modl\SubscriptionDAO();
+        $cd = new \modl\ConferenceDAO();
+
+        foreach($sd->getSubscribed() as $s) {
+            array_push($arr,
+                array(
+                    'type'      => 'subscription',
+                    'server'    => $s->server,
+                    'title'     => $s->title,
+                    'subid'     => $s->subid,
+                    'tags'      => unserialize($s->tags),
+                    'node'      => $s->node));   
+        }
+
+        foreach($cd->getAll() as $c) {
+            array_push($arr,
+                array(
+                    'type'      => 'conference',
+                    'name'      => $c->name,
+                    'autojoin'  => $c->autojoin,
+                    'nick'      => $c->nick,
+                    'jid'       => $c->conference)); 
+        }
+
+        
+        $b = new Set;
+        $b->setArr($arr)
+          ->setTo($this->user->getLogin())
           ->request();
     }
 
