@@ -139,7 +139,7 @@ class Login extends WidgetBase
         }
 
         RPC::call('remoteUnregisterReload');
-        RPC::call('movim_desktop_notification', $title, $warning);
+        Notification::append('login', $title, $warning, null, 2);
     }
 
     private function displayWarning($warning, $htmlonly = false)
