@@ -6,7 +6,11 @@ var Chats = {
         {
             if(items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
-                    Chat_ajaxGet(this.dataset.jid);
+                    if(movim_has_class(this, 'room')) {
+                        Chat_ajaxGetRoom(this.dataset.jid);
+                    } else {
+                        Chat_ajaxGet(this.dataset.jid);
+                    }
                     Chats.reset(items);
                     Notification_ajaxClear('chat|' + this.dataset.jid);
                     Notification_ajaxCurrent('chat|' + this.dataset.jid);

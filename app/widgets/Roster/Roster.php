@@ -214,6 +214,7 @@ class Roster extends WidgetBase
      * @returns $result: a json for the contacts and one for the groups
      */
     function prepareRoster(){
+        movim_log(__METHOD__);
         //Contacts
         $contactdao = new \Modl\ContactDAO();
         $contacts = $contactdao->getRoster();
@@ -224,53 +225,61 @@ class Roster extends WidgetBase
         
         $farray = array(); //final array
         if(isset($contacts)) {
-            $groupname = '';
-            $jid = '';
+            /* Init */
+            $c = array_shift($contacts);
+            if($c->groupname == ''){
+                $c->groupname = $this->__('roster.ungrouped');
+            }
+            $jid = $c->jid;
+            $groupname = $c->groupname;
+            $ac = $c->toRoster();
+            $this->prepareContact($ac, $c, $capsarr);
+            
             $garray = array(); //group array
+            $garray['agroup'] = $groupname;
+            $garray['tombstone'] = false;
             $garray['agroupitems'] = array(); //group array of jids
+            
             $jarray = array(); //jid array
-            $jarray['ajiditems'] = array(); //jid array of resources
+            $jarray['ajid'] = $jid;
+            $jarray['atruename'] = $ac['rosterview']['name'];
+            $jarray['aval'] = $ac['value'];
+            $jarray['tombstone'] = false;
+            $jarray['ajiditems'] = $ac; //jid array of resources
+            
+            array_push($garray['agroupitems'], $jarray);
             
             foreach($contacts as &$c) {
-                if($groupname == '' || $c->groupname == ''){
-                    $c->groupname = $this->__('roster.ungrouped');
-                    $groupname = $c->groupname;
-                }
-                
-                $ac = $c->toRoster();
-                $this->prepareContact($ac, $c, $capsarr);
-                
-                $jid = $jid == '' ? $ac['jid'] : $jid;
-                
                 /*jid has changed*/
-                if($jid != $ac['jid']){
-                    //pack up resources in a jid array
-                    $jarray['ajid'] = $jid;
-                    $jarray['atruename'] = $jarray['ajiditems']['rosterview']['name'];
-                    $jarray['aval'] = $jarray['ajiditems']['value'];
-                    $jarray['tombstone'] = false;
-                    array_push($garray['agroupitems'], $jarray);
+                if($jid != $c->jid){
+                    if($c->groupname == ''){
+                        $c->groupname = $this->__('roster.ungrouped');
+                    }
+                    $ac = $c->toRoster();
+                    $this->prepareContact($ac, $c, $capsarr);
                     
-                    /*groupname has changed*/
-                    if($ac['groupname'] != $groupname){
-                        //push this group in final array
-                        $garray['agroup'] = $groupname;
-                        $garray['tombstone'] = false;
+                    if($groupname != $c->groupname && $c->groupname != ""){
+                        //close group
                         array_push($farray, $garray);
-                        
                         //next group
                         $groupname = $ac['groupname'];
                         $garray = array();
+                        $garray['agroup'] = $groupname;
+                        $garray['tombstone'] = false;
                         $garray['agroupitems'] = array();
                     }
-                
-                    //next jid
+                    //push new jid in group
                     $jid = $ac['jid'];
-                    $jarray = array();
-                    $jarray['ajiditems'] = array();
+                    $jarray['ajid'] = $jid;
+                    $jarray['atruename'] = $ac['rosterview']['name'];
+                    $jarray['aval'] = $ac['value'];
+                    $jarray['tombstone'] = false;
+                    $jarray['ajiditems'] = $ac; //jid array of resources
+                    array_push($garray['agroupitems'], $jarray);
                 }
-                if(empty($jarray['ajiditems']))
-                    $jarray['ajiditems'] = $ac;
+                if($c == $contacts[count($contacts)-1]){
+                    array_push($farray, $garray);
+                }
             }
         }
         $result['contacts'] = json_encode($farray);
