@@ -6,24 +6,7 @@
 {/if}
 
 {loop="$chats"}
-    <li
-        data-jid="{$value->jid}"
-        {if="isset($messages[$value->jid])"}class="condensed"{/if}
-        title="{$value->jid}">
-        <span data-key="chat|{$value->jid}" class="counter bottom"></span>
-        <span class="icon bubble">
-            <img src="{$value->getPhoto('s')}">
-        </span>
-        <span>{$value->getTrueName()}</span>
-        {if="isset($messages[$value->jid])"}
-            <span class="info">{$messages[$value->jid]->delivered|strtotime|prepareDate}</span>
-            {if="preg_match('#^\?OTR#', $messages[$value->jid]->body)"}
-                <p><i class="md md-lock"></i> {$c->__('message.encrypted')}</p>
-            {else}
-                <p>{$messages[$value->jid]->body}</p>
-            {/if}
-        {/if}
-    </li>
+    {$c->prepareChat($key)}
 {/loop}
 <li class="subheader">
     {$c->__('chatrooms.title')}

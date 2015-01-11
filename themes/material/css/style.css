@@ -412,8 +412,8 @@ span.icon.status:after {
     display: block;
     width: 2rem;
     height: 2rem;
-    left: 3rem;
-    top: 3rem;
+    left: 3.25rem;
+    top: 3.25rem;
     position: absolute;
 
     border-radius: 2em;

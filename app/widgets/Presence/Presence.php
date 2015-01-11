@@ -160,7 +160,11 @@ class Presence extends WidgetBase
         if($contact == null) {
             $contact = new \Modl\Contact;
         }
-        
+
+        if($presence == null) {
+            $presence = new \Modl\Presence;
+        }
+
         $presencetpl->assign('me', $contact);
         $presencetpl->assign('presence', $presence);
         $presencetpl->assign('dialog',      $this->call('ajaxOpenDialog'));

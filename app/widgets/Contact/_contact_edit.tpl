@@ -21,7 +21,7 @@
             <input 
                 name="group" 
                 list="group" 
-                id="alias" 
+                id="group" 
                 class="tiny" 
                 placeholder="{$c->__('edit.group')}" 
                 value="{$contact->groupname}"/>
