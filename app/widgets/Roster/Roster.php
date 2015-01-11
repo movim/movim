@@ -214,7 +214,6 @@ class Roster extends WidgetBase
      * @returns $result: a json for the contacts and one for the groups
      */
     function prepareRoster(){
-        movim_log(__METHOD__);
         //Contacts
         $contactdao = new \Modl\ContactDAO();
         $contacts = $contactdao->getRoster();
