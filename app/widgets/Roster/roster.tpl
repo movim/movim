@@ -22,7 +22,7 @@
                 ng-repeat="myjid in group.agroupitems"
                 ng-if="!myjid.tombstone"
                 id="{{::myjid.ajid}}"
-                class="{{myjid.ajiditems.rosterview.presencetxt}} {{myjid.ajiditems.rosterview.inactive}}"
+                class="{{myjid.ajiditems.rosterview.inactive}}"
                 ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems)}}"
                 ng-class="{condensed: myjid.ajiditems.status != '' && myjid.ajiditems.status != null }"
                 ng-class="rosterCtrl.getContactClient(myjid.ajiditems)" >
@@ -36,14 +36,14 @@
                     <i ng-if="myjid.ajiditems.rosterview.tune" class="md md-play-arrow"></i>
                 </div>
 
-                <span class="icon bubble">
+                <span class="icon bubble status {{myjid.ajiditems.rosterview.presencetxt}}">
                     <img
                         class="avatar"
                         ng-src="{{::myjid.ajiditems.rosterview.avatar}}"
                         alt="avatar"
                     />
                 </span>
-                <div class="chat on"></div>
+                <!--<div class="chat on"></div>-->
                 {{myjid.ajiditems.rosterview.name}}
                 <p ng-if="myjid.ajiditems.status != ''" class="wrap">
                     <span>{{myjid.ajiditems.status}}</span>

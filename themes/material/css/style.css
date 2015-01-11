@@ -372,10 +372,13 @@ li.oppose span.icon {
 
 span.icon.bubble {
     border-radius: 5rem;
-    overflow: hidden;
     color: white;
     font-size: 0;
     font-size: 2.5rem;
+}
+
+span.icon.bubble img {
+    border-radius: 5rem;
 }
 
 span.icon.bubble i {
@@ -402,6 +405,19 @@ span.icon.small.bubble i {
     font-size: 2rem;
     line-height: 0;
     vertical-align: text-top;
+}
+
+span.icon.status:after {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    left: 3rem;
+    top: 3rem;
+    position: absolute;
+
+    border-radius: 2em;
+    background-color: #DDD;
 }
 
 main > header > a span.icon:hover,
