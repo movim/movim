@@ -27,6 +27,7 @@
         $this->addCss('color.css');
         $this->addCss('block.css');
         $this->addCss('menu.css');
+        $this->addCss('icon.css');
         $this->addCss('material-design-iconic-font.min.css');
         /*$this->addCss('css/animations.css');
 
