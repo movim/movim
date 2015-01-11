@@ -680,6 +680,13 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     background-position: center 1em;
 }
 
+.icon.newspaper { background-image: url(../img/icons/view_list.svg); }
+.icon.media     { background-image: url(../img/placeholder/media.png); }
+.icon.explore   { background-image: url(../img/placeholder/explore.png); }
+.icon.plane     { background-image: url(../img/placeholder/plane.png); }
+.icon.file      { background-image: url(../img/placeholder/file.png); }
+.icon.clipboard { background-image: url(../img/placeholder/clipboard.png); }
+
 /* Definition list */
 
 dl dt,
