@@ -188,7 +188,6 @@ class Chat extends WidgetCommon
         }
         
         $view->assign('contact', $contact);
-        $view->assign('presences', getPresences());
         $view->assign('jid', $jid);
 
         return $view->draw('_chat_header', true);

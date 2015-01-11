@@ -8,7 +8,7 @@
     </li>
 </ul>
 {if="$contact != null"}
-    <h2>{$contact->getTrueName()} {if="$contact->value != null && $contact->value < 6"}- {$value = $contact->value} {$presences.$value}{/if}</h2>
+    <h2>{$contact->getTrueName()}</h2>
 {else}
     <h2>{$jid}</h2>
 {/if}
