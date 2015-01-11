@@ -118,6 +118,9 @@
                 $scope.pushInPlace(el, $scope.lookupgroups[list.groupname].agroupitems, jidAvalCompare);
             }
             $scope.$apply();
+            
+            //a new li is created, a new listener has to be created...
+            document.getElementById(list.jid).onclick = function(e){Roster.clickOnContact(e);};
         };
 
         this.showHideGroup = function(g){
@@ -293,16 +296,11 @@ var Roster = {
     },
     refresh: function() {
         var items = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
-
         var i = 0;
-        while(i < items.length -1)
+        
+        while(i < items.length)
         {
-            items[i].onclick = function(e) {
-                Contact_ajaxGetContact(this.id);
-                Roster.reset(items);
-                movim_add_class(this, 'active');
-                document.querySelector('#roster').className = '';
-            }
+            items[i].onclick = function(e){Roster.clickOnContact(e);};
             i++;
         }
     },
@@ -315,7 +313,16 @@ var Roster = {
 
     setFound : function(jid) {
         document.querySelector('input[name=searchjid]').value = jid;
-    }
+    },
+    
+    clickOnContact : function(e) {
+        Contact_ajaxGetContact(e.target.id);
+        /*recalculated at each click*/
+        var it = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
+        Roster.reset(it);
+        movim_add_class(e.target, 'active');
+        //document.querySelector('#roster').className = '';
+    },
 }
 
 MovimWebsocket.attach(function() {
