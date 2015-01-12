@@ -108,10 +108,10 @@ class Get extends Action
                 array_push($arr, $tmp);
             }*/
             
-            $evt = new \Event();
-            $evt->runEvent('bookmark', false);
+            //$evt = new \Event();
+            //$evt->runEvent('bookmark', false);
+            $this->deliver();
         }
-        
     }
 
     public function error($stanza) {

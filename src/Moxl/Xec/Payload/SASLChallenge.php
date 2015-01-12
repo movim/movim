@@ -39,6 +39,7 @@ class SASLChallenge extends Payload
         switch($sess->get('mecchoice')) {
             case 'SCRAMSHA1' :
                 $fa = $sess->get('saslfa');
+                $sess->remove('saslfa');
                 $challenge = base64_decode((string)$stanza);
 
                 \Moxl\Utils::log("/// SECOND MESSAGE - PROOF");
