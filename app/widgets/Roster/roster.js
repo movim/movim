@@ -17,7 +17,6 @@
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
-            console.log(list);
             /* Sort groups alphabetically */
             list.sort(groupnameCompare);
             
@@ -74,15 +73,17 @@
         };
 
         $scope.updateContact = function(list){
-            console.log(list);
             if($scope.contacts === null) $scope.contacts = [];
             /* Group change */
             if((list.jid in $scope.lookupjid) 
                 && !($scope.lookupjid[list.jid].ajiditems.groupname == list.groupname)){
                 /* Kill jid from old location or whole group if it's the only jid */
                 oldgroupname = $scope.lookupjid[list.jid].ajiditems.groupname;
-                if($scope.lookupgroups[oldgroupname].agroupitems.length == 1)
+                if($scope.lookupgroups[oldgroupname].agroupitems.length == 1){
                     $scope.lookupgroups[oldgroupname].tombstone = true;
+                    /*Remove group from localStorage*/
+                    delete $scope.lsGroupState['rosterGroup_'+oldgroupname];
+                }
                 else{
                     $scope.lookupjid[list.jid].tombstone = true;
                 }
@@ -191,8 +192,7 @@ window.onunload = window.onbeforeunload = function(e){
     }
     */
     
-    // Move this to disconnection moment ?? 
-    // Keep group states in jid_Roster.groupStates 
+    // Update real localstorage
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
     //angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
