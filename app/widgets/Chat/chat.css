@@ -12,6 +12,21 @@
     max-width: 100rem;
 }
 
+#chat_widget .chat_box form {
+    width: calc(100% - 5rem);
+}
+
+#chat_widget .chat_box .control {
+    font-size: 4rem;
+    color: gray;
+    margin-top: 3rem;
+}
+
+#chat_widget .chat_box .control:hover {
+    cursor: pointer;
+    color: #333;
+}
+
 #chat_widget section {
     margin-bottom: 1rem;
 }
