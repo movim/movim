@@ -108,10 +108,13 @@ class Contact extends WidgetCommon
         if($jid == null) {
             $cd = new \modl\ContactDAO();
             $users = $cd->getAllPublic();
-
-            $view = $this->tpl();
-            $view->assign('users', array_reverse($users));
-            return $view->draw('_contact_explore', true);
+            if($users != null){
+                $view = $this->tpl();
+                $view->assign('users', array_reverse($users));
+                return $view->draw('_contact_explore', true);
+            } else { 
+                return '';
+            }
         } else {
             $view = $this->tpl();
             $view->assign('jid', $jid);

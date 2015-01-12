@@ -372,10 +372,13 @@ li.oppose span.icon {
 
 span.icon.bubble {
     border-radius: 5rem;
-    overflow: hidden;
     color: white;
     font-size: 0;
     font-size: 2.5rem;
+}
+
+span.icon.bubble img {
+    border-radius: 5rem;
 }
 
 span.icon.bubble i {
@@ -402,6 +405,19 @@ span.icon.small.bubble i {
     font-size: 2rem;
     line-height: 0;
     vertical-align: text-top;
+}
+
+span.icon.status:after {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    left: 3.25rem;
+    top: 3.25rem;
+    position: absolute;
+
+    border-radius: 2em;
+    background-color: #DDD;
 }
 
 main > header > a span.icon:hover,
@@ -639,7 +655,6 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
     .toast {
         max-width: 90%;
-        margin-left: -45%;
     }
 }
 
@@ -665,12 +680,12 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     background-position: center 1em;
 }
 
-.placeholder.icon.newspaper { background-image: url(../img/placeholder/newspaper.png); }
-.placeholder.icon.media     { background-image: url(../img/placeholder/media.png); }
-.placeholder.icon.explore   { background-image: url(../img/placeholder/explore.png); }
-.placeholder.icon.plane     { background-image: url(../img/placeholder/plane.png); }
-.placeholder.icon.file      { background-image: url(../img/placeholder/file.png); }
-.placeholder.icon.clipboard { background-image: url(../img/placeholder/clipboard.png); }
+.icon.newspaper { background-image: url(../img/icons/view_list.svg); }
+.icon.media     { background-image: url(../img/placeholder/media.png); }
+.icon.explore   { background-image: url(../img/placeholder/explore.png); }
+.icon.plane     { background-image: url(../img/placeholder/plane.png); }
+.icon.file      { background-image: url(../img/placeholder/file.png); }
+.icon.clipboard { background-image: url(../img/placeholder/clipboard.png); }
 
 /* Definition list */
 
