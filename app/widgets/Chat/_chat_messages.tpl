@@ -1,9 +1,10 @@
 <ul class="middle">
     {loop="$messages"}
-        <li {if="$value->jidfrom == $jid"}class="oppose"{/if}>
-            <span class="icon bubble {if="$contact == null"}color {$value->resource|stringToColor}{/if}">
+        {if="$value->body != ''"}
+        <li {if="$value->jidfrom != $jid"}class="oppose"{/if}>
+            <span class="icon bubble color {$value->resource|stringToColor}">
                 {if="$value->jidfrom == $jid"}
-                    {if="$contact != null"}
+                    {if="$contact->updated != null"}
                         <img src="{$contact->getPhoto('s')}">
                     {else}
                         {$value->resource|firstLetterCapitalize}
@@ -21,6 +22,7 @@
                 <span class="info">{$value->delivered|strtotime|prepareDate}</span>
             </div>
         </li>
+        {/if}
     {/loop}
     {if="$status != false"}
         <li {if="$myself == false"}class="oppose"{/if}>
