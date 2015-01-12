@@ -6,8 +6,9 @@ var Chat = {
     addSmiley: function(smiley) {
 
     },
-    sendMessage: function(n, jid)
+    sendMessage: function(jid)
     {
+        var n = document.querySelector('#chat_textarea');
         var text = n.value;
         n.value = "";
         n.focus();

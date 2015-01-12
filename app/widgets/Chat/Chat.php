@@ -244,7 +244,7 @@ class Chat extends WidgetCommon
             $this->call(
                 'ajaxSendMessage',
                 "'" . $jid . "'",
-                "Chat.sendMessage(this, '" . $jid . "')")
+                "Chat.sendMessage('" . $jid . "')")
             );
         $view->assign('smiley', $this->call('ajaxSmiley'));
 
