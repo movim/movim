@@ -99,6 +99,22 @@ class Chat extends WidgetCommon
     }
 
     /**
+     * @brief Get a chatroom
+     * @parem string $jid
+     */
+    function ajaxGetRoom($room)
+    {
+        $html = $this->prepareChat($room);
+        
+        $header = $this->prepareHeaderRoom($room);
+        
+        Header::fill($header);
+        RPC::call('movim_fill', 'chat_widget', $html);
+        RPC::call('MovimTpl.scrollPanel');
+        RPC::call('MovimTpl.showPanel');
+    }
+
+    /**
      * @brief Send a message
      *
      * @param string $to
@@ -154,7 +170,7 @@ class Chat extends WidgetCommon
     }
 
     /**
-     * Send a "composing" message
+     * @brief Send a "composing" message
      * 
      * @param string $to
      * @return void
@@ -163,8 +179,9 @@ class Chat extends WidgetCommon
         $mc = new Composing;
         $mc->setTo($to)->request();
     }
+    
     /**
-     * Send a "paused" message
+     * @brief Send a "paused" message
      * 
      * @param string $to
      * @return void
@@ -174,6 +191,11 @@ class Chat extends WidgetCommon
         $mp->setTo($to)->request();
     }
 
+    /**
+     * @brief Prepare the contact header
+     * 
+     * @param string $jid
+     */
     function prepareHeader($jid)
     {
         $view = $this->tpl();
@@ -188,10 +210,23 @@ class Chat extends WidgetCommon
         }
         
         $view->assign('contact', $contact);
-        $view->assign('presences', getPresences());
         $view->assign('jid', $jid);
 
         return $view->draw('_chat_header', true);
+    }
+
+    /**
+     * @brief Prepare the contact header
+     * 
+     * @param string $jid
+     */
+    function prepareHeaderRoom($room)
+    {
+        $view = $this->tpl();
+        
+        $view->assign('room', $room);
+
+        return $view->draw('_chat_header_room', true);
     }
 
     function prepareChat($jid)

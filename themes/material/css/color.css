@@ -40,16 +40,17 @@
 /* Elements */
 
 .bubble.color       , .icon.color          { color: white; background-color: #607D8B; border-color: #607D8B }
-#roster ul#rosterlist li.dnd .chat,
+span.icon.status.dnd:after,
 .bubble.color.red   , .icon.color.red      { color: white; background-color: #F44336; border-color: #F44336 }
-#roster ul#rosterlist li.xa .chat,
+span.icon.status.xa:after,
 .bubble.color.purple, .icon.color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
 .bubble.color.indigo, .icon.color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
 .bubble.color.blue  , .icon.color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
-#roster ul#rosterlist li.online .chat,
+span.icon.status.chat:after,
+span.icon.status.online:after,
 .bubble.color.green , .icon.color.green    { color: white; background-color: #689F38; border-color: #689F38 }
 .bubble.color.orange, .icon.color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
-#roster ul#rosterlist li.away .chat,
+span.icon.status.away:after,
 .bubble.color.yellow, .icon.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
 .bubble.color.brown , .icon.color.brown    { color: white; background-color: #795548; border-color: #795548 }
 .bubble.color.gray  , .icon.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
