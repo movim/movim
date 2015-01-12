@@ -72,6 +72,10 @@ class Roster extends WidgetBase
             
             if($c->groupname == '')
                 $c->groupname = $this->__('roster.ungrouped');
+            else{
+                $c->groupname = htmlspecialchars_decode($c->groupname);
+            }
+            $c->rostername = htmlspecialchars_decode($c->rostername);
             
             $ac = $c->toRoster();
             $this->prepareContact($ac, $c, $this->getCaps());

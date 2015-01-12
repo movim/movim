@@ -17,6 +17,7 @@
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
+            console.log(list);
             /* Sort groups alphabetically */
             list.sort(groupnameCompare);
             
@@ -73,6 +74,7 @@
         };
 
         $scope.updateContact = function(list){
+            console.log(list);
             if($scope.contacts === null) $scope.contacts = [];
             /* Group change */
             if((list.jid in $scope.lookupjid) 

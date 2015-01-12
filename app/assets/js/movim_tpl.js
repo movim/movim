@@ -41,6 +41,17 @@ function movim_delete(id)
     if(target)
         target.parentNode.removeChild(target);
 }
+// movim_replace(id)
+function movim_replace(id, html)
+{
+    target = document.getElementById(id);
+    if(target) {
+        var div = document.createElement('div');
+        div.innerHTML = html;
+        var element = div.firstChild;
+        replacedNode = target.parentNode.replaceChild(element, target);
+    }
+}
 
 var MovimTpl = {
     init : function() {
