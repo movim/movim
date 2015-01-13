@@ -61,6 +61,7 @@ class Chats extends WidgetCommon
             Cache::c('chats', $chats);
 
             RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
+            RPC::call('Chat.refresh');
             RPC::call('Chats.refresh');
         }
     }
@@ -71,11 +72,10 @@ class Chats extends WidgetCommon
         unset($chats[$jid]);
         Cache::c('chats', $chats);
 
-        //$c = new Chat;
-        //$c->ajaxGet(current(array_keys($chats)));
         RPC::call('movim_delete', $jid);
 
         RPC::call('Chats.refresh');
+        RPC::call('Chat.empty');
         RPC::call('MovimTpl.hidePanel');
     }
 

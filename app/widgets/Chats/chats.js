@@ -30,7 +30,7 @@ var Chats = {
             i++;
         }
         
-        Chat_ajaxGet();
+        //Chat_ajaxGet();
 
         /*if(window.innerWidth > 1024 && !MovimTpl.isPanel()) {
             Notification.notifs_key = 'chat|' + items[0].dataset.jid;
