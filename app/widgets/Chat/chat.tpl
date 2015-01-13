@@ -1,2 +1,1 @@
-<div id="chat_widget">
-</div>
+<div id="chat_widget">{$c->prepareEmpty()}</div>
