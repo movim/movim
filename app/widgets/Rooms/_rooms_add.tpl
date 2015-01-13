@@ -1,6 +1,6 @@
 <section>
     <form name="bookmarkmucadd">
-        <h3>{$c->__('chats.add_room')}</h3>
+        <h3>{$c->__('rooms.add')}</h3>
 
         <div>
             <label>{$c->__('chatrooms.id')}</label>
@@ -30,7 +30,7 @@
         </a>
         <a
             class="button flat"
-            onclick="Chats_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
+            onclick="Rooms_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
             {$c->__('button.add')}
         </a>
     </div>

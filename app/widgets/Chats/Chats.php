@@ -11,7 +11,7 @@ class Chats extends WidgetCommon
         $this->addjs('chats.js');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('bookmark_set_handle', 'onBookmark');
+        //$this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('presence', 'onPresence', 'chat');
     }
 
@@ -19,20 +19,22 @@ class Chats extends WidgetCommon
     {
         $message = $packet->content;
 
-        // If the message is from me
-        if($message->session == $message->jidto) {
-            $from = $message->jidfrom;
-        } else {
-            $from = $message->jidto;
-        }
+        if($message->type != 'groupchat') {
+            // If the message is from me
+            if($message->session == $message->jidto) {
+                $from = $message->jidfrom;
+            } else {
+                $from = $message->jidto;
+            }
 
-        $chats = Cache::c('chats');
-        if(!array_key_exists($from, $chats)) {
-            $this->ajaxOpen($from);
-        } else {
-            // TODO notification overwrite issue
-            //RPC::call('movim_replace', $from, $this->prepareChat($from));
-            RPC::call('Chats.refresh');
+            $chats = Cache::c('chats');
+            if(!array_key_exists($from, $chats)) {
+                $this->ajaxOpen($from);
+            } else {
+                // TODO notification overwrite issue
+                //RPC::call('movim_replace', $from, $this->prepareChat($from));
+                RPC::call('Chats.refresh');
+            }
         }
     }
 
@@ -47,14 +49,6 @@ class Chats extends WidgetCommon
                 RPC::call('Chats.refresh');
             }
         }
-    }
-
-    function onBookmark()
-    {
-        RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
-        Notification::append(null, $this->__('bookmarks.updated'));
-        RPC::call('Chats.refresh');
-        RPC::call('MovimTpl.hidePanel');
     }
 
     function ajaxOpen($jid)
@@ -99,122 +93,11 @@ class Chats extends WidgetCommon
         Dialog::fill($view->draw('_chats_add', true), true);
     }
 
-    /**
-     * @brief Display the add room form
-     */
-    function ajaxAddRoom()
-    {
-        $view = $this->tpl();
-
-        $cd = new \Modl\ContactDAO;
-        $view->assign('me', $cd->get());
-
-        Dialog::fill($view->draw('_chats_add_room', true));
-    }
-
-    /**
-     * @brief Display the remove room confirmation
-     */
-    function ajaxRemoveRoomConfirmation($room)
-    {
-        $view = $this->tpl();
-
-        $view->assign('room', $room);
-
-        Dialog::fill($view->draw('_chats_remove_room', true));
-    }
-
-    /**
-     * @brief Remove a room
-     */
-    function ajaxRemoveRoom($room)
-    {
-        $cd = new \modl\ConferenceDAO();
-        $cd->deleteNode($room);
-        
-        $this->setBookmark();
-    }
-
-    /**
-     * @brief Join a chatroom
-     */
-    function ajaxChatroomJoin($jid, $nickname)
-    {
-        $p = new Muc;
-        $p->setTo($jid)
-          ->setNickname($nickname)
-          ->request();
-    }
-
-    /**
-     * @brief Display the add room form
-     */
-    function ajaxChatroomAdd($form) 
-    {
-        if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
-            Notification::append(null, $this->__('chatrooms.bad_id'));
-        } elseif(trim($form['name']) == '') {
-            Notification::append(null, $this->__('chatrooms.empty_name'));
-        } else {
-            $item = array(
-                    'type'      => 'conference',
-                    'name'      => $form['name'],
-                    'autojoin'  => $form['autojoin'],
-                    'nick'      => $form['nick'],
-                    'jid'       => $form['jid']);   
-            $this->setBookmark($item);
-            RPC::call('Dialog.clear');
-        }
-    }
-    
-    private function setBookmark($item = false) 
-    {
-        $arr = array();
-
-        if($item) {
-            array_push($arr, $item);
-        }
-        
-        $sd = new \modl\SubscriptionDAO();
-        $cd = new \modl\ConferenceDAO();
-
-        foreach($sd->getSubscribed() as $s) {
-            array_push($arr,
-                array(
-                    'type'      => 'subscription',
-                    'server'    => $s->server,
-                    'title'     => $s->title,
-                    'subid'     => $s->subid,
-                    'tags'      => unserialize($s->tags),
-                    'node'      => $s->node));   
-        }
-
-        foreach($cd->getAll() as $c) {
-            array_push($arr,
-                array(
-                    'type'      => 'conference',
-                    'name'      => $c->name,
-                    'autojoin'  => $c->autojoin,
-                    'nick'      => $c->nick,
-                    'jid'       => $c->conference)); 
-        }
-
-        
-        $b = new Set;
-        $b->setArr($arr)
-          ->setTo($this->user->getLogin())
-          ->request();
-    }
-
     function prepareChats()
     {
         $chats = Cache::c('chats');
 
         $view = $this->tpl();
-
-        $cod = new \modl\ConferenceDAO();
-
-        $view->assign('conferences', $cod->getAll());
         $view->assign('chats', array_reverse($chats));
         
         return $view->draw('_chats', true);
@@ -245,11 +128,6 @@ class Chats extends WidgetCommon
         }
 
         return $view->draw('_chats_item', true);
-    }
-
-    function prepareChatrooms()
-    {
-        return $view->draw('_chatrooms', true);
     }
 
     function display()
