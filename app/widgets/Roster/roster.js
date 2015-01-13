@@ -8,8 +8,7 @@
         $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
         $scope.lsGroupState = "groupState" in $scope.lsRoster ? $scope.lsRoster.groupState : {};
         
-        //this.cache = localStorage.getObject($scope.lsJid + '_cache');
-        $scope.contacts = /*this.cache && ("Roster" in this.cache) && ("contactsList" in this.cache.Roster) ? localStorage.getObject($scope.lsJid + '_cache').Roster.contactsList : */[];
+        $scope.contacts = [];
         $scope.groups = [];
         
         /* Dictionaries */
@@ -81,7 +80,7 @@
                 oldgroupname = $scope.lookupjid[list.jid].ajiditems.groupname;
                 if($scope.lookupgroups[oldgroupname].agroupitems.length == 1){
                     $scope.lookupgroups[oldgroupname].tombstone = true;
-                    /*Remove group from localStorage*/
+                    /* Remove group from localStorage */
                     delete $scope.lsGroupState['rosterGroup_'+oldgroupname];
                 }
                 else{
