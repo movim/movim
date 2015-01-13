@@ -261,7 +261,7 @@ var Roster = {
             }
 
             // We clear the old search
-            var selector_clear = '#rosterlist div > li:not(.subheader)';
+            var selector_clear = '#rosterlist div > li.found';
             var li = document.querySelectorAll(selector_clear);
 
             for(i = 0; i < li.length; i++) {
@@ -270,10 +270,17 @@ var Roster = {
 
             // We select the interesting li
             var selector = '#rosterlist div > li[title*="' + search.value.toLowerCase() + '"]:not(.subheader)';
-            var li = document.querySelectorAll(selector);
-
-            for(i = 0; i < li.length; i++) {
-                movim_add_class(li.item(i), 'found');
+            li = document.querySelectorAll(selector);
+            if(li != null && li.item(0) != null ){
+                var g = li.item(0).parentNode.querySelector('.subheader');
+                movim_add_class(g, 'found');
+                for(i = 0; i < li.length; i++) {
+                    if(li.item(i).parentNode.firstChild != g){
+                        g = li.item(i).parentNode.querySelector('.subheader');
+                        movim_add_class(g, 'found');
+                    }
+                    movim_add_class(li.item(i), 'found');
+                }
             }
         };
     },
