@@ -58,16 +58,6 @@ class Roster extends WidgetBase
     {
         $contacts = $packet->content;
         if($contacts != null){
-            /*
-            if(is_array($contacts) && $contacts[0]->value < 5) {
-                $presences = getPresences();
-                Notification::append(
-                    'presence',
-                    $contacts[0]->getTrueName(),
-                    $presences[$contacts[0]->value],
-                    $contacts[0]->getPhoto('s'), 2);
-            }
-            */
             $c = $contacts[0];
             
             if($c->groupname == '')
@@ -189,7 +179,20 @@ class Roster extends WidgetBase
           ->request();
     }
 
-    private function getCaps() {
+    /**
+     *  @brief Search for a contact to add
+     */
+    function ajaxSearchContact($jid) 
+    {
+        if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
+            RPC::call('movim_redirect', Route::urlize('friend', $jid));
+            RPC::commit();
+        } else 
+            Notification::append(null, $this->__('roster.jid_error'));
+    }
+
+    private function getCaps() 
+    {
         $capsdao = new \Modl\CapsDAO();
         $caps = $capsdao->getAll();
 
@@ -200,18 +203,7 @@ class Roster extends WidgetBase
 
         return $capsarr;
     }
-
-    /**
-     *  @brief Search for a contact to add
-     */
-    function ajaxSearchContact($jid) {
-        if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
-            RPC::call('movim_redirect', Route::urlize('friend', $jid));
-            RPC::commit();
-        } else 
-            Notification::append(null, $this->__('roster.jid_error'));
-    }
-
+    
     /**
      * @brief Get data from database to pass it on to angular in JSON
      * @param
