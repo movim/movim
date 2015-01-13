@@ -44,8 +44,8 @@
 
             <ul class="thin simple">
                 <li class="new_account">
-                    <span>{$c->__('form.no_account')}
-                        <a class="" href="{$c->route('account')}">
+                    <span>{$c->__('form.no_account')}<br />
+                        <a class="button flat" href="{$c->route('account')}">
                             {$c->__('form.create_one')}
                         </a>
                     </span>
