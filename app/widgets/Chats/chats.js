@@ -7,6 +7,7 @@ var Chats = {
             if(items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
                     if(movim_has_class(this, 'room')) {
+                        Chats_ajaxChatroomJoin(this.dataset.jid, this.dataset.nick);
                         Chat_ajaxGetRoom(this.dataset.jid);
                     } else {
                         Chat_ajaxGet(this.dataset.jid);

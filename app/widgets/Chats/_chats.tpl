@@ -12,7 +12,7 @@
     {$c->__('chatrooms.title')}
 </li>
 {loop="$conferences"}
-    <li data-jid="{$value->conference}" class="room">
+    <li data-jid="{$value->conference}" data-nick="{$value->nick}" class="room">
         <span class="icon bubble color {$value->name|stringToColor}">{$value->name|firstLetterCapitalize}</span>
         <span>{$value->name}</span>
     </li>
