@@ -70,11 +70,11 @@
 
 /* Search */
 #roster ul li.subheader.search,
-#roster.search ul#rosterlist.offlineshown div.groupshown > li {
+#roster.search ul#rosterlist div.groupshown > li {
     display: none;
 }
 
 #roster.search ul li.subheader.search,
-#roster.search ul#rosterlist.offlineshown div.groupshown > li.found {
+#roster.search ul#rosterlist div > li.found {
     display: list-item;
 }
