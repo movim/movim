@@ -8,8 +8,7 @@
         $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
         $scope.lsGroupState = "groupState" in $scope.lsRoster ? $scope.lsRoster.groupState : {};
         
-        //this.cache = localStorage.getObject($scope.lsJid + '_cache');
-        $scope.contacts = /*this.cache && ("Roster" in this.cache) && ("contactsList" in this.cache.Roster) ? localStorage.getObject($scope.lsJid + '_cache').Roster.contactsList : */[];
+        $scope.contacts = [];
         $scope.groups = [];
         
         /* Dictionaries */
@@ -81,7 +80,7 @@
                 oldgroupname = $scope.lookupjid[list.jid].ajiditems.groupname;
                 if($scope.lookupgroups[oldgroupname].agroupitems.length == 1){
                     $scope.lookupgroups[oldgroupname].tombstone = true;
-                    /*Remove group from localStorage*/
+                    /* Remove group from localStorage */
                     delete $scope.lsGroupState['rosterGroup_'+oldgroupname];
                 }
                 else{
@@ -138,11 +137,6 @@
             $scope.lsGroupState["rosterGroup_" + g] = ls;
             $scope.groups[g] = ls;
         };
-        
-        /*this.postJingleAction = function(c){
-            Popup.close(); 
-            Popup.open(c.jid + "/" + c.resource);
-        };*/
 
         this.groupIsShown = function(grp){
             if(typeof $scope.groups[grp] != "undefined"){
@@ -152,7 +146,7 @@
         };
 
         this.getContactTitle = function(c){
-            title = c.rosterview.name.toLowerCase() + " - " + c.jid;
+            title = accentsTidy(c.rosterview.name) + " - " + c.jid;
             if(c.status) title += " - " + c.status;
             return title;
         };
@@ -182,19 +176,8 @@
 window.onunload = window.onbeforeunload = function(e){
     var lsjid = angular.element(roster).scope().lsJid;
     
-    // Cache Roster list in jid_cache.Roster 
-    /*if(localStorage.getObject(lsjid + "_cache") === null)
-        localStorage.setObject(lsjid + "_cache", {"Roster": {"contactsList": angular.element(roster).scope().contacts}});
-    else{
-        var nv = localStorage.getObject(lsjid + "_cache");
-        nv.Roster = {"contactsList": angular.element(roster).scope().contacts};
-        localStorage.setObject(lsjid + "_cache", nv);
-    }
-    */
-    
     // Update real localstorage
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
-    //angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
 };
 
@@ -273,14 +256,12 @@ var Roster = {
         search.oninput = function(event) {
             if(search.value.length > 0) {
                 movim_add_class(roster, 'search');
-                movim_add_class(rosterlist, 'offlineshown');
             } else {
                 movim_remove_class(roster, 'search');
-                movim_remove_class(rosterlist, 'offlineshown');
             }
 
             // We clear the old search
-            var selector_clear = '#rosterlist div > li:not(.subheader)';
+            var selector_clear = '#rosterlist div > li.found';
             var li = document.querySelectorAll(selector_clear);
 
             for(i = 0; i < li.length; i++) {
@@ -289,10 +270,17 @@ var Roster = {
 
             // We select the interesting li
             var selector = '#rosterlist div > li[title*="' + search.value.toLowerCase() + '"]:not(.subheader)';
-            var li = document.querySelectorAll(selector);
-
-            for(i = 0; i < li.length; i++) {
-                movim_add_class(li.item(i), 'found');
+            li = document.querySelectorAll(selector);
+            if(li != null && li.item(0) != null ){
+                var g = li.item(0).parentNode.querySelector('.subheader');
+                movim_add_class(g, 'found');
+                for(i = 0; i < li.length; i++) {
+                    if(li.item(i).parentNode.firstChild != g){
+                        g = li.item(i).parentNode.querySelector('.subheader');
+                        movim_add_class(g, 'found');
+                    }
+                    movim_add_class(li.item(i), 'found');
+                }
             }
         };
     },
@@ -323,7 +311,6 @@ var Roster = {
         var it = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
         Roster.reset(it);
         movim_add_class(e.target, 'active');
-        //document.querySelector('#roster').className = '';
     },
 }
 
