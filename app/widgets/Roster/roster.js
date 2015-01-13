@@ -138,11 +138,6 @@
             $scope.lsGroupState["rosterGroup_" + g] = ls;
             $scope.groups[g] = ls;
         };
-        
-        /*this.postJingleAction = function(c){
-            Popup.close(); 
-            Popup.open(c.jid + "/" + c.resource);
-        };*/
 
         this.groupIsShown = function(grp){
             if(typeof $scope.groups[grp] != "undefined"){
@@ -152,7 +147,7 @@
         };
 
         this.getContactTitle = function(c){
-            title = c.rosterview.name.toLowerCase() + " - " + c.jid;
+            title = accentsTidy(c.rosterview.name) + " - " + c.jid;
             if(c.status) title += " - " + c.status;
             return title;
         };
