@@ -67,6 +67,19 @@ class Rooms extends WidgetCommon
     }
 
     /**
+     * @brief Display the remove room confirmation
+     */
+    function ajaxList($room)
+    {
+        $view = $this->tpl();
+
+        $cd = new \Modl\PresenceDAO;
+        $view->assign('list', $cd->getJid($room));
+
+        Dialog::fill($view->draw('_rooms_list', true), true);
+    }
+
+    /**
      * @brief Remove a room
      */
     function ajaxRemove($room)
