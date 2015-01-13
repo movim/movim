@@ -9,6 +9,9 @@
             <span class="icon gray">
                 <i class="md md-create"></i>
             </span>
+            <div class="control" onclick="{$send}">
+                <i class="md md-send"></i>
+            </div>
             <!--<div class="control" onclick="{$smiley}">
                 <i class="md md-mood"></i>
             </div>-->
@@ -16,7 +19,7 @@
                 <div>
                      <textarea 
                         rows="1"
-                        id="textarea{$contact->jid}"
+                        id="chat_textarea"
                         onkeypress="
                             if(event.keyCode == 13) {
                                 state = 0;
