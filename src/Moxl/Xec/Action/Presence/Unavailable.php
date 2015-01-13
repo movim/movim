@@ -77,8 +77,7 @@ class Unavailable extends Action
 
         $md = new \modl\PresenceDAO();
         $md->clearMuc($this->_to);
-        
-        $evt = new \Event();
-        $evt->runEvent('muc_presence', false);
+
+        $this->deliver();
     }
 }
