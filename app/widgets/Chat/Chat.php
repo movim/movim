@@ -3,6 +3,7 @@
 use Moxl\Xec\Action\Message\Composing;
 use Moxl\Xec\Action\Message\Paused;
 use Moxl\Xec\Action\Message\Publish;
+use Moxl\Xec\Action\Presence\Unavailable;
 
 class Chat extends WidgetCommon
 {
@@ -104,7 +105,7 @@ class Chat extends WidgetCommon
      */
     function ajaxGetRoom($room)
     {
-        $html = $this->prepareChat($room);
+        $html = $this->prepareChat($room, true);
         
         $header = $this->prepareHeaderRoom($room);
         
@@ -162,9 +163,9 @@ class Chat extends WidgetCommon
         $m->setTo($to);
         $m->setContent(htmlspecialchars(rawurldecode($message)));
 
-        /*if($muc) {
+        if($muc) {
             $m->setMuc();
-        }*/
+        }
 
         $m->request();
     }
@@ -228,8 +229,22 @@ class Chat extends WidgetCommon
 
         return $view->draw('_chat_header_room', true);
     }
+    /**
+     * @brief Exit a room
+     *
+     * @param string $room
+     */
+    function ajaxExitRoom($room)
+    {
+        $session = \Sessionx::start();
 
-    function prepareChat($jid)
+        $pu = new Unavailable;
+        $pu->setTo($room)
+           ->setResource($session->username)
+           ->request();
+    }
+
+    function prepareChat($jid, $muc = false)
     {
         $view = $this->tpl();
         
@@ -244,9 +259,21 @@ class Chat extends WidgetCommon
             $this->call(
                 'ajaxSendMessage',
                 "'" . $jid . "'",
-                "Chat.sendMessage(this, '" . $jid . "')")
+                "Chat.sendMessage('" . $jid . "')")
             );
         $view->assign('smiley', $this->call('ajaxSmiley'));
+
+        if($muc)
+        {
+            $view->assign(
+                'send',
+                $this->call(
+                    'ajaxSendMessage',
+                    "'" . $jid . "'",
+                    "Chat.sendMessage('" . $jid . "')",
+                    "true")
+                );
+        }
 
         return $view->draw('_chat', true);
     }
@@ -260,10 +287,10 @@ class Chat extends WidgetCommon
         $view = $this->tpl();
 
         $contact = $cd->get($jid);
-        if($contact == null) {
+        /*if($contact == null) {
             $contact = new \Modl\Contact;
             $contact->jid = $jid;
-        }      
+        } */
         
         $me = $cd->get();
         if($me == null) {

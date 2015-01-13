@@ -182,19 +182,8 @@
 window.onunload = window.onbeforeunload = function(e){
     var lsjid = angular.element(roster).scope().lsJid;
     
-    // Cache Roster list in jid_cache.Roster 
-    /*if(localStorage.getObject(lsjid + "_cache") === null)
-        localStorage.setObject(lsjid + "_cache", {"Roster": {"contactsList": angular.element(roster).scope().contacts}});
-    else{
-        var nv = localStorage.getObject(lsjid + "_cache");
-        nv.Roster = {"contactsList": angular.element(roster).scope().contacts};
-        localStorage.setObject(lsjid + "_cache", nv);
-    }
-    */
-    
     // Update real localstorage
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
-    //angular.element(roster).scope().lsRoster.offlineShown = angular.element(rostermenu).scope().lsOfflineShown;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
 };
 
@@ -273,10 +262,8 @@ var Roster = {
         search.oninput = function(event) {
             if(search.value.length > 0) {
                 movim_add_class(roster, 'search');
-                movim_add_class(rosterlist, 'offlineshown');
             } else {
                 movim_remove_class(roster, 'search');
-                movim_remove_class(rosterlist, 'offlineshown');
             }
 
             // We clear the old search
@@ -323,7 +310,6 @@ var Roster = {
         var it = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
         Roster.reset(it);
         movim_add_class(e.target, 'active');
-        //document.querySelector('#roster').className = '';
     },
 }
 
