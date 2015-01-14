@@ -66,11 +66,6 @@ class Unavailable extends Action
 
     // Fixme ? For the moment this method is used only for the MUC requests
     public function handle($stanza, $parent = false) {
-        $cd = new \modl\ConferenceDAO();
-        $conf = $cd->get($this->_to);
-        $conf->status = 0;
-        $cd->set($conf);
-
         // We clear all the old messages
         $md = new \modl\MessageDAO();
         $md->deleteContact($this->_to);

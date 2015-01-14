@@ -39,7 +39,7 @@ class Muc extends Action
         // We clear all the old messages
         $md = new \modl\MessageDAO();
         $md->deleteContact($this->_to);
-        
+
         Presence::muc($this->_to, $this->_nickname);
     }
 
@@ -61,11 +61,6 @@ class Muc extends Action
         
         $pd = new \modl\PresenceDAO();
         $pd->set($p);
-
-        $cd = new \modl\ConferenceDAO();
-        $conf = $cd->get($this->_to);
-        $conf->status = 1;
-        $cd->set($conf);
 
         $this->deliver();
     }
