@@ -1,10 +1,10 @@
 <section class="scroll">
     <h3>{$c->__('chatrooms.users')}</h3>
     <br />
-    <ul class="active">
+    <ul>
         {$presence = getPresencesTxt()}
         {loop="$list"}
-            <li onclick="Chats_ajaxOpen('{$value->jid}/{$value->resource}'); Dialog.clear();">
+            <li>
                 <span class="icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
                     {$value->resource|firstLetterCapitalize}
                 </span>
