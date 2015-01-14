@@ -93,12 +93,14 @@ class Rooms extends WidgetCommon
     /**
      * @brief Join a chatroom
      */
-    function ajaxJoin($jid, $nickname)
+    function ajaxJoin($jid, $nickname = false)
     {
         $p = new Muc;
-        $p->setTo($jid)
-          ->setNickname($nickname)
-          ->request();
+        $p->setTo($jid);
+
+        if($nickname != false) $p->setNickname($nickname);
+
+        $p->request();
     }
 
     /**
@@ -174,6 +176,24 @@ class Rooms extends WidgetCommon
         $b->setArr($arr)
           ->setTo($this->user->getLogin())
           ->request();
+    }
+
+    function checkConnected($room, $resource = false)
+    {
+        $pd = new \modl\PresenceDAO();
+
+        if($resource == false) {
+            $session = \Sessionx::start();
+            $resource = $session->user;
+        }
+
+        $presence = $pd->getPresence($room, $resource);
+
+        if($presence != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function prepareRooms()

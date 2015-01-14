@@ -8,7 +8,11 @@ var Rooms = {
                 items[i].onclick = function(e) {
                     console.log(this);
                     if(!movim_has_class(this, 'online')) {
-                        Rooms_ajaxJoin(this.dataset.jid, this.dataset.nick);
+                        if(this.dataset.nick != null) {
+                            Rooms_ajaxJoin(this.dataset.jid, this.dataset.nick);
+                        } else {
+                            Rooms_ajaxJoin(this.dataset.jid);
+                        }
                     }
                     
                     Chat_ajaxGetRoom(this.dataset.jid);
