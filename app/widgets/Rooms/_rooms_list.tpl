@@ -2,9 +2,10 @@
     <h3>{$c->__('chatrooms.users')}</h3>
     <br />
     <ul class="active">
+        {$presence = getPresencesTxt()}
         {loop="$list"}
             <li onclick="Chats_ajaxOpen('{$value->jid}/{$value->resource}'); Dialog.clear();">
-                <span class="icon bubble color {$value->resource|stringToColor}">
+                <span class="icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
                     {$value->resource|firstLetterCapitalize}
                 </span>
                 {if="$value->mucaffiliation =='owner'"}

@@ -61,7 +61,6 @@ class Chats extends WidgetCommon
             Cache::c('chats', $chats);
 
             RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
-            RPC::call('Chat.refresh');
             RPC::call('Chats.refresh');
         }
     }
