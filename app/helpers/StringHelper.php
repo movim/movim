@@ -201,7 +201,8 @@ function echapJid($jid)
  */
 function cleanJid($jid)
 {
-    return reset(explode('/', $jid));
+    $explode = explode('/', $jid);
+    return reset($explode);
 }
 
 /*

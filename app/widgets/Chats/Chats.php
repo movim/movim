@@ -56,7 +56,7 @@ class Chats extends WidgetCommon
         $chats = Cache::c('chats');
         if($chats == null) $chats = array();
 
-        if(!array_key_exists($key, $chats)) {
+        if(!array_key_exists($jid, $chats)) {
             $chats[$jid] = 1;
             Cache::c('chats', $chats);
 

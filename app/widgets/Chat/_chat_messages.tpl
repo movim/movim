@@ -2,7 +2,7 @@
     {loop="$messages"}
         {if="$value->body != ''"}
         <li {if="$value->jidfrom != $jid"}class="oppose"{/if}>
-            <span class="icon bubble color {$value->resource|stringToColor}">
+            <span class="icon bubble {if="$contact->updated == null"}color {$value->resource|stringToColor}{/if}">
                 {if="$value->jidfrom == $jid"}
                     {if="$contact->updated != null"}
                         <img src="{$contact->getPhoto('s')}">
@@ -17,7 +17,11 @@
                 {if="preg_match('#^\?OTR#', $value->body)"}
                     <i class="md md-lock"></i> {$c->__('message.encrypted')}
                 {else}
-                    {$value->body|prepareString}
+                    {if="isset($value->html)"}
+                        {$value->body}
+                    {else}
+                        {$value->body|prepareString|htmlentities:ENT_COMPAT,'UTF-8'}
+                    {/if}
                 {/if}
                 <span class="info">{$value->delivered|strtotime|prepareDate}</span>
             </div>
@@ -25,7 +29,7 @@
         {/if}
     {/loop}
     {if="$status != false"}
-        <li {if="$myself == false"}class="oppose"{/if}>
+        <li {if="$myself != false"}class="oppose"{/if}>
             <span class="icon bubble">
                 {if="$myself == false"}
                     <img src="{$contact->getPhoto('s')}">
