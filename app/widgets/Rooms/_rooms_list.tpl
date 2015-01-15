@@ -5,8 +5,8 @@
         {$presence = getPresencesTxt()}
         {loop="$list"}
             <li>
-                <span class="icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
-                    {$value->resource|firstLetterCapitalize}
+                <span class="icon bubble status {$presence[$value->value]}">
+                    <img src="{$value->getPhoto('s')}" />
                 </span>
                 {if="$value->mucaffiliation =='owner'"}
                     <div class="control">

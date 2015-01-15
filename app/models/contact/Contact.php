@@ -399,10 +399,70 @@ class Contact extends Model {
             'rostername' => $this->rostername,
             'groupname'  => $this->groupname,
             'status'     => $this->status,
-            'resource'  => $this->resource,
+            'resource'   => $this->resource,
             'value'      => $this->value
             );
     }
+}
+
+class PresenceContact extends Contact {
+    // General presence informations
+    protected $resource;
+    protected $value;
+    protected $priority;
+    protected $status;
+    
+    // Client Informations
+    protected $node;
+    protected $ver;
+    
+    // Delay - XEP 0203
+    protected $delay;
+    
+    // Last Activity - XEP 0256
+    protected $last;
+
+    // Current Jabber OpenPGP Usage - XEP-0027
+    protected $publickey;
+    protected $muc;
+    protected $mucjid;
+    protected $mucaffiliation;
+    protected $mucrole;
+
+    public function __construct() {
+        parent::__construct();
+
+        $this->_struct = '
+        {
+            "resource" : 
+                {"type":"string", "size":64, "key":true },
+            "value" : 
+                {"type":"int",    "size":11, "mandatory":true },
+            "priority" : 
+                {"type":"int",    "size":11 },
+            "status" : 
+                {"type":"text"},
+            "node" : 
+                {"type":"string", "size":128 },
+            "ver" : 
+                {"type":"string", "size":128 },
+            "delay" : 
+                {"type":"date"},
+            "last" : 
+                {"type":"int",    "size":11 },
+            "publickey" : 
+                {"type":"text"},
+            "muc" : 
+                {"type":"int",    "size":1 },
+            "mucjid" : 
+                {"type":"string", "size":64 },
+            "mucaffiliation" : 
+                {"type":"string", "size":32 },
+            "mucrole" : 
+                {"type":"string", "size":32 }
+        }';
+    }
+    
 }
 
 class RosterContact extends Contact {
@@ -420,7 +480,7 @@ class RosterContact extends Contact {
     protected $node;
     protected $ver;
     protected $category;
-    protected $type;
+    //protected $type;
     
     public function __construct() {
         parent::__construct();

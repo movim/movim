@@ -532,6 +532,25 @@ class ContactDAO extends SQL {
             return $this->run('RosterContact', 'item');
     }
 
+    function getPresence($jid) {       
+        $this->_sql = '
+            select * from contact
+            right outer join presence on contact.jid = presence.mucjid
+            where presence.session = :session
+            and presence.jid = :jid
+            order by mucaffiliation desc';
+        
+        $this->prepare(
+            'Presence', 
+            array(
+                'session' => $this->_user,
+                'jid' => $jid
+            )
+        );
+        
+        return $this->run('PresenceContact');
+    }
+
     function getMe($item = false) {
         $this->_sql = '
             select * from contact
