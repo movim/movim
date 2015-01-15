@@ -297,6 +297,17 @@ class Chat extends WidgetCommon
         $view->assign('status', $status);
         $view->assign('myself', $myself);
 
+        $cd = new \Modl\ContactDAO;
+        $presences = $cd->getPresence($jid);
+        $contacts = array();
+
+        foreach($presences as $presence) {
+            $contacts[$presence->resource] = $presence;
+        }
+
+        $view->assign('contacts', $contacts);
+        
+
         return $view->draw('_chat_messages', true);
     }
 
