@@ -29,8 +29,14 @@ var MovimWebsocket = {
     },
 
     init : function() {
-        this.connection = new WebSocket('ws://' + BASE_HOST + ':8080');
-        
+        if(SECURE_WEBSOCKET) {
+            var uri = 'wss://' + BASE_HOST + '/ws/';
+        } else {
+            var uri = 'ws://' + BASE_HOST + '/ws/';
+        }
+
+        this.connection = new WebSocket(uri);
+
         this.connection.onopen = function(e) {
             console.log("Connection established!");
             MovimWebsocket.launchAttached();
