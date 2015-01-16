@@ -86,7 +86,7 @@ function prepareString($string) {
     
     // Twitter hashtags
     $string = preg_replace_callback(
-        "/ #[a-zA-Z0-9_-]*/", function ($match) {
+        "/ #[a-zA-Z0-9_-]{3,}/", function ($match) {
             return
                 ' <a class="twitter hastag" href="http://twitter.com/search?q='.
                     urlencode(trim($match[0])).
@@ -97,7 +97,7 @@ function prepareString($string) {
     );
 
     $string = preg_replace_callback(
-        "/ @[a-zA-Z0-9_-]*/", function ($match) {
+        "/ @[a-zA-Z0-9_-]{3,}/", function ($match) {
             return
                 ' <a class="twitter at" href="http://twitter.com/'.
                     trim($match[0]).
@@ -197,11 +197,12 @@ function echapJid($jid)
 }
 
 /*
- * Clean the ressource of a jid
+ * Clean the resource of a jid
  */
 function cleanJid($jid)
 {
-    return reset(explode('/', $jid));
+    $explode = explode('/', $jid);
+    return reset($explode);
 }
 
 /*
@@ -215,7 +216,7 @@ function explodeJid($jid)
     return array(
         'username'  => $username,
         'server'    => $server,
-        'ressource' => $resource
+        'resource' => $resource
         );
 }
 
@@ -266,3 +267,39 @@ function colorize($string, $color) {
 
     return "\033[".$colors[$color]."m".$string."\033[0m";
 }
+
+
+/**
+ * Return a color generated from the string
+ * @param string
+ * @return string
+ */
+function stringToColor($string) {
+    $colors = array(
+        0 => 'red',
+        1 => 'purple',
+        2 => 'indigo',
+        3 => 'blue',
+        4 => 'green',
+        5 => 'orange',
+        6 => 'yellow',
+        7 => 'brown');
+        
+    $s = base_convert(sha1($string), 15, 8);
+    
+    if(isset($s[4])) {
+        return $colors[(int) $s[4]];
+    } else {
+        return 'orange';
+    }
+}
+
+/**
+ * Return the first letter of a string
+ * @param string
+ * @return string
+ */
+function firstLetterCapitalize($string) {
+    return ucfirst(strtolower(mb_substr($string, 0, 2)));
+}
+

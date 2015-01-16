@@ -1,10 +1,12 @@
 <div id="subscribe">
-    <h1 class="paddedtopbottom">{$c->__('create.title')} {$c->__('on')} {$host}</h1>
-
-    <div id="subscription_form" class="paddedtopbottom">
-        {$c->__('loading')}
+    <div id="subscription_form">
+        <ul class="simple thick">
+            <li>
+                <span>{$c->__('create.title')} {$c->__('on')} {$host}</span>
+                <p>{$c->__('loading')}</p>
+            </li>
+        </ul>
     </div>
-
     <script type="text/javascript">
         MovimWebsocket.attach(function()
         {

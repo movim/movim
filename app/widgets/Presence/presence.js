@@ -1,5 +1,8 @@
 function postStart() {
     if(localStorage.postStart == 1) {
+        // We disable the notifications for a couple of seconds
+        Notification.inhibit(10);
+        
         Presence_ajaxSetPresence();
         //Presence_ajaxConfigGet();
         Presence_ajaxServerCapsGet();
@@ -9,26 +12,20 @@ function postStart() {
 }
 
 function setPresenceActions() {
-    var textarea = document.querySelector('#presence_widget textarea.status');
+    var textarea = document.querySelector('textarea.status');
 
-    textarea.onkeypress = function(event) {
-        if(event.keyCode == 13) {
-            Presence_ajaxSetStatus(this.value);
-            this.blur();
-        }
-    };
+    if(textarea != null) {
+        textarea.onkeypress = function(event) {
+            if(event.keyCode == 13) {
+                Presence_ajaxSetStatus(this.value);
+                this.blur();
+            }
+        };
 
-    textarea.onfocus = function(event) {
-        movim_textarea_autoheight(this);
-    };
-
-    document.querySelector('#presence_widget #tab').onclick = function(event) {
-        movim_toggle_class('#presence_widget', 'unfolded');
-    };
-
-    document.querySelector('#presence_widget #list .tab').onclick = function(event) {
-        movim_toggle_class('#presence_widget', 'unfolded');
-    };
+        textarea.onfocus = function(event) {
+            movim_textarea_autoheight(this);
+        };
+    }
 }
 
 MovimWebsocket.attach(function()

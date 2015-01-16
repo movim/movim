@@ -13,10 +13,22 @@
     <link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
     <script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
     
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
     <?php
-        $this->addCss('css/animations.css');
+        $this->addCss('style.css');
+        $this->addCss('list.css');
+        $this->addCss('grid.css');
+        $this->addCss('article.css');
+        $this->addCss('form.css');
+        $this->addCss('color.css');
+        $this->addCss('block.css');
+        $this->addCss('menu.css');
+        $this->addCss('material-design-iconic-font.min.css');
+        /*$this->addCss('css/animations.css');
 
         $this->addCss('css/fonts.css');
         $this->addCss('css/forms.css');
@@ -28,11 +40,11 @@
         $this->addCss('css/posts.css');
 
         $this->addCss('css/template.css');
-
+        */
         $this->widget('System');
 
         $this->scripts();
-
+        /*
         $this->addCss('css/mobile.css');
          
         $this->addCss('css/font-awesome.css'); 
@@ -61,10 +73,10 @@
                     body { font-size: '.floor($size*1.15).'px; }
                 }
             </style>';
-        }
+        }*/
     ?>
-  </head>
-    <body>
+    </head>
+    <body class="<?php $this->color();?>">
         <noscript>
             <style type="text/css">
                 nav {display:none;} #content {display: none;}
@@ -73,23 +85,29 @@
             <?php echo __('global.no_js'); ?>
             </div>
         </noscript>
+        <div id="snackbar" class="snackbar"></div>
+        <?php $this->widget('Dialog');?>
+        <?php $this->widget('Notification');?>
+        <?php $this->content();?>
+
+        <!--
         <nav>
             <div class="wrapper">
-                <?php $this->menu();?>
+                <?php //$this->menu();?>
             </div>
-        </nav>
+        </nav>-->
         
         <!--<div id="baseline"></div>-->
 
+        <!--
         <div id="content">
-            <?php $this->widget('Notification');?>
-            <?php $this->widget('Ack');?>
-            <?php $this->content();?>
+            <?php //$this->widget('Ack');?>
+            <?php //$this->content();?>
           
             <footer>
                 © <a href="http://www.movim.eu">Movim</a> • 2008 - 2014 • Under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>
             </footer>
-        </div>
+        </div>-->
         <?php 
             $this->displayFooterDebug();
         ?>

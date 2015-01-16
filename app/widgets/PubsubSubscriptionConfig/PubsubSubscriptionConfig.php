@@ -72,8 +72,12 @@ class PubsubSubscriptionConfig extends WidgetBase
 
                 $listhtml .= '
                     <li>
-                        <a class="action">
-                            <div class="checkbox">
+                        <span class="icon bubble color '.stringToColor($s->node).'">
+                            '.firstLetterCapitalize($s->node).'
+                        </span>
+                        <form>
+                            <div class="control padded">
+                                <div class="checkbox">
                                 <input
                                     type="checkbox"
                                     id="privacy'.$s->node.'"
@@ -81,8 +85,9 @@ class PubsubSubscriptionConfig extends WidgetBase
                                     '.$checked.'
                                     onchange="'.$switch.'"/>
                                 <label for="privacy'.$s->node.'"></label>
+                                </div>
                             </div>
-                        </a>
+                        </form>
                         <a href="'.Route::urlize('node', array($s->server, $s->node)).'">'.
                             $name.' 
                         </a>
@@ -96,11 +101,11 @@ class PubsubSubscriptionConfig extends WidgetBase
     }
     
     function onGroupAdded($node) {
-        Notification::appendNotification($this->__('public_groups.added', $node), 'success');
+        Notification::append(null, $this->__('public_groups.added', $node));
     }
     
     function onGroupRemoved($node) {
-        Notification::appendNotification($this->__('public_groups.removed', $node), 'success');
+        Notification::append(null, $this->__('public_groups.removed', $node));
     }
 
     function ajaxChangeSubscribed($server, $node, $state, $name) {

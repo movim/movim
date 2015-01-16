@@ -41,3 +41,70 @@ function movim_delete(id)
     if(target)
         target.parentNode.removeChild(target);
 }
+// movim_replace(id)
+function movim_replace(id, html)
+{
+    target = document.getElementById(id);
+    if(target) {
+        var div = document.createElement('div');
+        div.innerHTML = html;
+        var element = div.firstChild;
+        replacedNode = target.parentNode.replaceChild(element, target);
+    }
+}
+
+var MovimTpl = {
+    init : function() {
+        if(document.getElementById('back') != null)
+            document.getElementById('back').style.display = 'none';
+    },
+    showPanel : function() {
+        movim_add_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
+    },
+    hidePanel : function() {
+        Header_ajaxReset(CURRENT_PAGE);
+        var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
+        var inner = document.querySelector(selector + ' div');
+
+        movim_remove_class(selector, 'enabled');
+
+        // Clear the right panel
+        //if(inner != null) inner.innerHTML = '';
+        //else document.querySelector(selector).innerHTML = '';
+    },
+    isPanel : function() {
+        if(movim_has_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled')) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+    scrollPanel : function() { // On for panel that are .contained
+        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
+
+        if(selector != null) {
+            selector.scrollTop = selector.scrollHeight;
+        }
+    },
+    toggleMenu : function() {
+        movim_toggle_class('body > nav', 'active');
+    },
+    back : function() {
+        // If a dialog box is shown
+        if(Dialog.filled()) {
+            Dialog.clear();
+        // If the menu is shown
+        } else if(movim_has_class('body > nav', 'active')) {
+            movim_toggle_class('body > nav', 'active');
+        // If the panel is shown
+        } else if(MovimTpl.isPanel()) {
+            MovimTpl.hidePanel();
+        } else {
+            window.history.back();
+        }
+    }
+}
+
+movim_add_onload(function() {
+    MovimTpl.init();
+});

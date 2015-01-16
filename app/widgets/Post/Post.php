@@ -22,12 +22,14 @@ class Post extends WidgetCommon
 {
     function load()
     {
-        $this->addcss('post.css');
     }
 
     function ajaxGetPost($id)
     {
         $html = $this->preparePost($id);
+        $header = $this->prepareHeader($id);
+        
+        Header::fill($header);
         RPC::call('movim_fill', 'post_widget', $html);
     }
 
@@ -35,6 +37,22 @@ class Post extends WidgetCommon
     {
         $view = $this->tpl();
         return $view->draw('_post_empty', true);
+    }
+
+    function prepareHeader($id)
+    {
+        $pd = new \Modl\PostnDAO;
+        $p  = $pd->getItem($id);
+
+        $view = $this->tpl();
+
+        if(isset($p)) {
+            $view->assign('post', $p);
+        } else {
+            $view->assign('post', null);
+        }
+
+        return $view->draw('_post_header', true);
     }
 
     function preparePost($id)

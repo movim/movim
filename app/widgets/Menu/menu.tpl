@@ -1,3 +1,3 @@
 <div id="menu_widget">
-    {$c->prepareMenuList()}
+    {$c->prepareList('all')}
 </div>

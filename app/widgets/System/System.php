@@ -36,6 +36,8 @@ class System extends WidgetBase {
         else
             $this->view->assign('fail_safe',    '');
 
+        $this->view->assign('secure_websocket',    file_get_contents(CACHE_PATH.'websocket'));
+
         // And we load some public values of the system configuration
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();

@@ -1,202 +1,54 @@
-body {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 28em;
-    padding-right: 0;
-
-    animation: 200s infinite colorful;
-    -webkit-animation: 200s infinite colorful;
-    
+body main {
     background-color: #32434D;
-}
 
-#content {
-    margin: 0 auto;
-    width: 100%;
-}
-
-#loginpage {
-    display: block;
-    margin: 0 auto;
-    height: 100%;
-    
     background-image: url(img/logo.svg);
     background-repeat: no-repeat;
-    background-position: center 1em;
-    background-size: 74% auto;
-    padding-top: 33%;
+    background-position: center 90%;
+    background-size: 30rem auto;
 
-    margin-top: 40%;
+    -webkit-animation: 60s infinite colorful;
+    animation: 60s infinite colorful;
 }
 
-#loginpage .admin {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    color: white;
-    padding: 1em;
+@media screen and (max-width: 600px) {
+    body main {
+        background-image: none;
+    }
+
 }
 
-#loginpage .admin a:link,
-#loginpage .admin a:visited {
-    color: white;
+#login_widget li.new_account {
+    text-align: center;
 }
 
-#loginpage form {
-    transition: background-color 0.5s ease;
-    box-shadow: 0 0.1em 0px rgba(0, 0, 0, 0.2);
-    padding: 0.5em;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 0.1em;
+#login_widget > div {
+    display: none;
 }
 
-#loginpage form .create span {
-    color: white;
-    padding: 0 1em;
-    line-height: 2em;
-    text-align: right;
-    display: inline-block;
+#login_widget.choose > div:first-child {
+    display: initial;
+}
+
+#login_widget:not(.choose) > div:last-child {
+    display: initial;
+}
+
+#login_widget span.info {
     float: right;
+    margin-top: 2.5rem;
 }
 
-#loginpage form .element {
-    display: block;
-    margin: 0 auto;
-    padding: 0;
-    width: 100%;
+#login_widget span.info + h3 {
+    margin-top: 2rem;
+}
+
+#login_widget form > div:last-child {
     min-height: 0;
 }
 
-#loginpage form > .element:not(:first-child) {
-    padding-top: 0.5em;
-}
-/*
-#loginpage form .element.login {
-    min-height: 0em;
-}
-*/
-#loginpage form .element input:not([type=submit]) {
-    margin: 0;
-    border: 0;
-    box-shadow: none;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-#loginpage form .element input[type=submit] {
-    border-color: transparent;
-}
-
-#loginpage .infos {
-    color: white;
+ul.admin {
+    position: relative;
     text-align: center;
-    line-height: 2em;
-}
-
-#loginpage #loginhelp {
-    list-style-type: none;
     color: white;
-    line-height: 1.2em;
-    text-align: justify;
-    transition: height 0.5s ease;
-    height: 0em;
-    overflow: hidden;
+    max-width: 45rem;
 }
-
-#loginpage #loginhelp li {
-    min-height: 2.5em;
-    background-repeat: no-repeat;
-    background-image: url(img/beaker.png);
-    padding-left: 2.5em;
-    background-position: 0.2em center;
-    margin: 0.5em 0em;
-}
-
-#loginpage form:hover > #loginhelp {
-    height: 11.5em;
-}
-
-#loginpage #loginhelp li#jabber { background-image: url(img/jabber.png); }
-#loginpage #loginhelp li#gmail { background-image: url(img/envelope.png); }
-#loginpage #loginhelp li#facebook { background-image: url(img/facebook.png); }
-
-/* Sessions */
-#loginpage #sessions {
-    display: none;
-}
-
-#loginpage #sessions ul {
-    list-style-type: none;
-}
-
-#loginpage #sessions ul li {
-    box-shadow: 0 0.1em 0px rgba(0, 0, 0, 0.2);
-    padding: 0.5em;
-    transition: background-color 0.5s ease;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 0.1em;
-    height: 3em;
-    margin-bottom: 0.5em;
-}
-
-#loginpage #sessions ul li a.button {
-    margin-top: 0.3em;
-}
-
-#loginpage #sessions ul li:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-}
-
-#loginpage #sessions ul li img {
-    height: 3em;
-    float: left;
-    border-radius: 0.2em;
-}
-
-#loginpage #sessions ul li span {
-    color: white;
-    line-height: 2.8em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-indent: 0.5em;
-    width: 65%;
-    display: inline-block;
-    overflow: hidden;
-}
-
-/* States */
-#loginpage.choose #loginhelp,
-#loginpage.choose form .element {
-    display: none;
-}
-
-#loginpage.choose form {
-    box-shadow: none;
-    background-color: transparent;
-}
-
-#loginpage.choose #sessions {
-    display: block;
-    height: 100%;
-}
-
-#loginpage.choose #return_sessions {
-    display: none;
-}
-
-footer {
-    display: none;
-}
-
-@media screen and (max-width: 1024px) {
-    #loginpage {
-        background-size: 80% auto;
-    }
-
-    #loginhelp,
-    #loginpage form .create span {
-        display: none;
-    }
-}
-

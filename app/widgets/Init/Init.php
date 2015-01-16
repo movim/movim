@@ -44,7 +44,7 @@ class Init extends WidgetCommon {
         }
 
         RPC::call('Init.setNode', $node);
-        Notification::appendNotification($notif, 'success');
+        Notification::append(null, $notif);
     }
 
     function ajaxCreatePersistentStorage($node)

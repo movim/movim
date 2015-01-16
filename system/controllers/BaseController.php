@@ -73,12 +73,12 @@ class BaseController {
         }
 
         if($this->raw) {
-            echo $content->build($this->name.'.tpl');
+            echo $content->build($this->name);
             exit;
         } else {
-            $built = $content->build($this->name.'.tpl');
+            $built = $content->build($this->name);
             $this->page->setContent($built);
-            echo $this->page->build('page.tpl');
+            echo $this->page->build('page');
         }
     }
 }
