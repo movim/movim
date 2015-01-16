@@ -1,22 +1,6 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Menu.php
- * This file is part of Movim.
- *
- * @brief General Menu
- *
- * @author Jaussoin Timothée <edhelas_at_movim_dot_com>
- *
- * @version 1.0
- * @date 1 december 2014
- *
- * Copyright (C)2014 MOVIM project
- *
- * See COPYING for licensing information.
- */
+use Moxl\Xec\Action\Pubsub\GetItems;
 
 class Menu extends WidgetCommon
 {
@@ -24,34 +8,72 @@ class Menu extends WidgetCommon
     
     function load()
     {
-        $this->registerEvent('post', 'onStream');
-        $this->registerEvent('stream', 'onStream');
-        
-        $this->addcss('menu.css');
+        $this->registerEvent('post', 'onPost');
         $this->addjs('menu.js');
     }
 
-    function onStream()
+    function onStream($count)
+    {
+        $view = $this->tpl();
+        $view->assign('count', $count);
+        $view->assign('refresh', $this->call('ajaxGetAll'));
+
+        RPC::call('movim_posts_unread', $count);
+        RPC::call('movim_fill', 'menu_refresh', $view->draw('_menu_refresh', true));
+    }
+
+    function onPost($packet)
     {
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(Cache::c('since'));
 
         if($count > 0) {
-            $view = $this->tpl();
-            $view->assign('count', $count);
-            $view->assign('refresh', $this->call('ajaxGetMenuList', "''", "''", 0));
+            $post = $packet->content;
+            if($post->isMicroblog()) {
+                $cd = new \Modl\ContactDAO;
+                $contact = $cd->get($post->jid);
 
-            RPC::call('movim_posts_unread', $count);
-            RPC::call('movim_fill', 'menu_refresh', $view->draw('_menu_refresh', true));
+                if($post->title == null) {
+                    $title = __('post.default_title');
+                } else {
+                    $title = $post->title;
+                }
+
+                Notification::append('news', $contact->getTrueName(), $title, $contact->getPhoto('s'), 2);
+            } else {
+                Notification::append('news', $post->title, $post->node, null, 2);
+            }
+
+            $this->onStream($count);
         }
     }
 
-    function ajaxGetMenuList($server = null, $node = null, $page = 0)
+    function ajaxGetAll($page = 0)
     {
-        $html = $this->prepareMenuList($server, $node, $page);
+        $this->ajaxGet('all', null, null, $page);
+    }
+
+    function ajaxGetNews($page = 0)
+    {
+        $this->ajaxGet('news', null, null, $page);
+    }
+
+    function ajaxGetFeed($page = 0)
+    {
+        $this->ajaxGet('feed', null, null, $page);
+    }
+
+    function ajaxGetNode($server = null, $node = null, $page = 0)
+    {
+        $this->ajaxGet('node', $server, $node, $page);
+    }
+
+    function ajaxGet($type = 'all', $server = null, $node = null, $page = 0)
+    {
+        $html = $this->prepareList($type, $server, $node, $page);
 
         if($page > 0) {
-            RPC::call('movim_append', 'menu_widget', $html);
+            RPC::call('movim_append', 'menu_wrapper', $html);
         } else {
             RPC::call('movim_fill', 'menu_widget', $html);
             RPC::call('movim_posts_unread', 0);
@@ -59,8 +81,23 @@ class Menu extends WidgetCommon
         RPC::call('Menu.refresh');
     }
 
-    function prepareMenuList($server = null, $node = null, $page = 0)
+    function ajaxRefresh()
     {
+        Notification::append(null, $this->__('menu.refresh'));
+
+        $sd = new \modl\SubscriptionDAO();
+        $subscriptions = $sd->getSubscribed();
+
+        foreach($subscriptions as $s) {
+            $r = new GetItems;
+            $r->setTo($s->server)
+              ->setNode($s->node)
+              ->request();
+        }
+    }
+
+    function prepareList($type = 'all', $server = null, $node = null, $page = 0) {
+
         $view = $this->tpl();
         $pd = new \Modl\PostnDAO;
 
@@ -68,12 +105,23 @@ class Menu extends WidgetCommon
 
         $next = $page + 1;
 
-        if($server == null || $node == null) {
-            $view->assign('history', $this->call('ajaxGetMenuList', "''", "''", $next));
-            $items  = $pd->getNews($page*$this->_paging, $this->_paging);
-        } else {
-            $view->assign('history', $this->call('ajaxGetMenuList', '"'.$server.'"', '"'.$node.'"', $next));
-            $items  = $pd->getNode($server, $node, $page*$this->_paging, $this->_paging);
+        switch($type) {
+            case 'all' :
+                $view->assign('history', $this->call('ajaxGetAll', $next));
+                $items  = $pd->getAllPosts(false, $page*$this->_paging, $this->_paging);
+                break;
+            case 'news' :
+                $view->assign('history', $this->call('ajaxGetNews', $next));
+                $items  = $pd->getNews($page*$this->_paging, $this->_paging);
+                break;
+            case 'feed' :
+                $view->assign('history', $this->call('ajaxGetFeed', $next));
+                $items  = $pd->getFeed($page*$this->_paging, $this->_paging);
+                break;
+            case 'node' :
+                $view->assign('history', $this->call('ajaxGetNode', '"'.$server.'"', '"'.$node.'"', $next));
+                $items  = $pd->getNode($server, $node, $page*$this->_paging, $this->_paging);
+                break;
         }
         
         $view->assign('items', $items);

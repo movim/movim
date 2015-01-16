@@ -1,0 +1,32 @@
+.block {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    float: left;
+    clear: left;
+}
+
+.block:nth-of-type(even) {
+    float: right;
+    clear: right;
+}
+
+.block:nth-of-type(even):not(li) {
+    padding-left: 2rem;
+}
+
+.block.large {
+    width: 100%;
+    clear: both;
+}
+
+@media screen and (max-width: 1024px) {
+    .block {
+        width: 100%;
+        padding-right: 2rem;
+    }
+
+    .block:nth-of-type(even):not(li) {
+        padding-left: 0;
+    }
+}

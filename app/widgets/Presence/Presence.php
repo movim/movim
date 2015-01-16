@@ -22,7 +22,7 @@ use Moxl\Xec\Action\Presence\Chat;
 use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\DND;
 use Moxl\Xec\Action\Presence\XA;
-use Moxl\Xec\Action\Presence\Unavaiable;
+use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Storage\Get;
 
@@ -31,7 +31,7 @@ class Presence extends WidgetBase
     
     function load()
     {
-        $this->addcss('presence.css');
+        //$this->addcss('presence.css');
         $this->addjs('presence.js');
         $this->registerEvent('mypresence', 'onMyPresence');
     }
@@ -40,7 +40,7 @@ class Presence extends WidgetBase
     {
         $html = $this->preparePresence();
         RPC::call('movim_fill', 'presence_widget', $html);
-        Notification::appendNotification($this->__('status.updated'), 'success');
+        Notification::append(null, $this->__('status.updated'));
         RPC::call('setPresenceActions');
         RPC::call('movim_remove_class', '#presence_widget', 'unfolded');
     }
@@ -53,6 +53,7 @@ class Presence extends WidgetBase
 
     private function setPresence($show = false, $status = false)
     {
+        Dialog::fill('');
         // We update the cache with our status and presence
         $presence = Cache::c('presence');
 
@@ -106,9 +107,9 @@ class Presence extends WidgetBase
     function ajaxLogout()
     {
         $session = \Sessionx::start();
-        $p = new Unavaiable;
+        $p = new Unavailable;
         $p->setType('terminate')
-          ->setRessource($session->ressource)
+          ->setResource($session->resource)
           ->setTo($this->user->getLogin())
           ->request();
 
@@ -138,8 +139,42 @@ class Presence extends WidgetBase
         $b->setTo($session->user.'@'.$session->host)
           ->request();
     }
-    
+
+    function ajaxOpenDialog()
+    {
+        Dialog::fill($this->preparePresenceList());
+        RPC::call('setPresenceActions');
+    }
+
     function preparePresence()
+    {
+        $cd = new \Modl\ContactDAO();
+        $pd = new \Modl\PresenceDAO();
+        
+        $session = \Sessionx::start();
+        $presence = $pd->getPresence($this->user->getLogin(), $session->resource);
+
+        $presencetpl = $this->tpl();
+        
+        $contact = $cd->get();
+        if($contact == null) {
+            $contact = new \Modl\Contact;
+        }
+
+        if($presence == null) {
+            $presence = new \Modl\Presence;
+        }
+
+        $presencetpl->assign('me', $contact);
+        $presencetpl->assign('presence', $presence);
+        $presencetpl->assign('dialog',      $this->call('ajaxOpenDialog'));
+
+        $html = $presencetpl->draw('_presence', true);
+
+        return $html;
+    }
+    
+    function preparePresenceList()
     {
         $txt = getPresences();
         $txts = getPresencesTxt();
@@ -147,7 +182,7 @@ class Presence extends WidgetBase
         $session = \Sessionx::start();
         
         $pd = new \Modl\PresenceDAO();
-        $p = $pd->getPresence($this->user->getLogin(), $session->ressource);
+        $p = $pd->getPresence($this->user->getLogin(), $session->resource);
 
         $cd = new \Modl\ContactDAO();
         $contact = $cd->get($this->user->getLogin());
@@ -165,6 +200,7 @@ class Presence extends WidgetBase
         $presencetpl->assign('callaway',    $this->call('ajaxSetPresence', "'away'"));
         $presencetpl->assign('calldnd',     $this->call('ajaxSetPresence', "'dnd'"));
         $presencetpl->assign('callxa',      $this->call('ajaxSetPresence', "'xa'"));
+
         $presencetpl->assign('calllogout',  $this->call('ajaxLogout'));
         $html = $presencetpl->draw('_presence_list', true);
 
@@ -173,6 +209,7 @@ class Presence extends WidgetBase
 
     function display()
     {
+        $this->view->assign('presence', $this->preparePresence());
     }
 }
 

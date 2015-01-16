@@ -20,6 +20,11 @@
 
 use Moxl\Xec\Action\Roster\GetList;
 
+use Moxl\Xec\Action\Roster\AddItem;
+use Moxl\Xec\Action\Roster\RemoveItem;
+use Moxl\Xec\Action\Presence\Subscribe;
+use Moxl\Xec\Action\Presence\Unsubscribe;
+
 class Roster extends WidgetBase
 {
     private $grouphtml;
@@ -30,10 +35,10 @@ class Roster extends WidgetBase
         $this->addjs('angular.js');
         $this->addjs('roster.js');
         $this->registerEvent('roster_getlist_handle', 'onRoster');
-        $this->registerEvent('roster_additem_handle', 'onUpdate');
+        $this->registerEvent('roster_additem_handle', 'onAdd');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
-        $this->registerEvent('presence', 'onUpdate');
+        $this->registerEvent('presence', 'onPresence', 'contacts');
     }
 
     function display()
@@ -46,22 +51,40 @@ class Roster extends WidgetBase
         if($jid != null){
             RPC::call('deleteContact', $jid);
         }
+        Notification::append(null, $this->__('roster.deleted'));
+    }
+
+    function onPresence($packet)
+    {
+        $contacts = $packet->content;
+        if($contacts != null){
+            $c = $contacts[0];
+            
+            if($c->groupname == '')
+                $c->groupname = $this->__('roster.ungrouped');
+            else{
+                $c->groupname = htmlspecialchars_decode($c->groupname);
+            }
+            $c->rostername = htmlspecialchars_decode($c->rostername);
+            
+            $ac = $c->toRoster();
+            $this->prepareContact($ac, $c, $this->getCaps());
+            $c = $ac;
+            
+            RPC::call('updateContact', json_encode($c));
+        }
+    }
+
+    function onAdd($packet)
+    {
+        $this->onPresence($packet);
+        Notification::append(null, $this->__('roster.added'));
     }
 
     function onUpdate($packet)
     {
-        $contacts = $packet->content;
-        if($contacts != null){
-            foreach($contacts as &$c) {
-                if($c->groupname == '')
-                    $c->groupname = $this->__('roster.ungrouped');
-                
-                $ac = $c->toRoster();
-                $this->prepareContact($ac, $c, $this->getCaps());
-                $c = $ac;
-            }
-            RPC::call('updateContact', json_encode($contacts));
-        }
+        $this->onPresence($packet);
+        Notification::append(null, $this->__('roster.updated'));
     }
 
     function onRoster()
@@ -91,7 +114,85 @@ class Roster extends WidgetBase
         $r->request();
     }
 
-    private function getCaps() {
+    /**
+     * @brief Display the search contact form
+     */
+    function ajaxDisplaySearch($jid = null)
+    {
+        $view = $this->tpl();
+
+        $view->assign('jid', $jid);
+        $view->assign('add', 
+            $this->call(
+                'ajaxAdd', 
+                "movim_parse_form('add')"));
+        $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
+
+        Dialog::fill($view->draw('_roster_search', true));
+    }
+
+    /**
+     * @brief Return the found jid
+     */
+    function ajaxDisplayFound($jid)
+    {
+        if($jid != '') {
+            $cd = new \Modl\ContactDAO();
+            $contacts = $cd->searchJid($jid);
+
+            $view = $this->tpl();
+            $view->assign('contacts', $contacts);
+            $html = $view->draw('_roster_search_results', true);
+
+            RPC::call('movim_fill', 'search_results', $html);
+        }
+    }
+
+    /**
+     * @brief Add a contact to the roster and subscribe
+     */
+    function ajaxAdd($form)
+    {
+        $jid = $form['searchjid'];
+
+        $r = new AddItem;
+        $r->setTo($jid)
+          ->setFrom($this->user->getLogin())
+          ->request();
+
+        $p = new Subscribe;
+        $p->setTo($jid)
+          ->request();
+    }
+
+    /**
+     * @brief Remove a contact to the roster and unsubscribe
+     */
+    function ajaxDelete($jid)
+    {    
+        $r = new RemoveItem;
+        $r->setTo($jid)
+          ->request();
+
+        $p = new Unsubscribe;
+        $p->setTo($jid)
+          ->request();
+    }
+
+    /**
+     *  @brief Search for a contact to add
+     */
+    function ajaxSearchContact($jid) 
+    {
+        if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
+            RPC::call('movim_redirect', Route::urlize('friend', $jid));
+            RPC::commit();
+        } else 
+            Notification::append(null, $this->__('roster.jid_error'));
+    }
+
+    private function getCaps() 
+    {
         $capsdao = new \Modl\CapsDAO();
         $caps = $capsdao->getAll();
 
@@ -102,20 +203,9 @@ class Roster extends WidgetBase
 
         return $capsarr;
     }
-
+    
     /**
-     *  @brief Search for a contact to add
-     */
-    function ajaxSearchContact($jid) {
-        if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
-            RPC::call('movim_redirect', Route::urlize('friend', $jid));
-            RPC::commit();
-        } else 
-            Notification::appendNotification($this->__('roster.jid_error'), 'info');
-    }
-
-    /**
-     * @brief Get data from to database to pass it on to angular in JSON
+     * @brief Get data from database to pass it on to angular in JSON
      * @param
      * @returns $result: a json for the contacts and one for the groups
      */
@@ -128,17 +218,66 @@ class Roster extends WidgetBase
 
         $result = array();
         
+        $farray = array(); //final array
         if(isset($contacts)) {
+            /* Init */
+            $c = array_shift($contacts);
+            if($c->groupname == ''){
+                $c->groupname = $this->__('roster.ungrouped');
+            }
+            $jid = $c->jid;
+            $groupname = $c->groupname;
+            $ac = $c->toRoster();
+            $this->prepareContact($ac, $c, $capsarr);
+            
+            $garray = array(); //group array
+            $garray['agroup'] = $groupname;
+            $garray['tombstone'] = false;
+            $garray['agroupitems'] = array(); //group array of jids
+            
+            $jarray = array(); //jid array
+            $jarray['ajid'] = $jid;
+            $jarray['atruename'] = $ac['rosterview']['name'];
+            $jarray['aval'] = $ac['value'];
+            $jarray['tombstone'] = false;
+            $jarray['ajiditems'] = $ac; //jid array of resources
+            
+            array_push($garray['agroupitems'], $jarray);
+            
             foreach($contacts as &$c) {
-                if($c->groupname == '')
-                    $c->groupname = $this->__('roster.ungrouped');
-                
-                $ac = $c->toRoster();
-                $this->prepareContact($ac, $c, $capsarr);
-                $c = $ac;
+                /*jid has changed*/
+                if($jid != $c->jid){
+                    if($c->groupname == ''){
+                        $c->groupname = $this->__('roster.ungrouped');
+                    }
+                    $ac = $c->toRoster();
+                    $this->prepareContact($ac, $c, $capsarr);
+                    
+                    if($groupname != $c->groupname && $c->groupname != ""){
+                        //close group
+                        array_push($farray, $garray);
+                        //next group
+                        $groupname = $ac['groupname'];
+                        $garray = array();
+                        $garray['agroup'] = $groupname;
+                        $garray['tombstone'] = false;
+                        $garray['agroupitems'] = array();
+                    }
+                    //push new jid in group
+                    $jid = $ac['jid'];
+                    $jarray['ajid'] = $jid;
+                    $jarray['atruename'] = $ac['rosterview']['name'];
+                    $jarray['aval'] = $ac['value'];
+                    $jarray['tombstone'] = false;
+                    $jarray['ajiditems'] = $ac; //jid array of resources
+                    array_push($garray['agroupitems'], $jarray);
+                }
+                if($c == $contacts[count($contacts)-1]){
+                    array_push($farray, $garray);
+                }
             }
         }
-        $result['contacts'] = json_encode($contacts);
+        $result['contacts'] = json_encode($farray);
         
         //Groups
         $rd = new \Modl\RosterLinkDAO();
@@ -188,10 +327,6 @@ class Roster extends WidgetBase
             $c['rosterview']['presencetxt'] = 'offline';
             $c['value'] = 5;
         }
-
-        // An action to open the chat widget
-        $c['rosterview']['openchat']
-            = $this->genCallWidget("Chat","ajaxOpenTalk", "'".$oc->jid."'");
 
         $c['rosterview']['type']   = '';
         $c['rosterview']['client'] = '';

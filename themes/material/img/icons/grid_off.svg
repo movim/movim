@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
+	 height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<g id="Capa_1">
+	<path fill="none" d="M0,0h24v24H0V0z"/>
+	<g>
+		<path fill="none" d="M0,0h24v24H0V0z"/>
+		<path fill="#B0BEC5" d="M20,2H4C2.9,2,2,2.9,2,4v16c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V4C22,2.9,21.1,2,20,2z"/>
+		<rect x="4" y="16" fill="#ECEFF1" width="4" height="4"/>
+		<rect x="4" y="10" fill="#ECEFF1" width="4" height="4"/>
+		<rect x="4" y="4" fill="#ECEFF1" width="4" height="4"/>
+		<rect x="10" y="16" fill="#ECEFF1" width="4" height="4"/>
+		<rect x="10" y="10" fill="#ECEFF1" width="4" height="4"/>
+		<rect x="10" y="4" fill="#ECEFF1" width="4" height="4"/>
+		<rect x="16" y="16" fill="#ECEFF1" width="4" height="4"/>
+		<rect x="16" y="10" fill="#ECEFF1" width="4" height="4"/>
+		<rect x="16" y="4" fill="#ECEFF1" width="4" height="4"/>
+	</g>
+</g>
+<g id="Capa_2">
+	<polygon fill="#9FA8DA" points="0,2.547 1.281,1.25 22.734,22.719 21.453,24 	"/>
+</g>
+</svg>

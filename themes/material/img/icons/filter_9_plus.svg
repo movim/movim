@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<path fill="none" d="M0,0h24v24H0V0z"/>
+<g>
+	<path fill="#00ACC1" d="M22.999,2.999v14c0,1.1-0.9,2-2,2h-14c-1.1,0-2-0.9-2-2v-14c0-1.1,0.9-2,2-2h14
+		C22.099,0.999,22.999,1.899,22.999,2.999z"/>
+	<path fill="#0097A7" d="M2.999,4.999h-2v16c0,1.1,0.9,2,2,2h16v-2h-16V4.999z"/>
+	<path opacity="0.5" fill="#0097A7" d="M22.999,2.999v14c0,1.1-0.9,2-2,2h-7.01v-18h7.01C22.099,0.999,22.999,1.899,22.999,2.999z"
+		/>
+</g>
+<path fill="#CFD8DC" d="M12,6h-1C9.9,6,9,6.89,9,8v1c0,1.11,0.9,2,2,2h1v1H9v2h3c1.1,0,2-0.89,2-2V8C14,6.89,13.1,6,12,6z M12,9h-1
+	V8h1V9z"/>
+<polygon fill="#CFD8DC" points="21.751,8.965 19.751,8.965 19.751,6.965 17.751,6.965 17.751,8.965 15.751,8.965 15.751,10.965 
+	17.751,10.965 17.751,12.965 19.751,12.965 19.751,10.965 21.781,10.965 21.781,8.935 21.751,8.935 "/>
+</svg>

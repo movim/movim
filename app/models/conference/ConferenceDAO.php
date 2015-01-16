@@ -69,7 +69,8 @@ class ConferenceDAO extends SQL {
     function getAll() {
         $this->_sql = '
             select * from conference
-            where jid = :jid';
+            where jid = :jid
+            order by conference';
         
         $this->prepare(
             'Conference', 

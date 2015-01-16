@@ -66,7 +66,7 @@ class Feed extends WidgetCommon {
     }
     
     function onPostPublishError($error) {
-        Notification::appendNotification($this->__('feed.error').$error, 'error');
+        Notification::append(null, $this->__('feed.error').$error);
     }
     
     function prepareHead() {

@@ -6,6 +6,7 @@ var Menu = {
         while(i < items.length -1)
         {
             items[i].onclick = function(e) {
+                MovimTpl.showPanel();
                 Post_ajaxGetPost(this.dataset.id);
                 Menu.reset(items);
                 movim_add_class(this, 'active');
@@ -22,5 +23,6 @@ var Menu = {
 }
 
 MovimWebsocket.attach(function() {
+    Notification_ajaxClear('news');
     Menu.refresh();
 });

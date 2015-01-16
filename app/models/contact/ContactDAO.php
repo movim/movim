@@ -23,7 +23,16 @@ class ContactDAO extends SQL {
             )
         );
         
-        return $this->run('Contact', 'item');
+        $contact = $this->run('Contact', 'item');
+
+        // If we cannot find the contact
+        if($contact == null) {
+            $contact = new Contact;
+            $contact->jid = $jid;
+            return $contact;
+        } 
+
+        return $contact;
     }
     
     function set(Contact $contact) {
@@ -328,6 +337,24 @@ class ContactDAO extends SQL {
         return $this->run('Contact');
     }
     
+    function searchJid($search) {       
+        $this->_sql = 
+            'select *, privacy.value as privacy from contact
+            left outer join privacy 
+                on contact.jid = privacy.pkey
+            where jid like :jid
+            and privacy.value = 1
+            order by jid';
+        
+        $this->prepare(
+            'Contact',
+            array(
+                'jid' => '%'.$search.'%'
+                )
+        );
+        return $this->run('Contact');
+    }
+    
     function getAllPublic() {       
         $this->_sql = 
             'select *, privacy.value as privacy from contact 
@@ -353,6 +380,7 @@ class ContactDAO extends SQL {
         
         return $this->run('RosterLink');
     }
+    
     function getRoster() {
         $this->_sql = '
         select
@@ -366,7 +394,7 @@ class ContactDAO extends SQL {
             rosterlink.groupname,
             rosterlink.chaton,
             presence.status,
-            presence.ressource,
+            presence.resource,
             presence.value,
             presence.delay,
             presence.node,
@@ -379,6 +407,35 @@ class ContactDAO extends SQL {
         on rosterlink.jid = contact.jid
         where rosterlink.session = :session
         order by groupname, rosterlink.jid, presence.value';
+        
+        $this->prepare(
+            'RosterLink', 
+            array(
+                'session' => $this->_user
+            )
+        );
+        
+        return $this->run('RosterContact');
+    }
+
+    // Get the roster without the presences
+    function getRosterSimple() {
+        $this->_sql = '
+        select
+            rosterlink.jid,
+            contact.fn,
+            contact.name,
+            contact.nickname,
+            contact.tuneartist,
+            contact.tunetitle,
+            rosterlink.rostername,
+            rosterlink.groupname,
+            rosterlink.chaton
+        from rosterlink
+        left outer join contact
+        on rosterlink.jid = contact.jid
+        where rosterlink.session = :session
+        order by groupname, rosterlink.jid';
         
         $this->prepare(
             'RosterLink', 
@@ -446,7 +503,7 @@ class ContactDAO extends SQL {
             rosterlink.groupname,
             rosterlink.chaton,
             presence.status,
-            presence.ressource,
+            presence.resource,
             presence.value,
             presence.delay,
             presence.node,
@@ -473,6 +530,25 @@ class ContactDAO extends SQL {
             return $this->run('RosterContact'); 
         else
             return $this->run('RosterContact', 'item');
+    }
+
+    function getPresence($jid) {       
+        $this->_sql = '
+            select * from contact
+            right outer join presence on contact.jid = presence.mucjid
+            where presence.session = :session
+            and presence.jid = :jid
+            order by mucaffiliation desc';
+        
+        $this->prepare(
+            'Presence', 
+            array(
+                'session' => $this->_user,
+                'jid' => $jid
+            )
+        );
+        
+        return $this->run('PresenceContact');
     }
 
     function getMe($item = false) {

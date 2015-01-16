@@ -57,13 +57,13 @@ class NodeConfig extends WidgetBase
                 '.$this->__('group.delete_return', $server).'
             </a><br /><br />';
             
-        Notification::appendNotification($this->__('group.deleted'), 'success');
+        Notification::append(null, $this->__('group.deleted'));
         RPC::call('movim_fill', 'handlingmessages', $html);
         RPC::commit();        
     }
     
     function onGroupConfig($stanza) { 
-        Notification::appendNotification($this->__('group.config_saved'), 'success');
+        Notification::append(null, $this->__('group.config_saved'));
         RPC::commit();        
     }
     

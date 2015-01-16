@@ -1,112 +1,143 @@
-<a 
+<!--<a 
     class="button color orange oppose"
     href="{$c->route('nodeconfig', array($me,'urn:xmpp:microblog:0'))}" >
     <i class="fa fa-user"></i> {$c->__('config.feed_configuration')}
-</a>
+</a>-->
 <form enctype="multipart/form-data" method="post" action="index.php" name="general">
-    <fieldset>
-        <legend><i class="fa fa-sliders"></i> {$c->__('config.general')}</legend>
-        <div class="element">
-            <label for="language"><i class="fa fa-language"></i> {$c->__('config.language')}</label>
-            <div class="select">
-                <select name="language" id="language">
-                    <option value="en">English (default)</option>
-                        {loop="$languages"}
-                            {if="$key == $conf"}
-                                <option 
-                                    value="{$key}" 
-                                    selected="selected">
-                                    {$value}
-                                </option>
-                            {else}
-                                <option 
-                                    value="{$key}">
-                                    {$value}
-                                </option>
-                            {/if}
-                        {/loop}
-                </select>
-            </div>
+    <br/>
+    <h3>{$c->__('config.general')}</h3>
+    <div class="block">
+        <div class="select">
+            <select name="language" id="language">
+                <option value="en">English (default)</option>
+                    {loop="$languages"}
+                        {if="$key == $conf"}
+                            <option 
+                                value="{$key}" 
+                                selected="selected">
+                                {$value}
+                            </option>
+                        {else}
+                            <option 
+                                value="{$key}">
+                                {$value}
+                            </option>
+                        {/if}
+                    {/loop}
+            </select>
         </div>
-    </fieldset>
+        <label for="language">{$c->__('config.language')}</label>
+    </div>
 
-    <fieldset>
-        <legend>{$c->__('config.appearence')}</legend>
-        <div class="element" id="nav_color">
-            <label for="color"><i class="fa fa-adjust"></i> {$c->__('config.background_color')}</label> 
-            <a 
-                type="button"
-                style="width: 45%; float: right;" 
-                class="button icon color purple back">
-                {$c->__('button.reset')}
-            </a>
-            <input 
-                style="box-shadow: none; width: 50%; float: left;"
-                name="color"
-                class="color" 
-                value="
-                {if="isset($color)"}
-                    {$color}
-                {else}
-                    082D50
+    <div class="clear"></div>
+    <br />
+    <!--
+    <h3>{$c->__('config.notifications')}</h3>
+
+    <div class="block">
+        <div class="checkbox">
+            <input
+                type="checkbox"
+                id="privacy"
+                name="privacy"
+                {if="$me->privacy"}
+                    checked
                 {/if}
-                ">
+                onchange="{$privacy}">
+            <label for="privacy"></label>
         </div>
-        
-        <div class="element" id="font_size">
-            <label for="size"><i class="fa fa-font"></i> {$c->__('config.font_size')}</label>
-            <a 
-                type="button"
-                style="width: 30%; float: right;" 
-                class="button icon color purple back">
-                {$c->__('button.reset')}
-            </a>
-            <span>
-                12
-                <input 
-                    id="slide" 
-                    type="range" 
-                    min="12" 
-                    max="16" 
-                    step="0.5" 
-                    value="
-                    {if="isset($size)"}
-                        {$size}
-                    {else}
-                        14
-                    {/if}
-                    " 
-                    name="size"
-                    style="width: 45%;"
-                />
-                16
-            </span>
-            <span id="currentsize">
+        <label for="language">{$c->__('notifications.message')}</label>
+    </div>
+
+    <div class="block">
+        <div class="checkbox">
+            <input
+                type="checkbox"
+                id="privacy"
+                name="privacy"
+                {if="$me->privacy"}
+                    checked
+                {/if}
+                onchange="{$privacy}">
+            <label for="privacy"></label>
+        </div>
+        <label for="language">{$c->__('notifications.desktop')}</label>
+    </div>-->
+    <!--
+    <h3>{$c->__('config.appearence')}</h3>-->
+
+    <!--<div class="block large" id="nav_color">
+        <a
+            type="button"
+            style="width: 45%; float: right;" 
+            class="button flat">
+            {$c->__('button.reset')}
+        </a>
+        <input 
+            style="box-shadow: none; width: 50%; float: left;"
+            name="color"
+            class="color" 
+            value="
+            {if="isset($color)"}
+                {$color}
+            {else}
+                082D50
+            {/if}
+            ">
+        <label for="color"><i class="fa fa-adjust"></i> {$c->__('config.background_color')}</label> 
+    </div>-->
+    <!--
+    <div class="block large" id="font_size">
+        <label for="size"><i class="fa fa-font"></i> {$c->__('config.font_size')}</label>
+        <a 
+            type="button"
+            class="button flat">
+            {$c->__('button.reset')}
+        </a>
+        <span>
+            12
+            <input 
+                id="slide" 
+                type="range" 
+                min="12" 
+                max="16" 
+                step="0.5" 
+                value="
                 {if="isset($size)"}
                     {$size}
                 {else}
                     14
                 {/if}
-                px
-            </span>
-        </div>
-        
-    </fieldset>
-    <br />
+                " 
+                name="size"
+                style="width: 45%;"
+            />
+            16
+        </span>
+        <span id="currentsize">
+            {if="isset($size)"}
+                {$size}
+            {else}
+                14
+            {/if}
+            px
+        </span>
+    </div>
+    -->
     
-    <hr />
+    
 <!--<label id="lock" for="soundnotif">{$c->t('Enable Sound Notification:'); ?></label>
   <input type="checkbox" name="soundnotif" value="soundnotif" checked="checked" /><br /> -->
 <!--<input value="{$c->t('Submit'); ?>" onclick="<?php echo $submit; ?>" type="button" class="button icon yes merged right" style="float: right;">
     <input type="reset" value="{$c->t('Reset'); ?>" class="button icon no merged left" style="float: right;">-->
 
-    <br />
+    <div class="clear padded"></div>
     <a 
         onclick="{$submit}" 
-        type="button" 
-        class="button color green oppose" >
-        <i class="fa fa-check"></i> {$c->__('button.submit')}
+        class="button color oppose" >
+        {$c->__('button.save')}
     </a>
     <div class="clear"></div>
 </form>
-<div class="message info">{$c->__('config.info')}</div>
+<!--
+<div class="message info">{$c->__('config.info')}</div>-->

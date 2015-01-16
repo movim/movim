@@ -1,10 +1,6 @@
-<?php /* -*- mode: html -*- */
-?>
-<div id="main">
-    <div id="left">
-        <?php $this->widget('AccountError');?>
-    </div>
-    <div id="center">
+<main>
+    <?php $this->widget('Header'); ?>
+    <section>
         <?php $this->widget('AccountNext');?>
-    </div>
-</div>
+    </section>
+</main>

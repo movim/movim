@@ -124,12 +124,12 @@ class VisioExt extends WidgetBase
         
         $stj = new SDPtoJingle(
             $p->sdp,
-            $this->user->getLogin().'/'.$sd->ressource,
-            $p->jid.'/'.$p->ressource,
+            $this->user->getLogin().'/'.$sd->refsource,
+            $p->jid.'/'.$p->resource,
             'session-initiate');
         
         $r = new SessionInitiate;
-        $r->setTo($p->jid.'/'.$p->ressource)
+        $r->setTo($p->jid.'/'.$p->resource)
           ->setOffer($stj->generate())
           ->request();
         
@@ -145,22 +145,22 @@ class VisioExt extends WidgetBase
         
         $stj = new SDPtoJingle(
             $p->sdp,
-            $this->user->getLogin().'/'.$sd->ressource,
-            $p->jid.'/'.$p->ressource,
+            $this->user->getLogin().'/'.$sd->resource,
+            $p->jid.'/'.$p->resource,
             'session-accept');
             
         $r = new SessionInitiate;
-        $r->setTo($p->jid.'/'.$p->ressource)
+        $r->setTo($p->jid.'/'.$p->resource)
           ->setOffer($stj->generate())
           ->request();
     }
 
-    function ajaxSendSessionTerminate($jid, $ressource, $reason = null) {
+    function ajaxSendSessionTerminate($jid, $resource, $reason = null) {
         $s = Session::start('movim');
         $jingleSid = $s->get("jingleSid");
         
         $r = new SessionTerminate;
-        $r->setTo($jid.'/'.$ressource);
+        $r->setTo($jid.'/'.$resource);
         $r->setJingleSid($jingleSid);
 
         if(isset($reason))
@@ -179,12 +179,12 @@ class VisioExt extends WidgetBase
 
         $stj = new SDPtoJingle(
             $sdp,
-            $this->user->getLogin().'/'.$sd->ressource,
-            $p->jid.'/'.$p->ressource,
+            $this->user->getLogin().'/'.$sd->resource,
+            $p->jid.'/'.$p->resource,
             'transport-info');
 
         $r = new SessionInitiate;
-        $r->setTo($p->jid.'/'.$p->ressource)
+        $r->setTo($p->jid.'/'.$p->resource)
           ->setOffer($stj->generate())
           ->request();
     }*/

@@ -1,0 +1,45 @@
+/* Menu */
+
+body > nav > ul span.icon {
+    left: 1rem;
+}
+
+body > nav > ul > li:first-child {
+    height: 7rem;
+    line-height: 7rem;
+}
+
+body > nav > ul > li:first-child div.control {
+    line-height: 7rem;
+}
+
+body > nav > ul a {
+    color: white;
+}
+
+body > nav > header.big {
+    overflow: hidden;
+    height: 7rem;
+    min-height: 0;
+    padding: 0;
+}
+
+body > nav > header.big ul {
+    padding: 0.5rem 0;
+}
+
+body > nav > header.big ul li .icon {
+    left: 1rem;
+}
+
+body > nav > header.big ul li .control {
+    line-height: 5rem;
+}
+
+ul.oppose {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-width: 10rem;
+}
+
