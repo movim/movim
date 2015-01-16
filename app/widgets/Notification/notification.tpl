@@ -1,1 +1,1 @@
-<div id="notification_widget"></div>
+<div id="toast" class="toast"></div>

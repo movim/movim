@@ -92,7 +92,7 @@ class Vcard4 extends WidgetBase
         $c = $packet->content;
         $html = $this->prepareForm($c);
 
-        Notification::appendNotification($this->__('vcard.updated'), 'success');
+        Notification::append(null, $this->__('vcard.updated'));
         
         RPC::call('movim_fill', 'vcard_form', $html);
         RPC::commit();
@@ -100,12 +100,12 @@ class Vcard4 extends WidgetBase
 
     function onMyVcard4Received() {
         RPC::call('movim_button_reset', '#vcard4validate');
-        Notification::appendNotification($this->__('vcard.updated'), 'success');
+        Notification::append(null, $this->__('vcard.updated'));
         RPC::commit();
     }
     
     function onMyVcard4NotReceived() {
-        Notification::appendNotification($this->__('vcard.not_updated'), 'error');
+        Notification::append(null, $this->__('vcard.not_updated'));
         RPC::commit();
     }
     
@@ -173,10 +173,10 @@ class Vcard4 extends WidgetBase
     function ajaxChangePrivacy($value) {
         if($value == true) {
             \modl\Privacy::set($this->user->getLogin(), 1);
-            Notification::appendNotification($this->__('vcard.public'), 'success');
+            Notification::append(null, $this->__('vcard.public'));
         } else {
             \modl\Privacy::set($this->user->getLogin(), 0);
-            Notification::appendNotification($this->__('vcard.restricted'), 'success');
+            Notification::append(null, $this->__('vcard.restricted'));
         }
     }
 }

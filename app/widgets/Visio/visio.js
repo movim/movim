@@ -1,6 +1,6 @@
 function notifyOpener() {    
     document.querySelector('#connection').style.display = 'none';
-	if(self.opener || !self.opener.Popup.win) 
+    if(self.opener || !self.opener.Popup.win) 
         self.opener.Popup.win = self;
 }
 
@@ -9,13 +9,13 @@ setInterval( notifyOpener, 200 );
 self.focus();
 
 VISIO_JID = '';
-VISIO_RESSOURCE = '';
+VISIO_RESOURCE = '';
 
 /**
  * When an error occured
  */
 window.onerror = function() {
-	document.querySelector('#connection').style.display = 'block'; 
+    document.querySelector('#connection').style.display = 'block'; 
 };
 
 /**
@@ -129,7 +129,7 @@ var Visio = {
             if(stack.jid != null) {
                 jid = stack.jid.split('/');
                 VISIO_JID       = jid[0]; 
-                VISIO_RESSOURCE = jid[1];
+                VISIO_RESOURCE = jid[1];
 
                 delete stack.jid;
             }

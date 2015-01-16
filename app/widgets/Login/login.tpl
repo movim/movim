@@ -1,60 +1,77 @@
-<div id="loginpage" class="fadeDown">
-    {if="!BROWSER_COMP"}
-        <div class="message warning">
-            {$c->__('error.too_old')}
-        </div>
-    {else}
-        <div id="sessions">
+{if="!BROWSER_COMP"}
+    <div class="message warning">
+        {$c->__('error.too_old')}
+    </div>
+{else}
+<div id="login_widget">
+    <div id="sessions" class="dialog actions"></div>
 
-        </div>
-        {if="isset($info) && $info != ''"}
-            <div class="message warning">
-                {$info}
-            </div>
-        {/if}
-        <form
-            data-action="{$submit}"
-            name="login">
-            <div class="element">
-                <input type="email" name="login" id="login" autofocus required disabled
-                    placeholder="{$c->__('form.username')}"/>
-            </div>
-            <div class="element">
-                <input type="password" name="pass" id="pass" required disabled
-                    placeholder="{$c->__('form.password')}"/>
-            </div>
-            <div class="element">
-                <input
-                    type="submit"
-                    disabled
-                    data-loading="{$c->__('button.connecting')}"
-                    value="{$c->__('button.come_in')}"
-                    class="button color green"/> 
-            </div>
-            <div class="clear"></div>
-
-            <div id="warning">
-                {$warnings}
-                <div class="message error websocket">
-                    {$c->__('error.websocket')}
+    <div class="dialog">
+        <section>
+            <span class="info">{$c->__('connected')} {$connected} / {$pop}</span>
+            <h3>{$c->__('page.login')}</h3>
+            <form
+                data-action="{$submit}"
+                name="login">
+                <div>
+                    <input type="email" name="login" id="login" autofocus required disabled
+                        placeholder="{$c->__('form.username')}"/>
+                    <label for="login">{$c->__('form.username')}</label>
                 </div>
+                <div>
+                    <input type="password" name="pass" id="pass" autocomplete="off" required disabled
+                        placeholder="{$c->__('form.password')}"/>
+                    <label for="pass">{$c->__('form.password')}</label>
+                </div>
+                <div>
+                    <ul class="simple thin">
+                        <li>
+                            <div class="control">
+                                <input
+                                    type="submit"
+                                    disabled
+                                    data-loading="{$c->__('button.connecting')}"
+                                    value="{$c->__('button.come_in')}"
+                                    class="button flat"/> 
+                            </div>
+                            <a id="return_sessions" class="button flat" href="#" onclick="Login.backToChoose()">
+                                {$c->__('account.title')}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
 
-            </div>
-            <div class="clear"></div>
+            <ul class="thin simple">
+                <li class="new_account">
+                    <span>{$c->__('form.no_account')}<br />
+                        <a class="button flat" href="{$c->route('account')}">
+                            {$c->__('form.create_one')}
+                        </a>
+                    </span>
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
 
-            <p class="create">
-                <a id="return_sessions" class="button color transparent alone" href="#" onclick="backToChoose()">
-                    <i class="fa fa-chevron-left"></i>
-                </a>
-                <a class="button color transparent oppose" href="{$c->route('account')}">
-                    <i class="fa fa-user"></i> {$c->__('form.create_one')}
-                </a>
-                <span>{$c->__('form.no_account')}</span>
-            </p>
+{if="isset($info) && $info != ''"}
+    <div class="message warning">
+        {$info}
+    </div>
+{/if}
+<div id="error_websocket" class="snackbar">
+    {$c->__('error.websocket')}
+</div>
 
-            <div class="clear"></div>
+{/if}
+
+
+            <!--<div class="clear"></div>-->
+            <!--
+            <div class="clear"></div>-->
         
-            <ul id="loginhelp">
+            <!--<ul id="loginhelp">
                 {if="$whitelist_display == true"}
                     <li id="whitelist">
                         <p>{$c->__('whitelist.info')}</p>
@@ -74,14 +91,4 @@
                         {$facebook}
                     </li>
                 {/if}
-            </ul>
-        </form>
-    {/if}
-
-    <div class="admin">
-        {$c->__('connected')} {$connected} • {$c->__('population')} {$pop} • 
-        <a href="{$c->route('admin')}">
-            {$c->__('page.administration')}
-        </a>
-    </div>
-</div>
+            </ul>-->

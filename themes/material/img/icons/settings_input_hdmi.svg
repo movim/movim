@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<path fill="none" d="M0,0h24v24H0V0z"/>
+<path fill="#37474F" d="M18,7V4c0-1.1-0.9-2-2-2H8C6.9,2,6,2.9,6,4v3H5v6l3,6v3h8v-3l3-6V7H18z M14,7V5h-1v2h-2V5h-1v2H8V4h8v3H14z"
+	/>
+<rect x="10" y="5" fill="#FFD54F" width="1" height="2"/>
+<rect x="13" y="5" fill="#FFD54F" width="1" height="2"/>
+<path fill="#FFCA28" d="M18,4v3h-2V4H8v3H6V4c0-1.1,0.9-2,2-2h8C17.1,2,18,2.9,18,4z"/>
+<polygon fill="#546E7A" points="19,7 19,13 16,19 16,19.06 8,19.06 8,19 5,13 5,7 "/>
+</svg>

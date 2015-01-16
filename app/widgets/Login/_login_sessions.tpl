@@ -1,14 +1,23 @@
-<ul>
-{loop="$sessions"}
-    <li>
-        <img onclick="chooseSession('{$value->jid}')" src="{$value->getPhoto('m')}"/>
-        <span onclick="chooseSession('{$value->jid}')">{$value->getTrueName()}</span>
-        <a class="button oppose color alone transparent" onclick="removeSession('{$value->jid}')"><i class="fa fa-times"></i></a>
-    </li>
-{/loop}
-
-    <li>
-        <img onclick="chooseSession('')" src="{$empty->getPhoto('m')}"/>
-        <span onclick="chooseSession('')">{$c->__('form.another_account')}</span>
-    </li>
-</ul>
+<section>
+    <h3>{$c->__('account.title')}</h3>
+    <br />
+    <ul class="active">
+        {loop="$sessions"}
+        <li>
+            <div class="control">
+                <i onclick="Login.removeSession('{$value->jid}')" class="fa fa-times"></i>
+            </div>
+            <span onclick="Login.choose('{$value->jid}')" class="icon bubble">
+                <img src="{$value->getPhoto('s')}"/>
+            </span>
+            <span onclick="Login.choose('{$value->jid}')">{$value->getTrueName()}</span>
+        </li>
+        {/loop}
+    </ul>
+</section>
+<div>
+    <a class="button flat" href="{$c->route('admin')}">
+        <i class="md md-pages"></i>
+    </a>
+    <span class="button flat" onclick="Login.choose('')">{$c->__('form.another_account')}</span>
+</div>

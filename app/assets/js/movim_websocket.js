@@ -19,19 +19,24 @@ WebSocket.prototype.admin = function(key) {
 
 var MovimWebsocket = {
     connection: null,
-    attached: null,
+    attached: new Array(),
     unregistered: false,
     
     launchAttached : function() {
-        for(var i = 0; i < this.attached.length; i++) {
-            this.attached[i]();
+        for(var i = 0; i < MovimWebsocket.attached.length; i++) {
+            MovimWebsocket.attached[i]();
         }
     },
 
     init : function() {
-        this.connection = new WebSocket('ws://' + BASE_HOST + ':8080');
-        this.attached = new Array();
-        
+        if(SECURE_WEBSOCKET) {
+            var uri = 'wss://' + BASE_HOST + '/ws/';
+        } else {
+            var uri = 'ws://' + BASE_HOST + '/ws/';
+        }
+
+        this.connection = new WebSocket(uri);
+
         this.connection.onopen = function(e) {
             console.log("Connection established!");
             MovimWebsocket.launchAttached();
@@ -42,14 +47,16 @@ var MovimWebsocket = {
 
             var obj = JSON.parse(data);
 
-            if(obj.func == 'registered') {
-                MovimWebsocket.launchAttached();
+            if(obj != null) {
+                if(obj.func == 'registered') {
+                    MovimWebsocket.launchAttached();
+                }
+
+                if(obj.func == 'disconnected') {
+                    movim_disconnect();
+                }
             }
 
-            if(obj.func == 'disconnected') {
-                movim_disconnect();
-            }
-            
             MovimWebsocket.handle(data);
         };
 
@@ -136,5 +143,7 @@ window.onbeforeunload = function() {
     MovimWebsocket.connection.close()
 };
 
-// And we start it
-MovimWebsocket.init();
+movim_add_onload(function() {
+    // And we start it
+    MovimWebsocket.init();
+});

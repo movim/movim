@@ -8,6 +8,7 @@ class AccountNext extends WidgetBase {
     function load()
     {
         $this->addjs('accountnext.js');
+        $this->addcss('accountnext.css');
         
         $this->registerEvent('register_get_handle', 'onForm');
         $this->registerEvent('register_set_handle', 'onRegistered');
@@ -76,17 +77,17 @@ class AccountNext extends WidgetBase {
     function onRegisterError($package)
     {
         $error = $package->content;
-        RPC::call('movim_fill', 'subscription_error', '<div class="message error">'.$error.'</div>');
+        Notification::append(null, $error);
     }
     
     function onRegisterNotAcceptable()
     {
-        RPC::call('movim_fill', 'subscription_error', '<div class="message error">'.$this->__('error.not_acceptable').'</div>');
+        Notification::append(null, $this->__('error.not_acceptable'));
     }
     
     function onServiceUnavailable()
     {
-        RPC::call('movim_fill', 'subscription_form', '<div class="message error">'.$this->__('error.service_unavailable').'</div>');
+        Notification::append(null, $this->__('error.service_unavailable'));
         RPC::call('remoteUnregister');
     }
 

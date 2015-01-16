@@ -1,225 +1,136 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Chat.php
- * This file is part of MOVIM.
- * 
- * @brief A jabber chat widget.
- *
- * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
- *
- * @version 1.0
- * @date 20 October 2010
- *
- * Copyright (C)2010 MOVIM project
- * 
- * See COPYING for licensing information.
- */
 use Moxl\Xec\Action\Message\Composing;
 use Moxl\Xec\Action\Message\Paused;
 use Moxl\Xec\Action\Message\Publish;
-use Moxl\Xec\Action\Presence\Unavaiable;
- 
-class Chat extends WidgetBase {
 
-    private $_encrypted = false;
-
-    function load() {
-        $this->addcss('chat.css');
+class Chat extends WidgetCommon
+{
+    function load()
+    {
         $this->addjs('chat.js');
+        $this->addcss('chat.css');
+        $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('messagepublished', 'onMessagePublished');
         $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
-        $this->registerEvent('attention', 'onAttention');
-        $this->registerEvent('presence', 'onPresence');
-        $this->registerEvent('muc_presence', 'onPresenceMuc');
-        $this->registerEvent('presence_muc', 'onPresenceMucUser'); // New event key system, different key than before !
     }
 
-    function display() {
-        $this->view->assign('chats', $this->prepareChats());
-    }
+    function onMessage($packet)
+    {
+        $message = $packet->content;
 
-    function onPresence($packet) {
-        $content = $packet->content;
-        $contact = $content[0];
+        if($message->session == $message->jidto) {
+            $from = $message->jidfrom;
 
-        $txt = getPresences();
-
-        if(isset($contact) && $contact->chaton > 0 ) {
-            $html = '
-                <div class="message presence">
-                    <span class="date">' . date('G:i', time()) . '</span>' . prepareString(htmlentities($txt[$contact->value] . ' - ' . $contact->ressource, ENT_COMPAT, "UTF-8")) . '
-                </div>';
-                
-            RPC::call('Chats.message', $contact->jid, $html);
-        }
-    }
-
-    function onPresenceMucUser($packet) {
-        $presence = $packet->content;
-        RPC::call('movim_fill', 'list' . $presence->jid, $this->prepareMucList($presence->jid));
-    }
-
-    function onPresenceMuc($toggle) {
-        if($toggle) {
-            Notification::appendNotification($this->__('Connected to the chatroom'), 'success');
-        } else {
-            Notification::appendNotification($this->__('Disconnected to the chatroom'), 'success');
-        }
-        
-        RPC::call('movim_fill', 'chats', $this->prepareChats());
-        RPC::call('Chats.scrollAll');
-    }
-    
-    private function checkEncrypted($message) {
-        if(preg_match("#^\?OTR#", $message->body)) {
-            $this->_encrypted = true;
-            $message->body = $this->__('message.encrypted');
-        }
-        
-        return $message;
-    } 
-
-    function onMessage($message) {
-        if($message->session == $message->jidfrom) {
-            $key = $message->jidfrom;
-            $jid = $message->jidto;
-        } else {   
-            $key = $message->jidto;
-            $jid = $message->jidfrom;
-        }
-        
-        $rd = new \modl\RosterLinkDAO();
-        $rc = new \modl\ContactDAO();
-        
-        $contact = $rc->getRosterItem(echapJid($jid));
-        
-        $message = $this->checkEncrypted($message);
-        
-        if($contact != null
-        && $message->session != $message->jidfrom
-        && $this->_encrypted == false) {
-            RPC::call(
-                'notify',
-                $contact->getTrueName(),
-                trim($message->body),
-                $contact->getPhoto('m'));
-        }
-
-        $this->_encrypted = false;
-        
-        if($contact != null && $contact->chaton == 0) {
-            $contact->chaton = 2;
-            $rd->setChat($jid, 2);
+            $cd = new \Modl\ContactDAO;
+            $contact = $cd->get($from);
             
-            RPC::call('movim_prepend', 'chats', $this->prepareChat($contact));
-            RPC::call('Chats.scrollAll');
-        } elseif($contact != null && $message->body != '') {
-            $html = $this->prepareMessage($message);
-            if($contact->chaton == 1) {
-                RPC::call('Chats.unread', $contact->jid);
+            if($contact != null
+            && !preg_match('#^\?OTR#', $message->body)
+            && $message->type != 'groupchat') {
+                Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $contact->getPhoto('s'), 4);
             }
+        // If the message is from me
+        } else {
+            $from = $message->jidto;
+        }
 
-            //if($message->session != $message->jidfrom) {
-                RPC::call('hideComposing', $contact->jid);
-                RPC::call('hidePaused', $contact->jid);
-            //}
+        RPC::call('movim_fill', $from.'_messages', $this->prepareMessages($from));        
+        RPC::call('MovimTpl.scrollPanel');
+    }
+
+    function onComposing($array)
+    {
+        list($from, $to) = $array;
+        $myself = false;
+
+        if($from == $this->user->getLogin()) {
+            // If the message is from me
+            $myself = true;
+            $jid = $to;
+        } else {
+            $jid = $from;
+        }
+        
+        RPC::call('movim_fill', $jid.'_messages', $this->prepareMessages($jid, 'composing', $myself));
+        RPC::call('MovimTpl.scrollPanel');
+    }
+
+    function onPaused($array)
+    {
+        list($from, $to) = $array;
+        $myself = false;
+
+        if($from == $this->user->getLogin()) {
+            // If the message is from me
+            $myself = true;
+            $jid = $to;
+        } else {
+            $jid = $from;
+        }
+        
+        RPC::call('movim_fill', $jid.'_messages', $this->prepareMessages($jid, 'paused', $myself));
+        RPC::call('MovimTpl.scrollPanel');
+    }
+
+    /**
+     * @brief Show the smiley list
+     */
+    function ajaxSmiley()
+    {
+        $view = $this->tpl();
+        Dialog::fill($view->draw('_chat_smiley', true));
+    }
+
+    /**
+     * @brief Get a discussion
+     * @parem string $jid
+     */
+    function ajaxGet($jid = null)
+    {
+        if($jid == null) {
+            RPC::call('movim_fill', 'chat_widget', $this->prepareEmpty());
+        } else {
+            $html = $this->prepareChat($jid);
             
-            RPC::call('Chats.message', $contact->jid, $html);
-        }
-
-        // Muc case
-        elseif($message->ressource != '') {
-            $html = $this->prepareMessage($message, true);
-            RPC::call('Chats.message', $message->jidfrom, $html);
-        }
-        RPC::commit();
-    }
-
-    function onMessagePublished($jid) {
-        Notification::appendNotification($this->__('message.published'), 'success');
-    }
-
-    function onComposing($jid) {
-        $rd = new \Modl\RosterLinkDAO();
-        
-        $contact = $rd->get(echapJid($jid));
-        
-        if(isset($contact) && in_array($contact->chaton, array(1, 2))) {
-            RPC::call('showComposing', $contact->jid);
-            RPC::call('Chats.scroll', $contact->jid);
+            $header = $this->prepareHeader($jid);
+            
+            Header::fill($header);
+            RPC::call('movim_fill', 'chat_widget', $html);
+            RPC::call('MovimTpl.scrollPanel');
+            RPC::call('MovimTpl.showPanel');
         }
     }
 
-    function onPaused($jid) {
-        $rd=new \Modl\RosterLinkDAO();
-        
-        $contact=$rd->get(echapJid($jid));
-        
-        if(in_array($contact->chaton, array(1, 2))) {
-            RPC::call('showPaused', $contact->jid);
-            RPC::call('Chats.scroll', $contact->jid);
-        }
-    }
-
-    function onAttention($packet) {
-        $jid = $packet->from;
-        $rc = new \Modl\ContactDAO();
-        $contact = $rc->getRosterItem(echapJid($jid));
-        $html = '
-            <div style="font-weight: bold; color: black;" class="message" >
-                <span class="date">' . 
-                    date('G:i', time()) . '</span>' . 
-                    $this->__('chat.attention', $contact->getTrueName()) . '
-            </div>';
-        RPC::call('movim_append', 'messages' . $jid, $html);
-        RPC::call('Chats.scroll', $jid);
-    }
     /**
-     * Open a new talk
-     *
-     * @param string $jid
-     * @return void
+     * @brief Get a chatroom
+     * @parem string $jid
      */
-    function ajaxOpenTalk($jid) {
-        $rc = new \Modl\ContactDAO();
-        $contact = $rc->getRosterItem(echapJid($jid));
+    function ajaxGetRoom($room)
+    {
+        $html = $this->prepareChat($room, true);
         
-        if(isset($contact) && $contact->chaton == 0 && !in_array($contact->presence, array(5, 6))) {
-            $contact->chaton = 2;
-            $rd = new \Modl\RosterLinkDAO();
-            $rd->setChat(echapJid($jid), 2);
-            RPC::call('movim_prepend', 'chats', $this->prepareChat($contact));
-            RPC::call('Chats.scrollAll');
-            RPC::commit();
-        }
+        $header = $this->prepareHeaderRoom($room);
+        
+        Header::fill($header);
+        RPC::call('movim_fill', 'chat_widget', $html);
+        RPC::call('MovimTpl.scrollPanel');
+        RPC::call('MovimTpl.showPanel');
     }
+
     /**
-     * Send an encrypted message
+     * @brief Send a message
      *
      * @param string $to
      * @param string $message
      * @return void
      */
-    function ajaxSendEncryptedMessage($to, $message, $muc=false, $ressource=false) {
-        $this->ajaxSendMessage($to, $message, $muc, $ressource, true);
-    }
-    /**
-     * Send a message
-     *
-     * @param string $to
-     * @param string $message
-     * @return void
-     */
-    function ajaxSendMessage($to, $message, $muc=false, $ressource=false, $encrypted=false) {
+    function ajaxSendMessage($to, $message, $muc = false, $resource = false) {
         if($message == '')
             return;
         
-        $m=new \Modl\Message();
+        $m = new \Modl\Message();
         $m->session = $this->user->getLogin();
         $m->jidto   = echapJid($to);
         $m->jidfrom = $this->user->getLogin();
@@ -227,11 +138,11 @@ class Chat extends WidgetBase {
         $session    = \Sessionx::start();
         
         $m->type    = 'chat';
-        $m->ressource = $session->ressource;
+        $m->resource = $session->resource;
         
         if($muc) {
             $m->type        = 'groupchat';
-            $m->ressource   = $session->user;
+            $m->resource   = $session->user;
             $m->jidfrom     = $to;
         }
         
@@ -241,12 +152,14 @@ class Chat extends WidgetBase {
         
         $md = new \Modl\MessageDAO();
         $md->set($m);
-        
-        $evt = new Event();
-        $evt->runEvent('message', $m);
 
-        if($ressource!=false) {
-            $to = $to . '/' . $ressource;
+        /* Is it really clean ? */
+        $packet = new Moxl\Xec\Payload\Packet;
+        $packet->content = $m;
+        $this->onMessage($packet, true);
+
+        if($resource != false) {
+            $to = $to . '/' . $resource;
         }
 
         // We decode URL codes to send the correct message to the XMPP server
@@ -254,15 +167,15 @@ class Chat extends WidgetBase {
         $m->setTo($to);
         $m->setContent(htmlspecialchars(rawurldecode($message)));
 
-        //->setEncrypted($encrypted)->setContent(htmlspecialchars(rawurldecode($message)));
         if($muc) {
             $m->setMuc();
         }
+
         $m->request();
     }
-    
+
     /**
-     * Send a "composing" message
+     * @brief Send a "composing" message
      * 
      * @param string $to
      * @return void
@@ -271,8 +184,9 @@ class Chat extends WidgetBase {
         $mc = new Composing;
         $mc->setTo($to)->request();
     }
+    
     /**
-     * Send a "paused" message
+     * @brief Send a "paused" message
      * 
      * @param string $to
      * @return void
@@ -281,264 +195,129 @@ class Chat extends WidgetBase {
         $mp=new Paused;
         $mp->setTo($to)->request();
     }
+
     /**
-     * Close a talk
-     *
+     * @brief Prepare the contact header
+     * 
      * @param string $jid
-     * @return void
      */
-    function ajaxCloseTalk($jid) {
-        $rd = new \Modl\RosterLinkDAO();
-        $contact = $rd->get(echapJid($jid));
-        $contact->chaton = 0;
-        $rd->setNow($contact);
-        RPC::call('movim_delete', 'chat' . echapJid($jid));
-        RPC::commit();
+    function prepareHeader($jid)
+    {
+        $view = $this->tpl();
+
+        $cd = new \Modl\ContactDAO;
+
+        $cr = $cd->getRosterItem($jid);
+        if(isset($cr)) {
+            $contact = $cr;
+        } else {
+            $contact = $cd->get($jid);
+        }
+        
+        $view->assign('contact', $contact);
+        $view->assign('jid', $jid);
+
+        return $view->draw('_chat_header', true);
     }
 
-    function ajaxHideTalk($jid) {
-        $rd = new \Modl\RosterLinkDAO();
-        $contact = $rd->get(echapJid($jid));
-        
-        if($contact->chaton == 1) {
-            $contact->chaton = 2;
-        } else {
-            $contact->chaton = 1;
-        }
-        $rd->setNow($contact);
-        RPC::call('Chats.scroll', $contact->jid);
-        RPC::commit();
-    }
     /**
-     * Exit a muc
-     *
-     * @param $jid
-     * @return void
+     * @brief Prepare the contact header
+     * 
+     * @param string $jid
      */
-    function ajaxExitMuc($jid, $ressource) {
-        $pu = new Unavaiable;
-        $pu->setTo($jid)->setRessource($ressource)->request();
+    function prepareHeaderRoom($room)
+    {
+        $view = $this->tpl();
+        
+        $view->assign('room', $room);
+
+        return $view->draw('_chat_header_room', true);
     }
 
-    function prepareMessage($message, $muc = false) {
-        if($message->body != '' || $message->subject != '') {
-            if($message->subject != '') {
-                $message->body = $message->subject;
-            }
-            
-            $message = $this->checkEncrypted($message);
-            
-            $html='
-                <div class="message ';
-                if($message->session == $message->jidfrom) {
-                    $html .= 'me';
-                }
-                
-                if(isset($message->html)) {
-                    $type = 'html';
-                    $content = $message->html;
-                } else {
-                    $type='';
-                    $content = prepareString(
-                        htmlentities($message->body, ENT_COMPAT, "UTF-8"));
-                }
-                if(preg_match("#^/me#", $message->body)) {
-                    $html .= ' own ';
-                    $content = '** ' . substr($message->body, 4);
-                }
-                
-                $c = new \modl\Contact();
-            $html .= '">
-                <img class="avatar" src="' . $c->getPhoto('xs', $message->jidfrom) . '" alt="avatar"/>
-                <span class="date">' . date('H:i', strtotime($message->published)) . '</span>';
-                
-            if($muc != false) {
-                $html.='
-                    <span
-                        class="ressource ' . $this->colorNameMuc($message->ressource) . '">' .
-                        $message->ressource . '
-                    </span>';
-            }
-            $html .= '<div class="content ' . $type . '">' . $content . '</div>
-                </div>';
-            return $html;
-        } else {
-            return '';
-        }
-    }
-
-    function prepareChats() {
-        $rc = new \modl\ContactDAO();
-        $contacts = $rc->getRosterChat();
-        $html = '';
-
-        // Another filter to fix the database request
-        $check = array();
-        if(isset($contacts)) {
-            foreach($contacts as $contact) {
-                if(!in_array($contact->jid, $check)) {
-                    $html .= trim($this->prepareChat($contact));
-
-                    //$jid = $contact->jid;
-                    array_push($check, $contact->jid);
-                }
-            }
-        }
-
-        // And we show the subscribed conferences
-        $cd = new \Modl\ConferenceDAO();
-        $cs = $cd->getConnected();
+    function prepareChat($jid, $muc = false)
+    {
+        $view = $this->tpl();
         
-        if($cs) {
-            foreach($cs as $c) {
-                $html .= trim($this->prepareMuc($c));
-            }
-        }
-        
-        $html.='<div class="filler"></div>';
-        return $html;
-    }
+        $view->assign('jid', $jid);
+        $view->assign('messages', $this->prepareMessages($jid));
 
-    // Prepare Chat
-    function prepareChat($contact) {
-        $md = new \Modl\MessageDAO();
-        $messages = $md->getContact(echapJid($contact->jid), 0, 10);
-        $messageshtml = '';
-        if($messages != null) {
-            $messages = array_reverse($messages);
-            $day = '';
-            foreach($messages as $m) {
-                if($day != date('d', strtotime($m->published))) {
-                    $messageshtml.='<div class="message presence">' . prepareDate(strtotime($m->published), false) . '</div>';
-                    $day = date('d', strtotime($m->published));
-                }
-                $messageshtml .= $this->prepareMessage($m);
-            }
-        }
-        
-        $style = '';
-        $panelstyle = '';
-        $tabstyle = '';
-        
-        if($contact->chaton == 2) {
-            $tabstyle=' style="display: none;" ';
-            $panelstyle=' style="display: block;" ';
-        }
-        
-        $chatview = $this->tpl();
-        $chatview->assign(
+        $view->assign('composing', $this->call('ajaxSendComposing', "'" . $jid . "'"));
+        $view->assign('paused', $this->call('ajaxSendPaused', "'" . $jid . "'"));
+
+        $view->assign(
             'send',
             $this->call(
                 'ajaxSendMessage',
-                "'" . $contact->jid . "'",
-                "Chats.sendMessage(this, '" . $contact->jid . "')",
-                "false",
-                "'" . $contact->ressource . "'"));
-                
-        $chatview->assign('contact', $contact);
-        $chatview->assign('tabstyle', $tabstyle);
-        $chatview->assign('panelstyle', $panelstyle);
-        $chatview->assign('messageshtml', $messageshtml);
-        $chatview->assign('closetalk', $this->call("ajaxCloseTalk", "'" . $contact->jid . "'"));
-        $chatview->assign('hidetalk', $this->call("ajaxHideTalk", "'" . $contact->jid . "'"));
-        $chatview->assign('composing', $this->call('ajaxSendComposing', "'" . $contact->jid . "'"));
-        $chatview->assign('paused', $this->call('ajaxSendPaused', "'" . $contact->jid . "'"));
-        
-        return $chatview->draw('_chat_contact', true);
-    }
-
-    function prepareMuc($conference) {
-        $jid = $conference->conference;
-
-        // Zeu messages
-        $md = new \Modl\MessageDAO();
-        
-        $messages = $md->getContact($jid, 0, 10);
-        $messageshtml = '';
-        if(!empty($messages)) {
-            $messages = array_reverse($messages);
-            $day = '';
-            foreach($messages as $m) {
-                if($day != date('d', strtotime($m->published))) {
-                    $messageshtml .=
-                        '<div class="message presence">' .
-                            prepareDate(strtotime($m->published), false) .
-                        '</div>';
-                    $day = date('d', strtotime($m->published));
-                }
-                $messageshtml.=$this->prepareMessage($m, true);
-            }
-        }
-        
-        $mucview = $this->tpl();
-        $mucview->assign('jid', $jid);
-        $mucview->assign('messageshtml', $messageshtml);
-        $mucview->assign('toggle', $this->call("ajaxToggleMuc", "'" . $jid . "'"));
-        $mucview->assign(
-            'sendmessage',
-            $this->call(
-                'ajaxSendMessage',
                 "'" . $jid . "'",
-                 "Chats.sendMessage(this, '" . $jid . "')", "true"));
-        
-        $session = \Sessionx::start();
-        $mucview->assign('exitmuc', $this->call("ajaxExitMuc", "'" . $jid . "'", "'" . $session->username . "'"));
-        $sess = \Session::start(APP_NAME);
-        $state = $sess->get(md5('muc' . $jid));
-        $mucview->assign('conference', $conference);
-        $mucview->assign('muclist', $this->prepareMucList($jid));
-        
-        if($state == 1) {
-            $mucview->assign('tabstyle', 'style="display: none;"');
-            $mucview->assign('panelstyle', 'style="display: block;"');
-        } else {
-            $mucview->assign('tabstyle', '');
-            $mucview->assign('panelstyle', '');
+                "Chat.sendMessage('" . $jid . "')")
+            );
+        $view->assign('smiley', $this->call('ajaxSmiley'));
+
+        if($muc)
+        {
+            $view->assign(
+                'send',
+                $this->call(
+                    'ajaxSendMessage',
+                    "'" . $jid . "'",
+                    "Chat.sendMessage('" . $jid . "')",
+                    "true")
+                );
         }
-        $html = $mucview->draw('_chat_muc', true);
-        
-        return $html;
+
+        return $view->draw('_chat', true);
     }
 
-    function prepareMucList($jid) {
-        // Zeu muc list
-        $pd = new \modl\PresenceDAO();
-        $presences = $pd->getJid($jid);
-        $muclist = $this->tpl();
-        $muclist->assign('muclist', $presences);
+    function prepareMessages($jid, $status = false, $myself = false)
+    {
+        $md = new \Modl\MessageDAO();
+        $messages = $md->getContact(echapJid($jid), 0, 15);
         
-        return $muclist->draw('_chat_muc_list', true);
+        $cd = new \Modl\ContactDAO;
+        $view = $this->tpl();
+
+        $contact = $cd->get($jid);
+        /*if($contact == null) {
+            $contact = new \Modl\Contact;
+            $contact->jid = $jid;
+        } */
+        
+        $me = $cd->get();
+        if($me == null) {
+            $me = new \Modl\Contact;
+        }      
+
+        $messages = array_reverse($messages);
+        
+        $view->assign('jid', $jid);
+        $view->assign('contact', $contact);
+        $view->assign('me', $me);
+        $view->assign('messages', $messages);
+
+        $view->assign('status', $status);
+        $view->assign('myself', $myself);
+
+        $cd = new \Modl\ContactDAO;
+        $presences = $cd->getPresence($jid);
+        $contacts = array();
+
+        foreach($presences as $presence) {
+            $contacts[$presence->resource] = $presence;
+        }
+
+        $view->assign('contacts', $contacts);
+        
+
+        return $view->draw('_chat_messages', true);
     }
 
-    function ajaxToggleMuc($jid) {
-        $hash = md5('muc' . $jid);
-        $sess = \Session::start(APP_NAME);
-        $state = $sess->get($hash);
-        
-        if($state == 1) {
-            $sess->set($hash, 0);
-        } else {
-            $sess->set($hash, 1);
-        }
+    function prepareEmpty()
+    {
+        $view = $this->tpl();
+        return $view->draw('_chat_empty', true);
     }
 
-    function colorNameMuc($ressource) {
-        $colors = array(
-            0 => 'purple',
-            1 => 'purple',
-            2 => 'wine',
-            3 => 'yellow',
-            4 => 'orange',
-            5 => 'green',
-            6 => 'red',
-            7 => 'blue');
-            
-        $s = base_convert(sha1($ressource), 16, 8);
-        
-        if(isset($s[5])) {
-            return $colors[(int) $s[5]];
-        } else {
-            return 'orange';
-        }
+    function display()
+    {
     }
 }

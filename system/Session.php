@@ -80,7 +80,7 @@ class Session
     /**
      * Deletes all this session container (not the session!)
      */
-    public static function dispose($name)
+    public static function dispose()
     {
         if(isset(self::$instance)) {
             self::$instance = null;

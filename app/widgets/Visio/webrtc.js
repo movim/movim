@@ -94,7 +94,7 @@ function onIceCandidate(event) {
         candidate.line = event.candidate.sdpMLineIndex;
 
         candidate.jid = VISIO_JID;
-        candidate.ressource = VISIO_RESSOURCE;
+        candidate.resource = VISIO_RESOURCE;
 
         var msgString = JSON.stringify(candidate);
         
@@ -104,7 +104,7 @@ function onIceCandidate(event) {
 }
 
 function sendTerminate(reason) {
-    Visio_ajaxSendSessionTerminate(VISIO_JID, VISIO_RESSOURCE, reason);
+    Visio_ajaxSendSessionTerminate(VISIO_JID, VISIO_RESOURCE, reason);
 }
 
 function sendMessage(msg, accept) {
@@ -112,7 +112,7 @@ function sendMessage(msg, accept) {
     offer.sdp = msg.sdp;
     
     offer.jid = VISIO_JID;
-    offer.ressource = VISIO_RESSOURCE;
+    offer.resource = VISIO_RESOURCE;
 
     document.getElementById('visio').className = 'calling';
         

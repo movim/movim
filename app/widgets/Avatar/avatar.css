@@ -1,26 +1,63 @@
-#avatar img {
-    margin: 0 auto;
+#avatar form {
+    margin-top: 2rem;
 }
 
-#avatar .element #runningcam,
-#avatar .element #shoot{
+#avatar #camdiv {
+    padding-top: 5rem;
+}
+
+#avatar #camdiv #runningcam,
+#avatar #camdiv #shoot{
     display: none;
 }
 
-#avatar .element.active #runningcam{
+#avatar #camdiv.active #runningcam{
     display: block;
 }
 
-#avatar .element.active #shoot{
+#avatar #camdiv.active #shoot{
     display: inline-block;
 }
 
-#avatar .element.active #capture {
-    display: none;
-}   
+#avatar #camdiv #runningcam {
+    max-width: 100%;
+}
 
+#avatar #camdiv.active #capture {
+    display: none;
+}
+
+#avatar #result {
+    min-height: 35rem;
+    overflow: hidden;
+    text-align: center;
+}
+
+#avatar video {
+    background-color: #1F1F1F;
+    width: 100%;
+    min-height: 35rem;
+}
+
+#avatar #result img {
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    left: calc(50% - 105px);
+}
+
+#avatar #result span {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 1.5rem;
+    margin-left: -3rem; 
+}
+
+/*
 .squares, #snap{
 	height:200px;
     box-shadow: none !important;
     border: 0px !important;
 }
+*/

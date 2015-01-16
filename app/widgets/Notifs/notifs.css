@@ -1,5 +1,6 @@
 #notifs_widget li:not(:first-child) {
     margin-bottom: 0.5em;
+    display: list-item;
 }
 
 #notifs_widget li img {
@@ -7,4 +8,8 @@
     float: left;
     margin-right: 0.5em;
     border-radius: 1em;
+}
+
+#notifs_widget.groupshown li:not(:first-child){
+    display: none;
 }

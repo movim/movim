@@ -8,7 +8,7 @@
                 <input name="url" placeholder="{$c->__('url.url')}"/>
             </div>
             <div class="element large mini">
-                <input name="name" placeholder="{$c->t('url.name')}"/>
+                <input name="name" placeholder="{$c->__('url.name')}"/>
             </div>
         </fieldset>
         <div class="menu">
