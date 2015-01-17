@@ -45,6 +45,21 @@ class Core implements MessageComponentInterface {
             "\n".
             "--- ".colorize("Server Configuration - nginx", 'purple')." ---".
             "\n";
+        echo colorize("Add this in your configuration file", 'yellow')."\n";
+        echo "location /ws/ {
+    proxy_pass http://{$explode['host']}:{$port}/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection \"Upgrade\";
+    proxy_set_header Host $host;
+
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_redirect off;
+}
+
+";
 
         $path = $explode['host'].$explode['path'];
         
