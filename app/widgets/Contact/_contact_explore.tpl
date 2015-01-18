@@ -2,7 +2,7 @@
 
 <ul class="active">
 {loop="$users"}
-    <li class="condensed">
+    <li class="condensed" onclick="Contact_ajaxGetContact('{$valie->jid}');">
         <span class="icon bubble"><img class="avatar" src="{$value->getPhoto('m')}"/></span>
         <span>{$value->getTrueName()}</span>
         <p>
