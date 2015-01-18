@@ -22,7 +22,7 @@
                     {if="isset($value->html)"}
                         {$value->body}
                     {else}
-                        {$value->body|prepareString|htmlentities:ENT_COMPAT,'UTF-8'}
+                        {$value->body|htmlentities:ENT_COMPAT,'UTF-8'|prepareString}
                     {/if}
                 {/if}
                 <span class="info">{$value->delivered|strtotime|prepareDate}</span>
