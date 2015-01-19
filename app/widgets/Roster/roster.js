@@ -269,7 +269,7 @@ var Roster = {
             }
 
             // We select the interesting li
-            var selector = '#rosterlist div > li[title*="' + search.value.toLowerCase() + '"]:not(.subheader)';
+            var selector = '#rosterlist div > li[title*="' + accentsTidy(search.value) + '"]:not(.subheader)';
             li = document.querySelectorAll(selector);
             if(li != null && li.item(0) != null ){
                 var g = li.item(0).parentNode.querySelector('.subheader');

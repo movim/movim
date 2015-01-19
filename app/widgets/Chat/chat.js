@@ -20,6 +20,10 @@ var Chat = {
             movim_title_inc();
             movim_desktop_notification(title, body, image);
         }
+    },
+    empty : function()
+    {
+        Chat_ajaxGet();
     }
 }
 
