@@ -1,23 +1,28 @@
 <div id="statistics" class="tabelem paddedtop" title="{$c->__("statistics.title")}">
-    <ul class="list">
-        <li class="title">
-            <a class="action">{$c->__('statistics.since')}</a>
+    <ul class="simple divided thick">
+        <li class="subheader">
             {$c->__('statistics.sessions')} - {$sessions|count}
         </li>
         {loop="$sessions"}
-            <li>
-                {if="isset($value->start)"}
-                <a class="action">{$c->getTime($value->start)}</a>
-                {/if}
-                <a>{$value->username}@{$value->host} - {$value->domain}</a>
+            <li class="condensed">
+
+                <span>{$value->username}@{$value->host} - {$value->domain}</span>
+                <p>
+                    {if="isset($value->start)"}
+                        {$c->getTime($value->start)}
+                    {/if}
+                </p>
             </li>
         {/loop}
     </ul>
 
-    <h1><i class="fa fa-line-chart"></i> {$c->__('statistics.subscriptions')}</h1>
-    <img src="{$cache_path}monthly.png">
-    <img src="{$cache_path}monthly_cumulated.png">
-
+    <h3>{$c->__('statistics.subscriptions')}</h3>
+    <div class="card">
+        <img src="{$cache_path}monthly.png">
+    </div>
+    <div class="card">
+        <img src="{$cache_path}monthly_cumulated.png">
+    </div>
     <script type="text/javascript">
         MovimWebsocket.attach(function() {
             MovimWebsocket.connection.admin("{$hash}");
