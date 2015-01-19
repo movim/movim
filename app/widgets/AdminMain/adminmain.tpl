@@ -1,4 +1,4 @@
-    <div id="admingen" class="tabelem paddedtop" title="{$c->__('admin.general')}">
+<div id="admingen" class="tabelem paddedtop" title="{$c->__('admin.general')}">
 <form name="admin" id="adminform" action="#" method="post">
     <legend><i class="fa fa-wrench"></i> {$c->__('admin.general')}</legend>
 
