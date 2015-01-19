@@ -2,6 +2,7 @@ figure {
     width: 100%;
     height: 40em;
     position: relative;
+    font-size: 1.5rem;
 }
 
 figure div {
