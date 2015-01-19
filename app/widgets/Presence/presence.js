@@ -7,7 +7,7 @@ function postStart() {
         //Presence_ajaxConfigGet();
         Presence_ajaxServerCapsGet();
         Presence_ajaxBookmarksGet();
-        Menu_ajaxRefresh();
+        //Menu_ajaxRefresh();
         localStorage.postStart = 0;
     }
 }
