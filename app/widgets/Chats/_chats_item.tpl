@@ -13,7 +13,7 @@
         {if="preg_match('#^\?OTR#', $message->body)"}
             <p><i class="md md-lock"></i> {$c->__('message.encrypted')}</p>
         {else}
-            <p>{$message->body}</p>
+            <p>{$message->body|htmlentities}</p>
         {/if}
     {/if}
 </li>

@@ -19,18 +19,17 @@ WebSocket.prototype.admin = function(key) {
 
 var MovimWebsocket = {
     connection: null,
-    attached: null,
+    attached: new Array(),
     unregistered: false,
     
     launchAttached : function() {
-        for(var i = 0; i < this.attached.length; i++) {
-            this.attached[i]();
+        for(var i = 0; i < MovimWebsocket.attached.length; i++) {
+            MovimWebsocket.attached[i]();
         }
     },
 
     init : function() {
         this.connection = new WebSocket('ws://' + BASE_HOST + ':8080');
-        this.attached = new Array();
         
         this.connection.onopen = function(e) {
             console.log("Connection established!");
@@ -138,5 +137,7 @@ window.onbeforeunload = function() {
     MovimWebsocket.connection.close()
 };
 
-// And we start it
-MovimWebsocket.init();
+movim_add_onload(function() {
+    // And we start it
+    MovimWebsocket.init();
+});

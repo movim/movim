@@ -4,7 +4,7 @@
             <i class="md md-person-add"></i>
         </span>
     </li>
-    <li onclick="Chats_ajaxAddRoom()">
+    <li onclick="Rooms_ajaxAdd()">
         <span class="icon">
             <i class="md md-group-add"></i>
         </span>

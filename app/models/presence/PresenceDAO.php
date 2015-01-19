@@ -25,6 +25,7 @@ class PresenceDAO extends SQL {
                 last        = :last,
                 publickey   = :publickey,
                 muc         = :muc,
+                mucjid      = :mucjid,
                 mucaffiliation = :mucaffiliation,
                 mucrole     = :mucrole
             where id        = :id';
@@ -41,6 +42,7 @@ class PresenceDAO extends SQL {
                 'last'      => $presence->last,
                 'publickey' => $presence->publickey,
                 'muc'       => $presence->muc,
+                'mucjid'    => $presence->mucjid,
                 'mucaffiliation' => $presence->mucaffiliation,
                 'mucrole'   => $presence->mucrole,
                 'id'        => $id
@@ -65,6 +67,7 @@ class PresenceDAO extends SQL {
                 last,
                 publickey,
                 muc,
+                mucjid,
                 mucaffiliation,
                 mucrole)
                 values(
@@ -81,6 +84,7 @@ class PresenceDAO extends SQL {
                     :last,
                     :publickey,
                     :muc,
+                    :mucjid,
                     :mucaffiliation,
                     :mucrole)';
             
@@ -100,6 +104,7 @@ class PresenceDAO extends SQL {
                     'last'      => $presence->last,
                     'publickey' => $presence->publickey,
                     'muc'       => $presence->muc,
+                    'mucjid'    => $presence->mucjid,
                     'mucaffiliation' => $presence->mucaffiliation,
                     'mucrole'   => $presence->mucrole
                 )
@@ -138,8 +143,7 @@ class PresenceDAO extends SQL {
         
         return $this->run('Presence', 'item');
     }
-    
-    
+
     function getJid($jid) {       
         $this->_sql = '
             select * from presence

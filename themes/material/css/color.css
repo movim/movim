@@ -37,6 +37,20 @@
     100% { background-color: #9E9E9E; }
 }
 
+@-webkit-keyframes colorful {
+    0% { background-color: #9E9E9E; }
+    10% { background-color: #607D8B; }
+    20% { background-color: #F44336; }
+    30% { background-color: #9C27B0; }
+    40% { background-color: #3F51B5; }
+    50% { background-color: #2196F3; }
+    60% { background-color: #689F38; }
+    70% { background-color: #FF9800; }
+    80% { background-color: #FDD835; }
+    90% { background-color: #795548; }
+    100% { background-color: #9E9E9E; }
+}
+
 /* Elements */
 
 .bubble.color       , .icon.color          { color: white; background-color: #607D8B; border-color: #607D8B }
