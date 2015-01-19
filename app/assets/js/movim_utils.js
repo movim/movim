@@ -121,6 +121,7 @@ function movim_form_to_json(formname) {
  * @param DOMElement textbox 
  */
 function movim_textarea_autoheight(textbox) {
+    console.log("movim_textarea_autoheight");
     if(textbox != null ) {
         textbox.style.height = 0;
         textbox.style.height = textbox.scrollHeight +"px";
