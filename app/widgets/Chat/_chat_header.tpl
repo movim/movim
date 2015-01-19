@@ -1,4 +1,4 @@
-<span id="back" class="icon" onclick="MovimTpl.hidePanel()"><i class="md md-arrow-back"></i></span>
+<span id="back" class="icon" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();"><i class="md md-arrow-back"></i></span>
 
 <ul class="active">
     <li onclick="Chats_ajaxClose('{$jid}'); MovimTpl.hidePanel();">

@@ -78,7 +78,7 @@ ul.thick li.condensed p {
     line-height: 2.5rem;
 }
 
-ul li p {
+ul li > p {
     display: block;
     font-size: 1.75rem;
     color: rgba(0, 0, 0, 0.60);

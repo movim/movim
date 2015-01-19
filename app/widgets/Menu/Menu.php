@@ -1,5 +1,7 @@
 <?php
 
+use Moxl\Xec\Action\Pubsub\GetItems;
+
 class Menu extends WidgetCommon
 {
     private $_paging = 15;
@@ -77,6 +79,21 @@ class Menu extends WidgetCommon
             RPC::call('movim_posts_unread', 0);
         }
         RPC::call('Menu.refresh');
+    }
+
+    function ajaxRefresh()
+    {
+        Notification::append(null, $this->__('menu.refresh'));
+
+        $sd = new \modl\SubscriptionDAO();
+        $subscriptions = $sd->getSubscribed();
+
+        foreach($subscriptions as $s) {
+            $r = new GetItems;
+            $r->setTo($s->server)
+              ->setNode($s->node)
+              ->request();
+        }
     }
 
     function prepareList($type = 'all', $server = null, $node = null, $page = 0) {

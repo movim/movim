@@ -70,7 +70,7 @@ main > header form > div:not(.clear):not(.control) > .select select {
 
 /* Placeholders to mimic FF */
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #fff;
+    color: #555;
     opacity: 0.5;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */

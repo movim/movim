@@ -27,6 +27,7 @@ class Presence extends Model {
     // Current Jabber OpenPGP Usage - XEP-0027
     protected $publickey;
     protected $muc;
+    protected $mucjid;
     protected $mucaffiliation;
     protected $mucrole;
     
@@ -59,6 +60,8 @@ class Presence extends Model {
                 {"type":"text"},
             "muc" : 
                 {"type":"int",    "size":1 },
+            "mucjid" : 
+                {"type":"string", "size":64 },
             "mucaffiliation" : 
                 {"type":"string", "size":32 },
             "mucrole" : 
@@ -117,6 +120,7 @@ class Presence extends Model {
                         break;
                     case 'http://jabber.org/protocol/muc#user' :
                         $this->muc          = true;
+                        $this->mucjid          = cleanJid((string)$c->item->attributes()->jid);
                         $this->mucrole         = (string)$c->item->attributes()->role;
                         $this->mucaffiliation  = (string)$c->item->attributes()->affiliation;
                         break;

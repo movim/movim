@@ -6,12 +6,13 @@ var Chats = {
         {
             if(items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
-                    if(movim_has_class(this, 'room')) {
+                    /*if(movim_has_class(this, 'room')) {
                         Chats_ajaxChatroomJoin(this.dataset.jid, this.dataset.nick);
                         Chat_ajaxGetRoom(this.dataset.jid);
                     } else {
                         Chat_ajaxGet(this.dataset.jid);
-                    }
+                    }*/
+                    Chat_ajaxGet(this.dataset.jid);
                     Chats.reset(items);
                     Notification_ajaxClear('chat|' + this.dataset.jid);
                     Notification_ajaxCurrent('chat|' + this.dataset.jid);
@@ -28,12 +29,14 @@ var Chats = {
 
             i++;
         }
+        
+        //Chat_ajaxGet();
 
-        if(window.innerWidth > 1024 && !MovimTpl.isPanel()) {
+        /*if(window.innerWidth > 1024 && !MovimTpl.isPanel()) {
             Notification.notifs_key = 'chat|' + items[0].dataset.jid;
             Notification_ajaxCurrent(Notification.notifs_key);
             items[0].click();
-        }
+        }*/
     },
 
     reset: function(list) {

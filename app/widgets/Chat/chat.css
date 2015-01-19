@@ -16,6 +16,10 @@
     width: calc(100% - 5rem);
 }
 
+#chat_widget .chat_box form textarea {
+    margin-bottom: 0;
+}
+
 #chat_widget .chat_box .control {
     font-size: 4rem;
     color: gray;

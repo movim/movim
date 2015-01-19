@@ -3,7 +3,6 @@
 use Moxl\Xec\Action\Message\Composing;
 use Moxl\Xec\Action\Message\Paused;
 use Moxl\Xec\Action\Message\Publish;
-use Moxl\Xec\Action\Presence\Unavailable;
 
 class Chat extends WidgetCommon
 {
@@ -28,7 +27,8 @@ class Chat extends WidgetCommon
             $contact = $cd->get($from);
             
             if($contact != null
-            && !preg_match('#^\?OTR#', $message->body)) {
+            && !preg_match('#^\?OTR#', $message->body)
+            && $message->type != 'groupchat') {
                 Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $contact->getPhoto('s'), 4);
             }
         // If the message is from me
@@ -87,16 +87,20 @@ class Chat extends WidgetCommon
      * @brief Get a discussion
      * @parem string $jid
      */
-    function ajaxGet($jid)
+    function ajaxGet($jid = null)
     {
-        $html = $this->prepareChat($jid);
-        
-        $header = $this->prepareHeader($jid);
-        
-        Header::fill($header);
-        RPC::call('movim_fill', 'chat_widget', $html);
-        RPC::call('MovimTpl.scrollPanel');
-        RPC::call('MovimTpl.showPanel');
+        if($jid == null) {
+            RPC::call('movim_fill', 'chat_widget', $this->prepareEmpty());
+        } else {
+            $html = $this->prepareChat($jid);
+            
+            $header = $this->prepareHeader($jid);
+            
+            Header::fill($header);
+            RPC::call('movim_fill', 'chat_widget', $html);
+            RPC::call('MovimTpl.scrollPanel');
+            RPC::call('MovimTpl.showPanel');
+        }
     }
 
     /**
@@ -229,20 +233,6 @@ class Chat extends WidgetCommon
 
         return $view->draw('_chat_header_room', true);
     }
-    /**
-     * @brief Exit a room
-     *
-     * @param string $room
-     */
-    function ajaxExitRoom($room)
-    {
-        $session = \Sessionx::start();
-
-        $pu = new Unavailable;
-        $pu->setTo($room)
-           ->setResource($session->username)
-           ->request();
-    }
 
     function prepareChat($jid, $muc = false)
     {
@@ -307,11 +297,27 @@ class Chat extends WidgetCommon
         $view->assign('status', $status);
         $view->assign('myself', $myself);
 
+        $cd = new \Modl\ContactDAO;
+        $presences = $cd->getPresence($jid);
+        $contacts = array();
+
+        foreach($presences as $presence) {
+            $contacts[$presence->resource] = $presence;
+        }
+
+        $view->assign('contacts', $contacts);
+        
+
         return $view->draw('_chat_messages', true);
+    }
+
+    function prepareEmpty()
+    {
+        $view = $this->tpl();
+        return $view->draw('_chat_empty', true);
     }
 
     function display()
     {
-
     }
 }

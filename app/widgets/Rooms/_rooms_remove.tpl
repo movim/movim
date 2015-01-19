@@ -12,7 +12,7 @@
     <a 
         name="submit" 
         class="button flat" 
-        onclick="Chats_ajaxRemoveRoom('{$room}'); Dialog.clear()">
+        onclick="Rooms_ajaxRemove('{$room}'); Dialog.clear()">
         {$c->__('button.remove')}
     </a>
 </div>

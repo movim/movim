@@ -644,7 +644,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     opacity: 0;
 }
 
-@media screen and (max-width: 34rem) {
+@media screen and (max-width: 22rem) {
     .snackbar {
         width: 100%;
         top: 0;
@@ -655,6 +655,8 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
     .toast {
         max-width: 90%;
+        left: 5%;
+        margin-left: 0;
     }
 }
 
@@ -675,12 +677,13 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 .placeholder.icon {
     background-image: url(../img/placeholder/chat.png);
     background-size: 25rem;
-    padding-top: 26rem;
+    padding-top: 27rem;
     background-repeat: no-repeat;
-    background-position: center 1em;
+    background-position: center 4em;
 }
 
 .icon.newspaper { background-image: url(../img/icons/view_list.svg); }
+.icon.forum     { background-image: url(../img/icons/forum.svg); }
 .icon.media     { background-image: url(../img/placeholder/media.png); }
 .icon.explore   { background-image: url(../img/placeholder/explore.png); }
 .icon.plane     { background-image: url(../img/placeholder/plane.png); }
