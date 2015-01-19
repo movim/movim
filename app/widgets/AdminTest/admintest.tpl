@@ -1,5 +1,5 @@
 <div id="admincomp" class="tabelem" title="{$c->__('admin.compatibility')}">
-    <div class="block">
+    <div>
         <figure>
             <div id="webserver">
 
@@ -33,37 +33,52 @@
         </figure>
     </div>
 
-    <div class="block">
-        <p>
+    <ul>
+        <li class="subheader">
             {$c->__('compatibility.info')}
-        </p>
+        </li>
         
         {if="$dbconnected"}
             {if="$dbinfos > 0"}
-                <div class="message warning">
-                    <i class="fa fa-refresh"></i> The database need to be updated, go to the database panel to fix this
-                </div>
+                <li>
+                    <span class="icon bubble color orange"><i class="fa fa-refresh"></i></span>
+                    <span>The database need to be updated, go to the database panel to fix this</span>
+                </li>
             {else}
                 <script type="text/javascript">AdminTest.databaseOK = true</script>
             {/if}
         {else}
-            <div class="message error">
-                <i class="fa fa-database"></i> Database connection error, check if database configuration exist in the <code>config/</code> folder and fill it with proper values
-            </div>
+            <li class="condensed">
+                <span class="icon bubble color red"><i class="fa fa-database"></i></span>
+                <span>Database connection error</span>
+                <p>Check if database configuration exist in the <code>config/</code> folder and fill it with proper values</p>
+            </li>
         {/if}
 
-        <div id="websocket_error" class="message error">
-            <i class="fa fa-plug"></i> WebSocket connection error, check if the Movim Daemon is running and is reacheable 
-        </div>
+        <li id="websocket_error">
+            <span class="icon bubble color red">
+                <i class="fa fa-plug"></i> 
+            </span>
+            <span>
+                WebSocket connection error, check if the Movim Daemon is running and is reacheable
+            </span> 
+        </li>
         
-        <div id="xmpp_websocket_error" class="message error">
-            <i class="fa fa-plug"></i> XMPP Websocket connection error, please check the validity of the URL given in the General Configuration. <code>{$websocketurl}</code>
-        </div>
+        <li id="xmpp_websocket_error">
+            <span class="icon bubble color red">
+                <i class="fa fa-plug"></i>
+            </span>
+            <span>
+                XMPP Websocket connection error, please check the validity of the URL given in the General Configuration. <code>{$websocketurl}</code>
+            </span>
+        </li>
 
         {if="!$c->version()"}
-            <div class="message error">
-                <i class="fa fa-code"></i> {$c->__('compatibility.php', PHP_VERSION)}
-            </div>
+            <li class="condensed">
+                <span class="icon color bubble red"><i class="fa fa-code"></i> </span>
+                <span>{$c->__('compatibility.php1', PHP_VERSION)}</span>
+                <p>{$c->__('compatibility.php2')}</p>
+            </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
@@ -82,10 +97,13 @@
         {/if}
 
         {if="!$_SERVER['HTTP_MOD_REWRITE']"}
-            <div class="message info">
-                <i class="fa fa-pencil"></i> {$c->__('compatibility.rewrite')}
-            </div>
+            <li>
+                <span class="icon bubble color orange">
+                    <i class="fa fa-pencil"></i>
+                </span>
+                <span>{$c->__('compatibility.rewrite')}</span>
+            </li>
         {/if}
-    </div>
+    </ul>
     <script type="text/javascript">AdminTest.testXMPPWebsocket('{$websocketurl}');</script>
 </div>
