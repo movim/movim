@@ -16,7 +16,10 @@ class Core implements MessageComponentInterface {
     {
         echo colorize("Movim daemon launched\n", 'green');
         echo colorize("Base URI :", 'green')." {$baseuri}\n";
-        echo colorize("WebSocket URL :", 'green')." http(s)://[your host adress]:{$port}\n";
+        $ws = $this->setWebsocket($baseuri, $port);
+        echo colorize("Public WebSocket URL :", 'green')." {$ws}\n";
+        
+        //echo colorize("WebSocket URL :", 'green')." http(s)://[your host adress]:{$port}\n";
         
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
@@ -25,6 +28,55 @@ class Core implements MessageComponentInterface {
         $sd->clear();
 
         $this->registerCleaner();
+    }
+
+    public function setWebsocket($baseuri, $port)
+    {
+        $explode = parse_url($baseuri);
+
+        echo
+            "\n".
+            "--- ".colorize("Server Configuration - Apache", 'purple')." ---".
+            "\n";
+        echo colorize("Enable the Secure WebSocket to WebSocket tunneling", 'yellow')."\n$ a2enmod proxy_wstunnel \n";
+        echo colorize("Add this in your configuration file (default-ssl.conf)", 'yellow')."\nProxyPass /ws/ ws://localhost:{$port}/\n";
+
+        echo
+            "\n".
+            "--- ".colorize("Server Configuration - nginx", 'purple')." ---".
+            "\n";
+        echo colorize("Add this in your configuration file", 'yellow')."\n";
+        echo "location /ws/ {
+    proxy_pass http://{$explode['host']}:{$port}/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection \"Upgrade\";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_read_timeout 86400s;
+    proxy_send_timeout 86400s;
+    proxy_redirect off;
+}
+
+";
+
+        $path = $explode['host'].$explode['path'];
+        
+        if($explode['scheme'] == 'https') {
+            $ws = 'wss://'.$path.'ws/';
+            $secured = 'true';
+            echo colorize("Encrypted ", 'green');
+        } else {
+            $ws = 'ws://'.$path.'ws/';
+            $secured = 'false';
+            echo colorize("Unencrypted ", 'red');
+        }
+
+        file_put_contents(CACHE_PATH.'websocket', $secured);
+
+        return $ws;
     }
     
     public function onOpen(ConnectionInterface $conn)
