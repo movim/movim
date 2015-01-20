@@ -76,7 +76,7 @@ class PubsubSubscriptionConfig extends WidgetBase
                             '.firstLetterCapitalize($s->node).'
                         </span>
                         <form>
-                            <div class="control padded">
+                            <div class="action">
                                 <div class="checkbox">
                                     <input
                                         type="checkbox"
