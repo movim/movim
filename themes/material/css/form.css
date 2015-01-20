@@ -111,12 +111,6 @@ form > div > input:required {
     box-shadow: none;
 }
 
-/* Placing the checkbox and radio */
-
-form > div:not(.control) .checkbox {
-    margin-top: 5.5rem;
-}
-
 /* Checkbox element */
 
 form > div .checkbox > input[type="checkbox"],
