@@ -46,6 +46,10 @@ body main {
     min-height: 0;
 }
 
+#login_widget form ul input {
+    margin: 0;
+}
+
 ul.admin {
     position: relative;
     text-align: center;

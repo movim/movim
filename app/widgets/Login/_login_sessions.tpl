@@ -4,7 +4,7 @@
     <ul class="active">
         {loop="$sessions"}
         <li class="action">
-            <div>
+            <div class="action">
                 <i onclick="Login.removeSession('{$value->jid}')" class="fa fa-times"></i>
             </div>
             <span onclick="Login.choose('{$value->jid}')" class="icon bubble">
