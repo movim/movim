@@ -355,12 +355,15 @@ class ContactDAO extends SQL {
         return $this->run('Contact');
     }
     
-    function getAllPublic() {       
+    function getAllPublic($limitf = false, $limitr = false) {       
         $this->_sql = 
             'select *, privacy.value as privacy from contact 
             left outer join privacy 
                 on contact.jid = privacy.pkey
             where privacy.value = 1';
+
+        if($limitr) 
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
         
         $this->prepare('Contact');
         return $this->run('Contact');
