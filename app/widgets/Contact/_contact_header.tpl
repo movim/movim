@@ -1,4 +1,4 @@
-<span id="back" class="icon" onclick="MovimTpl.hidePanel();"><i class="md md-arrow-back"></i></span>
+<span id="back" class="icon" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();"><i class="md md-arrow-back"></i></span>
 {if="$contactr != null"}
     <ul class="active">
         <li onclick="{$edit}">

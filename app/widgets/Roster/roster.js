@@ -122,7 +122,7 @@
             $scope.$apply();
             
             //a new li is created, a new listener has to be created...
-            document.getElementById(list.jid).onclick = function(e){Roster.clickOnContact(e);};
+            document.getElementById(list.jid).onclick = function(){Roster.clickOnContact(this);};
         };
 
         this.showHideGroup = function(g){
@@ -290,7 +290,7 @@ var Roster = {
         
         while(i < items.length)
         {
-            items[i].onclick = function(e){Roster.clickOnContact(e);};
+            items[i].onclick = function(){Roster.clickOnContact(this);};
             i++;
         }
     },
@@ -306,11 +306,11 @@ var Roster = {
     },
     
     clickOnContact : function(e) {
-        Contact_ajaxGetContact(e.target.id);
+        Contact_ajaxGetContact(e.id);
         /*recalculated at each click*/
         var it = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
         Roster.reset(it);
-        movim_add_class(e.target, 'active');
+        movim_add_class(e, 'active');
     },
 }
 
