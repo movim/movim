@@ -27,6 +27,7 @@
                 ng-class="{condensed: myjid.ajiditems.status != '' && myjid.ajiditems.status != null }"
                 ng-class="rosterCtrl.getContactClient(myjid.ajiditems)" >
                 <div
+                    class="action"
                     ng-if="myjid.ajiditems.rosterview.tune != '' || myjid.ajiditems.rosterview.type != '' "
                     ng-switch on="myjid.ajiditems.rosterview.type">
                     <i ng-switch-when="handheld" class="md md-smartphone"></i>

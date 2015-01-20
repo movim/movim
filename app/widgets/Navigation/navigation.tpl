@@ -1,6 +1,6 @@
 <ul class="active divided">
     <li class="action">
-        <div class="on_mobile">
+        <div class="action on_mobile">
             <i onclick="MovimTpl.toggleMenu()" class="md md-arrow-back"></i>
         </div>
         <span class="icon bubble"><i class="md md-cloud-queue"></i></span>
