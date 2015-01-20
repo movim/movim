@@ -1,45 +1,83 @@
 <section>
-    <ul class="active thin">
-        <li class="subheader">{$c->__('status.status')}</li>
-        <li>
-            <span class="icon"><i class="md md-mode-edit"></i></span>
-            <form>
-                <div>
-                    <textarea 
-                        class="status" 
-                        spellcheck="false"
-                        placeholder="{$c->__('status.here')}"
-                        onload="movim_textarea_autoheight(this);"
-                        onkeyup="movim_textarea_autoheight(this);">{if="isset($p)"}{$p->status}{/if}</textarea>
-                    <label>{$c->__('status.here')}</label>
-                </div>
-            </form>        
-        </li>
-        <li onclick="{$callchat}">
-            <span class="icon bubble color small green"></span>
-            {$txt[1]}
-        </li>
-        <li onclick="{$callaway}">
-            <span class="icon bubble color small orange"></span>
-            {$txt[2]}
-        </li>
-        <li onclick="{$calldnd}">
-            <span class="icon bubble color small red"></span>
-            {$txt[3]}
-        </li>
-        <li onclick="{$callxa}" >
-            <span class="icon bubble color small purple"></span>
-            {$txt[4]}
-        </li>
+    <form name="presence">
+        <h3>{$c->__('status.status')}</h3>
+
+        <div>
+            <textarea 
+                spellcheck="false"
+                name="status"
+                placeholder="{$c->__('status.here')}"
+            >{if="isset($p)"}{$p->status}{/if}</textarea>
+            <label>{$c->__('status.here')}</label>
+        </div>
+
+        <div>
+            <ul class="active">
+                <li class="action">
+                    <span class="icon bubble color small green"></span>
+                    <div class="action">
+                        <div class="radio">
+                            <input type="radio" name="value" id="chat" value="chat" {if="$p->value == 1"}checked="checked"{/if}/>
+                            <label for="chat"></label>
+                        </div>
+                    </div>
+                    <span>{$txt[1]}</span>
+                </li>
+                <li class="action">
+                    <span class="icon bubble color small orange"></span>
+                    <div class="action">
+                        <div class="radio">
+                            <input type="radio" name="value" id="away" value="away" {if="$p->value == 2"}checked="checked"{/if}/>
+                            <label for="away"></label>
+                        </div>
+                    </div>
+                    <span>{$txt[2]}</span>
+                </li>
+                <li class="action">
+                    <span class="icon bubble color small red"></span>
+                    <div class="action">
+                        <div class="radio">
+                            <input type="radio" name="value" id="dnd" value="dnd" {if="$p->value == 3"}checked="checked"{/if}/>
+                            <label for="dnd"></label>
+                        </div>
+                    </div>
+                    <span>{$txt[3]}</span>
+                </li>
+                <li class="action">
+                    <span class="icon bubble color small purple"></span>
+                    <div class="action">
+                        <div class="radio">
+                            <input type="radio" name="value" id="xa" value="xa" {if="$p->value == 4"}checked="checked"{/if}/>
+                            <label for="xa"></label>
+                        </div>
+                    </div>
+                    <span>{$txt[4]}</span>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <ul class="active">
         <li class="subheader">{$c->__('status.disconnect')}</li>
         <li onclick="{$calllogout}">
             <span class="icon"><i class="md md-exit-to-app"></i></span>
-            {$c->__('status.disconnect')}
+            <span>{$c->__('status.disconnect')}</span>
         </li>
     </ul>
+                <!--
+        <div class="element large mini">
+            <label>{$c->__('chatroom.autojoin_label')}</label>
+            <div class="checkbox">
+                <input type="checkbox" id="autojoin" name="autojoin"/>
+                <label for="autojoin"></label>
+            </div>
+        </div>
+        -->
 </section>
 <div>
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
+    </a>
+    <a onclick="Presence_ajaxSet(movim_parse_form('presence')); Dialog.clear();" class="button flat">
+        {$c->__('button.submit')}
     </a>
 </div>

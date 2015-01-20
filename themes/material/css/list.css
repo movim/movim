@@ -66,6 +66,12 @@ ul.active li.active:not(.subheader) {
     cursor: pointer;
 }
 
+.dark ul.active li:hover:not(.subheader),
+.dark ul.active.all li:hover,
+.dark ul.active li.active:not(.subheader) {
+    background-color: rgba(255, 255, 255, 0.035);
+}
+
 ul li.condensed,
 ul.thin li.condensed,
 ul.thick li.condensed {
@@ -95,50 +101,21 @@ ul li span {
     white-space: nowrap;
 }
 
-ul > li > div.control,
-ul > li > form > div.control {
-    float: right;
-    text-align: right;
-    min-width: 5rem;
+ul li.action {
+    padding-right: 7rem;
+}
+
+ul li.action > div.action,
+ul li.action > form > div.action {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    margin-top: -2.5rem;
     font-size: 3rem;
-    line-height: 6rem;
-}
-
-ul > li > form > div.control {
-    margin-top: 1.5rem;
-}
-
-ul.thin > li > div.control {
-    line-height: 3rem;
-}
-
-ul.thick > li > div.control {
+    height: 5rem;
     line-height: 5rem;
 }
 
-ul li > div.control > * {
-    margin-left: 2rem;
-}
-
-/*
-ul.thick li > div.control.bottom {
-    bottom: 2rem;
-}
-
-ul li > div.control + form,
-ul li > div.control + p {
-    padding-right: 6rem;
-}
-*/
-ul li > div.control {
-    float: right;
-    min-height: 0;
-}
-/*
-ul li div.control.padded {
-    padding-top: 2rem;
-}
-*/
 ul li span.info {
     float: right;
     margin-left: 1rem;

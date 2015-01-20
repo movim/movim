@@ -5,16 +5,13 @@
 </div>
 <div class="chat_box">
     <ul class="simple thin">
-        <li>
+        <li class="action">
             <span class="icon gray">
                 <i class="md md-create"></i>
             </span>
-            <div class="control" onclick="{$send}">
+            <div class="action" onclick="{$send}">
                 <i class="md md-send"></i>
             </div>
-            <!--<div class="control" onclick="{$smiley}">
-                <i class="md md-mood"></i>
-            </div>-->
             <form>
                 <div>
                      <textarea 
