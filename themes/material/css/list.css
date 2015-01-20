@@ -105,8 +105,8 @@ ul li.action {
     padding-right: 7rem;
 }
 
-ul li.action > div,
-ul li.action > form > div {
+ul li.action > div.action,
+ul li.action > form > div.action {
     position: absolute;
     top: 50%;
     right: 2rem;
