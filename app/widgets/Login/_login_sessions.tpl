@@ -3,7 +3,7 @@
     <br />
     <ul class="active">
         {loop="$sessions"}
-        <li>
+        <li id="{$value->jid}">
             <div class="control">
                 <i onclick="Login.removeSession('{$value->jid}')" class="fa fa-times"></i>
             </div>

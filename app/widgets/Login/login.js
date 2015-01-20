@@ -25,6 +25,18 @@ var Login = {
             setTimeout("MovimWebsocket.unregister()", 7000);
         }
     },
+    
+    refresh: function(){
+        /*Add onclick listeners*/
+        var sessions = document.querySelectorAll('#sessions ul > li');
+        var i = 0;
+        console.log(sessions);
+        while(i < sessions.length)
+        {
+            sessions[i].onclick = function(e){Login.choose(e.target);};
+            i++;
+        }
+    },
 
     /**
      * @brief Save a jid in the local storage
@@ -46,15 +58,26 @@ var Login = {
      * @brief Choose a session to connect and show the login form
      * @param The jid to choose
      */
-    choose : function(jid) {
-        movim_remove_class('#login_widget', 'choose');
-        document.querySelector('#login').value = jid;
-        document.querySelector('#pass').value = "";
-        
-        if(jid != '') {
-            document.querySelector('#pass').focus();
-        } else {
-            document.querySelector('#login').focus();
+    choose : function(element) {
+        if(element.tagName == "LI" || element.tagName == "SPAN"){
+            jid = element.id;
+            movim_remove_class('#login_widget', 'choose');
+            document.querySelector('#login').value = jid;
+            document.querySelector('#pass').value = "";
+            
+            if(jid != '') {
+                document.querySelector('#pass').focus();
+            } else {
+                document.querySelector('#login').focus();
+            }
+        }
+        else{
+            console.log("NOT LI OR SPAN");
+            console.log(element);
+            while(element.tagName != "LI")
+                element = element.parentNode;
+            console.log(element);
+            Login.removeSession(element.id);
         }
     },
 
@@ -120,6 +143,7 @@ MovimWebsocket.attach(function()
 
     if(localStorage.getItem('previousSessions') != null) {
         movim_add_class('#login_widget', 'choose');
+        Login.refresh();
     }
 });
 
