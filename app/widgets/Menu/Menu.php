@@ -97,13 +97,15 @@ class Menu extends WidgetCommon
     }
 
     function prepareList($type = 'all', $server = null, $node = null, $page = 0) {
-        //movim_log(__METHOD__);
+        movim_log(__METHOD__);
         $view = $this->tpl();
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(Cache::c('since'));
         
         // getting newer, not older
-        if($page == 0){
+        movim_log($page);
+        movim_log($page == "");
+        if($page == 0 || $page == ""){
             $count = 0;
             Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
         }
@@ -114,22 +116,30 @@ class Menu extends WidgetCommon
             case 'all' :
                 $view->assign('history', $this->call('ajaxGetAll', $next));
                 $items  = $pd->getAllPosts(false, $page * $this->_paging + $count, $this->_paging);
-                //movim_log("ALL ".$page * $this->_paging + $count);
+                movim_log(__LINE__);
+                movim_log(" ALL ");
+                movim_log($page * $this->_paging + $count);
                 break;
             case 'news' :
                 $view->assign('history', $this->call('ajaxGetNews', $next));
                 $items  = $pd->getNews($page * $this->_paging + $count, $this->_paging);
-                //movim_log("NEWS ".$page * $this->_paging + $count);
+                movim_log(__LINE__);
+                movim_log(" NEWS ");
+                movim_log($page * $this->_paging + $count);
                 break;
             case 'feed' :
                 $view->assign('history', $this->call('ajaxGetFeed', $next));
                 $items  = $pd->getFeed($page * $this->_paging + $count, $this->_paging);
-                //movim_log("FEED ".$page * $this->_paging + $count);
+                movim_log(__LINE__);
+                movim_log(" FEED ");
+                movim_log($page * $this->_paging + $count);
                 break;
             case 'node' :
                 $view->assign('history', $this->call('ajaxGetNode', '"'.$server.'"', '"'.$node.'"', $next));
                 $items  = $pd->getNode($server, $node, $page * $this->_paging + $count, $this->_paging);
-                //movim_log("NODE ".$page * $this->_paging + $count);
+                movim_log(__LINE__);
+                movim_log(" NODE ");
+                movim_log($page * $this->_paging + $count);
                 break;
         }
         
