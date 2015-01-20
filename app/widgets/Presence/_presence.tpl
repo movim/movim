@@ -1,5 +1,5 @@
-<li onclick="{$dialog}" class="condensed">
-    <div class="control">
+<li onclick="{$dialog}" class="condensed action">
+    <div class="action">
         <i class="md md-edit"></i>
     </div>
     <span class="icon bubble" style="background-image: url({$me->getPhoto('m')})"></span>

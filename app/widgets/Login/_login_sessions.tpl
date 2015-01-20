@@ -3,8 +3,8 @@
     <br />
     <ul class="active">
         {loop="$sessions"}
-        <li id="{$value->jid}">
-            <div class="control">
+        <li id="{$value->jid}" class="action">
+            <div class="action">
                 <i onclick="Login.removeSession('{$value->jid}')" class="fa fa-times"></i>
             </div>
             <span onclick="Login.choose('{$value->jid}')" class="icon bubble">

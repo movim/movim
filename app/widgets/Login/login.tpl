@@ -25,8 +25,8 @@
                 </div>
                 <div>
                     <ul class="simple thin">
-                        <li>
-                            <div class="control">
+                        <li class="action">
+                            <div class="action">
                                 <input
                                     type="submit"
                                     disabled

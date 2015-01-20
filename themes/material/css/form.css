@@ -111,16 +111,6 @@ form > div > input:required {
     box-shadow: none;
 }
 
-/* Placing the checkbox and radio */
-
-form > div:not(.control) .checkbox {
-    margin-top: 5.5rem;
-}
-
-form > div .radio {
-    padding-top: 5.5rem;
-}
-
 /* Checkbox element */
 
 form > div .checkbox > input[type="checkbox"],
@@ -135,6 +125,7 @@ form > div .checkbox {
     margin-left: 1rem;
     width: 5rem;
     background-color: #939393;
+    margin: 1.5rem 0;
 }
 
 form > div .checkbox:before {
@@ -186,6 +177,7 @@ form > div .radio > input[type="radio"] + label {
     border-style: solid;
     border-color: gray;
     transition: box-shadow 0.1s ease;
+    margin-top: 1.25rem;
 }
 
 form > div .radio > input[type="radio"] + label:hover {

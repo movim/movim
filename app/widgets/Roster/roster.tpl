@@ -22,13 +22,13 @@
                 ng-repeat="myjid in group.agroupitems"
                 ng-if="!myjid.tombstone"
                 id="{{::myjid.ajid}}"
-                class="{{myjid.ajiditems.rosterview.inactive}}"
+                class="{{myjid.ajiditems.rosterview.inactive}} action"
                 ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems)}}"
                 ng-class="{condensed: myjid.ajiditems.status != '' && myjid.ajiditems.status != null }"
                 ng-class="rosterCtrl.getContactClient(myjid.ajiditems)" >
                 <div
+                    class="action"
                     ng-if="myjid.ajiditems.rosterview.tune != '' || myjid.ajiditems.rosterview.type != '' "
-                    class="control"
                     ng-switch on="myjid.ajiditems.rosterview.type">
                     <i ng-switch-when="handheld" class="md md-smartphone"></i>
                     <i ng-switch-when="web" class="md md-language"></i>

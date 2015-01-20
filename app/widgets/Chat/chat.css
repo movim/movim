@@ -13,20 +13,19 @@
 }
 
 #chat_widget .chat_box form {
-    width: calc(100% - 5rem);
+    width: calc(100% - 1rem);
 }
 
 #chat_widget .chat_box form textarea {
     margin-bottom: 0;
 }
 
-#chat_widget .chat_box .control {
+#chat_widget .chat_box div.action {
     font-size: 4rem;
     color: gray;
-    margin-top: 3rem;
 }
 
-#chat_widget .chat_box .control:hover {
+#chat_widget .chat_box div.action:hover {
     cursor: pointer;
     color: #333;
 }

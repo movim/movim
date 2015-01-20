@@ -31,7 +31,7 @@ class Presence extends WidgetBase
     
     function load()
     {
-        //$this->addcss('presence.css');
+        $this->addcss('presence.css');
         $this->addjs('presence.js');
         $this->registerEvent('mypresence', 'onMyPresence');
     }
@@ -41,7 +41,7 @@ class Presence extends WidgetBase
         $html = $this->preparePresence();
         RPC::call('movim_fill', 'presence_widget', $html);
         Notification::append(null, $this->__('status.updated'));
-        RPC::call('setPresenceActions');
+        RPC::call('Presence.refresh');
         RPC::call('movim_remove_class', '#presence_widget', 'unfolded');
     }
 
@@ -51,59 +51,55 @@ class Presence extends WidgetBase
                        BASE_URI."index.php?q=disconnect");
     }
 
-    private function setPresence($show = false, $status = false)
+    function ajaxSet($form = false)
     {
-        Dialog::fill('');
-        // We update the cache with our status and presence
-        $presence = Cache::c('presence');
+        if($form == false) {
+            // We update the cache with our status and presence
+            $presence = Cache::c('presence');
 
-        if($show == false) $show = $presence['show'];
-        if($status == false) $status = $presence['status'];
+            $value = $presence['show'];
+            $status = $presence['status'];
 
-        if($presence == null || !isset($presence['show']) || $presence['show'] == '')
-            $show = 'chat';
+            if($presence == null || !isset($presence['show']) || $presence['show'] == '')
+                $value = 'chat';
 
-        if($presence == null|| !isset($presence['status']) || $presence['status'] == '')
-            $status = 'Online with Movim';
+            if($presence == null|| !isset($presence['status']) || $presence['status'] == '')
+                $status = 'Online with Movim';
+        } else {
+            $status = $form['status'];
+            $value = $form['value'];
+        }
+
+        if(in_array($value, array('chat', 'away', 'dnd', 'xa'))) {            
+            switch($value) {
+                case 'chat':
+                    $p = new Chat;
+                    $p->setStatus($status)->request();
+                    break;               
+                case 'away':             
+                    $p = new Away;       
+                    $p->setStatus($status)->request();
+                    break;               
+                case 'dnd':              
+                    $p = new DND;        
+                    $p->setStatus($status)->request();
+                    break;               
+                case 'xa':               
+                    $p = new XA;         
+                    $p->setStatus($status)->request();
+                    break;
+            }
+        }
 
         Cache::c(
             'presence', 
             array(
                 'status' => $status,
-                'show' => $show
+                'show' => $value
                 )
         );
-        
-        switch($show) {
-            case 'chat':
-                $p = new Chat;
-                $p->setStatus($status)->request();
-                break;               
-            case 'away':             
-                $p = new Away;       
-                $p->setStatus($status)->request();
-                break;               
-            case 'dnd':              
-                $p = new DND;        
-                $p->setStatus($status)->request();
-                break;               
-            case 'xa':               
-                $p = new XA;         
-                $p->setStatus($status)->request();
-                break;
-        }
-    }
-    
-    function ajaxSetPresence($show = false)
-    {
-        $this->setPresence($show, false);
     }
 
-    function ajaxSetStatus($status)
-    {
-        $this->setPresence(false, $status);
-    }
-    
     function ajaxLogout()
     {
         $session = \Sessionx::start();
@@ -143,7 +139,7 @@ class Presence extends WidgetBase
     function ajaxOpenDialog()
     {
         Dialog::fill($this->preparePresenceList());
-        RPC::call('setPresenceActions');
+        RPC::call('Presence.refresh');
     }
 
     function preparePresence()
@@ -196,10 +192,6 @@ class Presence extends WidgetBase
         $presencetpl->assign('p', $p);
         $presencetpl->assign('txt', $txt);
         $presencetpl->assign('txts', $txts);
-        $presencetpl->assign('callchat',    $this->call('ajaxSetPresence', "'chat'"));
-        $presencetpl->assign('callaway',    $this->call('ajaxSetPresence', "'away'"));
-        $presencetpl->assign('calldnd',     $this->call('ajaxSetPresence', "'dnd'"));
-        $presencetpl->assign('callxa',      $this->call('ajaxSetPresence', "'xa'"));
 
         $presencetpl->assign('calllogout',  $this->call('ajaxLogout'));
         $html = $presencetpl->draw('_presence_list', true);

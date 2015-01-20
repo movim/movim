@@ -29,7 +29,6 @@ class User {
     /**
      * Class constructor. Reloads the user's session or attempts to authenticate
      * the user.
-     * Note that the constructor is private. This class is a singleton.
      */
     function __construct()
     {
@@ -107,6 +106,15 @@ class User {
             
         $sess = Session::start();
         Session::dispose();
+    }
+
+    function createDir()
+    {
+        if(!is_dir($this->userdir)
+        && $this->userdir != '') {
+            mkdir($this->userdir);
+            touch($this->userdir.'index.html');
+        }
     }
 
     function getLogin()

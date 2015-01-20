@@ -1,4 +1,15 @@
-#presence_widget {
+form[name=presence] ul {
+    margin: 0 -2rem;
+}
+/*
+form[name=presence] li {
+    padding-left: 7rem;
+}
+
+form[name=presence] li span.icon {
+    left: 1rem;
+}*/
+/*#presence_widget {
     max-width: 15rem;
     position: fixed;
     top: 0;
@@ -145,4 +156,4 @@
     margin-top: 1em;
     position: initial;
 }
-
+*/
