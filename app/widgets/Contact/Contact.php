@@ -14,6 +14,12 @@ class Contact extends WidgetCommon
         Notification::append(null, $this->__('edit.updated'));
     }
 
+    function ajaxClear()
+    {
+        $html = $this->prepareEmpty();
+        RPC::call('movim_fill', 'contact_widget', $html);
+    }
+
     function ajaxGetContact($jid)
     {
         $html = $this->prepareContact($jid);
@@ -107,7 +113,7 @@ class Contact extends WidgetCommon
     {
         if($jid == null) {
             $cd = new \modl\ContactDAO();
-            $users = $cd->getAllPublic();
+            $users = $cd->getAllPublic(0, 10);
             if($users != null){
                 $view = $this->tpl();
                 $view->assign('users', array_reverse($users));
