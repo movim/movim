@@ -53,6 +53,8 @@ class Login extends WidgetBase
 
     function onConfig($packet)
     {
+        $this->user->createDir();
+
         RPC::call('postLogin', $this->user->getLogin(), Route::urlize('root'));
     }
 
