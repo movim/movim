@@ -111,6 +111,7 @@ ul li.action > form > div.action {
     top: 50%;
     right: 2rem;
     margin-top: -2.5rem;
+    font-size: 3rem;
     height: 5rem;
     line-height: 5rem;
 }
