@@ -3,16 +3,16 @@
         <h3>{$c->__('rooms.add')}</h3>
 
         <div>
-            <label>{$c->__('chatrooms.id')}</label>
             <input name="jid" placeholder="chatroom@server.com" type="email" required />
+            <label>{$c->__('chatrooms.id')}</label>
         </div>
         <div>
-            <label>{$c->__('chatrooms.name')}</label>
             <input name="name" placeholder="{$c->__('chatrooms.name_placeholder')}" required />
+            <label>{$c->__('chatrooms.name')}</label>
         </div>
         <div>
-            <label>{$c->__('chatrooms.nickname')}</label>
             <input name="nick" placeholder="{$me->getTrueName()}" value="{$me->getTrueName()}"/>
+            <label>{$c->__('chatrooms.nickname')}</label>
         </div>
         <!--
         <div class="element large mini">
