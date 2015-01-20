@@ -71,20 +71,20 @@ class PubsubSubscriptionConfig extends WidgetBase
                             "'".$name."'");
 
                 $listhtml .= '
-                    <li>
+                    <li class="action">
                         <span class="icon bubble color '.stringToColor($s->node).'">
                             '.firstLetterCapitalize($s->node).'
                         </span>
                         <form>
                             <div class="control padded">
                                 <div class="checkbox">
-                                <input
-                                    type="checkbox"
-                                    id="privacy'.$s->node.'"
-                                    name="privacy'.$s->node.'"
-                                    '.$checked.'
-                                    onchange="'.$switch.'"/>
-                                <label for="privacy'.$s->node.'"></label>
+                                    <input
+                                        type="checkbox"
+                                        id="privacy'.$s->node.'"
+                                        name="privacy'.$s->node.'"
+                                        '.$checked.'
+                                        onchange="'.$switch.'"/>
+                                    <label for="privacy'.$s->node.'"></label>
                                 </div>
                             </div>
                         </form>
