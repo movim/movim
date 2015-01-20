@@ -2,7 +2,7 @@
     <li class="subheader"> {$c->__('vcard.privacy_title')}</li>
     <li class="condensed action">
         <form>
-            <div class="control">
+            <div class="control action">
                 <div class="checkbox">
                     <input
                         type="checkbox"

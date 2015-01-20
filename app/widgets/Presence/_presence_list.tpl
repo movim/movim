@@ -15,7 +15,7 @@
             <ul class="active">
                 <li class="action">
                     <span class="icon bubble color small green"></span>
-                    <div>
+                    <div class="action">
                         <div class="radio">
                             <input type="radio" name="value" id="chat" value="chat" {if="$p->value == 1"}checked="checked"{/if}/>
                             <label for="chat"></label>
@@ -25,7 +25,7 @@
                 </li>
                 <li class="action">
                     <span class="icon bubble color small orange"></span>
-                    <div>
+                    <div class="action">
                         <div class="radio">
                             <input type="radio" name="value" id="away" value="away" {if="$p->value == 2"}checked="checked"{/if}/>
                             <label for="away"></label>
@@ -35,7 +35,7 @@
                 </li>
                 <li class="action">
                     <span class="icon bubble color small red"></span>
-                    <div>
+                    <div class="action">
                         <div class="radio">
                             <input type="radio" name="value" id="dnd" value="dnd" {if="$p->value == 3"}checked="checked"{/if}/>
                             <label for="dnd"></label>
@@ -45,7 +45,7 @@
                 </li>
                 <li class="action">
                     <span class="icon bubble color small purple"></span>
-                    <div>
+                    <div class="action">
                         <div class="radio">
                             <input type="radio" name="value" id="xa" value="xa" {if="$p->value == 4"}checked="checked"{/if}/>
                             <label for="xa"></label>
