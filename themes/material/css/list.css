@@ -91,6 +91,7 @@ ul li > p {
     overflow: hidden;
     text-overflow: ellipsis;
     max-height: 8rem;
+    line-height: 2.5rem;
 }
 
 ul li p.wrap {

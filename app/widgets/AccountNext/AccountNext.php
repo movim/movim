@@ -71,7 +71,7 @@ class AccountNext extends WidgetBase {
         
         RPC::call('movim_fill', 'subscription_form', $html);
         RPC::call('setUsername', $data->username->value);
-        RPC::call('remoteUnregister');
+        //RPC::call('remoteUnregister');
     }
 
     function onRegisterError($package)
