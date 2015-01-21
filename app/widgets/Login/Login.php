@@ -341,6 +341,7 @@ class Login extends WidgetBase
         $sessionshtml->assign('empty', new \Modl\Contact);
 
         RPC::call('movim_fill', 'sessions', $sessionshtml->draw('_login_sessions', true));
+        RPC::call('Login.refresh');
         RPC::commit();
     }
 }
