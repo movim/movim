@@ -34,7 +34,7 @@
                                     value="{$c->__('button.come_in')}"
                                     class="button flat"/> 
                             </div>
-                            <a id="return_sessions" class="button flat" href="#" onclick="Login.backToChoose()">
+                            <a id="return_sessions" class="button flat" href="#" onclick="Login.toChoose()">
                                 {$c->__('account.title')}
                             </a>
                         </li>
