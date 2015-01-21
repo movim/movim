@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-02 15:26+0100\n"
+"POT-Creation-Date: 2015-01-21 12:43+0100\n"
 "PO-Revision-Date: 2014-12-03 09:27+0000\n"
 "Last-Translator: Muhammad Rizvi <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-12-08 10:12+0000\n"
 "X-Generator: Launchpad (build 17274)\n"
-"Language: id\n"
 
 #: ../cache/locales.php:2
 msgid "Thanks"
@@ -38,17 +38,15 @@ msgstr ""
 msgid "Resources"
 msgstr ""
 
-#: ../cache/locales.php:7 ../cache/locales.php:69
+#: ../cache/locales.php:7 ../cache/locales.php:74
 msgid "API"
 msgstr ""
 
 #: ../cache/locales.php:8
-msgid ""
-"Movim is an XMPP-based communication platform. All the project, except the "
-"following software and resources, is under"
+msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr ""
 
-#: ../cache/locales.php:9 ../cache/locales.php:190
+#: ../cache/locales.php:9 ../cache/locales.php:235
 msgid "Some data are missing !"
 msgstr ""
 
@@ -80,11 +78,11 @@ msgstr ""
 msgid "Could not communicate with the XMPP server"
 msgstr ""
 
-#: ../cache/locales.php:17 ../cache/locales.php:326 ../cache/locales.php:332
+#: ../cache/locales.php:17 ../cache/locales.php:392 ../cache/locales.php:398
 msgid "Unknown error"
 msgstr ""
 
-#: ../cache/locales.php:18 ../cache/locales.php:288
+#: ../cache/locales.php:18 ../cache/locales.php:354
 msgid "Create a new account"
 msgstr ""
 
@@ -92,2131 +90,2216 @@ msgstr ""
 msgid "No account creation form found on the server"
 msgstr ""
 
-#: ../cache/locales.php:20 ../cache/locales.php:140 ../cache/locales.php:224
+#: ../cache/locales.php:20 ../cache/locales.php:151 ../cache/locales.php:181
+#: ../cache/locales.php:270
 msgid "on"
 msgstr "pada"
 
 #: ../cache/locales.php:21
-msgid "Loading"
+msgid "Your acccount has been successfully registered"
 msgstr ""
 
 #: ../cache/locales.php:22
-msgid "Database"
+msgid "Loading"
 msgstr ""
 
 #: ../cache/locales.php:23
-msgid "Modl wasn't able to connect to the database"
+msgid "Not Acceptable"
 msgstr ""
 
 #: ../cache/locales.php:24
-msgid "Movim is connected to the database"
+msgid "The registration system of this server is currently unavailable"
 msgstr ""
 
 #: ../cache/locales.php:25
-msgid "The database need to be updated"
+msgid "This server use an external system for the registration, please click on the following URL."
 msgstr ""
 
 #: ../cache/locales.php:26
-msgid "Movim database is up to date"
+msgid "Database"
 msgstr ""
 
 #: ../cache/locales.php:27
-msgid "Database Type"
+msgid "Modl wasn't able to connect to the database"
 msgstr ""
 
-#: ../cache/locales.php:28 ../cache/locales.php:47 ../cache/locales.php:412
-msgid "Username"
+#: ../cache/locales.php:28
+msgid "Movim is connected to the database"
 msgstr ""
 
-#: ../cache/locales.php:29 ../cache/locales.php:48 ../cache/locales.php:207
-#: ../cache/locales.php:413
-msgid "Password"
-msgstr "Kata sandi"
+#: ../cache/locales.php:29
+msgid "The database need to be updated"
+msgstr ""
 
 #: ../cache/locales.php:30
-msgid "Host"
+msgid "Movim database is up to date"
 msgstr ""
 
 #: ../cache/locales.php:31
-msgid "Port"
+msgid "Database Type"
 msgstr ""
 
-#: ../cache/locales.php:32
-msgid "Database Name"
+#: ../cache/locales.php:32 ../cache/locales.php:51 ../cache/locales.php:479
+msgid "Username"
 msgstr ""
 
-#: ../cache/locales.php:33
-msgid "General Settings"
-msgstr ""
+#: ../cache/locales.php:33 ../cache/locales.php:52 ../cache/locales.php:253
+#: ../cache/locales.php:480
+msgid "Password"
+msgstr "Kata sandi"
 
 #: ../cache/locales.php:34
-msgid "Theme"
+msgid "Host"
 msgstr ""
 
 #: ../cache/locales.php:35
-msgid "Default language"
+msgid "Port"
 msgstr ""
 
 #: ../cache/locales.php:36
-msgid "Environment"
+msgid "Database Name"
 msgstr ""
 
 #: ../cache/locales.php:37
-msgid "Log verbosity"
+msgid "General Settings"
 msgstr ""
 
 #: ../cache/locales.php:38
-msgid "Server Timezone"
+msgid "Theme"
 msgstr ""
 
 #: ../cache/locales.php:39
-msgid "User folder size limit (in bytes)"
+msgid "Default language"
 msgstr ""
 
 #: ../cache/locales.php:40
-msgid "WebSocket Configuration"
+msgid "Environment"
 msgstr ""
 
 #: ../cache/locales.php:41
-msgid "Enter here a valid WebSocket URI in the form"
+msgid "Log verbosity"
 msgstr ""
 
 #: ../cache/locales.php:42
-msgid "WebSocket URI"
+msgid "Server Timezone"
 msgstr ""
 
 #: ../cache/locales.php:43
-msgid ""
-"If you change the URI, please restart the daemon to reload the configuration"
+msgid "User folder size limit (in bytes)"
 msgstr ""
 
 #: ../cache/locales.php:44
-msgid "Public WebSockets"
+msgid "WebSocket Configuration"
 msgstr ""
 
 #: ../cache/locales.php:45
-msgid "Administration Credential"
+msgid "Enter here a valid WebSocket URI in the form"
 msgstr ""
 
 #: ../cache/locales.php:46
-msgid "Change the default credentials admin/password"
+msgid "WebSocket URI"
+msgstr ""
+
+#: ../cache/locales.php:47
+msgid "If you change the URI, please restart the daemon to reload the configuration"
+msgstr ""
+
+#: ../cache/locales.php:48
+msgid "Public WebSockets"
 msgstr ""
 
 #: ../cache/locales.php:49
-msgid "Retype password"
+msgid "Administration Credential"
 msgstr ""
 
 #: ../cache/locales.php:50
-msgid "Whitelist - XMPP Server"
-msgstr ""
-
-#: ../cache/locales.php:51
-msgid ""
-"If you want to specify a list of authorized XMPP servers on your Movim pod "
-"and forbid the connection on all the others please put their domain name "
-"here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
-
-#: ../cache/locales.php:52
-msgid ""
-"Leave this field blank if you allow the access to all the XMPP accounts."
+msgid "Change the default credentials admin/password"
 msgstr ""
 
 #: ../cache/locales.php:53
-msgid "List of whitelisted XMPP servers"
+msgid "Retype password"
 msgstr ""
 
-#: ../cache/locales.php:54 ../cache/locales.php:58
-msgid "Information Message"
+#: ../cache/locales.php:54
+msgid "Whitelist - XMPP Server"
 msgstr ""
 
 #: ../cache/locales.php:55
-msgid "Description"
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
 msgstr ""
 
 #: ../cache/locales.php:56
-msgid "This message will be displayed on the login page"
+msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr ""
 
 #: ../cache/locales.php:57
-msgid "Leave this field blank if you don't want to show any message."
+msgid "List of whitelisted XMPP servers"
+msgstr ""
+
+#: ../cache/locales.php:58 ../cache/locales.php:62
+msgid "Information Message"
 msgstr ""
 
 #: ../cache/locales.php:59
-msgid "Empty"
+msgid "Description"
 msgstr ""
 
 #: ../cache/locales.php:60
-msgid "Syslog"
+msgid "This message will be displayed on the login page"
 msgstr ""
 
 #: ../cache/locales.php:61
-msgid "Syslog and files"
-msgstr ""
-
-#: ../cache/locales.php:62
-msgid "General Overview"
+msgid "Leave this field blank if you don't want to show any message."
 msgstr ""
 
 #: ../cache/locales.php:63
-msgid ""
-"Movim has found some issues or things that need to be fixed or improved"
+msgid "Empty"
 msgstr ""
 
 #: ../cache/locales.php:64
-#, php-format
-msgid "Update your PHP-Version: %s <br>Required: 5.3.0"
+msgid "Syslog"
 msgstr ""
 
 #: ../cache/locales.php:65
-msgid "Install the php5-curl library"
+msgid "Syslog and files"
 msgstr ""
 
 #: ../cache/locales.php:66
-msgid "Install the php5-gd library"
+msgid "General Overview"
 msgstr ""
 
 #: ../cache/locales.php:67
-msgid "Read and write rights for the webserver in Movim's root directory"
+msgid "Movim has found some issues or things that need to be fixed or improved"
 msgstr ""
 
 #: ../cache/locales.php:68
-msgid "The URL Rewriting support is currently disabled"
+#, php-format
+msgid "Update your PHP-Version: %s"
+msgstr ""
+
+#: ../cache/locales.php:69
+msgid "Required: 5.3.0"
 msgstr ""
 
 #: ../cache/locales.php:70
-#, php-format
-msgid ""
-"Here you can register your pod on the official %sMovim API%s and be listed "
-"on %sthe pods page%s."
+msgid "Install the php5-curl library"
 msgstr ""
 
 #: ../cache/locales.php:71
-msgid "Your pod is not registered on the API"
+msgid "Install the php5-gd library"
 msgstr ""
 
 #: ../cache/locales.php:72
-msgid "Your pod is registered on the API"
+msgid "Read and write rights for the webserver in Movim's root directory"
 msgstr ""
 
 #: ../cache/locales.php:73
-msgid "Your pod is not yet validated"
-msgstr ""
-
-#: ../cache/locales.php:74
-msgid "Your pod is validated"
+msgid "The URL Rewriting support is currently disabled"
 msgstr ""
 
 #: ../cache/locales.php:75
-msgid ""
-"You asked to be removed from the API, this request will be processed in a "
-"couple of hours"
+#, php-format
+msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
 msgstr ""
 
-#: ../cache/locales.php:76 ../cache/locales.php:114
-msgid "Configuration updated"
+#: ../cache/locales.php:76
+msgid "Your pod is not registered on the API"
 msgstr ""
 
 #: ../cache/locales.php:77
+msgid "Your pod is registered on the API"
+msgstr ""
+
+#: ../cache/locales.php:78
+msgid "Your pod is not yet validated"
+msgstr ""
+
+#: ../cache/locales.php:79
+msgid "Your pod is validated"
+msgstr ""
+
+#: ../cache/locales.php:80
+msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
+msgstr ""
+
+#: ../cache/locales.php:81 ../cache/locales.php:127
+msgid "Configuration updated"
+msgstr ""
+
+#: ../cache/locales.php:82
 msgid "Webcam"
 msgstr "Webcam"
 
-#: ../cache/locales.php:78
+#: ../cache/locales.php:83
 msgid "Cheese !"
 msgstr "Senyum !"
 
-#: ../cache/locales.php:79
+#: ../cache/locales.php:84
 msgid "Take a webcam snapshot"
 msgstr "Ambil gambar dari webcam"
 
-#: ../cache/locales.php:80
+#: ../cache/locales.php:85
 msgid "Avatar Updated"
 msgstr ""
 
-#: ../cache/locales.php:81
+#: ../cache/locales.php:86
 msgid "Avatar Not Updated"
 msgstr ""
 
-#: ../cache/locales.php:82 ../cache/locales.php:292
+#: ../cache/locales.php:87 ../cache/locales.php:358
 #, php-format
 msgid "%s's feed"
 msgstr ""
 
-#: ../cache/locales.php:83
+#: ../cache/locales.php:88
 msgid "Conferences"
 msgstr "Konferensi"
 
-#: ../cache/locales.php:84 ../cache/locales.php:153
+#: ../cache/locales.php:89 ../cache/locales.php:194
 msgid "Groups"
 msgstr "Grup"
 
-#: ../cache/locales.php:85
+#: ../cache/locales.php:90
 msgid "Add a new Chat Room"
 msgstr ""
 
-#: ../cache/locales.php:86
+#: ../cache/locales.php:91 ../cache/locales.php:316
 msgid "Chat Room ID"
 msgstr ""
 
-#: ../cache/locales.php:87 ../cache/locales.php:97 ../cache/locales.php:126
-#: ../cache/locales.php:215 ../cache/locales.php:263 ../cache/locales.php:301
+#: ../cache/locales.php:92 ../cache/locales.php:102 ../cache/locales.php:136
+#: ../cache/locales.php:167 ../cache/locales.php:261 ../cache/locales.php:311
+#: ../cache/locales.php:317 ../cache/locales.php:367
 msgid "Name"
 msgstr "Nama"
 
-#: ../cache/locales.php:88 ../cache/locales.php:127 ../cache/locales.php:302
+#: ../cache/locales.php:93 ../cache/locales.php:137 ../cache/locales.php:168
+#: ../cache/locales.php:319 ../cache/locales.php:368
 msgid "Nickname"
 msgstr "Panggilan"
 
-#: ../cache/locales.php:89
+#: ../cache/locales.php:94
 msgid "Do you want do join automaticaly this Chat Room ?"
 msgstr ""
 
-#: ../cache/locales.php:90
+#: ../cache/locales.php:95 ../cache/locales.php:320
 msgid "Bad Chatroom ID"
 msgstr "ID Chatroom Salah"
 
-#: ../cache/locales.php:91
+#: ../cache/locales.php:96 ../cache/locales.php:321
 msgid "Empty name"
 msgstr "Nama kosong"
 
-#: ../cache/locales.php:92
+#: ../cache/locales.php:97 ../cache/locales.php:327
 msgid "Bookmarks updated"
 msgstr "Bookmark diperbarui"
 
-#: ../cache/locales.php:93 ../cache/locales.php:156
+#: ../cache/locales.php:98 ../cache/locales.php:197
 msgid "An error occured : "
 msgstr "Terjadi kesalahan : "
 
-#: ../cache/locales.php:94
+#: ../cache/locales.php:99
 msgid "Configure"
 msgstr ""
 
-#: ../cache/locales.php:95
+#: ../cache/locales.php:100
 msgid "Add a new URL"
 msgstr ""
 
-#: ../cache/locales.php:96
+#: ../cache/locales.php:101
 msgid "URL"
 msgstr ""
 
-#: ../cache/locales.php:98
+#: ../cache/locales.php:103
 msgid "Message Published"
 msgstr ""
 
-#: ../cache/locales.php:99
+#: ../cache/locales.php:104 ../cache/locales.php:116
 msgid "Encrypted message"
 msgstr ""
 
-#: ../cache/locales.php:100
+#: ../cache/locales.php:105
 msgid "Composing..."
 msgstr "Menulis..."
 
-#: ../cache/locales.php:101
+#: ../cache/locales.php:106
 msgid "Paused..."
 msgstr ""
 
-#: ../cache/locales.php:102
+#: ../cache/locales.php:107
 #, php-format
 msgid "%s needs your attention"
 msgstr ""
 
-#: ../cache/locales.php:103
+#: ../cache/locales.php:108
 msgid "Your message here..."
 msgstr ""
 
-#: ../cache/locales.php:104
-msgid "Connected to the chatroom"
-msgstr ""
-
-#: ../cache/locales.php:105
-msgid "Disconnected from the chatroom"
-msgstr ""
-
-#: ../cache/locales.php:106
-msgid "Feed Configuration"
-msgstr ""
-
-#: ../cache/locales.php:107
-msgid "General"
-msgstr ""
-
-#: ../cache/locales.php:108
-msgid "Language"
-msgstr ""
-
 #: ../cache/locales.php:109
-msgid "Appearence"
+msgid "Smileys"
 msgstr ""
 
-#: ../cache/locales.php:110
-msgid "Background color"
-msgstr ""
-
-#: ../cache/locales.php:111
-msgid "Font size"
-msgstr ""
-
-#: ../cache/locales.php:112
-msgid "Pattern"
-msgstr ""
-
-#: ../cache/locales.php:113
-msgid "This configuration is shared wherever you are connected !"
-msgstr ""
-
-#: ../cache/locales.php:115 ../cache/locales.php:295
-msgid "Data"
-msgstr ""
-
-#: ../cache/locales.php:116
-msgid "Cache"
-msgstr ""
-
-#: ../cache/locales.php:117
-msgid "Contacts"
-msgstr ""
-
-#: ../cache/locales.php:118 ../cache/locales.php:362
-msgid "Posts"
-msgstr ""
-
-#: ../cache/locales.php:119
-msgid "Messages"
-msgstr ""
-
-#: ../cache/locales.php:120 ../cache/locales.php:122
-msgid "Actions"
-msgstr "Tindakan"
-
-#: ../cache/locales.php:121
+#: ../cache/locales.php:110 ../cache/locales.php:117 ../cache/locales.php:162
 msgid "Chat"
 msgstr "Obrolan"
 
+#: ../cache/locales.php:111
+#, fuzzy
+msgid "Discuss with your contacts"
+msgstr "Dibagikan ke satu kontak"
+
+#: ../cache/locales.php:112 ../cache/locales.php:324
+msgid "Connected to the chatroom"
+msgstr ""
+
+#: ../cache/locales.php:113 ../cache/locales.php:325
+msgid "Disconnected from the chatroom"
+msgstr ""
+
+#: ../cache/locales.php:114
+msgid "Open a new conversation by clicking on the plus button in the header"
+msgstr ""
+
+#: ../cache/locales.php:115
+#, fuzzy
+msgid "Chat with a contact"
+msgstr "Dibagikan ke seluruh kontak"
+
+#: ../cache/locales.php:118
+msgid "Feed Configuration"
+msgstr ""
+
+#: ../cache/locales.php:119
+msgid "General"
+msgstr ""
+
+#: ../cache/locales.php:120
+msgid "Language"
+msgstr ""
+
+#: ../cache/locales.php:121
+msgid "Appearence"
+msgstr ""
+
+#: ../cache/locales.php:122
+msgid "Background color"
+msgstr ""
+
 #: ../cache/locales.php:123
-msgid "Invite this user"
-msgstr "Undang user ini"
+msgid "Font size"
+msgstr ""
 
 #: ../cache/locales.php:124
-msgid "Remove this contact"
-msgstr "Hapus kontak ini"
+#, fuzzy
+msgid "Notifications"
+msgstr "Lokasi"
 
-#: ../cache/locales.php:125 ../cache/locales.php:300
+#: ../cache/locales.php:125
+msgid "Pattern"
+msgstr ""
+
+#: ../cache/locales.php:126
+msgid "This configuration is shared wherever you are connected !"
+msgstr ""
+
+#: ../cache/locales.php:128
+msgid "Notify on incoming message"
+msgstr ""
+
+#: ../cache/locales.php:129
+msgid "Use desktop notifications"
+msgstr ""
+
+#: ../cache/locales.php:130
+msgid "Data"
+msgstr ""
+
+#: ../cache/locales.php:131
+msgid "Cache"
+msgstr ""
+
+#: ../cache/locales.php:132 ../cache/locales.php:202 ../cache/locales.php:411
+msgid "Contacts"
+msgstr ""
+
+#: ../cache/locales.php:133 ../cache/locales.php:424
+msgid "Posts"
+msgstr ""
+
+#: ../cache/locales.php:134
+msgid "Messages"
+msgstr ""
+
+#: ../cache/locales.php:135 ../cache/locales.php:166 ../cache/locales.php:366
 msgid "General Informations"
 msgstr "Informasi Umum"
 
-#: ../cache/locales.php:128 ../cache/locales.php:304
+#: ../cache/locales.php:138 ../cache/locales.php:169 ../cache/locales.php:370
 msgid "Date of Birth"
 msgstr "Tanggal Lahir"
 
-#: ../cache/locales.php:129 ../cache/locales.php:305
+#: ../cache/locales.php:139 ../cache/locales.php:170 ../cache/locales.php:371
 msgid "Gender"
 msgstr "Jenis kelamin"
 
-#: ../cache/locales.php:130 ../cache/locales.php:306
+#: ../cache/locales.php:140 ../cache/locales.php:171 ../cache/locales.php:372
 msgid "Marital Status"
 msgstr "Status Pernikahan"
 
-#: ../cache/locales.php:131 ../cache/locales.php:303
+#: ../cache/locales.php:141 ../cache/locales.php:172 ../cache/locales.php:369
 msgid "Email"
 msgstr "Email"
 
-#: ../cache/locales.php:132 ../cache/locales.php:307
+#: ../cache/locales.php:142 ../cache/locales.php:173 ../cache/locales.php:373
 msgid "Website"
 msgstr "Situs web"
 
-#: ../cache/locales.php:133 ../cache/locales.php:308
+#: ../cache/locales.php:143 ../cache/locales.php:174 ../cache/locales.php:374
 msgid "About Me"
 msgstr "Tentang Saya"
 
-#: ../cache/locales.php:134 ../cache/locales.php:309
+#: ../cache/locales.php:144
+msgid "Other Accounts"
+msgstr ""
+
+#: ../cache/locales.php:145 ../cache/locales.php:175 ../cache/locales.php:375
 msgid "Geographic Position"
 msgstr "Posisi Geografis"
 
-#: ../cache/locales.php:135 ../cache/locales.php:310
+#: ../cache/locales.php:146 ../cache/locales.php:176 ../cache/locales.php:376
 msgid "Locality"
 msgstr "Lokalitas"
 
-#: ../cache/locales.php:136 ../cache/locales.php:311
+#: ../cache/locales.php:147 ../cache/locales.php:177 ../cache/locales.php:377
 msgid "Country"
 msgstr "Negara"
 
-#: ../cache/locales.php:137
+#: ../cache/locales.php:148 ../cache/locales.php:178
 msgid "Mood"
 msgstr "Mood"
 
-#: ../cache/locales.php:138
+#: ../cache/locales.php:149 ../cache/locales.php:179
 msgid "I'm "
 msgstr "Aku "
 
-#: ../cache/locales.php:139
+#: ../cache/locales.php:150 ../cache/locales.php:180
 msgid "Listening"
 msgstr "Mendengarkan"
 
-#: ../cache/locales.php:141
+#: ../cache/locales.php:152 ../cache/locales.php:182
 msgid "Last seen"
 msgstr "Terakhir terlihat"
 
-#: ../cache/locales.php:142
+#: ../cache/locales.php:153 ../cache/locales.php:183
 msgid "Client Informations"
 msgstr "Informasi Klien"
 
-#: ../cache/locales.php:143
-msgid "Manage"
-msgstr "Kelola"
-
-#: ../cache/locales.php:144
-msgid "Alias"
-msgstr "Alias"
-
-#: ../cache/locales.php:145
-msgid "Group"
-msgstr "Grup"
-
-#: ../cache/locales.php:146
-msgid "Contact updated"
-msgstr ""
-
-#: ../cache/locales.php:147
-msgid "Public groups"
-msgstr "Grup publik"
-
-#: ../cache/locales.php:148
-msgid "No public groups found"
-msgstr "Tidak ada grup publik yang ditemukan"
-
-#: ../cache/locales.php:149 ../cache/locales.php:152
+#: ../cache/locales.php:154 ../cache/locales.php:190 ../cache/locales.php:193
 msgid "Last registered"
 msgstr "Terdaftar terakhir"
 
-#: ../cache/locales.php:150
-msgid "Discover my server"
+#: ../cache/locales.php:155 ../cache/locales.php:475
+msgid "Edit"
 msgstr ""
 
-#: ../cache/locales.php:151
-msgid "Discussion Servers"
-msgstr ""
+#: ../cache/locales.php:156 ../cache/locales.php:185
+msgid "Alias"
+msgstr "Alias"
 
-#: ../cache/locales.php:154
-msgid "Chatrooms"
-msgstr ""
+#: ../cache/locales.php:157 ../cache/locales.php:186
+msgid "Group"
+msgstr "Grup"
 
-#: ../cache/locales.php:155
-msgid "My Posts"
-msgstr "Posting saya"
-
-#: ../cache/locales.php:157
-msgid "Hi!"
-msgstr ""
-
-#: ../cache/locales.php:158
-msgid ""
-"This is your newsfeed, here you will see the posts published by you and your "
-"contacts."
+#: ../cache/locales.php:158 ../cache/locales.php:187 ../cache/locales.php:341
+msgid "Contact updated"
 msgstr ""
 
 #: ../cache/locales.php:159
-msgid "Frequently Asked Questions"
+msgid "Are you sure?"
 msgstr ""
 
 #: ../cache/locales.php:160
-msgid "What do the little banners refer to ?"
-msgstr "Spanduk kecil tersebut mengacu kepada apa?"
-
-#: ../cache/locales.php:161
-msgid ""
-"Thanks to these five little banners, you can quickly identitfy the level of "
-"confdentiality applied to the information you provide."
+msgid "You are going to delete one of your contacts, please confirm your action"
 msgstr ""
 
-#: ../cache/locales.php:162
-msgid "White, only you can see the information"
-msgstr ""
-
-#: ../cache/locales.php:163
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
+#: ../cache/locales.php:161 ../cache/locales.php:163
+msgid "Actions"
+msgstr "Tindakan"
 
 #: ../cache/locales.php:164
-msgid "Orange, all your contact list can see your information"
-msgstr ""
+msgid "Invite this user"
+msgstr "Undang user ini"
 
 #: ../cache/locales.php:165
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
-
-#: ../cache/locales.php:166
-msgid "Black, the whole Internet can see your information"
-msgstr ""
-
-#: ../cache/locales.php:167
-msgid "Looking for some documentation ?"
-msgstr ""
-
-#: ../cache/locales.php:168
-msgid "Read the Wiki"
-msgstr ""
-
-#: ../cache/locales.php:169
-msgid "Talk with us by email ?"
-msgstr ""
-
-#: ../cache/locales.php:170
-msgid "Join the Mailing List"
-msgstr ""
-
-#: ../cache/locales.php:171
-msgid "Chat with the team ?"
-msgstr ""
-
-#: ../cache/locales.php:172
-msgid "Join the Chatroom"
-msgstr ""
-
-#: ../cache/locales.php:173
-msgid "What's Hot"
-msgstr ""
-
-#: ../cache/locales.php:174
-msgid "Creating your location node"
-msgstr ""
-
-#: ../cache/locales.php:175
-msgid "Creating your bookmark node"
-msgstr ""
-
-#: ../cache/locales.php:176
-msgid "Creating your profile node"
-msgstr ""
-
-#: ../cache/locales.php:177
-msgid "Creating your avatar node"
-msgstr ""
-
-#: ../cache/locales.php:178
-msgid "Movim is currently configuring your account, please wait..."
-msgstr ""
-
-#: ../cache/locales.php:179
-msgid ""
-"Your server doesn't support post publication, you can only read contact's "
-"feeds"
-msgstr ""
-"Server anda tidak mendukung pasca publikasi, kamu hanya dapat membaca feed "
-"kontak"
-
-#: ../cache/locales.php:180
-msgid "Creating your feed..."
-msgstr "Membuat feed kamu..."
-
-#: ../cache/locales.php:181
-msgid "Location"
-msgstr "Lokasi"
-
-#: ../cache/locales.php:182
-msgid "Wrong position"
-msgstr ""
-
-#: ../cache/locales.php:183
-msgid "Location updated"
-msgstr ""
+msgid "Remove this contact"
+msgstr "Hapus kontak ini"
 
 #: ../cache/locales.php:184
-msgid "Update my position"
-msgstr ""
-
-#: ../cache/locales.php:185
-msgid "Wrong username"
-msgstr ""
-
-#: ../cache/locales.php:186
-msgid "Invalid JID"
-msgstr ""
-
-#: ../cache/locales.php:187
-msgid "Authentication mechanism not supported by Movim"
-msgstr ""
+msgid "Manage"
+msgstr "Kelola"
 
 #: ../cache/locales.php:188
-msgid "Empty Challenge from the server"
-msgstr ""
+msgid "Public groups"
+msgstr "Grup publik"
 
 #: ../cache/locales.php:189
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
+msgid "No public groups found"
+msgstr "Tidak ada grup publik yang ditemukan"
 
 #: ../cache/locales.php:191
-msgid "Wrong password"
+msgid "Discover my server"
 msgstr ""
 
 #: ../cache/locales.php:192
-msgid "The XMPP authentification failed"
+msgid "Discussion Servers"
 msgstr ""
 
-#: ../cache/locales.php:193
-msgid "The current BOSH URL is invalid"
-msgstr ""
-
-#: ../cache/locales.php:194
-msgid "Internal server error"
-msgstr ""
-
-#: ../cache/locales.php:195
-msgid "Session error"
+#: ../cache/locales.php:195 ../cache/locales.php:315
+msgid "Chatrooms"
 msgstr ""
 
 #: ../cache/locales.php:196
-msgid "Account successfully created"
-msgstr ""
-
-#: ../cache/locales.php:197
-msgid "Movim failed to authenticate. You entered wrong data"
-msgstr ""
+msgid "My Posts"
+msgstr "Posting saya"
 
 #: ../cache/locales.php:198
-msgid "Your XMPP server is unauthorized"
+msgid "Hi!"
 msgstr ""
 
 #: ../cache/locales.php:199
-msgid "The server takes too much time to respond"
+msgid "This is your newsfeed, here you will see the posts published by you and your contacts."
 msgstr ""
 
 #: ../cache/locales.php:200
-msgid "Your web browser is too old to use with Movim."
-msgstr "Browser anda terlalu lawas untuk di gunakan dengan Movim."
-
-#: ../cache/locales.php:201
-msgid ""
-"Movim cannot talk with the server, please try again later (Websocket "
-"connection error)"
+msgid "All"
 msgstr ""
 
-#: ../cache/locales.php:202
-#, php-format
-msgid ""
-"You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
-"and your password"
-msgstr ""
+#: ../cache/locales.php:201 ../cache/locales.php:409
+msgid "News"
+msgstr "Berita"
 
 #: ../cache/locales.php:203
-#, php-format
-msgid "%sGmail accounts are also compatible%s but are not fully supported"
+msgid "Refresh all the streams"
 msgstr ""
 
-#: ../cache/locales.php:204
-msgid "You can login using your favorite Jabber account"
-msgstr ""
+#: ../cache/locales.php:204 ../cache/locales.php:343
+msgid "Search"
+msgstr "Cari"
 
 #: ../cache/locales.php:205
-msgid "or with our demonstration account"
+msgid "Frequently Asked Questions"
 msgstr ""
 
 #: ../cache/locales.php:206
-msgid "My address"
-msgstr "Alamat saya"
+msgid "What do the little banners refer to ?"
+msgstr "Spanduk kecil tersebut mengacu kepada apa?"
+
+#: ../cache/locales.php:207
+msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+msgstr ""
 
 #: ../cache/locales.php:208
-msgid "Create one !"
+msgid "White, only you can see the information"
 msgstr ""
 
 #: ../cache/locales.php:209
-msgid "No account yet ?"
+msgid "Green, you have chosen some contacts who can see your information"
 msgstr ""
 
 #: ../cache/locales.php:210
-msgid "Login with an another account"
+msgid "Orange, all your contact list can see your information"
 msgstr ""
 
 #: ../cache/locales.php:211
-msgid ""
-"This server accept only connection with xmpp accounts from these servers :"
+msgid "Red, everybody in the XMPP network can see your information"
 msgstr ""
 
 #: ../cache/locales.php:212
-#, php-format
-msgid ""
-"If you don't have such xmpp account, you can try %sanother public Movim%s "
-"client."
+msgid "Black, the whole Internet can see your information"
 msgstr ""
 
 #: ../cache/locales.php:213
-msgid "Connected"
+msgid "Looking for some documentation ?"
 msgstr ""
 
 #: ../cache/locales.php:214
-msgid "Population"
+msgid "Read the Wiki"
+msgstr ""
+
+#: ../cache/locales.php:215
+msgid "Talk with us by email ?"
 msgstr ""
 
 #: ../cache/locales.php:216
-msgid "Resolution"
-msgstr "Resolusi"
+msgid "Join the Mailing List"
+msgstr ""
 
 #: ../cache/locales.php:217
-msgid "Size"
-msgstr "Ukuran"
+msgid "Chat with the team ?"
+msgstr ""
 
 #: ../cache/locales.php:218
-msgid "Date"
-msgstr "Tanggal"
+msgid "Join the Chatroom"
+msgstr ""
 
 #: ../cache/locales.php:219
-msgid "ISO"
-msgstr "ISO"
+msgid "What's Hot"
+msgstr ""
 
 #: ../cache/locales.php:220
-msgid "Camera"
-msgstr "Kamera"
+msgid "Location node created"
+msgstr ""
 
 #: ../cache/locales.php:221
-msgid "Artist"
-msgstr "Artis"
+#, fuzzy
+msgid "Bookmark node created"
+msgstr "Bookmark diperbarui"
 
 #: ../cache/locales.php:222
-msgid "Original"
-msgstr "Orisinil"
+#, fuzzy
+msgid "Profile node created"
+msgstr "Profil di Perbarui"
 
 #: ../cache/locales.php:223
-msgid "Link"
-msgstr "Pranala"
+msgid "Avatar node created"
+msgstr ""
+
+#: ../cache/locales.php:224
+msgid "Subscriptions node created"
+msgstr ""
 
 #: ../cache/locales.php:225
-msgid "Please select image file"
-msgstr "Pilih file gambar"
+msgid "Microblog node created"
+msgstr ""
 
 #: ../cache/locales.php:226
-msgid "You should select valid image files only!"
-msgstr "Kamu harus memilih file gambar yang valid saja!"
+msgid "Location"
+msgstr "Lokasi"
 
 #: ../cache/locales.php:227
-msgid "An error occurred while uploading the file"
-msgstr "Terjadi kesalahan saat meng-unggah file"
+msgid "Wrong position"
+msgstr ""
 
 #: ../cache/locales.php:228
-msgid ""
-"The upload has been canceled by the user or the browser dropped the "
-"connection"
+msgid "Location updated"
 msgstr ""
-"Pengunggahan telah dibatalkan oleh pengguna atau browser memutuskan sambungan"
 
 #: ../cache/locales.php:229
-msgid ""
-"Your file is very big. We can't accept it. Please select a smaller file"
+msgid "Update my position"
 msgstr ""
-"Filemu terlalu besar. Kami tidak dapat menerimanya. Pilih file yang lebih "
-"kecil"
 
-#: ../cache/locales.php:230 ../cache/locales.php:232
-msgid "Hello"
+#: ../cache/locales.php:230
+msgid "Wrong username"
 msgstr ""
 
 #: ../cache/locales.php:231
-msgid ""
-"Welcome on your news feed, here you will see all the posts published in the "
-"groups you have subscribed."
+msgid "Invalid JID"
+msgstr ""
+
+#: ../cache/locales.php:232
+msgid "Authentication mechanism not supported by Movim"
 msgstr ""
 
 #: ../cache/locales.php:233
-msgid ""
-"Welcome on your group feed, here you will see all the posts published in the "
-"groups you have subscribed."
+msgid "Empty Challenge from the server"
 msgstr ""
 
 #: ../cache/locales.php:234
-msgid "Subscribe"
-msgstr ""
-
-#: ../cache/locales.php:235
-msgid "Unsubscribe"
+msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: ../cache/locales.php:236
-msgid "Make your membership to this group public to your friends"
+msgid "Wrong password"
 msgstr ""
 
 #: ../cache/locales.php:237
-msgid "Give a nickname to this group if you want"
+msgid "The XMPP authentification failed"
 msgstr ""
 
 #: ../cache/locales.php:238
-msgid "Are you sure ?"
+msgid "The current BOSH URL is invalid"
 msgstr ""
 
 #: ../cache/locales.php:239
-msgid "Oops!"
+msgid "Internal server error"
 msgstr ""
 
 #: ../cache/locales.php:240
-msgid "I cannot find any posts here. Try to push the refresh button."
+msgid "Session error"
 msgstr ""
 
 #: ../cache/locales.php:241
-msgid "Manage your members"
+msgid "Account successfully created"
 msgstr ""
 
 #: ../cache/locales.php:242
-msgid "Get the members"
+msgid "Movim failed to authenticate. You entered wrong data"
 msgstr ""
 
 #: ../cache/locales.php:243
-msgid "Affiliations saved"
+msgid "Your XMPP server is unauthorized"
 msgstr ""
 
 #: ../cache/locales.php:244
-msgid "Configure your group"
+msgid "The server takes too much time to respond"
 msgstr ""
 
 #: ../cache/locales.php:245
-msgid "Group configuration saved"
-msgstr "Konfigurasi grup disimpan"
+msgid "Your web browser is too old to use with Movim."
+msgstr "Browser anda terlalu lawas untuk di gunakan dengan Movim."
 
 #: ../cache/locales.php:246
-msgid "Delete this group"
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
 msgstr ""
 
 #: ../cache/locales.php:247
-msgid "Group deleted"
+#, php-format
+msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
 msgstr ""
 
 #: ../cache/locales.php:248
 #, php-format
+msgid "%sGmail accounts are also compatible%s but are not fully supported"
+msgstr ""
+
+#: ../cache/locales.php:249
+msgid "You can login using your favorite Jabber account"
+msgstr ""
+
+#: ../cache/locales.php:250
+msgid "or with our demonstration account"
+msgstr ""
+
+#: ../cache/locales.php:251 ../cache/locales.php:378
+msgid "Accounts"
+msgstr ""
+
+#: ../cache/locales.php:252
+msgid "My address"
+msgstr "Alamat saya"
+
+#: ../cache/locales.php:254
+msgid "Create one !"
+msgstr ""
+
+#: ../cache/locales.php:255
+msgid "No account yet ?"
+msgstr ""
+
+#: ../cache/locales.php:256
+msgid "Another account"
+msgstr ""
+
+#: ../cache/locales.php:257
+msgid "This server accept only connection with xmpp accounts from these servers :"
+msgstr ""
+
+#: ../cache/locales.php:258
+#, php-format
+msgid "If you don't have such xmpp account, you can try %sanother public Movim%s client."
+msgstr ""
+
+#: ../cache/locales.php:259
+msgid "Connected"
+msgstr ""
+
+#: ../cache/locales.php:260
+msgid "Population"
+msgstr ""
+
+#: ../cache/locales.php:262
+msgid "Resolution"
+msgstr "Resolusi"
+
+#: ../cache/locales.php:263
+msgid "Size"
+msgstr "Ukuran"
+
+#: ../cache/locales.php:264
+msgid "Date"
+msgstr "Tanggal"
+
+#: ../cache/locales.php:265
+msgid "ISO"
+msgstr "ISO"
+
+#: ../cache/locales.php:266
+msgid "Camera"
+msgstr "Kamera"
+
+#: ../cache/locales.php:267
+msgid "Artist"
+msgstr "Artis"
+
+#: ../cache/locales.php:268
+msgid "Original"
+msgstr "Orisinil"
+
+#: ../cache/locales.php:269
+msgid "Link"
+msgstr "Pranala"
+
+#: ../cache/locales.php:271
+msgid "Please select image file"
+msgstr "Pilih file gambar"
+
+#: ../cache/locales.php:272
+msgid "You should select valid image files only!"
+msgstr "Kamu harus memilih file gambar yang valid saja!"
+
+#: ../cache/locales.php:273
+msgid "An error occurred while uploading the file"
+msgstr "Terjadi kesalahan saat meng-unggah file"
+
+#: ../cache/locales.php:274
+msgid "The upload has been canceled by the user or the browser dropped the connection"
+msgstr "Pengunggahan telah dibatalkan oleh pengguna atau browser memutuskan sambungan"
+
+#: ../cache/locales.php:275
+msgid "Your file is very big. We can't accept it. Please select a smaller file"
+msgstr "Filemu terlalu besar. Kami tidak dapat menerimanya. Pilih file yang lebih kecil"
+
+#: ../cache/locales.php:276
+msgid "Hello"
+msgstr ""
+
+#: ../cache/locales.php:277
+msgid "Contact post"
+msgstr ""
+
+#: ../cache/locales.php:278
+msgid "Welcome on your news feed, here you will see all the posts published in the groups you have subscribed."
+msgstr ""
+
+#: ../cache/locales.php:279
+msgid "Refreshing all the streams"
+msgstr ""
+
+#: ../cache/locales.php:280
+msgid "Subscribe"
+msgstr ""
+
+#: ../cache/locales.php:281
+msgid "Unsubscribe"
+msgstr ""
+
+#: ../cache/locales.php:282
+msgid "Make your membership to this group public to your friends"
+msgstr ""
+
+#: ../cache/locales.php:283
+msgid "Give a nickname to this group if you want"
+msgstr ""
+
+#: ../cache/locales.php:284
+msgid "Are you sure ?"
+msgstr ""
+
+#: ../cache/locales.php:285
+msgid "Oops!"
+msgstr ""
+
+#: ../cache/locales.php:286
+msgid "I cannot find any posts here. Try to push the refresh button."
+msgstr ""
+
+#: ../cache/locales.php:287
+msgid "Manage your members"
+msgstr ""
+
+#: ../cache/locales.php:288
+msgid "Get the members"
+msgstr ""
+
+#: ../cache/locales.php:289
+msgid "Affiliations saved"
+msgstr ""
+
+#: ../cache/locales.php:290
+msgid "Configure your group"
+msgstr ""
+
+#: ../cache/locales.php:291
+msgid "Group configuration saved"
+msgstr "Konfigurasi grup disimpan"
+
+#: ../cache/locales.php:292
+msgid "Delete this group"
+msgstr ""
+
+#: ../cache/locales.php:293
+msgid "Group deleted"
+msgstr ""
+
+#: ../cache/locales.php:294
+#, php-format
 msgid "Return to %s's list of groups"
 msgstr "Kembali ke %s's daftar grup"
 
-#: ../cache/locales.php:249
+#: ../cache/locales.php:295
 msgid "Manage your subscriptions"
 msgstr "Atur langganan mu"
 
-#: ../cache/locales.php:250
+#: ../cache/locales.php:296
 msgid "Manage the subscriptions"
 msgstr "Atur langganan"
 
-#: ../cache/locales.php:251
+#: ../cache/locales.php:297
 msgid "Get the subscriptions"
 msgstr "Dapatkan langganan"
 
-#: ../cache/locales.php:252
+#: ../cache/locales.php:298
 msgid "Subscriptions saved"
 msgstr ""
 
-#: ../cache/locales.php:253
+#: ../cache/locales.php:299
 msgid "Pending Invitations"
 msgstr ""
 
-#: ../cache/locales.php:254
+#: ../cache/locales.php:300
 #, php-format
 msgid "%s wants to talk with you"
 msgstr ""
 
-#: ../cache/locales.php:255
+#: ../cache/locales.php:301
 msgid "News Feed"
 msgstr ""
 
-#: ../cache/locales.php:256
+#: ../cache/locales.php:302
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: ../cache/locales.php:257
+#: ../cache/locales.php:303
 msgid "Disconnect"
 msgstr ""
 
-#: ../cache/locales.php:258
+#: ../cache/locales.php:304
 msgid "Your status here !"
 msgstr ""
 
-#: ../cache/locales.php:259
+#: ../cache/locales.php:305
 msgid "Status updated"
 msgstr ""
 
-#: ../cache/locales.php:260
+#: ../cache/locales.php:306
+msgid "Status"
+msgstr ""
+
+#: ../cache/locales.php:307
+msgid "Presence"
+msgstr ""
+
+#: ../cache/locales.php:308
 msgid "No profile yet?"
 msgstr ""
 
-#: ../cache/locales.php:261
+#: ../cache/locales.php:309
 msgid "Create my profile"
 msgstr ""
 
-#: ../cache/locales.php:262
+#: ../cache/locales.php:310
 msgid "Shared"
 msgstr ""
 
-#: ../cache/locales.php:264
+#: ../cache/locales.php:312
 #, php-format
 msgid "%s has been added to your public groups"
 msgstr ""
 
-#: ../cache/locales.php:265
+#: ../cache/locales.php:313
 #, php-format
 msgid "%s has been removed from your public groups"
 msgstr ""
 
-#: ../cache/locales.php:266
+#: ../cache/locales.php:314
+#, fuzzy
+msgid "Add a chatroom"
+msgstr "ID Chatroom Salah"
+
+#: ../cache/locales.php:318
+msgid "My Favorite Room"
+msgstr ""
+
+#: ../cache/locales.php:322
+#, fuzzy
+msgid "Remove a chatroom"
+msgstr "Hapus kontak ini"
+
+#: ../cache/locales.php:323
+msgid "You are going to remove the following chatroom. Please confirm your action."
+msgstr ""
+
+#: ../cache/locales.php:326
+msgid "Users in the room"
+msgstr ""
+
+#: ../cache/locales.php:328
 msgid "Ungrouped"
 msgstr ""
 
-#: ../cache/locales.php:267
+#: ../cache/locales.php:329
 msgid "Show disconnected contacts"
 msgstr ""
 
-#: ../cache/locales.php:268
+#: ../cache/locales.php:330
 msgid "Hide disconnected contacts"
 msgstr ""
 
-#: ../cache/locales.php:269
+#: ../cache/locales.php:331
 #, php-format
 msgid "Show group %s"
 msgstr ""
 
-#: ../cache/locales.php:270
+#: ../cache/locales.php:332
 #, php-format
 msgid "Hide group %s"
 msgstr ""
 
-#: ../cache/locales.php:271
+#: ../cache/locales.php:333
 msgid "Please enter a valid Jabber ID"
 msgstr ""
 
-#: ../cache/locales.php:272
-msgid ""
-"No contacts ? You can add one using the + button bellow or going to the "
-"Explore page"
+#: ../cache/locales.php:334
+msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
 msgstr ""
 
-#: ../cache/locales.php:273
-msgid "Search"
-msgstr "Cari"
-
-#: ../cache/locales.php:274
+#: ../cache/locales.php:335
 msgid "Show/Hide"
 msgstr ""
 
-#: ../cache/locales.php:275
+#: ../cache/locales.php:336
 msgid "Enter the Jabber ID of your contact."
 msgstr ""
 
-#: ../cache/locales.php:276
+#: ../cache/locales.php:337
 msgid "Press enter to validate."
 msgstr ""
 
-#: ../cache/locales.php:277
+#: ../cache/locales.php:338
 msgid "JID"
 msgstr ""
 
-#: ../cache/locales.php:278
-msgid "Give a friendly name to your group"
-msgstr "Beri nama yang bersahabat untuk grup mu"
-
-#: ../cache/locales.php:279
-msgid "My Little Pony - Fan Club"
-msgstr "Pony Kecilku - Fan Klub"
-
-#: ../cache/locales.php:280
-msgid "Subscribed"
-msgstr ""
-
-#: ../cache/locales.php:281
-msgid "Topics"
-msgstr ""
-
-#: ../cache/locales.php:282
-msgid "Statistics"
-msgstr ""
-
-#: ../cache/locales.php:283
-msgid "Since"
-msgstr ""
-
-#: ../cache/locales.php:284
-msgid "Sessions"
-msgstr ""
-
-#: ../cache/locales.php:285
-msgid "Subscriptions"
-msgstr ""
-
-#: ../cache/locales.php:286
-msgid "Monthly Subscriptions"
-msgstr ""
-
-#: ../cache/locales.php:287
-msgid "Monthly Subscriptions Cumulated"
-msgstr ""
-
-#: ../cache/locales.php:289
-msgid ""
-"Movim is a decentralized social network, before creating a new account you "
-"need to choose a server to register."
-msgstr ""
-
-#: ../cache/locales.php:290
-msgid "Your server here ?"
-msgstr ""
-
-#: ../cache/locales.php:291
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr ""
-
-#: ../cache/locales.php:293
-msgid "No public feed for this contact"
-msgstr ""
-
-#: ../cache/locales.php:294
-msgid "No contact specified"
-msgstr ""
-
-#: ../cache/locales.php:296
-msgid "Profile Updated"
-msgstr "Profil di Perbarui"
-
-#: ../cache/locales.php:297
-msgid "Profile Not Updated"
-msgstr ""
-
-#: ../cache/locales.php:298
-msgid "Your profile is now public"
-msgstr ""
-
-#: ../cache/locales.php:299
-msgid "Your profile is now restricted"
-msgstr ""
-
-#: ../cache/locales.php:312
-msgid "Accounts"
-msgstr ""
-
-#: ../cache/locales.php:313
-msgid "Twitter"
-msgstr ""
-
-#: ../cache/locales.php:314
-msgid "Skype"
-msgstr ""
-
-#: ../cache/locales.php:315
-msgid "Yahoo"
-msgstr ""
-
-#: ../cache/locales.php:316
-msgid "Privacy Level"
-msgstr "Tingkat Privasi"
-
-#: ../cache/locales.php:317
-msgid "Is this profile public ?"
-msgstr "Apakah ini profil publik ?"
-
-#: ../cache/locales.php:318
-msgid ""
-"Please pay attention ! By making your profile public, all the information "
-"listed above will be available for all the Movim users and on the whole "
-"Internet."
-msgstr ""
-"Harap diperhatikan! Dengan membuat profil anda publik, semua informasi yang "
-"tercantum di atas akan tersedia untuk semua pengguna Movim dan seluruh "
-"Internet."
-
-#: ../cache/locales.php:319
-msgid "Call"
-msgstr ""
-
-#: ../cache/locales.php:320
-msgid "Hang up"
-msgstr ""
-
-#: ../cache/locales.php:321
-msgid "Connection"
-msgstr ""
-
-#: ../cache/locales.php:322 ../cache/locales.php:328
-msgid "Hung up"
-msgstr ""
-
-#: ../cache/locales.php:323 ../cache/locales.php:329
-msgid "Your contact is busy"
-msgstr ""
-
-#: ../cache/locales.php:324 ../cache/locales.php:330
-msgid "Declined"
-msgstr ""
-
-#: ../cache/locales.php:325 ../cache/locales.php:331
-msgid "Remote application incompatible"
-msgstr ""
-
-#: ../cache/locales.php:327 ../cache/locales.php:333
-msgid "Is calling you"
-msgstr ""
-
-#: ../cache/locales.php:334 ../cache/locales.php:361
-msgid "Feed"
-msgstr "Tautan"
-
-#: ../cache/locales.php:335 ../cache/locales.php:357
-msgid "Blog"
-msgstr "Blog"
-
-#: ../cache/locales.php:336
-msgid "Original page"
-msgstr ""
-
-#: ../cache/locales.php:337
-msgid "Authors"
-msgstr ""
-
-#: ../cache/locales.php:338
-msgid "Revisions"
-msgstr ""
-
 #: ../cache/locales.php:339
-msgid "Abstract"
+msgid "Results"
 msgstr ""
 
 #: ../cache/locales.php:340
-msgid "Status"
-msgstr ""
-
-#: ../cache/locales.php:341
-msgid "Type"
+msgid "Contact added"
 msgstr ""
 
 #: ../cache/locales.php:342
-msgid "You don't have javascript enabled.  Good luck with that."
-msgstr ""
-
-#: ../cache/locales.php:343
-msgid ""
-"Movim is a kickass distributed social networking platform that protect your "
-"privacy an comes with a set of awesome features."
+msgid "Contact deleted"
 msgstr ""
 
 #: ../cache/locales.php:344
-msgid "Administration"
-msgstr "Administrasi"
+msgid "Give a friendly name to your group"
+msgstr "Beri nama yang bersahabat untuk grup mu"
 
 #: ../cache/locales.php:345
-msgid "Home"
-msgstr ""
+msgid "My Little Pony - Fan Club"
+msgstr "Pony Kecilku - Fan Klub"
 
 #: ../cache/locales.php:346
-msgid "Discover"
+msgid "Subscribed"
 msgstr ""
 
 #: ../cache/locales.php:347
-msgid "Explore"
-msgstr "Jelajahi"
+msgid "Topics"
+msgstr ""
 
 #: ../cache/locales.php:348
-msgid "Account Creation"
+msgid "Statistics"
 msgstr ""
 
 #: ../cache/locales.php:349
-msgid "News"
-msgstr "Berita"
-
-#: ../cache/locales.php:350
-msgid "Avatar"
-msgstr "Avatar"
-
-#: ../cache/locales.php:351
-msgid "Configuration"
-msgstr "Konfigurasi"
-
-#: ../cache/locales.php:352
-msgid "Server"
-msgstr "Server"
-
-#: ../cache/locales.php:353
-msgid "Public Groups"
+msgid "Since"
 msgstr ""
 
-#: ../cache/locales.php:354
-msgid "Viewer"
-msgstr "Penilik"
+#: ../cache/locales.php:350
+msgid "Sessions"
+msgstr ""
+
+#: ../cache/locales.php:351
+msgid "Subscriptions"
+msgstr ""
+
+#: ../cache/locales.php:352
+msgid "Monthly Subscriptions"
+msgstr ""
+
+#: ../cache/locales.php:353
+msgid "Monthly Subscriptions Cumulated"
+msgstr ""
 
 #: ../cache/locales.php:355
-msgid "Profile"
-msgstr "Profil"
+msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgstr ""
 
 #: ../cache/locales.php:356
-msgid "Media"
-msgstr "Media"
+msgid "Your server here ?"
+msgstr ""
 
-#: ../cache/locales.php:358
-msgid "About"
+#: ../cache/locales.php:357
+msgid "Contact us to add yours to the officially supported servers list"
 msgstr ""
 
 #: ../cache/locales.php:359
-msgid "Login"
+msgid "No public feed for this contact"
 msgstr ""
 
 #: ../cache/locales.php:360
-msgid "Help"
-msgstr "Bantuan"
+msgid "No contact specified"
+msgstr ""
+
+#: ../cache/locales.php:361 ../cache/locales.php:417
+msgid "Profile"
+msgstr "Profil"
+
+#: ../cache/locales.php:362
+msgid "Profile Updated"
+msgstr "Profil di Perbarui"
 
 #: ../cache/locales.php:363
-msgid "Gallery"
+msgid "Profile Not Updated"
 msgstr ""
 
 #: ../cache/locales.php:364
-msgid "Preview"
+msgid "Your profile is now public"
 msgstr ""
 
 #: ../cache/locales.php:365
+msgid "Your profile is now restricted"
+msgstr ""
+
+#: ../cache/locales.php:379
+msgid "Twitter"
+msgstr ""
+
+#: ../cache/locales.php:380
+msgid "Skype"
+msgstr ""
+
+#: ../cache/locales.php:381
+msgid "Yahoo"
+msgstr ""
+
+#: ../cache/locales.php:382
+msgid "Privacy Level"
+msgstr "Tingkat Privasi"
+
+#: ../cache/locales.php:383
+msgid "Is this profile public ?"
+msgstr "Apakah ini profil publik ?"
+
+#: ../cache/locales.php:384
+msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+msgstr "Harap diperhatikan! Dengan membuat profil anda publik, semua informasi yang tercantum di atas akan tersedia untuk semua pengguna Movim dan seluruh Internet."
+
+#: ../cache/locales.php:385
+msgid "Call"
+msgstr ""
+
+#: ../cache/locales.php:386
+msgid "Hang up"
+msgstr ""
+
+#: ../cache/locales.php:387
+msgid "Connection"
+msgstr ""
+
+#: ../cache/locales.php:388 ../cache/locales.php:394
+msgid "Hung up"
+msgstr ""
+
+#: ../cache/locales.php:389 ../cache/locales.php:395
+msgid "Your contact is busy"
+msgstr ""
+
+#: ../cache/locales.php:390 ../cache/locales.php:396
+msgid "Declined"
+msgstr ""
+
+#: ../cache/locales.php:391 ../cache/locales.php:397
+msgid "Remote application incompatible"
+msgstr ""
+
+#: ../cache/locales.php:393 ../cache/locales.php:399
+msgid "Is calling you"
+msgstr ""
+
+#: ../cache/locales.php:400 ../cache/locales.php:423
+msgid "Feed"
+msgstr "Tautan"
+
+#: ../cache/locales.php:401 ../cache/locales.php:419
+msgid "Blog"
+msgstr "Blog"
+
+#: ../cache/locales.php:402
+msgid "You don't have javascript enabled.  Good luck with that."
+msgstr ""
+
+#: ../cache/locales.php:403
+msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgstr ""
+
+#: ../cache/locales.php:404
+msgid "Administration"
+msgstr "Administrasi"
+
+#: ../cache/locales.php:405
+msgid "Home"
+msgstr ""
+
+#: ../cache/locales.php:406
+msgid "Discover"
+msgstr ""
+
+#: ../cache/locales.php:407
+msgid "Explore"
+msgstr "Jelajahi"
+
+#: ../cache/locales.php:408
+msgid "Account Creation"
+msgstr ""
+
+#: ../cache/locales.php:410
+msgid "Avatar"
+msgstr "Avatar"
+
+#: ../cache/locales.php:412
+#, fuzzy
+msgid "Chats"
+msgstr "Obrolan"
+
+#: ../cache/locales.php:413
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#: ../cache/locales.php:414
+msgid "Server"
+msgstr "Server"
+
+#: ../cache/locales.php:415
+msgid "Public Groups"
+msgstr ""
+
+#: ../cache/locales.php:416
+msgid "Viewer"
+msgstr "Penilik"
+
+#: ../cache/locales.php:418
+msgid "Media"
+msgstr "Media"
+
+#: ../cache/locales.php:420
+msgid "About"
+msgstr ""
+
+#: ../cache/locales.php:421
+msgid "Login"
+msgstr ""
+
+#: ../cache/locales.php:422
+msgid "Help"
+msgstr "Bantuan"
+
+#: ../cache/locales.php:425
+msgid "Gallery"
+msgstr ""
+
+#: ../cache/locales.php:426
+msgid "Preview"
+msgstr ""
+
+#: ../cache/locales.php:427
 msgid "Visio-conference"
 msgstr ""
 
-#: ../cache/locales.php:366
+#: ../cache/locales.php:428
 msgid "Pods"
 msgstr ""
 
-#: ../cache/locales.php:367
+#: ../cache/locales.php:429
 #, php-format
 msgid "Error: %s"
 msgstr "Kesalahan: %s"
 
-#: ../cache/locales.php:368
+#: ../cache/locales.php:430
 #, php-format
 msgid "Cannot load file '%s'"
 msgstr "Tidak dapat memuat berkas '%s'"
 
-#: ../cache/locales.php:369
+#: ../cache/locales.php:431
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
 msgstr "Kesalahan rute, harap atur semua parameter untuk halaman %s"
 
-#: ../cache/locales.php:370
+#: ../cache/locales.php:432
 #, php-format
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
 
-#: ../cache/locales.php:371
+#: ../cache/locales.php:433
+#, php-format
+msgid "Requested event '%s' not registered."
+msgstr ""
+
+#: ../cache/locales.php:434
 msgid "Whoops!"
 msgstr ""
 
-#: ../cache/locales.php:372
+#: ../cache/locales.php:435
 msgid "It seem that you don't have any pictures here?"
 msgstr ""
 
-#: ../cache/locales.php:373
+#: ../cache/locales.php:436
 msgid "You can try to upload a couple by going to the Media page"
 msgstr ""
 
-#: ../cache/locales.php:374
+#: ../cache/locales.php:437
 #, php-format
 msgid "%s - About"
 msgstr ""
 
-#: ../cache/locales.php:375
+#: ../cache/locales.php:438
 #, php-format
 msgid "%s - Account"
 msgstr ""
 
-#: ../cache/locales.php:376
+#: ../cache/locales.php:439
 #, php-format
 msgid "%s - Administration Panel"
 msgstr ""
 
-#: ../cache/locales.php:377
+#: ../cache/locales.php:440
 #, php-format
 msgid "%s - Blog"
 msgstr ""
 
-#: ../cache/locales.php:378
+#: ../cache/locales.php:441
 #, php-format
 msgid "%s - Configuration"
 msgstr ""
 
-#: ../cache/locales.php:379
+#: ../cache/locales.php:442
 #, php-format
 msgid "%s - Discover"
 msgstr ""
 
-#: ../cache/locales.php:380
+#: ../cache/locales.php:443
 #, php-format
 msgid "%s - Explore"
 msgstr ""
 
-#: ../cache/locales.php:381
+#: ../cache/locales.php:444
 #, php-format
 msgid "%s - Help Page"
 msgstr ""
 
-#: ../cache/locales.php:382
+#: ../cache/locales.php:445
 #, php-format
 msgid "%s - Login to Movim"
 msgstr ""
 
-#: ../cache/locales.php:383
+#: ../cache/locales.php:446
 #, php-format
 msgid "%s - Welcome to Movim"
 msgstr ""
 
-#: ../cache/locales.php:384
+#: ../cache/locales.php:447
 #, php-format
 msgid "%s - Media"
 msgstr ""
 
-#: ../cache/locales.php:385
+#: ../cache/locales.php:448
 #, php-format
 msgid "%s - News"
 msgstr ""
 
-#: ../cache/locales.php:386
+#: ../cache/locales.php:449
 #, php-format
 msgid "%s - Group Configuration"
 msgstr ""
 
-#: ../cache/locales.php:387
+#: ../cache/locales.php:450
 #, php-format
 msgid "%s - Group"
 msgstr ""
 
-#: ../cache/locales.php:388
+#: ../cache/locales.php:451
 #, php-format
 msgid "%s - 404"
 msgstr ""
 
-#: ../cache/locales.php:389
+#: ../cache/locales.php:452
 #, php-format
 msgid "%s - Profile"
 msgstr ""
 
-#: ../cache/locales.php:390
+#: ../cache/locales.php:453
 #, php-format
 msgid "%s - Server"
 msgstr ""
 
-#: ../cache/locales.php:391
+#: ../cache/locales.php:454
 msgid "Validate"
 msgstr "Validasi"
 
-#: ../cache/locales.php:392
+#: ../cache/locales.php:455
 msgid "Refresh"
 msgstr "Perbarui"
 
-#: ../cache/locales.php:393
+#: ../cache/locales.php:456
 msgid "Add"
 msgstr "Tambah"
 
-#: ../cache/locales.php:394
+#: ../cache/locales.php:457
+msgid "Delete"
+msgstr ""
+
+#: ../cache/locales.php:458
+msgid "Remove"
+msgstr ""
+
+#: ../cache/locales.php:459
+msgid "Cancel"
+msgstr ""
+
+#: ../cache/locales.php:460
 msgid "Close"
 msgstr "Tutup"
 
-#: ../cache/locales.php:395
+#: ../cache/locales.php:461
 msgid "Update"
 msgstr ""
 
-#: ../cache/locales.php:396
+#: ../cache/locales.php:462
 msgid "Updating"
 msgstr ""
 
-#: ../cache/locales.php:397
+#: ../cache/locales.php:463
 msgid "Submit"
 msgstr "Kirim"
 
-#: ../cache/locales.php:398
+#: ../cache/locales.php:464
 msgid "Submitting"
 msgstr "Mengirimkan"
 
-#: ../cache/locales.php:399
+#: ../cache/locales.php:465
 msgid "Reset"
 msgstr "Atur ulang"
 
-#: ../cache/locales.php:400
+#: ../cache/locales.php:466
 msgid "Register"
 msgstr ""
 
-#: ../cache/locales.php:401
+#: ../cache/locales.php:467
 msgid "Unregister"
 msgstr ""
 
-#: ../cache/locales.php:402
+#: ../cache/locales.php:468
 msgid "Save"
 msgstr "Simpan"
 
-#: ../cache/locales.php:403
+#: ../cache/locales.php:469
 msgid "Clear"
 msgstr ""
 
-#: ../cache/locales.php:404
+#: ../cache/locales.php:470
 msgid "Upload"
 msgstr "Unggah"
 
-#: ../cache/locales.php:405
+#: ../cache/locales.php:471
 msgid "Come in!"
 msgstr "Ayo masuk!"
 
-#: ../cache/locales.php:406
-msgid "Connecting..."
-msgstr ""
+#: ../cache/locales.php:472
+#, fuzzy
+msgid "Connecting"
+msgstr "Tinggal bersama"
 
-#: ../cache/locales.php:407
+#: ../cache/locales.php:473
 msgid "Yes"
 msgstr "Ya"
 
-#: ../cache/locales.php:408
+#: ../cache/locales.php:474
 msgid "No"
 msgstr "Tidak"
 
-#: ../cache/locales.php:409
+#: ../cache/locales.php:476
 msgid "Return"
 msgstr ""
 
-#: ../cache/locales.php:410
+#: ../cache/locales.php:477
 msgid "Accept"
 msgstr ""
 
-#: ../cache/locales.php:411
+#: ../cache/locales.php:478
 #, php-format
 msgid "Step %s"
 msgstr ""
 
-#: ../cache/locales.php:414
+#: ../cache/locales.php:481
 msgid "Day"
 msgstr "Hari"
 
-#: ../cache/locales.php:415
+#: ../cache/locales.php:482
 msgid "Monday"
 msgstr "Senin"
 
-#: ../cache/locales.php:416
+#: ../cache/locales.php:483
 msgid "Tuesday"
 msgstr "Selasa"
 
-#: ../cache/locales.php:417
+#: ../cache/locales.php:484
 msgid "Wednesday"
 msgstr "Rabu"
 
-#: ../cache/locales.php:418
+#: ../cache/locales.php:485
 msgid "Thursday"
 msgstr "Kamis"
 
-#: ../cache/locales.php:419
+#: ../cache/locales.php:486
 msgid "Friday"
 msgstr "Jumat"
 
-#: ../cache/locales.php:420
+#: ../cache/locales.php:487
 msgid "Saturday"
 msgstr "Sabtu"
 
-#: ../cache/locales.php:421
+#: ../cache/locales.php:488
 msgid "Sunday"
 msgstr ""
 
-#: ../cache/locales.php:422 ../cache/locales.php:431
+#: ../cache/locales.php:489 ../cache/locales.php:498
 msgid "None"
 msgstr "Nihil"
 
-#: ../cache/locales.php:423
+#: ../cache/locales.php:490
 msgid "Male"
 msgstr "Pria"
 
-#: ../cache/locales.php:424
+#: ../cache/locales.php:491
 msgid "Female"
 msgstr "Wanita"
 
-#: ../cache/locales.php:425
+#: ../cache/locales.php:492
 msgid "Other"
 msgstr "Lainnya"
 
-#: ../cache/locales.php:426
+#: ../cache/locales.php:493
 msgid "Bot"
 msgstr "Bot"
 
-#: ../cache/locales.php:427
+#: ../cache/locales.php:494
 msgid "Desktop"
 msgstr "Desktop"
 
-#: ../cache/locales.php:428
+#: ../cache/locales.php:495
 msgid "Phone"
 msgstr "Telepon"
 
-#: ../cache/locales.php:429
+#: ../cache/locales.php:496
 msgid "Web"
 msgstr "Web"
 
-#: ../cache/locales.php:430
+#: ../cache/locales.php:497
 msgid "Registered"
 msgstr "Terdaftar"
 
-#: ../cache/locales.php:432
+#: ../cache/locales.php:499
 msgid "Single"
 msgstr "Lajang"
 
-#: ../cache/locales.php:433
+#: ../cache/locales.php:500
 msgid "In a relationship"
 msgstr "Sedang berhubungan"
 
-#: ../cache/locales.php:434
+#: ../cache/locales.php:501
 msgid "Married"
 msgstr "Menikah"
 
-#: ../cache/locales.php:435
+#: ../cache/locales.php:502
 msgid "Divorced"
 msgstr "Bercerai"
 
-#: ../cache/locales.php:436
+#: ../cache/locales.php:503
 msgid "Widowed"
 msgstr "Janda"
 
-#: ../cache/locales.php:437
+#: ../cache/locales.php:504
 msgid "Cohabiting"
 msgstr "Tinggal bersama"
 
-#: ../cache/locales.php:438
+#: ../cache/locales.php:505
 msgid "Civil Union"
 msgstr "Hubungan sejenis"
 
-#: ../cache/locales.php:439
+#: ../cache/locales.php:506
 msgid "Not shared"
 msgstr "Tidak dibagikan"
 
-#: ../cache/locales.php:440
+#: ../cache/locales.php:507
 msgid "Shared with one contact"
 msgstr "Dibagikan ke satu kontak"
 
-#: ../cache/locales.php:441
+#: ../cache/locales.php:508
 msgid "Shared with all contacts"
 msgstr "Dibagikan ke seluruh kontak"
 
-#: ../cache/locales.php:442
+#: ../cache/locales.php:509
 msgid "Shared with the XMPP network"
 msgstr "Dibagikan ke jaringan XMPP"
 
-#: ../cache/locales.php:443
+#: ../cache/locales.php:510
 msgid "Shared with the whole Internet"
 msgstr "Dibagikan ke seluruh Internet"
 
-#: ../cache/locales.php:444
+#: ../cache/locales.php:511
 msgid "Online"
 msgstr "Tersedia"
 
-#: ../cache/locales.php:445
+#: ../cache/locales.php:512
 msgid "Away"
 msgstr "Jauh"
 
-#: ../cache/locales.php:446
+#: ../cache/locales.php:513
 msgid "Do Not Disturb"
 msgstr "Jangan Diganggu"
 
-#: ../cache/locales.php:447
+#: ../cache/locales.php:514
 msgid "Extended Away"
 msgstr "Menjauh Lama"
 
-#: ../cache/locales.php:448
+#: ../cache/locales.php:515
 msgid "Offline"
 msgstr ""
 
-#: ../cache/locales.php:449
+#: ../cache/locales.php:516
 msgid "Error"
 msgstr "Kesalahan"
 
-#: ../cache/locales.php:450
+#: ../cache/locales.php:517
 msgid "afraid"
 msgstr "takut"
 
-#: ../cache/locales.php:451
+#: ../cache/locales.php:518
 msgid "amazed"
 msgstr "kagum"
 
-#: ../cache/locales.php:452
+#: ../cache/locales.php:519
 msgid "amorous"
 msgstr "mudah jatuh cinta"
 
-#: ../cache/locales.php:453
+#: ../cache/locales.php:520
 msgid "angry"
 msgstr "marah"
 
-#: ../cache/locales.php:454
+#: ../cache/locales.php:521
 msgid "annoyed"
 msgstr "kesal"
 
-#: ../cache/locales.php:455
+#: ../cache/locales.php:522
 msgid "anxious"
 msgstr "risau"
 
-#: ../cache/locales.php:456
+#: ../cache/locales.php:523
 msgid "aroused"
 msgstr "terangsang"
 
-#: ../cache/locales.php:457
+#: ../cache/locales.php:524
 msgid "ashamed"
 msgstr "malu"
 
-#: ../cache/locales.php:458
+#: ../cache/locales.php:525
 msgid "bored"
 msgstr "bosan"
 
-#: ../cache/locales.php:459
+#: ../cache/locales.php:526
 msgid "brave"
 msgstr "berani"
 
-#: ../cache/locales.php:460
+#: ../cache/locales.php:527
 msgid "calm"
 msgstr "tenang"
 
-#: ../cache/locales.php:461
+#: ../cache/locales.php:528
 msgid "cautious"
 msgstr "hati-hati"
 
-#: ../cache/locales.php:462
+#: ../cache/locales.php:529
 msgid "cold"
 msgstr "dingin"
 
-#: ../cache/locales.php:463
+#: ../cache/locales.php:530
 msgid "confident"
 msgstr "yakin"
 
-#: ../cache/locales.php:464
+#: ../cache/locales.php:531
 msgid "confused"
 msgstr "bingung"
 
-#: ../cache/locales.php:465
+#: ../cache/locales.php:532
 msgid "contemplative"
 msgstr "merenung"
 
-#: ../cache/locales.php:466
+#: ../cache/locales.php:533
 msgid "contented"
 msgstr "puas"
 
-#: ../cache/locales.php:467
+#: ../cache/locales.php:534
 msgid "cranky"
 msgstr "jengkel"
 
-#: ../cache/locales.php:468
+#: ../cache/locales.php:535
 msgid "crazy"
 msgstr "gila"
 
-#: ../cache/locales.php:469
+#: ../cache/locales.php:536
 msgid "creative"
 msgstr "kreatif"
 
-#: ../cache/locales.php:470
+#: ../cache/locales.php:537
 msgid "curious"
 msgstr "penasaran"
 
-#: ../cache/locales.php:471
+#: ../cache/locales.php:538
 msgid "dejected"
 msgstr "gundah"
 
-#: ../cache/locales.php:472
+#: ../cache/locales.php:539
 msgid "depressed"
 msgstr "murung"
 
-#: ../cache/locales.php:473
+#: ../cache/locales.php:540
 msgid "disappointed"
 msgstr "kecewa"
 
-#: ../cache/locales.php:474
+#: ../cache/locales.php:541
 msgid "disgusted"
 msgstr "jijik"
 
-#: ../cache/locales.php:475
+#: ../cache/locales.php:542
 msgid "dismayed"
 msgstr "cemas"
 
-#: ../cache/locales.php:476
+#: ../cache/locales.php:543
 msgid "distracted"
 msgstr "bingung"
 
-#: ../cache/locales.php:477
+#: ../cache/locales.php:544
 msgid "embarrassed"
 msgstr "tersipu"
 
-#: ../cache/locales.php:478
+#: ../cache/locales.php:545
 msgid "envious"
 msgstr "iri"
 
-#: ../cache/locales.php:479
+#: ../cache/locales.php:546
 msgid "excited"
 msgstr "gembira"
 
-#: ../cache/locales.php:480
+#: ../cache/locales.php:547
 msgid "flirtatious"
 msgstr "genit"
 
-#: ../cache/locales.php:481
+#: ../cache/locales.php:548
 msgid "frustated"
 msgstr ""
 
-#: ../cache/locales.php:482
+#: ../cache/locales.php:549
 msgid "grateful"
 msgstr "bersyukur"
 
-#: ../cache/locales.php:483
+#: ../cache/locales.php:550
 msgid "grieving"
 msgstr "kecil hati"
 
-#: ../cache/locales.php:484
+#: ../cache/locales.php:551
 msgid "grumpy"
 msgstr "galak"
 
-#: ../cache/locales.php:485
+#: ../cache/locales.php:552
 msgid "guilty"
 msgstr "bersalah"
 
-#: ../cache/locales.php:486
+#: ../cache/locales.php:553
 msgid "happy"
 msgstr "bahagia"
 
-#: ../cache/locales.php:487
+#: ../cache/locales.php:554
 msgid "hopeful"
 msgstr "penuh harapan"
 
-#: ../cache/locales.php:488
+#: ../cache/locales.php:555
 msgid "hot"
 msgstr "panas"
 
-#: ../cache/locales.php:489
+#: ../cache/locales.php:556
 msgid "humbled"
 msgstr "merendahkan"
 
-#: ../cache/locales.php:490
+#: ../cache/locales.php:557
 msgid "humiliated"
 msgstr "terhina"
 
-#: ../cache/locales.php:491
+#: ../cache/locales.php:558
 msgid "hungry"
 msgstr "lapar"
 
-#: ../cache/locales.php:492
+#: ../cache/locales.php:559
 msgid "hurt"
 msgstr "tersakiti"
 
-#: ../cache/locales.php:493
+#: ../cache/locales.php:560
 msgid "impressed"
 msgstr "terkesan"
 
-#: ../cache/locales.php:494
+#: ../cache/locales.php:561
 msgid "in awe"
 msgstr "kagum"
 
-#: ../cache/locales.php:495
+#: ../cache/locales.php:562
 msgid "in love"
 msgstr "jatuh cinta"
 
-#: ../cache/locales.php:496
+#: ../cache/locales.php:563
 msgid "indignant"
 msgstr ""
 
-#: ../cache/locales.php:497
+#: ../cache/locales.php:564
 msgid "interested"
 msgstr "tertarik"
 
-#: ../cache/locales.php:498
+#: ../cache/locales.php:565
 msgid "intoxicated"
 msgstr "mabuk"
 
-#: ../cache/locales.php:499
+#: ../cache/locales.php:566
 msgid "invincible"
 msgstr "tak terkalahkan"
 
-#: ../cache/locales.php:500
+#: ../cache/locales.php:567
 msgid "jealous"
 msgstr "cemburu"
 
-#: ../cache/locales.php:501
+#: ../cache/locales.php:568
 msgid "lonely"
 msgstr "kesepian"
 
-#: ../cache/locales.php:502
+#: ../cache/locales.php:569
 msgid "lost"
 msgstr "tersesat"
 
-#: ../cache/locales.php:503
+#: ../cache/locales.php:570
 msgid "lucky"
 msgstr "beruntung"
 
-#: ../cache/locales.php:504
+#: ../cache/locales.php:571
 msgid "mean"
 msgstr "jahat"
 
-#: ../cache/locales.php:505
+#: ../cache/locales.php:572
 msgid "moody"
 msgstr "murung"
 
-#: ../cache/locales.php:506
+#: ../cache/locales.php:573
 msgid "nervous"
 msgstr "gugup"
 
-#: ../cache/locales.php:507
+#: ../cache/locales.php:574
 msgid "neutral"
 msgstr "netral"
 
-#: ../cache/locales.php:508
+#: ../cache/locales.php:575
 msgid "offended"
 msgstr "tersinggung"
 
-#: ../cache/locales.php:509
+#: ../cache/locales.php:576
 msgid "outraged"
 msgstr "marah"
 
-#: ../cache/locales.php:510
+#: ../cache/locales.php:577
 msgid "playful"
 msgstr "humoris"
 
-#: ../cache/locales.php:511
+#: ../cache/locales.php:578
 msgid "proud"
 msgstr "bangga"
 
-#: ../cache/locales.php:512
+#: ../cache/locales.php:579
 msgid "relaxed"
 msgstr "santai"
 
-#: ../cache/locales.php:513
+#: ../cache/locales.php:580
 msgid "relieved"
 msgstr "lega"
 
-#: ../cache/locales.php:514
+#: ../cache/locales.php:581
 msgid "remorseful"
 msgstr "menyesal"
 
-#: ../cache/locales.php:515
+#: ../cache/locales.php:582
 msgid "restless"
 msgstr "gelisah"
 
-#: ../cache/locales.php:516
+#: ../cache/locales.php:583
 msgid "sad"
 msgstr "sedih"
 
-#: ../cache/locales.php:517
+#: ../cache/locales.php:584
 msgid "sarcastic"
 msgstr "sarkastik"
 
-#: ../cache/locales.php:518
+#: ../cache/locales.php:585
 msgid "satisfied"
 msgstr "puas"
 
-#: ../cache/locales.php:519
+#: ../cache/locales.php:586
 msgid "serious"
 msgstr "serius"
 
-#: ../cache/locales.php:520
+#: ../cache/locales.php:587
 msgid "shocked"
 msgstr "kaget"
 
-#: ../cache/locales.php:521
+#: ../cache/locales.php:588
 msgid "shy"
 msgstr "malu"
 
-#: ../cache/locales.php:522
+#: ../cache/locales.php:589
 msgid "sick"
 msgstr "sakit"
 
-#: ../cache/locales.php:523
+#: ../cache/locales.php:590
 msgid "sleepy"
 msgstr "mengantuk"
 
-#: ../cache/locales.php:524
+#: ../cache/locales.php:591
 msgid "spontaneous"
 msgstr "spontan"
 
-#: ../cache/locales.php:525
+#: ../cache/locales.php:592
 msgid "stressed"
 msgstr "stress"
 
-#: ../cache/locales.php:526
+#: ../cache/locales.php:593
 msgid "strong"
 msgstr "kuat"
 
-#: ../cache/locales.php:527
+#: ../cache/locales.php:594
 msgid "surprised"
 msgstr "tercengang"
 
-#: ../cache/locales.php:528
+#: ../cache/locales.php:595
 msgid "thankful"
 msgstr "berterima kasih"
 
-#: ../cache/locales.php:529
+#: ../cache/locales.php:596
 msgid "thirsty"
 msgstr "haus"
 
-#: ../cache/locales.php:530
+#: ../cache/locales.php:597
 msgid "tired"
 msgstr "lelah"
 
-#: ../cache/locales.php:531
+#: ../cache/locales.php:598
 msgid "undefined"
 msgstr "tak terdefinisi"
 
-#: ../cache/locales.php:532
+#: ../cache/locales.php:599
 msgid "weak"
 msgstr "lemah"
 
-#: ../cache/locales.php:533
+#: ../cache/locales.php:600
 msgid "worried"
 msgstr "khawatir"
 
-#: ../cache/locales.php:534
+#: ../cache/locales.php:601
 msgid "Month"
 msgstr "Bulan"
 
-#: ../cache/locales.php:535
+#: ../cache/locales.php:602
 msgid "January"
 msgstr "Januari"
 
-#: ../cache/locales.php:536
+#: ../cache/locales.php:603
 msgid "February"
 msgstr "Februari"
 
-#: ../cache/locales.php:537
+#: ../cache/locales.php:604
 msgid "March"
 msgstr "Maret"
 
-#: ../cache/locales.php:538
+#: ../cache/locales.php:605
 msgid "April"
 msgstr "April"
 
-#: ../cache/locales.php:539
+#: ../cache/locales.php:606
 msgid "May"
 msgstr "Mei"
 
-#: ../cache/locales.php:540
+#: ../cache/locales.php:607
 msgid "June"
 msgstr "Juni"
 
-#: ../cache/locales.php:541
+#: ../cache/locales.php:608
 msgid "July"
 msgstr "Juli"
 
-#: ../cache/locales.php:542
+#: ../cache/locales.php:609
 msgid "August"
 msgstr "Agustus"
 
-#: ../cache/locales.php:543
+#: ../cache/locales.php:610
 msgid "September"
 msgstr "September"
 
-#: ../cache/locales.php:544
+#: ../cache/locales.php:611
 msgid "October"
 msgstr "Oktober"
 
-#: ../cache/locales.php:545
+#: ../cache/locales.php:612
 msgid "November"
 msgstr "November"
 
-#: ../cache/locales.php:546
+#: ../cache/locales.php:613
 msgid "December"
 msgstr "Desember"
 
-#: ../cache/locales.php:547
+#: ../cache/locales.php:614
 msgid "Year"
 msgstr "Tahun"
 
-#: ../cache/locales.php:548
+#: ../cache/locales.php:615
 msgid "Today"
 msgstr "Hari Ini"
 
-#: ../cache/locales.php:549
+#: ../cache/locales.php:616
 msgid "Tomorrow"
 msgstr "Besok"
 
-#: ../cache/locales.php:550
+#: ../cache/locales.php:617
 msgid "Yesterday"
 msgstr "Kemarin"
 
-#: ../cache/locales.php:551
+#: ../cache/locales.php:618
 #, php-format
 msgid " %d days ago"
 msgstr " %d hari lalu"
 
-#: ../cache/locales.php:552
+#: ../cache/locales.php:619
 msgid "day"
 msgstr "hari"
 
-#: ../cache/locales.php:553
+#: ../cache/locales.php:620
 msgid "Title"
 msgstr ""
 
-#: ../cache/locales.php:554
+#: ../cache/locales.php:621
 msgid "What's new ?"
 msgstr ""
 
-#: ../cache/locales.php:555
+#: ../cache/locales.php:622
 msgid "Place"
 msgstr ""
 
-#: ../cache/locales.php:556
+#: ../cache/locales.php:623
 msgid "by"
 msgstr ""
 
-#: ../cache/locales.php:557
+#: ../cache/locales.php:624
 msgid "Geolocalisation"
 msgstr ""
 
-#: ../cache/locales.php:558
+#: ../cache/locales.php:625
 msgid "email"
 msgstr ""
 
-#: ../cache/locales.php:559
+#: ../cache/locales.php:626
 msgid "No content"
 msgstr ""
 
-#: ../cache/locales.php:560
+#: ../cache/locales.php:627
 msgid "No comments"
 msgstr ""
 
-#: ../cache/locales.php:561
+#: ../cache/locales.php:628
 msgid "No comments stream"
 msgstr ""
 
-#: ../cache/locales.php:562
+#: ../cache/locales.php:629
 msgid "Your feed cannot be loaded."
 msgstr "Feed mu tidak dapat dimuat."
 
-#: ../cache/locales.php:563
+#: ../cache/locales.php:630
 msgid "Get older posts"
 msgstr "Tampilkan posting lawas"
 
-#: ../cache/locales.php:564
+#: ../cache/locales.php:631
 #, php-format
 msgid "%s new items"
 msgstr ""
 
-#: ../cache/locales.php:565
+#: ../cache/locales.php:632
 msgid "Comment publication error"
 msgstr "Kesalahan publikasikan komentar"
 
-#: ../cache/locales.php:566
+#: ../cache/locales.php:633
 msgid "Show the older comments"
 msgstr ""
 
-#: ../cache/locales.php:567
+#: ../cache/locales.php:634
 msgid "Loading comments ..."
 msgstr ""
 
-#: ../cache/locales.php:568
+#: ../cache/locales.php:635
 msgid "Get the comments"
 msgstr ""
 
-#: ../cache/locales.php:569
+#: ../cache/locales.php:636
 msgid "Add a comment"
 msgstr ""
 
-#: ../cache/locales.php:570
+#: ../cache/locales.php:637
 msgid "Share with"
 msgstr ""
 
-#: ../cache/locales.php:571
+#: ../cache/locales.php:638
 msgid "Everyone"
 msgstr ""
 
-#: ../cache/locales.php:572
+#: ../cache/locales.php:639
 msgid "Your contacts"
 msgstr ""
 
-#: ../cache/locales.php:573
+#: ../cache/locales.php:640
 msgid "Delete this post"
 msgstr ""
 
-#: ../cache/locales.php:574
+#: ../cache/locales.php:641
 msgid "Updated"
 msgstr ""
 
-#: ../cache/locales.php:575
+#: ../cache/locales.php:642
 msgid "Content not found"
 msgstr ""
 
-#: ../cache/locales.php:576
+#: ../cache/locales.php:643
+#, fuzzy
+msgid "Contact publication"
+msgstr "Kesalahan publikasikan komentar"
+
+#: ../cache/locales.php:644
 msgid "The API is not reachable, try again later"
 msgstr ""
+
+#~ msgid "Your server doesn't support post publication, you can only read contact's feeds"
+#~ msgstr "Server anda tidak mendukung pasca publikasi, kamu hanya dapat membaca feed kontak"
+
+#~ msgid "Creating your feed..."
+#~ msgstr "Membuat feed kamu..."
 
 #~ msgid "Logout"
 #~ msgstr "Keluar"
@@ -2230,10 +2313,5 @@ msgstr ""
 #~ msgid "What is Movim?"
 #~ msgstr "Apa itu Movim?"
 
-#, php-format
-#~ msgid ""
-#~ "Visit the page %s What is Movim ? %s to know more about the project, its "
-#~ "aims and understand how it works."
-#~ msgstr ""
-#~ "Kunjungi halaman %s Apa itu Movim ? %s untuk mengetahui lebih lanjut tentang "
-#~ "proyek, tujuan dan pahami cara kerjanya."
+#~ msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
+#~ msgstr "Kunjungi halaman %s Apa itu Movim ? %s untuk mengetahui lebih lanjut tentang proyek, tujuan dan pahami cara kerjanya."
