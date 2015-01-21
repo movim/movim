@@ -35,17 +35,28 @@ class User {
         $session = \Sessionx::start();
         if($session->active) {   
             $this->username = $session->user.'@'.$session->host;
-            
-            if($session->config)
-                $this->config = $session->config;
 
-            $cd = new \Modl\ConfigDAO();
-            $config = $cd->get();
-        
-            $this->sizelimit = (int)$config->sizelimit;
+            //$this->reload();
+
+            //$this->sizelimit = (int)$config->sizelimit;
 
             $this->userdir = DOCUMENT_ROOT.'/users/'.$this->username.'/';
             $this->useruri = BASE_URI.'users/'.$this->username.'/';
+        }
+    }
+
+    /**
+     * @brief Reload the user configuration
+     */
+    function reload()
+    {
+        $session = \Sessionx::start();
+        if($session->config) {
+            $this->config = $session->config;
+            $lang = $this->getConfig('language');
+            if(isset($lang)) {
+                loadLanguage($lang);
+            }
         }
     }
     
@@ -131,6 +142,7 @@ class User {
     {
         $session = \Sessionx::start();
         $session->config = $config;
+        $this->reload();
     }
 
     function getConfig($key = false)

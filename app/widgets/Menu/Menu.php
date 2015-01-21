@@ -123,7 +123,7 @@ class Menu extends WidgetCommon
                 $items  = $pd->getNode($server, $node, $page*$this->_paging, $this->_paging);
                 break;
         }
-        
+
         $view->assign('items', $items);
         $view->assign('page', $page);
 

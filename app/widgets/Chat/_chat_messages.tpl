@@ -20,7 +20,7 @@
                     <i class="md md-lock"></i> {$c->__('message.encrypted')}
                 {else}
                     {if="isset($value->html)"}
-                        {$value->body}
+                        {$value->html|prepareString}
                     {else}
                         {$value->body|htmlentities:ENT_COMPAT,'UTF-8'|prepareString}
                     {/if}

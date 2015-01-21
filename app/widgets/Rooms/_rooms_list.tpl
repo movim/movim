@@ -4,12 +4,12 @@
     <ul>
         {$presence = getPresencesTxt()}
         {loop="$list"}
-            <li>
+            <li class="action">
                 <span class="icon bubble status {$presence[$value->value]}">
                     <img src="{$value->getPhoto('s')}" />
                 </span>
                 {if="$value->mucaffiliation =='owner'"}
-                    <div class="control">
+                    <div class="action">
                         <i class="md md-beenhere"></i>
                     </div>
                 {/if}
