@@ -212,6 +212,7 @@ class Bootstrap {
      */
     function loadLanguage() {
         $user = new User();
+        $user->reload();
 
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
