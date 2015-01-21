@@ -3,14 +3,14 @@
     <br />
     <ul class="active">
         {loop="$sessions"}
-        <li class="action">
+        <li id="{$value->jid}" class="action">
             <div class="action">
-                <i onclick="Login.removeSession('{$value->jid}')" class="fa fa-times"></i>
+                <i class="fa fa-times"></i>
             </div>
-            <span onclick="Login.choose('{$value->jid}')" class="icon bubble">
+            <span class="icon bubble">
                 <img src="{$value->getPhoto('s')}"/>
             </span>
-            <span onclick="Login.choose('{$value->jid}')">{$value->getTrueName()}</span>
+            <span>{$value->getTrueName()}</span>
         </li>
         {/loop}
     </ul>
@@ -19,5 +19,5 @@
     <a class="button flat" href="{$c->route('admin')}">
         <i class="md md-pages"></i>
     </a>
-    <span class="button flat" onclick="Login.choose('')">{$c->__('form.another_account')}</span>
+    <span class="button flat" onclick="Login.toForm()">{$c->__('form.another_account')}</span>
 </div>
