@@ -70,7 +70,8 @@ class Config extends WidgetBase
         Notification::append(null, $this->__('config.updated'));
     }
 
-    function ajaxSubmit($data) {
+    function ajaxSubmit($data)
+    {
         $config = $this->user->getConfig();
         if(isset($config))
             $data = array_merge($config, $data);

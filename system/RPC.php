@@ -88,9 +88,6 @@ class RPC
 
         $result = array();
 
-        $bc = new Bootstrap;
-        $bc->loadLanguage();
-
         // Preparing the parameters and calling the function.
         if(isset($request->params)) {
             $params = (array)$request->params;

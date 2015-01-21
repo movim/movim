@@ -48,6 +48,7 @@ body main {
 
 #login_widget form ul input {
     margin: 0;
+    display: block;
 }
 
 ul.admin {
