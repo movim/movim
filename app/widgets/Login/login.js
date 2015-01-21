@@ -25,6 +25,18 @@ var Login = {
             setTimeout("MovimWebsocket.unregister()", 7000);
         }
     },
+    
+    refresh: function(){
+        /*Add onclick listeners*/
+        var sessions = document.querySelectorAll('#sessions section ul > li');
+        var i = 0;
+        
+        while(i < sessions.length)
+        {
+            sessions[i].onclick = function(e){Login.choose(e.target);};
+            i++;
+        }
+    },
 
     /**
      * @brief Save a jid in the local storage
@@ -46,15 +58,26 @@ var Login = {
      * @brief Choose a session to connect and show the login form
      * @param The jid to choose
      */
-    choose : function(jid) {
-        movim_remove_class('#login_widget', 'choose');
-        document.querySelector('#login').value = jid;
-        document.querySelector('#pass').value = "";
+    choose : function(element) {
+        var tn = element.tagName;
+        while(element.tagName != "LI")
+            element = element.parentNode;
+        var jid = element.id;
         
-        if(jid != '') {
-            document.querySelector('#pass').focus();
-        } else {
-            document.querySelector('#login').focus();
+        if(tn == "I" || tn == "DIV"){
+            Login.removeSession(jid);
+        }
+        else{
+            Login.toForm();
+            
+            document.querySelector('#login').value = jid;
+            document.querySelector('#pass').value = "";
+            
+            if(jid != '') {
+                document.querySelector('#pass').focus();
+            } else {
+                document.querySelector('#login').focus();
+            }
         }
     },
 
@@ -68,7 +91,7 @@ var Login = {
 
         if(s.length == 0) {
             localStorage.removeItem('previousSessions');
-            movim_remove_class('#login_widget', 'choose');
+            Login.toForm();
         } else {
             localStorage.setObject('previousSessions', s);
         }
@@ -79,8 +102,17 @@ var Login = {
     /**
      * @brief Back to the choosing panel
      */
-    backToChoose : function() {
+    toChoose : function() {
         movim_add_class('#login_widget', 'choose');
+    },
+
+    /**
+     * @brief Back to the choosing panel
+     */
+    toForm : function() {
+        movim_remove_class('#login_widget', 'choose');
+        // Empty login field
+        document.querySelector('#login').value = "";
     },
 
     /**
@@ -119,7 +151,7 @@ MovimWebsocket.attach(function()
     Login_ajaxGetRememberedSession(localStorage.getItem('previousSessions'));
 
     if(localStorage.getItem('previousSessions') != null) {
-        movim_add_class('#login_widget', 'choose');
+        Login.toChoose();
     }
 });
 

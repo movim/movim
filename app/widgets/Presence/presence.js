@@ -49,7 +49,7 @@ var Presence = {
             };
         }
 
-        var presences = document.querySelectorAll('form ul li');
+        var presences = document.querySelectorAll('#dialog form ul li');
 
         var i = 0;
         while(i < presences.length)
