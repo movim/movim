@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim Website\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-21 12:43+0100\n"
-"PO-Revision-Date: 2014-12-03 13:28+0000\n"
+"POT-Creation-Date: 2015-01-21 12:44+0100\n"
+"PO-Revision-Date: 2015-01-21 12:56+0000\n"
 "Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-12-08 10:12+0000\n"
-"X-Generator: Launchpad (build 17274)\n"
+"X-Launchpad-Export-Date: 2015-01-21 13:20+0000\n"
+"X-Generator: Launchpad (build 17306)\n"
+"Language: \n"
 
 #: ../cache/locales.php:2
 msgid "Thanks"
@@ -41,8 +41,13 @@ msgid "API"
 msgstr "API"
 
 #: ../cache/locales.php:8
-msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim est une plateforme de communication construite sur XMPP. L’intégralité du projet, à l’exception des ressources et logiciels suivants, est sous la licence"
+msgid ""
+"Movim is an XMPP-based communication platform. All the project, except the "
+"following software and resources, is under"
+msgstr ""
+"Movim est une plateforme de communication construite sur XMPP. L’intégralité "
+"du projet, à l’exception des ressources et logiciels suivants, est sous la "
+"licence"
 
 #: ../cache/locales.php:9 ../cache/locales.php:235
 msgid "Some data are missing !"
@@ -94,26 +99,28 @@ msgid "on"
 msgstr "sur"
 
 #: ../cache/locales.php:21
-#, fuzzy
 msgid "Your acccount has been successfully registered"
-msgstr "Compte créé avec succès"
+msgstr "Votre compte a été enregistré"
 
 #: ../cache/locales.php:22
 msgid "Loading"
 msgstr "Chargement en cours"
 
 #: ../cache/locales.php:23
-#, fuzzy
 msgid "Not Acceptable"
-msgstr "Requête inacceptable"
+msgstr "Non acceptable"
 
 #: ../cache/locales.php:24
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Le système d'enregistrement de ce serveur est indisponible."
 
 #: ../cache/locales.php:25
-msgid "This server use an external system for the registration, please click on the following URL."
+msgid ""
+"This server use an external system for the registration, please click on the "
+"following URL."
 msgstr ""
+"Ce serveur utiliser un service externe pour enregistrer les nouveaux "
+"utilisateurs, veuillez visiter l'URL suivante."
 
 #: ../cache/locales.php:26
 msgid "Database"
@@ -201,8 +208,11 @@ msgid "WebSocket URI"
 msgstr "URI du WebSocket"
 
 #: ../cache/locales.php:47
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Si vous changez l'URI, veuillez relancer le démon afin de prendre en compte la configuration"
+msgid ""
+"If you change the URI, please restart the daemon to reload the configuration"
+msgstr ""
+"Si vous changez l'URI, veuillez relancer le démon afin de prendre en compte "
+"la configuration"
 
 #: ../cache/locales.php:48
 msgid "Public WebSockets"
@@ -225,12 +235,21 @@ msgid "Whitelist - XMPP Server"
 msgstr "Serveurs XMPP – Liste blanche"
 
 #: ../cache/locales.php:55
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Si vous souhaitez établir une liste de serveurs XMPP autorisés sur votre pod Movim et interdire la connexion à tous les autres, veuillez saisir la liste de leurs noms de domaine, séparés par une virgule (ex : movim.eu, jabber.fr)."
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
+msgstr ""
+"Si vous souhaitez établir une liste de serveurs XMPP autorisés sur votre pod "
+"Movim et interdire la connexion à tous les autres, veuillez saisir la liste "
+"de leurs noms de domaine, séparés par une virgule (ex : movim.eu, jabber.fr)."
 
 #: ../cache/locales.php:56
-msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr "Laissez ce champ vide si vous souhaitez autoriser la connexion à tous les comptes XMPP."
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
+msgstr ""
+"Laissez ce champ vide si vous souhaitez autoriser la connexion à tous les "
+"comptes XMPP."
 
 #: ../cache/locales.php:57
 msgid "List of whitelisted XMPP servers"
@@ -269,17 +288,20 @@ msgid "General Overview"
 msgstr "Aperçu général"
 
 #: ../cache/locales.php:67
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr "Movim a rencontré des problèmes ou choses qui doivent être corrigés ou améliorés"
+msgid ""
+"Movim has found some issues or things that need to be fixed or improved"
+msgstr ""
+"Movim a rencontré des problèmes ou choses qui doivent être corrigés ou "
+"améliorés"
 
 #: ../cache/locales.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Update your PHP-Version: %s"
-msgstr "Mettez à jour votre version de PHP: %s <br>Requis: 5.3.0"
+msgstr "Mettez à jour votre version de PHP : %s"
 
 #: ../cache/locales.php:69
 msgid "Required: 5.3.0"
-msgstr ""
+msgstr "Requis : 5.3.0"
 
 #: ../cache/locales.php:70
 msgid "Install the php5-curl library"
@@ -291,16 +313,23 @@ msgstr "Installer la bibliothèque php5-gd"
 
 #: ../cache/locales.php:72
 msgid "Read and write rights for the webserver in Movim's root directory"
-msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier racine de Movim"
+msgstr ""
+"Droits de lecture et d’écriture pour le serveur web dans le dossier racine "
+"de Movim"
 
 #: ../cache/locales.php:73
 msgid "The URL Rewriting support is currently disabled"
-msgstr "Le support des URI simplifiées (URL Rewriting) est actuellement désactivé"
+msgstr ""
+"Le support des URI simplifiées (URL Rewriting) est actuellement désactivé"
 
 #: ../cache/locales.php:75
 #, php-format
-msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
-msgstr "Vous pouvez enregistrer ici votre pod sur %sl’API officielle%s et être listé sur %sla page des pods%s."
+msgid ""
+"Here you can register your pod on the official %sMovim API%s and be listed "
+"on %sthe pods page%s."
+msgstr ""
+"Vous pouvez enregistrer ici votre pod sur %sl’API officielle%s et être listé "
+"sur %sla page des pods%s."
 
 #: ../cache/locales.php:76
 msgid "Your pod is not registered on the API"
@@ -319,8 +348,12 @@ msgid "Your pod is validated"
 msgstr "Votre pod est validé"
 
 #: ../cache/locales.php:80
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr "Votre demande de désinscription a été prise en compte, elle sera effective dans quelques heures"
+msgid ""
+"You asked to be removed from the API, this request will be processed in a "
+"couple of hours"
+msgstr ""
+"Votre demande de désinscription a été prise en compte, elle sera effective "
+"dans quelques heures"
 
 #: ../cache/locales.php:81 ../cache/locales.php:127
 msgid "Configuration updated"
@@ -437,16 +470,15 @@ msgstr "Votre message ici…"
 
 #: ../cache/locales.php:109
 msgid "Smileys"
-msgstr ""
+msgstr "Émoticônes"
 
 #: ../cache/locales.php:110 ../cache/locales.php:117 ../cache/locales.php:162
 msgid "Chat"
 msgstr "Clavardage"
 
 #: ../cache/locales.php:111
-#, fuzzy
 msgid "Discuss with your contacts"
-msgstr "Vos contacts"
+msgstr "Discuter avec vos contacts"
 
 #: ../cache/locales.php:112 ../cache/locales.php:324
 msgid "Connected to the chatroom"
@@ -459,11 +491,12 @@ msgstr "Déconnecté du salon"
 #: ../cache/locales.php:114
 msgid "Open a new conversation by clicking on the plus button in the header"
 msgstr ""
+"Ouvrez une nouvelle conversation on cliquant sur le pouton plus dans la "
+"barre de titre."
 
 #: ../cache/locales.php:115
-#, fuzzy
 msgid "Chat with a contact"
-msgstr "Partagé avec tous les contacts"
+msgstr "Discuter avec un contact"
 
 #: ../cache/locales.php:118
 msgid "Feed Configuration"
@@ -490,9 +523,8 @@ msgid "Font size"
 msgstr "Taille des caractères"
 
 #: ../cache/locales.php:124
-#, fuzzy
 msgid "Notifications"
-msgstr "Position"
+msgstr "Notifications"
 
 #: ../cache/locales.php:125
 msgid "Pattern"
@@ -504,11 +536,11 @@ msgstr "Cette configuration est partagée partout où vous vous connectez !"
 
 #: ../cache/locales.php:128
 msgid "Notify on incoming message"
-msgstr ""
+msgstr "Notifier lors d'un message entrant"
 
 #: ../cache/locales.php:129
 msgid "Use desktop notifications"
-msgstr ""
+msgstr "Utiliser les notifications bureau"
 
 #: ../cache/locales.php:130
 msgid "Data"
@@ -559,9 +591,8 @@ msgid "About Me"
 msgstr "À propos de moi"
 
 #: ../cache/locales.php:144
-#, fuzzy
 msgid "Other Accounts"
-msgstr "Comptes"
+msgstr "Autres comptes"
 
 #: ../cache/locales.php:145 ../cache/locales.php:175 ../cache/locales.php:375
 msgid "Geographic Position"
@@ -601,7 +632,7 @@ msgstr "Dernier inscrit"
 
 #: ../cache/locales.php:155 ../cache/locales.php:475
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #: ../cache/locales.php:156 ../cache/locales.php:185
 msgid "Alias"
@@ -616,13 +647,13 @@ msgid "Contact updated"
 msgstr "Contact mis à jour"
 
 #: ../cache/locales.php:159
-#, fuzzy
 msgid "Are you sure?"
-msgstr "Êtes-vous sûr ?"
+msgstr "Êtes-vous sûr ?"
 
 #: ../cache/locales.php:160
-msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr ""
+msgid ""
+"You are going to delete one of your contacts, please confirm your action"
+msgstr "Vous allez supprimer l'un de vos contacts, veuillez confirmer."
 
 #: ../cache/locales.php:161 ../cache/locales.php:163
 msgid "Actions"
@@ -669,8 +700,12 @@ msgid "Hi!"
 msgstr "Salut !"
 
 #: ../cache/locales.php:199
-msgid "This is your newsfeed, here you will see the posts published by you and your contacts."
-msgstr "Ceci est votre fil d'actualité, vous y trouverez les messages que vous et vos contacts publiez."
+msgid ""
+"This is your newsfeed, here you will see the posts published by you and your "
+"contacts."
+msgstr ""
+"Ceci est votre fil d'actualité, vous y trouverez les messages que vous et "
+"vos contacts publiez."
 
 #: ../cache/locales.php:200
 msgid "All"
@@ -682,7 +717,7 @@ msgstr "Actualité"
 
 #: ../cache/locales.php:203
 msgid "Refresh all the streams"
-msgstr ""
+msgstr "Rafraîchir tous les flux"
 
 #: ../cache/locales.php:204 ../cache/locales.php:343
 msgid "Search"
@@ -697,8 +732,12 @@ msgid "What do the little banners refer to ?"
 msgstr "À quoi correspondent les petits fanions sur l’interface ?"
 
 #: ../cache/locales.php:207
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Ces 5 petits fanions vous permettent, en un coup d’œil, de connaitre la confidentialité des données que vous publiez."
+msgid ""
+"Thanks to these five little banners, you can quickly identitfy the level of "
+"confdentiality applied to the information you provide."
+msgstr ""
+"Ces 5 petits fanions vous permettent, en un coup d’œil, de connaitre la "
+"confidentialité des données que vous publiez."
 
 #: ../cache/locales.php:208
 msgid "White, only you can see the information"
@@ -714,7 +753,8 @@ msgstr "Orange, les données sont visibles par toute votre liste de contacts"
 
 #: ../cache/locales.php:211
 msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Rouge, les données sont visibles par tout le monde, au sein du réseau XMPP"
+msgstr ""
+"Rouge, les données sont visibles par tout le monde, au sein du réseau XMPP"
 
 #: ../cache/locales.php:212
 msgid "Black, the whole Internet can see your information"
@@ -749,33 +789,28 @@ msgid "What's Hot"
 msgstr "Quoi de neuf"
 
 #: ../cache/locales.php:220
-#, fuzzy
 msgid "Location node created"
-msgstr "Position géographique mise à jour"
+msgstr "Nœud de géolocalisation créé"
 
 #: ../cache/locales.php:221
-#, fuzzy
 msgid "Bookmark node created"
-msgstr "Signets mis à jour"
+msgstr "Nœud des favoris créé"
 
 #: ../cache/locales.php:222
-#, fuzzy
 msgid "Profile node created"
-msgstr "Profil mis à jour"
+msgstr "Nœud du profil créé"
 
 #: ../cache/locales.php:223
-#, fuzzy
 msgid "Avatar node created"
-msgstr "Avatar mis à jour"
+msgstr "Nœud de l'avatar créé"
 
 #: ../cache/locales.php:224
-#, fuzzy
 msgid "Subscriptions node created"
-msgstr "Souscriptions sauvegardées"
+msgstr "Nœud des souscriptions créé"
 
 #: ../cache/locales.php:225
 msgid "Microblog node created"
-msgstr ""
+msgstr "Nœud microblog créé"
 
 #: ../cache/locales.php:226
 msgid "Location"
@@ -811,7 +846,8 @@ msgstr "La paquet Challenge du serveur est vide"
 
 #: ../cache/locales.php:234
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr "Erreur de domaine XMPP, votre compte n’est pas un identifiant Jabber correct"
+msgstr ""
+"Erreur de domaine XMPP, votre compte n’est pas un identifiant Jabber correct"
 
 #: ../cache/locales.php:236
 msgid "Wrong password"
@@ -839,7 +875,8 @@ msgstr "Compte créé avec succès"
 
 #: ../cache/locales.php:242
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "Movim n’a pas pu vous authentifier. Vous avez entré des données erronées."
+msgstr ""
+"Movim n’a pas pu vous authentifier. Vous avez entré des données erronées."
 
 #: ../cache/locales.php:243
 msgid "Your XMPP server is unauthorized"
@@ -854,18 +891,28 @@ msgid "Your web browser is too old to use with Movim."
 msgstr "Votre navigateur est trop vieux pour prendre en charge Movim"
 
 #: ../cache/locales.php:246
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr "Movim ne peut pas parler avec le serveur, veuillez réessayer plus tard (Erreur de connexion WebSocket)"
+msgid ""
+"Movim cannot talk with the server, please try again later (Websocket "
+"connection error)"
+msgstr ""
+"Movim ne peut pas parler avec le serveur, veuillez réessayer plus tard "
+"(Erreur de connexion WebSocket)"
 
 #: ../cache/locales.php:247
 #, php-format
-msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
-msgstr "Vous pouvez vous connecter avec Facebook (messagerie instantanée uniquement) en entrant %svotre.id@chat.facebook.com%s et votre mot de passe"
+msgid ""
+"You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
+"and your password"
+msgstr ""
+"Vous pouvez vous connecter avec Facebook (messagerie instantanée uniquement) "
+"en entrant %svotre.id@chat.facebook.com%s et votre mot de passe"
 
 #: ../cache/locales.php:248
 #, php-format
 msgid "%sGmail accounts are also compatible%s but are not fully supported"
-msgstr "%sLes comptes Gmail sont aussi compatibles%s mais ne sont pas totalement pris en charge"
+msgstr ""
+"%sLes comptes Gmail sont aussi compatibles%s mais ne sont pas totalement "
+"pris en charge"
 
 #: ../cache/locales.php:249
 msgid "You can login using your favorite Jabber account"
@@ -892,18 +939,22 @@ msgid "No account yet ?"
 msgstr "Pas encore de compte ?"
 
 #: ../cache/locales.php:256
-#, fuzzy
 msgid "Another account"
-msgstr "Se connecter avec un autre compte"
+msgstr "Autre compte"
 
 #: ../cache/locales.php:257
-msgid "This server accept only connection with xmpp accounts from these servers :"
+msgid ""
+"This server accept only connection with xmpp accounts from these servers :"
 msgstr "Ce serveur n’accepte que les connexions des serveurs XMPP suivants :"
 
 #: ../cache/locales.php:258
 #, php-format
-msgid "If you don't have such xmpp account, you can try %sanother public Movim%s client."
-msgstr "Si vous n’avez pas ce type de compte XMPP, essayez un autre %serveur Movim public%s."
+msgid ""
+"If you don't have such xmpp account, you can try %sanother public Movim%s "
+"client."
+msgstr ""
+"Si vous n’avez pas ce type de compte XMPP, essayez un autre %serveur Movim "
+"public%s."
 
 #: ../cache/locales.php:259
 msgid "Connected"
@@ -958,29 +1009,38 @@ msgid "An error occurred while uploading the file"
 msgstr "Une erreur est survenue lors de l’envoi du fichier"
 
 #: ../cache/locales.php:274
-msgid "The upload has been canceled by the user or the browser dropped the connection"
-msgstr "L’envoi a été annulé par l’utilisateur ou le navigateur a perdu la connexion"
+msgid ""
+"The upload has been canceled by the user or the browser dropped the "
+"connection"
+msgstr ""
+"L’envoi a été annulé par l’utilisateur ou le navigateur a perdu la connexion"
 
 #: ../cache/locales.php:275
-msgid "Your file is very big. We can't accept it. Please select a smaller file"
-msgstr "Votre fichier est trop gros. Nous ne pouvons l’accepter. Veuillez choisir un fichier plus petit."
+msgid ""
+"Your file is very big. We can't accept it. Please select a smaller file"
+msgstr ""
+"Votre fichier est trop gros. Nous ne pouvons l’accepter. Veuillez choisir un "
+"fichier plus petit."
 
 #: ../cache/locales.php:276
 msgid "Hello"
 msgstr "Salut"
 
 #: ../cache/locales.php:277
-#, fuzzy
 msgid "Contact post"
-msgstr "Contacts"
+msgstr "Billet d'un contact"
 
 #: ../cache/locales.php:278
-msgid "Welcome on your news feed, here you will see all the posts published in the groups you have subscribed."
-msgstr "Bienvenue sur votre nouveau flux, ici vous verrez tous les articles publiés dans les groupes auquels vous aurez souscris."
+msgid ""
+"Welcome on your news feed, here you will see all the posts published in the "
+"groups you have subscribed."
+msgstr ""
+"Bienvenue sur votre nouveau flux, ici vous verrez tous les articles publiés "
+"dans les groupes auquels vous aurez souscris."
 
 #: ../cache/locales.php:279
 msgid "Refreshing all the streams"
-msgstr ""
+msgstr "Rafraîchir tous les flux"
 
 #: ../cache/locales.php:280
 msgid "Subscribe"
@@ -1074,7 +1134,7 @@ msgstr "Fil d'actualité"
 
 #: ../cache/locales.php:302
 msgid "Discover and register to the groups you are interested in"
-msgstr "Découvrez et souscrivez aux groupes qui vous intéresse"
+msgstr "Découvrez et rejoignez les groupes qui vous intéressent"
 
 #: ../cache/locales.php:303
 msgid "Disconnect"
@@ -1094,7 +1154,7 @@ msgstr "Status"
 
 #: ../cache/locales.php:307
 msgid "Presence"
-msgstr ""
+msgstr "Présence"
 
 #: ../cache/locales.php:308
 msgid "No profile yet?"
@@ -1119,27 +1179,26 @@ msgid "%s has been removed from your public groups"
 msgstr "%s a été supprimé de vos groupes publics"
 
 #: ../cache/locales.php:314
-#, fuzzy
 msgid "Add a chatroom"
-msgstr "Ajouter un nouveau salon"
+msgstr "Ajouter un salon"
 
 #: ../cache/locales.php:318
 msgid "My Favorite Room"
-msgstr ""
+msgstr "Mon Salon Préféré"
 
 #: ../cache/locales.php:322
-#, fuzzy
 msgid "Remove a chatroom"
-msgstr "Supprimer ce contact"
+msgstr "Enlever un salon"
 
 #: ../cache/locales.php:323
-msgid "You are going to remove the following chatroom. Please confirm your action."
+msgid ""
+"You are going to remove the following chatroom. Please confirm your action."
 msgstr ""
+"Vous allez supprimer le salon suivant de vos favoris. Êtes-vous sûr ?"
 
 #: ../cache/locales.php:326
-#, fuzzy
 msgid "Users in the room"
-msgstr "Rejoindre le salon de discussion"
+msgstr "Utilisateurs du salon"
 
 #: ../cache/locales.php:328
 msgid "Ungrouped"
@@ -1168,8 +1227,12 @@ msgid "Please enter a valid Jabber ID"
 msgstr "Veuillez entrer un identifiant Jabber valide"
 
 #: ../cache/locales.php:334
-msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
-msgstr "Pas de contacts ? Vous pouvez en ajouter un en cliquant sur le bouton + ci-dessous ou aller sur la page Explorer"
+msgid ""
+"No contacts ? You can add one using the + button bellow or going to the "
+"Explore page"
+msgstr ""
+"Pas de contacts ? Vous pouvez en ajouter un en cliquant sur le bouton + ci-"
+"dessous ou aller sur la page Explorer"
 
 #: ../cache/locales.php:335
 msgid "Show/Hide"
@@ -1189,17 +1252,15 @@ msgstr "Identifiant Jabber"
 
 #: ../cache/locales.php:339
 msgid "Results"
-msgstr ""
+msgstr "Résultats"
 
 #: ../cache/locales.php:340
-#, fuzzy
 msgid "Contact added"
-msgstr "Contact mis à jour"
+msgstr "Contact ajouté"
 
 #: ../cache/locales.php:342
-#, fuzzy
 msgid "Contact deleted"
-msgstr "Contact mis à jour"
+msgstr "Contact supprimé"
 
 #: ../cache/locales.php:344
 msgid "Give a friendly name to your group"
@@ -1242,8 +1303,12 @@ msgid "Monthly Subscriptions Cumulated"
 msgstr "Souscriptions par mois cumulés"
 
 #: ../cache/locales.php:355
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr "Movim est un réseau social décentralisé, avant de créer un compte vous devez choisir un serveur sur lequel vous inscrire."
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
+msgstr ""
+"Movim est un réseau social décentralisé, avant de créer un compte vous devez "
+"choisir un serveur sur lequel vous inscrire."
 
 #: ../cache/locales.php:356
 msgid "Your server here ?"
@@ -1302,8 +1367,14 @@ msgid "Is this profile public ?"
 msgstr "Ce profil est-il public ?"
 
 #: ../cache/locales.php:384
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
-msgstr "Faites attention ! En rendant votre profil public, toutes les informations listées ci-dessus seront visibles par les utilisateurs de Movim mais également par tous les internautes."
+msgid ""
+"Please pay attention ! By making your profile public, all the information "
+"listed above will be available for all the Movim users and on the whole "
+"Internet."
+msgstr ""
+"Faites attention ! En rendant votre profil public, toutes les informations "
+"listées ci-dessus seront visibles par les utilisateurs de Movim mais "
+"également par tous les internautes."
 
 #: ../cache/locales.php:385
 msgid "Call"
@@ -1350,8 +1421,13 @@ msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Javascript est désactivé sur votre navigateur."
 
 #: ../cache/locales.php:403
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
-msgstr "Movim est un réseau social innovant et décentralisé protégeant votre vie privée et apportant plein de fonctionnalités toutes plus géniales les unes que les autres."
+msgid ""
+"Movim is a kickass distributed social networking platform that protect your "
+"privacy an comes with a set of awesome features."
+msgstr ""
+"Movim est un réseau social innovant et décentralisé protégeant votre vie "
+"privée et apportant plein de fonctionnalités toutes plus géniales les unes "
+"que les autres."
 
 #: ../cache/locales.php:404
 msgid "Administration"
@@ -1378,9 +1454,8 @@ msgid "Avatar"
 msgstr "Avatar"
 
 #: ../cache/locales.php:412
-#, fuzzy
 msgid "Chats"
-msgstr "Clavardage"
+msgstr "Discussions"
 
 #: ../cache/locales.php:413
 msgid "Configuration"
@@ -1443,7 +1518,8 @@ msgstr "Le fichier « %s » n’est pas accessible"
 #: ../cache/locales.php:431
 #, php-format
 msgid "Route error, please set all the parameters for the page %s"
-msgstr "Erreur de chemin, veuillez configurer tous les paramètres de la page %s"
+msgstr ""
+"Erreur de chemin, veuillez configurer tous les paramètres de la page %s"
 
 #: ../cache/locales.php:432
 #, php-format
@@ -1451,9 +1527,9 @@ msgid "Requested widget '%s' doesn't exist."
 msgstr "Le widget '%s' demandé n'existe pas."
 
 #: ../cache/locales.php:433
-#, fuzzy, php-format
+#, php-format
 msgid "Requested event '%s' not registered."
-msgstr "Le widget '%s' demandé n'existe pas."
+msgstr "L'événement '%s' n'est pas enregistré"
 
 #: ../cache/locales.php:434
 msgid "Whoops!"
@@ -1566,11 +1642,11 @@ msgstr "Ajouter"
 
 #: ../cache/locales.php:457
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: ../cache/locales.php:458
 msgid "Remove"
-msgstr ""
+msgstr "Retirer"
 
 #: ../cache/locales.php:459
 msgid "Cancel"
@@ -1625,7 +1701,6 @@ msgid "Come in!"
 msgstr "Entrez !"
 
 #: ../cache/locales.php:472
-#, fuzzy
 msgid "Connecting"
 msgstr "Connexion"
 
@@ -2297,62 +2372,21 @@ msgid "Content not found"
 msgstr "Contenu introuvable"
 
 #: ../cache/locales.php:643
-#, fuzzy
 msgid "Contact publication"
-msgstr "Erreur à la publication du commentaire"
+msgstr "Billet d'un contact"
 
 #: ../cache/locales.php:644
 msgid "The API is not reachable, try again later"
 msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 
-#~ msgid "Creating your location node"
-#~ msgstr "Création de l'espace de stockage pour votre localisation"
-
-#~ msgid "Creating your bookmark node"
-#~ msgstr "Création de votre liste de favoris"
-
-#~ msgid "Creating your profile node"
-#~ msgstr "Création de l'espace de stockage pour votre profil"
-
-#~ msgid "Creating your avatar node"
-#~ msgstr "Création de l'espace de stockage pour votre avatar"
-
-#~ msgid "Movim is currently configuring your account, please wait..."
-#~ msgstr "Movim est entrain de configurer votre compte, veuillez patienter..."
-
-#~ msgid "Your server doesn't support post publication, you can only read contact's feeds"
-#~ msgstr "Votre serveur ne gère pas la publication des billets, vous ne pouvez que lire les flux de vos contacts."
-
-#~ msgid "Creating your feed..."
-#~ msgstr "Création de votre flux…"
-
-#~ msgid "Welcome on your group feed, here you will see all the posts published in the groups you have subscribed."
-#~ msgstr "Bienvenue sur le fil d'actualités de votre groupe, vous y trouverez tous les messages publiés par les groupes auxquels vous avez adhéré."
-
-#~ msgid "Original page"
-#~ msgstr "Page d'origine"
-
-#~ msgid "Authors"
-#~ msgstr "Auteurs"
-
-#~ msgid "Revisions"
-#~ msgstr "Révisions"
-
-#~ msgid "Abstract"
-#~ msgstr "Résumé"
-
-#~ msgid "Type"
-#~ msgstr "Catégorie"
-
-#~ msgid "Connecting..."
-#~ msgstr "Connexion…"
-
 #~ msgid "Movim's folder must be writable."
 #~ msgstr "Le dossier racine de Movim doit être accessible en écriture."
 
+#, php-format
 #~ msgid "Couldn't create directory '%s'."
 #~ msgstr "La création du répertoire '%s' est impossible."
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "La création du fichier de configuration '%s' est impossible."
 
@@ -2365,12 +2399,15 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgid "JID not provided."
 #~ msgstr "JID indisponible."
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "Le JID '%s' n'est pas valide"
 
+#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "Le journal '%s' ne peut être ouvert"
 
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - Création de compte"
 
@@ -2395,15 +2432,20 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgid "Actual version : "
 #~ msgstr "Version actuelle : "
 
+#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "Veuillez installer les paquets %s et %s"
 
 #~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Mettez à jour votre version de PHP ou contactez l'administrateur de votre serveur"
+#~ msgstr ""
+#~ "Mettez à jour votre version de PHP ou contactez l'administrateur de votre "
+#~ "serveur"
 
 #~ msgid "Enable read and write rights on Movim's root folder"
-#~ msgstr "Activez les droits de lecture et d'écriture sur le dossier racine de Movim"
+#~ msgstr ""
+#~ "Activez les droits de lecture et d'écriture sur le dossier racine de Movim"
 
+#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "Veuillez supprimer le dossier %s pour terminer l'installation"
 
@@ -2431,15 +2473,24 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgid "Database Detected"
 #~ msgstr "Base de données détectée"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim a besoin de l'extension %s."
 
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "Les dépendances ci-dessous ne sont pas satisfaites. Assurez-vous qu'elles le soient afin d'installer Movim."
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
+#~ msgstr ""
+#~ "Les dépendances ci-dessous ne sont pas satisfaites. Assurez-vous qu'elles le "
+#~ "soient afin d'installer Movim."
 
+#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "Vous pouvez maintenant accéder à votre version fraîchement installée de Movim %sAllons y !%s"
+#~ msgstr ""
+#~ "Vous pouvez maintenant accéder à votre version fraîchement installée de "
+#~ "Movim %sAllons y !%s"
 
+#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "Installer le paquet %s"
 
@@ -2474,7 +2525,9 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgstr "Créer ma vCard"
 
 #~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr "Un bon mot de passe est composé d'au moins une majuscule, un chiffre et un caractère spécial"
+#~ msgstr ""
+#~ "Un bon mot de passe est composé d'au moins une majuscule, un chiffre et un "
+#~ "caractère spécial"
 
 #~ msgid "8 characters"
 #~ msgstr "8 caractères"
@@ -2485,9 +2538,14 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgid "Address"
 #~ msgstr "Adresse"
 
-#~ msgid "Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !"
-#~ msgstr "Tout d'abord remplir ce vide avec un ID de  tout nouveau compte, cette adresse vous suivra sur tout le réseau Movim !"
+#~ msgid ""
+#~ "Firstly fill in this blank with a brand new account ID, this address will "
+#~ "follow you on all the Movim network !"
+#~ msgstr ""
+#~ "Tout d'abord remplir ce vide avec un ID de  tout nouveau compte, cette "
+#~ "adresse vous suivra sur tout le réseau Movim !"
 
+#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "%s - Ajouter Un Compte"
 
@@ -2500,8 +2558,16 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgid "Client Type"
 #~ msgstr "Type de Client"
 
+#, php-format
 #~ msgid "Contacts (%s)"
 #~ msgstr "Contacts (%s)"
+
+#~ msgid ""
+#~ "Your server doesn't support post publication, you can only read contact's "
+#~ "feeds"
+#~ msgstr ""
+#~ "Votre serveur ne gère pas la publication des billets, vous ne pouvez que "
+#~ "lire les flux de vos contacts."
 
 #~ msgid "No profile yet ?"
 #~ msgstr "Pas encore de profil ?"
@@ -2510,7 +2576,9 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgstr "Modifier mon profil"
 
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "La version de PHP ne correspond pas. Movim nécessite la version 5.3 au minimum."
+#~ msgstr ""
+#~ "La version de PHP ne correspond pas. Movim nécessite la version 5.3 au "
+#~ "minimum."
 
 #~ msgid "normal"
 #~ msgstr "standard"
@@ -2521,11 +2589,20 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgid "empty"
 #~ msgstr "vide"
 
-#~ msgid "Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit."
-#~ msgstr "Gardez à l'esprit que Movim est encore en développement et va manipuler des informations personnelles. Son utilisation peut donc les mettre en danger. Faites donc toujours attention aux informations que vous envoyez."
+#~ msgid ""
+#~ "Keep in mind that Movim is still under development and will handle many "
+#~ "personal details. Its use can potentially endanger your data. Always pay "
+#~ "attention to information that you submit."
+#~ msgstr ""
+#~ "Gardez à l'esprit que Movim est encore en développement et va manipuler des "
+#~ "informations personnelles. Son utilisation peut donc les mettre en danger. "
+#~ "Faites donc toujours attention aux informations que vous envoyez."
 
-#~ msgid "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "Avant que vous utilisiez votre réseau social, quelques ajustements sont nécessaires."
+#~ msgid ""
+#~ "Before you enjoy your social network, a few adjustements are required."
+#~ msgstr ""
+#~ "Avant que vous utilisiez votre réseau social, quelques ajustements sont "
+#~ "nécessaires."
 
 #~ msgid "ultimate"
 #~ msgstr "complet"
@@ -2533,27 +2610,54 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgid "talkative"
 #~ msgstr "bavard"
 
-#~ msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
-#~ msgstr "Même si Movim avance vite, il manque encore de (très) nombreuses fonctionnalités. Soyez patient ;). Vous pouvez aller jeter un œil aux %s feuilles de routes des prochaines version %s pour voir si celle-ci n'est pas déjà prévue."
+#, php-format
+#~ msgid ""
+#~ "Although Movim is evolving fast, many (many) features are missing. Be "
+#~ "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
+#~ "the one you want is on its way."
+#~ msgstr ""
+#~ "Même si Movim avance vite, il manque encore de (très) nombreuses "
+#~ "fonctionnalités. Soyez patient ;). Vous pouvez aller jeter un œil aux %s "
+#~ "feuilles de routes des prochaines version %s pour voir si celle-ci n'est pas "
+#~ "déjà prévue."
 
-#~ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
-#~ msgstr "Allez jeter un oeil %s à la Foire aux Questions %s ou venez nous la poser directement sur le salon officiel %s ou sur la mailing-list (%s voir la page dédiée %s)."
+#, php-format
+#~ msgid ""
+#~ "Go to the %s to the Frequently Asked Questions %s or come ask your question "
+#~ "on the official chatroom %s or via our mailing-list (%s see the dedicated "
+#~ "page %s)."
+#~ msgstr ""
+#~ "Allez jeter un oeil %s à la Foire aux Questions %s ou venez nous la poser "
+#~ "directement sur le salon officiel %s ou sur la mailing-list (%s voir la page "
+#~ "dédiée %s)."
 
-#~ msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
-#~ msgstr "Et n'oubliez pas que Movim est un logiciel libre, un petit coup de main est toujours le bienvenu (voir la page %s Puis-je participer %s)."
+#, php-format
+#~ msgid ""
+#~ "Don't forget that Movim is an open source project, a helping hand is always "
+#~ "welcome (see %s Can I participate %s)"
+#~ msgstr ""
+#~ "Et n'oubliez pas que Movim est un logiciel libre, un petit coup de main est "
+#~ "toujours le bienvenu (voir la page %s Puis-je participer %s)."
 
 #~ msgid "Link my current account"
 #~ msgstr "Lier mon compte actuel"
 
+#~ msgid "Connecting..."
+#~ msgstr "Connexion…"
+
+#, php-format
 #~ msgid "This server hosts %s accounts"
 #~ msgstr "Ce serveur héberge %s comptes"
 
+#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "La connection Bosh a échoué avec l'erreur '%s'"
 
+#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "La connexion à la base de données à échoué avec l'erreur '%s'"
 
+#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "La connection XMPP à travers Bosh a échoué avec l'erreur '%s'"
 
@@ -2563,20 +2667,81 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #~ msgid "Thank you for downloading Movim!"
 #~ msgstr "Merci d'avoir téléchargé Movim !"
 
-#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
-#~ msgstr "Des erreurs ont été détectées. Veuillez les corriger pour terminer correctement l'installation."
+#~ msgid ""
+#~ "Some errors were detected. Please correct them for the installation to "
+#~ "proceed."
+#~ msgstr ""
+#~ "Des erreurs ont été détectées. Veuillez les corriger pour terminer "
+#~ "correctement l'installation."
 
+#, php-format
 #~ msgid "Cannot load element value '%s'"
 #~ msgstr "Impossible de charger la valeur de l'élément « %s »"
 
 #~ msgid "What is Movim?"
 #~ msgstr "Qu’est-ce que Movim ?"
 
+#~ msgid "Creating your feed..."
+#~ msgstr "Création de votre flux…"
+
 #~ msgid "I can't find the answer to my question here"
 #~ msgstr "Ma question n’est pas listée ici"
 
-#~ msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
-#~ msgstr "Visitez la page %s Qu’est-ce que Movim ? %s pour en savoir plus le projet, ses buts et comprendre son fonctionnement."
+#, php-format
+#~ msgid ""
+#~ "Visit the page %s What is Movim ? %s to know more about the project, its "
+#~ "aims and understand how it works."
+#~ msgstr ""
+#~ "Visitez la page %s Qu’est-ce que Movim ? %s pour en savoir plus le projet, "
+#~ "ses buts et comprendre son fonctionnement."
 
-#~ msgid "Some features are missing/I can't do everything I used to do on other social networks"
-#~ msgstr "Il manque des fonctionnalités / Je n’arrive pas à faire ce que je faisais sur les autres réseaux sociaux"
+#~ msgid ""
+#~ "Some features are missing/I can't do everything I used to do on other social "
+#~ "networks"
+#~ msgstr ""
+#~ "Il manque des fonctionnalités / Je n’arrive pas à faire ce que je faisais "
+#~ "sur les autres réseaux sociaux"
+
+#~ msgid ""
+#~ "Welcome on your group feed, here you will see all the posts published in the "
+#~ "groups you have subscribed."
+#~ msgstr ""
+#~ "Bienvenue sur le fil d'actualités de votre groupe, vous y trouverez tous les "
+#~ "messages publiés par les groupes auxquels vous avez adhéré."
+
+#~ msgid "Original page"
+#~ msgstr "Page d'origine"
+
+#~ msgid "Creating your location node"
+#~ msgstr "Création de l'espace de stockage pour votre localisation"
+
+#~ msgid "Creating your profile node"
+#~ msgstr "Création de l'espace de stockage pour votre profil"
+
+#~ msgid "Creating your avatar node"
+#~ msgstr "Création de l'espace de stockage pour votre avatar"
+
+#~ msgid "Creating your bookmark node"
+#~ msgstr "Création de votre liste de favoris"
+
+#~ msgid "Movim is currently configuring your account, please wait..."
+#~ msgstr "Movim est entrain de configurer votre compte, veuillez patienter..."
+
+#~ msgid "Login with an another account"
+#~ msgstr "Se connecter avec un autre compte"
+
+#~ msgid "Type"
+#~ msgstr "Catégorie"
+
+#~ msgid "Abstract"
+#~ msgstr "Résumé"
+
+#~ msgid "Revisions"
+#~ msgstr "Révisions"
+
+#~ msgid "Authors"
+#~ msgstr "Auteurs"
+
+#, php-format
+#~ msgid "Update your PHP-Version: %s <br>Required: 5.3.0"
+#~ msgstr "Mettez à jour votre version de PHP: %s <br>Requis: 5.3.0"
