@@ -158,7 +158,7 @@ ul li div.bubble {
     background-color: #E5E5E5;
     border-color: #E5E5E5;
 
-    word-break: break-all;
+    /*word-break: break-all;*/
 }
 
 ul li div.bubble:after {

@@ -127,13 +127,22 @@ class Presence extends WidgetBase
           ->request();
     }
 
-        // We refresh the bookmarks
+    // We refresh the bookmarks
     function ajaxBookmarksGet()
     {
         $session = \Sessionx::start();
         $b = new \Moxl\Xec\Action\Bookmark\Get;
         $b->setTo($session->user.'@'.$session->host)
           ->request();
+    }
+
+    // We refresh the user (local) configuration
+    function ajaxUserRefresh()
+    {
+        $language = $this->user->getConfig('language');
+        if(isset($language)) {
+            loadLanguage($language);
+        }
     }
 
     function ajaxOpenDialog()
