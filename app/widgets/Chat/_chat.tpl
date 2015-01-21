@@ -12,9 +12,6 @@
             <div class="action" onclick="{$send}">
                 <i class="md md-send"></i>
             </div>
-            <!--<div class="control" onclick="{$smiley}">
-                <i class="md md-mood"></i>
-            </div>-->
             <form>
                 <div>
                      <textarea 
