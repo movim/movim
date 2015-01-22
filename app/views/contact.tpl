@@ -9,9 +9,9 @@
         <div>
             <?php $this->widget('Roster');?>
         </div>
-        <div>
-            <?php $this->widget('Notifs');?>
-            <?php $this->widget('Tabs');?>
+        <div id="contact_widget">
+            <?php //$this->widget('Notifs');?>
+            <?php //$this->widget('Tabs');?>
             <?php $this->widget('Contact');?>
         </div>
     </section>
