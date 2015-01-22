@@ -37,16 +37,17 @@ class Picture {
     /**
      * @desc Get a picture of the current size
      * @param $key The key of the picture
-     * @param $size The size requested
+     * @param $width The width requested
+     * @param $height The height requested
      * @return The url of the picture
      */
-    public function get($key, $size = false) {
+    public function get($key, $width = false, $height = false) {
         $this->_key = $key;
 
         $original = $this->_path.md5($this->_key).'.jpg';
 
         // We request the original picture
-        if($size == false) {
+        if($width == false) {
             if(file_exists($original)) {
                 $this->fromPath($original);
                 return $this->_uri.md5($this->_key).'.jpg';
@@ -55,15 +56,15 @@ class Picture {
             }
         // We request a specific size
         } else {
-            if(file_exists($this->_path.md5($this->_key).'_'.$size.'.jpg')) {
-                $this->fromPath($this->_path.md5($this->_key).'_'.$size.'.jpg');
-                return $this->_uri.md5($this->_key).'_'.$size.'.jpg';
+            if(file_exists($this->_path.md5($this->_key).'_'.$width.'.jpg')) {
+                $this->fromPath($this->_path.md5($this->_key).'_'.$width.'.jpg');
+                return $this->_uri.md5($this->_key).'_'.$width.'.jpg';
             } else {
                 if(file_exists($original)) {
                     $this->fromPath($original);
-                    $this->createThumbnail($size);
+                    $this->createThumbnail($width, $height);
 
-                    return $this->_uri.md5($this->_key).'_'.$size.'.jpg';
+                    return $this->_uri.md5($this->_key).'_'.$width.'.jpg';
                 } else {
                     return false;
                 }
@@ -96,10 +97,12 @@ class Picture {
         }
 
         if($this->_bin) {
-            $source = imagecreatefromstring($this->_bin);
-            if($source != false) {
-                imagejpeg($source, $path, 95);
-                imagedestroy($source);
+            $im = new Imagick();
+            $im->readImageBlob($this->_bin);
+            if($im != false) {
+                $im->setImageCompressionQuality(95);
+                $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
+                $im->writeImage($path);
             }
         }
     }
@@ -108,35 +111,26 @@ class Picture {
      * @desc Create a thumbnail of the picture and save it
      * @param $size The size requested
      */
-    private function createThumbnail($size) {
-        $path = $this->_path.md5($this->_key).'_'.$size.'.jpg';
+    private function createThumbnail($width, $height = false) {
+        if(!$height) $height = $width;
         
-        $thumb = imagecreatetruecolor($size, $size);
-        $white = imagecolorallocate($thumb, 255, 255, 255);
-        imagefill($thumb, 0, 0, $white);
-        imageinterlace($thumb, true);
-        
-        $source = imagecreatefromstring($this->_bin);
-        
-        $width = imagesx($source);
-        $height = imagesy($source);
-        
-        if($width >= $height) {
-            // For landscape images
-            $x_offset = ($width - $height) / 2;
-            $y_offset = 0;
-            $square_size = $width - ($x_offset * 2);
-        } else {
-            // For portrait and square images
-            $x_offset = 0;
-            $y_offset = ($height - $width) / 2;
-            $square_size = $height - ($y_offset * 2);
+        $path = $this->_path.md5($this->_key).'_'.$width.'.jpg';
+
+        $im = new Imagick;
+        $im->readImageBlob($this->_bin);
+
+        $geo = $im->getImageGeometry();
+
+        $im->cropThumbnailImage($width, $height);
+        if($width > $geo['width']) {
+            $factor = floor($width/$geo['width']);
+            $im->blurImage($factor, 10);
         }
+
+        $im->setImageCompressionQuality(85);
+        $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
         
-        if($source) {
-            imagecopyresampled($thumb, $source, 0, 0, $x_offset, $y_offset, $size, $size, $square_size, $square_size);
-            imagejpeg($thumb, $path, 95);
-            imagedestroy($thumb);
-        }
+        $im->writeImage($path);
+        
     }
 }

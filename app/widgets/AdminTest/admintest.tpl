@@ -82,9 +82,9 @@
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
-        {if="!extension_loaded('gd')"}
+        {if="!extension_loaded('imagick')"}
             <div class="message error">
-                <i class="fa fa-file-image-o"></i> {$c->__('compatibility.gd')}
+                <i class="fa fa-file-image-o"></i> {$c->__('compatibility.imagick')}
             </div>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
