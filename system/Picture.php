@@ -98,11 +98,15 @@ class Picture {
 
         if($this->_bin) {
             $im = new Imagick();
-            $im->readImageBlob($this->_bin);
-            if($im != false) {
-                $im->setImageCompressionQuality(95);
-                $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
-                $im->writeImage($path);
+            try {
+                $im->readImageBlob($this->_bin);
+                if($im != false) {
+                    $im->setImageCompressionQuality(95);
+                    $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
+                    $im->writeImage($path);
+                }
+            } catch (ImagickException $e) {
+
             }
         }
     }
