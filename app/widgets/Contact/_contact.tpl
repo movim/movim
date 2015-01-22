@@ -1,11 +1,17 @@
 {if="$contact != null"}
-    <ul class="thick">
-        <li>
-            <span class="icon bubble"><img src="{$contact->getPhoto('l')}"></span>
-            <h2>{$contact->getTrueName()}</h2>
-        </li>
-    </ul>
+    <header class="big" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 80%), url('{$contact->getPhoto('xxl')}');">
+        <ul class="thick">
+            <li>
+                <span class="icon bubble"><img src="{$contact->getPhoto('l')}"></span>
+                <span>
+                    <h2>{$contact->getTrueName()}</h2>
+                </span>
+            </li>
+        </ul>
+    </header>
+
     <ul>
+        <li class="subheader"></li>
         {if="$contact->delay != null"}
         <li class="condensed block">
             <span class="icon brown"><i class="md md-restore"></i></span>
