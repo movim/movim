@@ -119,8 +119,8 @@ body > nav {
     background-color: #fefefe;
     width: 7rem;
     max-width: 95%;
-    -webkit-transition: width 0.5s ease;
-    transition: width 0.5s ease;
+    -webkit-transition: width 0.2s ease;
+    transition: width 0.2s ease;
     z-index: 2;
     position: relative;
 }
@@ -159,15 +159,15 @@ body > nav li { /* Little hack for the navbar */
 @media screen and (max-width: 1024px) {
     body > nav:not(.active) {
         width: 45rem;
-        -webkit-transition: -webkit-transform .3s ease-in-out;
-        transition: transform .3s ease-in-out;
+        -webkit-transition: -webkit-transform .2s ease-in-out;
+        transition: transform .2s ease-in-out;
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
     }
 
     body > nav.active {
-        -webkit-transition: -webkit-transform .3s ease-in-out;
-        transition: transform .3s ease-in-out;
+        -webkit-transition: -webkit-transform .2s ease-in-out;
+        transition: transform .2s ease-in-out;
         -webkit-transform: translateX(0%);
         transform: translateX(0%);
     }
@@ -206,8 +206,8 @@ main {
     right: 0;
     top: 0;
     background-color: white;
-    -webkit-transition: opacity 0.5s ease-in-out;
-    transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 
 nav + main {
@@ -297,8 +297,8 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     top: 0;
     right: 0;
     /*transition: right 0.2s ease;*/
-    -webkit-transition: -webkit-transform .5s ease-in-out;
-    transition: transform .5s ease-in-out;
+    -webkit-transition: -webkit-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
 }
 
 main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
@@ -468,8 +468,8 @@ header .icon:hover {
 header.big {
     background-size: cover, cover;
     background-position: center center;
-    height: 25rem;
-    max-height: 25rem;
+    height: 20rem;
+    max-height: 20rem;
     width: 100%;
     max-width: 100%;
     color: white;

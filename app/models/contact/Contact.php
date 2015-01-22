@@ -192,8 +192,9 @@ class Contact extends Model {
         $p->fromBase($this->photobin);
         $p->set($this->jid);
         
-        if(isset($this->email))
+        if(isset($this->email)) {
             \createEmailPic(strtolower($this->jid), $this->email);
+        }
     }
 
     public function getPhoto($size = 'l', $jid = false) {
@@ -207,17 +208,18 @@ class Contact extends Model {
 
             if(isset($jid)) {
                 $sizes = array(
-                    'l'     => 210,
-                    'm'     => 120,
-                    's'     => 50,
-                    'xs'    => 28,
-                    'xxs'   => 24
+                    'xxl'   => array(1280, 300),
+                    'l'     => array(210 , false),
+                    'm'     => array(120 , false),
+                    's'     => array(50  , false),
+                    'xs'    => array(28  , false),
+                    'xxs'   => array(24  , false)
                 );
 
                 $p = new \Picture;
                 
-                if($p->get($jid, $sizes[$size])) {
-                    return $p->get($jid, $sizes[$size]);
+                if($p->get($jid, $sizes[$size][0], $sizes[$size][1])) {
+                    return $p->get($jid, $sizes[$size][0], $sizes[$size][1]);
                 } else {
                     $out = base_convert($jid, 32, 8);
                     
