@@ -10,7 +10,7 @@
             <?php $this->widget('Roster');?>
         </div>
         <div id="contact_widget">
-            <?php //$this->widget('Notifs');?>
+            <?php $this->widget('Notifs');?>
             <?php //$this->widget('Tabs');?>
             <?php $this->widget('Contact');?>
         </div>

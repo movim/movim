@@ -24,8 +24,8 @@
                 id="{{::myjid.ajid}}"
                 class="{{myjid.ajiditems.rosterview.inactive}} action"
                 ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems)}}"
-                ng-class="{condensed: myjid.ajiditems.status != '' && myjid.ajiditems.status != null }"
-                ng-class="rosterCtrl.getContactClient(myjid.ajiditems)" >
+                ng-class="{condensed: myjid.ajiditems.status != '' && myjid.ajiditems.status != null }">
+                <!--ng-class="rosterCtrl.getContactClient(myjid.ajiditems)"-- >-->
                 <div
                     class="action"
                     ng-if="myjid.ajiditems.rosterview.tune != '' || myjid.ajiditems.rosterview.type != '' "
@@ -36,12 +36,15 @@
                     <i ng-if="myjid.ajiditems.rosterview.tune" class="md md-play-arrow"></i>
                 </div>
 
-                <span class="icon bubble status {{myjid.ajiditems.rosterview.presencetxt}}">
+                <span
+                    class="icon bubble status {{myjid.ajiditems.rosterview.presencetxt}}"
+                    style="background-image: url({{::myjid.ajiditems.rosterview.avatar}})">
+                    <!--
                     <img
                         class="avatar"
                         ng-src="{{::myjid.ajiditems.rosterview.avatar}}"
                         alt="avatar"
-                    />
+                    />-->
                 </span>
                 <!--<div class="chat on"></div>-->
                 {{myjid.ajiditems.rosterview.name}}
