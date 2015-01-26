@@ -1,5 +1,5 @@
-<form name="avatarform" id="avatarform">
-    <h3>{$c->__('page.avatar')}</h3>
+<form name="avatarform" id="avatarform" class="flex">
+    <h3 class="block large">{$c->__('page.avatar')}</h3>
     <div class="block">        
         <input type="file" onchange="vCardImageLoad(this.files);">
         <label for="avatar">{$c->__('page.avatar')}</label>
@@ -32,15 +32,15 @@
         <label for="url">{$c->__('avatar.webcam')}</label>
     </div>
 
-    <div class="clear"></div>
-
-    <a
-        onclick="
-            {$submit}
-            movim_button_save('#avatarvalidate');
-            this.value = '{$c->__('button.submitting')}'; 
-            this.className='button inactive oppose';" 
-        class="button color oppose"
-        id="avatarvalidate"
-        >{$c->__('button.submit')}</a>
+    <div class="block large">
+        <a
+            onclick="
+                {$submit}
+                movim_button_save('#avatarvalidate');
+                this.value = '{$c->__('button.submitting')}'; 
+                this.className='button inactive oppose';" 
+            class="button color oppose"
+            id="avatarvalidate"
+            >{$c->__('button.submit')}</a>
+    </div>
 </form>

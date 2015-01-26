@@ -688,7 +688,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 .icon.explore   { background-image: url(../img/placeholder/explore.png); }
 .icon.plane     { background-image: url(../img/placeholder/plane.png); }
 .icon.file      { background-image: url(../img/placeholder/file.png); }
-.icon.clipboard { background-image: url(../img/placeholder/clipboard.png); }
+.icon.clipboard { background-image: url(../img/icons/assignment_turned_in.svg); }
 
 /* Definition list */
 
