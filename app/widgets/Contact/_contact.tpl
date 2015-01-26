@@ -107,8 +107,8 @@
     <div class="clear"></div>
     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
     <br />
-    <ul>
-        <li class="subheader">{$c->__('position.legend')}</li>
+    <ul class="flex">
+        <li class="subheader block large">{$c->__('position.legend')}</li>
 
         {if="$contact->adrlocality != null"}
         <li class="condensed block">
@@ -133,8 +133,8 @@
 
     <div class="clear"></div>
     {if="$contact->twitter != null || $contact->skype != null || $contact->yahoo != null"}
-    <ul class="thick">
-        <li class="subheader">{$c->__('general.accounts')}</li>
+    <ul class="flex">
+        <li class="subheader block large">{$c->__('general.accounts')}</li>
 
         {if="$contact->twitter != null"}
         <li class="condensed block">
