@@ -1,32 +1,20 @@
-.block {
-    width: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    float: left;
-    clear: left;
+.flex {
+    display: flex;
+    flex-flow: row wrap;
 }
 
-.block:nth-of-type(even) {
-    float: right;
-    clear: right;
+.flex .block {
+    flex: 1 50%;
+    padding: 0 1rem;
 }
 
-.block:nth-of-type(even):not(li) {
-    padding-left: 2rem;
-}
-
-.block.large {
-    width: 100%;
-    clear: both;
+.flex .block.large {
+    flex: 1 100%;
 }
 
 @media screen and (max-width: 1024px) {
-    .block {
-        width: 100%;
-        padding-right: 2rem;
-    }
-
-    .block:nth-of-type(even):not(li) {
-        padding-left: 0;
+    .flex .block {
+        flex: 1 100%;
+        padding: 0;
     }
 }

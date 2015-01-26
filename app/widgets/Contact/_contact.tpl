@@ -10,7 +10,7 @@
         </ul>
     </header>
     <br />
-    <ul>
+    <ul class="flex">
         {if="$contact->delay != null"}
         <li class="condensed block">
             <span class="icon brown"><i class="md md-restore"></i></span>
