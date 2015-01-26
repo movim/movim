@@ -247,6 +247,8 @@ class PostnDAO extends SQL {
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
             where postn.session = :session
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
             order by postn.published desc';
 
         if($limitr) 
@@ -441,8 +443,8 @@ class PostnDAO extends SQL {
             postn.jid = subscription.server and
             postn.node = subscription.node
             where postn.session = :session
-                    and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
-                    and postn.node not like \'urn:xmpp:inbox\'
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
             and subscription is not null
             order by postn.published desc
             limit 1 offset 0';

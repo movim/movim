@@ -47,6 +47,9 @@
                             class="enclosure"
                             type="{$value.type}"
                             target="_blank">
+                            <span class="icon small gray">
+                                <span class="md md-attach-file"></span>
+                            </span>
                             <span>{$value.href}</span>
                         </a>
                     </li>
@@ -54,4 +57,6 @@
             {/if}
         </ul>
     </footer>
+
+    <div id="comments"></div>
 </article>

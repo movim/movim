@@ -18,10 +18,13 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Microblog\CommentsGet;
+
 class Post extends WidgetCommon
 {
     function load()
     {
+        $this->registerEvent('microblog_commentsget_handle', 'onComments');
     }
 
     function ajaxGetPost($id)
@@ -31,6 +34,31 @@ class Post extends WidgetCommon
         
         Header::fill($header);
         RPC::call('movim_fill', 'post_widget', $html);
+    }
+
+    function ajaxGetComments($jid, $id)
+    {
+        $c = new CommentsGet;
+        $c->setTo($jid)
+          ->setId($id)
+          ->request();
+    }
+
+    function onComments($packet)
+    {
+        $nodeid = $packet->content;
+
+        $p = new \Modl\ContactPostn();
+        $p->nodeid = $nodeid;
+        
+        $pd = new \Modl\PostnDAO();
+        $comments = $pd->getComments($p);
+
+        $view = $this->tpl();
+        $view->assign('comments', $comments);
+        $html = $view->draw('_post_comments', true);
+        //$html = $this->prepareComments($comments);
+        RPC::call('movim_fill', 'comments', $html);
     }
 
     function prepareEmpty()
@@ -63,6 +91,9 @@ class Post extends WidgetCommon
         $view = $this->tpl();
 
         if(isset($p)) {
+            if(isset($p->commentplace)) {
+                $this->ajaxGetComments($p->commentplace, $p->nodeid);
+            }
             $view->assign('post', $p);
             $view->assign('attachements', $p->getAttachements());
             return $view->draw('_post', true);

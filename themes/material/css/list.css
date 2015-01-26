@@ -82,6 +82,7 @@ ul li.condensed p,
 ul.thin li.condensed p,
 ul.thick li.condensed p {
     line-height: 2.5rem;
+    margin-bottom: 0;
 }
 
 ul li > p {
