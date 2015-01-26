@@ -9,9 +9,8 @@
             </li>
         </ul>
     </header>
-
+    <br />
     <ul>
-        <li class="subheader"></li>
         {if="$contact->delay != null"}
         <li class="condensed block">
             <span class="icon brown"><i class="md md-restore"></i></span>
@@ -107,8 +106,8 @@
 
     <div class="clear"></div>
     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
+    <br />
     <ul>
-        <li class="subheader"></li>
         <li class="subheader">{$c->__('position.legend')}</li>
 
         {if="$contact->adrlocality != null"}
