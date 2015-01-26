@@ -2,6 +2,7 @@ var DesktopNotification = Notification;
 
 var Notification = {
     inhibed : false,
+    focused : false,
     tab_counter1 : 0,
     tab_counter2 : 0,
     tab_counter1_key : 'chat',
@@ -68,6 +69,10 @@ var Notification = {
             document.title = '(' + Notification.tab_counter1 + '/' + Notification.tab_counter2 + ') ' + Notification.document_title;
         }
     },
+    current : function(key) {
+        Notification.notifs_key = key;
+        Notification_ajaxCurrent(Notification.notifs_key);
+    },
     toast : function(html) {
         target = document.getElementById('toast');
         
@@ -97,7 +102,8 @@ var Notification = {
             time*1000);
     },
     desktop : function(title, body, picture) {
-        if(Notification.inhibed == true) return;
+        if(Notification.inhibed == true
+        || Notification.focused) return;
 
         var notification = new DesktopNotification(title, { icon: picture, body: body });
     }
@@ -105,8 +111,18 @@ var Notification = {
 
 MovimWebsocket.attach(function() {
     Notification_ajaxGet();
-    Notification_ajaxCurrent(Notification.notifs_key);
+    Notification.current(Notification.notifs_key);
 });
+
+document.onblur = function() {
+    Notification.focused = false;
+    Notification_ajaxCurrent();
+}
+document.onfocus = function() {
+    Notification.focused = true;
+    Notification.current(Notification.notifs_key);
+    Notification_ajaxClear(Notification.notifs_key);
+}
 
 /*
 window.addEventListener('load', function () {

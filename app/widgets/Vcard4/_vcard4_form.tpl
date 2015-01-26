@@ -27,8 +27,8 @@
 
 <div class="clear padded"></div>
 
-<form name="vcard4" id="vcard4form">
-    <h3>{$c->__('page.profile')}</h3>
+<form name="vcard4" id="vcard4form" class="flex">
+    <h3 class="block large">{$c->__('page.profile')}</h3>
     <div class="block">
         <input type="text" name="fn" class="content" value="{$me->fn}">
         <label for="fn">{$c->__('vcard.name')}</label>
@@ -38,16 +38,14 @@
         <label for="fn">{$c->__('vcard.nickname')}</label>
     </div>
 
-    <div class="block">
+    <div class="block large">
         <input type="email" name="email" class="content" value="{$me->email}">
         <label for="fn">{$c->__('vcard.email')}</label>
     </div>
 
-    <div class="clear"></div>
-
     <!-- The date picker -->
 
-    <div>
+    <div class="block large">
         <label for="day">{$c->__('vcard.date_of_birth')}</label>
 
         <div class="select" style="width: 33.33%; float: left;">
@@ -62,26 +60,24 @@
                 {/loop}
             </select>
         </div>
-
-        <div class="select" style="width: 33.33%; float: left;">
-            <select name="month" class="datepicker">
-                <option value="-1">{$c->__('Month')}</option>
-                {loop="$months"}
-                    <option value="{$key}" 
-                    {if="$key == substr($me->date,5,2)"}
+        <div class="select" style="width: 33.33%; float: right;">
+            <select name="year" class="datepicker">
+                <option value="-1">{$c->__('Year')}</option>
+                {loop="$years"}
+                    <option value="{$value}" 
+                    {if="$value == substr($me->date,0,4)"}
                         selected 
                     {/if}
                     >{$value}</option>
                 {/loop}
             </select>
         </div>
-
-        <div class="select" style="width: 33.33%; float: left;">
-            <select name="year" class="datepicker">
-                <option value="-1">{$c->__('Year')}</option>
-                {loop="$years"}
-                    <option value="{$value}" 
-                    {if="$value == substr($me->date,0,4)"}
+        <div class="select" style="width: 33.33%;">
+            <select name="month" class="datepicker">
+                <option value="-1">{$c->__('Month')}</option>
+                {loop="$months"}
+                    <option value="{$key}" 
+                    {if="$key == substr($me->date,5,2)"}
                         selected 
                     {/if}
                     >{$value}</option>
@@ -120,21 +116,19 @@
         </div>
     </div>
 
-    <div class="clear"></div>
-
-    <div>
+    <div class="block">
         <input type="url" name ="url" class="content" value="{$me->url}">
         <label for="url">{$c->__('vcard.website')}</label>
     </div>
 
-    <div>
+    <div class="block large">
         <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">{$desc}</textarea>
         <label for="desc">{$c->__('vcard.about')}</label>
     </div>
 
     <div class="clear padded"></div>
 
-    <h3>{$c->__('vcard.position_title')}</h3>
+    <h3 class="block large">{$c->__('vcard.position_title')}</h3>
 
     <div class="block">
         <input type="text" type="locality" name ="locality" class="content" value="{$me->adrlocality}" placeholder="{$c->__('Locality')}">
@@ -157,9 +151,7 @@
         <label for="country">{$c->__('vcard.country')}</label>
     </div>
 
-    <div class="clear padded"></div>
-
-    <h3>{$c->__('vcard.accounts_title')}</h3>
+    <h3 class="block large">{$c->__('vcard.accounts_title')}</h3>
     
     <div class="block">
         <input type="text" name="twitter" class="content" value="{$me->twitter}" placeholder="{$c->__('Nickname')}">
@@ -176,26 +168,24 @@
         <label for="skype"><i class="fa fa-yahoo"></i> {$c->__('vcard.yahoo')}</label>
     </div>
 
-    <div class="clear"></div>
-
-    <a
-        onclick="
-            {$submit}
-            movim_button_save('#vcard4validate');
-            this.value = '{$c->__('Submitting')}'; 
-            this.className='button oppose inactive';" 
-        class="button color oppose" 
-        id="vcard4validate"
-        >
-        {$c->__('Submit')}
-    </a>
-    <a
-        onclick="document.querySelector('#vcard4form').reset();"
-        class="button flat oppose">
-        {$c->__('Reset')}
-    </a>
-
-    <div class="clear padded"></div>
+    <div class="block large">
+        <a
+            onclick="
+                {$submit}
+                movim_button_save('#vcard4validate');
+                this.value = '{$c->__('Submitting')}'; 
+                this.className='button oppose inactive';" 
+            class="button color oppose" 
+            id="vcard4validate"
+            >
+            {$c->__('Submit')}
+        </a>
+        <a
+            onclick="document.querySelector('#vcard4form').reset();"
+            class="button flat oppose">
+            {$c->__('Reset')}
+        </a>
+    </div>
 </form>
                 
 

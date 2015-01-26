@@ -4,17 +4,21 @@ body > nav > ul span.icon {
     left: 1rem;
 }
 
-body > nav > ul > li:first-child {
+body > nav > ul:first-child > li:first-child {
     height: 7rem;
     line-height: 7rem;
 }
 
-body > nav > ul > li:first-child div.control {
+body > nav > ul:first-child > li:first-child div.control {
     line-height: 7rem;
 }
 
 body > nav > ul a {
     color: white;
+}
+
+body > nav > ul p {
+    color: gray;
 }
 
 body > nav > header.big {

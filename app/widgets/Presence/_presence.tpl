@@ -1,4 +1,4 @@
-<li onclick="{$dialog}" class="condensed action">
+<li onclick="{$dialog} MovimTpl.hideMenu()" class="condensed action">
     <div class="action">
         <i class="md md-edit"></i>
     </div>
@@ -6,7 +6,7 @@
     <span>{$me->getTrueName()}</span>
     <p class="wrap">{$presence->status}</p>
 </li>
-<a class="block classic" href="{$c->route('conf')}">
+<a class="classic" href="{$c->route('conf')}">
     <li>
         <span class="icon">
             <i class="md md-settings"></i>
@@ -14,7 +14,7 @@
         <span>{$c->__('page.configuration')}</span>
     </li>
 </a>
-<a class="block classic" href="{$c->route('help')}">
+<a class="classic" href="{$c->route('help')}">
     <li>
         <span class="icon">
             <i class="md md-help"></i>
