@@ -5,7 +5,6 @@
 
 .flex .block {
     flex: 1 50%;
-    padding: 0 1rem;
 }
 
 .flex .block.large {
