@@ -14,6 +14,5 @@
 @media screen and (max-width: 1024px) {
     .flex .block {
         flex: 1 100%;
-        padding: 0;
     }
 }

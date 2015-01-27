@@ -218,6 +218,108 @@ nav + main {
 
 main > header {
     position: relative;
+    height: 7rem;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+main > header > div {
+    padding-left: 9rem;
+    position: relative;
+    width: 25%;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+main > header > div > * {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+main > header > div > ul.active {
+    float: right;
+}
+
+main > header > div > ul.active li {
+    float: left;
+    height: 7rem;
+    min-width: 0;
+    line-height: 7rem;
+    width: 7rem;
+    padding: 0;
+    font-size: 4rem;
+}
+
+main > header > div > ul.active li span.icon {
+    left: 1rem;
+}
+
+main > header > div:first-child:nth-last-child(2) ~ div {
+    width: 75%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+main > header > div > span.icon {
+    line-height: 7rem;
+    left: 0;
+    width: 8rem;
+    height: 7rem;
+    top: 0;
+    margin: 0;
+}
+
+main > header > div > h2 {
+    padding-left: 9rem;
+    margin-left: -9rem;
+    display: inline-block;
+    padding-right: 3rem;
+    max-width: calc(100% + 10rem);
+    box-sizing: border-box;
+}
+
+main > header > div > h2.r1 { max-width: calc(100% + 2rem); }
+main > header > div > h2.r2 { max-width: calc(100% - 5rem); }
+main > header > div > h2.r3 { max-width: calc(100% - 12rem); }
+
+main > header > div > h2.active:hover,
+main > header > div > span.active:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+    main > header > div,
+    main > header > div:first-child:nth-last-child(2) ~ div {
+        width: 100%;
+    }
+
+    main > header > div:first-child:nth-last-child(2) {
+        display: none;
+    }
+}
+/*
+main > header > div > span.action {
+    padding-left: 9rem;
+}
+
+main > header > div > span.action:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+*/
+/*
+main > header > div > a span.icon:hover,
+main > header > div > span.icon:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+*/
+/*
+main > header {
+    position: relative;
     min-height: 7rem;
     padding-left: 9rem;
     overflow: hidden;
@@ -228,23 +330,57 @@ main > header {
     text-overflow: ellipsis;
 }
 
-main > header > h2 {
+main > header > * {
+    max-width: calc(25% - 7rem);
+    overflow: hidden;
+}
+*/
+/* Two blocks*/
+/*
+main > header > div:first-child:nth-last-child(2) {
+
+}
+main > header > div:first-child:nth-last-child(2) ~ div {
+    max-width: 100%;
+    width: 75%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+main > header h2 {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-main > header > form {
-    max-width: calc(25% - 7rem);
+@media screen and (max-width: 1024px) {
+    main > header > div {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    main > header > div:first-child:nth-last-child(2) {
+        display: none;
+    }
+    main > header > div:first-child:nth-last-child(2) ~ div {
+        width: 100%;
+    }
 }
 
+main > header > div > form,
+main > header > div > h2 {
+    max-width: calc(100% - 7rem);
+}*/
+/*
 @media screen and (max-width: 1024px) {
     main > header > form,
     main > header > h2 {
         max-width: calc(100% - 7rem);
     }
 }
-
+*/
+/*
 main > header ul {
     float: right;
 }
@@ -258,7 +394,7 @@ main > header ul li {
     padding: 0;
     font-size: 4rem;
 }
-
+*/
 main > section {
     height: 100%;
     position: relative;
@@ -420,24 +556,6 @@ span.icon.status:after {
     background-color: #DDD;
 }
 
-main > header > a span.icon:hover,
-main > header > span.icon:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-main > header > a > span.icon,
-main > header > span.icon {
-    line-height: 7rem;
-    width: 8rem;
-    height: 7rem;
-    margin-top: -3.5rem;
-    left: 0;
-}
-
-main > header ul li span.icon {
-    left: 1rem;
-}
-
 main ul li .control > i {
     margin-left: 0;
 }
@@ -460,11 +578,11 @@ main ul li .control > i {
 }
 
 /* Header */
-
+/*
 header .icon:hover {
     cursor: pointer;
 }
-
+*/
 header.big {
     background-size: cover, cover;
     background-position: center center;
