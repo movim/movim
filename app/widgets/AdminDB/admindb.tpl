@@ -1,6 +1,6 @@
 <div id="admindb" class="tabelem paddedtop" title="{$c->__('db.legend')}">
-    <form>
-        <ul>
+    <form class="flex">
+        <ul class="block large">
             <li class="subheader">{$c->__('db.legend')}</li>
 
             {if="!$connected"}
@@ -42,8 +42,7 @@
                 {/if}
             {/if}
         </ul> 
-        
-        <div class="clear"></div>  
+
         <div class="block">
             <input value="{$dbtype}" disabled/>
             <label for="logLevel">{$c->__('db.type')}</label>
