@@ -1,5 +1,6 @@
+/*
 #post_widget {
-    /*width: calc(75% - 15rem);*/
+    width: calc(75% - 15rem);
 }
 
 #post_widget article {
@@ -24,4 +25,10 @@
 #post_widget div.picture ~ header { 
     margin-top: -3em;
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
+}
+*/
+#post_widget #preview img {
+    float: right;
+    max-height: 12rem;
+    max-width: 20rem;
 }
