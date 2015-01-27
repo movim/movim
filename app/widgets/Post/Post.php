@@ -19,6 +19,7 @@
  */
 
 use Moxl\Xec\Action\Microblog\CommentsGet;
+use \Michelf\Markdown;
 
 class Post extends WidgetCommon
 {
@@ -40,6 +41,24 @@ class Post extends WidgetCommon
         
         Header::fill($header);
         RPC::call('movim_fill', 'post_widget', $html);
+    }
+
+    function ajaxPreview($form)
+    {
+        if($form->content->value != '') {
+            $view = $this->tpl();
+            $view->assign('content', Markdown::defaultTransform($form->content->value));
+
+            Dialog::fill($view->draw('_post_preview', true));
+        } else {
+            Notification::append(false, 'No content to preview');
+        }
+    }
+
+    function ajaxHelp()
+    {
+        $view = $this->tpl();
+        Dialog::fill($view->draw('_post_help', true));
     }
 
     function ajaxGetComments($jid, $id)

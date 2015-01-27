@@ -124,7 +124,7 @@ form > div .checkbox {
     border-radius: 2rem;
     margin-left: 1rem;
     width: 5rem;
-    background-color: #939393;
+    background-color: rgba(0, 0, 0, 0.5);
     margin: 1.5rem 0;
 }
 
@@ -135,19 +135,21 @@ form > div .checkbox:before {
     height: 2.25rem;
     border-radius: 2rem 0 0 2rem;
     width: 2.7rem;
-    background-color: #77C1BA;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 form > div .checkbox > input[type="checkbox"] + label {
     display: block;
     background-color: #FAFAFA;
     box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 2rem;
-    top: -0.35rem;
-    left: 0;
+    top: -0.65rem;
+    left: -0.2rem;
     position: relative;
+    font-size: 2rem;
+    text-align: center;
 
     transition: left 0.3s ease, box-shadow 0.1s ease;
 }
@@ -159,7 +161,7 @@ form > div .checkbox > input[type="checkbox"] + label:hover {
 
 form > div .checkbox > input[type="checkbox"]:checked + label {
     background-color: #009587;
-    left: 1.3em;
+    left: 1.1em;
 }
 
 form > div .checkbox > input[type="checkbox"]:checked + label:hover {

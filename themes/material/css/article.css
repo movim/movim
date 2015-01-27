@@ -31,12 +31,21 @@ article section p {
     margin-bottom: 1rem;
 }
 
-article section content ul li {
+article section content ul li,
+article section content ol li {
+    font-size: 2rem;
     line-height: 3rem;
     padding-left: 2rem;
-    list-style-type: circle;
     list-style-position: inside;
     min-height: 4rem;
+}
+
+article section content ul li {
+    list-style-type: disc;
+}
+
+article section content ol li {
+    list-style-type: decimal;
 }
 
 article section content strong,
@@ -52,5 +61,9 @@ article section content pre {
 article section content cite,
 article section content blockquote {
     padding-left: 4rem;
+    font-style: italic;
+}
+
+article section content em {
     font-style: italic;
 }
