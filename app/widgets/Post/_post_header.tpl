@@ -5,7 +5,7 @@
     </h2>
 </div>
 <div>
-    <h2 class="active" onclick="MovimTpl.hidePanel();">
+    <h2 class="active" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
         <span id="back" class="icon"><i class="md md-arrow-back"></i></span>
         {if="$post != null"}
             {if="$post->title != null"}

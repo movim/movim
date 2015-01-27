@@ -14,6 +14,8 @@
         "movim/sasl2": "dev-master",
         "movim/moxl": "dev-ws",
 
+        "embed/embed": "dev-master",
+
         "cboden/ratchet": "0.3.*",
         "devristo/phpws": "dev-master",
         "react/child-process": "0.5.*@dev",

@@ -24,7 +24,13 @@ class Post extends WidgetCommon
 {
     function load()
     {
+        $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
+    }
+
+    function ajaxClear()
+    {
+        RPC::call('movim_fill', 'post_widget', $this->prepareEmpty());
     }
 
     function ajaxGetPost($id)
@@ -42,6 +48,21 @@ class Post extends WidgetCommon
         $c->setTo($jid)
           ->setId($id)
           ->request();
+    }
+
+    function ajaxEmbedTest($url)
+    {
+        if(!filter_var($url, FILTER_VALIDATE_URL)) {
+            Notification::append(false, 'Please enter a valid url');
+            return;
+        }
+
+        $info = Embed\Embed::create($url);
+
+        $view = $this->tpl();
+        $view->assign('embed', $info);
+        $html = $view->draw('_post_embed', true);
+        RPC::call('movim_fill', 'preview', $html);
     }
 
     function onComments($packet)
