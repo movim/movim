@@ -39,15 +39,8 @@
                 <span
                     class="icon bubble status {{myjid.ajiditems.rosterview.presencetxt}}"
                     style="background-image: url({{::myjid.ajiditems.rosterview.avatar}})">
-                    <!--
-                    <img
-                        class="avatar"
-                        ng-src="{{::myjid.ajiditems.rosterview.avatar}}"
-                        alt="avatar"
-                    />-->
                 </span>
-                <!--<div class="chat on"></div>-->
-                {{myjid.ajiditems.rosterview.name}}
+                <span>{{myjid.ajiditems.rosterview.name}}</span>
                 <p ng-if="myjid.ajiditems.status != ''" class="wrap">
                     <span>{{myjid.ajiditems.status}}</span>
                 </p>
