@@ -1,7 +1,7 @@
 <div id="admingen" class="tabelem paddedtop" title="{$c->__('admin.general')}">
 <form name="admin" id="adminform" action="#" method="post">
-    <legend><i class="fa fa-wrench"></i> {$c->__('admin.general')}</legend>
-
+    <br />
+    <h3>{$c->__('admin.general')}</h3>
     <div>
         <label for="da">{$c->__('general.language')}</label>
         <div class="select">
@@ -74,13 +74,10 @@
         <br /><br />
 
     </div>
-    <legend><i class="fa fa-code"></i> {$c->__('websocket.title')}</legend>
-    <div class="clear"></div>
-    
-    <p>
-        {$c->__('websocket.info')}: <code>ws(s)://domain:port</code>
-    </p>
-    
+
+    <br />
+    <h3>{$c->__('websocket.title')}</h3>
+
     <!--{if="!$c->testBosh($conf->boshurl)"}
         <div class="message error">
             {$c->__('bosh.not_recheable')}
@@ -107,41 +104,60 @@
             </dl>
         </div>
     {/if}
-    
-    <div class="message info block">
-        <i class="fa fa-exclamation-triangle"></i> {$c->__('websocket.save_info')}
-    </div>
 
-    <legend><i class="fa fa-check-square-o"></i> {$c->__('whitelist.title')}</legend>
-    <div class="clear"></div>                
+    <ul class="thick">
+        <li class="condensed">
+            <span class="icon bubble color orange">
+                <i class="md md-warning"></i>
+            </span>
+            <span>{$c->__('websocket.info')}: <code>ws(s)://domain:port</code></span>
+            <p>{$c->__('websocket.save_info')}</p>
+        </li>
+    </ul>
 
-    <div>
-        <p>{$c->__('whitelist.info1')}</p>
-        <p>{$c->__('whitelist.info2')}</p>
-    </div>
+    <h3>{$c->__('whitelist.title')}</h3>
 
     <div>
         <input type="text" name="xmppwhitelist" id="xmppwhitelist" placeholder="{$c->__('whitelist.label')}" value="{$conf->xmppwhitelist}" />
         <label for="xmppwhitelist">{$c->__('whitelist.label')}</label>
     </div>
 
-    <legend><i class="fa fa-comment"></i> {$c->__('information.title')}</legend>
-    <div class="clear"></div>
+    <ul class="thick">
+        <li class="condensed">
+            <span class="icon bubble color blue">
+                <i class="md md-info"></i>
+            </span>
+            <p>{$c->__('whitelist.info1')}</p>
+            <p>{$c->__('whitelist.info2')}</p>
+        </li>
+    </ul>
+
+    <br />
+    <h3>{$c->__('information.title')}</h3>
 
     <div>
-        <textarea type="text" name="description" id="description" />{$conf->description}</textarea>
+        <textarea type="text" name="description" id="description" placeholder="{$conf->description}"/>{$conf->description}</textarea>
         <label for="description">{$c->__('information.description')}</label>
     </div>
     <div class="clear"></div>
 
     <div>
+        <textarea type="text" name="info" id="info" placeholder="{$c->__('information.label')}" />{$conf->info}</textarea>
         <label for="info">{$c->__('information.label')}</label>
-        <p>{$c->__('information.info1')}</p>
-        <p>{$c->__('information.info2')}</p>
-        <textarea type="text" name="info" id="info" />{$conf->info}</textarea>
     </div>
 
-    <legend><i class="fa fa-user"></i> {$c->__('credentials.title')}</legend>
+    <ul class="thick">
+        <li class="condensed">
+            <span class="icon bubble color blue">
+                <i class="md md-info"></i>
+            </span>
+            <span>{$c->__('information.info1')}</span>
+            <p>{$c->__('information.info2')}</p>
+        </li>
+    </ul>
+
+    <br />
+    <h3>{$c->__('credentials.title')}</h3>
         
     {if="$conf->user == 'admin' || $conf->pass == sha1('password')"}
         <div class="message error">
