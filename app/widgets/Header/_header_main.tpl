@@ -13,3 +13,21 @@
         </div>
     </form>
 </div>
+<div>
+    <span class="icon">
+        <i class="md md-edit"></i>
+    </span>
+    <h2 class="r2">New Post</h2>
+    <ul class="active">
+        <li onclick="Post_ajaxHelp()">
+            <span class="icon">
+                <i class="md md-help"></i>
+            </span>
+        </li>
+        <li onclick="Post_ajaxPreview(movim_form_to_json('post'))">
+            <span class="icon">
+                <i class="md md-remove-red-eye"></i>
+            </span>
+        </li>
+    </ul>
+</div>

@@ -3,7 +3,8 @@
     <h4>{$c->__('post.placeholder')}</h4>
 </div>-->
 <ul class="simple">
-    <li class="action">
+    <li>
+        <!--
         <form>
             <div class="control action">
                 <span style="display: inline; float: left; margin-right: 2rem;"><i class="md md-insert-comment"></i></span>
@@ -20,30 +21,28 @@
                 </div>
                 <span style="display: inline; float: right; margin-left: 2rem;"><i class="md md-mode-edit"></i></span>
             </div>
+        </form>-->
+        <form name="post">
+            <div>
+                <input type="text" name="title" placeholder="Optionnel">
+                <label for="title">Title</label>
+            </div>
+            <div>
+                <textarea name="content" placeholder="Content" onkeyup="movim_textarea_autoheight(this);"></textarea>
+                <label for="content">Content</label>
+            </div>
+            <div>
+                <input type="url" name="embed" placeholder="http://myawesomewebsite.com/" onblur="Post_ajaxEmbedTest(this.value)">
+                <label for="embed">Link</label>
+
+                <div id="preview">
+
+                </div>
+            </div>
+            <div>
+                <input type="text" name="tags" placeholder="food, blog, news">
+                <label for="tags">Tags</label>
+            </div>
         </form>
-        <h2>New post</h2>    
     </li>
 </ul>
-<form>
-    <div>
-        <input type="text" placeholder="Optionnel">
-        <label>Title</label>
-    </div>
-    <div>
-        <textarea placeholder="Content"></textarea>
-        <label>Content</label>
-    </div>
-    <div>
-        <input type="url" placeholder="http://myawesomewebsite.com/" onblur="Post_ajaxEmbedTest(this.value)">
-        <label>Link</label>
-
-        <div id="preview">
-
-        </div>
-    </div>
-    <div>
-        <input type="text" placeholder="food, blog, news">
-        <label>Tags</label>
-    </div>
-</form>
-
