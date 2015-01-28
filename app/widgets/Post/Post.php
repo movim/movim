@@ -18,6 +18,7 @@
  * See COPYING for licensing information.
  */
 
+use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use \Michelf\Markdown;
 
@@ -43,6 +44,16 @@ class Post extends WidgetCommon
         RPC::call('movim_fill', 'post_widget', $html);
     }
 
+    function ajaxCreate()
+    {
+        $view = $this->tpl();
+        $view->assign('to', $this->user->getLogin());
+        RPC::call('movim_fill', 'post_widget', $view->draw('_post_create', true));
+
+        $view = $this->tpl();
+        Header::fill($view->draw('_post_header_create', true));
+    }
+
     function ajaxPreview($form)
     {
         if($form->content->value != '') {
@@ -51,14 +62,39 @@ class Post extends WidgetCommon
 
             Dialog::fill($view->draw('_post_preview', true));
         } else {
-            Notification::append(false, 'No content to preview');
+            Notification::append(false, $this->__('post.no_content_preview'));
         }
     }
 
     function ajaxHelp()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_post_help', true));
+        Dialog::fill($view->draw('_post_help', true), true);
+    }
+
+    function ajaxPublish($form)
+    {
+        if($form->content->value != '') {
+            $content = Markdown::defaultTransform($form->content->value);
+
+            if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
+                $content .= $this->prepareEmbed($form->embed->value);
+            }
+            
+            $p = new PostPublish;
+            $p->setFrom($this->user->getLogin())
+              ->setTo($form->to->value)
+              ->setNode($form->node->value);
+              //->setLocation($geo)
+              //->enableComments()
+            if($form->title->value != '') {
+                $p->setTitle($form->title->value);
+            }
+            $p->setContentHtml(rawurldecode($content))
+              ->request();
+        } else {
+            Notification::append(false, $this->__('post.no_content'));
+        }
     }
 
     function ajaxGetComments($jid, $id)
@@ -71,16 +107,15 @@ class Post extends WidgetCommon
 
     function ajaxEmbedTest($url)
     {
-        if(!filter_var($url, FILTER_VALIDATE_URL)) {
-            Notification::append(false, 'Please enter a valid url');
+        if($url == '') {
+            return;
+        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
+            Notification::append(false, $this->__('post.valid_url'));
             return;
         }
 
-        $info = Embed\Embed::create($url);
+        $html = $this->prepareEmbed($url);
 
-        $view = $this->tpl();
-        $view->assign('embed', $info);
-        $html = $view->draw('_post_embed', true);
         RPC::call('movim_fill', 'preview', $html);
     }
 
@@ -99,6 +134,15 @@ class Post extends WidgetCommon
         $html = $view->draw('_post_comments', true);
         //$html = $this->prepareComments($comments);
         RPC::call('movim_fill', 'comments', $html);
+    }
+
+    function prepareEmbed($url)
+    {
+        $info = Embed\Embed::create($url);
+
+        $view = $this->tpl();
+        $view->assign('embed', $info);
+        return $view->draw('_post_embed', true);
     }
 
     function prepareEmpty()
