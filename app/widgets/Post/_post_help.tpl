@@ -80,7 +80,7 @@
         </a>
     </ul>
 </section>
-<div class="no_bar">
+<div>
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.cancel')}
     </a>

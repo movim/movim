@@ -77,10 +77,6 @@ class Post extends WidgetCommon
         if($form->content->value != '') {
             $content = Markdown::defaultTransform($form->content->value);
 
-            if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
-                $content .= $this->prepareEmbed($form->embed->value);
-            }
-            
             $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($form->to->value)
@@ -90,6 +86,12 @@ class Post extends WidgetCommon
             if($form->title->value != '') {
                 $p->setTitle($form->title->value);
             }
+
+            if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
+                $content .= $this->prepareEmbed($form->embed->value);
+                $p->setLink($form->embed->value);
+            }
+
             $p->setContentHtml(rawurldecode($content))
               ->request();
         } else {
