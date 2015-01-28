@@ -14,11 +14,15 @@ li > form > div:not(.control) { /* If we put the form in a list */
 }
 
 form > div > label {
-    display: block;
     position: absolute;
     top: 2rem;
 }
-
+/*
+form > div > input:focus + label,
+form > div > textarea:focus + label {
+    display: block;
+}
+*/
 form > div > textarea {
     border: none;
     resize: none;
@@ -107,6 +111,7 @@ form > div > textarea:focus {
     margin-bottom: calc(1rem - 1px);
 }
 
+form > div > input:invalid,
 form > div > input:required {
     box-shadow: none;
 }
@@ -275,4 +280,10 @@ input[type=button].flat:focus {
     height: 8rem;
     z-index: 1;
     font-size: 3rem;
+}
+
+@media screen and (min-width: 1024px) {
+    main > section > div:first-child:nth-last-child(2) .button.action {
+        right: calc(75% + 3rem);
+    }
 }
