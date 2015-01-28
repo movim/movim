@@ -24,7 +24,13 @@ class PubsubAtom {
     public function __toString() {
         $xml = '
             <entry xmlns="http://www.w3.org/2005/Atom">
-                <title>'.$this->title.'</title>
+            ';
+
+        if($this->title)
+            $xml .= '
+                <title>'.$this->title.'</title>';
+
+        $xml .= '
                 <author>
                     <name>'.$this->name.'</name>
                     <uri>xmpp:'.$this->jid.'</uri>

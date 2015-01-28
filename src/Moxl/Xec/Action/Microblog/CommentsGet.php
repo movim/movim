@@ -52,14 +52,11 @@ class CommentsGet extends Action
     
     public function handle($stanza, $parent = false) {
         $evt = new \Event();
-        
-        $to = current(explode('/',(string)$stanza->attributes()->to));
 
         $node = (string)$stanza->pubsub->items->attributes()->node;
         list($xmlns, $parent) = explode("/", $node);
 
         if($stanza->pubsub->items->item) {
-            
             $comments = array();
 
             foreach($stanza->pubsub->items->item as $item) {
@@ -71,8 +68,10 @@ class CommentsGet extends Action
                 
                 array_unshift($comments, $p);
             }
-            
-            $evt->runEvent('comment', $parent);
+
+            //$evt->runEvent('comment', $parent);
+            $this->pack($this->_id);
+            $this->deliver();
         } else {
             $evt->runEvent('nocomment', $parent);   
         }
