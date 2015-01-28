@@ -15,10 +15,12 @@
                 <input type="url" name="embed" placeholder="http://myawesomewebsite.com/" onblur="Post_ajaxEmbedTest(this.value)">
                 <label for="embed">{$c->__('post.link')}</label>
             </div>
+            <!--
             <div>
                 <input type="text" name="tags" placeholder="food, blog, news">
                 <label for="tags">{$c->__('post.tags')}</label>
             </div>
+            -->
         </form>
     </li>
     <article>
