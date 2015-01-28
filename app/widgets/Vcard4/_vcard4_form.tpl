@@ -30,16 +30,16 @@
 <form name="vcard4" id="vcard4form" class="flex">
     <h3 class="block large">{$c->__('page.profile')}</h3>
     <div class="block">
-        <input type="text" name="fn" class="content" value="{$me->fn}">
+        <input type="text" name="fn" class="content" value="{$me->fn}" placeholder="{$c->__('vcard.name')}">
         <label for="fn">{$c->__('vcard.name')}</label>
     </div>
     <div class="block">
-        <input type="text" name="name" class="content" value="{$me->name}">
+        <input type="text" name="name" class="content" value="{$me->name}" placeholder="{$c->__('vcard.nickname')}">
         <label for="fn">{$c->__('vcard.nickname')}</label>
     </div>
 
     <div class="block large">
-        <input type="email" name="email" class="content" value="{$me->email}">
+        <input type="email" name="email" class="content" value="{$me->email}" placeholder="{$c->__('vcard.email')}">
         <label for="fn">{$c->__('vcard.email')}</label>
     </div>
 
