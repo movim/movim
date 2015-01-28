@@ -186,7 +186,7 @@ body.green a:not(.classic) { color: #388E3C; border-color: #388E3C; }
 
 /* green accent : purple */
 
-body.green form > div .checkbox:before { background-color: #BBDEFB; }
+/*body.green form > div .checkbox:before { background-color: #BBDEFB; }*/
 body.green form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #2196F3; }
 
 body.green form > div .radio > input[type="radio"]:checked + label {
