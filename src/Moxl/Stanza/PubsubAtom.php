@@ -42,6 +42,12 @@ class PubsubAtom {
                         rel="replies" 
                         title="comments" 
                         href="xmpp:'.$this->jid.'?;node=urn:xmpp:microblog:0:comments/'.$this->id.'"/>';
+
+        if($this->link)
+            $xml .= '
+                    <link 
+                        rel="related" 
+                        href="'.htmlspecialchars($this->link).'"/>';
                         
         if($this->geo) {
             $xml .= '

@@ -75,6 +75,12 @@ class PostPublish extends Errors
         return $this;
     }
     
+    public function setLink($link)
+    {
+        $this->_atom->link = $link;
+        return $this;
+    }
+    
     public function setContent($content)
     {
         $this->_atom->content = $content;
