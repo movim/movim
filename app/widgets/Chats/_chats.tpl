@@ -8,3 +8,7 @@
 {loop="$chats"}
     {$c->prepareChat($key)}
 {/loop}
+
+<a onclick="Chats_ajaxAdd()" class="button action color">
+    <i class="md md-add"></i>
+</a>

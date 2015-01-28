@@ -27,8 +27,9 @@
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
 }
 */
+/*
 #post_widget #preview img {
-    float: right;
-    max-height: 12rem;
-    max-width: 20rem;
+    max-height: 40rem;
+    max-width: 100%;
 }
+*/
