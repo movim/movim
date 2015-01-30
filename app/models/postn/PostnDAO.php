@@ -408,7 +408,7 @@ class PostnDAO extends SQL {
     }
 
     function getCountSince($date) {
-        $this->_sql = '
+        /*$this->_sql = '
             select count(*) from postn
             left outer join subscription on 
             postn.session = subscription.jid and 
@@ -418,7 +418,14 @@ class PostnDAO extends SQL {
                     and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                     and postn.node not like \'urn:xmpp:inbox\'
             and subscription is not null
-            and published > :published';
+            and published > :published';*/
+        $this->_sql = '
+            select count(*) from postn
+            where postn.session = :session
+                    and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                    and postn.node not like \'urn:xmpp:inbox\'
+            and published > :published
+                ';
         
         $this->prepare(
             'Postn', 
@@ -436,6 +443,7 @@ class PostnDAO extends SQL {
     }
 
     function getLastDate() {
+        /*
         $this->_sql = '
             select published from postn
             left outer join subscription on 
@@ -446,6 +454,14 @@ class PostnDAO extends SQL {
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
             and subscription is not null
+            order by postn.published desc
+            limit 1 offset 0';*/
+
+        $this->_sql = '
+            select published from postn
+            where postn.session = :session
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
             order by postn.published desc
             limit 1 offset 0';
         
