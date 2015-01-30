@@ -47,13 +47,15 @@ class Notification extends WidgetCommon
 
         RPC::call('Notification.counter', $first, $notifs[$first]);
 
-        if(array_key_exists($key, $notifs)) {
-            $notifs[$key]++;
-        } else {
-            $notifs[$key] = 1;
-        }
+        if($first != $key) {
+            if(array_key_exists($key, $notifs)) {
+                $notifs[$key]++;
+            } else {
+                $notifs[$key] = 1;
+            }
 
-        RPC::call('Notification.counter', $key, $notifs[$key]);
+            RPC::call('Notification.counter', $key, $notifs[$key]);
+        }
 
         $n = new Notification;
         RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture), $time);
