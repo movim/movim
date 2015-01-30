@@ -22,7 +22,7 @@
         </h2>
     {else}
         {if="$contact != null"}
-            <ul>
+            <ul class="active">
                 <li onclick="Roster_ajaxDisplaySearch('{$jid}')">
                     <span class="icon">
                         <i class="md md-person-add"></i>
@@ -34,7 +34,7 @@
                 {$contact->getTrueName()}
             </h2>
         {else}
-            <ul>
+            <ul class="active">
                 <li onclick="Roster_ajaxDisplaySearch('{$jid}')">
                     <span class="icon">
                         <i class="md md-person-add"></i>
