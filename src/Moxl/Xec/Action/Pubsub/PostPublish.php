@@ -111,9 +111,7 @@ class PostPublish extends Errors
         return $this;
     }
     
-    public function handle($stanza, $parent = false) {       
-        $evt = new \Event();
-        
+    public function handle($stanza, $parent = false) {         
         $p = new \modl\Postn();
 
         $p->key     = $this->_atom->jid;
@@ -142,7 +140,8 @@ class PostPublish extends Errors
                ->setParentId($p->nodeid)
                ->request();
         }
-        
-        $evt->runEvent('stream', array('from' => $p->from, 'node' => $p->node));
+
+        $this->pack($p);
+        $this->deliver();
     }
 }

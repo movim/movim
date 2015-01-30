@@ -62,7 +62,8 @@ abstract class Payload
      */
     final public function deliver() {
         $action_ns = 'Moxl\Xec\Action';
-        if(get_parent_class($this) == $action_ns) {
+        if(get_parent_class($this) == $action_ns
+        || get_parent_class(get_parent_class($this)) == $action_ns) {
             $class = str_replace(array($action_ns, '\\'), array('', '_'), get_class($this));
             $key = strtolower(substr($class, 1));
         } else {
