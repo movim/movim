@@ -71,7 +71,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
 
             if(!empty($msg)) {
                 $msg = json_encode($msg);
-                //fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to browser', 'green')."\n");
+                fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to browser', 'green')."\n");
                 echo base64_encode(gzcompress($msg, 9))."END";
             }
 
@@ -98,7 +98,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
             $buffer = '';
 
             foreach ($messages as $message) {
-                //fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
+                fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
                 
                 $msg = json_decode($message);
 
@@ -126,7 +126,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
                 \RPC::clear();
 
                 if(!empty($msg)) {
-                    //fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
+                    fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
                     echo base64_encode(gzcompress($msg, 9))."END";
                 }
             }
