@@ -48,8 +48,8 @@
         </div>
     </ul>
 
-<a onclick="Roster_ajaxDisplaySearch()" class="button action color">
-    <i class="md md-person-add"></i>
-</a>
+    <a onclick="Roster_ajaxDisplaySearch()" class="button action color">
+        <i class="md md-person-add"></i>
+    </a>
 
 </div>
