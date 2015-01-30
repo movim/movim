@@ -28,6 +28,14 @@ class Post extends WidgetCommon
     {
         $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
+        $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
+    }
+
+    function onPublish($packet)
+    {
+        Notification::append(false, $this->__('post.published'));
+        $this->ajaxClear();
+        RPC::call('MovimTpl.hidePanel');
     }
 
     function ajaxClear()
