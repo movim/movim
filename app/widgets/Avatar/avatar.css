@@ -1,4 +1,52 @@
-#avatar form {
+#avatar_form div#preview {
+    flex: 1 1 20%;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+#avatar_form input[type=file] {
+    max-width: 200px;
+}
+
+#avatar_form div#preview > div,
+#avatar_form div#preview img {
+    max-width: 250px;
+    border-radius: 0.25rem;
+    margin: 0 auto;
+}
+
+/*
+#avatar_form div.flex div:first-child {
+    flex: 1 1 25%;
+    background-color: #333;
+    display: block;
+    height: 25rem;
+}
+
+#avatar_form div.flex div:nth-child(2) {
+    padding-left: 2rem;
+}
+
+#avatar_form div.flex div#preview div {
+    display: table;
+    width: 100%;
+}
+
+#avatar_form div.flex div:first-child form {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#avatar_form div.flex div:first-child div form img {
+    max-width: 300px;
+}
+
+#avatar_form input[type=file] {
+    max-width: 200px;
+}*/
+
+/*#avatar form {
     margin-top: 2rem;
 }
 
@@ -53,7 +101,7 @@
     font-size: 1.5rem;
     margin-left: -3rem; 
 }
-
+*/
 /*
 .squares, #snap{
 	height:200px;

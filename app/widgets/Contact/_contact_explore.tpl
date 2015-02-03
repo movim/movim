@@ -1,23 +1,31 @@
-<h2 class="padded">{$c->__('last_registered')}</h2>
+<br />
+<h2>{$c->__('explore')}</h2>
 
-<ul class="active">
+<ul class="flex card active thick">
 {loop="$users"}
-    <li class="condensed" onclick="Contact_ajaxGetContact('{$value->jid}');">
-        <span class="icon bubble"><img class="avatar" src="{$value->getPhoto('m')}"/></span>
+    <li class="{if="$value->description != ''"}condensed{/if} block" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}');">
+        <span class="icon bubble">
+            <img src="{$value->getPhoto('m')}"/>
+        </span>
         <span>{$value->getTrueName()}</span>
-        <p>
+        
             {if="$value->getAge()"}
-                <span class="tag blue on_desktop">{$value->getAge()}</span>
+                <span class="info">{$c->__('age.years', $value->getAge())}</span>
             {/if}
             {if="$value->getGender()"}
-                <span class="tag green on_desktop">{$value->getGender()}</span>
+                <span class="info">{$value->getGender()}</span>
             {/if}
+            <!--
             {if="$value->getMarital()"}
-                <span class="tag yellow on_desktop">{$value->getMarital()}</span>
+                <span class="info">{$value->getMarital()}</span>
             {/if}
-            <br/>
-            <span class="desc on_desktop">{$value->description|strip_tags}</span>
-        </p>
+            -->
+        
+            {if="$value->description != ''"}
+            <p>
+                {$value->description|strip_tags}
+            </p>
+            {/if}
     </li>
 {/loop}
 </ul>
