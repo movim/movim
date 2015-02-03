@@ -11,8 +11,26 @@
     flex: 1 100%;
 }
 
+.flex.card {
+    padding: 0;
+}
+
+.flex.card .block {
+    margin: 1rem;
+    flex: 1 calc(50% - 2rem);
+    min-height: 12rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.flex.card .block:not(.condensed) {
+    padding-top: 3rem;
+}
+
 @media screen and (max-width: 1024px) {
+    .flex.card .block,
     .flex .block {
+        margin-bottom: 0;
         flex: 1 100%;
     }
 }
