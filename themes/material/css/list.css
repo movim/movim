@@ -95,6 +95,10 @@ ul li > p {
     line-height: 2.5rem;
 }
 
+ul li > p.all {
+    max-height: 100%;
+}
+
 ul li p.wrap {
     white-space: nowrap;
 }

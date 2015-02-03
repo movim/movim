@@ -282,6 +282,11 @@ input[type=button].flat:focus {
     font-size: 3rem;
 }
 
+li.action div.action .button {
+    margin: 0.5rem;
+    display: block;
+}
+
 @media screen and (min-width: 1024px) {
     main > section > div:first-child:nth-last-child(2) .button.action {
         right: calc(75% + 3rem);

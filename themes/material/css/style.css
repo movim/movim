@@ -567,6 +567,7 @@ main ul li .control > i {
 }
 
 .card > * {
+    background-color: white;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.12);
 }
