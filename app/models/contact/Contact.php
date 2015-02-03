@@ -10,7 +10,7 @@ class Contact extends Model {
     protected $date;
     protected $url;
     
-    protected $email;
+    public    $email;
     
     protected $adrlocality;
     protected $adrpostalcode;
