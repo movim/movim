@@ -17,6 +17,10 @@ form > div > label {
     position: absolute;
     top: 2rem;
 }
+
+form > div.icon {
+    padding-left: 9rem;
+}
 /*
 form > div > input:focus + label,
 form > div > textarea:focus + label {
@@ -280,6 +284,11 @@ input[type=button].flat:focus {
     height: 8rem;
     z-index: 1;
     font-size: 3rem;
+}
+
+
+.button.action:active {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 100%);
 }
 
 li.action div.action .button {

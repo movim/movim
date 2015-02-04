@@ -1,7 +1,11 @@
 <div>
     <span class="on_desktop icon"><i class="md md-view-list"></i></span>
     <h2>
-        {$post->node}
+        {if="$post->node == 'urn:xmpp:microblog:0'"}
+            {$c->__('page.blog')}
+        {else}
+            {$post->node}
+        {/if}
     </h2>
 </div>
 <div>

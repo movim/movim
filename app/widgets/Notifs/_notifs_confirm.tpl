@@ -4,13 +4,13 @@
     <h4 class="gray">{$c->__('wants_to_talk', $jid)}</h4>
 
     <ul class="active">
-        <li onclick="Notifs_ajaxAccept('$jid')">
+        <li onclick="Notifs_ajaxAccept('{$jid}'); Dialog.clear();">
             <span class="icon green">
                 <i class="md md-person-add"></i>
             </span>
             {$c->__('button.accept')}
         </li>
-        <li onclick="Notifs_ajaxRefuse('$jid')">
+        <li onclick="Notifs_ajaxRefuse('{$jid}'); Dialog.clear();">
             <span class="icon red">
                 <i class="md md-close"></i>
             </span>

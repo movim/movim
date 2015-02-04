@@ -23,7 +23,8 @@ class Postn extends Model {
     public $updated;        //
     public $delay;          //
 
-    public $tags;
+    public $tags;           // Store the tags
+    public $picture;        // Tell if the post contain embeded pictures
 
     public $lat;
     public $lon;
@@ -76,6 +77,8 @@ class Postn extends Model {
                 
             "links" : 
                 {"type":"text" },
+            "picture" : 
+                {"type":"int", "size":4 },
             "tags" : 
                 {"type":"text" },
             "hash" : 
@@ -195,6 +198,10 @@ class Postn extends Model {
                 $this->lon = (string)$entry->entry->geoloc->lon;
         }
     }
+
+    private function typeIsPicture($type) {
+        return in_array($type, array('image/jpeg', 'image/png', 'image/jpg'));
+    }
     
     private function setAttachements($links) {
         $contentimg = '';
@@ -205,9 +212,12 @@ class Postn extends Model {
             $enc = array();
             $enc = (array)$attachment->attributes();
             $enc = $enc['@attributes'];
-            array_push($l, $enc); 
+            array_push($l, $enc);
 
-            
+            if($this->typeIsPicture($enc['type'])) {
+                $this->picture = true;
+            }
+
             if((string)$attachment->attributes()->title == 'comments') {
                 $substr = explode('?',substr((string)$attachment->attributes()->href, 5));
                 $this->commentplace = reset($substr);
@@ -231,7 +241,7 @@ class Postn extends Model {
             foreach($links as $l) {
                 switch($l['rel']) {
                     case 'enclosure' :
-                        if(in_array($l['type'], array('image/jpeg', 'image/png', 'image/jpg'))) {
+                        if($this->typeIsPicture($l['type'])) {
                             array_push($attachements['pictures'], $l);
                         } else {
                             array_push($attachements['files'], $l);
