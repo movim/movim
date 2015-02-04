@@ -1,35 +1,3 @@
-/*
-#post_widget {
-    width: calc(75% - 15rem);
+form[name=post] article section {
+    padding: 0;
 }
-
-#post_widget article {
-    padding-bottom: 1em;
-}
-
-#post_widget div.picture {
-    padding-bottom: 25%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-#post_widget article header,
-#post_widget article section.content,
-#post_widget article footer {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: white;
-}
-
-#post_widget div.picture ~ header { 
-    margin-top: -3em;
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3);
-}
-*/
-/*
-#post_widget #preview img {
-    max-height: 40rem;
-    max-width: 100%;
-}
-*/

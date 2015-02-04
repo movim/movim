@@ -36,3 +36,9 @@ ul.grid nav {
         padding-bottom: 50%;
     }
 }
+
+ul.grid:after {
+    content: "";
+    display: block;
+    clear: both;
+}

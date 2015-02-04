@@ -96,8 +96,14 @@ class Post extends WidgetCommon
             }
 
             if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
-                $content .= $this->prepareEmbed($form->embed->value);
+                $embed = Embed\Embed::create($form->embed->value);
+                $content .= $this->prepareEmbed($embed);
                 $p->setLink($form->embed->value);
+
+                if($embed->type == 'photo') {
+                    $key = key($embed->images);
+                    $p->setImage($key, $embed->title, $embed->images[$key][2]);
+                }
             }
 
             $p->setContentHtml(rawurldecode($content))
@@ -124,7 +130,12 @@ class Post extends WidgetCommon
             return;
         }
 
-        $html = $this->prepareEmbed($url);
+        $embed = Embed\Embed::create($url);
+        $html = $this->prepareEmbed($embed);
+
+        if($embed->type == 'photo') {
+            RPC::call('movim_fill', 'gallery', $this->prepareGallery($embed));
+        }
 
         RPC::call('movim_fill', 'preview', $html);
     }
@@ -146,12 +157,17 @@ class Post extends WidgetCommon
         RPC::call('movim_fill', 'comments', $html);
     }
 
-    function prepareEmbed($url)
+    function prepareGallery($embed)
     {
-        $info = Embed\Embed::create($url);
-
         $view = $this->tpl();
-        $view->assign('embed', $info);
+        $view->assign('embed', $embed);
+        return $view->draw('_post_gallery', true);
+    }
+
+    function prepareEmbed($embed)
+    {
+        $view = $this->tpl();
+        $view->assign('embed', $embed);
         return $view->draw('_post_embed', true);
     }
 

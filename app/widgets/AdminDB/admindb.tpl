@@ -6,7 +6,7 @@
             {if="!$connected"}
                 <li class="block large condensed">
                     <span class="icon bubble color red">
-                        <i class="fa fa-plug"></i>
+                        <i class="md md-settings-ethernet"></i>
                     </span>
                     <span>{$c->__('db.connect_error')}</span>
                     <p>{$errors}</p>
@@ -14,14 +14,14 @@
             {else}
                 <li class="block large">
                     <span class="icon bubble color green">
-                        <i class="fa fa-plug"></i>
+                        <i class="md md-settings-ethernet"></i>
                     </span>
                     <span>{$c->__('db.connect_success')}</span>
                 </li>
                 {if="null !== $infos"}
                     <li class="block large condensed">
                         <span class="icon bubble color orange">
-                            <i class="fa fa-refresh"></i>
+                            <i class="md md-refresh"></i>
                         </span>
                         <span>{$c->__('db.update')}</span>
                         <div class="control">
@@ -35,7 +35,7 @@
                 {else}
                     <li class="block large">
                         <span class="icon bubble color green">
-                            <i class="fa fa-refresh"></i> 
+                            <i class="md md-refresh"></i> 
                         </span>
                         <span>{$c->__('db.up_to_date')}</span>
                     </li>
