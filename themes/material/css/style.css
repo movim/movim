@@ -220,7 +220,7 @@ main > header {
     position: relative;
     height: 7rem;
     overflow: hidden;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
 
@@ -847,6 +847,11 @@ dl dd {
 @media screen and (max-width: 800px) {
     .padded {
         padding-left: 2rem;
+        box-sizing: border-box;
+    }
+
+    .padded_right {
+        padding-right: 2rem;
         box-sizing: border-box;
     }
 }

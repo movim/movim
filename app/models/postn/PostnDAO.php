@@ -24,6 +24,7 @@ class PostnDAO extends SQL {
                     lon             = :lon,
                     
                     links           = :links,
+                    picture         = :picture,
                     tags            = :tags,
                     
                     hash            = :hash
@@ -54,6 +55,7 @@ class PostnDAO extends SQL {
                 'lon'               => $post->lon,
                         
                 'links'             => $post->links,
+                'picture'           => $post->picture,
                 'tags'              => $post->tags,
                         
                 'hash'              => $post->hash,
@@ -95,6 +97,7 @@ class PostnDAO extends SQL {
                 lon,
                 
                 links,
+                picture,
                 tags,
                 
                 hash)
@@ -123,6 +126,7 @@ class PostnDAO extends SQL {
                     :lon,
                     
                     :links,
+                    :picture,
                     :tags,
                     
                     :hash
@@ -149,6 +153,7 @@ class PostnDAO extends SQL {
                     'lon'               => $post->lon,
                             
                     'links'             => $post->links,
+                    'picture'           => $post->picture,
                     'tags'              => $post->tags,
                             
                     'hash'              => $post->hash,
@@ -215,6 +220,28 @@ class PostnDAO extends SQL {
                 'session' => $this->_user,
                 'jid' => $from,
                 'node' => $node
+            )
+        );
+        
+        return $this->run('ContactPostn');
+    }
+
+    function getGallery($from) {
+        $this->_sql = '
+            select *, postn.aid, privacy.value as privacy from postn
+            left outer join contact on postn.aid = contact.jid
+            left outer join privacy on postn.nodeid = privacy.pkey
+            where postn.session = :session
+                and postn.jid = :jid
+                and postn.node like \'urn:xmpp:microblog:0\'
+                and postn.picture = 1
+            order by postn.published desc';
+        
+        $this->prepare(
+            'Postn', 
+            array(
+                'session' => $this->_user,
+                'jid' => $from
             )
         );
         
