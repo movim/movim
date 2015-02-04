@@ -136,11 +136,16 @@ class Contact extends WidgetCommon
 
         $view = $this->tpl();
 
+        $pd = new \Modl\PostnDAO;
+        $gallery = $pd->getGallery($jid);
+
         if(isset($c)) {
             $view->assign('mood', getMood());
 
             $view->assign('contact', $c);
             $view->assign('contactr', $cr);
+
+            $view->assign('gallery', $gallery);
 
             $view->assign('chat', 
                 $this->call(

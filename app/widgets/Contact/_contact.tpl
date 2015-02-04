@@ -178,6 +178,24 @@
     </ul>
     {/if}
 
+    {if="isset($gallery)"}
+        <br />
+        <h3 class="padded">{$c->__('page.gallery')}</h3>
+        <br />
+        <ul class="grid">
+            {loop="$gallery"}
+                {$attachements = $value->getAttachements()}
+                <li style="background-image: url('{$attachements['pictures'][0]['href']}');">
+                    <nav>
+                        <a href="{$attachements['pictures'][0]['href']}" target="_blank">
+                            {$attachements['pictures'][0]['title']}
+                        </a>
+                    </nav>
+                </li>
+            {/loop}
+        </ul>
+    {/if}
+
     <a onclick="{$chat}" class="button action color red">
         <i class="md md-chat"></i>
     </a>
@@ -189,3 +207,4 @@
         </li>
     </ul>
 {/if}
+<br />
