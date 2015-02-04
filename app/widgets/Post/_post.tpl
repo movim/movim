@@ -10,9 +10,9 @@
     <header>
         <ul class="thick">
             <li class="condensed">
-                <a href="{$c->route('node', array($post->jid, $post->node))}">
+                <!--<a href="{$c->route('node', array($post->jid, $post->node))}">-->
                     <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
-                </a>
+                <!--</a>-->
                 {if="$post->title != null"}
                     <span>{$post->title}</span>
                 {else}
