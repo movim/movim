@@ -80,13 +80,22 @@ class PostPublish extends Errors
         $this->_atom->link = $link;
         return $this;
     }
-    
+
+    public function setImage($href, $title = null, $type = null)
+    {
+        $this->_atom->image = array(
+            'href' => $href,
+            'title' => $title,
+            'type' => $type);
+        return $this;
+    }
+
     public function setContent($content)
     {
         $this->_atom->content = $content;
         return $this;
     }
-    
+
     public function setContentHtml($content)
     {
         $this->_atom->contenthtml = $content;

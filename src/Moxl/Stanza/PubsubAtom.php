@@ -8,6 +8,8 @@ class PubsubAtom {
     public $jid;
     public $content;
     public $title;
+    public $link;
+    public $image;
     public $contenthtml = false;
     
     public $geo = false;
@@ -48,7 +50,22 @@ class PubsubAtom {
                     <link 
                         rel="related" 
                         href="'.htmlspecialchars($this->link).'"/>';
-                        
+
+        if($this->image && is_array($this->image)) {
+            $xml .= '
+                    <link 
+                        rel="enclosure" ';
+
+            if($this->image['type'] != null)
+                $xml .= 'type="'.$this->image['type'].'" ';
+
+            if($this->image['title'] != null)
+                $xml .= 'title="'.htmlspecialchars($this->image['title']).'" ';
+
+            $xml .= '
+                        href="'.htmlspecialchars($this->image['href']).'"/>';
+        }
+
         if($this->geo) {
             $xml .= '
                     <geoloc xmlns="http://jabber.org/protocol/geoloc">
