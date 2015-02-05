@@ -1,14 +1,10 @@
-<?php /* -*- mode: html -*- */
-?>
+<main>
+    <section>
+        <div>
+            <?php $this->widget('Tabs');?>
 
-<div id="main">
-    <div id="left">
-    </div>
-
-    <?php $this->widget('Tabs');?>
-
-    <div id="center">
-        <?php $this->widget('About');?>
-        <?php $this->widget('Caps');?>
-    </div>
-</div>
+            <?php $this->widget('About');?>
+            <?php $this->widget('Caps');?>
+        </div>
+    </section>
+</main>
