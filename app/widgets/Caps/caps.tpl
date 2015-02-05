@@ -1,5 +1,5 @@
 <div id="caps_widget" class="tabelem paddedtop" title="Capabilities">
-    <h1><i class="fa fa-check-square"></i> Capabilities</h1>
+    <h1>Capabilities</h1>
 
     <h2>Legend</h2>
     <table>
