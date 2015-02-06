@@ -16,7 +16,7 @@ var Avatar = {
     },
     preview : function(src) {
         var canvas = document.createElement('canvas');
-        width = height = canvas.width = canvas.height = 210;
+        width = height = canvas.width = canvas.height = 410;
         var image = new Image();
         image.src = src;
         image.onload = function(){

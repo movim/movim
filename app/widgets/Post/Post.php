@@ -211,6 +211,24 @@ class Post extends WidgetCommon
             return $this->prepareEmpty();
         }
     }
+    function ajaxTogglePrivacy($id) {
+        if(!preg_match('/^[a-f0-9]{32}$/', $id))
+            return;
+        
+        $pd = new \Modl\PrivacyDAO();
+        $p = $pd->get($id);
+
+        $pd = new \Modl\PostnDAO;
+        $po  = $pd->getItem($id);
+
+        if($po->privacy == 1) {
+            Notification::append(false, $this->__('post.blog_remove'));
+            \Modl\Privacy::set($id, 0);
+        } if($po->privacy == 0) {
+            Notification::append(false, $this->__('post.blog_add'));
+            \Modl\Privacy::set($id, 1);
+        }
+    }
 
     function display()
     {

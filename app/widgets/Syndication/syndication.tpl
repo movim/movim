@@ -1,15 +1,15 @@
-{if="isset($from)"}  
+{if="isset($contact)"}  
     {if="!empty($messages)"}        
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>{$title}</title>
+    <title>{$c->__('feed.title', $contact->getTrueName())}</title>
     <updated>{$date}</updated>
     <author>
-        <name>{$name}</name>
+        <name>{$contact->getTrueName()}</name>
         <uri>{$uri}</uri>
     </author>
     {$link}
-    <logo>{$logo}</logo>
+    <logo>{$contact->getPhoto('xl')}</logo>
 
     <generator uri="http://movim.eu/" version="{#APP_VERSION#}">
       Movim
@@ -18,7 +18,13 @@
     <id>urn:uuid:{$uuid}</id>
     {loop="$messages"}
     <entry>
-        <title>{$c->prepareTitle($value->title)}</title>
+        <title>
+            {if="$value->title != null"}
+                {$c->prepareTitle($value->title)}
+            {else}
+                {$c->__('post.default_title')}
+            {/if}
+        </title>
         <id>urn:uuid:{$c->generateUUID($value->content)}</id>
         <updated>{$c->prepareUpdated($value->published)}</updated>
         <content type="html">
