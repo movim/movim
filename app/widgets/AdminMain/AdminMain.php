@@ -25,6 +25,7 @@ class AdminMain extends WidgetBase
         $config = $cd->get();
 
         if(isset($form)) {
+            \movim_log(serialize($form));
             if(isset($form['password'])
             && $form['password'] != '' && $form['repassword'] != ''
             && $form['password'] == $form['repassword']) {
@@ -34,9 +35,18 @@ class AdminMain extends WidgetBase
             }
 
             unset($form['repassword']);
+
+            if($form['rewrite'] == 'on') {
+                $form['rewrite'] = 1;
+            } else {
+                $form['rewrite'] = 0;
+            }
+
             foreach($form as $key => $value) {
                 $config->$key = $value;
             }
+
+            \movim_log(serialize($config));
             $cd->set($config);
             
             //set timezone
@@ -85,6 +95,11 @@ class AdminMain extends WidgetBase
 
         if(isset($json) && $json->status != 404) {
             $this->view->assign('websockets', $json);
+        }
+
+        $this->view->assign('server_rewrite', false);
+        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
+            $this->view->assign('server_rewrite', true);
         }
         
         $this->view->assign('timezones', getTimezoneList());

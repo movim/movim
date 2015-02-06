@@ -1,14 +1,11 @@
-<?php /* -*- mode: html -*- */
-?>
+<main>
+    <section>
+        <div>
+            <?php //$this->widget('Tabs');?>
 
-<div id="main">
-    <div id="left">
-        <?php $this->widget('ContactSummary');?>
-    </div>
-
-    <?php $this->widget('Tabs');?>
-    <div id="center">
-        <?php $this->widget('Blog');?>
-        <?php $this->widget('ContactCard');?>
-    </div>
-</div>
+            <?php $this->widget('Blog');?>
+            <?php //$this->widget('ContactSummary');?>
+            <?php //$this->widget('ContactCard');?>
+        </div>
+    </section>
+</main>

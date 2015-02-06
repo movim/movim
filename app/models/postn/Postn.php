@@ -269,6 +269,13 @@ class Postn extends Model {
             return false;
     }
 
+    public function isMine() {
+        if($this->jid == $this->session)
+            return true;
+        else
+            return false;
+    }
+
     public function isMicroblog() {
         if($this->node == "urn:xmpp:microblog:0")
             return true;
