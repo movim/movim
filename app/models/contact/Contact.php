@@ -208,6 +208,7 @@ class Contact extends Model {
 
             if(isset($jid)) {
                 $sizes = array(
+                    'wall'  => array(1920, 1080),
                     'xxl'   => array(1280, 300),
                     'l'     => array(210 , false),
                     'm'     => array(120 , false),

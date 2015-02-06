@@ -8,26 +8,31 @@ class Blog extends WidgetCommon {
 
     function display()
     {
-        if(!isset($_GET['f']) || !isset($_GET['n'])) {
+        if(!isset($_GET['f'])) {
             return;
         }
         
         $from = $_GET['f'];
-        $node = $_GET['n'];
-        
-        $this->view->assign('from', $from);
+        if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
+            $node = 'urn:xmpp:microblog:0';
+        } else {
+            return;
+            //$node = $_GET['n'];
+        }
+
+        /*$this->view->assign('from', $from);
         if(isset($node))
-            $this->view->assign('node', $node);
+            $this->view->assign('node', $node);*/
         
         $pd = new \modl\PostnDAO();
         
-        if(isset($from) && isset($node))
-            $messages = $pd->getPublic($from, $node);
+        //if(isset($from) && isset($node))
+        $messages = $pd->getPublic($from, $node);
 
         if($messages[0] != null) {
             // Title and logo
             // For a Pubsub feed
-            if(isset($from) && isset($node) && $node != 'urn:xmpp:microblog:0') {
+            /*if(isset($from) && isset($node) && $node != 'urn:xmpp:microblog:0') {
                 $pd = new \modl\NodeDAO();
                 $n = $pd->getNode($from, $node);
                 if(isset($n->title))
@@ -38,15 +43,20 @@ class Blog extends WidgetCommon {
             } else {
                 $this->view->assign('title', $this->__('blog.title',$messages[0]->getContact()->getTrueName()));
                 $this->view->assign('logo', $messages[0]->getContact()->getPhoto('l'));
-            }
-            
-            $this->view->assign('date', date('c'));
-            $this->view->assign('name', $messages[0]->getContact()->getTrueName());
-            $this->view->assign('feed', Route::urlize('feed',array($from, $node)));
+            }*/
+
+            $cd = new \modl\ContactDAO();
+            $c  = $cd->get($from);
+            $this->view->assign('contact', $c);
+
+            //$this->view->assign('date', date('c'));
+            //$this->view->assign('name', $messages[0]->getContact()->getTrueName());
+            //$this->view->assign('feed', Route::urlize('feed',array($from, $node)));
         } else {
             $this->view->assign('title', $this->__('page.feed'));
         }
         
-        $this->view->assign('posts', $this->preparePosts($messages, true));
+        $this->view->assign('posts', $messages);
+        //$this->view->assign('posts', $this->preparePosts($messages, true));
     }
 }

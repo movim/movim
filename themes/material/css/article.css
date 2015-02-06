@@ -14,6 +14,10 @@ article header h1 {
     line-height: 12rem;
 }
 
+article header h2 {
+    line-height: 3.75rem;
+}
+
 article section {
     font-size: 2rem;
     line-height: 3rem;
@@ -33,7 +37,7 @@ article section p {
 
 article section content ul li,
 article section content ol li {
-    font-size: 2rem;
+    font-size: 1.75rem;
     line-height: 3rem;
     padding-left: 2rem;
     list-style-position: inside;
