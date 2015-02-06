@@ -45,7 +45,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
     
     $conn->on('message', function($message) use ($conn, $loop) {
         if($message != '') {
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             if($message == '</stream:stream>') {
                 $conn->close();
@@ -76,7 +76,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
             }
 
             if(!empty($xml)) {
-                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                 $conn->send(trim($xml));
             }
         }
@@ -118,7 +118,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
                 \Moxl\API::clear();
                 
                 if(!empty($xml)) {
-                    #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                    fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                     $conn->send(trim($xml));
                 }
 
@@ -145,31 +145,38 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
 // Fallback event, when the WebSocket is not enabled,
 // we still handle browser to Movim requests
 $stdin->on('data', function ($data) use ($loop) {
-    $messages = explode("\n", trim($data));
-    foreach ($messages as $message) {
-        //fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
-        
-        $msg = json_decode($message);
+    if(substr($data, -3) == "END") {
+        $messages = explode("END", $buffer . substr($data, 0, -3));
+        $buffer = '';
+    
+        foreach ($messages as $message) {
+            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
+            
+            $msg = json_decode($message);
 
-        if(isset($msg)) {
-            if($msg->func == 'message' && $msg->body != '') {
-                $msg = $msg->body;
-            } elseif($msg->func == 'unregister') {
-                $loop->stop();
+            if(isset($msg)) {
+                if($msg->func == 'message' && $msg->body != '') {
+                    $msg = $msg->body;
+                } elseif($msg->func == 'unregister') {
+                    $loop->stop();
+                }
+            } else {
+                return;
             }
-        } else {
-            return;
-        }
-        
-        $rpc = new \RPC();
-        $rpc->handle_json($msg);
+            
+            $rpc = new \RPC();
+            $rpc->handle_json($msg);
 
-        $msg = json_encode(\RPC::commit());
-        \RPC::clear();
+            $msg = json_encode(\RPC::commit());
+            \RPC::clear();
 
-        if(!empty($msg)) {
-            echo base64_encode(gzcompress($msg, 9))."END";
+            if(!empty($msg)) {
+                #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
+                echo base64_encode(gzcompress($msg, 9))."END";
+            }
         }
+    } else {
+        $buffer .= $data;
     }
 });
 

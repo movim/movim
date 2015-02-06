@@ -35,7 +35,10 @@ class Route extends \BaseController {
     }
     
     public function find() {
-        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
+        if($config->rewrite == true) {
             $request = explode('/', $this->fetchGet('query'));
             $this->_page = $request[0];
             array_shift($request);
@@ -69,6 +72,9 @@ class Route extends \BaseController {
         $r = new Route();
         $routes = $r->_routes;
 
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
         if($page === 'root')
             return BASE_URI;
         
@@ -79,7 +85,7 @@ class Route extends \BaseController {
                 if($tab != false)
                     $tab = '#'.$tab;
                 //We construct a classic URL if the rewriting is disabled
-                if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE']) {
+                if($config->rewrite == false) {
                     $uri = BASE_URI . '?q='.$page;
                     
                     if($params != false && is_array($params)) {

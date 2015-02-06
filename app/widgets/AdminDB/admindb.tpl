@@ -19,15 +19,14 @@
                     <span>{$c->__('db.connect_success')}</span>
                 </li>
                 {if="null !== $infos"}
-                    <li class="block large condensed">
+                    <li class="block large condensed action">
+                        <div class="action">
+                            <a class="button" onclick="{$db_update}"> {$c->__('button.update')}</a>
+                        </div>
                         <span class="icon bubble color orange">
                             <i class="md md-refresh"></i>
                         </span>
                         <span>{$c->__('db.update')}</span>
-                        <div class="control">
-                            <a class="button oppose" 
-                                onclick="{$db_update}"> {$c->__('button.update')}</a>
-                        </div>
                         {loop="$infos"}
                             <p>{$value}</p>
                         {/loop}

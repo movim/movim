@@ -17,8 +17,9 @@
                     <i class="md md-warning"></i>
                 </span>
             {elseif="$value->node == 'urn:xmpp:microblog:0'"}
-                <span class="icon bubble color {$value->jid|stringToColor}">
-                    <i class="md md-create"></i>
+                <span class="icon bubble">
+                    <!--<i class="md md-create"></i>-->
+                    <img src="{$value->getContact()->getPhoto('s')}">
                 </span>                    
             {else}
                 <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
@@ -33,7 +34,7 @@
             <span class="info">{$value->published|strtotime|prepareDate}</span>
             
             {if="$value->node == 'urn:xmpp:microblog:0'"}
-                <p class="wrap">{$value->jid}</p>
+                <p class="wrap">{$value->getContact()->getTrueName()}</p>
             {else}
                 <p class="wrap">{$value->node}</p>
             {/if}
