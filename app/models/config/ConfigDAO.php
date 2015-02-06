@@ -19,6 +19,7 @@ class ConfigDAO extends SQL {
                 unregister    = :unregister,
                 username      = :username,
                 password      = :password,
+                rewrite       = :rewrite,
                 sizelimit     = :sizelimit';
         
         $this->prepare(
@@ -37,6 +38,7 @@ class ConfigDAO extends SQL {
                 'unregister'   => $c->unregister,
                 'username'     => $c->username,
                 'password'     => $c->password,
+                'rewrite'      => $c->rewrite,
                 'sizelimit'    => $c->sizelimit
             )
         );
@@ -71,6 +73,7 @@ class ConfigDAO extends SQL {
                     unregister,
                     username,
                     password,
+                    rewrite,
                     sizelimit
                 )
                 values
@@ -88,6 +91,7 @@ class ConfigDAO extends SQL {
                     :unregister,
                     :username,
                     :password,
+                    :rewrite,
                     :sizelimit
                 )
                 ';
@@ -108,6 +112,7 @@ class ConfigDAO extends SQL {
                     'unregister'   => $c->unregister,
                     'username'     => $c->username,
                     'password'     => $c->password,
+                    'rewrite'      => $c->rewrite,
                     'sizelimit'    => $c->sizelimit
                 )
             );

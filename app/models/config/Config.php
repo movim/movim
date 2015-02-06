@@ -16,6 +16,7 @@ class Config extends Model {
     public $unregister;
     public $username;
     public $password;
+    public $rewrite;
     public $sizelimit;
     
     public function __construct() {
@@ -47,6 +48,8 @@ class Config extends Model {
                 {"type":"string", "size":32, "mandatory":true },
             "password" : 
                 {"type":"string", "size":64, "mandatory":true  },
+            "rewrite" : 
+                {"type":"int", "size":1 },
             "sizelimit" : 
                 {"type":"int", "size":16 }
         }';
@@ -66,6 +69,7 @@ class Config extends Model {
         $this->unregister       = false;
         $this->username         = 'admin';
         $this->password         = sha1('password');
+        $this->rewrite          = false;
         $this->sizelimit        = 20240001;
     }
 }
