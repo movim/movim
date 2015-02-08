@@ -1,4 +1,4 @@
-<ul class="active thick all">
+<ul class="active all">
     {if="$invitations"}
     <li class="subheader">{$c->__('notifs.title')}</li>
     {/if}
