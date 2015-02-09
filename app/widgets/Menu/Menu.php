@@ -152,7 +152,14 @@ class Menu extends WidgetCommon
         $view->assign('items', $items);
         $view->assign('page', $page);
 
-        return $view->draw('_menu_list', true);
+        $html = $view->draw('_menu_list', true);
+
+        if($page == 0 || $page == ""){
+            $view = $this->tpl();
+            $html .= $view->draw('_menu_add', true);
+        }
+
+        return $html;
     }
 
     function display()
