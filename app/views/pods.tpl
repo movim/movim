@@ -1,12 +1,8 @@
-<?php /* -*- mode: html -*- */
-?>
-
-<div id="main">
-    <div id="left">
-    </div>
-
-    <div id="center">
-        <?php $this->widget('Pods');?>
-        <div class="spacetop clear"></div>
-    </div>
+<main>
+    <?php $this->widget('Header'); ?>
+    <section>
+        <div>
+            <?php $this->widget('Pods');?>
+        </div>
+    </section>
 </div>
