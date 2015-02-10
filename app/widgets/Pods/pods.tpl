@@ -1,8 +1,8 @@
 {if="isset($pods)"}
-    <ul class="flex simple thick">
+    <ul class="flex simple thick card">
         {loop="$pods->pods"}
         <li class="block condensed">
-                <span class="info">{$value->connected} / {$value->population}</span>
+            <span class="info">{$value->connected} / {$value->population}</span>
             <span>
                 <a href="{$value->url}" target="_blank">
                     {function="parse_url($value->url, PHP_URL_HOST)"}
