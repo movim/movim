@@ -1,5 +1,5 @@
 <div id="roster" ng-controller="RosterController as rosterCtrl">  
-    <ul id="rosterlist" class="offlineshown active all">
+    <ul id="rosterlist" class="{if="isset($conf) && $conf.roster == 'show'"}offlineshown{/if} active all">
         <span ng-if="contacts == null" class="nocontacts">
             {$c->__('roster.no_contacts')}
             <br />
@@ -22,7 +22,7 @@
                 ng-repeat="myjid in group.agroupitems"
                 ng-if="!myjid.tombstone"
                 id="{{::myjid.ajid}}"
-                class="{{myjid.ajiditems.rosterview.inactive}} action"
+                class="{{myjid.ajiditems.rosterview.inactive}} action {{myjid.ajiditems.rosterview.presencetxt}}"
                 ng-attr-title="{{rosterCtrl.getContactTitle(myjid.ajiditems)}}"
                 ng-class="{condensed: myjid.ajiditems.status != '' && myjid.ajiditems.status != null }">
                 <!--ng-class="rosterCtrl.getContactClient(myjid.ajiditems)"-- >-->

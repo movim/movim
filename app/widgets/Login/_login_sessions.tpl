@@ -5,7 +5,7 @@
         {loop="$sessions"}
         <li id="{$value->jid}" class="action">
             <div class="action">
-                <i class="fa fa-times"></i>
+                <i class="md md-close"></i>
             </div>
             <span class="icon bubble">
                 <img src="{$value->getPhoto('s')}"/>
