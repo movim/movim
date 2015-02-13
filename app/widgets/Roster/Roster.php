@@ -1,25 +1,6 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Roster.php
- * This file is part of MOVIM.
- *
- * @brief The Roster widget
- *
- * @author Jaussoin Timothée <edhelas@gmail.com>
- *
- * @version 1.0
- * @date 30 August 2010
- *
- * Copyright (C)2010 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 use Moxl\Xec\Action\Roster\GetList;
-
 use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Subscribe;
@@ -39,10 +20,6 @@ class Roster extends WidgetBase
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
         $this->registerEvent('presence', 'onPresence', 'contacts');
-    }
-
-    function display()
-    {
     }
 
     function onDelete($packet)
@@ -362,7 +339,9 @@ class Roster extends WidgetBase
             $c['rosterview']['tune'] = true;
     }
 
+    function display()
+    {
+        $this->user->reload();
+        $this->view->assign('conf',      $this->user->getConfig());
+    }
 }
-
-
-?>
