@@ -25,7 +25,6 @@ class AdminMain extends WidgetBase
         $config = $cd->get();
 
         if(isset($form)) {
-            \movim_log(serialize($form));
             if(isset($form['password'])
             && $form['password'] != '' && $form['repassword'] != ''
             && $form['password'] == $form['repassword']) {
@@ -46,7 +45,6 @@ class AdminMain extends WidgetBase
                 $config->$key = $value;
             }
 
-            \movim_log(serialize($config));
             $cd->set($config);
             
             //set timezone
