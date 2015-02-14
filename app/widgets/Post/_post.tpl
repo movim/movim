@@ -19,7 +19,7 @@
                     <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
                 <!--</a>-->
                 {/if}
-                <span>
+                <span {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                     {if="$post->title != null"}
                         {$post->title}
                     {else}

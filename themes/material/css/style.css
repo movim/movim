@@ -302,99 +302,7 @@ main > header > div > span.active:hover {
         display: none;
     }
 }
-/*
-main > header > div > span.action {
-    padding-left: 9rem;
-}
 
-main > header > div > span.action:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-*/
-/*
-main > header > div > a span.icon:hover,
-main > header > div > span.icon:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-*/
-/*
-main > header {
-    position: relative;
-    min-height: 7rem;
-    padding-left: 9rem;
-    overflow: hidden;
-    color: white;
-    z-index: 2;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-main > header > * {
-    max-width: calc(25% - 7rem);
-    overflow: hidden;
-}
-*/
-/* Two blocks*/
-/*
-main > header > div:first-child:nth-last-child(2) {
-
-}
-main > header > div:first-child:nth-last-child(2) ~ div {
-    max-width: 100%;
-    width: 75%;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-main > header h2 {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-@media screen and (max-width: 1024px) {
-    main > header > div {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    main > header > div:first-child:nth-last-child(2) {
-        display: none;
-    }
-    main > header > div:first-child:nth-last-child(2) ~ div {
-        width: 100%;
-    }
-}
-
-main > header > div > form,
-main > header > div > h2 {
-    max-width: calc(100% - 7rem);
-}*/
-/*
-@media screen and (max-width: 1024px) {
-    main > header > form,
-    main > header > h2 {
-        max-width: calc(100% - 7rem);
-    }
-}
-*/
-/*
-main > header ul {
-    float: right;
-}
-
-main > header ul li {
-    float: left;
-    height: 7rem;
-    min-width: 0;
-    line-height: 7rem;
-    width: 7rem;
-    padding: 0;
-    font-size: 4rem;
-}
-*/
 main > section {
     height: 100%;
     position: relative;
@@ -579,11 +487,7 @@ main ul li .control > i {
 }
 
 /* Header */
-/*
-header .icon:hover {
-    cursor: pointer;
-}
-*/
+
 header.big {
     background-size: cover, cover;
     background-position: center center;
@@ -598,13 +502,7 @@ header.big {
 header.big p {
     color: white;
 }
-/*
-@media screen and (max-width: 1024px) {
-    header.big {
-        min-height: 25rem;
-    }
-}
-*/
+
 /* Dialog */
 
 .dialog {
@@ -651,6 +549,10 @@ header.big p {
 
 .dialog > section > *:not(ul) {
     padding: 0 2rem;
+}
+
+.dialog > section > form > ul > li {
+    padding: 0;
 }
 
 @media screen and (max-width: 600px) {

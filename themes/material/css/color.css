@@ -88,10 +88,12 @@ form textarea:focus + label {
     color: #2196F3;
 }
 */
-form input:focus:invalid {
+form input:focus:invalid,
+form textarea:focus:invalid {
     border-bottom-color: #F44336;
 }
-form input:focus:invalid + label {
+form input:focus:invalid + label,
+form textarea:focus:invalid + label {
     color: #F44336;
 }
 /*

@@ -7,7 +7,7 @@
     {loop="$items"}
         <li class="condensed" data-id="{$value->nodeid}"
             {if="$value->title != null"}
-                title="{$value->title}"
+                title="{$value->title|strip_tags}"
             {else}
                 title="{$c->__('menu.contact_post')}"
             {/if}
@@ -54,7 +54,7 @@
     <br/>
     <ul id="menu_wrapper">
         <li class="condensed">
-            <span class="icon bubble color orange">
+            <span class="icon orange">
                 <i class="md md-format-align-left"></i>
             </span>
             <span>{$c->__('menu.empty_title')}</span>
