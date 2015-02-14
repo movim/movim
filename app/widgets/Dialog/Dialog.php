@@ -9,10 +9,11 @@ class Dialog extends WidgetBase
 
     static function fill($html = '', $scroll = false)
     {
-        if($scroll) {
-            RPC::call('Dialog.toggleScroll');
-        }
         RPC::call('movim_fill', 'dialog', $html);
+
+        if($scroll) {
+            RPC::call('Dialog.addScroll');
+        }
     }
     
     function display() 

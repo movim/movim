@@ -98,6 +98,8 @@ form > div > textarea {
     margin-bottom: 1rem;
 
     overflow: hidden; /* Fixme */
+
+    box-shadow: none; /* Firefox weird CSS */
 }
 
 /* Webkit hack */
