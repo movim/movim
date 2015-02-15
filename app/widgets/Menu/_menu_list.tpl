@@ -12,7 +12,7 @@
                 title="{$c->__('menu.contact_post')}"
             {/if}
         >
-            {if="current(explode('.', $value->jid)) == 'nsfw'"}
+            {if="current(explode('.', $value->origin)) == 'nsfw'"}
                 <span class="icon bubble color red">
                     <i class="md md-warning"></i>
                 </span>
@@ -40,10 +40,12 @@
             {/if}
         </li>
     {/loop}
-    <li onclick="{$history} this.parentNode.removeChild(this);">
+    {if="count($items) == 15"}
+    <li id="history" onclick="{$history} this.parentNode.removeChild(this);">
         <span class="icon"><i class="md md-history"></i></span>
         {$c->__('post.older')}
     </li>
+    {/if}
         
     {if="$page == 0"}
         </ul>
