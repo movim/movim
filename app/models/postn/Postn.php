@@ -3,9 +3,7 @@
 namespace Modl;
 
 class Postn extends Model {
-    public $session;
-
-    public $jid;            // Where the post is comming from (jid or server)
+    public $origin;         // Where the post is comming from (jid or server)
     public $node;           // microblog or pubsub
     public $nodeid;         // the ID if the item
         
@@ -34,15 +32,13 @@ class Postn extends Model {
     public $privacy;
     
     public $hash;
-    
+
     public function __construct() {
         $this->hash = md5(openssl_random_pseudo_bytes(5));
         
         $this->_struct = '
         {
-            "session" : 
-                {"type":"string", "size":64, "mandatory":true, "key":true },
-            "jid" : 
+            "origin" : 
                 {"type":"string", "size":64, "mandatory":true, "key":true },
             "node" : 
                 {"type":"string", "size":96, "mandatory":true, "key":true },
@@ -89,15 +85,12 @@ class Postn extends Model {
     }
     
     public function set($item, $from, $delay = false, $node = false) {
-        $user = new \User();
-        $this->session = $user->getLogin();
-
         if($item->item)
             $entry = $item->item;
         else
             $entry = $item;
         
-        $this->jid     = $from;
+        $this->origin       = $from;
         
         if($node)
             $this->node     = $node;
@@ -186,7 +179,7 @@ class Postn extends Model {
             $content .= '<br />'.$contentimg;
             
         if(!isset($this->commentplace))
-            $this->commentplace = $this->jid;
+            $this->commentplace = $this->origin;
             
         $this->content = trim($content);
         $this->contentcleaned = prepareString(html_entity_decode($this->content));
@@ -214,7 +207,8 @@ class Postn extends Model {
             $enc = $enc['@attributes'];
             array_push($l, $enc);
 
-            if($this->typeIsPicture($enc['type'])) {
+            if(array_key_exists('type', $enc)
+            && $this->typeIsPicture($enc['type'])) {
                 $this->picture = true;
             }
 
@@ -270,7 +264,9 @@ class Postn extends Model {
     }
 
     public function isMine() {
-        if($this->jid == $this->session)
+        $user = new \User();
+
+        if($this->origin == $user->getLogin())
             return true;
         else
             return false;
