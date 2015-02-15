@@ -3,13 +3,15 @@ var Menu = {
         var items = document.querySelectorAll('#menu_widget ul li');
 
         var i = 0;
-        while(i < items.length -1)
+        while(i < items.length)
         {
-            items[i].onclick = function(e) {
-                MovimTpl.showPanel();
-                Post_ajaxGetPost(this.dataset.id);
-                Menu.reset(items);
-                movim_add_class(this, 'active');
+            if(items[i].id != 'history') {
+                items[i].onclick = function(e) {
+                        MovimTpl.showPanel();
+                        Post_ajaxGetPost(this.dataset.id);
+                        Menu.reset(items);
+                        movim_add_class(this, 'active');
+                }
             }
             i++;
         }
