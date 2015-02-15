@@ -211,7 +211,12 @@ ul.tabs {
     text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     overflow: hidden;
+    white-space: nowrap;
     height: 6rem;
+}
+
+ul.tabs:hover {
+    overflow-x: auto;
 }
 
 ul.tabs li {

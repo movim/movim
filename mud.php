@@ -40,8 +40,8 @@ Here some requests you can do with me :", 'green')."
             if($infos == null) {
                 echo colorize("Nothing to do\n", 'green');
             } else {
+                echo colorize("The database need to be updated\n", 'green');
                 foreach($infos as $i) {
-                    echo colorize("The database need to be updated\n", 'green');
                     echo colorize($i."\n", 'blue');
                 }
             }
