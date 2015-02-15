@@ -17,6 +17,7 @@
             ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup)}" >
             <li class="subheader" ng-click="rosterCtrl.showHideGroup(group.agroup)">
                 {{::group.agroup}}
+                <span class="info">{{group.agroupitems.length}}</span>
             </li>
             <li
                 ng-repeat="myjid in group.agroupitems"
