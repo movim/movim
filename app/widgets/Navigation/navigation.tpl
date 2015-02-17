@@ -1,13 +1,15 @@
 <ul class="active divided">
-    <li class="action">
-        <div class="action on_mobile">
-            <i onclick="MovimTpl.toggleMenu()" class="md md-arrow-back"></i>
-        </div>
-        <span class="icon bubble"><i class="md md-cloud-queue"></i></span>
-        <span>Movim</span>
-    </li>
     <a class="classic" href="{$c->route('root')}">
-        <li {if="$page == 'main'"}class="active"{/if}>
+        <li class="action {if="$page == 'main'"}active{/if}">
+            <!--<div class="action on_mobile">
+                <i onclick="MovimTpl.toggleMenu()" class="md md-arrow-back"></i>
+            </div>-->
+            <span class="icon bubble"><i class="md md-cloud-queue"></i></span>
+            <span>Movim</span>
+        </li>
+    </a>
+    <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}" href="{$c->route('news')}">
+        <li {if="$page == 'news'"}class="active"{/if}>
             <span class="icon"><i class="md md-view-list"></i></span>
             <span data-key="news" class="counter"></span>
             <span>{$c->__('page.news')}</span>

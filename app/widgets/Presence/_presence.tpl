@@ -6,7 +6,7 @@
     <span>{$me->getTrueName()}</span>
     <p class="wrap">{$presence->status}</p>
 </li>
-<a class="classic" href="{$c->route('conf')}">
+<a class="classic {if="!$c->supported('pubsub')"}disabled{/if}" href="{$c->route('conf')}">
     <li>
         <span class="icon">
             <i class="md md-settings"></i>

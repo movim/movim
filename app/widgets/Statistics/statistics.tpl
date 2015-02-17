@@ -1,12 +1,15 @@
 <div id="statistics" class="tabelem paddedtop" title="{$c->__("statistics.title")}">
-    <ul class="simple divided thick">
+    <ul class="divided thick">
         <li class="subheader">
             {$c->__('statistics.sessions')} - {$sessions|count}
         </li>
         {loop="$sessions"}
+            {$user = $c->getContact($value->username, $value->host)}
             <li class="condensed">
-
-                <span>{$value->username}@{$value->host} - {$value->domain}</span>
+                <span class="icon bubble">
+                    <img src="{$user->getPhoto('s')}">
+                </span>
+                <span>{$user->getTrueName()} - {$value->username}@{$value->host} - {$value->domain}</span>
                 <p>
                     {if="isset($value->start)"}
                         {$c->getTime($value->start)}
