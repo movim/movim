@@ -1,6 +1,10 @@
 Moxl Changelog
 ================
 
+v1.2.1
+---------------------------
+ * Add support of the XEP-0050: Ad-Hoc Commands 
+
 v1.2
 ---------------------------
  * Large refactoring to move from de BOSH connection system to Websockets

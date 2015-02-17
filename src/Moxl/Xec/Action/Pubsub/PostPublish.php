@@ -28,6 +28,7 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
+use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Pubsub\Errors;
 
 class PostPublish extends Errors
@@ -120,37 +121,18 @@ class PostPublish extends Errors
         return $this;
     }
     
-    public function handle($stanza, $parent = false) {         
-        $p = new \modl\Postn();
+    public function handle($stanza, $parent = false) {
+        $g = new GetItem;
+        $g->setTo($this->_to)
+          ->setNode($this->_node)
+          ->setId($this->_atom->id)
+          ->request();
 
-        $p->key     = $this->_atom->jid;
-        $p->from    = $this->_to;
-        
-        $p->node    = $this->_node;
-        $p->nodeid  = $this->_atom->id;
-        
-        $p->aname   = $this->_atom->name;
-        $p->aid     = $this->_atom->jid;
-
-        if(isset($this->_atom->content))
-            $p->content = $this->_atom->content;
-        elseif(isset($this->_atom->contenthtml))
-            $p->content = $this->_atom->contenthtml;
-        
-        $p->published = date('Y-m-d H:i:s');
-        $p->updated = date('Y-m-d H:i:s');
-        
-        $pd = new \modl\PostnDAO();
-        $pd->set($p);
-
-        if($this->_atom->comments) {
+        /*if($this->_atom->comments) {
             $mc = new CommentCreateNode;
             $mc->setTo($this->_to)
-               ->setParentId($p->nodeid)
+               ->setParentId($this->_atom->id)
                ->request();
-        }
-
-        $this->pack($p);
-        $this->deliver();
+        }*/
     }
 }
