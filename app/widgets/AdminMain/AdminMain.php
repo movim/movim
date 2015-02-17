@@ -35,7 +35,7 @@ class AdminMain extends WidgetBase
 
             unset($form['repassword']);
 
-            if($form['rewrite'] == 'on') {
+            if(isset($form['rewrite']) && $form['rewrite'] == 'on') {
                 $form['rewrite'] = 1;
             } else {
                 $form['rewrite'] = 0;

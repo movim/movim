@@ -573,7 +573,31 @@ class ContactDAO extends SQL {
             return $this->run('RosterContact'); 
         else
             return $this->run('RosterContact', 'item');
+    }
 
+    function getTop($limit = 5) {
+        $this->_sql = '
+            select *, jidfrom from (
+                select jidfrom, count(*) from message
+                where published > :date
+                    and jidfrom not like :jid
+                    and session = :jid
+                group by jidfrom 
+                order by count desc
+                limit :tunelenght
+            ) as top
+            left outer join contact on jidfrom = contact.jid';
+        
+        $this->prepare(
+            'Contact', 
+            array(
+                'date' => date('Y-m-d H:i:s', time()-3600*24*7),
+                'jid' => $this->_user,
+                'tunelenght' => $limit // And an another hack…
+            )
+        );
+
+        return $this->run('Contact'); 
     }
 
     function getStatistics() {

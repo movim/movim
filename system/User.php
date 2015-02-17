@@ -20,6 +20,8 @@ class User {
     public $username = '';
     private $password = '';
     private $config = array();
+
+    public $caps;
     
     public $userdir;
     public $useruri;
@@ -37,7 +39,6 @@ class User {
             $this->username = $session->user.'@'.$session->host;
 
             //$this->reload();
-
             //$this->sizelimit = (int)$config->sizelimit;
 
             $this->userdir = DOCUMENT_ROOT.'/users/'.$this->username.'/';
@@ -57,6 +58,10 @@ class User {
             if(isset($lang)) {
                 loadLanguage($lang);
             }
+
+            $cd = new modl\CapsDAO;
+            $caps = $cd->get($session->host);
+            $this->caps = unserialize($caps->features);
         }
     }
     
@@ -153,4 +158,20 @@ class User {
             return $this->config[$key];
     }
 
+    function isSupported($key)
+    {
+        $this->reload();
+        if($this->caps != null) {
+            switch($key) {
+                case 'pubsub':
+                    return in_array('http://jabber.org/protocol/pubsub#publish', $this->caps);
+                    break;
+                default:
+                    return false;
+                    break;
+            }
+        } else {
+            return false;
+        }
+    }
 }

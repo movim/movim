@@ -277,10 +277,6 @@ class Chat extends WidgetCommon
         $view = $this->tpl();
 
         $contact = $cd->get($jid);
-        /*if($contact == null) {
-            $contact = new \Modl\Contact;
-            $contact->jid = $jid;
-        } */
         
         $me = $cd->get();
         if($me == null) {
