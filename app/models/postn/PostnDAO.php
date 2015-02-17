@@ -224,17 +224,16 @@ class PostnDAO extends SQL {
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            where postn.session = :session
-                and postn.origin = :origin
-                and postn.node like \'urn:xmpp:microblog:0\'
+            where (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')))
+                and postn.origin = :aid
                 and postn.picture = 1
             order by postn.published desc';
         
         $this->prepare(
             'Postn', 
             array(
-                'session' => $this->_user,
-                'jid' => $from
+                'origin' => $this->_user,
+                'aid' => $from // Another hack
             )
         );
         
@@ -263,9 +262,11 @@ class PostnDAO extends SQL {
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            where ((postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
+            where (
+                (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
                 or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\')
-                or ((postn.origin, node) in (select server, node from subscription where jid = :origin)))
+                or ((postn.origin, node) in (select server, node from subscription where jid = :origin))
+                )
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
             order by postn.published desc
@@ -333,7 +334,6 @@ class PostnDAO extends SQL {
         
         return $this->run('ContactPostn');
     }
-    
     
     function getPublic($origin, $node) {
         $this->_sql = '
@@ -426,9 +426,11 @@ class PostnDAO extends SQL {
     function getCountSince($date) {
         $this->_sql = '
             select count(*) from postn
-            where ((postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
+            where (
+                (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
                 or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\')
-                or ((postn.origin, node) in (select server, node from subscription where jid = :origin)))
+                or ((postn.origin, node) in (select server, node from subscription where jid = :origin))
+                )
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
                 and published > :published
@@ -452,9 +454,11 @@ class PostnDAO extends SQL {
     function getLastDate() {
         $this->_sql = '
             select published from postn
-            where ((postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
+            where (
+                (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
                 or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\')
-                or ((postn.origin, node) in (select server, node from subscription where jid = :origin)))
+                or ((postn.origin, node) in (select server, node from subscription where jid = :origin))
+                )
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
             order by postn.published desc
