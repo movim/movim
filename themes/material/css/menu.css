@@ -4,12 +4,12 @@ body > nav > ul span.icon {
     left: 1rem;
 }
 
-body > nav > ul:first-child > li:first-child {
+body > nav > ul:first-child > a:first-child > li {
     height: 7rem;
     line-height: 7rem;
 }
 
-body > nav > ul:first-child > li:first-child div.control {
+body > nav > ul:first-child > a:first-child > li div.control {
     line-height: 7rem;
 }
 

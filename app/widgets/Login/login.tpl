@@ -42,6 +42,14 @@
                 </div>
             </form>
 
+            {if="isset($info) && $info != ''"}
+            <ul class="thin simple card">
+                <li class="info">
+                    <p>{$info}</p>
+                </li>
+            </ul>
+            {/if}
+
             <ul class="thin simple">
                 <li class="new_account">
                     <span>{$c->__('form.no_account')}<br />
@@ -55,11 +63,6 @@
     </div>
 </div>
 
-{if="isset($info) && $info != ''"}
-    <div class="message warning">
-        {$info}
-    </div>
-{/if}
 <div id="error_websocket" class="snackbar">
     {$c->__('error.websocket')}
 </div>

@@ -70,6 +70,13 @@ class Statistics extends WidgetBase
         $this->renderTimeLineChart($days, $this->__('statistics.monthly_sub_cum'), "monthly_cumulated.png");
     }
 
+    public function getContact($username, $host)
+    {
+        $jid = $username.'@'.$host;
+        $cd = new modl\ContactDAO;
+        return $cd->get($jid);
+    }
+
     private function renderTimeLineChart($data, $title, $filename)
     {
         $chart = new Libchart\View\Chart\LineChart(750, 450);
