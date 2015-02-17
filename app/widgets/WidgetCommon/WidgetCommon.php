@@ -486,6 +486,7 @@ class WidgetCommon extends WidgetBase {
         return $html;
     }
 
+    /*
     private function prepareGallery() {
         $arr = array();
         $p = new \Picture;
@@ -501,7 +502,7 @@ class WidgetCommon extends WidgetBase {
 
         return $arr;
     }
-    
+    */
     function ajaxShowPosition($pos)
     {
         list($lat,$lon) = explode(',', $pos);    

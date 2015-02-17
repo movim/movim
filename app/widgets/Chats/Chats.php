@@ -60,11 +60,16 @@ class Chats extends WidgetCommon
         && $jid != $this->user->getLogin()
         && $jid != '') {
             $chats[$jid] = 1;
-            Cache::c('chats', $chats);
-
-            RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
-            RPC::call('Chats.refresh');
+        } else {
+            unset($chats[$jid]);
         }
+
+        $chats[$jid] = 1;
+
+        Cache::c('chats', $chats);
+
+        RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
+        RPC::call('Chats.refresh');
     }
 
     function ajaxClose($jid)
