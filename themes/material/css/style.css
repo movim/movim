@@ -98,8 +98,8 @@ h4.gray {
 
 article section content ul li, /* Body 1 */
 article section content p {
-    font-size: 1.75rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 300;
 }
 
 .snackbar, /* Body 2 */
@@ -220,14 +220,14 @@ main > header {
     position: relative;
     height: 7rem;
     overflow: hidden;
-    box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
     z-index: 2;
 }
 
 main > header > div {
     padding-left: 9rem;
     position: relative;
-    width: 25%;
+    width: 30%;
     display: inline-block;
     overflow: hidden;
     box-sizing: border-box;
@@ -258,7 +258,7 @@ main > header > div > ul.active li span.icon {
 }
 
 main > header > div:first-child:nth-last-child(2) ~ div {
-    width: 75%;
+    width: 70%;
     position: absolute;
     top: 0;
     right: 0;
@@ -333,10 +333,10 @@ main > section > div > * {
 
 /* Two blocks*/
 main > section > div:first-child:nth-last-child(2) {
-    width: 25%;
+    width: 30%;
 }
 main > section > div:first-child:nth-last-child(2) ~ div {
-    width: 75%;
+    width: 70%;
     position: absolute;
     top: 0;
     right: 0;
@@ -748,7 +748,7 @@ dl dd {
 
 @media screen and (max-width: 800px) {
     .padded {
-        padding-left: 2rem;
+        padding: 2rem;
         box-sizing: border-box;
     }
 
