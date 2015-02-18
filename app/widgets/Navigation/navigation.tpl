@@ -1,4 +1,4 @@
-<ul class="active divided">
+<ul class="active">
     <a class="classic" href="{$c->route('root')}">
         <li class="action {if="$page == 'main'"}active{/if}">
             <!--<div class="action on_mobile">
