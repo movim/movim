@@ -93,10 +93,23 @@ class Chats extends WidgetCommon
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
+        $view->assign('top', $cd->getTop(10));
+
+        Dialog::fill($view->draw('_chats_add', true), true);
+    }
+
+    /**
+     * @brief Display the extended list
+     */
+    function ajaxAddExtend()
+    {
+        $view = $this->tpl();
+
+        $cd = new \Modl\ContactDAO;
         $contacts = $cd->getRosterSimple();
         $view->assign('contacts', $contacts);
 
-        Dialog::fill($view->draw('_chats_add', true), true);
+        RPC::call('movim_fill', 'add_extend', $view->draw('_chats_add_extend', true));
     }
 
     function prepareChats()

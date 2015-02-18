@@ -1,11 +1,8 @@
 <section class="scroll">
     <h3>{$c->__('chats.add')}</h3>
-    <br />
-    <ul class="active">
-        {loop="$contacts"}
-            {if="$group != $value->groupname"}
-                <li class="subheader">{$value->groupname}</li>
-            {/if}
+    <ul class="active" id="add_extend">
+        <li class="subheader">{$c->__('chats.frequent')}</li>
+        {loop="$top"}
             <li onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
                 <span class="icon bubble">
                     <img
@@ -16,9 +13,15 @@
                 </span>
                 <span>{$value->getTrueName()}</span>
             </li>
-            {$group = $value->groupname}
         {/loop}
+        <li onclick="Chats_ajaxAddExtend()">
+            <span class="icon">
+                <i class="md md-add"></i>
+            </span>
+            <span>{$c->__('chats.more')}</span>
+        </li>
     </ul>
+    <br />
     <!--<div id="search_results">
 
     </div>-->

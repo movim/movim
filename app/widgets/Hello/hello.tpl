@@ -22,7 +22,7 @@
     </ul>
     {if="$c->supported('pubsub')"}
     <div class="card active">
-        <ul id="news" class="flex thick" onclick="movim_reload('{$c->route('news')}')">
+        <ul id="news" class="flex medium" onclick="movim_reload('{$c->route('news')}')">
             <li class="subheader block large">News</li>
             {loop="$news"}
                 <li class="block condensed" data-id="{$value->nodeid}"

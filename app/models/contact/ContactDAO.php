@@ -578,9 +578,8 @@ class ContactDAO extends SQL {
     function getTop($limit = 5) {
         $this->_sql = '
             select *, jidfrom from (
-                select jidfrom, count(*) from message
-                where published > :date
-                    and jidfrom not like :jid
+                select jidfrom, count(*) as count from message
+                where jidfrom not like :jid
                     and session = :jid
                 group by jidfrom 
                 order by count desc
@@ -591,7 +590,6 @@ class ContactDAO extends SQL {
         $this->prepare(
             'Contact', 
             array(
-                'date' => date('Y-m-d H:i:s', time()-3600*24*7),
                 'jid' => $this->_user,
                 'tunelenght' => $limit // And an another hack…
             )
