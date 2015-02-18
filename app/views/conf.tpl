@@ -13,7 +13,7 @@
             <?php $this->widget('Config');?>
             <?php $this->widget('AdHoc');?>
             <?php //$this->widget('ConfigData');?>
-            <?php $this->widget('PubsubSubscriptionConfig');?>
+            <?php //$this->widget('PubsubSubscriptionConfig');?>
         </div>
     </section>
 </main>
