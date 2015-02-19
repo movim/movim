@@ -1,9 +1,9 @@
 <section class="scroll">
     <h3>{$c->__('chats.add')}</h3>
     <ul class="active" id="add_extend">
-        <li class="subheader">{$c->__('chats.frequent')}</li>
+        <li class="subheader condensed">{$c->__('chats.frequent')}</li>
         {loop="$top"}
-            <li onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
+            <li class="condensed" onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
                 <span class="icon bubble">
                     <img
                         class="avatar"
@@ -12,6 +12,7 @@
                     />
                 </span>
                 <span>{$value->getTrueName()}</span>
+                <p>{$value->jid}</p>
             </li>
         {/loop}
         <li onclick="Chats_ajaxAddExtend()">
