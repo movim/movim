@@ -1,7 +1,7 @@
 {if="$items"}
     {if="$page == 0"}
         <div id="menu_refresh"></div>
-        <ul class="thick active divided" id="menu_wrapper">
+        <ul class="thick active divided spaced" id="menu_wrapper">
     {/if}
     
     {loop="$items"}

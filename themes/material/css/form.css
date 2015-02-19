@@ -312,8 +312,17 @@ li.action div.action .button {
     display: block;
 }
 
+header.big ~ .button.action {
+    bottom: auto;
+    top: 16rem;
+}
+
 @media screen and (min-width: 1024px) {
     main > section > div:first-child:nth-last-child(2) .button.action {
         right: calc(70% + 3rem);
+    }
+
+    header.big ~ .button.action {
+        top: 23rem;
     }
 }
