@@ -7,7 +7,7 @@ class ContactDAO extends SQL {
         parent::__construct();
     }
     
-    function get($jid = null) {            
+    function get($jid = null, $empty = false) {            
         $this->_sql = '
             select *, privacy.value as privacy from contact 
             left outer join privacy 
@@ -26,7 +26,7 @@ class ContactDAO extends SQL {
         $contact = $this->run('Contact', 'item');
 
         // If we cannot find the contact
-        if($contact == null) {
+        if($contact == null && $empty == false) {
             $contact = new Contact;
             $contact->jid = $jid;
             return $contact;

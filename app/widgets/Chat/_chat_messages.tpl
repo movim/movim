@@ -5,9 +5,9 @@
             <span class="icon bubble {if="$contact->updated == null && !array_key_exists($value->resource, $contacts)"}color {$value->resource|stringToColor}{/if}">
                 {if="$value->jidfrom == $jid"}
                     {if="$contact->updated != null"}
-                        <img src="{$contact->getPhoto('s')}">
+                        <img src="{$contact->getPhoto('s', $jid)}">
                     {elseif="array_key_exists($value->resource, $contacts)"}
-                        <img src="{$contacts[$value->resource]->getPhoto('s')}">
+                        <img src="{$contacts[$value->resource]->getPhoto('s', $jid)}">
                     {else}
                         {$value->resource|firstLetterCapitalize}
                     {/if}

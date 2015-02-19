@@ -31,7 +31,7 @@ class Post extends WidgetCommon
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
     }
 
-    function onPublish($packet)
+    function onPublish()
     {
         Notification::append(false, $this->__('post.published'));
         $this->ajaxClear();

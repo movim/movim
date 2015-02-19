@@ -7,7 +7,11 @@
                 id="alias" 
                 class="tiny" 
                 placeholder="{$c->__('edit.alias')}" 
-                value="{$contact->rostername}"/>
+                {if="$contact->rostername"}
+                    value="{$contact->rostername}"
+                {else}
+                    value="{$contact->jid}"
+                {/if}"/>
             <label for="alias">{$c->__('edit.alias')}</label>
         </div>
         <div>

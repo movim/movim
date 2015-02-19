@@ -62,7 +62,7 @@ body > script {
     display: none;
 }
 
-a, a.link, a.visited {
+a, a:link, a:visited {
     text-decoration: none;
 }
 
@@ -231,6 +231,7 @@ main > header > div {
     display: inline-block;
     overflow: hidden;
     box-sizing: border-box;
+    padding-right: 1rem;
 }
 
 main > header > div > * {
@@ -241,6 +242,7 @@ main > header > div > * {
 
 main > header > div > ul.active {
     float: right;
+    margin-right: -1rem;
 }
 
 main > header > div > ul.active li {
@@ -760,9 +762,20 @@ dl dd {
 
 /* Divided */
 
-*.divided > *:not(:last-child) {
+*.divided:not(.spaced) > *:not(:last-child),
+*.divided.spaced > *:not(:last-child).subheader,
+*.divided.spaced > *:not(:last-child):not(.subheader):after {
     border-bottom-width: 1px;
     border-bottom-style: solid;
+}
+
+*.divided.spaced > *:not(:last-child):after {
+    position: absolute;
+    right: 0;
+    bottom: 0rem;
+    content: "";
+    display: block;
+    width: calc(100% - 9rem);
 }
 
 /* Display/hide */
