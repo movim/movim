@@ -128,6 +128,7 @@ class PostPublish extends Errors
           ->setId($this->_atom->id)
           ->request();
 
+        $this->deliver();
         /*if($this->_atom->comments) {
             $mc = new CommentCreateNode;
             $mc->setTo($this->_to)
