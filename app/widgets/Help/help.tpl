@@ -52,23 +52,23 @@
                 <ul class="thin">
                     <li>
                         <span class="color icon bubble brown small"></span>
-                        {$c->__('banner.white')}
+                        <span>{$c->__('banner.white')}</span>
                     </li>
                     <li>
                         <span class="color icon bubble green small"></span>
-                        {$c->__('banner.green')}
+                        <span>{$c->__('banner.green')}</span>
                     </li>
                     <li>
                         <span class="color icon bubble orange small"></span>
-                        {$c->__('banner.orange')}
+                        <span>{$c->__('banner.orange')}</span>
                     </li>
                     <li>
                         <span class="color icon bubble red small"></span>
-                        {$c->__('banner.red')}
+                        <span>{$c->__('banner.red')}</span>
                     </li>
                     <li>
                         <span class="color icon bubble black small"></span>
-                        {$c->__('banner.black')}
+                        <span>{$c->__('banner.black')}</span>
                     </li>
                 </ul>
             </section>
