@@ -8,6 +8,7 @@
     <title><?php $this->title();?></title>
     
     <meta name="description" content="<?php echo $config->description; ?>" />
+    <meta name="theme-color" content="#1C1D5B" />
     
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
     <link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
