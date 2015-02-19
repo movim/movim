@@ -9,7 +9,6 @@ class Menu extends WidgetCommon
     function load()
     {
         $this->registerEvent('post', 'onPost');
-        $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->addjs('menu.js');
     }
 
@@ -23,12 +22,7 @@ class Menu extends WidgetCommon
         RPC::call('movim_fill', 'menu_refresh', $view->draw('_menu_refresh', true));
     }
 
-    function onPublish($packet)
-    {
-        $this->onPost($packet, false);
-    }
-
-    function onPost($packet, $notify = true)
+    function onPost($packet)
     {
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(Cache::c('since'));
@@ -45,9 +39,9 @@ class Menu extends WidgetCommon
                     $title = $post->title;
                 }
 
-                if($notify) Notification::append('news', $contact->getTrueName(), $title, $contact->getPhoto('s'), 2);
+                if(!$post->isMine()) Notification::append('news', $contact->getTrueName(), $title, $contact->getPhoto('s'), 2);
             } else {
-                if($notify) Notification::append('news', $post->title, $post->node, null, 2);
+                Notification::append('news', $post->title, $post->node, null, 2);
             }
 
             $this->onStream($count);

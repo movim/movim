@@ -1,6 +1,7 @@
 /* Color */
 
-*.divided > *:not(:last-child) {
+*.divided > *:not(:last-child),
+*.divided.spaced > *:not(:last-child):after {
     border-color: rgba(0, 0, 0, 0.12);
 }
 
@@ -17,6 +18,7 @@
     border-color: rgba(255, 255, 255, 0.05);
 }
 
+main > header a,
 .color input {
     color: white;
 }
@@ -108,7 +110,7 @@ input[type=button],
 a:not(.classic) { color: #FF5722; border-color: #FF5722; }
 
 form > div .checkbox:before { background-color: #FFE0B2; }
-form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #FF9800; }
+form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #FF5722; }
 
 .button.color,
 ul li span.counter,
@@ -126,6 +128,7 @@ form input:focus:not(:invalid),
 form textarea:focus:not(:invalid) {
     border-bottom-color: #FF5722;
 }
+
 
 /*
 form input:focus:valid {

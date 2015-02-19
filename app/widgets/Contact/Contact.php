@@ -1,12 +1,20 @@
 <?php
 
 use Moxl\Xec\Action\Roster\UpdateItem;
+use Moxl\Xec\Action\Vcard\Get;
 
 class Contact extends WidgetCommon
 {
     function load()
     {
         $this->registerEvent('roster_updateitem_handle', 'onContactEdited');
+        $this->registerEvent('vcard_get_handle', 'onVcardReceived');
+    }
+
+    public function onVcardReceived($packet)
+    {
+        $contact = $packet->content;
+        $this->ajaxGetContact($contact->jid);
     }
 
     public function onContactEdited($packet)
@@ -38,6 +46,12 @@ class Contact extends WidgetCommon
            ->setName(htmlspecialchars($form['alias']))
            ->setGroup(htmlspecialchars($form['group']))
            ->request();
+    }
+
+    function ajaxRefreshVcard($jid)
+    {
+        $r = new Get;
+        $r->setTo(echapJid($jid))->request();
     }
 
     function ajaxEditContact($jid)
@@ -131,7 +145,15 @@ class Contact extends WidgetCommon
     function prepareContact($jid)
     {
         $cd = new \Modl\ContactDAO;
-        $c  = $cd->get($jid);
+        $c  = $cd->get($jid, true);
+
+        if($c == null) {
+            $c = new \Modl\Contact;
+            $c->jid = $jid;
+
+            $this->ajaxRefreshVcard($jid);
+        }
+        
         $cr = $cd->getRosterItem($jid);
 
         $view = $this->tpl();

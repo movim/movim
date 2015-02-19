@@ -1,6 +1,9 @@
 <ul class="active all">
     {if="$invitations"}
-    <li class="subheader">{$c->__('notifs.title')}</li>
+    <li class="subheader">
+        {$c->__('notifs.title')}
+        <span class="info">{$invitations|count}</span>
+    </li>
     {/if}
     {loop="$invitations"}
         {if="isset($value)"}
