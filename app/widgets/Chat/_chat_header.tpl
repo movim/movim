@@ -4,7 +4,7 @@
 </div>
 <div>
     <ul class="active">
-        <li onclick="Chats_ajaxClose('{$jid}'); MovimTpl.hidePanel();">
+        <li onclick="Chats_ajaxClose('{$jid|echapJS}'); MovimTpl.hidePanel();">
             <span class="icon">
                 <i class="md md-close"></i>
             </span>
@@ -15,7 +15,7 @@
         {if="$contact != null"}
             {$contact->getTrueName()}
         {else}
-            {$jid}
+            {$jid|echapJS}
         {/if}
     </h2>
 </div>
