@@ -98,18 +98,18 @@ class Contact extends WidgetCommon
 
         $view = $this->tpl();
         
-        $view->assign('jid', $jid);
+        $view->assign('jid', echapJS($jid));
 
         if(isset($cr)) {
             $view->assign('contactr', $cr);
             $view->assign('edit', 
                 $this->call(
                     'ajaxEditContact', 
-                    "'".$cr->jid."'"));
+                    "'".echapJS($cr->jid)."'"));
             $view->assign('delete', 
                 $this->call(
                     'ajaxDeleteContact', 
-                    "'".$cr->jid."'"));
+                    "'".echapJS($cr->jid)."'"));
         } else {
             $view->assign('contactr', null);
             $c  = $cd->get($jid);
@@ -167,12 +167,34 @@ class Contact extends WidgetCommon
             $view->assign('contact', $c);
             $view->assign('contactr', $cr);
 
+            if( $cr->node != null 
+                && $cr->ver != null 
+                && $cr->node 
+                && $cr->ver) {                
+                $node = $cr->node.'#'.$cr->ver;
+
+                $cad = new \Modl\CapsDAO();
+                $caps = $cad->get($node);
+
+                if(
+                    isset($caps)
+                    && $caps->name != ''
+                    && $caps->type != '' ) {
+                    $clienttype = getClientTypes();
+
+                    $view->assign('caps', $caps);
+                    $view->assign('clienttype', $clienttype);
+                }
+            } else {
+                $view->assign('caps', null);
+            }
+
             $view->assign('gallery', $gallery);
 
             $view->assign('chat', 
                 $this->call(
                     'ajaxChat', 
-                    "'".$c->jid."'"));
+                    "'".echapJS($c->jid)."'"));
 
             return $view->draw('_contact', true);
         } elseif(isset($cr)) {
@@ -182,12 +204,32 @@ class Contact extends WidgetCommon
             $view->assign('chat', 
                 $this->call(
                     'ajaxChat', 
-                    "'".$cr->jid."'"));
+                    "'".echapJS($cr->jid)."'"));
             
             return $view->draw('_contact', true);
         } else {
             return $this->prepareEmpty($jid);
         }
+    }
+
+    function getLastFM($contact)
+    {
+        $uri = str_replace(
+            ' ', 
+            '%20', 
+            'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=80c1aa3abfa9e3d06f404a2e781e38f9&artist='.
+                $contact->tuneartist.
+                '&album='.
+                $contact->tunesource.
+                '&format=json'
+            );
+
+        $json = json_decode(requestURL($uri, 2));
+        
+        $img = $json->album->image[2]->{'#text'};
+        $url = $json->album->url;
+
+        return array($img, $url);
     }
 
     function display()

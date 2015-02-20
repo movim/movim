@@ -16,6 +16,10 @@ var Notifs = {
                 Notifs.reset(items);
                 movim_add_class(this, 'active');
             }
+
+            items[i].querySelector('a.button.flat').onclick = function(e) {
+                Notifs_ajaxAsk(this.dataset.jid);
+            }
             i++;
         }
         

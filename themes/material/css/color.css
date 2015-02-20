@@ -90,7 +90,7 @@ form textarea:focus:invalid + label {
     color: #F44336;
 }
 
-/* Default color : gray */
+/* Default color : violet */
 
 .button.color,
 input[type=button].color,

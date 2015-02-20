@@ -32,6 +32,7 @@
                     ng-if="myjid.ajiditems.rosterview.tune != '' || myjid.ajiditems.rosterview.type != '' "
                     ng-switch on="myjid.ajiditems.rosterview.type">
                     <i ng-switch-when="handheld" class="md md-smartphone"></i>
+                    <i ng-switch-when="phone" class="md md-smartphone"></i>
                     <i ng-switch-when="web" class="md md-language"></i>
                     <i ng-switch-when="bot" class="md md-memory"></i>
                     <i ng-if="myjid.ajiditems.rosterview.tune" class="md md-play-arrow"></i>

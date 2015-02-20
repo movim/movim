@@ -197,6 +197,14 @@ function echapJid($jid)
 }
 
 /*
+ * Echap the anti-slashs for Javascript 
+ */
+function echapJS($string)
+{
+    return str_replace("\\", "\\\\", $string);
+}
+
+/*
  * Clean the resource of a jid
  */
 function cleanJid($jid)
