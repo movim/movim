@@ -12,7 +12,7 @@
                     />
                 </span>
                 <span>{$value->getTrueName()}</span>
-                <p>{$value->jid}</p>
+                <p class="wrap">{$value->jid}</p>
             </li>
         {/loop}
         <li onclick="Chats_ajaxAddExtend()">

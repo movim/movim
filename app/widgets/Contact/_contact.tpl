@@ -1,12 +1,34 @@
 {if="$contact != null"}
-    <header class="big" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 80%), url('{$contact->getPhoto('xxl')}');">
+    <header class="big" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');">
         <ul class="thick">
-            <li>
+            <li class="">
                 <span class="icon bubble"><img src="{$contact->getPhoto('l')}"></span>
                 <span>
                     <h2>{$contact->getTrueName()}</h2>
                 </span>
             </li>
+            {if="$caps"}
+                <li class="">
+                    <span class="icon">
+                        <i class="md
+                            {if="$caps->type == 'handheld' || $caps->type == 'phone'"}
+                                md-phone-android
+                            {elseif="$caps->type == 'bot'"}
+                                md-memory
+                            {else}
+                                md-laptop
+                            {/if}
+                        ">
+                        </i>
+                    </span>
+                    <span>
+                        {$caps->name}
+                        {if="isset($clienttype[$caps->type])"}
+                            - {$clienttype[$caps->type]}
+                        {/if}
+                    </span>
+                </li>
+            {/if}
         </ul>
     </header>
     <br />
@@ -103,6 +125,46 @@
         </li>
         {/if}
     </ul>
+
+    {if="$contact->tuneartist || $contact->tunetitle"}
+    <ul class="flex">
+        <li class="subheader block large">{$c->__('general.tune')}</li>
+        
+        {$img_array = $c->getLastFM($contact)}
+        <li class="
+            block
+            {if="$contact->tunetitle"}condensed{/if}
+            {if="isset($img_array[1]) && $img_array[1] != ''"} action{/if}
+            ">
+            {if="isset($img_array[1]) && $img_array[1] != ''"}
+                <div class="action">
+                    <a href="{$img_array[1]}" target="_blank">
+                        <i class="md md-radio"></i>
+                    </a>
+                </div>
+            {/if}
+            <span class="icon bubble">
+                {if="isset($img_array[0]) && $img_array[0] != ''"}
+                    <img src="{$img_array[0]}"/>
+                {else}
+                    <i class="md md-play-circle-fill"></i>
+                {/if}
+            </span>
+            <span>
+                {if="$contact->tuneartist"}
+                    {$contact->tuneartist} - 
+                {/if}
+                {if="$contact->tunesource"}
+                    {$contact->tunesource}
+                {/if}
+            </span>
+
+            {if="$contact->tunetitle"}
+                <p>{$contact->tunetitle}</p>
+            {/if}
+        </li>
+    </ul>
+    {/if}
 
     <div class="clear"></div>
     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
