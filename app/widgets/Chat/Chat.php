@@ -24,7 +24,9 @@ class Chat extends WidgetCommon
             $from = $message->jidfrom;
 
             $cd = new \Modl\ContactDAO;
-            $contact = $cd->get($from);
+            $contact = $cd->getRosterItem($from);
+            if($contact == null)
+                $contact = $cd->get($from);
             
             if($contact != null
             && !preg_match('#^\?OTR#', $message->body)
@@ -237,7 +239,7 @@ class Chat extends WidgetCommon
     function prepareChat($jid, $muc = false)
     {
         $view = $this->tpl();
-        
+
         $view->assign('jid', $jid);
         $view->assign('messages', $this->prepareMessages($jid));
 
@@ -302,7 +304,6 @@ class Chat extends WidgetCommon
         }
 
         $view->assign('contacts', $contacts);
-        
 
         return $view->draw('_chat_messages', true);
     }

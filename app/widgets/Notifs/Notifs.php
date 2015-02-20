@@ -39,6 +39,7 @@ class Notifs extends WidgetCommon
     {
         $html = $this->prepareNotifs();
         RPC::call('movim_fill', 'notifs_widget', $html);
+        RPC::call('Notifs.refresh');
     }
 
     /*
@@ -76,7 +77,7 @@ class Notifs extends WidgetCommon
     function ajaxAccept($jid)
     {
         $jid = echapJid($jid);
-        
+
         $r = new AddItem;
         $r->setTo($jid)
           ->setFrom($this->user->getLogin())
