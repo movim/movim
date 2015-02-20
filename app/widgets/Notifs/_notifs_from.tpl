@@ -19,7 +19,7 @@
                     {$c->__('button.add')}
                 </a>
                 -->
-                <a class="button flat" onclick="Notifs_ajaxAsk('{$value->jid}')">
+                <a class="button flat" data-jid="{$value->jid}">
                     {$c->__('notifs.manage')}
                 </a>
             </div>

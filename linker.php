@@ -145,6 +145,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
 // Fallback event, when the WebSocket is not enabled,
 // we still handle browser to Movim requests
 $stdin->on('data', function ($data) use ($loop) {
+    if(!isset($buffer)) $buffer = '';
     if(substr($data, -3) == "END") {
         $messages = explode("END", $buffer . substr($data, 0, -3));
         $buffer = '';
