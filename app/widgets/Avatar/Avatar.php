@@ -33,7 +33,7 @@ class Avatar extends WidgetBase
         $this->registerEvent('avatar_set_errornotallowed', 'onMyAvatarError');
     }
     
-    function onMyAvatar($me)
+    function onMyAvatar($packet)
     {
         $me = $packet->content;
         $html = $this->prepareForm($me);

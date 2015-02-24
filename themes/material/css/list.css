@@ -152,19 +152,24 @@ ul li span.counter.bottom {
 
 ul li div.bubble {
     padding: 1rem 2rem;
-    min-width: 50%;
     border-radius: 0.25rem;
-    line-height: 3.5rem;
+    line-height: 2.75rem;
     position: relative;
-    margin: 0 2rem;
     box-sizing: border-box;
     display: inline-block;
     border-color: transparent;
     font-size: 1.75rem;
     background-color: #E5E5E5;
     border-color: #E5E5E5;
+    max-width: 100%;
+    min-width: 50%;
 
     /*word-break: break-all;*/
+}
+
+ul li.oppose div.bubble {
+    margin-left: 2rem;
+    float: right;
 }
 
 ul li div.bubble:after {
@@ -180,29 +185,15 @@ ul li div.bubble:before {
    content: "";
    position: absolute;
    top: 0;
-   left: -2rem;
-   border-top: 2rem solid black;
+   left: -1.5rem;
+   border-top: 1.5rem solid black;
    border-top-color: inherit; 
-   border-left: 2rem solid transparent;
-   border-right: 2rem solid transparent; 
-}
-
-li.oppose div.bubble {
-    margin-left: calc(50% - 2rem);
+   border-left: 1.5rem solid transparent;
+   border-right: 1.5rem solid transparent; 
 }
 
 li.oppose div.bubble:before {
-    left: calc(100% - 2rem);
-}
-
-@media screen and (max-width: 1024px) {
-    ul li div.bubble {
-        min-width: 80%;
-    }
-
-    li.oppose div.bubble {
-        margin-left: calc(20% - 2rem);
-    }
+    left: calc(100% - 1.5rem);
 }
 
 /* Tabs */

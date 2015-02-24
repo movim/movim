@@ -1,7 +1,10 @@
 var Init = {
     checkNode : function() {
         // TODO : very ugly, need to refactor this
-        var jid = localStorage.getItem("username").replace("@", "at");
+        var username = localStorage.getItem("username");
+        if(username == null) return;
+
+        var jid = username.replace("@", "at");
         var init = localStorage.getObject(jid + "_Init") || {};
         if(init.initialized != 'true') {
             Init_ajaxCreatePersistentStorage('storage:bookmarks');
@@ -14,7 +17,9 @@ var Init = {
     },
     setNode : function(node) {
         // TODO : need to refactor this too
-        var jid = localStorage.getItem("username").replace("@", "at");
+        var username = localStorage.getItem("username");
+        if(username == null) return;
+
         var init = localStorage.getObject(jid + "_Init") || {};
         init.initialized = 'true';
         localStorage.setObject(jid + "_Init", init);
