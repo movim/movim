@@ -2,6 +2,7 @@
     <section id="{$jid}_messages">
         {$messages}
     </section>
+    <div id="{$jid}_state"></div>
 </div>
 <div class="chat_box">
     <ul class="simple thin">
@@ -42,7 +43,6 @@
                             "
                         placeholder="{$c->__('chat.placeholder')}"
                     ></textarea>
-                    <label>Your message</label>
                 </div>
             </form>
         </li>
