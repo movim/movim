@@ -1,5 +1,8 @@
 <?php
 
+use HeyUpdate\Emoji\Emoji;
+use HeyUpdate\Emoji\EmojiIndex;
+
 /**
  * Prepare the string (add the a to the links and show the smileys)
  *
@@ -125,12 +128,17 @@ function prepareString($string) {
     $config = $cd->get();
     $theme = $config->theme;
     
-    $path = BASE_URI . 'themes/' . $theme . '/img/smileys/';
+    $path = BASE_URI . 'themes/' . $theme . '/img/emojis/';
+
+    /*
 
     foreach($smileys as $key => $value) {
         $replace = ' <img class="smiley" alt="smiley" src="'.$path.$value.'">';
         $string = preg_replace('/(^|[ ])('.$key.')/',  $replace, $string);
-    }
+    }*/
+
+    $emoji = new Emoji(new EmojiIndex(), $path.'%s.png');
+    $string = $emoji->replaceEmojiWithImages($string);
     
     return trim($string);
 }
@@ -310,4 +318,3 @@ function stringToColor($string) {
 function firstLetterCapitalize($string) {
     return ucfirst(strtolower(mb_substr($string, 0, 2)));
 }
-
