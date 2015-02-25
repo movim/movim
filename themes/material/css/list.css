@@ -156,13 +156,14 @@ ul li div.bubble {
     line-height: 2.75rem;
     position: relative;
     box-sizing: border-box;
-    display: inline-block;
+    display: block;
     border-color: transparent;
     font-size: 1.75rem;
     background-color: #E5E5E5;
     border-color: #E5E5E5;
     max-width: 100%;
     min-width: 50%;
+    float: left;
 
     /*word-break: break-all;*/
 }
@@ -248,4 +249,3 @@ ul.menu:hover {
     color: black;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26), 0px 2px 10px 0px rgba(0, 0, 0, 0.16);
 }
-
