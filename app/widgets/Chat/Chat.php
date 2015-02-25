@@ -33,6 +33,8 @@ class Chat extends WidgetCommon
             && $message->type != 'groupchat') {
                 Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $contact->getPhoto('s'), 4);
             }
+
+            RPC::call('movim_fill', $from.'_state', '');     
         // If the message is from me
         } else {
             $from = $message->jidto;
@@ -45,7 +47,6 @@ class Chat extends WidgetCommon
         }
 
         RPC::call('movim_append', $from.'_conversation', $this->prepareMessage($message, $from, $contact, $me));
-        RPC::call('movim_fill', $from.'_state', '');     
         RPC::call('MovimTpl.scrollPanel');
     }
 

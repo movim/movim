@@ -15,6 +15,7 @@
         "movim/moxl": "dev-ws",
 
         "embed/embed": "dev-master",
+        "heyupdate/emoji": "0.2.*@dev",
 
         "cboden/ratchet": "0.3.*",
         "react/child-process": "0.5.*@dev",
