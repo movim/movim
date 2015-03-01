@@ -32,8 +32,11 @@ class Chats extends WidgetCommon
                 $this->ajaxOpen($from);
             } else {
                 // TODO notification overwrite issue
-                //RPC::call('movim_replace', $from, $this->prepareChat($from));
+                RPC::call('movim_replace', $from, $this->prepareChat($from));
                 RPC::call('Chats.refresh');
+
+                $n = new Notification;
+                $n->ajaxGet();
             }
         }
     }
@@ -47,6 +50,9 @@ class Chats extends WidgetCommon
             if(array_key_exists($c->jid, $chats)) {
                 RPC::call('movim_replace', $c->jid, $this->prepareChat($c->jid));
                 RPC::call('Chats.refresh');
+
+                $n = new Notification;
+                $n->ajaxGet();
             }
         }
     }

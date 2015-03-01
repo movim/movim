@@ -35,7 +35,6 @@ var Notification = {
             Notification.setTab(key, counter);
         }
 
-        Notification.document_title = document.title;
         Notification.displayTab();
     },
     counter : function(key, counter) {
@@ -109,13 +108,14 @@ var Notification = {
 }
 
 MovimWebsocket.attach(function() {
+    Notification.document_title = document.title;
     Notification_ajaxGet();
     Notification.current(Notification.notifs_key);
 });
 
 document.onblur = function() {
     Notification.focused = false;
-    Notification_ajaxCurrent();
+    Notification_ajaxCurrent('blurred');
 }
 document.onfocus = function() {
     Notification.focused = true;
