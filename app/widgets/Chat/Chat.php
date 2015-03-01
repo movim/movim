@@ -245,6 +245,8 @@ class Chat extends WidgetCommon
         $view->assign('jid', $jid);
         $view->assign('messages', $this->prepareMessages($jid));
 
+        $jid = echapJS($jid);
+
         $view->assign('composing', $this->call('ajaxSendComposing', "'" . $jid . "'"));
         $view->assign('paused', $this->call('ajaxSendPaused', "'" . $jid . "'"));
 

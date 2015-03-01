@@ -167,10 +167,14 @@ class WidgetWrapper
                             $session = Session::start();
                             $notifs_key = $session->get('notifs_key');
 
-                            $explode = explode('|', $notifs_key);
-                            $key = reset($explode);
-                            if($key == $widget->filters[$method]) {
+                            if($notifs_key == 'blurred') {
                                 $widget->{$method}($data);
+                            } else {
+                                $explode = explode('|', $notifs_key);
+                                $notif_key = reset($explode);
+                                if($notif_key == $widget->filters[$method]) {
+                                    $widget->{$method}($data);
+                                }
                             }
                         } else {
                             $widget->{$method}($data);

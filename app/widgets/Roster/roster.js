@@ -317,8 +317,8 @@ var Roster = {
 
 MovimWebsocket.attach(function() {
     Roster_ajaxGetRoster();
-    Notification.notifs_key = 'contacts';
     Roster.refresh();
+    Notification.current('contacts');
 });
 
 
