@@ -45,7 +45,9 @@
 }
 
 table.emojis td {
-    padding: 1rem;
+    width: 10%;
+    text-align: center;
+    padding: 1rem 0;
 }
 
 #chat_widget .emojis_open:hover,
