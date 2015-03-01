@@ -46,6 +46,10 @@ var Chats = {
     }
 }
 
+movim_add_onload(function(){    
+    Notification.current('chat');
+});
+
 MovimWebsocket.attach(function() {
     Chats.refresh();
 });
