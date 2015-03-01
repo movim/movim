@@ -20,6 +20,7 @@ var Init = {
         var username = localStorage.getItem("username");
         if(username == null) return;
 
+        var jid = username.replace("@", "at");
         var init = localStorage.getObject(jid + "_Init") || {};
         init.initialized = 'true';
         localStorage.setObject(jid + "_Init", init);
