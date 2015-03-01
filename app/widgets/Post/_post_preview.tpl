@@ -4,7 +4,7 @@
     <article>
         <section>
             <content>
-                {$content}
+                {$content|prepareString}
             </content>
         </section>
     </article>

@@ -88,6 +88,14 @@ class Chat extends WidgetCommon
     }
 
     /**
+     * @brief Get the path of a emoji
+     */
+    function ajaxSmileyGet($string)
+    {
+        return prepareString($string, true);
+    }
+
+    /**
      * @brief Get a discussion
      * @parem string $jid
      */
@@ -258,6 +266,8 @@ class Chat extends WidgetCommon
                 "Chat.sendMessage('" . $jid . "')")
             );
         $view->assign('smiley', $this->call('ajaxSmiley'));
+
+        $view->assign('emoji', prepareString('😀'));
 
         if($muc)
         {

@@ -1,21 +1,60 @@
 <section>
-    <h3>{$c->__('chat.smileys')}</h3>
-    <table>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
+    <table class="emojis">
+        <tr class="active">
+            <td onclick="Chat.addSmiley(this);" data-emoji="😂">{$c->ajaxSmileyGet('😂')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😃">{$c->ajaxSmileyGet('😃')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😄">{$c->ajaxSmileyGet('😄')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😆">{$c->ajaxSmileyGet('😆')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😍">{$c->ajaxSmileyGet('😍')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😉">{$c->ajaxSmileyGet('😉')}</td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
+        <tr class="active">
+            <td onclick="Chat.addSmiley(this);" data-emoji="😠">{$c->ajaxSmileyGet('😠')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😜">{$c->ajaxSmileyGet('😜')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😝">{$c->ajaxSmileyGet('😝')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😒">{$c->ajaxSmileyGet('😒')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😓">{$c->ajaxSmileyGet('😓')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😖">{$c->ajaxSmileyGet('😖')}</td>
+        </tr>
+        <tr class="active">
+            <td onclick="Chat.addSmiley(this);" data-emoji="😢">{$c->ajaxSmileyGet('😢')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😤">{$c->ajaxSmileyGet('😤')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😥">{$c->ajaxSmileyGet('😥')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😪">{$c->ajaxSmileyGet('😪')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😭">{$c->ajaxSmileyGet('😭')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="😱">{$c->ajaxSmileyGet('😱')}</td>
+        </tr>
+        <tr class="active">
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍌">{$c->ajaxSmileyGet('🍌')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍎">{$c->ajaxSmileyGet('🍎')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🌼">{$c->ajaxSmileyGet('🌼')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🌵">{$c->ajaxSmileyGet('🌵')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🌹">{$c->ajaxSmileyGet('🌹')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍄">{$c->ajaxSmileyGet('🍄')}</td>
+        </tr>
+        <tr class="active">
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍔">{$c->ajaxSmileyGet('🍔')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍕">{$c->ajaxSmileyGet('🍕')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍗">{$c->ajaxSmileyGet('🍗')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍚">{$c->ajaxSmileyGet('🍚')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍜">{$c->ajaxSmileyGet('🍜')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🍣">{$c->ajaxSmileyGet('🍣')}</td>
+        </tr>
+        <tr class="active">
+            <td onclick="Chat.addSmiley(this);" data-emoji="💋">{$c->ajaxSmileyGet('💋')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="💊">{$c->ajaxSmileyGet('💊')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="💡">{$c->ajaxSmileyGet('💡')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="💩">{$c->ajaxSmileyGet('💩')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="☕'">{$c->ajaxSmileyGet('☕')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="⏰">{$c->ajaxSmileyGet('⏰')}</td>
+        </tr>
+        <tr class="active">
+            <td onclick="Chat.addSmiley(this);" data-emoji="🐷">{$c->ajaxSmileyGet('🐷')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🐵">{$c->ajaxSmileyGet('🐵')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🐶">{$c->ajaxSmileyGet('🐶')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🐸">{$c->ajaxSmileyGet('🐸')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🐹">{$c->ajaxSmileyGet('🐹')}</td>
+            <td onclick="Chat.addSmiley(this);" data-emoji="🐻">{$c->ajaxSmileyGet('🐻')}</td>
         </tr>
     </table>
 </section>
