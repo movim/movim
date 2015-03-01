@@ -39,6 +39,22 @@
     margin-bottom: 1rem;
 }
 
+#chat_widget .emojis_open img {
+    width: 36px;
+    margin: 0.2rem;
+}
+
+table.emojis td {
+    padding: 1rem;
+}
+
+#chat_widget .emojis_open:hover,
+table.emojis td:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+}
+
 @media screen and (max-width: 1024px) {
     #chat_widget .chat_box {
         width: 100%;
