@@ -32,7 +32,7 @@ class Chats extends WidgetCommon
                 $this->ajaxOpen($from);
             } else {
                 // TODO notification overwrite issue
-                RPC::call('movim_replace', $from, $this->prepareChat($from));
+                RPC::call('movim_replace', $from.'_chat_item', $this->prepareChat($from));
                 RPC::call('Chats.refresh');
 
                 $n = new Notification;
@@ -48,7 +48,7 @@ class Chats extends WidgetCommon
             $c = $contacts[0];
             $chats = Cache::c('chats');
             if(array_key_exists($c->jid, $chats)) {
-                RPC::call('movim_replace', $c->jid, $this->prepareChat($c->jid));
+                RPC::call('movim_replace', $c->jid.'_chat_item', $this->prepareChat($c->jid));
                 RPC::call('Chats.refresh');
 
                 $n = new Notification;
@@ -84,7 +84,7 @@ class Chats extends WidgetCommon
         unset($chats[$jid]);
         Cache::c('chats', $chats);
 
-        RPC::call('movim_delete', $jid);
+        RPC::call('movim_delete', $jid.'_chat_item');
 
         RPC::call('Chats.refresh');
         RPC::call('Chat.empty');
