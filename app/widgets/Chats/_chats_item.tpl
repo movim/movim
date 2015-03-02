@@ -1,5 +1,5 @@
 <li
-    id="{$contact->jid}"
+    id="{$contact->jid}_chat_item"
     data-jid="{$contact->jid}"
     {if="isset($message)"}class="condensed"{/if}
     title="{$contact->jid}">
@@ -13,7 +13,7 @@
         {if="preg_match('#^\?OTR#', $message->body)"}
             <p><i class="md md-lock"></i> {$c->__('message.encrypted')}</p>
         {else}
-            <p>{$message->body|htmlentities}</p>
+            <p>{$message->body|prepareString}</p>
         {/if}
     {/if}
 </li>

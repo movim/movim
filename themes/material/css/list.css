@@ -168,6 +168,10 @@ ul li div.bubble {
     /*word-break: break-all;*/
 }
 
+ul li div.bubble.quote {
+    font-style: italic;
+}
+
 ul li.oppose div.bubble {
     margin-left: 2rem;
     float: right;
