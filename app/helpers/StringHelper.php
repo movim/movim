@@ -75,6 +75,12 @@ function prepareString($string, $large = false) {
                 return '';
             }, ' ' . $string
     );
+    //remove all iframe
+    $string = preg_replace_callback(
+            '#<[/]?ss[^>]*>#is', function ($match) {
+                return '';
+            }, ' ' . $string
+    );
    
     // We add some smileys...
     $cd = new \Modl\ConfigDAO();

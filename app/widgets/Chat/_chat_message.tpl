@@ -1,11 +1,11 @@
 {if="$message->body != ''"}
 <li {if="$message->jidfrom != $jid"}class="oppose"{/if}>
-    <span class="icon bubble {if="$contact->updated == null && !array_key_exists($message->resource, $contacts)"}color {$message->resource|stringToColor}{/if}">
+    <span class="icon bubble {if="empty($contact) && !array_key_exists($message->resource, $contacts)"}color {$message->resource|stringToColor}{/if}">
         {if="$message->jidfrom == $jid"}
-            {if="$contact->updated != null"}
-                <img src="{$contact->getPhoto('s', $jid)}">
-            {elseif="array_key_exists($message->resource, $contacts)"}
-                <img src="{$contacts[$message->resource]->getPhoto('s', $jid)}">
+            {if="!empty($contacts) && array_key_exists($message->resource, $contacts)"}
+                <img src="{$contacts[$message->resource]->getPhoto('s')}">
+            {elseif="isset($contact)"}
+                <img src="{$contact->getPhoto('s')}">
             {else}
                 {$message->resource|firstLetterCapitalize}
             {/if}
@@ -13,7 +13,14 @@
             <img src="{$me->getPhoto('s')}">
         {/if}
     </span>
-    <div class="bubble">
+    {if="preg_match('#^\/me#', $message->body)"}
+        {$message->body = '* '.substr($message->body, 3)}
+        {$class = 'quote'}
+    {else}
+        {$class = ''}
+    {/if}
+    
+    <div class="bubble {$class}">
         {if="preg_match('#^\?OTR#', $message->body)"}
             <i class="md md-lock"></i> {$c->__('message.encrypted')}
         {else}
