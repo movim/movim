@@ -320,15 +320,19 @@ class Chat extends WidgetCommon
         $view->assign('me', $me);
         $view->assign('message', $message);
 
-        $cd = new \Modl\ContactDAO;
-        $presences = $cd->getPresence($jid);
-        $contacts = array();
+        if($message->type == 'groupchat') {
+            $cd = new \Modl\ContactDAO;
+            $presences = $cd->getPresence($jid);
+            $contacts = array();
 
-        foreach($presences as $presence) {
-            $contacts[$presence->resource] = $presence;
+            foreach($presences as $presence) {
+                $contacts[$presence->resource] = $presence;
+            }
+
+            $view->assign('contacts', $contacts);
+        } else {
+            $view->assign('contacts', array());
         }
-
-        $view->assign('contacts', $contacts);
 
         return $view->draw('_chat_message', true);        
     }
