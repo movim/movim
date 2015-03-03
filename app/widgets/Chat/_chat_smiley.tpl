@@ -50,12 +50,12 @@
                 <td onclick="Chat.addSmiley(this);" data-emoji="⏰"><img alt=":alarm_clock:" class="emoji" src="themes/material/img/emojis/large/23f0.png"></td>
             </tr>
             <tr class="active">
-                <td onclick="Chat.addSmiley(this);" data-emoji="🛀"><img alt=":bath:" class="emoji" src="https://localhost/0.9/themes/material/img/emojis/large/1f6c0.png"></td>
-                <td onclick="Chat.addSmiley(this);" data-emoji="🎧"><img alt=":headphones:" class="emoji" src="https://localhost/0.9/themes/material/img/emojis/large/1f3a7.png"></td>
-                <td onclick="Chat.addSmiley(this);" data-emoji="🎮"><img alt=":video_game:" class="emoji" src="https://localhost/0.9/themes/material/img/emojis/large/1f3ae.png"></td>
-                <td onclick="Chat.addSmiley(this);" data-emoji="🎫"><img alt=":ticket:" class="emoji" src="https://localhost/0.9/themes/material/img/emojis/large/1f3ab.png"></td>
-                <td onclick="Chat.addSmiley(this);" data-emoji="💼"><img alt=":briefcase:" class="emoji" src="https://localhost/0.9/themes/material/img/emojis/large/1f4bc.png"></td>
-                <td onclick="Chat.addSmiley(this);" data-emoji="🎒"><img alt=":school_satchel:" class="emoji" src="https://localhost/0.9/themes/material/img/emojis/large/1f392.png"></td>
+                <td onclick="Chat.addSmiley(this);" data-emoji="🛀"><img alt=":bath:" class="emoji" src="themes/material/img/emojis/large/1f6c0.png"></td>
+                <td onclick="Chat.addSmiley(this);" data-emoji="🎧"><img alt=":headphones:" class="emoji" src="themes/material/img/emojis/large/1f3a7.png"></td>
+                <td onclick="Chat.addSmiley(this);" data-emoji="🎮"><img alt=":video_game:" class="emoji" src="themes/material/img/emojis/large/1f3ae.png"></td>
+                <td onclick="Chat.addSmiley(this);" data-emoji="🎫"><img alt=":ticket:" class="emoji" src="themes/material/img/emojis/large/1f3ab.png"></td>
+                <td onclick="Chat.addSmiley(this);" data-emoji="💼"><img alt=":briefcase:" class="emoji" src="themes/material/img/emojis/large/1f4bc.png"></td>
+                <td onclick="Chat.addSmiley(this);" data-emoji="🎒"><img alt=":school_satchel:" class="emoji" src="themes/material/img/emojis/large/1f392.png"></td>
             </tr>
             <tr class="active">
                 <td onclick="Chat.addSmiley(this);" data-emoji="🐷"><img alt=":pig:" class="emoji" src="themes/material/img/emojis/large/1f437.png"></td>
