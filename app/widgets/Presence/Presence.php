@@ -172,6 +172,7 @@ class Presence extends WidgetBase
 
         $presencetpl->assign('me', $contact);
         $presencetpl->assign('presence', $presence);
+        $presencetpl->assign('presencetxt', getPresencesTxt());
         $presencetpl->assign('dialog',      $this->call('ajaxOpenDialog'));
 
         $html = $presencetpl->draw('_presence', true);
