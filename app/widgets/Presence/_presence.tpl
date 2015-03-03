@@ -2,7 +2,7 @@
     <div class="action">
         <i class="md md-edit"></i>
     </div>
-    <span class="icon bubble" style="background-image: url({$me->getPhoto('m')})"></span>
+    <span class="icon bubble status {$presencetxt[$presence->value]}" style="background-image: url({$me->getPhoto('m')})"></span>
     <span>{$me->getTrueName()}</span>
     <p class="wrap">{$presence->status}</p>
 </li>
