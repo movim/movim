@@ -107,6 +107,10 @@ ul li span {
     white-space: nowrap;
 }
 
+ul li img {
+     max-width: 100%;
+}
+
 ul li.action {
     padding-right: 7rem;
 }
