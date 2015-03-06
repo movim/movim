@@ -45,7 +45,6 @@ class AjaxController extends BaseController
             $buffer .= "function " . $funcdef['object'] . '_'
                 . $funcdef['funcname'] . "(${parlist}) {";
             $buffer .= "MovimWebsocket.send('".$funcdef['object']."', '".$funcdef['funcname']."', [${parlist}]);}\n";
-
         }
         return $buffer . "</script>\n";
     }

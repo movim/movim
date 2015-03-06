@@ -35,16 +35,11 @@ class Config extends WidgetBase
         $view = $this->tpl();
 
         /* We load the user configuration */
+        $this->user->reload();
+
         $view->assign('languages', loadLangArray());
         $view->assign('me',        $this->user->getLogin());
-        $view->assign('conf',      $this->user->getConfig('language'));
-        //$view->assign('color',     $this->user->getConfig('color'));
-        //$view->assign('size',      $this->user->getConfig('size'));
-
-        if($this->user->getConfig('chatbox'))
-            $view->assign('chatbox', 'checked');
-        else
-            $view->assign('chatbox', '');
+        $view->assign('conf',      $this->user->getConfig());
         
         $view->assign('submit',    
             $this->call(
@@ -70,7 +65,8 @@ class Config extends WidgetBase
         Notification::append(null, $this->__('config.updated'));
     }
 
-    function ajaxSubmit($data) {
+    function ajaxSubmit($data)
+    {
         $config = $this->user->getConfig();
         if(isset($config))
             $data = array_merge($config, $data);

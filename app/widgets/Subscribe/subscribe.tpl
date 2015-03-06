@@ -6,7 +6,7 @@
         </li>
     </ul>
 
-    <ul class="thick active">
+    <ul class="thick active divided spaced">
         {loop="$servers"}
         <li
             class="block condensed"

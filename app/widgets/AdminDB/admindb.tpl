@@ -1,12 +1,12 @@
 <div id="admindb" class="tabelem paddedtop" title="{$c->__('db.legend')}">
-    <form>
-        <ul>
+    <form class="flex">
+        <ul class="block large">
             <li class="subheader">{$c->__('db.legend')}</li>
 
             {if="!$connected"}
                 <li class="block large condensed">
                     <span class="icon bubble color red">
-                        <i class="fa fa-plug"></i>
+                        <i class="md md-settings-ethernet"></i>
                     </span>
                     <span>{$c->__('db.connect_error')}</span>
                     <p>{$errors}</p>
@@ -14,20 +14,19 @@
             {else}
                 <li class="block large">
                     <span class="icon bubble color green">
-                        <i class="fa fa-plug"></i>
+                        <i class="md md-settings-ethernet"></i>
                     </span>
                     <span>{$c->__('db.connect_success')}</span>
                 </li>
                 {if="null !== $infos"}
-                    <li class="block large condensed">
+                    <li class="block large condensed action">
+                        <div class="action">
+                            <a class="button" onclick="{$db_update}"> {$c->__('button.update')}</a>
+                        </div>
                         <span class="icon bubble color orange">
-                            <i class="fa fa-refresh"></i>
+                            <i class="md md-refresh"></i>
                         </span>
                         <span>{$c->__('db.update')}</span>
-                        <div class="control">
-                            <a class="button oppose" 
-                                onclick="{$db_update}"> {$c->__('button.update')}</a>
-                        </div>
                         {loop="$infos"}
                             <p>{$value}</p>
                         {/loop}
@@ -35,15 +34,14 @@
                 {else}
                     <li class="block large">
                         <span class="icon bubble color green">
-                            <i class="fa fa-refresh"></i> 
+                            <i class="md md-refresh"></i> 
                         </span>
                         <span>{$c->__('db.up_to_date')}</span>
                     </li>
                 {/if}
             {/if}
         </ul> 
-        
-        <div class="clear"></div>  
+
         <div class="block">
             <input value="{$dbtype}" disabled/>
             <label for="logLevel">{$c->__('db.type')}</label>

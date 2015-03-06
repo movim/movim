@@ -155,7 +155,6 @@ class Sessionx {
                         'host',
                         'domain',
                         'user',
-                        'config',
                         'password',
                         'start')
                     )

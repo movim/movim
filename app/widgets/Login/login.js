@@ -126,10 +126,6 @@ var Login = {
 
 }
 
-function postLogin(jid, url) {
-    Login.post(jid, url);
-}
-
 MovimWebsocket.attach(function()
 {
     if(localStorage.username != null)
@@ -141,7 +137,7 @@ MovimWebsocket.attach(function()
     document.querySelector('#error_websocket').style.display = 'none';
 
     // We enable the form
-    var inputs = document.querySelectorAll('.dialog div input[disabled]');
+    var inputs = document.querySelectorAll('#login_widget div input[disabled]');
     for (var i = 0; i < inputs.length; i++)
     {
         inputs[i].disabled = false;

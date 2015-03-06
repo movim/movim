@@ -17,6 +17,7 @@
 
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
+use forxer\Gravatar\Gravatar;
 
 class Avatar extends WidgetBase
 {
@@ -32,7 +33,7 @@ class Avatar extends WidgetBase
         $this->registerEvent('avatar_set_errornotallowed', 'onMyAvatarError');
     }
     
-    function onMyAvatar($me)
+    function onMyAvatar($packet)
     {
         $me = $packet->content;
         $html = $this->prepareForm($me);
@@ -61,9 +62,19 @@ class Avatar extends WidgetBase
         $avatarform->assign('photobin', $p->toBase());
 
         $avatarform->assign('me',       $me);
+
+        if(isset($me->email)) {
+            $result = requestURL(Gravatar::profile($me->email, 'json'), 3);
+            $obj = json_decode($result);
+            if($obj != 'User not found') {
+                $avatarform->assign('gravatar_bin', base64_encode(requestURL('http://www.gravatar.com/avatar/'.$obj->entry[0]->hash.'?s=250')));
+                $avatarform->assign('gravatar', $obj);
+            }
+        }
+        
         $avatarform->assign(
             'submit',
-            $this->call('ajaxAvatarSubmit', "movim_form_to_json('avatarform')")
+            $this->call('ajaxSubmit', "movim_form_to_json('avatarform')")
             );
         
         return $avatarform->draw('_avatar_form', true);
@@ -77,7 +88,7 @@ class Avatar extends WidgetBase
           ->request();
     }
 
-    function ajaxAvatarSubmit($avatar)
+    function ajaxSubmit($avatar)
     {
         $p = new \Picture;
         $p->fromBase((string)$avatar->photobin->value);

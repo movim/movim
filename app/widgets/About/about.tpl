@@ -11,8 +11,8 @@
             <span class="icon bubble color red"><i class="md md-developer-mode"></i></span>
             <span>{$c->__('title.developers')}</span>
             <p>
-                <a href="http://edhelas.movim.eu/">Jaussoin Timothée aka edhelas</a></br>
-                <a href="https://launchpad.net/~nodpounod">Ho Christine aka nodpounod</a></br>
+                <a href="http://edhelas.movim.eu/">Jaussoin Timothée aka edhelas</a><br/>
+                <a href="https://launchpad.net/~nodpounod">Ho Christine aka nodpounod</a><br/>
                 <a href="https://etenil.net/">Pasquet Guillaume aka Etenil</a>
             </p>
         </li>
@@ -20,36 +20,37 @@
             <span class="icon bubble color purple"><i class="md md-flag"></i></span>
             <span>{$c->__('title.translators')}</span>
             <p>
-                Thanks to all the translators https://translations.launchpad.net/movim
+                Thanks to all the translators <a href="https://translations.launchpad.net/movim">translations.launchpad.net/movim</a>
             </p>
         </li>
         <li class="subheader">{$c->__('title.software')}</li>
         <li class="condensed">
             <span class="icon bubble color orange"><i class="md md-archive"></i></span>
-            <p>
-               Modl - Movim DB Layer - <a href="https://github.com/edhelas/modl">GitHub Modl</a> under AGPLv3</br>
-               Moxl - Movim XMPP Library - <a href="https://github.com/edhelas/moxl">GitHub Moxl</a> under AGPLv3</br>
+            <p class="all">
+               Modl - Movim DB Layer - <a href="https://github.com/edhelas/modl">GitHub Modl</a> under AGPLv3<br/>
+               Moxl - Movim XMPP Library - <a href="https://github.com/edhelas/moxl">GitHub Moxl</a> under AGPLv3<br/>
 
-               Map Library - Leaflet <a href="http://leafletjs.com/">leafletjs.com</a> under BSD</br>
-               Markdown - Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin
-            </dl>
+               Map Library - Leaflet <a href="http://leafletjs.com/">leafletjs.com</a> under BSD<br/>
+               Markdown - Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin<br/>
+               Template Engine - RainTPL - Federico Ulfo <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>
+               Embed - Oscar Otero <a href="https://github.com/oscarotero/Embed">GitHub Embed</a> under MIT<br/><br />
+               WebSocket and Daemon engine - ReactPHP -  <a href="http://socketo.me/">socketo.me</a> ©Chris Boden<br/>
             </p>
         </li>
         <li class="condensed">
             <span class="icon bubble color brown"><i class="md md-insert-emoticon"></i></span>
             <span>{$c->__('title.resources')}</span>
             <p>
-                FontAwesome <a href="http://fortawesome.github.io/">by Dave Gandy</a> under CC BY 3.0</br>
-                Boyan Kostov <a href="http://boyankostov.com/">boyankostov.com</a> <a href="https://www.iconfinder.com/iconsets/flatified">Free for commercial use</a>
+                Material Design Iconic Font <a href="http://zavoloklom.github.io/material-design-iconic-font/icons.html">by Google and Sergey Kupletsky</a> under SIL OFL 1.1<br/>
             </p>
         </li>
         <li class="condensed">
             <span class="icon bubble color indigo"><i class="md md-import-export"></i></span>
             <span>{$c->__('title.api')}</span>
             <p>
-                OpenStreetMap - Nominatim <a href="http://nominatim.openstreetmap.org/">nominatim.openstreetmap.org</a></br>
-                Last.fm API - <a href="http://www.last.fm/api">www.last.fm/api</a></br>
-                Youtube API - <a href="http://developers.google.com/youtube">developers.google.com/youtube</a></br>
+                OpenStreetMap - Nominatim <a href="http://nominatim.openstreetmap.org/">nominatim.openstreetmap.org</a><br/>
+                Last.fm API - <a href="http://www.last.fm/api">www.last.fm/api</a><br/>
+                Youtube API - <a href="http://developers.google.com/youtube">developers.google.com/youtube</a><br/>
             </p>
         </li>
     </ul>

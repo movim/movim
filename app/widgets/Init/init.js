@@ -1,6 +1,12 @@
 var Init = {
     checkNode : function() {
-        if(localStorage.initialized != 'true') {
+        // TODO : very ugly, need to refactor this
+        var username = localStorage.getItem("username");
+        if(username == null) return;
+
+        var jid = username.replace("@", "at");
+        var init = localStorage.getObject(jid + "_Init") || {};
+        if(init.initialized != 'true') {
             Init_ajaxCreatePersistentStorage('storage:bookmarks');
             Init_ajaxCreatePersistentStorage('urn:xmpp:vcard4');
             Init_ajaxCreatePersistentStorage('urn:xmpp:avatar:data');
@@ -10,7 +16,13 @@ var Init = {
         }
     },
     setNode : function(node) {
-        localStorage.initialized = 'true';
+        // TODO : need to refactor this too
+        var username = localStorage.getItem("username");
+        if(username == null) return;
+
+        var init = localStorage.getObject(jid + "_Init") || {};
+        init.initialized = 'true';
+        localStorage.setObject(jid + "_Init", init);
     }
 }
 

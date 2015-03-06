@@ -21,6 +21,9 @@ ul.grid nav {
     width: 100%;
     padding: 0 2rem;
     box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1024px) {
@@ -35,4 +38,10 @@ ul.grid nav {
         width: calc(50% - 0.2em);
         padding-bottom: 50%;
     }
+}
+
+ul.grid:after {
+    content: "";
+    display: block;
+    clear: both;
 }
