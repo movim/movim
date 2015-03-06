@@ -56,13 +56,20 @@ class Chats extends WidgetCommon
         $chats = Cache::c('chats');
         if($chats == null) $chats = array();
 
-        if(!array_key_exists($jid, $chats)) {
+        if(!array_key_exists($jid, $chats)
+        && $jid != $this->user->getLogin()
+        && $jid != '') {
             $chats[$jid] = 1;
-            Cache::c('chats', $chats);
-
-            RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
-            RPC::call('Chats.refresh');
+        } else {
+            unset($chats[$jid]);
         }
+
+        $chats[$jid] = 1;
+
+        Cache::c('chats', $chats);
+
+        RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
+        RPC::call('Chats.refresh');
     }
 
     function ajaxClose($jid)
@@ -86,10 +93,23 @@ class Chats extends WidgetCommon
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
+        $view->assign('top', $cd->getTop(10));
+
+        Dialog::fill($view->draw('_chats_add', true), true);
+    }
+
+    /**
+     * @brief Display the extended list
+     */
+    function ajaxAddExtend()
+    {
+        $view = $this->tpl();
+
+        $cd = new \Modl\ContactDAO;
         $contacts = $cd->getRosterSimple();
         $view->assign('contacts', $contacts);
 
-        Dialog::fill($view->draw('_chats_add', true), true);
+        RPC::call('movim_fill', 'add_extend', $view->draw('_chats_add_extend', true));
     }
 
     function prepareChats()

@@ -3,9 +3,7 @@
 namespace Modl;
 
 class Postn extends Model {
-    public $session;
-
-    public $jid;            // Where the post is comming from (jid or server)
+    public $origin;         // Where the post is comming from (jid or server)
     public $node;           // microblog or pubsub
     public $nodeid;         // the ID if the item
         
@@ -23,7 +21,8 @@ class Postn extends Model {
     public $updated;        //
     public $delay;          //
 
-    public $tags;
+    public $tags;           // Store the tags
+    public $picture;        // Tell if the post contain embeded pictures
 
     public $lat;
     public $lon;
@@ -33,15 +32,13 @@ class Postn extends Model {
     public $privacy;
     
     public $hash;
-    
+
     public function __construct() {
         $this->hash = md5(openssl_random_pseudo_bytes(5));
         
         $this->_struct = '
         {
-            "session" : 
-                {"type":"string", "size":64, "mandatory":true, "key":true },
-            "jid" : 
+            "origin" : 
                 {"type":"string", "size":64, "mandatory":true, "key":true },
             "node" : 
                 {"type":"string", "size":96, "mandatory":true, "key":true },
@@ -76,6 +73,8 @@ class Postn extends Model {
                 
             "links" : 
                 {"type":"text" },
+            "picture" : 
+                {"type":"int", "size":4 },
             "tags" : 
                 {"type":"text" },
             "hash" : 
@@ -86,15 +85,12 @@ class Postn extends Model {
     }
     
     public function set($item, $from, $delay = false, $node = false) {
-        $user = new \User();
-        $this->session = $user->getLogin();
-
         if($item->item)
             $entry = $item->item;
         else
             $entry = $item;
         
-        $this->jid     = $from;
+        $this->origin       = $from;
         
         if($node)
             $this->node     = $node;
@@ -183,7 +179,7 @@ class Postn extends Model {
             $content .= '<br />'.$contentimg;
             
         if(!isset($this->commentplace))
-            $this->commentplace = $this->jid;
+            $this->commentplace = $this->origin;
             
         $this->content = trim($content);
         $this->contentcleaned = prepareString(html_entity_decode($this->content));
@@ -195,6 +191,10 @@ class Postn extends Model {
                 $this->lon = (string)$entry->entry->geoloc->lon;
         }
     }
+
+    private function typeIsPicture($type) {
+        return in_array($type, array('image/jpeg', 'image/png', 'image/jpg'));
+    }
     
     private function setAttachements($links) {
         $contentimg = '';
@@ -205,9 +205,13 @@ class Postn extends Model {
             $enc = array();
             $enc = (array)$attachment->attributes();
             $enc = $enc['@attributes'];
-            array_push($l, $enc); 
+            array_push($l, $enc);
 
-            
+            if(array_key_exists('type', $enc)
+            && $this->typeIsPicture($enc['type'])) {
+                $this->picture = true;
+            }
+
             if((string)$attachment->attributes()->title == 'comments') {
                 $substr = explode('?',substr((string)$attachment->attributes()->href, 5));
                 $this->commentplace = reset($substr);
@@ -231,7 +235,7 @@ class Postn extends Model {
             foreach($links as $l) {
                 switch($l['rel']) {
                     case 'enclosure' :
-                        if(in_array($l['type'], array('image/jpeg', 'image/png', 'image/jpg'))) {
+                        if($this->typeIsPicture($l['type'])) {
                             array_push($attachements['pictures'], $l);
                         } else {
                             array_push($attachements['files'], $l);
@@ -255,6 +259,15 @@ class Postn extends Model {
         if(isset($this->lat, $this->lon) && $this->lat != '' && $this->lon != '') {
             return true;
         }
+        else
+            return false;
+    }
+
+    public function isMine() {
+        $user = new \User();
+
+        if($this->origin == $user->getLogin())
+            return true;
         else
             return false;
     }

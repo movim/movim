@@ -106,7 +106,12 @@ class WidgetBase
         
         return $args[0];
     }
-    
+
+    function supported($key)
+    {
+        return $this->user->isSupported($key);
+    }
+
     function route() {
         return call_user_func_array('Route::urlize',func_get_args());
     }

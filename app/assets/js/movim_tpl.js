@@ -89,6 +89,9 @@ var MovimTpl = {
     toggleMenu : function() {
         movim_toggle_class('body > nav', 'active');
     },
+    hideMenu : function() {
+        movim_remove_class('body > nav', 'active');
+    },
     back : function() {
         // If a dialog box is shown
         if(Dialog.filled()) {
@@ -102,6 +105,10 @@ var MovimTpl = {
         } else {
             window.history.back();
         }
+    },
+    getHeaderColor : function() {
+        var header = document.querySelector('body main > header');
+        return window.getComputedStyle(header).backgroundColor;
     }
 }
 

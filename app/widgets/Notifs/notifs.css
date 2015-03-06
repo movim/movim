@@ -1,5 +1,4 @@
 #notifs_widget li:not(:first-child) {
-    margin-bottom: 0.5em;
     display: list-item;
 }
 

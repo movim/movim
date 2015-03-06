@@ -14,10 +14,13 @@
         "movim/sasl2": "dev-master",
         "movim/moxl": "dev-ws",
 
+        "embed/embed": "dev-master",
+        "heyupdate/emoji": "0.2.*@dev",
+
         "cboden/ratchet": "0.3.*",
-        "devristo/phpws": "dev-master",
         "react/child-process": "0.5.*@dev",
         "ratchet/pawl": "dev-master",
-        "react/socket-client": "0.4.*@dev"
+
+        "forxer/Gravatar": "~1.2"
     }
 }

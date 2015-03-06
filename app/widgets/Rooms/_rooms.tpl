@@ -1,4 +1,4 @@
-<ul class="thick divided active">
+<ul class="thick divided spaced active">
     <li class="subheader">
         {$c->__('chatrooms.title')}
     </li>

@@ -1,20 +1,14 @@
-<?php /* -*- mode: html -*- */
-?>
-<?php $this->widget('Presence');?>
-<?php $this->widget('Chat');?>
-<?php $this->widget('VisioExt');?>
+<?php $this->widget('Init');?>
 
-<div id="container">
-    <div id="left">
-        <?php $this->widget('Profile');?>
-        <?php $this->widget('Notifs');?>
-        <?php $this->widget('Bookmark'); ?>
-    </div>
-    <?php $this->widget('Menu');?>
-    <?php $this->widget('Post');?>
-</div>
+<nav class="color dark">
+    <?php $this->widget('Navigation');?>
+    <?php $this->widget('Presence');?>
+</nav>
 
-<div id="right">
-    <?php $this->widget('Roster');?>
-</div>
-
+<main>
+    <?php $this->widget('Header');?>
+    <section>
+        <?php $this->widget('Menu');?>
+        <?php $this->widget('Post');?>
+    </section>
+</main>

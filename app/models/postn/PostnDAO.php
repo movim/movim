@@ -24,15 +24,15 @@ class PostnDAO extends SQL {
                     lon             = :lon,
                     
                     links           = :links,
+                    picture         = :picture,
                     tags            = :tags,
                     
                     hash            = :hash
                     
-                where session = :session
-                    and jid = :jid
+                where origin = :origin
                     and node = :node
                     and nodeid = :nodeid';
-                    
+
         $this->prepare(
             'Postn', 
             array(
@@ -54,26 +54,24 @@ class PostnDAO extends SQL {
                 'lon'               => $post->lon,
                         
                 'links'             => $post->links,
+                'picture'           => $post->picture,
                 'tags'              => $post->tags,
                         
                 'hash'              => $post->hash,
-                        
-                'session'           => $post->session,
-                'jid'               => $post->jid,
+
+                'origin'            => $post->origin,
                 'node'              => $post->node,
                 'nodeid'            => $post->nodeid
             )
         );
         
         $this->run('Postn'); 
-        
+
         if(!$this->_effective) {
             $this->_sql ='
                 insert into postn
                 (
-                session,
-                
-                jid,
+                origin,
                 node,
                 nodeid,
                 
@@ -95,13 +93,12 @@ class PostnDAO extends SQL {
                 lon,
                 
                 links,
+                picture,
                 tags,
                 
                 hash)
-                values(
-                    :session,
-                    
-                    :jid,
+                values(                    
+                    :origin,
                     :node,
                     :nodeid,
                     
@@ -123,6 +120,7 @@ class PostnDAO extends SQL {
                     :lon,
                     
                     :links,
+                    :picture,
                     :tags,
                     
                     :hash
@@ -149,12 +147,12 @@ class PostnDAO extends SQL {
                     'lon'               => $post->lon,
                             
                     'links'             => $post->links,
+                    'picture'           => $post->picture,
                     'tags'              => $post->tags,
                             
                     'hash'              => $post->hash,
                             
-                    'session'           => $post->session,
-                    'jid'               => $post->jid,
+                    'origin'            => $post->origin,
                     'node'              => $post->node,
                     'nodeid'            => $post->nodeid
                 )
@@ -201,8 +199,8 @@ class PostnDAO extends SQL {
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            where postn.session = :session
-                and postn.jid = :jid
+            where ((postn.origin, node) in (select server, node from subscription where jid = :aid))
+                and postn.origin = :origin
                 and postn.node = :node
             order by postn.published desc';
 
@@ -212,9 +210,30 @@ class PostnDAO extends SQL {
         $this->prepare(
             'Postn', 
             array(
-                'session' => $this->_user,
-                'jid' => $from,
+                'aid' => $this->_user, // TODO: Little hack to bypass the check, need to fix it in Modl
+                'origin' => $from,
                 'node' => $node
+            )
+        );
+        
+        return $this->run('ContactPostn');
+    }
+
+    function getGallery($from) {
+        $this->_sql = '
+            select *, postn.aid, privacy.value as privacy from postn
+            left outer join contact on postn.aid = contact.jid
+            left outer join privacy on postn.nodeid = privacy.pkey
+            where (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')))
+                and postn.origin = :aid
+                and postn.picture = 1
+            order by postn.published desc';
+        
+        $this->prepare(
+            'Postn', 
+            array(
+                'origin' => $this->_user,
+                'aid' => $from // Another hack
             )
         );
         
@@ -226,14 +245,11 @@ class PostnDAO extends SQL {
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            where postn.session  = :session
-                and postn.nodeid = :nodeid
-            order by postn.published desc';
+            where postn.nodeid = :nodeid';
         
         $this->prepare(
             'Postn', 
             array(
-                'session' => $this->_user,
                 'nodeid' => $id
             )
         );
@@ -246,8 +262,15 @@ class PostnDAO extends SQL {
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            where postn.session = :session
-            order by postn.published desc';
+            where (
+                (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
+                or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\')
+                or ((postn.origin, node) in (select server, node from subscription where jid = :origin))
+                )
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
+            order by postn.published desc
+            ';
 
         if($limitr) 
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
@@ -258,7 +281,7 @@ class PostnDAO extends SQL {
         $this->prepare(
             'Postn', 
             array(
-                'session' => $jid
+                'origin' => $jid
             )
         );
         
@@ -267,14 +290,15 @@ class PostnDAO extends SQL {
 
     function getFeed($limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid as jid, privacy.value as privacy from postn
+            select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            where postn.session = :session
-				and postn.node like \'urn:xmpp:microblog:0\'
-                and (postn.jid in (select rosterlink.jid from rosterlink where rosterlink.session = :session)
-                    or postn.jid = :session)
-            order by postn.published desc';
+            where ((postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
+                or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\'))
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
+            order by postn.published desc
+            ';
 
         if($limitr) 
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
@@ -282,7 +306,7 @@ class PostnDAO extends SQL {
         $this->prepare(
             'Postn', 
             array(
-                'session' => $this->_user
+                'origin' => $this->_user
             )
         );
         
@@ -291,18 +315,12 @@ class PostnDAO extends SQL {
     
     function getNews($limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid as jid, privacy.value as privacy from postn
+            select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            left outer join subscription on 
-                postn.session = subscription.jid and 
-                postn.jid = subscription.server and
-                postn.node = subscription.node
-            where postn.session = :session
-				and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
-				and postn.node not like \'urn:xmpp:inbox\'
-                and subscription is not null
-            order by postn.published desc';
+            where ((postn.origin, node) in (select server, node from subscription where jid = :origin))
+            order by postn.published desc
+            ';
 
         if($limitr) 
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
@@ -310,21 +328,19 @@ class PostnDAO extends SQL {
         $this->prepare(
             'Postn', 
             array(
-                'session' => $this->_user
+                'origin' => $this->_user
             )
         );
         
         return $this->run('ContactPostn');
     }
     
-    
-    function getPublic($jid, $node) {
+    function getPublic($origin, $node) {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            where postn.jid = :jid
-                and postn.session = :jid
+            where postn.origin = :origin
                 and postn.node = :node
                 and privacy.value = 1
             order by postn.published desc';
@@ -332,14 +348,15 @@ class PostnDAO extends SQL {
         $this->prepare(
             'Postn', 
             array(
-                'jid' => $jid,
+                'origin' => $origin,
                 'node' => $node
             )
         );
         
         return $this->run('ContactPostn');
     }
-    
+
+    // TODO: fixme
     function getComments($posts) {
         $commentsid = '';
         if(is_array($posts)) {
@@ -387,7 +404,8 @@ class PostnDAO extends SQL {
             
         return $this->run('Postn');
     }
-    
+
+    // TODO: fixme
     function getStatistics() {
         $this->_sql = '
             select count(*) as count, extract(month from published) as month, extract(year from published) as year 
@@ -408,20 +426,20 @@ class PostnDAO extends SQL {
     function getCountSince($date) {
         $this->_sql = '
             select count(*) from postn
-            left outer join subscription on 
-            postn.session = subscription.jid and 
-            postn.jid = subscription.server and
-            postn.node = subscription.node
-            where postn.session = :session
-                    and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
-                    and postn.node not like \'urn:xmpp:inbox\'
-            and subscription is not null
-            and published > :published';
+            where (
+                (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
+                or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\')
+                or ((postn.origin, node) in (select server, node from subscription where jid = :origin))
+                )
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
+                and published > :published
+                ';
         
         $this->prepare(
             'Postn', 
             array(
-                'session' => $this->_user,
+                'origin' => $this->_user,
                 'published' => $date
             )
         );
@@ -436,21 +454,20 @@ class PostnDAO extends SQL {
     function getLastDate() {
         $this->_sql = '
             select published from postn
-            left outer join subscription on 
-            postn.session = subscription.jid and 
-            postn.jid = subscription.server and
-            postn.node = subscription.node
-            where postn.session = :session
-                    and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
-                    and postn.node not like \'urn:xmpp:inbox\'
-            and subscription is not null
+            where (
+                (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
+                or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\')
+                or ((postn.origin, node) in (select server, node from subscription where jid = :origin))
+                )
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
             order by postn.published desc
             limit 1 offset 0';
         
         $this->prepare(
             'Postn', 
             array(
-                'session' => $this->_user
+                'origin' => $this->_user
             )
         );
         
@@ -462,14 +479,12 @@ class PostnDAO extends SQL {
     function exist($id) {
         $this->_sql = '
             select count(*) from postn
-            where postn.session = :session
-                    and postn.nodeid = :nodeid
+            where postn.nodeid = :nodeid
             ';
         
         $this->prepare(
             'Postn', 
             array(
-                'session'   => $this->_user,
                 'nodeid'    => $id
             )
         );

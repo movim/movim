@@ -1,6 +1,6 @@
 <nav class="color dark">
-    <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
+    <?php $this->widget('Presence');?>
 </nav>
 
 <main>
@@ -11,8 +11,9 @@
             <?php $this->widget('Vcard4');?>
             <?php $this->widget('Avatar');?>
             <?php $this->widget('Config');?>
+            <?php $this->widget('AdHoc');?>
             <?php //$this->widget('ConfigData');?>
-            <?php $this->widget('PubsubSubscriptionConfig');?>
+            <?php //$this->widget('PubsubSubscriptionConfig');?>
         </div>
     </section>
 </main>

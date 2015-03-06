@@ -35,7 +35,7 @@ class XMPPtoForm{
                     break;
                 case "field":
                     if($element['type'] != 'hidden' && $element['type'] != 'fixed')
-                        $this->html .='<div class="element">';
+                        $this->html .='<div>';
                     switch($element['type']){
                         case "boolean":    
                             $this->outCheckbox($element);
@@ -134,26 +134,36 @@ class XMPPtoForm{
 
     private function outCheckbox($s){
         $this->html .= '
-            <input 
-                id="'.$s['var'].'" 
-                name="'.$s['var'].'" 
-                type="'.$s['type'].'"
-                label="'.$s['label'].'"
-                type="checkbox" '.$s->required;
-            if($s->value == "true" || $s->value == "1")
-                $this->html .= ' checked';
-        $this->html .= '/>';
-
-        $this->html .= '
-            <label for="'.$s['var'].'">';
+        <ul class="simple">
+            <li class="action">
+                <span>';
                 if($s['label']==null){
                     $this->html .= $s['var'];
                 }
                 else{
                     $this->html .= $s['label'];
                 }
-        $this->html .= '
-            </label>';
+            $this->html .= '
+                </span>';
+            $this->html .= '
+                <div class="action">
+                    <div class="checkbox">
+                        <input 
+                            id="'.$s['var'].'" 
+                            name="'.$s['var'].'" 
+                            type="checkbox"
+                            label="'.$s['label'].'"
+                            type="checkbox" '.$s->required;
+                        if($s->value == "true" || $s->value == "1")
+                            $this->html .= ' checked';
+                    $this->html .= '/>';
+
+                    $this->html .= '
+                        <label for="'.$s['var'].'"></label>
+                    </div>
+                </div>
+            </li>
+        </ul>';
     }
     
     private function outTextarea($s){
@@ -163,15 +173,17 @@ class XMPPtoForm{
                 name="'.$s["var"].'" 
                 type="'.$s['type'].'"
                 label="'.$s['label'].'"
-                required="'.$s->required.'">
-            <label for="'.$s["var"].'">'.$s["label"].'</label>';
+                required="'.$s->required.'">';
                 
         foreach($s->children() as $value){
             if($value->getName() == "value"){
-                $this->html .= $value;
+                $this->html .= $value. "\n";
             }
         }
         $this->html .= '</textarea>';
+
+        $this->html .= '
+            <label for="'.$s["var"].'">'.$s["label"].'</label>';
     }
     
     private function outInput($s, $type, $multiple){
@@ -278,6 +290,9 @@ class FormtoXMPP{
             case "pubsub":
                 $node = $this->stream->configure->x;
                 break;
+            case "command":
+                $node = $this->stream->x;
+                break;
         }
         foreach($this->inputs as $key => $value) {
             if($value === '' && $this->stream->getName() == "stream") {
@@ -292,9 +307,9 @@ class FormtoXMPP{
                 $node->addChild($key, $value);
             } elseif($value->attributes) {
                 $field = $node->addChild('field');
-                if($value == 'true')
+                if($value == 'true' || $value === 1)
                     $value = '1';
-                if($value == 'false')
+                if($value == 'false' || $value === 0)
                     $value = '0';
                     
                 $field->addChild('value', trim($value->value));
@@ -307,10 +322,14 @@ class FormtoXMPP{
             } else{
                 $field = $node->addChild('field');
 
-                if($value == 'true' || $value === 1)
+                if($value == 'true')
                     $value = '1';
-                if($value == 'false' || $value === 0)
+                if($value == 'false')
                     $value = '0';
+
+                if(is_bool($value)) {
+                    $value = ($value) ? '1' : '0';
+                }
                     
                 $field->addChild('value', trim($value));
                 $field->addAttribute('var', trim($key));
