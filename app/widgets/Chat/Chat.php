@@ -88,6 +88,14 @@ class Chat extends WidgetCommon
     }
 
     /**
+     * @brief Get the path of a emoji
+     */
+    function ajaxSmileyGet($string)
+    {
+        return prepareString($string, true);
+    }
+
+    /**
      * @brief Get a discussion
      * @parem string $jid
      */
@@ -245,6 +253,8 @@ class Chat extends WidgetCommon
         $view->assign('jid', $jid);
         $view->assign('messages', $this->prepareMessages($jid));
 
+        $jid = echapJS($jid);
+
         $view->assign('composing', $this->call('ajaxSendComposing', "'" . $jid . "'"));
         $view->assign('paused', $this->call('ajaxSendPaused', "'" . $jid . "'"));
 
@@ -256,6 +266,8 @@ class Chat extends WidgetCommon
                 "Chat.sendMessage('" . $jid . "')")
             );
         $view->assign('smiley', $this->call('ajaxSmiley'));
+
+        $view->assign('emoji', prepareString('😀'));
 
         if($muc)
         {
@@ -308,15 +320,19 @@ class Chat extends WidgetCommon
         $view->assign('me', $me);
         $view->assign('message', $message);
 
-        $cd = new \Modl\ContactDAO;
-        $presences = $cd->getPresence($jid);
-        $contacts = array();
+        if($message->type == 'groupchat') {
+            $cd = new \Modl\ContactDAO;
+            $presences = $cd->getPresence($jid);
+            $contacts = array();
 
-        foreach($presences as $presence) {
-            $contacts[$presence->resource] = $presence;
+            foreach($presences as $presence) {
+                $contacts[$presence->resource] = $presence;
+            }
+
+            $view->assign('contacts', $contacts);
+        } else {
+            $view->assign('contacts', array());
         }
-
-        $view->assign('contacts', $contacts);
 
         return $view->draw('_chat_message', true);        
     }
