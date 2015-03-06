@@ -318,6 +318,7 @@ class ContactDAO extends SQL {
                     'yahoo'             => $contact->yahoo,
 
                     'created'           => date(DATE_ISO8601),
+                    'updated'           => date(DATE_ISO8601),
                     
                     'jid'  => $contact->jid
                 )
@@ -360,7 +361,8 @@ class ContactDAO extends SQL {
             'select *, privacy.value as privacy from contact 
             left outer join privacy 
                 on contact.jid = privacy.pkey
-            where privacy.value = 1';
+            where privacy.value = 1
+            order by created desc';
 
         if($limitr) 
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;

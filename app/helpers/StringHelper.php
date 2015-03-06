@@ -9,54 +9,7 @@ use HeyUpdate\Emoji\EmojiIndex;
  * @param string $string
  * @return string
  */
-function prepareString($string) {
-    $smileys = 
-        array(
-            // HFR icons
-            ":'\("  => 'cry.gif',
-            ':love:'=> 'love.gif',
-            'O:\)'  => 'ange.gif',
-            'O:-\)' => 'ange.gif',
-            ':redface:' => 'redface.gif',
-            ':petrus:'  => 'petrus75.gif',
-            
-            // famfamfam icons
-            ':\)\)' => 'grin.png',
-            ':\)'   => 'smiley.png',
-            ':-\)'  => 'smiley.png',
-            ':\('   => 'sad.png',
-            ':o'    => 'shocked.png',
-            ':O'    => 'shocked.png',
-            ':D'    => 'grin.png',
-            ':d'    => 'grin.png',
-            ':p'    => 'tongue.png',
-            ':P'    => 'tongue.png',
-            ':-P'   => 'tongue.png',
-            ';D'    => 'wink.png',
-            ';d'    => 'wink.png',
-            ';\)'   => 'wink.png',
-            '\^\^'  => 'happy.png',
-            '\(k\)' => 'heart.png',
-            'B\)'   => 'cool.png',
-            ':s'    => 'confused.png',
-            ':S'    => 'confused.png',
-            ':\/'   => 'wondering.png',
-            ':evil:'=> 'evil.png',
-            ":\|"   => 'neutral.png',
-            
-            // Meme icons
-            ':okay:'        => 'okay.gif',
-            ':trolldad:'    => 'trolldad.png',
-            ':epic:'        => 'epic.png',
-            ':aloneyeah:'   => 'aloneyeah.png',
-            ':fapfap:'      => 'fapfap.png',
-            ':megusta:'     => 'gusta.png',
-            ':trollface:'   => 'trollface.png',
-            ':troll:'       => 'trollface.png',
-            ':lol:'         => 'trollol.png',
-            ':genius:'      => 'genius.png',
-        );
-
+function prepareString($string, $large = false) {
     //replace begin by www
     $string = preg_replace_callback(
             '/(^|\s|>)(www.[^<> \n\r]+)/ix', function ($match) {
@@ -122,6 +75,12 @@ function prepareString($string) {
                 return '';
             }, ' ' . $string
     );
+    //remove all iframe
+    $string = preg_replace_callback(
+            '#<[/]?ss[^>]*>#is', function ($match) {
+                return '';
+            }, ' ' . $string
+    );
    
     // We add some smileys...
     $cd = new \Modl\ConfigDAO();
@@ -130,12 +89,7 @@ function prepareString($string) {
     
     $path = BASE_URI . 'themes/' . $theme . '/img/emojis/';
 
-    /*
-
-    foreach($smileys as $key => $value) {
-        $replace = ' <img class="smiley" alt="smiley" src="'.$path.$value.'">';
-        $string = preg_replace('/(^|[ ])('.$key.')/',  $replace, $string);
-    }*/
+    if($large) $path .= 'large/';
 
     $emoji = new Emoji(new EmojiIndex(), $path.'%s.png');
     $string = $emoji->replaceEmojiWithImages($string);

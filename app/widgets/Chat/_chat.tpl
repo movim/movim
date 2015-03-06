@@ -5,10 +5,10 @@
     <div id="{$jid}_state"></div>
 </div>
 <div class="chat_box">
-    <ul class="simple thin">
+    <ul class="thin">
         <li class="action">
-            <span class="icon gray">
-                <i class="md md-create"></i>
+            <span class="icon gray emojis_open" onclick="Chat_ajaxSmiley()">
+                {$c->ajaxSmileyGet('😃')}
             </span>
             <div class="action" onclick="{$send}">
                 <i class="md md-send"></i>
