@@ -16,6 +16,8 @@
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
+            document.getElementById("spinner").style.display = "block";
+            
             /* Sort groups alphabetically */
             list.sort(groupnameCompare);
             
@@ -30,6 +32,8 @@
                     $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
                 }
             }
+            
+            document.getElementById("spinner").style.display = "none";
             $scope.$apply();
         };
         

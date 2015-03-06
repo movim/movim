@@ -78,3 +78,10 @@
 #roster.search ul#rosterlist div > li.found {
     display: list-item;
 }
+
+#roster ul#rosterlist > div#spinner{
+    width: 150px;
+    position: relative;
+    margin: 50% auto;
+    overflow: visible;
+}
