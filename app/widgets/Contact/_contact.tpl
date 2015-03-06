@@ -1,11 +1,38 @@
 {if="$contact != null"}
-    <ul class="thick">
-        <li>
-            <span class="icon bubble"><img src="{$contact->getPhoto('l')}"></span>
-            <h2>{$contact->getTrueName()}</h2>
-        </li>
-    </ul>
-    <ul>
+    <header class="big" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');">
+        <ul class="thick">
+            <li class="">
+                <span class="icon bubble"><img src="{$contact->getPhoto('l')}"></span>
+                <span>
+                    <h2>{$contact->getTrueName()}</h2>
+                </span>
+            </li>
+            {if="$caps"}
+                <li class="">
+                    <span class="icon">
+                        <i class="md
+                            {if="$caps->type == 'handheld' || $caps->type == 'phone'"}
+                                md-phone-android
+                            {elseif="$caps->type == 'bot'"}
+                                md-memory
+                            {else}
+                                md-laptop
+                            {/if}
+                        ">
+                        </i>
+                    </span>
+                    <span>
+                        {$caps->name}
+                        {if="isset($clienttype[$caps->type])"}
+                            - {$clienttype[$caps->type]}
+                        {/if}
+                    </span>
+                </li>
+            {/if}
+        </ul>
+    </header>
+    <br />
+    <ul class="flex">
         {if="$contact->delay != null"}
         <li class="condensed block">
             <span class="icon brown"><i class="md md-restore"></i></span>
@@ -99,11 +126,51 @@
         {/if}
     </ul>
 
+    {if="$contact->tuneartist || $contact->tunetitle"}
+    <ul class="flex">
+        <li class="subheader block large">{$c->__('general.tune')}</li>
+        
+        {$img_array = $c->getLastFM($contact)}
+        <li class="
+            block
+            {if="$contact->tunetitle"}condensed{/if}
+            {if="isset($img_array[1]) && $img_array[1] != ''"} action{/if}
+            ">
+            {if="isset($img_array[1]) && $img_array[1] != ''"}
+                <div class="action">
+                    <a href="{$img_array[1]}" target="_blank">
+                        <i class="md md-radio"></i>
+                    </a>
+                </div>
+            {/if}
+            <span class="icon bubble">
+                {if="isset($img_array[0]) && $img_array[0] != ''"}
+                    <img src="{$img_array[0]}"/>
+                {else}
+                    <i class="md md-play-circle-fill"></i>
+                {/if}
+            </span>
+            <span>
+                {if="$contact->tuneartist"}
+                    {$contact->tuneartist} - 
+                {/if}
+                {if="$contact->tunesource"}
+                    {$contact->tunesource}
+                {/if}
+            </span>
+
+            {if="$contact->tunetitle"}
+                <p>{$contact->tunetitle}</p>
+            {/if}
+        </li>
+    </ul>
+    {/if}
+
     <div class="clear"></div>
     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
-    <ul>
-        <li class="subheader"></li>
-        <li class="subheader">{$c->__('position.legend')}</li>
+    <br />
+    <ul class="flex">
+        <li class="subheader block large">{$c->__('position.legend')}</li>
 
         {if="$contact->adrlocality != null"}
         <li class="condensed block">
@@ -128,8 +195,8 @@
 
     <div class="clear"></div>
     {if="$contact->twitter != null || $contact->skype != null || $contact->yahoo != null"}
-    <ul class="thick">
-        <li class="subheader">{$c->__('general.accounts')}</li>
+    <ul class="flex">
+        <li class="subheader block large">{$c->__('general.accounts')}</li>
 
         {if="$contact->twitter != null"}
         <li class="condensed block">
@@ -173,6 +240,24 @@
     </ul>
     {/if}
 
+    {if="isset($gallery)"}
+        <br />
+        <h3 class="padded">{$c->__('page.gallery')}</h3>
+        <br />
+        <ul class="grid">
+            {loop="$gallery"}
+                {$attachements = $value->getAttachements()}
+                <li style="background-image: url('{$attachements['pictures'][0]['href']}');">
+                    <nav>
+                        <a href="{$attachements['pictures'][0]['href']}" target="_blank">
+                            {$attachements['pictures'][0]['title']}
+                        </a>
+                    </nav>
+                </li>
+            {/loop}
+        </ul>
+    {/if}
+
     <a onclick="{$chat}" class="button action color red">
         <i class="md md-chat"></i>
     </a>
@@ -184,3 +269,4 @@
         </li>
     </ul>
 {/if}
+<br />

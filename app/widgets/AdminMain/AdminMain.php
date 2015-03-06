@@ -34,9 +34,17 @@ class AdminMain extends WidgetBase
             }
 
             unset($form['repassword']);
+
+            if(isset($form['rewrite']) && $form['rewrite'] == 'on') {
+                $form['rewrite'] = 1;
+            } else {
+                $form['rewrite'] = 0;
+            }
+
             foreach($form as $key => $value) {
                 $config->$key = $value;
             }
+
             $cd->set($config);
             
             //set timezone
@@ -85,6 +93,11 @@ class AdminMain extends WidgetBase
 
         if(isset($json) && $json->status != 404) {
             $this->view->assign('websockets', $json);
+        }
+
+        $this->view->assign('server_rewrite', false);
+        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
+            $this->view->assign('server_rewrite', true);
         }
         
         $this->view->assign('timezones', getTimezoneList());

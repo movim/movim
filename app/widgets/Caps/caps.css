@@ -3,6 +3,8 @@
     display: block;
     
     overflow: auto;
+
+    font-size: 2rem;
 }
 
 #caps_widget table tr:not(:first-child):hover{
@@ -50,6 +52,10 @@
     color: white;
 }
 
-body {
-    padding-right: 0;
+#caps_widget table td {
+    padding: 0 0.5rem;
+}
+
+main > section > div > * {
+    max-width: calc(100% - 4rem);
 }

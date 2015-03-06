@@ -4,14 +4,14 @@
             <div id="webserver">
 
             </div>
-            <div id="movim-daemon" class="link vertical disabled"><i class="fa fa-cog"></i></div>
-            <div id="movim-browser" class="link horizontal success"><i class="fa fa-globe"></i></div>
-            <div id="browser-daemon" class="link horizontal error"><i class="fa fa-plug"></i></div>
-            <div id="daemon-xmpp" class="link horizontal error"><i class="fa fa-code"></i></div>
+            <div id="movim-daemon" class="link vertical disabled"><i class="md md-settings"></i></div>
+            <div id="movim-browser" class="link horizontal success"><i class="md md-open-in-browser"></i></div>
+            <div id="browser-daemon" class="link horizontal error"><i class="md md-settings-ethernet"></i></div>
+            <div id="daemon-xmpp" class="link horizontal error"><i class="md md-import-export"></i></div>
             <div id="movim-database" class="link vertical {if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
-                <i class="fa fa-database"></i>
+                <i class="md md-data-usage"></i>
             </div>
-            <div id="movim-api" class="link horizontal disabled"><i class="fa fa-puzzle-piece"></i></div>
+            <div id="movim-api" class="link horizontal disabled"><i class="md md-cloud"></i></div>
             <div id="browser_block">
                 Browser
             </div>
@@ -41,7 +41,7 @@
         {if="$dbconnected"}
             {if="$dbinfos > 0"}
                 <li>
-                    <span class="icon bubble color orange"><i class="fa fa-refresh"></i></span>
+                    <span class="icon bubble color orange"><i class="md md-refresh"></i></span>
                     <span>The database need to be updated, go to the database panel to fix this</span>
                 </li>
             {else}
@@ -49,7 +49,7 @@
             {/if}
         {else}
             <li class="condensed">
-                <span class="icon bubble color red"><i class="fa fa-database"></i></span>
+                <span class="icon bubble color red"><i class="md md-data-usage"></i></span>
                 <span>Database connection error</span>
                 <p>Check if database configuration exist in the <code>config/</code> folder and fill it with proper values</p>
             </li>
@@ -57,7 +57,7 @@
 
         <li id="websocket_error">
             <span class="icon bubble color red">
-                <i class="fa fa-plug"></i> 
+                <i class="md md-settings-ethernet"></i> 
             </span>
             <span>
                 WebSocket connection error, check if the Movim Daemon is running and is reacheable
@@ -66,7 +66,7 @@
         
         <li id="xmpp_websocket_error">
             <span class="icon bubble color red">
-                <i class="fa fa-plug"></i>
+                <i class="md md-settings-ethernet"></i>
             </span>
             <span>
                 XMPP Websocket connection error, please check the validity of the URL given in the General Configuration. <code>{$websocketurl}</code>
@@ -75,31 +75,41 @@
 
         {if="!$c->version()"}
             <li class="condensed">
-                <span class="icon color bubble red"><i class="fa fa-code"></i> </span>
+                <span class="icon color bubble red">
+                    <i class="md md-sync-problem"></i>
+                </span>
                 <span>{$c->__('compatibility.php1', PHP_VERSION)}</span>
                 <p>{$c->__('compatibility.php2')}</p>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
-        {if="!extension_loaded('gd')"}
-            <div class="message error">
-                <i class="fa fa-file-image-o"></i> {$c->__('compatibility.gd')}
+        {if="!extension_loaded('imagick')"}
+            <li>
+                <span class="icon color bubble red">
+                    <i class="md md-image"></i>
+                </span>
+                <span>
+                    {$c->__('compatibility.imagick')}
+                </span>
             </div>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
         {if="!$c->testDir(DOCUMENT_ROOT)"}
-            <div class="message error">
-                <i class="fa fa-folder"></i> {$c->__('compatibility.rights')}
-            </div>
+            <li>
+                <span class="icon color bubble red">
+                    <i class="md md-folder"></i>
+                </span>
+                <span>{$c->__('compatibility.rights')}</span>
+            </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
         {if="!$_SERVER['HTTP_MOD_REWRITE']"}
             <li>
                 <span class="icon bubble color orange">
-                    <i class="fa fa-pencil"></i>
+                    <i class="md md-mode-edit"></i>
                 </span>
                 <span>{$c->__('compatibility.rewrite')}</span>
             </li>

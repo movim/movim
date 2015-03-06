@@ -19,58 +19,62 @@ class Chat extends WidgetCommon
     function onMessage($packet)
     {
         $message = $packet->content;
+        $cd = new \Modl\ContactDAO;
 
         if($message->session == $message->jidto) {
             $from = $message->jidfrom;
 
-            $cd = new \Modl\ContactDAO;
-            $contact = $cd->get($from);
+            $contact = $cd->getRosterItem($from);
+            if($contact == null)
+                $contact = $cd->get($from);
             
             if($contact != null
             && !preg_match('#^\?OTR#', $message->body)
             && $message->type != 'groupchat') {
                 Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $contact->getPhoto('s'), 4);
             }
+
+            RPC::call('movim_fill', $from.'_state', '');     
         // If the message is from me
         } else {
             $from = $message->jidto;
+            $contact = $cd->get();
         }
 
-        RPC::call('movim_fill', $from.'_messages', $this->prepareMessages($from));        
+        $me = $cd->get();
+        if($me == null) {
+            $me = new \Modl\Contact;
+        }
+
+        RPC::call('movim_append', $from.'_conversation', $this->prepareMessage($message, $from, $contact, $me));
         RPC::call('MovimTpl.scrollPanel');
     }
 
     function onComposing($array)
     {
-        list($from, $to) = $array;
-        $myself = false;
-
-        if($from == $this->user->getLogin()) {
-            // If the message is from me
-            $myself = true;
-            $jid = $to;
-        } else {
-            $jid = $from;
-        }
-        
-        RPC::call('movim_fill', $jid.'_messages', $this->prepareMessages($jid, 'composing', $myself));
-        RPC::call('MovimTpl.scrollPanel');
+        $this->setState($array, $this->__('message.composing'));
     }
 
     function onPaused($array)
     {
-        list($from, $to) = $array;
-        $myself = false;
+        $this->setState($array, $this->__('message.paused'));
+    }
 
+    private function setState($array, $message)
+    {
+        list($from, $to) = $array;
         if($from == $this->user->getLogin()) {
-            // If the message is from me
-            $myself = true;
             $jid = $to;
         } else {
             $jid = $from;
         }
-        
-        RPC::call('movim_fill', $jid.'_messages', $this->prepareMessages($jid, 'paused', $myself));
+
+        $view = $this->tpl();
+        $view->assign('message', $message);
+
+        $html = $view->draw('_chat_state', true);
+
+        RPC::call('movim_fill', $jid.'_state', $html);
         RPC::call('MovimTpl.scrollPanel');
     }
 
@@ -142,7 +146,7 @@ class Chat extends WidgetCommon
         
         if($muc) {
             $m->type        = 'groupchat';
-            $m->resource   = $session->user;
+            $m->resource    = $session->user;
             $m->jidfrom     = $to;
         }
         
@@ -237,7 +241,7 @@ class Chat extends WidgetCommon
     function prepareChat($jid, $muc = false)
     {
         $view = $this->tpl();
-        
+
         $view->assign('jid', $jid);
         $view->assign('messages', $this->prepareMessages($jid));
 
@@ -268,7 +272,7 @@ class Chat extends WidgetCommon
         return $view->draw('_chat', true);
     }
 
-    function prepareMessages($jid, $status = false, $myself = false)
+    function prepareMessages($jid)
     {
         $md = new \Modl\MessageDAO();
         $messages = $md->getContact(echapJid($jid), 0, 15);
@@ -277,25 +281,32 @@ class Chat extends WidgetCommon
         $view = $this->tpl();
 
         $contact = $cd->get($jid);
-        /*if($contact == null) {
-            $contact = new \Modl\Contact;
-            $contact->jid = $jid;
-        } */
-        
         $me = $cd->get();
         if($me == null) {
             $me = new \Modl\Contact;
         }      
 
         $messages = array_reverse($messages);
-        
+
+        $messages_html = '';
+        foreach($messages as $m) {
+            $messages_html .= $this->prepareMessage($m, $jid, $contact, $me);
+        }
+
+        $view->assign('jid', $jid);
+        $view->assign('messages_html', $messages_html);
+
+        return $view->draw('_chat_messages', true);
+    }
+
+    function prepareMessage($message, $jid, $contact, $me)
+    {
+        $view = $this->tpl();
+
         $view->assign('jid', $jid);
         $view->assign('contact', $contact);
         $view->assign('me', $me);
-        $view->assign('messages', $messages);
-
-        $view->assign('status', $status);
-        $view->assign('myself', $myself);
+        $view->assign('message', $message);
 
         $cd = new \Modl\ContactDAO;
         $presences = $cd->getPresence($jid);
@@ -306,9 +317,8 @@ class Chat extends WidgetCommon
         }
 
         $view->assign('contacts', $contacts);
-        
 
-        return $view->draw('_chat_messages', true);
+        return $view->draw('_chat_message', true);        
     }
 
     function prepareEmpty()

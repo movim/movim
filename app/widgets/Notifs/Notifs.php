@@ -39,6 +39,7 @@ class Notifs extends WidgetCommon
     {
         $html = $this->prepareNotifs();
         RPC::call('movim_fill', 'notifs_widget', $html);
+        RPC::call('Notifs.refresh');
     }
 
     /*
@@ -66,9 +67,17 @@ class Notifs extends WidgetCommon
         return $nft->draw('_notifs_from', true);
     }
 
-    function ajaxAccept($jid) {
+    function ajaxAsk($jid)
+    {
+        $view = $this->tpl();
+        $view->assign('jid', $jid);
+        Dialog::fill($view->draw('_notifs_confirm', true));
+    }
+
+    function ajaxAccept($jid)
+    {
         $jid = echapJid($jid);
-        
+
         $r = new AddItem;
         $r->setTo($jid)
           ->setFrom($this->user->getLogin())
@@ -90,7 +99,8 @@ class Notifs extends WidgetCommon
         Cache::c('activenotifs', $notifs);
     }
 
-    function ajaxRefuse($jid) {
+    function ajaxRefuse($jid)
+    {
         $jid = echapJid($jid);
         
         $p = new Unsubscribed;
@@ -107,11 +117,13 @@ class Notifs extends WidgetCommon
         $this->onNotifs();
     }
 
-    function genCallAccept($jid) {
+    function genCallAccept($jid)
+    {
         return $this->call('ajaxAccept', "'".$jid."'");
     }
 
-    function genCallRefuse($jid) {
+    function genCallRefuse($jid)
+    {
         return $this->call('ajaxRefuse', "'".$jid."'");
     }
 }

@@ -51,11 +51,11 @@ figure div.link {
 }
 
 figure div.link i {
-    background-color: white;
-    margin-top: -0.75em;
-    padding: 0.25em;
-    border-radius: 2em;
-    font-size: 2em;
+    background-color: #FFF;
+    margin-top: -3rem;
+    padding: 3rem 1rem;
+    border-radius: 6rem;
+    font-size: 3rem;
 }
 
 figure div.disabled    { background-color: rgba(0, 0, 0, 0.1); color: white;}

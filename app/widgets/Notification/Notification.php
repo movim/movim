@@ -25,9 +25,11 @@ class Notification extends WidgetCommon
             RPC::call('Notification.toast', $title);
             return;
         }
-        
+
         $session = Session::start();
         $notifs = $session->get('notifs');
+
+        RPC::call('Notification.desktop', $title, $body, $picture);
 
         $notifs_key = $session->get('notifs_key');
         if($notifs_key != null && $key == $notifs_key) return;
@@ -45,17 +47,18 @@ class Notification extends WidgetCommon
 
         RPC::call('Notification.counter', $first, $notifs[$first]);
 
-        if(array_key_exists($key, $notifs)) {
-            $notifs[$key]++;
-        } else {
-            $notifs[$key] = 1;
-        }
+        if($first != $key) {
+            if(array_key_exists($key, $notifs)) {
+                $notifs[$key]++;
+            } else {
+                $notifs[$key] = 1;
+            }
 
-        RPC::call('Notification.counter', $key, $notifs[$key]);
+            RPC::call('Notification.counter', $key, $notifs[$key]);
+        }
 
         $n = new Notification;
         RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture), $time);
-        RPC::call('Notification.desktop', $title, $body, $picture);
 
         $session->set('notifs', $notifs);
     }

@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 0;
     background-color: white;
-    width: 75%;
+    width: 70%;
     max-width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
@@ -16,8 +16,13 @@
     width: calc(100% - 1rem);
 }
 
+#chat_widget .chat_box form > div {
+    min-height: 0;
+    margin-bottom: -1rem;
+}
+
 #chat_widget .chat_box form textarea {
-    margin-bottom: 0;
+    padding: 3rem 0px 1rem;
 }
 
 #chat_widget .chat_box div.action {

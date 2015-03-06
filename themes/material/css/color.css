@@ -1,6 +1,7 @@
 /* Color */
 
-*.divided > *:not(:last-child) {
+*.divided > *:not(:last-child),
+*.divided.spaced > *:not(:last-child):after {
     border-color: rgba(0, 0, 0, 0.12);
 }
 
@@ -10,13 +11,14 @@
 }
 
 .color.dark {
-    background-color: #1F1F1F;
+    background-color: #212121;
 }
 
 .color.dark *.divided > *:not(:last-child) {
     border-color: rgba(255, 255, 255, 0.05);
 }
 
+main > header a,
 .color input {
     color: white;
 }
@@ -78,22 +80,56 @@ label.orange, .icon.orange   { color: #FF9800; }
 label.yellow, .icon.yellow   { color: #FFEB3B; }
 label.brown , .icon.brown    { color: #795548; }
 label.gray  , .icon.gray     { color: #9E9E9E; }
-/*
-form input:focus,
-form textarea:focus {
-    border-bottom: 2px solid #2196F3;
-}
-form input:focus + label,
-form textarea:focus + label {
-    color: #2196F3;
-}
-*/
-form input:focus:invalid {
+
+form input:focus:invalid,
+form textarea:focus:invalid {
     border-bottom-color: #F44336;
 }
-form input:focus:invalid + label {
+form input:focus:invalid + label,
+form textarea:focus:invalid + label {
     color: #F44336;
 }
+
+/* Default color : violet */
+
+.button.color,
+input[type=button].color,
+ul li span.counter,
+main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
+
+.tabs,
+.tabs a:not(.classic) {
+    border-color: #3F51B5;
+    color: #3F51B5;
+}
+
+/* Gray accent : orange */
+
+.button,
+input[type=button],
+a:not(.classic) { color: #FF5722; border-color: #FF5722; }
+
+form > div .checkbox:before { background-color: #FFE0B2; }
+form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #FF5722; }
+
+.button.color,
+ul li span.counter,
+form > div .radio > input[type="radio"]:checked + label {
+    border-color: #FF5722;
+    background-color: #FF5722;
+}
+
+form input:focus:not(:invalid) + label,
+form textarea:focus:not(:invalid) + label {
+    color: #FF5722;
+}
+
+form input:focus:not(:invalid),
+form textarea:focus:not(:invalid) {
+    border-bottom-color: #FF5722;
+}
+
+
 /*
 form input:focus:valid {
     border-bottom: 2px solid #4CAF50;
@@ -105,20 +141,23 @@ form input:focus:valid + label {
 /* Global color palette */
 
 /* Indigo */
+/*
 body.indigo .button.color,
 body.indigo input[type=button].color,
 body.indigo ul li span.counter,
 body.indigo main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
-
+*/
 /* 200 */
+/*
 body.indigo main > header a { color: #9fa8da; }
 
 body.indigo .tabs,
 body.indigo .button,
 body.indigo input[type=button],
 body.indigo a:not(.classic) { color: #303F9F; border-color: #303F9F; }
-
+*/
 /* Indigo accent : pink */
+/*
 body.indigo form > div .checkbox:before { background-color: #FF80AB; }
 body.indigo form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #F50057; }
 
@@ -136,9 +175,9 @@ body.indigo form input:focus:not(:invalid),
 body.indigo form textarea:focus:not(:invalid) {
     border-bottom-color: #F50057;
 }
-
+*/
 /* Gray */
-
+/*
 body.gray .button.color,
 body.gray input[type=button].color,
 body.gray ul li span.counter,
@@ -148,9 +187,9 @@ body.gray .tabs,
 body.gray .button,
 body.gray input[type=button],
 body.gray a:not(.classic) { color: #616161; border-color: #616161; }
-
+*/
 /* Gray accent : orange */
-
+/*
 body.gray form > div .checkbox:before { background-color: #FFE0B2; }
 body.gray form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #FF9800; }
 
@@ -168,25 +207,27 @@ body.gray form input:focus:not(:invalid),
 body.gray form textarea:focus:not(:invalid) {
     border-bottom-color: #FF9800;
 }
-
+*/
 /* Green */
-
+/*
 body.green .button.color,
 body.green input[type=button].color,
 body.green ul li span.counter,
 body.green main > header { background-color: #689F38; color: white; border-color: #689F38; }
-
+*/
 /* 200 */
+/*
 body.green main > header a { color: #DCEDC8; }
 
 body.green .tabs,
 body.green .button,
 body.green input[type=button],
 body.green a:not(.classic) { color: #388E3C; border-color: #388E3C; }
-
+*/
 /* green accent : purple */
 
-body.green form > div .checkbox:before { background-color: #BBDEFB; }
+/*body.green form > div .checkbox:before { background-color: #BBDEFB; }*/
+/*
 body.green form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #2196F3; }
 
 body.green form > div .radio > input[type="radio"]:checked + label {
@@ -203,9 +244,9 @@ body.green form input:focus:not(:invalid),
 body.green form textarea:focus:not(:invalid) {
     border-bottom-color: #2196F3;
 }
-
+*/
 /* Orange */
-
+/*
 body.orange .button.color, 
 body.orange input[type=button].color,
 body.orange ul li span.counter,
@@ -215,9 +256,9 @@ body.orange .tabs,
 body.orange .button,
 body.orange input[type=button],
 body.orange a:not(.classic) { color: #F57C00; border-color: #F57C00; }
-
+*/
 /* orange accent : blue */
-
+/*
 body.orange form > div .checkbox:before { background-color: #BBDEFB; }
 body.orange form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #2196F3; }
 
@@ -235,24 +276,25 @@ body.orange form input:focus:not(:invalid),
 body.orange form textarea:focus:not(:invalid) {
     border-bottom-color: #2196F3;
 }
-
+*/
 /* Blue */
-
+/*
 body.blue .button.color, 
 body.blue input[type=button].color,
 body.blue ul li span.counter,
 body.blue main > header { background-color: #2196F3; color: white; border-color: #2196F3; }
-
+*/
 /* 200 */
+/*
 body.blue main > header a { color: #90caf9; }
 
 body.blue .tabs,
 body.blue .button,
 body.blue input[type=button],
 body.blue a:not(.classic) { color: #1976D2; border-color: #1976D2; }
-
+*/
 /* blue accent : deep purple */
-
+/*
 body.blue form > div .checkbox:before { background-color: #B388FF; }
 body.blue form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #651FFF; }
 
@@ -270,24 +312,25 @@ body.blue form input:focus:not(:invalid),
 body.blue form textarea:focus:not(:invalid) {
     border-bottom-color: #651FFF;
 }
-
+*/
 /* Red */
-
+/*
 body.red .button.color, 
 body.red input[type=button].color,
 body.red ul li span.counter,
 body.red main > header { background-color: #DB4336; color: white; border-color: #DB4336; }
-
+*/
 /* 200 */
+/*
 body.red main > header a { color: #EF9A9A; }
 
 body.red .tabs,
 body.red .button,
 body.red input[type=button],
 body.red a:not(.classic) { color: #D32F2F; border-color: #D32F2F; }
-
+*/
 /* red accent : blue */
-
+/*
 body.red form > div .checkbox:before { background-color: #82B1FF; }
 body.red form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #2979FF; }
 
@@ -305,3 +348,4 @@ body.red form input:focus:not(:invalid),
 body.red form textarea:focus:not(:invalid) {
     border-bottom-color: #2979FF;
 }
+*/

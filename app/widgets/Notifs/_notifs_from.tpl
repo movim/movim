@@ -1,11 +1,15 @@
-<ul class="active">
+<ul class="active all">
     {if="$invitations"}
-    <li class="subheader">{$c->__('notifs.title')}</li>
+    <li class="subheader">
+        {$c->__('notifs.title')}
+        <span class="info">{$invitations|count}</span>
+    </li>
     {/if}
     {loop="$invitations"}
         {if="isset($value)"}
-        <li data-jid="{$value->jid}">
-            <div class="control">
+        <li data-jid="{$value->jid}" class="action">
+            <div class="action">
+                <!--
                 <a class="button flat red"
                    onclick="{$c->genCallRefuse($value->jid)}">
                     <i class="fa fa-times"></i>
@@ -13,6 +17,10 @@
                 <a class="button flat"
                    onclick="{$c->genCallAccept($value->jid)}">
                     {$c->__('button.add')}
+                </a>
+                -->
+                <a class="button flat" data-jid="{$value->jid}">
+                    {$c->__('notifs.manage')}
                 </a>
             </div>
             <span class="icon"><img src="{$value->getPhoto('xs')}"/></span>

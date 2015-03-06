@@ -237,12 +237,6 @@ var jidAvalCompare = function(a, b) {
     return n ? n < 0 ? -1 : 1 : 0;
 };
 
-
-/* === Old functions still in use === */
-MovimWebsocket.attach(function(){
-    Roster_ajaxGetRoster();
-});
-
 var Roster = {
     init : function() {
         var search      = document.querySelector('#rostersearch');
@@ -301,6 +295,12 @@ var Roster = {
         }
     },
 
+    clearSearch: function() {
+        var search = document.querySelector('#rostersearch');
+        search.value = '';
+        search.oninput();
+    },
+
     setFound : function(jid) {
         document.querySelector('input[name=searchjid]').value = jid;
     },
@@ -310,11 +310,13 @@ var Roster = {
         /*recalculated at each click*/
         var it = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
         Roster.reset(it);
+        Roster.clearSearch();
         movim_add_class(e, 'active');
     },
 }
 
 MovimWebsocket.attach(function() {
+    Roster_ajaxGetRoster();
     Notification.notifs_key = 'contacts';
     Roster.refresh();
 });

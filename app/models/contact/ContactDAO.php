@@ -7,7 +7,7 @@ class ContactDAO extends SQL {
         parent::__construct();
     }
     
-    function get($jid = null) {            
+    function get($jid = null, $empty = false) {            
         $this->_sql = '
             select *, privacy.value as privacy from contact 
             left outer join privacy 
@@ -26,7 +26,7 @@ class ContactDAO extends SQL {
         $contact = $this->run('Contact', 'item');
 
         // If we cannot find the contact
-        if($contact == null) {
+        if($contact == null && $empty == false) {
             $contact = new Contact;
             $contact->jid = $jid;
             return $contact;
@@ -573,7 +573,29 @@ class ContactDAO extends SQL {
             return $this->run('RosterContact'); 
         else
             return $this->run('RosterContact', 'item');
+    }
 
+    function getTop($limit = 5) {
+        $this->_sql = '
+            select *, jidfrom from (
+                select jidfrom, count(*) as count from message
+                where jidfrom not like :jid
+                    and session = :jid
+                group by jidfrom 
+                order by count desc
+                limit :tunelenght
+            ) as top
+            left outer join contact on jidfrom = contact.jid';
+        
+        $this->prepare(
+            'Contact', 
+            array(
+                'jid' => $this->_user,
+                'tunelenght' => $limit // And an another hack…
+            )
+        );
+
+        return $this->run('Contact'); 
     }
 
     function getStatistics() {

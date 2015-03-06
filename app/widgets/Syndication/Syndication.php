@@ -28,6 +28,19 @@ class Syndication extends WidgetBase
     {
         ob_clean();
 
+        if(!isset($_GET['f'])) {
+            return;
+        }
+        
+        $from = $_GET['f'];
+        if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
+            $node = 'urn:xmpp:microblog:0';
+        } else {
+            return;
+            //$node = $_GET['n'];
+        }
+
+        /*
         if(!isset($_GET['f']) || !isset($_GET['n'])) {
             return;
         }
@@ -36,7 +49,7 @@ class Syndication extends WidgetBase
         $node = $_GET['n'];
         
         $this->view->assign('from', $from);
-        $this->view->assign('node', $node);
+        $this->view->assign('node', $node);*/
         
         $pd = new \modl\PostnDAO();
         
@@ -47,9 +60,16 @@ class Syndication extends WidgetBase
         
         if(isset($messages[0])) {
             header("Content-Type: application/atom+xml; charset=UTF-8");
+
+            $cd = new \modl\ContactDAO();
+
+            $this->view->assign('date', date('c'));
+            $this->view->assign('contact', $cd->get($from));
+
+            $this->view->assign('uri',  htmlentities(Route::urlize('blog',array($from, $node))));
             // Title and logo
             // For a Pubsub feed
-            if(isset($from) && isset($node) && $node != 'urn:xmpp:microblog:0') {
+            /*if(isset($from) && isset($node) && $node != 'urn:xmpp:microblog:0') {
                 $pd = new \modl\NodeDAO();
                 $n = $pd->getNode($from, $node);
                 if(isset($n->title))
@@ -66,7 +86,7 @@ class Syndication extends WidgetBase
             $this->view->assign('name', $messages[0]->getContact()->getTrueName());
             $this->view->assign('uri',  htmlentities(Route::urlize('blog',array($from, $node))));
             $this->view->assign('link', '<link rel="self" href="'.htmlentities(Route::urlize('feed',array($from, $node))).'"/>');
-            $this->view->assign('uuid', generateUUID($from.$node));
+            $this->view->assign('uuid', generateUUID($from.$node));*/
         }
     }
     
