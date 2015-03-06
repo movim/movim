@@ -1,10 +1,9 @@
 var Chat = {
-    /*
-    message: function(jid, html) {
-        movim_append('messages' + jid, html);
-    },*/
-    addSmiley: function(smiley) {
-
+    addSmiley: function(element) {
+        var n = document.querySelector('#chat_textarea');
+        n.value = n.value + element.dataset.emoji;
+        n.focus();
+        Dialog.clear();    
     },
     sendMessage: function(jid)
     {
@@ -13,6 +12,9 @@ var Chat = {
         n.value = "";
         n.focus();
         return encodeURIComponent(text);
+    },
+    appendTextarea: function(value)
+    { 
     },
     notify : function(title, body, image)
     {

@@ -1,5 +1,3 @@
-<?php $this->widget('Init');?>
-
 <nav class="color dark">
     <?php $this->widget('Navigation');?>
     <?php $this->widget('Presence');?>
@@ -11,3 +9,5 @@
         <?php $this->widget('Hello');?>
     </section>
 </main>
+
+<?php $this->widget('Init');?>
