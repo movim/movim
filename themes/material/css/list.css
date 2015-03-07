@@ -21,6 +21,11 @@ ul li.oppose {
     padding-right: 9rem;
 }
 
+
+ul li.inactive {
+    opacity: 0.6;
+}
+
 ul.simple > li {
     padding-left: 2rem;
     line-height: 6rem;
@@ -105,6 +110,10 @@ ul li p.wrap {
 
 ul li span {
     white-space: nowrap;
+}
+
+ul li img {
+     max-width: 100%;
 }
 
 ul li.action {

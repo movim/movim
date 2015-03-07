@@ -1,8 +1,24 @@
 {if="$contact != null"}
-    <header class="big" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');">
+    {$url = $contact->getPhoto('s')}
+
+    <header class="big"
+        {if="$url"}
+            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');"
+        {else}
+            style="background-color: rgba(62,81,181,1);"
+        {/if}
+        >
         <ul class="thick">
-            <li class="">
-                <span class="icon bubble"><img src="{$contact->getPhoto('l')}"></span>
+            <li>
+                {if="$url"}
+                    <span class="icon bubble">
+                        <img src="{$url}">
+                    </span>
+                {else}
+                    <span class="icon bubble color {$contact->jid|stringToColor}">
+                        <i class="md md-person"></i>
+                    </span>
+                {/if}
                 <span>
                     <h2>{$contact->getTrueName()}</h2>
                 </span>

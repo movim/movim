@@ -284,6 +284,7 @@ class Roster extends WidgetBase
         // We add some basic information
         $c['rosterview']   = array();
         $c['rosterview']['avatar']   = $oc->getPhoto('s');
+        $c['rosterview']['color']    = stringToColor($oc->jid);
         $c['rosterview']['name']     = $oc->getTrueName();
         $c['rosterview']['friendpage']     = $this->route('friend', $oc->jid);
 

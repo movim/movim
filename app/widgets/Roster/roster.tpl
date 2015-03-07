@@ -10,11 +10,17 @@
         </span>
         
         <li class="subheader search">{$c->__('roster.results')}</li>
+        
+            <div id="spinner">
+                <object data="app/widgets/Roster/img/movim_cloud.svg" type="image/svg+xml"></object>
+            </div>
+            
         <div
             ng-if="contacts != null && !group.tombstone"
             ng-repeat="group in contacts"
             id="group{{::group.agroup}}"
             ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup)}" >
+            
             <li class="subheader" ng-click="rosterCtrl.showHideGroup(group.agroup)">
                 {{::group.agroup}}
                 <span class="info">{{group.agroupitems.length}}</span>
@@ -39,9 +45,17 @@
                 </div>
 
                 <span
+                    ng-if="::myjid.ajiditems.rosterview.avatar != false"
                     class="icon bubble status {{myjid.ajiditems.rosterview.presencetxt}}"
                     style="background-image: url({{::myjid.ajiditems.rosterview.avatar}})">
                 </span>
+
+                <span
+                    ng-if="::myjid.ajiditems.rosterview.avatar== false"
+                    class="icon bubble status {{myjid.ajiditems.rosterview.presencetxt}} color {{myjid.ajiditems.rosterview.color}}">
+                    <i class="md md-person"></i>
+                </span>
+
                 <span>{{myjid.ajiditems.rosterview.name}}</span>
                 <p ng-if="myjid.ajiditems.status != ''" class="wrap">
                     <span>{{myjid.ajiditems.status}}</span>
