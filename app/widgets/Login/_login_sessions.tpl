@@ -7,9 +7,16 @@
             <div class="action">
                 <i class="md md-close"></i>
             </div>
-            <span class="icon bubble">
-                <img src="{$value->getPhoto('s')}"/>
-            </span>
+            {$url = $value->getPhoto('s')}
+            {if="$url"}
+                <span class="icon bubble">
+                    <img src="{$url}">
+                </span>
+            {else}
+                <span class="icon bubble color {$value->jid|stringToColor}">
+                    <i class="md md-person"></i>
+                </span>
+            {/if}
             <span>{$value->getTrueName()}</span>
         </li>
         {/loop}
