@@ -587,7 +587,22 @@ class ContactDAO extends SQL {
                 order by count desc
                 limit :tunelenght
             ) as top
-            left outer join contact on jidfrom = contact.jid';
+            left outer join contact on jidfrom = contact.jid
+            left outer join (
+                select a.* 
+                from presence a 
+                join ( 
+                    select jid, min( id ) as id
+                    from presence 
+                    where session = :jid
+                    group by jid 
+                    ) as b on ( a.id = b.id )
+                ) presence on jidfrom = presence.jid
+            left outer join (
+                select *
+                from rosterlink
+                where session = :jid
+                ) as rosterlink on jidfrom = rosterlink.jid';
         
         $this->prepare(
             'Contact', 
@@ -597,7 +612,7 @@ class ContactDAO extends SQL {
             )
         );
 
-        return $this->run('Contact'); 
+        return $this->run('RosterContact'); 
     }
 
     function getStatistics() {

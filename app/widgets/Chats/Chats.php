@@ -101,6 +101,8 @@ class Chats extends WidgetCommon
         $cd = new \Modl\ContactDAO;
         $view->assign('top', $cd->getTop(10));
 
+        $view->assign('presencestxt', getPresencesTxt());
+
         Dialog::fill($view->draw('_chats_add', true), true);
     }
 
