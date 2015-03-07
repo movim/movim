@@ -4,9 +4,17 @@
 <ul class="flex card active thick">
 {loop="$users"}
     <li class="{if="$value->description != ''"}condensed{/if} block" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}');">
-        <span class="icon bubble">
-            <img src="{$value->getPhoto('m')}"/>
-        </span>
+        {$url = $value->getPhoto('s')}
+        {if="$url"}
+            <span class="icon bubble">
+                <img src="{$url}">
+            </span>
+        {else}
+            <span class="icon bubble color {$value->jid|stringToColor}">
+                <i class="md md-person"></i>
+            </span>
+        {/if}
+        
         <span>{$value->getTrueName()}</span>
         
             {if="$value->getAge()"}

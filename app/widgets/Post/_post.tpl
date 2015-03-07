@@ -11,9 +11,16 @@
         <ul class="thick">
             <li class="condensed">
                 {if="$post->node == 'urn:xmpp:microblog:0'"}
-                    <span class="icon bubble">
-                        <img src="{$post->getContact()->getPhoto('s')}">
-                    </span>
+                    {$url = $post->getContact()->getPhoto('s')}
+                    {if="$url"}
+                        <span class="icon bubble">
+                            <img src="{$url}">
+                        </span>
+                    {else}
+                        <span class="icon bubble color {$post->getContact()->jid|stringToColor}">
+                            <i class="md md-person"></i>
+                        </span>
+                    {/if}
                 {else}
                 <!--<a href="{$c->route('node', array($post->jid, $post->node))}">-->
                     <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>

@@ -5,9 +5,16 @@
         {$presence = getPresencesTxt()}
         {loop="$list"}
             <li class="action">
-                <span class="icon bubble status {$presence[$value->value]}">
-                    <img src="{$value->getPhoto('s')}" />
-                </span>
+                {$url = $value->getPhoto('s')}
+                {if="$url"}
+                    <span class="icon bubble status {$presence[$value->value]}">
+                        <img src="{$url}">
+                    </span>
+                {else}
+                    <span class="icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
+                        <i class="md md-person"></i>
+                    </span>        
+                {/if}
                 {if="$value->mucaffiliation =='owner'"}
                     <div class="action">
                         <i class="md md-beenhere"></i>

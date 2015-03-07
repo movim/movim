@@ -17,10 +17,16 @@
                     <i class="md md-warning"></i>
                 </span>
             {elseif="$value->node == 'urn:xmpp:microblog:0'"}
-                <span class="icon bubble">
-                    <!--<i class="md md-create"></i>-->
-                    <img src="{$value->getContact()->getPhoto('s')}">
-                </span>                    
+                {$url = $value->getContact()->getPhoto('s')}
+                {if="$url"}
+                    <span class="icon bubble">
+                        <img src="{$url}">
+                    </span>
+                {else}
+                    <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
+                        <i class="md md-person"></i>
+                    </span>
+                {/if}
             {else}
                 <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
             {/if}
