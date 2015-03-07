@@ -31,7 +31,9 @@ class Chat extends WidgetCommon
             if($contact != null
             && !preg_match('#^\?OTR#', $message->body)
             && $message->type != 'groupchat') {
-                Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $contact->getPhoto('s'), 4);
+                $avatar = $contact->getPhoto('s');
+                if($avatar == false) $avatar = null;
+                Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $avatar, 4);
             }
 
             RPC::call('movim_fill', $from.'_state', '');     
