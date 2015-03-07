@@ -64,10 +64,6 @@
     background-color: #DDD;
 }
 
-#roster ul#rosterlist li.inactive {
-    opacity: 0.5;
-}
-
 /* Search */
 #roster ul li.subheader.search,
 #roster.search ul#rosterlist div.groupshown > li {
@@ -77,4 +73,11 @@
 #roster.search ul li.subheader.search,
 #roster.search ul#rosterlist div > li.found {
     display: list-item;
+}
+
+#roster ul#rosterlist > div#spinner{
+    width: 150px;
+    position: relative;
+    margin: 50% auto;
+    overflow: visible;
 }
