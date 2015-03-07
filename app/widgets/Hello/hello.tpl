@@ -2,15 +2,23 @@
     <ul class="flex active middle">
         <li class="subheader block large">Active contacts</li>
         {loop="$top"}
-            <li class="block action {if="$value->getPlace()"}condensed{/if}"
+            <li tabindex="{$key+1}" class="block action {if="$value->getPlace()"}condensed{/if}"
                 onclick="Hello_ajaxChat('{$value->jid}')">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
-                    <span class="icon bubble {if="isset($presence)"}status {$presence}{/if}">
+                    <span
+                        class="icon bubble
+                        {if="$value->value"}
+                            status {$presencestxt[$value->value]}
+                        {/if}">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="icon bubble color {$value->jid|stringToColor}">
+                    <span
+                        class="icon bubble color {$value->jid|stringToColor}
+                        {if="$value->value"}
+                            status {$presencestxt[$value->value]}
+                        {/if}">
                         <i class="md md-person"></i>
                     </span>
                 {/if}
