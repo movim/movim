@@ -5,7 +5,9 @@
     {/if}
     
     {loop="$items"}
-        <li class="condensed" data-id="{$value->nodeid}"
+        <li
+            tabindex="{$key+1}"
+            class="condensed" data-id="{$value->nodeid}"
             {if="$value->title != null"}
                 title="{$value->title|strip_tags}"
             {else}
