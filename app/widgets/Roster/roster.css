@@ -76,8 +76,8 @@
 }
 
 #roster ul#rosterlist > div#spinner{
-    width: 150px;
     position: relative;
-    margin: 50% auto;
     overflow: visible;
+    text-align: center;
+    margin: 50% 0;
 }

@@ -67,8 +67,15 @@ ul li.subheader {
 ul.active li:hover:not(.subheader),
 ul.active.all li:hover,
 ul.active li.active:not(.subheader) {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.03);
     cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+
+ul.active li:focus:not(.subheader),
+ul.active.all li:focus,
+ul.active li.active:not(.subheader) {
+    background-color: rgba(0, 0, 0, 0.07);
 }
 
 .dark ul.active li:hover:not(.subheader),
