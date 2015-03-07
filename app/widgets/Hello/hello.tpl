@@ -4,9 +4,17 @@
         {loop="$top"}
             <li class="block action {if="$value->getPlace()"}condensed{/if}"
                 onclick="Hello_ajaxChat('{$value->jid}')">
-                <span class="icon bubble">
-                    <img src="{$value->getPhoto('s')}">
-                </span>
+                {$url = $value->getPhoto('s')}
+                {if="$url"}
+                    <span class="icon bubble {if="isset($presence)"}status {$presence}{/if}">
+                        <img src="{$url}">
+                    </span>
+                {else}
+                    <span class="icon bubble color {$value->jid|stringToColor}">
+                        <i class="md md-person"></i>
+                    </span>
+                {/if}
+
                 <span>{$value->getTrueName()}</span>
                 <p class="wrap">{$value->getPlace()}</p>
             </li>

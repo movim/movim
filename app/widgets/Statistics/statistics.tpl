@@ -6,9 +6,16 @@
         {loop="$sessions"}
             {$user = $c->getContact($value->username, $value->host)}
             <li class="condensed">
-                <span class="icon bubble">
-                    <img src="{$user->getPhoto('s')}">
-                </span>
+                {$url = $user->getPhoto('s')}
+                {if="$url"}
+                    <span class="icon bubble">
+                        <img src="{$url}">
+                    </span>
+                {else}
+                    <span class="icon bubble color {$user->jid|stringToColor}">
+                        <i class="md md-person"></i>
+                    </span>
+                {/if}
                 <span>{$user->getTrueName()} - {$value->username}@{$value->host} - {$value->domain}</span>
                 <p>
                     {if="isset($value->start)"}
