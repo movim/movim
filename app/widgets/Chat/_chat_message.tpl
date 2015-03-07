@@ -1,18 +1,26 @@
 {if="$message->body != ''"}
 <li {if="$message->jidfrom != $jid"}class="oppose"{/if}>
-    <span class="icon bubble {if="empty($contact) && !array_key_exists($message->resource, $contacts)"}color {$message->resource|stringToColor}{/if}">
-        {if="$message->jidfrom == $jid"}
-            {if="!empty($contacts) && array_key_exists($message->resource, $contacts)"}
-                <img src="{$contacts[$message->resource]->getPhoto('s')}">
-            {elseif="isset($contact)"}
-                <img src="{$contact->getPhoto('s')}">
-            {else}
-                {$message->resource|firstLetterCapitalize}
-            {/if}
+    {if="$message->jidfrom == $jid"}
+        {$url = $contact->getPhoto('s')}
+        {if="$url"}
+            <span class="icon bubble">
+                <img src="{$url}">
+            </span>
+        {elseif="$message->type == 'groupchat'"}
+            <span class="icon bubble color {$message->resource|stringToColor}">
+                <i class="md md-person"></i>
+            </span>        
         {else}
-            <img src="{$me->getPhoto('s')}">
+            <span class="icon bubble color {$contact->jid|stringToColor}">
+                <i class="md md-person"></i>
+            </span>
         {/if}
-    </span>
+    {else}
+        <span class="icon bubble">
+            <img src="{$me->getPhoto('s')}">
+        </span>
+    {/if}
+
     {if="preg_match('#^\/me#', $message->body)"}
         {$message->body = '* '.substr($message->body, 3)}
         {$class = 'quote'}

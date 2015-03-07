@@ -147,7 +147,7 @@ class Contact extends WidgetCommon
         $cd = new \Modl\ContactDAO;
         $c  = $cd->get($jid, true);
 
-        if($c == null) {
+        if($c == null || $c->created == null) {
             $c = new \Modl\Contact;
             $c->jid = $jid;
 
