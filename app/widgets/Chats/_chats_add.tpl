@@ -4,13 +4,22 @@
         <li class="subheader condensed">{$c->__('chats.frequent')}</li>
         {loop="$top"}
             <li class="condensed" onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
-                <span class="icon bubble">
-                    <img
-                        class="avatar"
-                        src="{$value->getPhoto('s')}"
-                        alt="avatar"
-                    />
-                </span>
+                {$url = $value->getPhoto('s')}
+                {if="$url"}
+                    <span class="icon bubble
+                        {if="$value->value"}
+                            status {$presencestxt[$value->value]}
+                        {/if}">
+                        <img src="{$url}">
+                    </span>
+                {else}
+                    <span class="icon bubble color {$value->jid|stringToColor}
+                        {if="$value->value"}
+                            status {$presencestxt[$value->value]}
+                        {/if}">
+                        <i class="md md-person"></i>
+                    </span>
+                {/if}
                 <span>{$value->getTrueName()}</span>
                 <p class="wrap">{$value->jid}</p>
             </li>
