@@ -40,20 +40,23 @@ class Presence extends Payload
         } else {
             $p = new \modl\Presence();
             $p->setPresence($stanza);
-            $pd = new \modl\PresenceDAO();
-            $pd->set($p);
 
-            if($p->muc) {
-                $this->method('muc');
-                $this->pack($p);
-            } else {
-                $cd = new \Modl\ContactDAO();
-                $c = $cd->getRosterItem($p->jid, true);
+            if($p->value != 5) {
+                $pd = new \modl\PresenceDAO();
+                $pd->set($p);
 
-                $this->pack($c);
+                if($p->muc) {
+                    $this->method('muc');
+                    $this->pack($p);
+                } else {
+                    $cd = new \Modl\ContactDAO();
+                    $c = $cd->getRosterItem($p->jid, true);
+
+                    $this->pack($c);
+                }
+
+                $this->deliver();
             }
-
-            $this->deliver();
         }
     }
 }
