@@ -439,6 +439,11 @@ span.icon.small {
     margin-top: -1.5rem;
 }
 
+span.icon.tiny {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
 span.icon.large {
     width: 7rem;
     height: 7rem;
