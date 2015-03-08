@@ -32,11 +32,7 @@
         {if="preg_match('#^\?OTR#', $message->body)"}
             <i class="md md-lock"></i> {$c->__('message.encrypted')}
         {else}
-            {if="isset($message->html)"}
-                {$message->html|prepareString}
-            {else}
-                {$message->body|htmlentities:ENT_COMPAT,'UTF-8'|prepareString}
-            {/if}
+            <div>{if="isset($message->html)"}{$message->html|prepareString}{else}{$message->body|htmlentities:ENT_COMPAT,'UTF-8'|prepareString}{/if}</div>
         {/if}
         <span class="info">{$message->delivered|strtotime|prepareDate}</span>
         {if="$message->type == 'groupchat'"}

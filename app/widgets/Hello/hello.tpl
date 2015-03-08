@@ -53,10 +53,17 @@
                             <i class="md md-warning"></i>
                         </span>
                     {elseif="$value->node == 'urn:xmpp:microblog:0'"}
-                        <span class="icon bubble">
-                            <!--<i class="md md-create"></i>-->
-                            <img src="{$value->getContact()->getPhoto('s')}">
-                        </span>                    
+                        {$url = $value->getContact()->getPhoto('s')}
+                        {if="$url"}
+                            <span class="icon bubble">
+                                <img src="{$url}">
+                            </span>
+                        {else}
+                            <span
+                                class="icon bubble color {$value->getContact()->jid|stringToColor}">
+                                <i class="md md-person"></i>
+                            </span>
+                        {/if}
                     {else}
                         <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
                     {/if}
@@ -89,4 +96,18 @@
         </ul>
     </div>
     {/if}
+    <ul class="active">
+        <a href="{$c->route('blog', array($jid))}" target="_blank">
+            <li class="condensed action">
+                <div class="action">
+                    <i class="md md-chevron-right"></i>
+                </div>
+                <span class="icon">
+                    <i class="md md-wifi-tethering"></i>
+                </span>
+                <span>Visit your public blog</span>
+                <p>See your public posts and share them with all your contacts</p>
+            </li>
+        </a>
+    </ul>
 </div>
