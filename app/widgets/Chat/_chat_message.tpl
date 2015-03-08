@@ -34,7 +34,7 @@
         {else}
             <div>{if="isset($message->html)"}{$message->html|prepareString}{else}{$message->body|htmlentities:ENT_COMPAT,'UTF-8'|prepareString}{/if}</div>
         {/if}
-        <span class="info">{$message->delivered|strtotime|prepareDate}</span>
+        <span class="info">{$message->published|strtotime|prepareDate}</span>
         {if="$message->type == 'groupchat'"}
             <span class="info">{$message->resource} - </span>
         {/if}

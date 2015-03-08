@@ -14,6 +14,7 @@ class Chat extends WidgetCommon
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
+        $this->registerEvent('gone', 'onGone');
     }
 
     function onMessage($packet)
@@ -60,6 +61,11 @@ class Chat extends WidgetCommon
     function onPaused($array)
     {
         $this->setState($array, $this->__('message.paused'));
+    }
+
+    function onGone($array)
+    {
+        $this->setState($array, $this->__('message.gone'));
     }
 
     private function setState($array, $message)
