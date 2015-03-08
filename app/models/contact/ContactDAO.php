@@ -602,7 +602,8 @@ class ContactDAO extends SQL {
                 select *
                 from rosterlink
                 where session = :jid
-                ) as rosterlink on jidfrom = rosterlink.jid';
+                ) as rosterlink on jidfrom = rosterlink.jid
+            order by value';
         
         $this->prepare(
             'Contact', 

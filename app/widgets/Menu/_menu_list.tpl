@@ -6,8 +6,11 @@
     
     {loop="$items"}
         <li
-            tabindex="{$key+1}"
-            class="condensed" data-id="{$value->nodeid}"
+            tabindex="{$page*15+$key+1}"
+            class="condensed"
+            data-id="{$value->nodeid}"
+            data-server="{$value->origin}"
+            data-node="{$value->node}"
             {if="$value->title != null"}
                 title="{$value->title|strip_tags}"
             {else}
@@ -15,8 +18,8 @@
             {/if}
         >
             {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                <span class="icon bubble color red">
-                    <i class="md md-warning"></i>
+                <span class="icon bubble color red tiny">
+                    +18
                 </span>
             {elseif="$value->node == 'urn:xmpp:microblog:0'"}
                 {$url = $value->getContact()->getPhoto('s')}
@@ -38,14 +41,13 @@
             {else}
                 <span>{$c->__('menu.contact_post')}</span>
             {/if}
-
             <span class="info">{$value->published|strtotime|prepareDate}</span>
-            
-            {if="$value->node == 'urn:xmpp:microblog:0'"}
-                <p class="wrap">{$value->getContact()->getTrueName()}</p>
-            {else}
-                <p class="wrap">{$value->node}</p>
-            {/if}
+
+            <p class="more">
+                {if="current(explode('.', $value->origin)) != 'nsfw'"}
+                    {$value->contentcleaned|strip_tags:'<img><img/>'}
+                {/if}
+            </p>
         </li>
     {/loop}
     {if="count($items) == 15"}
@@ -58,7 +60,6 @@
     {if="$page == 0"}
         </ul>
     {/if}
-    
 {elseif="$page == 0"}
     <div id="menu_refresh"></div>
     <br/>

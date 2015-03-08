@@ -123,7 +123,7 @@ class Menu extends WidgetCommon
                 $items  = $pd->getFeed($page * $this->_paging + $count, $this->_paging);
                 break;
             case 'node' :
-                $view->assign('history', $this->call('ajaxGetNode', '"'.$server.'"', '"'.$node.'"', $next));
+                $view->assign('history', $this->call('ajaxGetNode', '"'.$server.'"', '"'.$node.'"', '"'.$next.'"'));
                 $items  = $pd->getNode($server, $node, $page * $this->_paging + $count, $this->_paging);
                 break;
         }
