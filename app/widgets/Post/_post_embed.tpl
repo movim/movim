@@ -9,10 +9,10 @@
                 <a href="{$embed->providerUrl|htmlspecialchars}" target="_blank">{$embed->providerName}</a>
             </p>
         </li>
-        {if="key($embed->images) != null"}
+        {if="$embed->images != null"}
             <li>
-                <a href="{$embed->images|key|htmlspecialchars}" target="_blank">
-                    <img src="{$embed->images|key|htmlspecialchars}"/>
+                <a href="{$embed->images[0]['value']|htmlspecialchars}" target="_blank">
+                    <img src="{$embed->images[0]['value']|htmlspecialchars}"/>
                 </a>
             </li>
         {/if}

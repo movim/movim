@@ -23,6 +23,8 @@ class Hello extends WidgetCommon
         $pd = new \Modl\PostnDAO;
         $this->view->assign('news', $pd->getAllPosts(false, 0, 4));
 
+        $this->view->assign('jid', $this->user->getLogin());
+
         $this->view->assign('presencestxt', getPresencesTxt());
     }
 }

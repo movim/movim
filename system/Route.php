@@ -26,7 +26,7 @@ class Route extends \BaseController {
                 'pods'          => false,
                 'disconnect'    => array('err'),
                 'friend'        => array('f'),
-                'blog'          => array('f', 'n'),
+                'blog'          => array('f'),
                 'feed'          => array('f', 'n'),
                 'nodeconfig'    => array('s', 'n'),
                 'node'          => array('s', 'n'),
