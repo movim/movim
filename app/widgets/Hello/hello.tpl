@@ -105,8 +105,8 @@
                 <span class="icon">
                     <i class="md md-wifi-tethering"></i>
                 </span>
-                <span>Visit your public blog</span>
-                <p>See your public posts and share them with all your contacts</p>
+                <span>{$c->__('hello.blog_title')}</span>
+                <p>{$c->__('hello.blog_text')}</p>
             </li>
         </a>
     </ul>
