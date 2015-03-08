@@ -45,7 +45,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
     
     $conn->on('message', function($message) use ($conn, $loop) {
         if($message != '') {
-            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             if($message == '</stream:stream>') {
                 $conn->close();
@@ -76,7 +76,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
             }
 
             if(!empty($xml)) {
-                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                 $conn->send(trim($xml));
             }
         }
@@ -118,7 +118,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
                 \Moxl\API::clear();
                 
                 if(!empty($xml)) {
-                    fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                    #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                     $conn->send(trim($xml));
                 }
 
