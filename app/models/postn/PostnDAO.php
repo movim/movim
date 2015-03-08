@@ -476,6 +476,28 @@ class PostnDAO extends SQL {
             return $arr[0]['published'];
     }
 
+    function getLastPublished($limitf = false, $limitr = false)
+    {
+        $this->_sql = '
+            select * from postn 
+            where
+                node != \'urn:xmpp:microblog:0\'
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
+            order by published desc
+            ';
+
+        if($limitr) 
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+        
+        $this->prepare(
+            'Postn', 
+            array()
+        );
+
+        return $this->run('Postn');
+    }
+
     function exist($id) {
         $this->_sql = '
             select count(*) from postn

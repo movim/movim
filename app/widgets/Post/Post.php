@@ -41,6 +41,8 @@ class Post extends WidgetCommon
     function ajaxClear()
     {
         RPC::call('movim_fill', 'post_widget', $this->prepareEmpty());
+        RPC::call('Menu.refresh');
+        //RPC::call('Menu_ajaxGetAll');
     }
 
     function ajaxGetPost($id)
@@ -174,6 +176,11 @@ class Post extends WidgetCommon
     function prepareEmpty()
     {
         $view = $this->tpl();
+
+        $nd = new \modl\PostnDAO();
+        $view = $this->tpl();
+        $view->assign('posts', $nd->getLastPublished(0, 10));
+        
         return $view->draw('_post_empty', true);
     }
 

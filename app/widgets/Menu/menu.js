@@ -1,6 +1,6 @@
 var Menu = {
     refresh: function() {
-        var items = document.querySelectorAll('#menu_widget ul li');
+        var items = document.querySelectorAll('#menu_widget ul li, #post_widget ul.card li');
 
         var i = 0;
         while(i < items.length)
@@ -9,6 +9,7 @@ var Menu = {
                 items[i].onclick = function(e) {
                         MovimTpl.showPanel();
                         Post_ajaxGetPost(this.dataset.id);
+                        //Menu_ajaxGetNode(this.dataset.server, this.dataset.node);
                         Menu.reset(items);
                         movim_add_class(this, 'active');
                 }
