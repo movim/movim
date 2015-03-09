@@ -1,4 +1,5 @@
-<ul class="divided active">
+<ul class="divided active spaced">
+    <li class="subheader">{$c->__('adhoc.title')}</li>
     {loop="$list"}
         <li class="action" data-node="{$value->attributes()->node}" data-jid="{$value->attributes()->jid}">
             <span class="icon gray">
