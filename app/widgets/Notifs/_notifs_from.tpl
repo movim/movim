@@ -9,21 +9,20 @@
         {if="isset($value)"}
         <li data-jid="{$value->jid}" class="action">
             <div class="action">
-                <!--
-                <a class="button flat red"
-                   onclick="{$c->genCallRefuse($value->jid)}">
-                    <i class="fa fa-times"></i>
-                </a>
-                <a class="button flat"
-                   onclick="{$c->genCallAccept($value->jid)}">
-                    {$c->__('button.add')}
-                </a>
-                -->
                 <a class="button flat" data-jid="{$value->jid}">
                     {$c->__('notifs.manage')}
                 </a>
             </div>
-            <span class="icon"><img src="{$value->getPhoto('xs')}"/></span>
+            {$url = $value->getPhoto('s')}
+            {if="$url"}
+                <span class="icon bubble">
+                    <img src="{$url}">
+                </span>
+            {else}
+                <span class="icon bubble color {$value->jid|stringToColor}">
+                    <i class="md md-person"></i>
+                </span>
+            {/if}
             <span href="{$c->route('friend', $value->jid)}">
                 {$value->getTrueName()}
             </span>

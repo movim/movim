@@ -18,9 +18,7 @@ class Core implements MessageComponentInterface {
         echo colorize("Base URI :", 'green')." {$baseuri}\n";
         $ws = $this->setWebsocket($baseuri, $port);
         echo colorize("Public WebSocket URL :", 'green')." {$ws}\n";
-        
-        //echo colorize("WebSocket URL :", 'green')." http(s)://[your host adress]:{$port}\n";
-        
+
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
 

@@ -21,6 +21,7 @@
         "react/child-process": "0.5.*@dev",
         "ratchet/pawl": "dev-master",
 
-        "forxer/Gravatar": "~1.2"
+        "forxer/Gravatar": "~1.2",
+        "respect/validation": "0.8.*"
     }
 }
