@@ -23,7 +23,7 @@
             
             <li class="subheader" ng-click="rosterCtrl.showHideGroup(group.agroup)">
                 {{::group.agroup}}
-                <span class="info">{{group.agroupitems.length}}</span>
+                <span class="info">{{rosterCtrl.getOnlineCount(group.agroupitems)}}/{{group.agroupitems.length}}</span>
             </li>
             <li
                 ng-repeat="myjid in group.agroupitems"
