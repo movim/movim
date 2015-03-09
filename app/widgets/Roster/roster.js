@@ -155,6 +155,14 @@
             return title;
         };
 
+        this.getOnlineCount = function(g){
+            count = 0;
+            for(var i in g){
+                if(g[i].aval < 5) count ++;
+            }
+            return count;
+        };
+
         this.getContactClient = function(c){
             liclass = "";
             if(c.rosterview.client)
