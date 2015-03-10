@@ -23,4 +23,25 @@ class Register {
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
         \Moxl\API::request($xml);
     }
+
+    static function remove()
+    {
+        $xml = '
+            <query xmlns="jabber:iq:register">
+                <remove/>
+            </query>';
+        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
+        \Moxl\API::request($xml);
+    }
+
+    static function changePassword($to, $username, $password)
+    {
+        $xml = '
+            <query xmlns="jabber:iq:register">
+                <username>'.$username.'</username>
+                <password>'.$password.'</password>
+            </query>';
+        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        \Moxl\API::request($xml);
+    }
 }
