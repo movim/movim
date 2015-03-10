@@ -8,12 +8,24 @@ class Account extends WidgetBase
 {
     function load()
     {
+        $this->addjs('account.js');
         $this->registerEvent('register_changepassword_handle', 'onPasswordChanged');
+        $this->registerEvent('register_remove_handle', 'onRemoved');
     }
 
     function onPasswordChanged()
     {
+        RPC::call('Account.resetPassword');
         Notification::append(null, $this->__('account.password_changed'));
+    }
+
+    function onRemoved()
+    {
+        $md = new Modl\MessageDAO;
+        $mp->clearMessage();
+        // TODO : fix it
+        RPC::call('Account.clearAccount');
+        RPC::call('Presence_ajaxLogout');
     }
 
     function ajaxChangePassword($form)
@@ -25,23 +37,34 @@ class Account extends WidgetBase
         if($validate->validate($p1)
         && $validate->validate($p2)) {
             if($p1 == $p2) {
-                // TODO send the password 
+                $arr = explodeJid($this->user->getLogin());
+
+                $cp = new ChangePassword;
+                $cp->setTo($arr['server'])
+                   ->setUsername($arr['username'])
+                   ->setPassword($p1)
+                   ->request();
             } else {
+                RPC::call('Account.resetPassword');
                 Notification::append(null, $this->__('account.password_not_same'));
             }
         } else {
+            RPC::call('Account.resetPassword');
             Notification::append(null, $this->__('account.password_not_valid'));
         }
     }
 
     function ajaxRemoveAccount()
     {
-    
+        $view = $this->tpl();
+        $view->assign('jid', $this->user->getLogin());
+        Dialog::fill($view->draw('_account_remove', true));
     }
 
     function ajaxRemoveAccountConfirm()
     {
-
+        $da = new Remove;
+        $da->request();
     }
 
     function display()

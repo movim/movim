@@ -17,7 +17,7 @@
 class User {
     private $xmppSession;
 
-    public $username = '';
+    public  $username = '';
     private $password = '';
     private $config = array();
 

@@ -16,13 +16,13 @@
                 </div>
                 <a onclick="
                         Account_ajaxChangePassword(movim_form_to_json('password'));
-                        //this.className='button oppose inactive';" class="button color oppose">
+                        this.className='button oppose inactive';" class="button color oppose">
                     {$c->__('button.submit')}
                 </a>
             </form>
         </li>
         <li class="subheader">Delete my account</li>
-        <li class="action">
+        <li class="action" onclick="Account_ajaxRemoveAccount()">
             <span class="icon red">
                 <i class="md md-delete"></i>
             </span>
