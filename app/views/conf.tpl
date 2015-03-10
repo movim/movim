@@ -11,7 +11,7 @@
             <?php $this->widget('Vcard4');?>
             <?php $this->widget('Avatar');?>
             <?php $this->widget('Config');?>
-            <?php //$this->widget('Account');?>
+            <?php $this->widget('Account');?>
             <?php $this->widget('AdHoc');?>
             <?php //$this->widget('ConfigData');?>
             <?php //$this->widget('PubsubSubscriptionConfig');?>
