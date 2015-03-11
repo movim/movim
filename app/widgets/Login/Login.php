@@ -257,10 +257,22 @@ class Login extends WidgetBase
         }
     }
 
+    function ajaxCheckLogin($jid)
+    {
+        list($username, $host) = explode('@', $jid);
+        $sd = new \Modl\SessionxDAO;
+        $here = $sd->checkConnected($username, $host);
+
+        if($here) {
+            $message = $this->__('error.impossible') . ' : '.$this->__('error.conflict');
+            Notification::append(null, $message);
+        }
+    }
+
     function ajaxLogin($element)
     {
         // We get the Server Configuration
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
         
         $warning = false;
@@ -297,6 +309,18 @@ class Login extends WidgetBase
         $login_arr = explode('@', $element['login']);
         $user = $login_arr[0];
         $host = $login_arr[1];
+
+        // We check if we already have an open session
+        $sd = new \Modl\SessionxDAO;
+        $here = $sd->checkConnected($user, $host);
+
+        if($here) {
+            $title = $this->__('error.fail_auth');
+            $warning = $this->__('error.conflict');
+            
+            Notification::append('login', $title, $warning, null, 2);
+            RPC::call('remoteUnregisterReload');
+        }
 
         $dns = dns_get_record('_xmpp-client._tcp.'.$login_arr[1]);
 

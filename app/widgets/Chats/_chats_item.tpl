@@ -19,7 +19,7 @@
     {/if}
     <span>{$contact->getTrueName()}</span>
     {if="isset($message)"}
-        <span class="info">{$message->delivered|strtotime|prepareDate}</span>
+        <span class="info">{$message->published|strtotime|prepareDate}</span>
         {if="preg_match('#^\?OTR#', $message->body)"}
             <p><i class="md md-lock"></i> {$c->__('message.encrypted')}</p>
         {else}
