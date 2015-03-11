@@ -78,14 +78,16 @@ class MessageDAO extends SQL {
     function deleteContact($jid) {
         $this->_sql = '
             delete from message 
-            where jidfrom = :jidfrom
-               or jidto   = :jidto';
+            where session = :session
+                and (jidfrom = :jidfrom
+                or jidto   = :jidto)';
 
         $this->prepare(
             'Message',
             array(
                 'jidfrom'   => $jid,
-                'jidto'     => $jid
+                'jidto'     => $jid,
+                'session' => $this->_user
             )
         );
             

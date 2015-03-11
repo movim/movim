@@ -661,9 +661,10 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
 .toast {
     background-color: #323232;
-    border-radius: 5rem;
+    border-radius: 3rem;
     left: 50%;
     bottom: 3rem;
+    line-height: 2.5rem;
     margin-left: -20rem;
 }
 

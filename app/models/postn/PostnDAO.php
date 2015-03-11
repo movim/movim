@@ -177,16 +177,16 @@ class PostnDAO extends SQL {
         return $this->run('Message');
     }
 
-    function deleteNode($jid, $node) {
+    function deleteNode($origin, $node) {
         $this->_sql = '
             delete from postn
-            where jid = :jid
+            where origin = :origin
                 and node = :node';
 
         $this->prepare(
             'Postn',
             array(
-                'jid' => $jid,
+                'origin' => $origin,
                 'node' => $node
             )
         );

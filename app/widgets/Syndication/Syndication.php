@@ -1,22 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Syndication.php
- * This file is part of MOVIM.
- *
- * @brief Create a RSS feed from user posts
- *
- * @author Jaussoin Timothée <edhelas@gmail.com>
- *
- * @version 1.0
- *
- * Copyright (C)2010 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 class Syndication extends WidgetBase
 {
     function load()
@@ -37,19 +20,7 @@ class Syndication extends WidgetBase
             $node = 'urn:xmpp:microblog:0';
         } else {
             return;
-            //$node = $_GET['n'];
         }
-
-        /*
-        if(!isset($_GET['f']) || !isset($_GET['n'])) {
-            return;
-        }
-
-        $from = $_GET['f'];
-        $node = $_GET['n'];
-        
-        $this->view->assign('from', $from);
-        $this->view->assign('node', $node);*/
         
         $pd = new \modl\PostnDAO();
         
@@ -66,27 +37,7 @@ class Syndication extends WidgetBase
             $this->view->assign('date', date('c'));
             $this->view->assign('contact', $cd->get($from));
 
-            $this->view->assign('uri',  htmlentities(Route::urlize('blog',array($from, $node))));
-            // Title and logo
-            // For a Pubsub feed
-            /*if(isset($from) && isset($node) && $node != 'urn:xmpp:microblog:0') {
-                $pd = new \modl\NodeDAO();
-                $n = $pd->getNode($from, $node);
-                if(isset($n->title))
-                    $this->view->assign('title', $n->title);
-                else
-                    $this->view->assign('title', $n->nodeid);
-            // Fir a simple contact
-            } else {
-                $this->view->assign('title', $this->__('feed.title', $messages[0]->getContact()->getTrueName()));
-                $this->view->assign('logo', $messages[0]->getContact()->getPhoto('l'));
-            }
-            
-            $this->view->assign('date', date('c'));
-            $this->view->assign('name', $messages[0]->getContact()->getTrueName());
-            $this->view->assign('uri',  htmlentities(Route::urlize('blog',array($from, $node))));
-            $this->view->assign('link', '<link rel="self" href="'.htmlentities(Route::urlize('feed',array($from, $node))).'"/>');
-            $this->view->assign('uuid', generateUUID($from.$node));*/
+            $this->view->assign('uri',  Route::urlize('blog',array($from)));
         }
     }
     
