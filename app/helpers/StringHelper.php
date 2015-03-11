@@ -255,10 +255,10 @@ function stringToColor($string) {
         6 => 'yellow',
         7 => 'brown');
         
-    $s = base_convert(sha1($string), 15, 8);
+    $s = substr(base_convert(sha1($string), 15, 10), 0, 10);
     
-    if(isset($s[4])) {
-        return $colors[(int) $s[4]];
+    if($colors[$s%8]) {
+        return $colors[$s%8];
     } else {
         return 'orange';
     }

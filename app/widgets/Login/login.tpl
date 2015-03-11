@@ -15,6 +15,7 @@
                 name="login">
                 <div>
                     <input type="email" name="login" id="login" autofocus required disabled
+                        onblur="Login_ajaxCheckLogin(this.value)"
                         placeholder="{$c->__('form.username')}"/>
                     <label for="login">{$c->__('form.username')}</label>
                 </div>

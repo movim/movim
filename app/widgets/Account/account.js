@@ -7,5 +7,6 @@ var Account = {
     clearAccount : function() {
         var username = localStorage.getItem("username").replace("@", "at");
         localStorage.removeItem(username + '_Init');
+        Presence_ajaxLogout();
     }
 }
