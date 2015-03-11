@@ -289,4 +289,26 @@ class SessionxDAO extends SQL {
         
         return (int)$results[0]; 
     }
+
+    function checkConnected($username, $host)
+    {
+        $this->_sql = '
+            select count(*) from sessionx
+            where
+                username = :username
+                and host = :host';
+        
+        $this->prepare(
+            'Sessionx', 
+            array(
+                'username' => $username,
+                'host' => $host
+            )
+        );
+
+        $results = $this->run(null, 'array');
+        $results = array_values($results[0]);
+        
+        return (int)$results[0]; 
+    }
 }
