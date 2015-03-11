@@ -22,10 +22,10 @@ class Account extends WidgetBase
     function onRemoved()
     {
         $md = new Modl\MessageDAO;
-        $mp->clearMessage();
-        // TODO : fix it
+        $md->clearMessage();
+        $pd = new Modl\PostnDAO;
+        $pd->deleteNode($this->user->getLogin(), 'urn:xmpp:microblog:0');
         RPC::call('Account.clearAccount');
-        RPC::call('Presence_ajaxLogout');
     }
 
     function ajaxChangePassword($form)
