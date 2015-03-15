@@ -32,7 +32,8 @@ class Chats extends WidgetCommon
                 $this->ajaxOpen($from);
             } else {
                 // TODO notification overwrite issue
-                RPC::call('movim_replace', $from.'_chat_item', $this->prepareChat($from));
+                RPC::call('movim_delete', $from.'_chat_item');
+                RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($from));
                 RPC::call('Chats.refresh');
 
                 $n = new Notification;
