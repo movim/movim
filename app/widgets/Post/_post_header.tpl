@@ -9,6 +9,15 @@
     </h2>
 </div>
 <div>
+    {if="$post->isMine()"}
+        <ul class="active">
+            <li onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                <span class="icon">
+                    <i class="md md-delete"></i>
+                </span>
+            </li>
+        </ul>
+    {/if}
     <h2 class="active" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
         <span id="back" class="icon"><i class="md md-arrow-back"></i></span>
         {if="$post != null"}

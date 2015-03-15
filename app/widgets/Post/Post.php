@@ -19,6 +19,7 @@
  */
 
 use Moxl\Xec\Action\Pubsub\PostPublish;
+use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use \Michelf\Markdown;
 
@@ -29,6 +30,7 @@ class Post extends WidgetCommon
         $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
+        $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
     }
 
     function onPublish()
@@ -36,6 +38,14 @@ class Post extends WidgetCommon
         Notification::append(false, $this->__('post.published'));
         $this->ajaxClear();
         RPC::call('MovimTpl.hidePanel');
+    }
+
+    function onDelete()
+    {
+        Notification::append(false, $this->__('post.deleted'));
+        $this->ajaxClear();
+        RPC::call('MovimTpl.hidePanel');
+        RPC::call('Menu_ajaxGetAll');
     }
 
     function ajaxClear()
@@ -70,7 +80,7 @@ class Post extends WidgetCommon
             $view = $this->tpl();
             $view->assign('content', Markdown::defaultTransform($form->content->value));
 
-            Dialog::fill($view->draw('_post_preview', true));
+            Dialog::fill($view->draw('_post_preview', true), true);
         } else {
             Notification::append(false, $this->__('post.no_content_preview'));
         }
@@ -113,6 +123,25 @@ class Post extends WidgetCommon
         } else {
             Notification::append(false, $this->__('post.no_content'));
         }
+    }
+
+    function ajaxDelete($to, $node, $id)
+    {
+        $view = $this->tpl();
+
+        $view->assign('to', $to);
+        $view->assign('node', $node);
+        $view->assign('id', $id);
+
+        Dialog::fill($view->draw('_post_delete', true));
+    }
+
+    function ajaxDeleteConfirm($to, $node, $id) {
+        $p = new PostDelete;
+        $p->setTo($to)
+          ->setNode($node)
+          ->setId($id)
+          ->request();
     }
 
     function ajaxGetComments($jid, $id)
