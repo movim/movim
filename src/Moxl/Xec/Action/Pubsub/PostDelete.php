@@ -62,8 +62,7 @@ class PostDelete extends Errors
         $pd = new \modl\PostnDAO();
         $pd->delete($this->_id);
 
-        $evt = new \Event();
-        $evt->runEvent('stream', array('from' => $this->_to, 'node' => $this->_node));
+        $this->deliver();
     }
     
     public function error($stanza) {
