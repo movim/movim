@@ -47,7 +47,7 @@ class Pubsub {
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
         \Moxl\API::request($xml);
     }
-    static function configurePersistentStorage($to, $node)
+    static function configurePersistentStorage($to, $node, $access_model = 'whitelist')
     {
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
@@ -60,7 +60,7 @@ class Pubsub {
                             <value>true</value>
                         </field>
                         <field var="pubsub#access_model">
-                            <value>whitelist</value>
+                            <value>'.$access_model.'</value>
                         </field>
                     </x>
                 </configure>

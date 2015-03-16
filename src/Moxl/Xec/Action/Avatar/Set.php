@@ -35,6 +35,7 @@ class Set extends Action
     {
         $this->store();
         Avatar::set($this->_data);
+        Avatar::setMetadata($this->_data);
     }
     
     public function setData($data)

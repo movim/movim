@@ -59,8 +59,6 @@ class Get extends Action
             $c = new \modl\Contact();
 
         $c->jid       = $this->_to;
-
-        $c->phototype = 'image/png';
         $c->photobin  = (string)$stanza->pubsub->items->item->data;
 
         $c->createThumbnails();

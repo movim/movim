@@ -195,6 +195,7 @@ class Handler {
             '54c22c37d17c78ee657ea3d40547a970' => 'Version',
             
             '1cb493832467273efa384bbffa6dc35a' => 'Avatar',
+            '0f59aa7fb0492a008df1b807e91dda3b' => 'AvatarMetadata',
             '36fe2745bdc72b1682be2c008d547e3d' => 'Vcard4',
             
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
