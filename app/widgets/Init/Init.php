@@ -47,16 +47,32 @@ class Init extends WidgetCommon {
         Notification::append(null, $notif);
     }
 
-    function ajaxCreatePersistentStorage($node)
+    private function createPersistentStorage($node)
     {
         $p = new CreatePersistentStorage;
         $p->setTo($this->user->getLogin())
           ->setNode($node)
           ->request();
-          
+    }
+
+    function ajaxCreatePersistentStorage($node)
+    {
+        $this->createPersistentStorage($node);
+
         $p = new ConfigurePersistentStorage;
         $p->setTo($this->user->getLogin())
           ->setNode($node)
+          ->request();
+    }
+
+    function ajaxCreatePersistentPresenceStorage($node)
+    {
+        $this->createPersistentStorage($node);
+
+        $p = new ConfigurePersistentStorage;
+        $p->setTo($this->user->getLogin())
+          ->setNode($node)
+          ->setAccessPresence()
           ->request();
     }
 
