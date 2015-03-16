@@ -74,7 +74,7 @@ class Rooms extends WidgetCommon
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
-        $view->assign('list', $cd->getPresence($room));
+        $view->assign('list', $cd->getPresences($room));
 
         Dialog::fill($view->draw('_rooms_list', true), true);
     }
