@@ -31,7 +31,7 @@ var Avatar = {
                 }
             }
 
-            var base64 = canvas.toDataURL('image/jpeg', 0.9);
+            var base64 = canvas.toDataURL('image/jpeg', 0.8);
 
             var preview = document.querySelector('form[name=avatarform] img');
             var input = document.querySelector('input[name="photobin"]');
