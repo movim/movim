@@ -63,6 +63,8 @@ class Contact extends Model {
     protected $skype;
     protected $yahoo;
 
+    protected $avatarhash;
+
     // Datetime
     public $created;
     public $updated;
@@ -133,7 +135,7 @@ class Contact extends Model {
             "locbuilding" : 
                 {"type":"string", "size":128 },
             "loctext" : 
-                {"type":"string", "size":128 },
+                {"type":"text" },
             "locuri" : 
                 {"type":"string", "size":128 },
             "loctimestamp" : 
@@ -143,6 +145,8 @@ class Contact extends Model {
             "skype" : 
                 {"type":"string", "size":128 },
             "yahoo" : 
+                {"type":"string", "size":128 },
+            "avatarhash" : 
                 {"type":"string", "size":128 },
             "created" : 
                 {"type":"date" },
