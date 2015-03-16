@@ -87,6 +87,7 @@ class ContactDAO extends SQL {
                 twitter         = :twitter,
                 skype           = :skype,
                 yahoo           = :yahoo,
+                avatarhash      = :avatarhash,
                 created         = :created,
                 updated         = :updated
             where contact.jid = :jid';
@@ -145,6 +146,8 @@ class ContactDAO extends SQL {
                 'twitter'           => $contact->twitter,
                 'skype'             => $contact->skype,
                 'yahoo'             => $contact->yahoo,
+                
+                'avatarhash'        => $contact->avatarhash,
 
                 'created'           => $contact->created,
                 'updated'           => date(DATE_ISO8601),
@@ -206,6 +209,8 @@ class ContactDAO extends SQL {
                 skype,
                 yahoo,
 
+                avatarhash,
+
                 created,
                 
                 jid)
@@ -256,6 +261,8 @@ class ContactDAO extends SQL {
                     :twitter,
                     :skype,
                     :yahoo,
+
+                    :avatarhash,
 
                     :created,
                     
@@ -316,6 +323,8 @@ class ContactDAO extends SQL {
                     'twitter'           => $contact->twitter,
                     'skype'             => $contact->skype,
                     'yahoo'             => $contact->yahoo,
+
+                    'avatarhash'        => $contact->avatarhash,
 
                     'created'           => date(DATE_ISO8601),
                     'updated'           => date(DATE_ISO8601),
@@ -537,7 +546,28 @@ class ContactDAO extends SQL {
             return $this->run('RosterContact', 'item');
     }
 
-    function getPresence($jid) {       
+    function getPresence($jid, $resource) {       
+        $this->_sql = '
+            select * from contact
+            right outer join presence on contact.jid = presence.mucjid
+            where presence.session = :session
+            and presence.jid = :jid
+            and presence.resource = :resource
+            order by mucaffiliation desc';
+        
+        $this->prepare(
+            'Presence', 
+            array(
+                'session' => $this->_user,
+                'jid' => $jid,
+                'resource' => $resource
+            )
+        );
+        
+        return $this->run('PresenceContact', 'item');
+    }
+
+    function getPresences($jid) {       
         $this->_sql = '
             select * from contact
             right outer join presence on contact.jid = presence.mucjid

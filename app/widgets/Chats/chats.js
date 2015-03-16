@@ -6,12 +6,8 @@ var Chats = {
         {
             if(items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
-                    /*if(movim_has_class(this, 'room')) {
-                        Chats_ajaxChatroomJoin(this.dataset.jid, this.dataset.nick);
-                        Chat_ajaxGetRoom(this.dataset.jid);
-                    } else {
-                        Chat_ajaxGet(this.dataset.jid);
-                    }*/
+                    Rooms.refresh();
+
                     Chat_ajaxGet(this.dataset.jid);
                     Chats.reset(items);
                     Notification_ajaxClear('chat|' + this.dataset.jid);
@@ -26,6 +22,8 @@ var Chats = {
                     }
                 }
             }
+
+            movim_remove_class(items[i], 'active');
 
             i++;
         }
