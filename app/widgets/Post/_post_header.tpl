@@ -18,7 +18,7 @@
             </li>
         </ul>
     {/if}
-    <h2 class="active" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
+    <h2 class="active {if="$post->isMine()"}r1{/if}" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
         <span id="back" class="icon"><i class="md md-arrow-back"></i></span>
         {if="$post != null"}
             {if="$post->title != null"}
