@@ -608,6 +608,10 @@ header.big p {
     margin-bottom: 1rem;
 }
 
+.actions.scroll > section > article > section {
+    padding: 0;
+}
+
 main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last-child  {
     max-width: calc(75% - 5rem);
 }
