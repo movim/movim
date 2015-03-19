@@ -25,7 +25,7 @@ class Syndication extends WidgetBase
         $pd = new \modl\PostnDAO();
         
         if(isset($from) && isset($node)) {
-            $messages = $pd->getPublic($from, $node);
+            $messages = $pd->getPublic($from, $node, 10, 0);
             $this->view->assign('messages', $messages);
         }
         

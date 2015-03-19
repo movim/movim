@@ -22,6 +22,7 @@ use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use \Michelf\Markdown;
+use Respect\Validation\Validator;
 
 class Post extends WidgetCommon
 {
@@ -248,7 +249,9 @@ class Post extends WidgetCommon
         }
     }
     function ajaxTogglePrivacy($id) {
-        if(!preg_match('/^[a-f0-9]{32}$/', $id))
+        $validate = Validator::string()->length(6, 128);
+        
+        if(!$validate->validate($id))
             return;
         
         $pd = new \Modl\PrivacyDAO();

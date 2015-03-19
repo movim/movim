@@ -20,7 +20,7 @@ class Blog extends WidgetCommon {
         }
         
         $pd = new \modl\PostnDAO();
-        $messages = $pd->getPublic($from, $node);
+        $messages = $pd->getPublic($from, $node, 10, 0);
 
         if($messages[0] != null) {
             // Title and logo
