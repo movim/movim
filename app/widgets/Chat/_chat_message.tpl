@@ -30,7 +30,8 @@
     
     <div class="bubble {$class}">
         {if="preg_match('#^\?OTR#', $message->body)"}
-            <i class="md md-lock"></i> {$c->__('message.encrypted')}
+            <i class="md md-lock"></i><div class="encrypted">{$c->__('message.encrypted')}</div>
+            <!--<div class="encrypted">{$message->body}</div>-->
         {else}
             <div>{if="isset($message->html)"}{$message->html|prepareString}{else}{$message->body|htmlentities:ENT_COMPAT,'UTF-8'|prepareString}{/if}</div>
         {/if}

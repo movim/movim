@@ -9,6 +9,7 @@ class Chat extends WidgetCommon
     function load()
     {
         $this->addjs('chat.js');
+        $this->addjs('chat_otr.js');
         $this->addcss('chat.css');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
