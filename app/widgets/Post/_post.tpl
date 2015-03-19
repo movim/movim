@@ -34,7 +34,7 @@
                     {/if}
                 </span>
                 <p>
-                    {if="$post->node == 'urn:xmpp:microblog:0'"}
+                    {if="$post->node == 'urn:xmpp:microblog:0'  && $post->getContact()->getTrueName() != ''"}
                         {$post->getContact()->getTrueName()} - 
                     {/if}
                     {$post->published|strtotime|prepareDate}
@@ -48,13 +48,13 @@
     </section>
 
     <footer>
-        <ul class="thin">
+        <ul class="middle divided spaced">
             {if="isset($attachements.links)"}
                 {loop="$attachements.links"}
                     <li>
                         <span class="icon small"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
                         <a href="{$value.href}" class="alternate" target="_blank">
-                            <span>{$value.href}</span>
+                            <span>{$value.href|urldecode}</span>
                         </a>
                     </li>
                 {/loop}
@@ -70,7 +70,7 @@
                             <span class="icon small gray">
                                 <span class="md md-attach-file"></span>
                             </span>
-                            <span>{$value.href}</span>
+                            <span>{$value.href|urldecode}</span>
                         </a>
                     </li>
                 {/loop}
@@ -97,7 +97,11 @@
                     <span class="icon bubble color red">
                         <i class="md md-public"></i>
                     </span>
-                    <span>{$c->__('post.public')}</span>
+                    <span>
+                        <a target="_blank" href="{$c->route('blog', array($post->origin))}">
+                            {$c->__('post.public')}
+                        </a>
+                    </span>
                 </li>
             </ul>
         {/if}

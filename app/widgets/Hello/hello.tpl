@@ -45,7 +45,7 @@
                     {if="$value->title != null"}
                         title="{$value->title|strip_tags}"
                     {else}
-                        title="{$c->__('menu.contact_post')}"
+                        title="{$c->__('hello.contact_post')}"
                     {/if}
                 >
                     {if="current(explode('.', $value->origin)) == 'nsfw'"}
@@ -71,7 +71,7 @@
                     {if="$value->title != null"}
                         <span>{$value->title}</span>
                     {else}
-                        <span>{$c->__('menu.contact_post')}</span>
+                        <span>{$c->__('hello.contact_post')}</span>
                     {/if}
 
                     <span class="info">{$value->published|strtotime|prepareDate}</span>
