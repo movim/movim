@@ -6,7 +6,7 @@
     
     {loop="$items"}
         <li
-            tabindex="{$page*15+$key+1}"
+            tabindex="{$page*$paging+$key+1}"
             class="condensed"
             data-id="{$value->nodeid}"
             data-server="{$value->origin}"
@@ -50,7 +50,7 @@
             </p>
         </li>
     {/loop}
-    {if="count($items) == 15"}
+    {if="count($items) == $paging"}
     <li id="history" onclick="{$history} this.parentNode.removeChild(this);">
         <span class="icon"><i class="md md-history"></i></span>
         {$c->__('post.older')}

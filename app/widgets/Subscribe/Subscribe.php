@@ -38,10 +38,13 @@ class Subscribe extends WidgetBase {
         $xml = requestURL('http://movim.eu/server-vcards.xml', 1);
         if($xml) {
             $xml = simplexml_load_string($xml);
-            
-            $xml = (array)$xml->children();
+            if($xml) {
+                $xml = (array)$xml->children();
 
-            $this->view->assign('servers', $xml['vcard']);
+                $this->view->assign('servers', $xml['vcard']);
+            } else {
+                $this->view->assign('servers', false);
+            }
         } else {
             $this->view->assign('servers', false);
         }

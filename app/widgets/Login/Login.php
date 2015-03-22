@@ -19,6 +19,7 @@
 
 use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\Roster\GetList;
+use Respect\Validation\Validator;
 
 class Login extends WidgetBase
 {
@@ -59,19 +60,14 @@ class Login extends WidgetBase
 
     function display()
     {
-        $submit = $this->call('ajaxLogin', "movim_parse_form('login')");
+        $submit = $this->call('ajaxLogin', "movim_form_to_json('login')");
         
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
         
-        $this->view->assign('submit', $submit);
-        $this->view->assign('info',   $config->info);
-            
-        if(isset($_GET['err'])) {
-            $this->view->assign('warnings', $this->displayWarning($_GET['err'], true));
-        } else {
-            $this->view->assign('warnings', '');
-        }
+        $this->view->assign('submit',   $submit);
+        $this->view->assign('info',     $config->info);
+        $this->view->assign('whitelist',$config->xmppwhitelist);
         
         $pop = 0;
         
@@ -85,64 +81,62 @@ class Login extends WidgetBase
         $connected = $sd->getConnected();
 
         $this->view->assign('connected', $connected);
-        
-        $this->view->assign('gmail',
-            $this->__('account.gmail',
-                '<a href="#" onclick="fillExample(\'your.id@gmail.com \', \'\');">', '</a>'));
-                
-        $this->view->assign('facebook',
-            $this->__('account.facebook',
-                '<a href="#" onclick="fillExample(\'your.id@chat.facebook.com \', \'\');">', '</a>'));
 
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-        $whitelist = $config->xmppwhitelist;
-        
-        if(isset($whitelist) && $whitelist!=''){
-            $this->view->assign('whitelist', $whitelist);
-            $this->view->assign('whitelist_display', true);
-        } else{
-            $this->view->assign('whitelist_display', false);
-        }
-
-        $user = new User();
-        $color = $user->getConfig('color');
-        $this->view->assign('color', $color);
+        $this->view->assign('error', $this->prepareError());
     }
 
+    function showErrorBlock($error)
+    {
+        RPC::call('movim_fill', 'error', $this->prepareError($error));
+        RPC::call('movim_add_class', '#login_widget', 'error');
+    }
+
+    function prepareError($error = 'default')
+    {
+        $view = $this->tpl();
+
+        $key = 'error.'.$error;
+        $error_text = $this->__($key);
+
+        if($error_text == $key) {
+            $view->assign('error', $this->__('error.default'));
+        } else {
+            $view->assign('error', $error_text);
+        }
+
+        return $view->draw('_login_error', true);
+    }
+    
     function onMoxlError($error) {
         RPC::call('movim_redirect', Route::urlize('disconnect', $error[1]));
     }
-
+    
     function onSASLFailure($packet)
     {
-        $title = $this->__('error.fail_auth');
-
         switch($packet->content) {
             case 'not-authorized':
-                $warning = $this->__('error.wrong_account');
+                $error = 'wrong_account';
                 break;
             case 'invalid-mechanism':
-                $warning = $this->__('error.mechanism');
+                $error = 'mechanism';
                 break;
             case 'malformed-request':
-                $warning = $this->__('error.mechanism');
+                $error = 'mechanism';
                 break;
             case 'bad-protocol':
-                $warning = $this->__('error.fail_auth');
+                $error = 'fail_auth';
                 break;
             case 'bad-auth':
-                $warning = $this->__('error.wrong_account');
+                $error = 'wrong_account';
                 break;
             default :
-                $warning = $this->__('error.fail_auth');
+                $error = 'fail_auth';
                 break;
         }
 
-        RPC::call('remoteUnregisterReload');
-        Notification::append('login', $title, $warning, null, 2);
+        $this->showErrorBlock($error);
     }
-
+    /*
     private function displayWarning($warning, $htmlonly = false)
     {
         if($warning != false) {
@@ -255,7 +249,7 @@ class Login extends WidgetBase
                 exit;
             }
         }
-    }
+    }*/
 
     function ajaxCheckLogin($jid)
     {
@@ -269,59 +263,53 @@ class Login extends WidgetBase
         }
     }
 
-    function ajaxLogin($element)
+    function ajaxLogin($form)
     {
         // We get the Server Configuration
         $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
-        
-        $warning = false;
 
-        // Empty input test
-        foreach($element as $value) {
-            if($value == NULL || $value == '') {
-                $warning = 'datamissing';
-            }
+        // First we check the form
+        $validate_login   = Validator::email()->length(6, 40);
+        $validate_password = Validator::string()->length(4, 40);
+
+        $login    = $form->login->value;
+        $password = $form->pass->value;
+
+        if(!$validate_login->validate($login)) {
+            $this->showErrorBlock('login_format');
+            return;
         }
 
-        $this->displayWarning($warning);
+        if(!$validate_password->validate($password)) {
+            $this->showErrorBlock('password_format');
+            return;
+        }
 
-        // Correct email test
-        if(!filter_var($element['login'], FILTER_VALIDATE_EMAIL))
-            $warning = 'invalidjid';
+        list($username, $host) = explode('@', $login);
 
-        $this->displayWarning($warning);
-        
         // Check whitelisted server
         if(
             $config->xmppwhitelist != '' &&!
             in_array(
-                end(
-                    explode('@', $element['login'])
-                    ), 
+                $host, 
                 explode(',',$config->xmppwhitelist)
                 )
-            )
-            $warning = 'serverunauthorized';
-        $this->displayWarning($warning);
-
-        // Correct XMPP account test
-        $login_arr = explode('@', $element['login']);
-        $user = $login_arr[0];
-        $host = $login_arr[1];
+            ) {
+            $this->showErrorBlock('unauthorized');
+            return;
+        }
 
         // We check if we already have an open session
         $sd = new \Modl\SessionxDAO;
-        $here = $sd->checkConnected($user, $host);
+        $here = $sd->checkConnected($username, $host);
 
         if($here) {
-            $title = $this->__('error.fail_auth');
-            $warning = $this->__('error.conflict');
-            
-            Notification::append('login', $title, $warning, null, 2);
-            RPC::call('remoteUnregisterReload');
+            $this->showErrorBlock('conflict');
+            return;
         }
 
+        // We try to get the domain
         $dns = dns_get_record('_xmpp-client._tcp.'.$login_arr[1]);
 
         if(isset($dns[0]['target']) && $dns[0]['target'] != null)
@@ -330,11 +318,9 @@ class Login extends WidgetBase
             $domain = $host;
         }
 
-        $this->displayWarning($warning);
-
         // We create a new session or clear the old one
         $s = Sessionx::start();
-        $s->init($user, $element['pass'], $host, $domain);
+        $s->init($username, $password, $host, $domain);
 
         \Moxl\Stanza\Stream::init($host);
     }
@@ -365,6 +351,5 @@ class Login extends WidgetBase
 
         RPC::call('movim_fill', 'sessions', $sessionshtml->draw('_login_sessions', true));
         RPC::call('Login.refresh');
-        RPC::commit();
     }
 }
