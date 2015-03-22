@@ -6,7 +6,7 @@
 <div id="login_widget">
     <div id="sessions" class="dialog actions"></div>
 
-    <div class="dialog">
+    <div id="form" class="dialog">
         <section>
             <span class="info">{$c->__('connected')} {$connected} / {$pop}</span>
             <h3>{$c->__('page.login')}</h3>
@@ -51,6 +51,14 @@
             </ul>
             {/if}
 
+            {if="isset($whitelist) && $whitelist != ''"}
+            <ul class="thin simple card">
+                <li class="info">
+                    <p>{$c->__('whitelist.info')} : {$whitelist}</p>
+                </li>
+            </ul>
+            {/if}
+
             <ul class="thin simple">
                 <li class="new_account">
                     <span>{$c->__('form.no_account')}<br />
@@ -62,6 +70,10 @@
             </ul>
         </section>
     </div>
+
+    <div id="error" class="dialog actions">
+        {$error}
+    </div>
 </div>
 
 <div id="error_websocket" class="snackbar">
@@ -69,30 +81,3 @@
 </div>
 
 {/if}
-
-
-            <!--<div class="clear"></div>-->
-            <!--
-            <div class="clear"></div>-->
-        
-            <!--<ul id="loginhelp">
-                {if="$whitelist_display == true"}
-                    <li id="whitelist">
-                        <p>{$c->__('whitelist.info')}</p>
-                        <p style="font-weight:bold; text-align:center; margin:0.5em;">{$whitelist}</p>
-                        <p>{$c->__('whitelist.info2', '<a href="http://pod.movim.eu">', '</a>')}</p>
-                    </li>
-                {else}
-                    <li id="jabber">{$c->__('account.jabber')}
-                        <a href="#" onclick="fillExample('demonstration@movim.eu', 'demonstration');">
-                            {$c->__('account.demo')}
-                        </a>
-                    </li>
-                    <li id="gmail">
-                        {$gmail}
-                    </li>
-                    <li id="facebook">
-                        {$facebook}
-                    </li>
-                {/if}
-            </ul>-->
