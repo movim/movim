@@ -44,7 +44,7 @@
             </span>
             <span>{$c->__('subscribe.server_question')}</span>
             <p>
-                {$c->__('subscribe.server_contact')} • <a href="http://movim.eu/">http://movim.eu/</a>
+                {$c->__('subscribe.server_contact')} • <a href="https://movim.eu/">https://movim.eu/</a>
             </p>
         </li>
     </ul>

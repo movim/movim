@@ -80,17 +80,19 @@ var MovimWebsocket = {
     },
 
     send : function(widget, func, params) {
-        this.connection.send(
-            JSON.stringify(
-                {'func' : 'message', 'body' :
-                    {
-                        'widget' : widget,
-                        'func' : func,
-                        'params' : params
+        if(this.connection.readyState != 0) {
+            this.connection.send(
+                JSON.stringify(
+                    {'func' : 'message', 'body' :
+                        {
+                            'widget' : widget,
+                            'func' : func,
+                            'params' : params
+                        }
                     }
-                }
-            )
-        );
+                )
+            );
+        }
     },
 
     attach : function(func) {
