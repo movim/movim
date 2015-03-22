@@ -25,11 +25,9 @@ body main {
     display: none;
 }
 
-#login_widget.choose > div:first-child {
-    display: initial;
-}
-
-#login_widget:not(.choose) > div:last-child {
+#login_widget.choose > div#sessions,
+#login_widget.error  > div#error,
+#login_widget:not(.error):not(.choose) > div#form {
     display: initial;
 }
 
@@ -49,6 +47,11 @@ body main {
 #login_widget form ul input {
     margin: 0;
     display: block;
+    height: 5rem;
+}
+
+#login_widget .card {
+    padding: 1rem 2rem;
 }
 
 ul.admin {

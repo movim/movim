@@ -130,6 +130,7 @@ class Menu extends WidgetCommon
 
         $view->assign('items', $items);
         $view->assign('page', $page);
+        $view->assign('paging', $this->_paging);
 
         $html = $view->draw('_menu_list', true);
 
