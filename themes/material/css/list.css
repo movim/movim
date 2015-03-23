@@ -74,7 +74,7 @@ ul.active li.active:not(.subheader) {
 ul.active li:hover:not(.subheader) > p.more:after,
 ul.active.all li:hover > p.more:after,
 ul.active li.active:not(.subheader) > p.more:after {
-    background-image: linear-gradient(to bottom, transparent, rgba(247, 247, 247, 1));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(247, 247, 247, 1));
 }
 
 ul.active li:focus:not(.subheader),
@@ -86,7 +86,7 @@ ul.active li.active:not(.subheader) {
 ul.active li:focus:not(.subheader) > p.more:after,
 ul.active.all li:focus  > p.more:after,
 ul.active li.active:not(.subheader)  > p.more:after {
-    background-image: linear-gradient(to bottom, transparent, rgba(237, 237, 237, 1));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(237, 237, 237, 1));
 }
 
 .dark ul.active li:hover:not(.subheader),
@@ -123,7 +123,7 @@ ul li > p.more:after {
     display: block;
     width: 100%;
     height: 3rem;
-    background-image: linear-gradient(to bottom, transparent, white);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
     content: "";
     position: absolute;
     bottom: 0;
