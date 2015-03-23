@@ -5,9 +5,9 @@
     </li>
     {loop="$conferences"}
         {$connected = $c->checkConnected($value->conference, $value->nick)}
-        <li data-jid="{$value->conference}" class="condensed"
+        <li data-jid="{$value->conference}"
             {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
-            class="room {if="$connected"}online{/if}">
+            class="condensed room {if="$connected"}online{/if}">
             {if="$connected"}
                 <span class="icon bubble color {$value->name|stringToColor}"><i class="md md-people"></i></span>
             {else}
