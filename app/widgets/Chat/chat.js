@@ -1,17 +1,20 @@
 var Chat = {
+    left : null,
+    right: null,
+    right: null,
     addSmiley: function(element) {
         var n = document.querySelector('#chat_textarea');
         n.value = n.value + element.dataset.emoji;
         n.focus();
         Dialog.clear();    
     },
-    sendMessage: function(jid)
+    sendMessage: function(jid, muc)
     {
         var n = document.querySelector('#chat_textarea');
         var text = n.value;
         n.value = "";
         n.focus();
-        return encodeURIComponent(text);
+        Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
     },
     appendTextarea: function(value)
     { 
@@ -26,6 +29,61 @@ var Chat = {
     empty : function()
     {
         Chat_ajaxGet();
+    },
+    setBubbles : function(left, right, room) {
+        var div = document.createElement('div');
+
+        div.innerHTML = left;
+        Chat.left = div.firstChild;
+        div.innerHTML = right;
+        Chat.right = div.firstChild;
+        div.innerHTML = room;
+        Chat.room = div.firstChild;
+    },
+    appendMessages : function(messages) {
+        for(var i = 0, len = messages.length; i < len; ++i ) {
+            Chat.appendMessage(messages[i]);
+        }
+    },
+    appendMessage : function(message) {
+        if(message.body == '') return;
+
+        var bubble = null;
+        var id = null;
+
+        if(message.type == 'groupchat') {
+            bubble = Chat.room;
+            id = message.jidfrom + '_conversation';
+            bubble.querySelector('div').innerHTML = message.body;
+            bubble.querySelector('span.info').innerHTML = message.published;
+            console.log(message.color);
+            bubble.querySelector('span.user').className = 'user ' + message.color;
+            bubble.querySelector('span.user').innerHTML = message.resource;
+        } else {
+            if(message.session == message.jidfrom) {
+                bubble = Chat.right;
+                id = message.jidto + '_conversation';
+            } else {
+                bubble = Chat.left;
+                id = message.jidfrom + '_conversation';
+            }
+
+            bubble.querySelector('div.bubble div').innerHTML = message.body;
+            bubble.querySelector('div.bubble span.info').innerHTML = message.published;
+        }
+
+        /*
+        bubble.querySelector('div.bubble div').innerHTML = message.body;
+        if(message.type == 'groupchat') {
+            bubble.querySelector('div.bubble div').innerHTML = '<b>' + message.resource + '</b>: ' + message.body;
+            bubble.querySelector('div.bubble').className = 'bubble room';
+        } else {
+            
+        }*/
+
+        movim_append(id, bubble.outerHTML);
+
+        MovimTpl.scrollPanel();
     }
 }
 

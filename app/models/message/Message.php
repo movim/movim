@@ -19,6 +19,8 @@ class Message extends Model {
     public $published;
     public $delivered;
 
+    public $color; // Only for chatroom purpose
+
     public function __construct() {
         $this->_struct = '
         {

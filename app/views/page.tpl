@@ -19,8 +19,8 @@
     <script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/crypto.js"></script>
     <script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/eventemitter.js"></script>
     <script src="<?php echo BASE_URI; ?>app/assets/js/otr/otr.js"></script>
+    <script src="<?php echo BASE_URI; ?>app/assets/js/cycle.js"></script>
     
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
     <?php
@@ -32,6 +32,7 @@
         $this->addCss('color.css');
         $this->addCss('block.css');
         $this->addCss('menu.css');
+        $this->addCss('fonts.css');
         $this->addCss('material-design-iconic-font.min.css');
 
         $this->widget('System');
