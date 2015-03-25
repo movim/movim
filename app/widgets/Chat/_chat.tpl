@@ -1,6 +1,6 @@
 <div id="{$jid}_discussion" class="contained">
     <section id="{$jid}_messages">
-        {$messages}
+        <ul class="{if="$muc"}thin simple{else}middle{/if}" id="{$jid}_conversation"></ul>
     </section>
     <div id="{$jid}_state"></div>
 </div>
@@ -21,25 +21,29 @@
                         onkeypress="
                             if(event.keyCode == 13) {
                                 state = 0;
-                                {$send}
+                                Chat.sendMessage('{$jid}', {if="$muc"}true{else}false{/if});
                                 return false;
                             } else {
+                                {if="!$muc"}
                                 if(state == 0 || state == 2) {
                                     state = 1;
                                     {$composing}
                                     since = new Date().getTime();
                                 }
+                                {/if}
                             }
                             "
                         onkeyup="
                             movim_textarea_autoheight(this);
+                            {if="!$muc"}
                             setTimeout(function()
                             {
                                 if(state == 1 && since+5000 < new Date().getTime()) {
                                     state = 2;
                                     {$paused}
                                 }
-                            },5000); 
+                            },5000);
+                            {/if}
                             "
                         placeholder="{$c->__('chat.placeholder')}"
                     ></textarea>
