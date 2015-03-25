@@ -18,7 +18,7 @@ class Chat extends WidgetCommon
         $this->registerEvent('gone', 'onGone');
     }
 
-    function onMessage($packet)
+    function onMessage($packet, $mine = false)
     {
         $message = $packet->content;
         $cd = new \Modl\ContactDAO;
@@ -50,7 +50,13 @@ class Chat extends WidgetCommon
             $me = new \Modl\Contact;
         }
 
-        RPC::call('movim_append', $from.'_conversation', $this->prepareMessage($message, $from, $contact, $me));
+        if(preg_match('#^\?OTR#', $message->body)) {
+            if(!$mine) {
+                //RPC::call('ChatOTR.receiveMessage', $message->body);
+            }
+        } else {
+            RPC::call('Chat.appendMessage', $this->prepareMessage($message));
+        }
         RPC::call('MovimTpl.scrollPanel');
     }
 
@@ -121,6 +127,8 @@ class Chat extends WidgetCommon
             RPC::call('movim_fill', 'chat_widget', $html);
             RPC::call('MovimTpl.scrollPanel');
             RPC::call('MovimTpl.showPanel');
+
+            $this->prepareMessages($jid);
         }
     }
 
@@ -138,6 +146,8 @@ class Chat extends WidgetCommon
         RPC::call('movim_fill', 'chat_widget', $html);
         RPC::call('MovimTpl.scrollPanel');
         RPC::call('MovimTpl.showPanel');
+
+        $this->prepareMessages($room);
     }
 
     /**
@@ -170,9 +180,11 @@ class Chat extends WidgetCommon
         $m->body      = rawurldecode($message);
         $m->published = date('Y-m-d H:i:s');
         $m->delivered = date('Y-m-d H:i:s');
-        
-        $md = new \Modl\MessageDAO();
-        $md->set($m);
+
+        if(!preg_match('#^\?OTR#', $m->body)) {
+            $md = new \Modl\MessageDAO();
+            $md->set($m);
+        }
 
         /* Is it really clean ? */
         $packet = new Moxl\Xec\Payload\Packet;
@@ -213,7 +225,7 @@ class Chat extends WidgetCommon
      * @return void
      */
     function ajaxSendPaused($to) {
-        $mp=new Paused;
+        $mp = new Paused;
         $mp->setTo($to)->request();
     }
 
@@ -260,35 +272,16 @@ class Chat extends WidgetCommon
         $view = $this->tpl();
 
         $view->assign('jid', $jid);
-        $view->assign('messages', $this->prepareMessages($jid));
 
         $jid = echapJS($jid);
 
         $view->assign('composing', $this->call('ajaxSendComposing', "'" . $jid . "'"));
         $view->assign('paused', $this->call('ajaxSendPaused', "'" . $jid . "'"));
 
-        $view->assign(
-            'send',
-            $this->call(
-                'ajaxSendMessage',
-                "'" . $jid . "'",
-                "Chat.sendMessage('" . $jid . "')")
-            );
         $view->assign('smiley', $this->call('ajaxSmiley'));
 
         $view->assign('emoji', prepareString('😀'));
-
-        if($muc)
-        {
-            $view->assign(
-                'send',
-                $this->call(
-                    'ajaxSendMessage',
-                    "'" . $jid . "'",
-                    "Chat.sendMessage('" . $jid . "')",
-                    "true")
-                );
-        }
+        $view->assign('muc', $muc);
 
         return $view->draw('_chat', true);
     }
@@ -296,48 +289,53 @@ class Chat extends WidgetCommon
     function prepareMessages($jid)
     {
         $md = new \Modl\MessageDAO();
-        $messages = $md->getContact(echapJid($jid), 0, 15);
-        
-        $cd = new \Modl\ContactDAO;
-        $view = $this->tpl();
+        $messages = $md->getContact(echapJid($jid), 0, 30);
 
+        $messages = array_reverse($messages);
+
+        foreach($messages as $message) {
+            $this->prepareMessage($message);
+        }
+
+        $view = $this->tpl();
+        $view->assign('jid', $jid);
+
+        $cd = new \Modl\ContactDAO;
         $contact = $cd->get($jid);
         $me = $cd->get();
         if($me == null) {
             $me = new \Modl\Contact;
-        }      
-
-        $messages = array_reverse($messages);
-
-        $messages_html = '';
-        foreach($messages as $m) {
-            $messages_html .= $this->prepareMessage($m, $jid, $contact, $me);
         }
 
-        $view->assign('jid', $jid);
-        $view->assign('messages_html', $messages_html);
+        $view->assign('contact', $contact);
+        $view->assign('me', false);
+        $left = $view->draw('_chat_bubble', true);
 
-        return $view->draw('_chat_messages', true);
+        $view->assign('contact', $me);
+        $view->assign('me', true);
+        $right = $view->draw('_chat_bubble', true);
+
+        $room = $view->draw('_chat_bubble_room', true);
+
+        RPC::call('Chat.setBubbles', $left, $right, $room);
+        RPC::call('Chat.appendMessages', $messages);
     }
 
-    function prepareMessage($message, $jid, $contact, $me)
+    function prepareMessage(&$message)
     {
-        $view = $this->tpl();
-
-        $view->assign('jid', $jid);
-        $view->assign('contact', $contact);
-        $view->assign('me', $me);
-        $view->assign('message', $message);
-
-        if($message->type == 'groupchat') {
-            $cd = new \Modl\ContactDAO;
-            $contact = $cd->getPresence($jid, $message->resource);
-            if(!$contact) $contact = new \Modl\Contact;
-
-            $view->assign('contact', $contact);
+        if(isset($message->html)) {
+            $message->body = prepareString($message->html);
+        } else {
+            $message->body = prepareString(htmlentities($message->body , ENT_COMPAT,'UTF-8'));
         }
 
-        return $view->draw('_chat_message', true);        
+        if($message->type == 'groupchat') {
+            $message->color = stringToColor($message->jidfrom.$message->resource);
+        }
+
+        $message->published = prepareDate(strtotime($message->published));
+
+        return $message;
     }
 
     function prepareEmpty()

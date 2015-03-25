@@ -46,6 +46,8 @@ function getTimezoneCorrection() {
  */
 function prepareDate($time, $hours = true) {
     $t = $time ? $time : time();
+
+    $date = '';
     
     $reldays = ((time() - $t)-(time()%86400))/86400;
     // if $time is within a week
@@ -54,7 +56,7 @@ function prepareDate($time, $hours = true) {
         if($reldays < -1) { 
             $date = __('date.tomorrow');
         } else if ($reldays <= 0) { 
-            $date = __('date.today');
+            //$date = __('date.today');
         } else if ($reldays <= 1) {
             $date = __('date.yesterday');
         }
@@ -71,8 +73,12 @@ function prepareDate($time, $hours = true) {
             $date .= date(', Y', $t);
     }
     //if $hours option print the time
-    if($hours)
-        $date .= ' - '. date('H:i', $time);
+    if($hours) {
+        if($date != '') {
+            $date .= ' - ';
+        }
+        $date .= date('H:i', $time);
+    }
     return $date;
 
 }
