@@ -1,5 +1,6 @@
 var ChatOTR = {
     buddy : null,
+    status : 0,
     load : function(jid) {
         var key = ChatOTR.getKey();
 
@@ -12,23 +13,25 @@ var ChatOTR = {
         ChatOTR.buddy = new OTR(options)
 
         ChatOTR.buddy.on('ui', function (msg, encrypted, meta) {
-          console.log("message to display to the user: " + msg)
-          //if(encrypted) {
-              var message = document.querySelector('.pending');
-              message.innerHTML = msg;
-              message.className = '';
+            console.log("!!! message to display to the user: " + msg)
 
-            ChatOTR.cleanPending();
-          //}
-          // encrypted === true, if the received msg was encrypted
-          
-          //console.log("(optional) with receiveMsg attached meta data: " + meta)
+            var message = {
+                session : 'me',
+                jidfrom : 'demonstration@movim.eu',
+                jidto   : 'me',
+                type    : 'chat',
+                body    : msg
+            };
+
+            console.log(message);
+
+            Chat.appendMessage(message);
         });
 
         ChatOTR.buddy.on('io', function (msg, meta) {
-          console.log("message to send to buddy: " + msg)
-          Chat_ajaxSendMessage('demonstration@movim.eu', msg);
-          console.log("(optional) with sendMsg attached meta data: " + meta)
+            console.log(">>> message to send to buddy: " + msg)
+            Chat_ajaxSendMessage('demonstration@movim.eu', msg);
+            //console.log("(optional) with sendMsg attached meta data: " + meta)
         });
 
         ChatOTR.buddy.on('error', function (err, severity) {
@@ -36,23 +39,36 @@ var ChatOTR = {
             console.error("error occurred: " + err)
         });
 
-        console.log(ChatOTR.buddy);
+        ChatOTR.buddy.on('status', function (state) {
+            switch (state) {
+                case OTR.CONST.STATUS_AKE_SUCCESS:
+                    movim_add_class(document.querySelector('#chat_header'), 'encrypted');
+                    ChatOTR.status = 2;
+                    break
+                case OTR.CONST.STATUS_END_OTR:
+                    movim_remove_class(document.querySelector('#chat_header'), 'encrypted');
+                    ChatOTR.status = 0;
+                    break
+                }
+        });
+
     },
 
-    cleanPending : function() {
-        var pending = document.querySelectorAll('.pending');
-
-        var i = 0;
-        while(i < pending.length)
-        {
-            pending[i].innerHTML = 'cant read';
-            pending[i].className = '';
-            i++;
+    receiveMessage : function(enc) {
+        console.log("<<< message received from the buddy: " + enc);
+        if(ChatOTR.status == 0) {
+            ChatOTR.buddy.sendQueryMsg();
+            ChatOTR.status = 1;
         }
+        ChatOTR.buddy.receiveMsg(enc);
     },
 
     sendMessage : function(msg) {
-        ChatOTR.buddy.sendMsg(msg);
+        if(ChatOTR.status == 0) {
+            Chat_ajaxSendMessage('demonstration@movim.eu', msg);
+        } else {
+            ChatOTR.buddy.sendMsg(msg);
+        }
     },
 
     getKey : function() {
@@ -64,25 +80,6 @@ var ChatOTR = {
         var key = localStorage.getObject('otr_key');
 
         return DSA(key);
-    },
-
-    clear : function() {
-        document.getElementById('demonstration@movim.eu_conversation').innerHTML = '';
-    },
-
-    decryptAll : function() {
-        ChatOTR.cleanPending();
-
-        var encrypted = document.querySelectorAll('.encrypted');
-
-        var i = 0;
-        while(i < encrypted.length)
-        {
-            var enc = encrypted[i].innerHTML;
-            encrypted[i].className = 'pending';
-            ChatOTR.buddy.receiveMsg(enc);
-            i++;
-        }
     }
 }
 

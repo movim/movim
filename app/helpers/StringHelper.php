@@ -4,7 +4,51 @@ use HeyUpdate\Emoji\Emoji;
 use HeyUpdate\Emoji\EmojiIndex;
 
 /**
- * Prepare the string (add the a to the links and show the smileys)
+ * @desc A singleton wrapper for the Emoji library
+ */
+class MovimEmoji
+{
+    protected static $instance = null;
+    private $_emoji;
+    private $_theme;
+
+    protected function __construct()
+    {
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+        $this->_theme = $config->theme;
+
+        $this->_emoji = new Emoji(new EmojiIndex(), $this->getPath());
+    }
+
+    public function replace($string, $large = false)
+    {
+        $this->_emoji->setAssetUrlFormat($this->getPath($large));
+        $string = $this->_emoji->replaceEmojiWithImages($string);
+        $this->_emoji->setAssetUrlFormat($this->getPath());
+        
+        return $string;
+    }
+
+    private function getPath($large = false)
+    {
+        $path = BASE_URI . 'themes/' . $this->_theme . '/img/emojis/';
+        if($large) $path .= 'large/';
+
+        return $path.'%s.png';
+    }
+
+    public static function getInstance()
+    {
+        if (!isset(static::$instance)) {
+            static::$instance = new MovimEmoji;
+        }
+        return static::$instance;
+    }
+}
+
+/**
+ * @desc Prepare the string (add the a to the links and show the smileys)
  *
  * @param string $string
  * @return string
@@ -83,16 +127,8 @@ function prepareString($string, $large = false) {
     );
    
     // We add some smileys...
-    $cd = new \Modl\ConfigDAO();
-    $config = $cd->get();
-    $theme = $config->theme;
-    
-    $path = BASE_URI . 'themes/' . $theme . '/img/emojis/';
-
-    if($large) $path .= 'large/';
-
-    $emoji = new Emoji(new EmojiIndex(), $path.'%s.png');
-    $string = $emoji->replaceEmojiWithImages($string);
+    $emoji = MovimEmoji::getInstance();
+    $string = $emoji->replace($string, $large);
     
     return trim($string);
 }

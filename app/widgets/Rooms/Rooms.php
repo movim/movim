@@ -67,7 +67,7 @@ class Rooms extends WidgetCommon
     }
 
     /**
-     * @brief Display the remove room confirmation
+     * @brief Display the remove list
      */
     function ajaxList($room)
     {
