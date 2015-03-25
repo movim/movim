@@ -10,7 +10,7 @@
             </span>
         </li>
     </ul>
-    <h2 class="active r1" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
+    <h2 id="chat_header" class="active r1" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
         <span id="back" class="icon"><i class="md md-arrow-back"></i></span>
         {if="$contact != null"}
             {$contact->getTrueName()}
