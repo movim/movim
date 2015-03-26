@@ -56,7 +56,6 @@ var Chat = {
             id = message.jidfrom + '_conversation';
             bubble.querySelector('div').innerHTML = message.body;
             bubble.querySelector('span.info').innerHTML = message.published;
-            console.log(message.color);
             bubble.querySelector('span.user').className = 'user ' + message.color;
             bubble.querySelector('span.user').innerHTML = message.resource;
         } else {
@@ -71,15 +70,6 @@ var Chat = {
             bubble.querySelector('div.bubble div').innerHTML = message.body;
             bubble.querySelector('div.bubble span.info').innerHTML = message.published;
         }
-
-        /*
-        bubble.querySelector('div.bubble div').innerHTML = message.body;
-        if(message.type == 'groupchat') {
-            bubble.querySelector('div.bubble div').innerHTML = '<b>' + message.resource + '</b>: ' + message.body;
-            bubble.querySelector('div.bubble').className = 'bubble room';
-        } else {
-            
-        }*/
 
         movim_append(id, bubble.outerHTML);
 
