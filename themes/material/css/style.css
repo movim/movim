@@ -771,6 +771,11 @@ dl dd {
         padding-right: 2rem;
         box-sizing: border-box;
     }
+
+    .padded_top_bottom {
+        padding: 0 2rem;
+        box-sizing: border-box;        
+    }
 }
 
 /* Divided */

@@ -147,7 +147,7 @@ class Chat extends WidgetCommon
         RPC::call('MovimTpl.scrollPanel');
         RPC::call('MovimTpl.showPanel');
 
-        $this->prepareMessages($room);
+        $this->prepareMessages($room, true);
     }
 
     /**
