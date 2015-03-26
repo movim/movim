@@ -1,6 +1,13 @@
 <div>
+    <ul class="active">
+        <li onclick="Rooms_ajaxAdd()">
+            <span class="icon">
+                <i class="md md-group-add"></i>
+            </span>
+        </li>
+    </ul>
     <span class="on_desktop icon"><i class="md md-forum"></i></span>
-    <h2>{$c->__('page.chats')}</h2>
+    <h2 class="r1">{$c->__('page.chats')}</h2>
 </div>
 <div>
     <ul class="active">

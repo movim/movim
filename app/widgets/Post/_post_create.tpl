@@ -1,4 +1,4 @@
-<form name="post" class="padded_right">
+<form name="post" class="padded_top_bottom">
     <input type="hidden" name="to" value="{$to}">
     <input type="hidden" name="node" value="urn:xmpp:microblog:0">
     <div>
