@@ -4,6 +4,9 @@
         <li class="block condensed">
             <span class="info">{$value->connected} / {$value->population}</span>
             <span>
+                {if="$value->favorite"}
+                    <i class="md md-star-outline"></i>
+                {/if}
                 <a href="{$value->url}" target="_blank">
                     {function="parse_url($value->url, PHP_URL_HOST)"}
                 </a>
