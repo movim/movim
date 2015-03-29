@@ -51,7 +51,6 @@ class AccountNext extends WidgetBase {
                     $html = $oobview->draw('_accountnext_oob', true);
                     
                     RPC::call('movim_fill', 'subscription_form', $html);
-                    RPC::call('remoteUnregister');
                     break;
             }
             
@@ -71,7 +70,6 @@ class AccountNext extends WidgetBase {
         
         RPC::call('movim_fill', 'subscription_form', $html);
         RPC::call('setUsername', $data->username->value);
-        //RPC::call('remoteUnregister');
     }
 
     function onRegisterError($package)
