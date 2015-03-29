@@ -101,6 +101,10 @@ var MovimWebsocket = {
         }
     },
 
+    clearAttached : function() {
+        this.attached = new Array();
+    },
+
     handle : function(json) {
         var funcalls = JSON.parse(json);
         if(funcalls != null) {

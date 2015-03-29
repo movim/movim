@@ -21,7 +21,9 @@ body main > header {
     }
 
     .dialog {
-        top: 15%;
+        top: 12.5%;
+        max-height: 92.5%;
+        height: 82.5%;
     }
 }
 
