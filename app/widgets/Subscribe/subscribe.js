@@ -1,4 +1,5 @@
 MovimWebsocket.attach(function()
 {
-    remoteUnregister();
+    MovimWebsocket.unregister(false);
+    MovimWebsocket.clearAttached();
 });
