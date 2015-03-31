@@ -15,11 +15,11 @@
     <script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
 
     <!-- OTR -->
-    <script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/bigint.js"></script>
+    <!--<script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/bigint.js"></script>
     <script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/crypto.js"></script>
     <script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/eventemitter.js"></script>
     <script src="<?php echo BASE_URI; ?>app/assets/js/otr/otr.js"></script>
-    <script src="<?php echo BASE_URI; ?>app/assets/js/cycle.js"></script>
+    <script src="<?php echo BASE_URI; ?>app/assets/js/cycle.js"></script>-->
     
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
