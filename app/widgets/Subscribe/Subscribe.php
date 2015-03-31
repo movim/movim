@@ -35,18 +35,11 @@ class Subscribe extends WidgetBase {
     }
 
     function display() {
-        $xml = requestURL('http://movim.eu/server-vcards.xml', 1);
-        if($xml) {
-            $xml = simplexml_load_string($xml);
-            if($xml) {
-                $xml = (array)$xml->children();
-
-                $this->view->assign('servers', $xml['vcard']);
-            } else {
-                $this->view->assign('servers', false);
-            }
-        } else {
-            $this->view->assign('servers', false);
+        $json = requestURL(MOVIM_API.'servers', 1);
+        $json = json_decode($json);
+        
+        if(is_object($json) && $json->status == 200) {
+            $this->view->assign('servers', $json->servers);
         }
     }
 }
