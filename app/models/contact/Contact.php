@@ -398,6 +398,19 @@ class Contact extends Model {
             'value'      => $this->value
             );
     }
+
+    function isEmpty() {
+        if($this->fn == null
+        && $this->name == null
+        && $this->date == null
+        && $this->url == null
+        && $this->email == null
+        && $this->description == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 class PresenceContact extends Contact {
