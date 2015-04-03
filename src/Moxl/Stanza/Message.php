@@ -50,4 +50,14 @@ class Message {
             </message>';
         \Moxl\API::request($xml);
     }
+
+    static function receipt($to, $id)
+    {
+        $session = \Sessionx::start();
+        $xml = '
+        <message xmlns="jabber:client" id="'.$session->id.'" to="'.str_replace(' ', '\40', $to).'">
+            <received xmlns="urn:xmpp:receipts" id="'.$id.'"/>
+        </message>';
+        \Moxl\API::request($xml);
+    }
 }

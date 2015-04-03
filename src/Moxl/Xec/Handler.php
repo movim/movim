@@ -171,6 +171,8 @@ class Handler {
     static function getHashToClass() {
         return array(
             '9b98cd868d07fb7f6d6cb39dad31f10e' => 'Message',
+            '004a75eb0a92fca2b868732b56863e66' => 'Receipt',
+            
             'e83b2aea042b74b1bec00b7d1bba2405' => 'Presence',
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
             

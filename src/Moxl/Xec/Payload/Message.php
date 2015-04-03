@@ -65,10 +65,12 @@ class Message extends Payload
             else
                 $m->published = date('Y-m-d H:i:s');
             $m->delivered = date('Y-m-d H:i:s');
-            
-            $md = new \modl\MessageDAO();
-            $md->set($m);
-                    
+
+            if(!preg_match('#^\?OTR#', $m->body)) {
+                $md = new \modl\MessageDAO();
+                $md->set($m);
+            }
+
             $this->pack($m);
             $this->deliver();
         }
