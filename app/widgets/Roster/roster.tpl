@@ -12,7 +12,7 @@
         <li class="subheader search">{$c->__('roster.results')}</li>
         
             <div id="spinner">
-                <object data="app/widgets/Roster/img/movim_cloud.svg" type="image/svg+xml"></object>
+                <img src="{$base_uri}/app/widgets/Roster/img/movim_cloud.svg"/>
             </div>
             
         <div

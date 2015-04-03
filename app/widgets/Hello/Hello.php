@@ -4,7 +4,6 @@ class Hello extends WidgetCommon
 {
     function load()
     {
-        $this->addcss('hello.css');
     }
 
     function ajaxChat($jid)
@@ -12,7 +11,7 @@ class Hello extends WidgetCommon
         $c = new Chats;
         $c->ajaxOpen($jid);
         
-        RPC::call('movim_redirect', $this->route('chat'));
+        RPC::call('movim_redirect', $this->route('chat', $jid));
     }
 
     function display()
