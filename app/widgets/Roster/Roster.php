@@ -344,5 +344,6 @@ class Roster extends WidgetBase
     {
         $this->user->reload();
         $this->view->assign('conf',      $this->user->getConfig());
+        $this->view->assign('base_uri',  BASE_URI);
     }
 }

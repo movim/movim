@@ -76,6 +76,13 @@
     margin-right: 1rem;
 }
 
+#chat_widget .placeholder {
+    padding-top: 37em;
+    background-size: 35rem 35rem;
+    background-position: center 7rem;
+    background-image: url('img/chat.svg');
+}
+
 table.emojis td {
     width: 10%;
     text-align: center;

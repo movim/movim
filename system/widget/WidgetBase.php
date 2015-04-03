@@ -255,6 +255,18 @@ class WidgetBase
         return $this->css;
     }
 
+    /*
+     * @brief Fetch and return get variables
+     */
+    protected function get($name)
+    {
+        if(isset($_GET[$name])) {
+            return htmlentities($_GET[$name]);
+        } else {
+            return false;
+        }
+    }
+
     /**
      * @brief Registers an event handler.
      * @param $type The event key
