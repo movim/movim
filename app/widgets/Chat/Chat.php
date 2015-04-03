@@ -16,7 +16,28 @@ class Chat extends WidgetCommon
         $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('gone', 'onGone');
+        //$this->registerEvent('presence', 'onPresence');
     }
+
+    /*
+     * Disabled for the moment, it SPAM a bit too much the user
+    function onPresence($packet)
+    {
+        $contacts = $packet->content;
+        if($contacts != null){
+            $contact = $contacts[0];
+
+            if($contact->value < 5) {
+                $avatar = $contact->getPhoto('s');
+                if($avatar == false) $avatar = null;
+
+                $presences = getPresences();
+                $presence = $presences[$contact->value];
+
+                Notification::append('presence', $contact->getTrueName(), $presence, $avatar, 4);
+            }
+        }
+    }*/
 
     function onMessage($packet, $mine = false)
     {
