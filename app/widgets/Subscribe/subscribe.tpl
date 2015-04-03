@@ -6,35 +6,32 @@
         </li>
     </ul>
 
-    <ul class="thick active divided spaced">
+    <ul class="thick active flex card">
         {loop="$servers"}
         <li
             class="block condensed"
-            onclick="movim_redirect('{$c->route('accountnext', array($value->fn->text, false))}')">
-            <span class="icon bubble color {$value->fn->text|stringToColor}">
+            onclick="movim_redirect('{$c->route('accountnext', array($value->domain, false))}')">
+            <span class="icon bubble color {$value->description|stringToColor}">
                 {if="$value->checked"}
                     <i class="fa md-star-outline"></i>
                 {else}
-                    {$value->fn->text|firstLetterCapitalize}
+                    {$value->domain|firstLetterCapitalize}
                 {/if}
             </span>
-            <div class="server {if="$value->checked"}star{/if}">
-                <span class="info">
-                <img
-                    class="flag"
-                    title="{$value->adr->country}" 
-                    alt="{$value->adr->country}" 
-                    src="{$c->flagPath($value->adr->country)}"/>  
-                </span>
-                <span>{$value->fn->text}</span>
-         
-                <p>
-                    {$value->note->text}<br />
-                    <a target="_blank" href="{$value->url->uri}">
-                        {$value->url->uri}
-                    </a>
-                </p>
-            </div>
+            <span class="info">
+            <img
+                class="flag"
+                title="{$value->geo_country}" 
+                alt="{$value->geo_country}" 
+                src="{$c->flagPath($value->geo_country)}"/>  
+            </span>
+            <span>{$value->domain}</span>
+            <p>
+                {$value->description}<br />
+                <a target="_blank" href="{$value->url}">
+                    {$value->url}
+                </a>
+            </p>
         </li>
         {/loop}
 
