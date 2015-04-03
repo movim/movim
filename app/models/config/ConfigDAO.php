@@ -4,6 +4,7 @@ namespace Modl;
 
 class ConfigDAO extends SQL {
     function set(Config $c) {
+        \movim_log('hop');
         $this->_sql = '
             update config
             set environment   = :environment,  

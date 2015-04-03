@@ -2,6 +2,7 @@
 
 use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Vcard\Get;
+use Respect\Validation\Validator;
 
 class Contact extends WidgetCommon
 {
@@ -79,7 +80,7 @@ class Contact extends WidgetCommon
         $c = new Chats;
         $c->ajaxOpen($jid);
         
-        RPC::call('movim_redirect', $this->route('chat'));
+        RPC::call('movim_redirect', $this->route('chat', $jid));
     }
 
     function ajaxDeleteContact($jid)
@@ -234,5 +235,11 @@ class Contact extends WidgetCommon
 
     function display()
     {
+        $validate_jid = Validator::email()->length(6, 40);
+
+        $this->view->assign('jid', false);
+        if($validate_jid->validate($this->get('f'))) {
+            $this->view->assign('jid', $this->get('f'));
+        }
     }
 }
