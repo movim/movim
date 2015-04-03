@@ -271,5 +271,11 @@ class Post extends WidgetCommon
 
     function display()
     {
+        $validate_nodeid = Validator::string()->length(10, 100);
+
+        $this->view->assign('nodeid', false);
+        if($validate_nodeid->validate($this->get('n'))) {
+            $this->view->assign('nodeid', $this->get('n'));
+        }
     }
 }

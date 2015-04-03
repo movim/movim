@@ -24,7 +24,7 @@ class AdminMain extends WidgetBase
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        if(isset($form)) {
+        if(isset($form) && !empty($form)) {
             if(isset($form['password'])
             && $form['password'] != '' && $form['repassword'] != ''
             && $form['password'] == $form['repassword']) {
