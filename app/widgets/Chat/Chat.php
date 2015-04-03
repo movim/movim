@@ -3,6 +3,7 @@
 use Moxl\Xec\Action\Message\Composing;
 use Moxl\Xec\Action\Message\Paused;
 use Moxl\Xec\Action\Message\Publish;
+use Respect\Validation\Validator;
 
 class Chat extends WidgetCommon
 {
@@ -367,5 +368,11 @@ class Chat extends WidgetCommon
 
     function display()
     {
+        $validate_jid = Validator::email()->length(6, 40);
+
+        $this->view->assign('jid', false);
+        if($validate_jid->validate($this->get('f'))) {
+            $this->view->assign('jid', $this->get('f'));
+        }
     }
 }
