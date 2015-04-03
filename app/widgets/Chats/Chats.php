@@ -11,7 +11,6 @@ class Chats extends WidgetCommon
         $this->addjs('chats.js');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
-        //$this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('presence', 'onPresence', 'chat');
     }
 
