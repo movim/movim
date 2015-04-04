@@ -39,7 +39,7 @@ class ContactDAO extends SQL {
         if(!isset($contact->created)) {
             $contact->created = date(DATE_ISO8601);
         }
-        
+
         $this->_sql = '
             update contact
             set fn      = :fn,
@@ -212,6 +212,7 @@ class ContactDAO extends SQL {
                 avatarhash,
 
                 created,
+                updated,
                 
                 jid)
                 values (
@@ -265,6 +266,7 @@ class ContactDAO extends SQL {
                     :avatarhash,
 
                     :created,
+                    :updated,
                     
                     :jid)';
                     
@@ -329,10 +331,10 @@ class ContactDAO extends SQL {
                     'created'           => date(DATE_ISO8601),
                     'updated'           => date(DATE_ISO8601),
                     
-                    'jid'  => $contact->jid
+                    'jid'               => $contact->jid
                 )
             );
-            
+
             $this->run('Contact'); 
         }
     }
