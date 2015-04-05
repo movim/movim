@@ -6,6 +6,6 @@ class NewsController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.news', APP_TITLE));
+        $this->page->setTitle(__('page.news'));
     }
 }

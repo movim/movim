@@ -3,35 +3,37 @@
 namespace modl;
 
 class ItemDAO extends SQL { 
-    function set(Item $item) {
-        $this->_sql = '
-            update item
-            set name   = :name,
-                creator = :creator,
-                created = :created,
-                updated = :updated,
-                description = :description
-            where server = :server
-                and jid  = :jid
-                and node = :node';
+    function set(Item $item, $insert_only = false) {
+        if(!$insert_only) {
+            $this->_sql = '
+                update item
+                set name   = :name,
+                    creator = :creator,
+                    created = :created,
+                    updated = :updated,
+                    description = :description
+                where server = :server
+                    and jid  = :jid
+                    and node = :node';
+            
+            $this->prepare(
+                'Item', 
+                array(
+                    'name'          => $item->name,
+                    'created'       => $item->created,
+                    'updated'       => $item->updated,
+                    'server'        => $item->server,
+                    'jid'           => $item->jid,
+                    'node'          => $item->node,
+                    'creator'       => $item->creator,
+                    'description'   => $item->description
+                )
+            );
+            
+            $this->run('Item');
+        }
         
-        $this->prepare(
-            'Item', 
-            array(
-                'name'          => $item->name,
-                'created'       => $item->created,
-                'updated'       => $item->updated,
-                'server'        => $item->server,
-                'jid'           => $item->jid,
-                'node'          => $item->node,
-                'creator'       => $item->creator,
-                'description'   => $item->description
-            )
-        );
-        
-        $this->run('Item');
-        
-        if(!$this->_effective) {
+        if(!$this->_effective || $insert_only) {
             $this->_sql = '
                 insert into item
                 (server,
@@ -138,7 +140,7 @@ class ItemDAO extends SQL {
             select * from item
             left outer join (
                 select node, count(node) as num from postn
-                where jid = :server
+                where origin = :server
                 group by node) as p
             on p.node = item.node
             left outer join (select server, node, subscription from subscription where jid = :node) 

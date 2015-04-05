@@ -6,6 +6,6 @@ class GroupController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.main', APP_TITLE));
+        $this->page->setTitle(__('page.groups'));
     }
 }

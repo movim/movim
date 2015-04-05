@@ -615,6 +615,7 @@ class ContactDAO extends SQL {
                 select jidfrom, count(*) as count from message
                 where jidfrom not like :jid
                     and session = :jid
+                    and type != \'groupchat\'
                 group by jidfrom 
                 order by count desc
                 limit :tunelenght
@@ -635,7 +636,7 @@ class ContactDAO extends SQL {
                 from rosterlink
                 where session = :jid
                 ) as rosterlink on jidfrom = rosterlink.jid
-            order by value';
+            order by value is null';
         
         $this->prepare(
             'Contact', 

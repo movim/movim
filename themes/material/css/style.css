@@ -724,6 +724,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 .icon.explore   { background-image: url(../img/placeholder/explore.png); }
 .icon.plane     { background-image: url(../img/placeholder/plane.png); }
 .icon.file      { background-image: url(../img/placeholder/file.png); }
+.icon.pages     { background-image: url(../img/icons/pages.svg); }
 .icon.clipboard { background-image: url(../img/icons/assignment_turned_in.svg); }
 
 /* Definition list */
@@ -794,6 +795,57 @@ dl dd {
     content: "";
     display: block;
     width: calc(100% - 9rem);
+}
+
+/* Spinner */
+.spinner {
+    position: relative;
+}
+
+.spinner:before,
+.spinner:after {
+    transition: top .3s ease-in-out;
+    content: '';
+    position: absolute;
+    left: calc(50% - 3.5rem);
+    border-radius: 50%;
+    top: -10rem;
+}
+
+.spinner.on:before,
+.spinner.on:after {
+    top: 3rem;
+}
+
+.spinner:before {
+    z-index: 2;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 1rem;
+}
+ 
+.spinner:not(:required):before {
+    content: '';
+    border: 0.75rem solid transparent;
+    border-top: 0.75rem solid #ddd;
+    animation: spinner 1s linear infinite;
+    -webkit-animation: spinner 1s linear infinite;
+}
+
+.spinner:after {
+    box-shadow: 0px 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0px 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
+    background-color: white;
+
+    width: 7rem;
+    height: 7rem;
+}
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+ 
+@-webkit-keyframes spinner {
+    to {-webkit-transform: rotate(360deg);}
 }
 
 /* Display/hide */

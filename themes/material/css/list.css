@@ -141,6 +141,11 @@ ul li span {
     white-space: nowrap;
 }
 
+ul li span.second {
+    opacity: 0.6;
+    padding-left: 0.5rem;
+}
+
 ul li img {
      max-width: 100%;
 }
