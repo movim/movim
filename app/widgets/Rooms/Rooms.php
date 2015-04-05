@@ -139,7 +139,7 @@ class Rooms extends WidgetCommon
         }
     }
     
-    private function setBookmark($item = false) 
+    public function setBookmark($item = false) 
     {
         $arr = array();
 

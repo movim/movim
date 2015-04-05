@@ -6,7 +6,6 @@ class HelpController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.help', APP_TITLE));
-        $this->page->setColor('indigo');
+        $this->page->setTitle(__('page.help'));
     }
 }

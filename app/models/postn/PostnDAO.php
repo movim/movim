@@ -202,6 +202,7 @@ class PostnDAO extends SQL {
             where ((postn.origin, node) in (select server, node from subscription where jid = :aid))
                 and postn.origin = :origin
                 and postn.node = :node
+                and postn.node != \'urn:xmpp:microblog:0\'
             order by postn.published desc';
 
         if($limitr) 
@@ -211,6 +212,29 @@ class PostnDAO extends SQL {
             'Postn', 
             array(
                 'aid' => $this->_user, // TODO: Little hack to bypass the check, need to fix it in Modl
+                'origin' => $from,
+                'node' => $node
+            )
+        );
+        
+        return $this->run('ContactPostn');
+    }
+
+    function getNodeUnfiltered($from, $node, $limitf = false, $limitr = false) {
+        $this->_sql = '
+            select *, postn.aid, privacy.value as privacy from postn
+            left outer join contact on postn.aid = contact.jid
+            left outer join privacy on postn.nodeid = privacy.pkey
+            where postn.origin = :origin
+                and postn.node = :node
+            order by postn.published desc';
+
+        if($limitr) 
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+        
+        $this->prepare(
+            'Postn', 
+            array(
                 'origin' => $from,
                 'node' => $node
             )
