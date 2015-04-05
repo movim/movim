@@ -31,7 +31,7 @@ class Groups extends WidgetCommon
         $id = new \modl\ItemDAO();
 
         $view = $this->tpl();
-        $view->assign('servers', $id->getServers());
+        $view->assign('servers', $id->getGroupServers());
         $header = $view->draw('_groups_header', true);
 
         Header::fill($header);
@@ -94,6 +94,19 @@ class Groups extends WidgetCommon
         $html = $view->draw('_groups_server', true);
 
         return $html;
+    }
+
+    private function cleanServers($servers) {
+        $i = 0;
+        foreach($servers as $c) {
+            if(filter_var($c->server, FILTER_VALIDATE_EMAIL)) {
+                unset($servers[$i]);
+            } elseif(count(explode('.', $c->server))<3) {
+                unset($servers[$i]);
+            }
+            $i++;
+        }
+        return $servers;
     }
 
     function display()
