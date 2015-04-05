@@ -78,6 +78,7 @@ class SubscriptionDAO extends SQL {
                 subscription.server, 
                 subscription.node, 
                 subscription, 
+                item.description, 
                 name
             from subscription
             left outer join item 

@@ -60,6 +60,7 @@ var MovimTpl = {
     },
     showPanel : function() {
         movim_add_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
+        MovimTpl.scrollPanelTop();
     },
     hidePanel : function() {
         Header_ajaxReset(CURRENT_PAGE);
@@ -79,11 +80,18 @@ var MovimTpl = {
             return false;
         }
     },
-    scrollPanel : function() { // On for panel that are .contained
+    scrollPanel : function() {
         var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
 
         if(selector != null) {
             selector.scrollTop = selector.scrollHeight;
+        }
+    },
+    scrollPanelTop : function() {
+        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div');
+
+        if(selector != null) {
+            selector.scrollTop = 0;
         }
     },
     toggleMenu : function() {

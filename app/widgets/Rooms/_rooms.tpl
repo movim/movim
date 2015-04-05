@@ -17,4 +17,13 @@
             <p>{$value->conference}</p>
         </li>
     {/loop}
+
+    {if="$conferences == null"}
+        <li class="condensed">
+            <span class="icon green">
+                <i class="md md-people-outline"></i>
+            </span>
+            <p>{$c->__('rooms.empty_text1')} {$c->__('rooms.empty_text2')}</p>
+        </li>
+    {/if}
 </ul>

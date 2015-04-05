@@ -16,6 +16,10 @@ li > form > div:not(.control) { /* If we put the form in a list */
 form > div > label {
     position: absolute;
     top: 2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
 form > div.icon {
