@@ -1,6 +1,11 @@
 Moxl Changelog
 ================
 
+v1.3
+---------------------------
+ * Clean the XEP-0060: Pubsub actions and use the Package system
+ * Fix the error handler to fire properly global errors
+
 v1.2.1
 ---------------------------
  * Add support of the XEP-0050: Ad-Hoc Commands 

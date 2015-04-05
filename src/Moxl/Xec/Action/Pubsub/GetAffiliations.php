@@ -59,7 +59,8 @@ class GetAffiliations extends Errors
             $sub = array((string)$i["jid"], (string)$i["affiliation"], (string)$i["subid"]);
             array_push($tab, $sub);
         }
-        
-        $evt->runEvent('pubsubaffiliations', array($tab, $this->_to,$this->_node)); 
+
+        $this->pack(array('affiliations' => $tab, 'server' => $this->_to, 'node' => $this->_node));
+        $this->deliver();
     }
 }

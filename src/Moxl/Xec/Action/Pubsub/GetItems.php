@@ -32,6 +32,7 @@ class GetItems extends Errors
 {
     private $_to;
     private $_node;
+    private $_since;
     
     public function request() 
     {
@@ -50,6 +51,12 @@ class GetItems extends Errors
         $this->_node = $node;
         return $this;
     }
+
+    public function setSince($since)
+    {
+        $this->_since = $since;
+        return $this;
+    }
     
     public function handle($stanza, $parent = false) {
         $evt = new \Event();
@@ -58,24 +65,28 @@ class GetItems extends Errors
         $from = $this->_to;
         $node = $this->_node;
 
+        $pd = new \modl\PostnDAO();
+
         if($stanza->pubsub->items->item) {
             foreach($stanza->pubsub->items->item as $item) {
-                $p = new \modl\Postn();
-                $p->set($item, $from, false, $node);
-                
-                $pd = new \modl\PostnDAO();
-                $pd->set($p);
+                if($this->_since == null
+                || strtotime($this->_since) < strtotime($item->entry->published)) {
+                    $p = new \modl\Postn();
+                    $p->set($item, $from, false, $node);
+                    $pd->set($p);
+                }
             }
-            
-            $evt->runEvent('stream', array('from' => $from, 'node' => $node));
+
+            $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+            $this->deliver();
         } else {
             $evt->runEvent('nostream', array('from' => $from, 'node' => $node));   
         }
     }
     
-    public function error($error) {
-        $evt = new \Event();
-        $evt->runEvent('nostream', array('from' => $this->_to, 'node' => $this->_node));   
+    public function error($errorid, $message) {
+        $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+        $this->deliver();
     }
 
 }

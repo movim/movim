@@ -132,8 +132,11 @@ class Handler {
                     $action->$errorid($errorid, $message);
                 }
                 // We also call a global error handler
-                if(method_exists($action, 'error'))
+                if(method_exists($action, 'error')) {
+                    Utils::log('Handler : Global error - '.$id.' - '.$errorid);
+                    $action->method('error');
                     $action->error($errorid, $message);
+                }
             } else {
                 // We launch the object handle
                 $action->method('handle');

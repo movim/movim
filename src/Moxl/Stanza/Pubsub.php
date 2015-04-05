@@ -206,6 +206,7 @@ class Pubsub {
                     <x xmlns="jabber:x:data" type="submit"></x>
                 </configure>
             </pubsub>';
+
         $xml = $xmpp->getXMPP($stream, $data)->asXML();
         $xml = \Moxl\API::iqWrapper(strstr($xml, '<pubsub'), $to, 'set');
         \Moxl\API::request($xml);

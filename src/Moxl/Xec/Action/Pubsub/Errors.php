@@ -32,11 +32,6 @@ class Errors extends Action
     public function handle($stanza, $parent = false) {}
 
     // Generic Pubsub errors handlers
-    public function error($error) {
-        $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("Error"));
-    }
-    
     public function errorItemNotFound($error) {
         $evt = new \Event();
         $evt->runEvent('pubsuberror', t("The node does not exist"));

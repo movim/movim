@@ -48,19 +48,21 @@ class DiscoItems extends Errors
         $evt = new \Event();
         
         $nd = new \modl\ItemDAO();
+        //$nd->deleteItems($this->_to);
         
         foreach($stanza->query->item as $item) {
             $n = new \modl\Item();
             $n->set($item, $this->_to);
             if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments')
-                $nd->set($n);
+                $nd->set($n, true);
         }
 
-        $evt->runEvent('discoitems', $this->_to);
+        $this->pack($this->_to);
+        $this->deliver();
     }
 
     public function error($error) {
-        $evt = new \Event();
-        $evt->runEvent('discoerror', $server);
+        $this->pack($this->_to);
+        $this->deliver();
     }
 }
