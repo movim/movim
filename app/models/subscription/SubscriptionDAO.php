@@ -77,9 +77,9 @@ class SubscriptionDAO extends SQL {
                 subscription.jid, 
                 subscription.server, 
                 subscription.node, 
-                subscription, 
-                item.description, 
-                name
+                subscription,
+                item.name,
+                item.description
             from subscription
             left outer join item 
                 on item.server = subscription.server 
@@ -89,7 +89,9 @@ class SubscriptionDAO extends SQL {
                 subscription.server, 
                 subscription.node, 
                 subscription.jid, 
-                subscription, item.name
+                subscription,
+                item.name,
+                item.name
             order by 
                 subscription.server';
         
