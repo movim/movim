@@ -129,7 +129,7 @@ class Node extends WidgetCommon
         $g->setTo($server)
           ->setNode($node)
           ->setFrom($this->user->getLogin())
-          ->setData($data)
+          //->setData($data)
           ->request();
     }
     

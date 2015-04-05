@@ -5,11 +5,11 @@
     {$url = $me->getPhoto('s')}
     {if="$url"}
         <span
-            class="icon bubble status {$presencetxt[$presence->value]}"
+            class="icon bubble status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}"
             style="background-image: url({$me->getPhoto('m')})">
         </span>
     {else}
-        <span class="icon bubble color {$me->jid|stringToColor} status {$presencetxt[$presence->value]}">
+        <span class="icon bubble color {$me->jid|stringToColor} status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}">
             <i class="md md-person"></i>
         </span>
     {/if}

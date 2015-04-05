@@ -22,6 +22,13 @@
             <span>{$c->__('page.contacts')}</span>
         </li>
     </a>
+    <a class="classic" href="{$c->route('group')}">
+        <li {if="$page == 'group'"}class="active"{/if}>
+            <span class="icon"><i class="md md-pages"></i></span>
+            <span class="counter"></span>
+            <span>{$c->__('page.groups')}</span>
+        </li>
+    </a>
     <a class="classic" href="{$c->route('chat')}">
         <li {if="$page == 'chat'"}class="active"{/if}>
             <span class="icon"><i class="md md-forum"></i></span>
