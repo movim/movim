@@ -9,6 +9,7 @@ class Subscription extends Model {
     public $subscription;
     public $subid;
     public $title;
+    public $description;
     public $tags;
     public $timestamp;
     public $name;

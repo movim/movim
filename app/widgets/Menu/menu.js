@@ -7,11 +7,13 @@ var Menu = {
         {
             if(items[i].id != 'history') {
                 items[i].onclick = function(e) {
+                    if(this.dataset.id) {
                         MovimTpl.showPanel();
                         Post_ajaxGetPost(this.dataset.id);
                         //Menu_ajaxGetNode(this.dataset.server, this.dataset.node);
                         Menu.reset(items);
                         movim_add_class(this, 'active');
+                    }
                 }
             }
             i++;

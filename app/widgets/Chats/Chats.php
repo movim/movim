@@ -4,6 +4,8 @@ use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Bookmark\Get;
 use Moxl\Xec\Action\Bookmark\Set;
 
+use Respect\Validation\Validator;
+
 class Chats extends WidgetCommon
 {
     function load()
@@ -59,12 +61,13 @@ class Chats extends WidgetCommon
 
     function ajaxOpen($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $chats = Cache::c('chats');
         if($chats == null) $chats = array();
 
         if(!array_key_exists($jid, $chats)
-        && $jid != $this->user->getLogin()
-        && $jid != '') {
+        && $jid != $this->user->getLogin()) {
             $chats[$jid] = 1;
         } else {
             unset($chats[$jid]);
@@ -74,12 +77,16 @@ class Chats extends WidgetCommon
 
         Cache::c('chats', $chats);
 
+        RPC::call('movim_delete', $jid.'_chat_item');
+
         RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
         RPC::call('Chats.refresh');
     }
 
     function ajaxClose($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $chats = Cache::c('chats');
         unset($chats[$jid]);
         Cache::c('chats', $chats);
@@ -132,6 +139,8 @@ class Chats extends WidgetCommon
 
     function prepareChat($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
@@ -155,6 +164,14 @@ class Chats extends WidgetCommon
         }
 
         return $view->draw('_chats_item', true);
+    }
+
+    private function validateJid($jid)
+    {
+        $validate_jid = Validator::email()->noWhitespace()->length(6, 40);
+
+        if($validate_jid->validate($jid)) return true;
+        else return false;
     }
 
     function display()

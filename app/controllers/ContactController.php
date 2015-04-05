@@ -6,7 +6,6 @@ class ContactController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.main', APP_TITLE));
-        $this->page->setColor('orange');
+        $this->page->setTitle(__('page.contacts'));
     }
 }
