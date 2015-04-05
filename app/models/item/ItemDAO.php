@@ -147,7 +147,7 @@ class ItemDAO extends SQL {
                 as s on s.server = item.server 
                 and s.node = item.node
             where item.server = :server
-              and item.node is not null
+              and item.node != \'\'
             order by name, item.node
             ';
             
