@@ -1,11 +1,11 @@
 <?php
 
-class ChatController extends BaseController {
+class GroupController extends BaseController {
     function load() {
         $this->session_only = true;
     }
 
     function dispatch() {
-        $this->page->setTitle(__('page.chats'));
+        $this->page->setTitle(__('page.groups'));
     }
 }

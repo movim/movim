@@ -196,7 +196,7 @@ class Login extends WidgetBase
         }
 
         // We try to get the domain
-        $dns = dns_get_record('_xmpp-client._tcp.'.$login_arr[1]);
+        $dns = dns_get_record('_xmpp-client._tcp.'.$host);
 
         if(isset($dns[0]['target']) && $dns[0]['target'] != null)
             $domain = $dns[0]['target'];

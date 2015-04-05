@@ -6,7 +6,6 @@ class ConfController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.configuration', APP_TITLE));
-        $this->page->setColor('red');
+        $this->page->setTitle(__('page.configuration'));
     }
 }

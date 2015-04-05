@@ -1,7 +1,7 @@
 <section class="scroll">
     <h3>{$c->__('chats.add')}</h3>
     <ul class="active" id="add_extend">
-        <li class="subheader condensed">{$c->__('chats.frequent')}</li>
+        <li class="subheader">{$c->__('chats.frequent')}</li>
         {loop="$top"}
             <li class="condensed" onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
                 {$url = $value->getPhoto('s')}
