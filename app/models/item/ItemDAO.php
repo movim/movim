@@ -146,7 +146,8 @@ class ItemDAO extends SQL {
             left outer join (select server, node, subscription from subscription where jid = :node) 
                 as s on s.server = item.server 
                 and s.node = item.node
-            where item.server= :server
+            where item.server = :server
+              and item.node is not null
             order by name, item.node
             ';
             
