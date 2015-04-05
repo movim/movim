@@ -91,7 +91,7 @@ class SubscriptionDAO extends SQL {
                 subscription.jid, 
                 subscription,
                 item.name,
-                item.name
+                item.description
             order by 
                 subscription.server';
         
