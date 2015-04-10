@@ -28,7 +28,7 @@ class Route extends \BaseController {
                 'disconnect'    => array('err'),
                 'friend'        => array('f'),
                 'blog'          => array('f'),
-                'feed'          => array('f', 'n'),
+                'feed'          => array('f'),
                 'nodeconfig'    => array('s', 'n'),
                 'node'          => array('s', 'n'),
                 'server'        => array('s'),
