@@ -4,7 +4,7 @@
     <ul>
         {$presence = getPresencesTxt()}
         {loop="$list"}
-            <li class="action">
+            <li class="action" title="{$value->resource}">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span class="icon bubble status {$presence[$value->value]}">
@@ -25,7 +25,7 @@
         {/loop}
     </ul>
 </section>
-<div class="no_bar">
+<div>
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.cancel')}
     </a>
