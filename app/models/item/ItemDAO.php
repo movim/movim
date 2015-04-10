@@ -143,6 +143,11 @@ class ItemDAO extends SQL {
                 where origin = :server
                 group by node) as p
             on p.node = item.node
+            left outer join (
+            select node, count(node) as sub from subscription
+            where server = :server
+            group by node) as sub
+            on sub.node = item.node
             left outer join (select server, node, subscription from subscription where jid = :node) 
                 as s on s.server = item.server 
                 and s.node = item.node

@@ -25,6 +25,7 @@ var Groups = {
 }
 
 MovimWebsocket.attach(function() {
+    Notification.current('groups');
     Groups_ajaxHeader();
     Groups.refresh();
 });

@@ -13,6 +13,7 @@ class Item extends Model {
     public $description;
     public $subscription;
     public $num;
+    public $sub;
     
     public function __construct() {
         $this->_struct = '

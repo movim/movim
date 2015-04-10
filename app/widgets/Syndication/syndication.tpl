@@ -1,12 +1,11 @@
 {if="isset($contact)"}  
-    {if="!empty($messages)"}        
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>{$c->__('feed.title', $contact->getTrueName())}</title>
     <updated>{$date}</updated>
     <author>
         <name>{$contact->getTrueName()}</name>
-        <uri>{$uri}</uri>
+        <uri><![CDATA[{$uri}]]></uri>
     </author>
     {$link}
     <logo>{$contact->getPhoto('xl')}</logo>
@@ -16,13 +15,14 @@
     </generator>
 
     <id>urn:uuid:{$uuid}</id>
+     {if="!empty($messages)"}   
     {loop="$messages"}
     <entry>
         <title>
             {if="$value->title != null"}
-                {$c->prepareTitle($value->title)}
+                <![CDATA[{$c->prepareTitle($value->title)}]]>
             {else}
-                {$c->__('post.default_title')}
+                <![CDATA[{$c->__('post.default_title')}]]>
             {/if}
         </title>
         <id>urn:uuid:{$c->generateUUID($value->content)}</id>
@@ -35,11 +35,9 @@
             {/if}
         </content>
     </entry>
+    {/if}
     {/loop}
 </feed>
-    {else}
-        {$c->__('feed.no')}
-    {/if}
 {else}
     {$c->__('feed.no_contact')}
 {/if}
