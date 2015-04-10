@@ -61,9 +61,9 @@ class Message extends Payload
             }
             
             if($stanza->delay)
-                $m->published = date('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
+                $m->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
             else
-                $m->published = date('Y-m-d H:i:s');
+                $m->published = gmdate('Y-m-d H:i:s');
             $m->delivered = date('Y-m-d H:i:s');
 
             if(!preg_match('#^\?OTR#', $m->body)) {

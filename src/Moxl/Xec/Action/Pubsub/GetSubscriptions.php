@@ -83,16 +83,15 @@ class GetSubscriptions extends Errors
             $sd = new \modl\SubscriptionDAO();
             $sd->deleteNode($server, $node);            
         }
-        
-        $evt = new \Event();
-        $evt->runEvent(
-            'pubsubsubscriptions', 
-            array(
-                'subscriptions' => $tab, 
-                'to' => $this->_to, 
-                'node' => $this->_node));
-                
-        if($this->_sync)
-            $evt->runEvent('pubsubsubscribed', array($this->_to, $this->_node)); 
+
+        $this->pack(array(
+            'subscriptions' => $tab, 
+            'to' => $this->_to, 
+            'node' => $this->_node));
+        $this->deliver();
+
+        // Still usefull ?
+        /*if($this->_sync)
+            $evt->runEvent('pubsubsubscribed', array($this->_to, $this->_node)); */
     }
 }

@@ -35,7 +35,7 @@ class Post extends Payload
         
         if($stanza->item && isset($stanza->item->entry)) {
             if($parent->delay)
-                $delay = date('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp));
+                $delay = gmdate('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp));
             else
                 $delay = false;
             
@@ -43,7 +43,7 @@ class Post extends Payload
             $p->set($stanza, $from, $delay);
             
             // We limit the very old posts (2 months old)
-            if(strtotime($p->published) > mktime(0, 0, 0, date("m")-2, date("d"), date("Y"))) {
+            if(strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))) {
                 $pd = new \modl\PostnDAO();
                 $pd->set($p);
 
