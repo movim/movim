@@ -1,5 +1,5 @@
 {loop="$posts"}
-    <article>
+    <article id="{$value->nodeid}">
         <header>
             <ul class="thick">
                 <li class="condensed">
