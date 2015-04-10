@@ -1,6 +1,6 @@
 <?php
 
-use Moxl\Xec\Action\Pubsub\GetItems;
+use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Pubsub\GetMetadata;
 use Moxl\Xec\Action\Pubsub\GetAffiliations;
 use Moxl\Xec\Action\Pubsub\Subscribe;
@@ -18,7 +18,10 @@ class Group extends WidgetCommon
 
     function load()
     {
+        $this->registerEvent('pubsub_getitem_handle', 'onItems');
         $this->registerEvent('pubsub_getitems_handle', 'onItems');
+        $this->registerEvent('pubsub_getitemsid_handle', 'onItems');
+
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
@@ -175,16 +178,16 @@ class Group extends WidgetCommon
     {
         if(!$this->validateServerNode($server, $node)) return;
 
-        $r = new GetItems;
+        $r = new GetItemsId;
         $r->setTo($server)
           ->setNode($node);
 
-        $pd = new \Modl\PostnDAO();
+        /*$pd = new \Modl\PostnDAO();
         $posts = $pd->getNodeUnfiltered($server, $node, 0, 1);
         
         if(isset($posts[0])) {
             $r->setSince($posts[0]->updated);
-        }
+        }*/
         
         $r->request();
 
