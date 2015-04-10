@@ -18,9 +18,9 @@ class Group extends WidgetCommon
 
     function load()
     {
-        $this->registerEvent('pubsub_getitem_handle', 'onItems');
-        $this->registerEvent('pubsub_getitems_handle', 'onItems');
-        $this->registerEvent('pubsub_getitemsid_handle', 'onItems');
+        $this->registerEvent('pubsub_getitem_handle', 'onItems', 'groups');
+        $this->registerEvent('pubsub_getitems_handle', 'onItems', 'groups');
+        $this->registerEvent('pubsub_getitemsid_handle', 'onItems', 'groups');
 
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
