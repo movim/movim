@@ -27,17 +27,17 @@ namespace Moxl\Xec\Action\Pubsub;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action\Pubsub\GetItem;
 
-class GetItems extends Errors
+class GetItemsId extends Errors
 {
     private $_to;
     private $_node;
-    private $_since;
     
     public function request() 
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_node);
+        Pubsub::getItemsId($this->_to, $this->_node);
     }
     
     public function setTo($to)
@@ -51,29 +51,31 @@ class GetItems extends Errors
         $this->_node = $node;
         return $this;
     }
-
-    public function setSince($since)
-    {
-        $this->_since = $since;
-        return $this;
-    }
     
     public function handle($stanza, $parent = false) {
         $evt = new \Event();
 
         $pd = new \modl\PostnDAO();
 
-        foreach($stanza->pubsub->items->item as $item) {
-            if($this->_since == null
-            || strtotime($this->_since) < strtotime($item->entry->published)) {
-                $p = new \modl\Postn();
-                $p->set($item, $this->_to, false, $this->_node);
-                $pd->set($p);
+        $get = false;
+
+        foreach($stanza->query->item as $item) {
+            $id = (string)$item->attributes()->name;
+            if(!$pd->exist($id)) {
+                $get = true;
+
+                $gi = new GetItem;
+                $gi->setTo($this->_to)
+                   ->setNode($this->_node)
+                   ->setId($id)
+                   ->request();
             }
         }
 
-        $this->pack(array('server' => $this->_to, 'node' => $this->_node));
-        $this->deliver();
+        if($get == false) {
+            $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+            $this->deliver();
+        }
     }
     
     public function error($errorid, $message) {

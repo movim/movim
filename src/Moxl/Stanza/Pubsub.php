@@ -148,6 +148,15 @@ class Pubsub {
         \Moxl\API::request($xml);
     }
 
+    static function getItemsId($to, $node)
+    {
+        $xml = '
+            <query xmlns="http://jabber.org/protocol/disco#items"
+            node="'.$node.'"/>';
+        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        \Moxl\API::request($xml);
+    }
+
     static function getItem($to, $node, $id)
     {
         $xml = '

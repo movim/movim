@@ -77,7 +77,8 @@ class GetItem extends Errors
                 $evt->runEvent('post', $this->packet);
             }
 
-            //$evt->runEvent('stream', array('from' => $from, 'node' => $node));
+            $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+            $this->deliver();
         } else {
             $evt->runEvent('nostream', array('from' => $from, 'node' => $node));   
         }
