@@ -145,14 +145,14 @@ class Postn extends Model {
         if($entry->entry->updated)    
             $this->updated   = (string)$entry->entry->updated;
         else
-            $this->updated   = date(DATE_ISO8601);
+            $this->updated   = gmdate(DATE_ISO8601);
         
         if($entry->entry->published)    
             $this->published = (string)$entry->entry->published;
         elseif($entry->entry->updated)
             $this->published = (string)$entry->entry->updated;
         else
-            $this->published = date(DATE_ISO8601);
+            $this->published = gmdate(DATE_ISO8601);
         
         if($delay)
             $this->delay     = $delay;

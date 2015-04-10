@@ -3,6 +3,7 @@
 use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Pubsub\GetMetadata;
 use Moxl\Xec\Action\Pubsub\GetAffiliations;
+use Moxl\Xec\Action\Pubsub\GetSubscriptions;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 use Moxl\Xec\Action\Pubsub\Unsubscribe;
 
@@ -26,6 +27,8 @@ class Group extends WidgetCommon
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
+        $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
+
         $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
@@ -73,7 +76,19 @@ class Group extends WidgetCommon
             $view = $this->tpl();
             RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
         }
+    }
 
+    function onSubscriptions($packet)
+    {
+        list($subscriptions, $server, $node) = array_values($packet->content);
+
+        $view = $this->tpl();
+        
+        $view->assign('subscriptions', $subscriptions);
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+
+        Dialog::fill($view->draw('_group_subscriptions', true), true);
     }
 
     function onConfig($packet)
@@ -199,6 +214,17 @@ class Group extends WidgetCommon
 
         $r = new GetAffiliations;
         $r->setTo($server)->setNode($node)
+          ->request();
+    }
+
+    function ajaxGetSubscriptions($server, $node)
+    {
+        if(!$this->validateServerNode($server, $node)) return;
+
+        $r = new GetSubscriptions;
+        $r->setTo($server)
+          ->setNode($node)
+          ->setSync()
           ->request();
     }
 

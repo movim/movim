@@ -11,6 +11,15 @@ function getTimezoneList()
 }
 
 /*
+ * Get the offset of a timezone
+ */
+function getTimezoneOffset($timezone)
+{
+    $tz = new DateTimeZone($timezone);
+    return $tz->getOffset(new DateTime);
+}
+
+/*
  * Generate the timezone list
  */
  function generateTimezoneList()
