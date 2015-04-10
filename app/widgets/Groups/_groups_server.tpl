@@ -3,7 +3,7 @@
         <li
             class="
                 {if="$value->subscription == 'subscribed'"}action{/if}
-                {if="$value->description"}condensed{/if}
+                condensed
                 "
             data-server="{$value->server}"
             data-node="{$value->node}"
@@ -21,11 +21,19 @@
                 {else}
                     {$value->node}
                 {/if}
-                <span class="second">{$value->num}</span>
+                
+                {if="$value->description"}
+                <span class="second">
+                    {$value->description|strip_tags}
+                </span>
+                {/if}                
             </span>
-            {if="$value->description"}
-                <p class="wrap">{$value->description|strip_tags}</p>
-            {/if}
+            <p class="wrap">
+                {if="$value->sub > 0"}
+                    {$c->__('groups.sub', $value->sub)} -
+                {/if}
+                {$c->__('groups.num', $value->num)}
+            </p>
         </li>
     {/loop}
 </ul>

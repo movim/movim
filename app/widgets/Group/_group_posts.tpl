@@ -59,6 +59,20 @@
                     {/loop}
                 {/if}
             </ul>
+            {if="isset($value->getAttachements().pictures)"}
+                <ul class="flex middle">
+                {loop="$value->getAttachements().pictures"}
+                    <li class="block">
+                        <span class="icon small gray">
+                            <i class="md md-image"></i>
+                        </span>
+                        <a href="{$value.href}" class="alternate" target="_blank">
+                            <img type="{$value.type}" src="{$value.href|urldecode}"/>
+                        </a>
+                    </li>
+                {/loop}
+                </ul>
+            {/if}
         </footer>
     </article>
 {/loop}
