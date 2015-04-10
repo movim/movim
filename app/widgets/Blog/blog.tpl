@@ -4,7 +4,7 @@
         <li class="action">
             <div class="action">
                 <a 
-                    href="{$c->route('feed', array($contact->jid, 'urn:xmpp:microblog:0'))}"
+                    href="{$c->route('feed', array($contact->jid))}"
                     target="_blank"
                 >
                     <i class="md md-wifi-tethering"></i> Atom
@@ -14,7 +14,11 @@
                 <i class="md md-edit"></i>
             </span>
             <span>
+                {if="$contact"}
                 <h2>{$c->__('blog.title', $contact->getTrueName())}</h2>
+                {else}
+                <h2>{$c->__('page.blog')}</h2>
+                {/if}
             </span>
         </li>
     </ul>
@@ -85,4 +89,11 @@
             </footer>
         </article>
     {/loop}
+    {if="$posts == null"}
+        <ul class="simple thick">
+            <li>
+                <span>{$c->__('blog.empty')}</span>
+            </li>
+        </ul>
+    {/if}
 </div>

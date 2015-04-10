@@ -45,6 +45,9 @@ function getTimezoneCorrection() {
  * @return string
  */
 function prepareDate($time, $hours = true) {
+    // We had the server timezone
+    $time = $time + TIMEZONE_OFFSET;
+    
     $t = $time ? $time : time();
 
     $date = '';

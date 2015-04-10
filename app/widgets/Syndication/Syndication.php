@@ -11,11 +11,11 @@ class Syndication extends WidgetBase
     {
         ob_clean();
 
-        if(!isset($_GET['f'])) {
+        if(!$this->get('f')) {
             return;
         }
-        
-        $from = $_GET['f'];
+
+        $from = $this->get('f');
         if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = 'urn:xmpp:microblog:0';
         } else {
@@ -23,6 +23,10 @@ class Syndication extends WidgetBase
         }
         
         $pd = new \modl\PostnDAO();
+        $cd = new \modl\ContactDAO();
+
+        $this->view->assign('contact', $cd->get($from, true));
+        $this->view->assign('uri',  Route::urlize('blog',array($from)));
         
         if(isset($from) && isset($node)) {
             $messages = $pd->getPublic($from, $node, 10, 0);
@@ -32,12 +36,7 @@ class Syndication extends WidgetBase
         if(isset($messages[0])) {
             header("Content-Type: application/atom+xml; charset=UTF-8");
 
-            $cd = new \modl\ContactDAO();
-
             $this->view->assign('date', date('c'));
-            $this->view->assign('contact', $cd->get($from));
-
-            $this->view->assign('uri',  Route::urlize('blog',array($from)));
         }
     }
     

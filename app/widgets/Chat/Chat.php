@@ -200,8 +200,8 @@ class Chat extends WidgetCommon
         }
         
         $m->body      = rawurldecode($message);
-        $m->published = date('Y-m-d H:i:s');
-        $m->delivered = date('Y-m-d H:i:s');
+        $m->published = gmdate('Y-m-d H:i:s');
+        $m->delivered = gmdate('Y-m-d H:i:s');
 
         if(!preg_match('#^\?OTR#', $m->body)) {
             $md = new \Modl\MessageDAO();
