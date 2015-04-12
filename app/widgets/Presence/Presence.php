@@ -23,6 +23,7 @@ use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\DND;
 use Moxl\Xec\Action\Presence\XA;
 use Moxl\Xec\Action\Presence\Unavailable;
+use Moxl\Xec\Action\Pubsub\GetItems;
 use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Storage\Get;
 
@@ -143,6 +144,15 @@ class Presence extends WidgetBase
         if(isset($language)) {
             loadLanguage($language);
         }
+    }
+
+    // We refresh our personnal feed
+    function ajaxFeedRefresh()
+    {
+        $r = new GetItems;
+        $r->setTo($this->user->getLogin())
+          ->setNode('urn:xmpp:microblog:0')
+          ->request();
     }
 
     function ajaxOpenDialog()
