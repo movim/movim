@@ -71,6 +71,10 @@ class Message extends Payload
                 $md->set($m);
             }
 
+            if($m->type == 'groupchat' && $m->subject != '') {
+                $evt->runEvent('conference_subject', $m);
+            }
+
             $this->pack($m);
             $this->deliver();
         }
