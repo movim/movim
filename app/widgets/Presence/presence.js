@@ -8,6 +8,7 @@ function postStart() {
         Presence_ajaxServerCapsGet();
         Presence_ajaxBookmarksGet();
         Presence_ajaxUserRefresh();
+        Presence_ajaxFeedRefresh();
         //Menu_ajaxRefresh();
         localStorage.postStart = 0;
     }

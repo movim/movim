@@ -41,8 +41,12 @@
             {else}
                 <span>{$c->__('menu.contact_post')}</span>
             {/if}
+            {if="$value->privacy"}
+                <span class="info" title="{$c->__('menu.public')}">
+                    <i class="md md-wifi-tethering"></i>
+                </span>
+            {/if}
             <span class="info">{$value->published|strtotime|prepareDate}</span>
-
             <p class="more">
                 {if="current(explode('.', $value->origin)) != 'nsfw'"}
                     {$value->contentcleaned|strip_tags:'<img><img/>'}

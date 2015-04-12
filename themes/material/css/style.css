@@ -222,7 +222,7 @@ nav + main {
 main > header {
     position: relative;
     height: 7rem;
-    overflow: hidden;
+    /*overflow: hidden;*/
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
     z-index: 2;
 }
@@ -232,7 +232,7 @@ main > header > div {
     position: relative;
     width: 30%;
     display: inline-block;
-    overflow: hidden;
+    /*overflow: hidden;*/
     box-sizing: border-box;
     padding-right: 1rem;
 }
@@ -243,12 +243,12 @@ main > header > div > * {
     overflow: hidden;
 }
 
-main > header > div > ul.active {
+main > header > div > ul.active:not(.context_menu) {
     float: right;
     margin-right: -1rem;
 }
 
-main > header > div > ul.active li {
+main > header > div > ul.active:not(.context_menu) > li {
     float: left;
     height: 7rem;
     min-width: 0;
@@ -258,8 +258,16 @@ main > header > div > ul.active li {
     font-size: 4rem;
 }
 
-main > header > div > ul.active li span.icon {
+main > header > div > ul.active:not(.context_menu) > li.thin {
+    width: 5rem;
+}
+
+main > header > div > ul.active:not(.context_menu) > li span.icon {
     left: 1rem;
+}
+
+main > header > div > ul.active:not(.context_menu) > li.thin span.icon {
+    width: 3rem;
 }
 
 main > header > div:first-child:nth-last-child(2) ~ div {
