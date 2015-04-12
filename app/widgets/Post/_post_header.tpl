@@ -18,16 +18,18 @@
             </li>
         </ul>
     {/if}
-    <h2 class="active {if="$post->isMine()"}r1{/if}" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
+    <div class="return active {if="$post->isMine()"}r1{/if}" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
         <span id="back" class="icon"><i class="md md-arrow-back"></i></span>
-        {if="$post != null"}
-            {if="$post->title != null"}
-                {$post->title}
+        <h2>
+            {if="$post != null"}
+                {if="$post->title != null"}
+                    {$post->title}
+                {else}
+                    {$c->__('post.default_title')}
+                {/if}
             {else}
-                {$c->__('post.default_title')}
+                Empty
             {/if}
-        {else}
-            Empty
-        {/if}
+        </h2>
     </h2>
 </div>
