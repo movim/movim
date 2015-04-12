@@ -237,7 +237,7 @@ main > header > div {
     padding-right: 1rem;
 }
 
-main > header > div > * {
+main > header > div > .return > * {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -248,7 +248,7 @@ main > header > div > ul.active:not(.context_menu) {
     margin-right: -1rem;
 }
 
-main > header > div > ul.active:not(.context_menu) > li {
+main > header > div > ul.active:not(.context_menu) li {
     float: left;
     height: 7rem;
     min-width: 0;
@@ -258,15 +258,15 @@ main > header > div > ul.active:not(.context_menu) > li {
     font-size: 4rem;
 }
 
-main > header > div > ul.active:not(.context_menu) > li.thin {
+main > header > div > ul.active:not(.context_menu) li.thin {
     width: 5rem;
 }
 
-main > header > div > ul.active:not(.context_menu) > li span.icon {
+main > header > div > ul.active:not(.context_menu) li span.icon {
     left: 1rem;
 }
 
-main > header > div > ul.active:not(.context_menu) > li.thin span.icon {
+main > header > div > ul.active:not(.context_menu) li.thin span.icon {
     width: 3rem;
 }
 
@@ -286,20 +286,29 @@ main > header > div > span.icon {
     margin: 0;
 }
 
-main > header > div > h2 {
+main > header > div > .return {
     padding-left: 9rem;
     margin-left: -9rem;
     display: inline-block;
-    padding-right: 3rem;
+    padding-right: 1rem;
     max-width: calc(100% + 10rem);
+    height: 7rem;
     box-sizing: border-box;
 }
 
-main > header > div > h2.r1 { max-width: calc(100% + 2rem); }
-main > header > div > h2.r2 { max-width: calc(100% - 5rem); }
-main > header > div > h2.r3 { max-width: calc(100% - 12rem); }
+main > header > div > .return.condensed > h2 {
+    line-height: 4.1rem;
+}
 
-main > header > div > h2.active:hover,
+main > header > div > .return > h4 {
+    line-height: 2.5rem;
+}
+
+main > header > div > .return.r1 { max-width: calc(100% + 2rem); }
+main > header > div > .return.r2 { max-width: calc(100% - 5rem); }
+main > header > div > .return.r3 { max-width: calc(100% - 12rem); }
+
+main > header > div > .return.active:hover,
 main > header > div > span.active:hover {
     background-color: rgba(0, 0, 0, 0.05);
     cursor: pointer;
@@ -823,6 +832,8 @@ dl dd {
 .spinner.on:before,
 .spinner.on:after {
     top: 3rem;
+    animation: spinner 1s linear infinite;
+    -webkit-animation: spinner 1s linear infinite;
 }
 
 .spinner:before {
@@ -836,8 +847,6 @@ dl dd {
     content: '';
     border: 0.75rem solid transparent;
     border-top: 0.75rem solid #ddd;
-    animation: spinner 1s linear infinite;
-    -webkit-animation: spinner 1s linear infinite;
 }
 
 .spinner:after {
