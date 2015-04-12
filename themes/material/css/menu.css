@@ -1,4 +1,4 @@
-/* Menu */
+/* Menu header */
 
 body > nav > ul span.icon {
     left: 1rem;
@@ -46,4 +46,3 @@ ul.oppose {
     width: 100%;
     min-width: 10rem;
 }
-

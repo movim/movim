@@ -58,8 +58,8 @@ class Session {
 
         // Buffering the incoming data and fire it once its complete      
         $this->process->stdout->on('data', function($output) use ($me, &$buffer) {
-            if(substr($output, -3) == "END") {
-                $out = $buffer . substr($output, 0, -3);
+            if(substr($output, -1) == "") {
+                $out = $buffer . substr($output, 0, -1);
                 $buffer = '';
                 $me->messageOut($out);
             } else {
@@ -99,7 +99,7 @@ class Session {
     {
         $this->timestamp = time();
         if(isset($this->process)) {
-            $this->process->stdin->write($msg."END");
+            $this->process->stdin->write($msg."");
         }
     }
 
