@@ -93,6 +93,22 @@ class MessageDAO extends SQL {
             
         return $this->run('Message');
     }
+
+    function getRoomSubject($room) {
+        $this->_sql = '
+            select * from message 
+            where jidfrom = :jidfrom
+              and subject != \'\'';
+
+        $this->prepare(
+            'Message',
+            array(
+                'jidfrom'   => $room
+            )
+        );
+            
+        return $this->run('Message', 'item');
+    }
     
     function clearMessage() {
         $this->_sql = '

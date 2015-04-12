@@ -97,6 +97,25 @@ var MovimTpl = {
     toggleMenu : function() {
         movim_toggle_class('body > nav', 'active');
     },
+    toggleContextMenu : function(e) {
+        var element = 'ul.context_menu';
+        var classname = 'shown';
+
+        if(document.querySelector(element) == null) {
+            return;
+        }
+
+        if(document.querySelector('.show_context_menu').contains(e.target)) {
+            movim_add_class(element, classname);
+            return;
+        }
+
+        //if(!document.querySelector(element).contains(e.target)) 
+        movim_remove_class(element, classname);
+    },
+    hideContextMenu : function() {
+        movim_remove_class('ul.context_menu', 'shown');
+    },
     hideMenu : function() {
         movim_remove_class('body > nav', 'active');
     },
@@ -122,4 +141,5 @@ var MovimTpl = {
 
 movim_add_onload(function() {
     MovimTpl.init();
+    document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 });
