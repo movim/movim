@@ -72,7 +72,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
             if(!empty($msg)) {
                 $msg = json_encode($msg);
                 #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to browser', 'green')."\n");
-                echo base64_encode(gzcompress($msg, 9))."END";
+                echo base64_encode(gzcompress($msg, 9))."";
             }
 
             if(!empty($xml)) {
@@ -93,8 +93,8 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
     $stdin->removeAllListeners('data');
     $stdin->on('data', function ($data) use ($conn, $loop, &$buffer) {
         // A little bit of signalisation to use properly the buffer
-        if(substr($data, -3) == "END") {
-            $messages = explode("END", $buffer . substr($data, 0, -3));
+        if(substr($data, -1) == "") {
+            $messages = explode("", $buffer . substr($data, 0, -1));
             $buffer = '';
 
             foreach ($messages as $message) {
@@ -127,7 +127,7 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
 
                 if(!empty($msg)) {
                     #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
-                    echo base64_encode(gzcompress($msg, 9))."END";
+                    echo base64_encode(gzcompress($msg, 9))."";
                 }
             }
         } else {
@@ -139,15 +139,15 @@ $connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$st
     $obj = new \StdClass;
     $obj->func = 'registered';
 
-    echo base64_encode(gzcompress(json_encode($obj), 9))."END";
+    echo base64_encode(gzcompress(json_encode($obj), 9))."";
 });
 
 // Fallback event, when the WebSocket is not enabled,
 // we still handle browser to Movim requests
 $stdin->on('data', function ($data) use ($loop) {
     if(!isset($buffer)) $buffer = '';
-    if(substr($data, -3) == "END") {
-        $messages = explode("END", $buffer . substr($data, 0, -3));
+    if(substr($data, -1) == "") {
+        $messages = explode("", $buffer . substr($data, 0, -1));
         $buffer = '';
     
         foreach ($messages as $message) {
@@ -173,7 +173,7 @@ $stdin->on('data', function ($data) use ($loop) {
 
             if(!empty($msg)) {
                 #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
-                echo base64_encode(gzcompress($msg, 9))."END";
+                echo base64_encode(gzcompress($msg, 9))."";
             }
         }
     } else {

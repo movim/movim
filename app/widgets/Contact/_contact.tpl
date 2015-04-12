@@ -24,7 +24,7 @@
                 </span>
             </li>
             {if="$caps"}
-                <li class="">
+                <li>
                     <span class="icon">
                         <i class="md
                             {if="$caps->type == 'handheld' || $caps->type == 'phone'"}

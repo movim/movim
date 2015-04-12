@@ -40,7 +40,8 @@
         <ul id="news" class="flex thick active">
             <li class="subheader block large">News</li>
             {loop="$news"}
-                <li class="block condensed" data-id="{$value->nodeid}"
+                <li class="block condensed"
+                    data-id="{$value->nodeid}"
                     {if="$value->title != null"}
                         title="{$value->title|strip_tags}"
                     {else}
@@ -49,8 +50,8 @@
                     onclick="movim_reload('{$c->route('news', $value->nodeid)}')"
                 >
                     {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                        <span class="icon bubble color red">
-                            <i class="md md-warning"></i>
+                        <span class="icon bubble color red tiny">
+                            +18
                         </span>
                     {elseif="$value->node == 'urn:xmpp:microblog:0'"}
                         {$url = $value->getContact()->getPhoto('s')}

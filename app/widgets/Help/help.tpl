@@ -1,6 +1,6 @@
 <div class="tabelem" title="{$c->__('page.help')}" id="help_widget">
     <ul class="thick active">
-        <li class="condensed">
+        <li class="condensed action">
             <a href="http://wiki.movim.eu" target="_blank">
                 <span class="icon bubble color blue">
                     <i class="md md-subject"></i>
@@ -8,17 +8,11 @@
                 <span>{$c->__('wiki.question')}</span>
                 <p>{$c->__('wiki.button')}</p>
             </a>
+            <div class="action">
+                <i class="md md-chevron-right"></i>
+            </div>
         </li>
-        <li class="condensed">
-            <a onclick="Help.joinChatroom()" target="_blank">
-                <span class="icon bubble color green">
-                    <i class="md md-chat"></i>
-                </span>
-                <span>{$c->__('chatroom.question')}</span>
-                <p>{$c->__('chatroom.button')}</p>
-            </a>
-        </li>
-        <li class="condensed">
+        <li class="condensed action">
             <a href="http://wiki.movim.eu/en:mailing_list" target="_blank">
                 <span class="icon bubble color orange">
                     <i class="md md-email"></i>
@@ -26,6 +20,16 @@
                 <span>{$c->__('ml.question')}</span>
                 <p>{$c->__('ml.button')}</p>
             </a>
+            <div class="action">
+                <i class="md md-chevron-right"></i>
+            </div>
+        </li>
+        <li class="condensed">
+                <span class="icon bubble color green">
+                    <i class="md md-chat"></i>
+                </span>
+                <span>{$c->__('chatroom.question')}</span>
+                <p>{$c->__('chatroom.button')}<br/>movim@conference.movim.eu</p>
         </li>
     </ul>
 
@@ -40,18 +44,11 @@
                     <li><h3>{$c->__('banner.title')}</h3></li>
                 </ul>
             </header>
-            <!--<center>    
-            <div title="{function="getFlagTitle("white")"}" style="width: 60px; height: 50px; display: inline-block;" class="protect white"></div>
-            <div title="{function="getFlagTitle("green")"}"  style="width: 60px; height: 50px; display: inline-block;" class="protect green"></div>
-            <div title="{function="getFlagTitle("orange")"}"  style="width: 60px; height: 50px; display: inline-block;" class="protect orange"></div>
-            <div title="{function="getFlagTitle("red")"}"  style="width: 60px; height: 50px; display: inline-block;" class="protect red"></div>
-            <div title="{function="getFlagTitle("black")"}" title="{$c->__('Help')}" style="width: 60px; height: 50px; display: inline-block;" class="protect black"></div>
-            </center>-->
             <section>
                 <p>{$c->__('banner.info1')}</p>
                 <ul class="thin">
                     <li>
-                        <span class="color icon bubble brown small"></span>
+                        <span class="color icon bubble gray small"></span>
                         <span>{$c->__('banner.white')}</span>
                     </li>
                     <li>
