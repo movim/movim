@@ -7,28 +7,38 @@
         </li>
     </ul>
     <span class="on_desktop icon"><i class="md md-forum"></i></span>
-    <h2 class="r1">{$c->__('page.chats')}</h2>
+    <h2>{$c->__('page.chats')}</h2>
 </div>
 <div>
     <ul class="active">
-        <li onclick="Rooms_ajaxList('{$room}')">
-            <span class="icon">
-                <i class="md md-menu"></i>
-            </span>
-        </li>
-        <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
-            <span class="icon">
-                <i class="md md-delete"></i>
-            </span>
-        </li>
         <li onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel();">
             <span class="icon">
                 <i class="md md-close"></i>
             </span>
         </li>
+        <li class="thin show_context_menu">
+            <span class="icon">
+                <i class="md md-more-vert"></i>
+            </span>
+        </li>
     </ul>
-    <h2 class="active r3" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
+    <div class="return active r2 {if="$subject != null"}condensed{/if}" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
         <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
-        {$room}
-    </h2>
+        {if="$conference != null && $conference->name"}
+            <h2 title="{$room}">{$conference->name}</h2>
+        {else}
+            <h2>{$room}</h2>
+        {/if}
+        {if="$subject != null"}
+            <h4 title="{$subject->subject}">{$subject->subject}</h4>
+        {/if}
+    </div>
+    <ul class="simple context_menu active">
+        <li onclick="Rooms_ajaxList('{$room}')">
+            <span>{$c->__('chatroom.members')}</span>
+        </li>
+        <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
+            <span>{$c->__('button.delete')}</span>
+        </li>
+    </ul>
 </div>

@@ -17,12 +17,14 @@
             </span>
         </li>
     </ul>
-    <h2 id="chat_header" class="active r1" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
+    <div id="chat_header" class="return active r1" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
         <span id="back" class="icon"><i class="md md-arrow-back"></i></span>
-        {if="$contact != null"}
-            {$contact->getTrueName()}
-        {else}
-            {$jid|echapJS}
-        {/if}
+        <h2>
+            {if="$contact != null"}
+                {$contact->getTrueName()}
+            {else}
+                {$jid|echapJS}
+            {/if}
+        </h2>
     </h2>
 </div>

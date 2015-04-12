@@ -16,10 +16,10 @@
                 </span>
             </li>
         </ul>
-        <h2 class="active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
+        <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
             <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
-            {$contactr->getTrueName()}
-        </h2>
+            <h2>{$contactr->getTrueName()}</h2>
+        </div>
     {else}
         {if="$contact != null"}
             <ul class="active">

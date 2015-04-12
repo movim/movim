@@ -22,7 +22,7 @@
             <span>{$c->__('page.contacts')}</span>
         </li>
     </a>
-    <a class="classic" href="{$c->route('group')}">
+    <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}" href="{$c->route('group')}">
         <li {if="$page == 'group'"}class="active"{/if}>
             <span class="icon"><i class="md md-pages"></i></span>
             <span class="counter"></span>
