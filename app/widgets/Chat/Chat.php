@@ -10,13 +10,14 @@ class Chat extends WidgetCommon
     function load()
     {
         $this->addjs('chat.js');
-        $this->addjs('chat_otr.js');
+        //$this->addjs('chat_otr.js');
         $this->addcss('chat.css');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('gone', 'onGone');
+        $this->registerEvent('conference_subject', 'onConferenceSubject');
         //$this->registerEvent('presence', 'onPresence');
     }
 
@@ -95,6 +96,12 @@ class Chat extends WidgetCommon
     function onGone($array)
     {
         $this->setState($array, $this->__('message.gone'));
+    }
+
+    function onConferenceSubject($message)
+    {
+        $header = $this->prepareHeaderRoom($message->jidfrom);
+        Header::fill($header);
     }
 
     private function setState($array, $message)
@@ -283,8 +290,16 @@ class Chat extends WidgetCommon
     function prepareHeaderRoom($room)
     {
         $view = $this->tpl();
-        
+
+        $md = new \Modl\MessageDAO;
+        $s = $md->getRoomSubject($room);
+
+        $cd = new \Modl\ConferenceDAO;
+        $c = $cd->get($room);
+
         $view->assign('room', $room);
+        $view->assign('subject', $s);
+        $view->assign('conference', $c);
 
         return $view->draw('_chat_header_room', true);
     }
