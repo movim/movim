@@ -70,6 +70,7 @@ span.icon.status.away:after,
 .bubble.color.yellow, .icon.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
 .bubble.color.brown , .icon.color.brown    { color: white; background-color: #795548; border-color: #795548 }
 .bubble.color.gray  , .icon.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
+.bubble.color.black , .icon.color.black    { color: white; background-color: #000;    border-color: #000 }
 
 label.red   , .icon.red   , span.user.red      { color: #F44336; }
 label.purple, .icon.purple, span.user.purple   { color: #9C27B0; }
@@ -79,7 +80,10 @@ label.green , .icon.green , span.user.green    { color: #689F38; }
 label.orange, .icon.orange, span.user.orange   { color: #FF9800; }
 label.yellow, .icon.yellow, span.user.yellow   { color: #FFEB3B; }
 label.brown , .icon.brown , span.user.brown    { color: #795548; }
+ul li.action > div.action,
+ul li.action > form > div.action,
 label.gray  , .icon.gray  , span.user.gray     { color: #9E9E9E; }
+label.black , .icon.black , span.user.black    { color: #000; }
 
 form input:focus:invalid,
 form textarea:focus:invalid {
