@@ -3,6 +3,10 @@
 use Moxl\Xec\Action\Message\Composing;
 use Moxl\Xec\Action\Message\Paused;
 use Moxl\Xec\Action\Message\Publish;
+
+use Moxl\Xec\Action\Muc\GetConfig;
+use Moxl\Xec\Action\Muc\SetConfig;
+
 use Respect\Validation\Validator;
 
 class Chat extends WidgetCommon
@@ -18,6 +22,8 @@ class Chat extends WidgetCommon
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('gone', 'onGone');
         $this->registerEvent('conference_subject', 'onConferenceSubject');
+        $this->registerEvent('muc_getconfig_handle', 'onRoomConfig');
+        $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved');
         //$this->registerEvent('presence', 'onPresence');
     }
 
@@ -104,6 +110,26 @@ class Chat extends WidgetCommon
         Header::fill($header);
     }
 
+    function onRoomConfig($packet)
+    {
+        list($config, $room) = array_values($packet->content);
+
+        $view = $this->tpl();
+        
+        $xml = new \XMPPtoForm();
+        $form = $xml->getHTML($config->x->asXML());
+
+        $view->assign('form', $form);
+        $view->assign('room', $room);
+
+        Dialog::fill($view->draw('_chat_config_room', true), true);
+    }
+
+    function onRoomConfigSaved($packet)
+    {
+        Notification::append(false, $this->__('chatroom.config_saved'));
+    }
+
     private function setState($array, $message)
     {
         list($from, $to) = $array;
@@ -167,6 +193,8 @@ class Chat extends WidgetCommon
      */
     function ajaxGetRoom($room)
     {
+        if(!$this->validateJid($room)) return;
+
         $html = $this->prepareChat($room, true);
         
         $header = $this->prepareHeaderRoom($room);
@@ -243,6 +271,8 @@ class Chat extends WidgetCommon
      * @return void
      */
     function ajaxSendComposing($to) {
+        if(!$this->validateJid($to)) return;
+
         $mc = new Composing;
         $mc->setTo($to)->request();
     }
@@ -254,8 +284,39 @@ class Chat extends WidgetCommon
      * @return void
      */
     function ajaxSendPaused($to) {
+        if(!$this->validateJid($to)) return;
+
         $mp = new Paused;
         $mp->setTo($to)->request();
+    }
+
+    /**
+     * @brief Configure a room
+     *
+     * @param string $room
+     */
+    function ajaxGetRoomConfig($room)
+    {
+        if(!$this->validateJid($room)) return;
+
+        $gc = new GetConfig;
+        $gc->setTo($room)
+           ->request();
+    }
+
+    /**
+     * @brief Save the room configuration
+     *
+     * @param string $room
+     */
+    function ajaxSetRoomConfig($data, $room)
+    {
+        if(!$this->validateJid($room)) return;
+
+        $sc = new SetConfig;
+        $sc->setTo($room)
+           ->setData($data)
+           ->request();
     }
 
     /**
@@ -325,6 +386,8 @@ class Chat extends WidgetCommon
 
     function prepareMessages($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $md = new \Modl\MessageDAO();
         $messages = $md->getContact(echapJid($jid), 0, 30);
 
@@ -379,6 +442,18 @@ class Chat extends WidgetCommon
     {
         $view = $this->tpl();
         return $view->draw('_chat_empty', true);
+    }
+
+    /**
+     * @brief Validate the jid
+     *
+     * @param string $room
+     */
+    private function validateJid($jid)
+    {
+        $validate_jid = Validator::email()->noWhitespace()->length(6, 60);
+        if(!$validate_jid->validate($jid)) return false;
+        else return true;
     }
 
     function display()

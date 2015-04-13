@@ -293,6 +293,9 @@ class FormtoXMPP{
             case "command":
                 $node = $this->stream->x;
                 break;
+            default:
+                $node = $this->stream->x;
+                break;
         }
         foreach($this->inputs as $key => $value) {
             if($value === '' && $this->stream->getName() == "stream") {

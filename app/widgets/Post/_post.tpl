@@ -77,6 +77,18 @@
                     </li>
                 {/loop}
             {/if}
+            {if="isset($attachements.pictures)"}
+                {loop="$attachements.pictures"}
+                    <li>
+                        <a href="{$value.href}">
+                            <img
+                                src="{$value.href}"
+                                rel="{$value.rel}"
+                                type="{$value.type}"/>
+                        </a>
+                    </li>
+                {/loop}
+            {/if}
         </ul>
         {if="$post->isMine()"}
             <ul class="thick">
