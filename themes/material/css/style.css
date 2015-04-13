@@ -287,10 +287,10 @@ main > header > div > span.icon {
 }
 
 main > header > div > .return {
-    padding-left: 9rem;
+    padding-left: 8rem;
     margin-left: -9rem;
     display: inline-block;
-    padding-right: 1rem;
+    padding-right: 2rem;
     max-width: calc(100% + 10rem);
     height: 7rem;
     box-sizing: border-box;
@@ -300,7 +300,7 @@ main > header > div > .return {
 main > header > div > .return.condensed > h2 {
     line-height: 3.5rem;
     font-size: 2.75rem;
-    margin-top: 0.6rem;
+    margin-top: 0.7rem;
     margin-bottom: -0.5rem;
 }
 

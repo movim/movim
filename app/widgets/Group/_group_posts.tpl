@@ -58,6 +58,18 @@
                         </li>
                     {/loop}
                 {/if}
+                {if="isset($value->getAttachements().pictures)"}
+                    {loop="$value->getAttachements().pictures"}
+                        <li>
+                            <a href="{$value.href}">
+                                <img
+                                    src="{$value.href}"
+                                    rel="{$value.rel}"
+                                    type="{$value.type}"/>
+                            </a>
+                        </li>
+                    {/loop}
+                {/if}
             </ul>
             {if="isset($value->getAttachements().pictures)"}
                 <ul class="flex middle">

@@ -5,6 +5,8 @@ use Moxl\Xec\Action\Bookmark\Get;
 use Moxl\Xec\Action\Bookmark\Set;
 use Moxl\Xec\Action\Presence\Unavailable;
 
+use Respect\Validation\Validator;
+
 class Rooms extends WidgetCommon
 {
     function load()
@@ -59,6 +61,8 @@ class Rooms extends WidgetCommon
      */
     function ajaxRemoveConfirm($room)
     {
+        if(!$this->validateRoom($room)) return;
+
         $view = $this->tpl();
 
         $view->assign('room', $room);
@@ -67,10 +71,12 @@ class Rooms extends WidgetCommon
     }
 
     /**
-     * @brief Display the remove list
+     * @brief Display the room list
      */
     function ajaxList($room)
     {
+        if(!$this->validateRoom($room)) return;
+
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
@@ -84,6 +90,8 @@ class Rooms extends WidgetCommon
      */
     function ajaxRemove($room)
     {
+        if(!$this->validateRoom($room)) return;
+
         $cd = new \modl\ConferenceDAO();
         $cd->deleteNode($room);
         
@@ -93,10 +101,12 @@ class Rooms extends WidgetCommon
     /**
      * @brief Join a chatroom
      */
-    function ajaxJoin($jid, $nickname = false)
+    function ajaxJoin($room, $nickname = false)
     {
+        if(!$this->validateRoom($room)) return;
+
         $p = new Muc;
-        $p->setTo($jid);
+        $p->setTo($room);
 
         if($nickname != false) $p->setNickname($nickname);
 
@@ -110,6 +120,8 @@ class Rooms extends WidgetCommon
      */
     function ajaxExit($room)
     {
+        if(!$this->validateRoom($room)) return;
+
         $session = \Sessionx::start();
 
         $pu = new Unavailable;
@@ -180,6 +192,8 @@ class Rooms extends WidgetCommon
 
     function checkConnected($room, $resource = false)
     {
+        if(!$this->validateRoom($room)) return;
+
         $pd = new \modl\PresenceDAO();
 
         if($resource == false) {
@@ -203,6 +217,18 @@ class Rooms extends WidgetCommon
         $view->assign('conferences', $cod->getAll());
 
         return $view->draw('_rooms', true);
+    }
+
+    /**
+     * @brief Validate the room 
+     *
+     * @param string $room
+     */
+    private function validateRoom($room)
+    {
+        $validate_server = Validator::email()->noWhitespace()->length(6, 40);
+        if(!$validate_server->validate($room)) return false;
+        else return true;
     }
 
     function display()
