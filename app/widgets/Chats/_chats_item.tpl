@@ -23,7 +23,7 @@
         {if="preg_match('#^\?OTR#', $message->body)"}
             <p><i class="md md-lock"></i> {$c->__('message.encrypted')}</p>
         {else}
-            <p>{$message->body|prepareString}</p>
+            <p>{$message->body|prepareString|strip_tags}</p>
         {/if}
     {/if}
 </li>
