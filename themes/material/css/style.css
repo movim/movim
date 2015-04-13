@@ -296,12 +296,17 @@ main > header > div > .return {
     box-sizing: border-box;
 }
 
+/* Not very beautiful… */
 main > header > div > .return.condensed > h2 {
-    line-height: 4.1rem;
+    line-height: 3.5rem;
+    font-size: 2.75rem;
+    margin-top: 0.6rem;
+    margin-bottom: -0.5rem;
 }
 
 main > header > div > .return > h4 {
     line-height: 2.5rem;
+    font-size: 1.75rem;
 }
 
 main > header > div > .return.r1 { max-width: calc(100% + 2rem); }
