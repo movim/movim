@@ -43,7 +43,7 @@
         </h2>
         {if="$item->description"}
             <h4 title="{$item->description|strip_tags}">
-                {$item->description}
+                {$item->description|strip_tags}
             </h4>
         {else}
             <h4>{$item->server}</h4>
