@@ -10,10 +10,6 @@ class AdminloginController extends BaseController
     function dispatch()
     {
         $this->page->setTitle(__('title.administration', APP_TITLE));
-
-        /*$this->page->menuAddLink(__('page.home'), 'root');
-        $this->page->menuAddLink(__('page.administration'), 'admin', true);*/
-        $this->page->setColor('red');
         
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();

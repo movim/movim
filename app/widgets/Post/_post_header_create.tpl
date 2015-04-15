@@ -3,10 +3,10 @@
     <h2>{$c->__('page.news')}</h2>
 </div>
 <div>
-    <h2 class="active r3" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
+    <div class="return active r3" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
         <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
-        New Post
-    </h2>
+        <h2>{$c->__('post.new')}</h2>
+    </div>
     <ul class="active">
         <li onclick="Post_ajaxHelp()">
             <span class="icon">

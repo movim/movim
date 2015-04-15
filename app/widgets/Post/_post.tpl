@@ -24,9 +24,7 @@
                         {/if}
                     </a>
                 {else}
-                <!--<a href="{$c->route('node', array($post->jid, $post->node))}">-->
-                    <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
-                <!--</a>-->
+                <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
                 {/if}
                 <span {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                     {if="$post->title != null"}
@@ -54,7 +52,9 @@
             {if="isset($attachements.links)"}
                 {loop="$attachements.links"}
                     <li>
-                        <span class="icon small"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
+                        <span class="icon">
+                            <img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
+                        </span>
                         <a href="{$value.href}" class="alternate" target="_blank">
                             <span>{$value.href|urldecode}</span>
                         </a>
@@ -69,7 +69,7 @@
                             class="enclosure"
                             type="{$value.type}"
                             target="_blank">
-                            <span class="icon small gray">
+                            <span class="icon gray">
                                 <span class="md md-attach-file"></span>
                             </span>
                             <span>{$value.href|urldecode}</span>
@@ -78,8 +78,22 @@
                 {/loop}
             {/if}
         </ul>
+        {if="isset($attachements.pictures)"}
+            <ul class="flex middle">
+            {loop="$attachements.pictures"}
+                <li class="block pic">
+                    <span class="icon gray">
+                        <i class="md md-image"></i>
+                    </span>
+                    <a href="{$value.href}" class="alternate" target="_blank">
+                        <img type="{$value.type}" src="{$value.href|urldecode}"/>
+                    </a>
+                </li>
+            {/loop}
+            </ul>
+        {/if}
         {if="$post->isMine()"}
-            <ul class="thick">
+            <ul class="middle">
                 <li class="action">
                     <form>
                         <div class="action">
@@ -96,7 +110,7 @@
                             </div>
                         </div>
                     </form>
-                    <span class="icon bubble color red">
+                    <span class="icon gray">
                         <i class="md md-public"></i>
                     </span>
                     <span>

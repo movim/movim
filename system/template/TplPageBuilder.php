@@ -101,70 +101,6 @@ class TplPageBuilder
     {
         echo $this->title;
     }
-    
-    /**
-     * Sets the page's color.
-     */
-    function setColor($color)
-    {
-        $this->_color = $color;
-    }
-
-    /**
-     * Displays the current color.
-     */
-    function color()
-    {
-        echo $this->_color;
-    }
-
-    /**
-     * Adds a link to the menu with the displayed label.
-     */
-    function menuAddLink($label, $href, $active = false, $mobile = false)
-    {
-        $this->menu[] = array(
-            'type' => 'link',
-            'label' => $label,
-            'href' => $href,
-            'active' => $active,
-            'mobile' => $mobile
-            );
-    }
-
-    function menuAddVerbatim($html)
-    {
-        $this->menu[] = array(
-            'type' => 'verbatim',
-            'html' => $html,
-            );
-    }
-
-    /** shows up the menu. */
-    function menu()
-    {
-        echo '<ul class="menu">' . "\n";
-        foreach($this->menu as $link) {
-            if($link['type'] == 'link') {
-                echo "\t\t".'<li><a 
-                    href="'.Route::urlize($link['href']).'" 
-                    title="'.$link['label'].'"
-                    class="'.$link['href'].'' ;
-                if($link['active'] == true) {
-                    echo ' active ';
-                }
-                // If we display only the link on desktop
-                if($link['mobile'] == true) {
-                    echo ' on_desktop ';
-                }
-                echo '"';
-                echo "><span class=\"on_desktop\">".$link['label'] . "</span></a></li>\n";
-            } else {
-                echo $link['html'];
-            }
-        }
-        echo "\t</ul>\n";
-    }
 
     function addScript($script)
     {
@@ -238,4 +174,3 @@ class TplPageBuilder
         //\system\Logs\Logger::displayFooterDebug();
     }
 }
-
