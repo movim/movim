@@ -1,3 +1,3 @@
-<ul id="chats_widget_list" class="thick active divided spaced">
+<ul id="chats_widget_list" class="middle active divided spaced">
     {$list}
 </ul>
