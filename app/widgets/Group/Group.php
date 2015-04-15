@@ -196,13 +196,6 @@ class Group extends WidgetCommon
         $r = new GetItemsId;
         $r->setTo($server)
           ->setNode($node);
-
-        /*$pd = new \Modl\PostnDAO();
-        $posts = $pd->getNodeUnfiltered($server, $node, 0, 1);
-        
-        if(isset($posts[0])) {
-            $r->setSince($posts[0]->updated);
-        }*/
         
         $r->request();
 

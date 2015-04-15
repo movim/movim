@@ -110,3 +110,8 @@ article section content q li img {
     max-height: 40rem;
     max-width: 100%;
 }
+
+article ul li.pic img {
+    max-width: 30rem;
+    max-height: 30rem;
+}

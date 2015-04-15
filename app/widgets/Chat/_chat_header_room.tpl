@@ -40,5 +40,8 @@
         <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
             <span>{$c->__('button.delete')}</span>
         </li>
+        <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
+            <span>{$c->__('chatroom.config')}</span>
+        </li>
     </ul>
 </div>

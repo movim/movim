@@ -7,7 +7,5 @@ class NotfoundController extends BaseController {
 
     function dispatch() {
         $this->page->setTitle(__('title.not_found', APP_TITLE));
-        
-        $this->page->menuAddLink(__('page.home'), 'root');
     }
 }
