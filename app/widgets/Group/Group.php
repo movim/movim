@@ -23,7 +23,7 @@ class Group extends WidgetCommon
         $this->registerEvent('pubsub_getitems_handle', 'onItems', 'groups');
         $this->registerEvent('pubsub_getitemsid_handle', 'onItems', 'groups');
 
-        $this->registerEvent('pubsub_getitems_error', 'onItemsError');
+        $this->registerEvent('pubsub_getitems_error', 'onItemsError', 'groups');
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
