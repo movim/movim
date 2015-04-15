@@ -7,7 +7,6 @@ class BaseController {
     protected $page;
 
     function __construct() {
-        //this->loadLanguage();
         $this->page = new TplPageBuilder();
         $this->page->addScript('movim_hash.js');
         $this->page->addScript('movim_utils.js');

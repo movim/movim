@@ -3,6 +3,7 @@
 use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Vcard\Get;
 use Respect\Validation\Validator;
+use Moxl\Xec\Action\Pubsub\GetItems;
 
 class Contact extends WidgetCommon
 {
@@ -31,6 +32,8 @@ class Contact extends WidgetCommon
 
     function ajaxGetContact($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $html = $this->prepareContact($jid);
         $header = $this->prepareHeader($jid);
         
@@ -49,14 +52,28 @@ class Contact extends WidgetCommon
            ->request();
     }
 
+    function ajaxRefreshFeed($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $r = new GetItems;
+        $r->setTo($jid)
+          ->setNode('urn:xmpp:microblog:0')
+          ->request();
+    }
+
     function ajaxRefreshVcard($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $r = new Get;
         $r->setTo(echapJid($jid))->request();
     }
 
     function ajaxEditContact($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $rd = new \Modl\RosterLinkDAO();
         $groups = $rd->getGroups();
         $rl     = $rd->get($jid);
@@ -77,6 +94,8 @@ class Contact extends WidgetCommon
 
     function ajaxChat($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $c = new Chats;
         $c->ajaxOpen($jid);
         
@@ -85,6 +104,8 @@ class Contact extends WidgetCommon
 
     function ajaxDeleteContact($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $view = $this->tpl();
 
         $view->assign('jid', $jid);
@@ -94,6 +115,8 @@ class Contact extends WidgetCommon
 
     function prepareHeader($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $cd = new \Modl\ContactDAO;
         $cr  = $cd->getRosterItem($jid);
 
@@ -145,6 +168,8 @@ class Contact extends WidgetCommon
 
     function prepareContact($jid)
     {
+        if(!$this->validateJid($jid)) return;
+
         $cd = new \Modl\ContactDAO;
         $c  = $cd->get($jid, true);
 
@@ -231,6 +256,18 @@ class Contact extends WidgetCommon
         $url = $json->album->url;
 
         return array($img, $url);
+    }
+
+    /**
+     * @brief Validate the jid
+     *
+     * @param string $jid
+     */
+    private function validateJid($jid)
+    {
+        $validate_jid = Validator::email()->noWhitespace()->length(6, 60);
+        if(!$validate_jid->validate($jid)) return false;
+        else return true;
     }
 
     function display()

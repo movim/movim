@@ -29,7 +29,12 @@
         {/loop}
     </ul>
 {else}
-    <div class="padded">
-        <div class="message error">{$c->__('api.error')}</div>
-    </div>
+    <ul class="thick">
+        <li>
+            <span class="icon bubble color gray">
+                <i class="md md-cloud-off"></i>
+            </span>
+            <span>{$c->__('api.error')}</span>
+        </li>
+    </ul>
 {/if}

@@ -319,6 +319,7 @@ var Roster = {
     
     clickOnContact : function(e) {
         Contact_ajaxGetContact(e.id);
+        Contact_ajaxRefreshFeed(e.id);
         /*recalculated at each click*/
         var it = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
         Roster.reset(it);

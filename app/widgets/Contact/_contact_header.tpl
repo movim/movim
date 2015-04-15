@@ -29,10 +29,10 @@
                     </span>
                 </li>
             </ul>
-            <h2 class="active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
+            <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
                 <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
-                {$contact->getTrueName()}
-            </h2>
+                <h2>{$contact->getTrueName()}</h2>
+            </div>
         {else}
             <ul class="active">
                 <li onclick="Roster_ajaxDisplaySearch('{$jid}')">
@@ -41,10 +41,10 @@
                     </span>
                 </li>
             </ul>
-            <h2 class="active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
+            <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
                 <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
-                {$jid}
-            </h2>
+                <h2>{$jid}</h2>
+            </div>
         {/if}
     {/if}
 </div>
