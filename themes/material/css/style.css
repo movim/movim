@@ -287,10 +287,10 @@ main > header > div > span.icon {
 }
 
 main > header > div > .return {
-    padding-left: 9rem;
+    padding-left: 8rem;
     margin-left: -9rem;
     display: inline-block;
-    padding-right: 1rem;
+    padding-right: 2rem;
     max-width: calc(100% + 10rem);
     height: 7rem;
     box-sizing: border-box;
@@ -300,7 +300,7 @@ main > header > div > .return {
 main > header > div > .return.condensed > h2 {
     line-height: 3.5rem;
     font-size: 2.75rem;
-    margin-top: 0.6rem;
+    margin-top: 0.7rem;
     margin-bottom: -0.5rem;
 }
 
@@ -433,7 +433,8 @@ span.icon {
 }
 
 span.icon img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 li.oppose span.icon {
@@ -544,8 +545,8 @@ header.big p {
     background-color: white;
     height: initial;
     max-height: 90%;
-    width: 45rem;
-    margin-left: -22.5rem;
+    width: 50rem;
+    margin-left: -25rem;
 
     overflow: hidden;
     
@@ -590,13 +591,13 @@ header.big p {
 @media screen and (max-width: 600px) {
     .dialog {
         width: 90%;
-        height: 80%;
+        height: 90%;
         min-height: 0;
         min-width: 0;
-        max-height: 80%;
+        max-height: 90%;
         margin-left: -45%;
         margin-top: 0;
-        top: 10%;
+        top: 5%;
     }
 }
 
@@ -837,6 +838,9 @@ dl dd {
 .spinner.on:before,
 .spinner.on:after {
     top: 3rem;
+}
+
+.spinner.on:before {
     animation: spinner 1s linear infinite;
     -webkit-animation: spinner 1s linear infinite;
 }

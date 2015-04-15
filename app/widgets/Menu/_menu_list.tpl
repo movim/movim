@@ -39,7 +39,7 @@
             {if="$value->title != null"}
                 <span>{$value->title}</span>
             {else}
-                <span>{$c->__('menu.contact_post')}</span>
+                <span>{$value->getContact()->getTrueName()} - {$c->__('menu.contact_post')}</span>
             {/if}
             {if="$value->privacy"}
                 <span class="info" title="{$c->__('menu.public')}">

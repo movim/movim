@@ -23,7 +23,7 @@
                     <i class="md md-person"></i>
                 </span>
             {/if}
-            <span href="{$c->route('friend', $value->jid)}">
+            <span href="{$c->route('contact', $value->jid)}">
                 {$value->getTrueName()}
             </span>
         </li>

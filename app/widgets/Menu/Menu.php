@@ -8,7 +8,7 @@ class Menu extends WidgetCommon
     
     function load()
     {
-        $this->registerEvent('post', 'onPost', 'news');
+        $this->registerEvent('post', 'onPost');
         $this->addjs('menu.js');
     }
 

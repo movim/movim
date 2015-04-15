@@ -62,7 +62,7 @@
             {if="isset($value->getAttachements().pictures)"}
                 <ul class="flex middle">
                 {loop="$value->getAttachements().pictures"}
-                    <li class="block">
+                    <li class="block pic">
                         <span class="icon small gray">
                             <i class="md md-image"></i>
                         </span>

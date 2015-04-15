@@ -2,11 +2,6 @@
     <ul id="rosterlist" class="{if="isset($conf) && $conf.roster == 'show'"}offlineshown{/if} active all">
         <span ng-if="contacts == null" class="nocontacts">
             {$c->__('roster.no_contacts')}
-            <br />
-            <br />
-            <a class="button color green" href="{$c->route('explore')}">
-                <i class="fa fa-compass"></i> {$c->__('page.explore')}
-            </a>
         </span>
         
         <li class="subheader search">{$c->__('roster.results')}</li>
