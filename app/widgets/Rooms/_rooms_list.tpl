@@ -4,7 +4,7 @@
     <ul>
         {$presence = getPresencesTxt()}
         {loop="$list"}
-            <li class="action" title="{$value->resource}">
+            <li class="action {if="$value->status"}condensed{/if}" title="{$value->resource}">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span class="icon bubble status {$presence[$value->value]}">
@@ -21,6 +21,9 @@
                     </div>
                 {/if}
                 <span>{$value->resource}</span>
+                {if="$value->status"}
+                    <p class="wrap">{$value->status}</p>
+                {/if}
             </li>
         {/loop}
     </ul>

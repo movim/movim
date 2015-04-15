@@ -21,6 +21,7 @@
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Microblog\CommentsGet;
+use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
@@ -30,12 +31,20 @@ class Post extends WidgetCommon
     {
         $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
+        $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
     }
 
-    function onPublish()
+    function onPublish($packet)
     {
+        list($to, $node, $id) = array_values($packet->content);
+
+        $cn = new CommentCreateNode;
+        $cn->setTo($to)
+           ->setParentId($id)
+           ->request();
+        
         Notification::append(false, $this->__('post.published'));
         $this->ajaxClear();
         RPC::call('MovimTpl.hidePanel');
@@ -47,6 +56,29 @@ class Post extends WidgetCommon
         $this->ajaxClear();
         RPC::call('MovimTpl.hidePanel');
         RPC::call('Menu_ajaxGetAll');
+    }
+
+    function onComments($packet)
+    {
+        $nodeid = $packet->content;
+
+        $p = new \Modl\ContactPostn();
+        $p->nodeid = $nodeid;
+        
+        $pd = new \Modl\PostnDAO();
+        $comments = $pd->getComments($p);
+
+        $view = $this->tpl();
+        $view->assign('comments', $comments);
+        $html = $view->draw('_post_comments', true);
+        RPC::call('movim_fill', 'comments', $html);
+    }
+
+    function onCommentsError($packet)
+    {
+        $view = $this->tpl();
+        $html = $view->draw('_post_comments_error', true);
+        RPC::call('movim_fill', 'comments', $html);
     }
 
     function ajaxClear()
@@ -170,23 +202,6 @@ class Post extends WidgetCommon
         }
 
         RPC::call('movim_fill', 'preview', $html);
-    }
-
-    function onComments($packet)
-    {
-        $nodeid = $packet->content;
-
-        $p = new \Modl\ContactPostn();
-        $p->nodeid = $nodeid;
-        
-        $pd = new \Modl\PostnDAO();
-        $comments = $pd->getComments($p);
-
-        $view = $this->tpl();
-        $view->assign('comments', $comments);
-        $html = $view->draw('_post_comments', true);
-        //$html = $this->prepareComments($comments);
-        RPC::call('movim_fill', 'comments', $html);
     }
 
     function prepareGallery($embed)

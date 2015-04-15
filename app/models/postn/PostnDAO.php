@@ -403,14 +403,12 @@ class PostnDAO extends SQL {
         $this->_sql = '
             select *, postn.aid as jid from postn
             left outer join contact on postn.aid = contact.jid
-            where postn.session = :session
-                and postn.node in ('.$commentsid.')
+            where postn.node in ('.$commentsid.')
             order by postn.published';
 
         $this->prepare(
             'Postn', 
             array(
-                'session' => $this->_user
             )
         );
             

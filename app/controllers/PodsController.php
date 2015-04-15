@@ -8,8 +8,6 @@ class PodsController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.discover', APP_TITLE));
-
-        $this->page->setColor('indigo');        
+        $this->page->setTitle(__('title.discover', APP_TITLE));      
     }
 }
