@@ -52,10 +52,10 @@
     {if="$role == 'owner'"}
         <ul class="simple context_menu active">
             <li onclick="Group_ajaxGetConfig('{$item->server}', '{$item->node}')">
-                <span>{$c->__('group.get_config')}</span>
+                <span>{$c->__('group.configuration')}</span>
             </li>
             <li onclick="Group_ajaxGetSubscriptions('{$item->server}', '{$item->node}')">
-                <span>{$c->__('group.get_subscriptions')}</span>
+                <span>{$c->__('group.subscriptions')}</span>
             </li>
         </ul>
     {/if}

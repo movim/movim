@@ -162,7 +162,7 @@ class Roster extends WidgetBase
     function ajaxSearchContact($jid) 
     {
         if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
-            RPC::call('movim_redirect', Route::urlize('friend', $jid));
+            RPC::call('movim_redirect', Route::urlize('contact', $jid));
             RPC::commit();
         } else 
             Notification::append(null, $this->__('roster.jid_error'));
@@ -286,7 +286,7 @@ class Roster extends WidgetBase
         $c['rosterview']['avatar']   = $oc->getPhoto('s');
         $c['rosterview']['color']    = stringToColor($oc->jid);
         $c['rosterview']['name']     = $oc->getTrueName();
-        $c['rosterview']['friendpage']     = $this->route('friend', $oc->jid);
+        $c['rosterview']['friendpage']     = $this->route('contact', $oc->jid);
 
         // Some data relative to the presence
         if($oc->last != null && $oc->last > 60)

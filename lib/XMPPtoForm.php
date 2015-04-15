@@ -134,36 +134,29 @@ class XMPPtoForm{
 
     private function outCheckbox($s){
         $this->html .= '
-        <ul class="simple">
-            <li class="action">
-                <span>';
-                if($s['label']==null){
-                    $this->html .= $s['var'];
-                }
-                else{
-                    $this->html .= $s['label'];
-                }
-            $this->html .= '
-                </span>';
-            $this->html .= '
-                <div class="action">
-                    <div class="checkbox">
-                        <input 
-                            id="'.$s['var'].'" 
-                            name="'.$s['var'].'" 
-                            type="checkbox"
-                            label="'.$s['label'].'"
-                            type="checkbox" '.$s->required;
-                        if($s->value == "true" || $s->value == "1")
-                            $this->html .= ' checked';
-                    $this->html .= '/>';
+            <div class="select">
+                <select 
+                    type="'.$s['type'].'"
+                    label="'.$s['label'].'"
+                    id="'.$s["var"].'" 
+                    name="'.$s['var'].'" '.$multiple.' '.$s->required.'>';
+        
+        $this->html .= '
+            <option value="true"';
+            if(isset($s->value) || $s->value == "true" || $s->value == "1")
+                $this->html .= ' selected="selected"';
+        $this->html .= '>'.__('button.yes').'</option>';
 
-                    $this->html .= '
-                        <label for="'.$s['var'].'"></label>
-                    </div>
-                </div>
-            </li>
-        </ul>';
+        $this->html .= '
+            <option value="false"';
+            if(!isset($s->value) || $s->value == "false" || $s->value == "0")
+                $this->html .= ' selected="selected"';
+        $this->html .= '>'.__('button.no').'</option>';
+        
+        $this->html .= '
+                </select>
+            </div>
+            <label for="'.$s["var"].'">'.$s["label"].'</label>';
     }
     
     private function outTextarea($s){
@@ -291,6 +284,9 @@ class FormtoXMPP{
                 $node = $this->stream->configure->x;
                 break;
             case "command":
+                $node = $this->stream->x;
+                break;
+            default:
                 $node = $this->stream->x;
                 break;
         }

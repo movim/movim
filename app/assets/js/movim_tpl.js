@@ -120,8 +120,12 @@ var MovimTpl = {
         movim_remove_class('body > nav', 'active');
     },
     back : function() {
-        // If a dialog box is shown
-        if(Dialog.filled()) {
+        // If the contect menu is show
+        if(document.querySelector('ul.context_menu').className.contains('shown')) {
+            MovimTpl.toggleContextMenu(document);
+        }
+        // If a dialog box is show
+        else if(Dialog.filled()) {
             Dialog.clear();
         // If the menu is shown
         } else if(movim_has_class('body > nav', 'active')) {

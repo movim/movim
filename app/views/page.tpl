@@ -40,7 +40,7 @@
         $this->scripts();
     ?>
     </head>
-    <body class="<?php //$this->color();?>">
+    <body>
         <noscript>
             <style type="text/css">
                 nav {display:none;} #content {display: none;}
