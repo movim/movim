@@ -1,4 +1,4 @@
-<ul class="thick divided spaced active">
+<ul class="middle divided spaced active">
     <li class="subheader">
         {$c->__('chatrooms.title')}
         <span class="info">{$conferences|count}</span>

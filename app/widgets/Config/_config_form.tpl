@@ -1,8 +1,3 @@
-<!--<a 
-    class="button color orange oppose"
-    href="{$c->route('nodeconfig', array($me,'urn:xmpp:microblog:0'))}" >
-    <i class="fa fa-user"></i> {$c->__('config.feed_configuration')}
-</a>-->
 <form enctype="multipart/form-data" method="post" action="index.php" name="general">
     <br/>
     <h3>{$c->__('config.general')}</h3>
