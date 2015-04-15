@@ -27,7 +27,6 @@ namespace Moxl\Xec\Action\Pubsub;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
-use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Pubsub\Errors;
 
@@ -115,12 +114,13 @@ class PostPublish extends Errors
         return $this;
     }
 
+    /*
     public function enableComments()
     {
         $this->_atom->enableComments();
         return $this;
     }
-    
+    */
     public function handle($stanza, $parent = false) {
         $g = new GetItem;
         $g->setTo($this->_to)
@@ -128,12 +128,7 @@ class PostPublish extends Errors
           ->setId($this->_atom->id)
           ->request();
 
+        $this->pack(array('to' => $this->_to, 'node' => $this->_node, 'id' => $this->_atom->id));
         $this->deliver();
-        /*if($this->_atom->comments) {
-            $mc = new CommentCreateNode;
-            $mc->setTo($this->_to)
-               ->setParentId($this->_atom->id)
-               ->request();
-        }*/
     }
 }

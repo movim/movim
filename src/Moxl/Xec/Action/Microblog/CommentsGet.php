@@ -69,7 +69,6 @@ class CommentsGet extends Action
                 array_unshift($comments, $p);
             }
 
-            //$evt->runEvent('comment', $parent);
             $this->pack($this->_id);
             $this->deliver();
         } else {
@@ -77,23 +76,9 @@ class CommentsGet extends Action
         }
     }
     
-    public function errorFeatureNotImplemented() {
-        $evt = new \Event();
-        $evt->runEvent('nocommentstream', $this->_id);
-    }
-    
-    public function errorItemNotFound() {        
-        $evt = new \Event();
-        $evt->runEvent('nocommentstream', $this->_id);
-    }
-    
-    public function errorRemoteServerNotFound($stanza) {
-        $this->errorItemNotFound($stanza);
-    }
-    
-    public function errorNotAuthorized() {
-        $evt = new \Event();
-        $evt->runEvent('nostreamautorized', $this->_id);
+    public function error() {
+        $this->pack($this->_id);
+        $this->deliver();
     }
 
 }
