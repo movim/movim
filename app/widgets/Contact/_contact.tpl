@@ -48,6 +48,7 @@
         </ul>
     </header>
     <br />
+
     <ul class="flex">
         {if="$contact->delay != null"}
         <li class="condensed block">
@@ -141,6 +142,27 @@
         </li>
         {/if}
     </ul>
+
+    {if="$blog != null"}
+        <ul class="middle active">
+            <li class="subheader">{$c->__('blog.last')}</li>
+            <a href="{$c->route('blog', array($contact->jid))}" target="_blank">
+                <li class="block large condensed action">
+                    <div class="action">
+                        <i class="md md-chevron-right"></i>
+                    </div>
+                    <span class="icon">
+                        <i class="md md-wifi-tethering"></i>
+                    </span>
+                    <span class="info">{$blog[0]->published|strtotime|prepareDate}</span>
+                    <span>{$blog[0]->title}</span>
+                    <p class="more">{$blog[0]->contentcleaned|strip_tags:'<img><img/>'}</p>
+                </li>
+            </a>
+        </ul>
+    {/if}
+
+    <br />
 
     {if="$contact->tuneartist || $contact->tunetitle"}
     <ul class="flex">
@@ -260,14 +282,13 @@
         <br />
         <h3 class="padded">{$c->__('page.gallery')}</h3>
         <br />
-        <ul class="grid">
+        <ul class="grid active">
             {loop="$gallery"}
                 {$attachements = $value->getAttachements()}
-                <li style="background-image: url('{$attachements['pictures'][0]['href']}');">
+                <li style="background-image: url('{$attachements['pictures'][0]['href']}');"
+                    onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
                     <nav>
-                        <a href="{$attachements['pictures'][0]['href']}" target="_blank">
-                            {$attachements['pictures'][0]['title']}
-                        </a>
+                        {$attachements['pictures'][0]['title']}
                     </nav>
                 </li>
             {/loop}
