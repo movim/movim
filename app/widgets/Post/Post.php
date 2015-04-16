@@ -147,7 +147,7 @@ class Post extends WidgetCommon
 
                 if($embed->type == 'photo') {
                     $key = key($embed->images);
-                    $p->setImage($key, $embed->title, $embed->images[$key][2]);
+                    $p->setImage($embed->images[0]['value'], $embed->title, $embed->images[0]['mime']);
                 }
             }
 
