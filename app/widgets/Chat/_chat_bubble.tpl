@@ -7,9 +7,11 @@
             </span>
         {if="$me == null"}</a>{/if}
     {else}
-        <span class="icon bubble color {$contact->jid|stringToColor}">
-            <i class="md md-person"></i>
-        </span>
+        {if="$me == null"}<a href="{$c->route('contact', $contact->jid)}">{/if}
+            <span class="icon bubble color {$contact->jid|stringToColor}">
+                <i class="md md-person"></i>
+            </span>
+        {if="$me == null"}</a>{/if}
     {/if}
 
     <div class="bubble">
