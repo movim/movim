@@ -186,6 +186,7 @@ class Contact extends WidgetCommon
 
         $pd = new \Modl\PostnDAO;
         $gallery = $pd->getGallery($jid);
+        $blog    = $pd->getPublic($jid, 'urn:xmpp:microblog:0', 1, 0);
 
         if(isset($c)) {
             $view->assign('mood', getMood());
@@ -216,6 +217,7 @@ class Contact extends WidgetCommon
             }
 
             $view->assign('gallery', $gallery);
+            $view->assign('blog', $blog);
 
             $view->assign('chat', 
                 $this->call(
