@@ -30,7 +30,7 @@ class PubsubAtom {
 
         if($this->title)
             $xml .= '
-                <title>'.$this->title.'</title>';
+                <title><![CDATA['.$this->title.']]></title>';
 
         $xml .= '
                 <author>
@@ -88,11 +88,13 @@ class PubsubAtom {
         if($this->contenthtml)
             $xml .= '
                 <content type="html">
-                    <html xmlns="http://jabber.org/protocol/xhtml-im">
-                        <body xmlns="http://www.w3.org/1999/xhtml">
-                            '.$this->contenthtml.'
-                        </body>
-                    </html>
+                    <![CDATA[
+                        <html xmlns="http://jabber.org/protocol/xhtml-im">
+                            <body xmlns="http://www.w3.org/1999/xhtml">
+                                '.$this->contenthtml.'
+                            </body>
+                        </html>
+                    ]]>
                 </content>';
         else
             $xml .= '
