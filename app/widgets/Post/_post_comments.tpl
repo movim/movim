@@ -1,5 +1,8 @@
 <ul class="divided spaced middle">
-    <li class="subheader">{$c->__('post.comments')}</li>
+    <li class="subheader">
+        {$c->__('post.comments')}
+        <span class="info">{$comments|count}</span>
+    </li>
     {loop="$comments"}
         <li class="condensed">
             <a href="{$c->route('contact', $value->getContact()->jid)}">
@@ -25,4 +28,22 @@
             </p>
         </li>
     {/loop}
+    <li class="action">
+        <div class="action" onclick="Post_ajaxPublishComment(movim_form_to_json('comment'),'{$id}')">
+            <i class="md md-send"></i>
+        </div>
+        <span class="icon gray">
+            <i class="md md-comment"></i>
+        </span>
+        <form name="comment">
+            <div>
+                <textarea
+                    onkeyup="movim_textarea_autoheight(this);"
+                    name="comment"
+                    placeholder="{$c->__('field.type_here')}"
+                ></textarea>
+                <label for="comment">{$c->__('post.comment_add')}</label>
+            </div>
+        </form>
+    </li>
 </ul>
