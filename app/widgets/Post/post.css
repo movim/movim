@@ -1,3 +1,8 @@
 form[name=post] article section {
     padding: 0;
 }
+
+#comments li.action div.action:hover {
+    cursor: pointer;
+    color: #333;
+}

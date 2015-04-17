@@ -22,6 +22,7 @@ use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
+use Moxl\Xec\Action\Microblog\CommentPublish;
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
@@ -31,6 +32,7 @@ class Post extends WidgetCommon
     {
         $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
+        $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
@@ -48,6 +50,12 @@ class Post extends WidgetCommon
         Notification::append(false, $this->__('post.published'));
         $this->ajaxClear();
         RPC::call('MovimTpl.hidePanel');
+    }
+
+    function onCommentPublished($packet)
+    {
+        Notification::append(false, $this->__('post.comment_published'));        
+        $this->onComments($packet);
     }
 
     function onDelete()
@@ -70,6 +78,7 @@ class Post extends WidgetCommon
 
         $view = $this->tpl();
         $view->assign('comments', $comments);
+        $view->assign('id', $nodeid);
         $html = $view->draw('_post_comments', true);
         RPC::call('movim_fill', 'comments', $html);
     }
@@ -182,6 +191,24 @@ class Post extends WidgetCommon
         $c = new CommentsGet;
         $c->setTo($jid)
           ->setId($id)
+          ->request();
+    }
+
+    function ajaxPublishComment($form, $id)
+    {
+        $comment = trim($form->comment->value);
+
+        $validate_comment = Validator::string()->notEmpty();
+        $validate_id = Validator::string()->length(6, 128)->noWhitespace();
+
+        if(!$validate_comment->validate($comment)
+        || !$validate_id->validate($id)) return;
+
+        $cp = new CommentPublish;
+        $cp->setTo($to)
+          ->setFrom($this->user->getLogin())
+          ->setParentId($id)
+          ->setContent(htmlspecialchars(rawurldecode($comment)))
           ->request();
     }
 
