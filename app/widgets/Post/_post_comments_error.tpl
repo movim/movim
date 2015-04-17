@@ -4,7 +4,7 @@
             <i class="md md-comment"></i>
         </span>
         <span>
-            {$c->__('post.no_comments')}
+            {$c->__('post.comments_disabled')}
         </span>
     </li>
 </ul>

@@ -611,7 +611,7 @@ class WidgetCommon extends WidgetBase {
           ->setId($id)
           ->request();
     }
-    
+    /*
     function ajaxPublishComment($to, $id, $content) {
         if($content != '') {
             $p = new CommentPublish;
@@ -622,7 +622,7 @@ class WidgetCommon extends WidgetBase {
               ->request();
         }
     }
-    
+    */
     function ajaxDeletePost($to, $node, $id) {
         $p = new PostDelete;
         $p->setTo($to)
