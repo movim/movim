@@ -57,23 +57,17 @@ class CommentsGet extends Action
         list($xmlns, $parent) = explode("/", $node);
 
         if($stanza->pubsub->items->item) {
-            $comments = array();
-
             foreach($stanza->pubsub->items->item as $item) {
                 $p = new \modl\Postn();
                 $p->set($item, $this->_to, false, $node);
                 
                 $pd = new \modl\PostnDAO();
                 $pd->set($p);
-                
-                array_unshift($comments, $p);
             }
-
-            $this->pack($this->_id);
-            $this->deliver();
-        } else {
-            $evt->runEvent('nocomment', $parent);   
         }
+
+        $this->pack($this->_id);
+        $this->deliver();
     }
     
     public function error() {

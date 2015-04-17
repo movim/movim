@@ -84,8 +84,7 @@ class CommentPublish extends Errors
         
         $p = new \modl\Postn();
 
-        $p->session = $this->_atom->jid;
-        $p->jid     = $this->_atom->jid;
+        $p->origin  = $this->_atom->jid;
         
         $p->node    = $this->_node;
         $p->nodeid  = $this->_atom->id;
@@ -95,13 +94,14 @@ class CommentPublish extends Errors
         
         $p->content = $this->_atom->content;
         
-        $p->published = date('Y-m-d H:i:s');
-        $p->updated = date('Y-m-d H:i:s');
+        $p->published = gmdate('Y-m-d H:i:s');
+        $p->updated = gmdate('Y-m-d H:i:s');
         
         $pd = new \modl\PostnDAO();
         $pd->set($p);
         
-        $evt->runEvent('comment', $this->_parentid);
+        $this->pack($this->_parentid);
+        $this->deliver();
     }
     
     public function errorFeatureNotImplemented($stanza) {

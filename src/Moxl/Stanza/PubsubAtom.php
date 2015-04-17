@@ -101,8 +101,8 @@ class PubsubAtom {
                 <content type="text">'.$this->content.'</content>';
 
         $xml .= '
-                <published>'.date(DATE_ISO8601).'</published>  
-                <updated>'.date(DATE_ISO8601).'</updated>
+                <published>'.gmdate(DATE_ISO8601).'</published>  
+                <updated>'.gmdate(DATE_ISO8601).'</updated>
             </entry>';
 
         return $xml;
