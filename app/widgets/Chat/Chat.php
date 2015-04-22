@@ -430,7 +430,7 @@ class Chat extends WidgetCommon
         }
 
         if($message->type == 'groupchat') {
-            $message->color = stringToColor($message->jidfrom.$message->resource);
+            $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
         }
 
         $message->published = prepareDate(strtotime($message->published));
