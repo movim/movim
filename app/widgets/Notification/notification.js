@@ -9,6 +9,7 @@ var Notification = {
     tab_counter2_key : 'news',
     document_title : document.title,
     notifs_key : '',
+    favicon : null,
 
     inhibit : function(sec) {
         Notification.inhibed = true;
@@ -63,7 +64,9 @@ var Notification = {
     displayTab : function() {
         if(Notification.tab_counter1 == 0 && Notification.tab_counter2 == 0) {
             document.title = Notification.document_title;
+            Notification.favicon.badge(0);
         } else {
+            Notification.favicon.badge(Notification.tab_counter1 + Notification.tab_counter2);
             document.title = '(' + Notification.tab_counter1 + '/' + Notification.tab_counter2 + ') ' + Notification.document_title;
         }
     },
@@ -108,6 +111,11 @@ var Notification = {
 }
 
 MovimWebsocket.attach(function() {
+    Notification.favicon = new Favico({
+        animation: 'none',
+        fontStyle: 'normal',
+        bgColor: '#FF5722'
+    });
     Notification.document_title = document.title;
     Notification_ajaxGet();
     Notification.current(Notification.notifs_key);
