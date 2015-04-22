@@ -58,6 +58,8 @@ var Chat = {
             bubble.querySelector('span.info').innerHTML = message.published;
             bubble.querySelector('span.user').className = 'user ' + message.color;
             bubble.querySelector('span.user').innerHTML = message.resource;
+
+            movim_append(id, bubble.outerHTML);
         } else {
             if(message.session == message.jidfrom) {
                 bubble = Chat.right;
@@ -67,11 +69,17 @@ var Chat = {
                 id = message.jidfrom + '_conversation';
             }
 
+            if(message.body.match(/^\/me/)) {
+                bubble.querySelector('div.bubble').className = 'bubble quote';
+                message.body = message.body.substr(4);
+            }
+
             bubble.querySelector('div.bubble div').innerHTML = message.body;
             bubble.querySelector('div.bubble span.info').innerHTML = message.published;
-        }
 
-        movim_append(id, bubble.outerHTML);
+            movim_append(id, bubble.outerHTML);
+            bubble.querySelector('div.bubble').className = 'bubble';
+        }
 
         MovimTpl.scrollPanel();
     }

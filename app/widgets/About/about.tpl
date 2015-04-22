@@ -31,9 +31,11 @@
                Moxl - Movim XMPP Library - <a href="https://github.com/edhelas/moxl">GitHub Moxl</a> under AGPLv3<br/>
 
                Map Library - Leaflet <a href="http://leafletjs.com/">leafletjs.com</a> under BSD<br/>
+               Favico.js - Miroslav Magda <a href="http://lab.ejci.net/favico.js/">lab.ejci.net/favico.js</a> under GPL and MIT<br/>
                Markdown - Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin<br/>
                Template Engine - RainTPL - Federico Ulfo <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>
-               Embed - Oscar Otero <a href="https://github.com/oscarotero/Embed">GitHub Embed</a> under MIT<br/><br />
+               Embed - Oscar Otero <a href="https://github.com/oscarotero/Embed">GitHub Embed</a> under MIT<br/>
+               Emoji - <a href="https://github.com/tompedals">Tom Graham</a> <a href="https://github.com/heyupdate/Emoji">GitHub HeyUpdate Emoji</a> under MIT<br/><br />
                WebSocket and Daemon engine - ReactPHP -  <a href="http://socketo.me/">socketo.me</a> ©Chris Boden<br/>
             </p>
         </li>
@@ -42,6 +44,7 @@
             <span>{$c->__('title.resources')}</span>
             <p>
                 Material Design Iconic Font <a href="http://zavoloklom.github.io/material-design-iconic-font/icons.html">by Google and Sergey Kupletsky</a> under SIL OFL 1.1<br/>
+                Twemoji <a href="http://twitter.github.io/twemoji/">by Twitter</a> under MIT and CC-BY<br/>
             </p>
         </li>
         <li class="condensed">
