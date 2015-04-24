@@ -11,6 +11,7 @@ var Post = {
             var embed = document.querySelector('input[name=embed]');
             embed.value = localStorage.getItem('share_url');
             embed.onpaste();
+            localStorage.removeItem('share_url');
         }
     }
 }
