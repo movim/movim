@@ -96,20 +96,35 @@
                 </li>
             </a>
         </ul>
-    {/if}
-    <br />
-    <ul class="active">
-        <a href="{$c->route('blog', array($jid))}" target="_blank">
-            <li class="condensed action">
-                <div class="action">
-                    <i class="md md-chevron-right"></i>
-                </div>
-                <span class="icon">
-                    <i class="md md-wifi-tethering"></i>
+        <br />
+        <ul class="active thick">
+            <a href="{$c->route('blog', array($jid))}" target="_blank">
+                <li class="condensed action">
+                    <div class="action">
+                        <i class="md md-chevron-right"></i>
+                    </div>
+                    <span class="icon">
+                        <i class="md md-wifi-tethering"></i>
+                    </span>
+                    <span>{$c->__('hello.blog_title')}</span>
+                    <p>{$c->__('hello.blog_text')}</p>
+                </li>
+                <br/>
+            </a>
+        </ul>
+        <ul class="thick flex">
+            <li class="condensed block">
+                <span class="icon bubble color blue">
+                    <i class="md md-share"></i>
                 </span>
-                <span>{$c->__('hello.blog_title')}</span>
-                <p>{$c->__('hello.blog_text')}</p>
+                <span>{$c->__('hello.share_title')}</span>
+                <p>{$c->__('hello.share_text')}</p>
             </li>
-        </a>
-    </ul>
+            <li class="block">
+                <a class="button" href="javascript:(function(){location.href='{$c->route('share')}&url='+encodeURIComponent(location.href);})();">
+                    <i class="md md-share"></i> {$c->__('hello.share_button')}
+                </a>
+            </li>
+        </ul>
+    {/if}
 </div>

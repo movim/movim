@@ -31,6 +31,7 @@ class Post extends WidgetCommon
     function load()
     {
         $this->addcss('post.css');
+        $this->addjs('post.js');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
@@ -114,6 +115,8 @@ class Post extends WidgetCommon
 
         $view = $this->tpl();
         Header::fill($view->draw('_post_header_create', true));
+        
+        RPC::call('Post.setEmbed');
     }
 
     function ajaxPreview($form)
