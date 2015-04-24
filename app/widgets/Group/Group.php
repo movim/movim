@@ -10,6 +10,8 @@ use Moxl\Xec\Action\Pubsub\Unsubscribe;
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
+use Moxl\Xec\Action\Pubsub\Delete;
+
 use Respect\Validation\Validator;
 
 class Group extends WidgetCommon
@@ -29,6 +31,8 @@ class Group extends WidgetCommon
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
         $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
 
+        $this->registerEvent('pubsub_delete_handle', 'onDelete');
+
         $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
@@ -41,6 +45,11 @@ class Group extends WidgetCommon
         $this->displayItems($arr['server'], $arr['node']);
         RPC::call('Group.clearLoad');
         RPC::call('MovimTpl.showPanel');
+    }
+
+    function onDelete($packet)
+    {
+        $this->ajaxClear();
     }
 
     function onBookmark()
@@ -159,6 +168,27 @@ class Group extends WidgetCommon
         Header::fill($header);
 
         RPC::call('movim_fill', 'group_widget', $html);
+    }
+
+
+    function ajaxDelete($server, $node)
+    {
+        if(!$this->validateServerNode($server, $node)) return;
+
+        $view = $this->tpl();
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+
+        Dialog::fill($view->draw('_group_delete', true));
+    }
+
+    function ajaxDeleteConfirm($server, $node)
+    {
+        if(!$this->validateServerNode($server, $node)) return;
+
+        $d = new Delete;
+        $d->setTo($server)->setNode($node)
+          ->request();
     }
 
     function ajaxGetMetadata($server, $node)

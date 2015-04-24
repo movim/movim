@@ -296,6 +296,12 @@ main > header > div > .return {
     box-sizing: border-box;
 }
 
+main > header > div > form.return {
+    display: block;
+    padding-right: 0;
+    padding-left: 9rem;
+}
+
 /* Not very beautiful… */
 main > header > div > .return.condensed > h2 {
     line-height: 3.5rem;
@@ -309,7 +315,7 @@ main > header > div > .return > h4 {
     font-size: 1.75rem;
 }
 
-main > header > div > .return.r1 { max-width: calc(100% + 2rem); }
+main > header > div > .return.r1 { max-width: calc(100% + 3rem); }
 main > header > div > .return.r2 { max-width: calc(100% - 5rem); }
 main > header > div > .return.r3 { max-width: calc(100% - 12rem); }
 

@@ -6,6 +6,7 @@ use Moxl\Xec\Action\Message\Publish;
 
 use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
+use Moxl\Xec\Action\Muc\SetSubject;
 
 use Respect\Validation\Validator;
 
@@ -21,9 +22,10 @@ class Chat extends WidgetCommon
         $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('gone', 'onGone');
-        $this->registerEvent('conference_subject', 'onConferenceSubject');
+        $this->registerEvent('subject', 'onConferenceSubject');
         $this->registerEvent('muc_getconfig_handle', 'onRoomConfig');
         $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved');
+        //$this->registerEvent('muc_setsubject_handle', 'onRoomSubjectChanged');
         //$this->registerEvent('presence', 'onPresence');
     }
 
@@ -104,9 +106,9 @@ class Chat extends WidgetCommon
         $this->setState($array, $this->__('message.gone'));
     }
 
-    function onConferenceSubject($message)
+    function onConferenceSubject($packet)
     {
-        $header = $this->prepareHeaderRoom($message->jidfrom);
+        $header = $this->prepareHeaderRoom($packet->content->jidfrom);
         Header::fill($header);
     }
 
@@ -129,7 +131,12 @@ class Chat extends WidgetCommon
     {
         Notification::append(false, $this->__('chatroom.config_saved'));
     }
-
+/*
+    function onRoomSubjectChanged($packet)
+    {
+        Notification::append(false, $this->__('chatroom.suject_changed'));
+    }
+*/
     private function setState($array, $message)
     {
         list($from, $to) = $array;
@@ -320,6 +327,40 @@ class Chat extends WidgetCommon
     }
 
     /**
+     * @brief Get the subject form of a chatroom
+     */
+    function ajaxGetSubject($room)
+    {
+        if(!$this->validateJid($room)) return;
+
+        $view = $this->tpl();
+
+        $md = new \Modl\MessageDAO;
+        $s = $md->getRoomSubject($room);
+
+        $view->assign('room', $room);
+        $view->assign('subject', $s);
+
+        Dialog::fill($view->draw('_chat_subject', true));
+    }
+
+    /**
+     * @brief Change the subject of a chatroom
+     */
+    function ajaxSetSubject($room, $form)
+    {
+        if(!$this->validateJid($room)) return;
+
+        $validate_subject = Validator::string()->length(0, 200);
+        if(!$validate_subject->validate($form->subject->value)) return;
+
+        $p = new SetSubject;
+        $p->setTo($room)
+          ->setSubject($form->subject->value)
+          ->request();
+    }
+
+    /**
      * @brief Prepare the contact header
      * 
      * @param string $jid
@@ -358,8 +399,12 @@ class Chat extends WidgetCommon
         $cd = new \Modl\ConferenceDAO;
         $c = $cd->get($room);
 
+        $pd = new \Modl\PresenceDAO;
+        $p = $pd->getMyPresenceRoom($room);
+
         $view->assign('room', $room);
         $view->assign('subject', $s);
+        $view->assign('presence', $p);
         $view->assign('conference', $c);
 
         return $view->draw('_chat_header_room', true);

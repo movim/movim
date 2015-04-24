@@ -122,8 +122,7 @@ class PresenceDAO extends SQL {
         $this->prepare('Presence');
         return $this->run('Presence');
     }
-    
-  
+
     function getPresence($jid, $resource) {        
         $this->_sql = '
             select * from presence
@@ -138,6 +137,25 @@ class PresenceDAO extends SQL {
                 'session' => $this->_user,
                 'jid' => $jid,
                 'resource' => $resource
+            )
+        );
+        
+        return $this->run('Presence', 'item');
+    }
+  
+    function getMyPresenceRoom($jid) {        
+        $this->_sql = '
+            select * from presence
+            where 
+                session = :session
+                and jid = :jid
+                and mucjid = :session';
+        
+        $this->prepare(
+            'Presence', 
+            array(
+                'session' => $this->_user,
+                'jid' => $jid,
             )
         );
         

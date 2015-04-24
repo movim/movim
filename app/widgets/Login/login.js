@@ -122,8 +122,14 @@ var Login = {
         Login.rememberSession(jid);
         localStorage.postStart = 1;
         movim_reload(url);
-    }
+    },
 
+    /**
+     * @brief Set the Movim cookie
+     */
+    setCookie : function(value) {
+        document.cookie = 'MOVIM_SESSION_ID='+value; 
+    } 
 }
 
 MovimWebsocket.attach(function()

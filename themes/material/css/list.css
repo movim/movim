@@ -221,7 +221,7 @@ ul li div.bubble div {
     display: inline;
 }
 
-ul li div.bubble.quote {
+ul li div.quote {
     font-style: italic;
 }
 
