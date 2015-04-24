@@ -30,6 +30,7 @@ class Sessionx {
     private         $_user;
     private         $_password;
     private         $_resource;
+    private         $_hash;
     private         $_sid;
     private         $_url;
     private         $_port;
@@ -79,7 +80,8 @@ class Sessionx {
         $s->session     = self::$_sessionid;
         $s->username    = $this->_user;
         $s->password    = $this->_password;
-        $s->resource   = $this->_resource;
+        $s->hash        = sha1($this->_user.$this->password.$this->host);
+        $s->resource    = $this->_resource;
         $s->rid         = $this->_rid;
         $s->sid         = $this->_sid;
         $s->id          = $this->_id;
@@ -104,7 +106,7 @@ class Sessionx {
         $this->_domain      = $domain;
         $this->_user        = $user;
         $this->_password    = $pass;
-        $this->_resource   = 'moxl'.\generateKey(6);
+        $this->_resource    = 'moxl'.\generateKey(6);
         $this->_start       = date(DATE_ISO8601);
         
         $this->_rid = rand(1, 2048);
@@ -122,7 +124,8 @@ class Sessionx {
         if(isset($session)) {
             $this->_user        = $session->username;
             $this->_password    = $session->password;
-            $this->_resource   = $session->resource;
+            $this->_hash        = $session->hash;
+            $this->_resource    = $session->resource;
             $this->_rid         = $session->rid;
             $this->_sid         = $session->sid;
             $this->_id          = $session->id;
@@ -156,6 +159,7 @@ class Sessionx {
                         'domain',
                         'user',
                         'password',
+                        'hash',
                         'start')
                     )
             ) {
