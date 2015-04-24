@@ -98,7 +98,9 @@ class MessageDAO extends SQL {
         $this->_sql = '
             select * from message 
             where jidfrom = :jidfrom
-              and subject != \'\'';
+              and subject != \'\'
+              order by published desc
+              limit 1';
 
         $this->prepare(
             'Message',
