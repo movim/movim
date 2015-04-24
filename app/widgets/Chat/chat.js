@@ -54,12 +54,19 @@ var Chat = {
         if(message.type == 'groupchat') {
             bubble = Chat.room;
             id = message.jidfrom + '_conversation';
+
+            if(message.body.match(/^\/me/)) {
+                bubble.querySelector('div').className = 'quote';
+                message.body = message.body.substr(4);
+            }
+
             bubble.querySelector('div').innerHTML = message.body;
             bubble.querySelector('span.info').innerHTML = message.published;
             bubble.querySelector('span.user').className = 'user ' + message.color;
             bubble.querySelector('span.user').innerHTML = message.resource;
 
             movim_append(id, bubble.outerHTML);
+            bubble.querySelector('div').className = '';
         } else {
             if(message.session == message.jidfrom) {
                 bubble = Chat.right;

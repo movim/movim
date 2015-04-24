@@ -57,6 +57,9 @@
             <li onclick="Group_ajaxGetSubscriptions('{$item->server}', '{$item->node}')">
                 <span>{$c->__('group.subscriptions')}</span>
             </li>
+            <li onclick="Group_ajaxDelete('{$item->server}', '{$item->node}')">
+                <span>{$c->__('button.delete')}</span>
+            </li>
         </ul>
     {/if}
 </div>
