@@ -1,4 +1,4 @@
-<ul class="thin">
+<ul class="middle">
     <li>
         <span class="icon gray">
             <i class="md md-comment"></i>

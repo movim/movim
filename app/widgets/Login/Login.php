@@ -188,9 +188,12 @@ class Login extends WidgetBase
 
         // We check if we already have an open session
         $sd = new \Modl\SessionxDAO;
-        $here = $sd->checkConnected($username, $host);
+        //$here = $sd->checkConnected($username, $host);
+        $here = $sd->getHash(sha1($username.$password.$host));
 
         if($here) {
+            RPC::call('Login.setCookie', $here->session);
+            RPC::call('movim_redirect', Route::urlize('main'));
             $this->showErrorBlock('conflict');
             return;
         }

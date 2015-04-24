@@ -8,7 +8,8 @@ class SessionxDAO extends SQL {
             update sessionx
             set username    = :username,
                 password    = :password,
-                resource   = :resource,
+                hash        = :hash,
+                resource    = :resource,
                 rid         = :rid,
                 sid         = :sid,
                 id          = :id,
@@ -28,7 +29,8 @@ class SessionxDAO extends SQL {
                 'session'   => $s->session,
                 'username'  => $s->username,
                 'password'  => $s->password,
-                'resource' => $s->resource,
+                'hash'      => $s->hash,
+                'resource'  => $s->resource,
                 'rid'       => $s->rid,
                 'sid'       => $s->sid,
                 'id'        => $s->id,
@@ -51,6 +53,7 @@ class SessionxDAO extends SQL {
                 (session,
                  username,
                  password,
+                 hash,
                  resource,
                  rid,
                  sid,
@@ -67,6 +70,7 @@ class SessionxDAO extends SQL {
                 (:session,
                  :username,
                  :password,
+                 :hash,
                  :resource,
                  :rid,
                  :sid,
@@ -86,6 +90,7 @@ class SessionxDAO extends SQL {
                     'session'   => $s->session,
                     'username'  => $s->username,
                     'password'  => $s->password,
+                    'hash'      => $s->hash,
                     'resource'  => $s->resource,
                     'rid'       => $s->rid,
                     'sid'       => $s->sid,
@@ -136,6 +141,22 @@ class SessionxDAO extends SQL {
             'Sessionx', 
             array(
                 'session' => $session
+            )
+        );
+
+        return $this->run('Sessionx', 'item');
+    }
+
+    function getHash($hash) {
+        $this->_sql = '
+            select * from sessionx
+            where 
+                hash = :hash';
+        
+        $this->prepare(
+            'Sessionx', 
+            array(
+                'hash' => $hash
             )
         );
 
