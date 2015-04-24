@@ -37,11 +37,16 @@
         <li onclick="Rooms_ajaxList('{$room}')">
             <span>{$c->__('chatroom.members')}</span>
         </li>
-        <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
-            <span>{$c->__('button.delete')}</span>
-        </li>
-        <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
-            <span>{$c->__('chatroom.config')}</span>
-        </li>
+        {if="$presence->mucrole == 'moderator'"}
+            <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
+                <span>{$c->__('button.delete')}</span>
+            </li>
+            <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
+                <span>{$c->__('chatroom.config')}</span>
+            </li>
+            <li onclick="Chat_ajaxGetSubject('{$room}')">
+                <span>{$c->__('chatroom.subject')}</span>
+            </li>
+        {/if}
     </ul>
 </div>

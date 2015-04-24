@@ -37,3 +37,6 @@
         </li>
     {/loop}
 </ul>
+<a onclick="Groups_ajaxAdd('{$server}')" class="button action color">
+    <i class="md md-add"></i>
+</a>

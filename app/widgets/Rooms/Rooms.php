@@ -131,7 +131,7 @@ class Rooms extends WidgetCommon
     }
 
     /**
-     * @brief Display the add room form
+     * @brief Confirm the room add
      */
     function ajaxChatroomAdd($form) 
     {
