@@ -6,6 +6,6 @@ class BlogController extends BaseController {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.blog', APP_TITLE));
+        $this->page->setTitle(__('page.blog'));
     }
 }
