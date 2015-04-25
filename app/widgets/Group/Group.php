@@ -168,6 +168,7 @@ class Group extends WidgetCommon
         Header::fill($header);
 
         RPC::call('movim_fill', 'group_widget', $html);
+        RPC::call('Group.enableVideos');
     }
 
 
@@ -230,6 +231,13 @@ class Group extends WidgetCommon
         $r->request();
 
         RPC::call('Group.addLoad');
+    }
+
+    function ajaxGetHistory($server, $node, $page)
+    {
+        $html = $this->prepareGroup($server, $node, $page);
+        RPC::call('movim_append', 'group_widget', $html);
+        RPC::call('Group.enableVideos');
     }
 
     function ajaxGetAffiliations($server, $node){
@@ -352,12 +360,15 @@ class Group extends WidgetCommon
         return $view->draw('_group_header', true);
     }
 
-    private function prepareGroup($server, $node)
+    private function prepareGroup($server, $node, $page = 0)
     {
         $pd = new \Modl\PostnDAO();
-        $posts = $pd->getNodeUnfiltered($server, $node, 0, $this->_paging);
+        $posts = $pd->getNodeUnfiltered($server, $node, $page*$this->_paging, $this->_paging);
 
         $view = $this->tpl();
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+        $view->assign('page', $page);
         $view->assign('posts', $posts);
         $html = $view->draw('_group_posts', true);
 
