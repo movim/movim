@@ -76,3 +76,13 @@
         </footer>
     </article>
 {/loop}
+{if="$posts != null"}
+<ul class="active thick">
+    <li onclick="Group_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.removeChild(this);">
+        <span class="icon">
+            <i class="md md-history"></i>
+        </span>
+        {$c->__('post.older')}
+    </li>
+</ul>
+{/if}
