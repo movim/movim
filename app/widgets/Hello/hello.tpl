@@ -112,7 +112,7 @@
                 <br/>
             </a>
         </ul>
-        <ul class="thick flex">
+        <ul class="thick flex on_desktop">
             <li class="condensed block">
                 <span class="icon bubble color blue">
                     <i class="md md-share"></i>
