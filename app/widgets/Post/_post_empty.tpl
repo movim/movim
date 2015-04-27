@@ -3,7 +3,7 @@
     <h4>{$c->__('post.placeholder')}</h4>
 </div>-->
 <br/>
-<h2 class="padded">{$c->__('post.hot')}</h2>
+<h2 class="padded_top_bottom">{$c->__('post.hot')}</h2>
 
 <ul class="flex card thick active">
 {loop="$posts"}
