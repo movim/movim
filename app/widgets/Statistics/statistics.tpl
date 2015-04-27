@@ -1,4 +1,4 @@
-<div id="statistics" class="tabelem paddedtop" title="{$c->__("statistics.title")}">
+<div id="statistics" class="tabelem" title="{$c->__("statistics.title")}">
     <ul class="divided thick">
         <li class="subheader">
             {$c->__('statistics.sessions')} - {$sessions|count}
@@ -26,7 +26,7 @@
         {/loop}
     </ul>
 
-    <h3>{$c->__('statistics.subscriptions')}</h3>
+    <h3 class="padded_top_bottom">{$c->__('statistics.subscriptions')}</h3>
     <div class="card">
         <img src="{$cache_path}monthly.png">
     </div>
