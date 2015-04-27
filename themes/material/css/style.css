@@ -517,6 +517,7 @@ main ul li .control > i {
     background-color: white;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.12);
+    max-width: 100%;
 }
 
 @media screen and (max-width: 1024px) {
@@ -883,17 +884,17 @@ dl dd {
 /* Display/hide */
 
 .on_mobile {
-    display: none;
+    display: none !important;
 }
 
 @media screen and (max-width: 1024px) {
 
 .on_mobile {
-    display: inherit;
+    display: inherit !important;
 }
 
 .on_desktop {
-    display: none;
+    display: none !important;
 }
 
 }

@@ -25,7 +25,8 @@ article section {
     padding: 0 2rem;
 }
 
-article img {
+article img,
+article video {
     max-width: 100%;
     height: auto;
 }
