@@ -180,6 +180,7 @@ class Handler {
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
             
             '89d8bb4741fd3a62e8b20e0d52a85a36' => 'MucUser',
+            '3401c2971b034a441b358af74d777d9d' => 'Subject',
             
             '039538ac1c9488f4a612b89c48a35e32' => 'Post',
             
@@ -191,7 +192,7 @@ class Handler {
             '0981a46bbfa88b3500c4bccda18ccb89' => 'Location',
             '9c8ed44d4528a66484b0fbd44b0a9070' => 'Nickname',
             
-            'd8ea912a151202700bb399c9e04d205f' => 'Caps',
+            //'d8ea912a151202700bb399c9e04d205f' => 'Caps',
             
             '40ed26a65a25ab8bf809dd998d541d95' => 'PingPong',
             

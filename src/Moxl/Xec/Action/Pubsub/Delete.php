@@ -52,13 +52,17 @@ class Delete extends Errors
     }
     
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
         if($stanza["type"] == "result"){
-            $evt->runEvent('deletionsuccess', $this->_to); 
-            
             //delete from bookmark
-            $sd = new \modl\SubscriptionDAO();
+            $sd = new \Modl\SubscriptionDAO();
             $sd->deleteNode($this->_to, $this->_node);
+            
+            //delete from item
+            $id = new \Modl\ItemDAO();
+            $id->deleteItem($this->_to, $this->_node);
+
+            $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+            $this->deliver();
         }
     }
 }

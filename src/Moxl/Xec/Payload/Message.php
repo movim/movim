@@ -71,9 +71,10 @@ class Message extends Payload
                 $md->set($m);
             }
 
-            if($m->type == 'groupchat' && $m->subject != '') {
-                $evt->runEvent('conference_subject', $m);
-            }
+            // Can we remove this ?
+            /*if($m->type == 'groupchat' && $m->subject != '') {
+                $evt->runEvent('subject', $m);
+            }*/
 
             $this->pack($m);
             $this->deliver();

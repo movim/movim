@@ -13,6 +13,16 @@ class Muc {
         \Moxl\API::request($xml);
     }
 
+    static function setSubject($to, $subject)
+    {
+        $session = \Sessionx::start();
+        $xml = '
+            <message to="'.str_replace(' ', '\40', $to).'" type="groupchat" id="'.$session->id.'">
+                <subject>'.$subject.'</subject>
+            </message>';
+        \Moxl\API::request($xml);
+    }
+
     static function getConfig($to)
     {
         $xml = '

@@ -26,6 +26,7 @@ class PubsubAtom {
     public function __toString() {
         $xml = '
             <entry xmlns="http://www.w3.org/2005/Atom">
+                <id>'.$this->id.'</id>
             ';
 
         if($this->title)

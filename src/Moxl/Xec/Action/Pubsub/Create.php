@@ -60,15 +60,15 @@ class Create extends Errors
     
     public function handle($stanza, $parent = false) {
         if($stanza["type"] == "result"){
-            $evt = new \Event();
-            $evt->runEvent('creationsuccess', array($this->_to, $this->_node, $this->_data)); 
+            $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+            $this->deliver();
             
             //add to bookmark
-            $sub = new \modl\Subscription();
+            /*$sub = new \modl\Subscription();
             $sub->set(current(explode($stanza["to"], "/")), $this->_to, $this->_node, $stanza);
             
             $sd = new \modl\SubscriptionDAO();
-            $sd->set($sub);
+            $sd->set($sub);*/
         }
     }
     
