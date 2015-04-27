@@ -35,7 +35,7 @@
 
     <div class="clear spacetop"></div>
 
-    <h2 class="padded">{$c->__('help.faq')}</h2>
+    <h2 class="padded_top_bottom">{$c->__('help.faq')}</h2>
     
     <div class="card">
         <article>

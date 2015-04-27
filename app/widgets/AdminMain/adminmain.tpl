@@ -1,4 +1,4 @@
-<div id="admingen" class="tabelem paddedtop" title="{$c->__('admin.general')}">
+<div id="admingen" class="tabelem padded_top_bottom" title="{$c->__('admin.general')}">
 <form name="admin" id="adminform" action="#" method="post">
     <br />
     <h3>{$c->__('admin.general')}</h3>
