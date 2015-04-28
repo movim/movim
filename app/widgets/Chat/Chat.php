@@ -436,10 +436,12 @@ class Chat extends WidgetCommon
         $md = new \Modl\MessageDAO();
         $messages = $md->getContact(echapJid($jid), 0, 30);
 
-        $messages = array_reverse($messages);
+        if(is_array($messages)) {
+            $messages = array_reverse($messages);
 
-        foreach($messages as $message) {
-            $this->prepareMessage($message);
+            foreach($messages as $message) {
+                $this->prepareMessage($message);
+            }
         }
 
         $view = $this->tpl();
