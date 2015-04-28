@@ -17,10 +17,30 @@
             onPaste="var e=this; setTimeout(function(){Post_ajaxEmbedTest(e.value);}, 4);"
         >
         <label for="embed">{$c->__('post.link')}</label>
-        <ul class="simple">
-            <li>
-                <p><i class="md md-image"></i> {$c->__('post.embed_tip')}</p>
-            </li>
+        <ul class="middle flex active">
+            <li class="subheader">{$c->__('post.embed_tip')}</li>
+            <a class="block" target="_blank" href="http://imgur.com/">
+                <li class="block action">
+                    <div class="action">
+                        <i class="md md-chevron-right"></i>
+                    </div>
+                    <span class="bubble icon">
+                        <img src="https://userecho.com/s/logos/2015/2015.png">
+                    </span>
+                    Imgur
+                </li>
+            </a>
+            <a class="block" target="_blank" href="https://www.flickr.com/">
+                <li class="action">
+                    <div class="action">
+                        <i class="md md-chevron-right"></i>
+                    </div>
+                    <span class="bubble icon">
+                        <img src="https://www.flickr.com/apple-touch-icon.png">
+                    </span>
+                    Flickr
+                </li>
+            </a>
         </ul>
 
         <article>
