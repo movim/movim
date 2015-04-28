@@ -65,4 +65,17 @@ class Delete extends Errors
             $this->deliver();
         }
     }
+
+    public function error($stanza, $parent = false) {
+        //delete from bookmark
+        $sd = new \Modl\SubscriptionDAO();
+        $sd->deleteNode($this->_to, $this->_node);
+        
+        //delete from item
+        $id = new \Modl\ItemDAO();
+        $id->deleteItem($this->_to, $this->_node);
+
+        $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+        $this->deliver();
+    }
 }
