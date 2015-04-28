@@ -24,8 +24,9 @@ class Group extends WidgetCommon
         $this->registerEvent('pubsub_getitem_handle', 'onItems', 'groups');
         $this->registerEvent('pubsub_getitems_handle', 'onItems', 'groups');
         $this->registerEvent('pubsub_getitemsid_handle', 'onItems', 'groups');
-
         $this->registerEvent('pubsub_getitems_error', 'onItemsError', 'groups');
+        $this->registerEvent('pubsub_getitemsid_error', 'onItemsError', 'groups');
+
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
@@ -63,8 +64,10 @@ class Group extends WidgetCommon
 
     function onItemsError($packet)
     {
-        $arr = $packet->content;
+        list($server, $node) = array_values($packet->content);
         Notification::append(false, $this->__('group.empty'));
+
+        $this->ajaxDelete($server, $node, true);
         // Display an error message
         RPC::call('Group.clearLoad');
     }
@@ -172,13 +175,14 @@ class Group extends WidgetCommon
     }
 
 
-    function ajaxDelete($server, $node)
+    function ajaxDelete($server, $node, $clean = false)
     {
         if(!$this->validateServerNode($server, $node)) return;
 
         $view = $this->tpl();
         $view->assign('server', $server);
         $view->assign('node', $node);
+        $view->assign('clean', $clean);
 
         Dialog::fill($view->draw('_group_delete', true));
     }
