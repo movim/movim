@@ -15,6 +15,7 @@ class Groups extends WidgetCommon
         $this->registerEvent('pubsub_discoitems_error', 'onDiscoError');
         $this->registerEvent('pubsub_create_handle', 'onCreate');
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
+        $this->registerEvent('pubsub_delete_error', 'onDeleteError');
         $this->addjs('groups.js');
     }
 
@@ -38,6 +39,17 @@ class Groups extends WidgetCommon
 
         list($server, $node) = array_values($packet->content);
         $this->displayServer($server);
+    }
+
+    function onDeleteError($packet)
+    {
+        Notification::append(null, $this->__('groups.deleted'));
+
+        $m = new Rooms;
+        $m->setBookmark();
+
+        list($server, $node) = array_values($packet->content);
+        $this->ajaxSubscriptions();
     }
 
     function onDiscoError($packet)
