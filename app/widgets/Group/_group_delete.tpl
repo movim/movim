@@ -1,9 +1,13 @@
 <section>
     <h3>{$c->__('group.delete_title')}</h3>
     <br />
-    <h4 class="gray">{$c->__('group.delete_text')}</h4>
+    {if="$clean"}
+        <h4 class="gray">{$c->__('group.delete_clean_text')}</h4>
+    {else}
+        <h4 class="gray">{$c->__('group.delete_text')}</h4>
+    {/if}
     <br />
-    <h4 class="gray">{$node}</h4>
+    <h4 class="gray">{$server}/{$node}</h4>
 </section>
 <div class="no_bar">
     <a onclick="Dialog.clear()" class="button flat">
