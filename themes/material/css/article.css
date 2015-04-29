@@ -9,6 +9,11 @@ article header {
     position: relative;
 }
 
+/* We hide the main title because it's already here ? */
+article section h1 {
+    display: none;
+}
+
 article header h1 {
     font-size: 4rem;
     line-height: 12rem;
