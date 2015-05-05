@@ -5,31 +5,19 @@ define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 gc_enable();
+ini_set('xdebug.max_nesting_level', 300);
 
 $bootstrap = new Bootstrap();
 $booted = $bootstrap->boot();
 
-//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." booted : ".\sizeToCleanSize(memory_get_usage())."\n");
-
 $loop = React\EventLoop\Factory::create();
 
-//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." loop : ".\sizeToCleanSize(memory_get_usage())."\n");
-
 /*$dnsResolverFactory = new React\Dns\Resolver\Factory();
-$dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);*/
+$dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);
 
+$connector = new React\SocketClient\Connector($loop, $dns);*/
 $connector = new Ratchet\Client\Factory($loop);
-
-//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." connector : ".\sizeToCleanSize(memory_get_usage())."\n");
-
 $stdin = new React\Stream\Stream(STDIN, $loop);
-
-//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." stdin : ".\sizeToCleanSize(memory_get_usage())."\n");
-
-$cd = new \Modl\ConfigDAO();
-$config = $cd->get();
-
-//fwrite(STDERR, colorize(getenv('sid'), 'yellow')." config : ".\sizeToCleanSize(memory_get_usage())."\n");
 
 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets before : ".\sizeToCleanSize(memory_get_usage())."\n");
 
@@ -39,116 +27,19 @@ $wrapper->registerAll(true);
 
 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
 
-$connector($config->websocketurl, array('xmpp'))->then(function($conn) use (&$stdin, $loop) {
-    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
-    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
-    
-    $conn->on('message', function($message) use ($conn, $loop) {
-        if($message != '') {
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+$conn = null;
 
-            if($message == '</stream:stream>') {
-                $conn->close();
-                $loop->stop();
-            }
+//$parser = new \Moxl\Parser;
 
-            \Moxl\API::clear();
-            \RPC::clear();
+$buffer = '';
 
-            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." before handle : ".\sizeToCleanSize(memory_get_usage())."\n");
-
-            \Moxl\Xec\Handler::handleStanza($message);
-
-            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." after handle : ".\sizeToCleanSize(memory_get_usage())."\n");
-
-            $xml = \Moxl\API::commit();
-            \Moxl\API::clear();
-
-            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." after commit : ".\sizeToCleanSize(memory_get_usage())."\n");
-
-            $msg = \RPC::commit();
-            \RPC::clear();
-
-            if(!empty($msg)) {
-                $msg = json_encode($msg);
-                #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to browser', 'green')."\n");
-                echo base64_encode(gzcompress($msg, 9))."";
-            }
-
-            if(!empty($xml)) {
-                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-                $conn->send(trim($xml));
-            }
-        }
-    });
-
-    $conn->on('error', function($msg) use ($conn, $loop) {
-        $loop->stop();
-    });
-
-    $conn->on('close', function($msg) use ($conn, $loop) {
-        $loop->stop();
-    });
-
-    $stdin->removeAllListeners('data');
-    $stdin->on('data', function ($data) use ($conn, $loop, &$buffer) {
-        // A little bit of signalisation to use properly the buffer
-        if(substr($data, -1) == "") {
-            $messages = explode("", $buffer . substr($data, 0, -1));
-            $buffer = '';
-
-            foreach ($messages as $message) {
-                #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
-                
-                $msg = json_decode($message);
-
-                if($msg->func == 'message' && $msg->body != '') {
-                    $msg = $msg->body;
-                } elseif($msg->func == 'unregister') {
-                    $conn->close();
-                    $loop->stop();
-                } else {
-                    return;
-                }
-                
-                $rpc = new \RPC();
-                $rpc->handle_json($msg);
-
-                $xml = \Moxl\API::commit();
-                \Moxl\API::clear();
-                
-                if(!empty($xml)) {
-                    #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-                    $conn->send(trim($xml));
-                }
-
-                $msg = json_encode(\RPC::commit());
-                \RPC::clear();
-
-                if(!empty($msg)) {
-                    #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
-                    echo base64_encode(gzcompress($msg, 9))."";
-                }
-            }
-        } else {
-            $buffer .= $data;
-        }
-    });
-
-    // And we say that we are ready !
-    $obj = new \StdClass;
-    $obj->func = 'registered';
-
-    echo base64_encode(gzcompress(json_encode($obj), 9))."";
-});
-
-// Fallback event, when the WebSocket is not enabled,
-// we still handle browser to Movim requests
-$stdin->on('data', function ($data) use ($loop) {
-    if(!isset($buffer)) $buffer = '';
+$stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour/*, &$parser*/) {
+    //if(!isset($buffer)) $buffer = '';    
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
         $buffer = '';
+
+        //if(isset($conn)) $conn->pause();
     
         foreach ($messages as $message) {
             #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
@@ -159,7 +50,15 @@ $stdin->on('data', function ($data) use ($loop) {
                 if($msg->func == 'message' && $msg->body != '') {
                     $msg = $msg->body;
                 } elseif($msg->func == 'unregister') {
-                    $loop->stop();
+                    $conn->close();
+                } elseif($msg->func == 'register') {
+                    $cd = new \Modl\ConfigDAO();
+                    $config = $cd->get();
+
+                    /*$domain = \Moxl\Utils::getDomain($msg->host);
+                    fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                    $connector->create($domain, 5222)->then($xmpp_behaviour);*/
+                    $connector($config->websocketurl, array('xmpp'))->then($xmpp_behaviour);
                 }
             } else {
                 return;
@@ -171,14 +70,110 @@ $stdin->on('data', function ($data) use ($loop) {
             $msg = json_encode(\RPC::commit());
             \RPC::clear();
 
+            $xml = \Moxl\API::commit();
+            \Moxl\API::clear();
+                
+            if(!empty($xml)) {
+                //$conn->write(trim($xml));
+                $conn->send(trim($xml));
+                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+            }
+            
             if(!empty($msg)) {
-                #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
                 echo base64_encode(gzcompress($msg, 9))."";
+                #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
             }
         }
+
+        //if(isset($conn)) $conn->resume();
     } else {
         $buffer .= $data;
     }
-});
+};
+
+//$xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser) {
+$xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour/*, $parser*/) {
+    $conn = $stream;
+    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
+    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
+
+    $stdin->removeAllListeners('data');
+    $stdin->on('data', $stdin_behaviour);
+
+    $conn->bufferSize = 4096*256;
+    $conn->on('message', function($message) use (&$conn, $loop, $parser/*, $stream*/) {
+
+        //$conn->pause();
+
+        if(!empty($message)) {
+            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+
+            $restart = false;
+       
+            if($message == '</stream:stream>') {
+                $conn->close();
+                $loop->stop();
+            } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>") {
+                stream_set_blocking($conn->stream, 1);
+                $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+                stream_set_blocking($conn->stream, 0);
+                $restart = true;
+            }
+
+            \Moxl\API::clear();
+            \RPC::clear();
+
+            /*if(!$parser->parse($message)) {
+                fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError());
+            }*/
+            \Moxl\Xec\Handler::handleStanza($message);
+
+            if($restart) {
+                $session = \Sessionx::start();
+                \Moxl\Stanza\Stream::init($session->domain);
+                $restart = false;
+            }
+
+            $msg = \RPC::commit();
+            \RPC::clear();
+
+            if(!empty($msg)) {
+                echo base64_encode(gzcompress(json_encode($msg), 9))."";
+                #fwrite(STDERR, colorize($msg.' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
+            }
+
+            $xml = \Moxl\API::commit();
+            \Moxl\API::clear();
+
+            if(!empty($xml)) {
+                //$conn->write(trim($xml));
+                $conn->send(trim($xml));
+                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+            }
+
+            $loop->tick();
+        }
+
+        //$conn->resume();
+    });
+
+    $conn->on('error', function($msg) use ($conn, $loop) {
+        $loop->stop();
+    });
+
+    $conn->on('close', function($msg) use ($conn, $loop) {
+        $loop->stop();
+    });
+
+    // And we say that we are ready !
+    $obj = new \StdClass;
+    $obj->func = 'registered';
+
+    echo base64_encode(gzcompress(json_encode($obj), 9))."";
+};
+
+$stdin->on('data', $stdin_behaviour);
+$stdin->on('error', function() use($loop) { $loop->stop(); } );
+$stdin->on('close', function() use($loop) { $loop->stop(); } );
 
 $loop->run();
