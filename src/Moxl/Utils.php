@@ -65,6 +65,16 @@ class Utils {
         return $pairs;
     }
 
+    public static function getDomain($host) {
+        $dns = dns_get_record('_xmpp-client._tcp.'.$host);
+
+        if(isset($dns[0]['target']) && $dns[0]['target'] != null)
+            return $dns[0]['target'];
+        else {
+            return $host;
+        }
+    }
+
     public static function implodeData($data) {
         $return = array();
         foreach($data as $key => $value)

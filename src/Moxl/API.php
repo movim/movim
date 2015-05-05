@@ -51,7 +51,7 @@ class API {
      */
     static function commit()
     {
-        return preg_replace("/[\t\r\n]/", '', trim(self::$xml));
+        return preg_replace(array("/[\t\r\n]/", '/>\s+</'), array('', "><"), trim(self::$xml));
     }
     
     /*

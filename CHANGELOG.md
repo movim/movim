@@ -1,6 +1,10 @@
 Moxl Changelog
 ================
 
+v1.4
+---------------------------
+ * Add a XML Stream parser
+
 v1.3
 ---------------------------
  * Clean the XEP-0060: Pubsub actions and use the Package system

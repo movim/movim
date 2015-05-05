@@ -5,13 +5,19 @@ namespace Moxl\Stanza;
 class Stream {
     static function init($to)
     {
-        $xml = '<stream:stream xmlns:stream="http://etherx.jabber.org/streams" version="1.0" xmlns="jabber:client" to="'.$to.'" >';
+        $xml = '<stream:stream xmlns:stream="http://etherx.jabber.org/streams" version="1.0" xmlns="jabber:client" to="'.$to.'">';
         \Moxl\API::request($xml);
     }
 
     static function end()
     {
         $xml = '</stream:stream>';
+        \Moxl\API::request($xml);
+    }
+
+    static function startTLS()
+    {
+        $xml = '<starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>';
         \Moxl\API::request($xml);
     }
 

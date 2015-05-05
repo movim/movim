@@ -30,17 +30,16 @@ namespace Moxl\Xec;
 use Moxl\Utils;
 
 class Handler {
-
     static public function handleStanza($xml)
     {
         libxml_use_internal_errors(true);
+        $xml = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $xml);
 
-        $xml_string = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $xml);
-        $xml = simplexml_load_string($xml_string);
+        $xml = simplexml_load_string($xml);
 
         if($xml !== false) {
             self::handle($xml);
-        }
+        } 
     }
 
     /**
@@ -166,27 +165,30 @@ class Handler {
         } else {      
             $hash = md5($name.$ns);
             Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . ' ", "'.$hash.'"'); 
-            $more = Handler::searchPayload($hash, $s, $sparent);
+            Handler::searchPayload($hash, $s, $sparent);
         }
-
     }
 
     static function getHashToClass() {
         return array(
             '9b98cd868d07fb7f6d6cb39dad31f10e' => 'Message',
+            //'78e731027d8fd50ed642340b7c9a63b3' => 'Message',
             '004a75eb0a92fca2b868732b56863e66' => 'Receipt',
             
             'e83b2aea042b74b1bec00b7d1bba2405' => 'Presence',
+            //'362b908ec9432a506f86bed0bae7bbb6' => 'Presence',
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
             
             '89d8bb4741fd3a62e8b20e0d52a85a36' => 'MucUser',
-            '3401c2971b034a441b358af74d777d9d' => 'Subject',
+            //'3401c2971b034a441b358af74d777d9d' => 'Subject',
+            'b5e3374e43f6544852f7751dfc529100' => 'Subject',
             
             '039538ac1c9488f4a612b89c48a35e32' => 'Post',
             
             '4c9681f0e9aca8a5b65f86b8b80d490f' => 'DiscoInfo',
             '482069658b024085fbc4e311fb771fa6' => 'DiscoInfo',
             
+            //'37ff18f136d5826c4426af5a23729e48' => 'Mood',
             '37ff18f136d5826c4426af5a23729e48' => 'Mood',
             '6b38ed328fb77617c6e4a5ac9dda0ad2' => 'Tune',
             '0981a46bbfa88b3500c4bccda18ccb89' => 'Location',
@@ -210,12 +212,20 @@ class Handler {
             '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',
 
             //'1ad670e043c710f0ce8e6472114fb4be' => 'Register',
+
+            'b95746de5ddc3fa5fbf28906c017d9d8' => 'STARTTLS',
+            //'637dd61b00a5ae25ea8d50639f100e7a' => 'STARTTLS',
+            '2d6b4b9deec3c87c88839d3e76491a38' => 'STARTTLSProceed',
             
             'f728271d924a04b0355379b28c3183a1' => 'SASL',
+            //'d0db71d70348ef1c49f05f59097917b8' => 'SASL',
             'abae1d63bb4295636badcce1bee02290' => 'SASLChallenge',
+            //'b04ec0ade3d49b4a079f0e207d5e2821' => 'SASLChallenge',
             '53936dd4e1d64e1eeec6dfc95c431964' => 'SASLSuccess',
+            //'260ca9dd8a4577fc00b7bd5810298076' => 'SASLSuccess',
             'de175adc9063997df5b79817576ff659' => 'SASLFailure',
             '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',
+            //'128477f50347d98ee1213d71f27e8886' => 'SessionBind',
         );
 
     }
