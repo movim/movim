@@ -13,10 +13,11 @@ var Login = {
         form.onsubmit = function(e) {
             e.preventDefault();
 
+            // We register the socket
+            MovimWebsocket.connection.register(this.querySelector('input#login').value.replace(/.*@/, ""));
+
             var button = this.querySelector('input[type=submit]');
             button.value = button.dataset.loading;
-            
-            eval(this.dataset.action);
 
             localStorage.username = document.querySelector('#login').value;
             Login.rememberSession(localStorage.username);
@@ -155,6 +156,12 @@ MovimWebsocket.attach(function()
     if(localStorage.getItem('previousSessions') != null) {
         Login.toChoose();
     }
+});
+
+MovimWebsocket.register(function()
+{
+    form = document.querySelector('form[name="login"]');
+    eval(form.dataset.action);
 });
 
 movim_add_onload(function() {
