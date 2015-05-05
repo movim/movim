@@ -8,6 +8,10 @@ WebSocket.prototype.unregister = function() {
     this.send(JSON.stringify({'func' : 'unregister'}));
 };
 
+WebSocket.prototype.register = function(host) {
+    this.send(JSON.stringify({'func' : 'register', 'host' : host}));
+};
+
 WebSocket.prototype.admin = function(key) {
     this.send(JSON.stringify({'func' : 'admin', 'key' : key}));
 };
@@ -20,11 +24,18 @@ WebSocket.prototype.admin = function(key) {
 var MovimWebsocket = {
     connection: null,
     attached: new Array(),
+    registered: new Array(),
     unregistered: false,
     
     launchAttached : function() {
         for(var i = 0; i < MovimWebsocket.attached.length; i++) {
             MovimWebsocket.attached[i]();
+        }
+    },
+
+    launchRegistered : function() {
+        for(var i = 0; i < MovimWebsocket.registered.length; i++) {
+            MovimWebsocket.registered[i]();
         }
     },
 
@@ -49,7 +60,7 @@ var MovimWebsocket = {
 
             if(obj != null) {
                 if(obj.func == 'registered') {
-                    MovimWebsocket.launchAttached();
+                    MovimWebsocket.launchRegistered();
                 }
 
                 if(obj.func == 'disconnected') {
@@ -98,6 +109,12 @@ var MovimWebsocket = {
     attach : function(func) {
         if(typeof(func) === "function") {
             this.attached.push(func);
+        }
+    },
+
+    register : function(func) {
+        if(typeof(func) === "function") {
+            this.registered.push(func);
         }
     },
 
