@@ -199,13 +199,10 @@ class Login extends WidgetBase
         }
 
         // We try to get the domain
-        $dns = dns_get_record('_xmpp-client._tcp.'.$host);
+        $domain = \Moxl\Utils::getDomain($host);
 
-        if(isset($dns[0]['target']) && $dns[0]['target'] != null)
-            $domain = $dns[0]['target'];
-        else {
-            $domain = $host;
-        }
+        // We launch the XMPP socket
+        RPC::call('register', $host);
 
         // We create a new session or clear the old one
         $s = Sessionx::start();
