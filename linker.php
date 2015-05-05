@@ -76,7 +76,7 @@ $stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connect
             if(!empty($xml)) {
                 //$conn->write(trim($xml));
                 $conn->send(trim($xml));
-                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
             
             if(!empty($msg)) {
@@ -106,7 +106,7 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
         //$conn->pause();
 
         if(!empty($message)) {
-            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             $restart = false;
        
@@ -148,7 +148,7 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
             if(!empty($xml)) {
                 //$conn->write(trim($xml));
                 $conn->send(trim($xml));
-                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
 
             $loop->tick();
