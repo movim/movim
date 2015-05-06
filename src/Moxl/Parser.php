@@ -26,7 +26,7 @@ class Parser {
         xml_parser_set_option($this->parser, XML_OPTION_SKIP_WHITE, 1);
         xml_parser_set_option($this->parser, XML_OPTION_TARGET_ENCODING, "UTF-8");
 
-        libxml_use_internal_errors(false);
+        libxml_use_internal_errors(true);
 
         $this->depth = 0;
         $this->node = $this->handler = null;
@@ -34,7 +34,8 @@ class Parser {
 
     public function parse($data, $end = false)
     {
-        if ('<?xml' === substr($data, 0, 5)) {
+        if('<?xml' === substr($data, 0, 5)
+        || '<stream:stream' === substr($data, 0, 14)) {
             $this->reset();
         }
 
@@ -45,6 +46,7 @@ class Parser {
     private function start($parser, $name, $attrs)
     {
         $name = str_replace(':', '', $name);
+
         if($this->depth == 1) {
             $this->node = $this->handler = simplexml_load_string("<$name></$name>", 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE);
         } elseif($this->depth > 1) {
@@ -62,10 +64,12 @@ class Parser {
 
     private function end($parser, $name)
     {
+        $name = str_replace(':', '', $name);
+
         $this->depth--;
 
         if($this->depth == 1) {
-            fwrite(STDERR, colorize($this->node->asXML(), 'blue')." : ".colorize('received', 'green')."\n");
+            #fwrite(STDERR, colorize($this->node->asXML(), 'blue')." : ".colorize('received', 'green')."\n");
             \Moxl\Xec\Handler::handle($this->node);
         } elseif($this->depth > 1) {
             $this->handler = current($this->handler->xpath("parent::*"));
@@ -88,6 +92,6 @@ class Parser {
 
     public function __destruct()
     {
-        //xml_parser_free($this->parser);
+        xml_parser_free($this->parser);
     }
 }

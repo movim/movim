@@ -171,12 +171,12 @@ class Handler {
 
     static function getHashToClass() {
         return array(
-            '9b98cd868d07fb7f6d6cb39dad31f10e' => 'Message',
-            //'78e731027d8fd50ed642340b7c9a63b3' => 'Message',
+            //'9b98cd868d07fb7f6d6cb39dad31f10e' => 'Message',
+            '78e731027d8fd50ed642340b7c9a63b3' => 'Message',
             '004a75eb0a92fca2b868732b56863e66' => 'Receipt',
             
-            'e83b2aea042b74b1bec00b7d1bba2405' => 'Presence',
-            //'362b908ec9432a506f86bed0bae7bbb6' => 'Presence',
+            //'e83b2aea042b74b1bec00b7d1bba2405' => 'Presence',
+            '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
             
             '89d8bb4741fd3a62e8b20e0d52a85a36' => 'MucUser',
@@ -217,15 +217,15 @@ class Handler {
             //'637dd61b00a5ae25ea8d50639f100e7a' => 'STARTTLS',
             '2d6b4b9deec3c87c88839d3e76491a38' => 'STARTTLSProceed',
             
-            'f728271d924a04b0355379b28c3183a1' => 'SASL',
-            //'d0db71d70348ef1c49f05f59097917b8' => 'SASL',
-            'abae1d63bb4295636badcce1bee02290' => 'SASLChallenge',
-            //'b04ec0ade3d49b4a079f0e207d5e2821' => 'SASLChallenge',
-            '53936dd4e1d64e1eeec6dfc95c431964' => 'SASLSuccess',
-            //'260ca9dd8a4577fc00b7bd5810298076' => 'SASLSuccess',
+            //'f728271d924a04b0355379b28c3183a1' => 'SASL',
+            'd0db71d70348ef1c49f05f59097917b8' => 'SASL',
+            //'abae1d63bb4295636badcce1bee02290' => 'SASLChallenge',
+            'b04ec0ade3d49b4a079f0e207d5e2821' => 'SASLChallenge',
+            //'53936dd4e1d64e1eeec6dfc95c431964' => 'SASLSuccess',
+            '260ca9dd8a4577fc00b7bd5810298076' => 'SASLSuccess',
             'de175adc9063997df5b79817576ff659' => 'SASLFailure',
-            '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',
-            //'128477f50347d98ee1213d71f27e8886' => 'SessionBind',
+            //'0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',
+            '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
         );
 
     }
