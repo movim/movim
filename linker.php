@@ -5,7 +5,6 @@ define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 gc_enable();
-ini_set('xdebug.max_nesting_level', 300);
 
 $bootstrap = new Bootstrap();
 $booted = $bootstrap->boot();
@@ -100,7 +99,7 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
     $stdin->removeAllListeners('data');
     $stdin->on('data', $stdin_behaviour);
 
-    #$conn->bufferSize = 4096;
+    //$conn->bufferSize = 4096*4;
     $conn->on('message', function($message) use (&$conn, $loop, $parser/*, $stream*/) {
 
         //$conn->pause();
@@ -126,7 +125,7 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
             if(!$parser->parse($message)) {
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
-            #\Moxl\Xec\Handler::handleStanza($message);
+            //\Moxl\Xec\Handler::handleStanza($message);
 
             if($restart) {
                 $session = \Sessionx::start();
@@ -158,10 +157,12 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
     });
 
     $conn->on('error', function($msg) use ($conn, $loop) {
+        fwrite(STDERR, colorize($msg, 'red')." : ".colorize('error', 'green')."\n");
         $loop->stop();
     });
 
     $conn->on('close', function($msg) use ($conn, $loop) {
+        fwrite(STDERR, colorize($msg, 'red')." : ".colorize('closed', 'green')."\n");
         $loop->stop();
     });
 
