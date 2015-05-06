@@ -29,11 +29,11 @@ fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(
 
 $conn = null;
 
-//$parser = new \Moxl\Parser;
+$parser = new \Moxl\Parser;
 
 $buffer = '';
 
-$stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour/*, &$parser*/) {
+$stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser) {
     //if(!isset($buffer)) $buffer = '';    
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
@@ -92,7 +92,7 @@ $stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connect
 };
 
 //$xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser) {
-$xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour/*, $parser*/) {
+$xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser) {
     $conn = $stream;
     fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
     fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
@@ -100,14 +100,12 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
     $stdin->removeAllListeners('data');
     $stdin->on('data', $stdin_behaviour);
 
-    $conn->bufferSize = 4096*256;
+    #$conn->bufferSize = 4096;
     $conn->on('message', function($message) use (&$conn, $loop, $parser/*, $stream*/) {
 
         //$conn->pause();
 
         if(!empty($message)) {
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
-
             $restart = false;
        
             if($message == '</stream:stream>') {
@@ -120,13 +118,15 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
                 $restart = true;
             }
 
+            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+
             \Moxl\API::clear();
             \RPC::clear();
 
-            /*if(!$parser->parse($message)) {
-                fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError());
-            }*/
-            \Moxl\Xec\Handler::handleStanza($message);
+            if(!$parser->parse($message)) {
+                fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
+            }
+            #\Moxl\Xec\Handler::handleStanza($message);
 
             if($restart) {
                 $session = \Sessionx::start();
