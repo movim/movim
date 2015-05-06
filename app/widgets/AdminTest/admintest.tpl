@@ -13,22 +13,22 @@
             </div>
             <div id="movim-api" class="link horizontal disabled"><i class="md md-cloud"></i></div>
             <div id="browser_block">
-                Browser
+                {$c->__('schema.browser')}
             </div>
             <div id="movim_block">
-                Movim Core
+                {$c->__('schema.movim')}
             </div>
             <div id="daemon_block">
-                Movim Daemon
+                {$c->__('schema.daemon')}
             </div>
             <div id="database_block" class="{if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
-                Database
+                {$c->__('schema.database')}
             </div>
             <div id="api_block">
-                API
+                {$c->__('schema.api')}
             </div>
             <div id="xmpp_block">
-                XMPP
+                {$c->__('schema.xmpp')}
             </div>
         </figure>
     </div>
@@ -42,7 +42,7 @@
             {if="$dbinfos > 0"}
                 <li>
                     <span class="icon bubble color orange"><i class="md md-refresh"></i></span>
-                    <span>The database need to be updated, go to the database panel to fix this</span>
+                    <span>{$c->__('compatibility.db')}</span>
                 </li>
             {else}
                 <script type="text/javascript">AdminTest.databaseOK = true</script>
@@ -60,7 +60,7 @@
                 <i class="md md-settings-ethernet"></i> 
             </span>
             <span>
-                WebSocket connection error, check if the Movim Daemon is running and is reacheable
+                {$c->__('compatibility.websocket')}
             </span> 
         </li>
         
@@ -69,7 +69,7 @@
                 <i class="md md-settings-ethernet"></i>
             </span>
             <span>
-                XMPP Websocket connection error, please check the validity of the URL given in the General Configuration. <code>{$websocketurl}</code>
+                {$c->__('compatibility.xmpp_websocket')} <code>{$websocketurl}</code>
             </span>
         </li>
 
