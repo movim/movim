@@ -15,6 +15,12 @@
 
 class About extends WidgetBase
 {
-    function load() {
+    function load()
+    {
+    }
+
+    function display()
+    {
+        $this->view->assign('version', APP_VERSION);
     }
 }

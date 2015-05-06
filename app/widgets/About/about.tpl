@@ -1,5 +1,5 @@
 <div class="tabelem" title="{$c->__('page.about')}" id="about">
-    <h2 class="padded_top_bottom">{$c->__('page.about')} </h2>
+    <h2 class="padded_top_bottom">Movim {$version} - {$c->__('page.about')} </h2>
 
     <ul class="thick divided">
         <li class="condensed">
