@@ -9,7 +9,7 @@ class Route extends \BaseController {
                 'account'       => false,
                 'accountnext'   => array('s', 'err'),
                 'admin'         => false,
-                'blog'          => array('f'),
+                'blog'          => array('f', 'i'),
                 'chat'          => array('f'),
                 'conf'          => false,
                 'contact'       => array('f'),
@@ -74,9 +74,9 @@ class Route extends \BaseController {
             return BASE_URI;
         
         if(isset($routes[$page])) {        
-            if($params != false && count($routes[$page]) != count($params)) {
-                throw new Exception(__('error.route', $page));
-            } else {
+            //if($params != false && count($routes[$page]) != count($params)) {
+                //throw new Exception(__('error.route', $page));
+            //} else {
                 if($tab != false)
                     $tab = '#'.$tab;
                 //We construct a classic URL if the rewriting is disabled
@@ -103,7 +103,7 @@ class Route extends \BaseController {
                         $uri .= '/'.$params;
                 }
                 return $uri.$tab;
-            }
+            //}
         } else {
             throw new Exception(__('Route not set for the page %s', $page));
         }

@@ -15,9 +15,17 @@
             </span>
             <span>
                 {if="$contact"}
-                <h2>{$c->__('blog.title', $contact->getTrueName())}</h2>
+                <h2>
+                    <a href="{$c->route('blog', array($contact->jid))}">
+                        {$c->__('blog.title', $contact->getTrueName())}
+                    </a>
+                </h2>
                 {else}
-                <h2>{$c->__('page.blog')}</h2>
+                <h2>
+                    <a href="{$c->route('blog', array($contact->jid))}">
+                        {$c->__('page.blog')}
+                    </a>
+                </h2>
                 {/if}
             </span>
         </li>
@@ -39,11 +47,13 @@
                             </span>
                         {/if}
                         <h2>
-                            {if="$value->title != null"}
-                                {$value->title}
-                            {else}
-                                {$c->__('post.default_title')}
-                            {/if}
+                            <a href="{$c->route('blog', array($value->origin, $value->nodeid))}">
+                                {if="$value->title != null"}
+                                    {$value->title}
+                                {else}
+                                    {$c->__('post.default_title')}
+                                {/if}
+                            </a>
                         </h2>
                         <p>
                             {if="$value->node == 'urn:xmpp:microblog:0' && $value->getContact()->getTrueName() != ''"}

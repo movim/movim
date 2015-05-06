@@ -24,8 +24,12 @@ class Blog extends WidgetCommon {
         $this->view->assign('contact', $c);
         
         $pd = new \modl\PostnDAO();
-        $messages = $pd->getPublic($from, $node, 10, 0);
-        
+        if($id = $this->get('i')) {
+            $messages = $pd->getPublicItem($from, $node, $id, 10, 0);
+        } else {
+            $messages = $pd->getPublic($from, $node, 10, 0);
+        }
+
         $this->view->assign('posts', $messages);
     }
 }
