@@ -85,9 +85,10 @@ class Parser {
 
     public function getError()
     {
-        fwrite(STDERR, sprintf("XML error: %s at line %d",
+        return sprintf("XML error: %s at line %d, column %d\n",
                     xml_error_string(xml_get_error_code($this->parser)),
-                    xml_get_current_line_number($this->parser)));
+                    xml_get_current_line_number($this->parser),
+                    xml_get_current_column_number($this->parser));
     }
 
     public function __destruct()
