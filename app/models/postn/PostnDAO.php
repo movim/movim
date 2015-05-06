@@ -383,6 +383,32 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
+    function getPublicItem($origin, $node, $nodeid, $limitf = false, $limitr = false) {
+        $this->_sql = '
+            select *, postn.aid, privacy.value as privacy from postn
+            left outer join contact on postn.aid = contact.jid
+            left outer join privacy on postn.nodeid = privacy.pkey
+            where postn.origin = :origin
+                and postn.node = :node
+                and privacy.value = 1
+                and postn.nodeid = :nodeid
+            order by postn.published desc';
+
+        if($limitr) 
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+        
+        $this->prepare(
+            'Postn', 
+            array(
+                'origin' => $origin,
+                'node' => $node,
+                'nodeid' => $nodeid,
+            )
+        );
+        
+        return $this->run('ContactPostn');
+    }
+
     // TODO: fixme
     function getComments($posts) {
         $commentsid = '';
