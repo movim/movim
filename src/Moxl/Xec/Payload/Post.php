@@ -32,15 +32,15 @@ class Post extends Payload
 {
     public function handle($stanza, $parent = false) {  
         $from   = (string)$parent->attributes()->from;
-        
-        if($stanza->item && isset($stanza->item->entry)) {
+
+        if($stanza->items->item && isset($stanza->items->item->entry)) {
             if($parent->delay)
                 $delay = gmdate('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp));
             else
                 $delay = false;
             
             $p = new \modl\Postn();
-            $p->set($stanza, $from, $delay);
+            $p->set($stanza->items, $from, $delay);
             
             // We limit the very old posts (2 months old)
             if(strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))) {
@@ -49,10 +49,8 @@ class Post extends Payload
 
                 $this->pack($p);
                 $this->deliver();
-                
-                //$evt->runEvent('post', array('from' => $from, 'node' => $p->node));
             }
-        } elseif($stanza->retract) {
+        } elseif($stanza->items->retract) {
             $pd = new \modl\PostnDAO();
             $pd->delete($stanza->retract->attributes()->id);
                 
@@ -64,19 +62,19 @@ class Post extends Payload
                     'node' => $stanza->attributes()->node
                 )
             );
-        } elseif($stanza->item && isset($stanza->item->attributes()->id)
+        } elseif($stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)) {
             // In this case we only get the header, so we request the full content
                 
             $p = new \modl\PostnDAO();
 
-            $id = (string)$stanza->item->attributes()->id;
+            $id = (string)$stanza->items->item->attributes()->id;
             $here = $p->exist($id);
 
             if(!$here) {
                 $d = new GetItem;
                 $d->setTo($from)
-                  ->setNode((string)$stanza->attributes()->node)
+                  ->setNode((string)$stanza->items->attributes()->node)
                   ->setId($id)
                   ->request();
             }

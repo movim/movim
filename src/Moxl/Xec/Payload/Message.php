@@ -64,7 +64,7 @@ class Message extends Payload
                 $m->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
             else
                 $m->published = gmdate('Y-m-d H:i:s');
-            $m->delivered = date('Y-m-d H:i:s');
+            $m->delivered = gmdate('Y-m-d H:i:s');
 
             if(!preg_match('#^\?OTR#', $m->body)) {
                 $md = new \modl\MessageDAO();

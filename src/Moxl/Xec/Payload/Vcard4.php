@@ -53,4 +53,3 @@ class Vcard4 extends Payload
         $evt->runEvent('vcard', $c);
     }
 }
-

@@ -55,6 +55,9 @@ class Parser {
 
         if(isset($this->handler)) {
             foreach($attrs as $name => $value) {
+                if ('xmlns:' === substr($name, 0, 6)) {
+                    $name = 'xmlns:'.$name;
+                }
                 $this->handler->addAttribute($name, $value);
             }
         }
