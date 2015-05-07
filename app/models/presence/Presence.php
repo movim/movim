@@ -113,8 +113,7 @@ class Presence extends Model {
         // Specific XEP
         if($stanza->x) {
             foreach($stanza->children() as $name => $c) {
-                $ns = $c->getNamespaces(true);
-                switch($ns['']) {
+                switch($c->attributes()->xmlns) {
                     case 'jabber:x:signed' :
                         $this->publickey = (string)$c;
                         break;
