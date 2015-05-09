@@ -4,8 +4,16 @@
     class="
         {if="isset($message)"}condensed{/if}
         {if="$contact->last > 60"} inactive{/if}
+        {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
+            action
+        {/if}
         "
     title="{$contact->jid}">
+    {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
+        <div class="action">
+            <i class="md md-smartphone"></i>
+        </div>
+    {/if}
     <span data-key="chat|{$contact->jid}" class="counter bottom"></span>
     {$url = $contact->getPhoto('s')}
     {if="$url"}

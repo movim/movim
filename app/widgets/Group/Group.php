@@ -42,8 +42,11 @@ class Group extends WidgetCommon
 
     function onItems($packet)
     {
-        $arr = $packet->content;
-        $this->displayItems($arr['server'], $arr['node']);
+        list($server, $node) = array_values($packet->content);
+
+        $this->displayItems($server, $node);
+        $this->ajaxGetAffiliations($server, $node);
+
         RPC::call('Group.clearLoad');
         RPC::call('MovimTpl.showPanel');
     }
@@ -68,6 +71,7 @@ class Group extends WidgetCommon
         Notification::append(false, $this->__('group.empty'));
 
         $this->ajaxDelete($server, $node, true);
+        $this->ajaxGetAffiliations($server, $node);
         // Display an error message
         RPC::call('Group.clearLoad');
     }
@@ -86,6 +90,8 @@ class Group extends WidgetCommon
         if(isset($this->_role)
         && ($this->_role == 'owner' || $this->_role == 'publisher')) {
             $view = $this->tpl();
+            $view->assign('server', $server);
+            $view->assign('node', $node);
             RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
         }
     }

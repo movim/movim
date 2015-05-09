@@ -126,7 +126,7 @@
         <li class="condensed block">
             <span class="icon gray"><i class="md md-format-align-justify"></i></span>
             <span>{$c->__('general.about')}</span>
-            <p>{$contact->description}</p>
+            <p class="all">{$contact->description}</p>
         </li>
         {/if}
 
