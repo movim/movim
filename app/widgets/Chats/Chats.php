@@ -145,6 +145,7 @@ class Chats extends WidgetCommon
 
         $cd = new \Modl\ContactDAO;
         $md = new \modl\MessageDAO();
+        $cad = new \modl\CapsDAO();
 
         $presencestxt = getPresencesTxt();
 
@@ -154,8 +155,10 @@ class Chats extends WidgetCommon
                 $view->assign('presence', $presencestxt[$cr->value]);
             }
             $view->assign('contact', $cr);
+            $view->assign('caps', $cad->get($cr->node.'#'.$cr->ver));
         } else {
             $view->assign('contact', $cd->get($jid));
+            $view->assign('caps', null);
         }
 
         $m = $md->getContact($jid, 0, 1);
