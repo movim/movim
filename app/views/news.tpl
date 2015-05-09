@@ -10,5 +10,6 @@
     <section>
         <?php $this->widget('Menu');?>
         <?php $this->widget('Post');?>
+        <?php $this->widget('Publish');?>
     </section>
 </main>

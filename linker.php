@@ -69,6 +69,11 @@ $stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connect
             $msg = json_encode(\RPC::commit());
             \RPC::clear();
 
+            if(!empty($msg)) {
+                echo base64_encode(gzcompress($msg, 9))."";
+                #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
+            }
+
             $xml = \Moxl\API::commit();
             \Moxl\API::clear();
                 
@@ -76,11 +81,6 @@ $stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connect
                 //$conn->write(trim($xml));
                 $conn->send(trim($xml));
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-            }
-            
-            if(!empty($msg)) {
-                echo base64_encode(gzcompress($msg, 9))."";
-                #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
             }
         }
 
@@ -99,7 +99,7 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
     $stdin->removeAllListeners('data');
     $stdin->on('data', $stdin_behaviour);
 
-    //$conn->bufferSize = 4096*4;
+    $conn->bufferSize = 4096*4;
     $conn->on('message', function($message) use (&$conn, $loop, $parser/*, $stream*/) {
 
         //$conn->pause();
@@ -125,20 +125,13 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
             if(!$parser->parse($message)) {
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
+
             //\Moxl\Xec\Handler::handleStanza($message);
 
             if($restart) {
                 $session = \Sessionx::start();
                 \Moxl\Stanza\Stream::init($session->domain);
                 $restart = false;
-            }
-
-            $msg = \RPC::commit();
-            \RPC::clear();
-
-            if(!empty($msg)) {
-                echo base64_encode(gzcompress(json_encode($msg), 9))."";
-                #fwrite(STDERR, colorize($msg.' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
             }
 
             $xml = \Moxl\API::commit();
@@ -150,19 +143,27 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
 
-            $loop->tick();
+            $msg = \RPC::commit();
+            \RPC::clear();
+
+            if(!empty($msg)) {
+                echo base64_encode(gzcompress(json_encode($msg), 9))."";
+                #fwrite(STDERR, colorize($msg.' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
+            }
+
+            //$loop->tick();
         }
 
         //$conn->resume();
     });
 
     $conn->on('error', function($msg) use ($conn, $loop) {
-        fwrite(STDERR, colorize($msg, 'red')." : ".colorize('error', 'green')."\n");
+        #fwrite(STDERR, colorize(serialize($msg), 'red')." : ".colorize('error', 'green')."\n");
         $loop->stop();
     });
 
     $conn->on('close', function($msg) use ($conn, $loop) {
-        fwrite(STDERR, colorize($msg, 'red')." : ".colorize('closed', 'green')."\n");
+        #fwrite(STDERR, colorize(serialize($msg), 'red')." : ".colorize('closed', 'green')."\n");
         $loop->stop();
     });
 

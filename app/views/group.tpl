@@ -8,5 +8,6 @@
     <section>
         <?php $this->widget('Groups'); ?>
         <?php $this->widget('Group'); ?>
+        <?php $this->widget('Publish'); ?>
     </section>
 </main>

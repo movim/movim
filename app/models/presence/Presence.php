@@ -30,6 +30,9 @@ class Presence extends Model {
     protected $mucjid;
     protected $mucaffiliation;
     protected $mucrole;
+
+    // vcard-temp:x:update, not saved in the DB
+    public $photo = false;
     
     public function __construct() {
         $this->_struct = '
@@ -118,10 +121,17 @@ class Presence extends Model {
                         $this->publickey = (string)$c;
                         break;
                     case 'http://jabber.org/protocol/muc#user' :
-                        $this->muc          = true;
-                        $this->mucjid          = cleanJid((string)$c->item->attributes()->jid);
+                        $this->muc             = true;
+                        if($c->item->attributes()->jid)
+                            $this->mucjid          = cleanJid((string)$c->item->attributes()->jid);
+                        else
+                            $this->mucjid          = (string)$stanza->attributes()->from;
+
                         $this->mucrole         = (string)$c->item->attributes()->role;
                         $this->mucaffiliation  = (string)$c->item->attributes()->affiliation;
+                        break;
+                    case 'vcard-temp:x:update' :
+                        $this->photo = true;
                         break;
                 }
             }

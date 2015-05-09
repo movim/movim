@@ -73,6 +73,12 @@ var MovimTpl = {
         //if(inner != null) inner.innerHTML = '';
         //else document.querySelector(selector).innerHTML = '';
     },
+    fill : function(selector, html) {
+        target = document.querySelector(selector);
+        if(target) {
+            target.innerHTML = html;
+        }
+    },
     isPanel : function() {
         if(movim_has_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled')) {
             return true;
