@@ -26,6 +26,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Moxl\Xec\Action\Vcard\Get;
+
 class Presence extends Payload
 {
     public function handle($stanza, $parent = false) {
@@ -41,9 +43,14 @@ class Presence extends Payload
             $p = new \modl\Presence();
             $p->setPresence($stanza);
 
-            if($p->value != 5) {
+            if($p->value != 5 && $p->value != 6) {
                 $pd = new \modl\PresenceDAO();
                 $pd->set($p);
+
+                /*if($p->photo) {
+                    $r = new Get;
+                    $r->setTo(echapJid((string)$stanza->attributes()->from))->request();
+                }*/
 
                 if($p->muc) {
                     $this->method('muc');

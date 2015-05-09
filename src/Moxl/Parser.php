@@ -82,7 +82,7 @@ class Parser {
     private function contents($parser, $data)
     {
         if(isset($this->handler)) {
-            $this->handler[0] .= trim($data);
+            $this->handler[0] .= $data;
         }
     } 
 
