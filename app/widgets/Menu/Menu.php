@@ -136,6 +136,7 @@ class Menu extends WidgetCommon
 
         if($page == 0 || $page == ""){
             $view = $this->tpl();
+            $view->assign('to', $this->user->getLogin());
             $html .= $view->draw('_menu_add', true);
         }
 
