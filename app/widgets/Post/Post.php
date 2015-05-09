@@ -41,13 +41,6 @@ class Post extends WidgetCommon
 
     function onPublish($packet)
     {
-        list($to, $node, $id) = array_values($packet->content);
-
-        $cn = new CommentCreateNode;
-        $cn->setTo($to)
-           ->setParentId($id)
-           ->request();
-        
         Notification::append(false, $this->__('post.published'));
         $this->ajaxClear();
         RPC::call('MovimTpl.hidePanel');
@@ -107,69 +100,6 @@ class Post extends WidgetCommon
         RPC::call('movim_fill', 'post_widget', $html);
     }
 
-    function ajaxCreate()
-    {
-        $view = $this->tpl();
-        $view->assign('to', $this->user->getLogin());
-        RPC::call('movim_fill', 'post_widget', $view->draw('_post_create', true));
-
-        $view = $this->tpl();
-        Header::fill($view->draw('_post_header_create', true));
-        
-        RPC::call('Post.setEmbed');
-    }
-
-    function ajaxPreview($form)
-    {
-        if($form->content->value != '') {
-            $view = $this->tpl();
-            $view->assign('content', Markdown::defaultTransform($form->content->value));
-
-            Dialog::fill($view->draw('_post_preview', true), true);
-        } else {
-            Notification::append(false, $this->__('post.no_content_preview'));
-        }
-    }
-
-    function ajaxHelp()
-    {
-        $view = $this->tpl();
-        Dialog::fill($view->draw('_post_help', true), true);
-    }
-
-    function ajaxPublish($form)
-    {
-        if($form->content->value != '') {
-            $content = Markdown::defaultTransform($form->content->value);
-
-            $p = new PostPublish;
-            $p->setFrom($this->user->getLogin())
-              ->setTo($form->to->value)
-              ->setNode($form->node->value);
-              //->setLocation($geo)
-              //->enableComments()
-            if($form->title->value != '') {
-                $p->setTitle($form->title->value);
-            }
-
-            if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
-                $embed = Embed\Embed::create($form->embed->value);
-                $content .= $this->prepareEmbed($embed);
-                $p->setLink($form->embed->value);
-
-                if($embed->type == 'photo') {
-                    $key = key($embed->images);
-                    $p->setImage($embed->images[0]['value'], $embed->title, $embed->images[0]['mime']);
-                }
-            }
-
-            $p->setContentHtml(rawurldecode($content))
-              ->request();
-        } else {
-            Notification::append(false, $this->__('post.no_content'));
-        }
-    }
-
     function ajaxDelete($to, $node, $id)
     {
         $view = $this->tpl();
@@ -213,39 +143,6 @@ class Post extends WidgetCommon
           ->setParentId($id)
           ->setContent(htmlspecialchars(rawurldecode($comment)))
           ->request();
-    }
-
-    function ajaxEmbedTest($url)
-    {
-        if($url == '') {
-            return;
-        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
-            Notification::append(false, $this->__('post.valid_url'));
-            return;
-        }
-
-        $embed = Embed\Embed::create($url);
-        $html = $this->prepareEmbed($embed);
-
-        if($embed->type == 'photo') {
-            RPC::call('movim_fill', 'gallery', $this->prepareGallery($embed));
-        }
-
-        RPC::call('movim_fill', 'preview', $html);
-    }
-
-    function prepareGallery($embed)
-    {
-        $view = $this->tpl();
-        $view->assign('embed', $embed);
-        return $view->draw('_post_gallery', true);
-    }
-
-    function prepareEmbed($embed)
-    {
-        $view = $this->tpl();
-        $view->assign('embed', $embed);
-        return $view->draw('_post_embed', true);
     }
 
     function prepareEmpty()
