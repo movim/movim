@@ -139,7 +139,7 @@ class Presence extends Model {
         
         if($stanza->delay) {
             $this->delay = 
-                        date(
+                        gmdate(
                             'Y-m-d H:i:s', 
                             strtotime(
                                 (string)$stanza->delay->attributes()->stamp
