@@ -16,7 +16,8 @@ function getTimezoneList()
 function getTimezoneOffset($timezone)
 {
     $tz = new DateTimeZone($timezone);
-    return $tz->getOffset(new DateTime);
+    $utc = new DateTimeZone('UTC'); 
+    return $tz->getOffset(new DateTime('now', $utc));
 }
 
 /*
@@ -46,7 +47,8 @@ function getTimezoneOffset($timezone)
     foreach( $timezones as $timezone )
     {
         $tz = new DateTimeZone($timezone);
-        $timezone_offsets[$timezone] = $tz->getOffset(new DateTime);
+        $utc = new DateTimeZone('UTC');
+        $timezone_offsets[$timezone] = $tz->getOffset(new DateTime('now', $utc));
     }
 
     // sort timezone by timezone name

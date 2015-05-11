@@ -12,7 +12,7 @@
             class="block condensed"
             onclick="movim_redirect('{$c->route('accountnext', array($value->domain, false))}')">
             <span class="icon bubble color {$value->description|stringToColor}">
-                {if="$value->checked"}
+                {if="isset($value->checked) && $value->checked"}
                     <i class="fa md-star-outline"></i>
                 {else}
                     {$value->domain|firstLetterCapitalize}
