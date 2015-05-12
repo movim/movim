@@ -46,7 +46,6 @@ var Chat = {
         }
     },
     appendMessage : function(message) {
-        console.log(message);
         if(message.body == '') return;
 
         var bubble = null;
