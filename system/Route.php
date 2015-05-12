@@ -24,6 +24,7 @@ class Route extends \BaseController {
                 'news'          => array('n'),
                 'pods'          => false,
                 'profile'       => false,
+                'room'          => array('r'),
                 'share'         => array('url'),
                 'visio'         => false
             );
