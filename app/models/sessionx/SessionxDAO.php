@@ -20,7 +20,8 @@ class SessionxDAO extends SQL {
                 config      = :config,
                 active      = :active,
                 start       = :start,
-                timestamp   = :timestamp
+                timestamp   = :timestamp,
+                mechanism   = :mechanism
             where session = :session';
         
         $this->prepare(
@@ -41,7 +42,8 @@ class SessionxDAO extends SQL {
                 'config'    => $s->config,
                 'active'    => $s->active,
                 'start'     => $s->start,
-                'timestamp' => $s->timestamp
+                'timestamp' => $s->timestamp,
+                'mechanism' => $s->mechanism
                 )
         );
         
@@ -65,7 +67,8 @@ class SessionxDAO extends SQL {
                  config,
                  active,
                  start,
-                 timestamp)
+                 timestamp,
+                 mechanism)
                 values
                 (:session,
                  :username,
@@ -82,7 +85,8 @@ class SessionxDAO extends SQL {
                  :config,
                  :active,
                  :start,
-                 :timestamp)';
+                 :timestamp,
+                 :mechanism)';
             
             $this->prepare(
                 'Sessionx', 
@@ -102,7 +106,8 @@ class SessionxDAO extends SQL {
                     'config'    => $s->config,
                     'active'    => $s->active,
                     'start'     => $s->start,
-                    'timestamp' => $s->timestamp
+                    'timestamp' => $s->timestamp,
+                    'mechanism' => $s->mechanism
                 )
             );
             

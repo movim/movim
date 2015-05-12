@@ -161,6 +161,7 @@ class User {
     function isSupported($key)
     {
         $this->reload();
+
         if($this->caps != null) {
             switch($key) {
                 case 'pubsub':
@@ -170,6 +171,9 @@ class User {
                     return false;
                     break;
             }
+        } elseif($key == 'anonymous') {
+            $session = \Sessionx::start();
+            return ($session->mechanism == 'ANONYMOUS');
         } else {
             return false;
         }
