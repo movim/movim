@@ -7,4 +7,11 @@
             });
         </script>
     {/if}
+    {if="$room"}
+        <script type="text/javascript">
+            MovimWebsocket.attach(function() {
+                Chat_ajaxGetRoom('{$room}');
+            });
+        </script>
+    {/if}
 </div>
