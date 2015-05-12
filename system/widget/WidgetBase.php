@@ -126,6 +126,14 @@ class WidgetBase
         return $this->draw();
     }
 
+    /**
+     * Get the current view name
+     */
+    function getView()
+    {
+        return $this->_view;
+    }
+
     /*
      * @desc Preload some sourcecode for the draw method
      */

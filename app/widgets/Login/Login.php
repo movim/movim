@@ -39,17 +39,22 @@ class Login extends WidgetBase
         $pd = new \Modl\PresenceDAO();
         $pd->clearPresence($this->user->getLogin());
 
-        // http://xmpp.org/extensions/xep-0280.html
-        \Moxl\Stanza\Carbons::enable();
+        $session = \Sessionx::start();
+        $session->load();
 
-        // We refresh the roster
-        $r = new GetList;
-        $r->request();
+        if($session->mechanism != 'ANONYMOUS') {
+            // http://xmpp.org/extensions/xep-0280.html
+            \Moxl\Stanza\Carbons::enable();
 
-        // We get the configuration
-        $s = new Get;
-        $s->setXmlns('movim:prefs')
-          ->request();
+            // We refresh the roster
+            $r = new GetList;
+            $r->request();
+
+            // We get the configuration
+            $s = new Get;
+            $s->setXmlns('movim:prefs')
+              ->request();
+        }
     }
 
     function onConfig($packet)

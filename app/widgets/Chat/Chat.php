@@ -237,7 +237,14 @@ class Chat extends WidgetCommon
         
         if($muc) {
             $m->type        = 'groupchat';
-            $m->resource    = $session->user;
+
+            $s = Session::start();
+            $m->resource = $s->get('username');
+
+            if($m->resource == null) {
+                $m->resource = $session->user;
+            }
+
             $m->jidfrom     = $to;
         }
         
@@ -511,5 +518,9 @@ class Chat extends WidgetCommon
         if($validate_jid->validate($this->get('f'))) {
             $this->view->assign('jid', $this->get('f'));
         }
+
+        /*if($validate_jid->validate($this->get('r'))) {
+            $this->view->assign('room', $this->get('r'));
+        }*/
     }
 }

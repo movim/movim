@@ -24,7 +24,7 @@
                         <i class="md md-beenhere"></i>
                     </div>
                 {/if}
-                {if="$value->mucjid && strpos($value->mucjid, '/') == false"}
+                {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
                     <a href="{$c->route('contact', $value->mucjid)}">
                         <span>{$value->resource}</span>
                     </a>
