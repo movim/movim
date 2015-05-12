@@ -19,6 +19,7 @@ class Sessionx extends Model {
     public $active;
     public $start;
     public $timestamp;
+    public $mechanism;
     
     public function __construct() {
         $this->_struct = '
@@ -54,7 +55,9 @@ class Sessionx extends Model {
             "start" : 
                 {"type":"date" },
             "timestamp" : 
-                {"type":"date" }
+                {"type":"date" },
+            "mechanism" : 
+                {"type":"string", "size":64 }
         }';
         
         parent::__construct();

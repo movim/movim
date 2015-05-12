@@ -77,7 +77,7 @@ $stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connect
             $xml = \Moxl\API::commit();
             \Moxl\API::clear();
                 
-            if(!empty($xml)) {
+            if(!empty($xml) && $conn) {
                 //$conn->write(trim($xml));
                 $conn->send(trim($xml));
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");

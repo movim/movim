@@ -103,6 +103,11 @@ class Presence extends WidgetBase
 
     function ajaxLogout()
     {
+        $pd = new \Modl\PresenceDAO();
+        
+        $session = \Sessionx::start();
+        $pd->clearPresence($session->username.'@'.$session->host);
+
         $session = \Sessionx::start();
         $p = new Unavailable;
         $p->setType('terminate')
