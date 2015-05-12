@@ -39,6 +39,7 @@ class Sessionx {
     private         $_start;
     private         $_active = false;
     private         $_config;
+    private         $_mechanism;
     /*
      * Session generation and handling part
      */
@@ -93,6 +94,7 @@ class Sessionx {
         $s->active      = $this->_active;  
         $s->start       = $this->_start;
         $s->timestamp   = $this->_timestamp;
+        $s->mechanism   = $this->_mechanism;
         return $s;
     }
 
@@ -137,6 +139,7 @@ class Sessionx {
             $this->_active      = $session->active;
             $this->_start       = $session->start;
             $this->_timestamp   = $session->timestamp;
+            $this->_mechanism   = $session->mechanism;
         }
 
         self::$_instance = $this;
@@ -160,7 +163,8 @@ class Sessionx {
                         'user',
                         'password',
                         'hash',
-                        'start')
+                        'start',
+                        'mechanism')
                     )
             ) {
                 $key = '_'.$key;

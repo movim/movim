@@ -108,7 +108,17 @@ class Rooms extends WidgetCommon
         $p = new Muc;
         $p->setTo($room);
 
-        if($nickname != false) $p->setNickname($nickname);
+        if($nickname == false) {
+            $s = Session::start();
+            $nickname = $s->get('username');
+        }
+
+        if($nickname == false || $nickname == null) {
+            $session = \Sessionx::start();
+            $nickname = $session->username;
+        }
+
+        $p->setNickname($nickname);
 
         $p->request();
     }
@@ -122,11 +132,17 @@ class Rooms extends WidgetCommon
     {
         if(!$this->validateRoom($room)) return;
 
-        $session = \Sessionx::start();
+        $s = Session::start();
+        $resource = $s->get('username');
+
+        if($resource == null) {
+            $session = \Sessionx::start();
+            $resource = $session->username;
+        }
 
         $pu = new Unavailable;
         $pu->setTo($room)
-           ->setResource($session->username)
+           ->setResource($resource)
            ->request();
     }
 
@@ -193,6 +209,10 @@ class Rooms extends WidgetCommon
     function checkConnected($room, $resource = false)
     {
         if(!$this->validateRoom($room)) return;
+        if($resource && !$this->validateResource($resource)) {
+            Notification::append(null, $this->__('chatrooms.bad_id'));
+            return;
+        }
 
         $pd = new \modl\PresenceDAO();
 
@@ -215,6 +235,7 @@ class Rooms extends WidgetCommon
         $view = $this->tpl();
         $cod = new \modl\ConferenceDAO();
         $view->assign('conferences', $cod->getAll());
+        $view->assign('room', $this->get('r'));
 
         return $view->draw('_rooms', true);
     }
@@ -228,6 +249,18 @@ class Rooms extends WidgetCommon
     {
         $validate_server = Validator::email()->noWhitespace()->length(6, 40);
         if(!$validate_server->validate($room)) return false;
+        else return true;
+    }
+
+    /**
+     * @brief Validate the resource 
+     *
+     * @param string $resource
+     */
+    private function validateResource($resource)
+    {
+        $validate_resource = Validator::string()->length(6, 40);
+        if(!$validate_resource->validate($resource)) return false;
         else return true;
     }
 
