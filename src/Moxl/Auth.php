@@ -22,6 +22,8 @@ class Auth {
                 $mecchoice = true;
             else $i++;
         }
+        $session = \Sessionx::start();
+        $session->mechanism = $mechanism[$i];
 
         return $mechanism[$i];
     }
@@ -42,8 +44,6 @@ class Auth {
     }
 
     static function mechanismANONYMOUS() {
-        $session = \Sessionx::start();
-        
         $s = new SASL2;
         $fa = $s->factory('ANONYMOUS');
 
