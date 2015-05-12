@@ -518,9 +518,5 @@ class Chat extends WidgetCommon
         if($validate_jid->validate($this->get('f'))) {
             $this->view->assign('jid', $this->get('f'));
         }
-
-        /*if($validate_jid->validate($this->get('r'))) {
-            $this->view->assign('room', $this->get('r'));
-        }*/
     }
 }
