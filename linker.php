@@ -11,11 +11,12 @@ $booted = $bootstrap->boot();
 
 $loop = React\EventLoop\Factory::create();
 
-/*$dnsResolverFactory = new React\Dns\Resolver\Factory();
+$dnsResolverFactory = new React\Dns\Resolver\Factory();
 $dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);
 
-$connector = new React\SocketClient\Connector($loop, $dns);*/
-$connector = new Ratchet\Client\Factory($loop);
+$connector = new React\SocketClient\Connector($loop, $dns);
+//$connector = new React\SocketClient\SecureConnector($connector, $loop);
+//$connector = new Ratchet\Client\Factory($loop);
 $stdin = new React\Stream\Stream(STDIN, $loop);
 
 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets before : ".\sizeToCleanSize(memory_get_usage())."\n");
@@ -32,7 +33,7 @@ $parser = new \Moxl\Parser;
 
 $buffer = '';
 
-$stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser) {
+$stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser) {
     //if(!isset($buffer)) $buffer = '';    
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
@@ -54,10 +55,10 @@ $stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connect
                     $cd = new \Modl\ConfigDAO();
                     $config = $cd->get();
 
-                    /*$domain = \Moxl\Utils::getDomain($msg->host);
+                    $domain = \Moxl\Utils::getDomain($msg->host);
                     fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-                    $connector->create($domain, 5222)->then($xmpp_behaviour);*/
-                    $connector($config->websocketurl, array('xmpp'))->then($xmpp_behaviour);
+                    $connector->create($domain, 5222)->then($xmpp_behaviour);
+                    //$connector($config->websocketurl, array('xmpp'))->then($xmpp_behaviour);
                 }
             } else {
                 return;
@@ -78,9 +79,9 @@ $stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connect
             \Moxl\API::clear();
                 
             if(!empty($xml) && $conn) {
-                //$conn->write(trim($xml));
-                $conn->send(trim($xml));
-                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                $conn->write(trim($xml));
+                //$conn->send(trim($xml));
+                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
         }
 
@@ -90,8 +91,8 @@ $stdin_behaviour = function ($data) use (/*&*/&$conn, $loop, &$buffer, &$connect
     }
 };
 
-//$xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser) {
-$xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser) {
+$xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser) {
+//$xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser) {
     $conn = $stream;
     fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
     fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
@@ -99,8 +100,9 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
     $stdin->removeAllListeners('data');
     $stdin->on('data', $stdin_behaviour);
 
-    $conn->bufferSize = 4096*4;
-    $conn->on('message', function($message) use (&$conn, $loop, $parser/*, $stream*/) {
+    $conn->bufferSize = 1024;
+    //$conn->on('message', function($message) use (&$conn, $loop, $parser, $stream) {
+    $conn->on('data', function($message) use (&$conn, $loop, $parser/*, $stream*/) {
 
         //$conn->pause();
 
@@ -117,7 +119,7 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
                 $restart = true;
             }
 
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             \Moxl\API::clear();
             \RPC::clear();
@@ -130,7 +132,7 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
 
             if($restart) {
                 $session = \Sessionx::start();
-                \Moxl\Stanza\Stream::init($session->domain);
+                \Moxl\Stanza\Stream::init($session->host);
                 $restart = false;
             }
 
@@ -138,9 +140,9 @@ $xmpp_behaviour = function (Ratchet\Client\WebSocket $stream) use (&$conn, $loop
             \Moxl\API::clear();
 
             if(!empty($xml)) {
-                //$conn->write(trim($xml));
-                $conn->send(trim($xml));
-                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                $conn->write(trim($xml));
+                //$conn->send(trim($xml));
+                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
 
             $msg = \RPC::commit();

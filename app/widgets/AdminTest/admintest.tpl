@@ -96,6 +96,18 @@
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
+        {if="!extension_loaded('gd')"}
+            <li>
+                <span class="icon color bubble red">
+                    <i class="md md-image"></i>
+                </span>
+                <span>
+                    {$c->__('compatibility.gd')}
+                </span>
+            </div>
+            <script type="text/javascript">AdminTest.disableMovim()</script>
+        {/if}
+
         {if="!$c->testDir(DOCUMENT_ROOT)"}
             <li>
                 <span class="icon color bubble red">
