@@ -4,7 +4,6 @@
     <section>
         <div>
             <?php $this->widget('Login'); ?>
-            <?php $this->widget('LoginAnonymous'); ?>
         </div>
     </section>
 </main>
