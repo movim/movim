@@ -6,6 +6,7 @@ class LoginAnonymous extends WidgetBase
 {
     function load()
     {
+        $this->addjs('loginanonymous.js');
         $this->registerEvent('session_start_handle', 'onStart');
     }
 
@@ -28,7 +29,7 @@ class LoginAnonymous extends WidgetBase
     {
         $validate_user = Validator::string()->length(4, 40);
         if(!$validate_user->validate($username)) {
-            Notification::append(null, 'bad username');
+            Notification::append(null, $this->__('login_anonymous.bad_username'));
             return;
         }
         

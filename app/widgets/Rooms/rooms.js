@@ -42,10 +42,6 @@ var Rooms = {
      * @param The jid to remember
      */
     anonymousInit : function() {
-        Presence_ajaxLogout();
-        // We register the socket
-        MovimWebsocket.connection.register('anonymous.jappix.com');
-
         MovimWebsocket.register(function()
         {
             form = document.querySelector('form[name="loginanonymous"]');

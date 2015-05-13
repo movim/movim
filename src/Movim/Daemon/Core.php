@@ -17,7 +17,7 @@ class Core implements MessageComponentInterface {
         echo colorize("Movim daemon launched\n", 'green');
         echo colorize("Base URI :", 'green')." {$baseuri}\n";
         $ws = $this->setWebsocket($baseuri, $port);
-        echo colorize("Public WebSocket URL :", 'green')." {$ws}\n";
+        //echo colorize("Public WebSocket URL :", 'green')." {$ws}\n";
 
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
