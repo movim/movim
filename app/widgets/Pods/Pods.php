@@ -22,7 +22,7 @@ class Pods extends WidgetBase
     }
 
     function flagPath($country) {
-        return BASE_URI.'themes/movim/img/flags/'.strtolower($country).'.png';
+        return BASE_URI.'themes/material/img/flags/'.strtolower($country).'.png';
     }
 
     function countryName($code) {
