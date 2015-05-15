@@ -26,7 +26,7 @@ use Moxl\Xec\Action\Microblog\CommentPublish;
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
-class Post extends WidgetCommon
+class Post extends WidgetBase
 {
     function load()
     {

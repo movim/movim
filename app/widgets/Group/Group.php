@@ -14,7 +14,7 @@ use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
 
-class Group extends WidgetCommon
+class Group extends WidgetBase
 {
     private $_paging = 15;
     private $_role = null;
@@ -45,7 +45,7 @@ class Group extends WidgetCommon
         list($server, $node) = array_values($packet->content);
 
         $this->displayItems($server, $node);
-        $this->ajaxGetAffiliations($server, $node);
+        //$this->ajaxGetAffiliations($server, $node);
 
         RPC::call('Group.clearLoad');
         RPC::call('MovimTpl.showPanel');

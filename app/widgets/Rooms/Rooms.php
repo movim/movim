@@ -7,7 +7,7 @@ use Moxl\Xec\Action\Presence\Unavailable;
 
 use Respect\Validation\Validator;
 
-class Rooms extends WidgetCommon
+class Rooms extends WidgetBase
 {
     function load()
     {
@@ -143,6 +143,7 @@ class Rooms extends WidgetCommon
         $pu = new Unavailable;
         $pu->setTo($room)
            ->setResource($resource)
+           ->setMuc()
            ->request();
     }
 
