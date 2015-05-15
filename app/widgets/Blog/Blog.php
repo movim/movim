@@ -1,6 +1,6 @@
 <?php
 
-class Blog extends WidgetCommon {
+class Blog extends WidgetBase {
     function load()
     {
         

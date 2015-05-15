@@ -2,7 +2,8 @@
 
 use Respect\Validation\Validator;
 
-class Share extends WidgetCommon {
+class Share extends WidgetBase
+{
     function load()
     {
     }

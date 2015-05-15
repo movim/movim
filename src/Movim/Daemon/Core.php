@@ -65,11 +65,11 @@ class Core implements MessageComponentInterface {
         if($explode['scheme'] == 'https') {
             $ws = 'wss://'.$path.'ws/';
             $secured = 'true';
-            echo colorize("Encrypted ", 'green');
+            echo colorize("Encrypted ", 'green')."\n";
         } else {
             $ws = 'ws://'.$path.'ws/';
             $secured = 'false';
-            echo colorize("Unencrypted ", 'red');
+            echo colorize("Unencrypted ", 'red')."\n";
         }
 
         file_put_contents(CACHE_PATH.'websocket', $secured);
