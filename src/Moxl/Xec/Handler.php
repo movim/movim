@@ -30,18 +30,6 @@ namespace Moxl\Xec;
 use Moxl\Utils;
 
 class Handler {
-    static public function handleStanza($xml)
-    {
-        libxml_use_internal_errors(true);
-        $xml = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $xml);
-
-        $xml = simplexml_load_string($xml);
-
-        if($xml !== false) {
-            self::handle($xml);
-        } 
-    }
-
     /**
      * Constructor of class Handler.
      *
@@ -60,19 +48,8 @@ class Handler {
         $element = '';
         
         // Id verification in the returned stanza
-        if($child->getName() == 'iq') {
+        if(in_array($child->getName(), array('iq', 'presence', 'message'))) {
             $id = (string)$child->attributes()->id;
-            $element = 'iq';
-        }
-
-        if($child->getName() == 'presence') {
-            $id = (string)$child->attributes()->id;
-            $element = 'presence';
-        }
-
-        if($child->getName() == 'message') {
-            $id = (string)$child->attributes()->id;
-            $element = 'message';
         }
 
         $sess = \Session::start();
@@ -178,9 +155,11 @@ class Handler {
     static function getHashToClass() {
         return array(
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
+            '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
             'f9e18585fd0e0873c52e880c800f267a' => 'Receipt',
 
             '1040105fc01bfac8a5ab81324875e382' => 'Presence',
+            '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
             
             '89d8bb4741fd3a62e8b20e0d52a85a36' => 'MucUser',//?
@@ -222,7 +201,9 @@ class Handler {
             
             'f728271d924a04b0355379b28c3183a1' => 'SASL',
             '5e291b72f7160dabd1aa28f90cbde769' => 'SASLChallenge',
+            'abae1d63bb4295636badcce1bee02290' => 'SASLChallenge', // TLS
             'a5af6a9efd75060b5aca9b473f1ef756' => 'SASLSuccess',
+            '53936dd4e1d64e1eeec6dfc95c431964' => 'SASLSuccess', // TLS
             'de175adc9063997df5b79817576ff659' => 'SASLFailure',
             '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',#
             '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
@@ -254,11 +235,6 @@ class Handler {
             Utils::log('Handler : This event is not listed');
             return true;
         }
-    }
-    
-    static public function handleError($number, $message) {
-        $payload_class = new Payload\RequestError();
-        $payload_class->handle($number, $message);
     }
 
     /* A simple function to format a error-string-text to a

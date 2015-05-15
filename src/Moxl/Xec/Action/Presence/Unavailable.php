@@ -33,6 +33,7 @@ class Unavailable extends Action
     private $_to;
     private $_type;
     private $_resource;
+    private $_muc = false;
 
     public function request() 
     {
@@ -62,16 +63,23 @@ class Unavailable extends Action
     {
         $this->_type = $type;
         return $this;
-    } 
+    }
 
-    // Fixme ? For the moment this method is used only for the MUC requests
+    public function setMuc()
+    {
+        $this->_muc = true;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false) {
-        // We clear all the old messages
-        $md = new \modl\MessageDAO();
-        $md->deleteContact($this->_to);
+        if($this->_muc) {
+            // We clear all the old messages
+            $md = new \modl\MessageDAO();
+            $md->deleteContact($this->_to);
 
-        $md = new \modl\PresenceDAO();
-        $md->clearMuc($this->_to);
+            $md = new \modl\PresenceDAO();
+            $md->clearMuc($this->_to);
+        }
 
         $this->deliver();
     }

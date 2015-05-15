@@ -74,6 +74,7 @@ class Parser {
         if($this->depth == 1) {
             #fwrite(STDERR, colorize($this->node->asXML(), 'blue')." : ".colorize('received', 'green')."\n");
             \Moxl\Xec\Handler::handle($this->node);
+            unset($this->node);
         } elseif($this->depth > 1) {
             $this->handler = current($this->handler->xpath("parent::*"));
         }
