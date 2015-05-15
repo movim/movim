@@ -10,7 +10,7 @@ use Moxl\Xec\Action\Muc\SetSubject;
 
 use Respect\Validation\Validator;
 
-class Chat extends WidgetCommon
+class Chat extends WidgetBase
 {
     function load()
     {

@@ -22,7 +22,7 @@ use Moxl\Xec\Action\Presence\Unsubscribed;
 use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
-class Notifs extends WidgetCommon
+class Notifs extends WidgetBase
 {
     function load()
     {

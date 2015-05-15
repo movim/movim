@@ -5,7 +5,7 @@ use Moxl\Xec\Action\Vcard\Get;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\GetItems;
 
-class Contact extends WidgetCommon
+class Contact extends WidgetBase
 {
     function load()
     {
