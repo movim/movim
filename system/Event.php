@@ -6,11 +6,6 @@ class Event
     {
         $widgets = WidgetWrapper::getInstance(false);
         $widgets->iterate($key, $data);
-        /*
-        $widgets->iterate(array(
-                            'type' => $type,
-                            'data' => $event,
-                          ));*/
     }
 }
 

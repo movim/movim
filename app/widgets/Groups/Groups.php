@@ -5,7 +5,7 @@ use Moxl\Xec\Action\Pubsub\DiscoItems;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\Create;
 
-class Groups extends WidgetCommon
+class Groups extends WidgetBase
 {
     private $_list_server;
 
@@ -86,7 +86,10 @@ class Groups extends WidgetCommon
 
     function ajaxAdd($server)
     {
-        if(!$this->validateServer($server)) return;
+        if(!$this->validateServer($server)) {
+            Notification::append(null, $this->__('groups.name_error'));
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('server', $server);

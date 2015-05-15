@@ -4,7 +4,8 @@ use Moxl\Xec\Action\Pubsub\ConfigurePersistentStorage;
 use Moxl\Xec\Action\Pubsub\CreatePersistentStorage;
 use Moxl\Xec\Action\Storage\Set;
 
-class Init extends WidgetCommon {
+class Init extends WidgetBase
+{
     function load()
     {
         $this->addjs('init.js');

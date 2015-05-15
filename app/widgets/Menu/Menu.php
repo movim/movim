@@ -2,7 +2,7 @@
 
 use Moxl\Xec\Action\Pubsub\GetItems;
 
-class Menu extends WidgetCommon
+class Menu extends WidgetBase
 {
     private $_paging = 15;
     
