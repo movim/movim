@@ -23,7 +23,7 @@ use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
-class Publish extends WidgetCommon
+class Publish extends WidgetBase
 {
     function load()
     {

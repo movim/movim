@@ -1,6 +1,6 @@
 <?php
 
-class Header extends WidgetCommon
+class Header extends WidgetBase
 {
     function load()
     {

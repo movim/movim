@@ -1,6 +1,6 @@
 <?php
 
-class Navigation extends WidgetCommon
+class Navigation extends WidgetBase
 {
     function load()
     {
