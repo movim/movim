@@ -9,7 +9,7 @@ var Groups = {
                 MovimTpl.scrollPanelTop();
                 Group_ajaxGetItems(this.dataset.server, this.dataset.node);
                 Group_ajaxGetMetadata(this.dataset.server, this.dataset.node);
-                //Group_ajaxGetAffiliations(this.dataset.server, this.dataset.node);
+                Group_ajaxGetAffiliations(this.dataset.server, this.dataset.node);
                 //Group_ajaxGetSubscriptions(this.dataset.server, this.dataset.node);
                 Groups.reset(items);
                 movim_add_class(this, 'active');
