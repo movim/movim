@@ -10,7 +10,7 @@
             <span class="icon gray emojis_open" onclick="Chat_ajaxSmiley()">
                 {$c->ajaxSmileyGet('😃')}
             </span>
-            <div class="action" onclick="Chat.sendMessage('{$jid}', {if="$muc"}true{else}false{/if})">
+            <div class="action" data-jid="{$jid}" onclick="Chat.sendMessage('this.dataset.jid', {if="$muc"}true{else}false{/if})">
                 <i class="md md-send"></i>
             </div>
             <form>
@@ -18,10 +18,11 @@
                      <textarea 
                         rows="1"
                         id="chat_textarea"
+                        data-jid="{$jid}"
                         onkeypress="
                             if(event.keyCode == 13) {
                                 state = 0;
-                                Chat.sendMessage('{$jid}', {if="$muc"}true{else}false{/if});
+                                Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if});
                                 return false;
                             } else {
                                 {if="!$muc"}
