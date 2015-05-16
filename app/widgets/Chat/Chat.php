@@ -505,17 +505,15 @@ class Chat extends WidgetBase
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::email()->noWhitespace()->length(6, 60);
+        $validate_jid = Validator::string()->noWhitespace()->length(6, 60);
         if(!$validate_jid->validate($jid)) return false;
         else return true;
     }
 
     function display()
     {
-        $validate_jid = Validator::email()->length(6, 40);
-
         $this->view->assign('jid', false);
-        if($validate_jid->validate($this->get('f'))) {
+        if($this->validateJid($this->get('f'))) {
             $this->view->assign('jid', $this->get('f'));
         }
     }
