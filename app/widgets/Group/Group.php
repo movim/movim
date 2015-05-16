@@ -45,7 +45,6 @@ class Group extends WidgetBase
         list($server, $node) = array_values($packet->content);
 
         $this->displayItems($server, $node);
-        //$this->ajaxGetAffiliations($server, $node);
 
         RPC::call('Group.clearLoad');
         RPC::call('MovimTpl.showPanel');

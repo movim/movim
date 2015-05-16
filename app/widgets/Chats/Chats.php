@@ -171,7 +171,7 @@ class Chats extends WidgetBase
 
     private function validateJid($jid)
     {
-        $validate_jid = Validator::email()->noWhitespace()->length(6, 40);
+        $validate_jid = Validator::string()->noWhitespace()->length(6, 40);
 
         if($validate_jid->validate($jid)) return true;
         else return false;
