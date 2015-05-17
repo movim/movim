@@ -4,7 +4,6 @@ namespace Modl;
 
 class ConfigDAO extends SQL {
     function set(Config $c) {
-        \movim_log('hop');
         $this->_sql = '
             update config
             set environment   = :environment,  
@@ -14,7 +13,6 @@ class ConfigDAO extends SQL {
                 maxusers      = :maxusers,
                 loglevel      = :loglevel,
                 timezone      = :timezone,
-                websocketurl  = :websocketurl,
                 xmppwhitelist = :xmppwhitelist,
                 info          = :info,
                 unregister    = :unregister,
@@ -33,7 +31,6 @@ class ConfigDAO extends SQL {
                 'maxusers'     => $c->maxusers,
                 'loglevel'     => $c->loglevel,
                 'timezone'     => $c->timezone,
-                'websocketurl' => $c->websocketurl,
                 'xmppwhitelist'=> $c->xmppwhitelist,
                 'info'         => $c->info,
                 'unregister'   => $c->unregister,
@@ -68,7 +65,6 @@ class ConfigDAO extends SQL {
                     maxusers,
                     loglevel,
                     timezone,
-                    websocketurl,
                     xmppwhitelist,
                     info,
                     unregister,
@@ -86,7 +82,6 @@ class ConfigDAO extends SQL {
                     :maxusers,
                     :loglevel,
                     :timezone,
-                    :websocketurl,
                     :xmppwhitelist,
                     :info,
                     :unregister,
@@ -107,7 +102,6 @@ class ConfigDAO extends SQL {
                     'maxusers'     => $c->maxusers,
                     'loglevel'     => $c->loglevel,
                     'timezone'     => $c->timezone,
-                    'websocketurl' => $c->websocketurl,
                     'xmppwhitelist'=> $c->xmppwhitelist,
                     'info'         => $c->info,
                     'unregister'   => $c->unregister,
