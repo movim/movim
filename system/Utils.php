@@ -563,6 +563,20 @@ function generateKey($size) {
 }
 
 /*
+ * @desc Get the range aroung a position with a radius
+ */
+function geoRadius($latitude, $longitude, $radius) {
+    $lat_range = $range/69.172;
+    $lon_range = abs($range/(cos($latitude) * 69.172));
+    $min_lat = number_format($latitude - $lat_range, "4", ".", "");
+    $max_lat = number_format($latitude + $lat_range, "4", ".", "");
+    $min_lon = number_format($longitude - $lon_range, "4", ".", "");
+    $max_lon = number_format($longitude + $lon_range, "4", ".", "");
+
+    return array($min_lat, $max_lat, $min_lon, $max_lon);
+}
+
+/*
  * @desc Request a simple url
  */
 function requestURL($url, $timeout = 10, $post = false) {
