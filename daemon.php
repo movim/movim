@@ -24,6 +24,21 @@ if($argsize == 2) {
     exit;
 }
 
+$md = Modl\Modl::getInstance();
+$infos = $md->check();  
+
+if($infos != null) {
+    echo colorize("The database need to be updated before running the daemon\n", 'green');
+    foreach($infos as $i) {
+        echo colorize($i."\n", 'blue');
+    }
+
+    echo colorize("\nTo update the database run\n", 'green');
+    echo colorize("php mud.php db set\n", 'purple');
+
+    break;
+}
+
 $loop = \React\EventLoop\Factory::create();
 $core = new Core($loop, $argv[1], $argv[2]);
 $app  = new HttpServer(new WsServer($core));

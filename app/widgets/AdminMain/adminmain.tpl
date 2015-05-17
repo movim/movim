@@ -76,44 +76,6 @@
     </div>
 
     <br />
-    <h3>{$c->__('websocket.title')}</h3>
-
-    <!--{if="!$c->testBosh($conf->boshurl)"}
-        <div class="message error">
-            {$c->__('bosh.not_recheable')}
-        </div>
-    {/if}-->
-
-    <div>
-        <input type="text" id="websocketurl" name="websocketurl" placeholder="{$c->__('websocket.label')}" value="{$conf->websocketurl}"/>
-        <label for="websocketurl">{$c->__('websocket.label')}</label>
-    </div>
-
-    {if="isset($websockets)"}
-        <div class="element simple">
-            <label for="websocketurl">
-                {$c->__('websocket.publics')} -
-                <a target="_blank" href="https://api.movim.eu/">Movim API</a>
-            </label>
-
-            <dl>
-                {loop="$websockets->websockets"}
-                    <dt>{$value->name}</dt>
-                    <dd>{$value->url}</dd>
-                {/loop}
-            </dl>
-        </div>
-    {/if}
-
-    <ul class="thick">
-        <li class="condensed">
-            <span class="icon bubble color orange">
-                <i class="md md-warning"></i>
-            </span>
-            <span>{$c->__('websocket.info')}: <code>ws(s)://domain:port</code></span>
-            <p>{$c->__('websocket.save_info')}</p>
-        </li>
-    </ul>
 
     <h3>{$c->__('whitelist.title')}</h3>
 

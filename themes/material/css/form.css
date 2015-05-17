@@ -273,6 +273,7 @@ input[type=button]:hover {
 }
 
 .button.flat:hover,
+.button.flat.on,
 input[type=button].flat:hover {
     background-color: rgba(153, 153, 153, 0.2);
 }
