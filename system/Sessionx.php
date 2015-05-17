@@ -32,7 +32,6 @@ class Sessionx {
     private         $_resource;
     private         $_hash;
     private         $_sid;
-    private         $_url;
     private         $_port;
     private         $_host;
     private         $_domain;
@@ -86,7 +85,6 @@ class Sessionx {
         $s->rid         = $this->_rid;
         $s->sid         = $this->_sid;
         $s->id          = $this->_id;
-        $s->url         = $this->_url;
         $s->port        = $this->_port;    
         $s->host        = $this->_host;    
         $s->domain      = $this->_domain;  
@@ -99,10 +97,6 @@ class Sessionx {
     }
 
     public function init($user, $pass, $host, $domain) {
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-        
-        $this->_url         = $config->websocketurl;
         $this->_port        = 5222;
         $this->_host        = $host;
         $this->_domain      = $domain;
@@ -131,7 +125,6 @@ class Sessionx {
             $this->_rid         = $session->rid;
             $this->_sid         = $session->sid;
             $this->_id          = $session->id;
-            $this->_url         = $session->url;
             $this->_port        = $session->port;
             $this->_host        = $session->host;
             $this->_domain      = $session->domain;
@@ -155,7 +148,6 @@ class Sessionx {
                 in_array(
                     $key,
                     array(
-                        'url',
                         'port',
                         'id',
                         'host',
