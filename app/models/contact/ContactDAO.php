@@ -373,13 +373,28 @@ class ContactDAO extends SQL {
             left outer join privacy 
                 on contact.jid = privacy.pkey
             where privacy.value = 1
-            order by created desc';
+            order by updated desc';
 
         if($limitr) 
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
         
         $this->prepare('Contact');
         return $this->run('Contact');
+    }
+
+    function countAllPublic() {       
+        $this->_sql = 
+            'select count(*) from contact 
+            left outer join privacy 
+                on contact.jid = privacy.pkey
+                where privacy.value = 1';
+
+        $this->prepare('Contact');
+
+        $results = $this->run(null, 'array');
+        $results = array_values($results[0]);
+        
+        return (int)$results[0]; 
     }
     
     function cleanRoster() {
