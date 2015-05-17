@@ -7,6 +7,8 @@ use Moxl\Xec\Action\Pubsub\GetItems;
 
 class Contact extends WidgetBase
 {
+    private $_paging = 10;
+
     function load()
     {
         $this->registerEvent('roster_updateitem_handle', 'onContactEdited');
@@ -151,10 +153,10 @@ class Contact extends WidgetBase
     {
         if($jid == null) {
             $cd = new \modl\ContactDAO();
-            $users = $cd->getAllPublic(0, 10);
-            if($users != null){
+            $count = $cd->countAllPublic();
+            if($count != 0){
                 $view = $this->tpl();
-                $view->assign('users', array_reverse($users));
+                $view->assign('users', $this->preparePublic());
                 return $view->draw('_contact_explore', true);
             } else { 
                 return '';
@@ -163,6 +165,28 @@ class Contact extends WidgetBase
             $view = $this->tpl();
             $view->assign('jid', $jid);
             return $view->draw('_contact_empty', true);
+        }
+    }
+
+    function ajaxPublic($page = 0)
+    {
+        $validate_page = Validator::int();
+        if(!$validate_page->validate($page)) return;
+
+        RPC::call('MovimTpl.fill', '#public_list', $this->preparePublic($page));
+    }
+
+    private function preparePublic($page = 0)
+    {
+        $cd = new \modl\ContactDAO();
+        $users = $cd->getAllPublic($page*$this->_paging, $this->_paging);
+        $count = $cd->countAllPublic();
+        if($users != null){
+            $view = $this->tpl();
+            $view->assign('pages', array_fill(0, (int)($count/$this->_paging), 'p'));
+            $view->assign('users', array_reverse($users));
+            $view->assign('page', $page);
+            return $view->draw('_contact_public', true);
         }
     }
 
