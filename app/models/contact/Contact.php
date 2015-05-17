@@ -365,6 +365,7 @@ class Contact extends Model {
         if(isset($this->date)
             && $this->date != '0000-00-00T00:00:00+0000' 
             && $this->date != '1970-01-01 00:00:00'
+            && $this->date != '1970-01-01 01:00:00'
             && $this->date != '1970-01-01T00:00:00+0000') {
             $age = intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
             if($age != 0)
