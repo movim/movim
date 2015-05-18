@@ -76,7 +76,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                 
             if(!empty($xml) && $conn) {
                 $conn->write(trim($xml));
-                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
         }
     } else {
@@ -107,11 +107,11 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
                 stream_set_blocking($conn->stream, 1);
                 $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
-                stream_set_blocking($conn->stream, 0);
+                
                 $restart = true;
             }
 
-            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
             #fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
 
             \Moxl\API::clear();
@@ -124,6 +124,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             if($restart) {
                 $session = \Sessionx::start();
                 \Moxl\Stanza\Stream::init($session->host);
+                stream_set_blocking($conn->stream, 0);
                 $restart = false;
             }
 
@@ -140,10 +141,12 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
             if(!empty($xml)) {
                 $conn->write(trim($xml));
-                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
         }
 
+        // Two ticks to be sure that we get everything from the socket, sic…
+        $loop->tick();
         $loop->tick();
     });
 
