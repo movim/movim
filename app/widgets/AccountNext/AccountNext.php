@@ -91,6 +91,12 @@ class AccountNext extends WidgetBase {
 
     function ajaxGetForm($host)
     {
+        $domain = \Moxl\Utils::getDomain($host);
+
+        // We create a new session or clear the old one
+        $s = Sessionx::start();
+        $s->init(null, null, $host, $domain);
+
         \Moxl\Stanza\Stream::init($host);
     }
 
