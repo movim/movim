@@ -86,13 +86,13 @@ class Group extends WidgetBase
 
         Header::fill($this->prepareHeader($server, $node));
 
-        if(isset($this->_role)
-        && ($this->_role == 'owner' || $this->_role == 'publisher')) {
+        //if(isset($this->_role)
+        //&& ($this->_role == 'owner' || $this->_role == 'publisher')) {
             $view = $this->tpl();
             $view->assign('server', $server);
             $view->assign('node', $node);
             RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
-        }
+        //}
     }
 
     function onSubscriptions($packet)
