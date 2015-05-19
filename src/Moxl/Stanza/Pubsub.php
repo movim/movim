@@ -183,6 +183,18 @@ class Pubsub {
         \Moxl\API::request($xml);
     }
 
+    static function testPostPublish($to, $node, $id)
+    {
+        $xml = '
+            <pubsub xmlns="http://jabber.org/protocol/pubsub">
+                <publish node="'.$node.'">
+                    <item id="'.$id.'"/>
+                </publish>
+            </pubsub>';
+        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
     static function postDelete($to, $node, $id)
     {
         $xml = '
