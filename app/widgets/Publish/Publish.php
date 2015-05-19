@@ -19,6 +19,7 @@
  */
 
 use Moxl\Xec\Action\Pubsub\PostPublish;
+use Moxl\Xec\Action\Pubsub\TestPostPublish;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
@@ -28,7 +29,9 @@ class Publish extends WidgetBase
     function load()
     {
         $this->addjs('publish.js');
-        $this->registerEvent('pubsub_publishpublish_handle', 'onPublish');
+        $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
+        $this->registerEvent('pubsub_testpostpublish_handle', 'onTestPublish');
+        $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
     }
 
     function onPublish($packet)
@@ -42,6 +45,17 @@ class Publish extends WidgetBase
                ->setParentId($id)
                ->request();
         }
+    }
+
+    function onTestPublish($packet)
+    {
+        list($server, $node) = array_values($packet->content);
+        $this->ajaxCreate($server, $node);
+    }
+
+    function onTestPublishError($packet)
+    {
+        Notification::append(null, $this->__('publish.no_publication'));
     }
 
     function ajaxCreateBlog()
@@ -86,6 +100,19 @@ class Publish extends WidgetBase
     {
         $view = $this->tpl();
         Dialog::fill($view->draw('_publish_help', true), true);
+    }
+
+    /*
+     * Sic, doing this hack and wait to have a proper way to test it in the standard
+     */
+    function ajaxTestPublish($server, $node)
+    {
+        if(!$this->validateServerNode($server, $node)) return;
+
+        $t = new TestPostPublish;
+        $t->setTo($server)
+          ->setNode($node)
+          ->request();
     }
 
     function ajaxPublish($form)
