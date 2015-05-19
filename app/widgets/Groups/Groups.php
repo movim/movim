@@ -4,6 +4,7 @@ use Moxl\Xec\Action\Pubsub\GetItems;
 use Moxl\Xec\Action\Pubsub\DiscoItems;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\Create;
+use Moxl\Xec\Action\Pubsub\TestCreate;
 
 class Groups extends WidgetBase
 {
@@ -14,6 +15,8 @@ class Groups extends WidgetBase
         $this->registerEvent('pubsub_discoitems_handle', 'onDisco');
         $this->registerEvent('pubsub_discoitems_error', 'onDiscoError');
         $this->registerEvent('pubsub_create_handle', 'onCreate');
+        $this->registerEvent('pubsub_testcreate_handle', 'onTestCreate');
+        $this->registerEvent('pubsub_testcreate_error', 'onTestCreateError');
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
         $this->registerEvent('pubsub_delete_error', 'onDeleteError');
         $this->addjs('groups.js');
@@ -57,6 +60,21 @@ class Groups extends WidgetBase
         // Display a nice error
     }
 
+    function onTestCreate($packet)
+    {
+        $server = $packet->content;
+
+        $view = $this->tpl();
+        $view->assign('server', $server);
+
+        Dialog::fill($view->draw('_groups_add', true));
+    }
+
+    function onTestCreateError($packet)
+    {
+        Notification::append(null, $this->__('groups.no_creation'));
+    }
+
     function ajaxHeader()
     {
         $id = new \modl\ItemDAO();
@@ -84,25 +102,27 @@ class Groups extends WidgetBase
         $r->setTo($server)->request();
     }
 
-    function ajaxAdd($server)
+    /*
+     * Seriously ? We need to put this hack because of buggy XEP-0060...
+     */
+    function ajaxTestAdd($server)
     {
-        if(!$this->validateServer($server)) {
-            Notification::append(null, $this->__('groups.name_error'));
-            return;
-        }
+        if(!$this->validateServer($server)) return;
 
-        $view = $this->tpl();
-        $view->assign('server', $server);
-
-        Dialog::fill($view->draw('_groups_add', true));
+        $t = new TestCreate;
+        $t->setTo($server)
+          ->request();
     }
 
     function ajaxAddConfirm($server, $form)
     {
         if(!$this->validateServer($server)) return;
 
-        $validate_name = Validator::string()->length(6, 80);
-        if(!$validate_name->validate($form->name->value)) return;
+        $validate_name = Validator::string()->length(4, 80);
+        if(!$validate_name->validate($form->name->value)) {
+            Notification::append(null, $this->__('groups.name_error'));
+            return;
+        }
 
         $uri = stringToUri($form->name->value);
 

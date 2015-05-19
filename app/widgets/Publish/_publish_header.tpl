@@ -8,13 +8,14 @@
             if(typeof Post_ajaxClear === 'function') {
                 Post_ajaxClear();
                 Header_ajaxReset('news');
+                MovimTpl.hidePanel();
             } else {
                 Group_ajaxGetItems('{$server}', '{$node}');
             }">
         <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
         <h2>{$c->__('publish.new')}</h2>
         <h4>
-            {if="$item != null"}
+            {if="$item != null && $item->node != 'urn:xmpp:microblog:0'"}
                 {if="$item->name"}
                     {$item->name}
                 {else}
