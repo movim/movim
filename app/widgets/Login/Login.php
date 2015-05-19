@@ -137,18 +137,6 @@ class Login extends WidgetBase
         $this->showErrorBlock($error);
     }
 
-    function ajaxCheckLogin($jid)
-    {
-        list($username, $host) = explode('@', $jid);
-        $sd = new \Modl\SessionxDAO;
-        $here = $sd->checkConnected($username, $host);
-
-        if($here) {
-            $message = $this->__('error.impossible') . ' : '.$this->__('error.conflict');
-            Notification::append(null, $message);
-        }
-    }
-
     function ajaxLogin($form)
     {
         // We get the Server Configuration
@@ -188,7 +176,6 @@ class Login extends WidgetBase
 
         // We check if we already have an open session
         $sd = new \Modl\SessionxDAO;
-        //$here = $sd->checkConnected($username, $host);
         $here = $sd->getHash(sha1($username.$password.$host));
 
         if($here) {
