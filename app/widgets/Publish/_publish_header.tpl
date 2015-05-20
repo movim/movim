@@ -37,7 +37,8 @@
                 <i class="md md-remove-red-eye"></i>
             </span>
         </li>
-        <li onclick="Publish_ajaxPublish(movim_form_to_json('post'))">
+        <li id="button_send"
+            onclick="Publish.disableSend(); Publish_ajaxPublish(movim_form_to_json('post'));">
             <span class="icon">
                 <i class="md md-send"></i>
             </span>
