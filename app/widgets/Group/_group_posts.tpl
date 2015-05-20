@@ -19,8 +19,11 @@
                         {/if}
                     </h2>
                     <p>
-                        {if="$value->node == 'urn:xmpp:microblog:0' && $value->getContact()->getTrueName() != ''"}
-                            {$value->getContact()->getTrueName()} - 
+                        {if="$value->getContact()->getTrueName() != ''"}
+                            <a href="{$c->route('contact', $value->getContact()->jid)}">
+                                {$value->getContact()->getTrueName()}
+                            </a>
+                             - 
                         {/if}
                         {$value->published|strtotime|prepareDate}
                     </p>

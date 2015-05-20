@@ -38,6 +38,8 @@ class Publish extends WidgetBase
     {
         list($to, $node, $id) = array_values($packet->content);
 
+        RPC::call('Publish.enableSend');
+
         // Only for the microblog for the moment
         if($node == 'urn:xmpp:microblog:0') {
             $cn = new CommentCreateNode;
@@ -117,6 +119,8 @@ class Publish extends WidgetBase
 
     function ajaxPublish($form)
     {
+        RPC::call('Publish.disableSend');
+
         if($form->content->value != '') {
             $content = Markdown::defaultTransform($form->content->value);
 
@@ -144,6 +148,7 @@ class Publish extends WidgetBase
             $p->setContentHtml(rawurldecode($content))
               ->request();
         } else {
+            RPC::call('Publish.enableSend');
             Notification::append(false, $this->__('publish.no_content'));
         }
     }
