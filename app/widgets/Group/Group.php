@@ -88,10 +88,10 @@ class Group extends WidgetBase
 
         //if(isset($this->_role)
         //&& ($this->_role == 'owner' || $this->_role == 'publisher')) {
-            $view = $this->tpl();
-            $view->assign('server', $server);
-            $view->assign('node', $node);
-            RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
+        //    $view = $this->tpl();
+        //    $view->assign('server', $server);
+        //    $view->assign('node', $node);
+        //    RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
         //}
     }
 
@@ -171,6 +171,12 @@ class Group extends WidgetBase
         if(!$this->validateServerNode($server, $node)) return;
 
         $html = $this->prepareGroup($server, $node);
+
+        $view = $this->tpl();
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+        $html .= $view->draw('_group_publish', true);
+
         $header = $this->prepareHeader($server, $node);
         
         Header::fill($header);
