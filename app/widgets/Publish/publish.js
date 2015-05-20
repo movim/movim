@@ -13,6 +13,14 @@ var Publish = {
             embed.onpaste();
             localStorage.removeItem('share_url');
         }
+    },
+
+    enableSend: function() {
+        movim_remove_class('#button_send', 'disabled');
+    },
+
+    disableSend: function() {
+        movim_add_class('#button_send', 'disabled');
     }
 }
 
