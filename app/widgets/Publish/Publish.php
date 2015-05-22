@@ -86,6 +86,16 @@ class Publish extends WidgetBase
         RPC::call('Publish.setEmbed');
     }
 
+    function ajaxFormFilled($server, $node)
+    {
+        $view = $this->tpl();
+
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+
+        Dialog::fill($view->draw('_publish_back_confirm', true));
+    }
+
     function ajaxPreview($form)
     {
         if($form->content->value != '') {

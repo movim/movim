@@ -100,9 +100,13 @@ article section content q ul {
 }
 
 article section content q li {
-    flex: 1 50%;
+    flex: 1 25%;
     list-style-type: none;
     padding-left: 0;
+}
+
+article section content q li:first-child {
+    flex: 1 75%;
 }
 
 @media screen and (max-width: 1024px) {
@@ -112,8 +116,9 @@ article section content q li {
 }
 
 article section content q li img {
-    max-height: 40rem;
+    max-height: 10rem;
     max-width: 100%;
+    float: right;
 }
 
 article ul li.pic img {

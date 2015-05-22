@@ -1,11 +1,18 @@
 <ul class="active">
-    <a class="classic" href="{$c->route('root')}">
-        <li class="action {if="$page == 'main'"}active{/if}">
-            <!--<div class="action on_mobile">
-                <i onclick="MovimTpl.toggleMenu()" class="md md-arrow-back"></i>
-            </div>-->
+    <a class="classic" href="#">
+        <li class="action on_mobile" onclick="MovimTpl.toggleMenu()">
+            <span class="icon bubble on_mobile"><i class="md md-menu"></i></span>
+            <span>Movim</span>
+        </li>
+        <li class="action on_desktop">
             <span class="icon bubble"><i class="md md-cloud-queue"></i></span>
             <span>Movim</span>
+        </li>
+    </a>
+    <a class="classic" href="{$c->route('root')}">
+        <li class="action {if="$page == 'main'"}active{/if}">
+            <span class="icon bubble"><i class="md md-home"></i></span>
+            <span>{$c->__('page.home')}</span>
         </li>
     </a>
     <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}" href="{$c->route('news')}">
