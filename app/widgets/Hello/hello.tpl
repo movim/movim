@@ -2,7 +2,7 @@
     <ul class="flex active middle">
         <li class="subheader block large">Active contacts</li>
         {loop="$top"}
-            <li tabindex="{$key+1}" class="block action {if="$value->getPlace()"}condensed{/if}"
+            <li tabindex="{$key+1}" class="block action {if="$value->status"}condensed{/if}"
                 onclick="Hello_ajaxChat('{$value->jid}')">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
@@ -24,11 +24,14 @@
                 {/if}
 
                 <span>{$value->getTrueName()}</span>
-                <p class="wrap">{$value->getPlace()}</p>
+                <p class="wrap">{$value->status}</p>
             </li>
         {/loop}
         <a class="block large" href="{$c->route('chat')}">
-            <li>
+            <li class="action">
+                <div class="action">
+                    <i class="md md-chevron-right"></i>
+                </div>
                 <span class="icon">
                     <i class="md md-forum"></i>
                 </span>
