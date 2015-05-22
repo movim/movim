@@ -33,6 +33,13 @@ class SASL extends Payload
     public function handle($stanza, $parent = false) {        
         $mec = (array)$stanza->mechanism;
 
+        /*
+         * Weird behaviour on old eJabberd servers, fixed on the new versions
+         * see https://github.com/processone/ejabberd/commit/2d748115
+         */
+        if(isset($parent->starttls) && isset($parent->starttls->required))
+            return;
+
         $sessx = \Sessionx::start();
         $user = $sessx->user;
         
