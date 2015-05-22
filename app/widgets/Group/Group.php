@@ -181,7 +181,7 @@ class Group extends WidgetBase
         
         Header::fill($header);
 
-        RPC::call('movim_fill', 'group_widget', $html);
+        RPC::call('MovimTpl.fill', '#group_widget.'.stringToUri($server.'_'.$node), $html);
         RPC::call('Group.enableVideos');
     }
 
@@ -239,13 +239,13 @@ class Group extends WidgetBase
     {
         if(!$this->validateServerNode($server, $node)) return;
 
+        RPC::call('Group.addLoad', stringToUri($server.'_'.$node));
+
         $r = new GetItemsId;
         $r->setTo($server)
           ->setNode($node);
         
         $r->request();
-
-        RPC::call('Group.addLoad');
     }
 
     function ajaxGetHistory($server, $node, $page)

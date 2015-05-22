@@ -20,6 +20,7 @@ form > div > label {
     overflow: hidden;
     white-space: nowrap;
     max-width: 100%;
+    left: 0; /* We force the left align */
 }
 
 form > div.icon {
