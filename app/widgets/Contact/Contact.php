@@ -197,7 +197,18 @@ class Contact extends WidgetBase
         $cd = new \Modl\ContactDAO;
         $c  = $cd->get($jid, true);
 
-        if($c == null || $c->created == null || $c->isEmpty()) {
+        if($c == null
+        || $c->created == null
+        || $c->isEmpty()
+        || strtotime($c->updated) < mktime( // We update the 3 days old vcards
+                                        0,
+                                        0,
+                                        0,
+                                        gmdate("m"),
+                                        gmdate("d")-3,
+                                        gmdate("Y")
+                                    )
+            ) {
             $c = new \Modl\Contact;
             $c->jid = $jid;
 

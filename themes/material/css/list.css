@@ -148,7 +148,8 @@ ul li span.second {
 }
 
 ul li img {
-     max-width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 ul li > p.more img:not(.emoji) {
