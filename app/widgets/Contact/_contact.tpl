@@ -86,7 +86,13 @@
         <li class="condensed block">
             <span class="icon gray"><i class="md md-link"></i></span>
             <span>{$c->__('general.website')}</span>
-            <p class="wrap"><a href="{$contact->url}" target="_blank">{$contact->url}</a></p>
+            <p class="wrap">
+                {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
+                    <a href="{$contact->url}" target="_blank">{$contact->url}</a>
+                {else}
+                    {$contact->url}
+                {/if}
+            </p>
         </li>
         {/if}
 
