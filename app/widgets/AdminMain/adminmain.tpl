@@ -35,12 +35,12 @@
         </div>
     </div>
 
-
+    <!--
     <div>
         <input type="text" name="sizelimit" id="sizelimit" value="{$conf->sizelimit}" />
         <label for="sizelimit">{$c->__('general.limit')}</label>
     </div>
-
+    -->
     <div>
         <div class="select">
             <select id="loglevel" name="loglevel">

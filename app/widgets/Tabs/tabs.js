@@ -24,13 +24,13 @@ var Tabs = {
         
         if(current != null){
             tab = current;	
-            menuTab = document.querySelector('li.'+current);	
+            menuTab = document.querySelector('li.'+current);
         }
         
         //if no tab is active, activate the first one
         else {
-            tab = document.querySelector('.tabelem').id;	
-            menuTab = document.querySelector('li.'+tab);	
+            tab = document.querySelector('.tabelem').id;
+            menuTab = document.querySelector('li.'+tab);
         }
 
         Tabs.change(menuTab, tab);
@@ -55,9 +55,8 @@ var Tabs = {
         // We show the selected div
         var tabOn = document.querySelector('#'+n);
         tabOn.style.display = "block";
-        /*var baseUrl = window.location.href.split('#')[0];
+        var baseUrl = window.location.href.split('#')[0];
         window.location.replace(baseUrl + '#' + n);
-        /*  */  
         //scroll(0,0);
     }
 }
@@ -71,4 +70,3 @@ function actDifferent(e){
     e.preventDefault();
     return false;
 }	
-
