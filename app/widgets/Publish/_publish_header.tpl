@@ -4,14 +4,7 @@
 </div>
 <div>
     <div class="return active r3 condensed"
-        onclick="
-            if(typeof Post_ajaxClear === 'function') {
-                Post_ajaxClear();
-                Header_ajaxReset('news');
-                MovimTpl.hidePanel();
-            } else {
-                Group_ajaxGetItems('{$server}', '{$node}');
-            }">
+        onclick="Publish.headerBack('{$server}', '{$node}', false)">
         <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
         <h2>{$c->__('publish.new')}</h2>
         <h4>
