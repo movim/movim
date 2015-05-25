@@ -10,7 +10,7 @@
             <span class="icon gray emojis_open" onclick="Chat_ajaxSmiley()">
                 {$c->ajaxSmileyGet('😃')}
             </span>
-            <div class="action" data-jid="{$jid}" onclick="Chat.sendMessage('this.dataset.jid', {if="$muc"}true{else}false{/if})">
+            <div class="action" data-jid="{$jid}" onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
                 <i class="md md-send"></i>
             </div>
             <form>
