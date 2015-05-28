@@ -18,6 +18,7 @@
                 {if="$value->description"}class="condensed"{/if}
                 data-server="{$value->server}"
                 data-node="{$value->node}"
+                title="{$value->server} - {$value->node}"
             >
                 <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
                 <span>

@@ -4,13 +4,13 @@ namespace Movim\Daemon;
 use Ratchet\ConnectionInterface;
 
 class Session {
-    protected $clients;
-    public $timestamp;
-    protected $sid;
-    protected $baseuri;
-    public $process;
+    protected   $clients;
+    public      $timestamp;
+    protected   $sid;
+    protected   $baseuri;
+    public      $process;
 
-    protected $buffer;
+    protected   $buffer;
 
     public function __construct($loop, $sid, $baseuri)
     {
@@ -72,6 +72,9 @@ class Session {
             echo colorize($this->sid, 'yellow'). " : ".colorize("linker killed \n", 'red');
             $me->process = null;
             $me->closeAll();
+
+            $sd = new \Modl\SessionxDAO;
+            $sd->delete($this->sid);
         });
 
         // Debug only, if the linker output some errors

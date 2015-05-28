@@ -403,5 +403,11 @@ class Group extends WidgetBase
 
     function display()
     {
+        $this->view->assign('server', false);
+        $this->view->assign('node', false);
+        if($this->validateServerNode($this->get('s'), $this->get('n'))) {
+            $this->view->assign('server', $this->get('s'));
+            $this->view->assign('node', $this->get('n'));
+        }
     }
 }
