@@ -15,7 +15,7 @@ class Route extends \BaseController {
                 'contact'       => array('f'),
                 'disconnect'    => array('err'),
                 'feed'          => array('f'),
-                'group'         => array('g'),
+                'group'         => array('s', 'n'),
                 'help'          => false,
                 'infos'         => false,
                 'login'         => array('err'),

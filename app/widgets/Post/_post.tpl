@@ -10,32 +10,47 @@
     <header>
         <ul class="thick">
             <li class="condensed">
+                {if="$recycled"}
+                    {$contact = $recycled}
+                {else}
+                    {$contact = $post->getContact()}
+                {/if}
+
                 {if="$post->node == 'urn:xmpp:microblog:0'"}
-                    <a href="{$c->route('contact', $post->getContact()->jid)}">
-                        {$url = $post->getContact()->getPhoto('s')}
+                    <a href="{$c->route('contact', $contact->jid)}">
+                        {$url = $contact->getPhoto('s')}
                         {if="$url"}
                             <span class="icon bubble">
                                 <img src="{$url}">
                             </span>
                         {else}
-                            <span class="icon bubble color {$post->getContact()->jid|stringToColor}">
+                            <span class="icon bubble color {$contact->jid|stringToColor}">
                                 <i class="md md-person"></i>
                             </span>
                         {/if}
                     </a>
                 {else}
-                <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
+                    <a href="{$c->route('group', array($post->origin, $post->node))}">
+                        <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
+                    </a>
                 {/if}
-                <span {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
+                <h2 {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                     {if="$post->title != null"}
                         {$post->title}
                     {else}
                         {$c->__('post.default_title')}
                     {/if}
-                </span>
+                </h2>
                 <p>
-                    {if="$post->node == 'urn:xmpp:microblog:0'  && $post->getContact()->getTrueName() != ''"}
-                        <a href="{$c->route('contact', $post->getContact()->jid)}">{$post->getContact()->getTrueName()}</a> - 
+                    {if="$contact->getTrueName() != ''"}
+                        <a href="{$c->route('contact', $contact->jid)}">
+                            <i class="md md-person"></i> {$contact->getTrueName()}
+                        </a> –
+                    {/if}
+                    {if="$post->node != 'urn:xmpp:microblog:0'"}
+                        <a href="{$c->route('group', array($post->origin, $post->node))}">
+                            <i class="md md-pages"></i> {$post->node}
+                        </a> –
                     {/if}
                     {$post->published|strtotime|prepareDate}
                 </p>
@@ -51,14 +66,16 @@
         <ul class="middle divided spaced">
             {if="isset($attachements.links)"}
                 {loop="$attachements.links"}
-                    <li>
-                        <span class="icon">
-                            <img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
-                        </span>
-                        <a href="{$value.href}" class="alternate" target="_blank">
-                            <span>{$value.href|urldecode}</span>
-                        </a>
-                    </li>
+                    {if="substr($value.href, 0, 5) != 'xmpp:'"}
+                        <li>
+                            <span class="icon">
+                                <img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
+                            </span>
+                            <a href="{$value.href}" class="alternate" target="_blank">
+                                <span>{$value.href|urldecode}</span>
+                            </a>
+                        </li>
+                    {/if}
                 {/loop}
             {/if}
             {if="isset($attachements.files)"}
@@ -122,6 +139,31 @@
             </ul>
         {/if}
     </footer>
+
+    {if="$recycled"}
+        <a href="{$c->route('contact', $post->getContact()->jid)}">
+            <ul class="active middle">
+                <li class="condensed action">
+                    <div class="action">
+                        <i class="md md-chevron-right"></i>
+                    </div>
+                    {$url = $post->getContact()->getPhoto('s')}
+                    {if="$url"}
+                        <span class="icon bubble" style="background-image: url('{$url}');">
+                            <i class="md md-loop"></i>
+                        </span>
+                    {else}
+                        <span class="icon bubble color {$post->getContact()->jid|stringToColor}">
+                            <i class="md md-loop"></i>
+                        </span>
+                    {/if}
+                    
+                    <span>{$c->__('post.repost', $post->getContact()->getTrueName())}</span>
+                    <p>{$c->__('post.repost_profile', $post->getContact()->getTrueName())}</p>
+                </li>
+            </ul>
+        </a>
+    {/if}
 
     <div id="comments"></div>
 </article>

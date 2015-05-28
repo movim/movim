@@ -62,17 +62,20 @@ class Post extends WidgetBase
 
     function onComments($packet)
     {
-        $nodeid = $packet->content;
+        list($server, $node, $id) = array_values($packet->content);
 
         $p = new \Modl\ContactPostn();
-        $p->nodeid = $nodeid;
+        $p->nodeid = $id;
         
         $pd = new \Modl\PostnDAO();
         $comments = $pd->getComments($p);
 
         $view = $this->tpl();
         $view->assign('comments', $comments);
-        $view->assign('id', $nodeid);
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+        $view->assign('id', $id);
+
         $html = $view->draw('_post_comments', true);
         RPC::call('movim_fill', 'comments', $html);
     }
@@ -120,14 +123,17 @@ class Post extends WidgetBase
     }
 
     function ajaxGetComments($jid, $id)
-    {
+    {        
+        $pd = new \Modl\PostnDAO();
+        $pd->deleteNode($jid, "urn:xmpp:microblog:0:comments/".$id);
+
         $c = new CommentsGet;
         $c->setTo($jid)
           ->setId($id)
           ->request();
     }
 
-    function ajaxPublishComment($form, $id)
+    function ajaxPublishComment($form, $to, $node, $id)
     {
         $comment = trim($form->comment->value);
 
@@ -139,10 +145,10 @@ class Post extends WidgetBase
 
         $cp = new CommentPublish;
         $cp->setTo($to)
-          ->setFrom($this->user->getLogin())
-          ->setParentId($id)
-          ->setContent(htmlspecialchars(rawurldecode($comment)))
-          ->request();
+           ->setFrom($this->user->getLogin())
+           ->setParentId($id)
+           ->setContent(htmlspecialchars(rawurldecode($comment)))
+           ->request();
     }
 
     function prepareEmpty()
@@ -183,6 +189,17 @@ class Post extends WidgetBase
             if(isset($p->commentplace)) {
                 $this->ajaxGetComments($p->commentplace, $p->nodeid);
             }
+
+            $view->assign('recycled', false);
+
+            // Is it a recycled post ?
+            if($p->getContact()->jid
+            && $p->node == 'urn:xmpp:microblog:0'
+            && ($p->origin != $p->getContact()->jid)) {
+                $cd = new \Modl\ContactDAO;
+                $view->assign('recycled', $cd->get($p->origin));
+            }
+
             $view->assign('post', $p);
             $view->assign('attachements', $p->getAttachements());
             return $view->draw('_post', true);
@@ -190,6 +207,7 @@ class Post extends WidgetBase
             return $this->prepareEmpty();
         }
     }
+
     function ajaxTogglePrivacy($id) {
         $validate = Validator::string()->length(6, 128);
         
