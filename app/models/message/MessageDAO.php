@@ -35,7 +35,7 @@ class MessageDAO extends SQL {
         $this->prepare(
             'Message',
             array(
-                'session'   => $this->_user,
+                'session'   => $message->session,
                 'jidto'     => $message->jidto,
                 'jidfrom'   => $message->jidfrom,
                 'resource'  => $message->resource,

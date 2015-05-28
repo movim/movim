@@ -21,7 +21,8 @@ class Message extends Model {
 
     public $color; // Only for chatroom purpose
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->_struct = '
         {
             "session" : 
@@ -49,5 +50,41 @@ class Message extends Model {
         }';
         
         parent::__construct();
+    }
+
+    public function set($stanza, $parent = false)
+    {
+        if($stanza->body || $stanza->subject) {
+            $jid = explode('/',(string)$stanza->attributes()->from);
+            $to = current(explode('/',(string)$stanza->attributes()->to));
+
+            // This is not very beautiful
+            $user = new \User;
+            $this->session    = $user->getLogin();
+
+            $this->jidto      = $to;
+            $this->jidfrom    = $jid[0];
+
+            if(isset($jid[1]))
+                $this->resource = $jid[1];
+            
+            $this->type    = (string)$stanza->attributes()->type;
+            
+            $this->body    = (string)$stanza->body;
+            $this->subject = (string)$stanza->subject;
+
+            if($stanza->html) {
+                $this->html = \cleanHTMLTags($stanza->html->body->asXML());
+                $this->html = \fixSelfClosing($m->html);
+            }
+            
+            if($stanza->delay)
+                $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
+            elseif($parent && $parent->delay)
+                $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
+            else
+                $this->published = gmdate('Y-m-d H:i:s');
+            $this->delivered = gmdate('Y-m-d H:i:s');
+        }
     }
 }
