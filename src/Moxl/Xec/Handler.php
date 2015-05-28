@@ -158,6 +158,8 @@ class Handler {
             '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
             'f9e18585fd0e0873c52e880c800f267a' => 'Receipt',
 
+            '0977b7387b95f69007332a3e9b386f93' => 'MAMResult',
+
             '1040105fc01bfac8a5ab81324875e382' => 'Presence',
             '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',

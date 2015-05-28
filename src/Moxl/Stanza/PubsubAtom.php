@@ -11,7 +11,10 @@ class PubsubAtom {
     public $link;
     public $image;
     public $contenthtml = false;
-    
+
+    public $to;
+    public $node;
+
     public $geo = false;
     public $comments = false;
     
@@ -102,6 +105,9 @@ class PubsubAtom {
                 <content type="text">'.$this->content.'</content>';
 
         $xml .= '
+                <link rel="alternate"
+                    href="xmpp:'.htmlspecialchars($this->to).'?;node='.htmlspecialchars($this->node).';item='.htmlspecialchars($this->id).'"/>
+
                 <published>'.gmdate(DATE_ISO8601).'</published>  
                 <updated>'.gmdate(DATE_ISO8601).'</updated>
             </entry>';

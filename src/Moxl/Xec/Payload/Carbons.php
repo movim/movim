@@ -36,43 +36,24 @@ class Carbons extends Payload
 
         $evt = new \Event();
 
-        if($stanza->composing) {
+        if($stanza->composing)
             $evt->runEvent('composing', array($jid[0], $to));
-        }
-        
-        if($stanza->paused) {
+        if($stanza->paused)
             $evt->runEvent('paused', array($jid[0], $to));
-        }
-        
-        if($stanza->gone) {
+        if($stanza->gone)
             $evt->runEvent('gone', array($jid[0], $to));
-        }
         
         if($stanza->body || $stanza->subject) {
             $m = new \modl\Message();
+            $m->set($stanza->forwarded->message, $stanza->forwarded);
 
-            $m->session     = $parent->attributes()->from;
-            $m->jidto      = $to;
-            $m->jidfrom    = $jid[0];
-            
-            $m->resource = $jid[1];
-            
-            $m->type    = (string)$stanza->attributes()->type;
-            
-            $m->body    = (string)$stanza->body;
-            $m->subject = (string)$stanza->subject;
-            
-            if($stanza->delay)
-                $m->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
-            else
-                $m->published = gmdate('Y-m-d H:i:s');
-            $m->delivered = gmdate('Y-m-d H:i:s');
-            
-            $md = new \modl\MessageDAO();
-            $md->set($m);
-                    
-            $this->pack($m);
-            $this->deliver();
+            if(!preg_match('#^\?OTR#', $m->body)) {
+                $md = new \modl\MessageDAO();
+                $md->set($m);
+
+                $this->pack($m);
+                $this->deliver();
+            }
         }
     }
 }

@@ -54,12 +54,14 @@ class PostPublish extends Errors
     public function setTo($to)
     {
         $this->_to = $to;
+        $this->_atom->to = $to;
         return $this;
     }
     
     public function setNode($node)
     {
         $this->_node = $node;
+        $this->_atom->node = $node;
         return $this;
     }
     

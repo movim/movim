@@ -51,6 +51,7 @@ class CommentPublish extends Errors
     public function setTo($to)
     {
         $this->_to = $to;
+        $this->_atom->to = $to;
         return $this;
     }
 
@@ -58,6 +59,7 @@ class CommentPublish extends Errors
     {
         $this->_parentid = $parentid;
         $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_parentid;
+        $this->_atom->node = $this->_node;
         return $this;
     }
 
@@ -84,7 +86,7 @@ class CommentPublish extends Errors
         
         $p = new \modl\Postn();
 
-        $p->origin  = $this->_atom->jid;
+        $p->origin  = $this->_to;
         
         $p->node    = $this->_node;
         $p->nodeid  = $this->_atom->id;
@@ -100,7 +102,12 @@ class CommentPublish extends Errors
         $pd = new \modl\PostnDAO();
         $pd->set($p);
         
-        $this->pack($this->_parentid);
+        $this->pack(
+            array(
+                'server' => $this->_to,
+                'node' => $this->_node,
+                'id' => $this->_parentid)
+            );
         $this->deliver();
     }
     

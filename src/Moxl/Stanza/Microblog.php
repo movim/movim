@@ -97,15 +97,15 @@ class Microblog {
                         </field>
 
                         <field var="pubsub#deliver_notifications">
-                            <value>true</value>
+                            <value>1</value>
                         </field>
 
                         <field var="pubsub#deliver_payloads">
-                            <value>true</value>
+                            <value>0</value>
                         </field>
 
                         <field var="pubsub#persist_items">
-                            <value>true</value>
+                            <value>1</value>
                         </field>
 
                         <field var="pubsub#max_items">
@@ -121,28 +121,37 @@ class Microblog {
                         </field>
 
                         <field var="pubsub#publish_model">
-                            <value>open</value>
+                            <value>publishers</value>
+                        </field>
+
+                        <field var="pubsub#purge_offline">
+                            <value>0</value>
+                        </field>
+
+                        <field var="pubsub#notify_config">
+                            <value>0</value>
                         </field>
 
                         <field var="pubsub#notify_delete">
-                            <value>true</value>
+                            <value>0</value>
                         </field>
 
                         <field var="pubsub#notify_retract">
-                            <value>true</value>
+                            <value>0</value>
                         </field>
                         
-                        <field var="pubsub#subscribe">
-                            <value>true</value>
+                        
+                        <field var="pubsub#subscribe" type="boolean">
+                            <value>1</value>
                         </field>
 
-                        <field var="pubsub#send_last_published_item">
+                        <field var="pubsub#send_last_published_item" type="list-single">
                             <value>on_sub_and_presence</value>
                         </field>
 
 
                         <field var="pubsub#notify_sub">
-                            <value>true</value>
+                            <value>1</value>
                         </field>
 
                         <field var="pubsub#type">
@@ -156,26 +165,6 @@ class Microblog {
                 </configure>
             </pubsub>';
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        \Moxl\API::request($xml);
-    }
-
-    static function get($to)
-    {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <items node="urn:xmpp:microblog:0" max_items="40"/>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml);
-    }
-
-    static function commentsGet($to, $id)
-    {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <items node="urn:xmpp:microblog:0:comments/'.$id.'"></items>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
         \Moxl\API::request($xml);
     }
 }

@@ -42,42 +42,20 @@ class Message extends Payload
             $evt->runEvent('gone', array($jid[0], $to));
         if($stanza->body || $stanza->subject) {
             $m = new \modl\Message();
-
-            $m->session     = $to;
-            $m->jidto      = $to;
-            $m->jidfrom    = $jid[0];
-
-            if(isset($jid[1]))
-                $m->resource = $jid[1];
-            
-            $m->type    = (string)$stanza->attributes()->type;
-            
-            $m->body    = (string)$stanza->body;
-            $m->subject = (string)$stanza->subject;
-
-            if($stanza->html) {
-                $m->html = \cleanHTMLTags($stanza->html->body->asXML());
-                $m->html = \fixSelfClosing($m->html);
-            }
-            
-            if($stanza->delay)
-                $m->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
-            else
-                $m->published = gmdate('Y-m-d H:i:s');
-            $m->delivered = gmdate('Y-m-d H:i:s');
+            $m->set($stanza, $parent);
 
             if(!preg_match('#^\?OTR#', $m->body)) {
                 $md = new \modl\MessageDAO();
                 $md->set($m);
+
+                $this->pack($m);
+                $this->deliver();
             }
 
             // Can we remove this ?
             /*if($m->type == 'groupchat' && $m->subject != '') {
                 $evt->runEvent('subject', $m);
             }*/
-
-            $this->pack($m);
-            $this->deliver();
         }
     }
 }

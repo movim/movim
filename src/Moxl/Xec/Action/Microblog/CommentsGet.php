@@ -25,17 +25,18 @@
 namespace Moxl\Xec\Action\Microblog;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Microblog;
+use Moxl\Stanza\Pubsub;
 
 class CommentsGet extends Action
 {
     private $_to;
     private $_id;
-    
+    private $_node;
+
     public function request() 
     {
         $this->store();
-        Microblog::commentsGet($this->_to, $this->_id);
+        Pubsub::getItems($this->_to, $this->_node);
     }
     
     public function setTo($to)
@@ -47,6 +48,7 @@ class CommentsGet extends Action
     public function setId($id)
     {
         $this->_id = $id;
+        $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_id;
         return $this;
     }
     
@@ -66,7 +68,12 @@ class CommentsGet extends Action
             }
         }
 
-        $this->pack($this->_id);
+        $this->pack(
+            array(
+                'server' => $this->_to,
+                'node' => $this->_node,
+                'id' => $this->_id)
+            );
         $this->deliver();
     }
     
