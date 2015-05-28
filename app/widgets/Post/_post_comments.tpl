@@ -29,7 +29,7 @@
         </li>
     {/loop}
     <li class="action">
-        <div class="action" onclick="Post_ajaxPublishComment(movim_form_to_json('comment'),'{$id}')">
+        <div class="action" onclick="Post_ajaxPublishComment(movim_form_to_json('comment'),'{$server}', '{$node}', '{$id}')">
             <i class="md md-send"></i>
         </div>
         <span class="icon gray">
