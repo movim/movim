@@ -19,6 +19,7 @@ class Chat extends WidgetBase
         $this->addcss('chat.css');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('mamresult', 'onMessageHistory');
         $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
         $this->registerEvent('gone', 'onGone');
@@ -48,13 +49,18 @@ class Chat extends WidgetBase
             }
         }
     }*/
+    
+    function onMessageHistory($packet)
+    {
+        $this->onMessage($packet, true);
+    }
 
-    function onMessage($packet, $mine = false)
+    function onMessage($packet, $history = false)
     {
         $message = $packet->content;
         $cd = new \Modl\ContactDAO;
 
-        if($message->session == $message->jidto) {
+        if($message->session == $message->jidto && !$history) {
             $from = $message->jidfrom;
 
             $contact = $cd->getRosterItem($from);
@@ -71,21 +77,17 @@ class Chat extends WidgetBase
 
             RPC::call('movim_fill', $from.'_state', '');     
         // If the message is from me
-        } else {
+        } /*else {
             $from = $message->jidto;
             $contact = $cd->get();
-        }
+        }*
 
         $me = $cd->get();
         if($me == null) {
             $me = new \Modl\Contact;
-        }
+        }*/
 
-        if(preg_match('#^\?OTR#', $message->body)) {
-            if(!$mine) {
-                //RPC::call('ChatOTR.receiveMessage', $message->body);
-            }
-        } else {
+        if(!preg_match('#^\?OTR#', $message->body)) {
             RPC::call('Chat.appendMessage', $this->prepareMessage($message));
         }
         RPC::call('MovimTpl.scrollPanel');
@@ -174,13 +176,16 @@ class Chat extends WidgetBase
 
     /**
      * @brief Get a discussion
-     * @parem string $jid
+     * @param string $jid
      */
     function ajaxGet($jid = null)
     {
         if($jid == null) {
             RPC::call('movim_fill', 'chat_widget', $this->prepareEmpty());
         } else {
+            $chats = new Chats;
+            $chats->ajaxGetHistory($jid);
+
             $html = $this->prepareChat($jid);
             
             $header = $this->prepareHeader($jid);
@@ -196,7 +201,7 @@ class Chat extends WidgetBase
 
     /**
      * @brief Get a chatroom
-     * @parem string $jid
+     * @param string $jid
      */
     function ajaxGetRoom($room)
     {
@@ -260,7 +265,7 @@ class Chat extends WidgetBase
         /* Is it really clean ? */
         $packet = new Moxl\Xec\Payload\Packet;
         $packet->content = $m;
-        $this->onMessage($packet, true);
+        $this->onMessage($packet/*, true*/);
 
         if($resource != false) {
             $to = $to . '/' . $resource;

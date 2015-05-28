@@ -74,7 +74,6 @@ var MovimTpl = {
         //else document.querySelector(selector).innerHTML = '';
     },
     fill : function(selector, html) {
-        console.log(selector);
         target = document.querySelector(selector);
         if(target) {
             target.innerHTML = html;

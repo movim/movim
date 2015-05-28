@@ -59,6 +59,26 @@ class Chats extends WidgetBase
         }
     }
 
+    /**
+     * @brief Get history
+     */
+    function ajaxGetHistory($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $md = new \Modl\MessageDAO();
+        $messages = $md->getContact(echapJid($jid), 0, 1);
+
+        $g = new \Moxl\Xec\Action\MAM\Get;
+        $g->setJid($jid);
+
+        if(!empty($messages)) {
+            $g->setStart(strtotime($messages[0]->published));
+        }
+
+        $g->request();
+    }
+
     function ajaxOpen($jid)
     {
         if(!$this->validateJid($jid)) return;
@@ -66,21 +86,25 @@ class Chats extends WidgetBase
         $chats = Cache::c('chats');
         if($chats == null) $chats = array();
 
+        unset($chats[$jid]);
+
         if(!array_key_exists($jid, $chats)
         && $jid != $this->user->getLogin()) {
             $chats[$jid] = 1;
-        } else {
+
+            $this->ajaxGetHistory($jid);
+
+            Cache::c('chats', $chats);
+
+            RPC::call('movim_delete', $jid.'_chat_item');
+
+            RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
+            RPC::call('Chats.refresh');
+        }/* else {
             unset($chats[$jid]);
         }
 
-        $chats[$jid] = 1;
-
-        Cache::c('chats', $chats);
-
-        RPC::call('movim_delete', $jid.'_chat_item');
-
-        RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
-        RPC::call('Chats.refresh');
+        $chats[$jid] = 1;*/
     }
 
     function ajaxClose($jid)
