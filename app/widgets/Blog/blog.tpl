@@ -97,7 +97,38 @@
                     {/if}
                 </ul>
             </footer>
+            {$comments = $c->getComments($value)}
+            {if="$comments"}
+                <ul class="spaced middle">
+                    <li class="subheader">
+                        {$c->__('post.comments')}
+                        <span class="info">{$comments|count}</span>
+                    </li>
+                    {loop="$comments"}
+                        <li class="condensed">
+                            {$url = $value->getContact()->getPhoto('s')}
+                            {if="$url"}
+                                <span class="icon bubble">
+                                    <img src="{$url}">
+                                </span>
+                            {else}
+                                <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
+                                    <i class="md md-person"></i>
+                                </span>
+                            {/if}
+                            <span class="info">{$value->published|strtotime|prepareDate}</span>
+                            <span>
+                                {$value->getContact()->getTrueName()}
+                            </span>
+                            <p>
+                                {$value->content}
+                            </p>
+                        </li>
+                    {/loop}
+                </ul>
+            {/if}
         </article>
+
     {/loop}
     {if="$posts == null"}
         <ul class="simple thick">
