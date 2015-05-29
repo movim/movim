@@ -21,15 +21,10 @@ function movim_get_node(str) {
 
 /**
  * @brief Force Movim to go back to the login page
- * @param string error 
  */
-function movim_disconnect(error)
+function movim_disconnect()
 {
-    if(error == null) {
-        window.location.replace(ERROR_URI);
-    } else {
-        window.location.replace(ERROR_URI + error);
-    }
+    window.location.replace(ERROR_URI);
 }
 
 /**
