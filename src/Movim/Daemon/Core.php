@@ -45,7 +45,7 @@ class Core implements MessageComponentInterface {
             "\n";
         echo colorize("Add this in your configuration file", 'yellow')."\n";
         echo "location /ws/ {
-    proxy_pass http://{$explode['host']}:{$port}/;
+    proxy_pass http://localhost:{$port}/;
     proxy_http_version 1.1;
     proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection \"Upgrade\";

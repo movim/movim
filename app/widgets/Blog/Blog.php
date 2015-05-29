@@ -32,4 +32,13 @@ class Blog extends WidgetBase {
 
         $this->view->assign('posts', $messages);
     }
+
+    function getComments($post)
+    {
+        $pd = new \Modl\PostnDAO();
+        return $pd->getComments($post);
+
+        //$view = $this->tpl();
+        //$view->assign('comments', $comments);
+    }
 }
