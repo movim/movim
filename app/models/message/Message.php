@@ -75,7 +75,7 @@ class Message extends Model {
 
             if($stanza->html) {
                 $this->html = \cleanHTMLTags($stanza->html->body->asXML());
-                $this->html = \fixSelfClosing($m->html);
+                $this->html = \fixSelfClosing($this->html);
             }
             
             if($stanza->delay)
