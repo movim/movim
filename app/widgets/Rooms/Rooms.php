@@ -19,17 +19,13 @@ class Rooms extends WidgetBase
 
     function onBookmark()
     {
-        RPC::call('movim_fill', 'rooms_widget', $this->prepareRooms());
-        Notification::append(null, $this->__('bookmarks.updated'));
-        RPC::call('Rooms.refresh');
+        $this->refreshRooms();
         RPC::call('MovimTpl.hidePanel');
     }
 
     function onConnected()
     {
-        RPC::call('movim_fill', 'rooms_widget', $this->prepareRooms());
-        Notification::append(null, $this->__('chatrooms.connected'));
-        RPC::call('Rooms.refresh');
+        $this->refreshRooms();
     }
 
     function onDisconnected()
@@ -38,6 +34,11 @@ class Rooms extends WidgetBase
         $c = new Chat();
         $c->ajaxGet();
 
+        $this->refreshRooms();
+    }
+
+    private function refreshRooms()
+    {
         RPC::call('movim_fill', 'rooms_widget', $this->prepareRooms());
         Notification::append(null, $this->__('chatrooms.disconnected'));
         RPC::call('Rooms.refresh');
@@ -248,7 +249,7 @@ class Rooms extends WidgetBase
      */
     private function validateRoom($room)
     {
-        $validate_server = Validator::email()->noWhitespace()->length(6, 40);
+        $validate_server = Validator::string()->noWhitespace()->length(6, 80);
         if(!$validate_server->validate($room)) return false;
         else return true;
     }

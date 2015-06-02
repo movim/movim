@@ -128,7 +128,7 @@ var MovimTpl = {
     back : function() {
         // If the contect menu is show
         var cm = document.querySelector('ul.context_menu');
-        if(cm != null && cm.className.contains('shown')) {
+        if(cm != null && cm.className.includes('shown')) {
             MovimTpl.toggleContextMenu(document);
         }
         // If a dialog box is show
