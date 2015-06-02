@@ -34,7 +34,9 @@ class Route extends \BaseController {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        if($config->rewrite == true) {
+        if($config->rewrite == true
+        && isset($_SERVER['HTTP_MOD_REWRITE'])
+        && $_SERVER['HTTP_MOD_REWRITE']) {
             $request = explode('/', $this->fetchGet('query'));
             $this->_page = $request[0];
             array_shift($request);
@@ -80,28 +82,30 @@ class Route extends \BaseController {
             //} else {
                 if($tab != false)
                     $tab = '#'.$tab;
+                // Here we got a beautiful rewriten URL !
+                if($config->rewrite == true
+                && isset($_SERVER['HTTP_MOD_REWRITE'])
+                && $_SERVER['HTTP_MOD_REWRITE']) {
+                    $uri = BASE_URI . $page;
+                    if($params != false && is_array($params))
+                        foreach($params as $value)
+                            $uri .= '/' . $value;
+                    elseif($params != false)
+                        $uri .= '/' . $params;
+                }
                 //We construct a classic URL if the rewriting is disabled
-                if($config->rewrite == false) {
-                    $uri = BASE_URI . '?q='.$page;
+                else {
+                    $uri = BASE_URI . '?q=' . $page;
                     
                     if($params != false && is_array($params)) {
                         $i = 0;
                         foreach($params as $value) {
-                            $uri .= '&'.$routes[$page][$i].'='.$value;
+                            $uri .= '&' . $routes[$page][$i] . '=' . $value;
                             $i++;
                         }
                     }
                     elseif($params != false)
                         $uri .= '&'.$routes[$page][0].'='.$params;
-                } 
-                // Here we got a beautiful rewriten URL !
-                else {
-                    $uri = BASE_URI . $page;
-                    if($params != false && is_array($params))
-                        foreach($params as $value)
-                            $uri .= '/'.$value;
-                    elseif($params != false)
-                        $uri .= '/'.$params;
                 }
                 return $uri.$tab;
             //}
