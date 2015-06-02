@@ -43,27 +43,39 @@ class Presence extends Payload
             $p = new \modl\Presence();
             $p->setPresence($stanza);
 
-            if($p->value != 5 && $p->value != 6) {
-                $pd = new \modl\PresenceDAO();
-                $pd->set($p);
+            $pd = new \modl\PresenceDAO();
+            $pd->set($p);
 
-                /*if($p->photo) {
-                    $r = new Get;
-                    $r->setTo(echapJid((string)$stanza->attributes()->from))->request();
-                }*/
+            /*if($p->photo) {
+                $r = new Get;
+                $r->setTo(echapJid((string)$stanza->attributes()->from))->request();
+            }*/
 
-                if($p->muc) {
-                    $this->method('muc');
-                    $this->pack($p);
-                } else {
-                    $cd = new \Modl\ContactDAO();
-                    $c = $cd->getRosterItem($p->jid, true);
+            if($p->muc
+            && isset($stanza->x)
+            && isset($stanza->x->status)) {
+                $code = (string)$stanza->x->status->attributes()->code;
+                if(isset($code) && $code == '110') {
+                    if($p->value != 5 && $p->value != 6) {
+                        $this->method('muc_handle');
+                        $this->pack($p);
+                    } elseif($p->value == 5) {
+                        $md = new \modl\PresenceDAO();
+                        $md->clearMuc($p->jid);
 
-                    $this->pack($c);
+                        $this->method('unavailable_handle');
+                        $this->pack($p);
+                        $this->deliver();
+                    }
                 }
+            } else {
+                $cd = new \Modl\ContactDAO();
+                $c = $cd->getRosterItem($p->jid, true);
 
-                $this->deliver();
+                $this->pack($c);
             }
+
+            $this->deliver();
         }
     }
 }

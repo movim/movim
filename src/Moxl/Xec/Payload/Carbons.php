@@ -29,23 +29,23 @@ namespace Moxl\Xec\Payload;
 class Carbons extends Payload
 {
     public function handle($stanza, $parent = false) {
-        $stanza = $stanza->forwarded->message;
+        $message = $stanza->forwarded->message;
 
-        $jid = explode('/',(string)$stanza->attributes()->from);
-        $to = current(explode('/',(string)$stanza->attributes()->to));
+        $jid = explode('/',(string)$message->attributes()->from);
+        $to = current(explode('/',(string)$message->attributes()->to));
 
         $evt = new \Event();
 
-        if($stanza->composing)
+        if($message->composing)
             $evt->runEvent('composing', array($jid[0], $to));
-        if($stanza->paused)
+        if($message->paused)
             $evt->runEvent('paused', array($jid[0], $to));
-        if($stanza->gone)
+        if($message->gone)
             $evt->runEvent('gone', array($jid[0], $to));
         
-        if($stanza->body || $stanza->subject) {
+        if($message->body || $message->subject) {
             $m = new \modl\Message();
-            $m->set($stanza->forwarded->message, $stanza->forwarded);
+            $m->set($message, $stanza->forwarded);
 
             if(!preg_match('#^\?OTR#', $m->body)) {
                 $md = new \modl\MessageDAO();

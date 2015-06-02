@@ -164,7 +164,6 @@ class Handler {
             '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
             
-            '89d8bb4741fd3a62e8b20e0d52a85a36' => 'MucUser',//?
             'b5e3374e43f6544852f7751dfc529100' => 'Subject',//?
 
             'fa9d41e26f664d9056618a4afe213861' => 'Post',
