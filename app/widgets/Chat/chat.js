@@ -48,8 +48,6 @@ var Chat = {
     appendMessage : function(message) {
         if(message.body == '') return;
 
-
-        console.log(message);
         var bubble = null;
         var id = null;
 
