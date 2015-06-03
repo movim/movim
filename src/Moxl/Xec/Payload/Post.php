@@ -52,16 +52,15 @@ class Post extends Payload
             }
         } elseif($stanza->items->retract) {
             $pd = new \modl\PostnDAO();
-            $pd->delete($stanza->retract->attributes()->id);
-                
-            $evt = new \Event();
-            $evt->runEvent(
-                'post', 
-                array(
-                    'from' => $from, 
+            $pd->delete($stanza->items->retract->attributes()->id);
+
+            $this->method('retract');
+
+            $this->pack(array(
+                    'server' => $from, 
                     'node' => $stanza->attributes()->node
-                )
-            );
+                ));
+            $this->deliver();
         } elseif($stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)) {
             // In this case we only get the header, so we request the full content

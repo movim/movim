@@ -121,7 +121,7 @@ class Microblog {
                         </field>
 
                         <field var="pubsub#publish_model">
-                            <value>publishers</value>
+                            <value>open</value>
                         </field>
 
                         <field var="pubsub#purge_offline">
