@@ -67,9 +67,12 @@ class Message extends Model {
 
             if(isset($jid[1]))
                 $this->resource = $jid[1];
-            
-            $this->type    = (string)$stanza->attributes()->type;
-            
+
+            $this->type = 'chat';
+            if($stanza->attributes()->type) {
+                $this->type    = (string)$stanza->attributes()->type;
+            }
+
             $this->body    = (string)$stanza->body;
             $this->subject = (string)$stanza->subject;
 

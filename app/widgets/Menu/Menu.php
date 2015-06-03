@@ -9,7 +9,13 @@ class Menu extends WidgetBase
     function load()
     {
         $this->registerEvent('post', 'onPost');
+        $this->registerEvent('post_retract', 'onRetract');
         $this->addjs('menu.js');
+    }
+
+    function onRetract($packet)
+    {
+        $this->ajaxGetAll();
     }
 
     function onStream($count)
@@ -31,7 +37,7 @@ class Menu extends WidgetBase
             $post = $packet->content;
             if($post->isMicroblog()) {
                 $cd = new \Modl\ContactDAO;
-                $contact = $cd->get($post->jid);
+                $contact = $cd->get($post->origin);
 
                 if($post->title == null) {
                     $title = __('post.default_title');

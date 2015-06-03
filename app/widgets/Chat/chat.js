@@ -52,7 +52,8 @@ var Chat = {
         var id = null;
 
         if(message.type == 'groupchat') {
-            bubble = Chat.room;
+            bubble = Chat.room.cloneNode(true);
+
             id = message.jidfrom + '_conversation';
 
             if(message.body.match(/^\/me/)) {
@@ -63,9 +64,16 @@ var Chat = {
             bubble.querySelector('div').innerHTML = message.body;
             bubble.querySelector('span.info').innerHTML = message.published;
             bubble.querySelector('span.user').className = 'user ' + message.color;
+
+            bubble.querySelector('span.user').onclick = function(n) {
+                var textarea = document.querySelector('#chat_textarea');
+                textarea.value = this.innerHTML + ', ' + textarea.value;
+                textarea.focus();
+            };
+
             bubble.querySelector('span.user').innerHTML = message.resource;
 
-            movim_append(id, bubble.outerHTML);
+            document.getElementById(id).appendChild(bubble);
             bubble.querySelector('div').className = '';
         } else {
             if(message.session == message.jidfrom) {

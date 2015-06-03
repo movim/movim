@@ -40,6 +40,6 @@
 </section>
 <div>
     <a onclick="Dialog.clear()" class="button flat">
-        {$c->__('button.cancel')}
+        {$c->__('button.close')}
     </a>
 </div>
