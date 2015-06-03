@@ -174,7 +174,7 @@ class PostnDAO extends SQL {
             )
         );
             
-        return $this->run('Message');
+        return $this->run('Postn');
     }
 
     function deleteNode($origin, $node) {
@@ -191,7 +191,7 @@ class PostnDAO extends SQL {
             )
         );
             
-        return $this->run('Message');
+        return $this->run('Postn');
     }
     
     function getNode($from, $node, $limitf = false, $limitr = false) {

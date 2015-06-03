@@ -76,6 +76,10 @@
     margin-right: 1rem;
 }
 
+#chat_widget li.room span.user:hover {
+    cursor: pointer;
+}
+
 #chat_widget .placeholder {
     padding-top: 37em;
     background-size: 35rem 35rem;
