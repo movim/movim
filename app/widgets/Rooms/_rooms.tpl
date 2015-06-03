@@ -12,7 +12,7 @@
                 {if="$connected"}
                     <span class="icon bubble color {$value->name|stringToColor}"><i class="md md-people"></i></span>
                 {else}
-                    <span class="icon bubble color {$value->name|stringToColor}"><i class="md md-people-outline"></i></span>
+                    <span class="disabled icon bubble color {$value->name|stringToColor}"><i class="md md-people-outline"></i></span>
                 {/if}
                 <span>{$value->name}</span>
                 <p>{$value->conference}</p>
