@@ -35,12 +35,12 @@ class Rooms extends WidgetBase
         $c->ajaxGet();
 
         $this->refreshRooms();
+        Notification::append(null, $this->__('chatrooms.disconnected'));
     }
 
     private function refreshRooms()
     {
         RPC::call('movim_fill', 'rooms_widget', $this->prepareRooms());
-        Notification::append(null, $this->__('chatrooms.disconnected'));
         RPC::call('Rooms.refresh');
     }
 
