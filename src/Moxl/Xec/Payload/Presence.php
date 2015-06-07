@@ -60,8 +60,7 @@ class Presence extends Payload
                         $this->method('muc_handle');
                         $this->pack($p);
                     } elseif($p->value == 5) {
-                        $md = new \modl\PresenceDAO();
-                        $md->clearMuc($p->jid);
+                        $pd->clearMuc($p->jid);
 
                         $this->method('unavailable_handle');
                         $this->pack($p);
@@ -73,6 +72,10 @@ class Presence extends Payload
                 $c = $cd->getRosterItem($p->jid, true);
 
                 $this->pack($c);
+            }
+
+            if($p->value == 5 || $p->value == 6) {
+                $pd->delete($p);
             }
 
             $this->deliver();
