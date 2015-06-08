@@ -1,7 +1,7 @@
 <?php
 
 use Moxl\Xec\Action\Roster\UpdateItem;
-use Moxl\Xec\Action\Vcard\Get;
+use Moxl\Xec\Action\Vcard4\Get;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\GetItems;
 
@@ -13,6 +13,7 @@ class Contact extends WidgetBase
     {
         $this->registerEvent('roster_updateitem_handle', 'onContactEdited');
         $this->registerEvent('vcard_get_handle', 'onVcardReceived');
+        $this->registerEvent('vcard4_get_handle', 'onVcardReceived');
     }
 
     public function onVcardReceived($packet)
@@ -67,6 +68,9 @@ class Contact extends WidgetBase
     function ajaxRefreshVcard($jid)
     {
         if(!$this->validateJid($jid)) return;
+
+        $a = new Moxl\Xec\Action\Avatar\Get;
+        $a->setTo(echapJid($jid))->request();
 
         $r = new Get;
         $r->setTo(echapJid($jid))->request();
@@ -200,18 +204,9 @@ class Contact extends WidgetBase
         if($c == null
         || $c->created == null
         || $c->isEmpty()
-        || strtotime($c->updated) < mktime( // We update the 3 days old vcards
-                                        0,
-                                        0,
-                                        0,
-                                        gmdate("m"),
-                                        gmdate("d")-3,
-                                        gmdate("Y")
-                                    )
-            ) {
+        || $c->isOld()) {
             $c = new \Modl\Contact;
             $c->jid = $jid;
-
             $this->ajaxRefreshVcard($jid);
         }
         
