@@ -42,10 +42,7 @@ class Publish extends WidgetBase
 
         // Only for the microblog for the moment
         if($node == 'urn:xmpp:microblog:0') {
-            $cn = new CommentCreateNode;
-            $cn->setTo($to)
-               ->setParentId($id)
-               ->request();
+            $this->ajaxCreateComments($to, $id);
         }
     }
 
@@ -84,6 +81,16 @@ class Publish extends WidgetBase
         Header::fill($view->draw('_publish_header', true));
         
         RPC::call('Publish.setEmbed');
+    }
+
+    function ajaxCreateComments($server, $id)
+    {
+        if(!$this->validateServerNode($server, $id)) return;
+
+        $cn = new CommentCreateNode;
+        $cn->setTo($server)
+           ->setParentId($id)
+           ->request();
     }
 
     function ajaxFormFilled($server, $node)
