@@ -72,10 +72,10 @@ class Presence extends Payload
                 $c = $cd->getRosterItem($p->jid, true);
 
                 $this->pack($c);
-            }
 
-            if($p->value == 5 || $p->value == 6) {
-                $pd->delete($p);
+                if($p->value == 5 || $p->value == 6) {
+                    $pd->delete($p);
+                }
             }
 
             $this->deliver();
