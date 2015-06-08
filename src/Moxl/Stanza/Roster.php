@@ -33,8 +33,8 @@ class Roster {
         $xml ='
             <item
                 jid="'.$to.'"
-                name="'.$name.'">
-                <group>'.$group.'</group>
+                name="'.htmlspecialchars($name).'">
+                <group>'.htmlspecialchars($group).'</group>
             </item>';
         
         $xml = self::builder($xml, false, 'set');
