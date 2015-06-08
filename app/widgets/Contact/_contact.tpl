@@ -301,6 +301,46 @@
         </ul>
     {/if}
 
+    {if="$contactr->rostersubscription != 'both'"}
+        <div class="card">
+            <ul class="middle">
+                <li class="condensed">
+                    {if="$contactr->rostersubscription == 'to'"}
+                        <span class="icon gray">
+                            <i class="md md-call-received"></i>
+                        </span>
+                        <span>{$c->__('subscription.to')}</span>
+                        <p>{$c->__('subscription.to_text')}</p>
+                        <a class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
+                            {$c->__('subscription.to_button')}
+                        </a>
+                    {/if}
+                    {if="$contactr->rostersubscription == 'from'"}
+                        <span class="icon gray">
+                            <i class="md md-call-made"></i>
+                        </span>
+                        <span>{$c->__('subscription.from')}</span>
+                        <p>{$c->__('subscription.from_text')}</p>
+                        <a class="button flat" onclick="Notifs_ajaxAsk('{$contactr->jid}')">
+                            {$c->__('subscription.from_button')}
+                        </a>
+                    {/if}
+                    {if="$contactr->rostersubscription == 'none'"}
+                        <span class="icon gray">
+                            <i class="md md-do-not-disturb"></i>
+                        </span>
+
+                        <span>{$c->__('subscription.none')}</span>
+                        <p>{$c->__('subscription.none_text')}</p>
+                        <a class="button flat" onclick="Notifs_ajaxAsk('{$contactr->jid}')">
+                            {$c->__('subscription.none_button')}
+                        </a>
+                    {/if}
+                </li>
+            </ul>
+        </div>
+    {/if}
+
     <a onclick="{$chat}" class="button action color red">
         <i class="md md-chat"></i>
     </a>
