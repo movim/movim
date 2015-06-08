@@ -422,6 +422,7 @@ class ContactDAO extends SQL {
             contact.tuneartist,
             contact.tunetitle,
             rosterlink.rostername,
+            rosterlink.rostersubscription,
             rosterlink.groupname,
             rosterlink.chaton,
             presence.status,
@@ -460,6 +461,7 @@ class ContactDAO extends SQL {
             contact.tuneartist,
             contact.tunetitle,
             rosterlink.rostername,
+            rosterlink.rostersubscription,
             rosterlink.groupname,
             rosterlink.chaton
         from rosterlink
@@ -531,6 +533,7 @@ class ContactDAO extends SQL {
             contact.tuneartist,
             contact.tunetitle,
             rosterlink.rostername,
+            rosterlink.rostersubscription,
             rosterlink.groupname,
             rosterlink.chaton,
             presence.status,
