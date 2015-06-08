@@ -406,7 +406,25 @@ class Contact extends Model {
         && $this->date == null
         && $this->url == null
         && $this->email == null
+        && $this->created == null
+        && $this->updated == null
         && $this->description == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isOld() {
+        if(strtotime($this->updated) < mktime( // We update the 3 days old vcards
+                                        0,
+                                        0,
+                                        0,
+                                        gmdate("m"),
+                                        gmdate("d")-3,
+                                        gmdate("Y")
+                                    )
+            ) {
             return true;
         } else {
             return false;
