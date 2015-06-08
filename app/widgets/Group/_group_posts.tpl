@@ -37,12 +37,14 @@
             <ul class="thin">
                 {if="isset($value->getAttachements().links)"}
                     {loop="$value->getAttachements().links"}
+                        {if="substr($value.href, 0, 5) != 'xmpp:'"}
                         <li>
                             <span class="icon small"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
                             <a href="{$value.href}" class="alternate" target="_blank">
                                 <span>{$value.href|urldecode}</span>
                             </a>
                         </li>
+                        {/if}
                     {/loop}
                 {/if}
                 {if="isset($value->getAttachements().files)"}
