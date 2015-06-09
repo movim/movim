@@ -45,7 +45,7 @@ class Post extends Payload
             // We limit the very old posts (2 months old)
             if(strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))) {
                 $pd = new \modl\PostnDAO();
-                $pd->set($p);
+                $pd->set($p, $from);
 
                 $this->pack($p);
                 $this->deliver();
