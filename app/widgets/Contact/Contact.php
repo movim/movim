@@ -48,10 +48,10 @@ class Contact extends WidgetBase
     function ajaxEditSubmit($form)
     {
         $rd = new UpdateItem;
-        $rd->setTo(echapJid($form['jid']))
+        $rd->setTo(echapJid($form->jid->value))
            ->setFrom($this->user->getLogin())
-           ->setName(htmlspecialchars($form['alias']))
-           ->setGroup(htmlspecialchars($form['group']))
+           ->setName($form->alias->value)
+           ->setGroup($form->group->value)
            ->request();
     }
 
@@ -90,7 +90,7 @@ class Contact extends WidgetBase
             $view->assign('submit', 
                 $this->call(
                     'ajaxEditSubmit', 
-                    "movim_parse_form('manage')"));
+                    "movim_form_to_json('manage')"));
             $view->assign('contact', $rl);
             $view->assign('groups', $groups);
         }
