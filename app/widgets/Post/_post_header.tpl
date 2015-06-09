@@ -1,12 +1,11 @@
 <div>
-    <span class="on_desktop icon"><i class="md md-view-list"></i></span>
-    <h2>
-        {if="$post->node == 'urn:xmpp:microblog:0'"}
-            {$c->__('page.blog')}
-        {else}
-            {$post->node}
-        {/if}
-    </h2>
+    {if="$post->isMicroblog()"}
+        <span class="on_desktop icon"><i class="md md-person"></i></span>
+        <h2>{$c->__('page.blog')}</h2>
+    {else}
+        <span class="on_desktop icon"><i class="md md-pages"></i></span>
+        <h2>{$post->node}</h2>
+    {/if}
 </div>
 <div>
     {if="$post->isMine()"}

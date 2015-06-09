@@ -500,6 +500,9 @@ class Chat extends WidgetBase
     function prepareEmpty()
     {
         $view = $this->tpl();
+
+        $cd = new \Modl\ContactDAO;
+        $view->assign('top', $cd->getTop(10));
         return $view->draw('_chat_empty', true);
     }
 
