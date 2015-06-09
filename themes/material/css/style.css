@@ -732,8 +732,18 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 .placeholder {
     text-align: center;
     font-size: 1.2em;
-    max-width: 500px;
+    max-width: 400px;
+    padding: 0 2rem;
+    padding-bottom: 2rem;
     margin: 0 auto;
+}
+
+.placeholder h1 {
+    color: #888;
+}
+
+.placeholder h4 {
+    color: #AAA;
 }
 
 .placeholder p {
@@ -741,14 +751,14 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 }
 
 .placeholder.icon {
-    background-image: url(../img/placeholder/chat.png);
+    background-image: url(../img/icons/chat.svg);
     background-size: 25rem;
-    padding-top: 27rem;
+    padding-top: 30rem;
     background-repeat: no-repeat;
     background-position: center 4em;
 }
 
-.icon.newspaper { background-image: url(../img/icons/view_list.svg); }
+.icon.news      { background-image: url(../img/icons/receipt.svg); }
 .icon.forum     { background-image: url(../img/icons/forum.svg); }
 .icon.media     { background-image: url(../img/placeholder/media.png); }
 .icon.explore   { background-image: url(../img/placeholder/explore.png); }
