@@ -17,7 +17,7 @@
     </a>
     <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}" href="{$c->route('news')}">
         <li {if="$page == 'news'"}class="active"{/if}>
-            <span class="icon"><i class="md md-view-list"></i></span>
+            <span class="icon"><i class="md md-receipt"></i></span>
             <span data-key="news" class="counter"></span>
             <span>{$c->__('page.news')}</span>
         </li>

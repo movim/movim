@@ -67,13 +67,12 @@
 {elseif="$page == 0"}
     <div id="menu_refresh"></div>
     <br/>
-    <ul id="menu_wrapper">
-        <li class="condensed">
-            <span class="icon orange">
-                <i class="md md-format-align-left"></i>
-            </span>
-            <span>{$c->__('menu.empty_title')}</span>
-            <p>{$c->__('menu.empty')}</p>
-        </li>
+
+    <ul class="thick active divided spaced" id="menu_wrapper">
+        <div class="placeholder icon news">
+            <h1>{$c->__('menu.empty_title')}</h1>
+            <h4>{$c->__('menu.empty')}</h4>
+        </div>
     </ul>
+
 {/if}

@@ -1,8 +1,8 @@
 {if="$chats == null"}
-    <li class="condensed">
-        <span class="icon green"><i class="md md-chat"></i></span>
-        <p>{$c->__('chats.empty')}</p>
-    </li>
+    <div class="placeholder icon">
+        <h1>{$c->__('chats.empty_title')}</h1>
+        <h4>{$c->__('chats.empty')}</h4>
+    </div>
 {/if}
 
 {loop="$chats"}
