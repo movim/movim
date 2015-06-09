@@ -393,6 +393,7 @@ class Contact extends Model {
         return array(
             'jid'        => $this->jid,
             'rostername' => $this->rostername,
+            'rostername' => $this->rostername,
             'groupname'  => $this->groupname,
             'status'     => $this->status,
             'resource'   => $this->resource,
@@ -504,6 +505,7 @@ class RosterContact extends Contact {
     protected $publickey;
     protected $muc;
     protected $rosterask;
+    protected $rostersubscription;
     protected $node;
     protected $ver;
     protected $category;
@@ -517,6 +519,8 @@ class RosterContact extends Contact {
                 {'type':'string', 'size':128 },
             'rosterask' : 
                 {'type':'string', 'size':128 },
+            'rostersubscription' : 
+                {'type':'string', 'size':8 },
             'groupname' : 
                 {'type':'string', 'size':128 },
             'resource' : 
