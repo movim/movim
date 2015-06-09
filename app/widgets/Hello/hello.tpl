@@ -93,14 +93,14 @@
                         <i class="md md-chevron-right"></i>
                     </div>
                     <span class="icon">
-                        <i class="md md-view-list"></i>
+                        <i class="md md-receipt"></i>
                     </span>
                     <span>{$c->__('hello.news')}</span>
                 </li>
             </a>
         </ul>
         <br />
-        <ul class="active thick">
+        <ul class="active thick on_desktop">
             <a href="{$c->route('blog', array($jid))}" target="_blank">
                 <li class="condensed action">
                     <div class="action">
