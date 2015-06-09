@@ -352,7 +352,10 @@ class Group extends WidgetBase
 
     function prepareEmpty()
     {
+        $id = new \modl\ItemDAO();
+
         $view = $this->tpl();
+        $view->assign('servers', $id->getGroupServers());
         $html = $view->draw('_group_empty', true);
 
         return $html;
