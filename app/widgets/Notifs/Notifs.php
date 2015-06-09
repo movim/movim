@@ -20,6 +20,7 @@
 use Moxl\Xec\Action\Presence\Subscribed;
 use Moxl\Xec\Action\Presence\Unsubscribed;
 use Moxl\Xec\Action\Roster\AddItem;
+use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
 class Notifs extends WidgetBase
@@ -31,6 +32,7 @@ class Notifs extends WidgetBase
 
         $this->registerEvent('subscribe', 'onNotifs');
         $this->registerEvent('roster_additem_handle', 'onNotifs');
+        $this->registerEvent('roster_updateitem_handle', 'onNotifs');
         $this->registerEvent('presence_subscribe_handle', 'onNotifs');
         $this->registerEvent('presence_subscribed_handle', 'onNotifs');
     }
@@ -78,10 +80,22 @@ class Notifs extends WidgetBase
     {
         $jid = echapJid($jid);
 
-        $r = new AddItem;
-        $r->setTo($jid)
-          ->setFrom($this->user->getLogin())
-          ->request();
+        $rd = new \Modl\RosterLinkDAO();
+        $c  = $rd->get($jid);
+
+        if(isset($c) && $c->groupname) {
+            $ui = new UpdateItem;
+            $ui->setTo($jid)
+               ->setFrom($this->user->getLogin())
+               ->setName($c->rostername)
+               ->setGroup($c->groupname)
+               ->request();
+        } else {
+            $r = new AddItem;
+            $r->setTo($jid)
+              ->setFrom($this->user->getLogin())
+              ->request();
+        }
 
         $p = new Subscribe;
         $p->setTo($jid)
