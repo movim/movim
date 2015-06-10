@@ -1,6 +1,8 @@
 var Group = {
-    addLoad: function() {
+    addLoad: function(id) {
+        document.querySelector('#group_widget').className = 'divided spinner';
         movim_add_class('#group_widget', 'on');
+        movim_add_class('#group_widget', id);
     },
 
     clearLoad: function() {

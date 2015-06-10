@@ -26,7 +26,7 @@ use Moxl\Xec\Action\Microblog\CommentPublish;
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
-class Post extends WidgetCommon
+class Post extends WidgetBase
 {
     function load()
     {
@@ -41,13 +41,6 @@ class Post extends WidgetCommon
 
     function onPublish($packet)
     {
-        list($to, $node, $id) = array_values($packet->content);
-
-        $cn = new CommentCreateNode;
-        $cn->setTo($to)
-           ->setParentId($id)
-           ->request();
-        
         Notification::append(false, $this->__('post.published'));
         $this->ajaxClear();
         RPC::call('MovimTpl.hidePanel');
@@ -69,17 +62,20 @@ class Post extends WidgetCommon
 
     function onComments($packet)
     {
-        $nodeid = $packet->content;
+        list($server, $node, $id) = array_values($packet->content);
 
         $p = new \Modl\ContactPostn();
-        $p->nodeid = $nodeid;
+        $p->nodeid = $id;
         
         $pd = new \Modl\PostnDAO();
         $comments = $pd->getComments($p);
 
         $view = $this->tpl();
         $view->assign('comments', $comments);
-        $view->assign('id', $nodeid);
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+        $view->assign('id', $id);
+
         $html = $view->draw('_post_comments', true);
         RPC::call('movim_fill', 'comments', $html);
     }
@@ -107,69 +103,6 @@ class Post extends WidgetCommon
         RPC::call('movim_fill', 'post_widget', $html);
     }
 
-    function ajaxCreate()
-    {
-        $view = $this->tpl();
-        $view->assign('to', $this->user->getLogin());
-        RPC::call('movim_fill', 'post_widget', $view->draw('_post_create', true));
-
-        $view = $this->tpl();
-        Header::fill($view->draw('_post_header_create', true));
-        
-        RPC::call('Post.setEmbed');
-    }
-
-    function ajaxPreview($form)
-    {
-        if($form->content->value != '') {
-            $view = $this->tpl();
-            $view->assign('content', Markdown::defaultTransform($form->content->value));
-
-            Dialog::fill($view->draw('_post_preview', true), true);
-        } else {
-            Notification::append(false, $this->__('post.no_content_preview'));
-        }
-    }
-
-    function ajaxHelp()
-    {
-        $view = $this->tpl();
-        Dialog::fill($view->draw('_post_help', true), true);
-    }
-
-    function ajaxPublish($form)
-    {
-        if($form->content->value != '') {
-            $content = Markdown::defaultTransform($form->content->value);
-
-            $p = new PostPublish;
-            $p->setFrom($this->user->getLogin())
-              ->setTo($form->to->value)
-              ->setNode($form->node->value);
-              //->setLocation($geo)
-              //->enableComments()
-            if($form->title->value != '') {
-                $p->setTitle($form->title->value);
-            }
-
-            if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
-                $embed = Embed\Embed::create($form->embed->value);
-                $content .= $this->prepareEmbed($embed);
-                $p->setLink($form->embed->value);
-
-                if($embed->type == 'photo') {
-                    $key = key($embed->images);
-                    $p->setImage($embed->images[0]['value'], $embed->title, $embed->images[0]['mime']);
-                }
-            }
-
-            $p->setContentHtml(rawurldecode($content))
-              ->request();
-        } else {
-            Notification::append(false, $this->__('post.no_content'));
-        }
-    }
-
     function ajaxDelete($to, $node, $id)
     {
         $view = $this->tpl();
@@ -190,14 +123,17 @@ class Post extends WidgetCommon
     }
 
     function ajaxGetComments($jid, $id)
-    {
+    {        
+        $pd = new \Modl\PostnDAO();
+        $pd->deleteNode($jid, "urn:xmpp:microblog:0:comments/".$id);
+
         $c = new CommentsGet;
         $c->setTo($jid)
           ->setId($id)
           ->request();
     }
 
-    function ajaxPublishComment($form, $id)
+    function ajaxPublishComment($form, $to, $node, $id)
     {
         $comment = trim($form->comment->value);
 
@@ -209,43 +145,10 @@ class Post extends WidgetCommon
 
         $cp = new CommentPublish;
         $cp->setTo($to)
-          ->setFrom($this->user->getLogin())
-          ->setParentId($id)
-          ->setContent(htmlspecialchars(rawurldecode($comment)))
-          ->request();
-    }
-
-    function ajaxEmbedTest($url)
-    {
-        if($url == '') {
-            return;
-        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
-            Notification::append(false, $this->__('post.valid_url'));
-            return;
-        }
-
-        $embed = Embed\Embed::create($url);
-        $html = $this->prepareEmbed($embed);
-
-        if($embed->type == 'photo') {
-            RPC::call('movim_fill', 'gallery', $this->prepareGallery($embed));
-        }
-
-        RPC::call('movim_fill', 'preview', $html);
-    }
-
-    function prepareGallery($embed)
-    {
-        $view = $this->tpl();
-        $view->assign('embed', $embed);
-        return $view->draw('_post_gallery', true);
-    }
-
-    function prepareEmbed($embed)
-    {
-        $view = $this->tpl();
-        $view->assign('embed', $embed);
-        return $view->draw('_post_embed', true);
+           ->setFrom($this->user->getLogin())
+           ->setParentId($id)
+           ->setContent(htmlspecialchars(rawurldecode($comment)))
+           ->request();
     }
 
     function prepareEmpty()
@@ -286,6 +189,17 @@ class Post extends WidgetCommon
             if(isset($p->commentplace)) {
                 $this->ajaxGetComments($p->commentplace, $p->nodeid);
             }
+
+            $view->assign('recycled', false);
+
+            // Is it a recycled post ?
+            if($p->getContact()->jid
+            && $p->node == 'urn:xmpp:microblog:0'
+            && ($p->origin != $p->getContact()->jid)) {
+                $cd = new \Modl\ContactDAO;
+                $view->assign('recycled', $cd->get($p->origin));
+            }
+
             $view->assign('post', $p);
             $view->assign('attachements', $p->getAttachements());
             return $view->draw('_post', true);
@@ -293,6 +207,7 @@ class Post extends WidgetCommon
             return $this->prepareEmpty();
         }
     }
+
     function ajaxTogglePrivacy($id) {
         $validate = Validator::string()->length(6, 128);
         

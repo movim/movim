@@ -27,7 +27,6 @@ class Login extends WidgetBase
     {
         $this->addcss('login.css');
         $this->addjs('login.js');
-        $this->registerEvent('moxlerror', 'onMoxlError');
         $this->registerEvent('session_start_handle', 'onStart');
         $this->registerEvent('saslfailure', 'onSASLFailure');
         $this->registerEvent('storage_get_handle', 'onConfig');
@@ -39,17 +38,22 @@ class Login extends WidgetBase
         $pd = new \Modl\PresenceDAO();
         $pd->clearPresence($this->user->getLogin());
 
-        // http://xmpp.org/extensions/xep-0280.html
-        \Moxl\Stanza\Carbons::enable();
+        $session = \Sessionx::start();
+        $session->load();
 
-        // We refresh the roster
-        $r = new GetList;
-        $r->request();
+        if($session->mechanism != 'ANONYMOUS') {
+            // http://xmpp.org/extensions/xep-0280.html
+            \Moxl\Stanza\Carbons::enable();
 
-        // We get the configuration
-        $s = new Get;
-        $s->setXmlns('movim:prefs')
-          ->request();
+            // We refresh the roster
+            $r = new GetList;
+            $r->request();
+
+            // We get the configuration
+            $s = new Get;
+            $s->setXmlns('movim:prefs')
+              ->request();
+        }
     }
 
     function onConfig($packet)
@@ -106,11 +110,7 @@ class Login extends WidgetBase
 
         return $view->draw('_login_error', true);
     }
-    
-    function onMoxlError($error) {
-        RPC::call('movim_redirect', Route::urlize('disconnect', $error[1]));
-    }
-    
+
     function onSASLFailure($packet)
     {
         switch($packet->content) {
@@ -135,18 +135,6 @@ class Login extends WidgetBase
         }
 
         $this->showErrorBlock($error);
-    }
-
-    function ajaxCheckLogin($jid)
-    {
-        list($username, $host) = explode('@', $jid);
-        $sd = new \Modl\SessionxDAO;
-        $here = $sd->checkConnected($username, $host);
-
-        if($here) {
-            $message = $this->__('error.impossible') . ' : '.$this->__('error.conflict');
-            Notification::append(null, $message);
-        }
     }
 
     function ajaxLogin($form)
@@ -188,7 +176,6 @@ class Login extends WidgetBase
 
         // We check if we already have an open session
         $sd = new \Modl\SessionxDAO;
-        //$here = $sd->checkConnected($username, $host);
         $here = $sd->getHash(sha1($username.$password.$host));
 
         if($here) {
@@ -199,13 +186,10 @@ class Login extends WidgetBase
         }
 
         // We try to get the domain
-        $dns = dns_get_record('_xmpp-client._tcp.'.$host);
+        $domain = \Moxl\Utils::getDomain($host);
 
-        if(isset($dns[0]['target']) && $dns[0]['target'] != null)
-            $domain = $dns[0]['target'];
-        else {
-            $domain = $host;
-        }
+        // We launch the XMPP socket
+        RPC::call('register', $host);
 
         // We create a new session or clear the old one
         $s = Sessionx::start();

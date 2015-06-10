@@ -1,6 +1,6 @@
 <?php
 
-class Notification extends WidgetCommon
+class Notification extends WidgetBase
 {
     function load()
     {

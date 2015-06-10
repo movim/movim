@@ -21,7 +21,7 @@ class System extends WidgetBase {
     {
         $this->view->assign('base_uri',     BASE_URI);
         $this->view->assign('base_host',    BASE_HOST);
-        $this->view->assign('error_uri',    substr_replace(Route::urlize('disconnect', 'err'), '', -3));
+        $this->view->assign('error_uri',    Route::urlize('disconnect'));
 
         $r = new Route;
         $this->view->assign('current_page', $r->find());

@@ -12,7 +12,7 @@
                         {if="$jid != null"}
                             value="{$jid}"
                         {/if}
-                        onkeyup="if(this.validity.valid == true) { {$search} }"
+                        onkeyup="{$search}"
                     />
                     <label for="searchjid">{$c->__('roster.add_contact_info1')}</label>
                 </div>

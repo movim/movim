@@ -21,15 +21,10 @@ function movim_get_node(str) {
 
 /**
  * @brief Force Movim to go back to the login page
- * @param string error 
  */
-function movim_disconnect(error)
+function movim_disconnect()
 {
-    if(error == null) {
-        window.location.replace(ERROR_URI);
-    } else {
-        window.location.replace(ERROR_URI + error);
-    }
+    window.location.replace(ERROR_URI);
 }
 
 /**
@@ -137,8 +132,9 @@ function movim_textarea_autoheight(textbox) {
  * @param string the class to check 
  */
 function movim_has_class(element,classname) {
-    var element = movim_get_node(element);
-    return element.className.match(new RegExp('(\\s|^)'+classname+'(\\s|$)'));
+    var node = movim_get_node(element);
+    if(!node) console.log('Node ' + element + ' not found');
+    return node.className.match(new RegExp('(\\s|^)'+classname+'(\\s|$)'));
 }
 
 /**

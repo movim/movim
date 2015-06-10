@@ -24,9 +24,9 @@ Here some requests you can do with me :", 'green')."
         case 'getloc':
             getloc();
             break;
-        case 'comploc':
+        /*case 'comploc':
             comploc();
-            break;
+            break;*/
         case 'comptz':
             comptz();
             break;

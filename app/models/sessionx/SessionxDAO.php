@@ -13,14 +13,14 @@ class SessionxDAO extends SQL {
                 rid         = :rid,
                 sid         = :sid,
                 id          = :id,
-                url         = :url,
                 port        = :port,
                 host        = :host,
                 domain      = :domain,
                 config      = :config,
                 active      = :active,
                 start       = :start,
-                timestamp   = :timestamp
+                timestamp   = :timestamp,
+                mechanism   = :mechanism
             where session = :session';
         
         $this->prepare(
@@ -34,14 +34,14 @@ class SessionxDAO extends SQL {
                 'rid'       => $s->rid,
                 'sid'       => $s->sid,
                 'id'        => $s->id,
-                'url'       => $s->url,
                 'port'      => $s->port,
                 'host'      => $s->host,
                 'domain'    => $s->domain,
                 'config'    => $s->config,
                 'active'    => $s->active,
                 'start'     => $s->start,
-                'timestamp' => $s->timestamp
+                'timestamp' => $s->timestamp,
+                'mechanism' => $s->mechanism
                 )
         );
         
@@ -58,14 +58,14 @@ class SessionxDAO extends SQL {
                  rid,
                  sid,
                  id,
-                 url,
                  port,
                  host,
                  domain,
                  config,
                  active,
                  start,
-                 timestamp)
+                 timestamp,
+                 mechanism)
                 values
                 (:session,
                  :username,
@@ -75,14 +75,14 @@ class SessionxDAO extends SQL {
                  :rid,
                  :sid,
                  :id,
-                 :url,
                  :port,
                  :host,
                  :domain,
                  :config,
                  :active,
                  :start,
-                 :timestamp)';
+                 :timestamp,
+                 :mechanism)';
             
             $this->prepare(
                 'Sessionx', 
@@ -95,14 +95,14 @@ class SessionxDAO extends SQL {
                     'rid'       => $s->rid,
                     'sid'       => $s->sid,
                     'id'        => $s->id,
-                    'url'       => $s->url,
                     'port'      => $s->port,
                     'host'      => $s->host,
                     'domain'    => $s->domain,
                     'config'    => $s->config,
                     'active'    => $s->active,
                     'start'     => $s->start,
-                    'timestamp' => $s->timestamp
+                    'timestamp' => $s->timestamp,
+                    'mechanism' => $s->mechanism
                 )
             );
             

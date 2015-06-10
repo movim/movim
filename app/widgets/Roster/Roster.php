@@ -287,6 +287,7 @@ class Roster extends WidgetBase
         $c['rosterview']['color']    = stringToColor($oc->jid);
         $c['rosterview']['name']     = $oc->getTrueName();
         $c['rosterview']['friendpage']     = $this->route('contact', $oc->jid);
+        $c['rosterview']['subscription']   = $oc->rostersubscription;
 
         // Some data relative to the presence
         if($oc->last != null && $oc->last > 60)
