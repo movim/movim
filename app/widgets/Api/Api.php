@@ -65,7 +65,7 @@ class Api extends WidgetBase {
             array(
                 'uri' => BASE_URI,
                 'rewrite' => $rewrite));
-        \movim_log($json);
+
         $json = json_decode($json);
 
         if(isset($json) && $json->status == 200) {

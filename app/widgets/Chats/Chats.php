@@ -6,7 +6,7 @@ use Moxl\Xec\Action\Bookmark\Set;
 
 use Respect\Validation\Validator;
 
-class Chats extends WidgetCommon
+class Chats extends WidgetBase
 {
     function load()
     {
@@ -59,6 +59,26 @@ class Chats extends WidgetCommon
         }
     }
 
+    /**
+     * @brief Get history
+     */
+    function ajaxGetHistory($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $md = new \Modl\MessageDAO();
+        $messages = $md->getContact(echapJid($jid), 0, 1);
+
+        $g = new \Moxl\Xec\Action\MAM\Get;
+        $g->setJid($jid);
+
+        if(!empty($messages)) {
+            $g->setStart(strtotime($messages[0]->published));
+        }
+
+        $g->request();
+    }
+
     function ajaxOpen($jid)
     {
         if(!$this->validateJid($jid)) return;
@@ -66,21 +86,25 @@ class Chats extends WidgetCommon
         $chats = Cache::c('chats');
         if($chats == null) $chats = array();
 
+        unset($chats[$jid]);
+
         if(!array_key_exists($jid, $chats)
         && $jid != $this->user->getLogin()) {
             $chats[$jid] = 1;
-        } else {
+
+            $this->ajaxGetHistory($jid);
+
+            Cache::c('chats', $chats);
+
+            RPC::call('movim_delete', $jid.'_chat_item');
+
+            RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
+            RPC::call('Chats.refresh');
+        }/* else {
             unset($chats[$jid]);
         }
 
-        $chats[$jid] = 1;
-
-        Cache::c('chats', $chats);
-
-        RPC::call('movim_delete', $jid.'_chat_item');
-
-        RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
-        RPC::call('Chats.refresh');
+        $chats[$jid] = 1;*/
     }
 
     function ajaxClose($jid)
@@ -145,6 +169,7 @@ class Chats extends WidgetCommon
 
         $cd = new \Modl\ContactDAO;
         $md = new \modl\MessageDAO();
+        $cad = new \modl\CapsDAO();
 
         $presencestxt = getPresencesTxt();
 
@@ -154,8 +179,10 @@ class Chats extends WidgetCommon
                 $view->assign('presence', $presencestxt[$cr->value]);
             }
             $view->assign('contact', $cr);
+            $view->assign('caps', $cad->get($cr->node.'#'.$cr->ver));
         } else {
             $view->assign('contact', $cd->get($jid));
+            $view->assign('caps', null);
         }
 
         $m = $md->getContact($jid, 0, 1);
@@ -168,7 +195,7 @@ class Chats extends WidgetCommon
 
     private function validateJid($jid)
     {
-        $validate_jid = Validator::email()->noWhitespace()->length(6, 40);
+        $validate_jid = Validator::string()->noWhitespace()->length(6, 40);
 
         if($validate_jid->validate($jid)) return true;
         else return false;

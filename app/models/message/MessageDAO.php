@@ -35,7 +35,7 @@ class MessageDAO extends SQL {
         $this->prepare(
             'Message',
             array(
-                'session'   => $this->_user,
+                'session'   => $message->session,
                 'jidto'     => $message->jidto,
                 'jidfrom'   => $message->jidfrom,
                 'resource'  => $message->resource,
@@ -77,7 +77,7 @@ class MessageDAO extends SQL {
 
     function deleteContact($jid) {
         $this->_sql = '
-            delete from message 
+            delete from message
             where session = :session
                 and (jidfrom = :jidfrom
                 or jidto   = :jidto)';
@@ -114,7 +114,7 @@ class MessageDAO extends SQL {
     
     function clearMessage() {
         $this->_sql = '
-            delete from message 
+            delete from message
             where session = :session';
 
         $this->prepare(

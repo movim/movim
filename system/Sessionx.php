@@ -32,13 +32,13 @@ class Sessionx {
     private         $_resource;
     private         $_hash;
     private         $_sid;
-    private         $_url;
     private         $_port;
     private         $_host;
     private         $_domain;
     private         $_start;
     private         $_active = false;
     private         $_config;
+    private         $_mechanism;
     /*
      * Session generation and handling part
      */
@@ -85,7 +85,6 @@ class Sessionx {
         $s->rid         = $this->_rid;
         $s->sid         = $this->_sid;
         $s->id          = $this->_id;
-        $s->url         = $this->_url;
         $s->port        = $this->_port;    
         $s->host        = $this->_host;    
         $s->domain      = $this->_domain;  
@@ -93,14 +92,11 @@ class Sessionx {
         $s->active      = $this->_active;  
         $s->start       = $this->_start;
         $s->timestamp   = $this->_timestamp;
+        $s->mechanism   = $this->_mechanism;
         return $s;
     }
 
     public function init($user, $pass, $host, $domain) {
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-        
-        $this->_url         = $config->websocketurl;
         $this->_port        = 5222;
         $this->_host        = $host;
         $this->_domain      = $domain;
@@ -129,7 +125,6 @@ class Sessionx {
             $this->_rid         = $session->rid;
             $this->_sid         = $session->sid;
             $this->_id          = $session->id;
-            $this->_url         = $session->url;
             $this->_port        = $session->port;
             $this->_host        = $session->host;
             $this->_domain      = $session->domain;
@@ -137,6 +132,7 @@ class Sessionx {
             $this->_active      = $session->active;
             $this->_start       = $session->start;
             $this->_timestamp   = $session->timestamp;
+            $this->_mechanism   = $session->mechanism;
         }
 
         self::$_instance = $this;
@@ -152,7 +148,6 @@ class Sessionx {
                 in_array(
                     $key,
                     array(
-                        'url',
                         'port',
                         'id',
                         'host',
@@ -160,7 +155,8 @@ class Sessionx {
                         'user',
                         'password',
                         'hash',
-                        'start')
+                        'start',
+                        'mechanism')
                     )
             ) {
                 $key = '_'.$key;

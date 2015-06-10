@@ -2,14 +2,20 @@
 
 use Moxl\Xec\Action\Pubsub\GetItems;
 
-class Menu extends WidgetCommon
+class Menu extends WidgetBase
 {
     private $_paging = 15;
     
     function load()
     {
         $this->registerEvent('post', 'onPost');
+        $this->registerEvent('post_retract', 'onRetract');
         $this->addjs('menu.js');
+    }
+
+    function onRetract($packet)
+    {
+        $this->ajaxGetAll();
     }
 
     function onStream($count)
@@ -31,7 +37,7 @@ class Menu extends WidgetCommon
             $post = $packet->content;
             if($post->isMicroblog()) {
                 $cd = new \Modl\ContactDAO;
-                $contact = $cd->get($post->jid);
+                $contact = $cd->get($post->origin);
 
                 if($post->title == null) {
                     $title = __('post.default_title');
@@ -136,6 +142,7 @@ class Menu extends WidgetCommon
 
         if($page == 0 || $page == ""){
             $view = $this->tpl();
+            $view->assign('to', $this->user->getLogin());
             $html .= $view->draw('_menu_add', true);
         }
 

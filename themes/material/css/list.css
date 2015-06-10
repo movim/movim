@@ -142,13 +142,18 @@ ul li span {
     white-space: nowrap;
 }
 
+ul li div.bubble span {
+    white-space: initial;
+}
+
 ul li span.second {
     opacity: 0.6;
     padding-left: 0.5rem;
 }
 
 ul li img {
-     max-width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 ul li > p.more img:not(.emoji) {

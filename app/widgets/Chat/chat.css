@@ -70,10 +70,18 @@
     line-height: 3rem;
 }
 
+#chat_widget li.room span {
+    white-space: initial;
+}
+
 #chat_widget li.room span.user {
     font-weight: 700;
     float: left;
     margin-right: 1rem;
+}
+
+#chat_widget li.room span.user:hover {
+    cursor: pointer;
 }
 
 #chat_widget .placeholder {

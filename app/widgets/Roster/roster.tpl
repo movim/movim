@@ -30,13 +30,16 @@
                 <!--ng-class="rosterCtrl.getContactClient(myjid.ajiditems)"-- >-->
                 <div
                     class="action"
-                    ng-if="myjid.ajiditems.rosterview.tune != '' || myjid.ajiditems.rosterview.type != '' "
+                    ng-if="myjid.ajiditems.rosterview.tune != '' || myjid.ajiditems.rosterview.type != '' || myjid.ajiditems.rosterview.subscription != 'both'"
                     ng-switch on="myjid.ajiditems.rosterview.type">
                     <i ng-switch-when="handheld" class="md md-smartphone"></i>
                     <i ng-switch-when="phone" class="md md-smartphone"></i>
                     <i ng-switch-when="web" class="md md-language"></i>
                     <i ng-switch-when="bot" class="md md-memory"></i>
                     <i ng-if="myjid.ajiditems.rosterview.tune" class="md md-play-arrow"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'to'" class="md md-call-received"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'from'" class="md md-call-made"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'none'" class="md md-do-not-disturb"></i>
                 </div>
 
                 <span

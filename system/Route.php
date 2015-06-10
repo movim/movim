@@ -9,13 +9,13 @@ class Route extends \BaseController {
                 'account'       => false,
                 'accountnext'   => array('s', 'err'),
                 'admin'         => false,
-                'blog'          => array('f'),
+                'blog'          => array('f', 'i'),
                 'chat'          => array('f'),
                 'conf'          => false,
                 'contact'       => array('f'),
                 'disconnect'    => array('err'),
                 'feed'          => array('f'),
-                'group'         => array('g'),
+                'group'         => array('s', 'n'),
                 'help'          => false,
                 'infos'         => false,
                 'login'         => array('err'),
@@ -24,6 +24,7 @@ class Route extends \BaseController {
                 'news'          => array('n'),
                 'pods'          => false,
                 'profile'       => false,
+                'room'          => array('r'),
                 'share'         => array('url'),
                 'visio'         => false
             );
@@ -33,7 +34,9 @@ class Route extends \BaseController {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        if($config->rewrite == true) {
+        if($config->rewrite == true
+        && isset($_SERVER['HTTP_MOD_REWRITE'])
+        && $_SERVER['HTTP_MOD_REWRITE']) {
             $request = explode('/', $this->fetchGet('query'));
             $this->_page = $request[0];
             array_shift($request);
@@ -74,36 +77,38 @@ class Route extends \BaseController {
             return BASE_URI;
         
         if(isset($routes[$page])) {        
-            if($params != false && count($routes[$page]) != count($params)) {
-                throw new Exception(__('error.route', $page));
-            } else {
+            //if($params != false && count($routes[$page]) != count($params)) {
+                //throw new Exception(__('error.route', $page));
+            //} else {
                 if($tab != false)
                     $tab = '#'.$tab;
+                // Here we got a beautiful rewriten URL !
+                if($config->rewrite == true
+                && isset($_SERVER['HTTP_MOD_REWRITE'])
+                && $_SERVER['HTTP_MOD_REWRITE']) {
+                    $uri = BASE_URI . $page;
+                    if($params != false && is_array($params))
+                        foreach($params as $value)
+                            $uri .= '/' . $value;
+                    elseif($params != false)
+                        $uri .= '/' . $params;
+                }
                 //We construct a classic URL if the rewriting is disabled
-                if($config->rewrite == false) {
-                    $uri = BASE_URI . '?q='.$page;
+                else {
+                    $uri = BASE_URI . '?q=' . $page;
                     
                     if($params != false && is_array($params)) {
                         $i = 0;
                         foreach($params as $value) {
-                            $uri .= '&'.$routes[$page][$i].'='.$value;
+                            $uri .= '&' . $routes[$page][$i] . '=' . $value;
                             $i++;
                         }
                     }
                     elseif($params != false)
                         $uri .= '&'.$routes[$page][0].'='.$params;
-                } 
-                // Here we got a beautiful rewriten URL !
-                else {
-                    $uri = BASE_URI . $page;
-                    if($params != false && is_array($params))
-                        foreach($params as $value)
-                            $uri .= '/'.$value;
-                    elseif($params != false)
-                        $uri .= '/'.$params;
                 }
                 return $uri.$tab;
-            }
+            //}
         } else {
             throw new Exception(__('Route not set for the page %s', $page));
         }

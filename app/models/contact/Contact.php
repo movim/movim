@@ -365,6 +365,7 @@ class Contact extends Model {
         if(isset($this->date)
             && $this->date != '0000-00-00T00:00:00+0000' 
             && $this->date != '1970-01-01 00:00:00'
+            && $this->date != '1970-01-01 01:00:00'
             && $this->date != '1970-01-01T00:00:00+0000') {
             $age = intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
             if($age != 0)
@@ -392,6 +393,7 @@ class Contact extends Model {
         return array(
             'jid'        => $this->jid,
             'rostername' => $this->rostername,
+            'rostername' => $this->rostername,
             'groupname'  => $this->groupname,
             'status'     => $this->status,
             'resource'   => $this->resource,
@@ -405,7 +407,25 @@ class Contact extends Model {
         && $this->date == null
         && $this->url == null
         && $this->email == null
+        && $this->created == null
+        && $this->updated == null
         && $this->description == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isOld() {
+        if(strtotime($this->updated) < mktime( // We update the 3 days old vcards
+                                        0,
+                                        0,
+                                        0,
+                                        gmdate("m"),
+                                        gmdate("d")-3,
+                                        gmdate("Y")
+                                    )
+            ) {
             return true;
         } else {
             return false;
@@ -485,6 +505,7 @@ class RosterContact extends Contact {
     protected $publickey;
     protected $muc;
     protected $rosterask;
+    protected $rostersubscription;
     protected $node;
     protected $ver;
     protected $category;
@@ -498,6 +519,8 @@ class RosterContact extends Contact {
                 {'type':'string', 'size':128 },
             'rosterask' : 
                 {'type':'string', 'size':128 },
+            'rostersubscription' : 
+                {'type':'string', 'size':8 },
             'groupname' : 
                 {'type':'string', 'size':128 },
             'resource' : 

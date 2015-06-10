@@ -2,6 +2,7 @@
 
 use Moxl\Xec\Action\Register\ChangePassword;
 use Moxl\Xec\Action\Register\Remove;
+use Moxl\Xec\Action\Register\Get;
 use Respect\Validation\Validator;
 
 class Account extends WidgetBase
@@ -11,6 +12,7 @@ class Account extends WidgetBase
         $this->addjs('account.js');
         $this->registerEvent('register_changepassword_handle', 'onPasswordChanged');
         $this->registerEvent('register_remove_handle', 'onRemoved');
+        //$this->registerEvent('register_get_handle', 'onRegister');
     }
 
     function onPasswordChanged()
@@ -26,6 +28,28 @@ class Account extends WidgetBase
         $pd = new Modl\PostnDAO;
         $pd->deleteNode($this->user->getLogin(), 'urn:xmpp:microblog:0');
         RPC::call('Account.clearAccount');
+    }
+
+    function onRegister($package)
+    {
+        $content = $package->content;
+
+        $view = $this->tpl();
+
+        if(isset($content->x)) {
+            $xml = new \XMPPtoForm();
+            $form = $xml->getHTML($content->x->asXML());
+
+            $view->assign('form', $form);
+            $view->assign('attributes', $content->attributes());
+            $view->assign('actions', null);
+            if(isset($content->actions)) {
+                $view->assign('actions', $content->actions);
+            }
+
+            Dialog::fill($view->draw('_account_form', true), true);
+        }
+
     }
 
     function ajaxChangePassword($form)
@@ -65,6 +89,22 @@ class Account extends WidgetBase
     {
         $da = new Remove;
         $da->request();
+    }
+
+    function ajaxRegister($server)
+    {
+        if(!$this->validateServer($server)) return;
+
+        $da = new Get;
+        $da->setTo($server)
+           ->request();
+    }
+
+    private function validateServer($server)
+    {
+        $validate_server = Validator::string()->noWhitespace()->length(6, 80);
+        if(!$validate_server->validate($server)) return false;
+        else return true;
     }
 
     function display()

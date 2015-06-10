@@ -1,6 +1,6 @@
 <?php
 
-class Blog extends WidgetCommon {
+class Blog extends WidgetBase {
     function load()
     {
         
@@ -24,8 +24,21 @@ class Blog extends WidgetCommon {
         $this->view->assign('contact', $c);
         
         $pd = new \modl\PostnDAO();
-        $messages = $pd->getPublic($from, $node, 10, 0);
-        
+        if($id = $this->get('i')) {
+            $messages = $pd->getPublicItem($from, $node, $id, 10, 0);
+        } else {
+            $messages = $pd->getPublic($from, $node, 10, 0);
+        }
+
         $this->view->assign('posts', $messages);
+    }
+
+    function getComments($post)
+    {
+        $pd = new \Modl\PostnDAO();
+        return $pd->getComments($post);
+
+        //$view = $this->tpl();
+        //$view->assign('comments', $comments);
     }
 }

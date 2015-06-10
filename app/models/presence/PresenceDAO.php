@@ -113,7 +113,29 @@ class PresenceDAO extends SQL {
             $this->run('Presence');
         }
     }
-    
+
+    function delete(Presence $presence)
+    {
+        $id = sha1(
+                $presence->session.
+                $presence->jid.
+                $presence->resource
+            );
+
+        $this->_sql = '
+            delete from presence
+            where id = :id';
+        
+        $this->prepare(
+            'Presence', 
+            array(
+                'id' => $id
+            )
+        );
+        
+        return $this->run('Presence');
+    }
+
     function getAll() {
         $this->_sql = '
             select * from presence;

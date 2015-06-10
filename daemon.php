@@ -1,3 +1,5 @@
+#!/usr/bin/env php
+
 <?php
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
@@ -22,6 +24,21 @@ if($argsize == 1) {
 if($argsize == 2) {
     echo colorize("Please specify a port eg.", "red"). colorize(" 8080\n", 'yellow');
     exit;
+}
+
+$md = Modl\Modl::getInstance();
+$infos = $md->check();  
+
+if($infos != null) {
+    echo colorize("The database need to be updated before running the daemon\n", 'green');
+    foreach($infos as $i) {
+        echo colorize($i."\n", 'blue');
+    }
+
+    echo colorize("\nTo update the database run\n", 'green');
+    echo colorize("php mud.php db set\n", 'purple');
+
+    break;
 }
 
 $loop = \React\EventLoop\Factory::create();
