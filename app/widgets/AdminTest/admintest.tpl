@@ -7,7 +7,7 @@
             <div id="movim-daemon" class="link vertical disabled"><i class="md md-settings"></i></div>
             <div id="movim-browser" class="link horizontal success"><i class="md md-open-in-browser"></i></div>
             <div id="browser-daemon" class="link horizontal error"><i class="md md-settings-ethernet"></i></div>
-            <div id="daemon-xmpp" class="link horizontal error"><i class="md md-import-export"></i></div>
+            <div id="xmpp-daemon" class="link horizontal"><i class="md md-import-export"></i></div>
             <div id="movim-database" class="link vertical {if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
                 <i class="md md-data-usage"></i>
             </div>
@@ -64,14 +64,14 @@
             </span> 
         </li>
         
-        <li id="xmpp_websocket_error">
+        <!--<li id="xmpp_websocket_error">
             <span class="icon bubble color red">
                 <i class="md md-settings-ethernet"></i>
             </span>
             <span>
                 {$c->__('compatibility.xmpp_websocket')} <code>{$websocketurl}</code>
             </span>
-        </li>
+        </li>-->
 
         {if="!$c->version()"}
             <li class="condensed">
@@ -96,6 +96,18 @@
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
+        {if="!extension_loaded('gd')"}
+            <li>
+                <span class="icon color bubble red">
+                    <i class="md md-image"></i>
+                </span>
+                <span>
+                    {$c->__('compatibility.gd')}
+                </span>
+            </div>
+            <script type="text/javascript">AdminTest.disableMovim()</script>
+        {/if}
+
         {if="!$c->testDir(DOCUMENT_ROOT)"}
             <li>
                 <span class="icon color bubble red">
@@ -115,5 +127,5 @@
             </li>
         {/if}
     </ul>
-    <script type="text/javascript">AdminTest.testXMPPWebsocket('{$websocketurl}');</script>
+    <!--<script type="text/javascript">AdminTest.testXMPPWebsocket('{$websocketurl}');</script>-->
 </div>

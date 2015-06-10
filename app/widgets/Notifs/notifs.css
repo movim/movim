@@ -12,3 +12,15 @@
 #notifs_widget.groupshown li:not(:first-child){
     display: none;
 }
+
+#notifs_widget.groupshown ul li:first-child:before {
+    font-family: "Material Design Iconic Font";    
+    content: "\f1b6";
+    display: inline-block;
+}
+
+#notifs_widget ul li:first-child:before {
+    font-family: "Material Design Iconic Font";    
+    content: "\f1b4";
+    display: inline-block;
+}

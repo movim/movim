@@ -19,7 +19,6 @@
 
         "cboden/ratchet": "0.3.*",
         "react/child-process": "0.5.*@dev",
-        "ratchet/pawl": "dev-master",
         "react/socket-client": "0.4.*@dev",
 
         "forxer/Gravatar": "~1.2",

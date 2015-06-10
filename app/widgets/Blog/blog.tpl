@@ -15,9 +15,17 @@
             </span>
             <span>
                 {if="$contact"}
-                <h2>{$c->__('blog.title', $contact->getTrueName())}</h2>
+                <h2>
+                    <a href="{$c->route('blog', array($contact->jid))}">
+                        {$c->__('blog.title', $contact->getTrueName())}
+                    </a>
+                </h2>
                 {else}
-                <h2>{$c->__('page.blog')}</h2>
+                <h2>
+                    <a href="{$c->route('blog', array($contact->jid))}">
+                        {$c->__('page.blog')}
+                    </a>
+                </h2>
                 {/if}
             </span>
         </li>
@@ -39,11 +47,13 @@
                             </span>
                         {/if}
                         <h2>
-                            {if="$value->title != null"}
-                                {$value->title}
-                            {else}
-                                {$c->__('post.default_title')}
-                            {/if}
+                            <a href="{$c->route('blog', array($value->origin, $value->nodeid))}">
+                                {if="$value->title != null"}
+                                    {$value->title}
+                                {else}
+                                    {$c->__('post.default_title')}
+                                {/if}
+                            </a>
                         </h2>
                         <p>
                             {if="$value->node == 'urn:xmpp:microblog:0' && $value->getContact()->getTrueName() != ''"}
@@ -87,7 +97,38 @@
                     {/if}
                 </ul>
             </footer>
+            {$comments = $c->getComments($value)}
+            {if="$comments"}
+                <ul class="spaced middle">
+                    <li class="subheader">
+                        {$c->__('post.comments')}
+                        <span class="info">{$comments|count}</span>
+                    </li>
+                    {loop="$comments"}
+                        <li class="condensed">
+                            {$url = $value->getContact()->getPhoto('s')}
+                            {if="$url"}
+                                <span class="icon bubble">
+                                    <img src="{$url}">
+                                </span>
+                            {else}
+                                <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
+                                    <i class="md md-person"></i>
+                                </span>
+                            {/if}
+                            <span class="info">{$value->published|strtotime|prepareDate}</span>
+                            <span>
+                                {$value->getContact()->getTrueName()}
+                            </span>
+                            <p>
+                                {$value->content}
+                            </p>
+                        </li>
+                    {/loop}
+                </ul>
+            {/if}
         </article>
+
     {/loop}
     {if="$posts == null"}
         <ul class="simple thick">

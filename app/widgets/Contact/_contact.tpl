@@ -86,7 +86,13 @@
         <li class="condensed block">
             <span class="icon gray"><i class="md md-link"></i></span>
             <span>{$c->__('general.website')}</span>
-            <p class="wrap"><a href="{$contact->url}" target="_blank">{$contact->url}</a></p>
+            <p class="wrap">
+                {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
+                    <a href="{$contact->url}" target="_blank">{$contact->url}</a>
+                {else}
+                    {$contact->url}
+                {/if}
+            </p>
         </li>
         {/if}
 
@@ -126,7 +132,7 @@
         <li class="condensed block">
             <span class="icon gray"><i class="md md-format-align-justify"></i></span>
             <span>{$c->__('general.about')}</span>
-            <p>{$contact->description}</p>
+            <p class="all">{$contact->description}</p>
         </li>
         {/if}
 
@@ -293,6 +299,46 @@
                 </li>
             {/loop}
         </ul>
+    {/if}
+
+    {if="$contactr->rostersubscription != 'both'"}
+        <div class="card">
+            <ul class="middle">
+                <li class="condensed">
+                    {if="$contactr->rostersubscription == 'to'"}
+                        <span class="icon gray">
+                            <i class="md md-call-received"></i>
+                        </span>
+                        <span>{$c->__('subscription.to')}</span>
+                        <p>{$c->__('subscription.to_text')}</p>
+                        <a class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
+                            {$c->__('subscription.to_button')}
+                        </a>
+                    {/if}
+                    {if="$contactr->rostersubscription == 'from'"}
+                        <span class="icon gray">
+                            <i class="md md-call-made"></i>
+                        </span>
+                        <span>{$c->__('subscription.from')}</span>
+                        <p>{$c->__('subscription.from_text')}</p>
+                        <a class="button flat" onclick="Notifs_ajaxAsk('{$contactr->jid}')">
+                            {$c->__('subscription.from_button')}
+                        </a>
+                    {/if}
+                    {if="$contactr->rostersubscription == 'none'"}
+                        <span class="icon gray">
+                            <i class="md md-do-not-disturb"></i>
+                        </span>
+
+                        <span>{$c->__('subscription.none')}</span>
+                        <p>{$c->__('subscription.none_text')}</p>
+                        <a class="button flat" onclick="Notifs_ajaxAsk('{$contactr->jid}')">
+                            {$c->__('subscription.none_button')}
+                        </a>
+                    {/if}
+                </li>
+            </ul>
+        </div>
     {/if}
 
     <a onclick="{$chat}" class="button action color red">

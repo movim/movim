@@ -19,8 +19,9 @@ class AccountNext extends WidgetBase {
 
     function display()
     {
-        $host = $_GET['s'];
-        
+        $host = $this->get('s');
+
+        $this->view->assign('init', $this->call('ajaxInit', "'".$host."'"));
         $this->view->assign('getsubscriptionform', $this->call('ajaxGetForm', "'".$host."'"));
         $this->view->assign('host', $host);
     }
@@ -31,8 +32,7 @@ class AccountNext extends WidgetBase {
 
         $xtf = new \XMPPtoForm();
         if(!empty($form->x)){
-            $ns = $form->x->getNamespaces();
-            switch($ns['']) {
+            switch($form->x->attributes()->xmlns) {
                 case 'jabber:x:data' :
                     $formview = $this->tpl();
                     
@@ -91,6 +91,12 @@ class AccountNext extends WidgetBase {
 
     function ajaxGetForm($host)
     {
+        $domain = \Moxl\Utils::getDomain($host);
+
+        // We create a new session or clear the old one
+        $s = Sessionx::start();
+        $s->init(null, null, $host, $domain);
+
         \Moxl\Stanza\Stream::init($host);
     }
 

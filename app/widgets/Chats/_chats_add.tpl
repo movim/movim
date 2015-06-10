@@ -3,7 +3,8 @@
     <ul class="active" id="add_extend">
         <li class="subheader">{$c->__('chats.frequent')}</li>
         {loop="$top"}
-            <li class="condensed" onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
+            <li class="condensed {if="$value->last > 60"} inactive{/if}"
+                onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span class="icon bubble

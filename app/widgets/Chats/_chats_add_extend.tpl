@@ -1,4 +1,5 @@
 <br />
+{$group = ''}
 {loop="$contacts"}
     {if="$group != $value->groupname"}
         <li class="subheader">{$value->groupname}</li>

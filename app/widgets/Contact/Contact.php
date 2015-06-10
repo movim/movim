@@ -1,16 +1,19 @@
 <?php
 
 use Moxl\Xec\Action\Roster\UpdateItem;
-use Moxl\Xec\Action\Vcard\Get;
+use Moxl\Xec\Action\Vcard4\Get;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\GetItems;
 
-class Contact extends WidgetCommon
+class Contact extends WidgetBase
 {
+    private $_paging = 10;
+
     function load()
     {
         $this->registerEvent('roster_updateitem_handle', 'onContactEdited');
         $this->registerEvent('vcard_get_handle', 'onVcardReceived');
+        $this->registerEvent('vcard4_get_handle', 'onVcardReceived');
     }
 
     public function onVcardReceived($packet)
@@ -45,10 +48,10 @@ class Contact extends WidgetCommon
     function ajaxEditSubmit($form)
     {
         $rd = new UpdateItem;
-        $rd->setTo(echapJid($form['jid']))
+        $rd->setTo(echapJid($form->jid->value))
            ->setFrom($this->user->getLogin())
-           ->setName(htmlspecialchars($form['alias']))
-           ->setGroup(htmlspecialchars($form['group']))
+           ->setName($form->alias->value)
+           ->setGroup($form->group->value)
            ->request();
     }
 
@@ -65,6 +68,9 @@ class Contact extends WidgetCommon
     function ajaxRefreshVcard($jid)
     {
         if(!$this->validateJid($jid)) return;
+
+        $a = new Moxl\Xec\Action\Avatar\Get;
+        $a->setTo(echapJid($jid))->request();
 
         $r = new Get;
         $r->setTo(echapJid($jid))->request();
@@ -84,7 +90,7 @@ class Contact extends WidgetCommon
             $view->assign('submit', 
                 $this->call(
                     'ajaxEditSubmit', 
-                    "movim_parse_form('manage')"));
+                    "movim_form_to_json('manage')"));
             $view->assign('contact', $rl);
             $view->assign('groups', $groups);
         }
@@ -151,10 +157,10 @@ class Contact extends WidgetCommon
     {
         if($jid == null) {
             $cd = new \modl\ContactDAO();
-            $users = $cd->getAllPublic(0, 10);
-            if($users != null){
+            $count = $cd->countAllPublic();
+            if($count != 0){
                 $view = $this->tpl();
-                $view->assign('users', array_reverse($users));
+                $view->assign('users', $this->preparePublic());
                 return $view->draw('_contact_explore', true);
             } else { 
                 return '';
@@ -166,6 +172,28 @@ class Contact extends WidgetCommon
         }
     }
 
+    function ajaxPublic($page = 0)
+    {
+        $validate_page = Validator::int();
+        if(!$validate_page->validate($page)) return;
+
+        RPC::call('MovimTpl.fill', '#public_list', $this->preparePublic($page));
+    }
+
+    private function preparePublic($page = 0)
+    {
+        $cd = new \modl\ContactDAO();
+        $users = $cd->getAllPublic($page*$this->_paging, $this->_paging);
+        $count = $cd->countAllPublic();
+        if($users != null){
+            $view = $this->tpl();
+            $view->assign('pages', array_fill(0, (int)($count/$this->_paging), 'p'));
+            $view->assign('users', array_reverse($users));
+            $view->assign('page', $page);
+            return $view->draw('_contact_public', true);
+        }
+    }
+
     function prepareContact($jid)
     {
         if(!$this->validateJid($jid)) return;
@@ -173,10 +201,12 @@ class Contact extends WidgetCommon
         $cd = new \Modl\ContactDAO;
         $c  = $cd->get($jid, true);
 
-        if($c == null || $c->created == null || $c->isEmpty()) {
+        if($c == null
+        || $c->created == null
+        || $c->isEmpty()
+        || $c->isOld()) {
             $c = new \Modl\Contact;
             $c->jid = $jid;
-
             $this->ajaxRefreshVcard($jid);
         }
         
@@ -267,7 +297,7 @@ class Contact extends WidgetCommon
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::email()->noWhitespace()->length(6, 60);
+        $validate_jid = Validator::string()->noWhitespace()->length(6, 60);
         if(!$validate_jid->validate($jid)) return false;
         else return true;
     }

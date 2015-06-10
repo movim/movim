@@ -3,7 +3,7 @@
     <br />
     <ul class="active">
         {loop="$sessions"}
-        <li id="{$value->jid}" class="action">
+        <li id="{$value->jid}" class="action condensed" title="{$value->jid}">
             <div class="action">
                 <i class="md md-close"></i>
             </div>
@@ -18,11 +18,15 @@
                 </span>
             {/if}
             <span>{$value->getTrueName()}</span>
+            <p>{$value->jid}</p>
         </li>
         {/loop}
     </ul>
 </section>
 <div>
+    <a class="button flat" href="{$c->route('about')}">
+        <i class="md md-help"></i>
+    </a>
     <a class="button flat" href="{$c->route('admin')}">
         <i class="md md-pages"></i>
     </a>

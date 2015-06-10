@@ -4,7 +4,11 @@
     <ul>
         {$presence = getPresencesTxt()}
         {loop="$list"}
-            <li class="action {if="$value->status"}condensed{/if}" title="{$value->resource}">
+            <li class="
+                    action
+                    {if="$value->last > 60"} inactive{/if}
+                    {if="$value->status"}condensed{/if}"
+                title="{$value->resource}">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span class="icon bubble status {$presence[$value->value]}">
@@ -20,7 +24,13 @@
                         <i class="md md-beenhere"></i>
                     </div>
                 {/if}
-                <span>{$value->resource}</span>
+                {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
+                    <a href="{$c->route('contact', $value->mucjid)}">
+                        <span>{$value->resource}</span>
+                    </a>
+                {else}
+                    <span>{$value->resource}</span>
+                {/if}
                 {if="$value->status"}
                     <p class="wrap">{$value->status}</p>
                 {/if}
@@ -30,6 +40,6 @@
 </section>
 <div>
     <a onclick="Dialog.clear()" class="button flat">
-        {$c->__('button.cancel')}
+        {$c->__('button.close')}
     </a>
 </div>

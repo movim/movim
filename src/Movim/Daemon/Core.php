@@ -17,7 +17,7 @@ class Core implements MessageComponentInterface {
         echo colorize("Movim daemon launched\n", 'green');
         echo colorize("Base URI :", 'green')." {$baseuri}\n";
         $ws = $this->setWebsocket($baseuri, $port);
-        echo colorize("Public WebSocket URL :", 'green')." {$ws}\n";
+        //echo colorize("Public WebSocket URL :", 'green')." {$ws}\n";
 
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
@@ -45,7 +45,7 @@ class Core implements MessageComponentInterface {
             "\n";
         echo colorize("Add this in your configuration file", 'yellow')."\n";
         echo "location /ws/ {
-    proxy_pass http://{$explode['host']}:{$port}/;
+    proxy_pass http://localhost:{$port}/;
     proxy_http_version 1.1;
     proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection \"Upgrade\";
@@ -65,11 +65,11 @@ class Core implements MessageComponentInterface {
         if($explode['scheme'] == 'https') {
             $ws = 'wss://'.$path.'ws/';
             $secured = 'true';
-            echo colorize("Encrypted ", 'green');
+            echo colorize("Encrypted ", 'green')."\n";
         } else {
             $ws = 'ws://'.$path.'ws/';
             $secured = 'false';
-            echo colorize("Unencrypted ", 'red');
+            echo colorize("Unencrypted ", 'red')."\n";
         }
 
         file_put_contents(CACHE_PATH.'websocket', $secured);

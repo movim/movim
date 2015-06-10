@@ -14,7 +14,7 @@ use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
 
-class Group extends WidgetCommon
+class Group extends WidgetBase
 {
     private $_paging = 15;
     private $_role = null;
@@ -42,8 +42,10 @@ class Group extends WidgetCommon
 
     function onItems($packet)
     {
-        $arr = $packet->content;
-        $this->displayItems($arr['server'], $arr['node']);
+        list($server, $node) = array_values($packet->content);
+
+        $this->displayItems($server, $node);
+
         RPC::call('Group.clearLoad');
         RPC::call('MovimTpl.showPanel');
     }
@@ -68,6 +70,7 @@ class Group extends WidgetCommon
         Notification::append(false, $this->__('group.empty'));
 
         $this->ajaxDelete($server, $node, true);
+        $this->ajaxGetAffiliations($server, $node);
         // Display an error message
         RPC::call('Group.clearLoad');
     }
@@ -83,11 +86,13 @@ class Group extends WidgetCommon
 
         Header::fill($this->prepareHeader($server, $node));
 
-        if(isset($this->_role)
-        && ($this->_role == 'owner' || $this->_role == 'publisher')) {
-            $view = $this->tpl();
-            RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
-        }
+        //if(isset($this->_role)
+        //&& ($this->_role == 'owner' || $this->_role == 'publisher')) {
+        //    $view = $this->tpl();
+        //    $view->assign('server', $server);
+        //    $view->assign('node', $node);
+        //    RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
+        //}
     }
 
     function onSubscriptions($packet)
@@ -166,11 +171,17 @@ class Group extends WidgetCommon
         if(!$this->validateServerNode($server, $node)) return;
 
         $html = $this->prepareGroup($server, $node);
+
+        $view = $this->tpl();
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+        $html .= $view->draw('_group_publish', true);
+
         $header = $this->prepareHeader($server, $node);
         
         Header::fill($header);
 
-        RPC::call('movim_fill', 'group_widget', $html);
+        RPC::call('MovimTpl.fill', '#group_widget.'.stringToUri($server.'_'.$node), $html);
         RPC::call('Group.enableVideos');
     }
 
@@ -228,13 +239,13 @@ class Group extends WidgetCommon
     {
         if(!$this->validateServerNode($server, $node)) return;
 
+        RPC::call('Group.addLoad', stringToUri($server.'_'.$node));
+
         $r = new GetItemsId;
         $r->setTo($server)
           ->setNode($node);
         
         $r->request();
-
-        RPC::call('Group.addLoad');
     }
 
     function ajaxGetHistory($server, $node, $page)
@@ -341,7 +352,10 @@ class Group extends WidgetCommon
 
     function prepareEmpty()
     {
+        $id = new \modl\ItemDAO();
+
         $view = $this->tpl();
+        $view->assign('servers', $id->getGroupServers());
         $html = $view->draw('_group_empty', true);
 
         return $html;
@@ -392,5 +406,11 @@ class Group extends WidgetCommon
 
     function display()
     {
+        $this->view->assign('server', false);
+        $this->view->assign('node', false);
+        if($this->validateServerNode($this->get('s'), $this->get('n'))) {
+            $this->view->assign('server', $this->get('s'));
+            $this->view->assign('node', $this->get('n'));
+        }
     }
 }
