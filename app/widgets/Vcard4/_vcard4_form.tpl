@@ -131,7 +131,7 @@
     <h3 class="block large">{$c->__('vcard.position_title')}</h3>
 
     <div class="block">
-        <input type="text" type="locality" name ="locality" class="content" value="{$me->adrlocality}" placeholder="{$c->__('Locality')}">
+        <input type="text" type="locality" name ="locality" class="content" value="{$me->adrlocality}" placeholder="{$c->__('vcard.locality')}">
         <label for="url">{$c->__('vcard.locality')}</label>
     </div>
               
@@ -154,17 +154,17 @@
     <h3 class="block large">{$c->__('vcard.accounts_title')}</h3>
     
     <div class="block">
-        <input type="text" name="twitter" class="content" value="{$me->twitter}" placeholder="{$c->__('Nickname')}">
+        <input type="text" name="twitter" class="content" value="{$me->twitter}" placeholder="{$c->__('vcard.nickname')}">
         <label for="twitter"><i class="fa fa-twitter"></i> {$c->__('vcard.twitter')}</label>
     </div>
     
     <div class="block">
-        <input type="text" name="skype" class="content" value="{$me->skype}" placeholder="{$c->__('Nickname')}">
+        <input type="text" name="skype" class="content" value="{$me->skype}" placeholder="{$c->__('vcard.nickname')}">
         <label for="skype"><i class="fa fa-skype"></i> {$c->__('vcard.skype')}</label>
     </div>
     
     <div class="block">
-        <input type="email" name="yahoo" class="content" value="{$me->yahoo}" placeholder="{$c->__('Yahoo Account')}">
+        <input type="email" name="yahoo" class="content" value="{$me->yahoo}" placeholder="{$c->__('vcard.accounts_yahoo')}">
         <label for="skype"><i class="fa fa-yahoo"></i> {$c->__('vcard.yahoo')}</label>
     </div>
 
@@ -178,12 +178,12 @@
             class="button color oppose" 
             id="vcard4validate"
             >
-            {$c->__('Submit')}
+            {$c->__('vcard.submit')}
         </a>
         <a
             onclick="document.querySelector('#vcard4form').reset();"
             class="button flat oppose">
-            {$c->__('Reset')}
+            {$c->__('vcard.reset')}
         </a>
     </div>
 </form>
