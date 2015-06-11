@@ -1,6 +1,6 @@
 <div class="tabelem" title="{$c->__('account.title')}" id="account_widget" >
     <ul class="middle active divided ">
-        <li class="subheader">Change my password</li>
+        <li class="subheader">{$c->__('account.password_change_title')}</li>
         <li>
             <span class="icon gray">
                 <i class="md md-vpn-key"></i>
@@ -8,11 +8,11 @@
             <form name="password" class="">
                 <div>
                     <input type="password" placeholder="Choose a nice password" name="password"/>
-                    <label>Password</label>
+                    <label>{$c->__('account.password')}</label>
                 </div>
                 <div>
                     <input type="password" placeholder="Type your password again" name="password_confirmation"/>
-                    <label>Password confirmation</label>
+                    <label>{$c->__('account.password_confirmation')}</label>
                 </div>
                 <a onclick="
                         Account_ajaxChangePassword(movim_form_to_json('password'));
@@ -21,7 +21,7 @@
                 </a>
             </form>
         </li>
-        <li class="subheader">Delete my account</li>
+        <li class="subheader">{$c->__('account.delete_title')}</li>
         <li class="action" onclick="Account_ajaxRemoveAccount()">
             <span class="icon red">
                 <i class="md md-delete"></i>
@@ -29,7 +29,7 @@
             <div class="action">
                 <i class="md md-chevron-right"></i>
             </div>
-            <span>Delete your account</span>
+            <span>{$c->__('account.delete')}</span>
         </li>
     </ul>
 </div>
