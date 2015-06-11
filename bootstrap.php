@@ -99,9 +99,12 @@ class Bootstrap {
         define('APP_TITLE',     'Movim');
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
+        define('APP_SECURED',   $this->isServerSecured());
+
         if(isset($_SERVER['HTTP_HOST'])) {
             define('BASE_HOST',     $_SERVER['HTTP_HOST']);
         }
+        define('BASE_DOMAIN',   $_SERVER["SERVER_NAME"]);
         define('BASE_URI',      $this->getBaseUri());
         define('CACHE_URI',     $this->getBaseUri() . 'cache/');
         
@@ -127,6 +130,16 @@ class Bootstrap {
         }
     }
 
+    private function isServerSecured() {
+        if((
+            isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "") 
+        || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == "https")) {
+            return true;
+        }
+
+        return false;
+    }
+
     private function getVersion() {
         $file = "VERSION";
         if($f = fopen(DOCUMENT_ROOT.'/'.$file, 'r')) {
@@ -137,11 +150,10 @@ class Bootstrap {
     private function getBaseUri() {
         $dirname = dirname($_SERVER['PHP_SELF']);
         $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname).'/';
+
         // Determining the protocol to use.
         $uri = "http://";
-        if((
-            isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "") 
-        || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == "https")) {
+        if($this->isServerSecured()) {
             $uri = 'https://';
         }
 

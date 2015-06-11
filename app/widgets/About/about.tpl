@@ -10,7 +10,7 @@
         <li class="condensed">
             <span class="icon bubble color red"><i class="md md-developer-mode"></i></span>
             <span>{$c->__('title.developers')}</span>
-            <p>
+            <p class="all">
                 <a href="http://edhelas.movim.eu/">Jaussoin Timothée aka edhelas</a><br/>
                 <a href="https://launchpad.net/~nodpounod">Ho Christine aka nodpounod</a><br/>
                 <a href="https://etenil.net/">Pasquet Guillaume aka Etenil</a>
@@ -42,7 +42,7 @@
         <li class="condensed">
             <span class="icon bubble color brown"><i class="md md-insert-emoticon"></i></span>
             <span>{$c->__('title.resources')}</span>
-            <p>
+            <p class="all">
                 Material Design Iconic Font <a href="http://zavoloklom.github.io/material-design-iconic-font/icons.html">by Google and Sergey Kupletsky</a> under SIL OFL 1.1<br/>
                 Twemoji <a href="http://twitter.github.io/twemoji/">by Twitter</a> under MIT and CC-BY<br/>
             </p>
@@ -50,7 +50,7 @@
         <li class="condensed">
             <span class="icon bubble color indigo"><i class="md md-import-export"></i></span>
             <span>{$c->__('title.api')}</span>
-            <p>
+            <p class="all">
                 OpenStreetMap - Nominatim <a href="http://nominatim.openstreetmap.org/">nominatim.openstreetmap.org</a><br/>
                 Last.fm API - <a href="http://www.last.fm/api">www.last.fm/api</a><br/>
                 Youtube API - <a href="http://developers.google.com/youtube">developers.google.com/youtube</a><br/>
