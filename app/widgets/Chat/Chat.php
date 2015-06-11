@@ -502,6 +502,7 @@ class Chat extends WidgetBase
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
+        $view->assign('presencestxt', getPresencesTxt());
         $view->assign('top', $cd->getTop(10));
         return $view->draw('_chat_empty', true);
     }
