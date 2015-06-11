@@ -23,7 +23,7 @@
                     {$value->getContact()->getTrueName()}
                 </a>
             </span>
-            <p>
+            <p class="all">
                 {$value->content}
             </p>
         </li>

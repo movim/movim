@@ -2,7 +2,7 @@
     <h1>{$c->__('chat.empty_title')}</h1>
     <h4>{$c->__('chat.empty_text')}</h4>
 </div>
-<br />
+
 <ul class="flex middle active">
     <li class="subheader block large">{$c->__('chat.frequent')}</li>
     {loop="$top"}
@@ -29,3 +29,5 @@
         </li>
     {/loop}
 </ul>
+<br />
+<br />
