@@ -65,7 +65,7 @@ class Presence extends WidgetBase
                 $value = 'chat';
 
             if($presence == null|| !isset($presence['status']) || $presence['status'] == '')
-                $status = 'Online with Movim';
+                $status = $this->__('status.online');
         } else {
             $status = $form['status'];
             $value = $form['value'];
