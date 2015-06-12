@@ -216,7 +216,7 @@ ul li div.bubble {
     background-color: #E5E5E5;
     border-color: #E5E5E5;
     max-width: 100%;
-    min-width: 50%;
+    /*min-width: 50%;*/
     float: left;
     /*word-break: break-all;*/
 }
