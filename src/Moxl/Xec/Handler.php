@@ -156,7 +156,6 @@ class Handler {
         return array(
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
             '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
-            'f9e18585fd0e0873c52e880c800f267a' => 'Receipt',
 
             '0977b7387b95f69007332a3e9b386f93' => 'MAMResult',
 

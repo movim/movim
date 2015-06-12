@@ -44,6 +44,12 @@ class Message extends Payload
             $m = new \modl\Message();
             $m->set($stanza, $parent);
 
+            if($stanza->request) {
+                $from = (string)$stanza->attributes()->from;
+                $id = (string)$stanza->attributes()->id;
+                \Moxl\Stanza\Message::receipt($from, $id);
+            }
+
             if(!preg_match('#^\?OTR#', $m->body)) {
                 $md = new \modl\MessageDAO();
                 $md->set($m);
