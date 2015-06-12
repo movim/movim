@@ -101,10 +101,11 @@ class Bootstrap {
         define('APP_VERSION',   $this->getVersion());
         define('APP_SECURED',   $this->isServerSecured());
 
-        if(isset($_SERVER['HTTP_HOST'])) {
+        if(isset($_SERVER['HTTP_HOST'])
+        && isset($_SERVER['SERVER_NAME'])) {
+            define('BASE_DOMAIN',   $_SERVER["SERVER_NAME"]);
             define('BASE_HOST',     $_SERVER['HTTP_HOST']);
         }
-        define('BASE_DOMAIN',   $_SERVER["SERVER_NAME"]);
         define('BASE_URI',      $this->getBaseUri());
         define('CACHE_URI',     $this->getBaseUri() . 'cache/');
         

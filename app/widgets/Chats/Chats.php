@@ -34,11 +34,8 @@ class Chats extends WidgetBase
             } else {
                 // TODO notification overwrite issue
                 RPC::call('movim_delete', $from.'_chat_item');
-
-                $this->ajaxOpen($from);
-
-                $n = new Notification;
-                $n->ajaxGet();
+                RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($from));
+                RPC::call('Chats.refresh');
             }
         }
     }
@@ -100,11 +97,7 @@ class Chats extends WidgetBase
 
             RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
             RPC::call('Chats.refresh');
-        }/* else {
-            unset($chats[$jid]);
         }
-
-        $chats[$jid] = 1;*/
     }
 
     function ajaxClose($jid)

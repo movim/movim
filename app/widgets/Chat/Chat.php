@@ -254,6 +254,7 @@ class Chat extends WidgetBase
         }
         
         $m->body      = rawurldecode($message);
+        $m->html      = prepareString($m->body, false, true);
         $m->published = gmdate('Y-m-d H:i:s');
         $m->delivered = gmdate('Y-m-d H:i:s');
 
