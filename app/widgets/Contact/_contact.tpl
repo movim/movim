@@ -301,7 +301,7 @@
         </ul>
     {/if}
 
-    {if="$contactr->rostersubscription != 'both'"}
+    {if="$contactr && $contactr->rostersubscription != 'both'"}
         <div class="card">
             <ul class="middle">
                 <li class="condensed">

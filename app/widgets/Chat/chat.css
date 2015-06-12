@@ -56,6 +56,17 @@
 
 /* Chatroom */
 
+#chat_widget li span.icon {
+    top: 0%;
+    margin-top: 0.85rem;
+}
+
+#chat_widget li img {
+    max-height: 30rem;
+    max-width: 100%;
+    display: block;
+}
+
 #chat_widget li.room {
     min-height: 3rem;
     margin-bottom: 0.5rem;

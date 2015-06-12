@@ -19,6 +19,8 @@ var Chats = {
 
                 items[i].onmousedown = function(e) {
                     if(e.which == 2) {
+                        Notification_ajaxClear('chat|' + this.dataset.jid);
+                        Notification.current('chat');
                         Chats_ajaxClose(this.dataset.jid);
                         MovimTpl.hidePanel();
                     }
@@ -29,6 +31,8 @@ var Chats = {
 
             i++;
         }
+
+        Notification_ajaxGet();
         
         //Chat_ajaxGet();
 

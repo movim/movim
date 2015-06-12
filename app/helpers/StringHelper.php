@@ -51,32 +51,35 @@ class MovimEmoji
  * @desc Prepare the string (add the a to the links and show the smileys)
  *
  * @param string $string
+ * @param boolean display large emojis
+ * @param check the links and convert them to pictures (heavy)
  * @return string
  */
-function prepareString($string, $large = false) {
-    //replace begin by www
+function prepareString($string, $large = false, $preview = false) {
+    // Add missing links
     $string = preg_replace_callback(
-            '/(^|\s|>)(www.[^<> \n\r]+)/ix', function ($match) {
-                //print '<br />preg[1]';\system\Debug::dump($match);
-                if (strlen($match[2])>0) {
-                    return stripslashes($match[1].'<a href=\"http://'.$match[2].'\" target=\"_blank\">'.$match[2].'</a>');
+        "/([\w\"'>]+\:\/\/[\w-?&;#+%~=\.\/\@]+[\w\/])/", function ($match) use($preview) {
+            if(!in_array(substr($match[0], 0, 1), array('>', '"', '\''))) {
+                if($preview) {
+                    $embed = Embed\Embed::create($match[0]);
+                    if($embed->type == 'photo'
+                    && $embed->images[0]['width'] <= 1024
+                    && $embed->images[0]['height'] <= 1024) {
+                        $content = '<img src="'.$match[0].'"/>';
+                    } else {
+                        $content = $match[0];
+                    }
                 } else {
-                    return $match[2];
+                    $content = $match[0];
                 }
-            }, ' ' . $string
+                
+                return stripslashes('<a href=\"'.$match[0].'\" target=\"_blank\">'.$content.'</a>');
+            } else {
+                return $match[0];
+            }
+        }, $string
     );
 
-    //replace  begin by http - https (before www)
-    $string = preg_replace_callback(
-            '/(?(?=<a[^>]*>.+<\/a>)(?:<a[^>]*>.+<\/a>)|([^="\'])((?:https?):\/\/([^<> \n\r]+)))/ix', function ($match) {
-                if (isset($match[2]) && strlen($match[2])>0) {
-                    return stripslashes($match[1].'<a href=\"'.$match[2].'\" target=\"_blank\">'.$match[3].'</a>');
-                } else {
-                    return $match[0];
-                }
-            }, ' ' . $string
-    );
-    
     // We remove all the style attributes
     $string = preg_replace_callback(
         '/(<[^>]+) style=".*?"/i', function($match) {
