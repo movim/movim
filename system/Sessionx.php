@@ -51,7 +51,7 @@ class Sessionx {
             self::$_sessionid = SESSION_ID;
         } else {
             $key = generateKey(32); 
-            setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/', BASE_DOMAIN, APP_SECURED);
+            setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/', false, APP_SECURED);
             self::$_sessionid = $key;
         }
     }
@@ -59,7 +59,7 @@ class Sessionx {
     public function refreshCookie()
     {
         if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
-            setcookie("MOVIM_SESSION_ID", $_COOKIE['MOVIM_SESSION_ID'], time()+$this->_max_age, '/', BASE_DOMAIN, APP_SECURED);
+            setcookie("MOVIM_SESSION_ID", $_COOKIE['MOVIM_SESSION_ID'], time()+$this->_max_age, '/', false, APP_SECURED);
         }
     }
 
