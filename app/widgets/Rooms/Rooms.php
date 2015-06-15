@@ -154,7 +154,7 @@ class Rooms extends WidgetBase
     function ajaxChatroomAdd($form) 
     {
         if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
-            Notification::append(null, $this->__('chatrooms.bad_id'));
+            Notification::append(null, $this->__('chatrooms.bad_nickname'));
         } elseif(trim($form['name']) == '') {
             Notification::append(null, $this->__('chatrooms.empty_name'));
         } else {
@@ -261,7 +261,7 @@ class Rooms extends WidgetBase
      */
     private function validateResource($resource)
     {
-        $validate_resource = Validator::string()->length(6, 40);
+        $validate_resource = Validator::string()->length(2, 40);
         if(!$validate_resource->validate($resource)) return false;
         else return true;
     }
