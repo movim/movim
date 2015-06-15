@@ -99,7 +99,7 @@ class Notification extends WidgetBase
     }
 
     /**
-     * @brief Get akk the keys
+     * @brief Get all the keys
      * @return void
      */  
     function ajaxGet()

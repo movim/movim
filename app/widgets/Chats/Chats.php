@@ -28,15 +28,14 @@ class Chats extends WidgetBase
                 $from = $message->jidto;
             }
 
+            $this->ajaxOpen($from, false);
+            /*
             $chats = Cache::c('chats');
             if(!array_key_exists($from, $chats)) {
                 $this->ajaxOpen($from);
             } else {
-                // TODO notification overwrite issue
-                RPC::call('movim_delete', $from.'_chat_item');
-                RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($from));
-                RPC::call('Chats.refresh');
-            }
+                RPC::call('Chats.prepend', $from, $this->prepareChat($from));
+            }*/
         }
     }
 
@@ -76,7 +75,7 @@ class Chats extends WidgetBase
         $g->request();
     }
 
-    function ajaxOpen($jid)
+    function ajaxOpen($jid, $history = true)
     {
         if(!$this->validateJid($jid)) return;
 
@@ -89,14 +88,15 @@ class Chats extends WidgetBase
         && $jid != $this->user->getLogin()) {
             $chats[$jid] = 1;
 
-            $this->ajaxGetHistory($jid);
+            if($history) $this->ajaxGetHistory($jid);
 
             Cache::c('chats', $chats);
-
+            /*
             RPC::call('movim_delete', $jid.'_chat_item');
 
             RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
-            RPC::call('Chats.refresh');
+            RPC::call('Chats.refresh');*/
+            RPC::call('Chats.prepend', $jid, $this->prepareChat($jid));
         }
     }
 
