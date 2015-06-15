@@ -188,7 +188,9 @@ class Pubsub {
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub">
                 <publish node="'.$node.'">
-                    <item id="'.$id.'"/>
+                    <item id="'.$id.'">
+			<entry xmlns="http://www.w3.org/2005/Atom"/>
+                    </item>
                 </publish>
             </pubsub>';
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
