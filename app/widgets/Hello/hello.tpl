@@ -1,6 +1,6 @@
 <div id="hello_widget" class="divided">
     <ul class="flex active middle">
-        <li class="subheader block large">Active contacts</li>
+        <li class="subheader block large">{$c->__('hello.active_contacts')}</li>
         {loop="$top"}
             <li tabindex="{$key+1}" class="block action {if="$value->status"}condensed{/if}"
                 onclick="Hello_ajaxChat('{$value->jid}')">
@@ -41,7 +41,7 @@
     </ul>
     {if="$c->supported('pubsub')"}
         <ul id="news" class="flex thick active">
-            <li class="subheader block large">News</li>
+            <li class="subheader block large">{$c->__('hello.news')}</li>
             {loop="$news"}
                 <li class="block condensed"
                     data-id="{$value->nodeid}"
@@ -95,7 +95,7 @@
                     <span class="icon">
                         <i class="md md-receipt"></i>
                     </span>
-                    <span>{$c->__('hello.news')}</span>
+                    <span>{$c->__('hello.news_page')}</span>
                 </li>
             </a>
         </ul>
