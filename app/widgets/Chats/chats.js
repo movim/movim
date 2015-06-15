@@ -33,14 +33,13 @@ var Chats = {
         }
 
         Notification_ajaxGet();
-        
-        //Chat_ajaxGet();
+    },
 
-        /*if(window.innerWidth > 1024 && !MovimTpl.isPanel()) {
-            Notification.notifs_key = 'chat|' + items[0].dataset.jid;
-            Notification_ajaxCurrent(Notification.notifs_key);
-            items[0].click();
-        }*/
+    prepend: function(from, html) {
+        movim_delete(from + '_chat_item');
+        movim_prepend('chats_widget_list', html);
+        Chats.refresh();
+        Notification_ajaxGet();
     },
 
     reset: function(list) {
