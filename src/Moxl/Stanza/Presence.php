@@ -56,7 +56,7 @@ class Presence {
     /*
      * Subscribe to someone presence
      */
-    static function unavaiable($to = false, $status = false, $type = false)
+    static function unavailable($to = false, $status = false, $type = false)
     {
         $xml = self::maker($to, $status, false, false, 'unavailable');
         \Moxl\API::request($xml, $type);

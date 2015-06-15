@@ -54,7 +54,7 @@ class Errors extends Action
     
     public function errorServiceUnavailable($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("This service is unavaiable"));  
+        $evt->runEvent('pubsuberror', t("This service is unavailable"));  
     }
     
     public function errorForbidden($error) {
