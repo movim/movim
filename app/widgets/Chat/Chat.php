@@ -252,7 +252,7 @@ class Chat extends WidgetBase
 
             $m->jidfrom     = $to;
         }
-        
+
         $m->body      = rawurldecode($message);
         $m->html      = prepareString($m->body, false, true);
         $m->published = gmdate('Y-m-d H:i:s');
@@ -263,25 +263,26 @@ class Chat extends WidgetBase
             $md->set($m);
         }
 
-        /* Is it really clean ? */
-        $packet = new Moxl\Xec\Payload\Packet;
-        $packet->content = $m;
-        $this->onMessage($packet/*, true*/);
-
         if($resource != false) {
             $to = $to . '/' . $resource;
         }
 
         // We decode URL codes to send the correct message to the XMPP server
-        $m = new Publish;
-        $m->setTo($to);
-        $m->setContent(htmlspecialchars(rawurldecode($message)));
+        $p = new Publish;
+        $p->setTo($to);
+        //$p->setHTML($m->html);
+        $p->setContent(htmlspecialchars($m->body));
 
         if($muc) {
-            $m->setMuc();
+            $p->setMuc();
         }
 
-        $m->request();
+        $p->request();
+
+        /* Is it really clean ? */
+        $packet = new Moxl\Xec\Payload\Packet;
+        $packet->content = $m;
+        $this->onMessage($packet/*, true*/);
     }
 
     /**
@@ -484,7 +485,7 @@ class Chat extends WidgetBase
     function prepareMessage(&$message)
     {
         if(isset($message->html)) {
-            $message->body = prepareString($message->html);
+            $message->body = $message->html;
         } else {
             $message->body = prepareString(htmlentities($message->body , ENT_COMPAT,'UTF-8'));
         }

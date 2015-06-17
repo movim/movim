@@ -417,12 +417,12 @@ class Contact extends Model {
     }
 
     function isOld() {
-        if(strtotime($this->updated) < mktime( // We update the 3 days old vcards
+        if(strtotime($this->updated) < mktime( // We update the 1 day old vcards
                                         0,
                                         0,
                                         0,
                                         gmdate("m"),
-                                        gmdate("d")-3,
+                                        gmdate("d")-1,
                                         gmdate("Y")
                                     )
             ) {

@@ -58,7 +58,7 @@ class MovimEmoji
 function prepareString($string, $large = false, $preview = false) {
     // Add missing links
     $string = preg_replace_callback(
-        "/([\w\"'>]+\:\/\/[\w-?&;#+%~=\.\/\@]+[\w\/])/", function ($match) use($preview) {
+        "/([\w\"'>]+\:\/\/[\w-?&;#+%:~=\.\/\@]+[\w\/])/", function ($match) use($preview) {
             if(!in_array(substr($match[0], 0, 1), array('>', '"', '\''))) {
                 if($preview) {
                     $embed = Embed\Embed::create($match[0]);
@@ -66,6 +66,8 @@ function prepareString($string, $large = false, $preview = false) {
                     && $embed->images[0]['width'] <= 1024
                     && $embed->images[0]['height'] <= 1024) {
                         $content = '<img src="'.$match[0].'"/>';
+                    } elseif($embed->type == 'link') {
+                        $content = $embed->title . ' - ' . $embed->providerName;                        
                     } else {
                         $content = $match[0];
                     }
