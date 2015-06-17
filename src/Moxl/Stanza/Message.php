@@ -3,18 +3,30 @@
 namespace Moxl\Stanza;
 
 class Message {
-    static function message($to, $content)
+    static function message($to, $content, $html = false)
     {
         $session = \Sessionx::start();
+
+        $xhtml = '';
+        if($html) {
+            $xhtml = '
+                <html xmlns="http://jabber.org/protocol/xhtml-im">
+                    <body xmlns="http://www.w3.org/1999/xhtml">'.$html.'</body>
+                </html>';
+        }
+
         $xml = '
             <message xmlns="jabber:client" to="'.str_replace(' ', '\40', $to).'" type="chat" id="'.$session->id.'">
                 <body>'.$content.'</body>
+                '.$xhtml.'
                 <active xmlns="http://jabber.org/protocol/chatstates"/>
                 <request xmlns="urn:xmpp:receipts"/>
             </message>';
 
         \Moxl\API::request($xml);
     }
+
+    /**/
 
     static function encrypted($to, $content)
     {
