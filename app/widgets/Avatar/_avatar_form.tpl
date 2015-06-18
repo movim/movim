@@ -20,7 +20,7 @@
                 <span>{$c->__('avatar.file')}</span>
                 <p><input type="file" onchange="Avatar.file(this.files);"></p>
             </li>
-            {if="$gravatar != null"}
+            {if="isset($gravatar)"}
             <li class="condensed action">
                 <div class="action">
                     <a
@@ -46,7 +46,7 @@
         <input type="hidden" name="photobin"  value="{$photobin}"/>
     </div>
 
-    {if="$gravatar != null"}
+    {if="isset($gravatar)"}
     <div class="block">
         <h4>Gravatar</h4>
         {$gravatar->entry[0]|var_dump}
@@ -91,4 +91,3 @@
         id="avatarvalidate"
         >{$c->__('button.submit')}</a>
 </div>
-
