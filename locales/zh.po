@@ -6,15 +6,15 @@ msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-06-08 22:06+0200\n"
-"PO-Revision-Date: 2014-12-04 10:03+0000\n"
-"Last-Translator: fabienwang <Unknown>\n"
+"PO-Revision-Date: 2015-06-09 12:21+0000\n"
+"Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-21 13:20+0000\n"
-"X-Generator: Launchpad (build 17306)\n"
+"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
+"X-Generator: Launchpad (build 17570)\n"
+"Language: \n"
 
 #: ../cache/locales.php:2
 msgid "Thanks"
@@ -22,11 +22,11 @@ msgstr "谢谢"
 
 #: ../cache/locales.php:3
 msgid "Developers"
-msgstr ""
+msgstr "开发者"
 
 #: ../cache/locales.php:4
 msgid "Translators"
-msgstr ""
+msgstr "翻译者"
 
 #: ../cache/locales.php:5
 msgid "Software"
@@ -34,20 +34,21 @@ msgstr "软件"
 
 #: ../cache/locales.php:6
 msgid "Resources"
-msgstr ""
+msgstr "资源文件"
 
 #: ../cache/locales.php:7 ../cache/locales.php:83 ../cache/locales.php:85
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: ../cache/locales.php:8
-msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgid ""
+"Movim is an XMPP-based communication platform. All the project, except the "
+"following software and resources, is under"
+msgstr "Movim是一款基于XMPP的交流平台. 除了以下的软件和资源, 整个项目都是位于"
 
 #: ../cache/locales.php:9
-#, fuzzy
 msgid "Account"
-msgstr "%s -账户"
+msgstr ""
 
 #: ../cache/locales.php:10
 msgid "The password has been updated"
@@ -62,12 +63,13 @@ msgid "The provided passwords are not the same"
 msgstr ""
 
 #: ../cache/locales.php:13
-#, fuzzy
 msgid "Delete my account"
-msgstr "建立一个新账户"
+msgstr ""
 
 #: ../cache/locales.php:14
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+msgid ""
+"You will delete your XMPP account and all the relative information linked to "
+"it (profile, contacts and publications)."
 msgstr ""
 
 #: ../cache/locales.php:15
@@ -88,23 +90,25 @@ msgstr "在线"
 
 #: ../cache/locales.php:19
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "您的账户已经成功注册"
 
 #: ../cache/locales.php:20
 msgid "Loading"
-msgstr ""
+msgstr "载入中"
 
 #: ../cache/locales.php:21
 msgid "Not Acceptable"
-msgstr ""
+msgstr "不能接受"
 
 #: ../cache/locales.php:22
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "该服务的注册系统当前不可用"
 
 #: ../cache/locales.php:23
-msgid "This server use an external system for the registration, please click on the following URL."
-msgstr ""
+msgid ""
+"This server use an external system for the registration, please click on the "
+"following URL."
+msgstr "该服务使用一个外部的注册系统, 请点击以下的URL."
 
 #: ../cache/locales.php:24
 msgid "Actions"
@@ -112,27 +116,27 @@ msgstr "操作"
 
 #: ../cache/locales.php:25 ../cache/locales.php:82
 msgid "Database"
-msgstr ""
+msgstr "数据库"
 
 #: ../cache/locales.php:26
 msgid "Modl wasn't able to connect to the database"
-msgstr ""
+msgstr "Modl不能够连接数据库"
 
 #: ../cache/locales.php:27
 msgid "Movim is connected to the database"
-msgstr ""
+msgstr "Movim已经连接到数据库"
 
 #: ../cache/locales.php:28
 msgid "The database need to be updated"
-msgstr ""
+msgstr "数据库需要更新"
 
 #: ../cache/locales.php:29
 msgid "Movim database is up to date"
-msgstr ""
+msgstr "Movim数据库已经最新"
 
 #: ../cache/locales.php:30
 msgid "Database Type"
-msgstr ""
+msgstr "数据库类型"
 
 #: ../cache/locales.php:31 ../cache/locales.php:50 ../cache/locales.php:540
 msgid "Username"
@@ -153,7 +157,7 @@ msgstr ""
 
 #: ../cache/locales.php:35
 msgid "Database Name"
-msgstr ""
+msgstr "数据库名称"
 
 #: ../cache/locales.php:36
 msgid "General Settings"
@@ -173,7 +177,7 @@ msgstr "环境"
 
 #: ../cache/locales.php:40
 msgid "Log verbosity"
-msgstr ""
+msgstr "日志输出"
 
 #: ../cache/locales.php:41
 msgid "Server Timezone"
@@ -185,23 +189,24 @@ msgstr "用户文件夹大小限制(以字节为单位)"
 
 #: ../cache/locales.php:43
 msgid "WebSocket Configuration"
-msgstr ""
+msgstr "WebSocket 配置"
 
 #: ../cache/locales.php:44
 msgid "Enter here a valid WebSocket URI in the form"
-msgstr ""
+msgstr "在表格中输入一个有效的 WebSocket 地址"
 
 #: ../cache/locales.php:45
 msgid "WebSocket URI"
 msgstr ""
 
 #: ../cache/locales.php:46
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr ""
+msgid ""
+"If you change the URI, please restart the daemon to reload the configuration"
+msgstr "如果你更改了URI, 请重启后台程序来重载配置"
 
 #: ../cache/locales.php:47
 msgid "Public WebSockets"
-msgstr ""
+msgstr "公共 WebSocket"
 
 #: ../cache/locales.php:48
 msgid "Administration Credential"
@@ -220,20 +225,26 @@ msgid "Whitelist - XMPP Server"
 msgstr "白名单——XMPP服务器"
 
 #: ../cache/locales.php:54
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "如果你想在你的Movim夹指定授权的XMPP服务器列表并且禁止所有其他的连接，请在自己的域名这里，用逗号（例：movim.eu，jabber.fr）"
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
+msgstr ""
+"如果您想在Movim pod中指定一部分授权的XMPP服务器, 并且禁止余下的, 请将它们的域名在这里输入, 用英文逗号分隔 (例如: "
+"movim.eu, jabber.fr)"
 
 #: ../cache/locales.php:55
-msgid "Leave this field blank if you allow the access to all the XMPP accounts."
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "如果你允许访问所有的XMPP账户，请将此字段留空，"
 
 #: ../cache/locales.php:56
 msgid "List of whitelisted XMPP servers"
-msgstr "XMPP服务器的白名单清单"
+msgstr "XMPP服务器白名单列表"
 
 #: ../cache/locales.php:57 ../cache/locales.php:61
 msgid "Information Message"
-msgstr "资讯信息"
+msgstr "通知消息"
 
 #: ../cache/locales.php:58
 msgid "Description"
@@ -245,19 +256,19 @@ msgstr "这条信息将显示在登录页面"
 
 #: ../cache/locales.php:60
 msgid "Leave this field blank if you don't want to show any message."
-msgstr "如果您不想展示任何信息，请留空此这里"
+msgstr "如果您不想显示任何信息，请在此留空"
 
 #: ../cache/locales.php:62
 msgid "Empty"
-msgstr ""
+msgstr "空的"
 
 #: ../cache/locales.php:63
 msgid "Syslog"
-msgstr ""
+msgstr "系统日志"
 
 #: ../cache/locales.php:64
 msgid "Syslog and files"
-msgstr ""
+msgstr "系统日志和文件"
 
 #: ../cache/locales.php:65
 msgid "URL Rewriting"
@@ -269,24 +280,25 @@ msgstr ""
 
 #: ../cache/locales.php:67
 msgid "General Overview"
-msgstr ""
+msgstr "概览"
 
 #: ../cache/locales.php:68
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr ""
+msgid ""
+"Movim has found some issues or things that need to be fixed or improved"
+msgstr "Movim已经发现一些问题需要被修复或改善"
 
 #: ../cache/locales.php:69
 #, php-format
 msgid "Update your PHP-Version: %s"
-msgstr ""
+msgstr "更新您的PHP版本: %s"
 
 #: ../cache/locales.php:70
 msgid "Required: 5.3.0"
-msgstr ""
+msgstr "需要: 5.3.0"
 
 #: ../cache/locales.php:71
 msgid "Install the php5-curl library"
-msgstr ""
+msgstr "安装 php5-curl 库"
 
 #: ../cache/locales.php:72
 msgid "Install the php5-imagick library"
@@ -302,18 +314,22 @@ msgstr "阅读和写Movim的根目录写的web服务器权限"
 
 #: ../cache/locales.php:75
 msgid "The URL Rewriting support is currently disabled"
-msgstr ""
+msgstr "URL 重写支持已经被禁用"
 
 #: ../cache/locales.php:76
 msgid "The database need to be updated, go to the database panel to fix this"
 msgstr ""
 
 #: ../cache/locales.php:77
-msgid "WebSocket connection error, check if the Movim Daemon is running and is reacheable"
+msgid ""
+"WebSocket connection error, check if the Movim Daemon is running and is "
+"reacheable"
 msgstr ""
 
 #: ../cache/locales.php:78
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
+msgid ""
+"XMPP Websocket connection error, please check the validity of the URL given "
+"in the General Configuration"
 msgstr ""
 
 #: ../cache/locales.php:79
@@ -334,7 +350,9 @@ msgstr ""
 
 #: ../cache/locales.php:86
 #, php-format
-msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
+msgid ""
+"Here you can register your pod on the official %sMovim API%s and be listed "
+"on %sthe pods page%s."
 msgstr ""
 
 #: ../cache/locales.php:87
@@ -354,12 +372,14 @@ msgid "Your pod is validated"
 msgstr ""
 
 #: ../cache/locales.php:91
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr ""
+msgid ""
+"You asked to be removed from the API, this request will be processed in a "
+"couple of hours"
+msgstr "您请求从API中移除, 该请求会在几小时内被处理"
 
 #: ../cache/locales.php:92 ../cache/locales.php:147
 msgid "Configuration updated"
-msgstr ""
+msgstr "配置已更新"
 
 #: ../cache/locales.php:93
 msgid "File"
@@ -375,7 +395,7 @@ msgstr "摄像头"
 
 #: ../cache/locales.php:96
 msgid "Cheese !"
-msgstr "奶酪"
+msgstr "(说)茄~子~ !"
 
 #: ../cache/locales.php:97
 msgid "Take a webcam snapshot"
@@ -383,16 +403,16 @@ msgstr "进行摄像头快照"
 
 #: ../cache/locales.php:98
 msgid "Avatar Updated"
-msgstr "Avata更新了"
+msgstr "头像已更新"
 
 #: ../cache/locales.php:99
 msgid "Avatar Not Updated"
-msgstr "Avatar没有更新"
+msgstr "头像未更新"
 
 #: ../cache/locales.php:100 ../cache/locales.php:415
 #, php-format
 msgid "%s's feed"
-msgstr ""
+msgstr "%s的 feed"
 
 #: ../cache/locales.php:101
 msgid "This user has not posted anything right now"
@@ -409,11 +429,11 @@ msgstr "分组"
 
 #: ../cache/locales.php:104
 msgid "Add a new Chat Room"
-msgstr ""
+msgstr "添加一个新的聊天室"
 
 #: ../cache/locales.php:105 ../cache/locales.php:368
 msgid "Chat Room ID"
-msgstr ""
+msgstr "聊天室ID"
 
 #: ../cache/locales.php:106 ../cache/locales.php:116 ../cache/locales.php:156
 #: ../cache/locales.php:361 ../cache/locales.php:369 ../cache/locales.php:424
@@ -427,7 +447,7 @@ msgstr "昵称"
 
 #: ../cache/locales.php:108
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
+msgstr "您想自动加入该聊天室么?"
 
 #: ../cache/locales.php:109 ../cache/locales.php:372
 msgid "Bad Chatroom ID"
@@ -447,11 +467,11 @@ msgstr "发生一个错误： "
 
 #: ../cache/locales.php:113
 msgid "Configure"
-msgstr ""
+msgstr "配置"
 
 #: ../cache/locales.php:114
 msgid "Add a new URL"
-msgstr ""
+msgstr "添加一个新的URL"
 
 #: ../cache/locales.php:115
 msgid "URL"
@@ -471,12 +491,11 @@ msgstr ""
 
 #: ../cache/locales.php:120
 msgid "Paused..."
-msgstr ""
+msgstr "暂停..."
 
 #: ../cache/locales.php:121
-#, fuzzy
 msgid "Contact gone"
-msgstr "更新联系人"
+msgstr ""
 
 #: ../cache/locales.php:122
 #, php-format
@@ -485,11 +504,11 @@ msgstr "%s需要您的注意"
 
 #: ../cache/locales.php:123
 msgid "Your message here..."
-msgstr ""
+msgstr "您的消息..."
 
 #: ../cache/locales.php:124
 msgid "Smileys"
-msgstr ""
+msgstr "表情"
 
 #: ../cache/locales.php:125 ../cache/locales.php:139
 msgid "Chat"
@@ -497,29 +516,27 @@ msgstr "聊天"
 
 #: ../cache/locales.php:126
 msgid "Discuss with your contacts"
-msgstr ""
+msgstr "同联系人讨论"
 
 #: ../cache/locales.php:127
-#, fuzzy
 msgid "Members"
-msgstr "十一月"
+msgstr ""
 
 #: ../cache/locales.php:128 ../cache/locales.php:376
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "已连接到聊天室"
 
 #: ../cache/locales.php:129 ../cache/locales.php:377
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "离开聊天室"
 
 #: ../cache/locales.php:130 ../cache/locales.php:200 ../cache/locales.php:469
 msgid "Configuration"
 msgstr "配置"
 
 #: ../cache/locales.php:131
-#, fuzzy
 msgid "Configuration saved"
-msgstr "保存分组结构"
+msgstr ""
 
 #: ../cache/locales.php:132
 msgid "Subject"
@@ -535,17 +552,15 @@ msgstr ""
 
 #: ../cache/locales.php:135
 msgid "Chat with a contact"
-msgstr ""
+msgstr "同联系人聊天"
 
 #: ../cache/locales.php:136
-#, fuzzy
 msgid "Frequent contacts"
-msgstr "移除联系人"
+msgstr ""
 
 #: ../cache/locales.php:137
-#, fuzzy
 msgid "Load more contacts"
-msgstr "与一个联系人共享"
+msgstr ""
 
 #: ../cache/locales.php:140
 msgid "General"
@@ -556,23 +571,20 @@ msgid "Language"
 msgstr "语言"
 
 #: ../cache/locales.php:142
-#, fuzzy
 msgid "Roster display"
-msgstr "昨天"
+msgstr ""
 
 #: ../cache/locales.php:143
-#, fuzzy
 msgid "Show the offline contacts"
-msgstr "显示以前的评论"
+msgstr ""
 
 #: ../cache/locales.php:144
-#, fuzzy
 msgid "Hide the offline contacts"
-msgstr "隐藏未联系的联系人"
+msgstr ""
 
 #: ../cache/locales.php:145
 msgid "Appearence"
-msgstr ""
+msgstr "外观"
 
 #: ../cache/locales.php:146
 msgid "This configuration is shared wherever you are connected !"
@@ -580,23 +592,23 @@ msgstr ""
 
 #: ../cache/locales.php:148
 msgid "Notify on incoming message"
-msgstr ""
+msgstr "通知新消息"
 
 #: ../cache/locales.php:149
 msgid "Use desktop notifications"
-msgstr ""
+msgstr "使用桌面通知"
 
 #: ../cache/locales.php:150
 msgid "Data"
-msgstr ""
+msgstr "数据"
 
 #: ../cache/locales.php:151
 msgid "Cache"
-msgstr ""
+msgstr "缓存"
 
 #: ../cache/locales.php:152 ../cache/locales.php:218 ../cache/locales.php:466
 msgid "Contacts"
-msgstr ""
+msgstr "联系人"
 
 #: ../cache/locales.php:153 ../cache/locales.php:480
 msgid "Posts"
@@ -604,7 +616,7 @@ msgstr ""
 
 #: ../cache/locales.php:154
 msgid "Messages"
-msgstr ""
+msgstr "消息"
 
 #: ../cache/locales.php:155 ../cache/locales.php:423
 msgid "General Informations"
@@ -636,12 +648,11 @@ msgstr "关于自己"
 
 #: ../cache/locales.php:164
 msgid "Other Accounts"
-msgstr ""
+msgstr "其它帐号"
 
 #: ../cache/locales.php:165
-#, fuzzy
 msgid "Is Listening"
-msgstr "听"
+msgstr ""
 
 #: ../cache/locales.php:166 ../cache/locales.php:432
 msgid "Geographic Position"
@@ -685,7 +696,7 @@ msgstr ""
 
 #: ../cache/locales.php:177 ../cache/locales.php:533
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: ../cache/locales.php:178
 msgid "Alias"
@@ -701,11 +712,12 @@ msgstr "更新联系人"
 
 #: ../cache/locales.php:181
 msgid "Are you sure?"
-msgstr ""
+msgstr "您确定么?"
 
 #: ../cache/locales.php:182
-msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr ""
+msgid ""
+"You are going to delete one of your contacts, please confirm your action"
+msgstr "您将删除其中一个联系人, 请确认"
 
 #: ../cache/locales.php:183
 #, php-format
@@ -718,7 +730,7 @@ msgstr ""
 
 #: ../cache/locales.php:185
 msgid "Subscribe"
-msgstr ""
+msgstr "订阅"
 
 #: ../cache/locales.php:186
 msgid "Subscribed"
@@ -726,29 +738,27 @@ msgstr "订阅"
 
 #: ../cache/locales.php:187
 msgid "Unsubscribe"
-msgstr ""
+msgstr "取消订阅"
 
 #: ../cache/locales.php:188
 msgid "You are going to unsubscribe from this Group"
 msgstr ""
 
 #: ../cache/locales.php:189
-#, fuzzy
 msgid "Unsubscribed"
-msgstr "订阅"
+msgstr ""
 
 #: ../cache/locales.php:190
 msgid "Make your membership to this group public to your friends"
 msgstr ""
 
 #: ../cache/locales.php:191
-#, fuzzy
 msgid "Give a label for this group"
-msgstr "给您的分组命名"
+msgstr ""
 
 #: ../cache/locales.php:192
 msgid "Are you sure ?"
-msgstr ""
+msgstr "您确定吗 ?"
 
 #: ../cache/locales.php:194
 msgid "Discover, follow and share"
@@ -767,27 +777,32 @@ msgid "Delete the group"
 msgstr ""
 
 #: ../cache/locales.php:198
-msgid "You are going to delete the following group. Please confirm your action."
+msgid ""
+"You are going to delete the following group. Please confirm your action."
 msgstr ""
 
 #: ../cache/locales.php:199
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgid ""
+"It seems that this group doesn't exists anymore. Do you want to remove it "
+"from your subscriptions?"
 msgstr ""
 
 #: ../cache/locales.php:201 ../cache/locales.php:408
 msgid "Subscriptions"
-msgstr ""
+msgstr "订阅"
 
 #: ../cache/locales.php:202 ../cache/locales.php:290
 msgid "Hello"
-msgstr ""
+msgstr "您好"
 
 #: ../cache/locales.php:203 ../cache/locales.php:225 ../cache/locales.php:291
 msgid "Contact post"
 msgstr ""
 
 #: ../cache/locales.php:204
-msgid "You don't have any subscriptions yet, select a group server above to start exploring."
+msgid ""
+"You don't have any subscriptions yet, select a group server above to start "
+"exploring."
 msgstr ""
 
 #: ../cache/locales.php:205
@@ -795,19 +810,16 @@ msgid "Subscribe to your favorite feeds by bookmarking them."
 msgstr ""
 
 #: ../cache/locales.php:206
-#, fuzzy
 msgid "My Subscriptions"
-msgstr "管理您的订阅"
+msgstr ""
 
 #: ../cache/locales.php:207
-#, fuzzy
 msgid "Create a new Group"
-msgstr "建立一个新账户"
+msgstr ""
 
 #: ../cache/locales.php:208
-#, fuzzy
 msgid "Group name"
-msgstr "分组"
+msgstr ""
 
 #: ../cache/locales.php:209
 msgid "My Little Pony - Fan Club"
@@ -826,14 +838,13 @@ msgid "Please provide a valid group name (4 characters minimum)"
 msgstr ""
 
 #: ../cache/locales.php:213
-#, fuzzy
 msgid "You cannot create a new Group on this server"
-msgstr "在服务器上没有找到建立账户的表格"
+msgstr ""
 
 #: ../cache/locales.php:214
-#, fuzzy, php-format
+#, php-format
 msgid "%s subscribers"
-msgstr "订阅"
+msgstr ""
 
 #: ../cache/locales.php:215
 #, php-format
@@ -842,11 +853,11 @@ msgstr ""
 
 #: ../cache/locales.php:216
 msgid "All"
-msgstr ""
+msgstr "所有"
 
 #: ../cache/locales.php:219
 msgid "Refresh all the streams"
-msgstr ""
+msgstr "刷新所有流"
 
 #: ../cache/locales.php:220 ../cache/locales.php:402
 msgid "Search"
@@ -873,25 +884,28 @@ msgid "Universal share button"
 msgstr ""
 
 #: ../cache/locales.php:227
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgid ""
+"Bookmark or drag and drop the following button in your toolbar and use it on "
+"all the pages you want to share on Movim"
 msgstr ""
 
 #: ../cache/locales.php:228
-#, fuzzy
 msgid "Share on Movim"
-msgstr "什么是Movim'"
+msgstr ""
 
 #: ../cache/locales.php:229
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "FAQ"
 
 #: ../cache/locales.php:230
 msgid "What do the little banners refer to ?"
 msgstr "这些小横幅与什么相关"
 
 #: ../cache/locales.php:231
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "根据这五个小横幅，您可以快速设置个人信息的私密等级"
+msgid ""
+"Thanks to these five little banners, you can quickly identitfy the level of "
+"confdentiality applied to the information you provide."
+msgstr "根据一下五种颜色，您可以快速设置个人信息的私密等级"
 
 #: ../cache/locales.php:232
 msgid "White, only you can see the information"
@@ -915,7 +929,7 @@ msgstr "黑色，整个互联网可以看见您的信息"
 
 #: ../cache/locales.php:237
 msgid "Looking for some documentation ?"
-msgstr ""
+msgstr "需要查找一些帮助文档?"
 
 #: ../cache/locales.php:238
 msgid "Read the Wiki"
@@ -923,19 +937,19 @@ msgstr ""
 
 #: ../cache/locales.php:239
 msgid "Talk with us by email ?"
-msgstr ""
+msgstr "用email同我们联系"
 
 #: ../cache/locales.php:240
 msgid "Join the Mailing List"
-msgstr ""
+msgstr "加入邮件列表"
 
 #: ../cache/locales.php:241
 msgid "Chat with the team ?"
-msgstr ""
+msgstr "同开发团队交流?"
 
 #: ../cache/locales.php:242
 msgid "Join the Chatroom"
-msgstr ""
+msgstr "加入聊天室"
 
 #: ../cache/locales.php:243
 msgid "Location node created"
@@ -975,7 +989,7 @@ msgstr "位置已更新"
 
 #: ../cache/locales.php:252
 msgid "Update my position"
-msgstr ""
+msgstr "更新我的位置"
 
 #: ../cache/locales.php:253
 msgid "Wrong username"
@@ -1015,7 +1029,7 @@ msgstr "创建账户成功"
 
 #: ../cache/locales.php:262 ../cache/locales.php:271
 msgid "Your XMPP server is unauthorized"
-msgstr "你的XPMM服务没有被授权"
+msgstr "你的XMPP服务没有被授权"
 
 #: ../cache/locales.php:263
 msgid "The server takes too much time to respond"
@@ -1023,11 +1037,13 @@ msgstr "服务器未响应"
 
 #: ../cache/locales.php:264
 msgid "Your web browser is too old to use with Movim."
-msgstr ""
+msgstr "您的浏览器太老不支持Movim"
 
 #: ../cache/locales.php:265
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr ""
+msgid ""
+"Movim cannot talk with the server, please try again later (Websocket "
+"connection error)"
+msgstr "Movim无法连接服务器, 请稍后重试(WebSocket连接错误)"
 
 #: ../cache/locales.php:266
 msgid "Impossible login"
@@ -1035,16 +1051,15 @@ msgstr ""
 
 #: ../cache/locales.php:267
 msgid "Oops!"
-msgstr ""
+msgstr "糟糕！Oops!"
 
 #: ../cache/locales.php:268 ../cache/locales.php:449 ../cache/locales.php:455
 msgid "Unknown error"
 msgstr "未知错误"
 
 #: ../cache/locales.php:269
-#, fuzzy
 msgid "Invalid username format"
-msgstr "用户名无效"
+msgstr ""
 
 #: ../cache/locales.php:270
 msgid "Invalid password format"
@@ -1068,8 +1083,10 @@ msgstr "XMPP鉴别错误"
 
 #: ../cache/locales.php:276
 #, php-format
-msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
-msgstr "你可以使用Facebook（只能聊天）注册用%s你的@chat.facebook.com%s 和你的密码"
+msgid ""
+"You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
+"and your password"
+msgstr "你可以使用Facebook帐号来登录, 如 %s您的id@chat.facebook.com%s 和您的密码. (只能聊天)"
 
 #: ../cache/locales.php:277
 #, php-format
@@ -1078,31 +1095,31 @@ msgstr "%sGmail 账户可用%s，但是部分功能不支持"
 
 #: ../cache/locales.php:278
 msgid "You can login using your favorite Jabber account"
-msgstr ""
+msgstr "您可以使用您喜欢的Jabber账户登录"
 
 #: ../cache/locales.php:279
 msgid "or with our demonstration account"
-msgstr ""
+msgstr "或使用我们的演示账户"
 
 #: ../cache/locales.php:280 ../cache/locales.php:435
 msgid "Accounts"
-msgstr ""
+msgstr "帐户"
 
 #: ../cache/locales.php:281
 msgid "My address"
-msgstr "我的识别符"
+msgstr "用户名"
 
 #: ../cache/locales.php:283
 msgid "Create one !"
-msgstr ""
+msgstr "新建一个 !"
 
 #: ../cache/locales.php:284
 msgid "No account yet ?"
-msgstr ""
+msgstr "还没有账户 ?"
 
 #: ../cache/locales.php:285
 msgid "Another account"
-msgstr ""
+msgstr "另一个账户"
 
 #: ../cache/locales.php:286
 msgid "You can login with accounts from theses servers"
@@ -1110,7 +1127,7 @@ msgstr ""
 
 #: ../cache/locales.php:287
 msgid "Connected"
-msgstr ""
+msgstr "已连接"
 
 #: ../cache/locales.php:288
 msgid "Population"
@@ -1121,17 +1138,18 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
 
 #: ../cache/locales.php:292
-msgid "Welcome on your news feed, here you will see all the posts published in the groups you have subscribed."
+msgid ""
+"Welcome on your news feed, here you will see all the posts published in the "
+"groups you have subscribed."
 msgstr ""
 
 #: ../cache/locales.php:293
 msgid "Refreshing all the streams"
-msgstr ""
+msgstr "正在刷行所有流"
 
 #: ../cache/locales.php:294
-#, fuzzy
 msgid "This post is public"
-msgstr "这是公开的简介吗"
+msgstr ""
 
 #: ../cache/locales.php:295
 msgid "Manage your members"
@@ -1168,7 +1186,7 @@ msgstr ""
 #: ../cache/locales.php:303
 #, php-format
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s 想同您聊天"
 
 #: ../cache/locales.php:304
 msgid "Manage"
@@ -1176,7 +1194,7 @@ msgstr "管理"
 
 #: ../cache/locales.php:305 ../cache/locales.php:338
 msgid "News Feed"
-msgstr ""
+msgstr "新闻订阅"
 
 #: ../cache/locales.php:306 ../cache/locales.php:339
 msgid "Discover and register to the groups you are interested in"
@@ -1184,7 +1202,7 @@ msgstr ""
 
 #: ../cache/locales.php:307 ../cache/locales.php:340 ../cache/locales.php:482
 msgid "Preview"
-msgstr ""
+msgstr "预览"
 
 #: ../cache/locales.php:308 ../cache/locales.php:341 ../cache/locales.php:478
 msgid "Help"
@@ -1200,12 +1218,11 @@ msgstr ""
 
 #: ../cache/locales.php:311 ../cache/locales.php:344 ../cache/locales.php:681
 msgid "Title"
-msgstr ""
+msgstr "标题"
 
 #: ../cache/locales.php:312 ../cache/locales.php:345
-#, fuzzy
 msgid "Content"
-msgstr "满意"
+msgstr ""
 
 #: ../cache/locales.php:313 ../cache/locales.php:346
 msgid "Link"
@@ -1216,23 +1233,20 @@ msgid "Tags"
 msgstr ""
 
 #: ../cache/locales.php:315 ../cache/locales.php:348
-#, fuzzy
 msgid "Please enter a valid url"
-msgstr "请输入有效的Jabber ID"
+msgstr ""
 
 #: ../cache/locales.php:316 ../cache/locales.php:349
-#, fuzzy
 msgid "No content to preview"
-msgstr "没有内容"
+msgstr ""
 
 #: ../cache/locales.php:317 ../cache/locales.php:350 ../cache/locales.php:687
 msgid "No content"
 msgstr "没有内容"
 
 #: ../cache/locales.php:318 ../cache/locales.php:351
-#, fuzzy
 msgid "Post published"
-msgstr "消息发布"
+msgstr ""
 
 #: ../cache/locales.php:319 ../cache/locales.php:352
 msgid "Post deleted"
@@ -1244,14 +1258,16 @@ msgstr ""
 
 #: ../cache/locales.php:321 ../cache/locales.php:354
 msgid "What's Hot"
-msgstr ""
+msgstr "当前热门"
 
 #: ../cache/locales.php:322 ../cache/locales.php:355
 msgid "New post"
 msgstr ""
 
 #: ../cache/locales.php:323 ../cache/locales.php:357
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
+msgid ""
+"You can also use services like Imgur or Flickr to host your picture and "
+"paste the link here."
 msgstr ""
 
 #: ../cache/locales.php:324
@@ -1260,9 +1276,9 @@ msgid "This is a re-post from %s"
 msgstr ""
 
 #: ../cache/locales.php:325
-#, fuzzy, php-format
+#, php-format
 msgid "See %s profile"
-msgstr "%s - 简介"
+msgstr ""
 
 #: ../cache/locales.php:326
 msgid "Publish this post on your public feed?"
@@ -1273,9 +1289,8 @@ msgid "Post published on your blog"
 msgstr ""
 
 #: ../cache/locales.php:328
-#, fuzzy
 msgid "Post removed from your blog"
-msgstr "%s 已经从您分组移除"
+msgstr ""
 
 #: ../cache/locales.php:329 ../cache/locales.php:701
 msgid "Delete this post"
@@ -1290,9 +1305,8 @@ msgid "Comments disabled"
 msgstr ""
 
 #: ../cache/locales.php:332
-#, fuzzy
 msgid "Comment published"
-msgstr "发表评论失败"
+msgstr ""
 
 #: ../cache/locales.php:333
 msgid "Disconnect"
@@ -1308,23 +1322,24 @@ msgstr "更新状态"
 
 #: ../cache/locales.php:336
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 #: ../cache/locales.php:337
 msgid "Presence"
 msgstr ""
 
 #: ../cache/locales.php:356
-#, fuzzy
 msgid "Publish"
-msgstr "消息发布"
+msgstr ""
 
 #: ../cache/locales.php:358
 msgid "You cannot publish a post on this Group"
 msgstr ""
 
 #: ../cache/locales.php:359
-msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+msgid ""
+"Some fields have been filled in. Do you still want to go back and loose "
+"their content?"
 msgstr ""
 
 #: ../cache/locales.php:360
@@ -1343,7 +1358,7 @@ msgstr "%s 已经从您分组移除"
 
 #: ../cache/locales.php:364
 msgid "Add a chatroom"
-msgstr ""
+msgstr "添加一个聊天室"
 
 #: ../cache/locales.php:365
 msgid "You don't have any chatroom yet."
@@ -1363,24 +1378,24 @@ msgstr ""
 
 #: ../cache/locales.php:374
 msgid "Remove a chatroom"
-msgstr ""
+msgstr "移除一个聊天室"
 
 #: ../cache/locales.php:375
-msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+msgid ""
+"You are going to remove the following chatroom. Please confirm your action."
+msgstr "您将移除以下的聊天室, 请确认."
 
 #: ../cache/locales.php:378
 msgid "Users in the room"
-msgstr ""
+msgstr "聊天室用户"
 
 #: ../cache/locales.php:379
 msgid "Please enter a correct nickname (6 to 40 characters)"
 msgstr ""
 
 #: ../cache/locales.php:381
-#, fuzzy
 msgid "Public chatroom"
-msgstr "公开的用户组"
+msgstr ""
 
 #: ../cache/locales.php:382
 msgid "Please provide a room address"
@@ -1391,18 +1406,19 @@ msgid "You are currently logued as an anonymous user."
 msgstr ""
 
 #: ../cache/locales.php:384
-msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
+msgid ""
+"You can join using your own account or create one on the login page by "
+"loging out using the cross in the top-right corner."
 msgstr ""
 
 #: ../cache/locales.php:385
-#, fuzzy, php-format
+#, php-format
 msgid "Login on %s"
-msgstr "注册"
+msgstr ""
 
 #: ../cache/locales.php:386
-#, fuzzy
 msgid "Your nickname"
-msgstr "昵称"
+msgstr ""
 
 #: ../cache/locales.php:387
 msgid "Ungrouped"
@@ -1431,20 +1447,22 @@ msgid "Please enter a valid Jabber ID"
 msgstr "请输入有效的Jabber ID"
 
 #: ../cache/locales.php:393
-msgid "No contacts ? You can add one using the + button bellow or going to the Explore page"
-msgstr ""
+msgid ""
+"No contacts ? You can add one using the + button bellow or going to the "
+"Explore page"
+msgstr "没有联系人? 您可以使用下面的加号按钮来进入探索页面"
 
 #: ../cache/locales.php:394
 msgid "Show/Hide"
-msgstr ""
+msgstr "显示/隐藏"
 
 #: ../cache/locales.php:395
 msgid "Enter the Jabber ID of your contact."
-msgstr ""
+msgstr "输入您帐号的 Jabber ID"
 
 #: ../cache/locales.php:396
 msgid "Press enter to validate."
-msgstr ""
+msgstr "回车验证"
 
 #: ../cache/locales.php:397
 msgid "JID"
@@ -1452,15 +1470,15 @@ msgstr ""
 
 #: ../cache/locales.php:398
 msgid "Results"
-msgstr ""
+msgstr "结果"
 
 #: ../cache/locales.php:399
 msgid "Contact added"
-msgstr ""
+msgstr "联系人已添加"
 
 #: ../cache/locales.php:401
 msgid "Contact deleted"
-msgstr ""
+msgstr "联系人已删除"
 
 #: ../cache/locales.php:403
 msgid "This is not a valid url"
@@ -1472,7 +1490,7 @@ msgstr ""
 
 #: ../cache/locales.php:405
 msgid "Statistics"
-msgstr ""
+msgstr "统计"
 
 #: ../cache/locales.php:406
 msgid "Since"
@@ -1491,7 +1509,9 @@ msgid "Monthly Subscriptions Cumulated"
 msgstr ""
 
 #: ../cache/locales.php:412
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
 msgstr "Movim 是一个分散式管理的社交网络，在建立一个新账户之前，你需要选择一个服务器注册。"
 
 #: ../cache/locales.php:413
@@ -1500,15 +1520,15 @@ msgstr ""
 
 #: ../cache/locales.php:414
 msgid "Contact us to add yours to the officially supported servers list"
-msgstr ""
+msgstr "联系我们以加入官方支持服务列表"
 
 #: ../cache/locales.php:416
 msgid "No public feed for this contact"
-msgstr ""
+msgstr "该账户没有公共订阅"
 
 #: ../cache/locales.php:417
 msgid "No contact specified"
-msgstr ""
+msgstr "没有指定联系人"
 
 #: ../cache/locales.php:418 ../cache/locales.php:473
 msgid "Profile"
@@ -1524,23 +1544,23 @@ msgstr "未更新简介"
 
 #: ../cache/locales.php:421
 msgid "Your profile is now public"
-msgstr "你的简介现在是公开的"
+msgstr "您的档案现在是公开的"
 
 #: ../cache/locales.php:422
 msgid "Your profile is now restricted"
-msgstr "现在您的简介是保密的"
+msgstr "现在您的档案是保密的"
 
 #: ../cache/locales.php:436
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: ../cache/locales.php:437
 msgid "Skype"
-msgstr ""
+msgstr "Skype"
 
 #: ../cache/locales.php:438
 msgid "Yahoo"
-msgstr ""
+msgstr "Yahoo"
 
 #: ../cache/locales.php:439
 msgid "Privacy Level"
@@ -1548,11 +1568,14 @@ msgstr "隐私等级"
 
 #: ../cache/locales.php:440
 msgid "Is this profile public ?"
-msgstr "这是公开的简介吗"
+msgstr "公开您的档案么?"
 
 #: ../cache/locales.php:441
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
-msgstr "请注意！公开您的简介，上面列出的所有信息将对Movim的所有用户和整个互联网公开"
+msgid ""
+"Please pay attention ! By making your profile public, all the information "
+"listed above will be available for all the Movim users and on the whole "
+"Internet."
+msgstr "请注意！公开您的档案，上面列出的所有信息将对Movim的所有用户和整个互联网公开"
 
 #: ../cache/locales.php:442
 msgid "Call"
@@ -1564,7 +1587,7 @@ msgstr ""
 
 #: ../cache/locales.php:444
 msgid "Connection"
-msgstr ""
+msgstr "连接"
 
 #: ../cache/locales.php:445 ../cache/locales.php:451
 msgid "Hung up"
@@ -1572,7 +1595,7 @@ msgstr ""
 
 #: ../cache/locales.php:446 ../cache/locales.php:452
 msgid "Your contact is busy"
-msgstr ""
+msgstr "您的联系人正忙"
 
 #: ../cache/locales.php:447 ../cache/locales.php:453
 msgid "Declined"
@@ -1588,10 +1611,12 @@ msgstr ""
 
 #: ../cache/locales.php:457
 msgid "You don't have javascript enabled.  Good luck with that."
-msgstr "你没有javascript权限，别再挣扎了"
+msgstr "您的浏览器没有开启javascript，请排查一下"
 
 #: ../cache/locales.php:458
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgid ""
+"Movim is a kickass distributed social networking platform that protect your "
+"privacy an comes with a set of awesome features."
 msgstr ""
 
 #: ../cache/locales.php:459
@@ -1608,7 +1633,7 @@ msgstr "发现"
 
 #: ../cache/locales.php:462
 msgid "Explore"
-msgstr "开发"
+msgstr "探索"
 
 #: ../cache/locales.php:463
 msgid "Account Creation"
@@ -1620,7 +1645,7 @@ msgstr "新闻"
 
 #: ../cache/locales.php:465
 msgid "Avatar"
-msgstr "Avatar"
+msgstr "头像"
 
 #: ../cache/locales.php:467
 msgid "Chats"
@@ -1652,7 +1677,7 @@ msgstr "关于"
 
 #: ../cache/locales.php:477
 msgid "Login"
-msgstr "注册"
+msgstr "登录"
 
 #: ../cache/locales.php:479
 msgid "Feed"
@@ -1696,12 +1721,12 @@ msgstr "路径错误，请设置所有的参数%s"
 #: ../cache/locales.php:490
 #, php-format
 msgid "Requested widget '%s' doesn't exist."
-msgstr ""
+msgstr "请求的小工具 '%s' 不存在."
 
 #: ../cache/locales.php:491
 #, php-format
 msgid "Requested event '%s' not registered."
-msgstr ""
+msgstr "请求的事件 '%s' 未注册."
 
 #: ../cache/locales.php:492
 msgid "Whoops!"
@@ -1709,11 +1734,11 @@ msgstr ""
 
 #: ../cache/locales.php:493
 msgid "It seem that you don't have any pictures here?"
-msgstr ""
+msgstr "似乎您还没有任何图片?"
 
 #: ../cache/locales.php:494
 msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
+msgstr "您可以通过进入媒体页面来试图上传一些"
 
 #: ../cache/locales.php:495
 #, php-format
@@ -1728,7 +1753,7 @@ msgstr "%s -账户"
 #: ../cache/locales.php:497
 #, php-format
 msgid "%s - Administration Panel"
-msgstr "%s - 管理员板块"
+msgstr "%s - 管理员面板"
 
 #: ../cache/locales.php:498
 #, php-format
@@ -1748,7 +1773,7 @@ msgstr "%s - 发现"
 #: ../cache/locales.php:501
 #, php-format
 msgid "%s - Explore"
-msgstr "%s -开发"
+msgstr "%s -探索"
 
 #: ../cache/locales.php:502
 #, php-format
@@ -1793,7 +1818,7 @@ msgstr ""
 #: ../cache/locales.php:510
 #, php-format
 msgid "%s - Profile"
-msgstr "%s - 简介"
+msgstr "%s - 档案"
 
 #: ../cache/locales.php:511
 #, php-format
@@ -1814,15 +1839,15 @@ msgstr "添加"
 
 #: ../cache/locales.php:515
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: ../cache/locales.php:516
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #: ../cache/locales.php:517
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: ../cache/locales.php:518
 msgid "Close"
@@ -1834,7 +1859,7 @@ msgstr "更新"
 
 #: ../cache/locales.php:520
 msgid "Updating"
-msgstr "更新"
+msgstr "更新中"
 
 #: ../cache/locales.php:521
 msgid "Submit"
@@ -1842,7 +1867,7 @@ msgstr "提交"
 
 #: ../cache/locales.php:522
 msgid "Submitting"
-msgstr "提交"
+msgstr "提交中"
 
 #: ../cache/locales.php:523
 msgid "Reset"
@@ -1850,7 +1875,7 @@ msgstr "重置"
 
 #: ../cache/locales.php:524
 msgid "Register"
-msgstr ""
+msgstr "注册"
 
 #: ../cache/locales.php:525
 msgid "Unregister"
@@ -1862,7 +1887,7 @@ msgstr "保存"
 
 #: ../cache/locales.php:527
 msgid "Clear"
-msgstr ""
+msgstr "清除"
 
 #: ../cache/locales.php:528
 msgid "Upload"
@@ -1874,7 +1899,7 @@ msgstr "登录"
 
 #: ../cache/locales.php:530
 msgid "Connecting"
-msgstr ""
+msgstr "连接中"
 
 #: ../cache/locales.php:531
 msgid "Yes"
@@ -1886,7 +1911,7 @@ msgstr "否"
 
 #: ../cache/locales.php:534
 msgid "Return"
-msgstr ""
+msgstr "返回"
 
 #: ../cache/locales.php:535
 msgid "Accept"
@@ -1901,9 +1926,8 @@ msgid "Next"
 msgstr ""
 
 #: ../cache/locales.php:538
-#, fuzzy
 msgid "Previous"
-msgstr "羡慕"
+msgstr ""
 
 #: ../cache/locales.php:539
 #, php-format
@@ -1940,7 +1964,7 @@ msgstr "星期六"
 
 #: ../cache/locales.php:549
 msgid "Sunday"
-msgstr ""
+msgstr "星期日"
 
 #: ../cache/locales.php:550 ../cache/locales.php:559
 msgid "None"
@@ -2060,7 +2084,7 @@ msgstr "吃惊"
 
 #: ../cache/locales.php:580
 msgid "amorous"
-msgstr "色"
+msgstr "恋爱"
 
 #: ../cache/locales.php:581
 msgid "angry"
@@ -2484,9 +2508,8 @@ msgid "email"
 msgstr "邮件"
 
 #: ../cache/locales.php:688
-#, fuzzy
 msgid "No comments yet"
-msgstr "没有评论"
+msgstr ""
 
 #: ../cache/locales.php:689
 msgid "No comments stream"
@@ -2515,7 +2538,7 @@ msgstr "显示以前的评论"
 
 #: ../cache/locales.php:695
 msgid "Loading comments ..."
-msgstr ""
+msgstr "载入评论..."
 
 #: ../cache/locales.php:696
 msgid "Get the comments"
@@ -2523,7 +2546,7 @@ msgstr ""
 
 #: ../cache/locales.php:697
 msgid "Add a comment"
-msgstr ""
+msgstr "添加评论"
 
 #: ../cache/locales.php:698
 msgid "Share with"
@@ -2531,103 +2554,37 @@ msgstr ""
 
 #: ../cache/locales.php:699
 msgid "Everyone"
-msgstr ""
+msgstr "每个人"
 
 #: ../cache/locales.php:700
 msgid "Your contacts"
-msgstr ""
+msgstr "您的联系人"
 
 #: ../cache/locales.php:702
 msgid "Updated"
-msgstr ""
+msgstr "已更新"
 
 #: ../cache/locales.php:703
 msgid "Content not found"
-msgstr ""
+msgstr "内容未找到"
 
 #: ../cache/locales.php:704
 msgid "Contact publication"
 msgstr ""
 
 #: ../cache/locales.php:705
-#, fuzzy
 msgid "Comments"
-msgstr "没有评论"
+msgstr ""
 
 #: ../cache/locales.php:706
 msgid "The API is not reachable, try again later"
-msgstr ""
+msgstr "API无法连接, 请稍后重试"
 
 #: ../cache/locales.php:707
 msgid "Type here"
 msgstr ""
 
-#~ msgid "Wrong ID"
-#~ msgstr "ID错误"
-
-#~ msgid "You entered different passwords"
-#~ msgstr "您输入了不同的密码"
-
-#~ msgid "Invalid name"
-#~ msgstr "用户名无效"
-
-#~ msgid "Request not acceptable"
-#~ msgstr "请求不被接受"
-
-#~ msgid "Username already taken"
-#~ msgstr "用户名已注册"
-
-#~ msgid "Could not connect to the XMPP server"
-#~ msgstr "不能链接到XMPP服务器"
-
-#~ msgid "Could not communicate with the XMPP server"
-#~ msgstr "不能和XMPP服务器交流"
-
-#~ msgid "Resolution"
-#~ msgstr "分辨率"
-
-#~ msgid "Size"
-#~ msgstr "尺寸"
-
-#~ msgid "Date"
-#~ msgstr "日期"
-
-#~ msgid "ISO"
-#~ msgstr "ISO"
-
-#~ msgid "Camera"
-#~ msgstr "相机"
-
-#~ msgid "Artist"
-#~ msgstr "艺术家"
-
-#~ msgid "Original"
-#~ msgstr "原创"
-
-#~ msgid "Please select image file"
-#~ msgstr "请选择图像文件"
-
-#~ msgid "You should select valid image files only!"
-#~ msgstr "请您选择有效的图像文件"
-
-#~ msgid "An error occurred while uploading the file"
-#~ msgstr "在上载文件时发生错误"
-
-#~ msgid "The upload has been canceled by the user or the browser dropped the connection"
-#~ msgstr "联系"
-
-#~ msgid "Your file is very big. We can't accept it. Please select a smaller file"
-#~ msgstr "您的文件太大，我们不能接受。请选择一个更小的文件"
-
-#~ msgid "Invite this user"
-#~ msgstr "邀请用户"
-
-#~ msgid "No public groups found"
-#~ msgstr "没有找到公开的用户组"
-
-#~ msgid "Return to %s's list of groups"
-#~ msgstr "返回%s's分组列表"
-
+#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "%s - 建立帐号"
 
@@ -2640,6 +2597,7 @@ msgstr ""
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "PHP 版本不符。 Movim 需要 PHP 5.3以上的版本。"
 
+#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "Movim 需要 %s 扩展名。"
 
@@ -2649,16 +2607,20 @@ msgstr ""
 #~ msgid "Movim Installer"
 #~ msgstr "Movim 安装程序。"
 
+#, php-format
 #~ msgid "Couldn't create directory '%s'."
 #~ msgstr "不能建立目录 '%s'。"
 
+#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "不能建立配置文件  '%s'。"
 
 #~ msgid "Compatibility Test"
 #~ msgstr "兼容性测试"
 
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
+#~ msgid ""
+#~ "The following requirements were not met. Please make sure they are all "
+#~ "satisfied in order to install Movim."
 #~ msgstr "没有达到符合安装 Movim的软件要求。请检查后再安装。"
 
 #~ msgid "User not logged in."
@@ -2667,6 +2629,7 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "还未提供JID。"
 
+#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "JID %s 是不正确"
 
@@ -2682,6 +2645,27 @@ msgstr ""
 #~ msgid "Edit my Profile"
 #~ msgstr "编辑个人简介"
 
+#~ msgid "Invite this user"
+#~ msgstr "邀请用户"
+
+#~ msgid "Wrong ID"
+#~ msgstr "ID错误"
+
+#~ msgid "You entered different passwords"
+#~ msgstr "您输入了不同的密码"
+
+#~ msgid "Invalid name"
+#~ msgstr "用户名无效"
+
+#~ msgid "Username already taken"
+#~ msgstr "用户名已注册"
+
+#~ msgid "Could not connect to the XMPP server"
+#~ msgstr "不能链接到XMPP服务器"
+
+#~ msgid "Could not communicate with the XMPP server"
+#~ msgstr "不能和XMPP服务器交流"
+
 #~ msgid "empty"
 #~ msgstr "空"
 
@@ -2694,16 +2678,31 @@ msgstr ""
 #~ msgid "wants to talk with you"
 #~ msgstr "想和你谈谈"
 
-#~ msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
+#~ msgid "What is Movim?"
+#~ msgstr "什么是Movim'"
+
+#, php-format
+#~ msgid ""
+#~ "Visit the page %s What is Movim ? %s to know more about the project, its "
+#~ "aims and understand how it works."
 #~ msgstr "访问页面 %s什么是Movim？ %s 了解更多，关于这个程序的目的和怎样运行"
 
-#~ msgid "Some features are missing/I can't do everything I used to do on other social networks"
+#~ msgid ""
+#~ "Some features are missing/I can't do everything I used to do on other social "
+#~ "networks"
 #~ msgstr "特色正在消失/对我没用，我更喜欢其他的社交网站。"
 
-#~ msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
+#, php-format
+#~ msgid ""
+#~ "Although Movim is evolving fast, many (many) features are missing. Be "
+#~ "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
+#~ "the one you want is on its way."
 #~ msgstr "即使Movim正在快速发展，很多特色仍然在丢失。请耐心地期待我们，您可以查看%s版本的路线图%s以了解我们是否在往您设想的方向发展"
 
-#~ msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
+#, php-format
+#~ msgid ""
+#~ "Don't forget that Movim is an open source project, a helping hand is always "
+#~ "welcome (see %s Can I participate %s)"
 #~ msgstr "不要忘了Movim是一个开放性的程序，我们期待您的参与（see %s 我能加入吗 %s"
 
 #~ msgid "I can't find the answer to my question here"
@@ -2718,11 +2717,17 @@ msgstr ""
 #~ msgid "No profile yet ?"
 #~ msgstr "还没有简介？"
 
-#~ msgid "Your server doesn't support post publication, you can only read contact's feeds"
+#~ msgid "Remove this contact"
+#~ msgstr "移除联系人"
+
+#~ msgid ""
+#~ "Your server doesn't support post publication, you can only read contact's "
+#~ "feeds"
 #~ msgstr "您的服务器不支持该版本，您只能读取联系人的feeds"
 
-#~ msgid "Creating your feed..."
-#~ msgstr "创建你的feed"
-
-#~ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
+#, php-format
+#~ msgid ""
+#~ "Go to the %s to the Frequently Asked Questions %s or come ask your question "
+#~ "on the official chatroom %s or via our mailing-list (%s see the dedicated "
+#~ "page %s)."
 #~ msgstr "转到%s到的常见问题解答%s或来问你的问题官方聊天室%s或通过我们的邮件列表（%s看看专用页%s）。"
