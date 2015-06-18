@@ -106,7 +106,7 @@ class Picture {
                     $im->writeImage($path);
                 }
             } catch (ImagickException $e) {
-
+                error_log($e->getMessage());
             }
         }
     }
