@@ -258,11 +258,6 @@ class Chat extends WidgetBase
         $m->published = gmdate('Y-m-d H:i:s');
         $m->delivered = gmdate('Y-m-d H:i:s');
 
-        if(!preg_match('#^\?OTR#', $m->body)) {
-            $md = new \Modl\MessageDAO();
-            $md->set($m);
-        }
-
         if($resource != false) {
             $to = $to . '/' . $resource;
         }
@@ -280,9 +275,16 @@ class Chat extends WidgetBase
         $p->request();
 
         /* Is it really clean ? */
-        $packet = new Moxl\Xec\Payload\Packet;
-        $packet->content = $m;
-        $this->onMessage($packet/*, true*/);
+        if(!$p->getMuc()) {
+            if(!preg_match('#^\?OTR#', $m->body)) {
+                $md = new \Modl\MessageDAO();
+                $md->set($m);
+            }
+
+            $packet = new Moxl\Xec\Payload\Packet;
+            $packet->content = $m;
+            $this->onMessage($packet/*, true*/);
+        }
     }
 
     /**
