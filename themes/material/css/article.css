@@ -38,6 +38,9 @@ article video {
 
 article section p {
     margin-bottom: 1rem;
+    max-height: initial;
+    color: inherit;
+    line-height: inherit;
 }
 
 article section content ul li,
@@ -47,6 +50,11 @@ article section content ol li {
     padding-left: 2rem;
     list-style-position: inside;
     min-height: 4rem;
+    margin: 1rem auto;
+}
+
+article section content li > * {
+    display: inline;
 }
 
 article section content ul li {
