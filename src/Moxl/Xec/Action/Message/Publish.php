@@ -58,6 +58,11 @@ class Publish extends Action
         $this->_muc = true;
         return $this;
     }
+    
+    public function getMuc()
+    {
+        return $this->_muc;
+    }
 
     public function setEncrypted($bool)
     {
@@ -77,8 +82,10 @@ class Publish extends Action
         return $this;
     }
     
-    public function handle($stanza, $parent = false) {     
-        $evt = new \Event();
-        $evt->runEvent('messagepublished', $this->_to);
+    public function handle($stanza, $parent = false) {
+        if($this->_muc) {
+            $m = new \Moxl\Xec\Payload\Message;
+            $m->handle($stanza, $parent);
+        }
     }
 }
