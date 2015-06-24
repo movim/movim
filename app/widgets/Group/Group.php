@@ -33,6 +33,9 @@ class Group extends WidgetBase
         $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
 
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
+        
+        $this->registerEvent('post_ticker', 'onTicker');
+        $this->registerEvent('pubsub_getitem_ticker', 'onTicker');
 
         $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
@@ -53,6 +56,22 @@ class Group extends WidgetBase
     function onDelete($packet)
     {
         $this->ajaxClear();
+    }
+
+    function onTicker($packet)
+    {
+        list($server, $node, $ticker) = array_values($packet->content);
+
+        $view = $this->tpl();
+        $view->assign('server', $server);
+        $view->assign('node', $node);
+        $view->assign('ticker', $ticker);
+
+        $html = $view->draw('_group_ticker', true);
+
+        RPC::call('MovimTpl.fill', '#group_widget.'.stringToUri($server.'_'.$node), $html);
+        RPC::call('Group.clearLoad');
+        RPC::call('MovimTpl.showPanel');
     }
 
     function onBookmark()
