@@ -29,7 +29,7 @@
                     </span>
                 {else}
                     <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
-                        <i class="md md-person"></i>
+                        <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
             {else}
@@ -43,7 +43,7 @@
             {/if}
             {if="$value->privacy"}
                 <span class="info" title="{$c->__('menu.public')}">
-                    <i class="md md-wifi-tethering"></i>
+                    <i class="zmdi zmdi-portable-wifi"></i>
                 </span>
             {/if}
             <span class="info">{$value->published|strtotime|prepareDate}</span>
@@ -56,7 +56,7 @@
     {/loop}
     {if="count($items) == $paging"}
     <li id="history" onclick="{$history} this.parentNode.removeChild(this);">
-        <span class="icon"><i class="md md-history"></i></span>
+        <span class="icon"><i class="zmdi zmdi-history"></i></span>
         {$c->__('post.older')}
     </li>
     {/if}

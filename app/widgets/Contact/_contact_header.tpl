@@ -1,5 +1,5 @@
 <div>
-    <span class="icon"><i class="md md-people"></i></span>
+    <span class="icon"><i class="zmdi zmdi-accounts"></i></span>
     <h2>{$c->__('page.contacts')}</h2>
 </div>
 <div>
@@ -7,17 +7,17 @@
         <ul class="active">
             <li onclick="{$edit}">
                 <span class="icon">
-                    <i class="md md-edit"></i>
+                    <i class="zmdi zmdi-edit"></i>
                 </span>
             </li>
             <li onclick="{$delete}">
                 <span class="icon">
-                    <i class="md md-delete"></i>
+                    <i class="zmdi zmdi-delete"></i>
                 </span>
             </li>
         </ul>
         <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
-            <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
+            <span id="back" class="icon" ><i class="zmdi zmdi-arrow-back"></i></span>
             <h2>{$contactr->getTrueName()}</h2>
         </div>
     {else}
@@ -25,24 +25,24 @@
             <ul class="active">
                 <li onclick="Roster_ajaxDisplaySearch('{$jid}')">
                     <span class="icon">
-                        <i class="md md-person-add"></i>
+                        <i class="zmdi zmdi-account-add"></i>
                     </span>
                 </li>
             </ul>
             <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
-                <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
+                <span id="back" class="icon" ><i class="zmdi zmdi-arrow-back"></i></span>
                 <h2>{$contact->getTrueName()}</h2>
             </div>
         {else}
             <ul class="active">
                 <li onclick="Roster_ajaxDisplaySearch('{$jid}')">
                     <span class="icon">
-                        <i class="md md-person-add"></i>
+                        <i class="zmdi zmdi-account-add"></i>
                     </span>
                 </li>
             </ul>
             <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
-                <span id="back" class="icon" ><i class="md md-arrow-back"></i></span>
+                <span id="back" class="icon" ><i class="zmdi zmdi-arrow-back"></i></span>
                 <h2>{$jid}</h2>
             </div>
         {/if}

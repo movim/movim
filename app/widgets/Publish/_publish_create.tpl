@@ -31,7 +31,7 @@
         <a class="block" target="_blank" href="http://imgur.com/">
             <li class="block action">
                 <div class="action">
-                    <i class="md md-chevron-right"></i>
+                    <i class="zmdi zmdi-chevron-right"></i>
                 </div>
                 <span class="bubble icon">
                     <img src="https://userecho.com/s/logos/2015/2015.png">
@@ -42,7 +42,7 @@
         <a class="block" target="_blank" href="https://www.flickr.com/">
             <li class="action">
                 <div class="action">
-                    <i class="md md-chevron-right"></i>
+                    <i class="zmdi zmdi-chevron-right"></i>
                 </div>
                 <span class="bubble icon">
                     <img src="https://www.flickr.com/apple-touch-icon.png">

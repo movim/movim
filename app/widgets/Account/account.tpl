@@ -3,7 +3,7 @@
         <li class="subheader">{$c->__('account.password_change_title')}</li>
         <li>
             <span class="icon gray">
-                <i class="md md-vpn-key"></i>
+                <i class="zmdi zmdi-key"></i>
             </span>
             <form name="password" class="">
                 <div>
@@ -24,10 +24,10 @@
         <li class="subheader">{$c->__('account.delete_title')}</li>
         <li class="action" onclick="Account_ajaxRemoveAccount()">
             <span class="icon red">
-                <i class="md md-delete"></i>
+                <i class="zmdi zmdi-delete"></i>
             </span>
             <div class="action">
-                <i class="md md-chevron-right"></i>
+                <i class="zmdi zmdi-chevron-right"></i>
             </div>
             <span>{$c->__('account.delete')}</span>
         </li>

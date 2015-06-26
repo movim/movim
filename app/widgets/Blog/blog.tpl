@@ -7,11 +7,11 @@
                     href="{$c->route('feed', array($contact->jid))}"
                     target="_blank"
                 >
-                    <i class="md md-wifi-tethering"></i> Atom
+                    <i class="zmdi zmdi-portable-wifi"></i> Atom
                 </a>
             </div>
             <span class="icon gray">
-                <i class="md md-edit"></i>
+                <i class="zmdi zmdi-edit"></i>
             </span>
             <span>
                 {if="$contact"}
@@ -43,7 +43,7 @@
                             </span>
                         {else}
                             <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
-                                <i class="md md-person"></i>
+                                <i class="zmdi zmdi-account"></i>
                             </span>
                         {/if}
                         <h2>
@@ -88,7 +88,7 @@
                                     type="{$value.type}"
                                     target="_blank">
                                     <span class="icon small gray">
-                                        <span class="md md-attach-file"></span>
+                                        <span class="zmdi zmdi-attachment-alt"></span>
                                     </span>
                                     <span>{$value.href|urldecode}</span>
                                 </a>
@@ -113,7 +113,7 @@
                                 </span>
                             {else}
                                 <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
-                                    <i class="md md-person"></i>
+                                    <i class="zmdi zmdi-account"></i>
                                 </span>
                             {/if}
                             <span class="info">{$value->published|strtotime|prepareDate}</span>

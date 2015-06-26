@@ -10,9 +10,9 @@
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="condensed room {if="$connected"}online{/if}">
                 {if="$connected"}
-                    <span class="icon bubble color {$value->name|stringToColor}"><i class="md md-people"></i></span>
+                    <span class="icon bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts"></i></span>
                 {else}
-                    <span class="disabled icon bubble color {$value->name|stringToColor}"><i class="md md-people-outline"></i></span>
+                    <span class="disabled icon bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts-outline"></i></span>
                 {/if}
                 <span>{$value->name}</span>
                 <p>{$value->conference}</p>
@@ -22,7 +22,7 @@
         {if="$conferences == null"}
             <li class="condensed">
                 <span class="icon green">
-                    <i class="md md-people-outline"></i>
+                    <i class="zmdi zmdi-accounts-outline"></i>
                 </span>
                 <p>{$c->__('rooms.empty_text1')} {$c->__('rooms.empty_text2')}</p>
             </li>

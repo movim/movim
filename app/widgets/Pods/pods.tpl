@@ -5,7 +5,7 @@
             <span class="info">{$value->connected} / {$value->population}</span>
             <span>
                 {if="$value->favorite"}
-                    <i class="md md-star-outline"></i>
+                    <i class="zmdi zmdi-star-border"></i>
                 {/if}
                 <a href="{$value->url}" target="_blank">
                     {function="parse_url($value->url, PHP_URL_HOST)"}
@@ -32,7 +32,7 @@
     <ul class="thick">
         <li>
             <span class="icon bubble color gray">
-                <i class="md md-cloud-off"></i>
+                <i class="zmdi zmdi-cloud-off"></i>
             </span>
             <span>{$c->__('api.error')}</span>
         </li>

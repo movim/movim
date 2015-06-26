@@ -1,3 +1,3 @@
 <a onclick="Publish_ajaxTestPublish('{$server}','{$node}')" class="button action color">
-    <i class="md md-create"></i>
+    <i class="zmdi zmdi-edit"></i>
 </a>

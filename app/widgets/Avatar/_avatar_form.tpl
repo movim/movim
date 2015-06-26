@@ -15,7 +15,7 @@
         <ul class="thick divided">
             <li class="condensed">
                 <span class="icon bubble color green">
-                    <i class="md md-attach-file"></i>
+                    <i class="zmdi zmdi-attachment-alt"></i>
                 </span>
                 <span>{$c->__('avatar.file')}</span>
                 <p><input type="file" onchange="Avatar.file(this.files);"></p>

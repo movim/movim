@@ -9,7 +9,7 @@
                         {$c->__('button.clear')}
                     </a>
                 </div>
-                <span class="icon bubble color orange"><i class="md md-contacts"></i></span>
+                <span class="icon bubble color orange"><i class="zmdi zmdi-contacts"></i></span>
                 <span>{$c->__('title.contacts')} - {$stats.rosterlink}</span>
             </li>
 
@@ -23,7 +23,7 @@
                         {$c->__('button.clear')}
                     </a>
                 </div>
-                <span class="icon bubble color blue"><i class="md md-contacts"></i></span>
+                <span class="icon bubble color blue"><i class="zmdi zmdi-contacts"></i></span>
                 <span>{$c->__('title.posts')} - {$stats.post}</span>
             </li>
             <li>
@@ -50,7 +50,7 @@
                         {$c->__('button.clear')}
                     </a>
                 </div>
-                <span class="icon bubble color brown"><i class="md md-forum"></i></span>
+                <span class="icon bubble color brown"><i class="zmdi zmdi-comments"></i></span>
                 <span>{$c->__('title.messages')} - {$stats.message}</span>
             </li>
 

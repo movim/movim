@@ -13,7 +13,7 @@
                     </span>
                 {else}
                     <span class="icon bubble color {$user->jid|stringToColor}">
-                        <i class="md md-person"></i>
+                        <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
                 <span>{$user->getTrueName()} - {$value->username}@{$value->host} - {$value->domain}</span>

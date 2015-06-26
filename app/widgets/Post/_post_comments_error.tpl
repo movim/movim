@@ -1,7 +1,7 @@
 <ul class="middle">
     <li>
         <span class="icon gray">
-            <i class="md md-comment"></i>
+            <i class="zmdi zmdi-comment"></i>
         </span>
         <span>
             {$c->__('post.comments_disabled')}

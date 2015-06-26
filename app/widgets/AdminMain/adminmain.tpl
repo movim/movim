@@ -87,7 +87,7 @@
     <ul class="thick">
         <li class="condensed">
             <span class="icon bubble color blue">
-                <i class="md md-info"></i>
+                <i class="zmdi zmdi-info"></i>
             </span>
             <p>{$c->__('whitelist.info1')}</p>
             <p>{$c->__('whitelist.info2')}</p>
@@ -111,7 +111,7 @@
     <ul class="thick">
         <li class="condensed">
             <span class="icon bubble color blue">
-                <i class="md md-info"></i>
+                <i class="zmdi zmdi-info"></i>
             </span>
             <span>{$c->__('information.info1')}</span>
             <p>{$c->__('information.info2')}</p>

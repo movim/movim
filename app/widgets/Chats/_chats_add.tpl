@@ -18,7 +18,7 @@
                         {if="$value->value"}
                             status {$presencestxt[$value->value]}
                         {/if}">
-                        <i class="md md-person"></i>
+                        <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
                 <span>{$value->getTrueName()}</span>
@@ -27,7 +27,7 @@
         {/loop}
         <li onclick="Chats_ajaxAddExtend()">
             <span class="icon">
-                <i class="md md-add"></i>
+                <i class="zmdi zmdi-plus"></i>
             </span>
             <span>{$c->__('chats.more')}</span>
         </li>

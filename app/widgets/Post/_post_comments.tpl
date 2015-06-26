@@ -13,7 +13,7 @@
                     </span>
                 {else}
                     <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
-                        <i class="md md-person"></i>
+                        <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
             </a>
@@ -30,10 +30,10 @@
     {/loop}
     <li class="action">
         <div class="action" onclick="Post_ajaxPublishComment(movim_form_to_json('comment'),'{$server}', '{$node}', '{$id}')">
-            <i class="md md-send"></i>
+            <i class="zmdi zmdi-mail-send"></i>
         </div>
         <span class="icon gray">
-            <i class="md md-comment"></i>
+            <i class="zmdi zmdi-comment"></i>
         </span>
         <form name="comment">
             <div>

@@ -5,7 +5,7 @@
         {if="!$connected"}
             <li class="block large condensed">
                 <span class="icon bubble color red">
-                    <i class="md md-settings-ethernet"></i>
+                    <i class="zmdi zmdi-code-setting"></i>
                 </span>
                 <span>{$c->__('db.connect_error')}</span>
                 <p>{$errors}</p>
@@ -13,7 +13,7 @@
         {else}
             <li class="block large">
                 <span class="icon bubble color green">
-                    <i class="md md-settings-ethernet"></i>
+                    <i class="zmdi zmdi-code-setting"></i>
                 </span>
                 <span>{$c->__('db.connect_success')}</span>
             </li>
@@ -23,7 +23,7 @@
                         <a class="button" onclick="{$db_update}"> {$c->__('button.update')}</a>
                     </div>
                     <span class="icon bubble color orange">
-                        <i class="md md-refresh"></i>
+                        <i class="zmdi zmdi-refresh"></i>
                     </span>
                     <span>{$c->__('db.update')}</span>
                     {loop="$infos"}
@@ -33,7 +33,7 @@
             {else}
                 <li class="block large">
                     <span class="icon bubble color green">
-                        <i class="md md-refresh"></i> 
+                        <i class="zmdi zmdi-refresh"></i> 
                     </span>
                     <span>{$c->__('db.up_to_date')}</span>
                 </li>

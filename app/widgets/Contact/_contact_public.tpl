@@ -7,7 +7,7 @@
             </span>
         {else}
             <span class="icon bubble color {$value->jid|stringToColor}">
-                <i class="md md-person"></i>
+                <i class="zmdi zmdi-account"></i>
             </span>
         {/if}
         
@@ -35,7 +35,7 @@
 {if="$pages"}
     <li class="block condensed">
         <span class="icon gray">
-            <i class="md md-my-library-books"></i>
+            <i class="zmdi zmdi-my-library-books"></i>
         </span>
         {loop="$pages"}
             <a onclick="Contact_ajaxPublic('{$key}');" class="button flat {if="$key == $page"}on{/if}">{$key+1}</a>
