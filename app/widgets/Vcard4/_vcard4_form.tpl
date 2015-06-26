@@ -17,7 +17,7 @@
             </div>
         </form>
         <span class="icon bubble color blue">
-            <i class="md md-security"></i>
+            <i class="zmdi zmdi-shield-security"></i>
         </span>
 
         <span>{$c->__('privacy.privacy_question')}</span>

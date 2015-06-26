@@ -90,24 +90,24 @@ class AdHoc extends WidgetBase
     function getIcon($command)
     {
         $icons = array(
-            'http://jabber.org/protocol/admin#delete-user' => 'md-delete',
-            'http://jabber.org/protocol/admin#end-user-session' => 'md-stop',
-            'http://jabber.org/protocol/admin#change-user-password' => 'md-lock',
-            'ping' => 'md-swap-horiz',
-            'http://jabber.org/protocol/admin#shutdown' => 'md-settings-power',
-            'http://jabber.org/protocol/admin#add-user' => 'md-person-add',
-            'http://jabber.org/protocol/admin#user-stats' => 'md-people',
-            'uptime' => 'md-access-time',
-            'http://jabber.org/protocol/admin#server-buddy' => 'md-stop',
-            'http://jabber.org/protocol/admin#get-user-roster' => 'md-format-list-bulleted',
-            'http://jabber.org/protocol/admin#get-online-users' => 'md-trending-up',
-            'http://jabber.org/protocol/admin#announce' => 'md-notifications',
+            'http://jabber.org/protocol/admin#delete-user' => 'zmdi-delete',
+            'http://jabber.org/protocol/admin#end-user-session' => 'zmdi-stop',
+            'http://jabber.org/protocol/admin#change-user-password' => 'zmdi-lock',
+            'ping' => 'zmdi-swap',
+            'http://jabber.org/protocol/admin#shutdown' => 'zmdi-power-off',
+            'http://jabber.org/protocol/admin#add-user' => 'zmdi-account-add',
+            'http://jabber.org/protocol/admin#user-stats' => 'zmdi-accounts',
+            'uptime' => 'zmdi-time',
+            'http://jabber.org/protocol/admin#server-buddy' => 'zmdi-stop',
+            'http://jabber.org/protocol/admin#get-user-roster' => 'zmdi-format-list-bulleted',
+            'http://jabber.org/protocol/admin#get-online-users' => 'zmdi-trending-up',
+            'http://jabber.org/protocol/admin#announce' => 'zmdi-notifications',
         );
 
         if(array_key_exists($command, $icons)) {
             return $icons[$command];
         } else {
-            return 'md-chevron-right';
+            return 'zmdi-chevron-right';
         }
     }
 

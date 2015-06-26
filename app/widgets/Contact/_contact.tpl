@@ -16,7 +16,7 @@
                     </span>
                 {else}
                     <span class="icon bubble color {$contact->jid|stringToColor}">
-                        <i class="md md-person"></i>
+                        <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
                 <span>
@@ -26,13 +26,13 @@
             {if="$caps"}
                 <li>
                     <span class="icon">
-                        <i class="md
+                        <i class="zmdi
                             {if="$caps->type == 'handheld' || $caps->type == 'phone'"}
-                                md-phone-android
+                                zmdi-smartphone-android
                             {elseif="$caps->type == 'bot'"}
-                                md-memory
+                                zmdi-memory
                             {else}
-                                md-laptop
+                                zmdi-laptop
                             {/if}
                         ">
                         </i>
@@ -52,7 +52,7 @@
     <ul class="flex">
         {if="$contact->delay != null"}
         <li class="condensed block">
-            <span class="icon brown"><i class="md md-restore"></i></span>
+            <span class="icon brown"><i class="zmdi zmdi-restore"></i></span>
             <span>{$c->__('last.title')}</span>
             <p>{$contact->delay}</p>
         </li>
@@ -76,7 +76,7 @@
 
         {if="strtotime($contact->date) != 0"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-cake"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-cake"></i></span>
             <span>{$c->__('general.date_of_birth')}</span>
             <p>{$contact->date|strtotime|prepareDate:false}</p>
         </li>
@@ -84,7 +84,7 @@
 
         {if="$contact->url != null"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-link"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-link"></i></span>
             <span>{$c->__('general.website')}</span>
             <p class="wrap">
                 {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
@@ -98,7 +98,7 @@
 
         {if="$contact->email != null"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-mail"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-email"></i></span>
             <span>{$c->__('general.email')}</span>
             <p><img src="{$contact->getPhoto('email')}"/></p>
         </li>
@@ -106,7 +106,7 @@
 
         {if="$contact->getMarital() != null"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-people"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-accounts"></i></span>
             <span>{$c->__('general.marital')}</span>
             <p>{$contact->getMarital()}</p>
         </li>
@@ -114,7 +114,7 @@
 
         {if="$contact->getGender() != null"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-face-unlock"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-face"></i></span>
             <span>{$c->__('general.gender')}</span>
             <p>{$contact->getGender()}</p>
         </li>
@@ -122,7 +122,7 @@
 
         {if="$contactr->delay != null"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-av-timer"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-time-countdown"></i></span>
             <span>{$c->__('last.title')}</span>
             <p>{$contactr->delay|strtotime|prepareDate}</p>
         </li>
@@ -130,7 +130,7 @@
 
         {if="$contact->description != null && trim($contact->description) != ''"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-format-align-justify"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-format-align-justify"></i></span>
             <span>{$c->__('general.about')}</span>
             <p class="all">{$contact->description}</p>
         </li>
@@ -139,7 +139,7 @@
         {if="$contact->mood != null"}
         {$moods = unserialize($contact->mood)}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-mood"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-mood"></i></span>
             <span>{$c->__('mood.title')}</span>
             <p>{loop="$moods"}
                 {$mood[$value]}
@@ -155,10 +155,10 @@
             <a href="{$c->route('blog', array($contact->jid))}" target="_blank">
                 <li class="block large condensed action">
                     <div class="action">
-                        <i class="md md-chevron-right"></i>
+                        <i class="zmdi zmdi-chevron-right"></i>
                     </div>
                     <span class="icon">
-                        <i class="md md-wifi-tethering"></i>
+                        <i class="zmdi zmdi-portable-wifi"></i>
                     </span>
                     <span class="info">{$blog[0]->published|strtotime|prepareDate}</span>
                     <span>{$blog[0]->title}</span>
@@ -183,7 +183,7 @@
             {if="isset($img_array[1]) && $img_array[1] != ''"}
                 <div class="action">
                     <a href="{$img_array[1]}" target="_blank">
-                        <i class="md md-radio"></i>
+                        <i class="zmdi zmdi-radio"></i>
                     </a>
                 </div>
             {/if}
@@ -191,7 +191,7 @@
                 {if="isset($img_array[0]) && $img_array[0] != ''"}
                     <img src="{$img_array[0]}"/>
                 {else}
-                    <i class="md md-play-circle-fill"></i>
+                    <i class="zmdi zmdi-play-circle-fill"></i>
                 {/if}
             </span>
             <span>
@@ -218,7 +218,7 @@
 
         {if="$contact->adrlocality != null"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-location-city"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-city"></i></span>
             <span>{$c->__('position.locality')}</span>
             <p>
                 {$contact->adrlocality}
@@ -227,7 +227,7 @@
         {/if}
         {if="$contact->adrcountry != null"}
         <li class="condensed block">
-            <span class="icon gray"><i class="md md-place"></i></span>
+            <span class="icon gray"><i class="zmdi zmdi-pin"></i></span>
             <span>{$c->__('position.country')}</span>
             <p>
                 {$contact->adrcountry}
@@ -307,7 +307,7 @@
                 <li class="condensed">
                     {if="$contactr->rostersubscription == 'to'"}
                         <span class="icon gray">
-                            <i class="md md-call-received"></i>
+                            <i class="zmdi zmdi-arrow-in"></i>
                         </span>
                         <span>{$c->__('subscription.to')}</span>
                         <p>{$c->__('subscription.to_text')}</p>
@@ -317,7 +317,7 @@
                     {/if}
                     {if="$contactr->rostersubscription == 'from'"}
                         <span class="icon gray">
-                            <i class="md md-call-made"></i>
+                            <i class="zmdi zmdi-arrow-out"></i>
                         </span>
                         <span>{$c->__('subscription.from')}</span>
                         <p>{$c->__('subscription.from_text')}</p>
@@ -327,7 +327,7 @@
                     {/if}
                     {if="$contactr->rostersubscription == 'none'"}
                         <span class="icon gray">
-                            <i class="md md-do-not-disturb"></i>
+                            <i class="zmdi zmdi-do-not-disturb"></i>
                         </span>
 
                         <span>{$c->__('subscription.nil')}</span>
@@ -342,7 +342,7 @@
     {/if}
 
     <a onclick="{$chat}" class="button action color red">
-        <i class="md md-chat"></i>
+        <i class="zmdi zmdi-comment-text-alt"></i>
     </a>
 {else}
     <ul class="thick">

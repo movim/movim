@@ -5,7 +5,7 @@
         {loop="$sessions"}
         <li id="{$value->jid}" class="action condensed" title="{$value->jid}">
             <div class="action">
-                <i class="md md-close"></i>
+                <i class="zmdi zmdi-close"></i>
             </div>
             {$url = $value->getPhoto('s')}
             {if="$url"}
@@ -14,7 +14,7 @@
                 </span>
             {else}
                 <span class="icon bubble color {$value->jid|stringToColor}">
-                    <i class="md md-person"></i>
+                    <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
             <span>{$value->getTrueName()}</span>
@@ -25,10 +25,10 @@
 </section>
 <div>
     <a class="button flat" href="{$c->route('about')}">
-        <i class="md md-help"></i>
+        <i class="zmdi zmdi-help"></i>
     </a>
     <a class="button flat" href="{$c->route('admin')}">
-        <i class="md md-pages"></i>
+        <i class="zmdi zmdi-pages"></i>
     </a>
     <span class="button flat" onclick="Login.toForm()">{$c->__('form.another_account')}</span>
 </div>

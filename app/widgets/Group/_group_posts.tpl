@@ -56,7 +56,7 @@
                                 type="{$value.type}"
                                 target="_blank">
                                 <span class="icon small gray">
-                                    <span class="md md-attach-file"></span>
+                                    <span class="zmdi zmdi-attachment-alt"></span>
                                 </span>
                                 <span>{$value.href|urldecode}</span>
                             </a>
@@ -69,7 +69,7 @@
                 {loop="$value->getAttachements().pictures"}
                     <li class="block pic">
                         <span class="icon small gray">
-                            <i class="md md-image"></i>
+                            <i class="zmdi zmdi-image"></i>
                         </span>
                         <a href="{$value.href}" class="alternate" target="_blank">
                             <img type="{$value.type}" src="{$value.href|urldecode}"/>
@@ -85,7 +85,7 @@
 <ul class="active thick">
     <li onclick="Group_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.removeChild(this);">
         <span class="icon">
-            <i class="md md-history"></i>
+            <i class="zmdi zmdi-history"></i>
         </span>
         {$c->__('post.older')}
     </li>

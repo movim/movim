@@ -32,14 +32,14 @@
                     class="action"
                     ng-if="myjid.ajiditems.rosterview.tune != '' || myjid.ajiditems.rosterview.type != '' || myjid.ajiditems.rosterview.subscription != 'both'"
                     ng-switch on="myjid.ajiditems.rosterview.type">
-                    <i ng-switch-when="handheld" class="md md-smartphone"></i>
-                    <i ng-switch-when="phone" class="md md-smartphone"></i>
-                    <i ng-switch-when="web" class="md md-language"></i>
-                    <i ng-switch-when="bot" class="md md-memory"></i>
-                    <i ng-if="myjid.ajiditems.rosterview.tune" class="md md-play-arrow"></i>
-                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'to'" class="md md-call-received"></i>
-                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'from'" class="md md-call-made"></i>
-                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'none'" class="md md-do-not-disturb"></i>
+                    <i ng-switch-when="handheld" class="zmdi zmdi-smartphone"></i>
+                    <i ng-switch-when="phone" class="zmdi zmdi-smartphone"></i>
+                    <i ng-switch-when="web" class="zmdi zmdi-globe-alt"></i>
+                    <i ng-switch-when="bot" class="zmdi zmdi-memory"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.tune" class="zmdi zmdi-play-arrow"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'to'" class="zmdi zmdi-arrow-in"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'from'" class="zmdi zmdi-arrow-out"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'none'" class="zmdi zmdi-do-not-disturb"></i>
                 </div>
 
                 <span
@@ -51,7 +51,7 @@
                 <span
                     ng-if="::myjid.ajiditems.rosterview.avatar== false"
                     class="icon bubble status {{myjid.ajiditems.rosterview.presencetxt}} color {{myjid.ajiditems.rosterview.color}}">
-                    <i class="md md-person"></i>
+                    <i class="zmdi zmdi-account"></i>
                 </span>
 
                 <span>{{myjid.ajiditems.rosterview.name}}</span>
@@ -63,7 +63,7 @@
     </ul>
     <br />
     <a onclick="Roster_ajaxDisplaySearch()" class="button action color">
-        <i class="md md-person-add"></i>
+        <i class="zmdi zmdi-account-add"></i>
     </a>
 
 </div>

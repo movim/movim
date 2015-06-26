@@ -11,7 +11,7 @@
     title="{$contact->jid}">
     {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
         <div class="action">
-            <i class="md md-smartphone"></i>
+            <i class="zmdi zmdi-smartphone"></i>
         </div>
     {/if}
     <span data-key="chat|{$contact->jid}" class="counter bottom"></span>
@@ -22,14 +22,14 @@
         </span>
     {else}
         <span class="icon bubble color {$contact->jid|stringToColor} {if="isset($presence)"}status {$presence}{/if}">
-            <i class="md md-person"></i>
+            <i class="zmdi zmdi-account"></i>
         </span>
     {/if}
     <span>{$contact->getTrueName()}</span>
     {if="isset($message)"}
         <span class="info">{$message->published|strtotime|prepareDate}</span>
         {if="preg_match('#^\?OTR#', $message->body)"}
-            <p><i class="md md-lock"></i> {$c->__('message.encrypted')}</p>
+            <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
         {else}
             <p>{$message->body|prepareString|strip_tags}</p>
         {/if}

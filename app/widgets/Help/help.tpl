@@ -3,30 +3,30 @@
         <li class="condensed action">
             <a href="http://wiki.movim.eu" target="_blank">
                 <span class="icon bubble color blue">
-                    <i class="md md-subject"></i>
+                    <i class="zmdi zmdi-format-subject"></i>
                 </span>
                 <span>{$c->__('wiki.question')}</span>
                 <p>{$c->__('wiki.button')}</p>
             </a>
             <div class="action">
-                <i class="md md-chevron-right"></i>
+                <i class="zmdi zmdi-chevron-right"></i>
             </div>
         </li>
         <li class="condensed action">
             <a href="http://wiki.movim.eu/en:mailing_list" target="_blank">
                 <span class="icon bubble color orange">
-                    <i class="md md-email"></i>
+                    <i class="zmdi zmdi-email"></i>
                 </span>
                 <span>{$c->__('ml.question')}</span>
                 <p>{$c->__('ml.button')}</p>
             </a>
             <div class="action">
-                <i class="md md-chevron-right"></i>
+                <i class="zmdi zmdi-chevron-right"></i>
             </div>
         </li>
         <li class="condensed">
                 <span class="icon bubble color green">
-                    <i class="md md-chat"></i>
+                    <i class="zmdi zmdi-comment-text-alt"></i>
                 </span>
                 <span>{$c->__('chatroom.question')}</span>
                 <p>{$c->__('chatroom.button')}<br/>movim@conference.movim.eu</p>

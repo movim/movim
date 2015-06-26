@@ -4,12 +4,12 @@
         <ul class="active">
             <li onclick="Rooms_ajaxAdd()">
                 <span class="icon">
-                    <i class="md md-group-add"></i>
+                    <i class="zmdi zmdi-group-add"></i>
                 </span>
             </li>
         </ul>
     {/if}
-    <span class="on_desktop icon"><i class="md md-forum"></i></span>
+    <span class="on_desktop icon"><i class="zmdi zmdi-comments"></i></span>
     {if="!$anon"}
         <h2>{$c->__('page.chats')}</h2>
     {else}
@@ -20,12 +20,12 @@
     <ul class="active">
         <li onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
             <span class="icon">
-                <i class="md md-close"></i>
+                <i class="zmdi zmdi-close"></i>
             </span>
         </li>
         <li class="thin show_context_menu">
             <span class="icon">
-                <i class="md md-more-vert"></i>
+                <i class="zmdi zmdi-more-vert"></i>
             </span>
         </li>
     </ul>
@@ -34,9 +34,9 @@
         {if="!$anon"}onclick="MovimTpl.hidePanel(); Chat_ajaxGet();"{/if}>
         <span id="back" class="icon" >
             {if="!$anon"}
-                <i class="md md-arrow-back"></i>
+                <i class="zmdi zmdi-arrow-back"></i>
             {else}
-                <i class="md md-chat"></i>
+                <i class="zmdi zmdi-comment-text-alt"></i>
             {/if}
         </span>
 

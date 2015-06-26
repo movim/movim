@@ -53,7 +53,7 @@ figure div.link {
 figure div.link i {
     background-color: #FFF;
     margin-top: -3rem;
-    padding: 3rem 1rem;
+    padding: 1.5rem 1rem;
     border-radius: 6rem;
     font-size: 3rem;
 }
@@ -61,12 +61,12 @@ figure div.link i {
 figure div.disabled    { background-color: rgba(0, 0, 0, 0.1); color: white;}
 figure div.success     { background-color: #6FCC43; color: white; }
 figure div.warning     { background-color: #FC8F12; color: white; }
-figure div.error       { background-color: #D92727; color: white; } 
+figure div.error       { background-color: #D92727; color: white; }
 
 figure div.link.disabled    { color: #CCC; }
 figure div.link.success     { color: #6FCC43; }
 figure div.link.warning     { color: #FC8F12; }
-figure div.link.error       { color: #D92727; } 
+figure div.link.error       { color: #D92727; }
 
 figure div.link.horizontal {
     width: 35%;

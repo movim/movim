@@ -4,14 +4,14 @@
             <div id="webserver">
 
             </div>
-            <div id="movim-daemon" class="link vertical disabled"><i class="md md-settings"></i></div>
-            <div id="movim-browser" class="link horizontal success"><i class="md md-open-in-browser"></i></div>
-            <div id="browser-daemon" class="link horizontal error"><i class="md md-settings-ethernet"></i></div>
-            <div id="xmpp-daemon" class="link horizontal"><i class="md md-import-export"></i></div>
+            <div id="movim-daemon" class="link vertical disabled"><i class="zmdi zmdi-settings"></i></div>
+            <div id="movim-browser" class="link horizontal success"><i class="zmdi zmdi-open-in-browser"></i></div>
+            <div id="browser-daemon" class="link horizontal error"><i class="zmdi zmdi-code-setting"></i></div>
+            <div id="xmpp-daemon" class="link horizontal"><i class="zmdi zmdi-import-export"></i></div>
             <div id="movim-database" class="link vertical {if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
-                <i class="md md-data-usage"></i>
+                <i class="zmdi zmdi-data-usage"></i>
             </div>
-            <div id="movim-api" class="link horizontal disabled"><i class="md md-cloud"></i></div>
+            <div id="movim-api" class="link horizontal disabled"><i class="zmdi zmdi-cloud"></i></div>
             <div id="browser_block">
                 {$c->__('schema.browser')}
             </div>
@@ -41,7 +41,7 @@
         {if="$dbconnected"}
             {if="$dbinfos > 0"}
                 <li>
-                    <span class="icon bubble color orange"><i class="md md-refresh"></i></span>
+                    <span class="icon bubble color orange"><i class="zmdi zmdi-refresh"></i></span>
                     <span>{$c->__('compatibility.db')}</span>
                 </li>
             {else}
@@ -49,7 +49,7 @@
             {/if}
         {else}
             <li class="condensed">
-                <span class="icon bubble color red"><i class="md md-data-usage"></i></span>
+                <span class="icon bubble color red"><i class="zmdi zmdi-data-usage"></i></span>
                 <span>Database connection error</span>
                 <p>Check if database configuration exist in the <code>config/</code> folder and fill it with proper values</p>
             </li>
@@ -57,7 +57,7 @@
 
         <li id="websocket_error">
             <span class="icon bubble color red">
-                <i class="md md-settings-ethernet"></i> 
+                <i class="zmdi zmdi-code-setting"></i> 
             </span>
             <span>
                 {$c->__('compatibility.websocket')}
@@ -66,7 +66,7 @@
         
         <!--<li id="xmpp_websocket_error">
             <span class="icon bubble color red">
-                <i class="md md-settings-ethernet"></i>
+                <i class="zmdi zmdi-code-setting"></i>
             </span>
             <span>
                 {$c->__('compatibility.xmpp_websocket')} <code>{$websocketurl}</code>
@@ -76,7 +76,7 @@
         {if="!$c->version()"}
             <li class="condensed">
                 <span class="icon color bubble red">
-                    <i class="md md-sync-problem"></i>
+                    <i class="zmdi zmdi-sync-problem"></i>
                 </span>
                 <span>{$c->__('compatibility.php1', PHP_VERSION)}</span>
                 <p>{$c->__('compatibility.php2')}</p>
@@ -87,7 +87,7 @@
         {if="!extension_loaded('imagick')"}
             <li>
                 <span class="icon color bubble red">
-                    <i class="md md-image"></i>
+                    <i class="zmdi zmdi-image"></i>
                 </span>
                 <span>
                     {$c->__('compatibility.imagick')}
@@ -99,7 +99,7 @@
         {if="!extension_loaded('gd')"}
             <li>
                 <span class="icon color bubble red">
-                    <i class="md md-image"></i>
+                    <i class="zmdi zmdi-image"></i>
                 </span>
                 <span>
                     {$c->__('compatibility.gd')}
@@ -111,7 +111,7 @@
         {if="!$c->testDir(DOCUMENT_ROOT)"}
             <li>
                 <span class="icon color bubble red">
-                    <i class="md md-folder"></i>
+                    <i class="zmdi zmdi-folder"></i>
                 </span>
                 <span>{$c->__('compatibility.rights')}</span>
             </li>
@@ -121,7 +121,7 @@
         {if="!$_SERVER['HTTP_MOD_REWRITE']"}
             <li>
                 <span class="icon bubble color orange">
-                    <i class="md md-mode-edit"></i>
+                    <i class="zmdi zmdi-mode-edit"></i>
                 </span>
                 <span>{$c->__('compatibility.rewrite')}</span>
             </li>

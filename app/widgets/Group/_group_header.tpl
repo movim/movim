@@ -1,5 +1,5 @@
 <div>
-    <span class="on_desktop icon"><i class="md md-pages"></i></span>
+    <span class="on_desktop icon"><i class="zmdi zmdi-pages"></i></span>
     <h2>
         {$c->__('page.groups')}
     </h2>
@@ -10,28 +10,28 @@
             <li title="{$c->__('group.subscribe')}"
                 onclick="Group_ajaxAskSubscribe('{$item->server}', '{$item->node}')">
                 <span class="icon">
-                    <i class="md md-bookmark-outline"></i>
+                    <i class="zmdi zmdi-bookmark-outline"></i>
                 </span>
             </li>
         {else}
             <li title="{$c->__('group.unsubscribe')}"
                 onclick="Group_ajaxAskUnsubscribe('{$item->server}', '{$item->node}')">
                 <span class="icon">
-                    <i class="md md-bookmark"></i>
+                    <i class="zmdi zmdi-bookmark"></i>
                 </span>
             </li>
         {/if}
         {if="$role == 'owner'"}
             <li class="thin show_context_menu">
                 <span class="icon">
-                    <i class="md md-more-vert"></i>
+                    <i class="zmdi zmdi-more-vert"></i>
                 </span>
             </li>
         {/if}
     </ul>
     <div class="return active condensed {if="$role == 'owner'"}r2{else}r1{/if}"
         onclick="MovimTpl.hidePanel(); Group_ajaxClear(); Groups_ajaxHeader();">
-        <span id="back" class="icon"><i class="md md-arrow-back"></i></span>
+        <span id="back" class="icon"><i class="zmdi zmdi-arrow-back"></i></span>
         <h2>
             {if="$item != null"}
                 {if="$item->name"}

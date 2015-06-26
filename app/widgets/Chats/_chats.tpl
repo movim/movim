@@ -10,5 +10,5 @@
 {/loop}
 
 <a onclick="Chats_ajaxAdd()" class="button action color">
-    <i class="md md-add"></i>
+    <i class="zmdi zmdi-plus"></i>
 </a>
