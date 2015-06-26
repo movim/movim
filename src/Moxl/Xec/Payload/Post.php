@@ -33,7 +33,9 @@ class Post extends Payload
     public function handle($stanza, $parent = false) {  
         $from   = (string)$parent->attributes()->from;
 
-        if($stanza->items->item && isset($stanza->items->item->entry)) {
+        if($stanza->items->item
+        && isset($stanza->items->item->entry)
+        && (string)$stanza->items->item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
             if($parent->delay)
                 $delay = gmdate('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp));
             else
@@ -59,6 +61,15 @@ class Post extends Payload
             $this->pack(array(
                     'server' => $from, 
                     'node' => $stanza->attributes()->node
+                ));
+            $this->deliver();
+        } elseif(isset($stanza->items->item->realtime)) {
+            $this->method('ticker');
+
+            $this->pack(array(
+                    'server' => $from, 
+                    'node' => $stanza->items->attributes()->node,
+                    'ticker' => $stanza->items->item->realtime
                 ));
             $this->deliver();
         } elseif($stanza->items->item && isset($stanza->items->item->attributes()->id)

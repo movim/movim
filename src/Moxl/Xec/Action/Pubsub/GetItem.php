@@ -66,19 +66,37 @@ class GetItem extends Errors
         $node = $this->_node;
 
         if($stanza->pubsub->items->item) {
-            foreach($stanza->pubsub->items->item as $item) {
-                $p = new \modl\Postn();
-                $p->set($item, $from, false, $node);
-                
-                $pd = new \modl\PostnDAO();
-                $pd->set($p);
+            $post = false;
 
-                $this->pack($p);
-                $evt->runEvent('post', $this->packet);
+            foreach($stanza->pubsub->items->item as $item) {
+                if(isset($item->entry)
+                &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
+                    $p = new \modl\Postn();
+                    $p->set($item, $from, false, $node);
+                    
+                    $pd = new \modl\PostnDAO();
+                    $pd->set($p);
+
+                    $post = true;
+
+                    $this->pack($p);
+                    $evt->runEvent('post', $this->packet);
+                } elseif(isset($item->realtime)) {
+                    $this->method('ticker');
+
+                    $this->pack(array(
+                            'server' => $from, 
+                            'node'   => $node,
+                            'ticker' => $item->realtime
+                        ));
+                    $this->deliver();
+                }
             }
 
-            $this->pack(array('server' => $this->_to, 'node' => $this->_node));
-            $this->deliver();
+            if($post) {
+                $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+                $this->deliver();
+            }
         } else {
             $evt->runEvent('nostream', array('from' => $from, 'node' => $node));   
         }
