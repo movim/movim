@@ -3,7 +3,7 @@
         <ul class="simple thick">
             <li>
                 <span>{$c->__('create.title')} {$c->__('on')} {$host}</span>
-                <p>{$c->__('loading')}</p>
+                <p>{$c->__('create.loading')}</p>
             </li>
         </ul>
     </div>

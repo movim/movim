@@ -914,3 +914,35 @@ dl dd {
     opacity: 0.5;
     pointer-events: none;
 }
+
+/* Animation */
+.background_fade {
+    background-color: #CCC;
+    animation: fadeout 1s forwards;
+    -moz-animation: fadeout 1s forwards;
+    -webkit-animation: fadeout 1s forwards;
+    -o-animation: fadeout 1s forwards;
+}
+
+
+@keyframes fadeout {
+    to {
+        background-color:#fff;
+    }
+
+}
+@-moz-keyframes fadeout {
+    to {
+        background-color: #ffffff;
+    }
+}
+@-webkit-keyframes fadeout {
+    to {
+        background-color: #ffffff;
+    }
+}
+@-o-keyframes fadeout {
+    to {
+        background-color: #ffffff;
+    }
+}

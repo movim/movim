@@ -1,7 +1,7 @@
 <section>
     <h3>{$c->__('notifs.manage')}</h3>
     <br />
-    <h4 class="gray">{$c->__('wants_to_talk', $jid)}</h4>
+    <h4 class="gray">{$c->__('notifs.wants_to_talk', $jid)}</h4>
     <ul class="active">
         <li onclick="Notifs_ajaxAccept('{$jid|echapJS}'); Dialog.clear();">
             <span class="icon green">
@@ -23,4 +23,3 @@
         {$c->__('button.close')}
     </a>
 </div>
-

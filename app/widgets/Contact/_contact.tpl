@@ -65,7 +65,7 @@
             <p>{$contact->fn}</p>
         </li>
         {/if}
-        
+
         {if="$contact->nickname != null"}
         <li class="condensed block">
             <span class="icon gray">{$contact->nickname|firstLetterCapitalize}</span>
@@ -73,7 +73,7 @@
             <p>{$contact->nickname}</p>
         </li>
         {/if}
-        
+
         {if="strtotime($contact->date) != 0"}
         <li class="condensed block">
             <span class="icon gray"><i class="md md-cake"></i></span>
@@ -173,7 +173,7 @@
     {if="$contact->tuneartist || $contact->tunetitle"}
     <ul class="flex">
         <li class="subheader block large">{$c->__('general.tune')}</li>
-        
+
         {$img_array = $c->getLastFM($contact)}
         <li class="
             block
@@ -196,7 +196,7 @@
             </span>
             <span>
                 {if="$contact->tuneartist"}
-                    {$contact->tuneartist} - 
+                    {$contact->tuneartist} -
                 {/if}
                 {if="$contact->tunesource"}
                     {$contact->tunesource}
@@ -330,10 +330,10 @@
                             <i class="md md-do-not-disturb"></i>
                         </span>
 
-                        <span>{$c->__('subscription.none')}</span>
-                        <p>{$c->__('subscription.none_text')}</p>
+                        <span>{$c->__('subscription.nil')}</span>
+                        <p>{$c->__('subscription.nil_text')}</p>
                         <a class="button flat" onclick="Notifs_ajaxAsk('{$contactr->jid}')">
-                            {$c->__('subscription.none_button')}
+                            {$c->__('subscription.nil_button')}
                         </a>
                     {/if}
                 </li>

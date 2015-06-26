@@ -3,23 +3,23 @@ class XMPPtoForm{
     private $fieldset;
     private $xmpp;
     private $html;
-    
+
     public function __construct(){
         $this->fieldset = 0;
         $this->html = '';
         $this->xmpp = '';
     }
-    
+
     public function getHTML($xmpp){
         $this->setXMPP($xmpp);
         $this->create();
         return $this->html;
     }
-    
+
     public function setXMPP($xmpp){
         $this->xmpp = $xmpp;
     }
-    
+
     public function create(){
         $this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
         $x = new SimpleXMLElement($this->xmpp);
@@ -37,16 +37,16 @@ class XMPPtoForm{
                     if($element['type'] != 'hidden' && $element['type'] != 'fixed')
                         $this->html .='<div>';
                     switch($element['type']){
-                        case "boolean":    
+                        case "boolean":
                             $this->outCheckbox($element);
                             break;
-                        case "fixed":    
+                        case "fixed":
                             $this->outBold($element);
                             break;
                         case "text-single":
                             $this->outInput($element, "", "");
                             break;
-                        case "text-multi":    
+                        case "text-multi":
                             $this->outTextarea($element);
                             break;
                         case "text-private":
@@ -74,7 +74,7 @@ class XMPPtoForm{
                         $this->html .='</div>';
                     break;
                 case 'url':
-                    
+
                     break;
                 /*XML without <x> element*/
                 case 'username':
@@ -84,11 +84,11 @@ class XMPPtoForm{
                         $this->outGeneric($element->getName());
                     $this->html .='</div>';
                     break;
-                default: 
+                default:
                     $this->html .= "";
             }
         }
-        if($this->fieldset>0){ 
+        if($this->fieldset>0){
             $this->html .= '</fieldset>';
         }
     }
@@ -109,7 +109,7 @@ class XMPPtoForm{
                 </li>
             </ul>';
     }
-    
+
     private function outP($s){
         $this->html .= '
             <ul class="thin simple">
@@ -118,12 +118,12 @@ class XMPPtoForm{
                 </li>
             </ul>';
     }
-    
+
     private function outUrl($s) {
         $this->html .= '
             <a href="'.$s->getName().'">'.$s->getName().'</a>';
     }
-    
+
     private function outBold($s){
         if($this->fieldset > 0){
             $this->html .= '</fieldset>';
@@ -135,39 +135,39 @@ class XMPPtoForm{
     private function outCheckbox($s){
         $this->html .= '
             <div class="select">
-                <select 
+                <select
                     type="'.$s['type'].'"
                     label="'.$s['label'].'"
-                    id="'.$s["var"].'" 
+                    id="'.$s["var"].'"
                     name="'.$s['var'].'" '.$multiple.' '.$s->required.'>';
-        
+
         $this->html .= '
             <option value="true"';
             if(isset($s->value) || $s->value == "true" || $s->value == "1")
                 $this->html .= ' selected="selected"';
-        $this->html .= '>'.__('button.yes').'</option>';
+        $this->html .= '>'.__('button.bool_yes').'</option>';
 
         $this->html .= '
             <option value="false"';
             if(!isset($s->value) || $s->value == "false" || $s->value == "0")
                 $this->html .= ' selected="selected"';
-        $this->html .= '>'.__('button.no').'</option>';
-        
+        $this->html .= '>'.__('button.bool_no').'</option>';
+
         $this->html .= '
                 </select>
             </div>
             <label for="'.$s["var"].'">'.$s["label"].'</label>';
     }
-    
+
     private function outTextarea($s){
         $this->html .= '
-            <textarea 
-                id="'.$s["var"].'" 
-                name="'.$s["var"].'" 
+            <textarea
+                id="'.$s["var"].'"
+                name="'.$s["var"].'"
                 type="'.$s['type'].'"
                 label="'.$s['label'].'"
                 required="'.$s->required.'">';
-                
+
         foreach($s->children() as $value){
             if($value->getName() == "value"){
                 $this->html .= $value. "\n";
@@ -178,13 +178,13 @@ class XMPPtoForm{
         $this->html .= '
             <label for="'.$s["var"].'">'.$s["label"].'</label>';
     }
-    
+
     private function outInput($s, $type, $multiple){
         if($s->required)
             $req = 'required';
         $this->html .= '
             <input id="'.$s["var"].'" name="'.$s["var"].'" value="';
-            
+
             foreach($s->children() as $value){
                 if($value->getName() == "value"){
                     $this->html .= $value;
@@ -195,30 +195,30 @@ class XMPPtoForm{
 
         if($s['var'] == 'username')
             $this->html .= ' pattern="[a-z0-9_-]*" ';
-            
-        $this->html .= ' 
-            type="'.$type.'" 
-            title="'.$s->desc.'" 
+
+        $this->html .= '
+            type="'.$type.'"
+            title="'.$s->desc.'"
             type="'.$s['type'].'"
             label="'.$s['label'].'"
             '.$multiple.' '.$req.'/>
             <label for="'.$s["var"].'">'.$s["label"].'</label>';
     }
-    
+
     private function outHiddeninput($s){
         $this->html .= '
             <input type="hidden" name="'.$s["var"].'" value="'.$s->value.'" />';
     }
-    
+
     private function outList($s, $multiple){
         $this->html .= '
             <div class="select">
-                <select 
+                <select
                     type="'.$s['type'].'"
                     label="'.$s['label'].'"
-                    id="'.$s["var"].'" 
+                    id="'.$s["var"].'"
                     name="'.$s['var'].'" '.$multiple.' '.$s->required.'>';
-        
+
         if(count($s->xpath('option')) > 0){
             foreach($s->option as $option){
                 $this->html .= '
@@ -238,7 +238,7 @@ class XMPPtoForm{
                     </option>';
             }
         }
-        
+
         $this->html .= '
                 </select>
             </div>
@@ -250,34 +250,34 @@ class FormtoXMPP{
     private $stream;
     private $inputs;
     private $dataform;
-    
+
     public function __construct(){
         $this->stream = '';
         $this->inputs = array();
         $this->dataform = true;
     }
-    
+
     public function getXMPP($stream, $inputs){
         $this->setXMPP($stream);
         $this->setInputs($inputs);
         $this->create();
         return $this->stream;
     }
-    
+
     public function setXMPP($stream){
         $this->stream = new SimpleXMLElement($stream);
     }
     public function setInputs($inputs){
         $this->inputs = $inputs;
     }
-    
+
     public function setDataformOff() {
         $this->dataform = false;
     }
-    
+
     public function create(){
         switch($this->stream->getName()){
-            case "stream": 
+            case "stream":
                 $node = $this->stream->iq->query->x;
                 break;
             case "pubsub":
@@ -307,14 +307,14 @@ class FormtoXMPP{
                     $value = '1';
                 if($value == 'false' || $value === 0)
                     $value = '0';
-                    
+
                 $field->addChild('value', trim($value->value));
                 if(isset($value->attributes->required))
                     $field->addChild('required', '');
                 $field->addAttribute('var', $value->attributes->name);
-                $field->addAttribute('type', $value->attributes->xmpptype);                
-                $field->addAttribute('label', $value->attributes->xmpplabel);     
-                           
+                $field->addAttribute('type', $value->attributes->xmpptype);
+                $field->addAttribute('label', $value->attributes->xmpplabel);
+
             } else{
                 $field = $node->addChild('field');
 
@@ -326,7 +326,7 @@ class FormtoXMPP{
                 if(is_bool($value)) {
                     $value = ($value) ? '1' : '0';
                 }
-                    
+
                 $field->addChild('value', trim($value));
                 $field->addAttribute('var', trim($key));
             }

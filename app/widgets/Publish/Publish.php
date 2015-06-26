@@ -79,7 +79,7 @@ class Publish extends WidgetBase
         $view->assign('server', $server);
         $view->assign('node', $node);
         Header::fill($view->draw('_publish_header', true));
-        
+
         RPC::call('Publish.setEmbed');
     }
 
@@ -147,6 +147,10 @@ class Publish extends WidgetBase
               ->setNode($form->node->value);
               //->setLocation($geo)
               //->enableComments()
+
+            if($form->node->value == 'urn:xmpp:microblog:0') {
+                $p->enableComments();
+            }
             if($form->title->value != '') {
                 $p->setTitle($form->title->value);
             }
