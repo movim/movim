@@ -3,9 +3,9 @@
 </section>
 <div>
     <a onclick="Dialog.clear()" class="button flat">
-        {$c->__('button.no')}
+        {$c->__('button.bool_no')}
     </a>
     <a onclick="Publish.headerBack('{$server}', '{$node}', true); Dialog.clear();" class="button flat">
-        {$c->__('button.yes')}
+        {$c->__('button.bool_yes')}
     </a>
 </div>

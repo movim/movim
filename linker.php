@@ -31,14 +31,14 @@ $parser = new \Moxl\Parser;
 
 $buffer = '';
 
-$stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser) { 
+$stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser) {
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
         $buffer = '';
-    
+
         foreach ($messages as $message) {
             #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
-            
+
             $msg = json_decode($message);
 
             if(isset($msg)) {
@@ -57,7 +57,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             } else {
                 return;
             }
-            
+
             $rpc = new \RPC();
             $rpc->handle_json($msg);
 
@@ -73,7 +73,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             \Moxl\API::clear();
 
             $loop->tick();
-                
+
             if(!empty($xml) && $conn) {
                 $conn->write(trim($xml));
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
@@ -99,7 +99,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
     $conn->on('data', function($message) use (&$conn, $loop, $parser) {
         if(!empty($message)) {
             $restart = false;
-       
+
             if($message == '</stream:stream>') {
                 $conn->close();
                 $loop->stop();
@@ -107,7 +107,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
                 stream_set_blocking($conn->stream, 1);
                 $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
-                
+
                 $restart = true;
             }
 

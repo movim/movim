@@ -45,10 +45,10 @@ class WidgetBase
         // If light loading enabled, we stop here
         if($light)
             return;
-        
+
         // Put default widget init here.
         $this->ajax = AjaxController::getInstance();
-        
+
         $this->user = new User;
 
         // Generating Ajax calls.
@@ -75,7 +75,7 @@ class WidgetBase
         );
 
         if(file_exists($this->respath('locales.ini', true))) {
-            $this->translations = parse_ini_file($this->respath('locales.ini', true));
+            $this->translations = parse_ini_file($this->respath('locales.ini', true), true, INI_SCANNER_RAW);
         }
 
         // We load the template engine
@@ -83,27 +83,34 @@ class WidgetBase
         $this->view->objectConfigure($config);
 
         $this->view->assign('c', $this);
-        
+
         $this->pure = false;
     }
 
     function t() {
         return call_user_func_array('t',func_get_args());
     }
-    
+
     function __() {
         $args = func_get_args();
-        if(array_key_exists($args[0], $this->translations)) {
-            $args[0] = $this->translations[$args[0]];
-            return call_user_func_array(array(&$this, 't'), $args);
-        } 
-        
         global $translationshash;
-        
-        if(array_key_exists($args[0], $translationshash)) {
-            return call_user_func_array('__', $args);
+
+        if(!is_array($this->translations)) $this->translations = array();
+
+        $tmp_trans = array_merge_recursive($this->translations, $translationshash);
+        $arr = explode('.', $args[0]);
+
+        if(is_array($tmp_trans)
+        && array_key_exists($arr[0], $tmp_trans)
+        && array_key_exists($arr[1], $tmp_trans[$arr[0]])) {
+            $vars = $tmp_trans[$arr[0]][$arr[1]];
+            if(is_array($vars))
+                $args[0] = $vars[0];
+            else
+                $args[0] = $vars;
+            return call_user_func_array(array(&$this, 't'), $args);
         }
-        
+
         return $args[0];
     }
 
@@ -138,9 +145,9 @@ class WidgetBase
      * @desc Preload some sourcecode for the draw method
      */
     function display() {}
-    
+
     /**
-     * Return the template's HTML code 
+     * Return the template's HTML code
      * @param a specific template name to load (like Ruby partials)
      * @param load the parent template, like for WidgetCommon
      */
@@ -149,7 +156,7 @@ class WidgetBase
         $this->display();
         return trim($this->view->draw(strtolower($this->name), true));
     }
-    
+
     protected function tpl() {
         $config = array(
             'tpl_dir'       => APP_PATH.'widgets/'.$this->name.'/',
@@ -161,7 +168,7 @@ class WidgetBase
         $view = new Tpl;
         $view->objectConfigure($config);
         $view->assign('c', $this);
-        
+
         return $view;
     }
 
@@ -184,10 +191,10 @@ class WidgetBase
         } else {
             $path = BASE_URI . $path;
         }
-        
+
         return $path;
     }
-    
+
     public function getName()
     {
         return $this->name;
@@ -254,7 +261,7 @@ class WidgetBase
     {
         $this->css[] = $this->respath($filename);
     }
-    
+
     /**
      * @brief returns the list of javascript files to be loaded for the widget.
      */
