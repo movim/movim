@@ -33,7 +33,7 @@ class Group extends WidgetBase
         $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
 
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
-        
+
         $this->registerEvent('post_ticker', 'onTicker');
         $this->registerEvent('pubsub_getitem_ticker', 'onTicker');
 
@@ -119,7 +119,7 @@ class Group extends WidgetBase
         list($subscriptions, $server, $node) = array_values($packet->content);
 
         $view = $this->tpl();
-        
+
         $view->assign('subscriptions', $subscriptions);
         $view->assign('server', $server);
         $view->assign('node', $node);
@@ -132,7 +132,7 @@ class Group extends WidgetBase
         list($config, $server, $node) = array_values($packet->content);
 
         $view = $this->tpl();
-        
+
         $xml = new \XMPPtoForm();
         $form = $xml->getHTML($config->x->asXML());
 
@@ -149,7 +149,7 @@ class Group extends WidgetBase
         Notification::append(false, $this->__('group.config_saved'));
     }
 
-    function onSubscribed($packet) 
+    function onSubscribed($packet)
     {
         $arr = $packet->content;
 
@@ -170,11 +170,11 @@ class Group extends WidgetBase
               ->setData($this->_data)
               ->request();
         }
-        
+
         }*/
     }
 
-    function onUnsubscribed($packet) 
+    function onUnsubscribed($packet)
     {
         $arr = $packet->content;
 
@@ -197,7 +197,7 @@ class Group extends WidgetBase
         $html .= $view->draw('_group_publish', true);
 
         $header = $this->prepareHeader($server, $node);
-        
+
         Header::fill($header);
 
         RPC::call('MovimTpl.fill', '#group_widget.'.stringToUri($server.'_'.$node), $html);
@@ -263,7 +263,7 @@ class Group extends WidgetBase
         $r = new GetItemsId;
         $r->setTo($server)
           ->setNode($node);
-        
+
         $r->request();
     }
 

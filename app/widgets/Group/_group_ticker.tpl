@@ -12,7 +12,7 @@
                     </span>
                 {else}
                     <span class="icon color bubble gray">
-                        <i class="md md-trending"></i>
+                        <i class="md md-arrow-forward"></i>
                     </span>
                 {/if}
                 </span>
@@ -24,15 +24,23 @@
         </ul>
     </header>
     <section>
-        <ul class="middle simple">
-            <li class="condensed">
-                <span><h3>{$ticker->value}</h3></span>
+        <ul class="middle simple flex">
+            <li class="condensed block background_fade">
+                <span>
+                    <h3>{$ticker->value}</h3>
+                </span>
                 <p>
-                    {$ticker->change}({$ticker->percent})
+                    {$ticker->change} ({$ticker->percent}%)
                 </p>
             </li>
-            <li>
-                <img src="http://chart.finance.yahoo.com/t?s={$ticker->symbol}%3dX&lang=en-US&region=US&width=500&height=280"/>
+            <li class="condensed block">
+                <span>Market Cap : {$ticker->capitalization}</span><br />
+                <span>
+                    Volume : {$ticker->volume|floatval|number_format:0,',',' '}
+                </span>
+            </li>
+            <li class="block large">
+                <img src="http://chart.finance.yahoo.com/t?s={$ticker->symbol}&lang=en-US&region=US&width=700&height=400"/>
             </li>
         </ul>
     </section>

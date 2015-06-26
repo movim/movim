@@ -3,7 +3,7 @@
 /**
  * @file Utils.php
  * This file is part of PROJECT.
- * 
+ *
  * @brief Description
  *
  * @author Etenil <etenil@etenilsrealm.nl>
@@ -12,7 +12,7 @@
  * @date 20 February 2011
  *
  * Copyright (C)2011 Etenil
- * 
+ *
  * All rights reserved.
  */
 
@@ -24,14 +24,14 @@ use Monolog\Handler\StreamHandler;
  * Return the list of gender
  */
 function getGender() {
-    return array('N' => __('gender.none'),
+    return array('N' => __('gender.nil'),
                  'M' => __('gender.male'),
                  'F' => __('gender.female'),
                  'O' => __('gender.other')
                 );
 }
 
-/** 
+/**
  * Return the list of client types
  */
 function getClientTypes() {
@@ -364,7 +364,7 @@ function getCountries() {
  */
 function getMarital() {
     return array(
-            'none'          => __('marital.none'),
+            'none'          => __('marital.nil'),
             'single'        => __('marital.single'),
             'relationship'  => __('marital.relationship'),
             'married'       => __('marital.married'),
@@ -372,7 +372,7 @@ function getMarital() {
             'widowed'       => __('marital.widowed'),
             'cohabiting'    => __('marital.cohabiting'),
             'union'         => __('marital.union')
-        );                      
+        );
 }
 
 function getPresences() {
@@ -506,12 +506,12 @@ function generateUUID($string = false) {
 function movim_log($logs) {
     $log = new Logger('movim');
     $log->pushHandler(new SyslogHandler('movim'));
-    
+
     $log->pushHandler(new StreamHandler(LOG_PATH.'/logger.log', Logger::DEBUG));
     if(is_array($logs))
         $log->addInfo('', $logs);
     else
-        $log->addInfo($logs);        
+        $log->addInfo($logs);
 }
 
 /**
@@ -523,7 +523,7 @@ function getFlagTitle($color){
         case 'white':
             $title = __('flag.white');
         break;
-        
+
         case 'green':
             $title = __('flag.green');
         break;
@@ -587,11 +587,11 @@ function requestURL($url, $timeout = 10, $post = false) {
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0'); 
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0');
 
     if(is_array($post)) {
         $params = '';
-        
+
         foreach($post as $key => $value) {
             $params .= $key . '=' . $value .'&';
         }

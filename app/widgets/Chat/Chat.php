@@ -49,7 +49,7 @@ class Chat extends WidgetBase
             }
         }
     }*/
-    
+
     function onMessageHistory($packet)
     {
         $this->onMessage($packet, true);
@@ -66,7 +66,7 @@ class Chat extends WidgetBase
             $contact = $cd->getRosterItem($from);
             if($contact == null)
                 $contact = $cd->get($from);
-            
+
             if($contact != null
             && !preg_match('#^\?OTR#', $message->body)
             && $message->type != 'groupchat') {
@@ -75,7 +75,7 @@ class Chat extends WidgetBase
                 Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $avatar, 4);
             }
 
-            RPC::call('movim_fill', $from.'_state', '');     
+            RPC::call('movim_fill', $from.'_state', '');
         // If the message is from me
         } /*else {
             $from = $message->jidto;
@@ -119,7 +119,7 @@ class Chat extends WidgetBase
         list($config, $room) = array_values($packet->content);
 
         $view = $this->tpl();
-        
+
         $xml = new \XMPPtoForm();
         $form = $xml->getHTML($config->x->asXML());
 
@@ -187,9 +187,9 @@ class Chat extends WidgetBase
             $chats->ajaxGetHistory($jid);
 
             $html = $this->prepareChat($jid);
-            
+
             $header = $this->prepareHeader($jid);
-            
+
             Header::fill($header);
             RPC::call('movim_fill', 'chat_widget', $html);
             RPC::call('MovimTpl.scrollPanel');
@@ -208,9 +208,9 @@ class Chat extends WidgetBase
         if(!$this->validateJid($room)) return;
 
         $html = $this->prepareChat($room, true);
-        
+
         $header = $this->prepareHeaderRoom($room);
-        
+
         Header::fill($header);
         RPC::call('movim_fill', 'chat_widget', $html);
         RPC::call('MovimTpl.scrollPanel');
@@ -229,17 +229,17 @@ class Chat extends WidgetBase
     function ajaxSendMessage($to, $message, $muc = false, $resource = false) {
         if($message == '')
             return;
-        
+
         $m = new \Modl\Message();
         $m->session = $this->user->getLogin();
         $m->jidto   = echapJid($to);
         $m->jidfrom = $this->user->getLogin();
-        
+
         $session    = \Sessionx::start();
-        
+
         $m->type    = 'chat';
         $m->resource = $session->resource;
-        
+
         if($muc) {
             $m->type        = 'groupchat';
 
@@ -289,7 +289,7 @@ class Chat extends WidgetBase
 
     /**
      * @brief Send a "composing" message
-     * 
+     *
      * @param string $to
      * @return void
      */
@@ -299,10 +299,10 @@ class Chat extends WidgetBase
         $mc = new Composing;
         $mc->setTo($to)->request();
     }
-    
+
     /**
      * @brief Send a "paused" message
-     * 
+     *
      * @param string $to
      * @return void
      */
@@ -378,7 +378,7 @@ class Chat extends WidgetBase
 
     /**
      * @brief Prepare the contact header
-     * 
+     *
      * @param string $jid
      */
     function prepareHeader($jid)
@@ -393,7 +393,7 @@ class Chat extends WidgetBase
         } else {
             $contact = $cd->get($jid);
         }
-        
+
         $view->assign('contact', $contact);
         $view->assign('jid', $jid);
 
@@ -402,7 +402,7 @@ class Chat extends WidgetBase
 
     /**
      * @brief Prepare the contact header
-     * 
+     *
      * @param string $jid
      */
     function prepareHeaderRoom($room)

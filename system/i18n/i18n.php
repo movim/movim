@@ -52,26 +52,28 @@ function t($string)
     if(isset($translations[$string])) {
         $lstring = $translations[$string];
     }
-    
+
     // For compiled lang files, set en english default if no translation
     if($lstring == '')
         $lstring = $string;
-    
+
     if(func_num_args() > 1) {
         $args = func_get_args();
         $args[0] = $lstring; // Replacing with the translated string.
         $lstring = call_user_func_array("sprintf", $args);
     }
-    
+
     return $lstring;
 }
 
 function __() {
-    global $translationshash;
-    
     $args = func_get_args();
-    if(is_array($translationshash) && array_key_exists($args[0], $translationshash)) {
-        $args[0] = $translationshash[$args[0]];
+    global $translationshash;
+
+    $arr = explode('.', $args[0]);
+
+    if(is_array($translationshash) && array_key_exists($arr[0], $translationshash)) {
+        $args[0] = $translationshash[$arr[0]][$arr[1]];
         return call_user_func_array('t', $args);
     } else {
         return $args[0];
@@ -142,7 +144,7 @@ function loadLanguageAuto()
 {
     $langs = array();
     $langNotFound = true;
-    
+
     preg_match_all('/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $lang_parse);
 
     if (count($lang_parse[1])) {
@@ -154,14 +156,14 @@ function loadLanguageAuto()
 
         arsort($langs, SORT_NUMERIC);
     }
-    
+
     while((list($key, $value) = each($langs)) && $langNotFound == true) {
         $exploded = explode('-', $key);
         $key = reset($exploded);
 
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
-        
+
         if($key == 'en') {
             loadLanguage($config->locale);
             $langNotFound = false;
@@ -191,9 +193,9 @@ function loadLanguage($lang)
         require_once(CACHE_PATH . '/locales/' . $lang . '.php');
     } else
         $translations = parseLangFile(LOCALES_PATH . $lang . '.po');
-        
+
     if(file_exists(LOCALES_PATH . 'locales.ini')) {
-        $translationshash = parse_ini_file(LOCALES_PATH . 'locales.ini');
+        $translationshash = parse_ini_file(LOCALES_PATH . 'locales.ini', true, INI_SCANNER_RAW);
     }
 
     $language = $lang;

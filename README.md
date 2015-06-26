@@ -34,4 +34,4 @@ You can support us on :
 
 License
 -------
-Jappix is released under the terms of the AGPL license. See COPYING for more details.
+Movim is released under the terms of the AGPL license. See COPYING for more details.
