@@ -1,7 +1,7 @@
 <ul class="active">
     <a class="classic" href="#">
         <li class="action on_mobile" onclick="MovimTpl.toggleMenu()">
-            <span class="icon bubble on_mobile"><i class="md md-menu"></i></span>
+            <span class="icon bubble on_mobile"><i class="md md-cloud-queue"></i></span>
             <span>Movim</span>
         </li>
         <li class="action on_desktop">
