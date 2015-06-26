@@ -1,6 +1,6 @@
 <li onclick="{$dialog} MovimTpl.hideMenu()" class="condensed action">
     <div class="action">
-        <i class="md md-edit"></i>
+        <i class="zmdi zmdi-edit"></i>
     </div>
     {$url = $me->getPhoto('s')}
     {if="$url"}
@@ -10,7 +10,7 @@
         </span>
     {else}
         <span class="icon bubble color {$me->jid|stringToColor} status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}">
-            <i class="md md-person"></i>
+            <i class="zmdi zmdi-account"></i>
         </span>
     {/if}
     <span>{$me->getTrueName()}</span>
@@ -19,7 +19,7 @@
 <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}" href="{$c->route('conf')}">
     <li>
         <span class="icon">
-            <i class="md md-settings"></i>
+            <i class="zmdi zmdi-settings"></i>
         </span>
         <span>{$c->__('page.configuration')}</span>
     </li>
@@ -27,7 +27,7 @@
 <a class="classic" href="{$c->route('help')}">
     <li>
         <span class="icon">
-            <i class="md md-help"></i>
+            <i class="zmdi zmdi-help"></i>
         </span>
         <span>{$c->__('page.help')}</span>
     </li>

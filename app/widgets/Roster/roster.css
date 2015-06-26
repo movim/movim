@@ -17,14 +17,14 @@
 }
 
 #roster ul#rosterlist > div li:first-child:before {
-    font-family: "Material Design Iconic Font";    
-    content: "\f1b6";
+    font-family: "Material Design Iconic Font";
+    content: "\f2c2";
     display: inline-block;
 }
 
 #roster ul#rosterlist > div.groupshown li:first-child:before {
-    font-family: "Material Design Iconic Font";    
-    content: "\f1b4";
+    font-family: "Material Design Iconic Font";
+    content: "\f2c0";
     display: inline-block;
 }
 

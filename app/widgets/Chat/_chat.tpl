@@ -11,7 +11,7 @@
                 {$c->ajaxSmileyGet('😃')}
             </span>
             <div class="action" data-jid="{$jid}" onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
-                <i class="md md-send"></i>
+                <i class="zmdi zmdi-mail-send"></i>
             </div>
             <form>
                 <div>

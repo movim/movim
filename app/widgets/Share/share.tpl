@@ -3,10 +3,10 @@
         {if="isset($url)"}
             <li class="condensed action">
                 <div class="action">
-                    <i class="md md-link"></i>
+                    <i class="zmdi zmdi-link"></i>
                 </div>
                 <span class="icon bubble blue color">
-                    <i class="md md-share"></i>
+                    <i class="zmdi zmdi-share"></i>
                 </span>
                 <span>{$c->__('page.share')}</span>
                 <p>{$c->__('share.success')}</p>
@@ -19,7 +19,7 @@
         {else}
             <li class="condensed">
                 <span class="icon bubble orange color">
-                    <i class="md md-error"></i>
+                    <i class="zmdi zmdi-error"></i>
                 </span>
                 <span>{$c->__('page.share')}</span>
                 <p>{$c->__('share.error')}</p>

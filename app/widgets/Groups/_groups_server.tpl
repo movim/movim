@@ -11,7 +11,7 @@
         >
             {if="$value->subscription == 'subscribed'"}
                 <div class="action">
-                    <i class="md md-bookmark"></i>
+                    <i class="zmdi zmdi-bookmark"></i>
                 </div>
             {/if}
             <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
@@ -38,5 +38,5 @@
     {/loop}
 </ul>
 <a onclick="Groups_ajaxTestAdd('{$server}')" class="button action color">
-    <i class="md md-add"></i>
+    <i class="zmdi zmdi-plus"></i>
 </a>

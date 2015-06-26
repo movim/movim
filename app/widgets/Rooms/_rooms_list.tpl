@@ -16,12 +16,12 @@
                     </span>
                 {else}
                     <span class="icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
-                        <i class="md md-person"></i>
+                        <i class="zmdi zmdi-account"></i>
                     </span>        
                 {/if}
                 {if="$value->mucaffiliation =='owner'"}
                     <div class="action">
-                        <i class="md md-beenhere"></i>
+                        <i class="zmdi zmdi-beenhere"></i>
                     </div>
                 {/if}
                 {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}

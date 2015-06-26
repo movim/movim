@@ -19,7 +19,7 @@
                         {if="$value->value"}
                             status {$presencestxt[$value->value]}
                         {/if}">
-                        <i class="md md-person"></i>
+                        <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
 
@@ -30,10 +30,10 @@
         <a class="block large" href="{$c->route('chat')}">
             <li class="action">
                 <div class="action">
-                    <i class="md md-chevron-right"></i>
+                    <i class="zmdi zmdi-chevron-right"></i>
                 </div>
                 <span class="icon">
-                    <i class="md md-forum"></i>
+                    <i class="zmdi zmdi-comments"></i>
                 </span>
                 <span>{$c->__('hello.chat')}</span>
             </li>
@@ -65,7 +65,7 @@
                         {else}
                             <span
                                 class="icon bubble color {$value->getContact()->jid|stringToColor}">
-                                <i class="md md-person"></i>
+                                <i class="zmdi zmdi-account"></i>
                             </span>
                         {/if}
                     {else}
@@ -90,10 +90,10 @@
             <a  class="block large" href="{$c->route('news')}">
                 <li class="action">
                     <div class="action">
-                        <i class="md md-chevron-right"></i>
+                        <i class="zmdi zmdi-chevron-right"></i>
                     </div>
                     <span class="icon">
-                        <i class="md md-receipt"></i>
+                        <i class="zmdi zmdi-receipt"></i>
                     </span>
                     <span>{$c->__('hello.news_page')}</span>
                 </li>
@@ -104,10 +104,10 @@
             <a href="{$c->route('blog', array($jid))}" target="_blank">
                 <li class="condensed action">
                     <div class="action">
-                        <i class="md md-chevron-right"></i>
+                        <i class="zmdi zmdi-chevron-right"></i>
                     </div>
                     <span class="icon">
-                        <i class="md md-wifi-tethering"></i>
+                        <i class="zmdi zmdi-portable-wifi"></i>
                     </span>
                     <span>{$c->__('hello.blog_title')}</span>
                     <p>{$c->__('hello.blog_text')}</p>
@@ -118,14 +118,14 @@
         <ul class="thick flex on_desktop">
             <li class="condensed block">
                 <span class="icon bubble color blue">
-                    <i class="md md-share"></i>
+                    <i class="zmdi zmdi-share"></i>
                 </span>
                 <span>{$c->__('hello.share_title')}</span>
                 <p>{$c->__('hello.share_text')}</p>
             </li>
             <li class="block">
                 <a class="button" href="javascript:(function(){location.href='{$c->route('share')}&url='+encodeURIComponent(location.href);})();">
-                    <i class="md md-share"></i> {$c->__('hello.share_button')}
+                    <i class="zmdi zmdi-share"></i> {$c->__('hello.share_button')}
                 </a>
             </li>
         </ul>

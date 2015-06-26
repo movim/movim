@@ -5,13 +5,13 @@
     <ul class="active">
         <li onclick="Notifs_ajaxAccept('{$jid|echapJS}'); Dialog.clear();">
             <span class="icon green">
-                <i class="md md-person-add"></i>
+                <i class="zmdi zmdi-account-add"></i>
             </span>
             {$c->__('button.accept')}
         </li>
         <li onclick="Notifs_ajaxRefuse('{$jid|echapJS}'); Dialog.clear();">
             <span class="icon red">
-                <i class="md md-close"></i>
+                <i class="zmdi zmdi-close"></i>
             </span>
             {$c->__('button.refuse')}
         </li>

@@ -2,7 +2,7 @@
     <ul class="thick">
         <li class="condensed">
             <span class="icon bubble color green">
-                <i class="md md-bookmark"></i>
+                <i class="zmdi zmdi-bookmark"></i>
             </span>
             <span>{$c->__('groups.empty_title')}</span>
             <p>{$c->__('groups.empty_text1')} {$c->__('groups.empty_text2')}</p>

@@ -37,7 +37,7 @@
 
         <li class="block condensed">
             <span class="icon bubble color orange">
-                <i class="md md-add-circle-outline"></i>
+                <i class="zmdi zmdi-plus-circle-outline"></i>
             </span>
             <span>{$c->__('subscribe.server_question')}</span>
             <p>

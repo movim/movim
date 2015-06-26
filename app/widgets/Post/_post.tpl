@@ -25,7 +25,7 @@
                             </span>
                         {else}
                             <span class="icon bubble color {$contact->jid|stringToColor}">
-                                <i class="md md-person"></i>
+                                <i class="zmdi zmdi-account"></i>
                             </span>
                         {/if}
                     </a>
@@ -44,12 +44,12 @@
                 <p>
                     {if="$contact->getTrueName() != ''"}
                         <a href="{$c->route('contact', $contact->jid)}">
-                            <i class="md md-person"></i> {$contact->getTrueName()}
+                            <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
                         </a> –
                     {/if}
                     {if="$post->node != 'urn:xmpp:microblog:0'"}
                         <a href="{$c->route('group', array($post->origin, $post->node))}">
-                            <i class="md md-pages"></i> {$post->node}
+                            <i class="zmdi zmdi-pages"></i> {$post->node}
                         </a> –
                     {/if}
                     {$post->published|strtotime|prepareDate}
@@ -87,7 +87,7 @@
                             type="{$value.type}"
                             target="_blank">
                             <span class="icon gray">
-                                <span class="md md-attach-file"></span>
+                                <span class="zmdi zmdi-attachment-alt"></span>
                             </span>
                             <span>{$value.href|urldecode}</span>
                         </a>
@@ -100,7 +100,7 @@
             {loop="$attachements.pictures"}
                 <li class="block pic">
                     <span class="icon gray">
-                        <i class="md md-image"></i>
+                        <i class="zmdi zmdi-image"></i>
                     </span>
                     <a href="{$value.href}" class="alternate" target="_blank">
                         <img type="{$value.type}" src="{$value.href|urldecode}"/>
@@ -128,7 +128,7 @@
                         </div>
                     </form>
                     <span class="icon gray">
-                        <i class="md md-public"></i>
+                        <i class="zmdi zmdi-public"></i>
                     </span>
                     <span>
                         <a target="_blank" href="{$c->route('blog', array($post->origin))}">
@@ -145,16 +145,16 @@
             <ul class="active middle">
                 <li class="condensed action">
                     <div class="action">
-                        <i class="md md-chevron-right"></i>
+                        <i class="zmdi zmdi-chevron-right"></i>
                     </div>
                     {$url = $post->getContact()->getPhoto('s')}
                     {if="$url"}
                         <span class="icon bubble" style="background-image: url('{$url}');">
-                            <i class="md md-loop"></i>
+                            <i class="zmdi zmdi-loop"></i>
                         </span>
                     {else}
                         <span class="icon bubble color {$post->getContact()->jid|stringToColor}">
-                            <i class="md md-loop"></i>
+                            <i class="zmdi zmdi-loop"></i>
                         </span>
                     {/if}
                     

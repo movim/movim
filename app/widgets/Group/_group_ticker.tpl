@@ -4,15 +4,15 @@
             <li class="condensed">
                 {if="(float)$ticker->change < 0"}
                     <span class="icon color bubble red">
-                        <i class="md md-trending-down"></i>
+                        <i class="zmdi zmdi-trending-down"></i>
                     </span>
                 {elseif="(float)$ticker->change > 0"}
                     <span class="icon color bubble green">
-                        <i class="md md-trending-up"></i>
+                        <i class="zmdi zmdi-trending-up"></i>
                     </span>
                 {else}
                     <span class="icon color bubble gray">
-                        <i class="md md-arrow-forward"></i>
+                        <i class="zmdi zmdi-arrow-forward"></i>
                     </span>
                 {/if}
                 </span>

@@ -21,7 +21,7 @@
                     {if="$value->value"}
                         status {$presencestxt[$value->value]}
                     {/if}">
-                    <i class="md md-person"></i>
+                    <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
             <span>{$value->getTrueName()}</span>

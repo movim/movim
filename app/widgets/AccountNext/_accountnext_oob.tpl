@@ -1,7 +1,7 @@
 <ul class="thick">
     <li class="condensed">
         <span class="icon bubble color blue">
-            <i class="md md-keyboard-arrow-right"></i>
+            <i class="zmdi zmdi-keyboard-arrow-right"></i>
         </span>
         <p>
             {$c->__('oob.about')}

@@ -59,7 +59,7 @@
     <ul class="active">
         <li class="subheader">{$c->__('status.disconnect')}</li>
         <li onclick="{$calllogout}">
-            <span class="icon"><i class="md md-exit-to-app"></i></span>
+            <span class="icon"><i class="zmdi zmdi-sign-in"></i></span>
             <span>{$c->__('status.disconnect')}</span>
         </li>
     </ul>
