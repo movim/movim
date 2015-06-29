@@ -21,9 +21,9 @@
             <span class="info">
             <img
                 class="flag"
-                title="{$value->geo_country}" 
-                alt="{$value->geo_country}" 
-                src="{$c->flagPath($value->geo_country)}"/>  
+                title="{$value->geo_country}"
+                alt="{$value->geo_country}"
+                src="{$c->flagPath($value->geo_country)}"/>
             </span>
             <span>{$value->domain}</span>
             <p>
@@ -37,7 +37,7 @@
 
         <li class="block condensed">
             <span class="icon bubble color orange">
-                <i class="zmdi zmdi-plus-circle-outline"></i>
+                <i class="zmdi zmdi-globe-alt"></i>
             </span>
             <span>{$c->__('subscribe.server_question')}</span>
             <p>
