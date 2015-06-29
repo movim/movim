@@ -51,13 +51,13 @@
         </li>
         <li class="block large">
             <span class="icon">
-                <i class="zmdi zmdi-insert-link"></i>
+                <i class="zmdi zmdi-link"></i>
             </span>
             <p>[my text](http://my_url/)</p>
         </li>
         <li class="block large">
             <span class="icon">
-                <i class="zmdi zmdi-insert-photo"></i>
+                <i class="zmdi zmdi zmdi-image"></i>
             </span>
             <p>![Alt text](http://my_image_url/)</p>
         </li>

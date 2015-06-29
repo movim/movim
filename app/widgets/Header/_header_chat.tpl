@@ -2,7 +2,7 @@
     <ul class="active">
         <li onclick="Rooms_ajaxAdd()">
             <span class="icon">
-                <i class="zmdi zmdi-group-add"></i>
+                <i class="zmdi zmdi-accounts-add"></i>
             </span>
         </li>
     </ul>

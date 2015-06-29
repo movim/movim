@@ -3,7 +3,7 @@
         <div id="menu_refresh"></div>
         <ul class="thick active divided spaced" id="menu_wrapper">
     {/if}
-    
+
     {loop="$items"}
         <li
             tabindex="{$page*$paging+$key+1}"
@@ -56,11 +56,11 @@
     {/loop}
     {if="count($items) == $paging"}
     <li id="history" onclick="{$history} this.parentNode.removeChild(this);">
-        <span class="icon"><i class="zmdi zmdi-history"></i></span>
+        <span class="icon"><i class="zmdi zmdi-time-restore"></i></span>
         {$c->__('post.older')}
     </li>
     {/if}
-        
+
     {if="$page == 0"}
         </ul>
     {/if}
