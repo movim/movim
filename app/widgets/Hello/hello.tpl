@@ -79,7 +79,7 @@
                     {/if}
 
                     <span class="info">{$value->published|strtotime|prepareDate}</span>
-                    
+
                     <p class="more">
                         {if="current(explode('.', $value->origin)) != 'nsfw'"}
                             {$value->contentcleaned|strip_tags:'<img><img/>'}

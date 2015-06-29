@@ -10,7 +10,7 @@ class Hello extends WidgetBase
     {
         $c = new Chats;
         $c->ajaxOpen($jid);
-        
+
         RPC::call('movim_redirect', $this->route('chat', $jid));
     }
 
