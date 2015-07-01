@@ -6,7 +6,7 @@ var Avatar = {
         } else {
             var reader = new FileReader();
             reader.readAsDataURL(f);
-            
+
             reader.onload = function (ev) {
                 var img = new Image();
                 img.src = ev.target.result;
@@ -43,11 +43,14 @@ var Avatar = {
     }
 }
 
+MovimWebsocket.attach(function() {
+    Avatar_ajaxGetForm();
+});
 
 function showVideo(){
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia; 
+	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 	navigator.getUserMedia({video:true, audio:false}, successCallback, errorCallback);
-    
+
     movim_toggle_class('#camdiv', 'active');
 }
 function successCallback(stream) {
