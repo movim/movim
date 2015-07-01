@@ -5,7 +5,5 @@
             {$getavatar}
         });
     </script>
-    <div id="avatar_form">
-        {$form}
-    </div>
+    <div id="avatar_form"></div>
 </div>
