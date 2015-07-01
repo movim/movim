@@ -23,7 +23,7 @@
                             <a href="{$c->route('contact', $value->getContact()->jid)}">
                                 {$value->getContact()->getTrueName()}
                             </a>
-                             - 
+                             -
                         {/if}
                         {$value->published|strtotime|prepareDate}
                     </p>
@@ -85,7 +85,7 @@
 <ul class="active thick">
     <li onclick="Group_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.removeChild(this);">
         <span class="icon">
-            <i class="zmdi zmdi-history"></i>
+            <i class="zmdi zmdi-time-restore"></i>
         </span>
         {$c->__('post.older')}
     </li>
