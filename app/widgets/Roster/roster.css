@@ -11,7 +11,7 @@
     position: relative;
 }
 
-#roster ul#rosterlist > div {
+#roster ul#rosterlist > div:not(.empty) {
     height: 5rem;
     overflow: hidden;
 }
@@ -39,32 +39,9 @@
 #roster ul#rosterlist.offlineshown > div.groupshown > li {
     display: list-item;
 }
-/*
-#roster ul#rosterlist.offlineshown div.groupshown li:not(:first-child),
-#roster ul#rosterlist.offlineshown div li:not(:first-child),
-#roster ul#rosterlist div.groupshown li:not(:first-child),
-#roster ul#rosterlist div li:not(:first-child) {
-    display: none;
-}
-* */
-
-/* Show some clients icons, Xabber style */
-/*
-#roster ul#rosterlist li.client a {
-    background-repeat: no-repeat;
-    background-position: 95% center;
-}
-
-#roster ul#rosterlist li.client.adium a     { background-image: url(img/clients/adium.png); }
-#roster ul#rosterlist li.client.pidgin a    { background-image: url(img/clients/pidgin.png); }
-#roster ul#rosterlist li.client.gajim a     { background-image: url(img/clients/gajim.png); }
-#roster ul#rosterlist li.client.telepathy a { background-image: url(img/clients/empathy.png); }
-#roster ul#rosterlist li.client.xabber a    { background-image: url(img/clients/xabber.png); }
-#roster ul#rosterlist li.client.psi a,
-#roster ul#rosterlist li.client.psi+ a       { background-image: url(img/clients/psi.png); }
-*/
 
 /* Chat button */
+/*
 #roster ul#rosterlist li .chat {
     width: 2rem;
     height: 2rem;
@@ -75,7 +52,7 @@
     border-radius: 2em;
     background-color: #DDD;
 }
-
+*/
 /* Search */
 #roster ul li.subheader.search,
 #roster.search ul#rosterlist div.groupshown > li {

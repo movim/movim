@@ -760,6 +760,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
 .icon.news      { background-image: url(../img/icons/receipt.svg); }
 .icon.forum     { background-image: url(../img/icons/forum.svg); }
+.icon.contacts  { background-image: url(../img/icons/group.svg); }
 .icon.media     { background-image: url(../img/placeholder/media.png); }
 .icon.explore   { background-image: url(../img/placeholder/explore.png); }
 .icon.plane     { background-image: url(../img/placeholder/plane.png); }

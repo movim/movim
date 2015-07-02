@@ -178,12 +178,12 @@
             class="button color oppose" 
             id="vcard4validate"
             >
-            {$c->__('vcard.submit')}
+            {$c->__('button.save')}
         </a>
         <a
             onclick="document.querySelector('#vcard4form').reset();"
             class="button flat oppose">
-            {$c->__('vcard.reset')}
+            {$c->__('button.reset')}
         </a>
     </div>
 </form>
