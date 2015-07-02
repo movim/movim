@@ -653,7 +653,7 @@ class ContactDAO extends SQL {
                     group by jid
                     ) as b on ( a.id = b.id )
                 ) presence on jidfrom = presence.jid
-            order by count desc
+            order by presence.value, count desc
             limit :tunelenght';
 
         $this->prepare(

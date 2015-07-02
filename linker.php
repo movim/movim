@@ -72,7 +72,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             $xml = \Moxl\API::commit();
             \Moxl\API::clear();
 
-            $loop->tick();
+            //$loop->tick();
 
             if(!empty($xml) && $conn) {
                 $conn->write(trim($xml));
@@ -83,7 +83,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
         $buffer .= $data;
     }
 
-    $loop->tick();
+    //$loop->tick();
 };
 
 $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser) {
@@ -146,8 +146,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
         }
 
         // Two ticks to be sure that we get everything from the socket, sic…
-        $loop->tick();
-        $loop->tick();
+        //$loop->tick();
+        //$loop->tick();
     });
 
     $conn->on('error', function($msg) use ($conn, $loop) {

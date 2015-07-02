@@ -1,9 +1,10 @@
 <div id="roster" ng-controller="RosterController as rosterCtrl">  
     <ul id="rosterlist" class="{if="isset($conf) && $conf.roster == 'show'"}offlineshown{/if} active all">
-        <span ng-if="contacts == null" class="nocontacts">
-            {$c->__('roster.no_contacts')}
-        </span>
-        
+        <div ng-if="contacts == null" class="empty placeholder icon contacts">
+            <h1>{$c->__('roster.no_contacts_title')}</h1>
+            <h4>{$c->__('roster.no_contacts_text')}</h4>
+        </div>
+
         <li class="subheader search">{$c->__('roster.results')}</li>
         
             <div id="spinner">
