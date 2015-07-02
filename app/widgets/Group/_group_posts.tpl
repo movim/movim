@@ -83,7 +83,7 @@
 {/loop}
 {if="$posts != null"}
 <ul class="active thick">
-    <li onclick="Group_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.removeChild(this);">
+    <li onclick="Group_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.parentNode.removeChild(this.parentNode);">
         <span class="icon">
             <i class="zmdi zmdi-time-restore"></i>
         </span>
