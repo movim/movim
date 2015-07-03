@@ -146,7 +146,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
         }
 
         // Two ticks to be sure that we get everything from the socket, sic…
-        //$loop->tick();
+        $loop->tick();
         //$loop->tick();
     });
 
