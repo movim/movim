@@ -5,6 +5,6 @@
     var PAGE_KEY_URI    = '{$page_key_uri}';
     var FAIL_SAFE       = '{$fail_safe}';
     var CURRENT_PAGE    = '{$current_page}';
-    var SERVER_CONF     = {$server_conf};
-    var SECURE_WEBSOCKET= {$secure_websocket};
+    var SERVER_CONF     = '{$server_conf}';
+    var SECURE_WEBSOCKET= '{$secure_websocket}';
 </script>
