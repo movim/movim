@@ -172,7 +172,7 @@ msgid ""
 msgstr ""
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+msgid "Are you sure that you want to delete it?"
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -322,7 +322,7 @@ msgstr ""
 msgid ""
 "If you want to specify a list of authorized XMPP servers on your Movim pod "
 "and forbid the connection on all the others please put their domain name "
-"here, with comma (ex: movim.eu,jabber.fr)"
+"here, with comma (ex: movim.eu, jabber.fr)"
 msgstr ""
 
 #: [whitelist]info2
@@ -489,7 +489,7 @@ msgid "Webcam"
 msgstr ""
 
 #: [avatar]cheese
-msgid "Cheese !"
+msgid "Cheese!"
 msgstr ""
 
 #: [avatar]snapshot
@@ -538,7 +538,7 @@ msgid "Nickname"
 msgstr ""
 
 #: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
+msgid "Do you want do join automaticaly this Chat Room?"
 msgstr ""
 
 #: [chatroom]bad_id [chatrooms]bad_id
@@ -554,7 +554,7 @@ msgid "Bookmarks updated"
 msgstr ""
 
 #: [bookmarks]error
-msgid "An error occured :"
+msgid "An error occured:"
 msgstr ""
 
 #: [bookmarks]configure
@@ -1051,7 +1051,7 @@ msgid "Frequently Asked Questions"
 msgstr ""
 
 #: [banner]title
-msgid "What do the little banners refer to ?"
+msgid "What do the little banners refer to?"
 msgstr ""
 
 #: [banner]info1
@@ -1081,7 +1081,7 @@ msgid "Black, the whole Internet can see your information"
 msgstr ""
 
 #: [wiki]question
-msgid "Looking for some documentation ?"
+msgid "Looking for some documentation?"
 msgstr ""
 
 #: [wiki]button
@@ -1089,7 +1089,7 @@ msgid "Read the Wiki"
 msgstr ""
 
 #: [ml]question
-msgid "Talk with us by email ?"
+msgid "Talk with us by email?"
 msgstr ""
 
 #: [ml]button
@@ -1097,7 +1097,7 @@ msgid "Join the Mailing List"
 msgstr ""
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+msgid "Chat with the team?"
 msgstr ""
 
 #: [chatroom]button
@@ -1165,7 +1165,7 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: [error]data_missings
-msgid "Some data are missing !"
+msgid "Some data are missing!"
 msgstr ""
 
 #: [error]wrong_password
@@ -1253,7 +1253,7 @@ msgid "My address"
 msgstr ""
 
 #: [form]create_one
-msgid "Create one !"
+msgid "Create one!"
 msgstr ""
 
 #: [form]another_account
@@ -1261,7 +1261,7 @@ msgid "Another account"
 msgstr ""
 
 #: [form]no_account
-msgid "No account yet ?"
+msgid "No account yet?"
 msgstr ""
 
 #: [form]whitelist.info
@@ -1453,7 +1453,7 @@ msgid "Disconnect"
 msgstr ""
 
 #: [status]here
-msgid "Your status here !"
+msgid "Your status here!"
 msgstr ""
 
 #: [status]updated
@@ -1482,7 +1482,7 @@ msgstr ""
 
 #: [publish]form_filled
 msgid ""
-"Some fields have been filled in. Do you still want to go back and loose "
+"Some fields have been filled in. Do you still want to go back and lose "
 "their content?"
 msgstr ""
 
@@ -1645,7 +1645,7 @@ msgid ""
 msgstr ""
 
 #: [subscribe]server_question
-msgid "Your server here ?"
+msgid "Your server here?"
 msgstr ""
 
 #: [subscribe]server_contact
@@ -1711,7 +1711,7 @@ msgid "Privacy Level"
 msgstr ""
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+msgid "Is this profile public?"
 msgstr ""
 
 #: [privacy]privacy_info
@@ -1758,7 +1758,7 @@ msgid "Connection"
 msgstr ""
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+msgid "You don't have javascript enabled. Good luck with that."
 msgstr ""
 
 #: [global]description
@@ -2598,7 +2598,7 @@ msgid "day"
 msgstr ""
 
 #: [post]whats_new
-msgid "What's new ?"
+msgid "What's new?"
 msgstr ""
 
 #: [post]place
