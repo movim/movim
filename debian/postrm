@@ -13,6 +13,7 @@ if [ "$1" = "remove" ] || [ "$1" = "purge" ] ; then
 
     if [ "$1" = purge ]; then
         rm -rf /var/cache/movim /etc/movim /usr/share/movim /var/log/movim
+	db_purge
     fi
 fi
 
@@ -23,3 +24,4 @@ if [ -f /usr/share/dbconfig-common/dpkg/postrm ]; then
     . /usr/share/dbconfig-common/dpkg/postrm
     dbc_go movim $@
 fi
+

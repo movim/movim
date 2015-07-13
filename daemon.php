@@ -5,9 +5,12 @@ use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 use Movim\Daemon\Core;
+use \React\EventLoop\Factory;
 use React\Socket\Server as Reactor;
 
 require dirname(__FILE__) . '/vendor/autoload.php';
+require dirname(__FILE__) . '/src/Movim/Daemon/Core.php'; // Why ?
+require dirname(__FILE__) . '/src/Movim/Daemon/Session.php'; // Why ?
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
@@ -41,7 +44,7 @@ if($infos != null) {
     break;
 }
 
-$loop = \React\EventLoop\Factory::create();
+$loop = Factory::create();
 $core = new Core($loop, $argv[1], $argv[2]);
 $app  = new HttpServer(new WsServer($core));
 

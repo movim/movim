@@ -63,6 +63,13 @@ fixownership ()
     chown ${OWNER} "${FILE}"
 }
 
+fixownershipdir ()
+{
+    OWNER="$1"
+    FILE="$2"
+    chown -R ${OWNER} "${FILE}"
+}
+
 reload_server() {
     server=$1
     if [ -x /usr/sbin/invoke-rc.d ]; then
@@ -119,22 +126,24 @@ ln -s /var/lib/movim/themes /usr/share/movim/ 2>/dev/null
 ln -s /var/lib/movim/vendor /usr/share/movim/ 2>/dev/null
 
 # We create the cache folder
-mkdir /var/cache/movim 2>/dev/null
-ln -s /var/cache/movim /usr/share/movim/cache 2>/dev/null
-fixperms 0775 /var/cache/movim
-fixownership "root:www-data" /var/cache/movim
-
-# We create the user folder
-mkdir /var/cache/movim/users 2>/dev/null
-ln -s /var/cache/movim/users /usr/share/movim/users 2>/dev/null
-fixperms 0775 /var/cache/movim/users
-fixownership "root:www-data" /var/cache/movim/users
+mkdir -p /var/cache/movim/cache 2>/dev/null
+ln -s /var/cache/movim/cache /usr/share/movim/cache 2>/dev/null
+fixperms 0775 /usr/share/movim/cache
+fixownershipdir "www-data:www-data" /var/cache/movim/cache
+fixownershipdir "www-data:www-data" /usr/share/movim/cache
 
 # We create the log folder
 mkdir /var/log/movim 2>/dev/null
 ln -s /var/log/movim /usr/share/movim/log 2>/dev/null
 fixperms 0775 /var/log/movim
 fixownership "root:www-data" /var/log/movim
+
+# We create the user folder
+mkdir /var/cache/movim/users 2>/dev/null
+ln -s /var/cache/movim/users /usr/share/movim/users 2>/dev/null
+fixperms 0775 /user/share/movim/users
+fixownershipdir "www-data:www-data" /var/cache/movim/users
+fixownershipdir "www-data:www-data" /usr/share/movim/users
 
 # Fix rights
 fixperms 0775 /usr/share/movim
@@ -149,4 +158,4 @@ chmod +x /usr/share/movim/mud.php
 /usr/share/movim/mud.php db set
 
 # We clean some log created by the install to prevent issues
-rm  /usr/share/movim/log/*  /usr/share/movim/cache/*
+rm -rf /usr/share/movim/log/*  /usr/share/movim/cache/*

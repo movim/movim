@@ -1,0 +1,2 @@
+/etc/apache2/conf-available/movim.conf
+/etc/movim/db.example.inc.php
