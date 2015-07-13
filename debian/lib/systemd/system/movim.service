@@ -1,0 +1,12 @@
+[Unit]
+Description=Movim daemon
+After=apache2.service network.target local-fs.target
+
+[Service]
+User=www-data
+Type=simple
+ExecStart=/usr/bin/php daemon.php https://localhost/movim/ 8080
+WorkingDirectory=/usr/share/movim/
+
+[Install]
+WantedBy=multi-user.target
