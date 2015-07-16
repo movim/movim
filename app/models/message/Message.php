@@ -78,13 +78,13 @@ class Message extends Model {
 
             $images = (bool)($this->type == 'chat');
 
-            if($stanza->html) {
+            /*if($stanza->html) {
                 $this->html = \cleanHTMLTags($stanza->html->body->asXML());
                 $this->html = \fixSelfClosing($this->html);
                 $this->html = \prepareString($this->html, false, $images);
-            } else {
+            } else {*/
                 $this->html = \prepareString($this->body, false, $images);
-            }
+            //}
             
             if($stanza->delay)
                 $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));

@@ -26,7 +26,7 @@ class MovimEmoji
         $this->_emoji->setAssetUrlFormat($this->getPath($large));
         $string = $this->_emoji->replaceEmojiWithImages($string);
         $this->_emoji->setAssetUrlFormat($this->getPath());
-        
+
         return $string;
     }
 
@@ -60,25 +60,24 @@ function prepareString($string, $large = false, $preview = false) {
     $string = preg_replace_callback(
         "/([\w\"'>]+\:\/\/[\w-?&;#+%:~=\.\/\@]+[\w\/])/", function ($match) use($preview) {
             if(!in_array(substr($match[0], 0, 1), array('>', '"', '\''))) {
-                if($preview) {
+		$content = $match[0];
+
+		if($preview) {
                     $embed = Embed\Embed::create($match[0]);
                     if($embed->type == 'photo'
                     && $embed->images[0]['width'] <= 1024
                     && $embed->images[0]['height'] <= 1024) {
                         $content = '<img src="'.$match[0].'"/>';
                     } elseif($embed->type == 'link') {
-                        $content = $embed->title . ' - ' . $embed->providerName;                        
-                    } else {
-                        $content = $match[0];
+                        $content .= ' - '. $embed->title . ' - ' . $embed->providerName;
                     }
-                } else {
-                    $content = $match[0];
                 }
-                
+
                 return stripslashes('<a href=\"'.$match[0].'\" target=\"_blank\">'.$content.'</a>');
             } else {
                 return $match[0];
             }
+
         }, $string
     );
 
@@ -86,9 +85,9 @@ function prepareString($string, $large = false, $preview = false) {
     $string = preg_replace_callback(
         '/(<[^>]+) style=".*?"/i', function($match) {
             return $match[1];
-        }, $string    
+        }, $string
     );
-    
+
     // Twitter hashtags
     $string = preg_replace_callback(
         "/ #[a-zA-Z0-9_-]{3,}/", function ($match) {
@@ -130,11 +129,11 @@ function prepareString($string, $large = false, $preview = false) {
                 return '';
             }, ' ' . $string
     );
-   
+
     // We add some smileys...
     $emoji = MovimEmoji::getInstance();
     $string = $emoji->replace($string, $large);
-    
+
     return trim($string);
 }
 
@@ -160,7 +159,7 @@ function cleanHTMLTags($string) {
             '<html xmlns="http://jabber.org/protocol/xhtml-im">',
             '<body xmlns="http://www.w3.org/1999/xhtml">',
             '</body>',
-            '</html>', 
+            '</html>',
             '</content>'),
         '',
         $string);
@@ -172,7 +171,7 @@ function cleanHTMLTags($string) {
 function explodeURI($uri) {
     $arr = parse_url(urldecode($uri));
     $result = array();
-    
+
     if(isset($arr['query'])) {
         $query = explode(';', $arr['query']);
 
@@ -186,13 +185,13 @@ function explodeURI($uri) {
 
         $arr = array_merge($arr, $result);
     }
-    
+
     return $arr;
 
 }
 
 /*
- * Echap the JID 
+ * Echap the JID
  */
 function echapJid($jid)
 {
@@ -200,7 +199,7 @@ function echapJid($jid)
 }
 
 /*
- * Echap the anti-slashs for Javascript 
+ * Echap the anti-slashs for Javascript
  */
 function echapJS($string)
 {
@@ -295,9 +294,9 @@ function stringToColor($string) {
         5 => 'orange',
         6 => 'yellow',
         7 => 'brown');
-        
+
     $s = substr(base_convert(sha1($string), 15, 10), 0, 10);
-    
+
     if($colors[$s%8]) {
         return $colors[$s%8];
     } else {
