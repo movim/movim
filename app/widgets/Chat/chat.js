@@ -41,9 +41,11 @@ var Chat = {
         Chat.room = div.firstChild;
     },
     appendMessages : function(messages) {
-        for(var i = 0, len = messages.length; i < len; ++i ) {
-            Chat.appendMessage(messages[i]);
-        }
+        if(messages) {
+	    for(var i = 0, len = messages.length; i < len; ++i ) {
+                Chat.appendMessage(messages[i]);
+            }
+	}
     },
     appendMessage : function(message) {
         if(message.body == '') return;
@@ -73,8 +75,12 @@ var Chat = {
 
             bubble.querySelector('span.user').innerHTML = message.resource;
 
-            document.getElementById(id).appendChild(bubble);
-            bubble.querySelector('div').className = '';
+            var conversation = document.getElementById(id);
+            if(conversation) {
+		conversation.appendChild(bubble);
+	    }
+
+	    bubble.querySelector('div').className = '';
         } else {
             if(message.session == message.jidfrom) {
                 bubble = Chat.right;
