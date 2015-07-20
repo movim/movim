@@ -17,7 +17,7 @@ class Notification extends WidgetBase
      * @param integer $time The displayed time (in secondes)
      * @param integer $action An action
      * @return void
-     */    
+     */
     static function append($key = null, $title, $body = null, $picture = null, $time = 2, $action = null)
     {
         // In this case we have an action confirmation
@@ -38,7 +38,7 @@ class Notification extends WidgetBase
 
         $explode = explode('|', $key);
         $first = reset($explode);
-        
+
         if(array_key_exists($first, $notifs)) {
             $notifs[$first]++;
         } else {
@@ -68,7 +68,7 @@ class Notification extends WidgetBase
      *
      * @param string $key The key to group the notifications
      * @return void
-     */  
+     */
     function ajaxClear($key)
     {
         $session = Session::start();
@@ -101,7 +101,7 @@ class Notification extends WidgetBase
     /**
      * @brief Get all the keys
      * @return void
-     */  
+     */
     function ajaxGet()
     {
         $session = Session::start();
@@ -114,7 +114,7 @@ class Notification extends WidgetBase
      *
      * @param string $key
      * @return void
-     */  
+     */
     function ajaxCurrent($key)
     {
         $session = Session::start();
@@ -124,7 +124,7 @@ class Notification extends WidgetBase
     function prepareSnackbar($title, $body = false, $picture = false)
     {
         $view = $this->tpl();
-        
+
         $view->assign('title', $title);
         $view->assign('body', $body);
         $view->assign('picture', $picture);
